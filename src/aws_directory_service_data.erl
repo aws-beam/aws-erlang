@@ -119,38 +119,45 @@
 
 
 %% Example:
-%% list_groups_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type list_groups_result() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% user_summary() :: #{
-%%   <<"Enabled">> => [boolean()],
-%%   <<"GivenName">> => string(),
-%%   <<"SAMAccountName">> => string(),
-%%   <<"SID">> => string(),
-%%   <<"Surname">> => string()
+%% add_group_member_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"GroupName">> := string(),
+%%   <<"MemberName">> := string(),
+%%   <<"MemberRealm">> => string()
 %% }
--type user_summary() :: #{binary() => any()}.
+-type add_group_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_group_member_result() :: #{}
+-type add_group_member_result() :: #{}.
 
 
 %% Example:
-%% search_users_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string(),
-%%   <<"Users">> => list(user())
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type search_users_result() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% disable_user_result() :: #{}
--type disable_user_result() :: #{}.
+%% create_group_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"GroupScope">> => list(any()),
+%%   <<"GroupType">> => list(any()),
+%%   <<"OtherAttributes">> => map(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -163,19 +170,16 @@
 
 
 %% Example:
-%% list_group_members_request() :: #{
+%% create_user_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"DirectoryId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberRealm">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string(),
-%%   <<"SAMAccountName">> := string()
+%%   <<"EmailAddress">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"OtherAttributes">> => map(),
+%%   <<"SAMAccountName">> := string(),
+%%   <<"Surname">> => string()
 %% }
--type list_group_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_group_member_result() :: #{}
--type add_group_member_result() :: #{}.
+-type create_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -188,30 +192,63 @@
 
 
 %% Example:
-%% update_group_request() :: #{
+%% delete_group_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DirectoryId">> := string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_result() :: #{}
+-type delete_group_result() :: #{}.
+
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_result() :: #{}
+-type delete_user_result() :: #{}.
+
+
+%% Example:
+%% describe_group_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"OtherAttributes">> => list(string()),
+%%   <<"Realm">> => string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type describe_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_group_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"DistinguishedName">> => string(),
 %%   <<"GroupScope">> => list(any()),
 %%   <<"GroupType">> => list(any()),
 %%   <<"OtherAttributes">> => map(),
-%%   <<"SAMAccountName">> := string(),
-%%   <<"UpdateType">> => list(any())
+%%   <<"Realm">> => string(),
+%%   <<"SAMAccountName">> => string(),
+%%   <<"SID">> => string()
 %% }
--type update_group_request() :: #{binary() => any()}.
+-type describe_group_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_user_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"OtherAttributes">> => list(string()),
+%%   <<"Realm">> => string(),
+%%   <<"SAMAccountName">> := string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type describe_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -232,17 +269,170 @@
 
 
 %% Example:
-%% search_groups_result() :: #{
+%% directory_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type directory_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_user_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type disable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_user_result() :: #{}
+-type disable_user_result() :: #{}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"DistinguishedName">> => string(),
+%%   <<"GroupScope">> => list(any()),
+%%   <<"GroupType">> => list(any()),
+%%   <<"OtherAttributes">> => map(),
+%%   <<"SAMAccountName">> => string(),
+%%   <<"SID">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"GroupScope">> => list(any()),
+%%   <<"GroupType">> => list(any()),
+%%   <<"SAMAccountName">> => string(),
+%%   <<"SID">> => string()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_members_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberRealm">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type list_group_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_members_result() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group()),
+%%   <<"MemberRealm">> => string(),
+%%   <<"Members">> => list(member()),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()
 %% }
--type search_groups_result() :: #{binary() => any()}.
+-type list_group_members_result() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_group_result() :: #{}
--type delete_group_result() :: #{}.
+%% list_groups_for_member_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberRealm">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string(),
+%%   <<"SAMAccountName">> := string()
+%% }
+-type list_groups_for_member_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_for_member_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Groups">> => list(group_summary()),
+%%   <<"MemberRealm">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string()
+%% }
+-type list_groups_for_member_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Groups">> => list(group_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string()
+%% }
+-type list_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string(),
+%%   <<"Users">> => list(user_summary())
+%% }
+-type list_users_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% member() :: #{
+%%   <<"MemberType">> => list(any()),
+%%   <<"SAMAccountName">> => string(),
+%%   <<"SID">> => string()
+%% }
+-type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_group_member_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"GroupName">> := string(),
+%%   <<"MemberName">> := string(),
+%%   <<"MemberRealm">> => string()
+%% }
+-type remove_group_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_group_member_result() :: #{}
+-type remove_group_member_result() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -258,25 +448,13 @@
 
 
 %% Example:
-%% remove_group_member_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"GroupName">> := string(),
-%%   <<"MemberName">> := string(),
-%%   <<"MemberRealm">> => string()
-%% }
--type remove_group_member_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_group_members_result() :: #{
+%% search_groups_result() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"MemberRealm">> => string(),
-%%   <<"Members">> => list(member()),
+%%   <<"Groups">> => list(group()),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()
 %% }
--type list_group_members_result() :: #{binary() => any()}.
+-type search_groups_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -292,63 +470,38 @@
 
 
 %% Example:
-%% create_group_request() :: #{
+%% search_users_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Realm">> => string(),
+%%   <<"Users">> => list(user())
+%% }
+-type search_users_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DirectoryId">> := string(),
 %%   <<"GroupScope">> => list(any()),
 %%   <<"GroupType">> => list(any()),
 %%   <<"OtherAttributes">> => map(),
-%%   <<"SAMAccountName">> := string()
+%%   <<"SAMAccountName">> := string(),
+%%   <<"UpdateType">> => list(any())
 %% }
--type create_group_request() :: #{binary() => any()}.
-
+-type update_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_users_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string(),
-%%   <<"Users">> => list(user_summary())
-%% }
--type list_users_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_user_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"OtherAttributes">> => list(string()),
-%%   <<"Realm">> => string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type describe_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_result() :: #{}
--type update_user_result() :: #{}.
+%% update_group_result() :: #{}
+-type update_group_result() :: #{}.
 
 
 %% Example:
@@ -365,59 +518,8 @@
 -type update_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_user_result() :: #{}
--type delete_user_result() :: #{}.
-
-
-%% Example:
-%% directory_unavailable_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type directory_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_result() :: #{}
--type update_group_result() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"DistinguishedName">> => string(),
-%%   <<"GroupScope">> => list(any()),
-%%   <<"GroupType">> => list(any()),
-%%   <<"OtherAttributes">> => map(),
-%%   <<"SAMAccountName">> => string(),
-%%   <<"SID">> => string()
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_group_member_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"GroupName">> := string(),
-%%   <<"MemberName">> := string(),
-%%   <<"MemberRealm">> => string()
-%% }
--type add_group_member_request() :: #{binary() => any()}.
+%% update_user_result() :: #{}
+-type update_user_result() :: #{}.
 
 
 %% Example:
@@ -436,263 +538,161 @@
 
 
 %% Example:
-%% describe_group_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"OtherAttributes">> => list(string()),
-%%   <<"Realm">> => string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type describe_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_for_member_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberRealm">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type list_groups_for_member_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"MemberType">> => list(any()),
-%%   <<"SAMAccountName">> => string(),
-%%   <<"SID">> => string()
-%% }
--type member() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_group_member_result() :: #{}
--type remove_group_member_result() :: #{}.
-
-
-%% Example:
-%% list_groups_for_member_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group_summary()),
-%%   <<"MemberRealm">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string()
-%% }
--type list_groups_for_member_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_group_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"DistinguishedName">> => string(),
-%%   <<"GroupScope">> => list(any()),
-%%   <<"GroupType">> => list(any()),
-%%   <<"OtherAttributes">> => map(),
-%%   <<"Realm">> => string(),
-%%   <<"SAMAccountName">> => string(),
-%%   <<"SID">> => string()
-%% }
--type describe_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_summary() :: #{
-%%   <<"GroupScope">> => list(any()),
-%%   <<"GroupType">> => list(any()),
-%%   <<"SAMAccountName">> => string(),
-%%   <<"SID">> => string()
-%% }
--type group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Realm">> => string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_user_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"SAMAccountName">> := string()
-%% }
--type disable_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"EmailAddress">> => string(),
+%% user_summary() :: #{
+%%   <<"Enabled">> => [boolean()],
 %%   <<"GivenName">> => string(),
-%%   <<"OtherAttributes">> => map(),
-%%   <<"SAMAccountName">> := string(),
+%%   <<"SAMAccountName">> => string(),
+%%   <<"SID">> => string(),
 %%   <<"Surname">> => string()
 %% }
--type create_user_request() :: #{binary() => any()}.
+-type user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type add_group_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    directory_unavailable_exception() | 
+    access_denied_exception().
 
 -type describe_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    directory_unavailable_exception() | 
+    access_denied_exception().
 
 -type disable_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_group_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    directory_unavailable_exception() | 
+    access_denied_exception().
 
 -type list_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    access_denied_exception().
 
 -type list_groups_for_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    directory_unavailable_exception() | 
+    access_denied_exception().
 
 -type list_users_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    access_denied_exception().
 
 -type remove_group_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    access_denied_exception().
 
 -type search_users_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    access_denied_exception().
 
 -type update_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    directory_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

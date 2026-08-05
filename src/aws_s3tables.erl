@@ -148,250 +148,56 @@
 
 
 %% Example:
-%% put_table_maintenance_configuration_request() :: #{
-%%   <<"value">> := table_maintenance_configuration_value()
-%% }
--type put_table_maintenance_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_bucket_policy_request() :: #{}
--type get_table_bucket_policy_request() :: #{}.
-
-
-%% Example:
-%% list_table_buckets_request() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"maxBuckets">> => integer(),
-%%   <<"prefix">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type list_table_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsKeyArn">> => [string()],
-%%   <<"sseAlgorithm">> => list(any())
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_bucket_storage_class_request() :: #{
-%%   <<"storageClassConfiguration">> := storage_class_configuration()
-%% }
--type put_table_bucket_storage_class_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_snapshot_management_settings() :: #{
-%%   <<"maxSnapshotAgeHours">> => integer(),
-%%   <<"minSnapshotsToKeep">> => integer()
-%% }
--type iceberg_snapshot_management_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_policy_request() :: #{}
--type delete_table_policy_request() :: #{}.
-
-
-%% Example:
-%% iceberg_partition_spec() :: #{
-%%   <<"fields">> => list(iceberg_partition_field()),
-%%   <<"specId">> => [integer()]
-%% }
--type iceberg_partition_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_schema_v2() :: #{
-%%   <<"fields">> => list(schema_v2_field()),
-%%   <<"identifierFieldIds">> => list([integer()]()),
-%%   <<"schemaId">> => [integer()],
-%%   <<"type">> => list(any())
-%% }
--type iceberg_schema_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_table_metadata_location_request() :: #{
-%%   <<"metadataLocation">> := string(),
-%%   <<"versionToken">> := string()
-%% }
--type update_table_metadata_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_bucket_policy_request() :: #{
-%%   <<"resourcePolicy">> := string()
-%% }
--type put_table_bucket_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_record_expiration_configuration_value() :: #{
-%%   <<"settings">> => table_record_expiration_settings(),
-%%   <<"status">> => list(any())
-%% }
--type table_record_expiration_configuration_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_policy_response() :: #{
-%%   <<"resourcePolicy">> => string()
-%% }
--type get_table_bucket_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_bucket_replication_configuration() :: #{
-%%   <<"role">> => string(),
-%%   <<"rules">> => list(table_bucket_replication_rule())
-%% }
--type table_bucket_replication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_namespaces_request() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"maxNamespaces">> => integer(),
-%%   <<"prefix">> => [string()]
-%% }
--type list_namespaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_encryption_response() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration()
-%% }
--type get_table_encryption_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_replication_request() :: #{
-%%   <<"configuration">> := table_replication_configuration(),
-%%   <<"tableArn">> := string(),
-%%   <<"versionToken">> => [string()]
-%% }
--type put_table_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_table_request() :: #{
-%%   <<"versionToken">> => string()
-%% }
--type delete_table_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type forbidden_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% last_successful_replicated_update() :: #{
-%%   <<"metadataLocation">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type last_successful_replicated_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_encryption_response() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration()
-%% }
--type get_table_bucket_encryption_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% namespace_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"namespace">> => list(string()),
-%%   <<"namespaceId">> => string(),
-%%   <<"ownerAccountId">> => string(),
-%%   <<"tableBucketId">> => string()
-%% }
--type namespace_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"managedByService">> => [string()],
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"namespace">> => list(string()),
-%%   <<"namespaceId">> => string(),
-%%   <<"tableARN">> => string(),
-%%   <<"tableBucketId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type table_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% method_not_allowed_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type method_not_allowed_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_table_replication_status_request() :: #{
-%%   <<"tableArn">> := string()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_table_replication_status_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_table_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"tableArn">> => string(),
+%% create_namespace_request() :: #{
+%%   <<"namespace">> := list(string())
+%% }
+-type create_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_namespace_response() :: #{
+%%   <<"namespace">> => list(string()),
 %%   <<"tableBucketARN">> => string()
 %% }
--type get_table_request() :: #{binary() => any()}.
+-type create_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% iceberg_sort_order() :: #{
-%%   <<"fields">> => list(iceberg_sort_field()),
-%%   <<"orderId">> => [integer()]
+%% create_table_bucket_request() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"name">> := string(),
+%%   <<"storageClassConfiguration">> => storage_class_configuration(),
+%%   <<"tags">> => map()
 %% }
--type iceberg_sort_order() :: #{binary() => any()}.
+-type create_table_bucket_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_table_maintenance_configuration_response() :: #{
-%%   <<"configuration">> => map(),
-%%   <<"tableARN">> => string()
+%% create_table_bucket_response() :: #{
+%%   <<"arn">> => string()
 %% }
--type get_table_maintenance_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_table_metadata_location_response() :: #{
-%%   <<"metadataLocation">> => string(),
-%%   <<"name">> => string(),
-%%   <<"namespace">> => list(string()),
-%%   <<"tableARN">> => string(),
-%%   <<"versionToken">> => string()
-%% }
--type update_table_metadata_location_response() :: #{binary() => any()}.
+-type create_table_bucket_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -404,6 +210,310 @@
 %%   <<"tags">> => map()
 %% }
 -type create_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_table_response() :: #{
+%%   <<"tableARN">> => string(),
+%%   <<"versionToken">> => string()
+%% }
+-type create_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{}
+-type delete_namespace_request() :: #{}.
+
+%% Example:
+%% delete_table_bucket_encryption_request() :: #{}
+-type delete_table_bucket_encryption_request() :: #{}.
+
+%% Example:
+%% delete_table_bucket_metrics_configuration_request() :: #{}
+-type delete_table_bucket_metrics_configuration_request() :: #{}.
+
+%% Example:
+%% delete_table_bucket_policy_request() :: #{}
+-type delete_table_bucket_policy_request() :: #{}.
+
+
+%% Example:
+%% delete_table_bucket_replication_request() :: #{
+%%   <<"tableBucketARN">> := string(),
+%%   <<"versionToken">> => string()
+%% }
+-type delete_table_bucket_replication_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_bucket_request() :: #{}
+-type delete_table_bucket_request() :: #{}.
+
+%% Example:
+%% delete_table_policy_request() :: #{}
+-type delete_table_policy_request() :: #{}.
+
+
+%% Example:
+%% delete_table_replication_request() :: #{
+%%   <<"tableArn">> := string(),
+%%   <<"versionToken">> := [string()]
+%% }
+-type delete_table_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_table_request() :: #{
+%%   <<"versionToken">> => string()
+%% }
+-type delete_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"sseAlgorithm">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_request() :: #{}
+-type get_namespace_request() :: #{}.
+
+
+%% Example:
+%% get_namespace_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"namespace">> => list(string()),
+%%   <<"namespaceId">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
+%% }
+-type get_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_encryption_request() :: #{}
+-type get_table_bucket_encryption_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_encryption_response() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type get_table_bucket_encryption_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_maintenance_configuration_request() :: #{}
+-type get_table_bucket_maintenance_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_maintenance_configuration_response() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"tableBucketARN">> => string()
+%% }
+-type get_table_bucket_maintenance_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_metrics_configuration_request() :: #{}
+-type get_table_bucket_metrics_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_metrics_configuration_response() :: #{
+%%   <<"id">> => [string()],
+%%   <<"tableBucketARN">> => string()
+%% }
+-type get_table_bucket_metrics_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_policy_request() :: #{}
+-type get_table_bucket_policy_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_policy_response() :: #{
+%%   <<"resourcePolicy">> => string()
+%% }
+-type get_table_bucket_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_bucket_replication_request() :: #{
+%%   <<"tableBucketARN">> := string()
+%% }
+-type get_table_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_bucket_replication_response() :: #{
+%%   <<"configuration">> => table_bucket_replication_configuration(),
+%%   <<"versionToken">> => string()
+%% }
+-type get_table_bucket_replication_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_request() :: #{}
+-type get_table_bucket_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type get_table_bucket_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_storage_class_request() :: #{}
+-type get_table_bucket_storage_class_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_storage_class_response() :: #{
+%%   <<"storageClassConfiguration">> => storage_class_configuration()
+%% }
+-type get_table_bucket_storage_class_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_encryption_request() :: #{}
+-type get_table_encryption_request() :: #{}.
+
+
+%% Example:
+%% get_table_encryption_response() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type get_table_encryption_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_maintenance_configuration_request() :: #{}
+-type get_table_maintenance_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_table_maintenance_configuration_response() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"tableARN">> => string()
+%% }
+-type get_table_maintenance_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_maintenance_job_status_request() :: #{}
+-type get_table_maintenance_job_status_request() :: #{}.
+
+
+%% Example:
+%% get_table_maintenance_job_status_response() :: #{
+%%   <<"status">> => map(),
+%%   <<"tableARN">> => string()
+%% }
+-type get_table_maintenance_job_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_metadata_location_request() :: #{}
+-type get_table_metadata_location_request() :: #{}.
+
+
+%% Example:
+%% get_table_metadata_location_response() :: #{
+%%   <<"metadataLocation">> => string(),
+%%   <<"versionToken">> => string(),
+%%   <<"warehouseLocation">> => string()
+%% }
+-type get_table_metadata_location_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_policy_request() :: #{}
+-type get_table_policy_request() :: #{}.
+
+
+%% Example:
+%% get_table_policy_response() :: #{
+%%   <<"resourcePolicy">> => string()
+%% }
+-type get_table_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_record_expiration_configuration_request() :: #{
+%%   <<"tableArn">> := string()
+%% }
+-type get_table_record_expiration_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_record_expiration_configuration_response() :: #{
+%%   <<"configuration">> => table_record_expiration_configuration_value()
+%% }
+-type get_table_record_expiration_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_record_expiration_job_status_request() :: #{
+%%   <<"tableArn">> := string()
+%% }
+-type get_table_record_expiration_job_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_record_expiration_job_status_response() :: #{
+%%   <<"failureMessage">> => [string()],
+%%   <<"lastRunTimestamp">> => [non_neg_integer()],
+%%   <<"metrics">> => table_record_expiration_job_metrics(),
+%%   <<"status">> => list(any())
+%% }
+-type get_table_record_expiration_job_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_replication_request() :: #{
+%%   <<"tableArn">> := string()
+%% }
+-type get_table_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_replication_response() :: #{
+%%   <<"configuration">> => table_replication_configuration(),
+%%   <<"versionToken">> => [string()]
+%% }
+-type get_table_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_replication_status_request() :: #{
+%%   <<"tableArn">> := string()
+%% }
+-type get_table_replication_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_replication_status_response() :: #{
+%%   <<"destinations">> => list(replication_destination_status_model()),
+%%   <<"sourceTableArn">> => string()
+%% }
+-type get_table_replication_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"tableArn">> => string(),
+%%   <<"tableBucketARN">> => string()
+%% }
+-type get_table_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -432,142 +542,20 @@
 %% get_table_storage_class_request() :: #{}
 -type get_table_storage_class_request() :: #{}.
 
-%% Example:
-%% get_table_policy_request() :: #{}
--type get_table_policy_request() :: #{}.
-
 
 %% Example:
-%% get_table_maintenance_job_status_response() :: #{
-%%   <<"status">> => map(),
-%%   <<"tableARN">> => string()
+%% get_table_storage_class_response() :: #{
+%%   <<"storageClassConfiguration">> => storage_class_configuration()
 %% }
--type get_table_maintenance_job_status_response() :: #{binary() => any()}.
+-type get_table_storage_class_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% table_record_expiration_job_metrics() :: #{
-%%   <<"deletedDataFiles">> => [float()],
-%%   <<"deletedRecords">> => [float()],
-%%   <<"removedFilesSize">> => [float()]
+%% iceberg_compaction_settings() :: #{
+%%   <<"strategy">> => list(any()),
+%%   <<"targetFileSizeMB">> => integer()
 %% }
--type table_record_expiration_job_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_record_expiration_job_status_request() :: #{
-%%   <<"tableArn">> := string()
-%% }
--type get_table_record_expiration_job_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_record_expiration_configuration_request() :: #{
-%%   <<"tableArn">> := string()
-%% }
--type get_table_record_expiration_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_table_bucket_metrics_configuration_request() :: #{}
--type put_table_bucket_metrics_configuration_request() :: #{}.
-
-
-%% Example:
-%% replication_destination_status_model() :: #{
-%%   <<"destinationTableArn">> => string(),
-%%   <<"destinationTableBucketArn">> => string(),
-%%   <<"failureMessage">> => [string()],
-%%   <<"lastSuccessfulReplicatedUpdate">> => last_successful_replicated_update(),
-%%   <<"replicationStatus">> => list(any())
-%% }
--type replication_destination_status_model() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_bucket_encryption_request() :: #{}
--type get_table_bucket_encryption_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_table_replication_request() :: #{
-%%   <<"tableArn">> := string(),
-%%   <<"versionToken">> := [string()]
-%% }
--type delete_table_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_replication_rule() :: #{
-%%   <<"destinations">> => list(replication_destination())
-%% }
--type table_replication_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_maintenance_configuration_value() :: #{
-%%   <<"settings">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type table_maintenance_configuration_value() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_maintenance_configuration_request() :: #{}
--type get_table_maintenance_configuration_request() :: #{}.
-
-
-%% Example:
-%% get_namespace_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"namespace">> => list(string()),
-%%   <<"namespaceId">> => string(),
-%%   <<"ownerAccountId">> => string(),
-%%   <<"tableBucketId">> => string()
-%% }
--type get_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_namespace_request() :: #{
-%%   <<"namespace">> := list(string())
-%% }
--type create_namespace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_information() :: #{
-%%   <<"sourceTableARN">> => string()
-%% }
--type replication_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_replication_response() :: #{
-%%   <<"configuration">> => table_replication_configuration(),
-%%   <<"versionToken">> => [string()]
-%% }
--type get_table_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_bucket_replication_response() :: #{
-%%   <<"status">> => [string()],
-%%   <<"versionToken">> => string()
-%% }
--type put_table_bucket_replication_response() :: #{binary() => any()}.
+-type iceberg_compaction_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -582,10 +570,132 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
+%% iceberg_partition_field() :: #{
+%%   <<"fieldId">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"sourceId">> => [integer()],
+%%   <<"transform">> => [string()]
+%% }
+-type iceberg_partition_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_partition_spec() :: #{
+%%   <<"fields">> => list(iceberg_partition_field()),
+%%   <<"specId">> => [integer()]
+%% }
+-type iceberg_partition_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_schema() :: #{
+%%   <<"fields">> => list(schema_field())
+%% }
+-type iceberg_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_schema_v2() :: #{
+%%   <<"fields">> => list(schema_v2_field()),
+%%   <<"identifierFieldIds">> => list([integer()]()),
+%%   <<"schemaId">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type iceberg_schema_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_snapshot_management_settings() :: #{
+%%   <<"maxSnapshotAgeHours">> => integer(),
+%%   <<"minSnapshotsToKeep">> => integer()
+%% }
+-type iceberg_snapshot_management_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_sort_field() :: #{
+%%   <<"direction">> => list(any()),
+%%   <<"nullOrder">> => list(any()),
+%%   <<"sourceId">> => [integer()],
+%%   <<"transform">> => [string()]
+%% }
+-type iceberg_sort_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_sort_order() :: #{
+%%   <<"fields">> => list(iceberg_sort_field()),
+%%   <<"orderId">> => [integer()]
+%% }
+-type iceberg_sort_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_unreferenced_file_removal_settings() :: #{
+%%   <<"nonCurrentDays">> => integer(),
+%%   <<"unreferencedDays">> => integer()
+%% }
+-type iceberg_unreferenced_file_removal_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_successful_replicated_update() :: #{
+%%   <<"metadataLocation">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type last_successful_replicated_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_namespaces_request() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"maxNamespaces">> => integer(),
+%%   <<"prefix">> => [string()]
+%% }
+-type list_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_namespaces_response() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"namespaces">> => list(namespace_summary())
+%% }
+-type list_namespaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_buckets_request() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"maxBuckets">> => integer(),
+%%   <<"prefix">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type list_table_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_buckets_response() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"tableBuckets">> => list(table_bucket_summary())
+%% }
+-type list_table_buckets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"maxTables">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"prefix">> => [string()]
+%% }
+-type list_tables_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -594,6 +704,182 @@
 %%   <<"tables">> => list(table_summary())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_table_information() :: #{
+%%   <<"replicationInformation">> => replication_information()
+%% }
+-type managed_table_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% method_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type method_not_allowed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"namespace">> => list(string()),
+%%   <<"namespaceId">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"tableBucketId">> => string()
+%% }
+-type namespace_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_encryption_request() :: #{
+%%   <<"encryptionConfiguration">> := encryption_configuration()
+%% }
+-type put_table_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_maintenance_configuration_request() :: #{
+%%   <<"value">> := table_bucket_maintenance_configuration_value()
+%% }
+-type put_table_bucket_maintenance_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_table_bucket_metrics_configuration_request() :: #{}
+-type put_table_bucket_metrics_configuration_request() :: #{}.
+
+
+%% Example:
+%% put_table_bucket_policy_request() :: #{
+%%   <<"resourcePolicy">> := string()
+%% }
+-type put_table_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_replication_request() :: #{
+%%   <<"configuration">> := table_bucket_replication_configuration(),
+%%   <<"tableBucketARN">> := string(),
+%%   <<"versionToken">> => string()
+%% }
+-type put_table_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_replication_response() :: #{
+%%   <<"status">> => [string()],
+%%   <<"versionToken">> => string()
+%% }
+-type put_table_bucket_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_storage_class_request() :: #{
+%%   <<"storageClassConfiguration">> := storage_class_configuration()
+%% }
+-type put_table_bucket_storage_class_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_maintenance_configuration_request() :: #{
+%%   <<"value">> := table_maintenance_configuration_value()
+%% }
+-type put_table_maintenance_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_policy_request() :: #{
+%%   <<"resourcePolicy">> := string()
+%% }
+-type put_table_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_record_expiration_configuration_request() :: #{
+%%   <<"tableArn">> := string(),
+%%   <<"value">> := table_record_expiration_configuration_value()
+%% }
+-type put_table_record_expiration_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_replication_request() :: #{
+%%   <<"configuration">> := table_replication_configuration(),
+%%   <<"tableArn">> := string(),
+%%   <<"versionToken">> => [string()]
+%% }
+-type put_table_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_replication_response() :: #{
+%%   <<"status">> => [string()],
+%%   <<"versionToken">> => [string()]
+%% }
+-type put_table_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rename_table_request() :: #{
+%%   <<"newName">> => string(),
+%%   <<"newNamespaceName">> => string(),
+%%   <<"versionToken">> => string()
+%% }
+-type rename_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_destination() :: #{
+%%   <<"destinationTableBucketARN">> => string()
+%% }
+-type replication_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_destination_status_model() :: #{
+%%   <<"destinationTableArn">> => string(),
+%%   <<"destinationTableBucketArn">> => string(),
+%%   <<"failureMessage">> => [string()],
+%%   <<"lastSuccessfulReplicatedUpdate">> => last_successful_replicated_update(),
+%%   <<"replicationStatus">> => list(any())
+%% }
+-type replication_destination_status_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_information() :: #{
+%%   <<"sourceTableARN">> => string()
+%% }
+-type replication_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_field() :: #{
+%%   <<"id">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => [string()]
+%% }
+-type schema_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -608,376 +894,10 @@
 
 
 %% Example:
-%% replication_destination() :: #{
-%%   <<"destinationTableBucketARN">> => string()
-%% }
--type replication_destination() :: #{binary() => any()}.
-
-
-%% Example:
 %% storage_class_configuration() :: #{
 %%   <<"storageClass">> => list(any())
 %% }
 -type storage_class_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_record_expiration_configuration_request() :: #{
-%%   <<"tableArn">> := string(),
-%%   <<"value">> := table_record_expiration_configuration_value()
-%% }
--type put_table_record_expiration_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_table_response() :: #{
-%%   <<"tableARN">> => string(),
-%%   <<"versionToken">> => string()
-%% }
--type create_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_bucket_maintenance_configuration_request() :: #{}
--type get_table_bucket_maintenance_configuration_request() :: #{}.
-
-
-%% Example:
-%% table_bucket_replication_rule() :: #{
-%%   <<"destinations">> => list(replication_destination())
-%% }
--type table_bucket_replication_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_bucket_policy_request() :: #{}
--type delete_table_bucket_policy_request() :: #{}.
-
-%% Example:
-%% get_table_encryption_request() :: #{}
--type get_table_encryption_request() :: #{}.
-
-%% Example:
-%% delete_table_bucket_encryption_request() :: #{}
--type delete_table_bucket_encryption_request() :: #{}.
-
-
-%% Example:
-%% delete_table_bucket_replication_request() :: #{
-%%   <<"tableBucketARN">> := string(),
-%%   <<"versionToken">> => string()
-%% }
--type delete_table_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_bucket_maintenance_configuration_request() :: #{
-%%   <<"value">> := table_bucket_maintenance_configuration_value()
-%% }
--type put_table_bucket_maintenance_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_table_bucket_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type create_table_bucket_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_bucket_storage_class_request() :: #{}
--type get_table_bucket_storage_class_request() :: #{}.
-
-%% Example:
-%% get_table_bucket_request() :: #{}
--type get_table_bucket_request() :: #{}.
-
-
-%% Example:
-%% managed_table_information() :: #{
-%%   <<"replicationInformation">> => replication_information()
-%% }
--type managed_table_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_sort_field() :: #{
-%%   <<"direction">> => list(any()),
-%%   <<"nullOrder">> => list(any()),
-%%   <<"sourceId">> => [integer()],
-%%   <<"transform">> => [string()]
-%% }
--type iceberg_sort_field() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_metadata_location_request() :: #{}
--type get_table_metadata_location_request() :: #{}.
-
-
-%% Example:
-%% create_table_bucket_request() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"name">> := string(),
-%%   <<"storageClassConfiguration">> => storage_class_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_table_bucket_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_maintenance_job_status_request() :: #{}
--type get_table_maintenance_job_status_request() :: #{}.
-
-%% Example:
-%% delete_table_bucket_metrics_configuration_request() :: #{}
--type delete_table_bucket_metrics_configuration_request() :: #{}.
-
-
-%% Example:
-%% iceberg_partition_field() :: #{
-%%   <<"fieldId">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"sourceId">> => [integer()],
-%%   <<"transform">> => [string()]
-%% }
--type iceberg_partition_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_replication_request() :: #{
-%%   <<"tableArn">> := string()
-%% }
--type get_table_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_record_expiration_job_status_response() :: #{
-%%   <<"failureMessage">> => [string()],
-%%   <<"lastRunTimestamp">> => [non_neg_integer()],
-%%   <<"metrics">> => table_record_expiration_job_metrics(),
-%%   <<"status">> => list(any())
-%% }
--type get_table_record_expiration_job_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_unreferenced_file_removal_settings() :: #{
-%%   <<"nonCurrentDays">> => integer(),
-%%   <<"unreferencedDays">> => integer()
-%% }
--type iceberg_unreferenced_file_removal_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_maintenance_job_status_value() :: #{
-%%   <<"failureMessage">> => [string()],
-%%   <<"lastRunTimestamp">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type table_maintenance_job_status_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_replication_response() :: #{
-%%   <<"configuration">> => table_bucket_replication_configuration(),
-%%   <<"versionToken">> => string()
-%% }
--type get_table_bucket_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_replication_request() :: #{
-%%   <<"tableBucketARN">> := string()
-%% }
--type get_table_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_policy_response() :: #{
-%%   <<"resourcePolicy">> => string()
-%% }
--type get_table_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_table_buckets_response() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"tableBuckets">> => list(table_bucket_summary())
-%% }
--type list_table_buckets_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_bucket_metrics_configuration_request() :: #{}
--type get_table_bucket_metrics_configuration_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_field() :: #{
-%%   <<"id">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"required">> => [boolean()],
-%%   <<"type">> => [string()]
-%% }
--type schema_field() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_table_bucket_storage_class_response() :: #{
-%%   <<"storageClassConfiguration">> => storage_class_configuration()
-%% }
--type get_table_bucket_storage_class_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_table_bucket_replication_request() :: #{
-%%   <<"configuration">> := table_bucket_replication_configuration(),
-%%   <<"tableBucketARN">> := string(),
-%%   <<"versionToken">> => string()
-%% }
--type put_table_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_namespace_response() :: #{
-%%   <<"namespace">> => list(string()),
-%%   <<"tableBucketARN">> => string()
-%% }
--type create_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_replication_status_response() :: #{
-%%   <<"destinations">> => list(replication_destination_status_model()),
-%%   <<"sourceTableArn">> => string()
-%% }
--type get_table_replication_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_maintenance_configuration_response() :: #{
-%%   <<"configuration">> => map(),
-%%   <<"tableBucketARN">> => string()
-%% }
--type get_table_bucket_maintenance_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_compaction_settings() :: #{
-%%   <<"strategy">> => list(any()),
-%%   <<"targetFileSizeMB">> => integer()
-%% }
--type iceberg_compaction_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% rename_table_request() :: #{
-%%   <<"newName">> => string(),
-%%   <<"newNamespaceName">> => string(),
-%%   <<"versionToken">> => string()
-%% }
--type rename_table_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_namespaces_response() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"namespaces">> => list(namespace_summary())
-%% }
--type list_namespaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_namespace_request() :: #{}
--type delete_namespace_request() :: #{}.
-
-
-%% Example:
-%% put_table_replication_response() :: #{
-%%   <<"status">> => [string()],
-%%   <<"versionToken">> => [string()]
-%% }
--type put_table_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_metrics_configuration_response() :: #{
-%%   <<"id">> => [string()],
-%%   <<"tableBucketARN">> => string()
-%% }
--type get_table_bucket_metrics_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_metadata_location_response() :: #{
-%%   <<"metadataLocation">> => string(),
-%%   <<"versionToken">> => string(),
-%%   <<"warehouseLocation">> => string()
-%% }
--type get_table_metadata_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% iceberg_schema() :: #{
-%%   <<"fields">> => list(schema_field())
-%% }
--type iceberg_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_record_expiration_configuration_response() :: #{
-%%   <<"configuration">> => table_record_expiration_configuration_value()
-%% }
--type get_table_record_expiration_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_table_bucket_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"ownerAccountId">> => string(),
-%%   <<"tableBucketId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type get_table_bucket_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -989,28 +909,18 @@
 
 
 %% Example:
-%% put_table_policy_request() :: #{
-%%   <<"resourcePolicy">> := string()
+%% table_bucket_replication_configuration() :: #{
+%%   <<"role">> => string(),
+%%   <<"rules">> => list(table_bucket_replication_rule())
 %% }
--type put_table_policy_request() :: #{binary() => any()}.
+-type table_bucket_replication_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% table_record_expiration_settings() :: #{
-%%   <<"days">> => integer()
+%% table_bucket_replication_rule() :: #{
+%%   <<"destinations">> => list(replication_destination())
 %% }
--type table_record_expiration_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_bucket_request() :: #{}
--type delete_table_bucket_request() :: #{}.
-
-
-%% Example:
-%% put_table_bucket_encryption_request() :: #{
-%%   <<"encryptionConfiguration">> := encryption_configuration()
-%% }
--type put_table_bucket_encryption_request() :: #{binary() => any()}.
+-type table_bucket_replication_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1026,24 +936,44 @@
 
 
 %% Example:
-%% get_table_storage_class_response() :: #{
-%%   <<"storageClassConfiguration">> => storage_class_configuration()
+%% table_maintenance_configuration_value() :: #{
+%%   <<"settings">> => list(),
+%%   <<"status">> => list(any())
 %% }
--type get_table_storage_class_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_namespace_request() :: #{}
--type get_namespace_request() :: #{}.
+-type table_maintenance_configuration_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tables_request() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"maxTables">> => integer(),
-%%   <<"namespace">> => string(),
-%%   <<"prefix">> => [string()]
+%% table_maintenance_job_status_value() :: #{
+%%   <<"failureMessage">> => [string()],
+%%   <<"lastRunTimestamp">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
 %% }
--type list_tables_request() :: #{binary() => any()}.
+-type table_maintenance_job_status_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_record_expiration_configuration_value() :: #{
+%%   <<"settings">> => table_record_expiration_settings(),
+%%   <<"status">> => list(any())
+%% }
+-type table_record_expiration_configuration_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_record_expiration_job_metrics() :: #{
+%%   <<"deletedDataFiles">> => [float()],
+%%   <<"deletedRecords">> => [float()],
+%%   <<"removedFilesSize">> => [float()]
+%% }
+-type table_record_expiration_job_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_record_expiration_settings() :: #{
+%%   <<"days">> => integer()
+%% }
+-type table_record_expiration_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1053,408 +983,478 @@
 %% }
 -type table_replication_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% table_replication_rule() :: #{
+%%   <<"destinations">> => list(replication_destination())
+%% }
+-type table_replication_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"managedByService">> => [string()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"namespace">> => list(string()),
+%%   <<"namespaceId">> => string(),
+%%   <<"tableARN">> => string(),
+%%   <<"tableBucketId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type table_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_table_metadata_location_request() :: #{
+%%   <<"metadataLocation">> := string(),
+%%   <<"versionToken">> := string()
+%% }
+-type update_table_metadata_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_table_metadata_location_response() :: #{
+%%   <<"metadataLocation">> => string(),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => list(string()),
+%%   <<"tableARN">> => string(),
+%%   <<"versionToken">> => string()
+%% }
+-type update_table_metadata_location_response() :: #{binary() => any()}.
+
 -type create_namespace_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_table_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_table_bucket_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_namespace_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_bucket_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_bucket_encryption_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_bucket_metrics_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_bucket_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_bucket_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_table_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_table_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_namespace_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_bucket_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_bucket_encryption_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_bucket_maintenance_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_bucket_metrics_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_bucket_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_bucket_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_bucket_storage_class_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_encryption_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_maintenance_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_maintenance_job_status_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_metadata_location_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_record_expiration_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_table_record_expiration_job_status_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_table_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_table_replication_status_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_table_storage_class_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_namespaces_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_table_buckets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_tables_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_bucket_encryption_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_bucket_maintenance_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_bucket_metrics_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_bucket_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_bucket_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_table_bucket_storage_class_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_maintenance_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_table_record_expiration_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type put_table_replication_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type rename_table_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_table_metadata_location_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

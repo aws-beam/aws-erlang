@@ -86,185 +86,12 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_environments_result() :: #{
-%%   <<"environmentIds">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environments_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environments_result() :: #{
-%%   <<"environments">> => list(environment())
-%% }
--type describe_environments_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_membership_request() :: #{
-%%   <<"environmentId">> := string(),
-%%   <<"userArn">> := string()
-%% }
--type delete_environment_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% forbidden_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"className">> => string(),
 %%   <<"code">> => integer(),
 %%   <<"message">> => string()
 %% }
--type forbidden_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_membership_request() :: #{
-%%   <<"environmentId">> := string(),
-%%   <<"permissions">> := list(any()),
-%%   <<"userArn">> := string()
-%% }
--type create_environment_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_memberships_request() :: #{
-%%   <<"environmentId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(list(any())()),
-%%   <<"userArn">> => string()
-%% }
--type describe_environment_memberships_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"className">> => string(),
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"className">> => string(),
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_status_result() :: #{
-%%   <<"message">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type describe_environment_status_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% environment() :: #{
-%%   <<"arn">> => string(),
-%%   <<"connectionType">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lifecycle">> => environment_lifecycle(),
-%%   <<"managedCredentialsStatus">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"ownerArn">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type environment() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"className">> => string(),
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_environment_result() :: #{
-
-%% }
--type update_environment_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_environments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environments_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_membership_result() :: #{
-%%   <<"membership">> => environment_member()
-%% }
--type create_environment_membership_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_request() :: #{
-%%   <<"environmentId">> := string()
-%% }
--type delete_environment_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_ec2_result() :: #{
-%%   <<"environmentId">> => string()
-%% }
--type create_environment_ec2_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_result() :: #{
-
-%% }
--type delete_environment_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"className">> => string(),
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 %% Example:
 %% concurrent_access_exception() :: #{
@@ -275,12 +102,12 @@
 -type concurrent_access_exception() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"className">> => string(),
 %%   <<"code">> => integer(),
 %%   <<"message">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_environment_ec2_request() :: #{
@@ -299,18 +126,59 @@
 -type create_environment_ec2_request() :: #{binary() => any()}.
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"className">> => string(),
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
+%% create_environment_ec2_result() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type create_environment_ec2_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_environment_status_request() :: #{
+%% create_environment_membership_request() :: #{
+%%   <<"environmentId">> := string(),
+%%   <<"permissions">> := list(any()),
+%%   <<"userArn">> := string()
+%% }
+-type create_environment_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_membership_result() :: #{
+%%   <<"membership">> => environment_member()
+%% }
+-type create_environment_membership_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_membership_request() :: #{
+%%   <<"environmentId">> := string(),
+%%   <<"userArn">> := string()
+%% }
+-type delete_environment_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_membership_result() :: #{
+
+%% }
+-type delete_environment_membership_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{
 %%   <<"environmentId">> := string()
 %% }
--type describe_environment_status_request() :: #{binary() => any()}.
+-type delete_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_result() :: #{
+
+%% }
+-type delete_environment_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_memberships_request() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(list(any())()),
+%%   <<"userArn">> => string()
+%% }
+-type describe_environment_memberships_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_environment_memberships_result() :: #{
@@ -320,13 +188,160 @@
 -type describe_environment_memberships_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_environment_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"environmentId">> := string(),
-%%   <<"managedCredentialsAction">> => list(any()),
-%%   <<"name">> => string()
+%% describe_environment_status_request() :: #{
+%%   <<"environmentId">> := string()
 %% }
--type update_environment_request() :: #{binary() => any()}.
+-type describe_environment_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_status_result() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_environment_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environments_request() :: #{
+%%   <<"environmentIds">> := list(string())
+%% }
+-type describe_environments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environments_result() :: #{
+%%   <<"environments">> => list(environment())
+%% }
+-type describe_environments_result() :: #{binary() => any()}.
+
+%% Example:
+%% environment() :: #{
+%%   <<"arn">> => string(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lifecycle">> => environment_lifecycle(),
+%%   <<"managedCredentialsStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"ownerArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% environment_lifecycle() :: #{
+%%   <<"failureResource">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type environment_lifecycle() :: #{binary() => any()}.
+
+%% Example:
+%% environment_member() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"lastAccess">> => non_neg_integer(),
+%%   <<"permissions">> => list(any()),
+%%   <<"userArn">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type environment_member() :: #{binary() => any()}.
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_result() :: #{
+%%   <<"environmentIds">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"className">> => string(),
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_environment_membership_request() :: #{
@@ -343,141 +358,126 @@
 -type update_environment_membership_result() :: #{binary() => any()}.
 
 %% Example:
-%% environment_member() :: #{
-%%   <<"environmentId">> => string(),
-%%   <<"lastAccess">> => non_neg_integer(),
-%%   <<"permissions">> => list(any()),
-%%   <<"userArn">> => string(),
-%%   <<"userId">> => string()
+%% update_environment_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"managedCredentialsAction">> => list(any()),
+%%   <<"name">> => string()
 %% }
--type environment_member() :: #{binary() => any()}.
+-type update_environment_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_environment_membership_result() :: #{
+%% update_environment_result() :: #{
 
 %% }
--type delete_environment_membership_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environments_request() :: #{
-%%   <<"environmentIds">> := list(string())
-%% }
--type describe_environments_request() :: #{binary() => any()}.
-
-%% Example:
-%% environment_lifecycle() :: #{
-%%   <<"failureResource">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type environment_lifecycle() :: #{binary() => any()}.
+-type update_environment_result() :: #{binary() => any()}.
 
 -type create_environment_ec2_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_environment_membership_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_environment_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_environment_membership_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_environment_memberships_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_environment_status_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_environments_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type list_environments_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    concurrent_access_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    concurrent_access_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    concurrent_access_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    concurrent_access_exception() | 
+    bad_request_exception().
 
 -type update_environment_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_environment_membership_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

@@ -54,217 +54,10 @@
 
 
 %% Example:
-%% generate_auth_request_cryptogram_output() :: #{
-%%   <<"AuthRequestCryptogram">> => string(),
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type generate_auth_request_cryptogram_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% as2805_pek_derivation_attributes() :: #{
-%%   <<"SystemTraceAuditNumber">> => string(),
-%%   <<"TransactionAmount">> => string()
-%% }
--type as2805_pek_derivation_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_key_amex() :: #{
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type session_key_amex() :: #{binary() => any()}.
-
-
-%% Example:
-%% amex_card_security_code_version1() :: #{
-%%   <<"CardExpiryDate">> => string()
-%% }
--type amex_card_security_code_version1() :: #{binary() => any()}.
-
-
-%% Example:
-%% asymmetric_encryption_attributes() :: #{
-%%   <<"PaddingType">> => list(any())
-%% }
--type asymmetric_encryption_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% discover_dynamic_card_verification_code() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"CardExpiryDate">> => string(),
-%%   <<"UnpredictableNumber">> => string()
-%% }
--type discover_dynamic_card_verification_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% current_pin_attributes() :: #{
-%%   <<"CurrentEncryptedPinBlock">> => string(),
-%%   <<"CurrentPinPekIdentifier">> => string()
-%% }
--type current_pin_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% translation_pin_data_as2805_format0() :: #{
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type translation_pin_data_as2805_format0() :: #{binary() => any()}.
-
-
-%% Example:
-%% visa_pin_verification_value() :: #{
-%%   <<"EncryptedPinBlock">> => string(),
-%%   <<"PinVerificationKeyIndex">> => integer()
-%% }
--type visa_pin_verification_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_as2805_kek_validation_input() :: #{
-%%   <<"KekValidationType">> := list(),
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"RandomKeySendVariantMask">> := list(any())
-%% }
--type generate_as2805_kek_validation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% ibm3624_pin_offset() :: #{
-%%   <<"DecimalizationTable">> => string(),
-%%   <<"EncryptedPinBlock">> => string(),
-%%   <<"PinValidationData">> => string(),
-%%   <<"PinValidationDataPadCharacter">> => string()
-%% }
--type ibm3624_pin_offset() :: #{binary() => any()}.
-
-
-%% Example:
-%% translation_pin_data_iso_format034() :: #{
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type translation_pin_data_iso_format034() :: #{binary() => any()}.
-
-
-%% Example:
-%% translate_pin_data_input() :: #{
-%%   <<"EncryptedPinBlock">> := string(),
-%%   <<"IncomingAs2805Attributes">> => as2805_pek_derivation_attributes(),
-%%   <<"IncomingDukptAttributes">> => dukpt_derivation_attributes(),
-%%   <<"IncomingKeyIdentifier">> := string(),
-%%   <<"IncomingTranslationAttributes">> := list(),
-%%   <<"IncomingWrappedKey">> => wrapped_key(),
-%%   <<"OutgoingDukptAttributes">> => dukpt_derivation_attributes(),
-%%   <<"OutgoingKeyIdentifier">> := string(),
-%%   <<"OutgoingTranslationAttributes">> := list(),
-%%   <<"OutgoingWrappedKey">> => wrapped_key()
-%% }
--type translate_pin_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% encrypt_data_output() :: #{
-%%   <<"CipherText">> => string(),
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
-%% }
--type encrypt_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_mac_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
-%% }
--type verify_mac_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% visa_attributes() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"AuthorizationRequestKeyIdentifier">> => string(),
-%%   <<"CurrentPinAttributes">> => current_pin_attributes(),
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type visa_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% cryptogram_verification_arpc_method1() :: #{
-%%   <<"AuthResponseCode">> => string()
-%% }
--type cryptogram_verification_arpc_method1() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamic_card_verification_value() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"CardExpiryDate">> => string(),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type dynamic_card_verification_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% wrapped_key() :: #{
-%%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"WrappedKeyMaterial">> => list()
-%% }
--type wrapped_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% card_holder_verification_value() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"UnpredictableNumber">> => string()
-%% }
--type card_holder_verification_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% mac_algorithm_dukpt() :: #{
-%%   <<"DukptDerivationType">> => list(any()),
-%%   <<"DukptKeyVariant">> => list(any()),
-%%   <<"KeySerialNumber">> => string()
-%% }
--type mac_algorithm_dukpt() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_auth_request_cryptogram_input() :: #{
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"MajorKeyDerivationMode">> := list(any()),
-%%   <<"SessionKeyDerivationAttributes">> := list(),
-%%   <<"TransactionData">> := string()
-%% }
--type generate_auth_request_cryptogram_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% outgoing_tr31_key_block() :: #{
-%%   <<"WrappingKeyIdentifier">> => string()
-%% }
--type outgoing_tr31_key_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecdh_derivation_attributes() :: #{
-%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
-%%   <<"KeyAlgorithm">> => list(any()),
-%%   <<"KeyDerivationFunction">> => list(any()),
-%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
-%%   <<"PublicKeyCertificate">> => string(),
-%%   <<"SharedInformation">> => string()
-%% }
--type ecdh_derivation_attributes() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,21 +73,10 @@
 
 
 %% Example:
-%% cryptogram_verification_arpc_method2() :: #{
-%%   <<"CardStatusUpdate">> => string(),
-%%   <<"ProprietaryAuthenticationData">> => string()
+%% amex_card_security_code_version1() :: #{
+%%   <<"CardExpiryDate">> => string()
 %% }
--type cryptogram_verification_arpc_method2() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_card_validation_data_input() :: #{
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"PrimaryAccountNumber">> := string(),
-%%   <<"ValidationData">> := string(),
-%%   <<"VerificationAttributes">> := list()
-%% }
--type verify_card_validation_data_input() :: #{binary() => any()}.
+-type amex_card_security_code_version1() :: #{binary() => any()}.
 
 
 %% Example:
@@ -306,93 +88,35 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"ResourceId">> => [string()]
+%% as2805_pek_derivation_attributes() :: #{
+%%   <<"SystemTraceAuditNumber">> => string(),
+%%   <<"TransactionAmount">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type as2805_pek_derivation_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% encrypt_data_input() :: #{
-%%   <<"EncryptionAttributes">> := list(),
-%%   <<"PlainText">> := string(),
-%%   <<"WrappedKey">> => wrapped_key()
+%% asymmetric_encryption_attributes() :: #{
+%%   <<"PaddingType">> => list(any())
 %% }
--type encrypt_data_input() :: #{binary() => any()}.
+-type asymmetric_encryption_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% generate_as2805_kek_validation_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"RandomKeyReceive">> => string(),
-%%   <<"RandomKeySend">> => string()
-%% }
--type generate_as2805_kek_validation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamic_card_verification_code() :: #{
+%% card_holder_verification_value() :: #{
 %%   <<"ApplicationTransactionCounter">> => string(),
 %%   <<"PanSequenceNumber">> => string(),
-%%   <<"TrackData">> => string(),
 %%   <<"UnpredictableNumber">> => string()
 %% }
--type dynamic_card_verification_code() :: #{binary() => any()}.
+-type card_holder_verification_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% dukpt_attributes() :: #{
-%%   <<"DukptDerivationType">> => list(any()),
-%%   <<"KeySerialNumber">> => string()
+%% card_verification_value1() :: #{
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"ServiceCode">> => string()
 %% }
--type dukpt_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% emv_encryption_attributes() :: #{
-%%   <<"InitializationVector">> => string(),
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"Mode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string(),
-%%   <<"SessionDerivationData">> => string()
-%% }
--type emv_encryption_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_mac_input() :: #{
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"Mac">> := string(),
-%%   <<"MacLength">> => integer(),
-%%   <<"MessageData">> := string(),
-%%   <<"VerificationAttributes">> := list()
-%% }
--type verify_mac_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_pin_data_input() :: #{
-%%   <<"EncryptionKeyIdentifier">> := string(),
-%%   <<"EncryptionWrappedKey">> => wrapped_key(),
-%%   <<"GenerationAttributes">> := list(),
-%%   <<"GenerationKeyIdentifier">> := string(),
-%%   <<"PinBlockFormat">> := list(any()),
-%%   <<"PinDataLength">> => integer(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type generate_pin_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_mac_input() :: #{
-%%   <<"GenerationAttributes">> := list(),
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"MacLength">> => integer(),
-%%   <<"MessageData">> := string()
-%% }
--type generate_mac_input() :: #{binary() => any()}.
+-type card_verification_value1() :: #{binary() => any()}.
 
 
 %% Example:
@@ -403,293 +127,26 @@
 
 
 %% Example:
-%% verify_auth_request_cryptogram_output() :: #{
-%%   <<"AuthResponseValue">> => string(),
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
+%% cryptogram_verification_arpc_method1() :: #{
+%%   <<"AuthResponseCode">> => string()
 %% }
--type verify_auth_request_cryptogram_output() :: #{binary() => any()}.
+-type cryptogram_verification_arpc_method1() :: #{binary() => any()}.
 
 
 %% Example:
-%% visa_pin() :: #{
-%%   <<"PinVerificationKeyIndex">> => integer()
+%% cryptogram_verification_arpc_method2() :: #{
+%%   <<"CardStatusUpdate">> => string(),
+%%   <<"ProprietaryAuthenticationData">> => string()
 %% }
--type visa_pin() :: #{binary() => any()}.
+-type cryptogram_verification_arpc_method2() :: #{binary() => any()}.
 
 
 %% Example:
-%% mac_algorithm_emv() :: #{
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string(),
-%%   <<"SessionKeyDerivationMode">> => list(any()),
-%%   <<"SessionKeyDerivationValue">> => list()
+%% current_pin_attributes() :: #{
+%%   <<"CurrentEncryptedPinBlock">> => string(),
+%%   <<"CurrentPinPekIdentifier">> => string()
 %% }
--type mac_algorithm_emv() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_mac_emv_pin_change_input() :: #{
-%%   <<"DerivationMethodAttributes">> := list(),
-%%   <<"MessageData">> := string(),
-%%   <<"NewEncryptedPinBlock">> := string(),
-%%   <<"NewPinPekIdentifier">> := string(),
-%%   <<"PinBlockFormat">> := list(any()),
-%%   <<"SecureMessagingConfidentialityKeyIdentifier">> := string(),
-%%   <<"SecureMessagingIntegrityKeyIdentifier">> := string()
-%% }
--type generate_mac_emv_pin_change_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% ibm3624_pin_verification() :: #{
-%%   <<"DecimalizationTable">> => string(),
-%%   <<"PinOffset">> => string(),
-%%   <<"PinValidationData">> => string(),
-%%   <<"PinValidationDataPadCharacter">> => string()
-%% }
--type ibm3624_pin_verification() :: #{binary() => any()}.
-
-
-%% Example:
-%% visa_pin_verification() :: #{
-%%   <<"PinVerificationKeyIndex">> => integer(),
-%%   <<"VerificationValue">> => string()
-%% }
--type visa_pin_verification() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_key_emv_common() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type session_key_emv_common() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_mac_emv_pin_change_output() :: #{
-%%   <<"EncryptedPinBlock">> => string(),
-%%   <<"Mac">> => string(),
-%%   <<"NewPinPekArn">> => string(),
-%%   <<"NewPinPekKeyCheckValue">> => string(),
-%%   <<"SecureMessagingConfidentialityKeyArn">> => string(),
-%%   <<"SecureMessagingConfidentialityKeyCheckValue">> => string(),
-%%   <<"SecureMessagingIntegrityKeyArn">> => string(),
-%%   <<"SecureMessagingIntegrityKeyCheckValue">> => string(),
-%%   <<"VisaAmexDerivationOutputs">> => visa_amex_derivation_outputs()
-%% }
--type generate_mac_emv_pin_change_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% master_card_attributes() :: #{
-%%   <<"ApplicationCryptogram">> => string(),
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type master_card_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% emv2000_attributes() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type emv2000_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% ibm3624_natural_pin() :: #{
-%%   <<"DecimalizationTable">> => string(),
-%%   <<"PinValidationData">> => string(),
-%%   <<"PinValidationDataPadCharacter">> => string()
-%% }
--type ibm3624_natural_pin() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_key_emv2000() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type session_key_emv2000() :: #{binary() => any()}.
-
-
-%% Example:
-%% symmetric_encryption_attributes() :: #{
-%%   <<"InitializationVector">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"PaddingType">> => list(any())
-%% }
--type symmetric_encryption_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_card_validation_data_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
-%% }
--type verify_card_validation_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% wrapped_working_key() :: #{
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"WrappedKeyMaterial">> => string(),
-%%   <<"WrappedKeyMaterialFormat">> => string()
-%% }
--type wrapped_working_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% translate_key_material_input() :: #{
-%%   <<"IncomingKeyMaterial">> := list(),
-%%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"OutgoingKeyMaterial">> := list()
-%% }
--type translate_key_material_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% emv_common_attributes() :: #{
-%%   <<"ApplicationCryptogram">> => string(),
-%%   <<"MajorKeyDerivationMode">> => list(any()),
-%%   <<"Mode">> => list(any()),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PinBlockLengthPosition">> => list(any()),
-%%   <<"PinBlockPaddingType">> => list(any()),
-%%   <<"PrimaryAccountNumber">> => string()
-%% }
--type emv_common_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% verification_failed_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => string()
-%% }
--type verification_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_pin_data_input() :: #{
-%%   <<"DukptAttributes">> => dukpt_attributes(),
-%%   <<"EncryptedPinBlock">> := string(),
-%%   <<"EncryptionKeyIdentifier">> := string(),
-%%   <<"EncryptionWrappedKey">> => wrapped_key(),
-%%   <<"PinBlockFormat">> := list(any()),
-%%   <<"PinDataLength">> => integer(),
-%%   <<"PrimaryAccountNumber">> => string(),
-%%   <<"VerificationAttributes">> := list(),
-%%   <<"VerificationKeyIdentifier">> := string()
-%% }
--type verify_pin_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_key_mastercard() :: #{
-%%   <<"ApplicationTransactionCounter">> => string(),
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string(),
-%%   <<"UnpredictableNumber">> => string()
-%% }
--type session_key_mastercard() :: #{binary() => any()}.
-
-
-%% Example:
-%% decrypt_data_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"PlainText">> => string()
-%% }
--type decrypt_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% re_encrypt_data_input() :: #{
-%%   <<"CipherText">> := string(),
-%%   <<"IncomingEncryptionAttributes">> := list(),
-%%   <<"IncomingWrappedKey">> => wrapped_key(),
-%%   <<"OutgoingEncryptionAttributes">> := list(),
-%%   <<"OutgoingKeyIdentifier">> := string(),
-%%   <<"OutgoingWrappedKey">> => wrapped_key()
-%% }
--type re_encrypt_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_card_validation_data_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"ValidationData">> => string()
-%% }
--type generate_card_validation_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% kek_validation_request() :: #{
-%%   <<"DeriveKeyAlgorithm">> => list(any()),
-%%   <<"RandomKeyMaxLength">> => list(any())
-%% }
--type kek_validation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% re_encrypt_data_output() :: #{
-%%   <<"CipherText">> => string(),
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string()
-%% }
--type re_encrypt_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_pin_data_output() :: #{
-%%   <<"EncryptedPinBlock">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyCheckValue">> => string(),
-%%   <<"GenerationKeyArn">> => string(),
-%%   <<"GenerationKeyCheckValue">> => string(),
-%%   <<"PinData">> => list()
-%% }
--type generate_pin_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% card_verification_value1() :: #{
-%%   <<"CardExpiryDate">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type card_verification_value1() :: #{binary() => any()}.
+-type current_pin_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,137 +159,29 @@
 
 
 %% Example:
-%% translate_key_material_output() :: #{
-%%   <<"WrappedKey">> => wrapped_working_key()
-%% }
--type translate_key_material_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_auth_request_cryptogram_input() :: #{
-%%   <<"AuthRequestCryptogram">> := string(),
-%%   <<"AuthResponseAttributes">> => list(),
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"MajorKeyDerivationMode">> := list(any()),
-%%   <<"SessionKeyDerivationAttributes">> := list(),
-%%   <<"TransactionData">> := string()
-%% }
--type verify_auth_request_cryptogram_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% kek_validation_response() :: #{
-%%   <<"RandomKeySend">> => string()
-%% }
--type kek_validation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_card_validation_data_input() :: #{
-%%   <<"GenerationAttributes">> := list(),
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"PrimaryAccountNumber">> := string(),
-%%   <<"ValidationDataLength">> => integer()
-%% }
--type generate_card_validation_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% visa_amex_derivation_outputs() :: #{
-%%   <<"AuthorizationRequestKeyArn">> => string(),
-%%   <<"AuthorizationRequestKeyCheckValue">> => string(),
-%%   <<"CurrentPinPekArn">> => string(),
-%%   <<"CurrentPinPekKeyCheckValue">> => string()
-%% }
--type visa_amex_derivation_outputs() :: #{binary() => any()}.
-
-
-%% Example:
-%% ibm3624_random_pin() :: #{
-%%   <<"DecimalizationTable">> => string(),
-%%   <<"PinValidationData">> => string(),
-%%   <<"PinValidationDataPadCharacter">> => string()
-%% }
--type ibm3624_random_pin() :: #{binary() => any()}.
-
-
-%% Example:
-%% translate_pin_data_output() :: #{
+%% decrypt_data_output() :: #{
 %%   <<"KeyArn">> => string(),
 %%   <<"KeyCheckValue">> => string(),
-%%   <<"PinBlock">> => string()
+%%   <<"PlainText">> => string()
 %% }
--type translate_pin_data_output() :: #{binary() => any()}.
+-type decrypt_data_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% session_key_visa() :: #{
-%%   <<"PanSequenceNumber">> => string(),
-%%   <<"PrimaryAccountNumber">> => string()
+%% discover_dynamic_card_verification_code() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"UnpredictableNumber">> => string()
 %% }
--type session_key_visa() :: #{binary() => any()}.
+-type discover_dynamic_card_verification_code() :: #{binary() => any()}.
 
 
 %% Example:
-%% verify_pin_data_output() :: #{
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyCheckValue">> => string(),
-%%   <<"VerificationKeyArn">> => string(),
-%%   <<"VerificationKeyCheckValue">> => string()
+%% dukpt_attributes() :: #{
+%%   <<"DukptDerivationType">> => list(any()),
+%%   <<"KeySerialNumber">> => string()
 %% }
--type verify_pin_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ibm3624_pin_from_offset() :: #{
-%%   <<"DecimalizationTable">> => string(),
-%%   <<"PinOffset">> => string(),
-%%   <<"PinValidationData">> => string(),
-%%   <<"PinValidationDataPadCharacter">> => string()
-%% }
--type ibm3624_pin_from_offset() :: #{binary() => any()}.
-
-%% Example:
-%% translation_pin_data_iso_format1() :: #{}
--type translation_pin_data_iso_format1() :: #{}.
-
-
-%% Example:
-%% incoming_diffie_hellman_tr31_key_block() :: #{
-%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
-%%   <<"DerivationData">> => list(),
-%%   <<"DeriveKeyAlgorithm">> => list(any()),
-%%   <<"KeyDerivationFunction">> => list(any()),
-%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
-%%   <<"PrivateKeyIdentifier">> => string(),
-%%   <<"PublicKeyCertificate">> => string(),
-%%   <<"WrappedKeyBlock">> => string()
-%% }
--type incoming_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_mac_output() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"Mac">> => string()
-%% }
--type generate_mac_output() :: #{binary() => any()}.
+-type dukpt_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -854,114 +203,774 @@
 %% }
 -type dukpt_encryption_attributes() :: #{binary() => any()}.
 
+
+%% Example:
+%% dynamic_card_verification_code() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"TrackData">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type dynamic_card_verification_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamic_card_verification_value() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"CardExpiryDate">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type dynamic_card_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecdh_derivation_attributes() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PublicKeyCertificate">> => string(),
+%%   <<"SharedInformation">> => string()
+%% }
+-type ecdh_derivation_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv2000_attributes() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type emv2000_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv_common_attributes() :: #{
+%%   <<"ApplicationCryptogram">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PinBlockLengthPosition">> => list(any()),
+%%   <<"PinBlockPaddingType">> => list(any()),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type emv_common_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% emv_encryption_attributes() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"SessionDerivationData">> => string()
+%% }
+-type emv_encryption_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% encrypt_data_input() :: #{
+%%   <<"EncryptionAttributes">> := list(),
+%%   <<"PlainText">> := string(),
+%%   <<"WrappedKey">> => wrapped_key()
+%% }
+-type encrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% encrypt_data_output() :: #{
+%%   <<"CipherText">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type encrypt_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_as2805_kek_validation_input() :: #{
+%%   <<"KekValidationType">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"RandomKeySendVariantMask">> := list(any())
+%% }
+-type generate_as2805_kek_validation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_as2805_kek_validation_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"RandomKeyReceive">> => string(),
+%%   <<"RandomKeySend">> => string()
+%% }
+-type generate_as2805_kek_validation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_auth_request_cryptogram_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MajorKeyDerivationMode">> := list(any()),
+%%   <<"SessionKeyDerivationAttributes">> := list(),
+%%   <<"TransactionData">> := string()
+%% }
+-type generate_auth_request_cryptogram_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_auth_request_cryptogram_output() :: #{
+%%   <<"AuthRequestCryptogram">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type generate_auth_request_cryptogram_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_card_validation_data_input() :: #{
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"ValidationDataLength">> => integer()
+%% }
+-type generate_card_validation_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_card_validation_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"ValidationData">> => string()
+%% }
+-type generate_card_validation_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_emv_pin_change_input() :: #{
+%%   <<"DerivationMethodAttributes">> := list(),
+%%   <<"MessageData">> := string(),
+%%   <<"NewEncryptedPinBlock">> := string(),
+%%   <<"NewPinPekIdentifier">> := string(),
+%%   <<"PinBlockFormat">> := list(any()),
+%%   <<"SecureMessagingConfidentialityKeyIdentifier">> := string(),
+%%   <<"SecureMessagingIntegrityKeyIdentifier">> := string()
+%% }
+-type generate_mac_emv_pin_change_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_emv_pin_change_output() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"Mac">> => string(),
+%%   <<"NewPinPekArn">> => string(),
+%%   <<"NewPinPekKeyCheckValue">> => string(),
+%%   <<"SecureMessagingConfidentialityKeyArn">> => string(),
+%%   <<"SecureMessagingConfidentialityKeyCheckValue">> => string(),
+%%   <<"SecureMessagingIntegrityKeyArn">> => string(),
+%%   <<"SecureMessagingIntegrityKeyCheckValue">> => string(),
+%%   <<"VisaAmexDerivationOutputs">> => visa_amex_derivation_outputs()
+%% }
+-type generate_mac_emv_pin_change_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_input() :: #{
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MacLength">> => integer(),
+%%   <<"MessageData">> := string()
+%% }
+-type generate_mac_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_mac_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"Mac">> => string()
+%% }
+-type generate_mac_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_pin_data_input() :: #{
+%%   <<"EncryptionKeyIdentifier">> := string(),
+%%   <<"EncryptionWrappedKey">> => wrapped_key(),
+%%   <<"GenerationAttributes">> := list(),
+%%   <<"GenerationKeyIdentifier">> := string(),
+%%   <<"PinBlockFormat">> := list(any()),
+%%   <<"PinDataLength">> => integer(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type generate_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_pin_data_output() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyCheckValue">> => string(),
+%%   <<"GenerationKeyArn">> => string(),
+%%   <<"GenerationKeyCheckValue">> => string(),
+%%   <<"PinData">> => list()
+%% }
+-type generate_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_natural_pin() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_natural_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_from_offset() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinOffset">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_from_offset() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_offset() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_offset() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_pin_verification() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinOffset">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_pin_verification() :: #{binary() => any()}.
+
+
+%% Example:
+%% ibm3624_random_pin() :: #{
+%%   <<"DecimalizationTable">> => string(),
+%%   <<"PinValidationData">> => string(),
+%%   <<"PinValidationDataPadCharacter">> => string()
+%% }
+-type ibm3624_random_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% incoming_diffie_hellman_tr31_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"DerivationData">> => list(),
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyIdentifier">> => string(),
+%%   <<"PublicKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string()
+%% }
+-type incoming_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kek_validation_request() :: #{
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"RandomKeyMaxLength">> => list(any())
+%% }
+-type kek_validation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kek_validation_response() :: #{
+%%   <<"RandomKeySend">> => string()
+%% }
+-type kek_validation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mac_algorithm_dukpt() :: #{
+%%   <<"DukptDerivationType">> => list(any()),
+%%   <<"DukptKeyVariant">> => list(any()),
+%%   <<"KeySerialNumber">> => string()
+%% }
+-type mac_algorithm_dukpt() :: #{binary() => any()}.
+
+
+%% Example:
+%% mac_algorithm_emv() :: #{
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"SessionKeyDerivationMode">> => list(any()),
+%%   <<"SessionKeyDerivationValue">> => list()
+%% }
+-type mac_algorithm_emv() :: #{binary() => any()}.
+
+
+%% Example:
+%% master_card_attributes() :: #{
+%%   <<"ApplicationCryptogram">> => string(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type master_card_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% outgoing_tr31_key_block() :: #{
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type outgoing_tr31_key_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% re_encrypt_data_input() :: #{
+%%   <<"CipherText">> := string(),
+%%   <<"IncomingEncryptionAttributes">> := list(),
+%%   <<"IncomingWrappedKey">> => wrapped_key(),
+%%   <<"OutgoingEncryptionAttributes">> := list(),
+%%   <<"OutgoingKeyIdentifier">> := string(),
+%%   <<"OutgoingWrappedKey">> => wrapped_key()
+%% }
+-type re_encrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% re_encrypt_data_output() :: #{
+%%   <<"CipherText">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type re_encrypt_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"ResourceId">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_amex() :: #{
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_amex() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_emv2000() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_emv2000() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_emv_common() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_emv_common() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_mastercard() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"UnpredictableNumber">> => string()
+%% }
+-type session_key_mastercard() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_union_pay() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_union_pay() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_key_visa() :: #{
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type session_key_visa() :: #{binary() => any()}.
+
+
+%% Example:
+%% symmetric_encryption_attributes() :: #{
+%%   <<"InitializationVector">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"PaddingType">> => list(any())
+%% }
+-type symmetric_encryption_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_key_material_input() :: #{
+%%   <<"IncomingKeyMaterial">> := list(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"OutgoingKeyMaterial">> := list()
+%% }
+-type translate_key_material_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_key_material_output() :: #{
+%%   <<"WrappedKey">> => wrapped_working_key()
+%% }
+-type translate_key_material_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_pin_data_input() :: #{
+%%   <<"EncryptedPinBlock">> := string(),
+%%   <<"IncomingAs2805Attributes">> => as2805_pek_derivation_attributes(),
+%%   <<"IncomingDukptAttributes">> => dukpt_derivation_attributes(),
+%%   <<"IncomingKeyIdentifier">> := string(),
+%%   <<"IncomingTranslationAttributes">> := list(),
+%%   <<"IncomingWrappedKey">> => wrapped_key(),
+%%   <<"OutgoingDukptAttributes">> => dukpt_derivation_attributes(),
+%%   <<"OutgoingKeyIdentifier">> := string(),
+%%   <<"OutgoingTranslationAttributes">> := list(),
+%%   <<"OutgoingWrappedKey">> => wrapped_key()
+%% }
+-type translate_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_pin_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"PinBlock">> => string()
+%% }
+-type translate_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% translation_pin_data_as2805_format0() :: #{
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type translation_pin_data_as2805_format0() :: #{binary() => any()}.
+
+
+%% Example:
+%% translation_pin_data_iso_format034() :: #{
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type translation_pin_data_iso_format034() :: #{binary() => any()}.
+
+%% Example:
+%% translation_pin_data_iso_format1() :: #{}
+-type translation_pin_data_iso_format1() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_failed_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => string()
+%% }
+-type verification_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_auth_request_cryptogram_input() :: #{
+%%   <<"AuthRequestCryptogram">> := string(),
+%%   <<"AuthResponseAttributes">> => list(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"MajorKeyDerivationMode">> := list(any()),
+%%   <<"SessionKeyDerivationAttributes">> := list(),
+%%   <<"TransactionData">> := string()
+%% }
+-type verify_auth_request_cryptogram_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_auth_request_cryptogram_output() :: #{
+%%   <<"AuthResponseValue">> => string(),
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_auth_request_cryptogram_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_card_validation_data_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"ValidationData">> := string(),
+%%   <<"VerificationAttributes">> := list()
+%% }
+-type verify_card_validation_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_card_validation_data_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_card_validation_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_mac_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"Mac">> := string(),
+%%   <<"MacLength">> => integer(),
+%%   <<"MessageData">> := string(),
+%%   <<"VerificationAttributes">> := list()
+%% }
+-type verify_mac_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_mac_output() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyCheckValue">> => string()
+%% }
+-type verify_mac_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_pin_data_input() :: #{
+%%   <<"DukptAttributes">> => dukpt_attributes(),
+%%   <<"EncryptedPinBlock">> := string(),
+%%   <<"EncryptionKeyIdentifier">> := string(),
+%%   <<"EncryptionWrappedKey">> => wrapped_key(),
+%%   <<"PinBlockFormat">> := list(any()),
+%%   <<"PinDataLength">> => integer(),
+%%   <<"PrimaryAccountNumber">> => string(),
+%%   <<"VerificationAttributes">> := list(),
+%%   <<"VerificationKeyIdentifier">> := string()
+%% }
+-type verify_pin_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_pin_data_output() :: #{
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyCheckValue">> => string(),
+%%   <<"VerificationKeyArn">> => string(),
+%%   <<"VerificationKeyCheckValue">> => string()
+%% }
+-type verify_pin_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_amex_derivation_outputs() :: #{
+%%   <<"AuthorizationRequestKeyArn">> => string(),
+%%   <<"AuthorizationRequestKeyCheckValue">> => string(),
+%%   <<"CurrentPinPekArn">> => string(),
+%%   <<"CurrentPinPekKeyCheckValue">> => string()
+%% }
+-type visa_amex_derivation_outputs() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_attributes() :: #{
+%%   <<"ApplicationTransactionCounter">> => string(),
+%%   <<"AuthorizationRequestKeyIdentifier">> => string(),
+%%   <<"CurrentPinAttributes">> => current_pin_attributes(),
+%%   <<"MajorKeyDerivationMode">> => list(any()),
+%%   <<"PanSequenceNumber">> => string(),
+%%   <<"PrimaryAccountNumber">> => string()
+%% }
+-type visa_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin() :: #{
+%%   <<"PinVerificationKeyIndex">> => integer()
+%% }
+-type visa_pin() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin_verification() :: #{
+%%   <<"PinVerificationKeyIndex">> => integer(),
+%%   <<"VerificationValue">> => string()
+%% }
+-type visa_pin_verification() :: #{binary() => any()}.
+
+
+%% Example:
+%% visa_pin_verification_value() :: #{
+%%   <<"EncryptedPinBlock">> => string(),
+%%   <<"PinVerificationKeyIndex">> => integer()
+%% }
+-type visa_pin_verification_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% wrapped_key() :: #{
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"WrappedKeyMaterial">> => list()
+%% }
+-type wrapped_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% wrapped_working_key() :: #{
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"WrappedKeyMaterial">> => string(),
+%%   <<"WrappedKeyMaterialFormat">> => string()
+%% }
+-type wrapped_working_key() :: #{binary() => any()}.
+
 -type decrypt_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type encrypt_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_as2805_kek_validation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_auth_request_cryptogram_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_card_validation_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_mac_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_mac_emv_pin_change_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type generate_pin_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type re_encrypt_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type translate_key_material_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type translate_pin_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type verify_auth_request_cryptogram_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     verification_failed_exception() | 
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type verify_card_validation_data_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     verification_failed_exception() | 
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type verify_mac_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     verification_failed_exception() | 
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type verify_pin_data_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     verification_failed_exception() | 
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

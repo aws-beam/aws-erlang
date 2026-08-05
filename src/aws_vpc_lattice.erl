@@ -192,12 +192,55 @@
 
 
 %% Example:
-%% http_match() :: #{
-%%   <<"headerMatches">> => list(header_match()),
-%%   <<"method">> => string(),
-%%   <<"pathMatch">> => path_match()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type http_match() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_log_subscription_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"serviceNetworkLogType">> => string()
+%% }
+-type access_log_subscription_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% arn_resource() :: #{
+%%   <<"arn">> => string()
+%% }
+-type arn_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_rule_request() :: #{
+%%   <<"rules">> := list(rule_update())
+%% }
+-type batch_update_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_rule_response() :: #{
+%%   <<"successful">> => list(rule_update_success()),
+%%   <<"unsuccessful">> => list(rule_update_failure())
+%% }
+-type batch_update_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,40 +255,217 @@
 
 
 %% Example:
-%% update_service_network_vpc_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"id">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string()
+%% create_access_log_subscription_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"destinationArn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceId">> := string(),
+%%   <<"serviceNetworkLogType">> => string()
 %% }
--type update_service_network_vpc_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_log_subscription_response() :: #{}
--type delete_access_log_subscription_response() :: #{}.
+-type create_access_log_subscription_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% rule_update_success() :: #{
+%% create_listener_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"defaultAction">> := list(),
+%%   <<"name">> := string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_listener_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_listener_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"defaultAction">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceId">> => string()
+%% }
+-type create_listener_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_configuration_request() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationIdentifier">> => string(),
+%%   <<"groupDomain">> => string(),
+%%   <<"name">> := string(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupIdentifier">> => string(),
+%%   <<"resourceGatewayIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_resource_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_configuration_response() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationArn">> => string(),
+%%   <<"domainVerificationId">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"groupDomain">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"protocol">> => string(),
+%%   <<"resourceConfigurationDefinition">> => list(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type create_resource_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_gateway_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type create_resource_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type create_resource_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_request() :: #{
+%%   <<"action">> := list(),
+%%   <<"clientToken">> => string(),
+%%   <<"match">> := list(),
+%%   <<"name">> := string(),
+%%   <<"priority">> := integer(),
+%%   <<"tags">> => map()
+%% }
+-type create_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_response() :: #{
 %%   <<"action">> => list(),
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
-%%   <<"isDefault">> => boolean(),
 %%   <<"match">> => list(),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer()
 %% }
--type rule_update_success() :: #{binary() => any()}.
+-type create_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_domain_verification_request() :: #{
+%% create_service_network_request() :: #{
+%%   <<"authType">> => string(),
 %%   <<"clientToken">> => string(),
-%%   <<"domainName">> := string(),
+%%   <<"name">> := string(),
+%%   <<"sharingConfig">> => sharing_config(),
 %%   <<"tags">> => map()
 %% }
--type start_domain_verification_request() :: #{binary() => any()}.
+-type create_service_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_resource_association_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"resourceConfigurationIdentifier">> := string(),
+%%   <<"serviceNetworkIdentifier">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_service_network_resource_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_resource_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"status">> => string()
+%% }
+-type create_service_network_resource_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sharingConfig">> => sharing_config()
+%% }
+-type create_service_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_service_association_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"serviceIdentifier">> := string(),
+%%   <<"serviceNetworkIdentifier">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_service_network_service_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_service_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_service_network_service_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_network_vpc_association_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"serviceNetworkIdentifier">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> := string()
+%% }
+-type create_service_network_vpc_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -259,6 +479,353 @@
 %%   <<"status">> => string()
 %% }
 -type create_service_network_vpc_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"authType">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_target_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"config">> => target_group_config(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_target_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_target_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"config">> => target_group_config(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type create_target_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_log_subscription_request() :: #{}
+-type delete_access_log_subscription_request() :: #{}.
+
+%% Example:
+%% delete_access_log_subscription_response() :: #{}
+-type delete_access_log_subscription_response() :: #{}.
+
+%% Example:
+%% delete_auth_policy_request() :: #{}
+-type delete_auth_policy_request() :: #{}.
+
+%% Example:
+%% delete_auth_policy_response() :: #{}
+-type delete_auth_policy_response() :: #{}.
+
+%% Example:
+%% delete_domain_verification_request() :: #{}
+-type delete_domain_verification_request() :: #{}.
+
+%% Example:
+%% delete_domain_verification_response() :: #{}
+-type delete_domain_verification_response() :: #{}.
+
+%% Example:
+%% delete_listener_request() :: #{}
+-type delete_listener_request() :: #{}.
+
+%% Example:
+%% delete_listener_response() :: #{}
+-type delete_listener_response() :: #{}.
+
+%% Example:
+%% delete_resource_configuration_request() :: #{}
+-type delete_resource_configuration_request() :: #{}.
+
+%% Example:
+%% delete_resource_configuration_response() :: #{}
+-type delete_resource_configuration_response() :: #{}.
+
+%% Example:
+%% delete_resource_endpoint_association_request() :: #{}
+-type delete_resource_endpoint_association_request() :: #{}.
+
+
+%% Example:
+%% delete_resource_endpoint_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type delete_resource_endpoint_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_gateway_request() :: #{}
+-type delete_resource_gateway_request() :: #{}.
+
+
+%% Example:
+%% delete_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_resource_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+%% Example:
+%% delete_rule_request() :: #{}
+-type delete_rule_request() :: #{}.
+
+%% Example:
+%% delete_rule_response() :: #{}
+-type delete_rule_response() :: #{}.
+
+%% Example:
+%% delete_service_network_request() :: #{}
+-type delete_service_network_request() :: #{}.
+
+%% Example:
+%% delete_service_network_resource_association_request() :: #{}
+-type delete_service_network_resource_association_request() :: #{}.
+
+
+%% Example:
+%% delete_service_network_resource_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_service_network_resource_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_network_response() :: #{}
+-type delete_service_network_response() :: #{}.
+
+%% Example:
+%% delete_service_network_service_association_request() :: #{}
+-type delete_service_network_service_association_request() :: #{}.
+
+
+%% Example:
+%% delete_service_network_service_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_service_network_service_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_network_vpc_association_request() :: #{}
+-type delete_service_network_vpc_association_request() :: #{}.
+
+
+%% Example:
+%% delete_service_network_vpc_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_service_network_vpc_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{}
+-type delete_service_request() :: #{}.
+
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_target_group_request() :: #{}
+-type delete_target_group_request() :: #{}.
+
+
+%% Example:
+%% delete_target_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_target_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_targets_request() :: #{
+%%   <<"targets">> := list(target())
+%% }
+-type deregister_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_targets_response() :: #{
+%%   <<"successful">> => list(target()),
+%%   <<"unsuccessful">> => list(target_failure())
+%% }
+-type deregister_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_entry() :: #{
+%%   <<"domainName">> => [string()],
+%%   <<"hostedZoneId">> => [string()]
+%% }
+-type dns_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_options() :: #{
+%%   <<"privateDnsPreference">> => string(),
+%%   <<"privateDnsSpecifiedDomains">> => list(string())
+%% }
+-type dns_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_resource() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"ipAddressType">> => string()
+%% }
+-type dns_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_verification_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastVerifiedTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"txtMethodConfig">> => txt_method_config()
+%% }
+-type domain_verification_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixed_response_action() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type fixed_response_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% forward_action() :: #{
+%%   <<"targetGroups">> => list(weighted_target_group())
+%% }
+-type forward_action() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_log_subscription_request() :: #{}
+-type get_access_log_subscription_request() :: #{}.
+
+
+%% Example:
+%% get_access_log_subscription_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"destinationArn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"lastUpdatedAt">> := non_neg_integer(),
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceId">> := string(),
+%%   <<"serviceNetworkLogType">> => string()
+%% }
+-type get_access_log_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_auth_policy_request() :: #{}
+-type get_auth_policy_request() :: #{}.
+
+
+%% Example:
+%% get_auth_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"policy">> => string(),
+%%   <<"state">> => string()
+%% }
+-type get_auth_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_verification_request() :: #{}
+-type get_domain_verification_request() :: #{}.
+
+
+%% Example:
+%% get_domain_verification_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastVerifiedTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"txtMethodConfig">> => txt_method_config()
+%% }
+-type get_domain_verification_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_listener_request() :: #{}
+-type get_listener_request() :: #{}.
+
+
+%% Example:
+%% get_listener_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultAction">> => list(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceId">> => string()
+%% }
+-type get_listener_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_resource_configuration_request() :: #{}
@@ -290,111 +857,9 @@
 %% }
 -type get_resource_configuration_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% create_rule_request() :: #{
-%%   <<"action">> := list(),
-%%   <<"clientToken">> => string(),
-%%   <<"match">> := list(),
-%%   <<"name">> := string(),
-%%   <<"priority">> := integer(),
-%%   <<"tags">> => map()
-%% }
--type create_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_target_group_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"config">> => target_group_config(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string()
-%% }
--type create_target_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_network_resource_association_request() :: #{}
--type get_service_network_resource_association_request() :: #{}.
-
-
-%% Example:
-%% batch_update_rule_request() :: #{
-%%   <<"rules">> := list(rule_update())
-%% }
--type batch_update_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_target_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"config">> => target_group_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"failureCode">> => [string()],
-%%   <<"failureMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"serviceArns">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type get_target_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_resource_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"id">> => string(),
-%%   <<"privateDnsEnabled">> => boolean(),
-%%   <<"status">> => string()
-%% }
--type create_service_network_resource_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
-
-%% Example:
-%% delete_resource_gateway_request() :: #{}
--type delete_resource_gateway_request() :: #{}.
-
-
-%% Example:
-%% deregister_targets_request() :: #{
-%%   <<"targets">> := list(target())
-%% }
--type deregister_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_listener_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"defaultAction">> => list(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceId">> => string()
-%% }
--type create_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_configuration_response() :: #{}
--type delete_resource_configuration_response() :: #{}.
-
-%% Example:
-%% delete_service_network_request() :: #{}
--type delete_service_network_request() :: #{}.
+%% get_resource_gateway_request() :: #{}
+-type get_resource_gateway_request() :: #{}.
 
 
 %% Example:
@@ -416,217 +881,9 @@
 %% }
 -type get_resource_gateway_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_service_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDomainName">> => string(),
-%%   <<"dnsEntry">> => dns_entry(),
-%%   <<"failureCode">> => string(),
-%%   <<"failureMessage">> => string(),
-%%   <<"id">> => string(),
-%%   <<"idleTimeoutSeconds">> => integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type get_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forward_action() :: #{
-%%   <<"targetGroups">> => list(weighted_target_group())
-%% }
--type forward_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_request() :: #{
-%%   <<"authType">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sharingConfig">> => sharing_config(),
-%%   <<"tags">> => map()
-%% }
--type create_service_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_network_service_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"dnsEntry">> => dns_entry(),
-%%   <<"id">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceId">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"serviceNetworkArn">> => string(),
-%%   <<"serviceNetworkId">> => string(),
-%%   <<"serviceNetworkName">> => string(),
-%%   <<"status">> => string()
-%% }
--type service_network_service_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% arn_resource() :: #{
-%%   <<"arn">> => string()
-%% }
--type arn_resource() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_service_network_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"numberOfAssociatedServices">> => [float()],
-%%   <<"numberOfAssociatedVPCs">> => [float()],
-%%   <<"sharingConfig">> => sharing_config()
-%% }
--type get_service_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_network_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_service_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_configuration_response() :: #{
-%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
-%%   <<"resourceConfigurationDefinition">> => list(),
-%%   <<"resourceConfigurationGroupId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type update_resource_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_endpoint_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"resourceConfigurationArn">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"vpcEndpointId">> => string()
-%% }
--type delete_resource_endpoint_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_service_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"dnsEntry">> => dns_entry(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
-%% }
--type create_service_network_service_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sharingConfig">> => sharing_config()
-%% }
--type create_service_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_vpc_endpoint_associations_response() :: #{
-%%   <<"items">> => list(service_network_endpoint_association()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_network_vpc_endpoint_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_vpc_associations_response() :: #{
-%%   <<"items">> := list(service_network_vpc_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_network_vpc_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_log_subscription_request() :: #{}
--type get_access_log_subscription_request() :: #{}.
-
-
-%% Example:
-%% ip_resource() :: #{
-%%   <<"ipAddress">> => string()
-%% }
--type ip_resource() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_network_request() :: #{}
--type get_service_network_request() :: #{}.
-
-
-%% Example:
-%% service_network_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"numberOfAssociatedResourceConfigurations">> => [float()],
-%%   <<"numberOfAssociatedServices">> => [float()],
-%%   <<"numberOfAssociatedVPCs">> => [float()]
-%% }
--type service_network_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_gateway_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"ipv4AddressesPerEni">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"resourceConfigDnsResolution">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type create_resource_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rule_request() :: #{
-%%   <<"action">> => list(),
-%%   <<"match">> => list(),
-%%   <<"priority">> => integer()
-%% }
--type update_rule_request() :: #{binary() => any()}.
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -636,488 +893,8 @@
 -type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_auth_policy_response() :: #{}
--type delete_auth_policy_response() :: #{}.
-
-
-%% Example:
-%% get_service_network_vpc_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"dnsOptions">> => dns_options(),
-%%   <<"failureCode">> => [string()],
-%%   <<"failureMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"privateDnsEnabled">> => boolean(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"serviceNetworkArn">> => string(),
-%%   <<"serviceNetworkId">> => string(),
-%%   <<"serviceNetworkName">> => string(),
-%%   <<"status">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type get_service_network_vpc_association_response() :: #{binary() => any()}.
-
-%% Example:
 %% get_rule_request() :: #{}
 -type get_rule_request() :: #{}.
-
-
-%% Example:
-%% list_access_log_subscriptions_response() :: #{
-%%   <<"items">> := list(access_log_subscription_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_log_subscriptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_verifications_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_verifications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_log_subscription_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"destinationArn">> := string(),
-%%   <<"id">> := string(),
-%%   <<"resourceArn">> := string(),
-%%   <<"resourceId">> := string(),
-%%   <<"serviceNetworkLogType">> => string()
-%% }
--type create_access_log_subscription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_group_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"lambdaEventStructureVersion">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"serviceArns">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"type">> => string(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type target_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_service_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceIdentifier">> => string(),
-%%   <<"serviceNetworkIdentifier">> => string()
-%% }
--type list_service_network_service_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_request() :: #{}
--type get_service_request() :: #{}.
-
-
-%% Example:
-%% update_resource_gateway_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type update_resource_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_listener_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"defaultAction">> => list(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceId">> => string()
-%% }
--type get_listener_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_auth_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"policy">> => string(),
-%%   <<"state">> => string()
-%% }
--type get_auth_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_gateway_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"ipv4AddressesPerEni">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigDnsResolution">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type create_resource_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_target_group_request() :: #{
-%%   <<"healthCheck">> := health_check_config()
-%% }
--type update_target_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_request() :: #{}
--type delete_rule_request() :: #{}.
-
-
-%% Example:
-%% update_target_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"config">> => target_group_config(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type update_target_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_response() :: #{}
--type delete_rule_response() :: #{}.
-
-
-%% Example:
-%% resource_configuration_summary() :: #{
-%%   <<"amazonManaged">> => boolean(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDomainName">> => string(),
-%%   <<"domainVerificationId">> => string(),
-%%   <<"groupDomain">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationGroupId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type resource_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_network_vpc_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"dnsOptions">> => dns_options(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"privateDnsEnabled">> => boolean(),
-%%   <<"serviceNetworkArn">> => string(),
-%%   <<"serviceNetworkId">> => string(),
-%%   <<"serviceNetworkName">> => string(),
-%%   <<"status">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type service_network_vpc_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_gateway_request() :: #{}
--type get_resource_gateway_request() :: #{}.
-
-
-%% Example:
-%% target() :: #{
-%%   <<"id">> => [string()],
-%%   <<"port">> => integer()
-%% }
--type target() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_network_endpoint_association() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => [string()],
-%%   <<"serviceNetworkArn">> => string(),
-%%   <<"state">> => [string()],
-%%   <<"vpcEndpointId">> => [string()],
-%%   <<"vpcEndpointOwnerId">> => [string()],
-%%   <<"vpcId">> => [string()]
-%% }
--type service_network_endpoint_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_networks_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_networks_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_network_resource_association_request() :: #{}
--type delete_service_network_resource_association_request() :: #{}.
-
-
-%% Example:
-%% update_rule_response() :: #{
-%%   <<"action">> => list(),
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"isDefault">> => boolean(),
-%%   <<"match">> => list(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer()
-%% }
--type update_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_endpoint_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceConfigurationIdentifier">> := string(),
-%%   <<"resourceEndpointAssociationIdentifier">> => string(),
-%%   <<"vpcEndpointId">> => string(),
-%%   <<"vpcEndpointOwner">> => string()
-%% }
--type list_resource_endpoint_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_gateway_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"ipv4AddressesPerEni">> => integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigDnsResolution">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type resource_gateway_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_listeners_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_listeners_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_resource() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"ipAddressType">> => string()
-%% }
--type dns_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"items">> => list(service_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_services_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_target_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"config">> => target_group_config(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type create_target_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_summary() :: #{
-%%   <<"id">> => [string()],
-%%   <<"port">> => integer(),
-%%   <<"reasonCode">> => [string()],
-%%   <<"status">> => string()
-%% }
--type target_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% weighted_target_group() :: #{
-%%   <<"targetGroupIdentifier">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type weighted_target_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDomainName">> => string(),
-%%   <<"dnsEntry">> => dns_entry(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type service_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_gateways_response() :: #{
-%%   <<"items">> => list(resource_gateway_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_gateways_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_network_vpc_association_request() :: #{}
--type delete_service_network_vpc_association_request() :: #{}.
-
-
-%% Example:
-%% create_service_request() :: #{
-%%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"idleTimeoutSeconds">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_verifications_response() :: #{
-%%   <<"items">> => list(domain_verification_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_verifications_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_configuration_request() :: #{}
--type delete_resource_configuration_request() :: #{}.
-
-
-%% Example:
-%% path_match() :: #{
-%%   <<"caseSensitive">> => boolean(),
-%%   <<"match">> => list()
-%% }
--type path_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_target_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_target_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% header_match() :: #{
-%%   <<"caseSensitive">> => boolean(),
-%%   <<"match">> => list(),
-%%   <<"name">> => string()
-%% }
--type header_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auth_policy_request() :: #{}
--type delete_auth_policy_request() :: #{}.
 
 
 %% Example:
@@ -1134,522 +911,13 @@
 %% }
 -type get_rule_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_service_network_request() :: #{}
+-type get_service_network_request() :: #{}.
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_network_service_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_service_network_service_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_rule_response() :: #{
-%%   <<"action">> => list(),
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"match">> => list(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer()
-%% }
--type create_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_network_response() :: #{}
--type delete_service_network_response() :: #{}.
-
-
-%% Example:
-%% list_service_network_resource_associations_response() :: #{
-%%   <<"items">> => list(service_network_resource_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_network_resource_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_auth_policy_request() :: #{
-%%   <<"policy">> := string()
-%% }
--type put_auth_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% delete_service_network_vpc_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_service_network_vpc_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_listeners_response() :: #{
-%%   <<"items">> := list(listener_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_listeners_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_groups_response() :: #{
-%%   <<"items">> => list(target_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_target_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_log_subscription_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"destinationArn">> := string(),
-%%   <<"id">> := string(),
-%%   <<"resourceArn">> := string(),
-%%   <<"resourceId">> := string()
-%% }
--type update_access_log_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_log_subscription_request() :: #{}
--type delete_access_log_subscription_request() :: #{}.
-
-
-%% Example:
-%% update_service_request() :: #{
-%%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"idleTimeoutSeconds">> => integer()
-%% }
--type update_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_configurations_response() :: #{
-%%   <<"items">> => list(resource_configuration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_target_group_request() :: #{}
--type delete_target_group_request() :: #{}.
-
-
-%% Example:
-%% rule_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"isDefault">> => boolean(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer()
-%% }
--type rule_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_configurations_request() :: #{
-%%   <<"domainVerificationIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceConfigurationGroupIdentifier">> => string(),
-%%   <<"resourceGatewayIdentifier">> => string()
-%% }
--type list_resource_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_targets_request() :: #{
-%%   <<"targets">> := list(target())
-%% }
--type register_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_verification_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"domainName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastVerifiedTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"txtMethodConfig">> => txt_method_config()
-%% }
--type domain_verification_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_resource_association_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"privateDnsEnabled">> => boolean(),
-%%   <<"resourceConfigurationIdentifier">> := string(),
-%%   <<"serviceNetworkIdentifier">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_service_network_resource_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_targets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targets">> => list(target())
-%% }
--type list_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_log_subscription_request() :: #{
-%%   <<"destinationArn">> := string()
-%% }
--type update_access_log_subscription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_log_subscription_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destinationArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"serviceNetworkLogType">> => string()
-%% }
--type access_log_subscription_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_verification_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"domainName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastVerifiedTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"txtMethodConfig">> => txt_method_config()
-%% }
--type get_domain_verification_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_network_service_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"dnsEntry">> => dns_entry(),
-%%   <<"failureCode">> => [string()],
-%%   <<"failureMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceId">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"serviceNetworkArn">> => string(),
-%%   <<"serviceNetworkId">> => string(),
-%%   <<"serviceNetworkName">> => string(),
-%%   <<"status">> => string()
-%% }
--type get_service_network_service_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"policy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_verification_request() :: #{}
--type delete_domain_verification_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_verification_request() :: #{}
--type get_domain_verification_request() :: #{}.
-
-
-%% Example:
-%% update_listener_request() :: #{
-%%   <<"defaultAction">> := list()
-%% }
--type update_listener_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_listener_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"defaultAction">> => list(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceId">> => string()
-%% }
--type update_listener_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_response() :: #{
-%%   <<"items">> := list(rule_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_gateway_request() :: #{
-%%   <<"securityGroupIds">> => list(string())
-%% }
--type update_resource_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetGroupType">> => string(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type list_target_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string()
-%% }
--type listener_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% delete_domain_verification_response() :: #{}
--type delete_domain_verification_response() :: #{}.
-
-
-%% Example:
-%% list_resource_endpoint_associations_response() :: #{
-%%   <<"items">> => list(resource_endpoint_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_endpoint_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% start_domain_verification_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"txtMethodConfig">> => txt_method_config()
-%% }
--type start_domain_verification_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_request() :: #{}
--type delete_service_request() :: #{}.
-
-
-%% Example:
-%% health_check_config() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"healthCheckIntervalSeconds">> => integer(),
-%%   <<"healthCheckTimeoutSeconds">> => integer(),
-%%   <<"healthyThresholdCount">> => integer(),
-%%   <<"matcher">> => list(),
-%%   <<"path">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"protocolVersion">> => string(),
-%%   <<"unhealthyThresholdCount">> => integer()
-%% }
--type health_check_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_network_resource_association_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_service_network_resource_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_network_service_association_request() :: #{}
--type delete_service_network_service_association_request() :: #{}.
-
-
-%% Example:
-%% fixed_response_action() :: #{
-%%   <<"statusCode">> => integer()
-%% }
--type fixed_response_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_configuration_request() :: #{
-%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
-%%   <<"clientToken">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"domainVerificationIdentifier">> => string(),
-%%   <<"groupDomain">> => string(),
-%%   <<"name">> := string(),
-%%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
-%%   <<"resourceConfigurationDefinition">> => list(),
-%%   <<"resourceConfigurationGroupIdentifier">> => string(),
-%%   <<"resourceGatewayIdentifier">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any())
-%% }
--type create_resource_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_endpoint_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"id">> => string(),
-%%   <<"resourceConfigurationArn">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceConfigurationName">> => string(),
-%%   <<"vpcEndpointId">> => string(),
-%%   <<"vpcEndpointOwner">> => string()
-%% }
--type resource_endpoint_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_vpc_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceNetworkIdentifier">> => string(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type list_service_network_vpc_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_endpoint_association_request() :: #{}
--type delete_resource_endpoint_association_request() :: #{}.
-
-
-%% Example:
-%% put_auth_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"state">> => string()
-%% }
--type put_auth_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{}
--type put_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% list_resource_gateways_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_gateways_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_gateway_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_resource_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_failure() :: #{
-%%   <<"failureCode">> => [string()],
-%%   <<"failureMessage">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"port">> => integer()
-%% }
--type target_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% txt_method_config() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type txt_method_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_auth_policy_request() :: #{}
--type get_auth_policy_request() :: #{}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{}
--type delete_resource_policy_request() :: #{}.
+%% get_service_network_resource_association_request() :: #{}
+-type get_service_network_resource_association_request() :: #{}.
 
 
 %% Example:
@@ -1678,11 +946,612 @@
 
 
 %% Example:
+%% get_service_network_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"numberOfAssociatedServices">> => [float()],
+%%   <<"numberOfAssociatedVPCs">> => [float()],
+%%   <<"sharingConfig">> => sharing_config()
+%% }
+-type get_service_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_network_service_association_request() :: #{}
+-type get_service_network_service_association_request() :: #{}.
+
+
+%% Example:
+%% get_service_network_service_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceId">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type get_service_network_service_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_network_vpc_association_request() :: #{}
+-type get_service_network_vpc_association_request() :: #{}.
+
+
+%% Example:
+%% get_service_network_vpc_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type get_service_network_vpc_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_request() :: #{}
+-type get_service_request() :: #{}.
+
+
+%% Example:
+%% get_service_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"failureCode">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type get_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_group_request() :: #{}
+-type get_target_group_request() :: #{}.
+
+
+%% Example:
+%% get_target_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"config">> => target_group_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"serviceArns">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type get_target_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% header_match() :: #{
+%%   <<"caseSensitive">> => boolean(),
+%%   <<"match">> => list(),
+%%   <<"name">> => string()
+%% }
+-type header_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_config() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"healthCheckIntervalSeconds">> => integer(),
+%%   <<"healthCheckTimeoutSeconds">> => integer(),
+%%   <<"healthyThresholdCount">> => integer(),
+%%   <<"matcher">> => list(),
+%%   <<"path">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"protocolVersion">> => string(),
+%%   <<"unhealthyThresholdCount">> => integer()
+%% }
+-type health_check_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_match() :: #{
+%%   <<"headerMatches">> => list(header_match()),
+%%   <<"method">> => string(),
+%%   <<"pathMatch">> => path_match()
+%% }
+-type http_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_resource() :: #{
+%%   <<"ipAddress">> => string()
+%% }
+-type ip_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_log_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type list_access_log_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_log_subscriptions_response() :: #{
+%%   <<"items">> := list(access_log_subscription_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_log_subscriptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_verifications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_verifications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_verifications_response() :: #{
+%%   <<"items">> => list(domain_verification_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_verifications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_listeners_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_listeners_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_listeners_response() :: #{
+%%   <<"items">> := list(listener_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_listeners_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_configurations_request() :: #{
+%%   <<"domainVerificationIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationGroupIdentifier">> => string(),
+%%   <<"resourceGatewayIdentifier">> => string()
+%% }
+-type list_resource_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_configurations_response() :: #{
+%%   <<"items">> => list(resource_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_endpoint_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationIdentifier">> := string(),
+%%   <<"resourceEndpointAssociationIdentifier">> => string(),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcEndpointOwner">> => string()
+%% }
+-type list_resource_endpoint_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_endpoint_associations_response() :: #{
+%%   <<"items">> => list(resource_endpoint_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_endpoint_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_gateways_response() :: #{
+%%   <<"items">> => list(resource_gateway_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"items">> := list(rule_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_resource_associations_request() :: #{
+%%   <<"includeChildren">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceConfigurationIdentifier">> => string(),
+%%   <<"serviceNetworkIdentifier">> => string()
+%% }
+-type list_service_network_resource_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_resource_associations_response() :: #{
+%%   <<"items">> => list(service_network_resource_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_resource_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_service_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceIdentifier">> => string(),
+%%   <<"serviceNetworkIdentifier">> => string()
+%% }
+-type list_service_network_service_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_service_associations_response() :: #{
+%%   <<"items">> := list(service_network_service_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_service_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceNetworkIdentifier">> => string(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type list_service_network_vpc_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_associations_response() :: #{
+%%   <<"items">> := list(service_network_vpc_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_vpc_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_endpoint_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceNetworkIdentifier">> := string()
+%% }
+-type list_service_network_vpc_endpoint_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_network_vpc_endpoint_associations_response() :: #{
+%%   <<"items">> => list(service_network_endpoint_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_network_vpc_endpoint_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_networks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_networks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_networks_response() :: #{
+%%   <<"items">> := list(service_network_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_networks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"items">> => list(service_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetGroupType">> => string(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type list_target_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_groups_response() :: #{
+%%   <<"items">> => list(target_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_target_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targets">> => list(target())
+%% }
+-type list_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_response() :: #{
+%%   <<"items">> := list(target_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string()
+%% }
+-type listener_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% path_match() :: #{
+%%   <<"caseSensitive">> => boolean(),
+%%   <<"match">> => list()
+%% }
+-type path_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_auth_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_auth_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_auth_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"state">> => string()
+%% }
+-type put_auth_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{}
+-type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% register_targets_request() :: #{
+%%   <<"targets">> := list(target())
+%% }
+-type register_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_targets_response() :: #{
 %%   <<"successful">> => list(target()),
 %%   <<"unsuccessful">> => list(target_failure())
 %% }
 -type register_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_configuration_summary() :: #{
+%%   <<"amazonManaged">> => boolean(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationId">> => string(),
+%%   <<"groupDomain">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationGroupId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type resource_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_endpoint_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resourceConfigurationArn">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceConfigurationName">> => string(),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcEndpointOwner">> => string()
+%% }
+-type resource_endpoint_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_gateway_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type resource_gateway_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"isDefault">> => boolean(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_update() :: #{
+%%   <<"action">> => list(),
+%%   <<"match">> => list(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleIdentifier">> => string()
+%% }
+-type rule_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_update_failure() :: #{
+%%   <<"failureCode">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"ruleIdentifier">> => string()
+%% }
+-type rule_update_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_update_success() :: #{
+%%   <<"action">> => list(),
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isDefault">> => boolean(),
+%%   <<"match">> => list(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer()
+%% }
+-type rule_update_success() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_network_endpoint_association() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => [string()],
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"state">> => [string()],
+%%   <<"vpcEndpointId">> => [string()],
+%%   <<"vpcEndpointOwnerId">> => [string()],
+%%   <<"vpcId">> => [string()]
+%% }
+-type service_network_endpoint_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1708,152 +1577,135 @@
 
 
 %% Example:
-%% rule_update() :: #{
-%%   <<"action">> => list(),
-%%   <<"match">> => list(),
-%%   <<"priority">> => integer(),
-%%   <<"ruleIdentifier">> => string()
-%% }
--type rule_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_entry() :: #{
-%%   <<"domainName">> => [string()],
-%%   <<"hostedZoneId">> => [string()]
-%% }
--type dns_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_resource_associations_request() :: #{
-%%   <<"includeChildren">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceConfigurationIdentifier">> => string(),
-%%   <<"serviceNetworkIdentifier">> => string()
-%% }
--type list_service_network_resource_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_response() :: #{
+%% service_network_service_association_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"idleTimeoutSeconds">> => integer(),
-%%   <<"name">> => string()
-%% }
--type update_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_network_vpc_association_request() :: #{
-%%   <<"securityGroupIds">> := list(string())
-%% }
--type update_service_network_vpc_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_vpc_endpoint_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceNetworkIdentifier">> := string()
-%% }
--type list_service_network_vpc_endpoint_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_targets_response() :: #{
-%%   <<"successful">> => list(target()),
-%%   <<"unsuccessful">> => list(target_failure())
-%% }
--type deregister_targets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_network_request() :: #{
-%%   <<"authType">> := string()
-%% }
--type update_service_network_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_listener_request() :: #{}
--type get_listener_request() :: #{}.
-
-
-%% Example:
-%% create_service_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"certificateArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"customDomainName">> => string(),
 %%   <<"dnsEntry">> => dns_entry(),
 %%   <<"id">> => string(),
-%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceId">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type service_network_service_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_network_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"numberOfAssociatedResourceConfigurations">> => [float()],
+%%   <<"numberOfAssociatedServices">> => [float()],
+%%   <<"numberOfAssociatedVPCs">> => [float()]
+%% }
+-type service_network_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_network_vpc_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"serviceNetworkArn">> => string(),
+%%   <<"serviceNetworkId">> => string(),
+%%   <<"serviceNetworkName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type service_network_vpc_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"dnsEntry">> => dns_entry(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string()
 %% }
--type create_service_response() :: #{binary() => any()}.
+-type service_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_update_rule_response() :: #{
-%%   <<"successful">> => list(rule_update_success()),
-%%   <<"unsuccessful">> => list(rule_update_failure())
+%% sharing_config() :: #{
+%%   <<"enabled">> => boolean()
 %% }
--type batch_update_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_target_group_request() :: #{}
--type get_target_group_request() :: #{}.
-
-%% Example:
-%% delete_listener_request() :: #{}
--type delete_listener_request() :: #{}.
+-type sharing_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_targets_response() :: #{
-%%   <<"items">> := list(target_summary()),
-%%   <<"nextToken">> => string()
+%% start_domain_verification_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"domainName">> := string(),
+%%   <<"tags">> => map()
 %% }
--type list_targets_response() :: #{binary() => any()}.
+-type start_domain_verification_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_resource_configuration_request() :: #{
-%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
-%%   <<"portRanges">> => list(string()),
-%%   <<"resourceConfigurationDefinition">> => list()
+%% start_domain_verification_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"txtMethodConfig">> => txt_method_config()
 %% }
--type update_resource_configuration_request() :: #{binary() => any()}.
+-type start_domain_verification_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_access_log_subscription_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"createdAt">> := non_neg_integer(),
-%%   <<"destinationArn">> := string(),
-%%   <<"id">> := string(),
-%%   <<"lastUpdatedAt">> := non_neg_integer(),
-%%   <<"resourceArn">> := string(),
-%%   <<"resourceId">> := string(),
-%%   <<"serviceNetworkLogType">> => string()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type get_access_log_subscription_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target() :: #{
+%%   <<"id">> => [string()],
+%%   <<"port">> => integer()
+%% }
+-type target() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_failure() :: #{
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"port">> => integer()
+%% }
+-type target_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1870,111 +1722,115 @@
 
 
 %% Example:
-%% create_service_network_vpc_association_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"dnsOptions">> => dns_options(),
-%%   <<"privateDnsEnabled">> => boolean(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"serviceNetworkIdentifier">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"vpcIdentifier">> := string()
-%% }
--type create_service_network_vpc_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_log_subscriptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceIdentifier">> := string()
-%% }
--type list_access_log_subscriptions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_listener_response() :: #{}
--type delete_listener_response() :: #{}.
-
-
-%% Example:
-%% rule_update_failure() :: #{
-%%   <<"failureCode">> => string(),
-%%   <<"failureMessage">> => string(),
-%%   <<"ruleIdentifier">> => string()
-%% }
--type rule_update_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_networks_response() :: #{
-%%   <<"items">> := list(service_network_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_networks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sharing_config() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type sharing_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_network_service_associations_response() :: #{
-%%   <<"items">> := list(service_network_service_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_network_service_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_options() :: #{
-%%   <<"privateDnsPreference">> => string(),
-%%   <<"privateDnsSpecifiedDomains">> => list(string())
-%% }
--type dns_options() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_network_service_association_request() :: #{}
--type get_service_network_service_association_request() :: #{}.
-
-
-%% Example:
-%% create_listener_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"defaultAction">> := list(),
-%%   <<"name">> := string(),
-%%   <<"port">> => integer(),
-%%   <<"protocol">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_listener_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_network_service_association_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"serviceIdentifier">> := string(),
-%%   <<"serviceNetworkIdentifier">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_service_network_service_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_network_vpc_association_request() :: #{}
--type get_service_network_vpc_association_request() :: #{}.
-
-
-%% Example:
-%% create_resource_configuration_response() :: #{
-%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%% target_group_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDomainName">> => string(),
-%%   <<"domainVerificationArn">> => string(),
-%%   <<"domainVerificationId">> => string(),
-%%   <<"failureReason">> => [string()],
-%%   <<"groupDomain">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"lambdaEventStructureVersion">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"serviceArns">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"type">> => string(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type target_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_summary() :: #{
+%%   <<"id">> => [string()],
+%%   <<"port">> => integer(),
+%%   <<"reasonCode">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% txt_method_config() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type txt_method_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_access_log_subscription_request() :: #{
+%%   <<"destinationArn">> := string()
+%% }
+-type update_access_log_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_log_subscription_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"destinationArn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceId">> := string()
+%% }
+-type update_access_log_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_listener_request() :: #{
+%%   <<"defaultAction">> := list()
+%% }
+-type update_listener_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_listener_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"defaultAction">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceId">> => string()
+%% }
+-type update_listener_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_configuration_request() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"resourceConfigurationDefinition">> => list()
+%% }
+-type update_resource_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_configuration_response() :: #{
+%%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
+%%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"portRanges">> => list(string()),
@@ -1985,553 +1841,697 @@
 %%   <<"status">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type create_resource_configuration_response() :: #{binary() => any()}.
+-type update_resource_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_gateway_request() :: #{
+%%   <<"securityGroupIds">> => list(string())
+%% }
+-type update_resource_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_gateway_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type update_resource_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rule_request() :: #{
+%%   <<"action">> => list(),
+%%   <<"match">> => list(),
+%%   <<"priority">> => integer()
+%% }
+-type update_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rule_response() :: #{
+%%   <<"action">> => list(),
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isDefault">> => boolean(),
+%%   <<"match">> => list(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer()
+%% }
+-type update_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_network_request() :: #{
+%%   <<"authType">> := string()
+%% }
+-type update_service_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_network_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_service_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_network_vpc_association_request() :: #{
+%%   <<"securityGroupIds">> := list(string())
+%% }
+-type update_service_network_vpc_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_network_vpc_association_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string()
+%% }
+-type update_service_network_vpc_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"authType">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer()
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type update_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_target_group_request() :: #{
+%%   <<"healthCheck">> := health_check_config()
+%% }
+-type update_target_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_target_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"config">> => target_group_config(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type update_target_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_target_group() :: #{
+%%   <<"targetGroupIdentifier">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type weighted_target_group() :: #{binary() => any()}.
 
 -type batch_update_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_access_log_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_listener_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_network_resource_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_network_service_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_network_vpc_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_target_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_access_log_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_auth_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_domain_verification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_listener_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_endpoint_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_resource_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_network_resource_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_network_service_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_network_vpc_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_target_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type deregister_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_access_log_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_auth_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_domain_verification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_listener_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_network_resource_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_network_service_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_network_vpc_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_target_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_access_log_subscriptions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_domain_verifications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_listeners_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resource_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resource_endpoint_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resource_gateways_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_service_network_resource_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_network_service_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_network_vpc_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_network_vpc_endpoint_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_networks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_target_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_auth_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_domain_verification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_access_log_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_listener_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_resource_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_resource_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_network_vpc_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_target_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

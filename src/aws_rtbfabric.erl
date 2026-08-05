@@ -109,126 +109,12 @@
 
 
 %% Example:
-%% trust_store_configuration() :: #{
-%%   <<"certificateAuthorityCertificates">> => list(string())
-%% }
--type trust_store_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_application_log_configuration() :: #{
-%%   <<"sampling">> => link_application_log_sampling()
-%% }
--type link_application_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_link_module_flow_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"modules">> := list(module_configuration())
-%% }
--type update_link_module_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificate_associations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_certificate_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_link_response() :: #{
-%%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_association_summary() :: #{
-%%   <<"acmCertificateArn">> => string(),
-%%   <<"associatedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type certificate_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_requester_gateway_request() :: #{}
--type get_requester_gateway_request() :: #{}.
-
-
-%% Example:
-%% create_inbound_external_link_request() :: #{
+%% accept_link_request() :: #{
 %%   <<"attributes">> => link_attributes(),
-%%   <<"clientToken">> := [string()],
 %%   <<"logSettings">> := link_log_settings(),
-%%   <<"tags">> => map()
+%%   <<"timeoutInMillis">> => float()
 %% }
--type create_inbound_external_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_link_routing_rule_response() :: #{
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_link_routing_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% header_tag_action() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type header_tag_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% module_configuration() :: #{
-%%   <<"dependsOn">> => list(string()),
-%%   <<"moduleParameters">> => list(),
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type module_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% filter_criterion() :: #{
-%%   <<"path">> => [string()],
-%%   <<"values">> => list([string()]())
-%% }
--type filter_criterion() :: #{binary() => any()}.
-
-%% Example:
-%% delete_requester_gateway_request() :: #{}
--type delete_requester_gateway_request() :: #{}.
-
-
-%% Example:
-%% create_requester_gateway_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"description">> => [string()],
-%%   <<"securityGroupIds">> := list(string()),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"tags">> => map(),
-%%   <<"vpcId">> := string()
-%% }
--type create_requester_gateway_request() :: #{binary() => any()}.
+-type accept_link_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -250,117 +136,85 @@
 
 
 %% Example:
-%% list_responder_gateways_response() :: #{
-%%   <<"gatewayIds">> => list(string()),
-%%   <<"nextToken">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_responder_gateways_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_requester_gateway_response() :: #{
-%%   <<"activeLinksCount">> => [integer()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"domainName">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"totalLinksCount">> => [integer()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vpcId">> => string()
+%% associate_certificate_request() :: #{
+%%   <<"acmCertificateArn">> := string(),
+%%   <<"clientToken">> := [string()]
 %% }
--type get_requester_gateway_response() :: #{binary() => any()}.
+-type associate_certificate_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_link_routing_rules_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_link_routing_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_inbound_external_link_response() :: #{
-%%   <<"attributes">> => link_attributes(),
-%%   <<"connectivityType">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainName">> => string(),
-%%   <<"flowModules">> => list(module_configuration()),
-%%   <<"gatewayId">> => string(),
-%%   <<"linkId">> => string(),
-%%   <<"logSettings">> => link_log_settings(),
-%%   <<"pendingFlowModules">> => list(module_configuration()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_inbound_external_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_certificate_association_response() :: #{
+%% associate_certificate_response() :: #{
 %%   <<"acmCertificateArn">> => string(),
-%%   <<"associatedAt">> => [non_neg_integer()],
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_certificate_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_responder_gateway_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"description">> => [string()],
-%%   <<"domainName">> => string(),
-%%   <<"gatewayType">> => list(any()),
-%%   <<"listenerConfig">> => listener_config(),
-%%   <<"managedEndpointConfiguration">> => list(),
-%%   <<"port">> := [integer()],
-%%   <<"protocol">> := list(any()),
-%%   <<"securityGroupIds">> := list(string()),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"tags">> => map(),
-%%   <<"trustStoreConfiguration">> => trust_store_configuration(),
-%%   <<"vpcId">> := string()
-%% }
--type create_responder_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_requester_gateways_response() :: #{
-%%   <<"gatewayIds">> => list(string()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_requester_gateways_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_requester_gateway_response() :: #{
 %%   <<"gatewayId">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type update_requester_gateway_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_link_request() :: #{}
--type delete_link_request() :: #{}.
+-type associate_certificate_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_endpoints_configuration() :: #{
-%%   <<"clusterApiServerCaCertificateChain">> => string(),
-%%   <<"clusterApiServerEndpointUri">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"endpointsResourceName">> => string(),
-%%   <<"endpointsResourceNamespace">> => string(),
+%% auto_scaling_groups_configuration() :: #{
+%%   <<"autoScalingGroupNames">> => list(string()),
+%%   <<"healthCheckConfig">> => health_check_config(),
 %%   <<"roleArn">> => [string()]
 %% }
--type eks_endpoints_configuration() :: #{binary() => any()}.
+-type auto_scaling_groups_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_association_summary() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"associatedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type certificate_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inbound_external_link_request() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"clientToken">> := [string()],
+%%   <<"logSettings">> := link_log_settings(),
+%%   <<"tags">> => map()
+%% }
+-type create_inbound_external_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inbound_external_link_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_inbound_external_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_link_request() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"httpResponderAllowed">> => [boolean()],
+%%   <<"logSettings">> := link_log_settings(),
+%%   <<"peerGatewayId">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutInMillis">> => float()
+%% }
+-type create_link_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -383,29 +237,13 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% create_link_routing_rule_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"conditions">> := rule_condition(),
+%%   <<"priority">> := integer(),
+%%   <<"tags">> => map()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_responder_gateway_request() :: #{}
--type delete_responder_gateway_request() :: #{}.
-
-
-%% Example:
-%% link_attributes() :: #{
-%%   <<"customerProvidedId">> => string(),
-%%   <<"responderErrorMasking">> => list(responder_error_masking_for_http_code())
-%% }
--type link_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_certificate_association_request() :: #{
-%%   <<"acmCertificateArn">> := string()
-%% }
--type get_certificate_association_request() :: #{binary() => any()}.
+-type create_link_routing_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -415,40 +253,6 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_link_routing_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_links_response() :: #{
-%%   <<"links">> => list(list_links_response_structure()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_links_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_certificate_response() :: #{
-%%   <<"acmCertificateArn">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type associate_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_requester_gateway_response() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_requester_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_string_key_value_pair() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type query_string_key_value_pair() :: #{binary() => any()}.
 
 
 %% Example:
@@ -463,15 +267,66 @@
 
 
 %% Example:
-%% create_link_request() :: #{
-%%   <<"attributes">> => link_attributes(),
-%%   <<"httpResponderAllowed">> => [boolean()],
-%%   <<"logSettings">> := link_log_settings(),
-%%   <<"peerGatewayId">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"timeoutInMillis">> => float()
+%% create_outbound_external_link_response() :: #{
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type create_link_request() :: #{binary() => any()}.
+-type create_outbound_external_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_requester_gateway_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"description">> => [string()],
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> := string()
+%% }
+-type create_requester_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_requester_gateway_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_requester_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_responder_gateway_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainName">> => string(),
+%%   <<"gatewayType">> => list(any()),
+%%   <<"listenerConfig">> => listener_config(),
+%%   <<"managedEndpointConfiguration">> => list(),
+%%   <<"port">> := [integer()],
+%%   <<"protocol">> := list(any()),
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tags">> => map(),
+%%   <<"trustStoreConfiguration">> => trust_store_configuration(),
+%%   <<"vpcId">> := string()
+%% }
+-type create_responder_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_responder_gateway_response() :: #{
+%%   <<"externalInboundEndpoint">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"listenerConfig">> => listener_config(),
+%%   <<"status">> => list(any())
+%% }
+-type create_responder_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inbound_external_link_request() :: #{}
+-type delete_inbound_external_link_request() :: #{}.
 
 
 %% Example:
@@ -481,31 +336,177 @@
 %% }
 -type delete_inbound_external_link_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_link_request() :: #{}
+-type delete_link_request() :: #{}.
+
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
+%% delete_link_response() :: #{
+%%   <<"linkId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type delete_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_link_routing_rule_request() :: #{}
+-type delete_link_routing_rule_request() :: #{}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_routing_rule_summary() :: #{
-%%   <<"conditions">> => rule_condition(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"priority">> => integer(),
+%% delete_link_routing_rule_response() :: #{
 %%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_link_routing_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outbound_external_link_request() :: #{}
+-type delete_outbound_external_link_request() :: #{}.
+
+
+%% Example:
+%% delete_outbound_external_link_response() :: #{
+%%   <<"linkId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_outbound_external_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_requester_gateway_request() :: #{}
+-type delete_requester_gateway_request() :: #{}.
+
+
+%% Example:
+%% delete_requester_gateway_response() :: #{
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_requester_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_responder_gateway_request() :: #{}
+-type delete_responder_gateway_request() :: #{}.
+
+
+%% Example:
+%% delete_responder_gateway_response() :: #{
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_responder_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_certificate_request() :: #{
+%%   <<"acmCertificateArn">> := string()
+%% }
+-type disassociate_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_certificate_response() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type disassociate_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_endpoints_configuration() :: #{
+%%   <<"clusterApiServerCaCertificateChain">> => string(),
+%%   <<"clusterApiServerEndpointUri">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"endpointsResourceName">> => string(),
+%%   <<"endpointsResourceNamespace">> => string(),
+%%   <<"roleArn">> => [string()]
+%% }
+-type eks_endpoints_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"criteria">> => list(filter_criterion())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criterion() :: #{
+%%   <<"path">> => [string()],
+%%   <<"values">> => list([string()]())
+%% }
+-type filter_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_certificate_association_request() :: #{
+%%   <<"acmCertificateArn">> := string()
+%% }
+-type get_certificate_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_certificate_association_response() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"associatedAt">> => [non_neg_integer()],
+%%   <<"gatewayId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type link_routing_rule_summary() :: #{binary() => any()}.
+-type get_certificate_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_inbound_external_link_request() :: #{}
+-type get_inbound_external_link_request() :: #{}.
+
+
+%% Example:
+%% get_inbound_external_link_response() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainName">> => string(),
+%%   <<"flowModules">> => list(module_configuration()),
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"pendingFlowModules">> => list(module_configuration()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_inbound_external_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_link_request() :: #{}
+-type get_link_request() :: #{}.
+
+
+%% Example:
+%% get_link_response() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"direction">> => list(any()),
+%%   <<"flowModules">> => list(module_configuration()),
+%%   <<"gatewayId">> => string(),
+%%   <<"httpResponderAllowed">> => [boolean()],
+%%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"peerGatewayId">> => string(),
+%%   <<"pendingFlowModules">> => list(module_configuration()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"timeoutInMillis">> => float(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_link_routing_rule_request() :: #{}
+-type get_link_routing_rule_request() :: #{}.
 
 
 %% Example:
@@ -523,8 +524,197 @@
 -type get_link_routing_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% reject_link_request() :: #{}
--type reject_link_request() :: #{}.
+%% get_outbound_external_link_request() :: #{}
+-type get_outbound_external_link_request() :: #{}.
+
+
+%% Example:
+%% get_outbound_external_link_response() :: #{
+%%   <<"attributes">> => link_attributes(),
+%%   <<"connectivityType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"flowModules">> => list(module_configuration()),
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"pendingFlowModules">> => list(module_configuration()),
+%%   <<"publicEndpoint">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_outbound_external_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_requester_gateway_request() :: #{}
+-type get_requester_gateway_request() :: #{}.
+
+
+%% Example:
+%% get_requester_gateway_response() :: #{
+%%   <<"activeLinksCount">> => [integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domainName">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"totalLinksCount">> => [integer()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vpcId">> => string()
+%% }
+-type get_requester_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_responder_gateway_request() :: #{}
+-type get_responder_gateway_request() :: #{}.
+
+
+%% Example:
+%% get_responder_gateway_response() :: #{
+%%   <<"activeLinksCount">> => [integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domainName">> => string(),
+%%   <<"externalInboundEndpoint">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayType">> => list(any()),
+%%   <<"linksRequestedCount">> => [integer()],
+%%   <<"listenerConfig">> => listener_config(),
+%%   <<"managedEndpointConfiguration">> => list(),
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"totalLinksCount">> => [integer()],
+%%   <<"trustStoreConfiguration">> => trust_store_configuration(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vpcId">> => string()
+%% }
+-type get_responder_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% header_tag_action() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type header_tag_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_config() :: #{
+%%   <<"healthyThresholdCount">> => [integer()],
+%%   <<"intervalSeconds">> => [integer()],
+%%   <<"path">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"statusCodeMatcher">> => string(),
+%%   <<"timeoutMs">> => [integer()],
+%%   <<"unhealthyThresholdCount">> => [integer()]
+%% }
+-type health_check_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_application_log_configuration() :: #{
+%%   <<"sampling">> => link_application_log_sampling()
+%% }
+-type link_application_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_application_log_sampling() :: #{
+%%   <<"errorLog">> => [float()],
+%%   <<"filterLog">> => [float()]
+%% }
+-type link_application_log_sampling() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_attributes() :: #{
+%%   <<"customerProvidedId">> => string(),
+%%   <<"responderErrorMasking">> => list(responder_error_masking_for_http_code())
+%% }
+-type link_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_log_settings() :: #{
+%%   <<"applicationLogs">> => link_application_log_configuration()
+%% }
+-type link_log_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_routing_rule_summary() :: #{
+%%   <<"conditions">> => rule_condition(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type link_routing_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificate_associations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_certificate_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificate_associations_response() :: #{
+%%   <<"certificateAssociations">> => list(certificate_association_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_certificate_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_link_routing_rules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_link_routing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_link_routing_rules_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"rules">> => list(link_routing_rule_summary())
+%% }
+-type list_link_routing_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_links_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_links_response() :: #{
+%%   <<"links">> => list(list_links_response_structure()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_links_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -548,35 +738,19 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_requester_gateways_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_outbound_external_link_request() :: #{}
--type get_outbound_external_link_request() :: #{}.
+-type list_requester_gateways_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_link_response() :: #{
-%%   <<"attributes">> => link_attributes(),
-%%   <<"connectivityType">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"direction">> => list(any()),
-%%   <<"flowModules">> => list(module_configuration()),
-%%   <<"gatewayId">> => string(),
-%%   <<"httpResponderAllowed">> => [boolean()],
-%%   <<"linkId">> => string(),
-%%   <<"logSettings">> => link_log_settings(),
-%%   <<"peerGatewayId">> => string(),
-%%   <<"pendingFlowModules">> => list(module_configuration()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"timeoutInMillis">> => float(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% list_requester_gateways_response() :: #{
+%%   <<"gatewayIds">> => list(string()),
+%%   <<"nextToken">> => [string()]
 %% }
--type get_link_response() :: #{binary() => any()}.
+-type list_requester_gateways_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -588,60 +762,15 @@
 
 
 %% Example:
-%% get_outbound_external_link_response() :: #{
-%%   <<"attributes">> => link_attributes(),
-%%   <<"connectivityType">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"flowModules">> => list(module_configuration()),
-%%   <<"gatewayId">> => string(),
-%%   <<"linkId">> => string(),
-%%   <<"logSettings">> => link_log_settings(),
-%%   <<"pendingFlowModules">> => list(module_configuration()),
-%%   <<"publicEndpoint">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% list_responder_gateways_response() :: #{
+%%   <<"gatewayIds">> => list(string()),
+%%   <<"nextToken">> => [string()]
 %% }
--type get_outbound_external_link_response() :: #{binary() => any()}.
-
+-type list_responder_gateways_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_outbound_external_link_response() :: #{
-%%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_outbound_external_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_responder_gateway_response() :: #{
-%%   <<"activeLinksCount">> => [integer()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"domainName">> => string(),
-%%   <<"externalInboundEndpoint">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"gatewayType">> => list(any()),
-%%   <<"inboundLinksCount">> => [integer()],
-%%   <<"linksRequestedCount">> => [integer()],
-%%   <<"listenerConfig">> => listener_config(),
-%%   <<"managedEndpointConfiguration">> => list(),
-%%   <<"port">> => [integer()],
-%%   <<"protocol">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"totalLinksCount">> => [integer()],
-%%   <<"trustStoreConfiguration">> => trust_store_configuration(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vpcId">> => string()
-%% }
--type get_responder_gateway_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inbound_external_link_request() :: #{}
--type delete_inbound_external_link_request() :: #{}.
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -652,21 +781,20 @@
 
 
 %% Example:
-%% update_link_response() :: #{
-%%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
+%% listener_config() :: #{
+%%   <<"protocols">> => list(list(any())())
 %% }
--type update_link_response() :: #{binary() => any()}.
+-type listener_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_link_routing_rule_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"conditions">> := rule_condition(),
-%%   <<"priority">> := integer(),
-%%   <<"tags">> => map()
+%% module_configuration() :: #{
+%%   <<"dependsOn">> => list(string()),
+%%   <<"moduleParameters">> => list(),
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
 %% }
--type create_link_routing_rule_request() :: #{binary() => any()}.
+-type module_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -677,103 +805,6 @@
 
 
 %% Example:
-%% update_link_module_flow_response() :: #{
-%%   <<"gatewayId">> => string(),
-%%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_link_module_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_requester_gateways_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_requester_gateways_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_certificate_request() :: #{
-%%   <<"acmCertificateArn">> := string()
-%% }
--type disassociate_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"criteria">> => list(filter_criterion())
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_responder_gateway_response() :: #{
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_responder_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_links_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_links_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_application_log_sampling() :: #{
-%%   <<"errorLog">> => [float()],
-%%   <<"filterLog">> => [float()]
-%% }
--type link_application_log_sampling() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_certificate_request() :: #{
-%%   <<"acmCertificateArn">> := string(),
-%%   <<"clientToken">> := [string()]
-%% }
--type associate_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_link_routing_rule_response() :: #{
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_link_routing_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_responder_gateway_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"description">> => [string()],
-%%   <<"domainName">> => string(),
-%%   <<"listenerConfig">> => listener_config(),
-%%   <<"managedEndpointConfiguration">> => list(),
-%%   <<"port">> := [integer()],
-%%   <<"protocol">> := list(any()),
-%%   <<"trustStoreConfiguration">> => trust_store_configuration()
-%% }
--type update_responder_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_link_routing_rule_request() :: #{}
--type delete_link_routing_rule_request() :: #{}.
-
-
-%% Example:
 %% no_bid_module_parameters() :: #{
 %%   <<"passThroughPercentage">> => [float()],
 %%   <<"reason">> => [string()],
@@ -781,27 +812,34 @@
 %% }
 -type no_bid_module_parameters() :: #{binary() => any()}.
 
-%% Example:
-%% delete_outbound_external_link_request() :: #{}
--type delete_outbound_external_link_request() :: #{}.
-
 
 %% Example:
-%% responder_error_masking_for_http_code() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"httpCode">> => [string()],
-%%   <<"loggingTypes">> => list(list(any())()),
-%%   <<"responseLoggingPercentage">> => [float()]
+%% open_rtb_attribute_module_parameters() :: #{
+%%   <<"action">> => list(),
+%%   <<"filterConfiguration">> => list(filter()),
+%%   <<"filterType">> => list(any()),
+%%   <<"holdbackPercentage">> => [float()]
 %% }
--type responder_error_masking_for_http_code() :: #{binary() => any()}.
+-type open_rtb_attribute_module_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_requester_gateway_request() :: #{
-%%   <<"clientToken">> := [string()],
-%%   <<"description">> => [string()]
+%% query_string_key_value_pair() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
 %% }
--type update_requester_gateway_request() :: #{binary() => any()}.
+-type query_string_key_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% rate_limiter_module_parameters() :: #{
+%%   <<"tps">> => [float()]
+%% }
+-type rate_limiter_module_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% reject_link_request() :: #{}
+-type reject_link_request() :: #{}.
 
 
 %% Example:
@@ -823,31 +861,20 @@
 
 
 %% Example:
-%% delete_requester_gateway_response() :: #{
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_requester_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_certificate_response() :: #{
-%%   <<"acmCertificateArn">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
+%% responder_error_masking_for_http_code() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"httpCode">> => [string()],
+%%   <<"loggingTypes">> => list(list(any())()),
+%%   <<"responseLoggingPercentage">> => [float()]
 %% }
--type disassociate_certificate_response() :: #{binary() => any()}.
+-type responder_error_masking_for_http_code() :: #{binary() => any()}.
 
 
 %% Example:
@@ -863,43 +890,21 @@
 
 
 %% Example:
-%% link_log_settings() :: #{
-%%   <<"applicationLogs">> => link_application_log_configuration()
-%% }
--type link_log_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% health_check_config() :: #{
-%%   <<"healthyThresholdCount">> => [integer()],
-%%   <<"intervalSeconds">> => [integer()],
-%%   <<"path">> => [string()],
-%%   <<"port">> => [integer()],
-%%   <<"protocol">> => list(any()),
-%%   <<"statusCodeMatcher">> => string(),
-%%   <<"timeoutMs">> => [integer()],
-%%   <<"unhealthyThresholdCount">> => [integer()]
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type health_check_config() :: #{binary() => any()}.
-
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_certificate_associations_response() :: #{
-%%   <<"certificateAssociations">> => list(certificate_association_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_certificate_associations_response() :: #{binary() => any()}.
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -910,56 +915,54 @@
 
 
 %% Example:
-%% rate_limiter_module_parameters() :: #{
-%%   <<"tps">> => [float()]
+%% trust_store_configuration() :: #{
+%%   <<"certificateAuthorityCertificates">> => list(string())
 %% }
--type rate_limiter_module_parameters() :: #{binary() => any()}.
+-type trust_store_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_outbound_external_link_response() :: #{
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_link_module_flow_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"modules">> := list(module_configuration())
+%% }
+-type update_link_module_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_link_module_flow_response() :: #{
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type create_outbound_external_link_response() :: #{binary() => any()}.
+-type update_link_module_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_scaling_groups_configuration() :: #{
-%%   <<"autoScalingGroupNames">> => list(string()),
-%%   <<"healthCheckConfig">> => health_check_config(),
-%%   <<"roleArn">> => [string()]
+%% update_link_request() :: #{
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"timeoutInMillis">> => float()
 %% }
--type auto_scaling_groups_configuration() :: #{binary() => any()}.
+-type update_link_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_inbound_external_link_response() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"gatewayId">> => string(),
+%% update_link_response() :: #{
 %%   <<"linkId">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type create_inbound_external_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_rtb_attribute_module_parameters() :: #{
-%%   <<"action">> => list(),
-%%   <<"filterConfiguration">> => list(filter()),
-%%   <<"filterType">> => list(any()),
-%%   <<"holdbackPercentage">> => [float()]
-%% }
--type open_rtb_attribute_module_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% get_responder_gateway_request() :: #{}
--type get_responder_gateway_request() :: #{}.
-
-%% Example:
-%% get_inbound_external_link_request() :: #{}
--type get_inbound_external_link_request() :: #{}.
+-type update_link_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -971,45 +974,42 @@
 
 
 %% Example:
-%% create_responder_gateway_response() :: #{
-%%   <<"externalInboundEndpoint">> => string(),
+%% update_link_routing_rule_response() :: #{
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_link_routing_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_requester_gateway_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"description">> => [string()]
+%% }
+-type update_requester_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_requester_gateway_response() :: #{
 %%   <<"gatewayId">> => string(),
-%%   <<"listenerConfig">> => listener_config(),
 %%   <<"status">> => list(any())
 %% }
--type create_responder_gateway_response() :: #{binary() => any()}.
+-type update_requester_gateway_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% listener_config() :: #{
-%%   <<"protocols">> => list(list(any())())
+%% update_responder_gateway_request() :: #{
+%%   <<"clientToken">> := [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainName">> => string(),
+%%   <<"listenerConfig">> => listener_config(),
+%%   <<"managedEndpointConfiguration">> => list(),
+%%   <<"port">> := [integer()],
+%%   <<"protocol">> := list(any()),
+%%   <<"trustStoreConfiguration">> => trust_store_configuration()
 %% }
--type listener_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_link_routing_rules_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"rules">> => list(link_routing_rule_summary())
-%% }
--type list_link_routing_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_link_request() :: #{}
--type get_link_request() :: #{}.
-
-
-%% Example:
-%% accept_link_request() :: #{
-%%   <<"attributes">> => link_attributes(),
-%%   <<"logSettings">> := link_log_settings(),
-%%   <<"timeoutInMillis">> => float()
-%% }
--type accept_link_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_link_routing_rule_request() :: #{}
--type get_link_routing_rule_request() :: #{}.
+-type update_responder_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1021,208 +1021,207 @@
 
 
 %% Example:
-%% update_link_request() :: #{
-%%   <<"logSettings">> => link_log_settings(),
-%%   <<"timeoutInMillis">> => float()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_link_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type accept_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_inbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_link_routing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_outbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_requester_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_responder_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_inbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_link_routing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_outbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_requester_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_responder_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_certificate_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_inbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_link_routing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_outbound_external_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_requester_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_responder_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_certificate_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_link_routing_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_links_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_requester_gateways_errors() ::
     validation_exception() | 
@@ -1233,74 +1232,74 @@
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reject_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_link_module_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_link_routing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_requester_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_responder_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -48,70 +48,40 @@
 
 
 %% Example:
-%% delete_hsm_request() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"EniId">> => string(),
-%%   <<"EniIp">> => string(),
-%%   <<"HsmId">> => string()
-%% }
--type delete_hsm_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_hsm_response() :: #{
-%%   <<"Hsm">> => hsm()
-%% }
--type create_hsm_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagList">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cloud_hsm_resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% modify_backup_attributes_response() :: #{
-%%   <<"Backup">> => backup()
-%% }
--type modify_backup_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"NextToken">> => string(),
+%% backup() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupId">> => string(),
+%%   <<"BackupState">> => list(any()),
+%%   <<"ClusterId">> => string(),
+%%   <<"CopyTimestamp">> => non_neg_integer(),
+%%   <<"CreateTimestamp">> => non_neg_integer(),
+%%   <<"DeleteTimestamp">> => non_neg_integer(),
+%%   <<"HsmType">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"NeverExpires">> => boolean(),
+%%   <<"SourceBackup">> => string(),
+%%   <<"SourceCluster">> => string(),
+%%   <<"SourceRegion">> => string(),
 %%   <<"TagList">> => list(tag())
 %% }
--type list_tags_response() :: #{binary() => any()}.
+-type backup() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"Policy">> => string()
+%% backup_retention_policy() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type get_resource_policy_response() :: #{binary() => any()}.
+-type backup_retention_policy() :: #{binary() => any()}.
+
+%% Example:
+%% certificates() :: #{
+%%   <<"AwsHardwareCertificate">> => string(),
+%%   <<"ClusterCertificate">> => string(),
+%%   <<"ClusterCsr">> => string(),
+%%   <<"HsmCertificate">> => string(),
+%%   <<"ManufacturerHardwareCertificate">> => string()
+%% }
+-type certificates() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_hsm_access_denied_exception() :: #{
@@ -120,30 +90,16 @@
 -type cloud_hsm_access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagKeyList">> := list(string())
+%% cloud_hsm_internal_failure_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type cloud_hsm_internal_failure_exception() :: #{binary() => any()}.
 
 %% Example:
-%% restore_backup_response() :: #{
-%%   <<"Backup">> => backup()
+%% cloud_hsm_invalid_request_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type restore_backup_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_backup_attributes_request() :: #{
-%%   <<"BackupId">> := string(),
-%%   <<"NeverExpires">> := boolean()
-%% }
--type modify_backup_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hsm_response() :: #{
-%%   <<"HsmId">> => string()
-%% }
--type delete_hsm_response() :: #{binary() => any()}.
+-type cloud_hsm_invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_hsm_resource_limit_exceeded_exception() :: #{
@@ -152,54 +108,22 @@
 -type cloud_hsm_resource_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% modify_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type modify_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% destination_backup() :: #{
-%%   <<"CreateTimestamp">> => non_neg_integer(),
-%%   <<"SourceBackup">> => string(),
-%%   <<"SourceCluster">> => string(),
-%%   <<"SourceRegion">> => string()
-%% }
--type destination_backup() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_internal_failure_exception() :: #{
+%% cloud_hsm_resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type cloud_hsm_internal_failure_exception() :: #{binary() => any()}.
+-type cloud_hsm_resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_cluster_request() :: #{
-%%   <<"BackupRetentionPolicy">> => backup_retention_policy(),
-%%   <<"HsmType">> := string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"SourceBackupId">> => string(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"TagList">> => list(tag())
+%% cloud_hsm_service_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_cluster_request() :: #{binary() => any()}.
+-type cloud_hsm_service_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_backups_request() :: #{
-%%   <<"Filters">> => map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Shared">> => boolean(),
-%%   <<"SortAscending">> => boolean()
+%% cloud_hsm_tag_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type describe_backups_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type cloud_hsm_tag_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cluster() :: #{
@@ -225,20 +149,6 @@
 -type cluster() :: #{binary() => any()}.
 
 %% Example:
-%% create_hsm_request() :: #{
-%%   <<"AvailabilityZone">> := string(),
-%%   <<"ClusterId">> := string(),
-%%   <<"IpAddress">> => string()
-%% }
--type create_hsm_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_response() :: #{
-%%   <<"Backup">> => backup()
-%% }
--type delete_backup_response() :: #{binary() => any()}.
-
-%% Example:
 %% copy_backup_to_region_request() :: #{
 %%   <<"BackupId">> := string(),
 %%   <<"DestinationRegion">> := string(),
@@ -247,50 +157,54 @@
 -type copy_backup_to_region_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"ResourceArn">> => string()
+%% copy_backup_to_region_response() :: #{
+%%   <<"DestinationBackup">> => destination_backup()
 %% }
--type get_resource_policy_request() :: #{binary() => any()}.
+-type copy_backup_to_region_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_request() :: #{
+%% create_cluster_request() :: #{
 %%   <<"BackupRetentionPolicy">> => backup_retention_policy(),
-%%   <<"ClusterId">> := string(),
-%%   <<"HsmType">> => string()
-%% }
--type modify_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% backup() :: #{
-%%   <<"BackupArn">> => string(),
-%%   <<"BackupId">> => string(),
-%%   <<"BackupState">> => list(any()),
-%%   <<"ClusterId">> => string(),
-%%   <<"CopyTimestamp">> => non_neg_integer(),
-%%   <<"CreateTimestamp">> => non_neg_integer(),
-%%   <<"DeleteTimestamp">> => non_neg_integer(),
-%%   <<"HsmType">> => string(),
+%%   <<"HsmType">> := string(),
 %%   <<"Mode">> => list(any()),
-%%   <<"NeverExpires">> => boolean(),
-%%   <<"SourceBackup">> => string(),
-%%   <<"SourceCluster">> => string(),
-%%   <<"SourceRegion">> => string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"SourceBackupId">> => string(),
+%%   <<"SubnetIds">> := list(string()),
 %%   <<"TagList">> => list(tag())
 %% }
--type backup() :: #{binary() => any()}.
+-type create_cluster_request() :: #{binary() => any()}.
 
 %% Example:
-%% initialize_cluster_response() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateMessage">> => string()
+%% create_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
 %% }
--type initialize_cluster_response() :: #{binary() => any()}.
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_request() :: #{
+%%   <<"AvailabilityZone">> := string(),
+%%   <<"ClusterId">> := string(),
+%%   <<"IpAddress">> => string()
+%% }
+-type create_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_response() :: #{
+%%   <<"Hsm">> => hsm()
+%% }
+-type create_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_request() :: #{
+%%   <<"BackupId">> := string()
+%% }
+-type delete_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type delete_backup_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cluster_request() :: #{
@@ -299,23 +213,91 @@
 -type delete_cluster_request() :: #{binary() => any()}.
 
 %% Example:
-%% restore_backup_request() :: #{
-%%   <<"BackupId">> := string()
+%% delete_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
 %% }
--type restore_backup_request() :: #{binary() => any()}.
+-type delete_cluster_response() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_hsm_invalid_request_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_hsm_request() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"EniId">> => string(),
+%%   <<"EniIp">> => string(),
+%%   <<"HsmId">> => string()
 %% }
--type cloud_hsm_invalid_request_exception() :: #{binary() => any()}.
+-type delete_hsm_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_resource_policy_request() :: #{
+%% delete_hsm_response() :: #{
+%%   <<"HsmId">> => string()
+%% }
+-type delete_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
 %%   <<"Policy">> => string(),
 %%   <<"ResourceArn">> => string()
 %% }
--type put_resource_policy_request() :: #{binary() => any()}.
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_request() :: #{
+%%   <<"Filters">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Shared">> => boolean(),
+%%   <<"SortAscending">> => boolean()
+%% }
+-type describe_backups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_response() :: #{
+%%   <<"Backups">> => list(backup()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_backups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"Filters">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"Clusters">> => list(cluster()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_backup() :: #{
+%%   <<"CreateTimestamp">> => non_neg_integer(),
+%%   <<"SourceBackup">> => string(),
+%%   <<"SourceCluster">> => string(),
+%%   <<"SourceRegion">> => string()
+%% }
+-type destination_backup() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% hsm() :: #{
@@ -333,48 +315,6 @@
 -type hsm() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cloud_hsm_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% copy_backup_to_region_response() :: #{
-%%   <<"DestinationBackup">> => destination_backup()
-%% }
--type copy_backup_to_region_response() :: #{binary() => any()}.
-
-%% Example:
-%% certificates() :: #{
-%%   <<"AwsHardwareCertificate">> => string(),
-%%   <<"ClusterCertificate">> => string(),
-%%   <<"ClusterCsr">> => string(),
-%%   <<"HsmCertificate">> => string(),
-%%   <<"ManufacturerHardwareCertificate">> => string()
-%% }
--type certificates() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
 %% initialize_cluster_request() :: #{
 %%   <<"ClusterId">> := string(),
 %%   <<"SignedCert">> := string(),
@@ -383,23 +323,11 @@
 -type initialize_cluster_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"ResourceArn">> => string()
+%% initialize_cluster_response() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string()
 %% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_backups_response() :: #{
-%%   <<"Backups">> => list(backup()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_backups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_request() :: #{
-%%   <<"BackupId">> := string()
-%% }
--type delete_backup_request() :: #{binary() => any()}.
+-type initialize_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_request() :: #{
@@ -410,85 +338,157 @@
 -type list_tags_request() :: #{binary() => any()}.
 
 %% Example:
-%% backup_retention_policy() :: #{
-%%   <<"Type">> => list(any()),
+%% list_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TagList">> => list(tag())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_backup_attributes_request() :: #{
+%%   <<"BackupId">> := string(),
+%%   <<"NeverExpires">> := boolean()
+%% }
+-type modify_backup_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_backup_attributes_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type modify_backup_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_request() :: #{
+%%   <<"BackupRetentionPolicy">> => backup_retention_policy(),
+%%   <<"ClusterId">> := string(),
+%%   <<"HsmType">> => string()
+%% }
+-type modify_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type modify_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_backup_request() :: #{
+%%   <<"BackupId">> := string()
+%% }
+-type restore_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_backup_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type restore_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
--type backup_retention_policy() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_hsm_tag_exception() :: #{
-%%   <<"Message">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagList">> := list(tag())
 %% }
--type cloud_hsm_tag_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_clusters_request() :: #{
-%%   <<"Filters">> => map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% tag_resource_response() :: #{
+
 %% }
--type describe_clusters_request() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagKeyList">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 -type copy_backup_to_region_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type create_cluster_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type create_hsm_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type delete_backup_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type delete_cluster_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type delete_hsm_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type delete_resource_policy_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type describe_backups_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type describe_clusters_errors() ::
     cloud_hsm_tag_exception() | 
@@ -499,70 +499,70 @@
 
 -type get_resource_policy_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type initialize_cluster_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type list_tags_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type modify_backup_attributes_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type modify_cluster_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type put_resource_policy_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type restore_backup_errors() ::
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type tag_resource_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
+    cloud_hsm_resource_limit_exceeded_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_resource_limit_exceeded_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 -type untag_resource_errors() ::
     cloud_hsm_tag_exception() | 
     cloud_hsm_service_exception() | 
+    cloud_hsm_resource_not_found_exception() | 
     cloud_hsm_invalid_request_exception() | 
     cloud_hsm_internal_failure_exception() | 
-    cloud_hsm_access_denied_exception() | 
-    cloud_hsm_resource_not_found_exception().
+    cloud_hsm_access_denied_exception().
 
 %%====================================================================
 %% API

@@ -264,150 +264,48 @@
 
 
 %% Example:
-%% email_generative_answer_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string(),
-%%   <<"references">> => list(data_summary())
+%% a_i_agent_configuration_data() :: #{
+%%   <<"aiAgentId">> => string()
 %% }
--type email_generative_answer_chunk_data_details() :: #{binary() => any()}.
+-type a_i_agent_configuration_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_content_upload_response() :: #{
-%%   <<"headersToInclude">> := map(),
-%%   <<"uploadId">> := string(),
-%%   <<"url">> := string(),
-%%   <<"urlExpiry">> := [non_neg_integer()]
-%% }
--type start_content_upload_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_message_template_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_message_template_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_a_i_guardrail_request() :: #{}
--type get_a_i_guardrail_request() :: #{}.
-
-
-%% Example:
-%% update_knowledge_base_template_uri_request() :: #{
-%%   <<"templateUri">> := string()
-%% }
--type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_feedback_request() :: #{
-%%   <<"contentFeedback">> := list(),
-%%   <<"targetId">> := string(),
-%%   <<"targetType">> := string()
-%% }
--type put_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggested_message_data_details() :: #{
-%%   <<"messageText">> => string()
-%% }
--type suggested_message_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_models_request() :: #{
-%%   <<"aiPromptType">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"modelLifecycle">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_models_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_agent_version_response() :: #{}
--type delete_a_i_agent_version_response() :: #{}.
-
-
-%% Example:
-%% query_assistant_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> := list(result_data())
-%% }
--type query_assistant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_configuration() :: #{
-%%   <<"generateChunkedMessage">> => [boolean()],
-%%   <<"generateFillerMessage">> => [boolean()]
-%% }
--type message_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_i_agents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"origin">> => string()
-%% }
--type list_a_i_agents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_models_response() :: #{
-%%   <<"modelSummaries">> => list(model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_template_order_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"order">> => string()
-%% }
--type message_template_order_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_template_attachment_response() :: #{}
--type delete_message_template_attachment_response() :: #{}.
-
-
-%% Example:
-%% retrieval_configuration() :: #{
-%%   <<"filter">> => list(),
-%%   <<"knowledgeSource">> => list(),
-%%   <<"numberOfResults">> => [integer()],
-%%   <<"overrideKnowledgeBaseSearchType">> => string()
-%% }
--type retrieval_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
+%% a_i_agent_data() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string(),
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string()
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
 %% }
--type session_summary() :: #{binary() => any()}.
+-type a_i_agent_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
+%% a_i_agent_summary() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
 %% }
--type create_quick_response_response() :: #{binary() => any()}.
+-type a_i_agent_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,1297 +317,24 @@
 
 
 %% Example:
-%% get_session_response() :: #{
-%%   <<"session">> => session_data()
+%% a_i_guardrail_assessment() :: #{
+%%   <<"blocked">> => [boolean()]
 %% }
--type get_session_response() :: #{binary() => any()}.
+-type a_i_guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:
-%% whats_app_message_template_content() :: #{
-%%   <<"data">> => string()
+%% a_i_guardrail_content_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config())
 %% }
--type whats_app_message_template_content() :: #{binary() => any()}.
+-type a_i_guardrail_content_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_a_i_agent_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"origin">> => string()
+%% a_i_guardrail_contextual_grounding_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
 %% }
--type list_a_i_agent_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_guardrail_version_response() :: #{}
--type delete_a_i_guardrail_version_response() :: #{}.
-
-
-%% Example:
-%% orchestrator_configuration_entry() :: #{
-%%   <<"aiAgentId">> => string(),
-%%   <<"orchestratorUseCase">> => string()
-%% }
--type orchestrator_configuration_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_assistant_a_i_agent_request() :: #{
-%%   <<"aiAgentType">> := string(),
-%%   <<"orchestratorUseCase">> => string()
-%% }
--type remove_assistant_a_i_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_summary() :: #{
-%%   <<"details">> => list(),
-%%   <<"reference">> => list()
-%% }
--type data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quick_responses_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := quick_response_search_expression()
-%% }
--type search_quick_responses_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% quick_response_search_expression() :: #{
-%%   <<"filters">> => list(quick_response_filter_field()),
-%%   <<"orderOnField">> => quick_response_order_field(),
-%%   <<"queries">> => list(quick_response_query_field())
-%% }
--type quick_response_search_expression() :: #{binary() => any()}.
-
-%% Example:
-%% get_content_association_request() :: #{}
--type get_content_association_request() :: #{}.
-
-
-%% Example:
-%% deactivate_message_template_response() :: #{
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateId">> => string(),
-%%   <<"versionNumber">> => float()
-%% }
--type deactivate_message_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fixed_size_chunking_configuration() :: #{
-%%   <<"maxTokens">> => [integer()],
-%%   <<"overlapPercentage">> => [integer()]
-%% }
--type fixed_size_chunking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% highlight() :: #{
-%%   <<"beginOffsetInclusive">> => integer(),
-%%   <<"endOffsetExclusive">> => integer()
-%% }
--type highlight() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic_config() :: #{
-%%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type guardrail_topic_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_integrations_configuration() :: #{
-%%   <<"appIntegrationArn">> => string(),
-%%   <<"objectFields">> => list(string())
-%% }
--type app_integrations_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_i_agent_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string(),
-%%   <<"visibilityStatus">> := string()
-%% }
--type create_a_i_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_i_agent_versions_response() :: #{
-%%   <<"aiAgentVersionSummaries">> => list(a_i_agent_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_i_agent_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_i_agent_response() :: #{
-%%   <<"aiAgent">> => a_i_agent_data()
-%% }
--type create_a_i_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_iprompt_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()]
-%% }
--type create_a_iprompt_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% span_tool_use_value() :: #{
-%%   <<"arguments">> => any(),
-%%   <<"name">> => string(),
-%%   <<"toolUseId">> => string()
-%% }
--type span_tool_use_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_a_i_agent_response() :: #{
-%%   <<"aiAgent">> => a_i_agent_data(),
-%%   <<"versionNumber">> => float()
-%% }
--type get_a_i_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contents_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_contents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_text_input_data() :: #{
-%%   <<"text">> => string()
-%% }
--type query_text_input_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_response_filter_field() :: #{
-%%   <<"includeNoExistence">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type quick_response_filter_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_summary() :: #{
-%%   <<"crossRegionStatus">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"endOfLifeTimestamp">> => [non_neg_integer()],
-%%   <<"legacyTimestamp">> => [non_neg_integer()],
-%%   <<"modelId">> => string(),
-%%   <<"modelLifecycle">> => string(),
-%%   <<"supportedAIPromptTypes">> => list(string()),
-%%   <<"supportsPromptCaching">> => [boolean()]
-%% }
--type model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_messages_response() :: #{
-%%   <<"messages">> => list(message_output()),
-%%   <<"nextToken">> => string()
-%% }
--type list_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_filter_config() :: #{
-%%   <<"threshold">> => float(),
-%%   <<"type">> => string()
-%% }
--type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_condition() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_failed_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type dependency_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_next_message_response() :: #{
-%%   <<"chunkedResponseTerminated">> => [boolean()],
-%%   <<"conversationSessionData">> => list(runtime_session_data()),
-%%   <<"conversationState">> => conversation_state(),
-%%   <<"nextMessageToken">> => string(),
-%%   <<"requestMessageId">> => string(),
-%%   <<"response">> => message_output(),
-%%   <<"type">> => string()
-%% }
--type get_next_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_association_data() :: #{
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"contentArn">> => string(),
-%%   <<"contentAssociationArn">> => string(),
-%%   <<"contentAssociationId">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type content_association_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% citation() :: #{
-%%   <<"citationSpan">> => citation_span(),
-%%   <<"contentId">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"referenceType">> => string(),
-%%   <<"sourceURL">> => string(),
-%%   <<"title">> => string()
-%% }
--type citation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_i_guardrail_versions_response() :: #{
-%%   <<"aiGuardrailVersionSummaries">> => list(a_i_guardrail_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_i_guardrail_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% activate_message_template_request() :: #{
-%%   <<"versionNumber">> := float()
-%% }
--type activate_message_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_source_configuration() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"source">> => string()
-%% }
--type external_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_attributes() :: #{
-%%   <<"firstName">> => string(),
-%%   <<"lastName">> => string()
-%% }
--type agent_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_content_association_response() :: #{
-%%   <<"contentAssociation">> => content_association_data()
-%% }
--type create_content_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_iprompt_version_summary() :: #{
-%%   <<"aiPromptSummary">> => a_iprompt_summary(),
-%%   <<"versionNumber">> => float()
-%% }
--type a_iprompt_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_data() :: #{
-%%   <<"data">> => data_summary(),
-%%   <<"document">> => document(),
-%%   <<"recommendationId">> => string(),
-%%   <<"relevanceLevel">> => string(),
-%%   <<"relevanceScore">> => float(),
-%%   <<"type">> => string()
-%% }
--type recommendation_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_contents_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_knowledge_base_template_uri_response() :: #{}
--type remove_knowledge_base_template_uri_response() :: #{}.
-
-%% Example:
-%% delete_a_i_agent_version_request() :: #{}
--type delete_a_i_agent_version_request() :: #{}.
-
-
-%% Example:
-%% email_generative_answer_a_i_agent_configuration() :: #{
-%%   <<"associationConfigurations">> => list(association_configuration()),
-%%   <<"emailGenerativeAnswerAIPromptId">> => string(),
-%%   <<"emailQueryReformulationAIPromptId">> => string(),
-%%   <<"locale">> => string()
-%% }
--type email_generative_answer_a_i_agent_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assistant_association_request() :: #{}
--type delete_assistant_association_request() :: #{}.
-
-
-%% Example:
-%% guardrail_policy_result() :: #{
-%%   <<"action">> => string(),
-%%   <<"details">> => string(),
-%%   <<"policyType">> => string()
-%% }
--type guardrail_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_state() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => string()
-%% }
--type conversation_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_content_summary_response() :: #{
-%%   <<"contentSummary">> => content_summary()
-%% }
--type get_content_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assistant_integration_configuration() :: #{
-%%   <<"topicIntegrationArn">> => string()
-%% }
--type assistant_integration_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_detected_data_details() :: #{
-%%   <<"intent">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"relevanceLevel">> => string()
-%% }
--type intent_detected_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_data() :: #{
-%%   <<"excerpt">> => document_text(),
-%%   <<"title">> => document_text()
-%% }
--type text_data() :: #{binary() => any()}.
-
-%% Example:
-%% delete_knowledge_base_response() :: #{}
--type delete_knowledge_base_response() :: #{}.
-
-
-%% Example:
-%% generative_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string(),
-%%   <<"references">> => list(data_summary())
-%% }
--type generative_chunk_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_content_response() :: #{
-%%   <<"content">> => content_data()
-%% }
--type create_content_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_iprompts_response() :: #{
-%%   <<"aiPromptSummaries">> => list(a_iprompt_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_iprompts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assistant_response() :: #{
-%%   <<"assistant">> => assistant_data()
-%% }
--type get_assistant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendations_response() :: #{
-%%   <<"recommendations">> := list(recommendation_data()),
-%%   <<"triggers">> => list(recommendation_trigger())
-%% }
--type get_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% orchestration_a_i_agent_configuration() :: #{
-%%   <<"connectInstanceArn">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"orchestrationAIGuardrailId">> => string(),
-%%   <<"orchestrationAIPromptId">> => string(),
-%%   <<"toolConfigurations">> => list(tool_configuration())
-%% }
--type orchestration_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_timeout_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type request_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_i_guardrail_request() :: #{
-%%   <<"blockedInputMessaging">> := string(),
-%%   <<"blockedOutputsMessaging">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
-%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
-%%   <<"description">> => string(),
-%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
-%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
-%%   <<"visibilityStatus">> := string(),
-%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
-%% }
--type update_a_i_guardrail_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_iprompts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"origin">> => string()
-%% }
--type list_a_iprompts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_iprompt_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
-%%   <<"modelId">> => string(),
-%%   <<"templateConfiguration">> => list(),
-%%   <<"visibilityStatus">> := string()
-%% }
--type update_a_iprompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_template_attributes() :: #{
-%%   <<"agentAttributes">> => agent_attributes(),
-%%   <<"customAttributes">> => map(),
-%%   <<"customerProfileAttributes">> => customer_profile_attributes(),
-%%   <<"systemAttributes">> => system_attributes()
-%% }
--type message_template_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_feedback_response() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"contentFeedback">> => list(),
-%%   <<"targetId">> => string(),
-%%   <<"targetType">> => string()
-%% }
--type put_feedback_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"externalSourceConfiguration">> => external_source_configuration(),
-%%   <<"importJobType">> := string(),
-%%   <<"metadata">> => map(),
-%%   <<"uploadId">> := string()
-%% }
--type start_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base_data()
-%% }
--type create_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% parsing_configuration() :: #{
-%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration_for_parsing(),
-%%   <<"parsingStrategy">> => string()
-%% }
--type parsing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assistant_association_response() :: #{
-%%   <<"assistantAssociation">> => assistant_association_data()
-%% }
--type get_assistant_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quick_response_request() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"content">> := list(),
-%%   <<"contentType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"isActive">> => [boolean()],
-%%   <<"language">> => string(),
-%%   <<"name">> := string(),
-%%   <<"shortcutKey">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_quick_response_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_guardrail_response() :: #{}
--type delete_a_i_guardrail_response() :: #{}.
-
-%% Example:
-%% delete_a_i_guardrail_request() :: #{}
--type delete_a_i_guardrail_request() :: #{}.
-
-
-%% Example:
-%% span_attributes() :: #{
-%%   <<"aiAgentOrchestratorUseCase">> => string(),
-%%   <<"inputMessages">> => list(span_message()),
-%%   <<"responseModel">> => string(),
-%%   <<"promptType">> => string(),
-%%   <<"usageOutputTokens">> => [integer()],
-%%   <<"errorType">> => string(),
-%%   <<"promptName">> => string(),
-%%   <<"timeToFirstTokenMs">> => [integer()],
-%%   <<"aiAgentId">> => string(),
-%%   <<"promptId">> => string(),
-%%   <<"contactId">> => string(),
-%%   <<"systemInstructions">> => list(list()),
-%%   <<"guardrailAssessments">> => list(span_guardrail_assessment()),
-%%   <<"initialContactId">> => string(),
-%%   <<"instanceArn">> => string(),
-%%   <<"requestModel">> => string(),
-%%   <<"cacheReadInputTokens">> => [integer()],
-%%   <<"responseFinishReasons">> => list(string()),
-%%   <<"aiAgentVersion">> => [integer()],
-%%   <<"promptVersion">> => [integer()],
-%%   <<"topP">> => [float()],
-%%   <<"usageInputTokens">> => [integer()],
-%%   <<"operationName">> => string(),
-%%   <<"aiAgentArn">> => string(),
-%%   <<"requestMaxTokens">> => [integer()],
-%%   <<"providerName">> => string(),
-%%   <<"aiAgentType">> => string(),
-%%   <<"promptArn">> => string(),
-%%   <<"agentId">> => string(),
-%%   <<"aiAgentInvoker">> => string(),
-%%   <<"temperature">> => [float()],
-%%   <<"aiAgentName">> => string(),
-%%   <<"sessionName">> => string(),
-%%   <<"usageTotalTokens">> => [integer()],
-%%   <<"outputMessages">> => list(span_message()),
-%%   <<"cacheWriteInputTokens">> => [integer()]
-%% }
--type span_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_i_agent_version_response() :: #{
-%%   <<"aiAgent">> => a_i_agent_data(),
-%%   <<"versionNumber">> => float()
-%% }
--type create_a_i_agent_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_output_configuration() :: #{
-%%   <<"outputVariableNameOverride">> => string(),
-%%   <<"sessionDataNamespace">> => string()
-%% }
--type tool_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_association_summary() :: #{
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"contentArn">> => string(),
-%%   <<"contentAssociationArn">> => string(),
-%%   <<"contentAssociationId">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type content_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_configuration() :: #{
-%%   <<"instanceId">> => string()
-%% }
--type connect_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_iprompt_response() :: #{}
--type delete_a_iprompt_response() :: #{}.
-
-
-%% Example:
-%% search_content_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type search_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
-
-%% Example:
-%% span_text_value() :: #{
-%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
-%%   <<"citations">> => list(span_citation()),
-%%   <<"value">> => string()
-%% }
--type span_text_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_agent_request() :: #{}
--type delete_a_i_agent_request() :: #{}.
-
-
-%% Example:
-%% message_template_filter_field() :: #{
-%%   <<"includeNoExistence">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type message_template_filter_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_message_template_attachment_request() :: #{
-%%   <<"body">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"contentDisposition">> := string(),
-%%   <<"name">> := string()
-%% }
--type create_message_template_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assistant_capability_configuration() :: #{
-%%   <<"type">> => string()
-%% }
--type assistant_capability_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_agent_configuration_data() :: #{
-%%   <<"aiAgentId">> => string()
-%% }
--type a_i_agent_configuration_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_a_i_guardrail_response() :: #{
-%%   <<"aiGuardrail">> => a_i_guardrail_data(),
-%%   <<"versionNumber">> => float()
-%% }
--type get_a_i_guardrail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_i_agents_response() :: #{
-%%   <<"aiAgentSummaries">> => list(a_i_agent_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_i_agents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_template_search_expression() :: #{
-%%   <<"filters">> => list(message_template_filter_field()),
-%%   <<"orderOnField">> => message_template_order_field(),
-%%   <<"queries">> => list(message_template_query_field())
-%% }
--type message_template_search_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quick_responses_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_quick_responses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_endpoint_attributes() :: #{
-%%   <<"address">> => string()
-%% }
--type system_endpoint_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% generative_reference() :: #{
-%%   <<"generationId">> => string(),
-%%   <<"modelId">> => string()
-%% }
--type generative_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_content_upload_request() :: #{
-%%   <<"contentType">> := string(),
-%%   <<"presignedUrlTimeToLive">> => integer()
-%% }
--type start_content_upload_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_managed_words_config() :: #{
-%%   <<"type">> => string()
-%% }
--type guardrail_managed_words_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_template_response() :: #{}
--type delete_message_template_response() :: #{}.
-
-
-%% Example:
-%% span_reasoning_value() :: #{
-%%   <<"value">> => string()
-%% }
--type span_reasoning_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_message_template_request() :: #{
-%%   <<"channelSubtype">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"content">> => list(),
-%%   <<"defaultAttributes">> => message_template_attributes(),
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"language">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"tags">> => map()
-%% }
--type create_message_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_instruction() :: #{
-%%   <<"examples">> => list([string()]()),
-%%   <<"instruction">> => [string()]
-%% }
--type tool_instruction() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assistant_request() :: #{}
--type delete_assistant_request() :: #{}.
-
-
-%% Example:
-%% list_a_iprompt_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"origin">> => string()
-%% }
--type list_a_iprompt_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_service_a_i_agent_configuration() :: #{
-%%   <<"associationConfigurations">> => list(association_configuration()),
-%%   <<"selfServiceAIGuardrailId">> => string(),
-%%   <<"selfServiceAnswerGenerationAIPromptId">> => string(),
-%%   <<"selfServicePreProcessingAIPromptId">> => string()
-%% }
--type self_service_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_content_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_content_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% association_configuration() :: #{
-%%   <<"associationConfigurationData">> => list(),
-%%   <<"associationId">> => string(),
-%%   <<"associationType">> => string()
-%% }
--type association_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchical_chunking_configuration() :: #{
-%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
-%%   <<"overlapTokens">> => [integer()]
-%% }
--type hierarchical_chunking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_request() :: #{
-%%   <<"aiAgentConfiguration">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"contactArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
-%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
-%%   <<"tagFilter">> => list(),
-%%   <<"tags">> => map()
-%% }
--type create_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_profile_attributes() :: #{
-%%   <<"shippingCounty">> => string(),
-%%   <<"accountNumber">> => string(),
-%%   <<"shippingCity">> => string(),
-%%   <<"emailAddress">> => string(),
-%%   <<"additionalInformation">> => string(),
-%%   <<"firstName">> => string(),
-%%   <<"businessEmailAddress">> => string(),
-%%   <<"billingState">> => string(),
-%%   <<"birthDate">> => string(),
-%%   <<"postalCode">> => string(),
-%%   <<"address3">> => string(),
-%%   <<"businessPhoneNumber">> => string(),
-%%   <<"mailingAddress1">> => string(),
-%%   <<"mailingCountry">> => string(),
-%%   <<"mailingAddress3">> => string(),
-%%   <<"shippingState">> => string(),
-%%   <<"billingCountry">> => string(),
-%%   <<"shippingAddress2">> => string(),
-%%   <<"billingPostalCode">> => string(),
-%%   <<"shippingAddress3">> => string(),
-%%   <<"state">> => string(),
-%%   <<"country">> => string(),
-%%   <<"homePhoneNumber">> => string(),
-%%   <<"address1">> => string(),
-%%   <<"mailingState">> => string(),
-%%   <<"city">> => string(),
-%%   <<"businessName">> => string(),
-%%   <<"county">> => string(),
-%%   <<"mailingPostalCode">> => string(),
-%%   <<"billingCounty">> => string(),
-%%   <<"partyType">> => string(),
-%%   <<"shippingPostalCode">> => string(),
-%%   <<"mailingCity">> => string(),
-%%   <<"custom">> => map(),
-%%   <<"shippingAddress4">> => string(),
-%%   <<"lastName">> => string(),
-%%   <<"gender">> => string(),
-%%   <<"mailingCounty">> => string(),
-%%   <<"billingProvince">> => string(),
-%%   <<"mailingAddress2">> => string(),
-%%   <<"shippingAddress1">> => string(),
-%%   <<"mailingAddress4">> => string(),
-%%   <<"mailingProvince">> => string(),
-%%   <<"shippingProvince">> => string(),
-%%   <<"phoneNumber">> => string(),
-%%   <<"billingAddress4">> => string(),
-%%   <<"mobilePhoneNumber">> => string(),
-%%   <<"address4">> => string(),
-%%   <<"address2">> => string(),
-%%   <<"billingAddress3">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"profileARN">> => string(),
-%%   <<"billingCity">> => string(),
-%%   <<"billingAddress2">> => string(),
-%%   <<"billingAddress1">> => string(),
-%%   <<"shippingCountry">> => string(),
-%%   <<"province">> => string(),
-%%   <<"middleName">> => string()
-%% }
--type customer_profile_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% span_citation() :: #{
-%%   <<"contentId">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"title">> => string()
-%% }
--type span_citation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_knowledge_base_template_uri_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base_data()
-%% }
--type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_guardrail_version_request() :: #{}
--type delete_a_i_guardrail_version_request() :: #{}.
-
-
-%% Example:
-%% annotation() :: #{
-%%   <<"destructiveHint">> => [boolean()],
-%%   <<"title">> => [string()]
-%% }
--type annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_iprompt_data() :: #{
-%%   <<"aiPromptArn">> => string(),
-%%   <<"aiPromptId">> => string(),
-%%   <<"apiFormat">> => string(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
-%%   <<"modelId">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"origin">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"templateConfiguration">> => list(),
-%%   <<"templateType">> => string(),
-%%   <<"type">> => string(),
-%%   <<"visibilityStatus">> => string()
-%% }
--type a_iprompt_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_i_guardrail_response() :: #{
-%%   <<"aiGuardrail">> => a_i_guardrail_data()
-%% }
--type update_a_i_guardrail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% span() :: #{
-%%   <<"assistantId">> => string(),
-%%   <<"attributes">> => span_attributes(),
-%%   <<"endTimestamp">> => [non_neg_integer()],
-%%   <<"originRequestId">> => string(),
-%%   <<"parentSpanId">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"spanId">> => string(),
-%%   <<"spanName">> => string(),
-%%   <<"spanType">> => string(),
-%%   <<"startTimestamp">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"statusDescription">> => string()
-%% }
--type span() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_iprompt_version_response() :: #{}
--type delete_a_iprompt_version_response() :: #{}.
-
-%% Example:
-%% get_a_i_agent_request() :: #{}
--type get_a_i_agent_request() :: #{}.
-
-
-%% Example:
-%% create_message_template_attachment_response() :: #{
-%%   <<"attachment">> => message_template_attachment()
-%% }
--type create_message_template_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% notes_data_details() :: #{
-%%   <<"completion">> => string()
-%% }
--type notes_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_knowledge_base_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseType">> := string(),
-%%   <<"name">> := string(),
-%%   <<"renderingConfiguration">> => rendering_configuration(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"tags">> => map(),
-%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
-%% }
--type create_knowledge_base_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_input() :: #{
-%%   <<"value">> => list()
-%% }
--type message_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_message_template_versions_response() :: #{
-%%   <<"messageTemplateVersionSummaries">> => list(message_template_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_message_template_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseType">> => string(),
-%%   <<"name">> => string(),
-%%   <<"renderingConfiguration">> => rendering_configuration(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
-%% }
--type knowledge_base_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_iprompt_response() :: #{
-%%   <<"aiPrompt">> => a_iprompt_data()
-%% }
--type create_a_iprompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quick_responses_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"quickResponseSummaries">> => list(quick_response_summary())
-%% }
--type list_quick_responses_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_a_p_n_s_message_template_content() :: #{
-%%   <<"action">> => string(),
-%%   <<"body">> => list(),
-%%   <<"mediaUrl">> => string(),
-%%   <<"rawContent">> => list(),
-%%   <<"sound">> => string(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string()
-%% }
--type push_a_p_n_s_message_template_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_bases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_knowledge_bases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_content_association_request() :: #{
-%%   <<"association">> := list(),
-%%   <<"associationType">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_content_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_assistant_a_i_agent_response() :: #{}
--type remove_assistant_a_i_agent_response() :: #{}.
-
-
-%% Example:
-%% import_job_data() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"externalSourceConfiguration">> => external_source_configuration(),
-%%   <<"failedRecordReport">> => string(),
-%%   <<"importJobId">> => string(),
-%%   <<"importJobType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"metadata">> => map(),
-%%   <<"status">> => string(),
-%%   <<"uploadId">> => string(),
-%%   <<"url">> => string(),
-%%   <<"urlExpiry">> => [non_neg_integer()]
-%% }
--type import_job_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_data() :: #{
-%%   <<"description">> => string(),
-%%   <<"ingestionFailureReasons">> => list(string()),
-%%   <<"ingestionStatus">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseType">> => string(),
-%%   <<"lastContentModificationTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"renderingConfiguration">> => rendering_configuration(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
-%% }
--type knowledge_base_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% assistant_association_data() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantAssociationArn">> => string(),
-%%   <<"assistantAssociationId">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"tags">> => map()
-%% }
--type assistant_association_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_filter_config() :: #{
-%%   <<"inputStrength">> => string(),
-%%   <<"outputStrength">> => string(),
-%%   <<"type">> => string()
-%% }
--type guardrail_content_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_text() :: #{
-%%   <<"highlights">> => list(highlight()),
-%%   <<"text">> => string()
-%% }
--type document_text() :: #{binary() => any()}.
-
-%% Example:
-%% get_assistant_request() :: #{}
--type get_assistant_request() :: #{}.
-
-%% Example:
-%% delete_assistant_response() :: #{}
--type delete_assistant_response() :: #{}.
-
-
-%% Example:
-%% message_template_query_field() :: #{
-%%   <<"allowFuzziness">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"priority">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type message_template_query_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% deactivate_message_template_request() :: #{
-%%   <<"versionNumber">> := float()
-%% }
--type deactivate_message_template_request() :: #{binary() => any()}.
+-type a_i_guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1736,20 +361,1064 @@
 
 
 %% Example:
-%% update_message_template_request() :: #{
-%%   <<"content">> => list(),
-%%   <<"defaultAttributes">> => message_template_attributes(),
-%%   <<"language">> => string(),
-%%   <<"sourceConfiguration">> => list()
+%% a_i_guardrail_sensitive_information_policy_config() :: #{
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config())
 %% }
--type update_message_template_request() :: #{binary() => any()}.
+-type a_i_guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% a_i_guardrail_assessment() :: #{
-%%   <<"blocked">> => [boolean()]
+%% a_i_guardrail_summary() :: #{
+%%   <<"aiGuardrailArn">> => string(),
+%%   <<"aiGuardrailId">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"visibilityStatus">> => string()
 %% }
--type a_i_guardrail_assessment() :: #{binary() => any()}.
+-type a_i_guardrail_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_topic_policy_config() :: #{
+%%   <<"topicsConfig">> => list(guardrail_topic_config())
+%% }
+-type a_i_guardrail_topic_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_version_summary() :: #{
+%%   <<"aiGuardrailSummary">> => a_i_guardrail_summary(),
+%%   <<"versionNumber">> => float()
+%% }
+-type a_i_guardrail_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_guardrail_word_policy_config() :: #{
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
+%%   <<"wordsConfig">> => list(guardrail_word_config())
+%% }
+-type a_i_guardrail_word_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_iprompt_data() :: #{
+%%   <<"aiPromptArn">> => string(),
+%%   <<"aiPromptId">> => string(),
+%%   <<"apiFormat">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
+%%   <<"modelId">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => string(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_iprompt_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_iprompt_inference_configuration() :: #{
+%%   <<"maxTokensToSample">> => integer(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type a_iprompt_inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_iprompt_summary() :: #{
+%%   <<"aiPromptArn">> => string(),
+%%   <<"aiPromptId">> => string(),
+%%   <<"apiFormat">> => string(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"origin">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateType">> => string(),
+%%   <<"type">> => string(),
+%%   <<"visibilityStatus">> => string()
+%% }
+-type a_iprompt_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_iprompt_version_summary() :: #{
+%%   <<"aiPromptSummary">> => a_iprompt_summary(),
+%%   <<"versionNumber">> => float()
+%% }
+-type a_iprompt_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_message_template_request() :: #{
+%%   <<"versionNumber">> := float()
+%% }
+-type activate_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_message_template_response() :: #{
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type activate_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_attributes() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string()
+%% }
+-type agent_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_connect_guide_association_data() :: #{
+%%   <<"flowId">> => string()
+%% }
+-type amazon_connect_guide_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation() :: #{
+%%   <<"destructiveHint">> => [boolean()],
+%%   <<"title">> => [string()]
+%% }
+-type annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% answer_recommendation_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIGuardrailId">> => string(),
+%%   <<"answerGenerationAIPromptId">> => string(),
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"intentLabelingGenerationAIPromptId">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"queryReformulationAIPromptId">> => string(),
+%%   <<"suggestedMessages">> => list(string())
+%% }
+-type answer_recommendation_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_integrations_configuration() :: #{
+%%   <<"appIntegrationArn">> => string(),
+%%   <<"objectFields">> => list(string())
+%% }
+-type app_integrations_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_association_data() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type assistant_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_association_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type assistant_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_capability_configuration() :: #{
+%%   <<"type">> => string()
+%% }
+-type assistant_capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_data() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type assistant_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_integration_configuration() :: #{
+%%   <<"topicIntegrationArn">> => string()
+%% }
+-type assistant_integration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_summary() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type assistant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% association_configuration() :: #{
+%%   <<"associationConfigurationData">> => list(),
+%%   <<"associationId">> => string(),
+%%   <<"associationType">> => string()
+%% }
+-type association_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_configuration_for_parsing() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"parsingPrompt">> => parsing_prompt()
+%% }
+-type bedrock_foundation_model_configuration_for_parsing() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_a_i_agent_configuration() :: #{
+%%   <<"caseSummarizationAIGuardrailId">> => string(),
+%%   <<"caseSummarizationAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type case_summarization_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type case_summarization_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summarization_input_data() :: #{
+%%   <<"caseArn">> => string()
+%% }
+-type case_summarization_input_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% chunking_configuration() :: #{
+%%   <<"chunkingStrategy">> => string(),
+%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
+%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
+%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
+%% }
+-type chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"citationSpan">> => citation_span(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceURL">> => string(),
+%%   <<"title">> => string()
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation_span() :: #{
+%%   <<"beginOffsetInclusive">> => integer(),
+%%   <<"endOffsetExclusive">> => integer()
+%% }
+-type citation_span() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_configuration() :: #{
+%%   <<"instanceId">> => string()
+%% }
+-type connect_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_association_data() :: #{
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"contentArn">> => string(),
+%%   <<"contentAssociationArn">> => string(),
+%%   <<"contentAssociationId">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type content_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_association_summary() :: #{
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"contentArn">> => string(),
+%%   <<"contentAssociationArn">> => string(),
+%%   <<"contentAssociationId">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type content_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_data() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"linkOutUri">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type content_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_data_details() :: #{
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"textData">> => text_data()
+%% }
+-type content_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_reference() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceURL">> => [string()]
+%% }
+-type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_summary() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string()
+%% }
+-type content_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_context() :: #{
+%%   <<"selfServiceConversationHistory">> => list(self_service_conversation_history())
+%% }
+-type conversation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
+%% }
+-type conversation_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type create_a_i_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data()
+%% }
+-type create_a_i_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_i_agent_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_agent_version_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_i_agent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
+%%   <<"tags">> => map(),
+%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
+%%   <<"visibilityStatus">> := string(),
+%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% }
+-type create_a_i_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data()
+%% }
+-type create_a_i_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_i_guardrail_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_i_guardrail_version_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_i_guardrail_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_request() :: #{
+%%   <<"apiFormat">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
+%%   <<"modelId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"templateConfiguration">> := list(),
+%%   <<"templateType">> := string(),
+%%   <<"type">> := string(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type create_a_iprompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data()
+%% }
+-type create_a_iprompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"modifiedTime">> => [non_neg_integer()]
+%% }
+-type create_a_iprompt_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_iprompt_version_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type create_a_iprompt_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_request() :: #{
+%%   <<"association">> := list(),
+%%   <<"associationType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_assistant_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
+%% }
+-type create_assistant_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type create_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_association_request() :: #{
+%%   <<"association">> := list(),
+%%   <<"associationType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_content_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_association_response() :: #{
+%%   <<"contentAssociation">> => content_association_data()
+%% }
+-type create_content_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> := string(),
+%%   <<"overrideLinkOutUri">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"uploadId">> := string()
+%% }
+-type create_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_response() :: #{
+%%   <<"content">> => content_data()
+%% }
+-type create_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%% }
+-type create_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type create_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_attachment_request() :: #{
+%%   <<"body">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentDisposition">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_message_template_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_attachment_response() :: #{
+%%   <<"attachment">> => message_template_attachment()
+%% }
+-type create_message_template_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_request() :: #{
+%%   <<"channelSubtype">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"content">> => list(),
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"language">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type create_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_version_request() :: #{
+%%   <<"messageTemplateContentSha256">> => string()
+%% }
+-type create_message_template_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_message_template_version_response() :: #{
+%%   <<"messageTemplate">> => extended_message_template_data()
+%% }
+-type create_message_template_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_response_request() :: #{
+%%   <<"channels">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"content">> := list(),
+%%   <<"contentType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"language">> => string(),
+%%   <<"name">> := string(),
+%%   <<"shortcutKey">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_quick_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
+%% }
+-type create_quick_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_request() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"contactArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
+%%   <<"tagFilter">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_response() :: #{
+%%   <<"session">> => session_data()
+%% }
+-type create_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_profile_attributes() :: #{
+%%   <<"accountNumber">> => string(),
+%%   <<"additionalInformation">> => string(),
+%%   <<"address1">> => string(),
+%%   <<"address2">> => string(),
+%%   <<"address3">> => string(),
+%%   <<"address4">> => string(),
+%%   <<"billingAddress1">> => string(),
+%%   <<"billingAddress2">> => string(),
+%%   <<"billingAddress3">> => string(),
+%%   <<"billingAddress4">> => string(),
+%%   <<"billingCity">> => string(),
+%%   <<"billingCountry">> => string(),
+%%   <<"billingCounty">> => string(),
+%%   <<"billingPostalCode">> => string(),
+%%   <<"billingProvince">> => string(),
+%%   <<"billingState">> => string(),
+%%   <<"birthDate">> => string(),
+%%   <<"businessEmailAddress">> => string(),
+%%   <<"businessName">> => string(),
+%%   <<"businessPhoneNumber">> => string(),
+%%   <<"city">> => string(),
+%%   <<"country">> => string(),
+%%   <<"county">> => string(),
+%%   <<"custom">> => map(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"gender">> => string(),
+%%   <<"homePhoneNumber">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"mailingAddress1">> => string(),
+%%   <<"mailingAddress2">> => string(),
+%%   <<"mailingAddress3">> => string(),
+%%   <<"mailingAddress4">> => string(),
+%%   <<"mailingCity">> => string(),
+%%   <<"mailingCountry">> => string(),
+%%   <<"mailingCounty">> => string(),
+%%   <<"mailingPostalCode">> => string(),
+%%   <<"mailingProvince">> => string(),
+%%   <<"mailingState">> => string(),
+%%   <<"middleName">> => string(),
+%%   <<"mobilePhoneNumber">> => string(),
+%%   <<"partyType">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"profileARN">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"province">> => string(),
+%%   <<"shippingAddress1">> => string(),
+%%   <<"shippingAddress2">> => string(),
+%%   <<"shippingAddress3">> => string(),
+%%   <<"shippingAddress4">> => string(),
+%%   <<"shippingCity">> => string(),
+%%   <<"shippingCountry">> => string(),
+%%   <<"shippingCounty">> => string(),
+%%   <<"shippingPostalCode">> => string(),
+%%   <<"shippingProvince">> => string(),
+%%   <<"shippingState">> => string(),
+%%   <<"state">> => string()
+%% }
+-type customer_profile_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_summary() :: #{
+%%   <<"details">> => list(),
+%%   <<"reference">> => list()
+%% }
+-type data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deactivate_message_template_request() :: #{
+%%   <<"versionNumber">> := float()
+%% }
+-type deactivate_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deactivate_message_template_response() :: #{
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type deactivate_message_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_agent_request() :: #{}
+-type delete_a_i_agent_request() :: #{}.
+
+%% Example:
+%% delete_a_i_agent_response() :: #{}
+-type delete_a_i_agent_response() :: #{}.
+
+%% Example:
+%% delete_a_i_agent_version_request() :: #{}
+-type delete_a_i_agent_version_request() :: #{}.
+
+%% Example:
+%% delete_a_i_agent_version_response() :: #{}
+-type delete_a_i_agent_version_response() :: #{}.
+
+%% Example:
+%% delete_a_i_guardrail_request() :: #{}
+-type delete_a_i_guardrail_request() :: #{}.
+
+%% Example:
+%% delete_a_i_guardrail_response() :: #{}
+-type delete_a_i_guardrail_response() :: #{}.
+
+%% Example:
+%% delete_a_i_guardrail_version_request() :: #{}
+-type delete_a_i_guardrail_version_request() :: #{}.
+
+%% Example:
+%% delete_a_i_guardrail_version_response() :: #{}
+-type delete_a_i_guardrail_version_response() :: #{}.
+
+%% Example:
+%% delete_a_iprompt_request() :: #{}
+-type delete_a_iprompt_request() :: #{}.
+
+%% Example:
+%% delete_a_iprompt_response() :: #{}
+-type delete_a_iprompt_response() :: #{}.
+
+%% Example:
+%% delete_a_iprompt_version_request() :: #{}
+-type delete_a_iprompt_version_request() :: #{}.
+
+%% Example:
+%% delete_a_iprompt_version_response() :: #{}
+-type delete_a_iprompt_version_response() :: #{}.
+
+%% Example:
+%% delete_assistant_association_request() :: #{}
+-type delete_assistant_association_request() :: #{}.
+
+%% Example:
+%% delete_assistant_association_response() :: #{}
+-type delete_assistant_association_response() :: #{}.
+
+%% Example:
+%% delete_assistant_request() :: #{}
+-type delete_assistant_request() :: #{}.
+
+%% Example:
+%% delete_assistant_response() :: #{}
+-type delete_assistant_response() :: #{}.
+
+%% Example:
+%% delete_content_association_request() :: #{}
+-type delete_content_association_request() :: #{}.
+
+%% Example:
+%% delete_content_association_response() :: #{}
+-type delete_content_association_response() :: #{}.
+
+%% Example:
+%% delete_content_request() :: #{}
+-type delete_content_request() :: #{}.
+
+%% Example:
+%% delete_content_response() :: #{}
+-type delete_content_response() :: #{}.
+
+%% Example:
+%% delete_import_job_request() :: #{}
+-type delete_import_job_request() :: #{}.
+
+%% Example:
+%% delete_import_job_response() :: #{}
+-type delete_import_job_response() :: #{}.
+
+%% Example:
+%% delete_knowledge_base_request() :: #{}
+-type delete_knowledge_base_request() :: #{}.
+
+%% Example:
+%% delete_knowledge_base_response() :: #{}
+-type delete_knowledge_base_response() :: #{}.
+
+%% Example:
+%% delete_message_template_attachment_request() :: #{}
+-type delete_message_template_attachment_request() :: #{}.
+
+%% Example:
+%% delete_message_template_attachment_response() :: #{}
+-type delete_message_template_attachment_response() :: #{}.
+
+%% Example:
+%% delete_message_template_request() :: #{}
+-type delete_message_template_request() :: #{}.
+
+%% Example:
+%% delete_message_template_response() :: #{}
+-type delete_message_template_response() :: #{}.
+
+%% Example:
+%% delete_quick_response_request() :: #{}
+-type delete_quick_response_request() :: #{}.
+
+%% Example:
+%% delete_quick_response_response() :: #{}
+-type delete_quick_response_response() :: #{}.
+
+
+%% Example:
+%% dependency_failed_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type dependency_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% document() :: #{
+%%   <<"contentReference">> => content_reference(),
+%%   <<"excerpt">> => document_text(),
+%%   <<"title">> => document_text()
+%% }
+-type document() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_text() :: #{
+%%   <<"highlights">> => list(highlight()),
+%%   <<"text">> => string()
+%% }
+-type document_text() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_generative_answer_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"emailGenerativeAnswerAIPromptId">> => string(),
+%%   <<"emailQueryReformulationAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_generative_answer_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_generative_answer_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string(),
+%%   <<"references">> => list(data_summary())
+%% }
+-type email_generative_answer_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_header() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type email_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_template_content() :: #{
+%%   <<"body">> => email_message_template_content_body(),
+%%   <<"headers">> => list(email_header()),
+%%   <<"subject">> => string()
+%% }
+-type email_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_template_content_body() :: #{
+%%   <<"html">> => list(),
+%%   <<"plainText">> => list()
+%% }
+-type email_message_template_content_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_overview_a_i_agent_configuration() :: #{
+%%   <<"emailOverviewAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_overview_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_overview_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type email_overview_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_response_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"emailQueryReformulationAIPromptId">> => string(),
+%%   <<"emailResponseAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_response_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_response_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type email_response_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1781,172 +1450,168 @@
 
 
 %% Example:
-%% notes_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string()
+%% external_bedrock_knowledge_base_config() :: #{
+%%   <<"accessRoleArn">> => string(),
+%%   <<"bedrockKnowledgeBaseArn">> => string()
 %% }
--type notes_chunk_data_details() :: #{binary() => any()}.
+-type external_bedrock_knowledge_base_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_message_template_metadata_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"name">> => string()
+%% external_source_configuration() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"source">> => string()
 %% }
--type update_message_template_metadata_request() :: #{binary() => any()}.
+-type external_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_contents() :: #{
-%%   <<"markdown">> => list(),
-%%   <<"plainText">> => list()
-%% }
--type quick_response_contents() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_message() :: #{
-%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
-%%   <<"citations">> => list(citation()),
+%% filter() :: #{
+%%   <<"field">> => string(),
+%%   <<"operator">> => string(),
 %%   <<"value">> => string()
 %% }
--type text_message() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% seed_url() :: #{
-%%   <<"url">> => string()
+%% filter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => any()
 %% }
--type seed_url() :: #{binary() => any()}.
+-type filter_attribute() :: #{binary() => any()}.
 
 
 %% Example:
-%% amazon_connect_guide_association_data() :: #{
-%%   <<"flowId">> => string()
+%% fixed_size_chunking_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"overlapPercentage">> => [integer()]
 %% }
--type amazon_connect_guide_association_data() :: #{binary() => any()}.
+-type fixed_size_chunking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_message_template_response() :: #{
-%%   <<"messageTemplate">> => message_template_data()
+%% generative_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string(),
+%%   <<"references">> => list(data_summary())
 %% }
--type create_message_template_response() :: #{binary() => any()}.
+-type generative_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_a_i_guardrail_version_response() :: #{
+%% generative_content_feedback_data() :: #{
+%%   <<"relevance">> => string()
+%% }
+-type generative_content_feedback_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% generative_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"references">> => list(data_summary())
+%% }
+-type generative_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% generative_reference() :: #{
+%%   <<"generationId">> => string(),
+%%   <<"modelId">> => string()
+%% }
+-type generative_reference() :: #{binary() => any()}.
+
+%% Example:
+%% get_a_i_agent_request() :: #{}
+-type get_a_i_agent_request() :: #{}.
+
+
+%% Example:
+%% get_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data(),
+%%   <<"versionNumber">> => float()
+%% }
+-type get_a_i_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_a_i_guardrail_request() :: #{}
+-type get_a_i_guardrail_request() :: #{}.
+
+
+%% Example:
+%% get_a_i_guardrail_response() :: #{
 %%   <<"aiGuardrail">> => a_i_guardrail_data(),
 %%   <<"versionNumber">> => float()
 %% }
--type create_a_i_guardrail_version_response() :: #{binary() => any()}.
+-type get_a_i_guardrail_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_a_iprompt_request() :: #{}
+-type get_a_iprompt_request() :: #{}.
 
 
 %% Example:
-%% create_a_i_guardrail_response() :: #{
-%%   <<"aiGuardrail">> => a_i_guardrail_data()
+%% get_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data(),
+%%   <<"versionNumber">> => float()
 %% }
--type create_a_i_guardrail_response() :: #{binary() => any()}.
+-type get_a_iprompt_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_import_job_request() :: #{}
--type delete_import_job_request() :: #{}.
+%% get_assistant_association_request() :: #{}
+-type get_assistant_association_request() :: #{}.
 
 
 %% Example:
-%% url_configuration() :: #{
-%%   <<"seedUrls">> => list(seed_url())
+%% get_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
 %% }
--type url_configuration() :: #{binary() => any()}.
+-type get_assistant_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assistant_request() :: #{}
+-type get_assistant_request() :: #{}.
 
 
 %% Example:
-%% assistant_data() :: #{
-%%   <<"aiAgentConfiguration">> => map(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
-%%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
-%%   <<"name">> => string(),
-%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type assistant_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_context() :: #{
-%%   <<"selfServiceConversationHistory">> => list(self_service_conversation_history())
-%% }
--type conversation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_response_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string()
-%% }
--type email_response_chunk_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_crawler_limits() :: #{
-%%   <<"rateLimit">> => [integer()]
-%% }
--type web_crawler_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assistant_response() :: #{
+%% get_assistant_response() :: #{
 %%   <<"assistant">> => assistant_data()
 %% }
--type create_assistant_response() :: #{binary() => any()}.
+-type get_assistant_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_association_request() :: #{}
+-type get_content_association_request() :: #{}.
 
 
 %% Example:
-%% user_interaction_configuration() :: #{
-%%   <<"isUserConfirmationRequired">> => [boolean()]
+%% get_content_association_response() :: #{
+%%   <<"contentAssociation">> => content_association_data()
 %% }
--type user_interaction_configuration() :: #{binary() => any()}.
+-type get_content_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_request() :: #{}
+-type get_content_request() :: #{}.
 
 
 %% Example:
-%% quick_response_summary() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"contentType">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"isActive">> => [boolean()],
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"quickResponseArn">> => string(),
-%%   <<"quickResponseId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%% get_content_response() :: #{
+%%   <<"content">> => content_data()
 %% }
--type quick_response_summary() :: #{binary() => any()}.
+-type get_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_summary_request() :: #{}
+-type get_content_summary_request() :: #{}.
 
 
 %% Example:
-%% get_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
+%% get_content_summary_response() :: #{
+%%   <<"contentSummary">> => content_summary()
 %% }
--type get_quick_response_response() :: #{binary() => any()}.
+-type get_content_summary_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_import_job_request() :: #{}
@@ -1954,15 +1619,63 @@
 
 
 %% Example:
-%% create_assistant_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string()
+%% get_import_job_response() :: #{
+%%   <<"importJob">> => import_job_data()
 %% }
--type create_assistant_request() :: #{binary() => any()}.
+-type get_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_knowledge_base_request() :: #{}
+-type get_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% get_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type get_knowledge_base_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_message_template_request() :: #{}
+-type get_message_template_request() :: #{}.
+
+
+%% Example:
+%% get_message_template_response() :: #{
+%%   <<"messageTemplate">> => extended_message_template_data()
+%% }
+-type get_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_next_message_request() :: #{
+%%   <<"nextMessageToken">> := string()
+%% }
+-type get_next_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_next_message_response() :: #{
+%%   <<"chunkedResponseTerminated">> => [boolean()],
+%%   <<"conversationSessionData">> => list(runtime_session_data()),
+%%   <<"conversationState">> => conversation_state(),
+%%   <<"nextMessageToken">> => string(),
+%%   <<"requestMessageId">> => string(),
+%%   <<"response">> => message_output(),
+%%   <<"type">> => string()
+%% }
+-type get_next_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_quick_response_request() :: #{}
+-type get_quick_response_request() :: #{}.
+
+
+%% Example:
+%% get_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
+%% }
+-type get_quick_response_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1976,17 +1689,557 @@
 
 
 %% Example:
-%% query_recommendation_trigger_data() :: #{
-%%   <<"text">> => string()
+%% get_recommendations_response() :: #{
+%%   <<"recommendations">> := list(recommendation_data()),
+%%   <<"triggers">> => list(recommendation_trigger())
 %% }
--type query_recommendation_trigger_data() :: #{binary() => any()}.
+-type get_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
 
 
 %% Example:
-%% sms_message_template_content_body() :: #{
-%%   <<"plainText">> => list()
+%% get_session_response() :: #{
+%%   <<"session">> => session_data()
 %% }
--type sms_message_template_content_body() :: #{binary() => any()}.
+-type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_configuration() :: #{
+%%   <<"criteria">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type grouping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter_config() :: #{
+%%   <<"inputStrength">> => string(),
+%%   <<"outputStrength">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_content_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter_config() :: #{
+%%   <<"threshold">> => float(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_managed_words_config() :: #{
+%%   <<"type">> => string()
+%% }
+-type guardrail_managed_words_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_config() :: #{
+%%   <<"action">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_pii_entity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_policy_result() :: #{
+%%   <<"action">> => string(),
+%%   <<"details">> => string(),
+%%   <<"policyType">> => string()
+%% }
+-type guardrail_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex_config() :: #{
+%%   <<"action">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"pattern">> => string()
+%% }
+-type guardrail_regex_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type guardrail_topic_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_config() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_word_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_configuration() :: #{
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
+%%   <<"overlapTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_level_configuration() :: #{
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% highlight() :: #{
+%%   <<"beginOffsetInclusive">> => integer(),
+%%   <<"endOffsetExclusive">> => integer()
+%% }
+-type highlight() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_data() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"failedRecordReport">> => string(),
+%%   <<"importJobId">> => string(),
+%%   <<"importJobType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"uploadId">> => string(),
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type import_job_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_summary() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobId">> => string(),
+%%   <<"importJobType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_detected_data_details() :: #{
+%%   <<"intent">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"relevanceLevel">> => string()
+%% }
+-type intent_detected_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_input_data() :: #{
+%%   <<"intentId">> => string()
+%% }
+-type intent_input_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_association_configuration_data() :: #{
+%%   <<"contentTagFilter">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"overrideKnowledgeBaseSearchType">> => string()
+%% }
+-type knowledge_base_association_configuration_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_association_data() :: #{
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string()
+%% }
+-type knowledge_base_association_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_data() :: #{
+%%   <<"description">> => string(),
+%%   <<"ingestionFailureReasons">> => list(string()),
+%%   <<"ingestionStatus">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseType">> => string(),
+%%   <<"lastContentModificationTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%% }
+-type knowledge_base_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%% }
+-type knowledge_base_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agent_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_i_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agent_versions_response() :: #{
+%%   <<"aiAgentVersionSummaries">> => list(a_i_agent_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_agent_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_i_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_agents_response() :: #{
+%%   <<"aiAgentSummaries">> => list(a_i_agent_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_agents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrail_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrail_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrail_versions_response() :: #{
+%%   <<"aiGuardrailVersionSummaries">> => list(a_i_guardrail_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrail_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrails_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrails_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_i_guardrails_response() :: #{
+%%   <<"aiGuardrailSummaries">> => list(a_i_guardrail_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_i_guardrails_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_iprompt_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_iprompt_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_iprompt_versions_response() :: #{
+%%   <<"aiPromptVersionSummaries">> => list(a_iprompt_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_iprompt_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_iprompts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"origin">> => string()
+%% }
+-type list_a_iprompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_iprompts_response() :: #{
+%%   <<"aiPromptSummaries">> => list(a_iprompt_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_a_iprompts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistant_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistant_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistant_associations_response() :: #{
+%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistant_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistants_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistants_response() :: #{
+%%   <<"assistantSummaries">> := list(assistant_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_content_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_content_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_content_associations_response() :: #{
+%%   <<"contentAssociationSummaries">> => list(content_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_content_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_response() :: #{
+%%   <<"importJobSummaries">> => list(import_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_response() :: #{
+%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_template_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_template_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_template_versions_response() :: #{
+%%   <<"messageTemplateVersionSummaries">> => list(message_template_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_template_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_message_templates_response() :: #{
+%%   <<"messageTemplateSummaries">> => list(message_template_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_message_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_request() :: #{
+%%   <<"filter">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_response() :: #{
+%%   <<"messages">> => list(message_output()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_models_request() :: #{
+%%   <<"aiPromptType">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelLifecycle">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_models_response() :: #{
+%%   <<"modelSummaries">> => list(model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"quickResponseSummaries">> => list(quick_response_summary())
+%% }
+-type list_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spans_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_spans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"spans">> => list(span())
+%% }
+-type list_spans_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% manual_search_a_i_agent_configuration() :: #{
+%%   <<"answerGenerationAIGuardrailId">> => string(),
+%%   <<"answerGenerationAIPromptId">> => string(),
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"locale">> => string()
+%% }
+-type manual_search_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_configuration() :: #{
+%%   <<"generateChunkedMessage">> => [boolean()],
+%%   <<"generateFillerMessage">> => [boolean()]
+%% }
+-type message_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_input() :: #{
+%%   <<"value">> => list()
+%% }
+-type message_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2000,64 +2253,199 @@
 
 
 %% Example:
-%% search_message_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := message_template_search_expression()
-%% }
--type search_message_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_agent_summary() :: #{
-%%   <<"aiAgentArn">> => string(),
-%%   <<"aiAgentId">> => string(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"description">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()],
+%% message_template_attachment() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"contentDisposition">> => string(),
 %%   <<"name">> => string(),
-%%   <<"origin">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"visibilityStatus">> => string()
+%%   <<"uploadedTime">> => [non_neg_integer()],
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
 %% }
--type a_i_agent_summary() :: #{binary() => any()}.
+-type message_template_attachment() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_session_request() :: #{
-%%   <<"aiAgentConfiguration">> => map(),
+%% message_template_attributes() :: #{
+%%   <<"agentAttributes">> => agent_attributes(),
+%%   <<"customAttributes">> => map(),
+%%   <<"customerProfileAttributes">> => customer_profile_attributes(),
+%%   <<"systemAttributes">> => system_attributes()
+%% }
+-type message_template_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_data() :: #{
+%%   <<"attributeTypes">> => list(string()),
+%%   <<"channel">> => string(),
+%%   <<"channelSubtype">> => string(),
+%%   <<"content">> => list(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"defaultAttributes">> => message_template_attributes(),
 %%   <<"description">> => string(),
-%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
-%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
-%%   <<"tagFilter">> => list()
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateContentSha256">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceConfigurationSummary">> => list(),
+%%   <<"tags">> => map()
 %% }
--type update_session_request() :: #{binary() => any()}.
+-type message_template_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessionSummaries">> := list(session_summary())
+%% message_template_filter_field() :: #{
+%%   <<"includeNoExistence">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type search_sessions_response() :: #{binary() => any()}.
+-type message_template_filter_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% chunking_configuration() :: #{
-%%   <<"chunkingStrategy">> => string(),
-%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
-%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
-%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
+%% message_template_order_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"order">> => string()
 %% }
--type chunking_configuration() :: #{binary() => any()}.
+-type message_template_order_field() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_a_iprompt_version_request() :: #{}
--type delete_a_iprompt_version_request() :: #{}.
+%% message_template_query_field() :: #{
+%%   <<"allowFuzziness">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"priority">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type message_template_query_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_search_expression() :: #{
+%%   <<"filters">> => list(message_template_filter_field()),
+%%   <<"orderOnField">> => message_template_order_field(),
+%%   <<"queries">> => list(message_template_query_field())
+%% }
+-type message_template_search_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_search_result_data() :: #{
+%%   <<"channel">> => string(),
+%%   <<"channelSubtype">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"language">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceConfigurationSummary">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"versionNumber">> => float()
+%% }
+-type message_template_search_result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_summary() :: #{
+%%   <<"activeVersionNumber">> => float(),
+%%   <<"channel">> => string(),
+%%   <<"channelSubtype">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type message_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_template_version_summary() :: #{
+%%   <<"channel">> => string(),
+%%   <<"channelSubtype">> => string(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"messageTemplateArn">> => string(),
+%%   <<"messageTemplateId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type message_template_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"crossRegionStatus">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"endOfLifeTimestamp">> => [non_neg_integer()],
+%%   <<"legacyTimestamp">> => [non_neg_integer()],
+%%   <<"modelId">> => string(),
+%%   <<"modelLifecycle">> => string(),
+%%   <<"supportedAIPromptTypes">> => list(string()),
+%%   <<"supportsPromptCaching">> => [boolean()]
+%% }
+-type model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% note_taking_a_i_agent_configuration() :: #{
+%%   <<"locale">> => string(),
+%%   <<"noteTakingAIGuardrailId">> => string(),
+%%   <<"noteTakingAIPromptId">> => string()
+%% }
+-type note_taking_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% notes_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type notes_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% notes_data_details() :: #{
+%%   <<"completion">> => string()
+%% }
+-type notes_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_error() :: #{
+%%   <<"message">> => string(),
+%%   <<"recommendationId">> => string()
+%% }
+-type notify_recommendations_received_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_request() :: #{
+%%   <<"recommendationIds">> := list(string())
+%% }
+-type notify_recommendations_received_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2069,34 +2457,184 @@
 
 
 %% Example:
-%% whats_app_message_template_source_configuration_summary() :: #{
-%%   <<"businessAccountId">> => string(),
-%%   <<"components">> => list(string()),
-%%   <<"language">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => string(),
-%%   <<"templateId">> => string()
+%% orchestration_a_i_agent_configuration() :: #{
+%%   <<"connectInstanceArn">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"orchestrationAIGuardrailId">> => string(),
+%%   <<"orchestrationAIPromptId">> => string(),
+%%   <<"toolConfigurations">> => list(tool_configuration())
 %% }
--type whats_app_message_template_source_configuration_summary() :: #{binary() => any()}.
+-type orchestration_a_i_agent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_quick_response_request() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"content">> => list(),
-%%   <<"contentType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"isActive">> => [boolean()],
-%%   <<"language">> => string(),
-%%   <<"name">> => string(),
-%%   <<"removeDescription">> => [boolean()],
-%%   <<"removeGroupingConfiguration">> => [boolean()],
-%%   <<"removeShortcutKey">> => [boolean()],
-%%   <<"shortcutKey">> => string()
+%% orchestrator_configuration_entry() :: #{
+%%   <<"aiAgentId">> => string(),
+%%   <<"orchestratorUseCase">> => string()
 %% }
--type update_quick_response_request() :: #{binary() => any()}.
+-type orchestrator_configuration_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration_for_parsing(),
+%%   <<"parsingStrategy">> => string()
+%% }
+-type parsing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_prompt() :: #{
+%%   <<"parsingPromptText">> => string()
+%% }
+-type parsing_prompt() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_a_p_n_s_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"mediaUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_a_p_n_s_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_ad_m_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_ad_m_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_baidu_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_baidu_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_f_cm_message_template_content() :: #{
+%%   <<"action">> => string(),
+%%   <<"body">> => list(),
+%%   <<"imageIconUrl">> => string(),
+%%   <<"imageUrl">> => string(),
+%%   <<"rawContent">> => list(),
+%%   <<"smallImageIconUrl">> => string(),
+%%   <<"sound">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type push_f_cm_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_message_template_content() :: #{
+%%   <<"adm">> => push_ad_m_message_template_content(),
+%%   <<"apns">> => push_a_p_n_s_message_template_content(),
+%%   <<"baidu">> => push_baidu_message_template_content(),
+%%   <<"fcm">> => push_f_cm_message_template_content()
+%% }
+-type push_message_template_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_request() :: #{
+%%   <<"contentFeedback">> := list(),
+%%   <<"targetId">> := string(),
+%%   <<"targetType">> := string()
+%% }
+-type put_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_response() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"contentFeedback">> => list(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => string()
+%% }
+-type put_feedback_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"overrideKnowledgeBaseSearchType">> => string(),
+%%   <<"queryCondition">> => list(list()),
+%%   <<"queryInputData">> => list(),
+%%   <<"queryText">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type query_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> := list(result_data())
+%% }
+-type query_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_condition_item() :: #{
+%%   <<"comparator">> => string(),
+%%   <<"field">> => string(),
+%%   <<"value">> => string()
+%% }
+-type query_condition_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_recommendation_trigger_data() :: #{
+%%   <<"text">> => string()
+%% }
+-type query_recommendation_trigger_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_text_input_data() :: #{
+%%   <<"text">> => string()
+%% }
+-type query_text_input_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_contents() :: #{
+%%   <<"markdown">> => list(),
+%%   <<"plainText">> => list()
+%% }
+-type quick_response_contents() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2124,726 +2662,41 @@
 
 
 %% Example:
-%% retrieve_result() :: #{
-%%   <<"associationId">> => string(),
-%%   <<"contentText">> => string(),
-%%   <<"referenceType">> => string(),
-%%   <<"sourceId">> => string()
-%% }
--type retrieve_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_input_data() :: #{
-%%   <<"intentId">> => string()
-%% }
--type intent_input_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_association_data() :: #{
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string()
-%% }
--type knowledge_base_association_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_condition_item() :: #{
-%%   <<"comparator">> => string(),
-%%   <<"field">> => string(),
-%%   <<"value">> => string()
-%% }
--type query_condition_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_i_agent_response() :: #{
-%%   <<"aiAgent">> => a_i_agent_data()
-%% }
--type update_a_i_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% parsing_prompt() :: #{
-%%   <<"parsingPromptText">> => string()
-%% }
--type parsing_prompt() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_response_a_i_agent_configuration() :: #{
-%%   <<"associationConfigurations">> => list(association_configuration()),
-%%   <<"emailQueryReformulationAIPromptId">> => string(),
-%%   <<"emailResponseAIPromptId">> => string(),
-%%   <<"locale">> => string()
-%% }
--type email_response_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_iprompt_inference_configuration() :: #{
-%%   <<"maxTokensToSample">> => integer(),
-%%   <<"temperature">> => float(),
-%%   <<"topK">> => integer(),
-%%   <<"topP">> => float()
-%% }
--type a_iprompt_inference_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assistant_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistant_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_summary() :: #{
-%%   <<"aiGuardrailArn">> => string(),
-%%   <<"aiGuardrailId">> => string(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()],
+%% quick_response_filter_field() :: #{
+%%   <<"includeNoExistence">> => [boolean()],
 %%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"visibilityStatus">> => string()
-%% }
--type a_i_guardrail_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_knowledge_base_request() :: #{}
--type delete_knowledge_base_request() :: #{}.
-
-
-%% Example:
-%% push_ad_m_message_template_content() :: #{
-%%   <<"action">> => string(),
-%%   <<"body">> => list(),
-%%   <<"imageIconUrl">> => string(),
-%%   <<"imageUrl">> => string(),
-%%   <<"rawContent">> => list(),
-%%   <<"smallImageIconUrl">> => string(),
-%%   <<"sound">> => string(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string()
-%% }
--type push_ad_m_message_template_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
-%% }
--type update_quick_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assistant_summary() :: #{
-%%   <<"aiAgentConfiguration">> => map(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
-%%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
-%%   <<"name">> => string(),
-%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type assistant_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_summarization_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string()
-%% }
--type case_summarization_chunk_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_topic_policy_config() :: #{
-%%   <<"topicsConfig">> => list(guardrail_topic_config())
-%% }
--type a_i_guardrail_topic_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% generative_content_feedback_data() :: #{
-%%   <<"relevance">> => string()
-%% }
--type generative_content_feedback_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_expression() :: #{
-%%   <<"filters">> => list(filter())
-%% }
--type search_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => any()
-%% }
--type filter_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"field">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"value">> => string()
+%%   <<"values">> => list(string())
 %% }
--type filter() :: #{binary() => any()}.
+-type quick_response_filter_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% case_summarization_a_i_agent_configuration() :: #{
-%%   <<"caseSummarizationAIGuardrailId">> => string(),
-%%   <<"caseSummarizationAIPromptId">> => string(),
-%%   <<"locale">> => string()
-%% }
--type case_summarization_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_overview_chunk_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"nextChunkToken">> => string()
-%% }
--type email_overview_chunk_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_agent_data() :: #{
-%%   <<"aiAgentArn">> => string(),
-%%   <<"aiAgentId">> => string(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"description">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()],
+%% quick_response_order_field() :: #{
 %%   <<"name">> => string(),
-%%   <<"origin">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"visibilityStatus">> => string()
+%%   <<"order">> => string()
 %% }
--type a_i_agent_data() :: #{binary() => any()}.
+-type quick_response_order_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_content_data_details() :: #{
-%%   <<"citationSpan">> => citation_span(),
-%%   <<"id">> => string(),
-%%   <<"rankingData">> => ranking_data(),
-%%   <<"textData">> => text_data(),
-%%   <<"type">> => string()
-%% }
--type source_content_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"kmsKeyId">> => string()
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% span_guardrail_assessment() :: #{
-%%   <<"action">> => string(),
-%%   <<"guardrailId">> => string(),
-%%   <<"guardrailName">> => string(),
-%%   <<"policies">> => list(guardrail_policy_result()),
-%%   <<"source">> => string()
-%% }
--type span_guardrail_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word_config() :: #{
-%%   <<"text">> => string()
-%% }
--type guardrail_word_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_data() :: #{
-%%   <<"aiAgentConfiguration">> => map(),
-%%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => session_integration_configuration(),
+%% quick_response_query_field() :: #{
+%%   <<"allowFuzziness">> => [boolean()],
 %%   <<"name">> => string(),
-%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
-%%   <<"origin">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"tagFilter">> => list(),
-%%   <<"tags">> => map()
+%%   <<"operator">> => string(),
+%%   <<"priority">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type session_data() :: #{binary() => any()}.
+-type quick_response_query_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := search_expression()
+%% quick_response_search_expression() :: #{
+%%   <<"filters">> => list(quick_response_filter_field()),
+%%   <<"orderOnField">> => quick_response_order_field(),
+%%   <<"queries">> => list(quick_response_query_field())
 %% }
--type search_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% semantic_chunking_configuration() :: #{
-%%   <<"breakpointPercentileThreshold">> => [integer()],
-%%   <<"bufferSize">> => [integer()],
-%%   <<"maxTokens">> => [integer()]
-%% }
--type semantic_chunking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_override_input_value() :: #{
-%%   <<"jsonPath">> => string(),
-%%   <<"value">> => list()
-%% }
--type tool_override_input_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_message_template_version_response() :: #{
-%%   <<"messageTemplate">> => extended_message_template_data()
-%% }
--type create_message_template_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_template_search_result_data() :: #{
-%%   <<"channel">> => string(),
-%%   <<"channelSubtype">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"isActive">> => [boolean()],
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"language">> => string(),
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceConfigurationSummary">> => list(),
-%%   <<"tags">> => map(),
-%%   <<"versionNumber">> => float()
-%% }
--type message_template_search_result_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_header() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type email_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_crawler_configuration() :: #{
-%%   <<"crawlerLimits">> => web_crawler_limits(),
-%%   <<"exclusionFilters">> => list(string()),
-%%   <<"inclusionFilters">> => list(string()),
-%%   <<"scope">> => string(),
-%%   <<"urlConfiguration">> => url_configuration()
-%% }
--type web_crawler_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_jobs_response() :: #{
-%%   <<"importJobSummaries">> => list(import_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_i_guardrail_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()]
-%% }
--type create_a_i_guardrail_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_template_request() :: #{}
--type delete_message_template_request() :: #{}.
-
-
-%% Example:
-%% bedrock_foundation_model_configuration_for_parsing() :: #{
-%%   <<"modelArn">> => string(),
-%%   <<"parsingPrompt">> => parsing_prompt()
-%% }
--type bedrock_foundation_model_configuration_for_parsing() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_baidu_message_template_content() :: #{
-%%   <<"action">> => string(),
-%%   <<"body">> => list(),
-%%   <<"imageIconUrl">> => string(),
-%%   <<"imageUrl">> => string(),
-%%   <<"rawContent">> => list(),
-%%   <<"smallImageIconUrl">> => string(),
-%%   <<"sound">> => string(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string()
-%% }
--type push_baidu_message_template_content() :: #{binary() => any()}.
-
-%% Example:
-%% delete_content_association_response() :: #{}
--type delete_content_association_response() :: #{}.
-
-
-%% Example:
-%% a_iprompt_summary() :: #{
-%%   <<"aiPromptArn">> => string(),
-%%   <<"aiPromptId">> => string(),
-%%   <<"apiFormat">> => string(),
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"origin">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"templateType">> => string(),
-%%   <<"type">> => string(),
-%%   <<"visibilityStatus">> => string()
-%% }
--type a_iprompt_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_word_policy_config() :: #{
-%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
-%%   <<"wordsConfig">> => list(guardrail_word_config())
-%% }
--type a_i_guardrail_word_policy_config() :: #{binary() => any()}.
-
-%% Example:
-%% remove_knowledge_base_template_uri_request() :: #{}
--type remove_knowledge_base_template_uri_request() :: #{}.
-
-
-%% Example:
-%% generative_data_details() :: #{
-%%   <<"completion">> => string(),
-%%   <<"rankingData">> => ranking_data(),
-%%   <<"references">> => list(data_summary())
-%% }
--type generative_data_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quick_responses_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(quick_response_search_result_data())
-%% }
--type search_quick_responses_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_a_iprompt_request() :: #{}
--type get_a_iprompt_request() :: #{}.
-
-
-%% Example:
-%% push_f_cm_message_template_content() :: #{
-%%   <<"action">> => string(),
-%%   <<"body">> => list(),
-%%   <<"imageIconUrl">> => string(),
-%%   <<"imageUrl">> => string(),
-%%   <<"rawContent">> => list(),
-%%   <<"smallImageIconUrl">> => string(),
-%%   <<"sound">> => string(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string()
-%% }
--type push_f_cm_message_template_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_i_guardrail_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_i_guardrail_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_version_summary() :: #{
-%%   <<"aiGuardrailSummary">> => a_i_guardrail_summary(),
-%%   <<"versionNumber">> => float()
-%% }
--type a_i_guardrail_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_regex_config() :: #{
-%%   <<"action">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"pattern">> => string()
-%% }
--type guardrail_regex_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_message_templates_response() :: #{
-%%   <<"messageTemplateSummaries">> => list(message_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_message_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_a_iprompt_response() :: #{
-%%   <<"aiPrompt">> => a_iprompt_data(),
-%%   <<"versionNumber">> => float()
-%% }
--type get_a_iprompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_spans_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"spans">> => list(span())
-%% }
--type list_spans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_iprompt_request() :: #{
-%%   <<"apiFormat">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
-%%   <<"modelId">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"templateConfiguration">> := list(),
-%%   <<"templateType">> := string(),
-%%   <<"type">> := string(),
-%%   <<"visibilityStatus">> := string()
-%% }
--type create_a_iprompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_contextual_grounding_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
-%% }
--type a_i_guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% notify_recommendations_received_error() :: #{
-%%   <<"message">> => string(),
-%%   <<"recommendationId">> => string()
-%% }
--type notify_recommendations_received_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_job_response() :: #{
-%%   <<"importJob">> => import_job_data()
-%% }
--type get_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% manual_search_a_i_agent_configuration() :: #{
-%%   <<"answerGenerationAIGuardrailId">> => string(),
-%%   <<"answerGenerationAIPromptId">> => string(),
-%%   <<"associationConfigurations">> => list(association_configuration()),
-%%   <<"locale">> => string()
-%% }
--type manual_search_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_content_response() :: #{
-%%   <<"content">> => content_data()
-%% }
--type update_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_template_attachment_request() :: #{}
--type delete_message_template_attachment_request() :: #{}.
-
-
-%% Example:
-%% unprocessable_content_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type unprocessable_content_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% whats_app_message_template_source_configuration() :: #{
-%%   <<"businessAccountId">> => string(),
-%%   <<"components">> => list(string()),
-%%   <<"templateId">> => string()
-%% }
--type whats_app_message_template_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_message_template_response() :: #{
-%%   <<"messageTemplate">> => extended_message_template_data()
-%% }
--type get_message_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_override_constant_input_value() :: #{
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
-%% }
--type tool_override_constant_input_value() :: #{binary() => any()}.
-
-%% Example:
-%% get_quick_response_request() :: #{}
--type get_quick_response_request() :: #{}.
-
-
-%% Example:
-%% tool_configuration() :: #{
-%%   <<"annotations">> => annotation(),
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => any(),
-%%   <<"instruction">> => tool_instruction(),
-%%   <<"outputFilters">> => list(tool_output_filter()),
-%%   <<"outputSchema">> => any(),
-%%   <<"overrideInputValues">> => list(tool_override_input_value()),
-%%   <<"title">> => string(),
-%%   <<"toolId">> => string(),
-%%   <<"toolName">> => string(),
-%%   <<"toolType">> => string(),
-%%   <<"userInteractionConfiguration">> => user_interaction_configuration()
-%% }
--type tool_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_sensitive_information_policy_config() :: #{
-%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
-%%   <<"regexesConfig">> => list(guardrail_regex_config())
-%% }
--type a_i_guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assistant_association_response() :: #{
-%%   <<"assistantAssociation">> => assistant_association_data()
-%% }
--type create_assistant_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_content_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> := string(),
-%%   <<"overrideLinkOutUri">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string(),
-%%   <<"uploadId">> := string()
-%% }
--type create_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_template_summary() :: #{
-%%   <<"activeVersionNumber">> => float(),
-%%   <<"channel">> => string(),
-%%   <<"channelSubtype">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"tags">> => map()
-%% }
--type message_template_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% import_job_summary() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"externalSourceConfiguration">> => external_source_configuration(),
-%%   <<"importJobId">> => string(),
-%%   <<"importJobType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"metadata">> => map(),
-%%   <<"status">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type import_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_assistant_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"overrideKnowledgeBaseSearchType">> => string(),
-%%   <<"queryCondition">> => list(list()),
-%%   <<"queryInputData">> => list(),
-%%   <<"queryText">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type query_assistant_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_message_template_request() :: #{}
--type get_message_template_request() :: #{}.
+-type quick_response_search_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2873,224 +2726,43 @@
 
 
 %% Example:
-%% rendering_configuration() :: #{
-%%   <<"templateUri">> => string()
-%% }
--type rendering_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_content_association_response() :: #{
-%%   <<"contentAssociation">> => content_association_data()
-%% }
--type get_content_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_attributes() :: #{
-%%   <<"customerEndpoint">> => system_endpoint_attributes(),
-%%   <<"name">> => string(),
-%%   <<"systemEndpoint">> => system_endpoint_attributes()
-%% }
--type system_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% delete_content_request() :: #{}
--type delete_content_request() :: #{}.
-
-
-%% Example:
-%% list_a_i_guardrails_response() :: #{
-%%   <<"aiGuardrailSummaries">> => list(a_i_guardrail_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_a_i_guardrails_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_content_request() :: #{}
--type get_content_request() :: #{}.
-
-
-%% Example:
-%% push_message_template_content() :: #{
-%%   <<"adm">> => push_ad_m_message_template_content(),
-%%   <<"apns">> => push_a_p_n_s_message_template_content(),
-%%   <<"baidu">> => push_baidu_message_template_content(),
-%%   <<"fcm">> => push_f_cm_message_template_content()
-%% }
--type push_message_template_content() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quick_response_request() :: #{}
--type delete_quick_response_request() :: #{}.
-
-
-%% Example:
-%% create_message_template_version_request() :: #{
-%%   <<"messageTemplateContentSha256">> => string()
-%% }
--type create_message_template_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% runtime_session_data() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => list()
-%% }
--type runtime_session_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_reference() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
+%% quick_response_summary() :: #{
+%%   <<"channels">> => list(string()),
+%%   <<"contentType">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"isActive">> => [boolean()],
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
-%%   <<"referenceType">> => string(),
-%%   <<"sourceURL">> => [string()]
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"quickResponseArn">> => string(),
+%%   <<"quickResponseId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
 %% }
--type content_reference() :: #{binary() => any()}.
+-type quick_response_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% guardrail_pii_entity_config() :: #{
-%%   <<"action">> => string(),
+%% ranking_data() :: #{
+%%   <<"relevanceLevel">> => string(),
+%%   <<"relevanceScore">> => float()
+%% }
+-type ranking_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_data() :: #{
+%%   <<"data">> => data_summary(),
+%%   <<"document">> => document(),
+%%   <<"recommendationId">> => string(),
+%%   <<"relevanceLevel">> => string(),
+%%   <<"relevanceScore">> => float(),
 %%   <<"type">> => string()
 %% }
--type guardrail_pii_entity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_message_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(message_template_search_result_data())
-%% }
--type search_message_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% citation_span() :: #{
-%%   <<"beginOffsetInclusive">> => integer(),
-%%   <<"endOffsetExclusive">> => integer()
-%% }
--type citation_span() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_data() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"contentType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"linkOutUri">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string(),
-%%   <<"urlExpiry">> => [non_neg_integer()]
-%% }
--type content_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_summary() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"contentType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string()
-%% }
--type content_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_session_data_response() :: #{
-%%   <<"data">> => list(runtime_session_data()),
-%%   <<"namespace">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type update_session_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_service_conversation_history() :: #{
-%%   <<"botResponse">> => string(),
-%%   <<"inputTranscript">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"turnNumber">> => [integer()]
-%% }
--type self_service_conversation_history() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_association_configuration_data() :: #{
-%%   <<"contentTagFilter">> => list(),
-%%   <<"maxResults">> => integer(),
-%%   <<"overrideKnowledgeBaseSearchType">> => string()
-%% }
--type knowledge_base_association_configuration_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchical_chunking_level_configuration() :: #{
-%%   <<"maxTokens">> => [integer()]
-%% }
--type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_guardrail_content_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_content_filter_config())
-%% }
--type a_i_guardrail_content_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_content_response() :: #{
-%%   <<"content">> => content_data()
-%% }
--type get_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_iprompt_request() :: #{}
--type delete_a_iprompt_request() :: #{}.
-
-
-%% Example:
-%% content_data_details() :: #{
-%%   <<"rankingData">> => ranking_data(),
-%%   <<"textData">> => text_data()
-%% }
--type content_data_details() :: #{binary() => any()}.
+-type recommendation_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3105,17 +2777,228 @@
 
 
 %% Example:
-%% update_session_response() :: #{
-%%   <<"session">> => session_data()
+%% remove_assistant_a_i_agent_request() :: #{
+%%   <<"aiAgentType">> := string(),
+%%   <<"orchestratorUseCase">> => string()
 %% }
--type update_session_response() :: #{binary() => any()}.
+-type remove_assistant_a_i_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_assistant_a_i_agent_response() :: #{}
+-type remove_assistant_a_i_agent_response() :: #{}.
+
+%% Example:
+%% remove_knowledge_base_template_uri_request() :: #{}
+-type remove_knowledge_base_template_uri_request() :: #{}.
+
+%% Example:
+%% remove_knowledge_base_template_uri_response() :: #{}
+-type remove_knowledge_base_template_uri_response() :: #{}.
 
 
 %% Example:
-%% notify_recommendations_received_request() :: #{
-%%   <<"recommendationIds">> := list(string())
+%% render_message_template_request() :: #{
+%%   <<"attributes">> := message_template_attributes()
 %% }
--type notify_recommendations_received_request() :: #{binary() => any()}.
+-type render_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% render_message_template_response() :: #{
+%%   <<"attachments">> => list(message_template_attachment()),
+%%   <<"attributesNotInterpolated">> => list(string()),
+%%   <<"content">> => list(),
+%%   <<"sourceConfigurationSummary">> => list()
+%% }
+-type render_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rendering_configuration() :: #{
+%%   <<"templateUri">> => string()
+%% }
+-type rendering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_data() :: #{
+%%   <<"data">> => data_summary(),
+%%   <<"document">> => document(),
+%%   <<"relevanceScore">> => float(),
+%%   <<"resultId">> => string(),
+%%   <<"type">> => string()
+%% }
+-type result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"knowledgeSource">> => list(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"overrideKnowledgeBaseSearchType">> => string()
+%% }
+-type retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_request() :: #{
+%%   <<"retrievalConfiguration">> := retrieval_configuration(),
+%%   <<"retrievalQuery">> := string()
+%% }
+-type retrieve_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_response() :: #{
+%%   <<"results">> => list(retrieve_result())
+%% }
+-type retrieve_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_result() :: #{
+%%   <<"associationId">> => string(),
+%%   <<"contentText">> => string(),
+%%   <<"referenceType">> => string(),
+%%   <<"sourceId">> => string()
+%% }
+-type retrieve_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_session_data() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => list()
+%% }
+-type runtime_session_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_content_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_content_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_expression() :: #{
+%%   <<"filters">> => list(filter())
+%% }
+-type search_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_message_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := message_template_search_expression()
+%% }
+-type search_message_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_message_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(message_template_search_result_data())
+%% }
+-type search_message_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := quick_response_search_expression()
+%% }
+-type search_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(quick_response_search_result_data())
+%% }
+-type search_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> := list(session_summary())
+%% }
+-type search_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% seed_url() :: #{
+%%   <<"url">> => string()
+%% }
+-type seed_url() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_service_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"selfServiceAIGuardrailId">> => string(),
+%%   <<"selfServiceAnswerGenerationAIPromptId">> => string(),
+%%   <<"selfServicePreProcessingAIPromptId">> => string()
+%% }
+-type self_service_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_service_conversation_history() :: #{
+%%   <<"botResponse">> => string(),
+%%   <<"inputTranscript">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"turnNumber">> => [integer()]
+%% }
+-type self_service_conversation_history() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_chunking_configuration() :: #{
+%%   <<"breakpointPercentileThreshold">> => [integer()],
+%%   <<"bufferSize">> => [integer()],
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type semantic_chunking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3132,49 +3015,61 @@
 %% }
 -type send_message_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_a_i_agent_response() :: #{}
--type delete_a_i_agent_response() :: #{}.
+%% send_message_response() :: #{
+%%   <<"configuration">> => message_configuration(),
+%%   <<"nextMessageToken">> => string(),
+%%   <<"requestMessageId">> => string()
+%% }
+-type send_message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% message_template_data() :: #{
-%%   <<"attributeTypes">> => list(string()),
-%%   <<"channel">> => string(),
-%%   <<"channelSubtype">> => string(),
-%%   <<"content">> => list(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"defaultAttributes">> => message_template_attributes(),
+%% server_side_encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_data() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
 %%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"language">> => string(),
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateContentSha256">> => string(),
-%%   <<"messageTemplateId">> => string(),
+%%   <<"integrationConfiguration">> => session_integration_configuration(),
 %%   <<"name">> => string(),
-%%   <<"sourceConfigurationSummary">> => list(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"origin">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"tagFilter">> => list(),
 %%   <<"tags">> => map()
 %% }
--type message_template_data() :: #{binary() => any()}.
+-type session_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_knowledge_bases_response() :: #{
-%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()),
-%%   <<"nextToken">> => string()
+%% session_integration_configuration() :: #{
+%%   <<"topicIntegrationArn">> => string()
 %% }
--type list_knowledge_bases_response() :: #{binary() => any()}.
+-type session_integration_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base_data()
+%% session_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
 %% }
--type get_knowledge_base_response() :: #{binary() => any()}.
+-type session_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3185,85 +3080,365 @@
 
 
 %% Example:
-%% list_assistant_associations_response() :: #{
-%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistant_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% result_data() :: #{
-%%   <<"data">> => data_summary(),
-%%   <<"document">> => document(),
-%%   <<"relevanceScore">> => float(),
-%%   <<"resultId">> => string(),
-%%   <<"type">> => string()
-%% }
--type result_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_message_template_metadata_response() :: #{
-%%   <<"messageTemplate">> => message_template_data()
-%% }
--type update_message_template_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_next_message_request() :: #{
-%%   <<"nextMessageToken">> := string()
-%% }
--type get_next_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% render_message_template_response() :: #{
-%%   <<"attachments">> => list(message_template_attachment()),
-%%   <<"attributesNotInterpolated">> => list(string()),
-%%   <<"content">> => list(),
-%%   <<"sourceConfigurationSummary">> => list()
-%% }
--type render_message_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_message_template_content_body() :: #{
-%%   <<"html">> => list(),
+%% sms_message_template_content_body() :: #{
 %%   <<"plainText">> => list()
 %% }
--type email_message_template_content_body() :: #{binary() => any()}.
+-type sms_message_template_content_body() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_a_i_guardrails_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% source_content_data_details() :: #{
+%%   <<"citationSpan">> => citation_span(),
+%%   <<"id">> => string(),
+%%   <<"rankingData">> => ranking_data(),
+%%   <<"textData">> => text_data(),
+%%   <<"type">> => string()
 %% }
--type list_a_i_guardrails_request() :: #{binary() => any()}.
+-type source_content_data_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% message_template_version_summary() :: #{
-%%   <<"channel">> => string(),
-%%   <<"channelSubtype">> => string(),
-%%   <<"isActive">> => [boolean()],
+%% span() :: #{
+%%   <<"assistantId">> => string(),
+%%   <<"attributes">> => span_attributes(),
+%%   <<"endTimestamp">> => [non_neg_integer()],
+%%   <<"originRequestId">> => string(),
+%%   <<"parentSpanId">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"spanId">> => string(),
+%%   <<"spanName">> => string(),
+%%   <<"spanType">> => string(),
+%%   <<"startTimestamp">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"statusDescription">> => string()
+%% }
+-type span() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_attributes() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string(),
+%%   <<"aiAgentInvoker">> => string(),
+%%   <<"aiAgentName">> => string(),
+%%   <<"aiAgentOrchestratorUseCase">> => string(),
+%%   <<"aiAgentType">> => string(),
+%%   <<"aiAgentVersion">> => [integer()],
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"cacheWriteInputTokens">> => [integer()],
+%%   <<"contactId">> => string(),
+%%   <<"errorType">> => string(),
+%%   <<"guardrailAssessments">> => list(span_guardrail_assessment()),
+%%   <<"initialContactId">> => string(),
+%%   <<"inputMessages">> => list(span_message()),
+%%   <<"instanceArn">> => string(),
+%%   <<"operationName">> => string(),
+%%   <<"outputMessages">> => list(span_message()),
+%%   <<"promptArn">> => string(),
+%%   <<"promptId">> => string(),
+%%   <<"promptName">> => string(),
+%%   <<"promptType">> => string(),
+%%   <<"promptVersion">> => [integer()],
+%%   <<"providerName">> => string(),
+%%   <<"requestMaxTokens">> => [integer()],
+%%   <<"requestModel">> => string(),
+%%   <<"responseFinishReasons">> => list(string()),
+%%   <<"responseModel">> => string(),
+%%   <<"sessionName">> => string(),
+%%   <<"systemInstructions">> => list(list()),
+%%   <<"temperature">> => [float()],
+%%   <<"timeToFirstTokenMs">> => [integer()],
+%%   <<"topP">> => [float()],
+%%   <<"usageInputTokens">> => [integer()],
+%%   <<"usageOutputTokens">> => [integer()],
+%%   <<"usageTotalTokens">> => [integer()]
+%% }
+-type span_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_citation() :: #{
+%%   <<"contentId">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"versionNumber">> => float()
+%%   <<"title">> => string()
 %% }
--type message_template_version_summary() :: #{binary() => any()}.
+-type span_citation() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_message_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% span_guardrail_assessment() :: #{
+%%   <<"action">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailName">> => string(),
+%%   <<"policies">> => list(guardrail_policy_result()),
+%%   <<"source">> => string()
 %% }
--type list_message_templates_request() :: #{binary() => any()}.
+-type span_guardrail_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_message() :: #{
+%%   <<"messageId">> => string(),
+%%   <<"participant">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"values">> => list(list())
+%% }
+-type span_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_reasoning_value() :: #{
+%%   <<"value">> => string()
+%% }
+-type span_reasoning_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_text_value() :: #{
+%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
+%%   <<"citations">> => list(span_citation()),
+%%   <<"value">> => string()
+%% }
+-type span_text_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_tool_result_value() :: #{
+%%   <<"error">> => string(),
+%%   <<"toolUseId">> => string(),
+%%   <<"values">> => list(list())
+%% }
+-type span_tool_result_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_tool_use_value() :: #{
+%%   <<"arguments">> => any(),
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string()
+%% }
+-type span_tool_use_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_content_upload_request() :: #{
+%%   <<"contentType">> := string(),
+%%   <<"presignedUrlTimeToLive">> => integer()
+%% }
+-type start_content_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_content_upload_response() :: #{
+%%   <<"headersToInclude">> := map(),
+%%   <<"uploadId">> := string(),
+%%   <<"url">> := string(),
+%%   <<"urlExpiry">> := [non_neg_integer()]
+%% }
+-type start_content_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobType">> := string(),
+%%   <<"metadata">> => map(),
+%%   <<"uploadId">> := string()
+%% }
+-type start_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_job_response() :: #{
+%%   <<"importJob">> => import_job_data()
+%% }
+-type start_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggested_message_data_details() :: #{
+%%   <<"messageText">> => string()
+%% }
+-type suggested_message_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggested_message_reference() :: #{
+%%   <<"aiAgentArn">> => string(),
+%%   <<"aiAgentId">> => string()
+%% }
+-type suggested_message_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_attributes() :: #{
+%%   <<"customerEndpoint">> => system_endpoint_attributes(),
+%%   <<"name">> => string(),
+%%   <<"systemEndpoint">> => system_endpoint_attributes()
+%% }
+-type system_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_endpoint_attributes() :: #{
+%%   <<"address">> => string()
+%% }
+-type system_endpoint_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_condition() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% text_data() :: #{
+%%   <<"excerpt">> => document_text(),
+%%   <<"title">> => document_text()
+%% }
+-type text_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_full_a_iprompt_edit_template_configuration() :: #{
+%%   <<"text">> => string()
+%% }
+-type text_full_a_iprompt_edit_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_message() :: #{
+%%   <<"aiGuardrailAssessment">> => a_i_guardrail_assessment(),
+%%   <<"citations">> => list(citation()),
+%%   <<"value">> => string()
+%% }
+-type text_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_configuration() :: #{
+%%   <<"annotations">> => annotation(),
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => any(),
+%%   <<"instruction">> => tool_instruction(),
+%%   <<"outputFilters">> => list(tool_output_filter()),
+%%   <<"outputSchema">> => any(),
+%%   <<"overrideInputValues">> => list(tool_override_input_value()),
+%%   <<"title">> => string(),
+%%   <<"toolId">> => string(),
+%%   <<"toolName">> => string(),
+%%   <<"toolType">> => string(),
+%%   <<"userInteractionConfiguration">> => user_interaction_configuration()
+%% }
+-type tool_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_instruction() :: #{
+%%   <<"examples">> => list([string()]()),
+%%   <<"instruction">> => [string()]
+%% }
+-type tool_instruction() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_output_configuration() :: #{
+%%   <<"outputVariableNameOverride">> => string(),
+%%   <<"sessionDataNamespace">> => string()
+%% }
+-type tool_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_output_filter() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"outputConfiguration">> => tool_output_configuration()
+%% }
+-type tool_output_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_override_constant_input_value() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tool_override_constant_input_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_override_input_value() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"value">> => list()
+%% }
+-type tool_override_input_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_result_data() :: #{
+%%   <<"inputSchema">> => any(),
+%%   <<"toolName">> => string(),
+%%   <<"toolResult">> => any(),
+%%   <<"toolUseId">> => string()
+%% }
+-type tool_use_result_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_content_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unprocessable_content_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -3277,10 +3452,68 @@
 
 
 %% Example:
-%% start_import_job_response() :: #{
-%%   <<"importJob">> => import_job_data()
+%% update_a_i_agent_response() :: #{
+%%   <<"aiAgent">> => a_i_agent_data()
 %% }
--type start_import_job_response() :: #{binary() => any()}.
+-type update_a_i_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_i_guardrail_request() :: #{
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
+%%   <<"description">> => string(),
+%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
+%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
+%%   <<"visibilityStatus">> := string(),
+%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% }
+-type update_a_i_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_i_guardrail_response() :: #{
+%%   <<"aiGuardrail">> => a_i_guardrail_data()
+%% }
+-type update_a_i_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_iprompt_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
+%%   <<"modelId">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"visibilityStatus">> := string()
+%% }
+-type update_a_iprompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_iprompt_response() :: #{
+%%   <<"aiPrompt">> => a_iprompt_data()
+%% }
+-type update_a_iprompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assistant_a_i_agent_request() :: #{
+%%   <<"aiAgentType">> := string(),
+%%   <<"configuration">> := a_i_agent_configuration_data(),
+%%   <<"orchestratorUseCase">> => string()
+%% }
+-type update_assistant_a_i_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assistant_a_i_agent_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type update_assistant_a_i_agent_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3296,193 +3529,139 @@
 
 
 %% Example:
-%% assistant_association_summary() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantAssociationArn">> => string(),
-%%   <<"assistantAssociationId">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"tags">> => map()
+%% update_content_response() :: #{
+%%   <<"content">> => content_data()
 %% }
--type assistant_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_content_summary_request() :: #{}
--type get_content_summary_request() :: #{}.
+-type update_content_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_query_field() :: #{
-%%   <<"allowFuzziness">> => [boolean()],
+%% update_knowledge_base_template_uri_request() :: #{
+%%   <<"templateUri">> := string()
+%% }
+-type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_template_uri_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_metadata_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"name">> => string()
+%% }
+-type update_message_template_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_metadata_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type update_message_template_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_request() :: #{
+%%   <<"content">> => list(),
+%%   <<"defaultAttributes">> => message_template_attributes(),
+%%   <<"language">> => string(),
+%%   <<"sourceConfiguration">> => list()
+%% }
+-type update_message_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_message_template_response() :: #{
+%%   <<"messageTemplate">> => message_template_data()
+%% }
+-type update_message_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_response_request() :: #{
+%%   <<"channels">> => list(string()),
+%%   <<"content">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"language">> => string(),
 %%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"priority">> => string(),
-%%   <<"values">> => list(string())
+%%   <<"removeDescription">> => [boolean()],
+%%   <<"removeGroupingConfiguration">> => [boolean()],
+%%   <<"removeShortcutKey">> => [boolean()],
+%%   <<"shortcutKey">> => string()
 %% }
--type quick_response_query_field() :: #{binary() => any()}.
+-type update_quick_response_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% note_taking_a_i_agent_configuration() :: #{
-%%   <<"locale">> => string(),
-%%   <<"noteTakingAIGuardrailId">> => string(),
-%%   <<"noteTakingAIPromptId">> => string()
+%% update_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
 %% }
--type note_taking_a_i_agent_configuration() :: #{binary() => any()}.
+-type update_quick_response_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% text_full_a_iprompt_edit_template_configuration() :: #{
-%%   <<"text">> => string()
+%% update_session_data_request() :: #{
+%%   <<"data">> := list(runtime_session_data()),
+%%   <<"namespace">> => string()
 %% }
--type text_full_a_iprompt_edit_template_configuration() :: #{binary() => any()}.
+-type update_session_data_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% tool_output_filter() :: #{
-%%   <<"jsonPath">> => string(),
-%%   <<"outputConfiguration">> => tool_output_configuration()
+%% update_session_data_response() :: #{
+%%   <<"data">> => list(runtime_session_data()),
+%%   <<"namespace">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
 %% }
--type tool_output_filter() :: #{binary() => any()}.
+-type update_session_data_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% external_bedrock_knowledge_base_config() :: #{
-%%   <<"accessRoleArn">> => string(),
-%%   <<"bedrockKnowledgeBaseArn">> => string()
+%% update_session_request() :: #{
+%%   <<"aiAgentConfiguration">> => map(),
+%%   <<"description">> => string(),
+%%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
+%%   <<"removeOrchestratorConfigurationList">> => [boolean()],
+%%   <<"tagFilter">> => list()
 %% }
--type external_bedrock_knowledge_base_config() :: #{binary() => any()}.
+-type update_session_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% suggested_message_reference() :: #{
-%%   <<"aiAgentArn">> => string(),
-%%   <<"aiAgentId">> => string()
+%% update_session_response() :: #{
+%%   <<"session">> => session_data()
 %% }
--type suggested_message_reference() :: #{binary() => any()}.
-
-%% Example:
-%% get_assistant_association_request() :: #{}
--type get_assistant_association_request() :: #{}.
+-type update_session_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% span_tool_result_value() :: #{
-%%   <<"error">> => string(),
-%%   <<"toolUseId">> => string(),
-%%   <<"values">> => list(list())
+%% url_configuration() :: #{
+%%   <<"seedUrls">> => list(seed_url())
 %% }
--type span_tool_result_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_content_response() :: #{}
--type delete_content_response() :: #{}.
-
-%% Example:
-%% get_knowledge_base_request() :: #{}
--type get_knowledge_base_request() :: #{}.
+-type url_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_a_iprompt_versions_response() :: #{
-%%   <<"aiPromptVersionSummaries">> => list(a_iprompt_version_summary()),
-%%   <<"nextToken">> => string()
+%% user_interaction_configuration() :: #{
+%%   <<"isUserConfirmationRequired">> => [boolean()]
 %% }
--type list_a_iprompt_versions_response() :: #{binary() => any()}.
+-type user_interaction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_order_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"order">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type quick_response_order_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_response() :: #{
-%%   <<"configuration">> => message_configuration(),
-%%   <<"nextMessageToken">> => string(),
-%%   <<"requestMessageId">> => string()
-%% }
--type send_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assistants_response() :: #{
-%%   <<"assistantSummaries">> := list(assistant_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistants_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assistant_a_i_agent_request() :: #{
-%%   <<"aiAgentType">> := string(),
-%%   <<"configuration">> := a_i_agent_configuration_data(),
-%%   <<"orchestratorUseCase">> => string()
-%% }
--type update_assistant_a_i_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quick_response_response() :: #{}
--type delete_quick_response_response() :: #{}.
-
-
-%% Example:
-%% message_template_attachment() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"contentDisposition">> => string(),
-%%   <<"name">> => string(),
-%%   <<"uploadedTime">> => [non_neg_integer()],
-%%   <<"url">> => string(),
-%%   <<"urlExpiry">> => [non_neg_integer()]
-%% }
--type message_template_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_spans_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_spans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_content_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := search_expression()
-%% }
--type search_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieve_request() :: #{
-%%   <<"retrievalConfiguration">> := retrieval_configuration(),
-%%   <<"retrievalQuery">> := string()
-%% }
--type retrieve_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ranking_data() :: #{
-%%   <<"relevanceLevel">> => string(),
-%%   <<"relevanceScore">> => float()
-%% }
--type ranking_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% span_message() :: #{
-%%   <<"messageId">> => string(),
-%%   <<"participant">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"values">> => list(list())
-%% }
--type span_message() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3494,636 +3673,457 @@
 
 
 %% Example:
-%% grouping_configuration() :: #{
-%%   <<"criteria">> => string(),
-%%   <<"values">> => list(string())
+%% web_crawler_configuration() :: #{
+%%   <<"crawlerLimits">> => web_crawler_limits(),
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
+%%   <<"scope">> => string(),
+%%   <<"urlConfiguration">> => url_configuration()
 %% }
--type grouping_configuration() :: #{binary() => any()}.
+-type web_crawler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_assistant_association_request() :: #{
-%%   <<"association">> := list(),
-%%   <<"associationType">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
+%% web_crawler_limits() :: #{
+%%   <<"rateLimit">> => [integer()]
 %% }
--type create_assistant_association_request() :: #{binary() => any()}.
+-type web_crawler_limits() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_a_i_guardrail_request() :: #{
-%%   <<"blockedInputMessaging">> := string(),
-%%   <<"blockedOutputsMessaging">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
-%%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
-%%   <<"tags">> => map(),
-%%   <<"topicPolicyConfig">> => a_i_guardrail_topic_policy_config(),
-%%   <<"visibilityStatus">> := string(),
-%%   <<"wordPolicyConfig">> => a_i_guardrail_word_policy_config()
+%% whats_app_message_template_content() :: #{
+%%   <<"data">> => string()
 %% }
--type create_a_i_guardrail_request() :: #{binary() => any()}.
+-type whats_app_message_template_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% email_overview_a_i_agent_configuration() :: #{
-%%   <<"emailOverviewAIPromptId">> => string(),
-%%   <<"locale">> => string()
+%% whats_app_message_template_source_configuration() :: #{
+%%   <<"businessAccountId">> => string(),
+%%   <<"components">> => list(string()),
+%%   <<"templateId">> => string()
 %% }
--type email_overview_a_i_agent_configuration() :: #{binary() => any()}.
+-type whats_app_message_template_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% answer_recommendation_a_i_agent_configuration() :: #{
-%%   <<"answerGenerationAIGuardrailId">> => string(),
-%%   <<"answerGenerationAIPromptId">> => string(),
-%%   <<"associationConfigurations">> => list(association_configuration()),
-%%   <<"intentLabelingGenerationAIPromptId">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"queryReformulationAIPromptId">> => string(),
-%%   <<"suggestedMessages">> => list(string())
+%% whats_app_message_template_source_configuration_summary() :: #{
+%%   <<"businessAccountId">> => string(),
+%%   <<"components">> => list(string()),
+%%   <<"language">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string(),
+%%   <<"templateId">> => string()
 %% }
--type answer_recommendation_a_i_agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_message_template_content() :: #{
-%%   <<"body">> => email_message_template_content_body(),
-%%   <<"headers">> => list(email_header()),
-%%   <<"subject">> => string()
-%% }
--type email_message_template_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_response() :: #{
-%%   <<"session">> => session_data()
-%% }
--type create_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type precondition_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_iprompt_response() :: #{
-%%   <<"aiPrompt">> => a_iprompt_data()
-%% }
--type update_a_iprompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_use_result_data() :: #{
-%%   <<"inputSchema">> => any(),
-%%   <<"toolName">> => string(),
-%%   <<"toolResult">> => any(),
-%%   <<"toolUseId">> => string()
-%% }
--type tool_use_result_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_summarization_input_data() :: #{
-%%   <<"caseArn">> => string()
-%% }
--type case_summarization_input_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_content_associations_response() :: #{
-%%   <<"contentAssociationSummaries">> => list(content_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_content_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_i_agent_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"modifiedTime">> => [non_neg_integer()]
-%% }
--type create_a_i_agent_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieve_response() :: #{
-%%   <<"results">> => list(retrieve_result())
-%% }
--type retrieve_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assistant_association_response() :: #{}
--type delete_assistant_association_response() :: #{}.
-
-
-%% Example:
-%% document() :: #{
-%%   <<"contentReference">> => content_reference(),
-%%   <<"excerpt">> => document_text(),
-%%   <<"title">> => document_text()
-%% }
--type document() :: #{binary() => any()}.
-
-
-%% Example:
-%% render_message_template_request() :: #{
-%%   <<"attributes">> := message_template_attributes()
-%% }
--type render_message_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assistants_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_session_data_request() :: #{
-%%   <<"data">> := list(runtime_session_data()),
-%%   <<"namespace">> => string()
-%% }
--type update_session_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_content_association_request() :: #{}
--type delete_content_association_request() :: #{}.
-
-
-%% Example:
-%% update_message_template_response() :: #{
-%%   <<"messageTemplate">> => message_template_data()
-%% }
--type update_message_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_integration_configuration() :: #{
-%%   <<"topicIntegrationArn">> => string()
-%% }
--type session_integration_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assistant_a_i_agent_response() :: #{
-%%   <<"assistant">> => assistant_data()
-%% }
--type update_assistant_a_i_agent_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_import_job_response() :: #{}
--type delete_import_job_response() :: #{}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()]
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_messages_request() :: #{
-%%   <<"filter">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_messages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_iprompt_version_response() :: #{
-%%   <<"aiPrompt">> => a_iprompt_data(),
-%%   <<"versionNumber">> => float()
-%% }
--type create_a_iprompt_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% activate_message_template_response() :: #{
-%%   <<"messageTemplateArn">> => string(),
-%%   <<"messageTemplateId">> => string(),
-%%   <<"versionNumber">> => float()
-%% }
--type activate_message_template_response() :: #{binary() => any()}.
+-type whats_app_message_template_source_configuration_summary() :: #{binary() => any()}.
 
 -type activate_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_a_i_agent_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_a_i_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_a_i_guardrail_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_a_iprompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_a_iprompt_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_content_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_message_template_attachment_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
--type create_message_template_version_errors() ::
-    throttling_exception() | 
+-type create_message_template_attachment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_message_template_version_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
     dependency_failed_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deactivate_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_a_i_agent_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_a_i_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_a_i_guardrail_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_a_iprompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_a_iprompt_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_content_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_message_template_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_a_i_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_a_iprompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_content_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_content_summary_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_next_message_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     unprocessable_content_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_recommendations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_i_agent_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_i_agents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_i_guardrail_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_i_guardrails_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_iprompt_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_a_iprompts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_assistant_associations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_assistants_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    unauthorized_exception().
+    unauthorized_exception() | 
+    access_denied_exception().
 
 -type list_content_associations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_contents_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_import_jobs_errors() ::
     validation_exception() | 
@@ -4134,135 +4134,135 @@
     access_denied_exception().
 
 -type list_message_template_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_message_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_messages_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_quick_responses_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_spans_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type notify_recommendations_received_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type put_feedback_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type query_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    access_denied_exception().
 
 -type remove_assistant_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type remove_knowledge_base_template_uri_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type render_message_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type retrieve_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
     request_timeout_exception() | 
-    dependency_failed_exception().
+    dependency_failed_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type search_message_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type search_quick_responses_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
     request_timeout_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type search_sessions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type send_message_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
     request_timeout_exception() | 
-    dependency_failed_exception().
+    dependency_failed_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_content_upload_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type start_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -4272,80 +4272,80 @@
     resource_not_found_exception().
 
 -type update_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_a_i_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_a_iprompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_assistant_a_i_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_content_errors() ::
-    precondition_failed_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    precondition_failed_exception() | 
+    access_denied_exception().
 
 -type update_knowledge_base_template_uri_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_message_template_errors() ::
+    validation_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type update_message_template_metadata_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type update_quick_response_errors() ::
-    precondition_failed_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
+
+-type update_message_template_metadata_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_quick_response_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_session_data_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

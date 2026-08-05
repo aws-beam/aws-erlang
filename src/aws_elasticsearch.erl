@@ -148,35 +148,158 @@
 
 
 %% Example:
-%% describe_elasticsearch_domain_request() :: #{}
--type describe_elasticsearch_domain_request() :: #{}.
+%% accept_inbound_cross_cluster_search_connection_request() :: #{}
+-type accept_inbound_cross_cluster_search_connection_request() :: #{}.
 
 
 %% Example:
-%% list_domain_names_request() :: #{
-%%   <<"EngineType">> => list(any())
+%% accept_inbound_cross_cluster_search_connection_response() :: #{
+%%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
 %% }
--type list_domain_names_request() :: #{binary() => any()}.
+-type accept_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% upgrade_elasticsearch_domain_response() :: #{
-%%   <<"ChangeProgressDetails">> => change_progress_details(),
-%%   <<"DomainName">> => string(),
-%%   <<"PerformCheckOnly">> => boolean(),
-%%   <<"TargetVersion">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type upgrade_elasticsearch_domain_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% modifying_properties() :: #{
-%%   <<"ActiveValue">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PendingValue">> => string(),
-%%   <<"ValueType">> => list(any())
+%% access_policies_status() :: #{
+%%   <<"Options">> => string(),
+%%   <<"Status">> => option_status()
 %% }
--type modifying_properties() :: #{binary() => any()}.
+-type access_policies_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_tags_request() :: #{
+%%   <<"ARN">> := string(),
+%%   <<"TagList">> := list(tag())
+%% }
+-type add_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_limit() :: #{
+%%   <<"LimitName">> => string(),
+%%   <<"LimitValues">> => list(string())
+%% }
+-type additional_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_options_status() :: #{
+%%   <<"Options">> => map(),
+%%   <<"Status">> => option_status()
+%% }
+-type advanced_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_security_options() :: #{
+%%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
+%%   <<"AnonymousAuthEnabled">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"SAMLOptions">> => saml_options_output()
+%% }
+-type advanced_security_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_security_options_input() :: #{
+%%   <<"AnonymousAuthEnabled">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"MasterUserOptions">> => master_user_options(),
+%%   <<"SAMLOptions">> => saml_options_input()
+%% }
+-type advanced_security_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_security_options_status() :: #{
+%%   <<"Options">> => advanced_security_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type advanced_security_options_status() :: #{binary() => any()}.
+
+%% Example:
+%% associate_package_request() :: #{}
+-type associate_package_request() :: #{}.
+
+
+%% Example:
+%% associate_package_response() :: #{
+%%   <<"DomainPackageDetails">> => domain_package_details()
+%% }
+-type associate_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorize_vpc_endpoint_access_request() :: #{
+%%   <<"Account">> := string()
+%% }
+-type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorize_vpc_endpoint_access_response() :: #{
+%%   <<"AuthorizedPrincipal">> => authorized_principal()
+%% }
+-type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorized_principal() :: #{
+%%   <<"Principal">> => string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type authorized_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune() :: #{
+%%   <<"AutoTuneDetails">> => auto_tune_details(),
+%%   <<"AutoTuneType">> => list(any())
+%% }
+-type auto_tune() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_details() :: #{
+%%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
+%% }
+-type auto_tune_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_maintenance_schedule() :: #{
+%%   <<"CronExpressionForRecurrence">> => string(),
+%%   <<"Duration">> => duration(),
+%%   <<"StartAt">> => non_neg_integer()
+%% }
+-type auto_tune_maintenance_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_options() :: #{
+%%   <<"DesiredState">> => list(any()),
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
+%%   <<"RollbackOnDisable">> => list(any())
+%% }
+-type auto_tune_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_options_input() :: #{
+%%   <<"DesiredState">> => list(any()),
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule())
+%% }
+-type auto_tune_options_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -188,49 +311,159 @@
 
 
 %% Example:
-%% describe_domain_auto_tunes_response() :: #{
-%%   <<"AutoTunes">> => list(auto_tune()),
-%%   <<"NextToken">> => string()
+%% auto_tune_options_status() :: #{
+%%   <<"Options">> => auto_tune_options(),
+%%   <<"Status">> => auto_tune_status()
 %% }
--type describe_domain_auto_tunes_response() :: #{binary() => any()}.
+-type auto_tune_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_compatible_elasticsearch_versions_response() :: #{
-%%   <<"CompatibleElasticsearchVersions">> => list(compatible_versions_map())
+%% auto_tune_status() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PendingDeletion">> => boolean(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer(),
+%%   <<"UpdateVersion">> => integer()
 %% }
--type get_compatible_elasticsearch_versions_response() :: #{binary() => any()}.
+-type auto_tune_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_vpc_endpoints_for_domain_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
+%% automated_snapshot_pause_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
 %% }
--type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
+-type automated_snapshot_pause_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_elasticsearch_domains_request() :: #{
-%%   <<"DomainNames">> := list(string())
+%% automated_snapshot_pause_options_status() :: #{
+%%   <<"Options">> => automated_snapshot_pause_options(),
+%%   <<"Status">> => option_status()
 %% }
--type describe_elasticsearch_domains_request() :: #{binary() => any()}.
+-type automated_snapshot_pause_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_domain_auto_tunes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% automated_snapshot_pause_request_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type describe_domain_auto_tunes_request() :: #{binary() => any()}.
+-type automated_snapshot_pause_request_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% package_source() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3Key">> => string()
+%% base_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type package_source() :: #{binary() => any()}.
+-type base_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_domain_config_change_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type cancel_domain_config_change_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_domain_config_change_response() :: #{
+%%   <<"CancelledChangeIds">> => list(string()),
+%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()),
+%%   <<"DryRun">> => boolean()
+%% }
+-type cancel_domain_config_change_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_elasticsearch_service_software_update_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type cancel_elasticsearch_service_software_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_elasticsearch_service_software_update_response() :: #{
+%%   <<"ServiceSoftwareOptions">> => service_software_options()
+%% }
+-type cancel_elasticsearch_service_software_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancelled_change_property() :: #{
+%%   <<"ActiveValue">> => string(),
+%%   <<"CancelledValue">> => string(),
+%%   <<"PropertyName">> => string()
+%% }
+-type cancelled_change_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_details() :: #{
+%%   <<"ChangeId">> => string(),
+%%   <<"ConfigChangeStatus">> => list(any()),
+%%   <<"InitiatedBy">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type change_progress_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_stage() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type change_progress_stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_status_details() :: #{
+%%   <<"ChangeId">> => string(),
+%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
+%%   <<"CompletedProperties">> => list(string()),
+%%   <<"ConfigChangeStatus">> => list(any()),
+%%   <<"InitiatedBy">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"PendingProperties">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalNumberOfStages">> => integer()
+%% }
+-type change_progress_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type cognito_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_options_status() :: #{
+%%   <<"Options">> => cognito_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type cognito_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% cold_storage_options() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type cold_storage_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -242,63 +475,63 @@
 
 
 %% Example:
-%% snapshot_options() :: #{
-%%   <<"AutomatedSnapshotStartHour">> => integer()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type snapshot_options() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_tune_details() :: #{
-%%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
+%% create_elasticsearch_domain_request() :: #{
+%%   <<"AccessPolicies">> => string(),
+%%   <<"AdvancedOptions">> => map(),
+%%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
+%%   <<"AutoTuneOptions">> => auto_tune_options_input(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
+%%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
+%%   <<"DomainName">> := string(),
+%%   <<"EBSOptions">> => ebs_options(),
+%%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config(),
+%%   <<"ElasticsearchVersion">> => string(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"EngineMode">> => list(any()),
+%%   <<"LogPublishingOptions">> => map(),
+%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
+%%   <<"SnapshotOptions">> => snapshot_options(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"UseCase">> => list(any()),
+%%   <<"VPCOptions">> => vpc_options()
 %% }
--type auto_tune_details() :: #{binary() => any()}.
+-type create_elasticsearch_domain_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_outbound_cross_cluster_search_connections_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_elasticsearch_domain_response() :: #{
+%%   <<"DomainStatus">> => elasticsearch_domain_status()
 %% }
--type describe_outbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
+-type create_elasticsearch_domain_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% authorize_vpc_endpoint_access_response() :: #{
-%%   <<"AuthorizedPrincipal">> => authorized_principal()
+%% create_outbound_cross_cluster_search_connection_request() :: #{
+%%   <<"ConnectionAlias">> := string(),
+%%   <<"DestinationDomainInfo">> := domain_information(),
+%%   <<"SourceDomainInfo">> := domain_information()
 %% }
--type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
+-type create_outbound_cross_cluster_search_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% elasticsearch_cluster_config_status() :: #{
-%%   <<"Options">> => elasticsearch_cluster_config(),
-%%   <<"Status">> => option_status()
+%% create_outbound_cross_cluster_search_connection_response() :: #{
+%%   <<"ConnectionAlias">> => string(),
+%%   <<"ConnectionStatus">> => outbound_cross_cluster_search_connection_status(),
+%%   <<"CrossClusterSearchConnectionId">> => string(),
+%%   <<"DestinationDomainInfo">> => domain_information(),
+%%   <<"SourceDomainInfo">> => domain_information()
 %% }
--type elasticsearch_cluster_config_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_details() :: #{
-%%   <<"AvailablePackageVersion">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"PackageDescription">> => string(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageName">> => string(),
-%%   <<"PackageStatus">> => list(any()),
-%%   <<"PackageType">> => list(any())
-%% }
--type package_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_change_progress_request() :: #{
-%%   <<"ChangeId">> => string()
-%% }
--type describe_domain_change_progress_request() :: #{binary() => any()}.
+-type create_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,15 +545,388 @@
 
 
 %% Example:
-%% auto_tune_status() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"PendingDeletion">> => boolean(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateDate">> => non_neg_integer(),
-%%   <<"UpdateVersion">> => integer()
+%% create_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
 %% }
--type auto_tune_status() :: #{binary() => any()}.
+-type create_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DomainArn">> := string(),
+%%   <<"VpcOptions">> := vpc_options()
+%% }
+-type create_vpc_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpoint">> => vpc_endpoint()
+%% }
+-type create_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_elasticsearch_domain_request() :: #{}
+-type delete_elasticsearch_domain_request() :: #{}.
+
+
+%% Example:
+%% delete_elasticsearch_domain_response() :: #{
+%%   <<"DomainStatus">> => elasticsearch_domain_status()
+%% }
+-type delete_elasticsearch_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inbound_cross_cluster_search_connection_request() :: #{}
+-type delete_inbound_cross_cluster_search_connection_request() :: #{}.
+
+
+%% Example:
+%% delete_inbound_cross_cluster_search_connection_response() :: #{
+%%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
+%% }
+-type delete_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outbound_cross_cluster_search_connection_request() :: #{}
+-type delete_outbound_cross_cluster_search_connection_request() :: #{}.
+
+
+%% Example:
+%% delete_outbound_cross_cluster_search_connection_response() :: #{
+%%   <<"CrossClusterSearchConnection">> => outbound_cross_cluster_search_connection()
+%% }
+-type delete_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_request() :: #{}
+-type delete_package_request() :: #{}.
+
+
+%% Example:
+%% delete_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
+%% }
+-type delete_package_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_request() :: #{}
+-type delete_vpc_endpoint_request() :: #{}.
+
+
+%% Example:
+%% delete_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
+%% }
+-type delete_vpc_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_options() :: #{
+%%   <<"DeploymentStrategy">> => list(any())
+%% }
+-type deployment_strategy_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_options_status() :: #{
+%%   <<"Options">> => deployment_strategy_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type deployment_strategy_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_auto_tunes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_auto_tunes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_auto_tunes_response() :: #{
+%%   <<"AutoTunes">> => list(auto_tune()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_auto_tunes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_change_progress_request() :: #{
+%%   <<"ChangeId">> => string()
+%% }
+-type describe_domain_change_progress_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_change_progress_response() :: #{
+%%   <<"ChangeProgressStatus">> => change_progress_status_details()
+%% }
+-type describe_domain_change_progress_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elasticsearch_domain_config_request() :: #{}
+-type describe_elasticsearch_domain_config_request() :: #{}.
+
+
+%% Example:
+%% describe_elasticsearch_domain_config_response() :: #{
+%%   <<"DomainConfig">> => elasticsearch_domain_config()
+%% }
+-type describe_elasticsearch_domain_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elasticsearch_domain_request() :: #{}
+-type describe_elasticsearch_domain_request() :: #{}.
+
+
+%% Example:
+%% describe_elasticsearch_domain_response() :: #{
+%%   <<"DomainStatus">> => elasticsearch_domain_status()
+%% }
+-type describe_elasticsearch_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_elasticsearch_domains_request() :: #{
+%%   <<"DomainNames">> := list(string())
+%% }
+-type describe_elasticsearch_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_elasticsearch_domains_response() :: #{
+%%   <<"DomainStatusList">> => list(elasticsearch_domain_status())
+%% }
+-type describe_elasticsearch_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_elasticsearch_instance_type_limits_request() :: #{
+%%   <<"DomainName">> => string()
+%% }
+-type describe_elasticsearch_instance_type_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_elasticsearch_instance_type_limits_response() :: #{
+%%   <<"LimitsByRole">> => map()
+%% }
+-type describe_elasticsearch_instance_type_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_inbound_cross_cluster_search_connections_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_inbound_cross_cluster_search_connections_response() :: #{
+%%   <<"CrossClusterSearchConnections">> => list(inbound_cross_cluster_search_connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_outbound_cross_cluster_search_connections_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_outbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_outbound_cross_cluster_search_connections_response() :: #{
+%%   <<"CrossClusterSearchConnections">> => list(outbound_cross_cluster_search_connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_outbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packages_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => list(string())
+%% }
+-type describe_packages_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packages_request() :: #{
+%%   <<"Filters">> => list(describe_packages_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packages_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PackageDetailsList">> => list(package_details())
+%% }
+-type describe_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_elasticsearch_instance_offerings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedElasticsearchInstanceOfferingId">> => string()
+%% }
+-type describe_reserved_elasticsearch_instance_offerings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_elasticsearch_instance_offerings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedElasticsearchInstanceOfferings">> => list(reserved_elasticsearch_instance_offering())
+%% }
+-type describe_reserved_elasticsearch_instance_offerings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_elasticsearch_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedElasticsearchInstanceId">> => string()
+%% }
+-type describe_reserved_elasticsearch_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_elasticsearch_instances_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedElasticsearchInstances">> => list(reserved_elasticsearch_instance())
+%% }
+-type describe_reserved_elasticsearch_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vpc_endpoints_request() :: #{
+%%   <<"VpcEndpointIds">> := list(string())
+%% }
+-type describe_vpc_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vpc_endpoints_response() :: #{
+%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
+%% }
+-type describe_vpc_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disabled_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% dissociate_package_request() :: #{}
+-type dissociate_package_request() :: #{}.
+
+
+%% Example:
+%% dissociate_package_response() :: #{
+%%   <<"DomainPackageDetails">> => domain_package_details()
+%% }
+-type dissociate_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_endpoint_options() :: #{
+%%   <<"CustomEndpoint">> => string(),
+%%   <<"CustomEndpointCertificateArn">> => string(),
+%%   <<"CustomEndpointEnabled">> => boolean(),
+%%   <<"EnforceHTTPS">> => boolean(),
+%%   <<"TLSSecurityPolicy">> => list(any())
+%% }
+-type domain_endpoint_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_endpoint_options_status() :: #{
+%%   <<"Options">> => domain_endpoint_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type domain_endpoint_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_info() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EngineType">> => list(any())
+%% }
+-type domain_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_information() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type domain_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_package_details() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"DomainPackageStatus">> => list(any()),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageName">> => string(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"PackageVersion">> => string(),
+%%   <<"ReferencePath">> => string()
+%% }
+-type domain_package_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dry_run_results() :: #{
+%%   <<"DeploymentType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type dry_run_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% duration() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type duration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_options() :: #{
+%%   <<"EBSEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type ebs_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_options_status() :: #{
+%%   <<"Options">> => ebs_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type ebs_options_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -341,671 +947,11 @@
 
 
 %% Example:
-%% list_vpc_endpoints_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cold_storage_options() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type cold_storage_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vpc_endpoints_request() :: #{
-%%   <<"VpcEndpointIds">> := list(string())
-%% }
--type describe_vpc_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options_status() :: #{
-%%   <<"Options">> => auto_tune_options(),
-%%   <<"Status">> => auto_tune_status()
-%% }
--type auto_tune_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_reserved_elasticsearch_instance_offering_request() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"ReservationName">> := string(),
-%%   <<"ReservedElasticsearchInstanceOfferingId">> := string()
-%% }
--type purchase_reserved_elasticsearch_instance_offering_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_inbound_cross_cluster_search_connection_request() :: #{}
--type accept_inbound_cross_cluster_search_connection_request() :: #{}.
-
-
-%% Example:
-%% snapshot_options_status() :: #{
-%%   <<"Options">> => snapshot_options(),
+%% elasticsearch_cluster_config_status() :: #{
+%%   <<"Options">> => elasticsearch_cluster_config(),
 %%   <<"Status">> => option_status()
 %% }
--type snapshot_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_endpoint_summary() :: #{
-%%   <<"DomainArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcEndpointOwner">> => string()
-%% }
--type vpc_endpoint_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_charge() :: #{
-%%   <<"RecurringChargeAmount">> => float(),
-%%   <<"RecurringChargeFrequency">> => string()
-%% }
--type recurring_charge() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
-%% }
--type list_vpc_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_derived_info() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VPCId">> => string()
-%% }
--type vpc_derived_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_elasticsearch_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstanceId">> => string()
-%% }
--type describe_reserved_elasticsearch_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_idp() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"MetadataContent">> => string()
-%% }
--type saml_idp() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_elasticsearch_instance_type_limits_response() :: #{
-%%   <<"LimitsByRole">> => map()
-%% }
--type describe_elasticsearch_instance_type_limits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_type_limit() :: #{
-%%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string())
-%% }
--type storage_type_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_outbound_cross_cluster_search_connection_response() :: #{
-%%   <<"ConnectionAlias">> => string(),
-%%   <<"ConnectionStatus">> => outbound_cross_cluster_search_connection_status(),
-%%   <<"CrossClusterSearchConnectionId">> => string(),
-%%   <<"DestinationDomainInfo">> => domain_information(),
-%%   <<"SourceDomainInfo">> => domain_information()
-%% }
--type create_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_options_status() :: #{
-%%   <<"Options">> => ebs_options(),
-%%   <<"Status">> => option_status()
-%% }
--type ebs_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorized_principal() :: #{
-%%   <<"Principal">> => string(),
-%%   <<"PrincipalType">> => list(any())
-%% }
--type authorized_principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% disabled_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type disabled_operation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
-%% }
--type delete_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_elasticsearch_domain_request() :: #{}
--type delete_elasticsearch_domain_request() :: #{}.
-
-
-%% Example:
-%% storage_type() :: #{
-%%   <<"StorageSubTypeName">> => string(),
-%%   <<"StorageTypeLimits">> => list(storage_type_limit()),
-%%   <<"StorageTypeName">> => string()
-%% }
--type storage_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
-%% }
--type update_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_elasticsearch_domain_request() :: #{
-%%   <<"AccessPolicies">> => string(),
-%%   <<"AdvancedOptions">> => map(),
-%%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
-%%   <<"AutoTuneOptions">> => auto_tune_options_input(),
-%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
-%%   <<"CognitoOptions">> => cognito_options(),
-%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
-%%   <<"DomainName">> := string(),
-%%   <<"EBSOptions">> => ebs_options(),
-%%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config(),
-%%   <<"ElasticsearchVersion">> => string(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"LogPublishingOptions">> => map(),
-%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
-%%   <<"SnapshotOptions">> => snapshot_options(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"VPCOptions">> => vpc_options()
-%% }
--type create_elasticsearch_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_limit() :: #{
-%%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string())
-%% }
--type additional_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_derived_info_status() :: #{
-%%   <<"Options">> => vpc_derived_info(),
-%%   <<"Status">> => option_status()
-%% }
--type vpc_derived_info_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% inbound_cross_cluster_search_connection_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => list(any())
-%% }
--type inbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_domain_config_change_request() :: #{
-%%   <<"DryRun">> => boolean()
-%% }
--type cancel_domain_config_change_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_options_output() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Idp">> => saml_idp(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SessionTimeoutMinutes">> => integer(),
-%%   <<"SubjectKey">> => string()
-%% }
--type saml_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_options_status() :: #{
-%%   <<"Options">> => cognito_options(),
-%%   <<"Status">> => option_status()
-%% }
--type cognito_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_inbound_cross_cluster_search_connections_response() :: #{
-%%   <<"CrossClusterSearchConnections">> => list(inbound_cross_cluster_search_connection()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_inbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_maintenance_schedule() :: #{
-%%   <<"CronExpressionForRecurrence">> => string(),
-%%   <<"Duration">> => duration(),
-%%   <<"StartAt">> => non_neg_integer()
-%% }
--type auto_tune_maintenance_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_packages_for_domain_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_packages_for_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_status_details() :: #{
-%%   <<"ChangeId">> => string(),
-%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
-%%   <<"CompletedProperties">> => list(string()),
-%%   <<"ConfigChangeStatus">> => list(any()),
-%%   <<"InitiatedBy">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"PendingProperties">> => list(string()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalNumberOfStages">> => integer()
-%% }
--type change_progress_status_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_elasticsearch_domain_config_response() :: #{
-%%   <<"DomainConfig">> => elasticsearch_domain_config()
-%% }
--type describe_elasticsearch_domain_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_tags_request() :: #{
-%%   <<"ARN">> := string(),
-%%   <<"TagList">> := list(tag())
-%% }
--type add_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_elasticsearch_instance_offerings_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstanceOfferings">> => list(reserved_elasticsearch_instance_offering())
-%% }
--type describe_reserved_elasticsearch_instance_offerings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_history() :: #{
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"StepsList">> => list(upgrade_step_item()),
-%%   <<"UpgradeName">> => string(),
-%%   <<"UpgradeStatus">> => list(any())
-%% }
--type upgrade_history() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_elasticsearch_instance_types_request() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_elasticsearch_instance_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
-%% }
--type delete_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_packages_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PackageDetailsList">> => list(package_details())
-%% }
--type describe_packages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% dry_run_results() :: #{
-%%   <<"DeploymentType">> => string(),
-%%   <<"Message">> => string()
-%% }
--type dry_run_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_security_options() :: #{
-%%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
-%%   <<"AnonymousAuthEnabled">> => boolean(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"InternalUserDatabaseEnabled">> => boolean(),
-%%   <<"SAMLOptions">> => saml_options_output()
-%% }
--type advanced_security_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% option_status() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"PendingDeletion">> => boolean(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateDate">> => non_neg_integer(),
-%%   <<"UpdateVersion">> => integer()
-%% }
--type option_status() :: #{binary() => any()}.
-
-%% Example:
-%% reject_inbound_cross_cluster_search_connection_request() :: #{}
--type reject_inbound_cross_cluster_search_connection_request() :: #{}.
-
-
-%% Example:
-%% cancel_domain_config_change_response() :: #{
-%%   <<"CancelledChangeIds">> => list(string()),
-%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()),
-%%   <<"DryRun">> => boolean()
-%% }
--type cancel_domain_config_change_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_inbound_cross_cluster_search_connection_response() :: #{
-%%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
-%% }
--type delete_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_to_node_encryption_options_status() :: #{
-%%   <<"Options">> => node_to_node_encryption_options(),
-%%   <<"Status">> => option_status()
-%% }
--type node_to_node_encryption_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_snapshot_pause_request_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type automated_snapshot_pause_request_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upgrade_history_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UpgradeHistories">> => list(upgrade_history())
-%% }
--type get_upgrade_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_elasticsearch_instance_type_limits_request() :: #{
-%%   <<"DomainName">> => string()
-%% }
--type describe_elasticsearch_instance_type_limits_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_elasticsearch_domain_response() :: #{
-%%   <<"DomainStatus">> => elasticsearch_domain_status()
-%% }
--type create_elasticsearch_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_elasticsearch_domain_response() :: #{
-%%   <<"DomainStatus">> => elasticsearch_domain_status()
-%% }
--type describe_elasticsearch_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_elasticsearch_domain_response() :: #{
-%%   <<"DomainStatus">> => elasticsearch_domain_status()
-%% }
--type delete_elasticsearch_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_elasticsearch_service_software_update_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type cancel_elasticsearch_service_software_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vpc_endpoints_response() :: #{
-%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint())
-%% }
--type describe_vpc_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_elasticsearch_service_software_update_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type start_elasticsearch_service_software_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_packages_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => list(string())
-%% }
--type describe_packages_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_elasticsearch_domain_config_request() :: #{
-%%   <<"AccessPolicies">> => string(),
-%%   <<"AdvancedOptions">> => map(),
-%%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
-%%   <<"AutoTuneOptions">> => auto_tune_options(),
-%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
-%%   <<"CognitoOptions">> => cognito_options(),
-%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EBSOptions">> => ebs_options(),
-%%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"LogPublishingOptions">> => map(),
-%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
-%%   <<"SnapshotOptions">> => snapshot_options(),
-%%   <<"VPCOptions">> => vpc_options()
-%% }
--type update_elasticsearch_domain_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpoint">> => vpc_endpoint()
-%% }
--type update_vpc_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_details() :: #{
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ErrorType">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_at_rest_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"KmsKeyId">> => string()
-%% }
--type encryption_at_rest_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_history_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageVersionHistoryList">> => list(package_version_history())
-%% }
--type get_package_version_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_for_domain_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_options_input() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Idp">> => saml_idp(),
-%%   <<"MasterBackendRole">> => string(),
-%%   <<"MasterUserName">> => string(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SessionTimeoutMinutes">> => integer(),
-%%   <<"SubjectKey">> => string()
-%% }
--type saml_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_endpoint() :: #{
-%%   <<"DomainArn">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcEndpointOwner">> => string(),
-%%   <<"VpcOptions">> => vpc_derived_info()
-%% }
--type vpc_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_package_version_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_auto_tune_details() :: #{
-%%   <<"Action">> => string(),
-%%   <<"ActionType">> => list(any()),
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Severity">> => list(any())
-%% }
--type scheduled_auto_tune_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_options() :: #{
-%%   <<"EBSEnabled">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"Throughput">> => integer(),
-%%   <<"VolumeSize">> => integer(),
-%%   <<"VolumeType">> => list(any())
-%% }
--type ebs_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_request() :: #{
-%%   <<"CommitMessage">> => string(),
-%%   <<"PackageDescription">> => string(),
-%%   <<"PackageID">> := string(),
-%%   <<"PackageSource">> := package_source()
-%% }
--type update_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_names_response() :: #{
-%%   <<"DomainNames">> => list(domain_info())
-%% }
--type list_domain_names_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reserved_elasticsearch_instance() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"ElasticsearchInstanceCount">> => integer(),
-%%   <<"ElasticsearchInstanceType">> => list(any()),
-%%   <<"FixedPrice">> => float(),
-%%   <<"PaymentOption">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservationName">> => string(),
-%%   <<"ReservedElasticsearchInstanceId">> => string(),
-%%   <<"ReservedElasticsearchInstanceOfferingId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_elasticsearch_instance() :: #{binary() => any()}.
-
-%% Example:
-%% associate_package_request() :: #{}
--type associate_package_request() :: #{}.
+-type elasticsearch_cluster_config_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1023,359 +969,15 @@
 %%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config_status(),
 %%   <<"ElasticsearchVersion">> => elasticsearch_version_status(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
+%%   <<"EngineMode">> => engine_mode_status(),
 %%   <<"LogPublishingOptions">> => log_publishing_options_status(),
 %%   <<"ModifyingProperties">> => list(modifying_properties()),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options_status(),
 %%   <<"SnapshotOptions">> => snapshot_options_status(),
+%%   <<"UseCase">> => use_case_status(),
 %%   <<"VPCOptions">> => vpc_derived_info_status()
 %% }
 -type elasticsearch_domain_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_snapshot_pause_options_status() :: #{
-%%   <<"Options">> => automated_snapshot_pause_options(),
-%%   <<"Status">> => option_status()
-%% }
--type automated_snapshot_pause_options_status() :: #{binary() => any()}.
-
-%% Example:
-%% dissociate_package_request() :: #{}
--type dissociate_package_request() :: #{}.
-
-
-%% Example:
-%% describe_outbound_cross_cluster_search_connections_response() :: #{
-%%   <<"CrossClusterSearchConnections">> => list(outbound_cross_cluster_search_connection()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_outbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_outbound_cross_cluster_search_connection_request() :: #{}
--type delete_outbound_cross_cluster_search_connection_request() :: #{}.
-
-
-%% Example:
-%% start_elasticsearch_service_software_update_response() :: #{
-%%   <<"ServiceSoftwareOptions">> => service_software_options()
-%% }
--type start_elasticsearch_service_software_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_elasticsearch_service_software_update_response() :: #{
-%%   <<"ServiceSoftwareOptions">> => service_software_options()
-%% }
--type cancel_elasticsearch_service_software_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_information() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"Region">> => string()
-%% }
--type domain_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_security_options_input() :: #{
-%%   <<"AnonymousAuthEnabled">> => boolean(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"InternalUserDatabaseEnabled">> => boolean(),
-%%   <<"MasterUserOptions">> => master_user_options(),
-%%   <<"SAMLOptions">> => saml_options_input()
-%% }
--type advanced_security_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_info() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"EngineType">> => list(any())
-%% }
--type domain_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserPoolId">> => string()
-%% }
--type cognito_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoint_access_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoint_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_endpoint_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DomainArn">> := string(),
-%%   <<"VpcOptions">> := vpc_options()
-%% }
--type create_vpc_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options_input() :: #{
-%%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule())
-%% }
--type auto_tune_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancelled_change_property() :: #{
-%%   <<"ActiveValue">> => string(),
-%%   <<"CancelledValue">> => string(),
-%%   <<"PropertyName">> => string()
-%% }
--type cancelled_change_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_change_progress_response() :: #{
-%%   <<"ChangeProgressStatus">> => change_progress_status_details()
-%% }
--type describe_domain_change_progress_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_limits() :: #{
-%%   <<"InstanceCountLimits">> => instance_count_limits()
-%% }
--type instance_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_type_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_details() :: #{
-%%   <<"ChangeId">> => string(),
-%%   <<"ConfigChangeStatus">> => list(any()),
-%%   <<"InitiatedBy">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type change_progress_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% zone_awareness_config() :: #{
-%%   <<"AvailabilityZoneCount">> => integer()
-%% }
--type zone_awareness_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upgrade_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_upgrade_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_stage() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type change_progress_stage() :: #{binary() => any()}.
-
-
-%% Example:
-%% dissociate_package_response() :: #{
-%%   <<"DomainPackageDetails">> => domain_package_details()
-%% }
--type dissociate_package_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_package_request() :: #{}
--type delete_package_request() :: #{}.
-
-
-%% Example:
-%% describe_reserved_elasticsearch_instance_offerings_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstanceOfferingId">> => string()
-%% }
--type describe_reserved_elasticsearch_instance_offerings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_compatible_elasticsearch_versions_request() :: #{
-%%   <<"DomainName">> => string()
-%% }
--type get_compatible_elasticsearch_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_elasticsearch_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"PerformCheckOnly">> => boolean(),
-%%   <<"TargetVersion">> := string()
-%% }
--type upgrade_elasticsearch_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_snapshot_pause_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type automated_snapshot_pause_options() :: #{binary() => any()}.
-
-%% Example:
-%% describe_elasticsearch_domain_config_request() :: #{}
--type describe_elasticsearch_domain_config_request() :: #{}.
-
-
-%% Example:
-%% list_packages_for_domain_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_packages_for_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_strategy_options() :: #{
-%%   <<"DeploymentStrategy">> => list(any())
-%% }
--type deployment_strategy_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_security_options_status() :: #{
-%%   <<"Options">> => advanced_security_options(),
-%%   <<"Status">> => option_status()
-%% }
--type advanced_security_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% duration() :: #{
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type duration() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_reserved_elasticsearch_instance_offering_response() :: #{
-%%   <<"ReservationName">> => string(),
-%%   <<"ReservedElasticsearchInstanceId">> => string()
-%% }
--type purchase_reserved_elasticsearch_instance_offering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_for_package_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_for_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorize_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> := string()
-%% }
--type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_software_options() :: #{
-%%   <<"AutomatedUpdateDate">> => non_neg_integer(),
-%%   <<"Cancellable">> => boolean(),
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NewVersion">> => string(),
-%%   <<"OptionalDeployment">> => boolean(),
-%%   <<"UpdateAvailable">> => boolean(),
-%%   <<"UpdateStatus">> => list(any())
-%% }
--type service_software_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_publishing_options_status() :: #{
-%%   <<"Options">> => map(),
-%%   <<"Status">> => option_status()
-%% }
--type log_publishing_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_outbound_cross_cluster_search_connection_response() :: #{
-%%   <<"CrossClusterSearchConnection">> => outbound_cross_cluster_search_connection()
-%% }
--type delete_outbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_strategy_options_status() :: #{
-%%   <<"Options">> => deployment_strategy_options(),
-%%   <<"Status">> => option_status()
-%% }
--type deployment_strategy_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options() :: #{
-%%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
-%%   <<"RollbackOnDisable">> => list(any())
-%% }
--type auto_tune_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1401,6 +1003,7 @@
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
 %%   <<"Endpoint">> => string(),
 %%   <<"Endpoints">> => map(),
+%%   <<"EngineMode">> => list(any()),
 %%   <<"LogPublishingOptions">> => map(),
 %%   <<"ModifyingProperties">> => list(modifying_properties()),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
@@ -1408,17 +1011,118 @@
 %%   <<"ServiceSoftwareOptions">> => service_software_options(),
 %%   <<"SnapshotOptions">> => snapshot_options(),
 %%   <<"UpgradeProcessing">> => boolean(),
+%%   <<"UseCase">> => list(any()),
 %%   <<"VPCOptions">> => vpc_derived_info()
 %% }
 -type elasticsearch_domain_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% elasticsearch_version_status() :: #{
+%%   <<"Options">> => string(),
+%%   <<"Status">> => option_status()
+%% }
+-type elasticsearch_version_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type encryption_at_rest_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options_status() :: #{
+%%   <<"Options">> => encryption_at_rest_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type encryption_at_rest_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_mode_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
+%% }
+-type engine_mode_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_elasticsearch_versions_request() :: #{
+%%   <<"DomainName">> => string()
+%% }
+-type get_compatible_elasticsearch_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_elasticsearch_versions_response() :: #{
+%%   <<"CompatibleElasticsearchVersions">> => list(compatible_versions_map())
+%% }
+-type get_compatible_elasticsearch_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_package_version_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageVersionHistoryList">> => list(package_version_history())
+%% }
+-type get_package_version_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_upgrade_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_upgrade_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_upgrade_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UpgradeHistories">> => list(upgrade_history())
+%% }
+-type get_upgrade_history_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_upgrade_status_request() :: #{}
 -type get_upgrade_status_request() :: #{}.
 
+
 %% Example:
-%% delete_vpc_endpoint_request() :: #{}
--type delete_vpc_endpoint_request() :: #{}.
+%% get_upgrade_status_response() :: #{
+%%   <<"StepStatus">> => list(any()),
+%%   <<"UpgradeName">> => string(),
+%%   <<"UpgradeStep">> => list(any())
+%% }
+-type get_upgrade_status_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1432,24 +1136,54 @@
 
 
 %% Example:
-%% base_exception() :: #{
+%% inbound_cross_cluster_search_connection_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type inbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_count_limits() :: #{
+%%   <<"MaximumInstanceCount">> => integer(),
+%%   <<"MinimumInstanceCount">> => integer()
+%% }
+-type instance_count_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_limits() :: #{
+%%   <<"InstanceCountLimits">> => instance_count_limits()
+%% }
+-type instance_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type base_exception() :: #{binary() => any()}.
+-type internal_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_to_node_encryption_options() :: #{
-%%   <<"Enabled">> => boolean()
+%% invalid_pagination_token_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type node_to_node_encryption_options() :: #{binary() => any()}.
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
+%% invalid_type_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_package_response() :: #{binary() => any()}.
+-type invalid_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1462,105 +1196,58 @@
 
 
 %% Example:
-%% revoke_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> := string()
+%% list_domain_names_request() :: #{
+%%   <<"EngineType">> => list(any())
 %% }
--type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
+-type list_domain_names_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% elasticsearch_version_status() :: #{
-%%   <<"Options">> => string(),
-%%   <<"Status">> => option_status()
+%% list_domain_names_response() :: #{
+%%   <<"DomainNames">> => list(domain_info())
 %% }
--type elasticsearch_version_status() :: #{binary() => any()}.
+-type list_domain_names_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_options() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_cross_cluster_search_connection_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => list(any())
-%% }
--type outbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_inbound_cross_cluster_search_connections_request() :: #{
-%%   <<"Filters">> => list(filter()),
+%% list_domains_for_package_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type describe_inbound_cross_cluster_search_connections_request() :: #{binary() => any()}.
+-type list_domains_for_package_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpoint">> => vpc_endpoint()
+%% list_domains_for_package_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
+%%   <<"NextToken">> => string()
 %% }
--type create_vpc_endpoint_response() :: #{binary() => any()}.
+-type list_domains_for_package_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_endpoint_options_status() :: #{
-%%   <<"Options">> => domain_endpoint_options(),
-%%   <<"Status">> => option_status()
-%% }
--type domain_endpoint_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_package_details() :: #{
+%% list_elasticsearch_instance_types_request() :: #{
 %%   <<"DomainName">> => string(),
-%%   <<"DomainPackageStatus">> => list(any()),
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageName">> => string(),
-%%   <<"PackageType">> => list(any()),
-%%   <<"PackageVersion">> => string(),
-%%   <<"ReferencePath">> => string()
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type domain_package_details() :: #{binary() => any()}.
+-type list_elasticsearch_instance_types_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% advanced_options_status() :: #{
-%%   <<"Options">> => map(),
-%%   <<"Status">> => option_status()
+%% list_elasticsearch_instance_types_response() :: #{
+%%   <<"ElasticsearchInstanceTypes">> => list(list(any())()),
+%%   <<"NextToken">> => string()
 %% }
--type advanced_options_status() :: #{binary() => any()}.
+-type list_elasticsearch_instance_types_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_policies_status() :: #{
-%%   <<"Options">> => string(),
-%%   <<"Status">> => option_status()
+%% list_elasticsearch_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type access_policies_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_history() :: #{
-%%   <<"CommitMessage">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"PackageVersion">> => string()
-%% }
--type package_version_history() :: #{binary() => any()}.
+-type list_elasticsearch_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1572,26 +1259,19 @@
 
 
 %% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
+%% list_packages_for_domain_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type resource_already_exists_exception() :: #{binary() => any()}.
+-type list_packages_for_domain_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_vpc_endpoint_request() :: #{
-%%   <<"VpcEndpointId">> := string(),
-%%   <<"VpcOptions">> := vpc_options()
+%% list_packages_for_domain_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
+%%   <<"NextToken">> => string()
 %% }
--type update_vpc_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_tags_request() :: #{
-%%   <<"ARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_request() :: #{binary() => any()}.
+-type list_packages_for_domain_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1602,39 +1282,116 @@
 
 
 %% Example:
-%% auto_tune() :: #{
-%%   <<"AutoTuneDetails">> => auto_tune_details(),
-%%   <<"AutoTuneType">> => list(any())
+%% list_tags_response() :: #{
+%%   <<"TagList">> => list(tag())
 %% }
--type auto_tune() :: #{binary() => any()}.
+-type list_tags_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_packages_request() :: #{
-%%   <<"Filters">> => list(describe_packages_filter()),
-%%   <<"MaxResults">> => integer(),
+%% list_vpc_endpoint_access_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
--type describe_packages_request() :: #{binary() => any()}.
+-type list_vpc_endpoint_access_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_outbound_cross_cluster_search_connection_request() :: #{
-%%   <<"ConnectionAlias">> := string(),
-%%   <<"DestinationDomainInfo">> := domain_information(),
-%%   <<"SourceDomainInfo">> := domain_information()
+%% list_vpc_endpoint_access_response() :: #{
+%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()),
+%%   <<"NextToken">> => string()
 %% }
--type create_outbound_cross_cluster_search_connection_request() :: #{binary() => any()}.
+-type list_vpc_endpoint_access_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% upgrade_step_item() :: #{
-%%   <<"Issues">> => list(string()),
-%%   <<"ProgressPercent">> => float(),
-%%   <<"UpgradeStep">> => list(any()),
-%%   <<"UpgradeStepStatus">> => list(any())
+%% list_vpc_endpoints_for_domain_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type upgrade_step_item() :: #{binary() => any()}.
+-type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_for_domain_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
+%% }
+-type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
+%% }
+-type list_vpc_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_publishing_option() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type log_publishing_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_publishing_options_status() :: #{
+%%   <<"Options">> => map(),
+%%   <<"Status">> => option_status()
+%% }
+-type log_publishing_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% master_user_options() :: #{
+%%   <<"MasterUserARN">> => string(),
+%%   <<"MasterUserName">> => string(),
+%%   <<"MasterUserPassword">> => string()
+%% }
+-type master_user_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% modifying_properties() :: #{
+%%   <<"ActiveValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PendingValue">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type modifying_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_to_node_encryption_options() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type node_to_node_encryption_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_to_node_encryption_options_status() :: #{
+%%   <<"Options">> => node_to_node_encryption_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type node_to_node_encryption_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% option_status() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"PendingDeletion">> => boolean(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer(),
+%%   <<"UpdateVersion">> => integer()
+%% }
+-type option_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1649,140 +1406,106 @@
 
 
 %% Example:
-%% log_publishing_option() :: #{
-%%   <<"CloudWatchLogsLogGroupArn">> => string(),
-%%   <<"Enabled">> => boolean()
+%% outbound_cross_cluster_search_connection_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => list(any())
 %% }
--type log_publishing_option() :: #{binary() => any()}.
+-type outbound_cross_cluster_search_connection_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_inbound_cross_cluster_search_connection_response() :: #{
+%% package_details() :: #{
+%%   <<"AvailablePackageVersion">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"PackageDescription">> => string(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageName">> => string(),
+%%   <<"PackageStatus">> => list(any()),
+%%   <<"PackageType">> => list(any())
+%% }
+-type package_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_source() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type package_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_version_history() :: #{
+%%   <<"CommitMessage">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"PackageVersion">> => string()
+%% }
+-type package_version_history() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_reserved_elasticsearch_instance_offering_request() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"ReservationName">> := string(),
+%%   <<"ReservedElasticsearchInstanceOfferingId">> := string()
+%% }
+-type purchase_reserved_elasticsearch_instance_offering_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_reserved_elasticsearch_instance_offering_response() :: #{
+%%   <<"ReservationName">> => string(),
+%%   <<"ReservedElasticsearchInstanceId">> => string()
+%% }
+-type purchase_reserved_elasticsearch_instance_offering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% reject_inbound_cross_cluster_search_connection_request() :: #{}
+-type reject_inbound_cross_cluster_search_connection_request() :: #{}.
+
+
+%% Example:
+%% reject_inbound_cross_cluster_search_connection_response() :: #{
 %%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
 %% }
--type accept_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+-type reject_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_elasticsearch_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% remove_tags_request() :: #{
+%%   <<"ARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type list_elasticsearch_versions_request() :: #{binary() => any()}.
+-type remove_tags_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_vpc_endpoint_access_response() :: #{
-%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()),
-%%   <<"NextToken">> => string()
+%% reserved_elasticsearch_instance() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"ElasticsearchInstanceCount">> => integer(),
+%%   <<"ElasticsearchInstanceType">> => list(any()),
+%%   <<"FixedPrice">> => float(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservationName">> => string(),
+%%   <<"ReservedElasticsearchInstanceId">> => string(),
+%%   <<"ReservedElasticsearchInstanceOfferingId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"UsagePrice">> => float()
 %% }
--type list_vpc_endpoint_access_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_elasticsearch_instances_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstances">> => list(reserved_elasticsearch_instance())
-%% }
--type describe_reserved_elasticsearch_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_endpoint_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type vpc_endpoint_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upgrade_status_response() :: #{
-%%   <<"StepStatus">> => list(any()),
-%%   <<"UpgradeName">> => string(),
-%%   <<"UpgradeStep">> => list(any())
-%% }
--type get_upgrade_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_elasticsearch_domain_config_response() :: #{
-%%   <<"DomainConfig">> => elasticsearch_domain_config(),
-%%   <<"DryRunResults">> => dry_run_results()
-%% }
--type update_elasticsearch_domain_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_endpoint_options() :: #{
-%%   <<"CustomEndpoint">> => string(),
-%%   <<"CustomEndpointCertificateArn">> => string(),
-%%   <<"CustomEndpointEnabled">> => boolean(),
-%%   <<"EnforceHTTPS">> => boolean(),
-%%   <<"TLSSecurityPolicy">> => list(any())
-%% }
--type domain_endpoint_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_package_response() :: #{
-%%   <<"DomainPackageDetails">> => domain_package_details()
-%% }
--type associate_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_elasticsearch_domains_response() :: #{
-%%   <<"DomainStatusList">> => list(elasticsearch_domain_status())
-%% }
--type describe_elasticsearch_domains_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_at_rest_options_status() :: #{
-%%   <<"Options">> => encryption_at_rest_options(),
-%%   <<"Status">> => option_status()
-%% }
--type encryption_at_rest_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_elasticsearch_instance_types_response() :: #{
-%%   <<"ElasticsearchInstanceTypes">> => list(list(any())()),
-%%   <<"NextToken">> => string()
-%% }
--type list_elasticsearch_instance_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_count_limits() :: #{
-%%   <<"MaximumInstanceCount">> => integer(),
-%%   <<"MinimumInstanceCount">> => integer()
-%% }
--type instance_count_limits() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_vpc_endpoint_access_response() :: #{}
--type revoke_vpc_endpoint_access_response() :: #{}.
-
-%% Example:
-%% delete_inbound_cross_cluster_search_connection_request() :: #{}
--type delete_inbound_cross_cluster_search_connection_request() :: #{}.
-
-
-%% Example:
-%% list_domains_for_package_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_for_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
+-type reserved_elasticsearch_instance() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1800,68 +1523,369 @@
 
 
 %% Example:
-%% master_user_options() :: #{
-%%   <<"MasterUserARN">> => string(),
-%%   <<"MasterUserName">> => string(),
-%%   <<"MasterUserPassword">> => string()
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type master_user_options() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% reject_inbound_cross_cluster_search_connection_response() :: #{
-%%   <<"CrossClusterSearchConnection">> => inbound_cross_cluster_search_connection()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type reject_inbound_cross_cluster_search_connection_response() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_vpc_endpoint_access_request() :: #{
+%%   <<"Account">> := string()
+%% }
+-type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_vpc_endpoint_access_response() :: #{}
+-type revoke_vpc_endpoint_access_response() :: #{}.
+
+
+%% Example:
+%% saml_idp() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"MetadataContent">> => string()
+%% }
+-type saml_idp() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_options_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Idp">> => saml_idp(),
+%%   <<"MasterBackendRole">> => string(),
+%%   <<"MasterUserName">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SessionTimeoutMinutes">> => integer(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type saml_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Idp">> => saml_idp(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SessionTimeoutMinutes">> => integer(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type saml_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_auto_tune_details() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Severity">> => list(any())
+%% }
+-type scheduled_auto_tune_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_software_options() :: #{
+%%   <<"AutomatedUpdateDate">> => non_neg_integer(),
+%%   <<"Cancellable">> => boolean(),
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NewVersion">> => string(),
+%%   <<"OptionalDeployment">> => boolean(),
+%%   <<"UpdateAvailable">> => boolean(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_options() :: #{
+%%   <<"AutomatedSnapshotStartHour">> => integer()
+%% }
+-type snapshot_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_options_status() :: #{
+%%   <<"Options">> => snapshot_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type snapshot_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_elasticsearch_service_software_update_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type start_elasticsearch_service_software_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_elasticsearch_service_software_update_response() :: #{
+%%   <<"ServiceSoftwareOptions">> => service_software_options()
+%% }
+-type start_elasticsearch_service_software_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_type() :: #{
+%%   <<"StorageSubTypeName">> => string(),
+%%   <<"StorageTypeLimits">> => list(storage_type_limit()),
+%%   <<"StorageTypeName">> => string()
+%% }
+-type storage_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_type_limit() :: #{
+%%   <<"LimitName">> => string(),
+%%   <<"LimitValues">> => list(string())
+%% }
+-type storage_type_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_elasticsearch_domain_config_request() :: #{
+%%   <<"AccessPolicies">> => string(),
+%%   <<"AdvancedOptions">> => map(),
+%%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
+%%   <<"AutoTuneOptions">> => auto_tune_options(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
+%%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EBSOptions">> => ebs_options(),
+%%   <<"ElasticsearchClusterConfig">> => elasticsearch_cluster_config(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"EngineMode">> => list(any()),
+%%   <<"LogPublishingOptions">> => map(),
+%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
+%%   <<"SnapshotOptions">> => snapshot_options(),
+%%   <<"UseCase">> => list(any()),
+%%   <<"VPCOptions">> => vpc_options()
+%% }
+-type update_elasticsearch_domain_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_elasticsearch_domain_config_response() :: #{
+%%   <<"DomainConfig">> => elasticsearch_domain_config(),
+%%   <<"DryRunResults">> => dry_run_results()
+%% }
+-type update_elasticsearch_domain_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_package_request() :: #{
+%%   <<"CommitMessage">> => string(),
+%%   <<"PackageDescription">> => string(),
+%%   <<"PackageID">> := string(),
+%%   <<"PackageSource">> := package_source()
+%% }
+-type update_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
+%% }
+-type update_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_endpoint_request() :: #{
+%%   <<"VpcEndpointId">> := string(),
+%%   <<"VpcOptions">> := vpc_options()
+%% }
+-type update_vpc_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpoint">> => vpc_endpoint()
+%% }
+-type update_vpc_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_elasticsearch_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"PerformCheckOnly">> => boolean(),
+%%   <<"TargetVersion">> := string()
+%% }
+-type upgrade_elasticsearch_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_elasticsearch_domain_response() :: #{
+%%   <<"ChangeProgressDetails">> => change_progress_details(),
+%%   <<"DomainName">> => string(),
+%%   <<"PerformCheckOnly">> => boolean(),
+%%   <<"TargetVersion">> => string()
+%% }
+-type upgrade_elasticsearch_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_history() :: #{
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"StepsList">> => list(upgrade_step_item()),
+%%   <<"UpgradeName">> => string(),
+%%   <<"UpgradeStatus">> => list(any())
+%% }
+-type upgrade_history() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_step_item() :: #{
+%%   <<"Issues">> => list(string()),
+%%   <<"ProgressPercent">> => float(),
+%%   <<"UpgradeStep">> => list(any()),
+%%   <<"UpgradeStepStatus">> => list(any())
+%% }
+-type upgrade_step_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
+%% }
+-type use_case_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_derived_info() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VPCId">> => string()
+%% }
+-type vpc_derived_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_derived_info_status() :: #{
+%%   <<"Options">> => vpc_derived_info(),
+%%   <<"Status">> => option_status()
+%% }
+-type vpc_derived_info_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcEndpointOwner">> => string(),
+%%   <<"VpcOptions">> => vpc_derived_info()
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_endpoint_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type vpc_endpoint_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_endpoint_summary() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcEndpointOwner">> => string()
+%% }
+-type vpc_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_options() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type vpc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% zone_awareness_config() :: #{
+%%   <<"AvailabilityZoneCount">> => integer()
+%% }
+-type zone_awareness_config() :: #{binary() => any()}.
 
 -type accept_inbound_cross_cluster_search_connection_errors() ::
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     disabled_operation_exception().
 
 -type add_tags_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    base_exception().
 
 -type associate_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type authorize_vpc_endpoint_access_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type cancel_domain_config_change_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type cancel_elasticsearch_service_software_update_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type create_elasticsearch_domain_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    base_exception() | 
-    validation_exception() | 
-    internal_exception() | 
     invalid_type_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type create_outbound_cross_cluster_search_connection_errors() ::
     resource_already_exists_exception() | 
@@ -1870,32 +1894,32 @@
     disabled_operation_exception().
 
 -type create_package_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    base_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    invalid_type_exception() | 
     internal_exception() | 
-    invalid_type_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type create_vpc_endpoint_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type delete_elasticsearch_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type delete_elasticsearch_service_role_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_inbound_cross_cluster_search_connection_errors() ::
     resource_not_found_exception() | 
@@ -1906,55 +1930,55 @@
     disabled_operation_exception().
 
 -type delete_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type delete_vpc_endpoint_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_domain_auto_tunes_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_domain_change_progress_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_elasticsearch_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_elasticsearch_domain_config_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_elasticsearch_domains_errors() ::
-    base_exception() | 
-    validation_exception() | 
-    internal_exception().
-
--type describe_elasticsearch_instance_type_limits_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
     internal_exception() | 
+    base_exception().
+
+-type describe_elasticsearch_instance_type_limits_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type describe_inbound_cross_cluster_search_connections_errors() ::
     invalid_pagination_token_exception() | 
@@ -1965,125 +1989,125 @@
     disabled_operation_exception().
 
 -type describe_packages_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type describe_reserved_elasticsearch_instance_offerings_errors() ::
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
     disabled_operation_exception().
 
 -type describe_reserved_elasticsearch_instances_errors() ::
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
     disabled_operation_exception().
 
 -type describe_vpc_endpoints_errors() ::
-    base_exception() | 
     validation_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    base_exception().
 
 -type dissociate_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type get_compatible_elasticsearch_versions_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_package_version_history_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type get_upgrade_history_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_upgrade_status_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_domain_names_errors() ::
-    base_exception() | 
-    validation_exception().
+    validation_exception() | 
+    base_exception().
 
 -type list_domains_for_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type list_elasticsearch_instance_types_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_elasticsearch_versions_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_packages_for_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type list_tags_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_vpc_endpoint_access_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_vpc_endpoints_errors() ::
-    base_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_vpc_endpoints_for_domain_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type purchase_reserved_elasticsearch_instance_offering_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
     internal_exception() | 
-    resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type reject_inbound_cross_cluster_search_connection_errors() ::
@@ -2091,54 +2115,54 @@
     disabled_operation_exception().
 
 -type remove_tags_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type revoke_vpc_endpoint_access_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type start_elasticsearch_service_software_update_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type update_elasticsearch_domain_config_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type update_package_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type update_vpc_endpoint_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type upgrade_elasticsearch_domain_errors() ::
-    resource_already_exists_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    resource_already_exists_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 %%====================================================================
 %% API

@@ -105,30 +105,220 @@
 
 
 %% Example:
-%% lambda_function_recipe_source() :: #{
-%%   <<"componentDependencies">> => map(),
-%%   <<"componentLambdaParameters">> => lambda_execution_parameters(),
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_client_device_with_core_device_entry() :: #{
+%%   <<"thingName">> => string()
+%% }
+-type associate_client_device_with_core_device_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_client_device_with_core_device_error_entry() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type associate_client_device_with_core_device_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_service_role_to_account_request() :: #{
+%%   <<"roleArn">> := string()
+%% }
+-type associate_service_role_to_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_service_role_to_account_response() :: #{
+%%   <<"associatedAt">> => string()
+%% }
+-type associate_service_role_to_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_client_device() :: #{
+%%   <<"associationTimestamp">> => non_neg_integer(),
+%%   <<"thingName">> => string()
+%% }
+-type associated_client_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_client_device_with_core_device_request() :: #{
+%%   <<"entries">> => list(associate_client_device_with_core_device_entry())
+%% }
+-type batch_associate_client_device_with_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_client_device_with_core_device_response() :: #{
+%%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry())
+%% }
+-type batch_associate_client_device_with_core_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_client_device_from_core_device_request() :: #{
+%%   <<"entries">> => list(disassociate_client_device_from_core_device_entry())
+%% }
+-type batch_disassociate_client_device_from_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_client_device_from_core_device_response() :: #{
+%%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry())
+%% }
+-type batch_disassociate_client_device_from_core_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_deployment_request() :: #{}
+-type cancel_deployment_request() :: #{}.
+
+
+%% Example:
+%% cancel_deployment_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type cancel_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_component_status() :: #{
+%%   <<"componentState">> => list(any()),
+%%   <<"errors">> => map(),
+%%   <<"message">> => string(),
+%%   <<"vendorGuidance">> => list(any()),
+%%   <<"vendorGuidanceMessage">> => string()
+%% }
+-type cloud_component_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% component() :: #{
+%%   <<"arn">> => string(),
 %%   <<"componentName">> => string(),
-%%   <<"componentPlatforms">> => list(component_platform()),
+%%   <<"latestVersion">> => component_latest_version()
+%% }
+-type component() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_candidate() :: #{
+%%   <<"componentName">> => string(),
 %%   <<"componentVersion">> => string(),
-%%   <<"lambdaArn">> => string()
+%%   <<"versionRequirements">> => map()
 %% }
--type lambda_function_recipe_source() :: #{binary() => any()}.
+-type component_candidate() :: #{binary() => any()}.
 
 
 %% Example:
-%% deployment_component_update_policy() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"timeoutInSeconds">> => integer()
+%% component_configuration_update() :: #{
+%%   <<"merge">> => string(),
+%%   <<"reset">> => list(string())
 %% }
--type deployment_component_update_policy() :: #{binary() => any()}.
+-type component_configuration_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_service_role_from_account_response() :: #{
-%%   <<"disassociatedAt">> => string()
+%% component_dependency_requirement() :: #{
+%%   <<"dependencyType">> => list(any()),
+%%   <<"versionRequirement">> => string()
 %% }
--type disassociate_service_role_from_account_response() :: #{binary() => any()}.
+-type component_dependency_requirement() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_deployment_specification() :: #{
+%%   <<"componentVersion">> => string(),
+%%   <<"configurationUpdate">> => component_configuration_update(),
+%%   <<"runWith">> => component_run_with()
+%% }
+-type component_deployment_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_latest_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"platforms">> => list(component_platform()),
+%%   <<"publisher">> => string()
+%% }
+-type component_latest_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_platform() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"name">> => string()
+%% }
+-type component_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_run_with() :: #{
+%%   <<"posixUser">> => string(),
+%%   <<"systemResourceLimits">> => system_resource_limits(),
+%%   <<"windowsUser">> => string()
+%% }
+-type component_run_with() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_version_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string()
+%% }
+-type component_version_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connectivity_info() :: #{
+%%   <<"hostAddress">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => string(),
+%%   <<"portNumber">> => integer()
+%% }
+-type connectivity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_device() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"coreDeviceThingName">> => string(),
+%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"runtime">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type core_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"inlineRecipe">> => binary(),
+%%   <<"lambdaFunction">> => lambda_function_recipe_source(),
+%%   <<"tags">> => map()
+%% }
+-type create_component_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -140,127 +330,6 @@
 %%   <<"status">> => cloud_component_status()
 %% }
 -type create_component_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_request() :: #{
-%%   <<"historyFilter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"parentTargetArn">> => string(),
-%%   <<"targetArn">> => string()
-%% }
--type list_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connectivity_info_response() :: #{
-%%   <<"message">> => string(),
-%%   <<"version">> => string()
-%% }
--type update_connectivity_info_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_component_versions_response() :: #{
-%%   <<"componentVersions">> => list(component_version_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_component_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_version_artifact_request() :: #{
-%%   <<"iotEndpointType">> => list(any()),
-%%   <<"s3EndpointType">> => list(any())
-%% }
--type get_component_version_artifact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_client_device_from_core_device_entry() :: #{
-%%   <<"thingName">> => string()
-%% }
--type disassociate_client_device_from_core_device_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment() :: #{
-%%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"deploymentId">> => string(),
-%%   <<"deploymentName">> => string(),
-%%   <<"deploymentStatus">> => list(any()),
-%%   <<"isLatestForTarget">> => boolean(),
-%%   <<"parentTargetArn">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"targetArn">> => string()
-%% }
--type deployment() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_dependency_requirement() :: #{
-%%   <<"dependencyType">> => list(any()),
-%%   <<"versionRequirement">> => string()
-%% }
--type component_dependency_requirement() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% lambda_execution_parameters() :: #{
-%%   <<"environmentVariables">> => map(),
-%%   <<"eventSources">> => list(lambda_event_source()),
-%%   <<"execArgs">> => list(string()),
-%%   <<"inputPayloadEncodingType">> => list(any()),
-%%   <<"linuxProcessParams">> => lambda_linux_process_params(),
-%%   <<"maxIdleTimeInSeconds">> => integer(),
-%%   <<"maxInstancesCount">> => integer(),
-%%   <<"maxQueueSize">> => integer(),
-%%   <<"pinned">> => boolean(),
-%%   <<"statusTimeoutInSeconds">> => integer(),
-%%   <<"timeoutInSeconds">> => integer()
-%% }
--type lambda_execution_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_response() :: #{
-%%   <<"deployments">> => list(deployment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_devices_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"runtime">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"thingGroupArn">> => string()
-%% }
--type list_core_devices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_volume_mount() :: #{
-%%   <<"addGroupOwner">> => boolean(),
-%%   <<"destinationPath">> => string(),
-%%   <<"permission">> => list(any()),
-%%   <<"sourcePath">> => string()
-%% }
--type lambda_volume_mount() :: #{binary() => any()}.
 
 
 %% Example:
@@ -278,89 +347,6 @@
 
 
 %% Example:
-%% get_core_device_response() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"coreDeviceThingName">> => string(),
-%%   <<"coreVersion">> => string(),
-%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
-%%   <<"platform">> => string(),
-%%   <<"runtime">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type get_core_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_devices_response() :: #{
-%%   <<"coreDevices">> => list(core_device()),
-%%   <<"nextToken">> => string()
-%% }
--type list_core_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_core_device_request() :: #{}
--type delete_core_device_request() :: #{}.
-
-%% Example:
-%% delete_component_request() :: #{}
--type delete_component_request() :: #{}.
-
-
-%% Example:
-%% lambda_event_source() :: #{
-%%   <<"topic">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type lambda_event_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_response() :: #{
-%%   <<"recipe">> => binary(),
-%%   <<"recipeOutputFormat">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type get_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_resource_limits() :: #{
-%%   <<"cpus">> => float(),
-%%   <<"memory">> => float()
-%% }
--type system_resource_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_installed_components_response() :: #{
-%%   <<"installedComponents">> => list(installed_component()),
-%%   <<"nextToken">> => string()
-%% }
--type list_installed_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% io_t_job_executions_rollout_config() :: #{
-%%   <<"exponentialRate">> => io_t_job_exponential_rollout_rate(),
-%%   <<"maximumPerMinute">> => integer()
-%% }
--type io_t_job_executions_rollout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_device() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"coreDeviceThingName">> => string(),
-%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
-%%   <<"platform">> => string(),
-%%   <<"runtime">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type core_device() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_deployment_response() :: #{
 %%   <<"deploymentId">> => string(),
 %%   <<"iotJobArn">> => string(),
@@ -368,45 +354,39 @@
 %% }
 -type create_deployment_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_component_request() :: #{}
+-type delete_component_request() :: #{}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% delete_core_device_request() :: #{}
+-type delete_core_device_request() :: #{}.
+
+%% Example:
+%% delete_deployment_request() :: #{}
+-type delete_deployment_request() :: #{}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"deploymentName">> => string(),
+%%   <<"deploymentStatus">> => list(any()),
+%%   <<"isLatestForTarget">> => boolean(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"targetArn">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type deployment() :: #{binary() => any()}.
 
 
 %% Example:
-%% io_t_job_exponential_rollout_rate() :: #{
-%%   <<"baseRatePerMinute">> => integer(),
-%%   <<"incrementFactor">> => float(),
-%%   <<"rateIncreaseCriteria">> => io_t_job_rate_increase_criteria()
+%% deployment_component_update_policy() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"timeoutInSeconds">> => integer()
 %% }
--type io_t_job_exponential_rollout_rate() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_role_for_account_request() :: #{}
--type get_service_role_for_account_request() :: #{}.
-
-
-%% Example:
-%% associate_client_device_with_core_device_error_entry() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type associate_client_device_with_core_device_error_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connectivity_info_request() :: #{
-%%   <<"connectivityInfo">> := list(connectivity_info())
-%% }
--type update_connectivity_info_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_core_device_request() :: #{}
--type get_core_device_request() :: #{}.
+-type deployment_component_update_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -417,11 +397,67 @@
 
 
 %% Example:
-%% list_component_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% deployment_io_t_job_configuration() :: #{
+%%   <<"abortConfig">> => io_t_job_abort_config(),
+%%   <<"jobExecutionsRolloutConfig">> => io_t_job_executions_rollout_config(),
+%%   <<"timeoutConfig">> => io_t_job_timeout_config()
 %% }
--type list_component_versions_request() :: #{binary() => any()}.
+-type deployment_io_t_job_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_policies() :: #{
+%%   <<"componentUpdatePolicy">> => deployment_component_update_policy(),
+%%   <<"configurationValidationPolicy">> => deployment_configuration_validation_policy(),
+%%   <<"failureHandlingPolicy">> => list(any())
+%% }
+-type deployment_policies() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_request() :: #{}
+-type describe_component_request() :: #{}.
+
+
+%% Example:
+%% describe_component_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"platforms">> => list(component_platform()),
+%%   <<"publisher">> => string(),
+%%   <<"status">> => cloud_component_status(),
+%%   <<"tags">> => map()
+%% }
+-type describe_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_client_device_from_core_device_entry() :: #{
+%%   <<"thingName">> => string()
+%% }
+-type disassociate_client_device_from_core_device_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_client_device_from_core_device_error_entry() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type disassociate_client_device_from_core_device_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_role_from_account_request() :: #{}
+-type disassociate_service_role_from_account_request() :: #{}.
+
+
+%% Example:
+%% disassociate_service_role_from_account_response() :: #{
+%%   <<"disassociatedAt">> => string()
+%% }
+-type disassociate_service_role_from_account_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -442,24 +478,46 @@
 
 
 %% Example:
-%% request_already_in_progress_exception() :: #{
-%%   <<"message">> => string()
+%% effective_deployment_status_details() :: #{
+%%   <<"errorStack">> => list(string()),
+%%   <<"errorTypes">> => list(string())
 %% }
--type request_already_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_deployment_request() :: #{}
--type cancel_deployment_request() :: #{}.
+-type effective_deployment_status_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% connectivity_info() :: #{
-%%   <<"hostAddress">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => string(),
-%%   <<"portNumber">> => integer()
+%% get_component_request() :: #{
+%%   <<"recipeOutputFormat">> => list(any())
 %% }
--type connectivity_info() :: #{binary() => any()}.
+-type get_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_response() :: #{
+%%   <<"recipe">> => binary(),
+%%   <<"recipeOutputFormat">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_version_artifact_request() :: #{
+%%   <<"iotEndpointType">> => list(any()),
+%%   <<"s3EndpointType">> => list(any())
+%% }
+-type get_component_version_artifact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_version_artifact_response() :: #{
+%%   <<"preSignedUrl">> => string()
+%% }
+-type get_component_version_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connectivity_info_request() :: #{}
+-type get_connectivity_info_request() :: #{}.
 
 
 %% Example:
@@ -469,331 +527,27 @@
 %% }
 -type get_connectivity_info_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% installed_component() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentVersion">> => string(),
-%%   <<"isRoot">> => boolean(),
-%%   <<"lastInstallationSource">> => string(),
-%%   <<"lastReportedTimestamp">> => non_neg_integer(),
-%%   <<"lastStatusChangeTimestamp">> => non_neg_integer(),
-%%   <<"lifecycleState">> => list(any()),
-%%   <<"lifecycleStateDetails">> => string(),
-%%   <<"lifecycleStatusCodes">> => list(string())
-%% }
--type installed_component() :: #{binary() => any()}.
+%% get_core_device_request() :: #{}
+-type get_core_device_request() :: #{}.
 
 
 %% Example:
-%% create_component_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"inlineRecipe">> => binary(),
-%%   <<"lambdaFunction">> => lambda_function_recipe_source(),
+%% get_core_device_response() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"coreDeviceThingName">> => string(),
+%%   <<"coreVersion">> => string(),
+%%   <<"lastStatusUpdateTimestamp">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"runtime">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
--type create_component_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"scope">> => list(any())
-%% }
--type list_components_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_disassociate_client_device_from_core_device_response() :: #{
-%%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry())
-%% }
--type batch_disassociate_client_device_from_core_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_latest_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentVersion">> => string(),
-%%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"platforms">> => list(component_platform()),
-%%   <<"publisher">> => string()
-%% }
--type component_latest_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_io_t_job_configuration() :: #{
-%%   <<"abortConfig">> => io_t_job_abort_config(),
-%%   <<"jobExecutionsRolloutConfig">> => io_t_job_executions_rollout_config(),
-%%   <<"timeoutConfig">> => io_t_job_timeout_config()
-%% }
--type deployment_io_t_job_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% component() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentName">> => string(),
-%%   <<"latestVersion">> => component_latest_version()
-%% }
--type component() :: #{binary() => any()}.
+-type get_core_device_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_deployment_request() :: #{}
 -type get_deployment_request() :: #{}.
-
-
-%% Example:
-%% resolved_component_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentName">> => string(),
-%%   <<"componentVersion">> => string(),
-%%   <<"message">> => string(),
-%%   <<"recipe">> => binary(),
-%%   <<"vendorGuidance">> => list(any())
-%% }
--type resolved_component_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_platform() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"name">> => string()
-%% }
--type component_platform() :: #{binary() => any()}.
-
-
-%% Example:
-%% io_t_job_rate_increase_criteria() :: #{
-%%   <<"numberOfNotifiedThings">> => integer(),
-%%   <<"numberOfSucceededThings">> => integer()
-%% }
--type io_t_job_rate_increase_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_component_status() :: #{
-%%   <<"componentState">> => list(any()),
-%%   <<"errors">> => map(),
-%%   <<"message">> => string(),
-%%   <<"vendorGuidance">> => list(any()),
-%%   <<"vendorGuidanceMessage">> => string()
-%% }
--type cloud_component_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_run_with() :: #{
-%%   <<"posixUser">> => string(),
-%%   <<"systemResourceLimits">> => system_resource_limits(),
-%%   <<"windowsUser">> => string()
-%% }
--type component_run_with() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% effective_deployment_status_details() :: #{
-%%   <<"errorStack">> => list(string()),
-%%   <<"errorTypes">> => list(string())
-%% }
--type effective_deployment_status_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_deployment_specification() :: #{
-%%   <<"componentVersion">> => string(),
-%%   <<"configurationUpdate">> => component_configuration_update(),
-%%   <<"runWith">> => component_run_with()
-%% }
--type component_deployment_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_client_devices_associated_with_core_device_response() :: #{
-%%   <<"associatedClientDevices">> => list(associated_client_device()),
-%%   <<"nextToken">> => string()
-%% }
--type list_client_devices_associated_with_core_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connectivity_info_request() :: #{}
--type get_connectivity_info_request() :: #{}.
-
-
-%% Example:
-%% associate_service_role_to_account_request() :: #{
-%%   <<"roleArn">> := string()
-%% }
--type associate_service_role_to_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_policies() :: #{
-%%   <<"componentUpdatePolicy">> => deployment_component_update_policy(),
-%%   <<"configurationValidationPolicy">> => deployment_configuration_validation_policy(),
-%%   <<"failureHandlingPolicy">> => list(any())
-%% }
--type deployment_policies() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_request() :: #{}
--type delete_deployment_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_configuration_update() :: #{
-%%   <<"merge">> => string(),
-%%   <<"reset">> => list(string())
-%% }
--type component_configuration_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_client_device_with_core_device_entry() :: #{
-%%   <<"thingName">> => string()
-%% }
--type associate_client_device_with_core_device_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% io_t_job_timeout_config() :: #{
-%%   <<"inProgressTimeoutInMinutes">> => float()
-%% }
--type io_t_job_timeout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% resolve_component_candidates_response() :: #{
-%%   <<"resolvedComponentVersions">> => list(resolved_component_version())
-%% }
--type resolve_component_candidates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_client_device_from_core_device_error_entry() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type disassociate_client_device_from_core_device_error_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_disassociate_client_device_from_core_device_request() :: #{
-%%   <<"entries">> => list(disassociate_client_device_from_core_device_entry())
-%% }
--type batch_disassociate_client_device_from_core_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% io_t_job_abort_config() :: #{
-%%   <<"criteriaList">> => list(io_t_job_abort_criteria())
-%% }
--type io_t_job_abort_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_version_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentName">> => string(),
-%%   <<"componentVersion">> => string()
-%% }
--type component_version_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_container_params() :: #{
-%%   <<"devices">> => list(lambda_device_mount()),
-%%   <<"memorySizeInKB">> => integer(),
-%%   <<"mountROSysfs">> => boolean(),
-%%   <<"volumes">> => list(lambda_volume_mount())
-%% }
--type lambda_container_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% cancel_deployment_response() :: #{
-%%   <<"message">> => string()
-%% }
--type cancel_deployment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -815,114 +569,9 @@
 %% }
 -type get_deployment_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_component_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentName">> => string(),
-%%   <<"componentVersion">> => string(),
-%%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"platforms">> => list(component_platform()),
-%%   <<"publisher">> => string(),
-%%   <<"status">> => cloud_component_status(),
-%%   <<"tags">> => map()
-%% }
--type describe_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_effective_deployments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_effective_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_response() :: #{
-%%   <<"components">> => list(component()),
-%%   <<"nextToken">> => string()
-%% }
--type list_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_version_artifact_response() :: #{
-%%   <<"preSignedUrl">> => string()
-%% }
--type get_component_version_artifact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_installed_components_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"topologyFilter">> => list(any())
-%% }
--type list_installed_components_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_client_device_with_core_device_response() :: #{
-%%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry())
-%% }
--type batch_associate_client_device_with_core_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_client_devices_associated_with_core_device_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_client_devices_associated_with_core_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_client_device() :: #{
-%%   <<"associationTimestamp">> => non_neg_integer(),
-%%   <<"thingName">> => string()
-%% }
--type associated_client_device() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_request() :: #{}
--type describe_component_request() :: #{}.
-
-
-%% Example:
-%% component_candidate() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentVersion">> => string(),
-%%   <<"versionRequirements">> => map()
-%% }
--type component_candidate() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_effective_deployments_response() :: #{
-%%   <<"effectiveDeployments">> => list(effective_deployment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_effective_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_linux_process_params() :: #{
-%%   <<"containerParams">> => lambda_container_params(),
-%%   <<"isolationMode">> => list(any())
-%% }
--type lambda_linux_process_params() :: #{binary() => any()}.
+%% get_service_role_for_account_request() :: #{}
+-type get_service_role_for_account_request() :: #{}.
 
 
 %% Example:
@@ -934,10 +583,33 @@
 
 
 %% Example:
-%% batch_associate_client_device_with_core_device_request() :: #{
-%%   <<"entries">> => list(associate_client_device_with_core_device_entry())
+%% installed_component() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"isRoot">> => boolean(),
+%%   <<"lastInstallationSource">> => string(),
+%%   <<"lastReportedTimestamp">> => non_neg_integer(),
+%%   <<"lastStatusChangeTimestamp">> => non_neg_integer(),
+%%   <<"lifecycleState">> => list(any()),
+%%   <<"lifecycleStateDetails">> => string(),
+%%   <<"lifecycleStatusCodes">> => list(string())
 %% }
--type batch_associate_client_device_with_core_device_request() :: #{binary() => any()}.
+-type installed_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_abort_config() :: #{
+%%   <<"criteriaList">> => list(io_t_job_abort_criteria())
+%% }
+-type io_t_job_abort_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -951,21 +623,247 @@
 
 
 %% Example:
-%% associate_service_role_to_account_response() :: #{
-%%   <<"associatedAt">> => string()
+%% io_t_job_executions_rollout_config() :: #{
+%%   <<"exponentialRate">> => io_t_job_exponential_rollout_rate(),
+%%   <<"maximumPerMinute">> => integer()
 %% }
--type associate_service_role_to_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_service_role_from_account_request() :: #{}
--type disassociate_service_role_from_account_request() :: #{}.
+-type io_t_job_executions_rollout_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_component_request() :: #{
-%%   <<"recipeOutputFormat">> => list(any())
+%% io_t_job_exponential_rollout_rate() :: #{
+%%   <<"baseRatePerMinute">> => integer(),
+%%   <<"incrementFactor">> => float(),
+%%   <<"rateIncreaseCriteria">> => io_t_job_rate_increase_criteria()
 %% }
--type get_component_request() :: #{binary() => any()}.
+-type io_t_job_exponential_rollout_rate() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_rate_increase_criteria() :: #{
+%%   <<"numberOfNotifiedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer()
+%% }
+-type io_t_job_rate_increase_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% io_t_job_timeout_config() :: #{
+%%   <<"inProgressTimeoutInMinutes">> => float()
+%% }
+-type io_t_job_timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_container_params() :: #{
+%%   <<"devices">> => list(lambda_device_mount()),
+%%   <<"memorySizeInKB">> => integer(),
+%%   <<"mountROSysfs">> => boolean(),
+%%   <<"volumes">> => list(lambda_volume_mount())
+%% }
+-type lambda_container_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_device_mount() :: #{
+%%   <<"addGroupOwner">> => boolean(),
+%%   <<"path">> => string(),
+%%   <<"permission">> => list(any())
+%% }
+-type lambda_device_mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_event_source() :: #{
+%%   <<"topic">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type lambda_event_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_execution_parameters() :: #{
+%%   <<"environmentVariables">> => map(),
+%%   <<"eventSources">> => list(lambda_event_source()),
+%%   <<"execArgs">> => list(string()),
+%%   <<"inputPayloadEncodingType">> => list(any()),
+%%   <<"linuxProcessParams">> => lambda_linux_process_params(),
+%%   <<"maxIdleTimeInSeconds">> => integer(),
+%%   <<"maxInstancesCount">> => integer(),
+%%   <<"maxQueueSize">> => integer(),
+%%   <<"pinned">> => boolean(),
+%%   <<"statusTimeoutInSeconds">> => integer(),
+%%   <<"timeoutInSeconds">> => integer()
+%% }
+-type lambda_execution_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_recipe_source() :: #{
+%%   <<"componentDependencies">> => map(),
+%%   <<"componentLambdaParameters">> => lambda_execution_parameters(),
+%%   <<"componentName">> => string(),
+%%   <<"componentPlatforms">> => list(component_platform()),
+%%   <<"componentVersion">> => string(),
+%%   <<"lambdaArn">> => string()
+%% }
+-type lambda_function_recipe_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_linux_process_params() :: #{
+%%   <<"containerParams">> => lambda_container_params(),
+%%   <<"isolationMode">> => list(any())
+%% }
+-type lambda_linux_process_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_volume_mount() :: #{
+%%   <<"addGroupOwner">> => boolean(),
+%%   <<"destinationPath">> => string(),
+%%   <<"permission">> => list(any()),
+%%   <<"sourcePath">> => string()
+%% }
+-type lambda_volume_mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_client_devices_associated_with_core_device_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_client_devices_associated_with_core_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_client_devices_associated_with_core_device_response() :: #{
+%%   <<"associatedClientDevices">> => list(associated_client_device()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_client_devices_associated_with_core_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_versions_response() :: #{
+%%   <<"componentVersions">> => list(component_version_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scope">> => list(any())
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"components">> => list(component()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_devices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"runtime">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"thingGroupArn">> => string()
+%% }
+-type list_core_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_devices_response() :: #{
+%%   <<"coreDevices">> => list(core_device()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_core_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"historyFilter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentTargetArn">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_response() :: #{
+%%   <<"deployments">> => list(deployment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_effective_deployments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_effective_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_effective_deployments_response() :: #{
+%%   <<"effectiveDeployments">> => list(effective_deployment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_effective_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_installed_components_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"topologyFilter">> => list(any())
+%% }
+-type list_installed_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_installed_components_response() :: #{
+%%   <<"installedComponents">> => list(installed_component()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_installed_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_already_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_already_in_progress_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -977,195 +875,297 @@
 
 
 %% Example:
-%% lambda_device_mount() :: #{
-%%   <<"addGroupOwner">> => boolean(),
-%%   <<"path">> => string(),
-%%   <<"permission">> => list(any())
+%% resolve_component_candidates_response() :: #{
+%%   <<"resolvedComponentVersions">> => list(resolved_component_version())
 %% }
--type lambda_device_mount() :: #{binary() => any()}.
+-type resolve_component_candidates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolved_component_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentName">> => string(),
+%%   <<"componentVersion">> => string(),
+%%   <<"message">> => string(),
+%%   <<"recipe">> => binary(),
+%%   <<"vendorGuidance">> => list(any())
+%% }
+-type resolved_component_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_resource_limits() :: #{
+%%   <<"cpus">> => float(),
+%%   <<"memory">> => float()
+%% }
+-type system_resource_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_connectivity_info_request() :: #{
+%%   <<"connectivityInfo">> := list(connectivity_info())
+%% }
+-type update_connectivity_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_info_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"version">> => string()
+%% }
+-type update_connectivity_info_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_service_role_to_account_errors() ::
     validation_exception() | 
     internal_server_exception().
 
 -type batch_associate_client_device_with_core_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_disassociate_client_device_from_core_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_component_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    request_already_in_progress_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_already_in_progress_exception().
+    access_denied_exception().
 
 -type create_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_already_in_progress_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_already_in_progress_exception().
+    access_denied_exception().
 
 -type delete_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_core_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_service_role_from_account_errors() ::
     internal_server_exception().
 
 -type get_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_component_version_artifact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connectivity_info_errors() ::
     validation_exception() | 
     internal_server_exception().
 
 -type get_core_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_role_for_account_errors() ::
     internal_server_exception().
 
 -type list_client_devices_associated_with_core_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_component_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_components_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_core_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_deployments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_effective_deployments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_installed_components_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type resolve_component_candidates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_connectivity_info_errors() ::
     validation_exception() | 

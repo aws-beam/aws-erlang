@@ -2,8 +2,7 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
-%% are only
-%% used by the EKS Pod Identity Agent.
+%% are only used by the EKS Pod Identity Agent.
 -module(aws_eks_auth).
 
 -export([assume_role_for_pod_identity/3,
@@ -22,7 +21,10 @@
 
 %% Example:
 %% assume_role_for_pod_identity_request() :: #{
-%%   <<"token">> := string()
+%%   <<"eksNodeName">> => [string()],
+%%   <<"instanceId">> => [string()],
+%%   <<"token">> := string(),
+%%   <<"zone">> => [string()]
 %% }
 -type assume_role_for_pod_identity_request() :: #{binary() => any()}.
 
@@ -143,14 +145,12 @@
 %%====================================================================
 
 %% @doc The Amazon EKS Auth API and the `AssumeRoleForPodIdentity' action
-%% are only used
-%% by the EKS Pod Identity Agent.
+%% are only used by the EKS Pod Identity Agent.
 %%
 %% We recommend that applications use the Amazon Web Services SDKs to connect
-%% to Amazon Web Services services; if
-%% credentials from an EKS Pod Identity association are available in the pod,
-%% the latest versions of the
-%% SDKs use them automatically.
+%% to Amazon Web Services services; if credentials from an EKS Pod Identity
+%% association are available in the pod, the latest versions of the SDKs use
+%% them automatically.
 -spec assume_role_for_pod_identity(aws_client:aws_client(), binary() | list(), assume_role_for_pod_identity_request()) ->
     {ok, assume_role_for_pod_identity_response(), tuple()} |
     {error, any()} |

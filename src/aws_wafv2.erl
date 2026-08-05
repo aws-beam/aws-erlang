@@ -189,47 +189,76 @@
 
 
 %% Example:
-%% header_order() :: #{
-%%   <<"OversizeHandling">> => list(any())
+%% action_condition() :: #{
+%%   <<"Action">> => list(any())
 %% }
--type header_order() :: #{binary() => any()}.
+-type action_condition() :: #{binary() => any()}.
 
 %% Example:
-%% get_sampled_requests_request() :: #{
-%%   <<"MaxItems">> := float(),
-%%   <<"RuleMetricName">> := string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"TimeWindow">> := time_window(),
-%%   <<"WebAclArn">> := string()
+%% address_field() :: #{
+%%   <<"Identifier">> => string()
 %% }
--type get_sampled_requests_request() :: #{binary() => any()}.
+-type address_field() :: #{binary() => any()}.
 
 %% Example:
-%% request_inspection() :: #{
-%%   <<"PasswordField">> => password_field(),
-%%   <<"PayloadType">> => list(any()),
-%%   <<"UsernameField">> => username_field()
+%% all() :: #{
+
 %% }
--type request_inspection() :: #{binary() => any()}.
+-type all() :: #{binary() => any()}.
 
 %% Example:
-%% version_to_publish() :: #{
-%%   <<"AssociatedRuleGroupArn">> => string(),
-%%   <<"ForecastedLifetime">> => integer()
+%% all_query_arguments() :: #{
+
 %% }
--type version_to_publish() :: #{binary() => any()}.
+-type all_query_arguments() :: #{binary() => any()}.
 
 %% Example:
-%% managed_rule_group_statement() :: #{
-%%   <<"ExcludedRules">> => list(excluded_rule()),
-%%   <<"ManagedRuleGroupConfigs">> => list(managed_rule_group_config()),
+%% allow_action() :: #{
+%%   <<"CustomRequestHandling">> => custom_request_handling()
+%% }
+-type allow_action() :: #{binary() => any()}.
+
+%% Example:
+%% and_statement() :: #{
+%%   <<"Statements">> => list(statement())
+%% }
+-type and_statement() :: #{binary() => any()}.
+
+%% Example:
+%% api_key_summary() :: #{
+%%   <<"APIKey">> => string(),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"TokenDomains">> => list(string()),
+%%   <<"Version">> => integer()
+%% }
+-type api_key_summary() :: #{binary() => any()}.
+
+%% Example:
+%% application_attribute() :: #{
 %%   <<"Name">> => string(),
-%%   <<"RuleActionOverrides">> => list(rule_action_override()),
-%%   <<"ScopeDownStatement">> => statement(),
-%%   <<"VendorName">> => string(),
-%%   <<"Version">> => string()
+%%   <<"Values">> => list(string())
 %% }
--type managed_rule_group_statement() :: #{binary() => any()}.
+-type application_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% application_config() :: #{
+%%   <<"Attributes">> => list(application_attribute())
+%% }
+-type application_config() :: #{binary() => any()}.
+
+%% Example:
+%% asn_match_statement() :: #{
+%%   <<"AsnList">> => list(float()),
+%%   <<"ForwardedIPConfig">> => forwarded_ip_config()
+%% }
+-type asn_match_statement() :: #{binary() => any()}.
+
+%% Example:
+%% associate_web_acl_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"WebACLArn">> := string()
+%% }
+-type associate_web_acl_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_web_acl_response() :: #{
@@ -238,49 +267,10 @@
 -type associate_web_acl_response() :: #{binary() => any()}.
 
 %% Example:
-%% rule_action_override() :: #{
-%%   <<"ActionToUse">> => rule_action(),
-%%   <<"Name">> => string()
+%% association_config() :: #{
+%%   <<"RequestBody">> => map()
 %% }
--type rule_action_override() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_expired_managed_rule_group_version_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_expired_managed_rule_group_version_exception() :: #{binary() => any()}.
-
-%% Example:
-%% password_field() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type password_field() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_group_response() :: #{
-%%   <<"NextLockToken">> => string()
-%% }
--type update_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% check_capacity_request() :: #{
-%%   <<"Rules">> := list(rule()),
-%%   <<"Scope">> := list(any())
-%% }
--type check_capacity_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_nonexistent_item_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_nonexistent_item_exception() :: #{binary() => any()}.
+-type association_config() :: #{binary() => any()}.
 
 %% Example:
 %% aws_managed_rules_a_c_f_p_rule_set() :: #{
@@ -293,177 +283,265 @@
 -type aws_managed_rules_a_c_f_p_rule_set() :: #{binary() => any()}.
 
 %% Example:
-%% single_query_argument() :: #{
-%%   <<"Name">> => string()
+%% aws_managed_rules_a_t_p_rule_set() :: #{
+%%   <<"EnableRegexInPath">> => boolean(),
+%%   <<"LoginPath">> => string(),
+%%   <<"RequestInspection">> => request_inspection(),
+%%   <<"ResponseInspection">> => response_inspection()
 %% }
--type single_query_argument() :: #{binary() => any()}.
+-type aws_managed_rules_a_t_p_rule_set() :: #{binary() => any()}.
 
 %% Example:
-%% list_resources_for_web_acl_request() :: #{
-%%   <<"ResourceType">> => list(any()),
-%%   <<"WebACLArn">> := string()
+%% aws_managed_rules_anti_d_do_s_rule_set() :: #{
+%%   <<"ClientSideActionConfig">> => client_side_action_config(),
+%%   <<"SensitivityToBlock">> => list(any())
 %% }
--type list_resources_for_web_acl_request() :: #{binary() => any()}.
+-type aws_managed_rules_anti_d_do_s_rule_set() :: #{binary() => any()}.
 
 %% Example:
-%% rate_based_statement_custom_key() :: #{
-%%   <<"ASN">> => rate_limit_asn(),
-%%   <<"Cookie">> => rate_limit_cookie(),
-%%   <<"ForwardedIP">> => rate_limit_forwarded_ip(),
-%%   <<"HTTPMethod">> => rate_limit_h_t_t_p_method(),
-%%   <<"Header">> => rate_limit_header(),
-%%   <<"IP">> => rate_limit_ip(),
-%%   <<"JA3Fingerprint">> => rate_limit_j_a3_fingerprint(),
-%%   <<"JA4Fingerprint">> => rate_limit_j_a4_fingerprint(),
-%%   <<"LabelNamespace">> => rate_limit_label_namespace(),
-%%   <<"QueryArgument">> => rate_limit_query_argument(),
-%%   <<"QueryString">> => rate_limit_query_string(),
-%%   <<"UriPath">> => rate_limit_uri_path()
+%% aws_managed_rules_bot_control_rule_set() :: #{
+%%   <<"EnableMachineLearning">> => boolean(),
+%%   <<"InspectionLevel">> => list(any())
 %% }
--type rate_based_statement_custom_key() :: #{binary() => any()}.
+-type aws_managed_rules_bot_control_rule_set() :: #{binary() => any()}.
 
 %% Example:
-%% get_decrypted_api_key_response() :: #{
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"TokenDomains">> => list(string())
+%% block_action() :: #{
+%%   <<"CustomResponse">> => custom_response()
 %% }
--type get_decrypted_api_key_response() :: #{binary() => any()}.
+-type block_action() :: #{binary() => any()}.
 
 %% Example:
-%% list_api_keys_response() :: #{
-%%   <<"APIKeySummaries">> => list(api_key_summary()),
-%%   <<"ApplicationIntegrationURL">> => string(),
-%%   <<"NextMarker">> => string()
+%% body() :: #{
+%%   <<"OversizeHandling">> => list(any())
 %% }
--type list_api_keys_response() :: #{binary() => any()}.
+-type body() :: #{binary() => any()}.
 
 %% Example:
-%% api_key_summary() :: #{
-%%   <<"APIKey">> => string(),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"TokenDomains">> => list(string()),
-%%   <<"Version">> => integer()
+%% bot_statistics() :: #{
+%%   <<"BotName">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float()
 %% }
--type api_key_summary() :: #{binary() => any()}.
+-type bot_statistics() :: #{binary() => any()}.
 
 %% Example:
-%% rate_limit_query_argument() :: #{
-%%   <<"Name">> => string(),
+%% byte_match_statement() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PositionalConstraint">> => list(any()),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
+%%   <<"SearchString">> => binary(),
 %%   <<"TextTransformations">> => list(text_transformation())
 %% }
--type rate_limit_query_argument() :: #{binary() => any()}.
+-type byte_match_statement() :: #{binary() => any()}.
 
 %% Example:
-%% get_rule_group_request() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Scope">> => list(any())
+%% captcha_action() :: #{
+%%   <<"CustomRequestHandling">> => custom_request_handling()
 %% }
--type get_rule_group_request() :: #{binary() => any()}.
+-type captcha_action() :: #{binary() => any()}.
 
 %% Example:
-%% describe_managed_products_by_vendor_response() :: #{
-%%   <<"ManagedProducts">> => list(managed_product_descriptor())
+%% captcha_config() :: #{
+%%   <<"ImmunityTimeProperty">> => immunity_time_property()
 %% }
--type describe_managed_products_by_vendor_response() :: #{binary() => any()}.
+-type captcha_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_rule_groups_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"RuleGroups">> => list(rule_group_summary())
+%% captcha_response() :: #{
+%%   <<"FailureReason">> => list(any()),
+%%   <<"ResponseCode">> => integer(),
+%%   <<"SolveTimestamp">> => float()
 %% }
--type list_rule_groups_response() :: #{binary() => any()}.
+-type captcha_response() :: #{binary() => any()}.
 
 %% Example:
-%% response_inspection_json() :: #{
-%%   <<"FailureValues">> => list(string()),
-%%   <<"Identifier">> => string(),
-%%   <<"SuccessValues">> => list(string())
+%% challenge_action() :: #{
+%%   <<"CustomRequestHandling">> => custom_request_handling()
 %% }
--type response_inspection_json() :: #{binary() => any()}.
+-type challenge_action() :: #{binary() => any()}.
 
 %% Example:
-%% list_ip_sets_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
+%% challenge_config() :: #{
+%%   <<"ImmunityTimeProperty">> => immunity_time_property()
+%% }
+-type challenge_config() :: #{binary() => any()}.
+
+%% Example:
+%% challenge_response() :: #{
+%%   <<"FailureReason">> => list(any()),
+%%   <<"ResponseCode">> => integer(),
+%%   <<"SolveTimestamp">> => float()
+%% }
+-type challenge_response() :: #{binary() => any()}.
+
+%% Example:
+%% check_capacity_request() :: #{
+%%   <<"Rules">> := list(rule()),
 %%   <<"Scope">> := list(any())
 %% }
--type list_ip_sets_request() :: #{binary() => any()}.
+-type check_capacity_request() :: #{binary() => any()}.
 
 %% Example:
-%% disallowed_feature() :: #{
-%%   <<"Feature">> => string(),
-%%   <<"RequiredPricingPlan">> => string()
+%% check_capacity_response() :: #{
+%%   <<"Capacity">> => float()
 %% }
--type disallowed_feature() :: #{binary() => any()}.
+-type check_capacity_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_revenue_statistics_summary_request() :: #{
-%%   <<"Currency">> := list(any()),
-%%   <<"Filters">> => list(monetization_filter()),
+%% client_side_action() :: #{
+%%   <<"ExemptUriRegularExpressions">> => list(regex()),
+%%   <<"Sensitivity">> => list(any()),
+%%   <<"UsageOfAction">> => list(any())
+%% }
+-type client_side_action() :: #{binary() => any()}.
+
+%% Example:
+%% client_side_action_config() :: #{
+%%   <<"Challenge">> => client_side_action()
+%% }
+-type client_side_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"ActionCondition">> => action_condition(),
+%%   <<"LabelNameCondition">> => label_name_condition()
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% cookie_match_pattern() :: #{
+%%   <<"All">> => all(),
+%%   <<"ExcludedCookies">> => list(string()),
+%%   <<"IncludedCookies">> => list(string())
+%% }
+-type cookie_match_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% cookies() :: #{
+%%   <<"MatchPattern">> => cookie_match_pattern(),
+%%   <<"MatchScope">> => list(any()),
+%%   <<"OversizeHandling">> => list(any())
+%% }
+-type cookies() :: #{binary() => any()}.
+
+%% Example:
+%% count_action() :: #{
+%%   <<"CustomRequestHandling">> => custom_request_handling()
+%% }
+-type count_action() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_key_request() :: #{
 %%   <<"Scope">> := list(any()),
-%%   <<"TimeWindow">> := time_window()
+%%   <<"TokenDomains">> := list(string())
 %% }
--type get_revenue_statistics_summary_request() :: #{binary() => any()}.
+-type create_api_key_request() :: #{binary() => any()}.
 
 %% Example:
-%% rate_based_statement_managed_keys_ip_set() :: #{
-%%   <<"Addresses">> => list(string()),
-%%   <<"IPAddressVersion">> => list(any())
+%% create_api_key_response() :: #{
+%%   <<"APIKey">> => string()
 %% }
--type rate_based_statement_managed_keys_ip_set() :: #{binary() => any()}.
+-type create_api_key_response() :: #{binary() => any()}.
 
 %% Example:
-%% j_a4_fingerprint() :: #{
-%%   <<"FallbackBehavior">> => list(any())
+%% create_ip_set_request() :: #{
+%%   <<"Addresses">> := list(string()),
+%%   <<"Description">> => string(),
+%%   <<"IPAddressVersion">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type j_a4_fingerprint() :: #{binary() => any()}.
+-type create_ip_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% request_inspection_a_c_f_p() :: #{
-%%   <<"AddressFields">> => list(address_field()),
-%%   <<"EmailField">> => email_field(),
-%%   <<"PasswordField">> => password_field(),
-%%   <<"PayloadType">> => list(any()),
-%%   <<"PhoneNumberFields">> => list(phone_number_field()),
-%%   <<"UsernameField">> => username_field()
+%% create_ip_set_response() :: #{
+%%   <<"Summary">> => ip_set_summary()
 %% }
--type request_inspection_a_c_f_p() :: #{binary() => any()}.
+-type create_ip_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% query_string() :: #{
-
+%% create_regex_pattern_set_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RegularExpressionList">> := list(regex()),
+%%   <<"Scope">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type query_string() :: #{binary() => any()}.
+-type create_regex_pattern_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% response_inspection() :: #{
-%%   <<"BodyContains">> => response_inspection_body_contains(),
-%%   <<"Header">> => response_inspection_header(),
-%%   <<"Json">> => response_inspection_json(),
-%%   <<"StatusCode">> => response_inspection_status_code()
+%% create_regex_pattern_set_response() :: #{
+%%   <<"Summary">> => regex_pattern_set_summary()
 %% }
--type response_inspection() :: #{binary() => any()}.
+-type create_regex_pattern_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% create_rule_group_request() :: #{
+%%   <<"Capacity">> := float(),
+%%   <<"CustomResponseBodies">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
+%%   <<"Name">> := string(),
+%%   <<"Rules">> => list(rule()),
+%%   <<"Scope">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VisibilityConfig">> := visibility_config()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type create_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% custom_response_body() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => list(any())
+%% create_rule_group_response() :: #{
+%%   <<"Summary">> => rule_group_summary()
 %% }
--type custom_response_body() :: #{binary() => any()}.
+-type create_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% rate_limit_ip() :: #{
-
+%% create_web_acl_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
+%%   <<"AssociationConfig">> => association_config(),
+%%   <<"CaptchaConfig">> => captcha_config(),
+%%   <<"ChallengeConfig">> => challenge_config(),
+%%   <<"CustomResponseBodies">> => map(),
+%%   <<"DataProtectionConfig">> => data_protection_config(),
+%%   <<"DefaultAction">> := default_action(),
+%%   <<"Description">> => string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
+%%   <<"Name">> := string(),
+%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
+%%   <<"Rules">> => list(rule()),
+%%   <<"Scope">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TokenDomains">> => list(string()),
+%%   <<"VisibilityConfig">> := visibility_config()
 %% }
--type rate_limit_ip() :: #{binary() => any()}.
+-type create_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_acl_response() :: #{
+%%   <<"Summary">> => web_acl_summary()
+%% }
+-type create_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% crypto_config() :: #{
+%%   <<"PaymentNetworks">> => list(payment_network())
+%% }
+-type crypto_config() :: #{binary() => any()}.
+
+%% Example:
+%% custom_h_t_t_p_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_h_t_t_p_header() :: #{binary() => any()}.
+
+%% Example:
+%% custom_request_handling() :: #{
+%%   <<"InsertHeaders">> => list(custom_h_t_t_p_header())
+%% }
+-type custom_request_handling() :: #{binary() => any()}.
 
 %% Example:
 %% custom_response() :: #{
@@ -474,30 +552,234 @@
 -type custom_response() :: #{binary() => any()}.
 
 %% Example:
+%% custom_response_body() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => list(any())
+%% }
+-type custom_response_body() :: #{binary() => any()}.
+
+%% Example:
+%% data_point_entry() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"GroupByValue">> => string(),
+%%   <<"Intent">> => string(),
+%%   <<"MonetizeServedCount">> => float(),
+%%   <<"SettledCount">> => float(),
+%%   <<"TotalAmount">> => string()
+%% }
+-type data_point_entry() :: #{binary() => any()}.
+
+%% Example:
+%% data_protection() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ExcludeRateBasedDetails">> => boolean(),
+%%   <<"ExcludeRuleMatchDetails">> => boolean(),
+%%   <<"Field">> => field_to_protect()
+%% }
+-type data_protection() :: #{binary() => any()}.
+
+%% Example:
+%% data_protection_config() :: #{
+%%   <<"DataProtections">> => list(data_protection())
+%% }
+-type data_protection_config() :: #{binary() => any()}.
+
+%% Example:
+%% default_action() :: #{
+%%   <<"Allow">> => allow_action(),
+%%   <<"Block">> => block_action()
+%% }
+-type default_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_key_request() :: #{
+%%   <<"APIKey">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type delete_api_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_key_response() :: #{
+
+%% }
+-type delete_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_manager_rule_groups_request() :: #{
+%%   <<"WebACLArn">> := string(),
+%%   <<"WebACLLockToken">> := string()
+%% }
+-type delete_firewall_manager_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_manager_rule_groups_response() :: #{
+%%   <<"NextWebACLLockToken">> => string()
+%% }
+-type delete_firewall_manager_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_set_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type delete_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_set_response() :: #{
+
+%% }
+-type delete_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_logging_configuration_request() :: #{
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_logging_configuration_response() :: #{
+
+%% }
+-type delete_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_policy_response() :: #{
+
+%% }
+-type delete_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_pattern_set_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type delete_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_regex_pattern_set_response() :: #{
+
+%% }
+-type delete_regex_pattern_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type delete_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_response() :: #{
+
+%% }
+-type delete_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_acl_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type delete_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_acl_response() :: #{
+
+%% }
+-type delete_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_all_managed_products_request() :: #{
+%%   <<"Scope">> := list(any())
+%% }
+-type describe_all_managed_products_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_all_managed_products_response() :: #{
 %%   <<"ManagedProducts">> => list(managed_product_descriptor())
 %% }
 -type describe_all_managed_products_response() :: #{binary() => any()}.
 
 %% Example:
-%% rate_limit_label_namespace() :: #{
-%%   <<"Namespace">> => string()
+%% describe_managed_products_by_vendor_request() :: #{
+%%   <<"Scope">> := list(any()),
+%%   <<"VendorName">> := string()
 %% }
--type rate_limit_label_namespace() :: #{binary() => any()}.
+-type describe_managed_products_by_vendor_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_managed_rule_set_version_expiry_date_response() :: #{
-%%   <<"ExpiringVersion">> => string(),
-%%   <<"ExpiryTimestamp">> => non_neg_integer(),
-%%   <<"NextLockToken">> => string()
+%% describe_managed_products_by_vendor_response() :: #{
+%%   <<"ManagedProducts">> => list(managed_product_descriptor())
 %% }
--type update_managed_rule_set_version_expiry_date_response() :: #{binary() => any()}.
+-type describe_managed_products_by_vendor_response() :: #{binary() => any()}.
 
 %% Example:
-%% w_a_f_unsupported_aggregate_key_type_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_managed_rule_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"VendorName">> := string(),
+%%   <<"VersionName">> => string()
 %% }
--type w_a_f_unsupported_aggregate_key_type_exception() :: #{binary() => any()}.
+-type describe_managed_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_rule_group_response() :: #{
+%%   <<"AvailableLabels">> => list(label_summary()),
+%%   <<"Capacity">> => float(),
+%%   <<"ConsumedLabels">> => list(label_summary()),
+%%   <<"LabelNamespace">> => string(),
+%%   <<"Rules">> => list(rule_summary()),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type describe_managed_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% disallowed_feature() :: #{
+%%   <<"Feature">> => string(),
+%%   <<"RequiredPricingPlan">> => string()
+%% }
+-type disallowed_feature() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_web_acl_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disassociate_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_web_acl_response() :: #{
+
+%% }
+-type disassociate_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% email_field() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type email_field() :: #{binary() => any()}.
+
+%% Example:
+%% excluded_rule() :: #{
+%%   <<"Name">> => string()
+%% }
+-type excluded_rule() :: #{binary() => any()}.
 
 %% Example:
 %% field_to_match() :: #{
@@ -519,24 +801,294 @@
 -type field_to_match() :: #{binary() => any()}.
 
 %% Example:
-%% w_a_f_service_linked_role_error_exception() :: #{
-%%   <<"message">> => string()
+%% field_to_protect() :: #{
+%%   <<"FieldKeys">> => list(string()),
+%%   <<"FieldType">> => list(any())
 %% }
--type w_a_f_service_linked_role_error_exception() :: #{binary() => any()}.
+-type field_to_protect() :: #{binary() => any()}.
 
 %% Example:
-%% allow_action() :: #{
-%%   <<"CustomRequestHandling">> => custom_request_handling()
+%% filter() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"Conditions">> => list(condition()),
+%%   <<"Requirement">> => list(any())
 %% }
--type allow_action() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 %% Example:
-%% regex_pattern_set_reference_statement() :: #{
+%% filter_source() :: #{
+%%   <<"BotCategory">> => string(),
+%%   <<"BotName">> => string(),
+%%   <<"BotOrganization">> => string()
+%% }
+-type filter_source() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_manager_rule_group() :: #{
+%%   <<"FirewallManagerStatement">> => firewall_manager_statement(),
+%%   <<"Name">> => string(),
+%%   <<"OverrideAction">> => override_action(),
+%%   <<"Priority">> => integer(),
+%%   <<"VisibilityConfig">> => visibility_config()
+%% }
+-type firewall_manager_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_manager_statement() :: #{
+%%   <<"ManagedRuleGroupStatement">> => managed_rule_group_statement(),
+%%   <<"RuleGroupReferenceStatement">> => rule_group_reference_statement()
+%% }
+-type firewall_manager_statement() :: #{binary() => any()}.
+
+%% Example:
+%% forwarded_ip_config() :: #{
+%%   <<"FallbackBehavior">> => list(any()),
+%%   <<"HeaderName">> => string()
+%% }
+-type forwarded_ip_config() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mobile_sdk_release_url_request() :: #{
+%%   <<"Platform">> := list(any()),
+%%   <<"ReleaseVersion">> := string()
+%% }
+-type generate_mobile_sdk_release_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mobile_sdk_release_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type generate_mobile_sdk_release_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% geo_match_statement() :: #{
+%%   <<"CountryCodes">> => list(list(any())()),
+%%   <<"ForwardedIPConfig">> => forwarded_ip_config()
+%% }
+-type geo_match_statement() :: #{binary() => any()}.
+
+%% Example:
+%% get_decrypted_api_key_request() :: #{
+%%   <<"APIKey">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type get_decrypted_api_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_decrypted_api_key_response() :: #{
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"TokenDomains">> => list(string())
+%% }
+-type get_decrypted_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_set_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type get_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_set_response() :: #{
+%%   <<"IPSet">> => ip_set(),
+%%   <<"LockToken">> => string()
+%% }
+-type get_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_request() :: #{
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type get_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_rule_set_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type get_managed_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_rule_set_response() :: #{
+%%   <<"LockToken">> => string(),
+%%   <<"ManagedRuleSet">> => managed_rule_set()
+%% }
+-type get_managed_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_sdk_release_request() :: #{
+%%   <<"Platform">> := list(any()),
+%%   <<"ReleaseVersion">> := string()
+%% }
+-type get_mobile_sdk_release_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_sdk_release_response() :: #{
+%%   <<"MobileSdkRelease">> => mobile_sdk_release()
+%% }
+-type get_mobile_sdk_release_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_statement_managed_keys_request() :: #{
+%%   <<"RuleGroupRuleName">> => string(),
+%%   <<"RuleName">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"WebACLId">> := string(),
+%%   <<"WebACLName">> := string()
+%% }
+-type get_rate_based_statement_managed_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rate_based_statement_managed_keys_response() :: #{
+%%   <<"ManagedKeysIPV4">> => rate_based_statement_managed_keys_ip_set(),
+%%   <<"ManagedKeysIPV6">> => rate_based_statement_managed_keys_ip_set()
+%% }
+-type get_rate_based_statement_managed_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_pattern_set_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type get_regex_pattern_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_regex_pattern_set_response() :: #{
+%%   <<"LockToken">> => string(),
+%%   <<"RegexPatternSet">> => regex_pattern_set()
+%% }
+-type get_regex_pattern_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatisticType">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RevenuePathStatistics">> => list(revenue_path_statistics()),
+%%   <<"SourceStatistics">> => list(source_statistics())
+%% }
+-type get_revenue_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_summary_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"Scope">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_summary_response() :: #{
+%%   <<"RevenueBreakdown">> => revenue_breakdown()
+%% }
+-type get_revenue_statistics_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_time_series_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"Interval">> := list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"StatisticType">> := list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type get_revenue_statistics_time_series_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_revenue_statistics_time_series_response() :: #{
+%%   <<"DataPoints">> => list(data_point_entry()),
+%%   <<"NextMarker">> => string()
+%% }
+-type get_revenue_statistics_time_series_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_group_request() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"TextTransformations">> => list(text_transformation())
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Scope">> => list(any())
 %% }
--type regex_pattern_set_reference_statement() :: #{binary() => any()}.
+-type get_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rule_group_response() :: #{
+%%   <<"LockToken">> => string(),
+%%   <<"RuleGroup">> => rule_group()
+%% }
+-type get_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sampled_requests_request() :: #{
+%%   <<"MaxItems">> := float(),
+%%   <<"RuleMetricName">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"TimeWindow">> := time_window(),
+%%   <<"WebAclArn">> := string()
+%% }
+-type get_sampled_requests_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_sampled_requests_response() :: #{
+%%   <<"PopulationSize">> => float(),
+%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()),
+%%   <<"TimeWindow">> => time_window()
+%% }
+-type get_sampled_requests_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_top_path_statistics_by_traffic_request() :: #{
+%%   <<"BotCategory">> => string(),
+%%   <<"BotName">> => string(),
+%%   <<"BotOrganization">> => string(),
+%%   <<"Limit">> := integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"NumberOfTopTrafficBotsPerPath">> := integer(),
+%%   <<"Scope">> := list(any()),
+%%   <<"TimeWindow">> := time_window(),
+%%   <<"UriPathPrefix">> => string(),
+%%   <<"WebAclArn">> := string()
+%% }
+-type get_top_path_statistics_by_traffic_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_top_path_statistics_by_traffic_response() :: #{
@@ -548,30 +1100,914 @@
 -type get_top_path_statistics_by_traffic_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_ip_set_response() :: #{
-%%   <<"NextLockToken">> => string()
+%% get_web_acl_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type update_ip_set_response() :: #{binary() => any()}.
+-type get_web_acl_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_mobile_sdk_release_request() :: #{
-%%   <<"Platform">> := list(any()),
-%%   <<"ReleaseVersion">> := string()
+%% get_web_acl_for_resource_response() :: #{
+%%   <<"WebACL">> => web_acl()
 %% }
--type get_mobile_sdk_release_request() :: #{binary() => any()}.
+-type get_web_acl_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_web_acl_request() :: #{
-%%   <<"ResourceArn">> := string(),
+%% get_web_acl_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Scope">> => list(any())
+%% }
+-type get_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_acl_response() :: #{
+%%   <<"ApplicationIntegrationURL">> => string(),
+%%   <<"LockToken">> => string(),
+%%   <<"WebACL">> => web_acl()
+%% }
+-type get_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% h_t_t_p_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type h_t_t_p_header() :: #{binary() => any()}.
+
+%% Example:
+%% h_t_t_p_request() :: #{
+%%   <<"ClientIP">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"HTTPVersion">> => string(),
+%%   <<"Headers">> => list(h_t_t_p_header()),
+%%   <<"Method">> => string(),
+%%   <<"URI">> => string()
+%% }
+-type h_t_t_p_request() :: #{binary() => any()}.
+
+%% Example:
+%% header_match_pattern() :: #{
+%%   <<"All">> => all(),
+%%   <<"ExcludedHeaders">> => list(string()),
+%%   <<"IncludedHeaders">> => list(string())
+%% }
+-type header_match_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% header_order() :: #{
+%%   <<"OversizeHandling">> => list(any())
+%% }
+-type header_order() :: #{binary() => any()}.
+
+%% Example:
+%% headers() :: #{
+%%   <<"MatchPattern">> => header_match_pattern(),
+%%   <<"MatchScope">> => list(any()),
+%%   <<"OversizeHandling">> => list(any())
+%% }
+-type headers() :: #{binary() => any()}.
+
+%% Example:
+%% immunity_time_property() :: #{
+%%   <<"ImmunityTime">> => float()
+%% }
+-type immunity_time_property() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Addresses">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"IPAddressVersion">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_forwarded_ip_config() :: #{
+%%   <<"FallbackBehavior">> => list(any()),
+%%   <<"HeaderName">> => string(),
+%%   <<"Position">> => list(any())
+%% }
+-type ip_set_forwarded_ip_config() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_reference_statement() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"IPSetForwardedIPConfig">> => ip_set_forwarded_ip_config()
+%% }
+-type ip_set_reference_statement() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LockToken">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type ip_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% j_a3_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type j_a3_fingerprint() :: #{binary() => any()}.
+
+%% Example:
+%% j_a4_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type j_a4_fingerprint() :: #{binary() => any()}.
+
+%% Example:
+%% json_body() :: #{
+%%   <<"InvalidFallbackBehavior">> => list(any()),
+%%   <<"MatchPattern">> => json_match_pattern(),
+%%   <<"MatchScope">> => list(any()),
+%%   <<"OversizeHandling">> => list(any())
+%% }
+-type json_body() :: #{binary() => any()}.
+
+%% Example:
+%% json_match_pattern() :: #{
+%%   <<"All">> => all(),
+%%   <<"IncludedPaths">> => list(string())
+%% }
+-type json_match_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% label() :: #{
+%%   <<"Name">> => string()
+%% }
+-type label() :: #{binary() => any()}.
+
+%% Example:
+%% label_match_statement() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Scope">> => list(any())
+%% }
+-type label_match_statement() :: #{binary() => any()}.
+
+%% Example:
+%% label_name_condition() :: #{
+%%   <<"LabelName">> => string()
+%% }
+-type label_name_condition() :: #{binary() => any()}.
+
+%% Example:
+%% label_summary() :: #{
+%%   <<"Name">> => string()
+%% }
+-type label_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_keys_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_api_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_keys_response() :: #{
+%%   <<"APIKeySummaries">> => list(api_key_summary()),
+%%   <<"ApplicationIntegrationURL">> => string(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_api_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_managed_rule_group_versions_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"VendorName">> := string()
+%% }
+-type list_available_managed_rule_group_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_managed_rule_group_versions_response() :: #{
+%%   <<"CurrentDefaultVersion">> => string(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Versions">> => list(managed_rule_group_version())
+%% }
+-type list_available_managed_rule_group_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_managed_rule_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_available_managed_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_managed_rule_groups_response() :: #{
+%%   <<"ManagedRuleGroups">> => list(managed_rule_group_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_available_managed_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_ip_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_sets_response() :: #{
+%%   <<"IPSets">> => list(ip_set_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_ip_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"LogScope">> => list(any()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_logging_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_response() :: #{
+%%   <<"LoggingConfigurations">> => list(logging_configuration()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_logging_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_rule_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_managed_rule_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_rule_sets_response() :: #{
+%%   <<"ManagedRuleSets">> => list(managed_rule_set_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_managed_rule_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_sdk_releases_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Platform">> := list(any())
+%% }
+-type list_mobile_sdk_releases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_sdk_releases_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"ReleaseSummaries">> => list(release_summary())
+%% }
+-type list_mobile_sdk_releases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_pattern_sets_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_regex_pattern_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_regex_pattern_sets_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary())
+%% }
+-type list_regex_pattern_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_for_web_acl_request() :: #{
+%%   <<"ResourceType">> => list(any()),
 %%   <<"WebACLArn">> := string()
 %% }
--type associate_web_acl_request() :: #{binary() => any()}.
+-type list_resources_for_web_acl_request() :: #{binary() => any()}.
 
 %% Example:
-%% count_action() :: #{
-%%   <<"CustomRequestHandling">> => custom_request_handling()
+%% list_resources_for_web_acl_response() :: #{
+%%   <<"ResourceArns">> => list(string())
 %% }
--type count_action() :: #{binary() => any()}.
+-type list_resources_for_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"RuleGroups">> => list(rule_group_summary())
+%% }
+-type list_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_settlement_records_request() :: #{
+%%   <<"Currency">> := list(any()),
+%%   <<"Filters">> => list(monetization_filter()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type list_settlement_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_settlement_records_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Settlements">> => list(settlement_record())
+%% }
+-type list_settlement_records_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TagInfoForResource">> => tag_info_for_resource()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_acls_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type list_web_acls_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_acls_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"WebACLs">> => list(web_acl_summary())
+%% }
+-type list_web_acls_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogDestinationConfigs">> => list(string()),
+%%   <<"LogScope">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"LoggingFilter">> => logging_filter(),
+%%   <<"ManagedByFirewallManager">> => boolean(),
+%%   <<"RedactedFields">> => list(field_to_match()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% logging_filter() :: #{
+%%   <<"DefaultBehavior">> => list(any()),
+%%   <<"Filters">> => list(filter())
+%% }
+-type logging_filter() :: #{binary() => any()}.
+
+%% Example:
+%% managed_product_descriptor() :: #{
+%%   <<"IsAdvancedManagedRuleSet">> => boolean(),
+%%   <<"IsVersioningSupported">> => boolean(),
+%%   <<"ManagedRuleSetName">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProductLink">> => string(),
+%%   <<"ProductTitle">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"VendorName">> => string()
+%% }
+-type managed_product_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_group_config() :: #{
+%%   <<"AWSManagedRulesACFPRuleSet">> => aws_managed_rules_a_c_f_p_rule_set(),
+%%   <<"AWSManagedRulesATPRuleSet">> => aws_managed_rules_a_t_p_rule_set(),
+%%   <<"AWSManagedRulesAntiDDoSRuleSet">> => aws_managed_rules_anti_d_do_s_rule_set(),
+%%   <<"AWSManagedRulesBotControlRuleSet">> => aws_managed_rules_bot_control_rule_set(),
+%%   <<"LoginPath">> => string(),
+%%   <<"PasswordField">> => password_field(),
+%%   <<"PayloadType">> => list(any()),
+%%   <<"UsernameField">> => username_field()
+%% }
+-type managed_rule_group_config() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_group_statement() :: #{
+%%   <<"ExcludedRules">> => list(excluded_rule()),
+%%   <<"ManagedRuleGroupConfigs">> => list(managed_rule_group_config()),
+%%   <<"Name">> => string(),
+%%   <<"RuleActionOverrides">> => list(rule_action_override()),
+%%   <<"ScopeDownStatement">> => statement(),
+%%   <<"VendorName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type managed_rule_group_statement() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_group_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VendorName">> => string(),
+%%   <<"VersioningSupported">> => boolean()
+%% }
+-type managed_rule_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_group_version() :: #{
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type managed_rule_group_version() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_set() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LabelNamespace">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PublishedVersions">> => map(),
+%%   <<"RecommendedVersion">> => string()
+%% }
+-type managed_rule_set() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_set_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LabelNamespace">> => string(),
+%%   <<"LockToken">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type managed_rule_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_set_version() :: #{
+%%   <<"AssociatedRuleGroupArn">> => string(),
+%%   <<"Capacity">> => float(),
+%%   <<"ExpiryTimestamp">> => non_neg_integer(),
+%%   <<"ForecastedLifetime">> => integer(),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"PublishTimestamp">> => non_neg_integer()
+%% }
+-type managed_rule_set_version() :: #{binary() => any()}.
+
+%% Example:
+%% method() :: #{
+
+%% }
+-type method() :: #{binary() => any()}.
+
+%% Example:
+%% mobile_sdk_release() :: #{
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"ReleaseVersion">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type mobile_sdk_release() :: #{binary() => any()}.
+
+%% Example:
+%% monetization_config() :: #{
+%%   <<"CryptoConfig">> => crypto_config(),
+%%   <<"CurrencyMode">> => list(any())
+%% }
+-type monetization_config() :: #{binary() => any()}.
+
+%% Example:
+%% monetization_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type monetization_filter() :: #{binary() => any()}.
+
+%% Example:
+%% monetize_action() :: #{
+%%   <<"PriceMultiplier">> => string()
+%% }
+-type monetize_action() :: #{binary() => any()}.
+
+%% Example:
+%% none_action() :: #{
+
+%% }
+-type none_action() :: #{binary() => any()}.
+
+%% Example:
+%% not_statement() :: #{
+%%   <<"Statement">> => statement()
+%% }
+-type not_statement() :: #{binary() => any()}.
+
+%% Example:
+%% on_source_d_do_s_protection_config() :: #{
+%%   <<"ALBLowReputationMode">> => list(any())
+%% }
+-type on_source_d_do_s_protection_config() :: #{binary() => any()}.
+
+%% Example:
+%% or_statement() :: #{
+%%   <<"Statements">> => list(statement())
+%% }
+-type or_statement() :: #{binary() => any()}.
+
+%% Example:
+%% override_action() :: #{
+%%   <<"Count">> => count_action(),
+%%   <<"None">> => none_action()
+%% }
+-type override_action() :: #{binary() => any()}.
+
+%% Example:
+%% password_field() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type password_field() :: #{binary() => any()}.
+
+%% Example:
+%% path_statistics() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float(),
+%%   <<"Source">> => filter_source(),
+%%   <<"TopBots">> => list(bot_statistics())
+%% }
+-type path_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% payment_network() :: #{
+%%   <<"Chain">> => list(any()),
+%%   <<"Prices">> => list(price()),
+%%   <<"WalletAddress">> => string()
+%% }
+-type payment_network() :: #{binary() => any()}.
+
+%% Example:
+%% phone_number_field() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type phone_number_field() :: #{binary() => any()}.
+
+%% Example:
+%% pre_parse_text_transformation() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type pre_parse_text_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% price() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Currency">> => list(any())
+%% }
+-type price() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_configuration_request() :: #{
+%%   <<"LoggingConfiguration">> := logging_configuration()
+%% }
+-type put_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type put_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_managed_rule_set_versions_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RecommendedVersion">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"VersionsToPublish">> => map()
+%% }
+-type put_managed_rule_set_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_managed_rule_set_versions_response() :: #{
+%%   <<"NextLockToken">> => string()
+%% }
+-type put_managed_rule_set_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_permission_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_policy_response() :: #{
+
+%% }
+-type put_permission_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_string() :: #{
+
+%% }
+-type query_string() :: #{binary() => any()}.
+
+%% Example:
+%% rate_based_statement() :: #{
+%%   <<"AggregateKeyType">> => list(any()),
+%%   <<"CustomKeys">> => list(rate_based_statement_custom_key()),
+%%   <<"EvaluationWindowSec">> => float(),
+%%   <<"ForwardedIPConfig">> => forwarded_ip_config(),
+%%   <<"Limit">> => float(),
+%%   <<"ScopeDownStatement">> => statement()
+%% }
+-type rate_based_statement() :: #{binary() => any()}.
+
+%% Example:
+%% rate_based_statement_custom_key() :: #{
+%%   <<"ASN">> => rate_limit_asn(),
+%%   <<"Cookie">> => rate_limit_cookie(),
+%%   <<"ForwardedIP">> => rate_limit_forwarded_ip(),
+%%   <<"HTTPMethod">> => rate_limit_h_t_t_p_method(),
+%%   <<"Header">> => rate_limit_header(),
+%%   <<"IP">> => rate_limit_ip(),
+%%   <<"JA3Fingerprint">> => rate_limit_j_a3_fingerprint(),
+%%   <<"JA4Fingerprint">> => rate_limit_j_a4_fingerprint(),
+%%   <<"LabelNamespace">> => rate_limit_label_namespace(),
+%%   <<"QueryArgument">> => rate_limit_query_argument(),
+%%   <<"QueryString">> => rate_limit_query_string(),
+%%   <<"UriPath">> => rate_limit_uri_path()
+%% }
+-type rate_based_statement_custom_key() :: #{binary() => any()}.
+
+%% Example:
+%% rate_based_statement_managed_keys_ip_set() :: #{
+%%   <<"Addresses">> => list(string()),
+%%   <<"IPAddressVersion">> => list(any())
+%% }
+-type rate_based_statement_managed_keys_ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_asn() :: #{
+
+%% }
+-type rate_limit_asn() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_cookie() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type rate_limit_cookie() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_forwarded_ip() :: #{
+
+%% }
+-type rate_limit_forwarded_ip() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_h_t_t_p_method() :: #{
+
+%% }
+-type rate_limit_h_t_t_p_method() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type rate_limit_header() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_ip() :: #{
+
+%% }
+-type rate_limit_ip() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_j_a3_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type rate_limit_j_a3_fingerprint() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_j_a4_fingerprint() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type rate_limit_j_a4_fingerprint() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_label_namespace() :: #{
+%%   <<"Namespace">> => string()
+%% }
+-type rate_limit_label_namespace() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_query_argument() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type rate_limit_query_argument() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_query_string() :: #{
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type rate_limit_query_string() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_uri_path() :: #{
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type rate_limit_uri_path() :: #{binary() => any()}.
+
+%% Example:
+%% regex() :: #{
+%%   <<"RegexString">> => string()
+%% }
+-type regex() :: #{binary() => any()}.
+
+%% Example:
+%% regex_match_statement() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
+%%   <<"RegexString">> => string(),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type regex_match_statement() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RegularExpressionList">> => list(regex())
+%% }
+-type regex_pattern_set() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set_reference_statement() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type regex_pattern_set_reference_statement() :: #{binary() => any()}.
+
+%% Example:
+%% regex_pattern_set_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LockToken">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type regex_pattern_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% release_summary() :: #{
+%%   <<"ReleaseVersion">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type release_summary() :: #{binary() => any()}.
+
+%% Example:
+%% request_body_associated_resource_type_config() :: #{
+%%   <<"DefaultSizeInspectionLimit">> => list(any())
+%% }
+-type request_body_associated_resource_type_config() :: #{binary() => any()}.
+
+%% Example:
+%% request_inspection() :: #{
+%%   <<"PasswordField">> => password_field(),
+%%   <<"PayloadType">> => list(any()),
+%%   <<"UsernameField">> => username_field()
+%% }
+-type request_inspection() :: #{binary() => any()}.
+
+%% Example:
+%% request_inspection_a_c_f_p() :: #{
+%%   <<"AddressFields">> => list(address_field()),
+%%   <<"EmailField">> => email_field(),
+%%   <<"PasswordField">> => password_field(),
+%%   <<"PayloadType">> => list(any()),
+%%   <<"PhoneNumberFields">> => list(phone_number_field()),
+%%   <<"UsernameField">> => username_field()
+%% }
+-type request_inspection_a_c_f_p() :: #{binary() => any()}.
+
+%% Example:
+%% response_inspection() :: #{
+%%   <<"BodyContains">> => response_inspection_body_contains(),
+%%   <<"Header">> => response_inspection_header(),
+%%   <<"Json">> => response_inspection_json(),
+%%   <<"StatusCode">> => response_inspection_status_code()
+%% }
+-type response_inspection() :: #{binary() => any()}.
+
+%% Example:
+%% response_inspection_body_contains() :: #{
+%%   <<"FailureStrings">> => list(string()),
+%%   <<"SuccessStrings">> => list(string())
+%% }
+-type response_inspection_body_contains() :: #{binary() => any()}.
+
+%% Example:
+%% response_inspection_header() :: #{
+%%   <<"FailureValues">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"SuccessValues">> => list(string())
+%% }
+-type response_inspection_header() :: #{binary() => any()}.
+
+%% Example:
+%% response_inspection_json() :: #{
+%%   <<"FailureValues">> => list(string()),
+%%   <<"Identifier">> => string(),
+%%   <<"SuccessValues">> => list(string())
+%% }
+-type response_inspection_json() :: #{binary() => any()}.
+
+%% Example:
+%% response_inspection_status_code() :: #{
+%%   <<"FailureCodes">> => list(integer()),
+%%   <<"SuccessCodes">> => list(integer())
+%% }
+-type response_inspection_status_code() :: #{binary() => any()}.
+
+%% Example:
+%% revenue_breakdown() :: #{
+%%   <<"Currency">> => list(any()),
+%%   <<"TotalAmount">> => string(),
+%%   <<"TotalMonetizeServed">> => float(),
+%%   <<"TotalSettled">> => float(),
+%%   <<"UnverifiedAmount">> => string(),
+%%   <<"VerifiedAmount">> => string()
+%% }
+-type revenue_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% revenue_path_statistics() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float()
+%% }
+-type revenue_path_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"Action">> => rule_action(),
+%%   <<"CaptchaConfig">> => captcha_config(),
+%%   <<"ChallengeConfig">> => challenge_config(),
+%%   <<"Name">> => string(),
+%%   <<"OverrideAction">> => override_action(),
+%%   <<"Priority">> => integer(),
+%%   <<"RuleLabels">> => list(label()),
+%%   <<"Statement">> => statement(),
+%%   <<"VisibilityConfig">> => visibility_config()
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% rule_action() :: #{
+%%   <<"Allow">> => allow_action(),
+%%   <<"Block">> => block_action(),
+%%   <<"Captcha">> => captcha_action(),
+%%   <<"Challenge">> => challenge_action(),
+%%   <<"Count">> => count_action(),
+%%   <<"Monetize">> => monetize_action()
+%% }
+-type rule_action() :: #{binary() => any()}.
+
+%% Example:
+%% rule_action_override() :: #{
+%%   <<"ActionToUse">> => rule_action(),
+%%   <<"Name">> => string()
+%% }
+-type rule_action_override() :: #{binary() => any()}.
 
 %% Example:
 %% rule_group() :: #{
@@ -591,67 +2027,112 @@
 -type rule_group() :: #{binary() => any()}.
 
 %% Example:
-%% managed_rule_set() :: #{
+%% rule_group_reference_statement() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ExcludedRules">> => list(excluded_rule()),
+%%   <<"RuleActionOverrides">> => list(rule_action_override())
+%% }
+-type rule_group_reference_statement() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_summary() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"LabelNamespace">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PublishedVersions">> => map(),
-%%   <<"RecommendedVersion">> => string()
-%% }
--type managed_rule_set() :: #{binary() => any()}.
-
-%% Example:
-%% generate_mobile_sdk_release_url_response() :: #{
-%%   <<"Url">> => string()
-%% }
--type generate_mobile_sdk_release_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% rate_based_statement() :: #{
-%%   <<"AggregateKeyType">> => list(any()),
-%%   <<"CustomKeys">> => list(rate_based_statement_custom_key()),
-%%   <<"EvaluationWindowSec">> => float(),
-%%   <<"ForwardedIPConfig">> => forwarded_ip_config(),
-%%   <<"Limit">> => float(),
-%%   <<"ScopeDownStatement">> => statement()
-%% }
--type rate_based_statement() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_acl_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_web_acl_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_set_summary() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LabelNamespace">> => string(),
 %%   <<"LockToken">> => string(),
 %%   <<"Name">> => string()
 %% }
--type managed_rule_set_summary() :: #{binary() => any()}.
+-type rule_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"Action">> => rule_action(),
+%%   <<"Name">> => string()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% sampled_h_t_t_p_request() :: #{
+%%   <<"Action">> => string(),
+%%   <<"CaptchaResponse">> => captcha_response(),
+%%   <<"ChallengeResponse">> => challenge_response(),
+%%   <<"Labels">> => list(label()),
+%%   <<"OverriddenAction">> => string(),
+%%   <<"Request">> => h_t_t_p_request(),
+%%   <<"RequestHeadersInserted">> => list(h_t_t_p_header()),
+%%   <<"ResponseCodeSent">> => integer(),
+%%   <<"RuleNameWithinRuleGroup">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Weight">> => float()
+%% }
+-type sampled_h_t_t_p_request() :: #{binary() => any()}.
+
+%% Example:
+%% settlement_record() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"ContentPath">> => string(),
+%%   <<"Currency">> => list(any()),
+%%   <<"Intent">> => string(),
+%%   <<"Network">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"PayerAddress">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RequestTimestamp">> => non_neg_integer(),
+%%   <<"SourceCategory">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"TransactionId">> => string(),
+%%   <<"Verified">> => boolean(),
+%%   <<"WalletAddress">> => string(),
+%%   <<"WebAclArn">> => string()
+%% }
+-type settlement_record() :: #{binary() => any()}.
+
+%% Example:
+%% single_header() :: #{
+%%   <<"Name">> => string()
+%% }
+-type single_header() :: #{binary() => any()}.
+
+%% Example:
+%% single_query_argument() :: #{
+%%   <<"Name">> => string()
+%% }
+-type single_query_argument() :: #{binary() => any()}.
+
+%% Example:
+%% size_constraint_statement() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
+%%   <<"Size">> => float(),
+%%   <<"TextTransformations">> => list(text_transformation())
+%% }
+-type size_constraint_statement() :: #{binary() => any()}.
+
+%% Example:
+%% source_statistics() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"GroupByValue">> => string(),
+%%   <<"Intent">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"Percentage">> => float(),
+%%   <<"RequestCount">> => float(),
+%%   <<"SourceCategory">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"Verified">> => boolean()
+%% }
+-type source_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% sqli_match_statement() :: #{
 %%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
 %%   <<"SensitivityLevel">> => list(any()),
 %%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type sqli_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_set_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type delete_ip_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% statement() :: #{
@@ -675,81 +2156,11 @@
 -type statement() :: #{binary() => any()}.
 
 %% Example:
-%% custom_request_handling() :: #{
-%%   <<"InsertHeaders">> => list(custom_h_t_t_p_header())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type custom_request_handling() :: #{binary() => any()}.
-
-%% Example:
-%% regex_match_statement() :: #{
-%%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"RegexString">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type regex_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% get_rule_group_response() :: #{
-%%   <<"LockToken">> => string(),
-%%   <<"RuleGroup">> => rule_group()
-%% }
--type get_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_revenue_statistics_time_series_request() :: #{
-%%   <<"Currency">> := list(any()),
-%%   <<"Filters">> => list(monetization_filter()),
-%%   <<"GroupBy">> => list(any()),
-%%   <<"Interval">> := list(any()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"StatisticType">> := list(any()),
-%%   <<"TimeWindow">> := time_window()
-%% }
--type get_revenue_statistics_time_series_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_unavailable_entity_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_unavailable_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% crypto_config() :: #{
-%%   <<"PaymentNetworks">> => list(payment_network())
-%% }
--type crypto_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_regex_pattern_set_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type get_regex_pattern_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% response_inspection_status_code() :: #{
-%%   <<"FailureCodes">> => list(integer()),
-%%   <<"SuccessCodes">> => list(integer())
-%% }
--type response_inspection_status_code() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_acl_response() :: #{
-%%   <<"ApplicationIntegrationURL">> => string(),
-%%   <<"LockToken">> => string(),
-%%   <<"WebACL">> => web_acl()
-%% }
--type get_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
 %% tag_info_for_resource() :: #{
@@ -759,51 +2170,44 @@
 -type tag_info_for_resource() :: #{binary() => any()}.
 
 %% Example:
-%% w_a_f_invalid_permission_policy_exception() :: #{
-%%   <<"Message">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type w_a_f_invalid_permission_policy_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% request_body_associated_resource_type_config() :: #{
-%%   <<"DefaultSizeInspectionLimit">> => list(any())
+%% tag_resource_response() :: #{
+
 %% }
--type request_body_associated_resource_type_config() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% managed_product_descriptor() :: #{
-%%   <<"IsAdvancedManagedRuleSet">> => boolean(),
-%%   <<"IsVersioningSupported">> => boolean(),
-%%   <<"ManagedRuleSetName">> => string(),
-%%   <<"ProductDescription">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProductLink">> => string(),
-%%   <<"ProductTitle">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"VendorName">> => string()
+%% text_transformation() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"Type">> => list(any())
 %% }
--type managed_product_descriptor() :: #{binary() => any()}.
+-type text_transformation() :: #{binary() => any()}.
 
 %% Example:
-%% captcha_config() :: #{
-%%   <<"ImmunityTimeProperty">> => immunity_time_property()
+%% time_window() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type captcha_config() :: #{binary() => any()}.
+-type time_window() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_managed_rule_group_versions_response() :: #{
-%%   <<"CurrentDefaultVersion">> => string(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Versions">> => list(managed_rule_group_version())
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type list_available_managed_rule_group_versions_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% generate_mobile_sdk_release_url_request() :: #{
-%%   <<"Platform">> := list(any()),
-%%   <<"ReleaseVersion">> := string()
+%% untag_resource_response() :: #{
+
 %% }
--type generate_mobile_sdk_release_url_request() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_ip_set_request() :: #{
@@ -817,58 +2221,127 @@
 -type update_ip_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% logging_configuration() :: #{
-%%   <<"LogDestinationConfigs">> => list(string()),
-%%   <<"LogScope">> => list(any()),
-%%   <<"LogType">> => list(any()),
-%%   <<"LoggingFilter">> => logging_filter(),
-%%   <<"ManagedByFirewallManager">> => boolean(),
-%%   <<"RedactedFields">> => list(field_to_match()),
-%%   <<"ResourceArn">> => string()
+%% update_ip_set_response() :: #{
+%%   <<"NextLockToken">> => string()
 %% }
--type logging_configuration() :: #{binary() => any()}.
+-type update_ip_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% application_attribute() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
+%% update_managed_rule_set_version_expiry_date_request() :: #{
+%%   <<"ExpiryTimestamp">> := non_neg_integer(),
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"VersionToExpire">> := string()
 %% }
--type application_attribute() :: #{binary() => any()}.
+-type update_managed_rule_set_version_expiry_date_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_revenue_statistics_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"RevenuePathStatistics">> => list(revenue_path_statistics()),
-%%   <<"SourceStatistics">> => list(source_statistics())
+%% update_managed_rule_set_version_expiry_date_response() :: #{
+%%   <<"ExpiringVersion">> => string(),
+%%   <<"ExpiryTimestamp">> => non_neg_integer(),
+%%   <<"NextLockToken">> => string()
 %% }
--type get_revenue_statistics_response() :: #{binary() => any()}.
+-type update_managed_rule_set_version_expiry_date_response() :: #{binary() => any()}.
 
 %% Example:
-%% rate_limit_cookie() :: #{
-%%   <<"Name">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation())
+%% update_regex_pattern_set_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RegularExpressionList">> := list(regex()),
+%%   <<"Scope">> := list(any())
 %% }
--type rate_limit_cookie() :: #{binary() => any()}.
+-type update_regex_pattern_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_rule_group_response() :: #{
-%%   <<"Summary">> => rule_group_summary()
+%% update_regex_pattern_set_response() :: #{
+%%   <<"NextLockToken">> => string()
 %% }
--type create_rule_group_response() :: #{binary() => any()}.
+-type update_regex_pattern_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_rule_group_request() :: #{
-%%   <<"Capacity">> := float(),
+%% update_rule_group_request() :: #{
 %%   <<"CustomResponseBodies">> => map(),
 %%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
 %%   <<"MonetizationConfig">> => monetization_config(),
 %%   <<"Name">> := string(),
 %%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()),
 %%   <<"VisibilityConfig">> := visibility_config()
 %% }
--type create_rule_group_request() :: #{binary() => any()}.
+-type update_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_response() :: #{
+%%   <<"NextLockToken">> => string()
+%% }
+-type update_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_acl_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
+%%   <<"AssociationConfig">> => association_config(),
+%%   <<"CaptchaConfig">> => captcha_config(),
+%%   <<"ChallengeConfig">> => challenge_config(),
+%%   <<"CustomResponseBodies">> => map(),
+%%   <<"DataProtectionConfig">> => data_protection_config(),
+%%   <<"DefaultAction">> := default_action(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"LockToken">> := string(),
+%%   <<"MonetizationConfig">> => monetization_config(),
+%%   <<"Name">> := string(),
+%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
+%%   <<"Rules">> => list(rule()),
+%%   <<"Scope">> := list(any()),
+%%   <<"TokenDomains">> => list(string()),
+%%   <<"VisibilityConfig">> := visibility_config()
+%% }
+-type update_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_acl_response() :: #{
+%%   <<"NextLockToken">> => string()
+%% }
+-type update_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% uri_fragment() :: #{
+%%   <<"FallbackBehavior">> => list(any())
+%% }
+-type uri_fragment() :: #{binary() => any()}.
+
+%% Example:
+%% uri_path() :: #{
+
+%% }
+-type uri_path() :: #{binary() => any()}.
+
+%% Example:
+%% username_field() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type username_field() :: #{binary() => any()}.
+
+%% Example:
+%% version_to_publish() :: #{
+%%   <<"AssociatedRuleGroupArn">> => string(),
+%%   <<"ForecastedLifetime">> => integer()
+%% }
+-type version_to_publish() :: #{binary() => any()}.
+
+%% Example:
+%% visibility_config() :: #{
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"MetricName">> => string(),
+%%   <<"SampledRequestsEnabled">> => boolean()
+%% }
+-type visibility_config() :: #{binary() => any()}.
 
 %% Example:
 %% w_a_f_associated_item_exception() :: #{
@@ -877,24 +2350,22 @@
 -type w_a_f_associated_item_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_logging_configuration_response() :: #{
-%%   <<"LoggingConfiguration">> => logging_configuration()
+%% w_a_f_configuration_warning_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type put_logging_configuration_response() :: #{binary() => any()}.
+-type w_a_f_configuration_warning_exception() :: #{binary() => any()}.
 
 %% Example:
-%% bot_statistics() :: #{
-%%   <<"BotName">> => string(),
-%%   <<"Percentage">> => float(),
-%%   <<"RequestCount">> => float()
+%% w_a_f_duplicate_item_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type bot_statistics() :: #{binary() => any()}.
+-type w_a_f_duplicate_item_exception() :: #{binary() => any()}.
 
 %% Example:
-%% challenge_action() :: #{
-%%   <<"CustomRequestHandling">> => custom_request_handling()
+%% w_a_f_expired_managed_rule_group_version_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type challenge_action() :: #{binary() => any()}.
+-type w_a_f_expired_managed_rule_group_version_exception() :: #{binary() => any()}.
 
 %% Example:
 %% w_a_f_feature_not_included_in_pricing_plan_exception() :: #{
@@ -904,26 +2375,98 @@
 -type w_a_f_feature_not_included_in_pricing_plan_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_all_managed_products_request() :: #{
-%%   <<"Scope">> := list(any())
+%% w_a_f_internal_error_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type describe_all_managed_products_request() :: #{binary() => any()}.
+-type w_a_f_internal_error_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_managed_rule_groups_response() :: #{
-%%   <<"ManagedRuleGroups">> => list(managed_rule_group_summary()),
-%%   <<"NextMarker">> => string()
+%% w_a_f_invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_available_managed_rule_groups_response() :: #{binary() => any()}.
+-type w_a_f_invalid_operation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_regex_pattern_set_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
+%% w_a_f_invalid_parameter_exception() :: #{
+%%   <<"Field">> => list(any()),
+%%   <<"Parameter">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"message">> => string()
 %% }
--type delete_regex_pattern_set_request() :: #{binary() => any()}.
+-type w_a_f_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_permission_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_invalid_permission_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_invalid_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_invalid_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_limits_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type w_a_f_limits_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_log_destination_permission_issue_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_log_destination_permission_issue_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_nonexistent_item_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_nonexistent_item_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_optimistic_lock_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_optimistic_lock_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_service_linked_role_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type w_a_f_service_linked_role_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_subscription_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_subscription_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_tag_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_tag_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_tag_operation_internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_tag_operation_internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_unavailable_entity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_unavailable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% w_a_f_unsupported_aggregate_key_type_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type w_a_f_unsupported_aggregate_key_type_exception() :: #{binary() => any()}.
 
 %% Example:
 %% web_acl() :: #{
@@ -953,1483 +2496,6 @@
 -type web_acl() :: #{binary() => any()}.
 
 %% Example:
-%% get_rate_based_statement_managed_keys_response() :: #{
-%%   <<"ManagedKeysIPV4">> => rate_based_statement_managed_keys_ip_set(),
-%%   <<"ManagedKeysIPV6">> => rate_based_statement_managed_keys_ip_set()
-%% }
--type get_rate_based_statement_managed_keys_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_set_version() :: #{
-%%   <<"AssociatedRuleGroupArn">> => string(),
-%%   <<"Capacity">> => float(),
-%%   <<"ExpiryTimestamp">> => non_neg_integer(),
-%%   <<"ForecastedLifetime">> => integer(),
-%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
-%%   <<"PublishTimestamp">> => non_neg_integer()
-%% }
--type managed_rule_set_version() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_internal_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_permission_policy_response() :: #{
-
-%% }
--type delete_permission_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% all_query_arguments() :: #{
-
-%% }
--type all_query_arguments() :: #{binary() => any()}.
-
-%% Example:
-%% get_rate_based_statement_managed_keys_request() :: #{
-%%   <<"RuleGroupRuleName">> => string(),
-%%   <<"RuleName">> := string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"WebACLId">> := string(),
-%%   <<"WebACLName">> := string()
-%% }
--type get_rate_based_statement_managed_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_regex_pattern_set_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RegularExpressionList">> := list(regex()),
-%%   <<"Scope">> := list(any())
-%% }
--type update_regex_pattern_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% revenue_path_statistics() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Percentage">> => float(),
-%%   <<"RequestCount">> => float()
-%% }
--type revenue_path_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% block_action() :: #{
-%%   <<"CustomResponse">> => custom_response()
-%% }
--type block_action() :: #{binary() => any()}.
-
-%% Example:
-%% size_constraint_statement() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"Size">> => float(),
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type size_constraint_statement() :: #{binary() => any()}.
-
-%% Example:
-%% time_window() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type time_window() :: #{binary() => any()}.
-
-%% Example:
-%% list_ip_sets_response() :: #{
-%%   <<"IPSets">> => list(ip_set_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_ip_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% price() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Currency">> => list(any())
-%% }
--type price() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_h_t_t_p_method() :: #{
-
-%% }
--type rate_limit_h_t_t_p_method() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_web_acl_response() :: #{
-%%   <<"Summary">> => web_acl_summary()
-%% }
--type create_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% monetize_action() :: #{
-%%   <<"PriceMultiplier">> => string()
-%% }
--type monetize_action() :: #{binary() => any()}.
-
-%% Example:
-%% data_protection() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"ExcludeRateBasedDetails">> => boolean(),
-%%   <<"ExcludeRuleMatchDetails">> => boolean(),
-%%   <<"Field">> => field_to_protect()
-%% }
--type data_protection() :: #{binary() => any()}.
-
-%% Example:
-%% none_action() :: #{
-
-%% }
--type none_action() :: #{binary() => any()}.
-
-%% Example:
-%% cookie_match_pattern() :: #{
-%%   <<"All">> => all(),
-%%   <<"ExcludedCookies">> => list(string()),
-%%   <<"IncludedCookies">> => list(string())
-%% }
--type cookie_match_pattern() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_group_version() :: #{
-%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type managed_rule_group_version() :: #{binary() => any()}.
-
-%% Example:
-%% username_field() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type username_field() :: #{binary() => any()}.
-
-%% Example:
-%% data_protection_config() :: #{
-%%   <<"DataProtections">> => list(data_protection())
-%% }
--type data_protection_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_settlement_records_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Settlements">> => list(settlement_record())
-%% }
--type list_settlement_records_response() :: #{binary() => any()}.
-
-%% Example:
-%% client_side_action() :: #{
-%%   <<"ExemptUriRegularExpressions">> => list(regex()),
-%%   <<"Sensitivity">> => list(any()),
-%%   <<"UsageOfAction">> => list(any())
-%% }
--type client_side_action() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_forwarded_ip() :: #{
-
-%% }
--type rate_limit_forwarded_ip() :: #{binary() => any()}.
-
-%% Example:
-%% rule_group_reference_statement() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"ExcludedRules">> => list(excluded_rule()),
-%%   <<"RuleActionOverrides">> => list(rule_action_override())
-%% }
--type rule_group_reference_statement() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_acl_response() :: #{
-%%   <<"NextLockToken">> => string()
-%% }
--type update_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% default_action() :: #{
-%%   <<"Allow">> => allow_action(),
-%%   <<"Block">> => block_action()
-%% }
--type default_action() :: #{binary() => any()}.
-
-%% Example:
-%% filter_source() :: #{
-%%   <<"BotCategory">> => string(),
-%%   <<"BotName">> => string(),
-%%   <<"BotOrganization">> => string()
-%% }
--type filter_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_logging_configuration_response() :: #{
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type get_logging_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% response_inspection_body_contains() :: #{
-%%   <<"FailureStrings">> => list(string()),
-%%   <<"SuccessStrings">> => list(string())
-%% }
--type response_inspection_body_contains() :: #{binary() => any()}.
-
-%% Example:
-%% aws_managed_rules_anti_d_do_s_rule_set() :: #{
-%%   <<"ClientSideActionConfig">> => client_side_action_config(),
-%%   <<"SensitivityToBlock">> => list(any())
-%% }
--type aws_managed_rules_anti_d_do_s_rule_set() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_asn() :: #{
-
-%% }
--type rate_limit_asn() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_j_a3_fingerprint() :: #{
-%%   <<"FallbackBehavior">> => list(any())
-%% }
--type rate_limit_j_a3_fingerprint() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_query_string() :: #{
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type rate_limit_query_string() :: #{binary() => any()}.
-
-%% Example:
-%% list_mobile_sdk_releases_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"ReleaseSummaries">> => list(release_summary())
-%% }
--type list_mobile_sdk_releases_response() :: #{binary() => any()}.
-
-%% Example:
-%% field_to_protect() :: #{
-%%   <<"FieldKeys">> => list(string()),
-%%   <<"FieldType">> => list(any())
-%% }
--type field_to_protect() :: #{binary() => any()}.
-
-%% Example:
-%% put_managed_rule_set_versions_response() :: #{
-%%   <<"NextLockToken">> => string()
-%% }
--type put_managed_rule_set_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_revenue_statistics_time_series_response() :: #{
-%%   <<"DataPoints">> => list(data_point_entry()),
-%%   <<"NextMarker">> => string()
-%% }
--type get_revenue_statistics_time_series_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_point_entry() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"GroupByValue">> => string(),
-%%   <<"Intent">> => string(),
-%%   <<"MonetizeServedCount">> => float(),
-%%   <<"SettledCount">> => float(),
-%%   <<"TotalAmount">> => string()
-%% }
--type data_point_entry() :: #{binary() => any()}.
-
-%% Example:
-%% address_field() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type address_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_key_response() :: #{
-
-%% }
--type delete_api_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Addresses">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"IPAddressVersion">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type ip_set() :: #{binary() => any()}.
-
-%% Example:
-%% json_match_pattern() :: #{
-%%   <<"All">> => all(),
-%%   <<"IncludedPaths">> => list(string())
-%% }
--type json_match_pattern() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_rule_group_response() :: #{
-%%   <<"AvailableLabels">> => list(label_summary()),
-%%   <<"Capacity">> => float(),
-%%   <<"ConsumedLabels">> => list(label_summary()),
-%%   <<"LabelNamespace">> => string(),
-%%   <<"Rules">> => list(rule_summary()),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type describe_managed_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% phone_number_field() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type phone_number_field() :: #{binary() => any()}.
-
-%% Example:
-%% label_match_statement() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Scope">> => list(any())
-%% }
--type label_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_web_acl_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type disassociate_web_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_tag_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_tag_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"TagInfoForResource">> => tag_info_for_resource()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% sampled_h_t_t_p_request() :: #{
-%%   <<"Action">> => string(),
-%%   <<"CaptchaResponse">> => captcha_response(),
-%%   <<"ChallengeResponse">> => challenge_response(),
-%%   <<"Labels">> => list(label()),
-%%   <<"OverriddenAction">> => string(),
-%%   <<"Request">> => h_t_t_p_request(),
-%%   <<"RequestHeadersInserted">> => list(h_t_t_p_header()),
-%%   <<"ResponseCodeSent">> => integer(),
-%%   <<"RuleNameWithinRuleGroup">> => string(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Weight">> => float()
-%% }
--type sampled_h_t_t_p_request() :: #{binary() => any()}.
-
-%% Example:
-%% j_a3_fingerprint() :: #{
-%%   <<"FallbackBehavior">> => list(any())
-%% }
--type j_a3_fingerprint() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_acl_request() :: #{
-%%   <<"ApplicationConfig">> => application_config(),
-%%   <<"AssociationConfig">> => association_config(),
-%%   <<"CaptchaConfig">> => captcha_config(),
-%%   <<"ChallengeConfig">> => challenge_config(),
-%%   <<"CustomResponseBodies">> => map(),
-%%   <<"DataProtectionConfig">> => data_protection_config(),
-%%   <<"DefaultAction">> := default_action(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"MonetizationConfig">> => monetization_config(),
-%%   <<"Name">> := string(),
-%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
-%%   <<"Rules">> => list(rule()),
-%%   <<"Scope">> := list(any()),
-%%   <<"TokenDomains">> => list(string()),
-%%   <<"VisibilityConfig">> := visibility_config()
-%% }
--type update_web_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_acl_for_resource_response() :: #{
-%%   <<"WebACL">> => web_acl()
-%% }
--type get_web_acl_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% email_field() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type email_field() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_invalid_parameter_exception() :: #{
-%%   <<"Field">> => list(any()),
-%%   <<"Parameter">> => string(),
-%%   <<"Reason">> => string(),
-%%   <<"message">> => string()
-%% }
--type w_a_f_invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% uri_fragment() :: #{
-%%   <<"FallbackBehavior">> => list(any())
-%% }
--type uri_fragment() :: #{binary() => any()}.
-
-%% Example:
-%% json_body() :: #{
-%%   <<"InvalidFallbackBehavior">> => list(any()),
-%%   <<"MatchPattern">> => json_match_pattern(),
-%%   <<"MatchScope">> => list(any()),
-%%   <<"OversizeHandling">> => list(any())
-%% }
--type json_body() :: #{binary() => any()}.
-
-%% Example:
-%% all() :: #{
-
-%% }
--type all() :: #{binary() => any()}.
-
-%% Example:
-%% uri_path() :: #{
-
-%% }
--type uri_path() :: #{binary() => any()}.
-
-%% Example:
-%% list_regex_pattern_sets_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_regex_pattern_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% condition() :: #{
-%%   <<"ActionCondition">> => action_condition(),
-%%   <<"LabelNameCondition">> => label_name_condition()
-%% }
--type condition() :: #{binary() => any()}.
-
-%% Example:
-%% response_inspection_header() :: #{
-%%   <<"FailureValues">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SuccessValues">> => list(string())
-%% }
--type response_inspection_header() :: #{binary() => any()}.
-
-%% Example:
-%% check_capacity_response() :: #{
-%%   <<"Capacity">> => float()
-%% }
--type check_capacity_response() :: #{binary() => any()}.
-
-%% Example:
-%% visibility_config() :: #{
-%%   <<"CloudWatchMetricsEnabled">> => boolean(),
-%%   <<"MetricName">> => string(),
-%%   <<"SampledRequestsEnabled">> => boolean()
-%% }
--type visibility_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_revenue_statistics_summary_response() :: #{
-%%   <<"RevenueBreakdown">> => revenue_breakdown()
-%% }
--type get_revenue_statistics_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_api_key_response() :: #{
-%%   <<"APIKey">> => string()
-%% }
--type create_api_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% challenge_response() :: #{
-%%   <<"FailureReason">> => list(any()),
-%%   <<"ResponseCode">> => integer(),
-%%   <<"SolveTimestamp">> => float()
-%% }
--type challenge_response() :: #{binary() => any()}.
-
-%% Example:
-%% monetization_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type monetization_filter() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set_reference_statement() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"IPSetForwardedIPConfig">> => ip_set_forwarded_ip_config()
-%% }
--type ip_set_reference_statement() :: #{binary() => any()}.
-
-%% Example:
-%% settlement_record() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"ContentPath">> => string(),
-%%   <<"Currency">> => list(any()),
-%%   <<"Intent">> => string(),
-%%   <<"Network">> => string(),
-%%   <<"Organization">> => string(),
-%%   <<"PayerAddress">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"RequestTimestamp">> => non_neg_integer(),
-%%   <<"SourceCategory">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"TransactionId">> => string(),
-%%   <<"Verified">> => boolean(),
-%%   <<"WalletAddress">> => string(),
-%%   <<"WebAclArn">> => string()
-%% }
--type settlement_record() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Behavior">> => list(any()),
-%%   <<"Conditions">> => list(condition()),
-%%   <<"Requirement">> => list(any())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_uri_path() :: #{
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type rate_limit_uri_path() :: #{binary() => any()}.
-
-%% Example:
-%% rule() :: #{
-%%   <<"Action">> => rule_action(),
-%%   <<"CaptchaConfig">> => captcha_config(),
-%%   <<"ChallengeConfig">> => challenge_config(),
-%%   <<"Name">> => string(),
-%%   <<"OverrideAction">> => override_action(),
-%%   <<"Priority">> => integer(),
-%%   <<"RuleLabels">> => list(label()),
-%%   <<"Statement">> => statement(),
-%%   <<"VisibilityConfig">> => visibility_config()
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_regex_pattern_set_response() :: #{
-
-%% }
--type delete_regex_pattern_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_rule_sets_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_managed_rule_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_api_key_request() :: #{
-%%   <<"Scope">> := list(any()),
-%%   <<"TokenDomains">> := list(string())
-%% }
--type create_api_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mobile_sdk_release_response() :: #{
-%%   <<"MobileSdkRelease">> => mobile_sdk_release()
-%% }
--type get_mobile_sdk_release_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_logging_configuration_request() :: #{
-%%   <<"LogScope">> => list(any()),
-%%   <<"LogType">> => list(any()),
-%%   <<"ResourceArn">> := string()
-%% }
--type get_logging_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_regex_pattern_set_response() :: #{
-%%   <<"LockToken">> => string(),
-%%   <<"RegexPatternSet">> => regex_pattern_set()
-%% }
--type get_regex_pattern_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% regex_pattern_set_summary() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LockToken">> => string(),
-%%   <<"Name">> => string()
-%% }
--type regex_pattern_set_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_permission_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_permission_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_action() :: #{
-%%   <<"Allow">> => allow_action(),
-%%   <<"Block">> => block_action(),
-%%   <<"Captcha">> => captcha_action(),
-%%   <<"Challenge">> => challenge_action(),
-%%   <<"Count">> => count_action(),
-%%   <<"Monetize">> => monetize_action()
-%% }
--type rule_action() :: #{binary() => any()}.
-
-%% Example:
-%% list_settlement_records_request() :: #{
-%%   <<"Currency">> := list(any()),
-%%   <<"Filters">> => list(monetization_filter()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"TimeWindow">> := time_window()
-%% }
--type list_settlement_records_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_rule_sets_response() :: #{
-%%   <<"ManagedRuleSets">> => list(managed_rule_set_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_managed_rule_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% revenue_breakdown() :: #{
-%%   <<"Currency">> => list(any()),
-%%   <<"TotalAmount">> => string(),
-%%   <<"TotalMonetizeServed">> => float(),
-%%   <<"TotalSettled">> => float(),
-%%   <<"UnverifiedAmount">> => string(),
-%%   <<"VerifiedAmount">> => string()
-%% }
--type revenue_breakdown() :: #{binary() => any()}.
-
-%% Example:
-%% xss_match_statement() :: #{
-%%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type xss_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_invalid_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_managed_rule_set_versions_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RecommendedVersion">> => string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"VersionsToPublish">> => map()
-%% }
--type put_managed_rule_set_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_summary() :: #{
-%%   <<"Action">> => rule_action(),
-%%   <<"Name">> => string()
-%% }
--type rule_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_managed_rule_set_version_expiry_date_request() :: #{
-%%   <<"ExpiryTimestamp">> := non_neg_integer(),
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"VersionToExpire">> := string()
-%% }
--type update_managed_rule_set_version_expiry_date_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_group_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VendorName">> => string(),
-%%   <<"VersioningSupported">> => boolean()
-%% }
--type managed_rule_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% forwarded_ip_config() :: #{
-%%   <<"FallbackBehavior">> => list(any()),
-%%   <<"HeaderName">> => string()
-%% }
--type forwarded_ip_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_logging_configurations_response() :: #{
-%%   <<"LoggingConfigurations">> => list(logging_configuration()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_logging_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% payment_network() :: #{
-%%   <<"Chain">> => list(any()),
-%%   <<"Prices">> => list(price()),
-%%   <<"WalletAddress">> => string()
-%% }
--type payment_network() :: #{binary() => any()}.
-
-%% Example:
-%% h_t_t_p_header() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type h_t_t_p_header() :: #{binary() => any()}.
-
-%% Example:
-%% list_mobile_sdk_releases_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Platform">> := list(any())
-%% }
--type list_mobile_sdk_releases_request() :: #{binary() => any()}.
-
-%% Example:
-%% challenge_config() :: #{
-%%   <<"ImmunityTimeProperty">> => immunity_time_property()
-%% }
--type challenge_config() :: #{binary() => any()}.
-
-%% Example:
-%% and_statement() :: #{
-%%   <<"Statements">> => list(statement())
-%% }
--type and_statement() :: #{binary() => any()}.
-
-%% Example:
-%% or_statement() :: #{
-%%   <<"Statements">> => list(statement())
-%% }
--type or_statement() :: #{binary() => any()}.
-
-%% Example:
-%% get_permission_policy_response() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_permission_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% excluded_rule() :: #{
-%%   <<"Name">> => string()
-%% }
--type excluded_rule() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_invalid_resource_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_invalid_resource_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_web_acl_request() :: #{
-%%   <<"ApplicationConfig">> => application_config(),
-%%   <<"AssociationConfig">> => association_config(),
-%%   <<"CaptchaConfig">> => captcha_config(),
-%%   <<"ChallengeConfig">> => challenge_config(),
-%%   <<"CustomResponseBodies">> => map(),
-%%   <<"DataProtectionConfig">> => data_protection_config(),
-%%   <<"DefaultAction">> := default_action(),
-%%   <<"Description">> => string(),
-%%   <<"MonetizationConfig">> => monetization_config(),
-%%   <<"Name">> := string(),
-%%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
-%%   <<"Rules">> => list(rule()),
-%%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TokenDomains">> => list(string()),
-%%   <<"VisibilityConfig">> := visibility_config()
-%% }
--type create_web_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_ip_set_request() :: #{
-%%   <<"Addresses">> := list(string()),
-%%   <<"Description">> => string(),
-%%   <<"IPAddressVersion">> := list(any()),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_ip_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_group_request() :: #{
-%%   <<"CustomResponseBodies">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"MonetizationConfig">> => monetization_config(),
-%%   <<"Name">> := string(),
-%%   <<"Rules">> => list(rule()),
-%%   <<"Scope">> := list(any()),
-%%   <<"VisibilityConfig">> := visibility_config()
-%% }
--type update_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ip_set_response() :: #{
-%%   <<"IPSet">> => ip_set(),
-%%   <<"LockToken">> => string()
-%% }
--type get_ip_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_group_response() :: #{
-
-%% }
--type delete_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_transformation() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type text_transformation() :: #{binary() => any()}.
-
-%% Example:
-%% h_t_t_p_request() :: #{
-%%   <<"ClientIP">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"HTTPVersion">> => string(),
-%%   <<"Headers">> => list(h_t_t_p_header()),
-%%   <<"Method">> => string(),
-%%   <<"URI">> => string()
-%% }
--type h_t_t_p_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% asn_match_statement() :: #{
-%%   <<"AsnList">> => list(float()),
-%%   <<"ForwardedIPConfig">> => forwarded_ip_config()
-%% }
--type asn_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% regex_pattern_set() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RegularExpressionList">> => list(regex())
-%% }
--type regex_pattern_set() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_key_request() :: #{
-%%   <<"APIKey">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type delete_api_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% logging_filter() :: #{
-%%   <<"DefaultBehavior">> => list(any()),
-%%   <<"Filters">> => list(filter())
-%% }
--type logging_filter() :: #{binary() => any()}.
-
-%% Example:
-%% release_summary() :: #{
-%%   <<"ReleaseVersion">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type release_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_managed_rule_group_versions_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"VendorName">> := string()
-%% }
--type list_available_managed_rule_group_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_group_summary() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LockToken">> => string(),
-%%   <<"Name">> => string()
-%% }
--type rule_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_products_by_vendor_request() :: #{
-%%   <<"Scope">> := list(any()),
-%%   <<"VendorName">> := string()
-%% }
--type describe_managed_products_by_vendor_request() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set_summary() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LockToken">> => string(),
-%%   <<"Name">> => string()
-%% }
--type ip_set_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_top_path_statistics_by_traffic_request() :: #{
-%%   <<"BotCategory">> => string(),
-%%   <<"BotName">> => string(),
-%%   <<"BotOrganization">> => string(),
-%%   <<"Limit">> := integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"NumberOfTopTrafficBotsPerPath">> := integer(),
-%%   <<"Scope">> := list(any()),
-%%   <<"TimeWindow">> := time_window(),
-%%   <<"UriPathPrefix">> => string(),
-%%   <<"WebAclArn">> := string()
-%% }
--type get_top_path_statistics_by_traffic_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_regex_pattern_set_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RegularExpressionList">> := list(regex()),
-%%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_regex_pattern_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% headers() :: #{
-%%   <<"MatchPattern">> => header_match_pattern(),
-%%   <<"MatchScope">> => list(any()),
-%%   <<"OversizeHandling">> => list(any())
-%% }
--type headers() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% on_source_d_do_s_protection_config() :: #{
-%%   <<"ALBLowReputationMode">> => list(any())
-%% }
--type on_source_d_do_s_protection_config() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_manager_statement() :: #{
-%%   <<"ManagedRuleGroupStatement">> => managed_rule_group_statement(),
-%%   <<"RuleGroupReferenceStatement">> => rule_group_reference_statement()
-%% }
--type firewall_manager_statement() :: #{binary() => any()}.
-
-%% Example:
-%% delete_permission_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_permission_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_api_keys_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_api_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% body() :: #{
-%%   <<"OversizeHandling">> => list(any())
-%% }
--type body() :: #{binary() => any()}.
-
-%% Example:
-%% get_permission_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_permission_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_duplicate_item_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_duplicate_item_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_manager_rule_groups_response() :: #{
-%%   <<"NextWebACLLockToken">> => string()
-%% }
--type delete_firewall_manager_rule_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% path_statistics() :: #{
-%%   <<"Path">> => string(),
-%%   <<"Percentage">> => float(),
-%%   <<"RequestCount">> => float(),
-%%   <<"Source">> => filter_source(),
-%%   <<"TopBots">> => list(bot_statistics())
-%% }
--type path_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% label_name_condition() :: #{
-%%   <<"LabelName">> => string()
-%% }
--type label_name_condition() :: #{binary() => any()}.
-
-%% Example:
-%% monetization_config() :: #{
-%%   <<"CryptoConfig">> => crypto_config(),
-%%   <<"CurrencyMode">> => list(any())
-%% }
--type monetization_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_for_web_acl_response() :: #{
-%%   <<"ResourceArns">> => list(string())
-%% }
--type list_resources_for_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_logging_configurations_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"LogScope">> => list(any()),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_logging_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% single_header() :: #{
-%%   <<"Name">> => string()
-%% }
--type single_header() :: #{binary() => any()}.
-
-%% Example:
-%% delete_logging_configuration_response() :: #{
-
-%% }
--type delete_logging_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_rule_set_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type get_managed_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_optimistic_lock_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_optimistic_lock_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_ip_set_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type get_ip_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% geo_match_statement() :: #{
-%%   <<"CountryCodes">> => list(list(any())()),
-%%   <<"ForwardedIPConfig">> => forwarded_ip_config()
-%% }
--type geo_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% captcha_action() :: #{
-%%   <<"CustomRequestHandling">> => custom_request_handling()
-%% }
--type captcha_action() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_rule_set_response() :: #{
-%%   <<"LockToken">> => string(),
-%%   <<"ManagedRuleSet">> => managed_rule_set()
-%% }
--type get_managed_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_web_acl_response() :: #{
-
-%% }
--type disassociate_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_logging_configuration_request() :: #{
-%%   <<"LoggingConfiguration">> := logging_configuration()
-%% }
--type put_logging_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% cookies() :: #{
-%%   <<"MatchPattern">> => cookie_match_pattern(),
-%%   <<"MatchScope">> => list(any()),
-%%   <<"OversizeHandling">> => list(any())
-%% }
--type cookies() :: #{binary() => any()}.
-
-%% Example:
-%% put_permission_policy_response() :: #{
-
-%% }
--type put_permission_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_log_destination_permission_issue_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_log_destination_permission_issue_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_header() :: #{
-%%   <<"Name">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type rate_limit_header() :: #{binary() => any()}.
-
-%% Example:
-%% aws_managed_rules_bot_control_rule_set() :: #{
-%%   <<"EnableMachineLearning">> => boolean(),
-%%   <<"InspectionLevel">> => list(any())
-%% }
--type aws_managed_rules_bot_control_rule_set() :: #{binary() => any()}.
-
-%% Example:
-%% source_statistics() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"GroupByValue">> => string(),
-%%   <<"Intent">> => string(),
-%%   <<"Organization">> => string(),
-%%   <<"Percentage">> => float(),
-%%   <<"RequestCount">> => float(),
-%%   <<"SourceCategory">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"Verified">> => boolean()
-%% }
--type source_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% delete_logging_configuration_request() :: #{
-%%   <<"LogScope">> => list(any()),
-%%   <<"LogType">> => list(any()),
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_logging_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% method() :: #{
-
-%% }
--type method() :: #{binary() => any()}.
-
-%% Example:
-%% action_condition() :: #{
-%%   <<"Action">> => list(any())
-%% }
--type action_condition() :: #{binary() => any()}.
-
-%% Example:
-%% get_sampled_requests_response() :: #{
-%%   <<"PopulationSize">> => float(),
-%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()),
-%%   <<"TimeWindow">> => time_window()
-%% }
--type get_sampled_requests_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_group_config() :: #{
-%%   <<"AWSManagedRulesACFPRuleSet">> => aws_managed_rules_a_c_f_p_rule_set(),
-%%   <<"AWSManagedRulesATPRuleSet">> => aws_managed_rules_a_t_p_rule_set(),
-%%   <<"AWSManagedRulesAntiDDoSRuleSet">> => aws_managed_rules_anti_d_do_s_rule_set(),
-%%   <<"AWSManagedRulesBotControlRuleSet">> => aws_managed_rules_bot_control_rule_set(),
-%%   <<"LoginPath">> => string(),
-%%   <<"PasswordField">> => password_field(),
-%%   <<"PayloadType">> => list(any()),
-%%   <<"UsernameField">> => username_field()
-%% }
--type managed_rule_group_config() :: #{binary() => any()}.
-
-%% Example:
-%% application_config() :: #{
-%%   <<"Attributes">> => list(application_attribute())
-%% }
--type application_config() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_configuration_warning_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_configuration_warning_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_regex_pattern_sets_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary())
-%% }
--type list_regex_pattern_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_web_acls_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_web_acls_request() :: #{binary() => any()}.
-
-%% Example:
-%% byte_match_statement() :: #{
-%%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"PositionalConstraint">> => list(any()),
-%%   <<"SearchString">> => binary(),
-%%   <<"TextTransformations">> => list(text_transformation())
-%% }
--type byte_match_statement() :: #{binary() => any()}.
-
-%% Example:
-%% list_web_acls_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"WebACLs">> => list(web_acl_summary())
-%% }
--type list_web_acls_response() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_j_a4_fingerprint() :: #{
-%%   <<"FallbackBehavior">> => list(any())
-%% }
--type rate_limit_j_a4_fingerprint() :: #{binary() => any()}.
-
-%% Example:
-%% create_ip_set_response() :: #{
-%%   <<"Summary">> => ip_set_summary()
-%% }
--type create_ip_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% header_match_pattern() :: #{
-%%   <<"All">> => all(),
-%%   <<"ExcludedHeaders">> => list(string()),
-%%   <<"IncludedHeaders">> => list(string())
-%% }
--type header_match_pattern() :: #{binary() => any()}.
-
-%% Example:
-%% update_regex_pattern_set_response() :: #{
-%%   <<"NextLockToken">> => string()
-%% }
--type update_regex_pattern_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% aws_managed_rules_a_t_p_rule_set() :: #{
-%%   <<"EnableRegexInPath">> => boolean(),
-%%   <<"LoginPath">> => string(),
-%%   <<"RequestInspection">> => request_inspection(),
-%%   <<"ResponseInspection">> => response_inspection()
-%% }
--type aws_managed_rules_a_t_p_rule_set() :: #{binary() => any()}.
-
-%% Example:
-%% captcha_response() :: #{
-%%   <<"FailureReason">> => list(any()),
-%%   <<"ResponseCode">> => integer(),
-%%   <<"SolveTimestamp">> => float()
-%% }
--type captcha_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_acl_request() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Scope">> => list(any())
-%% }
--type get_web_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% override_action() :: #{
-%%   <<"Count">> => count_action(),
-%%   <<"None">> => none_action()
-%% }
--type override_action() :: #{binary() => any()}.
-
-%% Example:
-%% get_decrypted_api_key_request() :: #{
-%%   <<"APIKey">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type get_decrypted_api_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_manager_rule_groups_request() :: #{
-%%   <<"WebACLArn">> := string(),
-%%   <<"WebACLLockToken">> := string()
-%% }
--type delete_firewall_manager_rule_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_rule_group_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"VendorName">> := string(),
-%%   <<"VersionName">> => string()
-%% }
--type describe_managed_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_acl_response() :: #{
-
-%% }
--type delete_web_acl_response() :: #{binary() => any()}.
-
-%% Example:
-%% not_statement() :: #{
-%%   <<"Statement">> => statement()
-%% }
--type not_statement() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_subscription_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_subscription_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_revenue_statistics_request() :: #{
-%%   <<"Currency">> := list(any()),
-%%   <<"Filters">> => list(monetization_filter()),
-%%   <<"GroupBy">> => list(any()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any()),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatisticType">> := list(any()),
-%%   <<"TimeWindow">> := time_window()
-%% }
--type get_revenue_statistics_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_h_t_t_p_header() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type custom_h_t_t_p_header() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_group_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type delete_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_limits_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type w_a_f_limits_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_manager_rule_group() :: #{
-%%   <<"FirewallManagerStatement">> => firewall_manager_statement(),
-%%   <<"Name">> => string(),
-%%   <<"OverrideAction">> => override_action(),
-%%   <<"Priority">> => integer(),
-%%   <<"VisibilityConfig">> => visibility_config()
-%% }
--type firewall_manager_rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_acl_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"LockToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scope">> := list(any())
-%% }
--type delete_web_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set_forwarded_ip_config() :: #{
-%%   <<"FallbackBehavior">> => list(any()),
-%%   <<"HeaderName">> => string(),
-%%   <<"Position">> => list(any())
-%% }
--type ip_set_forwarded_ip_config() :: #{binary() => any()}.
-
-%% Example:
-%% regex() :: #{
-%%   <<"RegexString">> => string()
-%% }
--type regex() :: #{binary() => any()}.
-
-%% Example:
-%% w_a_f_tag_operation_internal_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type w_a_f_tag_operation_internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% label_summary() :: #{
-%%   <<"Name">> => string()
-%% }
--type label_summary() :: #{binary() => any()}.
-
-%% Example:
 %% web_acl_summary() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"Description">> => string(),
@@ -2440,499 +2506,446 @@
 -type web_acl_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_rule_groups_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
+%% xss_match_statement() :: #{
+%%   <<"FieldToMatch">> => field_to_match(),
+%%   <<"PreParseTextTransformations">> => list(pre_parse_text_transformation()),
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
--type list_rule_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% mobile_sdk_release() :: #{
-%%   <<"ReleaseNotes">> => string(),
-%%   <<"ReleaseVersion">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type mobile_sdk_release() :: #{binary() => any()}.
-
-%% Example:
-%% label() :: #{
-%%   <<"Name">> => string()
-%% }
--type label() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_set_response() :: #{
-
-%% }
--type delete_ip_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% immunity_time_property() :: #{
-%%   <<"ImmunityTime">> => float()
-%% }
--type immunity_time_property() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_managed_rule_groups_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Scope">> := list(any())
-%% }
--type list_available_managed_rule_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_regex_pattern_set_response() :: #{
-%%   <<"Summary">> => regex_pattern_set_summary()
-%% }
--type create_regex_pattern_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% association_config() :: #{
-%%   <<"RequestBody">> => map()
-%% }
--type association_config() :: #{binary() => any()}.
-
-%% Example:
-%% client_side_action_config() :: #{
-%%   <<"Challenge">> => client_side_action()
-%% }
--type client_side_action_config() :: #{binary() => any()}.
+-type xss_match_statement() :: #{binary() => any()}.
 
 -type associate_web_acl_errors() ::
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_feature_not_included_in_pricing_plan_exception() | 
-    w_a_f_unavailable_entity_exception() | 
-    w_a_f_nonexistent_item_exception().
-
--type check_capacity_errors() ::
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_subscription_not_found_exception() | 
-    w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_unavailable_entity_exception() | 
     w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception().
+
+-type check_capacity_errors() ::
+    w_a_f_unavailable_entity_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
     w_a_f_expired_managed_rule_group_version_exception().
 
 -type create_api_key_errors() ::
     w_a_f_limits_exceeded_exception() | 
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type create_ip_set_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception().
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_duplicate_item_exception().
 
 -type create_regex_pattern_set_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception().
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_duplicate_item_exception().
 
 -type create_rule_group_errors() ::
+    w_a_f_unavailable_entity_exception() | 
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_limits_exceeded_exception() | 
+    w_a_f_tag_operation_exception() | 
     w_a_f_subscription_not_found_exception() | 
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_tag_operation_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_unavailable_entity_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_duplicate_item_exception().
 
 -type create_web_acl_errors() ::
-    w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_subscription_not_found_exception() | 
-    w_a_f_configuration_warning_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_unavailable_entity_exception() | 
+    w_a_f_tag_operation_internal_error_exception() | 
+    w_a_f_tag_operation_exception() | 
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_optimistic_lock_exception() | 
     w_a_f_nonexistent_item_exception() | 
-    w_a_f_expired_managed_rule_group_version_exception().
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_expired_managed_rule_group_version_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_configuration_warning_exception().
 
 -type delete_api_key_errors() ::
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type delete_firewall_manager_rule_groups_errors() ::
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type delete_ip_set_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_associated_item_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_associated_item_exception().
 
 -type delete_logging_configuration_errors() ::
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type delete_permission_policy_errors() ::
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_internal_error_exception().
 
 -type delete_regex_pattern_set_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_associated_item_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_associated_item_exception().
 
 -type delete_rule_group_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_associated_item_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_associated_item_exception().
 
 -type delete_web_acl_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_associated_item_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_associated_item_exception().
 
 -type describe_all_managed_products_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type describe_managed_products_by_vendor_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type describe_managed_rule_group_errors() ::
-    w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_resource_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
     w_a_f_expired_managed_rule_group_version_exception().
 
 -type disassociate_web_acl_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type generate_mobile_sdk_release_url_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_decrypted_api_key_errors() ::
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_ip_set_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_logging_configuration_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_managed_rule_set_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_mobile_sdk_release_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_permission_policy_errors() ::
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_internal_error_exception().
 
 -type get_rate_based_statement_managed_keys_errors() ::
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_unsupported_aggregate_key_type_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_regex_pattern_set_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_revenue_statistics_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_revenue_statistics_summary_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_revenue_statistics_time_series_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_rule_group_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_sampled_requests_errors() ::
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_internal_error_exception().
 
 -type get_top_path_statistics_by_traffic_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_feature_not_included_in_pricing_plan_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_feature_not_included_in_pricing_plan_exception().
 
 -type get_web_acl_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type get_web_acl_for_resource_errors() ::
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_unavailable_entity_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type list_api_keys_errors() ::
     w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_available_managed_rule_group_versions_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type list_available_managed_rule_groups_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_ip_sets_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_logging_configurations_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_managed_rule_sets_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_mobile_sdk_releases_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_regex_pattern_sets_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_resources_for_web_acl_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type list_rule_groups_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type list_settlement_records_errors() ::
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type list_tags_for_resource_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type list_web_acls_errors() ::
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
 -type put_logging_configuration_errors() ::
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_log_destination_permission_issue_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_feature_not_included_in_pricing_plan_exception() | 
     w_a_f_service_linked_role_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_log_destination_permission_issue_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_feature_not_included_in_pricing_plan_exception().
 
 -type put_managed_rule_set_versions_errors() ::
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type put_permission_policy_errors() ::
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_permission_policy_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_internal_error_exception().
 
 -type tag_resource_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type untag_resource_errors() ::
     w_a_f_tag_operation_internal_error_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
     w_a_f_tag_operation_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type update_ip_set_errors() ::
-    w_a_f_limits_exceeded_exception() | 
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_duplicate_item_exception().
 
 -type update_managed_rule_set_version_expiry_date_errors() ::
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
 
 -type update_regex_pattern_set_errors() ::
-    w_a_f_limits_exceeded_exception() | 
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_duplicate_item_exception().
 
 -type update_rule_group_errors() ::
-    w_a_f_limits_exceeded_exception() | 
-    w_a_f_subscription_not_found_exception() | 
-    w_a_f_configuration_warning_exception() | 
-    w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
-    w_a_f_invalid_operation_exception() | 
-    w_a_f_invalid_parameter_exception() | 
-    w_a_f_internal_error_exception() | 
     w_a_f_unavailable_entity_exception() | 
-    w_a_f_nonexistent_item_exception().
+    w_a_f_subscription_not_found_exception() | 
+    w_a_f_optimistic_lock_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_configuration_warning_exception().
 
 -type update_web_acl_errors() ::
-    w_a_f_limits_exceeded_exception() | 
+    w_a_f_unavailable_entity_exception() | 
     w_a_f_subscription_not_found_exception() | 
-    w_a_f_configuration_warning_exception() | 
     w_a_f_optimistic_lock_exception() | 
-    w_a_f_duplicate_item_exception() | 
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_limits_exceeded_exception() | 
     w_a_f_invalid_resource_exception() | 
-    w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception() | 
     w_a_f_feature_not_included_in_pricing_plan_exception() | 
-    w_a_f_unavailable_entity_exception() | 
-    w_a_f_nonexistent_item_exception() | 
-    w_a_f_expired_managed_rule_group_version_exception().
+    w_a_f_expired_managed_rule_group_version_exception() | 
+    w_a_f_duplicate_item_exception() | 
+    w_a_f_configuration_warning_exception().
 
 %%====================================================================
 %% API
@@ -3135,8 +3148,8 @@ create_rule_group(Client, Input, Options)
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
 %% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, Amplify application, and Amazon Web Services Verified Access
-%% instance.
+%% service, Amplify application, Amazon Web Services Verified Access
+%% instance, and Amazon Bedrock AgentCore Gateway.
 -spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
@@ -4569,8 +4582,8 @@ update_rule_group(Client, Input, Options)
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
 %% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, Amplify application, and Amazon Web Services Verified Access
-%% instance.
+%% service, Amplify application, Amazon Web Services Verified Access
+%% instance, and Amazon Bedrock AgentCore Gateway.
 %%
 %% Temporary inconsistencies during updates
 %%

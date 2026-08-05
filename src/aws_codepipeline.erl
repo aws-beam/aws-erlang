@@ -261,328 +261,11 @@
 
 
 %% Example:
-%% get_action_type_output() :: #{
-%%   <<"actionType">> => action_type_declaration()
+%% acknowledge_job_input() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"nonce">> := string()
 %% }
--type get_action_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% unable_to_rollback_stage_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unable_to_rollback_stage_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_blocker_declaration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_blocker_declaration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% latest_in_pipeline_execution_filter() :: #{
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"startTimeRange">> => list(any())
-%% }
--type latest_in_pipeline_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% action_context() :: #{
-%%   <<"actionExecutionId">> => string(),
-%%   <<"name">> => string()
-%% }
--type action_context() :: #{binary() => any()}.
-
-%% Example:
-%% git_branch_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()),
-%%   <<"includes">> => list(string())
-%% }
--type git_branch_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% override_stage_condition_input() :: #{
-%%   <<"conditionType">> := list(any()),
-%%   <<"pipelineExecutionId">> := string(),
-%%   <<"pipelineName">> := string(),
-%%   <<"stageName">> := string()
-%% }
--type override_stage_condition_input() :: #{binary() => any()}.
-
-%% Example:
-%% request_failed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type request_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_action_executions_output() :: #{
-%%   <<"actionExecutionDetails">> => list(action_execution_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type list_action_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% aws_session_credentials() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"secretAccessKey">> => string(),
-%%   <<"sessionToken">> => string()
-%% }
--type aws_session_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% webhook_auth_configuration() :: #{
-%%   <<"AllowedIPRange">> => string(),
-%%   <<"SecretToken">> => string()
-%% }
--type webhook_auth_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stage_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type stage_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_third_party_jobs_input() :: #{
-%%   <<"actionTypeId">> := action_type_id(),
-%%   <<"maxBatchSize">> => integer()
-%% }
--type poll_for_third_party_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pipeline_execution_output() :: #{
-%%   <<"pipelineExecutionId">> => string()
-%% }
--type stop_pipeline_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_webhook_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"definition">> => webhook_definition(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"lastTriggered">> => non_neg_integer(),
-%%   <<"tags">> => list(tag()),
-%%   <<"url">> => string()
-%% }
--type list_webhook_item() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_declaration() :: #{
-%%   <<"artifactStore">> => artifact_store(),
-%%   <<"artifactStores">> => map(),
-%%   <<"executionMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"pipelineType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"stages">> => list(stage_declaration()),
-%%   <<"triggers">> => list(pipeline_trigger_declaration()),
-%%   <<"variables">> => list(pipeline_variable_declaration()),
-%%   <<"version">> => integer()
-%% }
--type pipeline_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% output_artifact() :: #{
-%%   <<"files">> => list(string()),
-%%   <<"name">> => string()
-%% }
--type output_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_permissions() :: #{
-%%   <<"allowedAccounts">> => list(string())
-%% }
--type action_type_permissions() :: #{binary() => any()}.
-
-%% Example:
-%% resolved_pipeline_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"resolvedValue">> => string()
-%% }
--type resolved_pipeline_variable() :: #{binary() => any()}.
-
-%% Example:
-%% put_approval_result_output() :: #{
-%%   <<"approvedAt">> => non_neg_integer()
-%% }
--type put_approval_result_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_pipeline_output() :: #{
-%%   <<"pipeline">> => pipeline_declaration(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_webhook_output() :: #{
-
-%% }
--type delete_webhook_output() :: #{binary() => any()}.
-
-%% Example:
-%% action_state() :: #{
-%%   <<"actionName">> => string(),
-%%   <<"currentRevision">> => action_revision(),
-%%   <<"entityUrl">> => string(),
-%%   <<"latestExecution">> => action_execution(),
-%%   <<"revisionUrl">> => string()
-%% }
--type action_state() :: #{binary() => any()}.
-
-%% Example:
-%% put_webhook_output() :: #{
-%%   <<"webhook">> => list_webhook_item()
-%% }
--type put_webhook_output() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_revision() :: #{
-%%   <<"created">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"revisionChangeIdentifier">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"revisionSummary">> => string(),
-%%   <<"revisionUrl">> => string()
-%% }
--type artifact_revision() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_trigger_declaration() :: #{
-%%   <<"gitConfiguration">> => git_configuration(),
-%%   <<"providerType">> => list(any())
-%% }
--type pipeline_trigger_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% rule_state() :: #{
-%%   <<"currentRevision">> => rule_revision(),
-%%   <<"entityUrl">> => string(),
-%%   <<"latestExecution">> => rule_execution(),
-%%   <<"revisionUrl">> => string(),
-%%   <<"ruleName">> => string()
-%% }
--type rule_state() :: #{binary() => any()}.
-
-%% Example:
-%% execution_details() :: #{
-%%   <<"externalExecutionId">> => string(),
-%%   <<"percentComplete">> => integer(),
-%%   <<"summary">> => string()
-%% }
--type execution_details() :: #{binary() => any()}.
-
-%% Example:
-%% rule_type_settings() :: #{
-%%   <<"entityUrlTemplate">> => string(),
-%%   <<"executionUrlTemplate">> => string(),
-%%   <<"revisionUrlTemplate">> => string(),
-%%   <<"thirdPartyConfigurationUrl">> => string()
-%% }
--type rule_type_settings() :: #{binary() => any()}.
-
-%% Example:
-%% not_latest_pipeline_execution_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_latest_pipeline_execution_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rule_execution_detail() :: #{
-%%   <<"input">> => rule_execution_input(),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"output">> => rule_execution_output(),
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"pipelineVersion">> => integer(),
-%%   <<"ruleExecutionId">> => string(),
-%%   <<"ruleName">> => string(),
-%%   <<"stageName">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedBy">> => string()
-%% }
--type rule_execution_detail() :: #{binary() => any()}.
-
-%% Example:
-%% executor_configuration() :: #{
-%%   <<"jobWorkerExecutorConfiguration">> => job_worker_executor_configuration(),
-%%   <<"lambdaExecutorConfiguration">> => lambda_executor_configuration()
-%% }
--type executor_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_action_declaration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_action_declaration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_third_party_job_failure_result_input() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"failureDetails">> := failure_details(),
-%%   <<"jobId">> := string()
-%% }
--type put_third_party_job_failure_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_summary() :: #{
-%%   <<"executionMode">> => list(any()),
-%%   <<"executionType">> => list(any()),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
-%%   <<"sourceRevisions">> => list(source_revision()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusSummary">> => string(),
-%%   <<"stopTrigger">> => stop_execution_trigger(),
-%%   <<"trigger">> => execution_trigger()
-%% }
--type pipeline_execution_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_third_party_job_details_output() :: #{
-%%   <<"jobDetails">> => third_party_job_details()
-%% }
--type get_third_party_job_details_output() :: #{binary() => any()}.
-
-%% Example:
-%% environment_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type environment_variable() :: #{binary() => any()}.
-
-%% Example:
-%% third_party_job() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"jobId">> => string()
-%% }
--type third_party_job() :: #{binary() => any()}.
-
-%% Example:
-%% acknowledge_third_party_job_output() :: #{
-%%   <<"status">> => list(any())
-%% }
--type acknowledge_third_party_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution() :: #{
-%%   <<"artifactRevisions">> => list(artifact_revision()),
-%%   <<"executionMode">> => list(any()),
-%%   <<"executionType">> => list(any()),
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"pipelineName">> => string(),
-%%   <<"pipelineVersion">> => integer(),
-%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
-%%   <<"status">> => list(any()),
-%%   <<"statusSummary">> => string(),
-%%   <<"trigger">> => execution_trigger(),
-%%   <<"variables">> => list(resolved_pipeline_variable())
-%% }
--type pipeline_execution() :: #{binary() => any()}.
+-type acknowledge_job_input() :: #{binary() => any()}.
 
 %% Example:
 %% acknowledge_job_output() :: #{
@@ -599,319 +282,35 @@
 -type acknowledge_third_party_job_input() :: #{binary() => any()}.
 
 %% Example:
-%% rule_execution_filter() :: #{
-%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
-%%   <<"pipelineExecutionId">> => string()
+%% acknowledge_third_party_job_output() :: #{
+%%   <<"status">> => list(any())
 %% }
--type rule_execution_filter() :: #{binary() => any()}.
+-type acknowledge_third_party_job_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_rule_types_output() :: #{
-%%   <<"ruleTypes">> => list(rule_type())
+%% action_configuration() :: #{
+%%   <<"configuration">> => map()
 %% }
--type list_rule_types_output() :: #{binary() => any()}.
+-type action_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% pipeline_variable_declaration() :: #{
-%%   <<"defaultValue">> => string(),
+%% action_configuration_property() :: #{
 %%   <<"description">> => string(),
+%%   <<"key">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"queryable">> => boolean(),
+%%   <<"required">> => boolean(),
+%%   <<"secret">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type action_configuration_property() :: #{binary() => any()}.
+
+%% Example:
+%% action_context() :: #{
+%%   <<"actionExecutionId">> => string(),
 %%   <<"name">> => string()
 %% }
--type pipeline_variable_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_name_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_name_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_output() :: #{
-%%   <<"metadata">> => pipeline_metadata(),
-%%   <<"pipeline">> => pipeline_declaration()
-%% }
--type get_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% failure_conditions() :: #{
-%%   <<"conditions">> => list(condition()),
-%%   <<"result">> => list(any()),
-%%   <<"retryConfiguration">> => retry_configuration()
-%% }
--type failure_conditions() :: #{binary() => any()}.
-
-%% Example:
-%% action_revision() :: #{
-%%   <<"created">> => non_neg_integer(),
-%%   <<"revisionChangeId">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type action_revision() :: #{binary() => any()}.
-
-%% Example:
-%% rule_execution_result() :: #{
-%%   <<"errorDetails">> => error_details(),
-%%   <<"externalExecutionId">> => string(),
-%%   <<"externalExecutionSummary">> => string(),
-%%   <<"externalExecutionUrl">> => string()
-%% }
--type rule_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% stage_context() :: #{
-%%   <<"name">> => string()
-%% }
--type stage_context() :: #{binary() => any()}.
-
-%% Example:
-%% retry_stage_metadata() :: #{
-%%   <<"autoStageRetryAttempt">> => integer(),
-%%   <<"latestRetryTrigger">> => list(any()),
-%%   <<"manualStageRetryAttempt">> => integer()
-%% }
--type retry_stage_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% enable_stage_transition_input() :: #{
-%%   <<"pipelineName">> := string(),
-%%   <<"stageName">> := string(),
-%%   <<"transitionType">> := list(any())
-%% }
--type enable_stage_transition_input() :: #{binary() => any()}.
-
-%% Example:
-%% third_party_job_data() :: #{
-%%   <<"actionConfiguration">> => action_configuration(),
-%%   <<"actionTypeId">> => action_type_id(),
-%%   <<"artifactCredentials">> => aws_session_credentials(),
-%%   <<"continuationToken">> => string(),
-%%   <<"encryptionKey">> => encryption_key(),
-%%   <<"inputArtifacts">> => list(artifact()),
-%%   <<"outputArtifacts">> => list(artifact()),
-%%   <<"pipelineContext">> => pipeline_context()
-%% }
--type third_party_job_data() :: #{binary() => any()}.
-
-%% Example:
-%% list_webhooks_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"webhooks">> => list(list_webhook_item())
-%% }
--type list_webhooks_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_job_success_result_input() :: #{
-%%   <<"continuationToken">> => string(),
-%%   <<"currentRevision">> => current_revision(),
-%%   <<"executionDetails">> => execution_details(),
-%%   <<"jobId">> := string(),
-%%   <<"outputVariables">> => map()
-%% }
--type put_job_success_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_execution_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type action_execution_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_execution_input() :: #{
-%%   <<"pipelineExecutionId">> := string(),
-%%   <<"pipelineName">> := string()
-%% }
--type get_pipeline_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_deploy_action_execution_targets_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targets">> => list(deploy_action_execution_target())
-%% }
--type list_deploy_action_execution_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% failure_details() :: #{
-%%   <<"externalExecutionId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_not_stoppable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_execution_not_stoppable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_webhooks_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_webhooks_input() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_rollback_metadata() :: #{
-%%   <<"rollbackTargetPipelineExecutionId">> => string()
-%% }
--type pipeline_rollback_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_input() :: #{
-%%   <<"pipeline">> := pipeline_declaration()
-%% }
--type update_pipeline_input() :: #{binary() => any()}.
-
-%% Example:
-%% rule_type() :: #{
-%%   <<"id">> => rule_type_id(),
-%%   <<"inputArtifactDetails">> => artifact_details(),
-%%   <<"ruleConfigurationProperties">> => list(rule_configuration_property()),
-%%   <<"settings">> => rule_type_settings()
-%% }
--type rule_type() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_filter() :: #{
-%%   <<"succeededInStage">> => succeeded_in_stage_filter()
-%% }
--type pipeline_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% execution_trigger() :: #{
-%%   <<"triggerDetail">> => string(),
-%%   <<"triggerType">> => list(any())
-%% }
--type execution_trigger() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_types_input() :: #{
-%%   <<"regionFilter">> => string(),
-%%   <<"ruleOwnerFilter">> => list(any())
-%% }
--type list_rule_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_input() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_pipeline_input() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_store() :: #{
-%%   <<"encryptionKey">> => encryption_key(),
-%%   <<"location">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type artifact_store() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_location() :: #{
-%%   <<"s3Location">> => s3_artifact_location(),
-%%   <<"type">> => list(any())
-%% }
--type artifact_location() :: #{binary() => any()}.
-
-%% Example:
-%% job_data() :: #{
-%%   <<"actionConfiguration">> => action_configuration(),
-%%   <<"actionTypeId">> => action_type_id(),
-%%   <<"artifactCredentials">> => aws_session_credentials(),
-%%   <<"continuationToken">> => string(),
-%%   <<"encryptionKey">> => encryption_key(),
-%%   <<"inputArtifacts">> => list(artifact()),
-%%   <<"outputArtifacts">> => list(artifact()),
-%%   <<"pipelineContext">> => pipeline_context()
-%% }
--type job_data() :: #{binary() => any()}.
-
-%% Example:
-%% condition_state() :: #{
-%%   <<"latestExecution">> => condition_execution(),
-%%   <<"ruleStates">> => list(rule_state())
-%% }
--type condition_state() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_webhook_filter_pattern_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_webhook_filter_pattern_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rule_execution_output() :: #{
-%%   <<"executionResult">> => rule_execution_result()
-%% }
--type rule_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% git_file_path_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()),
-%%   <<"includes">> => list(string())
-%% }
--type git_file_path_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% job_worker_executor_configuration() :: #{
-%%   <<"pollingAccounts">> => list(string()),
-%%   <<"pollingServicePrincipals">> => list(string())
-%% }
--type job_worker_executor_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% approval_already_completed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_already_completed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% current_revision() :: #{
-%%   <<"changeIdentifier">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"revision">> => string(),
-%%   <<"revisionSummary">> => string()
-%% }
--type current_revision() :: #{binary() => any()}.
-
-%% Example:
-%% action_execution_filter() :: #{
-%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
-%%   <<"pipelineExecutionId">> => string()
-%% }
--type action_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_pipeline_input() :: #{
-%%   <<"pipeline">> := pipeline_declaration(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_pipeline_input() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_target_event_context() :: #{
-%%   <<"message">> => string(),
-%%   <<"ssmCommandId">> => string()
-%% }
--type deploy_target_event_context() :: #{binary() => any()}.
+-type action_context() :: #{binary() => any()}.
 
 %% Example:
 %% action_declaration() :: #{
@@ -932,51 +331,6 @@
 -type action_declaration() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% retry_configuration() :: #{
-%%   <<"retryMode">> => list(any())
-%% }
--type retry_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% input_artifact() :: #{
-%%   <<"name">> => string()
-%% }
--type input_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% put_webhook_input() :: #{
-%%   <<"tags">> => list(tag()),
-%%   <<"webhook">> := webhook_definition()
-%% }
--type put_webhook_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% stage_conditions_execution() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"summary">> => string()
-%% }
--type stage_conditions_execution() :: #{binary() => any()}.
-
-%% Example:
 %% action_execution() :: #{
 %%   <<"actionExecutionId">> => string(),
 %%   <<"errorDetails">> => error_details(),
@@ -991,607 +345,6 @@
 %%   <<"token">> => string()
 %% }
 -type action_execution() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipelines_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_pipelines_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_action_type_input() :: #{
-%%   <<"category">> := list(any()),
-%%   <<"owner">> := string(),
-%%   <<"provider">> := string(),
-%%   <<"version">> := string()
-%% }
--type get_action_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_detail() :: #{
-%%   <<"name">> => string(),
-%%   <<"s3location">> => s3_location()
-%% }
--type artifact_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_action_type_input() :: #{
-%%   <<"actionType">> := action_type_declaration()
-%% }
--type update_action_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_artifact_details() :: #{
-%%   <<"maximumCount">> => integer(),
-%%   <<"minimumCount">> => integer()
-%% }
--type action_type_artifact_details() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_stage_output() :: #{
-%%   <<"pipelineExecutionId">> => string()
-%% }
--type rollback_stage_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_job_failure_result_input() :: #{
-%%   <<"failureDetails">> := failure_details(),
-%%   <<"jobId">> := string()
-%% }
--type put_job_failure_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_execution_output() :: #{
-%%   <<"executionResult">> => action_execution_result(),
-%%   <<"outputArtifacts">> => list(artifact_detail()),
-%%   <<"outputVariables">> => map()
-%% }
--type action_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_stage_declaration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_stage_declaration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_action_executions_input() :: #{
-%%   <<"filter">> => action_execution_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pipelineName">> := string()
-%% }
--type list_action_executions_input() :: #{binary() => any()}.
-
-%% Example:
-%% s3_artifact_location() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"objectKey">> => string()
-%% }
--type s3_artifact_location() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_executions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary())
-%% }
--type list_pipeline_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_urls() :: #{
-%%   <<"configurationUrl">> => string(),
-%%   <<"entityUrlTemplate">> => string(),
-%%   <<"executionUrlTemplate">> => string(),
-%%   <<"revisionUrlTemplate">> => string()
-%% }
--type action_type_urls() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_execution_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_pipeline_execution_output() :: #{
-%%   <<"pipelineExecutionId">> => string()
-%% }
--type start_pipeline_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% transition_state() :: #{
-%%   <<"disabledReason">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"lastChangedAt">> => non_neg_integer(),
-%%   <<"lastChangedBy">> => string()
-%% }
--type transition_state() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_summary() :: #{
-%%   <<"created">> => non_neg_integer(),
-%%   <<"executionMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"pipelineType">> => list(any()),
-%%   <<"updated">> => non_neg_integer(),
-%%   <<"version">> => integer()
-%% }
--type pipeline_summary() :: #{binary() => any()}.
-
-%% Example:
-%% error_details() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-%% Example:
-%% git_configuration() :: #{
-%%   <<"pullRequest">> => list(git_pull_request_filter()),
-%%   <<"push">> => list(git_push_filter()),
-%%   <<"sourceActionName">> => string()
-%% }
--type git_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_action_types_output() :: #{
-%%   <<"actionTypes">> => list(action_type()),
-%%   <<"nextToken">> => string()
-%% }
--type list_action_types_output() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_id() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"owner">> => list(any()),
-%%   <<"provider">> => string(),
-%%   <<"version">> => string()
-%% }
--type action_type_id() :: #{binary() => any()}.
-
-%% Example:
-%% webhook_definition() :: #{
-%%   <<"authentication">> => list(any()),
-%%   <<"authenticationConfiguration">> => webhook_auth_configuration(),
-%%   <<"filters">> => list(webhook_filter_rule()),
-%%   <<"name">> => string(),
-%%   <<"targetAction">> => string(),
-%%   <<"targetPipeline">> => string()
-%% }
--type webhook_definition() :: #{binary() => any()}.
-
-%% Example:
-%% condition() :: #{
-%%   <<"result">> => list(any()),
-%%   <<"rules">> => list(rule_declaration())
-%% }
--type condition() :: #{binary() => any()}.
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_details_input() :: #{
-%%   <<"jobId">> := string()
-%% }
--type get_job_details_input() :: #{binary() => any()}.
-
-%% Example:
-%% condition_not_overridable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type condition_not_overridable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_state_output() :: #{
-%%   <<"created">> => non_neg_integer(),
-%%   <<"pipelineName">> => string(),
-%%   <<"pipelineVersion">> => integer(),
-%%   <<"stageStates">> => list(stage_state()),
-%%   <<"updated">> => non_neg_integer()
-%% }
--type get_pipeline_state_output() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_executor() :: #{
-%%   <<"configuration">> => executor_configuration(),
-%%   <<"jobTimeout">> => integer(),
-%%   <<"policyStatementsTemplate">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type action_type_executor() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% approval_result() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"summary">> => string()
-%% }
--type approval_result() :: #{binary() => any()}.
-
-%% Example:
-%% stage_not_retryable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type stage_not_retryable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% git_pull_request_filter() :: #{
-%%   <<"branches">> => git_branch_filter_criteria(),
-%%   <<"events">> => list(list(any())()),
-%%   <<"filePaths">> => git_file_path_filter_criteria()
-%% }
--type git_pull_request_filter() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_action_execution_target() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"events">> => list(deploy_target_event()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"targetId">> => string(),
-%%   <<"targetType">> => string()
-%% }
--type deploy_action_execution_target() :: #{binary() => any()}.
-
-%% Example:
-%% job_details() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"data">> => job_data(),
-%%   <<"id">> => string()
-%% }
--type job_details() :: #{binary() => any()}.
-
-%% Example:
-%% git_tag_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()),
-%%   <<"includes">> => list(string())
-%% }
--type git_tag_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% condition_execution() :: #{
-%%   <<"lastStatusChange">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"summary">> => string()
-%% }
--type condition_execution() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% rule_declaration() :: #{
-%%   <<"commands">> => list(string()),
-%%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(input_artifact()),
-%%   <<"name">> => string(),
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"ruleTypeId">> => rule_type_id(),
-%%   <<"timeoutInMinutes">> => integer()
-%% }
--type rule_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_jobs_output() :: #{
-%%   <<"jobs">> => list(job())
-%% }
--type poll_for_jobs_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_executions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"ruleExecutionDetails">> => list(rule_execution_detail())
-%% }
--type list_rule_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% output_variables_size_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type output_variables_size_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_structure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_structure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_execution_trigger() :: #{
-%%   <<"reason">> => string()
-%% }
--type stop_execution_trigger() :: #{binary() => any()}.
-
-%% Example:
-%% webhook_filter_rule() :: #{
-%%   <<"jsonPath">> => string(),
-%%   <<"matchEquals">> => string()
-%% }
--type webhook_filter_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_third_party_job_details_input() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"jobId">> := string()
-%% }
--type get_third_party_job_details_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% succeeded_in_stage_filter() :: #{
-%%   <<"stageName">> => string()
-%% }
--type succeeded_in_stage_filter() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_metadata() :: #{
-%%   <<"created">> => non_neg_integer(),
-%%   <<"pipelineArn">> => string(),
-%%   <<"pollingDisabledAt">> => non_neg_integer(),
-%%   <<"updated">> => non_neg_integer()
-%% }
--type pipeline_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% put_action_revision_input() :: #{
-%%   <<"actionName">> := string(),
-%%   <<"actionRevision">> := action_revision(),
-%%   <<"pipelineName">> := string(),
-%%   <<"stageName">> := string()
-%% }
--type put_action_revision_input() :: #{binary() => any()}.
-
-%% Example:
-%% rule_type_id() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"owner">> => list(any()),
-%%   <<"provider">> => string(),
-%%   <<"version">> => string()
-%% }
--type rule_type_id() :: #{binary() => any()}.
-
-%% Example:
-%% start_pipeline_execution_input() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sourceRevisions">> => list(source_revision_override()),
-%%   <<"variables">> => list(pipeline_variable())
-%% }
--type start_pipeline_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_context() :: #{
-%%   <<"action">> => action_context(),
-%%   <<"pipelineArn">> => string(),
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"pipelineName">> => string(),
-%%   <<"stage">> => stage_context()
-%% }
--type pipeline_context() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_output() :: #{
-%%   <<"pipeline">> => pipeline_declaration()
-%% }
--type update_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type action_type_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type target_filter() :: #{binary() => any()}.
-
-%% Example:
-%% blocker_declaration() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type blocker_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_details() :: #{
-%%   <<"maximumCount">> => integer(),
-%%   <<"minimumCount">> => integer()
-%% }
--type artifact_details() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type action_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_webhook_with_third_party_input() :: #{
-%%   <<"webhookName">> => string()
-%% }
--type deregister_webhook_with_third_party_input() :: #{binary() => any()}.
-
-%% Example:
-%% job() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"data">> => job_data(),
-%%   <<"id">> => string(),
-%%   <<"nonce">> => string()
-%% }
--type job() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_pipeline_executions_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_pipeline_executions_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_action_type_output() :: #{
-%%   <<"actionType">> => action_type(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_custom_action_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_third_party_job_success_result_input() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"continuationToken">> => string(),
-%%   <<"currentRevision">> => current_revision(),
-%%   <<"executionDetails">> => execution_details(),
-%%   <<"jobId">> := string()
-%% }
--type put_third_party_job_success_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_outdated_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_execution_outdated_exception() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_third_party_jobs_output() :: #{
-%%   <<"jobs">> => list(third_party_job())
-%% }
--type poll_for_third_party_jobs_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_executions_input() :: #{
-%%   <<"filter">> => rule_execution_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pipelineName">> := string()
-%% }
--type list_rule_executions_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_execution_input() :: #{
-%%   <<"actionTypeId">> => action_type_id(),
-%%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(artifact_detail()),
-%%   <<"namespace">> => string(),
-%%   <<"region">> => string(),
-%%   <<"resolvedConfiguration">> => map(),
-%%   <<"roleArn">> => string()
-%% }
--type action_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_nonce_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_nonce_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_client_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_client_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_identifier() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"owner">> => string(),
-%%   <<"provider">> => string(),
-%%   <<"version">> => string()
-%% }
--type action_type_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_stage_input() :: #{
-%%   <<"pipelineName">> := string(),
-%%   <<"stageName">> := string(),
-%%   <<"targetPipelineExecutionId">> := string()
-%% }
--type rollback_stage_input() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_webhook_with_third_party_output() :: #{
-
-%% }
--type deregister_webhook_with_third_party_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_webhook_input() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_webhook_input() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type pipeline_variable() :: #{binary() => any()}.
 
 %% Example:
 %% action_execution_detail() :: #{
@@ -1610,58 +363,297 @@
 -type action_execution_detail() :: #{binary() => any()}.
 
 %% Example:
-%% source_revision_override() :: #{
-%%   <<"actionName">> => string(),
-%%   <<"revisionType">> => list(any()),
-%%   <<"revisionValue">> => string()
+%% action_execution_filter() :: #{
+%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
+%%   <<"pipelineExecutionId">> => string()
 %% }
--type source_revision_override() :: #{binary() => any()}.
+-type action_execution_filter() :: #{binary() => any()}.
 
 %% Example:
-%% list_pipelines_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pipelines">> => list(pipeline_summary())
+%% action_execution_input() :: #{
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(artifact_detail()),
+%%   <<"namespace">> => string(),
+%%   <<"region">> => string(),
+%%   <<"resolvedConfiguration">> => map(),
+%%   <<"roleArn">> => string()
 %% }
--type list_pipelines_output() :: #{binary() => any()}.
+-type action_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% register_webhook_with_third_party_input() :: #{
-%%   <<"webhookName">> => string()
+%% action_execution_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type register_webhook_with_third_party_input() :: #{binary() => any()}.
+-type action_execution_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_action_types_input() :: #{
-%%   <<"actionOwnerFilter">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"regionFilter">> => string()
+%% action_execution_output() :: #{
+%%   <<"executionResult">> => action_execution_result(),
+%%   <<"outputArtifacts">> => list(artifact_detail()),
+%%   <<"outputVariables">> => map()
 %% }
--type list_action_types_input() :: #{binary() => any()}.
+-type action_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% rule_revision() :: #{
+%% action_execution_result() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionSummary">> => string(),
+%%   <<"externalExecutionUrl">> => string(),
+%%   <<"logStreamARN">> => string()
+%% }
+-type action_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% action_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type action_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_revision() :: #{
 %%   <<"created">> => non_neg_integer(),
 %%   <<"revisionChangeId">> => string(),
 %%   <<"revisionId">> => string()
 %% }
--type rule_revision() :: #{binary() => any()}.
+-type action_revision() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
+%% action_state() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"currentRevision">> => action_revision(),
+%%   <<"entityUrl">> => string(),
+%%   <<"latestExecution">> => action_execution(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type action_state() :: #{binary() => any()}.
+
+%% Example:
+%% action_type() :: #{
+%%   <<"actionConfigurationProperties">> => list(action_configuration_property()),
+%%   <<"id">> => action_type_id(),
+%%   <<"inputArtifactDetails">> => artifact_details(),
+%%   <<"outputArtifactDetails">> => artifact_details(),
+%%   <<"settings">> => action_type_settings()
+%% }
+-type action_type() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_artifact_details() :: #{
+%%   <<"maximumCount">> => integer(),
+%%   <<"minimumCount">> => integer()
+%% }
+-type action_type_artifact_details() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_declaration() :: #{
+%%   <<"description">> => string(),
+%%   <<"executor">> => action_type_executor(),
+%%   <<"id">> => action_type_identifier(),
+%%   <<"inputArtifactDetails">> => action_type_artifact_details(),
+%%   <<"outputArtifactDetails">> => action_type_artifact_details(),
+%%   <<"permissions">> => action_type_permissions(),
+%%   <<"properties">> => list(action_type_property()),
+%%   <<"urls">> => action_type_urls()
+%% }
+-type action_type_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_executor() :: #{
+%%   <<"configuration">> => executor_configuration(),
+%%   <<"jobTimeout">> => integer(),
+%%   <<"policyStatementsTemplate">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type action_type_executor() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_id() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => list(any()),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type action_type_id() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_identifier() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => string(),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type action_type_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type action_type_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% stage_declaration() :: #{
-%%   <<"actions">> => list(action_declaration()),
-%%   <<"beforeEntry">> => before_entry_conditions(),
-%%   <<"blockers">> => list(blocker_declaration()),
-%%   <<"name">> => string(),
-%%   <<"onFailure">> => failure_conditions(),
-%%   <<"onSuccess">> => success_conditions()
+%% action_type_permissions() :: #{
+%%   <<"allowedAccounts">> => list(string())
 %% }
--type stage_declaration() :: #{binary() => any()}.
+-type action_type_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_property() :: #{
+%%   <<"description">> => string(),
+%%   <<"key">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"noEcho">> => boolean(),
+%%   <<"optional">> => boolean(),
+%%   <<"queryable">> => boolean()
+%% }
+-type action_type_property() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_settings() :: #{
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string(),
+%%   <<"thirdPartyConfigurationUrl">> => string()
+%% }
+-type action_type_settings() :: #{binary() => any()}.
+
+%% Example:
+%% action_type_urls() :: #{
+%%   <<"configurationUrl">> => string(),
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string()
+%% }
+-type action_type_urls() :: #{binary() => any()}.
+
+%% Example:
+%% approval_already_completed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_already_completed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_result() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type approval_result() :: #{binary() => any()}.
+
+%% Example:
+%% artifact() :: #{
+%%   <<"location">> => artifact_location(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type artifact() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_detail() :: #{
+%%   <<"name">> => string(),
+%%   <<"s3location">> => s3_location()
+%% }
+-type artifact_detail() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_details() :: #{
+%%   <<"maximumCount">> => integer(),
+%%   <<"minimumCount">> => integer()
+%% }
+-type artifact_details() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_location() :: #{
+%%   <<"s3Location">> => s3_artifact_location(),
+%%   <<"type">> => list(any())
+%% }
+-type artifact_location() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_revision() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionChangeIdentifier">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"revisionSummary">> => string(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type artifact_revision() :: #{binary() => any()}.
+
+%% Example:
+%% artifact_store() :: #{
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"location">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type artifact_store() :: #{binary() => any()}.
+
+%% Example:
+%% aws_session_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type aws_session_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% before_entry_conditions() :: #{
+%%   <<"conditions">> => list(condition())
+%% }
+-type before_entry_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% blocker_declaration() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type blocker_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_pipeline_executions_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_pipeline_executions_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"result">> => list(any()),
+%%   <<"rules">> => list(rule_declaration())
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% condition_execution() :: #{
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type condition_execution() :: #{binary() => any()}.
+
+%% Example:
+%% condition_not_overridable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type condition_not_overridable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition_state() :: #{
+%%   <<"latestExecution">> => condition_execution(),
+%%   <<"ruleStates">> => list(rule_state())
+%% }
+-type condition_state() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_custom_action_type_input() :: #{
@@ -1677,35 +669,967 @@
 -type create_custom_action_type_input() :: #{binary() => any()}.
 
 %% Example:
-%% action_configuration() :: #{
-%%   <<"configuration">> => map()
+%% create_custom_action_type_output() :: #{
+%%   <<"actionType">> => action_type(),
+%%   <<"tags">> => list(tag())
 %% }
--type action_configuration() :: #{binary() => any()}.
+-type create_custom_action_type_output() :: #{binary() => any()}.
 
 %% Example:
-%% stage_condition_state() :: #{
-%%   <<"conditionStates">> => list(condition_state()),
-%%   <<"latestExecution">> => stage_conditions_execution()
+%% create_pipeline_input() :: #{
+%%   <<"pipeline">> := pipeline_declaration(),
+%%   <<"tags">> => list(tag())
 %% }
--type stage_condition_state() :: #{binary() => any()}.
+-type create_pipeline_input() :: #{binary() => any()}.
 
 %% Example:
-%% stage_execution() :: #{
-%%   <<"pipelineExecutionId">> => string(),
-%%   <<"status">> => list(any()),
+%% create_pipeline_output() :: #{
+%%   <<"pipeline">> => pipeline_declaration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% current_revision() :: #{
+%%   <<"changeIdentifier">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"revision">> => string(),
+%%   <<"revisionSummary">> => string()
+%% }
+-type current_revision() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_action_type_input() :: #{
+%%   <<"category">> := list(any()),
+%%   <<"provider">> := string(),
+%%   <<"version">> := string()
+%% }
+-type delete_custom_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_output() :: #{
+
+%% }
+-type delete_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_action_execution_target() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"events">> => list(deploy_target_event()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => string()
+%% }
+-type deploy_action_execution_target() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_target_event() :: #{
+%%   <<"context">> => deploy_target_event_context(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type deploy_target_event() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_target_event_context() :: #{
+%%   <<"message">> => string(),
+%%   <<"ssmCommandId">> => string()
+%% }
+-type deploy_target_event_context() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_webhook_with_third_party_input() :: #{
+%%   <<"webhookName">> => string()
+%% }
+-type deregister_webhook_with_third_party_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_webhook_with_third_party_output() :: #{
+
+%% }
+-type deregister_webhook_with_third_party_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_stage_transition_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"reason">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"transitionType">> := list(any())
+%% }
+-type disable_stage_transition_input() :: #{binary() => any()}.
+
+%% Example:
+%% duplicated_stop_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicated_stop_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_stage_transition_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"transitionType">> := list(any())
+%% }
+-type enable_stage_transition_input() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key() :: #{
+%%   <<"id">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type stage_execution() :: #{binary() => any()}.
+-type encryption_key() :: #{binary() => any()}.
 
 %% Example:
-%% action_execution_result() :: #{
-%%   <<"errorDetails">> => error_details(),
-%%   <<"externalExecutionId">> => string(),
-%%   <<"externalExecutionSummary">> => string(),
-%%   <<"externalExecutionUrl">> => string(),
-%%   <<"logStreamARN">> => string()
+%% environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
 %% }
--type action_execution_result() :: #{binary() => any()}.
+-type environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_details() :: #{
+%%   <<"externalExecutionId">> => string(),
+%%   <<"percentComplete">> => integer(),
+%%   <<"summary">> => string()
+%% }
+-type execution_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_trigger() :: #{
+%%   <<"triggerDetail">> => string(),
+%%   <<"triggerType">> => list(any())
+%% }
+-type execution_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% executor_configuration() :: #{
+%%   <<"jobWorkerExecutorConfiguration">> => job_worker_executor_configuration(),
+%%   <<"lambdaExecutorConfiguration">> => lambda_executor_configuration()
+%% }
+-type executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% failure_conditions() :: #{
+%%   <<"conditions">> => list(condition()),
+%%   <<"result">> => list(any()),
+%%   <<"retryConfiguration">> => retry_configuration()
+%% }
+-type failure_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"externalExecutionId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_action_type_input() :: #{
+%%   <<"category">> := list(any()),
+%%   <<"owner">> := string(),
+%%   <<"provider">> := string(),
+%%   <<"version">> := string()
+%% }
+-type get_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_action_type_output() :: #{
+%%   <<"actionType">> => action_type_declaration()
+%% }
+-type get_action_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_details_input() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type get_job_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_details_output() :: #{
+%%   <<"jobDetails">> => job_details()
+%% }
+-type get_job_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_execution_input() :: #{
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type get_pipeline_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_execution_output() :: #{
+%%   <<"pipelineExecution">> => pipeline_execution()
+%% }
+-type get_pipeline_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_input() :: #{
+%%   <<"name">> := string(),
+%%   <<"version">> => integer()
+%% }
+-type get_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_output() :: #{
+%%   <<"metadata">> => pipeline_metadata(),
+%%   <<"pipeline">> => pipeline_declaration()
+%% }
+-type get_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_state_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_pipeline_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_state_output() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"pipelineName">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"stageStates">> => list(stage_state()),
+%%   <<"updated">> => non_neg_integer()
+%% }
+-type get_pipeline_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_job_details_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"jobId">> := string()
+%% }
+-type get_third_party_job_details_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_job_details_output() :: #{
+%%   <<"jobDetails">> => third_party_job_details()
+%% }
+-type get_third_party_job_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% git_branch_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
+%% }
+-type git_branch_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% git_configuration() :: #{
+%%   <<"pullRequest">> => list(git_pull_request_filter()),
+%%   <<"push">> => list(git_push_filter()),
+%%   <<"sourceActionName">> => string()
+%% }
+-type git_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% git_file_path_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
+%% }
+-type git_file_path_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% git_pull_request_filter() :: #{
+%%   <<"branches">> => git_branch_filter_criteria(),
+%%   <<"events">> => list(list(any())()),
+%%   <<"filePaths">> => git_file_path_filter_criteria()
+%% }
+-type git_pull_request_filter() :: #{binary() => any()}.
+
+%% Example:
+%% git_push_filter() :: #{
+%%   <<"branches">> => git_branch_filter_criteria(),
+%%   <<"filePaths">> => git_file_path_filter_criteria(),
+%%   <<"tags">> => git_tag_filter_criteria()
+%% }
+-type git_push_filter() :: #{binary() => any()}.
+
+%% Example:
+%% git_tag_filter_criteria() :: #{
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
+%% }
+-type git_tag_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% input_artifact() :: #{
+%%   <<"name">> => string()
+%% }
+-type input_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_action_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_action_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blocker_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blocker_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_client_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_job_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_job_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_nonce_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_nonce_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_stage_declaration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_stage_declaration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_structure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_structure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_webhook_authentication_parameters_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_webhook_authentication_parameters_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_webhook_filter_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_webhook_filter_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"data">> => job_data(),
+%%   <<"id">> => string(),
+%%   <<"nonce">> => string()
+%% }
+-type job() :: #{binary() => any()}.
+
+%% Example:
+%% job_data() :: #{
+%%   <<"actionConfiguration">> => action_configuration(),
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"artifactCredentials">> => aws_session_credentials(),
+%%   <<"continuationToken">> => string(),
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"inputArtifacts">> => list(artifact()),
+%%   <<"outputArtifacts">> => list(artifact()),
+%%   <<"pipelineContext">> => pipeline_context()
+%% }
+-type job_data() :: #{binary() => any()}.
+
+%% Example:
+%% job_details() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"data">> => job_data(),
+%%   <<"id">> => string()
+%% }
+-type job_details() :: #{binary() => any()}.
+
+%% Example:
+%% job_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type job_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_worker_executor_configuration() :: #{
+%%   <<"pollingAccounts">> => list(string()),
+%%   <<"pollingServicePrincipals">> => list(string())
+%% }
+-type job_worker_executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_executor_configuration() :: #{
+%%   <<"lambdaFunctionArn">> => string()
+%% }
+-type lambda_executor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% latest_in_pipeline_execution_filter() :: #{
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"startTimeRange">> => list(any())
+%% }
+-type latest_in_pipeline_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_executions_input() :: #{
+%%   <<"filter">> => action_execution_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_action_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_executions_output() :: #{
+%%   <<"actionExecutionDetails">> => list(action_execution_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_action_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_types_input() :: #{
+%%   <<"actionOwnerFilter">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"regionFilter">> => string()
+%% }
+-type list_action_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_action_types_output() :: #{
+%%   <<"actionTypes">> => list(action_type()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_action_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deploy_action_execution_targets_input() :: #{
+%%   <<"actionExecutionId">> := string(),
+%%   <<"filters">> => list(target_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> => string()
+%% }
+-type list_deploy_action_execution_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deploy_action_execution_targets_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targets">> => list(deploy_action_execution_target())
+%% }
+-type list_deploy_action_execution_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_input() :: #{
+%%   <<"filter">> => pipeline_execution_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_pipeline_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_executions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary())
+%% }
+-type list_pipeline_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelines">> => list(pipeline_summary())
+%% }
+-type list_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_executions_input() :: #{
+%%   <<"filter">> => rule_execution_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineName">> := string()
+%% }
+-type list_rule_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_executions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"ruleExecutionDetails">> => list(rule_execution_detail())
+%% }
+-type list_rule_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_types_input() :: #{
+%%   <<"regionFilter">> => string(),
+%%   <<"ruleOwnerFilter">> => list(any())
+%% }
+-type list_rule_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_types_output() :: #{
+%%   <<"ruleTypes">> => list(rule_type())
+%% }
+-type list_rule_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhook_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"definition">> => webhook_definition(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"lastTriggered">> => non_neg_integer(),
+%%   <<"tags">> => list(tag()),
+%%   <<"url">> => string()
+%% }
+-type list_webhook_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhooks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_webhooks_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhooks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"webhooks">> => list(list_webhook_item())
+%% }
+-type list_webhooks_output() :: #{binary() => any()}.
+
+%% Example:
+%% not_latest_pipeline_execution_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_latest_pipeline_execution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% output_artifact() :: #{
+%%   <<"files">> => list(string()),
+%%   <<"name">> => string()
+%% }
+-type output_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% output_variables_size_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type output_variables_size_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% override_stage_condition_input() :: #{
+%%   <<"conditionType">> := list(any()),
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string()
+%% }
+-type override_stage_condition_input() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_context() :: #{
+%%   <<"action">> => action_context(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"stage">> => stage_context()
+%% }
+-type pipeline_context() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_declaration() :: #{
+%%   <<"artifactStore">> => artifact_store(),
+%%   <<"artifactStores">> => map(),
+%%   <<"executionMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"pipelineType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"stages">> => list(stage_declaration()),
+%%   <<"triggers">> => list(pipeline_trigger_declaration()),
+%%   <<"variables">> => list(pipeline_variable_declaration()),
+%%   <<"version">> => integer()
+%% }
+-type pipeline_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution() :: #{
+%%   <<"artifactRevisions">> => list(artifact_revision()),
+%%   <<"executionMode">> => list(any()),
+%%   <<"executionType">> => list(any()),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
+%%   <<"status">> => list(any()),
+%%   <<"statusSummary">> => string(),
+%%   <<"trigger">> => execution_trigger(),
+%%   <<"variables">> => list(resolved_pipeline_variable())
+%% }
+-type pipeline_execution() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_filter() :: #{
+%%   <<"succeededInStage">> => succeeded_in_stage_filter()
+%% }
+-type pipeline_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_not_stoppable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_not_stoppable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_outdated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_execution_outdated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_summary() :: #{
+%%   <<"executionMode">> => list(any()),
+%%   <<"executionType">> => list(any()),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
+%%   <<"sourceRevisions">> => list(source_revision()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusSummary">> => string(),
+%%   <<"stopTrigger">> => stop_execution_trigger(),
+%%   <<"trigger">> => execution_trigger()
+%% }
+-type pipeline_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_metadata() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pollingDisabledAt">> => non_neg_integer(),
+%%   <<"updated">> => non_neg_integer()
+%% }
+-type pipeline_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_name_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_name_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_rollback_metadata() :: #{
+%%   <<"rollbackTargetPipelineExecutionId">> => string()
+%% }
+-type pipeline_rollback_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"executionMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"pipelineType">> => list(any()),
+%%   <<"updated">> => non_neg_integer(),
+%%   <<"version">> => integer()
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_trigger_declaration() :: #{
+%%   <<"gitConfiguration">> => git_configuration(),
+%%   <<"providerType">> => list(any())
+%% }
+-type pipeline_trigger_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type pipeline_variable() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_variable_declaration() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_variable_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_version_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_jobs_input() :: #{
+%%   <<"actionTypeId">> := action_type_id(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"queryParam">> => map()
+%% }
+-type poll_for_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_jobs_output() :: #{
+%%   <<"jobs">> => list(job())
+%% }
+-type poll_for_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_third_party_jobs_input() :: #{
+%%   <<"actionTypeId">> := action_type_id(),
+%%   <<"maxBatchSize">> => integer()
+%% }
+-type poll_for_third_party_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_third_party_jobs_output() :: #{
+%%   <<"jobs">> => list(third_party_job())
+%% }
+-type poll_for_third_party_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_action_revision_input() :: #{
+%%   <<"actionName">> := string(),
+%%   <<"actionRevision">> := action_revision(),
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string()
+%% }
+-type put_action_revision_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_action_revision_output() :: #{
+%%   <<"newRevision">> => boolean(),
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type put_action_revision_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_approval_result_input() :: #{
+%%   <<"actionName">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"result">> := approval_result(),
+%%   <<"stageName">> := string(),
+%%   <<"token">> := string()
+%% }
+-type put_approval_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_approval_result_output() :: #{
+%%   <<"approvedAt">> => non_neg_integer()
+%% }
+-type put_approval_result_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_failure_result_input() :: #{
+%%   <<"failureDetails">> := failure_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_job_failure_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_success_result_input() :: #{
+%%   <<"continuationToken">> => string(),
+%%   <<"currentRevision">> => current_revision(),
+%%   <<"executionDetails">> => execution_details(),
+%%   <<"jobId">> := string(),
+%%   <<"outputVariables">> => map()
+%% }
+-type put_job_success_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_third_party_job_failure_result_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"failureDetails">> := failure_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_third_party_job_failure_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_third_party_job_success_result_input() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"continuationToken">> => string(),
+%%   <<"currentRevision">> => current_revision(),
+%%   <<"executionDetails">> => execution_details(),
+%%   <<"jobId">> := string()
+%% }
+-type put_third_party_job_success_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_webhook_input() :: #{
+%%   <<"tags">> => list(tag()),
+%%   <<"webhook">> := webhook_definition()
+%% }
+-type put_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_webhook_output() :: #{
+%%   <<"webhook">> => list_webhook_item()
+%% }
+-type put_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% register_webhook_with_third_party_input() :: #{
+%%   <<"webhookName">> => string()
+%% }
+-type register_webhook_with_third_party_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_webhook_with_third_party_output() :: #{
+
+%% }
+-type register_webhook_with_third_party_output() :: #{binary() => any()}.
+
+%% Example:
+%% request_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_pipeline_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"resolvedValue">> => string()
+%% }
+-type resolved_pipeline_variable() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retry_configuration() :: #{
+%%   <<"retryMode">> => list(any())
+%% }
+-type retry_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_execution_input() :: #{
+%%   <<"pipelineExecutionId">> := string(),
+%%   <<"pipelineName">> := string(),
+%%   <<"retryMode">> := list(any()),
+%%   <<"stageName">> := string()
+%% }
+-type retry_stage_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_execution_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type retry_stage_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% retry_stage_metadata() :: #{
+%%   <<"autoStageRetryAttempt">> => integer(),
+%%   <<"latestRetryTrigger">> => list(any()),
+%%   <<"manualStageRetryAttempt">> => integer()
+%% }
+-type retry_stage_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stage_input() :: #{
+%%   <<"pipelineName">> := string(),
+%%   <<"stageName">> := string(),
+%%   <<"targetPipelineExecutionId">> := string()
+%% }
+-type rollback_stage_input() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stage_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type rollback_stage_output() :: #{binary() => any()}.
 
 %% Example:
 %% rule_configuration_property() :: #{
@@ -1720,27 +1644,207 @@
 -type rule_configuration_property() :: #{binary() => any()}.
 
 %% Example:
-%% list_deploy_action_execution_targets_input() :: #{
-%%   <<"actionExecutionId">> := string(),
-%%   <<"filters">> => list(target_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pipelineName">> => string()
+%% rule_declaration() :: #{
+%%   <<"commands">> => list(string()),
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(input_artifact()),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"ruleTypeId">> => rule_type_id(),
+%%   <<"timeoutInMinutes">> => integer()
 %% }
--type list_deploy_action_execution_targets_input() :: #{binary() => any()}.
+-type rule_declaration() :: #{binary() => any()}.
 
 %% Example:
-%% before_entry_conditions() :: #{
-%%   <<"conditions">> => list(condition())
+%% rule_execution() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionUrl">> => string(),
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"ruleExecutionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string(),
+%%   <<"token">> => string()
 %% }
--type before_entry_conditions() :: #{binary() => any()}.
+-type rule_execution() :: #{binary() => any()}.
 
 %% Example:
-%% get_pipeline_input() :: #{
-%%   <<"name">> := string(),
-%%   <<"version">> => integer()
+%% rule_execution_detail() :: #{
+%%   <<"input">> => rule_execution_input(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"output">> => rule_execution_output(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineVersion">> => integer(),
+%%   <<"ruleExecutionId">> => string(),
+%%   <<"ruleName">> => string(),
+%%   <<"stageName">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedBy">> => string()
 %% }
--type get_pipeline_input() :: #{binary() => any()}.
+-type rule_execution_detail() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_filter() :: #{
+%%   <<"latestInPipelineExecution">> => latest_in_pipeline_execution_filter(),
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type rule_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_input() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"inputArtifacts">> => list(artifact_detail()),
+%%   <<"region">> => string(),
+%%   <<"resolvedConfiguration">> => map(),
+%%   <<"roleArn">> => string(),
+%%   <<"ruleTypeId">> => rule_type_id()
+%% }
+-type rule_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_output() :: #{
+%%   <<"executionResult">> => rule_execution_result()
+%% }
+-type rule_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% rule_execution_result() :: #{
+%%   <<"errorDetails">> => error_details(),
+%%   <<"externalExecutionId">> => string(),
+%%   <<"externalExecutionSummary">> => string(),
+%%   <<"externalExecutionUrl">> => string()
+%% }
+-type rule_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% rule_revision() :: #{
+%%   <<"created">> => non_neg_integer(),
+%%   <<"revisionChangeId">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type rule_revision() :: #{binary() => any()}.
+
+%% Example:
+%% rule_state() :: #{
+%%   <<"currentRevision">> => rule_revision(),
+%%   <<"entityUrl">> => string(),
+%%   <<"latestExecution">> => rule_execution(),
+%%   <<"revisionUrl">> => string(),
+%%   <<"ruleName">> => string()
+%% }
+-type rule_state() :: #{binary() => any()}.
+
+%% Example:
+%% rule_type() :: #{
+%%   <<"id">> => rule_type_id(),
+%%   <<"inputArtifactDetails">> => artifact_details(),
+%%   <<"ruleConfigurationProperties">> => list(rule_configuration_property()),
+%%   <<"settings">> => rule_type_settings()
+%% }
+-type rule_type() :: #{binary() => any()}.
+
+%% Example:
+%% rule_type_id() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"owner">> => list(any()),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type rule_type_id() :: #{binary() => any()}.
+
+%% Example:
+%% rule_type_settings() :: #{
+%%   <<"entityUrlTemplate">> => string(),
+%%   <<"executionUrlTemplate">> => string(),
+%%   <<"revisionUrlTemplate">> => string(),
+%%   <<"thirdPartyConfigurationUrl">> => string()
+%% }
+-type rule_type_settings() :: #{binary() => any()}.
+
+%% Example:
+%% s3_artifact_location() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"objectKey">> => string()
+%% }
+-type s3_artifact_location() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% source_revision() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"revisionSummary">> => string(),
+%%   <<"revisionUrl">> => string()
+%% }
+-type source_revision() :: #{binary() => any()}.
+
+%% Example:
+%% source_revision_override() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"revisionType">> => list(any()),
+%%   <<"revisionValue">> => string()
+%% }
+-type source_revision_override() :: #{binary() => any()}.
+
+%% Example:
+%% stage_condition_state() :: #{
+%%   <<"conditionStates">> => list(condition_state()),
+%%   <<"latestExecution">> => stage_conditions_execution()
+%% }
+-type stage_condition_state() :: #{binary() => any()}.
+
+%% Example:
+%% stage_conditions_execution() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string()
+%% }
+-type stage_conditions_execution() :: #{binary() => any()}.
+
+%% Example:
+%% stage_context() :: #{
+%%   <<"name">> => string()
+%% }
+-type stage_context() :: #{binary() => any()}.
+
+%% Example:
+%% stage_declaration() :: #{
+%%   <<"actions">> => list(action_declaration()),
+%%   <<"beforeEntry">> => before_entry_conditions(),
+%%   <<"blockers">> => list(blocker_declaration()),
+%%   <<"name">> => string(),
+%%   <<"onFailure">> => failure_conditions(),
+%%   <<"onSuccess">> => success_conditions()
+%% }
+-type stage_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% stage_execution() :: #{
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type stage_execution() :: #{binary() => any()}.
+
+%% Example:
+%% stage_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type stage_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stage_not_retryable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type stage_not_retryable_exception() :: #{binary() => any()}.
 
 %% Example:
 %% stage_state() :: #{
@@ -1758,57 +1862,25 @@
 -type stage_state() :: #{binary() => any()}.
 
 %% Example:
-%% job_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% start_pipeline_execution_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sourceRevisions">> => list(source_revision_override()),
+%%   <<"variables">> => list(pipeline_variable())
 %% }
--type job_not_found_exception() :: #{binary() => any()}.
+-type start_pipeline_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% third_party_job_details() :: #{
-%%   <<"data">> => third_party_job_data(),
-%%   <<"id">> => string(),
-%%   <<"nonce">> => string()
+%% start_pipeline_execution_output() :: #{
+%%   <<"pipelineExecutionId">> => string()
 %% }
--type third_party_job_details() :: #{binary() => any()}.
+-type start_pipeline_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% pipeline_version_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% stop_execution_trigger() :: #{
+%%   <<"reason">> => string()
 %% }
--type pipeline_version_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_target_event() :: #{
-%%   <<"context">> => deploy_target_event_context(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type deploy_target_event() :: #{binary() => any()}.
-
-%% Example:
-%% artifact() :: #{
-%%   <<"location">> => artifact_location(),
-%%   <<"name">> => string(),
-%%   <<"revision">> => string()
-%% }
--type artifact() :: #{binary() => any()}.
-
-%% Example:
-%% retry_stage_execution_input() :: #{
-%%   <<"pipelineExecutionId">> := string(),
-%%   <<"pipelineName">> := string(),
-%%   <<"retryMode">> := list(any()),
-%%   <<"stageName">> := string()
-%% }
--type retry_stage_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_details_output() :: #{
-%%   <<"jobDetails">> => job_details()
-%% }
--type get_job_details_output() :: #{binary() => any()}.
+-type stop_execution_trigger() :: #{binary() => any()}.
 
 %% Example:
 %% stop_pipeline_execution_input() :: #{
@@ -1820,202 +1892,16 @@
 -type stop_pipeline_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% duplicated_stop_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicated_stop_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% source_revision() :: #{
-%%   <<"actionName">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"revisionSummary">> => string(),
-%%   <<"revisionUrl">> => string()
-%% }
--type source_revision() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_property() :: #{
-%%   <<"description">> => string(),
-%%   <<"key">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"noEcho">> => boolean(),
-%%   <<"optional">> => boolean(),
-%%   <<"queryable">> => boolean()
-%% }
--type action_type_property() :: #{binary() => any()}.
-
-%% Example:
-%% acknowledge_job_input() :: #{
-%%   <<"jobId">> := string(),
-%%   <<"nonce">> := string()
-%% }
--type acknowledge_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_state_input() :: #{
-%%   <<"name">> := string()
-%% }
--type get_pipeline_state_input() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_jobs_input() :: #{
-%%   <<"actionTypeId">> := action_type_id(),
-%%   <<"maxBatchSize">> => integer(),
-%%   <<"queryParam">> => map()
-%% }
--type poll_for_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_action_type_input() :: #{
-%%   <<"category">> := list(any()),
-%%   <<"provider">> := string(),
-%%   <<"version">> := string()
-%% }
--type delete_custom_action_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_action_revision_output() :: #{
-%%   <<"newRevision">> => boolean(),
+%% stop_pipeline_execution_output() :: #{
 %%   <<"pipelineExecutionId">> => string()
 %% }
--type put_action_revision_output() :: #{binary() => any()}.
+-type stop_pipeline_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% disable_stage_transition_input() :: #{
-%%   <<"pipelineName">> := string(),
-%%   <<"reason">> := string(),
-%%   <<"stageName">> := string(),
-%%   <<"transitionType">> := list(any())
+%% succeeded_in_stage_filter() :: #{
+%%   <<"stageName">> => string()
 %% }
--type disable_stage_transition_input() :: #{binary() => any()}.
-
-%% Example:
-%% retry_stage_execution_output() :: #{
-%%   <<"pipelineExecutionId">> => string()
-%% }
--type retry_stage_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type encryption_key() :: #{binary() => any()}.
-
-%% Example:
-%% rule_execution() :: #{
-%%   <<"errorDetails">> => error_details(),
-%%   <<"externalExecutionId">> => string(),
-%%   <<"externalExecutionUrl">> => string(),
-%%   <<"lastStatusChange">> => non_neg_integer(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"ruleExecutionId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"summary">> => string(),
-%%   <<"token">> => string()
-%% }
--type rule_execution() :: #{binary() => any()}.
-
-%% Example:
-%% put_approval_result_input() :: #{
-%%   <<"actionName">> := string(),
-%%   <<"pipelineName">> := string(),
-%%   <<"result">> := approval_result(),
-%%   <<"stageName">> := string(),
-%%   <<"token">> := string()
-%% }
--type put_approval_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_executor_configuration() :: #{
-%%   <<"lambdaFunctionArn">> => string()
-%% }
--type lambda_executor_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% rule_execution_input() :: #{
-%%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(artifact_detail()),
-%%   <<"region">> => string(),
-%%   <<"resolvedConfiguration">> => map(),
-%%   <<"roleArn">> => string(),
-%%   <<"ruleTypeId">> => rule_type_id()
-%% }
--type rule_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% git_push_filter() :: #{
-%%   <<"branches">> => git_branch_filter_criteria(),
-%%   <<"filePaths">> => git_file_path_filter_criteria(),
-%%   <<"tags">> => git_tag_filter_criteria()
-%% }
--type git_push_filter() :: #{binary() => any()}.
-
-%% Example:
-%% action_type_declaration() :: #{
-%%   <<"description">> => string(),
-%%   <<"executor">> => action_type_executor(),
-%%   <<"id">> => action_type_identifier(),
-%%   <<"inputArtifactDetails">> => action_type_artifact_details(),
-%%   <<"outputArtifactDetails">> => action_type_artifact_details(),
-%%   <<"permissions">> => action_type_permissions(),
-%%   <<"properties">> => list(action_type_property()),
-%%   <<"urls">> => action_type_urls()
-%% }
--type action_type_declaration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_job_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_job_exception() :: #{binary() => any()}.
-
-%% Example:
-%% action_type() :: #{
-%%   <<"actionConfigurationProperties">> => list(action_configuration_property()),
-%%   <<"id">> => action_type_id(),
-%%   <<"inputArtifactDetails">> => artifact_details(),
-%%   <<"outputArtifactDetails">> => artifact_details(),
-%%   <<"settings">> => action_type_settings()
-%% }
--type action_type() :: #{binary() => any()}.
-
-%% Example:
-%% webhook_not_found_exception() :: #{
-
-%% }
--type webhook_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_webhook_with_third_party_output() :: #{
-
-%% }
--type register_webhook_with_third_party_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_execution_output() :: #{
-%%   <<"pipelineExecution">> => pipeline_execution()
-%% }
--type get_pipeline_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% action_configuration_property() :: #{
-%%   <<"description">> => string(),
-%%   <<"key">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"queryable">> => boolean(),
-%%   <<"required">> => boolean(),
-%%   <<"secret">> => boolean(),
-%%   <<"type">> => list(any())
-%% }
--type action_configuration_property() :: #{binary() => any()}.
+-type succeeded_in_stage_filter() :: #{binary() => any()}.
 
 %% Example:
 %% success_conditions() :: #{
@@ -2024,64 +1910,178 @@
 -type success_conditions() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_webhook_authentication_parameters_exception() :: #{
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% target_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type target_filter() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type third_party_job() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job_data() :: #{
+%%   <<"actionConfiguration">> => action_configuration(),
+%%   <<"actionTypeId">> => action_type_id(),
+%%   <<"artifactCredentials">> => aws_session_credentials(),
+%%   <<"continuationToken">> => string(),
+%%   <<"encryptionKey">> => encryption_key(),
+%%   <<"inputArtifacts">> => list(artifact()),
+%%   <<"outputArtifacts">> => list(artifact()),
+%%   <<"pipelineContext">> => pipeline_context()
+%% }
+-type third_party_job_data() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_job_details() :: #{
+%%   <<"data">> => third_party_job_data(),
+%%   <<"id">> => string(),
+%%   <<"nonce">> => string()
+%% }
+-type third_party_job_details() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_webhook_authentication_parameters_exception() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_pipeline_executions_input() :: #{
-%%   <<"filter">> => pipeline_execution_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pipelineName">> := string()
+%% transition_state() :: #{
+%%   <<"disabledReason">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"lastChangedAt">> => non_neg_integer(),
+%%   <<"lastChangedBy">> => string()
 %% }
--type list_pipeline_executions_input() :: #{binary() => any()}.
+-type transition_state() :: #{binary() => any()}.
 
 %% Example:
-%% action_type_settings() :: #{
-%%   <<"entityUrlTemplate">> => string(),
-%%   <<"executionUrlTemplate">> => string(),
-%%   <<"revisionUrlTemplate">> => string(),
-%%   <<"thirdPartyConfigurationUrl">> => string()
-%% }
--type action_type_settings() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_job_state_exception() :: #{
+%% unable_to_rollback_stage_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_job_state_exception() :: #{binary() => any()}.
+-type unable_to_rollback_stage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_type_input() :: #{
+%%   <<"actionType">> := action_type_declaration()
+%% }
+-type update_action_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_input() :: #{
+%%   <<"pipeline">> := pipeline_declaration()
+%% }
+-type update_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_output() :: #{
+%%   <<"pipeline">> => pipeline_declaration()
+%% }
+-type update_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_auth_configuration() :: #{
+%%   <<"AllowedIPRange">> => string(),
+%%   <<"SecretToken">> => string()
+%% }
+-type webhook_auth_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_definition() :: #{
+%%   <<"authentication">> => list(any()),
+%%   <<"authenticationConfiguration">> => webhook_auth_configuration(),
+%%   <<"filters">> => list(webhook_filter_rule()),
+%%   <<"name">> => string(),
+%%   <<"targetAction">> => string(),
+%%   <<"targetPipeline">> => string()
+%% }
+-type webhook_definition() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_filter_rule() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"matchEquals">> => string()
+%% }
+-type webhook_filter_rule() :: #{binary() => any()}.
+
+%% Example:
+%% webhook_not_found_exception() :: #{
+
+%% }
+-type webhook_not_found_exception() :: #{binary() => any()}.
 
 -type acknowledge_job_errors() ::
+    validation_exception() | 
     job_not_found_exception() | 
-    invalid_nonce_exception() | 
-    validation_exception().
+    invalid_nonce_exception().
 
 -type acknowledge_third_party_job_errors() ::
+    validation_exception() | 
     job_not_found_exception() | 
-    invalid_client_token_exception() | 
     invalid_nonce_exception() | 
-    validation_exception().
+    invalid_client_token_exception().
 
 -type create_custom_action_type_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
-    concurrent_modification_exception() | 
-    invalid_tags_exception().
+    invalid_tags_exception() | 
+    concurrent_modification_exception().
 
 -type create_pipeline_errors() ::
-    too_many_tags_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
+    too_many_tags_exception() | 
+    pipeline_name_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tags_exception() | 
     invalid_structure_exception() | 
     invalid_stage_declaration_exception() | 
-    invalid_tags_exception() | 
-    pipeline_name_in_use_exception() | 
+    invalid_blocker_declaration_exception() | 
     invalid_action_declaration_exception() | 
-    invalid_blocker_declaration_exception().
+    concurrent_modification_exception().
 
 -type delete_custom_action_type_errors() ::
     validation_exception() | 
@@ -2100,46 +2100,46 @@
     validation_exception().
 
 -type disable_stage_transition_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
-    stage_not_found_exception().
+    stage_not_found_exception() | 
+    pipeline_not_found_exception().
 
 -type enable_stage_transition_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
-    stage_not_found_exception().
+    stage_not_found_exception() | 
+    pipeline_not_found_exception().
 
 -type get_action_type_errors() ::
     validation_exception() | 
     action_type_not_found_exception().
 
 -type get_job_details_errors() ::
-    job_not_found_exception() | 
-    validation_exception().
+    validation_exception() | 
+    job_not_found_exception().
 
 -type get_pipeline_errors() ::
+    validation_exception() | 
     pipeline_version_not_found_exception() | 
-    pipeline_not_found_exception() | 
-    validation_exception().
+    pipeline_not_found_exception().
 
 -type get_pipeline_execution_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
+    pipeline_not_found_exception() | 
     pipeline_execution_not_found_exception().
 
 -type get_pipeline_state_errors() ::
-    pipeline_not_found_exception() | 
-    validation_exception().
+    validation_exception() | 
+    pipeline_not_found_exception().
 
 -type get_third_party_job_details_errors() ::
-    invalid_job_exception() | 
+    validation_exception() | 
     job_not_found_exception() | 
-    invalid_client_token_exception() | 
-    validation_exception().
+    invalid_job_exception() | 
+    invalid_client_token_exception().
 
 -type list_action_executions_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
+    pipeline_not_found_exception() | 
     pipeline_execution_not_found_exception() | 
     invalid_next_token_exception().
 
@@ -2148,14 +2148,14 @@
     invalid_next_token_exception().
 
 -type list_deploy_action_execution_targets_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
+    pipeline_not_found_exception() | 
     invalid_next_token_exception() | 
     action_execution_not_found_exception().
 
 -type list_pipeline_executions_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
+    pipeline_not_found_exception() | 
     invalid_next_token_exception().
 
 -type list_pipelines_errors() ::
@@ -2163,8 +2163,8 @@
     invalid_next_token_exception().
 
 -type list_rule_executions_errors() ::
-    pipeline_not_found_exception() | 
     validation_exception() | 
+    pipeline_not_found_exception() | 
     pipeline_execution_not_found_exception() | 
     invalid_next_token_exception().
 
@@ -2174,8 +2174,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    invalid_next_token_exception() | 
     resource_not_found_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception().
 
 -type list_webhooks_errors() ::
@@ -2183,13 +2183,13 @@
     invalid_next_token_exception().
 
 -type override_stage_condition_errors() ::
-    pipeline_not_found_exception() | 
-    concurrent_pipeline_executions_limit_exceeded_exception() | 
     validation_exception() | 
-    condition_not_overridable_exception() | 
-    conflict_exception() | 
+    stage_not_found_exception() | 
+    pipeline_not_found_exception() | 
     not_latest_pipeline_execution_exception() | 
-    stage_not_found_exception().
+    conflict_exception() | 
+    condition_not_overridable_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception().
 
 -type poll_for_jobs_errors() ::
     validation_exception() | 
@@ -2200,115 +2200,115 @@
     action_type_not_found_exception().
 
 -type put_action_revision_errors() ::
+    validation_exception() | 
+    stage_not_found_exception() | 
     pipeline_not_found_exception() | 
     concurrent_pipeline_executions_limit_exceeded_exception() | 
-    action_not_found_exception() | 
-    validation_exception() | 
-    stage_not_found_exception().
+    action_not_found_exception().
 
 -type put_approval_result_errors() ::
-    pipeline_not_found_exception() | 
-    action_not_found_exception() | 
     validation_exception() | 
+    stage_not_found_exception() | 
+    pipeline_not_found_exception() | 
     invalid_approval_token_exception() | 
     approval_already_completed_exception() | 
-    stage_not_found_exception().
+    action_not_found_exception().
 
 -type put_job_failure_result_errors() ::
-    invalid_job_state_exception() | 
+    validation_exception() | 
     job_not_found_exception() | 
-    validation_exception().
+    invalid_job_state_exception().
 
 -type put_job_success_result_errors() ::
-    invalid_job_state_exception() | 
-    job_not_found_exception() | 
     validation_exception() | 
-    output_variables_size_exceeded_exception().
+    output_variables_size_exceeded_exception() | 
+    job_not_found_exception() | 
+    invalid_job_state_exception().
 
 -type put_third_party_job_failure_result_errors() ::
-    invalid_job_state_exception() | 
+    validation_exception() | 
     job_not_found_exception() | 
-    invalid_client_token_exception() | 
-    validation_exception().
+    invalid_job_state_exception() | 
+    invalid_client_token_exception().
 
 -type put_third_party_job_success_result_errors() ::
-    invalid_job_state_exception() | 
+    validation_exception() | 
     job_not_found_exception() | 
-    invalid_client_token_exception() | 
-    validation_exception().
+    invalid_job_state_exception() | 
+    invalid_client_token_exception().
 
 -type put_webhook_errors() ::
-    invalid_webhook_authentication_parameters_exception() | 
-    too_many_tags_exception() | 
-    limit_exceeded_exception() | 
-    pipeline_not_found_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
+    too_many_tags_exception() | 
+    pipeline_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_webhook_filter_pattern_exception() | 
-    invalid_tags_exception().
+    invalid_webhook_authentication_parameters_exception() | 
+    invalid_tags_exception() | 
+    concurrent_modification_exception().
 
 -type register_webhook_with_third_party_errors() ::
     webhook_not_found_exception() | 
     validation_exception().
 
 -type retry_stage_execution_errors() ::
-    pipeline_not_found_exception() | 
-    concurrent_pipeline_executions_limit_exceeded_exception() | 
     validation_exception() | 
     stage_not_retryable_exception() | 
-    conflict_exception() | 
+    stage_not_found_exception() | 
+    pipeline_not_found_exception() | 
     not_latest_pipeline_execution_exception() | 
-    stage_not_found_exception().
+    conflict_exception() | 
+    concurrent_pipeline_executions_limit_exceeded_exception().
 
 -type rollback_stage_errors() ::
+    validation_exception() | 
+    unable_to_rollback_stage_exception() | 
+    stage_not_found_exception() | 
     pipeline_not_found_exception() | 
     pipeline_execution_outdated_exception() | 
-    validation_exception() | 
     pipeline_execution_not_found_exception() | 
-    conflict_exception() | 
-    stage_not_found_exception() | 
-    unable_to_rollback_stage_exception().
-
--type start_pipeline_execution_errors() ::
-    pipeline_not_found_exception() | 
-    concurrent_pipeline_executions_limit_exceeded_exception() | 
-    validation_exception() | 
     conflict_exception().
 
--type stop_pipeline_execution_errors() ::
-    duplicated_stop_request_exception() | 
-    pipeline_not_found_exception() | 
+-type start_pipeline_execution_errors() ::
     validation_exception() | 
+    pipeline_not_found_exception() | 
     conflict_exception() | 
-    pipeline_execution_not_stoppable_exception().
+    concurrent_pipeline_executions_limit_exceeded_exception().
+
+-type stop_pipeline_execution_errors() ::
+    validation_exception() | 
+    pipeline_not_found_exception() | 
+    pipeline_execution_not_stoppable_exception() | 
+    duplicated_stop_request_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
+    too_many_tags_exception() | 
     resource_not_found_exception() | 
     invalid_tags_exception() | 
-    invalid_arn_exception().
+    invalid_arn_exception() | 
+    concurrent_modification_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    concurrent_modification_exception() | 
     resource_not_found_exception() | 
     invalid_tags_exception() | 
-    invalid_arn_exception().
+    invalid_arn_exception() | 
+    concurrent_modification_exception().
 
 -type update_action_type_errors() ::
     validation_exception() | 
-    action_type_not_found_exception() | 
-    request_failed_exception().
+    request_failed_exception() | 
+    action_type_not_found_exception().
 
 -type update_pipeline_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
+    limit_exceeded_exception() | 
     invalid_structure_exception() | 
     invalid_stage_declaration_exception() | 
-    invalid_action_declaration_exception() | 
-    invalid_blocker_declaration_exception().
+    invalid_blocker_declaration_exception() | 
+    invalid_action_declaration_exception().
 
 %%====================================================================
 %% API

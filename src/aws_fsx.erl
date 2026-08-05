@@ -107,11 +107,1181 @@
 
 
 %% Example:
+%% access_point_already_owned_by_you() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type access_point_already_owned_by_you() :: #{binary() => any()}.
+
+%% Example:
+%% active_directory_backup_attributes() :: #{
+%%   <<"ActiveDirectoryId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"ResourceARN">> => string()
+%% }
+-type active_directory_backup_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% active_directory_error() :: #{
+%%   <<"ActiveDirectoryId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type active_directory_error() :: #{binary() => any()}.
+
+%% Example:
+%% administrative_action() :: #{
+%%   <<"AdministrativeActionType">> => list(any()),
+%%   <<"FailureDetails">> => administrative_action_failure_details(),
+%%   <<"Message">> => string(),
+%%   <<"ProgressPercent">> => integer(),
+%%   <<"RemainingTransferBytes">> => float(),
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetFileSystemValues">> => file_system(),
+%%   <<"TargetSnapshotValues">> => snapshot(),
+%%   <<"TargetVolumeValues">> => volume(),
+%%   <<"TotalTransferBytes">> => float()
+%% }
+-type administrative_action() :: #{binary() => any()}.
+
+%% Example:
+%% administrative_action_failure_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type administrative_action_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% aggregate_configuration() :: #{
+%%   <<"Aggregates">> => list(string()),
+%%   <<"TotalConstituents">> => integer()
+%% }
+-type aggregate_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% alias() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type alias() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_aliases_request() :: #{
+%%   <<"Aliases">> := list(string()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string()
+%% }
+-type associate_file_system_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias())
+%% }
+-type associate_file_system_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_export_policy() :: #{
+%%   <<"Events">> => list(list(any())())
+%% }
+-type auto_export_policy() :: #{binary() => any()}.
+
+%% Example:
+%% auto_import_policy() :: #{
+%%   <<"Events">> => list(list(any())())
+%% }
+-type auto_import_policy() :: #{binary() => any()}.
+
+%% Example:
+%% autocommit_period() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type autocommit_period() :: #{binary() => any()}.
+
+%% Example:
+%% backup() :: #{
+%%   <<"BackupId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DirectoryInformation">> => active_directory_backup_attributes(),
+%%   <<"FailureDetails">> => backup_failure_details(),
+%%   <<"FileSystem">> => file_system(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"OwnerId">> => string(),
+%%   <<"ProgressPercent">> => integer(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SizeInBytes">> => float(),
+%%   <<"SourceBackupId">> => string(),
+%%   <<"SourceBackupRegion">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"Volume">> => volume()
+%% }
+-type backup() :: #{binary() => any()}.
+
+%% Example:
+%% backup_being_copied() :: #{
+%%   <<"BackupId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type backup_being_copied() :: #{binary() => any()}.
+
+%% Example:
+%% backup_failure_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type backup_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% backup_in_progress() :: #{
+%%   <<"Message">> => string()
+%% }
+-type backup_in_progress() :: #{binary() => any()}.
+
+%% Example:
+%% backup_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type backup_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% backup_restoring() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type backup_restoring() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_repository_task_request() :: #{
+%%   <<"TaskId">> := string()
+%% }
+-type cancel_data_repository_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_repository_task_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"TaskId">> => string()
+%% }
+-type cancel_data_repository_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% completion_report() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Format">> => list(any()),
+%%   <<"Path">> => string(),
+%%   <<"Scope">> => list(any())
+%% }
+-type completion_report() :: #{binary() => any()}.
+
+%% Example:
+%% copy_backup_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CopyTags">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceBackupId">> := string(),
+%%   <<"SourceRegion">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type copy_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_backup_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type copy_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_and_update_volume_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CopyStrategy">> => list(any()),
+%%   <<"Options">> => list(list(any())()),
+%%   <<"SourceSnapshotARN">> := string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type copy_snapshot_and_update_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_and_update_volume_response() :: #{
+%%   <<"AdministrativeActions">> => list(administrative_action()),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type copy_snapshot_and_update_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_aggregate_configuration() :: #{
+%%   <<"Aggregates">> => list(string()),
+%%   <<"ConstituentsPerAggregate">> => integer()
+%% }
+-type create_aggregate_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_ontap_configuration() :: #{
+%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type create_and_attach_s3_access_point_ontap_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{
+%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OntapConfiguration">> => create_and_attach_s3_access_point_ontap_configuration(),
+%%   <<"OpenZFSConfiguration">> => create_and_attach_s3_access_point_open_z_f_s_configuration(),
+%%   <<"S3AccessPoint">> => create_and_attach_s3_access_point_s3_configuration(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_and_attach_s3_access_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_response() :: #{
+%%   <<"S3AccessPointAttachment">> => s3_access_point_attachment()
+%% }
+-type create_and_attach_s3_access_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_and_attach_s3_access_point_s3_configuration() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
+%% }
+-type create_and_attach_s3_access_point_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeId">> => string()
+%% }
+-type create_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_response() :: #{
+%%   <<"Backup">> => backup()
+%% }
+-type create_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_repository_association_request() :: #{
+%%   <<"BatchImportMetaDataOnCreate">> => boolean(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataRepositoryPath">> := string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"FileSystemPath">> => string(),
+%%   <<"ImportedFileChunkSize">> => integer(),
+%%   <<"S3">> => s3_data_repository_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_data_repository_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_repository_association_response() :: #{
+%%   <<"Association">> => data_repository_association()
+%% }
+-type create_data_repository_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_repository_task_request() :: #{
+%%   <<"CapacityToRelease">> => float(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"Paths">> => list(string()),
+%%   <<"ReleaseConfiguration">> => release_configuration(),
+%%   <<"Report">> := completion_report(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_data_repository_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_repository_task_response() :: #{
+%%   <<"DataRepositoryTask">> => data_repository_task()
+%% }
+-type create_data_repository_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_cache_lustre_configuration() :: #{
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"MetadataConfiguration">> => file_cache_lustre_metadata_configuration(),
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type create_file_cache_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_cache_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CopyTagsToDataRepositoryAssociations">> => boolean(),
+%%   <<"DataRepositoryAssociations">> => list(file_cache_data_repository_association()),
+%%   <<"FileCacheType">> := list(any()),
+%%   <<"FileCacheTypeVersion">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LustreConfiguration">> => create_file_cache_lustre_configuration(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"StorageCapacity">> := integer(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_file_cache_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_cache_response() :: #{
+%%   <<"FileCache">> => file_cache_creating()
+%% }
+-type create_file_cache_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_from_backup_request() :: #{
+%%   <<"BackupId">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemTypeVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"StorageCapacity">> => integer(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WindowsConfiguration">> => create_file_system_windows_configuration()
+%% }
+-type create_file_system_from_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_from_backup_response() :: #{
+%%   <<"FileSystem">> => file_system()
+%% }
+-type create_file_system_from_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_lustre_configuration() :: #{
+%%   <<"AutoImportPolicy">> => list(any()),
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"DriveCacheType">> => list(any()),
+%%   <<"EfaEnabled">> => boolean(),
+%%   <<"ExportPath">> => string(),
+%%   <<"ImportPath">> => string(),
+%%   <<"ImportedFileChunkSize">> => integer(),
+%%   <<"LogConfiguration">> => lustre_log_create_configuration(),
+%%   <<"MetadataConfiguration">> => create_file_system_lustre_metadata_configuration(),
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type create_file_system_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_lustre_metadata_configuration() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type create_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_ontap_configuration() :: #{
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
+%%   <<"FsxAdminPassword">> => string(),
+%%   <<"HAPairs">> => integer(),
+%%   <<"PreferredSubnetId">> => string(),
+%%   <<"RouteTableIds">> => list(string()),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"ThroughputCapacityPerHAPair">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type create_file_system_ontap_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_open_z_f_s_configuration() :: #{
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"CopyTagsToVolumes">> => boolean(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
+%%   <<"PreferredSubnetId">> => string(),
+%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
+%%   <<"RootVolumeConfiguration">> => open_z_f_s_create_root_volume_configuration(),
+%%   <<"RouteTableIds">> => list(string()),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type create_file_system_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemType">> := list(any()),
+%%   <<"FileSystemTypeVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"OntapConfiguration">> => create_file_system_ontap_configuration(),
+%%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"StorageCapacity">> => integer(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WindowsConfiguration">> => create_file_system_windows_configuration()
+%% }
+-type create_file_system_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_response() :: #{
+%%   <<"FileSystem">> => file_system()
+%% }
+-type create_file_system_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_file_system_windows_configuration() :: #{
+%%   <<"ActiveDirectoryId">> => string(),
+%%   <<"Aliases">> => list(string()),
+%%   <<"AuditLogConfiguration">> => windows_audit_log_create_configuration(),
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
+%%   <<"PreferredSubnetId">> => string(),
+%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type create_file_system_windows_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_ontap_volume_configuration() :: #{
+%%   <<"AggregateConfiguration">> => create_aggregate_configuration(),
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"JunctionPath">> => string(),
+%%   <<"OntapVolumeType">> => list(any()),
+%%   <<"SecurityStyle">> => list(any()),
+%%   <<"SizeInBytes">> => float(),
+%%   <<"SizeInMegabytes">> => integer(),
+%%   <<"SnaplockConfiguration">> => create_snaplock_configuration(),
+%%   <<"SnapshotPolicy">> => string(),
+%%   <<"StorageEfficiencyEnabled">> => boolean(),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"TieringPolicy">> => tiering_policy(),
+%%   <<"VolumeStyle">> => list(any())
+%% }
+-type create_ontap_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_z_f_s_origin_snapshot_configuration() :: #{
+%%   <<"CopyStrategy">> => list(any()),
+%%   <<"SnapshotARN">> => string()
+%% }
+-type create_open_z_f_s_origin_snapshot_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_z_f_s_volume_configuration() :: #{
+%%   <<"CopyTagsToSnapshots">> => boolean(),
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
+%%   <<"OriginSnapshot">> => create_open_z_f_s_origin_snapshot_configuration(),
+%%   <<"ParentVolumeId">> => string(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RecordSizeKiB">> => integer(),
+%%   <<"StorageCapacityQuotaGiB">> => integer(),
+%%   <<"StorageCapacityReservationGiB">> => integer(),
+%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
+%% }
+-type create_open_z_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_snaplock_configuration() :: #{
+%%   <<"AuditLogVolume">> => boolean(),
+%%   <<"AutocommitPeriod">> => autocommit_period(),
+%%   <<"PrivilegedDelete">> => list(any()),
+%%   <<"RetentionPeriod">> => snaplock_retention_period(),
+%%   <<"SnaplockType">> => list(any()),
+%%   <<"VolumeAppendModeEnabled">> => boolean()
+%% }
+-type create_snaplock_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeId">> := string()
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_response() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_storage_virtual_machine_request() :: #{
+%%   <<"ActiveDirectoryConfiguration">> => create_svm_active_directory_configuration(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RootVolumeSecurityStyle">> => list(any()),
+%%   <<"SvmAdminPassword">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_storage_virtual_machine_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_storage_virtual_machine_response() :: #{
+%%   <<"StorageVirtualMachine">> => storage_virtual_machine()
+%% }
+-type create_storage_virtual_machine_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_svm_active_directory_configuration() :: #{
+%%   <<"NetBiosName">> => string(),
+%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration()
+%% }
+-type create_svm_active_directory_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_from_backup_request() :: #{
+%%   <<"BackupId">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OntapConfiguration">> => create_ontap_volume_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_volume_from_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_from_backup_response() :: #{
+%%   <<"Volume">> => volume()
+%% }
+-type create_volume_from_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OntapConfiguration">> => create_ontap_volume_configuration(),
+%%   <<"OpenZFSConfiguration">> => create_open_z_f_s_volume_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeType">> := list(any())
+%% }
+-type create_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_response() :: #{
+%%   <<"Volume">> => volume()
+%% }
+-type create_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_association() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"BatchImportMetaDataOnCreate">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataRepositoryPath">> => string(),
+%%   <<"DataRepositorySubdirectories">> => list(string()),
+%%   <<"FailureDetails">> => data_repository_failure_details(),
+%%   <<"FileCacheId">> => string(),
+%%   <<"FileCachePath">> => string(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemPath">> => string(),
+%%   <<"ImportedFileChunkSize">> => integer(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"NFS">> => nfs_data_repository_configuration(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"S3">> => s3_data_repository_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type data_repository_association() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_association_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_association_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_configuration() :: #{
+%%   <<"AutoImportPolicy">> => list(any()),
+%%   <<"ExportPath">> => string(),
+%%   <<"FailureDetails">> => data_repository_failure_details(),
+%%   <<"ImportPath">> => string(),
+%%   <<"ImportedFileChunkSize">> => integer(),
+%%   <<"Lifecycle">> => list(any())
+%% }
+-type data_repository_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_failure_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task() :: #{
+%%   <<"CapacityToRelease">> => float(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureDetails">> => data_repository_task_failure_details(),
+%%   <<"FileCacheId">> => string(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"Paths">> => list(string()),
+%%   <<"ReleaseConfiguration">> => release_configuration(),
+%%   <<"Report">> => completion_report(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => data_repository_task_status(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TaskId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type data_repository_task() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_ended() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_task_ended() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_executing() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_task_executing() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_failure_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_task_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type data_repository_task_filter() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_repository_task_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% data_repository_task_status() :: #{
+%%   <<"FailedCount">> => float(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ReleasedCapacity">> => float(),
+%%   <<"SucceededCount">> => float(),
+%%   <<"TotalCount">> => float()
+%% }
+-type data_repository_task_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_request() :: #{
+%%   <<"BackupId">> := string(),
+%%   <<"ClientRequestToken">> => string()
+%% }
+-type delete_backup_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_response() :: #{
+%%   <<"BackupId">> => string(),
+%%   <<"Lifecycle">> => list(any())
+%% }
+-type delete_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_repository_association_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DeleteDataInFileSystem">> => boolean()
+%% }
+-type delete_data_repository_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_repository_association_response() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"DeleteDataInFileSystem">> => boolean(),
+%%   <<"Lifecycle">> => list(any())
+%% }
+-type delete_data_repository_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_cache_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileCacheId">> := string()
+%% }
+-type delete_file_cache_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_cache_response() :: #{
+%%   <<"FileCacheId">> => string(),
+%%   <<"Lifecycle">> => list(any())
+%% }
+-type delete_file_cache_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_lustre_configuration() :: #{
+%%   <<"FinalBackupTags">> => list(tag()),
+%%   <<"SkipFinalBackup">> => boolean()
+%% }
+-type delete_file_system_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_lustre_response() :: #{
+%%   <<"FinalBackupId">> => string(),
+%%   <<"FinalBackupTags">> => list(tag())
+%% }
+-type delete_file_system_lustre_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_open_z_f_s_configuration() :: #{
+%%   <<"FinalBackupTags">> => list(tag()),
+%%   <<"Options">> => list(list(any())()),
+%%   <<"SkipFinalBackup">> => boolean()
+%% }
+-type delete_file_system_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_open_z_f_s_response() :: #{
+%%   <<"FinalBackupId">> => string(),
+%%   <<"FinalBackupTags">> => list(tag())
+%% }
+-type delete_file_system_open_z_f_s_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"LustreConfiguration">> => delete_file_system_lustre_configuration(),
+%%   <<"OpenZFSConfiguration">> => delete_file_system_open_z_f_s_configuration(),
+%%   <<"WindowsConfiguration">> => delete_file_system_windows_configuration()
+%% }
+-type delete_file_system_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_response() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LustreResponse">> => delete_file_system_lustre_response(),
+%%   <<"OpenZFSResponse">> => delete_file_system_open_z_f_s_response(),
+%%   <<"WindowsResponse">> => delete_file_system_windows_response()
+%% }
+-type delete_file_system_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_windows_configuration() :: #{
+%%   <<"FinalBackupTags">> => list(tag()),
+%%   <<"SkipFinalBackup">> => boolean()
+%% }
+-type delete_file_system_windows_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_system_windows_response() :: #{
+%%   <<"FinalBackupId">> => string(),
+%%   <<"FinalBackupTags">> => list(tag())
+%% }
+-type delete_file_system_windows_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SnapshotId">> := string()
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"SnapshotId">> => string()
+%% }
+-type delete_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_virtual_machine_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"StorageVirtualMachineId">> := string()
+%% }
+-type delete_storage_virtual_machine_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_virtual_machine_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"StorageVirtualMachineId">> => string()
+%% }
+-type delete_storage_virtual_machine_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_ontap_configuration() :: #{
+%%   <<"BypassSnaplockEnterpriseRetention">> => boolean(),
+%%   <<"FinalBackupTags">> => list(tag()),
+%%   <<"SkipFinalBackup">> => boolean()
+%% }
+-type delete_volume_ontap_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_ontap_response() :: #{
+%%   <<"FinalBackupId">> => string(),
+%%   <<"FinalBackupTags">> => list(tag())
+%% }
+-type delete_volume_ontap_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_open_z_f_s_configuration() :: #{
+%%   <<"Options">> => list(list(any())())
+%% }
+-type delete_volume_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"OntapConfiguration">> => delete_volume_ontap_configuration(),
+%%   <<"OpenZFSConfiguration">> => delete_volume_open_z_f_s_configuration(),
+%%   <<"VolumeId">> := string()
+%% }
+-type delete_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"OntapResponse">> => delete_volume_ontap_response(),
+%%   <<"VolumeId">> => string()
+%% }
+-type delete_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_request() :: #{
+%%   <<"BackupIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_backups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backups_response() :: #{
+%%   <<"Backups">> => list(backup()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_backups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_repository_associations_request() :: #{
+%%   <<"AssociationIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_data_repository_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_repository_associations_response() :: #{
+%%   <<"Associations">> => list(data_repository_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_data_repository_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_repository_tasks_request() :: #{
+%%   <<"Filters">> => list(data_repository_task_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskIds">> => list(string())
+%% }
+-type describe_data_repository_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_repository_tasks_response() :: #{
+%%   <<"DataRepositoryTasks">> => list(data_repository_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_data_repository_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_caches_request() :: #{
+%%   <<"FileCacheIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_caches_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_caches_response() :: #{
+%%   <<"FileCaches">> => list(file_cache()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_caches_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_aliases_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_system_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_system_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_systems_request() :: #{
+%%   <<"FileSystemIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_systems_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_systems_response() :: #{
+%%   <<"FileSystems">> => list(file_system()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_file_systems_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_s3_access_point_attachments_request() :: #{
+%%   <<"Filters">> => list(s3_access_point_attachments_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_s3_access_point_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_s3_access_point_attachments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"S3AccessPointAttachments">> => list(s3_access_point_attachment())
+%% }
+-type describe_s3_access_point_attachments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_shared_vpc_configuration_request() :: #{
+
+%% }
+-type describe_shared_vpc_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_shared_vpc_configuration_response() :: #{
+%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
+%% }
+-type describe_shared_vpc_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_request() :: #{
+%%   <<"Filters">> => list(snapshot_filter()),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotIds">> => list(string())
+%% }
+-type describe_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Snapshots">> => list(snapshot())
+%% }
+-type describe_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_storage_virtual_machines_request() :: #{
+%%   <<"Filters">> => list(storage_virtual_machine_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StorageVirtualMachineIds">> => list(string())
+%% }
+-type describe_storage_virtual_machines_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_storage_virtual_machines_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageVirtualMachines">> => list(storage_virtual_machine())
+%% }
+-type describe_storage_virtual_machines_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_volumes_request() :: #{
+%%   <<"Filters">> => list(volume_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VolumeIds">> => list(string())
+%% }
+-type describe_volumes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_volumes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Volumes">> => list(volume())
+%% }
+-type describe_volumes_response() :: #{binary() => any()}.
+
+%% Example:
+%% detach_and_delete_s3_access_point_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type detach_and_delete_s3_access_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_and_delete_s3_access_point_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type detach_and_delete_s3_access_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_aliases_request() :: #{
+%%   <<"Aliases">> := list(string()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string()
+%% }
+-type disassociate_file_system_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias())
+%% }
+-type disassociate_file_system_aliases_response() :: #{binary() => any()}.
+
+%% Example:
 %% disk_iops_configuration() :: #{
 %%   <<"Iops">> => float(),
 %%   <<"Mode">> => list(any())
 %% }
 -type disk_iops_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% duration_since_last_access() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type duration_since_last_access() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DNSName">> => string(),
+%%   <<"DataRepositoryAssociationIds">> => list(string()),
+%%   <<"FailureDetails">> => file_cache_failure_details(),
+%%   <<"FileCacheId">> => string(),
+%%   <<"FileCacheType">> => list(any()),
+%%   <<"FileCacheTypeVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LustreConfiguration">> => file_cache_lustre_configuration(),
+%%   <<"NetworkInterfaceIds">> => list(string()),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"StorageCapacity">> => integer(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type file_cache() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_creating() :: #{
+%%   <<"CopyTagsToDataRepositoryAssociations">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DNSName">> => string(),
+%%   <<"DataRepositoryAssociationIds">> => list(string()),
+%%   <<"FailureDetails">> => file_cache_failure_details(),
+%%   <<"FileCacheId">> => string(),
+%%   <<"FileCacheType">> => list(any()),
+%%   <<"FileCacheTypeVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LustreConfiguration">> => file_cache_lustre_configuration(),
+%%   <<"NetworkInterfaceIds">> => list(string()),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"StorageCapacity">> => integer(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcId">> => string()
+%% }
+-type file_cache_creating() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_data_repository_association() :: #{
+%%   <<"DataRepositoryPath">> => string(),
+%%   <<"DataRepositorySubdirectories">> => list(string()),
+%%   <<"FileCachePath">> => string(),
+%%   <<"NFS">> => file_cache_nfs_configuration()
+%% }
+-type file_cache_data_repository_association() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_failure_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type file_cache_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_lustre_configuration() :: #{
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"LogConfiguration">> => lustre_log_configuration(),
+%%   <<"MetadataConfiguration">> => file_cache_lustre_metadata_configuration(),
+%%   <<"MountName">> => string(),
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type file_cache_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_lustre_metadata_configuration() :: #{
+%%   <<"StorageCapacity">> => integer()
+%% }
+-type file_cache_lustre_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_nfs_configuration() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"Version">> => list(any())
+%% }
+-type file_cache_nfs_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% file_cache_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type file_cache_not_found() :: #{binary() => any()}.
 
 %% Example:
 %% file_system() :: #{
@@ -141,199 +1311,83 @@
 -type file_system() :: #{binary() => any()}.
 
 %% Example:
-%% create_file_cache_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CopyTagsToDataRepositoryAssociations">> => boolean(),
-%%   <<"DataRepositoryAssociations">> => list(file_cache_data_repository_association()),
-%%   <<"FileCacheType">> := list(any()),
-%%   <<"FileCacheTypeVersion">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LustreConfiguration">> => create_file_cache_lustre_configuration(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"StorageCapacity">> := integer(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag())
+%% file_system_endpoint() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Ipv6Addresses">> => list(string())
 %% }
--type create_file_cache_request() :: #{binary() => any()}.
+-type file_system_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% copy_backup_response() :: #{
-%%   <<"Backup">> => backup()
+%% file_system_endpoints() :: #{
+%%   <<"Intercluster">> => file_system_endpoint(),
+%%   <<"Management">> => file_system_endpoint()
 %% }
--type copy_backup_response() :: #{binary() => any()}.
+-type file_system_endpoints() :: #{binary() => any()}.
 
 %% Example:
-%% resource_does_not_support_tagging() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceARN">> => string()
+%% file_system_failure_details() :: #{
+%%   <<"Message">> => string()
 %% }
--type resource_does_not_support_tagging() :: #{binary() => any()}.
+-type file_system_failure_details() :: #{binary() => any()}.
 
 %% Example:
-%% delete_data_repository_association_response() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"DeleteDataInFileSystem">> => boolean(),
-%%   <<"Lifecycle">> => list(any())
-%% }
--type delete_data_repository_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"SnapshotId">> := string()
-%% }
--type delete_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point_vpc_configuration() :: #{
-%%   <<"VpcId">> => string()
-%% }
--type s3_access_point_vpc_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_lustre_metadata_configuration() :: #{
+%% file_system_lustre_metadata_configuration() :: #{
 %%   <<"Iops">> => integer(),
 %%   <<"Mode">> => list(any())
 %% }
--type create_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
+-type file_system_lustre_metadata_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% open_z_f_s_user_or_group_quota() :: #{
-%%   <<"Id">> => integer(),
-%%   <<"StorageCapacityQuotaGiB">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type open_z_f_s_user_or_group_quota() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceARN">> => string()
-%% }
--type resource_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_not_found() :: #{
+%% file_system_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
--type snapshot_not_found() :: #{binary() => any()}.
+-type file_system_not_found() :: #{binary() => any()}.
 
 %% Example:
-%% update_data_repository_association_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ImportedFileChunkSize">> => integer(),
-%%   <<"S3">> => s3_data_repository_configuration()
+%% filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type update_data_repository_association_request() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 %% Example:
-%% open_z_f_s_client_configuration() :: #{
-%%   <<"Clients">> => string(),
-%%   <<"Options">> => list(string())
+%% incompatible_parameter_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Parameter">> => string()
 %% }
--type open_z_f_s_client_configuration() :: #{binary() => any()}.
+-type incompatible_parameter_error() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_access_points() :: #{
+%% incompatible_region_for_multi_a_z() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incompatible_region_for_multi_a_z() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_access_point() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
--type too_many_access_points() :: #{binary() => any()}.
+-type invalid_access_point() :: #{binary() => any()}.
 
 %% Example:
-%% storage_virtual_machine_not_found() :: #{
+%% invalid_data_repository_type() :: #{
 %%   <<"Message">> => string()
 %% }
--type storage_virtual_machine_not_found() :: #{binary() => any()}.
+-type invalid_data_repository_type() :: #{binary() => any()}.
 
 %% Example:
-%% create_file_system_windows_configuration() :: #{
-%%   <<"ActiveDirectoryId">> => string(),
-%%   <<"Aliases">> => list(string()),
-%%   <<"AuditLogConfiguration">> => windows_audit_log_create_configuration(),
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
-%%   <<"PreferredSubnetId">> => string(),
-%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration(),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type create_file_system_windows_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% auto_import_policy() :: #{
-%%   <<"Events">> => list(list(any())())
-%% }
--type auto_import_policy() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DNSName">> => string(),
-%%   <<"DataRepositoryAssociationIds">> => list(string()),
-%%   <<"FailureDetails">> => file_cache_failure_details(),
-%%   <<"FileCacheId">> => string(),
-%%   <<"FileCacheType">> => list(any()),
-%%   <<"FileCacheTypeVersion">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"LustreConfiguration">> => file_cache_lustre_configuration(),
-%%   <<"NetworkInterfaceIds">> => list(string()),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"StorageCapacity">> => integer(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type file_cache() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_region() :: #{
+%% invalid_destination_kms_key() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_region() :: #{binary() => any()}.
-
-%% Example:
-%% aggregate_configuration() :: #{
-%%   <<"Aggregates">> => list(string()),
-%%   <<"TotalConstituents">> => integer()
-%% }
--type aggregate_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"OntapConfiguration">> => delete_volume_ontap_configuration(),
-%%   <<"OpenZFSConfiguration">> => delete_volume_open_z_f_s_configuration(),
-%%   <<"VolumeId">> := string()
-%% }
--type delete_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_caches_response() :: #{
-%%   <<"FileCaches">> => list(file_cache()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_file_caches_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_svm_active_directory_configuration() :: #{
-%%   <<"NetBiosName">> => string(),
-%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration_updates()
-%% }
--type update_svm_active_directory_configuration() :: #{binary() => any()}.
+-type invalid_destination_kms_key() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_export_path() :: #{
@@ -342,98 +1396,10 @@
 -type invalid_export_path() :: #{binary() => any()}.
 
 %% Example:
-%% create_file_system_open_z_f_s_configuration() :: #{
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"CopyTagsToVolumes">> => boolean(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"EndpointIpAddressRange">> => string(),
-%%   <<"EndpointIpv6AddressRange">> => string(),
-%%   <<"PreferredSubnetId">> => string(),
-%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
-%%   <<"RootVolumeConfiguration">> => open_z_f_s_create_root_volume_configuration(),
-%%   <<"RouteTableIds">> => list(string()),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type create_file_system_open_z_f_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_misconfigured_state_recovery_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string()
-%% }
--type start_misconfigured_state_recovery_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"SnapshotId">> := string()
-%% }
--type update_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_ontap_configuration() :: #{
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"EndpointIpAddressRange">> => string(),
-%%   <<"EndpointIpv6AddressRange">> => string(),
-%%   <<"FsxAdminPassword">> => string(),
-%%   <<"HAPairs">> => integer(),
-%%   <<"PreferredSubnetId">> => string(),
-%%   <<"RouteTableIds">> => list(string()),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"ThroughputCapacityPerHAPair">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type create_file_system_ontap_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_response() :: #{
-%%   <<"FileSystem">> => file_system()
-%% }
--type update_file_system_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeId">> := string()
-%% }
--type create_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_svm_active_directory_configuration() :: #{
-%%   <<"NetBiosName">> => string(),
-%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration()
-%% }
--type create_svm_active_directory_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_failure_details() :: #{
+%% invalid_import_path() :: #{
 %%   <<"Message">> => string()
 %% }
--type file_cache_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% nfs_data_repository_configuration() :: #{
-%%   <<"AutoExportPolicy">> => auto_export_policy(),
-%%   <<"DnsIps">> => list(string()),
-%%   <<"Version">> => list(any())
-%% }
--type nfs_data_repository_configuration() :: #{binary() => any()}.
+-type invalid_import_path() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_network_settings() :: #{
@@ -445,583 +1411,23 @@
 -type invalid_network_settings() :: #{binary() => any()}.
 
 %% Example:
-%% describe_snapshots_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot())
-%% }
--type describe_snapshots_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_response() :: #{
-%%   <<"FileSystem">> => file_system()
-%% }
--type create_file_system_response() :: #{binary() => any()}.
-
-%% Example:
-%% windows_fsrm_configuration() :: #{
-%%   <<"EventLogDestination">> => string(),
-%%   <<"FsrmServiceEnabled">> => boolean()
-%% }
--type windows_fsrm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% duration_since_last_access() :: #{
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type duration_since_last_access() :: #{binary() => any()}.
-
-%% Example:
-%% retention_period() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type retention_period() :: #{binary() => any()}.
-
-%% Example:
-%% describe_volumes_request() :: #{
-%%   <<"Filters">> => list(volume_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VolumeIds">> => list(string())
-%% }
--type describe_volumes_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_response() :: #{
-%%   <<"Snapshot">> => snapshot()
-%% }
--type create_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% autocommit_period() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type autocommit_period() :: #{binary() => any()}.
-
-%% Example:
-%% update_volume_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OntapConfiguration">> => update_ontap_volume_configuration(),
-%%   <<"OpenZFSConfiguration">> => update_open_z_f_s_volume_configuration(),
-%%   <<"VolumeId">> := string()
-%% }
--type update_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_ontap_configuration() :: #{
-%%   <<"BypassSnaplockEnterpriseRetention">> => boolean(),
-%%   <<"FinalBackupTags">> => list(tag()),
-%%   <<"SkipFinalBackup">> => boolean()
-%% }
--type delete_volume_ontap_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_and_attach_s3_access_point_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OntapConfiguration">> => create_and_attach_s3_access_point_ontap_configuration(),
-%%   <<"OpenZFSConfiguration">> => create_and_attach_s3_access_point_open_z_f_s_configuration(),
-%%   <<"S3AccessPoint">> => create_and_attach_s3_access_point_s3_configuration(),
-%%   <<"Type">> := list(any())
-%% }
--type create_and_attach_s3_access_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% missing_volume_configuration() :: #{
+%% invalid_per_unit_storage_throughput() :: #{
 %%   <<"Message">> => string()
 %% }
--type missing_volume_configuration() :: #{binary() => any()}.
+-type invalid_per_unit_storage_throughput() :: #{binary() => any()}.
 
 %% Example:
-%% data_repository_task_not_found() :: #{
+%% invalid_region() :: #{
 %%   <<"Message">> => string()
 %% }
--type data_repository_task_not_found() :: #{binary() => any()}.
+-type invalid_region() :: #{binary() => any()}.
 
 %% Example:
-%% create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{
-%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
-%%   <<"VolumeId">> => string()
-%% }
--type create_and_attach_s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% backup_in_progress() :: #{
+%% invalid_request() :: #{
+%%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
--type backup_in_progress() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_virtual_machines_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageVirtualMachines">> => list(storage_virtual_machine())
-%% }
--type describe_storage_virtual_machines_response() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_nfs_configuration() :: #{
-%%   <<"DnsIps">> => list(string()),
-%%   <<"Version">> => list(any())
-%% }
--type file_cache_nfs_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% windows_audit_log_configuration() :: #{
-%%   <<"AuditLogDestination">> => string(),
-%%   <<"FileAccessAuditLogLevel">> => list(any()),
-%%   <<"FileShareAccessAuditLogLevel">> => list(any())
-%% }
--type windows_audit_log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point_attachments_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type s3_access_point_attachments_filter() :: #{binary() => any()}.
-
-%% Example:
-%% administrative_action() :: #{
-%%   <<"AdministrativeActionType">> => list(any()),
-%%   <<"FailureDetails">> => administrative_action_failure_details(),
-%%   <<"Message">> => string(),
-%%   <<"ProgressPercent">> => integer(),
-%%   <<"RemainingTransferBytes">> => float(),
-%%   <<"RequestTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetFileSystemValues">> => file_system(),
-%%   <<"TargetSnapshotValues">> => snapshot(),
-%%   <<"TargetVolumeValues">> => volume(),
-%%   <<"TotalTransferBytes">> => float()
-%% }
--type administrative_action() :: #{binary() => any()}.
-
-%% Example:
-%% copy_backup_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CopyTags">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SourceBackupId">> := string(),
-%%   <<"SourceRegion">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type copy_backup_request() :: #{binary() => any()}.
-
-%% Example:
-%% release_file_system_nfs_v3_locks_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string()
-%% }
--type release_file_system_nfs_v3_locks_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_ontap_volume_configuration() :: #{
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"JunctionPath">> => string(),
-%%   <<"SecurityStyle">> => list(any()),
-%%   <<"SizeInBytes">> => float(),
-%%   <<"SizeInMegabytes">> => integer(),
-%%   <<"SnaplockConfiguration">> => update_snaplock_configuration(),
-%%   <<"SnapshotPolicy">> => string(),
-%%   <<"StorageEfficiencyEnabled">> => boolean(),
-%%   <<"TieringPolicy">> => tiering_policy()
-%% }
--type update_ontap_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_creating() :: #{
-%%   <<"CopyTagsToDataRepositoryAssociations">> => boolean(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DNSName">> => string(),
-%%   <<"DataRepositoryAssociationIds">> => list(string()),
-%%   <<"FailureDetails">> => file_cache_failure_details(),
-%%   <<"FileCacheId">> => string(),
-%%   <<"FileCacheType">> => list(any()),
-%%   <<"FileCacheTypeVersion">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"LustreConfiguration">> => file_cache_lustre_configuration(),
-%%   <<"NetworkInterfaceIds">> => list(string()),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"StorageCapacity">> => integer(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcId">> => string()
-%% }
--type file_cache_creating() :: #{binary() => any()}.
-
-%% Example:
-%% lustre_root_squash_configuration() :: #{
-%%   <<"NoSquashNids">> => list(string()),
-%%   <<"RootSquash">> => string()
-%% }
--type lustre_root_squash_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_nfs_export() :: #{
-%%   <<"ClientConfigurations">> => list(open_z_f_s_client_configuration())
-%% }
--type open_z_f_s_nfs_export() :: #{binary() => any()}.
-
-%% Example:
-%% ontap_unix_file_system_user() :: #{
-%%   <<"Name">> => string()
-%% }
--type ontap_unix_file_system_user() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_endpoints() :: #{
-%%   <<"Intercluster">> => file_system_endpoint(),
-%%   <<"Management">> => file_system_endpoint()
-%% }
--type file_system_endpoints() :: #{binary() => any()}.
-
-%% Example:
-%% copy_snapshot_and_update_volume_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CopyStrategy">> => list(any()),
-%%   <<"Options">> => list(list(any())()),
-%%   <<"SourceSnapshotARN">> := string(),
-%%   <<"VolumeId">> := string()
-%% }
--type copy_snapshot_and_update_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_transition_reason() :: #{
-%%   <<"Message">> => string()
-%% }
--type lifecycle_transition_reason() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_failure_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type file_system_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_ontap_configuration() :: #{
-%%   <<"AddRouteTableIds">> => list(string()),
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"EndpointIpv6AddressRange">> => string(),
-%%   <<"FsxAdminPassword">> => string(),
-%%   <<"HAPairs">> => integer(),
-%%   <<"RemoveRouteTableIds">> => list(string()),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"ThroughputCapacityPerHAPair">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type update_file_system_ontap_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% storage_virtual_machine_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type storage_virtual_machine_filter() :: #{binary() => any()}.
-
-%% Example:
-%% associate_file_system_aliases_request() :: #{
-%%   <<"Aliases">> := list(string()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string()
-%% }
--type associate_file_system_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_open_z_f_s_origin_snapshot_configuration() :: #{
-%%   <<"CopyStrategy">> => list(any()),
-%%   <<"SnapshotARN">> => string()
-%% }
--type create_open_z_f_s_origin_snapshot_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% release_configuration() :: #{
-%%   <<"DurationSinceLastAccess">> => duration_since_last_access()
-%% }
--type release_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% self_managed_active_directory_attributes() :: #{
-%%   <<"DnsIps">> => list(string()),
-%%   <<"DomainJoinServiceAccountSecret">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"FileSystemAdministratorsGroup">> => string(),
-%%   <<"OrganizationalUnitDistinguishedName">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type self_managed_active_directory_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_repository_task_request() :: #{
-%%   <<"TaskId">> := string()
-%% }
--type cancel_data_repository_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_cache_response() :: #{
-%%   <<"FileCacheId">> => string(),
-%%   <<"Lifecycle">> => list(any())
-%% }
--type delete_file_cache_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_system_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_file_system_aliases_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_lustre_response() :: #{
-%%   <<"FinalBackupId">> => string(),
-%%   <<"FinalBackupTags">> => list(tag())
-%% }
--type delete_file_system_lustre_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_task_executing() :: #{
-%%   <<"Message">> => string()
-%% }
--type data_repository_task_executing() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_endpoint() :: #{
-%%   <<"DNSName">> => string(),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"Ipv6Addresses">> => list(string())
-%% }
--type file_system_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_open_z_f_s_configuration() :: #{
-%%   <<"Options">> => list(list(any())())
-%% }
--type delete_volume_open_z_f_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_volume_from_backup_request() :: #{
-%%   <<"BackupId">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OntapConfiguration">> => create_ontap_volume_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_volume_from_backup_request() :: #{binary() => any()}.
-
-%% Example:
-%% self_managed_active_directory_configuration_updates() :: #{
-%%   <<"DnsIps">> => list(string()),
-%%   <<"DomainJoinServiceAccountSecret">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"FileSystemAdministratorsGroup">> => string(),
-%%   <<"OrganizationalUnitDistinguishedName">> => string(),
-%%   <<"Password">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type self_managed_active_directory_configuration_updates() :: #{binary() => any()}.
-
-%% Example:
-%% tiering_policy() :: #{
-%%   <<"CoolingPeriod">> => integer(),
-%%   <<"Name">> => list(any())
-%% }
--type tiering_policy() :: #{binary() => any()}.
-
-%% Example:
-%% svm_active_directory_configuration() :: #{
-%%   <<"NetBiosName">> => string(),
-%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_attributes()
-%% }
--type svm_active_directory_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_task_failure_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type data_repository_task_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% svm_endpoints() :: #{
-%%   <<"Iscsi">> => svm_endpoint(),
-%%   <<"Management">> => svm_endpoint(),
-%%   <<"Nfs">> => svm_endpoint(),
-%%   <<"Smb">> => svm_endpoint()
-%% }
--type svm_endpoints() :: #{binary() => any()}.
-
-%% Example:
-%% backup_restoring() :: #{
-%%   <<"FileSystemId">> => string(),
-%%   <<"Message">> => string()
-%% }
--type backup_restoring() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_operation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_ontap_response() :: #{
-%%   <<"FinalBackupId">> => string(),
-%%   <<"FinalBackupTags">> => list(tag())
-%% }
--type delete_volume_ontap_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_storage_virtual_machine_request() :: #{
-%%   <<"ActiveDirectoryConfiguration">> => create_svm_active_directory_configuration(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RootVolumeSecurityStyle">> => list(any()),
-%%   <<"SvmAdminPassword">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_storage_virtual_machine_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_file_system_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias())
-%% }
--type disassociate_file_system_aliases_response() :: #{binary() => any()}.
-
-%% Example:
-%% copy_snapshot_and_update_volume_response() :: #{
-%%   <<"AdministrativeActions">> => list(administrative_action()),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"VolumeId">> => string()
-%% }
--type copy_snapshot_and_update_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_snaplock_configuration() :: #{
-%%   <<"AuditLogVolume">> => boolean(),
-%%   <<"AutocommitPeriod">> => autocommit_period(),
-%%   <<"PrivilegedDelete">> => list(any()),
-%%   <<"RetentionPeriod">> => snaplock_retention_period(),
-%%   <<"VolumeAppendModeEnabled">> => boolean()
-%% }
--type update_snaplock_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_aggregate_configuration() :: #{
-%%   <<"Aggregates">> => list(string()),
-%%   <<"ConstituentsPerAggregate">> => integer()
-%% }
--type create_aggregate_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_backups_request() :: #{
-%%   <<"BackupIds">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_backups_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_open_z_f_s_volume_configuration() :: #{
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RecordSizeKiB">> => integer(),
-%%   <<"StorageCapacityQuotaGiB">> => integer(),
-%%   <<"StorageCapacityReservationGiB">> => integer(),
-%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
-%% }
--type update_open_z_f_s_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_task_status() :: #{
-%%   <<"FailedCount">> => float(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ReleasedCapacity">> => float(),
-%%   <<"SucceededCount">> => float(),
-%%   <<"TotalCount">> => float()
-%% }
--type data_repository_task_status() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"FileSystemTypeVersion">> => string(),
-%%   <<"LustreConfiguration">> => update_file_system_lustre_configuration(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"OntapConfiguration">> => update_file_system_ontap_configuration(),
-%%   <<"OpenZFSConfiguration">> => update_file_system_open_z_f_s_configuration(),
-%%   <<"StorageCapacity">> => integer(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"WindowsConfiguration">> => update_file_system_windows_configuration()
-%% }
--type update_file_system_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% update_shared_vpc_configuration_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
-%% }
--type update_shared_vpc_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_repository_association_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DeleteDataInFileSystem">> => boolean()
-%% }
--type delete_data_repository_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% active_directory_error() :: #{
-%%   <<"ActiveDirectoryId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type active_directory_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_response() :: #{
-%%   <<"FileSystemId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"LustreResponse">> => delete_file_system_lustre_response(),
-%%   <<"OpenZFSResponse">> => delete_file_system_open_z_f_s_response(),
-%%   <<"WindowsResponse">> => delete_file_system_windows_response()
-%% }
--type delete_file_system_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_repository_association_response() :: #{
-%%   <<"Association">> => data_repository_association()
-%% }
--type create_data_repository_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_file_system_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias())
-%% }
--type associate_file_system_aliases_response() :: #{binary() => any()}.
+-type invalid_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_source_kms_key() :: #{
@@ -1030,256 +1436,18 @@
 -type invalid_source_kms_key() :: #{binary() => any()}.
 
 %% Example:
-%% snaplock_configuration() :: #{
-%%   <<"AuditLogVolume">> => boolean(),
-%%   <<"AutocommitPeriod">> => autocommit_period(),
-%%   <<"PrivilegedDelete">> => list(any()),
-%%   <<"RetentionPeriod">> => snaplock_retention_period(),
-%%   <<"SnaplockType">> => list(any()),
-%%   <<"VolumeAppendModeEnabled">> => boolean()
-%% }
--type snaplock_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_open_z_f_s_configuration() :: #{
-%%   <<"FinalBackupTags">> => list(tag()),
-%%   <<"Options">> => list(list(any())()),
-%%   <<"SkipFinalBackup">> => boolean()
-%% }
--type delete_file_system_open_z_f_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_lustre_configuration() :: #{
-%%   <<"AutoImportPolicy">> => list(any()),
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"DriveCacheType">> => list(any()),
-%%   <<"EfaEnabled">> => boolean(),
-%%   <<"ExportPath">> => string(),
-%%   <<"ImportPath">> => string(),
-%%   <<"ImportedFileChunkSize">> => integer(),
-%%   <<"LogConfiguration">> => lustre_log_create_configuration(),
-%%   <<"MetadataConfiguration">> => create_file_system_lustre_metadata_configuration(),
-%%   <<"PerUnitStorageThroughput">> => integer(),
-%%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type create_file_system_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_storage_virtual_machine_response() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"StorageVirtualMachineId">> => string()
-%% }
--type delete_storage_virtual_machine_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_data_repository_type() :: #{
+%% lifecycle_transition_reason() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_data_repository_type() :: #{binary() => any()}.
+-type lifecycle_transition_reason() :: #{binary() => any()}.
 
 %% Example:
-%% create_file_system_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemType">> := list(any()),
-%%   <<"FileSystemTypeVersion">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"OntapConfiguration">> => create_file_system_ontap_configuration(),
-%%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"StorageCapacity">> => integer(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WindowsConfiguration">> => create_file_system_windows_configuration()
-%% }
--type create_file_system_request() :: #{binary() => any()}.
-
-%% Example:
-%% not_service_resource_error() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceARN">> => string()
-%% }
--type not_service_resource_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_open_z_f_s_response() :: #{
-%%   <<"FinalBackupId">> => string(),
-%%   <<"FinalBackupTags">> => list(tag())
-%% }
--type delete_file_system_open_z_f_s_response() :: #{binary() => any()}.
-
-%% Example:
-%% storage_virtual_machine() :: #{
-%%   <<"ActiveDirectoryConfiguration">> => svm_active_directory_configuration(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Endpoints">> => svm_endpoints(),
-%%   <<"FileSystemId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"RootVolumeSecurityStyle">> => list(any()),
-%%   <<"StorageVirtualMachineId">> => string(),
-%%   <<"Subtype">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UUID">> => string()
-%% }
--type storage_virtual_machine() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_lustre_configuration() :: #{
-%%   <<"AutoImportPolicy">> => list(any()),
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
-%%   <<"LogConfiguration">> => lustre_log_create_configuration(),
-%%   <<"MetadataConfiguration">> => update_file_system_lustre_metadata_configuration(),
-%%   <<"PerUnitStorageThroughput">> => integer(),
-%%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type update_file_system_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% release_file_system_nfs_v3_locks_response() :: #{
-%%   <<"FileSystem">> => file_system()
-%% }
--type release_file_system_nfs_v3_locks_response() :: #{binary() => any()}.
-
-%% Example:
-%% svm_endpoint() :: #{
-%%   <<"DNSName">> => string(),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"Ipv6Addresses">> => list(string())
-%% }
--type svm_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% detach_and_delete_s3_access_point_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string()
-%% }
--type detach_and_delete_s3_access_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_response() :: #{
-%%   <<"BackupId">> => string(),
-%%   <<"Lifecycle">> => list(any())
-%% }
--type delete_backup_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_file_system_configuration() :: #{
-%%   <<"AutomaticBackupRetentionDays">> => integer(),
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"CopyTagsToVolumes">> => boolean(),
-%%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"EndpointIpAddress">> => string(),
-%%   <<"EndpointIpAddressRange">> => string(),
-%%   <<"EndpointIpv6Address">> => string(),
-%%   <<"EndpointIpv6AddressRange">> => string(),
-%%   <<"PreferredSubnetId">> => string(),
-%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
-%%   <<"RootVolumeId">> => string(),
-%%   <<"RouteTableIds">> => list(string()),
-%%   <<"ThroughputCapacity">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type open_z_f_s_file_system_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_storage_virtual_machine_request() :: #{
-%%   <<"ActiveDirectoryConfiguration">> => update_svm_active_directory_configuration(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"StorageVirtualMachineId">> := string(),
-%%   <<"SvmAdminPassword">> => string()
-%% }
--type update_storage_virtual_machine_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_s3_access_point_attachments_request() :: #{
-%%   <<"Filters">> => list(s3_access_point_attachments_filter()),
+%% list_tags_for_resource_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
 %% }
--type describe_s3_access_point_attachments_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_repository_association_request() :: #{
-%%   <<"BatchImportMetaDataOnCreate">> => boolean(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataRepositoryPath">> := string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"FileSystemPath">> => string(),
-%%   <<"ImportedFileChunkSize">> => integer(),
-%%   <<"S3">> => s3_data_repository_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_data_repository_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_shared_vpc_configuration_request() :: #{
-
-%% }
--type describe_shared_vpc_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_per_unit_storage_throughput() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_per_unit_storage_throughput() :: #{binary() => any()}.
-
-%% Example:
-%% lustre_log_create_configuration() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"Level">> => list(any())
-%% }
--type lustre_log_create_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_volume_response() :: #{
-%%   <<"Volume">> => volume()
-%% }
--type create_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point_open_z_f_s_configuration() :: #{
-%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
-%%   <<"VolumeId">> => string()
-%% }
--type s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_storage_virtual_machine_response() :: #{
-%%   <<"StorageVirtualMachine">> => storage_virtual_machine()
-%% }
--type update_storage_virtual_machine_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_and_attach_s3_access_point_response() :: #{
-%%   <<"S3AccessPointAttachment">> => s3_access_point_attachment()
-%% }
--type create_and_attach_s3_access_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% missing_file_cache_configuration() :: #{
-%%   <<"Message">> => string()
-%% }
--type missing_file_cache_configuration() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -1287,40 +1455,6 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_file_system_identity() :: #{
-%%   <<"PosixUser">> => open_z_f_s_posix_file_system_user(),
-%%   <<"Type">> => list(any())
-%% }
--type open_z_f_s_file_system_identity() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_cache_lustre_configuration() :: #{
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type update_file_cache_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% lustre_log_configuration() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"Level">> => list(any())
-%% }
--type lustre_log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
-%% }
--type s3_access_point() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_destination_kms_key() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_destination_kms_key() :: #{binary() => any()}.
 
 %% Example:
 %% lustre_file_system_configuration() :: #{
@@ -1344,25 +1478,18 @@
 -type lustre_file_system_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_volumes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Volumes">> => list(volume())
+%% lustre_log_configuration() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"Level">> => list(any())
 %% }
--type describe_volumes_response() :: #{binary() => any()}.
+-type lustre_log_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% auto_export_policy() :: #{
-%%   <<"Events">> => list(list(any())())
+%% lustre_log_create_configuration() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"Level">> => list(any())
 %% }
--type auto_export_policy() :: #{binary() => any()}.
-
-%% Example:
-%% restore_volume_from_snapshot_response() :: #{
-%%   <<"AdministrativeActions">> => list(administrative_action()),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"VolumeId">> => string()
-%% }
--type restore_volume_from_snapshot_response() :: #{binary() => any()}.
+-type lustre_log_create_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% lustre_read_cache_configuration() :: #{
@@ -1372,23 +1499,17 @@
 -type lustre_read_cache_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% file_system_not_found() :: #{
-%%   <<"Message">> => string()
+%% lustre_root_squash_configuration() :: #{
+%%   <<"NoSquashNids">> => list(string()),
+%%   <<"RootSquash">> => string()
 %% }
--type file_system_not_found() :: #{binary() => any()}.
+-type lustre_root_squash_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% file_cache_not_found() :: #{
+%% missing_file_cache_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
--type file_cache_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% detach_and_delete_s3_access_point_response() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type detach_and_delete_s3_access_point_response() :: #{binary() => any()}.
+-type missing_file_cache_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% missing_file_system_configuration() :: #{
@@ -1397,226 +1518,58 @@
 -type missing_file_system_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% snaplock_retention_period() :: #{
-%%   <<"DefaultRetention">> => retention_period(),
-%%   <<"MaximumRetention">> => retention_period(),
-%%   <<"MinimumRetention">> => retention_period()
-%% }
--type snaplock_retention_period() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_repository_task_request() :: #{
-%%   <<"CapacityToRelease">> => float(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"Paths">> => list(string()),
-%%   <<"ReleaseConfiguration">> => release_configuration(),
-%%   <<"Report">> := completion_report(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_data_repository_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_storage_virtual_machine_response() :: #{
-%%   <<"StorageVirtualMachine">> => storage_virtual_machine()
-%% }
--type create_storage_virtual_machine_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_open_z_f_s_volume_configuration() :: #{
-%%   <<"CopyTagsToSnapshots">> => boolean(),
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
-%%   <<"OriginSnapshot">> => create_open_z_f_s_origin_snapshot_configuration(),
-%%   <<"ParentVolumeId">> => string(),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RecordSizeKiB">> => integer(),
-%%   <<"StorageCapacityQuotaGiB">> => integer(),
-%%   <<"StorageCapacityReservationGiB">> => integer(),
-%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
-%% }
--type create_open_z_f_s_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% access_point_already_owned_by_you() :: #{
-%%   <<"ErrorCode">> => string(),
+%% missing_volume_configuration() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_point_already_owned_by_you() :: #{binary() => any()}.
+-type missing_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% s3_access_point_ontap_configuration() :: #{
-%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
-%%   <<"VolumeId">> => string()
+%% nfs_data_repository_configuration() :: #{
+%%   <<"AutoExportPolicy">> => auto_export_policy(),
+%%   <<"DnsIps">> => list(string()),
+%%   <<"Version">> => list(any())
 %% }
--type s3_access_point_ontap_configuration() :: #{binary() => any()}.
+-type nfs_data_repository_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% active_directory_backup_attributes() :: #{
-%%   <<"ActiveDirectoryId">> => string(),
-%%   <<"DomainName">> => string(),
+%% not_service_resource_error() :: #{
+%%   <<"Message">> => string(),
 %%   <<"ResourceARN">> => string()
 %% }
--type active_directory_backup_attributes() :: #{binary() => any()}.
+-type not_service_resource_error() :: #{binary() => any()}.
 
 %% Example:
-%% ontap_windows_file_system_user() :: #{
-%%   <<"Name">> => string()
-%% }
--type ontap_windows_file_system_user() :: #{binary() => any()}.
-
-%% Example:
-%% backup_failure_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type backup_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% backup() :: #{
-%%   <<"BackupId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DirectoryInformation">> => active_directory_backup_attributes(),
-%%   <<"FailureDetails">> => backup_failure_details(),
-%%   <<"FileSystem">> => file_system(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"OwnerId">> => string(),
-%%   <<"ProgressPercent">> => integer(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"SizeInBytes">> => float(),
-%%   <<"SourceBackupId">> => string(),
-%%   <<"SourceBackupRegion">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any()),
-%%   <<"Volume">> => volume()
-%% }
--type backup() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_association_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type data_repository_association_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_cache_lustre_configuration() :: #{
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"MetadataConfiguration">> => file_cache_lustre_metadata_configuration(),
-%%   <<"PerUnitStorageThroughput">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type create_file_cache_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% completion_report() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Format">> => list(any()),
-%%   <<"Path">> => string(),
-%%   <<"Scope">> => list(any())
-%% }
--type completion_report() :: #{binary() => any()}.
-
-%% Example:
-%% backup_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type backup_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_response() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"OntapResponse">> => delete_volume_ontap_response(),
-%%   <<"VolumeId">> => string()
-%% }
--type delete_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_failure_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type data_repository_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type snapshot_filter() :: #{binary() => any()}.
-
-%% Example:
-%% s3_data_repository_configuration() :: #{
-%%   <<"AutoExportPolicy">> => auto_export_policy(),
-%%   <<"AutoImportPolicy">> => auto_import_policy()
-%% }
--type s3_data_repository_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_read_cache_configuration() :: #{
-%%   <<"SizeGiB">> => integer(),
-%%   <<"SizingMode">> => list(any())
-%% }
--type open_z_f_s_read_cache_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_ontap_volume_configuration() :: #{
-%%   <<"AggregateConfiguration">> => create_aggregate_configuration(),
-%%   <<"CopyTagsToBackups">> => boolean(),
-%%   <<"JunctionPath">> => string(),
-%%   <<"OntapVolumeType">> => list(any()),
-%%   <<"SecurityStyle">> => list(any()),
-%%   <<"SizeInBytes">> => float(),
-%%   <<"SizeInMegabytes">> => integer(),
-%%   <<"SnaplockConfiguration">> => create_snaplock_configuration(),
-%%   <<"SnapshotPolicy">> => string(),
-%%   <<"StorageEfficiencyEnabled">> => boolean(),
-%%   <<"StorageVirtualMachineId">> => string(),
-%%   <<"TieringPolicy">> => tiering_policy(),
-%%   <<"VolumeStyle">> => list(any())
-%% }
--type create_ontap_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_windows_configuration() :: #{
-%%   <<"AuditLogConfiguration">> => windows_audit_log_create_configuration(),
+%% ontap_file_system_configuration() :: #{
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
-%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration_updates(),
+%%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
+%%   <<"Endpoints">> => file_system_endpoints(),
+%%   <<"FsxAdminPassword">> => string(),
+%%   <<"HAPairs">> => integer(),
+%%   <<"PreferredSubnetId">> => string(),
+%%   <<"RouteTableIds">> => list(string()),
 %%   <<"ThroughputCapacity">> => integer(),
+%%   <<"ThroughputCapacityPerHAPair">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
--type update_file_system_windows_configuration() :: #{binary() => any()}.
+-type ontap_file_system_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_file_systems_request() :: #{
-%%   <<"FileSystemIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% ontap_file_system_identity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"UnixUser">> => ontap_unix_file_system_user(),
+%%   <<"WindowsUser">> => ontap_windows_file_system_user()
 %% }
--type describe_file_systems_request() :: #{binary() => any()}.
+-type ontap_file_system_identity() :: #{binary() => any()}.
 
 %% Example:
-%% describe_data_repository_tasks_response() :: #{
-%%   <<"DataRepositoryTasks">> => list(data_repository_task()),
-%%   <<"NextToken">> => string()
+%% ontap_unix_file_system_user() :: #{
+%%   <<"Name">> => string()
 %% }
--type describe_data_repository_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_repository_task_response() :: #{
-%%   <<"DataRepositoryTask">> => data_repository_task()
-%% }
--type create_data_repository_task_response() :: #{binary() => any()}.
+-type ontap_unix_file_system_user() :: #{binary() => any()}.
 
 %% Example:
 %% ontap_volume_configuration() :: #{
@@ -1640,17 +1593,294 @@
 -type ontap_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_data_repository_associations_response() :: #{
-%%   <<"Associations">> => list(data_repository_association()),
-%%   <<"NextToken">> => string()
+%% ontap_windows_file_system_user() :: #{
+%%   <<"Name">> => string()
 %% }
--type describe_data_repository_associations_response() :: #{binary() => any()}.
+-type ontap_windows_file_system_user() :: #{binary() => any()}.
 
 %% Example:
-%% bad_request() :: #{
+%% open_z_f_s_client_configuration() :: #{
+%%   <<"Clients">> => string(),
+%%   <<"Options">> => list(string())
+%% }
+-type open_z_f_s_client_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_create_root_volume_configuration() :: #{
+%%   <<"CopyTagsToSnapshots">> => boolean(),
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RecordSizeKiB">> => integer(),
+%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
+%% }
+-type open_z_f_s_create_root_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_file_system_configuration() :: #{
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"CopyTagsToVolumes">> => boolean(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpAddress">> => string(),
+%%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6Address">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
+%%   <<"PreferredSubnetId">> => string(),
+%%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
+%%   <<"RootVolumeId">> => string(),
+%%   <<"RouteTableIds">> => list(string()),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type open_z_f_s_file_system_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_file_system_identity() :: #{
+%%   <<"PosixUser">> => open_z_f_s_posix_file_system_user(),
+%%   <<"Type">> => list(any())
+%% }
+-type open_z_f_s_file_system_identity() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_nfs_export() :: #{
+%%   <<"ClientConfigurations">> => list(open_z_f_s_client_configuration())
+%% }
+-type open_z_f_s_nfs_export() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_origin_snapshot_configuration() :: #{
+%%   <<"CopyStrategy">> => list(any()),
+%%   <<"SnapshotARN">> => string()
+%% }
+-type open_z_f_s_origin_snapshot_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_posix_file_system_user() :: #{
+%%   <<"Gid">> => float(),
+%%   <<"SecondaryGids">> => list(float()),
+%%   <<"Uid">> => float()
+%% }
+-type open_z_f_s_posix_file_system_user() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_read_cache_configuration() :: #{
+%%   <<"SizeGiB">> => integer(),
+%%   <<"SizingMode">> => list(any())
+%% }
+-type open_z_f_s_read_cache_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_user_or_group_quota() :: #{
+%%   <<"Id">> => integer(),
+%%   <<"StorageCapacityQuotaGiB">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type open_z_f_s_user_or_group_quota() :: #{binary() => any()}.
+
+%% Example:
+%% open_z_f_s_volume_configuration() :: #{
+%%   <<"CopyStrategy">> => list(any()),
+%%   <<"CopyTagsToSnapshots">> => boolean(),
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"DeleteClonedVolumes">> => boolean(),
+%%   <<"DeleteIntermediateData">> => boolean(),
+%%   <<"DeleteIntermediateSnaphots">> => boolean(),
+%%   <<"DestinationSnapshot">> => string(),
+%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
+%%   <<"OriginSnapshot">> => open_z_f_s_origin_snapshot_configuration(),
+%%   <<"ParentVolumeId">> => string(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RecordSizeKiB">> => integer(),
+%%   <<"RestoreToSnapshot">> => string(),
+%%   <<"SourceSnapshotARN">> => string(),
+%%   <<"StorageCapacityQuotaGiB">> => integer(),
+%%   <<"StorageCapacityReservationGiB">> => integer(),
+%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota()),
+%%   <<"VolumePath">> => string()
+%% }
+-type open_z_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% release_configuration() :: #{
+%%   <<"DurationSinceLastAccess">> => duration_since_last_access()
+%% }
+-type release_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% release_file_system_nfs_v3_locks_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string()
+%% }
+-type release_file_system_nfs_v3_locks_request() :: #{binary() => any()}.
+
+%% Example:
+%% release_file_system_nfs_v3_locks_response() :: #{
+%%   <<"FileSystem">> => file_system()
+%% }
+-type release_file_system_nfs_v3_locks_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_does_not_support_tagging() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceARN">> => string()
+%% }
+-type resource_does_not_support_tagging() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceARN">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% restore_volume_from_snapshot_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Options">> => list(list(any())()),
+%%   <<"SnapshotId">> := string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type restore_volume_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_volume_from_snapshot_response() :: #{
+%%   <<"AdministrativeActions">> => list(administrative_action()),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type restore_volume_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% retention_period() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type retention_period() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
+%% }
+-type s3_access_point() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_attachment() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"Name">> => string(),
+%%   <<"OntapConfiguration">> => s3_access_point_ontap_configuration(),
+%%   <<"OpenZFSConfiguration">> => s3_access_point_open_z_f_s_configuration(),
+%%   <<"S3AccessPoint">> => s3_access_point(),
+%%   <<"Type">> => list(any())
+%% }
+-type s3_access_point_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_attachment_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
--type bad_request() :: #{binary() => any()}.
+-type s3_access_point_attachment_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_attachments_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type s3_access_point_attachments_filter() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_ontap_configuration() :: #{
+%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type s3_access_point_ontap_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_open_z_f_s_configuration() :: #{
+%%   <<"FileSystemIdentity">> => open_z_f_s_file_system_identity(),
+%%   <<"VolumeId">> => string()
+%% }
+-type s3_access_point_open_z_f_s_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_point_vpc_configuration() :: #{
+%%   <<"VpcId">> => string()
+%% }
+-type s3_access_point_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_data_repository_configuration() :: #{
+%%   <<"AutoExportPolicy">> => auto_export_policy(),
+%%   <<"AutoImportPolicy">> => auto_import_policy()
+%% }
+-type s3_data_repository_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% self_managed_active_directory_attributes() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"FileSystemAdministratorsGroup">> => string(),
+%%   <<"OrganizationalUnitDistinguishedName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type self_managed_active_directory_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% self_managed_active_directory_configuration() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"FileSystemAdministratorsGroup">> => string(),
+%%   <<"OrganizationalUnitDistinguishedName">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type self_managed_active_directory_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% self_managed_active_directory_configuration_updates() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"FileSystemAdministratorsGroup">> => string(),
+%%   <<"OrganizationalUnitDistinguishedName">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type self_managed_active_directory_configuration_updates() :: #{binary() => any()}.
+
+%% Example:
+%% service_limit_exceeded() :: #{
+%%   <<"Limit">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% snaplock_configuration() :: #{
+%%   <<"AuditLogVolume">> => boolean(),
+%%   <<"AutocommitPeriod">> => autocommit_period(),
+%%   <<"PrivilegedDelete">> => list(any()),
+%%   <<"RetentionPeriod">> => snaplock_retention_period(),
+%%   <<"SnaplockType">> => list(any()),
+%%   <<"VolumeAppendModeEnabled">> => boolean()
+%% }
+-type snaplock_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% snaplock_retention_period() :: #{
+%%   <<"DefaultRetention">> => retention_period(),
+%%   <<"MaximumRetention">> => retention_period(),
+%%   <<"MinimumRetention">> => retention_period()
+%% }
+-type snaplock_retention_period() :: #{binary() => any()}.
 
 %% Example:
 %% snapshot() :: #{
@@ -1667,24 +1897,219 @@
 -type snapshot() :: #{binary() => any()}.
 
 %% Example:
-%% alias() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"Name">> => string()
+%% snapshot_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type alias() :: #{binary() => any()}.
+-type snapshot_filter() :: #{binary() => any()}.
 
 %% Example:
-%% delete_file_system_windows_configuration() :: #{
-%%   <<"FinalBackupTags">> => list(tag()),
-%%   <<"SkipFinalBackup">> => boolean()
-%% }
--type delete_file_system_windows_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
+%% snapshot_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
--type internal_server_error() :: #{binary() => any()}.
+-type snapshot_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% source_backup_unavailable() :: #{
+%%   <<"BackupId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type source_backup_unavailable() :: #{binary() => any()}.
+
+%% Example:
+%% start_misconfigured_state_recovery_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string()
+%% }
+-type start_misconfigured_state_recovery_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_misconfigured_state_recovery_response() :: #{
+%%   <<"FileSystem">> => file_system()
+%% }
+-type start_misconfigured_state_recovery_response() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine() :: #{
+%%   <<"ActiveDirectoryConfiguration">> => svm_active_directory_configuration(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Endpoints">> => svm_endpoints(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"RootVolumeSecurityStyle">> => list(any()),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"Subtype">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UUID">> => string()
+%% }
+-type storage_virtual_machine() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type storage_virtual_machine_filter() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type storage_virtual_machine_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% svm_active_directory_configuration() :: #{
+%%   <<"NetBiosName">> => string(),
+%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_attributes()
+%% }
+-type svm_active_directory_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% svm_endpoint() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Ipv6Addresses">> => list(string())
+%% }
+-type svm_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% svm_endpoints() :: #{
+%%   <<"Iscsi">> => svm_endpoint(),
+%%   <<"Management">> => svm_endpoint(),
+%%   <<"Nfs">> => svm_endpoint(),
+%%   <<"Smb">> => svm_endpoint()
+%% }
+-type svm_endpoints() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% tiering_policy() :: #{
+%%   <<"CoolingPeriod">> => integer(),
+%%   <<"Name">> => list(any())
+%% }
+-type tiering_policy() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_access_points() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_access_points() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_repository_association_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ImportedFileChunkSize">> => integer(),
+%%   <<"S3">> => s3_data_repository_configuration()
+%% }
+-type update_data_repository_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_repository_association_response() :: #{
+%%   <<"Association">> => data_repository_association()
+%% }
+-type update_data_repository_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_cache_lustre_configuration() :: #{
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type update_file_cache_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_cache_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileCacheId">> := string(),
+%%   <<"LustreConfiguration">> => update_file_cache_lustre_configuration()
+%% }
+-type update_file_cache_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_cache_response() :: #{
+%%   <<"FileCache">> => file_cache()
+%% }
+-type update_file_cache_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_lustre_configuration() :: #{
+%%   <<"AutoImportPolicy">> => list(any()),
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"DataReadCacheConfiguration">> => lustre_read_cache_configuration(),
+%%   <<"LogConfiguration">> => lustre_log_create_configuration(),
+%%   <<"MetadataConfiguration">> => update_file_system_lustre_metadata_configuration(),
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"RootSquashConfiguration">> => lustre_root_squash_configuration(),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type update_file_system_lustre_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_lustre_metadata_configuration() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type update_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_ontap_configuration() :: #{
+%%   <<"AddRouteTableIds">> => list(string()),
+%%   <<"AutomaticBackupRetentionDays">> => integer(),
+%%   <<"DailyAutomaticBackupStartTime">> => string(),
+%%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
+%%   <<"FsxAdminPassword">> => string(),
+%%   <<"HAPairs">> => integer(),
+%%   <<"RemoveRouteTableIds">> => list(string()),
+%%   <<"ThroughputCapacity">> => integer(),
+%%   <<"ThroughputCapacityPerHAPair">> => integer(),
+%%   <<"WeeklyMaintenanceStartTime">> => string()
+%% }
+-type update_file_system_ontap_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_file_system_open_z_f_s_configuration() :: #{
@@ -1703,23 +2128,139 @@
 -type update_file_system_open_z_f_s_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% ontap_file_system_configuration() :: #{
+%% update_file_system_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"FileSystemTypeVersion">> => string(),
+%%   <<"LustreConfiguration">> => update_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"OntapConfiguration">> => update_file_system_ontap_configuration(),
+%%   <<"OpenZFSConfiguration">> => update_file_system_open_z_f_s_configuration(),
+%%   <<"StorageCapacity">> => integer(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"WindowsConfiguration">> => update_file_system_windows_configuration()
+%% }
+-type update_file_system_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_response() :: #{
+%%   <<"FileSystem">> => file_system()
+%% }
+-type update_file_system_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_windows_configuration() :: #{
+%%   <<"AuditLogConfiguration">> => windows_audit_log_create_configuration(),
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
-%%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
-%%   <<"EndpointIpAddressRange">> => string(),
-%%   <<"EndpointIpv6AddressRange">> => string(),
-%%   <<"Endpoints">> => file_system_endpoints(),
-%%   <<"FsxAdminPassword">> => string(),
-%%   <<"HAPairs">> => integer(),
-%%   <<"PreferredSubnetId">> => string(),
-%%   <<"RouteTableIds">> => list(string()),
+%%   <<"FsrmConfiguration">> => windows_fsrm_configuration(),
+%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration_updates(),
 %%   <<"ThroughputCapacity">> => integer(),
-%%   <<"ThroughputCapacityPerHAPair">> => integer(),
 %%   <<"WeeklyMaintenanceStartTime">> => string()
 %% }
--type ontap_file_system_configuration() :: #{binary() => any()}.
+-type update_file_system_windows_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_ontap_volume_configuration() :: #{
+%%   <<"CopyTagsToBackups">> => boolean(),
+%%   <<"JunctionPath">> => string(),
+%%   <<"SecurityStyle">> => list(any()),
+%%   <<"SizeInBytes">> => float(),
+%%   <<"SizeInMegabytes">> => integer(),
+%%   <<"SnaplockConfiguration">> => update_snaplock_configuration(),
+%%   <<"SnapshotPolicy">> => string(),
+%%   <<"StorageEfficiencyEnabled">> => boolean(),
+%%   <<"TieringPolicy">> => tiering_policy()
+%% }
+-type update_ontap_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_z_f_s_volume_configuration() :: #{
+%%   <<"DataCompressionType">> => list(any()),
+%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RecordSizeKiB">> => integer(),
+%%   <<"StorageCapacityQuotaGiB">> => integer(),
+%%   <<"StorageCapacityReservationGiB">> => integer(),
+%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
+%% }
+-type update_open_z_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_shared_vpc_configuration_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
+%% }
+-type update_shared_vpc_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_shared_vpc_configuration_response() :: #{
+%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
+%% }
+-type update_shared_vpc_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_snaplock_configuration() :: #{
+%%   <<"AuditLogVolume">> => boolean(),
+%%   <<"AutocommitPeriod">> => autocommit_period(),
+%%   <<"PrivilegedDelete">> => list(any()),
+%%   <<"RetentionPeriod">> => snaplock_retention_period(),
+%%   <<"VolumeAppendModeEnabled">> => boolean()
+%% }
+-type update_snaplock_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SnapshotId">> := string()
+%% }
+-type update_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_response() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type update_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_storage_virtual_machine_request() :: #{
+%%   <<"ActiveDirectoryConfiguration">> => update_svm_active_directory_configuration(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"StorageVirtualMachineId">> := string(),
+%%   <<"SvmAdminPassword">> => string()
+%% }
+-type update_storage_virtual_machine_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_storage_virtual_machine_response() :: #{
+%%   <<"StorageVirtualMachine">> => storage_virtual_machine()
+%% }
+-type update_storage_virtual_machine_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_svm_active_directory_configuration() :: #{
+%%   <<"NetBiosName">> => string(),
+%%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_configuration_updates()
+%% }
+-type update_svm_active_directory_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_volume_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OntapConfiguration">> => update_ontap_volume_configuration(),
+%%   <<"OpenZFSConfiguration">> => update_open_z_f_s_volume_configuration(),
+%%   <<"VolumeId">> := string()
+%% }
+-type update_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_volume_response() :: #{
+%%   <<"Volume">> => volume()
+%% }
+-type update_volume_response() :: #{binary() => any()}.
 
 %% Example:
 %% volume() :: #{
@@ -1739,40 +2280,6 @@
 -type volume() :: #{binary() => any()}.
 
 %% Example:
-%% ontap_file_system_identity() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"UnixUser">> => ontap_unix_file_system_user(),
-%%   <<"WindowsUser">> => ontap_windows_file_system_user()
-%% }
--type ontap_file_system_identity() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_cache_response() :: #{
-%%   <<"FileCache">> => file_cache_creating()
-%% }
--type create_file_cache_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_from_backup_response() :: #{
-%%   <<"FileSystem">> => file_system()
-%% }
--type create_file_system_from_backup_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_cache_response() :: #{
-%%   <<"FileCache">> => file_cache()
-%% }
--type update_file_cache_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_caches_request() :: #{
-%%   <<"FileCacheIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_file_caches_request() :: #{binary() => any()}.
-
-%% Example:
 %% volume_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Values">> => list(string())
@@ -1780,119 +2287,18 @@
 -type volume_filter() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_create_root_volume_configuration() :: #{
-%%   <<"CopyTagsToSnapshots">> => boolean(),
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RecordSizeKiB">> => integer(),
-%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota())
-%% }
--type open_z_f_s_create_root_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_volume_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OntapConfiguration">> => create_ontap_volume_configuration(),
-%%   <<"OpenZFSConfiguration">> => create_open_z_f_s_volume_configuration(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeType">> := list(any())
-%% }
--type create_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_cache_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileCacheId">> := string()
-%% }
--type delete_file_cache_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_repository_tasks_request() :: #{
-%%   <<"Filters">> => list(data_repository_task_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TaskIds">> => list(string())
-%% }
--type describe_data_repository_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_limit_exceeded() :: #{
-%%   <<"Limit">> => list(any()),
+%% volume_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
--type service_limit_exceeded() :: #{binary() => any()}.
+-type volume_not_found() :: #{binary() => any()}.
 
 %% Example:
-%% self_managed_active_directory_configuration() :: #{
-%%   <<"DnsIps">> => list(string()),
-%%   <<"DomainJoinServiceAccountSecret">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"FileSystemAdministratorsGroup">> => string(),
-%%   <<"OrganizationalUnitDistinguishedName">> => string(),
-%%   <<"Password">> => string(),
-%%   <<"UserName">> => string()
+%% windows_audit_log_configuration() :: #{
+%%   <<"AuditLogDestination">> => string(),
+%%   <<"FileAccessAuditLogLevel">> => list(any()),
+%%   <<"FileShareAccessAuditLogLevel">> => list(any())
 %% }
--type self_managed_active_directory_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_region_for_multi_a_z() :: #{
-%%   <<"Message">> => string()
-%% }
--type incompatible_region_for_multi_a_z() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_repository_associations_request() :: #{
-%%   <<"AssociationIds">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_data_repository_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_posix_file_system_user() :: #{
-%%   <<"Gid">> => float(),
-%%   <<"SecondaryGids">> => list(float()),
-%%   <<"Uid">> => float()
-%% }
--type open_z_f_s_posix_file_system_user() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_task() :: #{
-%%   <<"CapacityToRelease">> => float(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureDetails">> => data_repository_task_failure_details(),
-%%   <<"FileCacheId">> => string(),
-%%   <<"FileSystemId">> => string(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"Paths">> => list(string()),
-%%   <<"ReleaseConfiguration">> => release_configuration(),
-%%   <<"Report">> => completion_report(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => data_repository_task_status(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TaskId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type data_repository_task() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type windows_audit_log_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% windows_audit_log_create_configuration() :: #{
@@ -1925,518 +2331,112 @@
 -type windows_file_system_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% data_repository_task_ended() :: #{
-%%   <<"Message">> => string()
+%% windows_fsrm_configuration() :: #{
+%%   <<"EventLogDestination">> => string(),
+%%   <<"FsrmServiceEnabled">> => boolean()
 %% }
--type data_repository_task_ended() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_systems_response() :: #{
-%%   <<"FileSystems">> => list(file_system()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_file_systems_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_shared_vpc_configuration_response() :: #{
-%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
-%% }
--type describe_shared_vpc_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_access_point() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_access_point() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point_attachment() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
-%%   <<"Name">> => string(),
-%%   <<"OntapConfiguration">> => s3_access_point_ontap_configuration(),
-%%   <<"OpenZFSConfiguration">> => s3_access_point_open_z_f_s_configuration(),
-%%   <<"S3AccessPoint">> => s3_access_point(),
-%%   <<"Type">> => list(any())
-%% }
--type s3_access_point_attachment() :: #{binary() => any()}.
-
-%% Example:
-%% create_and_attach_s3_access_point_s3_configuration() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"VpcConfiguration">> => s3_access_point_vpc_configuration()
-%% }
--type create_and_attach_s3_access_point_s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_task_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type data_repository_task_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshots_request() :: #{
-%%   <<"Filters">> => list(snapshot_filter()),
-%%   <<"IncludeShared">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SnapshotIds">> => list(string())
-%% }
--type describe_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_lustre_metadata_configuration() :: #{
-%%   <<"StorageCapacity">> => integer()
-%% }
--type file_cache_lustre_metadata_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_response() :: #{
-%%   <<"Snapshot">> => snapshot()
-%% }
--type update_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_data_repository_association() :: #{
-%%   <<"DataRepositoryPath">> => string(),
-%%   <<"DataRepositorySubdirectories">> => list(string()),
-%%   <<"FileCachePath">> => string(),
-%%   <<"NFS">> => file_cache_nfs_configuration()
-%% }
--type file_cache_data_repository_association() :: #{binary() => any()}.
-
-%% Example:
-%% restore_volume_from_snapshot_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Options">> => list(list(any())()),
-%%   <<"SnapshotId">> := string(),
-%%   <<"VolumeId">> := string()
-%% }
--type restore_volume_from_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_misconfigured_state_recovery_response() :: #{
-%%   <<"FileSystem">> => file_system()
-%% }
--type start_misconfigured_state_recovery_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_and_attach_s3_access_point_ontap_configuration() :: #{
-%%   <<"FileSystemIdentity">> => ontap_file_system_identity(),
-%%   <<"VolumeId">> => string()
-%% }
--type create_and_attach_s3_access_point_ontap_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% volume_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type volume_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% create_snaplock_configuration() :: #{
-%%   <<"AuditLogVolume">> => boolean(),
-%%   <<"AutocommitPeriod">> => autocommit_period(),
-%%   <<"PrivilegedDelete">> => list(any()),
-%%   <<"RetentionPeriod">> => snaplock_retention_period(),
-%%   <<"SnaplockType">> => list(any()),
-%%   <<"VolumeAppendModeEnabled">> => boolean()
-%% }
--type create_snaplock_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_backups_response() :: #{
-%%   <<"Backups">> => list(backup()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_backups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_request() :: #{
-%%   <<"BackupId">> := string(),
-%%   <<"ClientRequestToken">> => string()
-%% }
--type delete_backup_request() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_origin_snapshot_configuration() :: #{
-%%   <<"CopyStrategy">> => list(any()),
-%%   <<"SnapshotARN">> => string()
-%% }
--type open_z_f_s_origin_snapshot_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% administrative_action_failure_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type administrative_action_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_backup_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeId">> => string()
-%% }
--type create_backup_request() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_lustre_metadata_configuration() :: #{
-%%   <<"Iops">> => integer(),
-%%   <<"Mode">> => list(any())
-%% }
--type file_system_lustre_metadata_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_windows_response() :: #{
-%%   <<"FinalBackupId">> => string(),
-%%   <<"FinalBackupTags">> => list(tag())
-%% }
--type delete_file_system_windows_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_shared_vpc_configuration_response() :: #{
-%%   <<"EnableFsxRouteTableUpdatesFromParticipantAccounts">> => string()
-%% }
--type update_shared_vpc_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_parameter_error() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Parameter">> => string()
-%% }
--type incompatible_parameter_error() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_point_attachment_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type s3_access_point_attachment_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% backup_being_copied() :: #{
-%%   <<"BackupId">> => string(),
-%%   <<"Message">> => string()
-%% }
--type backup_being_copied() :: #{binary() => any()}.
-
-%% Example:
-%% create_volume_from_backup_response() :: #{
-%%   <<"Volume">> => volume()
-%% }
--type create_volume_from_backup_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_repository_association_response() :: #{
-%%   <<"Association">> => data_repository_association()
-%% }
--type update_data_repository_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_file_system_aliases_request() :: #{
-%%   <<"Aliases">> := list(string()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string()
-%% }
--type disassociate_file_system_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_storage_virtual_machine_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"StorageVirtualMachineId">> := string()
-%% }
--type delete_storage_virtual_machine_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_system_aliases_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_file_system_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_import_path() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_import_path() :: #{binary() => any()}.
-
-%% Example:
-%% open_z_f_s_volume_configuration() :: #{
-%%   <<"CopyStrategy">> => list(any()),
-%%   <<"CopyTagsToSnapshots">> => boolean(),
-%%   <<"DataCompressionType">> => list(any()),
-%%   <<"DeleteClonedVolumes">> => boolean(),
-%%   <<"DeleteIntermediateData">> => boolean(),
-%%   <<"DeleteIntermediateSnaphots">> => boolean(),
-%%   <<"DestinationSnapshot">> => string(),
-%%   <<"NfsExports">> => list(open_z_f_s_nfs_export()),
-%%   <<"OriginSnapshot">> => open_z_f_s_origin_snapshot_configuration(),
-%%   <<"ParentVolumeId">> => string(),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RecordSizeKiB">> => integer(),
-%%   <<"RestoreToSnapshot">> => string(),
-%%   <<"SourceSnapshotARN">> => string(),
-%%   <<"StorageCapacityQuotaGiB">> => integer(),
-%%   <<"StorageCapacityReservationGiB">> => integer(),
-%%   <<"UserAndGroupQuotas">> => list(open_z_f_s_user_or_group_quota()),
-%%   <<"VolumePath">> => string()
-%% }
--type open_z_f_s_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_configuration() :: #{
-%%   <<"AutoImportPolicy">> => list(any()),
-%%   <<"ExportPath">> => string(),
-%%   <<"FailureDetails">> => data_repository_failure_details(),
-%%   <<"ImportPath">> => string(),
-%%   <<"ImportedFileChunkSize">> => integer(),
-%%   <<"Lifecycle">> => list(any())
-%% }
--type data_repository_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_repository_association() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"BatchImportMetaDataOnCreate">> => boolean(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataRepositoryPath">> => string(),
-%%   <<"DataRepositorySubdirectories">> => list(string()),
-%%   <<"FailureDetails">> => data_repository_failure_details(),
-%%   <<"FileCacheId">> => string(),
-%%   <<"FileCachePath">> => string(),
-%%   <<"FileSystemId">> => string(),
-%%   <<"FileSystemPath">> => string(),
-%%   <<"ImportedFileChunkSize">> => integer(),
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"NFS">> => nfs_data_repository_configuration(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"S3">> => s3_data_repository_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type data_repository_association() :: #{binary() => any()}.
-
-%% Example:
-%% source_backup_unavailable() :: #{
-%%   <<"BackupId">> => string(),
-%%   <<"Message">> => string()
-%% }
--type source_backup_unavailable() :: #{binary() => any()}.
-
-%% Example:
-%% create_backup_response() :: #{
-%%   <<"Backup">> => backup()
-%% }
--type create_backup_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_cache_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileCacheId">> := string(),
-%%   <<"LustreConfiguration">> => update_file_cache_lustre_configuration()
-%% }
--type update_file_cache_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_volume_response() :: #{
-%%   <<"Volume">> => volume()
-%% }
--type update_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_s3_access_point_attachments_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"S3AccessPointAttachments">> => list(s3_access_point_attachment())
-%% }
--type describe_s3_access_point_attachments_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_storage_virtual_machines_request() :: #{
-%%   <<"Filters">> => list(storage_virtual_machine_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StorageVirtualMachineIds">> => list(string())
-%% }
--type describe_storage_virtual_machines_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_lustre_metadata_configuration() :: #{
-%%   <<"Iops">> => integer(),
-%%   <<"Mode">> => list(any())
-%% }
--type update_file_system_lustre_metadata_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemId">> := string(),
-%%   <<"LustreConfiguration">> => delete_file_system_lustre_configuration(),
-%%   <<"OpenZFSConfiguration">> => delete_file_system_open_z_f_s_configuration(),
-%%   <<"WindowsConfiguration">> => delete_file_system_windows_configuration()
-%% }
--type delete_file_system_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_response() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"SnapshotId">> => string()
-%% }
--type delete_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% file_cache_lustre_configuration() :: #{
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"LogConfiguration">> => lustre_log_configuration(),
-%%   <<"MetadataConfiguration">> => file_cache_lustre_metadata_configuration(),
-%%   <<"MountName">> => string(),
-%%   <<"PerUnitStorageThroughput">> => integer(),
-%%   <<"WeeklyMaintenanceStartTime">> => string()
-%% }
--type file_cache_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_lustre_configuration() :: #{
-%%   <<"FinalBackupTags">> => list(tag()),
-%%   <<"SkipFinalBackup">> => boolean()
-%% }
--type delete_file_system_lustre_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_repository_task_response() :: #{
-%%   <<"Lifecycle">> => list(any()),
-%%   <<"TaskId">> => string()
-%% }
--type cancel_data_repository_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_file_system_from_backup_request() :: #{
-%%   <<"BackupId">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FileSystemTypeVersion">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"StorageCapacity">> => integer(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WindowsConfiguration">> => create_file_system_windows_configuration()
-%% }
--type create_file_system_from_backup_request() :: #{binary() => any()}.
+-type windows_fsrm_configuration() :: #{binary() => any()}.
 
 -type associate_file_system_aliases_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    file_system_not_found() | 
+    bad_request().
 
 -type cancel_data_repository_task_errors() ::
-    data_repository_task_ended() | 
-    internal_server_error() | 
-    bad_request() | 
     unsupported_operation() | 
-    data_repository_task_not_found().
+    internal_server_error() | 
+    data_repository_task_not_found() | 
+    data_repository_task_ended() | 
+    bad_request().
 
 -type copy_backup_errors() ::
-    source_backup_unavailable() | 
-    incompatible_parameter_error() | 
-    incompatible_region_for_multi_a_z() | 
-    service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    backup_not_found() | 
-    invalid_destination_kms_key() | 
-    invalid_source_kms_key() | 
     unsupported_operation() | 
-    invalid_region().
+    source_backup_unavailable() | 
+    service_limit_exceeded() | 
+    invalid_source_kms_key() | 
+    invalid_region() | 
+    invalid_destination_kms_key() | 
+    internal_server_error() | 
+    incompatible_region_for_multi_a_z() | 
+    incompatible_parameter_error() | 
+    bad_request() | 
+    backup_not_found().
 
 -type copy_snapshot_and_update_volume_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request().
 
 -type create_and_attach_s3_access_point_errors() ::
-    invalid_request() | 
-    incompatible_parameter_error() | 
     volume_not_found() | 
+    unsupported_operation() | 
+    too_many_access_points() | 
+    invalid_request() | 
     invalid_access_point() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request() | 
-    access_point_already_owned_by_you() | 
-    unsupported_operation() | 
-    too_many_access_points().
+    access_point_already_owned_by_you().
 
 -type create_backup_errors() ::
-    incompatible_parameter_error() | 
     volume_not_found() | 
+    unsupported_operation() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
+    incompatible_parameter_error() | 
     file_system_not_found() | 
-    unsupported_operation() | 
+    bad_request() | 
     backup_in_progress().
 
 -type create_data_repository_association_errors() ::
-    incompatible_parameter_error() | 
+    unsupported_operation() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
+    incompatible_parameter_error() | 
     file_system_not_found() | 
-    unsupported_operation().
+    bad_request().
 
 -type create_data_repository_task_errors() ::
-    incompatible_parameter_error() | 
+    unsupported_operation() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
+    incompatible_parameter_error() | 
     file_system_not_found() | 
-    unsupported_operation() | 
-    data_repository_task_executing().
+    data_repository_task_executing() | 
+    bad_request().
 
 -type create_file_cache_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
     missing_file_cache_configuration() | 
     invalid_per_unit_storage_throughput() | 
-    invalid_network_settings().
+    invalid_network_settings() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
 
 -type create_file_system_errors() ::
-    invalid_import_path() | 
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
     missing_file_system_configuration() | 
     invalid_per_unit_storage_throughput() | 
-    active_directory_error() | 
     invalid_network_settings() | 
-    invalid_export_path().
+    invalid_import_path() | 
+    invalid_export_path() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request() | 
+    active_directory_error().
 
 -type create_file_system_from_backup_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    backup_not_found() | 
     missing_file_system_configuration() | 
     invalid_per_unit_storage_throughput() | 
-    active_directory_error() | 
-    invalid_network_settings().
+    invalid_network_settings() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request() | 
+    backup_not_found() | 
+    active_directory_error().
 
 -type create_snapshot_errors() ::
     volume_not_found() | 
@@ -2445,136 +2445,136 @@
     bad_request().
 
 -type create_storage_virtual_machine_errors() ::
-    incompatible_parameter_error() | 
+    unsupported_operation() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
+    incompatible_parameter_error() | 
     file_system_not_found() | 
-    active_directory_error() | 
-    unsupported_operation().
+    bad_request() | 
+    active_directory_error().
 
 -type create_volume_errors() ::
-    incompatible_parameter_error() | 
-    service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    file_system_not_found() | 
     unsupported_operation() | 
+    storage_virtual_machine_not_found() | 
+    service_limit_exceeded() | 
     missing_volume_configuration() | 
-    storage_virtual_machine_not_found().
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
 
 -type create_volume_from_backup_errors() ::
-    incompatible_parameter_error() | 
+    storage_virtual_machine_not_found() | 
     service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    backup_not_found() | 
-    file_system_not_found() | 
     missing_volume_configuration() | 
-    storage_virtual_machine_not_found().
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request() | 
+    backup_not_found().
 
 -type delete_backup_errors() ::
-    backup_being_copied() | 
-    incompatible_parameter_error() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request() | 
-    backup_not_found() | 
     backup_restoring() | 
-    backup_in_progress().
+    backup_not_found() | 
+    backup_in_progress() | 
+    backup_being_copied().
 
 -type delete_data_repository_association_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
-    data_repository_association_not_found().
+    incompatible_parameter_error() | 
+    data_repository_association_not_found() | 
+    bad_request().
 
 -type delete_file_cache_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
-    file_cache_not_found().
+    incompatible_parameter_error() | 
+    file_cache_not_found() | 
+    bad_request().
 
 -type delete_file_system_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
 
 -type delete_snapshot_errors() ::
+    snapshot_not_found() | 
     internal_server_error() | 
-    bad_request() | 
-    snapshot_not_found().
+    bad_request().
 
 -type delete_storage_virtual_machine_errors() ::
-    incompatible_parameter_error() | 
+    storage_virtual_machine_not_found() | 
     internal_server_error() | 
-    bad_request() | 
-    storage_virtual_machine_not_found().
+    incompatible_parameter_error() | 
+    bad_request().
 
 -type delete_volume_errors() ::
-    incompatible_parameter_error() | 
     volume_not_found() | 
     service_limit_exceeded() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request().
 
 -type describe_backups_errors() ::
     volume_not_found() | 
     internal_server_error() | 
+    file_system_not_found() | 
     bad_request() | 
-    backup_not_found() | 
-    file_system_not_found().
+    backup_not_found().
 
 -type describe_data_repository_associations_errors() ::
+    invalid_data_repository_type() | 
     internal_server_error() | 
-    bad_request() | 
-    data_repository_association_not_found() | 
     file_system_not_found() | 
-    invalid_data_repository_type().
+    data_repository_association_not_found() | 
+    bad_request().
 
 -type describe_data_repository_tasks_errors() ::
     internal_server_error() | 
-    bad_request() | 
     file_system_not_found() | 
-    data_repository_task_not_found().
+    data_repository_task_not_found() | 
+    bad_request().
 
 -type describe_file_caches_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_cache_not_found().
+    file_cache_not_found() | 
+    bad_request().
 
 -type describe_file_system_aliases_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    file_system_not_found() | 
+    bad_request().
 
 -type describe_file_systems_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    file_system_not_found() | 
+    bad_request().
 
 -type describe_s3_access_point_attachments_errors() ::
+    unsupported_operation() | 
     s3_access_point_attachment_not_found() | 
     internal_server_error() | 
-    bad_request() | 
-    unsupported_operation().
+    bad_request().
 
 -type describe_shared_vpc_configuration_errors() ::
     internal_server_error() | 
     bad_request().
 
 -type describe_snapshots_errors() ::
+    snapshot_not_found() | 
     internal_server_error() | 
-    bad_request() | 
-    snapshot_not_found().
+    bad_request().
 
 -type describe_storage_virtual_machines_errors() ::
+    storage_virtual_machine_not_found() | 
     internal_server_error() | 
-    bad_request() | 
-    storage_virtual_machine_not_found().
+    bad_request().
 
 -type describe_volumes_errors() ::
     volume_not_found() | 
@@ -2582,30 +2582,30 @@
     bad_request().
 
 -type detach_and_delete_s3_access_point_errors() ::
+    unsupported_operation() | 
     s3_access_point_attachment_not_found() | 
-    incompatible_parameter_error() | 
     internal_server_error() | 
-    bad_request() | 
-    unsupported_operation().
+    incompatible_parameter_error() | 
+    bad_request().
 
 -type disassociate_file_system_aliases_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    file_system_not_found() | 
+    bad_request().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_error() | 
-    bad_request() | 
-    not_service_resource_error() | 
     resource_not_found() | 
-    resource_does_not_support_tagging().
+    resource_does_not_support_tagging() | 
+    not_service_resource_error() | 
+    internal_server_error() | 
+    bad_request().
 
 -type release_file_system_nfs_v3_locks_errors() ::
-    incompatible_parameter_error() | 
     service_limit_exceeded() | 
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
 
 -type restore_volume_from_snapshot_errors() ::
     volume_not_found() | 
@@ -2614,72 +2614,72 @@
 
 -type start_misconfigured_state_recovery_errors() ::
     internal_server_error() | 
-    bad_request() | 
-    file_system_not_found().
+    file_system_not_found() | 
+    bad_request().
 
 -type tag_resource_errors() ::
-    internal_server_error() | 
-    bad_request() | 
-    not_service_resource_error() | 
     resource_not_found() | 
-    resource_does_not_support_tagging().
-
--type untag_resource_errors() ::
-    internal_server_error() | 
-    bad_request() | 
+    resource_does_not_support_tagging() | 
     not_service_resource_error() | 
-    resource_not_found() | 
-    resource_does_not_support_tagging().
-
--type update_data_repository_association_errors() ::
-    incompatible_parameter_error() | 
-    service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    data_repository_association_not_found().
-
--type update_file_cache_errors() ::
-    incompatible_parameter_error() | 
-    service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    file_cache_not_found() | 
-    missing_file_cache_configuration() | 
-    unsupported_operation().
-
--type update_file_system_errors() ::
-    incompatible_parameter_error() | 
-    service_limit_exceeded() | 
-    internal_server_error() | 
-    bad_request() | 
-    missing_file_system_configuration() | 
-    file_system_not_found() | 
-    unsupported_operation() | 
-    invalid_network_settings().
-
--type update_shared_vpc_configuration_errors() ::
-    incompatible_parameter_error() | 
     internal_server_error() | 
     bad_request().
 
--type update_snapshot_errors() ::
+-type untag_resource_errors() ::
+    resource_not_found() | 
+    resource_does_not_support_tagging() | 
+    not_service_resource_error() | 
     internal_server_error() | 
-    bad_request() | 
-    snapshot_not_found().
+    bad_request().
+
+-type update_data_repository_association_errors() ::
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    data_repository_association_not_found() | 
+    bad_request().
+
+-type update_file_cache_errors() ::
+    unsupported_operation() | 
+    service_limit_exceeded() | 
+    missing_file_cache_configuration() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_cache_not_found() | 
+    bad_request().
+
+-type update_file_system_errors() ::
+    unsupported_operation() | 
+    service_limit_exceeded() | 
+    missing_file_system_configuration() | 
+    invalid_network_settings() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
+
+-type update_shared_vpc_configuration_errors() ::
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type update_snapshot_errors() ::
+    snapshot_not_found() | 
+    internal_server_error() | 
+    bad_request().
 
 -type update_storage_virtual_machine_errors() ::
-    incompatible_parameter_error() | 
-    internal_server_error() | 
-    bad_request() | 
     unsupported_operation() | 
-    storage_virtual_machine_not_found().
+    storage_virtual_machine_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
 
 -type update_volume_errors() ::
-    incompatible_parameter_error() | 
     volume_not_found() | 
+    missing_volume_configuration() | 
     internal_server_error() | 
-    bad_request() | 
-    missing_volume_configuration().
+    incompatible_parameter_error() | 
+    bad_request().
 
 %%====================================================================
 %% API

@@ -77,157 +77,28 @@
 
 
 %% Example:
-%% dimension_key_detail() :: #{
-%%   <<"Dimension">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type dimension_key_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_performance_analysis_report_recommendations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type list_performance_analysis_report_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_resource_dimensions_request() :: #{
-%%   <<"AuthorizedActions">> => list(list(any())()),
-%%   <<"Identifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> := list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceType">> := list(any())
-%% }
--type list_available_resource_dimensions_request() :: #{binary() => any()}.
-
-%% Example:
-%% performance_insights_metric() :: #{
-%%   <<"Dimensions">> => map(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Filter">> => map(),
-%%   <<"Metric">> => string(),
-%%   <<"Value">> => float()
-%% }
--type performance_insights_metric() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"ServiceType">> := list(any()),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_point() :: #{
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Value">> => float()
-%% }
--type data_point() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_resource_metrics_response() :: #{
-%%   <<"Metrics">> => list(response_resource_metric()),
-%%   <<"NextToken">> => string()
-%% }
--type list_available_resource_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_dimension_key_details_response() :: #{
-%%   <<"Dimensions">> => list(dimension_key_detail())
-%% }
--type get_dimension_key_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_performance_analysis_report_request() :: #{
-%%   <<"AcceptLanguage">> => list(any()),
-%%   <<"AnalysisReportId">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"ServiceType">> := list(any()),
-%%   <<"TextFormat">> => list(any())
-%% }
--type get_performance_analysis_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_key_data_points() :: #{
-%%   <<"DataPoints">> => list(data_point()),
-%%   <<"Key">> => response_resource_metric_key()
-%% }
--type metric_key_data_points() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_metadata_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"ServiceType">> := list(any())
-%% }
--type get_resource_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_performance_analysis_report_response() :: #{
-%%   <<"AnalysisReport">> => analysis_report()
-%% }
--type get_performance_analysis_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% response_resource_metric() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Metric">> => string(),
-%%   <<"Unit">> => string()
-%% }
--type response_resource_metric() :: #{binary() => any()}.
-
-%% Example:
-%% feature_metadata() :: #{
+%% analysis_report() :: #{
+%%   <<"AnalysisReportId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Identifier">> => string(),
+%%   <<"Insights">> => list(insight()),
+%%   <<"ServiceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any())
 %% }
--type feature_metadata() :: #{binary() => any()}.
+-type analysis_report() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_resource_dimensions_response() :: #{
-%%   <<"MetricDimensions">> => list(metric_dimension_groups()),
-%%   <<"NextToken">> => string()
+%% analysis_report_summary() :: #{
+%%   <<"AnalysisReportId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_available_resource_dimensions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_metrics_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"Identifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetricQueries">> := list(metric_query()),
-%%   <<"NextToken">> => string(),
-%%   <<"PeriodAlignment">> => list(any()),
-%%   <<"PeriodInSeconds">> => integer(),
-%%   <<"ServiceType">> := list(any()),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type get_resource_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"ServiceType">> := list(any()),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_metrics_response() :: #{
-%%   <<"AlignedEndTime">> => non_neg_integer(),
-%%   <<"AlignedStartTime">> => non_neg_integer(),
-%%   <<"Identifier">> => string(),
-%%   <<"MetricList">> => list(metric_key_data_points()),
-%%   <<"NextToken">> => string()
-%% }
--type get_resource_metrics_response() :: #{binary() => any()}.
+-type analysis_report_summary() :: #{binary() => any()}.
 
 %% Example:
 %% create_performance_analysis_report_request() :: #{
@@ -246,6 +117,19 @@
 -type create_performance_analysis_report_response() :: #{binary() => any()}.
 
 %% Example:
+%% data() :: #{
+%%   <<"PerformanceInsightsMetric">> => performance_insights_metric()
+%% }
+-type data() :: #{binary() => any()}.
+
+%% Example:
+%% data_point() :: #{
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type data_point() :: #{binary() => any()}.
+
+%% Example:
 %% delete_performance_analysis_report_request() :: #{
 %%   <<"AnalysisReportId">> := string(),
 %%   <<"Identifier">> := string(),
@@ -254,171 +138,10 @@
 -type delete_performance_analysis_report_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% response_resource_metric_key() :: #{
-%%   <<"Dimensions">> => map(),
-%%   <<"Metric">> => string()
-%% }
--type response_resource_metric_key() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"RecommendationDescription">> => string(),
-%%   <<"RecommendationDetails">> => string(),
-%%   <<"RecommendationId">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% analysis_report() :: #{
-%%   <<"AnalysisReportId">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Identifier">> => string(),
-%%   <<"Insights">> => list(insight()),
-%%   <<"ServiceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type analysis_report() :: #{binary() => any()}.
-
-%% Example:
-%% list_performance_analysis_report_recommendations_request() :: #{
-%%   <<"AnalysisReportId">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RecommendationIds">> => list(string()),
-%%   <<"ServiceType">> := list(any())
-%% }
--type list_performance_analysis_report_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% analysis_report_summary() :: #{
-%%   <<"AnalysisReportId">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type analysis_report_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_resource_metrics_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetricTypes">> := list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceType">> := list(any())
-%% }
--type list_available_resource_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_group() :: #{
-%%   <<"Dimensions">> => list(string()),
-%%   <<"Group">> => string(),
-%%   <<"Limit">> => integer()
-%% }
--type dimension_group() :: #{binary() => any()}.
-
-%% Example:
-%% metric_query() :: #{
-%%   <<"Filter">> => map(),
-%%   <<"GroupBy">> => dimension_group(),
-%%   <<"Metric">> => string()
-%% }
--type metric_query() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_detail() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type dimension_detail() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_key_description() :: #{
-%%   <<"AdditionalMetrics">> => map(),
-%%   <<"Dimensions">> => map(),
-%%   <<"Partitions">> => list(float()),
-%%   <<"Total">> => float()
-%% }
--type dimension_key_description() :: #{binary() => any()}.
-
-%% Example:
-%% get_dimension_key_details_request() :: #{
-%%   <<"Group">> := string(),
-%%   <<"GroupIdentifier">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"RequestedDimensions">> => list(string()),
-%%   <<"ServiceType">> := list(any())
-%% }
--type get_dimension_key_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% not_authorized_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_authorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_argument_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_argument_exception() :: #{binary() => any()}.
-
-%% Example:
 %% delete_performance_analysis_report_response() :: #{
 
 %% }
 -type delete_performance_analysis_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"ServiceType">> := list(any())
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% response_partition_key() :: #{
-%%   <<"Dimensions">> => map()
-%% }
--type response_partition_key() :: #{binary() => any()}.
-
-%% Example:
-%% list_performance_analysis_reports_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"ListTags">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceType">> := list(any())
-%% }
--type list_performance_analysis_reports_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_dimension_keys_request() :: #{
@@ -438,13 +161,6 @@
 -type describe_dimension_keys_request() :: #{binary() => any()}.
 
 %% Example:
-%% dimension_group_detail() :: #{
-%%   <<"Dimensions">> => list(dimension_detail()),
-%%   <<"Group">> => string()
-%% }
--type dimension_group_detail() :: #{binary() => any()}.
-
-%% Example:
 %% describe_dimension_keys_response() :: #{
 %%   <<"AlignedEndTime">> => non_neg_integer(),
 %%   <<"AlignedStartTime">> => non_neg_integer(),
@@ -455,10 +171,118 @@
 -type describe_dimension_keys_response() :: #{binary() => any()}.
 
 %% Example:
-%% data() :: #{
-%%   <<"PerformanceInsightsMetric">> => performance_insights_metric()
+%% dimension_detail() :: #{
+%%   <<"Identifier">> => string()
 %% }
--type data() :: #{binary() => any()}.
+-type dimension_detail() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_group() :: #{
+%%   <<"Dimensions">> => list(string()),
+%%   <<"Group">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type dimension_group() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_group_detail() :: #{
+%%   <<"Dimensions">> => list(dimension_detail()),
+%%   <<"Group">> => string()
+%% }
+-type dimension_group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_key_description() :: #{
+%%   <<"AdditionalMetrics">> => map(),
+%%   <<"Dimensions">> => map(),
+%%   <<"Partitions">> => list(float()),
+%%   <<"Total">> => float()
+%% }
+-type dimension_key_description() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_key_detail() :: #{
+%%   <<"Dimension">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dimension_key_detail() :: #{binary() => any()}.
+
+%% Example:
+%% feature_metadata() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type feature_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_dimension_key_details_request() :: #{
+%%   <<"Group">> := string(),
+%%   <<"GroupIdentifier">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"RequestedDimensions">> => list(string()),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type get_dimension_key_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_dimension_key_details_response() :: #{
+%%   <<"Dimensions">> => list(dimension_key_detail())
+%% }
+-type get_dimension_key_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_performance_analysis_report_request() :: #{
+%%   <<"AcceptLanguage">> => list(any()),
+%%   <<"AnalysisReportId">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"ServiceType">> := list(any()),
+%%   <<"TextFormat">> => list(any())
+%% }
+-type get_performance_analysis_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_performance_analysis_report_response() :: #{
+%%   <<"AnalysisReport">> => analysis_report()
+%% }
+-type get_performance_analysis_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metadata_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type get_resource_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metadata_response() :: #{
+%%   <<"Features">> => map(),
+%%   <<"Identifier">> => string()
+%% }
+-type get_resource_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metrics_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricQueries">> := list(metric_query()),
+%%   <<"NextToken">> => string(),
+%%   <<"PeriodAlignment">> => list(any()),
+%%   <<"PeriodInSeconds">> => integer(),
+%%   <<"ServiceType">> := list(any()),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_resource_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metrics_response() :: #{
+%%   <<"AlignedEndTime">> => non_neg_integer(),
+%%   <<"AlignedStartTime">> => non_neg_integer(),
+%%   <<"Identifier">> => string(),
+%%   <<"MetricList">> => list(metric_key_data_points()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_resource_metrics_response() :: #{binary() => any()}.
 
 %% Example:
 %% insight() :: #{
@@ -477,11 +301,99 @@
 -type insight() :: #{binary() => any()}.
 
 %% Example:
+%% internal_service_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_resource_dimensions_request() :: #{
+%%   <<"AuthorizedActions">> => list(list(any())()),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Metrics">> := list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_available_resource_dimensions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_resource_dimensions_response() :: #{
+%%   <<"MetricDimensions">> => list(metric_dimension_groups()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_available_resource_dimensions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_resource_metrics_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricTypes">> := list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_available_resource_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_resource_metrics_response() :: #{
+%%   <<"Metrics">> => list(response_resource_metric()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_available_resource_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_performance_analysis_report_recommendations_request() :: #{
+%%   <<"AnalysisReportId">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationIds">> => list(string()),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_performance_analysis_report_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_performance_analysis_report_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type list_performance_analysis_report_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_performance_analysis_reports_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"ListTags">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_performance_analysis_reports_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_performance_analysis_reports_response() :: #{
 %%   <<"AnalysisReports">> => list(analysis_report_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_performance_analysis_reports_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ServiceType">> := list(any())
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% metric_dimension_groups() :: #{
@@ -491,81 +403,169 @@
 -type metric_dimension_groups() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_metadata_response() :: #{
-%%   <<"Features">> => map(),
-%%   <<"Identifier">> => string()
+%% metric_key_data_points() :: #{
+%%   <<"DataPoints">> => list(data_point()),
+%%   <<"Key">> => response_resource_metric_key()
 %% }
--type get_resource_metadata_response() :: #{binary() => any()}.
+-type metric_key_data_points() :: #{binary() => any()}.
+
+%% Example:
+%% metric_query() :: #{
+%%   <<"Filter">> => map(),
+%%   <<"GroupBy">> => dimension_group(),
+%%   <<"Metric">> => string()
+%% }
+-type metric_query() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% performance_insights_metric() :: #{
+%%   <<"Dimensions">> => map(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => map(),
+%%   <<"Metric">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type performance_insights_metric() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"RecommendationDescription">> => string(),
+%%   <<"RecommendationDetails">> => string(),
+%%   <<"RecommendationId">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% response_partition_key() :: #{
+%%   <<"Dimensions">> => map()
+%% }
+-type response_partition_key() :: #{binary() => any()}.
+
+%% Example:
+%% response_resource_metric() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Metric">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type response_resource_metric() :: #{binary() => any()}.
+
+%% Example:
+%% response_resource_metric_key() :: #{
+%%   <<"Dimensions">> => map(),
+%%   <<"Metric">> => string()
+%% }
+-type response_resource_metric_key() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ServiceType">> := list(any()),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ServiceType">> := list(any()),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 -type create_performance_analysis_report_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type delete_performance_analysis_report_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type describe_dimension_keys_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type get_dimension_key_details_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type get_performance_analysis_report_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type get_resource_metadata_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type get_resource_metrics_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type list_available_resource_dimensions_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type list_available_resource_metrics_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type list_performance_analysis_report_recommendations_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type list_performance_analysis_reports_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type list_tags_for_resource_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type tag_resource_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 -type untag_resource_errors() ::
-    internal_service_error() | 
+    not_authorized_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception().
+    internal_service_error().
 
 %%====================================================================
 %% API

@@ -102,12 +102,15 @@
          list_global_resolvers/1,
          list_global_resolvers/3,
          list_global_resolvers/4,
-         list_hosted_zone_associations/2,
+         list_hosted_zone_associations/1,
+         list_hosted_zone_associations/3,
          list_hosted_zone_associations/4,
-         list_hosted_zone_associations/5,
          list_managed_firewall_domain_lists/2,
          list_managed_firewall_domain_lists/4,
          list_managed_firewall_domain_lists/5,
+         list_shared_dns_views/1,
+         list_shared_dns_views/3,
+         list_shared_dns_views/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          tag_resource/2,
@@ -134,122 +137,10 @@
 
 
 %% Example:
-%% update_firewall_rule_input() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"blockOverrideDnsType">> => list(any()),
-%%   <<"blockOverrideDomain">> => string(),
-%%   <<"blockOverrideTtl">> => integer(),
-%%   <<"blockResponse">> => list(any()),
-%%   <<"clientToken">> := string(),
-%%   <<"confidenceThreshold">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"priority">> => float()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_firewall_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_source_input() :: #{
-%%   <<"cidr">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"dnsViewId">> := string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_access_source_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dns_view_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type create_dns_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_sources_input() :: #{
-%%   <<"filters">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_access_sources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_firewall_rule_output() :: #{
-%%   <<"failures">> => list(batch_create_firewall_rule_output_item()),
-%%   <<"successes">> => list(batch_create_firewall_rule_output_item())
-%% }
--type batch_create_firewall_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_dns_view_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type disable_dns_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dns_view_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_dns_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_firewall_domain_lists_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"managedListType">> => [string()],
-%%   <<"name">> => string()
-%% }
--type managed_firewall_domain_lists_item() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -269,177 +160,26 @@
 
 
 %% Example:
-%% create_access_source_output() :: #{
+%% access_token_item() :: #{
 %%   <<"arn">> => string(),
-%%   <<"cidr">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type create_access_source_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% global_resolvers_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4Addresses">> => list(string()),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type global_resolvers_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_firewall_domains_output() :: #{
-%%   <<"domains">> => list(string()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_firewall_domains_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_token_input() :: #{
-%%   <<"clientToken">> => string(),
 %%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_access_token_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_hosted_zone_association_input() :: #{}
--type get_hosted_zone_association_input() :: #{}.
-
-
-%% Example:
-%% delete_firewall_domain_list_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_firewall_domain_list_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_token_input() :: #{}
--type get_access_token_input() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_firewall_domain_list_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainCount">> => [integer()],
 %%   <<"globalResolverId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type create_firewall_domain_list_output() :: #{binary() => any()}.
+-type access_token_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_firewall_domain_lists_output() :: #{
-%%   <<"firewallDomainLists">> => list(firewall_domain_lists_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_firewall_domain_lists_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_token_input() :: #{}
--type delete_access_token_input() :: #{}.
-
-
-%% Example:
-%% delete_access_source_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cidr">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsViewId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type delete_access_source_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_firewall_domain_lists_input() :: #{
-%%   <<"globalResolverId">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_firewall_domain_lists_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_firewall_rule_input() :: #{
-%%   <<"firewallRules">> := list(batch_delete_firewall_rule_input_item())
-%% }
--type batch_delete_firewall_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_firewall_rule_output() :: #{
-%%   <<"failures">> => list(batch_update_firewall_rule_output_item()),
-%%   <<"successes">> => list(batch_update_firewall_rule_output_item())
-%% }
--type batch_update_firewall_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dns_view_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
+%% associate_hosted_zone_input() :: #{
 %%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%%   <<"resourceArn">> := string()
 %% }
--type create_dns_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_firewall_domain_list_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_firewall_domain_list_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_source_input() :: #{}
--type get_access_source_input() :: #{}.
-
-%% Example:
-%% delete_dns_view_input() :: #{}
--type delete_dns_view_input() :: #{}.
+-type associate_hosted_zone_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,375 +197,38 @@
 
 
 %% Example:
-%% update_dns_view_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"name">> => string()
+%% batch_create_firewall_rule_input() :: #{
+%%   <<"firewallRules">> := list(batch_create_firewall_rule_input_item())
 %% }
--type update_dns_view_input() :: #{binary() => any()}.
+-type batch_create_firewall_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_firewall_rule_output_item() :: #{
-%%   <<"code">> => [integer()],
-%%   <<"firewallRule">> => batch_delete_firewall_rule_result(),
-%%   <<"message">> => [string()]
-%% }
--type batch_delete_firewall_rule_output_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_view_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type dns_view_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_hosted_zone_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"hostedZoneId">> => string(),
-%%   <<"hostedZoneName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type disassociate_hosted_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_firewall_domain_lists_output() :: #{
-%%   <<"managedFirewallDomainLists">> => list(managed_firewall_domain_lists_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_managed_firewall_domain_lists_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% firewall_rules_item() :: #{
+%% batch_create_firewall_rule_input_item() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"blockOverrideDnsType">> => list(any()),
 %%   <<"blockOverrideDomain">> => string(),
 %%   <<"blockOverrideTtl">> => integer(),
 %%   <<"blockResponse">> => list(any()),
-%%   <<"confidenceThreshold">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"dnsViewId">> => string(),
-%%   <<"firewallDomainListId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => float(),
-%%   <<"queryType">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type firewall_rules_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_dns_view_input() :: #{}
--type get_dns_view_input() :: #{}.
-
-
-%% Example:
-%% update_access_token_output() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_access_token_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_global_resolver_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> := list(string()),
-%%   <<"tags">> => map()
-%% }
--type create_global_resolver_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dns_view_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnssecValidation">> => list(any()),
-%%   <<"ednsClientSubnet">> => list(any()),
-%%   <<"firewallRulesFailOpen">> => list(any()),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_dns_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hosted_zone_associations_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_hosted_zone_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_source_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cidr">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsViewId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_access_source_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_token_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsViewId">> => string(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type create_access_token_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_domain_list_input() :: #{}
--type delete_firewall_domain_list_input() :: #{}.
-
-%% Example:
-%% get_managed_firewall_domain_list_input() :: #{}
--type get_managed_firewall_domain_list_input() :: #{}.
-
-
-%% Example:
-%% list_access_tokens_output() :: #{
-%%   <<"accessTokens">> => list(access_token_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_access_tokens_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_source_input() :: #{}
--type delete_access_source_input() :: #{}.
-
-
-%% Example:
-%% update_global_resolver_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4Addresses">> => list(string()),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_global_resolver_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_global_resolver_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4Addresses">> => list(string()),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type create_global_resolver_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_tokens_input() :: #{
-%%   <<"filters">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_access_tokens_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_hosted_zone_association_input() :: #{
-%%   <<"name">> => string()
-%% }
--type update_hosted_zone_association_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_hosted_zone_input() :: #{}
--type disassociate_hosted_zone_input() :: #{}.
-
-
-%% Example:
-%% delete_access_token_output() :: #{
-%%   <<"deletedAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_access_token_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_firewall_domains_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_firewall_domains_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_firewall_rule_output() :: #{
-%%   <<"failures">> => list(batch_delete_firewall_rule_output_item()),
-%%   <<"successes">> => list(batch_delete_firewall_rule_output_item())
-%% }
--type batch_delete_firewall_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_firewall_rule_input() :: #{
-%%   <<"action">> := list(any()),
-%%   <<"blockOverrideDnsType">> => list(any()),
-%%   <<"blockOverrideDomain">> => string(),
-%%   <<"blockOverrideTtl">> => integer(),
-%%   <<"blockResponse">> => list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"confidenceThreshold">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"dnsViewId">> := string(),
+%%   <<"dnsViewId">> => string(),
 %%   <<"firewallDomainListId">> => string(),
-%%   <<"name">> := string(),
+%%   <<"name">> => string(),
 %%   <<"priority">> => float(),
 %%   <<"qType">> => string()
 %% }
--type create_firewall_rule_input() :: #{binary() => any()}.
+-type batch_create_firewall_rule_input_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% batch_create_firewall_rule_output() :: #{
+%%   <<"failures">> => list(batch_create_firewall_rule_output_item()),
+%%   <<"successes">> => list(batch_create_firewall_rule_output_item())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% firewall_domain_lists_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type firewall_domain_lists_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_firewall_domains_output() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_firewall_domains_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_firewall_rule_input_item() :: #{
-%%   <<"firewallRuleId">> => string()
-%% }
--type batch_delete_firewall_rule_input_item() :: #{binary() => any()}.
+-type batch_create_firewall_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -835,28 +238,6 @@
 %%   <<"message">> => [string()]
 %% }
 -type batch_create_firewall_rule_output_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_firewall_domain_lists_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_managed_firewall_domain_lists_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_dns_view_input() :: #{}
--type disable_dns_view_input() :: #{}.
-
-
-%% Example:
-%% update_access_source_input() :: #{
-%%   <<"cidr">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any())
-%% }
--type update_access_source_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -885,86 +266,51 @@
 
 
 %% Example:
-%% update_firewall_rule_output() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"blockOverrideDnsType">> => list(any()),
-%%   <<"blockOverrideDomain">> => string(),
-%%   <<"blockOverrideTtl">> => integer(),
-%%   <<"blockResponse">> => list(any()),
-%%   <<"confidenceThreshold">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"dnsViewId">> => string(),
-%%   <<"firewallDomainListId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => float(),
-%%   <<"queryType">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%% batch_delete_firewall_rule_input() :: #{
+%%   <<"firewallRules">> := list(batch_delete_firewall_rule_input_item())
 %% }
--type update_firewall_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_input() :: #{}
--type get_firewall_rule_input() :: #{}.
+-type batch_delete_firewall_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_global_resolver_output() :: #{
-%%   <<"arn">> => string(),
+%% batch_delete_firewall_rule_input_item() :: #{
+%%   <<"firewallRuleId">> => string()
+%% }
+-type batch_delete_firewall_rule_input_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_firewall_rule_output() :: #{
+%%   <<"failures">> => list(batch_delete_firewall_rule_output_item()),
+%%   <<"successes">> => list(batch_delete_firewall_rule_output_item())
+%% }
+-type batch_delete_firewall_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_firewall_rule_output_item() :: #{
+%%   <<"code">> => [integer()],
+%%   <<"firewallRule">> => batch_delete_firewall_rule_result(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_delete_firewall_rule_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_firewall_rule_result() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsName">> => string(),
 %%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4Addresses">> => list(string()),
-%%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"status">> => list(any())
 %% }
--type delete_global_resolver_output() :: #{binary() => any()}.
+-type batch_delete_firewall_rule_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%% batch_update_firewall_rule_input() :: #{
+%%   <<"firewallRules">> := list(batch_update_firewall_rule_input_item())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_domain_list_input() :: #{}
--type get_firewall_domain_list_input() :: #{}.
-
-
-%% Example:
-%% get_access_source_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cidr">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsViewId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_access_source_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_firewall_domains_input() :: #{
-%%   <<"domainFileUrl">> := [string()],
-%%   <<"operation">> := [string()]
-%% }
--type import_firewall_domains_input() :: #{binary() => any()}.
+-type batch_update_firewall_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -985,12 +331,30 @@
 
 
 %% Example:
-%% get_firewall_rule_output() :: #{
+%% batch_update_firewall_rule_output() :: #{
+%%   <<"failures">> => list(batch_update_firewall_rule_output_item()),
+%%   <<"successes">> => list(batch_update_firewall_rule_output_item())
+%% }
+-type batch_update_firewall_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_firewall_rule_output_item() :: #{
+%%   <<"code">> => [integer()],
+%%   <<"firewallRule">> => batch_update_firewall_rule_result(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_update_firewall_rule_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_firewall_rule_result() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"blockOverrideDnsType">> => list(any()),
 %%   <<"blockOverrideDomain">> => string(),
 %%   <<"blockOverrideTtl">> => integer(),
 %%   <<"blockResponse">> => list(any()),
+%%   <<"clientToken">> => string(),
 %%   <<"confidenceThreshold">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -1004,44 +368,116 @@
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_firewall_rule_output() :: #{binary() => any()}.
+-type batch_update_firewall_rule_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_token_item() :: #{
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_source_input() :: #{
+%%   <<"cidr">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"dnsViewId">> := string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_access_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_source_output() :: #{
 %%   <<"arn">> => string(),
+%%   <<"cidr">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsViewId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_access_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_token_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_access_token_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_token_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type create_access_token_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dns_view_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_dns_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dns_view_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
 %%   <<"globalResolverId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type access_token_item() :: #{binary() => any()}.
+-type create_dns_view_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_firewall_domains_output() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type import_firewall_domains_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_firewall_domain_list_output() :: #{
-%%   <<"arn">> => string(),
+%% create_firewall_domain_list_input() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_firewall_domain_list_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_firewall_domain_list_output() :: #{
+%%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainCount">> => [integer()],
@@ -1049,165 +485,29 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_firewall_domain_list_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type create_firewall_domain_list_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_firewall_rules_output() :: #{
-%%   <<"firewallRules">> => list(firewall_rules_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_firewall_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_token_input() :: #{
-%%   <<"name">> := string()
-%% }
--type update_access_token_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_association_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"hostedZoneId">> => string(),
-%%   <<"hostedZoneName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type hosted_zone_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_firewall_rule_input() :: #{
-%%   <<"firewallRules">> := list(batch_create_firewall_rule_input_item())
-%% }
--type batch_create_firewall_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_global_resolver_input() :: #{}
--type delete_global_resolver_input() :: #{}.
-
-
-%% Example:
-%% batch_update_firewall_rule_input() :: #{
-%%   <<"firewallRules">> := list(batch_update_firewall_rule_input_item())
-%% }
--type batch_update_firewall_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_hosted_zone_association_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"hostedZoneId">> => string(),
-%%   <<"hostedZoneName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_hosted_zone_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_resolver_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string())
-%% }
--type update_global_resolver_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_firewall_domain_list_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"managedListType">> => [string()],
-%%   <<"name">> => string()
-%% }
--type get_managed_firewall_domain_list_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dns_views_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dns_views_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_token_output() :: #{
-%%   <<"arn">> => string(),
+%% create_firewall_rule_input() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"blockOverrideDnsType">> => list(any()),
+%%   <<"blockOverrideDomain">> => string(),
+%%   <<"blockOverrideTtl">> => integer(),
+%%   <<"blockResponse">> => list(any()),
 %%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsViewId">> => string(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"globalResolverId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"value">> => string()
-%% }
--type get_access_token_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_hosted_zone_input() :: #{
-%%   <<"name">> := string(),
-%%   <<"resourceArn">> := string()
-%% }
--type associate_hosted_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_firewall_rules_input() :: #{
+%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"dnsAdvancedProtection">> => list(any()),
 %%   <<"dnsViewId">> := string(),
-%%   <<"filters">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%%   <<"firewallDomainListId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"priority">> => float(),
+%%   <<"qType">> => string()
 %% }
--type list_firewall_rules_input() :: #{binary() => any()}.
+-type create_firewall_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1234,56 +534,73 @@
 
 
 %% Example:
-%% batch_update_firewall_rule_result() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"blockOverrideDnsType">> => list(any()),
-%%   <<"blockOverrideDomain">> => string(),
-%%   <<"blockOverrideTtl">> => integer(),
-%%   <<"blockResponse">> => list(any()),
+%% create_global_resolver_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> := list(string()),
+%%   <<"tags">> => map()
+%% }
+-type create_global_resolver_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_global_resolver_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"dnsViewId">> => string(),
-%%   <<"firewallDomainListId">> => string(),
+%%   <<"dnsName">> => string(),
 %%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
-%%   <<"priority">> => float(),
-%%   <<"queryType">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type batch_update_firewall_rule_result() :: #{binary() => any()}.
+-type create_global_resolver_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_firewall_rule_input() :: #{}
--type delete_firewall_rule_input() :: #{}.
+%% delete_access_source_input() :: #{}
+-type delete_access_source_input() :: #{}.
 
 
 %% Example:
-%% list_access_sources_output() :: #{
-%%   <<"accessSources">> => list(access_sources_item()),
-%%   <<"nextToken">> => [string()]
+%% delete_access_source_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cidr">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsViewId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_access_sources_output() :: #{binary() => any()}.
+-type delete_access_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_token_input() :: #{}
+-type delete_access_token_input() :: #{}.
 
 
 %% Example:
-%% list_hosted_zone_associations_output() :: #{
-%%   <<"hostedZoneAssociations">> => list(hosted_zone_association_summary()),
-%%   <<"nextToken">> => [string()]
+%% delete_access_token_output() :: #{
+%%   <<"deletedAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type list_hosted_zone_associations_output() :: #{binary() => any()}.
-
+-type delete_access_token_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_update_firewall_rule_output_item() :: #{
-%%   <<"code">> => [integer()],
-%%   <<"firewallRule">> => batch_update_firewall_rule_result(),
-%%   <<"message">> => [string()]
-%% }
--type batch_update_firewall_rule_output_item() :: #{binary() => any()}.
+%% delete_dns_view_input() :: #{}
+-type delete_dns_view_input() :: #{}.
 
 
 %% Example:
@@ -1303,101 +620,23 @@
 %% }
 -type delete_dns_view_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_dns_views_output() :: #{
-%%   <<"dnsViews">> => list(dns_view_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dns_views_output() :: #{binary() => any()}.
+%% delete_firewall_domain_list_input() :: #{}
+-type delete_firewall_domain_list_input() :: #{}.
 
 
 %% Example:
-%% get_hosted_zone_association_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"hostedZoneId">> => string(),
-%%   <<"hostedZoneName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_hosted_zone_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_global_resolver_output() :: #{
+%% delete_firewall_domain_list_output() :: #{
 %%   <<"arn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dnsName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4Addresses">> => list(string()),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"observabilityRegion">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_global_resolver_output() :: #{binary() => any()}.
-
-%% Example:
-%% enable_dns_view_input() :: #{}
--type enable_dns_view_input() :: #{}.
-
-
-%% Example:
-%% batch_delete_firewall_rule_result() :: #{
-%%   <<"clientToken">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type batch_delete_firewall_rule_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_firewall_rule_input_item() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"blockOverrideDnsType">> => list(any()),
-%%   <<"blockOverrideDomain">> => string(),
-%%   <<"blockOverrideTtl">> => integer(),
-%%   <<"blockResponse">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"confidenceThreshold">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"dnsAdvancedProtection">> => list(any()),
-%%   <<"dnsViewId">> => string(),
-%%   <<"firewallDomainListId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => float(),
-%%   <<"qType">> => string()
-%% }
--type batch_create_firewall_rule_input_item() :: #{binary() => any()}.
-
+-type delete_firewall_domain_list_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_global_resolvers_output() :: #{
-%%   <<"globalResolvers">> => list(global_resolvers_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_global_resolvers_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_global_resolvers_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_global_resolvers_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_global_resolver_input() :: #{}
--type get_global_resolver_input() :: #{}.
+%% delete_firewall_rule_input() :: #{}
+-type delete_firewall_rule_input() :: #{}.
 
 
 %% Example:
@@ -1422,6 +661,92 @@
 %% }
 -type delete_firewall_rule_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_global_resolver_input() :: #{}
+-type delete_global_resolver_input() :: #{}.
+
+
+%% Example:
+%% delete_global_resolver_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_global_resolver_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_dns_view_input() :: #{}
+-type disable_dns_view_input() :: #{}.
+
+
+%% Example:
+%% disable_dns_view_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type disable_dns_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_hosted_zone_input() :: #{}
+-type disassociate_hosted_zone_input() :: #{}.
+
+
+%% Example:
+%% disassociate_hosted_zone_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"hostedZoneName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type disassociate_hosted_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_view_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type dns_view_summary() :: #{binary() => any()}.
+
+%% Example:
+%% enable_dns_view_input() :: #{}
+-type enable_dns_view_input() :: #{}.
+
 
 %% Example:
 %% enable_dns_view_output() :: #{
@@ -1442,290 +767,1010 @@
 
 
 %% Example:
+%% firewall_domain_lists_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type firewall_domain_lists_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% firewall_rules_item() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"blockOverrideDnsType">> => list(any()),
+%%   <<"blockOverrideDomain">> => string(),
+%%   <<"blockOverrideTtl">> => integer(),
+%%   <<"blockResponse">> => list(any()),
+%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsAdvancedProtection">> => list(any()),
+%%   <<"dnsViewId">> => string(),
+%%   <<"firewallDomainListId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => float(),
+%%   <<"queryType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type firewall_rules_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_source_input() :: #{}
+-type get_access_source_input() :: #{}.
+
+
+%% Example:
+%% get_access_source_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cidr">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsViewId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_access_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_input() :: #{}
+-type get_access_token_input() :: #{}.
+
+
+%% Example:
+%% get_access_token_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsViewId">> => string(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"value">> => string()
+%% }
+-type get_access_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_dns_view_input() :: #{}
+-type get_dns_view_input() :: #{}.
+
+
+%% Example:
+%% get_dns_view_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_dns_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_domain_list_input() :: #{}
+-type get_firewall_domain_list_input() :: #{}.
+
+
+%% Example:
+%% get_firewall_domain_list_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainCount">> => [integer()],
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_firewall_domain_list_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_input() :: #{}
+-type get_firewall_rule_input() :: #{}.
+
+
+%% Example:
+%% get_firewall_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"blockOverrideDnsType">> => list(any()),
+%%   <<"blockOverrideDomain">> => string(),
+%%   <<"blockOverrideTtl">> => integer(),
+%%   <<"blockResponse">> => list(any()),
+%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsAdvancedProtection">> => list(any()),
+%%   <<"dnsViewId">> => string(),
+%%   <<"firewallDomainListId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => float(),
+%%   <<"queryType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_firewall_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_global_resolver_input() :: #{}
+-type get_global_resolver_input() :: #{}.
+
+
+%% Example:
+%% get_global_resolver_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_global_resolver_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_association_input() :: #{}
+-type get_hosted_zone_association_input() :: #{}.
+
+
+%% Example:
+%% get_hosted_zone_association_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"hostedZoneName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_hosted_zone_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_firewall_domain_list_input() :: #{}
+-type get_managed_firewall_domain_list_input() :: #{}.
+
+
+%% Example:
+%% get_managed_firewall_domain_list_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"managedListType">> => [string()],
+%%   <<"name">> => string()
+%% }
+-type get_managed_firewall_domain_list_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% global_resolvers_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type global_resolvers_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_association_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"hostedZoneName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type hosted_zone_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_firewall_domains_input() :: #{
+%%   <<"domainFileUrl">> := [string()],
+%%   <<"operation">> := [string()]
+%% }
+-type import_firewall_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_firewall_domains_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type import_firewall_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_sources_input() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_sources_output() :: #{
+%%   <<"accessSources">> => list(access_sources_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_sources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_tokens_input() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_tokens_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_tokens_output() :: #{
+%%   <<"accessTokens">> => list(access_token_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_tokens_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dns_views_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dns_views_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dns_views_output() :: #{
+%%   <<"dnsViews">> => list(dns_view_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dns_views_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_domain_lists_input() :: #{
+%%   <<"globalResolverId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_domain_lists_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_domain_lists_output() :: #{
+%%   <<"firewallDomainLists">> => list(firewall_domain_lists_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_domain_lists_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_domains_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_domains_output() :: #{
+%%   <<"domains">> => list(string()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_rules_input() :: #{
+%%   <<"dnsViewId">> := string(),
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_firewall_rules_output() :: #{
+%%   <<"firewallRules">> => list(firewall_rules_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_firewall_rules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_global_resolvers_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_global_resolvers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_global_resolvers_output() :: #{
+%%   <<"globalResolvers">> => list(global_resolvers_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_global_resolvers_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hosted_zone_associations_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceArn">> => string()
+%% }
+-type list_hosted_zone_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hosted_zone_associations_output() :: #{
+%%   <<"hostedZoneAssociations">> => list(hosted_zone_association_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_hosted_zone_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_firewall_domain_lists_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_managed_firewall_domain_lists_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_firewall_domain_lists_output() :: #{
+%%   <<"managedFirewallDomainLists">> => list(managed_firewall_domain_lists_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_managed_firewall_domain_lists_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shared_dns_views_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_shared_dns_views_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shared_dns_views_output() :: #{
+%%   <<"dnsViews">> => list(shared_dns_view_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_shared_dns_views_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_firewall_domain_lists_item() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"managedListType">> => [string()],
+%%   <<"name">> => string()
+%% }
+-type managed_firewall_domain_lists_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% shared_dns_view_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type shared_dns_view_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_access_source_input() :: #{
+%%   <<"cidr">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type update_access_source_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_source_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cidr">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsViewId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_access_source_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_token_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type update_access_token_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_token_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_access_token_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dns_view_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type update_dns_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dns_view_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnssecValidation">> => list(any()),
+%%   <<"ednsClientSubnet">> => list(any()),
+%%   <<"firewallRulesFailOpen">> => list(any()),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_dns_view_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_firewall_domains_input() :: #{
 %%   <<"domains">> := list(string()),
 %%   <<"operation">> := [string()]
 %% }
 -type update_firewall_domains_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_firewall_domains_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_firewall_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_firewall_rule_input() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"blockOverrideDnsType">> => list(any()),
+%%   <<"blockOverrideDomain">> => string(),
+%%   <<"blockOverrideTtl">> => integer(),
+%%   <<"blockResponse">> => list(any()),
+%%   <<"clientToken">> := string(),
+%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"dnsAdvancedProtection">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"priority">> => float()
+%% }
+-type update_firewall_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_firewall_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"blockOverrideDnsType">> => list(any()),
+%%   <<"blockOverrideDomain">> => string(),
+%%   <<"blockOverrideTtl">> => integer(),
+%%   <<"blockResponse">> => list(any()),
+%%   <<"confidenceThreshold">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsAdvancedProtection">> => list(any()),
+%%   <<"dnsViewId">> => string(),
+%%   <<"firewallDomainListId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => float(),
+%%   <<"queryType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_firewall_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_resolver_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type update_global_resolver_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_resolver_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dnsName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"observabilityRegion">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_global_resolver_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hosted_zone_association_input() :: #{
+%%   <<"name">> => string()
+%% }
+-type update_hosted_zone_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hosted_zone_association_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"hostedZoneName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_hosted_zone_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 -type associate_hosted_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_create_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_delete_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_update_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_access_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_firewall_domain_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_global_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_access_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_firewall_domain_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_global_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_hosted_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_access_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_firewall_domain_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_global_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_hosted_zone_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_managed_firewall_domain_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_firewall_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_access_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_access_tokens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_dns_views_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_firewall_domain_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_firewall_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_firewall_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_global_resolvers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_hosted_zone_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_managed_firewall_domain_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_shared_dns_views_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
@@ -1740,67 +1785,67 @@
     resource_not_found_exception().
 
 -type update_access_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dns_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_firewall_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_global_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_hosted_zone_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -3349,37 +3394,40 @@ list_global_resolvers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all hosted zone associations for a Route 53 Global Resolver
-%% resource with pagination support.
+%% @doc Lists hosted zone associations with pagination support.
+%%
+%% Specify a DNS view through the `resourceArn' parameter to list the
+%% hosted zone associations for that DNS view, or omit it to list all hosted
+%% zone associations in your Amazon Web Services account.
 %%
 %% Route 53 Global Resolver is a global service that supports resolvers in
 %% multiple Amazon Web Services Regions but you must specify the US East
 %% (Ohio) Region to create, update, or otherwise work with Route 53 Global
 %% Resolver resources. That is, for example, specify `--region us-east-2'
 %% on Amazon Web Services CLI commands.
--spec list_hosted_zone_associations(aws_client:aws_client(), binary() | list()) ->
+-spec list_hosted_zone_associations(aws_client:aws_client()) ->
     {ok, list_hosted_zone_associations_output(), tuple()} |
     {error, any()} |
     {error, list_hosted_zone_associations_errors(), tuple()}.
-list_hosted_zone_associations(Client, ResourceArn)
+list_hosted_zone_associations(Client)
   when is_map(Client) ->
-    list_hosted_zone_associations(Client, ResourceArn, #{}, #{}).
+    list_hosted_zone_associations(Client, #{}, #{}).
 
--spec list_hosted_zone_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec list_hosted_zone_associations(aws_client:aws_client(), map(), map()) ->
     {ok, list_hosted_zone_associations_output(), tuple()} |
     {error, any()} |
     {error, list_hosted_zone_associations_errors(), tuple()}.
-list_hosted_zone_associations(Client, ResourceArn, QueryMap, HeadersMap)
+list_hosted_zone_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_hosted_zone_associations(Client, ResourceArn, QueryMap, HeadersMap, []).
+    list_hosted_zone_associations(Client, QueryMap, HeadersMap, []).
 
--spec list_hosted_zone_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_hosted_zone_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_hosted_zone_associations_output(), tuple()} |
     {error, any()} |
     {error, list_hosted_zone_associations_errors(), tuple()}.
-list_hosted_zone_associations(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+list_hosted_zone_associations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/hosted-zone-associations/resource-arn/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
+    Path = ["/hosted-zone-associations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3392,7 +3440,8 @@ list_hosted_zone_associations(Client, ResourceArn, QueryMap, HeadersMap, Options
     Query0_ =
       [
         {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
-        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3431,6 +3480,56 @@ list_managed_firewall_domain_lists(Client, ManagedFirewallDomainListType, QueryM
 list_managed_firewall_domain_lists(Client, ManagedFirewallDomainListType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-managed-firewall-domain-lists/", aws_util:encode_uri(ManagedFirewallDomainListType), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the DNS views that have been shared with your Amazon Web
+%% Services account through Amazon Web Services Resource Access Manager
+%% (Amazon Web Services RAM), with pagination support.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec list_shared_dns_views(aws_client:aws_client()) ->
+    {ok, list_shared_dns_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_shared_dns_views_errors(), tuple()}.
+list_shared_dns_views(Client)
+  when is_map(Client) ->
+    list_shared_dns_views(Client, #{}, #{}).
+
+-spec list_shared_dns_views(aws_client:aws_client(), map(), map()) ->
+    {ok, list_shared_dns_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_shared_dns_views_errors(), tuple()}.
+list_shared_dns_views(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_shared_dns_views(Client, QueryMap, HeadersMap, []).
+
+-spec list_shared_dns_views(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_shared_dns_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_shared_dns_views_errors(), tuple()}.
+list_shared_dns_views(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/shared-dns-views"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

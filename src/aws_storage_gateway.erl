@@ -284,17 +284,374 @@
 
 
 %% Example:
-%% describe_cache_report_output() :: #{
-%%   <<"CacheReportInfo">> => cache_report_info()
+%% activate_gateway_input() :: #{
+%%   <<"ActivationKey">> := string(),
+%%   <<"GatewayName">> := string(),
+%%   <<"GatewayRegion">> := string(),
+%%   <<"GatewayTimezone">> := string(),
+%%   <<"GatewayType">> => string(),
+%%   <<"MediumChangerType">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TapeDriveType">> => string()
 %% }
--type describe_cache_report_output() :: #{binary() => any()}.
+-type activate_gateway_input() :: #{binary() => any()}.
 
 %% Example:
-%% join_domain_output() :: #{
-%%   <<"ActiveDirectoryStatus">> => list(any()),
+%% activate_gateway_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
--type join_domain_output() :: #{binary() => any()}.
+-type activate_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_cache_input() :: #{
+%%   <<"DiskIds">> := list(string()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_cache_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_to_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type add_tags_to_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_upload_buffer_input() :: #{
+%%   <<"DiskIds">> := list(string()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_upload_buffer_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_upload_buffer_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_upload_buffer_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_working_storage_input() :: #{
+%%   <<"DiskIds">> := list(string()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type add_working_storage_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_working_storage_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type add_working_storage_output() :: #{binary() => any()}.
+
+%% Example:
+%% assign_tape_pool_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"PoolId">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type assign_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% assign_tape_pool_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type assign_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"Password">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserName">> := string()
+%% }
+-type associate_file_system_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_file_system_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type associate_file_system_output() :: #{binary() => any()}.
+
+%% Example:
+%% attach_volume_input() :: #{
+%%   <<"DiskId">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"TargetName">> => string(),
+%%   <<"VolumeARN">> := string()
+%% }
+-type attach_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% attach_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type attach_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_tape_creation_policy_info() :: #{
+%%   <<"AutomaticTapeCreationRules">> => list(automatic_tape_creation_rule()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type automatic_tape_creation_policy_info() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_tape_creation_rule() :: #{
+%%   <<"MinimumNumTapes">> => integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"TapeBarcodePrefix">> => string(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type automatic_tape_creation_rule() :: #{binary() => any()}.
+
+%% Example:
+%% bandwidth_rate_limit_interval() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"DaysOfWeek">> => list(integer()),
+%%   <<"EndHourOfDay">> => integer(),
+%%   <<"EndMinuteOfHour">> => integer(),
+%%   <<"StartHourOfDay">> => integer(),
+%%   <<"StartMinuteOfHour">> => integer()
+%% }
+-type bandwidth_rate_limit_interval() :: #{binary() => any()}.
+
+%% Example:
+%% cache_attributes() :: #{
+%%   <<"CacheStaleTimeoutInSeconds">> => integer()
+%% }
+-type cache_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cache_report_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type cache_report_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cache_report_info() :: #{
+%%   <<"CacheReportARN">> => string(),
+%%   <<"CacheReportStatus">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()),
+%%   <<"FileShareARN">> => string(),
+%%   <<"InclusionFilters">> => list(cache_report_filter()),
+%%   <<"LocationARN">> => string(),
+%%   <<"ReportCompletionPercent">> => integer(),
+%%   <<"ReportName">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type cache_report_info() :: #{binary() => any()}.
+
+%% Example:
+%% cached_iscsi_volume() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"KMSKey">> => string(),
+%%   <<"SourceSnapshotId">> => string(),
+%%   <<"TargetName">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeAttachmentStatus">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeProgress">> => float(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeStatus">> => string(),
+%%   <<"VolumeType">> => string(),
+%%   <<"VolumeUsedInBytes">> => float(),
+%%   <<"VolumeiSCSIAttributes">> => volume_iscsi_attributes()
+%% }
+-type cached_iscsi_volume() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_archival_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type cancel_archival_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_archival_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type cancel_archival_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type cancel_cache_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
+%% }
+-type cancel_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_retrieval_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type cancel_retrieval_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_retrieval_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type cancel_retrieval_output() :: #{binary() => any()}.
+
+%% Example:
+%% chap_info() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"SecretToAuthenticateInitiator">> => string(),
+%%   <<"SecretToAuthenticateTarget">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type chap_info() :: #{binary() => any()}.
+
+%% Example:
+%% create_cached_iscsi_volume_input() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"SourceVolumeARN">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetName">> := string(),
+%%   <<"VolumeSizeInBytes">> := float()
+%% }
+-type create_cached_iscsi_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_cached_iscsi_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type create_cached_iscsi_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_nfs_file_share_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientList">> => list(string()),
+%%   <<"ClientToken">> := string(),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"FileShareName">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> := string(),
+%%   <<"Squash">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VPCEndpointDNSName">> => string()
+%% }
+-type create_nfs_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_nfs_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type create_nfs_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_smb_file_share_input() :: #{
+%%   <<"AccessBasedEnumeration">> => boolean(),
+%%   <<"AdminUserList">> => list(string()),
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"Authentication">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"CaseSensitivity">> => list(any()),
+%%   <<"ClientToken">> := string(),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"FileShareName">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"InvalidUserList">> => list(string()),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> := string(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"OplocksEnabled">> => boolean(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> := string(),
+%%   <<"SMBACLEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VPCEndpointDNSName">> => string(),
+%%   <<"ValidUserList">> => list(string())
+%% }
+-type create_smb_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_smb_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type create_smb_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_from_volume_recovery_point_input() :: #{
+%%   <<"SnapshotDescription">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeARN">> := string()
+%% }
+-type create_snapshot_from_volume_recovery_point_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_from_volume_recovery_point_output() :: #{
+%%   <<"SnapshotId">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeRecoveryPointTime">> => string()
+%% }
+-type create_snapshot_from_volume_recovery_point_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_input() :: #{
+%%   <<"SnapshotDescription">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeARN">> := string()
+%% }
+-type create_snapshot_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_output() :: #{
+%%   <<"SnapshotId">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type create_snapshot_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_stored_iscsi_volume_input() :: #{
@@ -311,33 +668,320 @@
 -type create_stored_iscsi_volume_input() :: #{binary() => any()}.
 
 %% Example:
-%% evict_files_failing_upload_output() :: #{
-%%   <<"NotificationId">> => string()
+%% create_stored_iscsi_volume_output() :: #{
+%%   <<"TargetARN">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeSizeInBytes">> => float()
 %% }
--type evict_files_failing_upload_output() :: #{binary() => any()}.
+-type create_stored_iscsi_volume_output() :: #{binary() => any()}.
 
 %% Example:
-%% associate_file_system_output() :: #{
-%%   <<"FileSystemAssociationARN">> => string()
+%% create_tape_pool_input() :: #{
+%%   <<"PoolName">> := string(),
+%%   <<"RetentionLockTimeInDays">> => integer(),
+%%   <<"RetentionLockType">> => list(any()),
+%%   <<"StorageClass">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type associate_file_system_output() :: #{binary() => any()}.
+-type create_tape_pool_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_snapshot_schedule_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RecurrenceInHours">> := integer(),
-%%   <<"StartAt">> := integer(),
+%% create_tape_pool_output() :: #{
+%%   <<"PoolARN">> => string()
+%% }
+-type create_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_with_barcode_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"PoolId">> => string(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"TapeBarcode">> := string(),
+%%   <<"TapeSizeInBytes">> := float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type create_tape_with_barcode_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_tape_with_barcode_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type create_tape_with_barcode_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_tapes_input() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NumTapesToCreate">> := integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TapeBarcodePrefix">> := string(),
+%%   <<"TapeSizeInBytes">> := float(),
+%%   <<"Worm">> => boolean()
+%% }
+-type create_tapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_tapes_output() :: #{
+%%   <<"TapeARNs">> => list(string())
+%% }
+-type create_tapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automatic_tape_creation_policy_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_automatic_tape_creation_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automatic_tape_creation_policy_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_automatic_tape_creation_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bandwidth_rate_limit_input() :: #{
+%%   <<"BandwidthType">> := string(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bandwidth_rate_limit_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type delete_cache_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
+%% }
+-type delete_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chap_credentials_input() :: #{
+%%   <<"InitiatorName">> := string(),
+%%   <<"TargetARN">> := string()
+%% }
+-type delete_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chap_credentials_output() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type delete_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_share_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type delete_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type delete_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type delete_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_schedule_input() :: #{
 %%   <<"VolumeARN">> := string()
 %% }
--type update_snapshot_schedule_input() :: #{binary() => any()}.
+-type delete_snapshot_schedule_input() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_archival_input() :: #{
+%% delete_snapshot_schedule_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type delete_snapshot_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_archive_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"TapeARN">> := string()
+%% }
+-type delete_tape_archive_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_archive_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type delete_tape_archive_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_input() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
 %%   <<"GatewayARN">> := string(),
 %%   <<"TapeARN">> := string()
 %% }
--type cancel_archival_input() :: #{binary() => any()}.
+-type delete_tape_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_output() :: #{
+%%   <<"TapeARN">> => string()
+%% }
+-type delete_tape_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_pool_input() :: #{
+%%   <<"PoolARN">> := string()
+%% }
+-type delete_tape_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tape_pool_output() :: #{
+%%   <<"PoolARN">> => string()
+%% }
+-type delete_tape_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type delete_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_volume_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type delete_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_monitor_test_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_availability_monitor_test_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_monitor_test_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_availability_monitor_test_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_output() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_schedule_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bandwidth_rate_limit_schedule_output() :: #{
+%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_output() :: #{
+%%   <<"CacheAllocatedInBytes">> => float(),
+%%   <<"CacheDirtyPercentage">> => float(),
+%%   <<"CacheHitPercentage">> => float(),
+%%   <<"CacheMissPercentage">> => float(),
+%%   <<"CacheUsedPercentage">> => float(),
+%%   <<"DiskIds">> => list(string()),
+%%   <<"GatewayARN">> => string()
+%% }
+-type describe_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_report_input() :: #{
+%%   <<"CacheReportARN">> := string()
+%% }
+-type describe_cache_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cache_report_output() :: #{
+%%   <<"CacheReportInfo">> => cache_report_info()
+%% }
+-type describe_cache_report_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cached_iscsi_volumes_input() :: #{
+%%   <<"VolumeARNs">> := list(string())
+%% }
+-type describe_cached_iscsi_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cached_iscsi_volumes_output() :: #{
+%%   <<"CachediSCSIVolumes">> => list(cached_iscsi_volume())
+%% }
+-type describe_cached_iscsi_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chap_credentials_input() :: #{
+%%   <<"TargetARN">> := string()
+%% }
+-type describe_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chap_credentials_output() :: #{
+%%   <<"ChapCredentials">> => list(chap_info())
+%% }
+-type describe_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_associations_input() :: #{
+%%   <<"FileSystemAssociationARNList">> := list(string())
+%% }
+-type describe_file_system_associations_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_file_system_associations_output() :: #{
+%%   <<"FileSystemAssociationInfoList">> => list(file_system_association_info())
+%% }
+-type describe_file_system_associations_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_information_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_gateway_information_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_gateway_information_output() :: #{
@@ -367,149 +1011,10 @@
 -type describe_gateway_information_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_volume_initiators_input() :: #{
-%%   <<"VolumeARN">> := string()
-%% }
--type list_volume_initiators_input() :: #{binary() => any()}.
-
-%% Example:
-%% notify_when_uploaded_input() :: #{
-%%   <<"FileShareARN">> := string()
-%% }
--type notify_when_uploaded_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_volume_recovery_points_input() :: #{
+%% describe_maintenance_start_time_input() :: #{
 %%   <<"GatewayARN">> := string()
 %% }
--type list_volume_recovery_points_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_upload_buffer_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_upload_buffer_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cache_output() :: #{
-%%   <<"CacheAllocatedInBytes">> => float(),
-%%   <<"CacheDirtyPercentage">> => float(),
-%%   <<"CacheHitPercentage">> => float(),
-%%   <<"CacheMissPercentage">> => float(),
-%%   <<"CacheUsedPercentage">> => float(),
-%%   <<"DiskIds">> => list(string()),
-%%   <<"GatewayARN">> => string()
-%% }
--type describe_cache_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_cache_report_input() :: #{
-%%   <<"BucketRegion">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"ExclusionFilters">> => list(cache_report_filter()),
-%%   <<"FileShareARN">> := string(),
-%%   <<"InclusionFilters">> => list(cache_report_filter()),
-%%   <<"LocationARN">> := string(),
-%%   <<"Role">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VPCEndpointDNSName">> => string()
-%% }
--type start_cache_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% assign_tape_pool_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type assign_tape_pool_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_system_associations_output() :: #{
-%%   <<"FileSystemAssociationInfoList">> => list(file_system_association_info())
-%% }
--type describe_file_system_associations_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_tape_with_barcode_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
-%%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TapeBarcode">> := string(),
-%%   <<"TapeSizeInBytes">> := float(),
-%%   <<"Worm">> => boolean()
-%% }
--type create_tape_with_barcode_input() :: #{binary() => any()}.
-
-%% Example:
-%% tape_info() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"PoolEntryDate">> => non_neg_integer(),
-%%   <<"PoolId">> => string(),
-%%   <<"RetentionStartDate">> => non_neg_integer(),
-%%   <<"TapeARN">> => string(),
-%%   <<"TapeBarcode">> => string(),
-%%   <<"TapeSizeInBytes">> => float(),
-%%   <<"TapeStatus">> => string()
-%% }
--type tape_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_share_input() :: #{
-%%   <<"FileShareARN">> := string(),
-%%   <<"ForceDelete">> => boolean()
-%% }
--type delete_file_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% join_domain_input() :: #{
-%%   <<"DomainControllers">> => list(string()),
-%%   <<"DomainName">> := string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"OrganizationalUnit">> => string(),
-%%   <<"Password">> := string(),
-%%   <<"TimeoutInSeconds">> => integer(),
-%%   <<"UserName">> := string()
-%% }
--type join_domain_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_association_input() :: #{
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"FileSystemAssociationARN">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type update_file_system_association_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bandwidth_rate_limit_input() :: #{
-%%   <<"BandwidthType">> := string(),
-%%   <<"GatewayARN">> := string()
-%% }
--type delete_bandwidth_rate_limit_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_start_time_input() :: #{
-%%   <<"DayOfMonth">> => integer(),
-%%   <<"DayOfWeek">> => integer(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"HourOfDay">> => integer(),
-%%   <<"MinuteOfHour">> => integer(),
-%%   <<"SoftwareUpdatePreferences">> => software_update_preferences()
-%% }
--type update_maintenance_start_time_input() :: #{binary() => any()}.
-
-%% Example:
-%% volume_iscsi_attributes() :: #{
-%%   <<"ChapEnabled">> => boolean(),
-%%   <<"LunNumber">> => integer(),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"NetworkInterfacePort">> => integer(),
-%%   <<"TargetARN">> => string()
-%% }
--type volume_iscsi_attributes() :: #{binary() => any()}.
+-type describe_maintenance_start_time_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_maintenance_start_time_output() :: #{
@@ -524,31 +1029,248 @@
 -type describe_maintenance_start_time_output() :: #{binary() => any()}.
 
 %% Example:
-%% associate_file_system_input() :: #{
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientToken">> := string(),
-%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"LocationARN">> := string(),
-%%   <<"Password">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserName">> := string()
+%% describe_nfs_file_shares_input() :: #{
+%%   <<"FileShareARNList">> := list(string())
 %% }
--type associate_file_system_input() :: #{binary() => any()}.
+-type describe_nfs_file_shares_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_volume_recovery_points_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"VolumeRecoveryPointInfos">> => list(volume_recovery_point_info())
+%% describe_nfs_file_shares_output() :: #{
+%%   <<"NFSFileShareInfoList">> => list(nfs_file_share_info())
 %% }
--type list_volume_recovery_points_output() :: #{binary() => any()}.
+-type describe_nfs_file_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_file_shares_input() :: #{
+%%   <<"FileShareARNList">> := list(string())
+%% }
+-type describe_smb_file_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_file_shares_output() :: #{
+%%   <<"SMBFileShareInfoList">> => list(smb_file_share_info())
+%% }
+-type describe_smb_file_shares_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_smb_settings_input() :: #{
 %%   <<"GatewayARN">> := string()
 %% }
 -type describe_smb_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_smb_settings_output() :: #{
+%%   <<"ActiveDirectoryStatus">> => list(any()),
+%%   <<"DomainName">> => string(),
+%%   <<"FileSharesVisible">> => boolean(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"SMBGuestPasswordSet">> => boolean(),
+%%   <<"SMBLocalGroups">> => smb_local_groups(),
+%%   <<"SMBSecurityStrategy">> => list(any())
+%% }
+-type describe_smb_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedule_input() :: #{
+%%   <<"VolumeARN">> := string()
+%% }
+-type describe_snapshot_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedule_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecurrenceInHours">> => integer(),
+%%   <<"StartAt">> => integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Timezone">> => string(),
+%%   <<"VolumeARN">> => string()
+%% }
+-type describe_snapshot_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stored_iscsi_volumes_input() :: #{
+%%   <<"VolumeARNs">> := list(string())
+%% }
+-type describe_stored_iscsi_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stored_iscsi_volumes_output() :: #{
+%%   <<"StorediSCSIVolumes">> => list(stored_iscsi_volume())
+%% }
+-type describe_stored_iscsi_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_archives_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string())
+%% }
+-type describe_tape_archives_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_archives_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TapeArchives">> => list(tape_archive())
+%% }
+-type describe_tape_archives_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_recovery_points_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_tape_recovery_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tape_recovery_points_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeRecoveryPointInfos">> => list(tape_recovery_point_info())
+%% }
+-type describe_tape_recovery_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tapes_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string())
+%% }
+-type describe_tapes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tapes_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Tapes">> => list(tape())
+%% }
+-type describe_tapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_upload_buffer_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_upload_buffer_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_upload_buffer_output() :: #{
+%%   <<"DiskIds">> => list(string()),
+%%   <<"GatewayARN">> => string(),
+%%   <<"UploadBufferAllocatedInBytes">> => float(),
+%%   <<"UploadBufferUsedInBytes">> => float()
+%% }
+-type describe_upload_buffer_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vtl_devices_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"VTLDeviceARNs">> => list(string())
+%% }
+-type describe_vtl_devices_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vtl_devices_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"VTLDevices">> => list(vtl_device())
+%% }
+-type describe_vtl_devices_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_working_storage_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type describe_working_storage_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_working_storage_output() :: #{
+%%   <<"DiskIds">> => list(string()),
+%%   <<"GatewayARN">> => string(),
+%%   <<"WorkingStorageAllocatedInBytes">> => float(),
+%%   <<"WorkingStorageUsedInBytes">> => float()
+%% }
+-type describe_working_storage_output() :: #{binary() => any()}.
+
+%% Example:
+%% detach_volume_input() :: #{
+%%   <<"ForceDetach">> => boolean(),
+%%   <<"VolumeARN">> := string()
+%% }
+-type detach_volume_input() :: #{binary() => any()}.
+
+%% Example:
+%% detach_volume_output() :: #{
+%%   <<"VolumeARN">> => string()
+%% }
+-type detach_volume_output() :: #{binary() => any()}.
+
+%% Example:
+%% device_iscsi_attributes() :: #{
+%%   <<"ChapEnabled">> => boolean(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NetworkInterfacePort">> => integer(),
+%%   <<"TargetARN">> => string()
+%% }
+-type device_iscsi_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% disable_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type disable_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type disable_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_input() :: #{
+%%   <<"FileSystemAssociationARN">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type disassociate_file_system_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_file_system_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type disassociate_file_system_output() :: #{binary() => any()}.
+
+%% Example:
+%% disk() :: #{
+%%   <<"DiskAllocationResource">> => string(),
+%%   <<"DiskAllocationType">> => string(),
+%%   <<"DiskAttributeList">> => list(string()),
+%%   <<"DiskId">> => string(),
+%%   <<"DiskNode">> => string(),
+%%   <<"DiskPath">> => string(),
+%%   <<"DiskSizeInBytes">> => float(),
+%%   <<"DiskStatus">> => string()
+%% }
+-type disk() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_network_configuration() :: #{
+%%   <<"IpAddresses">> => list(string())
+%% }
+-type endpoint_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% evict_files_failing_upload_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"ForceRemove">> => boolean()
+%% }
+-type evict_files_failing_upload_input() :: #{binary() => any()}.
+
+%% Example:
+%% evict_files_failing_upload_output() :: #{
+%%   <<"NotificationId">> => string()
+%% }
+-type evict_files_failing_upload_output() :: #{binary() => any()}.
 
 %% Example:
 %% file_share_info() :: #{
@@ -561,139 +1283,33 @@
 -type file_share_info() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tape_archive_input() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"TapeARN">> := string()
-%% }
--type delete_tape_archive_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_cache_report_output() :: #{
-%%   <<"CacheReportARN">> => string()
-%% }
--type start_cache_report_output() :: #{binary() => any()}.
-
-%% Example:
-%% volume_recovery_point_info() :: #{
-%%   <<"VolumeARN">> => string(),
-%%   <<"VolumeRecoveryPointTime">> => string(),
-%%   <<"VolumeSizeInBytes">> => float(),
-%%   <<"VolumeUsageInBytes">> => float()
-%% }
--type volume_recovery_point_info() :: #{binary() => any()}.
-
-%% Example:
-%% pool_info() :: #{
-%%   <<"PoolARN">> => string(),
-%%   <<"PoolName">> => string(),
-%%   <<"PoolStatus">> => list(any()),
-%%   <<"RetentionLockTimeInDays">> => integer(),
-%%   <<"RetentionLockType">> => list(any()),
-%%   <<"StorageClass">> => list(any())
-%% }
--type pool_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cache_report_input() :: #{
-%%   <<"CacheReportARN">> := string()
-%% }
--type describe_cache_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_tapes_output() :: #{
-%%   <<"TapeARNs">> => list(string())
-%% }
--type create_tapes_output() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"Ipv4Address">> => string(),
-%%   <<"Ipv6Address">> => string(),
-%%   <<"MacAddress">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% tape_recovery_point_info() :: #{
-%%   <<"TapeARN">> => string(),
-%%   <<"TapeRecoveryPointTime">> => non_neg_integer(),
-%%   <<"TapeSizeInBytes">> => float(),
-%%   <<"TapeStatus">> => string()
-%% }
--type tape_recovery_point_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_input() :: #{
-%%   <<"VolumeARN">> := string()
-%% }
--type delete_volume_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cached_iscsi_volumes_input() :: #{
-%%   <<"VolumeARNs">> := list(string())
-%% }
--type describe_cached_iscsi_volumes_input() :: #{binary() => any()}.
-
-%% Example:
-%% set_local_console_password_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"LocalConsolePassword">> := string()
-%% }
--type set_local_console_password_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_file_system_associations_output() :: #{
-%%   <<"FileSystemAssociationSummaryList">> => list(file_system_association_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"NextMarker">> => string()
-%% }
--type list_file_system_associations_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_schedule_output() :: #{
-%%   <<"VolumeARN">> => string()
-%% }
--type delete_snapshot_schedule_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tape_pools_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PoolInfos">> => list(pool_info())
-%% }
--type list_tape_pools_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tape_recovery_points_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type describe_tape_recovery_points_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vtl_devices_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"VTLDeviceARNs">> => list(string())
-%% }
--type describe_vtl_devices_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_file_system_associations_input() :: #{
+%% file_system_association_info() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
+%%   <<"FileSystemAssociationARN">> => string(),
+%%   <<"FileSystemAssociationStatus">> => string(),
+%%   <<"FileSystemAssociationStatusDetails">> => list(file_system_association_status_detail()),
 %%   <<"GatewayARN">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
+%%   <<"LocationARN">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_file_system_associations_input() :: #{binary() => any()}.
+-type file_system_association_info() :: #{binary() => any()}.
 
 %% Example:
-%% list_volumes_input() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
+%% file_system_association_status_detail() :: #{
+%%   <<"ErrorCode">> => string()
 %% }
--type list_volumes_input() :: #{binary() => any()}.
+-type file_system_association_status_detail() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_association_summary() :: #{
+%%   <<"FileSystemAssociationARN">> => string(),
+%%   <<"FileSystemAssociationId">> => string(),
+%%   <<"FileSystemAssociationStatus">> => string(),
+%%   <<"GatewayARN">> => string()
+%% }
+-type file_system_association_summary() :: #{binary() => any()}.
 
 %% Example:
 %% gateway_info() :: #{
@@ -712,353 +1328,49 @@
 -type gateway_info() :: #{binary() => any()}.
 
 %% Example:
-%% update_smb_file_share_input() :: #{
-%%   <<"AccessBasedEnumeration">> => boolean(),
-%%   <<"AdminUserList">> => list(string()),
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"CaseSensitivity">> => list(any()),
-%%   <<"DefaultStorageClass">> => string(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"FileShareARN">> := string(),
-%%   <<"FileShareName">> => string(),
-%%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"InvalidUserList">> => list(string()),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
-%%   <<"NotificationPolicy">> => string(),
-%%   <<"ObjectACL">> => list(any()),
-%%   <<"OplocksEnabled">> => boolean(),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RequesterPays">> => boolean(),
-%%   <<"SMBACLEnabled">> => boolean(),
-%%   <<"ValidUserList">> => list(string())
-%% }
--type update_smb_file_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_local_disks_output() :: #{
-%%   <<"Disks">> => list(disk()),
-%%   <<"GatewayARN">> => string()
-%% }
--type list_local_disks_output() :: #{binary() => any()}.
-
-%% Example:
-%% activate_gateway_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type activate_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% detach_volume_output() :: #{
-%%   <<"VolumeARN">> => string()
-%% }
--type detach_volume_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_local_console_password_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type set_local_console_password_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_from_volume_recovery_point_output() :: #{
-%%   <<"SnapshotId">> => string(),
-%%   <<"VolumeARN">> => string(),
-%%   <<"VolumeRecoveryPointTime">> => string()
-%% }
--type create_snapshot_from_volume_recovery_point_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% cached_iscsi_volume() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"KMSKey">> => string(),
-%%   <<"SourceSnapshotId">> => string(),
-%%   <<"TargetName">> => string(),
-%%   <<"VolumeARN">> => string(),
-%%   <<"VolumeAttachmentStatus">> => string(),
-%%   <<"VolumeId">> => string(),
-%%   <<"VolumeProgress">> => float(),
-%%   <<"VolumeSizeInBytes">> => float(),
-%%   <<"VolumeStatus">> => string(),
-%%   <<"VolumeType">> => string(),
-%%   <<"VolumeUsedInBytes">> => float(),
-%%   <<"VolumeiSCSIAttributes">> => volume_iscsi_attributes()
-%% }
--type cached_iscsi_volume() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bandwidth_rate_limit_output() :: #{
-%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
-%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
-%%   <<"GatewayARN">> => string()
-%% }
--type describe_bandwidth_rate_limit_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_gateway_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type start_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_smb_file_share_output() :: #{
-%%   <<"FileShareARN">> => string()
-%% }
--type create_smb_file_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% attach_volume_input() :: #{
-%%   <<"DiskId">> => string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"NetworkInterfaceId">> := string(),
-%%   <<"TargetName">> => string(),
-%%   <<"VolumeARN">> := string()
-%% }
--type attach_volume_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_schedule_input() :: #{
-%%   <<"VolumeARN">> := string()
-%% }
--type delete_snapshot_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_output() :: #{
-%%   <<"SnapshotId">> => string(),
-%%   <<"VolumeARN">> => string()
-%% }
--type create_snapshot_output() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type remove_tags_from_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% nfs_file_share_defaults() :: #{
-%%   <<"DirectoryMode">> => string(),
-%%   <<"FileMode">> => string(),
-%%   <<"GroupId">> => float(),
-%%   <<"OwnerId">> => float()
-%% }
--type nfs_file_share_defaults() :: #{binary() => any()}.
-
-%% Example:
-%% create_tape_with_barcode_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type create_tape_with_barcode_output() :: #{binary() => any()}.
-
-%% Example:
-%% disable_gateway_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type disable_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tape_pool_output() :: #{
-%%   <<"PoolARN">> => string()
-%% }
--type delete_tape_pool_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_local_disks_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type list_local_disks_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_working_storage_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type add_working_storage_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_smb_file_share_visibility_input() :: #{
-%%   <<"FileSharesVisible">> := boolean(),
-%%   <<"GatewayARN">> := string()
-%% }
--type update_smb_file_share_visibility_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_retrieval_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"TapeARN">> := string()
-%% }
--type cancel_retrieval_input() :: #{binary() => any()}.
-
-%% Example:
-%% notify_when_uploaded_output() :: #{
-%%   <<"FileShareARN">> => string(),
-%%   <<"NotificationId">> => string()
-%% }
--type notify_when_uploaded_output() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_error() :: #{
+%% internal_server_error() :: #{
 %%   <<"error">> => storage_gateway_error(),
 %%   <<"message">> => string()
 %% }
--type service_unavailable_error() :: #{binary() => any()}.
+-type internal_server_error() :: #{binary() => any()}.
 
 %% Example:
-%% retrieve_tape_recovery_point_output() :: #{
-%%   <<"TapeARN">> => string()
+%% invalid_gateway_request_exception() :: #{
+%%   <<"error">> => storage_gateway_error(),
+%%   <<"message">> => string()
 %% }
--type retrieve_tape_recovery_point_output() :: #{binary() => any()}.
+-type invalid_gateway_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% cache_report_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type cache_report_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_vtl_device_type_input() :: #{
-%%   <<"DeviceType">> := string(),
-%%   <<"VTLDeviceARN">> := string()
-%% }
--type update_vtl_device_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_to_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_smb_settings_output() :: #{
-%%   <<"ActiveDirectoryStatus">> => list(any()),
-%%   <<"DomainName">> => string(),
-%%   <<"FileSharesVisible">> => boolean(),
-%%   <<"GatewayARN">> => string(),
-%%   <<"SMBGuestPasswordSet">> => boolean(),
-%%   <<"SMBLocalGroups">> => smb_local_groups(),
-%%   <<"SMBSecurityStrategy">> => list(any())
-%% }
--type describe_smb_settings_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_information_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"GatewayName">> => string()
-%% }
--type update_gateway_information_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type add_tags_to_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_cache_report_input() :: #{
-%%   <<"CacheReportARN">> := string()
-%% }
--type cancel_cache_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_bandwidth_rate_limit_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type update_bandwidth_rate_limit_output() :: #{binary() => any()}.
-
-%% Example:
-%% device_iscsi_attributes() :: #{
-%%   <<"ChapEnabled">> => boolean(),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"NetworkInterfacePort">> => integer(),
-%%   <<"TargetARN">> => string()
-%% }
--type device_iscsi_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vtl_devices_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"VTLDevices">> => list(vtl_device())
-%% }
--type describe_vtl_devices_output() :: #{binary() => any()}.
-
-%% Example:
-%% cache_report_info() :: #{
-%%   <<"CacheReportARN">> => string(),
-%%   <<"CacheReportStatus">> => list(any()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ExclusionFilters">> => list(cache_report_filter()),
-%%   <<"FileShareARN">> => string(),
-%%   <<"InclusionFilters">> => list(cache_report_filter()),
-%%   <<"LocationARN">> => string(),
-%%   <<"ReportCompletionPercent">> => integer(),
-%%   <<"ReportName">> => string(),
-%%   <<"Role">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type cache_report_info() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_archival_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type cancel_archival_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_availability_monitor_test_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type start_availability_monitor_test_input() :: #{binary() => any()}.
-
-%% Example:
-%% retrieve_tape_recovery_point_input() :: #{
+%% join_domain_input() :: #{
+%%   <<"DomainControllers">> => list(string()),
+%%   <<"DomainName">> := string(),
 %%   <<"GatewayARN">> := string(),
-%%   <<"TapeARN">> := string()
+%%   <<"OrganizationalUnit">> => string(),
+%%   <<"Password">> := string(),
+%%   <<"TimeoutInSeconds">> => integer(),
+%%   <<"UserName">> := string()
 %% }
--type retrieve_tape_recovery_point_input() :: #{binary() => any()}.
+-type join_domain_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_bandwidth_rate_limit_schedule_output() :: #{
-%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()),
+%% join_domain_output() :: #{
+%%   <<"ActiveDirectoryStatus">> => list(any()),
 %%   <<"GatewayARN">> => string()
 %% }
--type describe_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+-type join_domain_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_gateway_information_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_gateway_information_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_cache_output() :: #{
+%% list_automatic_tape_creation_policies_input() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
--type add_cache_output() :: #{binary() => any()}.
+-type list_automatic_tape_creation_policies_input() :: #{binary() => any()}.
 
 %% Example:
-%% start_gateway_output() :: #{
-%%   <<"GatewayARN">> => string()
+%% list_automatic_tape_creation_policies_output() :: #{
+%%   <<"AutomaticTapeCreationPolicyInfos">> => list(automatic_tape_creation_policy_info())
 %% }
--type start_gateway_output() :: #{binary() => any()}.
+-type list_automatic_tape_creation_policies_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_cache_reports_input() :: #{
@@ -1074,35 +1386,6 @@
 -type list_cache_reports_output() :: #{binary() => any()}.
 
 %% Example:
-%% assign_tape_pool_input() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"PoolId">> := string(),
-%%   <<"TapeARN">> := string()
-%% }
--type assign_tape_pool_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_nfs_file_shares_output() :: #{
-%%   <<"NFSFileShareInfoList">> => list(nfs_file_share_info())
-%% }
--type describe_nfs_file_shares_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_input() :: #{
-%%   <<"SnapshotDescription">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeARN">> := string()
-%% }
--type create_snapshot_input() :: #{binary() => any()}.
-
-%% Example:
-%% storage_gateway_error() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorDetails">> => map()
-%% }
--type storage_gateway_error() :: #{binary() => any()}.
-
-%% Example:
 %% list_file_shares_input() :: #{
 %%   <<"GatewayARN">> => string(),
 %%   <<"Limit">> => integer(),
@@ -1111,34 +1394,35 @@
 -type list_file_shares_input() :: #{binary() => any()}.
 
 %% Example:
-%% tape() :: #{
-%%   <<"KMSKey">> => string(),
-%%   <<"PoolEntryDate">> => non_neg_integer(),
-%%   <<"PoolId">> => string(),
-%%   <<"Progress">> => float(),
-%%   <<"RetentionStartDate">> => non_neg_integer(),
-%%   <<"TapeARN">> => string(),
-%%   <<"TapeBarcode">> => string(),
-%%   <<"TapeCreatedDate">> => non_neg_integer(),
-%%   <<"TapeSizeInBytes">> => float(),
-%%   <<"TapeStatus">> => string(),
-%%   <<"TapeUsedInBytes">> => float(),
-%%   <<"VTLDevice">> => string(),
-%%   <<"Worm">> => boolean()
+%% list_file_shares_output() :: #{
+%%   <<"FileShareInfoList">> => list(file_share_info()),
+%%   <<"Marker">> => string(),
+%%   <<"NextMarker">> => string()
 %% }
--type tape() :: #{binary() => any()}.
+-type list_file_shares_output() :: #{binary() => any()}.
 
 %% Example:
-%% bandwidth_rate_limit_interval() :: #{
-%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
-%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
-%%   <<"DaysOfWeek">> => list(integer()),
-%%   <<"EndHourOfDay">> => integer(),
-%%   <<"EndMinuteOfHour">> => integer(),
-%%   <<"StartHourOfDay">> => integer(),
-%%   <<"StartMinuteOfHour">> => integer()
+%% list_file_system_associations_input() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
 %% }
--type bandwidth_rate_limit_interval() :: #{binary() => any()}.
+-type list_file_system_associations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_system_associations_output() :: #{
+%%   <<"FileSystemAssociationSummaryList">> => list(file_system_association_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_file_system_associations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_gateways_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_gateways_output() :: #{
@@ -1148,30 +1432,56 @@
 -type list_gateways_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tape_pool_input() :: #{
-%%   <<"PoolARN">> := string()
-%% }
--type delete_tape_pool_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_bandwidth_rate_limit_input() :: #{
-%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
-%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%% list_local_disks_input() :: #{
 %%   <<"GatewayARN">> := string()
 %% }
--type update_bandwidth_rate_limit_input() :: #{binary() => any()}.
+-type list_local_disks_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_gateway_input() :: #{
-%%   <<"GatewayARN">> := string()
+%% list_local_disks_output() :: #{
+%%   <<"Disks">> => list(disk()),
+%%   <<"GatewayARN">> => string()
 %% }
--type delete_gateway_input() :: #{binary() => any()}.
+-type list_local_disks_output() :: #{binary() => any()}.
 
 %% Example:
-%% reset_cache_input() :: #{
-%%   <<"GatewayARN">> := string()
+%% list_tags_for_resource_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"ResourceARN">> := string()
 %% }
--type reset_cache_input() :: #{binary() => any()}.
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tape_pools_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"PoolARNs">> => list(string())
+%% }
+-type list_tape_pools_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tape_pools_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PoolInfos">> => list(pool_info())
+%% }
+-type list_tape_pools_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tapes_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"TapeARNs">> => list(string())
+%% }
+-type list_tapes_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_tapes_output() :: #{
@@ -1181,30 +1491,131 @@
 -type list_tapes_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tape_input() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"TapeARN">> := string()
+%% list_volume_initiators_input() :: #{
+%%   <<"VolumeARN">> := string()
 %% }
--type delete_tape_input() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_network_configuration() :: #{
-%%   <<"IpAddresses">> => list(string())
-%% }
--type endpoint_network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stored_iscsi_volumes_output() :: #{
-%%   <<"StorediSCSIVolumes">> => list(stored_iscsi_volume())
-%% }
--type describe_stored_iscsi_volumes_output() :: #{binary() => any()}.
+-type list_volume_initiators_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_volume_initiators_output() :: #{
 %%   <<"Initiators">> => list(string())
 %% }
 -type list_volume_initiators_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_recovery_points_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type list_volume_recovery_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_volume_recovery_points_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"VolumeRecoveryPointInfos">> => list(volume_recovery_point_info())
+%% }
+-type list_volume_recovery_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_volumes_input() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_volumes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_volumes_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"VolumeInfos">> => list(volume_info())
+%% }
+-type list_volumes_output() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"Ipv4Address">> => string(),
+%%   <<"Ipv6Address">> => string(),
+%%   <<"MacAddress">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% nfs_file_share_defaults() :: #{
+%%   <<"DirectoryMode">> => string(),
+%%   <<"FileMode">> => string(),
+%%   <<"GroupId">> => float(),
+%%   <<"OwnerId">> => float()
+%% }
+-type nfs_file_share_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% nfs_file_share_info() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"ClientList">> => list(string()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"FileShareARN">> => string(),
+%%   <<"FileShareId">> => string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"FileShareStatus">> => string(),
+%%   <<"GatewayARN">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LocationARN">> => string(),
+%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"Path">> => string(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"Squash">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VPCEndpointDNSName">> => string()
+%% }
+-type nfs_file_share_info() :: #{binary() => any()}.
+
+%% Example:
+%% notify_when_uploaded_input() :: #{
+%%   <<"FileShareARN">> := string()
+%% }
+-type notify_when_uploaded_input() :: #{binary() => any()}.
+
+%% Example:
+%% notify_when_uploaded_output() :: #{
+%%   <<"FileShareARN">> => string(),
+%%   <<"NotificationId">> => string()
+%% }
+-type notify_when_uploaded_output() :: #{binary() => any()}.
+
+%% Example:
+%% pool_info() :: #{
+%%   <<"PoolARN">> => string(),
+%%   <<"PoolName">> => string(),
+%%   <<"PoolStatus">> => list(any()),
+%%   <<"RetentionLockTimeInDays">> => integer(),
+%%   <<"RetentionLockType">> => list(any()),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type pool_info() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_cache_input() :: #{
+%%   <<"FileShareARN">> := string(),
+%%   <<"FolderList">> => list(string()),
+%%   <<"Recursive">> => boolean()
+%% }
+-type refresh_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_cache_output() :: #{
+%%   <<"FileShareARN">> => string(),
+%%   <<"NotificationId">> => string()
+%% }
+-type refresh_cache_output() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_resource_input() :: #{
@@ -1214,17 +1625,29 @@
 -type remove_tags_from_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% evict_files_failing_upload_input() :: #{
-%%   <<"FileShareARN">> := string(),
-%%   <<"ForceRemove">> => boolean()
+%% remove_tags_from_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
 %% }
--type evict_files_failing_upload_input() :: #{binary() => any()}.
+-type remove_tags_from_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_smb_file_share_visibility_output() :: #{
+%% reset_cache_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type reset_cache_input() :: #{binary() => any()}.
+
+%% Example:
+%% reset_cache_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
--type update_smb_file_share_visibility_output() :: #{binary() => any()}.
+-type reset_cache_output() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_tape_archive_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
+%% }
+-type retrieve_tape_archive_input() :: #{binary() => any()}.
 
 %% Example:
 %% retrieve_tape_archive_output() :: #{
@@ -1233,38 +1656,62 @@
 -type retrieve_tape_archive_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_snapshot_schedule_output() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RecurrenceInHours">> => integer(),
-%%   <<"StartAt">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Timezone">> => string(),
-%%   <<"VolumeARN">> => string()
+%% retrieve_tape_recovery_point_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"TapeARN">> := string()
 %% }
--type describe_snapshot_schedule_output() :: #{binary() => any()}.
+-type retrieve_tape_recovery_point_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_tape_pool_input() :: #{
-%%   <<"PoolName">> := string(),
-%%   <<"RetentionLockTimeInDays">> => integer(),
-%%   <<"RetentionLockType">> => list(any()),
-%%   <<"StorageClass">> := list(any()),
-%%   <<"Tags">> => list(tag())
+%% retrieve_tape_recovery_point_output() :: #{
+%%   <<"TapeARN">> => string()
 %% }
--type create_tape_pool_input() :: #{binary() => any()}.
+-type retrieve_tape_recovery_point_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cache_report_input() :: #{
-%%   <<"CacheReportARN">> := string()
+%% service_unavailable_error() :: #{
+%%   <<"error">> => storage_gateway_error(),
+%%   <<"message">> => string()
 %% }
--type delete_cache_report_input() :: #{binary() => any()}.
+-type service_unavailable_error() :: #{binary() => any()}.
 
 %% Example:
-%% detach_volume_input() :: #{
-%%   <<"ForceDetach">> => boolean(),
-%%   <<"VolumeARN">> := string()
+%% set_local_console_password_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"LocalConsolePassword">> := string()
 %% }
--type detach_volume_input() :: #{binary() => any()}.
+-type set_local_console_password_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_local_console_password_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type set_local_console_password_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_smb_guest_password_input() :: #{
+%%   <<"GatewayARN">> := string(),
+%%   <<"Password">> := string()
+%% }
+-type set_smb_guest_password_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_smb_guest_password_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type set_smb_guest_password_output() :: #{binary() => any()}.
+
+%% Example:
+%% shutdown_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type shutdown_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% shutdown_gateway_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type shutdown_gateway_output() :: #{binary() => any()}.
 
 %% Example:
 %% smb_file_share_info() :: #{
@@ -1302,40 +1749,22 @@
 -type smb_file_share_info() :: #{binary() => any()}.
 
 %% Example:
-%% describe_cache_input() :: #{
+%% smb_local_groups() :: #{
+%%   <<"GatewayAdmins">> => list(string())
+%% }
+-type smb_local_groups() :: #{binary() => any()}.
+
+%% Example:
+%% software_update_preferences() :: #{
+%%   <<"AutomaticUpdatePolicy">> => list(any())
+%% }
+-type software_update_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% start_availability_monitor_test_input() :: #{
 %%   <<"GatewayARN">> := string()
 %% }
--type describe_cache_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_file_system_association_output() :: #{
-%%   <<"FileSystemAssociationARN">> => string()
-%% }
--type update_file_system_association_output() :: #{binary() => any()}.
-
-%% Example:
-%% vtl_device() :: #{
-%%   <<"DeviceiSCSIAttributes">> => device_iscsi_attributes(),
-%%   <<"VTLDeviceARN">> => string(),
-%%   <<"VTLDeviceProductIdentifier">> => string(),
-%%   <<"VTLDeviceType">> => string(),
-%%   <<"VTLDeviceVendor">> => string()
-%% }
--type vtl_device() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tape_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type delete_tape_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_file_shares_output() :: #{
-%%   <<"FileShareInfoList">> => list(file_share_info()),
-%%   <<"Marker">> => string(),
-%%   <<"NextMarker">> => string()
-%% }
--type list_file_shares_output() :: #{binary() => any()}.
+-type start_availability_monitor_test_input() :: #{binary() => any()}.
 
 %% Example:
 %% start_availability_monitor_test_output() :: #{
@@ -1344,233 +1773,43 @@
 -type start_availability_monitor_test_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_maintenance_start_time_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_maintenance_start_time_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_chap_credentials_input() :: #{
-%%   <<"InitiatorName">> := string(),
-%%   <<"TargetARN">> := string()
-%% }
--type delete_chap_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_availability_monitor_test_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_availability_monitor_test_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_information_input() :: #{
-%%   <<"CloudWatchLogGroupARN">> => string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"GatewayCapacity">> => list(any()),
-%%   <<"GatewayName">> => string(),
-%%   <<"GatewayTimezone">> => string()
-%% }
--type update_gateway_information_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_from_volume_recovery_point_input() :: #{
-%%   <<"SnapshotDescription">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeARN">> := string()
-%% }
--type create_snapshot_from_volume_recovery_point_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_smb_file_share_input() :: #{
-%%   <<"AccessBasedEnumeration">> => boolean(),
-%%   <<"AdminUserList">> => list(string()),
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"Authentication">> => string(),
-%%   <<"BucketRegion">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"CaseSensitivity">> => list(any()),
+%% start_cache_report_input() :: #{
+%%   <<"BucketRegion">> := string(),
 %%   <<"ClientToken">> := string(),
-%%   <<"DefaultStorageClass">> => string(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"FileShareName">> => string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"InvalidUserList">> => list(string()),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()),
+%%   <<"FileShareARN">> := string(),
+%%   <<"InclusionFilters">> => list(cache_report_filter()),
 %%   <<"LocationARN">> := string(),
-%%   <<"NotificationPolicy">> => string(),
-%%   <<"ObjectACL">> => list(any()),
-%%   <<"OplocksEnabled">> => boolean(),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RequesterPays">> => boolean(),
 %%   <<"Role">> := string(),
-%%   <<"SMBACLEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VPCEndpointDNSName">> => string(),
-%%   <<"ValidUserList">> => list(string())
-%% }
--type create_smb_file_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_retrieval_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type cancel_retrieval_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_smb_local_groups_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"SMBLocalGroups">> := smb_local_groups()
-%% }
--type update_smb_local_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% reset_cache_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type reset_cache_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_vtl_device_type_output() :: #{
-%%   <<"VTLDeviceARN">> => string()
-%% }
--type update_vtl_device_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tape_archives_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string())
-%% }
--type describe_tape_archives_input() :: #{binary() => any()}.
-
-%% Example:
-%% automatic_tape_creation_rule() :: #{
-%%   <<"MinimumNumTapes">> => integer(),
-%%   <<"PoolId">> => string(),
-%%   <<"TapeBarcodePrefix">> => string(),
-%%   <<"TapeSizeInBytes">> => float(),
-%%   <<"Worm">> => boolean()
-%% }
--type automatic_tape_creation_rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_gateways_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_gateways_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_chap_credentials_output() :: #{
-%%   <<"ChapCredentials">> => list(chap_info())
-%% }
--type describe_chap_credentials_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_smb_file_shares_output() :: #{
-%%   <<"SMBFileShareInfoList">> => list(smb_file_share_info())
-%% }
--type describe_smb_file_shares_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_chap_credentials_output() :: #{
-%%   <<"InitiatorName">> => string(),
-%%   <<"TargetARN">> => string()
-%% }
--type delete_chap_credentials_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tape_archive_output() :: #{
-%%   <<"TapeARN">> => string()
-%% }
--type delete_tape_archive_output() :: #{binary() => any()}.
-
-%% Example:
-%% shutdown_gateway_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type shutdown_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshot_schedule_input() :: #{
-%%   <<"VolumeARN">> := string()
-%% }
--type describe_snapshot_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_nfs_file_share_input() :: #{
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"BucketRegion">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientList">> => list(string()),
-%%   <<"ClientToken">> := string(),
-%%   <<"DefaultStorageClass">> => string(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"FileShareName">> => string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LocationARN">> := string(),
-%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
-%%   <<"NotificationPolicy">> => string(),
-%%   <<"ObjectACL">> => list(any()),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RequesterPays">> => boolean(),
-%%   <<"Role">> := string(),
-%%   <<"Squash">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string()
 %% }
--type create_nfs_file_share_input() :: #{binary() => any()}.
+-type start_cache_report_input() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_error() :: #{
-%%   <<"error">> => storage_gateway_error(),
-%%   <<"message">> => string()
+%% start_cache_report_output() :: #{
+%%   <<"CacheReportARN">> => string()
 %% }
--type internal_server_error() :: #{binary() => any()}.
+-type start_cache_report_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_smb_security_strategy_output() :: #{
+%% start_gateway_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type start_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_gateway_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
--type update_smb_security_strategy_output() :: #{binary() => any()}.
+-type start_gateway_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_file_share_output() :: #{
-%%   <<"FileShareARN">> => string()
+%% storage_gateway_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorDetails">> => map()
 %% }
--type delete_file_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_nfs_file_share_output() :: #{
-%%   <<"FileShareARN">> => string()
-%% }
--type create_nfs_file_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tapes_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string())
-%% }
--type describe_tapes_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_automatic_tape_creation_policies_input() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type list_automatic_tape_creation_policies_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_schedule_output() :: #{
-%%   <<"VolumeARN">> => string()
-%% }
--type update_snapshot_schedule_output() :: #{binary() => any()}.
+-type storage_gateway_error() :: #{binary() => any()}.
 
 %% Example:
 %% stored_iscsi_volume() :: #{
@@ -1593,252 +1832,29 @@
 -type stored_iscsi_volume() :: #{binary() => any()}.
 
 %% Example:
-%% volume_info() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"GatewayId">> => string(),
-%%   <<"VolumeARN">> => string(),
-%%   <<"VolumeAttachmentStatus">> => string(),
-%%   <<"VolumeId">> => string(),
-%%   <<"VolumeSizeInBytes">> => float(),
-%%   <<"VolumeType">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type volume_info() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% update_nfs_file_share_output() :: #{
-%%   <<"FileShareARN">> => string()
-%% }
--type update_nfs_file_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% disable_gateway_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type disable_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% software_update_preferences() :: #{
-%%   <<"AutomaticUpdatePolicy">> => list(any())
-%% }
--type software_update_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stored_iscsi_volumes_input() :: #{
-%%   <<"VolumeARNs">> := list(string())
-%% }
--type describe_stored_iscsi_volumes_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_file_system_associations_input() :: #{
-%%   <<"FileSystemAssociationARNList">> := list(string())
-%% }
--type describe_file_system_associations_input() :: #{binary() => any()}.
-
-%% Example:
-%% disk() :: #{
-%%   <<"DiskAllocationResource">> => string(),
-%%   <<"DiskAllocationType">> => string(),
-%%   <<"DiskAttributeList">> => list(string()),
-%%   <<"DiskId">> => string(),
-%%   <<"DiskNode">> => string(),
-%%   <<"DiskPath">> => string(),
-%%   <<"DiskSizeInBytes">> => float(),
-%%   <<"DiskStatus">> => string()
-%% }
--type disk() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tapes_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Tapes">> => list(tape())
-%% }
--type describe_tapes_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_automatic_tape_creation_policies_output() :: #{
-%%   <<"AutomaticTapeCreationPolicyInfos">> => list(automatic_tape_creation_policy_info())
-%% }
--type list_automatic_tape_creation_policies_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_cache_input() :: #{
-%%   <<"DiskIds">> := list(string()),
-%%   <<"GatewayARN">> := string()
-%% }
--type add_cache_input() :: #{binary() => any()}.
-
-%% Example:
-%% shutdown_gateway_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type shutdown_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_volumes_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"VolumeInfos">> => list(volume_info())
-%% }
--type list_volumes_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% chap_info() :: #{
-%%   <<"InitiatorName">> => string(),
-%%   <<"SecretToAuthenticateInitiator">> => string(),
-%%   <<"SecretToAuthenticateTarget">> => string(),
-%%   <<"TargetARN">> => string()
-%% }
--type chap_info() :: #{binary() => any()}.
-
-%% Example:
-%% add_upload_buffer_input() :: #{
-%%   <<"DiskIds">> := list(string()),
-%%   <<"GatewayARN">> := string()
-%% }
--type add_upload_buffer_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_cached_iscsi_volume_output() :: #{
-%%   <<"TargetARN">> => string(),
-%%   <<"VolumeARN">> => string()
-%% }
--type create_cached_iscsi_volume_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_automatic_tape_creation_policy_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type update_automatic_tape_creation_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% automatic_tape_creation_policy_info() :: #{
-%%   <<"AutomaticTapeCreationRules">> => list(automatic_tape_creation_rule()),
-%%   <<"GatewayARN">> => string()
-%% }
--type automatic_tape_creation_policy_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_chap_credentials_output() :: #{
-%%   <<"InitiatorName">> => string(),
-%%   <<"TargetARN">> => string()
-%% }
--type update_chap_credentials_output() :: #{binary() => any()}.
-
-%% Example:
-%% retrieve_tape_archive_input() :: #{
-%%   <<"GatewayARN">> := string(),
-%%   <<"TapeARN">> := string()
-%% }
--type retrieve_tape_archive_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_automatic_tape_creation_policy_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type delete_automatic_tape_creation_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_automatic_tape_creation_policy_input() :: #{
-%%   <<"AutomaticTapeCreationRules">> := list(automatic_tape_creation_rule()),
-%%   <<"GatewayARN">> := string()
-%% }
--type update_automatic_tape_creation_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_tapes_input() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"KMSEncrypted">> => boolean(),
+%% tape() :: #{
 %%   <<"KMSKey">> => string(),
-%%   <<"NumTapesToCreate">> := integer(),
+%%   <<"PoolEntryDate">> => non_neg_integer(),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TapeBarcodePrefix">> := string(),
-%%   <<"TapeSizeInBytes">> := float(),
+%%   <<"Progress">> => float(),
+%%   <<"RetentionStartDate">> => non_neg_integer(),
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeBarcode">> => string(),
+%%   <<"TapeCreatedDate">> => non_neg_integer(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string(),
+%%   <<"TapeUsedInBytes">> => float(),
+%%   <<"VTLDevice">> => string(),
 %%   <<"Worm">> => boolean()
 %% }
--type create_tapes_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type delete_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% nfs_file_share_info() :: #{
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"BucketRegion">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientList">> => list(string()),
-%%   <<"DefaultStorageClass">> => string(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"FileShareARN">> => string(),
-%%   <<"FileShareId">> => string(),
-%%   <<"FileShareName">> => string(),
-%%   <<"FileShareStatus">> => string(),
-%%   <<"GatewayARN">> => string(),
-%%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LocationARN">> => string(),
-%%   <<"NFSFileShareDefaults">> => nfs_file_share_defaults(),
-%%   <<"NotificationPolicy">> => string(),
-%%   <<"ObjectACL">> => list(any()),
-%%   <<"Path">> => string(),
-%%   <<"ReadOnly">> => boolean(),
-%%   <<"RequesterPays">> => boolean(),
-%%   <<"Role">> => string(),
-%%   <<"Squash">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VPCEndpointDNSName">> => string()
-%% }
--type nfs_file_share_info() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_association_info() :: #{
-%%   <<"AuditDestinationARN">> => string(),
-%%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
-%%   <<"FileSystemAssociationARN">> => string(),
-%%   <<"FileSystemAssociationStatus">> => string(),
-%%   <<"FileSystemAssociationStatusDetails">> => list(file_system_association_status_detail()),
-%%   <<"GatewayARN">> => string(),
-%%   <<"LocationARN">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type file_system_association_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_working_storage_output() :: #{
-%%   <<"DiskIds">> => list(string()),
-%%   <<"GatewayARN">> => string(),
-%%   <<"WorkingStorageAllocatedInBytes">> => float(),
-%%   <<"WorkingStorageUsedInBytes">> => float()
-%% }
--type describe_working_storage_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cache_report_output() :: #{
-%%   <<"CacheReportARN">> => string()
-%% }
--type delete_cache_report_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_stored_iscsi_volume_output() :: #{
-%%   <<"TargetARN">> => string(),
-%%   <<"VolumeARN">> => string(),
-%%   <<"VolumeSizeInBytes">> => float()
-%% }
--type create_stored_iscsi_volume_output() :: #{binary() => any()}.
+-type tape() :: #{binary() => any()}.
 
 %% Example:
 %% tape_archive() :: #{
@@ -1859,49 +1875,144 @@
 -type tape_archive() :: #{binary() => any()}.
 
 %% Example:
-%% file_system_association_summary() :: #{
-%%   <<"FileSystemAssociationARN">> => string(),
-%%   <<"FileSystemAssociationId">> => string(),
-%%   <<"FileSystemAssociationStatus">> => string(),
-%%   <<"GatewayARN">> => string()
+%% tape_info() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"PoolEntryDate">> => non_neg_integer(),
+%%   <<"PoolId">> => string(),
+%%   <<"RetentionStartDate">> => non_neg_integer(),
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeBarcode">> => string(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string()
 %% }
--type file_system_association_summary() :: #{binary() => any()}.
+-type tape_info() :: #{binary() => any()}.
 
 %% Example:
-%% attach_volume_output() :: #{
-%%   <<"TargetARN">> => string(),
-%%   <<"VolumeARN">> => string()
+%% tape_recovery_point_info() :: #{
+%%   <<"TapeARN">> => string(),
+%%   <<"TapeRecoveryPointTime">> => non_neg_integer(),
+%%   <<"TapeSizeInBytes">> => float(),
+%%   <<"TapeStatus">> => string()
 %% }
--type attach_volume_output() :: #{binary() => any()}.
+-type tape_recovery_point_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_automatic_tape_creation_policy_input() :: #{
+%%   <<"AutomaticTapeCreationRules">> := list(automatic_tape_creation_rule()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_automatic_tape_creation_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_automatic_tape_creation_policy_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_automatic_tape_creation_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_input() :: #{
+%%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_bandwidth_rate_limit_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_bandwidth_rate_limit_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_schedule_input() :: #{
+%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_bandwidth_rate_limit_schedule_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_chap_credentials_input() :: #{
+%%   <<"InitiatorName">> := string(),
+%%   <<"SecretToAuthenticateInitiator">> := string(),
+%%   <<"SecretToAuthenticateTarget">> => string(),
+%%   <<"TargetARN">> := string()
+%% }
+-type update_chap_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_chap_credentials_output() :: #{
+%%   <<"InitiatorName">> => string(),
+%%   <<"TargetARN">> => string()
+%% }
+-type update_chap_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_association_input() :: #{
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"FileSystemAssociationARN">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type update_file_system_association_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_file_system_association_output() :: #{
+%%   <<"FileSystemAssociationARN">> => string()
+%% }
+-type update_file_system_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_input() :: #{
+%%   <<"CloudWatchLogGroupARN">> => string(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"GatewayCapacity">> => list(any()),
+%%   <<"GatewayName">> => string(),
+%%   <<"GatewayTimezone">> => string()
+%% }
+-type update_gateway_information_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_output() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayName">> => string()
+%% }
+-type update_gateway_information_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_input() :: #{
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_gateway_software_now_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_gateway_software_now_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_start_time_input() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => integer(),
+%%   <<"GatewayARN">> := string(),
+%%   <<"HourOfDay">> => integer(),
+%%   <<"MinuteOfHour">> => integer(),
+%%   <<"SoftwareUpdatePreferences">> => software_update_preferences()
+%% }
+-type update_maintenance_start_time_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_maintenance_start_time_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
 -type update_maintenance_start_time_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_availability_monitor_test_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_availability_monitor_test_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tape_pools_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"PoolARNs">> => list(string())
-%% }
--type list_tape_pools_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tape_archives_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"TapeArchives">> => list(tape_archive())
-%% }
--type describe_tape_archives_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_nfs_file_share_input() :: #{
@@ -1925,105 +2036,67 @@
 -type update_nfs_file_share_input() :: #{binary() => any()}.
 
 %% Example:
-%% set_smb_guest_password_input() :: #{
+%% update_nfs_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type update_nfs_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_input() :: #{
+%%   <<"AccessBasedEnumeration">> => boolean(),
+%%   <<"AdminUserList">> => list(string()),
+%%   <<"AuditDestinationARN">> => string(),
+%%   <<"CacheAttributes">> => cache_attributes(),
+%%   <<"CaseSensitivity">> => list(any()),
+%%   <<"DefaultStorageClass">> => string(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"FileShareARN">> := string(),
+%%   <<"FileShareName">> => string(),
+%%   <<"GuessMIMETypeEnabled">> => boolean(),
+%%   <<"InvalidUserList">> => list(string()),
+%%   <<"KMSEncrypted">> => boolean(),
+%%   <<"KMSKey">> => string(),
+%%   <<"NotificationPolicy">> => string(),
+%%   <<"ObjectACL">> => list(any()),
+%%   <<"OplocksEnabled">> => boolean(),
+%%   <<"ReadOnly">> => boolean(),
+%%   <<"RequesterPays">> => boolean(),
+%%   <<"SMBACLEnabled">> => boolean(),
+%%   <<"ValidUserList">> => list(string())
+%% }
+-type update_smb_file_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_output() :: #{
+%%   <<"FileShareARN">> => string()
+%% }
+-type update_smb_file_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_visibility_input() :: #{
+%%   <<"FileSharesVisible">> := boolean(),
+%%   <<"GatewayARN">> := string()
+%% }
+-type update_smb_file_share_visibility_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_file_share_visibility_output() :: #{
+%%   <<"GatewayARN">> => string()
+%% }
+-type update_smb_file_share_visibility_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_smb_local_groups_input() :: #{
 %%   <<"GatewayARN">> := string(),
-%%   <<"Password">> := string()
+%%   <<"SMBLocalGroups">> := smb_local_groups()
 %% }
--type set_smb_guest_password_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_software_now_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type update_gateway_software_now_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
-%%   <<"GatewayARN">> := string()
-%% }
--type update_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_file_system_output() :: #{
-%%   <<"FileSystemAssociationARN">> => string()
-%% }
--type disassociate_file_system_output() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_cache_output() :: #{
-%%   <<"FileShareARN">> => string(),
-%%   <<"NotificationId">> => string()
-%% }
--type refresh_cache_output() :: #{binary() => any()}.
-
-%% Example:
-%% smb_local_groups() :: #{
-%%   <<"GatewayAdmins">> => list(string())
-%% }
--type smb_local_groups() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bandwidth_rate_limit_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_bandwidth_rate_limit_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_bandwidth_rate_limit_schedule_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type update_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_smb_file_shares_input() :: #{
-%%   <<"FileShareARNList">> := list(string())
-%% }
--type describe_smb_file_shares_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_chap_credentials_input() :: #{
-%%   <<"TargetARN">> := string()
-%% }
--type describe_chap_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_software_now_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type update_gateway_software_now_input() :: #{binary() => any()}.
+-type update_smb_local_groups_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_smb_local_groups_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
 -type update_smb_local_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tape_recovery_points_output() :: #{
-%%   <<"GatewayARN">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"TapeRecoveryPointInfos">> => list(tape_recovery_point_info())
-%% }
--type describe_tape_recovery_points_output() :: #{binary() => any()}.
-
-%% Example:
-%% cache_attributes() :: #{
-%%   <<"CacheStaleTimeoutInSeconds">> => integer()
-%% }
--type cache_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% create_tape_pool_output() :: #{
-%%   <<"PoolARN">> => string()
-%% }
--type create_tape_pool_output() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_association_status_detail() :: #{
-%%   <<"ErrorCode">> => string()
-%% }
--type file_system_association_status_detail() :: #{binary() => any()}.
 
 %% Example:
 %% update_smb_security_strategy_input() :: #{
@@ -2033,153 +2106,80 @@
 -type update_smb_security_strategy_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_working_storage_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_working_storage_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_upload_buffer_output() :: #{
-%%   <<"DiskIds">> => list(string()),
-%%   <<"GatewayARN">> => string(),
-%%   <<"UploadBufferAllocatedInBytes">> => float(),
-%%   <<"UploadBufferUsedInBytes">> => float()
-%% }
--type describe_upload_buffer_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tapes_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string())
-%% }
--type list_tapes_input() :: #{binary() => any()}.
-
-%% Example:
-%% activate_gateway_input() :: #{
-%%   <<"ActivationKey">> := string(),
-%%   <<"GatewayName">> := string(),
-%%   <<"GatewayRegion">> := string(),
-%%   <<"GatewayTimezone">> := string(),
-%%   <<"GatewayType">> => string(),
-%%   <<"MediumChangerType">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TapeDriveType">> => string()
-%% }
--type activate_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cached_iscsi_volumes_output() :: #{
-%%   <<"CachediSCSIVolumes">> => list(cached_iscsi_volume())
-%% }
--type describe_cached_iscsi_volumes_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_nfs_file_shares_input() :: #{
-%%   <<"FileShareARNList">> := list(string())
-%% }
--type describe_nfs_file_shares_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_file_system_input() :: #{
-%%   <<"FileSystemAssociationARN">> := string(),
-%%   <<"ForceDelete">> => boolean()
-%% }
--type disassociate_file_system_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_automatic_tape_creation_policy_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type delete_automatic_tape_creation_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_upload_buffer_output() :: #{
+%% update_smb_security_strategy_output() :: #{
 %%   <<"GatewayARN">> => string()
 %% }
--type add_upload_buffer_output() :: #{binary() => any()}.
+-type update_smb_security_strategy_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_chap_credentials_input() :: #{
-%%   <<"InitiatorName">> := string(),
-%%   <<"SecretToAuthenticateInitiator">> := string(),
-%%   <<"SecretToAuthenticateTarget">> => string(),
-%%   <<"TargetARN">> := string()
-%% }
--type update_chap_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bandwidth_rate_limit_output() :: #{
-%%   <<"GatewayARN">> => string()
-%% }
--type delete_bandwidth_rate_limit_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_cached_iscsi_volume_input() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"GatewayARN">> := string(),
-%%   <<"KMSEncrypted">> => boolean(),
-%%   <<"KMSKey">> => string(),
-%%   <<"NetworkInterfaceId">> := string(),
-%%   <<"SnapshotId">> => string(),
-%%   <<"SourceVolumeARN">> => string(),
+%% update_snapshot_schedule_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecurrenceInHours">> := integer(),
+%%   <<"StartAt">> := integer(),
 %%   <<"Tags">> => list(tag()),
-%%   <<"TargetName">> := string(),
-%%   <<"VolumeSizeInBytes">> := float()
+%%   <<"VolumeARN">> := string()
 %% }
--type create_cached_iscsi_volume_input() :: #{binary() => any()}.
+-type update_snapshot_schedule_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"GatewayARN">> := string()
-%% }
--type describe_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_output() :: #{
+%% update_snapshot_schedule_output() :: #{
 %%   <<"VolumeARN">> => string()
 %% }
--type delete_volume_output() :: #{binary() => any()}.
+-type update_snapshot_schedule_output() :: #{binary() => any()}.
 
 %% Example:
-%% set_smb_guest_password_output() :: #{
-%%   <<"GatewayARN">> => string()
+%% update_vtl_device_type_input() :: #{
+%%   <<"DeviceType">> := string(),
+%%   <<"VTLDeviceARN">> := string()
 %% }
--type set_smb_guest_password_output() :: #{binary() => any()}.
+-type update_vtl_device_type_input() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_cache_report_output() :: #{
-%%   <<"CacheReportARN">> => string()
+%% update_vtl_device_type_output() :: #{
+%%   <<"VTLDeviceARN">> => string()
 %% }
--type cancel_cache_report_output() :: #{binary() => any()}.
+-type update_vtl_device_type_output() :: #{binary() => any()}.
 
 %% Example:
-%% add_working_storage_input() :: #{
-%%   <<"DiskIds">> := list(string()),
-%%   <<"GatewayARN">> := string()
+%% volume_info() :: #{
+%%   <<"GatewayARN">> => string(),
+%%   <<"GatewayId">> => string(),
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeAttachmentStatus">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeType">> => string()
 %% }
--type add_working_storage_input() :: #{binary() => any()}.
+-type volume_info() :: #{binary() => any()}.
 
 %% Example:
-%% update_smb_file_share_output() :: #{
-%%   <<"FileShareARN">> => string()
+%% volume_iscsi_attributes() :: #{
+%%   <<"ChapEnabled">> => boolean(),
+%%   <<"LunNumber">> => integer(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NetworkInterfacePort">> => integer(),
+%%   <<"TargetARN">> => string()
 %% }
--type update_smb_file_share_output() :: #{binary() => any()}.
+-type volume_iscsi_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% refresh_cache_input() :: #{
-%%   <<"FileShareARN">> := string(),
-%%   <<"FolderList">> => list(string()),
-%%   <<"Recursive">> => boolean()
+%% volume_recovery_point_info() :: #{
+%%   <<"VolumeARN">> => string(),
+%%   <<"VolumeRecoveryPointTime">> => string(),
+%%   <<"VolumeSizeInBytes">> => float(),
+%%   <<"VolumeUsageInBytes">> => float()
 %% }
--type refresh_cache_input() :: #{binary() => any()}.
+-type volume_recovery_point_info() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_gateway_request_exception() :: #{
-%%   <<"error">> => storage_gateway_error(),
-%%   <<"message">> => string()
+%% vtl_device() :: #{
+%%   <<"DeviceiSCSIAttributes">> => device_iscsi_attributes(),
+%%   <<"VTLDeviceARN">> => string(),
+%%   <<"VTLDeviceProductIdentifier">> => string(),
+%%   <<"VTLDeviceType">> => string(),
+%%   <<"VTLDeviceVendor">> => string()
 %% }
--type invalid_gateway_request_exception() :: #{binary() => any()}.
+-type vtl_device() :: #{binary() => any()}.
 
 -type activate_gateway_errors() ::
     invalid_gateway_request_exception() | 
@@ -2238,14 +2238,14 @@
     internal_server_error().
 
 -type create_snapshot_errors() ::
+    service_unavailable_error() | 
     invalid_gateway_request_exception() | 
-    internal_server_error() | 
-    service_unavailable_error().
+    internal_server_error().
 
 -type create_snapshot_from_volume_recovery_point_errors() ::
+    service_unavailable_error() | 
     invalid_gateway_request_exception() | 
-    internal_server_error() | 
-    service_unavailable_error().
+    internal_server_error().
 
 -type create_stored_iscsi_volume_errors() ::
     invalid_gateway_request_exception() | 

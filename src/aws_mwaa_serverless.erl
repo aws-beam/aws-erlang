@@ -49,6 +49,20 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_workflow_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DefinitionS3Location">> := definition_s3_location(),
@@ -65,29 +79,24 @@
 -type create_workflow_request() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"KmsKeyId">> => [string()],
-%%   <<"Type">> => list(any())
+%% create_workflow_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IsLatestVersion">> => boolean(),
+%%   <<"RevisionId">> => [string()],
+%%   <<"Warnings">> => list([string()]()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowStatus">> => list(any()),
+%%   <<"WorkflowVersion">> => string()
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type create_workflow_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% definition_s3_location() :: #{
+%%   <<"Bucket">> => [string()],
+%%   <<"ObjectKey">> => [string()],
+%%   <<"VersionId">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% operation_timeout_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_timeout_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
+-type definition_s3_location() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workflow_request() :: #{
@@ -96,32 +105,24 @@
 -type delete_workflow_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_task_instances_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_task_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% task_instance_summary() :: #{
-%%   <<"DurationInSeconds">> => [integer()],
-%%   <<"OperatorName">> => string(),
-%%   <<"RunId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskInstanceId">> => string(),
+%% delete_workflow_response() :: #{
 %%   <<"WorkflowArn">> => string(),
 %%   <<"WorkflowVersion">> => string()
 %% }
--type task_instance_summary() :: #{binary() => any()}.
+-type delete_workflow_response() :: #{binary() => any()}.
 
 %% Example:
-%% stop_workflow_run_response() :: #{
-%%   <<"RunId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
+%% encryption_configuration() :: #{
+%%   <<"KmsKeyId">> => [string()],
+%%   <<"Type">> => list(any())
 %% }
--type stop_workflow_run_response() :: #{binary() => any()}.
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_instance_request() :: #{
+
+%% }
+-type get_task_instance_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_task_instance_response() :: #{
@@ -144,321 +145,10 @@
 -type get_task_instance_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_workflow_request() :: #{
-%%   <<"DefinitionS3Location">> := definition_s3_location(),
-%%   <<"Description">> => string(),
-%%   <<"EngineVersion">> => list(integer()),
-%%   <<"LoggingConfiguration">> => logging_configuration(),
-%%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"RoleArn">> := string(),
-%%   <<"TriggerMode">> => string()
-%% }
--type update_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% logging_configuration() :: #{
-%%   <<"LogGroupName">> => [string()]
-%% }
--type logging_configuration() :: #{binary() => any()}.
-
-%% Example:
 %% get_workflow_request() :: #{
 %%   <<"WorkflowVersion">> => string()
 %% }
 -type get_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% definition_s3_location() :: #{
-%%   <<"Bucket">> => [string()],
-%%   <<"ObjectKey">> => [string()],
-%%   <<"VersionId">> => [string()]
-%% }
--type definition_s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_response() :: #{
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type delete_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% run_detail_summary() :: #{
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type run_detail_summary() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()],
-%%   <<"ServiceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_workflow_run_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"OverrideParameters">> => map(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type start_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflows_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_workflows_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_workflow_response() :: #{
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Warnings">> => list([string()]()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type update_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% start_workflow_run_response() :: #{
-%%   <<"RunId">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type start_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflow_versions_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_workflow_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflow_runs_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"WorkflowVersion">> => string()
-%% }
--type list_workflow_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"TriggerMode">> => string(),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowStatus">> => list(any()),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type workflow_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflow_versions_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"WorkflowVersions">> => list(workflow_version_summary())
-%% }
--type list_workflow_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_version_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DefinitionS3Location">> => definition_s3_location(),
-%%   <<"IsLatestVersion">> => boolean(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"ScheduleConfiguration">> => schedule_configuration(),
-%%   <<"TriggerMode">> => string(),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type workflow_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_workflow_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IsLatestVersion">> => boolean(),
-%%   <<"RevisionId">> => [string()],
-%%   <<"Warnings">> => list([string()]()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowStatus">> => list(any()),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type create_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflow_runs_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"WorkflowRuns">> => list(workflow_run_summary())
-%% }
--type list_workflow_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_run_detail() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Duration">> => [integer()],
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"RunId">> => string(),
-%%   <<"RunState">> => list(any()),
-%%   <<"RunType">> => list(any()),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"TaskInstances">> => list(string()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type workflow_run_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_task_instance_request() :: #{
-
-%% }
--type get_task_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_configuration() :: #{
-%%   <<"CronExpression">> => [string()]
-%% }
--type schedule_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => [string()],
-%%   <<"RetryAfterSeconds">> => [integer()],
-%%   <<"ServiceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_request() :: #{
-
-%% }
--type get_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workflow_run_request() :: #{
-
-%% }
--type stop_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Workflows">> => list(workflow_summary())
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_response() :: #{
-%%   <<"OverrideParameters">> => map(),
-%%   <<"RunDetail">> => workflow_run_detail(),
-%%   <<"RunId">> => string(),
-%%   <<"RunType">> => list(any()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type get_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_run_summary() :: #{
-%%   <<"RunDetailSummary">> => run_detail_summary(),
-%%   <<"RunId">> => string(),
-%%   <<"RunType">> => list(any()),
-%%   <<"WorkflowArn">> => string(),
-%%   <<"WorkflowVersion">> => string()
-%% }
--type workflow_run_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_task_instances_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskInstances">> => list(task_instance_summary())
-%% }
--type list_task_instances_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_workflow_response() :: #{
@@ -481,126 +171,436 @@
 %% }
 -type get_workflow_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_workflow_run_request() :: #{
+
+%% }
+-type get_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_run_response() :: #{
+%%   <<"OverrideParameters">> => map(),
+%%   <<"RunDetail">> => workflow_run_detail(),
+%%   <<"RunId">> => string(),
+%%   <<"RunType">> => list(any()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type get_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_instances_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_task_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_instances_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskInstances">> => list(task_instance_summary())
+%% }
+-type list_task_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_runs_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type list_workflow_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_runs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"WorkflowRuns">> => list(workflow_run_summary())
+%% }
+-type list_workflow_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_versions_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_workflow_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_versions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"WorkflowVersions">> => list(workflow_version_summary())
+%% }
+-type list_workflow_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Workflows">> => list(workflow_summary())
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogGroupName">> => [string()]
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operation_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% run_detail_summary() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type run_detail_summary() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"CronExpression">> => [string()]
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"ServiceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_workflow_run_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"OverrideParameters">> => map(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type start_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_workflow_run_response() :: #{
+%%   <<"RunId">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workflow_run_request() :: #{
+
+%% }
+-type stop_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workflow_run_response() :: #{
+%%   <<"RunId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type stop_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_instance_summary() :: #{
+%%   <<"DurationInSeconds">> => [integer()],
+%%   <<"OperatorName">> => string(),
+%%   <<"RunId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskInstanceId">> => string(),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type task_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => [string()],
+%%   <<"RetryAfterSeconds">> => [integer()],
+%%   <<"ServiceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workflow_request() :: #{
+%%   <<"DefinitionS3Location">> := definition_s3_location(),
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => list(integer()),
+%%   <<"LoggingConfiguration">> => logging_configuration(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"RoleArn">> := string(),
+%%   <<"TriggerMode">> => string()
+%% }
+-type update_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workflow_response() :: #{
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Warnings">> => list([string()]()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type update_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_run_detail() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Duration">> => [integer()],
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"RunId">> => string(),
+%%   <<"RunState">> => list(any()),
+%%   <<"RunType">> => list(any()),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"TaskInstances">> => list(string()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type workflow_run_detail() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_run_summary() :: #{
+%%   <<"RunDetailSummary">> => run_detail_summary(),
+%%   <<"RunId">> => string(),
+%%   <<"RunType">> => list(any()),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type workflow_run_summary() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"TriggerMode">> => string(),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowStatus">> => list(any()),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type workflow_summary() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_version_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DefinitionS3Location">> => definition_s3_location(),
+%%   <<"IsLatestVersion">> => boolean(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"TriggerMode">> => string(),
+%%   <<"WorkflowArn">> => string(),
+%%   <<"WorkflowVersion">> => string()
+%% }
+-type workflow_version_summary() :: #{binary() => any()}.
+
 -type create_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    operation_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type delete_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_task_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_task_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    operation_timeout_exception() | 
     internal_server_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_workflow_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    operation_timeout_exception() | 
     internal_server_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_workflow_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    operation_timeout_exception() | 
     internal_server_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    operation_timeout_exception() | 
     internal_server_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type start_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    operation_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type stop_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    operation_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

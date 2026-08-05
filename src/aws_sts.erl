@@ -40,251 +40,6 @@
 
 
 %% Example:
-%% get_delegated_access_token_request() :: #{
-%%   <<"TradeInToken">> := string()
-%% }
--type get_delegated_access_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_federation_token_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"Tags">> => list(tag())
-%% }
--type get_federation_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_info_request() :: #{
-%%   <<"AccessKeyId">> := string()
-%% }
--type get_access_key_info_request() :: #{binary() => any()}.
-
-%% Example:
-%% region_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type region_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_token_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"TokenCode">> => string()
-%% }
--type get_session_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% assumed_role_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssumedRoleId">> => string()
-%% }
--type assumed_role_user() :: #{binary() => any()}.
-
-%% Example:
-%% j_w_t_payload_size_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type j_w_t_payload_size_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% packed_policy_too_large_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type packed_policy_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-%% Example:
-%% outbound_web_identity_federation_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type outbound_web_identity_federation_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_saml_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"PrincipalArn">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SAMLAssertion">> := string()
-%% }
--type assume_role_with_saml_request() :: #{binary() => any()}.
-
-%% Example:
-%% expired_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type expired_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_web_identity_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Audience">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"Provider">> => string(),
-%%   <<"SourceIdentity">> => string(),
-%%   <<"SubjectFromWebIdentityToken">> => string()
-%% }
--type assume_role_with_web_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_saml_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Audience">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"Issuer">> => string(),
-%%   <<"NameQualifier">> => string(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"SourceIdentity">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"SubjectType">> => string()
-%% }
--type assume_role_with_saml_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_federation_token_response() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"FederatedUser">> => federated_user(),
-%%   <<"PackedPolicySize">> => integer()
-%% }
--type get_federation_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_identity_token_response() :: #{
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"WebIdentityToken">> => string()
-%% }
--type get_web_identity_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% decode_authorization_message_response() :: #{
-%%   <<"DecodedMessage">> => string()
-%% }
--type decode_authorization_message_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_info_response() :: #{
-%%   <<"Account">> => string()
-%% }
--type get_access_key_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% federated_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FederatedUserId">> => string()
-%% }
--type federated_user() :: #{binary() => any()}.
-
-%% Example:
-%% provided_context() :: #{
-%%   <<"ContextAssertion">> => string(),
-%%   <<"ProviderArn">> => string()
-%% }
--type provided_context() :: #{binary() => any()}.
-
-%% Example:
-%% session_duration_escalation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type session_duration_escalation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_identity_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_identity_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_token_response() :: #{
-%%   <<"Credentials">> => credentials()
-%% }
--type get_session_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_delegated_access_token_response() :: #{
-%%   <<"AssumedPrincipal">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"PackedPolicySize">> => integer()
-%% }
--type get_delegated_access_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% decode_authorization_message_request() :: #{
-%%   <<"EncodedMessage">> := string()
-%% }
--type decode_authorization_message_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_web_identity_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"ProviderId">> => string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"RoleSessionName">> := string(),
-%%   <<"WebIdentityToken">> := string()
-%% }
--type assume_role_with_web_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_root_response() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"SourceIdentity">> => string()
-%% }
--type assume_root_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"SourceIdentity">> => string()
-%% }
--type assume_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% id_p_communication_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type id_p_communication_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_descriptor_type() :: #{
-%%   <<"arn">> => string()
-%% }
--type policy_descriptor_type() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_caller_identity_request() :: #{
-
-%% }
--type get_caller_identity_request() :: #{binary() => any()}.
-
-%% Example:
 %% assume_role_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"ExternalId">> => string(),
@@ -302,6 +57,220 @@
 -type assume_role_request() :: #{binary() => any()}.
 
 %% Example:
+%% assume_role_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SAMLAssertion">> := string()
+%% }
+-type assume_role_with_saml_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"Issuer">> => string(),
+%%   <<"NameQualifier">> => string(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"SubjectType">> => string()
+%% }
+-type assume_role_with_saml_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"ProviderId">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"RoleSessionName">> := string(),
+%%   <<"WebIdentityToken">> := string()
+%% }
+-type assume_role_with_web_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"Provider">> => string(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"SubjectFromWebIdentityToken">> => string()
+%% }
+-type assume_role_with_web_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_root_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"TargetPrincipal">> := string(),
+%%   <<"TaskPolicyArn">> := policy_descriptor_type()
+%% }
+-type assume_root_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_root_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_root_response() :: #{binary() => any()}.
+
+%% Example:
+%% assumed_role_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumedRoleId">> => string()
+%% }
+-type assumed_role_user() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_request() :: #{
+%%   <<"EncodedMessage">> := string()
+%% }
+-type decode_authorization_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_response() :: #{
+%%   <<"DecodedMessage">> => string()
+%% }
+-type decode_authorization_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% expired_trade_in_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_trade_in_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% federated_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FederatedUserId">> => string()
+%% }
+-type federated_user() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_request() :: #{
+%%   <<"AccessKeyId">> := string()
+%% }
+-type get_access_key_info_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_response() :: #{
+%%   <<"Account">> => string()
+%% }
+-type get_access_key_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_request() :: #{
+
+%% }
+-type get_caller_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_response() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_caller_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegated_access_token_request() :: #{
+%%   <<"TradeInToken">> := string()
+%% }
+-type get_delegated_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegated_access_token_response() :: #{
+%%   <<"AssumedPrincipal">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer()
+%% }
+-type get_delegated_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type get_federation_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"FederatedUser">> => federated_user(),
+%%   <<"PackedPolicySize">> => integer()
+%% }
+-type get_federation_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"TokenCode">> => string()
+%% }
+-type get_session_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_response() :: #{
+%%   <<"Credentials">> => credentials()
+%% }
+-type get_session_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_identity_token_request() :: #{
+%%   <<"Audience">> := list(string()),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"SigningAlgorithm">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type get_web_identity_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_identity_token_response() :: #{
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"WebIdentityToken">> => string()
+%% }
+-type get_web_identity_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% id_p_communication_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type id_p_communication_error_exception() :: #{binary() => any()}.
+
+%% Example:
 %% id_p_rejected_claim_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -314,75 +283,106 @@
 -type invalid_authorization_message_exception() :: #{binary() => any()}.
 
 %% Example:
-%% assume_root_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"TargetPrincipal">> := string(),
-%%   <<"TaskPolicyArn">> := policy_descriptor_type()
-%% }
--type assume_root_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_web_identity_token_request() :: #{
-%%   <<"Audience">> := list(string()),
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"SigningAlgorithm">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type get_web_identity_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_caller_identity_response() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type get_caller_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% expired_trade_in_token_exception() :: #{
+%% invalid_identity_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type expired_trade_in_token_exception() :: #{binary() => any()}.
+-type invalid_identity_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% j_w_t_payload_size_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type j_w_t_payload_size_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% outbound_web_identity_federation_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type outbound_web_identity_federation_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% packed_policy_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type packed_policy_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_descriptor_type() :: #{
+%%   <<"arn">> => string()
+%% }
+-type policy_descriptor_type() :: #{binary() => any()}.
+
+%% Example:
+%% provided_context() :: #{
+%%   <<"ContextAssertion">> => string(),
+%%   <<"ProviderArn">> => string()
+%% }
+-type provided_context() :: #{binary() => any()}.
+
+%% Example:
+%% region_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type region_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session_duration_escalation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type session_duration_escalation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
 
 -type assume_role_errors() ::
-    malformed_policy_document_exception() | 
-    expired_token_exception() | 
+    region_disabled_exception() | 
     packed_policy_too_large_exception() | 
-    region_disabled_exception().
+    malformed_policy_document_exception() | 
+    expired_token_exception().
 
 -type assume_role_with_saml_errors() ::
-    id_p_rejected_claim_exception() | 
+    region_disabled_exception() | 
+    packed_policy_too_large_exception() | 
     malformed_policy_document_exception() | 
     invalid_identity_token_exception() | 
-    expired_token_exception() | 
-    packed_policy_too_large_exception() | 
-    region_disabled_exception().
+    id_p_rejected_claim_exception() | 
+    expired_token_exception().
 
 -type assume_role_with_web_identity_errors() ::
-    id_p_rejected_claim_exception() | 
-    malformed_policy_document_exception() | 
-    id_p_communication_error_exception() | 
-    invalid_identity_token_exception() | 
-    expired_token_exception() | 
+    region_disabled_exception() | 
     packed_policy_too_large_exception() | 
-    region_disabled_exception().
+    malformed_policy_document_exception() | 
+    invalid_identity_token_exception() | 
+    id_p_rejected_claim_exception() | 
+    id_p_communication_error_exception() | 
+    expired_token_exception().
 
 -type assume_root_errors() ::
-    expired_token_exception() | 
-    region_disabled_exception().
+    region_disabled_exception() | 
+    expired_token_exception().
 
 -type decode_authorization_message_errors() ::
     invalid_authorization_message_exception().
 
 -type get_delegated_access_token_errors() ::
-    expired_trade_in_token_exception() | 
+    region_disabled_exception() | 
     packed_policy_too_large_exception() | 
-    region_disabled_exception().
+    expired_trade_in_token_exception().
 
 -type get_federation_token_errors() ::
-    malformed_policy_document_exception() | 
+    region_disabled_exception() | 
     packed_policy_too_large_exception() | 
-    region_disabled_exception().
+    malformed_policy_document_exception().
 
 -type get_session_token_errors() ::
     region_disabled_exception().

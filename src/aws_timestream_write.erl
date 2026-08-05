@@ -72,108 +72,33 @@
 
 
 %% Example:
-%% partition_key() :: #{
-%%   <<"EnforcementInRecord">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type partition_key() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_batch_load_task_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DataModelConfiguration">> => data_model_configuration(),
-%%   <<"DataSourceConfiguration">> := data_source_configuration(),
-%%   <<"RecordVersion">> => float(),
-%%   <<"ReportConfiguration">> := report_configuration(),
-%%   <<"TargetDatabaseName">> := string(),
-%%   <<"TargetTableName">> := string()
+%% batch_load_progress_report() :: #{
+%%   <<"BytesMetered">> => float(),
+%%   <<"FileFailures">> => float(),
+%%   <<"ParseFailures">> => float(),
+%%   <<"RecordIngestionFailures">> => float(),
+%%   <<"RecordsIngested">> => float(),
+%%   <<"RecordsProcessed">> => float()
 %% }
--type create_batch_load_task_request() :: #{binary() => any()}.
+-type batch_load_progress_report() :: #{binary() => any()}.
 
 %% Example:
-%% magnetic_store_rejected_data_location() :: #{
-%%   <<"S3Configuration">> => s3_configuration()
-%% }
--type magnetic_store_rejected_data_location() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% database() :: #{
-%%   <<"Arn">> => string(),
+%% batch_load_task() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DatabaseName">> => string(),
-%%   <<"KmsKeyId">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"TableCount">> => float()
+%%   <<"ResumableUntil">> => non_neg_integer(),
+%%   <<"TableName">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
 %% }
--type database() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"MagneticStoreWriteProperties">> => magnetic_store_write_properties(),
-%%   <<"RetentionProperties">> => retention_properties(),
-%%   <<"Schema">> => schema(),
-%%   <<"TableName">> := string()
-%% }
--type update_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% magnetic_store_write_properties() :: #{
-%%   <<"EnableMagneticStoreWrites">> => boolean(),
-%%   <<"MagneticStoreRejectedDataLocation">> => magnetic_store_rejected_data_location()
-%% }
--type magnetic_store_write_properties() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_configuration() :: #{
-%%   <<"CsvConfiguration">> => csv_configuration(),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"DataSourceS3Configuration">> => data_source_s3_configuration()
-%% }
--type data_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% measure_value() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type measure_value() :: #{binary() => any()}.
-
-%% Example:
-%% records_ingested() :: #{
-%%   <<"MagneticStore">> => integer(),
-%%   <<"MemoryStore">> => integer(),
-%%   <<"Total">> => integer()
-%% }
--type records_ingested() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type delete_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_database_response() :: #{
-%%   <<"Database">> => database()
-%% }
--type describe_database_response() :: #{binary() => any()}.
+-type batch_load_task() :: #{binary() => any()}.
 
 %% Example:
 %% batch_load_task_description() :: #{
@@ -194,49 +119,42 @@
 -type batch_load_task_description() :: #{binary() => any()}.
 
 %% Example:
-%% multi_measure_attribute_mapping() :: #{
-%%   <<"MeasureValueType">> => list(any()),
-%%   <<"SourceColumn">> => string(),
-%%   <<"TargetMultiMeasureAttributeName">> => string()
-%% }
--type multi_measure_attribute_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% csv_configuration() :: #{
-%%   <<"ColumnSeparator">> => string(),
-%%   <<"EscapeChar">> => string(),
-%%   <<"NullValue">> => string(),
-%%   <<"QuoteChar">> => string(),
-%%   <<"TrimWhiteSpace">> => boolean()
-%% }
--type csv_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% report_s3_configuration() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"EncryptionOption">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ObjectKeyPrefix">> => string()
-%% }
--type report_s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_endpoint_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_endpoint_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_database_request() :: #{
-%%   <<"DatabaseName">> := string()
+%% create_batch_load_task_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DataModelConfiguration">> => data_model_configuration(),
+%%   <<"DataSourceConfiguration">> := data_source_configuration(),
+%%   <<"RecordVersion">> => float(),
+%%   <<"ReportConfiguration">> := report_configuration(),
+%%   <<"TargetDatabaseName">> := string(),
+%%   <<"TargetTableName">> := string()
 %% }
--type describe_database_request() :: #{binary() => any()}.
+-type create_batch_load_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint())
+%% create_batch_load_task_response() :: #{
+%%   <<"TaskId">> => string()
 %% }
--type describe_endpoints_response() :: #{binary() => any()}.
+-type create_batch_load_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_response() :: #{
+%%   <<"Database">> => database()
+%% }
+-type create_database_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_table_request() :: #{
@@ -250,48 +168,31 @@
 -type create_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_table_response() :: #{
+%% create_table_response() :: #{
 %%   <<"Table">> => table()
 %% }
--type describe_table_response() :: #{binary() => any()}.
+-type create_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% csv_configuration() :: #{
+%%   <<"ColumnSeparator">> => string(),
+%%   <<"EscapeChar">> => string(),
+%%   <<"NullValue">> => string(),
+%%   <<"QuoteChar">> => string(),
+%%   <<"TrimWhiteSpace">> => boolean()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type csv_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_batch_load_task_response() :: #{
-%%   <<"BatchLoadTaskDescription">> => batch_load_task_description()
+%% data_model() :: #{
+%%   <<"DimensionMappings">> => list(dimension_mapping()),
+%%   <<"MeasureNameColumn">> => string(),
+%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()),
+%%   <<"MultiMeasureMappings">> => multi_measure_mappings(),
+%%   <<"TimeColumn">> => string(),
+%%   <<"TimeUnit">> => list(any())
 %% }
--type describe_batch_load_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_load_task() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ResumableUntil">> => non_neg_integer(),
-%%   <<"TableName">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
-%% }
--type batch_load_task() :: #{binary() => any()}.
-
-%% Example:
-%% timestream_write_record() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MeasureName">> => string(),
-%%   <<"MeasureValue">> => string(),
-%%   <<"MeasureValueType">> => list(any()),
-%%   <<"MeasureValues">> => list(measure_value()),
-%%   <<"Time">> => string(),
-%%   <<"TimeUnit">> => list(any()),
-%%   <<"Version">> => float()
-%% }
--type timestream_write_record() :: #{binary() => any()}.
+-type data_model() :: #{binary() => any()}.
 
 %% Example:
 %% data_model_configuration() :: #{
@@ -301,49 +202,50 @@
 -type data_model_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_endpoints_request() :: #{
-
+%% data_model_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKey">> => string()
 %% }
--type describe_endpoints_request() :: #{binary() => any()}.
+-type data_model_s3_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_databases_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% data_source_configuration() :: #{
+%%   <<"CsvConfiguration">> => csv_configuration(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DataSourceS3Configuration">> => data_source_s3_configuration()
 %% }
--type list_databases_request() :: #{binary() => any()}.
+-type data_source_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% data_source_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type data_source_s3_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% database() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TableCount">> => float()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type database() :: #{binary() => any()}.
 
 %% Example:
-%% list_tables_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table())
+%% delete_database_request() :: #{
+%%   <<"DatabaseName">> := string()
 %% }
--type list_tables_response() :: #{binary() => any()}.
+-type delete_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% resume_batch_load_task_response() :: #{
-
+%% delete_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
 %% }
--type resume_batch_load_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type delete_table_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_batch_load_task_request() :: #{
@@ -352,46 +254,34 @@
 -type describe_batch_load_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_table_response() :: #{
-%%   <<"Table">> => table()
+%% describe_batch_load_task_response() :: #{
+%%   <<"BatchLoadTaskDescription">> => batch_load_task_description()
 %% }
--type create_table_response() :: #{binary() => any()}.
+-type describe_batch_load_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_database_request() :: #{
+%%   <<"DatabaseName">> := string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type describe_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% resume_batch_load_task_request() :: #{
-%%   <<"TaskId">> := string()
+%% describe_database_response() :: #{
+%%   <<"Database">> => database()
 %% }
--type resume_batch_load_task_request() :: #{binary() => any()}.
+-type describe_database_response() :: #{binary() => any()}.
 
 %% Example:
-%% report_configuration() :: #{
-%%   <<"ReportS3Configuration">> => report_s3_configuration()
+%% describe_endpoints_request() :: #{
+
 %% }
--type report_configuration() :: #{binary() => any()}.
+-type describe_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
-%% schema() :: #{
-%%   <<"CompositePartitionKey">> => list(partition_key())
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint())
 %% }
--type schema() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_load_task_response() :: #{
-%%   <<"TaskId">> => string()
-%% }
--type create_batch_load_task_response() :: #{binary() => any()}.
+-type describe_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_table_request() :: #{
@@ -401,12 +291,25 @@
 -type describe_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_batch_load_tasks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TaskStatus">> => list(any())
+%% describe_table_response() :: #{
+%%   <<"Table">> => table()
 %% }
--type list_batch_load_tasks_request() :: #{binary() => any()}.
+-type describe_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"DimensionValueType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_mapping() :: #{
+%%   <<"DestinationColumn">> => string(),
+%%   <<"SourceColumn">> => string()
+%% }
+-type dimension_mapping() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint() :: #{
@@ -422,6 +325,20 @@
 -type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_load_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type list_batch_load_tasks_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_batch_load_tasks_response() :: #{
 %%   <<"BatchLoadTasks">> => list(batch_load_task()),
 %%   <<"NextToken">> => string()
@@ -429,45 +346,33 @@
 -type list_batch_load_tasks_response() :: #{binary() => any()}.
 
 %% Example:
-%% write_records_request() :: #{
-%%   <<"CommonAttributes">> => record(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Records">> := list(record()),
-%%   <<"TableName">> := string()
+%% list_databases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type write_records_request() :: #{binary() => any()}.
+-type list_databases_request() :: #{binary() => any()}.
 
 %% Example:
-%% multi_measure_mappings() :: #{
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
-%%   <<"TargetMultiMeasureName">> => string()
+%% list_databases_response() :: #{
+%%   <<"Databases">> => list(database()),
+%%   <<"NextToken">> => string()
 %% }
--type multi_measure_mappings() :: #{binary() => any()}.
+-type list_databases_response() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% list_tables_request() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type list_tables_request() :: #{binary() => any()}.
 
 %% Example:
-%% data_source_s3_configuration() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ObjectKeyPrefix">> => string()
+%% list_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tables">> => list(table())
 %% }
--type data_source_s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type list_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
@@ -476,44 +381,31 @@
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% retention_properties() :: #{
-%%   <<"MagneticStoreRetentionPeriodInDays">> => float(),
-%%   <<"MemoryStoreRetentionPeriodInHours">> => float()
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
 %% }
--type retention_properties() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% data_model_s3_configuration() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ObjectKey">> => string()
+%% magnetic_store_rejected_data_location() :: #{
+%%   <<"S3Configuration">> => s3_configuration()
 %% }
--type data_model_s3_configuration() :: #{binary() => any()}.
+-type magnetic_store_rejected_data_location() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
+%% magnetic_store_write_properties() :: #{
+%%   <<"EnableMagneticStoreWrites">> => boolean(),
+%%   <<"MagneticStoreRejectedDataLocation">> => magnetic_store_rejected_data_location()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type magnetic_store_write_properties() :: #{binary() => any()}.
 
 %% Example:
-%% s3_configuration() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"EncryptionOption">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ObjectKeyPrefix">> => string()
+%% measure_value() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_model() :: #{
-%%   <<"DimensionMappings">> => list(dimension_mapping()),
-%%   <<"MeasureNameColumn">> => string(),
-%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()),
-%%   <<"MultiMeasureMappings">> => multi_measure_mappings(),
-%%   <<"TimeColumn">> => string(),
-%%   <<"TimeUnit">> => list(any())
-%% }
--type data_model() :: #{binary() => any()}.
+-type measure_value() :: #{binary() => any()}.
 
 %% Example:
 %% mixed_measure_mapping() :: #{
@@ -526,30 +418,111 @@
 -type mixed_measure_mapping() :: #{binary() => any()}.
 
 %% Example:
-%% update_database_response() :: #{
-%%   <<"Database">> => database()
+%% multi_measure_attribute_mapping() :: #{
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"SourceColumn">> => string(),
+%%   <<"TargetMultiMeasureAttributeName">> => string()
 %% }
--type update_database_response() :: #{binary() => any()}.
+-type multi_measure_attribute_mapping() :: #{binary() => any()}.
 
 %% Example:
-%% dimension() :: #{
-%%   <<"DimensionValueType">> => list(any()),
+%% multi_measure_mappings() :: #{
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
+%%   <<"TargetMultiMeasureName">> => string()
+%% }
+-type multi_measure_mappings() :: #{binary() => any()}.
+
+%% Example:
+%% partition_key() :: #{
+%%   <<"EnforcementInRecord">> => list(any()),
 %%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%%   <<"Type">> => list(any())
 %% }
--type dimension() :: #{binary() => any()}.
+-type partition_key() :: #{binary() => any()}.
 
 %% Example:
-%% write_records_response() :: #{
-%%   <<"RecordsIngested">> => records_ingested()
+%% records_ingested() :: #{
+%%   <<"MagneticStore">> => integer(),
+%%   <<"MemoryStore">> => integer(),
+%%   <<"Total">> => integer()
 %% }
--type write_records_response() :: #{binary() => any()}.
+-type records_ingested() :: #{binary() => any()}.
 
 %% Example:
-%% update_table_response() :: #{
-%%   <<"Table">> => table()
+%% rejected_record() :: #{
+%%   <<"ExistingVersion">> => float(),
+%%   <<"Reason">> => string(),
+%%   <<"RecordIndex">> => integer()
 %% }
--type update_table_response() :: #{binary() => any()}.
+-type rejected_record() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_records_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RejectedRecords">> => list(rejected_record())
+%% }
+-type rejected_records_exception() :: #{binary() => any()}.
+
+%% Example:
+%% report_configuration() :: #{
+%%   <<"ReportS3Configuration">> => report_s3_configuration()
+%% }
+-type report_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% report_s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type report_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resume_batch_load_task_request() :: #{
+%%   <<"TaskId">> := string()
+%% }
+-type resume_batch_load_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_batch_load_task_response() :: #{
+
+%% }
+-type resume_batch_load_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% retention_properties() :: #{
+%%   <<"MagneticStoreRetentionPeriodInDays">> => float(),
+%%   <<"MemoryStoreRetentionPeriodInHours">> => float()
+%% }
+-type retention_properties() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% schema() :: #{
+%%   <<"CompositePartitionKey">> => list(partition_key())
+%% }
+-type schema() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% table() :: #{
@@ -566,39 +539,56 @@
 -type table() :: #{binary() => any()}.
 
 %% Example:
-%% dimension_mapping() :: #{
-%%   <<"DestinationColumn">> => string(),
-%%   <<"SourceColumn">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type dimension_mapping() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% rejected_records_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RejectedRecords">> => list(rejected_record())
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type rejected_records_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_databases_response() :: #{
-%%   <<"Databases">> => list(database()),
-%%   <<"NextToken">> => string()
+%% tag_resource_response() :: #{
+
 %% }
--type list_databases_response() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_database_response() :: #{
-%%   <<"Database">> => database()
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_database_response() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_database_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag())
+%% timestream_write_record() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValue">> => string(),
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"MeasureValues">> => list(measure_value()),
+%%   <<"Time">> => string(),
+%%   <<"TimeUnit">> => list(any()),
+%%   <<"Version">> => float()
 %% }
--type create_database_request() :: #{binary() => any()}.
+-type timestream_write_record() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_database_request() :: #{
@@ -608,186 +598,196 @@
 -type update_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% batch_load_progress_report() :: #{
-%%   <<"BytesMetered">> => float(),
-%%   <<"FileFailures">> => float(),
-%%   <<"ParseFailures">> => float(),
-%%   <<"RecordIngestionFailures">> => float(),
-%%   <<"RecordsIngested">> => float(),
-%%   <<"RecordsProcessed">> => float()
+%% update_database_response() :: #{
+%%   <<"Database">> => database()
 %% }
--type batch_load_progress_report() :: #{binary() => any()}.
+-type update_database_response() :: #{binary() => any()}.
 
 %% Example:
-%% rejected_record() :: #{
-%%   <<"ExistingVersion">> => float(),
-%%   <<"Reason">> => string(),
-%%   <<"RecordIndex">> => integer()
+%% update_table_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"MagneticStoreWriteProperties">> => magnetic_store_write_properties(),
+%%   <<"RetentionProperties">> => retention_properties(),
+%%   <<"Schema">> => schema(),
+%%   <<"TableName">> := string()
 %% }
--type rejected_record() :: #{binary() => any()}.
+-type update_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tables_request() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_table_response() :: #{
+%%   <<"Table">> => table()
 %% }
--type list_tables_request() :: #{binary() => any()}.
+-type update_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_database_request() :: #{
-%%   <<"DatabaseName">> := string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_database_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% write_records_request() :: #{
+%%   <<"CommonAttributes">> => record(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Records">> := list(record()),
+%%   <<"TableName">> := string()
+%% }
+-type write_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% write_records_response() :: #{
+%%   <<"RecordsIngested">> => records_ingested()
+%% }
+-type write_records_response() :: #{binary() => any()}.
 
 -type create_batch_load_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type create_database_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type create_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type delete_database_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_batch_load_task_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_database_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type describe_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_batch_load_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type list_databases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type list_tables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type resume_batch_load_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type update_database_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type write_records_errors() ::
-    rejected_records_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    rejected_records_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

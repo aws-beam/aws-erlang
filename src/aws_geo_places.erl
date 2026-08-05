@@ -7,9 +7,18 @@
 %%
 %% Key features include:
 %%
-%% Forward and reverse geocoding for addresses and coordinates
+%% Forward and reverse geocoding for addresses and coordinates. See Geocode:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_Geocode.html
+%% and ReverseGeocode:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_ReverseGeocode.html.
 %%
-%% Comprehensive place searches with detailed information, including:
+%% Comprehensive place searches with detailed information. See SearchText:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_SearchText.html,
+%% SearchNearby:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_SearchNearby.html,
+%% and GetPlace:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_GetPlace.html.
+%% Place information you can find include:
 %%
 %% Business names and addresses
 %%
@@ -17,15 +26,28 @@
 %%
 %% Hours of operation
 %%
-%% POI (Points of Interest) categories
+%% Points of Interest (POI) categories
 %%
 %% Food types for restaurants
 %%
 %% Chain affiliation for relevant businesses
 %%
-%% Global data coverage with a wide range of POI categories
+%% Address and place completion as users type, enhancing input efficiency by
+%% completing partial queries with valid addresses. See Autocomplete:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_Autocomplete.html.
 %%
-%% Regular data updates to ensure accuracy and relevance
+%% Intelligent place and query recommendation based on user's input or
+%% context, returning relevant places, points of interest, query terms, or
+%% search categories. See Suggest:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geoplaces_Suggest.html.
+%%
+%% Global data coverage with a wide range of POI categories.
+%%
+%% Regular data updates to ensure accuracy and relevance.
+%%
+%% Bulk address validation for verifying and standardizing large volumes of
+%% addresses in a single operation using Amazon Location Service Jobs:
+%% https://docs.aws.amazon.com/location/latest/APIReference/Welcome.html#Welcome_Amazon_Location_Service_Jobs.
 -module(aws_geo_places).
 
 -export([autocomplete/2,
@@ -49,376 +71,20 @@
 
 
 %% Example:
-%% reverse_geocode_result_item() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => boolean(),
-%%   <<"Categories">> => list(category()),
-%%   <<"Distance">> => float(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"Intersections">> => list(intersection()),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_point() :: #{
+%%   <<"Label">> => string(),
 %%   <<"Position">> => list([float()]()),
-%%   <<"PostalCodeDetails">> => list(postal_code_details()),
-%%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => string()
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => list(any())
 %% }
--type reverse_geocode_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_parsed_query_address_components() :: #{
-%%   <<"AddressNumber">> => list(parsed_query_component()),
-%%   <<"Block">> => list(parsed_query_component()),
-%%   <<"Building">> => list(parsed_query_component()),
-%%   <<"Country">> => list(parsed_query_component()),
-%%   <<"District">> => list(parsed_query_component()),
-%%   <<"Locality">> => list(parsed_query_component()),
-%%   <<"PostalCode">> => list(parsed_query_component()),
-%%   <<"Region">> => list(parsed_query_component()),
-%%   <<"SecondaryAddressComponents">> => list(parsed_query_secondary_address_component()),
-%%   <<"Street">> => list(parsed_query_component()),
-%%   <<"SubBlock">> => list(parsed_query_component()),
-%%   <<"SubDistrict">> => list(parsed_query_component()),
-%%   <<"SubRegion">> => list(parsed_query_component())
-%% }
--type geocode_parsed_query_address_components() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_region() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Name">> => string()
-%% }
--type sub_region() :: #{binary() => any()}.
-
-
-%% Example:
-%% phoneme_details() :: #{
-%%   <<"Address">> => address_component_phonemes(),
-%%   <<"Title">> => list(phoneme_transcription())
-%% }
--type phoneme_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_response() :: #{
-%%   <<"PricingBucket">> => [string()],
-%%   <<"ResultItems">> => list(autocomplete_result_item())
-%% }
--type autocomplete_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reverse_geocode_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"Filter">> => reverse_geocode_filter(),
-%%   <<"Heading">> => float(),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"PoliticalView">> => string(),
-%%   <<"QueryPosition">> := list([float()]()),
-%%   <<"QueryRadius">> => float()
-%% }
--type reverse_geocode_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_text_result_item() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"AccessRestrictions">> => list(access_restriction()),
-%%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => boolean(),
-%%   <<"BusinessChains">> => list(business_chain()),
-%%   <<"Categories">> => list(category()),
-%%   <<"Contacts">> => contacts(),
-%%   <<"Distance">> => float(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"OpeningHours">> => list(opening_hours()),
-%%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => string()
-%% }
--type search_text_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% country_highlights() :: #{
-%%   <<"Code">> => list(highlight()),
-%%   <<"Name">> => list(highlight())
-%% }
--type country_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_address_highlights() :: #{
-%%   <<"Label">> => list(highlight())
-%% }
--type suggest_address_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% highlight() :: #{
-%%   <<"EndIndex">> => [integer()],
-%%   <<"StartIndex">> => [integer()],
-%%   <<"Value">> => string()
-%% }
--type highlight() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_response() :: #{
-%%   <<"PricingBucket">> => [string()],
-%%   <<"QueryRefinements">> => list(query_refinement()),
-%%   <<"ResultItems">> => list(suggest_result_item())
-%% }
--type suggest_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_nearby_filter() :: #{
-%%   <<"BoundingBox">> => list([float()]()),
-%%   <<"ExcludeBusinessChains">> => list(string()),
-%%   <<"ExcludeCategories">> => list(string()),
-%%   <<"ExcludeFoodTypes">> => list(string()),
-%%   <<"IncludeBusinessChains">> => list(string()),
-%%   <<"IncludeCategories">> => list(string()),
-%%   <<"IncludeCountries">> => list(string()),
-%%   <<"IncludeFoodTypes">> => list(string())
-%% }
--type search_nearby_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_circle() :: #{
-%%   <<"Center">> => list([float()]()),
-%%   <<"Radius">> => float()
-%% }
--type filter_circle() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_address_highlights() :: #{
-%%   <<"AddressNumber">> => list(highlight()),
-%%   <<"Block">> => list(highlight()),
-%%   <<"Building">> => list(highlight()),
-%%   <<"Country">> => country_highlights(),
-%%   <<"District">> => list(highlight()),
-%%   <<"Intersection">> => list(list(highlight())()),
-%%   <<"Label">> => list(highlight()),
-%%   <<"Locality">> => list(highlight()),
-%%   <<"PostalCode">> => list(highlight()),
-%%   <<"Region">> => region_highlights(),
-%%   <<"Street">> => list(highlight()),
-%%   <<"SubBlock">> => list(highlight()),
-%%   <<"SubDistrict">> => list(highlight()),
-%%   <<"SubRegion">> => sub_region_highlights()
-%% }
--type autocomplete_address_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% usps_zip() :: #{
-%%   <<"ZipClassificationCode">> => string()
-%% }
--type usps_zip() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_text_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PricingBucket">> => [string()],
-%%   <<"ResultItems">> => list(search_text_result_item())
-%% }
--type search_text_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_place_result() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"AccessRestrictions">> => list(access_restriction()),
-%%   <<"Address">> => address(),
-%%   <<"BusinessChains">> => list(business_chain()),
-%%   <<"Categories">> => list(category()),
-%%   <<"Distance">> => float(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"TimeZone">> => time_zone()
-%% }
--type suggest_place_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% food_type() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LocalizedName">> => string(),
-%%   <<"Primary">> => boolean()
-%% }
--type food_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_score_details() :: #{
-%%   <<"Components">> => component_match_scores(),
-%%   <<"Overall">> => float()
-%% }
--type match_score_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% country() :: #{
-%%   <<"Code2">> => string(),
-%%   <<"Code3">> => string(),
-%%   <<"Name">> => string()
-%% }
--type country() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_query_result() :: #{
-%%   <<"QueryId">> => string(),
-%%   <<"QueryType">> => string()
-%% }
--type suggest_query_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_filter() :: #{
-%%   <<"IncludeCountries">> => list(string()),
-%%   <<"IncludePlaceTypes">> => list(string())
-%% }
--type geocode_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_highlights() :: #{
-%%   <<"Address">> => autocomplete_address_highlights(),
-%%   <<"Title">> => list(highlight())
-%% }
--type autocomplete_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_result_item() :: #{
-%%   <<"Address">> => address(),
-%%   <<"Distance">> => float(),
-%%   <<"Highlights">> => autocomplete_highlights(),
-%%   <<"Language">> => string(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Title">> => string()
-%% }
--type autocomplete_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% region_highlights() :: #{
-%%   <<"Code">> => list(highlight()),
-%%   <<"Name">> => list(highlight())
-%% }
--type region_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% usps_zip_plus4() :: #{
-%%   <<"RecordTypeCode">> => string()
-%% }
--type usps_zip_plus4() :: #{binary() => any()}.
-
-
-%% Example:
-%% reverse_geocode_response() :: #{
-%%   <<"PricingBucket">> => [string()],
-%%   <<"ResultItems">> => list(reverse_geocode_result_item())
-%% }
--type reverse_geocode_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_parsed_query() :: #{
-%%   <<"Address">> => geocode_parsed_query_address_components(),
-%%   <<"Title">> => list(parsed_query_component())
-%% }
--type geocode_parsed_query() :: #{binary() => any()}.
-
-
-%% Example:
-%% region() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Name">> => string()
-%% }
--type region() :: #{binary() => any()}.
-
-
-%% Example:
-%% street_components() :: #{
-%%   <<"BaseName">> => string(),
-%%   <<"Direction">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"Suffix">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"TypePlacement">> => string(),
-%%   <<"TypeSeparator">> => string()
-%% }
--type street_components() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"Filter">> => suggest_filter(),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxQueryRefinements">> => [integer()],
-%%   <<"MaxResults">> => [integer()],
-%%   <<"PoliticalView">> => string(),
-%%   <<"QueryText">> := string()
-%% }
--type suggest_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% business_chain() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type business_chain() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_text_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"Filter">> => search_text_filter(),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"QueryId">> => string(),
-%%   <<"QueryText">> => string()
-%% }
--type search_text_request() :: #{binary() => any()}.
+-type access_point() :: #{binary() => any()}.
 
 
 %% Example:
@@ -427,409 +93,6 @@
 %%   <<"Restricted">> => boolean()
 %% }
 -type access_restriction() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_text_filter() :: #{
-%%   <<"BoundingBox">> => list([float()]()),
-%%   <<"Circle">> => filter_circle(),
-%%   <<"IncludeCountries">> => list(string())
-%% }
--type search_text_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% opening_hours_components() :: #{
-%%   <<"OpenDuration">> => string(),
-%%   <<"OpenTime">> => string(),
-%%   <<"Recurrence">> => string()
-%% }
--type opening_hours_components() :: #{binary() => any()}.
-
-
-%% Example:
-%% postal_code_details() :: #{
-%%   <<"PostalAuthority">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"PostalCodeType">> => string(),
-%%   <<"UspsZip">> => usps_zip(),
-%%   <<"UspsZipPlus4">> => usps_zip_plus4()
-%% }
--type postal_code_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% parsed_query_component() :: #{
-%%   <<"EndIndex">> => [integer()],
-%%   <<"QueryComponent">> => string(),
-%%   <<"StartIndex">> => [integer()],
-%%   <<"Value">> => string()
-%% }
--type parsed_query_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_place_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"PoliticalView">> => string()
-%% }
--type get_place_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_zone() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Offset">> => string(),
-%%   <<"OffsetSeconds">> => float()
-%% }
--type time_zone() :: #{binary() => any()}.
-
-
-%% Example:
-%% parsed_query_secondary_address_component() :: #{
-%%   <<"Designator">> => string(),
-%%   <<"EndIndex">> => [integer()],
-%%   <<"Number">> => string(),
-%%   <<"StartIndex">> => [integer()],
-%%   <<"Value">> => string()
-%% }
--type parsed_query_secondary_address_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_refinement() :: #{
-%%   <<"EndIndex">> => [integer()],
-%%   <<"OriginalTerm">> => string(),
-%%   <<"RefinedTerm">> => string(),
-%%   <<"StartIndex">> => [integer()]
-%% }
--type query_refinement() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_highlights() :: #{
-%%   <<"Address">> => suggest_address_highlights(),
-%%   <<"Title">> => list(highlight())
-%% }
--type suggest_highlights() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"Filter">> => autocomplete_filter(),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"PoliticalView">> => string(),
-%%   <<"PostalCodeMode">> => string(),
-%%   <<"QueryText">> := string()
-%% }
--type autocomplete_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% secondary_address_component() :: #{
-%%   <<"Designator">> => string(),
-%%   <<"Number">> => string()
-%% }
--type secondary_address_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_response() :: #{
-%%   <<"PricingBucket">> => [string()],
-%%   <<"ResultItems">> => list(geocode_result_item())
-%% }
--type geocode_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% secondary_address_component_match_score() :: #{
-%%   <<"Number">> => float()
-%% }
--type secondary_address_component_match_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% intersection() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"Address">> => address(),
-%%   <<"Distance">> => float(),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"PlaceId">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"RouteDistance">> => float(),
-%%   <<"Title">> => string()
-%% }
--type intersection() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_nearby_result_item() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"AccessRestrictions">> => list(access_restriction()),
-%%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => boolean(),
-%%   <<"BusinessChains">> => list(business_chain()),
-%%   <<"Categories">> => list(category()),
-%%   <<"Contacts">> => contacts(),
-%%   <<"Distance">> => float(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"OpeningHours">> => list(opening_hours()),
-%%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => string()
-%% }
--type search_nearby_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_point() :: #{
-%%   <<"Position">> => list([float()]())
-%% }
--type access_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_place_response() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"AccessRestrictions">> => list(access_restriction()),
-%%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => boolean(),
-%%   <<"BusinessChains">> => list(business_chain()),
-%%   <<"Categories">> => list(category()),
-%%   <<"Contacts">> => contacts(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"MainAddress">> => related_place(),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"OpeningHours">> => list(opening_hours()),
-%%   <<"Phonemes">> => phoneme_details(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"PostalCodeDetails">> => list(postal_code_details()),
-%%   <<"PricingBucket">> => [string()],
-%%   <<"SecondaryAddresses">> => list(related_place()),
-%%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => string()
-%% }
--type get_place_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_place() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"Address">> => address(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"Title">> => string()
-%% }
--type related_place() :: #{binary() => any()}.
-
-
-%% Example:
-%% address_component_phonemes() :: #{
-%%   <<"Block">> => list(phoneme_transcription()),
-%%   <<"Country">> => list(phoneme_transcription()),
-%%   <<"District">> => list(phoneme_transcription()),
-%%   <<"Locality">> => list(phoneme_transcription()),
-%%   <<"Region">> => list(phoneme_transcription()),
-%%   <<"Street">> => list(phoneme_transcription()),
-%%   <<"SubBlock">> => list(phoneme_transcription()),
-%%   <<"SubDistrict">> => list(phoneme_transcription()),
-%%   <<"SubRegion">> => list(phoneme_transcription())
-%% }
--type address_component_phonemes() :: #{binary() => any()}.
-
-
-%% Example:
-%% address_component_match_scores() :: #{
-%%   <<"AddressNumber">> => float(),
-%%   <<"Block">> => float(),
-%%   <<"Building">> => float(),
-%%   <<"Country">> => float(),
-%%   <<"District">> => float(),
-%%   <<"Intersection">> => list(float()),
-%%   <<"Locality">> => float(),
-%%   <<"PostalCode">> => float(),
-%%   <<"Region">> => float(),
-%%   <<"SecondaryAddressComponents">> => list(secondary_address_component_match_score()),
-%%   <<"SubBlock">> => float(),
-%%   <<"SubDistrict">> => float(),
-%%   <<"SubRegion">> => float()
-%% }
--type address_component_match_scores() :: #{binary() => any()}.
-
-
-%% Example:
-%% category() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LocalizedName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Primary">> => boolean()
-%% }
--type category() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_details() :: #{
-%%   <<"Categories">> => list(category()),
-%%   <<"Label">> => string(),
-%%   <<"Value">> => string()
-%% }
--type contact_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_query_components() :: #{
-%%   <<"AddressNumber">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"District">> => string(),
-%%   <<"Locality">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"Street">> => string(),
-%%   <<"SubRegion">> => string()
-%% }
--type geocode_query_components() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggest_result_item() :: #{
-%%   <<"Highlights">> => suggest_highlights(),
-%%   <<"Place">> => suggest_place_result(),
-%%   <<"Query">> => suggest_query_result(),
-%%   <<"SuggestResultItemType">> => string(),
-%%   <<"Title">> => string()
-%% }
--type suggest_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"Filter">> => geocode_filter(),
-%%   <<"IntendedUse">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"PoliticalView">> => string(),
-%%   <<"QueryComponents">> => geocode_query_components(),
-%%   <<"QueryText">> => string()
-%% }
--type geocode_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% geocode_result_item() :: #{
-%%   <<"AccessPoints">> => list(access_point()),
-%%   <<"Address">> => address(),
-%%   <<"AddressNumberCorrected">> => boolean(),
-%%   <<"Categories">> => list(category()),
-%%   <<"Distance">> => float(),
-%%   <<"FoodTypes">> => list(food_type()),
-%%   <<"Intersections">> => list(intersection()),
-%%   <<"MainAddress">> => related_place(),
-%%   <<"MapView">> => list([float()]()),
-%%   <<"MatchScores">> => match_score_details(),
-%%   <<"ParsedQuery">> => geocode_parsed_query(),
-%%   <<"PlaceId">> => string(),
-%%   <<"PlaceType">> => string(),
-%%   <<"PoliticalView">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"PostalCodeDetails">> => list(postal_code_details()),
-%%   <<"SecondaryAddresses">> => list(related_place()),
-%%   <<"TimeZone">> => time_zone(),
-%%   <<"Title">> => string()
-%% }
--type geocode_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% reverse_geocode_filter() :: #{
-%%   <<"IncludePlaceTypes">> => list(string())
-%% }
--type reverse_geocode_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% phoneme_transcription() :: #{
-%%   <<"Language">> => string(),
-%%   <<"Preferred">> => boolean(),
-%%   <<"Value">> => string()
-%% }
--type phoneme_transcription() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_nearby_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PricingBucket">> => [string()],
-%%   <<"ResultItems">> => list(search_nearby_result_item())
-%% }
--type search_nearby_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% autocomplete_filter() :: #{
-%%   <<"BoundingBox">> => list([float()]()),
-%%   <<"Circle">> => filter_circle(),
-%%   <<"IncludeCountries">> => list(string()),
-%%   <<"IncludePlaceTypes">> => list(string())
-%% }
--type autocomplete_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -855,13 +118,157 @@
 
 
 %% Example:
-%% opening_hours() :: #{
-%%   <<"Categories">> => list(category()),
-%%   <<"Components">> => list(opening_hours_components()),
-%%   <<"Display">> => list(string()),
-%%   <<"OpenNow">> => boolean()
+%% address_component_match_scores() :: #{
+%%   <<"AddressNumber">> => float(),
+%%   <<"Block">> => float(),
+%%   <<"Building">> => float(),
+%%   <<"Country">> => float(),
+%%   <<"District">> => float(),
+%%   <<"Intersection">> => list(float()),
+%%   <<"Locality">> => float(),
+%%   <<"PostalCode">> => float(),
+%%   <<"Region">> => float(),
+%%   <<"SecondaryAddressComponents">> => list(secondary_address_component_match_score()),
+%%   <<"SubBlock">> => float(),
+%%   <<"SubDistrict">> => float(),
+%%   <<"SubRegion">> => float()
 %% }
--type opening_hours() :: #{binary() => any()}.
+-type address_component_match_scores() :: #{binary() => any()}.
+
+
+%% Example:
+%% address_component_phonemes() :: #{
+%%   <<"Block">> => list(phoneme_transcription()),
+%%   <<"Country">> => list(phoneme_transcription()),
+%%   <<"District">> => list(phoneme_transcription()),
+%%   <<"Locality">> => list(phoneme_transcription()),
+%%   <<"Region">> => list(phoneme_transcription()),
+%%   <<"Street">> => list(phoneme_transcription()),
+%%   <<"SubBlock">> => list(phoneme_transcription()),
+%%   <<"SubDistrict">> => list(phoneme_transcription()),
+%%   <<"SubRegion">> => list(phoneme_transcription())
+%% }
+-type address_component_phonemes() :: #{binary() => any()}.
+
+
+%% Example:
+%% admin_names() :: #{
+%%   <<"Names">> => list(translation_name()),
+%%   <<"Preference">> => list(any())
+%% }
+-type admin_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_address_highlights() :: #{
+%%   <<"AddressNumber">> => list(highlight()),
+%%   <<"Block">> => list(highlight()),
+%%   <<"Building">> => list(highlight()),
+%%   <<"Country">> => country_highlights(),
+%%   <<"District">> => list(highlight()),
+%%   <<"Intersection">> => list(list(highlight())()),
+%%   <<"Label">> => list(highlight()),
+%%   <<"Locality">> => list(highlight()),
+%%   <<"PostalCode">> => list(highlight()),
+%%   <<"Region">> => region_highlights(),
+%%   <<"Street">> => list(highlight()),
+%%   <<"SubBlock">> => list(highlight()),
+%%   <<"SubDistrict">> => list(highlight()),
+%%   <<"SubRegion">> => sub_region_highlights()
+%% }
+-type autocomplete_address_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_filter() :: #{
+%%   <<"BoundingBox">> => list([float()]()),
+%%   <<"Circle">> => filter_circle(),
+%%   <<"IncludeCountries">> => list(string()),
+%%   <<"IncludePlaceTypes">> => list(list(any())())
+%% }
+-type autocomplete_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_highlights() :: #{
+%%   <<"Address">> => autocomplete_address_highlights(),
+%%   <<"Title">> => list(highlight())
+%% }
+-type autocomplete_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"Filter">> => autocomplete_filter(),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"PoliticalView">> => string(),
+%%   <<"PostalCodeMode">> => list(any()),
+%%   <<"QueryText">> := string()
+%% }
+-type autocomplete_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_response() :: #{
+%%   <<"PricingBucket">> => [string()],
+%%   <<"ResultItems">> => list(autocomplete_result_item())
+%% }
+-type autocomplete_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% autocomplete_result_item() :: #{
+%%   <<"Address">> => address(),
+%%   <<"Distance">> => float(),
+%%   <<"EstimatedPointAddress">> => boolean(),
+%%   <<"Highlights">> => autocomplete_highlights(),
+%%   <<"Language">> => string(),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type autocomplete_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% business_chain() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type business_chain() :: #{binary() => any()}.
+
+
+%% Example:
+%% category() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LocalizedName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Primary">> => boolean()
+%% }
+-type category() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_match_scores() :: #{
+%%   <<"Address">> => address_component_match_scores(),
+%%   <<"Title">> => float()
+%% }
+-type component_match_scores() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_details() :: #{
+%%   <<"Categories">> => list(category()),
+%%   <<"Label">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type contact_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -875,27 +282,412 @@
 
 
 %% Example:
-%% component_match_scores() :: #{
-%%   <<"Address">> => address_component_match_scores(),
-%%   <<"Title">> => float()
+%% country() :: #{
+%%   <<"Code2">> => string(),
+%%   <<"Code3">> => string(),
+%%   <<"Name">> => string()
 %% }
--type component_match_scores() :: #{binary() => any()}.
+-type country() :: #{binary() => any()}.
 
 
 %% Example:
-%% suggest_filter() :: #{
-%%   <<"BoundingBox">> => list([float()]()),
-%%   <<"Circle">> => filter_circle(),
-%%   <<"IncludeCountries">> => list(string())
+%% country_highlights() :: #{
+%%   <<"Code">> => list(highlight()),
+%%   <<"Name">> => list(highlight())
 %% }
--type suggest_filter() :: #{binary() => any()}.
+-type country_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_reference() :: #{
+%%   <<"Source">> => string(),
+%%   <<"SourceCategories">> => list(category()),
+%%   <<"SourcePlaceId">> => string()
+%% }
+-type cross_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_circle() :: #{
+%%   <<"Center">> => list([float()]()),
+%%   <<"Radius">> => float()
+%% }
+-type filter_circle() :: #{binary() => any()}.
+
+
+%% Example:
+%% food_type() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LocalizedName">> => string(),
+%%   <<"Primary">> => boolean()
+%% }
+-type food_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_filter() :: #{
+%%   <<"IncludeCountries">> => list(string()),
+%%   <<"IncludePlaceTypes">> => list(list(any())())
+%% }
+-type geocode_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_parsed_query() :: #{
+%%   <<"Address">> => geocode_parsed_query_address_components(),
+%%   <<"Title">> => list(parsed_query_component())
+%% }
+-type geocode_parsed_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_parsed_query_address_components() :: #{
+%%   <<"AddressNumber">> => list(parsed_query_component()),
+%%   <<"Block">> => list(parsed_query_component()),
+%%   <<"Building">> => list(parsed_query_component()),
+%%   <<"Country">> => list(parsed_query_component()),
+%%   <<"District">> => list(parsed_query_component()),
+%%   <<"Locality">> => list(parsed_query_component()),
+%%   <<"OtherComponents">> => list(parsed_query_component()),
+%%   <<"PostalCode">> => list(parsed_query_component()),
+%%   <<"Region">> => list(parsed_query_component()),
+%%   <<"SecondaryAddressComponents">> => list(parsed_query_secondary_address_component()),
+%%   <<"Street">> => list(parsed_query_component()),
+%%   <<"SubBlock">> => list(parsed_query_component()),
+%%   <<"SubDistrict">> => list(parsed_query_component()),
+%%   <<"SubRegion">> => list(parsed_query_component())
+%% }
+-type geocode_parsed_query_address_components() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_query_components() :: #{
+%%   <<"AddressNumber">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"District">> => string(),
+%%   <<"Locality">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Street">> => string(),
+%%   <<"SubRegion">> => string()
+%% }
+-type geocode_query_components() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"AddressNamesMode">> => list(any()),
+%%   <<"AddressTranslations">> => list(list(any())()),
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"Filter">> => geocode_filter(),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"PoliticalView">> => string(),
+%%   <<"PostalCodeMode">> => list(any()),
+%%   <<"QueryComponents">> => geocode_query_components(),
+%%   <<"QueryText">> => string()
+%% }
+-type geocode_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_response() :: #{
+%%   <<"PricingBucket">> => [string()],
+%%   <<"ResultItems">> => list(geocode_result_item())
+%% }
+-type geocode_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% geocode_result_item() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"Address">> => address(),
+%%   <<"AddressNumberCorrected">> => boolean(),
+%%   <<"Categories">> => list(category()),
+%%   <<"Distance">> => float(),
+%%   <<"EstimatedPointAddress">> => boolean(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"Intersections">> => list(intersection()),
+%%   <<"MainAddress">> => related_place(),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"MatchScores">> => match_score_details(),
+%%   <<"ParsedQuery">> => geocode_parsed_query(),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"PostalCodeDetails">> => list(postal_code_details()),
+%%   <<"SecondaryAddresses">> => list(related_place()),
+%%   <<"TimeZone">> => time_zone(),
+%%   <<"Title">> => string(),
+%%   <<"Translations">> => translation_details()
+%% }
+-type geocode_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_place_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"AddressNamesMode">> => list(any()),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"PoliticalView">> => string()
+%% }
+-type get_place_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_place_response() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"AccessRestrictions">> => list(access_restriction()),
+%%   <<"Address">> => address(),
+%%   <<"AddressNumberCorrected">> => boolean(),
+%%   <<"BusinessChains">> => list(business_chain()),
+%%   <<"Categories">> => list(category()),
+%%   <<"Contacts">> => contacts(),
+%%   <<"CrossReferences">> => list(cross_reference()),
+%%   <<"EstimatedPointAddress">> => boolean(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"MainAddress">> => related_place(),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"OpeningHours">> => list(opening_hours()),
+%%   <<"Phonemes">> => phoneme_details(),
+%%   <<"PlaceAttributes">> => list(list(any())()),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"PostalCodeDetails">> => list(postal_code_details()),
+%%   <<"PricingBucket">> => [string()],
+%%   <<"SecondaryAddresses">> => list(related_place()),
+%%   <<"TimeZone">> => time_zone(),
+%%   <<"Title">> => string()
+%% }
+-type get_place_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% highlight() :: #{
+%%   <<"EndIndex">> => [integer()],
+%%   <<"StartIndex">> => [integer()],
+%%   <<"Value">> => string()
+%% }
+-type highlight() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% intersection() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"Address">> => address(),
+%%   <<"Distance">> => float(),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"PlaceId">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"RouteDistance">> => float(),
+%%   <<"Title">> => string()
+%% }
+-type intersection() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_score_details() :: #{
+%%   <<"Components">> => component_match_scores(),
+%%   <<"Overall">> => float()
+%% }
+-type match_score_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% opening_hours() :: #{
+%%   <<"Categories">> => list(category()),
+%%   <<"Components">> => list(opening_hours_components()),
+%%   <<"Display">> => list(string()),
+%%   <<"OpenNow">> => boolean()
+%% }
+-type opening_hours() :: #{binary() => any()}.
+
+
+%% Example:
+%% opening_hours_components() :: #{
+%%   <<"OpenDuration">> => string(),
+%%   <<"OpenTime">> => string(),
+%%   <<"Recurrence">> => string()
+%% }
+-type opening_hours_components() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsed_query_component() :: #{
+%%   <<"EndIndex">> => [integer()],
+%%   <<"QueryComponent">> => string(),
+%%   <<"StartIndex">> => [integer()],
+%%   <<"Value">> => string()
+%% }
+-type parsed_query_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsed_query_secondary_address_component() :: #{
+%%   <<"Designator">> => string(),
+%%   <<"EndIndex">> => [integer()],
+%%   <<"Number">> => string(),
+%%   <<"StartIndex">> => [integer()],
+%%   <<"Value">> => string()
+%% }
+-type parsed_query_secondary_address_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% phoneme_details() :: #{
+%%   <<"Address">> => address_component_phonemes(),
+%%   <<"Title">> => list(phoneme_transcription())
+%% }
+-type phoneme_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% phoneme_transcription() :: #{
+%%   <<"Language">> => string(),
+%%   <<"Preferred">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type phoneme_transcription() :: #{binary() => any()}.
+
+
+%% Example:
+%% postal_code_details() :: #{
+%%   <<"PostalAuthority">> => list(any()),
+%%   <<"PostalCode">> => string(),
+%%   <<"PostalCodeType">> => list(any()),
+%%   <<"UspsZip">> => usps_zip(),
+%%   <<"UspsZipPlus4">> => usps_zip_plus4()
+%% }
+-type postal_code_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_refinement() :: #{
+%%   <<"EndIndex">> => [integer()],
+%%   <<"OriginalTerm">> => string(),
+%%   <<"RefinedTerm">> => string(),
+%%   <<"StartIndex">> => [integer()]
+%% }
+-type query_refinement() :: #{binary() => any()}.
+
+
+%% Example:
+%% region() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_highlights() :: #{
+%%   <<"Code">> => list(highlight()),
+%%   <<"Name">> => list(highlight())
+%% }
+-type region_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_place() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"Address">> => address(),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"Position">> => list([float()]()),
+%%   <<"Title">> => string()
+%% }
+-type related_place() :: #{binary() => any()}.
+
+
+%% Example:
+%% reverse_geocode_filter() :: #{
+%%   <<"IncludePlaceTypes">> => list(list(any())())
+%% }
+-type reverse_geocode_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% reverse_geocode_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"AddressNamesMode">> => list(any()),
+%%   <<"Filter">> => reverse_geocode_filter(),
+%%   <<"Heading">> => float(),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"PoliticalView">> => string(),
+%%   <<"QueryPosition">> := list([float()]()),
+%%   <<"QueryRadius">> => float()
+%% }
+-type reverse_geocode_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reverse_geocode_response() :: #{
+%%   <<"PricingBucket">> => [string()],
+%%   <<"ResultItems">> => list(reverse_geocode_result_item())
+%% }
+-type reverse_geocode_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reverse_geocode_result_item() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"Address">> => address(),
+%%   <<"AddressNumberCorrected">> => boolean(),
+%%   <<"Categories">> => list(category()),
+%%   <<"Distance">> => float(),
+%%   <<"EstimatedPointAddress">> => boolean(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"Intersections">> => list(intersection()),
+%%   <<"MainAddress">> => related_place(),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"PostalCodeDetails">> => list(postal_code_details()),
+%%   <<"TimeZone">> => time_zone(),
+%%   <<"Title">> => string()
+%% }
+-type reverse_geocode_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_nearby_filter() :: #{
+%%   <<"BoundingBox">> => list([float()]()),
+%%   <<"ExcludeBusinessChains">> => list(string()),
+%%   <<"ExcludeCategories">> => list(string()),
+%%   <<"ExcludeFoodTypes">> => list(string()),
+%%   <<"IncludeBusinessChains">> => list(string()),
+%%   <<"IncludeCategories">> => list(string()),
+%%   <<"IncludeCountries">> => list(string()),
+%%   <<"IncludeFoodTypes">> => list(string())
+%% }
+-type search_nearby_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% search_nearby_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
+%%   <<"AdditionalFeatures">> => list(list(any())()),
 %%   <<"Filter">> => search_nearby_filter(),
-%%   <<"IntendedUse">> => string(),
+%%   <<"IntendedUse">> => list(any()),
 %%   <<"Key">> => string(),
 %%   <<"Language">> => string(),
 %%   <<"MaxResults">> => [integer()],
@@ -908,53 +700,346 @@
 
 
 %% Example:
+%% search_nearby_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PricingBucket">> => [string()],
+%%   <<"ResultItems">> => list(search_nearby_result_item())
+%% }
+-type search_nearby_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_nearby_result_item() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"AccessRestrictions">> => list(access_restriction()),
+%%   <<"Address">> => address(),
+%%   <<"AddressNumberCorrected">> => boolean(),
+%%   <<"BusinessChains">> => list(business_chain()),
+%%   <<"Categories">> => list(category()),
+%%   <<"Contacts">> => contacts(),
+%%   <<"CrossReferences">> => list(cross_reference()),
+%%   <<"Distance">> => float(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"OpeningHours">> => list(opening_hours()),
+%%   <<"Phonemes">> => phoneme_details(),
+%%   <<"PlaceAttributes">> => list(list(any())()),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"TimeZone">> => time_zone(),
+%%   <<"Title">> => string()
+%% }
+-type search_nearby_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_text_filter() :: #{
+%%   <<"BoundingBox">> => list([float()]()),
+%%   <<"Circle">> => filter_circle(),
+%%   <<"IncludeCountries">> => list(string())
+%% }
+-type search_text_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_text_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"Filter">> => search_text_filter(),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"PoliticalView">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryText">> => string(),
+%%   <<"TravelMode">> => list(any())
+%% }
+-type search_text_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_text_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PricingBucket">> => [string()],
+%%   <<"ResultItems">> => list(search_text_result_item())
+%% }
+-type search_text_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_text_result_item() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"AccessRestrictions">> => list(access_restriction()),
+%%   <<"Address">> => address(),
+%%   <<"AddressNumberCorrected">> => boolean(),
+%%   <<"BusinessChains">> => list(business_chain()),
+%%   <<"Categories">> => list(category()),
+%%   <<"Contacts">> => contacts(),
+%%   <<"CrossReferences">> => list(cross_reference()),
+%%   <<"Distance">> => float(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"OpeningHours">> => list(opening_hours()),
+%%   <<"Phonemes">> => phoneme_details(),
+%%   <<"PlaceAttributes">> => list(list(any())()),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"TimeZone">> => time_zone(),
+%%   <<"Title">> => string()
+%% }
+-type search_text_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% secondary_address_component() :: #{
+%%   <<"Designator">> => string(),
+%%   <<"Number">> => string()
+%% }
+-type secondary_address_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% secondary_address_component_match_score() :: #{
+%%   <<"Number">> => float()
+%% }
+-type secondary_address_component_match_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% street_components() :: #{
+%%   <<"BaseName">> => string(),
+%%   <<"Direction">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Suffix">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"TypePlacement">> => list(any()),
+%%   <<"TypeSeparator">> => string()
+%% }
+-type street_components() :: #{binary() => any()}.
+
+
+%% Example:
+%% sub_region() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type sub_region() :: #{binary() => any()}.
+
+
+%% Example:
 %% sub_region_highlights() :: #{
 %%   <<"Code">> => list(highlight()),
 %%   <<"Name">> => list(highlight())
 %% }
 -type sub_region_highlights() :: #{binary() => any()}.
 
+
+%% Example:
+%% suggest_address_highlights() :: #{
+%%   <<"Label">> => list(highlight())
+%% }
+-type suggest_address_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_filter() :: #{
+%%   <<"BoundingBox">> => list([float()]()),
+%%   <<"Circle">> => filter_circle(),
+%%   <<"IncludeCountries">> => list(string())
+%% }
+-type suggest_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_highlights() :: #{
+%%   <<"Address">> => suggest_address_highlights(),
+%%   <<"Title">> => list(highlight())
+%% }
+-type suggest_highlights() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_place_result() :: #{
+%%   <<"AccessPoints">> => list(access_point()),
+%%   <<"AccessRestrictions">> => list(access_restriction()),
+%%   <<"Address">> => address(),
+%%   <<"BusinessChains">> => list(business_chain()),
+%%   <<"Categories">> => list(category()),
+%%   <<"CrossReferences">> => list(cross_reference()),
+%%   <<"Distance">> => float(),
+%%   <<"FoodTypes">> => list(food_type()),
+%%   <<"MapView">> => list([float()]()),
+%%   <<"Phonemes">> => phoneme_details(),
+%%   <<"PlaceAttributes">> => list(list(any())()),
+%%   <<"PlaceId">> => string(),
+%%   <<"PlaceType">> => list(any()),
+%%   <<"PoliticalView">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"TimeZone">> => time_zone()
+%% }
+-type suggest_place_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_query_result() :: #{
+%%   <<"QueryId">> => string(),
+%%   <<"QueryType">> => list(any())
+%% }
+-type suggest_query_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_request() :: #{
+%%   <<"AdditionalFeatures">> => list(list(any())()),
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"Filter">> => suggest_filter(),
+%%   <<"IntendedUse">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxQueryRefinements">> => [integer()],
+%%   <<"MaxResults">> => [integer()],
+%%   <<"PoliticalView">> => string(),
+%%   <<"QueryText">> := string(),
+%%   <<"TravelMode">> => list(any())
+%% }
+-type suggest_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_response() :: #{
+%%   <<"PricingBucket">> => [string()],
+%%   <<"QueryRefinements">> => list(query_refinement()),
+%%   <<"ResultItems">> => list(suggest_result_item())
+%% }
+-type suggest_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggest_result_item() :: #{
+%%   <<"Highlights">> => suggest_highlights(),
+%%   <<"Place">> => suggest_place_result(),
+%%   <<"Query">> => suggest_query_result(),
+%%   <<"SuggestResultItemType">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type suggest_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_zone() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Offset">> => string(),
+%%   <<"OffsetSeconds">> => float()
+%% }
+-type time_zone() :: #{binary() => any()}.
+
+
+%% Example:
+%% translation_details() :: #{
+%%   <<"District">> => list(admin_names()),
+%%   <<"Locality">> => list(admin_names()),
+%%   <<"Region">> => list(admin_names()),
+%%   <<"SubRegion">> => list(admin_names())
+%% }
+-type translation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% translation_name() :: #{
+%%   <<"Language">> => string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Transliterated">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type translation_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% usps_zip() :: #{
+%%   <<"ZipClassificationCode">> => list(any())
+%% }
+-type usps_zip() :: #{binary() => any()}.
+
+
+%% Example:
+%% usps_zip_plus4() :: #{
+%%   <<"RecordTypeCode">> => list(any())
+%% }
+-type usps_zip_plus4() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 -type autocomplete_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type geocode_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_place_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type reverse_geocode_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_nearby_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_text_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type suggest_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -968,7 +1053,10 @@
 %% partial queries with valid address completion. Also, the API supports the
 %% filtering of results based on geographic location, country, or specific
 %% place types, and can be tailored using optional parameters like language
-%% and political views.
+%% and political views. Not supported in `ap-southeast-1' and
+%% `ap-southeast-5' regions for GrabMaps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/GrabMaps.html
+%% customers.
 %%
 %% For more information, see Autocomplete:
 %% https://docs.aws.amazon.com/location/latest/developerguide/autocomplete.html
@@ -1030,7 +1118,11 @@ autocomplete(Client, Input0, Options0) ->
 %% related information. It supports flexible queries, including free-form
 %% text or structured queries with components like street names, postal
 %% codes, and regions. The Geocode API can also provide additional features
-%% such as time zone information and the inclusion of political views.
+%% such as time zone information and the inclusion of political views. Not
+%% supported in `ap-southeast-1' and `ap-southeast-5' regions for
+%% GrabMaps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/GrabMaps.html
+%% customers.
 %%
 %% For more information, see Geocode:
 %% https://docs.aws.amazon.com/location/latest/developerguide/geocode.html in
@@ -1127,6 +1219,7 @@ get_place(Client, PlaceId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"additional-features">>, maps:get(<<"additional-features">>, QueryMap, undefined)},
+        {<<"address-names-mode">>, maps:get(<<"address-names-mode">>, QueryMap, undefined)},
         {<<"intended-use">>, maps:get(<<"intended-use">>, QueryMap, undefined)},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},
         {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)},
@@ -1220,7 +1313,10 @@ reverse_geocode(Client, Input0, Options0) ->
 %%
 %% The API returns details such as a place name, address, phone, category,
 %% food type, contact, opening hours. Also, the API can return phonemes, time
-%% zones and more based on requested parameters.
+%% zones and more based on requested parameters. Not supported in
+%% `ap-southeast-1' and `ap-southeast-5' regions for GrabMaps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/GrabMaps.html
+%% customers.
 %%
 %% For more information, see Search Nearby:
 %% https://docs.aws.amazon.com/location/latest/developerguide/search-nearby.html

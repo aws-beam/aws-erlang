@@ -47,6 +47,8 @@
          delete_job_template/4,
          delete_managed_endpoint/4,
          delete_managed_endpoint/5,
+         delete_security_configuration/3,
+         delete_security_configuration/4,
          delete_virtual_cluster/3,
          delete_virtual_cluster/4,
          describe_job_run/3,
@@ -89,24 +91,101 @@
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_virtual_cluster/3,
+         update_virtual_cluster/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"inTransitEncryptionConfiguration">> => in_transit_encryption_configuration()
+%% authentication_configuration() :: #{
+%%   <<"iamConfiguration">> => iam_configuration(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration()
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type authentication_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% authorization_configuration() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"lakeFormationConfiguration">> => lake_formation_configuration()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type authorization_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_run_request() :: #{}
+-type cancel_job_run_request() :: #{}.
+
+
+%% Example:
+%% cancel_job_run_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type cancel_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateData">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_monitoring_configuration() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string()
+%% }
+-type cloud_watch_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"classification">> => string(),
+%%   <<"configurations">> => list(configuration()),
+%%   <<"properties">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_overrides() :: #{
+%%   <<"applicationConfiguration">> => list(configuration()),
+%%   <<"monitoringConfiguration">> => monitoring_configuration()
+%% }
+-type configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_log_rotation_configuration() :: #{
+%%   <<"maxFilesToKeep">> => integer(),
+%%   <<"rotationSize">> => string()
+%% }
+-type container_log_rotation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_provider() :: #{
+%%   <<"id">> => string(),
+%%   <<"info">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type container_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_template_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"jobTemplateData">> := job_template_data(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_job_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -120,10 +199,74 @@
 
 
 %% Example:
-%% s3_monitoring_configuration() :: #{
-%%   <<"logUri">> => string()
+%% create_managed_endpoint_request() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"releaseLabel">> := string(),
+%%   <<"sessionIdleTimeoutInMinutes">> => integer(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
 %% }
--type s3_monitoring_configuration() :: #{binary() => any()}.
+-type create_managed_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_managed_endpoint_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type create_managed_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"containerProvider">> => container_provider(),
+%%   <<"name">> := string(),
+%%   <<"securityConfigurationData">> := security_configuration_data(),
+%%   <<"tags">> => map()
+%% }
+-type create_security_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_security_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_virtual_cluster_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"containerProvider">> := container_provider(),
+%%   <<"name">> := string(),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
+%%   <<"securityConfigurationId">> => string(),
+%%   <<"sessionEnabled">> => boolean(),
+%%   <<"tags">> => map()
+%% }
+-type create_virtual_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_virtual_cluster_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_virtual_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_template_request() :: #{}
+-type delete_job_template_request() :: #{}.
 
 
 %% Example:
@@ -132,15 +275,201 @@
 %% }
 -type delete_job_template_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_managed_endpoint_request() :: #{}
+-type delete_managed_endpoint_request() :: #{}.
+
 
 %% Example:
-%% list_security_configurations_request() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% delete_managed_endpoint_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"virtualClusterId">> => string()
 %% }
--type list_security_configurations_request() :: #{binary() => any()}.
+-type delete_managed_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_configuration_request() :: #{}
+-type delete_security_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_security_configuration_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_cluster_request() :: #{}
+-type delete_virtual_cluster_request() :: #{}.
+
+
+%% Example:
+%% delete_virtual_cluster_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_virtual_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_run_request() :: #{}
+-type describe_job_run_request() :: #{}.
+
+
+%% Example:
+%% describe_job_run_response() :: #{
+%%   <<"jobRun">> => job_run()
+%% }
+-type describe_job_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_template_request() :: #{}
+-type describe_job_template_request() :: #{}.
+
+
+%% Example:
+%% describe_job_template_response() :: #{
+%%   <<"jobTemplate">> => job_template()
+%% }
+-type describe_job_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_endpoint_request() :: #{}
+-type describe_managed_endpoint_request() :: #{}.
+
+
+%% Example:
+%% describe_managed_endpoint_response() :: #{
+%%   <<"endpoint">> => endpoint()
+%% }
+-type describe_managed_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_configuration_request() :: #{}
+-type describe_security_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_security_configuration_response() :: #{
+%%   <<"securityConfiguration">> => security_configuration()
+%% }
+-type describe_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_virtual_cluster_request() :: #{}
+-type describe_virtual_cluster_request() :: #{}.
+
+
+%% Example:
+%% describe_virtual_cluster_response() :: #{
+%%   <<"virtualCluster">> => virtual_cluster()
+%% }
+-type describe_virtual_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_k_s_request_throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type e_k_s_request_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_info() :: #{
+%%   <<"namespace">> => string(),
+%%   <<"nodeLabel">> => string()
+%% }
+-type eks_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"inTransitEncryptionConfiguration">> => in_transit_encryption_configuration()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authProxyUrl">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateAuthority">> => certificate(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"securityGroup">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"virtualClusterId">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_endpoint_session_credentials_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialType">> := string(),
+%%   <<"durationInSeconds">> => integer(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"logContext">> => string()
+%% }
+-type get_managed_endpoint_session_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_endpoint_session_credentials_response() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"endpointCredentials">> => list(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"id">> => string()
+%% }
+-type get_managed_endpoint_session_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_configuration() :: #{
+%%   <<"systemRole">> => string()
+%% }
+-type iam_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"emrIdentityCenterApplicationARN">> => string(),
+%%   <<"enableIdentityCenter">> => boolean(),
+%%   <<"identityCenterApplicationAssignmentRequired">> => boolean(),
+%%   <<"identityCenterInstanceARN">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_transit_encryption_configuration() :: #{
+%%   <<"tlsCertificateConfiguration">> => t_l_s_certificate_configuration()
+%% }
+-type in_transit_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_driver() :: #{
+%%   <<"sparkSqlJobDriver">> => spark_sql_job_driver(),
+%%   <<"sparkSubmitJobDriver">> => spark_submit_job_driver()
+%% }
+-type job_driver() :: #{binary() => any()}.
 
 
 %% Example:
@@ -166,48 +495,6 @@
 %% }
 -type job_run() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% describe_job_run_response() :: #{
-%%   <<"jobRun">> => job_run()
-%% }
--type describe_job_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_monitoring_configuration() :: #{
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamNamePrefix">> => string()
-%% }
--type cloud_watch_monitoring_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_runs_request() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"states">> => list(list(any())())
-%% }
--type list_job_runs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_configuration_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"containerProvider">> => container_provider(),
-%%   <<"name">> := string(),
-%%   <<"securityConfigurationData">> := security_configuration_data(),
-%%   <<"tags">> => map()
-%% }
--type create_security_configuration_request() :: #{binary() => any()}.
-
 
 %% Example:
 %% job_template() :: #{
@@ -225,27 +512,141 @@
 
 
 %% Example:
-%% configuration() :: #{
-%%   <<"classification">> => string(),
-%%   <<"configurations">> => list(configuration()),
-%%   <<"properties">> => map()
+%% job_template_data() :: #{
+%%   <<"configurationOverrides">> => parametric_configuration_overrides(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"jobDriver">> => job_driver(),
+%%   <<"jobTags">> => map(),
+%%   <<"parameterConfiguration">> => map(),
+%%   <<"releaseLabel">> => string()
 %% }
--type configuration() :: #{binary() => any()}.
+-type job_template_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% parametric_cloud_watch_monitoring_configuration() :: #{
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamNamePrefix">> => string()
+%% lake_formation_configuration() :: #{
+%%   <<"authorizedSessionTagValue">> => string(),
+%%   <<"queryEngineRoleArn">> => string(),
+%%   <<"secureNamespaceInfo">> => secure_namespace_info()
 %% }
--type parametric_cloud_watch_monitoring_configuration() :: #{binary() => any()}.
+-type lake_formation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_managed_endpoint_response() :: #{
-%%   <<"endpoint">> => endpoint()
+%% list_job_runs_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())())
 %% }
--type describe_managed_endpoint_response() :: #{binary() => any()}.
+-type list_job_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_response() :: #{
+%%   <<"jobRuns">> => list(job_run()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> => list(job_template())
+%% }
+-type list_job_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_endpoints_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())()),
+%%   <<"types">> => list(string())
+%% }
+-type list_managed_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_endpoints_response() :: #{
+%%   <<"endpoints">> => list(endpoint()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_configurations_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_security_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityConfigurations">> => list(security_configuration())
+%% }
+-type list_security_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_clusters_request() :: #{
+%%   <<"containerProviderId">> => string(),
+%%   <<"containerProviderType">> => list(any()),
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"eksAccessEntryIntegrated">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(list(any())())
+%% }
+-type list_virtual_clusters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_clusters_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"virtualClusters">> => list(virtual_cluster())
+%% }
+-type list_virtual_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_logs() :: #{
+%%   <<"allowAWSToRetainLogs">> => list(any()),
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type managed_logs() :: #{binary() => any()}.
 
 
 %% Example:
@@ -260,224 +661,11 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% parametric_cloud_watch_monitoring_configuration() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_managed_endpoint_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"virtualClusterId">> => string()
-%% }
--type create_managed_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% secure_namespace_info() :: #{
-%%   <<"clusterId">> => string(),
-%%   <<"namespace">> => string()
-%% }
--type secure_namespace_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_cluster() :: #{
-%%   <<"arn">> => string(),
-%%   <<"containerProvider">> => container_provider(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"securityConfigurationId">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type virtual_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_template_request() :: #{}
--type delete_job_template_request() :: #{}.
-
-
-%% Example:
-%% parametric_s3_monitoring_configuration() :: #{
-%%   <<"logUri">> => string()
-%% }
--type parametric_s3_monitoring_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_info() :: #{
-%%   <<"namespace">> => string(),
-%%   <<"nodeLabel">> => string()
-%% }
--type eks_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_run_request() :: #{}
--type describe_job_run_request() :: #{}.
-
-%% Example:
-%% describe_virtual_cluster_request() :: #{}
--type describe_virtual_cluster_request() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_job_run_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"virtualClusterId">> => string()
-%% }
--type start_job_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_run_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"virtualClusterId">> => string()
-%% }
--type cancel_job_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_endpoint_session_credentials_response() :: #{
-%%   <<"credentials">> => list(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"id">> => string()
-%% }
--type get_managed_endpoint_session_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_parameter_configuration() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type template_parameter_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_template_request() :: #{}
--type describe_job_template_request() :: #{}.
-
-
-%% Example:
-%% managed_logs() :: #{
-%%   <<"allowAWSToRetainLogs">> => list(any()),
-%%   <<"encryptionKeyArn">> => string()
-%% }
--type managed_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_managed_endpoint_request() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"clientToken">> := string(),
-%%   <<"configurationOverrides">> => configuration_overrides(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"name">> := string(),
-%%   <<"releaseLabel">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string()
-%% }
--type create_managed_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_runs_response() :: #{
-%%   <<"jobRuns">> => list(job_run()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_managed_endpoint_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"virtualClusterId">> => string()
-%% }
--type delete_managed_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_template_response() :: #{
-%%   <<"jobTemplate">> => job_template()
-%% }
--type describe_job_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_log_rotation_configuration() :: #{
-%%   <<"maxFilesToKeep">> => integer(),
-%%   <<"rotationSize">> => string()
-%% }
--type container_log_rotation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type create_security_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_provider() :: #{
-%%   <<"id">> => string(),
-%%   <<"info">> => list(),
-%%   <<"type">> => list(any())
-%% }
--type container_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_k_s_request_throttled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type e_k_s_request_throttled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"arn">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateAuthority">> => certificate(),
-%%   <<"configurationOverrides">> => configuration_overrides(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"failureReason">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"releaseLabel">> => string(),
-%%   <<"securityGroup">> => string(),
-%%   <<"serverUrl">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"stateDetails">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"virtualClusterId">> => string()
-%% }
--type endpoint() :: #{binary() => any()}.
+-type parametric_cloud_watch_monitoring_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,27 +677,117 @@
 
 
 %% Example:
-%% create_virtual_cluster_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
+%% parametric_monitoring_configuration() :: #{
+%%   <<"cloudWatchMonitoringConfiguration">> => parametric_cloud_watch_monitoring_configuration(),
+%%   <<"persistentAppUI">> => string(),
+%%   <<"s3MonitoringConfiguration">> => parametric_s3_monitoring_configuration()
 %% }
--type create_virtual_cluster_response() :: #{binary() => any()}.
+-type parametric_monitoring_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% parametric_s3_monitoring_configuration() :: #{
+%%   <<"logUri">> => string()
+%% }
+-type parametric_s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_throttled_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type request_throttled_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% certificate() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateData">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type certificate() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy_configuration() :: #{
+%%   <<"maxAttempts">> => integer()
+%% }
+-type retry_policy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy_execution() :: #{
+%%   <<"currentAttemptCount">> => integer()
+%% }
+-type retry_policy_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_monitoring_configuration() :: #{
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"logUri">> => string()
+%% }
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduler_configuration() :: #{
+%%   <<"maxConcurrentJobRuns">> => integer(),
+%%   <<"maxInQueueJobRuns">> => integer()
+%% }
+-type scheduler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduler_status() :: #{
+%%   <<"currentConcurrentJobRuns">> => integer(),
+%%   <<"currentInQueueJobRuns">> => integer()
+%% }
+-type scheduler_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% secure_namespace_info() :: #{
+%%   <<"clusterId">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type secure_namespace_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityConfigurationData">> => security_configuration_data(),
+%%   <<"tags">> => map()
+%% }
+-type security_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_configuration_data() :: #{
+%%   <<"authenticationConfiguration">> => authentication_configuration(),
+%%   <<"authorizationConfiguration">> => authorization_configuration()
+%% }
+-type security_configuration_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_sql_job_driver() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"sparkSqlParameters">> => string()
+%% }
+-type spark_sql_job_driver() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_submit_job_driver() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"entryPointArguments">> => list(string()),
+%%   <<"sparkSubmitParameters">> => string()
+%% }
+-type spark_submit_job_driver() :: #{binary() => any()}.
 
 
 %% Example:
@@ -529,47 +807,13 @@
 
 
 %% Example:
-%% create_virtual_cluster_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"containerProvider">> := container_provider(),
-%%   <<"name">> := string(),
-%%   <<"securityConfigurationId">> => string(),
-%%   <<"tags">> => map()
+%% start_job_run_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"virtualClusterId">> => string()
 %% }
--type create_virtual_cluster_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_templates_request() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% parametric_monitoring_configuration() :: #{
-%%   <<"cloudWatchMonitoringConfiguration">> => parametric_cloud_watch_monitoring_configuration(),
-%%   <<"persistentAppUI">> => string(),
-%%   <<"s3MonitoringConfiguration">> => parametric_s3_monitoring_configuration()
-%% }
--type parametric_monitoring_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_policy_execution() :: #{
-%%   <<"currentAttemptCount">> => integer()
-%% }
--type retry_policy_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_transit_encryption_configuration() :: #{
-%%   <<"tlsCertificateConfiguration">> => t_l_s_certificate_configuration()
-%% }
--type in_transit_encryption_configuration() :: #{binary() => any()}.
+-type start_job_run_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -582,18 +826,10 @@
 
 
 %% Example:
-%% create_job_template_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"jobTemplateData">> := job_template_data(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type create_job_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_endpoint_request() :: #{}
--type describe_managed_endpoint_request() :: #{}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -601,73 +837,37 @@
 
 
 %% Example:
-%% security_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"securityConfigurationData">> => security_configuration_data(),
-%%   <<"tags">> => map()
+%% template_parameter_configuration() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type security_configuration() :: #{binary() => any()}.
+-type template_parameter_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_security_configuration_response() :: #{
-%%   <<"securityConfiguration">> => security_configuration()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type describe_security_configuration_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% job_template_data() :: #{
-%%   <<"configurationOverrides">> => parametric_configuration_overrides(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"jobDriver">> => job_driver(),
-%%   <<"jobTags">> => map(),
-%%   <<"parameterConfiguration">> => map(),
-%%   <<"releaseLabel">> => string()
+%% update_virtual_cluster_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"schedulerConfiguration">> => scheduler_configuration()
 %% }
--type job_template_data() :: #{binary() => any()}.
+-type update_virtual_cluster_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_managed_endpoints_response() :: #{
-%%   <<"endpoints">> => list(endpoint()),
-%%   <<"nextToken">> => string()
+%% update_virtual_cluster_response() :: #{
+%%   <<"virtualCluster">> => virtual_cluster()
 %% }
--type list_managed_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_throttled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type request_throttled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_managed_endpoint_request() :: #{}
--type delete_managed_endpoint_request() :: #{}.
-
-
-%% Example:
-%% list_managed_endpoints_request() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"states">> => list(list(any())()),
-%%   <<"types">> => list(string())
-%% }
--type list_managed_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_configuration_data() :: #{
-%%   <<"authorizationConfiguration">> => authorization_configuration()
-%% }
--type security_configuration_data() :: #{binary() => any()}.
+-type update_virtual_cluster_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -678,139 +878,20 @@
 
 
 %% Example:
-%% delete_virtual_cluster_response() :: #{
-%%   <<"id">> => string()
+%% virtual_cluster() :: #{
+%%   <<"arn">> => string(),
+%%   <<"containerProvider">> => container_provider(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
+%%   <<"schedulerStatus">> => scheduler_status(),
+%%   <<"securityConfigurationId">> => string(),
+%%   <<"sessionEnabled">> => boolean(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type delete_virtual_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% configuration_overrides() :: #{
-%%   <<"applicationConfiguration">> => list(configuration()),
-%%   <<"monitoringConfiguration">> => monitoring_configuration()
-%% }
--type configuration_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_endpoint_session_credentials_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"credentialType">> := string(),
-%%   <<"durationInSeconds">> => integer(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"logContext">> => string()
-%% }
--type get_managed_endpoint_session_credentials_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_sql_job_driver() :: #{
-%%   <<"entryPoint">> => string(),
-%%   <<"sparkSqlParameters">> => string()
-%% }
--type spark_sql_job_driver() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityConfigurations">> => list(security_configuration())
-%% }
--type list_security_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_cluster_response() :: #{
-%%   <<"virtualCluster">> => virtual_cluster()
-%% }
--type describe_virtual_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_driver() :: #{
-%%   <<"sparkSqlJobDriver">> => spark_sql_job_driver(),
-%%   <<"sparkSubmitJobDriver">> => spark_submit_job_driver()
-%% }
--type job_driver() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_job_run_request() :: #{}
--type cancel_job_run_request() :: #{}.
-
-%% Example:
-%% describe_security_configuration_request() :: #{}
--type describe_security_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_job_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templates">> => list(job_template())
-%% }
--type list_job_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_policy_configuration() :: #{
-%%   <<"maxAttempts">> => integer()
-%% }
--type retry_policy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorization_configuration() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"lakeFormationConfiguration">> => lake_formation_configuration()
-%% }
--type authorization_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_clusters_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"virtualClusters">> => list(virtual_cluster())
-%% }
--type list_virtual_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_virtual_cluster_request() :: #{}
--type delete_virtual_cluster_request() :: #{}.
-
-
-%% Example:
-%% lake_formation_configuration() :: #{
-%%   <<"authorizedSessionTagValue">> => string(),
-%%   <<"queryEngineRoleArn">> => string(),
-%%   <<"secureNamespaceInfo">> => secure_namespace_info()
-%% }
--type lake_formation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_submit_job_driver() :: #{
-%%   <<"entryPoint">> => string(),
-%%   <<"entryPointArguments">> => list(string()),
-%%   <<"sparkSubmitParameters">> => string()
-%% }
--type spark_submit_job_driver() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_clusters_request() :: #{
-%%   <<"containerProviderId">> => string(),
-%%   <<"containerProviderType">> => list(any()),
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"eksAccessEntryIntegrated">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"states">> => list(list(any())())
-%% }
--type list_virtual_clusters_request() :: #{binary() => any()}.
+-type virtual_cluster() :: #{binary() => any()}.
 
 -type cancel_job_run_errors() ::
     validation_exception() | 
@@ -818,13 +899,13 @@
 
 -type create_job_template_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type create_managed_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type create_security_configuration_errors() ::
     validation_exception() | 
@@ -832,9 +913,9 @@
 
 -type create_virtual_cluster_errors() ::
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    e_k_s_request_throttled_exception() | 
-    resource_not_found_exception().
+    e_k_s_request_throttled_exception().
 
 -type delete_job_template_errors() ::
     validation_exception() | 
@@ -844,40 +925,44 @@
     validation_exception() | 
     internal_server_exception().
 
+-type delete_security_configuration_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type delete_virtual_cluster_errors() ::
     validation_exception() | 
     internal_server_exception().
 
 -type describe_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_job_template_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_managed_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_security_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_virtual_cluster_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_managed_endpoint_session_credentials_errors() ::
     validation_exception() | 
+    resource_not_found_exception() | 
     request_throttled_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_job_runs_errors() ::
     validation_exception() | 
@@ -897,8 +982,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_virtual_clusters_errors() ::
     validation_exception() | 
@@ -906,18 +991,23 @@
 
 -type start_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type update_virtual_cluster_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API
@@ -1083,7 +1173,8 @@ create_security_configuration(Client, Input0, Options0) ->
 %% @doc Creates a virtual cluster.
 %%
 %% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
-%% describe, list and delete virtual clusters. They do not consume any
+%% update, describe, list and delete virtual clusters. They do not consume
+%% any
 %% additional resource in your system. A single virtual cluster maps to a
 %% single Kubernetes
 %% namespace. Given this relationship, you can model virtual clusters the
@@ -1201,10 +1292,45 @@ delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a security configuration.
+-spec delete_security_configuration(aws_client:aws_client(), binary() | list(), delete_security_configuration_request()) ->
+    {ok, delete_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_security_configuration_errors(), tuple()}.
+delete_security_configuration(Client, Id, Input) ->
+    delete_security_configuration(Client, Id, Input, []).
+
+-spec delete_security_configuration(aws_client:aws_client(), binary() | list(), delete_security_configuration_request(), proplists:proplist()) ->
+    {ok, delete_security_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_security_configuration_errors(), tuple()}.
+delete_security_configuration(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/securityconfigurations/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a virtual cluster.
 %%
 %% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
-%% describe, list and delete virtual clusters. They do not consume any
+%% update, describe, list and delete virtual clusters. They do not consume
+%% any
 %% additional resource in your system. A single virtual cluster maps to a
 %% single Kubernetes
 %% namespace. Given this relationship, you can model virtual clusters the
@@ -1419,8 +1545,8 @@ describe_security_configuration(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Displays detailed information about a specified virtual cluster.
 %%
 %% Virtual cluster is a
-%% managed entity on Amazon EMR on EKS. You can create, describe, list and
-%% delete virtual
+%% managed entity on Amazon EMR on EKS. You can create, update, describe,
+%% list and delete virtual
 %% clusters. They do not consume any additional resource in your system. A
 %% single virtual
 %% cluster maps to a single Kubernetes namespace. Given this relationship,
@@ -1741,8 +1867,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists information about the specified virtual cluster.
 %%
 %% Virtual cluster is a managed
-%% entity on Amazon EMR on EKS. You can create, describe, list and delete
-%% virtual
+%% entity on Amazon EMR on EKS. You can create, update, describe, list and
+%% delete virtual
 %% clusters. They do not consume any additional resource in your system. A
 %% single virtual
 %% cluster maps to a single Kubernetes namespace. Given this relationship,
@@ -1917,6 +2043,49 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a virtual cluster.
+%%
+%% Virtual cluster is a managed entity on Amazon EMR on EKS. You can create,
+%% update, describe, list and delete virtual clusters. They do not consume
+%% any
+%% additional resource in your system. A single virtual cluster maps to a
+%% single Kubernetes
+%% namespace. Given this relationship, you can model virtual clusters the
+%% same way you model
+%% Kubernetes namespaces to meet your requirements.
+-spec update_virtual_cluster(aws_client:aws_client(), binary() | list(), update_virtual_cluster_request()) ->
+    {ok, update_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_virtual_cluster_errors(), tuple()}.
+update_virtual_cluster(Client, Id, Input) ->
+    update_virtual_cluster(Client, Id, Input, []).
+
+-spec update_virtual_cluster(aws_client:aws_client(), binary() | list(), update_virtual_cluster_request(), proplists:proplist()) ->
+    {ok, update_virtual_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_virtual_cluster_errors(), tuple()}.
+update_virtual_cluster(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/virtualclusters/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

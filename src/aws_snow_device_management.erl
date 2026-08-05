@@ -41,74 +41,14 @@
 
 
 %% Example:
-%% physical_network_interface() :: #{
-%%   <<"defaultGateway">> => [string()],
-%%   <<"ipAddress">> => [string()],
-%%   <<"ipAddressAssignment">> => string(),
-%%   <<"macAddress">> => [string()],
-%%   <<"netmask">> => [string()],
-%%   <<"physicalConnectorType">> => string(),
-%%   <<"physicalNetworkInterfaceId">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type physical_network_interface() :: #{binary() => any()}.
-
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_devices_output() :: #{
-%%   <<"devices">> => list(device_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_devices_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_executions_output() :: #{
-%%   <<"executions">> => list(execution_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_executions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_device_ec2_output() :: #{
-%%   <<"instances">> => list(instance_summary())
-%% }
--type describe_device_ec2_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_task_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"command">> := list(),
-%%   <<"description">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targets">> := list([string()]())
-%% }
--type create_task_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_execution_input() :: #{}
--type describe_execution_input() :: #{}.
-
-
-%% Example:
-%% describe_execution_output() :: #{
-%%   <<"executionId">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"managedDeviceId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"state">> => string(),
-%%   <<"taskId">> => string()
-%% }
--type describe_execution_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_block_device_mapping() :: #{
-%%   <<"deviceName">> => [string()],
-%%   <<"ebs">> => ebs_instance_block_device()
-%% }
--type instance_block_device_mapping() :: #{binary() => any()}.
+%% cancel_task_input() :: #{}
+-type cancel_task_input() :: #{}.
 
 
 %% Example:
@@ -116,44 +56,6 @@
 %%   <<"taskId">> => [string()]
 %% }
 -type cancel_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_summary() :: #{
-%%   <<"state">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"taskArn">> => [string()],
-%%   <<"taskId">> => string()
-%% }
--type task_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_device_input() :: #{}
--type describe_device_input() :: #{}.
-
-
-%% Example:
-%% create_task_output() :: #{
-%%   <<"taskArn">> => [string()],
-%%   <<"taskId">> => [string()]
-%% }
--type create_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -168,35 +70,48 @@
 
 
 %% Example:
-%% execution_summary() :: #{
-%%   <<"executionId">> => string(),
-%%   <<"managedDeviceId">> => string(),
-%%   <<"state">> => string(),
-%%   <<"taskId">> => string()
+%% cpu_options() :: #{
+%%   <<"coreCount">> => [integer()],
+%%   <<"threadsPerCore">> => [integer()]
 %% }
--type execution_summary() :: #{binary() => any()}.
+-type cpu_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tasks_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(task_summary())
+%% create_task_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"command">> := list(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> := list([string()]())
 %% }
--type list_tasks_output() :: #{binary() => any()}.
+-type create_task_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% create_task_output() :: #{
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_task_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
+%% describe_device_ec2_input() :: #{
+%%   <<"instanceIds">> := list([string()]())
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type describe_device_ec2_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_device_ec2_output() :: #{
+%%   <<"instances">> => list(instance_summary())
+%% }
+-type describe_device_ec2_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_input() :: #{}
+-type describe_device_input() :: #{}.
 
 
 %% Example:
@@ -215,50 +130,40 @@
 %% }
 -type describe_device_output() :: #{binary() => any()}.
 
+%% Example:
+%% describe_execution_input() :: #{}
+-type describe_execution_input() :: #{}.
+
 
 %% Example:
-%% cpu_options() :: #{
-%%   <<"coreCount">> => [integer()],
-%%   <<"threadsPerCore">> => [integer()]
+%% describe_execution_output() :: #{
+%%   <<"executionId">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"managedDeviceId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"taskId">> => string()
 %% }
--type cpu_options() :: #{binary() => any()}.
+-type describe_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_input() :: #{}
+-type describe_task_input() :: #{}.
 
 
 %% Example:
-%% list_devices_input() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% describe_task_output() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list([string()]()),
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => [string()]
 %% }
--type list_devices_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_state() :: #{
-%%   <<"code">> => [integer()],
-%%   <<"name">> => string()
-%% }
--type instance_state() :: #{binary() => any()}.
-
-%% Example:
-%% reboot() :: #{}
--type reboot() :: #{}.
-
-
-%% Example:
-%% list_device_resources_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => [string()]
-%% }
--type list_device_resources_input() :: #{binary() => any()}.
+-type describe_task_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,17 +177,23 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
+%% ebs_instance_block_device() :: #{
+%%   <<"attachTime">> => [non_neg_integer()],
+%%   <<"deleteOnTermination">> => [boolean()],
+%%   <<"status">> => string(),
+%%   <<"volumeId">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type ebs_instance_block_device() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_device_ec2_input() :: #{
-%%   <<"instanceIds">> := list([string()]())
+%% execution_summary() :: #{
+%%   <<"executionId">> => string(),
+%%   <<"managedDeviceId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"taskId">> => string()
 %% }
--type describe_device_ec2_input() :: #{binary() => any()}.
+-type execution_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -305,10 +216,195 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% instance_block_device_mapping() :: #{
+%%   <<"deviceName">> => [string()],
+%%   <<"ebs">> => ebs_instance_block_device()
+%% }
+-type instance_block_device_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_state() :: #{
+%%   <<"code">> => [integer()],
+%%   <<"name">> => string()
+%% }
+-type instance_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"instance">> => instance(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()]
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_resources_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => [string()]
+%% }
+-type list_device_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_resources_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource_summary())
+%% }
+-type list_device_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_input() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_output() :: #{
+%%   <<"devices">> => list(device_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => string(),
+%%   <<"taskId">> := string()
+%% }
+-type list_executions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_output() :: #{
+%%   <<"executions">> => list(execution_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => string()
+%% }
+-type list_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(task_summary())
+%% }
+-type list_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_network_interface() :: #{
+%%   <<"defaultGateway">> => [string()],
+%%   <<"ipAddress">> => [string()],
+%%   <<"ipAddressAssignment">> => string(),
+%%   <<"macAddress">> => [string()],
+%%   <<"netmask">> => [string()],
+%%   <<"physicalConnectorType">> => string(),
+%%   <<"physicalNetworkInterfaceId">> => [string()]
+%% }
+-type physical_network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% reboot() :: #{}
+-type reboot() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_identifier() :: #{
+%%   <<"groupId">> => [string()],
+%%   <<"groupName">> => [string()]
+%% }
+-type security_group_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% software_information() :: #{
+%%   <<"installState">> => [string()],
+%%   <<"installedVersion">> => [string()],
+%%   <<"installingVersion">> => [string()]
+%% }
+-type software_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_summary() :: #{
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"taskArn">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
 %% unlock() :: #{}
@@ -323,190 +419,94 @@
 
 
 %% Example:
-%% list_device_resources_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource_summary())
-%% }
--type list_device_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_task_output() :: #{
-%%   <<"completedAt">> => [non_neg_integer()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"state">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targets">> => list([string()]()),
-%%   <<"taskArn">> => [string()],
-%%   <<"taskId">> => [string()]
-%% }
--type describe_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_instance_block_device() :: #{
-%%   <<"attachTime">> => [non_neg_integer()],
-%%   <<"deleteOnTermination">> => [boolean()],
-%%   <<"status">> => string(),
-%%   <<"volumeId">> => [string()]
-%% }
--type ebs_instance_block_device() :: #{binary() => any()}.
-
-
-%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% describe_task_input() :: #{}
--type describe_task_input() :: #{}.
-
-
-%% Example:
-%% instance_summary() :: #{
-%%   <<"instance">> => instance(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()]
-%% }
--type instance_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_group_identifier() :: #{
-%%   <<"groupId">> => [string()],
-%%   <<"groupName">> => [string()]
-%% }
--type security_group_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% software_information() :: #{
-%%   <<"installState">> => [string()],
-%%   <<"installedVersion">> => [string()],
-%%   <<"installingVersion">> => [string()]
-%% }
--type software_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tasks_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"state">> => string()
-%% }
--type list_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_executions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"state">> => string(),
-%%   <<"taskId">> := string()
-%% }
--type list_executions_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_task_input() :: #{}
--type cancel_task_input() :: #{}.
-
 -type cancel_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_device_ec2_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_device_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

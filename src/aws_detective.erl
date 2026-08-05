@@ -162,412 +162,10 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% administrator() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DelegationTime">> => non_neg_integer(),
-%%   <<"GraphArn">> => string()
-%% }
--type administrator() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_configuration_request() :: #{
+%% accept_invitation_request() :: #{
 %%   <<"GraphArn">> := string()
 %% }
--type describe_organization_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_members_response() :: #{
-%%   <<"MemberDetails">> => list(member_detail()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type get_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% new_aso_detail() :: #{
-%%   <<"Aso">> => string(),
-%%   <<"IsNewForEntireAccount">> => boolean()
-%% }
--type new_aso_detail() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% filter_criteria() :: #{
-%%   <<"CreatedTime">> => date_filter(),
-%%   <<"EntityArn">> => string_filter(),
-%%   <<"Severity">> => string_filter(),
-%%   <<"State">> => string_filter(),
-%%   <<"Status">> => string_filter()
-%% }
--type filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasource_packages_request() :: #{
-%%   <<"GraphArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasource_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_graph_request() :: #{
-%%   <<"Tags">> => map()
-%% }
--type create_graph_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% new_user_agent_detail() :: #{
-%%   <<"IsNewForEntireAccount">> => boolean(),
-%%   <<"UserAgent">> => string()
-%% }
--type new_user_agent_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_datasource_packages_request() :: #{
-%%   <<"DatasourcePackages">> := list(list(any())()),
-%%   <<"GraphArn">> := string()
-%% }
--type update_datasource_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_investigation_request() :: #{
-%%   <<"EntityArn">> := string(),
-%%   <<"GraphArn">> := string(),
-%%   <<"ScopeEndTime">> := non_neg_integer(),
-%%   <<"ScopeStartTime">> := non_neg_integer()
-%% }
--type start_investigation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_investigation_response() :: #{
-%%   <<"InvestigationId">> => string()
-%% }
--type start_investigation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_graphs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_graphs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_members_response() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type delete_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_investigations_response() :: #{
-%%   <<"InvestigationDetails">> => list(investigation_detail()),
-%%   <<"NextToken">> => string()
-%% }
--type list_investigations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_finding_group_detail() :: #{
-%%   <<"Id">> => string()
-%% }
--type related_finding_group_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_configuration_response() :: #{
-%%   <<"AutoEnable">> => boolean()
-%% }
--type describe_organization_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_investigations_request() :: #{
-%%   <<"FilterCriteria">> => filter_criteria(),
-%%   <<"GraphArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => sort_criteria()
-%% }
--type list_investigations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_members_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"GraphArn">> := string()
-%% }
--type get_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_members_request() :: #{
-%%   <<"Accounts">> := list(account()),
-%%   <<"DisableEmailNotification">> => boolean(),
-%%   <<"GraphArn">> := string(),
-%%   <<"Message">> => string()
-%% }
--type create_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% graph() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer()
-%% }
--type graph() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_graph_member_datasources_response() :: #{
-%%   <<"MemberDatasources">> => list(membership_datasources()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type batch_get_graph_member_datasources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Resources">> => list(string())
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_members_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"GraphArn">> := string()
-%% }
--type delete_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% timestamp_for_collection() :: #{
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type timestamp_for_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"EmailAddress">> => string()
-%% }
--type account() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessed_graph() :: #{
-%%   <<"GraphArn">> => string(),
-%%   <<"Reason">> => string()
-%% }
--type unprocessed_graph() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_membership_datasources_response() :: #{
-%%   <<"MembershipDatasources">> => list(membership_datasources()),
-%%   <<"UnprocessedGraphs">> => list(unprocessed_graph())
-%% }
--type batch_get_membership_datasources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_graph_member_datasources_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"GraphArn">> := string()
-%% }
--type batch_get_graph_member_datasources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_investigation_state_request() :: #{
-%%   <<"GraphArn">> := string(),
-%%   <<"InvestigationId">> := string(),
-%%   <<"State">> := list(any())
-%% }
--type update_investigation_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_filter() :: #{
-%%   <<"EndInclusive">> => non_neg_integer(),
-%%   <<"StartInclusive">> => non_neg_integer()
-%% }
--type date_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_invitation_request() :: #{
-%%   <<"GraphArn">> := string()
-%% }
--type reject_invitation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% investigation_detail() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EntityArn">> => string(),
-%%   <<"EntityType">> => list(any()),
-%%   <<"InvestigationId">> => string(),
-%%   <<"Severity">> => list(any()),
-%%   <<"State">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type investigation_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% impossible_travel_detail() :: #{
-%%   <<"EndingIpAddress">> => string(),
-%%   <<"EndingLocation">> => string(),
-%%   <<"HourlyTimeDelta">> => integer(),
-%%   <<"StartingIpAddress">> => string(),
-%%   <<"StartingLocation">> => string()
-%% }
--type impossible_travel_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_graph_request() :: #{
-%%   <<"GraphArn">> := string()
-%% }
--type delete_graph_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_membership_datasources_request() :: #{
-%%   <<"GraphArns">> := list(string())
-%% }
--type batch_get_membership_datasources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_organization_configuration_request() :: #{
-%%   <<"AutoEnable">> => boolean(),
-%%   <<"GraphArn">> := string()
-%% }
--type update_organization_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_organization_admin_account_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type enable_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_graphs_response() :: #{
-%%   <<"GraphList">> => list(graph()),
-%%   <<"NextToken">> => string()
-%% }
--type list_graphs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% datasource_package_usage_info() :: #{
-%%   <<"VolumeUsageInBytes">> => float(),
-%%   <<"VolumeUsageUpdateTime">> => non_neg_integer()
-%% }
--type datasource_package_usage_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasource_packages_response() :: #{
-%%   <<"DatasourcePackages">> => map(),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasource_packages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_datasources() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DatasourcePackageIngestHistory">> => map(),
-%%   <<"GraphArn">> => string()
-%% }
--type membership_datasources() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_admin_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_organization_admin_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sort_criteria() :: #{
-%%   <<"Field">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type sort_criteria() :: #{binary() => any()}.
+-type accept_invitation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -582,23 +180,65 @@
 
 
 %% Example:
-%% new_geolocation_detail() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"IsNewForEntireAccount">> => boolean(),
-%%   <<"Location">> => string()
+%% account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EmailAddress">> => string()
 %% }
--type new_geolocation_detail() :: #{binary() => any()}.
+-type account() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_invitation_request() :: #{
+%% administrator() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DelegationTime">> => non_neg_integer(),
+%%   <<"GraphArn">> => string()
+%% }
+-type administrator() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_graph_member_datasources_request() :: #{
+%%   <<"AccountIds">> := list(string()),
 %%   <<"GraphArn">> := string()
 %% }
--type accept_invitation_request() :: #{binary() => any()}.
+-type batch_get_graph_member_datasources_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% batch_get_graph_member_datasources_response() :: #{
+%%   <<"MemberDatasources">> => list(membership_datasources()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type batch_get_graph_member_datasources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_membership_datasources_request() :: #{
+%%   <<"GraphArns">> := list(string())
+%% }
+-type batch_get_membership_datasources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_membership_datasources_response() :: #{
+%%   <<"MembershipDatasources">> => list(membership_datasources()),
+%%   <<"UnprocessedGraphs">> => list(unprocessed_graph())
+%% }
+-type batch_get_membership_datasources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type create_graph_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -609,20 +249,115 @@
 
 
 %% Example:
-%% list_members_request() :: #{
+%% create_members_request() :: #{
+%%   <<"Accounts">> := list(account()),
+%%   <<"DisableEmailNotification">> => boolean(),
 %%   <<"GraphArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"Message">> => string()
 %% }
--type list_members_request() :: #{binary() => any()}.
+-type create_members_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_members_response() :: #{
-%%   <<"MemberDetails">> => list(member_detail()),
-%%   <<"NextToken">> => string()
+%% create_members_response() :: #{
+%%   <<"Members">> => list(member_detail()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type list_members_response() :: #{binary() => any()}.
+-type create_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% datasource_package_ingest_detail() :: #{
+%%   <<"DatasourcePackageIngestState">> => list(any()),
+%%   <<"LastIngestStateChange">> => map()
+%% }
+-type datasource_package_ingest_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% datasource_package_usage_info() :: #{
+%%   <<"VolumeUsageInBytes">> => float(),
+%%   <<"VolumeUsageUpdateTime">> => non_neg_integer()
+%% }
+-type datasource_package_usage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_filter() :: #{
+%%   <<"EndInclusive">> => non_neg_integer(),
+%%   <<"StartInclusive">> => non_neg_integer()
+%% }
+-type date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_graph_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type delete_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_members_request() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"GraphArn">> := string()
+%% }
+-type delete_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_members_response() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type delete_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_organization_configuration_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type describe_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_organization_configuration_response() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type describe_organization_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_membership_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type disassociate_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_organization_admin_account_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type enable_organization_admin_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"CreatedTime">> => date_filter(),
+%%   <<"EntityArn">> => string_filter(),
+%%   <<"Severity">> => string_filter(),
+%%   <<"State">> => string_filter(),
+%%   <<"Status">> => string_filter()
+%% }
+-type filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% flagged_ip_address_detail() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type flagged_ip_address_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -650,24 +385,46 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorCodeReason">> => string(),
-%%   <<"Message">> => string()
+%% get_members_request() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"GraphArn">> := string()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type get_members_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_invitations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% get_members_response() :: #{
+%%   <<"MemberDetails">> => list(member_detail()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type list_invitations_request() :: #{binary() => any()}.
+-type get_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer()
+%% }
+-type graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% impossible_travel_detail() :: #{
+%%   <<"EndingIpAddress">> => string(),
+%%   <<"EndingLocation">> => string(),
+%%   <<"HourlyTimeDelta">> => integer(),
+%%   <<"StartingIpAddress">> => string(),
+%%   <<"StartingLocation">> => string()
+%% }
+-type impossible_travel_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator() :: #{
+%%   <<"IndicatorDetail">> => indicator_detail(),
+%%   <<"IndicatorType">> => list(any())
+%% }
+-type indicator() :: #{binary() => any()}.
 
 
 %% Example:
@@ -685,69 +442,56 @@
 
 
 %% Example:
-%% string_filter() :: #{
-%%   <<"Value">> => string()
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type string_filter() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% flagged_ip_address_detail() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type flagged_ip_address_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_finding_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"Type">> => string()
-%% }
--type related_finding_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessed_account() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Reason">> => string()
-%% }
--type unprocessed_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_monitoring_member_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"GraphArn">> := string()
-%% }
--type start_monitoring_member_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indicators_response() :: #{
-%%   <<"GraphArn">> => string(),
-%%   <<"Indicators">> => list(indicator()),
+%% investigation_detail() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityType">> => list(any()),
 %%   <<"InvestigationId">> => string(),
-%%   <<"NextToken">> => string()
+%%   <<"Severity">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type list_indicators_response() :: #{binary() => any()}.
+-type investigation_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% datasource_package_ingest_detail() :: #{
-%%   <<"DatasourcePackageIngestState">> => list(any()),
-%%   <<"LastIngestStateChange">> => map()
+%% list_datasource_packages_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type datasource_package_ingest_detail() :: #{binary() => any()}.
+-type list_datasource_packages_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_organization_admin_accounts_response() :: #{
-%%   <<"Administrators">> => list(administrator()),
+%% list_datasource_packages_response() :: #{
+%%   <<"DatasourcePackages">> => map(),
 %%   <<"NextToken">> => string()
 %% }
--type list_organization_admin_accounts_response() :: #{binary() => any()}.
+-type list_datasource_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_graphs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_response() :: #{
+%%   <<"GraphList">> => list(graph()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_graphs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,31 +506,92 @@
 
 
 %% Example:
-%% disassociate_membership_request() :: #{
-%%   <<"GraphArn">> := string()
+%% list_indicators_response() :: #{
+%%   <<"GraphArn">> => string(),
+%%   <<"Indicators">> => list(indicator()),
+%%   <<"InvestigationId">> => string(),
+%%   <<"NextToken">> => string()
 %% }
--type disassociate_membership_request() :: #{binary() => any()}.
+-type list_indicators_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% t_t_ps_observed_detail() :: #{
-%%   <<"APIFailureCount">> => float(),
-%%   <<"APIName">> => string(),
-%%   <<"APISuccessCount">> => float(),
-%%   <<"IpAddress">> => string(),
-%%   <<"Procedure">> => string(),
-%%   <<"Tactic">> => string(),
-%%   <<"Technique">> => string()
+%% list_investigations_request() :: #{
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
 %% }
--type t_t_ps_observed_detail() :: #{binary() => any()}.
+-type list_investigations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_members_response() :: #{
-%%   <<"Members">> => list(member_detail()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% list_investigations_response() :: #{
+%%   <<"InvestigationDetails">> => list(investigation_detail()),
+%%   <<"NextToken">> => string()
 %% }
--type create_members_response() :: #{binary() => any()}.
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_response() :: #{
+%%   <<"Invitations">> => list(member_detail()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_response() :: #{
+%%   <<"MemberDetails">> => list(member_detail()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_response() :: #{
+%%   <<"Administrators">> => list(administrator()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -812,204 +617,399 @@
 
 
 %% Example:
-%% list_invitations_response() :: #{
-%%   <<"Invitations">> => list(member_detail()),
-%%   <<"NextToken">> => string()
+%% membership_datasources() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DatasourcePackageIngestHistory">> => map(),
+%%   <<"GraphArn">> => string()
 %% }
--type list_invitations_response() :: #{binary() => any()}.
+-type membership_datasources() :: #{binary() => any()}.
 
 
 %% Example:
-%% indicator() :: #{
-%%   <<"IndicatorDetail">> => indicator_detail(),
-%%   <<"IndicatorType">> => list(any())
+%% new_aso_detail() :: #{
+%%   <<"Aso">> => string(),
+%%   <<"IsNewForEntireAccount">> => boolean()
 %% }
--type indicator() :: #{binary() => any()}.
+-type new_aso_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_geolocation_detail() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"IsNewForEntireAccount">> => boolean(),
+%%   <<"Location">> => string()
+%% }
+-type new_geolocation_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_user_agent_detail() :: #{
+%%   <<"IsNewForEntireAccount">> => boolean(),
+%%   <<"UserAgent">> => string()
+%% }
+-type new_user_agent_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_invitation_request() :: #{
+%%   <<"GraphArn">> := string()
+%% }
+-type reject_invitation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_finding_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type related_finding_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_finding_group_detail() :: #{
+%%   <<"Id">> => string()
+%% }
+-type related_finding_group_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Resources">> => list(string())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"Field">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_investigation_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"GraphArn">> := string(),
+%%   <<"ScopeEndTime">> := non_neg_integer(),
+%%   <<"ScopeStartTime">> := non_neg_integer()
+%% }
+-type start_investigation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_investigation_response() :: #{
+%%   <<"InvestigationId">> => string()
+%% }
+-type start_investigation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_monitoring_member_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"GraphArn">> := string()
+%% }
+-type start_monitoring_member_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_filter() :: #{
+%%   <<"Value">> => string()
+%% }
+-type string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% t_t_ps_observed_detail() :: #{
+%%   <<"APIFailureCount">> => float(),
+%%   <<"APIName">> => string(),
+%%   <<"APISuccessCount">> => float(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Procedure">> => string(),
+%%   <<"Tactic">> => string(),
+%%   <<"Technique">> => string()
+%% }
+-type t_t_ps_observed_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% timestamp_for_collection() :: #{
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type timestamp_for_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type unprocessed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_graph() :: #{
+%%   <<"GraphArn">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type unprocessed_graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_datasource_packages_request() :: #{
+%%   <<"DatasourcePackages">> := list(list(any())()),
+%%   <<"GraphArn">> := string()
+%% }
+-type update_datasource_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_investigation_state_request() :: #{
+%%   <<"GraphArn">> := string(),
+%%   <<"InvestigationId">> := string(),
+%%   <<"State">> := list(any())
+%% }
+-type update_investigation_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_organization_configuration_request() :: #{
+%%   <<"AutoEnable">> => boolean(),
+%%   <<"GraphArn">> := string()
+%% }
+-type update_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorCodeReason">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type accept_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_graph_member_datasources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_membership_datasources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_graph_errors() ::
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_members_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_graph_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_members_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_organization_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type disable_organization_admin_account_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type disassociate_membership_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_organization_admin_account_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type get_investigation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_members_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_datasource_packages_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_graphs_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_indicators_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_investigations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_invitations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_members_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_organization_admin_accounts_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reject_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_investigation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_monitoring_member_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_datasource_packages_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_investigation_state_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_organization_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

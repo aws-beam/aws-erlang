@@ -94,10 +94,277 @@
 
 
 %% Example:
-%% update_profiling_group_request() :: #{
-%%   <<"agentOrchestrationConfig">> => agent_orchestration_config()
+%% add_notification_channels_request() :: #{
+%%   <<"channels">> => list(channel())
 %% }
--type update_profiling_group_request() :: #{binary() => any()}.
+-type add_notification_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_notification_channels_response() :: #{
+%%   <<"notificationConfiguration">> => notification_configuration()
+%% }
+-type add_notification_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_configuration() :: #{
+%%   <<"agentParameters">> => map(),
+%%   <<"periodInSeconds">> => [integer()],
+%%   <<"shouldProfile">> => [boolean()]
+%% }
+-type agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_orchestration_config() :: #{
+%%   <<"profilingEnabled">> => [boolean()]
+%% }
+-type agent_orchestration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregated_profile_time() :: #{
+%%   <<"period">> => string(),
+%%   <<"start">> => non_neg_integer()
+%% }
+-type aggregated_profile_time() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly() :: #{
+%%   <<"instances">> => list(anomaly_instance()),
+%%   <<"metric">> => metric(),
+%%   <<"reason">> => [string()]
+%% }
+-type anomaly() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_instance() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => [string()],
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"userFeedback">> => user_feedback()
+%% }
+-type anomaly_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_frame_metric_data_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"frameMetrics">> => list(frame_metric()),
+%%   <<"period">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"targetResolution">> => string()
+%% }
+-type batch_get_frame_metric_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_frame_metric_data_response() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"endTimes">> => list(timestamp_structure()),
+%%   <<"frameMetricData">> => list(frame_metric_datum()),
+%%   <<"resolution">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"unprocessedEndTimes">> => map()
+%% }
+-type batch_get_frame_metric_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel() :: #{
+%%   <<"eventPublishers">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_agent_request() :: #{
+%%   <<"fleetInstanceId">> => string(),
+%%   <<"metadata">> => map()
+%% }
+-type configure_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_agent_response() :: #{
+%%   <<"configuration">> => agent_configuration()
+%% }
+-type configure_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profiling_group_request() :: #{
+%%   <<"agentOrchestrationConfig">> => agent_orchestration_config(),
+%%   <<"clientToken">> => string(),
+%%   <<"computePlatform">> => string(),
+%%   <<"profilingGroupName">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_profiling_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type create_profiling_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profiling_group_request() :: #{}
+-type delete_profiling_group_request() :: #{}.
+
+%% Example:
+%% delete_profiling_group_response() :: #{}
+-type delete_profiling_group_response() :: #{}.
+
+%% Example:
+%% describe_profiling_group_request() :: #{}
+-type describe_profiling_group_request() :: #{}.
+
+
+%% Example:
+%% describe_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type describe_profiling_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_report_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"profileEndTime">> => non_neg_integer(),
+%%   <<"profileStartTime">> => non_neg_integer(),
+%%   <<"profilingGroupName">> => [string()],
+%%   <<"totalNumberOfFindings">> => [integer()]
+%% }
+-type findings_report_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_metric() :: #{
+%%   <<"frameName">> => [string()],
+%%   <<"threadStates">> => list([string()]()),
+%%   <<"type">> => string()
+%% }
+-type frame_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_metric_datum() :: #{
+%%   <<"frameMetric">> => frame_metric(),
+%%   <<"values">> => list(float())
+%% }
+-type frame_metric_datum() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_report_account_summary_request() :: #{
+%%   <<"dailyReportsOnly">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_findings_report_account_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_report_account_summary_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportSummaries">> => list(findings_report_summary())
+%% }
+-type get_findings_report_account_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_configuration_request() :: #{}
+-type get_notification_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_notification_configuration_response() :: #{
+%%   <<"notificationConfiguration">> => notification_configuration()
+%% }
+-type get_notification_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"revisionId">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_request() :: #{
+%%   <<"accept">> => [string()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxDepth">> => integer(),
+%%   <<"period">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_response() :: #{
+%%   <<"contentEncoding">> => [string()],
+%%   <<"contentType">> => [string()],
+%%   <<"profile">> => binary()
+%% }
+-type get_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"locale">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendations_response() :: #{
+%%   <<"anomalies">> => list(anomaly()),
+%%   <<"profileEndTime">> => non_neg_integer(),
+%%   <<"profileStartTime">> => non_neg_integer(),
+%%   <<"profilingGroupName">> => string(),
+%%   <<"recommendations">> => list(recommendation())
+%% }
+-type get_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_reports_request() :: #{
+%%   <<"dailyReportsOnly">> => [boolean()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type list_findings_reports_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,13 +373,6 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_reports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -128,32 +388,49 @@
 
 
 %% Example:
-%% anomaly_instance() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"id">> => [string()],
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"userFeedback">> => user_feedback()
+%% list_profile_times_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profileTimes">> => list(profile_time())
 %% }
--type anomaly_instance() :: #{binary() => any()}.
+-type list_profile_times_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% timestamp_structure() :: #{
-%%   <<"value">> => non_neg_integer()
+%% list_profiling_groups_request() :: #{
+%%   <<"includeDescription">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type timestamp_structure() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type list_profiling_groups_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregated_profile_time() :: #{
-%%   <<"period">> => string(),
-%%   <<"start">> => non_neg_integer()
+%% list_profiling_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profilingGroupNames">> => list(string()),
+%%   <<"profilingGroups">> => list(profiling_group_description())
 %% }
--type aggregated_profile_time() :: #{binary() => any()}.
+-type list_profiling_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% match() :: #{
+%%   <<"frameAddress">> => [string()],
+%%   <<"targetFramesIndex">> => [integer()],
+%%   <<"thresholdBreachValue">> => [float()]
+%% }
+-type match() :: #{binary() => any()}.
 
 
 %% Example:
@@ -166,137 +443,10 @@
 
 
 %% Example:
-%% profiling_status() :: #{
-%%   <<"latestAgentOrchestratedAt">> => non_neg_integer(),
-%%   <<"latestAgentProfileReportedAt">> => non_neg_integer(),
-%%   <<"latestAggregatedProfile">> => aggregated_profile_time()
+%% notification_configuration() :: #{
+%%   <<"channels">> => list(channel())
 %% }
--type profiling_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{}
--type get_policy_request() :: #{}.
-
-%% Example:
-%% get_notification_configuration_request() :: #{}
--type get_notification_configuration_request() :: #{}.
-
-%% Example:
-%% delete_profiling_group_response() :: #{}
--type delete_profiling_group_response() :: #{}.
-
-
-%% Example:
-%% agent_orchestration_config() :: #{
-%%   <<"profilingEnabled">> => [boolean()]
-%% }
--type agent_orchestration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_metric() :: #{
-%%   <<"frameName">> => [string()],
-%%   <<"threadStates">> => list([string()]()),
-%%   <<"type">> => string()
-%% }
--type frame_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_agent_profile_request() :: #{
-%%   <<"agentProfile">> => binary(),
-%%   <<"contentType">> => [string()],
-%%   <<"profileToken">> => string()
-%% }
--type post_agent_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_notification_channel_request() :: #{}
--type remove_notification_channel_request() :: #{}.
-
-
-%% Example:
-%% list_profile_times_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"profileTimes">> => list(profile_time())
-%% }
--type list_profile_times_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_profiling_group_request() :: #{}
--type describe_profiling_group_request() :: #{}.
-
-
-%% Example:
-%% get_recommendations_response() :: #{
-%%   <<"anomalies">> => list(anomaly()),
-%%   <<"profileEndTime">> => non_neg_integer(),
-%%   <<"profileStartTime">> => non_neg_integer(),
-%%   <<"profilingGroupName">> => string(),
-%%   <<"recommendations">> => list(recommendation())
-%% }
--type get_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notification_configuration_response() :: #{
-%%   <<"notificationConfiguration">> => notification_configuration()
-%% }
--type get_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_report_account_summary_request() :: #{
-%%   <<"dailyReportsOnly">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_findings_report_account_summary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% submit_feedback_response() :: #{}
--type submit_feedback_response() :: #{}.
-
-
-%% Example:
-%% remove_notification_channel_response() :: #{
-%%   <<"notificationConfiguration">> => notification_configuration()
-%% }
--type remove_notification_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profiling_groups_request() :: #{
-%%   <<"includeDescription">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_profiling_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% post_agent_profile_response() :: #{}
--type post_agent_profile_response() :: #{}.
+-type notification_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -313,111 +463,16 @@
 
 
 %% Example:
-%% get_findings_report_account_summary_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reportSummaries">> => list(findings_report_summary())
-%% }
--type get_findings_report_account_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configure_agent_request() :: #{
-%%   <<"fleetInstanceId">> => string(),
-%%   <<"metadata">> => map()
-%% }
--type configure_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_response() :: #{
-%%   <<"contentEncoding">> => [string()],
+%% post_agent_profile_request() :: #{
+%%   <<"agentProfile">> => binary(),
 %%   <<"contentType">> => [string()],
-%%   <<"profile">> => binary()
+%%   <<"profileToken">> => string()
 %% }
--type get_profile_response() :: #{binary() => any()}.
-
+-type post_agent_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% recommendation() :: #{
-%%   <<"allMatchesCount">> => [integer()],
-%%   <<"allMatchesSum">> => [float()],
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"pattern">> => pattern(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"topMatches">> => list(match())
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendations_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"locale">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type get_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_permission_request() :: #{
-%%   <<"revisionId">> => string()
-%% }
--type remove_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_reports_request() :: #{
-%%   <<"dailyReportsOnly">> => [boolean()],
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type list_findings_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_permission_request() :: #{
-%%   <<"principals">> => list(string()),
-%%   <<"revisionId">> => string()
-%% }
--type put_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_profiling_group_response() :: #{
-%%   <<"profilingGroup">> => profiling_group_description()
-%% }
--type describe_profiling_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_permission_response() :: #{
-%%   <<"policy">> => [string()],
-%%   <<"revisionId">> => string()
-%% }
--type put_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_profiling_group_response() :: #{
-%%   <<"profilingGroup">> => profiling_group_description()
-%% }
--type update_profiling_group_response() :: #{binary() => any()}.
+%% post_agent_profile_response() :: #{}
+-type post_agent_profile_response() :: #{}.
 
 
 %% Example:
@@ -425,32 +480,6 @@
 %%   <<"start">> => non_neg_integer()
 %% }
 -type profile_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_configuration() :: #{
-%%   <<"channels">> => list(channel())
-%% }
--type notification_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"policy">> => [string()],
-%%   <<"revisionId">> => string()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_profiling_group_request() :: #{}
--type delete_profiling_group_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -468,170 +497,58 @@
 
 
 %% Example:
-%% anomaly() :: #{
-%%   <<"instances">> => list(anomaly_instance()),
-%%   <<"metric">> => metric(),
-%%   <<"reason">> => [string()]
+%% profiling_status() :: #{
+%%   <<"latestAgentOrchestratedAt">> => non_neg_integer(),
+%%   <<"latestAgentProfileReportedAt">> => non_neg_integer(),
+%%   <<"latestAggregatedProfile">> => aggregated_profile_time()
 %% }
--type anomaly() :: #{binary() => any()}.
+-type profiling_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_profiling_group_response() :: #{
-%%   <<"profilingGroup">> => profiling_group_description()
+%% put_permission_request() :: #{
+%%   <<"principals">> => list(string()),
+%%   <<"revisionId">> => string()
 %% }
--type create_profiling_group_response() :: #{binary() => any()}.
+-type put_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_profiling_group_request() :: #{
-%%   <<"agentOrchestrationConfig">> => agent_orchestration_config(),
-%%   <<"clientToken">> => string(),
-%%   <<"computePlatform">> => string(),
-%%   <<"profilingGroupName">> => string(),
-%%   <<"tags">> => map()
+%% put_permission_response() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"revisionId">> => string()
 %% }
--type create_profiling_group_request() :: #{binary() => any()}.
+-type put_permission_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% agent_configuration() :: #{
-%%   <<"agentParameters">> => map(),
-%%   <<"periodInSeconds">> => [integer()],
-%%   <<"shouldProfile">> => [boolean()]
-%% }
--type agent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profiling_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"profilingGroupNames">> => list(string()),
-%%   <<"profilingGroups">> => list(profiling_group_description())
-%% }
--type list_profiling_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_notification_channels_request() :: #{
-%%   <<"channels">> => list(channel())
-%% }
--type add_notification_channels_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_profile_request() :: #{
-%%   <<"accept">> => [string()],
+%% recommendation() :: #{
+%%   <<"allMatchesCount">> => [integer()],
+%%   <<"allMatchesSum">> => [float()],
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"maxDepth">> => integer(),
-%%   <<"period">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type get_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_frame_metric_data_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"frameMetrics">> => list(frame_metric()),
-%%   <<"period">> => string(),
+%%   <<"pattern">> => pattern(),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"targetResolution">> => string()
+%%   <<"topMatches">> => list(match())
 %% }
--type batch_get_frame_metric_data_request() :: #{binary() => any()}.
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% remove_notification_channel_request() :: #{}
+-type remove_notification_channel_request() :: #{}.
 
 
 %% Example:
-%% channel() :: #{
-%%   <<"eventPublishers">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"uri">> => string()
-%% }
--type channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_frame_metric_data_response() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"endTimes">> => list(timestamp_structure()),
-%%   <<"frameMetricData">> => list(frame_metric_datum()),
-%%   <<"resolution">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"unprocessedEndTimes">> => map()
-%% }
--type batch_get_frame_metric_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% match() :: #{
-%%   <<"frameAddress">> => [string()],
-%%   <<"targetFramesIndex">> => [integer()],
-%%   <<"thresholdBreachValue">> => [float()]
-%% }
--type match() :: #{binary() => any()}.
-
-
-%% Example:
-%% submit_feedback_request() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"type">> => string()
-%% }
--type submit_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_metric_datum() :: #{
-%%   <<"frameMetric">> => frame_metric(),
-%%   <<"values">> => list(float())
-%% }
--type frame_metric_datum() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_notification_channels_response() :: #{
+%% remove_notification_channel_response() :: #{
 %%   <<"notificationConfiguration">> => notification_configuration()
 %% }
--type add_notification_channels_response() :: #{binary() => any()}.
+-type remove_notification_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% configure_agent_response() :: #{
-%%   <<"configuration">> => agent_configuration()
+%% remove_permission_request() :: #{
+%%   <<"revisionId">> => string()
 %% }
--type configure_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% findings_report_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"profileEndTime">> => non_neg_integer(),
-%%   <<"profileStartTime">> => non_neg_integer(),
-%%   <<"profilingGroupName">> => [string()],
-%%   <<"totalNumberOfFindings">> => [integer()]
-%% }
--type findings_report_summary() :: #{binary() => any()}.
+-type remove_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -643,90 +560,173 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_feedback_request() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"type">> => string()
+%% }
+-type submit_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_feedback_response() :: #{}
+-type submit_feedback_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_structure() :: #{
+%%   <<"value">> => non_neg_integer()
+%% }
+-type timestamp_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_profiling_group_request() :: #{
+%%   <<"agentOrchestrationConfig">> => agent_orchestration_config()
+%% }
+-type update_profiling_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type update_profiling_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_feedback() :: #{
 %%   <<"type">> => string()
 %% }
 -type user_feedback() :: #{binary() => any()}.
 
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type add_notification_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type batch_get_frame_metric_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type configure_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type create_profiling_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_profiling_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type describe_profiling_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_findings_report_account_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type get_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_policy_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_findings_reports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_profile_times_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_profiling_groups_errors() ::
     throttling_exception() | 
@@ -734,56 +734,56 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type post_agent_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_permission_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type remove_notification_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type remove_permission_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type submit_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_profiling_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 %%====================================================================

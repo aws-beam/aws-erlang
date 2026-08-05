@@ -142,16 +142,526 @@
 
 
 %% Example:
-%% is_authorized_with_token_input() :: #{
-%%   <<"accessToken">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_identifier() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"actionType">> => string()
+%% }
+-type action_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_error_item() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()],
+%%   <<"policyId">> => [string()],
+%%   <<"policyStoreId">> => [string()]
+%% }
+-type batch_get_policy_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_input() :: #{
+%%   <<"requests">> := list(batch_get_policy_input_item())
+%% }
+-type batch_get_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_input_item() :: #{
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type batch_get_policy_input_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_output() :: #{
+%%   <<"errors">> => list(batch_get_policy_error_item()),
+%%   <<"results">> => list(batch_get_policy_output_item())
+%% }
+-type batch_get_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_policy_output_item() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any())
+%% }
+-type batch_get_policy_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_input() :: #{
+%%   <<"entities">> => list(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"requests">> := list(batch_is_authorized_input_item())
+%% }
+-type batch_is_authorized_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_input_item() :: #{
 %%   <<"action">> => action_identifier(),
 %%   <<"context">> => list(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type batch_is_authorized_input_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_output() :: #{
+%%   <<"results">> => list(batch_is_authorized_output_item())
+%% }
+-type batch_is_authorized_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_output_item() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
+%%   <<"request">> => batch_is_authorized_input_item()
+%% }
+-type batch_is_authorized_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_input() :: #{
+%%   <<"accessToken">> => string(),
 %%   <<"entities">> => list(),
 %%   <<"identityToken">> => string(),
 %%   <<"policyStoreId">> := string(),
+%%   <<"requests">> := list(batch_is_authorized_with_token_input_item())
+%% }
+-type batch_is_authorized_with_token_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_input_item() :: #{
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
 %%   <<"resource">> => entity_identifier()
 %% }
--type is_authorized_with_token_input() :: #{binary() => any()}.
+-type batch_is_authorized_with_token_input_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_output() :: #{
+%%   <<"principal">> => entity_identifier(),
+%%   <<"results">> => list(batch_is_authorized_with_token_output_item())
+%% }
+-type batch_is_authorized_with_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_is_authorized_with_token_output_item() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
+%%   <<"request">> => batch_is_authorized_with_token_input_item()
+%% }
+-type batch_is_authorized_with_token_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_group_configuration() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_group_configuration_detail() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_group_configuration_item() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type cognito_group_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"groupConfiguration">> => cognito_group_configuration(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration_detail() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"groupConfiguration">> => cognito_group_configuration_detail(),
+%%   <<"issuer">> => string(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_user_pool_configuration_item() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"groupConfiguration">> => cognito_group_configuration_item(),
+%%   <<"issuer">> => string(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type cognito_user_pool_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resources">> => list(resource_conflict())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_source_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type create_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_source_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"definition">> := list(),
+%%   <<"name">> => string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type create_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_output() :: #{
+%%   <<"actions">> => list(action_identifier()),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"effect">> => list(any()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type create_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type create_policy_store_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_alias_output() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_policy_store_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtection">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"encryptionSettings">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"validationSettings">> := validation_settings()
+%% }
+-type create_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type create_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_template_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"statement">> := string()
+%% }
+-type create_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
+%% }
+-type create_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_source_output() :: #{
+
+%% }
+-type delete_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_input() :: #{
+%%   <<"policyId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_output() :: #{
+
+%% }
+-type delete_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string(),
+%%   <<"deletionMode">> => list(any())
+%% }
+-type delete_policy_store_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_alias_output() :: #{
+
+%% }
+-type delete_policy_store_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_input() :: #{
+%%   <<"policyStoreId">> := string()
+%% }
+-type delete_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_store_output() :: #{
+
+%% }
+-type delete_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_template_input() :: #{
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string()
+%% }
+-type delete_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_template_output() :: #{
+
+%% }
+-type delete_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% determining_policy_item() :: #{
+%%   <<"policyId">> => string()
+%% }
+-type determining_policy_item() :: #{binary() => any()}.
+
+%% Example:
+%% entity_identifier() :: #{
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => string()
+%% }
+-type entity_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% entity_item() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"identifier">> => entity_identifier(),
+%%   <<"parents">> => list(entity_identifier()),
+%%   <<"tags">> => map()
+%% }
+-type entity_item() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_error_item() :: #{
+%%   <<"errorDescription">> => [string()]
+%% }
+-type evaluation_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_source_output() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"details">> => identity_source_details(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type get_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_input() :: #{
+%%   <<"policyId">> := string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_output() :: #{
+%%   <<"actions">> => list(action_identifier()),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"effect">> => list(any()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type get_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_alias_input() :: #{
+%%   <<"aliasName">> := string()
+%% }
+-type get_policy_store_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_alias_output() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type get_policy_store_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_input() :: #{
+%%   <<"policyStoreId">> := string(),
+%%   <<"tags">> => [boolean()]
+%% }
+-type get_policy_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cedarVersion">> => list(any()),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"deletionProtection">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"encryptionState">> => list(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"validationSettings">> => validation_settings()
+%% }
+-type get_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_template_input() :: #{
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string()
+%% }
+-type get_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type get_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_input() :: #{
+%%   <<"policyStoreId">> := string()
+%% }
+-type get_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"policyStoreId">> => string(),
+%%   <<"schema">> => string()
+%% }
+-type get_schema_output() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_details() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"discoveryUrl">> => string(),
+%%   <<"openIdIssuer">> => list(any()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type identity_source_details() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_filter() :: #{
+%%   <<"principalEntityType">> => string()
+%% }
+-type identity_source_filter() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_item() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"details">> => identity_source_item_details(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"principalEntityType">> => string()
+%% }
+-type identity_source_item() :: #{binary() => any()}.
+
+%% Example:
+%% identity_source_item_details() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"discoveryUrl">> => string(),
+%%   <<"openIdIssuer">> => list(any()),
+%%   <<"userPoolArn">> => string()
+%% }
+-type identity_source_item_details() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
 
 %% Example:
 %% is_authorized_input() :: #{
@@ -165,32 +675,6 @@
 -type is_authorized_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_policy_template_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyTemplateId">> => string()
-%% }
--type create_policy_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_with_token_input_item() :: #{
-%%   <<"action">> => action_identifier(),
-%%   <<"context">> => list(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type batch_is_authorized_with_token_input_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_identity_source_input() :: #{
-%%   <<"identitySourceId">> := string(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"principalEntityType">> => string(),
-%%   <<"updateConfiguration">> := list()
-%% }
--type update_identity_source_input() :: #{binary() => any()}.
-
-%% Example:
 %% is_authorized_output() :: #{
 %%   <<"decision">> => list(any()),
 %%   <<"determiningPolicies">> => list(determining_policy_item()),
@@ -199,37 +683,100 @@
 -type is_authorized_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_policy_template_input() :: #{
+%% is_authorized_with_token_input() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"action">> => action_identifier(),
+%%   <<"context">> => list(),
+%%   <<"entities">> => list(),
+%%   <<"identityToken">> => string(),
 %%   <<"policyStoreId">> := string(),
-%%   <<"policyTemplateId">> := string()
+%%   <<"resource">> => entity_identifier()
 %% }
--type delete_policy_template_input() :: #{binary() => any()}.
+-type is_authorized_with_token_input() :: #{binary() => any()}.
 
 %% Example:
-%% open_id_connect_identity_token_configuration() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"principalIdClaim">> => string()
+%% is_authorized_with_token_output() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
+%%   <<"principal">> => entity_identifier()
 %% }
--type open_id_connect_identity_token_configuration() :: #{binary() => any()}.
+-type is_authorized_with_token_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_policy_templates_output() :: #{
+%% kms_encryption_settings() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"key">> => string()
+%% }
+-type kms_encryption_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kms_encryption_state() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"key">> => string()
+%% }
+-type kms_encryption_state() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_sources_input() :: #{
+%%   <<"filters">> => list(identity_source_filter()),
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"policyTemplates">> => list(policy_template_item())
-%% }
--type list_policy_templates_output() :: #{binary() => any()}.
-
-%% Example:
-%% determining_policy_item() :: #{
-%%   <<"policyId">> => string()
-%% }
--type determining_policy_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_store_input() :: #{
 %%   <<"policyStoreId">> := string()
 %% }
--type delete_policy_store_input() :: #{binary() => any()}.
+-type list_identity_sources_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_sources_output() :: #{
+%%   <<"identitySources">> => list(identity_source_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_sources_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_input() :: #{
+%%   <<"filter">> => policy_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreId">> := string()
+%% }
+-type list_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy_item())
+%% }
+-type list_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_store_aliases_input() :: #{
+%%   <<"filter">> => policy_store_alias_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_store_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_store_aliases_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyStoreAliases">> => list(policy_store_alias_item())
+%% }
+-type list_policy_store_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_stores_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_stores_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_stores_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyStores">> => list(policy_store_item())
+%% }
+-type list_policy_stores_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_policy_templates_input() :: #{
@@ -240,22 +787,23 @@
 -type list_policy_templates_input() :: #{binary() => any()}.
 
 %% Example:
-%% template_linked_policy_definition() :: #{
-%%   <<"policyTemplateId">> => string(),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
+%% list_policy_templates_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyTemplates">> => list(policy_template_item())
 %% }
--type template_linked_policy_definition() :: #{binary() => any()}.
+-type list_policy_templates_output() :: #{binary() => any()}.
 
 %% Example:
-%% policy_store_alias_item() :: #{
-%%   <<"aliasArn">> => string(),
-%%   <<"aliasName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"state">> => list(any())
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
 %% }
--type policy_store_alias_item() :: #{binary() => any()}.
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% open_id_connect_access_token_configuration() :: #{
@@ -272,79 +820,89 @@
 -type open_id_connect_access_token_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
-%% create_policy_store_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtection">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"encryptionSettings">> => list(),
-%%   <<"tags">> => map(),
-%%   <<"validationSettings">> := validation_settings()
+%% open_id_connect_access_token_configuration_item() :: #{
+%%   <<"audiences">> => list(string()),
+%%   <<"principalIdClaim">> => string()
 %% }
--type create_policy_store_input() :: #{binary() => any()}.
+-type open_id_connect_access_token_configuration_item() :: #{binary() => any()}.
 
 %% Example:
-%% get_policy_input() :: #{
-%%   <<"policyId">> := string(),
-%%   <<"policyStoreId">> := string()
+%% open_id_connect_configuration() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
 %% }
--type get_policy_input() :: #{binary() => any()}.
+-type open_id_connect_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% update_identity_source_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"identitySourceId">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string()
+%% open_id_connect_configuration_detail() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration_detail(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
 %% }
--type update_identity_source_output() :: #{binary() => any()}.
+-type open_id_connect_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_source_input() :: #{
-%%   <<"identitySourceId">> := string(),
-%%   <<"policyStoreId">> := string()
+%% open_id_connect_configuration_item() :: #{
+%%   <<"entityIdPrefix">> => string(),
+%%   <<"groupConfiguration">> => open_id_connect_group_configuration_item(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenSelection">> => list()
 %% }
--type get_identity_source_input() :: #{binary() => any()}.
+-type open_id_connect_configuration_item() :: #{binary() => any()}.
 
 %% Example:
-%% policy_template_item() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyTemplateId">> => string()
+%% open_id_connect_group_configuration() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
 %% }
--type policy_template_item() :: #{binary() => any()}.
+-type open_id_connect_group_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% update_policy_store_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string()
+%% open_id_connect_group_configuration_detail() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
 %% }
--type update_policy_store_output() :: #{binary() => any()}.
+-type open_id_connect_group_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_policy_input() :: #{
-%%   <<"requests">> := list(batch_get_policy_input_item())
+%% open_id_connect_group_configuration_item() :: #{
+%%   <<"groupClaim">> => string(),
+%%   <<"groupEntityType">> => string()
 %% }
--type batch_get_policy_input() :: #{binary() => any()}.
+-type open_id_connect_group_configuration_item() :: #{binary() => any()}.
 
 %% Example:
-%% policy_store_alias_filter() :: #{
-%%   <<"policyStoreId">> => string()
+%% open_id_connect_identity_token_configuration() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"principalIdClaim">> => string()
 %% }
--type policy_store_alias_filter() :: #{binary() => any()}.
+-type open_id_connect_identity_token_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% batch_is_authorized_with_token_output_item() :: #{
-%%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()),
-%%   <<"errors">> => list(evaluation_error_item()),
-%%   <<"request">> => batch_is_authorized_with_token_input_item()
+%% open_id_connect_identity_token_configuration_detail() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"principalIdClaim">> => string()
 %% }
--type batch_is_authorized_with_token_output_item() :: #{binary() => any()}.
+-type open_id_connect_identity_token_configuration_detail() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_identity_token_configuration_item() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type open_id_connect_identity_token_configuration_item() :: #{binary() => any()}.
+
+%% Example:
+%% policy_filter() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"principal">> => list(),
+%%   <<"resource">> => list()
+%% }
+-type policy_filter() :: #{binary() => any()}.
 
 %% Example:
 %% policy_item() :: #{
@@ -363,215 +921,20 @@
 -type policy_item() :: #{binary() => any()}.
 
 %% Example:
-%% delete_policy_store_alias_output() :: #{
-
-%% }
--type delete_policy_store_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_group_configuration_detail() :: #{
-%%   <<"groupEntityType">> => string()
-%% }
--type cognito_group_configuration_detail() :: #{binary() => any()}.
-
-%% Example:
-%% static_policy_definition_item() :: #{
-%%   <<"description">> => string()
-%% }
--type static_policy_definition_item() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_configuration_detail() :: #{
-%%   <<"entityIdPrefix">> => string(),
-%%   <<"groupConfiguration">> => open_id_connect_group_configuration_detail(),
-%%   <<"issuer">> => string(),
-%%   <<"tokenSelection">> => list()
-%% }
--type open_id_connect_configuration_detail() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_store_alias_input() :: #{
-%%   <<"aliasName">> := string()
-%% }
--type get_policy_store_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_encryption_state() :: #{
-%%   <<"encryptionContext">> => map(),
-%%   <<"key">> => string()
-%% }
--type kms_encryption_state() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_store_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%% policy_store_alias_filter() :: #{
 %%   <<"policyStoreId">> => string()
 %% }
--type create_policy_store_output() :: #{binary() => any()}.
+-type policy_store_alias_filter() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_policy_error_item() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => [string()],
-%%   <<"policyId">> => [string()],
-%%   <<"policyStoreId">> => [string()]
-%% }
--type batch_get_policy_error_item() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_output() :: #{
-%%   <<"results">> => list(batch_is_authorized_output_item())
-%% }
--type batch_is_authorized_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_input_item() :: #{
-%%   <<"action">> => action_identifier(),
-%%   <<"context">> => list(),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type batch_is_authorized_input_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_input() :: #{
-%%   <<"definition">> => list(),
-%%   <<"name">> => string(),
-%%   <<"policyId">> := string(),
-%%   <<"policyStoreId">> := string()
-%% }
--type update_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% action_identifier() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"actionType">> => string()
-%% }
--type action_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(policy_item())
-%% }
--type list_policies_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_schema_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"namespaces">> => list(string()),
-%%   <<"policyStoreId">> => string()
-%% }
--type put_schema_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_open_id_connect_group_configuration() :: #{
-%%   <<"groupClaim">> => string(),
-%%   <<"groupEntityType">> => string()
-%% }
--type update_open_id_connect_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_error_item() :: #{
-%%   <<"errorDescription">> => [string()]
-%% }
--type evaluation_error_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_cognito_group_configuration() :: #{
-%%   <<"groupEntityType">> => string()
-%% }
--type update_cognito_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_store_input() :: #{
-%%   <<"deletionProtection">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"validationSettings">> := validation_settings()
-%% }
--type update_policy_store_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_stores_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_stores_input() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resources">> => list(resource_conflict())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_user_pool_configuration_item() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"groupConfiguration">> => cognito_group_configuration_item(),
-%%   <<"issuer">> => string(),
-%%   <<"userPoolArn">> => string()
-%% }
--type cognito_user_pool_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_with_token_input() :: #{
-%%   <<"accessToken">> => string(),
-%%   <<"entities">> => list(),
-%%   <<"identityToken">> => string(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"requests">> := list(batch_is_authorized_with_token_input_item())
-%% }
--type batch_is_authorized_with_token_input() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_configuration() :: #{
-%%   <<"entityIdPrefix">> => string(),
-%%   <<"groupConfiguration">> => open_id_connect_group_configuration(),
-%%   <<"issuer">> => string(),
-%%   <<"tokenSelection">> => list()
-%% }
--type open_id_connect_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_template_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%% policy_store_alias_item() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"policyStoreId">> => string(),
-%%   <<"policyTemplateId">> => string()
+%%   <<"state">> => list(any())
 %% }
--type update_policy_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_sources_output() :: #{
-%%   <<"identitySources">> => list(identity_source_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_identity_sources_output() :: #{binary() => any()}.
+-type policy_store_alias_item() :: #{binary() => any()}.
 
 %% Example:
 %% policy_store_item() :: #{
@@ -584,20 +947,46 @@
 -type policy_store_item() :: #{binary() => any()}.
 
 %% Example:
-%% identity_source_details() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"discoveryUrl">> => string(),
-%%   <<"openIdIssuer">> => list(any()),
-%%   <<"userPoolArn">> => string()
+%% policy_template_item() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
 %% }
--type identity_source_details() :: #{binary() => any()}.
+-type policy_template_item() :: #{binary() => any()}.
 
 %% Example:
-%% kms_encryption_settings() :: #{
-%%   <<"encryptionContext">> => map(),
-%%   <<"key">> => string()
+%% put_schema_input() :: #{
+%%   <<"definition">> := list(),
+%%   <<"policyStoreId">> := string()
 %% }
--type kms_encryption_settings() :: #{binary() => any()}.
+-type put_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_schema_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"policyStoreId">> => string()
+%% }
+-type put_schema_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict() :: #{
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_conflict() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -610,11 +999,128 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_policy_store_alias_input() :: #{
-%%   <<"aliasName">> := string(),
-%%   <<"policyStoreId">> := string()
+%% static_policy_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"statement">> => string()
 %% }
--type create_policy_store_alias_input() :: #{binary() => any()}.
+-type static_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% static_policy_definition_detail() :: #{
+%%   <<"description">> => string(),
+%%   <<"statement">> => string()
+%% }
+-type static_policy_definition_detail() :: #{binary() => any()}.
+
+%% Example:
+%% static_policy_definition_item() :: #{
+%%   <<"description">> => string()
+%% }
+-type static_policy_definition_item() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition_detail() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition_detail() :: #{binary() => any()}.
+
+%% Example:
+%% template_linked_policy_definition_item() :: #{
+%%   <<"policyTemplateId">> => string(),
+%%   <<"principal">> => entity_identifier(),
+%%   <<"resource">> => entity_identifier()
+%% }
+-type template_linked_policy_definition_item() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_cognito_group_configuration() :: #{
+%%   <<"groupEntityType">> => string()
+%% }
+-type update_cognito_group_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_cognito_user_pool_configuration() :: #{
+%%   <<"clientIds">> => list(string()),
+%%   <<"groupConfiguration">> => update_cognito_group_configuration(),
+%%   <<"userPoolArn">> => string()
+%% }
+-type update_cognito_user_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_source_input() :: #{
+%%   <<"identitySourceId">> := string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"principalEntityType">> => string(),
+%%   <<"updateConfiguration">> := list()
+%% }
+-type update_identity_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_source_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"identitySourceId">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type update_identity_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_access_token_configuration() :: #{
+%%   <<"audiences">> => list(string()),
+%%   <<"principalIdClaim">> => string()
+%% }
+-type update_open_id_connect_access_token_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_open_id_connect_configuration() :: #{
@@ -626,130 +1132,11 @@
 -type update_open_id_connect_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_policy_input() :: #{
-%%   <<"policyId">> := string(),
-%%   <<"policyStoreId">> := string()
-%% }
--type delete_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"namespaces">> => list(string()),
-%%   <<"policyStoreId">> => string(),
-%%   <<"schema">> => string()
-%% }
--type get_schema_output() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_group_configuration() :: #{
+%% update_open_id_connect_group_configuration() :: #{
+%%   <<"groupClaim">> => string(),
 %%   <<"groupEntityType">> => string()
 %% }
--type cognito_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_store_output() :: #{
-
-%% }
--type delete_policy_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_source_output() :: #{
-
-%% }
--type delete_identity_source_output() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_user_pool_configuration_detail() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"groupConfiguration">> => cognito_group_configuration_detail(),
-%%   <<"issuer">> => string(),
-%%   <<"userPoolArn">> => string()
-%% }
--type cognito_user_pool_configuration_detail() :: #{binary() => any()}.
-
-%% Example:
-%% static_policy_definition() :: #{
-%%   <<"description">> => string(),
-%%   <<"statement">> => string()
-%% }
--type static_policy_definition() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_store_input() :: #{
-%%   <<"policyStoreId">> := string(),
-%%   <<"tags">> => [boolean()]
-%% }
--type get_policy_store_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_store_alias_output() :: #{
-%%   <<"aliasArn">> => string(),
-%%   <<"aliasName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type get_policy_store_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_schema_input() :: #{
-%%   <<"definition">> := list(),
-%%   <<"policyStoreId">> := string()
-%% }
--type put_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_configuration_item() :: #{
-%%   <<"entityIdPrefix">> => string(),
-%%   <<"groupConfiguration">> => open_id_connect_group_configuration_item(),
-%%   <<"issuer">> => string(),
-%%   <<"tokenSelection">> => list()
-%% }
--type open_id_connect_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% identity_source_item_details() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"discoveryUrl">> => string(),
-%%   <<"openIdIssuer">> => list(any()),
-%%   <<"userPoolArn">> => string()
-%% }
--type identity_source_item_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_template_output() :: #{
-
-%% }
--type delete_policy_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% validation_settings() :: #{
-%%   <<"mode">> => list(any())
-%% }
--type validation_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_source_input() :: #{
-%%   <<"identitySourceId">> := string(),
-%%   <<"policyStoreId">> := string()
-%% }
--type delete_identity_source_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
+-type update_open_id_connect_group_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_open_id_connect_identity_token_configuration() :: #{
@@ -759,358 +1146,13 @@
 -type update_open_id_connect_identity_token_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% open_id_connect_group_configuration_item() :: #{
-%%   <<"groupClaim">> => string(),
-%%   <<"groupEntityType">> => string()
-%% }
--type open_id_connect_group_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_user_pool_configuration() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"groupConfiguration">> => cognito_group_configuration(),
-%%   <<"userPoolArn">> => string()
-%% }
--type cognito_user_pool_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_input() :: #{
-%%   <<"filter">> => policy_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%% update_policy_input() :: #{
+%%   <<"definition">> => list(),
+%%   <<"name">> => string(),
+%%   <<"policyId">> := string(),
 %%   <<"policyStoreId">> := string()
 %% }
--type list_policies_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% policy_filter() :: #{
-%%   <<"policyTemplateId">> => string(),
-%%   <<"policyType">> => list(any()),
-%%   <<"principal">> => list(),
-%%   <<"resource">> => list()
-%% }
--type policy_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"definition">> := list(),
-%%   <<"name">> => string(),
-%%   <<"policyStoreId">> := string()
-%% }
--type create_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_input() :: #{
-%%   <<"entities">> => list(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"requests">> := list(batch_is_authorized_input_item())
-%% }
--type batch_is_authorized_input() :: #{binary() => any()}.
-
-%% Example:
-%% template_linked_policy_definition_detail() :: #{
-%%   <<"policyTemplateId">> => string(),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type template_linked_policy_definition_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_cognito_user_pool_configuration() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"groupConfiguration">> => update_cognito_group_configuration(),
-%%   <<"userPoolArn">> => string()
-%% }
--type update_cognito_user_pool_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_template_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"policyTemplateId">> := string(),
-%%   <<"statement">> := string()
-%% }
--type update_policy_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% is_authorized_with_token_output() :: #{
-%%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()),
-%%   <<"errors">> => list(evaluation_error_item()),
-%%   <<"principal">> => entity_identifier()
-%% }
--type is_authorized_with_token_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_template_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"statement">> := string()
-%% }
--type create_policy_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_store_aliases_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyStoreAliases">> => list(policy_store_alias_item())
-%% }
--type list_policy_store_aliases_output() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_group_configuration_item() :: #{
-%%   <<"groupEntityType">> => string()
-%% }
--type cognito_group_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_store_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cedarVersion">> => list(any()),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"deletionProtection">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"encryptionState">> => list(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"validationSettings">> => validation_settings()
-%% }
--type get_policy_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% template_linked_policy_definition_item() :: #{
-%%   <<"policyTemplateId">> => string(),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type template_linked_policy_definition_item() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_source_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"identitySourceId">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string()
-%% }
--type create_identity_source_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_static_policy_definition() :: #{
-%%   <<"description">> => string(),
-%%   <<"statement">> => string()
-%% }
--type update_static_policy_definition() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_input() :: #{
-%%   <<"policyStoreId">> := string()
-%% }
--type get_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_conflict() :: #{
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => list(any())
-%% }
--type resource_conflict() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_access_token_configuration_item() :: #{
-%%   <<"audiences">> => list(string()),
-%%   <<"principalIdClaim">> => string()
-%% }
--type open_id_connect_access_token_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_template_output() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyTemplateId">> => string(),
-%%   <<"statement">> => string()
-%% }
--type get_policy_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_policy_output() :: #{
-%%   <<"errors">> => list(batch_get_policy_error_item()),
-%%   <<"results">> => list(batch_get_policy_output_item())
-%% }
--type batch_get_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_output() :: #{
-%%   <<"actions">> => list(action_identifier()),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"effect">> => list(any()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyId">> => string(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyType">> => list(any()),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type create_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_source_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"policyStoreId">> := string(),
-%%   <<"principalEntityType">> => string()
-%% }
--type create_identity_source_input() :: #{binary() => any()}.
-
-%% Example:
-%% entity_identifier() :: #{
-%%   <<"entityId">> => string(),
-%%   <<"entityType">> => string()
-%% }
--type entity_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_template_input() :: #{
-%%   <<"policyStoreId">> := string(),
-%%   <<"policyTemplateId">> := string()
-%% }
--type get_policy_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_open_id_connect_access_token_configuration() :: #{
-%%   <<"audiences">> => list(string()),
-%%   <<"principalIdClaim">> => string()
-%% }
--type update_open_id_connect_access_token_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_group_configuration_detail() :: #{
-%%   <<"groupClaim">> => string(),
-%%   <<"groupEntityType">> => string()
-%% }
--type open_id_connect_group_configuration_detail() :: #{binary() => any()}.
-
-%% Example:
-%% identity_source_item() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"details">> => identity_source_item_details(),
-%%   <<"identitySourceId">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"principalEntityType">> => string()
-%% }
--type identity_source_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_store_alias_input() :: #{
-%%   <<"aliasName">> := string(),
-%%   <<"deletionMode">> => list(any())
-%% }
--type delete_policy_store_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_group_configuration() :: #{
-%%   <<"groupClaim">> => string(),
-%%   <<"groupEntityType">> => string()
-%% }
--type open_id_connect_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% identity_source_filter() :: #{
-%%   <<"principalEntityType">> => string()
-%% }
--type identity_source_filter() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_with_token_output() :: #{
-%%   <<"principal">> => entity_identifier(),
-%%   <<"results">> => list(batch_is_authorized_with_token_output_item())
-%% }
--type batch_is_authorized_with_token_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_sources_input() :: #{
-%%   <<"filters">> => list(identity_source_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"policyStoreId">> := string()
-%% }
--type list_identity_sources_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_is_authorized_output_item() :: #{
-%%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()),
-%%   <<"errors">> => list(evaluation_error_item()),
-%%   <<"request">> => batch_is_authorized_input_item()
-%% }
--type batch_is_authorized_output_item() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_store_aliases_input() :: #{
-%%   <<"filter">> => policy_store_alias_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_store_aliases_input() :: #{binary() => any()}.
+-type update_policy_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_policy_output() :: #{
@@ -1127,110 +1169,68 @@
 -type update_policy_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_policy_input_item() :: #{
-%%   <<"policyId">> => string(),
-%%   <<"policyStoreId">> => string()
+%% update_policy_store_input() :: #{
+%%   <<"deletionProtection">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"validationSettings">> := validation_settings()
 %% }
--type batch_get_policy_input_item() :: #{binary() => any()}.
+-type update_policy_store_input() :: #{binary() => any()}.
 
 %% Example:
-%% static_policy_definition_detail() :: #{
+%% update_policy_store_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string()
+%% }
+-type update_policy_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_template_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyStoreId">> := string(),
+%%   <<"policyTemplateId">> := string(),
+%%   <<"statement">> := string()
+%% }
+-type update_policy_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_template_output() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"policyStoreId">> => string(),
+%%   <<"policyTemplateId">> => string()
+%% }
+-type update_policy_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_static_policy_definition() :: #{
 %%   <<"description">> => string(),
 %%   <<"statement">> => string()
 %% }
--type static_policy_definition_detail() :: #{binary() => any()}.
+-type update_static_policy_definition() :: #{binary() => any()}.
 
 %% Example:
-%% create_policy_store_alias_output() :: #{
-%%   <<"aliasArn">> => string(),
-%%   <<"aliasName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
 %% }
--type create_policy_store_alias_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_policy_output() :: #{
-
-%% }
--type delete_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% entity_item() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"identifier">> => entity_identifier(),
-%%   <<"parents">> => list(entity_identifier()),
-%%   <<"tags">> => map()
-%% }
--type entity_item() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_policy_output_item() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"definition">> => list(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyType">> => list(any())
-%% }
--type batch_get_policy_output_item() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
+%% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
-%%   <<"resourceName">> => string()
+%%   <<"path">> => [string()]
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 %% Example:
-%% list_policy_stores_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyStores">> => list(policy_store_item())
+%% validation_settings() :: #{
+%%   <<"mode">> => list(any())
 %% }
--type list_policy_stores_output() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_identity_token_configuration_item() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"principalIdClaim">> => string()
-%% }
--type open_id_connect_identity_token_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_source_output() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"details">> => identity_source_details(),
-%%   <<"identitySourceId">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"principalEntityType">> => string()
-%% }
--type get_identity_source_output() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_identity_token_configuration_detail() :: #{
-%%   <<"clientIds">> => list(string()),
-%%   <<"principalIdClaim">> => string()
-%% }
--type open_id_connect_identity_token_configuration_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_output() :: #{
-%%   <<"actions">> => list(action_identifier()),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"definition">> => list(),
-%%   <<"effect">> => list(any()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"policyStoreId">> => string(),
-%%   <<"policyType">> => list(any()),
-%%   <<"principal">> => entity_identifier(),
-%%   <<"resource">> => entity_identifier()
-%% }
--type get_policy_output() :: #{binary() => any()}.
+-type validation_settings() :: #{binary() => any()}.
 
 -type batch_is_authorized_errors() ::
     resource_not_found_exception().
@@ -1315,9 +1315,9 @@
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_schema_errors() ::
     service_quota_exceeded_exception() | 
@@ -1327,15 +1327,15 @@
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_identity_source_errors() ::
     resource_not_found_exception() | 

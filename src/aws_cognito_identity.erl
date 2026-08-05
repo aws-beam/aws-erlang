@@ -85,6 +85,93 @@
 
 
 %% Example:
+%% cognito_identity_provider() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ServerSideTokenCheck">> => boolean()
+%% }
+-type cognito_identity_provider() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_pool_input() :: #{
+%%   <<"AllowClassicFlow">> => boolean(),
+%%   <<"AllowUnauthenticatedIdentities">> := boolean(),
+%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()),
+%%   <<"DeveloperProviderName">> => string(),
+%%   <<"IdentityPoolName">> := string(),
+%%   <<"IdentityPoolTags">> => map(),
+%%   <<"OpenIdConnectProviderARNs">> => list(string()),
+%%   <<"SamlProviderARNs">> => list(string()),
+%%   <<"SupportedLoginProviders">> => map()
+%% }
+-type create_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identities_input() :: #{
+%%   <<"IdentityIdsToDelete">> := list(string())
+%% }
+-type delete_identities_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identities_response() :: #{
+%%   <<"UnprocessedIdentityIds">> => list(unprocessed_identity_id())
+%% }
+-type delete_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_pool_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type delete_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_input() :: #{
+%%   <<"IdentityId">> := string()
+%% }
+-type describe_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_pool_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type describe_identity_pool_input() :: #{binary() => any()}.
+
+%% Example:
+%% developer_user_already_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type developer_user_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% external_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type external_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_for_identity_input() :: #{
+%%   <<"CustomRoleArn">> => string(),
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> => map()
+%% }
+-type get_credentials_for_identity_input() :: #{binary() => any()}.
+
+%% Example:
 %% get_credentials_for_identity_response() :: #{
 %%   <<"Credentials">> => credentials(),
 %%   <<"IdentityId">> => string()
@@ -92,12 +179,42 @@
 -type get_credentials_for_identity_response() :: #{binary() => any()}.
 
 %% Example:
-%% unlink_identity_input() :: #{
-%%   <<"IdentityId">> := string(),
-%%   <<"Logins">> := map(),
-%%   <<"LoginsToRemove">> := list(string())
+%% get_id_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"Logins">> => map()
 %% }
--type unlink_identity_input() :: #{binary() => any()}.
+-type get_id_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_response() :: #{
+%%   <<"IdentityId">> => string()
+%% }
+-type get_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_roles_input() :: #{
+%%   <<"IdentityPoolId">> := string()
+%% }
+-type get_identity_pool_roles_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_roles_response() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"RoleMappings">> => map(),
+%%   <<"Roles">> => map()
+%% }
+-type get_identity_pool_roles_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_token_for_developer_identity_input() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"Logins">> := map(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"TokenDuration">> => float()
+%% }
+-type get_open_id_token_for_developer_identity_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_open_id_token_for_developer_identity_response() :: #{
@@ -107,22 +224,43 @@
 -type get_open_id_token_for_developer_identity_response() :: #{binary() => any()}.
 
 %% Example:
-%% merge_developer_identities_response() :: #{
-%%   <<"IdentityId">> => string()
+%% get_open_id_token_input() :: #{
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> => map()
 %% }
--type merge_developer_identities_response() :: #{binary() => any()}.
+-type get_open_id_token_input() :: #{binary() => any()}.
 
 %% Example:
-%% developer_user_already_registered_exception() :: #{
-%%   <<"message">> => string()
+%% get_open_id_token_response() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"Token">> => string()
 %% }
--type developer_user_already_registered_exception() :: #{binary() => any()}.
+-type get_open_id_token_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_identity_pool_input() :: #{
-%%   <<"IdentityPoolId">> := string()
+%% get_principal_tag_attribute_map_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"IdentityProviderName">> := string()
 %% }
--type describe_identity_pool_input() :: #{binary() => any()}.
+-type get_principal_tag_attribute_map_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_principal_tag_attribute_map_response() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IdentityProviderName">> => string(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"UseDefaults">> => boolean()
+%% }
+-type get_principal_tag_attribute_map_response() :: #{binary() => any()}.
+
+%% Example:
+%% identity_description() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Logins">> => list(string())
+%% }
+-type identity_description() :: #{binary() => any()}.
 
 %% Example:
 %% identity_pool() :: #{
@@ -140,108 +278,17 @@
 -type identity_pool() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_pool_roles_response() :: #{
+%% identity_pool_short_description() :: #{
 %%   <<"IdentityPoolId">> => string(),
-%%   <<"RoleMappings">> => map(),
-%%   <<"Roles">> => map()
+%%   <<"IdentityPoolName">> => string()
 %% }
--type get_identity_pool_roles_response() :: #{binary() => any()}.
+-type identity_pool_short_description() :: #{binary() => any()}.
 
 %% Example:
-%% unlink_developer_identity_input() :: #{
-%%   <<"DeveloperProviderName">> := string(),
-%%   <<"DeveloperUserIdentifier">> := string(),
-%%   <<"IdentityId">> := string(),
-%%   <<"IdentityPoolId">> := string()
-%% }
--type unlink_developer_identity_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_pools_input() :: #{
-%%   <<"MaxResults">> := integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_pools_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identities_response() :: #{
-%%   <<"UnprocessedIdentityIds">> => list(unprocessed_identity_id())
-%% }
--type delete_identities_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_pool_roles_input() :: #{
-%%   <<"IdentityPoolId">> := string()
-%% }
--type get_identity_pool_roles_input() :: #{binary() => any()}.
-
-%% Example:
-%% credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-%% Example:
-%% lookup_developer_identity_response() :: #{
-%%   <<"DeveloperUserIdentifierList">> => list(string()),
-%%   <<"IdentityId">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type lookup_developer_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% unprocessed_identity_id() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"IdentityId">> => string()
-%% }
--type unprocessed_identity_id() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
+%% internal_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_pool_roles_input() :: #{
-%%   <<"IdentityPoolId">> := string(),
-%%   <<"RoleMappings">> => map(),
-%%   <<"Roles">> := map()
-%% }
--type set_identity_pool_roles_input() :: #{binary() => any()}.
-
-%% Example:
-%% identity_description() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"IdentityId">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Logins">> => list(string())
-%% }
--type identity_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_pools_response() :: #{
-%%   <<"IdentityPools">> => list(identity_pool_short_description()),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_pools_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_credentials_for_identity_input() :: #{
-%%   <<"CustomRoleArn">> => string(),
-%%   <<"IdentityId">> := string(),
-%%   <<"Logins">> => map()
-%% }
--type get_credentials_for_identity_input() :: #{binary() => any()}.
+-type internal_error_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_identity_pool_configuration_exception() :: #{
@@ -250,46 +297,16 @@
 -type invalid_identity_pool_configuration_exception() :: #{binary() => any()}.
 
 %% Example:
-%% set_principal_tag_attribute_map_input() :: #{
-%%   <<"IdentityPoolId">> := string(),
-%%   <<"IdentityProviderName">> := string(),
-%%   <<"PrincipalTags">> => map(),
-%%   <<"UseDefaults">> => boolean()
-%% }
--type set_principal_tag_attribute_map_input() :: #{binary() => any()}.
-
-%% Example:
-%% rules_configuration_type() :: #{
-%%   <<"Rules">> => list(mapping_rule())
-%% }
--type rules_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% invalid_parameter_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
-%% mapping_rule() :: #{
-%%   <<"Claim">> => string(),
-%%   <<"MatchType">> => list(any()),
-%%   <<"RoleARN">> => string(),
-%%   <<"Value">> => string()
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type mapping_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identities_input() :: #{
-%%   <<"IdentityIdsToDelete">> := list(string())
-%% }
--type delete_identities_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_identity_input() :: #{
-%%   <<"IdentityId">> := string()
-%% }
--type describe_identity_input() :: #{binary() => any()}.
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_identities_input() :: #{
@@ -301,33 +318,65 @@
 -type list_identities_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_open_id_token_response() :: #{
-%%   <<"IdentityId">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_open_id_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% identity_pool_short_description() :: #{
+%% list_identities_response() :: #{
+%%   <<"Identities">> => list(identity_description()),
 %%   <<"IdentityPoolId">> => string(),
-%%   <<"IdentityPoolName">> => string()
+%%   <<"NextToken">> => string()
 %% }
--type identity_pool_short_description() :: #{binary() => any()}.
+-type list_identities_response() :: #{binary() => any()}.
 
 %% Example:
-%% role_mapping() :: #{
-%%   <<"AmbiguousRoleResolution">> => list(any()),
-%%   <<"RulesConfiguration">> => rules_configuration_type(),
-%%   <<"Type">> => list(any())
+%% list_identity_pools_input() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
 %% }
--type role_mapping() :: #{binary() => any()}.
+-type list_identity_pools_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_principal_tag_attribute_map_input() :: #{
+%% list_identity_pools_response() :: #{
+%%   <<"IdentityPools">> => list(identity_pool_short_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pools_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_developer_identity_input() :: #{
+%%   <<"DeveloperUserIdentifier">> => string(),
+%%   <<"IdentityId">> => string(),
 %%   <<"IdentityPoolId">> := string(),
-%%   <<"IdentityProviderName">> := string()
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type get_principal_tag_attribute_map_input() :: #{binary() => any()}.
+-type lookup_developer_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_developer_identity_response() :: #{
+%%   <<"DeveloperUserIdentifierList">> => list(string()),
+%%   <<"IdentityId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type lookup_developer_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% mapping_rule() :: #{
+%%   <<"Claim">> => string(),
+%%   <<"MatchType">> => list(any()),
+%%   <<"RoleARN">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type mapping_rule() :: #{binary() => any()}.
 
 %% Example:
 %% merge_developer_identities_input() :: #{
@@ -339,10 +388,59 @@
 -type merge_developer_identities_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
+%% merge_developer_identities_response() :: #{
+%%   <<"IdentityId">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type merge_developer_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% role_mapping() :: #{
+%%   <<"AmbiguousRoleResolution">> => list(any()),
+%%   <<"RulesConfiguration">> => rules_configuration_type(),
+%%   <<"Type">> => list(any())
+%% }
+-type role_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% rules_configuration_type() :: #{
+%%   <<"Rules">> => list(mapping_rule())
+%% }
+-type rules_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_pool_roles_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"RoleMappings">> => map(),
+%%   <<"Roles">> := map()
+%% }
+-type set_identity_pool_roles_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_principal_tag_attribute_map_input() :: #{
+%%   <<"IdentityPoolId">> := string(),
+%%   <<"IdentityProviderName">> := string(),
+%%   <<"PrincipalTags">> => map(),
+%%   <<"UseDefaults">> => boolean()
+%% }
+-type set_principal_tag_attribute_map_input() :: #{binary() => any()}.
 
 %% Example:
 %% set_principal_tag_attribute_map_response() :: #{
@@ -361,38 +459,40 @@
 -type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% cognito_identity_provider() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"ProviderName">> => string(),
-%%   <<"ServerSideTokenCheck">> => boolean()
+%% tag_resource_response() :: #{
+
 %% }
--type cognito_identity_provider() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_identity_pool_input() :: #{
-%%   <<"AllowClassicFlow">> => boolean(),
-%%   <<"AllowUnauthenticatedIdentities">> := boolean(),
-%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()),
-%%   <<"DeveloperProviderName">> => string(),
-%%   <<"IdentityPoolName">> := string(),
-%%   <<"IdentityPoolTags">> => map(),
-%%   <<"OpenIdConnectProviderARNs">> => list(string()),
-%%   <<"SamlProviderARNs">> => list(string()),
-%%   <<"SupportedLoginProviders">> => map()
-%% }
--type create_identity_pool_input() :: #{binary() => any()}.
-
-%% Example:
-%% not_authorized_exception() :: #{
+%% too_many_requests_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type not_authorized_exception() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
+%% unlink_developer_identity_input() :: #{
+%%   <<"DeveloperProviderName">> := string(),
+%%   <<"DeveloperUserIdentifier">> := string(),
+%%   <<"IdentityId">> := string(),
+%%   <<"IdentityPoolId">> := string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type unlink_developer_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% unlink_identity_input() :: #{
+%%   <<"IdentityId">> := string(),
+%%   <<"Logins">> := map(),
+%%   <<"LoginsToRemove">> := list(string())
+%% }
+-type unlink_identity_input() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_identity_id() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"IdentityId">> => string()
+%% }
+-type unprocessed_identity_id() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -402,291 +502,191 @@
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
+%% untag_resource_response() :: #{
 
 %% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% lookup_developer_identity_input() :: #{
-%%   <<"DeveloperUserIdentifier">> => string(),
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityPoolId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type lookup_developer_identity_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_id_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"IdentityPoolId">> := string(),
-%%   <<"Logins">> => map()
-%% }
--type get_id_input() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_open_id_token_for_developer_identity_input() :: #{
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityPoolId">> := string(),
-%%   <<"Logins">> := map(),
-%%   <<"PrincipalTags">> => map(),
-%%   <<"TokenDuration">> => float()
-%% }
--type get_open_id_token_for_developer_identity_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_identities_response() :: #{
-%%   <<"Identities">> => list(identity_description()),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identities_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_pool_input() :: #{
-%%   <<"IdentityPoolId">> := string()
-%% }
--type delete_identity_pool_input() :: #{binary() => any()}.
-
-%% Example:
-%% external_service_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type external_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_open_id_token_input() :: #{
-%%   <<"IdentityId">> := string(),
-%%   <<"Logins">> => map()
-%% }
--type get_open_id_token_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_principal_tag_attribute_map_response() :: #{
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"IdentityProviderName">> => string(),
-%%   <<"PrincipalTags">> => map(),
-%%   <<"UseDefaults">> => boolean()
-%% }
--type get_principal_tag_attribute_map_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_id_response() :: #{
-%%   <<"IdentityId">> => string()
-%% }
--type get_id_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_error_exception() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 -type create_identity_pool_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
     resource_conflict_exception() | 
+    not_authorized_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    too_many_requests_exception().
+    internal_error_exception().
 
 -type delete_identities_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
     invalid_parameter_exception() | 
-    too_many_requests_exception().
+    internal_error_exception().
 
 -type delete_identity_pool_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_identity_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_identity_pool_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_credentials_for_identity_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    external_service_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
     invalid_identity_pool_configuration_exception() | 
-    too_many_requests_exception().
+    internal_error_exception() | 
+    external_service_exception().
 
 -type get_id_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
-    external_service_exception() | 
+    not_authorized_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_error_exception() | 
+    external_service_exception().
 
 -type get_identity_pool_roles_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_open_id_token_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    external_service_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    external_service_exception().
 
 -type get_open_id_token_for_developer_identity_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     developer_user_already_registered_exception().
 
 -type get_principal_tag_attribute_map_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_identities_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_identity_pools_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type lookup_developer_identity_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type merge_developer_identities_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type set_identity_pool_roles_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type set_principal_tag_attribute_map_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type tag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type unlink_developer_identity_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type unlink_identity_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    external_service_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    external_service_exception().
 
 -type untag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_identity_pool_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

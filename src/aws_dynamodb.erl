@@ -122,6 +122,8 @@
          restore_table_to_point_in_time/3,
          scan/2,
          scan/3,
+         search_vectors/2,
+         search_vectors/3,
          tag_resource/2,
          tag_resource/3,
          transact_get_items/2,
@@ -153,178 +155,12 @@
 
 
 %% Example:
-%% table_description() :: #{
-%%   <<"ArchivalSummary">> => archival_summary(),
-%%   <<"AttributeDefinitions">> => list(attribute_definition()),
-%%   <<"BillingModeSummary">> => billing_mode_summary(),
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"DeletionProtectionEnabled">> => boolean(),
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()),
-%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
-%%   <<"GlobalTableVersion">> => string(),
-%%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()),
-%%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"LatestStreamArn">> => string(),
-%%   <<"LatestStreamLabel">> => string(),
-%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()),
-%%   <<"MultiRegionConsistency">> => list(any()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
-%%   <<"Replicas">> => list(replica_description()),
-%%   <<"RestoreSummary">> => restore_summary(),
-%%   <<"SSEDescription">> => sse_description(),
-%%   <<"StreamSpecification">> => stream_specification(),
-%%   <<"TableArn">> => string(),
-%%   <<"TableClassSummary">> => table_class_summary(),
-%%   <<"TableId">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableSizeBytes">> => float(),
-%%   <<"TableStatus">> => list(any()),
-%%   <<"WarmThroughput">> => table_warm_throughput_description()
+%% archival_summary() :: #{
+%%   <<"ArchivalBackupArn">> => string(),
+%%   <<"ArchivalDateTime">> => non_neg_integer(),
+%%   <<"ArchivalReason">> => string()
 %% }
--type table_description() :: #{binary() => any()}.
-
-%% Example:
-%% transact_write_items_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"ItemCollectionMetrics">> => map()
-%% }
--type transact_write_items_output() :: #{binary() => any()}.
-
-%% Example:
-%% replica_settings_description() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"ReplicaBillingModeSummary">> => billing_mode_summary(),
-%%   <<"ReplicaGlobalSecondaryIndexSettings">> => list(replica_global_secondary_index_settings_description()),
-%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
-%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ReplicaProvisionedWriteCapacityUnits">> => float(),
-%%   <<"ReplicaStatus">> => list(any()),
-%%   <<"ReplicaTableClassSummary">> => table_class_summary()
-%% }
--type replica_settings_description() :: #{binary() => any()}.
-
-%% Example:
-%% sse_description() :: #{
-%%   <<"InaccessibleEncryptionDateTime">> => non_neg_integer(),
-%%   <<"KMSMasterKeyArn">> => string(),
-%%   <<"SSEType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type sse_description() :: #{binary() => any()}.
-
-%% Example:
-%% global_table_global_secondary_index_settings_update() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"ProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
-%%   <<"ProvisionedWriteCapacityUnits">> => float()
-%% }
--type global_table_global_secondary_index_settings_update() :: #{binary() => any()}.
-
-%% Example:
-%% transact_write_items_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnItemCollectionMetrics">> => list(any()),
-%%   <<"TransactItems">> := list(transact_write_item())
-%% }
--type transact_write_items_input() :: #{binary() => any()}.
-
-%% Example:
-%% local_secondary_index() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"Projection">> => projection()
-%% }
--type local_secondary_index() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_output() :: #{
-%%   <<"TableDescription">> => table_description()
-%% }
--type create_table_output() :: #{binary() => any()}.
-
-%% Example:
-%% local_secondary_index_info() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"Projection">> => projection()
-%% }
--type local_secondary_index_info() :: #{binary() => any()}.
-
-%% Example:
-%% transact_write_item() :: #{
-%%   <<"ConditionCheck">> => condition_check(),
-%%   <<"Delete">> => delete(),
-%%   <<"Put">> => put(),
-%%   <<"Update">> => update()
-%% }
--type transact_write_item() :: #{binary() => any()}.
-
-%% Example:
-%% describe_limits_output() :: #{
-%%   <<"AccountMaxReadCapacityUnits">> => float(),
-%%   <<"AccountMaxWriteCapacityUnits">> => float(),
-%%   <<"TableMaxReadCapacityUnits">> => float(),
-%%   <<"TableMaxWriteCapacityUnits">> => float()
-%% }
--type describe_limits_output() :: #{binary() => any()}.
-
-%% Example:
-%% time_to_live_specification() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Enabled">> => boolean()
-%% }
--type time_to_live_specification() :: #{binary() => any()}.
-
-%% Example:
-%% expected_attribute_value() :: #{
-%%   <<"AttributeValueList">> => list(list()),
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Exists">> => boolean(),
-%%   <<"Value">> => list()
-%% }
--type expected_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% keys_and_attributes() :: #{
-%%   <<"AttributesToGet">> => list(string()),
-%%   <<"ConsistentRead">> => boolean(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"Keys">> => list(map()),
-%%   <<"ProjectionExpression">> => string()
-%% }
--type keys_and_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_recovery_description() :: #{
-%%   <<"EarliestRestorableDateTime">> => non_neg_integer(),
-%%   <<"LatestRestorableDateTime">> => non_neg_integer(),
-%%   <<"PointInTimeRecoveryStatus">> => list(any()),
-%%   <<"RecoveryPeriodInDays">> => integer()
-%% }
--type point_in_time_recovery_description() :: #{binary() => any()}.
-
-%% Example:
-%% batch_execute_statement_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"Responses">> => list(batch_statement_response())
-%% }
--type batch_execute_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_output() :: #{
-%%   <<"ExportDescription">> => export_description()
-%% }
--type describe_export_output() :: #{binary() => any()}.
-
-%% Example:
-%% item_collection_size_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type item_collection_size_limit_exceeded_exception() :: #{binary() => any()}.
+-type archival_summary() :: #{binary() => any()}.
 
 %% Example:
 %% attribute_definition() :: #{
@@ -334,10 +170,312 @@
 -type attribute_definition() :: #{binary() => any()}.
 
 %% Example:
-%% update_time_to_live_output() :: #{
-%%   <<"TimeToLiveSpecification">> => time_to_live_specification()
+%% attribute_value_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Value">> => list()
 %% }
--type update_time_to_live_output() :: #{binary() => any()}.
+-type attribute_value_update() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_description() :: #{
+%%   <<"PolicyName">> => string(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_description()
+%% }
+-type auto_scaling_policy_description() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_update() :: #{
+%%   <<"PolicyName">> => string(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_update()
+%% }
+-type auto_scaling_policy_update() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_settings_description() :: #{
+%%   <<"AutoScalingDisabled">> => boolean(),
+%%   <<"AutoScalingRoleArn">> => string(),
+%%   <<"MaximumUnits">> => float(),
+%%   <<"MinimumUnits">> => float(),
+%%   <<"ScalingPolicies">> => list(auto_scaling_policy_description())
+%% }
+-type auto_scaling_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_settings_update() :: #{
+%%   <<"AutoScalingDisabled">> => boolean(),
+%%   <<"AutoScalingRoleArn">> => string(),
+%%   <<"MaximumUnits">> => float(),
+%%   <<"MinimumUnits">> => float(),
+%%   <<"ScalingPolicyUpdate">> => auto_scaling_policy_update()
+%% }
+-type auto_scaling_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
+%% }
+-type auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
+%% }
+-type auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% backup_description() :: #{
+%%   <<"BackupDetails">> => backup_details(),
+%%   <<"SourceTableDetails">> => source_table_details(),
+%%   <<"SourceTableFeatureDetails">> => source_table_feature_details()
+%% }
+-type backup_description() :: #{binary() => any()}.
+
+%% Example:
+%% backup_details() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupCreationDateTime">> => non_neg_integer(),
+%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
+%%   <<"BackupName">> => string(),
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupStatus">> => list(any()),
+%%   <<"BackupType">> => list(any())
+%% }
+-type backup_details() :: #{binary() => any()}.
+
+%% Example:
+%% backup_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% backup_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% backup_summary() :: #{
+%%   <<"BackupArn">> => string(),
+%%   <<"BackupCreationDateTime">> => non_neg_integer(),
+%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
+%%   <<"BackupName">> => string(),
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupStatus">> => list(any()),
+%%   <<"BackupType">> => list(any()),
+%%   <<"TableArn">> => string(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type backup_summary() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_input() :: #{
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"Statements">> := list(batch_statement_request())
+%% }
+-type batch_execute_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_execute_statement_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(batch_statement_response())
+%% }
+-type batch_execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_item_input() :: #{
+%%   <<"RequestItems">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any())
+%% }
+-type batch_get_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_item_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => map(),
+%%   <<"UnprocessedKeys">> => map()
+%% }
+-type batch_get_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Item">> => map(),
+%%   <<"Message">> => string()
+%% }
+-type batch_statement_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_request() :: #{
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"Parameters">> => list(list()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> => string()
+%% }
+-type batch_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_statement_response() :: #{
+%%   <<"Error">> => batch_statement_error(),
+%%   <<"Item">> => map(),
+%%   <<"TableName">> => string()
+%% }
+-type batch_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_write_item_input() :: #{
+%%   <<"RequestItems">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any())
+%% }
+-type batch_write_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_write_item_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"ItemCollectionMetrics">> => map(),
+%%   <<"UnprocessedItems">> => map()
+%% }
+-type batch_write_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% billing_mode_summary() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"LastUpdateToPayPerRequestDateTime">> => non_neg_integer()
+%% }
+-type billing_mode_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancellation_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Item">> => map(),
+%%   <<"Message">> => string()
+%% }
+-type cancellation_reason() :: #{binary() => any()}.
+
+%% Example:
+%% capacity() :: #{
+%%   <<"CapacityUnits">> => float(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type capacity() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"AttributeValueList">> => list(list()),
+%%   <<"ComparisonOperator">> => list(any())
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% condition_check() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type condition_check() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_check_failed_exception() :: #{
+%%   <<"Item">> => map(),
+%%   <<"message">> => string()
+%% }
+-type conditional_check_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% consumed_capacity() :: #{
+%%   <<"CapacityUnits">> => float(),
+%%   <<"GlobalSecondaryIndexes">> => map(),
+%%   <<"LocalSecondaryIndexes">> => map(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"Table">> => capacity(),
+%%   <<"TableName">> => string(),
+%%   <<"VectorIndexes">> => map(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type consumed_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_backups_description() :: #{
+%%   <<"ContinuousBackupsStatus">> => list(any()),
+%%   <<"PointInTimeRecoveryDescription">> => point_in_time_recovery_description()
+%% }
+-type continuous_backups_description() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_backups_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type continuous_backups_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contributor_insights_summary() :: #{
+%%   <<"ContributorInsightsMode">> => list(any()),
+%%   <<"ContributorInsightsStatus">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type contributor_insights_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_input() :: #{
+%%   <<"BackupName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type create_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_backup_output() :: #{
+%%   <<"BackupDetails">> => backup_details()
+%% }
+-type create_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
+%% }
+-type create_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string(),
+%%   <<"ReplicationGroup">> := list(replica())
+%% }
+-type create_global_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
+%% }
+-type create_global_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_table_witness_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type create_global_table_witness_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% create_replica_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type create_replica_action() :: #{binary() => any()}.
 
 %% Example:
 %% create_replication_group_member_action() :: #{
@@ -349,174 +487,6 @@
 %%   <<"TableClassOverride">> => list(any())
 %% }
 -type create_replication_group_member_action() :: #{binary() => any()}.
-
-%% Example:
-%% table_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type table_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_imports_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"TableArn">> => string()
-%% }
--type list_imports_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_output() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type get_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% on_demand_throughput() :: #{
-%%   <<"MaxReadRequestUnits">> => float(),
-%%   <<"MaxWriteRequestUnits">> => float()
-%% }
--type on_demand_throughput() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_recovery_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type point_in_time_recovery_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_item_output() :: #{
-%%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"Item">> => map()
-%% }
--type get_item_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_table_input() :: #{
-%%   <<"GlobalTableName">> := string(),
-%%   <<"ReplicationGroup">> := list(replica())
-%% }
--type create_global_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_item_input() :: #{
-%%   <<"RequestItems">> := map(),
-%%   <<"ReturnConsumedCapacity">> => list(any())
-%% }
--type batch_get_item_input() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_data_stream_destination() :: #{
-%%   <<"ApproximateCreationDateTimePrecision">> => list(any()),
-%%   <<"DestinationStatus">> => list(any()),
-%%   <<"DestinationStatusDescription">> => string(),
-%%   <<"StreamArn">> => string()
-%% }
--type kinesis_data_stream_destination() :: #{binary() => any()}.
-
-%% Example:
-%% execute_transaction_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"TransactStatements">> := list(parameterized_statement())
-%% }
--type execute_transaction_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_global_tables_output() :: #{
-%%   <<"GlobalTables">> => list(global_table()),
-%%   <<"LastEvaluatedGlobalTableName">> => string()
-%% }
--type list_global_tables_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replica_action() :: #{
-%%   <<"RegionName">> => string()
-%% }
--type delete_replica_action() :: #{binary() => any()}.
-
-%% Example:
-%% delete() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Key">> => map(),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> => string()
-%% }
--type delete() :: #{binary() => any()}.
-
-%% Example:
-%% update_continuous_backups_output() :: #{
-%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
-%% }
--type update_continuous_backups_output() :: #{binary() => any()}.
-
-%% Example:
-%% billing_mode_summary() :: #{
-%%   <<"BillingMode">> => list(any()),
-%%   <<"LastUpdateToPayPerRequestDateTime">> => non_neg_integer()
-%% }
--type billing_mode_summary() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_backups_input() :: #{
-%%   <<"BackupType">> => list(any()),
-%%   <<"ExclusiveStartBackupArn">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"TableName">> => string(),
-%%   <<"TimeRangeLowerBound">> => non_neg_integer(),
-%%   <<"TimeRangeUpperBound">> => non_neg_integer()
-%% }
--type list_backups_input() :: #{binary() => any()}.
-
-%% Example:
-%% replica_global_secondary_index_auto_scaling_update() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"ProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
-%% }
--type replica_global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
-
-%% Example:
-%% replica_auto_scaling_description() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_auto_scaling_description()),
-%%   <<"RegionName">> => string(),
-%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ReplicaStatus">> => list(any())
-%% }
--type replica_auto_scaling_description() :: #{binary() => any()}.
-
-%% Example:
-%% replica_settings_update() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"ReplicaGlobalSecondaryIndexSettingsUpdate">> => list(replica_global_secondary_index_settings_update()),
-%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
-%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
-%%   <<"ReplicaTableClass">> => list(any())
-%% }
--type replica_settings_update() :: #{binary() => any()}.
-
-%% Example:
-%% global_table() :: #{
-%%   <<"GlobalTableName">> => string(),
-%%   <<"ReplicationGroup">> => list(replica())
-%% }
--type global_table() :: #{binary() => any()}.
-
-%% Example:
-%% batch_write_item_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"ItemCollectionMetrics">> => map(),
-%%   <<"UnprocessedItems">> => map()
-%% }
--type batch_write_item_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_table_input() :: #{
@@ -536,372 +506,27 @@
 %%   <<"TableClass">> => list(any()),
 %%   <<"TableName">> := string(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"VectorIndexes">> => list(vector_index()),
 %%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type create_table_input() :: #{binary() => any()}.
 
 %% Example:
-%% write_request() :: #{
-%%   <<"DeleteRequest">> => delete_request(),
-%%   <<"PutRequest">> => put_request()
-%% }
--type write_request() :: #{binary() => any()}.
-
-%% Example:
-%% restore_summary() :: #{
-%%   <<"RestoreDateTime">> => non_neg_integer(),
-%%   <<"RestoreInProgress">> => boolean(),
-%%   <<"SourceBackupArn">> => string(),
-%%   <<"SourceTableArn">> => string()
-%% }
--type restore_summary() :: #{binary() => any()}.
-
-%% Example:
-%% enable_kinesis_streaming_configuration() :: #{
-%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
-%% }
--type enable_kinesis_streaming_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_endpoint_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_endpoint_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_global_table_output() :: #{
-%%   <<"GlobalTableDescription">> => global_table_description()
-%% }
--type describe_global_table_output() :: #{binary() => any()}.
-
-%% Example:
-%% table_creation_parameters() :: #{
-%%   <<"AttributeDefinitions">> => list(attribute_definition()),
-%%   <<"BillingMode">> => list(any()),
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"SSESpecification">> => sse_specification(),
-%%   <<"TableName">> => string()
-%% }
--type table_creation_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% replicated_write_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type replicated_write_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% execute_statement_output() :: #{
-%%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"Items">> => list(map()),
-%%   <<"LastEvaluatedKey">> => map(),
-%%   <<"NextToken">> => string()
-%% }
--type execute_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint())
-%% }
--type describe_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% backup_summary() :: #{
-%%   <<"BackupArn">> => string(),
-%%   <<"BackupCreationDateTime">> => non_neg_integer(),
-%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
-%%   <<"BackupName">> => string(),
-%%   <<"BackupSizeBytes">> => float(),
-%%   <<"BackupStatus">> => list(any()),
-%%   <<"BackupType">> => list(any()),
-%%   <<"TableArn">> => string(),
-%%   <<"TableId">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type backup_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_kinesis_streaming_destination_input() :: #{
-%%   <<"TableName">> := string()
-%% }
--type describe_kinesis_streaming_destination_input() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_settings_description() :: #{
-%%   <<"AutoScalingDisabled">> => boolean(),
-%%   <<"AutoScalingRoleArn">> => string(),
-%%   <<"MaximumUnits">> => float(),
-%%   <<"MinimumUnits">> => float(),
-%%   <<"ScalingPolicies">> => list(auto_scaling_policy_description())
-%% }
--type auto_scaling_settings_description() :: #{binary() => any()}.
-
-%% Example:
-%% update_contributor_insights_output() :: #{
-%%   <<"ContributorInsightsMode">> => list(any()),
-%%   <<"ContributorInsightsStatus">> => list(any()),
-%%   <<"IndexName">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type update_contributor_insights_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_output() :: #{
-%%   <<"RevisionId">> => string()
-%% }
--type put_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_global_table_settings_input() :: #{
-%%   <<"GlobalTableBillingMode">> => list(any()),
-%%   <<"GlobalTableGlobalSecondaryIndexSettingsUpdate">> => list(global_table_global_secondary_index_settings_update()),
-%%   <<"GlobalTableName">> := string(),
-%%   <<"GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
-%%   <<"GlobalTableProvisionedWriteCapacityUnits">> => float(),
-%%   <<"ReplicaSettingsUpdate">> => list(replica_settings_update())
-%% }
--type update_global_table_settings_input() :: #{binary() => any()}.
-
-%% Example:
-%% scan_input() :: #{
-%%   <<"AttributesToGet">> => list(string()),
-%%   <<"ConditionalOperator">> => list(any()),
-%%   <<"ConsistentRead">> => boolean(),
-%%   <<"ExclusiveStartKey">> => map(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"FilterExpression">> => string(),
-%%   <<"IndexName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"ProjectionExpression">> => string(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ScanFilter">> => map(),
-%%   <<"Segment">> => integer(),
-%%   <<"Select">> => list(any()),
-%%   <<"TableName">> := string(),
-%%   <<"TotalSegments">> => integer()
-%% }
--type scan_input() :: #{binary() => any()}.
-
-%% Example:
-%% import_summary() :: #{
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ImportArn">> => string(),
-%%   <<"ImportStatus">> => list(any()),
-%%   <<"InputFormat">> => list(any()),
-%%   <<"S3BucketSource">> => s3_bucket_source(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TableArn">> => string()
-%% }
--type import_summary() :: #{binary() => any()}.
-
-%% Example:
-%% table_class_summary() :: #{
-%%   <<"LastUpdateDateTime">> => non_neg_integer(),
-%%   <<"TableClass">> => list(any())
-%% }
--type table_class_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_output() :: #{
-%%   <<"Table">> => table_description()
-%% }
--type describe_table_output() :: #{binary() => any()}.
-
-%% Example:
-%% key_schema_element() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"KeyType">> => list(any())
-%% }
--type key_schema_element() :: #{binary() => any()}.
-
-%% Example:
-%% transaction_canceled_exception() :: #{
-%%   <<"CancellationReasons">> => list(cancellation_reason()),
-%%   <<"Message">> => string()
-%% }
--type transaction_canceled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% on_demand_throughput_override() :: #{
-%%   <<"MaxReadRequestUnits">> => float()
-%% }
--type on_demand_throughput_override() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_replica_auto_scaling_output() :: #{
-%%   <<"TableAutoScalingDescription">> => table_auto_scaling_description()
-%% }
--type update_table_replica_auto_scaling_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_output() :: #{
-%%   <<"ImportTableDescription">> => import_table_description()
-%% }
--type describe_import_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_input() :: #{
-%%   <<"ExpectedRevisionId">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_replica_action() :: #{
-%%   <<"RegionName">> => string()
-%% }
--type create_replica_action() :: #{binary() => any()}.
-
-%% Example:
-%% parameterized_statement() :: #{
-%%   <<"Parameters">> => list(list()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"Statement">> => string()
-%% }
--type parameterized_statement() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_of_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_of_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% query_output() :: #{
-%%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"Count">> => integer(),
-%%   <<"Items">> => list(map()),
-%%   <<"LastEvaluatedKey">> => map(),
-%%   <<"ScannedCount">> => integer()
-%% }
--type query_output() :: #{binary() => any()}.
-
-%% Example:
-%% capacity() :: #{
-%%   <<"CapacityUnits">> => float(),
-%%   <<"ReadCapacityUnits">> => float(),
-%%   <<"WriteCapacityUnits">> => float()
-%% }
--type capacity() :: #{binary() => any()}.
-
-%% Example:
-%% batch_write_item_input() :: #{
-%%   <<"RequestItems">> := map(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnItemCollectionMetrics">> => list(any())
-%% }
--type batch_write_item_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_kinesis_streaming_destination_output() :: #{
-%%   <<"DestinationStatus">> => list(any()),
-%%   <<"StreamArn">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
-%% }
--type update_kinesis_streaming_destination_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_global_table_input() :: #{
-%%   <<"GlobalTableName">> := string(),
-%%   <<"ReplicaUpdates">> := list(replica_update())
-%% }
--type update_global_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_statement_input() :: #{
-%%   <<"ConsistentRead">> => boolean(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(list()),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"Statement">> := string()
-%% }
--type execute_statement_input() :: #{binary() => any()}.
-
-%% Example:
-%% table_warm_throughput_description() :: #{
-%%   <<"ReadUnitsPerSecond">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"WriteUnitsPerSecond">> => float()
-%% }
--type table_warm_throughput_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_input() :: #{
-%%   <<"ExclusiveStartTableName">> => string(),
-%%   <<"Limit">> => integer()
-%% }
--type list_tables_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_global_table_settings_input() :: #{
-%%   <<"GlobalTableName">> := string()
-%% }
--type describe_global_table_settings_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_execute_statement_input() :: #{
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"Statements">> := list(batch_statement_request())
-%% }
--type batch_execute_statement_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_replica_auto_scaling_input() :: #{
-%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_auto_scaling_update()),
-%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update(),
-%%   <<"ReplicaUpdates">> => list(replica_auto_scaling_update()),
-%%   <<"TableName">> := string()
-%% }
--type update_table_replica_auto_scaling_input() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streaming_destination_input() :: #{
-%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
-%%   <<"StreamArn">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type kinesis_streaming_destination_input() :: #{binary() => any()}.
-
-%% Example:
-%% policy_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_input() :: #{
-%%   <<"ImportArn">> := string()
-%% }
--type describe_import_input() :: #{binary() => any()}.
-
-%% Example:
-%% replica_auto_scaling_update() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"ReplicaGlobalSecondaryIndexUpdates">> => list(replica_global_secondary_index_auto_scaling_update()),
-%%   <<"ReplicaProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
-%% }
--type replica_auto_scaling_update() :: #{binary() => any()}.
-
-%% Example:
-%% replica_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type replica_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_to_point_in_time_output() :: #{
+%% create_table_output() :: #{
 %%   <<"TableDescription">> => table_description()
 %% }
--type restore_table_to_point_in_time_output() :: #{binary() => any()}.
+-type create_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_vector_index_action() :: #{
+%%   <<"Dimensions">> => float(),
+%%   <<"DistanceFunction">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"Projection">> => projection(),
+%%   <<"SearchSchema">> => list(search_schema_element()),
+%%   <<"VectorAttribute">> => vector_attribute_definition()
+%% }
+-type create_vector_index_action() :: #{binary() => any()}.
 
 %% Example:
 %% csv_options() :: #{
@@ -911,34 +536,112 @@
 -type csv_options() :: #{binary() => any()}.
 
 %% Example:
-%% projection() :: #{
-%%   <<"NonKeyAttributes">> => list(string()),
-%%   <<"ProjectionType">> => list(any())
+%% delete() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
 %% }
--type projection() :: #{binary() => any()}.
+-type delete() :: #{binary() => any()}.
 
 %% Example:
-%% replica_global_secondary_index() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
+%% delete_backup_input() :: #{
+%%   <<"BackupArn">> := string()
 %% }
--type replica_global_secondary_index() :: #{binary() => any()}.
+-type delete_backup_input() :: #{binary() => any()}.
 
 %% Example:
-%% provisioned_throughput_exceeded_exception() :: #{
-%%   <<"ThrottlingReasons">> => list(throttling_reason()),
-%%   <<"message">> => string()
+%% delete_backup_output() :: #{
+%%   <<"BackupDescription">> => backup_description()
 %% }
--type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+-type delete_backup_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_item_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"Responses">> => map(),
-%%   <<"UnprocessedKeys">> => map()
+%% delete_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string()
 %% }
--type batch_get_item_output() :: #{binary() => any()}.
+-type delete_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_table_witness_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_global_table_witness_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_item_input() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type delete_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type delete_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replica_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_replica_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_group_member_action() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type delete_replication_group_member_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_request() :: #{
+%%   <<"Key">> => map()
+%% }
+-type delete_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"ExpectedRevisionId">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_output() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type delete_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type delete_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vector_index_action() :: #{
+%%   <<"IndexName">> => string()
+%% }
+-type delete_vector_index_action() :: #{binary() => any()}.
 
 %% Example:
 %% describe_backup_input() :: #{
@@ -947,38 +650,29 @@
 -type describe_backup_input() :: #{binary() => any()}.
 
 %% Example:
-%% source_table_details() :: #{
-%%   <<"BillingMode">> => list(any()),
-%%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"TableArn">> => string(),
-%%   <<"TableCreationDateTime">> => non_neg_integer(),
-%%   <<"TableId">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableSizeBytes">> => float()
+%% describe_backup_output() :: #{
+%%   <<"BackupDescription">> => backup_description()
 %% }
--type source_table_details() :: #{binary() => any()}.
+-type describe_backup_output() :: #{binary() => any()}.
 
 %% Example:
-%% global_secondary_index_auto_scaling_update() :: #{
+%% describe_continuous_backups_input() :: #{
+%%   <<"TableName">> := string()
+%% }
+-type describe_continuous_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_continuous_backups_output() :: #{
+%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
+%% }
+-type describe_continuous_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contributor_insights_input() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%%   <<"TableName">> := string()
 %% }
--type global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
-
-%% Example:
-%% update() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Key">> => map(),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> => string(),
-%%   <<"UpdateExpression">> => string()
-%% }
--type update() :: #{binary() => any()}.
+-type describe_contributor_insights_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_contributor_insights_output() :: #{
@@ -999,206 +693,40 @@
 -type describe_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type describe_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_table_input() :: #{
-%%   <<"TableName">> := string()
+%% describe_export_input() :: #{
+%%   <<"ExportArn">> := string()
 %% }
--type describe_table_input() :: #{binary() => any()}.
+-type describe_export_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_backup_input() :: #{
-%%   <<"BackupArn">> := string()
+%% describe_export_output() :: #{
+%%   <<"ExportDescription">> => export_description()
 %% }
--type delete_backup_input() :: #{binary() => any()}.
+-type describe_export_output() :: #{binary() => any()}.
 
 %% Example:
-%% consumed_capacity() :: #{
-%%   <<"CapacityUnits">> => float(),
-%%   <<"GlobalSecondaryIndexes">> => map(),
-%%   <<"LocalSecondaryIndexes">> => map(),
-%%   <<"ReadCapacityUnits">> => float(),
-%%   <<"Table">> => capacity(),
-%%   <<"TableName">> => string(),
-%%   <<"WriteCapacityUnits">> => float()
+%% describe_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string()
 %% }
--type consumed_capacity() :: #{binary() => any()}.
+-type describe_global_table_input() :: #{binary() => any()}.
 
 %% Example:
-%% backup_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% describe_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
 %% }
--type backup_not_found_exception() :: #{binary() => any()}.
+-type describe_global_table_output() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% describe_global_table_settings_input() :: #{
+%%   <<"GlobalTableName">> := string()
 %% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_input() :: #{
-%%   <<"TableName">> := string()
-%% }
--type delete_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_backup_output() :: #{
-%%   <<"BackupDescription">> => backup_description()
-%% }
--type describe_backup_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_secondary_index_action() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"WarmThroughput">> => warm_throughput()
-%% }
--type create_global_secondary_index_action() :: #{binary() => any()}.
-
-%% Example:
-%% local_secondary_index_description() :: #{
-%%   <<"IndexArn">> => string(),
-%%   <<"IndexName">> => string(),
-%%   <<"IndexSizeBytes">> => float(),
-%%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"Projection">> => projection()
-%% }
--type local_secondary_index_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_item_output() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
-%% }
--type delete_item_output() :: #{binary() => any()}.
-
-%% Example:
-%% replica_global_secondary_index_settings_description() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ProvisionedReadCapacityUnits">> => float(),
-%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ProvisionedWriteCapacityUnits">> => float()
-%% }
--type replica_global_secondary_index_settings_description() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_backups_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type continuous_backups_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_input() :: #{
-%%   <<"ConfirmRemoveSelfResourceAccess">> => boolean(),
-%%   <<"ExpectedRevisionId">> => string(),
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% replica_update() :: #{
-%%   <<"Create">> => create_replica_action(),
-%%   <<"Delete">> => delete_replica_action()
-%% }
--type replica_update() :: #{binary() => any()}.
-
-%% Example:
-%% global_table_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type global_table_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_statement_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Item">> => map(),
-%%   <<"Message">> => string()
-%% }
--type batch_statement_error() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy_description() :: #{
-%%   <<"PolicyName">> => string(),
-%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_description()
-%% }
--type auto_scaling_policy_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_request() :: #{
-%%   <<"Key">> => map()
-%% }
--type delete_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_continuous_backups_input() :: #{
-%%   <<"TableName">> := string()
-%% }
--type describe_continuous_backups_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_statement_response() :: #{
-%%   <<"Error">> => batch_statement_error(),
-%%   <<"Item">> => map(),
-%%   <<"TableName">> => string()
-%% }
--type batch_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy_update() :: #{
-%%   <<"PolicyName">> => string(),
-%%   <<"TargetTrackingScalingPolicyConfiguration">> => auto_scaling_target_tracking_scaling_policy_configuration_update()
-%% }
--type auto_scaling_policy_update() :: #{binary() => any()}.
-
-%% Example:
-%% export_summary() :: #{
-%%   <<"ExportArn">> => string(),
-%%   <<"ExportStatus">> => list(any()),
-%%   <<"ExportType">> => list(any())
-%% }
--type export_summary() :: #{binary() => any()}.
-
-%% Example:
-%% warm_throughput() :: #{
-%%   <<"ReadUnitsPerSecond">> => float(),
-%%   <<"WriteUnitsPerSecond">> => float()
-%% }
--type warm_throughput() :: #{binary() => any()}.
-
-%% Example:
-%% global_secondary_index_warm_throughput_description() :: #{
-%%   <<"ReadUnitsPerSecond">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"WriteUnitsPerSecond">> => float()
-%% }
--type global_secondary_index_warm_throughput_description() :: #{binary() => any()}.
-
-%% Example:
-%% item_collection_metrics() :: #{
-%%   <<"ItemCollectionKey">> => map(),
-%%   <<"SizeEstimateRangeGB">> => list(float())
-%% }
--type item_collection_metrics() :: #{binary() => any()}.
+-type describe_global_table_settings_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_global_table_settings_output() :: #{
@@ -1208,256 +736,22 @@
 -type describe_global_table_settings_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_replication_group_member_action() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()),
-%%   <<"KMSMasterKeyId">> => string(),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
-%%   <<"RegionName">> => string(),
-%%   <<"TableClassOverride">> => list(any())
+%% describe_import_input() :: #{
+%%   <<"ImportArn">> := string()
 %% }
--type update_replication_group_member_action() :: #{binary() => any()}.
+-type describe_import_input() :: #{binary() => any()}.
 
 %% Example:
-%% stream_specification() :: #{
-%%   <<"StreamEnabled">> => boolean(),
-%%   <<"StreamViewType">> => list(any())
+%% describe_import_output() :: #{
+%%   <<"ImportTableDescription">> => import_table_description()
 %% }
--type stream_specification() :: #{binary() => any()}.
+-type describe_import_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_export_input() :: #{
-%%   <<"ExportArn">> := string()
-%% }
--type describe_export_input() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_throughput_description() :: #{
-%%   <<"LastDecreaseDateTime">> => non_neg_integer(),
-%%   <<"LastIncreaseDateTime">> => non_neg_integer(),
-%%   <<"NumberOfDecreasesToday">> => float(),
-%%   <<"ReadCapacityUnits">> => float(),
-%%   <<"WriteCapacityUnits">> => float()
-%% }
--type provisioned_throughput_description() :: #{binary() => any()}.
-
-%% Example:
-%% create_backup_input() :: #{
-%%   <<"BackupName">> := string(),
+%% describe_kinesis_streaming_destination_input() :: #{
 %%   <<"TableName">> := string()
 %% }
--type create_backup_input() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_item_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_item_exception() :: #{binary() => any()}.
-
-%% Example:
-%% transact_get_items_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"Responses">> => list(item_response())
-%% }
--type transact_get_items_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_time_to_live_output() :: #{
-%%   <<"TimeToLiveDescription">> => time_to_live_description()
-%% }
--type describe_time_to_live_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_contributor_insights_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type list_contributor_insights_input() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_recovery_specification() :: #{
-%%   <<"PointInTimeRecoveryEnabled">> => boolean(),
-%%   <<"RecoveryPeriodInDays">> => integer()
-%% }
--type point_in_time_recovery_specification() :: #{binary() => any()}.
-
-%% Example:
-%% time_to_live_description() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"TimeToLiveStatus">> => list(any())
-%% }
--type time_to_live_description() :: #{binary() => any()}.
-
-%% Example:
-%% replica_global_secondary_index_auto_scaling_description() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
-%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description()
-%% }
--type replica_global_secondary_index_auto_scaling_description() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streaming_destination_output() :: #{
-%%   <<"DestinationStatus">> => list(any()),
-%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
-%%   <<"StreamArn">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type kinesis_streaming_destination_output() :: #{binary() => any()}.
-
-%% Example:
-%% condition() :: #{
-%%   <<"AttributeValueList">> => list(list()),
-%%   <<"ComparisonOperator">> => list(any())
-%% }
--type condition() :: #{binary() => any()}.
-
-%% Example:
-%% transact_get_items_input() :: #{
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"TransactItems">> := list(transact_get_item())
-%% }
--type transact_get_items_input() :: #{binary() => any()}.
-
-%% Example:
-%% import_table_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InputCompressionType">> => list(any()),
-%%   <<"InputFormat">> := list(any()),
-%%   <<"InputFormatOptions">> => input_format_options(),
-%%   <<"S3BucketSource">> := s3_bucket_source(),
-%%   <<"TableCreationParameters">> := table_creation_parameters()
-%% }
--type import_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% transaction_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type transaction_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_global_table_input() :: #{
-%%   <<"GlobalTableName">> := string()
-%% }
--type describe_global_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% replica_global_secondary_index_settings_update() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"ProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
-%%   <<"ProvisionedReadCapacityUnits">> => float()
-%% }
--type replica_global_secondary_index_settings_update() :: #{binary() => any()}.
-
-%% Example:
-%% put_item_input() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ConditionalOperator">> => list(any()),
-%%   <<"Expected">> => map(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Item">> := map(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnItemCollectionMetrics">> => list(any()),
-%%   <<"ReturnValues">> => list(any()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> := string()
-%% }
--type put_item_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_of_resource_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_of_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_replica_auto_scaling_input() :: #{
-%%   <<"TableName">> := string()
-%% }
--type describe_table_replica_auto_scaling_input() :: #{binary() => any()}.
-
-%% Example:
-%% export_table_to_point_in_time_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ExportFormat">> => list(any()),
-%%   <<"ExportTime">> => non_neg_integer(),
-%%   <<"ExportType">> => list(any()),
-%%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
-%%   <<"S3Bucket">> := string(),
-%%   <<"S3BucketOwner">> => string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"S3SseAlgorithm">> => list(any()),
-%%   <<"S3SseKmsKeyId">> => string(),
-%%   <<"TableArn">> := string()
-%% }
--type export_table_to_point_in_time_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_transaction_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
-%%   <<"Responses">> => list(item_response())
-%% }
--type execute_transaction_output() :: #{binary() => any()}.
-
-%% Example:
-%% transact_get_item() :: #{
-%%   <<"Get">> => get()
-%% }
--type transact_get_item() :: #{binary() => any()}.
-
-%% Example:
-%% global_table_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type global_table_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"CachePeriodInMinutes">> => float()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_table_witness_group_member_action() :: #{
-%%   <<"RegionName">> => string()
-%% }
--type create_global_table_witness_group_member_action() :: #{binary() => any()}.
-
-%% Example:
-%% update_item_output() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
-%% }
--type update_item_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contributor_insights_input() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"TableName">> := string()
-%% }
--type describe_contributor_insights_input() :: #{binary() => any()}.
-
-%% Example:
-%% backup_description() :: #{
-%%   <<"BackupDetails">> => backup_details(),
-%%   <<"SourceTableDetails">> => source_table_details(),
-%%   <<"SourceTableFeatureDetails">> => source_table_feature_details()
-%% }
--type backup_description() :: #{binary() => any()}.
+-type describe_kinesis_streaming_destination_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_kinesis_streaming_destination_output() :: #{
@@ -1467,440 +761,125 @@
 -type describe_kinesis_streaming_destination_output() :: #{binary() => any()}.
 
 %% Example:
-%% backup_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type backup_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% conditional_check_failed_exception() :: #{
-%%   <<"Item">> => map(),
-%%   <<"message">> => string()
-%% }
--type conditional_check_failed_exception() :: #{binary() => any()}.
-
-%% Example:
 %% describe_limits_input() :: #{
 
 %% }
 -type describe_limits_input() :: #{binary() => any()}.
 
 %% Example:
-%% global_secondary_index_update() :: #{
-%%   <<"Create">> => create_global_secondary_index_action(),
-%%   <<"Delete">> => delete_global_secondary_index_action(),
-%%   <<"Update">> => update_global_secondary_index_action()
+%% describe_limits_output() :: #{
+%%   <<"AccountMaxReadCapacityUnits">> => float(),
+%%   <<"AccountMaxWriteCapacityUnits">> => float(),
+%%   <<"TableMaxReadCapacityUnits">> => float(),
+%%   <<"TableMaxWriteCapacityUnits">> => float()
 %% }
--type global_secondary_index_update() :: #{binary() => any()}.
+-type describe_limits_output() :: #{binary() => any()}.
 
 %% Example:
-%% global_table_witness_description() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"WitnessStatus">> => list(any())
-%% }
--type global_table_witness_description() :: #{binary() => any()}.
-
-%% Example:
-%% create_backup_output() :: #{
-%%   <<"BackupDetails">> => backup_details()
-%% }
--type create_backup_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_exports_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableArn">> => string()
-%% }
--type list_exports_input() :: #{binary() => any()}.
-
-%% Example:
-%% backup_details() :: #{
-%%   <<"BackupArn">> => string(),
-%%   <<"BackupCreationDateTime">> => non_neg_integer(),
-%%   <<"BackupExpiryDateTime">> => non_neg_integer(),
-%%   <<"BackupName">> => string(),
-%%   <<"BackupSizeBytes">> => float(),
-%%   <<"BackupStatus">> => list(any()),
-%%   <<"BackupType">> => list(any())
-%% }
--type backup_details() :: #{binary() => any()}.
-
-%% Example:
-%% input_format_options() :: #{
-%%   <<"Csv">> => csv_options()
-%% }
--type input_format_options() :: #{binary() => any()}.
-
-%% Example:
-%% import_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type import_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_exports_output() :: #{
-%%   <<"ExportSummaries">> => list(export_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_exports_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_output() :: #{
-%%   <<"RevisionId">> => string()
-%% }
--type delete_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_settings_update() :: #{
-%%   <<"AutoScalingDisabled">> => boolean(),
-%%   <<"AutoScalingRoleArn">> => string(),
-%%   <<"MaximumUnits">> => float(),
-%%   <<"MinimumUnits">> => float(),
-%%   <<"ScalingPolicyUpdate">> => auto_scaling_policy_update()
-%% }
--type auto_scaling_settings_update() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_table_output() :: #{
-%%   <<"GlobalTableDescription">> => global_table_description()
-%% }
--type create_global_table_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_global_tables_input() :: #{
-%%   <<"ExclusiveStartGlobalTableName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"RegionName">> => string()
-%% }
--type list_global_tables_input() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_throughput() :: #{
-%%   <<"ReadCapacityUnits">> => float(),
-%%   <<"WriteCapacityUnits">> => float()
-%% }
--type provisioned_throughput() :: #{binary() => any()}.
-
-%% Example:
-%% global_secondary_index_description() :: #{
-%%   <<"Backfilling">> => boolean(),
-%%   <<"IndexArn">> => string(),
-%%   <<"IndexName">> => string(),
-%%   <<"IndexSizeBytes">> => float(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
-%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
-%% }
--type global_secondary_index_description() :: #{binary() => any()}.
-
-%% Example:
-%% global_secondary_index_info() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput()
-%% }
--type global_secondary_index_info() :: #{binary() => any()}.
-
-%% Example:
-%% put_request() :: #{
-%%   <<"Item">> => map()
-%% }
--type put_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_item_input() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ConditionalOperator">> => list(any()),
-%%   <<"Expected">> => map(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Key">> := map(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnItemCollectionMetrics">> => list(any()),
-%%   <<"ReturnValues">> => list(any()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%% describe_table_input() :: #{
 %%   <<"TableName">> := string()
 %% }
--type delete_item_input() :: #{binary() => any()}.
+-type describe_table_input() :: #{binary() => any()}.
 
 %% Example:
-%% replica_global_secondary_index_description() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
-%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
+%% describe_table_output() :: #{
+%%   <<"Table">> => table_description()
 %% }
--type replica_global_secondary_index_description() :: #{binary() => any()}.
+-type describe_table_output() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_error() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{
-%%   <<"DisableScaleIn">> => boolean(),
-%%   <<"ScaleInCooldown">> => integer(),
-%%   <<"ScaleOutCooldown">> => integer(),
-%%   <<"TargetValue">> => float()
-%% }
--type auto_scaling_target_tracking_scaling_policy_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% query_input() :: #{
-%%   <<"AttributesToGet">> => list(string()),
-%%   <<"ConditionalOperator">> => list(any()),
-%%   <<"ConsistentRead">> => boolean(),
-%%   <<"ExclusiveStartKey">> => map(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"FilterExpression">> => string(),
-%%   <<"IndexName">> => string(),
-%%   <<"KeyConditionExpression">> => string(),
-%%   <<"KeyConditions">> => map(),
-%%   <<"Limit">> => integer(),
-%%   <<"ProjectionExpression">> => string(),
-%%   <<"QueryFilter">> => map(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ScanIndexForward">> => boolean(),
-%%   <<"Select">> => list(any()),
+%% describe_table_replica_auto_scaling_input() :: #{
 %%   <<"TableName">> := string()
 %% }
--type query_input() :: #{binary() => any()}.
+-type describe_table_replica_auto_scaling_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_global_table_output() :: #{
-%%   <<"GlobalTableDescription">> => global_table_description()
+%% describe_table_replica_auto_scaling_output() :: #{
+%%   <<"TableAutoScalingDescription">> => table_auto_scaling_description()
 %% }
--type update_global_table_output() :: #{binary() => any()}.
+-type describe_table_replica_auto_scaling_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_restore_time_exception() :: #{
-%%   <<"message">> => string()
+%% describe_time_to_live_input() :: #{
+%%   <<"TableName">> := string()
 %% }
--type invalid_restore_time_exception() :: #{binary() => any()}.
+-type describe_time_to_live_input() :: #{binary() => any()}.
 
 %% Example:
-%% sse_specification() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"KMSMasterKeyId">> => string(),
-%%   <<"SSEType">> => list(any())
-%% }
--type sse_specification() :: #{binary() => any()}.
-
-%% Example:
-%% describe_continuous_backups_output() :: #{
-%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
-%% }
--type describe_continuous_backups_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_item_input() :: #{
-%%   <<"AttributeUpdates">> => map(),
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ConditionalOperator">> => list(any()),
-%%   <<"Expected">> => map(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Key">> := map(),
-%%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"ReturnItemCollectionMetrics">> => list(any()),
-%%   <<"ReturnValues">> => list(any()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> := string(),
-%%   <<"UpdateExpression">> => string()
-%% }
--type update_item_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% global_table_description() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"GlobalTableArn">> => string(),
-%%   <<"GlobalTableName">> => string(),
-%%   <<"GlobalTableStatus">> => list(any()),
-%%   <<"ReplicationGroup">> => list(replica_description())
-%% }
--type global_table_description() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_backups_description() :: #{
-%%   <<"ContinuousBackupsStatus">> => list(any()),
-%%   <<"PointInTimeRecoveryDescription">> => point_in_time_recovery_description()
-%% }
--type continuous_backups_description() :: #{binary() => any()}.
-
-%% Example:
-%% global_secondary_index() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"Projection">> => projection(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"WarmThroughput">> => warm_throughput()
-%% }
--type global_secondary_index() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_to_point_in_time_input() :: #{
-%%   <<"BillingModeOverride">> => list(any()),
-%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
-%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
-%%   <<"RestoreDateTime">> => non_neg_integer(),
-%%   <<"SSESpecificationOverride">> => sse_specification(),
-%%   <<"SourceTableArn">> => string(),
-%%   <<"SourceTableName">> => string(),
-%%   <<"TargetTableName">> := string(),
-%%   <<"UseLatestRestorableTime">> => boolean()
-%% }
--type restore_table_to_point_in_time_input() :: #{binary() => any()}.
-
-%% Example:
-%% request_limit_exceeded() :: #{
-%%   <<"ThrottlingReasons">> => list(throttling_reason()),
-%%   <<"message">> => string()
-%% }
--type request_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_backup_input() :: #{
-%%   <<"BackupArn">> := string(),
-%%   <<"BillingModeOverride">> => list(any()),
-%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
-%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
-%%   <<"SSESpecificationOverride">> => sse_specification(),
-%%   <<"TargetTableName">> := string()
-%% }
--type restore_table_from_backup_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancellation_reason() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Item">> => map(),
-%%   <<"Message">> => string()
-%% }
--type cancellation_reason() :: #{binary() => any()}.
-
-%% Example:
-%% source_table_feature_details() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_info()),
-%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_info()),
-%%   <<"SSEDescription">> => sse_description(),
-%%   <<"StreamDescription">> => stream_specification(),
+%% describe_time_to_live_output() :: #{
 %%   <<"TimeToLiveDescription">> => time_to_live_description()
 %% }
--type source_table_feature_details() :: #{binary() => any()}.
+-type describe_time_to_live_output() :: #{binary() => any()}.
 
 %% Example:
-%% import_conflict_exception() :: #{
+%% duplicate_item_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type import_conflict_exception() :: #{binary() => any()}.
+-type duplicate_item_exception() :: #{binary() => any()}.
 
 %% Example:
-%% item_response() :: #{
-%%   <<"Item">> => map()
+%% enable_kinesis_streaming_configuration() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
 %% }
--type item_response() :: #{binary() => any()}.
+-type enable_kinesis_streaming_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% restore_table_from_backup_output() :: #{
-%%   <<"TableDescription">> => table_description()
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CachePeriodInMinutes">> => float()
 %% }
--type restore_table_from_backup_output() :: #{binary() => any()}.
+-type endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% failure_exception() :: #{
-%%   <<"ExceptionDescription">> => string(),
-%%   <<"ExceptionName">> => string()
+%% execute_statement_input() :: #{
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(list()),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> := string()
 %% }
--type failure_exception() :: #{binary() => any()}.
+-type execute_statement_input() :: #{binary() => any()}.
 
 %% Example:
-%% replica_description() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()),
-%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
-%%   <<"KMSMasterKeyId">> => string(),
-%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
-%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
-%%   <<"RegionName">> => string(),
-%%   <<"ReplicaArn">> => string(),
-%%   <<"ReplicaInaccessibleDateTime">> => non_neg_integer(),
-%%   <<"ReplicaStatus">> => list(any()),
-%%   <<"ReplicaStatusDescription">> => string(),
-%%   <<"ReplicaStatusPercentProgress">> => string(),
-%%   <<"ReplicaTableClassSummary">> => table_class_summary(),
-%%   <<"WarmThroughput">> => table_warm_throughput_description()
-%% }
--type replica_description() :: #{binary() => any()}.
-
-%% Example:
-%% scan_output() :: #{
+%% execute_statement_output() :: #{
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"Count">> => integer(),
 %%   <<"Items">> => list(map()),
 %%   <<"LastEvaluatedKey">> => map(),
-%%   <<"ScannedCount">> => integer()
-%% }
--type scan_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_group_member_action() :: #{
-%%   <<"RegionName">> => string()
-%% }
--type delete_replication_group_member_action() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"throttlingReasons">> => list(throttling_reason())
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% replication_group_update() :: #{
-%%   <<"Create">> => create_replication_group_member_action(),
-%%   <<"Delete">> => delete_replication_group_member_action(),
-%%   <<"Update">> => update_replication_group_member_action()
-%% }
--type replication_group_update() :: #{binary() => any()}.
-
-%% Example:
-%% transaction_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type transaction_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_contributor_insights_output() :: #{
-%%   <<"ContributorInsightsSummaries">> => list(contributor_insights_summary()),
 %%   <<"NextToken">> => string()
 %% }
--type list_contributor_insights_output() :: #{binary() => any()}.
+-type execute_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% execute_transaction_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"TransactStatements">> := list(parameterized_statement())
+%% }
+-type execute_transaction_input() :: #{binary() => any()}.
+
+%% Example:
+%% execute_transaction_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(item_response())
+%% }
+-type execute_transaction_output() :: #{binary() => any()}.
+
+%% Example:
+%% expected_attribute_value() :: #{
+%%   <<"AttributeValueList">> => list(list()),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Exists">> => boolean(),
+%%   <<"Value">> => list()
+%% }
+-type expected_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% export_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% export_description() :: #{
@@ -1929,28 +908,56 @@
 -type export_description() :: #{binary() => any()}.
 
 %% Example:
-%% update_global_secondary_index_action() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"OnDemandThroughput">> => on_demand_throughput(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"WarmThroughput">> => warm_throughput()
+%% export_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_global_secondary_index_action() :: #{binary() => any()}.
+-type export_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% replica() :: #{
-%%   <<"RegionName">> => string()
+%% export_summary() :: #{
+%%   <<"ExportArn">> => string(),
+%%   <<"ExportStatus">> => list(any()),
+%%   <<"ExportType">> => list(any())
 %% }
--type replica() :: #{binary() => any()}.
+-type export_summary() :: #{binary() => any()}.
 
 %% Example:
-%% contributor_insights_summary() :: #{
-%%   <<"ContributorInsightsMode">> => list(any()),
-%%   <<"ContributorInsightsStatus">> => list(any()),
-%%   <<"IndexName">> => string(),
+%% export_table_to_point_in_time_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ExportFormat">> => list(any()),
+%%   <<"ExportTime">> => non_neg_integer(),
+%%   <<"ExportType">> => list(any()),
+%%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
+%%   <<"S3Bucket">> := string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"S3SseAlgorithm">> => list(any()),
+%%   <<"S3SseKmsKeyId">> => string(),
+%%   <<"TableArn">> := string()
+%% }
+-type export_table_to_point_in_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_table_to_point_in_time_output() :: #{
+%%   <<"ExportDescription">> => export_description()
+%% }
+-type export_table_to_point_in_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% failure_exception() :: #{
+%%   <<"ExceptionDescription">> => string(),
+%%   <<"ExceptionName">> => string()
+%% }
+-type failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get() :: #{
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ProjectionExpression">> => string(),
 %%   <<"TableName">> => string()
 %% }
--type contributor_insights_summary() :: #{binary() => any()}.
+-type get() :: #{binary() => any()}.
 
 %% Example:
 %% get_item_input() :: #{
@@ -1965,101 +972,166 @@
 -type get_item_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_time_to_live_input() :: #{
-%%   <<"TableName">> := string()
-%% }
--type describe_time_to_live_input() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{
-%%   <<"DisableScaleIn">> => boolean(),
-%%   <<"ScaleInCooldown">> => integer(),
-%%   <<"ScaleOutCooldown">> => integer(),
-%%   <<"TargetValue">> => float()
-%% }
--type auto_scaling_target_tracking_scaling_policy_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% update_continuous_backups_input() :: #{
-%%   <<"PointInTimeRecoverySpecification">> := point_in_time_recovery_specification(),
-%%   <<"TableName">> := string()
-%% }
--type update_continuous_backups_input() :: #{binary() => any()}.
-
-%% Example:
-%% archival_summary() :: #{
-%%   <<"ArchivalBackupArn">> => string(),
-%%   <<"ArchivalDateTime">> => non_neg_integer(),
-%%   <<"ArchivalReason">> => string()
-%% }
--type archival_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_output() :: #{
-%%   <<"LastEvaluatedTableName">> => string(),
-%%   <<"TableNames">> => list(string())
-%% }
--type list_tables_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_global_table_witness_group_member_action() :: #{
-%%   <<"RegionName">> => string()
-%% }
--type delete_global_table_witness_group_member_action() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_export_time_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_export_time_exception() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_value_update() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Value">> => list()
-%% }
--type attribute_value_update() :: #{binary() => any()}.
-
-%% Example:
-%% import_table_output() :: #{
-%%   <<"ImportTableDescription">> => import_table_description()
-%% }
--type import_table_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_item_output() :: #{
-%%   <<"Attributes">> => map(),
+%% get_item_output() :: #{
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%%   <<"Item">> => map()
 %% }
--type put_item_output() :: #{binary() => any()}.
+-type get_item_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_global_table_settings_output() :: #{
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
+%% }
+-type global_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_auto_scaling_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_description() :: #{
+%%   <<"Backfilling">> => boolean(),
+%%   <<"IndexArn">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexSizeBytes">> => float(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
+%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
+%% }
+-type global_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_info() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"Projection">> => projection(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput()
+%% }
+-type global_secondary_index_info() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_update() :: #{
+%%   <<"Create">> => create_global_secondary_index_action(),
+%%   <<"Delete">> => delete_global_secondary_index_action(),
+%%   <<"Update">> => update_global_secondary_index_action()
+%% }
+-type global_secondary_index_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_secondary_index_warm_throughput_description() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"WriteUnitsPerSecond">> => float()
+%% }
+-type global_secondary_index_warm_throughput_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_table() :: #{
 %%   <<"GlobalTableName">> => string(),
-%%   <<"ReplicaSettings">> => list(replica_settings_description())
+%%   <<"ReplicationGroup">> => list(replica())
 %% }
--type update_global_table_settings_output() :: #{binary() => any()}.
+-type global_table() :: #{binary() => any()}.
 
 %% Example:
-%% table_in_use_exception() :: #{
+%% global_table_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type table_in_use_exception() :: #{binary() => any()}.
+-type global_table_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% incremental_export_specification() :: #{
-%%   <<"ExportFromTime">> => non_neg_integer(),
-%%   <<"ExportToTime">> => non_neg_integer(),
-%%   <<"ExportViewType">> => list(any())
+%% global_table_description() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"GlobalTableArn">> => string(),
+%%   <<"GlobalTableName">> => string(),
+%%   <<"GlobalTableStatus">> => list(any()),
+%%   <<"ReplicationGroup">> => list(replica_description())
 %% }
--type incremental_export_specification() :: #{binary() => any()}.
+-type global_table_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_global_secondary_index_settings_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ProvisionedWriteCapacityUnits">> => float()
+%% }
+-type global_table_global_secondary_index_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_table_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_witness_description() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"WitnessStatus">> => list(any())
+%% }
+-type global_table_witness_description() :: #{binary() => any()}.
+
+%% Example:
+%% global_table_witness_group_update() :: #{
+%%   <<"Create">> => create_global_table_witness_group_member_action(),
+%%   <<"Delete">> => delete_global_table_witness_group_member_action()
+%% }
+-type global_table_witness_group_update() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type import_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type import_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_summary() :: #{
+%%   <<"CloudWatchLogGroupArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ImportArn">> => string(),
+%%   <<"ImportStatus">> => list(any()),
+%%   <<"InputFormat">> => list(any()),
+%%   <<"S3BucketSource">> => s3_bucket_source(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TableArn">> => string()
+%% }
+-type import_summary() :: #{binary() => any()}.
 
 %% Example:
 %% import_table_description() :: #{
@@ -2086,10 +1158,29 @@
 -type import_table_description() :: #{binary() => any()}.
 
 %% Example:
-%% delete_table_output() :: #{
-%%   <<"TableDescription">> => table_description()
+%% import_table_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InputCompressionType">> => list(any()),
+%%   <<"InputFormat">> := list(any()),
+%%   <<"InputFormatOptions">> => input_format_options(),
+%%   <<"S3BucketSource">> := s3_bucket_source(),
+%%   <<"TableCreationParameters">> := table_creation_parameters()
 %% }
--type delete_table_output() :: #{binary() => any()}.
+-type import_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_table_output() :: #{
+%%   <<"ImportTableDescription">> => import_table_description()
+%% }
+-type import_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% incremental_export_specification() :: #{
+%%   <<"ExportFromTime">> => non_neg_integer(),
+%%   <<"ExportToTime">> => non_neg_integer(),
+%%   <<"ExportViewType">> => list(any())
+%% }
+-type incremental_export_specification() :: #{binary() => any()}.
 
 %% Example:
 %% index_not_found_exception() :: #{
@@ -2098,11 +1189,1100 @@
 -type index_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% input_format_options() :: #{
+%%   <<"Csv">> => csv_options()
+%% }
+-type input_format_options() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_time_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_time_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_restore_time_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_restore_time_exception() :: #{binary() => any()}.
+
+%% Example:
+%% item_collection_metrics() :: #{
+%%   <<"ItemCollectionKey">> => map(),
+%%   <<"SizeEstimateRangeGB">> => list(float())
+%% }
+-type item_collection_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% item_collection_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type item_collection_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% item_response() :: #{
+%%   <<"Item">> => map()
+%% }
+-type item_response() :: #{binary() => any()}.
+
+%% Example:
+%% key_schema_element() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type key_schema_element() :: #{binary() => any()}.
+
+%% Example:
+%% keys_and_attributes() :: #{
+%%   <<"AttributesToGet">> => list(string()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"Keys">> => list(map()),
+%%   <<"ProjectionExpression">> => string()
+%% }
+-type keys_and_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_data_stream_destination() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any()),
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"DestinationStatusDescription">> => string(),
+%%   <<"StreamArn">> => string()
+%% }
+-type kinesis_data_stream_destination() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streaming_destination_input() :: #{
+%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
+%%   <<"StreamArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type kinesis_streaming_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streaming_destination_output() :: #{
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"EnableKinesisStreamingConfiguration">> => enable_kinesis_streaming_configuration(),
+%%   <<"StreamArn">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type kinesis_streaming_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_backups_input() :: #{
+%%   <<"BackupType">> => list(any()),
+%%   <<"ExclusiveStartBackupArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"TableName">> => string(),
+%%   <<"TimeRangeLowerBound">> => non_neg_integer(),
+%%   <<"TimeRangeUpperBound">> => non_neg_integer()
+%% }
+-type list_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_backups_output() :: #{
+%%   <<"BackupSummaries">> => list(backup_summary()),
+%%   <<"LastEvaluatedBackupArn">> => string()
+%% }
+-type list_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_contributor_insights_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type list_contributor_insights_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsSummaries">> => list(contributor_insights_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contributor_insights_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableArn">> => string()
+%% }
+-type list_exports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_output() :: #{
+%%   <<"ExportSummaries">> => list(export_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_exports_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_global_tables_input() :: #{
+%%   <<"ExclusiveStartGlobalTableName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"RegionName">> => string()
+%% }
+-type list_global_tables_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_global_tables_output() :: #{
+%%   <<"GlobalTables">> => list(global_table()),
+%%   <<"LastEvaluatedGlobalTableName">> => string()
+%% }
+-type list_global_tables_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"TableArn">> => string()
+%% }
+-type list_imports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_output() :: #{
+%%   <<"ImportSummaryList">> => list(import_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_input() :: #{
+%%   <<"ExclusiveStartTableName">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type list_tables_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_output() :: #{
+%%   <<"LastEvaluatedTableName">> => string(),
+%%   <<"TableNames">> => list(string())
+%% }
+-type list_tables_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_of_resource_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_of_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_of_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_of_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index_description() :: #{
+%%   <<"IndexArn">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexSizeBytes">> => float(),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% local_secondary_index_info() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"Projection">> => projection()
+%% }
+-type local_secondary_index_info() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_throughput() :: #{
+%%   <<"MaxReadRequestUnits">> => float(),
+%%   <<"MaxWriteRequestUnits">> => float()
+%% }
+-type on_demand_throughput() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_throughput_override() :: #{
+%%   <<"MaxReadRequestUnits">> => float()
+%% }
+-type on_demand_throughput_override() :: #{binary() => any()}.
+
+%% Example:
+%% parameterized_statement() :: #{
+%%   <<"Parameters">> => list(list()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"Statement">> => string()
+%% }
+-type parameterized_statement() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_description() :: #{
+%%   <<"EarliestRestorableDateTime">> => non_neg_integer(),
+%%   <<"LatestRestorableDateTime">> => non_neg_integer(),
+%%   <<"PointInTimeRecoveryStatus">> => list(any()),
+%%   <<"RecoveryPeriodInDays">> => integer()
+%% }
+-type point_in_time_recovery_description() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_specification() :: #{
+%%   <<"PointInTimeRecoveryEnabled">> => boolean(),
+%%   <<"RecoveryPeriodInDays">> => integer()
+%% }
+-type point_in_time_recovery_specification() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type point_in_time_recovery_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% projection() :: #{
+%%   <<"NonKeyAttributes">> => list(string()),
+%%   <<"ProjectionType">> => list(any())
+%% }
+-type projection() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput() :: #{
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type provisioned_throughput() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_description() :: #{
+%%   <<"LastDecreaseDateTime">> => non_neg_integer(),
+%%   <<"LastIncreaseDateTime">> => non_neg_integer(),
+%%   <<"NumberOfDecreasesToday">> => float(),
+%%   <<"ReadCapacityUnits">> => float(),
+%%   <<"WriteCapacityUnits">> => float()
+%% }
+-type provisioned_throughput_description() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"ThrottlingReasons">> => list(throttling_reason()),
+%%   <<"message">> => string()
+%% }
+-type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_override() :: #{
+%%   <<"ReadCapacityUnits">> => float()
+%% }
+-type provisioned_throughput_override() :: #{binary() => any()}.
+
+%% Example:
+%% put() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Item">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type put() :: #{binary() => any()}.
+
+%% Example:
+%% put_item_input() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Item">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type put_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type put_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_request() :: #{
+%%   <<"Item">> => map()
+%% }
+-type put_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"ConfirmRemoveSelfResourceAccess">> => boolean(),
+%%   <<"ExpectedRevisionId">> => string(),
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% query_input() :: #{
+%%   <<"AttributesToGet">> => list(string()),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExclusiveStartKey">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"KeyConditionExpression">> => string(),
+%%   <<"KeyConditions">> => map(),
+%%   <<"Limit">> => integer(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"QueryFilter">> => map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ScanIndexForward">> => boolean(),
+%%   <<"Select">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type query_input() :: #{binary() => any()}.
+
+%% Example:
+%% query_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Count">> => integer(),
+%%   <<"Items">> => list(map()),
+%%   <<"LastEvaluatedKey">> => map(),
+%%   <<"ScannedCount">> => integer()
+%% }
+-type query_output() :: #{binary() => any()}.
+
+%% Example:
+%% replica() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type replica() :: #{binary() => any()}.
+
+%% Example:
+%% replica_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replica_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replica_auto_scaling_description() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_auto_scaling_description()),
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaStatus">> => list(any())
+%% }
+-type replica_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_auto_scaling_update() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaGlobalSecondaryIndexUpdates">> => list(replica_global_secondary_index_auto_scaling_update()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type replica_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_description() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaArn">> => string(),
+%%   <<"ReplicaInaccessibleDateTime">> => non_neg_integer(),
+%%   <<"ReplicaStatus">> => list(any()),
+%%   <<"ReplicaStatusDescription">> => string(),
+%%   <<"ReplicaStatusPercentProgress">> => string(),
+%%   <<"ReplicaTableClassSummary">> => table_class_summary(),
+%%   <<"WarmThroughput">> => table_warm_throughput_description()
+%% }
+-type replica_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override()
+%% }
+-type replica_global_secondary_index() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_auto_scaling_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description()
+%% }
+-type replica_global_secondary_index_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_auto_scaling_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
+%% }
+-type replica_global_secondary_index_auto_scaling_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"WarmThroughput">> => global_secondary_index_warm_throughput_description()
+%% }
+-type replica_global_secondary_index_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_settings_description() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedReadCapacityUnits">> => float(),
+%%   <<"ProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ProvisionedWriteCapacityUnits">> => float()
+%% }
+-type replica_global_secondary_index_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_global_secondary_index_settings_update() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"ProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ProvisionedReadCapacityUnits">> => float()
+%% }
+-type replica_global_secondary_index_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replica_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replica_settings_description() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaBillingModeSummary">> => billing_mode_summary(),
+%%   <<"ReplicaGlobalSecondaryIndexSettings">> => list(replica_global_secondary_index_settings_description()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
+%%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
+%%   <<"ReplicaProvisionedWriteCapacityUnits">> => float(),
+%%   <<"ReplicaStatus">> => list(any()),
+%%   <<"ReplicaTableClassSummary">> => table_class_summary()
+%% }
+-type replica_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% replica_settings_update() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"ReplicaGlobalSecondaryIndexSettingsUpdate">> => list(replica_global_secondary_index_settings_update()),
+%%   <<"ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
+%%   <<"ReplicaTableClass">> => list(any())
+%% }
+-type replica_settings_update() :: #{binary() => any()}.
+
+%% Example:
+%% replica_update() :: #{
+%%   <<"Create">> => create_replica_action(),
+%%   <<"Delete">> => delete_replica_action()
+%% }
+-type replica_update() :: #{binary() => any()}.
+
+%% Example:
+%% replicated_write_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replicated_write_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replication_group_update() :: #{
+%%   <<"Create">> => create_replication_group_member_action(),
+%%   <<"Delete">> => delete_replication_group_member_action(),
+%%   <<"Update">> => update_replication_group_member_action()
+%% }
+-type replication_group_update() :: #{binary() => any()}.
+
+%% Example:
+%% request_limit_exceeded() :: #{
+%%   <<"ThrottlingReasons">> => list(throttling_reason()),
+%%   <<"message">> => string()
+%% }
+-type request_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_summary() :: #{
+%%   <<"RestoreDateTime">> => non_neg_integer(),
+%%   <<"RestoreInProgress">> => boolean(),
+%%   <<"SourceBackupArn">> => string(),
+%%   <<"SourceTableArn">> => string()
+%% }
+-type restore_summary() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_backup_input() :: #{
+%%   <<"BackupArn">> := string(),
+%%   <<"BillingModeOverride">> => list(any()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
+%%   <<"SSESpecificationOverride">> => sse_specification(),
+%%   <<"TargetTableName">> := string(),
+%%   <<"VectorIndexOverride">> => list(vector_index())
+%% }
+-type restore_table_from_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_backup_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type restore_table_from_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_to_point_in_time_input() :: #{
+%%   <<"BillingModeOverride">> => list(any()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
+%%   <<"RestoreDateTime">> => non_neg_integer(),
+%%   <<"SSESpecificationOverride">> => sse_specification(),
+%%   <<"SourceTableArn">> => string(),
+%%   <<"SourceTableName">> => string(),
+%%   <<"TargetTableName">> := string(),
+%%   <<"UseLatestRestorableTime">> => boolean(),
+%%   <<"VectorIndexOverride">> => list(vector_index())
+%% }
+-type restore_table_to_point_in_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_to_point_in_time_output() :: #{
+%%   <<"TableDescription">> => table_description()
+%% }
+-type restore_table_to_point_in_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_bucket_source() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type s3_bucket_source() :: #{binary() => any()}.
+
+%% Example:
+%% scan_input() :: #{
+%%   <<"AttributesToGet">> => list(string()),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"ConsistentRead">> => boolean(),
+%%   <<"ExclusiveStartKey">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ScanFilter">> => map(),
+%%   <<"Segment">> => integer(),
+%%   <<"Select">> => list(any()),
+%%   <<"TableName">> := string(),
+%%   <<"TotalSegments">> => integer()
+%% }
+-type scan_input() :: #{binary() => any()}.
+
+%% Example:
+%% scan_output() :: #{
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"Count">> => integer(),
+%%   <<"Items">> => list(map()),
+%%   <<"LastEvaluatedKey">> => map(),
+%%   <<"ScannedCount">> => integer()
+%% }
+-type scan_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_result_item() :: #{
+%%   <<"Item">> => map(),
+%%   <<"Score">> => float()
+%% }
+-type search_result_item() :: #{binary() => any()}.
+
+%% Example:
+%% search_schema_element() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"SearchSchemaElementType">> => list(any())
+%% }
+-type search_schema_element() :: #{binary() => any()}.
+
+%% Example:
+%% search_vectors_input() :: #{
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"IndexName">> := string(),
+%%   <<"ProjectionExpression">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"SearchConditionExpression">> => string(),
+%%   <<"SearchVector">> := list(list()),
+%%   <<"TableName">> := string(),
+%%   <<"TopK">> := integer()
+%% }
+-type search_vectors_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_vectors_output() :: #{
+%%   <<"ConsumedCapacity">> => vector_capacity(),
+%%   <<"SearchResults">> => list(search_result_item())
+%% }
+-type search_vectors_output() :: #{binary() => any()}.
+
+%% Example:
+%% source_table_details() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableCreationDateTime">> => non_neg_integer(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableSizeBytes">> => float()
+%% }
+-type source_table_details() :: #{binary() => any()}.
+
+%% Example:
+%% source_table_feature_details() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_info()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_info()),
+%%   <<"SSEDescription">> => sse_description(),
+%%   <<"StreamDescription">> => stream_specification(),
+%%   <<"TimeToLiveDescription">> => time_to_live_description(),
+%%   <<"VectorIndexes">> => list(vector_index_info())
+%% }
+-type source_table_feature_details() :: #{binary() => any()}.
+
+%% Example:
+%% sse_description() :: #{
+%%   <<"InaccessibleEncryptionDateTime">> => non_neg_integer(),
+%%   <<"KMSMasterKeyArn">> => string(),
+%%   <<"SSEType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type sse_description() :: #{binary() => any()}.
+
+%% Example:
+%% sse_specification() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"SSEType">> => list(any())
+%% }
+-type sse_specification() :: #{binary() => any()}.
+
+%% Example:
+%% stream_specification() :: #{
+%%   <<"StreamEnabled">> => boolean(),
+%%   <<"StreamViewType">> => list(any())
+%% }
+-type stream_specification() :: #{binary() => any()}.
+
+%% Example:
+%% table_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% table_auto_scaling_description() :: #{
+%%   <<"Replicas">> => list(replica_auto_scaling_description()),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => list(any())
+%% }
+-type table_auto_scaling_description() :: #{binary() => any()}.
+
+%% Example:
+%% table_class_summary() :: #{
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"TableClass">> => list(any())
+%% }
+-type table_class_summary() :: #{binary() => any()}.
+
+%% Example:
+%% table_creation_parameters() :: #{
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
+%%   <<"BillingMode">> => list(any()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"TableName">> => string(),
+%%   <<"VectorIndexes">> => list(vector_index())
+%% }
+-type table_creation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% table_description() :: #{
+%%   <<"ArchivalSummary">> => archival_summary(),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
+%%   <<"BillingModeSummary">> => billing_mode_summary(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()),
+%%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
+%%   <<"GlobalTableVersion">> => string(),
+%%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()),
+%%   <<"ItemCount">> => float(),
+%%   <<"KeySchema">> => list(key_schema_element()),
+%%   <<"LatestStreamArn">> => string(),
+%%   <<"LatestStreamLabel">> => string(),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()),
+%%   <<"MultiRegionConsistency">> => list(any()),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
+%%   <<"Replicas">> => list(replica_description()),
+%%   <<"RestoreSummary">> => restore_summary(),
+%%   <<"SSEDescription">> => sse_description(),
+%%   <<"StreamSpecification">> => stream_specification(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableClassSummary">> => table_class_summary(),
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableSizeBytes">> => float(),
+%%   <<"TableStatus">> => list(any()),
+%%   <<"VectorIndexes">> => list(vector_index_description()),
+%%   <<"WarmThroughput">> => table_warm_throughput_description()
+%% }
+-type table_description() :: #{binary() => any()}.
+
+%% Example:
+%% table_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% table_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% table_warm_throughput_description() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"WriteUnitsPerSecond">> => float()
+%% }
+-type table_warm_throughput_description() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_reason() :: #{
 %%   <<"reason">> => string(),
 %%   <<"resource">> => string()
 %% }
 -type throttling_reason() :: #{binary() => any()}.
+
+%% Example:
+%% time_to_live_description() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"TimeToLiveStatus">> => list(any())
+%% }
+-type time_to_live_description() :: #{binary() => any()}.
+
+%% Example:
+%% time_to_live_specification() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type time_to_live_specification() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_item() :: #{
+%%   <<"Get">> => get()
+%% }
+-type transact_get_item() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_items_input() :: #{
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"TransactItems">> := list(transact_get_item())
+%% }
+-type transact_get_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% transact_get_items_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(item_response())
+%% }
+-type transact_get_items_output() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_item() :: #{
+%%   <<"ConditionCheck">> => condition_check(),
+%%   <<"Delete">> => delete(),
+%%   <<"Put">> => put(),
+%%   <<"Update">> => update()
+%% }
+-type transact_write_item() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_items_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"TransactItems">> := list(transact_write_item())
+%% }
+-type transact_write_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% transact_write_items_output() :: #{
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"ItemCollectionMetrics">> => map()
+%% }
+-type transact_write_items_output() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_canceled_exception() :: #{
+%%   <<"CancellationReasons">> => list(cancellation_reason()),
+%%   <<"Message">> => string()
+%% }
+-type transaction_canceled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type transaction_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update() :: #{
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> => map(),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> => string(),
+%%   <<"UpdateExpression">> => string()
+%% }
+-type update() :: #{binary() => any()}.
+
+%% Example:
+%% update_continuous_backups_input() :: #{
+%%   <<"PointInTimeRecoverySpecification">> := point_in_time_recovery_specification(),
+%%   <<"TableName">> := string()
+%% }
+-type update_continuous_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_continuous_backups_output() :: #{
+%%   <<"ContinuousBackupsDescription">> => continuous_backups_description()
+%% }
+-type update_continuous_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_contributor_insights_input() :: #{
+%%   <<"ContributorInsightsAction">> := list(any()),
+%%   <<"ContributorInsightsMode">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type update_contributor_insights_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsMode">> => list(any()),
+%%   <<"ContributorInsightsStatus">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type update_contributor_insights_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_secondary_index_action() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"OnDemandThroughput">> => on_demand_throughput(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"WarmThroughput">> => warm_throughput()
+%% }
+-type update_global_secondary_index_action() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_input() :: #{
+%%   <<"GlobalTableName">> := string(),
+%%   <<"ReplicaUpdates">> := list(replica_update())
+%% }
+-type update_global_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_output() :: #{
+%%   <<"GlobalTableDescription">> => global_table_description()
+%% }
+-type update_global_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_settings_input() :: #{
+%%   <<"GlobalTableBillingMode">> => list(any()),
+%%   <<"GlobalTableGlobalSecondaryIndexSettingsUpdate">> => list(global_table_global_secondary_index_settings_update()),
+%%   <<"GlobalTableName">> := string(),
+%%   <<"GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
+%%   <<"GlobalTableProvisionedWriteCapacityUnits">> => float(),
+%%   <<"ReplicaSettingsUpdate">> => list(replica_settings_update())
+%% }
+-type update_global_table_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_table_settings_output() :: #{
+%%   <<"GlobalTableName">> => string(),
+%%   <<"ReplicaSettings">> => list(replica_settings_description())
+%% }
+-type update_global_table_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_item_input() :: #{
+%%   <<"AttributeUpdates">> => map(),
+%%   <<"ConditionExpression">> => string(),
+%%   <<"ConditionalOperator">> => list(any()),
+%%   <<"Expected">> => map(),
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"Key">> := map(),
+%%   <<"ReturnConsumedCapacity">> => list(any()),
+%%   <<"ReturnItemCollectionMetrics">> => list(any()),
+%%   <<"ReturnValues">> => list(any()),
+%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
+%%   <<"TableName">> := string(),
+%%   <<"UpdateExpression">> => string()
+%% }
+-type update_item_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_item_output() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ConsumedCapacity">> => consumed_capacity(),
+%%   <<"ItemCollectionMetrics">> => item_collection_metrics()
+%% }
+-type update_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_configuration() :: #{
+%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
+%% }
+-type update_kinesis_streaming_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_destination_input() :: #{
+%%   <<"StreamArn">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
+%% }
+-type update_kinesis_streaming_destination_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_kinesis_streaming_destination_output() :: #{
+%%   <<"DestinationStatus">> => list(any()),
+%%   <<"StreamArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
+%% }
+-type update_kinesis_streaming_destination_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_replication_group_member_action() :: #{
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()),
+%%   <<"KMSMasterKeyId">> => string(),
+%%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
+%%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
+%%   <<"RegionName">> => string(),
+%%   <<"TableClassOverride">> => list(any())
+%% }
+-type update_replication_group_member_action() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_input() :: #{
@@ -2120,54 +2300,10 @@
 %%   <<"StreamSpecification">> => stream_specification(),
 %%   <<"TableClass">> => list(any()),
 %%   <<"TableName">> := string(),
+%%   <<"VectorIndexUpdates">> => list(vector_index_update()),
 %%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type update_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% put() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Item">> => map(),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> => string()
-%% }
--type put() :: #{binary() => any()}.
-
-%% Example:
-%% batch_statement_request() :: #{
-%%   <<"ConsistentRead">> => boolean(),
-%%   <<"Parameters">> => list(list()),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"Statement">> => string()
-%% }
--type batch_statement_request() :: #{binary() => any()}.
-
-%% Example:
-%% global_table_witness_group_update() :: #{
-%%   <<"Create">> => create_global_table_witness_group_member_action(),
-%%   <<"Delete">> => delete_global_table_witness_group_member_action()
-%% }
--type global_table_witness_group_update() :: #{binary() => any()}.
-
-%% Example:
-%% replica_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type replica_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_output() :: #{
-%%   <<"BackupDescription">> => backup_description()
-%% }
--type delete_backup_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_kinesis_streaming_configuration() :: #{
-%%   <<"ApproximateCreationDateTimePrecision">> => list(any())
-%% }
--type update_kinesis_streaming_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_output() :: #{
@@ -2176,40 +2312,19 @@
 -type update_table_output() :: #{binary() => any()}.
 
 %% Example:
-%% s3_bucket_source() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3BucketOwner">> => string(),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type s3_bucket_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_backups_output() :: #{
-%%   <<"BackupSummaries">> => list(backup_summary()),
-%%   <<"LastEvaluatedBackupArn">> => string()
-%% }
--type list_backups_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_contributor_insights_input() :: #{
-%%   <<"ContributorInsightsAction">> := list(any()),
-%%   <<"ContributorInsightsMode">> => list(any()),
-%%   <<"IndexName">> => string(),
+%% update_table_replica_auto_scaling_input() :: #{
+%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_auto_scaling_update()),
+%%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update(),
+%%   <<"ReplicaUpdates">> => list(replica_auto_scaling_update()),
 %%   <<"TableName">> := string()
 %% }
--type update_contributor_insights_input() :: #{binary() => any()}.
+-type update_table_replica_auto_scaling_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_table_replica_auto_scaling_output() :: #{
+%% update_table_replica_auto_scaling_output() :: #{
 %%   <<"TableAutoScalingDescription">> => table_auto_scaling_description()
 %% }
--type describe_table_replica_auto_scaling_output() :: #{binary() => any()}.
-
-%% Example:
-%% export_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type export_conflict_exception() :: #{binary() => any()}.
+-type update_table_replica_auto_scaling_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_time_to_live_input() :: #{
@@ -2219,77 +2334,82 @@
 -type update_time_to_live_input() :: #{binary() => any()}.
 
 %% Example:
-%% get() :: #{
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"Key">> => map(),
-%%   <<"ProjectionExpression">> => string(),
-%%   <<"TableName">> => string()
+%% update_time_to_live_output() :: #{
+%%   <<"TimeToLiveSpecification">> => time_to_live_specification()
 %% }
--type get() :: #{binary() => any()}.
+-type update_time_to_live_output() :: #{binary() => any()}.
 
 %% Example:
-%% export_table_to_point_in_time_output() :: #{
-%%   <<"ExportDescription">> => export_description()
+%% vector_attribute_definition() :: #{
+%%   <<"AttributeName">> => string()
 %% }
--type export_table_to_point_in_time_output() :: #{binary() => any()}.
+-type vector_attribute_definition() :: #{binary() => any()}.
 
 %% Example:
-%% update_kinesis_streaming_destination_input() :: #{
-%%   <<"StreamArn">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"UpdateKinesisStreamingConfiguration">> => update_kinesis_streaming_configuration()
+%% vector_capacity() :: #{
+%%   <<"VectorSearchRequestBytes">> => float(),
+%%   <<"VectorWriteRequestBytes">> => float()
 %% }
--type update_kinesis_streaming_destination_input() :: #{binary() => any()}.
+-type vector_capacity() :: #{binary() => any()}.
 
 %% Example:
-%% export_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% vector_index() :: #{
+%%   <<"Dimensions">> => float(),
+%%   <<"DistanceFunction">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"Projection">> => projection(),
+%%   <<"SearchSchema">> => list(search_schema_element()),
+%%   <<"VectorAttribute">> => vector_attribute_definition()
 %% }
--type export_not_found_exception() :: #{binary() => any()}.
+-type vector_index() :: #{binary() => any()}.
 
 %% Example:
-%% delete_global_secondary_index_action() :: #{
-%%   <<"IndexName">> => string()
+%% vector_index_description() :: #{
+%%   <<"Backfilling">> => boolean(),
+%%   <<"Dimensions">> => float(),
+%%   <<"DistanceFunction">> => list(any()),
+%%   <<"IndexArn">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexSizeBytes">> => float(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"ItemCount">> => float(),
+%%   <<"Projection">> => projection(),
+%%   <<"SearchSchema">> => list(search_schema_element()),
+%%   <<"VectorAttribute">> => vector_attribute_definition()
 %% }
--type delete_global_secondary_index_action() :: #{binary() => any()}.
+-type vector_index_description() :: #{binary() => any()}.
 
 %% Example:
-%% provisioned_throughput_override() :: #{
-%%   <<"ReadCapacityUnits">> => float()
+%% vector_index_info() :: #{
+%%   <<"Dimensions">> => float(),
+%%   <<"DistanceFunction">> => list(any()),
+%%   <<"IndexName">> => string(),
+%%   <<"Projection">> => projection(),
+%%   <<"SearchSchema">> => list(search_schema_element()),
+%%   <<"VectorAttribute">> => vector_attribute_definition()
 %% }
--type provisioned_throughput_override() :: #{binary() => any()}.
+-type vector_index_info() :: #{binary() => any()}.
 
 %% Example:
-%% table_auto_scaling_description() :: #{
-%%   <<"Replicas">> => list(replica_auto_scaling_description()),
-%%   <<"TableName">> => string(),
-%%   <<"TableStatus">> => list(any())
+%% vector_index_update() :: #{
+%%   <<"Create">> => create_vector_index_action(),
+%%   <<"Delete">> => delete_vector_index_action()
 %% }
--type table_auto_scaling_description() :: #{binary() => any()}.
+-type vector_index_update() :: #{binary() => any()}.
 
 %% Example:
-%% list_imports_output() :: #{
-%%   <<"ImportSummaryList">> => list(import_summary()),
-%%   <<"NextToken">> => string()
+%% warm_throughput() :: #{
+%%   <<"ReadUnitsPerSecond">> => float(),
+%%   <<"WriteUnitsPerSecond">> => float()
 %% }
--type list_imports_output() :: #{binary() => any()}.
+-type warm_throughput() :: #{binary() => any()}.
 
 %% Example:
-%% table_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% write_request() :: #{
+%%   <<"DeleteRequest">> => delete_request(),
+%%   <<"PutRequest">> => put_request()
 %% }
--type table_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% condition_check() :: #{
-%%   <<"ConditionExpression">> => string(),
-%%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"ExpressionAttributeValues">> => map(),
-%%   <<"Key">> => map(),
-%%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
-%%   <<"TableName">> => string()
-%% }
--type condition_check() :: #{binary() => any()}.
+-type write_request() :: #{binary() => any()}.
 
 -type batch_execute_statement_errors() ::
     throttling_exception() | 
@@ -2298,377 +2418,383 @@
 
 -type batch_get_item_errors() ::
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type batch_write_item_errors() ::
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
+    request_limit_exceeded() | 
     replicated_write_conflict_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    item_collection_size_limit_exceeded_exception().
+    internal_server_error().
 
 -type create_backup_errors() ::
     table_not_found_exception() | 
     table_in_use_exception() | 
     limit_exceeded_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    backup_in_use_exception() | 
     continuous_backups_unavailable_exception() | 
-    invalid_endpoint_exception().
+    backup_in_use_exception().
 
 -type create_global_table_errors() ::
     table_not_found_exception() | 
     limit_exceeded_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    global_table_already_exists_exception() | 
-    invalid_endpoint_exception().
+    global_table_already_exists_exception().
 
 -type create_table_errors() ::
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
-    internal_server_error() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type delete_backup_errors() ::
     limit_exceeded_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    backup_in_use_exception() | 
     backup_not_found_exception() | 
-    invalid_endpoint_exception().
+    backup_in_use_exception().
 
 -type delete_item_errors() ::
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    conditional_check_failed_exception() | 
     transaction_conflict_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
+    request_limit_exceeded() | 
     replicated_write_conflict_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    item_collection_size_limit_exceeded_exception().
+    internal_server_error() | 
+    conditional_check_failed_exception().
 
 -type delete_resource_policy_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     policy_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type delete_table_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type describe_backup_errors() ::
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    backup_not_found_exception() | 
-    invalid_endpoint_exception().
+    backup_not_found_exception().
 
 -type describe_continuous_backups_errors() ::
     table_not_found_exception() | 
-    internal_server_error() | 
-    invalid_endpoint_exception().
-
--type describe_contributor_insights_errors() ::
-    internal_server_error() | 
-    resource_not_found_exception().
-
--type describe_export_errors() ::
-    export_not_found_exception() | 
-    limit_exceeded_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_error().
 
--type describe_global_table_errors() ::
+-type describe_contributor_insights_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
+
+-type describe_export_errors() ::
+    limit_exceeded_exception() | 
     internal_server_error() | 
-    global_table_not_found_exception() | 
-    invalid_endpoint_exception().
+    export_not_found_exception().
+
+-type describe_global_table_errors() ::
+    invalid_endpoint_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception().
 
 -type describe_global_table_settings_errors() ::
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    global_table_not_found_exception() | 
-    invalid_endpoint_exception().
+    global_table_not_found_exception().
 
 -type describe_import_errors() ::
     import_not_found_exception().
 
 -type describe_kinesis_streaming_destination_errors() ::
-    internal_server_error() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type describe_limits_errors() ::
-    internal_server_error() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type describe_table_errors() ::
-    internal_server_error() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type describe_table_replica_auto_scaling_errors() ::
-    internal_server_error() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error().
 
 -type describe_time_to_live_errors() ::
-    internal_server_error() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type disable_kinesis_streaming_destination_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type enable_kinesis_streaming_destination_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type execute_statement_errors() ::
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    conditional_check_failed_exception() | 
     transaction_conflict_exception() | 
-    duplicate_item_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    item_collection_size_limit_exceeded_exception().
+    item_collection_size_limit_exceeded_exception() | 
+    internal_server_error() | 
+    duplicate_item_exception() | 
+    conditional_check_failed_exception().
 
 -type execute_transaction_errors() ::
     transaction_in_progress_exception() | 
+    transaction_canceled_exception() | 
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    transaction_canceled_exception().
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception().
 
 -type export_table_to_point_in_time_errors() ::
     table_not_found_exception() | 
-    export_conflict_exception() | 
-    invalid_export_time_exception() | 
+    point_in_time_recovery_unavailable_exception() | 
     limit_exceeded_exception() | 
+    invalid_export_time_exception() | 
     internal_server_error() | 
-    point_in_time_recovery_unavailable_exception().
+    export_conflict_exception().
 
 -type get_item_errors() ::
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type get_resource_policy_errors() ::
-    internal_server_error() | 
     resource_not_found_exception() | 
     policy_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type import_table_errors() ::
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
-    import_conflict_exception() | 
-    resource_in_use_exception().
+    import_conflict_exception().
 
 -type list_backups_errors() ::
-    internal_server_error() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type list_contributor_insights_errors() ::
-    internal_server_error() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error().
 
 -type list_exports_errors() ::
     limit_exceeded_exception() | 
     internal_server_error().
 
 -type list_global_tables_errors() ::
-    internal_server_error() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type list_imports_errors() ::
     limit_exceeded_exception().
 
 -type list_tables_errors() ::
-    internal_server_error() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type list_tags_of_resource_errors() ::
-    internal_server_error() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type put_item_errors() ::
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    conditional_check_failed_exception() | 
     transaction_conflict_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
+    request_limit_exceeded() | 
     replicated_write_conflict_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    item_collection_size_limit_exceeded_exception().
+    internal_server_error() | 
+    conditional_check_failed_exception().
 
 -type put_resource_policy_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     policy_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type query_errors() ::
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type restore_table_from_backup_errors() ::
     table_in_use_exception() | 
+    table_already_exists_exception() | 
     limit_exceeded_exception() | 
-    internal_server_error() | 
-    backup_in_use_exception() | 
-    backup_not_found_exception() | 
     invalid_endpoint_exception() | 
-    table_already_exists_exception().
+    internal_server_error() | 
+    backup_not_found_exception() | 
+    backup_in_use_exception().
 
 -type restore_table_to_point_in_time_errors() ::
     table_not_found_exception() | 
     table_in_use_exception() | 
+    table_already_exists_exception() | 
+    point_in_time_recovery_unavailable_exception() | 
     limit_exceeded_exception() | 
     invalid_restore_time_exception() | 
-    internal_server_error() | 
     invalid_endpoint_exception() | 
-    point_in_time_recovery_unavailable_exception() | 
-    table_already_exists_exception().
+    internal_server_error().
 
 -type scan_errors() ::
     throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    request_limit_exceeded() | 
     provisioned_throughput_exceeded_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error().
+
+-type search_vectors_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    request_limit_exceeded() | 
+    internal_server_error().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type transact_get_items_errors() ::
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     transaction_canceled_exception() | 
-    invalid_endpoint_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    request_limit_exceeded() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_error().
 
 -type transact_write_items_errors() ::
     transaction_in_progress_exception() | 
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     transaction_canceled_exception() | 
-    invalid_endpoint_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    request_limit_exceeded() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception().
 
 -type untag_resource_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type update_continuous_backups_errors() ::
     table_not_found_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_error() | 
-    continuous_backups_unavailable_exception() | 
-    invalid_endpoint_exception().
+    continuous_backups_unavailable_exception().
 
 -type update_contributor_insights_errors() ::
-    internal_server_error() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error().
 
 -type update_global_table_errors() ::
     table_not_found_exception() | 
     replica_not_found_exception() | 
-    internal_server_error() | 
-    global_table_not_found_exception() | 
     replica_already_exists_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_error() | 
+    global_table_not_found_exception().
 
 -type update_global_table_settings_errors() ::
+    resource_in_use_exception() | 
     replica_not_found_exception() | 
-    index_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_server_error() | 
-    global_table_not_found_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error() | 
+    index_not_found_exception() | 
+    global_table_not_found_exception().
 
 -type update_item_errors() ::
-    throttling_exception() | 
-    request_limit_exceeded() | 
-    internal_server_error() | 
-    conditional_check_failed_exception() | 
     transaction_conflict_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
+    request_limit_exceeded() | 
     replicated_write_conflict_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    item_collection_size_limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    item_collection_size_limit_exceeded_exception().
+    internal_server_error() | 
+    conditional_check_failed_exception().
 
 -type update_kinesis_streaming_destination_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type update_table_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 -type update_table_replica_auto_scaling_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error().
 
 -type update_time_to_live_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_endpoint_exception() | 
-    resource_in_use_exception().
+    internal_server_error().
 
 %%====================================================================
 %% API
@@ -2844,17 +2970,14 @@ batch_get_item(Client, Input, Options)
 %% items
 %% until all items have been processed.
 %%
-%% For tables and indexes with provisioned capacity, if none of the items can
-%% be
-%% processed due to insufficient provisioned throughput on all of the tables
-%% in the
-%% request, then `BatchWriteItem' returns a
-%% `ProvisionedThroughputExceededException'. For all tables and indexes,
-%% if
-%% none of the items can be processed due to other throttling scenarios (such
-%% as exceeding
-%% partition level limits), then `BatchWriteItem' returns a
-%% `ThrottlingException'.
+%% If `BatchWriteItem' cannot process any items due to throttling (for
+%% example, insufficient provisioned throughput on the tables in the request,
+%% or
+%% partition-level or account-level limits), it returns a
+%% `ProvisionedThroughputExceededException' or a
+%% `ThrottlingException'. Both indicate that the request was throttled;
+%% check the `ThrottlingReason' field in the returned exception for
+%% details.
 %%
 %% If DynamoDB returns any unprocessed items, you should retry the batch
 %% operation on
@@ -4412,6 +4535,40 @@ scan(Client, Input)
 scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Scan">>, Input, Options).
+
+%% @doc Performs a vector similarity search on a vector index associated with
+%% an Amazon
+%% DynamoDB table, and returns the most similar items sorted by similarity
+%% score
+%% based on the distance function configured for the index.
+%%
+%% Score interpretation depends on the distance function:
+%%
+%% `COSINE' - Returns the items with the k
+%% smallest scores. Scores range from 0 (identical) to 2 (opposite).
+%% Lower scores indicate higher similarity.
+%%
+%% `EUCLIDEAN' - Returns the items with the k
+%% smallest scores. Scores represent the Euclidean distance between
+%% vectors. Lower scores indicate higher similarity.
+%%
+%% `DOT_PRODUCT' - Returns the items with the k
+%% highest scores. Higher scores indicate higher similarity.
+-spec search_vectors(aws_client:aws_client(), search_vectors_input()) ->
+    {ok, search_vectors_output(), tuple()} |
+    {error, any()} |
+    {error, search_vectors_errors(), tuple()}.
+search_vectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_vectors(Client, Input, []).
+
+-spec search_vectors(aws_client:aws_client(), search_vectors_input(), proplists:proplist()) ->
+    {ok, search_vectors_output(), tuple()} |
+    {error, any()} |
+    {error, search_vectors_errors(), tuple()}.
+search_vectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchVectors">>, Input, Options).
 
 %% @doc Associate a set of tags with an Amazon DynamoDB resource.
 %%

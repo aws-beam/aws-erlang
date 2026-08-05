@@ -135,6 +135,108 @@
 
 
 %% Example:
+%% accept_grant_request() :: #{
+%%   <<"GrantArn">> := string()
+%% }
+-type accept_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_grant_response() :: #{
+%%   <<"GrantArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type accept_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% and_rule_statement() :: #{
+%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
+%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
+%% }
+-type and_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% asset() :: #{
+%%   <<"AssetArn">> => string(),
+%%   <<"LatestAssetDiscoveryTime">> => non_neg_integer()
+%% }
+-type asset() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type authorization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automated_discovery_information() :: #{
+%%   <<"LastRunTime">> => non_neg_integer()
+%% }
+-type automated_discovery_information() :: #{binary() => any()}.
+
+%% Example:
+%% borrow_configuration() :: #{
+%%   <<"AllowEarlyCheckIn">> => boolean(),
+%%   <<"MaxTimeToLiveInMinutes">> => integer()
+%% }
+-type borrow_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% check_in_license_request() :: #{
+%%   <<"Beneficiary">> => string(),
+%%   <<"LicenseConsumptionToken">> := string()
+%% }
+-type check_in_license_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_in_license_response() :: #{
+
+%% }
+-type check_in_license_response() :: #{binary() => any()}.
+
+%% Example:
+%% checkout_borrow_license_request() :: #{
+%%   <<"CheckoutMetadata">> => list(metadata()),
+%%   <<"ClientToken">> := string(),
+%%   <<"DigitalSignatureMethod">> := list(any()),
+%%   <<"Entitlements">> := list(entitlement_data()),
+%%   <<"LicenseArn">> := string(),
+%%   <<"NodeId">> => string()
+%% }
+-type checkout_borrow_license_request() :: #{binary() => any()}.
+
+%% Example:
+%% checkout_borrow_license_response() :: #{
+%%   <<"CheckoutMetadata">> => list(metadata()),
+%%   <<"EntitlementsAllowed">> => list(entitlement_data()),
+%%   <<"Expiration">> => string(),
+%%   <<"IssuedAt">> => string(),
+%%   <<"LicenseArn">> => string(),
+%%   <<"LicenseConsumptionToken">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"SignedToken">> => string()
+%% }
+-type checkout_borrow_license_response() :: #{binary() => any()}.
+
+%% Example:
+%% checkout_license_request() :: #{
+%%   <<"Beneficiary">> => string(),
+%%   <<"CheckoutType">> := list(any()),
+%%   <<"ClientToken">> := string(),
+%%   <<"Entitlements">> := list(entitlement_data()),
+%%   <<"KeyFingerprint">> := string(),
+%%   <<"NodeId">> => string(),
+%%   <<"ProductSKU">> := string()
+%% }
+-type checkout_license_request() :: #{binary() => any()}.
+
+%% Example:
 %% checkout_license_response() :: #{
 %%   <<"CheckoutType">> => list(any()),
 %%   <<"EntitlementsAllowed">> => list(entitlement_data()),
@@ -148,65 +250,45 @@
 -type checkout_license_response() :: #{binary() => any()}.
 
 %% Example:
-%% check_in_license_request() :: #{
-%%   <<"Beneficiary">> => string(),
-%%   <<"LicenseConsumptionToken">> := string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type check_in_license_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_license_asset_ruleset_response() :: #{
-%%   <<"LicenseAssetRuleset">> => license_asset_ruleset()
+%% consumed_license_summary() :: #{
+%%   <<"ConsumedLicenses">> => float(),
+%%   <<"ResourceType">> => list(any())
 %% }
--type get_license_asset_ruleset_response() :: #{binary() => any()}.
+-type consumed_license_summary() :: #{binary() => any()}.
 
 %% Example:
-%% report_frequency() :: #{
-%%   <<"period">> => list(any()),
-%%   <<"value">> => integer()
+%% consumption_configuration() :: #{
+%%   <<"BorrowConfiguration">> => borrow_configuration(),
+%%   <<"ProvisionalConfiguration">> => provisional_configuration(),
+%%   <<"RenewType">> => list(any())
 %% }
--type report_frequency() :: #{binary() => any()}.
+-type consumption_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% script_rule_statement() :: #{
-%%   <<"KeyToMatch">> => string(),
-%%   <<"Script">> => string()
+%% create_grant_request() :: #{
+%%   <<"AllowedOperations">> := list(list(any())()),
+%%   <<"ClientToken">> := string(),
+%%   <<"GrantName">> := string(),
+%%   <<"HomeRegion">> := string(),
+%%   <<"LicenseArn">> := string(),
+%%   <<"Principals">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
--type script_rule_statement() :: #{binary() => any()}.
+-type create_grant_request() :: #{binary() => any()}.
 
 %% Example:
-%% cross_region_discovery_status() :: #{
-%%   <<"Message">> => map()
-%% }
--type cross_region_discovery_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_token_response() :: #{
-%%   <<"AccessToken">> => string()
-%% }
--type get_access_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_asset_group() :: #{
-%%   <<"AssociatedLicenseAssetRulesetARNs">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"LatestResourceDiscoveryTime">> => non_neg_integer(),
-%%   <<"LatestUsageAnalysisTime">> => non_neg_integer(),
-%%   <<"LicenseAssetGroupArn">> => string(),
-%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
-%%   <<"Name">> => string(),
-%%   <<"Properties">> => list(license_asset_group_property()),
+%% create_grant_response() :: #{
+%%   <<"GrantArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"Version">> => string()
 %% }
--type license_asset_group() :: #{binary() => any()}.
-
-%% Example:
-%% service_status() :: #{
-%%   <<"CrossAccountDiscovery">> => cross_account_discovery_service_status(),
-%%   <<"CrossRegionDiscovery">> => cross_region_discovery_status()
-%% }
--type service_status() :: #{binary() => any()}.
+-type create_grant_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_grant_version_request() :: #{
@@ -222,58 +304,62 @@
 -type create_grant_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% license_configuration() :: #{
-%%   <<"AutomatedDiscoveryInformation">> => automated_discovery_information(),
-%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()),
-%%   <<"ConsumedLicenses">> => float(),
+%% create_grant_version_response() :: #{
+%%   <<"GrantArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type create_grant_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_license_asset_group_request() :: #{
+%%   <<"AssociatedLicenseAssetRulesetARNs">> := list(string()),
+%%   <<"ClientToken">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"DisassociateWhenNotFound">> => boolean(),
-%%   <<"LicenseConfigurationArn">> => string(),
-%%   <<"LicenseConfigurationId">> => string(),
-%%   <<"LicenseCount">> => float(),
-%%   <<"LicenseCountHardLimit">> => boolean(),
-%%   <<"LicenseCountingType">> => list(any()),
-%%   <<"LicenseExpiry">> => float(),
-%%   <<"LicenseRules">> => list(string()),
-%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ProductInformationList">> => list(product_information()),
+%%   <<"LicenseAssetGroupConfigurations">> := list(license_asset_group_configuration()),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => list(license_asset_group_property()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_license_asset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroupArn">> => string(),
 %%   <<"Status">> => string()
 %% }
--type license_configuration() :: #{binary() => any()}.
+-type create_license_asset_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_received_grants_for_organization_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_grants_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_asset_ruleset() :: #{
+%% create_license_asset_ruleset_request() :: #{
+%%   <<"ClientToken">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"LicenseAssetRulesetArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Rules">> => list(license_asset_rule())
+%%   <<"Name">> := string(),
+%%   <<"Rules">> := list(license_asset_rule()),
+%%   <<"Tags">> => list(tag())
 %% }
--type license_asset_ruleset() :: #{binary() => any()}.
+-type create_license_asset_ruleset_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_usage_for_license_configuration_response() :: #{
-%%   <<"LicenseConfigurationUsageList">> => list(license_configuration_usage()),
-%%   <<"NextToken">> => string()
+%% create_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRulesetArn">> => string()
 %% }
--type list_usage_for_license_configuration_response() :: #{binary() => any()}.
+-type create_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_license_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisassociateWhenNotFound">> => boolean(),
+%%   <<"LicenseCount">> => float(),
+%%   <<"LicenseCountHardLimit">> => boolean(),
+%%   <<"LicenseCountingType">> := list(any()),
+%%   <<"LicenseExpiry">> => float(),
+%%   <<"LicenseRules">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"ProductInformationList">> => list(product_information()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_license_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_license_configuration_response() :: #{
@@ -282,398 +368,36 @@
 -type create_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_license_asset_rulesets_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ShowAWSManagedLicenseAssetRulesets">> => boolean()
-%% }
--type list_license_asset_rulesets_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type filter_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_request() :: #{
-%%   <<"LicenseArn">> := string(),
-%%   <<"Version">> => string()
-%% }
--type get_license_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_asset_ruleset_request() :: #{
-%%   <<"LicenseAssetRulesetArn">> := string()
-%% }
--type get_license_asset_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_configuration_usage() :: #{
-%%   <<"AssociationTime">> => non_neg_integer(),
-%%   <<"ConsumedLicenses">> => float(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceOwnerId">> => string(),
-%%   <<"ResourceStatus">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type license_configuration_usage() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_conversion_tasks_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_conversion_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_configuration_association() :: #{
-%%   <<"AmiAssociationScope">> => string(),
-%%   <<"AssociationTime">> => non_neg_integer(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceOwnerId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type license_configuration_association() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_configurations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseConfigurationArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_asset_group_request() :: #{
-%%   <<"LicenseAssetGroupArn">> := string()
-%% }
--type get_license_asset_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_usage() :: #{
-%%   <<"EntitlementUsages">> => list(entitlement_usage())
-%% }
--type license_usage() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type rate_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement_not_allowed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entitlement_not_allowed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_received_licenses_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_licenses_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_usage_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type license_usage_exception() :: #{binary() => any()}.
-
-%% Example:
-%% failed_dependency_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type failed_dependency_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_licenses_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_licenses_request() :: #{binary() => any()}.
-
-%% Example:
-%% organization_configuration() :: #{
-%%   <<"EnableIntegration">> => boolean()
-%% }
--type organization_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_configurations_for_organization_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseConfigurationArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_configurations_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_conversion_task_response() :: #{
-%%   <<"DestinationLicenseContext">> => license_conversion_context(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"LicenseConversionTaskId">> => string(),
-%%   <<"LicenseConversionTime">> => non_neg_integer(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"SourceLicenseContext">> => license_conversion_context(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type get_license_conversion_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% license() :: #{
-%%   <<"Beneficiary">> => string(),
-%%   <<"ConsumptionConfiguration">> => consumption_configuration(),
-%%   <<"CreateTime">> => string(),
-%%   <<"Entitlements">> => list(entitlement()),
-%%   <<"HomeRegion">> => string(),
-%%   <<"Issuer">> => issuer_details(),
-%%   <<"LicenseArn">> => string(),
-%%   <<"LicenseMetadata">> => list(metadata()),
-%%   <<"LicenseName">> => string(),
-%%   <<"ProductName">> => string(),
-%%   <<"ProductSKU">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Validity">> => datetime_range(),
-%%   <<"Version">> => string()
-%% }
--type license() :: #{binary() => any()}.
-
-%% Example:
-%% license_specification() :: #{
-%%   <<"AmiAssociationScope">> => string(),
-%%   <<"LicenseConfigurationArn">> => string()
-%% }
--type license_specification() :: #{binary() => any()}.
-
-%% Example:
-%% delete_token_response() :: #{
-
-%% }
--type delete_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_filter() :: #{
-%%   <<"Condition">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type inventory_filter() :: #{binary() => any()}.
-
-%% Example:
-%% metadata() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_asset_group_response() :: #{
-%%   <<"LicenseAssetGroupArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type update_license_asset_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_asset_group_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_license_asset_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_configuration_rule_statement() :: #{
-%%   <<"AndRuleStatement">> => and_rule_statement(),
-%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
-%%   <<"OrRuleStatement">> => or_rule_statement()
-%% }
--type license_configuration_rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_versions_response() :: #{
-%%   <<"Licenses">> => list(license()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_manager_report_generators_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_manager_report_generators_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_asset_groups_response() :: #{
-%%   <<"LicenseAssetGroups">> => list(license_asset_group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_asset_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_received_licenses_for_organization_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_licenses_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_licenses_response() :: #{
-%%   <<"Licenses">> => list(license()),
-%%   <<"NextToken">> => string()
-%% }
--type list_licenses_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_version_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"ConsumptionConfiguration">> := consumption_configuration(),
-%%   <<"Entitlements">> := list(entitlement()),
-%%   <<"HomeRegion">> := string(),
-%%   <<"Issuer">> := issuer(),
-%%   <<"LicenseArn">> := string(),
-%%   <<"LicenseMetadata">> => list(metadata()),
-%%   <<"LicenseName">> := string(),
-%%   <<"ProductName">> := string(),
-%%   <<"SourceVersion">> => string(),
-%%   <<"Status">> := list(any()),
-%%   <<"Validity">> := datetime_range()
-%% }
--type create_license_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_entitlements_allowed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_entitlements_allowed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_asset_ruleset_response() :: #{
-
-%% }
--type delete_license_asset_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_usage_request() :: #{
-%%   <<"LicenseArn">> := string()
-%% }
--type get_license_usage_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_distributed_grants_response() :: #{
-%%   <<"Grants">> => list(grant()),
-%%   <<"NextToken">> => string()
-%% }
--type list_distributed_grants_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_asset_ruleset_response() :: #{
-%%   <<"LicenseAssetRulesetArn">> => string()
-%% }
--type update_license_asset_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_configuration_response() :: #{
-
-%% }
--type update_license_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% matching_rule_statement() :: #{
-%%   <<"Constraint">> => string(),
-%%   <<"KeyToMatch">> => string(),
-%%   <<"ValueToMatch">> => list(string())
-%% }
--type matching_rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
+%% create_license_conversion_task_for_resource_request() :: #{
+%%   <<"DestinationLicenseContext">> := license_conversion_context(),
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%%   <<"SourceLicenseContext">> := license_conversion_context()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_license_conversion_task_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% managed_resource_summary() :: #{
-%%   <<"AssociationCount">> => float(),
-%%   <<"ResourceType">> => list(any())
+%% create_license_conversion_task_for_resource_response() :: #{
+%%   <<"LicenseConversionTaskId">> => string()
 %% }
--type managed_resource_summary() :: #{binary() => any()}.
+-type create_license_conversion_task_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% datetime_range() :: #{
-%%   <<"Begin">> => string(),
-%%   <<"End">> => string()
-%% }
--type datetime_range() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_manager_report_generator_response() :: #{
-
-%% }
--type update_license_manager_report_generator_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_asset_ruleset_request() :: #{
+%% create_license_manager_report_generator_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"LicenseAssetRulesetArn">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"Rules">> := list(license_asset_rule())
+%%   <<"ReportContext">> := report_context(),
+%%   <<"ReportFrequency">> := report_frequency(),
+%%   <<"ReportGeneratorName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(list(any())())
 %% }
--type update_license_asset_ruleset_request() :: #{binary() => any()}.
+-type create_license_manager_report_generator_request() :: #{binary() => any()}.
 
 %% Example:
-%% consumption_configuration() :: #{
-%%   <<"BorrowConfiguration">> => borrow_configuration(),
-%%   <<"ProvisionalConfiguration">> => provisional_configuration(),
-%%   <<"RenewType">> => list(any())
+%% create_license_manager_report_generator_response() :: #{
+%%   <<"LicenseManagerReportGeneratorArn">> => string()
 %% }
--type consumption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_grant_response() :: #{
-%%   <<"Grant">> => grant()
-%% }
--type get_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_failures_for_license_configuration_operations_response() :: #{
-%%   <<"LicenseOperationFailureList">> => list(license_operation_failure()),
-%%   <<"NextToken">> => string()
-%% }
--type list_failures_for_license_configuration_operations_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_specifications_for_resource_response() :: #{
-
-%% }
--type update_license_specifications_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_asset_group_response() :: #{
-%%   <<"LicenseAssetGroupArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type create_license_asset_group_response() :: #{binary() => any()}.
+-type create_license_manager_report_generator_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_license_request() :: #{
@@ -693,128 +417,30 @@
 -type create_license_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_license_manager_report_generator_request() :: #{
-%%   <<"LicenseManagerReportGeneratorArn">> := string()
-%% }
--type delete_license_manager_report_generator_request() :: #{binary() => any()}.
-
-%% Example:
-%% options() :: #{
-%%   <<"ActivationOverrideBehavior">> => list(any())
-%% }
--type options() :: #{binary() => any()}.
-
-%% Example:
-%% received_metadata() :: #{
-%%   <<"AllowedOperations">> => list(list(any())()),
-%%   <<"ReceivedStatus">> => list(any()),
-%%   <<"ReceivedStatusReason">> => string()
-%% }
--type received_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% reject_grant_request() :: #{
-%%   <<"GrantArn">> := string()
-%% }
--type reject_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_distributed_grants_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"GrantArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_distributed_grants_request() :: #{binary() => any()}.
-
-%% Example:
-%% reject_grant_response() :: #{
-%%   <<"GrantArn">> => string(),
+%% create_license_response() :: #{
+%%   <<"LicenseArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Version">> => string()
 %% }
--type reject_grant_response() :: #{binary() => any()}.
+-type create_license_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_received_grants_for_organization_response() :: #{
-%%   <<"Grants">> => list(grant()),
-%%   <<"NextToken">> => string()
+%% create_license_version_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"ConsumptionConfiguration">> := consumption_configuration(),
+%%   <<"Entitlements">> := list(entitlement()),
+%%   <<"HomeRegion">> := string(),
+%%   <<"Issuer">> := issuer(),
+%%   <<"LicenseArn">> := string(),
+%%   <<"LicenseMetadata">> => list(metadata()),
+%%   <<"LicenseName">> := string(),
+%%   <<"ProductName">> := string(),
+%%   <<"ResetUsage">> => boolean(),
+%%   <<"SourceVersion">> => string(),
+%%   <<"Status">> := list(any()),
+%%   <<"Validity">> := datetime_range()
 %% }
--type list_received_grants_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_configurations_response() :: #{
-%%   <<"LicenseConfigurations">> => list(license_configuration()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% asset() :: #{
-%%   <<"AssetArn">> => string(),
-%%   <<"LatestAssetDiscoveryTime">> => non_neg_integer()
-%% }
--type asset() :: #{binary() => any()}.
-
-%% Example:
-%% redirect_exception() :: #{
-%%   <<"Location">> => string(),
-%%   <<"Message">> => string()
-%% }
--type redirect_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_response() :: #{
-%%   <<"License">> => license()
-%% }
--type get_license_response() :: #{binary() => any()}.
-
-%% Example:
-%% grant() :: #{
-%%   <<"GrantArn">> => string(),
-%%   <<"GrantName">> => string(),
-%%   <<"GrantStatus">> => list(any()),
-%%   <<"GrantedOperations">> => list(list(any())()),
-%%   <<"GranteePrincipalArn">> => string(),
-%%   <<"HomeRegion">> => string(),
-%%   <<"LicenseArn">> => string(),
-%%   <<"Options">> => options(),
-%%   <<"ParentArn">> => string(),
-%%   <<"StatusReason">> => string(),
-%%   <<"Version">> => string()
-%% }
--type grant() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% license_asset_group_configuration() :: #{
-%%   <<"UsageDimension">> => string()
-%% }
--type license_asset_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_settings_response() :: #{
-
-%% }
--type update_service_settings_response() :: #{binary() => any()}.
+-type create_license_version_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_license_version_response() :: #{
@@ -825,168 +451,41 @@
 -type create_license_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% and_rule_statement() :: #{
-%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
-%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
-%% }
--type and_rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% list_assets_for_license_asset_group_response() :: #{
-%%   <<"Assets">> => list(asset()),
-%%   <<"NextToken">> => string()
-%% }
--type list_assets_for_license_asset_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_response() :: #{
-%%   <<"LicenseArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type create_license_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_grant_request() :: #{
-%%   <<"GrantArn">> := string(),
-%%   <<"Version">> => string()
-%% }
--type get_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_configuration_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisassociateWhenNotFound">> => boolean(),
-%%   <<"LicenseConfigurationArn">> := string(),
-%%   <<"LicenseConfigurationStatus">> => list(any()),
-%%   <<"LicenseCount">> => float(),
-%%   <<"LicenseCountHardLimit">> => boolean(),
-%%   <<"LicenseExpiry">> => float(),
-%%   <<"LicenseRules">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"ProductInformationList">> => list(product_information())
-%% }
--type update_license_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_grant_request() :: #{
-%%   <<"AllowedOperations">> := list(list(any())()),
+%% create_token_request() :: #{
 %%   <<"ClientToken">> := string(),
-%%   <<"GrantName">> := string(),
-%%   <<"HomeRegion">> := string(),
+%%   <<"ExpirationInDays">> => integer(),
 %%   <<"LicenseArn">> := string(),
-%%   <<"Principals">> := list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_conversion_task_request() :: #{
-%%   <<"LicenseConversionTaskId">> := string()
-%% }
--type get_license_conversion_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_grant_request() :: #{
-%%   <<"GrantArn">> := string()
-%% }
--type accept_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_assets_for_license_asset_group_request() :: #{
-%%   <<"AssetType">> := string(),
-%%   <<"LicenseAssetGroupArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_assets_for_license_asset_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% automated_discovery_information() :: #{
-%%   <<"LastRunTime">> => non_neg_integer()
-%% }
--type automated_discovery_information() :: #{binary() => any()}.
-
-%% Example:
-%% product_information() :: #{
-%%   <<"ProductInformationFilterList">> => list(product_information_filter()),
-%%   <<"ResourceType">> => string()
-%% }
--type product_information() :: #{binary() => any()}.
-
-%% Example:
-%% token_data() :: #{
-%%   <<"ExpirationTime">> => string(),
-%%   <<"LicenseArn">> => string(),
 %%   <<"RoleArns">> => list(string()),
-%%   <<"Status">> => string(),
+%%   <<"TokenProperties">> => list(string())
+%% }
+-type create_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_token_response() :: #{
+%%   <<"Token">> => string(),
 %%   <<"TokenId">> => string(),
-%%   <<"TokenProperties">> => list(string()),
-%%   <<"TokenType">> => string()
+%%   <<"TokenType">> => list(any())
 %% }
--type token_data() :: #{binary() => any()}.
+-type create_token_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_license_configuration_response() :: #{
-
+%% cross_account_discovery_service_status() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_license_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_asset_rulesets_response() :: #{
-%%   <<"LicenseAssetRulesets">> => list(license_asset_ruleset()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_asset_rulesets_response() :: #{binary() => any()}.
+-type cross_account_discovery_service_status() :: #{binary() => any()}.
 
 %% Example:
-%% list_failures_for_license_configuration_operations_request() :: #{
-%%   <<"LicenseConfigurationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% cross_region_discovery_status() :: #{
+%%   <<"Message">> => map()
 %% }
--type list_failures_for_license_configuration_operations_request() :: #{binary() => any()}.
+-type cross_region_discovery_status() :: #{binary() => any()}.
 
 %% Example:
-%% extend_license_consumption_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"LicenseConsumptionToken">> := string()
+%% datetime_range() :: #{
+%%   <<"Begin">> => string(),
+%%   <<"End">> => string()
 %% }
--type extend_license_consumption_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_asset_ruleset_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Rules">> := list(license_asset_rule()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_license_asset_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_token_request() :: #{
-%%   <<"TokenId">> := string()
-%% }
--type delete_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_asset_group_response() :: #{
-%%   <<"LicenseAssetGroup">> => license_asset_group()
-%% }
--type get_license_asset_group_response() :: #{binary() => any()}.
+-type datetime_range() :: #{binary() => any()}.
 
 %% Example:
 %% delete_grant_request() :: #{
@@ -997,151 +496,6 @@
 -type delete_grant_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_specifications_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_license_specifications_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_manager_report_generator_response() :: #{
-%%   <<"ReportGenerator">> => report_generator()
-%% }
--type get_license_manager_report_generator_response() :: #{binary() => any()}.
-
-%% Example:
-%% consumed_license_summary() :: #{
-%%   <<"ConsumedLicenses">> => float(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type consumed_license_summary() :: #{binary() => any()}.
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"keyPrefix">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% region_status() :: #{
-%%   <<"Status">> => string()
-%% }
--type region_status() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_manager_report_generator_response() :: #{
-%%   <<"LicenseManagerReportGeneratorArn">> => string()
-%% }
--type create_license_manager_report_generator_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_conversion_context() :: #{
-%%   <<"ProductCodes">> => list(product_code_list_item()),
-%%   <<"UsageOperation">> => string()
-%% }
--type license_conversion_context() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_resource_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_inventory_request() :: #{
-%%   <<"Filters">> => list(inventory_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_inventory_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_configurations_for_organization_response() :: #{
-%%   <<"LicenseConfigurations">> => list(license_configuration()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_configurations_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_grant_response() :: #{
-%%   <<"GrantArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type accept_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_conversion_tasks_response() :: #{
-%%   <<"LicenseConversionTasks">> => list(license_conversion_task()),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_conversion_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% borrow_configuration() :: #{
-%%   <<"AllowEarlyCheckIn">> => boolean(),
-%%   <<"MaxTimeToLiveInMinutes">> => integer()
-%% }
--type borrow_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_received_licenses_for_organization_response() :: #{
-%%   <<"Licenses">> => list(granted_license()),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_licenses_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_inventory_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceInventoryList">> => list(resource_inventory())
-%% }
--type list_resource_inventory_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_configuration_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisassociateWhenNotFound">> => boolean(),
-%%   <<"LicenseCount">> => float(),
-%%   <<"LicenseCountHardLimit">> => boolean(),
-%%   <<"LicenseCountingType">> := list(any()),
-%%   <<"LicenseExpiry">> => float(),
-%%   <<"LicenseRules">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"ProductInformationList">> => list(product_information()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_license_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_license_asset_group_request() :: #{
-%%   <<"AssociatedLicenseAssetRulesetARNs">> := list(string()),
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"LicenseAssetGroupArn">> := string(),
-%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
-%%   <<"Name">> => string(),
-%%   <<"Properties">> => list(license_asset_group_property()),
-%%   <<"Status">> => list(any())
-%% }
--type update_license_asset_group_request() :: #{binary() => any()}.
-
-%% Example:
 %% delete_grant_response() :: #{
 %%   <<"GrantArn">> => string(),
 %%   <<"Status">> => list(any()),
@@ -1150,10 +504,78 @@
 -type delete_grant_response() :: #{binary() => any()}.
 
 %% Example:
-%% authorization_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_license_asset_group_request() :: #{
+%%   <<"LicenseAssetGroupArn">> := string()
 %% }
--type authorization_exception() :: #{binary() => any()}.
+-type delete_license_asset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_group_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_ruleset_request() :: #{
+%%   <<"LicenseAssetRulesetArn">> := string()
+%% }
+-type delete_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_asset_ruleset_response() :: #{
+
+%% }
+-type delete_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_configuration_request() :: #{
+%%   <<"LicenseConfigurationArn">> := string()
+%% }
+-type delete_license_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_configuration_response() :: #{
+
+%% }
+-type delete_license_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_manager_report_generator_request() :: #{
+%%   <<"LicenseManagerReportGeneratorArn">> := string()
+%% }
+-type delete_license_manager_report_generator_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_manager_report_generator_response() :: #{
+
+%% }
+-type delete_license_manager_report_generator_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_request() :: #{
+%%   <<"LicenseArn">> := string(),
+%%   <<"SourceVersion">> := string()
+%% }
+-type delete_license_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_license_response() :: #{
+%%   <<"DeletionDate">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_license_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_token_request() :: #{
+%%   <<"TokenId">> := string()
+%% }
+-type delete_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_token_response() :: #{
+
+%% }
+-type delete_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% entitlement() :: #{
@@ -1167,36 +589,117 @@
 -type entitlement() :: #{binary() => any()}.
 
 %% Example:
-%% checkout_borrow_license_response() :: #{
-%%   <<"CheckoutMetadata">> => list(metadata()),
-%%   <<"EntitlementsAllowed">> => list(entitlement_data()),
+%% entitlement_data() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type entitlement_data() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_not_allowed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entitlement_not_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_usage() :: #{
+%%   <<"ConsumedValue">> => string(),
+%%   <<"MaxCount">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Unit">> => list(any())
+%% }
+-type entitlement_usage() :: #{binary() => any()}.
+
+%% Example:
+%% extend_license_consumption_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"LicenseConsumptionToken">> := string()
+%% }
+-type extend_license_consumption_request() :: #{binary() => any()}.
+
+%% Example:
+%% extend_license_consumption_response() :: #{
 %%   <<"Expiration">> => string(),
-%%   <<"IssuedAt">> => string(),
-%%   <<"LicenseArn">> => string(),
-%%   <<"LicenseConsumptionToken">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"SignedToken">> => string()
+%%   <<"LicenseConsumptionToken">> => string()
 %% }
--type checkout_borrow_license_response() :: #{binary() => any()}.
+-type extend_license_consumption_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_license_manager_report_generator_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ReportContext">> := report_context(),
-%%   <<"ReportFrequency">> := report_frequency(),
-%%   <<"ReportGeneratorName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(list(any())())
+%% failed_dependency_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
 %% }
--type create_license_manager_report_generator_request() :: #{binary() => any()}.
+-type failed_dependency_exception() :: #{binary() => any()}.
 
 %% Example:
-%% product_code_list_item() :: #{
-%%   <<"ProductCodeId">> => string(),
-%%   <<"ProductCodeType">> => list(any())
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
 %% }
--type product_code_list_item() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% filter_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type filter_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_request() :: #{
+%%   <<"Token">> := string(),
+%%   <<"TokenProperties">> => list(string())
+%% }
+-type get_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_response() :: #{
+%%   <<"AccessToken">> => string()
+%% }
+-type get_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_grant_request() :: #{
+%%   <<"GrantArn">> := string(),
+%%   <<"Version">> => string()
+%% }
+-type get_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_grant_response() :: #{
+%%   <<"Grant">> => grant()
+%% }
+-type get_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_group_request() :: #{
+%%   <<"LicenseAssetGroupArn">> := string()
+%% }
+-type get_license_asset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroup">> => license_asset_group()
+%% }
+-type get_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_ruleset_request() :: #{
+%%   <<"LicenseAssetRulesetArn">> := string()
+%% }
+-type get_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRuleset">> => license_asset_ruleset()
+%% }
+-type get_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_license_configuration_request() :: #{
+%%   <<"LicenseConfigurationArn">> := string()
+%% }
+-type get_license_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_license_configuration_response() :: #{
@@ -1222,26 +725,13 @@
 -type get_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_license_asset_group_request() :: #{
-%%   <<"LicenseAssetGroupArn">> := string()
+%% get_license_conversion_task_request() :: #{
+%%   <<"LicenseConversionTaskId">> := string()
 %% }
--type delete_license_asset_group_request() :: #{binary() => any()}.
+-type get_license_conversion_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_received_licenses_response() :: #{
-%%   <<"Licenses">> => list(granted_license()),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_licenses_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% license_conversion_task() :: #{
+%% get_license_conversion_task_response() :: #{
 %%   <<"DestinationLicenseContext">> => license_conversion_context(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"LicenseConversionTaskId">> => string(),
@@ -1252,129 +742,79 @@
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string()
 %% }
--type license_conversion_task() :: #{binary() => any()}.
+-type get_license_conversion_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_license_response() :: #{
-%%   <<"DeletionDate">> => string(),
-%%   <<"Status">> => list(any())
+%% get_license_manager_report_generator_request() :: #{
+%%   <<"LicenseManagerReportGeneratorArn">> := string()
 %% }
--type delete_license_response() :: #{binary() => any()}.
+-type get_license_manager_report_generator_request() :: #{binary() => any()}.
 
 %% Example:
-%% entitlement_usage() :: #{
-%%   <<"ConsumedValue">> => string(),
-%%   <<"MaxCount">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Unit">> => list(any())
+%% get_license_manager_report_generator_response() :: #{
+%%   <<"ReportGenerator">> => report_generator()
 %% }
--type entitlement_usage() :: #{binary() => any()}.
+-type get_license_manager_report_generator_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% issuer() :: #{
-%%   <<"Name">> => string(),
-%%   <<"SignKey">> => string()
-%% }
--type issuer() :: #{binary() => any()}.
-
-%% Example:
-%% report_context() :: #{
-%%   <<"licenseAssetGroupArns">> => list(string()),
-%%   <<"licenseConfigurationArns">> => list(string()),
-%%   <<"reportEndDate">> => non_neg_integer(),
-%%   <<"reportStartDate">> => non_neg_integer()
-%% }
--type report_context() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_configuration_request() :: #{
-%%   <<"LicenseConfigurationArn">> := string()
-%% }
--type delete_license_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_usage_for_license_configuration_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseConfigurationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_usage_for_license_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% server_internal_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type server_internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_request() :: #{
+%% get_license_request() :: #{
 %%   <<"LicenseArn">> := string(),
-%%   <<"SourceVersion">> := string()
+%%   <<"Version">> => string()
 %% }
--type delete_license_request() :: #{binary() => any()}.
+-type get_license_request() :: #{binary() => any()}.
 
 %% Example:
-%% report_generator() :: #{
-%%   <<"CreateTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastReportGenerationTime">> => string(),
-%%   <<"LastRunFailureReason">> => string(),
-%%   <<"LastRunStatus">> => string(),
-%%   <<"LicenseManagerReportGeneratorArn">> => string(),
-%%   <<"ReportContext">> => report_context(),
-%%   <<"ReportCreatorAccount">> => string(),
-%%   <<"ReportFrequency">> => report_frequency(),
-%%   <<"ReportGeneratorName">> => string(),
-%%   <<"ReportType">> => list(list(any())()),
-%%   <<"S3Location">> => s3_location(),
-%%   <<"Tags">> => list(tag())
+%% get_license_response() :: #{
+%%   <<"License">> => license()
 %% }
--type report_generator() :: #{binary() => any()}.
+-type get_license_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_license_configuration_request() :: #{
-%%   <<"LicenseConfigurationArn">> := string()
+%% get_license_usage_request() :: #{
+%%   <<"LicenseArn">> := string()
 %% }
--type get_license_configuration_request() :: #{binary() => any()}.
+-type get_license_usage_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_received_grants_response() :: #{
-%%   <<"Grants">> => list(grant()),
-%%   <<"NextToken">> => string()
+%% get_license_usage_response() :: #{
+%%   <<"LicenseUsage">> => license_usage()
 %% }
--type list_received_grants_response() :: #{binary() => any()}.
+-type get_license_usage_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
+%% get_service_settings_request() :: #{
+
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type get_service_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% get_service_settings_response() :: #{
+%%   <<"CrossRegionDiscoveryHomeRegion">> => string(),
+%%   <<"CrossRegionDiscoverySourceRegions">> => list(string()),
+%%   <<"EnableCrossAccountsDiscovery">> => boolean(),
+%%   <<"LicenseManagerResourceShareArn">> => string(),
+%%   <<"OrganizationConfiguration">> => organization_configuration(),
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ServiceStatus">> => service_status(),
+%%   <<"SnsTopicArn">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type get_service_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% check_in_license_response() :: #{
-
+%% grant() :: #{
+%%   <<"GrantArn">> => string(),
+%%   <<"GrantName">> => string(),
+%%   <<"GrantStatus">> => list(any()),
+%%   <<"GrantedOperations">> => list(list(any())()),
+%%   <<"GranteePrincipalArn">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"LicenseArn">> => string(),
+%%   <<"Options">> => options(),
+%%   <<"ParentArn">> => string(),
+%%   <<"StatusReason">> => string(),
+%%   <<"Version">> => string()
 %% }
--type check_in_license_response() :: #{binary() => any()}.
-
-%% Example:
-%% extend_license_consumption_response() :: #{
-%%   <<"Expiration">> => string(),
-%%   <<"LicenseConsumptionToken">> => string()
-%% }
--type extend_license_consumption_response() :: #{binary() => any()}.
+-type grant() :: #{binary() => any()}.
 
 %% Example:
 %% granted_license() :: #{
@@ -1406,20 +846,173 @@
 -type instance_rule_statement() :: #{binary() => any()}.
 
 %% Example:
-%% create_grant_version_response() :: #{
-%%   <<"GrantArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Version">> => string()
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_grant_version_response() :: #{binary() => any()}.
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_license_specifications_for_resource_request() :: #{
-%%   <<"AddLicenseSpecifications">> => list(license_specification()),
-%%   <<"RemoveLicenseSpecifications">> => list(license_specification()),
-%%   <<"ResourceArn">> := string()
+%% invalid_resource_state_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_license_specifications_for_resource_request() :: #{binary() => any()}.
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type inventory_filter() :: #{binary() => any()}.
+
+%% Example:
+%% issuer() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SignKey">> => string()
+%% }
+-type issuer() :: #{binary() => any()}.
+
+%% Example:
+%% issuer_details() :: #{
+%%   <<"KeyFingerprint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SignKey">> => string()
+%% }
+-type issuer_details() :: #{binary() => any()}.
+
+%% Example:
+%% license() :: #{
+%%   <<"Beneficiary">> => string(),
+%%   <<"ConsumptionConfiguration">> => consumption_configuration(),
+%%   <<"CreateTime">> => string(),
+%%   <<"Entitlements">> => list(entitlement()),
+%%   <<"HomeRegion">> => string(),
+%%   <<"Issuer">> => issuer_details(),
+%%   <<"LicenseArn">> => string(),
+%%   <<"LicenseMetadata">> => list(metadata()),
+%%   <<"LicenseName">> => string(),
+%%   <<"ProductName">> => string(),
+%%   <<"ProductSKU">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Validity">> => datetime_range(),
+%%   <<"Version">> => string()
+%% }
+-type license() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_group() :: #{
+%%   <<"AssociatedLicenseAssetRulesetARNs">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"LatestResourceDiscoveryTime">> => non_neg_integer(),
+%%   <<"LatestUsageAnalysisTime">> => non_neg_integer(),
+%%   <<"LicenseAssetGroupArn">> => string(),
+%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => list(license_asset_group_property()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type license_asset_group() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_group_configuration() :: #{
+%%   <<"UsageDimension">> => string()
+%% }
+-type license_asset_group_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_group_property() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type license_asset_group_property() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_rule() :: #{
+%%   <<"RuleStatement">> => rule_statement()
+%% }
+-type license_asset_rule() :: #{binary() => any()}.
+
+%% Example:
+%% license_asset_ruleset() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetRulesetArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> => list(license_asset_rule())
+%% }
+-type license_asset_ruleset() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration() :: #{
+%%   <<"AutomatedDiscoveryInformation">> => automated_discovery_information(),
+%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()),
+%%   <<"ConsumedLicenses">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"DisassociateWhenNotFound">> => boolean(),
+%%   <<"LicenseConfigurationArn">> => string(),
+%%   <<"LicenseConfigurationId">> => string(),
+%%   <<"LicenseCount">> => float(),
+%%   <<"LicenseCountHardLimit">> => boolean(),
+%%   <<"LicenseCountingType">> => list(any()),
+%%   <<"LicenseExpiry">> => float(),
+%%   <<"LicenseRules">> => list(string()),
+%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProductInformationList">> => list(product_information()),
+%%   <<"Status">> => string()
+%% }
+-type license_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration_association() :: #{
+%%   <<"AmiAssociationScope">> => string(),
+%%   <<"AssociationTime">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceOwnerId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type license_configuration_association() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration_rule_statement() :: #{
+%%   <<"AndRuleStatement">> => and_rule_statement(),
+%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
+%%   <<"OrRuleStatement">> => or_rule_statement()
+%% }
+-type license_configuration_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration_usage() :: #{
+%%   <<"AssociationTime">> => non_neg_integer(),
+%%   <<"ConsumedLicenses">> => float(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceOwnerId">> => string(),
+%%   <<"ResourceStatus">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type license_configuration_usage() :: #{binary() => any()}.
+
+%% Example:
+%% license_conversion_context() :: #{
+%%   <<"ProductCodes">> => list(product_code_list_item()),
+%%   <<"UsageOperation">> => string()
+%% }
+-type license_conversion_context() :: #{binary() => any()}.
+
+%% Example:
+%% license_conversion_task() :: #{
+%%   <<"DestinationLicenseContext">> => license_conversion_context(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"LicenseConversionTaskId">> => string(),
+%%   <<"LicenseConversionTime">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceLicenseContext">> => license_conversion_context(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type license_conversion_task() :: #{binary() => any()}.
 
 %% Example:
 %% license_operation_failure() :: #{
@@ -1435,24 +1028,248 @@
 -type license_operation_failure() :: #{binary() => any()}.
 
 %% Example:
-%% get_service_settings_response() :: #{
-%%   <<"CrossRegionDiscoveryHomeRegion">> => string(),
-%%   <<"CrossRegionDiscoverySourceRegions">> => list(string()),
-%%   <<"EnableCrossAccountsDiscovery">> => boolean(),
-%%   <<"LicenseManagerResourceShareArn">> => string(),
-%%   <<"OrganizationConfiguration">> => organization_configuration(),
-%%   <<"S3BucketArn">> => string(),
-%%   <<"ServiceStatus">> => service_status(),
-%%   <<"SnsTopicArn">> => string()
+%% license_rule_statement() :: #{
+%%   <<"AndRuleStatement">> => and_rule_statement(),
+%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
+%%   <<"OrRuleStatement">> => or_rule_statement()
 %% }
--type get_service_settings_response() :: #{binary() => any()}.
+-type license_rule_statement() :: #{binary() => any()}.
 
 %% Example:
-%% get_access_token_request() :: #{
-%%   <<"Token">> := string(),
-%%   <<"TokenProperties">> => list(string())
+%% license_specification() :: #{
+%%   <<"AmiAssociationScope">> => string(),
+%%   <<"LicenseConfigurationArn">> => string()
 %% }
--type get_access_token_request() :: #{binary() => any()}.
+-type license_specification() :: #{binary() => any()}.
+
+%% Example:
+%% license_usage() :: #{
+%%   <<"EntitlementUsages">> => list(entitlement_usage())
+%% }
+-type license_usage() :: #{binary() => any()}.
+
+%% Example:
+%% license_usage_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type license_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_assets_for_license_asset_group_request() :: #{
+%%   <<"AssetType">> := string(),
+%%   <<"LicenseAssetGroupArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_for_license_asset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assets_for_license_asset_group_response() :: #{
+%%   <<"Assets">> => list(asset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_for_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_for_license_configuration_request() :: #{
+%%   <<"LicenseConfigurationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_for_license_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_for_license_configuration_response() :: #{
+%%   <<"LicenseConfigurationAssociations">> => list(license_configuration_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_for_license_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_distributed_grants_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"GrantArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_distributed_grants_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_distributed_grants_response() :: #{
+%%   <<"Grants">> => list(grant()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_distributed_grants_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_failures_for_license_configuration_operations_request() :: #{
+%%   <<"LicenseConfigurationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_failures_for_license_configuration_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_failures_for_license_configuration_operations_response() :: #{
+%%   <<"LicenseOperationFailureList">> => list(license_operation_failure()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_failures_for_license_configuration_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_groups_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_groups_response() :: #{
+%%   <<"LicenseAssetGroups">> => list(license_asset_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_rulesets_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowAWSManagedLicenseAssetRulesets">> => boolean()
+%% }
+-type list_license_asset_rulesets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_asset_rulesets_response() :: #{
+%%   <<"LicenseAssetRulesets">> => list(license_asset_ruleset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_asset_rulesets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_for_organization_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseConfigurationArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_for_organization_response() :: #{
+%%   <<"LicenseConfigurations">> => list(license_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseConfigurationArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_configurations_response() :: #{
+%%   <<"LicenseConfigurations">> => list(license_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_conversion_tasks_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_conversion_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_conversion_tasks_response() :: #{
+%%   <<"LicenseConversionTasks">> => list(license_conversion_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_conversion_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_manager_report_generators_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_manager_report_generators_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_manager_report_generators_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportGenerators">> => list(report_generator())
+%% }
+-type list_license_manager_report_generators_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_specifications_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_license_specifications_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_specifications_for_resource_response() :: #{
+%%   <<"LicenseSpecifications">> => list(license_specification()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_specifications_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_versions_request() :: #{
+%%   <<"LicenseArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_license_versions_response() :: #{
+%%   <<"Licenses">> => list(license()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_license_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_licenses_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_licenses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_licenses_response() :: #{
+%%   <<"Licenses">> => list(license()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_licenses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_received_grants_for_organization_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_grants_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_received_grants_for_organization_response() :: #{
+%%   <<"Grants">> => list(grant()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_grants_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_grants_request() :: #{
@@ -1464,29 +1281,251 @@
 -type list_received_grants_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_license_conversion_task_for_resource_response() :: #{
-%%   <<"LicenseConversionTaskId">> => string()
-%% }
--type create_license_conversion_task_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_specifications_for_resource_response() :: #{
-%%   <<"LicenseSpecifications">> => list(license_specification()),
+%% list_received_grants_response() :: #{
+%%   <<"Grants">> => list(grant()),
 %%   <<"NextToken">> => string()
 %% }
--type list_license_specifications_for_resource_response() :: #{binary() => any()}.
+-type list_received_grants_response() :: #{binary() => any()}.
 
 %% Example:
-%% checkout_license_request() :: #{
-%%   <<"Beneficiary">> => string(),
-%%   <<"CheckoutType">> := list(any()),
-%%   <<"ClientToken">> := string(),
-%%   <<"Entitlements">> := list(entitlement_data()),
-%%   <<"KeyFingerprint">> := string(),
-%%   <<"NodeId">> => string(),
-%%   <<"ProductSKU">> := string()
+%% list_received_licenses_for_organization_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type checkout_license_request() :: #{binary() => any()}.
+-type list_received_licenses_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_received_licenses_for_organization_response() :: #{
+%%   <<"Licenses">> => list(granted_license()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_licenses_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_received_licenses_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_licenses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_received_licenses_response() :: #{
+%%   <<"Licenses">> => list(granted_license()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_licenses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_inventory_request() :: #{
+%%   <<"Filters">> => list(inventory_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_inventory_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_inventory_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceInventoryList">> => list(resource_inventory())
+%% }
+-type list_resource_inventory_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tokens_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TokenIds">> => list(string())
+%% }
+-type list_tokens_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tokens_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tokens">> => list(token_data())
+%% }
+-type list_tokens_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_for_license_configuration_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseConfigurationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_usage_for_license_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_for_license_configuration_response() :: #{
+%%   <<"LicenseConfigurationUsageList">> => list(license_configuration_usage()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_usage_for_license_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_resource_summary() :: #{
+%%   <<"AssociationCount">> => float(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type managed_resource_summary() :: #{binary() => any()}.
+
+%% Example:
+%% matching_rule_statement() :: #{
+%%   <<"Constraint">> => string(),
+%%   <<"KeyToMatch">> => string(),
+%%   <<"ValueToMatch">> => list(string())
+%% }
+-type matching_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% metadata() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
+
+%% Example:
+%% no_entitlements_allowed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_entitlements_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% options() :: #{
+%%   <<"ActivationOverrideBehavior">> => list(any())
+%% }
+-type options() :: #{binary() => any()}.
+
+%% Example:
+%% or_rule_statement() :: #{
+%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
+%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
+%% }
+-type or_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% organization_configuration() :: #{
+%%   <<"EnableIntegration">> => boolean()
+%% }
+-type organization_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% product_code_list_item() :: #{
+%%   <<"ProductCodeId">> => string(),
+%%   <<"ProductCodeType">> => list(any())
+%% }
+-type product_code_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% product_information() :: #{
+%%   <<"ProductInformationFilterList">> => list(product_information_filter()),
+%%   <<"ResourceType">> => string()
+%% }
+-type product_information() :: #{binary() => any()}.
+
+%% Example:
+%% product_information_filter() :: #{
+%%   <<"ProductInformationFilterComparator">> => string(),
+%%   <<"ProductInformationFilterName">> => string(),
+%%   <<"ProductInformationFilterValue">> => list(string())
+%% }
+-type product_information_filter() :: #{binary() => any()}.
+
+%% Example:
+%% provisional_configuration() :: #{
+%%   <<"MaxTimeToLiveInMinutes">> => integer()
+%% }
+-type provisional_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rate_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type rate_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% received_metadata() :: #{
+%%   <<"AllowedOperations">> => list(list(any())()),
+%%   <<"ReceivedStatus">> => list(any()),
+%%   <<"ReceivedStatusReason">> => string()
+%% }
+-type received_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% redirect_exception() :: #{
+%%   <<"Location">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type redirect_exception() :: #{binary() => any()}.
+
+%% Example:
+%% region_status() :: #{
+%%   <<"Status">> => string()
+%% }
+-type region_status() :: #{binary() => any()}.
+
+%% Example:
+%% reject_grant_request() :: #{
+%%   <<"GrantArn">> := string()
+%% }
+-type reject_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_grant_response() :: #{
+%%   <<"GrantArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type reject_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% report_context() :: #{
+%%   <<"licenseAssetGroupArns">> => list(string()),
+%%   <<"licenseConfigurationArns">> => list(string()),
+%%   <<"reportEndDate">> => non_neg_integer(),
+%%   <<"reportStartDate">> => non_neg_integer()
+%% }
+-type report_context() :: #{binary() => any()}.
+
+%% Example:
+%% report_frequency() :: #{
+%%   <<"period">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type report_frequency() :: #{binary() => any()}.
+
+%% Example:
+%% report_generator() :: #{
+%%   <<"CreateTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastReportGenerationTime">> => string(),
+%%   <<"LastRunFailureReason">> => string(),
+%%   <<"LastRunStatus">> => string(),
+%%   <<"LicenseManagerReportGeneratorArn">> => string(),
+%%   <<"ReportContext">> => report_context(),
+%%   <<"ReportCreatorAccount">> => string(),
+%%   <<"ReportFrequency">> => report_frequency(),
+%%   <<"ReportGeneratorName">> => string(),
+%%   <<"ReportType">> => list(list(any())()),
+%%   <<"S3Location">> => s3_location(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type report_generator() :: #{binary() => any()}.
 
 %% Example:
 %% resource_inventory() :: #{
@@ -1506,32 +1545,159 @@
 -type resource_inventory() :: #{binary() => any()}.
 
 %% Example:
-%% create_license_asset_group_request() :: #{
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_statement() :: #{
+%%   <<"InstanceRuleStatement">> => instance_rule_statement(),
+%%   <<"LicenseConfigurationRuleStatement">> => license_configuration_rule_statement(),
+%%   <<"LicenseRuleStatement">> => license_rule_statement()
+%% }
+-type rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"keyPrefix">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% script_rule_statement() :: #{
+%%   <<"KeyToMatch">> => string(),
+%%   <<"Script">> => string()
+%% }
+-type script_rule_statement() :: #{binary() => any()}.
+
+%% Example:
+%% server_internal_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type server_internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_status() :: #{
+%%   <<"CrossAccountDiscovery">> => cross_account_discovery_service_status(),
+%%   <<"CrossRegionDiscovery">> => cross_region_discovery_status()
+%% }
+-type service_status() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% token_data() :: #{
+%%   <<"ExpirationTime">> => string(),
+%%   <<"LicenseArn">> => string(),
+%%   <<"RoleArns">> => list(string()),
+%%   <<"Status">> => string(),
+%%   <<"TokenId">> => string(),
+%%   <<"TokenProperties">> => list(string()),
+%%   <<"TokenType">> => string()
+%% }
+-type token_data() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_digital_signature_method_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_digital_signature_method_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_license_asset_group_request() :: #{
 %%   <<"AssociatedLicenseAssetRulesetARNs">> := list(string()),
 %%   <<"ClientToken">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"LicenseAssetGroupConfigurations">> := list(license_asset_group_configuration()),
-%%   <<"Name">> := string(),
+%%   <<"LicenseAssetGroupArn">> := string(),
+%%   <<"LicenseAssetGroupConfigurations">> => list(license_asset_group_configuration()),
+%%   <<"Name">> => string(),
 %%   <<"Properties">> => list(license_asset_group_property()),
-%%   <<"Tags">> => list(tag())
+%%   <<"Status">> => list(any())
 %% }
--type create_license_asset_group_request() :: #{binary() => any()}.
+-type update_license_asset_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_associations_for_license_configuration_request() :: #{
+%% update_license_asset_group_response() :: #{
+%%   <<"LicenseAssetGroupArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type update_license_asset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_license_asset_ruleset_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseAssetRulesetArn">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> := list(license_asset_rule())
+%% }
+-type update_license_asset_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_license_asset_ruleset_response() :: #{
+%%   <<"LicenseAssetRulesetArn">> => string()
+%% }
+-type update_license_asset_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_license_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisassociateWhenNotFound">> => boolean(),
 %%   <<"LicenseConfigurationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"LicenseConfigurationStatus">> => list(any()),
+%%   <<"LicenseCount">> => float(),
+%%   <<"LicenseCountHardLimit">> => boolean(),
+%%   <<"LicenseExpiry">> => float(),
+%%   <<"LicenseRules">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"ProductInformationList">> => list(product_information())
 %% }
--type list_associations_for_license_configuration_request() :: #{binary() => any()}.
+-type update_license_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_license_conversion_task_for_resource_request() :: #{
-%%   <<"DestinationLicenseContext">> := license_conversion_context(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceLicenseContext">> := license_conversion_context()
+%% update_license_configuration_response() :: #{
+
 %% }
--type create_license_conversion_task_for_resource_request() :: #{binary() => any()}.
+-type update_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_license_manager_report_generator_request() :: #{
@@ -1546,171 +1712,24 @@
 -type update_license_manager_report_generator_request() :: #{binary() => any()}.
 
 %% Example:
-%% product_information_filter() :: #{
-%%   <<"ProductInformationFilterComparator">> => string(),
-%%   <<"ProductInformationFilterName">> => string(),
-%%   <<"ProductInformationFilterValue">> => list(string())
+%% update_license_manager_report_generator_response() :: #{
+
 %% }
--type product_information_filter() :: #{binary() => any()}.
+-type update_license_manager_report_generator_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_service_settings_request() :: #{
-
+%% update_license_specifications_for_resource_request() :: #{
+%%   <<"AddLicenseSpecifications">> => list(license_specification()),
+%%   <<"RemoveLicenseSpecifications">> => list(license_specification()),
+%%   <<"ResourceArn">> := string()
 %% }
--type get_service_settings_request() :: #{binary() => any()}.
+-type update_license_specifications_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_token_response() :: #{
-%%   <<"Token">> => string(),
-%%   <<"TokenId">> => string(),
-%%   <<"TokenType">> => list(any())
-%% }
--type create_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_digital_signature_method_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_digital_signature_method_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cross_account_discovery_service_status() :: #{
-%%   <<"Message">> => string()
-%% }
--type cross_account_discovery_service_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_asset_ruleset_request() :: #{
-%%   <<"LicenseAssetRulesetArn">> := string()
-%% }
--type delete_license_asset_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% issuer_details() :: #{
-%%   <<"KeyFingerprint">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SignKey">> => string()
-%% }
--type issuer_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_usage_response() :: #{
-%%   <<"LicenseUsage">> => license_usage()
-%% }
--type get_license_usage_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_license_asset_ruleset_response() :: #{
-%%   <<"LicenseAssetRulesetArn">> => string()
-%% }
--type create_license_asset_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_asset_groups_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_license_asset_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tokens_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TokenIds">> => list(string())
-%% }
--type list_tokens_request() :: #{binary() => any()}.
-
-%% Example:
-%% or_rule_statement() :: #{
-%%   <<"MatchingRuleStatements">> => list(matching_rule_statement()),
-%%   <<"ScriptRuleStatements">> => list(script_rule_statement())
-%% }
--type or_rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% license_rule_statement() :: #{
-%%   <<"AndRuleStatement">> => and_rule_statement(),
-%%   <<"MatchingRuleStatement">> => matching_rule_statement(),
-%%   <<"OrRuleStatement">> => or_rule_statement()
-%% }
--type license_rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% checkout_borrow_license_request() :: #{
-%%   <<"CheckoutMetadata">> => list(metadata()),
-%%   <<"ClientToken">> := string(),
-%%   <<"DigitalSignatureMethod">> := list(any()),
-%%   <<"Entitlements">> := list(entitlement_data()),
-%%   <<"LicenseArn">> := string(),
-%%   <<"NodeId">> => string()
-%% }
--type checkout_borrow_license_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_asset_group_property() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type license_asset_group_property() :: #{binary() => any()}.
-
-%% Example:
-%% create_token_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"ExpirationInDays">> => integer(),
-%%   <<"LicenseArn">> := string(),
-%%   <<"RoleArns">> => list(string()),
-%%   <<"TokenProperties">> => list(string())
-%% }
--type create_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_license_manager_report_generators_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReportGenerators">> => list(report_generator())
-%% }
--type list_license_manager_report_generators_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_grant_response() :: #{
-%%   <<"GrantArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type create_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_asset_rule() :: #{
-%%   <<"RuleStatement">> => rule_statement()
-%% }
--type license_asset_rule() :: #{binary() => any()}.
-
-%% Example:
-%% rule_statement() :: #{
-%%   <<"InstanceRuleStatement">> => instance_rule_statement(),
-%%   <<"LicenseConfigurationRuleStatement">> => license_configuration_rule_statement(),
-%%   <<"LicenseRuleStatement">> => license_rule_statement()
-%% }
--type rule_statement() :: #{binary() => any()}.
-
-%% Example:
-%% provisional_configuration() :: #{
-%%   <<"MaxTimeToLiveInMinutes">> => integer()
-%% }
--type provisional_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_manager_report_generator_request() :: #{
-%%   <<"LicenseManagerReportGeneratorArn">> := string()
-%% }
--type get_license_manager_report_generator_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_manager_report_generator_response() :: #{
+%% update_license_specifications_for_resource_response() :: #{
 
 %% }
--type delete_license_manager_report_generator_response() :: #{binary() => any()}.
+-type update_license_specifications_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_settings_request() :: #{
@@ -1723,565 +1742,547 @@
 -type update_service_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% entitlement_data() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => string()
+%% update_service_settings_response() :: #{
+
 %% }
--type entitlement_data() :: #{binary() => any()}.
+-type update_service_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_license_versions_request() :: #{
-%%   <<"LicenseArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_license_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tokens_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tokens">> => list(token_data())
-%% }
--type list_tokens_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_associations_for_license_configuration_response() :: #{
-%%   <<"LicenseConfigurationAssociations">> => list(license_configuration_association()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associations_for_license_configuration_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type accept_grant_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type check_in_license_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
     conflict_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type checkout_borrow_license_errors() ::
-    unsupported_digital_signature_method_exception() | 
     validation_exception() | 
+    unsupported_digital_signature_method_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
-    redirect_exception() | 
     resource_not_found_exception() | 
+    redirect_exception() | 
+    rate_limit_exceeded_exception() | 
     no_entitlements_allowed_exception() | 
+    invalid_parameter_value_exception() | 
     entitlement_not_allowed_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type checkout_license_errors() ::
-    unsupported_digital_signature_method_exception() | 
     validation_exception() | 
+    unsupported_digital_signature_method_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
-    redirect_exception() | 
     resource_not_found_exception() | 
+    redirect_exception() | 
+    rate_limit_exceeded_exception() | 
     no_entitlements_allowed_exception() | 
-    rate_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_grant_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_grant_version_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     redirect_exception() | 
-    rate_limit_exceeded_exception().
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_asset_group_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_asset_ruleset_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_conversion_task_for_resource_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_manager_report_generator_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_license_version_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    redirect_exception() | 
     resource_not_found_exception() | 
+    redirect_exception() | 
+    rate_limit_exceeded_exception() | 
     conflict_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type create_token_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
     redirect_exception() | 
-    resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    rate_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_grant_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_license_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     redirect_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
     conflict_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_license_asset_group_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_license_asset_ruleset_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_license_manager_report_generator_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type delete_token_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    redirect_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    redirect_exception() | 
+    rate_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type extend_license_consumption_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_access_token_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
+    rate_limit_exceeded_exception() | 
     authorization_exception() | 
-    rate_limit_exceeded_exception().
+    access_denied_exception().
 
 -type get_grant_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_asset_group_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_asset_ruleset_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_conversion_task_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_manager_report_generator_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_license_usage_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type get_service_settings_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
+    rate_limit_exceeded_exception() | 
     authorization_exception() | 
-    rate_limit_exceeded_exception().
+    access_denied_exception().
 
 -type list_assets_for_license_asset_group_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_associations_for_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception() | 
-    filter_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    filter_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_distributed_grants_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_failures_for_license_configuration_operations_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_asset_groups_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_asset_rulesets_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_configurations_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception() | 
-    filter_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    filter_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_configurations_for_organization_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception() | 
-    filter_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    filter_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_conversion_tasks_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_manager_report_generators_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_specifications_for_resource_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_license_versions_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_licenses_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_received_grants_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_received_grants_for_organization_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_received_licenses_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_received_licenses_for_organization_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_resource_inventory_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
-    failed_dependency_exception() | 
     rate_limit_exceeded_exception() | 
-    filter_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    filter_limit_exceeded_exception() | 
+    failed_dependency_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type list_tokens_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
+    rate_limit_exceeded_exception() | 
     authorization_exception() | 
-    rate_limit_exceeded_exception().
+    access_denied_exception().
 
 -type list_usage_for_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    invalid_parameter_value_exception() | 
     rate_limit_exceeded_exception() | 
-    filter_limit_exceeded_exception().
+    invalid_parameter_value_exception() | 
+    filter_limit_exceeded_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type reject_grant_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_license_asset_group_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_license_asset_ruleset_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_license_configuration_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
     resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     conflict_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_license_manager_report_generator_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    rate_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    rate_limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_license_specifications_for_resource_errors() ::
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
+    license_usage_exception() | 
     invalid_resource_state_exception() | 
     invalid_parameter_value_exception() | 
     conflict_exception() | 
-    license_usage_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 -type update_service_settings_errors() ::
     validation_exception() | 
     server_internal_exception() | 
-    access_denied_exception() | 
-    authorization_exception() | 
+    rate_limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     conflict_exception() | 
-    rate_limit_exceeded_exception().
+    authorization_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

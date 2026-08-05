@@ -95,263 +95,14 @@
 
 
 %% Example:
-%% list_graph_snapshots_output() :: #{
-%%   <<"graphSnapshots">> => list(graph_snapshot_summary()),
-%%   <<"nextToken">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_graph_snapshots_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_graph_using_import_task_input() :: #{
-%%   <<"blankNodeHandling">> => list(any()),
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"failOnError">> => [boolean()],
-%%   <<"format">> => list(any()),
-%%   <<"graphName">> := string(),
-%%   <<"importOptions">> => list(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"maxProvisionedMemory">> => integer(),
-%%   <<"minProvisionedMemory">> => integer(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"roleArn">> := string(),
-%%   <<"source">> := [string()],
-%%   <<"tags">> => map(),
-%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
-%% }
--type create_graph_using_import_task_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_private_graph_endpoint_input() :: #{}
--type delete_private_graph_endpoint_input() :: #{}.
-
-
-%% Example:
-%% export_filter_property_attributes() :: #{
-%%   <<"multiValueHandling">> => list(any()),
-%%   <<"outputType">> => string(),
-%%   <<"sourcePropertyName">> => string()
-%% }
--type export_filter_property_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_private_graph_endpoint_output() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcEndpointId">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type create_private_graph_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_private_graph_endpoint_input() :: #{}
--type get_private_graph_endpoint_input() :: #{}.
-
-
-%% Example:
-%% delete_graph_snapshot_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"snapshotCreateTime">> => [non_neg_integer()],
-%%   <<"sourceGraphId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_graph_snapshot_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_task_details() :: #{
-%%   <<"numEdgesWritten">> => [float()],
-%%   <<"numVerticesWritten">> => [float()],
-%%   <<"progressPercentage">> => [integer()],
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"timeElapsedSeconds">> => [float()]
-%% }
--type export_task_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_graph_using_import_task_output() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"graphId">> => string(),
-%%   <<"importOptions">> => list(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"source">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type create_graph_using_import_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_graph_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"buildNumber">> => [string()],
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"sourceSnapshotId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
-%% }
--type update_graph_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_export_task_input() :: #{
-%%   <<"destination">> := [string()],
-%%   <<"exportFilter">> => export_filter(),
-%%   <<"format">> := list(any()),
-%%   <<"graphIdentifier">> := string(),
-%%   <<"kmsKeyIdentifier">> := string(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type start_export_task_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_task_input() :: #{
-%%   <<"blankNodeHandling">> => list(any()),
-%%   <<"failOnError">> => [boolean()],
-%%   <<"format">> => list(any()),
-%%   <<"importOptions">> => list(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> := string(),
-%%   <<"source">> := [string()]
-%% }
--type start_import_task_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_task_output() :: #{
-%%   <<"attemptNumber">> => [integer()],
-%%   <<"format">> => list(any()),
-%%   <<"graphId">> => string(),
-%%   <<"importOptions">> => list(),
-%%   <<"importTaskDetails">> => import_task_details(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"source">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"taskId">> => string()
-%% }
--type get_import_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_private_graph_endpoint_output() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcEndpointId">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type delete_private_graph_endpoint_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_filter_element() :: #{
-%%   <<"properties">> => map()
-%% }
--type export_filter_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_filter() :: #{
-%%   <<"edgeFilter">> => map(),
-%%   <<"vertexFilter">> => map()
-%% }
--type export_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_import_task_output() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"graphId">> => string(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"source">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type cancel_import_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessable_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type unprocessable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_export_tasks_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(export_task_summary())
-%% }
--type list_export_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_graphs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_graphs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% graph_snapshot_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"snapshotCreateTime">> => [non_neg_integer()],
-%%   <<"sourceGraphId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type graph_snapshot_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_output() :: #{
-%%   <<"elapsed">> => [integer()],
-%%   <<"id">> => [string()],
-%%   <<"queryString">> => [string()],
-%%   <<"state">> => list(any()),
-%%   <<"waited">> => [integer()]
-%% }
--type get_query_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queries_output() :: #{
-%%   <<"queries">> => list(query_summary())
-%% }
--type list_queries_output() :: #{binary() => any()}.
+%% cancel_export_task_input() :: #{}
+-type cancel_export_task_input() :: #{}.
 
 
 %% Example:
@@ -368,84 +119,37 @@
 %% }
 -type cancel_export_task_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% vector_search_configuration() :: #{
-%%   <<"dimension">> => integer()
-%% }
--type vector_search_configuration() :: #{binary() => any()}.
+%% cancel_import_task_input() :: #{}
+-type cancel_import_task_input() :: #{}.
 
 
 %% Example:
-%% restore_graph_from_snapshot_input() :: #{
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"graphName">> := string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"tags">> => map()
-%% }
--type restore_graph_from_snapshot_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_task_summary() :: #{
-%%   <<"destination">> => [string()],
+%% cancel_import_task_output() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
 %%   <<"taskId">> => string()
 %% }
--type export_task_summary() :: #{binary() => any()}.
+-type cancel_import_task_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% edge_structure() :: #{
-%%   <<"count">> => [float()],
-%%   <<"edgeProperties">> => list([string()]())
+%% cancel_query_input() :: #{
+%%   <<"graphIdentifier">> := string()
 %% }
--type edge_structure() :: #{binary() => any()}.
+-type cancel_query_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_graph_snapshot_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"snapshotCreateTime">> => [non_neg_integer()],
-%%   <<"sourceGraphId">> => string(),
-%%   <<"status">> => list(any())
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
 %% }
--type create_graph_snapshot_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_private_graph_endpoint_input() :: #{
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string(),
-%%   <<"vpcSecurityGroupIds">> => list(string())
-%% }
--type create_private_graph_endpoint_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_graph_input() :: #{
-%%   <<"skipSnapshot">> := [boolean()]
-%% }
--type delete_graph_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_graphs_output() :: #{
-%%   <<"graphs">> => list(graph_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_graphs_output() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,131 +164,6 @@
 %%   <<"vectorSearchConfiguration">> => vector_search_configuration()
 %% }
 -type create_graph_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_graph_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"buildNumber">> => [string()],
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"sourceSnapshotId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
-%% }
--type delete_graph_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queries_input() :: #{
-%%   <<"graphIdentifier">> := string(),
-%%   <<"maxResults">> := [integer()],
-%%   <<"state">> => list(any())
-%% }
--type list_queries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_export_task_input() :: #{}
--type cancel_export_task_input() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_import_task_input() :: #{}
--type cancel_import_task_input() :: #{}.
-
-
-%% Example:
-%% restore_graph_from_snapshot_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"buildNumber">> => [string()],
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"sourceSnapshotId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
-%% }
--type restore_graph_from_snapshot_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_graph_input() :: #{}
--type start_graph_input() :: #{}.
-
-
-%% Example:
-%% start_export_task_output() :: #{
-%%   <<"destination">> => [string()],
-%%   <<"exportFilter">> => export_filter(),
-%%   <<"format">> => list(any()),
-%%   <<"graphId">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"taskId">> => string()
-%% }
--type start_export_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% graph_data_summary() :: #{
-%%   <<"edgeLabels">> => list([string()]()),
-%%   <<"edgeProperties">> => list(map()),
-%%   <<"edgeStructures">> => list(edge_structure()),
-%%   <<"nodeLabels">> => list([string()]()),
-%%   <<"nodeProperties">> => list(map()),
-%%   <<"nodeStructures">> => list(node_structure()),
-%%   <<"numEdgeLabels">> => [float()],
-%%   <<"numEdgeProperties">> => [float()],
-%%   <<"numEdges">> => [float()],
-%%   <<"numNodeLabels">> => [float()],
-%%   <<"numNodeProperties">> => [float()],
-%%   <<"numNodes">> => [float()],
-%%   <<"totalEdgePropertyValues">> => [float()],
-%%   <<"totalNodePropertyValues">> => [float()]
-%% }
--type graph_data_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -609,136 +188,242 @@
 
 
 %% Example:
-%% list_export_tasks_input() :: #{
-%%   <<"graphIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_graph_snapshot_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"snapshotName">> := string(),
+%%   <<"tags">> => map()
 %% }
--type list_export_tasks_input() :: #{binary() => any()}.
+-type create_graph_snapshot_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
+%% create_graph_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type tag_resource_input() :: #{binary() => any()}.
+-type create_graph_snapshot_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_task_summary() :: #{
+%% create_graph_using_import_task_input() :: #{
+%%   <<"blankNodeHandling">> => list(any()),
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"failOnError">> => [boolean()],
+%%   <<"format">> => list(any()),
+%%   <<"graphName">> := string(),
+%%   <<"importOptions">> => list(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"maxProvisionedMemory">> => integer(),
+%%   <<"minProvisionedMemory">> => integer(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"source">> := [string()],
+%%   <<"tags">> => map(),
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type create_graph_using_import_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_graph_using_import_task_output() :: #{
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
 %%   <<"parquetType">> => list(any()),
 %%   <<"roleArn">> => string(),
 %%   <<"source">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"taskId">> => string()
 %% }
--type import_task_summary() :: #{binary() => any()}.
+-type create_graph_using_import_task_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_graph_snapshots_input() :: #{
-%%   <<"graphIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_private_graph_endpoint_input() :: #{
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string(),
+%%   <<"vpcSecurityGroupIds">> => list(string())
 %% }
--type list_graph_snapshots_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
+-type create_private_graph_endpoint_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% graph_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"status">> => list(any())
-%% }
--type graph_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_private_graph_endpoint_output() :: #{
+%% create_private_graph_endpoint_output() :: #{
 %%   <<"status">> => list(any()),
 %%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpointId">> => string(),
 %%   <<"vpcId">> => string()
 %% }
--type get_private_graph_endpoint_output() :: #{binary() => any()}.
+-type create_private_graph_endpoint_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_summary() :: #{
-%%   <<"elapsed">> => [integer()],
-%%   <<"id">> => [string()],
-%%   <<"queryString">> => [string()],
-%%   <<"state">> => list(any()),
-%%   <<"waited">> => [integer()]
+%% delete_graph_input() :: #{
+%%   <<"skipSnapshot">> := [boolean()]
 %% }
--type query_summary() :: #{binary() => any()}.
+-type delete_graph_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_query_input() :: #{
-%%   <<"graphIdentifier">> := string()
-%% }
--type cancel_query_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_graph_input() :: #{
+%% delete_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
 %%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()]
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
 %% }
--type update_graph_input() :: #{binary() => any()}.
+-type delete_graph_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_graph_snapshot_input() :: #{}
+-type delete_graph_snapshot_input() :: #{}.
 
 
 %% Example:
-%% neptune_import_options() :: #{
-%%   <<"preserveDefaultVertexLabels">> => [boolean()],
-%%   <<"preserveEdgeIds">> => [boolean()],
-%%   <<"s3ExportKmsKeyId">> => [string()],
-%%   <<"s3ExportPath">> => [string()]
+%% delete_graph_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type neptune_import_options() :: #{binary() => any()}.
+-type delete_graph_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_private_graph_endpoint_input() :: #{}
+-type delete_private_graph_endpoint_input() :: #{}.
 
 
 %% Example:
-%% import_task_details() :: #{
-%%   <<"dictionaryEntryCount">> => [float()],
-%%   <<"errorCount">> => [integer()],
-%%   <<"errorDetails">> => [string()],
+%% delete_private_graph_endpoint_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type delete_private_graph_endpoint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_structure() :: #{
+%%   <<"count">> => [float()],
+%%   <<"edgeProperties">> => list([string()]())
+%% }
+-type edge_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_input() :: #{
+%%   <<"explainMode">> => list(any()),
+%%   <<"graphIdentifier">> := string(),
+%%   <<"language">> := list(any()),
+%%   <<"parameters">> => map(),
+%%   <<"planCache">> => list(any()),
+%%   <<"queryString">> := [string()],
+%%   <<"queryTimeoutMilliseconds">> => [integer()]
+%% }
+-type execute_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% execute_query_output() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type execute_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_filter() :: #{
+%%   <<"edgeFilter">> => map(),
+%%   <<"vertexFilter">> => map()
+%% }
+-type export_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_filter_element() :: #{
+%%   <<"properties">> => map()
+%% }
+-type export_filter_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_filter_property_attributes() :: #{
+%%   <<"multiValueHandling">> => list(any()),
+%%   <<"outputType">> => string(),
+%%   <<"sourcePropertyName">> => string()
+%% }
+-type export_filter_property_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_task_details() :: #{
+%%   <<"numEdgesWritten">> => [float()],
+%%   <<"numVerticesWritten">> => [float()],
 %%   <<"progressPercentage">> => [integer()],
 %%   <<"startTime">> => [non_neg_integer()],
-%%   <<"statementCount">> => [float()],
-%%   <<"status">> => [string()],
 %%   <<"timeElapsedSeconds">> => [float()]
 %% }
--type import_task_details() :: #{binary() => any()}.
+-type export_task_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_query_input() :: #{
-%%   <<"graphIdentifier">> := string()
+%% export_task_summary() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
 %% }
--type get_query_input() :: #{binary() => any()}.
+-type export_task_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_task_input() :: #{}
+-type get_export_task_input() :: #{}.
+
+
+%% Example:
+%% get_export_task_output() :: #{
+%%   <<"destination">> => [string()],
+%%   <<"exportFilter">> => export_filter(),
+%%   <<"exportTaskDetails">> => export_task_details(),
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_export_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_graph_input() :: #{}
+-type get_graph_input() :: #{}.
 
 
 %% Example:
@@ -762,196 +447,8 @@
 -type get_graph_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_graph_snapshot_input() :: #{}
--type delete_graph_snapshot_input() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_task_input() :: #{}
--type get_export_task_input() :: #{}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_graph_summary_input() :: #{
-%%   <<"graphIdentifier">> := string(),
-%%   <<"mode">> => list(any())
-%% }
--type get_graph_summary_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_graph_input() :: #{
-%%   <<"skipSnapshot">> := [boolean()]
-%% }
--type reset_graph_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_query_output() :: #{
-%%   <<"payload">> => binary()
-%% }
--type execute_query_output() :: #{binary() => any()}.
-
-%% Example:
 %% get_graph_snapshot_input() :: #{}
 -type get_graph_snapshot_input() :: #{}.
-
-
-%% Example:
-%% start_import_task_output() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"graphId">> => string(),
-%%   <<"importOptions">> => list(),
-%%   <<"parquetType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"source">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type start_import_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_graph_snapshot_input() :: #{
-%%   <<"graphIdentifier">> := string(),
-%%   <<"snapshotName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_graph_snapshot_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_structure() :: #{
-%%   <<"count">> => [float()],
-%%   <<"distinctOutgoingEdgeLabels">> => list([string()]()),
-%%   <<"nodeProperties">> => list([string()]())
-%% }
--type node_structure() :: #{binary() => any()}.
-
-%% Example:
-%% get_graph_input() :: #{}
--type get_graph_input() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% list_import_tasks_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(import_task_summary())
-%% }
--type list_import_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_graph_summary_output() :: #{
-%%   <<"graphSummary">> => graph_data_summary(),
-%%   <<"lastStatisticsComputationTime">> => [non_neg_integer()],
-%%   <<"version">> => [string()]
-%% }
--type get_graph_summary_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_private_graph_endpoints_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_private_graph_endpoints_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_graph_input() :: #{}
--type stop_graph_input() :: #{}.
-
-
-%% Example:
-%% list_private_graph_endpoints_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"privateGraphEndpoints">> => list(private_graph_endpoint_summary())
-%% }
--type list_private_graph_endpoints_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_query_input() :: #{
-%%   <<"explainMode">> => list(any()),
-%%   <<"graphIdentifier">> := string(),
-%%   <<"language">> := list(any()),
-%%   <<"parameters">> => map(),
-%%   <<"planCache">> => list(any()),
-%%   <<"queryString">> := [string()],
-%%   <<"queryTimeoutMilliseconds">> => [integer()]
-%% }
--type execute_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_import_task_input() :: #{}
--type get_import_task_input() :: #{}.
-
-
-%% Example:
-%% start_graph_output() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"buildNumber">> => [string()],
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"deletionProtection">> => [boolean()],
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provisionedMemory">> => integer(),
-%%   <<"publicConnectivity">> => [boolean()],
-%%   <<"replicaCount">> => integer(),
-%%   <<"sourceSnapshotId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
-%% }
--type start_graph_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_graph_endpoint_summary() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcEndpointId">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type private_graph_endpoint_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -965,6 +462,315 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_graph_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_summary_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"mode">> => list(any())
+%% }
+-type get_graph_summary_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_graph_summary_output() :: #{
+%%   <<"graphSummary">> => graph_data_summary(),
+%%   <<"lastStatisticsComputationTime">> => [non_neg_integer()],
+%%   <<"version">> => [string()]
+%% }
+-type get_graph_summary_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_task_input() :: #{}
+-type get_import_task_input() :: #{}.
+
+
+%% Example:
+%% get_import_task_output() :: #{
+%%   <<"attemptNumber">> => [integer()],
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
+%%   <<"importTaskDetails">> => import_task_details(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_import_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_private_graph_endpoint_input() :: #{}
+-type get_private_graph_endpoint_input() :: #{}.
+
+
+%% Example:
+%% get_private_graph_endpoint_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type get_private_graph_endpoint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_input() :: #{
+%%   <<"graphIdentifier">> := string()
+%% }
+-type get_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_output() :: #{
+%%   <<"elapsed">> => [integer()],
+%%   <<"id">> => [string()],
+%%   <<"queryString">> => [string()],
+%%   <<"state">> => list(any()),
+%%   <<"waited">> => [integer()]
+%% }
+-type get_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_data_summary() :: #{
+%%   <<"edgeLabels">> => list([string()]()),
+%%   <<"edgeProperties">> => list(map()),
+%%   <<"edgeStructures">> => list(edge_structure()),
+%%   <<"nodeLabels">> => list([string()]()),
+%%   <<"nodeProperties">> => list(map()),
+%%   <<"nodeStructures">> => list(node_structure()),
+%%   <<"numEdgeLabels">> => [float()],
+%%   <<"numEdgeProperties">> => [float()],
+%%   <<"numEdges">> => [float()],
+%%   <<"numNodeLabels">> => [float()],
+%%   <<"numNodeProperties">> => [float()],
+%%   <<"numNodes">> => [float()],
+%%   <<"totalEdgePropertyValues">> => [float()],
+%%   <<"totalNodePropertyValues">> => [float()]
+%% }
+-type graph_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_snapshot_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"sourceGraphId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type graph_snapshot_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type graph_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_task_details() :: #{
+%%   <<"dictionaryEntryCount">> => [float()],
+%%   <<"errorCount">> => [integer()],
+%%   <<"errorDetails">> => [string()],
+%%   <<"progressPercentage">> => [integer()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"statementCount">> => [float()],
+%%   <<"status">> => [string()],
+%%   <<"timeElapsedSeconds">> => [float()]
+%% }
+-type import_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_task_summary() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type import_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_tasks_input() :: #{
+%%   <<"graphIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_export_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(export_task_summary())
+%% }
+-type list_export_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graph_snapshots_input() :: #{
+%%   <<"graphIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graph_snapshots_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graph_snapshots_output() :: #{
+%%   <<"graphSnapshots">> => list(graph_snapshot_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graph_snapshots_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graphs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_graphs_output() :: #{
+%%   <<"graphs">> => list(graph_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_graphs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_tasks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(import_task_summary())
+%% }
+-type list_import_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_graph_endpoints_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_private_graph_endpoints_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_graph_endpoints_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privateGraphEndpoints">> => list(private_graph_endpoint_summary())
+%% }
+-type list_private_graph_endpoints_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_input() :: #{
+%%   <<"graphIdentifier">> := string(),
+%%   <<"maxResults">> := [integer()],
+%%   <<"state">> => list(any())
+%% }
+-type list_queries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_output() :: #{
+%%   <<"queries">> => list(query_summary())
+%% }
+-type list_queries_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% neptune_import_options() :: #{
+%%   <<"preserveDefaultVertexLabels">> => [boolean()],
+%%   <<"preserveEdgeIds">> => [boolean()],
+%%   <<"s3ExportKmsKeyId">> => [string()],
+%%   <<"s3ExportPath">> => [string()]
+%% }
+-type neptune_import_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_structure() :: #{
+%%   <<"count">> => [float()],
+%%   <<"distinctOutgoingEdgeLabels">> => list([string()]()),
+%%   <<"nodeProperties">> => list([string()]())
+%% }
+-type node_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_graph_endpoint_summary() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type private_graph_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_summary() :: #{
+%%   <<"elapsed">> => [integer()],
+%%   <<"id">> => [string()],
+%%   <<"queryString">> => [string()],
+%%   <<"state">> => list(any()),
+%%   <<"waited">> => [integer()]
+%% }
+-type query_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_graph_input() :: #{
+%%   <<"skipSnapshot">> := [boolean()]
+%% }
+-type reset_graph_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -989,10 +795,74 @@
 
 
 %% Example:
-%% get_export_task_output() :: #{
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_graph_from_snapshot_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"graphName">> := string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"tags">> => map()
+%% }
+-type restore_graph_from_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_graph_from_snapshot_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type restore_graph_from_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_export_task_input() :: #{
+%%   <<"destination">> := [string()],
+%%   <<"exportFilter">> => export_filter(),
+%%   <<"format">> := list(any()),
+%%   <<"graphIdentifier">> := string(),
+%%   <<"kmsKeyIdentifier">> := string(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_export_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_export_task_output() :: #{
 %%   <<"destination">> => [string()],
 %%   <<"exportFilter">> => export_filter(),
-%%   <<"exportTaskDetails">> => export_task_details(),
 %%   <<"format">> => list(any()),
 %%   <<"graphId">> => string(),
 %%   <<"kmsKeyIdentifier">> => string(),
@@ -1002,15 +872,63 @@
 %%   <<"statusReason">> => [string()],
 %%   <<"taskId">> => string()
 %% }
--type get_export_task_output() :: #{binary() => any()}.
+-type start_export_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_graph_input() :: #{}
+-type start_graph_input() :: #{}.
 
 
 %% Example:
-%% list_import_tasks_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% start_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
 %% }
--type list_import_tasks_input() :: #{binary() => any()}.
+-type start_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_task_input() :: #{
+%%   <<"blankNodeHandling">> => list(any()),
+%%   <<"failOnError">> => [boolean()],
+%%   <<"format">> => list(any()),
+%%   <<"importOptions">> => list(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"source">> := [string()]
+%% }
+-type start_import_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_task_output() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"graphId">> => string(),
+%%   <<"importOptions">> => list(),
+%%   <<"parquetType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type start_import_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_graph_input() :: #{}
+-type stop_graph_input() :: #{}.
 
 
 %% Example:
@@ -1033,231 +951,313 @@
 %% }
 -type stop_graph_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type unprocessable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_graph_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()]
+%% }
+-type update_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type update_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_configuration() :: #{
+%%   <<"dimension">> => integer()
+%% }
+-type vector_search_configuration() :: #{binary() => any()}.
+
 -type cancel_export_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type cancel_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type cancel_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_graph_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_graph_using_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_private_graph_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_graph_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_private_graph_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type execute_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unprocessable_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    unprocessable_exception().
+    access_denied_exception().
 
 -type get_export_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_graph_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_graph_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_private_graph_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_export_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_graph_snapshots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_graphs_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_import_tasks_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_private_graph_endpoints_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_queries_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
--type list_tags_for_resource_errors() ::
-    throttling_exception() | 
+-type list_import_tasks_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_private_graph_endpoints_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_queries_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type reset_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type restore_graph_from_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_export_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 %%====================================================================

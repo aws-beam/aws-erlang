@@ -77,147 +77,138 @@
 
 
 %% Example:
+%% address() :: #{
+%%   <<"AddressId">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Company">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"IsRestricted">> => boolean(),
+%%   <<"Landmark">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"PrefectureOrDistrict">> => string(),
+%%   <<"StateOrProvince">> => string(),
+%%   <<"Street1">> => string(),
+%%   <<"Street2">> => string(),
+%%   <<"Street3">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type address() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_cluster_request() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type cancel_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_cluster_result() :: #{
+
+%% }
+-type cancel_cluster_result() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_job_request() :: #{
 %%   <<"JobId">> := string()
 %% }
 -type cancel_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_snowball_usage_result() :: #{
-%%   <<"SnowballLimit">> => integer(),
-%%   <<"SnowballsInUse">> => integer()
-%% }
--type get_snowball_usage_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_request() :: #{
-%%   <<"ClusterId">> := string()
-%% }
--type describe_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_manifest_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_job_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% shipment() :: #{
-%%   <<"Status">> => string(),
-%%   <<"TrackingNumber">> => string()
-%% }
--type shipment() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_manifest_result() :: #{
-%%   <<"ManifestURI">> => string()
-%% }
--type get_job_manifest_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_result() :: #{
-%%   <<"JobMetadata">> => job_metadata(),
-%%   <<"SubJobMetadata">> => list(job_metadata())
-%% }
--type describe_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_compatible_images_result() :: #{
-%%   <<"CompatibleImages">> => list(compatible_image()),
-%%   <<"NextToken">> => string()
-%% }
--type list_compatible_images_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_result() :: #{
-%%   <<"JobListEntries">> => list(job_list_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_trigger_definition() :: #{
-%%   <<"EventResourceARN">> => string()
-%% }
--type event_trigger_definition() :: #{binary() => any()}.
-
-%% Example:
-%% device_configuration() :: #{
-%%   <<"SnowconeDeviceConfiguration">> => snowcone_device_configuration()
-%% }
--type device_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_pickup_locations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pickup_locations_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_result() :: #{
+%% cancel_job_result() :: #{
 
 %% }
--type update_cluster_result() :: #{binary() => any()}.
+-type cancel_job_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_snowball_usage_request() :: #{
-
+%% cluster_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_snowball_usage_request() :: #{binary() => any()}.
+-type cluster_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% cluster_list_entry() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"ClusterState">> => list(any()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string()
 %% }
--type list_jobs_request() :: #{binary() => any()}.
+-type cluster_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% update_long_term_pricing_result() :: #{
-
+%% cluster_metadata() :: #{
+%%   <<"AddressId">> => string(),
+%%   <<"ClusterId">> => string(),
+%%   <<"ClusterState">> => list(any()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ForwardingAddressId">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"KmsKeyARN">> => string(),
+%%   <<"Notification">> => notification(),
+%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
+%%   <<"Resources">> => job_resource(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ShippingOption">> => list(any()),
+%%   <<"SnowballType">> => list(any()),
+%%   <<"TaxDocuments">> => tax_documents()
 %% }
--type update_long_term_pricing_result() :: #{binary() => any()}.
+-type cluster_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% data_transfer() :: #{
-%%   <<"BytesTransferred">> => float(),
-%%   <<"ObjectsTransferred">> => float(),
-%%   <<"TotalBytes">> => float(),
-%%   <<"TotalObjects">> => float()
-%% }
--type data_transfer() :: #{binary() => any()}.
-
-%% Example:
-%% snowcone_device_configuration() :: #{
-%%   <<"WirelessConnection">> => wireless_connection()
-%% }
--type snowcone_device_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_shipment_state_result() :: #{
-
-%% }
--type update_job_shipment_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_software_updates_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_software_updates_request() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_ami_resource() :: #{
+%% compatible_image() :: #{
 %%   <<"AmiId">> => string(),
-%%   <<"SnowballAmiId">> => string()
+%%   <<"Name">> => string()
 %% }
--type ec2_ami_resource() :: #{binary() => any()}.
+-type compatible_image() :: #{binary() => any()}.
 
 %% Example:
-%% describe_cluster_result() :: #{
-%%   <<"ClusterMetadata">> => cluster_metadata()
+%% conflict_exception() :: #{
+%%   <<"ConflictResource">> => string(),
+%%   <<"Message">> => string()
 %% }
--type describe_cluster_result() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_address_request() :: #{
+%%   <<"Address">> := address()
+%% }
+-type create_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_address_result() :: #{
+%%   <<"AddressId">> => string()
+%% }
+-type create_address_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"AddressId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"ForceCreateJobs">> => boolean(),
+%%   <<"ForwardingAddressId">> => string(),
+%%   <<"InitialClusterSize">> => integer(),
+%%   <<"JobType">> := list(any()),
+%%   <<"KmsKeyARN">> => string(),
+%%   <<"LongTermPricingIds">> => list(string()),
+%%   <<"Notification">> => notification(),
+%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
+%%   <<"RemoteManagement">> => list(any()),
+%%   <<"Resources">> => job_resource(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ShippingOption">> := list(any()),
+%%   <<"SnowballCapacityPreference">> => list(any()),
+%%   <<"SnowballType">> := list(any()),
+%%   <<"TaxDocuments">> => tax_documents()
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_result() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"JobListEntries">> => list(job_list_entry())
+%% }
+-type create_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_job_request() :: #{
@@ -244,86 +235,65 @@
 -type create_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_input_combination_exception() :: #{
-%%   <<"Message">> => string()
+%% create_job_result() :: #{
+%%   <<"JobId">> => string()
 %% }
--type invalid_input_combination_exception() :: #{binary() => any()}.
+-type create_job_result() :: #{binary() => any()}.
 
 %% Example:
-%% t_g_w_on_device_service_configuration() :: #{
-%%   <<"StorageLimit">> => integer(),
-%%   <<"StorageUnit">> => list(any())
+%% create_long_term_pricing_request() :: #{
+%%   <<"IsLongTermPricingAutoRenew">> => boolean(),
+%%   <<"LongTermPricingType">> := list(any()),
+%%   <<"SnowballType">> := list(any())
 %% }
--type t_g_w_on_device_service_configuration() :: #{binary() => any()}.
+-type create_long_term_pricing_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_long_term_pricing_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_long_term_pricing_result() :: #{
+%%   <<"LongTermPricingId">> => string()
 %% }
--type list_long_term_pricing_request() :: #{binary() => any()}.
+-type create_long_term_pricing_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_return_shipping_label_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_return_shipping_label_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_resource() :: #{
-%%   <<"EventTriggers">> => list(event_trigger_definition()),
-%%   <<"LambdaArn">> => string()
-%% }
--type lambda_resource() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"AddressId">> => string(),
-%%   <<"ClusterId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ForwardingAddressId">> => string(),
-%%   <<"Notification">> => notification(),
-%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
-%%   <<"Resources">> => job_resource(),
-%%   <<"RoleARN">> => string(),
+%% create_return_shipping_label_request() :: #{
+%%   <<"JobId">> := string(),
 %%   <<"ShippingOption">> => list(any())
 %% }
--type update_cluster_request() :: #{binary() => any()}.
+-type create_return_shipping_label_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_service_versions_request() :: #{
-%%   <<"DependentServices">> => list(dependent_service()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceName">> := list(any())
+%% create_return_shipping_label_result() :: #{
+%%   <<"Status">> => list(any())
 %% }
--type list_service_versions_request() :: #{binary() => any()}.
+-type create_return_shipping_label_result() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_cluster_request() :: #{
-%%   <<"ClusterId">> := string()
+%% data_transfer() :: #{
+%%   <<"BytesTransferred">> => float(),
+%%   <<"ObjectsTransferred">> => float(),
+%%   <<"TotalBytes">> => float(),
+%%   <<"TotalObjects">> => float()
 %% }
--type cancel_cluster_request() :: #{binary() => any()}.
+-type data_transfer() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_metadata() :: #{
-%%   <<"AddressId">> => string(),
-%%   <<"ClusterId">> => string(),
-%%   <<"ClusterState">> => list(any()),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ForwardingAddressId">> => string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"KmsKeyARN">> => string(),
-%%   <<"Notification">> => notification(),
-%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
-%%   <<"Resources">> => job_resource(),
-%%   <<"RoleARN">> => string(),
-%%   <<"ShippingOption">> => list(any()),
-%%   <<"SnowballType">> => list(any()),
-%%   <<"TaxDocuments">> => tax_documents()
+%% dependent_service() :: #{
+%%   <<"ServiceName">> => list(any()),
+%%   <<"ServiceVersion">> => service_version()
 %% }
--type cluster_metadata() :: #{binary() => any()}.
+-type dependent_service() :: #{binary() => any()}.
+
+%% Example:
+%% describe_address_request() :: #{
+%%   <<"AddressId">> := string()
+%% }
+-type describe_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_address_result() :: #{
+%%   <<"Address">> => address()
+%% }
+-type describe_address_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_addresses_request() :: #{
@@ -333,59 +303,168 @@
 -type describe_addresses_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_addresses_result() :: #{
+%%   <<"Addresses">> => list(address()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_addresses_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type describe_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_result() :: #{
+%%   <<"ClusterMetadata">> => cluster_metadata()
+%% }
+-type describe_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_result() :: #{
+%%   <<"JobMetadata">> => job_metadata(),
+%%   <<"SubJobMetadata">> => list(job_metadata())
+%% }
+-type describe_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_return_shipping_label_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_return_shipping_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_return_shipping_label_result() :: #{
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ReturnShippingLabelURI">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_return_shipping_label_result() :: #{binary() => any()}.
+
+%% Example:
+%% device_configuration() :: #{
+%%   <<"SnowconeDeviceConfiguration">> => snowcone_device_configuration()
+%% }
+-type device_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% e_k_s_on_device_service_configuration() :: #{
+%%   <<"EKSAnywhereVersion">> => string(),
+%%   <<"KubernetesVersion">> => string()
+%% }
+-type e_k_s_on_device_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_ami_resource() :: #{
+%%   <<"AmiId">> => string(),
+%%   <<"SnowballAmiId">> => string()
+%% }
+-type ec2_ami_resource() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_request_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ec2_request_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_trigger_definition() :: #{
+%%   <<"EventResourceARN">> => string()
+%% }
+-type event_trigger_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_manifest_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_job_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_manifest_result() :: #{
+%%   <<"ManifestURI">> => string()
+%% }
+-type get_job_manifest_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_unlock_code_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_job_unlock_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_unlock_code_result() :: #{
+%%   <<"UnlockCode">> => string()
+%% }
+-type get_job_unlock_code_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_snowball_usage_request() :: #{
+
+%% }
+-type get_snowball_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_snowball_usage_result() :: #{
+%%   <<"SnowballLimit">> => integer(),
+%%   <<"SnowballsInUse">> => integer()
+%% }
+-type get_snowball_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_software_updates_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_software_updates_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_software_updates_result() :: #{
+%%   <<"UpdatesURI">> => string()
+%% }
+-type get_software_updates_result() :: #{binary() => any()}.
+
+%% Example:
 %% i_n_d_tax_documents() :: #{
 %%   <<"GSTIN">> => string()
 %% }
 -type i_n_d_tax_documents() :: #{binary() => any()}.
 
 %% Example:
-%% create_long_term_pricing_result() :: #{
-%%   <<"LongTermPricingId">> => string()
-%% }
--type create_long_term_pricing_result() :: #{binary() => any()}.
-
-%% Example:
-%% s3_resource() :: #{
-%%   <<"BucketArn">> => string(),
-%%   <<"KeyRange">> => key_range(),
-%%   <<"TargetOnDeviceServices">> => list(target_on_device_service())
-%% }
--type s3_resource() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"AddressId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ForceCreateJobs">> => boolean(),
-%%   <<"ForwardingAddressId">> => string(),
-%%   <<"InitialClusterSize">> => integer(),
-%%   <<"JobType">> := list(any()),
-%%   <<"KmsKeyARN">> => string(),
-%%   <<"LongTermPricingIds">> => list(string()),
-%%   <<"Notification">> => notification(),
-%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
-%%   <<"RemoteManagement">> => list(any()),
-%%   <<"Resources">> => job_resource(),
-%%   <<"RoleARN">> => string(),
-%%   <<"ShippingOption">> := list(any()),
-%%   <<"SnowballCapacityPreference">> => list(any()),
-%%   <<"SnowballType">> := list(any()),
-%%   <<"TaxDocuments">> => tax_documents()
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_job_result() :: #{
-
-%% }
--type cancel_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"ConflictResource">> => string(),
+%% invalid_address_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type invalid_address_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_combination_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_job_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type invalid_resource_exception() :: #{binary() => any()}.
 
 %% Example:
 %% job_list_entry() :: #{
@@ -400,147 +479,12 @@
 -type job_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% create_address_result() :: #{
-%%   <<"AddressId">> => string()
+%% job_logs() :: #{
+%%   <<"JobCompletionReportURI">> => string(),
+%%   <<"JobFailureLogURI">> => string(),
+%%   <<"JobSuccessLogURI">> => string()
 %% }
--type create_address_result() :: #{binary() => any()}.
-
-%% Example:
-%% compatible_image() :: #{
-%%   <<"AmiId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type compatible_image() :: #{binary() => any()}.
-
-%% Example:
-%% describe_return_shipping_label_result() :: #{
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"ReturnShippingLabelURI">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_return_shipping_label_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_request() :: #{
-%%   <<"AddressId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ForwardingAddressId">> => string(),
-%%   <<"JobId">> := string(),
-%%   <<"Notification">> => notification(),
-%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
-%%   <<"PickupDetails">> => pickup_details(),
-%%   <<"Resources">> => job_resource(),
-%%   <<"RoleARN">> => string(),
-%%   <<"ShippingOption">> => list(any()),
-%%   <<"SnowballCapacityPreference">> => list(any())
-%% }
--type update_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% nfs_on_device_service_configuration() :: #{
-%%   <<"StorageLimit">> => integer(),
-%%   <<"StorageUnit">> => list(any())
-%% }
--type nfs_on_device_service_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_result() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"JobListEntries">> => list(job_list_entry())
-%% }
--type create_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% service_version() :: #{
-%%   <<"Version">> => string()
-%% }
--type service_version() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_long_term_pricing_result() :: #{
-%%   <<"LongTermPricingEntries">> => list(long_term_pricing_list_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_long_term_pricing_result() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cluster_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_address_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_address_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_compatible_images_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_compatible_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_versions_result() :: #{
-%%   <<"DependentServices">> => list(dependent_service()),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceName">> => list(any()),
-%%   <<"ServiceVersions">> => list(service_version())
-%% }
--type list_service_versions_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_address_request() :: #{
-%%   <<"Address">> := address()
-%% }
--type create_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_addresses_result() :: #{
-%%   <<"Addresses">> => list(address()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_addresses_result() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_address_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_address_exception() :: #{binary() => any()}.
-
-%% Example:
-%% kms_request_failed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type kms_request_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% key_range() :: #{
-%%   <<"BeginMarker">> => string(),
-%%   <<"EndMarker">> => string()
-%% }
--type key_range() :: #{binary() => any()}.
-
-%% Example:
-%% list_pickup_locations_result() :: #{
-%%   <<"Addresses">> => list(address()),
-%%   <<"NextToken">> => string()
-%% }
--type list_pickup_locations_result() :: #{binary() => any()}.
+-type job_logs() :: #{binary() => any()}.
 
 %% Example:
 %% job_metadata() :: #{
@@ -573,39 +517,40 @@
 -type job_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_resource_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
+%% job_resource() :: #{
+%%   <<"Ec2AmiResources">> => list(ec2_ami_resource()),
+%%   <<"LambdaResources">> => list(lambda_resource()),
+%%   <<"S3Resources">> => list(s3_resource())
 %% }
--type invalid_resource_exception() :: #{binary() => any()}.
+-type job_resource() :: #{binary() => any()}.
 
 %% Example:
-%% on_device_service_configuration() :: #{
-%%   <<"EKSOnDeviceService">> => e_k_s_on_device_service_configuration(),
-%%   <<"NFSOnDeviceService">> => nfs_on_device_service_configuration(),
-%%   <<"S3OnDeviceService">> => s3_on_device_service_configuration(),
-%%   <<"TGWOnDeviceService">> => t_g_w_on_device_service_configuration()
+%% key_range() :: #{
+%%   <<"BeginMarker">> => string(),
+%%   <<"EndMarker">> => string()
 %% }
--type on_device_service_configuration() :: #{binary() => any()}.
+-type key_range() :: #{binary() => any()}.
 
 %% Example:
-%% list_clusters_request() :: #{
+%% kms_request_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_request_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_resource() :: #{
+%%   <<"EventTriggers">> => list(event_trigger_definition()),
+%%   <<"LambdaArn">> => string()
+%% }
+-type lambda_resource() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_jobs_request() :: #{
+%%   <<"ClusterId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_clusters_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_return_shipping_label_result() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type create_return_shipping_label_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_unlock_code_result() :: #{
-%%   <<"UnlockCode">> => string()
-%% }
--type get_job_unlock_code_result() :: #{binary() => any()}.
+-type list_cluster_jobs_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_cluster_jobs_result() :: #{
@@ -615,28 +560,11 @@
 -type list_cluster_jobs_result() :: #{binary() => any()}.
 
 %% Example:
-%% wireless_connection() :: #{
-%%   <<"IsWifiEnabled">> => boolean()
+%% list_clusters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type wireless_connection() :: #{binary() => any()}.
-
-%% Example:
-%% describe_address_result() :: #{
-%%   <<"Address">> => address()
-%% }
--type describe_address_result() :: #{binary() => any()}.
-
-%% Example:
-%% pickup_details() :: #{
-%%   <<"DevicePickupId">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"IdentificationExpirationDate">> => non_neg_integer(),
-%%   <<"IdentificationIssuingOrg">> => string(),
-%%   <<"IdentificationNumber">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PhoneNumber">> => string()
-%% }
--type pickup_details() :: #{binary() => any()}.
+-type list_clusters_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_clusters_result() :: #{
@@ -646,102 +574,78 @@
 -type list_clusters_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_job_result() :: #{
-%%   <<"JobId">> => string()
+%% list_compatible_images_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type create_job_result() :: #{binary() => any()}.
+-type list_compatible_images_request() :: #{binary() => any()}.
 
 %% Example:
-%% return_shipping_label_already_exists_exception() :: #{
-%%   <<"Message">> => string()
+%% list_compatible_images_result() :: #{
+%%   <<"CompatibleImages">> => list(compatible_image()),
+%%   <<"NextToken">> => string()
 %% }
--type return_shipping_label_already_exists_exception() :: #{binary() => any()}.
+-type list_compatible_images_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_job_shipment_state_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"ShipmentState">> := list(any())
+%% list_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type update_job_shipment_state_request() :: #{binary() => any()}.
+-type list_jobs_request() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_cluster_result() :: #{
-
+%% list_jobs_result() :: #{
+%%   <<"JobListEntries">> => list(job_list_entry()),
+%%   <<"NextToken">> => string()
 %% }
--type cancel_cluster_result() :: #{binary() => any()}.
+-type list_jobs_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_job_result() :: #{
-
+%% list_long_term_pricing_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type update_job_result() :: #{binary() => any()}.
+-type list_long_term_pricing_request() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_request_failed_exception() :: #{
-%%   <<"Message">> => string()
+%% list_long_term_pricing_result() :: #{
+%%   <<"LongTermPricingEntries">> => list(long_term_pricing_list_entry()),
+%%   <<"NextToken">> => string()
 %% }
--type ec2_request_failed_exception() :: #{binary() => any()}.
+-type list_long_term_pricing_result() :: #{binary() => any()}.
 
 %% Example:
-%% dependent_service() :: #{
+%% list_pickup_locations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pickup_locations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pickup_locations_result() :: #{
+%%   <<"Addresses">> => list(address()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pickup_locations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_versions_request() :: #{
+%%   <<"DependentServices">> => list(dependent_service()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceName">> := list(any())
+%% }
+-type list_service_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_versions_result() :: #{
+%%   <<"DependentServices">> => list(dependent_service()),
+%%   <<"NextToken">> => string(),
 %%   <<"ServiceName">> => list(any()),
-%%   <<"ServiceVersion">> => service_version()
+%%   <<"ServiceVersions">> => list(service_version())
 %% }
--type dependent_service() :: #{binary() => any()}.
-
-%% Example:
-%% notification() :: #{
-%%   <<"DevicePickupSnsTopicARN">> => string(),
-%%   <<"JobStatesToNotify">> => list(list(any())()),
-%%   <<"NotifyAll">> => boolean(),
-%%   <<"SnsTopicARN">> => string()
-%% }
--type notification() :: #{binary() => any()}.
-
-%% Example:
-%% get_software_updates_result() :: #{
-%%   <<"UpdatesURI">> => string()
-%% }
--type get_software_updates_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_long_term_pricing_request() :: #{
-%%   <<"IsLongTermPricingAutoRenew">> => boolean(),
-%%   <<"LongTermPricingType">> := list(any()),
-%%   <<"SnowballType">> := list(any())
-%% }
--type create_long_term_pricing_request() :: #{binary() => any()}.
-
-%% Example:
-%% tax_documents() :: #{
-%%   <<"IND">> => i_n_d_tax_documents()
-%% }
--type tax_documents() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_list_entry() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"ClusterState">> => list(any()),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string()
-%% }
--type cluster_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% shipping_details() :: #{
-%%   <<"InboundShipment">> => shipment(),
-%%   <<"OutboundShipment">> => shipment(),
-%%   <<"ShippingOption">> => list(any())
-%% }
--type shipping_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_long_term_pricing_request() :: #{
-%%   <<"IsLongTermPricingAutoRenew">> => boolean(),
-%%   <<"LongTermPricingId">> := string(),
-%%   <<"ReplacementJob">> => string()
-%% }
--type update_long_term_pricing_request() :: #{binary() => any()}.
+-type list_service_versions_result() :: #{binary() => any()}.
 
 %% Example:
 %% long_term_pricing_list_entry() :: #{
@@ -759,67 +663,47 @@
 -type long_term_pricing_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% address() :: #{
-%%   <<"AddressId">> => string(),
-%%   <<"City">> => string(),
-%%   <<"Company">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"IsRestricted">> => boolean(),
-%%   <<"Landmark">> => string(),
+%% nfs_on_device_service_configuration() :: #{
+%%   <<"StorageLimit">> => integer(),
+%%   <<"StorageUnit">> => list(any())
+%% }
+-type nfs_on_device_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% notification() :: #{
+%%   <<"DevicePickupSnsTopicARN">> => string(),
+%%   <<"JobStatesToNotify">> => list(list(any())()),
+%%   <<"NotifyAll">> => boolean(),
+%%   <<"SnsTopicARN">> => string()
+%% }
+-type notification() :: #{binary() => any()}.
+
+%% Example:
+%% on_device_service_configuration() :: #{
+%%   <<"EKSOnDeviceService">> => e_k_s_on_device_service_configuration(),
+%%   <<"NFSOnDeviceService">> => nfs_on_device_service_configuration(),
+%%   <<"S3OnDeviceService">> => s3_on_device_service_configuration(),
+%%   <<"TGWOnDeviceService">> => t_g_w_on_device_service_configuration()
+%% }
+-type on_device_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% pickup_details() :: #{
+%%   <<"DevicePickupId">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"IdentificationExpirationDate">> => non_neg_integer(),
+%%   <<"IdentificationIssuingOrg">> => string(),
+%%   <<"IdentificationNumber">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"PrefectureOrDistrict">> => string(),
-%%   <<"StateOrProvince">> => string(),
-%%   <<"Street1">> => string(),
-%%   <<"Street2">> => string(),
-%%   <<"Street3">> => string(),
-%%   <<"Type">> => list(any())
+%%   <<"PhoneNumber">> => string()
 %% }
--type address() :: #{binary() => any()}.
+-type pickup_details() :: #{binary() => any()}.
 
 %% Example:
-%% e_k_s_on_device_service_configuration() :: #{
-%%   <<"EKSAnywhereVersion">> => string(),
-%%   <<"KubernetesVersion">> => string()
+%% return_shipping_label_already_exists_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type e_k_s_on_device_service_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_jobs_request() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% job_resource() :: #{
-%%   <<"Ec2AmiResources">> => list(ec2_ami_resource()),
-%%   <<"LambdaResources">> => list(lambda_resource()),
-%%   <<"S3Resources">> => list(s3_resource())
-%% }
--type job_resource() :: #{binary() => any()}.
-
-%% Example:
-%% describe_address_request() :: #{
-%%   <<"AddressId">> := string()
-%% }
--type describe_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% job_logs() :: #{
-%%   <<"JobCompletionReportURI">> => string(),
-%%   <<"JobFailureLogURI">> => string(),
-%%   <<"JobSuccessLogURI">> => string()
-%% }
--type job_logs() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_unlock_code_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_job_unlock_code_request() :: #{binary() => any()}.
+-type return_shipping_label_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% s3_on_device_service_configuration() :: #{
@@ -831,17 +715,46 @@
 -type s3_on_device_service_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% create_return_shipping_label_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"ShippingOption">> => list(any())
+%% s3_resource() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"KeyRange">> => key_range(),
+%%   <<"TargetOnDeviceServices">> => list(target_on_device_service())
 %% }
--type create_return_shipping_label_request() :: #{binary() => any()}.
+-type s3_resource() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_job_state_exception() :: #{
-%%   <<"Message">> => string()
+%% service_version() :: #{
+%%   <<"Version">> => string()
 %% }
--type invalid_job_state_exception() :: #{binary() => any()}.
+-type service_version() :: #{binary() => any()}.
+
+%% Example:
+%% shipment() :: #{
+%%   <<"Status">> => string(),
+%%   <<"TrackingNumber">> => string()
+%% }
+-type shipment() :: #{binary() => any()}.
+
+%% Example:
+%% shipping_details() :: #{
+%%   <<"InboundShipment">> => shipment(),
+%%   <<"OutboundShipment">> => shipment(),
+%%   <<"ShippingOption">> => list(any())
+%% }
+-type shipping_details() :: #{binary() => any()}.
+
+%% Example:
+%% snowcone_device_configuration() :: #{
+%%   <<"WirelessConnection">> => wireless_connection()
+%% }
+-type snowcone_device_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% t_g_w_on_device_service_configuration() :: #{
+%%   <<"StorageLimit">> => integer(),
+%%   <<"StorageUnit">> => list(any())
+%% }
+-type t_g_w_on_device_service_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% target_on_device_service() :: #{
@@ -850,42 +763,129 @@
 %% }
 -type target_on_device_service() :: #{binary() => any()}.
 
+%% Example:
+%% tax_documents() :: #{
+%%   <<"IND">> => i_n_d_tax_documents()
+%% }
+-type tax_documents() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_address_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_address_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"AddressId">> => string(),
+%%   <<"ClusterId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"ForwardingAddressId">> => string(),
+%%   <<"Notification">> => notification(),
+%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
+%%   <<"Resources">> => job_resource(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ShippingOption">> => list(any())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_result() :: #{
+
+%% }
+-type update_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_request() :: #{
+%%   <<"AddressId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ForwardingAddressId">> => string(),
+%%   <<"JobId">> := string(),
+%%   <<"Notification">> => notification(),
+%%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
+%%   <<"PickupDetails">> => pickup_details(),
+%%   <<"Resources">> => job_resource(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ShippingOption">> => list(any()),
+%%   <<"SnowballCapacityPreference">> => list(any())
+%% }
+-type update_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_result() :: #{
+
+%% }
+-type update_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_shipment_state_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"ShipmentState">> := list(any())
+%% }
+-type update_job_shipment_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_shipment_state_result() :: #{
+
+%% }
+-type update_job_shipment_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_long_term_pricing_request() :: #{
+%%   <<"IsLongTermPricingAutoRenew">> => boolean(),
+%%   <<"LongTermPricingId">> := string(),
+%%   <<"ReplacementJob">> => string()
+%% }
+-type update_long_term_pricing_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_long_term_pricing_result() :: #{
+
+%% }
+-type update_long_term_pricing_result() :: #{binary() => any()}.
+
+%% Example:
+%% wireless_connection() :: #{
+%%   <<"IsWifiEnabled">> => boolean()
+%% }
+-type wireless_connection() :: #{binary() => any()}.
+
 -type cancel_cluster_errors() ::
-    invalid_job_state_exception() | 
+    kms_request_failed_exception() | 
     invalid_resource_exception() | 
-    kms_request_failed_exception().
+    invalid_job_state_exception().
 
 -type cancel_job_errors() ::
-    invalid_job_state_exception() | 
+    kms_request_failed_exception() | 
     invalid_resource_exception() | 
-    kms_request_failed_exception().
+    invalid_job_state_exception().
 
 -type create_address_errors() ::
     unsupported_address_exception() | 
     invalid_address_exception().
 
 -type create_cluster_errors() ::
-    ec2_request_failed_exception() | 
-    invalid_resource_exception() | 
     kms_request_failed_exception() | 
-    invalid_input_combination_exception().
+    invalid_resource_exception() | 
+    invalid_input_combination_exception() | 
+    ec2_request_failed_exception().
 
 -type create_job_errors() ::
-    ec2_request_failed_exception() | 
-    invalid_resource_exception() | 
     kms_request_failed_exception() | 
-    cluster_limit_exceeded_exception() | 
-    invalid_input_combination_exception().
+    invalid_resource_exception() | 
+    invalid_input_combination_exception() | 
+    ec2_request_failed_exception() | 
+    cluster_limit_exceeded_exception().
 
 -type create_long_term_pricing_errors() ::
     invalid_resource_exception().
 
 -type create_return_shipping_label_errors() ::
-    invalid_job_state_exception() | 
     return_shipping_label_already_exists_exception() | 
     invalid_resource_exception() | 
-    conflict_exception() | 
-    invalid_input_combination_exception().
+    invalid_job_state_exception() | 
+    invalid_input_combination_exception() | 
+    conflict_exception().
 
 -type describe_address_errors() ::
     invalid_resource_exception().
@@ -901,21 +901,21 @@
     invalid_resource_exception().
 
 -type describe_return_shipping_label_errors() ::
-    invalid_job_state_exception() | 
     invalid_resource_exception() | 
+    invalid_job_state_exception() | 
     conflict_exception().
 
 -type get_job_manifest_errors() ::
-    invalid_job_state_exception() | 
-    invalid_resource_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception().
 
 -type get_job_unlock_code_errors() ::
-    invalid_job_state_exception() | 
-    invalid_resource_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception().
 
 -type get_software_updates_errors() ::
-    invalid_job_state_exception() | 
-    invalid_resource_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception().
 
 -type list_cluster_jobs_errors() ::
     invalid_resource_exception() | 
@@ -925,8 +925,8 @@
     invalid_next_token_exception().
 
 -type list_compatible_images_errors() ::
-    ec2_request_failed_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    ec2_request_failed_exception().
 
 -type list_jobs_errors() ::
     invalid_next_token_exception().
@@ -943,23 +943,23 @@
     invalid_next_token_exception().
 
 -type update_cluster_errors() ::
-    invalid_job_state_exception() | 
-    ec2_request_failed_exception() | 
-    invalid_resource_exception() | 
     kms_request_failed_exception() | 
-    invalid_input_combination_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception() | 
+    invalid_input_combination_exception() | 
+    ec2_request_failed_exception().
 
 -type update_job_errors() ::
-    invalid_job_state_exception() | 
-    ec2_request_failed_exception() | 
-    invalid_resource_exception() | 
     kms_request_failed_exception() | 
-    cluster_limit_exceeded_exception() | 
-    invalid_input_combination_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception() | 
+    invalid_input_combination_exception() | 
+    ec2_request_failed_exception() | 
+    cluster_limit_exceeded_exception().
 
 -type update_job_shipment_state_errors() ::
-    invalid_job_state_exception() | 
-    invalid_resource_exception().
+    invalid_resource_exception() | 
+    invalid_job_state_exception().
 
 -type update_long_term_pricing_errors() ::
     invalid_resource_exception().

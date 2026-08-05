@@ -207,11 +207,528 @@
 
 
 %% Example:
-%% delete_threat_model_failure() :: #{
-%%   <<"reason">> => [string()],
-%%   <<"threatModelId">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type delete_threat_model_failure() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor() :: #{
+%%   <<"authentication">> => authentication(),
+%%   <<"description">> => [string()],
+%%   <<"identifier">> => [string()],
+%%   <<"uris">> => list([string()]())
+%% }
+-type actor() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_artifact_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"artifactContent">> := [binary()],
+%%   <<"artifactType">> := list(any()),
+%%   <<"fileName">> := [string()]
+%% }
+-type add_artifact_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_artifact_output() :: #{
+%%   <<"artifactId">> => string()
+%% }
+-type add_artifact_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_space() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"awsResources">> => aws_resources(),
+%%   <<"codeReviewSettings">> => code_review_settings(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"targetDomainIds">> => list([string()]()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type agent_space() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_space_summary() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"name">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type agent_space_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"applicationName">> => [string()],
+%%   <<"defaultKmsKeyId">> => string(),
+%%   <<"domain">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifact() :: #{
+%%   <<"contents">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifact_metadata_item() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"artifactId">> => string(),
+%%   <<"fileName">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type artifact_metadata_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% artifact_summary() :: #{
+%%   <<"artifactId">> => string(),
+%%   <<"artifactType">> => list(any()),
+%%   <<"fileName">> => [string()]
+%% }
+-type artifact_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% assets() :: #{
+%%   <<"actors">> => list(actor()),
+%%   <<"documents">> => list(document_info()),
+%%   <<"endpoints">> => list(endpoint()),
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"sourceCode">> => list(source_code_repository())
+%% }
+-type assets() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication() :: #{
+%%   <<"providerType">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_resources() :: #{
+%%   <<"iamRoles">> => list(string()),
+%%   <<"lambdaFunctionArns">> => list(string()),
+%%   <<"logGroups">> => list(string()),
+%%   <<"s3Buckets">> => list(string()),
+%%   <<"secretArns">> => list(string()),
+%%   <<"vpcs">> => list(vpc_config())
+%% }
+-type aws_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_security_requirement_result() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"remediation">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_create_security_requirement_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirements">> := list(create_security_requirement_entry())
+%% }
+-type batch_create_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"securityRequirements">> => list(batch_create_security_requirement_result())
+%% }
+-type batch_create_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_code_reviews_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewIds">> := list([string()]())
+%% }
+-type batch_delete_code_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_code_reviews_output() :: #{
+%%   <<"deleted">> => list([string()]()),
+%%   <<"failed">> => list(delete_code_review_failure())
+%% }
+-type batch_delete_code_reviews_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_pentests_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"pentestIds">> := list([string()]())
+%% }
+-type batch_delete_pentests_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_pentests_output() :: #{
+%%   <<"deleted">> => list(pentest()),
+%%   <<"failed">> => list(delete_pentest_failure())
+%% }
+-type batch_delete_pentests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirementNames">> := list(string())
+%% }
+-type batch_delete_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_security_requirements_output() :: #{
+%%   <<"deletedSecurityRequirementNames">> => list(string()),
+%%   <<"errors">> => list(batch_security_requirement_error())
+%% }
+-type batch_delete_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelIds">> := list([string()]())
+%% }
+-type batch_delete_threat_models_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_threat_models_output() :: #{
+%%   <<"deleted">> => list([string()]()),
+%%   <<"failed">> => list(delete_threat_model_failure())
+%% }
+-type batch_delete_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_agent_spaces_input() :: #{
+%%   <<"agentSpaceIds">> := list(string())
+%% }
+-type batch_get_agent_spaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_agent_spaces_output() :: #{
+%%   <<"agentSpaces">> => list(agent_space()),
+%%   <<"notFound">> => list(string())
+%% }
+-type batch_get_agent_spaces_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_artifact_metadata_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"artifactIds">> := list(string())
+%% }
+-type batch_get_artifact_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_artifact_metadata_output() :: #{
+%%   <<"artifactMetadataList">> => list(artifact_metadata_item())
+%% }
+-type batch_get_artifact_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_review_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobTaskIds">> := list([string()]())
+%% }
+-type batch_get_code_review_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_review_job_tasks_output() :: #{
+%%   <<"codeReviewJobTasks">> => list(code_review_job_task()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_review_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_review_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobIds">> := list([string()]())
+%% }
+-type batch_get_code_review_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_review_jobs_output() :: #{
+%%   <<"codeReviewJobs">> => list(code_review_job()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_review_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_reviews_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewIds">> := list([string()]())
+%% }
+-type batch_get_code_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_reviews_output() :: #{
+%%   <<"codeReviews">> => list(code_review()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_code_reviews_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_findings_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"findingIds">> := list([string()]())
+%% }
+-type batch_get_findings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_findings_output() :: #{
+%%   <<"findings">> => list(finding()),
+%%   <<"notFound">> => list([string()]())
+%% }
+-type batch_get_findings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentest_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"taskIds">> := list([string()]())
+%% }
+-type batch_get_pentest_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentest_job_tasks_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"tasks">> => list(task())
+%% }
+-type batch_get_pentest_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentest_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"pentestJobIds">> := list([string()]())
+%% }
+-type batch_get_pentest_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentest_jobs_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"pentestJobs">> => list(pentest_job())
+%% }
+-type batch_get_pentest_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentests_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"pentestIds">> := list([string()]())
+%% }
+-type batch_get_pentests_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_pentests_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"pentests">> => list(pentest())
+%% }
+-type batch_get_pentests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirement_result() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"remediation">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_get_security_requirement_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirementNames">> := list(string())
+%% }
+-type batch_get_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"securityRequirements">> => list(batch_get_security_requirement_result())
+%% }
+-type batch_get_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_target_domains_input() :: #{
+%%   <<"targetDomainIds">> := list([string()]())
+%% }
+-type batch_get_target_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_target_domains_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"targetDomains">> => list(target_domain())
+%% }
+-type batch_get_target_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_model_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobTaskIds">> := list([string()]())
+%% }
+-type batch_get_threat_model_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_model_job_tasks_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModelJobTasks">> => list(threat_model_job_task())
+%% }
+-type batch_get_threat_model_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_model_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobIds">> := list([string()]())
+%% }
+-type batch_get_threat_model_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_model_jobs_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModelJobs">> => list(threat_model_job())
+%% }
+-type batch_get_threat_model_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelIds">> := list([string()]())
+%% }
+-type batch_get_threat_models_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threat_models_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threatModels">> => list(threat_model())
+%% }
+-type batch_get_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threats_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatIds">> := list([string()]())
+%% }
+-type batch_get_threats_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_threats_output() :: #{
+%%   <<"notFound">> => list([string()]()),
+%%   <<"threats">> => list(threat())
+%% }
+-type batch_get_threats_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_security_requirement_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"securityRequirementName">> => string()
+%% }
+-type batch_security_requirement_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_security_requirements_input() :: #{
+%%   <<"packId">> := string(),
+%%   <<"securityRequirements">> := list(update_security_requirement_entry())
+%% }
+-type batch_update_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_security_requirements_output() :: #{
+%%   <<"errors">> => list(batch_security_requirement_error()),
+%%   <<"updatedSecurityRequirementNames">> => list(string())
+%% }
+-type batch_update_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"providerResourceId">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"workspace">> => string()
+%% }
+-type bitbucket_repository_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -223,41 +740,322 @@
 
 
 %% Example:
-%% threat_model_job_task() :: #{
+%% category() :: #{
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"name">> => [string()]
+%% }
+-type category() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log() :: #{
+%%   <<"logGroup">> => [string()],
+%%   <<"logStream">> => [string()]
+%% }
+-type cloud_watch_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_location() :: #{
+%%   <<"filePath">> => [string()],
+%%   <<"label">> => [string()],
+%%   <<"lineEnd">> => [integer()],
+%%   <<"lineStart">> => [integer()]
+%% }
+-type code_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_remediation_task() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"taskDetails">> => list(code_remediation_task_details())
+%% }
+-type code_remediation_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_remediation_task_details() :: #{
+%%   <<"codeDiffLink">> => [string()],
+%%   <<"pullRequestLink">> => [string()],
+%%   <<"repoName">> => [string()]
+%% }
+-type code_remediation_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review() :: #{
 %%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationMode">> => list(any())
+%% }
+-type code_review() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job() :: #{
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"documents">> => list(document_info()),
+%%   <<"errorInformation">> => error_information(),
+%%   <<"executionContext">> => list(execution_context()),
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"overview">> => [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"status">> => list(any()),
+%%   <<"steps">> => list(step()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job_summary() :: #{
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_job_task() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"categories">> => list(category()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"executionStatus">> => list(any()),
 %%   <<"logsLocation">> => log_location(),
+%%   <<"riskType">> => list(any()),
 %%   <<"taskId">> => [string()],
-%%   <<"threatModelId">> => [string()],
-%%   <<"threatModelJobId">> => [string()],
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type threat_model_job_task() :: #{binary() => any()}.
+-type code_review_job_task() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_threat_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"anchor">> => threat_anchor_shape(),
-%%   <<"comments">> => [string()],
-%%   <<"evidence">> => list(threat_evidence_shape()),
-%%   <<"impactedAssets">> => list([string()]()),
-%%   <<"impactedGoal">> => list([string()]()),
-%%   <<"prerequisites">> => [string()],
-%%   <<"recommendation">> => [string()],
-%%   <<"severity">> => list(any()),
-%%   <<"statement">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"threatAction">> => [string()],
-%%   <<"threatId">> := [string()],
-%%   <<"threatImpact">> => [string()],
-%%   <<"threatSource">> => [string()],
+%% code_review_job_task_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"riskType">> => list(any()),
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_job_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_settings() :: #{
+%%   <<"controlsScanning">> => [boolean()],
+%%   <<"generalPurposeScanning">> => [boolean()]
+%% }
+-type code_review_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_review_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type code_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_document_metadata() :: #{
+%%   <<"name">> => string(),
+%%   <<"pageId">> => [string()],
+%%   <<"providerResourceId">> => string(),
+%%   <<"spaceKey">> => [string()],
+%%   <<"spaceTitle">> => [string()],
 %%   <<"title">> => [string()]
 %% }
--type update_threat_input() :: #{binary() => any()}.
+-type confluence_document_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_document_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"pageId">> => [string()],
+%%   <<"spaceKey">> => [string()],
+%%   <<"spaceTitle">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type confluence_document_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"siteUrl">> => string(),
+%%   <<"state">> => string()
+%% }
+-type confluence_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_resource_capabilities() :: #{
+%%   <<"createDocument">> => [boolean()],
+%%   <<"fetchDocument">> => [boolean()],
+%%   <<"updateDocument">> => [boolean()]
+%% }
+-type confluence_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_space_input() :: #{
+%%   <<"awsResources">> => aws_resources(),
+%%   <<"codeReviewSettings">> => code_review_settings(),
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetDomainIds">> => list([string()]())
+%% }
+-type create_agent_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_space_output() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"awsResources">> => aws_resources(),
+%%   <<"codeReviewSettings">> => code_review_settings(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"targetDomainIds">> => list([string()]()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"defaultKmsKeyId">> => string(),
+%%   <<"idcInstanceArn">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> := assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> := [string()],
+%%   <<"validationMode">> => list(any())
+%% }
+-type create_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_review_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationMode">> => list(any())
+%% }
+-type create_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_input() :: #{
+%%   <<"input">> := list(),
+%%   <<"integrationDisplayName">> := [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"privateConnectionName">> => string(),
+%%   <<"provider">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_output() :: #{
+%%   <<"integrationId">> => string()
+%% }
+-type create_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_membership_request() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"applicationId">> := string(),
+%%   <<"config">> => list(),
+%%   <<"memberType">> := list(any()),
+%%   <<"membershipId">> := string()
+%% }
+-type create_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_membership_response() :: #{}
+-type create_membership_response() :: #{}.
+
+
+%% Example:
+%% create_pentest_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"disableManagedSkills">> => list(list(any())()),
+%%   <<"excludeRiskTypes">> => list(list(any())()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"networkTrafficConfig">> => network_traffic_config(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> := [string()],
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_pentest_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,190 +1074,12 @@
 
 
 %% Example:
-%% update_security_requirement_entry() :: #{
-%%   <<"description">> => [string()],
-%%   <<"domain">> => [string()],
-%%   <<"evaluation">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"remediation">> => [string()]
+%% create_private_connection_input() :: #{
+%%   <<"mode">> := list(),
+%%   <<"privateConnectionName">> := string(),
+%%   <<"tags">> => map()
 %% }
--type update_security_requirement_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_hub_integration_input() :: #{
-%%   <<"code">> => string(),
-%%   <<"installationId">> => [string()],
-%%   <<"organizationName">> => [string()],
-%%   <<"state">> => string(),
-%%   <<"targetUrl">> => string()
-%% }
--type git_hub_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pentest() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"cleanUpStrategy">> => list(any()),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"disableManagedSkills">> => list(list(any())()),
-%%   <<"excludeRiskTypes">> => list(list(any())()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"networkTrafficConfig">> => network_traffic_config(),
-%%   <<"pentestId">> => [string()],
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type pentest() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifact_metadata_item() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"artifactId">> => string(),
-%%   <<"fileName">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type artifact_metadata_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% task() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"categories">> => list(category()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"logsLocation">> => log_location(),
-%%   <<"pentestId">> => [string()],
-%%   <<"pentestJobId">> => [string()],
-%%   <<"riskType">> => list(any()),
-%%   <<"targetEndpoint">> => endpoint(),
-%%   <<"taskId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type task() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_space_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"awsResources">> => aws_resources(),
-%%   <<"codeReviewSettings">> => code_review_settings(),
-%%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"targetDomainIds">> => list([string()]())
-%% }
--type update_agent_space_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_agent_spaces_input() :: #{
-%%   <<"agentSpaceIds">> := list(string())
-%% }
--type batch_get_agent_spaces_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_review_job_tasks_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"categoryName">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"stepName">> => list(any())
-%% }
--type list_code_review_job_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_model_job_tasks_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"threatModelJobTaskSummaries">> => list(threat_model_job_task_summary())
-%% }
--type list_threat_model_job_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_requirements_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityRequirementSummaries">> => list(security_requirement_summary())
-%% }
--type list_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_review_jobs_for_code_review_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_review_jobs_for_code_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_space_summary() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type agent_space_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_security_requirement_result() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"domain">> => [string()],
-%%   <<"evaluation">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"remediation">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type batch_get_security_requirement_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_membership_response() :: #{}
--type delete_membership_response() :: #{}.
-
-
-%% Example:
-%% batch_get_target_domains_input() :: #{
-%%   <<"targetDomainIds">> := list([string()]())
-%% }
--type batch_get_target_domains_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_request() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"applicationId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"memberType">> => list(any()),
-%%   <<"nextToken">> => string()
-%% }
--type list_memberships_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_model_job_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"threatModelId">> => [string()],
-%%   <<"threatModelJobId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type threat_model_job_summary() :: #{binary() => any()}.
+-type create_private_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -480,488 +1100,34 @@
 
 
 %% Example:
-%% code_location() :: #{
-%%   <<"filePath">> => [string()],
-%%   <<"label">> => [string()],
-%%   <<"lineEnd">> => [integer()],
-%%   <<"lineStart">> => [integer()]
-%% }
--type code_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pentest_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"disableManagedSkills">> => list(list(any())()),
-%%   <<"excludeRiskTypes">> => list(list(any())()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"networkTrafficConfig">> => network_traffic_config(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> := [string()],
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_pentest_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_artifact_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"artifactId">> := string()
-%% }
--type get_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_artifact_output() :: #{}
--type delete_artifact_output() :: #{}.
-
-
-%% Example:
-%% list_agent_spaces_output() :: #{
-%%   <<"agentSpaceSummaries">> => list(agent_space_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_spaces_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_model_job_tasks_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelJobTaskIds">> := list([string()]())
-%% }
--type batch_get_threat_model_job_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_review_jobs_output() :: #{
-%%   <<"codeReviewJobs">> => list(code_review_job()),
-%%   <<"notFound">> => list([string()]())
-%% }
--type batch_get_code_review_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_metadata() :: #{
-%%   <<"email">> => string(),
-%%   <<"username">> => [string()]
-%% }
--type user_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => list(any()),
-%%   <<"severity">> => list(any()),
-%%   <<"statement">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"stride">> => list(list(any())()),
-%%   <<"threatId">> => [string()],
-%%   <<"threatJobId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"updatedBy">> => list(any())
-%% }
--type threat_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_review_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"codeReviewId">> := [string()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"validationMode">> => list(any())
-%% }
--type update_code_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_document_metadata() :: #{
-%%   <<"name">> => string(),
-%%   <<"pageId">> => [string()],
-%%   <<"providerResourceId">> => string(),
-%%   <<"spaceKey">> => [string()],
-%%   <<"spaceTitle">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type confluence_document_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_artifact_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"artifactId">> := string()
-%% }
--type delete_artifact_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_security_requirement_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"securityRequirementName">> => string()
-%% }
--type batch_security_requirement_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_reviews_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewIds">> := list([string()]())
-%% }
--type batch_get_code_reviews_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_security_requirements_output() :: #{
-%%   <<"errors">> => list(batch_security_requirement_error()),
-%%   <<"securityRequirements">> => list(batch_get_security_requirement_result())
-%% }
--type batch_get_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% bitbucket_repository_resource() :: #{
-%%   <<"name">> => string(),
-%%   <<"workspace">> => string()
-%% }
--type bitbucket_repository_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_c_configuration() :: #{
-%%   <<"idcApplicationArn">> => string(),
-%%   <<"idcInstanceArn">> => string()
-%% }
--type id_c_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"confidence">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"findingId">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"pentestId">> => [string()],
-%%   <<"pentestJobId">> => [string()],
-%%   <<"riskLevel">> => list(any()),
-%%   <<"riskType">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"validationStatus">> => list(any())
-%% }
--type finding_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_model() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"createdAt">> => [non_neg_integer()],
+%% create_security_requirement_entry() :: #{
 %%   <<"description">> => [string()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"scopeDocs">> => list(document_info()),
-%%   <<"serviceRole">> => string(),
-%%   <<"threatModelId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"remediation">> => [string()]
 %% }
--type threat_model() :: #{binary() => any()}.
+-type create_security_requirement_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% report_destination() :: #{
-%%   <<"containerId">> => [string()],
-%%   <<"documentId">> => [string()],
-%%   <<"integrationId">> => [string()],
-%%   <<"parentId">> => [string()]
-%% }
--type report_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentest_jobs_for_pentest_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pentestJobSummaries">> => list(pentest_job_summary())
-%% }
--type list_pentest_jobs_for_pentest_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% discovered_endpoint() :: #{
-%%   <<"agentSpaceId">> => [string()],
+%% create_security_requirement_pack_input() :: #{
 %%   <<"description">> => [string()],
-%%   <<"evidence">> => [string()],
-%%   <<"operation">> => [string()],
-%%   <<"pentestJobId">> => [string()],
-%%   <<"taskId">> => [string()],
-%%   <<"uri">> => [string()]
-%% }
--type discovered_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_pentests_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"pentestIds">> := list([string()]())
-%% }
--type batch_get_pentests_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"codeReviewId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"validationMode">> => list(any())
-%% }
--type code_review() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_discovered_endpoints_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pentestJobId">> := [string()],
-%%   <<"prefix">> => [string()]
-%% }
--type list_discovered_endpoints_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% integrated_resource_input_item() :: #{
-%%   <<"capabilities">> => list(),
-%%   <<"resource">> => list()
-%% }
--type integrated_resource_input_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% integrated_document() :: #{
-%%   <<"integrationId">> => [string()],
-%%   <<"resourceId">> => [string()]
-%% }
--type integrated_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_integration_input() :: #{
-%%   <<"integrationId">> := string()
-%% }
--type delete_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_domain_summary() :: #{
-%%   <<"domainName">> => [string()],
-%%   <<"targetDomainId">> => string(),
-%%   <<"verificationStatus">> => list(any())
-%% }
--type target_domain_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_requirement_pack_output() :: #{}
--type delete_security_requirement_pack_output() :: #{}.
-
-
-%% Example:
-%% create_code_review_output() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"codeReviewId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"validationMode">> => list(any())
-%% }
--type create_code_review_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_security_requirements_input() :: #{
-%%   <<"packId">> := string(),
-%%   <<"securityRequirements">> := list(create_security_requirement_entry())
-%% }
--type batch_create_security_requirements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pentest_job() :: #{
-%%   <<"actors">> => list(actor()),
-%%   <<"allowedDomains">> => list(endpoint()),
-%%   <<"cleanUpStrategy">> => list(any()),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"disableManagedSkills">> => list(list(any())()),
-%%   <<"documents">> => list(document_info()),
-%%   <<"endpoints">> => list(endpoint()),
-%%   <<"errorInformation">> => error_information(),
-%%   <<"excludePaths">> => list(endpoint()),
-%%   <<"excludeRiskTypes">> => list(list(any())()),
-%%   <<"executionContext">> => list(execution_context()),
-%%   <<"integratedRepositories">> => list(integrated_repository()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"networkTrafficConfig">> => network_traffic_config(),
-%%   <<"overview">> => [string()],
-%%   <<"pentestId">> => [string()],
-%%   <<"pentestJobId">> => [string()],
-%%   <<"serviceRole">> => string(),
-%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
 %%   <<"status">> => list(any()),
-%%   <<"steps">> => list(step()),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type pentest_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_security_requirements_output() :: #{
-%%   <<"deletedSecurityRequirementNames">> => list(string()),
-%%   <<"errors">> => list(batch_security_requirement_error())
-%% }
--type batch_delete_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_private_connection_input() :: #{
-%%   <<"mode">> := list(),
-%%   <<"privateConnectionName">> := string(),
 %%   <<"tags">> => map()
 %% }
--type create_private_connection_input() :: #{binary() => any()}.
+-type create_security_requirement_pack_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_agent_spaces_output() :: #{
-%%   <<"agentSpaces">> => list(agent_space()),
-%%   <<"notFound">> => list(string())
+%% create_security_requirement_pack_output() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type batch_get_agent_spaces_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% verification_script_env_var() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type verification_script_env_var() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_pentest_job_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"pentestJobId">> := [string()]
-%% }
--type stop_pentest_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"pentestId">> => [string()],
-%%   <<"pentestJobId">> => [string()],
-%%   <<"riskType">> => list(any()),
-%%   <<"taskId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentests_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pentestSummaries">> => list(pentest_summary())
-%% }
--type list_pentests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_resource_capabilities() :: #{
-%%   <<"createDocument">> => [boolean()],
-%%   <<"fetchDocument">> => [boolean()],
-%%   <<"updateDocument">> => [boolean()]
-%% }
--type confluence_resource_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_traffic_config() :: #{
-%%   <<"customHeaders">> => list(custom_header()),
-%%   <<"rules">> => list(network_traffic_rule())
-%% }
--type network_traffic_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_private_connection_certificate_output() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => [string()],
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
-%% }
--type update_private_connection_certificate_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_location() :: #{
-%%   <<"cloudWatchLog">> => cloud_watch_log(),
-%%   <<"logType">> => list(any())
-%% }
--type log_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_code_reviews_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewIds">> := list([string()]())
-%% }
--type batch_delete_code_reviews_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_pentest_jobs_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"pentestJobIds">> := list([string()]())
-%% }
--type batch_get_pentest_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_evidence_shape() :: #{
-%%   <<"packageId">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type threat_evidence_shape() :: #{binary() => any()}.
+-type create_security_requirement_pack_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -974,287 +1140,72 @@
 
 
 %% Example:
-%% stop_code_review_job_input() :: #{
+%% create_target_domain_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainName">> => [string()],
+%%   <<"targetDomainId">> => string(),
+%%   <<"verificationDetails">> => verification_details(),
+%%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
+%%   <<"verifiedAt">> => [non_neg_integer()]
+%% }
+-type create_target_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewJobId">> := [string()]
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatJobId">> := [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()]
 %% }
--type stop_code_review_job_input() :: #{binary() => any()}.
+-type create_threat_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_threats_input() :: #{
+%% create_threat_model_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
-%%   <<"threatIds">> := list([string()]())
+%%   <<"assets">> => assets(),
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"reportDestination">> => report_destination(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> := string(),
+%%   <<"title">> := [string()]
 %% }
--type batch_get_threats_input() :: #{binary() => any()}.
+-type create_threat_model_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% integration_summary() :: #{
-%%   <<"displayName">> => [string()],
-%%   <<"installationId">> => [string()],
-%%   <<"integrationId">> => [string()],
-%%   <<"privateConnectionName">> => string(),
-%%   <<"provider">> => list(any()),
-%%   <<"providerType">> => list(any()),
-%%   <<"targetUrl">> => string()
-%% }
--type integration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_requirement_packs_input() :: #{
-%%   <<"filter">> => list_security_requirement_pack_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_security_requirement_packs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_security_requirement_pack_input() :: #{
-%%   <<"packId">> := string()
-%% }
--type delete_security_requirement_pack_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_requirement_summary() :: #{
+%% create_threat_model_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type security_requirement_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_reviews_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_reviews_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_domains_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetDomainSummaries">> => list(target_domain_summary())
-%% }
--type list_target_domains_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threats_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"threats">> => list(threat())
-%% }
--type batch_get_threats_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_security_requirements_input() :: #{
-%%   <<"packId">> := string(),
-%%   <<"securityRequirementNames">> := list(string())
-%% }
--type batch_get_security_requirements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_requirement_pack_filter() :: #{
-%%   <<"managementType">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_security_requirement_pack_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% bitbucket_integration_input() :: #{
-%%   <<"code">> => string(),
-%%   <<"installationId">> => string(),
-%%   <<"state">> => string(),
-%%   <<"workspace">> => string()
-%% }
--type bitbucket_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_model_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
 %%   <<"threatModelId">> => [string()],
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type threat_model_summary() :: #{binary() => any()}.
+-type create_threat_model_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% private_connection_summary() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => [string()],
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
-%% }
--type private_connection_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_private_connections_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"privateConnections">> => list(private_connection_summary())
-%% }
--type list_private_connections_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_code_reviews_output() :: #{
-%%   <<"deleted">> => list([string()]()),
-%%   <<"failed">> => list(delete_code_review_failure())
-%% }
--type batch_delete_code_reviews_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_threat_model_job_output() :: #{}
--type stop_threat_model_job_output() :: #{}.
-
-
-%% Example:
-%% stop_threat_model_job_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelJobId">> := [string()]
-%% }
--type stop_threat_model_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_input() :: #{
-%%   <<"input">> := list(),
-%%   <<"integrationDisplayName">> := [string()],
-%%   <<"kmsKeyId">> => string(),
-%%   <<"privateConnectionName">> => string(),
-%%   <<"provider">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_security_requirement_pack_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"importStatus">> => list(any()),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"managementType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vendorName">> => [string()]
-%% }
--type get_security_requirement_pack_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_artifact_output() :: #{
-%%   <<"artifactId">> => string()
-%% }
--type add_artifact_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_hub_repository_resource() :: #{
-%%   <<"name">> => string(),
-%%   <<"owner">> => string()
-%% }
--type git_hub_repository_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_security_requirement_pack_input() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"packId">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type update_security_requirement_pack_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentest_job_tasks_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"categoryName">> => [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pentestJobId">> => [string()],
-%%   <<"stepName">> => list(any())
-%% }
--type list_pentest_job_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_requirement_packs_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityRequirementPackSummaries">> => list(security_requirement_pack_summary())
-%% }
--type list_security_requirement_packs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_target_domain_input() :: #{
-%%   <<"targetDomainId">> := string(),
-%%   <<"verificationMethod">> := list(any())
-%% }
--type update_target_domain_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_requirement_pack_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"managementType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"vendorName">> => [string()]
-%% }
--type security_requirement_pack_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_verification() :: #{
-%%   <<"routePath">> => [string()],
-%%   <<"token">> => [string()]
-%% }
--type http_verification() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_threat_output() :: #{
+%% create_threat_output() :: #{
 %%   <<"anchor">> => threat_anchor_shape(),
 %%   <<"comments">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -1277,90 +1228,153 @@
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"updatedBy">> => list(any())
 %% }
--type update_threat_output() :: #{binary() => any()}.
+-type create_threat_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% code_remediation_task_details() :: #{
-%%   <<"codeDiffLink">> => [string()],
-%%   <<"pullRequestLink">> => [string()],
-%%   <<"repoName">> => [string()]
-%% }
--type code_remediation_task_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_review_job_tasks_output() :: #{
-%%   <<"codeReviewJobTasks">> => list(code_review_job_task()),
-%%   <<"notFound">> => list([string()]())
-%% }
--type batch_get_code_review_job_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integrated_resources_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"integrationId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type list_integrated_resources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_config() :: #{
-%%   <<"role">> => list(any())
-%% }
--type user_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_review_output() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"codeReviewId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"validationMode">> => list(any())
-%% }
--type update_code_review_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% bitbucket_repository_metadata() :: #{
-%%   <<"accessType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"providerResourceId">> => string(),
-%%   <<"workspace">> => string()
-%% }
--type bitbucket_repository_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_space() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"awsResources">> => aws_resources(),
-%%   <<"codeReviewSettings">> => code_review_settings(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"kmsKeyId">> => string(),
+%% custom_header() :: #{
 %%   <<"name">> => [string()],
-%%   <<"targetDomainIds">> => list([string()]()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"value">> => [string()]
 %% }
--type agent_space() :: #{binary() => any()}.
+-type custom_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_space_input() :: #{
+%%   <<"agentSpaceId">> := string()
+%% }
+-type delete_agent_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_space_output() :: #{
+%%   <<"agentSpaceId">> => string()
+%% }
+-type delete_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_application_request() :: #{
+%%   <<"applicationId">> := string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_artifact_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"artifactId">> := string()
+%% }
+-type delete_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_artifact_output() :: #{}
+-type delete_artifact_output() :: #{}.
+
+
+%% Example:
+%% delete_code_review_failure() :: #{
+%%   <<"codeReviewId">> => [string()],
+%%   <<"reason">> => [string()]
+%% }
+-type delete_code_review_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_integration_input() :: #{
+%%   <<"integrationId">> := string()
+%% }
+-type delete_integration_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_output() :: #{}
+-type delete_integration_output() :: #{}.
+
+
+%% Example:
+%% delete_membership_request() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"applicationId">> := string(),
+%%   <<"memberType">> => list(any()),
+%%   <<"membershipId">> := string()
+%% }
+-type delete_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_membership_response() :: #{}
+-type delete_membership_response() :: #{}.
+
+
+%% Example:
+%% delete_pentest_failure() :: #{
+%%   <<"pentestId">> => [string()],
+%%   <<"reason">> => [string()]
+%% }
+-type delete_pentest_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_private_connection_input() :: #{
+%%   <<"privateConnectionName">> := string()
+%% }
+-type delete_private_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type delete_private_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_security_requirement_pack_input() :: #{
+%%   <<"packId">> := string()
+%% }
+-type delete_security_requirement_pack_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_requirement_pack_output() :: #{}
+-type delete_security_requirement_pack_output() :: #{}.
+
+
+%% Example:
+%% delete_target_domain_input() :: #{
+%%   <<"targetDomainId">> := string()
+%% }
+-type delete_target_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_target_domain_output() :: #{
+%%   <<"targetDomainId">> => string()
+%% }
+-type delete_target_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_threat_model_failure() :: #{
+%%   <<"reason">> => [string()],
+%%   <<"threatModelId">> => [string()]
+%% }
+-type delete_threat_model_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_private_connection_input() :: #{
+%%   <<"privateConnectionName">> := string()
+%% }
+-type describe_private_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1381,223 +1395,58 @@
 
 
 %% Example:
-%% start_code_review_job_output() :: #{
+%% discovered_endpoint() :: #{
 %%   <<"agentSpaceId">> => [string()],
-%%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"description">> => [string()],
+%%   <<"evidence">> => [string()],
+%%   <<"operation">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"taskId">> => [string()],
+%%   <<"uri">> => [string()]
 %% }
--type start_code_review_job_output() :: #{binary() => any()}.
+-type discovered_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_integration_output() :: #{
-%%   <<"displayName">> => [string()],
-%%   <<"installationId">> => [string()],
-%%   <<"integrationId">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"privateConnectionName">> => string(),
-%%   <<"provider">> => list(any()),
-%%   <<"providerType">> => list(any()),
-%%   <<"targetUrl">> => string()
+%% dns_verification() :: #{
+%%   <<"dnsRecordName">> => [string()],
+%%   <<"dnsRecordType">> => list(any()),
+%%   <<"token">> => [string()]
 %% }
--type get_integration_output() :: #{binary() => any()}.
+-type dns_verification() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_threats_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"threatJobId">> := [string()]
+%% document_info() :: #{
+%%   <<"artifactId">> => [string()],
+%%   <<"integratedDocument">> => integrated_document(),
+%%   <<"s3Location">> => [string()]
 %% }
--type list_threats_input() :: #{binary() => any()}.
+-type document_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_pentest_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> => assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"disableManagedSkills">> => list(list(any())()),
-%%   <<"excludeRiskTypes">> => list(list(any())()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"networkTrafficConfig">> => network_traffic_config(),
-%%   <<"pentestId">> := [string()],
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"vpcConfig">> => vpc_config()
+%% endpoint() :: #{
+%%   <<"uri">> => [string()]
 %% }
--type update_pentest_input() :: #{binary() => any()}.
+-type endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_code_review_failure() :: #{
-%%   <<"codeReviewId">> => [string()],
-%%   <<"reason">> => [string()]
-%% }
--type delete_code_review_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
+%% error_information() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"message">> => [string()]
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type error_information() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_code_review_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> := assets(),
-%%   <<"codeRemediationStrategy">> => list(any()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> := [string()],
-%%   <<"validationMode">> => list(any())
+%% execution_context() :: #{
+%%   <<"context">> => [string()],
+%%   <<"contextType">> => list(any()),
+%%   <<"timestamp">> => [non_neg_integer()]
 %% }
--type create_code_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integrated_resources_output() :: #{
-%%   <<"integratedResourceSummaries">> => list(integrated_resource_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_integrated_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_requirement_pack_output() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_security_requirement_pack_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pentest_output() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"excludeRiskTypes">> => list(list(any())()),
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"pentestId">> => [string()],
-%%   <<"serviceRole">> => string(),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_pentest_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_model_job_task_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"taskId">> => [string()],
-%%   <<"threatModelId">> => [string()],
-%%   <<"threatModelJobId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type threat_model_job_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_security_requirements_output() :: #{
-%%   <<"importStatus">> => list(any()),
-%%   <<"packId">> => string()
-%% }
--type import_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% integrated_repository() :: #{
-%%   <<"integrationId">> => [string()],
-%%   <<"providerResourceId">> => [string()]
-%% }
--type integrated_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_pentest_jobs_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"pentestJobs">> => list(pentest_job())
-%% }
--type batch_get_pentest_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_model_jobs_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"threatModelId">> := [string()]
-%% }
--type list_threat_model_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_integrated_resources_output() :: #{}
--type update_integrated_resources_output() :: #{}.
-
-
-%% Example:
-%% delete_target_domain_output() :: #{
-%%   <<"targetDomainId">> => string()
-%% }
--type delete_target_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_models_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelIds">> := list([string()]())
-%% }
--type batch_get_threat_models_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentests_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_pentests_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_space_output() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"awsResources">> => aws_resources(),
-%%   <<"codeReviewSettings">> => code_review_settings(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"targetDomainIds">> => list([string()]()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_space_input() :: #{
-%%   <<"agentSpaceId">> := string()
-%% }
--type delete_agent_space_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"securityGroupArns">> => list(string()),
-%%   <<"subnetArns">> => list(string()),
-%%   <<"vpcArn">> => string()
-%% }
--type vpc_config() :: #{binary() => any()}.
+-type execution_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1632,63 +1481,402 @@
 
 
 %% Example:
-%% authentication() :: #{
-%%   <<"providerType">> => list(any()),
-%%   <<"value">> => [string()]
+%% finding_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"confidence">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"findingId">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"riskLevel">> => list(any()),
+%%   <<"riskType">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"validationStatus">> => list(any())
 %% }
--type authentication() :: #{binary() => any()}.
+-type finding_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_threat_models_input() :: #{
+%% get_application_request() :: #{
+%%   <<"applicationId">> := string()
+%% }
+-type get_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"applicationName">> => [string()],
+%%   <<"defaultKmsKeyId">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"idcConfiguration">> => id_c_configuration(),
+%%   <<"roleArn">> => string()
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_artifact_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"artifactId">> := string()
+%% }
+-type get_artifact_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_artifact_output() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"artifact">> => artifact(),
+%%   <<"artifactId">> => string(),
+%%   <<"fileName">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_artifact_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_input() :: #{
+%%   <<"integrationId">> := string()
+%% }
+-type get_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"installationId">> => [string()],
+%%   <<"integrationId">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"privateConnectionName">> => string(),
+%%   <<"provider">> => list(any()),
+%%   <<"providerType">> => list(any()),
+%%   <<"targetUrl">> => string()
+%% }
+-type get_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_security_requirement_pack_input() :: #{
+%%   <<"packId">> := string()
+%% }
+-type get_security_requirement_pack_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_security_requirement_pack_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"importStatus">> => list(any()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"managementType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vendorName">> => [string()]
+%% }
+-type get_security_requirement_pack_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => [string()],
+%%   <<"organizationName">> => [string()],
+%%   <<"state">> => string(),
+%%   <<"targetUrl">> => string()
+%% }
+-type git_hub_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"providerResourceId">> => string()
+%% }
+-type git_hub_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"owner">> => string()
+%% }
+-type git_hub_repository_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_resource_capabilities() :: #{
+%%   <<"leaveComments">> => [boolean()],
+%%   <<"remediateCode">> => [boolean()]
+%% }
+-type git_hub_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_integration_input() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"groupId">> => [string()],
+%%   <<"targetUrl">> => string(),
+%%   <<"tokenType">> => list(any())
+%% }
+-type git_lab_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"providerResourceId">> => string()
+%% }
+-type git_lab_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type git_lab_repository_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_resource_capabilities() :: #{
+%%   <<"leaveComments">> => [boolean()],
+%%   <<"remediateCode">> => [boolean()]
+%% }
+-type git_lab_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_verification() :: #{
+%%   <<"routePath">> => [string()],
+%%   <<"token">> => [string()]
+%% }
+-type http_verification() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_c_configuration() :: #{
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"idcInstanceArn">> => string()
+%% }
+-type id_c_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_security_requirements_input() :: #{
+%%   <<"input">> := list(),
+%%   <<"packId">> := string()
+%% }
+-type import_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_security_requirements_output() :: #{
+%%   <<"importStatus">> => list(any()),
+%%   <<"packId">> => string()
+%% }
+-type import_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_provider_registration_input() :: #{
+%%   <<"provider">> := list(any())
+%% }
+-type initiate_provider_registration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_provider_registration_output() :: #{
+%%   <<"csrfState">> => string(),
+%%   <<"redirectTo">> => string()
+%% }
+-type initiate_provider_registration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% integrated_document() :: #{
+%%   <<"integrationId">> => [string()],
+%%   <<"resourceId">> => [string()]
+%% }
+-type integrated_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% integrated_repository() :: #{
+%%   <<"branch">> => [string()],
+%%   <<"integrationId">> => [string()],
+%%   <<"providerResourceId">> => [string()]
+%% }
+-type integrated_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% integrated_resource_input_item() :: #{
+%%   <<"capabilities">> => list(),
+%%   <<"resource">> => list()
+%% }
+-type integrated_resource_input_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% integrated_resource_summary() :: #{
+%%   <<"capabilities">> => list(),
+%%   <<"integrationId">> => string(),
+%%   <<"resource">> => list()
+%% }
+-type integrated_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration_summary() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"installationId">> => [string()],
+%%   <<"integrationId">> => [string()],
+%%   <<"privateConnectionName">> => string(),
+%%   <<"provider">> => list(any()),
+%%   <<"providerType">> => list(any()),
+%%   <<"targetUrl">> => string()
+%% }
+-type integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_spaces_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_spaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_spaces_output() :: #{
+%%   <<"agentSpaceSummaries">> => list(agent_space_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_spaces_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applicationSummaries">> => list(application_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_artifacts_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_artifacts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_artifacts_output() :: #{
+%%   <<"artifactSummaries">> => list(artifact_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_artifacts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_review_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"categoryName">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stepName">> => list(any())
+%% }
+-type list_code_review_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_review_job_tasks_output() :: #{
+%%   <<"codeReviewJobTaskSummaries">> => list(code_review_job_task_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_review_jobs_for_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_jobs_for_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_review_jobs_for_code_review_output() :: #{
+%%   <<"codeReviewJobSummaries">> => list(code_review_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_review_jobs_for_code_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_reviews_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_threat_models_input() :: #{binary() => any()}.
+-type list_code_reviews_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_code_review_job_tasks_input() :: #{
+%% list_code_reviews_output() :: #{
+%%   <<"codeReviewSummaries">> => list(code_review_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_reviews_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_discovered_endpoints_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewJobTaskIds">> := list([string()]())
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pentestJobId">> := [string()],
+%%   <<"prefix">> => [string()]
 %% }
--type batch_get_code_review_job_tasks_input() :: #{binary() => any()}.
+-type list_discovered_endpoints_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_security_requirements_input() :: #{
-%%   <<"packId">> := string(),
-%%   <<"securityRequirementNames">> := list(string())
+%% list_discovered_endpoints_output() :: #{
+%%   <<"discoveredEndpoints">> => list(discovered_endpoint()),
+%%   <<"nextToken">> => string()
 %% }
--type batch_delete_security_requirements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_finding_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"attackScript">> => [string()],
-%%   <<"customerNote">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"findingId">> := [string()],
-%%   <<"name">> => [string()],
-%%   <<"reasoning">> => [string()],
-%%   <<"riskLevel">> => list(any()),
-%%   <<"riskScore">> => [string()],
-%%   <<"riskType">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type update_finding_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"defaultKmsKeyId">> => string(),
-%%   <<"idcInstanceArn">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_application_request() :: #{binary() => any()}.
+-type list_discovered_endpoints_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1708,6 +1896,288 @@
 
 
 %% Example:
+%% list_findings_output() :: #{
+%%   <<"findingsSummaries">> => list(finding_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrated_resources_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"integrationId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type list_integrated_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrated_resources_output() :: #{
+%%   <<"integratedResourceSummaries">> => list(integrated_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_integrated_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_input() :: #{
+%%   <<"filter">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_integrations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_output() :: #{
+%%   <<"integrationSummaries">> => list(integration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_integrations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_request() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"applicationId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"memberType">> => list(any()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_response() :: #{
+%%   <<"membershipSummaries">> => list(membership_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentest_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"categoryName">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pentestJobId">> => [string()],
+%%   <<"stepName">> => list(any())
+%% }
+-type list_pentest_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentest_job_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskSummaries">> => list(task_summary())
+%% }
+-type list_pentest_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentest_jobs_for_pentest_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pentestId">> := [string()]
+%% }
+-type list_pentest_jobs_for_pentest_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentest_jobs_for_pentest_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pentestJobSummaries">> => list(pentest_job_summary())
+%% }
+-type list_pentest_jobs_for_pentest_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentests_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pentests_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pentests_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pentestSummaries">> => list(pentest_summary())
+%% }
+-type list_pentests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_connections_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_private_connections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_private_connections_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privateConnections">> => list(private_connection_summary())
+%% }
+-type list_private_connections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirement_pack_filter() :: #{
+%%   <<"managementType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_security_requirement_pack_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirement_packs_input() :: #{
+%%   <<"filter">> => list_security_requirement_pack_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_security_requirement_packs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirement_packs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityRequirementPackSummaries">> => list(security_requirement_pack_summary())
+%% }
+-type list_security_requirement_packs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirements_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"packId">> := string()
+%% }
+-type list_security_requirements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_requirements_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityRequirementSummaries">> => list(security_requirement_summary())
+%% }
+-type list_security_requirements_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_domains_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_target_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_domains_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetDomainSummaries">> => list(target_domain_summary())
+%% }
+-type list_target_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_job_tasks_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobId">> := [string()]
+%% }
+-type list_threat_model_job_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_job_tasks_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobTaskSummaries">> => list(threat_model_job_task_summary())
+%% }
+-type list_threat_model_job_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_jobs_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelId">> := [string()]
+%% }
+-type list_threat_model_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_model_jobs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelJobSummaries">> => list(threat_model_job_summary())
+%% }
+-type list_threat_model_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_models_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_threat_models_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_models_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threatModelSummaries">> => list(threat_model_summary())
+%% }
+-type list_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threats_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"threatJobId">> := [string()]
+%% }
+-type list_threats_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threats_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"threats">> => list(threat_summary())
+%% }
+-type list_threats_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_location() :: #{
+%%   <<"cloudWatchLog">> => cloud_watch_log(),
+%%   <<"logType">> => list(any())
+%% }
+-type log_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_summary() :: #{
 %%   <<"agentSpaceId">> => string(),
 %%   <<"applicationId">> => string(),
@@ -1724,101 +2194,243 @@
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"path">> => [string()]
+%% network_traffic_config() :: #{
+%%   <<"customHeaders">> => list(custom_header()),
+%%   <<"rules">> => list(network_traffic_rule())
 %% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% update_finding_output() :: #{}
--type update_finding_output() :: #{}.
+-type network_traffic_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% git_hub_resource_capabilities() :: #{
-%%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
+%% network_traffic_rule() :: #{
+%%   <<"effect">> => list(any()),
+%%   <<"networkTrafficRuleType">> => list(any()),
+%%   <<"pattern">> => [string()]
 %% }
--type git_hub_resource_capabilities() :: #{binary() => any()}.
+-type network_traffic_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_application_response() :: #{
-%%   <<"applicationId">> => string()
-%% }
--type create_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_discovered_endpoints_output() :: #{
-%%   <<"discoveredEndpoints">> => list(discovered_endpoint()),
-%%   <<"nextToken">> => string()
-%% }
--type list_discovered_endpoints_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_hub_repository_metadata() :: #{
-%%   <<"accessType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"providerResourceId">> => string()
-%% }
--type git_hub_repository_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_document_resource() :: #{
-%%   <<"name">> => string(),
-%%   <<"pageId">> => [string()],
-%%   <<"spaceKey">> => [string()],
-%%   <<"spaceTitle">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type confluence_document_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_models_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"threatModels">> => list(threat_model())
-%% }
--type batch_get_threat_models_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_output() :: #{
-%%   <<"anchor">> => threat_anchor_shape(),
-%%   <<"comments">> => [string()],
+%% pentest() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
+%%   <<"cleanUpStrategy">> => list(any()),
+%%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => list(any()),
-%%   <<"evidence">> => list(threat_evidence_shape()),
-%%   <<"impactedAssets">> => list([string()]()),
-%%   <<"impactedGoal">> => list([string()]()),
-%%   <<"prerequisites">> => [string()],
-%%   <<"recommendation">> => [string()],
-%%   <<"severity">> => list(any()),
-%%   <<"statement">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"stride">> => list(list(any())()),
-%%   <<"threatAction">> => [string()],
-%%   <<"threatId">> => [string()],
-%%   <<"threatImpact">> => [string()],
-%%   <<"threatJobId">> => [string()],
-%%   <<"threatSource">> => [string()],
+%%   <<"disableManagedSkills">> => list(list(any())()),
+%%   <<"excludeRiskTypes">> => list(list(any())()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"networkTrafficConfig">> => network_traffic_config(),
+%%   <<"pentestId">> => [string()],
+%%   <<"serviceRole">> => string(),
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"updatedBy">> => list(any())
+%%   <<"vpcConfig">> => vpc_config()
 %% }
--type create_threat_output() :: #{binary() => any()}.
+-type pentest() :: #{binary() => any()}.
+
+
+%% Example:
+%% pentest_job() :: #{
+%%   <<"actors">> => list(actor()),
+%%   <<"allowedDomains">> => list(endpoint()),
+%%   <<"cleanUpStrategy">> => list(any()),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"disableManagedSkills">> => list(list(any())()),
+%%   <<"documents">> => list(document_info()),
+%%   <<"endpoints">> => list(endpoint()),
+%%   <<"errorInformation">> => error_information(),
+%%   <<"excludePaths">> => list(endpoint()),
+%%   <<"excludeRiskTypes">> => list(list(any())()),
+%%   <<"executionContext">> => list(execution_context()),
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"networkTrafficConfig">> => network_traffic_config(),
+%%   <<"overview">> => [string()],
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"status">> => list(any()),
+%%   <<"steps">> => list(step()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type pentest_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% pentest_job_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type pentest_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% pentest_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"pentestId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type pentest_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_connection_summary() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type private_connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_destination() :: #{
+%%   <<"containerId">> => [string()],
+%%   <<"documentId">> => [string()],
+%%   <<"integrationId">> => [string()],
+%%   <<"parentId">> => [string()]
+%% }
+-type report_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_artifact() :: #{
+%%   <<"content">> => binary(),
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type security_requirement_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_pack_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"managementType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vendorName">> => [string()]
+%% }
+-type security_requirement_pack_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_requirement_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type security_requirement_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"resourceConfigurationId">> => string()
+%% }
+-type self_managed_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"hostAddress">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type service_managed_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_code_repository() :: #{
+%%   <<"s3Location">> => [string()]
+%% }
+-type source_code_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_remediation_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"findingIds">> := list([string()]()),
+%%   <<"pentestJobId">> => [string()]
+%% }
+-type start_code_remediation_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_code_remediation_output() :: #{}
+-type start_code_remediation_output() :: #{}.
+
+
+%% Example:
+%% start_code_review_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewId">> := [string()],
+%%   <<"diffSource">> => list()
+%% }
+-type start_code_review_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_review_job_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"codeReviewId">> => [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type start_code_review_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_pentest_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"pentestId">> := [string()]
+%% }
+-type start_pentest_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1835,384 +2447,11 @@
 
 
 %% Example:
-%% list_threats_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"threats">> => list(threat_summary())
-%% }
--type list_threats_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_lab_resource_capabilities() :: #{
-%%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
-%% }
--type git_lab_resource_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_space_output() :: #{
-%%   <<"agentSpaceId">> => string()
-%% }
--type delete_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% verification_details() :: #{
-%%   <<"dnsTxt">> => dns_verification(),
-%%   <<"httpRoute">> => http_verification(),
-%%   <<"method">> => list(any())
-%% }
--type verification_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integrations_output() :: #{
-%%   <<"integrationSummaries">> => list(integration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_integrations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_review_job_tasks_output() :: #{
-%%   <<"codeReviewJobTaskSummaries">> => list(code_review_job_task_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_review_job_tasks_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_code_review_job_output() :: #{}
--type stop_code_review_job_output() :: #{}.
-
-
-%% Example:
-%% batch_create_security_requirement_result() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"domain">> => [string()],
-%%   <<"evaluation">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"packId">> => string(),
-%%   <<"remediation">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type batch_create_security_requirement_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_code_repository() :: #{
-%%   <<"s3Location">> => [string()]
-%% }
--type source_code_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"uri">> => [string()]
-%% }
--type endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_private_connection_input() :: #{
-%%   <<"privateConnectionName">> := string()
-%% }
--type delete_private_connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% create_security_requirement_entry() :: #{
-%%   <<"description">> => [string()],
-%%   <<"domain">> => [string()],
-%%   <<"evaluation">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"remediation">> => [string()]
-%% }
--type create_security_requirement_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"defaultKmsKeyId">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_response() :: #{
-%%   <<"applicationId">> => string()
-%% }
--type update_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_threat_model_input() :: #{
+%% start_threat_model_job_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> => assets(),
-%%   <<"description">> => [string()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"scopeDocs">> => list(document_info()),
-%%   <<"serviceRole">> => string(),
-%%   <<"threatModelId">> := [string()],
-%%   <<"title">> => [string()]
+%%   <<"threatModelId">> := [string()]
 %% }
--type update_threat_model_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review_summary() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"codeReviewId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type code_review_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_threat_models_output() :: #{
-%%   <<"deleted">> => list([string()]()),
-%%   <<"failed">> => list(delete_threat_model_failure())
-%% }
--type batch_delete_threat_models_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_artifact_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"artifactContent">> := [binary()],
-%%   <<"artifactType">> := list(any()),
-%%   <<"fileName">> := [string()]
-%% }
--type add_artifact_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_space_output() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"awsResources">> => aws_resources(),
-%%   <<"codeReviewSettings">> => code_review_settings(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"targetDomainIds">> => list([string()]()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type create_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_reviews_output() :: #{
-%%   <<"codeReviews">> => list(code_review()),
-%%   <<"notFound">> => list([string()]())
-%% }
--type batch_get_code_reviews_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_model_job_tasks_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"threatModelJobTasks">> => list(threat_model_job_task())
-%% }
--type batch_get_threat_model_job_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_private_connection_output() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => [string()],
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
-%% }
--type delete_private_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_lab_integration_input() :: #{
-%%   <<"accessToken">> => string(),
-%%   <<"groupId">> => [string()],
-%%   <<"targetUrl">> => string(),
-%%   <<"tokenType">> => list(any())
-%% }
--type git_lab_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_artifacts_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_artifacts_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_security_requirements_input() :: #{
-%%   <<"packId">> := string(),
-%%   <<"securityRequirements">> := list(update_security_requirement_entry())
-%% }
--type batch_update_security_requirements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"applicationName">> => [string()],
-%%   <<"defaultKmsKeyId">> => string(),
-%%   <<"domain">> => string(),
-%%   <<"idcConfiguration">> => id_c_configuration(),
-%%   <<"roleArn">> => string()
-%% }
--type get_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_artifact_output() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"artifact">> => artifact(),
-%%   <<"artifactId">> => string(),
-%%   <<"fileName">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_artifact_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_pentest_job_tasks_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"tasks">> => list(task())
-%% }
--type batch_get_pentest_job_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_output() :: #{
-%%   <<"findingsSummaries">> => list(finding_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_domains_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_target_domains_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_integrated_resources_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"integrationId">> := string(),
-%%   <<"items">> := list(integrated_resource_input_item())
-%% }
--type update_integrated_resources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_space_input() :: #{
-%%   <<"awsResources">> => aws_resources(),
-%%   <<"codeReviewSettings">> => code_review_settings(),
-%%   <<"description">> => [string()],
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"targetDomainIds">> => list([string()]())
-%% }
--type create_agent_space_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_output() :: #{}
--type delete_integration_output() :: #{}.
-
-
-%% Example:
-%% batch_get_findings_output() :: #{
-%%   <<"findings">> => list(finding()),
-%%   <<"notFound">> => list([string()]())
-%% }
--type batch_get_findings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentest_jobs_for_pentest_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pentestId">> := [string()]
-%% }
--type list_pentest_jobs_for_pentest_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifact_summary() :: #{
-%%   <<"artifactId">> => string(),
-%%   <<"artifactType">> => list(any()),
-%%   <<"fileName">> => [string()]
-%% }
--type artifact_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_model_job() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"documents">> => list(document_info()),
-%%   <<"errorInformation">> => error_information(),
-%%   <<"executionEndTime">> => [non_neg_integer()],
-%%   <<"executionStartTime">> => [non_neg_integer()],
-%%   <<"integratedRepositories">> => list(integrated_repository()),
-%%   <<"scopeDocs">> => list(document_info()),
-%%   <<"sourceCode">> => list(source_code_repository()),
-%%   <<"status">> => list(any()),
-%%   <<"systemOverview">> => [string()],
-%%   <<"threatModelId">> => [string()],
-%%   <<"threatModelJobId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type threat_model_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_requirements_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"packId">> := string()
-%% }
--type list_security_requirements_input() :: #{binary() => any()}.
+-type start_threat_model_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2226,6 +2465,121 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type start_threat_model_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% step() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"name">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type step() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_code_review_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> := [string()]
+%% }
+-type stop_code_review_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_code_review_job_output() :: #{}
+-type stop_code_review_job_output() :: #{}.
+
+
+%% Example:
+%% stop_pentest_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"pentestJobId">> := [string()]
+%% }
+-type stop_pentest_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pentest_job_output() :: #{}
+-type stop_pentest_job_output() :: #{}.
+
+
+%% Example:
+%% stop_threat_model_job_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"threatModelJobId">> := [string()]
+%% }
+-type stop_threat_model_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_threat_model_job_output() :: #{}
+-type stop_threat_model_job_output() :: #{}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% target_domain() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainName">> => [string()],
+%%   <<"targetDomainId">> => string(),
+%%   <<"verificationDetails">> => verification_details(),
+%%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
+%%   <<"verifiedAt">> => [non_neg_integer()]
+%% }
+-type target_domain() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_domain_summary() :: #{
+%%   <<"domainName">> => [string()],
+%%   <<"targetDomainId">> => string(),
+%%   <<"verificationStatus">> => list(any())
+%% }
+-type target_domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% task() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"categories">> => list(category()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"logsLocation">> => log_location(),
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"riskType">> => list(any()),
+%%   <<"targetEndpoint">> => endpoint(),
+%%   <<"taskHours">> => [float()],
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type task() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"riskType">> => list(any()),
+%%   <<"taskHours">> => [float()],
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type task_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2256,230 +2610,128 @@
 
 
 %% Example:
-%% update_target_domain_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainName">> => [string()],
-%%   <<"targetDomainId">> => string(),
-%%   <<"verificationDetails">> => verification_details(),
-%%   <<"verificationStatus">> => list(any()),
-%%   <<"verificationStatusReason">> => [string()],
-%%   <<"verifiedAt">> => [non_neg_integer()]
+%% threat_anchor_shape() :: #{
+%%   <<"id">> => [string()],
+%%   <<"kind">> => [string()],
+%%   <<"packageId">> => [string()]
 %% }
--type update_target_domain_output() :: #{binary() => any()}.
+-type threat_anchor_shape() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% threat_evidence_shape() :: #{
+%%   <<"packageId">> => [string()],
+%%   <<"path">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type threat_evidence_shape() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_create_security_requirements_output() :: #{
-%%   <<"errors">> => list(batch_security_requirement_error()),
-%%   <<"securityRequirements">> => list(batch_create_security_requirement_result())
-%% }
--type batch_create_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_target_domain_input() :: #{
-%%   <<"targetDomainId">> := string()
-%% }
--type verify_target_domain_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_model_jobs_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"threatModelJobSummaries">> => list(threat_model_job_summary())
-%% }
--type list_threat_model_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% pentest_summary() :: #{
+%% threat_model() :: #{
 %%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"pentestId">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> => [string()],
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type pentest_summary() :: #{binary() => any()}.
+-type threat_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_managed_input() :: #{
-%%   <<"certificate">> => string(),
-%%   <<"resourceConfigurationId">> => string()
-%% }
--type self_managed_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_response() :: #{
-%%   <<"membershipSummaries">> => list(membership_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_memberships_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_requirement_artifact() :: #{
-%%   <<"content">> => binary(),
-%%   <<"format">> => list(any()),
-%%   <<"name">> => string()
-%% }
--type security_requirement_artifact() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_output() :: #{
-%%   <<"integrationId">> => string()
-%% }
--type create_integration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_code_review_job_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewId">> := [string()],
-%%   <<"diffSource">> => list()
-%% }
--type start_code_review_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pentest_job_summary() :: #{
+%% threat_model_job() :: #{
+%%   <<"agentSpaceId">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"pentestId">> => [string()],
-%%   <<"pentestJobId">> => [string()],
+%%   <<"documents">> => list(document_info()),
+%%   <<"errorInformation">> => error_information(),
+%%   <<"executionEndTime">> => [non_neg_integer()],
+%%   <<"executionStartTime">> => [non_neg_integer()],
+%%   <<"integratedRepositories">> => list(integrated_repository()),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"sourceCode">> => list(source_code_repository()),
 %%   <<"status">> => list(any()),
+%%   <<"systemOverview">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type pentest_job_summary() :: #{binary() => any()}.
+-type threat_model_job() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_code_remediation_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"findingIds">> := list([string()]()),
-%%   <<"pentestJobId">> => [string()]
-%% }
--type start_code_remediation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_security_requirement_pack_input() :: #{
-%%   <<"packId">> := string()
-%% }
--type get_security_requirement_pack_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_threat_models_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelIds">> := list([string()]())
-%% }
--type batch_delete_threat_models_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_verification() :: #{
-%%   <<"dnsRecordName">> => [string()],
-%%   <<"dnsRecordType">> => list(any()),
-%%   <<"token">> => [string()]
-%% }
--type dns_verification() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review_settings() :: #{
-%%   <<"controlsScanning">> => [boolean()],
-%%   <<"generalPurposeScanning">> => [boolean()]
-%% }
--type code_review_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_pentests_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"pentests">> => list(pentest())
-%% }
--type batch_get_pentests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_pentest_job_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"pentestId">> := [string()]
-%% }
--type start_pentest_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% code_review_job_task_summary() :: #{
+%% threat_model_job_summary() :: #{
 %%   <<"agentSpaceId">> => [string()],
-%%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_model_job_task() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"logsLocation">> => log_location(),
+%%   <<"taskId">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type threat_model_job_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_model_job_task_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"executionStatus">> => list(any()),
-%%   <<"riskType">> => list(any()),
 %%   <<"taskId">> => [string()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"threatModelJobId">> => [string()],
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type code_review_job_task_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
+-type threat_model_job_task_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% initiate_provider_registration_output() :: #{
-%%   <<"csrfState">> => string(),
-%%   <<"redirectTo">> => string()
+%% threat_model_summary() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"threatModelId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type initiate_provider_registration_output() :: #{binary() => any()}.
+-type threat_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% git_lab_repository_resource() :: #{
-%%   <<"name">> => string(),
-%%   <<"namespace">> => string()
+%% threat_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"stride">> => list(list(any())()),
+%%   <<"threatId">> => [string()],
+%%   <<"threatJobId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
 %% }
--type git_lab_repository_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_review_jobs_for_code_review_output() :: #{
-%%   <<"codeReviewJobSummaries">> => list(code_review_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_review_jobs_for_code_review_output() :: #{binary() => any()}.
+-type threat_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2492,416 +2744,152 @@
 
 
 %% Example:
-%% code_review_job() :: #{
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_agent_space_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"awsResources">> => aws_resources(),
+%%   <<"codeReviewSettings">> => code_review_settings(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"targetDomainIds">> => list([string()]())
+%% }
+-type update_agent_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_space_output() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"awsResources">> => aws_resources(),
+%%   <<"codeReviewSettings">> => code_review_settings(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"targetDomainIds">> => list([string()]()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"defaultKmsKeyId">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"applicationId">> => string()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_review_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"codeReviewId">> := [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"validationMode">> => list(any())
+%% }
+-type update_code_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_review_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"documents">> => list(document_info()),
-%%   <<"errorInformation">> => error_information(),
-%%   <<"executionContext">> => list(execution_context()),
-%%   <<"integratedRepositories">> => list(integrated_repository()),
 %%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"overview">> => [string()],
 %%   <<"serviceRole">> => string(),
-%%   <<"sourceCode">> => list(source_code_repository()),
-%%   <<"status">> => list(any()),
-%%   <<"steps">> => list(step()),
 %%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type code_review_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_model_jobs_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelJobIds">> := list([string()]())
-%% }
--type batch_get_threat_model_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% integrated_resource_summary() :: #{
-%%   <<"capabilities">> => list(),
-%%   <<"integrationId">> => string(),
-%%   <<"resource">> => list()
-%% }
--type integrated_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_findings_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"findingIds">> := list([string()]())
-%% }
--type batch_get_findings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_target_domain_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainName">> => [string()],
-%%   <<"targetDomainId">> => string(),
-%%   <<"verificationDetails">> => verification_details(),
-%%   <<"verificationStatus">> => list(any()),
-%%   <<"verificationStatusReason">> => [string()],
-%%   <<"verifiedAt">> => [non_neg_integer()]
-%% }
--type create_target_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_security_requirements_output() :: #{
-%%   <<"errors">> => list(batch_security_requirement_error()),
-%%   <<"updatedSecurityRequirementNames">> => list(string())
-%% }
--type batch_update_security_requirements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_threat_model_job_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"threatModelId">> := [string()]
-%% }
--type start_threat_model_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_model_job_tasks_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"threatModelJobId">> := [string()]
-%% }
--type list_threat_model_job_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_integration_input() :: #{
-%%   <<"code">> => string(),
-%%   <<"installationId">> => string(),
-%%   <<"siteUrl">> => string(),
-%%   <<"state">> => string()
-%% }
--type confluence_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_pentest_failure() :: #{
-%%   <<"pentestId">> => [string()],
-%%   <<"reason">> => [string()]
-%% }
--type delete_pentest_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_lab_repository_metadata() :: #{
-%%   <<"accessType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"providerResourceId">> => string()
-%% }
--type git_lab_repository_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_managed_input() :: #{
-%%   <<"certificate">> => string(),
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"hostAddress">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4AddressesPerEni">> => integer(),
-%%   <<"portRanges">> => list(string()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type service_managed_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"applicationName">> => [string()],
-%%   <<"defaultKmsKeyId">> => string(),
-%%   <<"domain">> => string()
-%% }
--type application_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% actor() :: #{
-%%   <<"authentication">> => authentication(),
-%%   <<"description">> => [string()],
-%%   <<"identifier">> => [string()],
-%%   <<"uris">> => list([string()]())
-%% }
--type actor() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_traffic_rule() :: #{
-%%   <<"effect">> => list(any()),
-%%   <<"networkTrafficRuleType">> => list(any()),
-%%   <<"pattern">> => [string()]
-%% }
--type network_traffic_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% category() :: #{
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"name">> => [string()]
-%% }
--type category() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_log() :: #{
-%%   <<"logGroup">> => [string()],
-%%   <<"logStream">> => [string()]
-%% }
--type cloud_watch_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_membership_request() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"applicationId">> := string(),
-%%   <<"config">> => list(),
-%%   <<"memberType">> := list(any()),
-%%   <<"membershipId">> := string()
-%% }
--type create_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assets() :: #{
-%%   <<"actors">> => list(actor()),
-%%   <<"documents">> => list(document_info()),
-%%   <<"endpoints">> => list(endpoint()),
-%%   <<"integratedRepositories">> => list(integrated_repository()),
-%%   <<"sourceCode">> => list(source_code_repository())
-%% }
--type assets() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_target_domains_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"targetDomains">> => list(target_domain())
-%% }
--type batch_get_target_domains_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"applicationSummaries">> => list(application_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_models_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"threatModelSummaries">> => list(threat_model_summary())
-%% }
--type list_threat_models_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_input() :: #{
-%%   <<"integrationId">> := string()
-%% }
--type get_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_private_connections_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_private_connections_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_artifact_metadata_input() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"artifactIds">> := list(string())
-%% }
--type batch_get_artifact_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_reviews_output() :: #{
-%%   <<"codeReviewSummaries">> => list(code_review_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_reviews_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_resources() :: #{
-%%   <<"iamRoles">> => list(string()),
-%%   <<"lambdaFunctionArns">> => list(string()),
-%%   <<"logGroups">> => list(string()),
-%%   <<"s3Buckets">> => list(string()),
-%%   <<"secretArns">> => list(string()),
-%%   <<"vpcs">> => list(vpc_config())
-%% }
--type aws_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_spaces_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_spaces_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_artifacts_output() :: #{
-%%   <<"artifactSummaries">> => list(artifact_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_artifacts_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review_job_summary() :: #{
-%%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type code_review_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_target_domain_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainName">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"targetDomainId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"verificationStatusReason">> => [string()],
-%%   <<"verifiedAt">> => [non_neg_integer()]
+%%   <<"validationMode">> => list(any())
 %% }
--type verify_target_domain_output() :: #{binary() => any()}.
+-type update_code_review_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% error_information() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => [string()]
+%% update_finding_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"attackScript">> => [string()],
+%%   <<"customerNote">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"findingId">> := [string()],
+%%   <<"name">> => [string()],
+%%   <<"reasoning">> => [string()],
+%%   <<"riskLevel">> => list(any()),
+%%   <<"riskScore">> => [string()],
+%%   <<"riskType">> => [string()],
+%%   <<"status">> => list(any())
 %% }
--type error_information() :: #{binary() => any()}.
+-type update_finding_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_finding_output() :: #{}
+-type update_finding_output() :: #{}.
 
 
 %% Example:
-%% artifact() :: #{
-%%   <<"contents">> => [string()],
-%%   <<"type">> => list(any())
+%% update_integrated_resources_input() :: #{
+%%   <<"agentSpaceId">> := string(),
+%%   <<"integrationId">> := string(),
+%%   <<"items">> := list(integrated_resource_input_item())
 %% }
--type artifact() :: #{binary() => any()}.
+-type update_integrated_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_integrated_resources_output() :: #{}
+-type update_integrated_resources_output() :: #{}.
 
 
 %% Example:
-%% verification_script() :: #{
-%%   <<"envVars">> => list(verification_script_env_var()),
-%%   <<"instructions">> => [string()],
-%%   <<"scriptType">> => [string()],
-%%   <<"scriptUrl">> => [string()]
+%% update_pentest_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"codeRemediationStrategy">> => list(any()),
+%%   <<"disableManagedSkills">> => list(list(any())()),
+%%   <<"excludeRiskTypes">> => list(list(any())()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"networkTrafficConfig">> => network_traffic_config(),
+%%   <<"pentestId">> := [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
+%%   <<"vpcConfig">> => vpc_config()
 %% }
--type verification_script() :: #{binary() => any()}.
+-type update_pentest_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_private_connection_input() :: #{
-%%   <<"privateConnectionName">> := string()
-%% }
--type describe_private_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_security_requirements_input() :: #{
-%%   <<"input">> := list(),
-%%   <<"packId">> := string()
-%% }
--type import_security_requirements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% step() :: #{
+%% update_pentest_output() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"assets">> => assets(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"name">> => list(any()),
-%%   <<"status">> => list(any()),
+%%   <<"excludeRiskTypes">> => list(list(any())()),
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"pentestId">> => [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type step() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pentest_job_output() :: #{}
--type stop_pentest_job_output() :: #{}.
-
-
-%% Example:
-%% delete_membership_request() :: #{
-%%   <<"agentSpaceId">> := string(),
-%%   <<"applicationId">> := string(),
-%%   <<"memberType">> => list(any()),
-%%   <<"membershipId">> := string()
-%% }
--type delete_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_code_remediation_output() :: #{}
--type start_code_remediation_output() :: #{}.
-
-
-%% Example:
-%% batch_get_pentest_job_tasks_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"taskIds">> := list([string()]())
-%% }
--type batch_get_pentest_job_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_review_jobs_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"codeReviewJobIds">> := list([string()]())
-%% }
--type batch_get_code_review_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_target_domain_input() :: #{
-%%   <<"targetDomainId">> := string()
-%% }
--type delete_target_domain_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_header() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type custom_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_remediation_task() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"taskDetails">> => list(code_remediation_task_details())
-%% }
--type code_remediation_task() :: #{binary() => any()}.
+-type update_pentest_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2911,9 +2899,43 @@
 %% }
 -type update_private_connection_certificate_input() :: #{binary() => any()}.
 
+
 %% Example:
-%% create_membership_response() :: #{}
--type create_membership_response() :: #{}.
+%% update_private_connection_certificate_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type update_private_connection_certificate_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_requirement_entry() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domain">> => [string()],
+%%   <<"evaluation">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"remediation">> => [string()]
+%% }
+-type update_security_requirement_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_requirement_pack_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"packId">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_security_requirement_pack_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2927,19 +2949,60 @@
 
 
 %% Example:
-%% execution_context() :: #{
-%%   <<"context">> => [string()],
-%%   <<"contextType">> => list(any()),
-%%   <<"timestamp">> => [non_neg_integer()]
+%% update_target_domain_input() :: #{
+%%   <<"targetDomainId">> := string(),
+%%   <<"verificationMethod">> := list(any())
 %% }
--type execution_context() :: #{binary() => any()}.
+-type update_target_domain_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_application_request() :: #{
-%%   <<"applicationId">> := string()
+%% update_target_domain_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainName">> => [string()],
+%%   <<"targetDomainId">> => string(),
+%%   <<"verificationDetails">> => verification_details(),
+%%   <<"verificationStatus">> => list(any()),
+%%   <<"verificationStatusReason">> => [string()],
+%%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
--type get_application_request() :: #{binary() => any()}.
+-type update_target_domain_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_threat_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"anchor">> => threat_anchor_shape(),
+%%   <<"comments">> => [string()],
+%%   <<"evidence">> => list(threat_evidence_shape()),
+%%   <<"impactedAssets">> => list([string()]()),
+%%   <<"impactedGoal">> => list([string()]()),
+%%   <<"prerequisites">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"severity">> => list(any()),
+%%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"threatAction">> => [string()],
+%%   <<"threatId">> := [string()],
+%%   <<"threatImpact">> => [string()],
+%%   <<"threatSource">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type update_threat_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_threat_model_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"assets">> => assets(),
+%%   <<"description">> => [string()],
+%%   <<"logConfig">> => cloud_watch_log(),
+%%   <<"scopeDocs">> => list(document_info()),
+%%   <<"serviceRole">> => string(),
+%%   <<"threatModelId">> := [string()],
+%%   <<"title">> => [string()]
+%% }
+-type update_threat_model_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2959,120 +3022,11 @@
 
 
 %% Example:
-%% list_integrations_input() :: #{
-%%   <<"filter">> => list(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_integrations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_info() :: #{
-%%   <<"artifactId">> => [string()],
-%%   <<"integratedDocument">> => integrated_document(),
-%%   <<"s3Location">> => [string()]
-%% }
--type document_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_pentests_output() :: #{
-%%   <<"deleted">> => list(pentest()),
-%%   <<"failed">> => list(delete_pentest_failure())
-%% }
--type batch_delete_pentests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pentest_job_tasks_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taskSummaries">> => list(task_summary())
-%% }
--type list_pentest_job_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_model_output() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"assets">> => assets(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"scopeDocs">> => list(document_info()),
-%%   <<"serviceRole">> => string(),
-%%   <<"threatModelId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type create_threat_model_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_requirement_pack_input() :: #{
-%%   <<"description">> => [string()],
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_security_requirement_pack_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_artifact_metadata_output() :: #{
-%%   <<"artifactMetadataList">> => list(artifact_metadata_item())
-%% }
--type batch_get_artifact_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_provider_registration_input() :: #{
-%%   <<"provider">> := list(any())
-%% }
--type initiate_provider_registration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_threat_model_jobs_output() :: #{
-%%   <<"notFound">> => list([string()]()),
-%%   <<"threatModelJobs">> => list(threat_model_job())
-%% }
--type batch_get_threat_model_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review_job_task() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"categories">> => list(category()),
-%%   <<"codeReviewId">> => [string()],
-%%   <<"codeReviewJobId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"logsLocation">> => log_location(),
-%%   <<"riskType">> => list(any()),
-%%   <<"taskId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type code_review_job_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_anchor_shape() :: #{
-%%   <<"id">> => [string()],
-%%   <<"kind">> => [string()],
-%%   <<"packageId">> => [string()]
-%% }
--type threat_anchor_shape() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
+%% update_threat_output() :: #{
 %%   <<"anchor">> => threat_anchor_shape(),
 %%   <<"comments">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => list(any()),
 %%   <<"evidence">> => list(threat_evidence_shape()),
 %%   <<"impactedAssets">> => list([string()]()),
 %%   <<"impactedGoal">> => list([string()]()),
@@ -3080,266 +3034,315 @@
 %%   <<"recommendation">> => [string()],
 %%   <<"severity">> => list(any()),
 %%   <<"statement">> => [string()],
+%%   <<"status">> => list(any()),
 %%   <<"stride">> => list(list(any())()),
 %%   <<"threatAction">> => [string()],
+%%   <<"threatId">> => [string()],
 %%   <<"threatImpact">> => [string()],
-%%   <<"threatJobId">> := [string()],
+%%   <<"threatJobId">> => [string()],
 %%   <<"threatSource">> => [string()],
-%%   <<"title">> => [string()]
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedBy">> => list(any())
 %% }
--type create_threat_input() :: #{binary() => any()}.
+-type update_threat_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_application_request() :: #{
-%%   <<"applicationId">> := string()
+%% user_config() :: #{
+%%   <<"role">> => list(any())
 %% }
--type delete_application_request() :: #{binary() => any()}.
+-type user_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_pentests_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"pentestIds">> := list([string()]())
+%% user_metadata() :: #{
+%%   <<"email">> => string(),
+%%   <<"username">> => [string()]
 %% }
--type batch_delete_pentests_input() :: #{binary() => any()}.
+-type user_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% target_domain() :: #{
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_details() :: #{
+%%   <<"dnsTxt">> => dns_verification(),
+%%   <<"httpRoute">> => http_verification(),
+%%   <<"method">> => list(any())
+%% }
+-type verification_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_script() :: #{
+%%   <<"envVars">> => list(verification_script_env_var()),
+%%   <<"instructions">> => [string()],
+%%   <<"scriptType">> => [string()],
+%%   <<"scriptUrl">> => [string()]
+%% }
+-type verification_script() :: #{binary() => any()}.
+
+
+%% Example:
+%% verification_script_env_var() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type verification_script_env_var() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_target_domain_input() :: #{
+%%   <<"targetDomainId">> := string()
+%% }
+-type verify_target_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_target_domain_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainName">> => [string()],
+%%   <<"status">> => list(any()),
 %%   <<"targetDomainId">> => string(),
-%%   <<"verificationDetails">> => verification_details(),
-%%   <<"verificationStatus">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"verificationStatusReason">> => [string()],
 %%   <<"verifiedAt">> => [non_neg_integer()]
 %% }
--type target_domain() :: #{binary() => any()}.
+-type verify_target_domain_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_threat_model_input() :: #{
-%%   <<"agentSpaceId">> := [string()],
-%%   <<"assets">> => assets(),
-%%   <<"description">> => [string()],
-%%   <<"logConfig">> => cloud_watch_log(),
-%%   <<"reportDestination">> => report_destination(),
-%%   <<"scopeDocs">> => list(document_info()),
-%%   <<"serviceRole">> := string(),
-%%   <<"title">> := [string()]
+%% vpc_config() :: #{
+%%   <<"securityGroupArns">> => list(string()),
+%%   <<"subnetArns">> => list(string()),
+%%   <<"vpcArn">> => string()
 %% }
--type create_threat_model_input() :: #{binary() => any()}.
+-type vpc_config() :: #{binary() => any()}.
 
 -type add_artifact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_create_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_artifact_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_update_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_private_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_security_requirement_pack_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_artifact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_private_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_security_requirement_pack_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_private_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_artifact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_security_requirement_pack_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type initiate_provider_registration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_artifacts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_integrated_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_integrations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_private_connections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_security_requirement_packs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_security_requirements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_integrated_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_private_connection_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_security_requirement_pack_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

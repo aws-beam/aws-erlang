@@ -141,700 +141,10 @@
 
 
 %% Example:
-%% branch() :: #{
-%%   <<"comment">> => string(),
-%%   <<"deprecationMessage">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fullyQualifiedName">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type branch() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_for_vehicle_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_for_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% iam_registration_response() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"registrationStatus">> => list(any()),
-%%   <<"roleArn">> => string()
-%% }
--type iam_registration_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_vehicle_request_item() :: #{
-%%   <<"associationBehavior">> => list(any()),
-%%   <<"attributes">> => map(),
-%%   <<"decoderManifestArn">> => string(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplates">> => list(state_template_association()),
-%%   <<"tags">> => list(tag()),
-%%   <<"vehicleName">> => string()
-%% }
--type create_vehicle_request_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationTime">> := non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastModificationTime">> := non_neg_integer(),
-%%   <<"name">> := string(),
-%%   <<"signalCatalogArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_model_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% node_counts() :: #{
-%%   <<"totalActuators">> => integer(),
-%%   <<"totalAttributes">> => integer(),
-%%   <<"totalBranches">> => integer(),
-%%   <<"totalNodes">> => integer(),
-%%   <<"totalProperties">> => integer(),
-%%   <<"totalSensors">> => integer(),
-%%   <<"totalStructs">> => integer()
-%% }
--type node_counts() :: #{binary() => any()}.
-
-%% Example:
-%% update_vehicle_error() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string(),
-%%   <<"vehicleName">> => string()
-%% }
--type update_vehicle_error() :: #{binary() => any()}.
-
-%% Example:
-%% vehicle_status() :: #{
-%%   <<"campaignName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"vehicleName">> => string()
-%% }
--type vehicle_status() :: #{binary() => any()}.
-
-%% Example:
-%% on_change_state_template_update_strategy() :: #{
-
-%% }
--type on_change_state_template_update_strategy() :: #{binary() => any()}.
-
-%% Example:
-%% time_based_collection_scheme() :: #{
-%%   <<"periodMs">> => float()
-%% }
--type time_based_collection_scheme() :: #{binary() => any()}.
-
-%% Example:
-%% update_campaign_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_campaign_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_signal_catalog_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type create_signal_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type create_model_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_request() :: #{
-
-%% }
--type delete_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_decoder_manifest_request() :: #{
-%%   <<"defaultForUnmappedSignals">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"modelManifestArn">> := string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"signalDecoders">> => list(signal_decoder()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_decoder_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_campaign_request() :: #{
-
-%% }
--type get_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_state_template_request() :: #{
-
-%% }
--type delete_state_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% message_signal() :: #{
-%%   <<"structuredMessage">> => list(),
-%%   <<"topicName">> => string()
-%% }
--type message_signal() :: #{binary() => any()}.
-
-%% Example:
-%% signal_decoder() :: #{
-%%   <<"canSignal">> => can_signal(),
-%%   <<"customDecodingSignal">> => custom_decoding_signal(),
-%%   <<"fullyQualifiedName">> => string(),
-%%   <<"interfaceId">> => string(),
-%%   <<"messageSignal">> => message_signal(),
-%%   <<"obdSignal">> => obd_signal(),
-%%   <<"type">> => list(any())
-%% }
--type signal_decoder() :: #{binary() => any()}.
-
-%% Example:
-%% list_vehicles_request() :: #{
-%%   <<"attributeNames">> => list(string()),
-%%   <<"attributeValues">> => list(string()),
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_vehicles_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signal_catalog_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type delete_signal_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% periodic_state_template_update_strategy() :: #{
-%%   <<"stateTemplateUpdateRate">> => time_period()
-%% }
--type periodic_state_template_update_strategy() :: #{binary() => any()}.
-
-%% Example:
-%% list_vehicles_in_fleet_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_vehicles_in_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% iam_resources() :: #{
-%%   <<"roleArn">> => string()
-%% }
--type iam_resources() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_for_vehicle_response() :: #{
-%%   <<"fleets">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_for_vehicle_response() :: #{binary() => any()}.
-
-%% Example:
-%% obd_interface() :: #{
-%%   <<"dtcRequestIntervalSeconds">> => integer(),
-%%   <<"hasTransmissionEcu">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"obdStandard">> => string(),
-%%   <<"pidRequestIntervalSeconds">> => integer(),
-%%   <<"requestMessageId">> => integer(),
-%%   <<"useExtendedIds">> => [boolean()]
-%% }
--type obd_interface() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_signal() :: #{
-%%   <<"name">> => string(),
-%%   <<"reason">> => string()
-%% }
--type invalid_signal() :: #{binary() => any()}.
-
-%% Example:
-%% register_account_response() :: #{
-%%   <<"creationTime">> := non_neg_integer(),
-%%   <<"iamResources">> := iam_resources(),
-%%   <<"lastModificationTime">> := non_neg_integer(),
-%%   <<"registerAccountStatus">> := list(any()),
-%%   <<"timestreamResources">> => timestream_resources()
-%% }
--type register_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_register_account_status_request() :: #{
-
-%% }
--type get_register_account_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_partition_upload_options() :: #{
-%%   <<"conditionLanguageVersion">> => integer(),
-%%   <<"expression">> => string()
-%% }
--type data_partition_upload_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_manifest_request() :: #{
-
-%% }
--type delete_model_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_account_request() :: #{
-%%   <<"iamResources">> => iam_resources(),
-%%   <<"timestreamResources">> => timestream_resources()
-%% }
--type register_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"signalCatalogArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_vehicle_request() :: #{
-%%   <<"vehicles">> := list(update_vehicle_request_item())
-%% }
--type batch_update_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_logging_options_response() :: #{
-
-%% }
--type put_logging_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_decoder_manifest_request() :: #{
-%%   <<"networkFileDefinitions">> := list(list())
-%% }
--type import_decoder_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% timestream_config() :: #{
-%%   <<"executionRoleArn">> => string(),
-%%   <<"timestreamTableArn">> => string()
-%% }
--type timestream_config() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_network_interface() :: #{
-%%   <<"interfaceId">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type invalid_network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type delete_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% structured_message_field_name_and_data_type_pair() :: #{
-%%   <<"dataType">> => list(),
-%%   <<"fieldName">> => string()
-%% }
--type structured_message_field_name_and_data_type_pair() :: #{binary() => any()}.
-
-%% Example:
-%% get_vehicle_request() :: #{
-
-%% }
--type get_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"canInterface">> => can_interface(),
-%%   <<"customDecodingInterface">> => custom_decoding_interface(),
-%%   <<"interfaceId">> => string(),
-%%   <<"obdInterface">> => obd_interface(),
-%%   <<"type">> => list(any()),
-%%   <<"vehicleMiddleware">> => vehicle_middleware()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_manifests_request() :: #{
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"signalCatalogArn">> => string()
-%% }
--type list_model_manifests_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_manifest_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"signalCatalogArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type model_manifest_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_decoder_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type delete_decoder_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% vehicle_middleware() :: #{
-%%   <<"name">> => string(),
-%%   <<"protocolName">> => list(any())
-%% }
--type vehicle_middleware() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_request() :: #{
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_decoder_manifests_request() :: #{
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_decoder_manifests_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_campaigns_response() :: #{
-%%   <<"campaignSummaries">> => list(campaign_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_campaigns_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_campaign_request() :: #{
-
-%% }
--type delete_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_encryption_configuration_response() :: #{
-%%   <<"encryptionStatus">> => list(any()),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyId">> => [string()]
-%% }
--type put_encryption_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_signal_catalog_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vss">> => list()
-%% }
--type import_signal_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_response() :: #{
-%%   <<"fleetSummaries">> => list(fleet_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_vehicle_request() :: #{
-%%   <<"vehicles">> := list(create_vehicle_request_item())
-%% }
--type batch_create_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% timestream_resources() :: #{
-%%   <<"timestreamDatabaseName">> => string(),
-%%   <<"timestreamTableName">> => string()
-%% }
--type timestream_resources() :: #{binary() => any()}.
-
-%% Example:
-%% create_vehicle_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"vehicleName">> => string()
-%% }
--type create_vehicle_error() :: #{binary() => any()}.
-
-%% Example:
-%% time_period() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type time_period() :: #{binary() => any()}.
-
-%% Example:
-%% signal_fetch_information() :: #{
-%%   <<"actions">> => list(string()),
-%%   <<"conditionLanguageVersion">> => integer(),
-%%   <<"fullyQualifiedName">> => string(),
-%%   <<"signalFetchConfig">> => list()
-%% }
--type signal_fetch_information() :: #{binary() => any()}.
-
-%% Example:
-%% update_signal_catalog_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type update_signal_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_encryption_configuration_request() :: #{
-
-%% }
--type get_encryption_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_encryption_configuration_request() :: #{
-%%   <<"encryptionType">> := list(any()),
-%%   <<"kmsKeyId">> => [string()]
-%% }
--type put_encryption_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% r_o_s2_primitive_message_definition() :: #{
-%%   <<"offset">> => float(),
-%%   <<"primitiveType">> => list(any()),
-%%   <<"scaling">> => float(),
-%%   <<"upperBound">> => float()
-%% }
--type r_o_s2_primitive_message_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_signal_catalog_nodes_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(list())
-%% }
--type list_signal_catalog_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_campaigns_request() :: #{
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_campaigns_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_decoder_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type import_decoder_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% storage_maximum_size() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type storage_maximum_size() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vehicle_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"vehicleName">> := string()
-%% }
--type delete_vehicle_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% custom_decoding_interface() :: #{
-%%   <<"name">> => string()
-%% }
--type custom_decoding_interface() :: #{binary() => any()}.
-
-%% Example:
-%% update_decoder_manifest_request() :: #{
-%%   <<"defaultForUnmappedSignals">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"networkInterfacesToAdd">> => list(network_interface()),
-%%   <<"networkInterfacesToRemove">> => list(string()),
-%%   <<"networkInterfacesToUpdate">> => list(network_interface()),
-%%   <<"signalDecodersToAdd">> => list(signal_decoder()),
-%%   <<"signalDecodersToRemove">> => list(string()),
-%%   <<"signalDecodersToUpdate">> => list(signal_decoder()),
-%%   <<"status">> => list(any())
-%% }
--type update_decoder_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_state_template_request() :: #{
-
-%% }
--type get_state_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_campaign_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type delete_campaign_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% mqtt_topic_config() :: #{
-%%   <<"executionRoleArn">> => string(),
-%%   <<"mqttTopicArn">> => string()
-%% }
--type mqtt_topic_config() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_vehicle_fleet_response() :: #{
-
-%% }
--type disassociate_vehicle_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_vehicle_status_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_vehicle_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_fleet_request() :: #{
-
-%% }
--type get_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_config() :: #{
-%%   <<"bucketArn">> => string(),
-%%   <<"dataFormat">> => list(any()),
-%%   <<"prefix">> => string(),
-%%   <<"storageCompressionFormat">> => list(any())
-%% }
--type s3_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_logging_options_response() :: #{
-%%   <<"cloudWatchLogDelivery">> := cloud_watch_log_delivery_options()
-%% }
--type get_logging_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_register_account_status_response() :: #{
-%%   <<"accountStatus">> := list(any()),
-%%   <<"creationTime">> := non_neg_integer(),
-%%   <<"customerAccountId">> := string(),
-%%   <<"iamRegistrationResponse">> := iam_registration_response(),
-%%   <<"lastModificationTime">> := non_neg_integer(),
-%%   <<"timestreamRegistrationResponse">> => timestream_registration_response()
-%% }
--type get_register_account_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_signal_catalog_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationTime">> := non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastModificationTime">> := non_neg_integer(),
-%%   <<"name">> := string(),
-%%   <<"nodeCounts">> => node_counts()
-%% }
--type get_signal_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"signalCatalogArn">> => string()
-%% }
--type fleet_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_decoder_manifest_signals_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"signalDecoders">> => list(signal_decoder())
-%% }
--type list_decoder_manifest_signals_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_signal_catalogs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(signal_catalog_summary())
-%% }
--type list_signal_catalogs_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_vehicle_response() :: #{
-%%   <<"errors">> => list(update_vehicle_error()),
-%%   <<"vehicles">> => list(update_vehicle_response_item())
-%% }
--type batch_update_vehicle_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% actuator() :: #{
@@ -853,98 +163,10 @@
 -type actuator() :: #{binary() => any()}.
 
 %% Example:
-%% delete_decoder_manifest_request() :: #{
-
-%% }
--type delete_decoder_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_manifest_nodes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_model_manifest_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_vehicles_in_fleet_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"vehicles">> => list(string())
-%% }
--type list_vehicles_in_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vehicle_request() :: #{
-
-%% }
--type delete_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_vehicle_fleet_request() :: #{
+%% associate_vehicle_fleet_request() :: #{
 %%   <<"fleetId">> := string()
 %% }
--type disassociate_vehicle_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vehicle_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"thingArn">> => string(),
-%%   <<"vehicleName">> => string()
-%% }
--type create_vehicle_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_state_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(state_template_summary())
-%% }
--type list_state_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_decoder_manifest_request() :: #{
-
-%% }
--type get_decoder_manifest_request() :: #{binary() => any()}.
-
-%% Example:
-%% condition_based_signal_fetch_config() :: #{
-%%   <<"conditionExpression">> => string(),
-%%   <<"triggerMode">> => list(any())
-%% }
--type condition_based_signal_fetch_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_decoder_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationTime">> := non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastModificationTime">> := non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type get_decoder_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_partition() :: #{
-%%   <<"id">> => string(),
-%%   <<"storageOptions">> => data_partition_storage_options(),
-%%   <<"uploadOptions">> => data_partition_upload_options()
-%% }
--type data_partition() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
+-type associate_vehicle_fleet_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_vehicle_fleet_response() :: #{
@@ -953,41 +175,84 @@
 -type associate_vehicle_fleet_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_state_template_response() :: #{
+%% attribute() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"assignedValue">> => string(),
+%%   <<"comment">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"defaultValue">> => string(),
+%%   <<"deprecationMessage">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fullyQualifiedName">> => string(),
+%%   <<"max">> => float(),
+%%   <<"min">> => float(),
+%%   <<"unit">> => string()
+%% }
+-type attribute() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_vehicle_request() :: #{
+%%   <<"vehicles">> := list(create_vehicle_request_item())
+%% }
+-type batch_create_vehicle_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_vehicle_response() :: #{
+%%   <<"errors">> => list(create_vehicle_error()),
+%%   <<"vehicles">> => list(create_vehicle_response_item())
+%% }
+-type batch_create_vehicle_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_vehicle_request() :: #{
+%%   <<"vehicles">> := list(update_vehicle_request_item())
+%% }
+-type batch_update_vehicle_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_vehicle_response() :: #{
+%%   <<"errors">> => list(update_vehicle_error()),
+%%   <<"vehicles">> => list(update_vehicle_response_item())
+%% }
+-type batch_update_vehicle_response() :: #{binary() => any()}.
+
+%% Example:
+%% branch() :: #{
+%%   <<"comment">> => string(),
+%%   <<"deprecationMessage">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fullyQualifiedName">> => string()
+%% }
+-type branch() :: #{binary() => any()}.
+
+%% Example:
+%% campaign_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
 %%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"metadataExtraDimensions">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"signalCatalogArn">> => string(),
-%%   <<"stateTemplateProperties">> => list(string())
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string()
 %% }
--type get_state_template_response() :: #{binary() => any()}.
+-type campaign_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_vehicle_request_item() :: #{
-%%   <<"attributeUpdateMode">> => list(any()),
-%%   <<"attributes">> => map(),
-%%   <<"decoderManifestArn">> => string(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
-%%   <<"stateTemplatesToRemove">> => list(string()),
-%%   <<"stateTemplatesToUpdate">> => list(state_template_association()),
-%%   <<"vehicleName">> => string()
+%% can_dbc_definition() :: #{
+%%   <<"canDbcFiles">> => list(binary()),
+%%   <<"networkInterface">> => string(),
+%%   <<"signalsMap">> => map()
 %% }
--type update_vehicle_request_item() :: #{binary() => any()}.
+-type can_dbc_definition() :: #{binary() => any()}.
 
 %% Example:
-%% create_model_manifest_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"nodes">> := list(string()),
-%%   <<"signalCatalogArn">> := string(),
-%%   <<"tags">> => list(tag())
+%% can_interface() :: #{
+%%   <<"name">> => string(),
+%%   <<"protocolName">> => string(),
+%%   <<"protocolVersion">> => string()
 %% }
--type create_model_manifest_request() :: #{binary() => any()}.
+-type can_interface() :: #{binary() => any()}.
 
 %% Example:
 %% can_signal() :: #{
@@ -1004,48 +269,11 @@
 -type can_signal() :: #{binary() => any()}.
 
 %% Example:
-%% list_signal_catalog_nodes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"signalNodeType">> => list(any())
+%% cloud_watch_log_delivery_options() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"logType">> => list(any())
 %% }
--type list_signal_catalog_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% storage_minimum_time_to_live() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type storage_minimum_time_to_live() :: #{binary() => any()}.
-
-%% Example:
-%% create_vehicle_response_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"thingArn">> => string(),
-%%   <<"vehicleName">> => string()
-%% }
--type create_vehicle_response_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type update_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_signal_catalogs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_signal_catalogs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_decoder_manifest_signals_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_decoder_manifest_signals_request() :: #{binary() => any()}.
+-type cloud_watch_log_delivery_options() :: #{binary() => any()}.
 
 %% Example:
 %% condition_based_collection_scheme() :: #{
@@ -1057,90 +285,19 @@
 -type condition_based_collection_scheme() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_node_exception() :: #{
-%%   <<"invalidNodes">> => list(list()),
+%% condition_based_signal_fetch_config() :: #{
+%%   <<"conditionExpression">> => string(),
+%%   <<"triggerMode">> => list(any())
+%% }
+-type condition_based_signal_fetch_config() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
 %%   <<"message">> => string(),
-%%   <<"reason">> => string()
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type invalid_node_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_state_template_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type delete_state_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_state_template_request() :: #{
-%%   <<"dataExtraDimensions">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"metadataExtraDimensions">> => list(string()),
-%%   <<"stateTemplatePropertiesToAdd">> => list(string()),
-%%   <<"stateTemplatePropertiesToRemove">> => list(string())
-%% }
--type update_state_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_decoder_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type create_decoder_manifest_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_signal_catalog_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"nodes">> => list(list()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_signal_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% can_dbc_definition() :: #{
-%%   <<"canDbcFiles">> => list(binary()),
-%%   <<"networkInterface">> => string(),
-%%   <<"signalsMap">> => map()
-%% }
--type can_dbc_definition() :: #{binary() => any()}.
-
-%% Example:
-%% get_signal_catalog_request() :: #{
-
-%% }
--type get_signal_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% state_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"signalCatalogArn">> => string()
-%% }
--type state_template_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_campaign_request() :: #{
@@ -1165,17 +322,86 @@
 -type create_campaign_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_logging_options_request() :: #{
-%%   <<"cloudWatchLogDelivery">> := cloud_watch_log_delivery_options()
+%% create_campaign_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
 %% }
--type put_logging_options_request() :: #{binary() => any()}.
+-type create_campaign_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_vehicle_status_response() :: #{
-%%   <<"campaigns">> => list(vehicle_status()),
-%%   <<"nextToken">> => string()
+%% create_decoder_manifest_request() :: #{
+%%   <<"defaultForUnmappedSignals">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"modelManifestArn">> := string(),
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"signalDecoders">> => list(signal_decoder()),
+%%   <<"tags">> => list(tag())
 %% }
--type get_vehicle_status_response() :: #{binary() => any()}.
+-type create_decoder_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_decoder_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_decoder_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"signalCatalogArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"id">> := string()
+%% }
+-type create_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_manifest_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"nodes">> := list(string()),
+%%   <<"signalCatalogArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_model_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_model_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_signal_catalog_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"nodes">> => list(list()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_signal_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_signal_catalog_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_template_request() :: #{
+%%   <<"dataExtraDimensions">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"metadataExtraDimensions">> => list(string()),
+%%   <<"signalCatalogArn">> := string(),
+%%   <<"stateTemplateProperties">> := list(string()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_state_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_state_template_response() :: #{
@@ -1186,44 +412,63 @@
 -type create_state_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_decoder_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
+%% create_vehicle_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"vehicleName">> => string()
 %% }
--type update_decoder_manifest_response() :: #{binary() => any()}.
+-type create_vehicle_error() :: #{binary() => any()}.
 
 %% Example:
-%% get_encryption_configuration_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"encryptionStatus">> => list(any()),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"lastModificationTime">> => non_neg_integer()
+%% create_vehicle_request() :: #{
+%%   <<"associationBehavior">> => list(any()),
+%%   <<"attributes">> => map(),
+%%   <<"decoderManifestArn">> := string(),
+%%   <<"modelManifestArn">> := string(),
+%%   <<"stateTemplates">> => list(state_template_association()),
+%%   <<"tags">> => list(tag())
 %% }
--type get_encryption_configuration_response() :: #{binary() => any()}.
+-type create_vehicle_request() :: #{binary() => any()}.
 
 %% Example:
-%% obd_signal() :: #{
-%%   <<"bitMaskLength">> => integer(),
-%%   <<"bitRightShift">> => integer(),
-%%   <<"byteLength">> => integer(),
-%%   <<"isSigned">> => [boolean()],
-%%   <<"offset">> => float(),
-%%   <<"pid">> => integer(),
-%%   <<"pidResponseLength">> => integer(),
-%%   <<"scaling">> => float(),
-%%   <<"serviceMode">> => integer(),
-%%   <<"signalValueType">> => list(any()),
-%%   <<"startByte">> => integer()
+%% create_vehicle_request_item() :: #{
+%%   <<"associationBehavior">> => list(any()),
+%%   <<"attributes">> => map(),
+%%   <<"decoderManifestArn">> => string(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplates">> => list(state_template_association()),
+%%   <<"tags">> => list(tag()),
+%%   <<"vehicleName">> => string()
 %% }
--type obd_signal() :: #{binary() => any()}.
+-type create_vehicle_request_item() :: #{binary() => any()}.
 
 %% Example:
-%% get_model_manifest_request() :: #{
-
+%% create_vehicle_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"thingArn">> => string(),
+%%   <<"vehicleName">> => string()
 %% }
--type get_model_manifest_request() :: #{binary() => any()}.
+-type create_vehicle_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_vehicle_response_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"thingArn">> => string(),
+%%   <<"vehicleName">> => string()
+%% }
+-type create_vehicle_response_item() :: #{binary() => any()}.
+
+%% Example:
+%% custom_decoding_interface() :: #{
+%%   <<"name">> => string()
+%% }
+-type custom_decoding_interface() :: #{binary() => any()}.
+
+%% Example:
+%% custom_decoding_signal() :: #{
+%%   <<"id">> => string()
+%% }
+-type custom_decoding_signal() :: #{binary() => any()}.
 
 %% Example:
 %% custom_property() :: #{
@@ -1238,77 +483,178 @@
 -type custom_property() :: #{binary() => any()}.
 
 %% Example:
-%% signal_information() :: #{
-%%   <<"dataPartitionId">> => string(),
-%%   <<"maxSampleCount">> => float(),
-%%   <<"minimumSamplingIntervalMs">> => float(),
+%% custom_struct() :: #{
+%%   <<"comment">> => string(),
+%%   <<"deprecationMessage">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fullyQualifiedName">> => string()
+%% }
+-type custom_struct() :: #{binary() => any()}.
+
+%% Example:
+%% data_partition() :: #{
+%%   <<"id">> => string(),
+%%   <<"storageOptions">> => data_partition_storage_options(),
+%%   <<"uploadOptions">> => data_partition_upload_options()
+%% }
+-type data_partition() :: #{binary() => any()}.
+
+%% Example:
+%% data_partition_storage_options() :: #{
+%%   <<"maximumSize">> => storage_maximum_size(),
+%%   <<"minimumTimeToLive">> => storage_minimum_time_to_live(),
+%%   <<"storageLocation">> => string()
+%% }
+-type data_partition_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_partition_upload_options() :: #{
+%%   <<"conditionLanguageVersion">> => integer(),
+%%   <<"expression">> => string()
+%% }
+-type data_partition_upload_options() :: #{binary() => any()}.
+
+%% Example:
+%% decoder_manifest_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type decoder_manifest_summary() :: #{binary() => any()}.
+
+%% Example:
+%% decoder_manifest_validation_exception() :: #{
+%%   <<"invalidNetworkInterfaces">> => list(invalid_network_interface()),
+%%   <<"invalidSignals">> => list(invalid_signal_decoder()),
+%%   <<"message">> => string()
+%% }
+-type decoder_manifest_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_request() :: #{
+
+%% }
+-type delete_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_response() :: #{
+%%   <<"arn">> => string(),
 %%   <<"name">> => string()
 %% }
--type signal_information() :: #{binary() => any()}.
+-type delete_campaign_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_model_manifests_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(model_manifest_summary())
+%% delete_decoder_manifest_request() :: #{
+
 %% }
--type list_model_manifests_response() :: #{binary() => any()}.
+-type delete_decoder_manifest_request() :: #{binary() => any()}.
 
 %% Example:
-%% custom_decoding_signal() :: #{
-%%   <<"id">> => string()
-%% }
--type custom_decoding_signal() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_manifest_response() :: #{
+%% delete_decoder_manifest_response() :: #{
 %%   <<"arn">> := string(),
 %%   <<"name">> := string()
 %% }
--type update_model_manifest_response() :: #{binary() => any()}.
+-type delete_decoder_manifest_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
+%% delete_fleet_request() :: #{
+
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type delete_fleet_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
+%% delete_fleet_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type delete_fleet_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_state_template_response() :: #{
+%% delete_model_manifest_request() :: #{
+
+%% }
+-type delete_model_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type delete_model_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signal_catalog_request() :: #{
+
+%% }
+-type delete_signal_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signal_catalog_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type delete_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_template_request() :: #{
+
+%% }
+-type delete_state_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_template_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
--type update_state_template_response() :: #{binary() => any()}.
+-type delete_state_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% time_based_signal_fetch_config() :: #{
-%%   <<"executionFrequencyMs">> => float()
+%% delete_vehicle_request() :: #{
+
 %% }
--type time_based_signal_fetch_config() :: #{binary() => any()}.
+-type delete_vehicle_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_signals_exception() :: #{
-%%   <<"invalidSignals">> => list(invalid_signal()),
-%%   <<"message">> => string()
+%% delete_vehicle_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"vehicleName">> := string()
 %% }
--type invalid_signals_exception() :: #{binary() => any()}.
+-type delete_vehicle_response() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => string()
+%% disassociate_vehicle_fleet_request() :: #{
+%%   <<"fleetId">> := string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type disassociate_vehicle_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_vehicle_fleet_response() :: #{
+
+%% }
+-type disassociate_vehicle_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"signalCatalogArn">> => string()
+%% }
+-type fleet_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_campaign_request() :: #{
+
+%% }
+-type get_campaign_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_campaign_response() :: #{
@@ -1337,226 +683,46 @@
 -type get_campaign_response() :: #{binary() => any()}.
 
 %% Example:
-%% sensor() :: #{
-%%   <<"allowedValues">> => list(string()),
-%%   <<"comment">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"deprecationMessage">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fullyQualifiedName">> => string(),
-%%   <<"max">> => float(),
-%%   <<"min">> => float(),
-%%   <<"structFullyQualifiedName">> => string(),
-%%   <<"unit">> => string()
+%% get_decoder_manifest_request() :: #{
+
 %% }
--type sensor() :: #{binary() => any()}.
+-type get_decoder_manifest_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_vehicle_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"vehicleName">> => string()
-%% }
--type update_vehicle_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_vehicle_request() :: #{
-%%   <<"attributeUpdateMode">> => list(any()),
-%%   <<"attributes">> => map(),
-%%   <<"decoderManifestArn">> => string(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
-%%   <<"stateTemplatesToRemove">> => list(string()),
-%%   <<"stateTemplatesToUpdate">> => list(state_template_association())
-%% }
--type update_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% attribute() :: #{
-%%   <<"allowedValues">> => list(string()),
-%%   <<"assignedValue">> => string(),
-%%   <<"comment">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"defaultValue">> => string(),
-%%   <<"deprecationMessage">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fullyQualifiedName">> => string(),
-%%   <<"max">> => float(),
-%%   <<"min">> => float(),
-%%   <<"unit">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-%% Example:
-%% list_decoder_manifests_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(decoder_manifest_summary())
-%% }
--type list_decoder_manifests_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_struct() :: #{
-%%   <<"comment">> => string(),
-%%   <<"deprecationMessage">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fullyQualifiedName">> => string()
-%% }
--type custom_struct() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_signal_catalog_response() :: #{
+%% get_decoder_manifest_response() :: #{
 %%   <<"arn">> := string(),
-%%   <<"name">> := string()
-%% }
--type import_signal_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_signal_catalog_request() :: #{
+%%   <<"creationTime">> := non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"nodesToAdd">> => list(list()),
-%%   <<"nodesToRemove">> => list(string()),
-%%   <<"nodesToUpdate">> => list(list())
-%% }
--type update_signal_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_signal_decoder() :: #{
-%%   <<"hint">> => string(),
-%%   <<"name">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type invalid_signal_decoder() :: #{binary() => any()}.
-
-%% Example:
-%% get_logging_options_request() :: #{
-
-%% }
--type get_logging_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_decoder_manifest_network_interfaces_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_decoder_manifest_network_interfaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_log_delivery_options() :: #{
-%%   <<"logGroupName">> => string(),
-%%   <<"logType">> => list(any())
-%% }
--type cloud_watch_log_delivery_options() :: #{binary() => any()}.
-
-%% Example:
-%% list_vehicles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"vehicleSummaries">> => list(vehicle_summary())
-%% }
--type list_vehicles_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_state_templates_request() :: #{
-%%   <<"listResponseScope">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_state_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_campaign_request() :: #{
-%%   <<"action">> := list(any()),
-%%   <<"dataExtraDimensions">> => list(string()),
-%%   <<"description">> => string()
-%% }
--type update_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_vehicle_response() :: #{
-%%   <<"errors">> => list(create_vehicle_error()),
-%%   <<"vehicles">> => list(create_vehicle_response_item())
-%% }
--type batch_create_vehicle_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_vehicle_fleet_request() :: #{
-%%   <<"fleetId">> := string()
-%% }
--type associate_vehicle_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% decoder_manifest_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"lastModificationTime">> := non_neg_integer(),
 %%   <<"message">> => string(),
 %%   <<"modelManifestArn">> => string(),
-%%   <<"name">> => string(),
+%%   <<"name">> := string(),
 %%   <<"status">> => list(any())
 %% }
--type decoder_manifest_summary() :: #{binary() => any()}.
+-type get_decoder_manifest_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_model_manifest_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"name">> := string()
+%% get_encryption_configuration_request() :: #{
+
 %% }
--type delete_model_manifest_response() :: #{binary() => any()}.
+-type get_encryption_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_decoder_manifest_network_interfaces_response() :: #{
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"nextToken">> => string()
-%% }
--type list_decoder_manifest_network_interfaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"id">> := string()
-%% }
--type create_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% state_template_association() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"stateTemplateUpdateStrategy">> => list()
-%% }
--type state_template_association() :: #{binary() => any()}.
-
-%% Example:
-%% data_partition_storage_options() :: #{
-%%   <<"maximumSize">> => storage_maximum_size(),
-%%   <<"minimumTimeToLive">> => storage_minimum_time_to_live(),
-%%   <<"storageLocation">> => string()
-%% }
--type data_partition_storage_options() :: #{binary() => any()}.
-
-%% Example:
-%% create_campaign_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type create_campaign_response() :: #{binary() => any()}.
-
-%% Example:
-%% vehicle_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"attributes">> => map(),
+%% get_encryption_configuration_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"decoderManifestArn">> => string(),
-%%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"modelManifestArn">> => string(),
-%%   <<"vehicleName">> => string()
+%%   <<"encryptionStatus">> => list(any()),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"lastModificationTime">> => non_neg_integer()
 %% }
--type vehicle_summary() :: #{binary() => any()}.
+-type get_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_fleet_request() :: #{
+
+%% }
+-type get_fleet_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_fleet_response() :: #{
@@ -1570,65 +736,95 @@
 -type get_fleet_response() :: #{binary() => any()}.
 
 %% Example:
-%% can_interface() :: #{
-%%   <<"name">> => string(),
-%%   <<"protocolName">> => string(),
-%%   <<"protocolVersion">> => string()
-%% }
--type can_interface() :: #{binary() => any()}.
-
-%% Example:
-%% structured_message_list_definition() :: #{
-%%   <<"capacity">> => integer(),
-%%   <<"listType">> => list(any()),
-%%   <<"memberType">> => list(),
-%%   <<"name">> => string()
-%% }
--type structured_message_list_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_manifest_nodes_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(list())
-%% }
--type list_model_manifest_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_vehicle_request() :: #{
-%%   <<"associationBehavior">> => list(any()),
-%%   <<"attributes">> => map(),
-%%   <<"decoderManifestArn">> := string(),
-%%   <<"modelManifestArn">> := string(),
-%%   <<"stateTemplates">> => list(state_template_association()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_vehicle_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signal_catalog_request() :: #{
+%% get_logging_options_request() :: #{
 
 %% }
--type delete_signal_catalog_request() :: #{binary() => any()}.
+-type get_logging_options_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_vehicle_response_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"vehicleName">> => string()
+%% get_logging_options_response() :: #{
+%%   <<"cloudWatchLogDelivery">> := cloud_watch_log_delivery_options()
 %% }
--type update_vehicle_response_item() :: #{binary() => any()}.
+-type get_logging_options_response() :: #{binary() => any()}.
 
 %% Example:
-%% campaign_summary() :: #{
+%% get_model_manifest_request() :: #{
+
+%% }
+-type get_model_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastModificationTime">> := non_neg_integer(),
+%%   <<"name">> := string(),
+%%   <<"signalCatalogArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_model_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_register_account_status_request() :: #{
+
+%% }
+-type get_register_account_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_register_account_status_response() :: #{
+%%   <<"accountStatus">> := list(any()),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"customerAccountId">> := string(),
+%%   <<"iamRegistrationResponse">> := iam_registration_response(),
+%%   <<"lastModificationTime">> := non_neg_integer(),
+%%   <<"timestreamRegistrationResponse">> => timestream_registration_response()
+%% }
+-type get_register_account_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_signal_catalog_request() :: #{
+
+%% }
+-type get_signal_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_signal_catalog_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastModificationTime">> := non_neg_integer(),
+%%   <<"name">> := string(),
+%%   <<"nodeCounts">> => node_counts()
+%% }
+-type get_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_state_template_request() :: #{
+
+%% }
+-type get_state_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_state_template_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string(),
+%%   <<"id">> => string(),
 %%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"metadataExtraDimensions">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"signalCatalogArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string()
+%%   <<"stateTemplateProperties">> => list(string())
 %% }
--type campaign_summary() :: #{binary() => any()}.
+-type get_state_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vehicle_request() :: #{
+
+%% }
+-type get_vehicle_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_vehicle_response() :: #{
@@ -1644,6 +840,495 @@
 -type get_vehicle_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_vehicle_status_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_vehicle_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vehicle_status_response() :: #{
+%%   <<"campaigns">> => list(vehicle_status()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_vehicle_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% iam_registration_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"registrationStatus">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type iam_registration_response() :: #{binary() => any()}.
+
+%% Example:
+%% iam_resources() :: #{
+%%   <<"roleArn">> => string()
+%% }
+-type iam_resources() :: #{binary() => any()}.
+
+%% Example:
+%% import_decoder_manifest_request() :: #{
+%%   <<"networkFileDefinitions">> := list(list())
+%% }
+-type import_decoder_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_decoder_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type import_decoder_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_signal_catalog_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"vss">> => list()
+%% }
+-type import_signal_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_signal_catalog_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type import_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_network_interface() :: #{
+%%   <<"interfaceId">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type invalid_network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_node_exception() :: #{
+%%   <<"invalidNodes">> => list(list()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type invalid_node_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_signal() :: #{
+%%   <<"name">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type invalid_signal() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_signal_decoder() :: #{
+%%   <<"hint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type invalid_signal_decoder() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_signals_exception() :: #{
+%%   <<"invalidSignals">> => list(invalid_signal()),
+%%   <<"message">> => string()
+%% }
+-type invalid_signals_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_campaigns_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_response() :: #{
+%%   <<"campaignSummaries">> => list(campaign_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_campaigns_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifest_network_interfaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_decoder_manifest_network_interfaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifest_network_interfaces_response() :: #{
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_decoder_manifest_network_interfaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifest_signals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_decoder_manifest_signals_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifest_signals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"signalDecoders">> => list(signal_decoder())
+%% }
+-type list_decoder_manifest_signals_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifests_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_decoder_manifests_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_decoder_manifests_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(decoder_manifest_summary())
+%% }
+-type list_decoder_manifests_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_for_vehicle_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_for_vehicle_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_for_vehicle_response() :: #{
+%%   <<"fleets">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_for_vehicle_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_response() :: #{
+%%   <<"fleetSummaries">> => list(fleet_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_manifest_nodes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_manifest_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_manifest_nodes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"nodes">> => list(list())
+%% }
+-type list_model_manifest_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_manifests_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"signalCatalogArn">> => string()
+%% }
+-type list_model_manifests_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_manifests_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(model_manifest_summary())
+%% }
+-type list_model_manifests_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signal_catalog_nodes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"signalNodeType">> => list(any())
+%% }
+-type list_signal_catalog_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_signal_catalog_nodes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"nodes">> => list(list())
+%% }
+-type list_signal_catalog_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signal_catalogs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_signal_catalogs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_signal_catalogs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(signal_catalog_summary())
+%% }
+-type list_signal_catalogs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_templates_request() :: #{
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_state_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(state_template_summary())
+%% }
+-type list_state_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vehicles_in_fleet_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vehicles_in_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vehicles_in_fleet_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"vehicles">> => list(string())
+%% }
+-type list_vehicles_in_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vehicles_request() :: #{
+%%   <<"attributeNames">> => list(string()),
+%%   <<"attributeValues">> => list(string()),
+%%   <<"listResponseScope">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vehicles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vehicles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"vehicleSummaries">> => list(vehicle_summary())
+%% }
+-type list_vehicles_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_signal() :: #{
+%%   <<"structuredMessage">> => list(),
+%%   <<"topicName">> => string()
+%% }
+-type message_signal() :: #{binary() => any()}.
+
+%% Example:
+%% model_manifest_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"signalCatalogArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type model_manifest_summary() :: #{binary() => any()}.
+
+%% Example:
+%% mqtt_topic_config() :: #{
+%%   <<"executionRoleArn">> => string(),
+%%   <<"mqttTopicArn">> => string()
+%% }
+-type mqtt_topic_config() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"canInterface">> => can_interface(),
+%%   <<"customDecodingInterface">> => custom_decoding_interface(),
+%%   <<"interfaceId">> => string(),
+%%   <<"obdInterface">> => obd_interface(),
+%%   <<"type">> => list(any()),
+%%   <<"vehicleMiddleware">> => vehicle_middleware()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% node_counts() :: #{
+%%   <<"totalActuators">> => integer(),
+%%   <<"totalAttributes">> => integer(),
+%%   <<"totalBranches">> => integer(),
+%%   <<"totalNodes">> => integer(),
+%%   <<"totalProperties">> => integer(),
+%%   <<"totalSensors">> => integer(),
+%%   <<"totalStructs">> => integer()
+%% }
+-type node_counts() :: #{binary() => any()}.
+
+%% Example:
+%% obd_interface() :: #{
+%%   <<"dtcRequestIntervalSeconds">> => integer(),
+%%   <<"hasTransmissionEcu">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"obdStandard">> => string(),
+%%   <<"pidRequestIntervalSeconds">> => integer(),
+%%   <<"requestMessageId">> => integer(),
+%%   <<"useExtendedIds">> => [boolean()]
+%% }
+-type obd_interface() :: #{binary() => any()}.
+
+%% Example:
+%% obd_signal() :: #{
+%%   <<"bitMaskLength">> => integer(),
+%%   <<"bitRightShift">> => integer(),
+%%   <<"byteLength">> => integer(),
+%%   <<"isSigned">> => [boolean()],
+%%   <<"offset">> => float(),
+%%   <<"pid">> => integer(),
+%%   <<"pidResponseLength">> => integer(),
+%%   <<"scaling">> => float(),
+%%   <<"serviceMode">> => integer(),
+%%   <<"signalValueType">> => list(any()),
+%%   <<"startByte">> => integer()
+%% }
+-type obd_signal() :: #{binary() => any()}.
+
+%% Example:
+%% on_change_state_template_update_strategy() :: #{
+
+%% }
+-type on_change_state_template_update_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% periodic_state_template_update_strategy() :: #{
+%%   <<"stateTemplateUpdateRate">> => time_period()
+%% }
+-type periodic_state_template_update_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% put_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsKeyId">> => [string()]
+%% }
+-type put_encryption_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_encryption_configuration_response() :: #{
+%%   <<"encryptionStatus">> => list(any()),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyId">> => [string()]
+%% }
+-type put_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_options_request() :: #{
+%%   <<"cloudWatchLogDelivery">> := cloud_watch_log_delivery_options()
+%% }
+-type put_logging_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_options_response() :: #{
+
+%% }
+-type put_logging_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% r_o_s2_primitive_message_definition() :: #{
+%%   <<"offset">> => float(),
+%%   <<"primitiveType">> => list(any()),
+%%   <<"scaling">> => float(),
+%%   <<"upperBound">> => float()
+%% }
+-type r_o_s2_primitive_message_definition() :: #{binary() => any()}.
+
+%% Example:
+%% register_account_request() :: #{
+%%   <<"iamResources">> => iam_resources(),
+%%   <<"timestreamResources">> => timestream_resources()
+%% }
+-type register_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_account_response() :: #{
+%%   <<"creationTime">> := non_neg_integer(),
+%%   <<"iamResources">> := iam_resources(),
+%%   <<"lastModificationTime">> := non_neg_integer(),
+%%   <<"registerAccountStatus">> := list(any()),
+%%   <<"timestreamResources">> => timestream_resources()
+%% }
+-type register_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"bucketArn">> => string(),
+%%   <<"dataFormat">> => list(any()),
+%%   <<"prefix">> => string(),
+%%   <<"storageCompressionFormat">> => list(any())
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+%% Example:
+%% sensor() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"comment">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"deprecationMessage">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fullyQualifiedName">> => string(),
+%%   <<"max">> => float(),
+%%   <<"min">> => float(),
+%%   <<"structFullyQualifiedName">> => string(),
+%%   <<"unit">> => string()
+%% }
+-type sensor() :: #{binary() => any()}.
+
+%% Example:
 %% signal_catalog_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
@@ -1651,6 +1336,140 @@
 %%   <<"name">> => string()
 %% }
 -type signal_catalog_summary() :: #{binary() => any()}.
+
+%% Example:
+%% signal_decoder() :: #{
+%%   <<"canSignal">> => can_signal(),
+%%   <<"customDecodingSignal">> => custom_decoding_signal(),
+%%   <<"fullyQualifiedName">> => string(),
+%%   <<"interfaceId">> => string(),
+%%   <<"messageSignal">> => message_signal(),
+%%   <<"obdSignal">> => obd_signal(),
+%%   <<"type">> => list(any())
+%% }
+-type signal_decoder() :: #{binary() => any()}.
+
+%% Example:
+%% signal_fetch_information() :: #{
+%%   <<"actions">> => list(string()),
+%%   <<"conditionLanguageVersion">> => integer(),
+%%   <<"fullyQualifiedName">> => string(),
+%%   <<"signalFetchConfig">> => list()
+%% }
+-type signal_fetch_information() :: #{binary() => any()}.
+
+%% Example:
+%% signal_information() :: #{
+%%   <<"dataPartitionId">> => string(),
+%%   <<"maxSampleCount">> => float(),
+%%   <<"minimumSamplingIntervalMs">> => float(),
+%%   <<"name">> => string()
+%% }
+-type signal_information() :: #{binary() => any()}.
+
+%% Example:
+%% state_template_association() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"stateTemplateUpdateStrategy">> => list()
+%% }
+-type state_template_association() :: #{binary() => any()}.
+
+%% Example:
+%% state_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"signalCatalogArn">> => string()
+%% }
+-type state_template_summary() :: #{binary() => any()}.
+
+%% Example:
+%% storage_maximum_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type storage_maximum_size() :: #{binary() => any()}.
+
+%% Example:
+%% storage_minimum_time_to_live() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type storage_minimum_time_to_live() :: #{binary() => any()}.
+
+%% Example:
+%% structured_message_field_name_and_data_type_pair() :: #{
+%%   <<"dataType">> => list(),
+%%   <<"fieldName">> => string()
+%% }
+-type structured_message_field_name_and_data_type_pair() :: #{binary() => any()}.
+
+%% Example:
+%% structured_message_list_definition() :: #{
+%%   <<"capacity">> => integer(),
+%%   <<"listType">> => list(any()),
+%%   <<"memberType">> => list(),
+%%   <<"name">> => string()
+%% }
+-type structured_message_list_definition() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_collection_scheme() :: #{
+%%   <<"periodMs">> => float()
+%% }
+-type time_based_collection_scheme() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_signal_fetch_config() :: #{
+%%   <<"executionFrequencyMs">> => float()
+%% }
+-type time_based_signal_fetch_config() :: #{binary() => any()}.
+
+%% Example:
+%% time_period() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% timestream_config() :: #{
+%%   <<"executionRoleArn">> => string(),
+%%   <<"timestreamTableArn">> => string()
+%% }
+-type timestream_config() :: #{binary() => any()}.
 
 %% Example:
 %% timestream_registration_response() :: #{
@@ -1664,23 +1483,74 @@
 -type timestream_registration_response() :: #{binary() => any()}.
 
 %% Example:
-%% decoder_manifest_validation_exception() :: #{
-%%   <<"invalidNetworkInterfaces">> => list(invalid_network_interface()),
-%%   <<"invalidSignals">> => list(invalid_signal_decoder()),
-%%   <<"message">> => string()
+%% timestream_resources() :: #{
+%%   <<"timestreamDatabaseName">> => string(),
+%%   <<"timestreamTableName">> => string()
 %% }
--type decoder_manifest_validation_exception() :: #{binary() => any()}.
+-type timestream_resources() :: #{binary() => any()}.
 
 %% Example:
-%% create_state_template_request() :: #{
-%%   <<"dataExtraDimensions">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"metadataExtraDimensions">> => list(string()),
-%%   <<"signalCatalogArn">> := string(),
-%%   <<"stateTemplateProperties">> := list(string()),
-%%   <<"tags">> => list(tag())
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type create_state_template_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_campaign_request() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"dataExtraDimensions">> => list(string()),
+%%   <<"description">> => string()
+%% }
+-type update_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_campaign_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_decoder_manifest_request() :: #{
+%%   <<"defaultForUnmappedSignals">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"networkInterfacesToAdd">> => list(network_interface()),
+%%   <<"networkInterfacesToRemove">> => list(string()),
+%%   <<"networkInterfacesToUpdate">> => list(network_interface()),
+%%   <<"signalDecodersToAdd">> => list(signal_decoder()),
+%%   <<"signalDecodersToRemove">> => list(string()),
+%%   <<"signalDecodersToUpdate">> => list(signal_decoder()),
+%%   <<"status">> => list(any())
+%% }
+-type update_decoder_manifest_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_decoder_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type update_decoder_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type update_fleet_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_model_manifest_request() :: #{
@@ -1691,422 +1561,552 @@
 %% }
 -type update_model_manifest_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_model_manifest_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type update_model_manifest_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_signal_catalog_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"nodesToAdd">> => list(list()),
+%%   <<"nodesToRemove">> => list(string()),
+%%   <<"nodesToUpdate">> => list(list())
+%% }
+-type update_signal_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_signal_catalog_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"name">> := string()
+%% }
+-type update_signal_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_template_request() :: #{
+%%   <<"dataExtraDimensions">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"metadataExtraDimensions">> => list(string()),
+%%   <<"stateTemplatePropertiesToAdd">> => list(string()),
+%%   <<"stateTemplatePropertiesToRemove">> => list(string())
+%% }
+-type update_state_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_state_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_vehicle_error() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"vehicleName">> => string()
+%% }
+-type update_vehicle_error() :: #{binary() => any()}.
+
+%% Example:
+%% update_vehicle_request() :: #{
+%%   <<"attributeUpdateMode">> => list(any()),
+%%   <<"attributes">> => map(),
+%%   <<"decoderManifestArn">> => string(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
+%%   <<"stateTemplatesToRemove">> => list(string()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association())
+%% }
+-type update_vehicle_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_vehicle_request_item() :: #{
+%%   <<"attributeUpdateMode">> => list(any()),
+%%   <<"attributes">> => map(),
+%%   <<"decoderManifestArn">> => string(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
+%%   <<"stateTemplatesToRemove">> => list(string()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association()),
+%%   <<"vehicleName">> => string()
+%% }
+-type update_vehicle_request_item() :: #{binary() => any()}.
+
+%% Example:
+%% update_vehicle_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"vehicleName">> => string()
+%% }
+-type update_vehicle_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_vehicle_response_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"vehicleName">> => string()
+%% }
+-type update_vehicle_response_item() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% vehicle_middleware() :: #{
+%%   <<"name">> => string(),
+%%   <<"protocolName">> => list(any())
+%% }
+-type vehicle_middleware() :: #{binary() => any()}.
+
+%% Example:
+%% vehicle_status() :: #{
+%%   <<"campaignName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"vehicleName">> => string()
+%% }
+-type vehicle_status() :: #{binary() => any()}.
+
+%% Example:
+%% vehicle_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attributes">> => map(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"decoderManifestArn">> => string(),
+%%   <<"lastModificationTime">> => non_neg_integer(),
+%%   <<"modelManifestArn">> => string(),
+%%   <<"vehicleName">> => string()
+%% }
+-type vehicle_summary() :: #{binary() => any()}.
+
 -type associate_vehicle_fleet_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_create_vehicle_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_update_vehicle_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_campaign_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_decoder_manifest_errors() ::
-    decoder_manifest_validation_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    decoder_manifest_validation_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_fleet_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_model_manifest_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_signal_catalog_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
     invalid_node_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_state_template_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_vehicle_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_decoder_manifest_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_fleet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_model_manifest_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_signal_catalog_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_state_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_vehicle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type disassociate_vehicle_fleet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_decoder_manifest_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_encryption_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_fleet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_logging_options_errors() ::
     throttling_exception() | 
     access_denied_exception().
 
 -type get_model_manifest_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_register_account_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_signal_catalog_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_state_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_vehicle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_vehicle_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type import_decoder_manifest_errors() ::
-    decoder_manifest_validation_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_signals_exception() | 
+    decoder_manifest_validation_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type import_signal_catalog_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_campaigns_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_decoder_manifest_network_interfaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_decoder_manifest_signals_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_decoder_manifests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_fleets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_fleets_for_vehicle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_model_manifest_nodes_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_model_manifests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_signal_catalog_nodes_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_signal_catalogs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_state_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_vehicles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_vehicles_in_fleet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_encryption_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_logging_options_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type register_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_decoder_manifest_errors() ::
-    decoder_manifest_validation_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    decoder_manifest_validation_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_fleet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_model_manifest_errors() ::
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_signals_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_signal_catalog_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_node_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
+    invalid_node_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_state_template_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_signals_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_signals_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_vehicle_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

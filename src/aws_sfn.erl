@@ -107,86 +107,227 @@
 
 
 %% Example:
-%% state_machine_version_list_item() :: #{
+%% activity_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% activity_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% activity_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type activity_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% activity_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type activity_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% activity_list_item() :: #{
+%%   <<"activityArn">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
-%%   <<"stateMachineVersionArn">> => string()
+%%   <<"name">> => string()
 %% }
--type state_machine_version_list_item() :: #{binary() => any()}.
+-type activity_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% describe_state_machine_for_execution_input() :: #{
-%%   <<"executionArn">> := string(),
-%%   <<"includedData">> => list(any())
+%% activity_schedule_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
 %% }
--type describe_state_machine_for_execution_input() :: #{binary() => any()}.
+-type activity_schedule_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsDataKeyReusePeriodSeconds">> => integer(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"type">> => list(any())
+%% activity_scheduled_event_details() :: #{
+%%   <<"heartbeatInSeconds">> => float(),
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"timeoutInSeconds">> => float()
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type activity_scheduled_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_executions_output() :: #{
-%%   <<"executions">> => list(execution_list_item()),
-%%   <<"nextToken">> => string()
+%% activity_started_event_details() :: #{
+%%   <<"workerName">> => string()
 %% }
--type list_executions_output() :: #{binary() => any()}.
+-type activity_started_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type resource_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% state_machine_type_not_supported() :: #{
-%%   <<"message">> => string()
-%% }
--type state_machine_type_not_supported() :: #{binary() => any()}.
-
-%% Example:
-%% execution_does_not_exist() :: #{
-%%   <<"message">> => string()
-%% }
--type execution_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% list_state_machine_aliases_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"stateMachineArn">> := string()
-%% }
--type list_state_machine_aliases_input() :: #{binary() => any()}.
-
-%% Example:
-%% execution_succeeded_event_details() :: #{
+%% activity_succeeded_event_details() :: #{
 %%   <<"output">> => string(),
 %%   <<"outputDetails">> => history_event_execution_data_details()
 %% }
--type execution_succeeded_event_details() :: #{binary() => any()}.
+-type activity_succeeded_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% missing_required_parameter() :: #{
+%% activity_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type activity_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% activity_worker_limit_exceeded() :: #{
 %%   <<"message">> => string()
 %% }
--type missing_required_parameter() :: #{binary() => any()}.
+-type activity_worker_limit_exceeded() :: #{binary() => any()}.
 
 %% Example:
-%% state_machine_alias_list_item() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"stateMachineAliasArn">> => string()
+%% assigned_variables_details() :: #{
+%%   <<"truncated">> => boolean()
 %% }
--type state_machine_alias_list_item() :: #{binary() => any()}.
+-type assigned_variables_details() :: #{binary() => any()}.
+
+%% Example:
+%% billing_details() :: #{
+%%   <<"billedDurationInMilliseconds">> => float(),
+%%   <<"billedMemoryUsedInMB">> => float()
+%% }
+-type billing_details() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_watch_events_execution_data_details() :: #{
 %%   <<"included">> => boolean()
 %% }
 -type cloud_watch_events_execution_data_details() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_log_group() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type cloud_watch_logs_log_group() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_activity_input() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_activity_output() :: #{
+%%   <<"activityArn">> => string(),
+%%   <<"creationDate">> => non_neg_integer()
+%% }
+-type create_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_alias_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(routing_configuration_list_item())
+%% }
+-type create_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_alias_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string()
+%% }
+-type create_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_input() :: #{
+%%   <<"definition">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"name">> := string(),
+%%   <<"publish">> => boolean(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"versionDescription">> => string()
+%% }
+-type create_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_state_machine_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type create_state_machine_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activity_input() :: #{
+%%   <<"activityArn">> := string()
+%% }
+-type delete_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activity_output() :: #{
+
+%% }
+-type delete_activity_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_alias_input() :: #{
+%%   <<"stateMachineAliasArn">> := string()
+%% }
+-type delete_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_alias_output() :: #{
+
+%% }
+-type delete_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_input() :: #{
+%%   <<"stateMachineArn">> := string()
+%% }
+-type delete_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_output() :: #{
+
+%% }
+-type delete_state_machine_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_version_input() :: #{
+%%   <<"stateMachineVersionArn">> := string()
+%% }
+-type delete_state_machine_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_state_machine_version_output() :: #{
+
+%% }
+-type delete_state_machine_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_input() :: #{
+%%   <<"activityArn">> := string()
+%% }
+-type describe_activity_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_output() :: #{
+%%   <<"activityArn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"name">> => string()
+%% }
+-type describe_activity_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_execution_input() :: #{
@@ -221,202 +362,33 @@
 -type describe_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_state_machine_alias_output() :: #{
-%%   <<"updateDate">> => non_neg_integer()
+%% describe_map_run_input() :: #{
+%%   <<"mapRunArn">> := string()
 %% }
--type update_state_machine_alias_output() :: #{binary() => any()}.
+-type describe_map_run_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_state_machine_output() :: #{
-
+%% describe_map_run_output() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"executionCounts">> => map_run_execution_counts(),
+%%   <<"itemCounts">> => map_run_item_counts(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"maxConcurrency">> => integer(),
+%%   <<"redriveCount">> => integer(),
+%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer(),
+%%   <<"toleratedFailureCount">> => float(),
+%%   <<"toleratedFailurePercentage">> => float()
 %% }
--type delete_state_machine_output() :: #{binary() => any()}.
-
-%% Example:
-%% map_run_item_counts() :: #{
-%%   <<"aborted">> => float(),
-%%   <<"failed">> => float(),
-%%   <<"failuresNotRedrivable">> => float(),
-%%   <<"pending">> => float(),
-%%   <<"pendingRedrive">> => float(),
-%%   <<"resultsWritten">> => float(),
-%%   <<"running">> => float(),
-%%   <<"succeeded">> => float(),
-%%   <<"timedOut">> => float(),
-%%   <<"total">> => float()
-%% }
--type map_run_item_counts() :: #{binary() => any()}.
-
-%% Example:
-%% delete_state_machine_version_output() :: #{
-
-%% }
--type delete_state_machine_version_output() :: #{binary() => any()}.
-
-%% Example:
-%% kms_throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_state_machine_aliases_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"stateMachineAliases">> => list(state_machine_alias_list_item())
-%% }
--type list_state_machine_aliases_output() :: #{binary() => any()}.
-
-%% Example:
-%% task_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_state_machine_input() :: #{
-%%   <<"includedData">> => list(any()),
-%%   <<"stateMachineArn">> := string()
-%% }
--type describe_state_machine_input() :: #{binary() => any()}.
+-type describe_map_run_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_state_machine_alias_input() :: #{
 %%   <<"stateMachineAliasArn">> := string()
 %% }
 -type describe_state_machine_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_execution_output() :: #{
-%%   <<"executionArn">> => string(),
-%%   <<"startDate">> => non_neg_integer()
-%% }
--type start_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% map_run_started_event_details() :: #{
-%%   <<"mapRunArn">> => string()
-%% }
--type map_run_started_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tracing_configuration() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tracing_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_state_machines_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"stateMachines">> => list(state_machine_list_item())
-%% }
--type list_state_machines_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_state_machine_alias_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(routing_configuration_list_item())
-%% }
--type create_state_machine_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_output() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_output() :: #{binary() => any()}.
-
-%% Example:
-%% map_run_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type map_run_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% send_task_failure_output() :: #{
-
-%% }
--type send_task_failure_output() :: #{binary() => any()}.
-
-%% Example:
-%% activity_schedule_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type activity_schedule_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% state_entered_event_details() :: #{
-%%   <<"input">> => string(),
-%%   <<"inputDetails">> => history_event_execution_data_details(),
-%%   <<"name">> => string()
-%% }
--type state_entered_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_token() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_token() :: #{binary() => any()}.
-
-%% Example:
-%% delete_activity_input() :: #{
-%%   <<"activityArn">> := string()
-%% }
--type delete_activity_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_state_machine_alias_input() :: #{
-%%   <<"stateMachineAliasArn">> := string()
-%% }
--type delete_state_machine_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% state_machine_list_item() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"stateMachineArn">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type state_machine_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% create_state_machine_output() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"stateMachineArn">> => string(),
-%%   <<"stateMachineVersionArn">> => string()
-%% }
--type create_state_machine_output() :: #{binary() => any()}.
-
-%% Example:
-%% execution_aborted_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type execution_aborted_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% execution_redriven_event_details() :: #{
-%%   <<"redriveCount">> => integer()
-%% }
--type execution_redriven_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_start_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type lambda_function_start_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type lambda_function_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
 %% describe_state_machine_alias_output() :: #{
@@ -430,126 +402,11 @@
 -type describe_state_machine_alias_output() :: #{binary() => any()}.
 
 %% Example:
-%% redrive_execution_output() :: #{
-%%   <<"redriveDate">> => non_neg_integer()
-%% }
--type redrive_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_sync_execution_output() :: #{
-%%   <<"billingDetails">> => billing_details(),
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"executionArn">> => string(),
-%%   <<"input">> => string(),
-%%   <<"inputDetails">> => cloud_watch_events_execution_data_details(),
-%%   <<"name">> => string(),
-%%   <<"output">> => string(),
-%%   <<"outputDetails">> => cloud_watch_events_execution_data_details(),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"stateMachineArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"stopDate">> => non_neg_integer(),
-%%   <<"traceHeader">> => string()
-%% }
--type start_sync_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% send_task_failure_input() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"taskToken">> := string()
-%% }
--type send_task_failure_input() :: #{binary() => any()}.
-
-%% Example:
-%% inspection_error_details() :: #{
-%%   <<"catchIndex">> => integer(),
-%%   <<"retryBackoffIntervalSeconds">> => integer(),
-%%   <<"retryIndex">> => integer()
-%% }
--type inspection_error_details() :: #{binary() => any()}.
-
-%% Example:
-%% logging_configuration() :: #{
-%%   <<"destinations">> => list(log_destination()),
-%%   <<"includeExecutionData">> => boolean(),
-%%   <<"level">> => list(any())
-%% }
--type logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_activity_task_output() :: #{
-%%   <<"input">> => string(),
-%%   <<"taskToken">> => string()
-%% }
--type get_activity_task_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_activity_output() :: #{
-%%   <<"activityArn">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"name">> => string()
-%% }
--type describe_activity_output() :: #{binary() => any()}.
-
-%% Example:
-%% task_timed_out_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_timed_out_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% history_event_execution_data_details() :: #{
-%%   <<"truncated">> => boolean()
-%% }
--type history_event_execution_data_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_map_run_output() :: #{
-
-%% }
--type update_map_run_output() :: #{binary() => any()}.
-
-%% Example:
-%% task_started_event_details() :: #{
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_started_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_activity_output() :: #{
-
-%% }
--type delete_activity_output() :: #{binary() => any()}.
-
-%% Example:
-%% redrive_execution_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"executionArn">> := string()
-%% }
--type redrive_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_execution_history_input() :: #{
+%% describe_state_machine_for_execution_input() :: #{
 %%   <<"executionArn">> := string(),
-%%   <<"includeExecutionData">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reverseOrder">> => boolean()
+%%   <<"includedData">> => list(any())
 %% }
--type get_execution_history_input() :: #{binary() => any()}.
+-type describe_state_machine_for_execution_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_state_machine_for_execution_output() :: #{
@@ -569,41 +426,96 @@
 -type describe_state_machine_for_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_execution_history_output() :: #{
-%%   <<"events">> => list(history_event()),
-%%   <<"nextToken">> => string()
+%% describe_state_machine_input() :: #{
+%%   <<"includedData">> => list(any()),
+%%   <<"stateMachineArn">> := string()
 %% }
--type get_execution_history_output() :: #{binary() => any()}.
+-type describe_state_machine_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_state_machines_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% describe_state_machine_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"definition">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"label">> => string(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"variableReferences">> => map()
 %% }
--type list_state_machines_input() :: #{binary() => any()}.
+-type describe_state_machine_output() :: #{binary() => any()}.
 
 %% Example:
-%% mock_error_output() :: #{
+%% encryption_configuration() :: #{
+%%   <<"kmsDataKeyReusePeriodSeconds">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"location">> => string(),
+%%   <<"state">> => string()
+%% }
+-type evaluation_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_aborted_event_details() :: #{
 %%   <<"cause">> => string(),
 %%   <<"error">> => string()
 %% }
--type mock_error_output() :: #{binary() => any()}.
+-type execution_aborted_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% inspection_data_request() :: #{
-%%   <<"body">> => string(),
-%%   <<"headers">> => string(),
-%%   <<"method">> => string(),
-%%   <<"protocol">> => string(),
-%%   <<"url">> => string()
-%% }
--type inspection_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% state_machine_already_exists() :: #{
+%% execution_already_exists() :: #{
 %%   <<"message">> => string()
 %% }
--type state_machine_already_exists() :: #{binary() => any()}.
+-type execution_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% execution_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% execution_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type execution_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type execution_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% execution_list_item() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"itemCount">> => integer(),
+%%   <<"mapRunArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"redriveCount">> => integer(),
+%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stopDate">> => non_neg_integer()
+%% }
+-type execution_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% execution_not_redrivable() :: #{
@@ -612,51 +524,117 @@
 -type execution_not_redrivable() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% execution_redriven_event_details() :: #{
+%%   <<"redriveCount">> => integer()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type execution_redriven_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% send_task_success_output() :: #{
-
+%% execution_started_event_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => history_event_execution_data_details(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineAliasArn">> => string(),
+%%   <<"stateMachineVersionArn">> => string()
 %% }
--type send_task_success_output() :: #{binary() => any()}.
+-type execution_started_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% activity_succeeded_event_details() :: #{
+%% execution_succeeded_event_details() :: #{
 %%   <<"output">> => string(),
 %%   <<"outputDetails">> => history_event_execution_data_details()
 %% }
--type activity_succeeded_event_details() :: #{binary() => any()}.
+-type execution_succeeded_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% task_timed_out() :: #{
-%%   <<"message">> => string()
+%% execution_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
 %% }
--type task_timed_out() :: #{binary() => any()}.
+-type execution_timed_out_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% send_task_heartbeat_input() :: #{
-%%   <<"taskToken">> := string()
+%% get_activity_task_input() :: #{
+%%   <<"activityArn">> := string(),
+%%   <<"workerName">> => string()
 %% }
--type send_task_heartbeat_input() :: #{binary() => any()}.
+-type get_activity_task_input() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% get_activity_task_output() :: #{
+%%   <<"input">> => string(),
+%%   <<"taskToken">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type get_activity_task_output() :: #{binary() => any()}.
 
 %% Example:
-%% task_succeeded_event_details() :: #{
-%%   <<"output">> => string(),
-%%   <<"outputDetails">> => history_event_execution_data_details(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
+%% get_execution_history_input() :: #{
+%%   <<"executionArn">> := string(),
+%%   <<"includeExecutionData">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
 %% }
--type task_succeeded_event_details() :: #{binary() => any()}.
+-type get_execution_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_history_output() :: #{
+%%   <<"events">> => list(history_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_execution_history_output() :: #{binary() => any()}.
+
+%% Example:
+%% history_event() :: #{
+%%   <<"activityFailedEventDetails">> => activity_failed_event_details(),
+%%   <<"activityScheduleFailedEventDetails">> => activity_schedule_failed_event_details(),
+%%   <<"activityScheduledEventDetails">> => activity_scheduled_event_details(),
+%%   <<"activityStartedEventDetails">> => activity_started_event_details(),
+%%   <<"activitySucceededEventDetails">> => activity_succeeded_event_details(),
+%%   <<"activityTimedOutEventDetails">> => activity_timed_out_event_details(),
+%%   <<"evaluationFailedEventDetails">> => evaluation_failed_event_details(),
+%%   <<"executionAbortedEventDetails">> => execution_aborted_event_details(),
+%%   <<"executionFailedEventDetails">> => execution_failed_event_details(),
+%%   <<"executionRedrivenEventDetails">> => execution_redriven_event_details(),
+%%   <<"executionStartedEventDetails">> => execution_started_event_details(),
+%%   <<"executionSucceededEventDetails">> => execution_succeeded_event_details(),
+%%   <<"executionTimedOutEventDetails">> => execution_timed_out_event_details(),
+%%   <<"id">> => float(),
+%%   <<"lambdaFunctionFailedEventDetails">> => lambda_function_failed_event_details(),
+%%   <<"lambdaFunctionScheduleFailedEventDetails">> => lambda_function_schedule_failed_event_details(),
+%%   <<"lambdaFunctionScheduledEventDetails">> => lambda_function_scheduled_event_details(),
+%%   <<"lambdaFunctionStartFailedEventDetails">> => lambda_function_start_failed_event_details(),
+%%   <<"lambdaFunctionSucceededEventDetails">> => lambda_function_succeeded_event_details(),
+%%   <<"lambdaFunctionTimedOutEventDetails">> => lambda_function_timed_out_event_details(),
+%%   <<"mapIterationAbortedEventDetails">> => map_iteration_event_details(),
+%%   <<"mapIterationFailedEventDetails">> => map_iteration_event_details(),
+%%   <<"mapIterationStartedEventDetails">> => map_iteration_event_details(),
+%%   <<"mapIterationSucceededEventDetails">> => map_iteration_event_details(),
+%%   <<"mapRunFailedEventDetails">> => map_run_failed_event_details(),
+%%   <<"mapRunRedrivenEventDetails">> => map_run_redriven_event_details(),
+%%   <<"mapRunStartedEventDetails">> => map_run_started_event_details(),
+%%   <<"mapStateStartedEventDetails">> => map_state_started_event_details(),
+%%   <<"previousEventId">> => float(),
+%%   <<"stateEnteredEventDetails">> => state_entered_event_details(),
+%%   <<"stateExitedEventDetails">> => state_exited_event_details(),
+%%   <<"taskFailedEventDetails">> => task_failed_event_details(),
+%%   <<"taskScheduledEventDetails">> => task_scheduled_event_details(),
+%%   <<"taskStartFailedEventDetails">> => task_start_failed_event_details(),
+%%   <<"taskStartedEventDetails">> => task_started_event_details(),
+%%   <<"taskSubmitFailedEventDetails">> => task_submit_failed_event_details(),
+%%   <<"taskSubmittedEventDetails">> => task_submitted_event_details(),
+%%   <<"taskSucceededEventDetails">> => task_succeeded_event_details(),
+%%   <<"taskTimedOutEventDetails">> => task_timed_out_event_details(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type history_event() :: #{binary() => any()}.
+
+%% Example:
+%% history_event_execution_data_details() :: #{
+%%   <<"truncated">> => boolean()
+%% }
+-type history_event_execution_data_details() :: #{binary() => any()}.
 
 %% Example:
 %% inspection_data() :: #{
@@ -682,69 +660,44 @@
 -type inspection_data() :: #{binary() => any()}.
 
 %% Example:
-%% publish_state_machine_version_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"stateMachineArn">> := string()
+%% inspection_data_request() :: #{
+%%   <<"body">> => string(),
+%%   <<"headers">> => string(),
+%%   <<"method">> => string(),
+%%   <<"protocol">> => string(),
+%%   <<"url">> => string()
 %% }
--type publish_state_machine_version_input() :: #{binary() => any()}.
+-type inspection_data_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% inspection_data_response() :: #{
+%%   <<"body">> => string(),
+%%   <<"headers">> => string(),
+%%   <<"protocol">> => string(),
+%%   <<"statusCode">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type inspection_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% inspection_error_details() :: #{
+%%   <<"catchIndex">> => integer(),
+%%   <<"retryBackoffIntervalSeconds">> => integer(),
+%%   <<"retryIndex">> => integer()
+%% }
+-type inspection_error_details() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn() :: #{
 %%   <<"message">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type invalid_arn() :: #{binary() => any()}.
 
 %% Example:
-%% lambda_function_schedule_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type lambda_function_schedule_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% log_destination() :: #{
-%%   <<"cloudWatchLogsLogGroup">> => cloud_watch_logs_log_group()
-%% }
--type log_destination() :: #{binary() => any()}.
-
-%% Example:
-%% execution_limit_exceeded() :: #{
+%% invalid_definition() :: #{
 %%   <<"message">> => string()
 %% }
--type execution_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% get_activity_task_input() :: #{
-%%   <<"activityArn">> := string(),
-%%   <<"workerName">> => string()
-%% }
--type get_activity_task_input() :: #{binary() => any()}.
-
-%% Example:
-%% state_exited_event_details() :: #{
-%%   <<"assignedVariables">> => map(),
-%%   <<"assignedVariablesDetails">> => assigned_variables_details(),
-%%   <<"name">> => string(),
-%%   <<"output">> => string(),
-%%   <<"outputDetails">> => history_event_execution_data_details()
-%% }
--type state_exited_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_state_machine_input() :: #{
-%%   <<"definition">> := string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"loggingConfiguration">> => logging_configuration(),
-%%   <<"name">> := string(),
-%%   <<"publish">> => boolean(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"tracingConfiguration">> => tracing_configuration(),
-%%   <<"type">> => list(any()),
-%%   <<"versionDescription">> => string()
-%% }
--type create_state_machine_input() :: #{binary() => any()}.
+-type invalid_definition() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_encryption_configuration() :: #{
@@ -753,61 +706,73 @@
 -type invalid_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_watch_logs_log_group() :: #{
-%%   <<"logGroupArn">> => string()
+%% invalid_execution_input() :: #{
+%%   <<"message">> => string()
 %% }
--type cloud_watch_logs_log_group() :: #{binary() => any()}.
+-type invalid_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_state_machine_alias_output() :: #{
-
+%% invalid_logging_configuration() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_state_machine_alias_output() :: #{binary() => any()}.
+-type invalid_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% activity_failed_event_details() :: #{
+%% invalid_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_name() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_output() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_token() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tracing_configuration() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tracing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"kmsKeyState">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_failed_event_details() :: #{
 %%   <<"cause">> => string(),
 %%   <<"error">> => string()
 %% }
--type activity_failed_event_details() :: #{binary() => any()}.
+-type lambda_function_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% create_activity_input() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_activity_input() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_succeeded_event_details() :: #{
-%%   <<"output">> => string(),
-%%   <<"outputDetails">> => history_event_execution_data_details()
-%% }
--type lambda_function_succeeded_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% execution_failed_event_details() :: #{
+%% lambda_function_schedule_failed_event_details() :: #{
 %%   <<"cause">> => string(),
 %%   <<"error">> => string()
 %% }
--type execution_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% test_state_configuration() :: #{
-%%   <<"errorCausedByState">> => string(),
-%%   <<"mapItemReaderData">> => string(),
-%%   <<"mapIterationFailureCount">> => integer(),
-%%   <<"retrierRetryCount">> => integer()
-%% }
--type test_state_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_timed_out_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
-%% }
--type lambda_function_timed_out_event_details() :: #{binary() => any()}.
+-type lambda_function_schedule_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
 %% lambda_function_scheduled_event_details() :: #{
@@ -820,134 +785,142 @@
 -type lambda_function_scheduled_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% task_submit_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_submit_failed_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_state_machine_output() :: #{
-%%   <<"revisionId">> => string(),
-%%   <<"stateMachineVersionArn">> => string(),
-%%   <<"updateDate">> => non_neg_integer()
-%% }
--type update_state_machine_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_activity_input() :: #{
-%%   <<"activityArn">> := string()
-%% }
--type describe_activity_input() :: #{binary() => any()}.
-
-%% Example:
-%% tracing_configuration() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type tracing_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_execution_output() :: #{
-%%   <<"stopDate">> => non_neg_integer()
-%% }
--type stop_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% activity_worker_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type activity_worker_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% execution_timed_out_event_details() :: #{
+%% lambda_function_start_failed_event_details() :: #{
 %%   <<"cause">> => string(),
 %%   <<"error">> => string()
 %% }
--type execution_timed_out_event_details() :: #{binary() => any()}.
+-type lambda_function_start_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% billing_details() :: #{
-%%   <<"billedDurationInMilliseconds">> => float(),
-%%   <<"billedMemoryUsedInMB">> => float()
+%% lambda_function_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
 %% }
--type billing_details() :: #{binary() => any()}.
+-type lambda_function_succeeded_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% execution_started_event_details() :: #{
-%%   <<"input">> => string(),
-%%   <<"inputDetails">> => history_event_execution_data_details(),
-%%   <<"roleArn">> => string(),
-%%   <<"stateMachineAliasArn">> => string(),
-%%   <<"stateMachineVersionArn">> => string()
+%% lambda_function_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
 %% }
--type execution_started_event_details() :: #{binary() => any()}.
+-type lambda_function_timed_out_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_output() :: #{
-
+%% list_activities_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% history_event() :: #{
-%%   <<"taskSubmittedEventDetails">> => task_submitted_event_details(),
-%%   <<"type">> => list(any()),
-%%   <<"executionSucceededEventDetails">> => execution_succeeded_event_details(),
-%%   <<"lambdaFunctionFailedEventDetails">> => lambda_function_failed_event_details(),
-%%   <<"activityStartedEventDetails">> => activity_started_event_details(),
-%%   <<"activityScheduleFailedEventDetails">> => activity_schedule_failed_event_details(),
-%%   <<"mapIterationStartedEventDetails">> => map_iteration_event_details(),
-%%   <<"taskSucceededEventDetails">> => task_succeeded_event_details(),
-%%   <<"activityFailedEventDetails">> => activity_failed_event_details(),
-%%   <<"taskStartFailedEventDetails">> => task_start_failed_event_details(),
-%%   <<"stateExitedEventDetails">> => state_exited_event_details(),
-%%   <<"activityTimedOutEventDetails">> => activity_timed_out_event_details(),
-%%   <<"id">> => float(),
-%%   <<"lambdaFunctionSucceededEventDetails">> => lambda_function_succeeded_event_details(),
-%%   <<"mapRunRedrivenEventDetails">> => map_run_redriven_event_details(),
-%%   <<"lambdaFunctionScheduleFailedEventDetails">> => lambda_function_schedule_failed_event_details(),
-%%   <<"evaluationFailedEventDetails">> => evaluation_failed_event_details(),
-%%   <<"mapStateStartedEventDetails">> => map_state_started_event_details(),
-%%   <<"lambdaFunctionStartFailedEventDetails">> => lambda_function_start_failed_event_details(),
-%%   <<"taskSubmitFailedEventDetails">> => task_submit_failed_event_details(),
-%%   <<"executionTimedOutEventDetails">> => execution_timed_out_event_details(),
-%%   <<"lambdaFunctionTimedOutEventDetails">> => lambda_function_timed_out_event_details(),
-%%   <<"taskStartedEventDetails">> => task_started_event_details(),
-%%   <<"executionAbortedEventDetails">> => execution_aborted_event_details(),
-%%   <<"lambdaFunctionScheduledEventDetails">> => lambda_function_scheduled_event_details(),
-%%   <<"taskFailedEventDetails">> => task_failed_event_details(),
-%%   <<"stateEnteredEventDetails">> => state_entered_event_details(),
-%%   <<"executionFailedEventDetails">> => execution_failed_event_details(),
-%%   <<"mapIterationSucceededEventDetails">> => map_iteration_event_details(),
-%%   <<"mapRunStartedEventDetails">> => map_run_started_event_details(),
-%%   <<"executionStartedEventDetails">> => execution_started_event_details(),
-%%   <<"taskTimedOutEventDetails">> => task_timed_out_event_details(),
-%%   <<"executionRedrivenEventDetails">> => execution_redriven_event_details(),
-%%   <<"activitySucceededEventDetails">> => activity_succeeded_event_details(),
-%%   <<"mapRunFailedEventDetails">> => map_run_failed_event_details(),
-%%   <<"activityScheduledEventDetails">> => activity_scheduled_event_details(),
-%%   <<"taskScheduledEventDetails">> => task_scheduled_event_details(),
-%%   <<"mapIterationAbortedEventDetails">> => map_iteration_event_details(),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"mapIterationFailedEventDetails">> => map_iteration_event_details(),
-%%   <<"previousEventId">> => float()
-%% }
--type history_event() :: #{binary() => any()}.
+-type list_activities_input() :: #{binary() => any()}.
 
 %% Example:
-%% state_machine_limit_exceeded() :: #{
-%%   <<"message">> => string()
+%% list_activities_output() :: #{
+%%   <<"activities">> => list(activity_list_item()),
+%%   <<"nextToken">> => string()
 %% }
--type state_machine_limit_exceeded() :: #{binary() => any()}.
+-type list_activities_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_input() :: #{
+%%   <<"mapRunArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"redriveFilter">> => list(any()),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_output() :: #{
+%%   <<"executions">> => list(execution_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_map_runs_input() :: #{
+%%   <<"executionArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_map_runs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_map_runs_output() :: #{
+%%   <<"mapRuns">> => list(map_run_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_map_runs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_aliases_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type list_state_machine_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_aliases_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineAliases">> => list(state_machine_alias_list_item())
+%% }
+-type list_state_machine_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_versions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type list_state_machine_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machine_versions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachineVersions">> => list(state_machine_version_list_item())
+%% }
+-type list_state_machine_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machines_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_state_machines_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_state_machines_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stateMachines">> => list(state_machine_list_item())
+%% }
+-type list_state_machines_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination() :: #{
+%%   <<"cloudWatchLogsLogGroup">> => cloud_watch_logs_log_group()
+%% }
+-type log_destination() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"destinations">> => list(log_destination()),
+%%   <<"includeExecutionData">> => boolean(),
+%%   <<"level">> => list(any())
+%% }
+-type logging_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% map_iteration_event_details() :: #{
@@ -955,29 +928,6 @@
 %%   <<"name">> => string()
 %% }
 -type map_iteration_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% kms_access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_state_machine_alias_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(routing_configuration_list_item()),
-%%   <<"stateMachineAliasArn">> := string()
-%% }
--type update_state_machine_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% task_start_failed_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_start_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
 %% map_run_execution_counts() :: #{
@@ -995,52 +945,26 @@
 -type map_run_execution_counts() :: #{binary() => any()}.
 
 %% Example:
-%% validate_state_machine_definition_output() :: #{
-%%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()),
-%%   <<"result">> => list(any()),
-%%   <<"truncated">> => boolean()
-%% }
--type validate_state_machine_definition_output() :: #{binary() => any()}.
-
-%% Example:
-%% activity_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type activity_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% update_state_machine_input() :: #{
-%%   <<"definition">> => string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"loggingConfiguration">> => logging_configuration(),
-%%   <<"publish">> => boolean(),
-%%   <<"roleArn">> => string(),
-%%   <<"stateMachineArn">> := string(),
-%%   <<"tracingConfiguration">> => tracing_configuration(),
-%%   <<"versionDescription">> => string()
-%% }
--type update_state_machine_input() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_failed_event_details() :: #{
+%% map_run_failed_event_details() :: #{
 %%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"location">> => string(),
-%%   <<"state">> => string()
+%%   <<"error">> => string()
 %% }
--type evaluation_failed_event_details() :: #{binary() => any()}.
+-type map_run_failed_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% state_machine_does_not_exist() :: #{
-%%   <<"message">> => string()
+%% map_run_item_counts() :: #{
+%%   <<"aborted">> => float(),
+%%   <<"failed">> => float(),
+%%   <<"failuresNotRedrivable">> => float(),
+%%   <<"pending">> => float(),
+%%   <<"pendingRedrive">> => float(),
+%%   <<"resultsWritten">> => float(),
+%%   <<"running">> => float(),
+%%   <<"succeeded">> => float(),
+%%   <<"timedOut">> => float(),
+%%   <<"total">> => float()
 %% }
--type state_machine_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% map_state_started_event_details() :: #{
-%%   <<"length">> => integer()
-%% }
--type map_state_started_event_details() :: #{binary() => any()}.
+-type map_run_item_counts() :: #{binary() => any()}.
 
 %% Example:
 %% map_run_list_item() :: #{
@@ -1053,106 +977,6 @@
 -type map_run_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% activity_list_item() :: #{
-%%   <<"activityArn">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type activity_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_definition() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_definition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_state_machine_input() :: #{
-%%   <<"stateMachineArn">> := string()
-%% }
--type delete_state_machine_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_map_runs_input() :: #{
-%%   <<"executionArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_map_runs_input() :: #{binary() => any()}.
-
-%% Example:
-%% task_does_not_exist() :: #{
-%%   <<"message">> => string()
-%% }
--type task_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% execution_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type execution_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% create_activity_output() :: #{
-%%   <<"activityArn">> => string(),
-%%   <<"creationDate">> => non_neg_integer()
-%% }
--type create_activity_output() :: #{binary() => any()}.
-
-%% Example:
-%% assigned_variables_details() :: #{
-%%   <<"truncated">> => boolean()
-%% }
--type assigned_variables_details() :: #{binary() => any()}.
-
-%% Example:
-%% activity_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type activity_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_name() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_name() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% task_submitted_event_details() :: #{
-%%   <<"output">> => string(),
-%%   <<"outputDetails">> => history_event_execution_data_details(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type task_submitted_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
 %% map_run_redriven_event_details() :: #{
 %%   <<"mapRunArn">> => string(),
 %%   <<"redriveCount">> => integer()
@@ -1160,24 +984,29 @@
 -type map_run_redriven_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% test_state_output() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"inspectionData">> => inspection_data(),
-%%   <<"nextState">> => string(),
-%%   <<"output">> => string(),
-%%   <<"status">> => list(any())
+%% map_run_started_event_details() :: #{
+%%   <<"mapRunArn">> => string()
 %% }
--type test_state_output() :: #{binary() => any()}.
+-type map_run_started_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% update_map_run_input() :: #{
-%%   <<"mapRunArn">> := string(),
-%%   <<"maxConcurrency">> => integer(),
-%%   <<"toleratedFailureCount">> => float(),
-%%   <<"toleratedFailurePercentage">> => float()
+%% map_state_started_event_details() :: #{
+%%   <<"length">> => integer()
 %% }
--type update_map_run_input() :: #{binary() => any()}.
+-type map_state_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% missing_required_parameter() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_required_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% mock_error_output() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string()
+%% }
+-type mock_error_output() :: #{binary() => any()}.
 
 %% Example:
 %% mock_input() :: #{
@@ -1186,6 +1015,109 @@
 %%   <<"result">> => string()
 %% }
 -type mock_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_state_machine_version_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"stateMachineArn">> := string()
+%% }
+-type publish_state_machine_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_state_machine_version_output() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type publish_state_machine_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% redrive_execution_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"executionArn">> := string()
+%% }
+-type redrive_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% redrive_execution_output() :: #{
+%%   <<"redriveDate">> => non_neg_integer()
+%% }
+-type redrive_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% routing_configuration_list_item() :: #{
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type routing_configuration_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_failure_input() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_failure_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_failure_output() :: #{
+
+%% }
+-type send_task_failure_output() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_heartbeat_input() :: #{
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_heartbeat_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_heartbeat_output() :: #{
+
+%% }
+-type send_task_heartbeat_output() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_success_input() :: #{
+%%   <<"output">> := string(),
+%%   <<"taskToken">> := string()
+%% }
+-type send_task_success_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_task_success_output() :: #{
+
+%% }
+-type send_task_success_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_input() :: #{
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"stateMachineArn">> := string(),
+%%   <<"traceHeader">> => string()
+%% }
+-type start_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_output() :: #{
+%%   <<"executionArn">> => string(),
+%%   <<"startDate">> => non_neg_integer()
+%% }
+-type start_execution_output() :: #{binary() => any()}.
 
 %% Example:
 %% start_sync_execution_input() :: #{
@@ -1198,61 +1130,128 @@
 -type start_sync_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% validate_state_machine_definition_input() :: #{
-%%   <<"definition">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"severity">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type validate_state_machine_definition_input() :: #{binary() => any()}.
-
-%% Example:
-%% send_task_success_input() :: #{
-%%   <<"output">> := string(),
-%%   <<"taskToken">> := string()
-%% }
--type send_task_success_input() :: #{binary() => any()}.
-
-%% Example:
-%% routing_configuration_list_item() :: #{
-%%   <<"stateMachineVersionArn">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type routing_configuration_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% execution_list_item() :: #{
+%% start_sync_execution_output() :: #{
+%%   <<"billingDetails">> => billing_details(),
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
 %%   <<"executionArn">> => string(),
-%%   <<"itemCount">> => integer(),
-%%   <<"mapRunArn">> => string(),
+%%   <<"input">> => string(),
+%%   <<"inputDetails">> => cloud_watch_events_execution_data_details(),
 %%   <<"name">> => string(),
-%%   <<"redriveCount">> => integer(),
-%%   <<"redriveDate">> => non_neg_integer(),
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => cloud_watch_events_execution_data_details(),
 %%   <<"startDate">> => non_neg_integer(),
-%%   <<"stateMachineAliasArn">> => string(),
 %%   <<"stateMachineArn">> => string(),
-%%   <<"stateMachineVersionArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"stopDate">> => non_neg_integer()
+%%   <<"stopDate">> => non_neg_integer(),
+%%   <<"traceHeader">> => string()
 %% }
--type execution_list_item() :: #{binary() => any()}.
+-type start_sync_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% activity_scheduled_event_details() :: #{
-%%   <<"heartbeatInSeconds">> => float(),
+%% state_entered_event_details() :: #{
 %%   <<"input">> => string(),
 %%   <<"inputDetails">> => history_event_execution_data_details(),
-%%   <<"resource">> => string(),
-%%   <<"timeoutInSeconds">> => float()
+%%   <<"name">> => string()
 %% }
--type activity_scheduled_event_details() :: #{binary() => any()}.
+-type state_entered_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% activity_timed_out_event_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string()
+%% state_exited_event_details() :: #{
+%%   <<"assignedVariables">> => map(),
+%%   <<"assignedVariablesDetails">> => assigned_variables_details(),
+%%   <<"name">> => string(),
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details()
 %% }
--type activity_timed_out_event_details() :: #{binary() => any()}.
+-type state_exited_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_alias_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineAliasArn">> => string()
+%% }
+-type state_machine_alias_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_deleting() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_deleting() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"stateMachineArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type state_machine_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_type_not_supported() :: #{
+%%   <<"message">> => string()
+%% }
+-type state_machine_type_not_supported() :: #{binary() => any()}.
+
+%% Example:
+%% state_machine_version_list_item() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"stateMachineVersionArn">> => string()
+%% }
+-type state_machine_version_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% stop_execution_input() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"executionArn">> := string()
+%% }
+-type stop_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_execution_output() :: #{
+%%   <<"stopDate">> => non_neg_integer()
+%% }
+-type stop_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% task_credentials() :: #{
@@ -1261,34 +1260,98 @@
 -type task_credentials() :: #{binary() => any()}.
 
 %% Example:
-%% send_task_heartbeat_output() :: #{
-
+%% task_does_not_exist() :: #{
+%%   <<"message">> => string()
 %% }
--type send_task_heartbeat_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_state_machine_alias_output() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"stateMachineAliasArn">> => string()
-%% }
--type create_state_machine_alias_output() :: #{binary() => any()}.
+-type task_does_not_exist() :: #{binary() => any()}.
 
 %% Example:
-%% describe_map_run_output() :: #{
-%%   <<"executionArn">> => string(),
-%%   <<"executionCounts">> => map_run_execution_counts(),
-%%   <<"itemCounts">> => map_run_item_counts(),
-%%   <<"mapRunArn">> => string(),
-%%   <<"maxConcurrency">> => integer(),
-%%   <<"redriveCount">> => integer(),
-%%   <<"redriveDate">> => non_neg_integer(),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopDate">> => non_neg_integer(),
-%%   <<"toleratedFailureCount">> => float(),
-%%   <<"toleratedFailurePercentage">> => float()
+%% task_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type describe_map_run_output() :: #{binary() => any()}.
+-type task_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_scheduled_event_details() :: #{
+%%   <<"heartbeatInSeconds">> => float(),
+%%   <<"parameters">> => string(),
+%%   <<"region">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"taskCredentials">> => task_credentials(),
+%%   <<"timeoutInSeconds">> => float()
+%% }
+-type task_scheduled_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_start_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_start_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_started_event_details() :: #{
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_started_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_submit_failed_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_submit_failed_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_submitted_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_submitted_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_succeeded_event_details() :: #{
+%%   <<"output">> => string(),
+%%   <<"outputDetails">> => history_event_execution_data_details(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_succeeded_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% task_timed_out() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_timed_out() :: #{binary() => any()}.
+
+%% Example:
+%% task_timed_out_event_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type task_timed_out_event_details() :: #{binary() => any()}.
+
+%% Example:
+%% test_state_configuration() :: #{
+%%   <<"errorCausedByState">> => string(),
+%%   <<"mapItemReaderData">> => string(),
+%%   <<"mapIterationFailureCount">> => integer(),
+%%   <<"retrierRetryCount">> => integer()
+%% }
+-type test_state_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% test_state_input() :: #{
@@ -1306,57 +1369,91 @@
 -type test_state_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_logging_configuration() :: #{
-%%   <<"message">> => string()
+%% test_state_output() :: #{
+%%   <<"cause">> => string(),
+%%   <<"error">> => string(),
+%%   <<"inspectionData">> => inspection_data(),
+%%   <<"nextState">> => string(),
+%%   <<"output">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type invalid_logging_configuration() :: #{binary() => any()}.
+-type test_state_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_state_machine_versions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"stateMachineArn">> := string()
+%% too_many_tags() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
 %% }
--type list_state_machine_versions_input() :: #{binary() => any()}.
+-type too_many_tags() :: #{binary() => any()}.
 
 %% Example:
-%% state_machine_deleting() :: #{
-%%   <<"message">> => string()
+%% tracing_configuration() :: #{
+%%   <<"enabled">> => boolean()
 %% }
--type state_machine_deleting() :: #{binary() => any()}.
+-type tracing_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_activities_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_activities_input() :: #{binary() => any()}.
+-type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_state_machine_versions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"stateMachineVersions">> => list(state_machine_version_list_item())
+%% untag_resource_output() :: #{
+
 %% }
--type list_state_machine_versions_output() :: #{binary() => any()}.
+-type untag_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% activity_does_not_exist() :: #{
-%%   <<"message">> => string()
+%% update_map_run_input() :: #{
+%%   <<"mapRunArn">> := string(),
+%%   <<"maxConcurrency">> => integer(),
+%%   <<"toleratedFailureCount">> => float(),
+%%   <<"toleratedFailurePercentage">> => float()
 %% }
--type activity_does_not_exist() :: #{binary() => any()}.
+-type update_map_run_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_state_machine_version_input() :: #{
-%%   <<"stateMachineVersionArn">> := string()
+%% update_map_run_output() :: #{
+
 %% }
--type delete_state_machine_version_input() :: #{binary() => any()}.
+-type update_map_run_output() :: #{binary() => any()}.
 
 %% Example:
-%% kms_invalid_state_exception() :: #{
-%%   <<"kmsKeyState">> => list(any()),
-%%   <<"message">> => string()
+%% update_state_machine_alias_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"routingConfiguration">> => list(routing_configuration_list_item()),
+%%   <<"stateMachineAliasArn">> := string()
 %% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
+-type update_state_machine_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_alias_output() :: #{
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type update_state_machine_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_input() :: #{
+%%   <<"definition">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"publish">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineArn">> := string(),
+%%   <<"tracingConfiguration">> => tracing_configuration(),
+%%   <<"versionDescription">> => string()
+%% }
+-type update_state_machine_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_state_machine_output() :: #{
+%%   <<"revisionId">> => string(),
+%%   <<"stateMachineVersionArn">> => string(),
+%%   <<"updateDate">> => non_neg_integer()
+%% }
+-type update_state_machine_output() :: #{binary() => any()}.
 
 %% Example:
 %% validate_state_machine_definition_diagnostic() :: #{
@@ -1368,177 +1465,80 @@
 -type validate_state_machine_definition_diagnostic() :: #{binary() => any()}.
 
 %% Example:
-%% list_activities_output() :: #{
-%%   <<"activities">> => list(activity_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_activities_output() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type too_many_tags() :: #{binary() => any()}.
-
-%% Example:
-%% activity_started_event_details() :: #{
-%%   <<"workerName">> => string()
-%% }
--type activity_started_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_map_runs_output() :: #{
-%%   <<"mapRuns">> => list(map_run_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_map_runs_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_executions_input() :: #{
-%%   <<"mapRunArn">> => string(),
+%% validate_state_machine_definition_input() :: #{
+%%   <<"definition">> := string(),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"redriveFilter">> => list(any()),
-%%   <<"stateMachineArn">> => string(),
-%%   <<"statusFilter">> => list(any())
+%%   <<"severity">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type list_executions_input() :: #{binary() => any()}.
+-type validate_state_machine_definition_input() :: #{binary() => any()}.
 
 %% Example:
-%% inspection_data_response() :: #{
-%%   <<"body">> => string(),
-%%   <<"headers">> => string(),
-%%   <<"protocol">> => string(),
-%%   <<"statusCode">> => string(),
-%%   <<"statusMessage">> => string()
+%% validate_state_machine_definition_output() :: #{
+%%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()),
+%%   <<"result">> => list(any()),
+%%   <<"truncated">> => boolean()
 %% }
--type inspection_data_response() :: #{binary() => any()}.
+-type validate_state_machine_definition_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_execution_input() :: #{
-%%   <<"message">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
 %% }
--type invalid_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% task_scheduled_event_details() :: #{
-%%   <<"heartbeatInSeconds">> => float(),
-%%   <<"parameters">> => string(),
-%%   <<"region">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"taskCredentials">> => task_credentials(),
-%%   <<"timeoutInSeconds">> => float()
-%% }
--type task_scheduled_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% publish_state_machine_version_output() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"stateMachineVersionArn">> => string()
-%% }
--type publish_state_machine_version_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_execution_input() :: #{
-%%   <<"input">> => string(),
-%%   <<"name">> => string(),
-%%   <<"stateMachineArn">> := string(),
-%%   <<"traceHeader">> => string()
-%% }
--type start_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_map_run_input() :: #{
-%%   <<"mapRunArn">> := string()
-%% }
--type describe_map_run_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_arn() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_arn() :: #{binary() => any()}.
-
-%% Example:
-%% stop_execution_input() :: #{
-%%   <<"cause">> => string(),
-%%   <<"error">> => string(),
-%%   <<"executionArn">> := string()
-%% }
--type stop_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_state_machine_output() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"definition">> => string(),
-%%   <<"description">> => string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"label">> => string(),
-%%   <<"loggingConfiguration">> => logging_configuration(),
-%%   <<"name">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"stateMachineArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tracingConfiguration">> => tracing_configuration(),
-%%   <<"type">> => list(any()),
-%%   <<"variableReferences">> => map()
-%% }
--type describe_state_machine_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_activity_errors() ::
     too_many_tags() | 
-    invalid_name() | 
-    activity_limit_exceeded() | 
-    activity_already_exists() | 
+    kms_throttling_exception() | 
     kms_access_denied_exception() | 
+    invalid_name() | 
     invalid_encryption_configuration() | 
-    kms_throttling_exception().
+    activity_limit_exceeded() | 
+    activity_already_exists().
 
 -type create_state_machine_errors() ::
-    invalid_arn() | 
-    too_many_tags() | 
-    state_machine_deleting() | 
-    invalid_logging_configuration() | 
     validation_exception() | 
-    invalid_name() | 
-    invalid_definition() | 
-    kms_access_denied_exception() | 
+    too_many_tags() | 
+    state_machine_type_not_supported() | 
     state_machine_limit_exceeded() | 
-    invalid_encryption_configuration() | 
-    conflict_exception() | 
+    state_machine_deleting() | 
     state_machine_already_exists() | 
-    invalid_tracing_configuration() | 
     kms_throttling_exception() | 
-    state_machine_type_not_supported().
+    kms_access_denied_exception() | 
+    invalid_tracing_configuration() | 
+    invalid_name() | 
+    invalid_logging_configuration() | 
+    invalid_encryption_configuration() | 
+    invalid_definition() | 
+    invalid_arn() | 
+    conflict_exception().
 
 -type create_state_machine_alias_errors() ::
-    invalid_arn() | 
-    state_machine_deleting() | 
     validation_exception() | 
-    invalid_name() | 
+    state_machine_deleting() | 
     service_quota_exceeded_exception() | 
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_name() | 
+    invalid_arn() | 
+    conflict_exception().
 
 -type delete_activity_errors() ::
     invalid_arn().
 
 -type delete_state_machine_errors() ::
-    invalid_arn() | 
-    validation_exception().
+    validation_exception() | 
+    invalid_arn().
 
 -type delete_state_machine_alias_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn() | 
+    conflict_exception().
 
 -type delete_state_machine_version_errors() ::
-    invalid_arn() | 
     validation_exception() | 
+    invalid_arn() | 
     conflict_exception().
 
 -type describe_activity_errors() ::
@@ -1546,196 +1546,196 @@
     activity_does_not_exist().
 
 -type describe_execution_errors() ::
-    invalid_arn() | 
+    kms_throttling_exception() | 
     kms_invalid_state_exception() | 
     kms_access_denied_exception() | 
-    kms_throttling_exception() | 
+    invalid_arn() | 
     execution_does_not_exist().
 
 -type describe_map_run_errors() ::
-    invalid_arn() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type describe_state_machine_errors() ::
-    invalid_arn() | 
-    kms_invalid_state_exception() | 
     state_machine_does_not_exist() | 
+    kms_throttling_exception() | 
+    kms_invalid_state_exception() | 
     kms_access_denied_exception() | 
-    kms_throttling_exception().
+    invalid_arn().
 
 -type describe_state_machine_alias_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type describe_state_machine_for_execution_errors() ::
-    invalid_arn() | 
+    kms_throttling_exception() | 
     kms_invalid_state_exception() | 
     kms_access_denied_exception() | 
-    kms_throttling_exception() | 
+    invalid_arn() | 
     execution_does_not_exist().
 
 -type get_activity_task_errors() ::
-    invalid_arn() | 
+    kms_throttling_exception() | 
     kms_invalid_state_exception() | 
-    activity_does_not_exist() | 
     kms_access_denied_exception() | 
+    invalid_arn() | 
     activity_worker_limit_exceeded() | 
-    kms_throttling_exception().
+    activity_does_not_exist().
 
 -type get_execution_history_errors() ::
-    invalid_arn() | 
+    kms_throttling_exception() | 
     kms_invalid_state_exception() | 
     kms_access_denied_exception() | 
     invalid_token() | 
-    kms_throttling_exception() | 
+    invalid_arn() | 
     execution_does_not_exist().
 
 -type list_activities_errors() ::
     invalid_token().
 
 -type list_executions_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    state_machine_does_not_exist() | 
-    invalid_token() | 
     state_machine_type_not_supported() | 
-    resource_not_found().
+    state_machine_does_not_exist() | 
+    resource_not_found() | 
+    invalid_token() | 
+    invalid_arn().
 
 -type list_map_runs_errors() ::
-    invalid_arn() | 
     invalid_token() | 
+    invalid_arn() | 
     execution_does_not_exist().
 
 -type list_state_machine_aliases_errors() ::
-    invalid_arn() | 
-    state_machine_deleting() | 
     state_machine_does_not_exist() | 
+    state_machine_deleting() | 
+    resource_not_found() | 
     invalid_token() | 
-    resource_not_found().
+    invalid_arn().
 
 -type list_state_machine_versions_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    invalid_token().
+    invalid_token() | 
+    invalid_arn().
 
 -type list_state_machines_errors() ::
     invalid_token().
 
 -type list_tags_for_resource_errors() ::
-    invalid_arn() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type publish_state_machine_version_errors() ::
-    invalid_arn() | 
-    state_machine_deleting() | 
     validation_exception() | 
     state_machine_does_not_exist() | 
+    state_machine_deleting() | 
     service_quota_exceeded_exception() | 
+    invalid_arn() | 
     conflict_exception().
 
 -type redrive_execution_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    execution_limit_exceeded() | 
+    invalid_arn() | 
     execution_not_redrivable() | 
+    execution_limit_exceeded() | 
     execution_does_not_exist().
 
 -type send_task_failure_errors() ::
-    kms_invalid_state_exception() | 
-    task_does_not_exist() | 
-    kms_access_denied_exception() | 
     task_timed_out() | 
-    invalid_token() | 
-    kms_throttling_exception().
+    task_does_not_exist() | 
+    kms_throttling_exception() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
+    invalid_token().
 
 -type send_task_heartbeat_errors() ::
-    task_does_not_exist() | 
     task_timed_out() | 
+    task_does_not_exist() | 
     invalid_token().
 
 -type send_task_success_errors() ::
-    kms_invalid_state_exception() | 
-    task_does_not_exist() | 
-    kms_access_denied_exception() | 
     task_timed_out() | 
+    task_does_not_exist() | 
+    kms_throttling_exception() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
     invalid_token() | 
-    invalid_output() | 
-    kms_throttling_exception().
+    invalid_output().
 
 -type start_execution_errors() ::
-    invalid_arn() | 
-    invalid_execution_input() | 
-    kms_invalid_state_exception() | 
-    state_machine_deleting() | 
     validation_exception() | 
-    invalid_name() | 
-    execution_already_exists() | 
     state_machine_does_not_exist() | 
+    state_machine_deleting() | 
+    kms_throttling_exception() | 
+    kms_invalid_state_exception() | 
     kms_access_denied_exception() | 
+    invalid_name() | 
+    invalid_execution_input() | 
+    invalid_arn() | 
     execution_limit_exceeded() | 
-    kms_throttling_exception().
+    execution_already_exists().
 
 -type start_sync_execution_errors() ::
-    invalid_arn() | 
-    invalid_execution_input() | 
-    kms_invalid_state_exception() | 
-    state_machine_deleting() | 
-    invalid_name() | 
+    state_machine_type_not_supported() | 
     state_machine_does_not_exist() | 
-    kms_access_denied_exception() | 
+    state_machine_deleting() | 
     kms_throttling_exception() | 
-    state_machine_type_not_supported().
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
+    invalid_name() | 
+    invalid_execution_input() | 
+    invalid_arn().
 
 -type stop_execution_errors() ::
-    invalid_arn() | 
-    kms_invalid_state_exception() | 
     validation_exception() | 
-    kms_access_denied_exception() | 
     kms_throttling_exception() | 
+    kms_invalid_state_exception() | 
+    kms_access_denied_exception() | 
+    invalid_arn() | 
     execution_does_not_exist().
 
 -type tag_resource_errors() ::
-    invalid_arn() | 
     too_many_tags() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type test_state_errors() ::
-    invalid_arn() | 
-    invalid_execution_input() | 
     validation_exception() | 
-    invalid_definition().
+    invalid_execution_input() | 
+    invalid_definition() | 
+    invalid_arn().
 
 -type untag_resource_errors() ::
-    invalid_arn() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type update_map_run_errors() ::
-    invalid_arn() | 
     validation_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_arn().
 
 -type update_state_machine_errors() ::
-    invalid_arn() | 
-    state_machine_deleting() | 
-    invalid_logging_configuration() | 
     validation_exception() | 
-    invalid_definition() | 
     state_machine_does_not_exist() | 
-    kms_access_denied_exception() | 
-    invalid_encryption_configuration() | 
+    state_machine_deleting() | 
     service_quota_exceeded_exception() | 
-    conflict_exception() | 
-    invalid_tracing_configuration() | 
+    missing_required_parameter() | 
     kms_throttling_exception() | 
-    missing_required_parameter().
+    kms_access_denied_exception() | 
+    invalid_tracing_configuration() | 
+    invalid_logging_configuration() | 
+    invalid_encryption_configuration() | 
+    invalid_definition() | 
+    invalid_arn() | 
+    conflict_exception().
 
 -type update_state_machine_alias_errors() ::
-    invalid_arn() | 
-    state_machine_deleting() | 
     validation_exception() | 
-    conflict_exception() | 
-    resource_not_found().
+    state_machine_deleting() | 
+    resource_not_found() | 
+    invalid_arn() | 
+    conflict_exception().
 
 -type validate_state_machine_definition_errors() ::
     validation_exception().

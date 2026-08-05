@@ -64,41 +64,19 @@
 
 
 %% Example:
-%% analyze_document_request() :: #{
-%%   <<"AdaptersConfig">> => adapters_config(),
-%%   <<"Document">> := document(),
-%%   <<"FeatureTypes">> := list(list(any())()),
-%%   <<"HumanLoopConfig">> => human_loop_config(),
-%%   <<"QueriesConfig">> => queries_config()
+%% access_denied_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
 %% }
--type analyze_document_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% document_location() :: #{
-%%   <<"S3Object">> => s3_object()
+%% adapter() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"Pages">> => list(string()),
+%%   <<"Version">> => string()
 %% }
--type document_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_adapter_request() :: #{
-%%   <<"AdapterId">> := string()
-%% }
--type delete_adapter_request() :: #{binary() => any()}.
-
-%% Example:
-%% adapter_version_evaluation_metric() :: #{
-%%   <<"AdapterVersion">> => evaluation_metric(),
-%%   <<"Baseline">> => evaluation_metric(),
-%%   <<"FeatureType">> => list(any())
-%% }
--type adapter_version_evaluation_metric() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type adapter() :: #{binary() => any()}.
 
 %% Example:
 %% adapter_overview() :: #{
@@ -110,366 +88,18 @@
 -type adapter_overview() :: #{binary() => any()}.
 
 %% Example:
-%% delete_adapter_version_request() :: #{
-%%   <<"AdapterId">> := string(),
-%%   <<"AdapterVersion">> := string()
-%% }
--type delete_adapter_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% identity_document_field() :: #{
-%%   <<"Type">> => analyze_id_detections(),
-%%   <<"ValueDetection">> => analyze_id_detections()
-%% }
--type identity_document_field() :: #{binary() => any()}.
-
-%% Example:
-%% get_document_text_detection_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_document_text_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_lending_analysis_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_lending_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% geometry() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()),
-%%   <<"RotationAngle">> => float()
-%% }
--type geometry() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% analyze_id_response() :: #{
-%%   <<"AnalyzeIDModelVersion">> => string(),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"IdentityDocuments">> => list(identity_document())
-%% }
--type analyze_id_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_document_analysis_request() :: #{
-%%   <<"AdaptersConfig">> => adapters_config(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DocumentLocation">> := document_location(),
-%%   <<"FeatureTypes">> := list(list(any())()),
-%%   <<"JobTag">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"OutputConfig">> => output_config(),
-%%   <<"QueriesConfig">> => queries_config()
-%% }
--type start_document_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% bad_document_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type bad_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% lending_document() :: #{
-%%   <<"LendingFields">> => list(lending_field()),
-%%   <<"SignatureDetections">> => list(signature_detection())
-%% }
--type lending_document() :: #{binary() => any()}.
-
-%% Example:
-%% start_expense_analysis_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_expense_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_document_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type unsupported_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% detected_signature() :: #{
-%%   <<"Page">> => integer()
-%% }
--type detected_signature() :: #{binary() => any()}.
-
-%% Example:
-%% analyze_id_request() :: #{
-%%   <<"DocumentPages">> := list(document())
-%% }
--type analyze_id_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_adapter_versions_request() :: #{
-%%   <<"AdapterId">> => string(),
-%%   <<"AfterCreationTime">> => non_neg_integer(),
-%%   <<"BeforeCreationTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_adapter_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% relationship() :: #{
-%%   <<"Ids">> => list(string()),
-%%   <<"Type">> => list(any())
-%% }
--type relationship() :: #{binary() => any()}.
-
-%% Example:
-%% get_expense_analysis_response() :: #{
-%%   <<"AnalyzeExpenseModelVersion">> => string(),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"ExpenseDocuments">> => list(expense_document()),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning())
-%% }
--type get_expense_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_document_text_request() :: #{
-%%   <<"Document">> := document()
-%% }
--type detect_document_text_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_lending_analysis_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DocumentLocation">> := document_location(),
-%%   <<"JobTag">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"OutputConfig">> => output_config()
-%% }
--type start_lending_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% line_item_fields() :: #{
-%%   <<"LineItemExpenseFields">> => list(expense_field())
-%% }
--type line_item_fields() :: #{binary() => any()}.
-
-%% Example:
-%% adapter() :: #{
-%%   <<"AdapterId">> => string(),
-%%   <<"Pages">> => list(string()),
-%%   <<"Version">> => string()
-%% }
--type adapter() :: #{binary() => any()}.
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-%% Example:
-%% analyze_expense_response() :: #{
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"ExpenseDocuments">> => list(expense_document())
-%% }
--type analyze_expense_response() :: #{binary() => any()}.
-
-%% Example:
-%% adapters_config() :: #{
-%%   <<"Adapters">> => list(adapter())
-%% }
--type adapters_config() :: #{binary() => any()}.
-
-%% Example:
-%% line_item_group() :: #{
-%%   <<"LineItemGroupIndex">> => integer(),
-%%   <<"LineItems">> => list(line_item_fields())
-%% }
--type line_item_group() :: #{binary() => any()}.
-
-%% Example:
-%% get_lending_analysis_summary_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_lending_analysis_summary_request() :: #{binary() => any()}.
-
-%% Example:
-%% analyze_document_response() :: #{
-%%   <<"AnalyzeDocumentModelVersion">> => string(),
-%%   <<"Blocks">> => list(block()),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"HumanLoopActivationOutput">> => human_loop_activation_output()
-%% }
--type analyze_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_document_text_detection_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DocumentLocation">> := document_location(),
-%%   <<"JobTag">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"OutputConfig">> => output_config()
-%% }
--type start_document_text_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_document_text_detection_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_document_text_detection_response() :: #{binary() => any()}.
-
-%% Example:
-%% expense_group_property() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Types">> => list(string())
-%% }
--type expense_group_property() :: #{binary() => any()}.
-
-%% Example:
-%% get_lending_analysis_summary_response() :: #{
-%%   <<"AnalyzeLendingModelVersion">> => string(),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Summary">> => lending_summary(),
-%%   <<"Warnings">> => list(warning())
-%% }
--type get_lending_analysis_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% expense_document() :: #{
-%%   <<"Blocks">> => list(block()),
-%%   <<"ExpenseIndex">> => integer(),
-%%   <<"LineItemGroups">> => list(line_item_group()),
-%%   <<"SummaryFields">> => list(expense_field())
-%% }
--type expense_document() :: #{binary() => any()}.
-
-%% Example:
-%% normalized_value() :: #{
-%%   <<"Value">> => string(),
-%%   <<"ValueType">> => list(any())
-%% }
--type normalized_value() :: #{binary() => any()}.
-
-%% Example:
-%% create_adapter_request() :: #{
-%%   <<"AdapterName">> := string(),
-%%   <<"AutoUpdate">> => list(any()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FeatureTypes">> := list(list(any())()),
-%%   <<"Tags">> => map()
-%% }
--type create_adapter_request() :: #{binary() => any()}.
-
-%% Example:
-%% split_document() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"Pages">> => list(integer())
-%% }
--type split_document() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_metric() :: #{
-%%   <<"F1Score">> => float(),
-%%   <<"Precision">> => float(),
-%%   <<"Recall">> => float()
-%% }
--type evaluation_metric() :: #{binary() => any()}.
-
-%% Example:
-%% get_lending_analysis_response() :: #{
-%%   <<"AnalyzeLendingModelVersion">> => string(),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(lending_result()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning())
-%% }
--type get_lending_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% notification_channel() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"SNSTopicArn">> => string()
-%% }
--type notification_channel() :: #{binary() => any()}.
-
-%% Example:
-%% point() :: #{
-%%   <<"X">> => float(),
-%%   <<"Y">> => float()
-%% }
--type point() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_activation_output() :: #{
-%%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
-%%   <<"HumanLoopActivationReasons">> => list(string()),
-%%   <<"HumanLoopArn">> => string()
-%% }
--type human_loop_activation_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_throughput_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_adapter_version_request() :: #{
-%%   <<"AdapterId">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DatasetConfig">> := adapter_version_dataset_config(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"OutputConfig">> := output_config(),
-%%   <<"Tags">> => map()
-%% }
--type create_adapter_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
 %% adapter_version_dataset_config() :: #{
 %%   <<"ManifestS3Object">> => s3_object()
 %% }
 -type adapter_version_dataset_config() :: #{binary() => any()}.
+
+%% Example:
+%% adapter_version_evaluation_metric() :: #{
+%%   <<"AdapterVersion">> => evaluation_metric(),
+%%   <<"Baseline">> => evaluation_metric(),
+%%   <<"FeatureType">> => list(any())
+%% }
+-type adapter_version_evaluation_metric() :: #{binary() => any()}.
 
 %% Example:
 %% adapter_version_overview() :: #{
@@ -483,152 +113,42 @@
 -type adapter_version_overview() :: #{binary() => any()}.
 
 %% Example:
-%% get_adapter_response() :: #{
-%%   <<"AdapterId">> => string(),
-%%   <<"AdapterName">> => string(),
-%%   <<"AutoUpdate">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FeatureTypes">> => list(list(any())()),
-%%   <<"Tags">> => map()
+%% adapters_config() :: #{
+%%   <<"Adapters">> => list(adapter())
 %% }
--type get_adapter_response() :: #{binary() => any()}.
+-type adapters_config() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%% analyze_document_request() :: #{
+%%   <<"AdaptersConfig">> => adapters_config(),
+%%   <<"Document">> := document(),
+%%   <<"FeatureTypes">> := list(list(any())()),
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"QueriesConfig">> => queries_config()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type analyze_document_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_document_text_detection_response() :: #{
+%% analyze_document_response() :: #{
+%%   <<"AnalyzeDocumentModelVersion">> => string(),
 %%   <<"Blocks">> => list(block()),
-%%   <<"DetectDocumentTextModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning())
+%%   <<"HumanLoopActivationOutput">> => human_loop_activation_output()
 %% }
--type get_document_text_detection_response() :: #{binary() => any()}.
+-type analyze_document_response() :: #{binary() => any()}.
 
 %% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%% analyze_expense_request() :: #{
+%%   <<"Document">> := document()
 %% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+-type analyze_expense_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_expense_analysis_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DocumentLocation">> := document_location(),
-%%   <<"JobTag">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"OutputConfig">> => output_config()
+%% analyze_expense_response() :: #{
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"ExpenseDocuments">> => list(expense_document())
 %% }
--type start_expense_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% lending_field() :: #{
-%%   <<"KeyDetection">> => lending_detection(),
-%%   <<"Type">> => string(),
-%%   <<"ValueDetections">> => list(lending_detection())
-%% }
--type lending_field() :: #{binary() => any()}.
-
-%% Example:
-%% undetected_signature() :: #{
-%%   <<"Page">> => integer()
-%% }
--type undetected_signature() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_adapter_request() :: #{
-%%   <<"AdapterId">> := string()
-%% }
--type get_adapter_request() :: #{binary() => any()}.
-
-%% Example:
-%% queries_config() :: #{
-%%   <<"Queries">> => list(query())
-%% }
--type queries_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_adapter_version_request() :: #{
-%%   <<"AdapterId">> := string(),
-%%   <<"AdapterVersion">> := string()
-%% }
--type get_adapter_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% signature_detection() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Geometry">> => geometry()
-%% }
--type signature_detection() :: #{binary() => any()}.
-
-%% Example:
-%% get_lending_analysis_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_lending_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_job_id_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_job_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_kms_key_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_kms_key_exception() :: #{binary() => any()}.
-
-%% Example:
-%% expense_detection() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Geometry">> => geometry(),
-%%   <<"Text">> => string()
-%% }
--type expense_detection() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_data_attributes() :: #{
-%%   <<"ContentClassifiers">> => list(list(any())())
-%% }
--type human_loop_data_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% bounding_box() :: #{
-%%   <<"Height">> => float(),
-%%   <<"Left">> => float(),
-%%   <<"Top">> => float(),
-%%   <<"Width">> => float()
-%% }
--type bounding_box() :: #{binary() => any()}.
-
-%% Example:
-%% get_expense_analysis_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_expense_analysis_request() :: #{binary() => any()}.
+-type analyze_expense_response() :: #{binary() => any()}.
 
 %% Example:
 %% analyze_id_detections() :: #{
@@ -639,254 +159,25 @@
 -type analyze_id_detections() :: #{binary() => any()}.
 
 %% Example:
-%% expense_currency() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Confidence">> => float()
+%% analyze_id_request() :: #{
+%%   <<"DocumentPages">> := list(document())
 %% }
--type expense_currency() :: #{binary() => any()}.
+-type analyze_id_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_adapter_versions_response() :: #{
-%%   <<"AdapterVersions">> => list(adapter_version_overview()),
-%%   <<"NextToken">> => string()
-%% }
--type list_adapter_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% expense_type() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Text">> => string()
-%% }
--type expense_type() :: #{binary() => any()}.
-
-%% Example:
-%% warning() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Pages">> => list(integer())
-%% }
--type warning() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_document_analysis_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_document_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% output_config() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Prefix">> => string()
-%% }
--type output_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_document_analysis_response() :: #{
-%%   <<"AnalyzeDocumentModelVersion">> => string(),
-%%   <<"Blocks">> => list(block()),
+%% analyze_id_response() :: #{
+%%   <<"AnalyzeIDModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning())
+%%   <<"IdentityDocuments">> => list(identity_document())
 %% }
--type get_document_analysis_response() :: #{binary() => any()}.
+-type analyze_id_response() :: #{binary() => any()}.
 
 %% Example:
-%% lending_detection() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Geometry">> => geometry(),
-%%   <<"SelectionStatus">> => list(any()),
-%%   <<"Text">> => string()
-%% }
--type lending_detection() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
+%% bad_document_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_adapter_version_response() :: #{
-%%   <<"AdapterId">> => string(),
-%%   <<"AdapterVersion">> => string()
-%% }
--type create_adapter_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% analyze_expense_request() :: #{
-%%   <<"Document">> := document()
-%% }
--type analyze_expense_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_metadata() :: #{
-%%   <<"Pages">> => integer()
-%% }
--type document_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% page_classification() :: #{
-%%   <<"PageNumber">> => list(prediction()),
-%%   <<"PageType">> => list(prediction())
-%% }
--type page_classification() :: #{binary() => any()}.
-
-%% Example:
-%% create_adapter_response() :: #{
-%%   <<"AdapterId">> => string()
-%% }
--type create_adapter_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_quota_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type human_loop_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% extraction() :: #{
-%%   <<"ExpenseDocument">> => expense_document(),
-%%   <<"IdentityDocument">> => identity_document(),
-%%   <<"LendingDocument">> => lending_document()
-%% }
--type extraction() :: #{binary() => any()}.
-
-%% Example:
-%% document_group() :: #{
-%%   <<"DetectedSignatures">> => list(detected_signature()),
-%%   <<"SplitDocuments">> => list(split_document()),
-%%   <<"Type">> => string(),
-%%   <<"UndetectedSignatures">> => list(undetected_signature())
-%% }
--type document_group() :: #{binary() => any()}.
-
-%% Example:
-%% expense_field() :: #{
-%%   <<"Currency">> => expense_currency(),
-%%   <<"GroupProperties">> => list(expense_group_property()),
-%%   <<"LabelDetection">> => expense_detection(),
-%%   <<"PageNumber">> => integer(),
-%%   <<"Type">> => expense_type(),
-%%   <<"ValueDetection">> => expense_detection()
-%% }
--type expense_field() :: #{binary() => any()}.
-
-%% Example:
-%% query() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"Pages">> => list(string()),
-%%   <<"Text">> => string()
-%% }
--type query() :: #{binary() => any()}.
-
-%% Example:
-%% get_adapter_version_response() :: #{
-%%   <<"AdapterId">> => string(),
-%%   <<"AdapterVersion">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatasetConfig">> => adapter_version_dataset_config(),
-%%   <<"EvaluationMetrics">> => list(adapter_version_evaluation_metric()),
-%%   <<"FeatureTypes">> => list(list(any())()),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"OutputConfig">> => output_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_adapter_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_document_analysis_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_document_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_document_text_response() :: #{
-%%   <<"Blocks">> => list(block()),
-%%   <<"DetectDocumentTextModelVersion">> => string(),
-%%   <<"DocumentMetadata">> => document_metadata()
-%% }
--type detect_document_text_response() :: #{binary() => any()}.
-
-%% Example:
-%% identity_document() :: #{
-%%   <<"Blocks">> => list(block()),
-%%   <<"DocumentIndex">> => integer(),
-%%   <<"IdentityDocumentFields">> => list(identity_document_field())
-%% }
--type identity_document() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_s3_object_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_s3_object_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_adapter_request() :: #{
-%%   <<"AdapterId">> := string(),
-%%   <<"AdapterName">> => string(),
-%%   <<"AutoUpdate">> => list(any()),
-%%   <<"Description">> => string()
-%% }
--type update_adapter_request() :: #{binary() => any()}.
+-type bad_document_exception() :: #{binary() => any()}.
 
 %% Example:
 %% block() :: #{
@@ -909,11 +200,128 @@
 -type block() :: #{binary() => any()}.
 
 %% Example:
-%% list_adapters_response() :: #{
-%%   <<"Adapters">> => list(adapter_overview()),
-%%   <<"NextToken">> => string()
+%% bounding_box() :: #{
+%%   <<"Height">> => float(),
+%%   <<"Left">> => float(),
+%%   <<"Top">> => float(),
+%%   <<"Width">> => float()
 %% }
--type list_adapters_response() :: #{binary() => any()}.
+-type bounding_box() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_adapter_request() :: #{
+%%   <<"AdapterName">> := string(),
+%%   <<"AutoUpdate">> => list(any()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureTypes">> := list(list(any())()),
+%%   <<"Tags">> => map()
+%% }
+-type create_adapter_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_adapter_response() :: #{
+%%   <<"AdapterId">> => string()
+%% }
+-type create_adapter_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_adapter_version_request() :: #{
+%%   <<"AdapterId">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DatasetConfig">> := adapter_version_dataset_config(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"OutputConfig">> := output_config(),
+%%   <<"Tags">> => map()
+%% }
+-type create_adapter_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_adapter_version_response() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"AdapterVersion">> => string()
+%% }
+-type create_adapter_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_adapter_request() :: #{
+%%   <<"AdapterId">> := string()
+%% }
+-type delete_adapter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_adapter_response() :: #{
+
+%% }
+-type delete_adapter_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_adapter_version_request() :: #{
+%%   <<"AdapterId">> := string(),
+%%   <<"AdapterVersion">> := string()
+%% }
+-type delete_adapter_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_adapter_version_response() :: #{
+
+%% }
+-type delete_adapter_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_document_text_request() :: #{
+%%   <<"Document">> := document()
+%% }
+-type detect_document_text_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_document_text_response() :: #{
+%%   <<"Blocks">> => list(block()),
+%%   <<"DetectDocumentTextModelVersion">> => string(),
+%%   <<"DocumentMetadata">> => document_metadata()
+%% }
+-type detect_document_text_response() :: #{binary() => any()}.
+
+%% Example:
+%% detected_signature() :: #{
+%%   <<"Page">> => integer()
+%% }
+-type detected_signature() :: #{binary() => any()}.
+
+%% Example:
+%% document() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"S3Object">> => s3_object()
+%% }
+-type document() :: #{binary() => any()}.
+
+%% Example:
+%% document_group() :: #{
+%%   <<"DetectedSignatures">> => list(detected_signature()),
+%%   <<"SplitDocuments">> => list(split_document()),
+%%   <<"Type">> => string(),
+%%   <<"UndetectedSignatures">> => list(undetected_signature())
+%% }
+-type document_group() :: #{binary() => any()}.
+
+%% Example:
+%% document_location() :: #{
+%%   <<"S3Object">> => s3_object()
+%% }
+-type document_location() :: #{binary() => any()}.
+
+%% Example:
+%% document_metadata() :: #{
+%%   <<"Pages">> => integer()
+%% }
+-type document_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% document_too_large_exception() :: #{
@@ -921,6 +329,225 @@
 %%   <<"Message">> => string()
 %% }
 -type document_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_metric() :: #{
+%%   <<"F1Score">> => float(),
+%%   <<"Precision">> => float(),
+%%   <<"Recall">> => float()
+%% }
+-type evaluation_metric() :: #{binary() => any()}.
+
+%% Example:
+%% expense_currency() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Confidence">> => float()
+%% }
+-type expense_currency() :: #{binary() => any()}.
+
+%% Example:
+%% expense_detection() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Geometry">> => geometry(),
+%%   <<"Text">> => string()
+%% }
+-type expense_detection() :: #{binary() => any()}.
+
+%% Example:
+%% expense_document() :: #{
+%%   <<"Blocks">> => list(block()),
+%%   <<"ExpenseIndex">> => integer(),
+%%   <<"LineItemGroups">> => list(line_item_group()),
+%%   <<"SummaryFields">> => list(expense_field())
+%% }
+-type expense_document() :: #{binary() => any()}.
+
+%% Example:
+%% expense_field() :: #{
+%%   <<"Currency">> => expense_currency(),
+%%   <<"GroupProperties">> => list(expense_group_property()),
+%%   <<"LabelDetection">> => expense_detection(),
+%%   <<"PageNumber">> => integer(),
+%%   <<"Type">> => expense_type(),
+%%   <<"ValueDetection">> => expense_detection()
+%% }
+-type expense_field() :: #{binary() => any()}.
+
+%% Example:
+%% expense_group_property() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Types">> => list(string())
+%% }
+-type expense_group_property() :: #{binary() => any()}.
+
+%% Example:
+%% expense_type() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Text">> => string()
+%% }
+-type expense_type() :: #{binary() => any()}.
+
+%% Example:
+%% extraction() :: #{
+%%   <<"ExpenseDocument">> => expense_document(),
+%%   <<"IdentityDocument">> => identity_document(),
+%%   <<"LendingDocument">> => lending_document()
+%% }
+-type extraction() :: #{binary() => any()}.
+
+%% Example:
+%% geometry() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Polygon">> => list(point()),
+%%   <<"RotationAngle">> => float()
+%% }
+-type geometry() :: #{binary() => any()}.
+
+%% Example:
+%% get_adapter_request() :: #{
+%%   <<"AdapterId">> := string()
+%% }
+-type get_adapter_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_adapter_response() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"AdapterName">> => string(),
+%%   <<"AutoUpdate">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureTypes">> => list(list(any())()),
+%%   <<"Tags">> => map()
+%% }
+-type get_adapter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_adapter_version_request() :: #{
+%%   <<"AdapterId">> := string(),
+%%   <<"AdapterVersion">> := string()
+%% }
+-type get_adapter_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_adapter_version_response() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"AdapterVersion">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetConfig">> => adapter_version_dataset_config(),
+%%   <<"EvaluationMetrics">> => list(adapter_version_evaluation_metric()),
+%%   <<"FeatureTypes">> => list(list(any())()),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"OutputConfig">> => output_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_adapter_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_analysis_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_document_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_analysis_response() :: #{
+%%   <<"AnalyzeDocumentModelVersion">> => string(),
+%%   <<"Blocks">> => list(block()),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Warnings">> => list(warning())
+%% }
+-type get_document_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_text_detection_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_document_text_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_text_detection_response() :: #{
+%%   <<"Blocks">> => list(block()),
+%%   <<"DetectDocumentTextModelVersion">> => string(),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Warnings">> => list(warning())
+%% }
+-type get_document_text_detection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_expense_analysis_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_expense_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_expense_analysis_response() :: #{
+%%   <<"AnalyzeExpenseModelVersion">> => string(),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"ExpenseDocuments">> => list(expense_document()),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Warnings">> => list(warning())
+%% }
+-type get_expense_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lending_analysis_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_lending_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_lending_analysis_response() :: #{
+%%   <<"AnalyzeLendingModelVersion">> => string(),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(lending_result()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Warnings">> => list(warning())
+%% }
+-type get_lending_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lending_analysis_summary_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_lending_analysis_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_lending_analysis_summary_response() :: #{
+%%   <<"AnalyzeLendingModelVersion">> => string(),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Summary">> => lending_summary(),
+%%   <<"Warnings">> => list(warning())
+%% }
+-type get_lending_analysis_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_activation_output() :: #{
+%%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
+%%   <<"HumanLoopActivationReasons">> => list(string()),
+%%   <<"HumanLoopArn">> => string()
+%% }
+-type human_loop_activation_output() :: #{binary() => any()}.
 
 %% Example:
 %% human_loop_config() :: #{
@@ -931,10 +558,109 @@
 -type human_loop_config() :: #{binary() => any()}.
 
 %% Example:
-%% delete_adapter_response() :: #{
-
+%% human_loop_data_attributes() :: #{
+%%   <<"ContentClassifiers">> => list(list(any())())
 %% }
--type delete_adapter_response() :: #{binary() => any()}.
+-type human_loop_data_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_quota_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type human_loop_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% identity_document() :: #{
+%%   <<"Blocks">> => list(block()),
+%%   <<"DocumentIndex">> => integer(),
+%%   <<"IdentityDocumentFields">> => list(identity_document_field())
+%% }
+-type identity_document() :: #{binary() => any()}.
+
+%% Example:
+%% identity_document_field() :: #{
+%%   <<"Type">> => analyze_id_detections(),
+%%   <<"ValueDetection">> => analyze_id_detections()
+%% }
+-type identity_document_field() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_job_id_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_job_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_kms_key_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_kms_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_object_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_s3_object_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lending_detection() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Geometry">> => geometry(),
+%%   <<"SelectionStatus">> => list(any()),
+%%   <<"Text">> => string()
+%% }
+-type lending_detection() :: #{binary() => any()}.
+
+%% Example:
+%% lending_document() :: #{
+%%   <<"LendingFields">> => list(lending_field()),
+%%   <<"SignatureDetections">> => list(signature_detection())
+%% }
+-type lending_document() :: #{binary() => any()}.
+
+%% Example:
+%% lending_field() :: #{
+%%   <<"KeyDetection">> => lending_detection(),
+%%   <<"Type">> => string(),
+%%   <<"ValueDetections">> => list(lending_detection())
+%% }
+-type lending_field() :: #{binary() => any()}.
+
+%% Example:
+%% lending_result() :: #{
+%%   <<"Extractions">> => list(extraction()),
+%%   <<"Page">> => integer(),
+%%   <<"PageClassification">> => page_classification()
+%% }
+-type lending_result() :: #{binary() => any()}.
 
 %% Example:
 %% lending_summary() :: #{
@@ -942,6 +668,303 @@
 %%   <<"UndetectedDocumentTypes">> => list(string())
 %% }
 -type lending_summary() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% line_item_fields() :: #{
+%%   <<"LineItemExpenseFields">> => list(expense_field())
+%% }
+-type line_item_fields() :: #{binary() => any()}.
+
+%% Example:
+%% line_item_group() :: #{
+%%   <<"LineItemGroupIndex">> => integer(),
+%%   <<"LineItems">> => list(line_item_fields())
+%% }
+-type line_item_group() :: #{binary() => any()}.
+
+%% Example:
+%% list_adapter_versions_request() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"AfterCreationTime">> => non_neg_integer(),
+%%   <<"BeforeCreationTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_adapter_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_adapter_versions_response() :: #{
+%%   <<"AdapterVersions">> => list(adapter_version_overview()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_adapter_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_adapters_request() :: #{
+%%   <<"AfterCreationTime">> => non_neg_integer(),
+%%   <<"BeforeCreationTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_adapters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_adapters_response() :: #{
+%%   <<"Adapters">> => list(adapter_overview()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_adapters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% normalized_value() :: #{
+%%   <<"Value">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type normalized_value() :: #{binary() => any()}.
+
+%% Example:
+%% notification_channel() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SNSTopicArn">> => string()
+%% }
+-type notification_channel() :: #{binary() => any()}.
+
+%% Example:
+%% output_config() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string()
+%% }
+-type output_config() :: #{binary() => any()}.
+
+%% Example:
+%% page_classification() :: #{
+%%   <<"PageNumber">> => list(prediction()),
+%%   <<"PageType">> => list(prediction())
+%% }
+-type page_classification() :: #{binary() => any()}.
+
+%% Example:
+%% point() :: #{
+%%   <<"X">> => float(),
+%%   <<"Y">> => float()
+%% }
+-type point() :: #{binary() => any()}.
+
+%% Example:
+%% prediction() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type prediction() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% queries_config() :: #{
+%%   <<"Queries">> => list(query())
+%% }
+-type queries_config() :: #{binary() => any()}.
+
+%% Example:
+%% query() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"Pages">> => list(string()),
+%%   <<"Text">> => string()
+%% }
+-type query() :: #{binary() => any()}.
+
+%% Example:
+%% relationship() :: #{
+%%   <<"Ids">> => list(string()),
+%%   <<"Type">> => list(any())
+%% }
+-type relationship() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% signature_detection() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Geometry">> => geometry()
+%% }
+-type signature_detection() :: #{binary() => any()}.
+
+%% Example:
+%% split_document() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Pages">> => list(integer())
+%% }
+-type split_document() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_analysis_request() :: #{
+%%   <<"AdaptersConfig">> => adapters_config(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DocumentLocation">> := document_location(),
+%%   <<"FeatureTypes">> := list(list(any())()),
+%%   <<"JobTag">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"OutputConfig">> => output_config(),
+%%   <<"QueriesConfig">> => queries_config()
+%% }
+-type start_document_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_analysis_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_document_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_text_detection_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DocumentLocation">> := document_location(),
+%%   <<"JobTag">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"OutputConfig">> => output_config()
+%% }
+-type start_document_text_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_text_detection_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_document_text_detection_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_expense_analysis_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DocumentLocation">> := document_location(),
+%%   <<"JobTag">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"OutputConfig">> => output_config()
+%% }
+-type start_expense_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_expense_analysis_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_expense_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_lending_analysis_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DocumentLocation">> := document_location(),
+%%   <<"JobTag">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"OutputConfig">> => output_config()
+%% }
+-type start_lending_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_lending_analysis_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_lending_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% undetected_signature() :: #{
+%%   <<"Page">> => integer()
+%% }
+-type undetected_signature() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_document_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unsupported_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_adapter_request() :: #{
+%%   <<"AdapterId">> := string(),
+%%   <<"AdapterName">> => string(),
+%%   <<"AutoUpdate">> => list(any()),
+%%   <<"Description">> => string()
+%% }
+-type update_adapter_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_adapter_response() :: #{
@@ -955,312 +978,289 @@
 -type update_adapter_response() :: #{binary() => any()}.
 
 %% Example:
-%% prediction() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => string()
+%% validation_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
 %% }
--type prediction() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% document() :: #{
-%%   <<"Bytes">> => binary(),
-%%   <<"S3Object">> => s3_object()
+%% warning() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Pages">> => list(integer())
 %% }
--type document() :: #{binary() => any()}.
-
-%% Example:
-%% list_adapters_request() :: #{
-%%   <<"AfterCreationTime">> => non_neg_integer(),
-%%   <<"BeforeCreationTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_adapters_request() :: #{binary() => any()}.
-
-%% Example:
-%% lending_result() :: #{
-%%   <<"Extractions">> => list(extraction()),
-%%   <<"Page">> => integer(),
-%%   <<"PageClassification">> => page_classification()
-%% }
--type lending_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_adapter_version_response() :: #{
-
-%% }
--type delete_adapter_version_response() :: #{binary() => any()}.
+-type warning() :: #{binary() => any()}.
 
 -type analyze_document_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    human_loop_quota_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    human_loop_quota_exceeded_exception() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type analyze_expense_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type analyze_id_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type create_adapter_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    service_quota_exceeded_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type create_adapter_version_errors() ::
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    invalid_kms_key_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_kms_key_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type delete_adapter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type delete_adapter_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type detect_document_text_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type get_adapter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_adapter_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_document_analysis_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     invalid_kms_key_exception() | 
     invalid_job_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_document_text_detection_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     invalid_kms_key_exception() | 
     invalid_job_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_expense_analysis_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     invalid_kms_key_exception() | 
     invalid_job_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_lending_analysis_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     invalid_kms_key_exception() | 
     invalid_job_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_lending_analysis_summary_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     invalid_kms_key_exception() | 
     invalid_job_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_adapter_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_adapters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type start_document_analysis_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    invalid_kms_key_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_kms_key_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type start_document_text_detection_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    invalid_kms_key_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_kms_key_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type start_expense_analysis_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    invalid_kms_key_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_kms_key_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type start_lending_analysis_errors() ::
-    document_too_large_exception() | 
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    invalid_kms_key_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception() | 
     unsupported_document_exception() | 
-    bad_document_exception().
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_kms_key_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    document_too_large_exception() | 
+    bad_document_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type update_adapter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

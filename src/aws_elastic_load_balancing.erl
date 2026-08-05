@@ -103,17 +103,79 @@
 
 
 %% Example:
-%% policy_type_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% access_log() :: #{
+%%   <<"EmitInterval">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3BucketPrefix">> => string()
 %% }
--type policy_type_not_found_exception() :: #{binary() => any()}.
+-type access_log() :: #{binary() => any()}.
 
 %% Example:
-%% source_security_group() :: #{
-%%   <<"GroupName">> => string(),
-%%   <<"OwnerAlias">> => string()
+%% access_point_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type source_security_group() :: #{binary() => any()}.
+-type access_point_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_availability_zones_input() :: #{
+%%   <<"AvailabilityZones">> := list(string()),
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type add_availability_zones_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_availability_zones_output() :: #{
+%%   <<"AvailabilityZones">> => list(string())
+%% }
+-type add_availability_zones_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"LoadBalancerNames">> := list(string()),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% additional_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type additional_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% app_cookie_stickiness_policy() :: #{
+%%   <<"CookieName">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type app_cookie_stickiness_policy() :: #{binary() => any()}.
+
+%% Example:
+%% apply_security_groups_to_load_balancer_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"SecurityGroups">> := list(string())
+%% }
+-type apply_security_groups_to_load_balancer_input() :: #{binary() => any()}.
+
+%% Example:
+%% apply_security_groups_to_load_balancer_output() :: #{
+%%   <<"SecurityGroups">> => list(string())
+%% }
+-type apply_security_groups_to_load_balancer_output() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_to_subnets_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"Subnets">> := list(string())
+%% }
+-type attach_load_balancer_to_subnets_input() :: #{binary() => any()}.
 
 %% Example:
 %% attach_load_balancer_to_subnets_output() :: #{
@@ -129,37 +191,227 @@
 -type backend_server_description() :: #{binary() => any()}.
 
 %% Example:
-%% policy_description() :: #{
-%%   <<"PolicyAttributeDescriptions">> => list(policy_attribute_description()),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyTypeName">> => string()
+%% certificate_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type policy_description() :: #{binary() => any()}.
+-type certificate_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancer_policy_types_output() :: #{
-%%   <<"PolicyTypeDescriptions">> => list(policy_type_description())
+%% configure_health_check_input() :: #{
+%%   <<"HealthCheck">> := health_check(),
+%%   <<"LoadBalancerName">> := string()
 %% }
--type describe_load_balancer_policy_types_output() :: #{binary() => any()}.
+-type configure_health_check_input() :: #{binary() => any()}.
 
 %% Example:
-%% policy_attribute() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValue">> => string()
+%% configure_health_check_output() :: #{
+%%   <<"HealthCheck">> => health_check()
 %% }
--type policy_attribute() :: #{binary() => any()}.
+-type configure_health_check_output() :: #{binary() => any()}.
 
 %% Example:
-%% apply_security_groups_to_load_balancer_output() :: #{
-%%   <<"SecurityGroups">> => list(string())
+%% connection_draining() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Timeout">> => integer()
 %% }
--type apply_security_groups_to_load_balancer_output() :: #{binary() => any()}.
+-type connection_draining() :: #{binary() => any()}.
 
 %% Example:
 %% connection_settings() :: #{
 %%   <<"IdleTimeout">> => integer()
 %% }
 -type connection_settings() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_point_input() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Listeners">> := list(listener()),
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"Scheme">> => string(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_access_point_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_point_output() :: #{
+%%   <<"DNSName">> => string()
+%% }
+-type create_access_point_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_cookie_stickiness_policy_input() :: #{
+%%   <<"CookieName">> := string(),
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type create_app_cookie_stickiness_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_cookie_stickiness_policy_output() :: #{
+
+%% }
+-type create_app_cookie_stickiness_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_lb_cookie_stickiness_policy_input() :: #{
+%%   <<"CookieExpirationPeriod">> => float(),
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type create_lb_cookie_stickiness_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_lb_cookie_stickiness_policy_output() :: #{
+
+%% }
+-type create_lb_cookie_stickiness_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_listener_input() :: #{
+%%   <<"Listeners">> := list(listener()),
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type create_load_balancer_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_listener_output() :: #{
+
+%% }
+-type create_load_balancer_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_policy_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"PolicyAttributes">> => list(policy_attribute()),
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyTypeName">> := string()
+%% }
+-type create_load_balancer_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_policy_output() :: #{
+
+%% }
+-type create_load_balancer_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% cross_zone_load_balancing() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type cross_zone_load_balancing() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_point_input() :: #{
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type delete_access_point_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_point_output() :: #{
+
+%% }
+-type delete_access_point_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_listener_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"LoadBalancerPorts">> := list(integer())
+%% }
+-type delete_load_balancer_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_listener_output() :: #{
+
+%% }
+-type delete_load_balancer_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_policy_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_load_balancer_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_policy_output() :: #{
+
+%% }
+-type delete_load_balancer_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_throttle_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dependency_throttle_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_end_points_input() :: #{
+%%   <<"Instances">> := list(instance()),
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type deregister_end_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_end_points_output() :: #{
+%%   <<"Instances">> => list(instance())
+%% }
+-type deregister_end_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_points_input() :: #{
+%%   <<"LoadBalancerNames">> => list(string()),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_access_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_points_output() :: #{
+%%   <<"LoadBalancerDescriptions">> => list(load_balancer_description()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_access_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_account_limits_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_output() :: #{
+%%   <<"Limits">> => list(limit()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_account_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_end_point_state_input() :: #{
+%%   <<"Instances">> => list(instance()),
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type describe_end_point_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_end_point_state_output() :: #{
+%%   <<"InstanceStates">> => list(instance_state())
+%% }
+-type describe_end_point_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_input() :: #{
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type describe_load_balancer_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_output() :: #{
+%%   <<"LoadBalancerAttributes">> => load_balancer_attributes()
+%% }
+-type describe_load_balancer_attributes_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_load_balancer_policies_input() :: #{
@@ -169,10 +421,140 @@
 -type describe_load_balancer_policies_input() :: #{binary() => any()}.
 
 %% Example:
-%% dependency_throttle_exception() :: #{
+%% describe_load_balancer_policies_output() :: #{
+%%   <<"PolicyDescriptions">> => list(policy_description())
+%% }
+-type describe_load_balancer_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_policy_types_input() :: #{
+%%   <<"PolicyTypeNames">> => list(string())
+%% }
+-type describe_load_balancer_policy_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_policy_types_output() :: #{
+%%   <<"PolicyTypeDescriptions">> => list(policy_type_description())
+%% }
+-type describe_load_balancer_policy_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_input() :: #{
+%%   <<"LoadBalancerNames">> := list(string())
+%% }
+-type describe_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_output() :: #{
+%%   <<"TagDescriptions">> => list(tag_description())
+%% }
+-type describe_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancer_from_subnets_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"Subnets">> := list(string())
+%% }
+-type detach_load_balancer_from_subnets_input() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancer_from_subnets_output() :: #{
+%%   <<"Subnets">> => list(string())
+%% }
+-type detach_load_balancer_from_subnets_output() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_access_point_name_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type dependency_throttle_exception() :: #{binary() => any()}.
+-type duplicate_access_point_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_listener_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_listener_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_policy_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_policy_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_tag_keys_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% health_check() :: #{
+%%   <<"HealthyThreshold">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"Target">> => string(),
+%%   <<"Timeout">> => integer(),
+%%   <<"UnhealthyThreshold">> => integer()
+%% }
+-type health_check() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"InstanceId">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% instance_state() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"ReasonCode">> => string(),
+%%   <<"State">> => string()
+%% }
+-type instance_state() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_configuration_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_configuration_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_end_point_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_end_point_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_scheme_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_scheme_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security_group_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_security_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_subnet_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lb_cookie_stickiness_policy() :: #{
+%%   <<"CookieExpirationPeriod">> => float(),
+%%   <<"PolicyName">> => string()
+%% }
+-type lb_cookie_stickiness_policy() :: #{binary() => any()}.
+
+%% Example:
+%% limit() :: #{
+%%   <<"Max">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type limit() :: #{binary() => any()}.
 
 %% Example:
 %% listener() :: #{
@@ -185,44 +567,33 @@
 -type listener() :: #{binary() => any()}.
 
 %% Example:
-%% delete_access_point_output() :: #{
-
+%% listener_description() :: #{
+%%   <<"Listener">> => listener(),
+%%   <<"PolicyNames">> => list(string())
 %% }
--type delete_access_point_output() :: #{binary() => any()}.
+-type listener_description() :: #{binary() => any()}.
 
 %% Example:
-%% describe_access_points_output() :: #{
-%%   <<"LoadBalancerDescriptions">> => list(load_balancer_description()),
-%%   <<"NextMarker">> => string()
-%% }
--type describe_access_points_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_load_balancer_listener_ssl_certificate_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"LoadBalancerPort">> := integer(),
-%%   <<"SSLCertificateId">> := string()
-%% }
--type set_load_balancer_listener_ssl_certificate_input() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_access_point_name_exception() :: #{
+%% listener_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_access_point_name_exception() :: #{binary() => any()}.
+-type listener_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% attach_load_balancer_to_subnets_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"Subnets">> := list(string())
+%% load_balancer_attribute_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type attach_load_balancer_to_subnets_input() :: #{binary() => any()}.
+-type load_balancer_attribute_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_output() :: #{
-
+%% load_balancer_attributes() :: #{
+%%   <<"AccessLog">> => access_log(),
+%%   <<"AdditionalAttributes">> => list(additional_attribute()),
+%%   <<"ConnectionDraining">> => connection_draining(),
+%%   <<"ConnectionSettings">> => connection_settings(),
+%%   <<"CrossZoneLoadBalancing">> => cross_zone_load_balancing()
 %% }
--type add_tags_output() :: #{binary() => any()}.
+-type load_balancer_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% load_balancer_description() :: #{
@@ -246,250 +617,18 @@
 -type load_balancer_description() :: #{binary() => any()}.
 
 %% Example:
-%% app_cookie_stickiness_policy() :: #{
-%%   <<"CookieName">> => string(),
-%%   <<"PolicyName">> => string()
-%% }
--type app_cookie_stickiness_policy() :: #{binary() => any()}.
-
-%% Example:
-%% add_availability_zones_input() :: #{
-%%   <<"AvailabilityZones">> := list(string()),
+%% modify_load_balancer_attributes_input() :: #{
+%%   <<"LoadBalancerAttributes">> := load_balancer_attributes(),
 %%   <<"LoadBalancerName">> := string()
 %% }
--type add_availability_zones_input() :: #{binary() => any()}.
+-type modify_load_balancer_attributes_input() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string()),
-%%   <<"Tags">> := list(tag())
+%% modify_load_balancer_attributes_output() :: #{
+%%   <<"LoadBalancerAttributes">> => load_balancer_attributes(),
+%%   <<"LoadBalancerName">> => string()
 %% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% limit() :: #{
-%%   <<"Max">> => string(),
-%%   <<"Name">> => string()
-%% }
--type limit() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_configuration_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_configuration_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type subnet_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_lb_cookie_stickiness_policy_input() :: #{
-%%   <<"CookieExpirationPeriod">> => float(),
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type create_lb_cookie_stickiness_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_policy_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type delete_load_balancer_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_end_point_state_input() :: #{
-%%   <<"Instances">> => list(instance()),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type describe_end_point_state_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_output() :: #{
-
-%% }
--type remove_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_lb_cookie_stickiness_policy_output() :: #{
-
-%% }
--type create_lb_cookie_stickiness_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% policy_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_attribute_description() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValue">> => string()
-%% }
--type policy_attribute_description() :: #{binary() => any()}.
-
-%% Example:
-%% tag_key_only() :: #{
-%%   <<"Key">> => string()
-%% }
--type tag_key_only() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_listener_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_listener_exception() :: #{binary() => any()}.
-
-%% Example:
-%% lb_cookie_stickiness_policy() :: #{
-%%   <<"CookieExpirationPeriod">> => float(),
-%%   <<"PolicyName">> => string()
-%% }
--type lb_cookie_stickiness_policy() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_attributes() :: #{
-%%   <<"AccessLog">> => access_log(),
-%%   <<"AdditionalAttributes">> => list(additional_attribute()),
-%%   <<"ConnectionDraining">> => connection_draining(),
-%%   <<"ConnectionSettings">> => connection_settings(),
-%%   <<"CrossZoneLoadBalancing">> => cross_zone_load_balancing()
-%% }
--type load_balancer_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_end_point_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_end_point_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string())
-%% }
--type describe_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% detach_load_balancer_from_subnets_output() :: #{
-%%   <<"Subnets">> => list(string())
-%% }
--type detach_load_balancer_from_subnets_output() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type certificate_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_point_input() :: #{
-%%   <<"LoadBalancerName">> := string()
-%% }
--type delete_access_point_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_description() :: #{
-%%   <<"LoadBalancerName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type tag_description() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_end_points_output() :: #{
-%%   <<"Instances">> => list(instance())
-%% }
--type deregister_end_points_output() :: #{binary() => any()}.
-
-%% Example:
-%% connection_draining() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Timeout">> => integer()
-%% }
--type connection_draining() :: #{binary() => any()}.
-
-%% Example:
-%% remove_availability_zones_input() :: #{
-%%   <<"AvailabilityZones">> := list(string()),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type remove_availability_zones_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_availability_zones_output() :: #{
-%%   <<"AvailabilityZones">> => list(string())
-%% }
--type add_availability_zones_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_output() :: #{
-%%   <<"TagDescriptions">> => list(tag_description())
-%% }
--type describe_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_load_balancer_listener_ssl_certificate_output() :: #{
-
-%% }
--type set_load_balancer_listener_ssl_certificate_output() :: #{binary() => any()}.
-
-%% Example:
-%% access_point_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_point_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_listener_output() :: #{
-
-%% }
--type create_load_balancer_listener_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_point_input() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Listeners">> := list(listener()),
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"Scheme">> => string(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_access_point_input() :: #{binary() => any()}.
-
-%% Example:
-%% apply_security_groups_to_load_balancer_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"SecurityGroups">> := list(string())
-%% }
--type apply_security_groups_to_load_balancer_input() :: #{binary() => any()}.
-
-%% Example:
-%% configure_health_check_input() :: #{
-%%   <<"HealthCheck">> := health_check(),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type configure_health_check_input() :: #{binary() => any()}.
-
-%% Example:
-%% health_check() :: #{
-%%   <<"HealthyThreshold">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"Target">> => string(),
-%%   <<"Timeout">> => integer(),
-%%   <<"UnhealthyThreshold">> => integer()
-%% }
--type health_check() :: #{binary() => any()}.
+-type modify_load_balancer_attributes_output() :: #{binary() => any()}.
 
 %% Example:
 %% operation_not_permitted_exception() :: #{
@@ -498,28 +637,26 @@
 -type operation_not_permitted_exception() :: #{binary() => any()}.
 
 %% Example:
-%% instance_state() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"ReasonCode">> => string(),
-%%   <<"State">> => string()
+%% policies() :: #{
+%%   <<"AppCookieStickinessPolicies">> => list(app_cookie_stickiness_policy()),
+%%   <<"LBCookieStickinessPolicies">> => list(lb_cookie_stickiness_policy()),
+%%   <<"OtherPolicies">> => list(string())
 %% }
--type instance_state() :: #{binary() => any()}.
+-type policies() :: #{binary() => any()}.
 
 %% Example:
-%% describe_access_points_input() :: #{
-%%   <<"LoadBalancerNames">> => list(string()),
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer()
+%% policy_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string()
 %% }
--type describe_access_points_input() :: #{binary() => any()}.
+-type policy_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% describe_account_limits_output() :: #{
-%%   <<"Limits">> => list(limit()),
-%%   <<"NextMarker">> => string()
+%% policy_attribute_description() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string()
 %% }
--type describe_account_limits_output() :: #{binary() => any()}.
+-type policy_attribute_description() :: #{binary() => any()}.
 
 %% Example:
 %% policy_attribute_type_description() :: #{
@@ -532,221 +669,18 @@
 -type policy_attribute_type_description() :: #{binary() => any()}.
 
 %% Example:
-%% policies() :: #{
-%%   <<"AppCookieStickinessPolicies">> => list(app_cookie_stickiness_policy()),
-%%   <<"LBCookieStickinessPolicies">> => list(lb_cookie_stickiness_policy()),
-%%   <<"OtherPolicies">> => list(string())
+%% policy_description() :: #{
+%%   <<"PolicyAttributeDescriptions">> => list(policy_attribute_description()),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyTypeName">> => string()
 %% }
--type policies() :: #{binary() => any()}.
+-type policy_description() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancer_policy_types_input() :: #{
-%%   <<"PolicyTypeNames">> => list(string())
-%% }
--type describe_load_balancer_policy_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_listener_input() :: #{
-%%   <<"Listeners">> := list(listener()),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type create_load_balancer_listener_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancer_attributes_output() :: #{
-%%   <<"LoadBalancerAttributes">> => load_balancer_attributes()
-%% }
--type describe_load_balancer_attributes_output() :: #{binary() => any()}.
-
-%% Example:
-%% modify_load_balancer_attributes_output() :: #{
-%%   <<"LoadBalancerAttributes">> => load_balancer_attributes(),
-%%   <<"LoadBalancerName">> => string()
-%% }
--type modify_load_balancer_attributes_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_security_group_exception() :: #{
+%% policy_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_security_group_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_cookie_stickiness_policy_output() :: #{
-
-%% }
--type create_app_cookie_stickiness_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_policy_name_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_policy_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_access_points_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_access_points_exception() :: #{binary() => any()}.
-
-%% Example:
-%% instance() :: #{
-%%   <<"InstanceId">> => string()
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% detach_load_balancer_from_subnets_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"Subnets">> := list(string())
-%% }
--type detach_load_balancer_from_subnets_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_cookie_stickiness_policy_input() :: #{
-%%   <<"CookieName">> := string(),
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type create_app_cookie_stickiness_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_listener_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"LoadBalancerPorts">> := list(integer())
-%% }
--type delete_load_balancer_listener_input() :: #{binary() => any()}.
-
-%% Example:
-%% modify_load_balancer_attributes_input() :: #{
-%%   <<"LoadBalancerAttributes">> := load_balancer_attributes(),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type modify_load_balancer_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% register_end_points_input() :: #{
-%%   <<"Instances">> := list(instance()),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type register_end_points_input() :: #{binary() => any()}.
-
-%% Example:
-%% additional_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type additional_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% configure_health_check_output() :: #{
-%%   <<"HealthCheck">> => health_check()
-%% }
--type configure_health_check_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_load_balancer_policies_of_listener_output() :: #{
-
-%% }
--type set_load_balancer_policies_of_listener_output() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_tag_keys_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_tag_keys_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancer_attributes_input() :: #{
-%%   <<"LoadBalancerName">> := string()
-%% }
--type describe_load_balancer_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_availability_zones_output() :: #{
-%%   <<"AvailabilityZones">> => list(string())
-%% }
--type remove_availability_zones_output() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_end_points_input() :: #{
-%%   <<"Instances">> := list(instance()),
-%%   <<"LoadBalancerName">> := string()
-%% }
--type deregister_end_points_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_point_output() :: #{
-%%   <<"DNSName">> => string()
-%% }
--type create_access_point_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_policy_output() :: #{
-
-%% }
--type delete_load_balancer_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_limits_input() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type describe_account_limits_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_policy_output() :: #{
-
-%% }
--type create_load_balancer_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_subnet_exception() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_policies_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_policies_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string()),
-%%   <<"Tags">> := list(tag_key_only())
-%% }
--type remove_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% access_log() :: #{
-%%   <<"EmitInterval">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3BucketPrefix">> => string()
-%% }
--type access_log() :: #{binary() => any()}.
-
-%% Example:
-%% listener_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type listener_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_load_balancer_policies_for_backend_server_output() :: #{
-
-%% }
--type set_load_balancer_policies_for_backend_server_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_load_balancer_policies_for_backend_server_input() :: #{
-%%   <<"InstancePort">> := integer(),
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyNames">> := list(string())
-%% }
--type set_load_balancer_policies_for_backend_server_input() :: #{binary() => any()}.
+-type policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% policy_type_description() :: #{
@@ -757,55 +691,136 @@
 -type policy_type_description() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancer_policies_output() :: #{
-%%   <<"PolicyDescriptions">> => list(policy_description())
-%% }
--type describe_load_balancer_policies_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_end_point_state_output() :: #{
-%%   <<"InstanceStates">> => list(instance_state())
-%% }
--type describe_end_point_state_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_scheme_exception() :: #{
+%% policy_type_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_scheme_exception() :: #{binary() => any()}.
+-type policy_type_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_load_balancer_policy_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyAttributes">> => list(policy_attribute()),
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyTypeName">> := string()
+%% register_end_points_input() :: #{
+%%   <<"Instances">> := list(instance()),
+%%   <<"LoadBalancerName">> := string()
 %% }
--type create_load_balancer_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_attribute_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type load_balancer_attribute_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_listener_output() :: #{
-
-%% }
--type delete_load_balancer_listener_output() :: #{binary() => any()}.
-
-%% Example:
-%% cross_zone_load_balancing() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type cross_zone_load_balancing() :: #{binary() => any()}.
+-type register_end_points_input() :: #{binary() => any()}.
 
 %% Example:
 %% register_end_points_output() :: #{
 %%   <<"Instances">> => list(instance())
 %% }
 -type register_end_points_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_availability_zones_input() :: #{
+%%   <<"AvailabilityZones">> := list(string()),
+%%   <<"LoadBalancerName">> := string()
+%% }
+-type remove_availability_zones_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_availability_zones_output() :: #{
+%%   <<"AvailabilityZones">> => list(string())
+%% }
+-type remove_availability_zones_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_input() :: #{
+%%   <<"LoadBalancerNames">> := list(string()),
+%%   <<"Tags">> := list(tag_key_only())
+%% }
+-type remove_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_listener_ssl_certificate_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"LoadBalancerPort">> := integer(),
+%%   <<"SSLCertificateId">> := string()
+%% }
+-type set_load_balancer_listener_ssl_certificate_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_listener_ssl_certificate_output() :: #{
+
+%% }
+-type set_load_balancer_listener_ssl_certificate_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_policies_for_backend_server_input() :: #{
+%%   <<"InstancePort">> := integer(),
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"PolicyNames">> := list(string())
+%% }
+-type set_load_balancer_policies_for_backend_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_policies_for_backend_server_output() :: #{
+
+%% }
+-type set_load_balancer_policies_for_backend_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_policies_of_listener_input() :: #{
+%%   <<"LoadBalancerName">> := string(),
+%%   <<"LoadBalancerPort">> := integer(),
+%%   <<"PolicyNames">> := list(string())
+%% }
+-type set_load_balancer_policies_of_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_balancer_policies_of_listener_output() :: #{
+
+%% }
+-type set_load_balancer_policies_of_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% source_security_group() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"OwnerAlias">> => string()
+%% }
+-type source_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type subnet_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_description() :: #{
+%%   <<"LoadBalancerName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type tag_description() :: #{binary() => any()}.
+
+%% Example:
+%% tag_key_only() :: #{
+%%   <<"Key">> => string()
+%% }
+-type tag_key_only() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_access_points_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_access_points_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_policies_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_policies_exception() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -819,21 +834,6 @@
 %% }
 -type unsupported_protocol_exception() :: #{binary() => any()}.
 
-%% Example:
-%% set_load_balancer_policies_of_listener_input() :: #{
-%%   <<"LoadBalancerName">> := string(),
-%%   <<"LoadBalancerPort">> := integer(),
-%%   <<"PolicyNames">> := list(string())
-%% }
--type set_load_balancer_policies_of_listener_input() :: #{binary() => any()}.
-
-%% Example:
-%% listener_description() :: #{
-%%   <<"Listener">> => listener(),
-%%   <<"PolicyNames">> => list(string())
-%% }
--type listener_description() :: #{binary() => any()}.
-
 -type add_tags_errors() ::
     too_many_tags_exception() | 
     duplicate_tag_keys_exception() | 
@@ -841,110 +841,110 @@
 
 -type apply_security_groups_to_load_balancer_errors() ::
     invalid_security_group_exception() | 
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type attach_load_balancer_to_subnets_errors() ::
-    invalid_subnet_exception() | 
-    access_point_not_found_exception() | 
     subnet_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_subnet_exception() | 
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type configure_health_check_errors() ::
     access_point_not_found_exception().
 
 -type create_app_cookie_stickiness_policy_errors() ::
     too_many_policies_exception() | 
+    invalid_configuration_request_exception() | 
     duplicate_policy_name_exception() | 
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    access_point_not_found_exception().
 
 -type create_lb_cookie_stickiness_policy_errors() ::
     too_many_policies_exception() | 
+    invalid_configuration_request_exception() | 
     duplicate_policy_name_exception() | 
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    access_point_not_found_exception().
 
 -type create_load_balancer_errors() ::
     unsupported_protocol_exception() | 
     too_many_tags_exception() | 
-    invalid_scheme_exception() | 
-    invalid_subnet_exception() | 
-    duplicate_tag_keys_exception() | 
     too_many_access_points_exception() | 
-    invalid_security_group_exception() | 
-    operation_not_permitted_exception() | 
-    certificate_not_found_exception() | 
     subnet_not_found_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_subnet_exception() | 
+    invalid_security_group_exception() | 
+    invalid_scheme_exception() | 
     invalid_configuration_request_exception() | 
-    duplicate_access_point_name_exception().
+    duplicate_tag_keys_exception() | 
+    duplicate_access_point_name_exception() | 
+    certificate_not_found_exception().
 
 -type create_load_balancer_listeners_errors() ::
     unsupported_protocol_exception() | 
-    access_point_not_found_exception() | 
-    certificate_not_found_exception() | 
+    invalid_configuration_request_exception() | 
     duplicate_listener_exception() | 
-    invalid_configuration_request_exception().
+    certificate_not_found_exception() | 
+    access_point_not_found_exception().
 
 -type create_load_balancer_policy_errors() ::
     too_many_policies_exception() | 
-    duplicate_policy_name_exception() | 
-    access_point_not_found_exception() | 
+    policy_type_not_found_exception() | 
     invalid_configuration_request_exception() | 
-    policy_type_not_found_exception().
+    duplicate_policy_name_exception() | 
+    access_point_not_found_exception().
 
 -type delete_load_balancer_listeners_errors() ::
     access_point_not_found_exception().
 
 -type delete_load_balancer_policy_errors() ::
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type deregister_instances_from_load_balancer_errors() ::
-    access_point_not_found_exception() | 
-    invalid_end_point_exception().
+    invalid_end_point_exception() | 
+    access_point_not_found_exception().
 
 -type describe_instance_health_errors() ::
-    access_point_not_found_exception() | 
-    invalid_end_point_exception().
+    invalid_end_point_exception() | 
+    access_point_not_found_exception().
 
 -type describe_load_balancer_attributes_errors() ::
     load_balancer_attribute_not_found_exception() | 
     access_point_not_found_exception().
 
 -type describe_load_balancer_policies_errors() ::
-    access_point_not_found_exception() | 
-    policy_not_found_exception().
+    policy_not_found_exception() | 
+    access_point_not_found_exception().
 
 -type describe_load_balancer_policy_types_errors() ::
     policy_type_not_found_exception().
 
 -type describe_load_balancers_errors() ::
-    access_point_not_found_exception() | 
-    dependency_throttle_exception().
+    dependency_throttle_exception() | 
+    access_point_not_found_exception().
 
 -type describe_tags_errors() ::
     access_point_not_found_exception().
 
 -type detach_load_balancer_from_subnets_errors() ::
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type disable_availability_zones_for_load_balancer_errors() ::
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type enable_availability_zones_for_load_balancer_errors() ::
     access_point_not_found_exception().
 
 -type modify_load_balancer_attributes_errors() ::
     load_balancer_attribute_not_found_exception() | 
-    access_point_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type register_instances_with_load_balancer_errors() ::
-    access_point_not_found_exception() | 
-    invalid_end_point_exception().
+    invalid_end_point_exception() | 
+    access_point_not_found_exception().
 
 -type remove_tags_errors() ::
     access_point_not_found_exception().
@@ -952,20 +952,20 @@
 -type set_load_balancer_listener_ssl_certificate_errors() ::
     unsupported_protocol_exception() | 
     listener_not_found_exception() | 
-    access_point_not_found_exception() | 
+    invalid_configuration_request_exception() | 
     certificate_not_found_exception() | 
-    invalid_configuration_request_exception().
+    access_point_not_found_exception().
 
 -type set_load_balancer_policies_for_backend_server_errors() ::
-    access_point_not_found_exception() | 
     policy_not_found_exception() | 
-    invalid_configuration_request_exception().
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 -type set_load_balancer_policies_of_listener_errors() ::
-    listener_not_found_exception() | 
-    access_point_not_found_exception() | 
     policy_not_found_exception() | 
-    invalid_configuration_request_exception().
+    listener_not_found_exception() | 
+    invalid_configuration_request_exception() | 
+    access_point_not_found_exception().
 
 %%====================================================================
 %% API

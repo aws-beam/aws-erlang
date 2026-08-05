@@ -243,46 +243,115 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% describe_custom_vocabulary_metadata_request() :: #{}
--type describe_custom_vocabulary_metadata_request() :: #{}.
-
 
 %% Example:
-%% s3_bucket_transcript_source() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"pathFormat">> => path_format(),
-%%   <<"s3BucketName">> => string(),
-%%   <<"transcriptFilter">> => transcript_filter(),
-%%   <<"transcriptFormat">> => list(any())
+%% active_context() :: #{
+%%   <<"name">> => string()
 %% }
--type s3_bucket_transcript_source() :: #{binary() => any()}.
+-type active_context() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_sort_by() :: #{
+%% advanced_recognition_setting() :: #{
+%%   <<"audioRecognitionStrategy">> => list(any())
+%% }
+-type advanced_recognition_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_turn_result() :: #{
+%%   <<"actualAgentPrompt">> => string(),
+%%   <<"actualElicitedSlot">> => string(),
+%%   <<"actualIntent">> => string(),
+%%   <<"errorDetails">> => execution_error_details(),
+%%   <<"expectedAgentPrompt">> => string()
+%% }
+-type agent_turn_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_turn_specification() :: #{
+%%   <<"agentPrompt">> => string()
+%% }
+-type agent_turn_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregated_utterances_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type aggregated_utterances_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregated_utterances_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
--type import_sort_by() :: #{binary() => any()}.
+-type aggregated_utterances_sort_by() :: #{binary() => any()}.
 
 
 %% Example:
-%% built_in_intent_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"intentSignature">> => string()
+%% aggregated_utterances_summary() :: #{
+%%   <<"containsDataFromDeletedResources">> => boolean(),
+%%   <<"hitCount">> => integer(),
+%%   <<"missedCount">> => integer(),
+%%   <<"utterance">> => string(),
+%%   <<"utteranceFirstRecordedInAggregationDuration">> => non_neg_integer(),
+%%   <<"utteranceLastRecordedInAggregationDuration">> => non_neg_integer()
 %% }
--type built_in_intent_summary() :: #{binary() => any()}.
+-type aggregated_utterances_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% fulfillment_updates_specification() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"startResponse">> => fulfillment_start_response_specification(),
-%%   <<"timeoutInSeconds">> => integer(),
-%%   <<"updateResponse">> => fulfillment_update_response_specification()
+%% allowed_input_types() :: #{
+%%   <<"allowAudioInput">> => boolean(),
+%%   <<"allowDTMFInput">> => boolean()
 %% }
--type fulfillment_updates_specification() :: #{binary() => any()}.
+-type allowed_input_types() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_bin_by_specification() :: #{
+%%   <<"interval">> => list(any()),
+%%   <<"name">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type analytics_bin_by_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_bin_key() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type analytics_bin_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type analytics_intent_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_group_by_key() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type analytics_intent_group_by_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_group_by_specification() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type analytics_intent_group_by_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -295,23 +364,482 @@
 
 
 %% Example:
-%% grammar_slot_type_setting() :: #{
-%%   <<"source">> => grammar_slot_type_source()
+%% analytics_intent_metric_result() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
 %% }
--type grammar_slot_type_setting() :: #{binary() => any()}.
+-type analytics_intent_metric_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% bot_recommendation_results() :: #{
-%%   <<"associatedTranscriptsUrl">> => string(),
-%%   <<"botLocaleExportUrl">> => string(),
-%%   <<"statistics">> => bot_recommendation_result_statistics()
+%% analytics_intent_node_summary() :: #{
+%%   <<"intentCount">> => integer(),
+%%   <<"intentLevel">> => integer(),
+%%   <<"intentName">> => string(),
+%%   <<"intentPath">> => string(),
+%%   <<"nodeType">> => list(any())
 %% }
--type bot_recommendation_results() :: #{binary() => any()}.
+-type analytics_intent_node_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_test_set_request() :: #{}
--type delete_test_set_request() :: #{}.
+%% analytics_intent_result() :: #{
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_intent_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_intent_metric_result())
+%% }
+-type analytics_intent_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type analytics_intent_stage_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_group_by_key() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type analytics_intent_stage_group_by_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_group_by_specification() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type analytics_intent_stage_group_by_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"order">> => list(any()),
+%%   <<"statistic">> => list(any())
+%% }
+-type analytics_intent_stage_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_metric_result() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type analytics_intent_stage_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_intent_stage_result() :: #{
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_intent_stage_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_intent_stage_metric_result())
+%% }
+-type analytics_intent_stage_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_path_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type analytics_path_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type analytics_session_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_group_by_key() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type analytics_session_group_by_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_group_by_specification() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type analytics_session_group_by_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"order">> => list(any()),
+%%   <<"statistic">> => list(any())
+%% }
+-type analytics_session_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_metric_result() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type analytics_session_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_session_result() :: #{
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_session_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_session_metric_result())
+%% }
+-type analytics_session_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_attribute() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type analytics_utterance_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_attribute_result() :: #{
+%%   <<"lastUsedIntent">> => string()
+%% }
+-type analytics_utterance_attribute_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type analytics_utterance_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_group_by_key() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type analytics_utterance_group_by_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_group_by_specification() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type analytics_utterance_group_by_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"order">> => list(any()),
+%%   <<"statistic">> => list(any())
+%% }
+-type analytics_utterance_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_metric_result() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type analytics_utterance_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_utterance_result() :: #{
+%%   <<"attributeResults">> => list(analytics_utterance_attribute_result()),
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_utterance_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_utterance_metric_result())
+%% }
+-type analytics_utterance_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_transcript() :: #{
+%%   <<"transcript">> => string()
+%% }
+-type associated_transcript() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_transcript_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type associated_transcript_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_and_d_t_m_f_input_specification() :: #{
+%%   <<"audioSpecification">> => audio_specification(),
+%%   <<"dtmfSpecification">> => d_t_m_f_specification(),
+%%   <<"startTimeoutMs">> => integer()
+%% }
+-type audio_and_d_t_m_f_input_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_filler_settings() :: #{
+%%   <<"audioType">> => list(any()),
+%%   <<"enabled">> => boolean(),
+%%   <<"minimumPlayDurationInMilliseconds">> => integer(),
+%%   <<"responseDeliveryDelayInMilliseconds">> => integer(),
+%%   <<"startDelayInMilliseconds">> => integer()
+%% }
+-type audio_filler_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_log_destination() :: #{
+%%   <<"s3Bucket">> => s3_bucket_log_destination()
+%% }
+-type audio_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_log_setting() :: #{
+%%   <<"destination">> => audio_log_destination(),
+%%   <<"enabled">> => boolean(),
+%%   <<"selectiveLoggingEnabled">> => boolean()
+%% }
+-type audio_log_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_specification() :: #{
+%%   <<"endTimeoutMs">> => integer(),
+%%   <<"maxLengthMs">> => integer()
+%% }
+-type audio_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_custom_vocabulary_item_request() :: #{
+%%   <<"customVocabularyItemList">> := list(new_custom_vocabulary_item())
+%% }
+-type batch_create_custom_vocabulary_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_custom_vocabulary_item_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
+%%   <<"localeId">> => string(),
+%%   <<"resources">> => list(custom_vocabulary_item())
+%% }
+-type batch_create_custom_vocabulary_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_custom_vocabulary_item_request() :: #{
+%%   <<"customVocabularyItemList">> := list(custom_vocabulary_entry_id())
+%% }
+-type batch_delete_custom_vocabulary_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_custom_vocabulary_item_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
+%%   <<"localeId">> => string(),
+%%   <<"resources">> => list(custom_vocabulary_item())
+%% }
+-type batch_delete_custom_vocabulary_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_custom_vocabulary_item_request() :: #{
+%%   <<"customVocabularyItemList">> := list(custom_vocabulary_item())
+%% }
+-type batch_update_custom_vocabulary_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_custom_vocabulary_item_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
+%%   <<"localeId">> => string(),
+%%   <<"resources">> => list(custom_vocabulary_item())
+%% }
+-type batch_update_custom_vocabulary_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_guardrail_configuration() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"version">> => string()
+%% }
+-type bedrock_guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_knowledge_store_configuration() :: #{
+%%   <<"bedrockKnowledgeBaseArn">> => string(),
+%%   <<"exactResponse">> => boolean(),
+%%   <<"exactResponseFields">> => bedrock_knowledge_store_exact_response_fields()
+%% }
+-type bedrock_knowledge_store_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_knowledge_store_exact_response_fields() :: #{
+%%   <<"answerField">> => string()
+%% }
+-type bedrock_knowledge_store_exact_response_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_model_specification() :: #{
+%%   <<"customPrompt">> => string(),
+%%   <<"guardrail">> => bedrock_guardrail_configuration(),
+%%   <<"modelArn">> => string(),
+%%   <<"traceStatus">> => list(any())
+%% }
+-type bedrock_model_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_alias_history_event() :: #{
+%%   <<"botVersion">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"startDate">> => non_neg_integer()
+%% }
+-type bot_alias_history_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_alias_locale_settings() :: #{
+%%   <<"codeHookSpecification">> => code_hook_specification(),
+%%   <<"enabled">> => boolean()
+%% }
+-type bot_alias_locale_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_alias_replica_summary() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasReplicationStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer()
+%% }
+-type bot_alias_replica_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_alias_summary() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasName">> => string(),
+%%   <<"botAliasStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer()
+%% }
+-type bot_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_alias_test_execution_target() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botId">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type bot_alias_test_execution_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_analyzer_history_summary() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer()
+%% }
+-type bot_analyzer_history_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_analyzer_recommendation() :: #{
+%%   <<"issueDescription">> => string(),
+%%   <<"issueLocation">> => issue_location(),
+%%   <<"priority">> => list(any()),
+%%   <<"proposedFix">> => string()
+%% }
+-type bot_analyzer_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_export_specification() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string()
+%% }
+-type bot_export_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type bot_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_import_specification() :: #{
+%%   <<"botName">> => string(),
+%%   <<"botTags">> => map(),
+%%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"testBotAliasTags">> => map()
+%% }
+-type bot_import_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_locale_export_specification() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type bot_locale_export_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_locale_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type bot_locale_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_locale_history_event() :: #{
+%%   <<"event">> => string(),
+%%   <<"eventDate">> => non_neg_integer()
+%% }
+-type bot_locale_history_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -330,41 +858,731 @@
 
 
 %% Example:
-%% bedrock_guardrail_configuration() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"version">> => string()
+%% bot_locale_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
 %% }
--type bedrock_guardrail_configuration() :: #{binary() => any()}.
+-type bot_locale_sort_by() :: #{binary() => any()}.
 
 
 %% Example:
-%% intent_disambiguation_settings() :: #{
-%%   <<"customDisambiguationMessage">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"maxDisambiguationIntents">> => integer()
+%% bot_locale_summary() :: #{
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"localeName">> => string()
 %% }
--type intent_disambiguation_settings() :: #{binary() => any()}.
+-type bot_locale_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% test_execution_target() :: #{
-%%   <<"botAliasTarget">> => bot_alias_test_execution_target()
+%% bot_member() :: #{
+%%   <<"botMemberAliasId">> => string(),
+%%   <<"botMemberAliasName">> => string(),
+%%   <<"botMemberId">> => string(),
+%%   <<"botMemberName">> => string(),
+%%   <<"botMemberVersion">> => string()
 %% }
--type test_execution_target() :: #{binary() => any()}.
+-type bot_member() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bot_locales_response() :: #{
+%% bot_recommendation_result_statistics() :: #{
+%%   <<"intents">> => intent_statistics(),
+%%   <<"slotTypes">> => slot_type_statistics()
+%% }
+-type bot_recommendation_result_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_recommendation_results() :: #{
+%%   <<"associatedTranscriptsUrl">> => string(),
+%%   <<"botLocaleExportUrl">> => string(),
+%%   <<"statistics">> => bot_recommendation_result_statistics()
+%% }
+-type bot_recommendation_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_recommendation_summary() :: #{
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botRecommendationStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer()
+%% }
+-type bot_recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_replica_summary() :: #{
+%%   <<"botReplicaStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"replicaRegion">> => string()
+%% }
+-type bot_replica_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type bot_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_summary() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botLocaleSummaries">> => list(bot_locale_summary()),
-%%   <<"botVersion">> => string(),
-%%   <<"nextToken">> => string()
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botType">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestBotVersion">> => string()
 %% }
--type list_bot_locales_response() :: #{binary() => any()}.
+-type bot_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_bot_resource_generation_request() :: #{}
--type describe_bot_resource_generation_request() :: #{}.
+%% bot_version_locale_details() :: #{
+%%   <<"sourceBotVersion">> => string()
+%% }
+-type bot_version_locale_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_version_replica_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type bot_version_replica_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_version_replica_summary() :: #{
+%%   <<"botVersion">> => string(),
+%%   <<"botVersionReplicationStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string())
+%% }
+-type bot_version_replica_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_version_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type bot_version_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot_version_summary() :: #{
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string()
+%% }
+-type bot_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% build_bot_locale_request() :: #{}
+-type build_bot_locale_request() :: #{}.
+
+
+%% Example:
+%% build_bot_locale_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string()
+%% }
+-type build_bot_locale_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% buildtime_settings() :: #{
+%%   <<"descriptiveBotBuilder">> => descriptive_bot_builder_specification(),
+%%   <<"sampleUtteranceGeneration">> => sample_utterance_generation_specification()
+%% }
+-type buildtime_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% built_in_intent_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type built_in_intent_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% built_in_intent_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"intentSignature">> => string()
+%% }
+-type built_in_intent_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% built_in_slot_type_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type built_in_slot_type_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% built_in_slot_type_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"slotTypeSignature">> => string()
+%% }
+-type built_in_slot_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% button() :: #{
+%%   <<"text">> => string(),
+%%   <<"value">> => string()
+%% }
+-type button() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log_group_log_destination() :: #{
+%%   <<"cloudWatchLogGroupArn">> => string(),
+%%   <<"logPrefix">> => string()
+%% }
+-type cloud_watch_log_group_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_hook_specification() :: #{
+%%   <<"lambdaCodeHook">> => lambda_code_hook()
+%% }
+-type code_hook_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_slot_type_setting() :: #{
+%%   <<"subSlots">> => list(sub_slot_type_composition())
+%% }
+-type composite_slot_type_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"expressionString">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_branch() :: #{
+%%   <<"condition">> => condition(),
+%%   <<"name">> => string(),
+%%   <<"nextStep">> => dialog_state(),
+%%   <<"response">> => response_specification()
+%% }
+-type conditional_branch() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_specification() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"conditionalBranches">> => list(conditional_branch()),
+%%   <<"defaultBranch">> => default_conditional_branch()
+%% }
+-type conditional_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_intent_classification_result_item() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"matchResult">> => list(any())
+%% }
+-type conversation_level_intent_classification_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_result_detail() :: #{
+%%   <<"endToEndResult">> => list(any()),
+%%   <<"speechTranscriptionResult">> => list(any())
+%% }
+-type conversation_level_result_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_slot_resolution_result_item() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"matchResult">> => list(any()),
+%%   <<"slotName">> => string()
+%% }
+-type conversation_level_slot_resolution_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_test_result_item() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"endToEndResult">> => list(any()),
+%%   <<"intentClassificationResults">> => list(conversation_level_intent_classification_result_item()),
+%%   <<"slotResolutionResults">> => list(conversation_level_slot_resolution_result_item()),
+%%   <<"speechTranscriptionResult">> => list(any())
+%% }
+-type conversation_level_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_test_results() :: #{
+%%   <<"items">> => list(conversation_level_test_result_item())
+%% }
+-type conversation_level_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_level_test_results_filter_by() :: #{
+%%   <<"endToEndResult">> => list(any())
+%% }
+-type conversation_level_test_results_filter_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_log_settings() :: #{
+%%   <<"audioLogSettings">> => list(audio_log_setting()),
+%%   <<"textLogSettings">> => list(text_log_setting())
+%% }
+-type conversation_log_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_logs_data_source() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botId">> => string(),
+%%   <<"filter">> => conversation_logs_data_source_filter_by(),
+%%   <<"localeId">> => string()
+%% }
+-type conversation_logs_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_logs_data_source_filter_by() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"inputMode">> => list(any()),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type conversation_logs_data_source_filter_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_alias_request() :: #{
+%%   <<"botAliasLocaleSettings">> => map(),
+%%   <<"botAliasName">> := string(),
+%%   <<"botVersion">> => string(),
+%%   <<"conversationLogSettings">> => conversation_log_settings(),
+%%   <<"description">> => string(),
+%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings(),
+%%   <<"tags">> => map()
+%% }
+-type create_bot_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_alias_response() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasLocaleSettings">> => map(),
+%%   <<"botAliasName">> => string(),
+%%   <<"botAliasStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"conversationLogSettings">> => conversation_log_settings(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings(),
+%%   <<"tags">> => map()
+%% }
+-type create_bot_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_locale_request() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
+%%   <<"description">> => string(),
+%%   <<"generativeAISettings">> => generative_a_i_settings(),
+%%   <<"localeId">> := string(),
+%%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
+%%   <<"voiceSettings">> => voice_settings()
+%% }
+-type create_bot_locale_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
+%%   <<"botId">> => string(),
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"generativeAISettings">> => generative_a_i_settings(),
+%%   <<"localeId">> => string(),
+%%   <<"localeName">> => string(),
+%%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
+%%   <<"voiceSettings">> => voice_settings()
+%% }
+-type create_bot_locale_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_replica_request() :: #{
+%%   <<"replicaRegion">> := string()
+%% }
+-type create_bot_replica_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_replica_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botReplicaStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"replicaRegion">> => string(),
+%%   <<"sourceRegion">> => string()
+%% }
+-type create_bot_replica_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_request() :: #{
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> := string(),
+%%   <<"botTags">> => map(),
+%%   <<"botType">> => list(any()),
+%%   <<"dataPrivacy">> := data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"idleSessionTTLInSeconds">> := integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"testBotAliasTags">> => map()
+%% }
+-type create_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botTags">> => map(),
+%%   <<"botType">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"testBotAliasTags">> => map()
+%% }
+-type create_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_version_request() :: #{
+%%   <<"botVersionLocaleSpecification">> := map(),
+%%   <<"description">> => string()
+%% }
+-type create_bot_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_version_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"botVersionLocaleSpecification">> => map(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string()
+%% }
+-type create_bot_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_export_request() :: #{
+%%   <<"fileFormat">> := list(any()),
+%%   <<"filePassword">> => string(),
+%%   <<"resourceSpecification">> := export_resource_specification()
+%% }
+-type create_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_export_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"exportId">> => string(),
+%%   <<"exportStatus">> => list(any()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"resourceSpecification">> => export_resource_specification()
+%% }
+-type create_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intent_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
+%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
+%%   <<"initialResponseSetting">> => initial_response_setting(),
+%%   <<"inputContexts">> => list(input_context()),
+%%   <<"intentClosingSetting">> => intent_closing_setting(),
+%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
+%%   <<"intentName">> := string(),
+%%   <<"kendraConfiguration">> => kendra_configuration(),
+%%   <<"outputContexts">> => list(output_context()),
+%%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
+%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
+%%   <<"sampleUtterances">> => list(sample_utterance())
+%% }
+-type create_intent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intent_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
+%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
+%%   <<"initialResponseSetting">> => initial_response_setting(),
+%%   <<"inputContexts">> => list(input_context()),
+%%   <<"intentClosingSetting">> => intent_closing_setting(),
+%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"kendraConfiguration">> => kendra_configuration(),
+%%   <<"localeId">> => string(),
+%%   <<"outputContexts">> => list(output_context()),
+%%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
+%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
+%%   <<"sampleUtterances">> => list(sample_utterance())
+%% }
+-type create_intent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type create_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type create_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_policy_statement_request() :: #{
+%%   <<"action">> := list(string()),
+%%   <<"condition">> => map(),
+%%   <<"effect">> := list(any()),
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"principal">> := list(principal()),
+%%   <<"statementId">> := string()
+%% }
+-type create_resource_policy_statement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_policy_statement_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type create_resource_policy_statement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"multipleValuesSetting">> => multiple_values_setting(),
+%%   <<"obfuscationSetting">> => obfuscation_setting(),
+%%   <<"slotName">> := string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"subSlotSetting">> => sub_slot_setting(),
+%%   <<"valueElicitationSetting">> := slot_value_elicitation_setting()
+%% }
+-type create_slot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"multipleValuesSetting">> => multiple_values_setting(),
+%%   <<"obfuscationSetting">> => obfuscation_setting(),
+%%   <<"slotId">> => string(),
+%%   <<"slotName">> => string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"subSlotSetting">> => sub_slot_setting(),
+%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
+%% }
+-type create_slot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_type_request() :: #{
+%%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
+%%   <<"description">> => string(),
+%%   <<"externalSourceSetting">> => external_source_setting(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeName">> := string(),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
+%%   <<"valueSelectionSetting">> => slot_value_selection_setting()
+%% }
+-type create_slot_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_type_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalSourceSetting">> => external_source_setting(),
+%%   <<"localeId">> => string(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"slotTypeName">> => string(),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
+%%   <<"valueSelectionSetting">> => slot_value_selection_setting()
+%% }
+-type create_slot_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_set_discrepancy_report_request() :: #{
+%%   <<"target">> := test_set_discrepancy_report_resource_target()
+%% }
+-type create_test_set_discrepancy_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_set_discrepancy_report_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"target">> => test_set_discrepancy_report_resource_target(),
+%%   <<"testSetDiscrepancyReportId">> => string(),
+%%   <<"testSetId">> => string()
+%% }
+-type create_test_set_discrepancy_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_upload_url_request() :: #{}
+-type create_upload_url_request() :: #{}.
+
+
+%% Example:
+%% create_upload_url_response() :: #{
+%%   <<"importId">> => string(),
+%%   <<"uploadUrl">> => string()
+%% }
+-type create_upload_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_payload() :: #{
+%%   <<"value">> => string()
+%% }
+-type custom_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_vocabulary_entry_id() :: #{
+%%   <<"itemId">> => string()
+%% }
+-type custom_vocabulary_entry_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_vocabulary_export_specification() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type custom_vocabulary_export_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_vocabulary_import_specification() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type custom_vocabulary_import_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_vocabulary_item() :: #{
+%%   <<"displayAs">> => string(),
+%%   <<"itemId">> => string(),
+%%   <<"phrase">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type custom_vocabulary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% d_t_m_f_specification() :: #{
+%%   <<"deletionCharacter">> => string(),
+%%   <<"endCharacter">> => string(),
+%%   <<"endTimeoutMs">> => integer(),
+%%   <<"maxLength">> => integer()
+%% }
+-type d_t_m_f_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_privacy() :: #{
+%%   <<"childDirected">> => boolean()
+%% }
+-type data_privacy() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_configuration() :: #{
+%%   <<"bedrockKnowledgeStoreConfiguration">> => bedrock_knowledge_store_configuration(),
+%%   <<"kendraConfiguration">> => qn_a_kendra_configuration(),
+%%   <<"opensearchConfiguration">> => opensearch_configuration()
+%% }
+-type data_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,19 +1594,509 @@
 
 
 %% Example:
-%% start_test_set_generation_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"generationDataSource">> := test_set_generation_data_source(),
-%%   <<"roleArn">> := string(),
-%%   <<"storageLocation">> := test_set_storage_location(),
-%%   <<"testSetName">> := string(),
-%%   <<"testSetTags">> => map()
+%% deepgram_speech_model_config() :: #{
+%%   <<"apiTokenSecretArn">> => string(),
+%%   <<"modelId">> => string()
 %% }
--type start_test_set_generation_request() :: #{binary() => any()}.
+-type deepgram_speech_model_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_slot_type_response() :: #{
+%% default_conditional_branch() :: #{
+%%   <<"nextStep">> => dialog_state(),
+%%   <<"response">> => response_specification()
+%% }
+-type default_conditional_branch() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_alias_request() :: #{
+%%   <<"skipResourceInUseCheck">> => boolean()
+%% }
+-type delete_bot_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_alias_response() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasStatus">> => list(any()),
+%%   <<"botId">> => string()
+%% }
+-type delete_bot_alias_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bot_analyzer_recommendation_request() :: #{}
+-type delete_bot_analyzer_recommendation_request() :: #{}.
+
+%% Example:
+%% delete_bot_analyzer_recommendation_response() :: #{}
+-type delete_bot_analyzer_recommendation_response() :: #{}.
+
+%% Example:
+%% delete_bot_locale_request() :: #{}
+-type delete_bot_locale_request() :: #{}.
+
+
+%% Example:
+%% delete_bot_locale_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type delete_bot_locale_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bot_replica_request() :: #{}
+-type delete_bot_replica_request() :: #{}.
+
+
+%% Example:
+%% delete_bot_replica_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botReplicaStatus">> => list(any()),
+%%   <<"replicaRegion">> => string()
+%% }
+-type delete_bot_replica_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_request() :: #{
+%%   <<"skipResourceInUseCheck">> => boolean()
+%% }
+-type delete_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botStatus">> => list(any())
+%% }
+-type delete_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_version_request() :: #{
+%%   <<"skipResourceInUseCheck">> => boolean()
+%% }
+-type delete_bot_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bot_version_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botVersion">> => string()
+%% }
+-type delete_bot_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_vocabulary_request() :: #{}
+-type delete_custom_vocabulary_request() :: #{}.
+
+
+%% Example:
+%% delete_custom_vocabulary_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"customVocabularyStatus">> => list(any()),
+%%   <<"localeId">> => string()
+%% }
+-type delete_custom_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_export_request() :: #{}
+-type delete_export_request() :: #{}.
+
+
+%% Example:
+%% delete_export_response() :: #{
+%%   <<"exportId">> => string(),
+%%   <<"exportStatus">> => list(any())
+%% }
+-type delete_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_import_request() :: #{}
+-type delete_import_request() :: #{}.
+
+
+%% Example:
+%% delete_import_response() :: #{
+%%   <<"importId">> => string(),
+%%   <<"importStatus">> => list(any())
+%% }
+-type delete_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_intent_request() :: #{}
+-type delete_intent_request() :: #{}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_statement_request() :: #{
+%%   <<"expectedRevisionId">> => string()
+%% }
+-type delete_resource_policy_statement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_statement_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type delete_resource_policy_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slot_request() :: #{}
+-type delete_slot_request() :: #{}.
+
+
+%% Example:
+%% delete_slot_type_request() :: #{
+%%   <<"skipResourceInUseCheck">> => boolean()
+%% }
+-type delete_slot_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_test_set_request() :: #{}
+-type delete_test_set_request() :: #{}.
+
+
+%% Example:
+%% delete_utterances_request() :: #{
+%%   <<"localeId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type delete_utterances_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_utterances_response() :: #{}
+-type delete_utterances_response() :: #{}.
+
+%% Example:
+%% describe_bot_alias_request() :: #{}
+-type describe_bot_alias_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_alias_response() :: #{
+%%   <<"botAliasHistoryEvents">> => list(bot_alias_history_event()),
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasLocaleSettings">> => map(),
+%%   <<"botAliasName">> => string(),
+%%   <<"botAliasStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"conversationLogSettings">> => conversation_log_settings(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"parentBotNetworks">> => list(parent_bot_network()),
+%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
+%% }
+-type describe_bot_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bot_analyzer_recommendation_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_bot_analyzer_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bot_analyzer_recommendation_response() :: #{
+%%   <<"botAnalyzerRecommendationList">> => list(bot_analyzer_recommendation()),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_bot_analyzer_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bot_locale_request() :: #{}
+-type describe_bot_locale_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
+%%   <<"botId">> => string(),
+%%   <<"botLocaleHistoryEvents">> => list(bot_locale_history_event()),
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"generativeAISettings">> => generative_a_i_settings(),
+%%   <<"intentsCount">> => integer(),
+%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"localeName">> => string(),
+%%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"recommendedActions">> => list(string()),
+%%   <<"slotTypesCount">> => integer(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
+%%   <<"voiceSettings">> => voice_settings()
+%% }
+-type describe_bot_locale_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bot_recommendation_request() :: #{}
+-type describe_bot_recommendation_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_recommendation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botRecommendationResults">> => bot_recommendation_results(),
+%%   <<"botRecommendationStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"encryptionSetting">> => encryption_setting(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"transcriptSourceSetting">> => transcript_source_setting()
+%% }
+-type describe_bot_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bot_replica_request() :: #{}
+-type describe_bot_replica_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_replica_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botReplicaStatus">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"replicaRegion">> => string(),
+%%   <<"sourceRegion">> => string()
+%% }
+-type describe_bot_replica_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bot_request() :: #{}
+-type describe_bot_request() :: #{}.
+
+%% Example:
+%% describe_bot_resource_generation_request() :: #{}
+-type describe_bot_resource_generation_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_resource_generation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"generatedBotLocaleUrl">> => string(),
+%%   <<"generationId">> => string(),
+%%   <<"generationInputPrompt">> => string(),
+%%   <<"generationStatus">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"modelArn">> => string()
+%% }
+-type describe_bot_resource_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botType">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"roleArn">> => string()
+%% }
+-type describe_bot_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bot_version_request() :: #{}
+-type describe_bot_version_request() :: #{}.
+
+
+%% Example:
+%% describe_bot_version_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botType">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"parentBotNetworks">> => list(parent_bot_network()),
+%%   <<"roleArn">> => string()
+%% }
+-type describe_bot_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_vocabulary_metadata_request() :: #{}
+-type describe_custom_vocabulary_metadata_request() :: #{}.
+
+
+%% Example:
+%% describe_custom_vocabulary_metadata_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"customVocabularyStatus">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string()
+%% }
+-type describe_custom_vocabulary_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_request() :: #{}
+-type describe_export_request() :: #{}.
+
+
+%% Example:
+%% describe_export_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"downloadUrl">> => string(),
+%%   <<"exportId">> => string(),
+%%   <<"exportStatus">> => list(any()),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"resourceSpecification">> => export_resource_specification()
+%% }
+-type describe_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_request() :: #{}
+-type describe_import_request() :: #{}.
+
+
+%% Example:
+%% describe_import_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"importId">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"importedResourceId">> => string(),
+%%   <<"importedResourceName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"mergeStrategy">> => list(any()),
+%%   <<"resourceSpecification">> => import_resource_specification()
+%% }
+-type describe_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_intent_request() :: #{}
+-type describe_intent_request() :: #{}.
+
+
+%% Example:
+%% describe_intent_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
+%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
+%%   <<"initialResponseSetting">> => initial_response_setting(),
+%%   <<"inputContexts">> => list(input_context()),
+%%   <<"intentClosingSetting">> => intent_closing_setting(),
+%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
+%%   <<"intentDisplayName">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"kendraConfiguration">> => kendra_configuration(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"outputContexts">> => list(output_context()),
+%%   <<"parentIntentSignature">> => string(),
+%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
+%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"slotPriorities">> => list(slot_priority())
+%% }
+-type describe_intent_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{}
+-type describe_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slot_request() :: #{}
+-type describe_slot_request() :: #{}.
+
+
+%% Example:
+%% describe_slot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"multipleValuesSetting">> => multiple_values_setting(),
+%%   <<"obfuscationSetting">> => obfuscation_setting(),
+%%   <<"slotId">> => string(),
+%%   <<"slotName">> => string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"subSlotSetting">> => sub_slot_setting(),
+%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
+%% }
+-type describe_slot_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slot_type_request() :: #{}
+-type describe_slot_type_request() :: #{}.
+
+
+%% Example:
+%% describe_slot_type_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
 %%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
@@ -403,7 +2111,1933 @@
 %%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
--type update_slot_type_response() :: #{binary() => any()}.
+-type describe_slot_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_execution_request() :: #{}
+-type describe_test_execution_request() :: #{}.
+
+
+%% Example:
+%% describe_test_execution_response() :: #{
+%%   <<"apiMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"target">> => test_execution_target(),
+%%   <<"testExecutionId">> => string(),
+%%   <<"testExecutionModality">> => list(any()),
+%%   <<"testExecutionStatus">> => list(any()),
+%%   <<"testSetId">> => string(),
+%%   <<"testSetName">> => string()
+%% }
+-type describe_test_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_set_discrepancy_report_request() :: #{}
+-type describe_test_set_discrepancy_report_request() :: #{}.
+
+
+%% Example:
+%% describe_test_set_discrepancy_report_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"lastUpdatedDataTime">> => non_neg_integer(),
+%%   <<"target">> => test_set_discrepancy_report_resource_target(),
+%%   <<"testSetDiscrepancyRawOutputUrl">> => string(),
+%%   <<"testSetDiscrepancyReportId">> => string(),
+%%   <<"testSetDiscrepancyReportStatus">> => list(any()),
+%%   <<"testSetDiscrepancyTopErrors">> => test_set_discrepancy_errors(),
+%%   <<"testSetId">> => string()
+%% }
+-type describe_test_set_discrepancy_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_set_generation_request() :: #{}
+-type describe_test_set_generation_request() :: #{}.
+
+
+%% Example:
+%% describe_test_set_generation_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"generationDataSource">> => test_set_generation_data_source(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"storageLocation">> => test_set_storage_location(),
+%%   <<"testSetGenerationId">> => string(),
+%%   <<"testSetGenerationStatus">> => list(any()),
+%%   <<"testSetId">> => string(),
+%%   <<"testSetName">> => string()
+%% }
+-type describe_test_set_generation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_set_request() :: #{}
+-type describe_test_set_request() :: #{}.
+
+
+%% Example:
+%% describe_test_set_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"modality">> => list(any()),
+%%   <<"numTurns">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"storageLocation">> => test_set_storage_location(),
+%%   <<"testSetId">> => string(),
+%%   <<"testSetName">> => string()
+%% }
+-type describe_test_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% descriptive_bot_builder_specification() :: #{
+%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
+%%   <<"enabled">> => boolean()
+%% }
+-type descriptive_bot_builder_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% dialog_action() :: #{
+%%   <<"slotToElicit">> => string(),
+%%   <<"suppressNextMessage">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type dialog_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% dialog_code_hook_invocation_setting() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"enableCodeHookInvocation">> => boolean(),
+%%   <<"invocationLabel">> => string(),
+%%   <<"postCodeHookSpecification">> => post_dialog_code_hook_invocation_specification()
+%% }
+-type dialog_code_hook_invocation_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% dialog_code_hook_settings() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type dialog_code_hook_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dialog_state() :: #{
+%%   <<"dialogAction">> => dialog_action(),
+%%   <<"intent">> => intent_override(),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type dialog_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% elicitation_code_hook_invocation_setting() :: #{
+%%   <<"enableCodeHookInvocation">> => boolean(),
+%%   <<"invocationLabel">> => string()
+%% }
+-type elicitation_code_hook_invocation_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_setting() :: #{
+%%   <<"associatedTranscriptsPassword">> => string(),
+%%   <<"botLocaleExportPassword">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type encryption_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_log_settings() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type error_log_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% exact_response_fields() :: #{
+%%   <<"answerField">> => string(),
+%%   <<"questionField">> => string()
+%% }
+-type exact_response_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_error_details() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type execution_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type export_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_resource_specification() :: #{
+%%   <<"botExportSpecification">> => bot_export_specification(),
+%%   <<"botLocaleExportSpecification">> => bot_locale_export_specification(),
+%%   <<"customVocabularyExportSpecification">> => custom_vocabulary_export_specification(),
+%%   <<"testSetExportSpecification">> => test_set_export_specification()
+%% }
+-type export_resource_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type export_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"exportId">> => string(),
+%%   <<"exportStatus">> => list(any()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"resourceSpecification">> => export_resource_specification()
+%% }
+-type export_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_source_setting() :: #{
+%%   <<"grammarSlotTypeSetting">> => grammar_slot_type_setting()
+%% }
+-type external_source_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_custom_vocabulary_item() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"itemId">> => string()
+%% }
+-type failed_custom_vocabulary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% fulfillment_code_hook_settings() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"enabled">> => boolean(),
+%%   <<"fulfillmentUpdatesSpecification">> => fulfillment_updates_specification(),
+%%   <<"postFulfillmentStatusSpecification">> => post_fulfillment_status_specification()
+%% }
+-type fulfillment_code_hook_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% fulfillment_start_response_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"delayInSeconds">> => integer(),
+%%   <<"messageGroups">> => list(message_group())
+%% }
+-type fulfillment_start_response_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% fulfillment_update_response_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"frequencyInSeconds">> => integer(),
+%%   <<"messageGroups">> => list(message_group())
+%% }
+-type fulfillment_update_response_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% fulfillment_updates_specification() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"startResponse">> => fulfillment_start_response_specification(),
+%%   <<"timeoutInSeconds">> => integer(),
+%%   <<"updateResponse">> => fulfillment_update_response_specification()
+%% }
+-type fulfillment_updates_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_bot_element_request() :: #{
+%%   <<"intentId">> := string()
+%% }
+-type generate_bot_element_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_bot_element_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"sampleUtterances">> => list(sample_utterance())
+%% }
+-type generate_bot_element_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type generation_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"generationId">> => string(),
+%%   <<"generationStatus">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer()
+%% }
+-type generation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% generative_a_i_settings() :: #{
+%%   <<"buildtimeSettings">> => buildtime_settings(),
+%%   <<"runtimeSettings">> => runtime_settings()
+%% }
+-type generative_a_i_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_execution_artifacts_url_request() :: #{}
+-type get_test_execution_artifacts_url_request() :: #{}.
+
+
+%% Example:
+%% get_test_execution_artifacts_url_response() :: #{
+%%   <<"downloadArtifactsUrl">> => string(),
+%%   <<"testExecutionId">> => string()
+%% }
+-type get_test_execution_artifacts_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% grammar_slot_type_setting() :: #{
+%%   <<"source">> => grammar_slot_type_source()
+%% }
+-type grammar_slot_type_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% grammar_slot_type_source() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3ObjectKey">> => string()
+%% }
+-type grammar_slot_type_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_response_card() :: #{
+%%   <<"buttons">> => list(button()),
+%%   <<"imageUrl">> => string(),
+%%   <<"subtitle">> => string(),
+%%   <<"title">> => string()
+%% }
+-type image_response_card() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type import_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_resource_specification() :: #{
+%%   <<"botImportSpecification">> => bot_import_specification(),
+%%   <<"botLocaleImportSpecification">> => bot_locale_import_specification(),
+%%   <<"customVocabularyImportSpecification">> => custom_vocabulary_import_specification(),
+%%   <<"testSetImportResourceSpecification">> => test_set_import_resource_specification()
+%% }
+-type import_resource_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type import_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"importId">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"importedResourceId">> => string(),
+%%   <<"importedResourceName">> => string(),
+%%   <<"importedResourceType">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"mergeStrategy">> => list(any())
+%% }
+-type import_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% initial_response_setting() :: #{
+%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
+%%   <<"conditional">> => conditional_specification(),
+%%   <<"initialResponse">> => response_specification(),
+%%   <<"nextStep">> => dialog_state()
+%% }
+-type initial_response_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_context() :: #{
+%%   <<"name">> => string()
+%% }
+-type input_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_session_state_specification() :: #{
+%%   <<"activeContexts">> => list(active_context()),
+%%   <<"runtimeHints">> => runtime_hints(),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type input_session_state_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_classification_test_result_item() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"multiTurnConversation">> => boolean(),
+%%   <<"resultCounts">> => intent_classification_test_result_item_counts()
+%% }
+-type intent_classification_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_classification_test_result_item_counts() :: #{
+%%   <<"intentMatchResultCounts">> => map(),
+%%   <<"speechTranscriptionResultCounts">> => map(),
+%%   <<"totalResultCount">> => integer()
+%% }
+-type intent_classification_test_result_item_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_classification_test_results() :: #{
+%%   <<"items">> => list(intent_classification_test_result_item())
+%% }
+-type intent_classification_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_closing_setting() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"closingResponse">> => response_specification(),
+%%   <<"conditional">> => conditional_specification(),
+%%   <<"nextStep">> => dialog_state()
+%% }
+-type intent_closing_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_confirmation_setting() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
+%%   <<"confirmationConditional">> => conditional_specification(),
+%%   <<"confirmationNextStep">> => dialog_state(),
+%%   <<"confirmationResponse">> => response_specification(),
+%%   <<"declinationConditional">> => conditional_specification(),
+%%   <<"declinationNextStep">> => dialog_state(),
+%%   <<"declinationResponse">> => response_specification(),
+%%   <<"elicitationCodeHook">> => elicitation_code_hook_invocation_setting(),
+%%   <<"failureConditional">> => conditional_specification(),
+%%   <<"failureNextStep">> => dialog_state(),
+%%   <<"failureResponse">> => response_specification(),
+%%   <<"promptSpecification">> => prompt_specification()
+%% }
+-type intent_confirmation_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_disambiguation_settings() :: #{
+%%   <<"customDisambiguationMessage">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"maxDisambiguationIntents">> => integer()
+%% }
+-type intent_disambiguation_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type intent_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_level_slot_resolution_test_result_item() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"multiTurnConversation">> => boolean(),
+%%   <<"slotResolutionResults">> => list(slot_resolution_test_result_item())
+%% }
+-type intent_level_slot_resolution_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_level_slot_resolution_test_results() :: #{
+%%   <<"items">> => list(intent_level_slot_resolution_test_result_item())
+%% }
+-type intent_level_slot_resolution_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_override() :: #{
+%%   <<"name">> => string(),
+%%   <<"slots">> => map()
+%% }
+-type intent_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type intent_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_statistics() :: #{
+%%   <<"discoveredIntentCount">> => integer()
+%% }
+-type intent_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputContexts">> => list(input_context()),
+%%   <<"intentDisplayName">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"outputContexts">> => list(output_context()),
+%%   <<"parentIntentSignature">> => string()
+%% }
+-type intent_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoked_intent_sample() :: #{
+%%   <<"intentName">> => string()
+%% }
+-type invoked_intent_sample() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue_location() :: #{
+%%   <<"botLocale">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"slotId">> => string()
+%% }
+-type issue_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% kendra_configuration() :: #{
+%%   <<"kendraIndex">> => string(),
+%%   <<"queryFilterString">> => string(),
+%%   <<"queryFilterStringEnabled">> => boolean()
+%% }
+-type kendra_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_code_hook() :: #{
+%%   <<"codeHookInterfaceVersion">> => string(),
+%%   <<"lambdaARN">> => string()
+%% }
+-type lambda_code_hook() :: #{binary() => any()}.
+
+
+%% Example:
+%% lex_transcript_filter() :: #{
+%%   <<"dateRangeFilter">> => date_range_filter()
+%% }
+-type lex_transcript_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aggregated_utterances_request() :: #{
+%%   <<"aggregationDuration">> := utterance_aggregation_duration(),
+%%   <<"botAliasId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"filters">> => list(aggregated_utterances_filter()),
+%%   <<"localeId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => aggregated_utterances_sort_by()
+%% }
+-type list_aggregated_utterances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aggregated_utterances_response() :: #{
+%%   <<"aggregatedUtterancesSummaries">> => list(aggregated_utterances_summary()),
+%%   <<"aggregationDuration">> => utterance_aggregation_duration(),
+%%   <<"aggregationLastRefreshedDateTime">> => non_neg_integer(),
+%%   <<"aggregationWindowEndTime">> => non_neg_integer(),
+%%   <<"aggregationWindowStartTime">> => non_neg_integer(),
+%%   <<"botAliasId">> => string(),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_aggregated_utterances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_alias_replicas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_alias_replicas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_alias_replicas_response() :: #{
+%%   <<"botAliasReplicaSummaries">> => list(bot_alias_replica_summary()),
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"replicaRegion">> => string(),
+%%   <<"sourceRegion">> => string()
+%% }
+-type list_bot_alias_replicas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_aliases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_aliases_response() :: #{
+%%   <<"botAliasSummaries">> => list(bot_alias_summary()),
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_analyzer_history_request() :: #{
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_analyzer_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_analyzer_history_response() :: #{
+%%   <<"botAnalyzerHistoryList">> => list(bot_analyzer_history_summary()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_analyzer_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_locales_request() :: #{
+%%   <<"filters">> => list(bot_locale_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => bot_locale_sort_by()
+%% }
+-type list_bot_locales_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_locales_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botLocaleSummaries">> => list(bot_locale_summary()),
+%%   <<"botVersion">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_locales_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_recommendations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_recommendations_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationSummaries">> => list(bot_recommendation_summary()),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_bot_replicas_request() :: #{}
+-type list_bot_replicas_request() :: #{}.
+
+
+%% Example:
+%% list_bot_replicas_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botReplicaSummaries">> => list(bot_replica_summary()),
+%%   <<"sourceRegion">> => string()
+%% }
+-type list_bot_replicas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_resource_generations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => generation_sort_by()
+%% }
+-type list_bot_resource_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_resource_generations_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"generationSummaries">> => list(generation_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_resource_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_version_replicas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => bot_version_replica_sort_by()
+%% }
+-type list_bot_version_replicas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_version_replicas_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersionReplicaSummaries">> => list(bot_version_replica_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"replicaRegion">> => string(),
+%%   <<"sourceRegion">> => string()
+%% }
+-type list_bot_version_replicas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => bot_version_sort_by()
+%% }
+-type list_bot_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bot_versions_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersionSummaries">> => list(bot_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bot_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_request() :: #{
+%%   <<"filters">> => list(bot_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => bot_sort_by()
+%% }
+-type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_response() :: #{
+%%   <<"botSummaries">> => list(bot_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_built_in_intents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => built_in_intent_sort_by()
+%% }
+-type list_built_in_intents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_built_in_intents_response() :: #{
+%%   <<"builtInIntentSummaries">> => list(built_in_intent_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_built_in_intents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_built_in_slot_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => built_in_slot_type_sort_by()
+%% }
+-type list_built_in_slot_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_built_in_slot_types_response() :: #{
+%%   <<"builtInSlotTypeSummaries">> => list(built_in_slot_type_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_built_in_slot_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_vocabulary_items_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_vocabulary_items_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_vocabulary_items_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"customVocabularyItems">> => list(custom_vocabulary_item()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_vocabulary_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exports_request() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"filters">> => list(export_filter()),
+%%   <<"localeId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => export_sort_by()
+%% }
+-type list_exports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exports_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"exportSummaries">> => list(export_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_exports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imports_request() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"filters">> => list(import_filter()),
+%%   <<"localeId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => import_sort_by()
+%% }
+-type list_imports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imports_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"importSummaries">> => list(import_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_imports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_metrics_request() :: #{
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_intent_filter()),
+%%   <<"groupBy">> => list(analytics_intent_group_by_specification()),
+%%   <<"maxResults">> => integer(),
+%%   <<"metrics">> := list(analytics_intent_metric()),
+%%   <<"nextToken">> => string(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_intent_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_metrics_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(analytics_intent_result())
+%% }
+-type list_intent_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_paths_request() :: #{
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_path_filter()),
+%%   <<"intentPath">> := string(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_intent_paths_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_paths_response() :: #{
+%%   <<"nodeSummaries">> => list(analytics_intent_node_summary())
+%% }
+-type list_intent_paths_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_stage_metrics_request() :: #{
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_intent_stage_filter()),
+%%   <<"groupBy">> => list(analytics_intent_stage_group_by_specification()),
+%%   <<"maxResults">> => integer(),
+%%   <<"metrics">> := list(analytics_intent_stage_metric()),
+%%   <<"nextToken">> => string(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_intent_stage_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intent_stage_metrics_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(analytics_intent_stage_result())
+%% }
+-type list_intent_stage_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intents_request() :: #{
+%%   <<"filters">> => list(intent_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => intent_sort_by()
+%% }
+-type list_intents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intents_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"intentSummaries">> => list(intent_summary()),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommended_intents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recommended_intents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommended_intents_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"summaryList">> => list(recommended_intent_summary())
+%% }
+-type list_recommended_intents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_analytics_data_request() :: #{
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_session_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => session_data_sort_by(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_session_analytics_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_analytics_data_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_specification())
+%% }
+-type list_session_analytics_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_metrics_request() :: #{
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_session_filter()),
+%%   <<"groupBy">> => list(analytics_session_group_by_specification()),
+%%   <<"maxResults">> => integer(),
+%%   <<"metrics">> := list(analytics_session_metric()),
+%%   <<"nextToken">> => string(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_session_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_metrics_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(analytics_session_result())
+%% }
+-type list_session_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slot_types_request() :: #{
+%%   <<"filters">> => list(slot_type_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => slot_type_sort_by()
+%% }
+-type list_slot_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slot_types_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"slotTypeSummaries">> => list(slot_type_summary())
+%% }
+-type list_slot_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slots_request() :: #{
+%%   <<"filters">> => list(slot_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => slot_sort_by()
+%% }
+-type list_slots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_slots_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"slotSummaries">> => list(slot_summary())
+%% }
+-type list_slots_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_execution_result_items_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resultFilterBy">> := test_execution_result_filter_by()
+%% }
+-type list_test_execution_result_items_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_execution_result_items_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testExecutionResults">> => test_execution_result_items()
+%% }
+-type list_test_execution_result_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => test_execution_sort_by()
+%% }
+-type list_test_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_executions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testExecutions">> => list(test_execution_summary())
+%% }
+-type list_test_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_set_records_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_set_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_set_records_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testSetRecords">> => list(test_set_turn_record())
+%% }
+-type list_test_set_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_sets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => test_set_sort_by()
+%% }
+-type list_test_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_sets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testSets">> => list(test_set_summary())
+%% }
+-type list_test_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_utterance_analytics_data_request() :: #{
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_utterance_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => utterance_data_sort_by(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_utterance_analytics_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_utterance_analytics_data_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"utterances">> => list(utterance_specification())
+%% }
+-type list_utterance_analytics_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_utterance_metrics_request() :: #{
+%%   <<"attributes">> => list(analytics_utterance_attribute()),
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
+%%   <<"endDateTime">> := non_neg_integer(),
+%%   <<"filters">> => list(analytics_utterance_filter()),
+%%   <<"groupBy">> => list(analytics_utterance_group_by_specification()),
+%%   <<"maxResults">> => integer(),
+%%   <<"metrics">> := list(analytics_utterance_metric()),
+%%   <<"nextToken">> => string(),
+%%   <<"startDateTime">> := non_neg_integer()
+%% }
+-type list_utterance_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_utterance_metrics_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(analytics_utterance_result())
+%% }
+-type list_utterance_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"customPayload">> => custom_payload(),
+%%   <<"imageResponseCard">> => image_response_card(),
+%%   <<"plainTextMessage">> => plain_text_message(),
+%%   <<"ssmlMessage">> => s_s_ml_message()
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_group() :: #{
+%%   <<"message">> => message(),
+%%   <<"variations">> => list(message())
+%% }
+-type message_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_values_setting() :: #{
+%%   <<"allowMultipleValues">> => boolean()
+%% }
+-type multiple_values_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_custom_vocabulary_item() :: #{
+%%   <<"displayAs">> => string(),
+%%   <<"phrase">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type new_custom_vocabulary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% nlu_improvement_specification() :: #{
+%%   <<"assistedNluMode">> => list(any()),
+%%   <<"enabled">> => boolean(),
+%%   <<"intentDisambiguationSettings">> => intent_disambiguation_settings()
+%% }
+-type nlu_improvement_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% obfuscation_setting() :: #{
+%%   <<"obfuscationSettingType">> => list(any())
+%% }
+-type obfuscation_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% opensearch_configuration() :: #{
+%%   <<"domainEndpoint">> => string(),
+%%   <<"exactResponse">> => boolean(),
+%%   <<"exactResponseFields">> => exact_response_fields(),
+%%   <<"includeFields">> => list(string()),
+%%   <<"indexName">> => string()
+%% }
+-type opensearch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_context() :: #{
+%%   <<"name">> => string(),
+%%   <<"timeToLiveInSeconds">> => integer(),
+%%   <<"turnsToLive">> => integer()
+%% }
+-type output_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% overall_test_result_item() :: #{
+%%   <<"endToEndResultCounts">> => map(),
+%%   <<"multiTurnConversation">> => boolean(),
+%%   <<"speechTranscriptionResultCounts">> => map(),
+%%   <<"totalResultCount">> => integer()
+%% }
+-type overall_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% overall_test_results() :: #{
+%%   <<"items">> => list(overall_test_result_item())
+%% }
+-type overall_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% parent_bot_network() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string()
+%% }
+-type parent_bot_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% path_format() :: #{
+%%   <<"objectPrefixes">> => list(string())
+%% }
+-type path_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% plain_text_message() :: #{
+%%   <<"value">> => string()
+%% }
+-type plain_text_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_dialog_code_hook_invocation_specification() :: #{
+%%   <<"failureConditional">> => conditional_specification(),
+%%   <<"failureNextStep">> => dialog_state(),
+%%   <<"failureResponse">> => response_specification(),
+%%   <<"successConditional">> => conditional_specification(),
+%%   <<"successNextStep">> => dialog_state(),
+%%   <<"successResponse">> => response_specification(),
+%%   <<"timeoutConditional">> => conditional_specification(),
+%%   <<"timeoutNextStep">> => dialog_state(),
+%%   <<"timeoutResponse">> => response_specification()
+%% }
+-type post_dialog_code_hook_invocation_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_fulfillment_status_specification() :: #{
+%%   <<"failureConditional">> => conditional_specification(),
+%%   <<"failureNextStep">> => dialog_state(),
+%%   <<"failureResponse">> => response_specification(),
+%%   <<"successConditional">> => conditional_specification(),
+%%   <<"successNextStep">> => dialog_state(),
+%%   <<"successResponse">> => response_specification(),
+%%   <<"timeoutConditional">> => conditional_specification(),
+%%   <<"timeoutNextStep">> => dialog_state(),
+%%   <<"timeoutResponse">> => response_specification()
+%% }
+-type post_fulfillment_status_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal() :: #{
+%%   <<"arn">> => string(),
+%%   <<"service">> => string()
+%% }
+-type principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_attempt_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"allowedInputTypes">> => allowed_input_types(),
+%%   <<"audioAndDTMFInputSpecification">> => audio_and_d_t_m_f_input_specification(),
+%%   <<"textInputSpecification">> => text_input_specification()
+%% }
+-type prompt_attempt_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"maxRetries">> => integer(),
+%%   <<"messageGroups">> => list(message_group()),
+%%   <<"messageSelectionStrategy">> => list(any()),
+%%   <<"promptAttemptsSpecification">> => map()
+%% }
+-type prompt_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_in_connect_assistant_configuration() :: #{
+%%   <<"assistantArn">> => string()
+%% }
+-type q_in_connect_assistant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_in_connect_intent_configuration() :: #{
+%%   <<"qInConnectAssistantConfiguration">> => q_in_connect_assistant_configuration()
+%% }
+-type q_in_connect_intent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% qn_a_intent_configuration() :: #{
+%%   <<"bedrockModelConfiguration">> => bedrock_model_specification(),
+%%   <<"dataSourceConfiguration">> => data_source_configuration()
+%% }
+-type qn_a_intent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% qn_a_kendra_configuration() :: #{
+%%   <<"exactResponse">> => boolean(),
+%%   <<"kendraIndex">> => string(),
+%%   <<"queryFilterString">> => string(),
+%%   <<"queryFilterStringEnabled">> => boolean()
+%% }
+-type qn_a_kendra_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommended_intent_summary() :: #{
+%%   <<"intentId">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"sampleUtterancesCount">> => integer()
+%% }
+-type recommended_intent_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% relative_aggregation_duration() :: #{
+%%   <<"timeDimension">> => list(any()),
+%%   <<"timeValue">> => integer()
+%% }
+-type relative_aggregation_duration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"messageGroups">> => list(message_group())
+%% }
+-type response_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_hint_details() :: #{
+%%   <<"runtimeHintValues">> => list(runtime_hint_value()),
+%%   <<"subSlotHints">> => map()
+%% }
+-type runtime_hint_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_hint_value() :: #{
+%%   <<"phrase">> => string()
+%% }
+-type runtime_hint_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_hints() :: #{
+%%   <<"slotHints">> => map()
+%% }
+-type runtime_hints() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_settings() :: #{
+%%   <<"nluImprovement">> => nlu_improvement_specification(),
+%%   <<"slotResolutionImprovement">> => slot_resolution_improvement_specification()
+%% }
+-type runtime_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_log_destination() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logPrefix">> => string(),
+%%   <<"s3BucketArn">> => string()
+%% }
+-type s3_bucket_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_transcript_source() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"pathFormat">> => path_format(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"transcriptFilter">> => transcript_filter(),
+%%   <<"transcriptFormat">> => list(any())
+%% }
+-type s3_bucket_transcript_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% s_s_ml_message() :: #{
+%%   <<"value">> => string()
+%% }
+-type s_s_ml_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% sample_utterance() :: #{
+%%   <<"utterance">> => string()
+%% }
+-type sample_utterance() :: #{binary() => any()}.
+
+
+%% Example:
+%% sample_utterance_generation_specification() :: #{
+%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
+%%   <<"enabled">> => boolean()
+%% }
+-type sample_utterance_generation_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% sample_value() :: #{
+%%   <<"value">> => string()
+%% }
+-type sample_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_associated_transcripts_request() :: #{
+%%   <<"filters">> := list(associated_transcript_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextIndex">> => integer(),
+%%   <<"searchOrder">> => list(any())
+%% }
+-type search_associated_transcripts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_associated_transcripts_response() :: #{
+%%   <<"associatedTranscripts">> => list(associated_transcript()),
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"nextIndex">> => integer(),
+%%   <<"totalResults">> => integer()
+%% }
+-type search_associated_transcripts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sentiment_analysis_settings() :: #{
+%%   <<"detectSentiment">> => boolean()
+%% }
+-type sentiment_analysis_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_data_sort_by() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type session_data_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_specification() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"channel">> => string(),
+%%   <<"conversationDurationSeconds">> => float(),
+%%   <<"conversationEndState">> => list(any()),
+%%   <<"conversationEndTime">> => non_neg_integer(),
+%%   <<"conversationStartTime">> => non_neg_integer(),
+%%   <<"invokedIntentSamples">> => list(invoked_intent_sample()),
+%%   <<"localeId">> => string(),
+%%   <<"mode">> => list(any()),
+%%   <<"numberOfTurns">> => float(),
+%%   <<"originatingRequestId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type session_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_capture_setting() :: #{
+%%   <<"captureConditional">> => conditional_specification(),
+%%   <<"captureNextStep">> => dialog_state(),
+%%   <<"captureResponse">> => response_specification(),
+%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
+%%   <<"elicitationCodeHook">> => elicitation_code_hook_invocation_setting(),
+%%   <<"failureConditional">> => conditional_specification(),
+%%   <<"failureNextStep">> => dialog_state(),
+%%   <<"failureResponse">> => response_specification()
+%% }
+-type slot_capture_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_default_value() :: #{
+%%   <<"defaultValue">> => string()
+%% }
+-type slot_default_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_default_value_specification() :: #{
+%%   <<"defaultValueList">> => list(slot_default_value())
+%% }
+-type slot_default_value_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type slot_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_priority() :: #{
+%%   <<"priority">> => integer(),
+%%   <<"slotId">> => string()
+%% }
+-type slot_priority() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_resolution_improvement_specification() :: #{
+%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
+%%   <<"enabled">> => boolean()
+%% }
+-type slot_resolution_improvement_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_resolution_setting() :: #{
+%%   <<"slotResolutionStrategy">> => list(any())
+%% }
+-type slot_resolution_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_resolution_test_result_item() :: #{
+%%   <<"resultCounts">> => slot_resolution_test_result_item_counts(),
+%%   <<"slotName">> => string()
+%% }
+-type slot_resolution_test_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_resolution_test_result_item_counts() :: #{
+%%   <<"slotMatchResultCounts">> => map(),
+%%   <<"speechTranscriptionResultCounts">> => map(),
+%%   <<"totalResultCount">> => integer()
+%% }
+-type slot_resolution_test_result_item_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type slot_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"slotConstraint">> => list(any()),
+%%   <<"slotId">> => string(),
+%%   <<"slotName">> => string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"valueElicitationPromptSpecification">> => prompt_specification()
+%% }
+-type slot_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type slot_type_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type slot_type_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_statistics() :: #{
+%%   <<"discoveredSlotTypeCount">> => integer()
+%% }
+-type slot_type_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeCategory">> => list(any()),
+%%   <<"slotTypeId">> => string(),
+%%   <<"slotTypeName">> => string()
+%% }
+-type slot_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_value() :: #{
+%%   <<"sampleValue">> => sample_value(),
+%%   <<"synonyms">> => list(sample_value())
+%% }
+-type slot_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_value() :: #{
+%%   <<"interpretedValue">> => string()
+%% }
+-type slot_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_value_elicitation_setting() :: #{
+%%   <<"defaultValueSpecification">> => slot_default_value_specification(),
+%%   <<"promptSpecification">> => prompt_specification(),
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"slotCaptureSetting">> => slot_capture_setting(),
+%%   <<"slotConstraint">> => list(any()),
+%%   <<"slotResolutionSetting">> => slot_resolution_setting(),
+%%   <<"waitAndContinueSpecification">> => wait_and_continue_specification()
+%% }
+-type slot_value_elicitation_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_value_override() :: #{
+%%   <<"shape">> => list(any()),
+%%   <<"value">> => slot_value(),
+%%   <<"values">> => list(slot_value_override())
+%% }
+-type slot_value_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_value_regex_filter() :: #{
+%%   <<"pattern">> => string()
+%% }
+-type slot_value_regex_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_value_selection_setting() :: #{
+%%   <<"advancedRecognitionSetting">> => advanced_recognition_setting(),
+%%   <<"regexFilter">> => slot_value_regex_filter(),
+%%   <<"resolutionStrategy">> => list(any())
+%% }
+-type slot_value_selection_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% specifications() :: #{
+%%   <<"slotTypeId">> => string(),
+%%   <<"valueElicitationSetting">> => sub_slot_value_elicitation_setting()
+%% }
+-type specifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% speech_foundation_model() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"voiceId">> => string()
+%% }
+-type speech_foundation_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% speech_model_config() :: #{
+%%   <<"deepgramConfig">> => deepgram_speech_model_config()
+%% }
+-type speech_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% speech_recognition_settings() :: #{
+%%   <<"speechModelConfig">> => speech_model_config(),
+%%   <<"speechModelPreference">> => list(any())
+%% }
+-type speech_recognition_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_analyzer_request() :: #{
+%%   <<"analysisScope">> := list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type start_bot_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_analyzer_response() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string()
+%% }
+-type start_bot_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_recommendation_request() :: #{
+%%   <<"encryptionSetting">> => encryption_setting(),
+%%   <<"transcriptSourceSetting">> := transcript_source_setting()
+%% }
+-type start_bot_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_recommendation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botRecommendationStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"encryptionSetting">> => encryption_setting(),
+%%   <<"localeId">> => string(),
+%%   <<"transcriptSourceSetting">> => transcript_source_setting()
+%% }
+-type start_bot_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_resource_generation_request() :: #{
+%%   <<"generationInputPrompt">> := string()
+%% }
+-type start_bot_resource_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bot_resource_generation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"generationId">> => string(),
+%%   <<"generationInputPrompt">> => string(),
+%%   <<"generationStatus">> => list(any()),
+%%   <<"localeId">> => string()
+%% }
+-type start_bot_resource_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_request() :: #{
+%%   <<"filePassword">> => string(),
+%%   <<"importId">> := string(),
+%%   <<"mergeStrategy">> := list(any()),
+%%   <<"resourceSpecification">> := import_resource_specification()
+%% }
+-type start_import_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"importId">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"mergeStrategy">> => list(any()),
+%%   <<"resourceSpecification">> => import_resource_specification()
+%% }
+-type start_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_execution_request() :: #{
+%%   <<"apiMode">> := list(any()),
+%%   <<"target">> := test_execution_target(),
+%%   <<"testExecutionModality">> => list(any())
+%% }
+-type start_test_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_execution_response() :: #{
+%%   <<"apiMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"target">> => test_execution_target(),
+%%   <<"testExecutionId">> => string(),
+%%   <<"testExecutionModality">> => list(any()),
+%%   <<"testSetId">> => string()
+%% }
+-type start_test_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_set_generation_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"generationDataSource">> := test_set_generation_data_source(),
+%%   <<"roleArn">> := string(),
+%%   <<"storageLocation">> := test_set_storage_location(),
+%%   <<"testSetName">> := string(),
+%%   <<"testSetTags">> => map()
+%% }
+-type start_test_set_generation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -422,55 +4056,69 @@
 
 
 %% Example:
-%% list_test_execution_result_items_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testExecutionResults">> => test_execution_result_items()
+%% still_waiting_response_specification() :: #{
+%%   <<"allowInterrupt">> => boolean(),
+%%   <<"frequencyInSeconds">> => integer(),
+%%   <<"messageGroups">> => list(message_group()),
+%%   <<"timeoutInSeconds">> => integer()
 %% }
--type list_test_execution_result_items_response() :: #{binary() => any()}.
+-type still_waiting_response_specification() :: #{binary() => any()}.
+
+%% Example:
+%% stop_bot_analyzer_request() :: #{}
+-type stop_bot_analyzer_request() :: #{}.
 
 
 %% Example:
-%% default_conditional_branch() :: #{
-%%   <<"nextStep">> => dialog_state(),
-%%   <<"response">> => response_specification()
+%% stop_bot_analyzer_response() :: #{
+%%   <<"botAnalyzerRequestId">> => string(),
+%%   <<"botAnalyzerStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
 %% }
--type default_conditional_branch() :: #{binary() => any()}.
+-type stop_bot_analyzer_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_bot_recommendation_request() :: #{}
+-type stop_bot_recommendation_request() :: #{}.
 
 
 %% Example:
-%% intent_level_slot_resolution_test_result_item() :: #{
-%%   <<"intentName">> => string(),
-%%   <<"multiTurnConversation">> => boolean(),
-%%   <<"slotResolutionResults">> => list(slot_resolution_test_result_item())
+%% stop_bot_recommendation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botRecommendationStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"localeId">> => string()
 %% }
--type intent_level_slot_resolution_test_result_item() :: #{binary() => any()}.
+-type stop_bot_recommendation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% issue_location() :: #{
-%%   <<"botLocale">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"slotId">> => string()
+%% sub_slot_setting() :: #{
+%%   <<"expression">> => string(),
+%%   <<"slotSpecifications">> => map()
 %% }
--type issue_location() :: #{binary() => any()}.
+-type sub_slot_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% bot_locale_history_event() :: #{
-%%   <<"event">> => string(),
-%%   <<"eventDate">> => non_neg_integer()
+%% sub_slot_type_composition() :: #{
+%%   <<"name">> => string(),
+%%   <<"slotTypeId">> => string()
 %% }
--type bot_locale_history_event() :: #{binary() => any()}.
+-type sub_slot_type_composition() :: #{binary() => any()}.
 
 
 %% Example:
-%% analytics_utterance_result() :: #{
-%%   <<"attributeResults">> => list(analytics_utterance_attribute_result()),
-%%   <<"binKeys">> => list(analytics_bin_key()),
-%%   <<"groupByKeys">> => list(analytics_utterance_group_by_key()),
-%%   <<"metricsResults">> => list(analytics_utterance_metric_result())
+%% sub_slot_value_elicitation_setting() :: #{
+%%   <<"defaultValueSpecification">> => slot_default_value_specification(),
+%%   <<"promptSpecification">> => prompt_specification(),
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"waitAndContinueSpecification">> => wait_and_continue_specification()
 %% }
--type analytics_utterance_result() :: #{binary() => any()}.
+-type sub_slot_value_elicitation_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -479,78 +4127,117 @@
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
 
 %% Example:
-%% associated_transcript() :: #{
-%%   <<"transcript">> => string()
+%% test_execution_result_filter_by() :: #{
+%%   <<"conversationLevelTestResultsFilterBy">> => conversation_level_test_results_filter_by(),
+%%   <<"resultTypeFilter">> => list(any())
 %% }
--type associated_transcript() :: #{binary() => any()}.
+-type test_execution_result_filter_by() :: #{binary() => any()}.
 
 
 %% Example:
-%% conversation_level_test_results_filter_by() :: #{
-%%   <<"endToEndResult">> => list(any())
+%% test_execution_result_items() :: #{
+%%   <<"conversationLevelTestResults">> => conversation_level_test_results(),
+%%   <<"intentClassificationTestResults">> => intent_classification_test_results(),
+%%   <<"intentLevelSlotResolutionTestResults">> => intent_level_slot_resolution_test_results(),
+%%   <<"overallTestResults">> => overall_test_results(),
+%%   <<"utteranceLevelTestResults">> => utterance_level_test_results()
 %% }
--type conversation_level_test_results_filter_by() :: #{binary() => any()}.
+-type test_execution_result_items() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bot_version_replicas_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersionReplicaSummaries">> => list(bot_version_replica_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"replicaRegion">> => string(),
-%%   <<"sourceRegion">> => string()
-%% }
--type list_bot_version_replicas_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_level_test_result_item() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"endToEndResult">> => list(any()),
-%%   <<"intentClassificationResults">> => list(conversation_level_intent_classification_result_item()),
-%%   <<"slotResolutionResults">> => list(conversation_level_slot_resolution_result_item()),
-%%   <<"speechTranscriptionResult">> => list(any())
-%% }
--type conversation_level_test_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_request() :: #{}
--type describe_export_request() :: #{}.
-
-
-%% Example:
-%% conversation_logs_data_source_filter_by() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"inputMode">> => list(any()),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type conversation_logs_data_source_filter_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_statement_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type delete_resource_policy_statement_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% built_in_slot_type_sort_by() :: #{
+%% test_execution_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
--type built_in_slot_type_sort_by() :: #{binary() => any()}.
+-type test_execution_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_execution_summary() :: #{
+%%   <<"apiMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"target">> => test_execution_target(),
+%%   <<"testExecutionId">> => string(),
+%%   <<"testExecutionModality">> => list(any()),
+%%   <<"testExecutionStatus">> => list(any()),
+%%   <<"testSetId">> => string(),
+%%   <<"testSetName">> => string()
+%% }
+-type test_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_execution_target() :: #{
+%%   <<"botAliasTarget">> => bot_alias_test_execution_target()
+%% }
+-type test_execution_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_discrepancy_errors() :: #{
+%%   <<"intentDiscrepancies">> => list(test_set_intent_discrepancy_item()),
+%%   <<"slotDiscrepancies">> => list(test_set_slot_discrepancy_item())
+%% }
+-type test_set_discrepancy_errors() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_discrepancy_report_bot_alias_target() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botId">> => string(),
+%%   <<"localeId">> => string()
+%% }
+-type test_set_discrepancy_report_bot_alias_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_discrepancy_report_resource_target() :: #{
+%%   <<"botAliasTarget">> => test_set_discrepancy_report_bot_alias_target()
+%% }
+-type test_set_discrepancy_report_resource_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_export_specification() :: #{
+%%   <<"testSetId">> => string()
+%% }
+-type test_set_export_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_generation_data_source() :: #{
+%%   <<"conversationLogsDataSource">> => conversation_logs_data_source()
+%% }
+-type test_set_generation_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_import_input_location() :: #{
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3Path">> => string()
+%% }
+-type test_set_import_input_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_import_resource_specification() :: #{
+%%   <<"description">> => string(),
+%%   <<"importInputLocation">> => test_set_import_input_location(),
+%%   <<"modality">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"storageLocation">> => test_set_storage_location(),
+%%   <<"testSetName">> => string(),
+%%   <<"testSetTags">> => map()
+%% }
+-type test_set_import_resource_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -562,11 +4249,273 @@
 
 
 %% Example:
-%% slot_sort_by() :: #{
+%% test_set_slot_discrepancy_item() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"slotName">> => string()
+%% }
+-type test_set_slot_discrepancy_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_sort_by() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
--type slot_sort_by() :: #{binary() => any()}.
+-type test_set_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_storage_location() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3Path">> => string()
+%% }
+-type test_set_storage_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"modality">> => list(any()),
+%%   <<"numTurns">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"storageLocation">> => test_set_storage_location(),
+%%   <<"testSetId">> => string(),
+%%   <<"testSetName">> => string()
+%% }
+-type test_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_turn_record() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"recordNumber">> => float(),
+%%   <<"turnNumber">> => integer(),
+%%   <<"turnSpecification">> => turn_specification()
+%% }
+-type test_set_turn_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_set_turn_result() :: #{
+%%   <<"agent">> => agent_turn_result(),
+%%   <<"user">> => user_turn_result()
+%% }
+-type test_set_turn_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_input_specification() :: #{
+%%   <<"startTimeoutMs">> => integer()
+%% }
+-type text_input_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_log_destination() :: #{
+%%   <<"cloudWatch">> => cloud_watch_log_group_log_destination()
+%% }
+-type text_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_log_setting() :: #{
+%%   <<"destination">> => text_log_destination(),
+%%   <<"enabled">> => boolean(),
+%%   <<"selectiveLoggingEnabled">> => boolean()
+%% }
+-type text_log_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcript_filter() :: #{
+%%   <<"lexTranscriptFilter">> => lex_transcript_filter()
+%% }
+-type transcript_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcript_source_setting() :: #{
+%%   <<"s3BucketTranscriptSource">> => s3_bucket_transcript_source()
+%% }
+-type transcript_source_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% turn_specification() :: #{
+%%   <<"agentTurn">> => agent_turn_specification(),
+%%   <<"userTurn">> => user_turn_specification()
+%% }
+-type turn_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% unified_speech_settings() :: #{
+%%   <<"speechFoundationModel">> => speech_foundation_model()
+%% }
+-type unified_speech_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_bot_alias_request() :: #{
+%%   <<"botAliasLocaleSettings">> => map(),
+%%   <<"botAliasName">> := string(),
+%%   <<"botVersion">> => string(),
+%%   <<"conversationLogSettings">> => conversation_log_settings(),
+%%   <<"description">> => string(),
+%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
+%% }
+-type update_bot_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_alias_response() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botAliasLocaleSettings">> => map(),
+%%   <<"botAliasName">> => string(),
+%%   <<"botAliasStatus">> => list(any()),
+%%   <<"botId">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"conversationLogSettings">> => conversation_log_settings(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
+%% }
+-type update_bot_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_locale_request() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
+%%   <<"description">> => string(),
+%%   <<"generativeAISettings">> => generative_a_i_settings(),
+%%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
+%%   <<"voiceSettings">> => voice_settings()
+%% }
+-type update_bot_locale_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_locale_response() :: #{
+%%   <<"audioFillerSettings">> => audio_filler_settings(),
+%%   <<"botId">> => string(),
+%%   <<"botLocaleStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"generativeAISettings">> => generative_a_i_settings(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"localeName">> => string(),
+%%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"recommendedActions">> => list(string()),
+%%   <<"speechDetectionSensitivity">> => list(any()),
+%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
+%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
+%%   <<"voiceSettings">> => voice_settings()
+%% }
+-type update_bot_locale_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_recommendation_request() :: #{
+%%   <<"encryptionSetting">> := encryption_setting()
+%% }
+-type update_bot_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_recommendation_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botRecommendationId">> => string(),
+%%   <<"botRecommendationStatus">> => list(any()),
+%%   <<"botVersion">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"encryptionSetting">> => encryption_setting(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"localeId">> => string(),
+%%   <<"transcriptSourceSetting">> => transcript_source_setting()
+%% }
+-type update_bot_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_request() :: #{
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> := string(),
+%%   <<"botType">> => list(any()),
+%%   <<"dataPrivacy">> := data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"idleSessionTTLInSeconds">> := integer(),
+%%   <<"roleArn">> := string()
+%% }
+-type update_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botMembers">> => list(bot_member()),
+%%   <<"botName">> => string(),
+%%   <<"botStatus">> => list(any()),
+%%   <<"botType">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataPrivacy">> => data_privacy(),
+%%   <<"description">> => string(),
+%%   <<"errorLogSettings">> => error_log_settings(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_export_request() :: #{
+%%   <<"filePassword">> => string()
+%% }
+-type update_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_export_response() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"exportId">> => string(),
+%%   <<"exportStatus">> => list(any()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"resourceSpecification">> => export_resource_specification()
+%% }
+-type update_export_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -589,1169 +4538,6 @@
 %%   <<"slotPriorities">> => list(slot_priority())
 %% }
 -type update_intent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_group_by_specification() :: #{
-%%   <<"name">> => list(any())
-%% }
--type analytics_utterance_group_by_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_value_regex_filter() :: #{
-%%   <<"pattern">> => string()
-%% }
--type slot_value_regex_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% obfuscation_setting() :: #{
-%%   <<"obfuscationSettingType">> => list(any())
-%% }
--type obfuscation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_test_execution_request() :: #{
-%%   <<"apiMode">> := list(any()),
-%%   <<"target">> := test_execution_target(),
-%%   <<"testExecutionModality">> => list(any())
-%% }
--type start_test_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% specifications() :: #{
-%%   <<"slotTypeId">> => string(),
-%%   <<"valueElicitationSetting">> => sub_slot_value_elicitation_setting()
-%% }
--type specifications() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_alias_history_event() :: #{
-%%   <<"botVersion">> => string(),
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"startDate">> => non_neg_integer()
-%% }
--type bot_alias_history_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% fulfillment_update_response_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"frequencyInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group())
-%% }
--type fulfillment_update_response_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_bot_replicas_request() :: #{}
--type list_bot_replicas_request() :: #{}.
-
-%% Example:
-%% describe_bot_alias_request() :: #{}
--type describe_bot_alias_request() :: #{}.
-
-
-%% Example:
-%% agent_turn_result() :: #{
-%%   <<"actualAgentPrompt">> => string(),
-%%   <<"actualElicitedSlot">> => string(),
-%%   <<"actualIntent">> => string(),
-%%   <<"errorDetails">> => execution_error_details(),
-%%   <<"expectedAgentPrompt">> => string()
-%% }
--type agent_turn_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_log_settings() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type error_log_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_version_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botType">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataPrivacy">> => data_privacy(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"parentBotNetworks">> => list(parent_bot_network()),
-%%   <<"roleArn">> => string()
-%% }
--type describe_bot_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_set_request() :: #{}
--type describe_test_set_request() :: #{}.
-
-
-%% Example:
-%% utterance_data_sort_by() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type utterance_data_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_test_execution_response() :: #{
-%%   <<"apiMode">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"target">> => test_execution_target(),
-%%   <<"testExecutionId">> => string(),
-%%   <<"testExecutionModality">> => list(any()),
-%%   <<"testExecutionStatus">> => list(any()),
-%%   <<"testSetId">> => string(),
-%%   <<"testSetName">> => string()
-%% }
--type describe_test_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intents_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"intentSummaries">> => list(intent_summary()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_intents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type analytics_utterance_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% generative_a_i_settings() :: #{
-%%   <<"buildtimeSettings">> => buildtime_settings(),
-%%   <<"runtimeSettings">> => runtime_settings()
-%% }
--type generative_a_i_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_configuration() :: #{
-%%   <<"bedrockKnowledgeStoreConfiguration">> => bedrock_knowledge_store_configuration(),
-%%   <<"kendraConfiguration">> => qn_a_kendra_configuration(),
-%%   <<"opensearchConfiguration">> => opensearch_configuration()
-%% }
--type data_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% analytics_session_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any()),
-%%   <<"statistic">> => list(any())
-%% }
--type analytics_session_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_stage_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()),
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_intent_stage_filter()),
-%%   <<"groupBy">> => list(analytics_intent_stage_group_by_specification()),
-%%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_intent_stage_metric()),
-%%   <<"nextToken">> => string(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_intent_stage_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_group() :: #{
-%%   <<"message">> => message(),
-%%   <<"variations">> => list(message())
-%% }
--type message_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_replica_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botReplicaStatus">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"replicaRegion">> => string(),
-%%   <<"sourceRegion">> => string()
-%% }
--type describe_bot_replica_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommended_intents_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"summaryList">> => list(recommended_intent_summary())
-%% }
--type list_recommended_intents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_alias_response() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasLocaleSettings">> => map(),
-%%   <<"botAliasName">> => string(),
-%%   <<"botAliasStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"conversationLogSettings">> => conversation_log_settings(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
-%% }
--type update_bot_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% elicitation_code_hook_invocation_setting() :: #{
-%%   <<"enableCodeHookInvocation">> => boolean(),
-%%   <<"invocationLabel">> => string()
-%% }
--type elicitation_code_hook_invocation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_classification_test_result_item_counts() :: #{
-%%   <<"intentMatchResultCounts">> => map(),
-%%   <<"speechTranscriptionResultCounts">> => map(),
-%%   <<"totalResultCount">> => integer()
-%% }
--type intent_classification_test_result_item_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% lex_transcript_filter() :: #{
-%%   <<"dateRangeFilter">> => date_range_filter()
-%% }
--type lex_transcript_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_bot_analyzer_response() :: #{
-%%   <<"botAnalyzerRequestId">> => string(),
-%%   <<"botAnalyzerStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type stop_bot_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_attribute() :: #{
-%%   <<"name">> => list(any())
-%% }
--type analytics_utterance_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_classification_test_result_item() :: #{
-%%   <<"intentName">> => string(),
-%%   <<"multiTurnConversation">> => boolean(),
-%%   <<"resultCounts">> => intent_classification_test_result_item_counts()
-%% }
--type intent_classification_test_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_bot_element_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"sampleUtterances">> => list(sample_utterance())
-%% }
--type generate_bot_element_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_export_request() :: #{
-%%   <<"fileFormat">> := list(any()),
-%%   <<"filePassword">> => string(),
-%%   <<"resourceSpecification">> := export_resource_specification()
-%% }
--type create_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% path_format() :: #{
-%%   <<"objectPrefixes">> => list(string())
-%% }
--type path_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_statement_request() :: #{
-%%   <<"expectedRevisionId">> => string()
-%% }
--type delete_resource_policy_statement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_settings() :: #{
-%%   <<"nluImprovement">> => nlu_improvement_specification(),
-%%   <<"slotResolutionImprovement">> => slot_resolution_improvement_specification()
-%% }
--type runtime_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_slot_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"multipleValuesSetting">> => multiple_values_setting(),
-%%   <<"obfuscationSetting">> => obfuscation_setting(),
-%%   <<"slotName">> := string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"subSlotSetting">> => sub_slot_setting(),
-%%   <<"valueElicitationSetting">> := slot_value_elicitation_setting()
-%% }
--type update_slot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% opensearch_configuration() :: #{
-%%   <<"domainEndpoint">> => string(),
-%%   <<"exactResponse">> => boolean(),
-%%   <<"exactResponseFields">> => exact_response_fields(),
-%%   <<"includeFields">> => list(string()),
-%%   <<"indexName">> => string()
-%% }
--type opensearch_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_request() :: #{
-%%   <<"skipResourceInUseCheck">> => boolean()
-%% }
--type delete_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_slot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"multipleValuesSetting">> => multiple_values_setting(),
-%%   <<"obfuscationSetting">> => obfuscation_setting(),
-%%   <<"slotId">> => string(),
-%%   <<"slotName">> => string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"subSlotSetting">> => sub_slot_setting(),
-%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
-%% }
--type update_slot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_member() :: #{
-%%   <<"botMemberAliasId">> => string(),
-%%   <<"botMemberAliasName">> => string(),
-%%   <<"botMemberId">> => string(),
-%%   <<"botMemberName">> => string(),
-%%   <<"botMemberVersion">> => string()
-%% }
--type bot_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_statistics() :: #{
-%%   <<"discoveredIntentCount">> => integer()
-%% }
--type intent_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_recommendation_request() :: #{
-%%   <<"encryptionSetting">> => encryption_setting(),
-%%   <<"transcriptSourceSetting">> := transcript_source_setting()
-%% }
--type start_bot_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_context() :: #{
-%%   <<"name">> => string(),
-%%   <<"timeToLiveInSeconds">> => integer(),
-%%   <<"turnsToLive">> => integer()
-%% }
--type output_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_alias_test_execution_target() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botId">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type bot_alias_test_execution_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_priority() :: #{
-%%   <<"priority">> => integer(),
-%%   <<"slotId">> => string()
-%% }
--type slot_priority() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type create_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% initial_response_setting() :: #{
-%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
-%%   <<"conditional">> => conditional_specification(),
-%%   <<"initialResponse">> => response_specification(),
-%%   <<"nextStep">> => dialog_state()
-%% }
--type initial_response_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_input_specification() :: #{
-%%   <<"startTimeoutMs">> => integer()
-%% }
--type text_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_analyzer_recommendation_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_bot_analyzer_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_analyzer_history_summary() :: #{
-%%   <<"botAnalyzerRequestId">> => string(),
-%%   <<"botAnalyzerStatus">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer()
-%% }
--type bot_analyzer_history_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_import_specification() :: #{
-%%   <<"botName">> => string(),
-%%   <<"botTags">> => map(),
-%%   <<"dataPrivacy">> => data_privacy(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"testBotAliasTags">> => map()
-%% }
--type bot_import_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_version_request() :: #{
-%%   <<"botVersionLocaleSpecification">> := map(),
-%%   <<"description">> => string()
-%% }
--type create_bot_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_recommendation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botRecommendationStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"encryptionSetting">> => encryption_setting(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"transcriptSourceSetting">> => transcript_source_setting()
-%% }
--type update_bot_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_path_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type analytics_path_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_discrepancy_errors() :: #{
-%%   <<"intentDiscrepancies">> => list(test_set_intent_discrepancy_item()),
-%%   <<"slotDiscrepancies">> => list(test_set_slot_discrepancy_item())
-%% }
--type test_set_discrepancy_errors() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_test_set_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"testSetName">> := string()
-%% }
--type update_test_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type export_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% dialog_code_hook_settings() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type dialog_code_hook_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% overall_test_results() :: #{
-%%   <<"items">> => list(overall_test_result_item())
-%% }
--type overall_test_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_resolution_improvement_specification() :: #{
-%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
-%%   <<"enabled">> => boolean()
-%% }
--type slot_resolution_improvement_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% s_s_ml_message() :: #{
-%%   <<"value">> => string()
-%% }
--type s_s_ml_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoked_intent_sample() :: #{
-%%   <<"intentName">> => string()
-%% }
--type invoked_intent_sample() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_locale_summary() :: #{
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"localeName">> => string()
-%% }
--type bot_locale_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_specification() :: #{
-%%   <<"endTimeoutMs">> => integer(),
-%%   <<"maxLengthMs">> => integer()
-%% }
--type audio_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"importId">> => string(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"importedResourceId">> => string(),
-%%   <<"importedResourceName">> => string(),
-%%   <<"importedResourceType">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"mergeStrategy">> => list(any())
-%% }
--type import_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% grammar_slot_type_source() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3ObjectKey">> => string()
-%% }
--type grammar_slot_type_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_value() :: #{
-%%   <<"interpretedValue">> => string()
-%% }
--type slot_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_session_group_by_key() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type analytics_session_group_by_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_locale_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type bot_locale_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_level_intent_classification_result_item() :: #{
-%%   <<"intentName">> => string(),
-%%   <<"matchResult">> => list(any())
-%% }
--type conversation_level_intent_classification_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_error_details() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type execution_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"maxRetries">> => integer(),
-%%   <<"messageGroups">> => list(message_group()),
-%%   <<"messageSelectionStrategy">> => list(any()),
-%%   <<"promptAttemptsSpecification">> => map()
-%% }
--type prompt_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(new_custom_vocabulary_item())
-%% }
--type batch_create_custom_vocabulary_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_upload_url_response() :: #{
-%%   <<"importId">> => string(),
-%%   <<"uploadUrl">> => string()
-%% }
--type create_upload_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fulfillment_start_response_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"delayInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group())
-%% }
--type fulfillment_start_response_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_settings() :: #{
-%%   <<"engine">> => list(any()),
-%%   <<"voiceId">> => string()
-%% }
--type voice_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_export_request() :: #{}
--type delete_export_request() :: #{}.
-
-
-%% Example:
-%% conversation_level_result_detail() :: #{
-%%   <<"endToEndResult">> => list(any()),
-%%   <<"speechTranscriptionResult">> => list(any())
-%% }
--type conversation_level_result_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_aggregated_utterances_request() :: #{
-%%   <<"aggregationDuration">> := utterance_aggregation_duration(),
-%%   <<"botAliasId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(aggregated_utterances_filter()),
-%%   <<"localeId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => aggregated_utterances_sort_by()
-%% }
--type list_aggregated_utterances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_transcript_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type associated_transcript_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slot_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"multipleValuesSetting">> => multiple_values_setting(),
-%%   <<"obfuscationSetting">> => obfuscation_setting(),
-%%   <<"slotName">> := string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"subSlotSetting">> => sub_slot_setting(),
-%%   <<"valueElicitationSetting">> := slot_value_elicitation_setting()
-%% }
--type create_slot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_associated_transcripts_request() :: #{
-%%   <<"filters">> := list(associated_transcript_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextIndex">> => integer(),
-%%   <<"searchOrder">> => list(any())
-%% }
--type search_associated_transcripts_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bot_version_request() :: #{}
--type describe_bot_version_request() :: #{}.
-
-
-%% Example:
-%% principal() :: #{
-%%   <<"arn">> => string(),
-%%   <<"service">> => string()
-%% }
--type principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputContexts">> => list(input_context()),
-%%   <<"intentDisplayName">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"intentName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"outputContexts">> => list(output_context()),
-%%   <<"parentIntentSignature">> => string()
-%% }
--type intent_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_slot_type_composition() :: #{
-%%   <<"name">> => string(),
-%%   <<"slotTypeId">> => string()
-%% }
--type sub_slot_type_composition() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_import_input_location() :: #{
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3Path">> => string()
-%% }
--type test_set_import_input_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intents_request() :: #{
-%%   <<"filters">> => list(intent_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => intent_sort_by()
-%% }
--type list_intents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_bin_by_specification() :: #{
-%%   <<"interval">> => list(any()),
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type analytics_bin_by_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_resolution_test_result_item() :: #{
-%%   <<"resultCounts">> => slot_resolution_test_result_item_counts(),
-%%   <<"slotName">> => string()
-%% }
--type slot_resolution_test_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_resource_specification() :: #{
-%%   <<"botExportSpecification">> => bot_export_specification(),
-%%   <<"botLocaleExportSpecification">> => bot_locale_export_specification(),
-%%   <<"customVocabularyExportSpecification">> => custom_vocabulary_export_specification(),
-%%   <<"testSetExportSpecification">> => test_set_export_specification()
-%% }
--type export_resource_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% overall_test_result_item() :: #{
-%%   <<"endToEndResultCounts">> => map(),
-%%   <<"multiTurnConversation">> => boolean(),
-%%   <<"speechTranscriptionResultCounts">> => map(),
-%%   <<"totalResultCount">> => integer()
-%% }
--type overall_test_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_turn_result() :: #{
-%%   <<"actualOutput">> => user_turn_output_specification(),
-%%   <<"conversationLevelResult">> => conversation_level_result_detail(),
-%%   <<"endToEndResult">> => list(any()),
-%%   <<"errorDetails">> => execution_error_details(),
-%%   <<"expectedOutput">> => user_turn_output_specification(),
-%%   <<"input">> => user_turn_input_specification(),
-%%   <<"intentMatchResult">> => list(any()),
-%%   <<"slotMatchResult">> => list(any()),
-%%   <<"speechTranscriptionResult">> => list(any())
-%% }
--type user_turn_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_version_locale_details() :: #{
-%%   <<"sourceBotVersion">> => string()
-%% }
--type bot_version_locale_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_alias_response() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasLocaleSettings">> => map(),
-%%   <<"botAliasName">> => string(),
-%%   <<"botAliasStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"conversationLogSettings">> => conversation_log_settings(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings(),
-%%   <<"tags">> => map()
-%% }
--type create_bot_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => bot_version_sort_by()
-%% }
--type list_bot_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_response_card() :: #{
-%%   <<"buttons">> => list(button()),
-%%   <<"imageUrl">> => string(),
-%%   <<"subtitle">> => string(),
-%%   <<"title">> => string()
-%% }
--type image_response_card() :: #{binary() => any()}.
-
-
-%% Example:
-%% qn_a_intent_configuration() :: #{
-%%   <<"bedrockModelConfiguration">> => bedrock_model_specification(),
-%%   <<"dataSourceConfiguration">> => data_source_configuration()
-%% }
--type qn_a_intent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_exports_request() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(export_filter()),
-%%   <<"localeId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => export_sort_by()
-%% }
--type list_exports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_set_records_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testSetRecords">> => list(test_set_turn_record())
-%% }
--type list_test_set_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_alias_response() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasStatus">> => list(any()),
-%%   <<"botId">> => string()
-%% }
--type delete_bot_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_paths_request() :: #{
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_path_filter()),
-%%   <<"intentPath">> := string(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_intent_paths_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dialog_state() :: #{
-%%   <<"dialogAction">> => dialog_action(),
-%%   <<"intent">> => intent_override(),
-%%   <<"sessionAttributes">> => map()
-%% }
--type dialog_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript_filter() :: #{
-%%   <<"lexTranscriptFilter">> => lex_transcript_filter()
-%% }
--type transcript_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_metrics_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_intent_result())
-%% }
--type list_intent_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% generation_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"generationId">> => string(),
-%%   <<"generationStatus">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer()
-%% }
--type generation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(custom_vocabulary_item())
-%% }
--type batch_update_custom_vocabulary_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_test_set_generation_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"generationDataSource">> => test_set_generation_data_source(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"storageLocation">> => test_set_storage_location(),
-%%   <<"testSetGenerationId">> => string(),
-%%   <<"testSetGenerationStatus">> => list(any()),
-%%   <<"testSetId">> => string(),
-%%   <<"testSetName">> => string()
-%% }
--type describe_test_set_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_replica_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botReplicaStatus">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"replicaRegion">> => string(),
-%%   <<"sourceRegion">> => string()
-%% }
--type create_bot_replica_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_alias_summary() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasName">> => string(),
-%%   <<"botAliasStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer()
-%% }
--type bot_alias_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_recommendations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_associated_transcripts_response() :: #{
-%%   <<"associatedTranscripts">> => list(associated_transcript()),
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextIndex">> => integer(),
-%%   <<"totalResults">> => integer()
-%% }
--type search_associated_transcripts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_resource_generation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"generatedBotLocaleUrl">> => string(),
-%%   <<"generationId">> => string(),
-%%   <<"generationInputPrompt">> => string(),
-%%   <<"generationStatus">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"modelArn">> => string()
-%% }
--type describe_bot_resource_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_test_set_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"modality">> => list(any()),
-%%   <<"numTurns">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"storageLocation">> => test_set_storage_location(),
-%%   <<"testSetId">> => string(),
-%%   <<"testSetName">> => string()
-%% }
--type update_test_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_attempt_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"allowedInputTypes">> => allowed_input_types(),
-%%   <<"audioAndDTMFInputSpecification">> => audio_and_d_t_m_f_input_specification(),
-%%   <<"textInputSpecification">> => text_input_specification()
-%% }
--type prompt_attempt_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% kendra_configuration() :: #{
-%%   <<"kendraIndex">> => string(),
-%%   <<"queryFilterString">> => string(),
-%%   <<"queryFilterStringEnabled">> => boolean()
-%% }
--type kendra_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_request() :: #{}
--type describe_import_request() :: #{}.
-
-
-%% Example:
-%% descriptive_bot_builder_specification() :: #{
-%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
-%%   <<"enabled">> => boolean()
-%% }
--type descriptive_bot_builder_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imports_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"importSummaries">> => list(import_summary()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_imports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_recognition_setting() :: #{
-%%   <<"audioRecognitionStrategy">> => list(any())
-%% }
--type advanced_recognition_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_aggregation_duration() :: #{
-%%   <<"relativeAggregationDuration">> => relative_aggregation_duration()
-%% }
--type utterance_aggregation_duration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1783,1166 +4569,52 @@
 
 
 %% Example:
-%% test_set_storage_location() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3Path">> => string()
+%% update_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"policy">> := string()
 %% }
--type test_set_storage_location() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bot_locale_request() :: #{}
--type describe_bot_locale_request() :: #{}.
+-type update_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_slot_types_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"slotTypeSummaries">> => list(slot_type_summary())
-%% }
--type list_slot_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_stage_metric_result() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type analytics_intent_stage_metric_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_built_in_slot_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => built_in_slot_type_sort_by()
-%% }
--type list_built_in_slot_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_turn_result() :: #{
-%%   <<"agent">> => agent_turn_result(),
-%%   <<"user">> => user_turn_result()
-%% }
--type test_set_turn_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_level_slot_resolution_test_results() :: #{
-%%   <<"items">> => list(intent_level_slot_resolution_test_result_item())
-%% }
--type intent_level_slot_resolution_test_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_alias_locale_settings() :: #{
-%%   <<"codeHookSpecification">> => code_hook_specification(),
-%%   <<"enabled">> => boolean()
-%% }
--type bot_alias_locale_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_alias_request() :: #{
-%%   <<"botAliasLocaleSettings">> => map(),
-%%   <<"botAliasName">> := string(),
-%%   <<"botVersion">> => string(),
-%%   <<"conversationLogSettings">> => conversation_log_settings(),
-%%   <<"description">> => string(),
-%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings(),
-%%   <<"tags">> => map()
-%% }
--type create_bot_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_turn_specification() :: #{
-%%   <<"expected">> => user_turn_output_specification(),
-%%   <<"input">> => user_turn_input_specification()
-%% }
--type user_turn_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_recommendation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botRecommendationStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"encryptionSetting">> => encryption_setting(),
-%%   <<"localeId">> => string(),
-%%   <<"transcriptSourceSetting">> => transcript_source_setting()
-%% }
--type start_bot_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_log_destination() :: #{
-%%   <<"cloudWatch">> => cloud_watch_log_group_log_destination()
-%% }
--type text_log_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_version_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botVersion">> => string()
-%% }
--type delete_bot_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_alias_request() :: #{
-%%   <<"botAliasLocaleSettings">> => map(),
-%%   <<"botAliasName">> := string(),
-%%   <<"botVersion">> => string(),
-%%   <<"conversationLogSettings">> => conversation_log_settings(),
-%%   <<"description">> => string(),
-%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
-%% }
--type update_bot_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bot_request() :: #{}
--type describe_bot_request() :: #{}.
-
-
-%% Example:
-%% conversation_logs_data_source() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botId">> => string(),
-%%   <<"filter">> => conversation_logs_data_source_filter_by(),
-%%   <<"localeId">> => string()
-%% }
--type conversation_logs_data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_audio_input_specification() :: #{
-%%   <<"audioFileS3Location">> => string()
-%% }
--type utterance_audio_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_analyzer_request() :: #{
-%%   <<"analysisScope">> := list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type start_bot_analyzer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_analytics_data_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_specification())
-%% }
--type list_session_analytics_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_resource_generation_request() :: #{
-%%   <<"generationInputPrompt">> := string()
-%% }
--type start_bot_resource_generation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_resolution_test_result_item_counts() :: #{
-%%   <<"slotMatchResultCounts">> => map(),
-%%   <<"speechTranscriptionResultCounts">> => map(),
-%%   <<"totalResultCount">> => integer()
-%% }
--type slot_resolution_test_result_item_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_summary() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botType">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"latestBotVersion">> => string()
-%% }
--type bot_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_request() :: #{
-%%   <<"filters">> => list(bot_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => bot_sort_by()
-%% }
--type list_bots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_custom_vocabulary_metadata_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"customVocabularyStatus">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string()
-%% }
--type describe_custom_vocabulary_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_policy_statement_response() :: #{
+%% update_resource_policy_response() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"revisionId">> => string()
 %% }
--type create_resource_policy_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slot_request() :: #{}
--type delete_slot_request() :: #{}.
-
-%% Example:
-%% delete_bot_replica_request() :: #{}
--type delete_bot_replica_request() :: #{}.
+-type update_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bot_analyzer_history_request() :: #{
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_analyzer_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_slots_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"slotSummaries">> => list(slot_summary())
-%% }
--type list_slots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_paths_response() :: #{
-%%   <<"nodeSummaries">> => list(analytics_intent_node_summary())
-%% }
--type list_intent_paths_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_custom_vocabulary_item() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"itemId">> => string()
-%% }
--type failed_custom_vocabulary_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% buildtime_settings() :: #{
-%%   <<"descriptiveBotBuilder">> => descriptive_bot_builder_specification(),
-%%   <<"sampleUtteranceGeneration">> => sample_utterance_generation_specification()
-%% }
--type buildtime_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_vocabulary_import_specification() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type custom_vocabulary_import_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_discrepancy_report_bot_alias_target() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botId">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type test_set_discrepancy_report_bot_alias_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_analyzer_history_response() :: #{
-%%   <<"botAnalyzerHistoryList">> => list(bot_analyzer_history_summary()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_analyzer_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botStatus">> => list(any())
-%% }
--type delete_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()),
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_intent_filter()),
-%%   <<"groupBy">> => list(analytics_intent_group_by_specification()),
-%%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_intent_metric()),
-%%   <<"nextToken">> => string(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_intent_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_test_set_discrepancy_report_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"target">> => test_set_discrepancy_report_resource_target(),
-%%   <<"testSetDiscrepancyReportId">> => string(),
-%%   <<"testSetId">> => string()
-%% }
--type create_test_set_discrepancy_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_attribute_result() :: #{
-%%   <<"lastUsedIntent">> => string()
-%% }
--type analytics_utterance_attribute_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_export_specification() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string()
-%% }
--type bot_export_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botType">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataPrivacy">> => data_privacy(),
+%% update_slot_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"roleArn">> => string()
-%% }
--type describe_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type analytics_intent_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_import_request() :: #{}
--type delete_import_request() :: #{}.
-
-
-%% Example:
-%% analytics_session_metric_result() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type analytics_session_metric_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_version_request() :: #{
-%%   <<"skipResourceInUseCheck">> => boolean()
-%% }
--type delete_bot_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_group_by_specification() :: #{
-%%   <<"name">> => list(any())
-%% }
--type analytics_intent_group_by_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_level_test_results() :: #{
-%%   <<"items">> => list(utterance_level_test_result_item())
-%% }
--type utterance_level_test_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_specification() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"channel">> => string(),
-%%   <<"conversationDurationSeconds">> => float(),
-%%   <<"conversationEndState">> => list(any()),
-%%   <<"conversationEndTime">> => non_neg_integer(),
-%%   <<"conversationStartTime">> => non_neg_integer(),
-%%   <<"invokedIntentSamples">> => list(invoked_intent_sample()),
-%%   <<"localeId">> => string(),
-%%   <<"mode">> => list(any()),
-%%   <<"numberOfTurns">> => float(),
-%%   <<"originatingRequestId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type session_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_locale_export_specification() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type bot_locale_export_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% active_context() :: #{
-%%   <<"name">> => string()
-%% }
--type active_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_recommendation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botRecommendationResults">> => bot_recommendation_results(),
-%%   <<"botRecommendationStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"encryptionSetting">> => encryption_setting(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"transcriptSourceSetting">> => transcript_source_setting()
-%% }
--type describe_bot_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_policy_request() :: #{
-%%   <<"policy">> := string()
-%% }
--type create_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_discrepancy_report_resource_target() :: #{
-%%   <<"botAliasTarget">> => test_set_discrepancy_report_bot_alias_target()
-%% }
--type test_set_discrepancy_report_resource_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_replica_request() :: #{
-%%   <<"replicaRegion">> := string()
-%% }
--type create_bot_replica_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_data_sort_by() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type session_data_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_vocabulary_item() :: #{
-%%   <<"displayAs">> => string(),
-%%   <<"itemId">> => string(),
-%%   <<"phrase">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type custom_vocabulary_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_policy_statement_request() :: #{
-%%   <<"action">> := list(string()),
-%%   <<"condition">> => map(),
-%%   <<"effect">> := list(any()),
-%%   <<"expectedRevisionId">> => string(),
-%%   <<"principal">> := list(principal()),
-%%   <<"statementId">> := string()
-%% }
--type create_resource_policy_statement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_session_state_specification() :: #{
-%%   <<"activeContexts">> => list(active_context()),
-%%   <<"runtimeHints">> => runtime_hints(),
-%%   <<"sessionAttributes">> => map()
-%% }
--type input_session_state_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_intent_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
-%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
-%%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()),
-%%   <<"intentClosingSetting">> => intent_closing_setting(),
-%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
-%%   <<"intentDisplayName">> => string(),
-%%   <<"intentName">> := string(),
-%%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"outputContexts">> => list(output_context()),
-%%   <<"parentIntentSignature">> => string(),
-%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
-%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance())
-%% }
--type create_intent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"messageGroups">> => list(message_group())
-%% }
--type response_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregated_utterances_summary() :: #{
-%%   <<"containsDataFromDeletedResources">> => boolean(),
-%%   <<"hitCount">> => integer(),
-%%   <<"missedCount">> => integer(),
-%%   <<"utterance">> => string(),
-%%   <<"utteranceFirstRecordedInAggregationDuration">> => non_neg_integer(),
-%%   <<"utteranceLastRecordedInAggregationDuration">> => non_neg_integer()
-%% }
--type aggregated_utterances_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_import_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"importId">> => string(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"importedResourceId">> => string(),
-%%   <<"importedResourceName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"mergeStrategy">> => list(any()),
-%%   <<"resourceSpecification">> => import_resource_specification()
-%% }
--type describe_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"exportId">> => string(),
-%%   <<"exportStatus">> => list(any()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"resourceSpecification">> => export_resource_specification()
-%% }
--type export_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type bot_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_confirmation_setting() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
-%%   <<"confirmationConditional">> => conditional_specification(),
-%%   <<"confirmationNextStep">> => dialog_state(),
-%%   <<"confirmationResponse">> => response_specification(),
-%%   <<"declinationConditional">> => conditional_specification(),
-%%   <<"declinationNextStep">> => dialog_state(),
-%%   <<"declinationResponse">> => response_specification(),
-%%   <<"elicitationCodeHook">> => elicitation_code_hook_invocation_setting(),
-%%   <<"failureConditional">> => conditional_specification(),
-%%   <<"failureNextStep">> => dialog_state(),
-%%   <<"failureResponse">> => response_specification(),
-%%   <<"promptSpecification">> => prompt_specification()
-%% }
--type intent_confirmation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_replica_summary() :: #{
-%%   <<"botReplicaStatus">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"replicaRegion">> => string()
-%% }
--type bot_replica_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_recommendation_result_statistics() :: #{
-%%   <<"intents">> => intent_statistics(),
-%%   <<"slotTypes">> => slot_type_statistics()
-%% }
--type bot_recommendation_result_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_value() :: #{
-%%   <<"sampleValue">> => sample_value(),
-%%   <<"synonyms">> => list(sample_value())
-%% }
--type slot_type_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_level_test_results() :: #{
-%%   <<"items">> => list(conversation_level_test_result_item())
-%% }
--type conversation_level_test_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_level_slot_resolution_result_item() :: #{
-%%   <<"intentName">> => string(),
-%%   <<"matchResult">> => list(any()),
-%%   <<"slotName">> => string()
-%% }
--type conversation_level_slot_resolution_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_vocabulary_export_specification() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type custom_vocabulary_export_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type slot_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_resolution_setting() :: #{
-%%   <<"slotResolutionStrategy">> => list(any())
-%% }
--type slot_resolution_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_log_destination() :: #{
-%%   <<"s3Bucket">> => s3_bucket_log_destination()
-%% }
--type audio_log_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intent_stage_metrics_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_intent_stage_result())
-%% }
--type list_intent_stage_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% built_in_slot_type_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"slotTypeSignature">> => string()
-%% }
--type built_in_slot_type_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_value_override() :: #{
-%%   <<"shape">> => list(any()),
-%%   <<"value">> => slot_value(),
-%%   <<"values">> => list(slot_value_override())
-%% }
--type slot_value_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_stage_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type analytics_intent_stage_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()),
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_session_filter()),
-%%   <<"groupBy">> => list(analytics_session_group_by_specification()),
-%%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_session_metric()),
-%%   <<"nextToken">> => string(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_session_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_vocabulary_entry_id() :: #{
-%%   <<"itemId">> => string()
-%% }
--type custom_vocabulary_entry_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_resource_specification() :: #{
-%%   <<"botImportSpecification">> => bot_import_specification(),
-%%   <<"botLocaleImportSpecification">> => bot_locale_import_specification(),
-%%   <<"customVocabularyImportSpecification">> => custom_vocabulary_import_specification(),
-%%   <<"testSetImportResourceSpecification">> => test_set_import_resource_specification()
-%% }
--type import_resource_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_export_specification() :: #{
-%%   <<"testSetId">> => string()
-%% }
--type test_set_export_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_stage_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any()),
-%%   <<"statistic">> => list(any())
-%% }
--type analytics_intent_stage_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_slot_value_elicitation_setting() :: #{
-%%   <<"defaultValueSpecification">> => slot_default_value_specification(),
-%%   <<"promptSpecification">> => prompt_specification(),
-%%   <<"sampleUtterances">> => list(sample_utterance()),
-%%   <<"waitAndContinueSpecification">> => wait_and_continue_specification()
-%% }
--type sub_slot_value_elicitation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_session_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()),
-%%   <<"groupByKeys">> => list(analytics_session_group_by_key()),
-%%   <<"metricsResults">> => list(analytics_session_metric_result())
-%% }
--type analytics_session_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_bot_response() :: #{
-%%   <<"content">> => string(),
-%%   <<"contentType">> => list(any()),
-%%   <<"imageResponseCard">> => image_response_card()
-%% }
--type utterance_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()),
-%%   <<"groupByKeys">> => list(analytics_intent_group_by_key()),
-%%   <<"metricsResults">> => list(analytics_intent_metric_result())
-%% }
--type analytics_intent_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% wait_and_continue_specification() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"continueResponse">> => response_specification(),
-%%   <<"stillWaitingResponse">> => still_waiting_response_specification(),
-%%   <<"waitingResponse">> => response_specification()
-%% }
--type wait_and_continue_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_default_value_specification() :: #{
-%%   <<"defaultValueList">> => list(slot_default_value())
-%% }
--type slot_default_value_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bot_analyzer_recommendation_response() :: #{
-%%   <<"botAnalyzerRecommendationList">> => list(bot_analyzer_recommendation()),
-%%   <<"botAnalyzerStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_bot_analyzer_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_version_replicas_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => bot_version_replica_sort_by()
-%% }
--type list_bot_version_replicas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_export_response() :: #{
-%%   <<"exportId">> => string(),
-%%   <<"exportStatus">> => list(any())
-%% }
--type delete_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_import_resource_specification() :: #{
-%%   <<"description">> => string(),
-%%   <<"importInputLocation">> => test_set_import_input_location(),
-%%   <<"modality">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"storageLocation">> => test_set_storage_location(),
-%%   <<"testSetName">> => string(),
-%%   <<"testSetTags">> => map()
-%% }
--type test_set_import_resource_specification() :: #{binary() => any()}.
-
-%% Example:
-%% create_upload_url_request() :: #{}
--type create_upload_url_request() :: #{}.
-
-
-%% Example:
-%% analytics_intent_group_by_key() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type analytics_intent_group_by_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% relative_aggregation_duration() :: #{
-%%   <<"timeDimension">> => list(any()),
-%%   <<"timeValue">> => integer()
-%% }
--type relative_aggregation_duration() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_slot_discrepancy_item() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"intentName">> => string(),
-%%   <<"slotName">> => string()
-%% }
--type test_set_slot_discrepancy_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% fulfillment_code_hook_settings() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"enabled">> => boolean(),
-%%   <<"fulfillmentUpdatesSpecification">> => fulfillment_updates_specification(),
-%%   <<"postFulfillmentStatusSpecification">> => post_fulfillment_status_specification()
-%% }
--type fulfillment_code_hook_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type bot_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type intent_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_capture_setting() :: #{
-%%   <<"captureConditional">> => conditional_specification(),
-%%   <<"captureNextStep">> => dialog_state(),
-%%   <<"captureResponse">> => response_specification(),
-%%   <<"codeHook">> => dialog_code_hook_invocation_setting(),
-%%   <<"elicitationCodeHook">> => elicitation_code_hook_invocation_setting(),
-%%   <<"failureConditional">> => conditional_specification(),
-%%   <<"failureNextStep">> => dialog_state(),
-%%   <<"failureResponse">> => response_specification()
-%% }
--type slot_capture_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_in_connect_intent_configuration() :: #{
-%%   <<"qInConnectAssistantConfiguration">> => q_in_connect_assistant_configuration()
-%% }
--type q_in_connect_intent_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type test_set_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommended_intent_summary() :: #{
-%%   <<"intentId">> => string(),
-%%   <<"intentName">> => string(),
-%%   <<"sampleUtterancesCount">> => integer()
-%% }
--type recommended_intent_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_test_execution_artifacts_url_request() :: #{}
--type get_test_execution_artifacts_url_request() :: #{}.
-
-
-%% Example:
-%% sample_utterance() :: #{
-%%   <<"utterance">> => string()
-%% }
--type sample_utterance() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slot_type_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"externalSourceSetting">> => external_source_setting(),
-%%   <<"localeId">> => string(),
-%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"multipleValuesSetting">> => multiple_values_setting(),
+%%   <<"obfuscationSetting">> => obfuscation_setting(),
+%%   <<"slotName">> := string(),
 %%   <<"slotTypeId">> => string(),
-%%   <<"slotTypeName">> => string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()),
-%%   <<"valueSelectionSetting">> => slot_value_selection_setting()
+%%   <<"subSlotSetting">> => sub_slot_setting(),
+%%   <<"valueElicitationSetting">> := slot_value_elicitation_setting()
 %% }
--type create_slot_type_response() :: #{binary() => any()}.
+-type update_slot_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% analytics_intent_stage_group_by_key() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type analytics_intent_stage_group_by_key() :: #{binary() => any()}.
-
-%% Example:
-%% stop_bot_recommendation_request() :: #{}
--type stop_bot_recommendation_request() :: #{}.
-
-
-%% Example:
-%% bot_version_replica_summary() :: #{
+%% update_slot_response() :: #{
+%%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"botVersionReplicationStatus">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string())
-%% }
--type bot_version_replica_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_model_specification() :: #{
-%%   <<"customPrompt">> => string(),
-%%   <<"guardrail">> => bedrock_guardrail_configuration(),
-%%   <<"modelArn">> => string(),
-%%   <<"traceStatus">> => list(any())
-%% }
--type bedrock_model_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"expressionString">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_knowledge_store_exact_response_fields() :: #{
-%%   <<"answerField">> => string()
-%% }
--type bedrock_knowledge_store_exact_response_fields() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_group_by_key() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type analytics_utterance_group_by_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_slots_request() :: #{
-%%   <<"filters">> => list(slot_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => slot_sort_by()
-%% }
--type list_slots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_built_in_slot_types_response() :: #{
-%%   <<"builtInSlotTypeSummaries">> => list(built_in_slot_type_summary()),
+%%   <<"description">> => string(),
+%%   <<"intentId">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
+%%   <<"multipleValuesSetting">> => multiple_values_setting(),
+%%   <<"obfuscationSetting">> => obfuscation_setting(),
+%%   <<"slotId">> => string(),
+%%   <<"slotName">> => string(),
+%%   <<"slotTypeId">> => string(),
+%%   <<"subSlotSetting">> => sub_slot_setting(),
+%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
 %% }
--type list_built_in_slot_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% allowed_input_types() :: #{
-%%   <<"allowAudioInput">> => boolean(),
-%%   <<"allowDTMFInput">> => boolean()
-%% }
--type allowed_input_types() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_execution_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type test_execution_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_aliases_response() :: #{
-%%   <<"botAliasSummaries">> => list(bot_alias_summary()),
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unified_speech_settings() :: #{
-%%   <<"speechFoundationModel">> => speech_foundation_model()
-%% }
--type unified_speech_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_version_replica_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type bot_version_replica_sort_by() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bot_analyzer_recommendation_request() :: #{}
--type delete_bot_analyzer_recommendation_request() :: #{}.
-
-
-%% Example:
-%% list_aggregated_utterances_response() :: #{
-%%   <<"aggregatedUtterancesSummaries">> => list(aggregated_utterances_summary()),
-%%   <<"aggregationDuration">> => utterance_aggregation_duration(),
-%%   <<"aggregationLastRefreshedDateTime">> => non_neg_integer(),
-%%   <<"aggregationWindowEndTime">> => non_neg_integer(),
-%%   <<"aggregationWindowStartTime">> => non_neg_integer(),
-%%   <<"botAliasId">> => string(),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_aggregated_utterances_response() :: #{binary() => any()}.
+-type update_slot_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2959,343 +4631,7 @@
 
 
 %% Example:
-%% runtime_hint_value() :: #{
-%%   <<"phrase">> => string()
-%% }
--type runtime_hint_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_knowledge_store_configuration() :: #{
-%%   <<"bedrockKnowledgeBaseArn">> => string(),
-%%   <<"exactResponse">> => boolean(),
-%%   <<"exactResponseFields">> => bedrock_knowledge_store_exact_response_fields()
-%% }
--type bedrock_knowledge_store_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% new_custom_vocabulary_item() :: #{
-%%   <<"displayAs">> => string(),
-%%   <<"phrase">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type new_custom_vocabulary_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_bin_key() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type analytics_bin_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type update_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_analyzer_response() :: #{
-%%   <<"botAnalyzerRequestId">> => string(),
-%%   <<"botAnalyzerStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string()
-%% }
--type start_bot_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_metric_result() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type analytics_intent_metric_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_utterances_response() :: #{}
--type delete_utterances_response() :: #{}.
-
-
-%% Example:
-%% bot_version_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type bot_version_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_session_group_by_specification() :: #{
-%%   <<"name">> => list(any())
-%% }
--type analytics_session_group_by_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_replica_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botReplicaStatus">> => list(any()),
-%%   <<"replicaRegion">> => string()
-%% }
--type delete_bot_replica_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_statistics() :: #{
-%%   <<"discoveredSlotTypeCount">> => integer()
-%% }
--type slot_type_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_value_elicitation_setting() :: #{
-%%   <<"defaultValueSpecification">> => slot_default_value_specification(),
-%%   <<"promptSpecification">> => prompt_specification(),
-%%   <<"sampleUtterances">> => list(sample_utterance()),
-%%   <<"slotCaptureSetting">> => slot_capture_setting(),
-%%   <<"slotConstraint">> => list(any()),
-%%   <<"slotResolutionSetting">> => slot_resolution_setting(),
-%%   <<"waitAndContinueSpecification">> => wait_and_continue_specification()
-%% }
--type slot_value_elicitation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% conditional_branch() :: #{
-%%   <<"condition">> => condition(),
-%%   <<"name">> => string(),
-%%   <<"nextStep">> => dialog_state(),
-%%   <<"response">> => response_specification()
-%% }
--type conditional_branch() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type slot_type_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_test_set_discrepancy_report_request() :: #{
-%%   <<"target">> := test_set_discrepancy_report_resource_target()
-%% }
--type create_test_set_discrepancy_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_log_group_log_destination() :: #{
-%%   <<"cloudWatchLogGroupArn">> => string(),
-%%   <<"logPrefix">> => string()
-%% }
--type cloud_watch_log_group_log_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_alias_replicas_response() :: #{
-%%   <<"botAliasReplicaSummaries">> => list(bot_alias_replica_summary()),
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"replicaRegion">> => string(),
-%%   <<"sourceRegion">> => string()
-%% }
--type list_bot_alias_replicas_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_execution_result_items() :: #{
-%%   <<"conversationLevelTestResults">> => conversation_level_test_results(),
-%%   <<"intentClassificationTestResults">> => intent_classification_test_results(),
-%%   <<"intentLevelSlotResolutionTestResults">> => intent_level_slot_resolution_test_results(),
-%%   <<"overallTestResults">> => overall_test_results(),
-%%   <<"utteranceLevelTestResults">> => utterance_level_test_results()
-%% }
--type test_execution_result_items() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_turn_record() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"recordNumber">> => float(),
-%%   <<"turnNumber">> => integer(),
-%%   <<"turnSpecification">> => turn_specification()
-%% }
--type test_set_turn_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_session_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type analytics_session_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_code_hook() :: #{
-%%   <<"codeHookInterfaceVersion">> => string(),
-%%   <<"lambdaARN">> => string()
-%% }
--type lambda_code_hook() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(custom_vocabulary_entry_id())
-%% }
--type batch_delete_custom_vocabulary_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_import_response() :: #{
-%%   <<"importId">> => string(),
-%%   <<"importStatus">> => list(any())
-%% }
--type delete_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_version_summary() :: #{
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string()
-%% }
--type bot_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_classification_test_results() :: #{
-%%   <<"items">> => list(intent_classification_test_result_item())
-%% }
--type intent_classification_test_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_alias_request() :: #{
-%%   <<"skipResourceInUseCheck">> => boolean()
-%% }
--type delete_bot_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_stage_group_by_specification() :: #{
-%%   <<"name">> => list(any())
-%% }
--type analytics_intent_stage_group_by_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"slotConstraint">> => list(any()),
-%%   <<"slotId">> => string(),
-%%   <<"slotName">> => string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"valueElicitationPromptSpecification">> => prompt_specification()
-%% }
--type slot_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_response() :: #{
-%%   <<"botSummaries">> => list(bot_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_versions_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersionSummaries">> => list(bot_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% composite_slot_type_setting() :: #{
-%%   <<"subSlots">> => list(sub_slot_type_composition())
-%% }
--type composite_slot_type_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_slot_setting() :: #{
-%%   <<"expression">> => string(),
-%%   <<"slotSpecifications">> => map()
-%% }
--type sub_slot_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type export_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_turn_input_specification() :: #{
-%%   <<"requestAttributes">> => map(),
-%%   <<"sessionState">> => input_session_state_specification(),
-%%   <<"utteranceInput">> => utterance_input_specification()
-%% }
--type user_turn_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_input_specification() :: #{
-%%   <<"audioInput">> => utterance_audio_input_specification(),
-%%   <<"textInput">> => string()
-%% }
--type utterance_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_aliases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_alias_replicas_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_alias_replicas_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_slot_request() :: #{}
--type describe_slot_request() :: #{}.
-
-
-%% Example:
-%% describe_slot_type_response() :: #{
+%% update_slot_type_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
 %%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
@@ -3310,322 +4646,19 @@
 %%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
--type describe_slot_type_response() :: #{binary() => any()}.
+-type update_slot_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bot_locales_request() :: #{
-%%   <<"filters">> => list(bot_locale_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => bot_locale_sort_by()
-%% }
--type list_bot_locales_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type slot_type_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_set_records_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_test_set_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_custom_vocabulary_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"customVocabularyStatus">> => list(any()),
-%%   <<"localeId">> => string()
-%% }
--type delete_custom_vocabulary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slot_type_request() :: #{
-%%   <<"compositeSlotTypeSetting">> => composite_slot_type_setting(),
+%% update_test_set_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"externalSourceSetting">> => external_source_setting(),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeName">> := string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()),
-%%   <<"valueSelectionSetting">> => slot_value_selection_setting()
+%%   <<"testSetName">> := string()
 %% }
--type create_slot_type_request() :: #{binary() => any()}.
+-type update_test_set_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% test_set_generation_data_source() :: #{
-%%   <<"conversationLogsDataSource">> => conversation_logs_data_source()
-%% }
--type test_set_generation_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_set_discrepancy_report_request() :: #{}
--type describe_test_set_discrepancy_report_request() :: #{}.
-
-
-%% Example:
-%% conversation_log_settings() :: #{
-%%   <<"audioLogSettings">> => list(audio_log_setting()),
-%%   <<"textLogSettings">> => list(text_log_setting())
-%% }
--type conversation_log_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_slot_type_request() :: #{}
--type describe_slot_type_request() :: #{}.
-
-
-%% Example:
-%% user_turn_intent_output() :: #{
-%%   <<"name">> => string(),
-%%   <<"slots">> => map()
-%% }
--type user_turn_intent_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_custom_vocabulary_item_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()),
-%%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item())
-%% }
--type batch_update_custom_vocabulary_item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_execution_result_filter_by() :: #{
-%%   <<"conversationLevelTestResultsFilterBy">> => conversation_level_test_results_filter_by(),
-%%   <<"resultTypeFilter">> => list(any())
-%% }
--type test_execution_result_filter_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_test_set_discrepancy_report_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"lastUpdatedDataTime">> => non_neg_integer(),
-%%   <<"target">> => test_set_discrepancy_report_resource_target(),
-%%   <<"testSetDiscrepancyRawOutputUrl">> => string(),
-%%   <<"testSetDiscrepancyReportId">> => string(),
-%%   <<"testSetDiscrepancyReportStatus">> => list(any()),
-%%   <<"testSetDiscrepancyTopErrors">> => test_set_discrepancy_errors(),
-%%   <<"testSetId">> => string()
-%% }
--type describe_test_set_discrepancy_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_custom_vocabulary_item_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()),
-%%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item())
-%% }
--type batch_create_custom_vocabulary_item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_export_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"exportId">> => string(),
-%%   <<"exportStatus">> => list(any()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"resourceSpecification">> => export_resource_specification()
-%% }
--type create_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_turn_specification() :: #{
-%%   <<"agentPrompt">> => string()
-%% }
--type agent_turn_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_override() :: #{
-%%   <<"name">> => string(),
-%%   <<"slots">> => map()
-%% }
--type intent_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type import_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_fulfillment_status_specification() :: #{
-%%   <<"failureConditional">> => conditional_specification(),
-%%   <<"failureNextStep">> => dialog_state(),
-%%   <<"failureResponse">> => response_specification(),
-%%   <<"successConditional">> => conditional_specification(),
-%%   <<"successNextStep">> => dialog_state(),
-%%   <<"successResponse">> => response_specification(),
-%%   <<"timeoutConditional">> => conditional_specification(),
-%%   <<"timeoutNextStep">> => dialog_state(),
-%%   <<"timeoutResponse">> => response_specification()
-%% }
--type post_fulfillment_status_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_resource_generations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => generation_sort_by()
-%% }
--type list_bot_resource_generations_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_slot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"multipleValuesSetting">> => multiple_values_setting(),
-%%   <<"obfuscationSetting">> => obfuscation_setting(),
-%%   <<"slotId">> => string(),
-%%   <<"slotName">> => string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"subSlotSetting">> => sub_slot_setting(),
-%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
-%% }
--type create_slot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_closing_setting() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"closingResponse">> => response_specification(),
-%%   <<"conditional">> => conditional_specification(),
-%%   <<"nextStep">> => dialog_state()
-%% }
--type intent_closing_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bot_resource_generation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"generationId">> => string(),
-%%   <<"generationInputPrompt">> => string(),
-%%   <<"generationStatus">> => list(any()),
-%%   <<"localeId">> => string()
-%% }
--type start_bot_resource_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_stage_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()),
-%%   <<"groupByKeys">> => list(analytics_intent_stage_group_by_key()),
-%%   <<"metricsResults">> => list(analytics_intent_stage_metric_result())
-%% }
--type analytics_intent_stage_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_executions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => test_execution_sort_by()
-%% }
--type list_test_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"order">> => list(any()),
-%%   <<"statistic">> => list(any())
-%% }
--type analytics_utterance_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_utterance_analytics_data_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"utterances">> => list(utterance_specification())
-%% }
--type list_utterance_analytics_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% build_bot_locale_request() :: #{}
--type build_bot_locale_request() :: #{}.
-
-
-%% Example:
-%% start_test_execution_response() :: #{
-%%   <<"apiMode">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"target">> => test_execution_target(),
-%%   <<"testExecutionId">> => string(),
-%%   <<"testExecutionModality">> => list(any()),
-%%   <<"testSetId">> => string()
-%% }
--type start_test_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_context() :: #{
-%%   <<"name">> => string()
-%% }
--type input_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% plain_text_message() :: #{
-%%   <<"value">> => string()
-%% }
--type plain_text_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_request() :: #{
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> := string(),
-%%   <<"botType">> => list(any()),
-%%   <<"dataPrivacy">> := data_privacy(),
-%%   <<"description">> => string(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"idleSessionTTLInSeconds">> := integer(),
-%%   <<"roleArn">> := string()
-%% }
--type update_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_test_set_response() :: #{
+%% update_test_set_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
@@ -3637,403 +4670,120 @@
 %%   <<"testSetId">> => string(),
 %%   <<"testSetName">> => string()
 %% }
--type describe_test_set_response() :: #{binary() => any()}.
+-type update_test_set_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% conditional_specification() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"conditionalBranches">> => list(conditional_branch()),
-%%   <<"defaultBranch">> => default_conditional_branch()
+%% user_turn_input_specification() :: #{
+%%   <<"requestAttributes">> => map(),
+%%   <<"sessionState">> => input_session_state_specification(),
+%%   <<"utteranceInput">> => utterance_input_specification()
 %% }
--type conditional_specification() :: #{binary() => any()}.
+-type user_turn_input_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_slot_type_request() :: #{
-%%   <<"skipResourceInUseCheck">> => boolean()
+%% user_turn_intent_output() :: #{
+%%   <<"name">> => string(),
+%%   <<"slots">> => map()
 %% }
--type delete_slot_type_request() :: #{binary() => any()}.
+-type user_turn_intent_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bot_resource_generations_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"generationSummaries">> => list(generation_summary()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
+%% user_turn_output_specification() :: #{
+%%   <<"activeContexts">> => list(active_context()),
+%%   <<"intent">> => user_turn_intent_output(),
+%%   <<"transcript">> => string()
 %% }
--type list_bot_resource_generations_response() :: #{binary() => any()}.
+-type user_turn_output_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% runtime_hints() :: #{
-%%   <<"slotHints">> => map()
+%% user_turn_result() :: #{
+%%   <<"actualOutput">> => user_turn_output_specification(),
+%%   <<"conversationLevelResult">> => conversation_level_result_detail(),
+%%   <<"endToEndResult">> => list(any()),
+%%   <<"errorDetails">> => execution_error_details(),
+%%   <<"expectedOutput">> => user_turn_output_specification(),
+%%   <<"input">> => user_turn_input_specification(),
+%%   <<"intentMatchResult">> => list(any()),
+%%   <<"slotMatchResult">> => list(any()),
+%%   <<"speechTranscriptionResult">> => list(any())
 %% }
--type runtime_hints() :: #{binary() => any()}.
+-type user_turn_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_log_setting() :: #{
-%%   <<"destination">> => audio_log_destination(),
-%%   <<"enabled">> => boolean(),
-%%   <<"selectiveLoggingEnabled">> => boolean()
+%% user_turn_slot_output() :: #{
+%%   <<"subSlots">> => map(),
+%%   <<"value">> => string(),
+%%   <<"values">> => list(user_turn_slot_output())
 %% }
--type audio_log_setting() :: #{binary() => any()}.
+-type user_turn_slot_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% post_dialog_code_hook_invocation_specification() :: #{
-%%   <<"failureConditional">> => conditional_specification(),
-%%   <<"failureNextStep">> => dialog_state(),
-%%   <<"failureResponse">> => response_specification(),
-%%   <<"successConditional">> => conditional_specification(),
-%%   <<"successNextStep">> => dialog_state(),
-%%   <<"successResponse">> => response_specification(),
-%%   <<"timeoutConditional">> => conditional_specification(),
-%%   <<"timeoutNextStep">> => dialog_state(),
-%%   <<"timeoutResponse">> => response_specification()
+%% user_turn_specification() :: #{
+%%   <<"expected">> => user_turn_output_specification(),
+%%   <<"input">> => user_turn_input_specification()
 %% }
--type post_dialog_code_hook_invocation_specification() :: #{binary() => any()}.
+-type user_turn_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% deepgram_speech_model_config() :: #{
-%%   <<"apiTokenSecretArn">> => string(),
-%%   <<"modelId">> => string()
+%% utterance_aggregation_duration() :: #{
+%%   <<"relativeAggregationDuration">> => relative_aggregation_duration()
 %% }
--type deepgram_speech_model_config() :: #{binary() => any()}.
+-type utterance_aggregation_duration() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_bot_alias_response() :: #{
-%%   <<"botAliasHistoryEvents">> => list(bot_alias_history_event()),
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasLocaleSettings">> => map(),
-%%   <<"botAliasName">> => string(),
-%%   <<"botAliasStatus">> => list(any()),
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"conversationLogSettings">> => conversation_log_settings(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"parentBotNetworks">> => list(parent_bot_network()),
-%%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
+%% utterance_audio_input_specification() :: #{
+%%   <<"audioFileS3Location">> => string()
 %% }
--type describe_bot_alias_response() :: #{binary() => any()}.
+-type utterance_audio_input_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_custom_vocabulary_item_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()),
-%%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item())
+%% utterance_bot_response() :: #{
+%%   <<"content">> => string(),
+%%   <<"contentType">> => list(any()),
+%%   <<"imageResponseCard">> => image_response_card()
 %% }
--type batch_delete_custom_vocabulary_item_response() :: #{binary() => any()}.
+-type utterance_bot_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_replicas_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botReplicaSummaries">> => list(bot_replica_summary()),
-%%   <<"sourceRegion">> => string()
-%% }
--type list_bot_replicas_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% speech_recognition_settings() :: #{
-%%   <<"speechModelConfig">> => speech_model_config(),
-%%   <<"speechModelPreference">> => list(any())
-%% }
--type speech_recognition_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string(),
-%%   <<"policy">> := string()
-%% }
--type update_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% speech_model_config() :: #{
-%%   <<"deepgramConfig">> => deepgram_speech_model_config()
-%% }
--type speech_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_recommendation_request() :: #{
-%%   <<"encryptionSetting">> := encryption_setting()
-%% }
--type update_bot_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_built_in_intents_response() :: #{
-%%   <<"builtInIntentSummaries">> => list(built_in_intent_summary()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_built_in_intents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% intent_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
+%% utterance_data_sort_by() :: #{
+%%   <<"name">> => list(any()),
 %%   <<"order">> => list(any())
 %% }
--type intent_sort_by() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bot_analyzer_recommendation_response() :: #{}
--type delete_bot_analyzer_recommendation_response() :: #{}.
+-type utterance_data_sort_by() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_bot_locale_response() :: #{
-%%   <<"audioFillerSettings">> => audio_filler_settings(),
-%%   <<"botId">> => string(),
-%%   <<"botLocaleHistoryEvents">> => list(bot_locale_history_event()),
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"generativeAISettings">> => generative_a_i_settings(),
-%%   <<"intentsCount">> => integer(),
-%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"localeName">> => string(),
-%%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"recommendedActions">> => list(string()),
-%%   <<"slotTypesCount">> => integer(),
-%%   <<"speechDetectionSensitivity">> => list(any()),
-%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
-%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
-%%   <<"voiceSettings">> => voice_settings()
+%% utterance_input_specification() :: #{
+%%   <<"audioInput">> => utterance_audio_input_specification(),
+%%   <<"textInput">> => string()
 %% }
--type describe_bot_locale_response() :: #{binary() => any()}.
+-type utterance_input_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
+%% utterance_level_test_result_item() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"recordNumber">> => float(),
+%%   <<"turnResult">> => test_set_turn_result()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type utterance_level_test_result_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregated_utterances_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
+%% utterance_level_test_results() :: #{
+%%   <<"items">> => list(utterance_level_test_result_item())
 %% }
--type aggregated_utterances_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_intent_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
-%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
-%%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()),
-%%   <<"intentClosingSetting">> => intent_closing_setting(),
-%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
-%%   <<"intentDisplayName">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"intentName">> => string(),
-%%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"localeId">> => string(),
-%%   <<"outputContexts">> => list(output_context()),
-%%   <<"parentIntentSignature">> => string(),
-%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
-%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance())
-%% }
--type create_intent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_vocabulary_items_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_vocabulary_items_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% exact_response_fields() :: #{
-%%   <<"answerField">> => string(),
-%%   <<"questionField">> => string()
-%% }
--type exact_response_fields() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_bot_element_request() :: #{
-%%   <<"intentId">> := string()
-%% }
--type generate_bot_element_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type describe_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_executions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testExecutions">> => list(test_execution_summary())
-%% }
--type list_test_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_request() :: #{
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> := string(),
-%%   <<"botTags">> => map(),
-%%   <<"botType">> => list(any()),
-%%   <<"dataPrivacy">> := data_privacy(),
-%%   <<"description">> => string(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"idleSessionTTLInSeconds">> := integer(),
-%%   <<"roleArn">> := string(),
-%%   <<"testBotAliasTags">> => map()
-%% }
--type create_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imports_request() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(import_filter()),
-%%   <<"localeId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => import_sort_by()
-%% }
--type list_imports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommended_intents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_recommended_intents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% nlu_improvement_specification() :: #{
-%%   <<"assistedNluMode">> => list(any()),
-%%   <<"enabled">> => boolean(),
-%%   <<"intentDisambiguationSettings">> => intent_disambiguation_settings()
-%% }
--type nlu_improvement_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_value_selection_setting() :: #{
-%%   <<"advancedRecognitionSetting">> => advanced_recognition_setting(),
-%%   <<"regexFilter">> => slot_value_regex_filter(),
-%%   <<"resolutionStrategy">> => list(any())
-%% }
--type slot_value_selection_setting() :: #{binary() => any()}.
-
-%% Example:
-%% describe_intent_request() :: #{}
--type describe_intent_request() :: #{}.
-
-
-%% Example:
-%% list_utterance_analytics_data_request() :: #{
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_utterance_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => utterance_data_sort_by(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_utterance_analytics_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_analyzer_recommendation() :: #{
-%%   <<"issueDescription">> => string(),
-%%   <<"issueLocation">> => issue_location(),
-%%   <<"priority">> => list(any()),
-%%   <<"proposedFix">> => string()
-%% }
--type bot_analyzer_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% button() :: #{
-%%   <<"text">> => string(),
-%%   <<"value">> => string()
-%% }
--type button() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_and_d_t_m_f_input_specification() :: #{
-%%   <<"audioSpecification">> => audio_specification(),
-%%   <<"dtmfSpecification">> => d_t_m_f_specification(),
-%%   <<"startTimeoutMs">> => integer()
-%% }
--type audio_and_d_t_m_f_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% dialog_action() :: #{
-%%   <<"slotToElicit">> => string(),
-%%   <<"suppressNextMessage">> => boolean(),
-%%   <<"type">> => list(any())
-%% }
--type dialog_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeCategory">> => list(any()),
-%%   <<"slotTypeId">> => string(),
-%%   <<"slotTypeName">> => string()
-%% }
--type slot_type_summary() :: #{binary() => any()}.
+-type utterance_level_test_results() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4065,1533 +4815,783 @@
 
 
 %% Example:
-%% data_privacy() :: #{
-%%   <<"childDirected">> => boolean()
-%% }
--type data_privacy() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_source_setting() :: #{
-%%   <<"grammarSlotTypeSetting">> => grammar_slot_type_setting()
-%% }
--type external_source_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_level_test_result_item() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"recordNumber">> => float(),
-%%   <<"turnResult">> => test_set_turn_result()
-%% }
--type utterance_level_test_result_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botTags">> => map(),
-%%   <<"botType">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataPrivacy">> => data_privacy(),
-%%   <<"description">> => string(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"testBotAliasTags">> => map()
-%% }
--type create_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_built_in_intents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => built_in_intent_sort_by()
-%% }
--type list_built_in_intents_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_execution_request() :: #{}
--type describe_test_execution_request() :: #{}.
-
-
-%% Example:
-%% bot_locale_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type bot_locale_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_hint_details() :: #{
-%%   <<"runtimeHintValues">> => list(runtime_hint_value()),
-%%   <<"subSlotHints">> => map()
-%% }
--type runtime_hint_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_utterance_metric_result() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type analytics_utterance_metric_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregated_utterances_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type aggregated_utterances_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_default_value() :: #{
-%%   <<"defaultValue">> => string()
-%% }
--type slot_default_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_slot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"multipleValuesSetting">> => multiple_values_setting(),
-%%   <<"obfuscationSetting">> => obfuscation_setting(),
-%%   <<"slotId">> => string(),
-%%   <<"slotName">> => string(),
-%%   <<"slotTypeId">> => string(),
-%%   <<"subSlotSetting">> => sub_slot_setting(),
-%%   <<"valueElicitationSetting">> => slot_value_elicitation_setting()
-%% }
--type describe_slot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_intent_node_summary() :: #{
-%%   <<"intentCount">> => integer(),
-%%   <<"intentLevel">> => integer(),
-%%   <<"intentName">> => string(),
-%%   <<"intentPath">> => string(),
-%%   <<"nodeType">> => list(any())
-%% }
--type analytics_intent_node_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_execution_summary() :: #{
-%%   <<"apiMode">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"target">> => test_execution_target(),
-%%   <<"testExecutionId">> => string(),
-%%   <<"testExecutionModality">> => list(any()),
-%%   <<"testExecutionStatus">> => list(any()),
-%%   <<"testSetId">> => string(),
-%%   <<"testSetName">> => string()
-%% }
--type test_execution_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_hook_specification() :: #{
-%%   <<"lambdaCodeHook">> => lambda_code_hook()
-%% }
--type code_hook_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_in_connect_assistant_configuration() :: #{
-%%   <<"assistantArn">> => string()
-%% }
--type q_in_connect_assistant_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_locale_response() :: #{
-%%   <<"audioFillerSettings">> => audio_filler_settings(),
-%%   <<"botId">> => string(),
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"generativeAISettings">> => generative_a_i_settings(),
-%%   <<"localeId">> => string(),
-%%   <<"localeName">> => string(),
-%%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"speechDetectionSensitivity">> => list(any()),
-%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
-%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
-%%   <<"voiceSettings">> => voice_settings()
-%% }
--type create_bot_locale_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bot_recommendations_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationSummaries">> => list(bot_recommendation_summary()),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bot_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_locale_request() :: #{
-%%   <<"audioFillerSettings">> => audio_filler_settings(),
-%%   <<"description">> => string(),
-%%   <<"generativeAISettings">> => generative_a_i_settings(),
-%%   <<"nluIntentConfidenceThreshold">> := float(),
-%%   <<"speechDetectionSensitivity">> => list(any()),
-%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
-%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
-%%   <<"voiceSettings">> => voice_settings()
-%% }
--type update_bot_locale_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_sets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testSets">> => list(test_set_summary())
-%% }
--type list_test_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot_recommendation_summary() :: #{
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botRecommendationStatus">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer()
-%% }
--type bot_recommendation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_turn_output_specification() :: #{
-%%   <<"activeContexts">> => list(active_context()),
-%%   <<"intent">> => user_turn_intent_output(),
-%%   <<"transcript">> => string()
-%% }
--type user_turn_output_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% build_bot_locale_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string()
-%% }
--type build_bot_locale_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% generation_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type generation_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_turn_slot_output() :: #{
-%%   <<"subSlots">> => map(),
-%%   <<"value">> => string(),
-%%   <<"values">> => list(user_turn_slot_output())
-%% }
--type user_turn_slot_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% turn_specification() :: #{
-%%   <<"agentTurn">> => agent_turn_specification(),
-%%   <<"userTurn">> => user_turn_specification()
-%% }
--type turn_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_setting() :: #{
-%%   <<"associatedTranscriptsPassword">> => string(),
-%%   <<"botLocaleExportPassword">> => string(),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type encryption_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript_source_setting() :: #{
-%%   <<"s3BucketTranscriptSource">> => s3_bucket_transcript_source()
-%% }
--type transcript_source_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% speech_foundation_model() :: #{
-%%   <<"modelArn">> => string(),
-%%   <<"voiceId">> => string()
-%% }
--type speech_foundation_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_utterances_request() :: #{
-%%   <<"localeId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type delete_utterances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_filler_settings() :: #{
-%%   <<"audioType">> => list(any()),
-%%   <<"enabled">> => boolean(),
-%%   <<"minimumPlayDurationInMilliseconds">> => integer(),
-%%   <<"responseDeliveryDelayInMilliseconds">> => integer(),
-%%   <<"startDelayInMilliseconds">> => integer()
-%% }
--type audio_filler_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_export_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"exportId">> => string(),
-%%   <<"exportStatus">> => list(any()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"resourceSpecification">> => export_resource_specification()
-%% }
--type update_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_set_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"modality">> => list(any()),
-%%   <<"numTurns">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"storageLocation">> => test_set_storage_location(),
-%%   <<"testSetId">> => string(),
-%%   <<"testSetName">> => string()
-%% }
--type test_set_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_execution_result_items_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resultFilterBy">> := test_execution_result_filter_by()
-%% }
--type list_test_execution_result_items_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_payload() :: #{
-%%   <<"value">> => string()
-%% }
--type custom_payload() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_export_request() :: #{
-%%   <<"filePassword">> => string()
-%% }
--type update_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_utterance_metrics_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_utterance_result())
-%% }
--type list_utterance_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_bot_recommendation_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botRecommendationId">> => string(),
-%%   <<"botRecommendationStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type stop_bot_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dialog_code_hook_invocation_setting() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"enableCodeHookInvocation">> => boolean(),
-%%   <<"invocationLabel">> => string(),
-%%   <<"postCodeHookSpecification">> => post_dialog_code_hook_invocation_specification()
-%% }
--type dialog_code_hook_invocation_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_locale_response() :: #{
-%%   <<"audioFillerSettings">> => audio_filler_settings(),
-%%   <<"botId">> => string(),
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"generativeAISettings">> => generative_a_i_settings(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"localeName">> => string(),
-%%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"recommendedActions">> => list(string()),
-%%   <<"speechDetectionSensitivity">> => list(any()),
-%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
-%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
-%%   <<"voiceSettings">> => voice_settings()
-%% }
--type update_bot_locale_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_utterance_metrics_request() :: #{
-%%   <<"attributes">> => list(analytics_utterance_attribute()),
-%%   <<"binBy">> => list(analytics_bin_by_specification()),
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_utterance_filter()),
-%%   <<"groupBy">> => list(analytics_utterance_group_by_specification()),
-%%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_utterance_metric()),
-%%   <<"nextToken">> => string(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_utterance_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sample_utterance_generation_specification() :: #{
-%%   <<"bedrockModelSpecification">> => bedrock_model_specification(),
-%%   <<"enabled">> => boolean()
-%% }
--type sample_utterance_generation_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_log_setting() :: #{
-%%   <<"destination">> => text_log_destination(),
-%%   <<"enabled">> => boolean(),
-%%   <<"selectiveLoggingEnabled">> => boolean()
-%% }
--type text_log_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% sentiment_analysis_settings() :: #{
-%%   <<"detectSentiment">> => boolean()
-%% }
--type sentiment_analysis_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_metrics_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_session_result())
-%% }
--type list_session_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% still_waiting_response_specification() :: #{
-%%   <<"allowInterrupt">> => boolean(),
-%%   <<"frequencyInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group()),
-%%   <<"timeoutInSeconds">> => integer()
-%% }
--type still_waiting_response_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type precondition_failed_exception() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% bot_alias_replica_summary() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botAliasReplicationStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer()
+%% voice_settings() :: #{
+%%   <<"engine">> => list(any()),
+%%   <<"voiceId">> => string()
 %% }
--type bot_alias_replica_summary() :: #{binary() => any()}.
+-type voice_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_slot_types_request() :: #{
-%%   <<"filters">> => list(slot_type_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => slot_type_sort_by()
+%% wait_and_continue_specification() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"continueResponse">> => response_specification(),
+%%   <<"stillWaitingResponse">> => still_waiting_response_specification(),
+%%   <<"waitingResponse">> => response_specification()
 %% }
--type list_slot_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% qn_a_kendra_configuration() :: #{
-%%   <<"exactResponse">> => boolean(),
-%%   <<"kendraIndex">> => string(),
-%%   <<"queryFilterString">> => string(),
-%%   <<"queryFilterStringEnabled">> => boolean()
-%% }
--type qn_a_kendra_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()),
-%%   <<"botName">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botType">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataPrivacy">> => data_privacy(),
-%%   <<"description">> => string(),
-%%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"roleArn">> => string()
-%% }
--type update_bot_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_intent_request() :: #{}
--type delete_intent_request() :: #{}.
-
-
-%% Example:
-%% describe_export_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"downloadUrl">> => string(),
-%%   <<"exportId">> => string(),
-%%   <<"exportStatus">> => list(any()),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"resourceSpecification">> => export_resource_specification()
-%% }
--type describe_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% parent_bot_network() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string()
-%% }
--type parent_bot_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_request() :: #{
-%%   <<"filePassword">> => string(),
-%%   <<"importId">> := string(),
-%%   <<"mergeStrategy">> := list(any()),
-%%   <<"resourceSpecification">> := import_resource_specification()
-%% }
--type start_import_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_analytics_data_request() :: #{
-%%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_session_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => session_data_sort_by(),
-%%   <<"startDateTime">> := non_neg_integer()
-%% }
--type list_session_analytics_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_sets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => test_set_sort_by()
-%% }
--type list_test_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_response() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"importId">> => string(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"mergeStrategy">> => list(any()),
-%%   <<"resourceSpecification">> => import_resource_specification()
-%% }
--type start_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bot_locale_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botLocaleStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"localeId">> => string()
-%% }
--type delete_bot_locale_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bot_replica_request() :: #{}
--type describe_bot_replica_request() :: #{}.
-
-
-%% Example:
-%% describe_intent_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
-%%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
-%%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()),
-%%   <<"intentClosingSetting">> => intent_closing_setting(),
-%%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
-%%   <<"intentDisplayName">> => string(),
-%%   <<"intentId">> => string(),
-%%   <<"intentName">> => string(),
-%%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"localeId">> => string(),
-%%   <<"outputContexts">> => list(output_context()),
-%%   <<"parentIntentSignature">> => string(),
-%%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
-%%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()),
-%%   <<"slotPriorities">> => list(slot_priority())
-%% }
--type describe_intent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sample_value() :: #{
-%%   <<"value">> => string()
-%% }
--type sample_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% built_in_intent_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type built_in_intent_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_locale_request() :: #{
-%%   <<"audioFillerSettings">> => audio_filler_settings(),
-%%   <<"description">> => string(),
-%%   <<"generativeAISettings">> => generative_a_i_settings(),
-%%   <<"localeId">> := string(),
-%%   <<"nluIntentConfidenceThreshold">> := float(),
-%%   <<"speechDetectionSensitivity">> => list(any()),
-%%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
-%%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
-%%   <<"voiceSettings">> => voice_settings()
-%% }
--type create_bot_locale_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bot_recommendation_request() :: #{}
--type describe_bot_recommendation_request() :: #{}.
-
-%% Example:
-%% delete_custom_vocabulary_request() :: #{}
--type delete_custom_vocabulary_request() :: #{}.
-
-%% Example:
-%% describe_resource_policy_request() :: #{}
--type describe_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% create_bot_version_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botStatus">> => list(any()),
-%%   <<"botVersion">> => string(),
-%%   <<"botVersionLocaleSpecification">> => map(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string()
-%% }
--type create_bot_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_exports_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"exportSummaries">> => list(export_summary()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_exports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_test_execution_artifacts_url_response() :: #{
-%%   <<"downloadArtifactsUrl">> => string(),
-%%   <<"testExecutionId">> => string()
-%% }
--type get_test_execution_artifacts_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_vocabulary_items_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"customVocabularyItems">> => list(custom_vocabulary_item()),
-%%   <<"localeId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_vocabulary_items_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiple_values_setting() :: #{
-%%   <<"allowMultipleValues">> => boolean()
-%% }
--type multiple_values_setting() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bot_locale_request() :: #{}
--type delete_bot_locale_request() :: #{}.
-
-
-%% Example:
-%% d_t_m_f_specification() :: #{
-%%   <<"deletionCharacter">> => string(),
-%%   <<"endCharacter">> => string(),
-%%   <<"endTimeoutMs">> => integer(),
-%%   <<"maxLength">> => integer()
-%% }
--type d_t_m_f_specification() :: #{binary() => any()}.
-
-%% Example:
-%% stop_bot_analyzer_request() :: #{}
--type stop_bot_analyzer_request() :: #{}.
-
-
-%% Example:
-%% message() :: #{
-%%   <<"customPayload">> => custom_payload(),
-%%   <<"imageResponseCard">> => image_response_card(),
-%%   <<"plainTextMessage">> => plain_text_message(),
-%%   <<"ssmlMessage">> => s_s_ml_message()
-%% }
--type message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_set_generation_request() :: #{}
--type describe_test_set_generation_request() :: #{}.
-
-
-%% Example:
-%% s3_bucket_log_destination() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"logPrefix">> => string(),
-%%   <<"s3BucketArn">> => string()
-%% }
--type s3_bucket_log_destination() :: #{binary() => any()}.
+-type wait_and_continue_specification() :: #{binary() => any()}.
 
 -type batch_create_custom_vocabulary_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type batch_delete_custom_vocabulary_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type batch_update_custom_vocabulary_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type build_bot_locale_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_bot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_bot_alias_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_bot_locale_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_bot_replica_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_bot_version_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_intent_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_resource_policy_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type create_resource_policy_statement_errors() ::
-    precondition_failed_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
+
+-type create_resource_policy_statement_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_slot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_slot_type_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_test_set_discrepancy_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_upload_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_bot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_bot_alias_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_bot_analyzer_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_bot_locale_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_bot_replica_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_bot_version_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_custom_vocabulary_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_export_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type delete_import_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type delete_intent_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_resource_policy_errors() ::
-    precondition_failed_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type delete_resource_policy_statement_errors() ::
-    precondition_failed_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type delete_slot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_slot_type_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_test_set_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_utterances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type describe_bot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_analyzer_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_locale_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_replica_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_resource_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_bot_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_custom_vocabulary_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_import_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_intent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_resource_policy_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_slot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type describe_slot_type_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type describe_test_execution_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type describe_test_set_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type describe_test_set_discrepancy_report_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type describe_test_set_generation_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type generate_bot_element_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_slot_type_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_test_execution_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_test_set_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_test_set_discrepancy_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type describe_test_set_generation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type generate_bot_element_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_test_execution_artifacts_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_aggregated_utterances_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    precondition_failed_exception() | 
     internal_server_exception().
 
 -type list_bot_alias_replicas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bot_aliases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bot_analyzer_history_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_bot_locales_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bot_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_bot_replicas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bot_resource_generations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_bot_version_replicas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bot_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_bots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_built_in_intents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_built_in_slot_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_custom_vocabulary_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_exports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_imports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_intent_metrics_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_intent_paths_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_intent_stage_metrics_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_intents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_recommended_intents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_session_analytics_data_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_session_metrics_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_slot_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_slots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_test_execution_result_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_test_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_test_set_records_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_test_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_utterance_analytics_data_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type list_utterance_metrics_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type search_associated_transcripts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_bot_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_bot_recommendation_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_bot_resource_generation_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_import_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_test_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_test_set_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_bot_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type stop_bot_recommendation_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_bot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_bot_alias_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_bot_locale_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_bot_recommendation_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_intent_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_resource_policy_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception().
 
 -type update_slot_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_slot_type_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_test_set_errors() ::
-    precondition_failed_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    precondition_failed_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 %%====================================================================

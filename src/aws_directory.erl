@@ -194,411 +194,23 @@
 
 
 %% Example:
-%% enable_radius_result() :: #{
-
-%% }
--type enable_radius_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_certificates_result() :: #{
-%%   <<"CertificatesInfo">> => list(certificate_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_certificates_result() :: #{binary() => any()}.
-
-%% Example:
-%% domain_controller() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"DnsIpAddr">> => string(),
-%%   <<"DnsIpv6Addr">> => string(),
-%%   <<"DomainControllerId">> => string(),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusLastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"StatusReason">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type domain_controller() :: #{binary() => any()}.
-
-%% Example:
-%% delete_log_subscription_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type delete_log_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_already_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type entity_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% client_authentication_setting_info() :: #{
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type client_authentication_setting_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_value() :: #{
-%%   <<"OSUpdateSettings">> => o_s_update_settings()
-%% }
--type update_value() :: #{binary() => any()}.
-
-%% Example:
-%% update_number_of_domain_controllers_result() :: #{
-
-%% }
--type update_number_of_domain_controllers_result() :: #{binary() => any()}.
-
-%% Example:
-%% unshare_target() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type unshare_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_directory_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"Password">> := string(),
-%%   <<"ShortName">> => string(),
-%%   <<"Size">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcSettings">> => directory_vpc_settings()
-%% }
--type create_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_request() :: #{
-%%   <<"SnapshotId">> := string()
-%% }
--type delete_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ldaps_settings_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_ldaps_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% verify_trust_request() :: #{
-%%   <<"TrustId">> := string()
-%% }
--type verify_trust_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_topics_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"TopicNames">> => list(string())
-%% }
--type describe_event_topics_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ldaps_settings_result() :: #{
-%%   <<"LDAPSSettingsInfo">> => list(ldaps_setting_info()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_ldaps_settings_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_conditional_forwarder_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> => list(string()),
-%%   <<"DnsIpv6Addrs">> => list(string()),
-%%   <<"RemoteDomainName">> := string()
-%% }
--type update_conditional_forwarder_request() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type snapshot_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ip_route() :: #{
-%%   <<"CidrIp">> => string(),
-%%   <<"CidrIpv6">> => string(),
-%%   <<"Description">> => string()
-%% }
--type ip_route() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type invalid_target_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_snapshot_limits_result() :: #{
-%%   <<"SnapshotLimits">> => snapshot_limits()
-%% }
--type get_snapshot_limits_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_hybrid_ad_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"HybridAdministratorAccountUpdate">> => hybrid_administrator_account_update(),
-%%   <<"SelfManagedInstancesSettings">> => hybrid_customer_instances_settings()
-%% }
--type update_hybrid_ad_request() :: #{binary() => any()}.
-
-%% Example:
-%% unshare_directory_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"UnshareTarget">> := unshare_target()
-%% }
--type unshare_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_controller_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type domain_controller_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_directory_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type create_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ldaps_status_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type invalid_ldaps_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_trust_request() :: #{
-%%   <<"ConditionalForwarderIpAddrs">> => list(string()),
-%%   <<"ConditionalForwarderIpv6Addrs">> => list(string()),
-%%   <<"DirectoryId">> := string(),
-%%   <<"RemoteDomainName">> := string(),
-%%   <<"SelectiveAuth">> => list(any()),
-%%   <<"TrustDirection">> := list(any()),
-%%   <<"TrustPassword">> := string(),
-%%   <<"TrustType">> => list(any())
-%% }
--type create_trust_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_ip_routes_result() :: #{
-
-%% }
--type remove_ip_routes_result() :: #{binary() => any()}.
-
-%% Example:
-%% hybrid_update_activities() :: #{
-%%   <<"HybridAdministratorAccount">> => list(hybrid_update_info_entry()),
-%%   <<"SelfManagedInstances">> => list(hybrid_update_info_entry())
-%% }
--type hybrid_update_activities() :: #{binary() => any()}.
-
-%% Example:
-%% reject_shared_directory_request() :: #{
+%% accept_shared_directory_request() :: #{
 %%   <<"SharedDirectoryId">> := string()
 %% }
--type reject_shared_directory_request() :: #{binary() => any()}.
+-type accept_shared_directory_request() :: #{binary() => any()}.
 
 %% Example:
-%% o_s_update_settings() :: #{
-%%   <<"OSVersion">> => list(any())
+%% accept_shared_directory_result() :: #{
+%%   <<"SharedDirectory">> => shared_directory()
 %% }
--type o_s_update_settings() :: #{binary() => any()}.
+-type accept_shared_directory_result() :: #{binary() => any()}.
 
 %% Example:
-%% insufficient_permissions_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type insufficient_permissions_exception() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_info() :: #{
-%%   <<"CertificateId">> => string(),
-%%   <<"CommonName">> => string(),
-%%   <<"ExpiryDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type certificate_info() :: #{binary() => any()}.
-
-%% Example:
-%% setting() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type setting() :: #{binary() => any()}.
-
-%% Example:
-%% create_conditional_forwarder_result() :: #{
-
-%% }
--type create_conditional_forwarder_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ad_assessment_result() :: #{
-%%   <<"Assessment">> => assessment(),
-%%   <<"AssessmentReports">> => list(assessment_report())
-%% }
--type describe_ad_assessment_result() :: #{binary() => any()}.
-
-%% Example:
-%% share_directory_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"ShareMethod">> := list(any()),
-%%   <<"ShareNotes">> => string(),
-%%   <<"ShareTarget">> := share_target()
-%% }
--type share_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hybrid_ad_update_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"UpdateType">> => list(any())
-%% }
--type describe_hybrid_ad_update_request() :: #{binary() => any()}.
-
-%% Example:
-%% setting_entry() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"AppliedValue">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"LastRequestedDateTime">> => non_neg_integer(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RequestDetailedStatus">> => map(),
-%%   <<"RequestStatus">> => list(any()),
-%%   <<"RequestStatusMessage">> => string(),
-%%   <<"RequestedValue">> => string(),
-%%   <<"Type">> => string()
-%% }
--type setting_entry() :: #{binary() => any()}.
-
-%% Example:
-%% network_update_settings() :: #{
-%%   <<"CustomerDnsIpsV6">> => list(string()),
-%%   <<"NetworkType">> => list(any())
-%% }
--type network_update_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_conditional_forwarder_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> => list(string()),
-%%   <<"DnsIpv6Addrs">> => list(string()),
-%%   <<"RemoteDomainName">> := string()
-%% }
--type create_conditional_forwarder_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"DirectoryId">> := string()
-%% }
--type create_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_available_certificate_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type no_available_certificate_exception() :: #{binary() => any()}.
-
-%% Example:
-%% directory_in_desired_state_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_in_desired_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% region_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type region_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Name">> => string()
-%% }
--type create_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_certificate_result() :: #{
-%%   <<"CertificateId">> => string()
-%% }
--type register_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_subscriptions_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_log_subscriptions_request() :: #{binary() => any()}.
-
-%% Example:
-%% directory_already_shared_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_already_shared_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_client_authentication_result() :: #{
-
-%% }
--type disable_client_authentication_result() :: #{binary() => any()}.
-
-%% Example:
-%% unshare_directory_result() :: #{
-%%   <<"SharedDirectoryId">> => string()
-%% }
--type unshare_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% remove_region_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type remove_region_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_trust_result() :: #{
-%%   <<"RequestId">> => string(),
-%%   <<"TrustId">> => string()
-%% }
--type update_trust_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directory_data_access_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type describe_directory_data_access_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% ad_assessment_limit_exceeded_exception() :: #{
@@ -608,64 +220,32 @@
 -type ad_assessment_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% enable_radius_request() :: #{
+%% add_ip_routes_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"RadiusSettings">> := radius_settings()
+%%   <<"IpRoutes">> := list(ip_route()),
+%%   <<"UpdateSecurityGroupForDirectoryControllers">> => boolean()
 %% }
--type enable_radius_request() :: #{binary() => any()}.
+-type add_ip_routes_request() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_settings_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
+%% add_ip_routes_result() :: #{
+
 %% }
--type unsupported_settings_exception() :: #{binary() => any()}.
+-type add_ip_routes_result() :: #{binary() => any()}.
 
 %% Example:
-%% restore_from_snapshot_request() :: #{
-%%   <<"SnapshotId">> := string()
+%% add_region_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"RegionName">> := string(),
+%%   <<"VPCSettings">> := directory_vpc_settings()
 %% }
--type restore_from_snapshot_request() :: #{binary() => any()}.
+-type add_region_request() :: #{binary() => any()}.
 
 %% Example:
-%% computer() :: #{
-%%   <<"ComputerAttributes">> => list(attribute()),
-%%   <<"ComputerId">> => string(),
-%%   <<"ComputerName">> => string()
-%% }
--type computer() :: #{binary() => any()}.
+%% add_region_result() :: #{
 
-%% Example:
-%% get_directory_limits_result() :: #{
-%%   <<"DirectoryLimits">> => directory_limits()
 %% }
--type get_directory_limits_result() :: #{binary() => any()}.
-
-%% Example:
-%% verify_trust_result() :: #{
-%%   <<"TrustId">> => string()
-%% }
--type verify_trust_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_certificate_request() :: #{
-%%   <<"CertificateId">> := string(),
-%%   <<"DirectoryId">> := string()
-%% }
--type deregister_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_schema_extensions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaExtensionsInfo">> => list(schema_extension_info())
-%% }
--type list_schema_extensions_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_directory_data_access_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type enable_directory_data_access_request() :: #{binary() => any()}.
+-type add_region_result() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_to_resource_request() :: #{
@@ -675,284 +255,60 @@
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_ad_assessment_request() :: #{
-%%   <<"AssessmentId">> := string()
-%% }
--type describe_ad_assessment_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_region_result() :: #{
+%% add_tags_to_resource_result() :: #{
 
 %% }
--type remove_region_result() :: #{binary() => any()}.
+-type add_tags_to_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% disable_sso_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type disable_sso_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_info_entry() :: #{
-%%   <<"InitiatedBy">> => string(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"NewValue">> => update_value(),
-%%   <<"PreviousValue">> => update_value(),
-%%   <<"Region">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type update_info_entry() :: #{binary() => any()}.
-
-%% Example:
-%% add_region_result() :: #{
-
-%% }
--type add_region_result() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_schema_extension_result() :: #{
-
-%% }
--type cancel_schema_extension_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_not_shared_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_not_shared_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_ad_assessment_result() :: #{
-%%   <<"AssessmentId">> => string()
-%% }
--type start_ad_assessment_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_update_directory_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UpdateActivities">> => list(update_info_entry())
-%% }
--type describe_update_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_ad_assessment_request() :: #{
-%%   <<"AssessmentConfiguration">> => assessment_configuration(),
-%%   <<"DirectoryId">> => string()
-%% }
--type start_ad_assessment_request() :: #{binary() => any()}.
-
-%% Example:
-%% client_cert_auth_settings() :: #{
-%%   <<"OCSPUrl">> => string()
-%% }
--type client_cert_auth_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_log_subscription_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"LogGroupName">> := string()
-%% }
--type create_log_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_computer_result() :: #{
-%%   <<"Computer">> => computer()
-%% }
--type create_computer_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusts_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Trusts">> => list(trust())
-%% }
--type describe_trusts_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_certificates_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_already_in_progress_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type disable_already_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% share_directory_result() :: #{
-%%   <<"SharedDirectoryId">> => string()
-%% }
--type share_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_microsoft_ad_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type create_microsoft_ad_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_limits() :: #{
-%%   <<"CloudOnlyDirectoriesCurrentCount">> => integer(),
-%%   <<"CloudOnlyDirectoriesLimit">> => integer(),
-%%   <<"CloudOnlyDirectoriesLimitReached">> => boolean(),
-%%   <<"CloudOnlyMicrosoftADCurrentCount">> => integer(),
-%%   <<"CloudOnlyMicrosoftADLimit">> => integer(),
-%%   <<"CloudOnlyMicrosoftADLimitReached">> => boolean(),
-%%   <<"ConnectedDirectoriesCurrentCount">> => integer(),
-%%   <<"ConnectedDirectoriesLimit">> => integer(),
-%%   <<"ConnectedDirectoriesLimitReached">> => boolean()
-%% }
--type directory_limits() :: #{binary() => any()}.
-
-%% Example:
-%% owner_directory_description() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"DnsIpAddrs">> => list(string()),
-%%   <<"DnsIpv6Addrs">> => list(string()),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"RadiusSettings">> => radius_settings(),
-%%   <<"RadiusStatus">> => list(any()),
-%%   <<"VpcSettings">> => directory_vpc_settings_description()
-%% }
--type owner_directory_description() :: #{binary() => any()}.
-
-%% Example:
-%% update_directory_setup_result() :: #{
-
-%% }
--type update_directory_setup_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directories_request() :: #{
-%%   <<"DirectoryIds">> => list(string()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_directories_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_ip_routes_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_ip_routes_request() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_already_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type certificate_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% hybrid_customer_instances_settings() :: #{
+%% assessment() :: #{
+%%   <<"AssessmentId">> => string(),
 %%   <<"CustomerDnsIps">> => list(string()),
-%%   <<"InstanceIds">> => list(string())
+%%   <<"DirectoryId">> => string(),
+%%   <<"DnsName">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"ReportType">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SelfManagedInstanceIds">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"StatusCode">> => string(),
+%%   <<"StatusReason">> => string(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Version">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type hybrid_customer_instances_settings() :: #{binary() => any()}.
+-type assessment() :: #{binary() => any()}.
 
 %% Example:
-%% get_snapshot_limits_request() :: #{
-%%   <<"DirectoryId">> := string()
+%% assessment_configuration() :: #{
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"DnsName">> => string(),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"VpcSettings">> => directory_vpc_settings()
 %% }
--type get_snapshot_limits_request() :: #{binary() => any()}.
+-type assessment_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% disable_ldaps_result() :: #{
-
+%% assessment_report() :: #{
+%%   <<"DomainControllerIp">> => string(),
+%%   <<"Validations">> => list(assessment_validation())
 %% }
--type disable_ldaps_result() :: #{binary() => any()}.
+-type assessment_report() :: #{binary() => any()}.
 
 %% Example:
-%% describe_regions_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegionName">> => string()
+%% assessment_summary() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"DirectoryId">> => string(),
+%%   <<"DnsName">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"ReportType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
 %% }
--type describe_regions_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_ldaps_result() :: #{
-
-%% }
--type enable_ldaps_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_event_topic_result() :: #{
-
-%% }
--type deregister_event_topic_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_sso_result() :: #{
-
-%% }
--type enable_sso_result() :: #{binary() => any()}.
-
-%% Example:
-%% shared_directory() :: #{
-%%   <<"CreatedDateTime">> => non_neg_integer(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"OwnerDirectoryId">> => string(),
-%%   <<"ShareMethod">> => list(any()),
-%%   <<"ShareNotes">> => string(),
-%%   <<"ShareStatus">> => list(any()),
-%%   <<"SharedAccountId">> => string(),
-%%   <<"SharedDirectoryId">> => string()
-%% }
--type shared_directory() :: #{binary() => any()}.
-
-%% Example:
-%% client_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% radius_settings() :: #{
-%%   <<"AuthenticationProtocol">> => list(any()),
-%%   <<"DisplayLabel">> => string(),
-%%   <<"RadiusPort">> => integer(),
-%%   <<"RadiusRetries">> => integer(),
-%%   <<"RadiusServers">> => list(string()),
-%%   <<"RadiusServersIpv6">> => list(string()),
-%%   <<"RadiusTimeout">> => integer(),
-%%   <<"SharedSecret">> => string(),
-%%   <<"UseSameUsername">> => boolean()
-%% }
--type radius_settings() :: #{binary() => any()}.
-
-%% Example:
-%% add_ip_routes_result() :: #{
-
-%% }
--type add_ip_routes_result() :: #{binary() => any()}.
-
-%% Example:
-%% disable_ldaps_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type disable_ldaps_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_topics_result() :: #{
-%%   <<"EventTopics">> => list(event_topic())
-%% }
--type describe_event_topics_result() :: #{binary() => any()}.
+-type assessment_summary() :: #{binary() => any()}.
 
 %% Example:
 %% assessment_validation() :: #{
@@ -967,92 +323,18 @@
 -type assessment_validation() :: #{binary() => any()}.
 
 %% Example:
-%% directory_does_not_exist_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% log_subscription() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"LogGroupName">> => string(),
-%%   <<"SubscriptionCreatedDateTime">> => non_neg_integer()
-%% }
--type log_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% list_ad_assessments_result() :: #{
-%%   <<"Assessments">> => list(assessment_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_ad_assessments_result() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_settings_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type incompatible_settings_exception() :: #{binary() => any()}.
-
-%% Example:
-%% enable_directory_data_access_result() :: #{
-
-%% }
--type enable_directory_data_access_result() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_configuration() :: #{
-%%   <<"CustomerDnsIps">> => list(string()),
-%%   <<"DnsName">> => string(),
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"VpcSettings">> => directory_vpc_settings()
-%% }
--type assessment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
+%% attribute() :: #{
+%%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
 
 %% Example:
-%% describe_client_authentication_settings_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_client_authentication_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_event_topic_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"TopicName">> := string()
-%% }
--type deregister_event_topic_request() :: #{binary() => any()}.
-
-%% Example:
-%% organizations_exception() :: #{
+%% authentication_failed_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type organizations_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_conditional_forwarder_result() :: #{
-
-%% }
--type delete_conditional_forwarder_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_vpc_settings() :: #{
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type directory_vpc_settings() :: #{binary() => any()}.
+-type authentication_failed_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_schema_extension_request() :: #{
@@ -1062,31 +344,99 @@
 -type cancel_schema_extension_request() :: #{binary() => any()}.
 
 %% Example:
-%% reset_user_password_result() :: #{
+%% cancel_schema_extension_result() :: #{
 
 %% }
--type reset_user_password_result() :: #{binary() => any()}.
+-type cancel_schema_extension_result() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_next_token_exception() :: #{
+%% certificate() :: #{
+%%   <<"CertificateId">> => string(),
+%%   <<"ClientCertAuthSettings">> => client_cert_auth_settings(),
+%%   <<"CommonName">> => string(),
+%%   <<"ExpiryDateTime">> => non_neg_integer(),
+%%   <<"RegisteredDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_already_exists_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type invalid_next_token_exception() :: #{binary() => any()}.
+-type certificate_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_certificate_request() :: #{
-%%   <<"CertificateId">> := string(),
-%%   <<"DirectoryId">> := string()
+%% certificate_does_not_exist_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
 %% }
--type describe_certificate_request() :: #{binary() => any()}.
+-type certificate_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% enable_client_authentication_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Type">> := list(any())
+%% certificate_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
 %% }
--type enable_client_authentication_request() :: #{binary() => any()}.
+-type certificate_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_info() :: #{
+%%   <<"CertificateId">> => string(),
+%%   <<"CommonName">> => string(),
+%%   <<"ExpiryDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type certificate_info() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type certificate_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% client_authentication_setting_info() :: #{
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type client_authentication_setting_info() :: #{binary() => any()}.
+
+%% Example:
+%% client_cert_auth_settings() :: #{
+%%   <<"OCSPUrl">> => string()
+%% }
+-type client_cert_auth_settings() :: #{binary() => any()}.
+
+%% Example:
+%% client_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% computer() :: #{
+%%   <<"ComputerAttributes">> => list(attribute()),
+%%   <<"ComputerId">> => string(),
+%%   <<"ComputerName">> => string()
+%% }
+-type computer() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_forwarder() :: #{
+%%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
+%%   <<"RemoteDomainName">> => string(),
+%%   <<"ReplicationScope">> => list(any())
+%% }
+-type conditional_forwarder() :: #{binary() => any()}.
 
 %% Example:
 %% connect_directory_request() :: #{
@@ -1102,19 +452,158 @@
 -type connect_directory_request() :: #{binary() => any()}.
 
 %% Example:
-%% directory_vpc_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"SecurityGroupId">> => string(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
+%% connect_directory_result() :: #{
+%%   <<"DirectoryId">> => string()
 %% }
--type directory_vpc_settings_description() :: #{binary() => any()}.
+-type connect_directory_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_conditional_forwarders_result() :: #{
-%%   <<"ConditionalForwarders">> => list(conditional_forwarder())
+%% create_alias_request() :: #{
+%%   <<"Alias">> := string(),
+%%   <<"DirectoryId">> := string()
 %% }
--type describe_conditional_forwarders_result() :: #{binary() => any()}.
+-type create_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_result() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"DirectoryId">> => string()
+%% }
+-type create_alias_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_computer_request() :: #{
+%%   <<"ComputerAttributes">> => list(attribute()),
+%%   <<"ComputerName">> := string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"OrganizationalUnitDistinguishedName">> => string(),
+%%   <<"Password">> := string()
+%% }
+-type create_computer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_computer_result() :: #{
+%%   <<"Computer">> => computer()
+%% }
+-type create_computer_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_conditional_forwarder_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
+%%   <<"RemoteDomainName">> := string()
+%% }
+-type create_conditional_forwarder_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_conditional_forwarder_result() :: #{
+
+%% }
+-type create_conditional_forwarder_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_directory_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"Password">> := string(),
+%%   <<"ShortName">> => string(),
+%%   <<"Size">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSettings">> => directory_vpc_settings()
+%% }
+-type create_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_directory_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type create_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_hybrid_ad_request() :: #{
+%%   <<"AssessmentId">> := string(),
+%%   <<"SecretArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hybrid_ad_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hybrid_ad_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type create_hybrid_ad_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_subscription_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"LogGroupName">> := string()
+%% }
+-type create_log_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_subscription_result() :: #{
+
+%% }
+-type create_log_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_microsoft_ad_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Edition">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"Password">> := string(),
+%%   <<"ShortName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSettings">> := directory_vpc_settings()
+%% }
+-type create_microsoft_ad_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_microsoft_ad_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type create_microsoft_ad_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Name">> => string()
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_result() :: #{
+%%   <<"SnapshotId">> => string()
+%% }
+-type create_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_request() :: #{
+%%   <<"ConditionalForwarderIpAddrs">> => list(string()),
+%%   <<"ConditionalForwarderIpv6Addrs">> => list(string()),
+%%   <<"DirectoryId">> := string(),
+%%   <<"RemoteDomainName">> := string(),
+%%   <<"SelectiveAuth">> => list(any()),
+%%   <<"TrustDirection">> := list(any()),
+%%   <<"TrustPassword">> := string(),
+%%   <<"TrustType">> => list(any())
+%% }
+-type create_trust_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_result() :: #{
+%%   <<"TrustId">> => string()
+%% }
+-type create_trust_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ad_assessment_request() :: #{
+%%   <<"AssessmentId">> := string()
+%% }
+-type delete_ad_assessment_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_ad_assessment_result() :: #{
@@ -1123,11 +612,143 @@
 -type delete_ad_assessment_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_shared_directories_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SharedDirectories">> => list(shared_directory())
+%% delete_conditional_forwarder_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"RemoteDomainName">> := string()
 %% }
--type describe_shared_directories_result() :: #{binary() => any()}.
+-type delete_conditional_forwarder_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_conditional_forwarder_result() :: #{
+
+%% }
+-type delete_conditional_forwarder_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_directory_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type delete_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_directory_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type delete_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_subscription_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type delete_log_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_subscription_result() :: #{
+
+%% }
+-type delete_log_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"SnapshotId">> := string()
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_result() :: #{
+%%   <<"SnapshotId">> => string()
+%% }
+-type delete_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trust_request() :: #{
+%%   <<"DeleteAssociatedConditionalForwarder">> => boolean(),
+%%   <<"TrustId">> := string()
+%% }
+-type delete_trust_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trust_result() :: #{
+%%   <<"TrustId">> => string()
+%% }
+-type delete_trust_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"DirectoryId">> := string()
+%% }
+-type deregister_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_certificate_result() :: #{
+
+%% }
+-type deregister_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_event_topic_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"TopicName">> := string()
+%% }
+-type deregister_event_topic_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_event_topic_result() :: #{
+
+%% }
+-type deregister_event_topic_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ad_assessment_request() :: #{
+%%   <<"AssessmentId">> := string()
+%% }
+-type describe_ad_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ad_assessment_result() :: #{
+%%   <<"Assessment">> => assessment(),
+%%   <<"AssessmentReports">> => list(assessment_report())
+%% }
+-type describe_ad_assessment_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type describe_ca_enrollment_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ca_enrollment_policy_result() :: #{
+%%   <<"CaEnrollmentPolicyStatus">> => list(any()),
+%%   <<"CaEnrollmentPolicyStatusReason">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"PcaConnectorArn">> => string()
+%% }
+-type describe_ca_enrollment_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"DirectoryId">> := string()
+%% }
+-type describe_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_result() :: #{
+%%   <<"Certificate">> => certificate()
+%% }
+-type describe_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_client_authentication_settings_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_client_authentication_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_client_authentication_settings_result() :: #{
@@ -1137,23 +758,235 @@
 -type describe_client_authentication_settings_result() :: #{binary() => any()}.
 
 %% Example:
-%% tag_limit_exceeded_exception() :: #{
+%% describe_conditional_forwarders_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"RemoteDomainNames">> => list(string())
+%% }
+-type describe_conditional_forwarders_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_conditional_forwarders_result() :: #{
+%%   <<"ConditionalForwarders">> => list(conditional_forwarder())
+%% }
+-type describe_conditional_forwarders_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directories_request() :: #{
+%%   <<"DirectoryIds">> => list(string()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_directories_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directories_result() :: #{
+%%   <<"DirectoryDescriptions">> => list(directory_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_directories_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type describe_directory_data_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directory_data_access_result() :: #{
+%%   <<"DataAccessStatus">> => list(any())
+%% }
+-type describe_directory_data_access_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_controllers_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"DomainControllerIds">> => list(string()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_controllers_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_controllers_result() :: #{
+%%   <<"DomainControllers">> => list(domain_controller()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_controllers_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_topics_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"TopicNames">> => list(string())
+%% }
+-type describe_event_topics_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_topics_result() :: #{
+%%   <<"EventTopics">> => list(event_topic())
+%% }
+-type describe_event_topics_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hybrid_ad_update_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UpdateType">> => list(any())
+%% }
+-type describe_hybrid_ad_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hybrid_ad_update_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UpdateActivities">> => hybrid_update_activities()
+%% }
+-type describe_hybrid_ad_update_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ldaps_settings_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_ldaps_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ldaps_settings_result() :: #{
+%%   <<"LDAPSSettingsInfo">> => list(ldaps_setting_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ldaps_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_regions_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegionName">> => string()
+%% }
+-type describe_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_regions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RegionsDescription">> => list(region_description())
+%% }
+-type describe_regions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_settings_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_settings_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SettingEntries">> => list(setting_entry())
+%% }
+-type describe_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_shared_directories_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OwnerDirectoryId">> := string(),
+%%   <<"SharedDirectoryIds">> => list(string())
+%% }
+-type describe_shared_directories_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_shared_directories_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SharedDirectories">> => list(shared_directory())
+%% }
+-type describe_shared_directories_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotIds">> => list(string())
+%% }
+-type describe_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Snapshots">> => list(snapshot())
+%% }
+-type describe_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusts_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrustIds">> => list(string())
+%% }
+-type describe_trusts_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusts_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Trusts">> => list(trust())
+%% }
+-type describe_trusts_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_update_directory_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegionName">> => string(),
+%%   <<"UpdateType">> := list(any())
+%% }
+-type describe_update_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_update_directory_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UpdateActivities">> => list(update_info_entry())
+%% }
+-type describe_update_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% directory_already_in_region_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type tag_limit_exceeded_exception() :: #{binary() => any()}.
+-type directory_already_in_region_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_trust_result() :: #{
-%%   <<"TrustId">> => string()
+%% directory_already_shared_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
 %% }
--type create_trust_result() :: #{binary() => any()}.
+-type directory_already_shared_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_ca_enrollment_policy_request() :: #{
-%%   <<"DirectoryId">> := string()
+%% directory_connect_settings() :: #{
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"CustomerDnsIpsV6">> => list(string()),
+%%   <<"CustomerUserName">> => string(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
 %% }
--type describe_ca_enrollment_policy_request() :: #{binary() => any()}.
+-type directory_connect_settings() :: #{binary() => any()}.
+
+%% Example:
+%% directory_connect_settings_description() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ConnectIps">> => list(string()),
+%%   <<"ConnectIpsV6">> => list(string()),
+%%   <<"CustomerUserName">> => string(),
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type directory_connect_settings_description() :: #{binary() => any()}.
 
 %% Example:
 %% directory_description() :: #{
@@ -1190,11 +1023,375 @@
 -type directory_description() :: #{binary() => any()}.
 
 %% Example:
-%% service_exception() :: #{
+%% directory_does_not_exist_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type service_exception() :: #{binary() => any()}.
+-type directory_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_in_desired_state_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type directory_in_desired_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type directory_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_limits() :: #{
+%%   <<"CloudOnlyDirectoriesCurrentCount">> => integer(),
+%%   <<"CloudOnlyDirectoriesLimit">> => integer(),
+%%   <<"CloudOnlyDirectoriesLimitReached">> => boolean(),
+%%   <<"CloudOnlyMicrosoftADCurrentCount">> => integer(),
+%%   <<"CloudOnlyMicrosoftADLimit">> => integer(),
+%%   <<"CloudOnlyMicrosoftADLimitReached">> => boolean(),
+%%   <<"ConnectedDirectoriesCurrentCount">> => integer(),
+%%   <<"ConnectedDirectoriesLimit">> => integer(),
+%%   <<"ConnectedDirectoriesLimitReached">> => boolean()
+%% }
+-type directory_limits() :: #{binary() => any()}.
+
+%% Example:
+%% directory_not_shared_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type directory_not_shared_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_size_update_settings() :: #{
+%%   <<"DirectorySize">> => list(any())
+%% }
+-type directory_size_update_settings() :: #{binary() => any()}.
+
+%% Example:
+%% directory_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type directory_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_vpc_settings() :: #{
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type directory_vpc_settings() :: #{binary() => any()}.
+
+%% Example:
+%% directory_vpc_settings_description() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type directory_vpc_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% disable_already_in_progress_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type disable_already_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disable_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type disable_ca_enrollment_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_ca_enrollment_policy_result() :: #{
+
+%% }
+-type disable_ca_enrollment_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_client_authentication_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type disable_client_authentication_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_client_authentication_result() :: #{
+
+%% }
+-type disable_client_authentication_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type disable_directory_data_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_directory_data_access_result() :: #{
+
+%% }
+-type disable_directory_data_access_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_ldaps_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type disable_ldaps_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_ldaps_result() :: #{
+
+%% }
+-type disable_ldaps_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_radius_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type disable_radius_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_radius_result() :: #{
+
+%% }
+-type disable_radius_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sso_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type disable_sso_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sso_result() :: #{
+
+%% }
+-type disable_sso_result() :: #{binary() => any()}.
+
+%% Example:
+%% domain_controller() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"DnsIpAddr">> => string(),
+%%   <<"DnsIpv6Addr">> => string(),
+%%   <<"DomainControllerId">> => string(),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusLastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"StatusReason">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type domain_controller() :: #{binary() => any()}.
+
+%% Example:
+%% domain_controller_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type domain_controller_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_already_in_progress_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type enable_already_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"PcaConnectorArn">> := string()
+%% }
+-type enable_ca_enrollment_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ca_enrollment_policy_result() :: #{
+
+%% }
+-type enable_ca_enrollment_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_client_authentication_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type enable_client_authentication_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_client_authentication_result() :: #{
+
+%% }
+-type enable_client_authentication_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_directory_data_access_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type enable_directory_data_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_directory_data_access_result() :: #{
+
+%% }
+-type enable_directory_data_access_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ldaps_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type enable_ldaps_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ldaps_result() :: #{
+
+%% }
+-type enable_ldaps_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_radius_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"RadiusSettings">> := radius_settings()
+%% }
+-type enable_radius_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_radius_result() :: #{
+
+%% }
+-type enable_radius_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sso_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type enable_sso_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sso_result() :: #{
+
+%% }
+-type enable_sso_result() :: #{binary() => any()}.
+
+%% Example:
+%% entity_already_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type entity_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entity_does_not_exist_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type entity_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_topic() :: #{
+%%   <<"CreatedDateTime">> => non_neg_integer(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type event_topic() :: #{binary() => any()}.
+
+%% Example:
+%% get_directory_limits_request() :: #{
+
+%% }
+-type get_directory_limits_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_directory_limits_result() :: #{
+%%   <<"DirectoryLimits">> => directory_limits()
+%% }
+-type get_directory_limits_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_limits_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type get_snapshot_limits_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_limits_result() :: #{
+%%   <<"SnapshotLimits">> => snapshot_limits()
+%% }
+-type get_snapshot_limits_result() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_administrator_account_update() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type hybrid_administrator_account_update() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_customer_instances_settings() :: #{
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type hybrid_customer_instances_settings() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_settings_description() :: #{
+%%   <<"SelfManagedDnsIpAddrs">> => list(string()),
+%%   <<"SelfManagedInstanceIds">> => list(string())
+%% }
+-type hybrid_settings_description() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_update_activities() :: #{
+%%   <<"HybridAdministratorAccount">> => list(hybrid_update_info_entry()),
+%%   <<"SelfManagedInstances">> => list(hybrid_update_info_entry())
+%% }
+-type hybrid_update_activities() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_update_info_entry() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"InitiatedBy">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"NewValue">> => hybrid_update_value(),
+%%   <<"PreviousValue">> => hybrid_update_value(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type hybrid_update_info_entry() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_update_value() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type hybrid_update_value() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_settings_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type incompatible_settings_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_permissions_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type insufficient_permissions_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_certificate_exception() :: #{
@@ -1204,150 +1401,233 @@
 -type invalid_certificate_exception() :: #{binary() => any()}.
 
 %% Example:
-%% schema_extension_info() :: #{
+%% invalid_client_auth_status_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_client_auth_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ldaps_status_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_ldaps_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_password_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_target_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ip_route() :: #{
+%%   <<"CidrIp">> => string(),
+%%   <<"CidrIpv6">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type ip_route() :: #{binary() => any()}.
+
+%% Example:
+%% ip_route_info() :: #{
+%%   <<"AddedDateTime">> => non_neg_integer(),
+%%   <<"CidrIp">> => string(),
+%%   <<"CidrIpv6">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"SchemaExtensionId">> => string(),
-%%   <<"SchemaExtensionStatus">> => list(any()),
-%%   <<"SchemaExtensionStatusReason">> => string(),
-%%   <<"StartDateTime">> => non_neg_integer()
+%%   <<"IpRouteStatusMsg">> => list(any()),
+%%   <<"IpRouteStatusReason">> => string()
 %% }
--type schema_extension_info() :: #{binary() => any()}.
+-type ip_route_info() :: #{binary() => any()}.
 
 %% Example:
-%% add_ip_routes_request() :: #{
+%% ip_route_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type ip_route_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ldaps_setting_info() :: #{
+%%   <<"LDAPSStatus">> => list(any()),
+%%   <<"LDAPSStatusReason">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer()
+%% }
+-type ldaps_setting_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_ad_assessments_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ad_assessments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ad_assessments_result() :: #{
+%%   <<"Assessments">> => list(assessment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ad_assessments_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"IpRoutes">> := list(ip_route()),
-%%   <<"UpdateSecurityGroupForDirectoryControllers">> => boolean()
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type add_ip_routes_request() :: #{binary() => any()}.
+-type list_certificates_request() :: #{binary() => any()}.
 
 %% Example:
-%% conditional_forwarder() :: #{
+%% list_certificates_result() :: #{
+%%   <<"CertificatesInfo">> => list(certificate_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificates_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_routes_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ip_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ip_routes_result() :: #{
+%%   <<"IpRoutesInfo">> => list(ip_route_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ip_routes_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_subscriptions_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_log_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_subscriptions_result() :: #{
+%%   <<"LogSubscriptions">> => list(log_subscription()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_log_subscriptions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_schema_extensions_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_schema_extensions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_schema_extensions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaExtensionsInfo">> => list(schema_extension_info())
+%% }
+-type list_schema_extensions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% log_subscription() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"SubscriptionCreatedDateTime">> => non_neg_integer()
+%% }
+-type log_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% network_update_settings() :: #{
+%%   <<"CustomerDnsIpsV6">> => list(string()),
+%%   <<"NetworkType">> => list(any())
+%% }
+-type network_update_settings() :: #{binary() => any()}.
+
+%% Example:
+%% no_available_certificate_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type no_available_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% o_s_update_settings() :: #{
+%%   <<"OSVersion">> => list(any())
+%% }
+-type o_s_update_settings() :: #{binary() => any()}.
+
+%% Example:
+%% organizations_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type organizations_exception() :: #{binary() => any()}.
+
+%% Example:
+%% owner_directory_description() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DirectoryId">> => string(),
 %%   <<"DnsIpAddrs">> => list(string()),
 %%   <<"DnsIpv6Addrs">> => list(string()),
-%%   <<"RemoteDomainName">> => string(),
-%%   <<"ReplicationScope">> => list(any())
+%%   <<"NetworkType">> => list(any()),
+%%   <<"RadiusSettings">> => radius_settings(),
+%%   <<"RadiusStatus">> => list(any()),
+%%   <<"VpcSettings">> => directory_vpc_settings_description()
 %% }
--type conditional_forwarder() :: #{binary() => any()}.
+-type owner_directory_description() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_certificate_result() :: #{
-
+%% radius_settings() :: #{
+%%   <<"AuthenticationProtocol">> => list(any()),
+%%   <<"DisplayLabel">> => string(),
+%%   <<"RadiusPort">> => integer(),
+%%   <<"RadiusRetries">> => integer(),
+%%   <<"RadiusServers">> => list(string()),
+%%   <<"RadiusServersIpv6">> => list(string()),
+%%   <<"RadiusTimeout">> => integer(),
+%%   <<"SharedSecret">> => string(),
+%%   <<"UseSameUsername">> => boolean()
 %% }
--type deregister_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_settings_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Settings">> := list(setting())
-%% }
--type update_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_hybrid_ad_result() :: #{
-%%   <<"AssessmentId">> => string(),
-%%   <<"DirectoryId">> => string()
-%% }
--type update_hybrid_ad_result() :: #{binary() => any()}.
-
-%% Example:
-%% register_certificate_request() :: #{
-%%   <<"CertificateData">> := string(),
-%%   <<"ClientCertAuthSettings">> => client_cert_auth_settings(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"Type">> => list(any())
-%% }
--type register_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_directory_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type delete_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshots_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot())
-%% }
--type describe_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directories_result() :: #{
-%%   <<"DirectoryDescriptions">> => list(directory_description()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_directories_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_trust_request() :: #{
-%%   <<"SelectiveAuth">> => list(any()),
-%%   <<"TrustId">> := string()
-%% }
--type update_trust_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_controllers_result() :: #{
-%%   <<"DomainControllers">> => list(domain_controller()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_domain_controllers_result() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_from_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% assessment() :: #{
-%%   <<"AssessmentId">> => string(),
-%%   <<"CustomerDnsIps">> => list(string()),
-%%   <<"DirectoryId">> => string(),
-%%   <<"DnsName">> => string(),
-%%   <<"LastUpdateDateTime">> => non_neg_integer(),
-%%   <<"ReportType">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SelfManagedInstanceIds">> => list(string()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"StatusCode">> => string(),
-%%   <<"StatusReason">> => string(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Version">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type assessment() :: #{binary() => any()}.
-
-%% Example:
-%% connect_directory_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type connect_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_update_directory_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegionName">> => string(),
-%%   <<"UpdateType">> := list(any())
-%% }
--type describe_update_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_directory_limits_request() :: #{
-
-%% }
--type get_directory_limits_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_event_topic_result() :: #{
-
-%% }
--type register_event_topic_result() :: #{binary() => any()}.
+-type radius_settings() :: #{binary() => any()}.
 
 %% Example:
 %% region_description() :: #{
@@ -1364,60 +1644,97 @@
 -type region_description() :: #{binary() => any()}.
 
 %% Example:
-%% restore_from_snapshot_result() :: #{
-
-%% }
--type restore_from_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ad_assessment_request() :: #{
-%%   <<"AssessmentId">> := string()
-%% }
--type delete_ad_assessment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_ad_assessments_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_ad_assessments_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_radius_result() :: #{
-
-%% }
--type disable_radius_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_ca_enrollment_policy_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"PcaConnectorArn">> := string()
-%% }
--type enable_ca_enrollment_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_conditional_forwarders_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"RemoteDomainNames">> => list(string())
-%% }
--type describe_conditional_forwarders_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusts_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TrustIds">> => list(string())
-%% }
--type describe_trusts_request() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_in_use_exception() :: #{
+%% region_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type certificate_in_use_exception() :: #{binary() => any()}.
+-type region_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% regions_info() :: #{
+%%   <<"AdditionalRegions">> => list(string()),
+%%   <<"PrimaryRegion">> => string()
+%% }
+-type regions_info() :: #{binary() => any()}.
+
+%% Example:
+%% register_certificate_request() :: #{
+%%   <<"CertificateData">> := string(),
+%%   <<"ClientCertAuthSettings">> => client_cert_auth_settings(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"Type">> => list(any())
+%% }
+-type register_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_certificate_result() :: #{
+%%   <<"CertificateId">> => string()
+%% }
+-type register_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_event_topic_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"TopicName">> := string()
+%% }
+-type register_event_topic_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_event_topic_result() :: #{
+
+%% }
+-type register_event_topic_result() :: #{binary() => any()}.
+
+%% Example:
+%% reject_shared_directory_request() :: #{
+%%   <<"SharedDirectoryId">> := string()
+%% }
+-type reject_shared_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_shared_directory_result() :: #{
+%%   <<"SharedDirectoryId">> => string()
+%% }
+-type reject_shared_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% remove_ip_routes_request() :: #{
+%%   <<"CidrIps">> => list(string()),
+%%   <<"CidrIpv6s">> => list(string()),
+%%   <<"DirectoryId">> := string()
+%% }
+-type remove_ip_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_ip_routes_result() :: #{
+
+%% }
+-type remove_ip_routes_result() :: #{binary() => any()}.
+
+%% Example:
+%% remove_region_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type remove_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_region_result() :: #{
+
+%% }
+-type remove_region_result() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_from_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_result() :: #{
+
+%% }
+-type remove_tags_from_resource_result() :: #{binary() => any()}.
 
 %% Example:
 %% reset_user_password_request() :: #{
@@ -1428,10 +1745,175 @@
 -type reset_user_password_request() :: #{binary() => any()}.
 
 %% Example:
-%% disable_directory_data_access_request() :: #{
-%%   <<"DirectoryId">> := string()
+%% reset_user_password_result() :: #{
+
 %% }
--type disable_directory_data_access_request() :: #{binary() => any()}.
+-type reset_user_password_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_request() :: #{
+%%   <<"SnapshotId">> := string()
+%% }
+-type restore_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_result() :: #{
+
+%% }
+-type restore_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% schema_extension_info() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"SchemaExtensionId">> => string(),
+%%   <<"SchemaExtensionStatus">> => list(any()),
+%%   <<"SchemaExtensionStatusReason">> => string(),
+%%   <<"StartDateTime">> => non_neg_integer()
+%% }
+-type schema_extension_info() :: #{binary() => any()}.
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% setting() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type setting() :: #{binary() => any()}.
+
+%% Example:
+%% setting_entry() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"AppliedValue">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"LastRequestedDateTime">> => non_neg_integer(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RequestDetailedStatus">> => map(),
+%%   <<"RequestStatus">> => list(any()),
+%%   <<"RequestStatusMessage">> => string(),
+%%   <<"RequestedValue">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type setting_entry() :: #{binary() => any()}.
+
+%% Example:
+%% share_directory_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"ShareMethod">> := list(any()),
+%%   <<"ShareNotes">> => string(),
+%%   <<"ShareTarget">> := share_target()
+%% }
+-type share_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% share_directory_result() :: #{
+%%   <<"SharedDirectoryId">> => string()
+%% }
+-type share_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% share_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type share_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% share_target() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type share_target() :: #{binary() => any()}.
+
+%% Example:
+%% shared_directory() :: #{
+%%   <<"CreatedDateTime">> => non_neg_integer(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"OwnerDirectoryId">> => string(),
+%%   <<"ShareMethod">> => list(any()),
+%%   <<"ShareNotes">> => string(),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"SharedAccountId">> => string(),
+%%   <<"SharedDirectoryId">> => string()
+%% }
+-type shared_directory() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type snapshot_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_limits() :: #{
+%%   <<"ManualSnapshotsCurrentCount">> => integer(),
+%%   <<"ManualSnapshotsLimit">> => integer(),
+%%   <<"ManualSnapshotsLimitReached">> => boolean()
+%% }
+-type snapshot_limits() :: #{binary() => any()}.
+
+%% Example:
+%% start_ad_assessment_request() :: #{
+%%   <<"AssessmentConfiguration">> => assessment_configuration(),
+%%   <<"DirectoryId">> => string()
+%% }
+-type start_ad_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_ad_assessment_result() :: #{
+%%   <<"AssessmentId">> => string()
+%% }
+-type start_ad_assessment_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_schema_extension_request() :: #{
+%%   <<"CreateSnapshotBeforeSchemaExtension">> := boolean(),
+%%   <<"Description">> := string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"LdifContent">> := string()
+%% }
+-type start_schema_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_schema_extension_result() :: #{
+%%   <<"SchemaExtensionId">> => string()
+%% }
+-type start_schema_extension_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% trust() :: #{
@@ -1450,591 +1932,53 @@
 -type trust() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
+%% unshare_directory_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"UnshareTarget">> := unshare_target()
 %% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
+-type unshare_directory_request() :: #{binary() => any()}.
 
 %% Example:
-%% certificate() :: #{
-%%   <<"CertificateId">> => string(),
-%%   <<"ClientCertAuthSettings">> => client_cert_auth_settings(),
-%%   <<"CommonName">> => string(),
-%%   <<"ExpiryDateTime">> => non_neg_integer(),
-%%   <<"RegisteredDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% accept_shared_directory_request() :: #{
-%%   <<"SharedDirectoryId">> := string()
-%% }
--type accept_shared_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% ldaps_setting_info() :: #{
-%%   <<"LDAPSStatus">> => list(any()),
-%%   <<"LDAPSStatusReason">> => string(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer()
-%% }
--type ldaps_setting_info() :: #{binary() => any()}.
-
-%% Example:
-%% hybrid_settings_description() :: #{
-%%   <<"SelfManagedDnsIpAddrs">> => list(string()),
-%%   <<"SelfManagedInstanceIds">> => list(string())
-%% }
--type hybrid_settings_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_result() :: #{
-%%   <<"SnapshotId">> => string()
-%% }
--type delete_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% hybrid_administrator_account_update() :: #{
-%%   <<"SecretArn">> => string()
-%% }
--type hybrid_administrator_account_update() :: #{binary() => any()}.
-
-%% Example:
-%% list_ip_routes_result() :: #{
-%%   <<"IpRoutesInfo">> => list(ip_route_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_ip_routes_result() :: #{binary() => any()}.
-
-%% Example:
-%% disable_radius_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type disable_radius_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_does_not_exist_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type user_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SnapshotId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% ip_route_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type ip_route_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% reject_shared_directory_result() :: #{
+%% unshare_directory_result() :: #{
 %%   <<"SharedDirectoryId">> => string()
 %% }
--type reject_shared_directory_result() :: #{binary() => any()}.
+-type unshare_directory_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_log_subscription_result() :: #{
-
+%% unshare_target() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type delete_log_subscription_result() :: #{binary() => any()}.
+-type unshare_target() :: #{binary() => any()}.
 
 %% Example:
-%% describe_shared_directories_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OwnerDirectoryId">> := string(),
-%%   <<"SharedDirectoryIds">> => list(string())
-%% }
--type describe_shared_directories_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
+%% unsupported_operation_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type unsupported_operation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% hybrid_update_value() :: #{
-%%   <<"DnsIps">> => list(string()),
-%%   <<"InstanceIds">> => list(string())
-%% }
--type hybrid_update_value() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
+%% unsupported_settings_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type unsupported_settings_exception() :: #{binary() => any()}.
 
 %% Example:
-%% disable_ca_enrollment_policy_result() :: #{
-
-%% }
--type disable_ca_enrollment_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% entity_does_not_exist_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type entity_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_sso_result() :: #{
-
-%% }
--type disable_sso_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_directory_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type delete_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_conditional_forwarder_request() :: #{
+%% update_conditional_forwarder_request() :: #{
 %%   <<"DirectoryId">> := string(),
+%%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
 %%   <<"RemoteDomainName">> := string()
 %% }
--type delete_conditional_forwarder_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_client_auth_status_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type invalid_client_auth_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% directory_already_in_region_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_already_in_region_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_subscriptions_result() :: #{
-%%   <<"LogSubscriptions">> => list(log_subscription()),
-%%   <<"NextToken">> => string()
-%% }
--type list_log_subscriptions_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_unavailable_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_result() :: #{
-%%   <<"SnapshotId">> => string()
-%% }
--type create_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ca_enrollment_policy_result() :: #{
-%%   <<"CaEnrollmentPolicyStatus">> => list(any()),
-%%   <<"CaEnrollmentPolicyStatusReason">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"PcaConnectorArn">> => string()
-%% }
--type describe_ca_enrollment_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_settings_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type update_settings_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_number_of_domain_controllers_request() :: #{
-%%   <<"DesiredNumber">> := integer(),
-%%   <<"DirectoryId">> := string()
-%% }
--type update_number_of_domain_controllers_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_settings_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SettingEntries">> => list(setting_entry())
-%% }
--type describe_settings_result() :: #{binary() => any()}.
-
-%% Example:
-%% register_event_topic_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"TopicName">> := string()
-%% }
--type register_event_topic_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_ip_routes_request() :: #{
-%%   <<"CidrIps">> => list(string()),
-%%   <<"CidrIpv6s">> => list(string()),
-%%   <<"DirectoryId">> := string()
-%% }
--type remove_ip_routes_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_sso_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type enable_sso_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trust_result() :: #{
-%%   <<"TrustId">> => string()
-%% }
--type delete_trust_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hybrid_ad_update_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UpdateActivities">> => hybrid_update_activities()
-%% }
--type describe_hybrid_ad_update_result() :: #{binary() => any()}.
-
-%% Example:
-%% attribute() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshots_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SnapshotIds">> => list(string())
-%% }
--type describe_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_result() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"DirectoryId">> => string()
-%% }
--type create_alias_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_log_subscription_result() :: #{
-
-%% }
--type create_log_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directory_data_access_result() :: #{
-%%   <<"DataAccessStatus">> => list(any())
-%% }
--type describe_directory_data_access_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type directory_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_schema_extension_result() :: #{
-%%   <<"SchemaExtensionId">> => string()
-%% }
--type start_schema_extension_result() :: #{binary() => any()}.
-
-%% Example:
-%% disable_ca_enrollment_policy_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type disable_ca_enrollment_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_schema_extension_request() :: #{
-%%   <<"CreateSnapshotBeforeSchemaExtension">> := boolean(),
-%%   <<"Description">> := string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"LdifContent">> := string()
-%% }
--type start_schema_extension_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_result() :: #{
-
-%% }
--type remove_tags_from_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_ldaps_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type enable_ldaps_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_settings_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% directory_connect_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ConnectIps">> => list(string()),
-%%   <<"ConnectIpsV6">> => list(string()),
-%%   <<"CustomerUserName">> => string(),
-%%   <<"SecurityGroupId">> => string(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type directory_connect_settings_description() :: #{binary() => any()}.
-
-%% Example:
-%% hybrid_update_info_entry() :: #{
-%%   <<"AssessmentId">> => string(),
-%%   <<"InitiatedBy">> => string(),
-%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"NewValue">> => hybrid_update_value(),
-%%   <<"PreviousValue">> => hybrid_update_value(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type hybrid_update_info_entry() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_does_not_exist_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type certificate_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_schema_extensions_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_schema_extensions_request() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_failed_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type authentication_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% share_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type share_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_microsoft_ad_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Edition">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"Password">> := string(),
-%%   <<"ShortName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcSettings">> := directory_vpc_settings()
-%% }
--type create_microsoft_ad_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_regions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RegionsDescription">> => list(region_description())
-%% }
--type describe_regions_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_client_authentication_result() :: #{
-
-%% }
--type enable_client_authentication_result() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_report() :: #{
-%%   <<"DomainControllerIp">> => string(),
-%%   <<"Validations">> => list(assessment_validation())
-%% }
--type assessment_report() :: #{binary() => any()}.
-
-%% Example:
-%% create_hybrid_ad_result() :: #{
-%%   <<"DirectoryId">> => string()
-%% }
--type create_hybrid_ad_result() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_result() :: #{
-
-%% }
--type add_tags_to_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% disable_directory_data_access_result() :: #{
-
-%% }
--type disable_directory_data_access_result() :: #{binary() => any()}.
-
-%% Example:
-%% directory_size_update_settings() :: #{
-%%   <<"DirectorySize">> => list(any())
-%% }
--type directory_size_update_settings() :: #{binary() => any()}.
-
-%% Example:
-%% ip_route_info() :: #{
-%%   <<"AddedDateTime">> => non_neg_integer(),
-%%   <<"CidrIp">> => string(),
-%%   <<"CidrIpv6">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"IpRouteStatusMsg">> => list(any()),
-%%   <<"IpRouteStatusReason">> => string()
-%% }
--type ip_route_info() :: #{binary() => any()}.
-
-%% Example:
-%% regions_info() :: #{
-%%   <<"AdditionalRegions">> => list(string()),
-%%   <<"PrimaryRegion">> => string()
-%% }
--type regions_info() :: #{binary() => any()}.
-
-%% Example:
-%% enable_ca_enrollment_policy_result() :: #{
-
-%% }
--type enable_ca_enrollment_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_limits() :: #{
-%%   <<"ManualSnapshotsCurrentCount">> => integer(),
-%%   <<"ManualSnapshotsLimit">> => integer(),
-%%   <<"ManualSnapshotsLimitReached">> => boolean()
-%% }
--type snapshot_limits() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trust_request() :: #{
-%%   <<"DeleteAssociatedConditionalForwarder">> => boolean(),
-%%   <<"TrustId">> := string()
-%% }
--type delete_trust_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_shared_directory_result() :: #{
-%%   <<"SharedDirectory">> => shared_directory()
-%% }
--type accept_shared_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_computer_request() :: #{
-%%   <<"ComputerAttributes">> => list(attribute()),
-%%   <<"ComputerName">> := string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"OrganizationalUnitDistinguishedName">> => string(),
-%%   <<"Password">> := string()
-%% }
--type create_computer_request() :: #{binary() => any()}.
+-type update_conditional_forwarder_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_conditional_forwarder_result() :: #{
 
 %% }
 -type update_conditional_forwarder_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_result() :: #{
-%%   <<"Certificate">> => certificate()
-%% }
--type describe_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_topic() :: #{
-%%   <<"CreatedDateTime">> => non_neg_integer(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicName">> => string()
-%% }
--type event_topic() :: #{binary() => any()}.
-
-%% Example:
-%% directory_connect_settings() :: #{
-%%   <<"CustomerDnsIps">> => list(string()),
-%%   <<"CustomerDnsIpsV6">> => list(string()),
-%%   <<"CustomerUserName">> => string(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type directory_connect_settings() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_password_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type invalid_password_exception() :: #{binary() => any()}.
-
-%% Example:
-%% enable_already_in_progress_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type enable_already_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_client_authentication_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type disable_client_authentication_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_controllers_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"DomainControllerIds">> => list(string()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_domain_controllers_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_directory_setup_request() :: #{
@@ -2048,45 +1992,51 @@
 -type update_directory_setup_request() :: #{binary() => any()}.
 
 %% Example:
-%% share_target() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type share_target() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_summary() :: #{
-%%   <<"AssessmentId">> => string(),
-%%   <<"CustomerDnsIps">> => list(string()),
-%%   <<"DirectoryId">> => string(),
-%%   <<"DnsName">> => string(),
-%%   <<"LastUpdateDateTime">> => non_neg_integer(),
-%%   <<"ReportType">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => string()
-%% }
--type assessment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_radius_result() :: #{
+%% update_directory_setup_result() :: #{
 
 %% }
--type update_radius_result() :: #{binary() => any()}.
+-type update_directory_setup_result() :: #{binary() => any()}.
 
 %% Example:
-%% add_region_request() :: #{
+%% update_hybrid_ad_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"RegionName">> := string(),
-%%   <<"VPCSettings">> := directory_vpc_settings()
+%%   <<"HybridAdministratorAccountUpdate">> => hybrid_administrator_account_update(),
+%%   <<"SelfManagedInstancesSettings">> => hybrid_customer_instances_settings()
 %% }
--type add_region_request() :: #{binary() => any()}.
+-type update_hybrid_ad_request() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
+%% update_hybrid_ad_result() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"DirectoryId">> => string()
 %% }
--type certificate_limit_exceeded_exception() :: #{binary() => any()}.
+-type update_hybrid_ad_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_info_entry() :: #{
+%%   <<"InitiatedBy">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"NewValue">> => update_value(),
+%%   <<"PreviousValue">> => update_value(),
+%%   <<"Region">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type update_info_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_number_of_domain_controllers_request() :: #{
+%%   <<"DesiredNumber">> := integer(),
+%%   <<"DirectoryId">> := string()
+%% }
+-type update_number_of_domain_controllers_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_number_of_domain_controllers_result() :: #{
+
+%% }
+-type update_number_of_domain_controllers_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_radius_request() :: #{
@@ -2096,625 +2046,675 @@
 -type update_radius_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_hybrid_ad_request() :: #{
-%%   <<"AssessmentId">> := string(),
-%%   <<"SecretArn">> := string(),
-%%   <<"Tags">> => list(tag())
+%% update_radius_result() :: #{
+
 %% }
--type create_hybrid_ad_request() :: #{binary() => any()}.
+-type update_radius_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_settings_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"Settings">> := list(setting())
+%% }
+-type update_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_settings_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type update_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_trust_request() :: #{
+%%   <<"SelectiveAuth">> => list(any()),
+%%   <<"TrustId">> := string()
+%% }
+-type update_trust_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trust_result() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"TrustId">> => string()
+%% }
+-type update_trust_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_value() :: #{
+%%   <<"OSUpdateSettings">> => o_s_update_settings()
+%% }
+-type update_value() :: #{binary() => any()}.
+
+%% Example:
+%% user_does_not_exist_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type user_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_trust_request() :: #{
+%%   <<"TrustId">> := string()
+%% }
+-type verify_trust_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_trust_result() :: #{
+%%   <<"TrustId">> => string()
+%% }
+-type verify_trust_result() :: #{binary() => any()}.
 
 -type accept_shared_directory_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
-    client_exception() | 
-    directory_already_shared_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_already_shared_exception() | 
+    client_exception().
 
 -type add_ip_routes_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    ip_route_limit_exceeded_exception() | 
     service_exception() | 
-    client_exception() | 
-    entity_already_exists_exception().
+    ip_route_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type add_region_errors() ::
-    directory_unavailable_exception() | 
-    directory_already_in_region_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
     region_limit_exceeded_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    directory_does_not_exist_exception() | 
+    directory_already_in_region_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type add_tags_to_resource_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
     tag_limit_exceeded_exception() | 
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type cancel_schema_extension_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type connect_directory_errors() ::
-    directory_limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    directory_limit_exceeded_exception() | 
     client_exception().
 
 -type create_alias_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
-    client_exception() | 
-    entity_already_exists_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    client_exception().
 
 -type create_computer_errors() ::
-    authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    client_exception() | 
     unsupported_operation_exception() | 
-    entity_already_exists_exception().
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    directory_unavailable_exception() | 
+    client_exception() | 
+    authentication_failed_exception().
 
 -type create_conditional_forwarder_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    client_exception() | 
     unsupported_operation_exception() | 
-    entity_already_exists_exception().
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type create_directory_errors() ::
-    directory_limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    directory_limit_exceeded_exception() | 
     client_exception().
 
 -type create_hybrid_ad_errors() ::
-    directory_limit_exceeded_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_limit_exceeded_exception() | 
     client_exception() | 
-    ad_assessment_limit_exceeded_exception() | 
-    unsupported_operation_exception().
+    ad_assessment_limit_exceeded_exception().
 
 -type create_log_subscription_errors() ::
-    entity_does_not_exist_exception() | 
-    service_exception() | 
-    client_exception() | 
-    insufficient_permissions_exception() | 
     unsupported_operation_exception() | 
-    entity_already_exists_exception().
+    service_exception() | 
+    insufficient_permissions_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    client_exception().
 
 -type create_microsoft_ad_errors() ::
-    directory_limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    directory_limit_exceeded_exception() | 
+    client_exception().
 
 -type create_snapshot_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    snapshot_limit_exceeded_exception() | 
     service_exception() | 
-    client_exception() | 
-    snapshot_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type create_trust_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    client_exception() | 
     unsupported_operation_exception() | 
-    entity_already_exists_exception().
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    client_exception().
 
 -type delete_ad_assessment_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type delete_conditional_forwarder_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type delete_directory_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type delete_log_subscription_errors() ::
-    entity_does_not_exist_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type delete_snapshot_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type delete_trust_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type deregister_certificate_errors() ::
-    certificate_does_not_exist_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    certificate_in_use_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    directory_unavailable_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    certificate_in_use_exception() | 
+    certificate_does_not_exist_exception().
 
 -type deregister_event_topic_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type describe_ad_assessment_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type describe_ca_enrollment_policy_errors() ::
+    unsupported_operation_exception() | 
     service_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type describe_certificate_errors() ::
-    certificate_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    certificate_does_not_exist_exception().
 
 -type describe_client_authentication_settings_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type describe_conditional_forwarders_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type describe_directories_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type describe_directory_data_access_errors() ::
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type describe_domain_controllers_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type describe_event_topics_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type describe_hybrid_ad_update_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type describe_ldaps_settings_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type describe_regions_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type describe_settings_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type describe_shared_directories_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type describe_snapshots_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type describe_trusts_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 -type describe_update_directory_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type disable_ca_enrollment_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    disable_already_in_progress_exception() | 
+    directory_unavailable_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type disable_client_authentication_errors() ::
+    unsupported_operation_exception() | 
+    service_exception() | 
+    invalid_client_auth_status_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type disable_directory_data_access_errors() ::
+    unsupported_operation_exception() | 
+    service_exception() | 
+    directory_unavailable_exception() | 
+    directory_in_desired_state_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type disable_ldaps_errors() ::
+    unsupported_operation_exception() | 
+    service_exception() | 
+    invalid_parameter_exception() | 
+    invalid_ldaps_status_exception() | 
+    directory_unavailable_exception() | 
     directory_does_not_exist_exception() | 
     client_exception().
 
--type disable_ca_enrollment_policy_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
-    disable_already_in_progress_exception().
-
--type disable_client_authentication_errors() ::
-    invalid_client_auth_status_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
-
--type disable_directory_data_access_errors() ::
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
-    directory_in_desired_state_exception() | 
-    unsupported_operation_exception().
-
--type disable_ldaps_errors() ::
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
-    invalid_ldaps_status_exception() | 
-    unsupported_operation_exception().
-
 -type disable_radius_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type disable_sso_errors() ::
-    authentication_failed_exception() | 
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    insufficient_permissions_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception() | 
-    insufficient_permissions_exception().
+    authentication_failed_exception().
 
 -type enable_ca_enrollment_policy_errors() ::
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
     enable_already_in_progress_exception() | 
     directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    entity_already_exists_exception().
+    access_denied_exception().
 
 -type enable_client_authentication_errors() ::
-    invalid_client_auth_status_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    no_available_certificate_exception() | 
+    invalid_client_auth_status_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    no_available_certificate_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type enable_directory_data_access_errors() ::
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    directory_unavailable_exception() | 
+    directory_in_desired_state_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    directory_in_desired_state_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type enable_ldaps_errors() ::
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
     no_available_certificate_exception() | 
+    invalid_parameter_exception() | 
     invalid_ldaps_status_exception() | 
-    unsupported_operation_exception().
+    directory_unavailable_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception().
 
 -type enable_radius_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
-    client_exception() | 
-    entity_already_exists_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    entity_already_exists_exception() | 
+    client_exception().
 
 -type enable_sso_errors() ::
-    authentication_failed_exception() | 
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    insufficient_permissions_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception() | 
-    insufficient_permissions_exception().
+    authentication_failed_exception().
 
 -type get_directory_limits_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type get_snapshot_limits_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type list_ad_assessments_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type list_certificates_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
     directory_does_not_exist_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    client_exception().
 
 -type list_ip_routes_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type list_log_subscriptions_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type list_schema_extensions_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type list_tags_for_resource_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type register_certificate_errors() ::
-    certificate_limit_exceeded_exception() | 
-    directory_unavailable_exception() | 
+    unsupported_operation_exception() | 
+    service_exception() | 
     invalid_parameter_exception() | 
     invalid_certificate_exception() | 
-    service_exception() | 
+    directory_unavailable_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    certificate_already_exists_exception() | 
-    unsupported_operation_exception().
+    certificate_limit_exceeded_exception() | 
+    certificate_already_exists_exception().
 
 -type register_event_topic_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type reject_shared_directory_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
-    client_exception() | 
-    directory_already_shared_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_already_shared_exception() | 
+    client_exception().
 
 -type remove_ip_routes_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
     client_exception().
 
 -type remove_region_errors() ::
-    directory_unavailable_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    directory_unavailable_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    unsupported_operation_exception().
+    access_denied_exception().
 
 -type remove_tags_from_resource_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type reset_user_password_errors() ::
-    invalid_password_exception() | 
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
     user_does_not_exist_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_password_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type restore_from_snapshot_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type share_directory_errors() ::
+    unsupported_operation_exception() | 
     share_limit_exceeded_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_exception() | 
     organizations_exception() | 
-    client_exception() | 
+    invalid_target_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     directory_already_shared_exception() | 
-    unsupported_operation_exception() | 
-    invalid_target_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type start_ad_assessment_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    ad_assessment_limit_exceeded_exception() | 
-    unsupported_operation_exception().
+    ad_assessment_limit_exceeded_exception().
 
 -type start_schema_extension_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    snapshot_limit_exceeded_exception() | 
     service_exception() | 
-    client_exception() | 
-    snapshot_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type unshare_directory_errors() ::
-    entity_does_not_exist_exception() | 
     service_exception() | 
-    client_exception() | 
+    invalid_target_exception() | 
+    entity_does_not_exist_exception() | 
     directory_not_shared_exception() | 
-    invalid_target_exception().
+    client_exception().
 
 -type update_conditional_forwarder_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type update_directory_setup_errors() ::
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    unsupported_operation_exception() | 
+    snapshot_limit_exceeded_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    directory_unavailable_exception() | 
+    directory_in_desired_state_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    directory_in_desired_state_exception() | 
-    unsupported_operation_exception() | 
-    snapshot_limit_exceeded_exception().
+    access_denied_exception().
 
 -type update_hybrid_ad_errors() ::
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
     directory_does_not_exist_exception() | 
     client_exception() | 
-    ad_assessment_limit_exceeded_exception() | 
-    unsupported_operation_exception().
+    ad_assessment_limit_exceeded_exception().
 
 -type update_number_of_domain_controllers_errors() ::
-    directory_unavailable_exception() | 
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    client_exception() | 
     unsupported_operation_exception() | 
-    domain_controller_limit_exceeded_exception().
+    service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    domain_controller_limit_exceeded_exception() | 
+    directory_unavailable_exception() | 
+    client_exception().
 
 -type update_radius_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type update_settings_errors() ::
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    service_exception() | 
-    incompatible_settings_exception() | 
-    directory_does_not_exist_exception() | 
-    client_exception() | 
     unsupported_settings_exception() | 
-    unsupported_operation_exception().
+    unsupported_operation_exception() | 
+    service_exception() | 
+    invalid_parameter_exception() | 
+    incompatible_settings_exception() | 
+    directory_unavailable_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception().
 
 -type update_trust_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
     service_exception() | 
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
     client_exception().
 
 -type verify_trust_errors() ::
-    entity_does_not_exist_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
     service_exception() | 
-    client_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    entity_does_not_exist_exception() | 
+    client_exception().
 
 %%====================================================================
 %% API

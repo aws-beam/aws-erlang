@@ -269,241 +269,81 @@
 
 
 %% Example:
-%% protected_job_worker_compute_configuration() :: #{
-%%   <<"number">> => [integer()],
-%%   <<"properties">> => list(),
+%% access_budget() :: #{
+%%   <<"aggregateRemainingBudget">> => integer(),
+%%   <<"details">> => list(access_budget_details()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budget() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budget_details() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"budgetType">> => list(any()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"remainingBudget">> => integer(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type access_budget_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budgets_privacy_template_parameters_input() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budgets_privacy_template_parameters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budgets_privacy_template_parameters_output() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budgets_privacy_template_parameters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budgets_privacy_template_update_parameters() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter())
+%% }
+-type access_budgets_privacy_template_update_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregate_column() :: #{
+%%   <<"columnNames">> => list(string()),
+%%   <<"function">> => string()
+%% }
+-type aggregate_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_constraint() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"minimum">> => [integer()],
+%%   <<"type">> => string()
+%% }
+-type aggregation_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_parameter() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"name">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type protected_job_worker_compute_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_distribute_output_configuration() :: #{
-%%   <<"locations">> => list(list())
-%% }
--type protected_query_distribute_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_summary() :: #{
-%%   <<"analysisMethod">> => list(any()),
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_table_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schemas_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"schemaType">> => list(any())
-%% }
--type list_schemas_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_table_association_input() :: #{}
--type get_configured_table_association_input() :: #{}.
-
-
-%% Example:
-%% list_configured_audience_model_associations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_audience_model_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_protected_jobs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_protected_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_audience_model_association_output() :: #{}
--type delete_configured_audience_model_association_output() :: #{}.
-
-
-%% Example:
-%% list_analysis_templates_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_analysis_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_intermediate_table_output() :: #{
-%%   <<"intermediateTable">> => intermediate_table()
-%% }
--type create_intermediate_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_analysis_templates_output() :: #{
-%%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_analysis_templates_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_output() :: #{
-%%   <<"configuredTable">> := configured_table()
-%% }
--type create_configured_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_privacy_budget_template_output() :: #{
-%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
-%% }
--type create_privacy_budget_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_preview_parameters_input() :: #{
-%%   <<"epsilon">> => integer(),
-%%   <<"usersNoisePerQuery">> => integer()
-%% }
--type differential_privacy_preview_parameters_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_input() :: #{}
--type delete_configured_table_input() :: #{}.
-
-
-%% Example:
-%% populate_intermediate_table_output() :: #{
-%%   <<"analysisId">> => string(),
-%%   <<"analysisType">> => list(any()),
-%%   <<"versionId">> => string()
-%% }
--type populate_intermediate_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% change() :: #{
-%%   <<"specification">> => list(),
-%%   <<"specificationType">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type change() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_allowed_additional_analyses() :: #{
-%%   <<"sources">> => list(inherited_allowed_additional_analyses_source()),
-%%   <<"value">> => list(string())
-%% }
--type inherited_allowed_additional_analyses() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_mapping_tables_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_id_mapping_tables_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_dependency() :: #{
-%%   <<"creatorAccountId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parentType">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type intermediate_table_dependency() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_members_output() :: #{
-%%   <<"memberSummaries">> := list(member_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_members_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_change_specification() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"memberAbilities">> => list(list(any())()),
-%%   <<"mlMemberAbilities">> => ml_member_abilities(),
-%%   <<"paymentConfiguration">> => payment_configuration()
-%% }
--type member_change_specification() :: #{binary() => any()}.
-
-%% Example:
-%% get_intermediate_table_input() :: #{}
--type get_intermediate_table_input() :: #{}.
-
-
-%% Example:
-%% list_collaboration_id_namespace_associations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_id_namespace_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_membership_input() :: #{
-%%   <<"collaborationIdentifier">> := string(),
-%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
-%%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
-%%   <<"isMetricsEnabled">> => [boolean()],
-%%   <<"jobLogStatus">> => list(any()),
-%%   <<"paymentConfiguration">> => membership_payment_configuration(),
-%%   <<"queryLogStatus">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_membership_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_collaboration_analysis_template_input() :: #{
-%%   <<"analysisTemplateArns">> := list(string())
-%% }
--type batch_get_collaboration_analysis_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configured_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> := configured_table_analysis_rule()
-%% }
--type get_configured_table_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_association_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list(),
-%%   <<"analysisRuleType">> := list(any())
-%% }
--type create_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_input() :: #{
-%%   <<"allowedColumns">> := list(string()),
-%%   <<"analysisMethod">> := list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"tableReference">> := list(),
-%%   <<"tags">> => map()
-%% }
--type create_configured_table_input() :: #{binary() => any()}.
+-type analysis_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -521,480 +361,6 @@
 
 
 %% Example:
-%% get_protected_query_output() :: #{
-%%   <<"protectedQuery">> := protected_query()
-%% }
--type get_protected_query_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_template_artifacts() :: #{
-%%   <<"additionalArtifacts">> => list(analysis_template_artifact()),
-%%   <<"entryPoint">> => analysis_template_artifact(),
-%%   <<"roleArn">> => string()
-%% }
--type analysis_template_artifacts() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_table_associations_output() :: #{
-%%   <<"configuredTableAssociationSummaries">> := list(configured_table_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_table_associations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_analysis_template() :: #{
-%%   <<"analysisParameters">> => list(analysis_parameter()),
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"errorMessageConfiguration">> => error_message_configuration(),
-%%   <<"format">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"schema">> => analysis_schema(),
-%%   <<"source">> => list(),
-%%   <<"sourceMetadata">> => list(),
-%%   <<"syntheticDataParameters">> => list(),
-%%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"validations">> => list(analysis_template_validation_status_detail())
-%% }
--type collaboration_analysis_template() :: #{binary() => any()}.
-
-%% Example:
-%% get_analysis_template_input() :: #{}
--type get_analysis_template_input() :: #{}.
-
-
-%% Example:
-%% protected_query_member_output_configuration() :: #{
-%%   <<"accountId">> => string()
-%% }
--type protected_query_member_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_summary() :: #{
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"retentionInDays">> => [integer()],
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type intermediate_table_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job() :: #{
-%%   <<"computeConfiguration">> => list(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"error">> => protected_job_error(),
-%%   <<"id">> => string(),
-%%   <<"jobComputePayerAccountId">> => string(),
-%%   <<"jobParameters">> => protected_job_parameters(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"result">> => protected_job_result(),
-%%   <<"resultConfiguration">> => protected_job_result_configuration_output(),
-%%   <<"statistics">> => protected_job_statistics(),
-%%   <<"status">> => list(any())
-%% }
--type protected_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budget() :: #{
-%%   <<"aggregateRemainingBudget">> => integer(),
-%%   <<"details">> => list(access_budget_details()),
-%%   <<"resourceArn">> => string()
-%% }
--type access_budget() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_schema() :: #{
-%%   <<"columns">> => list(column())
-%% }
--type intermediate_table_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analysis_templates_output() :: #{
-%%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_analysis_templates_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_id_namespace_association_output() :: #{}
--type delete_id_namespace_association_output() :: #{}.
-
-
-%% Example:
-%% intermediate_table_column() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type intermediate_table_column() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_schema_type_properties() :: #{
-%%   <<"intermediateTableId">> => string()
-%% }
--type intermediate_table_schema_type_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% budget_parameter() :: #{
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"budget">> => integer(),
-%%   <<"type">> => list(any())
-%% }
--type budget_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_id_namespace_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
-%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_id_namespace_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intermediate_tables_output() :: #{
-%%   <<"intermediateTableSummaries">> => list(intermediate_table_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_intermediate_tables_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_summary() :: #{
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"intermediateTableConfiguration">> => intermediate_table_output_configuration(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"queryComputePayerAccountId">> => string(),
-%%   <<"receiverConfigurations">> => list(receiver_configuration()),
-%%   <<"status">> => string()
-%% }
--type protected_query_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_analysis_template_input() :: #{}
--type get_collaboration_analysis_template_input() :: #{}.
-
-
-%% Example:
-%% list_configured_table_associations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_table_associations_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_privacy_budget_template_input() :: #{}
--type delete_privacy_budget_template_input() :: #{}.
-
-%% Example:
-%% delete_id_mapping_table_input() :: #{}
--type delete_id_mapping_table_input() :: #{}.
-
-%% Example:
-%% delete_membership_output() :: #{}
--type delete_membership_output() :: #{}.
-
-
-%% Example:
-%% receiver_configuration() :: #{
-%%   <<"analysisType">> => list(any()),
-%%   <<"configurationDetails">> => list()
-%% }
--type receiver_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_analysis_template_input() :: #{
-%%   <<"description">> => string()
-%% }
--type update_analysis_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% column() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type column() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
-%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type id_namespace_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_s3_output() :: #{
-%%   <<"location">> => [string()]
-%% }
--type protected_job_s3_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_id_namespace_association_input() :: #{}
--type get_collaboration_id_namespace_association_input() :: #{}.
-
-
-%% Example:
-%% list_configured_tables_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_tables_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_collaboration_output() :: #{
-%%   <<"collaboration">> := collaboration()
-%% }
--type create_collaboration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_association_input_reference_config() :: #{
-%%   <<"inputReferenceArn">> => string(),
-%%   <<"manageResourcePolicies">> => [boolean()]
-%% }
--type id_namespace_association_input_reference_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_output() :: #{
-%%   <<"membershipSummaries">> := list(membership_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_memberships_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type protected_job_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_audience_model_association_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_audience_model_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_intermediate_table_output() :: #{
-%%   <<"intermediateTable">> => intermediate_table()
-%% }
--type update_intermediate_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> := configured_table_analysis_rule()
-%% }
--type update_configured_table_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_template_validation_status_detail() :: #{
-%%   <<"reasons">> => list(analysis_template_validation_status_reason()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type analysis_template_validation_status_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_protected_queries_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"protectedQueries">> := list(protected_query_summary())
-%% }
--type list_protected_queries_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_distribute_output() :: #{
-%%   <<"memberList">> => list(protected_query_single_member_output()),
-%%   <<"s3">> => protected_query_s3_output()
-%% }
--type protected_query_distribute_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_protected_queries_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_protected_queries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_table_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list()
-%% }
--type update_configured_table_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_parameters() :: #{
-%%   <<"sensitivityParameters">> => list(differential_privacy_sensitivity_parameters())
-%% }
--type differential_privacy_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_privacy_budget_template_input() :: #{}
--type get_collaboration_privacy_budget_template_input() :: #{}.
-
-
-%% Example:
-%% change_input() :: #{
-%%   <<"specification">> => list(),
-%%   <<"specificationType">> => list(any())
-%% }
--type change_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_audience_model_association_input() :: #{}
--type delete_configured_audience_model_association_input() :: #{}.
-
-
-%% Example:
-%% update_configured_table_output() :: #{
-%%   <<"configuredTable">> := configured_table()
-%% }
--type update_configured_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_association() :: #{
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"arn">> => string(),
-%%   <<"childResources">> => list(child_resource()),
-%%   <<"configuredTableArn">> => string(),
-%%   <<"configuredTableId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_table_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_membership_output() :: #{
-%%   <<"membership">> := membership()
-%% }
--type get_membership_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_intermediate_table_versions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_intermediate_table_versions_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_association_analysis_rule_output() :: #{}
--type delete_configured_table_association_analysis_rule_output() :: #{}.
-
-
-%% Example:
-%% differential_privacy_privacy_budget_aggregation() :: #{
-%%   <<"maxCount">> => [integer()],
-%%   <<"remainingCount">> => [integer()],
-%%   <<"type">> => list(any())
-%% }
--type differential_privacy_privacy_budget_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration() :: #{
-%%   <<"allowedResultRegions">> => list(list(any())()),
-%%   <<"analyticsEngine">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"autoApprovedChangeTypes">> => list(list(any())()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"creatorDisplayName">> => string(),
-%%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"isMetricsEnabled">> => [boolean()],
-%%   <<"jobLogStatus">> => list(any()),
-%%   <<"memberStatus">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"queryLogStatus">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration() :: #{binary() => any()}.
-
-
-%% Example:
 %% analysis_rule_aggregation() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
 %%   <<"aggregateColumns">> => list(aggregate_column()),
@@ -1006,337 +372,6 @@
 %%   <<"scalarFunctions">> => list(string())
 %% }
 -type analysis_rule_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_privacy_budget() :: #{
-%%   <<"aggregations">> => list(differential_privacy_privacy_budget_aggregation()),
-%%   <<"epsilon">> => integer()
-%% }
--type differential_privacy_privacy_budget() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_privacy_budget_templates_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_privacy_budget_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_inherited_constraints() :: #{
-%%   <<"additionalAnalyses">> => inherited_additional_analyses(),
-%%   <<"allowedAdditionalAnalyses">> => inherited_allowed_additional_analyses(),
-%%   <<"allowedResultReceivers">> => inherited_allowed_result_receivers(),
-%%   <<"disallowedOutputColumns">> => inherited_disallowed_output_columns()
-%% }
--type intermediate_table_inherited_constraints() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_analysis_template_output() :: #{
-%%   <<"analysisTemplate">> := analysis_template()
-%% }
--type update_analysis_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_schema() :: #{
-%%   <<"referencedTables">> => list(string())
-%% }
--type analysis_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_receiver_configuration() :: #{
-%%   <<"analysisType">> => list(any()),
-%%   <<"configurationDetails">> => list()
-%% }
--type protected_job_receiver_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_mapping_table_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type update_id_mapping_table_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_namespace_association_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingConfig">> => id_mapping_config(),
-%%   <<"name">> => string()
-%% }
--type update_id_namespace_association_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_collaboration_output() :: #{
-%%   <<"collaboration">> := collaboration()
-%% }
--type update_collaboration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_mapping_table_output() :: #{
-%%   <<"idMappingTable">> => id_mapping_table()
-%% }
--type create_id_mapping_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_privacy_budgets_input() :: #{
-%%   <<"accessBudgetResourceArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetType">> := list(any())
-%% }
--type list_collaboration_privacy_budgets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_status_detail() :: #{
-%%   <<"analysisRuleType">> => list(any()),
-%%   <<"analysisType">> => list(any()),
-%%   <<"configurations">> => list(list(any())()),
-%%   <<"reasons">> => list(schema_status_reason()),
-%%   <<"status">> => list(any())
-%% }
--type schema_status_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_table_association_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type update_configured_table_association_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_preview_aggregation() :: #{
-%%   <<"maxCount">> => [integer()],
-%%   <<"type">> => list(any())
-%% }
--type differential_privacy_preview_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_inference_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type model_inference_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_result_configuration_output() :: #{
-%%   <<"outputConfiguration">> => list()
-%% }
--type protected_job_result_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ml_member_abilities() :: #{
-%%   <<"customMLMemberAbilities">> => list(list(any())())
-%% }
--type ml_member_abilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_allowed_result_receivers() :: #{
-%%   <<"sources">> => list(inherited_allowed_result_receivers_source()),
-%%   <<"value">> => list(string())
-%% }
--type inherited_allowed_result_receivers() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_intermediate_table_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list()
-%% }
--type update_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_lineage_entry() :: #{
-%%   <<"column">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"sourceColumn">> => string(),
-%%   <<"sourceId">> => string(),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceType">> => list(any())
-%% }
--type column_lineage_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_membership_payment_configuration() :: #{
-%%   <<"jobCompute">> => membership_job_compute_payment_config(),
-%%   <<"machineLearning">> => membership_ml_payment_config(),
-%%   <<"queryCompute">> => membership_query_compute_payment_config()
-%% }
--type update_membership_payment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_compute_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type job_compute_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_collaboration_input() :: #{
-%%   <<"analyticsEngine">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_collaboration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% preview_privacy_impact_input() :: #{
-%%   <<"parameters">> := list()
-%% }
--type preview_privacy_impact_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_active_version() :: #{
-%%   <<"analysisId">> => string(),
-%%   <<"analysisType">> => list(any()),
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"inheritedConstraints">> => intermediate_table_inherited_constraints(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"versionId">> => string()
-%% }
--type intermediate_table_active_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% populate_intermediate_table_input() :: #{
-%%   <<"analysisPayerAccountId">> => string(),
-%%   <<"computeConfiguration">> => list(),
-%%   <<"parameters">> => map()
-%% }
--type populate_intermediate_table_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_table_schema_type_properties() :: #{
-%%   <<"idMappingTableId">> => string(),
-%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
-%% }
--type id_mapping_table_schema_type_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_change_requests_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_collaboration_change_requests_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_memberships_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_message_configuration() :: #{
-%%   <<"type">> => list(any())
-%% }
--type error_message_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_id_namespace_association_output() :: #{
-%%   <<"idNamespaceAssociation">> => id_namespace_association()
-%% }
--type get_id_namespace_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_intermediate_table_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"populationAnalysisConfiguration">> := list(),
-%%   <<"retentionInDays">> => [integer()],
-%%   <<"tags">> => map()
-%% }
--type create_intermediate_table_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schemas_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"schemaSummaries">> := list(schema_summary())
-%% }
--type list_schemas_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_analysis_template_input() :: #{}
--type delete_analysis_template_input() :: #{}.
-
-
-%% Example:
-%% consolidated_policy_list() :: #{
-%%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedJoinOperators">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string()),
-%%   <<"joinColumns">> => list(string()),
-%%   <<"listColumns">> => list(string())
-%% }
--type consolidated_policy_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_privacy_budget_template_output() :: #{
-%%   <<"collaborationPrivacyBudgetTemplate">> => collaboration_privacy_budget_template()
-%% }
--type get_collaboration_privacy_budget_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% approval_status_details() :: #{
-%%   <<"status">> => list(any())
-%% }
--type approval_status_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_intermediate_table_analysis_rule_output() :: #{}
--type delete_intermediate_table_analysis_rule_output() :: #{}.
-
-%% Example:
-%% delete_configured_table_analysis_rule_output() :: #{}
--type delete_configured_table_analysis_rule_output() :: #{}.
-
-
-%% Example:
-%% update_privacy_budget_template_input() :: #{
-%%   <<"parameters">> => list(),
-%%   <<"privacyBudgetType">> := list(any())
-%% }
--type update_privacy_budget_template_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1353,678 +388,12 @@
 
 
 %% Example:
-%% list_intermediate_table_versions_output() :: #{
-%%   <<"intermediateTableVersionSummaries">> => list(intermediate_table_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_intermediate_table_versions_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_member_output() :: #{}
--type delete_member_output() :: #{}.
-
-
-%% Example:
-%% schema_analysis_rule_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type schema_analysis_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_association_output() :: #{}
--type delete_configured_table_association_output() :: #{}.
-
-
-%% Example:
-%% athena_table_reference() :: #{
-%%   <<"catalogName">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"outputLocation">> => string(),
-%%   <<"region">> => list(any()),
-%%   <<"tableName">> => string(),
-%%   <<"workGroup">> => string()
-%% }
--type athena_table_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_analysis_template_output() :: #{
-%%   <<"analysisTemplate">> := analysis_template()
-%% }
--type create_analysis_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_input() :: #{}
--type get_collaboration_input() :: #{}.
-
-%% Example:
-%% get_protected_query_input() :: #{}
--type get_protected_query_input() :: #{}.
-
-
-%% Example:
-%% get_collaboration_change_request_output() :: #{
-%%   <<"collaborationChangeRequest">> => collaboration_change_request()
-%% }
--type get_collaboration_change_request_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_model_inference_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type membership_model_inference_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% billed_job_resource_utilization() :: #{
-%%   <<"units">> => [float()]
-%% }
--type billed_job_resource_utilization() :: #{binary() => any()}.
-
-
-%% Example:
-%% privacy_budget_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"privacyBudgetType">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type privacy_budget_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_association_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => configured_table_association_analysis_rule()
-%% }
--type create_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collaboration_input() :: #{}
--type delete_collaboration_input() :: #{}.
-
-
-%% Example:
-%% update_protected_query_input() :: #{
-%%   <<"targetStatus">> := string()
-%% }
--type update_protected_query_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_association_analysis_rule_custom() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string())
-%% }
--type configured_table_association_analysis_rule_custom() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_protected_query_result_configuration() :: #{
-%%   <<"outputConfiguration">> => list(),
-%%   <<"roleArn">> => string()
-%% }
--type membership_protected_query_result_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_member_input() :: #{}
--type delete_member_input() :: #{}.
-
-
-%% Example:
-%% collaboration_change_specification() :: #{
-%%   <<"autoApprovedChangeTypes">> => list(list(any())())
-%% }
--type collaboration_change_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configured_audience_model_association_output() :: #{
-%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
-%% }
--type get_configured_audience_model_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_audience_model_associations_output() :: #{
-%%   <<"configuredAudienceModelAssociationSummaries">> => list(configured_audience_model_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_audience_model_associations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% consolidated_policy_custom() :: #{
-%%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedAnalyses">> => list(string()),
-%%   <<"allowedAnalysisProviders">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string()),
-%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
-%%   <<"disallowedOutputColumns">> => list(string())
-%% }
--type consolidated_policy_custom() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_privacy_budget_templates_output() :: #{
-%%   <<"collaborationPrivacyBudgetTemplateSummaries">> => list(collaboration_privacy_budget_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_privacy_budget_templates_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_change_request_summary() :: #{
-%%   <<"approvals">> => map(),
-%%   <<"changes">> => list(change()),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"isAutoApproved">> => [boolean()],
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_change_request_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string(),
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_mapping_table_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputReferenceConfig">> := id_mapping_table_input_reference_config(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_id_mapping_table_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list(),
-%%   <<"analysisRuleType">> := list(any())
-%% }
--type create_configured_table_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_namespace_association_output() :: #{
-%%   <<"idNamespaceAssociation">> => id_namespace_association()
-%% }
--type update_id_namespace_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_constraint_require_overlap() :: #{
-%%   <<"columns">> => list(string())
-%% }
--type query_constraint_require_overlap() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query() :: #{
-%%   <<"computeConfiguration">> => list(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"differentialPrivacy">> => differential_privacy_parameters(),
-%%   <<"error">> => protected_query_error(),
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"queryComputePayerAccountId">> => string(),
-%%   <<"result">> => protected_query_result(),
-%%   <<"resultConfiguration">> => protected_query_result_configuration(),
-%%   <<"sqlParameters">> => protected_query_s_q_l_parameters(),
-%%   <<"statistics">> => protected_query_statistics(),
-%%   <<"status">> => string()
-%% }
--type protected_query() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_result_configuration_input() :: #{
-%%   <<"outputConfiguration">> => list()
-%% }
--type protected_job_result_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_association_input_reference_properties() :: #{
-%%   <<"idMappingWorkflowsSupported">> => list([any()]()),
-%%   <<"idNamespaceType">> => list(any())
-%% }
--type id_namespace_association_input_reference_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_association_schema_type_properties() :: #{
-%%   <<"configuredTableAssociationId">> => string()
-%% }
--type configured_table_association_schema_type_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_result_configuration() :: #{
-%%   <<"outputConfiguration">> => list()
-%% }
--type protected_query_result_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_table_association_output() :: #{
-%%   <<"configuredTableAssociation">> := configured_table_association()
-%% }
--type update_configured_table_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_result() :: #{
-%%   <<"output">> => list()
-%% }
--type protected_job_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_table_association_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list()
-%% }
--type update_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_statistics() :: #{
-%%   <<"billedResourceUtilization">> => billed_job_resource_utilization(),
-%%   <<"totalDurationInMillis">> => [float()]
-%% }
--type protected_job_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_additional_analyses() :: #{
-%%   <<"sources">> => list(inherited_additional_analyses_source()),
-%%   <<"value">> => list(any())
-%% }
--type inherited_additional_analyses() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_schema_analysis_rule_output() :: #{
-%%   <<"analysisRules">> => list(analysis_rule()),
-%%   <<"errors">> => list(batch_get_schema_analysis_rule_error())
-%% }
--type batch_get_schema_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_s3_output_configuration_input() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"keyPrefix">> => string()
-%% }
--type protected_job_s3_output_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_summary() :: #{
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"jobComputePayerAccountId">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()),
-%%   <<"status">> => list(any())
-%% }
--type protected_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaName">> => [string()],
-%%   <<"quotaValue">> => [float()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_configured_audience_model_association() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_configured_audience_model_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_audience_model_association_input() :: #{
-%%   <<"configuredAudienceModelArn">> := string(),
-%%   <<"configuredAudienceModelAssociationName">> := string(),
-%%   <<"description">> => string(),
-%%   <<"manageResourcePolicies">> := [boolean()],
-%%   <<"tags">> => map()
-%% }
--type create_configured_audience_model_association_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_intermediate_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => intermediate_table_analysis_rule()
-%% }
--type get_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_template_parameters_input() :: #{
-%%   <<"epsilon">> => integer(),
-%%   <<"usersNoisePerQuery">> => integer()
-%% }
--type differential_privacy_template_parameters_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_allowed_additional_analyses_source() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => list(string())
-%% }
--type inherited_allowed_additional_analyses_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budgets_privacy_template_parameters_output() :: #{
-%%   <<"budgetParameters">> => list(budget_parameter()),
-%%   <<"resourceArn">> => string()
-%% }
--type access_budgets_privacy_template_parameters_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_query_compute_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type membership_query_compute_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_result() :: #{
-%%   <<"output">> => list()
-%% }
--type protected_query_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_summary() :: #{
-%%   <<"analysisMethod">> => list(any()),
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type schema_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_protected_job_input() :: #{
-%%   <<"computeConfiguration">> => list(),
-%%   <<"jobComputePayerAccountId">> => string(),
-%%   <<"jobParameters">> := protected_job_parameters(),
-%%   <<"resultConfiguration">> => protected_job_result_configuration_input(),
-%%   <<"type">> := list(any())
-%% }
--type start_protected_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_analysis_rule_input() :: #{}
--type delete_configured_table_analysis_rule_input() :: #{}.
-
-
-%% Example:
-%% populate_id_mapping_table_output() :: #{
-%%   <<"idMappingJobId">> => string()
-%% }
--type populate_id_mapping_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% privacy_budget_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"parameters">> => list(),
-%%   <<"privacyBudgetType">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type privacy_budget_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_association_analysis_rule_aggregation() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string())
-%% }
--type configured_table_association_analysis_rule_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% privacy_budget_summary() :: #{
-%%   <<"budget">> => list(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"privacyBudgetTemplateArn">> => string(),
-%%   <<"privacyBudgetTemplateId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type privacy_budget_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_schema_output() :: #{
-%%   <<"schema">> := schema()
-%% }
--type get_schema_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% hash() :: #{
-%%   <<"sha256">> => [string()]
-%% }
--type hash() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_single_member_output() :: #{
-%%   <<"accountId">> => string()
-%% }
--type protected_job_single_member_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_configured_audience_model_association_output() :: #{
-%%   <<"collaborationConfiguredAudienceModelAssociation">> => collaboration_configured_audience_model_association()
-%% }
--type get_collaboration_configured_audience_model_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_schema_output() :: #{
-%%   <<"errors">> := list(batch_get_schema_error()),
-%%   <<"schemas">> := list(schema())
-%% }
--type batch_get_schema_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_summary() :: #{
-%%   <<"analyticsEngine">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"creatorDisplayName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"memberStatus">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema() :: #{
-%%   <<"analysisMethod">> => list(any()),
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"columns">> => list(column()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"partitionKeys">> => list(column()),
-%%   <<"resourceArn">> => string(),
-%%   <<"schemaStatusDetails">> => list(schema_status_detail()),
-%%   <<"schemaTypeProperties">> => list(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type schema() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_table_association_analysis_rule_input() :: #{}
--type get_configured_table_association_analysis_rule_input() :: #{}.
-
-
-%% Example:
-%% differential_privacy_column() :: #{
-%%   <<"name">> => string()
-%% }
--type differential_privacy_column() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_synthetic_data_generation_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type membership_synthetic_data_generation_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_protected_job_result_configuration() :: #{
-%%   <<"outputConfiguration">> => list(),
-%%   <<"roleArn">> => string()
-%% }
--type membership_protected_job_result_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_output_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type intermediate_table_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_privacy_budget_templates_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_privacy_budget_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configured_table_association_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => configured_table_association_analysis_rule()
-%% }
--type get_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_privacy_budgets_input() :: #{
-%%   <<"accessBudgetResourceArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetType">> := list(any())
-%% }
--type list_privacy_budgets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_configured_audience_model_associations_output() :: #{
-%%   <<"collaborationConfiguredAudienceModelAssociationSummaries">> => list(collaboration_configured_audience_model_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_configured_audience_model_associations_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_association_input() :: #{}
--type delete_configured_table_association_input() :: #{}.
-
-
-%% Example:
-%% list_privacy_budget_templates_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetTemplateSummaries">> => list(privacy_budget_template_summary())
-%% }
--type list_privacy_budget_templates_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_config() :: #{
-%%   <<"allowUseAsDimensionColumn">> => [boolean()]
-%% }
--type id_mapping_config() :: #{binary() => any()}.
+%% analysis_rule_id_mapping_table() :: #{
+%%   <<"dimensionColumns">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"queryConstraints">> => list(list())
+%% }
+-type analysis_rule_id_mapping_table() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2038,595 +407,10 @@
 
 
 %% Example:
-%% update_protected_job_output() :: #{
-%%   <<"protectedJob">> => protected_job()
+%% analysis_schema() :: #{
+%%   <<"referencedTables">> => list(string())
 %% }
--type update_protected_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_collaboration_change_request_output() :: #{
-%%   <<"collaborationChangeRequest">> => collaboration_change_request()
-%% }
--type create_collaboration_change_request_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationCreatorAccountId">> => string(),
-%%   <<"collaborationCreatorDisplayName">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"collaborationName">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"memberAbilities">> => list(list(any())()),
-%%   <<"mlMemberAbilities">> => ml_member_abilities(),
-%%   <<"paymentConfiguration">> => membership_payment_configuration(),
-%%   <<"status">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type membership_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% ml_synthetic_data_parameters() :: #{
-%%   <<"columnClassification">> => column_classification_details(),
-%%   <<"epsilon">> => [float()],
-%%   <<"maxMembershipInferenceAttackScore">> => float()
-%% }
--type ml_synthetic_data_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_disallowed_output_columns() :: #{
-%%   <<"columnLineage">> => list(column_lineage_entry()),
-%%   <<"value">> => list(string())
-%% }
--type inherited_disallowed_output_columns() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_namespace_association_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingConfig">> => id_mapping_config(),
-%%   <<"inputReferenceConfig">> := id_namespace_association_input_reference_config(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_id_namespace_association_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_table_analysis_rule_input() :: #{}
--type get_configured_table_analysis_rule_input() :: #{}.
-
-
-%% Example:
-%% analysis_rule_id_mapping_table() :: #{
-%%   <<"dimensionColumns">> => list(string()),
-%%   <<"joinColumns">> => list(string()),
-%%   <<"queryConstraints">> => list(list())
-%% }
--type analysis_rule_id_mapping_table() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_direct_analysis_configuration_details() :: #{
-%%   <<"receiverAccountIds">> => list(string())
-%% }
--type protected_job_direct_analysis_configuration_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"key">> => [string()]
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_analysis_templates_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_analysis_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_s3_output() :: #{
-%%   <<"location">> => [string()]
-%% }
--type protected_query_s3_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_collaboration_change_request_input() :: #{
-%%   <<"action">> := list(any())
-%% }
--type update_collaboration_change_request_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_privacy_budget_summary() :: #{
-%%   <<"budget">> => list(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"privacyBudgetTemplateArn">> => string(),
-%%   <<"privacyBudgetTemplateId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_privacy_budget_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configured_audience_model_association_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_configured_audience_model_association_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_configured_audience_model_associations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_configured_audience_model_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_collaboration_change_request_input() :: #{
-%%   <<"changes">> := list(change_input())
-%% }
--type create_collaboration_change_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% disallow_intermediate_table_output() :: #{}
--type disallow_intermediate_table_output() :: #{}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_privacy_budget_template_input() :: #{
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"parameters">> := list(),
-%%   <<"privacyBudgetType">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_privacy_budget_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_intermediate_table_analysis_rule_input() :: #{}
--type delete_intermediate_table_analysis_rule_input() :: #{}.
-
-%% Example:
-%% get_intermediate_table_analysis_rule_input() :: #{}
--type get_intermediate_table_analysis_rule_input() :: #{}.
-
-
-%% Example:
-%% get_privacy_budget_template_output() :: #{
-%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
-%% }
--type get_privacy_budget_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_protected_query_output() :: #{
-%%   <<"protectedQuery">> := protected_query()
-%% }
--type update_protected_query_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_association_output() :: #{
-%%   <<"configuredTableAssociation">> := configured_table_association()
-%% }
--type create_configured_table_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_privacy_impact() :: #{
-%%   <<"aggregations">> => list(differential_privacy_preview_aggregation())
-%% }
--type differential_privacy_privacy_impact() :: #{binary() => any()}.
-
-
-%% Example:
-%% synthetic_data_generation_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type synthetic_data_generation_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_parameter() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type analysis_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_table() :: #{
-%%   <<"arn">> => string(),
-%%   <<"childResources">> => list(child_resource()),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
-%%   <<"inputReferenceProperties">> => id_mapping_table_input_reference_properties(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type id_mapping_table() :: #{binary() => any()}.
-
-%% Example:
-%% delete_id_mapping_table_output() :: #{}
--type delete_id_mapping_table_output() :: #{}.
-
-
-%% Example:
-%% create_collaboration_input() :: #{
-%%   <<"allowedResultRegions">> => list(list(any())()),
-%%   <<"analyticsEngine">> => list(any()),
-%%   <<"autoApprovedChangeRequestTypes">> => list(list(any())()),
-%%   <<"creatorDisplayName">> := string(),
-%%   <<"creatorMLMemberAbilities">> => ml_member_abilities(),
-%%   <<"creatorMemberAbilities">> := list(list(any())()),
-%%   <<"creatorPaymentConfiguration">> => payment_configuration(),
-%%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
-%%   <<"description">> => string(),
-%%   <<"isMetricsEnabled">> => [boolean()],
-%%   <<"jobLogStatus">> => list(any()),
-%%   <<"members">> := list(member_specification()),
-%%   <<"name">> := string(),
-%%   <<"queryLogStatus">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_collaboration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_analysis_rule() :: #{
-%%   <<"configuredTableArn">> => string(),
-%%   <<"configuredTableId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"policy">> => list(),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_table_analysis_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_mapping_table_output() :: #{
-%%   <<"idMappingTable">> => id_mapping_table()
-%% }
--type update_id_mapping_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_compute_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type query_compute_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_members_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_members_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_template_update_parameters() :: #{
-%%   <<"epsilon">> => integer(),
-%%   <<"usersNoisePerQuery">> => integer()
-%% }
--type differential_privacy_template_update_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% get_id_mapping_table_output() :: #{
-%%   <<"idMappingTable">> => id_mapping_table()
-%% }
--type get_id_mapping_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregation_constraint() :: #{
-%%   <<"columnName">> => string(),
-%%   <<"minimum">> => [integer()],
-%%   <<"type">> => string()
-%% }
--type aggregation_constraint() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_id_namespace_association_output() :: #{
-%%   <<"collaborationIdNamespaceAssociation">> => collaboration_id_namespace_association()
-%% }
--type get_collaboration_id_namespace_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% synthetic_data_column_properties() :: #{
-%%   <<"columnName">> => string(),
-%%   <<"columnType">> => list(any()),
-%%   <<"isPredictiveValue">> => [boolean()]
-%% }
--type synthetic_data_column_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_intermediate_table_input() :: #{}
--type delete_intermediate_table_input() :: #{}.
-
-
-%% Example:
-%% list_collaboration_privacy_budgets_output() :: #{
-%%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_privacy_budgets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_privacy_budget_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"parameters">> => list(),
-%%   <<"privacyBudgetType">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_privacy_budget_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_template_artifact_metadata() :: #{
-%%   <<"additionalArtifactHashes">> => list(hash()),
-%%   <<"entryPointHash">> => hash()
-%% }
--type analysis_template_artifact_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_change_request() :: #{
-%%   <<"approvals">> => map(),
-%%   <<"changes">> => list(change()),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"isAutoApproved">> => [boolean()],
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_change_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% population_analysis_sql_parameters() :: #{
-%%   <<"analysisTemplateArn">> => string(),
-%%   <<"queryString">> => [string()]
-%% }
--type population_analysis_sql_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_namespace_associations_output() :: #{
-%%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_id_namespace_associations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_intermediate_table_analysis_rule_input() :: #{
-%%   <<"analysisRulePolicy">> := list(),
-%%   <<"analysisRuleType">> := list(any())
-%% }
--type create_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_job_compute_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type membership_job_compute_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% billed_resource_utilization() :: #{
-%%   <<"units">> => [float()]
-%% }
--type billed_resource_utilization() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_analysis_rule_input() :: #{}
--type get_schema_analysis_rule_input() :: #{}.
-
-
-%% Example:
-%% protected_job_member_output_configuration_output() :: #{
-%%   <<"accountId">> => string()
-%% }
--type protected_job_member_output_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_audience_model_association() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"manageResourcePolicies">> => [boolean()],
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_audience_model_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_privacy_budget_template_output() :: #{
-%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
-%% }
--type update_privacy_budget_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_classification_details() :: #{
-%%   <<"columnMapping">> => list(synthetic_data_column_properties())
-%% }
--type column_classification_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_status_reason() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => [string()]
-%% }
--type schema_status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_intermediate_table_input() :: #{
-%%   <<"columns">> => list(intermediate_table_column()),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type update_intermediate_table_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_single_member_output() :: #{
-%%   <<"accountId">> => string()
-%% }
--type protected_query_single_member_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_namespace_association_output() :: #{
-%%   <<"idNamespaceAssociation">> => id_namespace_association()
-%% }
--type create_id_namespace_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% differential_privacy_configuration() :: #{
-%%   <<"columns">> => list(differential_privacy_column())
-%% }
--type differential_privacy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% direct_analysis_configuration_details() :: #{
-%%   <<"receiverAccountIds">> => list(string())
-%% }
--type direct_analysis_configuration_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_change_requests_output() :: #{
-%%   <<"collaborationChangeRequestSummaries">> => list(collaboration_change_request_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_change_requests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_schema_analysis_rule_input() :: #{
-%%   <<"schemaAnalysisRuleRequests">> := list(schema_analysis_rule_request())
-%% }
--type batch_get_schema_analysis_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_additional_analyses_source() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type inherited_additional_analyses_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_protected_query_output() :: #{
-%%   <<"protectedQuery">> := protected_query()
-%% }
--type start_protected_query_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> := configured_table_analysis_rule()
-%% }
--type create_configured_table_analysis_rule_output() :: #{binary() => any()}.
+-type analysis_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2654,27 +438,103 @@
 
 
 %% Example:
-%% worker_compute_configuration() :: #{
-%%   <<"number">> => [integer()],
-%%   <<"properties">> => list(),
+%% analysis_template_artifact() :: #{
+%%   <<"location">> => s3_location()
+%% }
+-type analysis_template_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_artifact_metadata() :: #{
+%%   <<"additionalArtifactHashes">> => list(hash()),
+%%   <<"entryPointHash">> => hash()
+%% }
+-type analysis_template_artifact_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_artifacts() :: #{
+%%   <<"additionalArtifacts">> => list(analysis_template_artifact()),
+%%   <<"entryPoint">> => analysis_template_artifact(),
+%%   <<"roleArn">> => string()
+%% }
+-type analysis_template_artifacts() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isSyntheticData">> => [boolean()],
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type analysis_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_template_validation_status_detail() :: #{
+%%   <<"reasons">> => list(analysis_template_validation_status_reason()),
+%%   <<"status">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
--type worker_compute_configuration() :: #{binary() => any()}.
+-type analysis_template_validation_status_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% disallow_intermediate_table_input() :: #{
-%%   <<"includeDescendants">> => [boolean()],
-%%   <<"intermediateTableName">> := string()
+%% analysis_template_validation_status_reason() :: #{
+%%   <<"message">> => [string()]
 %% }
--type disallow_intermediate_table_input() :: #{binary() => any()}.
+-type analysis_template_validation_status_reason() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_analysis_template_output() :: #{
-%%   <<"analysisTemplate">> := analysis_template()
+%% approval_status_details() :: #{
+%%   <<"status">> => list(any())
 %% }
--type get_analysis_template_output() :: #{binary() => any()}.
+-type approval_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% athena_table_reference() :: #{
+%%   <<"catalogName">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"outputLocation">> => string(),
+%%   <<"region">> => list(any()),
+%%   <<"tableName">> => string(),
+%%   <<"workGroup">> => string()
+%% }
+-type athena_table_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_collaboration_analysis_template_error() :: #{
+%%   <<"arn">> => string(),
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type batch_get_collaboration_analysis_template_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_collaboration_analysis_template_input() :: #{
+%%   <<"analysisTemplateArns">> := list(string())
+%% }
+-type batch_get_collaboration_analysis_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_collaboration_analysis_template_output() :: #{
+%%   <<"collaborationAnalysisTemplates">> := list(collaboration_analysis_template()),
+%%   <<"errors">> := list(batch_get_collaboration_analysis_template_error())
+%% }
+-type batch_get_collaboration_analysis_template_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2688,87 +548,207 @@
 
 
 %% Example:
-%% create_intermediate_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% batch_get_schema_analysis_rule_input() :: #{
+%%   <<"schemaAnalysisRuleRequests">> := list(schema_analysis_rule_request())
 %% }
--type create_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+-type batch_get_schema_analysis_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_configured_table_input() :: #{
-%%   <<"allowedColumns">> => list(string()),
-%%   <<"analysisMethod">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"tableReference">> => list()
+%% batch_get_schema_analysis_rule_output() :: #{
+%%   <<"analysisRules">> => list(analysis_rule()),
+%%   <<"errors">> => list(batch_get_schema_analysis_rule_error())
 %% }
--type update_configured_table_input() :: #{binary() => any()}.
+-type batch_get_schema_analysis_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% configured_table_association_analysis_rule_list() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string())
-%% }
--type configured_table_association_analysis_rule_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table_association_analysis_rule() :: #{
-%%   <<"configuredTableAssociationArn">> => string(),
-%%   <<"configuredTableAssociationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"policy">> => list(),
-%%   <<"type">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_table_association_analysis_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_input() :: #{}
--type get_schema_input() :: #{}.
-
-
-%% Example:
-%% batch_get_collaboration_analysis_template_error() :: #{
-%%   <<"arn">> => string(),
+%% batch_get_schema_error() :: #{
 %%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"name">> => string()
 %% }
--type batch_get_collaboration_analysis_template_error() :: #{binary() => any()}.
-
-%% Example:
-%% get_protected_job_input() :: #{}
--type get_protected_job_input() :: #{}.
+-type batch_get_schema_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_collaborations_output() :: #{
-%%   <<"collaborationList">> := list(collaboration_summary()),
-%%   <<"nextToken">> => string()
+%% batch_get_schema_input() :: #{
+%%   <<"names">> := list(string())
 %% }
--type list_collaborations_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_id_namespace_association_input() :: #{}
--type delete_id_namespace_association_input() :: #{}.
+-type batch_get_schema_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% configured_table_association_summary() :: #{
-%%   <<"analysisRuleTypes">> => list(list(any())()),
+%% batch_get_schema_output() :: #{
+%%   <<"errors">> := list(batch_get_schema_error()),
+%%   <<"schemas">> := list(schema())
+%% }
+-type batch_get_schema_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% billed_job_resource_utilization() :: #{
+%%   <<"units">> => [float()]
+%% }
+-type billed_job_resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% billed_resource_utilization() :: #{
+%%   <<"units">> => [float()]
+%% }
+-type billed_resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% budget_parameter() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type budget_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% change() :: #{
+%%   <<"specification">> => list(),
+%%   <<"specificationType">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type change() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_input() :: #{
+%%   <<"specification">> => list(),
+%%   <<"specificationType">> => list(any())
+%% }
+-type change_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% child_resource() :: #{
+%%   <<"ownerAccountId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceStatus">> => list(any()),
+%%   <<"resourceType">> => list(any())
+%% }
+-type child_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration() :: #{
+%%   <<"allowedResultRegions">> => list(list(any())()),
+%%   <<"analyticsEngine">> => list(any()),
 %%   <<"arn">> => string(),
-%%   <<"configuredTableId">> => string(),
+%%   <<"autoApprovedChangeTypes">> => list(list(any())()),
 %%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"creatorDisplayName">> => string(),
+%%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
+%%   <<"description">> => string(),
 %%   <<"id">> => string(),
+%%   <<"isMetricsEnabled">> => [boolean()],
+%%   <<"jobLogStatus">> => list(any()),
+%%   <<"memberStatus">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"queryLogStatus">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type configured_table_association_summary() :: #{binary() => any()}.
+-type collaboration() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_analysis_template() :: #{
+%%   <<"analysisParameters">> => list(analysis_parameter()),
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"errorMessageConfiguration">> => error_message_configuration(),
+%%   <<"format">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"schema">> => analysis_schema(),
+%%   <<"source">> => list(),
+%%   <<"sourceMetadata">> => list(),
+%%   <<"syntheticDataParameters">> => list(),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"validations">> => list(analysis_template_validation_status_detail())
+%% }
+-type collaboration_analysis_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_analysis_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isSyntheticData">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_analysis_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_change_request() :: #{
+%%   <<"approvals">> => map(),
+%%   <<"changes">> => list(change()),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"isAutoApproved">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_change_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_change_request_summary() :: #{
+%%   <<"approvals">> => map(),
+%%   <<"changes">> => list(change()),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"isAutoApproved">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_change_request_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_change_specification() :: #{
+%%   <<"autoApprovedChangeTypes">> => list(list(any())())
+%% }
+-type collaboration_change_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_configured_audience_model_association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"configuredAudienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_configured_audience_model_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2784,38 +764,6 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type collaboration_configured_audience_model_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_table_analysis_rule() :: #{
-%%   <<"analysisRulePolicy">> => list(),
-%%   <<"analysisRuleType">> => list(any()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"intermediateTableArn">> => string(),
-%%   <<"intermediateTableIdentifier">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type intermediate_table_analysis_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_intermediate_table_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => intermediate_table_analysis_rule()
-%% }
--type update_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
 
 
 %% Example:
@@ -2837,39 +785,1277 @@
 
 
 %% Example:
+%% collaboration_id_namespace_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_id_namespace_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_privacy_budget_summary() :: #{
+%%   <<"budget">> => list(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"privacyBudgetTemplateArn">> => string(),
+%%   <<"privacyBudgetTemplateId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_privacy_budget_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_privacy_budget_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"parameters">> => list(),
+%%   <<"privacyBudgetType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_privacy_budget_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_privacy_budget_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"privacyBudgetType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_privacy_budget_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_summary() :: #{
+%%   <<"analyticsEngine">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"creatorDisplayName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"memberStatus">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% column() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type column() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_classification_details() :: #{
+%%   <<"columnMapping">> => list(synthetic_data_column_properties())
+%% }
+-type column_classification_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_lineage_entry() :: #{
+%%   <<"column">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceColumn">> => string(),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type column_lineage_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_audience_model_association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"configuredAudienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageResourcePolicies">> => [boolean()],
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_audience_model_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_audience_model_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"configuredAudienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_audience_model_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table() :: #{
+%%   <<"allowedColumns">> => list(string()),
+%%   <<"analysisMethod">> => list(any()),
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"tableReference">> => list(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_analysis_rule() :: #{
+%%   <<"configuredTableArn">> => string(),
+%%   <<"configuredTableId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"policy">> => list(),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"childResources">> => list(child_resource()),
+%%   <<"configuredTableArn">> => string(),
+%%   <<"configuredTableId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule() :: #{
+%%   <<"configuredTableAssociationArn">> => string(),
+%%   <<"configuredTableAssociationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"policy">> => list(),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_association_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule_aggregation() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
+%% }
+-type configured_table_association_analysis_rule_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule_custom() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
+%% }
+-type configured_table_association_analysis_rule_custom() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_analysis_rule_list() :: #{
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
+%% }
+-type configured_table_association_analysis_rule_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_schema_type_properties() :: #{
+%%   <<"configuredTableAssociationId">> => string()
+%% }
+-type configured_table_association_schema_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_association_summary() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"configuredTableId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_table_summary() :: #{
+%%   <<"analysisMethod">> => list(any()),
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_table_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string(),
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidated_policy_aggregation() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"aggregateColumns">> => list(aggregate_column()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"dimensionColumns">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"joinRequired">> => string(),
+%%   <<"outputConstraints">> => list(aggregation_constraint()),
+%%   <<"scalarFunctions">> => list(string())
+%% }
+-type consolidated_policy_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidated_policy_custom() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedAnalyses">> => list(string()),
+%%   <<"allowedAnalysisProviders">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
+%%   <<"disallowedOutputColumns">> => list(string())
+%% }
+-type consolidated_policy_custom() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidated_policy_list() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"listColumns">> => list(string())
+%% }
+-type consolidated_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analysis_template_input() :: #{
+%%   <<"analysisParameters">> => list(analysis_parameter()),
+%%   <<"description">> => string(),
+%%   <<"errorMessageConfiguration">> => error_message_configuration(),
+%%   <<"format">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"schema">> => analysis_schema(),
+%%   <<"source">> := list(),
+%%   <<"syntheticDataParameters">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_analysis_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analysis_template_output() :: #{
+%%   <<"analysisTemplate">> := analysis_template()
+%% }
+-type create_analysis_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_collaboration_change_request_input() :: #{
+%%   <<"changes">> := list(change_input())
+%% }
+-type create_collaboration_change_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type create_collaboration_change_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_collaboration_input() :: #{
+%%   <<"allowedResultRegions">> => list(list(any())()),
+%%   <<"analyticsEngine">> => list(any()),
+%%   <<"autoApprovedChangeRequestTypes">> => list(list(any())()),
+%%   <<"creatorDisplayName">> := string(),
+%%   <<"creatorMLMemberAbilities">> => ml_member_abilities(),
+%%   <<"creatorMemberAbilities">> := list(list(any())()),
+%%   <<"creatorPaymentConfiguration">> => payment_configuration(),
+%%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
+%%   <<"description">> => string(),
+%%   <<"isMetricsEnabled">> => [boolean()],
+%%   <<"jobLogStatus">> => list(any()),
+%%   <<"members">> := list(member_specification()),
+%%   <<"name">> := string(),
+%%   <<"queryLogStatus">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_collaboration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_collaboration_output() :: #{
+%%   <<"collaboration">> := collaboration()
+%% }
+-type create_collaboration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_audience_model_association_input() :: #{
+%%   <<"configuredAudienceModelArn">> := string(),
+%%   <<"configuredAudienceModelAssociationName">> := string(),
+%%   <<"description">> => string(),
+%%   <<"manageResourcePolicies">> := [boolean()],
+%%   <<"tags">> => map()
+%% }
+-type create_configured_audience_model_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_audience_model_association_output() :: #{
+%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
+%% }
+-type create_configured_audience_model_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list(),
+%%   <<"analysisRuleType">> := list(any())
+%% }
+-type create_configured_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> := configured_table_analysis_rule()
+%% }
+-type create_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_association_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list(),
+%%   <<"analysisRuleType">> := list(any())
+%% }
+-type create_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type create_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_association_input() :: #{
+%%   <<"configuredTableIdentifier">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_configured_table_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_association_output() :: #{
+%%   <<"configuredTableAssociation">> := configured_table_association()
+%% }
+-type create_configured_table_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_input() :: #{
+%%   <<"allowedColumns">> := list(string()),
+%%   <<"analysisMethod">> := list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"tableReference">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_configured_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_table_output() :: #{
+%%   <<"configuredTable">> := configured_table()
+%% }
+-type create_configured_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_mapping_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputReferenceConfig">> := id_mapping_table_input_reference_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_id_mapping_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
+%% }
+-type create_id_mapping_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_namespace_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"inputReferenceConfig">> := id_namespace_association_input_reference_config(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_id_namespace_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type create_id_namespace_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list(),
+%%   <<"analysisRuleType">> := list(any())
+%% }
+-type create_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type create_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"populationAnalysisConfiguration">> := list(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"tags">> => map()
+%% }
+-type create_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type create_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_membership_input() :: #{
+%%   <<"collaborationIdentifier">> := string(),
+%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
+%%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
+%%   <<"isMetricsEnabled">> => [boolean()],
+%%   <<"jobLogStatus">> => list(any()),
+%%   <<"paymentConfiguration">> => membership_payment_configuration(),
+%%   <<"queryLogStatus">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_membership_output() :: #{
+%%   <<"membership">> := membership()
+%% }
+-type create_membership_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_privacy_budget_template_input() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"parameters">> := list(),
+%%   <<"privacyBudgetType">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_privacy_budget_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_privacy_budget_template_output() :: #{
+%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
+%% }
+-type create_privacy_budget_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_encryption_metadata() :: #{
+%%   <<"allowCleartext">> => [boolean()],
+%%   <<"allowDuplicates">> => [boolean()],
+%%   <<"allowJoinsOnColumnsWithDifferentNames">> => [boolean()],
+%%   <<"preserveNulls">> => [boolean()]
+%% }
+-type data_encryption_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_analysis_template_input() :: #{}
+-type delete_analysis_template_input() :: #{}.
+
+%% Example:
+%% delete_analysis_template_output() :: #{}
+-type delete_analysis_template_output() :: #{}.
+
+%% Example:
+%% delete_collaboration_input() :: #{}
+-type delete_collaboration_input() :: #{}.
+
+%% Example:
+%% delete_collaboration_output() :: #{}
+-type delete_collaboration_output() :: #{}.
+
+%% Example:
+%% delete_configured_audience_model_association_input() :: #{}
+-type delete_configured_audience_model_association_input() :: #{}.
+
+%% Example:
+%% delete_configured_audience_model_association_output() :: #{}
+-type delete_configured_audience_model_association_output() :: #{}.
+
+%% Example:
+%% delete_configured_table_analysis_rule_input() :: #{}
+-type delete_configured_table_analysis_rule_input() :: #{}.
+
+%% Example:
+%% delete_configured_table_analysis_rule_output() :: #{}
+-type delete_configured_table_analysis_rule_output() :: #{}.
+
+%% Example:
+%% delete_configured_table_association_analysis_rule_input() :: #{}
+-type delete_configured_table_association_analysis_rule_input() :: #{}.
+
+%% Example:
+%% delete_configured_table_association_analysis_rule_output() :: #{}
+-type delete_configured_table_association_analysis_rule_output() :: #{}.
+
+%% Example:
+%% delete_configured_table_association_input() :: #{}
+-type delete_configured_table_association_input() :: #{}.
+
+%% Example:
+%% delete_configured_table_association_output() :: #{}
+-type delete_configured_table_association_output() :: #{}.
+
+%% Example:
+%% delete_configured_table_input() :: #{}
+-type delete_configured_table_input() :: #{}.
+
+%% Example:
+%% delete_configured_table_output() :: #{}
+-type delete_configured_table_output() :: #{}.
+
+%% Example:
+%% delete_id_mapping_table_input() :: #{}
+-type delete_id_mapping_table_input() :: #{}.
+
+%% Example:
+%% delete_id_mapping_table_output() :: #{}
+-type delete_id_mapping_table_output() :: #{}.
+
+%% Example:
+%% delete_id_namespace_association_input() :: #{}
+-type delete_id_namespace_association_input() :: #{}.
+
+%% Example:
+%% delete_id_namespace_association_output() :: #{}
+-type delete_id_namespace_association_output() :: #{}.
+
+%% Example:
+%% delete_intermediate_table_analysis_rule_input() :: #{}
+-type delete_intermediate_table_analysis_rule_input() :: #{}.
+
+%% Example:
+%% delete_intermediate_table_analysis_rule_output() :: #{}
+-type delete_intermediate_table_analysis_rule_output() :: #{}.
+
+%% Example:
+%% delete_intermediate_table_input() :: #{}
+-type delete_intermediate_table_input() :: #{}.
+
+%% Example:
+%% delete_intermediate_table_output() :: #{}
+-type delete_intermediate_table_output() :: #{}.
+
+%% Example:
+%% delete_member_input() :: #{}
+-type delete_member_input() :: #{}.
+
+%% Example:
+%% delete_member_output() :: #{}
+-type delete_member_output() :: #{}.
+
+%% Example:
+%% delete_membership_input() :: #{}
+-type delete_membership_input() :: #{}.
+
+%% Example:
+%% delete_membership_output() :: #{}
+-type delete_membership_output() :: #{}.
+
+%% Example:
+%% delete_privacy_budget_template_input() :: #{}
+-type delete_privacy_budget_template_input() :: #{}.
+
+%% Example:
+%% delete_privacy_budget_template_output() :: #{}
+-type delete_privacy_budget_template_output() :: #{}.
+
+
+%% Example:
+%% differential_privacy_column() :: #{
+%%   <<"name">> => string()
+%% }
+-type differential_privacy_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_configuration() :: #{
+%%   <<"columns">> => list(differential_privacy_column())
+%% }
+-type differential_privacy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_parameters() :: #{
+%%   <<"sensitivityParameters">> => list(differential_privacy_sensitivity_parameters())
+%% }
+-type differential_privacy_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_preview_aggregation() :: #{
+%%   <<"maxCount">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type differential_privacy_preview_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_preview_parameters_input() :: #{
+%%   <<"epsilon">> => integer(),
+%%   <<"usersNoisePerQuery">> => integer()
+%% }
+-type differential_privacy_preview_parameters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_privacy_budget() :: #{
+%%   <<"aggregations">> => list(differential_privacy_privacy_budget_aggregation()),
+%%   <<"epsilon">> => integer()
+%% }
+-type differential_privacy_privacy_budget() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_privacy_budget_aggregation() :: #{
+%%   <<"maxCount">> => [integer()],
+%%   <<"remainingCount">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type differential_privacy_privacy_budget_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_privacy_impact() :: #{
+%%   <<"aggregations">> => list(differential_privacy_preview_aggregation())
+%% }
+-type differential_privacy_privacy_impact() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_sensitivity_parameters() :: #{
+%%   <<"aggregationExpression">> => string(),
+%%   <<"aggregationType">> => list(any()),
+%%   <<"maxColumnValue">> => [float()],
+%%   <<"minColumnValue">> => [float()],
+%%   <<"userContributionLimit">> => [integer()]
+%% }
+-type differential_privacy_sensitivity_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% differential_privacy_template_parameters_input() :: #{
+%%   <<"epsilon">> => integer(),
+%%   <<"usersNoisePerQuery">> => integer()
+%% }
+-type differential_privacy_template_parameters_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% differential_privacy_template_parameters_output() :: #{
 %%   <<"epsilon">> => integer(),
 %%   <<"usersNoisePerQuery">> => integer()
 %% }
 -type differential_privacy_template_parameters_output() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
 
 %% Example:
-%% delete_collaboration_output() :: #{}
--type delete_collaboration_output() :: #{}.
+%% differential_privacy_template_update_parameters() :: #{
+%%   <<"epsilon">> => integer(),
+%%   <<"usersNoisePerQuery">> => integer()
+%% }
+-type differential_privacy_template_update_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% snowflake_table_reference() :: #{
-%%   <<"accountIdentifier">> => string(),
+%% direct_analysis_configuration_details() :: #{
+%%   <<"receiverAccountIds">> => list(string())
+%% }
+-type direct_analysis_configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% disallow_intermediate_table_input() :: #{
+%%   <<"includeDescendants">> => [boolean()],
+%%   <<"intermediateTableName">> := string()
+%% }
+-type disallow_intermediate_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% disallow_intermediate_table_output() :: #{}
+-type disallow_intermediate_table_output() :: #{}.
+
+
+%% Example:
+%% error_message_configuration() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type error_message_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_analysis_template_input() :: #{}
+-type get_analysis_template_input() :: #{}.
+
+
+%% Example:
+%% get_analysis_template_output() :: #{
+%%   <<"analysisTemplate">> := analysis_template()
+%% }
+-type get_analysis_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_analysis_template_input() :: #{}
+-type get_collaboration_analysis_template_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_analysis_template_output() :: #{
+%%   <<"collaborationAnalysisTemplate">> := collaboration_analysis_template()
+%% }
+-type get_collaboration_analysis_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_change_request_input() :: #{}
+-type get_collaboration_change_request_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type get_collaboration_change_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_configured_audience_model_association_input() :: #{}
+-type get_collaboration_configured_audience_model_association_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_configured_audience_model_association_output() :: #{
+%%   <<"collaborationConfiguredAudienceModelAssociation">> => collaboration_configured_audience_model_association()
+%% }
+-type get_collaboration_configured_audience_model_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_id_namespace_association_input() :: #{}
+-type get_collaboration_id_namespace_association_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_id_namespace_association_output() :: #{
+%%   <<"collaborationIdNamespaceAssociation">> => collaboration_id_namespace_association()
+%% }
+-type get_collaboration_id_namespace_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_input() :: #{}
+-type get_collaboration_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_output() :: #{
+%%   <<"collaboration">> := collaboration()
+%% }
+-type get_collaboration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_privacy_budget_template_input() :: #{}
+-type get_collaboration_privacy_budget_template_input() :: #{}.
+
+
+%% Example:
+%% get_collaboration_privacy_budget_template_output() :: #{
+%%   <<"collaborationPrivacyBudgetTemplate">> => collaboration_privacy_budget_template()
+%% }
+-type get_collaboration_privacy_budget_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_audience_model_association_input() :: #{}
+-type get_configured_audience_model_association_input() :: #{}.
+
+
+%% Example:
+%% get_configured_audience_model_association_output() :: #{
+%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
+%% }
+-type get_configured_audience_model_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_table_analysis_rule_input() :: #{}
+-type get_configured_table_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% get_configured_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> := configured_table_analysis_rule()
+%% }
+-type get_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_table_association_analysis_rule_input() :: #{}
+-type get_configured_table_association_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% get_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type get_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_table_association_input() :: #{}
+-type get_configured_table_association_input() :: #{}.
+
+
+%% Example:
+%% get_configured_table_association_output() :: #{
+%%   <<"configuredTableAssociation">> := configured_table_association()
+%% }
+-type get_configured_table_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_table_input() :: #{}
+-type get_configured_table_input() :: #{}.
+
+
+%% Example:
+%% get_configured_table_output() :: #{
+%%   <<"configuredTable">> := configured_table()
+%% }
+-type get_configured_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_mapping_table_input() :: #{}
+-type get_id_mapping_table_input() :: #{}.
+
+
+%% Example:
+%% get_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
+%% }
+-type get_id_mapping_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_namespace_association_input() :: #{}
+-type get_id_namespace_association_input() :: #{}.
+
+
+%% Example:
+%% get_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type get_id_namespace_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_intermediate_table_analysis_rule_input() :: #{}
+-type get_intermediate_table_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% get_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type get_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_intermediate_table_input() :: #{}
+-type get_intermediate_table_input() :: #{}.
+
+
+%% Example:
+%% get_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type get_intermediate_table_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_membership_input() :: #{}
+-type get_membership_input() :: #{}.
+
+
+%% Example:
+%% get_membership_output() :: #{
+%%   <<"membership">> := membership()
+%% }
+-type get_membership_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_privacy_budget_template_input() :: #{}
+-type get_privacy_budget_template_input() :: #{}.
+
+
+%% Example:
+%% get_privacy_budget_template_output() :: #{
+%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
+%% }
+-type get_privacy_budget_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_protected_job_input() :: #{}
+-type get_protected_job_input() :: #{}.
+
+
+%% Example:
+%% get_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type get_protected_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_protected_query_input() :: #{}
+-type get_protected_query_input() :: #{}.
+
+
+%% Example:
+%% get_protected_query_output() :: #{
+%%   <<"protectedQuery">> := protected_query()
+%% }
+-type get_protected_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_analysis_rule_input() :: #{}
+-type get_schema_analysis_rule_input() :: #{}.
+
+
+%% Example:
+%% get_schema_analysis_rule_output() :: #{
+%%   <<"analysisRule">> := analysis_rule()
+%% }
+-type get_schema_analysis_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_input() :: #{}
+-type get_schema_input() :: #{}.
+
+
+%% Example:
+%% get_schema_output() :: #{
+%%   <<"schema">> := schema()
+%% }
+-type get_schema_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_table_reference() :: #{
 %%   <<"databaseName">> => string(),
-%%   <<"schemaName">> => string(),
-%%   <<"secretArn">> => string(),
-%%   <<"tableName">> => string(),
-%%   <<"tableSchema">> => list()
+%%   <<"region">> => list(any()),
+%%   <<"tableName">> => string()
 %% }
--type snowflake_table_reference() :: #{binary() => any()}.
+-type glue_table_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_protected_jobs_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"protectedJobs">> => list(protected_job_summary())
+%% hash() :: #{
+%%   <<"sha256">> => [string()]
 %% }
--type list_protected_jobs_output() :: #{binary() => any()}.
+-type hash() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_config() :: #{
+%%   <<"allowUseAsDimensionColumn">> => [boolean()]
+%% }
+-type id_mapping_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table() :: #{
+%%   <<"arn">> => string(),
+%%   <<"childResources">> => list(child_resource()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_mapping_table_input_reference_properties(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_mapping_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table_input_reference_config() :: #{
+%%   <<"inputReferenceArn">> => string(),
+%%   <<"manageResourcePolicies">> => [boolean()]
+%% }
+-type id_mapping_table_input_reference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table_input_reference_properties() :: #{
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
+%% }
+-type id_mapping_table_input_reference_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table_input_source() :: #{
+%%   <<"idNamespaceAssociationId">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type id_mapping_table_input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table_schema_type_properties() :: #{
+%%   <<"idMappingTableId">> => string(),
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
+%% }
+-type id_mapping_table_schema_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_mapping_table_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_mapping_table_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_namespace_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association_input_reference_config() :: #{
+%%   <<"inputReferenceArn">> => string(),
+%%   <<"manageResourcePolicies">> => [boolean()]
+%% }
+-type id_namespace_association_input_reference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association_input_reference_properties() :: #{
+%%   <<"idMappingWorkflowsSupported">> => list([any()]()),
+%%   <<"idNamespaceType">> => list(any())
+%% }
+-type id_namespace_association_input_reference_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association_input_reference_properties_summary() :: #{
+%%   <<"idNamespaceType">> => list(any())
+%% }
+-type id_namespace_association_input_reference_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% id_namespace_association_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
+%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties_summary(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type id_namespace_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_additional_analyses() :: #{
+%%   <<"sources">> => list(inherited_additional_analyses_source()),
+%%   <<"value">> => list(any())
+%% }
+-type inherited_additional_analyses() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_additional_analyses_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type inherited_additional_analyses_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_additional_analyses() :: #{
+%%   <<"sources">> => list(inherited_allowed_additional_analyses_source()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_additional_analyses() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_additional_analyses_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_additional_analyses_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_result_receivers() :: #{
+%%   <<"sources">> => list(inherited_allowed_result_receivers_source()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_result_receivers() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_allowed_result_receivers_source() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_allowed_result_receivers_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inherited_disallowed_output_columns() :: #{
+%%   <<"columnLineage">> => list(column_lineage_entry()),
+%%   <<"value">> => list(string())
+%% }
+-type inherited_disallowed_output_columns() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2899,10 +2085,112 @@
 
 
 %% Example:
-%% get_protected_job_output() :: #{
-%%   <<"protectedJob">> => protected_job()
+%% intermediate_table_active_version() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"inheritedConstraints">> => intermediate_table_inherited_constraints(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"versionId">> => string()
 %% }
--type get_protected_job_output() :: #{binary() => any()}.
+-type intermediate_table_active_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_analysis_rule() :: #{
+%%   <<"analysisRulePolicy">> => list(),
+%%   <<"analysisRuleType">> => list(any()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"intermediateTableArn">> => string(),
+%%   <<"intermediateTableIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type intermediate_table_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_analysis_rule_custom() :: #{
+%%   <<"additionalAnalyses">> => list(any()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedAnalyses">> => list(string()),
+%%   <<"allowedAnalysisProviders">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
+%%   <<"disallowedOutputColumns">> => list(string())
+%% }
+-type intermediate_table_analysis_rule_custom() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_column() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type intermediate_table_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_dependency() :: #{
+%%   <<"creatorAccountId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parentType">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type intermediate_table_dependency() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_inherited_constraints() :: #{
+%%   <<"additionalAnalyses">> => inherited_additional_analyses(),
+%%   <<"allowedAdditionalAnalyses">> => inherited_allowed_additional_analyses(),
+%%   <<"allowedResultReceivers">> => inherited_allowed_result_receivers(),
+%%   <<"disallowedOutputColumns">> => inherited_disallowed_output_columns()
+%% }
+-type intermediate_table_inherited_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_output_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type intermediate_table_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_schema() :: #{
+%%   <<"columns">> => list(column())
+%% }
+-type intermediate_table_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_schema_type_properties() :: #{
+%%   <<"intermediateTableId">> => string()
+%% }
+-type intermediate_table_schema_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_table_summary() :: #{
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type intermediate_table_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2920,154 +2208,412 @@
 
 
 %% Example:
-%% get_schema_analysis_rule_output() :: #{
-%%   <<"analysisRule">> := analysis_rule()
-%% }
--type get_schema_analysis_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% collaboration_analysis_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"isSyntheticData">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%% job_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
 %% }
--type collaboration_analysis_template_summary() :: #{binary() => any()}.
+-type job_compute_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% protected_query_s_q_l_parameters() :: #{
-%%   <<"analysisTemplateArn">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"queryString">> => [string()]
+%% list_analysis_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type protected_query_s_q_l_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% get_id_namespace_association_input() :: #{}
--type get_id_namespace_association_input() :: #{}.
+-type list_analysis_templates_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% intermediate_table_analysis_rule_custom() :: #{
-%%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedAnalyses">> => list(string()),
-%%   <<"allowedAnalysisProviders">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string()),
-%%   <<"differentialPrivacy">> => differential_privacy_configuration(),
-%%   <<"disallowedOutputColumns">> => list(string())
+%% list_analysis_templates_output() :: #{
+%%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type intermediate_table_analysis_rule_custom() :: #{binary() => any()}.
+-type list_analysis_templates_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_protected_job_input() :: #{
-%%   <<"targetStatus">> := list(any())
+%% list_collaboration_analysis_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_protected_job_input() :: #{binary() => any()}.
+-type list_collaboration_analysis_templates_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% protected_job_member_output_configuration_input() :: #{
-%%   <<"accountId">> => string()
+%% list_collaboration_analysis_templates_output() :: #{
+%%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type protected_job_member_output_configuration_input() :: #{binary() => any()}.
+-type list_collaboration_analysis_templates_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_budgets_privacy_template_parameters_input() :: #{
-%%   <<"budgetParameters">> => list(budget_parameter()),
-%%   <<"resourceArn">> => string()
+%% list_collaboration_change_requests_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type access_budgets_privacy_template_parameters_input() :: #{binary() => any()}.
+-type list_collaboration_change_requests_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_collaboration_output() :: #{
-%%   <<"collaboration">> := collaboration()
+%% list_collaboration_change_requests_output() :: #{
+%%   <<"collaborationChangeRequestSummaries">> => list(collaboration_change_request_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type get_collaboration_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_id_mapping_table_input() :: #{}
--type get_id_mapping_table_input() :: #{}.
-
-%% Example:
-%% get_collaboration_change_request_input() :: #{}
--type get_collaboration_change_request_input() :: #{}.
-
-%% Example:
-%% delete_configured_table_association_analysis_rule_input() :: #{}
--type delete_configured_table_association_analysis_rule_input() :: #{}.
+-type list_collaboration_change_requests_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% protected_query_statistics() :: #{
-%%   <<"billedResourceUtilization">> => billed_resource_utilization(),
-%%   <<"totalDurationInMillis">> => [float()]
+%% list_collaboration_configured_audience_model_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type protected_query_statistics() :: #{binary() => any()}.
+-type list_collaboration_configured_audience_model_associations_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% analysis_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"isSyntheticData">> => [boolean()],
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%% list_collaboration_configured_audience_model_associations_output() :: #{
+%%   <<"collaborationConfiguredAudienceModelAssociationSummaries">> => list(collaboration_configured_audience_model_association_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type analysis_template_summary() :: #{binary() => any()}.
+-type list_collaboration_configured_audience_model_associations_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_configured_audience_model_association_output() :: #{
-%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
+%% list_collaboration_id_namespace_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_configured_audience_model_association_output() :: #{binary() => any()}.
+-type list_collaboration_id_namespace_associations_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_membership_output() :: #{
-%%   <<"membership">> := membership()
+%% list_collaboration_id_namespace_associations_output() :: #{
+%%   <<"collaborationIdNamespaceAssociationSummaries">> => list(collaboration_id_namespace_association_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type update_membership_output() :: #{binary() => any()}.
+-type list_collaboration_id_namespace_associations_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_membership_input() :: #{
-%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
-%%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
-%%   <<"jobLogStatus">> => list(any()),
-%%   <<"membershipPaymentConfiguration">> => update_membership_payment_configuration(),
-%%   <<"queryLogStatus">> => list(any())
+%% list_collaboration_privacy_budget_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_membership_input() :: #{binary() => any()}.
+-type list_collaboration_privacy_budget_templates_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_intermediate_table_output() :: #{}
--type delete_intermediate_table_output() :: #{}.
+%% list_collaboration_privacy_budget_templates_output() :: #{
+%%   <<"collaborationPrivacyBudgetTemplateSummaries">> => list(collaboration_privacy_budget_template_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_privacy_budget_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_privacy_budgets_input() :: #{
+%%   <<"accessBudgetResourceArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"privacyBudgetType">> := list(any())
+%% }
+-type list_collaboration_privacy_budgets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_privacy_budgets_output() :: #{
+%%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_privacy_budgets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaborations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"memberStatus">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaborations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaborations_output() :: #{
+%%   <<"collaborationList">> := list(collaboration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaborations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_audience_model_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_audience_model_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_audience_model_associations_output() :: #{
+%%   <<"configuredAudienceModelAssociationSummaries">> => list(configured_audience_model_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_audience_model_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_table_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_table_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_table_associations_output() :: #{
+%%   <<"configuredTableAssociationSummaries">> := list(configured_table_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_table_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_tables_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_tables_output() :: #{
+%%   <<"configuredTableSummaries">> := list(configured_table_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_tables_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_tables_output() :: #{
+%%   <<"idMappingTableSummaries">> => list(id_mapping_table_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_namespace_associations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespace_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_namespace_associations_output() :: #{
+%%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespace_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_table_versions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_table_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_table_versions_output() :: #{
+%%   <<"intermediateTableVersionSummaries">> => list(intermediate_table_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_table_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_tables_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_tables_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_intermediate_tables_output() :: #{
+%%   <<"intermediateTableSummaries">> => list(intermediate_table_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_intermediate_tables_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_members_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_output() :: #{
+%%   <<"memberSummaries">> := list(member_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_members_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_output() :: #{
+%%   <<"membershipSummaries">> := list(membership_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memberships_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_privacy_budget_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_privacy_budget_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_privacy_budget_templates_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privacyBudgetTemplateSummaries">> => list(privacy_budget_template_summary())
+%% }
+-type list_privacy_budget_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_privacy_budgets_input() :: #{
+%%   <<"accessBudgetResourceArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"privacyBudgetType">> := list(any())
+%% }
+-type list_privacy_budgets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_privacy_budgets_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"privacyBudgetSummaries">> => list(privacy_budget_summary())
+%% }
+-type list_privacy_budgets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_jobs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_protected_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_jobs_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"protectedJobs">> => list(protected_job_summary())
+%% }
+-type list_protected_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_queries_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_protected_queries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_queries_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"protectedQueries">> := list(protected_query_summary())
+%% }
+-type list_protected_queries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schemas_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"schemaType">> => list(any())
+%% }
+-type list_schemas_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schemas_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schemaSummaries">> := list(schema_summary())
+%% }
+-type list_schemas_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_change_specification() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
+%%   <<"paymentConfiguration">> => payment_configuration()
+%% }
+-type member_change_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_specification() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
+%%   <<"paymentConfiguration">> => payment_configuration()
+%% }
+-type member_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3084,439 +2630,6 @@
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type member_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_collaboration_analysis_template_output() :: #{
-%%   <<"collaborationAnalysisTemplates">> := list(collaboration_analysis_template()),
-%%   <<"errors">> := list(batch_get_collaboration_analysis_template_error())
-%% }
--type batch_get_collaboration_analysis_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_schema_input() :: #{
-%%   <<"names">> := list(string())
-%% }
--type batch_get_schema_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_table_reference() :: #{
-%%   <<"databaseName">> => string(),
-%%   <<"region">> => list(any()),
-%%   <<"tableName">> => string()
-%% }
--type glue_table_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type protected_query_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_analysis_template_output() :: #{}
--type delete_analysis_template_output() :: #{}.
-
-
-%% Example:
-%% get_configured_table_association_output() :: #{
-%%   <<"configuredTableAssociation">> := configured_table_association()
-%% }
--type get_configured_table_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_membership_output() :: #{
-%%   <<"membership">> := membership()
-%% }
--type create_membership_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_payment_configuration() :: #{
-%%   <<"jobCompute">> => membership_job_compute_payment_config(),
-%%   <<"machineLearning">> => membership_ml_payment_config(),
-%%   <<"queryCompute">> => membership_query_compute_payment_config()
-%% }
--type membership_payment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_membership_input() :: #{}
--type get_membership_input() :: #{}.
-
-
-%% Example:
-%% consolidated_policy_aggregation() :: #{
-%%   <<"additionalAnalyses">> => list(any()),
-%%   <<"aggregateColumns">> => list(aggregate_column()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()),
-%%   <<"allowedJoinOperators">> => list(string()),
-%%   <<"allowedResultReceivers">> => list(string()),
-%%   <<"dimensionColumns">> => list(string()),
-%%   <<"joinColumns">> => list(string()),
-%%   <<"joinRequired">> => string(),
-%%   <<"outputConstraints">> => list(aggregation_constraint()),
-%%   <<"scalarFunctions">> => list(string())
-%% }
--type consolidated_policy_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_ml_payment_config() :: #{
-%%   <<"modelInference">> => membership_model_inference_payment_config(),
-%%   <<"modelTraining">> => membership_model_training_payment_config(),
-%%   <<"syntheticDataGeneration">> => membership_synthetic_data_generation_payment_config()
-%% }
--type membership_ml_payment_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_audience_model_association_input() :: #{}
--type get_configured_audience_model_association_input() :: #{}.
-
-
-%% Example:
-%% create_configured_audience_model_association_output() :: #{
-%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
-%% }
--type create_configured_audience_model_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_table_input_source() :: #{
-%%   <<"idNamespaceAssociationId">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type id_mapping_table_input_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_protected_query_input() :: #{
-%%   <<"computeConfiguration">> => list(),
-%%   <<"queryComputePayerAccountId">> => string(),
-%%   <<"resultConfiguration">> => protected_query_result_configuration(),
-%%   <<"sqlParameters">> := protected_query_s_q_l_parameters(),
-%%   <<"type">> := string()
-%% }
--type start_protected_query_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_privacy_budget_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"privacyBudgetType">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_privacy_budget_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_configuration() :: #{
-%%   <<"jobCompute">> => job_compute_payment_config(),
-%%   <<"machineLearning">> => ml_payment_config(),
-%%   <<"queryCompute">> => query_compute_payment_config()
-%% }
--type payment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_table() :: #{
-%%   <<"allowedColumns">> => list(string()),
-%%   <<"analysisMethod">> => list(any()),
-%%   <<"analysisRuleTypes">> => list(list(any())()),
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())()),
-%%   <<"tableReference">> => list(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_table() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_analysis_template_output() :: #{
-%%   <<"collaborationAnalysisTemplate">> := collaboration_analysis_template()
-%% }
--type get_collaboration_analysis_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ml_payment_config() :: #{
-%%   <<"modelInference">> => model_inference_payment_config(),
-%%   <<"modelTraining">> => model_training_payment_config(),
-%%   <<"syntheticDataGeneration">> => synthetic_data_generation_payment_config()
-%% }
--type ml_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_s3_output_configuration_output() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"keyPrefix">> => string()
-%% }
--type protected_job_s3_output_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_template_validation_status_reason() :: #{
-%%   <<"message">> => [string()]
-%% }
--type analysis_template_validation_status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_intermediate_table_output() :: #{
-%%   <<"intermediateTable">> => intermediate_table()
-%% }
--type get_intermediate_table_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% snowflake_table_schema_v1() :: #{
-%%   <<"columnName">> => string(),
-%%   <<"columnType">> => string()
-%% }
--type snowflake_table_schema_v1() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_table_input() :: #{}
--type get_configured_table_input() :: #{}.
-
-
-%% Example:
-%% model_training_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type model_training_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budget_details() :: #{
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"budget">> => integer(),
-%%   <<"budgetType">> => list(any()),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"remainingBudget">> => integer(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type access_budget_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregate_column() :: #{
-%%   <<"columnNames">> => list(string()),
-%%   <<"function">> => string()
-%% }
--type aggregate_column() :: #{binary() => any()}.
-
-%% Example:
-%% get_privacy_budget_template_input() :: #{}
--type get_privacy_budget_template_input() :: #{}.
-
-
-%% Example:
-%% create_analysis_template_input() :: #{
-%%   <<"analysisParameters">> => list(analysis_parameter()),
-%%   <<"description">> => string(),
-%%   <<"errorMessageConfiguration">> => error_message_configuration(),
-%%   <<"format">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"schema">> => analysis_schema(),
-%%   <<"source">> := list(),
-%%   <<"syntheticDataParameters">> => list(),
-%%   <<"tags">> => map()
-%% }
--type create_analysis_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_namespace_associations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_id_namespace_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_tables_output() :: #{
-%%   <<"configuredTableSummaries">> := list(configured_table_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_tables_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_association() :: #{
-%%   <<"arn">> => string(),
-%%   <<"collaborationArn">> => string(),
-%%   <<"collaborationId">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"idMappingConfig">> => id_mapping_config(),
-%%   <<"inputReferenceConfig">> => id_namespace_association_input_reference_config(),
-%%   <<"inputReferenceProperties">> => id_namespace_association_input_reference_properties(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type id_namespace_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_job_parameters() :: #{
-%%   <<"analysisTemplateArn">> => string(),
-%%   <<"parameters">> => map()
-%% }
--type protected_job_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_configured_audience_model_association_input() :: #{}
--type get_collaboration_configured_audience_model_association_input() :: #{}.
-
-
-%% Example:
-%% list_intermediate_tables_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_intermediate_tables_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaborations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"memberStatus">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaborations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_s3_output_configuration() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"keyPrefix">> => string(),
-%%   <<"resultFormat">> => list(any()),
-%%   <<"singleFileOutput">> => [boolean()]
-%% }
--type protected_query_s3_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_encryption_metadata() :: #{
-%%   <<"allowCleartext">> => [boolean()],
-%%   <<"allowDuplicates">> => [boolean()],
-%%   <<"allowJoinsOnColumnsWithDifferentNames">> => [boolean()],
-%%   <<"preserveNulls">> => [boolean()]
-%% }
--type data_encryption_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budgets_privacy_template_update_parameters() :: #{
-%%   <<"budgetParameters">> => list(budget_parameter())
-%% }
--type access_budgets_privacy_template_update_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_model_training_payment_config() :: #{
-%%   <<"isResponsible">> => [boolean()]
-%% }
--type membership_model_training_payment_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_protected_job_output() :: #{
-%%   <<"protectedJob">> => protected_job()
-%% }
--type start_protected_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_association_input_reference_properties_summary() :: #{
-%%   <<"idNamespaceType">> => list(any())
-%% }
--type id_namespace_association_input_reference_properties_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_schema_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"name">> => string()
-%% }
--type batch_get_schema_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% preview_privacy_impact_output() :: #{
-%%   <<"privacyImpact">> => list()
-%% }
--type preview_privacy_impact_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_specification() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"memberAbilities">> => list(list(any())()),
-%%   <<"mlMemberAbilities">> => ml_member_abilities(),
-%%   <<"paymentConfiguration">> => payment_configuration()
-%% }
--type member_specification() :: #{binary() => any()}.
-
-%% Example:
-%% delete_membership_input() :: #{}
--type delete_membership_input() :: #{}.
-
-
-%% Example:
-%% update_collaboration_change_request_output() :: #{
-%%   <<"collaborationChangeRequest">> => collaboration_change_request()
-%% }
--type update_collaboration_change_request_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% child_resource() :: #{
-%%   <<"ownerAccountId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceStatus">> => list(any()),
-%%   <<"resourceType">> => list(any())
-%% }
--type child_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_table_input_reference_properties() :: #{
-%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
-%% }
--type id_mapping_table_input_reference_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% inherited_allowed_result_receivers_source() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => list(string())
-%% }
--type inherited_allowed_result_receivers_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3544,31 +2657,139 @@
 
 
 %% Example:
-%% update_configured_table_association_analysis_rule_output() :: #{
-%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% membership_job_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
 %% }
--type update_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_table_output() :: #{}
--type delete_configured_table_output() :: #{}.
+-type membership_job_compute_payment_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% id_mapping_table_summary() :: #{
+%% membership_ml_payment_config() :: #{
+%%   <<"modelInference">> => membership_model_inference_payment_config(),
+%%   <<"modelTraining">> => membership_model_training_payment_config(),
+%%   <<"syntheticDataGeneration">> => membership_synthetic_data_generation_payment_config()
+%% }
+-type membership_ml_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_model_inference_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_model_inference_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_model_training_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_model_training_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_payment_configuration() :: #{
+%%   <<"jobCompute">> => membership_job_compute_payment_config(),
+%%   <<"machineLearning">> => membership_ml_payment_config(),
+%%   <<"queryCompute">> => membership_query_compute_payment_config()
+%% }
+-type membership_payment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_protected_job_result_configuration() :: #{
+%%   <<"outputConfiguration">> => list(),
+%%   <<"roleArn">> => string()
+%% }
+-type membership_protected_job_result_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_protected_query_result_configuration() :: #{
+%%   <<"outputConfiguration">> => list(),
+%%   <<"roleArn">> => string()
+%% }
+-type membership_protected_query_result_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_query_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_query_compute_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
+%%   <<"collaborationCreatorAccountId">> => string(),
+%%   <<"collaborationCreatorDisplayName">> => string(),
 %%   <<"collaborationId">> => string(),
+%%   <<"collaborationName">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"inputReferenceConfig">> => id_mapping_table_input_reference_config(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"name">> => string(),
+%%   <<"memberAbilities">> => list(list(any())()),
+%%   <<"mlMemberAbilities">> => ml_member_abilities(),
+%%   <<"paymentConfiguration">> => membership_payment_configuration(),
+%%   <<"status">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type id_mapping_table_summary() :: #{binary() => any()}.
+-type membership_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_synthetic_data_generation_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type membership_synthetic_data_generation_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_member_abilities() :: #{
+%%   <<"customMLMemberAbilities">> => list(list(any())())
+%% }
+-type ml_member_abilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_payment_config() :: #{
+%%   <<"modelInference">> => model_inference_payment_config(),
+%%   <<"modelTraining">> => model_training_payment_config(),
+%%   <<"syntheticDataGeneration">> => synthetic_data_generation_payment_config()
+%% }
+-type ml_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_synthetic_data_parameters() :: #{
+%%   <<"columnClassification">> => column_classification_details(),
+%%   <<"epsilon">> => [float()],
+%%   <<"maxMembershipInferenceAttackScore">> => float()
+%% }
+-type ml_synthetic_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_inference_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type model_inference_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_training_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type model_training_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_configuration() :: #{
+%%   <<"jobCompute">> => job_compute_payment_config(),
+%%   <<"machineLearning">> => ml_payment_config(),
+%%   <<"queryCompute">> => query_compute_payment_config()
+%% }
+-type payment_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3579,681 +2800,1460 @@
 
 
 %% Example:
-%% create_configured_table_association_input() :: #{
-%%   <<"configuredTableIdentifier">> := string(),
+%% populate_id_mapping_table_output() :: #{
+%%   <<"idMappingJobId">> => string()
+%% }
+-type populate_id_mapping_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% populate_intermediate_table_input() :: #{
+%%   <<"analysisPayerAccountId">> => string(),
+%%   <<"computeConfiguration">> => list(),
+%%   <<"parameters">> => map()
+%% }
+-type populate_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% populate_intermediate_table_output() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"versionId">> => string()
+%% }
+-type populate_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% population_analysis_sql_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"queryString">> => [string()]
+%% }
+-type population_analysis_sql_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% preview_privacy_impact_input() :: #{
+%%   <<"parameters">> := list()
+%% }
+-type preview_privacy_impact_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% preview_privacy_impact_output() :: #{
+%%   <<"privacyImpact">> => list()
+%% }
+-type preview_privacy_impact_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_budget_summary() :: #{
+%%   <<"budget">> => list(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"privacyBudgetTemplateArn">> => string(),
+%%   <<"privacyBudgetTemplateId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type privacy_budget_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_budget_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"parameters">> => list(),
+%%   <<"privacyBudgetType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type privacy_budget_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_budget_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"privacyBudgetType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type privacy_budget_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"error">> => protected_job_error(),
+%%   <<"id">> => string(),
+%%   <<"jobComputePayerAccountId">> => string(),
+%%   <<"jobParameters">> => protected_job_parameters(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"result">> => protected_job_result(),
+%%   <<"resultConfiguration">> => protected_job_result_configuration_output(),
+%%   <<"statistics">> => protected_job_statistics(),
+%%   <<"status">> => list(any())
+%% }
+-type protected_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_direct_analysis_configuration_details() :: #{
+%%   <<"receiverAccountIds">> => list(string())
+%% }
+-type protected_job_direct_analysis_configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type protected_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_member_output_configuration_input() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_member_output_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_member_output_configuration_output() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_member_output_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"parameters">> => map()
+%% }
+-type protected_job_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_receiver_configuration() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"configurationDetails">> => list()
+%% }
+-type protected_job_receiver_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_result() :: #{
+%%   <<"output">> => list()
+%% }
+-type protected_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_result_configuration_input() :: #{
+%%   <<"outputConfiguration">> => list()
+%% }
+-type protected_job_result_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_result_configuration_output() :: #{
+%%   <<"outputConfiguration">> => list()
+%% }
+-type protected_job_result_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_s3_output() :: #{
+%%   <<"location">> => [string()]
+%% }
+-type protected_job_s3_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_s3_output_configuration_input() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string()
+%% }
+-type protected_job_s3_output_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_s3_output_configuration_output() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string()
+%% }
+-type protected_job_s3_output_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_single_member_output() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_job_single_member_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_statistics() :: #{
+%%   <<"billedResourceUtilization">> => billed_job_resource_utilization(),
+%%   <<"totalDurationInMillis">> => [float()]
+%% }
+-type protected_job_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_summary() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"jobComputePayerAccountId">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()),
+%%   <<"status">> => list(any())
+%% }
+-type protected_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_job_worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type protected_job_worker_compute_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"differentialPrivacy">> => differential_privacy_parameters(),
+%%   <<"error">> => protected_query_error(),
+%%   <<"id">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"queryComputePayerAccountId">> => string(),
+%%   <<"result">> => protected_query_result(),
+%%   <<"resultConfiguration">> => protected_query_result_configuration(),
+%%   <<"sqlParameters">> => protected_query_s_q_l_parameters(),
+%%   <<"statistics">> => protected_query_statistics(),
+%%   <<"status">> => string()
+%% }
+-type protected_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_distribute_output() :: #{
+%%   <<"memberList">> => list(protected_query_single_member_output()),
+%%   <<"s3">> => protected_query_s3_output()
+%% }
+-type protected_query_distribute_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_distribute_output_configuration() :: #{
+%%   <<"locations">> => list(list())
+%% }
+-type protected_query_distribute_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type protected_query_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_member_output_configuration() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_query_member_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_result() :: #{
+%%   <<"output">> => list()
+%% }
+-type protected_query_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_result_configuration() :: #{
+%%   <<"outputConfiguration">> => list()
+%% }
+-type protected_query_result_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_s3_output() :: #{
+%%   <<"location">> => [string()]
+%% }
+-type protected_query_s3_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_s3_output_configuration() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string(),
+%%   <<"resultFormat">> => list(any()),
+%%   <<"singleFileOutput">> => [boolean()]
+%% }
+-type protected_query_s3_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_s_q_l_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queryString">> => [string()]
+%% }
+-type protected_query_s_q_l_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_single_member_output() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type protected_query_single_member_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_statistics() :: #{
+%%   <<"billedResourceUtilization">> => billed_resource_utilization(),
+%%   <<"totalDurationInMillis">> => [float()]
+%% }
+-type protected_query_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_summary() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"intermediateTableConfiguration">> => intermediate_table_output_configuration(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"queryComputePayerAccountId">> => string(),
+%%   <<"receiverConfigurations">> => list(receiver_configuration()),
+%%   <<"status">> => string()
+%% }
+-type protected_query_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_compute_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type query_compute_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_constraint_require_overlap() :: #{
+%%   <<"columns">> => list(string())
+%% }
+-type query_constraint_require_overlap() :: #{binary() => any()}.
+
+
+%% Example:
+%% receiver_configuration() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"configurationDetails">> => list()
+%% }
+-type receiver_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"key">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema() :: #{
+%%   <<"analysisMethod">> => list(any()),
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"columns">> => list(column()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
+%%   <<"name">> => string(),
+%%   <<"partitionKeys">> => list(column()),
+%%   <<"resourceArn">> => string(),
+%%   <<"schemaStatusDetails">> => list(schema_status_detail()),
+%%   <<"schemaTypeProperties">> => list(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type create_configured_table_association_input() :: #{binary() => any()}.
+-type schema() :: #{binary() => any()}.
 
 
 %% Example:
-%% id_mapping_table_input_reference_config() :: #{
-%%   <<"inputReferenceArn">> => string(),
-%%   <<"manageResourcePolicies">> => [boolean()]
+%% schema_analysis_rule_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type id_mapping_table_input_reference_config() :: #{binary() => any()}.
+-type schema_analysis_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% analysis_template_artifact() :: #{
-%%   <<"location">> => s3_location()
+%% schema_status_detail() :: #{
+%%   <<"analysisRuleType">> => list(any()),
+%%   <<"analysisType">> => list(any()),
+%%   <<"configurations">> => list(list(any())()),
+%%   <<"reasons">> => list(schema_status_reason()),
+%%   <<"status">> => list(any())
 %% }
--type analysis_template_artifact() :: #{binary() => any()}.
+-type schema_status_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% differential_privacy_sensitivity_parameters() :: #{
-%%   <<"aggregationExpression">> => string(),
-%%   <<"aggregationType">> => list(any()),
-%%   <<"maxColumnValue">> => [float()],
-%%   <<"minColumnValue">> => [float()],
-%%   <<"userContributionLimit">> => [integer()]
+%% schema_status_reason() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
 %% }
--type differential_privacy_sensitivity_parameters() :: #{binary() => any()}.
+-type schema_status_reason() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_id_mapping_tables_output() :: #{
-%%   <<"idMappingTableSummaries">> => list(id_mapping_table_summary()),
-%%   <<"nextToken">> => string()
+%% schema_summary() :: #{
+%%   <<"analysisMethod">> => list(any()),
+%%   <<"analysisRuleTypes">> => list(list(any())()),
+%%   <<"collaborationArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"type">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type list_id_mapping_tables_output() :: #{binary() => any()}.
+-type schema_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_configured_table_output() :: #{
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaName">> => [string()],
+%%   <<"quotaValue">> => [float()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_table_reference() :: #{
+%%   <<"accountIdentifier">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"schemaName">> => string(),
+%%   <<"secretArn">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"tableSchema">> => list()
+%% }
+-type snowflake_table_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_table_schema_v1() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => string()
+%% }
+-type snowflake_table_schema_v1() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_job_input() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"jobComputePayerAccountId">> => string(),
+%%   <<"jobParameters">> := protected_job_parameters(),
+%%   <<"resultConfiguration">> => protected_job_result_configuration_input(),
+%%   <<"type">> := list(any())
+%% }
+-type start_protected_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type start_protected_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_query_input() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"queryComputePayerAccountId">> => string(),
+%%   <<"resultConfiguration">> => protected_query_result_configuration(),
+%%   <<"sqlParameters">> := protected_query_s_q_l_parameters(),
+%%   <<"type">> := string()
+%% }
+-type start_protected_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_protected_query_output() :: #{
+%%   <<"protectedQuery">> := protected_query()
+%% }
+-type start_protected_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_column_properties() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => list(any()),
+%%   <<"isPredictiveValue">> => [boolean()]
+%% }
+-type synthetic_data_column_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_generation_payment_config() :: #{
+%%   <<"isResponsible">> => [boolean()]
+%% }
+-type synthetic_data_generation_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_analysis_template_input() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_analysis_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analysis_template_output() :: #{
+%%   <<"analysisTemplate">> := analysis_template()
+%% }
+-type update_analysis_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_collaboration_change_request_input() :: #{
+%%   <<"action">> := list(any())
+%% }
+-type update_collaboration_change_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type update_collaboration_change_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_collaboration_input() :: #{
+%%   <<"analyticsEngine">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_collaboration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_collaboration_output() :: #{
+%%   <<"collaboration">> := collaboration()
+%% }
+-type update_collaboration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_audience_model_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_configured_audience_model_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_audience_model_association_output() :: #{
+%%   <<"configuredAudienceModelAssociation">> => configured_audience_model_association()
+%% }
+-type update_configured_audience_model_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list()
+%% }
+-type update_configured_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> := configured_table_analysis_rule()
+%% }
+-type update_configured_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_association_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list()
+%% }
+-type update_configured_table_association_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_association_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => configured_table_association_analysis_rule()
+%% }
+-type update_configured_table_association_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_configured_table_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_association_output() :: #{
+%%   <<"configuredTableAssociation">> := configured_table_association()
+%% }
+-type update_configured_table_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_input() :: #{
+%%   <<"allowedColumns">> => list(string()),
+%%   <<"analysisMethod">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"tableReference">> => list()
+%% }
+-type update_configured_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configured_table_output() :: #{
 %%   <<"configuredTable">> := configured_table()
 %% }
--type get_configured_table_output() :: #{binary() => any()}.
+-type update_configured_table_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_collaboration_id_namespace_associations_output() :: #{
-%%   <<"collaborationIdNamespaceAssociationSummaries">> => list(collaboration_id_namespace_association_summary()),
-%%   <<"nextToken">> => string()
+%% update_id_mapping_table_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string()
 %% }
--type list_collaboration_id_namespace_associations_output() :: #{binary() => any()}.
+-type update_id_mapping_table_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_privacy_budgets_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetSummaries">> => list(privacy_budget_summary())
+%% update_id_mapping_table_output() :: #{
+%%   <<"idMappingTable">> => id_mapping_table()
 %% }
--type list_privacy_budgets_output() :: #{binary() => any()}.
+-type update_id_mapping_table_output() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_privacy_budget_template_output() :: #{}
--type delete_privacy_budget_template_output() :: #{}.
+%% update_id_namespace_association_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingConfig">> => id_mapping_config(),
+%%   <<"name">> => string()
+%% }
+-type update_id_namespace_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_namespace_association_output() :: #{
+%%   <<"idNamespaceAssociation">> => id_namespace_association()
+%% }
+-type update_id_namespace_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_analysis_rule_input() :: #{
+%%   <<"analysisRulePolicy">> := list()
+%% }
+-type update_intermediate_table_analysis_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_analysis_rule_output() :: #{
+%%   <<"analysisRule">> => intermediate_table_analysis_rule()
+%% }
+-type update_intermediate_table_analysis_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_input() :: #{
+%%   <<"columns">> => list(intermediate_table_column()),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type update_intermediate_table_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_intermediate_table_output() :: #{
+%%   <<"intermediateTable">> => intermediate_table()
+%% }
+-type update_intermediate_table_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_membership_input() :: #{
+%%   <<"defaultJobResultConfiguration">> => membership_protected_job_result_configuration(),
+%%   <<"defaultResultConfiguration">> => membership_protected_query_result_configuration(),
+%%   <<"jobLogStatus">> => list(any()),
+%%   <<"membershipPaymentConfiguration">> => update_membership_payment_configuration(),
+%%   <<"queryLogStatus">> => list(any())
+%% }
+-type update_membership_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_membership_output() :: #{
+%%   <<"membership">> := membership()
+%% }
+-type update_membership_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_membership_payment_configuration() :: #{
+%%   <<"jobCompute">> => membership_job_compute_payment_config(),
+%%   <<"machineLearning">> => membership_ml_payment_config(),
+%%   <<"queryCompute">> => membership_query_compute_payment_config()
+%% }
+-type update_membership_payment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_privacy_budget_template_input() :: #{
+%%   <<"parameters">> => list(),
+%%   <<"privacyBudgetType">> := list(any())
+%% }
+-type update_privacy_budget_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_privacy_budget_template_output() :: #{
+%%   <<"privacyBudgetTemplate">> => privacy_budget_template()
+%% }
+-type update_privacy_budget_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_protected_job_input() :: #{
+%%   <<"targetStatus">> := list(any())
+%% }
+-type update_protected_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_protected_job_output() :: #{
+%%   <<"protectedJob">> => protected_job()
+%% }
+-type update_protected_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_protected_query_input() :: #{
+%%   <<"targetStatus">> := string()
+%% }
+-type update_protected_query_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_protected_query_output() :: #{
+%%   <<"protectedQuery">> := protected_query()
+%% }
+-type update_protected_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type worker_compute_configuration() :: #{binary() => any()}.
 
 -type batch_get_collaboration_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_schema_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_schema_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_collaboration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type create_collaboration_change_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configured_audience_model_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configured_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configured_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configured_table_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configured_table_association_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_id_mapping_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_id_namespace_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_intermediate_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_membership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_privacy_budget_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_collaboration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_configured_audience_model_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_configured_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_table_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_table_association_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_id_mapping_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_id_namespace_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_intermediate_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_membership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_privacy_budget_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disallow_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_collaboration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_collaboration_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_collaboration_change_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_collaboration_configured_audience_model_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_collaboration_id_namespace_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_collaboration_privacy_budget_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configured_audience_model_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configured_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configured_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configured_table_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configured_table_association_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_id_mapping_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_id_namespace_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_intermediate_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_membership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_privacy_budget_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_protected_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_protected_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_schema_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_schema_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_analysis_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_analysis_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_change_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_configured_audience_model_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_id_namespace_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_privacy_budget_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaboration_privacy_budgets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_collaborations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_configured_audience_model_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_configured_table_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_configured_tables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_id_mapping_tables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_id_namespace_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_intermediate_table_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_intermediate_tables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_memberships_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_privacy_budget_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_privacy_budgets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_protected_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_protected_queries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_schemas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     resource_not_found_exception().
 
 -type populate_id_mapping_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type populate_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type preview_privacy_impact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_protected_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_protected_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -4264,126 +4264,126 @@
     resource_not_found_exception().
 
 -type update_analysis_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_collaboration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_collaboration_change_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configured_audience_model_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_configured_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configured_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configured_table_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configured_table_association_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_id_mapping_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_id_namespace_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_intermediate_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_intermediate_table_analysis_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_membership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_privacy_budget_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_protected_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_protected_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

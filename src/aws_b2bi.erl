@@ -85,40 +85,55 @@
 
 
 %% Example:
-%% x12_delimiters() :: #{
-%%   <<"componentSeparator">> => string(),
-%%   <<"dataElementSeparator">> => string(),
-%%   <<"segmentTerminator">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type x12_delimiters() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag())
+%% advanced_options() :: #{
+%%   <<"x12">> => x12_advanced_options()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type advanced_options() :: #{binary() => any()}.
 
 %% Example:
-%% wrap_options() :: #{
-%%   <<"lineLength">> => integer(),
-%%   <<"lineTerminator">> => list(any()),
-%%   <<"wrapBy">> => list(any())
+%% capability_options() :: #{
+%%   <<"inboundEdi">> => inbound_edi_options(),
+%%   <<"outboundEdi">> => list()
 %% }
--type wrap_options() :: #{binary() => any()}.
+-type capability_options() :: #{binary() => any()}.
 
 %% Example:
-%% x12_details() :: #{
-%%   <<"transactionSet">> => list(any()),
-%%   <<"version">> => list(any())
+%% capability_summary() :: #{
+%%   <<"capabilityId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type x12_details() :: #{binary() => any()}.
+-type capability_summary() :: #{binary() => any()}.
 
 %% Example:
-%% test_conversion_response() :: #{
-%%   <<"convertedFileContent">> => [string()],
-%%   <<"validationMessages">> => list([string()]())
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type test_conversion_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conversion_source() :: #{
+%%   <<"fileFormat">> => list(any()),
+%%   <<"inputFile">> => list()
+%% }
+-type conversion_source() :: #{binary() => any()}.
+
+%% Example:
+%% conversion_target() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"formatDetails">> => list(),
+%%   <<"outputSampleFile">> => list()
+%% }
+-type conversion_target() :: #{binary() => any()}.
 
 %% Example:
 %% create_capability_request() :: #{
@@ -132,10 +147,16 @@
 -type create_capability_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_profile_request() :: #{
-
+%% create_capability_response() :: #{
+%%   <<"capabilityArn">> => string(),
+%%   <<"capabilityId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"instructionsDocuments">> => list(s3_location()),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type delete_profile_request() :: #{binary() => any()}.
+-type create_capability_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_partnership_request() :: #{
@@ -151,45 +172,167 @@
 -type create_partnership_request() :: #{binary() => any()}.
 
 %% Example:
-%% x12_element_requirement_validation_rule() :: #{
-%%   <<"elementPosition">> => string(),
-%%   <<"requirement">> => list(any())
-%% }
--type x12_element_requirement_validation_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_transformer_request() :: #{
-
-%% }
--type get_transformer_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% partnership_summary() :: #{
+%% create_partnership_response() :: #{
 %%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"email">> => string(),
 %%   <<"name">> => string(),
+%%   <<"partnershipArn">> => string(),
 %%   <<"partnershipId">> => string(),
+%%   <<"phone">> => string(),
 %%   <<"profileId">> => string(),
 %%   <<"tradingPartnerId">> => string()
 %% }
--type partnership_summary() :: #{binary() => any()}.
+-type create_partnership_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_partnerships_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%% create_profile_request() :: #{
+%%   <<"businessName">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"email">> => string(),
+%%   <<"logging">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"phone">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_profile_response() :: #{
+%%   <<"businessName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"email">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logging">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"phone">> => string(),
+%%   <<"profileArn">> => string(),
 %%   <<"profileId">> => string()
 %% }
--type list_partnerships_request() :: #{binary() => any()}.
+-type create_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_starter_mapping_template_request() :: #{
+%%   <<"mappingType">> := list(any()),
+%%   <<"outputSampleLocation">> => s3_location(),
+%%   <<"templateDetails">> := list()
+%% }
+-type create_starter_mapping_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_starter_mapping_template_response() :: #{
+%%   <<"mappingTemplate">> => [string()]
+%% }
+-type create_starter_mapping_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_transformer_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"ediType">> => list(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
+%%   <<"mappingTemplate">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputConversion">> => output_conversion(),
+%%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_transformer_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"ediType">> => list(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"inputConversion">> => input_conversion(),
+%%   <<"mapping">> => mapping(),
+%%   <<"mappingTemplate">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConversion">> => output_conversion(),
+%%   <<"sampleDocument">> => string(),
+%%   <<"sampleDocuments">> => sample_documents(),
+%%   <<"status">> => list(any()),
+%%   <<"transformerArn">> => string(),
+%%   <<"transformerId">> => string()
+%% }
+-type create_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capability_request() :: #{
+
+%% }
+-type delete_capability_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partnership_request() :: #{
+
+%% }
+-type delete_partnership_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profile_request() :: #{
+
+%% }
+-type delete_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transformer_request() :: #{
+
+%% }
+-type delete_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% edi_configuration() :: #{
+%%   <<"capabilityDirection">> => list(any()),
+%%   <<"inputLocation">> => s3_location(),
+%%   <<"outputLocation">> => s3_location(),
+%%   <<"transformerId">> => string(),
+%%   <<"type">> => list()
+%% }
+-type edi_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mapping_request() :: #{
+%%   <<"inputFileContent">> := string(),
+%%   <<"mappingType">> := list(any()),
+%%   <<"outputFileContent">> := string()
+%% }
+-type generate_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mapping_response() :: #{
+%%   <<"mappingAccuracy">> => [float()],
+%%   <<"mappingTemplate">> => [string()]
+%% }
+-type generate_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_capability_request() :: #{
+
+%% }
+-type get_capability_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_capability_response() :: #{
+%%   <<"capabilityArn">> => string(),
+%%   <<"capabilityId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"instructionsDocuments">> => list(s3_location()),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type get_capability_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_partnership_request() :: #{
+
+%% }
+-type get_partnership_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_partnership_response() :: #{
@@ -208,89 +351,45 @@
 -type get_partnership_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_capability_response() :: #{
-%%   <<"capabilityArn">> => string(),
-%%   <<"capabilityId">> => string(),
-%%   <<"configuration">> => list(),
+%% get_profile_request() :: #{
+
+%% }
+-type get_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_response() :: #{
+%%   <<"businessName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()),
+%%   <<"email">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logging">> => list(any()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%%   <<"phone">> => string(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string()
 %% }
--type get_capability_response() :: #{binary() => any()}.
+-type get_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% x12_split_options() :: #{
-%%   <<"splitBy">> => list(any())
+%% get_transformer_job_request() :: #{
+%%   <<"transformerId">> := string()
 %% }
--type x12_split_options() :: #{binary() => any()}.
+-type get_transformer_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% test_conversion_request() :: #{
-%%   <<"source">> := conversion_source(),
-%%   <<"target">> := conversion_target()
-%% }
--type test_conversion_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_transformer_request() :: #{
-%%   <<"ediType">> => list(),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"inputConversion">> => input_conversion(),
-%%   <<"mapping">> => mapping(),
-%%   <<"mappingTemplate">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputConversion">> => output_conversion(),
-%%   <<"sampleDocument">> => string(),
-%%   <<"sampleDocuments">> => sample_documents(),
+%% get_transformer_job_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"outputFiles">> => list(s3_location()),
 %%   <<"status">> => list(any())
 %% }
--type update_transformer_request() :: #{binary() => any()}.
+-type get_transformer_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% input_conversion() :: #{
-%%   <<"advancedOptions">> => advanced_options(),
-%%   <<"formatOptions">> => list(),
-%%   <<"fromFormat">> => list(any())
-%% }
--type input_conversion() :: #{binary() => any()}.
+%% get_transformer_request() :: #{
 
-%% Example:
-%% generate_mapping_response() :: #{
-%%   <<"mappingAccuracy">> => [float()],
-%%   <<"mappingTemplate">> => [string()]
 %% }
--type generate_mapping_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_transformers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_transformers_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_transformer_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"ediType">> => list(),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"inputConversion">> => input_conversion(),
-%%   <<"mapping">> => mapping(),
-%%   <<"mappingTemplate">> => string(),
-%%   <<"name">> := string(),
-%%   <<"outputConversion">> => output_conversion(),
-%%   <<"sampleDocument">> => string(),
-%%   <<"sampleDocuments">> => sample_documents(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_transformer_request() :: #{binary() => any()}.
+-type get_transformer_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_transformer_response() :: #{
@@ -312,16 +411,87 @@
 -type get_transformer_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_capability_response() :: #{
-%%   <<"capabilityArn">> => string(),
-%%   <<"capabilityId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%% inbound_edi_options() :: #{
+%%   <<"x12">> => x12_inbound_edi_options()
 %% }
--type create_capability_response() :: #{binary() => any()}.
+-type inbound_edi_options() :: #{binary() => any()}.
+
+%% Example:
+%% input_conversion() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
+%%   <<"formatOptions">> => list(),
+%%   <<"fromFormat">> => list(any())
+%% }
+-type input_conversion() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_capabilities_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_capabilities_response() :: #{
+%%   <<"capabilities">> => list(capability_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partnerships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"profileId">> => string()
+%% }
+-type list_partnerships_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partnerships_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"partnerships">> => list(partnership_summary())
+%% }
+-type list_partnerships_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profiles">> => list(profile_summary())
+%% }
+-type list_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_transformers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_transformers_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_transformers_response() :: #{
@@ -331,17 +501,81 @@
 -type list_transformers_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_capability_response() :: #{
-%%   <<"capabilityArn">> => string(),
-%%   <<"capabilityId">> => string(),
-%%   <<"configuration">> => list(),
+%% mapping() :: #{
+%%   <<"template">> => string(),
+%%   <<"templateLanguage">> => list(any())
+%% }
+-type mapping() :: #{binary() => any()}.
+
+%% Example:
+%% output_conversion() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
+%%   <<"formatOptions">> => list(),
+%%   <<"toFormat">> => list(any())
+%% }
+-type output_conversion() :: #{binary() => any()}.
+
+%% Example:
+%% partnership_summary() :: #{
+%%   <<"capabilities">> => list(string()),
+%%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%%   <<"partnershipId">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"tradingPartnerId">> => string()
 %% }
--type update_capability_response() :: #{binary() => any()}.
+-type partnership_summary() :: #{binary() => any()}.
+
+%% Example:
+%% profile_summary() :: #{
+%%   <<"businessName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logging">> => list(any()),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profileId">> => string()
+%% }
+-type profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% sample_document_keys() :: #{
+%%   <<"input">> => string(),
+%%   <<"output">> => string()
+%% }
+-type sample_document_keys() :: #{binary() => any()}.
+
+%% Example:
+%% sample_documents() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"keys">> => list(sample_document_keys())
+%% }
+-type sample_documents() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% start_transformer_job_request() :: #{
@@ -353,42 +587,75 @@
 -type start_transformer_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_partnership_request() :: #{
-%%   <<"capabilities">> => list(string()),
-%%   <<"capabilityOptions">> => capability_options(),
-%%   <<"name">> => string()
+%% start_transformer_job_response() :: #{
+%%   <<"transformerJobId">> => string()
 %% }
--type update_partnership_request() :: #{binary() => any()}.
+-type start_transformer_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% capability_summary() :: #{
-%%   <<"capabilityId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type capability_summary() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% create_starter_mapping_template_response() :: #{
-%%   <<"mappingTemplate">> => [string()]
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := list(tag())
 %% }
--type create_starter_mapping_template_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% output_conversion() :: #{
+%% test_conversion_request() :: #{
+%%   <<"source">> := conversion_source(),
+%%   <<"target">> := conversion_target()
+%% }
+-type test_conversion_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_conversion_response() :: #{
+%%   <<"convertedFileContent">> => [string()],
+%%   <<"validationMessages">> => list([string()]())
+%% }
+-type test_conversion_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_mapping_request() :: #{
+%%   <<"fileFormat">> := list(any()),
+%%   <<"inputFileContent">> := string(),
+%%   <<"mappingTemplate">> := string()
+%% }
+-type test_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_mapping_response() :: #{
+%%   <<"mappedFileContent">> => [string()]
+%% }
+-type test_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_parsing_request() :: #{
 %%   <<"advancedOptions">> => advanced_options(),
-%%   <<"formatOptions">> => list(),
-%%   <<"toFormat">> => list(any())
+%%   <<"ediType">> := list(),
+%%   <<"fileFormat">> := list(any()),
+%%   <<"inputFile">> := s3_location()
 %% }
--type output_conversion() :: #{binary() => any()}.
+-type test_parsing_request() :: #{binary() => any()}.
 
 %% Example:
-%% x12_validation_options() :: #{
-%%   <<"validationRules">> => list(list())
+%% test_parsing_response() :: #{
+%%   <<"parsedFileContent">> => [string()],
+%%   <<"parsedSplitFileContents">> => list([string()]()),
+%%   <<"validationMessages">> => list([string()]())
 %% }
--type x12_validation_options() :: #{binary() => any()}.
+-type test_parsing_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
 %% transformer_summary() :: #{
@@ -409,34 +676,55 @@
 -type transformer_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_profile_request() :: #{
-%%   <<"businessName">> := string(),
-%%   <<"clientToken">> => [string()],
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_capability_request() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"instructionsDocuments">> => list(s3_location()),
+%%   <<"name">> => string()
+%% }
+-type update_capability_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_capability_response() :: #{
+%%   <<"capabilityArn">> => string(),
+%%   <<"capabilityId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"instructionsDocuments">> => list(s3_location()),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type update_capability_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_partnership_request() :: #{
+%%   <<"capabilities">> => list(string()),
+%%   <<"capabilityOptions">> => capability_options(),
+%%   <<"name">> => string()
+%% }
+-type update_partnership_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_partnership_response() :: #{
+%%   <<"capabilities">> => list(string()),
+%%   <<"capabilityOptions">> => capability_options(),
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
-%%   <<"logging">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"phone">> := string(),
-%%   <<"tags">> => list(tag())
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"partnershipArn">> => string(),
+%%   <<"partnershipId">> => string(),
+%%   <<"phone">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"tradingPartnerId">> => string()
 %% }
--type create_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_transformer_job_request() :: #{
-%%   <<"transformerId">> := string()
-%% }
--type get_transformer_job_request() :: #{binary() => any()}.
+-type update_partnership_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_profile_request() :: #{
@@ -448,37 +736,7 @@
 -type update_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_transformer_request() :: #{
-
-%% }
--type delete_transformer_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% x12_envelope() :: #{
-%%   <<"common">> => x12_outbound_edi_headers(),
-%%   <<"wrapOptions">> => wrap_options()
-%% }
--type x12_envelope() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_response() :: #{
+%% update_profile_response() :: #{
 %%   <<"businessName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
@@ -490,92 +748,10 @@
 %%   <<"profileArn">> => string(),
 %%   <<"profileId">> => string()
 %% }
--type get_profile_response() :: #{binary() => any()}.
+-type update_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_capabilities_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_capabilities_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_profile_response() :: #{
-%%   <<"businessName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"email">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logging">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"phone">> => string(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string()
-%% }
--type create_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% x12_functional_group_headers() :: #{
-%%   <<"applicationReceiverCode">> => string(),
-%%   <<"applicationSenderCode">> => string(),
-%%   <<"responsibleAgencyCode">> => string()
-%% }
--type x12_functional_group_headers() :: #{binary() => any()}.
-
-%% Example:
-%% get_transformer_job_response() :: #{
-%%   <<"message">> => [string()],
-%%   <<"outputFiles">> => list(s3_location()),
-%%   <<"status">> => list(any())
-%% }
--type get_transformer_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% inbound_edi_options() :: #{
-%%   <<"x12">> => x12_inbound_edi_options()
-%% }
--type inbound_edi_options() :: #{binary() => any()}.
-
-%% Example:
-%% edi_configuration() :: #{
-%%   <<"capabilityDirection">> => list(any()),
-%%   <<"inputLocation">> => s3_location(),
-%%   <<"outputLocation">> => s3_location(),
-%%   <<"transformerId">> => string(),
-%%   <<"type">> => list()
-%% }
--type edi_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_capability_request() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"instructionsDocuments">> => list(s3_location()),
-%%   <<"name">> => string()
-%% }
--type update_capability_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% list_partnerships_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"partnerships">> => list(partnership_summary())
-%% }
--type list_partnerships_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_transformer_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
+%% update_transformer_request() :: #{
 %%   <<"ediType">> => list(),
 %%   <<"fileFormat">> => list(any()),
 %%   <<"inputConversion">> => input_conversion(),
@@ -585,38 +761,9 @@
 %%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
 %%   <<"sampleDocuments">> => sample_documents(),
-%%   <<"status">> => list(any()),
-%%   <<"transformerArn">> => string(),
-%%   <<"transformerId">> => string()
+%%   <<"status">> => list(any())
 %% }
--type create_transformer_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_mapping_request() :: #{
-%%   <<"inputFileContent">> := string(),
-%%   <<"mappingType">> := list(any()),
-%%   <<"outputFileContent">> := string()
-%% }
--type generate_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% x12_interchange_control_headers() :: #{
-%%   <<"acknowledgmentRequestedCode">> => string(),
-%%   <<"receiverId">> => string(),
-%%   <<"receiverIdQualifier">> => string(),
-%%   <<"repetitionSeparator">> => string(),
-%%   <<"senderId">> => string(),
-%%   <<"senderIdQualifier">> => string(),
-%%   <<"usageIndicatorCode">> => string()
-%% }
--type x12_interchange_control_headers() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type update_transformer_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_transformer_response() :: #{
@@ -638,34 +785,18 @@
 -type update_transformer_response() :: #{binary() => any()}.
 
 %% Example:
-%% x12_code_list_validation_rule() :: #{
-%%   <<"codesToAdd">> => list([string()]()),
-%%   <<"codesToRemove">> => list([string()]()),
-%%   <<"elementId">> => string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type x12_code_list_validation_rule() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% sample_document_keys() :: #{
-%%   <<"input">> => string(),
-%%   <<"output">> => string()
+%% wrap_options() :: #{
+%%   <<"lineLength">> => integer(),
+%%   <<"lineTerminator">> => list(any()),
+%%   <<"wrapBy">> => list(any())
 %% }
--type sample_document_keys() :: #{binary() => any()}.
-
-%% Example:
-%% test_parsing_response() :: #{
-%%   <<"parsedFileContent">> => [string()],
-%%   <<"parsedSplitFileContents">> => list([string()]()),
-%%   <<"validationMessages">> => list([string()]())
-%% }
--type test_parsing_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_capabilities_response() :: #{
-%%   <<"capabilities">> => list(capability_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_capabilities_response() :: #{binary() => any()}.
+-type wrap_options() :: #{binary() => any()}.
 
 %% Example:
 %% x12_acknowledgment_options() :: #{
@@ -675,92 +806,42 @@
 -type x12_acknowledgment_options() :: #{binary() => any()}.
 
 %% Example:
-%% delete_partnership_request() :: #{
-
+%% x12_advanced_options() :: #{
+%%   <<"splitOptions">> => x12_split_options(),
+%%   <<"validationOptions">> => x12_validation_options()
 %% }
--type delete_partnership_request() :: #{binary() => any()}.
+-type x12_advanced_options() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% x12_code_list_validation_rule() :: #{
+%%   <<"codesToAdd">> => list([string()]()),
+%%   <<"codesToRemove">> => list([string()]()),
+%%   <<"elementId">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type x12_code_list_validation_rule() :: #{binary() => any()}.
 
 %% Example:
-%% update_profile_response() :: #{
-%%   <<"businessName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"email">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logging">> => list(any()),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"phone">> => string(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string()
+%% x12_control_numbers() :: #{
+%%   <<"startingFunctionalGroupControlNumber">> => integer(),
+%%   <<"startingInterchangeControlNumber">> => integer(),
+%%   <<"startingTransactionSetControlNumber">> => integer()
 %% }
--type update_profile_response() :: #{binary() => any()}.
+-type x12_control_numbers() :: #{binary() => any()}.
 
 %% Example:
-%% get_profile_request() :: #{
-
+%% x12_delimiters() :: #{
+%%   <<"componentSeparator">> => string(),
+%%   <<"dataElementSeparator">> => string(),
+%%   <<"segmentTerminator">> => string()
 %% }
--type get_profile_request() :: #{binary() => any()}.
+-type x12_delimiters() :: #{binary() => any()}.
 
 %% Example:
-%% list_profiles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"profiles">> => list(profile_summary())
+%% x12_details() :: #{
+%%   <<"transactionSet">> => list(any()),
+%%   <<"version">> => list(any())
 %% }
--type list_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capability_request() :: #{
-
-%% }
--type delete_capability_request() :: #{binary() => any()}.
-
-%% Example:
-%% sample_documents() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"keys">> => list(sample_document_keys())
-%% }
--type sample_documents() :: #{binary() => any()}.
-
-%% Example:
-%% conversion_source() :: #{
-%%   <<"fileFormat">> => list(any()),
-%%   <<"inputFile">> => list()
-%% }
--type conversion_source() :: #{binary() => any()}.
-
-%% Example:
-%% update_partnership_response() :: #{
-%%   <<"capabilities">> => list(string()),
-%%   <<"capabilityOptions">> => capability_options(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"email">> => string(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"partnershipArn">> => string(),
-%%   <<"partnershipId">> => string(),
-%%   <<"phone">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"tradingPartnerId">> => string()
-%% }
--type update_partnership_response() :: #{binary() => any()}.
+-type x12_details() :: #{binary() => any()}.
 
 %% Example:
 %% x12_element_length_validation_rule() :: #{
@@ -771,12 +852,44 @@
 -type x12_element_length_validation_rule() :: #{binary() => any()}.
 
 %% Example:
-%% x12_control_numbers() :: #{
-%%   <<"startingFunctionalGroupControlNumber">> => integer(),
-%%   <<"startingInterchangeControlNumber">> => integer(),
-%%   <<"startingTransactionSetControlNumber">> => integer()
+%% x12_element_requirement_validation_rule() :: #{
+%%   <<"elementPosition">> => string(),
+%%   <<"requirement">> => list(any())
 %% }
--type x12_control_numbers() :: #{binary() => any()}.
+-type x12_element_requirement_validation_rule() :: #{binary() => any()}.
+
+%% Example:
+%% x12_envelope() :: #{
+%%   <<"common">> => x12_outbound_edi_headers(),
+%%   <<"wrapOptions">> => wrap_options()
+%% }
+-type x12_envelope() :: #{binary() => any()}.
+
+%% Example:
+%% x12_functional_group_headers() :: #{
+%%   <<"applicationReceiverCode">> => string(),
+%%   <<"applicationSenderCode">> => string(),
+%%   <<"responsibleAgencyCode">> => string()
+%% }
+-type x12_functional_group_headers() :: #{binary() => any()}.
+
+%% Example:
+%% x12_inbound_edi_options() :: #{
+%%   <<"acknowledgmentOptions">> => x12_acknowledgment_options()
+%% }
+-type x12_inbound_edi_options() :: #{binary() => any()}.
+
+%% Example:
+%% x12_interchange_control_headers() :: #{
+%%   <<"acknowledgmentRequestedCode">> => string(),
+%%   <<"receiverId">> => string(),
+%%   <<"receiverIdQualifier">> => string(),
+%%   <<"repetitionSeparator">> => string(),
+%%   <<"senderId">> => string(),
+%%   <<"senderIdQualifier">> => string(),
+%%   <<"usageIndicatorCode">> => string()
+%% }
+-type x12_interchange_control_headers() :: #{binary() => any()}.
 
 %% Example:
 %% x12_outbound_edi_headers() :: #{
@@ -790,350 +903,237 @@
 -type x12_outbound_edi_headers() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()]
+%% x12_split_options() :: #{
+%%   <<"splitBy">> => list(any())
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type x12_split_options() :: #{binary() => any()}.
 
 %% Example:
-%% test_mapping_request() :: #{
-%%   <<"fileFormat">> := list(any()),
-%%   <<"inputFileContent">> := string(),
-%%   <<"mappingTemplate">> := string()
+%% x12_validation_options() :: #{
+%%   <<"validationRules">> => list(list())
 %% }
--type test_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_starter_mapping_template_request() :: #{
-%%   <<"mappingType">> := list(any()),
-%%   <<"outputSampleLocation">> => s3_location(),
-%%   <<"templateDetails">> := list()
-%% }
--type create_starter_mapping_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_partnership_request() :: #{
-
-%% }
--type get_partnership_request() :: #{binary() => any()}.
-
-%% Example:
-%% capability_options() :: #{
-%%   <<"inboundEdi">> => inbound_edi_options(),
-%%   <<"outboundEdi">> => list()
-%% }
--type capability_options() :: #{binary() => any()}.
-
-%% Example:
-%% x12_advanced_options() :: #{
-%%   <<"splitOptions">> => x12_split_options(),
-%%   <<"validationOptions">> => x12_validation_options()
-%% }
--type x12_advanced_options() :: #{binary() => any()}.
-
-%% Example:
-%% mapping() :: #{
-%%   <<"template">> => string(),
-%%   <<"templateLanguage">> => list(any())
-%% }
--type mapping() :: #{binary() => any()}.
-
-%% Example:
-%% create_partnership_response() :: #{
-%%   <<"capabilities">> => list(string()),
-%%   <<"capabilityOptions">> => capability_options(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"email">> => string(),
-%%   <<"name">> => string(),
-%%   <<"partnershipArn">> => string(),
-%%   <<"partnershipId">> => string(),
-%%   <<"phone">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"tradingPartnerId">> => string()
-%% }
--type create_partnership_response() :: #{binary() => any()}.
-
-%% Example:
-%% test_parsing_request() :: #{
-%%   <<"advancedOptions">> => advanced_options(),
-%%   <<"ediType">> := list(),
-%%   <<"fileFormat">> := list(any()),
-%%   <<"inputFile">> := s3_location()
-%% }
--type test_parsing_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_capability_request() :: #{
-
-%% }
--type get_capability_request() :: #{binary() => any()}.
-
-%% Example:
-%% conversion_target() :: #{
-%%   <<"advancedOptions">> => advanced_options(),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"formatDetails">> => list(),
-%%   <<"outputSampleFile">> => list()
-%% }
--type conversion_target() :: #{binary() => any()}.
-
-%% Example:
-%% advanced_options() :: #{
-%%   <<"x12">> => x12_advanced_options()
-%% }
--type advanced_options() :: #{binary() => any()}.
-
-%% Example:
-%% test_mapping_response() :: #{
-%%   <<"mappedFileContent">> => [string()]
-%% }
--type test_mapping_response() :: #{binary() => any()}.
-
-%% Example:
-%% profile_summary() :: #{
-%%   <<"businessName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logging">> => list(any()),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"profileId">> => string()
-%% }
--type profile_summary() :: #{binary() => any()}.
-
-%% Example:
-%% x12_inbound_edi_options() :: #{
-%%   <<"acknowledgmentOptions">> => x12_acknowledgment_options()
-%% }
--type x12_inbound_edi_options() :: #{binary() => any()}.
-
-%% Example:
-%% start_transformer_job_response() :: #{
-%%   <<"transformerJobId">> => string()
-%% }
--type start_transformer_job_response() :: #{binary() => any()}.
+-type x12_validation_options() :: #{binary() => any()}.
 
 -type create_capability_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_partnership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_starter_mapping_template_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_transformer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_capability_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_partnership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_transformer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type generate_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_capability_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_partnership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_transformer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_transformer_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_capabilities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_partnerships_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_transformers_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
--type start_transformer_job_errors() ::
-    throttling_exception() | 
+-type list_transformers_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type start_transformer_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type test_conversion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type test_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type test_parsing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_capability_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_partnership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_transformer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

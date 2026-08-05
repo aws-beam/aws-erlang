@@ -55,326 +55,31 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% apache_kafka_cluster() :: #{
+%%   <<"bootstrapServers">> => string(),
+%%   <<"vpc">> => vpc()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type apache_kafka_cluster() :: #{binary() => any()}.
 
 
 %% Example:
-%% custom_plugin_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customPluginArn">> => string(),
-%%   <<"customPluginState">> => string(),
-%%   <<"description">> => string(),
-%%   <<"latestRevision">> => custom_plugin_revision_summary(),
-%%   <<"name">> => string()
+%% apache_kafka_cluster_description() :: #{
+%%   <<"bootstrapServers">> => string(),
+%%   <<"vpc">> => vpc_description()
 %% }
--type custom_plugin_summary() :: #{binary() => any()}.
+-type apache_kafka_cluster_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% kafka_cluster_client_authentication() :: #{
-%%   <<"authenticationType">> => string()
-%% }
--type kafka_cluster_client_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_client_authentication_description() :: #{
-%%   <<"authenticationType">> => string()
-%% }
--type kafka_cluster_client_authentication_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_in_policy() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_in_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_worker_configuration_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"latestRevision">> => worker_configuration_revision_description(),
-%%   <<"name">> => string(),
-%%   <<"workerConfigurationArn">> => string(),
-%%   <<"workerConfigurationState">> => string()
-%% }
--type describe_worker_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_response() :: #{
-%%   <<"connectors">> => list(connector_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% plugin() :: #{
-%%   <<"customPlugin">> => custom_plugin()
-%% }
--type plugin() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_description() :: #{
-%%   <<"autoScaling">> => auto_scaling_description(),
-%%   <<"provisionedCapacity">> => provisioned_capacity_description()
-%% }
--type capacity_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_custom_plugin_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customPluginArn">> => string(),
-%%   <<"customPluginState">> => string(),
-%%   <<"description">> => string(),
-%%   <<"latestRevision">> => custom_plugin_revision_summary(),
-%%   <<"name">> => string(),
-%%   <<"stateDescription">> => state_description()
-%% }
--type describe_custom_plugin_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% worker_configuration_description() :: #{
-%%   <<"revision">> => float(),
-%%   <<"workerConfigurationArn">> => string()
-%% }
--type worker_configuration_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc() :: #{
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type vpc() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_connector_response() :: #{
-%%   <<"capacity">> => capacity_description(),
-%%   <<"connectorArn">> => string(),
-%%   <<"connectorConfiguration">> => map(),
-%%   <<"connectorDescription">> => string(),
-%%   <<"connectorName">> => string(),
-%%   <<"connectorState">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"currentVersion">> => string(),
-%%   <<"kafkaCluster">> => kafka_cluster_description(),
-%%   <<"kafkaClusterClientAuthentication">> => kafka_cluster_client_authentication_description(),
-%%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
-%%   <<"kafkaConnectVersion">> => string(),
-%%   <<"logDelivery">> => log_delivery_description(),
-%%   <<"networkType">> => string(),
-%%   <<"plugins">> => list(plugin_description()),
-%%   <<"serviceExecutionRoleArn">> => string(),
-%%   <<"stateDescription">> => state_description(),
-%%   <<"workerConfiguration">> => worker_configuration_description()
-%% }
--type describe_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connector_request() :: #{
-%%   <<"capacity">> => capacity_update(),
-%%   <<"connectorConfiguration">> => map(),
-%%   <<"currentVersion">> := string()
-%% }
--type update_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_configuration() :: #{
-%%   <<"revision">> => float(),
-%%   <<"workerConfigurationArn">> => string()
-%% }
--type worker_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_configuration_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"latestRevision">> => worker_configuration_revision_summary(),
-%%   <<"name">> => string(),
-%%   <<"workerConfigurationArn">> => string(),
-%%   <<"workerConfigurationState">> => string()
-%% }
--type worker_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_in_policy_description() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_in_policy_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_setting() :: #{
-%%   <<"capacity">> => capacity_description()
-%% }
--type worker_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_custom_plugin_response() :: #{
-%%   <<"customPluginArn">> => string(),
-%%   <<"customPluginState">> => string()
-%% }
--type delete_custom_plugin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_request() :: #{
-%%   <<"connectorNamePrefix">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_connectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity() :: #{
-%%   <<"autoScaling">> => auto_scaling(),
-%%   <<"provisionedCapacity">> => provisioned_capacity()
-%% }
--type capacity() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_scaling_update() :: #{
+%% auto_scaling() :: #{
 %%   <<"maxAutoscalingTaskCount">> => integer(),
 %%   <<"maxWorkerCount">> => integer(),
 %%   <<"mcuCount">> => integer(),
 %%   <<"minWorkerCount">> => integer(),
-%%   <<"scaleInPolicy">> => scale_in_policy_update(),
-%%   <<"scaleOutPolicy">> => scale_out_policy_update()
+%%   <<"scaleInPolicy">> => scale_in_policy(),
+%%   <<"scaleOutPolicy">> => scale_out_policy()
 %% }
--type auto_scaling_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster() :: #{
-%%   <<"apacheKafkaCluster">> => apache_kafka_cluster()
-%% }
--type kafka_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_operation_step() :: #{
-%%   <<"stepState">> => string(),
-%%   <<"stepType">> => string()
-%% }
--type connector_operation_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_operations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_connector_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_worker_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workerConfigurations">> => list(worker_configuration_summary())
-%% }
--type list_worker_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_encryption_in_transit_description() :: #{
-%%   <<"encryptionType">> => string()
-%% }
--type kafka_cluster_encryption_in_transit_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_capacity_description() :: #{
-%%   <<"mcuCount">> => integer(),
-%%   <<"workerCount">> => integer()
-%% }
--type provisioned_capacity_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_encryption_in_transit() :: #{
-%%   <<"encryptionType">> => string()
-%% }
--type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_out_policy_description() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_out_policy_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_description() :: #{
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type vpc_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_plugins_response() :: #{
-%%   <<"customPlugins">> => list(custom_plugin_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_plugins_response() :: #{binary() => any()}.
+-type auto_scaling() :: #{binary() => any()}.
 
 
 %% Example:
@@ -390,73 +95,38 @@
 
 
 %% Example:
-%% cloud_watch_logs_log_delivery_description() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"logGroup">> => string()
-%% }
--type cloud_watch_logs_log_delivery_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% apache_kafka_cluster() :: #{
-%%   <<"bootstrapServers">> => string(),
-%%   <<"vpc">> => vpc()
-%% }
--type apache_kafka_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_out_policy_update() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_out_policy_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose_log_delivery_description() :: #{
-%%   <<"deliveryStream">> => string(),
-%%   <<"enabled">> => boolean()
-%% }
--type firehose_log_delivery_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_capacity() :: #{
+%% auto_scaling_update() :: #{
+%%   <<"maxAutoscalingTaskCount">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
 %%   <<"mcuCount">> => integer(),
-%%   <<"workerCount">> => integer()
+%%   <<"minWorkerCount">> => integer(),
+%%   <<"scaleInPolicy">> => scale_in_policy_update(),
+%%   <<"scaleOutPolicy">> => scale_out_policy_update()
 %% }
--type provisioned_capacity() :: #{binary() => any()}.
+-type auto_scaling_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% state_description() :: #{
-%%   <<"code">> => string(),
+%% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type state_description() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_connector_response() :: #{
-%%   <<"connectorArn">> => string(),
-%%   <<"connectorName">> => string(),
-%%   <<"connectorState">> => string()
+%% capacity() :: #{
+%%   <<"autoScaling">> => auto_scaling(),
+%%   <<"provisionedCapacity">> => provisioned_capacity()
 %% }
--type create_connector_response() :: #{binary() => any()}.
+-type capacity() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% capacity_description() :: #{
+%%   <<"autoScaling">> => auto_scaling_description(),
+%%   <<"provisionedCapacity">> => provisioned_capacity_description()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type capacity_description() :: #{binary() => any()}.
 
 
 %% Example:
@@ -468,72 +138,34 @@
 
 
 %% Example:
-%% service_unavailable_exception() :: #{
+%% cloud_watch_logs_log_delivery() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"logGroup">> => string()
+%% }
+-type cloud_watch_logs_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_log_delivery_description() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"logGroup">> => string()
+%% }
+-type cloud_watch_logs_log_delivery_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type service_unavailable_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% worker_configuration_revision_description() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"propertiesFileContent">> => string(),
-%%   <<"revision">> => float()
+%% connector_operation_step() :: #{
+%%   <<"stepState">> => string(),
+%%   <<"stepType">> => string()
 %% }
--type worker_configuration_revision_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucketArn">> => string(),
-%%   <<"fileKey">> => string(),
-%%   <<"objectVersion">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_delivery_description() :: #{
-%%   <<"workerLogDelivery">> => worker_log_delivery_description()
-%% }
--type log_delivery_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connector_request() :: #{}
--type describe_connector_request() :: #{}.
-
-
-%% Example:
-%% custom_plugin_description() :: #{
-%%   <<"customPluginArn">> => string(),
-%%   <<"revision">> => float()
-%% }
--type custom_plugin_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_scaling() :: #{
-%%   <<"maxAutoscalingTaskCount">> => integer(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"mcuCount">> => integer(),
-%%   <<"minWorkerCount">> => integer(),
-%%   <<"scaleInPolicy">> => scale_in_policy(),
-%%   <<"scaleOutPolicy">> => scale_out_policy()
-%% }
--type auto_scaling() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_plugin_request() :: #{}
--type delete_custom_plugin_request() :: #{}.
-
-
-%% Example:
-%% provisioned_capacity_update() :: #{
-%%   <<"mcuCount">> => integer(),
-%%   <<"workerCount">> => integer()
-%% }
--type provisioned_capacity_update() :: #{binary() => any()}.
+-type connector_operation_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -545,105 +177,6 @@
 %%   <<"endTime">> => non_neg_integer()
 %% }
 -type connector_operation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_in_policy_update() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_in_policy_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_connector_operation_response() :: #{
-%%   <<"connectorArn">> => string(),
-%%   <<"connectorOperationArn">> => string(),
-%%   <<"connectorOperationState">> => string(),
-%%   <<"connectorOperationType">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"errorInfo">> => state_description(),
-%%   <<"operationSteps">> => list(connector_operation_step()),
-%%   <<"originConnectorConfiguration">> => map(),
-%%   <<"originWorkerSetting">> => worker_setting(),
-%%   <<"targetConnectorConfiguration">> => map(),
-%%   <<"targetWorkerSetting">> => worker_setting()
-%% }
--type describe_connector_operation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_log_delivery() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"prefix">> => string()
-%% }
--type s3_log_delivery() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_configuration_revision_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"revision">> => float()
-%% }
--type worker_configuration_revision_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_request() :: #{
-%%   <<"capacity">> := capacity(),
-%%   <<"connectorConfiguration">> := map(),
-%%   <<"connectorDescription">> => string(),
-%%   <<"connectorName">> := string(),
-%%   <<"kafkaCluster">> := kafka_cluster(),
-%%   <<"kafkaClusterClientAuthentication">> := kafka_cluster_client_authentication(),
-%%   <<"kafkaClusterEncryptionInTransit">> := kafka_cluster_encryption_in_transit(),
-%%   <<"kafkaConnectVersion">> := string(),
-%%   <<"logDelivery">> => log_delivery(),
-%%   <<"networkType">> => string(),
-%%   <<"plugins">> := list(plugin()),
-%%   <<"serviceExecutionRoleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"workerConfiguration">> => worker_configuration()
-%% }
--type create_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_worker_configuration_response() :: #{
-%%   <<"workerConfigurationArn">> => string(),
-%%   <<"workerConfigurationState">> => string()
-%% }
--type delete_worker_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_log_delivery() :: #{
-%%   <<"cloudWatchLogs">> => cloud_watch_logs_log_delivery(),
-%%   <<"firehose">> => firehose_log_delivery(),
-%%   <<"s3">> => s3_log_delivery()
-%% }
--type worker_log_delivery() :: #{binary() => any()}.
-
-
-%% Example:
-%% plugin_description() :: #{
-%%   <<"customPlugin">> => custom_plugin_description()
-%% }
--type plugin_description() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% delete_connector_response() :: #{
-%%   <<"connectorArn">> => string(),
-%%   <<"connectorState">> => string()
-%% }
--type delete_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -669,68 +202,43 @@
 
 
 %% Example:
-%% cloud_watch_logs_log_delivery() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"logGroup">> => string()
+%% create_connector_request() :: #{
+%%   <<"capacity">> := capacity(),
+%%   <<"connectorConfiguration">> := map(),
+%%   <<"connectorDescription">> => string(),
+%%   <<"connectorName">> := string(),
+%%   <<"kafkaCluster">> := kafka_cluster(),
+%%   <<"kafkaClusterClientAuthentication">> := kafka_cluster_client_authentication(),
+%%   <<"kafkaClusterEncryptionInTransit">> := kafka_cluster_encryption_in_transit(),
+%%   <<"kafkaConnectVersion">> := string(),
+%%   <<"logDelivery">> => log_delivery(),
+%%   <<"networkType">> => string(),
+%%   <<"plugins">> := list(plugin()),
+%%   <<"serviceExecutionRoleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"workerConfiguration">> => worker_configuration()
 %% }
--type cloud_watch_logs_log_delivery() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type create_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% worker_log_delivery_description() :: #{
-%%   <<"cloudWatchLogs">> => cloud_watch_logs_log_delivery_description(),
-%%   <<"firehose">> => firehose_log_delivery_description(),
-%%   <<"s3">> => s3_log_delivery_description()
-%% }
--type worker_log_delivery_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_delivery() :: #{
-%%   <<"workerLogDelivery">> => worker_log_delivery()
-%% }
--type log_delivery() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connector_response() :: #{
+%% create_connector_response() :: #{
 %%   <<"connectorArn">> => string(),
-%%   <<"connectorOperationArn">> => string(),
+%%   <<"connectorName">> => string(),
 %%   <<"connectorState">> => string()
 %% }
--type update_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_plugin_request() :: #{}
--type describe_custom_plugin_request() :: #{}.
+-type create_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_worker_configuration_request() :: #{
+%% create_custom_plugin_request() :: #{
+%%   <<"contentType">> := string(),
 %%   <<"description">> => string(),
+%%   <<"location">> := custom_plugin_location(),
 %%   <<"name">> := string(),
-%%   <<"propertiesFileContent">> := string(),
 %%   <<"tags">> => map()
 %% }
--type create_worker_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_description() :: #{
-%%   <<"apacheKafkaCluster">> => apache_kafka_cluster_description()
-%% }
--type kafka_cluster_description() :: #{binary() => any()}.
+-type create_custom_plugin_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -744,40 +252,13 @@
 
 
 %% Example:
-%% custom_plugin_location_description() :: #{
-%%   <<"s3Location">> => s3_location_description()
+%% create_worker_configuration_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"propertiesFileContent">> := string(),
+%%   <<"tags">> => map()
 %% }
--type custom_plugin_location_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_plugin() :: #{
-%%   <<"customPluginArn">> => string(),
-%%   <<"revision">> => float()
-%% }
--type custom_plugin() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connector_request() :: #{
-%%   <<"currentVersion">> => string()
-%% }
--type delete_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose_log_delivery() :: #{
-%%   <<"deliveryStream">> => string(),
-%%   <<"enabled">> => boolean()
-%% }
--type firehose_log_delivery() :: #{binary() => any()}.
+-type create_worker_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -790,75 +271,21 @@
 %% }
 -type create_worker_configuration_response() :: #{binary() => any()}.
 
-%% Example:
-%% delete_worker_configuration_request() :: #{}
--type delete_worker_configuration_request() :: #{}.
-
 
 %% Example:
-%% s3_log_delivery_description() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"prefix">> => string()
+%% custom_plugin() :: #{
+%%   <<"customPluginArn">> => string(),
+%%   <<"revision">> => float()
 %% }
--type s3_log_delivery_description() :: #{binary() => any()}.
+-type custom_plugin() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_custom_plugins_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namePrefix">> => string(),
-%%   <<"nextToken">> => string()
+%% custom_plugin_description() :: #{
+%%   <<"customPluginArn">> => string(),
+%%   <<"revision">> => float()
 %% }
--type list_custom_plugins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% apache_kafka_cluster_description() :: #{
-%%   <<"bootstrapServers">> => string(),
-%%   <<"vpc">> => vpc_description()
-%% }
--type apache_kafka_cluster_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location_description() :: #{
-%%   <<"bucketArn">> => string(),
-%%   <<"fileKey">> => string(),
-%%   <<"objectVersion">> => string()
-%% }
--type s3_location_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_worker_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namePrefix">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_worker_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_plugin_location() :: #{
-%%   <<"s3Location">> => s3_location()
-%% }
--type custom_plugin_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_operations_response() :: #{
-%%   <<"connectorOperations">> => list(connector_operation_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_connector_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scale_out_policy() :: #{
-%%   <<"cpuUtilizationPercentage">> => integer()
-%% }
--type scale_out_policy() :: #{binary() => any()}.
+-type custom_plugin_description() :: #{binary() => any()}.
 
 
 %% Example:
@@ -870,22 +297,17 @@
 
 
 %% Example:
-%% create_custom_plugin_request() :: #{
-%%   <<"contentType">> := string(),
-%%   <<"description">> => string(),
-%%   <<"location">> := custom_plugin_location(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%% custom_plugin_location() :: #{
+%%   <<"s3Location">> => s3_location()
 %% }
--type create_custom_plugin_request() :: #{binary() => any()}.
+-type custom_plugin_location() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_connector_operation_request() :: #{}
--type describe_connector_operation_request() :: #{}.
-
-%% Example:
-%% describe_worker_configuration_request() :: #{}
--type describe_worker_configuration_request() :: #{}.
+%% custom_plugin_location_description() :: #{
+%%   <<"s3Location">> => s3_location_description()
+%% }
+-type custom_plugin_location_description() :: #{binary() => any()}.
 
 
 %% Example:
@@ -899,171 +321,749 @@
 %% }
 -type custom_plugin_revision_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% custom_plugin_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customPluginArn">> => string(),
+%%   <<"customPluginState">> => string(),
+%%   <<"description">> => string(),
+%%   <<"latestRevision">> => custom_plugin_revision_summary(),
+%%   <<"name">> => string()
+%% }
+-type custom_plugin_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connector_request() :: #{
+%%   <<"currentVersion">> => string()
+%% }
+-type delete_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connector_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorState">> => string()
+%% }
+-type delete_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_plugin_request() :: #{}
+-type delete_custom_plugin_request() :: #{}.
+
+
+%% Example:
+%% delete_custom_plugin_response() :: #{
+%%   <<"customPluginArn">> => string(),
+%%   <<"customPluginState">> => string()
+%% }
+-type delete_custom_plugin_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_worker_configuration_request() :: #{}
+-type delete_worker_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_worker_configuration_response() :: #{
+%%   <<"workerConfigurationArn">> => string(),
+%%   <<"workerConfigurationState">> => string()
+%% }
+-type delete_worker_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connector_operation_request() :: #{}
+-type describe_connector_operation_request() :: #{}.
+
+
+%% Example:
+%% describe_connector_operation_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string(),
+%%   <<"connectorOperationState">> => string(),
+%%   <<"connectorOperationType">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorInfo">> => state_description(),
+%%   <<"operationSteps">> => list(connector_operation_step()),
+%%   <<"originConnectorConfiguration">> => map(),
+%%   <<"originWorkerSetting">> => worker_setting(),
+%%   <<"targetConnectorConfiguration">> => map(),
+%%   <<"targetWorkerSetting">> => worker_setting()
+%% }
+-type describe_connector_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connector_request() :: #{}
+-type describe_connector_request() :: #{}.
+
+
+%% Example:
+%% describe_connector_response() :: #{
+%%   <<"capacity">> => capacity_description(),
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorConfiguration">> => map(),
+%%   <<"connectorDescription">> => string(),
+%%   <<"connectorName">> => string(),
+%%   <<"connectorState">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"currentVersion">> => string(),
+%%   <<"kafkaCluster">> => kafka_cluster_description(),
+%%   <<"kafkaClusterClientAuthentication">> => kafka_cluster_client_authentication_description(),
+%%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
+%%   <<"kafkaConnectVersion">> => string(),
+%%   <<"logDelivery">> => log_delivery_description(),
+%%   <<"networkType">> => string(),
+%%   <<"plugins">> => list(plugin_description()),
+%%   <<"serviceExecutionRoleArn">> => string(),
+%%   <<"stateDescription">> => state_description(),
+%%   <<"workerConfiguration">> => worker_configuration_description()
+%% }
+-type describe_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_plugin_request() :: #{}
+-type describe_custom_plugin_request() :: #{}.
+
+
+%% Example:
+%% describe_custom_plugin_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customPluginArn">> => string(),
+%%   <<"customPluginState">> => string(),
+%%   <<"description">> => string(),
+%%   <<"latestRevision">> => custom_plugin_revision_summary(),
+%%   <<"name">> => string(),
+%%   <<"stateDescription">> => state_description()
+%% }
+-type describe_custom_plugin_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_worker_configuration_request() :: #{}
+-type describe_worker_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_worker_configuration_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"latestRevision">> => worker_configuration_revision_description(),
+%%   <<"name">> => string(),
+%%   <<"workerConfigurationArn">> => string(),
+%%   <<"workerConfigurationState">> => string()
+%% }
+-type describe_worker_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose_log_delivery() :: #{
+%%   <<"deliveryStream">> => string(),
+%%   <<"enabled">> => boolean()
+%% }
+-type firehose_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose_log_delivery_description() :: #{
+%%   <<"deliveryStream">> => string(),
+%%   <<"enabled">> => boolean()
+%% }
+-type firehose_log_delivery_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster() :: #{
+%%   <<"apacheKafkaCluster">> => apache_kafka_cluster()
+%% }
+-type kafka_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_client_authentication() :: #{
+%%   <<"authenticationType">> => string()
+%% }
+-type kafka_cluster_client_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_client_authentication_description() :: #{
+%%   <<"authenticationType">> => string()
+%% }
+-type kafka_cluster_client_authentication_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_description() :: #{
+%%   <<"apacheKafkaCluster">> => apache_kafka_cluster_description()
+%% }
+-type kafka_cluster_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_encryption_in_transit() :: #{
+%%   <<"encryptionType">> => string()
+%% }
+-type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_encryption_in_transit_description() :: #{
+%%   <<"encryptionType">> => string()
+%% }
+-type kafka_cluster_encryption_in_transit_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_operations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connector_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_operations_response() :: #{
+%%   <<"connectorOperations">> => list(connector_operation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connector_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_request() :: #{
+%%   <<"connectorNamePrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"connectors">> => list(connector_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_plugins_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namePrefix">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_plugins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_plugins_response() :: #{
+%%   <<"customPlugins">> => list(custom_plugin_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_plugins_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_worker_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namePrefix">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_worker_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_worker_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workerConfigurations">> => list(worker_configuration_summary())
+%% }
+-type list_worker_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_delivery() :: #{
+%%   <<"workerLogDelivery">> => worker_log_delivery()
+%% }
+-type log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_delivery_description() :: #{
+%%   <<"workerLogDelivery">> => worker_log_delivery_description()
+%% }
+-type log_delivery_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin() :: #{
+%%   <<"customPlugin">> => custom_plugin()
+%% }
+-type plugin() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_description() :: #{
+%%   <<"customPlugin">> => custom_plugin_description()
+%% }
+-type plugin_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_capacity() :: #{
+%%   <<"mcuCount">> => integer(),
+%%   <<"workerCount">> => integer()
+%% }
+-type provisioned_capacity() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_capacity_description() :: #{
+%%   <<"mcuCount">> => integer(),
+%%   <<"workerCount">> => integer()
+%% }
+-type provisioned_capacity_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_capacity_update() :: #{
+%%   <<"mcuCount">> => integer(),
+%%   <<"workerCount">> => integer()
+%% }
+-type provisioned_capacity_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucketArn">> => string(),
+%%   <<"fileKey">> => string(),
+%%   <<"objectVersion">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location_description() :: #{
+%%   <<"bucketArn">> => string(),
+%%   <<"fileKey">> => string(),
+%%   <<"objectVersion">> => string()
+%% }
+-type s3_location_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_log_delivery() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_log_delivery_description() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_log_delivery_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_in_policy() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_in_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_in_policy_description() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_in_policy_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_in_policy_update() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_in_policy_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_out_policy() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_out_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_out_policy_description() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_out_policy_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% scale_out_policy_update() :: #{
+%%   <<"cpuUtilizationPercentage">> => integer()
+%% }
+-type scale_out_policy_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_description() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type state_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_connector_request() :: #{
+%%   <<"capacity">> => capacity_update(),
+%%   <<"connectorConfiguration">> => map(),
+%%   <<"currentVersion">> := string()
+%% }
+-type update_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connector_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string(),
+%%   <<"connectorState">> => string()
+%% }
+-type update_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_description() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type vpc_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_configuration() :: #{
+%%   <<"revision">> => float(),
+%%   <<"workerConfigurationArn">> => string()
+%% }
+-type worker_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_configuration_description() :: #{
+%%   <<"revision">> => float(),
+%%   <<"workerConfigurationArn">> => string()
+%% }
+-type worker_configuration_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_configuration_revision_description() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"propertiesFileContent">> => string(),
+%%   <<"revision">> => float()
+%% }
+-type worker_configuration_revision_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_configuration_revision_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"revision">> => float()
+%% }
+-type worker_configuration_revision_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_configuration_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"latestRevision">> => worker_configuration_revision_summary(),
+%%   <<"name">> => string(),
+%%   <<"workerConfigurationArn">> => string(),
+%%   <<"workerConfigurationState">> => string()
+%% }
+-type worker_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_log_delivery() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_logs_log_delivery(),
+%%   <<"firehose">> => firehose_log_delivery(),
+%%   <<"s3">> => s3_log_delivery()
+%% }
+-type worker_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_log_delivery_description() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_logs_log_delivery_description(),
+%%   <<"firehose">> => firehose_log_delivery_description(),
+%%   <<"s3">> => s3_log_delivery_description()
+%% }
+-type worker_log_delivery_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% worker_setting() :: #{
+%%   <<"capacity">> => capacity_description()
+%% }
+-type worker_setting() :: #{binary() => any()}.
+
 -type create_connector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_custom_plugin_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_worker_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_connector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_custom_plugin_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_worker_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_connector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_connector_operation_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_custom_plugin_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_worker_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_connector_operations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_connectors_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_custom_plugins_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_worker_configurations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_connector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

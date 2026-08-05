@@ -42,18 +42,45 @@
 
 
 %% Example:
-%% get_asset_contract_input() :: #{
-%%   <<"contractIdentifier">> := contract_identifier()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_asset_contract_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_asset_contracts_output() :: #{
-%%   <<"contracts">> => list(asset_contract()),
-%%   <<"nextToken">> => string()
+%% address_identifier_filter() :: #{
+%%   <<"transactionEventToAddress">> => list(string())
 %% }
--type list_asset_contracts_output() :: #{binary() => any()}.
+-type address_identifier_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_contract() :: #{
+%%   <<"contractIdentifier">> => contract_identifier(),
+%%   <<"deployerAddress">> => string(),
+%%   <<"tokenStandard">> => string()
+%% }
+-type asset_contract() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_error_item() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => string(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type batch_get_token_balance_error_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_token_balance_input() :: #{
+%%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item())
+%% }
+-type batch_get_token_balance_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -66,45 +93,11 @@
 
 
 %% Example:
-%% get_asset_contract_output() :: #{
-%%   <<"contractIdentifier">> => contract_identifier(),
-%%   <<"deployerAddress">> => string(),
-%%   <<"metadata">> => contract_metadata(),
-%%   <<"tokenStandard">> => string()
+%% batch_get_token_balance_output() :: #{
+%%   <<"errors">> => list(batch_get_token_balance_error_item()),
+%%   <<"tokenBalances">> => list(batch_get_token_balance_output_item())
 %% }
--type get_asset_contract_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% contract_filter() :: #{
-%%   <<"deployerAddress">> => string(),
-%%   <<"network">> => string(),
-%%   <<"tokenStandard">> => string()
-%% }
--type contract_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% owner_filter() :: #{
-%%   <<"address">> => string()
-%% }
--type owner_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% blockchain_instant() :: #{
-%%   <<"time">> => [non_neg_integer()]
-%% }
--type blockchain_instant() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type batch_get_token_balance_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -119,82 +112,96 @@
 
 
 %% Example:
-%% list_token_balances_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"ownerFilter">> => owner_filter(),
-%%   <<"tokenFilter">> := token_filter()
+%% blockchain_instant() :: #{
+%%   <<"time">> => [non_neg_integer()]
 %% }
--type list_token_balances_input() :: #{binary() => any()}.
+-type blockchain_instant() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_transactions_input() :: #{
-%%   <<"address">> := string(),
-%%   <<"confirmationStatusFilter">> => confirmation_status_filter(),
-%%   <<"fromBlockchainInstant">> => blockchain_instant(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"network">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => list_transactions_sort(),
-%%   <<"toBlockchainInstant">> => blockchain_instant()
+%% confirmation_status_filter() :: #{
+%%   <<"include">> => list(string())
 %% }
--type list_transactions_input() :: #{binary() => any()}.
+-type confirmation_status_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% time_filter() :: #{
-%%   <<"from">> => blockchain_instant(),
-%%   <<"to">> => blockchain_instant()
-%% }
--type time_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% transaction_output_item() :: #{
-%%   <<"confirmationStatus">> => string(),
-%%   <<"network">> => string(),
-%%   <<"transactionHash">> => string(),
-%%   <<"transactionId">> => string(),
-%%   <<"transactionTimestamp">> => [non_neg_integer()]
-%% }
--type transaction_output_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_contract() :: #{
-%%   <<"contractIdentifier">> => contract_identifier(),
+%% contract_filter() :: #{
 %%   <<"deployerAddress">> => string(),
+%%   <<"network">> => string(),
 %%   <<"tokenStandard">> => string()
 %% }
--type asset_contract() :: #{binary() => any()}.
+-type contract_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%% contract_identifier() :: #{
+%%   <<"contractAddress">> => string(),
+%%   <<"network">> => string()
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type contract_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_token_balance_output() :: #{
-%%   <<"errors">> => list(batch_get_token_balance_error_item()),
-%%   <<"tokenBalances">> => list(batch_get_token_balance_output_item())
+%% contract_metadata() :: #{
+%%   <<"decimals">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"symbol">> => [string()]
 %% }
--type batch_get_token_balance_output() :: #{binary() => any()}.
+-type contract_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_contract_input() :: #{
+%%   <<"contractIdentifier">> := contract_identifier()
+%% }
+-type get_asset_contract_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_contract_output() :: #{
+%%   <<"contractIdentifier">> => contract_identifier(),
+%%   <<"deployerAddress">> => string(),
+%%   <<"metadata">> => contract_metadata(),
+%%   <<"tokenStandard">> => string()
+%% }
+-type get_asset_contract_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_balance_input() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> := owner_identifier(),
+%%   <<"tokenIdentifier">> := token_identifier()
+%% }
+-type get_token_balance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_balance_output() :: #{
+%%   <<"atBlockchainInstant">> => blockchain_instant(),
+%%   <<"balance">> => [string()],
+%%   <<"lastUpdatedTime">> => blockchain_instant(),
+%%   <<"ownerIdentifier">> => owner_identifier(),
+%%   <<"tokenIdentifier">> => token_identifier()
+%% }
+-type get_token_balance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transaction_input() :: #{
+%%   <<"network">> := string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => string()
+%% }
+-type get_transaction_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transaction_output() :: #{
+%%   <<"transaction">> => transaction()
+%% }
+-type get_transaction_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -203,6 +210,23 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_contracts_input() :: #{
+%%   <<"contractFilter">> := contract_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_contracts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_contracts_output() :: #{
+%%   <<"contracts">> => list(asset_contract()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_contracts_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -220,89 +244,37 @@
 
 
 %% Example:
-%% get_token_balance_output() :: #{
-%%   <<"atBlockchainInstant">> => blockchain_instant(),
-%%   <<"balance">> => [string()],
-%%   <<"lastUpdatedTime">> => blockchain_instant(),
-%%   <<"ownerIdentifier">> => owner_identifier(),
-%%   <<"tokenIdentifier">> => token_identifier()
+%% list_filtered_transaction_events_output() :: #{
+%%   <<"events">> => list(transaction_event()),
+%%   <<"nextToken">> => string()
 %% }
--type get_token_balance_output() :: #{binary() => any()}.
+-type list_filtered_transaction_events_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% contract_metadata() :: #{
-%%   <<"decimals">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"symbol">> => [string()]
-%% }
--type contract_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_token_balance_error_item() :: #{
-%%   <<"atBlockchainInstant">> => blockchain_instant(),
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"errorType">> => string(),
-%%   <<"ownerIdentifier">> => owner_identifier(),
-%%   <<"tokenIdentifier">> => token_identifier()
-%% }
--type batch_get_token_balance_error_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vout_filter() :: #{
-%%   <<"voutSpent">> => [boolean()]
-%% }
--type vout_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transaction_output() :: #{
-%%   <<"transaction">> => transaction()
-%% }
--type get_transaction_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_transactions_sort() :: #{
+%% list_filtered_transaction_events_sort() :: #{
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
--type list_transactions_sort() :: #{binary() => any()}.
+-type list_filtered_transaction_events_sort() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_transaction_input() :: #{
-%%   <<"network">> := string(),
-%%   <<"transactionHash">> => string(),
-%%   <<"transactionId">> => string()
+%% list_token_balances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"ownerFilter">> => owner_filter(),
+%%   <<"tokenFilter">> := token_filter()
 %% }
--type get_transaction_input() :: #{binary() => any()}.
+-type list_token_balances_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% token_identifier() :: #{
-%%   <<"contractAddress">> => string(),
-%%   <<"network">> => string(),
-%%   <<"tokenId">> => string()
+%% list_token_balances_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tokenBalances">> => list(token_balance())
 %% }
--type token_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_token_balance_input() :: #{
-%%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item())
-%% }
--type batch_get_token_balance_input() :: #{binary() => any()}.
+-type list_token_balances_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -317,27 +289,75 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
+%% list_transaction_events_output() :: #{
+%%   <<"events">> => list(transaction_event()),
+%%   <<"nextToken">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type list_transaction_events_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_filtered_transaction_events_sort() :: #{
+%% list_transactions_input() :: #{
+%%   <<"address">> := string(),
+%%   <<"confirmationStatusFilter">> => confirmation_status_filter(),
+%%   <<"fromBlockchainInstant">> => blockchain_instant(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"network">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => list_transactions_sort(),
+%%   <<"toBlockchainInstant">> => blockchain_instant()
+%% }
+-type list_transactions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"transactions">> => list(transaction_output_item())
+%% }
+-type list_transactions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_sort() :: #{
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
--type list_filtered_transaction_events_sort() :: #{binary() => any()}.
+-type list_transactions_sort() :: #{binary() => any()}.
 
 
 %% Example:
-%% confirmation_status_filter() :: #{
-%%   <<"include">> => list(string())
+%% owner_filter() :: #{
+%%   <<"address">> => string()
 %% }
--type confirmation_status_filter() :: #{binary() => any()}.
+-type owner_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_identifier() :: #{
+%%   <<"address">> => string()
+%% }
+-type owner_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -348,6 +368,14 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_filter() :: #{
+%%   <<"from">> => blockchain_instant(),
+%%   <<"to">> => blockchain_instant()
+%% }
+-type time_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -362,89 +390,21 @@
 
 
 %% Example:
-%% list_asset_contracts_input() :: #{
-%%   <<"contractFilter">> := contract_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_contracts_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% owner_identifier() :: #{
-%%   <<"address">> => string()
-%% }
--type owner_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% contract_identifier() :: #{
+%% token_filter() :: #{
 %%   <<"contractAddress">> => string(),
-%%   <<"network">> => string()
-%% }
--type contract_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_filtered_transaction_events_output() :: #{
-%%   <<"events">> => list(transaction_event()),
-%%   <<"nextToken">> => string()
-%% }
--type list_filtered_transaction_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_token_balance_input() :: #{
-%%   <<"atBlockchainInstant">> => blockchain_instant(),
-%%   <<"ownerIdentifier">> := owner_identifier(),
-%%   <<"tokenIdentifier">> := token_identifier()
-%% }
--type get_token_balance_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_token_balances_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tokenBalances">> => list(token_balance())
-%% }
--type list_token_balances_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_transaction_events_output() :: #{
-%%   <<"events">> => list(transaction_event()),
-%%   <<"nextToken">> => string()
-%% }
--type list_transaction_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% transaction_event() :: #{
-%%   <<"blockchainInstant">> => blockchain_instant(),
-%%   <<"confirmationStatus">> => string(),
-%%   <<"contractAddress">> => string(),
-%%   <<"eventType">> => string(),
-%%   <<"from">> => string(),
 %%   <<"network">> => string(),
-%%   <<"spentVoutIndex">> => [integer()],
-%%   <<"spentVoutTransactionHash">> => [string()],
-%%   <<"spentVoutTransactionId">> => [string()],
-%%   <<"to">> => string(),
-%%   <<"tokenId">> => string(),
-%%   <<"transactionHash">> => string(),
-%%   <<"transactionId">> => [string()],
-%%   <<"value">> => [string()],
-%%   <<"voutIndex">> => [integer()],
-%%   <<"voutSpent">> => [boolean()]
+%%   <<"tokenId">> => string()
 %% }
--type transaction_event() :: #{binary() => any()}.
+-type token_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% address_identifier_filter() :: #{
-%%   <<"transactionEventToAddress">> => list(string())
+%% token_identifier() :: #{
+%%   <<"contractAddress">> => string(),
+%%   <<"network">> => string(),
+%%   <<"tokenId">> => string()
 %% }
--type address_identifier_filter() :: #{binary() => any()}.
+-type token_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -474,87 +434,127 @@
 
 
 %% Example:
-%% list_transactions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"transactions">> => list(transaction_output_item())
+%% transaction_event() :: #{
+%%   <<"blockchainInstant">> => blockchain_instant(),
+%%   <<"confirmationStatus">> => string(),
+%%   <<"contractAddress">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"from">> => string(),
+%%   <<"network">> => string(),
+%%   <<"spentVoutIndex">> => [integer()],
+%%   <<"spentVoutTransactionHash">> => [string()],
+%%   <<"spentVoutTransactionId">> => [string()],
+%%   <<"to">> => string(),
+%%   <<"tokenId">> => string(),
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => [string()],
+%%   <<"value">> => [string()],
+%%   <<"voutIndex">> => [integer()],
+%%   <<"voutSpent">> => [boolean()]
 %% }
--type list_transactions_output() :: #{binary() => any()}.
+-type transaction_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% token_filter() :: #{
-%%   <<"contractAddress">> => string(),
+%% transaction_output_item() :: #{
+%%   <<"confirmationStatus">> => string(),
 %%   <<"network">> => string(),
-%%   <<"tokenId">> => string()
+%%   <<"transactionHash">> => string(),
+%%   <<"transactionId">> => string(),
+%%   <<"transactionTimestamp">> => [non_neg_integer()]
 %% }
--type token_filter() :: #{binary() => any()}.
+-type transaction_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vout_filter() :: #{
+%%   <<"voutSpent">> => [boolean()]
+%% }
+-type vout_filter() :: #{binary() => any()}.
 
 -type batch_get_token_balance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_asset_contract_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_token_balance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_transaction_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_asset_contracts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_filtered_transaction_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_token_balances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_transaction_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_transactions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

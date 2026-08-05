@@ -70,203 +70,18 @@
 
 
 %% Example:
-%% delete_microvm_image_version_output() :: #{
-%%   <<"imageIdentifier">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type delete_microvm_image_version_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_microvm_images_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_microvm_images_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_microvm_image_input() :: #{}
--type get_microvm_image_input() :: #{}.
-
-
-%% Example:
-%% create_microvm_shell_auth_token_response() :: #{
-%%   <<"authToken">> => map()
-%% }
--type create_microvm_shell_auth_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% resume_microvm_response() :: #{}
--type resume_microvm_response() :: #{}.
-
-
-%% Example:
-%% create_microvm_auth_token_response() :: #{
-%%   <<"authToken">> => map()
-%% }
--type create_microvm_auth_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_microvm_request() :: #{}
--type terminate_microvm_request() :: #{}.
-
-
-%% Example:
-%% microvm_image_hooks() :: #{
-%%   <<"ready">> => list(any()),
-%%   <<"readyTimeoutInSeconds">> => [integer()],
-%%   <<"validate">> => list(any()),
-%%   <<"validateTimeoutInSeconds">> => [integer()]
-%% }
--type microvm_image_hooks() :: #{binary() => any()}.
-
-
-%% Example:
-%% microvm_item() :: #{
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"microvmId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"state">> => list(any())
-%% }
--type microvm_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microvm_image_versions_output() :: #{
-%%   <<"items">> => list(microvm_image_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_microvm_image_versions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cpu_configuration() :: #{
-%%   <<"architecture">> => list(any())
-%% }
--type cpu_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_microvm_image_version_response() :: #{
-%%   <<"additionalOsCapabilities">> => list(list(any())()),
-%%   <<"baseImageArn">> => string(),
-%%   <<"baseImageVersion">> => string(),
-%%   <<"buildRoleArn">> => string(),
-%%   <<"codeArtifact">> => list(),
-%%   <<"cpuConfigurations">> => list(cpu_configuration()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"egressNetworkConnectors">> => list(string()),
-%%   <<"environmentVariables">> => map(),
-%%   <<"hooks">> => hooks(),
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"logging">> => list(),
-%%   <<"resources">> => list(resources()),
-%%   <<"state">> => list(any()),
-%%   <<"stateReason">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_microvm_image_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Type">> => [string()],
+%% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_microvm_request() :: #{}
--type get_microvm_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_microvms_request() :: #{
-%%   <<"imageIdentifier">> => string(),
-%%   <<"imageVersion">> => [string()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% cloud_watch_logging() :: #{
+%%   <<"logGroup">> => string(),
+%%   <<"logStream">> => string()
 %% }
--type list_microvms_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resources() :: #{
-%%   <<"minimumMemoryInMiB">> => [integer()]
-%% }
--type resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% microvm_image_version_summary() :: #{
-%%   <<"additionalOsCapabilities">> => list(list(any())()),
-%%   <<"baseImageArn">> => string(),
-%%   <<"baseImageVersion">> => string(),
-%%   <<"buildRoleArn">> => string(),
-%%   <<"codeArtifact">> => list(),
-%%   <<"cpuConfigurations">> => list(cpu_configuration()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"egressNetworkConnectors">> => list(string()),
-%%   <<"environmentVariables">> => map(),
-%%   <<"hooks">> => hooks(),
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"logging">> => list(),
-%%   <<"resources">> => list(resources()),
-%%   <<"state">> => list(any()),
-%%   <<"stateReason">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type microvm_image_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_microvm_response() :: #{
-%%   <<"egressNetworkConnectors">> => list(string()),
-%%   <<"endpoint">> => [string()],
-%%   <<"executionRoleArn">> => string(),
-%%   <<"idlePolicy">> => idle_policy(),
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"ingressNetworkConnectors">> => list(string()),
-%%   <<"maximumDurationInSeconds">> => [integer()],
-%%   <<"microvmId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"state">> => list(any()),
-%%   <<"stateReason">> => string(),
-%%   <<"terminatedAt">> => [non_neg_integer()]
-%% }
--type run_microvm_response() :: #{binary() => any()}.
+-type cloud_watch_logging() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,151 +94,25 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% cpu_configuration() :: #{
+%%   <<"architecture">> => list(any())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type cpu_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_managed_microvm_image_versions_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_microvm_image_versions_input() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_microvm_response() :: #{}
--type terminate_microvm_response() :: #{}.
-
-%% Example:
-%% delete_microvm_image_version_input() :: #{}
--type delete_microvm_image_version_input() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_microvm_images_output() :: #{
-%%   <<"items">> => list(managed_microvm_image_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_microvm_images_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logging() :: #{
-%%   <<"logGroup">> => string(),
-%%   <<"logStream">> => string()
-%% }
--type cloud_watch_logging() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"Type">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% snapshot_build() :: #{
-%%   <<"codeInstallSizeInBytes">> => [float()],
-%%   <<"diskSnapshotSizeInBytes">> => [float()],
-%%   <<"memorySnapshotSizeInBytes">> => [float()]
-%% }
--type snapshot_build() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microvms_response() :: #{
-%%   <<"items">> => list(microvm_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_microvms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microvm_image_builds_input() :: #{
-%%   <<"architecture">> => list(any()),
-%%   <<"chipset">> => list(any()),
-%%   <<"chipsetGeneration">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_microvm_image_builds_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"Type">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microvm_images_response() :: #{
-%%   <<"items">> => list(microvm_image_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_microvm_images_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% microvm_image_build_summary() :: #{
-%%   <<"architecture">> => list(any()),
-%%   <<"buildId">> => string(),
-%%   <<"buildState">> => list(any()),
-%%   <<"chipset">> => list(any()),
-%%   <<"chipsetGeneration">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"stateReason">> => [string()]
-%% }
--type microvm_image_build_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_microvm_shell_auth_token_request() :: #{
+%% create_microvm_auth_token_request() :: #{
+%%   <<"allowedPorts">> := list(list()),
 %%   <<"expirationInMinutes">> := integer()
 %% }
--type create_microvm_shell_auth_token_request() :: #{binary() => any()}.
+-type create_microvm_auth_token_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% microvm_hooks() :: #{
-%%   <<"resume">> => list(any()),
-%%   <<"resumeTimeoutInSeconds">> => [integer()],
-%%   <<"run">> => list(any()),
-%%   <<"runTimeoutInSeconds">> => [integer()],
-%%   <<"suspend">> => list(any()),
-%%   <<"suspendTimeoutInSeconds">> => [integer()],
-%%   <<"terminate">> => list(any()),
-%%   <<"terminateTimeoutInSeconds">> => [integer()]
+%% create_microvm_auth_token_response() :: #{
+%%   <<"authToken">> => map()
 %% }
--type microvm_hooks() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_microvm_image_output() :: #{
-%%   <<"imageIdentifier">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type delete_microvm_image_output() :: #{binary() => any()}.
+-type create_microvm_auth_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,145 +134,6 @@
 %%   <<"tags">> => map()
 %% }
 -type create_microvm_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% logging_disabled() :: #{}
--type logging_disabled() :: #{}.
-
-%% Example:
-%% get_microvm_image_build_input() :: #{}
--type get_microvm_image_build_input() :: #{}.
-
-
-%% Example:
-%% update_microvm_image_version_request() :: #{
-%%   <<"status">> := list(any())
-%% }
--type update_microvm_image_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% idle_policy() :: #{
-%%   <<"autoResumeEnabled">> => [boolean()],
-%%   <<"maxIdleDurationSeconds">> => [integer()],
-%%   <<"suspendedDurationSeconds">> => [integer()]
-%% }
--type idle_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_microvm_image_request() :: #{
-%%   <<"additionalOsCapabilities">> => list(list(any())()),
-%%   <<"baseImageArn">> := string(),
-%%   <<"baseImageVersion">> => string(),
-%%   <<"buildRoleArn">> := string(),
-%%   <<"clientToken">> => [string()],
-%%   <<"codeArtifact">> := list(),
-%%   <<"cpuConfigurations">> => list(cpu_configuration()),
-%%   <<"description">> => [string()],
-%%   <<"egressNetworkConnectors">> => list(string()),
-%%   <<"environmentVariables">> => map(),
-%%   <<"hooks">> => hooks(),
-%%   <<"logging">> => list(),
-%%   <<"resources">> => list(resources())
-%% }
--type update_microvm_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_microvm_image_build_output() :: #{
-%%   <<"architecture">> => list(any()),
-%%   <<"buildId">> => string(),
-%%   <<"buildState">> => list(any()),
-%%   <<"chipset">> => list(any()),
-%%   <<"chipsetGeneration">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"imageArn">> => string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"snapshotBuild">> => snapshot_build(),
-%%   <<"stateReason">> => [string()]
-%% }
--type get_microvm_image_build_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_microvm_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"egressNetworkConnectors">> => list(string()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"idlePolicy">> => idle_policy(),
-%%   <<"imageIdentifier">> := string(),
-%%   <<"imageVersion">> => string(),
-%%   <<"ingressNetworkConnectors">> => list(string()),
-%%   <<"logging">> => list(),
-%%   <<"maximumDurationInSeconds">> => [integer()],
-%%   <<"runHookPayload">> => [string()]
-%% }
--type run_microvm_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_microvm_image_versions_output() :: #{
-%%   <<"items">> => list(managed_microvm_image_version()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_microvm_image_versions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% port_range() :: #{
-%%   <<"endPort">> => integer(),
-%%   <<"startPort">> => integer()
-%% }
--type port_range() :: #{binary() => any()}.
-
-%% Example:
-%% resume_microvm_request() :: #{}
--type resume_microvm_request() :: #{}.
-
-
-%% Example:
-%% microvm_image_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"imageArn">> => string(),
-%%   <<"latestActiveImageVersion">> => string(),
-%%   <<"latestFailedImageVersion">> => string(),
-%%   <<"name">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type microvm_image_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microvm_images_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nameFilter">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_microvm_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% suspend_microvm_response() :: #{}
--type suspend_microvm_response() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% suspend_microvm_request() :: #{}
--type suspend_microvm_request() :: #{}.
 
 
 %% Example:
@@ -614,43 +164,66 @@
 
 
 %% Example:
-%% managed_microvm_image_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"imageArn">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% create_microvm_shell_auth_token_request() :: #{
+%%   <<"expirationInMinutes">> := integer()
 %% }
--type managed_microvm_image_summary() :: #{binary() => any()}.
+-type create_microvm_shell_auth_token_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% managed_microvm_image_version() :: #{
+%% create_microvm_shell_auth_token_response() :: #{
+%%   <<"authToken">> => map()
+%% }
+-type create_microvm_shell_auth_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_microvm_image_input() :: #{}
+-type delete_microvm_image_input() :: #{}.
+
+
+%% Example:
+%% delete_microvm_image_output() :: #{
+%%   <<"imageIdentifier">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type delete_microvm_image_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_microvm_image_version_input() :: #{}
+-type delete_microvm_image_version_input() :: #{}.
+
+
+%% Example:
+%% delete_microvm_image_version_output() :: #{
+%%   <<"imageIdentifier">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type delete_microvm_image_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_microvm_image_build_input() :: #{}
+-type get_microvm_image_build_input() :: #{}.
+
+
+%% Example:
+%% get_microvm_image_build_output() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"buildId">> => string(),
+%%   <<"buildState">> => list(any()),
+%%   <<"chipset">> => list(any()),
+%%   <<"chipsetGeneration">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"imageArn">> => string(),
 %%   <<"imageVersion">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"snapshotBuild">> => snapshot_build(),
+%%   <<"stateReason">> => [string()]
 %% }
--type managed_microvm_image_version() :: #{binary() => any()}.
-
+-type get_microvm_image_build_output() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_microvm_image_version_input() :: #{}
--type get_microvm_image_version_input() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
+%% get_microvm_image_input() :: #{}
+-type get_microvm_image_input() :: #{}.
 
 
 %% Example:
@@ -667,16 +240,8 @@
 -type get_microvm_image_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_microvm_image_input() :: #{}
--type delete_microvm_image_input() :: #{}.
-
-
-%% Example:
-%% list_microvm_image_builds_output() :: #{
-%%   <<"items">> => list(microvm_image_build_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_microvm_image_builds_output() :: #{binary() => any()}.
+%% get_microvm_image_version_input() :: #{}
+-type get_microvm_image_version_input() :: #{}.
 
 
 %% Example:
@@ -704,34 +269,9 @@
 %% }
 -type get_microvm_image_version_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% hooks() :: #{
-%%   <<"microvmHooks">> => microvm_hooks(),
-%%   <<"microvmImageHooks">> => microvm_image_hooks(),
-%%   <<"port">> => [integer()]
-%% }
--type hooks() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_request() :: #{}
--type list_tags_request() :: #{}.
-
-
-%% Example:
-%% create_microvm_auth_token_request() :: #{
-%%   <<"allowedPorts">> := list(list()),
-%%   <<"expirationInMinutes">> := integer()
-%% }
--type create_microvm_auth_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"Type">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type resource_conflict_exception() :: #{binary() => any()}.
+%% get_microvm_request() :: #{}
+-type get_microvm_request() :: #{}.
 
 
 %% Example:
@@ -751,6 +291,434 @@
 %%   <<"terminatedAt">> => [non_neg_integer()]
 %% }
 -type get_microvm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hooks() :: #{
+%%   <<"microvmHooks">> => microvm_hooks(),
+%%   <<"microvmImageHooks">> => microvm_image_hooks(),
+%%   <<"port">> => [integer()]
+%% }
+-type hooks() :: #{binary() => any()}.
+
+
+%% Example:
+%% idle_policy() :: #{
+%%   <<"autoResumeEnabled">> => [boolean()],
+%%   <<"maxIdleDurationSeconds">> => [integer()],
+%%   <<"suspendedDurationSeconds">> => [integer()]
+%% }
+-type idle_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Type">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_microvm_image_versions_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_microvm_image_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_microvm_image_versions_output() :: #{
+%%   <<"items">> => list(managed_microvm_image_version()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_microvm_image_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_microvm_images_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_microvm_images_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_microvm_images_output() :: #{
+%%   <<"items">> => list(managed_microvm_image_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_microvm_images_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_image_builds_input() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"chipset">> => list(any()),
+%%   <<"chipsetGeneration">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_image_builds_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_image_builds_output() :: #{
+%%   <<"items">> => list(microvm_image_build_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_image_builds_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_image_versions_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_image_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_image_versions_output() :: #{
+%%   <<"items">> => list(microvm_image_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_image_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_images_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nameFilter">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_images_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvm_images_response() :: #{
+%%   <<"items">> => list(microvm_image_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvm_images_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvms_request() :: #{
+%%   <<"imageIdentifier">> => string(),
+%%   <<"imageVersion">> => [string()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microvms_response() :: #{
+%%   <<"items">> => list(microvm_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_microvms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{}
+-type list_tags_request() :: #{}.
+
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_disabled() :: #{}
+-type logging_disabled() :: #{}.
+
+
+%% Example:
+%% managed_microvm_image_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"imageArn">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type managed_microvm_image_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_microvm_image_version() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type managed_microvm_image_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_hooks() :: #{
+%%   <<"resume">> => list(any()),
+%%   <<"resumeTimeoutInSeconds">> => [integer()],
+%%   <<"run">> => list(any()),
+%%   <<"runTimeoutInSeconds">> => [integer()],
+%%   <<"suspend">> => list(any()),
+%%   <<"suspendTimeoutInSeconds">> => [integer()],
+%%   <<"terminate">> => list(any()),
+%%   <<"terminateTimeoutInSeconds">> => [integer()]
+%% }
+-type microvm_hooks() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_image_build_summary() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"buildId">> => string(),
+%%   <<"buildState">> => list(any()),
+%%   <<"chipset">> => list(any()),
+%%   <<"chipsetGeneration">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"stateReason">> => [string()]
+%% }
+-type microvm_image_build_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_image_hooks() :: #{
+%%   <<"ready">> => list(any()),
+%%   <<"readyTimeoutInSeconds">> => [integer()],
+%%   <<"validate">> => list(any()),
+%%   <<"validateTimeoutInSeconds">> => [integer()]
+%% }
+-type microvm_image_hooks() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_image_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"imageArn">> => string(),
+%%   <<"latestActiveImageVersion">> => string(),
+%%   <<"latestFailedImageVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type microvm_image_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_image_version_summary() :: #{
+%%   <<"additionalOsCapabilities">> => list(list(any())()),
+%%   <<"baseImageArn">> => string(),
+%%   <<"baseImageVersion">> => string(),
+%%   <<"buildRoleArn">> => string(),
+%%   <<"codeArtifact">> => list(),
+%%   <<"cpuConfigurations">> => list(cpu_configuration()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"egressNetworkConnectors">> => list(string()),
+%%   <<"environmentVariables">> => map(),
+%%   <<"hooks">> => hooks(),
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"logging">> => list(),
+%%   <<"resources">> => list(resources()),
+%%   <<"state">> => list(any()),
+%%   <<"stateReason">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type microvm_image_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% microvm_item() :: #{
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"microvmId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"state">> => list(any())
+%% }
+-type microvm_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_range() :: #{
+%%   <<"endPort">> => integer(),
+%%   <<"startPort">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Type">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resources() :: #{
+%%   <<"minimumMemoryInMiB">> => [integer()]
+%% }
+-type resources() :: #{binary() => any()}.
+
+%% Example:
+%% resume_microvm_request() :: #{}
+-type resume_microvm_request() :: #{}.
+
+%% Example:
+%% resume_microvm_response() :: #{}
+-type resume_microvm_response() :: #{}.
+
+
+%% Example:
+%% run_microvm_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"egressNetworkConnectors">> => list(string()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idlePolicy">> => idle_policy(),
+%%   <<"imageIdentifier">> := string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"ingressNetworkConnectors">> => list(string()),
+%%   <<"logging">> => list(),
+%%   <<"maximumDurationInSeconds">> => [integer()],
+%%   <<"runHookPayload">> => [string()]
+%% }
+-type run_microvm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_microvm_response() :: #{
+%%   <<"egressNetworkConnectors">> => list(string()),
+%%   <<"endpoint">> => [string()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idlePolicy">> => idle_policy(),
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"ingressNetworkConnectors">> => list(string()),
+%%   <<"maximumDurationInSeconds">> => [integer()],
+%%   <<"microvmId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"state">> => list(any()),
+%%   <<"stateReason">> => string(),
+%%   <<"terminatedAt">> => [non_neg_integer()]
+%% }
+-type run_microvm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Type">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_build() :: #{
+%%   <<"codeInstallSizeInBytes">> => [float()],
+%%   <<"diskSnapshotSizeInBytes">> => [float()],
+%%   <<"memorySnapshotSizeInBytes">> => [float()]
+%% }
+-type snapshot_build() :: #{binary() => any()}.
+
+%% Example:
+%% suspend_microvm_request() :: #{}
+-type suspend_microvm_request() :: #{}.
+
+%% Example:
+%% suspend_microvm_response() :: #{}
+-type suspend_microvm_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_microvm_request() :: #{}
+-type terminate_microvm_request() :: #{}.
+
+%% Example:
+%% terminate_microvm_response() :: #{}
+-type terminate_microvm_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Type">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_microvm_image_request() :: #{
+%%   <<"additionalOsCapabilities">> => list(list(any())()),
+%%   <<"baseImageArn">> := string(),
+%%   <<"baseImageVersion">> => string(),
+%%   <<"buildRoleArn">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"codeArtifact">> := list(),
+%%   <<"cpuConfigurations">> => list(cpu_configuration()),
+%%   <<"description">> => [string()],
+%%   <<"egressNetworkConnectors">> => list(string()),
+%%   <<"environmentVariables">> => map(),
+%%   <<"hooks">> => hooks(),
+%%   <<"logging">> => list(),
+%%   <<"resources">> => list(resources())
+%% }
+-type update_microvm_image_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -780,188 +748,220 @@
 
 
 %% Example:
-%% list_microvm_image_versions_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% update_microvm_image_version_request() :: #{
+%%   <<"status">> := list(any())
 %% }
--type list_microvm_image_versions_input() :: #{binary() => any()}.
+-type update_microvm_image_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_microvm_image_version_response() :: #{
+%%   <<"additionalOsCapabilities">> => list(list(any())()),
+%%   <<"baseImageArn">> => string(),
+%%   <<"baseImageVersion">> => string(),
+%%   <<"buildRoleArn">> => string(),
+%%   <<"codeArtifact">> => list(),
+%%   <<"cpuConfigurations">> => list(cpu_configuration()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"egressNetworkConnectors">> => list(string()),
+%%   <<"environmentVariables">> => map(),
+%%   <<"hooks">> => hooks(),
+%%   <<"imageArn">> => string(),
+%%   <<"imageVersion">> => string(),
+%%   <<"logging">> => list(),
+%%   <<"resources">> => list(resources()),
+%%   <<"state">> => list(any()),
+%%   <<"stateReason">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_microvm_image_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_microvm_auth_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_microvm_image_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_microvm_shell_auth_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_microvm_image_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_microvm_image_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_microvm_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_microvm_image_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_microvm_image_build_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_microvm_image_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_managed_microvm_image_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_managed_microvm_images_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_microvm_image_builds_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_microvm_image_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_microvm_images_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_microvms_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type resume_microvm_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type run_microvm_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type suspend_microvm_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type terminate_microvm_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_microvm_image_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_microvm_image_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

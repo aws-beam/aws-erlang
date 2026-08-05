@@ -12,22 +12,30 @@
 %% millisecond query response time.
 -module(aws_timestream_influxdb).
 
--export([create_db_cluster/2,
+-export([create_db_backup/2,
+         create_db_backup/3,
+         create_db_cluster/2,
          create_db_cluster/3,
          create_db_instance/2,
          create_db_instance/3,
          create_db_parameter_group/2,
          create_db_parameter_group/3,
+         delete_db_backup/2,
+         delete_db_backup/3,
          delete_db_cluster/2,
          delete_db_cluster/3,
          delete_db_instance/2,
          delete_db_instance/3,
+         get_db_backup/2,
+         get_db_backup/3,
          get_db_cluster/2,
          get_db_cluster/3,
          get_db_instance/2,
          get_db_instance/3,
          get_db_parameter_group/2,
          get_db_parameter_group/3,
+         list_db_backups/2,
+         list_db_backups/3,
          list_db_clusters/2,
          list_db_clusters/3,
          list_db_instances/2,
@@ -42,6 +50,8 @@
          reboot_db_cluster/3,
          reboot_db_instance/2,
          reboot_db_instance/3,
+         restore_from_db_backup/2,
+         restore_from_db_backup/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -55,147 +65,10 @@
 
 
 %% Example:
-%% influx_dbv3_enterprise_parameters() :: #{
-%%   <<"gen1LookbackDuration">> => duration(),
-%%   <<"walReplayFailOnError">> => [boolean()],
-%%   <<"dataFusionRuntimeEventInterval">> => [integer()],
-%%   <<"distinctValueCacheDisableFromHistory">> => [boolean()],
-%%   <<"compactionMaxNumFilesPerPlan">> => [integer()],
-%%   <<"compactionMultipliers">> => [string()],
-%%   <<"parquetMemCachePruneInterval">> => duration(),
-%%   <<"dataFusionNumThreads">> => [integer()],
-%%   <<"catalogSyncInterval">> => duration(),
-%%   <<"logFormat">> => list(any()),
-%%   <<"ingestQueryInstances">> => [integer()],
-%%   <<"disableParquetMemCache">> => [boolean()],
-%%   <<"walReplayConcurrencyLimit">> => [integer()],
-%%   <<"dedicatedCompactor">> => [boolean()],
-%%   <<"retentionCheckInterval">> => duration(),
-%%   <<"lastValueCacheDisableFromHistory">> => [boolean()],
-%%   <<"dataFusionRuntimeMaxBlockingThreads">> => [integer()],
-%%   <<"compactionCleanupWait">> => duration(),
-%%   <<"dataFusionRuntimeDisableLifoSlot">> => [boolean()],
-%%   <<"walMaxWriteBufferSize">> => [integer()],
-%%   <<"deleteGracePeriod">> => duration(),
-%%   <<"dataFusionMaxParquetFanout">> => [integer()],
-%%   <<"dataFusionRuntimeMaxIoEventsPerTick">> => [integer()],
-%%   <<"gen1Duration">> => duration(),
-%%   <<"parquetMemCacheSize">> => list(),
-%%   <<"parquetMemCacheQueryPathDuration">> => duration(),
-%%   <<"forceSnapshotMemThreshold">> => list(),
-%%   <<"parquetMemCachePrunePercentage">> => [float()],
-%%   <<"distinctCacheEvictionInterval">> => duration(),
-%%   <<"dataFusionRuntimeThreadPriority">> => [integer()],
-%%   <<"logFilter">> => [string()],
-%%   <<"compactionRowLimit">> => [integer()],
-%%   <<"snapshottedWalFilesToKeep">> => [integer()],
-%%   <<"walSnapshotSize">> => [integer()],
-%%   <<"preemptiveCacheAge">> => duration(),
-%%   <<"dataFusionUseCachedParquetLoader">> => [boolean()],
-%%   <<"replicationInterval">> => duration(),
-%%   <<"compactionCheckInterval">> => duration(),
-%%   <<"compactionGen2Duration">> => duration(),
-%%   <<"lastCacheEvictionInterval">> => duration(),
-%%   <<"execMemPoolBytes">> => list(),
-%%   <<"maxHttpRequestSize">> => [float()],
-%%   <<"tableIndexCacheConcurrencyLimit">> => [integer()],
-%%   <<"dataFusionRuntimeType">> => list(any()),
-%%   <<"queryLogSize">> => [integer()],
-%%   <<"dataFusionConfig">> => [string()],
-%%   <<"dataFusionRuntimeGlobalQueueInterval">> => [integer()],
-%%   <<"queryFileLimit">> => [integer()],
-%%   <<"dataFusionRuntimeThreadKeepAlive">> => duration(),
-%%   <<"queryOnlyInstances">> => [integer()],
-%%   <<"tableIndexCacheMaxEntries">> => [integer()],
-%%   <<"hardDeleteDefaultDuration">> => duration()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type influx_dbv3_enterprise_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_instances_for_cluster_input() :: #{
-%%   <<"dbClusterId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_instances_for_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_parameter_groups_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_parameter_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_db_cluster_input() :: #{
-%%   <<"dbClusterId">> := string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"failoverMode">> => list(any()),
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
-%%   <<"port">> => integer()
-%% }
--type update_db_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_instance_output() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"arn">> => string(),
-%%   <<"availabilityZone">> => [string()],
-%%   <<"dbClusterId">> => string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"dbStorageType">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"influxAuthParametersSecretArn">> => [string()],
-%%   <<"instanceMode">> => list(any()),
-%%   <<"instanceModes">> => list(list(any())()),
-%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
-%%   <<"name">> => string(),
-%%   <<"networkType">> => list(any()),
-%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
-%%   <<"port">> => integer(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"secondaryAvailabilityZone">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"vpcSubnetIds">> => list(string())
-%% }
--type delete_db_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_clusters_output() :: #{
-%%   <<"items">> => list(db_cluster_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_clusters_output() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type db_parameter_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_configuration() :: #{
@@ -206,88 +79,6 @@
 -type cluster_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_db_instance_input() :: #{
-%%   <<"identifier">> := string()
-%% }
--type delete_db_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_instances_for_cluster_output() :: #{
-%%   <<"items">> => list(db_instance_for_cluster_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_instances_for_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% influx_dbv2_parameters() :: #{
-%%   <<"queryMaxMemoryBytes">> => [float()],
-%%   <<"queryConcurrency">> => [integer()],
-%%   <<"storageMaxIndexLogFileSize">> => [float()],
-%%   <<"influxqlMaxSelectBuckets">> => [float()],
-%%   <<"httpIdleTimeout">> => duration(),
-%%   <<"storageWalMaxConcurrentWrites">> => [integer()],
-%%   <<"storageCompactFullWriteColdDuration">> => duration(),
-%%   <<"storageCompactThroughputBurst">> => [float()],
-%%   <<"uiDisabled">> => [boolean()],
-%%   <<"metricsDisabled">> => [boolean()],
-%%   <<"fluxLogEnabled">> => [boolean()],
-%%   <<"pprofDisabled">> => [boolean()],
-%%   <<"queryQueueSize">> => [integer()],
-%%   <<"tracingType">> => list(any()),
-%%   <<"influxqlMaxSelectSeries">> => [float()],
-%%   <<"sessionLength">> => [integer()],
-%%   <<"queryInitialMemoryBytes">> => [float()],
-%%   <<"storageSeriesIdSetCacheSize">> => [float()],
-%%   <<"storageCacheMaxMemorySize">> => [float()],
-%%   <<"logLevel">> => list(any()),
-%%   <<"influxqlMaxSelectPoint">> => [float()],
-%%   <<"queryMemoryBytes">> => [float()],
-%%   <<"storageCacheSnapshotMemorySize">> => [float()],
-%%   <<"noTasks">> => [boolean()],
-%%   <<"httpReadTimeout">> => duration(),
-%%   <<"storageNoValidateFieldSize">> => [boolean()],
-%%   <<"storageMaxConcurrentCompactions">> => [integer()],
-%%   <<"httpReadHeaderTimeout">> => duration(),
-%%   <<"storageCacheSnapshotWriteColdDuration">> => duration(),
-%%   <<"sessionRenewDisabled">> => [boolean()],
-%%   <<"storageSeriesFileMaxConcurrentSnapshotCompactions">> => [integer()],
-%%   <<"storageRetentionCheckInterval">> => duration(),
-%%   <<"httpWriteTimeout">> => duration(),
-%%   <<"storageWalMaxWriteDelay">> => duration()
-%% }
--type influx_dbv2_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% get_db_instance_output() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"arn">> => string(),
-%%   <<"availabilityZone">> => [string()],
-%%   <<"dbClusterId">> => string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"dbStorageType">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"influxAuthParametersSecretArn">> => [string()],
-%%   <<"instanceMode">> => list(any()),
-%%   <<"instanceModes">> => list(list(any())()),
-%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
-%%   <<"name">> => string(),
-%%   <<"networkType">> => list(any()),
-%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
-%%   <<"port">> => integer(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"secondaryAvailabilityZone">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"vpcSubnetIds">> => list(string())
-%% }
--type get_db_instance_output() :: #{binary() => any()}.
-
-%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -296,38 +87,55 @@
 -type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% create_db_backup_input() :: #{
+%%   <<"dbResourceId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"retentionDays">> => integer(),
+%%   <<"tags">> => map()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_db_backup_input() :: #{binary() => any()}.
 
 %% Example:
-%% db_instance_summary() :: #{
+%% create_db_backup_output() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
+%%   <<"clusterConfiguration">> => cluster_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupId">> => string(),
+%%   <<"dbResourceId">> => string(),
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
+%%   <<"engineType">> => list(any()),
+%%   <<"expiresAfter">> => string(),
+%%   <<"failoverMode">> => list(any()),
 %%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
 %%   <<"networkType">> => list(any()),
-%%   <<"port">> => integer(),
-%%   <<"status">> => list(any())
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
--type db_instance_summary() :: #{binary() => any()}.
+-type create_db_backup_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_db_cluster_input() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"bucket">> => string(),
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
 %%   <<"dbInstanceType">> := list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"failoverMode">> => list(any()),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> := string(),
@@ -344,43 +152,6 @@
 -type create_db_cluster_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_db_parameter_group_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameters">> => list()
-%% }
--type get_db_parameter_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_clusters_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_clusters_input() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_db_instance_input() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"dbStorageType">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"identifier">> := string(),
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
-%%   <<"port">> => integer()
-%% }
--type update_db_instance_input() :: #{binary() => any()}.
-
-%% Example:
 %% create_db_cluster_output() :: #{
 %%   <<"dbClusterId">> => string(),
 %%   <<"dbClusterStatus">> => list(any())
@@ -388,64 +159,36 @@
 -type create_db_cluster_output() :: #{binary() => any()}.
 
 %% Example:
-%% log_delivery_configuration() :: #{
-%%   <<"s3Configuration">> => s3_configuration()
-%% }
--type log_delivery_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_db_cluster_output() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"arn">> => string(),
-%%   <<"clusterConfiguration">> => cluster_configuration(),
-%%   <<"dbInstanceType">> => list(any()),
+%% create_db_instance_input() :: #{
+%%   <<"allocatedStorage">> := integer(),
+%%   <<"bucket">> => string(),
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
+%%   <<"dbInstanceType">> := list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
-%%   <<"engineType">> => list(any()),
-%%   <<"failoverMode">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"influxAuthParametersSecretArn">> => [string()],
-%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"kmsKeyId">> => string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"maintenanceSchedule">> => maintenance_schedule(),
-%%   <<"name">> => string(),
+%%   <<"name">> := string(),
 %%   <<"networkType">> => list(any()),
-%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"organization">> => string(),
+%%   <<"password">> := string(),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"readerEndpoint">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"vpcSubnetIds">> => list(string())
+%%   <<"tags">> => map(),
+%%   <<"username">> => string(),
+%%   <<"vpcSecurityGroupIds">> := list(string()),
+%%   <<"vpcSubnetIds">> := list(string())
 %% }
--type get_db_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_db_parameter_group_input() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_db_parameter_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_parameter_groups_output() :: #{
-%%   <<"items">> => list(db_parameter_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_parameter_groups_output() :: #{binary() => any()}.
+-type create_db_instance_input() :: #{binary() => any()}.
 
 %% Example:
 %% create_db_instance_output() :: #{
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"arn">> => string(),
 %%   <<"availabilityZone">> => [string()],
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
 %%   <<"dbClusterId">> => string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
@@ -456,6 +199,7 @@
 %%   <<"influxAuthParametersSecretArn">> => [string()],
 %%   <<"instanceMode">> => list(any()),
 %%   <<"instanceModes">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"lastMaintenanceTime">> => [non_neg_integer()],
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"maintenanceSchedule">> => maintenance_schedule(),
@@ -472,49 +216,6 @@
 -type create_db_instance_output() :: #{binary() => any()}.
 
 %% Example:
-%% db_instance_for_cluster_summary() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"arn">> => string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbStorageType">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"instanceMode">> => list(any()),
-%%   <<"instanceModes">> => list(list(any())()),
-%%   <<"name">> => string(),
-%%   <<"networkType">> => list(any()),
-%%   <<"port">> => integer(),
-%%   <<"status">> => list(any())
-%% }
--type db_instance_for_cluster_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_db_cluster_input() :: #{
-%%   <<"dbClusterId">> := string()
-%% }
--type get_db_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_db_instances_output() :: #{
-%%   <<"items">> => list(db_instance_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_cluster_output() :: #{
-%%   <<"dbClusterStatus">> => list(any())
-%% }
--type reboot_db_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
 %% create_db_parameter_group_input() :: #{
 %%   <<"description">> => [string()],
 %%   <<"name">> := string(),
@@ -524,148 +225,49 @@
 -type create_db_parameter_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_db_instances_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_db_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_db_instance_output() :: #{
-%%   <<"allocatedStorage">> => integer(),
+%% create_db_parameter_group_output() :: #{
 %%   <<"arn">> => string(),
-%%   <<"availabilityZone">> => [string()],
-%%   <<"dbClusterId">> => string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"dbStorageType">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
+%%   <<"description">> => [string()],
 %%   <<"id">> => string(),
-%%   <<"influxAuthParametersSecretArn">> => [string()],
-%%   <<"instanceMode">> => list(any()),
-%%   <<"instanceModes">> => list(list(any())()),
-%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> => string(),
-%%   <<"networkType">> => list(any()),
-%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
-%%   <<"port">> => integer(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"secondaryAvailabilityZone">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"vpcSubnetIds">> => list(string())
+%%   <<"parameters">> => list()
 %% }
--type update_db_instance_output() :: #{binary() => any()}.
+-type create_db_parameter_group_output() :: #{binary() => any()}.
 
 %% Example:
-%% reboot_db_instance_output() :: #{
-%%   <<"allocatedStorage">> => integer(),
+%% db_backup_configuration() :: #{
+%%   <<"customSchedule">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"retentionDays">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type db_backup_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% db_backup_configuration_output() :: #{
+%%   <<"customSchedule">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"nextAutomatedBackupTime">> => [non_neg_integer()],
+%%   <<"retentionDays">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type db_backup_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% db_backup_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"availabilityZone">> => [string()],
-%%   <<"dbClusterId">> => string(),
-%%   <<"dbInstanceType">> => list(any()),
-%%   <<"dbParameterGroupIdentifier">> => string(),
-%%   <<"dbStorageType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dbResourceId">> => string(),
 %%   <<"deploymentType">> => list(any()),
-%%   <<"endpoint">> => [string()],
+%%   <<"engineType">> => list(any()),
+%%   <<"expiresAfter">> => string(),
 %%   <<"id">> => string(),
-%%   <<"influxAuthParametersSecretArn">> => [string()],
-%%   <<"instanceMode">> => list(any()),
-%%   <<"instanceModes">> => list(list(any())()),
-%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
-%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
-%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"networkType">> => list(any()),
-%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
-%%   <<"port">> => integer(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"secondaryAvailabilityZone">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"vpcSubnetIds">> => list(string())
+%%   <<"type">> => list(any())
 %% }
--type reboot_db_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_instance_input() :: #{
-%%   <<"identifier">> := string()
-%% }
--type reboot_db_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% duration() :: #{
-%%   <<"durationType">> => list(any()),
-%%   <<"value">> => [float()]
-%% }
--type duration() :: #{binary() => any()}.
-
-%% Example:
-%% update_db_cluster_output() :: #{
-%%   <<"dbClusterStatus">> => list(any())
-%% }
--type update_db_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_input() :: #{
-%%   <<"dbClusterId">> := string()
-%% }
--type delete_db_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_schedule() :: #{
-%%   <<"preferredMaintenanceWindow">> => string(),
-%%   <<"timezone">> => string()
-%% }
--type maintenance_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% s3_configuration() :: #{
-%%   <<"bucketName">> => [string()],
-%%   <<"enabled">> => [boolean()]
-%% }
--type s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_db_instance_input() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_db_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_output() :: #{
-%%   <<"dbClusterStatus">> => list(any())
-%% }
--type delete_db_cluster_output() :: #{binary() => any()}.
+-type db_backup_summary() :: #{binary() => any()}.
 
 %% Example:
 %% db_cluster_summary() :: #{
@@ -686,58 +288,516 @@
 -type db_cluster_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_parameter_group_output() :: #{
+%% db_instance_for_cluster_summary() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type db_instance_for_cluster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_summary() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type db_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type db_parameter_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_backup_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_db_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_backup_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"clusterConfiguration">> => cluster_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupId">> => string(),
+%%   <<"dbResourceId">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"engineType">> => list(any()),
+%%   <<"expiresAfter">> => string(),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type delete_db_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string(),
+%%   <<"retainAutomatedBackups">> => [boolean()]
+%% }
+-type delete_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type delete_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_input() :: #{
+%%   <<"identifier">> := string(),
+%%   <<"retainAutomatedBackups">> => [boolean()]
+%% }
+-type delete_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type delete_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% duration() :: #{
+%%   <<"durationType">> => list(any()),
+%%   <<"value">> => [float()]
+%% }
+-type duration() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_backup_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_db_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_backup_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"clusterConfiguration">> => cluster_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupId">> => string(),
+%%   <<"dbResourceId">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"engineType">> => list(any()),
+%%   <<"expiresAfter">> => string(),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type get_db_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_cluster_input() :: #{
+%%   <<"dbClusterId">> := string()
+%% }
+-type get_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_cluster_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"clusterConfiguration">> => cluster_configuration(),
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"engineType">> => list(any()),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"readerEndpoint">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type get_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_instance_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type get_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_parameter_group_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_db_parameter_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_db_parameter_group_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"parameters">> => list()
 %% }
--type create_db_parameter_group_output() :: #{binary() => any()}.
+-type get_db_parameter_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% influx_dbv2_parameters() :: #{
+%%   <<"fluxLogEnabled">> => [boolean()],
+%%   <<"httpIdleTimeout">> => duration(),
+%%   <<"httpReadHeaderTimeout">> => duration(),
+%%   <<"httpReadTimeout">> => duration(),
+%%   <<"httpWriteTimeout">> => duration(),
+%%   <<"influxqlMaxSelectBuckets">> => [float()],
+%%   <<"influxqlMaxSelectPoint">> => [float()],
+%%   <<"influxqlMaxSelectSeries">> => [float()],
+%%   <<"logLevel">> => list(any()),
+%%   <<"metricsDisabled">> => [boolean()],
+%%   <<"noTasks">> => [boolean()],
+%%   <<"pprofDisabled">> => [boolean()],
+%%   <<"queryConcurrency">> => [integer()],
+%%   <<"queryInitialMemoryBytes">> => [float()],
+%%   <<"queryMaxMemoryBytes">> => [float()],
+%%   <<"queryMemoryBytes">> => [float()],
+%%   <<"queryQueueSize">> => [integer()],
+%%   <<"sessionLength">> => [integer()],
+%%   <<"sessionRenewDisabled">> => [boolean()],
+%%   <<"storageCacheMaxMemorySize">> => [float()],
+%%   <<"storageCacheSnapshotMemorySize">> => [float()],
+%%   <<"storageCacheSnapshotWriteColdDuration">> => duration(),
+%%   <<"storageCompactFullWriteColdDuration">> => duration(),
+%%   <<"storageCompactThroughputBurst">> => [float()],
+%%   <<"storageMaxConcurrentCompactions">> => [integer()],
+%%   <<"storageMaxIndexLogFileSize">> => [float()],
+%%   <<"storageNoValidateFieldSize">> => [boolean()],
+%%   <<"storageRetentionCheckInterval">> => duration(),
+%%   <<"storageSeriesFileMaxConcurrentSnapshotCompactions">> => [integer()],
+%%   <<"storageSeriesIdSetCacheSize">> => [float()],
+%%   <<"storageWalMaxConcurrentWrites">> => [integer()],
+%%   <<"storageWalMaxWriteDelay">> => duration(),
+%%   <<"tracingType">> => list(any()),
+%%   <<"uiDisabled">> => [boolean()]
+%% }
+-type influx_dbv2_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% influx_dbv3_core_parameters() :: #{
-%%   <<"gen1LookbackDuration">> => duration(),
-%%   <<"walReplayFailOnError">> => [boolean()],
-%%   <<"dataFusionRuntimeEventInterval">> => [integer()],
-%%   <<"parquetMemCachePruneInterval">> => duration(),
-%%   <<"dataFusionNumThreads">> => [integer()],
-%%   <<"logFormat">> => list(any()),
-%%   <<"disableParquetMemCache">> => [boolean()],
-%%   <<"walReplayConcurrencyLimit">> => [integer()],
-%%   <<"retentionCheckInterval">> => duration(),
-%%   <<"dataFusionRuntimeMaxBlockingThreads">> => [integer()],
-%%   <<"dataFusionRuntimeDisableLifoSlot">> => [boolean()],
-%%   <<"walMaxWriteBufferSize">> => [integer()],
-%%   <<"deleteGracePeriod">> => duration(),
-%%   <<"dataFusionMaxParquetFanout">> => [integer()],
-%%   <<"dataFusionRuntimeMaxIoEventsPerTick">> => [integer()],
-%%   <<"gen1Duration">> => duration(),
-%%   <<"parquetMemCacheSize">> => list(),
-%%   <<"parquetMemCacheQueryPathDuration">> => duration(),
-%%   <<"forceSnapshotMemThreshold">> => list(),
-%%   <<"parquetMemCachePrunePercentage">> => [float()],
-%%   <<"distinctCacheEvictionInterval">> => duration(),
-%%   <<"dataFusionRuntimeThreadPriority">> => [integer()],
-%%   <<"logFilter">> => [string()],
-%%   <<"snapshottedWalFilesToKeep">> => [integer()],
-%%   <<"walSnapshotSize">> => [integer()],
-%%   <<"preemptiveCacheAge">> => duration(),
-%%   <<"dataFusionUseCachedParquetLoader">> => [boolean()],
-%%   <<"lastCacheEvictionInterval">> => duration(),
-%%   <<"execMemPoolBytes">> => list(),
-%%   <<"maxHttpRequestSize">> => [float()],
-%%   <<"tableIndexCacheConcurrencyLimit">> => [integer()],
-%%   <<"dataFusionRuntimeType">> => list(any()),
-%%   <<"queryLogSize">> => [integer()],
 %%   <<"dataFusionConfig">> => [string()],
+%%   <<"dataFusionMaxParquetFanout">> => [integer()],
+%%   <<"dataFusionNumThreads">> => [integer()],
+%%   <<"dataFusionRuntimeDisableLifoSlot">> => [boolean()],
+%%   <<"dataFusionRuntimeEventInterval">> => [integer()],
 %%   <<"dataFusionRuntimeGlobalQueueInterval">> => [integer()],
-%%   <<"queryFileLimit">> => [integer()],
+%%   <<"dataFusionRuntimeMaxBlockingThreads">> => [integer()],
+%%   <<"dataFusionRuntimeMaxIoEventsPerTick">> => [integer()],
 %%   <<"dataFusionRuntimeThreadKeepAlive">> => duration(),
+%%   <<"dataFusionRuntimeThreadPriority">> => [integer()],
+%%   <<"dataFusionRuntimeType">> => list(any()),
+%%   <<"dataFusionUseCachedParquetLoader">> => [boolean()],
+%%   <<"deleteGracePeriod">> => duration(),
+%%   <<"disableParquetMemCache">> => [boolean()],
+%%   <<"distinctCacheEvictionInterval">> => duration(),
+%%   <<"execMemPoolBytes">> => list(),
+%%   <<"forceSnapshotMemThreshold">> => list(),
+%%   <<"gen1Duration">> => duration(),
+%%   <<"gen1LookbackDuration">> => duration(),
+%%   <<"hardDeleteDefaultDuration">> => duration(),
+%%   <<"lastCacheEvictionInterval">> => duration(),
+%%   <<"logFilter">> => [string()],
+%%   <<"logFormat">> => list(any()),
+%%   <<"maxHttpRequestSize">> => [float()],
+%%   <<"parquetMemCachePruneInterval">> => duration(),
+%%   <<"parquetMemCachePrunePercentage">> => [float()],
+%%   <<"parquetMemCacheQueryPathDuration">> => duration(),
+%%   <<"parquetMemCacheSize">> => list(),
+%%   <<"pluginRepositorySecretArn">> => string(),
+%%   <<"pluginRepositoryUrl">> => [string()],
+%%   <<"preemptiveCacheAge">> => duration(),
+%%   <<"queryFileLimit">> => [integer()],
+%%   <<"queryLogSize">> => [integer()],
+%%   <<"retentionCheckInterval">> => duration(),
+%%   <<"snapshottedWalFilesToKeep">> => [integer()],
+%%   <<"tableIndexCacheConcurrencyLimit">> => [integer()],
 %%   <<"tableIndexCacheMaxEntries">> => [integer()],
-%%   <<"hardDeleteDefaultDuration">> => duration()
+%%   <<"walMaxWriteBufferSize">> => [integer()],
+%%   <<"walReplayConcurrencyLimit">> => [integer()],
+%%   <<"walReplayFailOnError">> => [boolean()],
+%%   <<"walSnapshotSize">> => [integer()]
 %% }
 -type influx_dbv3_core_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% influx_dbv3_enterprise_parameters() :: #{
+%%   <<"catalogSyncInterval">> => duration(),
+%%   <<"compactionCheckInterval">> => duration(),
+%%   <<"compactionCleanupWait">> => duration(),
+%%   <<"compactionGen2Duration">> => duration(),
+%%   <<"compactionMaxNumFilesPerPlan">> => [integer()],
+%%   <<"compactionMultipliers">> => [string()],
+%%   <<"compactionRowLimit">> => [integer()],
+%%   <<"dataFusionConfig">> => [string()],
+%%   <<"dataFusionMaxParquetFanout">> => [integer()],
+%%   <<"dataFusionNumThreads">> => [integer()],
+%%   <<"dataFusionRuntimeDisableLifoSlot">> => [boolean()],
+%%   <<"dataFusionRuntimeEventInterval">> => [integer()],
+%%   <<"dataFusionRuntimeGlobalQueueInterval">> => [integer()],
+%%   <<"dataFusionRuntimeMaxBlockingThreads">> => [integer()],
+%%   <<"dataFusionRuntimeMaxIoEventsPerTick">> => [integer()],
+%%   <<"dataFusionRuntimeThreadKeepAlive">> => duration(),
+%%   <<"dataFusionRuntimeThreadPriority">> => [integer()],
+%%   <<"dataFusionRuntimeType">> => list(any()),
+%%   <<"dataFusionUseCachedParquetLoader">> => [boolean()],
+%%   <<"dedicatedCompactor">> => [boolean()],
+%%   <<"deleteGracePeriod">> => duration(),
+%%   <<"disableParquetMemCache">> => [boolean()],
+%%   <<"distinctCacheEvictionInterval">> => duration(),
+%%   <<"distinctValueCacheDisableFromHistory">> => [boolean()],
+%%   <<"execMemPoolBytes">> => list(),
+%%   <<"forceSnapshotMemThreshold">> => list(),
+%%   <<"gen1Duration">> => duration(),
+%%   <<"gen1LookbackDuration">> => duration(),
+%%   <<"hardDeleteDefaultDuration">> => duration(),
+%%   <<"ingestQueryInstances">> => [integer()],
+%%   <<"lastCacheEvictionInterval">> => duration(),
+%%   <<"lastValueCacheDisableFromHistory">> => [boolean()],
+%%   <<"logFilter">> => [string()],
+%%   <<"logFormat">> => list(any()),
+%%   <<"maxHttpRequestSize">> => [float()],
+%%   <<"parquetMemCachePruneInterval">> => duration(),
+%%   <<"parquetMemCachePrunePercentage">> => [float()],
+%%   <<"parquetMemCacheQueryPathDuration">> => duration(),
+%%   <<"parquetMemCacheSize">> => list(),
+%%   <<"pluginRepositorySecretArn">> => string(),
+%%   <<"pluginRepositoryUrl">> => [string()],
+%%   <<"preemptiveCacheAge">> => duration(),
+%%   <<"queryFileLimit">> => [integer()],
+%%   <<"queryLogSize">> => [integer()],
+%%   <<"queryOnlyInstances">> => [integer()],
+%%   <<"replicationInterval">> => duration(),
+%%   <<"retentionCheckInterval">> => duration(),
+%%   <<"snapshottedWalFilesToKeep">> => [integer()],
+%%   <<"tableIndexCacheConcurrencyLimit">> => [integer()],
+%%   <<"tableIndexCacheMaxEntries">> => [integer()],
+%%   <<"walMaxWriteBufferSize">> => [integer()],
+%%   <<"walReplayConcurrencyLimit">> => [integer()],
+%%   <<"walReplayFailOnError">> => [boolean()],
+%%   <<"walSnapshotSize">> => [integer()]
+%% }
+-type influx_dbv3_enterprise_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_backups_input() :: #{
+%%   <<"dbResourceId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_backups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_backups_output() :: #{
+%%   <<"items">> => list(db_backup_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_clusters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_clusters_output() :: #{
+%%   <<"items">> => list(db_cluster_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_clusters_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_for_cluster_input() :: #{
+%%   <<"dbClusterId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_for_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_for_cluster_output() :: #{
+%%   <<"items">> => list(db_instance_for_cluster_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_for_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_instances_output() :: #{
+%%   <<"items">> => list(db_instance_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_parameter_groups_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_parameter_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_db_parameter_groups_output() :: #{
+%%   <<"items">> => list(db_parameter_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_db_parameter_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_delivery_configuration() :: #{
+%%   <<"s3Configuration">> => s3_configuration()
+%% }
+-type log_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_schedule() :: #{
+%%   <<"preferredMaintenanceWindow">> => string(),
+%%   <<"timezone">> => string()
+%% }
+-type maintenance_schedule() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_db_cluster_input() :: #{
@@ -747,138 +807,343 @@
 -type reboot_db_cluster_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_instance_input() :: #{
-%%   <<"allocatedStorage">> := integer(),
-%%   <<"bucket">> => string(),
-%%   <<"dbInstanceType">> := list(any()),
+%% reboot_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type reboot_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_input() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type reboot_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type reboot_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_db_backup_input() :: #{
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
+%%   <<"dbBackupId">> := string(),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"maintenanceSchedule">> => maintenance_schedule(),
 %%   <<"name">> := string(),
 %%   <<"networkType">> => list(any()),
-%%   <<"organization">> => string(),
-%%   <<"password">> := string(),
 %%   <<"port">> => integer(),
 %%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"restoreMode">> => list(any()),
+%%   <<"restoreToTime">> => [non_neg_integer()],
 %%   <<"tags">> => map(),
-%%   <<"username">> => string(),
-%%   <<"vpcSecurityGroupIds">> := list(string()),
-%%   <<"vpcSubnetIds">> := list(string())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
--type create_db_instance_input() :: #{binary() => any()}.
+-type restore_from_db_backup_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_db_backup_output() :: #{
+%%   <<"deploymentType">> => list(any()),
+%%   <<"engineType">> => list(any()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"restoreStatus">> => list(any()),
+%%   <<"restoredDbResourceId">> => string()
+%% }
+-type restore_from_db_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"bucketName">> => [string()],
+%%   <<"enabled">> => [boolean()]
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_cluster_input() :: #{
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
+%%   <<"dbClusterId">> := string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"failoverMode">> => list(any()),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"port">> => integer()
+%% }
+-type update_db_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_cluster_output() :: #{
+%%   <<"dbClusterStatus">> => list(any())
+%% }
+-type update_db_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_instance_input() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"identifier">> := string(),
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"port">> => integer()
+%% }
+-type update_db_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_db_instance_output() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => [string()],
+%%   <<"dbBackupConfigurations">> => list(db_backup_configuration_output()),
+%%   <<"dbClusterId">> => string(),
+%%   <<"dbInstanceType">> => list(any()),
+%%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"influxAuthParametersSecretArn">> => [string()],
+%%   <<"instanceMode">> => list(any()),
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastMaintenanceTime">> => [non_neg_integer()],
+%%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
+%%   <<"maintenanceSchedule">> => maintenance_schedule(),
+%%   <<"name">> => string(),
+%%   <<"networkType">> => list(any()),
+%%   <<"nextMaintenanceTime">> => [non_neg_integer()],
+%%   <<"port">> => integer(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"secondaryAvailabilityZone">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
+%% }
+-type update_db_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+-type create_db_backup_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_db_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_db_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_db_parameter_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_db_backup_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_db_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_db_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_db_backup_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_db_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_db_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_db_parameter_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_db_backups_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_db_clusters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_db_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_db_instances_for_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_db_parameter_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type reboot_db_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reboot_db_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type restore_from_db_backup_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     service_quota_exceeded_exception() | 
@@ -888,24 +1153,41 @@
     resource_not_found_exception().
 
 -type update_db_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_db_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a new on-demand backup of a Timestream for InfluxDB resource.
+-spec create_db_backup(aws_client:aws_client(), create_db_backup_input()) ->
+    {ok, create_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_backup_errors(), tuple()}.
+create_db_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_db_backup(Client, Input, []).
+
+-spec create_db_backup(aws_client:aws_client(), create_db_backup_input(), proplists:proplist()) ->
+    {ok, create_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, create_db_backup_errors(), tuple()}.
+create_db_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDbBackup">>, Input, Options).
 
 %% @doc Creates a new Timestream for InfluxDB cluster.
 -spec create_db_cluster(aws_client:aws_client(), create_db_cluster_input()) ->
@@ -959,6 +1241,23 @@ create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDbParameterGroup">>, Input, Options).
 
+%% @doc Deletes a Timestream for InfluxDB backup.
+-spec delete_db_backup(aws_client:aws_client(), delete_db_backup_input()) ->
+    {ok, delete_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_backup_errors(), tuple()}.
+delete_db_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_db_backup(Client, Input, []).
+
+-spec delete_db_backup(aws_client:aws_client(), delete_db_backup_input(), proplists:proplist()) ->
+    {ok, delete_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_db_backup_errors(), tuple()}.
+delete_db_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDbBackup">>, Input, Options).
+
 %% @doc Deletes a Timestream for InfluxDB cluster.
 -spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_input()) ->
     {ok, delete_db_cluster_output(), tuple()} |
@@ -992,6 +1291,23 @@ delete_db_instance(Client, Input)
 delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDbInstance">>, Input, Options).
+
+%% @doc Returns information about a specific Timestream for InfluxDB backup.
+-spec get_db_backup(aws_client:aws_client(), get_db_backup_input()) ->
+    {ok, get_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_backup_errors(), tuple()}.
+get_db_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_db_backup(Client, Input, []).
+
+-spec get_db_backup(aws_client:aws_client(), get_db_backup_input(), proplists:proplist()) ->
+    {ok, get_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, get_db_backup_errors(), tuple()}.
+get_db_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDbBackup">>, Input, Options).
 
 %% @doc Retrieves information about a Timestream for InfluxDB cluster.
 -spec get_db_cluster(aws_client:aws_client(), get_db_cluster_input()) ->
@@ -1043,6 +1359,23 @@ get_db_parameter_group(Client, Input)
 get_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDbParameterGroup">>, Input, Options).
+
+%% @doc Returns a list of Timestream for InfluxDB backups.
+-spec list_db_backups(aws_client:aws_client(), list_db_backups_input()) ->
+    {ok, list_db_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_backups_errors(), tuple()}.
+list_db_backups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_db_backups(Client, Input, []).
+
+-spec list_db_backups(aws_client:aws_client(), list_db_backups_input(), proplists:proplist()) ->
+    {ok, list_db_backups_output(), tuple()} |
+    {error, any()} |
+    {error, list_db_backups_errors(), tuple()}.
+list_db_backups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDbBackups">>, Input, Options).
 
 %% @doc Returns a list of Timestream for InfluxDB DB clusters.
 -spec list_db_clusters(aws_client:aws_client(), list_db_clusters_input()) ->
@@ -1162,6 +1495,26 @@ reboot_db_instance(Client, Input)
 reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDbInstance">>, Input, Options).
+
+%% @doc Restores a Timestream for InfluxDB resource from a backup.
+%%
+%% By default, a new resource is created. You can optionally restore to the
+%% same resource using the REPLACE_EXISTING restore mode.
+-spec restore_from_db_backup(aws_client:aws_client(), restore_from_db_backup_input()) ->
+    {ok, restore_from_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, restore_from_db_backup_errors(), tuple()}.
+restore_from_db_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_from_db_backup(Client, Input, []).
+
+-spec restore_from_db_backup(aws_client:aws_client(), restore_from_db_backup_input(), proplists:proplist()) ->
+    {ok, restore_from_db_backup_output(), tuple()} |
+    {error, any()} |
+    {error, restore_from_db_backup_errors(), tuple()}.
+restore_from_db_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreFromDbBackup">>, Input, Options).
 
 %% @doc Tags are composed of a Key/Value pairs.
 %%

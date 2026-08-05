@@ -123,894 +123,30 @@
 
 
 %% Example:
-%% ecs_properties_override() :: #{
-%%   <<"taskProperties">> => list(task_properties_override())
+%% array_properties() :: #{
+%%   <<"size">> => integer()
 %% }
--type ecs_properties_override() :: #{binary() => any()}.
+-type array_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_compute_environments_response() :: #{
-%%   <<"computeEnvironments">> => list(compute_environment_detail()),
-%%   <<"nextToken">> => string()
+%% array_properties_detail() :: #{
+%%   <<"index">> => integer(),
+%%   <<"size">> => integer(),
+%%   <<"statusSummary">> => map(),
+%%   <<"statusSummaryLastUpdatedAt">> => float()
 %% }
--type describe_compute_environments_response() :: #{binary() => any()}.
+-type array_properties_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scheduling_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% array_properties_summary() :: #{
+%%   <<"index">> => integer(),
+%%   <<"size">> => integer(),
+%%   <<"statusSummary">> => map(),
+%%   <<"statusSummaryLastUpdatedAt">> => float()
 %% }
--type list_scheduling_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_request() :: #{
-%%   <<"jobId">> := string(),
-%%   <<"reason">> := string()
-%% }
--type cancel_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% quota_share_preemption_configuration() :: #{
-%%   <<"inSharePreemption">> => list(any())
-%% }
--type quota_share_preemption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_metadata() :: #{
-%%   <<"annotations">> => map(),
-%%   <<"labels">> => map(),
-%%   <<"namespace">> => string()
-%% }
--type eks_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_properties_override() :: #{
-%%   <<"containers">> => list(task_container_overrides())
-%% }
--type task_properties_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_service_job_request() :: #{
-%%   <<"jobId">> := string(),
-%%   <<"reason">> := string()
-%% }
--type terminate_service_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_by_consumable_resource_summary() :: #{
-%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
-%%   <<"createdAt">> => float(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobDefinitionArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobQueueArn">> => string(),
-%%   <<"jobStatus">> => string(),
-%%   <<"quantity">> => float(),
-%%   <<"shareIdentifier">> => string(),
-%%   <<"startedAt">> => float(),
-%%   <<"statusReason">> => string()
-%% }
--type list_jobs_by_consumable_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_job_definition_request() :: #{
-%%   <<"jobDefinition">> := string()
-%% }
--type deregister_job_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fargate_platform_configuration() :: #{
-%%   <<"platformVersion">> => string()
-%% }
--type fargate_platform_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_definitions_response() :: #{
-%%   <<"jobDefinitions">> => list(job_definition()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_job_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_properties() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"environment">> => list(key_value_pair()),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"fargatePlatformConfiguration">> => fargate_platform_configuration(),
-%%   <<"image">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"jobRoleArn">> => string(),
-%%   <<"linuxParameters">> => linux_parameters(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"memory">> => integer(),
-%%   <<"mountPoints">> => list(mount_point()),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"privileged">> => boolean(),
-%%   <<"readonlyRootFilesystem">> => boolean(),
-%%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()),
-%%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"secrets">> => list(secret()),
-%%   <<"ulimits">> => list(ulimit()),
-%%   <<"user">> => string(),
-%%   <<"vcpus">> => integer(),
-%%   <<"volumes">> => list(volume())
-%% }
--type container_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% latest_service_job_attempt() :: #{
-%%   <<"serviceResourceId">> => service_resource_id()
-%% }
--type latest_service_job_attempt() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_host_path() :: #{
-%%   <<"path">> => string()
-%% }
--type eks_host_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_compute_environment_response() :: #{
-%%   <<"computeEnvironmentArn">> => string(),
-%%   <<"computeEnvironmentName">> => string()
-%% }
--type create_compute_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_environment_response() :: #{}
--type delete_service_environment_response() :: #{}.
-
-
-%% Example:
-%% quota_share_capacity_utilization() :: #{
-%%   <<"capacityUsage">> => list(quota_share_capacity_usage()),
-%%   <<"quotaShareName">> => string()
-%% }
--type quota_share_capacity_utilization() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_container_environment_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type eks_container_environment_variable() :: #{binary() => any()}.
-
-
-%% Example:
-%% quota_share_policy() :: #{
-%%   <<"idleResourceAssignmentStrategy">> => list(any())
-%% }
--type quota_share_policy() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_compute_environment_request() :: #{
-%%   <<"computeEnvironment">> := string(),
-%%   <<"computeResources">> => compute_resource_update(),
-%%   <<"context">> => string(),
-%%   <<"serviceRole">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"unmanagedvCpus">> => integer(),
-%%   <<"updatePolicy">> => update_policy()
-%% }
--type update_compute_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_queue_snapshot_request() :: #{
-%%   <<"jobQueue">> := string()
-%% }
--type get_job_queue_snapshot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_job_response() :: #{
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string()
-%% }
--type update_service_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_timeout() :: #{
-%%   <<"attemptDurationSeconds">> => integer()
-%% }
--type job_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduling_policy_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"fairsharePolicy">> => fairshare_policy(),
-%%   <<"name">> => string(),
-%%   <<"quotaSharePolicy">> => quota_share_policy(),
-%%   <<"tags">> => map()
-%% }
--type scheduling_policy_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"arrayJobId">> => string(),
-%%   <<"filters">> => list(key_values_pair()),
-%%   <<"jobQueue">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"multiNodeJobId">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_quota_share_response() :: #{
-%%   <<"quotaShareArn">> => string(),
-%%   <<"quotaShareName">> => string()
-%% }
--type update_quota_share_response() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_service_job_response() :: #{}
--type terminate_service_job_response() :: #{}.
-
-
-%% Example:
-%% delete_scheduling_policy_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_scheduling_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_pull_secret() :: #{
-%%   <<"name">> => string()
-%% }
--type image_pull_secret() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_configuration() :: #{
-%%   <<"batchImageStatus">> => string(),
-%%   <<"imageIdOverride">> => string(),
-%%   <<"imageKubernetesVersion">> => string(),
-%%   <<"imageType">> => string()
-%% }
--type ec2_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_job_definition_response() :: #{}
--type deregister_job_definition_response() :: #{}.
-
-
-%% Example:
-%% create_scheduling_policy_request() :: #{
-%%   <<"fairsharePolicy">> => fairshare_policy(),
-%%   <<"name">> := string(),
-%%   <<"quotaSharePolicy">> => quota_share_policy(),
-%%   <<"tags">> => map()
-%% }
--type create_scheduling_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_property_override() :: #{
-%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
-%%   <<"containerOverrides">> => container_overrides(),
-%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
-%%   <<"eksPropertiesOverride">> => eks_properties_override(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"targetNodes">> => string()
-%% }
--type node_property_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_environment_request() :: #{
-%%   <<"capacityLimits">> := list(capacity_limit()),
-%%   <<"serviceEnvironmentName">> := string(),
-%%   <<"serviceEnvironmentType">> := list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_service_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"ipv6Address">> => string(),
-%%   <<"privateIpv4Address">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quota_shares_request() :: #{
-%%   <<"jobQueue">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_quota_shares_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_container_override() :: #{
-%%   <<"args">> => list(string()),
-%%   <<"command">> => list(string()),
-%%   <<"env">> => list(eks_container_environment_variable()),
-%%   <<"image">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resources">> => eks_container_resource_requirements()
-%% }
--type eks_container_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_environment_response() :: #{
-%%   <<"serviceEnvironmentArn">> => string(),
-%%   <<"serviceEnvironmentName">> => string()
-%% }
--type update_service_environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_jobs_response() :: #{
-%%   <<"jobSummaryList">> => list(service_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"jobSummaryList">> => list(job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_capacity_usage_summary() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"quantity">> => float()
-%% }
--type service_job_capacity_usage_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_environment_order() :: #{
-%%   <<"order">> => integer(),
-%%   <<"serviceEnvironment">> => string()
-%% }
--type service_environment_order() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_jobs_request() :: #{
-%%   <<"filters">> => list(key_values_pair()),
-%%   <<"jobQueue">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_service_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attempt_task_container_details() :: #{
-%%   <<"exitCode">> => integer(),
-%%   <<"logStreamName">> => string(),
-%%   <<"name">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"reason">> => string()
-%% }
--type attempt_task_container_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_scheduling_policies_response() :: #{
-%%   <<"schedulingPolicies">> => list(scheduling_policy_detail())
-%% }
--type describe_scheduling_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_policy() :: #{
-%%   <<"jobExecutionTimeoutMinutes">> => float(),
-%%   <<"terminateJobsOnUpdate">> => boolean()
-%% }
--type update_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_queue_detail() :: #{
-%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
-%%   <<"jobQueueArn">> => string(),
-%%   <<"jobQueueName">> => string(),
-%%   <<"jobQueueType">> => list(any()),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
-%%   <<"priority">> => integer(),
-%%   <<"schedulingPolicyArn">> => string(),
-%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
-%%   <<"state">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"tags">> => map()
-%% }
--type job_queue_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_consumable_resource_request() :: #{
-%%   <<"consumableResourceName">> := string(),
-%%   <<"resourceType">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"totalQuantity">> => float()
-%% }
--type create_consumable_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_queue_response() :: #{}
--type delete_job_queue_response() :: #{}.
-
-
-%% Example:
-%% ecs_properties() :: #{
-%%   <<"taskProperties">> => list(ecs_task_properties())
-%% }
--type ecs_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_job_definition_response() :: #{
-%%   <<"jobDefinitionArn">> => string(),
-%%   <<"jobDefinitionName">> => string(),
-%%   <<"revision">> => integer()
-%% }
--type register_job_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_definitions_request() :: #{
-%%   <<"jobDefinitionName">> => string(),
-%%   <<"jobDefinitions">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type describe_job_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_evaluate_on_exit() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"onStatusReason">> => string()
-%% }
--type service_job_evaluate_on_exit() :: #{binary() => any()}.
-
-
-%% Example:
-%% submit_service_job_response() :: #{
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string()
-%% }
--type submit_service_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fairshare_capacity_utilization() :: #{
-%%   <<"capacityUsage">> => list(fairshare_capacity_usage()),
-%%   <<"shareIdentifier">> => string()
-%% }
--type fairshare_capacity_utilization() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_compute_environment_request() :: #{
-%%   <<"computeEnvironmentName">> := string(),
-%%   <<"computeResources">> => compute_resource(),
-%%   <<"context">> => string(),
-%%   <<"eksConfiguration">> => eks_configuration(),
-%%   <<"serviceRole">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any()),
-%%   <<"unmanagedvCpus">> => integer()
-%% }
--type create_compute_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mount_point() :: #{
-%%   <<"containerPath">> => string(),
-%%   <<"readOnly">> => boolean(),
-%%   <<"sourceVolume">> => string()
-%% }
--type mount_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% attempt_ecs_task_details() :: #{
-%%   <<"containerInstanceArn">> => string(),
-%%   <<"containers">> => list(attempt_task_container_details()),
-%%   <<"taskArn">> => string()
-%% }
--type attempt_ecs_task_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_container_overrides() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"environment">> => list(key_value_pair()),
-%%   <<"name">> => string(),
-%%   <<"resourceRequirements">> => list(resource_requirement())
-%% }
--type task_container_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_container_detail() :: #{
-%%   <<"args">> => list(string()),
-%%   <<"command">> => list(string()),
-%%   <<"env">> => list(eks_container_environment_variable()),
-%%   <<"exitCode">> => integer(),
-%%   <<"image">> => string(),
-%%   <<"imagePullPolicy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"resources">> => eks_container_resource_requirements(),
-%%   <<"securityContext">> => eks_container_security_context(),
-%%   <<"volumeMounts">> => list(eks_container_volume_mount())
-%% }
--type eks_container_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% front_of_quota_share_job_summary() :: #{
-%%   <<"earliestTimeAtPosition">> => float(),
-%%   <<"jobArn">> => string()
-%% }
--type front_of_quota_share_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_properties_override() :: #{
-%%   <<"podProperties">> => eks_pod_properties_override()
-%% }
--type eks_properties_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_timeout() :: #{
-%%   <<"attemptDurationSeconds">> => integer()
-%% }
--type service_job_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% quota_share_detail() :: #{
-%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
-%%   <<"jobQueueArn">> => string(),
-%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
-%%   <<"quotaShareArn">> => string(),
-%%   <<"quotaShareName">> => string(),
-%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
-%%   <<"state">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type quota_share_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scheduling_policy_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type create_scheduling_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_by_consumable_resource_request() :: #{
-%%   <<"consumableResource">> := string(),
-%%   <<"filters">> => list(key_values_pair()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_by_consumable_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_capacity_usage_summary() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"quantity">> => float()
-%% }
--type job_capacity_usage_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"arrayProperties">> => array_properties_summary(),
-%%   <<"capacityUsage">> => list(job_capacity_usage_summary()),
-%%   <<"container">> => container_summary(),
-%%   <<"createdAt">> => float(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobDefinition">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"nodeProperties">> => node_properties_summary(),
-%%   <<"scheduledAt">> => float(),
-%%   <<"shareIdentifier">> => string(),
-%%   <<"startedAt">> => float(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float()
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scheduling_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"schedulingPolicies">> => list(scheduling_policy_listing_detail())
-%% }
--type list_scheduling_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_compute_environment_request() :: #{
-%%   <<"computeEnvironment">> := string()
-%% }
--type delete_compute_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% front_of_quota_shares_detail() :: #{
-%%   <<"lastUpdatedAt">> => float(),
-%%   <<"quotaShares">> => map()
-%% }
--type front_of_quota_shares_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecs_task_properties() :: #{
-%%   <<"containers">> => list(task_container_properties()),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"ipcMode">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"pidMode">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume())
-%% }
--type ecs_task_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% submit_service_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"jobName">> := string(),
-%%   <<"jobQueue">> := string(),
-%%   <<"preemptionConfiguration">> => service_job_preemption_configuration(),
-%%   <<"quotaShareName">> => string(),
-%%   <<"retryStrategy">> => service_job_retry_strategy(),
-%%   <<"schedulingPriority">> => integer(),
-%%   <<"serviceJobType">> := list(any()),
-%%   <<"serviceRequestPayload">> := string(),
-%%   <<"shareIdentifier">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"timeoutConfig">> => service_job_timeout()
-%% }
--type submit_service_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_container_details() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"dependsOn">> => list(task_container_dependency()),
-%%   <<"environment">> => list(key_value_pair()),
-%%   <<"essential">> => boolean(),
-%%   <<"exitCode">> => integer(),
-%%   <<"firelensConfiguration">> => firelens_configuration(),
-%%   <<"image">> => string(),
-%%   <<"linuxParameters">> => linux_parameters(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"logStreamName">> => string(),
-%%   <<"mountPoints">> => list(mount_point()),
-%%   <<"name">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"privileged">> => boolean(),
-%%   <<"readonlyRootFilesystem">> => boolean(),
-%%   <<"reason">> => string(),
-%%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()),
-%%   <<"secrets">> => list(secret()),
-%%   <<"startTimeout">> => integer(),
-%%   <<"stopTimeout">> => integer(),
-%%   <<"ulimits">> => list(ulimit()),
-%%   <<"user">> => string()
-%% }
--type task_container_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_environment_response() :: #{
-%%   <<"serviceEnvironmentArn">> => string(),
-%%   <<"serviceEnvironmentName">> => string()
-%% }
--type create_service_environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_environment_request() :: #{
-%%   <<"serviceEnvironment">> := string()
-%% }
--type delete_service_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_queue_response() :: #{
-%%   <<"jobQueueArn">> => string(),
-%%   <<"jobQueueName">> => string()
-%% }
--type create_job_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_capacity_usage_detail() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"quantity">> => float()
-%% }
--type service_job_capacity_usage_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_resource_id() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type service_resource_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% ulimit() :: #{
-%%   <<"hardLimit">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"softLimit">> => integer()
-%% }
--type ulimit() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluate_on_exit() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"onExitCode">> => string(),
-%%   <<"onReason">> => string(),
-%%   <<"onStatusReason">> => string()
-%% }
--type evaluate_on_exit() :: #{binary() => any()}.
-
-
-%% Example:
-%% attempt_detail() :: #{
-%%   <<"container">> => attempt_container_detail(),
-%%   <<"startedAt">> => float(),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float(),
-%%   <<"taskProperties">> => list(attempt_ecs_task_details())
-%% }
--type attempt_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_job_definition_request() :: #{
-%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
-%%   <<"containerProperties">> => container_properties(),
-%%   <<"ecsProperties">> => ecs_properties(),
-%%   <<"eksProperties">> => eks_properties(),
-%%   <<"jobDefinitionName">> := string(),
-%%   <<"nodeProperties">> => node_properties(),
-%%   <<"parameters">> => map(),
-%%   <<"platformCapabilities">> => list(list(any())()),
-%%   <<"propagateTags">> => boolean(),
-%%   <<"retryStrategy">> => retry_strategy(),
-%%   <<"schedulingPriority">> => integer(),
-%%   <<"tags">> => map(),
-%%   <<"timeout">> => job_timeout(),
-%%   <<"type">> := list(any())
-%% }
--type register_job_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fairshare_utilization_detail() :: #{
-%%   <<"activeShareCount">> => float(),
-%%   <<"topCapacityUtilization">> => list(fairshare_capacity_utilization())
-%% }
--type fairshare_utilization_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduling_policy_response() :: #{}
--type delete_scheduling_policy_response() :: #{}.
-
-
-%% Example:
-%% submit_job_request() :: #{
-%%   <<"arrayProperties">> => array_properties(),
-%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
-%%   <<"containerOverrides">> => container_overrides(),
-%%   <<"dependsOn">> => list(job_dependency()),
-%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
-%%   <<"eksPropertiesOverride">> => eks_properties_override(),
-%%   <<"jobDefinition">> := string(),
-%%   <<"jobName">> := string(),
-%%   <<"jobQueue">> := string(),
-%%   <<"nodeOverrides">> => node_overrides(),
-%%   <<"parameters">> => map(),
-%%   <<"propagateTags">> => boolean(),
-%%   <<"retryStrategy">> => retry_strategy(),
-%%   <<"schedulingPriorityOverride">> => integer(),
-%%   <<"shareIdentifier">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"timeout">> => job_timeout()
-%% }
--type submit_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_values_pair() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type key_values_pair() :: #{binary() => any()}.
+-type array_properties_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1026,295 +162,83 @@
 
 
 %% Example:
-%% list_consumable_resources_response() :: #{
-%%   <<"consumableResources">> => list(consumable_resource_summary()),
-%%   <<"nextToken">> => string()
+%% attempt_detail() :: #{
+%%   <<"container">> => attempt_container_detail(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float(),
+%%   <<"taskProperties">> => list(attempt_ecs_task_details())
 %% }
--type list_consumable_resources_response() :: #{binary() => any()}.
+-type attempt_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_job_queue_request() :: #{
-%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
-%%   <<"jobQueue">> := string(),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
-%%   <<"priority">> => integer(),
-%%   <<"schedulingPolicyArn">> => string(),
-%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
-%%   <<"state">> => list(any())
-%% }
--type update_job_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecs_task_details() :: #{
+%% attempt_ecs_task_details() :: #{
 %%   <<"containerInstanceArn">> => string(),
-%%   <<"containers">> => list(task_container_details()),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"ipcMode">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"pidMode">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"taskArn">> => string(),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume())
+%%   <<"containers">> => list(attempt_task_container_details()),
+%%   <<"taskArn">> => string()
 %% }
--type ecs_task_details() :: #{binary() => any()}.
+-type attempt_ecs_task_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_job_queues_response() :: #{
-%%   <<"jobQueues">> => list(job_queue_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_job_queues_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_configuration() :: #{
-%%   <<"eksClusterArn">> => string(),
-%%   <<"kubernetesNamespace">> => string()
-%% }
--type eks_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_preemption_summary() :: #{
-%%   <<"preemptedAttemptCount">> => integer(),
-%%   <<"recentPreemptedAttempts">> => list(service_job_preempted_attempt())
-%% }
--type service_job_preemption_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% secret() :: #{
+%% attempt_task_container_details() :: #{
+%%   <<"exitCode">> => integer(),
+%%   <<"logStreamName">> => string(),
 %%   <<"name">> => string(),
-%%   <<"valueFrom">> => string()
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"reason">> => string()
 %% }
--type secret() :: #{binary() => any()}.
+-type attempt_task_container_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% share_attributes() :: #{
-%%   <<"shareIdentifier">> => string(),
-%%   <<"weightFactor">> => float()
-%% }
--type share_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% fairshare_policy() :: #{
-%%   <<"computeReservation">> => integer(),
-%%   <<"shareDecaySeconds">> => integer(),
-%%   <<"shareDistribution">> => list(share_attributes())
-%% }
--type fairshare_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_job_request() :: #{
+%% cancel_job_request() :: #{
 %%   <<"jobId">> := string(),
 %%   <<"reason">> := string()
 %% }
--type terminate_job_request() :: #{binary() => any()}.
+-type cancel_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_response() :: #{}
+-type cancel_job_response() :: #{}.
 
 
 %% Example:
-%% eks_volume() :: #{
-%%   <<"emptyDir">> => eks_empty_dir(),
-%%   <<"hostPath">> => eks_host_path(),
-%%   <<"name">> => string(),
-%%   <<"persistentVolumeClaim">> => eks_persistent_volume_claim(),
-%%   <<"secret">> => eks_secret()
+%% capacity_limit() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"maxCapacity">> => integer()
 %% }
--type eks_volume() :: #{binary() => any()}.
+-type capacity_limit() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_definition() :: #{
-%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%% client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_environment_detail() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string(),
+%%   <<"computeResources">> => compute_resource(),
 %%   <<"containerOrchestrationType">> => list(any()),
-%%   <<"containerProperties">> => container_properties(),
-%%   <<"ecsProperties">> => ecs_properties(),
-%%   <<"eksProperties">> => eks_properties(),
-%%   <<"jobDefinitionArn">> => string(),
-%%   <<"jobDefinitionName">> => string(),
-%%   <<"nodeProperties">> => node_properties(),
-%%   <<"parameters">> => map(),
-%%   <<"platformCapabilities">> => list(list(any())()),
-%%   <<"propagateTags">> => boolean(),
-%%   <<"retryStrategy">> => retry_strategy(),
-%%   <<"revision">> => integer(),
-%%   <<"schedulingPriority">> => integer(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"timeout">> => job_timeout(),
-%%   <<"type">> => string()
-%% }
--type job_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% front_of_queue_job_summary() :: #{
-%%   <<"earliestTimeAtPosition">> => float(),
-%%   <<"jobArn">> => string()
-%% }
--type front_of_queue_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_environment_request() :: #{
-%%   <<"capacityLimits">> => list(capacity_limit()),
-%%   <<"serviceEnvironment">> := string(),
-%%   <<"state">> => list(any())
-%% }
--type update_service_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_snapshot_utilization_detail() :: #{
-%%   <<"fairshareUtilization">> => fairshare_utilization_detail(),
-%%   <<"lastUpdatedAt">> => float(),
-%%   <<"quotaShareUtilization">> => quota_share_utilization_detail(),
-%%   <<"totalCapacityUsage">> => list(queue_snapshot_capacity_usage())
-%% }
--type queue_snapshot_utilization_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_summary() :: #{
-%%   <<"exitCode">> => integer(),
-%%   <<"reason">> => string()
-%% }
--type container_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_consumable_resource_request() :: #{
-%%   <<"consumableResource">> := string()
-%% }
--type delete_consumable_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_service_environments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceEnvironments">> => list(string())
-%% }
--type describe_service_environments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_retry_strategy() :: #{
-%%   <<"attempts">> => integer(),
-%%   <<"evaluateOnExit">> => list(service_job_evaluate_on_exit())
-%% }
--type service_job_retry_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeral_storage() :: #{
-%%   <<"sizeInGiB">> => integer()
-%% }
--type ephemeral_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_consumable_resource_response() :: #{
-%%   <<"consumableResourceArn">> => string(),
-%%   <<"consumableResourceName">> => string(),
-%%   <<"totalQuantity">> => float()
-%% }
--type update_consumable_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_properties() :: #{
-%%   <<"podProperties">> => eks_pod_properties()
-%% }
--type eks_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quota_share_response() :: #{}
--type delete_quota_share_response() :: #{}.
-
-
-%% Example:
-%% eks_attempt_detail() :: #{
-%%   <<"containers">> => list(eks_attempt_container_detail()),
-%%   <<"eksClusterArn">> => string(),
-%%   <<"initContainers">> => list(eks_attempt_container_detail()),
-%%   <<"nodeName">> => string(),
-%%   <<"podName">> => string(),
-%%   <<"podNamespace">> => string(),
-%%   <<"startedAt">> => float(),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float()
-%% }
--type eks_attempt_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_quota_share_response() :: #{
-%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
-%%   <<"jobQueueArn">> => string(),
-%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
-%%   <<"quotaShareArn">> => string(),
-%%   <<"quotaShareName">> => string(),
-%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"context">> => string(),
+%%   <<"ecsClusterArn">> => string(),
+%%   <<"eksConfiguration">> => eks_configuration(),
+%%   <<"serviceRole">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"unmanagedvCpus">> => integer(),
+%%   <<"updatePolicy">> => update_policy(),
+%%   <<"uuid">> => string()
 %% }
--type describe_quota_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_secret() :: #{
-%%   <<"optional">> => boolean(),
-%%   <<"secretName">> => string()
-%% }
--type eks_secret() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_queue_snapshot_response() :: #{
-%%   <<"frontOfQueue">> => front_of_queue_detail(),
-%%   <<"frontOfQuotaShares">> => front_of_quota_shares_detail(),
-%%   <<"queueUtilization">> => queue_snapshot_utilization_detail()
-%% }
--type get_job_queue_snapshot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quota_share_request() :: #{
-%%   <<"capacityLimits">> := list(quota_share_capacity_limit()),
-%%   <<"jobQueue">> := string(),
-%%   <<"preemptionConfiguration">> := quota_share_preemption_configuration(),
-%%   <<"quotaShareName">> := string(),
-%%   <<"resourceSharingConfiguration">> := quota_share_resource_sharing_configuration(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_quota_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% host() :: #{
-%%   <<"sourcePath">> => string()
-%% }
--type host() :: #{binary() => any()}.
+-type compute_environment_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1326,32 +250,27 @@
 
 
 %% Example:
-%% update_scheduling_policy_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"fairsharePolicy">> => fairshare_policy(),
-%%   <<"quotaSharePolicy">> => quota_share_policy()
+%% compute_resource() :: #{
+%%   <<"allocationStrategy">> => list(any()),
+%%   <<"bidPercentage">> => integer(),
+%%   <<"desiredvCpus">> => integer(),
+%%   <<"ec2Configuration">> => list(ec2_configuration()),
+%%   <<"ec2KeyPair">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"instanceRole">> => string(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"maxvCpus">> => integer(),
+%%   <<"minvCpus">> => integer(),
+%%   <<"placementGroup">> => string(),
+%%   <<"scalingPolicy">> => compute_scaling_policy(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"spotIamFleetRole">> => string(),
+%%   <<"subnets">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
 %% }
--type update_scheduling_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_environment_detail() :: #{
-%%   <<"capacityLimits">> => list(capacity_limit()),
-%%   <<"serviceEnvironmentArn">> => string(),
-%%   <<"serviceEnvironmentName">> => string(),
-%%   <<"serviceEnvironmentType">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type service_environment_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% quota_share_utilization_detail() :: #{
-%%   <<"topCapacityUtilization">> => list(quota_share_capacity_utilization())
-%% }
--type quota_share_utilization_detail() :: #{binary() => any()}.
+-type compute_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1379,97 +298,36 @@
 
 
 %% Example:
-%% eks_container_security_context() :: #{
-%%   <<"allowPrivilegeEscalation">> => boolean(),
-%%   <<"privileged">> => boolean(),
-%%   <<"readOnlyRootFilesystem">> => boolean(),
-%%   <<"runAsGroup">> => float(),
-%%   <<"runAsNonRoot">> => boolean(),
-%%   <<"runAsUser">> => float()
+%% compute_scaling_policy() :: #{
+%%   <<"minScaleDownDelayMinutes">> => integer()
 %% }
--type eks_container_security_context() :: #{binary() => any()}.
+-type compute_scaling_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_service_environments_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceEnvironments">> => list(service_environment_detail())
+%% consumable_resource_properties() :: #{
+%%   <<"consumableResourceList">> => list(consumable_resource_requirement())
 %% }
--type describe_service_environments_response() :: #{binary() => any()}.
+-type consumable_resource_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_service_job_request() :: #{
-%%   <<"jobId">> := string(),
-%%   <<"schedulingPriority">> := integer()
-%% }
--type update_service_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_f_s_authorization_config() :: #{
-%%   <<"accessPointId">> => string(),
-%%   <<"iam">> => list(any())
-%% }
--type e_f_s_authorization_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% quota_share_capacity_usage() :: #{
-%%   <<"capacityUnit">> => string(),
+%% consumable_resource_requirement() :: #{
+%%   <<"consumableResource">> => string(),
 %%   <<"quantity">> => float()
 %% }
--type quota_share_capacity_usage() :: #{binary() => any()}.
+-type consumable_resource_requirement() :: #{binary() => any()}.
 
 
 %% Example:
-%% submit_job_response() :: #{
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string()
+%% consumable_resource_summary() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string(),
+%%   <<"inUseQuantity">> => float(),
+%%   <<"resourceType">> => string(),
+%%   <<"totalQuantity">> => float()
 %% }
--type submit_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_overrides() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"environment">> => list(key_value_pair()),
-%%   <<"instanceType">> => string(),
-%%   <<"memory">> => integer(),
-%%   <<"resourceRequirements">> => list(resource_requirement()),
-%%   <<"vcpus">> => integer()
-%% }
--type container_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% front_of_queue_detail() :: #{
-%%   <<"jobs">> => list(front_of_queue_job_summary()),
-%%   <<"lastUpdatedAt">> => float()
-%% }
--type front_of_queue_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_job_preempted_attempt() :: #{
-%%   <<"serviceResourceId">> => service_resource_id(),
-%%   <<"startedAt">> => float(),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float()
-%% }
--type service_job_preempted_attempt() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_f_s_volume_configuration() :: #{
-%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"rootDirectory">> => string(),
-%%   <<"transitEncryption">> => list(any()),
-%%   <<"transitEncryptionPort">> => integer()
-%% }
--type e_f_s_volume_configuration() :: #{binary() => any()}.
+-type consumable_resource_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1509,44 +367,193 @@
 
 
 %% Example:
-%% network_configuration() :: #{
-%%   <<"assignPublicIp">> => list(any())
+%% container_overrides() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"instanceType">> => string(),
+%%   <<"memory">> => integer(),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"vcpus">> => integer()
 %% }
--type network_configuration() :: #{binary() => any()}.
+-type container_overrides() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_consumable_resource_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"consumableResource">> := string(),
-%%   <<"operation">> => string(),
-%%   <<"quantity">> => float()
+%% container_properties() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fargatePlatformConfiguration">> => fargate_platform_configuration(),
+%%   <<"image">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"jobRoleArn">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"memory">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"secrets">> => list(secret()),
+%%   <<"ulimits">> => list(ulimit()),
+%%   <<"user">> => string(),
+%%   <<"vcpus">> => integer(),
+%%   <<"volumes">> => list(volume())
 %% }
--type update_consumable_resource_request() :: #{binary() => any()}.
+-type container_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_job_preemption_configuration() :: #{
-%%   <<"preemptionRetriesBeforeTermination">> => integer()
+%% container_summary() :: #{
+%%   <<"exitCode">> => integer(),
+%%   <<"reason">> => string()
 %% }
--type service_job_preemption_configuration() :: #{binary() => any()}.
+-type container_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% scheduling_policy_listing_detail() :: #{
-%%   <<"arn">> => string()
+%% create_compute_environment_request() :: #{
+%%   <<"computeEnvironmentName">> := string(),
+%%   <<"computeResources">> => compute_resource(),
+%%   <<"context">> => string(),
+%%   <<"eksConfiguration">> => eks_configuration(),
+%%   <<"serviceRole">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any()),
+%%   <<"unmanagedvCpus">> => integer()
 %% }
--type scheduling_policy_listing_detail() :: #{binary() => any()}.
+-type create_compute_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_job_attempt_detail() :: #{
-%%   <<"serviceResourceId">> => service_resource_id(),
-%%   <<"startedAt">> => float(),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => float()
+%% create_compute_environment_response() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string()
 %% }
--type service_job_attempt_detail() :: #{binary() => any()}.
+-type create_compute_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_consumable_resource_request() :: #{
+%%   <<"consumableResourceName">> := string(),
+%%   <<"resourceType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type create_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_consumable_resource_response() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string()
+%% }
+-type create_consumable_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_queue_request() :: #{
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
+%%   <<"jobQueueName">> := string(),
+%%   <<"jobQueueType">> => list(any()),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
+%%   <<"priority">> := integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_job_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_queue_response() :: #{
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string()
+%% }
+-type create_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quota_share_request() :: #{
+%%   <<"capacityLimits">> := list(quota_share_capacity_limit()),
+%%   <<"jobQueue">> := string(),
+%%   <<"preemptionConfiguration">> := quota_share_preemption_configuration(),
+%%   <<"quotaShareName">> := string(),
+%%   <<"resourceSharingConfiguration">> := quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_quota_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quota_share_response() :: #{
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string()
+%% }
+-type create_quota_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scheduling_policy_request() :: #{
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"name">> := string(),
+%%   <<"quotaSharePolicy">> => quota_share_policy(),
+%%   <<"tags">> => map()
+%% }
+-type create_scheduling_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scheduling_policy_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_scheduling_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_environment_request() :: #{
+%%   <<"capacityLimits">> := list(capacity_limit()),
+%%   <<"serviceEnvironmentName">> := string(),
+%%   <<"serviceEnvironmentType">> := list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_service_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_environment_response() :: #{
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string()
+%% }
+-type create_service_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_compute_environment_request() :: #{
+%%   <<"computeEnvironment">> := string()
+%% }
+-type delete_compute_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_environment_response() :: #{}
+-type delete_compute_environment_response() :: #{}.
+
+
+%% Example:
+%% delete_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string()
+%% }
+-type delete_consumable_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_consumable_resource_response() :: #{}
@@ -1554,11 +561,58 @@
 
 
 %% Example:
-%% quota_share_resource_sharing_configuration() :: #{
-%%   <<"borrowLimit">> => integer(),
-%%   <<"strategy">> => list(any())
+%% delete_job_queue_request() :: #{
+%%   <<"jobQueue">> := string()
 %% }
--type quota_share_resource_sharing_configuration() :: #{binary() => any()}.
+-type delete_job_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_queue_response() :: #{}
+-type delete_job_queue_response() :: #{}.
+
+
+%% Example:
+%% delete_quota_share_request() :: #{
+%%   <<"quotaShareArn">> := string()
+%% }
+-type delete_quota_share_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_quota_share_response() :: #{}
+-type delete_quota_share_response() :: #{}.
+
+
+%% Example:
+%% delete_scheduling_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_scheduling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduling_policy_response() :: #{}
+-type delete_scheduling_policy_response() :: #{}.
+
+
+%% Example:
+%% delete_service_environment_request() :: #{
+%%   <<"serviceEnvironment">> := string()
+%% }
+-type delete_service_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_environment_response() :: #{}
+-type delete_service_environment_response() :: #{}.
+
+
+%% Example:
+%% deregister_job_definition_request() :: #{
+%%   <<"jobDefinition">> := string()
+%% }
+-type deregister_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_job_definition_response() :: #{}
+-type deregister_job_definition_response() :: #{}.
 
 
 %% Example:
@@ -1571,29 +625,18 @@
 
 
 %% Example:
-%% consumable_resource_requirement() :: #{
-%%   <<"consumableResource">> => string(),
-%%   <<"quantity">> => float()
+%% describe_compute_environments_response() :: #{
+%%   <<"computeEnvironments">> => list(compute_environment_detail()),
+%%   <<"nextToken">> => string()
 %% }
--type consumable_resource_requirement() :: #{binary() => any()}.
+-type describe_compute_environments_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_overrides() :: #{
-%%   <<"nodePropertyOverrides">> => list(node_property_override()),
-%%   <<"numNodes">> => integer()
+%% describe_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string()
 %% }
--type node_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% volume() :: #{
-%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
-%%   <<"host">> => host(),
-%%   <<"name">> => string(),
-%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
-%% }
--type volume() :: #{binary() => any()}.
+-type describe_consumable_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1611,75 +654,46 @@
 
 
 %% Example:
-%% job_dependency() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"type">> => list(any())
+%% describe_job_definitions_request() :: #{
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"jobDefinitions">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
 %% }
--type job_dependency() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% array_properties() :: #{
-%%   <<"size">> => integer()
-%% }
--type array_properties() :: #{binary() => any()}.
+-type describe_job_definitions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_range_property() :: #{
-%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
-%%   <<"container">> => container_properties(),
-%%   <<"ecsProperties">> => ecs_properties(),
-%%   <<"eksProperties">> => eks_properties(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"targetNodes">> => string()
+%% describe_job_definitions_response() :: #{
+%%   <<"jobDefinitions">> => list(job_definition()),
+%%   <<"nextToken">> => string()
 %% }
--type node_range_property() :: #{binary() => any()}.
+-type describe_job_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% capacity_limit() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"maxCapacity">> => integer()
+%% describe_job_queues_request() :: #{
+%%   <<"jobQueues">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type capacity_limit() :: #{binary() => any()}.
+-type describe_job_queues_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_attempt_container_detail() :: #{
-%%   <<"containerID">> => string(),
-%%   <<"exitCode">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"reason">> => string()
+%% describe_job_queues_response() :: #{
+%%   <<"jobQueues">> => list(job_queue_detail()),
+%%   <<"nextToken">> => string()
 %% }
--type eks_attempt_container_detail() :: #{binary() => any()}.
+-type describe_job_queues_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_persistent_volume_claim() :: #{
-%%   <<"claimName">> => string(),
-%%   <<"readOnly">> => boolean()
+%% describe_jobs_request() :: #{
+%%   <<"jobs">> := list(string())
 %% }
--type eks_persistent_volume_claim() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_service_job_request() :: #{
-%%   <<"jobId">> := string()
-%% }
--type describe_service_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quota_share_response() :: #{
-%%   <<"quotaShareArn">> => string(),
-%%   <<"quotaShareName">> => string()
-%% }
--type create_quota_share_response() :: #{binary() => any()}.
+-type describe_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1690,76 +704,63 @@
 
 
 %% Example:
-%% delete_quota_share_request() :: #{
+%% describe_quota_share_request() :: #{
 %%   <<"quotaShareArn">> := string()
 %% }
--type delete_quota_share_request() :: #{binary() => any()}.
+-type describe_quota_share_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% key_value_pair() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
+%% describe_quota_share_response() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type describe_quota_share_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% launch_template_specification_override() :: #{
-%%   <<"launchTemplateId">> => string(),
-%%   <<"launchTemplateName">> => string(),
-%%   <<"targetInstanceTypes">> => list(string()),
-%%   <<"userdataType">> => list(any()),
-%%   <<"version">> => string()
+%% describe_scheduling_policies_request() :: #{
+%%   <<"arns">> := list(string())
 %% }
--type launch_template_specification_override() :: #{binary() => any()}.
+-type describe_scheduling_policies_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% runtime_platform() :: #{
-%%   <<"cpuArchitecture">> => string(),
-%%   <<"operatingSystemFamily">> => string()
+%% describe_scheduling_policies_response() :: #{
+%%   <<"schedulingPolicies">> => list(scheduling_policy_detail())
 %% }
--type runtime_platform() :: #{binary() => any()}.
+-type describe_scheduling_policies_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_job_queue_request() :: #{
-%%   <<"jobQueue">> := string()
+%% describe_service_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceEnvironments">> => list(string())
 %% }
--type delete_job_queue_request() :: #{binary() => any()}.
+-type describe_service_environments_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% fairshare_capacity_usage() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"quantity">> => float()
+%% describe_service_environments_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceEnvironments">> => list(service_environment_detail())
 %% }
--type fairshare_capacity_usage() :: #{binary() => any()}.
+-type describe_service_environments_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% quota_share_capacity_limit() :: #{
-%%   <<"capacityUnit">> => string(),
-%%   <<"maxCapacity">> => integer()
+%% describe_service_job_request() :: #{
+%%   <<"jobId">> := string()
 %% }
--type quota_share_capacity_limit() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_job_response() :: #{}
--type terminate_job_response() :: #{}.
-
-
-%% Example:
-%% eks_container_resource_requirements() :: #{
-%%   <<"limits">> => map(),
-%%   <<"requests">> => map()
-%% }
--type eks_container_resource_requirements() :: #{binary() => any()}.
+-type describe_service_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1793,31 +794,203 @@
 
 
 %% Example:
-%% linux_parameters() :: #{
-%%   <<"devices">> => list(device()),
-%%   <<"initProcessEnabled">> => boolean(),
-%%   <<"maxSwap">> => integer(),
-%%   <<"sharedMemorySize">> => integer(),
-%%   <<"swappiness">> => integer(),
-%%   <<"tmpfs">> => list(tmpfs())
+%% device() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"hostPath">> => string(),
+%%   <<"permissions">> => list(list(any())())
 %% }
--type linux_parameters() :: #{binary() => any()}.
+-type device() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_compute_environment_response() :: #{
-%%   <<"computeEnvironmentArn">> => string(),
-%%   <<"computeEnvironmentName">> => string()
+%% e_f_s_authorization_config() :: #{
+%%   <<"accessPointId">> => string(),
+%%   <<"iam">> => list(any())
 %% }
--type update_compute_environment_response() :: #{binary() => any()}.
+-type e_f_s_authorization_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_details() :: #{
-%%   <<"isMainNode">> => boolean(),
-%%   <<"nodeIndex">> => integer()
+%% e_f_s_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryption">> => list(any()),
+%%   <<"transitEncryptionPort">> => integer()
 %% }
--type node_details() :: #{binary() => any()}.
+-type e_f_s_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration() :: #{
+%%   <<"batchImageStatus">> => string(),
+%%   <<"imageIdOverride">> => string(),
+%%   <<"imageKubernetesVersion">> => string(),
+%%   <<"imageType">> => string()
+%% }
+-type ec2_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_properties() :: #{
+%%   <<"taskProperties">> => list(ecs_task_properties())
+%% }
+-type ecs_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_properties_detail() :: #{
+%%   <<"taskProperties">> => list(ecs_task_details())
+%% }
+-type ecs_properties_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_properties_override() :: #{
+%%   <<"taskProperties">> => list(task_properties_override())
+%% }
+-type ecs_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_details() :: #{
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"containers">> => list(task_container_details()),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"ipcMode">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pidMode">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume())
+%% }
+-type ecs_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_properties() :: #{
+%%   <<"containers">> => list(task_container_properties()),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"ipcMode">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pidMode">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume())
+%% }
+-type ecs_task_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_attempt_container_detail() :: #{
+%%   <<"containerID">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type eks_attempt_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_attempt_detail() :: #{
+%%   <<"containers">> => list(eks_attempt_container_detail()),
+%%   <<"eksClusterArn">> => string(),
+%%   <<"initContainers">> => list(eks_attempt_container_detail()),
+%%   <<"nodeName">> => string(),
+%%   <<"podName">> => string(),
+%%   <<"podNamespace">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type eks_attempt_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_configuration() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"kubernetesNamespace">> => string()
+%% }
+-type eks_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container() :: #{
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
+%%   <<"image">> => string(),
+%%   <<"imagePullPolicy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements(),
+%%   <<"securityContext">> => eks_container_security_context(),
+%%   <<"volumeMounts">> => list(eks_container_volume_mount())
+%% }
+-type eks_container() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_detail() :: #{
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
+%%   <<"exitCode">> => integer(),
+%%   <<"image">> => string(),
+%%   <<"imagePullPolicy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements(),
+%%   <<"securityContext">> => eks_container_security_context(),
+%%   <<"volumeMounts">> => list(eks_container_volume_mount())
+%% }
+-type eks_container_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type eks_container_environment_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_override() :: #{
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
+%%   <<"image">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resources">> => eks_container_resource_requirements()
+%% }
+-type eks_container_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_resource_requirements() :: #{
+%%   <<"limits">> => map(),
+%%   <<"requests">> => map()
+%% }
+-type eks_container_resource_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_container_security_context() :: #{
+%%   <<"allowPrivilegeEscalation">> => boolean(),
+%%   <<"privileged">> => boolean(),
+%%   <<"readOnlyRootFilesystem">> => boolean(),
+%%   <<"runAsGroup">> => float(),
+%%   <<"runAsNonRoot">> => boolean(),
+%%   <<"runAsUser">> => float()
+%% }
+-type eks_container_security_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1831,19 +1004,35 @@
 
 
 %% Example:
-%% create_consumable_resource_response() :: #{
-%%   <<"consumableResourceArn">> => string(),
-%%   <<"consumableResourceName">> => string()
+%% eks_empty_dir() :: #{
+%%   <<"medium">> => string(),
+%%   <<"sizeLimit">> => string()
 %% }
--type create_consumable_resource_response() :: #{binary() => any()}.
+-type eks_empty_dir() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_jobs_by_consumable_resource_response() :: #{
-%%   <<"jobs">> => list(list_jobs_by_consumable_resource_summary()),
-%%   <<"nextToken">> => string()
+%% eks_host_path() :: #{
+%%   <<"path">> => string()
 %% }
--type list_jobs_by_consumable_resource_response() :: #{binary() => any()}.
+-type eks_host_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_metadata() :: #{
+%%   <<"annotations">> => map(),
+%%   <<"labels">> => map(),
+%%   <<"namespace">> => string()
+%% }
+-type eks_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_persistent_volume_claim() :: #{
+%%   <<"claimName">> => string(),
+%%   <<"readOnly">> => boolean()
+%% }
+-type eks_persistent_volume_claim() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1862,103 +1051,36 @@
 
 
 %% Example:
-%% server_exception() :: #{
-%%   <<"message">> => string()
+%% eks_pod_properties_detail() :: #{
+%%   <<"containers">> => list(eks_container_detail()),
+%%   <<"dnsPolicy">> => string(),
+%%   <<"hostNetwork">> => boolean(),
+%%   <<"imagePullSecrets">> => list(image_pull_secret()),
+%%   <<"initContainers">> => list(eks_container_detail()),
+%%   <<"metadata">> => eks_metadata(),
+%%   <<"nodeName">> => string(),
+%%   <<"podName">> => string(),
+%%   <<"serviceAccountName">> => string(),
+%%   <<"shareProcessNamespace">> => boolean(),
+%%   <<"volumes">> => list(eks_volume())
 %% }
--type server_exception() :: #{binary() => any()}.
+-type eks_pod_properties_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_job_queue_response() :: #{
-%%   <<"jobQueueArn">> => string(),
-%%   <<"jobQueueName">> => string()
+%% eks_pod_properties_override() :: #{
+%%   <<"containers">> => list(eks_container_override()),
+%%   <<"initContainers">> => list(eks_container_override()),
+%%   <<"metadata">> => eks_metadata()
 %% }
--type update_job_queue_response() :: #{binary() => any()}.
+-type eks_pod_properties_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% retry_strategy() :: #{
-%%   <<"attempts">> => integer(),
-%%   <<"evaluateOnExit">> => list(evaluate_on_exit())
+%% eks_properties() :: #{
+%%   <<"podProperties">> => eks_pod_properties()
 %% }
--type retry_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_jobs_request() :: #{
-%%   <<"jobs">> := list(string())
-%% }
--type describe_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_template_specification() :: #{
-%%   <<"launchTemplateId">> => string(),
-%%   <<"launchTemplateName">> => string(),
-%%   <<"overrides">> => list(launch_template_specification_override()),
-%%   <<"userdataType">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type launch_template_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_properties_summary() :: #{
-%%   <<"isMainNode">> => boolean(),
-%%   <<"nodeIndex">> => integer(),
-%%   <<"numNodes">> => integer()
-%% }
--type node_properties_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_consumable_resources_request() :: #{
-%%   <<"filters">> => list(key_values_pair()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_consumable_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_files_volume_configuration() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"fileSystemArn">> => string(),
-%%   <<"rootDirectory">> => string(),
-%%   <<"transitEncryptionPort">> => integer()
-%% }
--type s3_files_volume_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% compute_environment_detail() :: #{
-%%   <<"computeEnvironmentArn">> => string(),
-%%   <<"computeEnvironmentName">> => string(),
-%%   <<"computeResources">> => compute_resource(),
-%%   <<"containerOrchestrationType">> => list(any()),
-%%   <<"context">> => string(),
-%%   <<"ecsClusterArn">> => string(),
-%%   <<"eksConfiguration">> => eks_configuration(),
-%%   <<"serviceRole">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"unmanagedvCpus">> => integer(),
-%%   <<"updatePolicy">> => update_policy(),
-%%   <<"uuid">> => string()
-%% }
--type compute_environment_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% device() :: #{
-%%   <<"containerPath">> => string(),
-%%   <<"hostPath">> => string(),
-%%   <<"permissions">> => list(list(any())())
-%% }
--type device() :: #{binary() => any()}.
+-type eks_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1969,27 +1091,196 @@
 
 
 %% Example:
-%% describe_job_queues_request() :: #{
-%%   <<"jobQueues">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% eks_properties_override() :: #{
+%%   <<"podProperties">> => eks_pod_properties_override()
 %% }
--type describe_job_queues_request() :: #{binary() => any()}.
+-type eks_properties_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_container() :: #{
-%%   <<"args">> => list(string()),
-%%   <<"command">> => list(string()),
-%%   <<"env">> => list(eks_container_environment_variable()),
-%%   <<"image">> => string(),
-%%   <<"imagePullPolicy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resources">> => eks_container_resource_requirements(),
-%%   <<"securityContext">> => eks_container_security_context(),
-%%   <<"volumeMounts">> => list(eks_container_volume_mount())
+%% eks_secret() :: #{
+%%   <<"optional">> => boolean(),
+%%   <<"secretName">> => string()
 %% }
--type eks_container() :: #{binary() => any()}.
+-type eks_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_volume() :: #{
+%%   <<"emptyDir">> => eks_empty_dir(),
+%%   <<"hostPath">> => eks_host_path(),
+%%   <<"name">> => string(),
+%%   <<"persistentVolumeClaim">> => eks_persistent_volume_claim(),
+%%   <<"secret">> => eks_secret()
+%% }
+-type eks_volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_storage() :: #{
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type ephemeral_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_on_exit() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"onExitCode">> => string(),
+%%   <<"onReason">> => string(),
+%%   <<"onStatusReason">> => string()
+%% }
+-type evaluate_on_exit() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_capacity_usage() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type fairshare_capacity_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_capacity_utilization() :: #{
+%%   <<"capacityUsage">> => list(fairshare_capacity_usage()),
+%%   <<"shareIdentifier">> => string()
+%% }
+-type fairshare_capacity_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_policy() :: #{
+%%   <<"computeReservation">> => integer(),
+%%   <<"shareDecaySeconds">> => integer(),
+%%   <<"shareDistribution">> => list(share_attributes())
+%% }
+-type fairshare_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% fairshare_utilization_detail() :: #{
+%%   <<"activeShareCount">> => float(),
+%%   <<"topCapacityUtilization">> => list(fairshare_capacity_utilization())
+%% }
+-type fairshare_utilization_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% fargate_platform_configuration() :: #{
+%%   <<"platformVersion">> => string()
+%% }
+-type fargate_platform_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% firelens_configuration() :: #{
+%%   <<"options">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type firelens_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% front_of_queue_detail() :: #{
+%%   <<"jobs">> => list(front_of_queue_job_summary()),
+%%   <<"lastUpdatedAt">> => float()
+%% }
+-type front_of_queue_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% front_of_queue_job_summary() :: #{
+%%   <<"earliestTimeAtPosition">> => float(),
+%%   <<"jobArn">> => string()
+%% }
+-type front_of_queue_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% front_of_quota_share_job_summary() :: #{
+%%   <<"earliestTimeAtPosition">> => float(),
+%%   <<"jobArn">> => string()
+%% }
+-type front_of_quota_share_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% front_of_quota_shares_detail() :: #{
+%%   <<"lastUpdatedAt">> => float(),
+%%   <<"quotaShares">> => map()
+%% }
+-type front_of_quota_shares_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_queue_snapshot_request() :: #{
+%%   <<"jobQueue">> := string()
+%% }
+-type get_job_queue_snapshot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_queue_snapshot_response() :: #{
+%%   <<"frontOfQueue">> => front_of_queue_detail(),
+%%   <<"frontOfQuotaShares">> => front_of_quota_shares_detail(),
+%%   <<"queueUtilization">> => queue_snapshot_utilization_detail()
+%% }
+-type get_job_queue_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% host() :: #{
+%%   <<"sourcePath">> => string()
+%% }
+-type host() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_pull_secret() :: #{
+%%   <<"name">> => string()
+%% }
+-type image_pull_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_capacity_usage_summary() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type job_capacity_usage_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_definition() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%%   <<"containerOrchestrationType">> => list(any()),
+%%   <<"containerProperties">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"nodeProperties">> => node_properties(),
+%%   <<"parameters">> => map(),
+%%   <<"platformCapabilities">> => list(list(any())()),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"revision">> => integer(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout(),
+%%   <<"type">> => string()
+%% }
+-type job_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_dependency() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type job_dependency() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2029,30 +1320,344 @@
 
 
 %% Example:
-%% array_properties_detail() :: #{
-%%   <<"index">> => integer(),
-%%   <<"size">> => integer(),
-%%   <<"statusSummary">> => map(),
-%%   <<"statusSummaryLastUpdatedAt">> => float()
+%% job_queue_detail() :: #{
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string(),
+%%   <<"jobQueueType">> => list(any()),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
+%%   <<"priority">> => integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
 %% }
--type array_properties_detail() :: #{binary() => any()}.
+-type job_queue_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_scheduling_policies_request() :: #{
-%%   <<"arns">> := list(string())
+%% job_state_time_limit_action() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"maxTimeSeconds">> => integer(),
+%%   <<"reason">> => string(),
+%%   <<"state">> => list(any())
 %% }
--type describe_scheduling_policies_request() :: #{binary() => any()}.
+-type job_state_time_limit_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% array_properties_summary() :: #{
-%%   <<"index">> => integer(),
-%%   <<"size">> => integer(),
-%%   <<"statusSummary">> => map(),
-%%   <<"statusSummaryLastUpdatedAt">> => float()
+%% job_summary() :: #{
+%%   <<"arrayProperties">> => array_properties_summary(),
+%%   <<"capacityUsage">> => list(job_capacity_usage_summary()),
+%%   <<"container">> => container_summary(),
+%%   <<"createdAt">> => float(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDefinition">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"nodeProperties">> => node_properties_summary(),
+%%   <<"scheduledAt">> => float(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
 %% }
--type array_properties_summary() :: #{binary() => any()}.
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_timeout() :: #{
+%%   <<"attemptDurationSeconds">> => integer()
+%% }
+-type job_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_values_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type key_values_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% latest_service_job_attempt() :: #{
+%%   <<"serviceResourceId">> => service_resource_id()
+%% }
+-type latest_service_job_attempt() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"launchTemplateId">> => string(),
+%%   <<"launchTemplateName">> => string(),
+%%   <<"overrides">> => list(launch_template_specification_override()),
+%%   <<"userdataType">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_template_specification_override() :: #{
+%%   <<"launchTemplateId">> => string(),
+%%   <<"launchTemplateName">> => string(),
+%%   <<"targetInstanceTypes">> => list(string()),
+%%   <<"userdataType">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type launch_template_specification_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% linux_parameters() :: #{
+%%   <<"devices">> => list(device()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"maxSwap">> => integer(),
+%%   <<"sharedMemorySize">> => integer(),
+%%   <<"swappiness">> => integer(),
+%%   <<"tmpfs">> => list(tmpfs())
+%% }
+-type linux_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consumable_resources_request() :: #{
+%%   <<"filters">> => list(key_values_pair()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_consumable_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consumable_resources_response() :: #{
+%%   <<"consumableResources">> => list(consumable_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_consumable_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_request() :: #{
+%%   <<"consumableResource">> := string(),
+%%   <<"filters">> => list(key_values_pair()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_by_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_response() :: #{
+%%   <<"jobs">> => list(list_jobs_by_consumable_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_by_consumable_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_by_consumable_resource_summary() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%%   <<"createdAt">> => float(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobStatus">> => string(),
+%%   <<"quantity">> => float(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string()
+%% }
+-type list_jobs_by_consumable_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"arrayJobId">> => string(),
+%%   <<"filters">> => list(key_values_pair()),
+%%   <<"jobQueue">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"multiNodeJobId">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"jobSummaryList">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quota_shares_request() :: #{
+%%   <<"jobQueue">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_quota_shares_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quota_shares_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"quotaShares">> => list(quota_share_detail())
+%% }
+-type list_quota_shares_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduling_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduling_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduling_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schedulingPolicies">> => list(scheduling_policy_listing_detail())
+%% }
+-type list_scheduling_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_jobs_request() :: #{
+%%   <<"filters">> => list(key_values_pair()),
+%%   <<"jobQueue">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_jobs_response() :: #{
+%%   <<"jobSummaryList">> => list(service_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"logDriver">> => list(any()),
+%%   <<"options">> => map(),
+%%   <<"secretOptions">> => list(secret())
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mount_point() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceVolume">> => string()
+%% }
+-type mount_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"assignPublicIp">> => list(any())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"privateIpv4Address">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_details() :: #{
+%%   <<"isMainNode">> => boolean(),
+%%   <<"nodeIndex">> => integer()
+%% }
+-type node_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_overrides() :: #{
+%%   <<"nodePropertyOverrides">> => list(node_property_override()),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_properties() :: #{
+%%   <<"mainNode">> => integer(),
+%%   <<"nodeRangeProperties">> => list(node_range_property()),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_properties_summary() :: #{
+%%   <<"isMainNode">> => boolean(),
+%%   <<"nodeIndex">> => integer(),
+%%   <<"numNodes">> => integer()
+%% }
+-type node_properties_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_property_override() :: #{
+%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
+%%   <<"containerOverrides">> => container_overrides(),
+%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
+%%   <<"eksPropertiesOverride">> => eks_properties_override(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"targetNodes">> => string()
+%% }
+-type node_property_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_range_property() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%%   <<"container">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"targetNodes">> => string()
+%% }
+-type node_range_property() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2064,17 +1669,271 @@
 
 
 %% Example:
-%% compute_scaling_policy() :: #{
-%%   <<"minScaleDownDelayMinutes">> => integer()
+%% queue_snapshot_utilization_detail() :: #{
+%%   <<"fairshareUtilization">> => fairshare_utilization_detail(),
+%%   <<"lastUpdatedAt">> => float(),
+%%   <<"quotaShareUtilization">> => quota_share_utilization_detail(),
+%%   <<"totalCapacityUsage">> => list(queue_snapshot_capacity_usage())
 %% }
--type compute_scaling_policy() :: #{binary() => any()}.
+-type queue_snapshot_utilization_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% ecs_properties_detail() :: #{
-%%   <<"taskProperties">> => list(ecs_task_details())
+%% quota_share_capacity_limit() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"maxCapacity">> => integer()
 %% }
--type ecs_properties_detail() :: #{binary() => any()}.
+-type quota_share_capacity_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_capacity_usage() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type quota_share_capacity_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_capacity_utilization() :: #{
+%%   <<"capacityUsage">> => list(quota_share_capacity_usage()),
+%%   <<"quotaShareName">> => string()
+%% }
+-type quota_share_capacity_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_detail() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"jobQueueArn">> => string(),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type quota_share_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_policy() :: #{
+%%   <<"idleResourceAssignmentStrategy">> => list(any())
+%% }
+-type quota_share_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_preemption_configuration() :: #{
+%%   <<"inSharePreemption">> => list(any())
+%% }
+-type quota_share_preemption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_resource_sharing_configuration() :: #{
+%%   <<"borrowLimit">> => integer(),
+%%   <<"strategy">> => list(any())
+%% }
+-type quota_share_resource_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% quota_share_utilization_detail() :: #{
+%%   <<"topCapacityUtilization">> => list(quota_share_capacity_utilization())
+%% }
+-type quota_share_utilization_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_job_definition_request() :: #{
+%%   <<"consumableResourceProperties">> => consumable_resource_properties(),
+%%   <<"containerProperties">> => container_properties(),
+%%   <<"ecsProperties">> => ecs_properties(),
+%%   <<"eksProperties">> => eks_properties(),
+%%   <<"jobDefinitionName">> := string(),
+%%   <<"nodeProperties">> => node_properties(),
+%%   <<"parameters">> => map(),
+%%   <<"platformCapabilities">> => list(list(any())()),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"tags">> => map(),
+%%   <<"timeout">> => job_timeout(),
+%%   <<"type">> := list(any())
+%% }
+-type register_job_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_job_definition_response() :: #{
+%%   <<"jobDefinitionArn">> => string(),
+%%   <<"jobDefinitionName">> => string(),
+%%   <<"revision">> => integer()
+%% }
+-type register_job_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type repository_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_requirement() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type resource_requirement() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_strategy() :: #{
+%%   <<"attempts">> => integer(),
+%%   <<"evaluateOnExit">> => list(evaluate_on_exit())
+%% }
+-type retry_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_platform() :: #{
+%%   <<"cpuArchitecture">> => string(),
+%%   <<"operatingSystemFamily">> => string()
+%% }
+-type runtime_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_volume_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type s3_files_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduling_policy_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"name">> => string(),
+%%   <<"quotaSharePolicy">> => quota_share_policy(),
+%%   <<"tags">> => map()
+%% }
+-type scheduling_policy_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduling_policy_listing_detail() :: #{
+%%   <<"arn">> => string()
+%% }
+-type scheduling_policy_listing_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% secret() :: #{
+%%   <<"name">> => string(),
+%%   <<"valueFrom">> => string()
+%% }
+-type secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_environment_detail() :: #{
+%%   <<"capacityLimits">> => list(capacity_limit()),
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string(),
+%%   <<"serviceEnvironmentType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type service_environment_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_environment_order() :: #{
+%%   <<"order">> => integer(),
+%%   <<"serviceEnvironment">> => string()
+%% }
+-type service_environment_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_attempt_detail() :: #{
+%%   <<"serviceResourceId">> => service_resource_id(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type service_job_attempt_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_capacity_usage_detail() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type service_job_capacity_usage_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_capacity_usage_summary() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type service_job_capacity_usage_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_evaluate_on_exit() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"onStatusReason">> => string()
+%% }
+-type service_job_evaluate_on_exit() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_preempted_attempt() :: #{
+%%   <<"serviceResourceId">> => service_resource_id(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type service_job_preempted_attempt() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_preemption_configuration() :: #{
+%%   <<"preemptionRetriesBeforeTermination">> => integer()
+%% }
+-type service_job_preemption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_preemption_summary() :: #{
+%%   <<"preemptedAttemptCount">> => integer(),
+%%   <<"recentPreemptedAttempts">> => list(service_job_preempted_attempt())
+%% }
+-type service_job_preemption_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_retry_strategy() :: #{
+%%   <<"attempts">> => integer(),
+%%   <<"evaluateOnExit">> => list(service_job_evaluate_on_exit())
+%% }
+-type service_job_retry_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2098,146 +1957,96 @@
 
 
 %% Example:
-%% consumable_resource_summary() :: #{
-%%   <<"consumableResourceArn">> => string(),
-%%   <<"consumableResourceName">> => string(),
-%%   <<"inUseQuantity">> => float(),
-%%   <<"resourceType">> => string(),
-%%   <<"totalQuantity">> => float()
+%% service_job_timeout() :: #{
+%%   <<"attemptDurationSeconds">> => integer()
 %% }
--type consumable_resource_summary() :: #{binary() => any()}.
+-type service_job_timeout() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_job_queue_request() :: #{
-%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
-%%   <<"jobQueueName">> := string(),
-%%   <<"jobQueueType">> => list(any()),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
-%%   <<"priority">> := integer(),
-%%   <<"schedulingPolicyArn">> => string(),
-%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_job_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_configuration() :: #{
-%%   <<"logDriver">> => list(any()),
-%%   <<"options">> => map(),
-%%   <<"secretOptions">> => list(secret())
-%% }
--type log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_consumable_resource_request() :: #{
-%%   <<"consumableResource">> := string()
-%% }
--type describe_consumable_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_quota_share_request() :: #{
-%%   <<"quotaShareArn">> := string()
-%% }
--type describe_quota_share_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_job_response() :: #{}
--type cancel_job_response() :: #{}.
-
-%% Example:
-%% update_scheduling_policy_response() :: #{}
--type update_scheduling_policy_response() :: #{}.
-
-
-%% Example:
-%% update_quota_share_request() :: #{
-%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
-%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
-%%   <<"quotaShareArn">> := string(),
-%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
-%%   <<"state">> => list(any())
-%% }
--type update_quota_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_requirement() :: #{
-%%   <<"type">> => list(any()),
+%% service_resource_id() :: #{
+%%   <<"name">> => list(any()),
 %%   <<"value">> => string()
 %% }
--type resource_requirement() :: #{binary() => any()}.
+-type service_resource_id() :: #{binary() => any()}.
 
 
 %% Example:
-%% firelens_configuration() :: #{
-%%   <<"options">> => map(),
-%%   <<"type">> => list(any())
+%% share_attributes() :: #{
+%%   <<"shareIdentifier">> => string(),
+%%   <<"weightFactor">> => float()
 %% }
--type firelens_configuration() :: #{binary() => any()}.
+-type share_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_state_time_limit_action() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"maxTimeSeconds">> => integer(),
-%%   <<"reason">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type job_state_time_limit_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quota_shares_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"quotaShares">> => list(quota_share_detail())
-%% }
--type list_quota_shares_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% compute_resource() :: #{
-%%   <<"allocationStrategy">> => list(any()),
-%%   <<"bidPercentage">> => integer(),
-%%   <<"desiredvCpus">> => integer(),
-%%   <<"ec2Configuration">> => list(ec2_configuration()),
-%%   <<"ec2KeyPair">> => string(),
-%%   <<"imageId">> => string(),
-%%   <<"instanceRole">> => string(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"launchTemplate">> => launch_template_specification(),
-%%   <<"maxvCpus">> => integer(),
-%%   <<"minvCpus">> => integer(),
-%%   <<"placementGroup">> => string(),
-%%   <<"scalingPolicy">> => compute_scaling_policy(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"spotIamFleetRole">> => string(),
-%%   <<"subnets">> => list(string()),
+%% submit_job_request() :: #{
+%%   <<"arrayProperties">> => array_properties(),
+%%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
+%%   <<"containerOverrides">> => container_overrides(),
+%%   <<"dependsOn">> => list(job_dependency()),
+%%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
+%%   <<"eksPropertiesOverride">> => eks_properties_override(),
+%%   <<"jobDefinition">> := string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobQueue">> := string(),
+%%   <<"nodeOverrides">> => node_overrides(),
+%%   <<"parameters">> => map(),
+%%   <<"propagateTags">> => boolean(),
+%%   <<"retryStrategy">> => retry_strategy(),
+%%   <<"schedulingPriorityOverride">> => integer(),
+%%   <<"shareIdentifier">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
+%%   <<"timeout">> => job_timeout()
 %% }
--type compute_resource() :: #{binary() => any()}.
+-type submit_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_properties() :: #{
-%%   <<"mainNode">> => integer(),
-%%   <<"nodeRangeProperties">> => list(node_range_property()),
-%%   <<"numNodes">> => integer()
+%% submit_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
 %% }
--type node_properties() :: #{binary() => any()}.
+-type submit_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_empty_dir() :: #{
-%%   <<"medium">> => string(),
-%%   <<"sizeLimit">> => string()
+%% submit_service_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobQueue">> := string(),
+%%   <<"preemptionConfiguration">> => service_job_preemption_configuration(),
+%%   <<"quotaShareName">> => string(),
+%%   <<"retryStrategy">> => service_job_retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"serviceJobType">> := list(any()),
+%%   <<"serviceRequestPayload">> := string(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutConfig">> => service_job_timeout()
 %% }
--type eks_empty_dir() :: #{binary() => any()}.
+-type submit_service_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_service_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type submit_service_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -2249,56 +2058,42 @@
 
 
 %% Example:
-%% eks_pod_properties_override() :: #{
-%%   <<"containers">> => list(eks_container_override()),
-%%   <<"initContainers">> => list(eks_container_override()),
-%%   <<"metadata">> => eks_metadata()
+%% task_container_details() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"dependsOn">> => list(task_container_dependency()),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"essential">> => boolean(),
+%%   <<"exitCode">> => integer(),
+%%   <<"firelensConfiguration">> => firelens_configuration(),
+%%   <<"image">> => string(),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"logStreamName">> => string(),
+%%   <<"mountPoints">> => list(mount_point()),
+%%   <<"name">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"privileged">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"reason">> => string(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"secrets">> => list(secret()),
+%%   <<"startTimeout">> => integer(),
+%%   <<"stopTimeout">> => integer(),
+%%   <<"ulimits">> => list(ulimit()),
+%%   <<"user">> => string()
 %% }
--type eks_pod_properties_override() :: #{binary() => any()}.
+-type task_container_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% consumable_resource_properties() :: #{
-%%   <<"consumableResourceList">> => list(consumable_resource_requirement())
+%% task_container_overrides() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"name">> => string(),
+%%   <<"resourceRequirements">> => list(resource_requirement())
 %% }
--type consumable_resource_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_credentials() :: #{
-%%   <<"credentialsParameter">> => string()
-%% }
--type repository_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_pod_properties_detail() :: #{
-%%   <<"containers">> => list(eks_container_detail()),
-%%   <<"dnsPolicy">> => string(),
-%%   <<"hostNetwork">> => boolean(),
-%%   <<"imagePullSecrets">> => list(image_pull_secret()),
-%%   <<"initContainers">> => list(eks_container_detail()),
-%%   <<"metadata">> => eks_metadata(),
-%%   <<"nodeName">> => string(),
-%%   <<"podName">> => string(),
-%%   <<"serviceAccountName">> => string(),
-%%   <<"shareProcessNamespace">> => boolean(),
-%%   <<"volumes">> => list(eks_volume())
-%% }
--type eks_pod_properties_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% tmpfs() :: #{
-%%   <<"containerPath">> => string(),
-%%   <<"mountOptions">> => list(string()),
-%%   <<"size">> => integer()
-%% }
--type tmpfs() :: #{binary() => any()}.
-
-%% Example:
-%% delete_compute_environment_response() :: #{}
--type delete_compute_environment_response() :: #{}.
+-type task_container_overrides() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2324,6 +2119,211 @@
 %%   <<"user">> => string()
 %% }
 -type task_container_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_properties_override() :: #{
+%%   <<"containers">> => list(task_container_overrides())
+%% }
+-type task_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type terminate_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_job_response() :: #{}
+-type terminate_job_response() :: #{}.
+
+
+%% Example:
+%% terminate_service_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type terminate_service_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_service_job_response() :: #{}
+-type terminate_service_job_response() :: #{}.
+
+
+%% Example:
+%% tmpfs() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"mountOptions">> => list(string()),
+%%   <<"size">> => integer()
+%% }
+-type tmpfs() :: #{binary() => any()}.
+
+
+%% Example:
+%% ulimit() :: #{
+%%   <<"hardLimit">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"softLimit">> => integer()
+%% }
+-type ulimit() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_compute_environment_request() :: #{
+%%   <<"computeEnvironment">> := string(),
+%%   <<"computeResources">> => compute_resource_update(),
+%%   <<"context">> => string(),
+%%   <<"serviceRole">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"unmanagedvCpus">> => integer(),
+%%   <<"updatePolicy">> => update_policy()
+%% }
+-type update_compute_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_compute_environment_response() :: #{
+%%   <<"computeEnvironmentArn">> => string(),
+%%   <<"computeEnvironmentName">> => string()
+%% }
+-type update_compute_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_consumable_resource_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"consumableResource">> := string(),
+%%   <<"operation">> => string(),
+%%   <<"quantity">> => float()
+%% }
+-type update_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_consumable_resource_response() :: #{
+%%   <<"consumableResourceArn">> => string(),
+%%   <<"consumableResourceName">> => string(),
+%%   <<"totalQuantity">> => float()
+%% }
+-type update_consumable_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_queue_request() :: #{
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
+%%   <<"jobQueue">> := string(),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
+%%   <<"priority">> => integer(),
+%%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
+%%   <<"state">> => list(any())
+%% }
+-type update_job_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_queue_response() :: #{
+%%   <<"jobQueueArn">> => string(),
+%%   <<"jobQueueName">> => string()
+%% }
+-type update_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy() :: #{
+%%   <<"jobExecutionTimeoutMinutes">> => float(),
+%%   <<"terminateJobsOnUpdate">> => boolean()
+%% }
+-type update_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quota_share_request() :: #{
+%%   <<"capacityLimits">> => list(quota_share_capacity_limit()),
+%%   <<"preemptionConfiguration">> => quota_share_preemption_configuration(),
+%%   <<"quotaShareArn">> := string(),
+%%   <<"resourceSharingConfiguration">> => quota_share_resource_sharing_configuration(),
+%%   <<"state">> => list(any())
+%% }
+-type update_quota_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quota_share_response() :: #{
+%%   <<"quotaShareArn">> => string(),
+%%   <<"quotaShareName">> => string()
+%% }
+-type update_quota_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scheduling_policy_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"fairsharePolicy">> => fairshare_policy(),
+%%   <<"quotaSharePolicy">> => quota_share_policy()
+%% }
+-type update_scheduling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scheduling_policy_response() :: #{}
+-type update_scheduling_policy_response() :: #{}.
+
+
+%% Example:
+%% update_service_environment_request() :: #{
+%%   <<"capacityLimits">> => list(capacity_limit()),
+%%   <<"serviceEnvironment">> := string(),
+%%   <<"state">> => list(any())
+%% }
+-type update_service_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_environment_response() :: #{
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string()
+%% }
+-type update_service_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"schedulingPriority">> := integer()
+%% }
+-type update_service_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type update_service_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% volume() :: #{
+%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
+%%   <<"host">> => host(),
+%%   <<"name">> => string(),
+%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
+%% }
+-type volume() :: #{binary() => any()}.
 
 -type cancel_job_errors() ::
     server_exception() | 

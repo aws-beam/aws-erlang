@@ -110,6 +110,158 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_definition() :: #{
+%%   <<"appDefinitionVersion">> => [string()],
+%%   <<"canEdit">> => [boolean()],
+%%   <<"cards">> => list(list())
+%% }
+-type app_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_definition_input() :: #{
+%%   <<"cards">> => list(list()),
+%%   <<"initialPrompt">> => string()
+%% }
+-type app_definition_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_library_item_review_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"libraryItemId">> := string()
+%% }
+-type associate_library_item_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_q_app_with_user_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"instanceId">> := string()
+%% }
+-type associate_q_app_with_user_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_filter() :: #{
+%%   <<"andAllFilters">> => list(attribute_filter()),
+%%   <<"containsAll">> => document_attribute(),
+%%   <<"containsAny">> => document_attribute(),
+%%   <<"equalsTo">> => document_attribute(),
+%%   <<"greaterThan">> => document_attribute(),
+%%   <<"greaterThanOrEquals">> => document_attribute(),
+%%   <<"lessThan">> => document_attribute(),
+%%   <<"lessThanOrEquals">> => document_attribute(),
+%%   <<"notFilter">> => attribute_filter(),
+%%   <<"orAllFilters">> => list(attribute_filter())
+%% }
+-type attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_category_input() :: #{
+%%   <<"categories">> := list(batch_create_category_input_category()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_create_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_category_input_category() :: #{
+%%   <<"color">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type batch_create_category_input_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_category_input() :: #{
+%%   <<"categories">> := list(string()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_delete_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_category_input() :: #{
+%%   <<"categories">> := list(category_input()),
+%%   <<"instanceId">> := string()
+%% }
+-type batch_update_category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% card_status() :: #{
+%%   <<"currentState">> => list(any()),
+%%   <<"currentValue">> => [string()],
+%%   <<"submissions">> => list(submission())
+%% }
+-type card_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% card_value() :: #{
+%%   <<"cardId">> => string(),
+%%   <<"submissionMutation">> => submission_mutation(),
+%%   <<"value">> => [string()]
+%% }
+-type card_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% category() :: #{
+%%   <<"appCount">> => [integer()],
+%%   <<"color">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type category() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_input() :: #{
+%%   <<"color">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => [string()]
+%% }
+-type category_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_too_large_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type content_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_message() :: #{
+%%   <<"body">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type conversation_message() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_library_item_input() :: #{
 %%   <<"appId">> := string(),
 %%   <<"appVersion">> := integer(),
@@ -117,29 +269,6 @@
 %%   <<"instanceId">> := string()
 %% }
 -type create_library_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_library_item_metadata_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"isVerified">> => [boolean()],
-%%   <<"libraryItemId">> := string()
-%% }
--type update_library_item_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_app_item() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appId">> => string(),
-%%   <<"canEdit">> => [boolean()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"isVerified">> => [boolean()],
-%%   <<"status">> => [string()],
-%%   <<"title">> => string()
-%% }
--type user_app_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -157,90 +286,96 @@
 
 
 %% Example:
-%% update_q_app_permissions_output() :: #{
+%% create_presigned_url_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"cardId">> := string(),
+%%   <<"fileContentsSha256">> := [string()],
+%%   <<"fileName">> := string(),
+%%   <<"instanceId">> := string(),
+%%   <<"scope">> := list(any()),
+%%   <<"sessionId">> => string()
+%% }
+-type create_presigned_url_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_presigned_url_output() :: #{
+%%   <<"fileId">> => [string()],
+%%   <<"presignedUrl">> => [string()],
+%%   <<"presignedUrlExpiration">> => non_neg_integer(),
+%%   <<"presignedUrlFields">> => map()
+%% }
+-type create_presigned_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_q_app_input() :: #{
+%%   <<"appDefinition">> := app_definition_input(),
+%%   <<"description">> => string(),
+%%   <<"instanceId">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> := string()
+%% }
+-type create_q_app_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_q_app_output() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appId">> => string(),
+%%   <<"appVersion">> => integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"initialPrompt">> => string(),
+%%   <<"requiredCapabilities">> => list(list(any())()),
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()]
+%% }
+-type create_q_app_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_library_item_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"libraryItemId">> := string()
+%% }
+-type delete_library_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_q_app_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"instanceId">> := string()
+%% }
+-type delete_q_app_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_q_app_permissions_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"instanceId">> := string()
+%% }
+-type describe_q_app_permissions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_q_app_permissions_output() :: #{
 %%   <<"appId">> => [string()],
 %%   <<"permissions">> => list(permission_output()),
 %%   <<"resourceArn">> => [string()]
 %% }
--type update_q_app_permissions_output() :: #{binary() => any()}.
+-type describe_q_app_permissions_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_q_app_session_metadata_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string(),
-%%   <<"sessionName">> => string(),
-%%   <<"sharingConfiguration">> := session_sharing_configuration()
-%% }
--type update_q_app_session_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_document_output() :: #{
-%%   <<"fileId">> => [string()]
-%% }
--type import_document_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_q_app_session_data_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"sessionArn">> => [string()],
-%%   <<"sessionData">> => list(q_app_session_data()),
-%%   <<"sessionId">> => string()
-%% }
--type list_q_app_session_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_library_item_input() :: #{
-%%   <<"appId">> => string(),
+%% disassociate_library_item_review_input() :: #{
 %%   <<"instanceId">> := string(),
 %%   <<"libraryItemId">> := string()
 %% }
--type get_library_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_q_app_session_metadata_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string()
-%% }
--type get_q_app_session_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_output() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"principal">> => principal_output()
-%% }
--type permission_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_attribute() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => list()
-%% }
--type document_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type disassociate_library_item_review_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -252,18 +387,65 @@
 
 
 %% Example:
-%% batch_create_category_input() :: #{
-%%   <<"categories">> := list(batch_create_category_input_category()),
-%%   <<"instanceId">> := string()
+%% document_attribute() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => list()
 %% }
--type batch_create_category_input() :: #{binary() => any()}.
+-type document_attribute() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_categories_output() :: #{
-%%   <<"categories">> => list(category())
+%% export_q_app_session_data_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string()
 %% }
--type list_categories_output() :: #{binary() => any()}.
+-type export_q_app_session_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_q_app_session_data_output() :: #{
+%%   <<"csvFileLink">> => [string()],
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"sessionArn">> => [string()]
+%% }
+-type export_q_app_session_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_upload_card() :: #{
+%%   <<"allowOverride">> => [boolean()],
+%%   <<"dependencies">> => list([string()]()),
+%%   <<"fileId">> => [string()],
+%%   <<"filename">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type file_upload_card() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_upload_card_input() :: #{
+%%   <<"allowOverride">> => [boolean()],
+%%   <<"fileId">> => string(),
+%%   <<"filename">> => string(),
+%%   <<"id">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type file_upload_card_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_card() :: #{
+%%   <<"computeMode">> => list(any()),
+%%   <<"dependencies">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => form_input_card_metadata(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type form_input_card() :: #{binary() => any()}.
 
 
 %% Example:
@@ -278,32 +460,6 @@
 
 
 %% Example:
-%% session_sharing_configuration() :: #{
-%%   <<"acceptResponses">> => boolean(),
-%%   <<"enabled">> => boolean(),
-%%   <<"revealCards">> => boolean()
-%% }
--type session_sharing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% category_input() :: #{
-%%   <<"color">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"title">> => [string()]
-%% }
--type category_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_definition_input() :: #{
-%%   <<"cards">> => list(list()),
-%%   <<"initialPrompt">> => string()
-%% }
--type app_definition_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% form_input_card_metadata() :: #{
 %%   <<"schema">> => any()
 %% }
@@ -311,15 +467,12 @@
 
 
 %% Example:
-%% start_q_app_session_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"appVersion">> := integer(),
-%%   <<"initialValues">> => list(card_value()),
+%% get_library_item_input() :: #{
+%%   <<"appId">> => string(),
 %%   <<"instanceId">> := string(),
-%%   <<"sessionId">> => [string()],
-%%   <<"tags">> => map()
+%%   <<"libraryItemId">> := string()
 %% }
--type start_q_app_session_input() :: #{binary() => any()}.
+-type get_library_item_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -342,285 +495,12 @@
 
 
 %% Example:
-%% update_q_app_session_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string(),
-%%   <<"values">> => list(card_value())
-%% }
--type update_q_app_session_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_q_app_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"instanceId">> := string()
-%% }
--type delete_q_app_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% predict_q_app_output() :: #{
-%%   <<"app">> => predict_app_definition(),
-%%   <<"problemStatement">> => [string()]
-%% }
--type predict_q_app_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_q_app_with_user_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"instanceId">> := string()
-%% }
--type associate_q_app_with_user_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_q_app_permissions_output() :: #{
-%%   <<"appId">> => [string()],
-%%   <<"permissions">> => list(permission_output()),
-%%   <<"resourceArn">> => [string()]
-%% }
--type describe_q_app_permissions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_q_app_input() :: #{
-%%   <<"appDefinition">> := app_definition_input(),
-%%   <<"description">> => string(),
-%%   <<"instanceId">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> := string()
-%% }
--type create_q_app_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_plugin_card() :: #{
-%%   <<"actionIdentifier">> => string(),
-%%   <<"dependencies">> => list([string()]()),
-%%   <<"id">> => string(),
-%%   <<"pluginId">> => [string()],
-%%   <<"pluginType">> => list(any()),
-%%   <<"prompt">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type q_plugin_card() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_library_item_output() :: #{
-%%   <<"appId">> => string(),
-%%   <<"appVersion">> => integer(),
-%%   <<"categories">> => list(category()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => [string()],
-%%   <<"isRatedByUser">> => [boolean()],
-%%   <<"isVerified">> => [boolean()],
-%%   <<"libraryItemId">> => string(),
-%%   <<"ratingCount">> => [integer()],
-%%   <<"status">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => [string()],
-%%   <<"userCount">> => [integer()]
-%% }
--type update_library_item_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_upload_card_input() :: #{
-%%   <<"allowOverride">> => [boolean()],
-%%   <<"fileId">> => string(),
-%%   <<"filename">> => string(),
-%%   <<"id">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type file_upload_card_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_q_app_session_output() :: #{
-%%   <<"sessionArn">> => [string()],
-%%   <<"sessionId">> => [string()]
-%% }
--type update_q_app_session_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_definition() :: #{
-%%   <<"appDefinitionVersion">> => [string()],
-%%   <<"canEdit">> => [boolean()],
-%%   <<"cards">> => list(list())
-%% }
--type app_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_presigned_url_output() :: #{
-%%   <<"fileId">> => [string()],
-%%   <<"presignedUrl">> => [string()],
-%%   <<"presignedUrlExpiration">> => non_neg_integer(),
-%%   <<"presignedUrlFields">> => map()
-%% }
--type create_presigned_url_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% library_item_member() :: #{
-%%   <<"appId">> => string(),
-%%   <<"appVersion">> => integer(),
-%%   <<"categories">> => list(category()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => [string()],
-%%   <<"isRatedByUser">> => [boolean()],
-%%   <<"isVerified">> => [boolean()],
-%%   <<"libraryItemId">> => string(),
-%%   <<"ratingCount">> => [integer()],
-%%   <<"status">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => [string()],
-%%   <<"userCount">> => [integer()]
-%% }
--type library_item_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_q_app_input() :: #{
 %%   <<"appId">> := string(),
 %%   <<"appVersion">> => integer(),
 %%   <<"instanceId">> := string()
 %% }
 -type get_q_app_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_q_app_session_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string()
-%% }
--type get_q_app_session_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_library_item_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"libraryItemId">> := string()
-%% }
--type delete_library_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% predict_app_definition() :: #{
-%%   <<"appDefinition">> => app_definition_input(),
-%%   <<"description">> => string(),
-%%   <<"title">> => string()
-%% }
--type predict_app_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% card_status() :: #{
-%%   <<"currentState">> => list(any()),
-%%   <<"currentValue">> => [string()],
-%%   <<"submissions">> => list(submission())
-%% }
--type card_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_query_card() :: #{
-%%   <<"attributeFilter">> => attribute_filter(),
-%%   <<"dependencies">> => list([string()]()),
-%%   <<"id">> => string(),
-%%   <<"memoryReferences">> => list([string()]()),
-%%   <<"outputSource">> => list(any()),
-%%   <<"prompt">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type q_query_card() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_category_input() :: #{
-%%   <<"categories">> := list(string()),
-%%   <<"instanceId">> := string()
-%% }
--type batch_delete_category_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_output() :: #{
-%%   <<"email">> => [string()],
-%%   <<"userId">> => [string()],
-%%   <<"userType">> => list(any())
-%% }
--type principal_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_category_input_category() :: #{
-%%   <<"color">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"title">> => [string()]
-%% }
--type batch_create_category_input_category() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_plugin_card_input() :: #{
-%%   <<"actionIdentifier">> => string(),
-%%   <<"id">> => string(),
-%%   <<"pluginId">> => string(),
-%%   <<"prompt">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type q_plugin_card_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -643,116 +523,19 @@
 
 
 %% Example:
-%% update_q_app_permissions_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"grantPermissions">> => list(permission_input()),
+%% get_q_app_session_input() :: #{
 %%   <<"instanceId">> := string(),
-%%   <<"revokePermissions">> => list(permission_input())
+%%   <<"sessionId">> := string()
 %% }
--type update_q_app_permissions_input() :: #{binary() => any()}.
+-type get_q_app_session_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_library_item_review_input() :: #{
+%% get_q_app_session_metadata_input() :: #{
 %%   <<"instanceId">> := string(),
-%%   <<"libraryItemId">> := string()
+%%   <<"sessionId">> := string()
 %% }
--type disassociate_library_item_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_library_items_input() :: #{
-%%   <<"categoryId">> => string(),
-%%   <<"instanceId">> := string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_library_items_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_input_card_input() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"id">> => string(),
-%%   <<"placeholder">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type text_input_card_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_message() :: #{
-%%   <<"body">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type conversation_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_library_item_input() :: #{
-%%   <<"categories">> => list(string()),
-%%   <<"instanceId">> := string(),
-%%   <<"libraryItemId">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type update_library_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_q_app_output() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appId">> => string(),
-%%   <<"appVersion">> => integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"initialPrompt">> => string(),
-%%   <<"requiredCapabilities">> => list(list(any())()),
-%%   <<"status">> => list(any()),
-%%   <<"title">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => [string()]
-%% }
--type create_q_app_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_q_app_session_metadata_output() :: #{
-%%   <<"sessionArn">> => [string()],
-%%   <<"sessionId">> => string(),
-%%   <<"sessionName">> => string(),
-%%   <<"sharingConfiguration">> => session_sharing_configuration()
-%% }
--type update_q_app_session_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_categories_input() :: #{
-%%   <<"instanceId">> := string()
-%% }
--type list_categories_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_presigned_url_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"cardId">> := string(),
-%%   <<"fileContentsSha256">> := [string()],
-%%   <<"fileName">> := string(),
-%%   <<"instanceId">> := string(),
-%%   <<"scope">> := list(any()),
-%%   <<"sessionId">> => string()
-%% }
--type create_presigned_url_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type get_q_app_session_metadata_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -767,6 +550,99 @@
 
 
 %% Example:
+%% get_q_app_session_output() :: #{
+%%   <<"appVersion">> => integer(),
+%%   <<"cardStatus">> => map(),
+%%   <<"latestPublishedAppVersion">> => integer(),
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionId">> => [string()],
+%%   <<"sessionName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"userIsHost">> => [boolean()]
+%% }
+-type get_q_app_session_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_document_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"cardId">> := string(),
+%%   <<"fileContentsBase64">> := [string()],
+%%   <<"fileName">> := string(),
+%%   <<"instanceId">> := string(),
+%%   <<"scope">> := list(any()),
+%%   <<"sessionId">> => string()
+%% }
+-type import_document_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_document_output() :: #{
+%%   <<"fileId">> => [string()]
+%% }
+-type import_document_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_item_member() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appVersion">> => integer(),
+%%   <<"categories">> => list(category()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => [string()],
+%%   <<"isRatedByUser">> => [boolean()],
+%%   <<"isVerified">> => [boolean()],
+%%   <<"libraryItemId">> => string(),
+%%   <<"ratingCount">> => [integer()],
+%%   <<"status">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()],
+%%   <<"userCount">> => [integer()]
+%% }
+-type library_item_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_categories_input() :: #{
+%%   <<"instanceId">> := string()
+%% }
+-type list_categories_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_categories_output() :: #{
+%%   <<"categories">> => list(category())
+%% }
+-type list_categories_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_library_items_input() :: #{
+%%   <<"categoryId">> => string(),
+%%   <<"instanceId">> := string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_library_items_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_library_items_output() :: #{
+%%   <<"libraryItems">> => list(library_item_member()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_library_items_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_q_app_session_data_input() :: #{
 %%   <<"instanceId">> := string(),
 %%   <<"sessionId">> := string()
@@ -775,10 +651,41 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_q_app_session_data_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionData">> => list(q_app_session_data()),
+%%   <<"sessionId">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type list_q_app_session_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_q_apps_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_q_apps_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_q_apps_output() :: #{
+%%   <<"apps">> => list(user_app_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_q_apps_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -790,12 +697,189 @@
 
 
 %% Example:
+%% permission_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"principal">> => principal_output()
+%% }
+-type permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% predict_app_definition() :: #{
+%%   <<"appDefinition">> => app_definition_input(),
+%%   <<"description">> => string(),
+%%   <<"title">> => string()
+%% }
+-type predict_app_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% predict_q_app_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"options">> => list()
+%% }
+-type predict_q_app_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% predict_q_app_output() :: #{
+%%   <<"app">> => predict_app_definition(),
+%%   <<"problemStatement">> => [string()]
+%% }
+-type predict_q_app_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_output() :: #{
+%%   <<"email">> => [string()],
+%%   <<"userId">> => [string()],
+%%   <<"userType">> => list(any())
+%% }
+-type principal_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_app_session_data() :: #{
+%%   <<"cardId">> => string(),
+%%   <<"submissionId">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"user">> => user(),
+%%   <<"value">> => [any()]
+%% }
+-type q_app_session_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_plugin_card() :: #{
+%%   <<"actionIdentifier">> => string(),
+%%   <<"dependencies">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"pluginId">> => [string()],
+%%   <<"pluginType">> => list(any()),
+%%   <<"prompt">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type q_plugin_card() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_plugin_card_input() :: #{
+%%   <<"actionIdentifier">> => string(),
+%%   <<"id">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"prompt">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type q_plugin_card_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_query_card() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"dependencies">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"memoryReferences">> => list([string()]()),
+%%   <<"outputSource">> => list(any()),
+%%   <<"prompt">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type q_query_card() :: #{binary() => any()}.
+
+
+%% Example:
+%% q_query_card_input() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"id">> => string(),
+%%   <<"outputSource">> => list(any()),
+%%   <<"prompt">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type q_query_card_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_sharing_configuration() :: #{
+%%   <<"acceptResponses">> => boolean(),
+%%   <<"enabled">> => boolean(),
+%%   <<"revealCards">> => boolean()
+%% }
+-type session_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_q_app_session_input() :: #{
+%%   <<"appId">> := string(),
+%%   <<"appVersion">> := integer(),
+%%   <<"initialValues">> => list(card_value()),
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> => [string()],
+%%   <<"tags">> => map()
+%% }
+-type start_q_app_session_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_q_app_session_output() :: #{
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionId">> => [string()]
+%% }
+-type start_q_app_session_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_q_app_session_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"sessionId">> := string()
+%% }
+-type stop_q_app_session_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% submission() :: #{
 %%   <<"submissionId">> => string(),
 %%   <<"timestamp">> => non_neg_integer(),
 %%   <<"value">> => [any()]
 %% }
 -type submission() :: #{binary() => any()}.
+
+
+%% Example:
+%% submission_mutation() :: #{
+%%   <<"mutationType">> => list(any()),
+%%   <<"submissionId">> => string()
+%% }
+-type submission_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -815,53 +899,14 @@
 
 
 %% Example:
-%% list_library_items_output() :: #{
-%%   <<"libraryItems">> => list(library_item_member()),
-%%   <<"nextToken">> => [string()]
+%% text_input_card_input() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"id">> => string(),
+%%   <<"placeholder">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type list_library_items_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_q_app_session_output() :: #{
-%%   <<"appVersion">> => integer(),
-%%   <<"cardStatus">> => map(),
-%%   <<"latestPublishedAppVersion">> => integer(),
-%%   <<"sessionArn">> => [string()],
-%%   <<"sessionId">> => [string()],
-%%   <<"sessionName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"userIsHost">> => [boolean()]
-%% }
--type get_q_app_session_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_q_apps_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_q_apps_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% export_q_app_session_data_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string()
-%% }
--type export_q_app_session_data_input() :: #{binary() => any()}.
+-type text_input_card_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -875,40 +920,70 @@
 
 
 %% Example:
-%% user() :: #{
-%%   <<"userId">> => string()
+%% unauthorized_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type user() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_library_item_review_input() :: #{
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_library_item_input() :: #{
+%%   <<"categories">> => list(string()),
 %%   <<"instanceId">> := string(),
+%%   <<"libraryItemId">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_library_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_library_item_metadata_input() :: #{
+%%   <<"instanceId">> := string(),
+%%   <<"isVerified">> => [boolean()],
 %%   <<"libraryItemId">> := string()
 %% }
--type associate_library_item_review_input() :: #{binary() => any()}.
+-type update_library_item_metadata_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% file_upload_card() :: #{
-%%   <<"allowOverride">> => [boolean()],
-%%   <<"dependencies">> => list([string()]()),
-%%   <<"fileId">> => [string()],
-%%   <<"filename">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
+%% update_library_item_output() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appVersion">> => integer(),
+%%   <<"categories">> => list(category()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => [string()],
+%%   <<"isRatedByUser">> => [boolean()],
+%%   <<"isVerified">> => [boolean()],
+%%   <<"libraryItemId">> => string(),
+%%   <<"ratingCount">> => [integer()],
+%%   <<"status">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()],
+%%   <<"userCount">> => [integer()]
 %% }
--type file_upload_card() :: #{binary() => any()}.
+-type update_library_item_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% card_value() :: #{
-%%   <<"cardId">> => string(),
-%%   <<"submissionMutation">> => submission_mutation(),
-%%   <<"value">> => [string()]
+%% update_q_app_input() :: #{
+%%   <<"appDefinition">> => app_definition_input(),
+%%   <<"appId">> := string(),
+%%   <<"description">> => string(),
+%%   <<"instanceId">> := string(),
+%%   <<"title">> => string()
 %% }
--type card_value() :: #{binary() => any()}.
+-type update_q_app_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -930,463 +1005,388 @@
 
 
 %% Example:
-%% category() :: #{
-%%   <<"appCount">> => [integer()],
-%%   <<"color">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"title">> => [string()]
-%% }
--type category() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_q_app_session_input() :: #{
-%%   <<"instanceId">> := string(),
-%%   <<"sessionId">> := string()
-%% }
--type stop_q_app_session_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_filter() :: #{
-%%   <<"andAllFilters">> => list(attribute_filter()),
-%%   <<"containsAll">> => document_attribute(),
-%%   <<"containsAny">> => document_attribute(),
-%%   <<"equalsTo">> => document_attribute(),
-%%   <<"greaterThan">> => document_attribute(),
-%%   <<"greaterThanOrEquals">> => document_attribute(),
-%%   <<"lessThan">> => document_attribute(),
-%%   <<"lessThanOrEquals">> => document_attribute(),
-%%   <<"notFilter">> => attribute_filter(),
-%%   <<"orAllFilters">> => list(attribute_filter())
-%% }
--type attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_query_card_input() :: #{
-%%   <<"attributeFilter">> => attribute_filter(),
-%%   <<"id">> => string(),
-%%   <<"outputSource">> => list(any()),
-%%   <<"prompt">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type q_query_card_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_q_app_input() :: #{
-%%   <<"appDefinition">> => app_definition_input(),
+%% update_q_app_permissions_input() :: #{
 %%   <<"appId">> := string(),
-%%   <<"description">> => string(),
+%%   <<"grantPermissions">> => list(permission_input()),
 %%   <<"instanceId">> := string(),
-%%   <<"title">> => string()
+%%   <<"revokePermissions">> => list(permission_input())
 %% }
--type update_q_app_input() :: #{binary() => any()}.
+-type update_q_app_permissions_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% predict_q_app_input() :: #{
+%% update_q_app_permissions_output() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"permissions">> => list(permission_output()),
+%%   <<"resourceArn">> => [string()]
+%% }
+-type update_q_app_permissions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_q_app_session_input() :: #{
 %%   <<"instanceId">> := string(),
-%%   <<"options">> => list()
+%%   <<"sessionId">> := string(),
+%%   <<"values">> => list(card_value())
 %% }
--type predict_q_app_input() :: #{binary() => any()}.
+-type update_q_app_session_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% content_too_large_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type content_too_large_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_document_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"cardId">> := string(),
-%%   <<"fileContentsBase64">> := [string()],
-%%   <<"fileName">> := string(),
+%% update_q_app_session_metadata_input() :: #{
 %%   <<"instanceId">> := string(),
-%%   <<"scope">> := list(any()),
-%%   <<"sessionId">> => string()
+%%   <<"sessionId">> := string(),
+%%   <<"sessionName">> => string(),
+%%   <<"sharingConfiguration">> := session_sharing_configuration()
 %% }
--type import_document_input() :: #{binary() => any()}.
+-type update_q_app_session_metadata_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_update_category_input() :: #{
-%%   <<"categories">> := list(category_input()),
-%%   <<"instanceId">> := string()
+%% update_q_app_session_metadata_output() :: #{
+%%   <<"sessionArn">> => [string()],
+%%   <<"sessionId">> => string(),
+%%   <<"sessionName">> => string(),
+%%   <<"sharingConfiguration">> => session_sharing_configuration()
 %% }
--type batch_update_category_input() :: #{binary() => any()}.
+-type update_q_app_session_metadata_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_q_app_session_output() :: #{
+%% update_q_app_session_output() :: #{
 %%   <<"sessionArn">> => [string()],
 %%   <<"sessionId">> => [string()]
 %% }
--type start_q_app_session_output() :: #{binary() => any()}.
+-type update_q_app_session_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_q_app_permissions_input() :: #{
-%%   <<"appId">> := string(),
-%%   <<"instanceId">> := string()
+%% user() :: #{
+%%   <<"userId">> => string()
 %% }
--type describe_q_app_permissions_input() :: #{binary() => any()}.
+-type user() :: #{binary() => any()}.
 
 
 %% Example:
-%% submission_mutation() :: #{
-%%   <<"mutationType">> => list(any()),
-%%   <<"submissionId">> => string()
+%% user_app_item() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appId">> => string(),
+%%   <<"canEdit">> => [boolean()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"isVerified">> => [boolean()],
+%%   <<"status">> => [string()],
+%%   <<"title">> => string()
 %% }
--type submission_mutation() :: #{binary() => any()}.
+-type user_app_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% form_input_card() :: #{
-%%   <<"computeMode">> => list(any()),
-%%   <<"dependencies">> => list([string()]()),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => form_input_card_metadata(),
-%%   <<"title">> => string(),
-%%   <<"type">> => list(any())
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type form_input_card() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_q_apps_output() :: #{
-%%   <<"apps">> => list(user_app_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_q_apps_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% q_app_session_data() :: #{
-%%   <<"cardId">> => string(),
-%%   <<"submissionId">> => string(),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"user">> => user(),
-%%   <<"value">> => [any()]
-%% }
--type q_app_session_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_q_app_session_data_output() :: #{
-%%   <<"csvFileLink">> => [string()],
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"sessionArn">> => [string()]
-%% }
--type export_q_app_session_data_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_library_item_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type associate_q_app_with_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_create_category_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type batch_delete_category_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type batch_update_category_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_library_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_presigned_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_q_app_errors() ::
-    content_too_large_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    content_too_large_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_library_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_q_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_q_app_permissions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type disassociate_library_item_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type disassociate_q_app_from_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_q_app_session_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_library_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_q_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_q_app_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_q_app_session_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type import_document_errors() ::
-    content_too_large_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    content_too_large_exception() | 
+    access_denied_exception().
 
 -type list_categories_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_library_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_q_app_session_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_q_apps_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type predict_q_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type start_q_app_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type stop_q_app_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_library_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_library_item_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_q_app_errors() ::
-    content_too_large_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    content_too_large_exception() | 
+    access_denied_exception().
 
 -type update_q_app_permissions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_q_app_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_q_app_session_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

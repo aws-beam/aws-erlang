@@ -194,296 +194,47 @@
 
 
 %% Example:
-%% create_ip_access_settings_request() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"ipRules">> := list(ip_rule()),
-%%   <<"tags">> => list(tag())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_ip_access_settings_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% ip_rule() :: #{
-%%   <<"description">> => string(),
-%%   <<"ipRange">> => string()
+%% associate_browser_settings_request() :: #{
+%%   <<"browserSettingsArn">> := string()
 %% }
--type ip_rule() :: #{binary() => any()}.
+-type associate_browser_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_browser_settings_response() :: #{
-%%   <<"browserSettingsArn">> => string()
+%% associate_browser_settings_response() :: #{
+%%   <<"browserSettingsArn">> => string(),
+%%   <<"portalArn">> => string()
 %% }
--type create_browser_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% expire_session_response() :: #{}
--type expire_session_response() :: #{}.
+-type associate_browser_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_trust_store_certificate_request() :: #{
-%%   <<"thumbprint">> := string()
+%% associate_data_protection_settings_request() :: #{
+%%   <<"dataProtectionSettingsArn">> := string()
 %% }
--type get_trust_store_certificate_request() :: #{binary() => any()}.
+-type associate_data_protection_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_ip_access_settings_response() :: #{
-%%   <<"ipAccessSettingsArn">> => string()
+%% associate_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"portalArn">> => string()
 %% }
--type create_ip_access_settings_response() :: #{binary() => any()}.
+-type associate_data_protection_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% ip_access_settings_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"ipAccessSettingsArn">> => string()
+%% associate_ip_access_settings_request() :: #{
+%%   <<"ipAccessSettingsArn">> := string()
 %% }
--type ip_access_settings_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_user_settings_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"userSettingsArn">> => string()
-%% }
--type associate_user_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cookie_synchronization_configuration() :: #{
-%%   <<"allowlist">> => list(cookie_specification()),
-%%   <<"blocklist">> => list(cookie_specification())
-%% }
--type cookie_synchronization_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trust_store_summary() :: #{
-%%   <<"trustStoreArn">> => string()
-%% }
--type trust_store_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ip_access_settings_response() :: #{
-%%   <<"ipAccessSettings">> => list(ip_access_settings_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_ip_access_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_portal_request() :: #{}
--type get_portal_request() :: #{}.
-
-%% Example:
-%% get_network_settings_request() :: #{}
--type get_network_settings_request() :: #{}.
-
-
-%% Example:
-%% create_user_access_logging_settings_response() :: #{
-%%   <<"userAccessLoggingSettingsArn">> => string()
-%% }
--type create_user_access_logging_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"portalArn">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"username">> => string()
-%% }
--type session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_providers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_identity_providers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_session_response() :: #{
-%%   <<"session">> => session()
-%% }
--type get_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_portal_service_provider_metadata_request() :: #{}
--type get_portal_service_provider_metadata_request() :: #{}.
-
-
-%% Example:
-%% list_trust_store_certificates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_trust_store_certificates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_session_logger_request() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"eventFilter">> => list(),
-%%   <<"logConfiguration">> => log_configuration()
-%% }
--type update_session_logger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_identity_provider_response() :: #{
-%%   <<"identityProvider">> => identity_provider()
-%% }
--type update_identity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_identity_provider_response() :: #{
-%%   <<"identityProvider">> => identity_provider()
-%% }
--type get_identity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_browser_settings_request() :: #{
-%%   <<"browserPolicy">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
-%% }
--type update_browser_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_access_logging_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_user_access_logging_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_settings_response() :: #{
-%%   <<"networkSettings">> => network_settings()
-%% }
--type update_network_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_network_settings_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> := list(string()),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"tags">> => list(tag()),
-%%   <<"vpcId">> := string()
-%% }
--type create_network_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_trust_store_request() :: #{}
--type get_trust_store_request() :: #{}.
-
-
-%% Example:
-%% inline_redaction_configuration() :: #{
-%%   <<"globalConfidenceLevel">> => integer(),
-%%   <<"globalEnforcedUrls">> => list(string()),
-%%   <<"globalExemptUrls">> => list(string()),
-%%   <<"inlineRedactionPatterns">> => list(inline_redaction_pattern())
-%% }
--type inline_redaction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_trust_store_request() :: #{
-%%   <<"trustStoreArn">> := string()
-%% }
--type associate_trust_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cookie_specification() :: #{
-%%   <<"domain">> => string(),
-%%   <<"name">> => string(),
-%%   <<"path">> => string()
-%% }
--type cookie_specification() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_trust_store_response() :: #{}
--type disassociate_trust_store_response() :: #{}.
-
-
-%% Example:
-%% associate_user_access_logging_settings_request() :: #{
-%%   <<"userAccessLoggingSettingsArn">> := string()
-%% }
--type associate_user_access_logging_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_user_settings_request() :: #{
-%%   <<"userSettingsArn">> := string()
-%% }
--type associate_user_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_session_logger_response() :: #{
-%%   <<"sessionLogger">> => session_logger()
-%% }
--type get_session_logger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_identity_provider_response() :: #{
-%%   <<"identityProviderArn">> => string()
-%% }
--type create_identity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browser_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_browser_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_access_logging_settings_request() :: #{}
--type delete_user_access_logging_settings_request() :: #{}.
-
-
-%% Example:
-%% create_portal_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"portalEndpoint">> => string()
-%% }
--type create_portal_response() :: #{binary() => any()}.
+-type associate_ip_access_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -495,11 +246,78 @@
 
 
 %% Example:
-%% list_user_settings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"userSettings">> => list(user_settings_summary())
+%% associate_network_settings_request() :: #{
+%%   <<"networkSettingsArn">> := string()
 %% }
--type list_user_settings_response() :: #{binary() => any()}.
+-type associate_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_network_settings_response() :: #{
+%%   <<"networkSettingsArn">> => string(),
+%%   <<"portalArn">> => string()
+%% }
+-type associate_network_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_session_logger_request() :: #{
+%%   <<"sessionLoggerArn">> := string()
+%% }
+-type associate_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_session_logger_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type associate_session_logger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_trust_store_request() :: #{
+%%   <<"trustStoreArn">> := string()
+%% }
+-type associate_trust_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_trust_store_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"trustStoreArn">> => string()
+%% }
+-type associate_trust_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_access_logging_settings_request() :: #{
+%%   <<"userAccessLoggingSettingsArn">> := string()
+%% }
+-type associate_user_access_logging_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_access_logging_settings_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"userAccessLoggingSettingsArn">> => string()
+%% }
+-type associate_user_access_logging_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_settings_request() :: #{
+%%   <<"userSettingsArn">> := string()
+%% }
+-type associate_user_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_settings_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"userSettingsArn">> => string()
+%% }
+-type associate_user_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -515,141 +333,6 @@
 
 
 %% Example:
-%% get_trust_store_response() :: #{
-%%   <<"trustStore">> => trust_store()
-%% }
--type get_trust_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettingsArn">> => string()
-%% }
--type create_data_protection_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_access_logging_settings() :: #{
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"kinesisStreamArn">> => string(),
-%%   <<"userAccessLoggingSettingsArn">> => string()
-%% }
--type user_access_logging_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_access_logging_settings_request() :: #{}
--type get_user_access_logging_settings_request() :: #{}.
-
-%% Example:
-%% delete_identity_provider_request() :: #{}
--type delete_identity_provider_request() :: #{}.
-
-%% Example:
-%% expire_session_request() :: #{}
--type expire_session_request() :: #{}.
-
-%% Example:
-%% delete_session_logger_request() :: #{}
--type delete_session_logger_request() :: #{}.
-
-
-%% Example:
-%% list_session_loggers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_session_loggers_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_browser_settings_response() :: #{}
--type disassociate_browser_settings_response() :: #{}.
-
-
-%% Example:
-%% list_ip_access_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_ip_access_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_settings_response() :: #{
-%%   <<"userSettings">> => user_settings()
-%% }
--type get_user_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ip_access_settings_response() :: #{
-%%   <<"ipAccessSettings">> => ip_access_settings()
-%% }
--type update_ip_access_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_trust_store_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"trustStoreArn">> => string()
-%% }
--type associate_trust_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trust_store_request() :: #{
-%%   <<"certificatesToAdd">> => list(binary()),
-%%   <<"certificatesToDelete">> => list(string()),
-%%   <<"clientToken">> => string()
-%% }
--type update_trust_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_settings_summary() :: #{
-%%   <<"brandingConfiguration">> => branding_configuration(),
-%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
-%%   <<"copyAllowed">> => string(),
-%%   <<"deepLinkAllowed">> => string(),
-%%   <<"disconnectTimeoutInMinutes">> => integer(),
-%%   <<"downloadAllowed">> => string(),
-%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
-%%   <<"pasteAllowed">> => string(),
-%%   <<"printAllowed">> => string(),
-%%   <<"toolbarConfiguration">> => toolbar_configuration(),
-%%   <<"uploadAllowed">> => string(),
-%%   <<"userSettingsArn">> => string(),
-%%   <<"webAuthnAllowed">> => string()
-%% }
--type user_settings_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_access_logging_settings_summary() :: #{
-%%   <<"kinesisStreamArn">> => string(),
-%%   <<"userAccessLoggingSettingsArn">> => string()
-%% }
--type user_access_logging_settings_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_settings_response() :: #{}
--type delete_user_settings_response() :: #{}.
-
-
-%% Example:
-%% associate_network_settings_request() :: #{
-%%   <<"networkSettingsArn">> := string()
-%% }
--type associate_network_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% branding_configuration_create_input() :: #{
 %%   <<"colorTheme">> => list(any()),
 %%   <<"favicon">> => list(),
@@ -660,36 +343,48 @@
 %% }
 -type branding_configuration_create_input() :: #{binary() => any()}.
 
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
 
 %% Example:
-%% associate_browser_settings_request() :: #{
-%%   <<"browserSettingsArn">> := string()
+%% branding_configuration_update_input() :: #{
+%%   <<"colorTheme">> => list(any()),
+%%   <<"favicon">> => list(),
+%%   <<"localizedStrings">> => map(),
+%%   <<"logo">> => list(),
+%%   <<"termsOfService">> => string(),
+%%   <<"wallpaper">> => list()
 %% }
--type associate_browser_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_protection_settings_response() :: #{}
--type delete_data_protection_settings_response() :: #{}.
+-type branding_configuration_update_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_trust_stores_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% browser_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"browserPolicy">> => string(),
+%%   <<"browserSettingsArn">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
 %% }
--type list_trust_stores_request() :: #{binary() => any()}.
+-type browser_settings() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_trust_store_request() :: #{}
--type delete_trust_store_request() :: #{}.
+%% browser_settings_summary() :: #{
+%%   <<"browserSettingsArn">> => string()
+%% }
+-type browser_settings_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_browser_settings_request() :: #{}
--type delete_browser_settings_request() :: #{}.
+%% certificate() :: #{
+%%   <<"body">> => binary(),
+%%   <<"issuer">> => string(),
+%%   <<"notValidAfter">> => non_neg_integer(),
+%%   <<"notValidBefore">> => non_neg_integer(),
+%%   <<"subject">> => string(),
+%%   <<"thumbprint">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,111 +397,6 @@
 %% }
 -type certificate_summary() :: #{binary() => any()}.
 
-%% Example:
-%% get_browser_settings_request() :: #{}
--type get_browser_settings_request() :: #{}.
-
-
-%% Example:
-%% get_ip_access_settings_response() :: #{
-%%   <<"ipAccessSettings">> => ip_access_settings()
-%% }
--type get_ip_access_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_settings() :: #{
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"networkSettingsArn">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type network_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_session_logger_request() :: #{
-%%   <<"sessionLoggerArn">> := string()
-%% }
--type associate_session_logger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portals_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_portals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_log_configuration() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"bucketOwner">> => string(),
-%%   <<"folderStructure">> => list(any()),
-%%   <<"keyPrefix">> => string(),
-%%   <<"logFileFormat">> => list(any())
-%% }
--type s3_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_redaction_pattern() :: #{
-%%   <<"builtInPatternId">> => string(),
-%%   <<"confidenceLevel">> => integer(),
-%%   <<"customPattern">> => custom_pattern(),
-%%   <<"enforcedUrls">> => list(string()),
-%%   <<"exemptUrls">> => list(string()),
-%%   <<"redactionPlaceHolder">> => redaction_place_holder()
-%% }
--type inline_redaction_pattern() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_summary())
-%% }
--type list_sessions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_access_settings_request() :: #{}
--type delete_ip_access_settings_request() :: #{}.
-
-%% Example:
-%% delete_portal_request() :: #{}
--type delete_portal_request() :: #{}.
-
-
-%% Example:
-%% update_user_settings_response() :: #{
-%%   <<"userSettings">> => user_settings()
-%% }
--type update_user_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_logger_request() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"eventFilter">> := list(),
-%%   <<"logConfiguration">> := log_configuration(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_session_logger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trust_store_request() :: #{
-%%   <<"certificateList">> := list(binary()),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_trust_store_request() :: #{binary() => any()}.
-
 
 %% Example:
 %% conflict_exception() :: #{
@@ -818,55 +408,20 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
+%% cookie_specification() :: #{
+%%   <<"domain">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type cookie_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_network_settings_response() :: #{
-%%   <<"networkSettingsArn">> => string(),
-%%   <<"portalArn">> => string()
+%% cookie_synchronization_configuration() :: #{
+%%   <<"allowlist">> => list(cookie_specification()),
+%%   <<"blocklist">> => list(cookie_specification())
 %% }
--type associate_network_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_loggers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessionLoggers">> => list(session_logger_summary())
-%% }
--type list_session_loggers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_access_logging_settings_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"kinesisStreamArn">> => string()
-%% }
--type update_user_access_logging_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_settings_request() :: #{}
--type get_user_settings_request() :: #{}.
-
-
-%% Example:
-%% create_network_settings_response() :: #{
-%%   <<"networkSettingsArn">> => string()
-%% }
--type create_network_settings_response() :: #{binary() => any()}.
+-type cookie_synchronization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -880,29 +435,89 @@
 %% }
 -type create_browser_settings_request() :: #{binary() => any()}.
 
-%% Example:
-%% disassociate_network_settings_request() :: #{}
--type disassociate_network_settings_request() :: #{}.
 
 %% Example:
-%% delete_portal_response() :: #{}
--type delete_portal_response() :: #{}.
-
-
-%% Example:
-%% associate_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettingsArn">> => string(),
-%%   <<"portalArn">> => string()
+%% create_browser_settings_response() :: #{
+%%   <<"browserSettingsArn">> => string()
 %% }
--type associate_data_protection_settings_response() :: #{binary() => any()}.
+-type create_browser_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_data_protection_settings_request() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration(),
+%%   <<"tags">> => list(tag())
 %% }
--type list_network_settings_request() :: #{binary() => any()}.
+-type create_data_protection_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettingsArn">> => string()
+%% }
+-type create_data_protection_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_identity_provider_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"identityProviderDetails">> := map(),
+%%   <<"identityProviderName">> := string(),
+%%   <<"identityProviderType">> := string(),
+%%   <<"portalArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_identity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_identity_provider_response() :: #{
+%%   <<"identityProviderArn">> => string()
+%% }
+-type create_identity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ip_access_settings_request() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"ipRules">> := list(ip_rule()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_ip_access_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ip_access_settings_response() :: #{
+%%   <<"ipAccessSettingsArn">> => string()
+%% }
+-type create_ip_access_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tags">> => list(tag()),
+%%   <<"vpcId">> := string()
+%% }
+-type create_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_settings_response() :: #{
+%%   <<"networkSettingsArn">> => string()
+%% }
+-type create_network_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -921,368 +536,40 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_settings_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type update_network_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_portal_response() :: #{
-%%   <<"portal">> => portal()
-%% }
--type update_portal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_settings_response() :: #{
-%%   <<"networkSettings">> => network_settings()
-%% }
--type get_network_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_protection_settings() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"dataProtectionSettingsArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
-%% }
--type data_protection_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_content_filtering_policy() :: #{
-%%   <<"allowedUrls">> => list(string()),
-%%   <<"blockedCategories">> => list(list(any())()),
-%%   <<"blockedUrls">> => list(string())
-%% }
--type web_content_filtering_policy() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_user_settings_response() :: #{}
--type disassociate_user_settings_response() :: #{}.
-
-
-%% Example:
-%% update_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettings">> => data_protection_settings()
-%% }
--type update_data_protection_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_session_logger_response() :: #{}
--type delete_session_logger_response() :: #{}.
-
-
-%% Example:
-%% browser_settings_summary() :: #{
-%%   <<"browserSettingsArn">> => string()
-%% }
--type browser_settings_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_session_logger_response() :: #{
+%% create_portal_response() :: #{
 %%   <<"portalArn">> => string(),
+%%   <<"portalEndpoint">> => string()
+%% }
+-type create_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_logger_request() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> := list(),
+%%   <<"logConfiguration">> := log_configuration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_logger_response() :: #{
 %%   <<"sessionLoggerArn">> => string()
 %% }
--type associate_session_logger_response() :: #{binary() => any()}.
+-type create_session_logger_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_protection_settings_request() :: #{
+%% create_trust_store_request() :: #{
+%%   <<"certificateList">> := list(binary()),
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
-%% }
--type update_data_protection_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_settings_response() :: #{
-%%   <<"userSettingsArn">> => string()
-%% }
--type create_user_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trust_stores_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"trustStores">> => list(trust_store_summary())
-%% }
--type list_trust_stores_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_browser_settings_request() :: #{}
--type disassociate_browser_settings_request() :: #{}.
-
-%% Example:
-%% delete_network_settings_request() :: #{}
--type delete_network_settings_request() :: #{}.
-
-
-%% Example:
-%% identity_provider_summary() :: #{
-%%   <<"identityProviderArn">> => string(),
-%%   <<"identityProviderName">> => string(),
-%%   <<"identityProviderType">> => string()
-%% }
--type identity_provider_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_session_logger_request() :: #{}
--type disassociate_session_logger_request() :: #{}.
-
-
-%% Example:
-%% associate_ip_access_settings_request() :: #{
-%%   <<"ipAccessSettingsArn">> := string()
-%% }
--type associate_ip_access_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"username">> => string()
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettings">> => list(data_protection_settings_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_protection_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_settings_summary() :: #{
-%%   <<"networkSettingsArn">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type network_settings_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_user_access_logging_settings_response() :: #{}
--type disassociate_user_access_logging_settings_response() :: #{}.
-
-
-%% Example:
-%% image_metadata() :: #{
-%%   <<"fileExtension">> => string(),
-%%   <<"lastUploadTimestamp">> => non_neg_integer(),
-%%   <<"mimeType">> => list(any())
-%% }
--type image_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% session() :: #{
-%%   <<"clientIpAddresses">> => list(string()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"portalArn">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"username">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_portal_service_provider_metadata_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"serviceProviderSamlMetadata">> => string()
-%% }
--type get_portal_service_provider_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_settings_request() :: #{
-%%   <<"brandingConfigurationInput">> => branding_configuration_update_input(),
-%%   <<"clientToken">> => string(),
-%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
-%%   <<"copyAllowed">> => string(),
-%%   <<"deepLinkAllowed">> => string(),
-%%   <<"disconnectTimeoutInMinutes">> => integer(),
-%%   <<"downloadAllowed">> => string(),
-%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
-%%   <<"pasteAllowed">> => string(),
-%%   <<"printAllowed">> => string(),
-%%   <<"toolbarConfiguration">> => toolbar_configuration(),
-%%   <<"uploadAllowed">> => string(),
-%%   <<"webAuthnAllowed">> => string()
-%% }
--type update_user_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ip_access_settings_response() :: #{}
--type disassociate_ip_access_settings_response() :: #{}.
-
-
-%% Example:
-%% list_network_settings_response() :: #{
-%%   <<"networkSettings">> => list(network_settings_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_provider() :: #{
-%%   <<"identityProviderArn">> => string(),
-%%   <<"identityProviderDetails">> => map(),
-%%   <<"identityProviderName">> => string(),
-%%   <<"identityProviderType">> => string()
-%% }
--type identity_provider() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_access_settings_response() :: #{}
--type delete_ip_access_settings_response() :: #{}.
-
-
-%% Example:
-%% get_browser_settings_response() :: #{
-%%   <<"browserSettings">> => browser_settings()
-%% }
--type get_browser_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trust_store_certificates_response() :: #{
-%%   <<"certificateList">> => list(certificate_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"trustStoreArn">> => string()
-%% }
--type list_trust_store_certificates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portals_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"portals">> => list(portal_summary())
-%% }
--type list_portals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_protection_settings_request() :: #{}
--type delete_data_protection_settings_request() :: #{}.
-
-
-%% Example:
-%% branding_configuration_update_input() :: #{
-%%   <<"colorTheme">> => list(any()),
-%%   <<"favicon">> => list(),
-%%   <<"localizedStrings">> => map(),
-%%   <<"logo">> => list(),
-%%   <<"termsOfService">> => string(),
-%%   <<"wallpaper">> => list()
-%% }
--type branding_configuration_update_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"body">> => binary(),
-%%   <<"issuer">> => string(),
-%%   <<"notValidAfter">> => non_neg_integer(),
-%%   <<"notValidBefore">> => non_neg_integer(),
-%%   <<"subject">> => string(),
-%%   <<"thumbprint">> => string()
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ip_access_settings_request() :: #{}
--type disassociate_ip_access_settings_request() :: #{}.
-
-
-%% Example:
-%% get_trust_store_certificate_response() :: #{
-%%   <<"certificate">> => certificate(),
-%%   <<"trustStoreArn">> => string()
-%% }
--type get_trust_store_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_identity_provider_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"identityProviderDetails">> := map(),
-%%   <<"identityProviderName">> := string(),
-%%   <<"identityProviderType">> := string(),
-%%   <<"portalArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_identity_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_browser_settings_response() :: #{
-%%   <<"browserSettings">> => browser_settings()
-%% }
--type update_browser_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_settings_response() :: #{}
--type delete_network_settings_response() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
+-type create_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1293,26 +580,19 @@
 
 
 %% Example:
-%% update_session_logger_response() :: #{
-%%   <<"sessionLogger">> => session_logger()
+%% create_user_access_logging_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"kinesisStreamArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type update_session_logger_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_provider_response() :: #{}
--type delete_identity_provider_response() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type create_user_access_logging_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% redaction_place_holder() :: #{
-%%   <<"redactionPlaceHolderText">> => string(),
-%%   <<"redactionPlaceHolderType">> => string()
+%% create_user_access_logging_settings_response() :: #{
+%%   <<"userAccessLoggingSettingsArn">> => string()
 %% }
--type redaction_place_holder() :: #{binary() => any()}.
+-type create_user_access_logging_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1336,9 +616,36 @@
 %% }
 -type create_user_settings_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_user_settings_request() :: #{}
--type delete_user_settings_request() :: #{}.
+%% create_user_settings_response() :: #{
+%%   <<"userSettingsArn">> => string()
+%% }
+-type create_user_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_pattern() :: #{
+%%   <<"keywordRegex">> => string(),
+%%   <<"patternDescription">> => string(),
+%%   <<"patternName">> => string(),
+%%   <<"patternRegex">> => string()
+%% }
+-type custom_pattern() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_protection_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
+%% }
+-type data_protection_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1350,16 +657,168 @@
 %% }
 -type data_protection_settings_summary() :: #{binary() => any()}.
 
+%% Example:
+%% delete_browser_settings_request() :: #{}
+-type delete_browser_settings_request() :: #{}.
 
 %% Example:
-%% update_portal_request() :: #{
-%%   <<"authenticationType">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"maxConcurrentSessions">> => integer(),
-%%   <<"portalCustomDomain">> => string()
+%% delete_browser_settings_response() :: #{}
+-type delete_browser_settings_response() :: #{}.
+
+%% Example:
+%% delete_data_protection_settings_request() :: #{}
+-type delete_data_protection_settings_request() :: #{}.
+
+%% Example:
+%% delete_data_protection_settings_response() :: #{}
+-type delete_data_protection_settings_response() :: #{}.
+
+%% Example:
+%% delete_identity_provider_request() :: #{}
+-type delete_identity_provider_request() :: #{}.
+
+%% Example:
+%% delete_identity_provider_response() :: #{}
+-type delete_identity_provider_response() :: #{}.
+
+%% Example:
+%% delete_ip_access_settings_request() :: #{}
+-type delete_ip_access_settings_request() :: #{}.
+
+%% Example:
+%% delete_ip_access_settings_response() :: #{}
+-type delete_ip_access_settings_response() :: #{}.
+
+%% Example:
+%% delete_network_settings_request() :: #{}
+-type delete_network_settings_request() :: #{}.
+
+%% Example:
+%% delete_network_settings_response() :: #{}
+-type delete_network_settings_response() :: #{}.
+
+%% Example:
+%% delete_portal_request() :: #{}
+-type delete_portal_request() :: #{}.
+
+%% Example:
+%% delete_portal_response() :: #{}
+-type delete_portal_response() :: #{}.
+
+%% Example:
+%% delete_session_logger_request() :: #{}
+-type delete_session_logger_request() :: #{}.
+
+%% Example:
+%% delete_session_logger_response() :: #{}
+-type delete_session_logger_response() :: #{}.
+
+%% Example:
+%% delete_trust_store_request() :: #{}
+-type delete_trust_store_request() :: #{}.
+
+%% Example:
+%% delete_trust_store_response() :: #{}
+-type delete_trust_store_response() :: #{}.
+
+%% Example:
+%% delete_user_access_logging_settings_request() :: #{}
+-type delete_user_access_logging_settings_request() :: #{}.
+
+%% Example:
+%% delete_user_access_logging_settings_response() :: #{}
+-type delete_user_access_logging_settings_response() :: #{}.
+
+%% Example:
+%% delete_user_settings_request() :: #{}
+-type delete_user_settings_request() :: #{}.
+
+%% Example:
+%% delete_user_settings_response() :: #{}
+-type delete_user_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_browser_settings_request() :: #{}
+-type disassociate_browser_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_browser_settings_response() :: #{}
+-type disassociate_browser_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_data_protection_settings_request() :: #{}
+-type disassociate_data_protection_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_data_protection_settings_response() :: #{}
+-type disassociate_data_protection_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_ip_access_settings_request() :: #{}
+-type disassociate_ip_access_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_ip_access_settings_response() :: #{}
+-type disassociate_ip_access_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_network_settings_request() :: #{}
+-type disassociate_network_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_network_settings_response() :: #{}
+-type disassociate_network_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_session_logger_request() :: #{}
+-type disassociate_session_logger_request() :: #{}.
+
+%% Example:
+%% disassociate_session_logger_response() :: #{}
+-type disassociate_session_logger_response() :: #{}.
+
+%% Example:
+%% disassociate_trust_store_request() :: #{}
+-type disassociate_trust_store_request() :: #{}.
+
+%% Example:
+%% disassociate_trust_store_response() :: #{}
+-type disassociate_trust_store_response() :: #{}.
+
+%% Example:
+%% disassociate_user_access_logging_settings_request() :: #{}
+-type disassociate_user_access_logging_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_user_access_logging_settings_response() :: #{}
+-type disassociate_user_access_logging_settings_response() :: #{}.
+
+%% Example:
+%% disassociate_user_settings_request() :: #{}
+-type disassociate_user_settings_request() :: #{}.
+
+%% Example:
+%% disassociate_user_settings_response() :: #{}
+-type disassociate_user_settings_response() :: #{}.
+
+%% Example:
+%% expire_session_request() :: #{}
+-type expire_session_request() :: #{}.
+
+%% Example:
+%% expire_session_response() :: #{}
+-type expire_session_response() :: #{}.
+
+%% Example:
+%% get_browser_settings_request() :: #{}
+-type get_browser_settings_request() :: #{}.
+
+
+%% Example:
+%% get_browser_settings_response() :: #{
+%%   <<"browserSettings">> => browser_settings()
 %% }
--type update_portal_request() :: #{binary() => any()}.
+-type get_browser_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_data_protection_settings_request() :: #{}
@@ -1367,16 +826,434 @@
 
 
 %% Example:
-%% create_data_protection_settings_request() :: #{
+%% get_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => data_protection_settings()
+%% }
+-type get_data_protection_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_provider_request() :: #{}
+-type get_identity_provider_request() :: #{}.
+
+
+%% Example:
+%% get_identity_provider_response() :: #{
+%%   <<"identityProvider">> => identity_provider()
+%% }
+-type get_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_access_settings_request() :: #{}
+-type get_ip_access_settings_request() :: #{}.
+
+
+%% Example:
+%% get_ip_access_settings_response() :: #{
+%%   <<"ipAccessSettings">> => ip_access_settings()
+%% }
+-type get_ip_access_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_settings_request() :: #{}
+-type get_network_settings_request() :: #{}.
+
+
+%% Example:
+%% get_network_settings_response() :: #{
+%%   <<"networkSettings">> => network_settings()
+%% }
+-type get_network_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portal_request() :: #{}
+-type get_portal_request() :: #{}.
+
+
+%% Example:
+%% get_portal_response() :: #{
+%%   <<"portal">> => portal()
+%% }
+-type get_portal_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portal_service_provider_metadata_request() :: #{}
+-type get_portal_service_provider_metadata_request() :: #{}.
+
+
+%% Example:
+%% get_portal_service_provider_metadata_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"serviceProviderSamlMetadata">> => string()
+%% }
+-type get_portal_service_provider_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_logger_request() :: #{}
+-type get_session_logger_request() :: #{}.
+
+
+%% Example:
+%% get_session_logger_response() :: #{
+%%   <<"sessionLogger">> => session_logger()
+%% }
+-type get_session_logger_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"session">> => session()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trust_store_certificate_request() :: #{
+%%   <<"thumbprint">> := string()
+%% }
+-type get_trust_store_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trust_store_certificate_response() :: #{
+%%   <<"certificate">> => certificate(),
+%%   <<"trustStoreArn">> => string()
+%% }
+-type get_trust_store_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_request() :: #{}
+-type get_trust_store_request() :: #{}.
+
+
+%% Example:
+%% get_trust_store_response() :: #{
+%%   <<"trustStore">> => trust_store()
+%% }
+-type get_trust_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_access_logging_settings_request() :: #{}
+-type get_user_access_logging_settings_request() :: #{}.
+
+
+%% Example:
+%% get_user_access_logging_settings_response() :: #{
+%%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
+%% }
+-type get_user_access_logging_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_settings_request() :: #{}
+-type get_user_settings_request() :: #{}.
+
+
+%% Example:
+%% get_user_settings_response() :: #{
+%%   <<"userSettings">> => user_settings()
+%% }
+-type get_user_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_provider() :: #{
+%%   <<"identityProviderArn">> => string(),
+%%   <<"identityProviderDetails">> => map(),
+%%   <<"identityProviderName">> => string(),
+%%   <<"identityProviderType">> => string()
+%% }
+-type identity_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_provider_summary() :: #{
+%%   <<"identityProviderArn">> => string(),
+%%   <<"identityProviderName">> => string(),
+%%   <<"identityProviderType">> => string()
+%% }
+-type identity_provider_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_metadata() :: #{
+%%   <<"fileExtension">> => string(),
+%%   <<"lastUploadTimestamp">> => non_neg_integer(),
+%%   <<"mimeType">> => list(any())
+%% }
+-type image_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_redaction_configuration() :: #{
+%%   <<"globalConfidenceLevel">> => integer(),
+%%   <<"globalEnforcedUrls">> => list(string()),
+%%   <<"globalExemptUrls">> => list(string()),
+%%   <<"inlineRedactionPatterns">> => list(inline_redaction_pattern())
+%% }
+-type inline_redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_redaction_pattern() :: #{
+%%   <<"builtInPatternId">> => string(),
+%%   <<"confidenceLevel">> => integer(),
+%%   <<"customPattern">> => custom_pattern(),
+%%   <<"enforcedUrls">> => list(string()),
+%%   <<"exemptUrls">> => list(string()),
+%%   <<"redactionPlaceHolder">> => redaction_place_holder()
+%% }
+-type inline_redaction_pattern() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_access_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"clientToken">> => string(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"creationDate">> => non_neg_integer(),
 %%   <<"customerManagedKey">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration(),
+%%   <<"ipAccessSettingsArn">> => string(),
+%%   <<"ipRules">> => list(ip_rule())
+%% }
+-type ip_access_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_access_settings_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"ipAccessSettingsArn">> => string()
+%% }
+-type ip_access_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_rule() :: #{
+%%   <<"description">> => string(),
+%%   <<"ipRange">> => string()
+%% }
+-type ip_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browser_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_settings_response() :: #{
+%%   <<"browserSettings">> => list(browser_settings_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browser_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_protection_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_protection_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => list(data_protection_settings_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_protection_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_providers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_providers_response() :: #{
+%%   <<"identityProviders">> => list(identity_provider_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ip_access_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ip_access_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ip_access_settings_response() :: #{
+%%   <<"ipAccessSettings">> => list(ip_access_settings_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ip_access_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_settings_response() :: #{
+%%   <<"networkSettings">> => list(network_settings_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"portals">> => list(portal_summary())
+%% }
+-type list_portals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_loggers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_session_loggers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_loggers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionLoggers">> => list(session_logger_summary())
+%% }
+-type list_session_loggers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_summary())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => list(tag())
 %% }
--type create_data_protection_settings_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_store_certificates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_trust_store_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_store_certificates_response() :: #{
+%%   <<"certificateList">> => list(certificate_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"trustStoreArn">> => string()
+%% }
+-type list_trust_store_certificates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_stores_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_trust_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_stores_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trustStores">> => list(trust_store_summary())
+%% }
+-type list_trust_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_access_logging_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_user_access_logging_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_access_logging_settings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"userAccessLoggingSettings">> => list(user_access_logging_settings_summary())
+%% }
+-type list_user_access_logging_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_settings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_user_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_settings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"userSettings">> => list(user_settings_summary())
+%% }
+-type list_user_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1394,231 +1271,6 @@
 
 
 %% Example:
-%% ip_access_settings() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"ipAccessSettingsArn">> => string(),
-%%   <<"ipRules">> => list(ip_rule())
-%% }
--type ip_access_settings() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_data_protection_settings_response() :: #{}
--type disassociate_data_protection_settings_response() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% get_ip_access_settings_request() :: #{}
--type get_ip_access_settings_request() :: #{}.
-
-
-%% Example:
-%% list_identity_providers_response() :: #{
-%%   <<"identityProviders">> => list(identity_provider_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_identity_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_user_access_logging_settings_request() :: #{}
--type disassociate_user_access_logging_settings_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_data_protection_settings_request() :: #{
-%%   <<"dataProtectionSettingsArn">> := string()
-%% }
--type associate_data_protection_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browser_settings_response() :: #{
-%%   <<"browserSettings">> => list(browser_settings_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_browser_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% toolbar_configuration() :: #{
-%%   <<"hiddenToolbarItems">> => list(string()),
-%%   <<"maxDisplayResolution">> => string(),
-%%   <<"toolbarType">> => string(),
-%%   <<"visualMode">> => string()
-%% }
--type toolbar_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_protection_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_protection_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_user_access_logging_settings_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"userAccessLoggingSettingsArn">> => string()
-%% }
--type associate_user_access_logging_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_summary() :: #{
-%%   <<"authenticationType">> => string(),
-%%   <<"browserSettingsArn">> => string(),
-%%   <<"browserType">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"dataProtectionSettingsArn">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"ipAccessSettingsArn">> => string(),
-%%   <<"maxConcurrentSessions">> => integer(),
-%%   <<"networkSettingsArn">> => string(),
-%%   <<"portalArn">> => string(),
-%%   <<"portalCustomDomain">> => string(),
-%%   <<"portalEndpoint">> => string(),
-%%   <<"portalStatus">> => string(),
-%%   <<"rendererType">> => string(),
-%%   <<"sessionLoggerArn">> => string(),
-%%   <<"trustStoreArn">> => string(),
-%%   <<"userAccessLoggingSettingsArn">> => string(),
-%%   <<"userSettingsArn">> => string()
-%% }
--type portal_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_logger() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"eventFilter">> => list(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"sessionLoggerArn">> => string()
-%% }
--type session_logger() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_provider_request() :: #{}
--type get_identity_provider_request() :: #{}.
-
-
-%% Example:
-%% associate_browser_settings_response() :: #{
-%%   <<"browserSettingsArn">> => string(),
-%%   <<"portalArn">> => string()
-%% }
--type associate_browser_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_settings() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()),
-%%   <<"brandingConfiguration">> => branding_configuration(),
-%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
-%%   <<"copyAllowed">> => string(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"deepLinkAllowed">> => string(),
-%%   <<"disconnectTimeoutInMinutes">> => integer(),
-%%   <<"downloadAllowed">> => string(),
-%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
-%%   <<"pasteAllowed">> => string(),
-%%   <<"printAllowed">> => string(),
-%%   <<"toolbarConfiguration">> => toolbar_configuration(),
-%%   <<"uploadAllowed">> => string(),
-%%   <<"userSettingsArn">> => string(),
-%%   <<"webAuthnAllowed">> => string()
-%% }
--type user_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_portal_response() :: #{
-%%   <<"portal">> => portal()
-%% }
--type get_portal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_logger_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"sessionLoggerArn">> => string()
-%% }
--type session_logger_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_pattern() :: #{
-%%   <<"keywordRegex">> => string(),
-%%   <<"patternDescription">> => string(),
-%%   <<"patternName">> => string(),
-%%   <<"patternRegex">> => string()
-%% }
--type custom_pattern() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_access_logging_settings_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"kinesisStreamArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_user_access_logging_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_identity_provider_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"identityProviderDetails">> => map(),
-%%   <<"identityProviderName">> => string(),
-%%   <<"identityProviderType">> => string()
-%% }
--type update_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_logger_request() :: #{}
--type get_session_logger_request() :: #{}.
-
-%% Example:
-%% disassociate_session_logger_response() :: #{}
--type disassociate_session_logger_response() :: #{}.
-
-
-%% Example:
 %% log_configuration() :: #{
 %%   <<"s3">> => s3_log_configuration()
 %% }
@@ -1626,94 +1278,22 @@
 
 
 %% Example:
-%% list_user_access_logging_settings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"userAccessLoggingSettings">> => list(user_access_logging_settings_summary())
-%% }
--type list_user_access_logging_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettings">> => data_protection_settings()
-%% }
--type get_data_protection_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_user_settings_request() :: #{}
--type disassociate_user_settings_request() :: #{}.
-
-%% Example:
-%% disassociate_data_protection_settings_request() :: #{}
--type disassociate_data_protection_settings_request() :: #{}.
-
-
-%% Example:
-%% update_ip_access_settings_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"ipRules">> => list(ip_rule())
-%% }
--type update_ip_access_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_settings() :: #{
-%%   <<"additionalEncryptionContext">> => map(),
+%% network_settings() :: #{
 %%   <<"associatedPortalArns">> => list(string()),
-%%   <<"browserPolicy">> => string(),
-%%   <<"browserSettingsArn">> => string(),
-%%   <<"customerManagedKey">> => string(),
-%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
+%%   <<"networkSettingsArn">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type browser_settings() :: #{binary() => any()}.
+-type network_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_access_logging_settings_response() :: #{
-%%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
+%% network_settings_summary() :: #{
+%%   <<"networkSettingsArn">> => string(),
+%%   <<"vpcId">> => string()
 %% }
--type update_user_access_logging_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_settings_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_user_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_browser_settings_response() :: #{}
--type delete_browser_settings_response() :: #{}.
-
-%% Example:
-%% disassociate_network_settings_response() :: #{}
--type disassociate_network_settings_response() :: #{}.
-
-%% Example:
-%% delete_user_access_logging_settings_response() :: #{}
--type delete_user_access_logging_settings_response() :: #{}.
-
-%% Example:
-%% delete_trust_store_response() :: #{}
--type delete_trust_store_response() :: #{}.
-
-
-%% Example:
-%% get_user_access_logging_settings_response() :: #{
-%%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
-%% }
--type get_user_access_logging_settings_response() :: #{binary() => any()}.
+-type network_settings_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1745,10 +1325,164 @@
 
 
 %% Example:
-%% create_session_logger_response() :: #{
+%% portal_summary() :: #{
+%%   <<"authenticationType">> => string(),
+%%   <<"browserSettingsArn">> => string(),
+%%   <<"browserType">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"dataProtectionSettingsArn">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"ipAccessSettingsArn">> => string(),
+%%   <<"maxConcurrentSessions">> => integer(),
+%%   <<"networkSettingsArn">> => string(),
+%%   <<"portalArn">> => string(),
+%%   <<"portalCustomDomain">> => string(),
+%%   <<"portalEndpoint">> => string(),
+%%   <<"portalStatus">> => string(),
+%%   <<"rendererType">> => string(),
+%%   <<"sessionLoggerArn">> => string(),
+%%   <<"trustStoreArn">> => string(),
+%%   <<"userAccessLoggingSettingsArn">> => string(),
+%%   <<"userSettingsArn">> => string()
+%% }
+-type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% redaction_place_holder() :: #{
+%%   <<"redactionPlaceHolderText">> => string(),
+%%   <<"redactionPlaceHolderType">> => string()
+%% }
+-type redaction_place_holder() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_log_configuration() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bucketOwner">> => string(),
+%%   <<"folderStructure">> => list(any()),
+%%   <<"keyPrefix">> => string(),
+%%   <<"logFileFormat">> => list(any())
+%% }
+-type s3_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session() :: #{
+%%   <<"clientIpAddresses">> => list(string()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"portalArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type session() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_logger() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> => list(),
+%%   <<"logConfiguration">> => log_configuration(),
 %%   <<"sessionLoggerArn">> => string()
 %% }
--type create_session_logger_response() :: #{binary() => any()}.
+-type session_logger() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_logger_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type session_logger_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"portalArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% toolbar_configuration() :: #{
+%%   <<"hiddenToolbarItems">> => list(string()),
+%%   <<"maxDisplayResolution">> => string(),
+%%   <<"toolbarType">> => string(),
+%%   <<"visualMode">> => string()
+%% }
+-type toolbar_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1760,563 +1494,829 @@
 
 
 %% Example:
+%% trust_store_summary() :: #{
+%%   <<"trustStoreArn">> => string()
+%% }
+-type trust_store_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_browser_settings_request() :: #{
+%%   <<"browserPolicy">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
+%% }
+-type update_browser_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_browser_settings_response() :: #{
+%%   <<"browserSettings">> => browser_settings()
+%% }
+-type update_browser_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_protection_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
+%% }
+-type update_data_protection_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_protection_settings_response() :: #{
+%%   <<"dataProtectionSettings">> => data_protection_settings()
+%% }
+-type update_data_protection_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_provider_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"identityProviderDetails">> => map(),
+%%   <<"identityProviderName">> => string(),
+%%   <<"identityProviderType">> => string()
+%% }
+-type update_identity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_provider_response() :: #{
+%%   <<"identityProvider">> => identity_provider()
+%% }
+-type update_identity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ip_access_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"ipRules">> => list(ip_rule())
+%% }
+-type update_ip_access_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ip_access_settings_response() :: #{
+%%   <<"ipAccessSettings">> => ip_access_settings()
+%% }
+-type update_ip_access_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type update_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_settings_response() :: #{
+%%   <<"networkSettings">> => network_settings()
+%% }
+-type update_network_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_request() :: #{
+%%   <<"authenticationType">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"maxConcurrentSessions">> => integer(),
+%%   <<"portalCustomDomain">> => string()
+%% }
+-type update_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_response() :: #{
+%%   <<"portal">> => portal()
+%% }
+-type update_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_session_logger_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> => list(),
+%%   <<"logConfiguration">> => log_configuration()
+%% }
+-type update_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_session_logger_response() :: #{
+%%   <<"sessionLogger">> => session_logger()
+%% }
+-type update_session_logger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_store_request() :: #{
+%%   <<"certificatesToAdd">> => list(binary()),
+%%   <<"certificatesToDelete">> => list(string()),
+%%   <<"clientToken">> => string()
+%% }
+-type update_trust_store_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_trust_store_response() :: #{
 %%   <<"trustStoreArn">> => string()
 %% }
 -type update_trust_store_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% disassociate_trust_store_request() :: #{}
--type disassociate_trust_store_request() :: #{}.
+%% update_user_access_logging_settings_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"kinesisStreamArn">> => string()
+%% }
+-type update_user_access_logging_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_access_logging_settings_response() :: #{
+%%   <<"userAccessLoggingSettings">> => user_access_logging_settings()
+%% }
+-type update_user_access_logging_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_settings_request() :: #{
+%%   <<"brandingConfigurationInput">> => branding_configuration_update_input(),
+%%   <<"clientToken">> => string(),
+%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
+%%   <<"copyAllowed">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
+%%   <<"disconnectTimeoutInMinutes">> => integer(),
+%%   <<"downloadAllowed">> => string(),
+%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
+%%   <<"pasteAllowed">> => string(),
+%%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
+%%   <<"uploadAllowed">> => string(),
+%%   <<"webAuthnAllowed">> => string()
+%% }
+-type update_user_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_settings_response() :: #{
+%%   <<"userSettings">> => user_settings()
+%% }
+-type update_user_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_access_logging_settings() :: #{
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"kinesisStreamArn">> => string(),
+%%   <<"userAccessLoggingSettingsArn">> => string()
+%% }
+-type user_access_logging_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_access_logging_settings_summary() :: #{
+%%   <<"kinesisStreamArn">> => string(),
+%%   <<"userAccessLoggingSettingsArn">> => string()
+%% }
+-type user_access_logging_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_settings() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"brandingConfiguration">> => branding_configuration(),
+%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
+%%   <<"copyAllowed">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
+%%   <<"disconnectTimeoutInMinutes">> => integer(),
+%%   <<"downloadAllowed">> => string(),
+%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
+%%   <<"pasteAllowed">> => string(),
+%%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
+%%   <<"uploadAllowed">> => string(),
+%%   <<"userSettingsArn">> => string(),
+%%   <<"webAuthnAllowed">> => string()
+%% }
+-type user_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_settings_summary() :: #{
+%%   <<"brandingConfiguration">> => branding_configuration(),
+%%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
+%%   <<"copyAllowed">> => string(),
+%%   <<"deepLinkAllowed">> => string(),
+%%   <<"disconnectTimeoutInMinutes">> => integer(),
+%%   <<"downloadAllowed">> => string(),
+%%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
+%%   <<"pasteAllowed">> => string(),
+%%   <<"printAllowed">> => string(),
+%%   <<"toolbarConfiguration">> => toolbar_configuration(),
+%%   <<"uploadAllowed">> => string(),
+%%   <<"userSettingsArn">> => string(),
+%%   <<"webAuthnAllowed">> => string()
+%% }
+-type user_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_content_filtering_policy() :: #{
+%%   <<"allowedUrls">> => list(string()),
+%%   <<"blockedCategories">> => list(list(any())()),
+%%   <<"blockedUrls">> => list(string())
+%% }
+-type web_content_filtering_policy() :: #{binary() => any()}.
 
 -type associate_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_portal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_portal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type expire_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_portal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_portal_service_provider_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_trust_store_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_identity_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_portals_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_session_loggers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_trust_store_certificates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_trust_stores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_browser_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_data_protection_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_ip_access_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_network_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_portal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_session_logger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_trust_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_user_access_logging_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_user_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -66,10 +66,56 @@
 
 
 %% Example:
-%% delete_hsm_request() :: #{
-%%   <<"HsmArn">> := string()
+%% add_tags_to_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagList">> := list(tag())
 %% }
--type delete_hsm_request() :: #{binary() => any()}.
+-type add_tags_to_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type add_tags_to_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_internal_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryable">> => boolean()
+%% }
+-type cloud_hsm_internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_service_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryable">> => boolean()
+%% }
+-type cloud_hsm_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_hapg_request() :: #{
+%%   <<"Label">> := string()
+%% }
+-type create_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hapg_response() :: #{
+%%   <<"HapgArn">> => string()
+%% }
+-type create_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EniIp">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"SshKey">> := string(),
+%%   <<"SubnetId">> := string(),
+%%   <<"SubscriptionType">> := list(any()),
+%%   <<"SyslogIp">> => string()
+%% }
+-type create_hsm_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_hsm_response() :: #{
@@ -78,74 +124,41 @@
 -type create_hsm_response() :: #{binary() => any()}.
 
 %% Example:
-%% modify_hapg_response() :: #{
-%%   <<"HapgArn">> => string()
-%% }
--type modify_hapg_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_luna_client_request() :: #{
+%% create_luna_client_request() :: #{
 %%   <<"Certificate">> := string(),
-%%   <<"ClientArn">> := string()
+%%   <<"Label">> => string()
 %% }
--type modify_luna_client_request() :: #{binary() => any()}.
+-type create_luna_client_request() :: #{binary() => any()}.
 
 %% Example:
-%% modify_hsm_request() :: #{
-%%   <<"EniIp">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"HsmArn">> := string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"SyslogIp">> => string()
+%% create_luna_client_response() :: #{
+%%   <<"ClientArn">> => string()
 %% }
--type modify_hsm_request() :: #{binary() => any()}.
+-type create_luna_client_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_hapgs_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_hapgs_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type remove_tags_from_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_config_request() :: #{
-%%   <<"ClientArn">> := string(),
-%%   <<"ClientVersion">> := list(any()),
-%%   <<"HapgList">> := list(string())
-%% }
--type get_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_hsms_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_hsms_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_luna_clients_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_luna_clients_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_config_response() :: #{
-%%   <<"ConfigCred">> => string(),
-%%   <<"ConfigFile">> => string(),
-%%   <<"ConfigType">> => string()
-%% }
--type get_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hapg_request() :: #{
+%% delete_hapg_request() :: #{
 %%   <<"HapgArn">> := string()
 %% }
--type describe_hapg_request() :: #{binary() => any()}.
+-type delete_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hapg_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type delete_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hsm_request() :: #{
+%%   <<"HsmArn">> := string()
+%% }
+-type delete_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hsm_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type delete_hsm_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_luna_client_request() :: #{
@@ -154,11 +167,37 @@
 -type delete_luna_client_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_to_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagList">> := list(tag())
+%% delete_luna_client_response() :: #{
+%%   <<"Status">> => string()
 %% }
--type add_tags_to_resource_request() :: #{binary() => any()}.
+-type delete_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hapg_request() :: #{
+%%   <<"HapgArn">> := string()
+%% }
+-type describe_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hapg_response() :: #{
+%%   <<"HapgArn">> => string(),
+%%   <<"HapgSerial">> => string(),
+%%   <<"HsmsLastActionFailed">> => list(string()),
+%%   <<"HsmsPendingDeletion">> => list(string()),
+%%   <<"HsmsPendingRegistration">> => list(string()),
+%%   <<"Label">> => string(),
+%%   <<"LastModifiedTimestamp">> => string(),
+%%   <<"PartitionSerialList">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hsm_request() :: #{
+%%   <<"HsmArn">> => string(),
+%%   <<"HsmSerialNumber">> => string()
+%% }
+-type describe_hsm_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hsm_response() :: #{
@@ -187,6 +226,13 @@
 -type describe_hsm_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_luna_client_request() :: #{
+%%   <<"CertificateFingerprint">> => string(),
+%%   <<"ClientArn">> => string()
+%% }
+-type describe_luna_client_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_luna_client_response() :: #{
 %%   <<"Certificate">> => string(),
 %%   <<"CertificateFingerprint">> => string(),
@@ -197,49 +243,20 @@
 -type describe_luna_client_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_luna_client_response() :: #{
-%%   <<"Status">> => string()
+%% get_config_request() :: #{
+%%   <<"ClientArn">> := string(),
+%%   <<"ClientVersion">> := list(any()),
+%%   <<"HapgList">> := list(string())
 %% }
--type delete_luna_client_response() :: #{binary() => any()}.
+-type get_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_luna_client_response() :: #{
-%%   <<"ClientArn">> => string()
+%% get_config_response() :: #{
+%%   <<"ConfigCred">> => string(),
+%%   <<"ConfigFile">> => string(),
+%%   <<"ConfigType">> => string()
 %% }
--type create_luna_client_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hsm_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type delete_hsm_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hapg_request() :: #{
-%%   <<"HapgArn">> := string()
-%% }
--type delete_hapg_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_luna_client_response() :: #{
-%%   <<"ClientArn">> => string()
-%% }
--type modify_luna_client_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_hapg_request() :: #{
-%%   <<"HapgArn">> := string(),
-%%   <<"Label">> => string(),
-%%   <<"PartitionSerialList">> => list(string())
-%% }
--type modify_hapg_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type get_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_request_exception() :: #{
@@ -249,49 +266,22 @@
 -type invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_hapg_response() :: #{
-%%   <<"HapgArn">> => string()
+%% list_available_zones_request() :: #{
+
 %% }
--type create_hapg_response() :: #{binary() => any()}.
+-type list_available_zones_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_hsm_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"EniIp">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"SshKey">> := string(),
-%%   <<"SubnetId">> := string(),
-%%   <<"SubscriptionType">> := list(any()),
-%%   <<"SyslogIp">> => string()
+%% list_available_zones_response() :: #{
+%%   <<"AZList">> => list(string())
 %% }
--type create_hsm_request() :: #{binary() => any()}.
+-type list_available_zones_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag())
+%% list_hapgs_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeyList">> := list(string())
-%% }
--type remove_tags_from_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type add_tags_to_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_internal_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryable">> => boolean()
-%% }
--type cloud_hsm_internal_exception() :: #{binary() => any()}.
+-type list_hapgs_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_hapgs_response() :: #{
@@ -301,24 +291,23 @@
 -type list_hapgs_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_hsm_request() :: #{
-%%   <<"HsmArn">> => string(),
-%%   <<"HsmSerialNumber">> => string()
+%% list_hsms_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type describe_hsm_request() :: #{binary() => any()}.
+-type list_hsms_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_zones_request() :: #{
-
+%% list_hsms_response() :: #{
+%%   <<"HsmList">> => list(string()),
+%%   <<"NextToken">> => string()
 %% }
--type list_available_zones_request() :: #{binary() => any()}.
+-type list_hsms_response() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_hsm_service_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryable">> => boolean()
+%% list_luna_clients_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type cloud_hsm_service_exception() :: #{binary() => any()}.
+-type list_luna_clients_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_luna_clients_response() :: #{
@@ -334,50 +323,35 @@
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_zones_response() :: #{
-%%   <<"AZList">> => list(string())
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagList">> => list(tag())
 %% }
--type list_available_zones_response() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_hapg_request() :: #{
-%%   <<"Label">> := string()
-%% }
--type create_hapg_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_hsms_response() :: #{
-%%   <<"HsmList">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hsms_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_luna_client_request() :: #{
-%%   <<"CertificateFingerprint">> => string(),
-%%   <<"ClientArn">> => string()
-%% }
--type describe_luna_client_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hapg_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type delete_hapg_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hapg_response() :: #{
-%%   <<"HapgArn">> => string(),
-%%   <<"HapgSerial">> => string(),
-%%   <<"HsmsLastActionFailed">> => list(string()),
-%%   <<"HsmsPendingDeletion">> => list(string()),
-%%   <<"HsmsPendingRegistration">> => list(string()),
+%% modify_hapg_request() :: #{
+%%   <<"HapgArn">> := string(),
 %%   <<"Label">> => string(),
-%%   <<"LastModifiedTimestamp">> => string(),
-%%   <<"PartitionSerialList">> => list(string()),
-%%   <<"State">> => list(any())
+%%   <<"PartitionSerialList">> => list(string())
 %% }
--type describe_hapg_response() :: #{binary() => any()}.
+-type modify_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hapg_response() :: #{
+%%   <<"HapgArn">> => string()
+%% }
+-type modify_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hsm_request() :: #{
+%%   <<"EniIp">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"HsmArn">> := string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"SyslogIp">> => string()
+%% }
+-type modify_hsm_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_hsm_response() :: #{
@@ -386,109 +360,135 @@
 -type modify_hsm_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_luna_client_request() :: #{
+%% modify_luna_client_request() :: #{
 %%   <<"Certificate">> := string(),
-%%   <<"Label">> => string()
+%%   <<"ClientArn">> := string()
 %% }
--type create_luna_client_request() :: #{binary() => any()}.
+-type modify_luna_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_luna_client_response() :: #{
+%%   <<"ClientArn">> => string()
+%% }
+-type modify_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeyList">> := list(string())
+%% }
+-type remove_tags_from_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type remove_tags_from_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
 
 -type add_tags_to_resource_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type create_hapg_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type create_hsm_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type create_luna_client_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type delete_hapg_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type delete_hsm_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type delete_luna_client_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type describe_hapg_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type describe_hsm_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type describe_luna_client_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type get_config_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type list_available_zones_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type list_hapgs_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type list_hsms_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type list_luna_clients_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type list_tags_for_resource_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type modify_hapg_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type modify_hsm_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 -type modify_luna_client_errors() ::
     cloud_hsm_service_exception().
 
 -type remove_tags_from_resource_errors() ::
+    invalid_request_exception() | 
     cloud_hsm_service_exception() | 
-    cloud_hsm_internal_exception() | 
-    invalid_request_exception().
+    cloud_hsm_internal_exception().
 
 %%====================================================================
 %% API

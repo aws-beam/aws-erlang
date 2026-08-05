@@ -444,208 +444,81 @@
 
 
 %% Example:
-%% reject_delegation_request_request() :: #{
-%%   <<"DelegationRequestId">> := string(),
-%%   <<"Notes">> => string()
+%% accept_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string()
 %% }
--type reject_delegation_request_request() :: #{binary() => any()}.
+-type accept_delegation_request_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_user_policy_request() :: #{
-%%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string(),
-%%   <<"UserName">> := string()
+%% access_detail() :: #{
+%%   <<"EntityPath">> => string(),
+%%   <<"LastAuthenticatedTime">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceNamespace">> => string(),
+%%   <<"TotalAuthenticatedEntities">> => integer()
 %% }
--type put_user_policy_request() :: #{binary() => any()}.
+-type access_detail() :: #{binary() => any()}.
 
 %% Example:
-%% get_open_id_connect_provider_request() :: #{
+%% access_key() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type access_key() :: #{binary() => any()}.
+
+%% Example:
+%% access_key_last_used() :: #{
+%%   <<"LastUsedDate">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type access_key_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% access_key_metadata() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type access_key_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_management_or_delegated_administrator_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_management_or_delegated_administrator_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_client_id_to_open_id_connect_provider_request() :: #{
+%%   <<"ClientID">> := string(),
 %%   <<"OpenIDConnectProviderArn">> := string()
 %% }
--type get_open_id_connect_provider_request() :: #{binary() => any()}.
+-type add_client_id_to_open_id_connect_provider_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_saml_providers_request() :: #{
-
+%% add_role_to_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"RoleName">> := string()
 %% }
--type list_saml_providers_request() :: #{binary() => any()}.
+-type add_role_to_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_user_to_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type add_user_to_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_delegation_request_request() :: #{
 %%   <<"DelegationRequestId">> := string()
 %% }
 -type associate_delegation_request_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organizations_root_credentials_management_response() :: #{
-%%   <<"EnabledFeatures">> => list(list(any())()),
-%%   <<"OrganizationId">> => string()
-%% }
--type enable_organizations_root_credentials_management_response() :: #{binary() => any()}.
-
-%% Example:
-%% virtual_mfa_device() :: #{
-%%   <<"Base32StringSeed">> => binary(),
-%%   <<"EnableDate">> => non_neg_integer(),
-%%   <<"QRCodePNG">> => binary(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"User">> => user()
-%% }
--type virtual_mfa_device() :: #{binary() => any()}.
-
-%% Example:
-%% entity_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type entity_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_policies_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string())
-%% }
--type list_group_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profiles_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_instance_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_granting_service_access_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"PoliciesGrantingServiceAccess">> => list(list_policies_granting_service_access_entry())
-%% }
--type list_policies_granting_service_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_saml_provider_request() :: #{
-%%   <<"AddPrivateKey">> => string(),
-%%   <<"AssertionEncryptionMode">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"SAMLMetadataDocument">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_saml_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_user_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type detach_user_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mfa_device_response() :: #{
-%%   <<"Certifications">> => map(),
-%%   <<"EnableDate">> => non_neg_integer(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type get_mfa_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_linked_role_request() :: #{
-%%   <<"RoleName">> := string()
-%% }
--type delete_service_linked_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_user_permissions_boundary_request() :: #{
-%%   <<"PermissionsBoundary">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type put_user_permissions_boundary_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_organizations_access_report_response() :: #{
-%%   <<"AccessDetails">> => list(access_detail()),
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"JobCompletionDate">> => non_neg_integer(),
-%%   <<"JobCreationDate">> => non_neg_integer(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"NumberOfServicesAccessible">> => integer(),
-%%   <<"NumberOfServicesNotAccessed">> => integer()
-%% }
--type get_organizations_access_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_versions_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Versions">> => list(policy_version())
-%% }
--type list_policy_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_saml_providers_response() :: #{
-%%   <<"SAMLProviderList">> => list(saml_provider_list_entry())
-%% }
--type list_saml_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_user_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_user_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_default_policy_version_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"VersionId">> := string()
-%% }
--type set_default_policy_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_version_response() :: #{
-%%   <<"PolicyVersion">> => policy_version()
-%% }
--type get_policy_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% key_pair_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type key_pair_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> := string()
-%% }
--type list_user_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_specific_result() :: #{
-%%   <<"EvalDecisionDetails">> => map(),
-%%   <<"EvalResourceDecision">> => list(any()),
-%%   <<"EvalResourceName">> => string(),
-%%   <<"MatchedStatements">> => list(statement()),
-%%   <<"MissingContextValues">> => list(string()),
-%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail()
-%% }
--type resource_specific_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_profile() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"InstanceProfileId">> => string(),
-%%   <<"InstanceProfileName">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Roles">> => list(role()),
-%%   <<"Tags">> => list(tag())
-%% }
--type instance_profile() :: #{binary() => any()}.
 
 %% Example:
 %% attach_group_policy_request() :: #{
@@ -655,54 +528,51 @@
 -type attach_group_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_open_id_connect_provider_response() :: #{
-%%   <<"OpenIDConnectProviderArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_open_id_connect_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_policy_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organizations_root_credentials_management_request() :: #{
-
-%% }
--type enable_organizations_root_credentials_management_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_group_policies_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_attached_group_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_version_request() :: #{
+%% attach_role_policy_request() :: #{
 %%   <<"PolicyArn">> := string(),
-%%   <<"VersionId">> := string()
+%%   <<"RoleName">> := string()
 %% }
--type get_policy_version_request() :: #{binary() => any()}.
+-type attach_role_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_user_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
+%% attach_user_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
 %%   <<"UserName">> := string()
 %% }
--type delete_user_policy_request() :: #{binary() => any()}.
+-type attach_user_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% disable_organizations_root_sessions_request() :: #{
-
+%% attached_permissions_boundary() :: #{
+%%   <<"PermissionsBoundaryArn">> => string(),
+%%   <<"PermissionsBoundaryType">> => list(any())
 %% }
--type disable_organizations_root_sessions_request() :: #{binary() => any()}.
+-type attached_permissions_boundary() :: #{binary() => any()}.
+
+%% Example:
+%% attached_policy() :: #{
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type attached_policy() :: #{binary() => any()}.
+
+%% Example:
+%% caller_is_not_management_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type caller_is_not_management_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_request() :: #{
+%%   <<"NewPassword">> := string(),
+%%   <<"OldPassword">> := string()
+%% }
+-type change_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
 %% context_entry() :: #{
@@ -713,672 +583,22 @@
 -type context_entry() :: #{binary() => any()}.
 
 %% Example:
-%% list_server_certificates_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"ServerCertificateMetadataList">> => list(server_certificate_metadata())
-%% }
--type list_server_certificates_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_mfa_device_request() :: #{
-%%   <<"AuthenticationCode1">> := string(),
-%%   <<"AuthenticationCode2">> := string(),
-%%   <<"SerialNumber">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type enable_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_open_id_connect_provider_response() :: #{
-%%   <<"ClientIDList">> => list(string()),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ThumbprintList">> => list(string()),
-%%   <<"Url">> => string()
-%% }
--type get_open_id_connect_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_last_accessed_details_response() :: #{
-%%   <<"Error">> => error_details(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"JobCompletionDate">> => non_neg_integer(),
-%%   <<"JobCreationDate">> => non_neg_integer(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobType">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"ServicesLastAccessed">> => list(service_last_accessed())
-%% }
--type get_service_last_accessed_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_context_keys_for_policy_response() :: #{
-%%   <<"ContextKeyNames">> => list(string())
-%% }
--type get_context_keys_for_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_role_policy_request() :: #{
-%%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type put_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Policies">> => list(policy())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_specific_credential_response() :: #{
-%%   <<"ServiceSpecificCredential">> => service_specific_credential()
-%% }
--type create_service_specific_credential_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_organizations_features_response() :: #{
-%%   <<"EnabledFeatures">> => list(list(any())()),
-%%   <<"OrganizationId">> => string()
-%% }
--type list_organizations_features_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_granting_service_access() :: #{
-%%   <<"EntityName">> => string(),
-%%   <<"EntityType">> => list(any()),
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyType">> => list(any())
-%% }
--type policy_granting_service_access() :: #{binary() => any()}.
-
-%% Example:
-%% policy_not_attachable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type policy_not_attachable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_group() :: #{
-%%   <<"GroupId">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type policy_group() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_entity_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_server_certificate_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"ServerCertificateName">> := string()
-%% }
--type list_server_certificate_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_for_policy_request() :: #{
-%%   <<"EntityFilter">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string(),
-%%   <<"PolicyArn">> := string(),
-%%   <<"PolicyUsageFilter">> => list(any())
-%% }
--type list_entities_for_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_virtual_mfa_device_request() :: #{
-%%   <<"SerialNumber">> := string()
-%% }
--type delete_virtual_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_for_user_response() :: #{
-%%   <<"Groups">> => list(group()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_groups_for_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"OnlyAttached">> => boolean(),
-%%   <<"PathPrefix">> => string(),
-%%   <<"PolicyUsageFilter">> => list(any()),
-%%   <<"Scope">> => list(any())
-%% }
--type list_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{
-%%   <<"PolicyArn">> := string()
-%% }
--type get_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% password_policy() :: #{
-%%   <<"AllowUsersToChangePassword">> => boolean(),
-%%   <<"ExpirePasswords">> => boolean(),
-%%   <<"HardExpiry">> => boolean(),
-%%   <<"MaxPasswordAge">> => integer(),
-%%   <<"MinimumPasswordLength">> => integer(),
-%%   <<"PasswordReusePrevention">> => integer(),
-%%   <<"RequireLowercaseCharacters">> => boolean(),
-%%   <<"RequireNumbers">> => boolean(),
-%%   <<"RequireSymbols">> => boolean(),
-%%   <<"RequireUppercaseCharacters">> => boolean()
-%% }
--type password_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_policy_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type delete_group_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_role_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string(),
-%%   <<"RoleName">> := string()
-%% }
--type list_attached_role_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mfa_devices_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MFADevices">> => list(mfa_device()),
-%%   <<"Marker">> => string()
-%% }
--type list_mfa_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type delete_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% send_delegation_token_request() :: #{
-%%   <<"DelegationRequestId">> := string()
-%% }
--type send_delegation_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% upload_ssh_public_key_response() :: #{
-%%   <<"SSHPublicKey">> => ssh_public_key()
-%% }
--type upload_ssh_public_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_evaluation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type policy_evaluation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_saml_provider_request() :: #{
-%%   <<"SAMLProviderArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_saml_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_role_policies_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string())
-%% }
--type list_role_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% feature_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type feature_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% entity_info() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type entity_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_response() :: #{
-%%   <<"User">> => user()
-%% }
--type get_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_response() :: #{
-%%   <<"InstanceProfile">> => instance_profile()
-%% }
--type create_instance_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% role() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssumeRolePolicyDocument">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"MaxSessionDuration">> => integer(),
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
-%%   <<"RoleId">> => string(),
-%%   <<"RoleLastUsed">> => role_last_used(),
-%%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type role() :: #{binary() => any()}.
-
-%% Example:
-%% attach_user_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type attach_user_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_roles_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Roles">> => list(role())
-%% }
--type list_roles_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_linked_role_deletion_status_response() :: #{
-%%   <<"Reason">> => deletion_task_failure_reason_type(),
-%%   <<"Status">> => list(any())
-%% }
--type get_service_linked_role_deletion_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_open_id_connect_provider_request() :: #{
-%%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_specific_credentials_request() :: #{
-%%   <<"AllUsers">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"ServiceName">> => string(),
+%% create_access_key_request() :: #{
 %%   <<"UserName">> => string()
 %% }
--type list_service_specific_credentials_request() :: #{binary() => any()}.
+-type create_access_key_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_ssh_public_keys_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> => string()
+%% create_access_key_response() :: #{
+%%   <<"AccessKey">> => access_key()
 %% }
--type list_ssh_public_keys_request() :: #{binary() => any()}.
+-type create_access_key_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_saml_provider_response() :: #{
-%%   <<"AssertionEncryptionMode">> => list(any()),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"PrivateKeyList">> => list(saml_private_key()),
-%%   <<"SAMLMetadataDocument">> => string(),
-%%   <<"SAMLProviderUUID">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ValidUntil">> => non_neg_integer()
+%% create_account_alias_request() :: #{
+%%   <<"AccountAlias">> := string()
 %% }
--type get_saml_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_for_policy_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"PolicyGroups">> => list(policy_group()),
-%%   <<"PolicyRoles">> => list(policy_role()),
-%%   <<"PolicyUsers">> => list(policy_user())
-%% }
--type list_entities_for_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_version_response() :: #{
-%%   <<"PolicyVersion">> => policy_version()
-%% }
--type create_policy_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% simulate_custom_policy_request() :: #{
-%%   <<"ActionNames">> := list(string()),
-%%   <<"CallerArn">> => string(),
-%%   <<"ContextEntries">> => list(context_entry()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
-%%   <<"PolicyInputList">> := list(string()),
-%%   <<"ResourceArns">> => list(string()),
-%%   <<"ResourceHandlingOption">> => string(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"ResourcePolicy">> => string()
-%% }
--type simulate_custom_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% role_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssumeRolePolicyDocument">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"InstanceProfileList">> => list(instance_profile()),
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
-%%   <<"RoleId">> => string(),
-%%   <<"RoleLastUsed">> => role_last_used(),
-%%   <<"RoleName">> => string(),
-%%   <<"RolePolicyList">> => list(policy_detail()),
-%%   <<"Tags">> => list(tag())
-%% }
--type role_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_open_id_connect_providers_response() :: #{
-%%   <<"OpenIDConnectProviderList">> => list(open_id_connect_provider_list_entry())
-%% }
--type list_open_id_connect_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_detail() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string()
-%% }
--type policy_detail() :: #{binary() => any()}.
-
-%% Example:
-%% statement() :: #{
-%%   <<"EndPosition">> => position(),
-%%   <<"SourcePolicyId">> => string(),
-%%   <<"SourcePolicyType">> => list(any()),
-%%   <<"StartPosition">> => position()
-%% }
--type statement() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_permissions_boundary_request() :: #{
-%%   <<"UserName">> := string()
-%% }
--type delete_user_permissions_boundary_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_outbound_web_identity_federation_response() :: #{
-%%   <<"IssuerIdentifier">> => string()
-%% }
--type enable_outbound_web_identity_federation_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_authorization_details_request() :: #{
-%%   <<"Filter">> => list(list(any())()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type get_account_authorization_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_user_request() :: #{
-%%   <<"TagKeys">> := list(string()),
-%%   <<"UserName">> := string()
-%% }
--type untag_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% unmodifiable_entity_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unmodifiable_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_login_profile_response() :: #{
-%%   <<"LoginProfile">> => login_profile()
-%% }
--type get_login_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profiles_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_instance_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_delegation_requests_response() :: #{
-%%   <<"DelegationRequests">> => list(delegation_request()),
-%%   <<"Marker">> => string(),
-%%   <<"isTruncated">> => boolean()
-%% }
--type list_delegation_requests_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% account_not_management_or_delegated_administrator_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_not_management_or_delegated_administrator_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_ssh_public_key_request() :: #{
-%%   <<"SSHPublicKeyId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"UserName">> := string()
-%% }
--type update_ssh_public_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mfa_devices_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> => string()
-%% }
--type list_mfa_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_assume_role_policy_request() :: #{
-%%   <<"PolicyDocument">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type update_assume_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% upload_signing_certificate_request() :: #{
-%%   <<"CertificateBody">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type upload_signing_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_specific_credentials_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata())
-%% }
--type list_service_specific_credentials_response() :: #{binary() => any()}.
-
-%% Example:
-%% position() :: #{
-%%   <<"Column">> => integer(),
-%%   <<"Line">> => integer()
-%% }
--type position() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organizations_root_sessions_response() :: #{
-%%   <<"EnabledFeatures">> => list(list(any())()),
-%%   <<"OrganizationId">> => string()
-%% }
--type enable_organizations_root_sessions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string()
-%% }
--type delete_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% group_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"GroupId">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"GroupPolicyList">> => list(policy_detail()),
-%%   <<"Path">> => string()
-%% }
--type group_detail() :: #{binary() => any()}.
-
-%% Example:
-%% upload_server_certificate_request() :: #{
-%%   <<"CertificateBody">> := string(),
-%%   <<"CertificateChain">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"PrivateKey">> := string(),
-%%   <<"ServerCertificateName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type upload_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"NewGroupName">> => string(),
-%%   <<"NewPath">> => string()
-%% }
--type update_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_last_used_response() :: #{
-%%   <<"AccessKeyLastUsed">> => access_key_last_used(),
-%%   <<"UserName">> => string()
-%% }
--type get_access_key_last_used_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"Path">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% credential_report_not_ready_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type credential_report_not_ready_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_version() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Document">> => string(),
-%%   <<"IsDefaultVersion">> => boolean(),
-%%   <<"VersionId">> => string()
-%% }
--type policy_version() :: #{binary() => any()}.
-
-%% Example:
-%% managed_policy_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AttachmentCount">> => integer(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"DefaultVersionId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsAttachable">> => boolean(),
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundaryUsageCount">> => integer(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyVersionList">> => list(policy_version()),
-%%   <<"UpdateDate">> => non_neg_integer()
-%% }
--type managed_policy_detail() :: #{binary() => any()}.
-
-%% Example:
-%% untag_server_certificate_request() :: #{
-%%   <<"ServerCertificateName">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_specific_credential_metadata() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"ServiceCredentialAlias">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceSpecificCredentialId">> => string(),
-%%   <<"ServiceUserName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserName">> => string()
-%% }
--type service_specific_credential_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_last_accessed_details_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type get_service_last_accessed_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_access_not_enabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_access_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% access_key_metadata() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserName">> => string()
-%% }
--type access_key_metadata() :: #{binary() => any()}.
+-type create_account_alias_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_delegation_request_request() :: #{
@@ -1395,138 +615,84 @@
 -type create_delegation_request_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_account_alias_request() :: #{
-%%   <<"AccountAlias">> := string()
+%% create_delegation_request_response() :: #{
+%%   <<"ConsoleDeepLink">> => string(),
+%%   <<"DelegationRequestId">> => string()
 %% }
--type create_account_alias_request() :: #{binary() => any()}.
+-type create_delegation_request_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_group_policy_request() :: #{
+%% create_group_request() :: #{
 %%   <<"GroupName">> := string(),
+%%   <<"Path">> => string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Path">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type create_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_login_profile_request() :: #{
+%%   <<"Password">> => string(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> => string()
+%% }
+-type create_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_login_profile_response() :: #{
+%%   <<"LoginProfile">> => login_profile()
+%% }
+-type create_login_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_id_connect_provider_request() :: #{
+%%   <<"ClientIDList">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThumbprintList">> => list(string()),
+%%   <<"Url">> := string()
+%% }
+-type create_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_id_connect_provider_response() :: #{
+%%   <<"OpenIDConnectProviderArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_open_id_connect_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Path">> => string(),
 %%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type put_group_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% ssh_public_key_metadata() :: #{
-%%   <<"SSHPublicKeyId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UploadDate">> => non_neg_integer(),
-%%   <<"UserName">> => string()
-%% }
--type ssh_public_key_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string()
-%% }
--type get_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_policy_response() :: #{
-%%   <<"GroupName">> => string(),
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string()
-%% }
--type get_group_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_specific_credential_request() :: #{
-%%   <<"ServiceSpecificCredentialId">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type delete_service_specific_credential_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_for_user_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> := string()
-%% }
--type list_groups_for_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_role_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_role_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_version_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"VersionId">> := string()
-%% }
--type delete_policy_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mfa_device_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_mfa_device_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_policy_request() :: #{
 %%   <<"PolicyName">> := string(),
-%%   <<"UserName">> := string()
+%%   <<"Tags">> => list(tag())
 %% }
--type get_user_policy_request() :: #{binary() => any()}.
+-type create_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_mfa_device_request() :: #{
-%%   <<"SerialNumber">> := string(),
-%%   <<"Tags">> := list(tag())
+%% create_policy_response() :: #{
+%%   <<"Policy">> => policy()
 %% }
--type tag_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% report_generation_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type report_generation_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_idp_communication_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type open_id_idp_communication_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% open_id_connect_provider_list_entry() :: #{
-%%   <<"Arn">> => string()
-%% }
--type open_id_connect_provider_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_request() :: #{
-%%   <<"UserName">> => string()
-%% }
--type get_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% organization_not_in_all_features_mode_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_linked_role_request() :: #{
-%%   <<"AWSServiceName">> := string(),
-%%   <<"CustomSuffix">> => string(),
-%%   <<"Description">> => string()
-%% }
--type create_service_linked_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type create_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_policy_version_request() :: #{
@@ -1537,634 +703,59 @@
 -type create_policy_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_role_request() :: #{
-%%   <<"RoleName">> := string()
+%% create_policy_version_response() :: #{
+%%   <<"PolicyVersion">> => policy_version()
 %% }
--type get_role_request() :: #{binary() => any()}.
+-type create_policy_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_role_response() :: #{
-
-%% }
--type update_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_mfa_device_request() :: #{
-%%   <<"SerialNumber">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type deactivate_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_group_policy_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"PolicyArn">> := string()
-%% }
--type detach_group_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% saml_provider_list_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"ValidUntil">> => non_neg_integer()
-%% }
--type saml_provider_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% delete_server_certificate_request() :: #{
-%%   <<"ServerCertificateName">> := string()
-%% }
--type delete_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_context_keys_for_custom_policy_request() :: #{
-%%   <<"PolicyInputList">> := list(string())
-%% }
--type get_context_keys_for_custom_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_user_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_attached_user_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_key() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserName">> => string()
-%% }
--type access_key() :: #{binary() => any()}.
-
-%% Example:
-%% update_server_certificate_request() :: #{
-%%   <<"NewPath">> => string(),
-%%   <<"NewServerCertificateName">> => string(),
-%%   <<"ServerCertificateName">> := string()
-%% }
--type update_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% organization_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organization_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_keys_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> => string()
-%% }
--type list_access_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_delegation_requests_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"OwnerId">> => string()
-%% }
--type list_delegation_requests_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_role_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type delete_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Users">> => list(user())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_password_policy_request() :: #{
-%%   <<"AllowUsersToChangePassword">> => boolean(),
-%%   <<"HardExpiry">> => boolean(),
-%%   <<"MaxPasswordAge">> => integer(),
-%%   <<"MinimumPasswordLength">> => integer(),
-%%   <<"PasswordReusePrevention">> => integer(),
-%%   <<"RequireLowercaseCharacters">> => boolean(),
-%%   <<"RequireNumbers">> => boolean(),
-%%   <<"RequireSymbols">> => boolean(),
-%%   <<"RequireUppercaseCharacters">> => boolean()
-%% }
--type update_account_password_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ssh_public_key_request() :: #{
-%%   <<"Encoding">> := list(any()),
-%%   <<"SSHPublicKeyId">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type get_ssh_public_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profile_tags_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_instance_profile_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% role_last_used() :: #{
-%%   <<"LastUsedDate">> => non_neg_integer(),
-%%   <<"Region">> => string()
-%% }
--type role_last_used() :: #{binary() => any()}.
-
-%% Example:
-%% disable_organizations_root_credentials_management_request() :: #{
-
-%% }
--type disable_organizations_root_credentials_management_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_saml_provider_request() :: #{
-%%   <<"SAMLProviderArn">> := string()
-%% }
--type delete_saml_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_server_certificate_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
+%% create_role_request() :: #{
+%%   <<"AssumeRolePolicyDocument">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => string(),
+%%   <<"RoleName">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type list_server_certificate_tags_response() :: #{binary() => any()}.
+-type create_role_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_instance_profile_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_instance_profile_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_user_to_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type add_user_to_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_temporarily_unmodifiable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type entity_temporarily_unmodifiable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_key_request() :: #{
-%%   <<"AccessKeyId">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type delete_access_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% password_policy_violation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type password_policy_violation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_organizations_root_sessions_response() :: #{
-%%   <<"EnabledFeatures">> => list(list(any())()),
-%%   <<"OrganizationId">> => string()
-%% }
--type disable_organizations_root_sessions_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_certificate_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_certificate_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_granting_service_access_entry() :: #{
-%%   <<"Policies">> => list(policy_granting_service_access()),
-%%   <<"ServiceNamespace">> => string()
-%% }
--type list_policies_granting_service_access_entry() :: #{binary() => any()}.
-
-%% Example:
-%% untag_saml_provider_request() :: #{
-%%   <<"SAMLProviderArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_saml_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% error_details() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_last_used_request() :: #{
-%%   <<"AccessKeyId">> := string()
-%% }
--type get_access_key_last_used_request() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_certificate_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_certificate_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_login_profile_request() :: #{
-%%   <<"UserName">> => string()
-%% }
--type delete_login_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organizations_root_sessions_request() :: #{
-
-%% }
--type enable_organizations_root_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_virtual_mfa_device_response() :: #{
-%%   <<"VirtualMFADevice">> => virtual_mfa_device()
-%% }
--type create_virtual_mfa_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_role_description_response() :: #{
+%% create_role_response() :: #{
 %%   <<"Role">> => role()
 %% }
--type update_role_description_response() :: #{binary() => any()}.
+-type create_role_response() :: #{binary() => any()}.
 
 %% Example:
-%% set_security_token_service_preferences_request() :: #{
-%%   <<"GlobalEndpointTokenVersion">> := list(any())
+%% create_saml_provider_request() :: #{
+%%   <<"AddPrivateKey">> => string(),
+%%   <<"AssertionEncryptionMode">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"SAMLMetadataDocument">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type set_security_token_service_preferences_request() :: #{binary() => any()}.
+-type create_saml_provider_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"Path">> => string()
+%% create_saml_provider_response() :: #{
+%%   <<"SAMLProviderArn">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type create_group_request() :: #{binary() => any()}.
+-type create_saml_provider_response() :: #{binary() => any()}.
 
 %% Example:
-%% remove_role_from_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"RoleName">> := string()
+%% create_service_linked_role_request() :: #{
+%%   <<"AWSServiceName">> := string(),
+%%   <<"CustomSuffix">> => string(),
+%%   <<"Description">> => string()
 %% }
--type remove_role_from_instance_profile_request() :: #{binary() => any()}.
+-type create_service_linked_role_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_specific_credential() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"ServiceCredentialAlias">> => string(),
-%%   <<"ServiceCredentialSecret">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServicePassword">> => string(),
-%%   <<"ServiceSpecificCredentialId">> => string(),
-%%   <<"ServiceUserName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserName">> => string()
+%% create_service_linked_role_response() :: #{
+%%   <<"Role">> => role()
 %% }
--type service_specific_credential() :: #{binary() => any()}.
-
-%% Example:
-%% tag_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_virtual_mfa_devices_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"VirtualMFADevices">> => list(virtual_mfa_device())
-%% }
--type list_virtual_mfa_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_open_id_connect_provider_request() :: #{
-%%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_human_readable_summary_response() :: #{
-%%   <<"Locale">> => string(),
-%%   <<"SummaryContent">> => string(),
-%%   <<"SummaryState">> => list(any())
-%% }
--type get_human_readable_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_organizations_access_report_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type generate_organizations_access_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_virtual_mfa_devices_request() :: #{
-%%   <<"AssignmentStatus">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_virtual_mfa_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_server_certificate_request() :: #{
-%%   <<"ServerCertificateName">> := string()
-%% }
--type get_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% change_password_request() :: #{
-%%   <<"NewPassword">> := string(),
-%%   <<"OldPassword">> := string()
-%% }
--type change_password_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_role_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"RoleName">> := string()
-%% }
--type list_role_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"UserName">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_service_last_accessed_details_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type generate_service_last_accessed_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% delegation_permission() :: #{
-%%   <<"Parameters">> => list(policy_parameter()),
-%%   <<"PolicyTemplateArn">> => string()
-%% }
--type delegation_permission() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_linked_role_deletion_status_request() :: #{
-%%   <<"DeletionTaskId">> := string()
-%% }
--type get_service_linked_role_deletion_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_alias_request() :: #{
-%%   <<"AccountAlias">> := string()
-%% }
--type delete_account_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_policy_response() :: #{
-%%   <<"Policy">> => policy()
-%% }
--type create_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_organizations_access_report_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"SortKey">> => list(any())
-%% }
--type get_organizations_access_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_versions_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PolicyArn">> := string()
-%% }
--type list_policy_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_granting_service_access_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"ServiceNamespaces">> := list(string())
-%% }
--type list_policies_granting_service_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_password_policy_response() :: #{
-%%   <<"PasswordPolicy">> => password_policy()
-%% }
--type get_account_password_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_specific_credential_request() :: #{
-%%   <<"ServiceSpecificCredentialId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"UserName">> => string()
-%% }
--type update_service_specific_credential_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_login_profile_response() :: #{
-%%   <<"LoginProfile">> => login_profile()
-%% }
--type create_login_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% reset_service_specific_credential_request() :: #{
-%%   <<"ServiceSpecificCredentialId">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type reset_service_specific_credential_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"Policy">> => policy()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_saml_provider_response() :: #{
-%%   <<"SAMLProviderArn">> => string()
-%% }
--type update_saml_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_policy_response() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type get_user_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% credential_report_expired_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type credential_report_expired_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_organizations_features_request() :: #{
-
-%% }
--type list_organizations_features_request() :: #{binary() => any()}.
-
-%% Example:
-%% mfa_device() :: #{
-%%   <<"EnableDate">> => non_neg_integer(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type mfa_device() :: #{binary() => any()}.
-
-%% Example:
-%% create_delegation_request_response() :: #{
-%%   <<"ConsoleDeepLink">> => string(),
-%%   <<"DelegationRequestId">> => string()
-%% }
--type create_delegation_request_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_details() :: #{
-%%   <<"EntityInfo">> => entity_info(),
-%%   <<"LastAuthenticated">> => non_neg_integer()
-%% }
--type entity_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profiles_for_role_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_instance_profiles_for_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% signing_certificate() :: #{
-%%   <<"CertificateBody">> => string(),
-%%   <<"CertificateId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UploadDate">> => non_neg_integer(),
-%%   <<"UserName">> => string()
-%% }
--type signing_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{
-%%   <<"PolicyArn">> := string()
-%% }
--type delete_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mfa_device_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"SerialNumber">> := string()
-%% }
--type list_mfa_device_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_human_readable_summary_request() :: #{
-%%   <<"EntityArn">> := string(),
-%%   <<"Locale">> => string()
-%% }
--type get_human_readable_summary_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_authentication_code_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_authentication_code_exception() :: #{binary() => any()}.
-
-%% Example:
-%% generate_organizations_access_report_request() :: #{
-%%   <<"EntityPath">> := string(),
-%%   <<"OrganizationsPolicyId">> => string()
-%% }
--type generate_organizations_access_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_role_to_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type add_role_to_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_signing_certificates_response() :: #{
-%%   <<"Certificates">> => list(signing_certificate()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_signing_certificates_response() :: #{binary() => any()}.
-
-%% Example:
-%% simulate_principal_policy_request() :: #{
-%%   <<"ActionNames">> := list(string()),
-%%   <<"CallerArn">> => string(),
-%%   <<"ContextEntries">> => list(context_entry()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
-%%   <<"PolicyInputList">> => list(string()),
-%%   <<"PolicySourceArn">> := string(),
-%%   <<"ResourceArns">> => list(string()),
-%%   <<"ResourceHandlingOption">> => string(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"ResourcePolicy">> => string()
-%% }
--type simulate_principal_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_authorization_details_response() :: #{
-%%   <<"GroupDetailList">> => list(group_detail()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Policies">> => list(managed_policy_detail()),
-%%   <<"RoleDetailList">> => list(role_detail()),
-%%   <<"UserDetailList">> => list(user_detail())
-%% }
--type get_account_authorization_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% disable_organizations_root_credentials_management_response() :: #{
-%%   <<"EnabledFeatures">> => list(list(any())()),
-%%   <<"OrganizationId">> => string()
-%% }
--type disable_organizations_root_credentials_management_response() :: #{binary() => any()}.
-
-%% Example:
-%% resync_mfa_device_request() :: #{
-%%   <<"AuthenticationCode1">> := string(),
-%%   <<"AuthenticationCode2">> := string(),
-%%   <<"SerialNumber">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type resync_mfa_device_request() :: #{binary() => any()}.
+-type create_service_linked_role_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_service_specific_credential_request() :: #{
@@ -2175,140 +766,71 @@
 -type create_service_specific_credential_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_role_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"MaxSessionDuration">> => integer(),
-%%   <<"RoleName">> := string()
+%% create_service_specific_credential_response() :: #{
+%%   <<"ServiceSpecificCredential">> => service_specific_credential()
 %% }
--type update_role_request() :: #{binary() => any()}.
+-type create_service_specific_credential_response() :: #{binary() => any()}.
 
 %% Example:
-%% policy_role() :: #{
-%%   <<"RoleId">> => string(),
-%%   <<"RoleName">> => string()
-%% }
--type policy_role() :: #{binary() => any()}.
-
-%% Example:
-%% update_login_profile_request() :: #{
-%%   <<"Password">> => string(),
-%%   <<"PasswordResetRequired">> => boolean(),
+%% create_user_request() :: #{
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => string(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> := string()
 %% }
--type update_login_profile_request() :: #{binary() => any()}.
+-type create_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
+%% create_user_response() :: #{
+%%   <<"User">> => user()
 %% }
--type list_user_tags_response() :: #{binary() => any()}.
+-type create_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_open_id_connect_providers_request() :: #{
-
-%% }
--type list_open_id_connect_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_saml_provider_response() :: #{
-%%   <<"SAMLProviderArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_saml_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AttachmentCount">> => integer(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"DefaultVersionId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsAttachable">> => boolean(),
+%% create_virtual_mfa_device_request() :: #{
 %%   <<"Path">> => string(),
-%%   <<"PermissionsBoundaryUsageCount">> => integer(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyName">> => string(),
 %%   <<"Tags">> => list(tag()),
-%%   <<"UpdateDate">> => non_neg_integer()
+%%   <<"VirtualMFADeviceName">> := string()
 %% }
--type policy() :: #{binary() => any()}.
+-type create_virtual_mfa_device_request() :: #{binary() => any()}.
 
 %% Example:
-%% upload_signing_certificate_response() :: #{
-%%   <<"Certificate">> => signing_certificate()
+%% create_virtual_mfa_device_response() :: #{
+%%   <<"VirtualMFADevice">> => virtual_mfa_device()
 %% }
--type upload_signing_certificate_response() :: #{binary() => any()}.
+-type create_virtual_mfa_device_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_instance_profile_response() :: #{
-%%   <<"InstanceProfile">> => instance_profile()
+%% credential_report_expired_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_instance_profile_response() :: #{binary() => any()}.
+-type credential_report_expired_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_role_response() :: #{
-%%   <<"Role">> => role()
+%% credential_report_not_present_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_role_response() :: #{binary() => any()}.
+-type credential_report_not_present_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_saml_provider_request() :: #{
-%%   <<"AddPrivateKey">> => string(),
-%%   <<"AssertionEncryptionMode">> => list(any()),
-%%   <<"RemovePrivateKey">> => string(),
-%%   <<"SAMLMetadataDocument">> => string(),
-%%   <<"SAMLProviderArn">> := string()
+%% credential_report_not_ready_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_saml_provider_request() :: #{binary() => any()}.
+-type credential_report_not_ready_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_delegation_request_request() :: #{
-%%   <<"DelegationRequestId">> := string(),
-%%   <<"Notes">> => string()
-%% }
--type update_delegation_request_request() :: #{binary() => any()}.
-
-%% Example:
-%% ssh_public_key() :: #{
-%%   <<"Fingerprint">> => string(),
-%%   <<"SSHPublicKeyBody">> => string(),
-%%   <<"SSHPublicKeyId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UploadDate">> => non_neg_integer(),
+%% deactivate_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
 %%   <<"UserName">> => string()
 %% }
--type ssh_public_key() :: #{binary() => any()}.
+-type deactivate_mfa_device_request() :: #{binary() => any()}.
 
 %% Example:
-%% permissions_boundary_decision_detail() :: #{
-%%   <<"AllowedByPermissionsBoundary">> => boolean()
+%% delegation_permission() :: #{
+%%   <<"Parameters">> => list(policy_parameter()),
+%%   <<"PolicyTemplateArn">> => string()
 %% }
--type permissions_boundary_decision_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_role_policy_response() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"RoleName">> => string()
-%% }
--type get_role_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type policy_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% update_open_id_connect_provider_thumbprint_request() :: #{
-%%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"ThumbprintList">> := list(string())
-%% }
--type update_open_id_connect_provider_thumbprint_request() :: #{binary() => any()}.
+-type delegation_permission() :: #{binary() => any()}.
 
 %% Example:
 %% delegation_request() :: #{
@@ -2336,6 +858,438 @@
 -type delegation_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_access_key_request() :: #{
+%%   <<"AccessKeyId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_alias_request() :: #{
+%%   <<"AccountAlias">> := string()
+%% }
+-type delete_account_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupName">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string()
+%% }
+-type delete_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_login_profile_request() :: #{
+%%   <<"UserName">> => string()
+%% }
+-type delete_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type delete_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"PolicyArn">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type delete_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_permissions_boundary_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type delete_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type delete_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_linked_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_service_linked_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_linked_role_response() :: #{
+%%   <<"DeletionTaskId">> => string()
+%% }
+-type delete_service_linked_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signing_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_permissions_boundary_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string()
+%% }
+-type delete_virtual_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% deletion_task_failure_reason_type() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"RoleUsageList">> => list(role_usage_type())
+%% }
+-type deletion_task_failure_reason_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type detach_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_role_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type detach_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_user_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type detach_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_credentials_management_request() :: #{
+
+%% }
+-type disable_organizations_root_credentials_management_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_credentials_management_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type disable_organizations_root_credentials_management_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_sessions_request() :: #{
+
+%% }
+-type disable_organizations_root_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organizations_root_sessions_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type disable_organizations_root_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_ssh_public_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_ssh_public_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_mfa_device_request() :: #{
+%%   <<"AuthenticationCode1">> := string(),
+%%   <<"AuthenticationCode2">> := string(),
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type enable_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_credentials_management_request() :: #{
+
+%% }
+-type enable_organizations_root_credentials_management_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_credentials_management_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type enable_organizations_root_credentials_management_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_sessions_request() :: #{
+
+%% }
+-type enable_organizations_root_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organizations_root_sessions_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type enable_organizations_root_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_outbound_web_identity_federation_response() :: #{
+%%   <<"IssuerIdentifier">> => string()
+%% }
+-type enable_outbound_web_identity_federation_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type entity_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entity_details() :: #{
+%%   <<"EntityInfo">> => entity_info(),
+%%   <<"LastAuthenticated">> => non_neg_integer()
+%% }
+-type entity_details() :: #{binary() => any()}.
+
+%% Example:
+%% entity_info() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type entity_info() :: #{binary() => any()}.
+
+%% Example:
+%% entity_temporarily_unmodifiable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type entity_temporarily_unmodifiable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_result() :: #{
+%%   <<"EvalActionName">> => string(),
+%%   <<"EvalDecision">> => list(any()),
+%%   <<"EvalDecisionDetails">> => map(),
+%%   <<"EvalResourceName">> => string(),
+%%   <<"MatchedStatements">> => list(statement()),
+%%   <<"MissingContextValues">> => list(string()),
+%%   <<"OrganizationsDecisionDetail">> => organizations_decision_detail(),
+%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail(),
+%%   <<"ResourceSpecificResults">> => list(resource_specific_result())
+%% }
+-type evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% feature_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% feature_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_credential_report_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type generate_credential_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_organizations_access_report_request() :: #{
+%%   <<"EntityPath">> := string(),
+%%   <<"OrganizationsPolicyId">> => string()
+%% }
+-type generate_organizations_access_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_organizations_access_report_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type generate_organizations_access_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_service_last_accessed_details_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Granularity">> => list(any())
+%% }
+-type generate_service_last_accessed_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_service_last_accessed_details_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type generate_service_last_accessed_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_last_used_request() :: #{
+%%   <<"AccessKeyId">> := string()
+%% }
+-type get_access_key_last_used_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_last_used_response() :: #{
+%%   <<"AccessKeyLastUsed">> => access_key_last_used(),
+%%   <<"UserName">> => string()
+%% }
+-type get_access_key_last_used_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_authorization_details_request() :: #{
+%%   <<"Filter">> => list(list(any())()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_account_authorization_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_authorization_details_response() :: #{
+%%   <<"GroupDetailList">> => list(group_detail()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Policies">> => list(managed_policy_detail()),
+%%   <<"RoleDetailList">> => list(role_detail()),
+%%   <<"UserDetailList">> => list(user_detail())
+%% }
+-type get_account_authorization_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_password_policy_response() :: #{
+%%   <<"PasswordPolicy">> => password_policy()
+%% }
+-type get_account_password_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_summary_response() :: #{
+%%   <<"SummaryMap">> => map()
+%% }
+-type get_account_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_custom_policy_request() :: #{
+%%   <<"PolicyInputList">> := list(string())
+%% }
+-type get_context_keys_for_custom_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_policy_response() :: #{
+%%   <<"ContextKeyNames">> => list(string())
+%% }
+-type get_context_keys_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_principal_policy_request() :: #{
+%%   <<"PolicyInputList">> => list(string()),
+%%   <<"PolicySourceArn">> := string()
+%% }
+-type get_context_keys_for_principal_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_credential_report_response() :: #{
+%%   <<"Content">> => binary(),
+%%   <<"GeneratedTime">> => non_neg_integer(),
+%%   <<"ReportFormat">> => list(any())
+%% }
+-type get_credential_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegation_request_request() :: #{
+%%   <<"DelegationPermissionCheck">> => boolean(),
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type get_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_delegation_request_response() :: #{
 %%   <<"DelegationRequest">> => delegation_request(),
 %%   <<"PermissionCheckResult">> => list(any()),
@@ -2344,10 +1298,1873 @@
 -type get_delegation_request_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type get_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_policy_response() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Users">> => list(user())
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_human_readable_summary_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"Locale">> => string()
+%% }
+-type get_human_readable_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_human_readable_summary_response() :: #{
+%%   <<"Locale">> => string(),
+%%   <<"SummaryContent">> => string(),
+%%   <<"SummaryState">> => list(any())
+%% }
+-type get_human_readable_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string()
+%% }
+-type get_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type get_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_login_profile_request() :: #{
+%%   <<"UserName">> => string()
+%% }
+-type get_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_login_profile_response() :: #{
+%%   <<"LoginProfile">> => login_profile()
+%% }
+-type get_login_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mfa_device_response() :: #{
+%%   <<"Certifications">> => map(),
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_mfa_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type get_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_connect_provider_response() :: #{
+%%   <<"ClientIDList">> => list(string()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThumbprintList">> => list(string()),
+%%   <<"Url">> => string()
+%% }
+-type get_open_id_connect_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_organizations_access_report_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortKey">> => list(any())
+%% }
+-type get_organizations_access_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_organizations_access_report_response() :: #{
+%%   <<"AccessDetails">> => list(access_detail()),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"NumberOfServicesAccessible">> => integer(),
+%%   <<"NumberOfServicesNotAccessed">> => integer()
+%% }
+-type get_organizations_access_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_outbound_web_identity_federation_info_response() :: #{
+%%   <<"IssuerIdentifier">> => string(),
+%%   <<"JwtVendingEnabled">> => boolean()
+%% }
+-type get_outbound_web_identity_federation_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"PolicyArn">> := string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type get_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_response() :: #{
+%%   <<"PolicyVersion">> => policy_version()
+%% }
+-type get_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type get_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"RoleName">> => string()
+%% }
+-type get_role_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type get_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type get_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type get_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_saml_provider_response() :: #{
+%%   <<"AssertionEncryptionMode">> => list(any()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"PrivateKeyList">> => list(saml_private_key()),
+%%   <<"SAMLMetadataDocument">> => string(),
+%%   <<"SAMLProviderUUID">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type get_saml_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type get_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_certificate_response() :: #{
+%%   <<"ServerCertificate">> => server_certificate()
+%% }
+-type get_server_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_service_last_accessed_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_response() :: #{
+%%   <<"Error">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"ServicesLastAccessed">> => list(service_last_accessed())
+%% }
+-type get_service_last_accessed_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_with_entities_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ServiceNamespace">> := string()
+%% }
+-type get_service_last_accessed_details_with_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_with_entities_response() :: #{
+%%   <<"EntityDetailsList">> => list(entity_details()),
+%%   <<"Error">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Marker">> => string()
+%% }
+-type get_service_last_accessed_details_with_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_linked_role_deletion_status_request() :: #{
+%%   <<"DeletionTaskId">> := string()
+%% }
+-type get_service_linked_role_deletion_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_linked_role_deletion_status_response() :: #{
+%%   <<"Reason">> => deletion_task_failure_reason_type(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_service_linked_role_deletion_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ssh_public_key_request() :: #{
+%%   <<"Encoding">> := list(any()),
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type get_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_ssh_public_key_response() :: #{
 %%   <<"SSHPublicKey">> => ssh_public_key()
 %% }
 -type get_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type get_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_user_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{
+%%   <<"UserName">> => string()
+%% }
+-type get_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+%% Example:
+%% group_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"GroupPolicyList">> => list(policy_detail()),
+%%   <<"Path">> => string()
+%% }
+-type group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% inline_policy_identifier_type() :: #{
+%%   <<"AttachmentName">> => string(),
+%%   <<"AttachmentType">> => list(any()),
+%%   <<"PolicyName">> => string()
+%% }
+-type inline_policy_identifier_type() :: #{binary() => any()}.
+
+%% Example:
+%% instance_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"InstanceProfileId">> => string(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Roles">> => list(role()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type instance_profile() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_authentication_code_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_authentication_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_public_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_public_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_user_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_user_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% key_pair_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_pair_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_access_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_keys_response() :: #{
+%%   <<"AccessKeyMetadata">> => list(access_key_metadata()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_access_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_aliases_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_account_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_aliases_response() :: #{
+%%   <<"AccountAliases">> => list(string()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_account_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_group_policies_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_attached_group_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_group_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_group_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_role_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_attached_role_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_role_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_role_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_user_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"UserName">> := string()
+%% }
+-type list_attached_user_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_user_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_user_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegation_requests_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OwnerId">> => string()
+%% }
+-type list_delegation_requests_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegation_requests_response() :: #{
+%%   <<"DelegationRequests">> => list(delegation_request()),
+%%   <<"Marker">> => string(),
+%%   <<"isTruncated">> => boolean()
+%% }
+-type list_delegation_requests_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_for_policy_request() :: #{
+%%   <<"EntityFilter">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"PolicyArn">> := string(),
+%%   <<"PolicyUsageFilter">> => list(any())
+%% }
+-type list_entities_for_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_for_policy_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyGroups">> => list(policy_group()),
+%%   <<"PolicyRoles">> => list(policy_role()),
+%%   <<"PolicyUsers">> => list(policy_user())
+%% }
+-type list_entities_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_policies_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_group_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string())
+%% }
+-type list_group_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_user_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_groups_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_user_response() :: #{
+%%   <<"Groups">> => list(group()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_groups_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profile_tags_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_instance_profile_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profile_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_instance_profile_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_for_role_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_instance_profiles_for_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_for_role_response() :: #{
+%%   <<"InstanceProfiles">> => list(instance_profile()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_profiles_for_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_instance_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_response() :: #{
+%%   <<"InstanceProfiles">> => list(instance_profile()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_device_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SerialNumber">> := string()
+%% }
+-type list_mfa_device_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_device_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_mfa_device_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_devices_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_mfa_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_devices_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MFADevices">> => list(mfa_device()),
+%%   <<"Marker">> => string()
+%% }
+-type list_mfa_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_provider_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type list_open_id_connect_provider_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_provider_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_open_id_connect_provider_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_providers_request() :: #{
+
+%% }
+-type list_open_id_connect_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_providers_response() :: #{
+%%   <<"OpenIDConnectProviderList">> => list(open_id_connect_provider_list_entry())
+%% }
+-type list_open_id_connect_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizations_features_request() :: #{
+
+%% }
+-type list_organizations_features_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizations_features_response() :: #{
+%%   <<"EnabledFeatures">> => list(list(any())()),
+%%   <<"OrganizationId">> => string()
+%% }
+-type list_organizations_features_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_entry() :: #{
+%%   <<"Policies">> => list(policy_granting_service_access()),
+%%   <<"ServiceNamespace">> => string()
+%% }
+-type list_policies_granting_service_access_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"ServiceNamespaces">> := list(string())
+%% }
+-type list_policies_granting_service_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PoliciesGrantingServiceAccess">> => list(list_policies_granting_service_access_entry())
+%% }
+-type list_policies_granting_service_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OnlyAttached">> => boolean(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"PolicyUsageFilter">> => list(any()),
+%%   <<"Scope">> => list(any())
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Policies">> => list(policy())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type list_policy_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_policy_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_versions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type list_policy_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_versions_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Versions">> => list(policy_version())
+%% }
+-type list_policy_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_role_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string())
+%% }
+-type list_role_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_role_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_role_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_roles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_roles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roles_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Roles">> => list(role())
+%% }
+-type list_roles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_provider_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type list_saml_provider_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_provider_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_saml_provider_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_providers_request() :: #{
+
+%% }
+-type list_saml_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_providers_response() :: #{
+%%   <<"SAMLProviderList">> => list(saml_provider_list_entry())
+%% }
+-type list_saml_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificate_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type list_server_certificate_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificate_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_server_certificate_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificates_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_server_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificates_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"ServerCertificateMetadataList">> => list(server_certificate_metadata())
+%% }
+-type list_server_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_specific_credentials_request() :: #{
+%%   <<"AllUsers">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type list_service_specific_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_specific_credentials_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata())
+%% }
+-type list_service_specific_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_certificates_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_signing_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_certificates_response() :: #{
+%%   <<"Certificates">> => list(signing_certificate()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_signing_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ssh_public_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_ssh_public_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ssh_public_keys_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"SSHPublicKeys">> => list(ssh_public_key_metadata())
+%% }
+-type list_ssh_public_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_user_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string())
+%% }
+-type list_user_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_user_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_user_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Users">> => list(user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_mfa_devices_request() :: #{
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_virtual_mfa_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_mfa_devices_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"VirtualMFADevices">> => list(virtual_mfa_device())
+%% }
+-type list_virtual_mfa_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% login_profile() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> => string()
+%% }
+-type login_profile() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% managed_policy_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachmentCount">> => integer(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DefaultVersionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsAttachable">> => boolean(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundaryUsageCount">> => integer(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyVersionList">> => list(policy_version()),
+%%   <<"UpdateDate">> => non_neg_integer()
+%% }
+-type managed_policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_device() :: #{
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type mfa_device() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_provider_list_entry() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type open_id_connect_provider_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_idp_communication_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type open_id_idp_communication_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ordered_organization_policy_type() :: #{
+%%   <<"ServiceControlPolicyInputList">> => list(string())
+%% }
+-type ordered_organization_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_in_all_features_mode_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organizations_decision_detail() :: #{
+%%   <<"AllowedByOrganizations">> => boolean()
+%% }
+-type organizations_decision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% password_policy() :: #{
+%%   <<"AllowUsersToChangePassword">> => boolean(),
+%%   <<"ExpirePasswords">> => boolean(),
+%%   <<"HardExpiry">> => boolean(),
+%%   <<"MaxPasswordAge">> => integer(),
+%%   <<"MinimumPasswordLength">> => integer(),
+%%   <<"PasswordReusePrevention">> => integer(),
+%%   <<"RequireLowercaseCharacters">> => boolean(),
+%%   <<"RequireNumbers">> => boolean(),
+%%   <<"RequireSymbols">> => boolean(),
+%%   <<"RequireUppercaseCharacters">> => boolean()
+%% }
+-type password_policy() :: #{binary() => any()}.
+
+%% Example:
+%% password_policy_violation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type password_policy_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% permissions_boundary_decision_detail() :: #{
+%%   <<"AllowedByPermissionsBoundary">> => boolean()
+%% }
+-type permissions_boundary_decision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachmentCount">> => integer(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DefaultVersionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsAttachable">> => boolean(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundaryUsageCount">> => integer(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpdateDate">> => non_neg_integer()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% policy_detail() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% policy_evaluation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_evaluation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_granting_service_access() :: #{
+%%   <<"EntityName">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type policy_granting_service_access() :: #{binary() => any()}.
+
+%% Example:
+%% policy_group() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type policy_group() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_attachable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_not_attachable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type policy_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% policy_role() :: #{
+%%   <<"RoleId">> => string(),
+%%   <<"RoleName">> => string()
+%% }
+-type policy_role() :: #{binary() => any()}.
+
+%% Example:
+%% policy_user() :: #{
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type policy_user() :: #{binary() => any()}.
+
+%% Example:
+%% policy_version() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Document">> => string(),
+%%   <<"IsDefaultVersion">> => boolean(),
+%%   <<"VersionId">> => string()
+%% }
+-type policy_version() :: #{binary() => any()}.
+
+%% Example:
+%% position() :: #{
+%%   <<"Column">> => integer(),
+%%   <<"Line">> => integer()
+%% }
+-type position() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type put_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_role_permissions_boundary_request() :: #{
+%%   <<"PermissionsBoundary">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type put_role_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_role_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type put_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_user_permissions_boundary_request() :: #{
+%%   <<"PermissionsBoundary">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type put_user_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_user_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type put_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string(),
+%%   <<"Notes">> => string()
+%% }
+-type reject_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_client_id_from_open_id_connect_provider_request() :: #{
+%%   <<"ClientID">> := string(),
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type remove_client_id_from_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_role_from_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type remove_role_from_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_user_from_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type remove_user_from_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% report_generation_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type report_generation_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type reset_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_specific_credential_response() :: #{
+%%   <<"ServiceSpecificCredential">> => service_specific_credential()
+%% }
+-type reset_service_specific_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_specific_result() :: #{
+%%   <<"EvalDecisionDetails">> => map(),
+%%   <<"EvalResourceDecision">> => list(any()),
+%%   <<"EvalResourceName">> => string(),
+%%   <<"MatchedStatements">> => list(statement()),
+%%   <<"MissingContextValues">> => list(string()),
+%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail()
+%% }
+-type resource_specific_result() :: #{binary() => any()}.
+
+%% Example:
+%% resync_mfa_device_request() :: #{
+%%   <<"AuthenticationCode1">> := string(),
+%%   <<"AuthenticationCode2">> := string(),
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type resync_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% role() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumeRolePolicyDocument">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"RoleId">> => string(),
+%%   <<"RoleLastUsed">> => role_last_used(),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type role() :: #{binary() => any()}.
+
+%% Example:
+%% role_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumeRolePolicyDocument">> => string(),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"InstanceProfileList">> => list(instance_profile()),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"RoleId">> => string(),
+%%   <<"RoleLastUsed">> => role_last_used(),
+%%   <<"RoleName">> => string(),
+%%   <<"RolePolicyList">> => list(policy_detail()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type role_detail() :: #{binary() => any()}.
+
+%% Example:
+%% role_last_used() :: #{
+%%   <<"LastUsedDate">> => non_neg_integer(),
+%%   <<"Region">> => string()
+%% }
+-type role_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% role_usage_type() :: #{
+%%   <<"Region">> => string(),
+%%   <<"Resources">> => list(string())
+%% }
+-type role_usage_type() :: #{binary() => any()}.
+
+%% Example:
+%% saml_private_key() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type saml_private_key() :: #{binary() => any()}.
+
+%% Example:
+%% saml_provider_list_entry() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type saml_provider_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% send_delegation_token_request() :: #{
+%%   <<"DelegationRequestId">> := string()
+%% }
+-type send_delegation_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate() :: #{
+%%   <<"CertificateBody">> => string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type server_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"Path">> => string(),
+%%   <<"ServerCertificateId">> => string(),
+%%   <<"ServerCertificateName">> => string(),
+%%   <<"UploadDate">> => non_neg_integer()
+%% }
+-type server_certificate_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% service_access_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_access_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_last_accessed() :: #{
+%%   <<"LastAuthenticated">> => non_neg_integer(),
+%%   <<"LastAuthenticatedEntity">> => string(),
+%%   <<"LastAuthenticatedRegion">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceNamespace">> => string(),
+%%   <<"TotalAuthenticatedEntities">> => integer(),
+%%   <<"TrackedActionsLastAccessed">> => list(tracked_action_last_accessed())
+%% }
+-type service_last_accessed() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_specific_credential() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ServiceCredentialAlias">> => string(),
+%%   <<"ServiceCredentialSecret">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServicePassword">> => string(),
+%%   <<"ServiceSpecificCredentialId">> => string(),
+%%   <<"ServiceUserName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type service_specific_credential() :: #{binary() => any()}.
+
+%% Example:
+%% service_specific_credential_metadata() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"ServiceCredentialAlias">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceSpecificCredentialId">> => string(),
+%%   <<"ServiceUserName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type service_specific_credential_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% set_default_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type set_default_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_token_service_preferences_request() :: #{
+%%   <<"GlobalEndpointTokenVersion">> := list(any())
+%% }
+-type set_security_token_service_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% signing_certificate() :: #{
+%%   <<"CertificateBody">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type signing_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_custom_policy_request() :: #{
+%%   <<"ActionNames">> := list(string()),
+%%   <<"CallerArn">> => string(),
+%%   <<"ContextEntries">> => list(context_entry()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OrderedOrganizationPolicyInputList">> => list(ordered_organization_policy_type()),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
+%%   <<"PolicyInputList">> := list(string()),
+%%   <<"ResourceArns">> => list(string()),
+%%   <<"ResourceHandlingOption">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type simulate_custom_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_policy_response() :: #{
+%%   <<"EvaluationResults">> => list(evaluation_result()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type simulate_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_principal_policy_request() :: #{
+%%   <<"ActionNames">> := list(string()),
+%%   <<"CallerArn">> => string(),
+%%   <<"ContextEntries">> => list(context_entry()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
+%%   <<"PolicyExclusionList">> => list(list()),
+%%   <<"PolicyInputList">> => list(string()),
+%%   <<"PolicySourceArn">> := string(),
+%%   <<"ResourceArns">> => list(string()),
+%%   <<"ResourceHandlingOption">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type simulate_principal_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% ssh_public_key() :: #{
+%%   <<"Fingerprint">> => string(),
+%%   <<"SSHPublicKeyBody">> => string(),
+%%   <<"SSHPublicKeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type ssh_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% ssh_public_key_metadata() :: #{
+%%   <<"SSHPublicKeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type ssh_public_key_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% statement() :: #{
+%%   <<"EndPosition">> => position(),
+%%   <<"SourcePolicyId">> => string(),
+%%   <<"SourcePolicyType">> => list(any()),
+%%   <<"StartPosition">> => position()
+%% }
+-type statement() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_role_request() :: #{
+%%   <<"RoleName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_user_request() :: #{
+%%   <<"Tags">> := list(tag()),
+%%   <<"UserName">> := string()
+%% }
+-type tag_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% tracked_action_last_accessed() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"LastAccessedEntity">> => string(),
+%%   <<"LastAccessedRegion">> => string(),
+%%   <<"LastAccessedTime">> => non_neg_integer()
+%% }
+-type tracked_action_last_accessed() :: #{binary() => any()}.
+
+%% Example:
+%% unmodifiable_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unmodifiable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unrecognized_public_key_encoding_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unrecognized_public_key_encoding_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_role_request() :: #{
+%%   <<"RoleName">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_user_request() :: #{
+%%   <<"TagKeys">> := list(string()),
+%%   <<"UserName">> := string()
+%% }
+-type untag_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_key_request() :: #{
+%%   <<"AccessKeyId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_password_policy_request() :: #{
+%%   <<"AllowUsersToChangePassword">> => boolean(),
+%%   <<"HardExpiry">> => boolean(),
+%%   <<"MaxPasswordAge">> => integer(),
+%%   <<"MinimumPasswordLength">> => integer(),
+%%   <<"PasswordReusePrevention">> => integer(),
+%%   <<"RequireLowercaseCharacters">> => boolean(),
+%%   <<"RequireNumbers">> => boolean(),
+%%   <<"RequireSymbols">> => boolean(),
+%%   <<"RequireUppercaseCharacters">> => boolean()
+%% }
+-type update_account_password_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_assume_role_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_assume_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_delegation_request_request() :: #{
+%%   <<"DelegationRequestId">> := string(),
+%%   <<"Notes">> => string()
+%% }
+-type update_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"NewGroupName">> => string(),
+%%   <<"NewPath">> => string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_login_profile_request() :: #{
+%%   <<"Password">> => string(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> := string()
+%% }
+-type update_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_provider_thumbprint_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"ThumbprintList">> := list(string())
+%% }
+-type update_open_id_connect_provider_thumbprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_description_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_role_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_description_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type update_role_description_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_response() :: #{
+
+%% }
+-type update_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_saml_provider_request() :: #{
+%%   <<"AddPrivateKey">> => string(),
+%%   <<"AssertionEncryptionMode">> => list(any()),
+%%   <<"RemovePrivateKey">> => string(),
+%%   <<"SAMLMetadataDocument">> => string(),
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type update_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_saml_provider_response() :: #{
+%%   <<"SAMLProviderArn">> => string()
+%% }
+-type update_saml_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_certificate_request() :: #{
+%%   <<"NewPath">> => string(),
+%%   <<"NewServerCertificateName">> => string(),
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type update_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_signing_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type update_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"NewPath">> => string(),
+%%   <<"NewUserName">> => string(),
+%%   <<"UserName">> := string()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_server_certificate_request() :: #{
+%%   <<"CertificateBody">> := string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"PrivateKey">> := string(),
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type upload_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_server_certificate_response() :: #{
+%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type upload_server_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% upload_signing_certificate_request() :: #{
+%%   <<"CertificateBody">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type upload_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_signing_certificate_response() :: #{
+%%   <<"Certificate">> => signing_certificate()
+%% }
+-type upload_signing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% upload_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyBody">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type upload_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_ssh_public_key_response() :: #{
+%%   <<"SSHPublicKey">> => ssh_public_key()
+%% }
+-type upload_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"PasswordLastUsed">> => non_neg_integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user() :: #{binary() => any()}.
 
 %% Example:
 %% user_detail() :: #{
@@ -2365,1051 +3182,250 @@
 -type user_detail() :: #{binary() => any()}.
 
 %% Example:
-%% feature_enabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type feature_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_key_response() :: #{
-%%   <<"AccessKey">> => access_key()
-%% }
--type create_access_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_last_accessed() :: #{
-%%   <<"LastAuthenticated">> => non_neg_integer(),
-%%   <<"LastAuthenticatedEntity">> => string(),
-%%   <<"LastAuthenticatedRegion">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceNamespace">> => string(),
-%%   <<"TotalAuthenticatedEntities">> => integer(),
-%%   <<"TrackedActionsLastAccessed">> => list(tracked_action_last_accessed())
-%% }
--type service_last_accessed() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_linked_role_response() :: #{
-%%   <<"Role">> => role()
-%% }
--type create_service_linked_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_signing_certificate_request() :: #{
-%%   <<"CertificateId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"UserName">> => string()
-%% }
--type update_signing_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_login_profile_request() :: #{
-%%   <<"UserName">> => string()
-%% }
--type get_login_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% role_usage_type() :: #{
-%%   <<"Region">> => string(),
-%%   <<"Resources">> => list(string())
-%% }
--type role_usage_type() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_saml_provider_request() :: #{
-%%   <<"SAMLProviderArn">> := string()
-%% }
--type get_saml_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% unrecognized_public_key_encoding_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unrecognized_public_key_encoding_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_policies_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_group_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"NewPath">> => string(),
-%%   <<"NewUserName">> => string(),
-%%   <<"UserName">> := string()
-%% }
--type update_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_signing_certificates_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> => string()
-%% }
--type list_signing_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_group_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_attached_group_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% saml_private_key() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type saml_private_key() :: #{binary() => any()}.
-
-%% Example:
-%% list_server_certificates_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_server_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_policies_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string())
-%% }
--type list_user_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_aliases_response() :: #{
-%%   <<"AccountAliases">> => list(string()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_account_aliases_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_context_keys_for_principal_policy_request() :: #{
-%%   <<"PolicyInputList">> => list(string()),
-%%   <<"PolicySourceArn">> := string()
-%% }
--type get_context_keys_for_principal_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"UserName">> := string()
-%% }
--type list_user_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_delegation_request_request() :: #{
-%%   <<"DelegationPermissionCheck">> => boolean(),
-%%   <<"DelegationRequestId">> := string()
-%% }
--type get_delegation_request_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_ssh_public_keys_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"SSHPublicKeys">> => list(ssh_public_key_metadata())
-%% }
--type list_ssh_public_keys_response() :: #{binary() => any()}.
-
-%% Example:
-%% attached_permissions_boundary() :: #{
-%%   <<"PermissionsBoundaryArn">> => string(),
-%%   <<"PermissionsBoundaryType">> => list(any())
-%% }
--type attached_permissions_boundary() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_last_accessed_details_with_entities_response() :: #{
-%%   <<"EntityDetailsList">> => list(entity_details()),
-%%   <<"Error">> => error_details(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"JobCompletionDate">> => non_neg_integer(),
-%%   <<"JobCreationDate">> => non_neg_integer(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"Marker">> => string()
-%% }
--type get_service_last_accessed_details_with_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% detach_role_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type detach_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_summary_response() :: #{
-%%   <<"SummaryMap">> => map()
-%% }
--type get_account_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_keys_response() :: #{
-%%   <<"AccessKeyMetadata">> => list(access_key_metadata()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_access_keys_response() :: #{binary() => any()}.
-
-%% Example:
-%% group() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"GroupId">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"Path">> => string()
-%% }
--type group() :: #{binary() => any()}.
-
-%% Example:
-%% server_certificate_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"Path">> => string(),
-%%   <<"ServerCertificateId">> => string(),
-%%   <<"ServerCertificateName">> => string(),
-%%   <<"UploadDate">> => non_neg_integer()
-%% }
--type server_certificate_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_response() :: #{
-%%   <<"Group">> => group(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Users">> => list(user())
-%% }
--type get_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"PasswordLastUsed">> => non_neg_integer(),
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%% virtual_mfa_device() :: #{
+%%   <<"Base32StringSeed">> => binary(),
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"QRCodePNG">> => binary(),
+%%   <<"SerialNumber">> => string(),
 %%   <<"Tags">> => list(tag()),
-%%   <<"UserId">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-%% Example:
-%% create_role_request() :: #{
-%%   <<"AssumeRolePolicyDocument">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"MaxSessionDuration">> => integer(),
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundary">> => string(),
-%%   <<"RoleName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% login_profile() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"PasswordResetRequired">> => boolean(),
-%%   <<"UserName">> => string()
-%% }
--type login_profile() :: #{binary() => any()}.
-
-%% Example:
-%% reset_service_specific_credential_response() :: #{
-%%   <<"ServiceSpecificCredential">> => service_specific_credential()
-%% }
--type reset_service_specific_credential_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"GroupName">> := string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_last_accessed_details_with_entities_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"ServiceNamespace">> := string()
-%% }
--type get_service_last_accessed_details_with_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_policy_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PolicyArn">> := string()
-%% }
--type list_policy_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_client_id_from_open_id_connect_provider_request() :: #{
-%%   <<"ClientID">> := string(),
-%%   <<"OpenIDConnectProviderArn">> := string()
-%% }
--type remove_client_id_from_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_role_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type get_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% organizations_decision_detail() :: #{
-%%   <<"AllowedByOrganizations">> => boolean()
-%% }
--type organizations_decision_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_key_request() :: #{
-%%   <<"AccessKeyId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"UserName">> => string()
-%% }
--type update_access_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profiles_for_role_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"RoleName">> := string()
-%% }
--type list_instance_profiles_for_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% attach_role_policy_request() :: #{
-%%   <<"PolicyArn">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type attach_role_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_linked_role_response() :: #{
-%%   <<"DeletionTaskId">> => string()
-%% }
--type delete_service_linked_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% upload_server_certificate_response() :: #{
-%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
-%%   <<"Tags">> => list(tag())
-%% }
--type upload_server_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% credential_report_not_present_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type credential_report_not_present_exception() :: #{binary() => any()}.
-
-%% Example:
-%% caller_is_not_management_account_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type caller_is_not_management_account_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_saml_provider_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"SAMLProviderArn">> := string()
-%% }
--type list_saml_provider_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_policy_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type get_group_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_role_permissions_boundary_request() :: #{
-%%   <<"PermissionsBoundary">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type put_role_permissions_boundary_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_open_id_connect_provider_tags_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"OpenIDConnectProviderArn">> := string()
-%% }
--type list_open_id_connect_provider_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_result() :: #{
-%%   <<"EvalActionName">> => string(),
-%%   <<"EvalDecision">> => list(any()),
-%%   <<"EvalDecisionDetails">> => map(),
-%%   <<"EvalResourceName">> => string(),
-%%   <<"MatchedStatements">> => list(statement()),
-%%   <<"MissingContextValues">> => list(string()),
-%%   <<"OrganizationsDecisionDetail">> => organizations_decision_detail(),
-%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail(),
-%%   <<"ResourceSpecificResults">> => list(resource_specific_result())
-%% }
--type evaluation_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_virtual_mfa_device_request() :: #{
-%%   <<"Path">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VirtualMFADeviceName">> := string()
-%% }
--type create_virtual_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_role_response() :: #{
-%%   <<"Role">> => role()
-%% }
--type get_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_server_certificate_request() :: #{
-%%   <<"ServerCertificateName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_server_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_service_last_accessed_details_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Granularity">> => list(any())
-%% }
--type generate_service_last_accessed_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_role_description_request() :: #{
-%%   <<"Description">> := string(),
-%%   <<"RoleName">> := string()
-%% }
--type update_role_description_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_credential_report_response() :: #{
-%%   <<"Content">> => binary(),
-%%   <<"GeneratedTime">> => non_neg_integer(),
-%%   <<"ReportFormat">> => list(any())
-%% }
--type get_credential_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_delegation_request_request() :: #{
-%%   <<"DelegationRequestId">> := string()
-%% }
--type accept_delegation_request_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_aliases_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_account_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_role_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"RoleName">> := string()
-%% }
--type list_role_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_open_id_connect_provider_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_open_id_connect_provider_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> => list(group()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type get_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_roles_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_roles_request() :: #{binary() => any()}.
-
-%% Example:
-%% attached_policy() :: #{
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyName">> => string()
-%% }
--type attached_policy() :: #{binary() => any()}.
-
-%% Example:
-%% access_detail() :: #{
-%%   <<"EntityPath">> => string(),
-%%   <<"LastAuthenticatedTime">> => non_neg_integer(),
-%%   <<"Region">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceNamespace">> => string(),
-%%   <<"TotalAuthenticatedEntities">> => integer()
-%% }
--type access_detail() :: #{binary() => any()}.
-
-%% Example:
-%% access_key_last_used() :: #{
-%%   <<"LastUsedDate">> => non_neg_integer(),
-%%   <<"Region">> => string(),
-%%   <<"ServiceName">> => string()
-%% }
--type access_key_last_used() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_key_request() :: #{
-%%   <<"UserName">> => string()
-%% }
--type create_access_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_certificate_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_certificate_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_public_key_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_public_key_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_saml_provider_tags_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_saml_provider_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_client_id_to_open_id_connect_provider_request() :: #{
-%%   <<"ClientID">> := string(),
-%%   <<"OpenIDConnectProviderArn">> := string()
-%% }
--type add_client_id_to_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ssh_public_key_request() :: #{
-%%   <<"SSHPublicKeyId">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type delete_ssh_public_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% tracked_action_last_accessed() :: #{
-%%   <<"ActionName">> => string(),
-%%   <<"LastAccessedEntity">> => string(),
-%%   <<"LastAccessedRegion">> => string(),
-%%   <<"LastAccessedTime">> => non_neg_integer()
-%% }
--type tracked_action_last_accessed() :: #{binary() => any()}.
-
-%% Example:
-%% untag_role_request() :: #{
-%%   <<"RoleName">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{
 %%   <<"User">> => user()
 %% }
--type create_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_login_profile_request() :: #{
-%%   <<"Password">> => string(),
-%%   <<"PasswordResetRequired">> => boolean(),
-%%   <<"UserName">> => string()
-%% }
--type create_login_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_open_id_connect_provider_request() :: #{
-%%   <<"OpenIDConnectProviderArn">> := string()
-%% }
--type delete_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% upload_ssh_public_key_request() :: #{
-%%   <<"SSHPublicKeyBody">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type upload_ssh_public_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_ssh_public_key_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_ssh_public_key_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_role_request() :: #{
-%%   <<"RoleName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_user_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"PathPrefix">> => string(),
-%%   <<"UserName">> := string()
-%% }
--type list_attached_user_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signing_certificate_request() :: #{
-%%   <<"CertificateId">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type delete_signing_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_credential_report_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type generate_credential_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_role_request() :: #{
-%%   <<"RoleName">> := string()
-%% }
--type delete_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_response() :: #{
-%%   <<"Group">> => group()
-%% }
--type create_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% deletion_task_failure_reason_type() :: #{
-%%   <<"Reason">> => string(),
-%%   <<"RoleUsageList">> => list(role_usage_type())
-%% }
--type deletion_task_failure_reason_type() :: #{binary() => any()}.
-
-%% Example:
-%% tag_user_request() :: #{
-%%   <<"Tags">> := list(tag()),
-%%   <<"UserName">> := string()
-%% }
--type tag_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% simulate_policy_response() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type simulate_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_mfa_device_request() :: #{
-%%   <<"SerialNumber">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_user_from_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type remove_user_from_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mfa_device_request() :: #{
-%%   <<"SerialNumber">> := string(),
-%%   <<"UserName">> => string()
-%% }
--type get_mfa_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attached_role_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string()
-%% }
--type list_attached_role_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% server_certificate() :: #{
-%%   <<"CertificateBody">> => string(),
-%%   <<"CertificateChain">> => string(),
-%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
-%%   <<"Tags">> => list(tag())
-%% }
--type server_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% create_open_id_connect_provider_request() :: #{
-%%   <<"ClientIDList">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ThumbprintList">> => list(string()),
-%%   <<"Url">> := string()
-%% }
--type create_open_id_connect_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_role_permissions_boundary_request() :: #{
-%%   <<"RoleName">> := string()
-%% }
--type delete_role_permissions_boundary_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_server_certificate_response() :: #{
-%%   <<"ServerCertificate">> => server_certificate()
-%% }
--type get_server_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_user() :: #{
-%%   <<"UserId">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type policy_user() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"Path">> => string(),
-%%   <<"PermissionsBoundary">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserName">> := string()
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_outbound_web_identity_federation_info_response() :: #{
-%%   <<"IssuerIdentifier">> => string(),
-%%   <<"JwtVendingEnabled">> => boolean()
-%% }
--type get_outbound_web_identity_federation_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_instance_profile_request() :: #{
-%%   <<"InstanceProfileName">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_instance_profile_request() :: #{binary() => any()}.
+-type virtual_mfa_device() :: #{binary() => any()}.
 
 -type accept_delegation_request_errors() ::
-    concurrent_modification_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    concurrent_modification_exception().
 
 -type add_client_id_to_open_id_connect_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type add_role_to_instance_profile_errors() ::
-    limit_exceeded_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     entity_already_exists_exception().
 
 -type add_user_to_group_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type associate_delegation_request_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type attach_group_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
+    policy_not_attachable_exception() | 
     no_such_entity_exception() | 
-    policy_not_attachable_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type attach_role_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
+    policy_not_attachable_exception() | 
     no_such_entity_exception() | 
-    policy_not_attachable_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type attach_user_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
+    policy_not_attachable_exception() | 
     no_such_entity_exception() | 
-    policy_not_attachable_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type change_password_errors() ::
-    limit_exceeded_exception() | 
-    password_policy_violation_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
+    password_policy_violation_exception() | 
     no_such_entity_exception() | 
-    invalid_user_type_exception().
+    limit_exceeded_exception() | 
+    invalid_user_type_exception() | 
+    entity_temporarily_unmodifiable_exception().
 
 -type create_access_key_errors() ::
-    limit_exceeded_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type create_account_alias_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    service_failure_exception() | 
-    entity_already_exists_exception().
-
--type create_delegation_request_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    entity_already_exists_exception().
-
--type create_group_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
+    limit_exceeded_exception().
+
+-type create_account_alias_errors() ::
+    service_failure_exception() | 
+    limit_exceeded_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
+
+-type create_delegation_request_errors() ::
+    service_failure_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
+
+-type create_group_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     entity_already_exists_exception().
 
 -type create_instance_profile_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    entity_already_exists_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type create_login_profile_errors() ::
-    limit_exceeded_exception() | 
-    password_policy_violation_exception() | 
     service_failure_exception() | 
+    password_policy_violation_exception() | 
     no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     entity_already_exists_exception().
 
 -type create_open_id_connect_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    open_id_idp_communication_error_exception() | 
     service_failure_exception() | 
-    entity_already_exists_exception().
+    open_id_idp_communication_error_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type create_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    entity_already_exists_exception().
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type create_policy_version_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type create_role_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    entity_already_exists_exception().
-
--type create_saml_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    entity_already_exists_exception().
-
--type create_service_linked_role_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type create_service_specific_credential_errors() ::
-    limit_exceeded_exception() | 
-    service_not_supported_exception() | 
-    no_such_entity_exception().
-
--type create_user_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
-    entity_already_exists_exception().
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
+
+-type create_role_errors() ::
+    service_failure_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
+
+-type create_saml_provider_errors() ::
+    service_failure_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
+
+-type create_service_linked_role_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
+
+-type create_service_specific_credential_errors() ::
+    service_not_supported_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
+
+-type create_user_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type create_virtual_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    entity_already_exists_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type deactivate_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    concurrent_modification_exception().
 
 -type delete_access_key_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_account_alias_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception().
 
 -type delete_account_password_policy_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_group_errors() ::
-    limit_exceeded_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception().
 
 -type delete_group_policy_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_instance_profile_errors() ::
-    limit_exceeded_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception().
 
 -type delete_login_profile_errors() ::
-    limit_exceeded_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    entity_temporarily_unmodifiable_exception().
 
 -type delete_open_id_connect_provider_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type delete_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
     limit_exceeded_exception() | 
     invalid_input_exception() | 
-    delete_conflict_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
+    delete_conflict_exception().
 
 -type delete_policy_version_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
     limit_exceeded_exception() | 
     invalid_input_exception() | 
-    delete_conflict_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
+    delete_conflict_exception().
 
 -type delete_role_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     unmodifiable_entity_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    concurrent_modification_exception().
 
 -type delete_role_permissions_boundary_errors() ::
     unmodifiable_entity_exception() | 
@@ -3417,133 +3433,133 @@
     no_such_entity_exception().
 
 -type delete_role_policy_errors() ::
-    limit_exceeded_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_saml_provider_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type delete_server_certificate_errors() ::
-    limit_exceeded_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception().
 
 -type delete_service_linked_role_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_service_specific_credential_errors() ::
     no_such_entity_exception().
 
 -type delete_signing_certificate_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception().
 
 -type delete_ssh_public_key_errors() ::
     no_such_entity_exception().
 
 -type delete_user_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    concurrent_modification_exception().
 
 -type delete_user_permissions_boundary_errors() ::
     service_failure_exception() | 
     no_such_entity_exception().
 
 -type delete_user_policy_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type delete_virtual_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    delete_conflict_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    delete_conflict_exception() | 
+    concurrent_modification_exception().
 
 -type detach_group_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type detach_role_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type detach_user_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type disable_organizations_root_credentials_management_errors() ::
-    organization_not_found_exception() | 
-    organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    organization_not_found_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
 -type disable_organizations_root_sessions_errors() ::
-    organization_not_found_exception() | 
-    organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    organization_not_found_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
 -type disable_outbound_web_identity_federation_errors() ::
     feature_disabled_exception().
 
 -type enable_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_authentication_code_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
-    entity_already_exists_exception().
+    limit_exceeded_exception() | 
+    invalid_authentication_code_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type enable_organizations_root_credentials_management_errors() ::
-    caller_is_not_management_account_exception() | 
-    organization_not_found_exception() | 
-    organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    organization_not_found_exception() | 
+    caller_is_not_management_account_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
 -type enable_organizations_root_sessions_errors() ::
-    caller_is_not_management_account_exception() | 
-    organization_not_found_exception() | 
-    organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    organization_not_found_exception() | 
+    caller_is_not_management_account_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
 -type enable_outbound_web_identity_federation_errors() ::
     feature_enabled_exception().
 
 -type generate_credential_report_errors() ::
-    limit_exceeded_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    limit_exceeded_exception().
 
 -type generate_organizations_access_report_errors() ::
     report_generation_limit_exceeded_exception().
 
 -type generate_service_last_accessed_details_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_account_authorization_details_errors() ::
     service_failure_exception().
@@ -3559,14 +3575,14 @@
     invalid_input_exception().
 
 -type get_context_keys_for_principal_policy_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_credential_report_errors() ::
-    credential_report_not_present_exception() | 
-    credential_report_expired_exception() | 
+    service_failure_exception() | 
     credential_report_not_ready_exception() | 
-    service_failure_exception().
+    credential_report_not_present_exception() | 
+    credential_report_expired_exception().
 
 -type get_delegation_request_errors() ::
     service_failure_exception() | 
@@ -3581,9 +3597,9 @@
     no_such_entity_exception().
 
 -type get_human_readable_summary_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_instance_profile_errors() ::
     service_failure_exception() | 
@@ -3598,9 +3614,9 @@
     no_such_entity_exception().
 
 -type get_open_id_connect_provider_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_organizations_access_report_errors() ::
     no_such_entity_exception().
@@ -3609,14 +3625,14 @@
     feature_disabled_exception().
 
 -type get_policy_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_policy_version_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_role_errors() ::
     service_failure_exception() | 
@@ -3627,26 +3643,26 @@
     no_such_entity_exception().
 
 -type get_saml_provider_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_server_certificate_errors() ::
     service_failure_exception() | 
     no_such_entity_exception().
 
 -type get_service_last_accessed_details_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_service_last_accessed_details_with_entities_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_service_linked_role_deletion_status_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_ssh_public_key_errors() ::
     unrecognized_public_key_encoding_exception() | 
@@ -3668,29 +3684,29 @@
     service_failure_exception().
 
 -type list_attached_group_policies_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_attached_role_policies_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_attached_user_policies_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_delegation_requests_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_entities_for_policy_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_group_policies_errors() ::
     service_failure_exception() | 
@@ -3715,44 +3731,44 @@
     no_such_entity_exception().
 
 -type list_mfa_device_tags_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_mfa_devices_errors() ::
     service_failure_exception() | 
     no_such_entity_exception().
 
 -type list_open_id_connect_provider_tags_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_open_id_connect_providers_errors() ::
     service_failure_exception().
 
 -type list_organizations_features_errors() ::
-    organization_not_found_exception() | 
-    organization_not_in_all_features_mode_exception() | 
     service_access_not_enabled_exception() | 
+    organization_not_in_all_features_mode_exception() | 
+    organization_not_found_exception() | 
     account_not_management_or_delegated_administrator_exception().
 
 -type list_policies_errors() ::
     service_failure_exception().
 
 -type list_policies_granting_service_access_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_policy_tags_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_policy_versions_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_role_policies_errors() ::
     service_failure_exception() | 
@@ -3766,9 +3782,9 @@
     service_failure_exception().
 
 -type list_saml_provider_tags_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type list_saml_providers_errors() ::
     service_failure_exception().
@@ -3803,239 +3819,239 @@
     service_failure_exception().
 
 -type put_group_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception().
 
 -type put_role_permissions_boundary_errors() ::
-    invalid_input_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
+    policy_not_attachable_exception() | 
     no_such_entity_exception() | 
-    policy_not_attachable_exception().
+    invalid_input_exception().
 
 -type put_role_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
     unmodifiable_entity_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type put_user_permissions_boundary_errors() ::
-    invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
-    policy_not_attachable_exception().
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception().
+
+-type put_user_permissions_boundary_errors() ::
+    service_failure_exception() | 
+    policy_not_attachable_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type put_user_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception().
 
 -type reject_delegation_request_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type remove_client_id_from_open_id_connect_provider_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type remove_role_from_instance_profile_errors() ::
-    limit_exceeded_exception() | 
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type remove_user_from_group_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception().
 
 -type reset_service_specific_credential_errors() ::
     no_such_entity_exception().
 
 -type resync_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_authentication_code_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_authentication_code_exception() | 
+    concurrent_modification_exception().
 
 -type send_delegation_token_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type set_default_policy_version_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type set_security_token_service_preferences_errors() ::
     service_failure_exception().
 
 -type simulate_custom_policy_errors() ::
-    invalid_input_exception() | 
-    policy_evaluation_exception().
+    policy_evaluation_exception() | 
+    invalid_input_exception().
 
 -type simulate_principal_policy_errors() ::
-    invalid_input_exception() | 
     policy_evaluation_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type tag_instance_profile_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_mfa_device_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_open_id_connect_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_policy_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_role_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_saml_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_server_certificate_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type tag_user_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_instance_profile_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_mfa_device_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_open_id_connect_provider_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_policy_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_role_errors() ::
-    concurrent_modification_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_saml_provider_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_server_certificate_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type untag_user_errors() ::
-    concurrent_modification_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_access_key_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_account_password_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_assume_role_policy_errors() ::
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    unmodifiable_entity_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_delegation_request_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_group_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_mfa_device_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_open_id_connect_provider_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_role_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_saml_provider_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_server_certificate_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type tag_user_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_instance_profile_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_mfa_device_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_open_id_connect_provider_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_role_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    concurrent_modification_exception().
+
+-type untag_saml_provider_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_server_certificate_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type untag_user_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    concurrent_modification_exception().
+
+-type update_access_key_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
+
+-type update_account_password_policy_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception().
+
+-type update_assume_role_policy_errors() ::
+    unmodifiable_entity_exception() | 
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception().
+
+-type update_delegation_request_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type update_group_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     entity_already_exists_exception().
 
 -type update_login_profile_errors() ::
-    limit_exceeded_exception() | 
-    password_policy_violation_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    password_policy_violation_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    entity_temporarily_unmodifiable_exception().
 
 -type update_open_id_connect_provider_thumbprint_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type update_role_errors() ::
     unmodifiable_entity_exception() | 
@@ -4048,64 +4064,64 @@
     no_such_entity_exception().
 
 -type update_saml_provider_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    service_failure_exception() | 
-    no_such_entity_exception().
-
--type update_server_certificate_errors() ::
-    limit_exceeded_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
+
+-type update_server_certificate_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     entity_already_exists_exception().
 
 -type update_service_specific_credential_errors() ::
     no_such_entity_exception().
 
 -type update_signing_certificate_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type update_ssh_public_key_errors() ::
-    invalid_input_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type update_user_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    entity_temporarily_unmodifiable_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
-    entity_already_exists_exception().
+    limit_exceeded_exception() | 
+    entity_temporarily_unmodifiable_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type upload_server_certificate_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    malformed_certificate_exception() | 
-    invalid_input_exception() | 
     service_failure_exception() | 
+    malformed_certificate_exception() | 
+    limit_exceeded_exception() | 
     key_pair_mismatch_exception() | 
-    entity_already_exists_exception().
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
+    concurrent_modification_exception().
 
 -type upload_signing_certificate_errors() ::
-    duplicate_certificate_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    malformed_certificate_exception() | 
-    invalid_certificate_exception() | 
     service_failure_exception() | 
     no_such_entity_exception() | 
-    entity_already_exists_exception().
+    malformed_certificate_exception() | 
+    limit_exceeded_exception() | 
+    invalid_certificate_exception() | 
+    entity_already_exists_exception() | 
+    duplicate_certificate_exception() | 
+    concurrent_modification_exception().
 
 -type upload_ssh_public_key_errors() ::
-    duplicate_ssh_public_key_exception() | 
-    invalid_public_key_exception() | 
-    limit_exceeded_exception() | 
     unrecognized_public_key_encoding_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
+    invalid_public_key_exception() | 
+    duplicate_ssh_public_key_exception().
 
 %%====================================================================
 %% API
@@ -6522,6 +6538,12 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 %% to understand what key names and values
 %% you must supply when you call SimulatePrincipalPolicy:
 %% https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulatePrincipalPolicy.html.
+%% This operation doesn't return context keys
+%% referenced by service control policies (SCPs). Only context keys
+%% referenced by the
+%% identity-based policies attached to the specified entity, and any
+%% additional policies
+%% that you provide, are included.
 -spec get_context_keys_for_principal_policy(aws_client:aws_client(), get_context_keys_for_principal_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
@@ -9040,12 +9062,12 @@ set_security_token_service_preferences(Client, Input, Options)
 %% If the output is long, you can use `MaxItems' and `Marker'
 %% parameters to paginate the results.
 %%
-%% The IAM policy simulator evaluates statements in the identity-based policy
-%% and
-%% the inputs that you provide during simulation. The policy simulator
-%% results can
-%% differ from your live Amazon Web Services environment. We recommend that
-%% you check your policies
+%% The IAM policy simulator evaluates statements in identity-based policies,
+%% service control policies (SCPs) including their condition keys and
+%% resource
+%% scoping, and the inputs that you provide during simulation. The policy
+%% simulator results can differ from your live Amazon Web Services
+%% environment. We recommend that you check your policies
 %% against your live Amazon Web Services environment after testing using the
 %% policy simulator to
 %% confirm that you have the desired results. For more information about
@@ -9099,6 +9121,14 @@ simulate_custom_policy(Client, Input, Options)
 %% authorization
 %% to determine if the simulated policies allow or deny the operations.
 %%
+%% For cross-account simulations, `EvalDecisionDetails' returns the
+%% decision
+%% for each policy type (identity-based policy, resource-based policy, and
+%% permissions
+%% boundary). This helps you identify which policy type is responsible for an
+%% allow or
+%% deny decision when policies span multiple accounts.
+%%
 %% Note: This operation discloses information about the
 %% permissions granted to other users. If you do not want users to see other
 %% user's
@@ -9118,12 +9148,12 @@ simulate_custom_policy(Client, Input, Options)
 %% If the output is long, you can use the `MaxItems' and `Marker'
 %% parameters to paginate the results.
 %%
-%% The IAM policy simulator evaluates statements in the identity-based policy
-%% and
-%% the inputs that you provide during simulation. The policy simulator
-%% results can
-%% differ from your live Amazon Web Services environment. We recommend that
-%% you check your policies
+%% The IAM policy simulator evaluates statements in identity-based policies,
+%% service control policies (SCPs) including their condition keys and
+%% resource
+%% scoping, and the inputs that you provide during simulation. The policy
+%% simulator results can differ from your live Amazon Web Services
+%% environment. We recommend that you check your policies
 %% against your live Amazon Web Services environment after testing using the
 %% policy simulator to
 %% confirm that you have the desired results. For more information about

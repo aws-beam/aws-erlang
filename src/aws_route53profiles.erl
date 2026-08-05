@@ -51,6 +51,228 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_profile_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type associate_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_profile_response() :: #{
+%%   <<"ProfileAssociation">> => profile_association()
+%% }
+-type associate_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_to_profile_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceProperties">> => string()
+%% }
+-type associate_resource_to_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_to_profile_response() :: #{
+%%   <<"ProfileResourceAssociation">> => profile_resource_association()
+%% }
+-type associate_resource_to_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_response() :: #{
+%%   <<"Profile">> => profile()
+%% }
+-type create_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profile_request() :: #{}
+-type delete_profile_request() :: #{}.
+
+
+%% Example:
+%% delete_profile_response() :: #{
+%%   <<"Profile">> => profile()
+%% }
+-type delete_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_profile_request() :: #{}
+-type disassociate_profile_request() :: #{}.
+
+
+%% Example:
+%% disassociate_profile_response() :: #{
+%%   <<"ProfileAssociation">> => profile_association()
+%% }
+-type disassociate_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_from_profile_request() :: #{}
+-type disassociate_resource_from_profile_request() :: #{}.
+
+
+%% Example:
+%% disassociate_resource_from_profile_response() :: #{
+%%   <<"ProfileResourceAssociation">> => profile_resource_association()
+%% }
+-type disassociate_resource_from_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_association_request() :: #{}
+-type get_profile_association_request() :: #{}.
+
+
+%% Example:
+%% get_profile_association_response() :: #{
+%%   <<"ProfileAssociation">> => profile_association()
+%% }
+-type get_profile_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_request() :: #{}
+-type get_profile_request() :: #{}.
+
+%% Example:
+%% get_profile_resource_association_request() :: #{}
+-type get_profile_resource_association_request() :: #{}.
+
+
+%% Example:
+%% get_profile_resource_association_response() :: #{
+%%   <<"ProfileResourceAssociation">> => profile_resource_association()
+%% }
+-type get_profile_resource_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_response() :: #{
+%%   <<"Profile">> => profile()
+%% }
+-type get_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type list_profile_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileAssociations">> => list(profile_association())
+%% }
+-type list_profile_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_resource_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type list_profile_resource_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_resource_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileResourceAssociations">> => list(profile_resource_association())
+%% }
+-type list_profile_resource_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileSummaries">> => list(profile_summary())
+%% }
+-type list_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% profile() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ClientToken">> => string(),
@@ -67,224 +289,18 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_profile_request() :: #{}
--type delete_profile_request() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_response() :: #{
-%%   <<"Profile">> => profile()
-%% }
--type delete_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_profile_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ProfileId">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type associate_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_resource_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type list_profile_resource_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_to_profile_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ProfileId">> := string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceProperties">> => string()
-%% }
--type associate_resource_to_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_resource_from_profile_request() :: #{}
--type disassociate_resource_from_profile_request() :: #{}.
-
-
-%% Example:
-%% update_profile_resource_association_response() :: #{
-%%   <<"ProfileResourceAssociation">> => profile_resource_association()
-%% }
--type update_profile_resource_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_profile_resource_association_request() :: #{
+%% profile_association() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"ModificationTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"ResourceProperties">> => string()
-%% }
--type update_profile_resource_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_association_request() :: #{}
--type get_profile_association_request() :: #{}.
-
-
-%% Example:
-%% list_profile_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%%   <<"OwnerId">> => string(),
 %%   <<"ProfileId">> => string(),
-%%   <<"ResourceId">> => string()
+%%   <<"ResourceId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
 %% }
--type list_profile_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_to_profile_response() :: #{
-%%   <<"ProfileResourceAssociation">> => profile_resource_association()
-%% }
--type associate_resource_to_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_resource_association_response() :: #{
-%%   <<"ProfileResourceAssociation">> => profile_resource_association()
-%% }
--type get_profile_resource_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_profile_response() :: #{
-%%   <<"ProfileAssociation">> => profile_association()
-%% }
--type disassociate_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_from_profile_response() :: #{
-%%   <<"ProfileResourceAssociation">> => profile_resource_association()
-%% }
--type disassociate_resource_from_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_profile_response() :: #{
-%%   <<"ProfileAssociation">> => profile_association()
-%% }
--type associate_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_response() :: #{
-%%   <<"Profile">> => profile()
-%% }
--type get_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_response() :: #{
-%%   <<"Profile">> => profile()
-%% }
--type create_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileAssociations">> => list(profile_association())
-%% }
--type list_profile_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_profile_request() :: #{}
--type disassociate_profile_request() :: #{}.
-
-
-%% Example:
-%% list_profile_resource_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileResourceAssociations">> => list(profile_resource_association())
-%% }
--type list_profile_resource_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type profile_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -305,90 +321,6 @@
 
 
 %% Example:
-%% resource_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"FieldName">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% get_profile_resource_association_request() :: #{}
--type get_profile_resource_association_request() :: #{}.
-
-
-%% Example:
-%% profile_association() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"ModificationTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type profile_association() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_request() :: #{}
--type get_profile_request() :: #{}.
-
-
-%% Example:
-%% list_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileSummaries">> => list(profile_summary())
-%% }
--type list_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% profile_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -399,134 +331,202 @@
 
 
 %% Example:
-%% get_profile_association_response() :: #{
-%%   <<"ProfileAssociation">> => profile_association()
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type get_profile_association_response() :: #{binary() => any()}.
+-type resource_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_profile_resource_association_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ResourceProperties">> => string()
+%% }
+-type update_profile_resource_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_resource_association_response() :: #{
+%%   <<"ProfileResourceAssociation">> => profile_resource_association()
+%% }
+-type update_profile_resource_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_resource_to_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type create_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception().
 
 -type delete_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_resource_from_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type get_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_profile_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_profile_resource_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_profile_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    access_denied_exception().
 
 -type list_profile_resource_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type tag_resource_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
-
--type untag_resource_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type update_profile_resource_association_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_profile_resource_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

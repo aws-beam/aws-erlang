@@ -61,58 +61,85 @@
 
 
 %% Example:
-%% fhir_server() :: #{
-%%   <<"fhirEndpoint">> => string(),
-%%   <<"oauthToken">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type fhir_server() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% activate_subscription_input() :: #{}
+-type activate_subscription_input() :: #{}.
 
 
 %% Example:
-%% s3_source() :: #{
-%%   <<"uri">> => string()
+%% activate_subscription_output() :: #{
+%%   <<"subscription">> => subscription_description()
 %% }
--type s3_source() :: #{binary() => any()}.
+-type activate_subscription_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_patient_insights_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"encounterContext">> := patient_insights_encounter_context(),
-%%   <<"inputDataConfig">> := input_data_config(),
-%%   <<"insightsContext">> := insights_context(),
-%%   <<"outputDataConfig">> := output_data_config(),
-%%   <<"patientContext">> := patient_insights_patient_context(),
-%%   <<"userContext">> := user_context()
+%% artifact_details() :: #{
+%%   <<"failureReason">> => string(),
+%%   <<"outputLocation">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type start_patient_insights_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_input() :: #{}
--type get_domain_input() :: #{}.
+-type artifact_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% medical_scribe_audio_event() :: #{
-%%   <<"audioChunk">> => binary()
+%% clinical_note_generation_result() :: #{
+%%   <<"afterVisitSummaryResult">> => artifact_details(),
+%%   <<"noteResult">> => artifact_details(),
+%%   <<"transcriptResult">> => artifact_details()
 %% }
--type medical_scribe_audio_event() :: #{binary() => any()}.
+-type clinical_note_generation_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% medical_scribe_post_stream_action_settings() :: #{
-%%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
-%%   <<"outputS3Uri">> => string()
+%% clinical_note_generation_settings() :: #{
+%%   <<"noteTemplateSettings">> => list()
 %% }
--type medical_scribe_post_stream_action_settings() :: #{binary() => any()}.
+-type clinical_note_generation_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_data_config() :: #{
-%%   <<"fhirServer">> => fhir_server(),
-%%   <<"s3Sources">> => list(s3_source())
+%% clinical_note_generation_settings_response() :: #{
+%%   <<"noteTemplateSettings">> => list()
 %% }
--type input_data_config() :: #{binary() => any()}.
+-type clinical_note_generation_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_input() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"webAppSetupConfiguration">> => create_web_app_configuration()
+%% }
+-type create_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"encryptionContext">> => encryption_context(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"webAppConfiguration">> => web_app_configuration(),
+%%   <<"webAppUrl">> => string()
+%% }
+-type create_domain_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_subscription_input() :: #{}
@@ -120,20 +147,65 @@
 
 
 %% Example:
-%% patient_insights_patient_context() :: #{
-%%   <<"dateOfBirth">> => string(),
-%%   <<"patientId">> => string(),
-%%   <<"pronouns">> => list(any())
+%% create_subscription_output() :: #{
+%%   <<"activatedAt">> => [non_neg_integer()],
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deactivatedAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string()
 %% }
--type patient_insights_patient_context() :: #{binary() => any()}.
+-type create_subscription_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% medical_scribe_post_stream_action_settings_response() :: #{
-%%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings_response(),
-%%   <<"outputS3Uri">> => string()
+%% create_web_app_configuration() :: #{
+%%   <<"ehrRole">> => [string()],
+%%   <<"idcInstanceId">> => [string()],
+%%   <<"idcRegion">> => [string()]
 %% }
--type medical_scribe_post_stream_action_settings_response() :: #{binary() => any()}.
+-type create_web_app_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_template() :: #{
+%%   <<"templateInstructions">> => list(template_section_instruction()),
+%%   <<"templateType">> => list(any())
+%% }
+-type custom_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_template_response() :: #{
+%%   <<"templateType">> => list(any())
+%% }
+-type custom_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_subscription_input() :: #{}
+-type deactivate_subscription_input() :: #{}.
+
+
+%% Example:
+%% deactivate_subscription_output() :: #{
+%%   <<"subscription">> => subscription_description()
+%% }
+-type deactivate_subscription_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_input() :: #{}
+-type delete_domain_input() :: #{}.
+
+
+%% Example:
+%% delete_domain_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_domain_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -148,98 +220,50 @@
 
 
 %% Example:
-%% clinical_note_generation_settings() :: #{
-%%   <<"noteTemplateSettings">> => list()
+%% encounter_context() :: #{
+%%   <<"unstructuredContext">> => string()
 %% }
--type clinical_note_generation_settings() :: #{binary() => any()}.
+-type encounter_context() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_medical_scribe_listening_session_output() :: #{
+%% encryption_context() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type encryption_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% fhir_server() :: #{
+%%   <<"fhirEndpoint">> => string(),
+%%   <<"oauthToken">> => string()
+%% }
+-type fhir_server() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_input() :: #{}
+-type get_domain_input() :: #{}.
+
+
+%% Example:
+%% get_domain_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
-%%   <<"languageCode">> => list(any()),
-%%   <<"mediaEncoding">> => list(any()),
-%%   <<"mediaSampleRateHertz">> => integer(),
-%%   <<"requestId">> => string(),
-%%   <<"responseStream">> => list(),
-%%   <<"sessionId">> => string(),
-%%   <<"subscriptionId">> => string()
-%% }
--type start_medical_scribe_listening_session_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_template() :: #{
-%%   <<"templateType">> => list(any())
-%% }
--type managed_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscriptions_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_subscriptions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_template() :: #{
-%%   <<"templateInstructions">> => list(template_section_instruction()),
-%%   <<"templateType">> => list(any())
-%% }
--type custom_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_configuration_event() :: #{
-%%   <<"channelDefinitions">> => list(medical_scribe_channel_definition()),
-%%   <<"encounterContext">> => encounter_context(),
-%%   <<"postStreamActionSettings">> => medical_scribe_post_stream_action_settings()
-%% }
--type medical_scribe_configuration_event() :: #{binary() => any()}.
-
-%% Example:
-%% activate_subscription_input() :: #{}
--type activate_subscription_input() :: #{}.
-
-
-%% Example:
-%% medical_scribe_transcript_event() :: #{
-%%   <<"transcriptSegment">> => medical_scribe_transcript_segment()
-%% }
--type medical_scribe_transcript_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_post_stream_actions_result() :: #{
-%%   <<"clinicalNoteGenerationResult">> => clinical_note_generation_result()
-%% }
--type medical_scribe_post_stream_actions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% activate_subscription_output() :: #{
-%%   <<"subscription">> => subscription_description()
-%% }
--type activate_subscription_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_input() :: #{
+%%   <<"encryptionContext">> => encryption_context(),
 %%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"webAppSetupConfiguration">> => create_web_app_configuration()
+%%   <<"webAppConfiguration">> => web_app_configuration(),
+%%   <<"webAppUrl">> => string()
 %% }
--type create_domain_input() :: #{binary() => any()}.
-
+-type get_domain_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+%% get_medical_scribe_listening_session_input() :: #{}
+-type get_medical_scribe_listening_session_input() :: #{}.
 
 
 %% Example:
@@ -249,26 +273,76 @@
 -type get_medical_scribe_listening_session_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_domain_input() :: #{}
--type delete_domain_input() :: #{}.
-
-%% Example:
-%% get_medical_scribe_listening_session_input() :: #{}
--type get_medical_scribe_listening_session_input() :: #{}.
+%% get_patient_insights_job_request() :: #{}
+-type get_patient_insights_job_request() :: #{}.
 
 
 %% Example:
-%% conflict_exception() :: #{
+%% get_patient_insights_job_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"encounterContext">> => patient_insights_encounter_context(),
+%%   <<"inputDataConfig">> => input_data_config(),
+%%   <<"insightsContext">> => insights_context(),
+%%   <<"insightsOutput">> => insights_output(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"outputDataConfig">> => output_data_config(),
+%%   <<"patientContext">> => patient_insights_patient_context(),
+%%   <<"statusDetails">> => string(),
+%%   <<"updatedTime">> => [non_neg_integer()],
+%%   <<"userContext">> => user_context()
+%% }
+-type get_patient_insights_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_input() :: #{}
+-type get_subscription_input() :: #{}.
+
+
+%% Example:
+%% get_subscription_output() :: #{
+%%   <<"subscription">> => subscription_description()
+%% }
+-type get_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"fhirServer">> => fhir_server(),
+%%   <<"s3Sources">> => list(s3_source())
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights_context() :: #{
+%%   <<"insightsType">> => list(any())
+%% }
+-type insights_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights_output() :: #{
+%%   <<"uri">> => string()
+%% }
+-type insights_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_domains_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"status">> => list(any())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type list_domains_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,10 +354,75 @@
 
 
 %% Example:
-%% custom_template_response() :: #{
+%% list_subscriptions_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_subscriptions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"subscriptions">> => list(subscription_description())
+%% }
+-type list_subscriptions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_template() :: #{
 %%   <<"templateType">> => list(any())
 %% }
--type custom_template_response() :: #{binary() => any()}.
+-type managed_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_template_response() :: #{
+%%   <<"templateType">> => list(any())
+%% }
+-type managed_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_audio_event() :: #{
+%%   <<"audioChunk">> => binary()
+%% }
+-type medical_scribe_audio_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_binary_audio_event() :: #{
+%%   <<"audioChunk">> => binary()
+%% }
+-type medical_scribe_binary_audio_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_channel_definition() :: #{
+%%   <<"channelId">> => integer(),
+%%   <<"participantRole">> => list(any())
+%% }
+-type medical_scribe_channel_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_configuration_event() :: #{
+%%   <<"channelDefinitions">> => list(medical_scribe_channel_definition()),
+%%   <<"encounterContext">> => encounter_context(),
+%%   <<"postStreamActionSettings">> => medical_scribe_post_stream_action_settings()
+%% }
+-type medical_scribe_configuration_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -306,26 +445,96 @@
 
 
 %% Example:
+%% medical_scribe_post_stream_action_settings() :: #{
+%%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
+%%   <<"outputS3Uri">> => string()
+%% }
+-type medical_scribe_post_stream_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_post_stream_action_settings_response() :: #{
+%%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings_response(),
+%%   <<"outputS3Uri">> => string()
+%% }
+-type medical_scribe_post_stream_action_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_post_stream_actions_result() :: #{
+%%   <<"clinicalNoteGenerationResult">> => clinical_note_generation_result()
+%% }
+-type medical_scribe_post_stream_actions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_session_control_event() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type medical_scribe_session_control_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_transcript_event() :: #{
+%%   <<"transcriptSegment">> => medical_scribe_transcript_segment()
+%% }
+-type medical_scribe_transcript_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_transcript_segment() :: #{
+%%   <<"audioBeginOffset">> => float(),
+%%   <<"audioEndOffset">> => float(),
+%%   <<"channelId">> => [string()],
+%%   <<"content">> => [string()],
+%%   <<"isPartial">> => boolean(),
+%%   <<"segmentId">> => [string()]
+%% }
+-type medical_scribe_transcript_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"s3OutputPath">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% patient_insights_encounter_context() :: #{
+%%   <<"encounterReason">> => string()
+%% }
+-type patient_insights_encounter_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% patient_insights_patient_context() :: #{
+%%   <<"dateOfBirth">> => string(),
+%%   <<"patientId">> => string(),
+%%   <<"pronouns">> => list(any())
+%% }
+-type patient_insights_patient_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainId">> => string(),
-%%   <<"encryptionContext">> => encryption_context(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"webAppConfiguration">> => web_app_configuration(),
-%%   <<"webAppUrl">> => string()
-%% }
--type get_domain_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -342,31 +551,30 @@
 
 
 %% Example:
-%% insights_output() :: #{
-%%   <<"uri">> => string()
+%% start_medical_scribe_listening_session_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"languageCode">> => list(any()),
+%%   <<"mediaEncoding">> => list(any()),
+%%   <<"mediaSampleRateHertz">> => integer(),
+%%   <<"requestId">> => string(),
+%%   <<"responseStream">> => list(),
+%%   <<"sessionId">> => string(),
+%%   <<"subscriptionId">> => string()
 %% }
--type insights_output() :: #{binary() => any()}.
+-type start_medical_scribe_listening_session_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_context() :: #{
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
+%% start_patient_insights_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encounterContext">> := patient_insights_encounter_context(),
+%%   <<"inputDataConfig">> := input_data_config(),
+%%   <<"insightsContext">> := insights_context(),
+%%   <<"outputDataConfig">> := output_data_config(),
+%%   <<"patientContext">> := patient_insights_patient_context(),
+%%   <<"userContext">> := user_context()
 %% }
--type encryption_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_web_app_configuration() :: #{
-%%   <<"ehrRole">> => [string()],
-%%   <<"idcInstanceId">> => [string()],
-%%   <<"idcRegion">> => [string()]
-%% }
--type create_web_app_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_patient_insights_job_request() :: #{}
--type get_patient_insights_job_request() :: #{}.
+-type start_patient_insights_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,249 +584,6 @@
 %%   <<"jobId">> => string()
 %% }
 -type start_patient_insights_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% clinical_note_generation_settings_response() :: #{
-%%   <<"noteTemplateSettings">> => list()
-%% }
--type clinical_note_generation_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% encounter_context() :: #{
-%%   <<"unstructuredContext">> => string()
-%% }
--type encounter_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_app_configuration() :: #{
-%%   <<"ehrRole">> => [string()],
-%%   <<"idcApplicationId">> => [string()],
-%%   <<"idcRegion">> => [string()]
-%% }
--type web_app_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% deactivate_subscription_output() :: #{
-%%   <<"subscription">> => subscription_description()
-%% }
--type deactivate_subscription_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainId">> => string(),
-%%   <<"encryptionContext">> => encryption_context(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"webAppConfiguration">> => web_app_configuration(),
-%%   <<"webAppUrl">> => string()
-%% }
--type create_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_output() :: #{
-%%   <<"activatedAt">> => [non_neg_integer()],
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deactivatedAt">> => [non_neg_integer()],
-%%   <<"domainId">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string()
-%% }
--type create_subscription_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights_context() :: #{
-%%   <<"insightsType">> => list(any())
-%% }
--type insights_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_patient_insights_job_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"encounterContext">> => patient_insights_encounter_context(),
-%%   <<"inputDataConfig">> => input_data_config(),
-%%   <<"insightsContext">> => insights_context(),
-%%   <<"insightsOutput">> => insights_output(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"outputDataConfig">> => output_data_config(),
-%%   <<"patientContext">> => patient_insights_patient_context(),
-%%   <<"statusDetails">> => string(),
-%%   <<"updatedTime">> => [non_neg_integer()],
-%%   <<"userContext">> => user_context()
-%% }
--type get_patient_insights_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_subscription_input() :: #{}
--type deactivate_subscription_input() :: #{}.
-
-
-%% Example:
-%% artifact_details() :: #{
-%%   <<"failureReason">> => string(),
-%%   <<"outputLocation">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type artifact_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_section_instruction() :: #{
-%%   <<"sectionHeader">> => string(),
-%%   <<"sectionInstruction">> => string()
-%% }
--type template_section_instruction() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_data_config() :: #{
-%%   <<"s3OutputPath">> => string()
-%% }
--type output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_session_control_event() :: #{
-%%   <<"type">> => list(any())
-%% }
--type medical_scribe_session_control_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscription_output() :: #{
-%%   <<"subscription">> => subscription_description()
-%% }
--type get_subscription_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_context() :: #{
-%%   <<"role">> => list(any()),
-%%   <<"specialty">> => list(any()),
-%%   <<"userId">> => string()
-%% }
--type user_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_transcript_segment() :: #{
-%%   <<"audioBeginOffset">> => float(),
-%%   <<"audioEndOffset">> => float(),
-%%   <<"channelId">> => [string()],
-%%   <<"content">> => [string()],
-%%   <<"isPartial">> => boolean(),
-%%   <<"segmentId">> => [string()]
-%% }
--type medical_scribe_transcript_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% patient_insights_encounter_context() :: #{
-%%   <<"encounterReason">> => string()
-%% }
--type patient_insights_encounter_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type list_domains_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_channel_definition() :: #{
-%%   <<"channelId">> => integer(),
-%%   <<"participantRole">> => list(any())
-%% }
--type medical_scribe_channel_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_template_response() :: #{
-%%   <<"templateType">> => list(any())
-%% }
--type managed_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% clinical_note_generation_result() :: #{
-%%   <<"afterVisitSummaryResult">> => artifact_details(),
-%%   <<"noteResult">> => artifact_details(),
-%%   <<"transcriptResult">> => artifact_details()
-%% }
--type clinical_note_generation_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -634,46 +599,81 @@
 %% }
 -type subscription_description() :: #{binary() => any()}.
 
-%% Example:
-%% get_subscription_input() :: #{}
--type get_subscription_input() :: #{}.
-
 
 %% Example:
-%% list_subscriptions_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"subscriptions">> => list(subscription_description())
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
 %% }
--type list_subscriptions_output() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% medical_scribe_binary_audio_event() :: #{
-%%   <<"audioChunk">> => binary()
+%% template_section_instruction() :: #{
+%%   <<"sectionHeader">> => string(),
+%%   <<"sectionInstruction">> => string()
 %% }
--type medical_scribe_binary_audio_event() :: #{binary() => any()}.
+-type template_section_instruction() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_context() :: #{
+%%   <<"role">> => list(any()),
+%%   <<"specialty">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type user_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_app_configuration() :: #{
+%%   <<"ehrRole">> => [string()],
+%%   <<"idcApplicationId">> => [string()],
+%%   <<"idcRegion">> => [string()]
+%% }
+-type web_app_configuration() :: #{binary() => any()}.
 
 -type activate_subscription_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_domain_errors() ::
     service_quota_exceeded_exception().
 
 -type create_subscription_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type deactivate_subscription_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_domain_errors() ::
     resource_not_found_exception().
@@ -683,45 +683,45 @@
 
 -type get_medical_scribe_listening_session_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_patient_insights_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_subscription_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscriptions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_medical_scribe_listening_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_patient_insights_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -49,113 +49,10 @@
 
 
 %% Example:
-%% call() :: #{
-%%   <<"callId">> => string(),
-%%   <<"input">> => any(),
-%%   <<"name">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type call() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_models_request() :: #{
-%%   <<"clientCompatibilityVersion">> := [integer()]
-%% }
--type list_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_export_config() :: #{
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3KeyPrefix">> => string()
-%% }
--type workflow_export_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_definitions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_workflow_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_models_response() :: #{
-%%   <<"compatibilityInformation">> => compatibility_information(),
-%%   <<"modelAliases">> => list(model_alias()),
-%%   <<"modelSummaries">> => list(model_summary())
-%% }
--type list_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_act_request() :: #{
-%%   <<"error">> => act_error(),
-%%   <<"status">> := list(any())
-%% }
--type update_act_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
-%%   <<"sessionId">> => string()
-%% }
--type session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_definition_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"exportConfig">> => workflow_export_config(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_workflow_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_run_response() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"workflowRunId">> => string()
-%% }
--type create_workflow_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% compatibility_information() :: #{
-%%   <<"clientCompatibilityVersion">> => [integer()],
-%%   <<"message">> => string(),
-%%   <<"supportedModelIds">> => list(string())
-%% }
--type compatibility_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workflow_run_request() :: #{
-%%   <<"status">> := list(any())
-%% }
--type update_workflow_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trace_location() :: #{
-%%   <<"location">> => string(),
-%%   <<"locationType">> => list(any())
-%% }
--type trace_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_summary() :: #{
-%%   <<"minimumCompatibilityVersion">> => [integer()],
-%%   <<"modelId">> => string(),
-%%   <<"modelLifecycle">> => model_lifecycle()
-%% }
--type model_summary() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -164,14 +61,6 @@
 %%   <<"type">> => [string()]
 %% }
 -type act_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_act_step_response() :: #{
-%%   <<"calls">> => list(call()),
-%%   <<"stepId">> => string()
-%% }
--type invoke_act_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -188,29 +77,37 @@
 
 
 %% Example:
-%% list_acts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"workflowRunId">> => string()
+%% call() :: #{
+%%   <<"callId">> => string(),
+%%   <<"input">> => any(),
+%%   <<"name">> => [string()]
 %% }
--type list_acts_request() :: #{binary() => any()}.
+-type call() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_session_request() :: #{
-%%   <<"clientToken">> => string()
+%% call_result() :: #{
+%%   <<"callId">> => string(),
+%%   <<"content">> => list(list())
 %% }
--type create_session_request() :: #{binary() => any()}.
+-type call_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessionSummaries">> => list(session_summary())
+%% client_info() :: #{
+%%   <<"compatibilityVersion">> => [integer()],
+%%   <<"sdkVersion">> => string()
 %% }
--type list_sessions_response() :: #{binary() => any()}.
+-type client_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% compatibility_information() :: #{
+%%   <<"clientCompatibilityVersion">> => [integer()],
+%%   <<"message">> => string(),
+%%   <<"supportedModelIds">> => list(string())
+%% }
+-type compatibility_information() :: #{binary() => any()}.
 
 
 %% Example:
@@ -223,166 +120,34 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_definition_request() :: #{}
--type delete_workflow_definition_request() :: #{}.
-
-
-%% Example:
-%% call_result() :: #{
-%%   <<"callId">> => string(),
-%%   <<"content">> => list(list())
-%% }
--type call_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_act_response() :: #{}
--type update_act_response() :: #{}.
-
-
-%% Example:
-%% tool_spec() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => list(),
-%%   <<"name">> => string()
-%% }
--type tool_spec() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_definition_request() :: #{}
--type get_workflow_definition_request() :: #{}.
-
-
-%% Example:
-%% create_workflow_definition_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type create_workflow_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% update_workflow_run_response() :: #{}
--type update_workflow_run_response() :: #{}.
-
-
-%% Example:
-%% create_workflow_run_request() :: #{
-%%   <<"clientInfo">> := client_info(),
+%% create_act_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"modelId">> := string()
+%%   <<"task">> := string(),
+%%   <<"toolSpecs">> => list(tool_spec())
 %% }
--type create_workflow_run_request() :: #{binary() => any()}.
+-type create_act_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workflow_runs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_workflow_runs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_definition_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"workflowDefinitionArn">> => string(),
-%%   <<"workflowDefinitionName">> => string()
-%% }
--type workflow_definition_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_alias() :: #{
-%%   <<"aliasName">> => string(),
-%%   <<"latestModelId">> => string(),
-%%   <<"resolvedModelId">> => string()
-%% }
--type model_alias() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workflow_definition_response() :: #{
+%% create_act_response() :: #{
+%%   <<"actId">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type delete_workflow_definition_response() :: #{binary() => any()}.
+-type create_act_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_acts_response() :: #{
-%%   <<"actSummaries">> => list(act_summary()),
-%%   <<"nextToken">> => string()
+%% create_session_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type list_acts_response() :: #{binary() => any()}.
+-type create_session_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% create_session_response() :: #{
+%%   <<"sessionId">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_runs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowRunSummaries">> => list(workflow_run_summary())
-%% }
--type list_workflow_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type create_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -396,13 +161,43 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => string()
+%% create_workflow_definition_response() :: #{
+%%   <<"status">> => list(any())
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type create_workflow_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_run_request() :: #{
+%%   <<"clientInfo">> := client_info(),
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"modelId">> := string()
+%% }
+-type create_workflow_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_run_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"workflowRunId">> => string()
+%% }
+-type create_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_definition_request() :: #{}
+-type delete_workflow_definition_request() :: #{}.
+
+
+%% Example:
+%% delete_workflow_definition_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_workflow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_run_request() :: #{}
+-type delete_workflow_run_request() :: #{}.
 
 
 %% Example:
@@ -412,46 +207,24 @@
 -type delete_workflow_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_workflow_run_request() :: #{}
--type get_workflow_run_request() :: #{}.
+%% get_workflow_definition_request() :: #{}
+-type get_workflow_definition_request() :: #{}.
 
 
 %% Example:
-%% model_lifecycle() :: #{
+%% get_workflow_definition_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"exportConfig">> => workflow_export_config(),
+%%   <<"name">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type model_lifecycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_act_step_request() :: #{
-%%   <<"callResults">> := list(call_result()),
-%%   <<"previousStepId">> => string()
-%% }
--type invoke_act_step_request() :: #{binary() => any()}.
-
+-type get_workflow_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% client_info() :: #{
-%%   <<"compatibilityVersion">> => [integer()],
-%%   <<"sdkVersion">> => string()
-%% }
--type client_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_definitions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowDefinitionSummaries">> => list(workflow_definition_summary())
-%% }
--type list_workflow_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_response() :: #{
-%%   <<"sessionId">> => string()
-%% }
--type create_session_response() :: #{binary() => any()}.
+%% get_workflow_run_request() :: #{}
+-type get_workflow_run_request() :: #{}.
 
 
 %% Example:
@@ -466,9 +239,253 @@
 %% }
 -type get_workflow_run_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_workflow_run_request() :: #{}
--type delete_workflow_run_request() :: #{}.
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_act_step_request() :: #{
+%%   <<"callResults">> := list(call_result()),
+%%   <<"previousStepId">> => string()
+%% }
+-type invoke_act_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_act_step_response() :: #{
+%%   <<"calls">> => list(call()),
+%%   <<"stepId">> => string()
+%% }
+-type invoke_act_step_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_acts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"workflowRunId">> => string()
+%% }
+-type list_acts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_acts_response() :: #{
+%%   <<"actSummaries">> => list(act_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_acts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_models_request() :: #{
+%%   <<"clientCompatibilityVersion">> := [integer()]
+%% }
+-type list_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_models_response() :: #{
+%%   <<"compatibilityInformation">> => compatibility_information(),
+%%   <<"modelAliases">> => list(model_alias()),
+%%   <<"modelSummaries">> => list(model_summary())
+%% }
+-type list_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> => list(session_summary())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_workflow_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowDefinitionSummaries">> => list(workflow_definition_summary())
+%% }
+-type list_workflow_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_runs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_workflow_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_runs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowRunSummaries">> => list(workflow_run_summary())
+%% }
+-type list_workflow_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_alias() :: #{
+%%   <<"aliasName">> => string(),
+%%   <<"latestModelId">> => string(),
+%%   <<"resolvedModelId">> => string()
+%% }
+-type model_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_lifecycle() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type model_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"minimumCompatibilityVersion">> => [integer()],
+%%   <<"modelId">> => string(),
+%%   <<"modelLifecycle">> => model_lifecycle()
+%% }
+-type model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"sessionId">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_spec() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => list(),
+%%   <<"name">> => string()
+%% }
+-type tool_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_location() :: #{
+%%   <<"location">> => string(),
+%%   <<"locationType">> => list(any())
+%% }
+-type trace_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_act_request() :: #{
+%%   <<"error">> => act_error(),
+%%   <<"status">> := list(any())
+%% }
+-type update_act_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_act_response() :: #{}
+-type update_act_response() :: #{}.
+
+
+%% Example:
+%% update_workflow_run_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workflow_run_response() :: #{}
+-type update_workflow_run_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_definition_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"workflowDefinitionArn">> => string(),
+%%   <<"workflowDefinitionName">> => string()
+%% }
+-type workflow_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_export_config() :: #{
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3KeyPrefix">> => string()
+%% }
+-type workflow_export_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -482,147 +499,130 @@
 %% }
 -type workflow_run_summary() :: #{binary() => any()}.
 
-
-%% Example:
-%% create_act_response() :: #{
-%%   <<"actId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_act_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_act_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"task">> := string(),
-%%   <<"toolSpecs">> => list(tool_spec())
-%% }
--type create_act_request() :: #{binary() => any()}.
-
 -type create_act_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workflow_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workflow_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_workflow_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type invoke_act_step_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_acts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_models_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_workflow_definitions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_workflow_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_act_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workflow_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

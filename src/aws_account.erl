@@ -22,6 +22,8 @@
          get_gov_cloud_account_information/3,
          get_primary_email/2,
          get_primary_email/3,
+         get_primary_email_update_status/2,
+         get_primary_email_update_status/3,
          get_region_opt_status/2,
          get_region_opt_status/3,
          list_regions/2,
@@ -40,175 +42,19 @@
 
 
 %% Example:
-%% start_primary_email_update_request() :: #{
+%% accept_primary_email_update_request() :: #{
 %%   <<"AccountId">> := string(),
+%%   <<"Otp">> := string(),
 %%   <<"PrimaryEmail">> := string()
 %% }
--type start_primary_email_update_request() :: #{binary() => any()}.
+-type accept_primary_email_update_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"errorType">> => [string()],
-%%   <<"message">> => [string()]
+%% accept_primary_email_update_response() :: #{
+%%   <<"Status">> => string()
 %% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_region_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"RegionName">> := string()
-%% }
--type disable_region_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_region_opt_status_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"RegionName">> := string()
-%% }
--type get_region_opt_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gov_cloud_account_information_request() :: #{
-%%   <<"StandardAccountId">> => string()
-%% }
--type get_gov_cloud_account_information_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"errorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% region() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"RegionOptStatus">> => string()
-%% }
--type region() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"errorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"errorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_alternate_contact_response() :: #{
-%%   <<"AlternateContact">> => alternate_contact()
-%% }
--type get_alternate_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gov_cloud_account_information_response() :: #{
-%%   <<"AccountState">> => string(),
-%%   <<"GovCloudAccountId">> => string()
-%% }
--type get_gov_cloud_account_information_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_region_opt_status_response() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"RegionOptStatus">> => string()
-%% }
--type get_region_opt_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_alternate_contact_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AlternateContactType">> := string()
-%% }
--type get_alternate_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_regions_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"RegionOptStatusContains">> => list(string())
-%% }
--type list_regions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_account_name_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AccountName">> := string()
-%% }
--type put_account_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_primary_email_response() :: #{
-%%   <<"PrimaryEmail">> => string()
-%% }
--type get_primary_email_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_primary_email_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_primary_email_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_alternate_contact_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AlternateContactType">> := string()
-%% }
--type delete_alternate_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_contact_information_request() :: #{
-%%   <<"AccountId">> => string()
-%% }
--type get_contact_information_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_contact_information_response() :: #{
-%%   <<"ContactInformation">> => contact_information()
-%% }
--type get_contact_information_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"errorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type accept_primary_email_update_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -220,37 +66,22 @@
 
 
 %% Example:
-%% accept_primary_email_update_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Otp">> := string(),
-%%   <<"PrimaryEmail">> := string()
+%% alternate_contact() :: #{
+%%   <<"AlternateContactType">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"Title">> => string()
 %% }
--type accept_primary_email_update_request() :: #{binary() => any()}.
+-type alternate_contact() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
+%% conflict_exception() :: #{
+%%   <<"errorType">> => [string()],
+%%   <<"message">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_region_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"RegionName">> := string()
-%% }
--type enable_region_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_contact_information_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ContactInformation">> := contact_information()
-%% }
--type put_contact_information_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,48 +103,27 @@
 
 
 %% Example:
-%% put_alternate_contact_request() :: #{
+%% delete_alternate_contact_request() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"AlternateContactType">> := string(),
-%%   <<"EmailAddress">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"PhoneNumber">> := string(),
-%%   <<"Title">> := string()
+%%   <<"AlternateContactType">> := string()
 %% }
--type put_alternate_contact_request() :: #{binary() => any()}.
+-type delete_alternate_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% alternate_contact() :: #{
-%%   <<"AlternateContactType">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"Title">> => string()
+%% disable_region_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
 %% }
--type alternate_contact() :: #{binary() => any()}.
+-type disable_region_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_regions_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Regions">> => list(region())
+%% enable_region_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
 %% }
--type list_regions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_primary_email_update_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type accept_primary_email_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_primary_email_update_response() :: #{
-%%   <<"Status">> => string()
-%% }
--type start_primary_email_update_response() :: #{binary() => any()}.
+-type enable_region_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -332,107 +142,321 @@
 %% }
 -type get_account_information_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_alternate_contact_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlternateContactType">> := string()
+%% }
+-type get_alternate_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_alternate_contact_response() :: #{
+%%   <<"AlternateContact">> => alternate_contact()
+%% }
+-type get_alternate_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_contact_information_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type get_contact_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_contact_information_response() :: #{
+%%   <<"ContactInformation">> => contact_information()
+%% }
+-type get_contact_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_gov_cloud_account_information_request() :: #{
+%%   <<"StandardAccountId">> => string()
+%% }
+-type get_gov_cloud_account_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_gov_cloud_account_information_response() :: #{
+%%   <<"AccountState">> => string(),
+%%   <<"GovCloudAccountId">> => string()
+%% }
+-type get_gov_cloud_account_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_primary_email_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_primary_email_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_primary_email_response() :: #{
+%%   <<"PrimaryEmail">> => string()
+%% }
+-type get_primary_email_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_primary_email_update_status_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type get_primary_email_update_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_primary_email_update_status_response() :: #{
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type get_primary_email_update_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_region_opt_status_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
+%% }
+-type get_region_opt_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_region_opt_status_response() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"RegionOptStatus">> => string()
+%% }
+-type get_region_opt_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"errorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_regions_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"RegionOptStatusContains">> => list(string())
+%% }
+-type list_regions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_regions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list(region())
+%% }
+-type list_regions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_name_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> := string()
+%% }
+-type put_account_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_alternate_contact_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlternateContactType">> := string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"PhoneNumber">> := string(),
+%%   <<"Title">> := string()
+%% }
+-type put_alternate_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_contact_information_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ContactInformation">> := contact_information()
+%% }
+-type put_contact_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% region() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"RegionOptStatus">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"errorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"errorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_primary_email_update_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"PrimaryEmail">> := string()
+%% }
+-type start_primary_email_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_primary_email_update_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type start_primary_email_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"errorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 -type accept_primary_email_update_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type delete_alternate_contact_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type disable_region_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type enable_region_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type get_account_information_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type get_alternate_contact_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_contact_information_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_gov_cloud_account_information_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_unavailable_exception().
+    resource_unavailable_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_primary_email_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_primary_email_update_status_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_region_opt_status_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_regions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type put_account_name_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type put_alternate_contact_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type put_contact_information_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type start_primary_email_update_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -769,6 +793,45 @@ get_primary_email(Client, Input) ->
 get_primary_email(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getPrimaryEmail"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the status of the most recent primary email update for the
+%% specified account.
+%%
+%% For complete details about how to update the primary email address, see
+%% Update the primary email address for your AWS account:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-root-user-email.html.
+-spec get_primary_email_update_status(aws_client:aws_client(), get_primary_email_update_status_request()) ->
+    {ok, get_primary_email_update_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_primary_email_update_status_errors(), tuple()}.
+get_primary_email_update_status(Client, Input) ->
+    get_primary_email_update_status(Client, Input, []).
+
+-spec get_primary_email_update_status(aws_client:aws_client(), get_primary_email_update_status_request(), proplists:proplist()) ->
+    {ok, get_primary_email_update_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_primary_email_update_status_errors(), tuple()}.
+get_primary_email_update_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getPrimaryEmailUpdateStatus"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

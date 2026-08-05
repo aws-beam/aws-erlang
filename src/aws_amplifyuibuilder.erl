@@ -97,38 +97,45 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% no_api_render_config() :: #{}
--type no_api_render_config() :: #{}.
-
 
 %% Example:
-%% theme() :: #{
-%%   <<"appId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"environmentName">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()),
-%%   <<"tags">> => map(),
-%%   <<"values">> => list(theme_values())
+%% action_parameters() :: #{
+%%   <<"anchor">> => component_property(),
+%%   <<"fields">> => map(),
+%%   <<"global">> => component_property(),
+%%   <<"id">> => component_property(),
+%%   <<"model">> => [string()],
+%%   <<"state">> => mutation_action_set_state_parameter(),
+%%   <<"target">> => component_property(),
+%%   <<"type">> => component_property(),
+%%   <<"url">> => component_property()
 %% }
--type theme() :: #{binary() => any()}.
+-type action_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% codegen_dependency() :: #{
+%%   <<"isSemVer">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"reason">> => [string()],
+%%   <<"supportedVersion">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type codegen_dependency() :: #{binary() => any()}.
 
 
 %% Example:
-%% codegen_generic_data_non_model() :: #{
-%%   <<"fields">> => map()
+%% codegen_feature_flags() :: #{
+%%   <<"isNonModelSupported">> => [boolean()],
+%%   <<"isRelationshipSupported">> => [boolean()]
 %% }
--type codegen_generic_data_non_model() :: #{binary() => any()}.
+-type codegen_feature_flags() :: #{binary() => any()}.
+
+
+%% Example:
+%% codegen_generic_data_enum() :: #{
+%%   <<"values">> => list([string()]())
+%% }
+-type codegen_generic_data_enum() :: #{binary() => any()}.
 
 
 %% Example:
@@ -144,54 +151,34 @@
 
 
 %% Example:
-%% exchange_code_for_token_response() :: #{
-%%   <<"accessToken">> := string(),
-%%   <<"expiresIn">> := [integer()],
-%%   <<"refreshToken">> := string()
-%% }
--type exchange_code_for_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_theme_request() :: #{}
--type get_theme_request() :: #{}.
-
-
-%% Example:
-%% form() :: #{
-%%   <<"appId">> => [string()],
-%%   <<"cta">> => form_c_t_a(),
-%%   <<"dataType">> => form_data_type_config(),
-%%   <<"environmentName">> => [string()],
+%% codegen_generic_data_model() :: #{
 %%   <<"fields">> => map(),
-%%   <<"formActionType">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"labelDecorator">> => string(),
-%%   <<"name">> => string(),
-%%   <<"schemaVersion">> => [string()],
-%%   <<"sectionalElements">> => map(),
-%%   <<"style">> => form_style(),
-%%   <<"tags">> => map()
+%%   <<"isJoinTable">> => [boolean()],
+%%   <<"primaryKeys">> => list([string()]())
 %% }
--type form() :: #{binary() => any()}.
-
-%% Example:
-%% data_store_render_config() :: #{}
--type data_store_render_config() :: #{}.
+-type codegen_generic_data_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => [string()]
+%% codegen_generic_data_non_model() :: #{
+%%   <<"fields">> => map()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type codegen_generic_data_non_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% form_data_type_config() :: #{
-%%   <<"dataSourceType">> => string(),
-%%   <<"dataTypeName">> => [string()]
+%% codegen_generic_data_relationship_type() :: #{
+%%   <<"associatedFields">> => list([string()]()),
+%%   <<"belongsToFieldOnRelatedModel">> => [string()],
+%%   <<"canUnlinkAssociatedModel">> => [boolean()],
+%%   <<"isHasManyIndex">> => [boolean()],
+%%   <<"relatedJoinFieldName">> => [string()],
+%%   <<"relatedJoinTableName">> => [string()],
+%%   <<"relatedModelFields">> => list([string()]()),
+%%   <<"relatedModelName">> => [string()],
+%%   <<"type">> => list(any())
 %% }
--type form_data_type_config() :: #{binary() => any()}.
+-type codegen_generic_data_relationship_type() :: #{binary() => any()}.
 
 
 %% Example:
@@ -213,31 +200,22 @@
 %% }
 -type codegen_job() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
 
 %% Example:
-%% form_c_t_a() :: #{
-%%   <<"cancel">> => form_button(),
-%%   <<"clear">> => form_button(),
-%%   <<"position">> => list(any()),
-%%   <<"submit">> => form_button()
+%% codegen_job_asset() :: #{
+%%   <<"downloadUrl">> => [string()]
 %% }
--type form_c_t_a() :: #{binary() => any()}.
+-type codegen_job_asset() :: #{binary() => any()}.
 
 
 %% Example:
-%% file_uploader_field_config() :: #{
-%%   <<"acceptedFileTypes">> => list([string()]()),
-%%   <<"accessLevel">> => list(any()),
-%%   <<"isResumable">> => [boolean()],
-%%   <<"maxFileCount">> => [integer()],
-%%   <<"maxSize">> => [integer()],
-%%   <<"showThumbnails">> => [boolean()]
+%% codegen_job_generic_data_schema() :: #{
+%%   <<"dataSourceType">> => list(any()),
+%%   <<"enums">> => map(),
+%%   <<"models">> => map(),
+%%   <<"nonModels">> => map()
 %% }
--type file_uploader_field_config() :: #{binary() => any()}.
+-type codegen_job_generic_data_schema() :: #{binary() => any()}.
 
 
 %% Example:
@@ -249,344 +227,6 @@
 %%   <<"modifiedAt">> => [non_neg_integer()]
 %% }
 -type codegen_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_form_data() :: #{
-%%   <<"cta">> => form_c_t_a(),
-%%   <<"dataType">> => form_data_type_config(),
-%%   <<"fields">> => map(),
-%%   <<"formActionType">> => list(any()),
-%%   <<"labelDecorator">> => string(),
-%%   <<"name">> => string(),
-%%   <<"schemaVersion">> => [string()],
-%%   <<"sectionalElements">> => map(),
-%%   <<"style">> => form_style()
-%% }
--type update_form_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_binding_properties_value_properties() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"defaultValue">> => [string()],
-%%   <<"field">> => [string()],
-%%   <<"key">> => [string()],
-%%   <<"model">> => [string()],
-%%   <<"predicates">> => list(predicate()),
-%%   <<"slotName">> => [string()],
-%%   <<"userAttribute">> => [string()]
-%% }
--type component_binding_properties_value_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_variant() :: #{
-%%   <<"overrides">> => map(),
-%%   <<"variantValues">> => map()
-%% }
--type component_variant() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_form_response() :: #{
-%%   <<"entity">> => form()
-%% }
--type update_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_theme_data() :: #{
-%%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()),
-%%   <<"tags">> => map(),
-%%   <<"values">> => list(theme_values())
-%% }
--type create_theme_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% sort_property() :: #{
-%%   <<"direction">> => list(any()),
-%%   <<"field">> => [string()]
-%% }
--type sort_property() :: #{binary() => any()}.
-
-%% Example:
-%% delete_component_request() :: #{}
--type delete_component_request() :: #{}.
-
-%% Example:
-%% delete_form_request() :: #{}
--type delete_form_request() :: #{}.
-
-
-%% Example:
-%% start_codegen_job_data() :: #{
-%%   <<"autoGenerateForms">> => [boolean()],
-%%   <<"features">> => codegen_feature_flags(),
-%%   <<"genericDataSchema">> => codegen_job_generic_data_schema(),
-%%   <<"renderConfig">> => list(),
-%%   <<"tags">> => map()
-%% }
--type start_codegen_job_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_response() :: #{
-%%   <<"component">> => component()
-%% }
--type get_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_metadata_flag_body() :: #{
-%%   <<"newValue">> => [string()]
-%% }
--type put_metadata_flag_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% codegen_generic_data_enum() :: #{
-%%   <<"values">> => list([string()]())
-%% }
--type codegen_generic_data_enum() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_binding_element() :: #{
-%%   <<"element">> => [string()],
-%%   <<"property">> => [string()]
-%% }
--type form_binding_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% refresh_token_response() :: #{
-%%   <<"accessToken">> := string(),
-%%   <<"expiresIn">> := [integer()]
-%% }
--type refresh_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_theme_response() :: #{
-%%   <<"theme">> => theme()
-%% }
--type get_theme_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_codegen_job_response() :: #{
-%%   <<"entity">> => codegen_job()
-%% }
--type start_codegen_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_theme_request() :: #{}
--type delete_theme_request() :: #{}.
-
-
-%% Example:
-%% update_component_response() :: #{
-%%   <<"entity">> => component()
-%% }
--type update_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_summary() :: #{
-%%   <<"appId">> => [string()],
-%%   <<"componentType">> => string(),
-%%   <<"environmentName">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type component_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_input_binding_properties_value_properties() :: #{
-%%   <<"model">> => [string()]
-%% }
--type form_input_binding_properties_value_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_property_binding_properties() :: #{
-%%   <<"field">> => [string()],
-%%   <<"property">> => [string()]
-%% }
--type component_property_binding_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_metadata_flag_request() :: #{
-%%   <<"body">> := put_metadata_flag_body()
-%% }
--type put_metadata_flag_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% refresh_token_request_body() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"token">> => string()
-%% }
--type refresh_token_request_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metadata_response() :: #{
-%%   <<"features">> := map()
-%% }
--type get_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_codegen_jobs_response() :: #{
-%%   <<"entities">> => list(codegen_job_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_codegen_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_theme_response() :: #{
-%%   <<"entity">> => theme()
-%% }
--type create_theme_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_form_request() :: #{}
--type get_form_request() :: #{}.
-
-
-%% Example:
-%% codegen_feature_flags() :: #{
-%%   <<"isNonModelSupported">> => [boolean()],
-%%   <<"isRelationshipSupported">> => [boolean()]
-%% }
--type codegen_feature_flags() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_component_response() :: #{
-%%   <<"entity">> => component()
-%% }
--type create_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_component_data() :: #{
-%%   <<"bindingProperties">> => map(),
-%%   <<"children">> => list(component_child()),
-%%   <<"collectionProperties">> => map(),
-%%   <<"componentType">> => string(),
-%%   <<"events">> => map(),
-%%   <<"name">> => string(),
-%%   <<"overrides">> => map(),
-%%   <<"properties">> => map(),
-%%   <<"schemaVersion">> => [string()],
-%%   <<"sourceId">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"variants">> => list(component_variant())
-%% }
--type create_component_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_codegen_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_codegen_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_component_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"updatedComponent">> := update_component_data()
-%% }
--type update_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_forms_response() :: #{
-%%   <<"entities">> := list(form()),
-%%   <<"nextToken">> => [string()]
-%% }
--type export_forms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_themes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_themes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_components_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_metadata_request() :: #{}
--type get_metadata_request() :: #{}.
-
-
-%% Example:
-%% field_config() :: #{
-%%   <<"excluded">> => [boolean()],
-%%   <<"inputType">> => field_input_config(),
-%%   <<"label">> => [string()],
-%%   <<"position">> => list(),
-%%   <<"validations">> => list(field_validation_configuration())
-%% }
--type field_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_form_response() :: #{
-%%   <<"form">> => form()
-%% }
--type get_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_child() :: #{
-%%   <<"children">> => list(component_child()),
-%%   <<"componentType">> => [string()],
-%%   <<"events">> => map(),
-%%   <<"name">> => [string()],
-%%   <<"properties">> => map(),
-%%   <<"sourceId">> => [string()]
-%% }
--type component_child() :: #{binary() => any()}.
 
 
 %% Example:
@@ -613,227 +253,61 @@
 
 
 %% Example:
-%% refresh_token_request() :: #{
-%%   <<"refreshTokenBody">> := refresh_token_request_body()
-%% }
--type refresh_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_forms_response() :: #{
-%%   <<"entities">> := list(form_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_forms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% value_mapping() :: #{
-%%   <<"displayValue">> => form_input_value_property(),
-%%   <<"value">> => form_input_value_property()
-%% }
--type value_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% react_start_codegen_job_data() :: #{
-%%   <<"apiConfiguration">> => list(),
-%%   <<"dependencies">> => map(),
-%%   <<"inlineSourceMap">> => [boolean()],
-%%   <<"module">> => list(any()),
-%%   <<"renderTypeDeclarations">> => [boolean()],
-%%   <<"script">> => list(any()),
-%%   <<"target">> => list(any())
-%% }
--type react_start_codegen_job_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_components_response() :: #{
-%%   <<"entities">> := list(component()),
-%%   <<"nextToken">> => [string()]
-%% }
--type export_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_theme_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"updatedTheme">> := update_theme_data()
-%% }
--type update_theme_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_theme_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"themeToCreate">> := create_theme_data()
-%% }
--type create_theme_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_themes_request() :: #{
-%%   <<"nextToken">> => [string()]
-%% }
--type export_themes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% exchange_code_for_token_request() :: #{
-%%   <<"request">> := exchange_code_for_token_request_body()
-%% }
--type exchange_code_for_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_codegen_job_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"codegenJobToCreate">> := start_codegen_job_data()
-%% }
--type start_codegen_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_form_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"formToCreate">> := create_form_data()
-%% }
--type create_form_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_codegen_job_response() :: #{
-%%   <<"job">> => codegen_job()
-%% }
--type get_codegen_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_component_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"componentToCreate">> := create_component_data()
-%% }
--type create_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sectional_element() :: #{
-%%   <<"excluded">> => [boolean()],
-%%   <<"level">> => [integer()],
-%%   <<"orientation">> => [string()],
-%%   <<"position">> => list(),
-%%   <<"text">> => [string()],
+%% component_binding_properties_value() :: #{
+%%   <<"bindingProperties">> => component_binding_properties_value_properties(),
+%%   <<"defaultValue">> => [string()],
 %%   <<"type">> => [string()]
 %% }
--type sectional_element() :: #{binary() => any()}.
+-type component_binding_properties_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% exchange_code_for_token_request_body() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"code">> => string(),
-%%   <<"redirectUri">> => [string()]
-%% }
--type exchange_code_for_token_request_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% mutation_action_set_state_parameter() :: #{
-%%   <<"componentName">> => [string()],
-%%   <<"property">> => [string()],
-%%   <<"set">> => component_property()
-%% }
--type mutation_action_set_state_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% codegen_job_asset() :: #{
-%%   <<"downloadUrl">> => [string()]
-%% }
--type codegen_job_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_input_config() :: #{
-%%   <<"defaultChecked">> => [boolean()],
-%%   <<"defaultCountryCode">> => [string()],
+%% component_binding_properties_value_properties() :: #{
+%%   <<"bucket">> => [string()],
 %%   <<"defaultValue">> => [string()],
-%%   <<"descriptiveText">> => [string()],
-%%   <<"fileUploaderConfig">> => file_uploader_field_config(),
-%%   <<"isArray">> => [boolean()],
-%%   <<"maxValue">> => [float()],
-%%   <<"minValue">> => [float()],
+%%   <<"field">> => [string()],
+%%   <<"key">> => [string()],
+%%   <<"model">> => [string()],
+%%   <<"predicates">> => list(predicate()),
+%%   <<"slotName">> => [string()],
+%%   <<"userAttribute">> => [string()]
+%% }
+-type component_binding_properties_value_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_child() :: #{
+%%   <<"children">> => list(component_child()),
+%%   <<"componentType">> => [string()],
+%%   <<"events">> => map(),
 %%   <<"name">> => [string()],
-%%   <<"placeholder">> => [string()],
-%%   <<"readOnly">> => [boolean()],
-%%   <<"required">> => [boolean()],
-%%   <<"step">> => [float()],
-%%   <<"type">> => [string()],
-%%   <<"value">> => [string()],
-%%   <<"valueMappings">> => value_mappings()
+%%   <<"properties">> => map(),
+%%   <<"sourceId">> => [string()]
 %% }
--type field_input_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_codegen_job_request() :: #{}
--type get_codegen_job_request() :: #{}.
+-type component_child() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_form_data() :: #{
-%%   <<"cta">> => form_c_t_a(),
-%%   <<"dataType">> => form_data_type_config(),
-%%   <<"fields">> => map(),
-%%   <<"formActionType">> => list(any()),
-%%   <<"labelDecorator">> => string(),
-%%   <<"name">> => string(),
-%%   <<"schemaVersion">> => [string()],
-%%   <<"sectionalElements">> => map(),
-%%   <<"style">> => form_style(),
-%%   <<"tags">> => map()
+%% component_condition_property() :: #{
+%%   <<"else">> => component_property(),
+%%   <<"field">> => [string()],
+%%   <<"operand">> => [string()],
+%%   <<"operandType">> => [string()],
+%%   <<"operator">> => [string()],
+%%   <<"property">> => [string()],
+%%   <<"then">> => component_property()
 %% }
--type create_form_data() :: #{binary() => any()}.
+-type component_condition_property() :: #{binary() => any()}.
 
 
 %% Example:
-%% theme_value() :: #{
-%%   <<"children">> => list(theme_values()),
-%%   <<"value">> => [string()]
+%% component_data_configuration() :: #{
+%%   <<"identifiers">> => list([string()]()),
+%%   <<"model">> => [string()],
+%%   <<"predicate">> => predicate(),
+%%   <<"sort">> => list(sort_property())
 %% }
--type theme_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_style() :: #{
-%%   <<"horizontalGap">> => list(),
-%%   <<"outerPadding">> => list(),
-%%   <<"verticalGap">> => list()
-%% }
--type form_style() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_form_response() :: #{
-%%   <<"entity">> => form()
-%% }
--type create_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_input_value_property() :: #{
-%%   <<"bindingProperties">> => form_input_value_property_binding_properties(),
-%%   <<"concat">> => list(form_input_value_property()),
-%%   <<"value">> => [string()]
-%% }
--type form_input_value_property() :: #{binary() => any()}.
+-type component_data_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -843,64 +317,6 @@
 %%   <<"parameters">> => action_parameters()
 %% }
 -type component_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_input_value_property_binding_properties() :: #{
-%%   <<"field">> => [string()],
-%%   <<"property">> => [string()]
-%% }
--type form_input_value_property_binding_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_button() :: #{
-%%   <<"children">> => [string()],
-%%   <<"excluded">> => [boolean()],
-%%   <<"position">> => list()
-%% }
--type form_button() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% graph_q_l_render_config() :: #{
-%%   <<"fragmentsFilePath">> => [string()],
-%%   <<"mutationsFilePath">> => [string()],
-%%   <<"queriesFilePath">> => [string()],
-%%   <<"subscriptionsFilePath">> => [string()],
-%%   <<"typesFilePath">> => [string()]
-%% }
--type graph_q_l_render_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_forms_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_forms_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_theme_response() :: #{
-%%   <<"entity">> => theme()
-%% }
--type update_theme_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% theme_values() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => theme_value()
-%% }
--type theme_values() :: #{binary() => any()}.
 
 
 %% Example:
@@ -925,39 +341,355 @@
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => [string()]
+%% component_property_binding_properties() :: #{
+%%   <<"field">> => [string()],
+%%   <<"property">> => [string()]
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type component_property_binding_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% codegen_job_generic_data_schema() :: #{
-%%   <<"dataSourceType">> => list(any()),
-%%   <<"enums">> => map(),
-%%   <<"models">> => map(),
-%%   <<"nonModels">> => map()
+%% component_summary() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"componentType">> => string(),
+%%   <<"environmentName">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
 %% }
--type codegen_job_generic_data_schema() :: #{binary() => any()}.
+-type component_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% action_parameters() :: #{
-%%   <<"anchor">> => component_property(),
+%% component_variant() :: #{
+%%   <<"overrides">> => map(),
+%%   <<"variantValues">> => map()
+%% }
+-type component_variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_data() :: #{
+%%   <<"bindingProperties">> => map(),
+%%   <<"children">> => list(component_child()),
+%%   <<"collectionProperties">> => map(),
+%%   <<"componentType">> => string(),
+%%   <<"events">> => map(),
+%%   <<"name">> => string(),
+%%   <<"overrides">> => map(),
+%%   <<"properties">> => map(),
+%%   <<"schemaVersion">> => [string()],
+%%   <<"sourceId">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"variants">> => list(component_variant())
+%% }
+-type create_component_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"componentToCreate">> := create_component_data()
+%% }
+-type create_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_component_response() :: #{
+%%   <<"entity">> => component()
+%% }
+-type create_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_data() :: #{
+%%   <<"cta">> => form_c_t_a(),
+%%   <<"dataType">> => form_data_type_config(),
 %%   <<"fields">> => map(),
-%%   <<"global">> => component_property(),
-%%   <<"id">> => component_property(),
-%%   <<"model">> => [string()],
-%%   <<"state">> => mutation_action_set_state_parameter(),
-%%   <<"target">> => component_property(),
-%%   <<"type">> => component_property(),
-%%   <<"url">> => component_property()
+%%   <<"formActionType">> => list(any()),
+%%   <<"labelDecorator">> => string(),
+%%   <<"name">> => string(),
+%%   <<"schemaVersion">> => [string()],
+%%   <<"sectionalElements">> => map(),
+%%   <<"style">> => form_style(),
+%%   <<"tags">> => map()
 %% }
--type action_parameters() :: #{binary() => any()}.
+-type create_form_data() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% create_form_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"formToCreate">> := create_form_data()
+%% }
+-type create_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_response() :: #{
+%%   <<"entity">> => form()
+%% }
+-type create_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_data() :: #{
+%%   <<"name">> => string(),
+%%   <<"overrides">> => list(theme_values()),
+%%   <<"tags">> => map(),
+%%   <<"values">> => list(theme_values())
+%% }
+-type create_theme_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"themeToCreate">> := create_theme_data()
+%% }
+-type create_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_theme_response() :: #{
+%%   <<"entity">> => theme()
+%% }
+-type create_theme_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_store_render_config() :: #{}
+-type data_store_render_config() :: #{}.
+
+%% Example:
+%% delete_component_request() :: #{}
+-type delete_component_request() :: #{}.
+
+%% Example:
+%% delete_form_request() :: #{}
+-type delete_form_request() :: #{}.
+
+%% Example:
+%% delete_theme_request() :: #{}
+-type delete_theme_request() :: #{}.
+
+
+%% Example:
+%% exchange_code_for_token_request() :: #{
+%%   <<"request">> := exchange_code_for_token_request_body()
+%% }
+-type exchange_code_for_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% exchange_code_for_token_request_body() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"redirectUri">> => [string()]
+%% }
+-type exchange_code_for_token_request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% exchange_code_for_token_response() :: #{
+%%   <<"accessToken">> := string(),
+%%   <<"expiresIn">> := [integer()],
+%%   <<"refreshToken">> := string()
+%% }
+-type exchange_code_for_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_components_request() :: #{
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_components_response() :: #{
+%%   <<"entities">> := list(component()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_forms_request() :: #{
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_forms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_forms_response() :: #{
+%%   <<"entities">> := list(form()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_forms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_themes_request() :: #{
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_themes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_themes_response() :: #{
+%%   <<"entities">> := list(theme()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type export_themes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_config() :: #{
+%%   <<"excluded">> => [boolean()],
+%%   <<"inputType">> => field_input_config(),
+%%   <<"label">> => [string()],
+%%   <<"position">> => list(),
+%%   <<"validations">> => list(field_validation_configuration())
+%% }
+-type field_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_input_config() :: #{
+%%   <<"defaultChecked">> => [boolean()],
+%%   <<"defaultCountryCode">> => [string()],
+%%   <<"defaultValue">> => [string()],
+%%   <<"descriptiveText">> => [string()],
+%%   <<"fileUploaderConfig">> => file_uploader_field_config(),
+%%   <<"isArray">> => [boolean()],
+%%   <<"maxValue">> => [float()],
+%%   <<"minValue">> => [float()],
+%%   <<"name">> => [string()],
+%%   <<"placeholder">> => [string()],
+%%   <<"readOnly">> => [boolean()],
+%%   <<"required">> => [boolean()],
+%%   <<"step">> => [float()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()],
+%%   <<"valueMappings">> => value_mappings()
+%% }
+-type field_input_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_validation_configuration() :: #{
+%%   <<"numValues">> => list([integer()]()),
+%%   <<"strValues">> => list([string()]()),
+%%   <<"type">> => [string()],
+%%   <<"validationMessage">> => [string()]
+%% }
+-type field_validation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_uploader_field_config() :: #{
+%%   <<"acceptedFileTypes">> => list([string()]()),
+%%   <<"accessLevel">> => list(any()),
+%%   <<"isResumable">> => [boolean()],
+%%   <<"maxFileCount">> => [integer()],
+%%   <<"maxSize">> => [integer()],
+%%   <<"showThumbnails">> => [boolean()]
+%% }
+-type file_uploader_field_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% form() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"cta">> => form_c_t_a(),
+%%   <<"dataType">> => form_data_type_config(),
+%%   <<"environmentName">> => [string()],
+%%   <<"fields">> => map(),
+%%   <<"formActionType">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"labelDecorator">> => string(),
+%%   <<"name">> => string(),
+%%   <<"schemaVersion">> => [string()],
+%%   <<"sectionalElements">> => map(),
+%%   <<"style">> => form_style(),
+%%   <<"tags">> => map()
+%% }
+-type form() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_binding_element() :: #{
+%%   <<"element">> => [string()],
+%%   <<"property">> => [string()]
+%% }
+-type form_binding_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_button() :: #{
+%%   <<"children">> => [string()],
+%%   <<"excluded">> => [boolean()],
+%%   <<"position">> => list()
+%% }
+-type form_button() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_c_t_a() :: #{
+%%   <<"cancel">> => form_button(),
+%%   <<"clear">> => form_button(),
+%%   <<"position">> => list(any()),
+%%   <<"submit">> => form_button()
+%% }
+-type form_c_t_a() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_data_type_config() :: #{
+%%   <<"dataSourceType">> => string(),
+%%   <<"dataTypeName">> => [string()]
+%% }
+-type form_data_type_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_binding_properties_value() :: #{
+%%   <<"bindingProperties">> => form_input_binding_properties_value_properties(),
+%%   <<"type">> => [string()]
+%% }
+-type form_input_binding_properties_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_binding_properties_value_properties() :: #{
+%%   <<"model">> => [string()]
+%% }
+-type form_input_binding_properties_value_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_value_property() :: #{
+%%   <<"bindingProperties">> => form_input_value_property_binding_properties(),
+%%   <<"concat">> => list(form_input_value_property()),
+%%   <<"value">> => [string()]
+%% }
+-type form_input_value_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input_value_property_binding_properties() :: #{
+%%   <<"field">> => [string()],
+%%   <<"property">> => [string()]
+%% }
+-type form_input_value_property_binding_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_style() :: #{
+%%   <<"horizontalGap">> => list(),
+%%   <<"outerPadding">> => list(),
+%%   <<"verticalGap">> => list()
+%% }
+-type form_style() :: #{binary() => any()}.
 
 
 %% Example:
@@ -971,40 +703,133 @@
 %% }
 -type form_summary() :: #{binary() => any()}.
 
+%% Example:
+%% get_codegen_job_request() :: #{}
+-type get_codegen_job_request() :: #{}.
+
 
 %% Example:
-%% theme_summary() :: #{
-%%   <<"appId">> => [string()],
-%%   <<"environmentName">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
+%% get_codegen_job_response() :: #{
+%%   <<"job">> => codegen_job()
 %% }
--type theme_summary() :: #{binary() => any()}.
+-type get_codegen_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_component_request() :: #{}
+-type get_component_request() :: #{}.
 
 
 %% Example:
-%% update_theme_data() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()),
-%%   <<"values">> => list(theme_values())
+%% get_component_response() :: #{
+%%   <<"component">> => component()
 %% }
--type update_theme_data() :: #{binary() => any()}.
+-type get_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_form_request() :: #{}
+-type get_form_request() :: #{}.
 
 
 %% Example:
-%% update_form_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"updatedForm">> := update_form_data()
+%% get_form_response() :: #{
+%%   <<"form">> => form()
 %% }
--type update_form_request() :: #{binary() => any()}.
+-type get_form_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_metadata_request() :: #{}
+-type get_metadata_request() :: #{}.
 
 
 %% Example:
-%% export_components_request() :: #{
+%% get_metadata_response() :: #{
+%%   <<"features">> := map()
+%% }
+-type get_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_theme_request() :: #{}
+-type get_theme_request() :: #{}.
+
+
+%% Example:
+%% get_theme_response() :: #{
+%%   <<"theme">> => theme()
+%% }
+-type get_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_q_l_render_config() :: #{
+%%   <<"fragmentsFilePath">> => [string()],
+%%   <<"mutationsFilePath">> => [string()],
+%%   <<"queriesFilePath">> => [string()],
+%%   <<"subscriptionsFilePath">> => [string()],
+%%   <<"typesFilePath">> => [string()]
+%% }
+-type graph_q_l_render_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_codegen_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => [string()]
 %% }
--type export_components_request() :: #{binary() => any()}.
+-type list_codegen_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_codegen_jobs_response() :: #{
+%%   <<"entities">> => list(codegen_job_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_codegen_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"entities">> := list(component_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_forms_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_forms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_forms_response() :: #{
+%%   <<"entities">> := list(form_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_forms_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -1012,20 +837,39 @@
 
 
 %% Example:
-%% component_data_configuration() :: #{
-%%   <<"identifiers">> => list([string()]()),
-%%   <<"model">> => [string()],
-%%   <<"predicate">> => predicate(),
-%%   <<"sort">> => list(sort_property())
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type component_data_configuration() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_themes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_themes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_themes_response() :: #{
+%%   <<"entities">> := list(theme_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_themes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mutation_action_set_state_parameter() :: #{
+%%   <<"componentName">> => [string()],
+%%   <<"property">> => [string()],
+%%   <<"set">> => component_property()
+%% }
+-type mutation_action_set_state_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% no_api_render_config() :: #{}
+-type no_api_render_config() :: #{}.
 
 
 %% Example:
@@ -1041,103 +885,53 @@
 
 
 %% Example:
-%% export_forms_request() :: #{
-%%   <<"nextToken">> => [string()]
+%% put_metadata_flag_body() :: #{
+%%   <<"newValue">> => [string()]
 %% }
--type export_forms_request() :: #{binary() => any()}.
+-type put_metadata_flag_body() :: #{binary() => any()}.
 
 
 %% Example:
-%% codegen_dependency() :: #{
-%%   <<"isSemVer">> => [boolean()],
-%%   <<"name">> => [string()],
-%%   <<"reason">> => [string()],
-%%   <<"supportedVersion">> => [string()]
+%% put_metadata_flag_request() :: #{
+%%   <<"body">> := put_metadata_flag_body()
 %% }
--type codegen_dependency() :: #{binary() => any()}.
+-type put_metadata_flag_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_components_response() :: #{
-%%   <<"entities">> := list(component_summary()),
-%%   <<"nextToken">> => [string()]
+%% react_start_codegen_job_data() :: #{
+%%   <<"apiConfiguration">> => list(),
+%%   <<"dependencies">> => map(),
+%%   <<"inlineSourceMap">> => [boolean()],
+%%   <<"module">> => list(any()),
+%%   <<"renderTypeDeclarations">> => [boolean()],
+%%   <<"script">> => list(any()),
+%%   <<"target">> => list(any())
 %% }
--type list_components_response() :: #{binary() => any()}.
+-type react_start_codegen_job_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% codegen_generic_data_relationship_type() :: #{
-%%   <<"associatedFields">> => list([string()]()),
-%%   <<"belongsToFieldOnRelatedModel">> => [string()],
-%%   <<"canUnlinkAssociatedModel">> => [boolean()],
-%%   <<"isHasManyIndex">> => [boolean()],
-%%   <<"relatedJoinFieldName">> => [string()],
-%%   <<"relatedJoinTableName">> => [string()],
-%%   <<"relatedModelFields">> => list([string()]()),
-%%   <<"relatedModelName">> => [string()],
-%%   <<"type">> => list(any())
+%% refresh_token_request() :: #{
+%%   <<"refreshTokenBody">> := refresh_token_request_body()
 %% }
--type codegen_generic_data_relationship_type() :: #{binary() => any()}.
+-type refresh_token_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% codegen_generic_data_model() :: #{
-%%   <<"fields">> => map(),
-%%   <<"isJoinTable">> => [boolean()],
-%%   <<"primaryKeys">> => list([string()]())
+%% refresh_token_request_body() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"token">> => string()
 %% }
--type codegen_generic_data_model() :: #{binary() => any()}.
+-type refresh_token_request_body() :: #{binary() => any()}.
 
 
 %% Example:
-%% field_validation_configuration() :: #{
-%%   <<"numValues">> => list([integer()]()),
-%%   <<"strValues">> => list([string()]()),
-%%   <<"type">> => [string()],
-%%   <<"validationMessage">> => [string()]
+%% refresh_token_response() :: #{
+%%   <<"accessToken">> := string(),
+%%   <<"expiresIn">> := [integer()]
 %% }
--type field_validation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% value_mappings() :: #{
-%%   <<"bindingProperties">> => map(),
-%%   <<"values">> => list(value_mapping())
-%% }
--type value_mappings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_themes_response() :: #{
-%%   <<"entities">> := list(theme_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_themes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_input_binding_properties_value() :: #{
-%%   <<"bindingProperties">> => form_input_binding_properties_value_properties(),
-%%   <<"type">> => [string()]
-%% }
--type form_input_binding_properties_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_themes_response() :: #{
-%%   <<"entities">> := list(theme()),
-%%   <<"nextToken">> => [string()]
-%% }
--type export_themes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_binding_properties_value() :: #{
-%%   <<"bindingProperties">> => component_binding_properties_value_properties(),
-%%   <<"defaultValue">> => [string()],
-%%   <<"type">> => [string()]
-%% }
--type component_binding_properties_value() :: #{binary() => any()}.
+-type refresh_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1146,9 +940,142 @@
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_component_request() :: #{}
--type get_component_request() :: #{}.
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sectional_element() :: #{
+%%   <<"excluded">> => [boolean()],
+%%   <<"level">> => [integer()],
+%%   <<"orientation">> => [string()],
+%%   <<"position">> => list(),
+%%   <<"text">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type sectional_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_property() :: #{
+%%   <<"direction">> => list(any()),
+%%   <<"field">> => [string()]
+%% }
+-type sort_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_codegen_job_data() :: #{
+%%   <<"autoGenerateForms">> => [boolean()],
+%%   <<"features">> => codegen_feature_flags(),
+%%   <<"genericDataSchema">> => codegen_job_generic_data_schema(),
+%%   <<"renderConfig">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type start_codegen_job_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_codegen_job_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"codegenJobToCreate">> := start_codegen_job_data()
+%% }
+-type start_codegen_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_codegen_job_response() :: #{
+%%   <<"entity">> => codegen_job()
+%% }
+-type start_codegen_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% theme() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"environmentName">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"overrides">> => list(theme_values()),
+%%   <<"tags">> => map(),
+%%   <<"values">> => list(theme_values())
+%% }
+-type theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_summary() :: #{
+%%   <<"appId">> => [string()],
+%%   <<"environmentName">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type theme_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_value() :: #{
+%%   <<"children">> => list(theme_values()),
+%%   <<"value">> => [string()]
+%% }
+-type theme_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% theme_values() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => theme_value()
+%% }
+-type theme_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -1170,49 +1097,122 @@
 
 
 %% Example:
-%% component_condition_property() :: #{
-%%   <<"else">> => component_property(),
-%%   <<"field">> => [string()],
-%%   <<"operand">> => [string()],
-%%   <<"operandType">> => [string()],
-%%   <<"operator">> => [string()],
-%%   <<"property">> => [string()],
-%%   <<"then">> => component_property()
+%% update_component_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"updatedComponent">> := update_component_data()
 %% }
--type component_condition_property() :: #{binary() => any()}.
+-type update_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_component_response() :: #{
+%%   <<"entity">> => component()
+%% }
+-type update_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_form_data() :: #{
+%%   <<"cta">> => form_c_t_a(),
+%%   <<"dataType">> => form_data_type_config(),
+%%   <<"fields">> => map(),
+%%   <<"formActionType">> => list(any()),
+%%   <<"labelDecorator">> => string(),
+%%   <<"name">> => string(),
+%%   <<"schemaVersion">> => [string()],
+%%   <<"sectionalElements">> => map(),
+%%   <<"style">> => form_style()
+%% }
+-type update_form_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_form_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"updatedForm">> := update_form_data()
+%% }
+-type update_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_form_response() :: #{
+%%   <<"entity">> => form()
+%% }
+-type update_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_data() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"overrides">> => list(theme_values()),
+%%   <<"values">> => list(theme_values())
+%% }
+-type update_theme_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"updatedTheme">> := update_theme_data()
+%% }
+-type update_theme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_theme_response() :: #{
+%%   <<"entity">> => theme()
+%% }
+-type update_theme_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% value_mapping() :: #{
+%%   <<"displayValue">> => form_input_value_property(),
+%%   <<"value">> => form_input_value_property()
+%% }
+-type value_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% value_mappings() :: #{
+%%   <<"bindingProperties">> => map(),
+%%   <<"values">> => list(value_mapping())
+%% }
+-type value_mappings() :: #{binary() => any()}.
 
 -type create_component_errors() ::
+    service_quota_exceeded_exception() | 
     resource_conflict_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    internal_server_exception().
 
 -type create_form_errors() ::
+    service_quota_exceeded_exception() | 
     resource_conflict_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    internal_server_exception().
 
 -type create_theme_errors() ::
+    service_quota_exceeded_exception() | 
     resource_conflict_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    internal_server_exception().
 
 -type delete_component_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_form_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_theme_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type exchange_code_for_token_errors() ::
     invalid_parameter_exception().
@@ -1231,28 +1231,28 @@
 
 -type get_codegen_job_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_component_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_form_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_metadata_errors() ::
-    invalid_parameter_exception() | 
-    unauthorized_exception().
+    unauthorized_exception() | 
+    invalid_parameter_exception().
 
 -type get_theme_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_codegen_jobs_errors() ::
     throttling_exception() | 
@@ -1268,19 +1268,19 @@
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_parameter_exception() | 
+    internal_server_exception().
 
 -type list_themes_errors() ::
     invalid_parameter_exception() | 
     internal_server_exception().
 
 -type put_metadata_flag_errors() ::
-    invalid_parameter_exception() | 
-    unauthorized_exception().
+    unauthorized_exception() | 
+    invalid_parameter_exception().
 
 -type refresh_token_errors() ::
     invalid_parameter_exception().
@@ -1291,18 +1291,18 @@
     internal_server_exception().
 
 -type tag_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_parameter_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_parameter_exception() | 
+    internal_server_exception().
 
 -type update_component_errors() ::
     resource_conflict_exception() | 

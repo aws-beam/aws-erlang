@@ -183,226 +183,235 @@
 
 
 %% Example:
-%% instance_requirements_request() :: #{
-%%   <<"acceleratorCount">> => accelerator_count_request(),
-%%   <<"acceleratorManufacturers">> => list(list(any())()),
-%%   <<"acceleratorNames">> => list(list(any())()),
-%%   <<"acceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_request(),
-%%   <<"acceleratorTypes">> => list(list(any())()),
-%%   <<"allowedInstanceTypes">> => list(string()),
-%%   <<"bareMetal">> => list(any()),
-%%   <<"baselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
-%%   <<"burstablePerformance">> => list(any()),
-%%   <<"cpuManufacturers">> => list(list(any())()),
-%%   <<"excludedInstanceTypes">> => list(string()),
-%%   <<"instanceGenerations">> => list(list(any())()),
-%%   <<"localStorage">> => list(any()),
-%%   <<"localStorageTypes">> => list(list(any())()),
-%%   <<"maxSpotPriceAsPercentageOfOptimalOnDemandPrice">> => integer(),
-%%   <<"memoryGiBPerVCpu">> => memory_gi_b_per_v_cpu_request(),
-%%   <<"memoryMiB">> => memory_mi_b_request(),
-%%   <<"networkBandwidthGbps">> => network_bandwidth_gbps_request(),
-%%   <<"networkInterfaceCount">> => network_interface_count_request(),
-%%   <<"onDemandMaxPricePercentageOverLowestPrice">> => integer(),
-%%   <<"requireHibernateSupport">> => boolean(),
-%%   <<"spotMaxPricePercentageOverLowestPrice">> => integer(),
-%%   <<"totalLocalStorageGB">> => total_local_storage_g_b_request(),
-%%   <<"vCpuCount">> => v_cpu_count_range_request()
+%% accelerator_count_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
 %% }
--type instance_requirements_request() :: #{binary() => any()}.
+-type accelerator_count_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_registry() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"containerPort">> => integer(),
-%%   <<"port">> => integer(),
-%%   <<"registryArn">> => string()
+%% accelerator_total_memory_mi_b_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
 %% }
--type service_registry() :: #{binary() => any()}.
+-type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_task_definition_response() :: #{
-%%   <<"tags">> => list(tag()),
-%%   <<"taskDefinition">> => task_definition()
-%% }
--type describe_task_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_test_traffic_rules() :: #{
-%%   <<"header">> => service_connect_test_traffic_header_rules()
-%% }
--type service_connect_test_traffic_rules() :: #{binary() => any()}.
-
-%% Example:
-%% container_instance_health_status() :: #{
-%%   <<"details">> => list(instance_health_check_result()),
-%%   <<"overallStatus">> => list(any())
-%% }
--type container_instance_health_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capacity_provider_response() :: #{
-%%   <<"capacityProvider">> => capacity_provider()
-%% }
--type delete_capacity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_instances_state_response() :: #{
-%%   <<"containerInstances">> => list(container_instance()),
-%%   <<"failures">> => list(failure())
-%% }
--type update_container_instances_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemon_deployments_response() :: #{
-%%   <<"daemonDeployments">> => list(daemon_deployment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_daemon_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_lifecycle_hook_detail() :: #{
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"hookId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string(),
-%%   <<"targetType">> => list(any()),
-%%   <<"timeoutAction">> => list(any())
-%% }
--type deployment_lifecycle_hook_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_deployments_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"createdAt">> => created_at(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"service">> := string(),
-%%   <<"status">> => list(list(any())())
-%% }
--type list_service_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% task_set() :: #{
-%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"clusterArn">> => string(),
-%%   <<"computedDesiredCount">> => integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"externalId">> => string(),
-%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
-%%   <<"id">> => string(),
-%%   <<"launchType">> => list(any()),
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"pendingCount">> => integer(),
-%%   <<"platformFamily">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"runningCount">> => integer(),
-%%   <<"scale">> => scale(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceRegistries">> => list(service_registry()),
-%%   <<"stabilityStatus">> => list(any()),
-%%   <<"stabilityStatusAt">> => non_neg_integer(),
-%%   <<"startedBy">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"taskDefinition">> => string(),
-%%   <<"taskSetArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type task_set() :: #{binary() => any()}.
-
-%% Example:
-%% task() :: #{
-%%   <<"healthStatus">> => list(any()),
-%%   <<"containers">> => list(container()),
-%%   <<"attachments">> => list(attachment()),
-%%   <<"taskDefinitionArn">> => string(),
-%%   <<"stoppedReason">> => string(),
-%%   <<"pullStoppedAt">> => non_neg_integer(),
-%%   <<"clusterArn">> => string(),
-%%   <<"stoppingAt">> => non_neg_integer(),
-%%   <<"availabilityZone">> => string(),
-%%   <<"connectivity">> => list(any()),
-%%   <<"executionStoppedAt">> => non_neg_integer(),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"desiredStatus">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"platformFamily">> => string(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"containerInstanceArn">> => string(),
-%%   <<"overrides">> => task_override(),
-%%   <<"attributes">> => list(attribute()),
-%%   <<"pullStartedAt">> => non_neg_integer(),
-%%   <<"stopCode">> => list(any()),
-%%   <<"version">> => float(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"launchType">> => list(any()),
-%%   <<"capacityProviderName">> => string(),
-%%   <<"cpu">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"lastStatus">> => string(),
-%%   <<"taskArn">> => string(),
-%%   <<"connectivityAt">> => non_neg_integer(),
-%%   <<"memory">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"group">> => string(),
-%%   <<"startedBy">> => string(),
-%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
-%%   <<"fargateEphemeralStorage">> => task_ephemeral_storage(),
-%%   <<"startedAt">> => non_neg_integer()
-%% }
--type task() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capacity_provider_request() :: #{
-%%   <<"capacityProvider">> := string(),
-%%   <<"cluster">> => string()
-%% }
--type delete_capacity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_in_progress_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type update_in_progress_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% stop_task_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"task">> := string()
+%% advanced_configuration() :: #{
+%%   <<"alternateTargetGroupArn">> => string(),
+%%   <<"productionListenerRule">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"testListenerRule">> => string()
 %% }
--type stop_task_request() :: #{binary() => any()}.
+-type advanced_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_path_summary() :: #{
-%%   <<"accessType">> => list(any()),
-%%   <<"endpoint">> => string()
+%% attachment() :: #{
+%%   <<"details">> => list(key_value_pair()),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
 %% }
--type ingress_path_summary() :: #{binary() => any()}.
+-type attachment() :: #{binary() => any()}.
 
 %% Example:
-%% describe_container_instances_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstances">> := list(string()),
-%%   <<"include">> => list(list(any())())
+%% attachment_state_change() :: #{
+%%   <<"attachmentArn">> => string(),
+%%   <<"status">> => string()
 %% }
--type describe_container_instances_request() :: #{binary() => any()}.
+-type attachment_state_change() :: #{binary() => any()}.
 
 %% Example:
-%% system_control() :: #{
-%%   <<"namespace">> => string(),
+%% attribute() :: #{
+%%   <<"name">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => list(any()),
 %%   <<"value">> => string()
 %% }
--type system_control() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type attribute_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% auto_repair_configuration() :: #{
+%%   <<"actionsStatus">> => list(any())
+%% }
+-type auto_repair_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_provider() :: #{
+%%   <<"autoScalingGroupArn">> => string(),
+%%   <<"managedDraining">> => list(any()),
+%%   <<"managedScaling">> => managed_scaling(),
+%%   <<"managedTerminationProtection">> => list(any())
+%% }
+-type auto_scaling_group_provider() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_provider_update() :: #{
+%%   <<"managedDraining">> => list(any()),
+%%   <<"managedScaling">> => managed_scaling(),
+%%   <<"managedTerminationProtection">> => list(any())
+%% }
+-type auto_scaling_group_provider_update() :: #{binary() => any()}.
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"assignPublicIp">> => list(any()),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_ebs_bandwidth_mbps_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% blocked_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type blocked_exception() :: #{binary() => any()}.
+
+%% Example:
+%% canary_configuration() :: #{
+%%   <<"canaryBakeTimeInMinutes">> => integer(),
+%%   <<"canaryPercent">> => float()
+%% }
+-type canary_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_provider() :: #{
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => managed_instances_provider(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> => list(any()),
+%%   <<"updateStatus">> => list(any()),
+%%   <<"updateStatusReason">> => string()
+%% }
+-type capacity_provider() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_request() :: #{
+%%   <<"reservationGroupArn">> => string(),
+%%   <<"reservationPreference">> => list(any())
+%% }
+-type capacity_reservation_request() :: #{binary() => any()}.
+
+%% Example:
+%% client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"activeServicesCount">> => integer(),
+%%   <<"attachments">> => list(attachment()),
+%%   <<"attachmentsStatus">> => string(),
+%%   <<"capacityProviders">> => list(string()),
+%%   <<"clusterArn">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"pendingTasksCount">> => integer(),
+%%   <<"registeredContainerInstancesCount">> => integer(),
+%%   <<"runningTasksCount">> => integer(),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults(),
+%%   <<"settings">> => list(cluster_setting()),
+%%   <<"statistics">> => list(key_value_pair()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_configuration() :: #{
+%%   <<"executeCommandConfiguration">> => execute_command_configuration(),
+%%   <<"managedStorageConfiguration">> => managed_storage_configuration()
+%% }
+-type cluster_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_capacity_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_capacity_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_container_instances_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_container_instances_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_services_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_services_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_tasks_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_tasks_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_service_connect_defaults() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type cluster_service_connect_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_service_connect_defaults_request() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type cluster_service_connect_defaults_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_setting() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type cluster_setting() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% container() :: #{
@@ -428,1085 +437,96 @@
 -type container() :: #{binary() => any()}.
 
 %% Example:
-%% service_deployment_circuit_breaker() :: #{
-%%   <<"failureCount">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"threshold">> => integer()
-%% }
--type service_deployment_circuit_breaker() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type daemon_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% inference_accelerator() :: #{
-%%   <<"deviceName">> => string(),
-%%   <<"deviceType">> => string()
-%% }
--type inference_accelerator() :: #{binary() => any()}.
-
-%% Example:
-%% managed_metric_alarm() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_metric_alarm() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_circuit_breaker() :: #{
-%%   <<"failureCount">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"threshold">> => integer()
-%% }
--type daemon_circuit_breaker() :: #{binary() => any()}.
-
-%% Example:
-%% run_task_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"tasks">> => list(task())
-%% }
--type run_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_ingress_path() :: #{
-%%   <<"accessType">> => list(any()),
-%%   <<"certificate">> => managed_certificate(),
-%%   <<"endpoint">> => string(),
-%%   <<"listener">> => managed_listener(),
-%%   <<"loadBalancer">> => managed_load_balancer(),
-%%   <<"loadBalancerSecurityGroups">> => list(managed_security_group()),
-%%   <<"rule">> => managed_listener_rule(),
-%%   <<"targetGroups">> => list(managed_target_group())
-%% }
--type managed_ingress_path() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_configuration() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"properties">> => list(key_value_pair()),
-%%   <<"type">> => list(any())
-%% }
--type proxy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_service_network_configuration() :: #{
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type express_gateway_service_network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type attribute_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% metric_configuration() :: #{
-%%   <<"metricNames">> => list(string()),
-%%   <<"resolutionSeconds">> => integer()
-%% }
--type metric_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% setting() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"principalArn">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type setting() :: #{binary() => any()}.
-
-%% Example:
-%% deployment() :: #{
-%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"desiredCount">> => integer(),
-%%   <<"failedTasks">> => integer(),
-%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
-%%   <<"id">> => string(),
-%%   <<"launchType">> => list(any()),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"pendingCount">> => integer(),
-%%   <<"platformFamily">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"rolloutState">> => list(any()),
-%%   <<"rolloutStateReason">> => string(),
-%%   <<"runningCount">> => integer(),
-%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
-%%   <<"serviceConnectResources">> => list(service_connect_service_resource()),
-%%   <<"status">> => string(),
-%%   <<"taskDefinition">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
-%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
-%% }
--type deployment() :: #{binary() => any()}.
-
-%% Example:
-%% service_event() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"message">> => string()
-%% }
--type service_event() :: #{binary() => any()}.
-
-%% Example:
-%% service_current_revision_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"pendingTaskCount">> => integer(),
-%%   <<"requestedTaskCount">> => integer(),
-%%   <<"runningTaskCount">> => integer()
-%% }
--type service_current_revision_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_services_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"include">> => list(list(any())()),
-%%   <<"services">> := list(string())
-%% }
--type describe_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_service_deployment_request() :: #{
-%%   <<"serviceDeploymentArn">> := string(),
-%%   <<"stopType">> => list(any())
-%% }
--type stop_service_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_deployment_alarms() :: #{
-%%   <<"alarmNames">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"triggeredAlarmNames">> => list(string())
-%% }
--type daemon_deployment_alarms() :: #{binary() => any()}.
-
-%% Example:
-%% task_override() :: #{
-%%   <<"containerOverrides">> => list(container_override()),
-%%   <<"cpu">> => string(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"inferenceAcceleratorOverrides">> => list(inference_accelerator_override()),
-%%   <<"memory">> => string(),
-%%   <<"taskRoleArn">> => string()
-%% }
--type task_override() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_deployments_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"serviceDeployments">> => list(service_deployment())
-%% }
--type describe_service_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_managed_instances_provider_configuration() :: #{
-%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
-%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
-%%   <<"infrastructureRoleArn">> => string(),
-%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
-%%   <<"propagateTags">> => list(any())
-%% }
--type create_managed_instances_provider_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemon_task_definitions_response() :: #{
-%%   <<"daemonTaskDefinitions">> => list(daemon_task_definition_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_daemon_task_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_setting_default_request() :: #{
-%%   <<"name">> := list(any()),
-%%   <<"value">> := string()
-%% }
--type put_account_setting_default_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_container_instance_response() :: #{
-%%   <<"containerInstance">> => container_instance()
-%% }
--type register_container_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_instances_network_configuration() :: #{
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type managed_instances_network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_task_set_request() :: #{
-%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"clientToken">> => string(),
-%%   <<"cluster">> := string(),
-%%   <<"externalId">> => string(),
-%%   <<"launchType">> => list(any()),
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"platformVersion">> => string(),
-%%   <<"scale">> => scale(),
-%%   <<"service">> := string(),
-%%   <<"serviceRegistries">> => list(service_registry()),
-%%   <<"tags">> => list(tag()),
-%%   <<"taskDefinition">> := string()
-%% }
--type create_task_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_task_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstances">> := list(string()),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"group">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"overrides">> => task_override(),
-%%   <<"propagateTags">> => list(any()),
-%%   <<"referenceId">> => string(),
-%%   <<"startedBy">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"taskDefinition">> := string(),
-%%   <<"volumeConfigurations">> => list(task_volume_configuration())
-%% }
--type start_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_setting_response() :: #{
-%%   <<"setting">> => setting()
-%% }
--type delete_account_setting_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_capacity_provider_request() :: #{
-%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider_update(),
-%%   <<"cluster">> => string(),
-%%   <<"managedInstancesProvider">> => update_managed_instances_provider_configuration(),
-%%   <<"name">> := string()
-%% }
--type update_capacity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_setting_response() :: #{
-%%   <<"setting">> => setting()
-%% }
--type put_account_setting_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_by_namespace_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_services_by_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_task_protection_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"protectedTasks">> => list(protected_task())
-%% }
--type get_task_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_service_resource() :: #{
-%%   <<"discoveryArn">> => string(),
-%%   <<"discoveryName">> => string()
-%% }
--type service_connect_service_resource() :: #{binary() => any()}.
-
-%% Example:
-%% continue_service_deployment_response() :: #{
-%%   <<"serviceDeploymentArn">> => string()
-%% }
--type continue_service_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% host_volume_properties() :: #{
-%%   <<"sourcePath">> => string()
-%% }
--type host_volume_properties() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"ipv6Address">> => string(),
-%%   <<"privateIpv4Address">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_set_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"scale">> := scale(),
-%%   <<"service">> := string(),
-%%   <<"taskSet">> := string()
-%% }
--type update_task_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% threshold_configuration() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type threshold_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_revision_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"capacityProviders">> => list(daemon_capacity_provider()),
-%%   <<"totalRunningCount">> => integer()
-%% }
--type daemon_revision_detail() :: #{binary() => any()}.
-
-%% Example:
-%% service_deployment_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_deployment_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% memory_gi_b_per_v_cpu_request() :: #{
-%%   <<"max">> => float(),
-%%   <<"min">> => float()
-%% }
--type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_command_configuration() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"logConfiguration">> => execute_command_log_configuration(),
-%%   <<"logging">> => list(any())
-%% }
--type execute_command_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% attachment() :: #{
-%%   <<"details">> => list(key_value_pair()),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type attachment() :: #{binary() => any()}.
-
-%% Example:
-%% service_revision_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"pendingTaskCount">> => integer(),
-%%   <<"requestedProductionTrafficWeight">> => float(),
-%%   <<"requestedTaskCount">> => integer(),
-%%   <<"requestedTestTrafficWeight">> => float(),
-%%   <<"runningTaskCount">> => integer()
-%% }
--type service_revision_summary() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_deployment_revision_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"capacityProviders">> => list(daemon_deployment_capacity_provider()),
-%%   <<"totalDrainingInstanceCount">> => integer(),
-%%   <<"totalRunningInstanceCount">> => integer()
-%% }
--type daemon_deployment_revision_detail() :: #{binary() => any()}.
-
-%% Example:
-%% target_not_connected_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type target_not_connected_exception() :: #{binary() => any()}.
-
-%% Example:
-%% linear_configuration() :: #{
-%%   <<"stepBakeTimeInMinutes">> => integer(),
-%%   <<"stepPercent">> => float()
-%% }
--type linear_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% service_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service() :: #{
-%%   <<"propagateTags">> => list(any()),
-%%   <<"placementStrategy">> => list(placement_strategy()),
-%%   <<"taskSets">> => list(task_set()),
-%%   <<"clusterArn">> => string(),
-%%   <<"serviceRegistries">> => list(service_registry()),
-%%   <<"schedulingStrategy">> => list(any()),
-%%   <<"availabilityZoneRebalancing">> => list(any()),
-%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"serviceName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"currentServiceRevisions">> => list(service_current_revision_summary()),
-%%   <<"platformVersion">> => string(),
-%%   <<"deployments">> => list(deployment()),
-%%   <<"desiredCount">> => integer(),
-%%   <<"platformFamily">> => string(),
-%%   <<"status">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"serviceArn">> => string(),
-%%   <<"deploymentConfiguration">> => deployment_configuration(),
-%%   <<"events">> => list(service_event()),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"launchType">> => list(any()),
-%%   <<"taskDefinition">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"healthCheckGracePeriodSeconds">> => integer(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"resourceManagementType">> => list(any()),
-%%   <<"pendingCount">> => integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"currentServiceDeployment">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"placementConstraints">> => list(placement_constraint()),
-%%   <<"runningCount">> => integer(),
-%%   <<"deploymentController">> => deployment_controller()
-%% }
--type service() :: #{binary() => any()}.
-
-%% Example:
-%% host_entry() :: #{
-%%   <<"hostname">> => string(),
-%%   <<"ipAddress">> => string()
-%% }
--type host_entry() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemons_response() :: #{
-%%   <<"daemonSummariesList">> => list(daemon_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_daemons_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_express_gateway_service_request() :: #{
-%%   <<"include">> => list(list(any())()),
-%%   <<"serviceArn">> := string()
-%% }
--type describe_express_gateway_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_deployments_request() :: #{
-%%   <<"daemonDeploymentArns">> := list(string())
-%% }
--type describe_daemon_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_task_definitions_request() :: #{
-%%   <<"familyPrefix">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_task_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_daemon_task_definition_request() :: #{
-%%   <<"daemonTaskDefinition">> := string()
-%% }
--type delete_daemon_task_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_rollback() :: #{
-%%   <<"reason">> => string(),
-%%   <<"rollbackCapacityProviders">> => list(string()),
-%%   <<"rollbackTargetDaemonRevisionArn">> => string(),
-%%   <<"startedAt">> => non_neg_integer()
-%% }
--type daemon_rollback() :: #{binary() => any()}.
-
-%% Example:
-%% service_deployment_brief() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"finishedAt">> => non_neg_integer(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceDeploymentArn">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"targetServiceRevisionArn">> => string()
-%% }
--type service_deployment_brief() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_configuration() :: #{
-%%   <<"metricConfigurations">> => list(metric_configuration())
-%% }
--type monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% task_volume_configuration() :: #{
-%%   <<"managedEBSVolume">> => task_managed_ebs_volume_configuration(),
-%%   <<"name">> => string()
-%% }
--type task_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_alarm_configuration() :: #{
-%%   <<"alarmNames">> => list(string()),
-%%   <<"enable">> => boolean()
-%% }
--type daemon_alarm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_agent_state_change() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"managedAgentName">> => list(any()),
-%%   <<"reason">> => string(),
-%%   <<"status">> => string()
-%% }
--type managed_agent_state_change() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_set_response() :: #{
-%%   <<"taskSet">> => task_set()
-%% }
--type delete_task_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_response() :: #{
-%%   <<"daemon">> => daemon_detail()
-%% }
--type describe_daemon_response() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_service_status() :: #{
-%%   <<"statusCode">> => list(any()),
-%%   <<"statusReason">> => string()
-%% }
--type express_gateway_service_status() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_instances_state_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstances">> := list(string()),
-%%   <<"status">> := list(any())
-%% }
--type update_container_instances_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% docker_volume_configuration() :: #{
-%%   <<"autoprovision">> => boolean(),
-%%   <<"driver">> => string(),
-%%   <<"driverOpts">> => map(),
-%%   <<"labels">> => map(),
-%%   <<"scope">> => list(any())
-%% }
--type docker_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_protection_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"expiresInMinutes">> => integer(),
-%%   <<"protectionEnabled">> := boolean(),
-%%   <<"tasks">> := list(string())
-%% }
--type update_task_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"configuration">> => cluster_configuration(),
-%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
-%%   <<"settings">> => list(cluster_setting())
-%% }
--type update_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_container_instance_request() :: #{
-%%   <<"attributes">> => list(attribute()),
-%%   <<"cluster">> => string(),
-%%   <<"containerInstanceArn">> => string(),
-%%   <<"instanceIdentityDocument">> => string(),
-%%   <<"instanceIdentityDocumentSignature">> => string(),
-%%   <<"platformDevices">> => list(platform_device()),
-%%   <<"tags">> => list(tag()),
-%%   <<"totalResources">> => list(resource()),
-%%   <<"versionInfo">> => version_info()
-%% }
--type register_container_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% mount_point() :: #{
-%%   <<"containerPath">> => string(),
-%%   <<"readOnly">> => boolean(),
-%%   <<"sourceVolume">> => string()
-%% }
--type mount_point() :: #{binary() => any()}.
-
-%% Example:
-%% timeout_configuration() :: #{
-%%   <<"idleTimeoutSeconds">> => integer(),
-%%   <<"perRequestTimeoutSeconds">> => integer()
-%% }
--type timeout_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_agent() :: #{
-%%   <<"lastStartedAt">> => non_neg_integer(),
-%%   <<"lastStatus">> => string(),
-%%   <<"name">> => list(any()),
-%%   <<"reason">> => string()
-%% }
--type managed_agent() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_detail() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currentRevisions">> => list(daemon_revision_detail()),
-%%   <<"daemonArn">> => string(),
-%%   <<"deploymentArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type daemon_detail() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_deployment_configuration() :: #{
-%%   <<"alarms">> => daemon_alarm_configuration(),
-%%   <<"bakeTimeInMinutes">> => integer(),
-%%   <<"drainPercent">> => float()
-%% }
--type daemon_deployment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_configuration() :: #{
-%%   <<"executeCommandConfiguration">> => execute_command_configuration(),
-%%   <<"managedStorageConfiguration">> => managed_storage_configuration()
-%% }
--type cluster_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_alarms() :: #{
-%%   <<"alarmNames">> => list(string()),
-%%   <<"enable">> => boolean(),
-%%   <<"rollback">> => boolean()
-%% }
--type deployment_alarms() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_setting_request() :: #{
-%%   <<"name">> := list(any()),
-%%   <<"principalArn">> => string(),
-%%   <<"value">> := string()
-%% }
--type put_account_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_instances_provider() :: #{
-%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
-%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
-%%   <<"infrastructureRoleArn">> => string(),
-%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
-%%   <<"propagateTags">> => list(any())
-%% }
--type managed_instances_provider() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"launchType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceManagementType">> => list(any()),
-%%   <<"schedulingStrategy">> => list(any())
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_command_response() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"containerArn">> => string(),
-%%   <<"containerName">> => string(),
-%%   <<"interactive">> => boolean(),
-%%   <<"session">> => session(),
-%%   <<"taskArn">> => string()
-%% }
--type execute_command_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_services_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"services">> => list(service())
-%% }
--type describe_services_response() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_revision() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"containerImages">> => list(daemon_container_image()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"daemonArn">> => string(),
-%%   <<"daemonRevisionArn">> => string(),
-%%   <<"daemonTaskDefinitionArn">> => string(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"propagateTags">> => list(any())
-%% }
--type daemon_revision() :: #{binary() => any()}.
-
-%% Example:
-%% task_managed_ebs_volume_termination_policy() :: #{
-%%   <<"deleteOnTermination">> => boolean()
-%% }
--type task_managed_ebs_volume_termination_policy() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_task_definition_response() :: #{
-%%   <<"taskDefinition">> => task_definition()
-%% }
--type deregister_task_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_task_definition_response() :: #{
-%%   <<"daemonTaskDefinition">> => daemon_task_definition()
-%% }
--type describe_daemon_task_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_express_gateway_service_request() :: #{
-%%   <<"serviceArn">> := string()
-%% }
--type delete_express_gateway_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_capacity_provider() :: #{
-%%   <<"arn">> => string(),
-%%   <<"runningCount">> => integer()
-%% }
--type daemon_capacity_provider() :: #{binary() => any()}.
-
-%% Example:
-%% namespace_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type namespace_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_feature_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_feature_exception() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"daemonArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type daemon_summary() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_configuration() :: #{
-%%   <<"alarms">> => deployment_alarms(),
-%%   <<"bakeTimeInMinutes">> => integer(),
-%%   <<"canaryConfiguration">> => canary_configuration(),
-%%   <<"deploymentCircuitBreaker">> => deployment_circuit_breaker(),
-%%   <<"lifecycleHooks">> => list(deployment_lifecycle_hook()),
-%%   <<"linearConfiguration">> => linear_configuration(),
-%%   <<"maximumPercent">> => integer(),
-%%   <<"minimumHealthyPercent">> => integer(),
-%%   <<"strategy">> => list(any())
-%% }
--type deployment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_settings_request() :: #{
-%%   <<"effectiveSettings">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"principalArn">> => string(),
-%%   <<"value">> => string()
-%% }
--type list_account_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_settings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"settings">> => list(setting())
-%% }
--type list_account_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% rollback() :: #{
-%%   <<"reason">> => string(),
-%%   <<"serviceRevisionArn">> => string(),
-%%   <<"startedAt">> => non_neg_integer()
-%% }
--type rollback() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_test_traffic_header_match_rules() :: #{
-%%   <<"exact">> => string()
-%% }
--type service_connect_test_traffic_header_match_rules() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_access_log_configuration() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"includeQueryParameters">> => list(any())
-%% }
--type service_connect_access_log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemon_task_definitions_request() :: #{
-%%   <<"family">> => string(),
-%%   <<"familyPrefix">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"revision">> => list(any()),
-%%   <<"sort">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_daemon_task_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_container_image() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"image">> => string(),
-%%   <<"imageDigest">> => string()
-%% }
--type daemon_container_image() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"capacityProviders">> => list(string()),
-%%   <<"clusterName">> => string(),
-%%   <<"configuration">> => cluster_configuration(),
-%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
-%%   <<"settings">> => list(cluster_setting()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_restart_policy() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"ignoredExitCodes">> => list(integer()),
-%%   <<"restartAttemptPeriod">> => integer()
-%% }
--type container_restart_policy() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_deployments_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceDeployments">> => list(service_deployment_brief())
-%% }
--type list_service_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_service_aws_logs_configuration() :: #{
-%%   <<"logGroup">> => string(),
-%%   <<"logStreamPrefix">> => string()
-%% }
--type express_gateway_service_aws_logs_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_configuration() :: #{
-%%   <<"accessLogConfiguration">> => service_connect_access_log_configuration(),
-%%   <<"enabled">> => boolean(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"namespace">> => string(),
-%%   <<"services">> => list(service_connect_service())
-%% }
--type service_connect_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_linux_parameters() :: #{
-%%   <<"capabilities">> => kernel_capabilities(),
-%%   <<"devices">> => list(device()),
-%%   <<"initProcessEnabled">> => boolean(),
-%%   <<"tmpfs">> => list(tmpfs())
-%% }
--type daemon_linux_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% client_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_capacity_providers_request() :: #{
-%%   <<"capacityProviders">> => list(string()),
-%%   <<"cluster">> => string(),
-%%   <<"include">> => list(list(any())()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_capacity_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_daemon_request() :: #{
-%%   <<"capacityProviderArns">> := list(string()),
-%%   <<"daemonArn">> := string(),
-%%   <<"daemonTaskDefinitionArn">> := string(),
-%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"propagateTags">> => list(any())
-%% }
--type update_daemon_request() :: #{binary() => any()}.
-
-%% Example:
 %% container_definition() :: #{
-%%   <<"pseudoTerminal">> => boolean(),
-%%   <<"essential">> => boolean(),
-%%   <<"hostname">> => string(),
-%%   <<"links">> => list(string()),
-%%   <<"secrets">> => list(secret()),
-%%   <<"portMappings">> => list(port_mapping()),
+%%   <<"command">> => list(string()),
+%%   <<"cpu">> => integer(),
+%%   <<"credentialSpecs">> => list(string()),
+%%   <<"dependsOn">> => list(container_dependency()),
+%%   <<"disableNetworking">> => boolean(),
+%%   <<"dnsSearchDomains">> => list(string()),
+%%   <<"dnsServers">> => list(string()),
+%%   <<"dockerLabels">> => map(),
+%%   <<"dockerSecurityOptions">> => list(string()),
 %%   <<"entryPoint">> => list(string()),
 %%   <<"environment">> => list(key_value_pair()),
 %%   <<"environmentFiles">> => list(environment_file()),
-%%   <<"readonlyRootFilesystem">> => boolean(),
-%%   <<"resourceRequirements">> => list(resource_requirement()),
-%%   <<"dockerSecurityOptions">> => list(string()),
-%%   <<"dnsSearchDomains">> => list(string()),
-%%   <<"volumesFrom">> => list(volume_from()),
-%%   <<"interactive">> => boolean(),
-%%   <<"privileged">> => boolean(),
-%%   <<"stopTimeout">> => integer(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"dependsOn">> => list(container_dependency()),
-%%   <<"ulimits">> => list(ulimit()),
-%%   <<"cpu">> => integer(),
-%%   <<"mountPoints">> => list(mount_point()),
-%%   <<"memoryReservation">> => integer(),
-%%   <<"dnsServers">> => list(string()),
+%%   <<"essential">> => boolean(),
 %%   <<"extraHosts">> => list(host_entry()),
-%%   <<"memory">> => integer(),
-%%   <<"command">> => list(string()),
-%%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"firelensConfiguration">> => firelens_configuration(),
 %%   <<"healthCheck">> => health_check(),
-%%   <<"restartPolicy">> => container_restart_policy(),
-%%   <<"systemControls">> => list(system_control()),
-%%   <<"workingDirectory">> => string(),
-%%   <<"versionConsistency">> => list(any()),
-%%   <<"startTimeout">> => integer(),
-%%   <<"credentialSpecs">> => list(string()),
-%%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"dockerLabels">> => map(),
+%%   <<"hostname">> => string(),
 %%   <<"image">> => string(),
+%%   <<"interactive">> => boolean(),
+%%   <<"links">> => list(string()),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"memory">> => integer(),
+%%   <<"memoryReservation">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()),
+%%   <<"name">> => string(),
+%%   <<"portMappings">> => list(port_mapping()),
+%%   <<"privileged">> => boolean(),
+%%   <<"pseudoTerminal">> => boolean(),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"restartPolicy">> => container_restart_policy(),
+%%   <<"secrets">> => list(secret()),
+%%   <<"startTimeout">> => integer(),
+%%   <<"stopTimeout">> => integer(),
+%%   <<"systemControls">> => list(system_control()),
+%%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string(),
-%%   <<"disableNetworking">> => boolean(),
-%%   <<"name">> => string()
+%%   <<"versionConsistency">> => list(any()),
+%%   <<"volumesFrom">> => list(volume_from()),
+%%   <<"workingDirectory">> => string()
 %% }
 -type container_definition() :: #{binary() => any()}.
 
 %% Example:
-%% managed_storage_configuration() :: #{
-%%   <<"fargateEphemeralStorageKmsKeyId">> => string(),
-%%   <<"kmsKeyId">> => string()
+%% container_dependency() :: #{
+%%   <<"condition">> => list(any()),
+%%   <<"containerName">> => string()
 %% }
--type managed_storage_configuration() :: #{binary() => any()}.
+-type container_dependency() :: #{binary() => any()}.
 
 %% Example:
-%% vpc_lattice_configuration() :: #{
-%%   <<"portName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"targetGroupArn">> => string()
+%% container_image() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"image">> => string(),
+%%   <<"imageDigest">> => string()
 %% }
--type vpc_lattice_configuration() :: #{binary() => any()}.
+-type container_image() :: #{binary() => any()}.
 
 %% Example:
-%% get_task_protection_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"tasks">> => list(string())
+%% container_instance() :: #{
+%%   <<"agentConnected">> => boolean(),
+%%   <<"agentUpdateStatus">> => list(any()),
+%%   <<"attachments">> => list(attachment()),
+%%   <<"attributes">> => list(attribute()),
+%%   <<"capacityProviderName">> => string(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"ec2InstanceId">> => string(),
+%%   <<"healthStatus">> => container_instance_health_status(),
+%%   <<"pendingTasksCount">> => integer(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredResources">> => list(resource()),
+%%   <<"remainingResources">> => list(resource()),
+%%   <<"runningTasksCount">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"version">> => float(),
+%%   <<"versionInfo">> => version_info()
 %% }
--type get_task_protection_request() :: #{binary() => any()}.
+-type container_instance() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_contains_tasks_exception() :: #{
-%%   <<"message">> => string()
+%% container_instance_health_status() :: #{
+%%   <<"details">> => list(instance_health_check_result()),
+%%   <<"overallStatus">> => list(any())
 %% }
--type cluster_contains_tasks_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_daemon_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"daemonArn">> => string(),
-%%   <<"deploymentArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_daemon_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_task_definitions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taskDefinitionArns">> => list(string())
-%% }
--type list_task_definitions_response() :: #{binary() => any()}.
+-type container_instance_health_status() :: #{binary() => any()}.
 
 %% Example:
 %% container_override() :: #{
@@ -1522,174 +542,130 @@
 -type container_override() :: #{binary() => any()}.
 
 %% Example:
-%% ulimit() :: #{
-%%   <<"hardLimit">> => integer(),
-%%   <<"name">> => list(any()),
-%%   <<"softLimit">> => integer()
+%% container_restart_policy() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"ignoredExitCodes">> => list(integer()),
+%%   <<"restartAttemptPeriod">> => integer()
 %% }
--type ulimit() :: #{binary() => any()}.
+-type container_restart_policy() :: #{binary() => any()}.
 
 %% Example:
-%% execute_command_log_configuration() :: #{
-%%   <<"cloudWatchEncryptionEnabled">> => boolean(),
-%%   <<"cloudWatchLogGroupName">> => string(),
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3EncryptionEnabled">> => boolean(),
-%%   <<"s3KeyPrefix">> => string()
-%% }
--type execute_command_log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cluster() :: #{
-%%   <<"activeServicesCount">> => integer(),
-%%   <<"attachments">> => list(attachment()),
-%%   <<"attachmentsStatus">> => string(),
-%%   <<"capacityProviders">> => list(string()),
-%%   <<"clusterArn">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"configuration">> => cluster_configuration(),
-%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"pendingTasksCount">> => integer(),
-%%   <<"registeredContainerInstancesCount">> => integer(),
-%%   <<"runningTasksCount">> => integer(),
-%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults(),
-%%   <<"settings">> => list(cluster_setting()),
-%%   <<"statistics">> => list(key_value_pair()),
-%%   <<"status">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type cluster() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_lifecycle_hook() :: #{
-%%   <<"hookDetails">> => any(),
-%%   <<"hookTargetArn">> => string(),
-%%   <<"lifecycleStages">> => list(list(any())()),
-%%   <<"roleArn">> => string(),
-%%   <<"targetType">> => list(any()),
-%%   <<"timeoutConfiguration">> => deployment_lifecycle_hook_timeout_configuration()
-%% }
--type deployment_lifecycle_hook() :: #{binary() => any()}.
-
-%% Example:
-%% managed_load_balancer() :: #{
-%%   <<"arn">> => string(),
-%%   <<"scheme">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_load_balancer() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_state_change() :: #{
-%%   <<"attachmentArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type attachment_state_change() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_deployment_summary() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"daemonArn">> => string(),
-%%   <<"daemonDeploymentArn">> => string(),
-%%   <<"finishedAt">> => non_neg_integer(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"targetDaemonRevisionArn">> => string()
-%% }
--type daemon_deployment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArns">> => list(string())
-%% }
--type list_services_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_revisions_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"serviceRevisions">> => list(service_revision())
-%% }
--type describe_service_revisions_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_deployment_alarms() :: #{
-%%   <<"alarmNames">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"triggeredAlarmNames">> => list(string())
-%% }
--type service_deployment_alarms() :: #{binary() => any()}.
-
-%% Example:
-%% service_not_active_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_not_active_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_setting() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type cluster_setting() :: #{binary() => any()}.
-
-%% Example:
-%% managed_certificate() :: #{
-%%   <<"arn">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_count_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type accelerator_count_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_definitions_request() :: #{
-%%   <<"taskDefinitions">> := list(string())
-%% }
--type delete_task_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_task_sets_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"include">> => list(list(any())()),
-%%   <<"service">> := string(),
-%%   <<"taskSets">> => list(string())
-%% }
--type describe_task_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_express_gateway_service_response() :: #{
-%%   <<"service">> => updated_express_gateway_service()
-%% }
--type update_express_gateway_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% submit_container_state_change_request() :: #{
-%%   <<"cluster">> => string(),
+%% container_state_change() :: #{
 %%   <<"containerName">> => string(),
 %%   <<"exitCode">> => integer(),
+%%   <<"imageDigest">> => string(),
 %%   <<"networkBindings">> => list(network_binding()),
 %%   <<"reason">> => string(),
 %%   <<"runtimeId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"task">> => string()
+%%   <<"status">> => string()
 %% }
--type submit_container_state_change_request() :: #{binary() => any()}.
+-type container_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% continue_service_deployment_request() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"hookId">> := string(),
+%%   <<"serviceDeploymentArn">> := string()
+%% }
+-type continue_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% continue_service_deployment_response() :: #{
+%%   <<"serviceDeploymentArn">> => string()
+%% }
+-type continue_service_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_provider_request() :: #{
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => create_managed_instances_provider_configuration(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type create_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"capacityProviders">> => list(string()),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
+%%   <<"settings">> => list(cluster_setting()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_daemon_request() :: #{
+%%   <<"capacityProviderArns">> := list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"clusterArn">> => string(),
+%%   <<"daemonName">> := string(),
+%%   <<"daemonTaskDefinitionArn">> := string(),
+%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_daemon_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_daemon_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_daemon_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_express_gateway_service_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"infrastructureRoleArn">> := string(),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> => express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type create_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type create_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_managed_instances_provider_configuration() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type create_managed_instances_provider_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_service_request() :: #{
@@ -1724,720 +700,34 @@
 -type create_service_request() :: #{binary() => any()}.
 
 %% Example:
-%% task_definition_placement_constraint() :: #{
-%%   <<"expression">> => string(),
-%%   <<"type">> => list(any())
+%% create_service_response() :: #{
+%%   <<"service">> => service()
 %% }
--type task_definition_placement_constraint() :: #{binary() => any()}.
+-type create_service_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_task_definition_families_response() :: #{
-%%   <<"families">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_task_definition_families_response() :: #{binary() => any()}.
-
-%% Example:
-%% container_image() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"image">> => string(),
-%%   <<"imageDigest">> => string()
-%% }
--type container_image() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_set_response() :: #{
-%%   <<"taskSet">> => task_set()
-%% }
--type update_task_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attributes_response() :: #{
-%%   <<"attributes">> => list(attribute())
-%% }
--type delete_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tasks_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"tasks">> => list(task())
-%% }
--type describe_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_circuit_breaker() :: #{
-%%   <<"enable">> => boolean(),
-%%   <<"resetOnHealthyTask">> => boolean(),
-%%   <<"rollback">> => boolean(),
-%%   <<"thresholdConfiguration">> => threshold_configuration()
-%% }
--type deployment_circuit_breaker() :: #{binary() => any()}.
-
-%% Example:
-%% describe_container_instances_response() :: #{
-%%   <<"containerInstances">> => list(container_instance()),
-%%   <<"failures">> => list(failure())
-%% }
--type describe_container_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% container_state_change() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"exitCode">> => integer(),
-%%   <<"imageDigest">> => string(),
-%%   <<"networkBindings">> => list(network_binding()),
-%%   <<"reason">> => string(),
-%%   <<"runtimeId">> => string(),
-%%   <<"status">> => string()
-%% }
--type container_state_change() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_deployments_response() :: #{
-%%   <<"daemonDeployments">> => list(daemon_deployment()),
-%%   <<"failures">> => list(failure())
-%% }
--type describe_daemon_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% secret() :: #{
-%%   <<"name">> => string(),
-%%   <<"valueFrom">> => string()
-%% }
--type secret() :: #{binary() => any()}.
-
-%% Example:
-%% put_cluster_capacity_providers_request() :: #{
-%%   <<"capacityProviders">> := list(string()),
-%%   <<"cluster">> := string(),
-%%   <<"defaultCapacityProviderStrategy">> := list(capacity_provider_strategy_item())
-%% }
--type put_cluster_capacity_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_request() :: #{
-%%   <<"reservationGroupArn">> => string(),
-%%   <<"reservationPreference">> => list(any())
-%% }
--type capacity_reservation_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_provider_update() :: #{
-%%   <<"managedDraining">> => list(any()),
-%%   <<"managedScaling">> => managed_scaling(),
-%%   <<"managedTerminationProtection">> => list(any())
-%% }
--type auto_scaling_group_provider_update() :: #{binary() => any()}.
-
-%% Example:
-%% instance_health_check_result() :: #{
-%%   <<"lastStatusChange">> => non_neg_integer(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type instance_health_check_result() :: #{binary() => any()}.
-
-%% Example:
-%% network_binding() :: #{
-%%   <<"bindIP">> => string(),
-%%   <<"containerPort">> => integer(),
-%%   <<"containerPortRange">> => string(),
-%%   <<"hostPort">> => integer(),
-%%   <<"hostPortRange">> => string(),
-%%   <<"protocol">> => list(any())
-%% }
--type network_binding() :: #{binary() => any()}.
-
-%% Example:
-%% service_deployment() :: #{
-%%   <<"alarms">> => service_deployment_alarms(),
-%%   <<"clusterArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deploymentCircuitBreaker">> => service_deployment_circuit_breaker(),
-%%   <<"deploymentConfiguration">> => deployment_configuration(),
-%%   <<"finishedAt">> => non_neg_integer(),
-%%   <<"lifecycleHookDetails">> => list(deployment_lifecycle_hook_detail()),
-%%   <<"lifecycleStage">> => list(any()),
-%%   <<"rollback">> => rollback(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceDeploymentArn">> => string(),
-%%   <<"sourceServiceRevisions">> => list(service_revision_summary()),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"targetServiceRevision">> => service_revision_summary(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type service_deployment() :: #{binary() => any()}.
-
-%% Example:
-%% describe_task_sets_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"taskSets">> => list(task_set())
-%% }
--type describe_task_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_container_instance_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstance">> := string(),
-%%   <<"force">> => boolean()
-%% }
--type deregister_container_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_container_instances_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"filter">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_container_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% submit_task_state_change_request() :: #{
-%%   <<"attachments">> => list(attachment_state_change()),
-%%   <<"cluster">> => string(),
-%%   <<"containers">> => list(container_state_change()),
-%%   <<"executionStoppedAt">> => non_neg_integer(),
-%%   <<"managedAgents">> => list(managed_agent_state_change()),
-%%   <<"pullStartedAt">> => non_neg_integer(),
-%%   <<"pullStoppedAt">> => non_neg_integer(),
-%%   <<"reason">> => string(),
-%%   <<"status">> => string(),
-%%   <<"task">> => string()
-%% }
--type submit_task_state_change_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_log_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_log_group() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_volume() :: #{
-%%   <<"host">> => host_volume_properties(),
-%%   <<"name">> => string()
-%% }
--type daemon_volume() :: #{binary() => any()}.
-
-%% Example:
-%% update_managed_instances_provider_configuration() :: #{
-%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
-%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
-%%   <<"infrastructureRoleArn">> => string(),
-%%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
-%%   <<"propagateTags">> => list(any())
-%% }
--type update_managed_instances_provider_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_managed_resources() :: #{
-%%   <<"autoScaling">> => managed_auto_scaling(),
-%%   <<"ingressPaths">> => list(managed_ingress_path()),
-%%   <<"logGroups">> => list(managed_log_group()),
-%%   <<"metricAlarms">> => list(managed_metric_alarm()),
-%%   <<"serviceSecurityGroups">> => list(managed_security_group())
-%% }
--type e_c_s_managed_resources() :: #{binary() => any()}.
-
-%% Example:
-%% health_check() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"interval">> => integer(),
-%%   <<"retries">> => integer(),
-%%   <<"startPeriod">> => integer(),
-%%   <<"timeout">> => integer()
-%% }
--type health_check() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_agent_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstance">> := string()
-%% }
--type update_container_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% ephemeral_storage() :: #{
-%%   <<"sizeInGiB">> => integer()
-%% }
--type ephemeral_storage() :: #{binary() => any()}.
-
-%% Example:
-%% submit_attachment_state_changes_response() :: #{
-%%   <<"acknowledgment">> => string()
-%% }
--type submit_attachment_state_changes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"clusterArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_set_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type task_set_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_express_gateway_service_request() :: #{
-%%   <<"cpu">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"memory">> => string(),
-%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
-%%   <<"primaryContainer">> => express_gateway_container(),
-%%   <<"scalingTarget">> => express_gateway_scaling_target(),
-%%   <<"serviceArn">> := string(),
-%%   <<"taskDefinitionArn">> => string(),
-%%   <<"taskRoleArn">> => string()
-%% }
--type update_express_gateway_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% session() :: #{
-%%   <<"sessionId">> => string(),
-%%   <<"streamUrl">> => string(),
-%%   <<"tokenValue">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_express_gateway_service_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"cpu">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"infrastructureRoleArn">> := string(),
-%%   <<"memory">> => string(),
-%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
-%%   <<"primaryContainer">> => express_gateway_container(),
-%%   <<"scalingTarget">> => express_gateway_scaling_target(),
-%%   <<"serviceName">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"taskDefinitionArn">> => string(),
-%%   <<"taskRoleArn">> => string()
-%% }
--type create_express_gateway_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_capacity_provider_response() :: #{
-%%   <<"capacityProvider">> => capacity_provider()
-%% }
--type create_capacity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_agent_response() :: #{
-%%   <<"containerInstance">> => container_instance()
-%% }
--type update_container_agent_response() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_repository_credentials() :: #{
-%%   <<"credentialsParameter">> => string()
-%% }
--type express_gateway_repository_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% put_attributes_response() :: #{
-%%   <<"attributes">> => list(attribute())
-%% }
--type put_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_definition() :: #{
-%%   <<"compatibilities">> => list(list(any())()),
-%%   <<"containerDefinitions">> => list(container_definition()),
-%%   <<"cpu">> => string(),
-%%   <<"deleteRequestedAt">> => non_neg_integer(),
-%%   <<"deregisteredAt">> => non_neg_integer(),
-%%   <<"enableFaultInjection">> => boolean(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"family">> => string(),
-%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
-%%   <<"ipcMode">> => list(any()),
-%%   <<"memory">> => string(),
-%%   <<"networkMode">> => list(any()),
-%%   <<"pidMode">> => list(any()),
-%%   <<"placementConstraints">> => list(task_definition_placement_constraint()),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"registeredAt">> => non_neg_integer(),
-%%   <<"registeredBy">> => string(),
-%%   <<"requiresAttributes">> => list(attribute()),
-%%   <<"requiresCompatibilities">> => list(list(any())()),
-%%   <<"revision">> => integer(),
-%%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"status">> => list(any()),
-%%   <<"taskDefinitionArn">> => string(),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume())
-%% }
--type task_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_container_instances_response() :: #{
-%%   <<"containerInstanceArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_container_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_daemon_request() :: #{
-%%   <<"daemonArn">> := string()
-%% }
--type delete_daemon_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_bandwidth_gbps_request() :: #{
-%%   <<"max">> => float(),
-%%   <<"min">> => float()
-%% }
--type network_bandwidth_gbps_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_settings_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"settings">> := list(cluster_setting())
-%% }
--type update_cluster_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_request() :: #{
-%%   <<"availabilityZoneRebalancing">> => list(any()),
+%% create_task_set_request() :: #{
 %%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"cluster">> => string(),
-%%   <<"deploymentConfiguration">> => deployment_configuration(),
-%%   <<"deploymentController">> => deployment_controller(),
-%%   <<"desiredCount">> => integer(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"forceNewDeployment">> => boolean(),
-%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"clientToken">> => string(),
+%%   <<"cluster">> := string(),
+%%   <<"externalId">> => string(),
+%%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"monitoring">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"placementConstraints">> => list(placement_constraint()),
-%%   <<"placementStrategy">> => list(placement_strategy()),
 %%   <<"platformVersion">> => string(),
-%%   <<"propagateTags">> => list(any()),
+%%   <<"scale">> => scale(),
 %%   <<"service">> := string(),
-%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
 %%   <<"serviceRegistries">> => list(service_registry()),
-%%   <<"taskDefinition">> => string(),
-%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
-%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
-%% }
--type update_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_daemon_task_definition_request() :: #{
-%%   <<"containerDefinitions">> := list(daemon_container_definition()),
-%%   <<"cpu">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"family">> := string(),
-%%   <<"ipcMode">> => list(any()),
-%%   <<"memory">> => string(),
-%%   <<"pidMode">> => list(any()),
 %%   <<"tags">> => list(tag()),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(daemon_volume())
-%% }
--type register_daemon_task_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_tag_specification() :: #{
-%%   <<"propagateTags">> => list(any()),
-%%   <<"resourceType">> => list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type ebs_tag_specification() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_controller() :: #{
-%%   <<"type">> => list(any())
-%% }
--type deployment_controller() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_setting_default_response() :: #{
-%%   <<"setting">> => setting()
-%% }
--type put_account_setting_default_response() :: #{binary() => any()}.
-
-%% Example:
-%% discover_poll_endpoint_response() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"serviceConnectEndpoint">> => string(),
-%%   <<"telemetryEndpoint">> => string()
-%% }
--type discover_poll_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_task_definition_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"deleteRequestedAt">> => non_neg_integer(),
-%%   <<"registeredAt">> => non_neg_integer(),
-%%   <<"registeredBy">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type daemon_task_definition_summary() :: #{binary() => any()}.
-
-%% Example:
-%% instance_launch_template_update() :: #{
-%%   <<"capacityReservations">> => capacity_reservation_request(),
-%%   <<"ec2InstanceProfileArn">> => string(),
-%%   <<"instanceMetadataTagsPropagation">> => boolean(),
-%%   <<"instanceRequirements">> => instance_requirements_request(),
-%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
-%%   <<"monitoring">> => list(any()),
-%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
-%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
-%% }
--type instance_launch_template_update() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_express_gateway_service_response() :: #{
-%%   <<"service">> => e_c_s_express_gateway_service()
-%% }
--type describe_express_gateway_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_task_definition_request() :: #{
-%%   <<"include">> => list(list(any())()),
 %%   <<"taskDefinition">> := string()
 %% }
--type describe_task_definition_request() :: #{binary() => any()}.
+-type create_task_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% f_sx_windows_file_server_authorization_config() :: #{
-%%   <<"credentialsParameter">> => string(),
-%%   <<"domain">> => string()
+%% create_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
 %% }
--type f_sx_windows_file_server_authorization_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_capacity_provider_response() :: #{
-%%   <<"capacityProvider">> => capacity_provider()
-%% }
--type update_capacity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemon_deployments_request() :: #{
-%%   <<"createdAt">> => created_at(),
-%%   <<"daemonArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(list(any())())
-%% }
--type list_daemon_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% platform_unknown_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type platform_unknown_exception() :: #{binary() => any()}.
-
-%% Example:
-%% managed_auto_scaling() :: #{
-%%   <<"applicationAutoScalingPolicies">> => list(managed_application_auto_scaling_policy()),
-%%   <<"scalableTarget">> => managed_scalable_target()
-%% }
--type managed_auto_scaling() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attributes_request() :: #{
-%%   <<"attributes">> := list(attribute()),
-%%   <<"cluster">> => string()
-%% }
--type delete_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_scaling_target() :: #{
-%%   <<"autoScalingMetric">> => list(any()),
-%%   <<"autoScalingTargetValue">> => integer(),
-%%   <<"maxTaskCount">> => integer(),
-%%   <<"minTaskCount">> => integer()
-%% }
--type express_gateway_scaling_target() :: #{binary() => any()}.
-
-%% Example:
-%% e_f_s_authorization_config() :: #{
-%%   <<"accessPointId">> => string(),
-%%   <<"iam">> => list(any())
-%% }
--type e_f_s_authorization_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_protection_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"protectedTasks">> => list(protected_task())
-%% }
--type update_task_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_set_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"force">> => boolean(),
-%%   <<"service">> := string(),
-%%   <<"taskSet">> := string()
-%% }
--type delete_task_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_total_memory_mi_b_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_contains_container_instances_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_contains_container_instances_exception() :: #{binary() => any()}.
-
-%% Example:
-%% canary_configuration() :: #{
-%%   <<"canaryBakeTimeInMinutes">> => integer(),
-%%   <<"canaryPercent">> => float()
-%% }
--type canary_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% submit_container_state_change_response() :: #{
-%%   <<"acknowledgment">> => string()
-%% }
--type submit_container_state_change_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_task_definition_families_request() :: #{
-%%   <<"familyPrefix">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_task_definition_families_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_daemons_request() :: #{
-%%   <<"capacityProviderArns">> => list(string()),
-%%   <<"clusterArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_daemons_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_request() :: #{
-%%   <<"cluster">> := string()
-%% }
--type delete_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% e_f_s_volume_configuration() :: #{
-%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"rootDirectory">> => string(),
-%%   <<"transitEncryption">> => list(any()),
-%%   <<"transitEncryptionPort">> => integer()
-%% }
--type e_f_s_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_settings_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type update_cluster_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_provider_strategy_item() :: #{
-%%   <<"base">> => integer(),
-%%   <<"capacityProvider">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type capacity_provider_strategy_item() :: #{binary() => any()}.
-
-%% Example:
-%% no_update_available_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type no_update_available_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_revision_load_balancer() :: #{
-%%   <<"productionListenerRule">> => string(),
-%%   <<"targetGroupArn">> => string()
-%% }
--type service_revision_load_balancer() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_definitions_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"taskDefinitions">> => list(task_definition())
-%% }
--type delete_task_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% placement_constraint() :: #{
-%%   <<"expression">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type placement_constraint() :: #{binary() => any()}.
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_scaling() :: #{
-%%   <<"instanceWarmupPeriod">> => integer(),
-%%   <<"maximumScalingStepSize">> => integer(),
-%%   <<"minimumScalingStepSize">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"targetCapacity">> => integer()
-%% }
--type managed_scaling() :: #{binary() => any()}.
-
-%% Example:
-%% delete_express_gateway_service_response() :: #{
-%%   <<"service">> => e_c_s_express_gateway_service()
-%% }
--type delete_express_gateway_service_response() :: #{binary() => any()}.
+-type create_task_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% created_at() :: #{
@@ -2447,718 +737,26 @@
 -type created_at() :: #{binary() => any()}.
 
 %% Example:
-%% volume() :: #{
-%%   <<"configuredAtLaunch">> => boolean(),
-%%   <<"dockerVolumeConfiguration">> => docker_volume_configuration(),
-%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
-%%   <<"fsxWindowsFileServerVolumeConfiguration">> => f_sx_windows_file_server_volume_configuration(),
-%%   <<"host">> => host_volume_properties(),
-%%   <<"name">> => string(),
-%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
+%% daemon_alarm_configuration() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"enable">> => boolean()
 %% }
--type volume() :: #{binary() => any()}.
+-type daemon_alarm_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% auto_repair_configuration() :: #{
-%%   <<"actionsStatus">> => list(any())
-%% }
--type auto_repair_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_instances_local_storage_configuration() :: #{
-%%   <<"useLocalStorage">> => boolean()
-%% }
--type managed_instances_local_storage_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% register_daemon_task_definition_response() :: #{
-%%   <<"daemonTaskDefinitionArn">> => string()
-%% }
--type register_daemon_task_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% missing_version_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type missing_version_exception() :: #{binary() => any()}.
-
-%% Example:
-%% managed_instances_storage_configuration() :: #{
-%%   <<"storageSizeGiB">> => integer()
-%% }
--type managed_instances_storage_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_daemon_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"daemonArn">> => string(),
-%%   <<"deploymentArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_daemon_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_task_definition_request() :: #{
-%%   <<"containerDefinitions">> := list(container_definition()),
-%%   <<"cpu">> => string(),
-%%   <<"enableFaultInjection">> => boolean(),
-%%   <<"ephemeralStorage">> => ephemeral_storage(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"family">> := string(),
-%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
-%%   <<"ipcMode">> => list(any()),
-%%   <<"memory">> => string(),
-%%   <<"networkMode">> => list(any()),
-%%   <<"pidMode">> => list(any()),
-%%   <<"placementConstraints">> => list(task_definition_placement_constraint()),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"requiresCompatibilities">> => list(list(any())()),
-%%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"tags">> => list(tag()),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume())
-%% }
--type register_task_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tasks_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"include">> => list(list(any())()),
-%%   <<"tasks">> := list(string())
-%% }
--type describe_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_accelerator_override() :: #{
-%%   <<"deviceName">> => string(),
-%%   <<"deviceType">> => string()
-%% }
--type inference_accelerator_override() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_provider() :: #{
-%%   <<"autoScalingGroupArn">> => string(),
-%%   <<"managedDraining">> => list(any()),
-%%   <<"managedScaling">> => managed_scaling(),
-%%   <<"managedTerminationProtection">> => list(any())
-%% }
--type auto_scaling_group_provider() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_deployment_capacity_provider() :: #{
+%% daemon_capacity_provider() :: #{
 %%   <<"arn">> => string(),
-%%   <<"drainingInstanceCount">> => integer(),
-%%   <<"runningInstanceCount">> => integer()
+%%   <<"runningCount">> => integer()
 %% }
--type daemon_deployment_capacity_provider() :: #{binary() => any()}.
+-type daemon_capacity_provider() :: #{binary() => any()}.
 
 %% Example:
-%% e_c_s_express_gateway_service() :: #{
-%%   <<"activeConfigurations">> => list(express_gateway_service_configuration()),
-%%   <<"cluster">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currentDeployment">> => string(),
-%%   <<"infrastructureRoleArn">> => string(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"status">> => express_gateway_service_status(),
-%%   <<"tags">> => list(tag()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type e_c_s_express_gateway_service() :: #{binary() => any()}.
-
-%% Example:
-%% platform_task_definition_incompatibility_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type platform_task_definition_incompatibility_exception() :: #{binary() => any()}.
-
-%% Example:
-%% port_mapping() :: #{
-%%   <<"appProtocol">> => list(any()),
-%%   <<"containerPort">> => integer(),
-%%   <<"containerPortRange">> => string(),
-%%   <<"hostPort">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any())
-%% }
--type port_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% create_daemon_request() :: #{
-%%   <<"capacityProviderArns">> := list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"clusterArn">> => string(),
-%%   <<"daemonName">> := string(),
-%%   <<"daemonTaskDefinitionArn">> := string(),
-%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
-%%   <<"enableECSManagedTags">> => boolean(),
-%%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"propagateTags">> => list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_daemon_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_clusters_response() :: #{
-%%   <<"clusters">> => list(cluster()),
-%%   <<"failures">> => list(failure())
-%% }
--type describe_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_request() :: #{
-%%   <<"daemonArn">> := string()
-%% }
--type describe_daemon_request() :: #{binary() => any()}.
-
-%% Example:
-%% advanced_configuration() :: #{
-%%   <<"alternateTargetGroupArn">> => string(),
-%%   <<"productionListenerRule">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"testListenerRule">> => string()
-%% }
--type advanced_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% start_task_response() :: #{
-%%   <<"failures">> => list(failure()),
-%%   <<"tasks">> => list(task())
-%% }
--type start_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer() :: #{
-%%   <<"advancedConfiguration">> => advanced_configuration(),
-%%   <<"containerName">> => string(),
-%%   <<"containerPort">> => integer(),
-%%   <<"loadBalancerName">> => string(),
-%%   <<"targetGroupArn">> => string()
-%% }
--type load_balancer() :: #{binary() => any()}.
-
-%% Example:
-%% key_value_pair() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_service_connect_defaults() :: #{
-%%   <<"namespace">> => string()
-%% }
--type cluster_service_connect_defaults() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% kernel_capabilities() :: #{
-%%   <<"add">> => list(string()),
-%%   <<"drop">> => list(string())
-%% }
--type kernel_capabilities() :: #{binary() => any()}.
-
-%% Example:
-%% execute_command_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"command">> := string(),
-%%   <<"container">> => string(),
-%%   <<"interactive">> := boolean(),
-%%   <<"task">> := string()
-%% }
--type execute_command_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_primary_task_set_request() :: #{
-%%   <<"cluster">> := string(),
-%%   <<"primaryTaskSet">> := string(),
-%%   <<"service">> := string()
-%% }
--type update_service_primary_task_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% runtime_platform() :: #{
-%%   <<"cpuArchitecture">> => list(any()),
-%%   <<"operatingSystemFamily">> => list(any())
-%% }
--type runtime_platform() :: #{binary() => any()}.
-
-%% Example:
-%% target_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type target_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"force">> => boolean(),
-%%   <<"service">> := string()
-%% }
--type delete_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_task_definition() :: #{
-%%   <<"containerDefinitions">> => list(daemon_container_definition()),
-%%   <<"cpu">> => string(),
-%%   <<"daemonTaskDefinitionArn">> => string(),
-%%   <<"deleteRequestedAt">> => non_neg_integer(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"family">> => string(),
-%%   <<"ipcMode">> => list(any()),
-%%   <<"memory">> => string(),
-%%   <<"pidMode">> => list(any()),
-%%   <<"registeredAt">> => non_neg_integer(),
-%%   <<"registeredBy">> => string(),
-%%   <<"revision">> => integer(),
+%% daemon_circuit_breaker() :: #{
+%%   <<"failureCount">> => integer(),
 %%   <<"status">> => list(any()),
-%%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(daemon_volume())
+%%   <<"threshold">> => integer()
 %% }
--type daemon_task_definition() :: #{binary() => any()}.
-
-%% Example:
-%% linux_parameters() :: #{
-%%   <<"capabilities">> => kernel_capabilities(),
-%%   <<"devices">> => list(device()),
-%%   <<"initProcessEnabled">> => boolean(),
-%%   <<"maxSwap">> => integer(),
-%%   <<"sharedMemorySize">> => integer(),
-%%   <<"swappiness">> => integer(),
-%%   <<"tmpfs">> => list(tmpfs())
-%% }
--type linux_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% submit_task_state_change_response() :: #{
-%%   <<"acknowledgment">> => string()
-%% }
--type submit_task_state_change_response() :: #{binary() => any()}.
-
-%% Example:
-%% resolved_configuration() :: #{
-%%   <<"loadBalancers">> => list(service_revision_load_balancer())
-%% }
--type resolved_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_scalable_target() :: #{
-%%   <<"arn">> => string(),
-%%   <<"maxCapacity">> => integer(),
-%%   <<"minCapacity">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_scalable_target() :: #{binary() => any()}.
-
-%% Example:
-%% managed_target_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"healthCheckPort">> => integer(),
-%%   <<"port">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_target_group() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_service() :: #{
-%%   <<"clientAliases">> => list(service_connect_client_alias()),
-%%   <<"discoveryName">> => string(),
-%%   <<"ingressPortOverride">> => integer(),
-%%   <<"portName">> => string(),
-%%   <<"timeout">> => timeout_configuration(),
-%%   <<"tls">> => service_connect_tls_configuration()
-%% }
--type service_connect_service() :: #{binary() => any()}.
-
-%% Example:
-%% scale() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type scale() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_test_traffic_header_rules() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => service_connect_test_traffic_header_match_rules()
-%% }
--type service_connect_test_traffic_header_rules() :: #{binary() => any()}.
-
-%% Example:
-%% server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% platform_device() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type platform_device() :: #{binary() => any()}.
-
-%% Example:
-%% discover_poll_endpoint_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstance">> => string()
-%% }
--type discover_poll_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_deployments_request() :: #{
-%%   <<"serviceDeploymentArns">> := list(string())
-%% }
--type describe_service_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_contains_services_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_contains_services_exception() :: #{binary() => any()}.
-
-%% Example:
-%% blocked_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type blocked_exception() :: #{binary() => any()}.
-
-%% Example:
-%% attribute() :: #{
-%%   <<"name">> => string(),
-%%   <<"targetId">> => string(),
-%%   <<"targetType">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-%% Example:
-%% list_tasks_request() :: #{
-%%   <<"cluster">> => string(),
-%%   <<"containerInstance">> => string(),
-%%   <<"daemonName">> => string(),
-%%   <<"desiredStatus">> => list(any()),
-%%   <<"family">> => string(),
-%%   <<"launchType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"startedBy">> => string()
-%% }
--type list_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% task_ephemeral_storage() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"sizeInGiB">> => integer()
-%% }
--type task_ephemeral_storage() :: #{binary() => any()}.
-
-%% Example:
-%% describe_capacity_providers_response() :: #{
-%%   <<"capacityProviders">> => list(capacity_provider()),
-%%   <<"failures">> => list(failure()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_capacity_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_daemon_task_definition_response() :: #{
-%%   <<"daemonTaskDefinitionArn">> => string()
-%% }
--type delete_daemon_task_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% failure() :: #{
-%%   <<"arn">> => string(),
-%%   <<"detail">> => string(),
-%%   <<"reason">> => string()
-%% }
--type failure() :: #{binary() => any()}.
-
-%% Example:
-%% stop_task_response() :: #{
-%%   <<"task">> => task()
-%% }
--type stop_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% infrastructure_optimization() :: #{
-%%   <<"scaleInAfter">> => integer()
-%% }
--type infrastructure_optimization() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_by_namespace_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArns">> => list(string())
-%% }
--type list_services_by_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_client_alias() :: #{
-%%   <<"dnsName">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"testTrafficRules">> => service_connect_test_traffic_rules()
-%% }
--type service_connect_client_alias() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_task_definition_request() :: #{
-%%   <<"daemonTaskDefinition">> := string()
-%% }
--type describe_daemon_task_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% aws_vpc_configuration() :: #{
-%%   <<"assignPublicIp">> => list(any()),
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type aws_vpc_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_provider() :: #{
-%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
-%%   <<"capacityProviderArn">> => string(),
-%%   <<"cluster">> => string(),
-%%   <<"managedInstancesProvider">> => managed_instances_provider(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> => list(any()),
-%%   <<"updateStatus">> => list(any()),
-%%   <<"updateStatusReason">> => string()
-%% }
--type capacity_provider() :: #{binary() => any()}.
-
-%% Example:
-%% create_capacity_provider_request() :: #{
-%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
-%%   <<"cluster">> => string(),
-%%   <<"managedInstancesProvider">> => create_managed_instances_provider_configuration(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_capacity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_attributes_request() :: #{
-%%   <<"attributes">> := list(attribute()),
-%%   <<"cluster">> => string()
-%% }
--type put_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_cluster_capacity_providers_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type put_cluster_capacity_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% protected_task() :: #{
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"protectionEnabled">> => boolean(),
-%%   <<"taskArn">> => string()
-%% }
--type protected_task() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_service_configuration() :: #{
-%%   <<"cpu">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"ingressPaths">> => list(ingress_path_summary()),
-%%   <<"memory">> => string(),
-%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
-%%   <<"primaryContainer">> => express_gateway_container(),
-%%   <<"scalingTarget">> => express_gateway_scaling_target(),
-%%   <<"serviceRevisionArn">> => string(),
-%%   <<"taskDefinitionArn">> => string(),
-%%   <<"taskRoleArn">> => string()
-%% }
--type express_gateway_service_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% managed_listener() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_listener() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_tls_configuration() :: #{
-%%   <<"issuerCertificateAuthority">> => service_connect_tls_certificate_authority(),
-%%   <<"kmsKey">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type service_connect_tls_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% service_revision() :: #{
-%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"clusterArn">> => string(),
-%%   <<"containerImages">> => list(container_image()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"ecsManagedResources">> => e_c_s_managed_resources(),
-%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
-%%   <<"guardDutyEnabled">> => boolean(),
-%%   <<"launchType">> => list(any()),
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"monitoring">> => monitoring_configuration(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"platformFamily">> => string(),
-%%   <<"platformVersion">> => string(),
-%%   <<"resolvedConfiguration">> => resolved_configuration(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
-%%   <<"serviceRegistries">> => list(service_registry()),
-%%   <<"serviceRevisionArn">> => string(),
-%%   <<"taskDefinition">> => string(),
-%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
-%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
-%% }
--type service_revision() :: #{binary() => any()}.
-
-%% Example:
-%% managed_application_auto_scaling_policy() :: #{
-%%   <<"arn">> => string(),
-%%   <<"metric">> => string(),
-%%   <<"policyType">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"targetValue">> => float(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_application_auto_scaling_policy() :: #{binary() => any()}.
-
-%% Example:
-%% memory_mi_b_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type memory_mi_b_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface_count_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type network_interface_count_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_security_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_security_group() :: #{binary() => any()}.
-
-%% Example:
-%% daemon_not_active_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type daemon_not_active_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_attributes_request() :: #{
-%%   <<"attributeName">> => string(),
-%%   <<"attributeValue">> => string(),
-%%   <<"cluster">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetType">> := list(any())
-%% }
--type list_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_files_volume_configuration() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"fileSystemArn">> => string(),
-%%   <<"rootDirectory">> => string(),
-%%   <<"transitEncryptionPort">> => integer()
-%% }
--type s3_files_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_revisions_response() :: #{
-%%   <<"daemonRevisions">> => list(daemon_revision()),
-%%   <<"failures">> => list(failure())
-%% }
--type describe_daemon_revisions_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_response() :: #{
-%%   <<"service">> => service()
-%% }
--type update_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% volume_from() :: #{
-%%   <<"readOnly">> => boolean(),
-%%   <<"sourceContainer">> => string()
-%% }
--type volume_from() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_response() :: #{
-%%   <<"service">> => service()
-%% }
--type delete_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% device() :: #{
-%%   <<"containerPath">> => string(),
-%%   <<"hostPath">> => string(),
-%%   <<"permissions">> => list(list(any())())
-%% }
--type device() :: #{binary() => any()}.
-
-%% Example:
-%% total_local_storage_g_b_request() :: #{
-%%   <<"max">> => float(),
-%%   <<"min">> => float()
-%% }
--type total_local_storage_g_b_request() :: #{binary() => any()}.
+-type daemon_circuit_breaker() :: #{binary() => any()}.
 
 %% Example:
 %% daemon_container_definition() :: #{
@@ -3195,193 +793,12 @@
 -type daemon_container_definition() :: #{binary() => any()}.
 
 %% Example:
-%% submit_attachment_state_changes_request() :: #{
-%%   <<"attachments">> := list(attachment_state_change()),
-%%   <<"cluster">> => string()
-%% }
--type submit_attachment_state_changes_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_express_gateway_service_response() :: #{
-%%   <<"service">> => e_c_s_express_gateway_service()
-%% }
--type create_express_gateway_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% continue_service_deployment_request() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"hookId">> := string(),
-%%   <<"serviceDeploymentArn">> := string()
-%% }
--type continue_service_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_setting_request() :: #{
-%%   <<"name">> := list(any()),
-%%   <<"principalArn">> => string()
-%% }
--type delete_account_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_task_set_response() :: #{
-%%   <<"taskSet">> => task_set()
-%% }
--type create_task_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_lifecycle_hook_timeout_configuration() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"timeoutInMinutes">> => integer()
-%% }
--type deployment_lifecycle_hook_timeout_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% instance_launch_template() :: #{
-%%   <<"capacityOptionType">> => list(any()),
-%%   <<"capacityReservations">> => capacity_reservation_request(),
-%%   <<"ec2InstanceProfileArn">> => string(),
-%%   <<"fipsEnabled">> => boolean(),
-%%   <<"instanceMetadataTagsPropagation">> => boolean(),
-%%   <<"instanceRequirements">> => instance_requirements_request(),
-%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
-%%   <<"monitoring">> => list(any()),
-%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
-%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
-%% }
--type instance_launch_template() :: #{binary() => any()}.
-
-%% Example:
-%% service_volume_configuration() :: #{
-%%   <<"managedEBSVolume">> => service_managed_ebs_volume_configuration(),
-%%   <<"name">> => string()
-%% }
--type service_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_revisions_request() :: #{
-%%   <<"serviceRevisionArns">> := list(string())
-%% }
--type describe_service_revisions_request() :: #{binary() => any()}.
-
-%% Example:
-%% managed_listener_rule() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type managed_listener_rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taskArns">> => list(string())
-%% }
--type list_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% express_gateway_container() :: #{
-%%   <<"awsLogsConfiguration">> => express_gateway_service_aws_logs_configuration(),
-%%   <<"command">> => list(string()),
-%%   <<"containerPort">> => integer(),
-%%   <<"environment">> => list(key_value_pair()),
+%% daemon_container_image() :: #{
+%%   <<"containerName">> => string(),
 %%   <<"image">> => string(),
-%%   <<"repositoryCredentials">> => express_gateway_repository_credentials(),
-%%   <<"secrets">> => list(secret())
+%%   <<"imageDigest">> => string()
 %% }
--type express_gateway_container() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_response() :: #{
-%%   <<"service">> => service()
-%% }
--type create_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_managed_ebs_volume_configuration() :: #{
-%%   <<"encrypted">> => boolean(),
-%%   <<"filesystemType">> => list(any()),
-%%   <<"iops">> => integer(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"sizeInGiB">> => integer(),
-%%   <<"snapshotId">> => string(),
-%%   <<"tagSpecifications">> => list(ebs_tag_specification()),
-%%   <<"terminationPolicy">> => task_managed_ebs_volume_termination_policy(),
-%%   <<"throughput">> => integer(),
-%%   <<"volumeInitializationRate">> => integer(),
-%%   <<"volumeType">> => string()
-%% }
--type task_managed_ebs_volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% log_configuration() :: #{
-%%   <<"logDriver">> => list(any()),
-%%   <<"options">> => map(),
-%%   <<"secretOptions">> => list(secret())
-%% }
--type log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% container_instance() :: #{
-%%   <<"agentConnected">> => boolean(),
-%%   <<"agentUpdateStatus">> => list(any()),
-%%   <<"attachments">> => list(attachment()),
-%%   <<"attributes">> => list(attribute()),
-%%   <<"capacityProviderName">> => string(),
-%%   <<"containerInstanceArn">> => string(),
-%%   <<"ec2InstanceId">> => string(),
-%%   <<"healthStatus">> => container_instance_health_status(),
-%%   <<"pendingTasksCount">> => integer(),
-%%   <<"registeredAt">> => non_neg_integer(),
-%%   <<"registeredResources">> => list(resource()),
-%%   <<"remainingResources">> => list(resource()),
-%%   <<"runningTasksCount">> => integer(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"version">> => float(),
-%%   <<"versionInfo">> => version_info()
-%% }
--type container_instance() :: #{binary() => any()}.
-
-%% Example:
-%% stop_service_deployment_response() :: #{
-%%   <<"serviceDeploymentArn">> => string()
-%% }
--type stop_service_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_daemon_revisions_request() :: #{
-%%   <<"daemonRevisionArns">> := list(string())
-%% }
--type describe_daemon_revisions_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_connect_tls_certificate_authority() :: #{
-%%   <<"awsPcaAuthorityArn">> => string()
-%% }
--type service_connect_tls_certificate_authority() :: #{binary() => any()}.
-
-%% Example:
-%% v_cpu_count_range_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type v_cpu_count_range_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_task_definition_request() :: #{
-%%   <<"taskDefinition">> := string()
-%% }
--type deregister_task_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_requirement() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type resource_requirement() :: #{binary() => any()}.
+-type daemon_container_image() :: #{binary() => any()}.
 
 %% Example:
 %% daemon_deployment() :: #{
@@ -3403,31 +820,219 @@
 -type daemon_deployment() :: #{binary() => any()}.
 
 %% Example:
-%% firelens_configuration() :: #{
-%%   <<"options">> => map(),
-%%   <<"type">> => list(any())
+%% daemon_deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"triggeredAlarmNames">> => list(string())
 %% }
--type firelens_configuration() :: #{binary() => any()}.
+-type daemon_deployment_alarms() :: #{binary() => any()}.
 
 %% Example:
-%% version_info() :: #{
-%%   <<"agentHash">> => string(),
-%%   <<"agentVersion">> => string(),
-%%   <<"dockerVersion">> => string()
+%% daemon_deployment_capacity_provider() :: #{
+%%   <<"arn">> => string(),
+%%   <<"drainingInstanceCount">> => integer(),
+%%   <<"runningInstanceCount">> => integer()
 %% }
--type version_info() :: #{binary() => any()}.
+-type daemon_deployment_capacity_provider() :: #{binary() => any()}.
 
 %% Example:
-%% updated_express_gateway_service() :: #{
-%%   <<"cluster">> => string(),
+%% daemon_deployment_configuration() :: #{
+%%   <<"alarms">> => daemon_alarm_configuration(),
+%%   <<"bakeTimeInMinutes">> => integer(),
+%%   <<"drainPercent">> => float()
+%% }
+-type daemon_deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment_revision_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capacityProviders">> => list(daemon_deployment_capacity_provider()),
+%%   <<"totalDrainingInstanceCount">> => integer(),
+%%   <<"totalRunningInstanceCount">> => integer()
+%% }
+-type daemon_deployment_revision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_deployment_summary() :: #{
+%%   <<"clusterArn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"status">> => express_gateway_service_status(),
-%%   <<"targetConfiguration">> => express_gateway_service_configuration(),
+%%   <<"daemonArn">> => string(),
+%%   <<"daemonDeploymentArn">> => string(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"targetDaemonRevisionArn">> => string()
+%% }
+-type daemon_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_detail() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentRevisions">> => list(daemon_revision_detail()),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type updated_express_gateway_service() :: #{binary() => any()}.
+-type daemon_detail() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_linux_parameters() :: #{
+%%   <<"capabilities">> => kernel_capabilities(),
+%%   <<"devices">> => list(device()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"tmpfs">> => list(tmpfs())
+%% }
+-type daemon_linux_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_not_active_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type daemon_not_active_exception() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type daemon_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_revision() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"containerImages">> => list(daemon_container_image()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"daemonRevisionArn">> => string(),
+%%   <<"daemonTaskDefinitionArn">> => string(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type daemon_revision() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_revision_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capacityProviders">> => list(daemon_capacity_provider()),
+%%   <<"totalRunningCount">> => integer()
+%% }
+-type daemon_revision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_rollback() :: #{
+%%   <<"reason">> => string(),
+%%   <<"rollbackCapacityProviders">> => list(string()),
+%%   <<"rollbackTargetDaemonRevisionArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer()
+%% }
+-type daemon_rollback() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type daemon_summary() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_task_definition() :: #{
+%%   <<"containerDefinitions">> => list(daemon_container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"daemonTaskDefinitionArn">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> => string(),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"pidMode">> => list(any()),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"revision">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(daemon_volume())
+%% }
+-type daemon_task_definition() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_task_definition_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type daemon_task_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% daemon_volume() :: #{
+%%   <<"host">> => host_volume_properties(),
+%%   <<"name">> => string()
+%% }
+-type daemon_volume() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_setting_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"principalArn">> => string()
+%% }
+-type delete_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_setting_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type delete_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attributes_request() :: #{
+%%   <<"attributes">> := list(attribute()),
+%%   <<"cluster">> => string()
+%% }
+-type delete_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute())
+%% }
+-type delete_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_request() :: #{
+%%   <<"capacityProvider">> := string(),
+%%   <<"cluster">> => string()
+%% }
+-type delete_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type delete_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"cluster">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_daemon_request() :: #{
+%%   <<"daemonArn">> := string()
+%% }
+-type delete_daemon_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_daemon_response() :: #{
@@ -3440,26 +1045,1508 @@
 -type delete_daemon_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_service_primary_task_set_response() :: #{
-%%   <<"taskSet">> => task_set()
+%% delete_daemon_task_definition_request() :: #{
+%%   <<"daemonTaskDefinition">> := string()
 %% }
--type update_service_primary_task_set_response() :: #{binary() => any()}.
+-type delete_daemon_task_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_managed_ebs_volume_configuration() :: #{
-%%   <<"encrypted">> => boolean(),
-%%   <<"filesystemType">> => list(any()),
-%%   <<"iops">> => integer(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"sizeInGiB">> => integer(),
-%%   <<"snapshotId">> => string(),
-%%   <<"tagSpecifications">> => list(ebs_tag_specification()),
-%%   <<"throughput">> => integer(),
-%%   <<"volumeInitializationRate">> => integer(),
-%%   <<"volumeType">> => string()
+%% delete_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinitionArn">> => string()
 %% }
--type service_managed_ebs_volume_configuration() :: #{binary() => any()}.
+-type delete_daemon_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_express_gateway_service_request() :: #{
+%%   <<"serviceArn">> := string()
+%% }
+-type delete_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type delete_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"force">> => boolean(),
+%%   <<"service">> := string()
+%% }
+-type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_definitions_request() :: #{
+%%   <<"taskDefinitions">> := list(string())
+%% }
+-type delete_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_definitions_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"taskDefinitions">> => list(task_definition())
+%% }
+-type delete_task_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"force">> => boolean(),
+%%   <<"service">> := string(),
+%%   <<"taskSet">> := string()
+%% }
+-type delete_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type delete_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"desiredCount">> => integer(),
+%%   <<"failedTasks">> => integer(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
+%%   <<"id">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"rolloutState">> => list(any()),
+%%   <<"rolloutStateReason">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceConnectResources">> => list(service_connect_service_resource()),
+%%   <<"status">> => string(),
+%%   <<"taskDefinition">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
+%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
+%% }
+-type deployment() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"enable">> => boolean(),
+%%   <<"rollback">> => boolean()
+%% }
+-type deployment_alarms() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_circuit_breaker() :: #{
+%%   <<"enable">> => boolean(),
+%%   <<"resetOnHealthyTask">> => boolean(),
+%%   <<"rollback">> => boolean(),
+%%   <<"thresholdConfiguration">> => threshold_configuration()
+%% }
+-type deployment_circuit_breaker() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_configuration() :: #{
+%%   <<"alarms">> => deployment_alarms(),
+%%   <<"bakeTimeInMinutes">> => integer(),
+%%   <<"canaryConfiguration">> => canary_configuration(),
+%%   <<"deploymentCircuitBreaker">> => deployment_circuit_breaker(),
+%%   <<"lifecycleHooks">> => list(deployment_lifecycle_hook()),
+%%   <<"linearConfiguration">> => linear_configuration(),
+%%   <<"maximumPercent">> => integer(),
+%%   <<"minimumHealthyPercent">> => integer(),
+%%   <<"strategy">> => list(any())
+%% }
+-type deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_controller() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type deployment_controller() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_ephemeral_storage() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type deployment_ephemeral_storage() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_lifecycle_hook() :: #{
+%%   <<"hookDetails">> => any(),
+%%   <<"hookTargetArn">> => string(),
+%%   <<"lifecycleStages">> => list(list(any())()),
+%%   <<"roleArn">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"timeoutConfiguration">> => deployment_lifecycle_hook_timeout_configuration()
+%% }
+-type deployment_lifecycle_hook() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_lifecycle_hook_detail() :: #{
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"hookId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"timeoutAction">> => list(any())
+%% }
+-type deployment_lifecycle_hook_detail() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_lifecycle_hook_timeout_configuration() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"timeoutInMinutes">> => integer()
+%% }
+-type deployment_lifecycle_hook_timeout_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_container_instance_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> := string(),
+%%   <<"force">> => boolean()
+%% }
+-type deregister_container_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_container_instance_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type deregister_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_definition_request() :: #{
+%%   <<"taskDefinition">> := string()
+%% }
+-type deregister_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_definition_response() :: #{
+%%   <<"taskDefinition">> => task_definition()
+%% }
+-type deregister_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_providers_request() :: #{
+%%   <<"capacityProviders">> => list(string()),
+%%   <<"cluster">> => string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_capacity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_providers_response() :: #{
+%%   <<"capacityProviders">> => list(capacity_provider()),
+%%   <<"failures">> => list(failure()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_capacity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"clusters">> => list(string()),
+%%   <<"include">> => list(list(any())())
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"clusters">> => list(cluster()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_instances_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()),
+%%   <<"include">> => list(list(any())())
+%% }
+-type describe_container_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_instances_response() :: #{
+%%   <<"containerInstances">> => list(container_instance()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_container_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_deployments_request() :: #{
+%%   <<"daemonDeploymentArns">> := list(string())
+%% }
+-type describe_daemon_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_deployments_response() :: #{
+%%   <<"daemonDeployments">> => list(daemon_deployment()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_daemon_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_request() :: #{
+%%   <<"daemonArn">> := string()
+%% }
+-type describe_daemon_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_response() :: #{
+%%   <<"daemon">> => daemon_detail()
+%% }
+-type describe_daemon_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_revisions_request() :: #{
+%%   <<"daemonRevisionArns">> := list(string())
+%% }
+-type describe_daemon_revisions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_revisions_response() :: #{
+%%   <<"daemonRevisions">> => list(daemon_revision()),
+%%   <<"failures">> => list(failure())
+%% }
+-type describe_daemon_revisions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_task_definition_request() :: #{
+%%   <<"daemonTaskDefinition">> := string()
+%% }
+-type describe_daemon_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinition">> => daemon_task_definition()
+%% }
+-type describe_daemon_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_express_gateway_service_request() :: #{
+%%   <<"include">> => list(list(any())()),
+%%   <<"serviceArn">> := string()
+%% }
+-type describe_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_express_gateway_service_response() :: #{
+%%   <<"service">> => e_c_s_express_gateway_service()
+%% }
+-type describe_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_deployments_request() :: #{
+%%   <<"serviceDeploymentArns">> := list(string())
+%% }
+-type describe_service_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_deployments_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"serviceDeployments">> => list(service_deployment())
+%% }
+-type describe_service_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_revisions_request() :: #{
+%%   <<"serviceRevisionArns">> := list(string())
+%% }
+-type describe_service_revisions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_revisions_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"serviceRevisions">> => list(service_revision())
+%% }
+-type describe_service_revisions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"services">> := list(string())
+%% }
+-type describe_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"services">> => list(service())
+%% }
+-type describe_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_definition_request() :: #{
+%%   <<"include">> => list(list(any())()),
+%%   <<"taskDefinition">> := string()
+%% }
+-type describe_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_definition_response() :: #{
+%%   <<"tags">> => list(tag()),
+%%   <<"taskDefinition">> => task_definition()
+%% }
+-type describe_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_sets_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"service">> := string(),
+%%   <<"taskSets">> => list(string())
+%% }
+-type describe_task_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_sets_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"taskSets">> => list(task_set())
+%% }
+-type describe_task_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tasks_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"tasks">> := list(string())
+%% }
+-type describe_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tasks_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"tasks">> => list(task())
+%% }
+-type describe_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% device() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"hostPath">> => string(),
+%%   <<"permissions">> => list(list(any())())
+%% }
+-type device() :: #{binary() => any()}.
+
+%% Example:
+%% discover_poll_endpoint_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> => string()
+%% }
+-type discover_poll_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_poll_endpoint_response() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"serviceConnectEndpoint">> => string(),
+%%   <<"telemetryEndpoint">> => string()
+%% }
+-type discover_poll_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% docker_volume_configuration() :: #{
+%%   <<"autoprovision">> => boolean(),
+%%   <<"driver">> => string(),
+%%   <<"driverOpts">> => map(),
+%%   <<"labels">> => map(),
+%%   <<"scope">> => list(any())
+%% }
+-type docker_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_express_gateway_service() :: #{
+%%   <<"activeConfigurations">> => list(express_gateway_service_configuration()),
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentDeployment">> => string(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"status">> => express_gateway_service_status(),
+%%   <<"tags">> => list(tag()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type e_c_s_express_gateway_service() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_managed_resources() :: #{
+%%   <<"autoScaling">> => managed_auto_scaling(),
+%%   <<"ingressPaths">> => list(managed_ingress_path()),
+%%   <<"logGroups">> => list(managed_log_group()),
+%%   <<"metricAlarms">> => list(managed_metric_alarm()),
+%%   <<"serviceSecurityGroups">> => list(managed_security_group())
+%% }
+-type e_c_s_managed_resources() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_authorization_config() :: #{
+%%   <<"accessPointId">> => string(),
+%%   <<"iam">> => list(any())
+%% }
+-type e_f_s_authorization_config() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryption">> => list(any()),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type e_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_tag_specification() :: #{
+%%   <<"propagateTags">> => list(any()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type ebs_tag_specification() :: #{binary() => any()}.
+
+%% Example:
+%% environment_file() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type environment_file() :: #{binary() => any()}.
+
+%% Example:
+%% ephemeral_storage() :: #{
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type ephemeral_storage() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_configuration() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logConfiguration">> => execute_command_log_configuration(),
+%%   <<"logging">> => list(any())
+%% }
+-type execute_command_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_log_configuration() :: #{
+%%   <<"cloudWatchEncryptionEnabled">> => boolean(),
+%%   <<"cloudWatchLogGroupName">> => string(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3EncryptionEnabled">> => boolean(),
+%%   <<"s3KeyPrefix">> => string()
+%% }
+-type execute_command_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"command">> := string(),
+%%   <<"container">> => string(),
+%%   <<"interactive">> := boolean(),
+%%   <<"task">> := string()
+%% }
+-type execute_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_response() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"containerArn">> => string(),
+%%   <<"containerName">> => string(),
+%%   <<"interactive">> => boolean(),
+%%   <<"session">> => session(),
+%%   <<"taskArn">> => string()
+%% }
+-type execute_command_response() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_container() :: #{
+%%   <<"awsLogsConfiguration">> => express_gateway_service_aws_logs_configuration(),
+%%   <<"command">> => list(string()),
+%%   <<"containerPort">> => integer(),
+%%   <<"environment">> => list(key_value_pair()),
+%%   <<"image">> => string(),
+%%   <<"repositoryCredentials">> => express_gateway_repository_credentials(),
+%%   <<"secrets">> => list(secret())
+%% }
+-type express_gateway_container() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type express_gateway_repository_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_scaling_target() :: #{
+%%   <<"autoScalingMetric">> => list(any()),
+%%   <<"autoScalingTargetValue">> => integer(),
+%%   <<"maxTaskCount">> => integer(),
+%%   <<"minTaskCount">> => integer()
+%% }
+-type express_gateway_scaling_target() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_aws_logs_configuration() :: #{
+%%   <<"logGroup">> => string(),
+%%   <<"logStreamPrefix">> => string()
+%% }
+-type express_gateway_service_aws_logs_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_configuration() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"ingressPaths">> => list(ingress_path_summary()),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> => express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type express_gateway_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_network_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type express_gateway_service_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% express_gateway_service_status() :: #{
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type express_gateway_service_status() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_windows_file_server_authorization_config() :: #{
+%%   <<"credentialsParameter">> => string(),
+%%   <<"domain">> => string()
+%% }
+-type f_sx_windows_file_server_authorization_config() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_windows_file_server_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => f_sx_windows_file_server_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string()
+%% }
+-type f_sx_windows_file_server_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% failure() :: #{
+%%   <<"arn">> => string(),
+%%   <<"detail">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type failure() :: #{binary() => any()}.
+
+%% Example:
+%% firelens_configuration() :: #{
+%%   <<"options">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type firelens_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_protection_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"tasks">> => list(string())
+%% }
+-type get_task_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_protection_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"protectedTasks">> => list(protected_task())
+%% }
+-type get_task_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% health_check() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"interval">> => integer(),
+%%   <<"retries">> => integer(),
+%%   <<"startPeriod">> => integer(),
+%%   <<"timeout">> => integer()
+%% }
+-type health_check() :: #{binary() => any()}.
+
+%% Example:
+%% host_entry() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"ipAddress">> => string()
+%% }
+-type host_entry() :: #{binary() => any()}.
+
+%% Example:
+%% host_volume_properties() :: #{
+%%   <<"sourcePath">> => string()
+%% }
+-type host_volume_properties() :: #{binary() => any()}.
+
+%% Example:
+%% inference_accelerator() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"deviceType">> => string()
+%% }
+-type inference_accelerator() :: #{binary() => any()}.
+
+%% Example:
+%% inference_accelerator_override() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"deviceType">> => string()
+%% }
+-type inference_accelerator_override() :: #{binary() => any()}.
+
+%% Example:
+%% infrastructure_optimization() :: #{
+%%   <<"scaleInAfter">> => integer()
+%% }
+-type infrastructure_optimization() :: #{binary() => any()}.
+
+%% Example:
+%% ingress_path_summary() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"endpoint">> => string()
+%% }
+-type ingress_path_summary() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_check_result() :: #{
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type instance_health_check_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_launch_template() :: #{
+%%   <<"capacityOptionType">> => list(any()),
+%%   <<"capacityReservations">> => capacity_reservation_request(),
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"fipsEnabled">> => boolean(),
+%%   <<"instanceMetadataTagsPropagation">> => boolean(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
+%%   <<"monitoring">> => list(any()),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template() :: #{binary() => any()}.
+
+%% Example:
+%% instance_launch_template_update() :: #{
+%%   <<"capacityReservations">> => capacity_reservation_request(),
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"instanceMetadataTagsPropagation">> => boolean(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
+%%   <<"monitoring">> => list(any()),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template_update() :: #{binary() => any()}.
+
+%% Example:
+%% instance_requirements_request() :: #{
+%%   <<"acceleratorCount">> => accelerator_count_request(),
+%%   <<"acceleratorManufacturers">> => list(list(any())()),
+%%   <<"acceleratorNames">> => list(list(any())()),
+%%   <<"acceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_request(),
+%%   <<"acceleratorTypes">> => list(list(any())()),
+%%   <<"allowedInstanceTypes">> => list(string()),
+%%   <<"bareMetal">> => list(any()),
+%%   <<"baselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
+%%   <<"burstablePerformance">> => list(any()),
+%%   <<"cpuManufacturers">> => list(list(any())()),
+%%   <<"excludedInstanceTypes">> => list(string()),
+%%   <<"instanceGenerations">> => list(list(any())()),
+%%   <<"localStorage">> => list(any()),
+%%   <<"localStorageTypes">> => list(list(any())()),
+%%   <<"maxSpotPriceAsPercentageOfOptimalOnDemandPrice">> => integer(),
+%%   <<"memoryGiBPerVCpu">> => memory_gi_b_per_v_cpu_request(),
+%%   <<"memoryMiB">> => memory_mi_b_request(),
+%%   <<"networkBandwidthGbps">> => network_bandwidth_gbps_request(),
+%%   <<"networkInterfaceCount">> => network_interface_count_request(),
+%%   <<"onDemandMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"requireHibernateSupport">> => boolean(),
+%%   <<"spotMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"totalLocalStorageGB">> => total_local_storage_g_b_request(),
+%%   <<"vCpuCount">> => v_cpu_count_range_request()
+%% }
+-type instance_requirements_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_capabilities() :: #{
+%%   <<"add">> => list(string()),
+%%   <<"drop">> => list(string())
+%% }
+-type kernel_capabilities() :: #{binary() => any()}.
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% linear_configuration() :: #{
+%%   <<"stepBakeTimeInMinutes">> => integer(),
+%%   <<"stepPercent">> => float()
+%% }
+-type linear_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% linux_parameters() :: #{
+%%   <<"capabilities">> => kernel_capabilities(),
+%%   <<"devices">> => list(device()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"maxSwap">> => integer(),
+%%   <<"sharedMemorySize">> => integer(),
+%%   <<"swappiness">> => integer(),
+%%   <<"tmpfs">> => list(tmpfs())
+%% }
+-type linux_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_settings_request() :: #{
+%%   <<"effectiveSettings">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"value">> => string()
+%% }
+-type list_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_settings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"settings">> => list(setting())
+%% }
+-type list_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_attributes_request() :: #{
+%%   <<"attributeName">> => string(),
+%%   <<"attributeValue">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetType">> := list(any())
+%% }
+-type list_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"clusterArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_instances_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"filter">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_container_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_instances_response() :: #{
+%%   <<"containerInstanceArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_container_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_deployments_request() :: #{
+%%   <<"createdAt">> => created_at(),
+%%   <<"daemonArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_daemon_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_deployments_response() :: #{
+%%   <<"daemonDeployments">> => list(daemon_deployment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemon_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_task_definitions_request() :: #{
+%%   <<"family">> => string(),
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"revision">> => list(any()),
+%%   <<"sort">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_daemon_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemon_task_definitions_response() :: #{
+%%   <<"daemonTaskDefinitions">> => list(daemon_task_definition_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemon_task_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemons_request() :: #{
+%%   <<"capacityProviderArns">> => list(string()),
+%%   <<"clusterArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemons_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_daemons_response() :: #{
+%%   <<"daemonSummariesList">> => list(daemon_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_daemons_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_deployments_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => created_at(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"service">> := string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_service_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_deployments_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceDeployments">> => list(service_deployment_brief())
+%% }
+-type list_service_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_by_namespace_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_services_by_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_by_namespace_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArns">> => list(string())
+%% }
+-type list_services_by_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceManagementType">> => list(any()),
+%%   <<"schedulingStrategy">> => list(any())
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArns">> => list(string())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definition_families_request() :: #{
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_task_definition_families_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definition_families_response() :: #{
+%%   <<"families">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_task_definition_families_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definitions_request() :: #{
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskDefinitionArns">> => list(string())
+%% }
+-type list_task_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tasks_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> => string(),
+%%   <<"daemonName">> => string(),
+%%   <<"desiredStatus">> => list(any()),
+%%   <<"family">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"startedBy">> => string()
+%% }
+-type list_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskArns">> => list(string())
+%% }
+-type list_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer() :: #{
+%%   <<"advancedConfiguration">> => advanced_configuration(),
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"loadBalancerName">> => string(),
+%%   <<"targetGroupArn">> => string()
+%% }
+-type load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"logDriver">> => list(any()),
+%%   <<"options">> => map(),
+%%   <<"secretOptions">> => list(secret())
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_agent() :: #{
+%%   <<"lastStartedAt">> => non_neg_integer(),
+%%   <<"lastStatus">> => string(),
+%%   <<"name">> => list(any()),
+%%   <<"reason">> => string()
+%% }
+-type managed_agent() :: #{binary() => any()}.
+
+%% Example:
+%% managed_agent_state_change() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"managedAgentName">> => list(any()),
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
+%% }
+-type managed_agent_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% managed_application_auto_scaling_policy() :: #{
+%%   <<"arn">> => string(),
+%%   <<"metric">> => string(),
+%%   <<"policyType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"targetValue">> => float(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_application_auto_scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% managed_auto_scaling() :: #{
+%%   <<"applicationAutoScalingPolicies">> => list(managed_application_auto_scaling_policy()),
+%%   <<"scalableTarget">> => managed_scalable_target()
+%% }
+-type managed_auto_scaling() :: #{binary() => any()}.
+
+%% Example:
+%% managed_certificate() :: #{
+%%   <<"arn">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% managed_ingress_path() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"certificate">> => managed_certificate(),
+%%   <<"endpoint">> => string(),
+%%   <<"listener">> => managed_listener(),
+%%   <<"loadBalancer">> => managed_load_balancer(),
+%%   <<"loadBalancerSecurityGroups">> => list(managed_security_group()),
+%%   <<"rule">> => managed_listener_rule(),
+%%   <<"targetGroups">> => list(managed_target_group())
+%% }
+-type managed_ingress_path() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_local_storage_configuration() :: #{
+%%   <<"useLocalStorage">> => boolean()
+%% }
+-type managed_instances_local_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_network_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type managed_instances_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_provider() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type managed_instances_provider() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_storage_configuration() :: #{
+%%   <<"storageSizeGiB">> => integer()
+%% }
+-type managed_instances_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_listener() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_listener() :: #{binary() => any()}.
+
+%% Example:
+%% managed_listener_rule() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_listener_rule() :: #{binary() => any()}.
+
+%% Example:
+%% managed_load_balancer() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scheme">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% managed_log_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_log_group() :: #{binary() => any()}.
+
+%% Example:
+%% managed_metric_alarm() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_metric_alarm() :: #{binary() => any()}.
+
+%% Example:
+%% managed_scalable_target() :: #{
+%%   <<"arn">> => string(),
+%%   <<"maxCapacity">> => integer(),
+%%   <<"minCapacity">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_scalable_target() :: #{binary() => any()}.
+
+%% Example:
+%% managed_scaling() :: #{
+%%   <<"instanceWarmupPeriod">> => integer(),
+%%   <<"maximumScalingStepSize">> => integer(),
+%%   <<"minimumScalingStepSize">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"targetCapacity">> => integer()
+%% }
+-type managed_scaling() :: #{binary() => any()}.
+
+%% Example:
+%% managed_security_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% managed_storage_configuration() :: #{
+%%   <<"fargateEphemeralStorageKmsKeyId">> => string(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type managed_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_target_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"healthCheckPort">> => integer(),
+%%   <<"port">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type managed_target_group() :: #{binary() => any()}.
+
+%% Example:
+%% memory_gi_b_per_v_cpu_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
+%% }
+-type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
+
+%% Example:
+%% memory_mi_b_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_configuration() :: #{
+%%   <<"metricNames">> => list(string()),
+%%   <<"resolutionSeconds">> => integer()
+%% }
+-type metric_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% missing_version_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_version_exception() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"metricConfigurations">> => list(metric_configuration())
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% mount_point() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceVolume">> => string()
+%% }
+-type mount_point() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type namespace_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% network_bandwidth_gbps_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
+%% }
+-type network_bandwidth_gbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% network_binding() :: #{
+%%   <<"bindIP">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"containerPortRange">> => string(),
+%%   <<"hostPort">> => integer(),
+%%   <<"hostPortRange">> => string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type network_binding() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"privateIpv4Address">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface_count_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type network_interface_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_update_available_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_update_available_exception() :: #{binary() => any()}.
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% platform_device() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type platform_device() :: #{binary() => any()}.
+
+%% Example:
+%% platform_task_definition_incompatibility_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_task_definition_incompatibility_exception() :: #{binary() => any()}.
+
+%% Example:
+%% platform_unknown_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_unknown_exception() :: #{binary() => any()}.
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"appProtocol">> => list(any()),
+%%   <<"containerPort">> => integer(),
+%%   <<"containerPortRange">> => string(),
+%%   <<"hostPort">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% protected_task() :: #{
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"protectionEnabled">> => boolean(),
+%%   <<"taskArn">> => string()
+%% }
+-type protected_task() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"properties">> => list(key_value_pair()),
+%%   <<"type">> => list(any())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_default_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_default_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_default_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type put_account_setting_default_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"principalArn">> => string(),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type put_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_attributes_request() :: #{
+%%   <<"attributes">> := list(attribute()),
+%%   <<"cluster">> => string()
+%% }
+-type put_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute())
+%% }
+-type put_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_cluster_capacity_providers_request() :: #{
+%%   <<"capacityProviders">> := list(string()),
+%%   <<"cluster">> := string(),
+%%   <<"defaultCapacityProviderStrategy">> := list(capacity_provider_strategy_item())
+%% }
+-type put_cluster_capacity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_cluster_capacity_providers_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type put_cluster_capacity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_instance_request() :: #{
+%%   <<"attributes">> => list(attribute()),
+%%   <<"cluster">> => string(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"instanceIdentityDocument">> => string(),
+%%   <<"instanceIdentityDocumentSignature">> => string(),
+%%   <<"platformDevices">> => list(platform_device()),
+%%   <<"tags">> => list(tag()),
+%%   <<"totalResources">> => list(resource()),
+%%   <<"versionInfo">> => version_info()
+%% }
+-type register_container_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_instance_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type register_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_daemon_task_definition_request() :: #{
+%%   <<"containerDefinitions">> := list(daemon_container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> := string(),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"pidMode">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(daemon_volume())
+%% }
+-type register_daemon_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_daemon_task_definition_response() :: #{
+%%   <<"daemonTaskDefinitionArn">> => string()
+%% }
+-type register_daemon_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_task_definition_request() :: #{
+%%   <<"containerDefinitions">> := list(container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"enableFaultInjection">> => boolean(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> := string(),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"networkMode">> => list(any()),
+%%   <<"pidMode">> => list(any()),
+%%   <<"placementConstraints">> => list(task_definition_placement_constraint()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"requiresCompatibilities">> => list(list(any())()),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume())
+%% }
+-type register_task_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% register_task_definition_response() :: #{
@@ -3469,24 +2556,54 @@
 -type register_task_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_contains_capacity_provider_exception() :: #{
+%% repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type repository_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_configuration() :: #{
+%%   <<"loadBalancers">> => list(service_revision_load_balancer())
+%% }
+-type resolved_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"doubleValue">> => float(),
+%%   <<"integerValue">> => integer(),
+%%   <<"longValue">> => float(),
+%%   <<"name">> => string(),
+%%   <<"stringSetValue">> => list(string()),
+%%   <<"type">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_contains_capacity_provider_exception() :: #{binary() => any()}.
+-type resource_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% baseline_ebs_bandwidth_mbps_request() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_clusters_request() :: #{
-%%   <<"clusters">> => list(string()),
-%%   <<"include">> => list(list(any())())
+%% resource_requirement() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
 %% }
--type describe_clusters_request() :: #{binary() => any()}.
+-type resource_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% rollback() :: #{
+%%   <<"reason">> => string(),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer()
+%% }
+-type rollback() :: #{binary() => any()}.
 
 %% Example:
 %% run_task_request() :: #{
@@ -3513,43 +2630,680 @@
 -type run_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_container_instance_response() :: #{
-%%   <<"containerInstance">> => container_instance()
+%% run_task_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"tasks">> => list(task())
 %% }
--type deregister_container_instance_response() :: #{binary() => any()}.
+-type run_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_ephemeral_storage() :: #{
-%%   <<"kmsKeyId">> => string()
+%% runtime_platform() :: #{
+%%   <<"cpuArchitecture">> => list(any()),
+%%   <<"operatingSystemFamily">> => list(any())
 %% }
--type deployment_ephemeral_storage() :: #{binary() => any()}.
+-type runtime_platform() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_service_connect_defaults_request() :: #{
-%%   <<"namespace">> => string()
+%% runtime_platform_override() :: #{
+%%   <<"cpuArchitecture">> => string()
 %% }
--type cluster_service_connect_defaults_request() :: #{binary() => any()}.
+-type runtime_platform_override() :: #{binary() => any()}.
 
 %% Example:
-%% list_attributes_response() :: #{
+%% s3_files_volume_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type s3_files_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scale() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type scale() :: #{binary() => any()}.
+
+%% Example:
+%% secret() :: #{
+%%   <<"name">> => string(),
+%%   <<"valueFrom">> => string()
+%% }
+-type secret() :: #{binary() => any()}.
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"availabilityZoneRebalancing">> => list(any()),
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"currentServiceDeployment">> => string(),
+%%   <<"currentServiceRevisions">> => list(service_current_revision_summary()),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"deploymentController">> => deployment_controller(),
+%%   <<"deployments">> => list(deployment()),
+%%   <<"desiredCount">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"events">> => list(service_event()),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"placementConstraints">> => list(placement_constraint()),
+%%   <<"placementStrategy">> => list(placement_strategy()),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"resourceManagementType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"schedulingStrategy">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"serviceRegistries">> => list(service_registry()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"taskSets">> => list(task_set())
+%% }
+-type service() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_access_log_configuration() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"includeQueryParameters">> => list(any())
+%% }
+-type service_connect_access_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_client_alias() :: #{
+%%   <<"dnsName">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"testTrafficRules">> => service_connect_test_traffic_rules()
+%% }
+-type service_connect_client_alias() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_configuration() :: #{
+%%   <<"accessLogConfiguration">> => service_connect_access_log_configuration(),
+%%   <<"enabled">> => boolean(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"namespace">> => string(),
+%%   <<"services">> => list(service_connect_service())
+%% }
+-type service_connect_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_service() :: #{
+%%   <<"clientAliases">> => list(service_connect_client_alias()),
+%%   <<"discoveryName">> => string(),
+%%   <<"ingressPortOverride">> => integer(),
+%%   <<"portName">> => string(),
+%%   <<"timeout">> => timeout_configuration(),
+%%   <<"tls">> => service_connect_tls_configuration()
+%% }
+-type service_connect_service() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_service_resource() :: #{
+%%   <<"discoveryArn">> => string(),
+%%   <<"discoveryName">> => string()
+%% }
+-type service_connect_service_resource() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_test_traffic_header_match_rules() :: #{
+%%   <<"exact">> => string()
+%% }
+-type service_connect_test_traffic_header_match_rules() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_test_traffic_header_rules() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => service_connect_test_traffic_header_match_rules()
+%% }
+-type service_connect_test_traffic_header_rules() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_test_traffic_rules() :: #{
+%%   <<"header">> => service_connect_test_traffic_header_rules()
+%% }
+-type service_connect_test_traffic_rules() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_tls_certificate_authority() :: #{
+%%   <<"awsPcaAuthorityArn">> => string()
+%% }
+-type service_connect_tls_certificate_authority() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_tls_configuration() :: #{
+%%   <<"issuerCertificateAuthority">> => service_connect_tls_certificate_authority(),
+%%   <<"kmsKey">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type service_connect_tls_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_current_revision_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"pendingTaskCount">> => integer(),
+%%   <<"requestedTaskCount">> => integer(),
+%%   <<"runningTaskCount">> => integer()
+%% }
+-type service_current_revision_summary() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment() :: #{
+%%   <<"alarms">> => service_deployment_alarms(),
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentCircuitBreaker">> => service_deployment_circuit_breaker(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"lifecycleHookDetails">> => list(deployment_lifecycle_hook_detail()),
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"rollback">> => rollback(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceDeploymentArn">> => string(),
+%%   <<"sourceServiceRevisions">> => list(service_revision_summary()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"targetServiceRevision">> => service_revision_summary(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type service_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"triggeredAlarmNames">> => list(string())
+%% }
+-type service_deployment_alarms() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_brief() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"finishedAt">> => non_neg_integer(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceDeploymentArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"targetServiceRevisionArn">> => string()
+%% }
+-type service_deployment_brief() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_circuit_breaker() :: #{
+%%   <<"failureCount">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"threshold">> => integer()
+%% }
+-type service_deployment_circuit_breaker() :: #{binary() => any()}.
+
+%% Example:
+%% service_deployment_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_deployment_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_event() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"message">> => string()
+%% }
+-type service_event() :: #{binary() => any()}.
+
+%% Example:
+%% service_managed_ebs_volume_configuration() :: #{
+%%   <<"encrypted">> => boolean(),
+%%   <<"filesystemType">> => list(any()),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"sizeInGiB">> => integer(),
+%%   <<"snapshotId">> => string(),
+%%   <<"tagSpecifications">> => list(ebs_tag_specification()),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeInitializationRate">> => integer(),
+%%   <<"volumeType">> => string()
+%% }
+-type service_managed_ebs_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_active_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_active_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_registry() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"port">> => integer(),
+%%   <<"registryArn">> => string()
+%% }
+-type service_registry() :: #{binary() => any()}.
+
+%% Example:
+%% service_revision() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"clusterArn">> => string(),
+%%   <<"containerImages">> => list(container_image()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"ecsManagedResources">> => e_c_s_managed_resources(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
+%%   <<"guardDutyEnabled">> => boolean(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"monitoring">> => monitoring_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"overrides">> => service_revision_overrides(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"resolvedConfiguration">> => resolved_configuration(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceRegistries">> => list(service_registry()),
+%%   <<"serviceRevisionArn">> => string(),
+%%   <<"taskDefinition">> => string(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
+%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
+%% }
+-type service_revision() :: #{binary() => any()}.
+
+%% Example:
+%% service_revision_load_balancer() :: #{
+%%   <<"productionListenerRule">> => string(),
+%%   <<"targetGroupArn">> => string()
+%% }
+-type service_revision_load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% service_revision_overrides() :: #{
+%%   <<"runtimePlatform">> => runtime_platform_override()
+%% }
+-type service_revision_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% service_revision_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"pendingTaskCount">> => integer(),
+%%   <<"requestedProductionTrafficWeight">> => float(),
+%%   <<"requestedTaskCount">> => integer(),
+%%   <<"requestedTestTrafficWeight">> => float(),
+%%   <<"runningTaskCount">> => integer()
+%% }
+-type service_revision_summary() :: #{binary() => any()}.
+
+%% Example:
+%% service_volume_configuration() :: #{
+%%   <<"managedEBSVolume">> => service_managed_ebs_volume_configuration(),
+%%   <<"name">> => string()
+%% }
+-type service_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"streamUrl">> => string(),
+%%   <<"tokenValue">> => string()
+%% }
+-type session() :: #{binary() => any()}.
+
+%% Example:
+%% setting() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"principalArn">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type setting() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"group">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"overrides">> => task_override(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskDefinition">> := string(),
+%%   <<"volumeConfigurations">> => list(task_volume_configuration())
+%% }
+-type start_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"tasks">> => list(task())
+%% }
+-type start_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_service_deployment_request() :: #{
+%%   <<"serviceDeploymentArn">> := string(),
+%%   <<"stopType">> => list(any())
+%% }
+-type stop_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_service_deployment_response() :: #{
+%%   <<"serviceDeploymentArn">> => string()
+%% }
+-type stop_service_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_task_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"task">> := string()
+%% }
+-type stop_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_task_response() :: #{
+%%   <<"task">> => task()
+%% }
+-type stop_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% submit_attachment_state_changes_request() :: #{
+%%   <<"attachments">> := list(attachment_state_change()),
+%%   <<"cluster">> => string()
+%% }
+-type submit_attachment_state_changes_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_attachment_state_changes_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_attachment_state_changes_response() :: #{binary() => any()}.
+
+%% Example:
+%% submit_container_state_change_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerName">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"networkBindings">> => list(network_binding()),
+%%   <<"reason">> => string(),
+%%   <<"runtimeId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"task">> => string()
+%% }
+-type submit_container_state_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_container_state_change_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_container_state_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% submit_task_state_change_request() :: #{
+%%   <<"attachments">> => list(attachment_state_change()),
+%%   <<"cluster">> => string(),
+%%   <<"containers">> => list(container_state_change()),
+%%   <<"executionStoppedAt">> => non_neg_integer(),
+%%   <<"managedAgents">> => list(managed_agent_state_change()),
+%%   <<"pullStartedAt">> => non_neg_integer(),
+%%   <<"pullStoppedAt">> => non_neg_integer(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => string(),
+%%   <<"task">> => string()
+%% }
+-type submit_task_state_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_task_state_change_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_task_state_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% system_control() :: #{
+%%   <<"namespace">> => string(),
+%%   <<"value">> => string()
+%% }
+-type system_control() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_connected_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_not_connected_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% task() :: #{
+%%   <<"attachments">> => list(attachment()),
 %%   <<"attributes">> => list(attribute()),
-%%   <<"nextToken">> => string()
+%%   <<"availabilityZone">> => string(),
+%%   <<"capacityProviderName">> => string(),
+%%   <<"clusterArn">> => string(),
+%%   <<"connectivity">> => list(any()),
+%%   <<"connectivityAt">> => non_neg_integer(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"containers">> => list(container()),
+%%   <<"cpu">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"desiredStatus">> => string(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionStoppedAt">> => non_neg_integer(),
+%%   <<"fargateEphemeralStorage">> => task_ephemeral_storage(),
+%%   <<"group">> => string(),
+%%   <<"healthStatus">> => list(any()),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
+%%   <<"lastStatus">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"overrides">> => task_override(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"pullStartedAt">> => non_neg_integer(),
+%%   <<"pullStoppedAt">> => non_neg_integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"startedBy">> => string(),
+%%   <<"stopCode">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"stoppedReason">> => string(),
+%%   <<"stoppingAt">> => non_neg_integer(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskArn">> => string(),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"version">> => float()
 %% }
--type list_attributes_response() :: #{binary() => any()}.
+-type task() :: #{binary() => any()}.
 
 %% Example:
-%% repository_credentials() :: #{
-%%   <<"credentialsParameter">> => string()
+%% task_definition() :: #{
+%%   <<"compatibilities">> => list(list(any())()),
+%%   <<"containerDefinitions">> => list(container_definition()),
+%%   <<"cpu">> => string(),
+%%   <<"deleteRequestedAt">> => non_neg_integer(),
+%%   <<"deregisteredAt">> => non_neg_integer(),
+%%   <<"enableFaultInjection">> => boolean(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> => string(),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"networkMode">> => list(any()),
+%%   <<"pidMode">> => list(any()),
+%%   <<"placementConstraints">> => list(task_definition_placement_constraint()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"requiresAttributes">> => list(attribute()),
+%%   <<"requiresCompatibilities">> => list(list(any())()),
+%%   <<"revision">> => integer(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"status">> => list(any()),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume())
 %% }
--type repository_credentials() :: #{binary() => any()}.
+-type task_definition() :: #{binary() => any()}.
 
 %% Example:
-%% f_sx_windows_file_server_volume_configuration() :: #{
-%%   <<"authorizationConfig">> => f_sx_windows_file_server_authorization_config(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"rootDirectory">> => string()
+%% task_definition_placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type f_sx_windows_file_server_volume_configuration() :: #{binary() => any()}.
+-type task_definition_placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% task_ephemeral_storage() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type task_ephemeral_storage() :: #{binary() => any()}.
+
+%% Example:
+%% task_managed_ebs_volume_configuration() :: #{
+%%   <<"encrypted">> => boolean(),
+%%   <<"filesystemType">> => list(any()),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"sizeInGiB">> => integer(),
+%%   <<"snapshotId">> => string(),
+%%   <<"tagSpecifications">> => list(ebs_tag_specification()),
+%%   <<"terminationPolicy">> => task_managed_ebs_volume_termination_policy(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeInitializationRate">> => integer(),
+%%   <<"volumeType">> => string()
+%% }
+-type task_managed_ebs_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% task_managed_ebs_volume_termination_policy() :: #{
+%%   <<"deleteOnTermination">> => boolean()
+%% }
+-type task_managed_ebs_volume_termination_policy() :: #{binary() => any()}.
+
+%% Example:
+%% task_override() :: #{
+%%   <<"containerOverrides">> => list(container_override()),
+%%   <<"cpu">> => string(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"inferenceAcceleratorOverrides">> => list(inference_accelerator_override()),
+%%   <<"memory">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type task_override() :: #{binary() => any()}.
+
+%% Example:
+%% task_set() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"clusterArn">> => string(),
+%%   <<"computedDesiredCount">> => integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"externalId">> => string(),
+%%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
+%%   <<"id">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"scale">> => scale(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceRegistries">> => list(service_registry()),
+%%   <<"stabilityStatus">> => list(any()),
+%%   <<"stabilityStatusAt">> => non_neg_integer(),
+%%   <<"startedBy">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"taskSetArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type task_set() :: #{binary() => any()}.
+
+%% Example:
+%% task_set_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_set_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% task_volume_configuration() :: #{
+%%   <<"managedEBSVolume">> => task_managed_ebs_volume_configuration(),
+%%   <<"name">> => string()
+%% }
+-type task_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% threshold_configuration() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type threshold_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% timeout_configuration() :: #{
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"perRequestTimeoutSeconds">> => integer()
+%% }
+-type timeout_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tmpfs() :: #{
@@ -3560,18 +3314,62 @@
 -type tmpfs() :: #{binary() => any()}.
 
 %% Example:
-%% environment_file() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
+%% total_local_storage_g_b_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
 %% }
--type environment_file() :: #{binary() => any()}.
+-type total_local_storage_g_b_request() :: #{binary() => any()}.
 
 %% Example:
-%% placement_strategy() :: #{
-%%   <<"field">> => string(),
-%%   <<"type">> => list(any())
+%% ulimit() :: #{
+%%   <<"hardLimit">> => integer(),
+%%   <<"name">> => list(any()),
+%%   <<"softLimit">> => integer()
 %% }
--type placement_strategy() :: #{binary() => any()}.
+-type ulimit() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_feature_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_feature_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_provider_request() :: #{
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider_update(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => update_managed_instances_provider_configuration(),
+%%   <<"name">> := string()
+%% }
+-type update_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type update_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
+%%   <<"settings">> => list(cluster_setting())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_cluster_response() :: #{
@@ -3580,654 +3378,869 @@
 -type update_cluster_response() :: #{binary() => any()}.
 
 %% Example:
-%% container_dependency() :: #{
-%%   <<"condition">> => list(any()),
-%%   <<"containerName">> => string()
+%% update_cluster_settings_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"settings">> := list(cluster_setting())
 %% }
--type container_dependency() :: #{binary() => any()}.
+-type update_cluster_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource() :: #{
-%%   <<"doubleValue">> => float(),
-%%   <<"integerValue">> => integer(),
-%%   <<"longValue">> => float(),
-%%   <<"name">> => string(),
-%%   <<"stringSetValue">> => list(string()),
-%%   <<"type">> => string()
+%% update_cluster_settings_response() :: #{
+%%   <<"cluster">> => cluster()
 %% }
--type resource() :: #{binary() => any()}.
+-type update_cluster_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_agent_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> := string()
+%% }
+-type update_container_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_agent_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type update_container_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_instances_state_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()),
+%%   <<"status">> := list(any())
+%% }
+-type update_container_instances_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_instances_state_response() :: #{
+%%   <<"containerInstances">> => list(container_instance()),
+%%   <<"failures">> => list(failure())
+%% }
+-type update_container_instances_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_daemon_request() :: #{
+%%   <<"capacityProviderArns">> := list(string()),
+%%   <<"daemonArn">> := string(),
+%%   <<"daemonTaskDefinitionArn">> := string(),
+%%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type update_daemon_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_daemon_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"daemonArn">> => string(),
+%%   <<"deploymentArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_daemon_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_express_gateway_service_request() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"memory">> => string(),
+%%   <<"networkConfiguration">> => express_gateway_service_network_configuration(),
+%%   <<"primaryContainer">> => express_gateway_container(),
+%%   <<"scalingTarget">> => express_gateway_scaling_target(),
+%%   <<"serviceArn">> := string(),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type update_express_gateway_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_express_gateway_service_response() :: #{
+%%   <<"service">> => updated_express_gateway_service()
+%% }
+-type update_express_gateway_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type update_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_managed_instances_provider_configuration() :: #{
+%%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type update_managed_instances_provider_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_primary_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"primaryTaskSet">> := string(),
+%%   <<"service">> := string()
+%% }
+-type update_service_primary_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_primary_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type update_service_primary_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"availabilityZoneRebalancing">> => list(any()),
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"cluster">> => string(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"deploymentController">> => deployment_controller(),
+%%   <<"desiredCount">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"forceNewDeployment">> => boolean(),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"monitoring">> => monitoring_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"placementConstraints">> => list(placement_constraint()),
+%%   <<"placementStrategy">> => list(placement_strategy()),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"service">> := string(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceRegistries">> => list(service_registry()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()),
+%%   <<"vpcLatticeConfigurations">> => list(vpc_lattice_configuration())
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type update_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_protection_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"expiresInMinutes">> => integer(),
+%%   <<"protectionEnabled">> := boolean(),
+%%   <<"tasks">> := list(string())
+%% }
+-type update_task_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_protection_response() :: #{
+%%   <<"failures">> => list(failure()),
+%%   <<"protectedTasks">> => list(protected_task())
+%% }
+-type update_task_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"scale">> := scale(),
+%%   <<"service">> := string(),
+%%   <<"taskSet">> := string()
+%% }
+-type update_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type update_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% updated_express_gateway_service() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"status">> => express_gateway_service_status(),
+%%   <<"targetConfiguration">> => express_gateway_service_configuration(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type updated_express_gateway_service() :: #{binary() => any()}.
+
+%% Example:
+%% v_cpu_count_range_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type v_cpu_count_range_request() :: #{binary() => any()}.
+
+%% Example:
+%% version_info() :: #{
+%%   <<"agentHash">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"dockerVersion">> => string()
+%% }
+-type version_info() :: #{binary() => any()}.
+
+%% Example:
+%% volume() :: #{
+%%   <<"configuredAtLaunch">> => boolean(),
+%%   <<"dockerVolumeConfiguration">> => docker_volume_configuration(),
+%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
+%%   <<"fsxWindowsFileServerVolumeConfiguration">> => f_sx_windows_file_server_volume_configuration(),
+%%   <<"host">> => host_volume_properties(),
+%%   <<"name">> => string(),
+%%   <<"s3filesVolumeConfiguration">> => s3_files_volume_configuration()
+%% }
+-type volume() :: #{binary() => any()}.
+
+%% Example:
+%% volume_from() :: #{
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceContainer">> => string()
+%% }
+-type volume_from() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_lattice_configuration() :: #{
+%%   <<"portName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetGroupArn">> => string()
+%% }
+-type vpc_lattice_configuration() :: #{binary() => any()}.
 
 -type continue_service_deployment_errors() ::
+    unsupported_feature_exception() | 
+    service_deployment_not_found_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    service_deployment_not_found_exception().
+    access_denied_exception().
 
 -type create_capacity_provider_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
+    update_in_progress_exception() | 
     unsupported_feature_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     cluster_not_found_exception() | 
-    update_in_progress_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type create_cluster_errors() ::
     server_exception() | 
+    namespace_not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     client_exception() | 
-    namespace_not_found_exception().
+    access_denied_exception().
 
 -type create_daemon_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    platform_unknown_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type create_express_gateway_service_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
+    platform_unknown_exception() | 
     platform_task_definition_incompatibility_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type create_service_errors() ::
-    server_exception() | 
-    platform_task_definition_incompatibility_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
+    server_exception() | 
+    platform_unknown_exception() | 
+    platform_task_definition_incompatibility_exception() | 
     namespace_not_found_exception() | 
-    cluster_not_found_exception().
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type create_task_set_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
-    platform_task_definition_incompatibility_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    namespace_not_found_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    platform_unknown_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    namespace_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_account_setting_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_attributes_errors() ::
-    server_exception() | 
     target_not_found_exception() | 
+    server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type delete_capacity_provider_errors() ::
+    update_in_progress_exception() | 
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
-    unsupported_feature_exception() | 
     cluster_not_found_exception() | 
-    update_in_progress_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_cluster_errors() ::
-    cluster_contains_capacity_provider_exception() | 
-    cluster_contains_services_exception() | 
+    update_in_progress_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    cluster_contains_container_instances_exception() | 
-    cluster_contains_tasks_exception() | 
-    client_exception() | 
     cluster_not_found_exception() | 
-    update_in_progress_exception().
+    cluster_contains_tasks_exception() | 
+    cluster_contains_services_exception() | 
+    cluster_contains_container_instances_exception() | 
+    cluster_contains_capacity_provider_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_daemon_errors() ::
-    daemon_not_active_exception() | 
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
-    unsupported_feature_exception() | 
+    daemon_not_found_exception() | 
+    daemon_not_active_exception() | 
     cluster_not_found_exception() | 
-    daemon_not_found_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_daemon_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_express_gateway_service_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
-
--type delete_service_errors() ::
+    service_not_active_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
+    access_denied_exception().
+
+-type delete_service_errors() ::
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_task_definitions_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type delete_task_set_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    task_set_not_found_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
+    task_set_not_found_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type deregister_container_instance_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type deregister_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_capacity_providers_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type describe_clusters_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_container_instances_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type describe_daemon_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
-    unsupported_feature_exception() | 
+    daemon_not_found_exception() | 
     cluster_not_found_exception() | 
-    daemon_not_found_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_daemon_deployments_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type describe_daemon_revisions_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type describe_daemon_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_express_gateway_service_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_service_deployments_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_service_revisions_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_services_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type describe_task_definition_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_task_sets_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type describe_tasks_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type discover_poll_endpoint_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type execute_command_errors() ::
+    target_not_connected_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    target_not_connected_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type get_task_protection_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type list_account_settings_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type list_attributes_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_clusters_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type list_container_instances_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_daemon_deployments_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_daemon_task_definitions_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type list_daemons_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_service_deployments_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_services_by_namespace_errors() ::
     server_exception() | 
+    namespace_not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     client_exception() | 
-    namespace_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type list_task_definition_families_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type list_task_definitions_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type list_tasks_errors() ::
+    service_not_found_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    service_not_found_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type put_account_setting_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type put_account_setting_default_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type put_attributes_errors() ::
-    server_exception() | 
     target_not_found_exception() | 
+    server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     cluster_not_found_exception() | 
-    attribute_limit_exceeded_exception().
+    client_exception() | 
+    attribute_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type put_cluster_capacity_providers_errors() ::
+    update_in_progress_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
-    cluster_not_found_exception() | 
     resource_in_use_exception() | 
-    update_in_progress_exception().
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type register_container_instance_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type register_daemon_task_definition_errors() ::
-    limit_exceeded_exception() | 
     server_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type register_task_definition_errors() ::
-    limit_exceeded_exception() | 
     server_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type run_task_errors() ::
-    blocked_exception() | 
+    unsupported_feature_exception() | 
     server_exception() | 
+    platform_unknown_exception() | 
     platform_task_definition_incompatibility_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
     conflict_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    blocked_exception() | 
+    access_denied_exception().
 
 -type start_task_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
+    server_exception() | 
     namespace_not_found_exception() | 
-    cluster_not_found_exception().
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type stop_service_deployment_errors() ::
+    unsupported_feature_exception() | 
+    service_deployment_not_found_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     conflict_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    service_deployment_not_found_exception().
+    access_denied_exception().
 
 -type stop_task_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type submit_attachment_state_changes_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type submit_container_state_change_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type submit_task_state_change_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type update_capacity_provider_errors() ::
+    unsupported_feature_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type update_cluster_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     namespace_not_found_exception() | 
-    cluster_not_found_exception().
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type update_cluster_settings_errors() ::
+    update_in_progress_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    client_exception() | 
     cluster_not_found_exception() | 
-    update_in_progress_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type update_container_agent_errors() ::
+    update_in_progress_exception() | 
     server_exception() | 
+    no_update_available_exception() | 
     missing_version_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    no_update_available_exception() | 
-    client_exception() | 
     cluster_not_found_exception() | 
-    update_in_progress_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type update_container_instances_state_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type update_daemon_errors() ::
-    daemon_not_active_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
+    server_exception() | 
+    platform_unknown_exception() | 
+    invalid_parameter_exception() | 
+    daemon_not_found_exception() | 
+    daemon_not_active_exception() | 
     cluster_not_found_exception() | 
-    daemon_not_found_exception().
+    client_exception() | 
+    access_denied_exception().
 
 -type update_express_gateway_service_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type update_service_errors() ::
-    server_exception() | 
-    platform_task_definition_incompatibility_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    platform_unknown_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    namespace_not_found_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    platform_unknown_exception() | 
+    platform_task_definition_incompatibility_exception() | 
+    namespace_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type update_service_primary_task_set_errors() ::
+    unsupported_feature_exception() | 
+    task_set_not_found_exception() | 
+    service_not_found_exception() | 
+    service_not_active_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    task_set_not_found_exception() | 
-    service_not_active_exception() | 
+    cluster_not_found_exception() | 
     client_exception() | 
-    unsupported_feature_exception() | 
-    service_not_found_exception() | 
-    cluster_not_found_exception().
+    access_denied_exception().
 
 -type update_task_protection_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
-    cluster_not_found_exception().
+    server_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 -type update_task_set_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    task_set_not_found_exception() | 
-    service_not_active_exception() | 
-    client_exception() | 
     unsupported_feature_exception() | 
+    task_set_not_found_exception() | 
     service_not_found_exception() | 
-    cluster_not_found_exception().
+    service_not_active_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

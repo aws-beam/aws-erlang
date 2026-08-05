@@ -71,170 +71,12 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% delete_attribute_group_request() :: #{}
--type delete_attribute_group_request() :: #{}.
-
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% app_registry_configuration() :: #{
+%%   <<"tagQueryConfiguration">> => tag_query_configuration()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resources_list_item() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => string()
-%% }
--type resources_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attribute_group_response() :: #{
-%%   <<"attributeGroup">> => attribute_group()
-%% }
--type create_attribute_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_associated_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource_info())
-%% }
--type list_associated_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_tag_result() :: #{
-%%   <<"applicationTagStatus">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resources_list_item())
-%% }
--type application_tag_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attribute_groups_for_application_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_attribute_groups_for_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_attribute_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_associated_attribute_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_query_configuration() :: #{
-%%   <<"tagKey">> => string()
-%% }
--type tag_query_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_attribute_groups_response() :: #{
-%%   <<"attributeGroups">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_associated_attribute_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_attribute_group_request() :: #{
-%%   <<"attributes">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_attribute_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attribute_groups_response() :: #{
-%%   <<"attributeGroups">> => list(attribute_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_attribute_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_response() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"options">> => list(list(any())()),
-%%   <<"resourceArn">> => string()
-%% }
--type associate_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_response() :: #{
-%%   <<"configuration">> => app_registry_configuration()
-%% }
--type get_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_resources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_associated_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_attribute_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"attributes">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_attribute_group_response() :: #{binary() => any()}.
+-type app_registry_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -250,16 +92,78 @@
 %% }
 -type application() :: #{binary() => any()}.
 
-%% Example:
-%% get_attribute_group_request() :: #{}
--type get_attribute_group_request() :: #{}.
-
 
 %% Example:
-%% resource_integrations() :: #{
-%%   <<"resourceGroup">> => resource_group()
+%% application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"name">> => string()
 %% }
--type resource_integrations() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_tag_result() :: #{
+%%   <<"applicationTagStatus">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resources_list_item())
+%% }
+-type application_tag_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_attribute_group_request() :: #{}
+-type associate_attribute_group_request() :: #{}.
+
+
+%% Example:
+%% associate_attribute_group_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"attributeGroupArn">> => string()
+%% }
+-type associate_attribute_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_request() :: #{
+%%   <<"options">> => list(list(any())())
+%% }
+-type associate_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"options">> => list(list(any())()),
+%%   <<"resourceArn">> => string()
+%% }
+-type associate_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type attribute_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_group_details() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type attribute_group_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,10 +180,10 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -293,14 +197,6 @@
 
 
 %% Example:
-%% disassociate_resource_response() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"resourceArn">> => string()
-%% }
--type disassociate_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_application_response() :: #{
 %%   <<"application">> => application()
 %% }
@@ -308,31 +204,25 @@
 
 
 %% Example:
-%% associate_resource_request() :: #{
-%%   <<"options">> => list(list(any())())
+%% create_attribute_group_request() :: #{
+%%   <<"attributes">> := string(),
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
--type associate_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% sync_resource_request() :: #{}
--type sync_resource_request() :: #{}.
-
-%% Example:
-%% associate_attribute_group_request() :: #{}
--type associate_attribute_group_request() :: #{}.
-
-%% Example:
-%% disassociate_resource_request() :: #{}
--type disassociate_resource_request() :: #{}.
+-type create_attribute_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"state">> => list(any())
+%% create_attribute_group_response() :: #{
+%%   <<"attributeGroup">> => attribute_group()
 %% }
--type resource_group() :: #{binary() => any()}.
+-type create_attribute_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
 
 
 %% Example:
@@ -341,36 +231,44 @@
 %% }
 -type delete_application_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_attribute_group_request() :: #{}
+-type delete_attribute_group_request() :: #{}.
+
 
 %% Example:
-%% sync_resource_response() :: #{
-%%   <<"actionTaken">> => list(any()),
+%% delete_attribute_group_response() :: #{
+%%   <<"attributeGroup">> => attribute_group_summary()
+%% }
+-type delete_attribute_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_attribute_group_request() :: #{}
+-type disassociate_attribute_group_request() :: #{}.
+
+
+%% Example:
+%% disassociate_attribute_group_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"attributeGroupArn">> => string()
+%% }
+-type disassociate_attribute_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_request() :: #{}
+-type disassociate_resource_request() :: #{}.
+
+
+%% Example:
+%% disassociate_resource_response() :: #{
 %%   <<"applicationArn">> => string(),
 %%   <<"resourceArn">> => string()
 %% }
--type sync_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
+-type disassociate_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_application_response() :: #{
-%%   <<"application">> => application()
-%% }
--type update_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
 
 
 %% Example:
@@ -390,8 +288,32 @@
 
 
 %% Example:
-%% attribute_group() :: #{
+%% get_associated_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceTagStatus">> => list(list(any())())
+%% }
+-type get_associated_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_associated_resource_response() :: #{
+%%   <<"applicationTagResult">> => application_tag_result(),
+%%   <<"options">> => list(list(any())()),
+%%   <<"resource">> => resource()
+%% }
+-type get_associated_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_attribute_group_request() :: #{}
+-type get_attribute_group_request() :: #{}.
+
+
+%% Example:
+%% get_attribute_group_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"attributes">> => string(),
+%%   <<"createdBy">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
@@ -399,7 +321,29 @@
 %%   <<"name">> => string(),
 %%   <<"tags">> => map()
 %% }
--type attribute_group() :: #{binary() => any()}.
+-type get_attribute_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_response() :: #{
+%%   <<"configuration">> => app_registry_configuration()
+%% }
+-type get_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% integrations() :: #{
+%%   <<"applicationTagResourceGroup">> => resource_group(),
+%%   <<"resourceGroup">> => resource_group()
+%% }
+-type integrations() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -411,22 +355,51 @@
 
 
 %% Example:
-%% app_registry_configuration() :: #{
-%%   <<"tagQueryConfiguration">> => tag_query_configuration()
+%% list_applications_response() :: #{
+%%   <<"applications">> => list(application_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type app_registry_configuration() :: #{binary() => any()}.
+-type list_applications_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% integrations() :: #{
-%%   <<"applicationTagResourceGroup">> => resource_group(),
-%%   <<"resourceGroup">> => resource_group()
+%% list_associated_attribute_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type integrations() :: #{binary() => any()}.
+-type list_associated_attribute_groups_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% list_associated_attribute_groups_response() :: #{
+%%   <<"attributeGroups">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_attribute_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource_info())
+%% }
+-type list_associated_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attribute_groups_for_application_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attribute_groups_for_application_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -438,17 +411,6 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
 %% list_attribute_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -457,28 +419,55 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"serviceCode">> => string()
+%% list_attribute_groups_response() :: #{
+%%   <<"attributeGroups">> => list(attribute_group_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_attribute_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% get_associated_resource_response() :: #{
-%%   <<"applicationTagResult">> => application_tag_result(),
-%%   <<"options">> => list(list(any())()),
-%%   <<"resource">> => resource()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type get_associated_resource_response() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_attribute_group_response() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"attributeGroupArn">> => string()
+%% put_configuration_request() :: #{
+%%   <<"configuration">> := app_registry_configuration()
 %% }
--type disassociate_attribute_group_response() :: #{binary() => any()}.
+-type put_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"arn">> => string(),
+%%   <<"associationTime">> => non_neg_integer(),
+%%   <<"integrations">> => resource_integrations(),
+%%   <<"name">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_details() :: #{
+%%   <<"tagValue">> => string()
+%% }
+-type resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type resource_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -493,38 +482,108 @@
 
 
 %% Example:
-%% application_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
+%% resource_integrations() :: #{
+%%   <<"resourceGroup">> => resource_group()
+%% }
+-type resource_integrations() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resources_list_item() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string()
+%% }
+-type resources_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sync_resource_request() :: #{}
+-type sync_resource_request() :: #{}.
+
+
+%% Example:
+%% sync_resource_response() :: #{
+%%   <<"actionTaken">> => list(any()),
+%%   <<"applicationArn">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type sync_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_query_configuration() :: #{
+%%   <<"tagKey">> => string()
+%% }
+-type tag_query_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_application_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"name">> => string()
 %% }
--type application_summary() :: #{binary() => any()}.
+-type update_application_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_attribute_group_response() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"attributeGroupArn">> => string()
+%% update_application_response() :: #{
+%%   <<"application">> => application()
 %% }
--type associate_attribute_group_response() :: #{binary() => any()}.
+-type update_application_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_applications_response() :: #{
-%%   <<"applications">> => list(application_summary()),
-%%   <<"nextToken">> => string()
+%% update_attribute_group_request() :: #{
+%%   <<"attributes">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
 %% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_configuration_request() :: #{
-%%   <<"configuration">> := app_registry_configuration()
-%% }
--type put_configuration_request() :: #{binary() => any()}.
+-type update_attribute_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -535,134 +594,75 @@
 
 
 %% Example:
-%% resource_details() :: #{
-%%   <<"tagValue">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_attribute_group_response() :: #{
-%%   <<"attributeGroup">> => attribute_group_summary()
-%% }
--type delete_attribute_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attribute_group_request() :: #{
-%%   <<"attributes">> := string(),
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_attribute_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-
-%% Example:
-%% attribute_group_details() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type attribute_group_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_associated_resource_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceTagStatus">> => list(list(any())())
-%% }
--type get_associated_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"arn">> => string(),
-%%   <<"associationTime">> => non_neg_integer(),
-%%   <<"integrations">> => resource_integrations(),
-%%   <<"name">> => string()
-%% }
--type resource() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_attribute_group_request() :: #{}
--type disassociate_attribute_group_request() :: #{}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type associate_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type disassociate_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type disassociate_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_associated_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_configuration_errors() ::
@@ -674,13 +674,13 @@
 
 -type list_associated_attribute_groups_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_associated_resources_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_attribute_groups_errors() ::
     validation_exception() | 
@@ -688,13 +688,13 @@
 
 -type list_attribute_groups_for_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_configuration_errors() ::
     validation_exception() | 
@@ -702,33 +702,33 @@
     conflict_exception().
 
 -type sync_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_attribute_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 %%====================================================================

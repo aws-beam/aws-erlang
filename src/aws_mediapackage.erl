@@ -53,35 +53,130 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% rotate_ingest_endpoint_credentials_request() :: #{}
--type rotate_ingest_endpoint_credentials_request() :: #{}.
 
 %% Example:
-%% delete_channel_request() :: #{}
--type delete_channel_request() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% authorization() :: #{
+%%   <<"CdnIdentifierSecret">> => string(),
+%%   <<"SecretsRoleArn">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type authorization() :: #{binary() => any()}.
 
 
 %% Example:
-%% hls_manifest_create_or_update_parameters() :: #{
-%%   <<"AdMarkers">> => list(any()),
-%%   <<"AdTriggers">> => list(list(any())()),
-%%   <<"AdsOnDeliveryRestrictions">> => list(any()),
+%% channel() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"HlsIngest">> => hls_ingest(),
 %%   <<"Id">> => string(),
-%%   <<"IncludeIframeOnlyStream">> => boolean(),
-%%   <<"ManifestName">> => string(),
-%%   <<"PlaylistType">> => list(any()),
-%%   <<"PlaylistWindowSeconds">> => integer(),
-%%   <<"ProgramDateTimeIntervalSeconds">> => integer()
+%%   <<"IngressAccessLogs">> => ingress_access_logs(),
+%%   <<"Tags">> => map()
 %% }
--type hls_manifest_create_or_update_parameters() :: #{binary() => any()}.
+-type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_encryption() :: #{
+%%   <<"ConstantInitializationVector">> => string(),
+%%   <<"EncryptionMethod">> => list(any()),
+%%   <<"KeyRotationIntervalSeconds">> => integer(),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type cmaf_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_package() :: #{
+%%   <<"Encryption">> => cmaf_encryption(),
+%%   <<"HlsManifests">> => list(hls_manifest()),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"SegmentPrefix">> => string(),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type cmaf_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_package_create_or_update_parameters() :: #{
+%%   <<"Encryption">> => cmaf_encryption(),
+%%   <<"HlsManifests">> => list(hls_manifest_create_or_update_parameters()),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"SegmentPrefix">> => string(),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type cmaf_package_create_or_update_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_request() :: #{
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"IngressAccessLogs">> => ingress_access_logs()
+%% }
+-type configure_logs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"HlsIngest">> => hls_ingest(),
+%%   <<"Id">> => string(),
+%%   <<"IngressAccessLogs">> => ingress_access_logs(),
+%%   <<"Tags">> => map()
+%% }
+-type configure_logs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"HlsIngest">> => hls_ingest(),
+%%   <<"Id">> => string(),
+%%   <<"IngressAccessLogs">> => ingress_access_logs(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_harvest_job_request() :: #{
+%%   <<"EndTime">> := string(),
+%%   <<"Id">> := string(),
+%%   <<"OriginEndpointId">> := string(),
+%%   <<"S3Destination">> := s3_destination(),
+%%   <<"StartTime">> := string()
+%% }
+-type create_harvest_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_harvest_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"EndTime">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OriginEndpointId">> => string(),
+%%   <<"S3Destination">> => s3_destination(),
+%%   <<"StartTime">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_harvest_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -102,24 +197,6 @@
 %%   <<"Whitelist">> => list(string())
 %% }
 -type create_origin_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"HlsIngest">> => hls_ingest(),
-%%   <<"Id">> => string(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs(),
-%%   <<"Tags">> => map()
-%% }
--type create_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_response() :: #{}
--type delete_channel_response() :: #{}.
 
 
 %% Example:
@@ -146,7 +223,57 @@
 
 
 %% Example:
-%% rotate_channel_credentials_response() :: #{
+%% dash_encryption() :: #{
+%%   <<"KeyRotationIntervalSeconds">> => integer(),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type dash_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_package() :: #{
+%%   <<"AdTriggers">> => list(list(any())()),
+%%   <<"AdsOnDeliveryRestrictions">> => list(any()),
+%%   <<"Encryption">> => dash_encryption(),
+%%   <<"IncludeIframeOnlyStream">> => boolean(),
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestWindowSeconds">> => integer(),
+%%   <<"MinBufferTimeSeconds">> => integer(),
+%%   <<"MinUpdatePeriodSeconds">> => integer(),
+%%   <<"PeriodTriggers">> => list(list(any())()),
+%%   <<"Profile">> => list(any()),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"SegmentTemplateFormat">> => list(any()),
+%%   <<"StreamSelection">> => stream_selection(),
+%%   <<"SuggestedPresentationDelaySeconds">> => integer(),
+%%   <<"UtcTiming">> => list(any()),
+%%   <<"UtcTimingUri">> => string()
+%% }
+-type dash_package() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+%% Example:
+%% delete_channel_response() :: #{}
+-type delete_channel_response() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_request() :: #{}
+-type delete_origin_endpoint_request() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_response() :: #{}
+-type delete_origin_endpoint_response() :: #{}.
+
+%% Example:
+%% describe_channel_request() :: #{}
+-type describe_channel_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => string(),
 %%   <<"Description">> => string(),
@@ -156,76 +283,30 @@
 %%   <<"IngressAccessLogs">> => ingress_access_logs(),
 %%   <<"Tags">> => map()
 %% }
--type rotate_channel_credentials_response() :: #{binary() => any()}.
+-type describe_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_harvest_job_request() :: #{}
+-type describe_harvest_job_request() :: #{}.
 
 
 %% Example:
-%% forbidden_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_origin_endpoint_request() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"CmafPackage">> => cmaf_package_create_or_update_parameters(),
-%%   <<"DashPackage">> => dash_package(),
-%%   <<"Description">> => string(),
-%%   <<"HlsPackage">> => hls_package(),
-%%   <<"ManifestName">> => string(),
-%%   <<"MssPackage">> => mss_package(),
-%%   <<"Origination">> => list(any()),
-%%   <<"StartoverWindowSeconds">> => integer(),
-%%   <<"TimeDelaySeconds">> => integer(),
-%%   <<"Whitelist">> => list(string())
-%% }
--type update_origin_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_endpoint() :: #{
+%% describe_harvest_job_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Authorization">> => authorization(),
 %%   <<"ChannelId">> => string(),
-%%   <<"CmafPackage">> => cmaf_package(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"DashPackage">> => dash_package(),
-%%   <<"Description">> => string(),
-%%   <<"HlsPackage">> => hls_package(),
+%%   <<"EndTime">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"ManifestName">> => string(),
-%%   <<"MssPackage">> => mss_package(),
-%%   <<"Origination">> => list(any()),
-%%   <<"StartoverWindowSeconds">> => integer(),
-%%   <<"Tags">> => map(),
-%%   <<"TimeDelaySeconds">> => integer(),
-%%   <<"Url">> => string(),
-%%   <<"Whitelist">> => list(string())
+%%   <<"OriginEndpointId">> => string(),
+%%   <<"S3Destination">> => s3_destination(),
+%%   <<"StartTime">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type origin_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harvest_jobs_request() :: #{
-%%   <<"IncludeChannelId">> => string(),
-%%   <<"IncludeStatus">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_harvest_jobs_request() :: #{binary() => any()}.
+-type describe_harvest_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_origin_endpoint_response() :: #{}
--type delete_origin_endpoint_response() :: #{}.
-
-%% Example:
-%% rotate_channel_credentials_request() :: #{}
--type rotate_channel_credentials_request() :: #{}.
-
-%% Example:
-%% delete_origin_endpoint_request() :: #{}
--type delete_origin_endpoint_request() :: #{}.
+%% describe_origin_endpoint_request() :: #{}
+-type describe_origin_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -252,31 +333,58 @@
 
 
 %% Example:
-%% rotate_ingest_endpoint_credentials_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"HlsIngest">> => hls_ingest(),
-%%   <<"Id">> => string(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs(),
-%%   <<"Tags">> => map()
+%% egress_access_logs() :: #{
+%%   <<"LogGroupName">> => string()
 %% }
--type rotate_ingest_endpoint_credentials_response() :: #{binary() => any()}.
+-type egress_access_logs() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
+%% encryption_contract_configuration() :: #{
+%%   <<"PresetSpeke20Audio">> => list(any()),
+%%   <<"PresetSpeke20Video">> => list(any())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type encryption_contract_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_requests_exception() :: #{
+%% forbidden_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvest_job() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"EndTime">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OriginEndpointId">> => string(),
+%%   <<"S3Destination">> => s3_destination(),
+%%   <<"StartTime">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type harvest_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_encryption() :: #{
+%%   <<"ConstantInitializationVector">> => string(),
+%%   <<"EncryptionMethod">> => list(any()),
+%%   <<"KeyRotationIntervalSeconds">> => integer(),
+%%   <<"RepeatExtXKey">> => boolean(),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type hls_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_ingest() :: #{
+%%   <<"IngestEndpoints">> => list(ingest_endpoint())
+%% }
+-type hls_ingest() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,137 +404,18 @@
 
 
 %% Example:
-%% hls_ingest() :: #{
-%%   <<"IngestEndpoints">> => list(ingest_endpoint())
-%% }
--type hls_ingest() :: #{binary() => any()}.
-
-%% Example:
-%% describe_harvest_job_request() :: #{}
--type describe_harvest_job_request() :: #{}.
-
-
-%% Example:
-%% list_origin_endpoints_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OriginEndpoints">> => list(origin_endpoint())
-%% }
--type list_origin_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorization() :: #{
-%%   <<"CdnIdentifierSecret">> => string(),
-%%   <<"SecretsRoleArn">> => string()
-%% }
--type authorization() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_harvest_job_request() :: #{
-%%   <<"EndTime">> := string(),
-%%   <<"Id">> := string(),
-%%   <<"OriginEndpointId">> := string(),
-%%   <<"S3Destination">> := s3_destination(),
-%%   <<"StartTime">> := string()
-%% }
--type create_harvest_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_encryption() :: #{
-%%   <<"ConstantInitializationVector">> => string(),
-%%   <<"EncryptionMethod">> => list(any()),
-%%   <<"KeyRotationIntervalSeconds">> => integer(),
-%%   <<"RepeatExtXKey">> => boolean(),
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
-%% }
--type hls_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% cmaf_package() :: #{
-%%   <<"Encryption">> => cmaf_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest()),
-%%   <<"SegmentDurationSeconds">> => integer(),
-%%   <<"SegmentPrefix">> => string(),
-%%   <<"StreamSelection">> => stream_selection()
-%% }
--type cmaf_package() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"HlsIngest">> => hls_ingest(),
+%% hls_manifest_create_or_update_parameters() :: #{
+%%   <<"AdMarkers">> => list(any()),
+%%   <<"AdTriggers">> => list(list(any())()),
+%%   <<"AdsOnDeliveryRestrictions">> => list(any()),
 %%   <<"Id">> => string(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs(),
-%%   <<"Tags">> => map()
+%%   <<"IncludeIframeOnlyStream">> => boolean(),
+%%   <<"ManifestName">> => string(),
+%%   <<"PlaylistType">> => list(any()),
+%%   <<"PlaylistWindowSeconds">> => integer(),
+%%   <<"ProgramDateTimeIntervalSeconds">> => integer()
 %% }
--type describe_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cmaf_package_create_or_update_parameters() :: #{
-%%   <<"Encryption">> => cmaf_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest_create_or_update_parameters()),
-%%   <<"SegmentDurationSeconds">> => integer(),
-%%   <<"SegmentPrefix">> => string(),
-%%   <<"StreamSelection">> => stream_selection()
-%% }
--type cmaf_package_create_or_update_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_channel_request() :: #{}
--type describe_channel_request() :: #{}.
-
-
-%% Example:
-%% speke_key_provider() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
-%%   <<"ResourceId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SystemIds">> => list(string()),
-%%   <<"Url">> => string()
-%% }
--type speke_key_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_endpoint() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Password">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Username">> => string()
-%% }
--type ingest_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type hls_manifest_create_or_update_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -448,32 +437,35 @@
 
 
 %% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
+%% ingest_endpoint() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
 %% }
--type service_unavailable_exception() :: #{binary() => any()}.
+-type ingest_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% dash_package() :: #{
-%%   <<"AdTriggers">> => list(list(any())()),
-%%   <<"AdsOnDeliveryRestrictions">> => list(any()),
-%%   <<"Encryption">> => dash_encryption(),
-%%   <<"IncludeIframeOnlyStream">> => boolean(),
-%%   <<"ManifestLayout">> => list(any()),
-%%   <<"ManifestWindowSeconds">> => integer(),
-%%   <<"MinBufferTimeSeconds">> => integer(),
-%%   <<"MinUpdatePeriodSeconds">> => integer(),
-%%   <<"PeriodTriggers">> => list(list(any())()),
-%%   <<"Profile">> => list(any()),
-%%   <<"SegmentDurationSeconds">> => integer(),
-%%   <<"SegmentTemplateFormat">> => list(any()),
-%%   <<"StreamSelection">> => stream_selection(),
-%%   <<"SuggestedPresentationDelaySeconds">> => integer(),
-%%   <<"UtcTiming">> => list(any()),
-%%   <<"UtcTimingUri">> => string()
+%% ingress_access_logs() :: #{
+%%   <<"LogGroupName">> => string()
 %% }
--type dash_package() :: #{binary() => any()}.
+-type ingress_access_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -482,6 +474,135 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_request() :: #{
+%%   <<"IncludeChannelId">> => string(),
+%%   <<"IncludeStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_harvest_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_response() :: #{
+%%   <<"HarvestJobs">> => list(harvest_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_harvest_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_request() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_origin_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OriginEndpoints">> => list(origin_endpoint())
+%% }
+-type list_origin_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mss_encryption() :: #{
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type mss_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% mss_package() :: #{
+%%   <<"Encryption">> => mss_encryption(),
+%%   <<"ManifestWindowSeconds">> => integer(),
+%%   <<"SegmentDurationSeconds">> => integer(),
+%%   <<"StreamSelection">> => stream_selection()
+%% }
+-type mss_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Authorization">> => authorization(),
+%%   <<"ChannelId">> => string(),
+%%   <<"CmafPackage">> => cmaf_package(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"Description">> => string(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"Id">> => string(),
+%%   <<"ManifestName">> => string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"Origination">> => list(any()),
+%%   <<"StartoverWindowSeconds">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TimeDelaySeconds">> => integer(),
+%%   <<"Url">> => string(),
+%%   <<"Whitelist">> => list(string())
+%% }
+-type origin_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_channel_credentials_request() :: #{}
+-type rotate_channel_credentials_request() :: #{}.
+
+
+%% Example:
+%% rotate_channel_credentials_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"HlsIngest">> => hls_ingest(),
+%%   <<"Id">> => string(),
+%%   <<"IngressAccessLogs">> => ingress_access_logs(),
+%%   <<"Tags">> => map()
+%% }
+-type rotate_channel_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_ingest_endpoint_credentials_request() :: #{}
+-type rotate_ingest_endpoint_credentials_request() :: #{}.
+
+
+%% Example:
+%% rotate_ingest_endpoint_credentials_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EgressAccessLogs">> => egress_access_logs(),
+%%   <<"HlsIngest">> => hls_ingest(),
+%%   <<"Id">> => string(),
+%%   <<"IngressAccessLogs">> => ingress_access_logs(),
+%%   <<"Tags">> => map()
+%% }
+-type rotate_ingest_endpoint_credentials_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -494,10 +615,22 @@
 
 
 %% Example:
-%% update_channel_request() :: #{
-%%   <<"Description">> => string()
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_channel_request() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"ResourceId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SystemIds">> => list(string()),
+%%   <<"Url">> => string()
+%% }
+-type speke_key_provider() :: #{binary() => any()}.
 
 
 %% Example:
@@ -510,26 +643,17 @@
 
 
 %% Example:
-%% encryption_contract_configuration() :: #{
-%%   <<"PresetSpeke20Audio">> => list(any()),
-%%   <<"PresetSpeke20Video">> => list(any())
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type encryption_contract_configuration() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% egress_access_logs() :: #{
-%%   <<"LogGroupName">> => string()
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type egress_access_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_encryption() :: #{
-%%   <<"KeyRotationIntervalSeconds">> => integer(),
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
-%% }
--type dash_encryption() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -540,117 +664,17 @@
 
 
 %% Example:
-%% cmaf_encryption() :: #{
-%%   <<"ConstantInitializationVector">> => string(),
-%%   <<"EncryptionMethod">> => list(any()),
-%%   <<"KeyRotationIntervalSeconds">> => integer(),
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type cmaf_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string()
+%% update_channel_request() :: #{
+%%   <<"Description">> => string()
 %% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"HlsIngest">> => hls_ingest(),
-%%   <<"Id">> => string(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs(),
-%%   <<"Tags">> => map()
-%% }
--type channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% harvest_job() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"EndTime">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OriginEndpointId">> => string(),
-%%   <<"S3Destination">> => s3_destination(),
-%%   <<"StartTime">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type harvest_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_harvest_job_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"EndTime">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OriginEndpointId">> => string(),
-%%   <<"S3Destination">> => s3_destination(),
-%%   <<"StartTime">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_harvest_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_harvest_job_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"EndTime">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OriginEndpointId">> => string(),
-%%   <<"S3Destination">> => s3_destination(),
-%%   <<"StartTime">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_harvest_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configure_logs_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"HlsIngest">> => hls_ingest(),
-%%   <<"Id">> => string(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs(),
-%%   <<"Tags">> => map()
-%% }
--type configure_logs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_origin_endpoint_request() :: #{}
--type describe_origin_endpoint_request() :: #{}.
-
-
-%% Example:
-%% configure_logs_request() :: #{
-%%   <<"EgressAccessLogs">> => egress_access_logs(),
-%%   <<"IngressAccessLogs">> => ingress_access_logs()
-%% }
--type configure_logs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harvest_jobs_response() :: #{
-%%   <<"HarvestJobs">> => list(harvest_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_harvest_jobs_response() :: #{binary() => any()}.
+-type update_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -668,10 +692,20 @@
 
 
 %% Example:
-%% mss_encryption() :: #{
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% update_origin_endpoint_request() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"CmafPackage">> => cmaf_package_create_or_update_parameters(),
+%%   <<"DashPackage">> => dash_package(),
+%%   <<"Description">> => string(),
+%%   <<"HlsPackage">> => hls_package(),
+%%   <<"ManifestName">> => string(),
+%%   <<"MssPackage">> => mss_package(),
+%%   <<"Origination">> => list(any()),
+%%   <<"StartoverWindowSeconds">> => integer(),
+%%   <<"TimeDelaySeconds">> => integer(),
+%%   <<"Whitelist">> => list(string())
 %% }
--type mss_encryption() :: #{binary() => any()}.
+-type update_origin_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -696,166 +730,132 @@
 %% }
 -type update_origin_endpoint_response() :: #{binary() => any()}.
 
-
-%% Example:
-%% list_channels_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_endpoints_request() :: #{
-%%   <<"ChannelId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_origin_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingress_access_logs() :: #{
-%%   <<"LogGroupName">> => string()
-%% }
--type ingress_access_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% mss_package() :: #{
-%%   <<"Encryption">> => mss_encryption(),
-%%   <<"ManifestWindowSeconds">> => integer(),
-%%   <<"SegmentDurationSeconds">> => integer(),
-%%   <<"StreamSelection">> => stream_selection()
-%% }
--type mss_package() :: #{binary() => any()}.
-
 -type configure_logs_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type create_channel_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type create_harvest_job_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type create_origin_endpoint_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type delete_channel_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type delete_origin_endpoint_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type describe_channel_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type describe_harvest_job_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type describe_origin_endpoint_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type list_channels_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type list_harvest_jobs_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type list_origin_endpoints_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type rotate_channel_credentials_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type rotate_ingest_endpoint_credentials_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type update_channel_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 -type update_origin_endpoint_errors() ::
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception().
 
 %%====================================================================

@@ -27,6 +27,8 @@
          create_service_function_resources/3,
          create_system/2,
          create_system/3,
+         create_test/2,
+         create_test/3,
          create_user_journey/2,
          create_user_journey/3,
          delete_assertion/2,
@@ -43,6 +45,10 @@
          delete_service_function_resources/3,
          delete_system/2,
          delete_system/3,
+         delete_test/2,
+         delete_test/3,
+         delete_test_sources/2,
+         delete_test_sources/3,
          delete_user_journey/2,
          delete_user_journey/3,
          get_failure_mode_finding/3,
@@ -57,6 +63,15 @@
          get_system/2,
          get_system/4,
          get_system/5,
+         get_test/3,
+         get_test/5,
+         get_test/6,
+         get_test_run/3,
+         get_test_run/5,
+         get_test_run/6,
+         get_test_template/2,
+         get_test_template/4,
+         get_test_template/5,
          get_user_journey/3,
          get_user_journey/5,
          get_user_journey/6,
@@ -85,6 +100,9 @@
          list_reports/1,
          list_reports/3,
          list_reports/4,
+         list_resolved_test_run_target_resources/3,
+         list_resolved_test_run_target_resources/5,
+         list_resolved_test_run_target_resources/6,
          list_resources/2,
          list_resources/4,
          list_resources/5,
@@ -109,11 +127,35 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_test_run_events/3,
+         list_test_run_events/5,
+         list_test_run_events/6,
+         list_test_run_sources/3,
+         list_test_run_sources/5,
+         list_test_run_sources/6,
+         list_test_runs/2,
+         list_test_runs/4,
+         list_test_runs/5,
+         list_test_sources/3,
+         list_test_sources/5,
+         list_test_sources/6,
+         list_test_templates/1,
+         list_test_templates/3,
+         list_test_templates/4,
+         list_tests/2,
+         list_tests/4,
+         list_tests/5,
          list_user_journeys/2,
          list_user_journeys/4,
          list_user_journeys/5,
+         put_test_sources/2,
+         put_test_sources/3,
          start_failure_mode_assessment/2,
          start_failure_mode_assessment/3,
+         start_test_run/2,
+         start_test_run/3,
+         stop_test_run/2,
+         stop_test_run/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -132,6 +174,8 @@
          update_service_function/3,
          update_system/2,
          update_system/3,
+         update_test/2,
+         update_test/3,
          update_user_journey/2,
          update_user_journey/3]).
 
@@ -140,117 +184,130 @@
 
 
 %% Example:
-%% s3_report_output_configuration() :: #{
-%%   <<"bucketOwner">> => string(),
-%%   <<"bucketPath">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type s3_report_output_configuration() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_failure_mode_assessment_request() :: #{
+%% achievability() :: #{
+%%   <<"availabilitySlo">> => list(any()),
+%%   <<"dataRecoveryTimeBetweenBackups">> => list(any()),
+%%   <<"multiAzRtoRpo">> => list(any()),
+%%   <<"multiRegionRtoRpo">> => list(any())
+%% }
+-type achievability() :: #{binary() => any()}.
+
+
+%% Example:
+%% assertion() :: #{
+%%   <<"assertionId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"serviceArn">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"text">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type assertion() :: #{binary() => any()}.
+
+
+%% Example:
+%% assertion_created_metadata() :: #{
+%%   <<"assertionId">> => [string()],
+%%   <<"assertionName">> => [string()]
+%% }
+-type assertion_created_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% assertion_deleted_metadata() :: #{
+%%   <<"assertionId">> => [string()],
+%%   <<"assertionName">> => [string()]
+%% }
+-type assertion_deleted_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% assertion_updated_metadata() :: #{
+%%   <<"assertionId">> => [string()],
+%%   <<"assertionName">> => [string()]
+%% }
+-type assertion_updated_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_cost() :: #{
+%%   <<"amount">> => [float()],
+%%   <<"currency">> => list(any())
+%% }
+-type assessment_cost() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_summary() :: #{
+%%   <<"achievability">> => achievability(),
+%%   <<"assessmentCost">> => assessment_cost(),
+%%   <<"assessmentId">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
+%%   <<"assessmentStep">> => list(any()),
+%%   <<"billableAssessmentUnitCount">> => [integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"serviceArn">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"totalFindings">> => [integer()]
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_system() :: #{
+%%   <<"systemArn">> => string(),
+%%   <<"systemName">> => string(),
+%%   <<"userJourneyIds">> => list(string())
+%% }
+-type associated_system() :: #{binary() => any()}.
+
+
+%% Example:
+%% availability_slo() :: #{
+%%   <<"target">> => [float()]
+%% }
+-type availability_slo() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assertion_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"text">> := string()
+%% }
+-type create_assertion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assertion_response() :: #{
+%%   <<"assertion">> => assertion()
+%% }
+-type create_assertion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_input_source_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceConfiguration">> := list(),
 %%   <<"serviceArn">> := string()
 %% }
--type start_failure_mode_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_journey() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userJourneyId">> => string()
-%% }
--type user_journey() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_event_details() :: #{
-%%   <<"description">> => [string()],
-%%   <<"eventMetadata">> => list(),
-%%   <<"title">> => [string()]
-%% }
--type system_event_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_sources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"type">> => list(any())
-%% }
--type list_input_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_function_response() :: #{
-%%   <<"serviceFunctionId">> => string()
-%% }
--type delete_service_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_system_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"sharingEnabled">> => [boolean()],
-%%   <<"systemArn">> := string()
-%% }
--type update_system_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_source() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type input_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_failure_mode_findings_response() :: #{
-%%   <<"findingsSummary">> => list(finding_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_failure_mode_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_function_request() :: #{
-%%   <<"serviceArn">> := string(),
-%%   <<"serviceFunctionId">> := string()
-%% }
--type delete_service_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceFunctionId">> => string(),
-%%   <<"serviceResources">> => list(service_resource())
-%% }
--type list_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_response() :: #{
-%%   <<"service">> => service()
-%% }
--type get_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% system_created_metadata() :: #{}
--type system_created_metadata() :: #{}.
+-type create_input_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -259,153 +316,6 @@
 %%   <<"serviceArn">> => string()
 %% }
 -type create_input_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_event() :: #{
-%%   <<"actor">> => event_actor(),
-%%   <<"eventDetails">> => service_event_details(),
-%%   <<"eventId">> => string(),
-%%   <<"eventType">> => list(any()),
-%%   <<"serviceArn">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type service_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_journey_response() :: #{
-%%   <<"userJourney">> => user_journey()
-%% }
--type create_user_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policySummaries">> => list(policy_summary())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_functions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string()
-%% }
--type list_service_functions_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% service_function() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"criticality">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceCount">> => [integer()],
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceFunctionId">> => string(),
-%%   <<"source">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type service_function() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_journey_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"systemArn">> := string(),
-%%   <<"userJourneyId">> := string()
-%% }
--type update_user_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_failure_mode_assessment_response() :: #{
-%%   <<"assessmentId">> => string(),
-%%   <<"assessmentStatus">> => list(any()),
-%%   <<"serviceArn">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()]
-%% }
--type start_failure_mode_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_function_resources_response() :: #{
-%%   <<"resources">> => list([string()]()),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceFunctionId">> => string()
-%% }
--type create_service_function_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_user_journey_request() :: #{
-%%   <<"systemArn">> := string(),
-%%   <<"userJourneyId">> := string()
-%% }
--type delete_user_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_request() :: #{
-%%   <<"policyArn">> := string()
-%% }
--type get_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_function_resources_response() :: #{
-%%   <<"resources">> => list([string()]()),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceFunctionId">> => string()
-%% }
--type delete_service_function_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"failureCategory">> => list(any()),
-%%   <<"findingId">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"policyComponent">> => list(any()),
-%%   <<"serviceArn">> => string(),
-%%   <<"severity">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type finding_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_journey_response() :: #{
-%%   <<"userJourney">> => user_journey()
-%% }
--type update_user_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_topology_edges_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceTopologyEdgeSummaries">> => list(service_topology_edge_summary())
-%% }
--type list_service_topology_edges_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -424,13 +334,569 @@
 
 
 %% Example:
-%% service_achievability_updated_metadata() :: #{
-%%   <<"assessmentId">> => [string()],
-%%   <<"availabilitySlo">> => [string()],
-%%   <<"multiAzRtoRpo">> => [string()],
-%%   <<"multiRegionRtoRpo">> => [string()]
+%% create_policy_response() :: #{
+%%   <<"policy">> => policy()
 %% }
--type service_achievability_updated_metadata() :: #{binary() => any()}.
+-type create_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"reportType">> := list(any()),
+%%   <<"serviceArn">> := string()
+%% }
+-type create_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_response() :: #{
+%%   <<"reportGenerationResult">> => report_generation_result()
+%% }
+-type create_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_function_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"criticality">> := list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type create_service_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_function_resources_request() :: #{
+%%   <<"resources">> := list([string()]()),
+%%   <<"serviceArn">> := string(),
+%%   <<"serviceFunctionId">> := string()
+%% }
+-type create_service_function_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_function_resources_response() :: #{
+%%   <<"resources">> => list([string()]()),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceFunctionId">> => string()
+%% }
+-type create_service_function_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_function_response() :: #{
+%%   <<"serviceFunction">> => service_function()
+%% }
+-type create_service_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"associatedSystems">> => list(associated_system()),
+%%   <<"clientToken">> => string(),
+%%   <<"dependencyDiscovery">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"permissionModel">> := permission_model(),
+%%   <<"policyArn">> => string(),
+%%   <<"regions">> := list(string()),
+%%   <<"reportConfiguration">> => service_report_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_system_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sharingEnabled">> => [boolean()],
+%%   <<"tags">> => map()
+%% }
+-type create_system_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_system_response() :: #{
+%%   <<"system">> => system()
+%% }
+-type create_system_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_request() :: #{
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"parameters">> => map(),
+%%   <<"roleName">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"stopConditions">> => list(stop_condition()),
+%%   <<"testTemplateArn">> := string()
+%% }
+-type create_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_response() :: #{
+%%   <<"test">> => test()
+%% }
+-type create_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_journey_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policyArn">> => string(),
+%%   <<"systemArn">> := string()
+%% }
+-type create_user_journey_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_journey_response() :: #{
+%%   <<"userJourney">> => user_journey()
+%% }
+-type create_user_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_account_role() :: #{
+%%   <<"crossAccountRoleArn">> => string(),
+%%   <<"externalId">> => [string()]
+%% }
+-type cross_account_role() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_recovery_targets() :: #{
+%%   <<"timeBetweenBackupsInMinutes">> => [integer()]
+%% }
+-type data_recovery_targets() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_assertion_request() :: #{
+%%   <<"assertionId">> := string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type delete_assertion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_assertion_response() :: #{
+%%   <<"assertionId">> => string()
+%% }
+-type delete_assertion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_input_source_request() :: #{
+%%   <<"inputSourceId">> := string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type delete_input_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_input_source_response() :: #{
+%%   <<"inputSourceId">> => string(),
+%%   <<"serviceArn">> => string()
+%% }
+-type delete_input_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_response() :: #{
+%%   <<"policyArn">> => string()
+%% }
+-type delete_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_function_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"serviceFunctionId">> := string()
+%% }
+-type delete_service_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_function_resources_request() :: #{
+%%   <<"resources">> := list([string()]()),
+%%   <<"serviceArn">> := string(),
+%%   <<"serviceFunctionId">> := string()
+%% }
+-type delete_service_function_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_function_resources_response() :: #{
+%%   <<"resources">> => list([string()]()),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceFunctionId">> => string()
+%% }
+-type delete_service_function_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_function_response() :: #{
+%%   <<"serviceFunctionId">> => string()
+%% }
+-type delete_service_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_request() :: #{
+%%   <<"serviceArn">> := string()
+%% }
+-type delete_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"serviceArn">> => string()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_system_request() :: #{
+%%   <<"systemArn">> := string()
+%% }
+-type delete_system_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_system_response() :: #{
+%%   <<"systemArn">> => string()
+%% }
+-type delete_system_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_test_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> := string()
+%% }
+-type delete_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_test_response() :: #{
+%%   <<"testId">> => string()
+%% }
+-type delete_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_test_sources_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> := string(),
+%%   <<"testSources">> := list(list())
+%% }
+-type delete_test_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_test_sources_response() :: #{}
+-type delete_test_sources_response() :: #{}.
+
+
+%% Example:
+%% delete_user_journey_request() :: #{
+%%   <<"systemArn">> := string(),
+%%   <<"userJourneyId">> := string()
+%% }
+-type delete_user_journey_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_user_journey_response() :: #{
+%%   <<"userJourneyId">> => string()
+%% }
+-type delete_user_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_discovery_config() :: #{
+%%   <<"eligibleResourceCount">> => [integer()],
+%%   <<"message">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type dependency_discovery_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_summary() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"criticality">> => list(any()),
+%%   <<"dependencyId">> => string(),
+%%   <<"dependencyName">> => [string()],
+%%   <<"dnsName">> => [string()],
+%%   <<"lastDetectedTime">> => [non_neg_integer()],
+%%   <<"location">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"queryRange">> => query_range(),
+%%   <<"serviceArn">> => string(),
+%%   <<"sourceRegions">> => list(string())
+%% }
+-type dependency_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% disaster_recovery_source() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type disaster_recovery_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_property_summary() :: #{
+%%   <<"label">> => [string()],
+%%   <<"topologyType">> => list(any())
+%% }
+-type edge_property_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_policy_values() :: #{
+%%   <<"availabilitySlo">> => slo_source(),
+%%   <<"dataRecoveryTimeBetweenBackups">> => target_source(),
+%%   <<"multiAzDrApproach">> => disaster_recovery_source(),
+%%   <<"multiAzRpo">> => target_source(),
+%%   <<"multiAzRto">> => target_source(),
+%%   <<"multiRegionDrApproach">> => disaster_recovery_source(),
+%%   <<"multiRegionRpo">> => target_source(),
+%%   <<"multiRegionRto">> => target_source()
+%% }
+-type effective_policy_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_source() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"namespaces">> => list(string())
+%% }
+-type eks_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_actor() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"principalId">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"userName">> => [string()]
+%% }
+-type event_actor() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_details() :: #{
+%%   <<"details">> => [string()],
+%%   <<"experimentArn">> => string()
+%% }
+-type experiment_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_report_output() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()]
+%% }
+-type failed_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"failureCategory">> => list(any()),
+%%   <<"findingId">> => string(),
+%%   <<"infrastructureAndCodeRecommendations">> => list(infrastructure_and_code_recommendation()),
+%%   <<"name">> => [string()],
+%%   <<"observabilityRecommendations">> => list(observability_recommendation()),
+%%   <<"policyComponent">> => list(any()),
+%%   <<"reasoning">> => [string()],
+%%   <<"serviceFunctions">> => list(string()),
+%%   <<"severity">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"testingRecommendations">> => list(testing_recommendation()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"failureCategory">> => list(any()),
+%%   <<"findingId">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"policyComponent">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"severity">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type finding_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failure_mode_finding_request() :: #{
+%%   <<"findingId">> := string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type get_failure_mode_finding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failure_mode_finding_response() :: #{
+%%   <<"finding">> => finding()
+%% }
+-type get_failure_mode_finding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_request() :: #{
+%%   <<"serviceArn">> := string()
+%% }
+-type get_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type get_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_system_request() :: #{
+%%   <<"systemArn">> := string()
+%% }
+-type get_system_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_system_response() :: #{
+%%   <<"system">> => system()
+%% }
+-type get_system_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> := string()
+%% }
+-type get_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_response() :: #{
+%%   <<"test">> => test()
+%% }
+-type get_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_run_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testRunId">> := string()
+%% }
+-type get_test_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_run_response() :: #{
+%%   <<"testRun">> => test_run()
+%% }
+-type get_test_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_template_request() :: #{
+%%   <<"testTemplateArn">> := string()
+%% }
+-type get_test_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_test_template_response() :: #{
+%%   <<"testTemplate">> => test_template()
+%% }
+-type get_test_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_journey_request() :: #{
+%%   <<"systemArn">> := string(),
+%%   <<"userJourneyId">> := string()
+%% }
+-type get_user_journey_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_journey_response() :: #{
+%%   <<"userJourney">> => user_journey()
+%% }
+-type get_user_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_app_request() :: #{
+%%   <<"associatedSystems">> => list(associated_system()),
+%%   <<"clientToken">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"skipManuallyAddedResources">> => [boolean()],
+%%   <<"tags">> => map(),
+%%   <<"v1AppArn">> := string()
+%% }
+-type import_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_app_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type import_app_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -447,15 +913,136 @@
 
 
 %% Example:
-%% report_generation_result() :: #{
-%%   <<"assessmentId">> => string(),
+%% import_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type import_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% infrastructure_and_code_recommendation() :: #{
+%%   <<"suggestedChanges">> => list(string())
+%% }
+-type infrastructure_and_code_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_source() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_source_summary() :: #{
+%%   <<"cfnStackArn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"reportOutput">> => list(),
-%%   <<"reportType">> => list(any()),
-%%   <<"serviceArn">> => string(),
+%%   <<"designFileS3Url">> => string(),
+%%   <<"eks">> => eks_source(),
+%%   <<"inputSourceId">> => string(),
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"tfStateFileUrl">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type input_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assertions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"source">> => list(any())
+%% }
+-type list_assertions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assertions_response() :: #{
+%%   <<"assertions">> => list(assertion()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assertions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dependencies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryRangeEndTime">> => [non_neg_integer()],
+%%   <<"queryRangeGranularity">> => list(any()),
+%%   <<"queryRangeStartTime">> => [non_neg_integer()],
+%%   <<"serviceArn">> => string()
+%% }
+-type list_dependencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dependencies_response() :: #{
+%%   <<"dependencySummaries">> => list(dependency_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dependencies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failure_mode_assessments_request() :: #{
+%%   <<"assessmentStatuses">> => list(list(any())()),
+%%   <<"endedBefore">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"startedAfter">> => [non_neg_integer()]
+%% }
+-type list_failure_mode_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failure_mode_assessments_response() :: #{
+%%   <<"assessmentSummaries">> => list(assessment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_failure_mode_assessments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failure_mode_findings_request() :: #{
+%%   <<"failureCategory">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"severity">> => list(any()),
 %%   <<"status">> => list(any())
 %% }
--type report_generation_result() :: #{binary() => any()}.
+-type list_failure_mode_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failure_mode_findings_response() :: #{
+%%   <<"findingsSummary">> => list(finding_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_failure_mode_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_input_sources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,42 +1054,89 @@
 
 
 %% Example:
-%% observability_recommendation() :: #{
-%%   <<"suggestedChanges">> => list(string())
+%% list_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type observability_recommendation() :: #{binary() => any()}.
+-type list_policies_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_dependency_request() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"criticality">> => list(any()),
-%%   <<"dependencyId">> := string(),
+%% list_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policySummaries">> => list(policy_summary())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportType">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"testRunId">> => string()
+%% }
+-type list_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reports_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportGenerationResults">> => list(report_generation_result())
+%% }
+-type list_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resolved_test_run_target_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"serviceArn">> := string()
 %% }
--type update_dependency_request() :: #{binary() => any()}.
+-type list_resolved_test_run_target_resources_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_function_updated_metadata() :: #{
-%%   <<"resourcesAdded">> => list(string()),
-%%   <<"resourcesRemoved">> => list(string()),
-%%   <<"serviceFunctionId">> => [string()],
-%%   <<"serviceFunctionName">> => [string()]
+%% list_resolved_test_run_target_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resolvedTargetResources">> => list(resolved_target_resource())
 %% }
--type service_function_updated_metadata() :: #{binary() => any()}.
+-type list_resolved_test_run_target_resources_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% assertion() :: #{
-%%   <<"assertionId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"serviceArn">> => string(),
-%%   <<"source">> => list(any()),
-%%   <<"text">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% list_resources_request() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"billable">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceTypes">> => list(string()),
+%%   <<"serviceArn">> := string(),
+%%   <<"serviceFunctionId">> => string()
 %% }
--type assertion() :: #{binary() => any()}.
+-type list_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceFunctionId">> => string(),
+%%   <<"serviceResources">> => list(service_resource())
+%% }
+-type list_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_events_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"eventTypes">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_service_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -514,6 +1148,74 @@
 
 
 %% Example:
+%% list_service_functions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type list_service_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_functions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceFunctions">> => list(service_function())
+%% }
+-type list_service_functions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_topology_edges_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type list_service_topology_edges_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_topology_edges_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceTopologyEdgeSummaries">> => list(service_topology_edge_summary())
+%% }
+-type list_service_topology_edges_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"ouId">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"systemArn">> => string(),
+%%   <<"userJourneyId">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceSummaries">> => list(service_summary())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_system_events_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"eventTypes">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"systemArn">> := string()
+%% }
+-type list_system_events_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_system_events_response() :: #{
 %%   <<"events">> => list(system_event()),
 %%   <<"nextToken">> => string()
@@ -522,18 +1224,348 @@
 
 
 %% Example:
-%% testing_recommendation() :: #{
-%%   <<"suggestedChanges">> => list(string())
+%% list_systems_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"ouId">> => string()
 %% }
--type testing_recommendation() :: #{binary() => any()}.
+-type list_systems_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% failed_report_output() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => [string()]
+%% list_systems_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"systemSummaries">> => list(system_summary())
 %% }
--type failed_report_output() :: #{binary() => any()}.
+-type list_systems_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_events_request() :: #{
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"startedAt">> => [non_neg_integer()]
+%% }
+-type list_test_run_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_events_response() :: #{
+%%   <<"events">> => list(test_run_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_run_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_test_run_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_sources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testRunSources">> => list(list())
+%% }
+-type list_test_run_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_runs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> => string()
+%% }
+-type list_test_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_runs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testRuns">> => list(test_run_summary())
+%% }
+-type list_test_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_test_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_sources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testSources">> => list(list())
+%% }
+-type list_test_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_templates_request() :: #{}
+-type list_test_templates_request() :: #{}.
+
+
+%% Example:
+%% list_test_templates_response() :: #{
+%%   <<"testTemplates">> => list(test_template_summary())
+%% }
+-type list_test_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tests_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type list_tests_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tests_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tests">> => list(test_summary())
+%% }
+-type list_tests_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_journeys_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"systemArn">> := string()
+%% }
+-type list_user_journeys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_journeys_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"userJourneySummaries">> => list(user_journey_summary())
+%% }
+-type list_user_journeys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"cloudWatchLogGroupArn">> => string(),
+%%   <<"logSchemaVersion">> => [string()],
+%%   <<"s3BucketName">> => [string()]
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_az_targets() :: #{
+%%   <<"disasterRecoveryApproach">> => list(any()),
+%%   <<"rpoInMinutes">> => [integer()],
+%%   <<"rtoInMinutes">> => [integer()]
+%% }
+-type multi_az_targets() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_targets() :: #{
+%%   <<"disasterRecoveryApproach">> => list(any()),
+%%   <<"rpoInMinutes">> => [integer()],
+%%   <<"rtoInMinutes">> => [integer()]
+%% }
+-type multi_region_targets() :: #{binary() => any()}.
+
+
+%% Example:
+%% observability_alarm_input() :: #{
+%%   <<"alarmArn">> => string()
+%% }
+-type observability_alarm_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% observability_alarm_summary() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"alarmArn">> => string(),
+%%   <<"alarmName">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"region">> => [string()]
+%% }
+-type observability_alarm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% observability_recommendation() :: #{
+%%   <<"suggestedChanges">> => list(string())
+%% }
+-type observability_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_model() :: #{
+%%   <<"crossAccountRoles">> => list(cross_account_role()),
+%%   <<"invokerRoleName">> => string()
+%% }
+-type permission_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy() :: #{
+%%   <<"associatedServiceCount">> => [integer()],
+%%   <<"availabilitySlo">> => availability_slo(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataRecovery">> => data_recovery_targets(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"multiAz">> => multi_az_targets(),
+%%   <<"multiRegion">> => multi_region_targets(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_summary() :: #{
+%%   <<"associatedServiceCount">> => [integer()],
+%%   <<"availabilitySlo">> => availability_slo(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataRecovery">> => data_recovery_targets(),
+%%   <<"multiAz">> => multi_az_targets(),
+%%   <<"multiRegion">> => multi_region_targets(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_test_sources_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> := string(),
+%%   <<"testSources">> := list(list())
+%% }
+-type put_test_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_test_sources_response() :: #{}
+-type put_test_sources_response() :: #{}.
+
+
+%% Example:
+%% query_data_point() :: #{
+%%   <<"queryCount">> => [float()],
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type query_data_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_range() :: #{
+%%   <<"dataPoints">> => list(query_data_point()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"granularity">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type query_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_generation_result() :: #{
+%%   <<"assessmentId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"reportOutput">> => list(),
+%%   <<"reportType">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"testRunId">> => string(),
+%%   <<"testTemplateArn">> => string()
+%% }
+-type report_generation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolved_target_resource() :: #{
+%%   <<"resourceType">> => [string()],
+%%   <<"targetInformation">> => map(),
+%%   <<"targetName">> => [string()]
+%% }
+-type resolved_target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"identifier">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_discovery_status() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"lastRunAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type resource_discovery_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_report_output() :: #{
+%%   <<"s3ObjectKey">> => [string()]
+%% }
+-type s3_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_report_output_configuration() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"bucketPath">> => string()
+%% }
+-type s3_report_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -567,22 +1599,57 @@
 
 
 %% Example:
-%% list_system_events_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"eventTypes">> => list(list(any())()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"systemArn">> := string()
+%% service_achievability_updated_metadata() :: #{
+%%   <<"assessmentId">> => [string()],
+%%   <<"availabilitySlo">> => [string()],
+%%   <<"multiAzRtoRpo">> => [string()],
+%%   <<"multiRegionRtoRpo">> => [string()]
 %% }
--type list_system_events_request() :: #{binary() => any()}.
+-type service_achievability_updated_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% service_created_metadata() :: #{}
+-type service_created_metadata() :: #{}.
+
+%% Example:
+%% service_deleted_metadata() :: #{}
+-type service_deleted_metadata() :: #{}.
 
 
 %% Example:
-%% delete_policy_response() :: #{
-%%   <<"policyArn">> => string()
+%% service_event() :: #{
+%%   <<"actor">> => event_actor(),
+%%   <<"eventDetails">> => service_event_details(),
+%%   <<"eventId">> => string(),
+%%   <<"eventType">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
 %% }
--type delete_policy_response() :: #{binary() => any()}.
+-type service_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_event_details() :: #{
+%%   <<"description">> => [string()],
+%%   <<"eventMetadata">> => list(),
+%%   <<"title">> => [string()]
+%% }
+-type service_event_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_function() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"criticality">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceCount">> => [integer()],
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceFunctionId">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type service_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -594,24 +1661,39 @@
 
 
 %% Example:
-%% update_policy_response() :: #{
-%%   <<"policy">> => policy()
+%% service_function_deleted_metadata() :: #{
+%%   <<"serviceFunctionId">> => [string()],
+%%   <<"serviceFunctionName">> => [string()]
 %% }
--type update_policy_response() :: #{binary() => any()}.
+-type service_function_deleted_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_recovery_targets() :: #{
-%%   <<"timeBetweenBackupsInMinutes">> => [integer()]
+%% service_function_resources_added_metadata() :: #{
+%%   <<"resourcesAdded">> => list(string()),
+%%   <<"serviceFunctionId">> => [string()],
+%%   <<"serviceFunctionName">> => [string()]
 %% }
--type data_recovery_targets() :: #{binary() => any()}.
+-type service_function_resources_added_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% service_function_resources_removed_metadata() :: #{
+%%   <<"resourcesRemoved">> => list(string()),
+%%   <<"serviceFunctionId">> => [string()],
+%%   <<"serviceFunctionName">> => [string()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type service_function_resources_removed_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_function_updated_metadata() :: #{
+%%   <<"resourcesAdded">> => list(string()),
+%%   <<"resourcesRemoved">> => list(string()),
+%%   <<"serviceFunctionId">> => [string()],
+%%   <<"serviceFunctionName">> => [string()]
+%% }
+-type service_function_updated_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% service_input_sources_updated_metadata() :: #{}
@@ -627,100 +1709,18 @@
 
 
 %% Example:
-%% delete_assertion_request() :: #{
-%%   <<"assertionId">> := string(),
-%%   <<"serviceArn">> := string()
-%% }
--type delete_assertion_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_report_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"reportType">> := list(any()),
-%%   <<"serviceArn">> := string()
-%% }
--type create_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_failure_mode_finding_request() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"findingId">> := string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type update_failure_mode_finding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_policy_disassociated_metadata() :: #{
+%% service_policy_disassociated_metadata() :: #{
 %%   <<"policyArn">> => string(),
 %%   <<"policyName">> => [string()]
 %% }
--type system_policy_disassociated_metadata() :: #{binary() => any()}.
+-type service_policy_disassociated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_service_request() :: #{
-%%   <<"serviceArn">> := string()
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_failure_mode_assessments_response() :: #{
-%%   <<"assessmentSummaries">> => list(assessment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_failure_mode_assessments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_journey_changes() :: #{
-%%   <<"associatedServices">> => service_reference_changes(),
-%%   <<"journeyDescription">> => string_change()
-%% }
--type user_journey_changes() :: #{binary() => any()}.
-
-
-%% Example:
-%% assertion_updated_metadata() :: #{
-%%   <<"assertionId">> => [string()],
-%%   <<"assertionName">> => [string()]
-%% }
--type assertion_updated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"assessmentStatus">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"ouId">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"systemArn">> => string(),
-%%   <<"userJourneyId">> => string()
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assertion_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"text">> := string()
-%% }
--type create_assertion_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reports_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reportGenerationResults">> => list(report_generation_result())
-%% }
--type list_reports_response() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -732,108 +1732,43 @@
 
 
 %% Example:
-%% delete_assertion_response() :: #{
-%%   <<"assertionId">> => string()
+%% service_reference_changes() :: #{
+%%   <<"added">> => list(service_reference()),
+%%   <<"removed">> => list(service_reference())
 %% }
--type delete_assertion_response() :: #{binary() => any()}.
+-type service_reference_changes() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_system_request() :: #{
-%%   <<"systemArn">> := string()
+%% service_report_configuration() :: #{
+%%   <<"reportOutputs">> => list(list())
 %% }
--type delete_system_request() :: #{binary() => any()}.
+-type service_report_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_function_resources_added_metadata() :: #{
-%%   <<"resourcesAdded">> => list(string()),
-%%   <<"serviceFunctionId">> => [string()],
-%%   <<"serviceFunctionName">> => [string()]
+%% service_resource() :: #{
+%%   <<"inputSource">> => input_source(),
+%%   <<"resource">> => resource(),
+%%   <<"resourceIdentifier">> => [string()]
 %% }
--type service_function_resources_added_metadata() :: #{binary() => any()}.
+-type service_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_system_associated_metadata() :: #{
-%%   <<"systemArn">> => string(),
-%%   <<"systemName">> => [string()]
+%% service_resources_associated_metadata() :: #{
+%%   <<"resourceCount">> => [integer()],
+%%   <<"resourceTypes">> => list([string()]())
 %% }
--type service_system_associated_metadata() :: #{binary() => any()}.
+-type service_resources_associated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
+%% service_resources_disassociated_metadata() :: #{
+%%   <<"resourceCount">> => [integer()],
+%%   <<"resourceTypes">> => list([string()]())
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_function_resources_removed_metadata() :: #{
-%%   <<"resourcesRemoved">> => list(string()),
-%%   <<"serviceFunctionId">> => [string()],
-%%   <<"serviceFunctionName">> => [string()]
-%% }
--type service_function_resources_removed_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% edge_property_summary() :: #{
-%%   <<"label">> => [string()],
-%%   <<"topologyType">> => list(any())
-%% }
--type edge_property_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_user_journey_deleted_metadata() :: #{
-%%   <<"associatedServicesAtDeletion">> => list(service_reference()),
-%%   <<"userJourneyName">> => [string()]
-%% }
--type system_user_journey_deleted_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_function_deleted_metadata() :: #{
-%%   <<"serviceFunctionId">> => [string()],
-%%   <<"serviceFunctionName">> => [string()]
-%% }
--type service_function_deleted_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_service_disassociated_metadata() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceName">> => [string()],
-%%   <<"userJourneysAffected">> => list([string()]())
-%% }
--type system_service_disassociated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceSummaries">> => list(service_summary())
-%% }
--type list_services_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type service_resources_disassociated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -858,298 +1793,11 @@
 
 
 %% Example:
-%% service_topology_edge_summary() :: #{
-%%   <<"destinationResourceIdentifier">> => [string()],
-%%   <<"properties">> => list(edge_property_summary()),
-%%   <<"sourceResourceIdentifier">> => [string()]
-%% }
--type service_topology_edge_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_report_response() :: #{
-%%   <<"reportGenerationResult">> => report_generation_result()
-%% }
--type create_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_systems_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"systemSummaries">> => list(system_summary())
-%% }
--type list_systems_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_request() :: #{
-%%   <<"associatedSystems">> => list(associated_system()),
-%%   <<"clientToken">> => string(),
-%%   <<"dependencyDiscovery">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"permissionModel">> := permission_model(),
-%%   <<"policyArn">> => string(),
-%%   <<"regions">> := list(string()),
-%%   <<"reportConfiguration">> => service_report_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dependency_response() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"criticality">> => list(any()),
-%%   <<"dependencyId">> => string(),
-%%   <<"dependencyName">> => [string()],
-%%   <<"location">> => [string()],
-%%   <<"provider">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_dependency_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_app_response() :: #{
-%%   <<"service">> => service()
-%% }
--type import_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_function_resources_request() :: #{
-%%   <<"resources">> := list([string()]()),
-%%   <<"serviceArn">> := string(),
-%%   <<"serviceFunctionId">> := string()
-%% }
--type create_service_function_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"failureCategory">> => list(any()),
-%%   <<"findingId">> => string(),
-%%   <<"infrastructureAndCodeRecommendations">> => list(infrastructure_and_code_recommendation()),
-%%   <<"name">> => [string()],
-%%   <<"observabilityRecommendations">> => list(observability_recommendation()),
-%%   <<"policyComponent">> => list(any()),
-%%   <<"reasoning">> => [string()],
-%%   <<"serviceFunctions">> => list(string()),
-%%   <<"severity">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"testingRecommendations">> => list(testing_recommendation()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_system() :: #{
+%% service_system_associated_metadata() :: #{
 %%   <<"systemArn">> => string(),
-%%   <<"systemName">> => string(),
-%%   <<"userJourneyIds">> => list(string())
+%%   <<"systemName">> => [string()]
 %% }
--type associated_system() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_function_resources_request() :: #{
-%%   <<"resources">> := list([string()]()),
-%%   <<"serviceArn">> := string(),
-%%   <<"serviceFunctionId">> := string()
-%% }
--type delete_service_function_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_az_targets() :: #{
-%%   <<"disasterRecoveryApproach">> => list(any()),
-%%   <<"rpoInMinutes">> => [integer()],
-%%   <<"rtoInMinutes">> => [integer()]
-%% }
--type multi_az_targets() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_journeys_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"userJourneySummaries">> => list(user_journey_summary())
-%% }
--type list_user_journeys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_policy_request() :: #{
-%%   <<"availabilitySlo">> => availability_slo(),
-%%   <<"dataRecovery">> => data_recovery_targets(),
-%%   <<"description">> => string(),
-%%   <<"multiAz">> => multi_az_targets(),
-%%   <<"multiRegion">> => multi_region_targets(),
-%%   <<"policyArn">> := string()
-%% }
--type update_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_journey_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userJourneyId">> => string()
-%% }
--type user_journey_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% availability_slo() :: #{
-%%   <<"target">> => [float()]
-%% }
--type availability_slo() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_input_source_request() :: #{
-%%   <<"inputSourceId">> := string(),
-%%   <<"serviceArn">> := string()
-%% }
--type delete_input_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_app_request() :: #{
-%%   <<"associatedSystems">> => list(associated_system()),
-%%   <<"clientToken">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"skipManuallyAddedResources">> => [boolean()],
-%%   <<"tags">> => map(),
-%%   <<"v1AppArn">> := string()
-%% }
--type import_app_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_policy_response() :: #{
-%%   <<"policy">> => policy()
-%% }
--type import_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dependencies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryRangeEndTime">> => [non_neg_integer()],
-%%   <<"queryRangeGranularity">> => list(any()),
-%%   <<"queryRangeStartTime">> => [non_neg_integer()],
-%%   <<"serviceArn">> => string()
-%% }
--type list_dependencies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% achievability() :: #{
-%%   <<"availabilitySlo">> => list(any()),
-%%   <<"multiAzRtoRpo">> => list(any()),
-%%   <<"multiRegionRtoRpo">> => list(any())
-%% }
--type achievability() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_response() :: #{
-%%   <<"policy">> => policy()
-%% }
--type create_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_reference_changes() :: #{
-%%   <<"added">> => list(service_reference()),
-%%   <<"removed">> => list(service_reference())
-%% }
--type service_reference_changes() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_request() :: #{
-%%   <<"associatedSystems">> => list(associated_system()),
-%%   <<"dependencyDiscovery">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"permissionModel">> => permission_model(),
-%%   <<"policyArn">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"reportConfiguration">> => service_report_configuration(),
-%%   <<"serviceArn">> := string()
-%% }
--type update_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_system_response() :: #{
-%%   <<"system">> => system()
-%% }
--type create_system_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"policy">> => policy()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_discovery_config() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type dependency_discovery_config() :: #{binary() => any()}.
-
-%% Example:
-%% service_deleted_metadata() :: #{}
--type service_deleted_metadata() :: #{}.
-
-
-%% Example:
-%% get_user_journey_response() :: #{
-%%   <<"userJourney">> => user_journey()
-%% }
--type get_user_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_user_journey_created_metadata() :: #{
-%%   <<"associatedServices">> => list(service_reference()),
-%%   <<"userJourneyName">> => [string()]
-%% }
--type system_user_journey_created_metadata() :: #{binary() => any()}.
+-type service_system_associated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1162,394 +1810,16 @@
 
 
 %% Example:
-%% delete_policy_request() :: #{
-%%   <<"policyArn">> := string()
+%% service_topology_edge_summary() :: #{
+%%   <<"destinationAccount">> => string(),
+%%   <<"destinationRegion">> => string(),
+%%   <<"destinationResourceIdentifier">> => [string()],
+%%   <<"properties">> => list(edge_property_summary()),
+%%   <<"sourceAccount">> => string(),
+%%   <<"sourceRegion">> => string(),
+%%   <<"sourceResourceIdentifier">> => [string()]
 %% }
--type delete_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_account_role() :: #{
-%%   <<"crossAccountRoleArn">> => string(),
-%%   <<"externalId">> => [string()]
-%% }
--type cross_account_role() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_function_response() :: #{
-%%   <<"serviceFunction">> => service_function()
-%% }
--type create_service_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_function_response() :: #{
-%%   <<"serviceFunction">> => service_function()
-%% }
--type update_service_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_source() :: #{
-%%   <<"clusterArn">> => string(),
-%%   <<"namespaces">> => list(string())
-%% }
--type eks_source() :: #{binary() => any()}.
-
-%% Example:
-%% service_created_metadata() :: #{}
--type service_created_metadata() :: #{}.
-
-
-%% Example:
-%% create_user_journey_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policyArn">> => string(),
-%%   <<"systemArn">> := string()
-%% }
--type create_user_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_policy_associated_metadata() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"policyName">> => [string()]
-%% }
--type system_policy_associated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_actor() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"principalId">> => [string()],
-%%   <<"type">> => list(any()),
-%%   <<"userName">> => [string()]
-%% }
--type event_actor() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy() :: #{
-%%   <<"associatedServiceCount">> => [integer()],
-%%   <<"availabilitySlo">> => availability_slo(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"dataRecovery">> => data_recovery_targets(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"multiAz">> => multi_az_targets(),
-%%   <<"multiRegion">> => multi_region_targets(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_policy_disassociated_metadata() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"policyName">> => [string()]
-%% }
--type service_policy_disassociated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_resources_disassociated_metadata() :: #{
-%%   <<"resourceCount">> => [integer()],
-%%   <<"resourceTypes">> => list([string()]())
-%% }
--type service_resources_disassociated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"organizationId">> => string(),
-%%   <<"ouId">> => string(),
-%%   <<"servicesCount">> => [integer()],
-%%   <<"systemArn">> => string(),
-%%   <<"systemId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userJourneysCount">> => [integer()]
-%% }
--type system_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_function_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"criticality">> := list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"serviceArn">> := string()
-%% }
--type create_service_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% system() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"organizationId">> => string(),
-%%   <<"ouId">> => string(),
-%%   <<"sharingEnabled">> => [boolean()],
-%%   <<"systemArn">> => string(),
-%%   <<"systemId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type system() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_events_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"eventTypes">> => list(list(any())()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_service_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_failure_mode_finding_response() :: #{
-%%   <<"finding">> => finding()
-%% }
--type get_failure_mode_finding_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_input_source_response() :: #{
-%%   <<"inputSourceId">> => string(),
-%%   <<"serviceArn">> => string()
-%% }
--type delete_input_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_source() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"source">> => list(any()),
-%%   <<"value">> => [integer()]
-%% }
--type target_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_resource() :: #{
-%%   <<"inputSource">> => input_source(),
-%%   <<"resource">> => resource(),
-%%   <<"resourceIdentifier">> => [string()]
-%% }
--type service_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% assertion_created_metadata() :: #{
-%%   <<"assertionId">> => [string()],
-%%   <<"assertionName">> => [string()]
-%% }
--type assertion_created_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_model() :: #{
-%%   <<"crossAccountRoles">> => list(cross_account_role()),
-%%   <<"invokerRoleName">> => string()
-%% }
--type permission_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_cost() :: #{
-%%   <<"amount">> => [float()],
-%%   <<"currency">> => list(any())
-%% }
--type assessment_cost() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_source_summary() :: #{
-%%   <<"cfnStackArn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"designFileS3Url">> => string(),
-%%   <<"eks">> => eks_source(),
-%%   <<"inputSourceId">> => string(),
-%%   <<"resourceTags">> => list(resource_tag()),
-%%   <<"tfStateFileUrl">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type input_source_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_dependencies_response() :: #{
-%%   <<"dependencySummaries">> => list(dependency_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dependencies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_failure_mode_assessments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string()
-%% }
--type list_failure_mode_assessments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assertion_request() :: #{
-%%   <<"assertionId">> := string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"text">> => string()
-%% }
--type update_assertion_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_resources_associated_metadata() :: #{
-%%   <<"resourceCount">> => [integer()],
-%%   <<"resourceTypes">> => list([string()]())
-%% }
--type service_resources_associated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_range() :: #{
-%%   <<"dataPoints">> => list(query_data_point()),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"granularity">> => list(any()),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type query_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_request() :: #{
-%%   <<"serviceArn">> := string()
-%% }
--type delete_service_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_user_journey_response() :: #{
-%%   <<"userJourneyId">> => string()
-%% }
--type delete_user_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_discovery_status() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => [string()],
-%%   <<"lastRunAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type resource_discovery_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assertions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"source">> => list(any())
-%% }
--type list_assertions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_report_output() :: #{
-%%   <<"s3ObjectKey">> => [string()]
-%% }
--type s3_report_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assertion_response() :: #{
-%%   <<"assertion">> => assertion()
-%% }
--type update_assertion_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% effective_policy_values() :: #{
-%%   <<"availabilitySlo">> => slo_source(),
-%%   <<"dataRecoveryTimeBetweenBackups">> => target_source(),
-%%   <<"multiAzDrApproach">> => disaster_recovery_source(),
-%%   <<"multiAzRpo">> => target_source(),
-%%   <<"multiAzRto">> => target_source(),
-%%   <<"multiRegionDrApproach">> => disaster_recovery_source(),
-%%   <<"multiRegionRpo">> => target_source(),
-%%   <<"multiRegionRto">> => target_source()
-%% }
--type effective_policy_values() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_summary() :: #{
-%%   <<"associatedServiceCount">> => [integer()],
-%%   <<"availabilitySlo">> => availability_slo(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"dataRecovery">> => data_recovery_targets(),
-%%   <<"multiAz">> => multi_az_targets(),
-%%   <<"multiRegion">> => multi_region_targets(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type policy_summary() :: #{binary() => any()}.
+-type service_topology_edge_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1570,204 +1840,113 @@
 
 
 %% Example:
-%% assertion_deleted_metadata() :: #{
-%%   <<"assertionId">> => [string()],
-%%   <<"assertionName">> => [string()]
-%% }
--type assertion_deleted_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_user_journey_updated_metadata() :: #{
-%%   <<"changes">> => user_journey_changes(),
-%%   <<"userJourneyName">> => [string()]
-%% }
--type system_user_journey_updated_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reports_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportType">> => list(any()),
-%%   <<"serviceArn">> => string()
-%% }
--type list_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_journeys_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"systemArn">> := string()
-%% }
--type list_user_journeys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_input_source_request() :: #{
+%% start_failure_mode_assessment_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"resourceConfiguration">> := list(),
 %%   <<"serviceArn">> := string()
 %% }
--type create_input_source_request() :: #{binary() => any()}.
+-type start_failure_mode_assessment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_failure_mode_finding_response() :: #{
-%%   <<"finding">> => finding()
-%% }
--type update_failure_mode_finding_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assertion_response() :: #{
-%%   <<"assertion">> => assertion()
-%% }
--type create_assertion_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_report_configuration() :: #{
-%%   <<"reportOutputs">> => list(list())
-%% }
--type service_report_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_request() :: #{
-%%   <<"awsRegion">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"serviceFunctionId">> => string()
-%% }
--type list_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_failure_mode_finding_request() :: #{
-%%   <<"findingId">> := string(),
-%%   <<"serviceArn">> := string()
-%% }
--type get_failure_mode_finding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_targets() :: #{
-%%   <<"disasterRecoveryApproach">> => list(any()),
-%%   <<"rpoInMinutes">> => [integer()],
-%%   <<"rtoInMinutes">> => [integer()]
-%% }
--type multi_region_targets() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_event_details() :: #{
-%%   <<"description">> => [string()],
-%%   <<"eventMetadata">> => list(),
-%%   <<"title">> => [string()]
-%% }
--type service_event_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_systems_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"ouId">> => string()
-%% }
--type list_systems_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_service_associated_metadata() :: #{
+%% start_failure_mode_assessment_response() :: #{
+%%   <<"assessmentId">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
 %%   <<"serviceArn">> => string(),
-%%   <<"serviceName">> => [string()],
-%%   <<"userJourneys">> => list([string()]())
+%%   <<"startedAt">> => [non_neg_integer()]
 %% }
--type system_service_associated_metadata() :: #{binary() => any()}.
+-type start_failure_mode_assessment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_data_point() :: #{
-%%   <<"queryCount">> => [float()],
-%%   <<"timestamp">> => [non_neg_integer()]
+%% start_test_run_request() :: #{
+%%   <<"serviceArn">> := string(),
+%%   <<"testId">> := string()
 %% }
--type query_data_point() :: #{binary() => any()}.
+-type start_test_run_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% disaster_recovery_source() :: #{
-%%   <<"policyName">> => string(),
+%% start_test_run_response() :: #{
+%%   <<"experimentArns">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"testRunId">> => string()
+%% }
+-type start_test_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_condition() :: #{
 %%   <<"source">> => list(any()),
 %%   <<"value">> => [string()]
 %% }
--type disaster_recovery_source() :: #{binary() => any()}.
+-type stop_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% dependency_summary() :: #{
-%%   <<"comment">> => [string()],
-%%   <<"criticality">> => list(any()),
-%%   <<"dependencyId">> => string(),
-%%   <<"dependencyName">> => [string()],
-%%   <<"dnsName">> => [string()],
-%%   <<"lastDetectedTime">> => [non_neg_integer()],
-%%   <<"location">> => [string()],
-%%   <<"provider">> => [string()],
-%%   <<"queryRange">> => query_range(),
-%%   <<"serviceArn">> => string(),
-%%   <<"sourceRegions">> => list(string())
-%% }
--type dependency_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_journey_request() :: #{
-%%   <<"systemArn">> := string(),
-%%   <<"userJourneyId">> := string()
-%% }
--type get_user_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_response() :: #{
-%%   <<"service">> => service()
-%% }
--type update_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_response() :: #{
-%%   <<"serviceArn">> => string()
-%% }
--type delete_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_system_response() :: #{
-%%   <<"system">> => system()
-%% }
--type update_system_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_function_request() :: #{
-%%   <<"criticality">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
+%% stop_test_run_request() :: #{
 %%   <<"serviceArn">> := string(),
-%%   <<"serviceFunctionId">> := string()
+%%   <<"testRunId">> := string()
 %% }
--type update_service_function_request() :: #{binary() => any()}.
+-type stop_test_run_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_service_response() :: #{
-%%   <<"service">> => service()
+%% stop_test_run_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"testRunId">> => string()
 %% }
--type create_service_response() :: #{binary() => any()}.
+-type stop_test_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_change() :: #{
+%%   <<"newValue">> => [string()],
+%%   <<"oldValue">> => [string()]
+%% }
+-type string_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% success_criteria_alarm_input() :: #{
+%%   <<"alarmArn">> => string()
+%% }
+-type success_criteria_alarm_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% success_criteria_alarm_summary() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"alarmArn">> => string(),
+%%   <<"alarmName">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"region">> => [string()]
+%% }
+-type success_criteria_alarm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% system() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"organizationId">> => string(),
+%%   <<"ouId">> => string(),
+%%   <<"sharingEnabled">> => [boolean()],
+%%   <<"systemArn">> => string(),
+%%   <<"systemId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type system() :: #{binary() => any()}.
+
+%% Example:
+%% system_created_metadata() :: #{}
+-type system_created_metadata() :: #{}.
+
+%% Example:
+%% system_deleted_metadata() :: #{}
+-type system_deleted_metadata() :: #{}.
 
 
 %% Example:
@@ -1783,462 +1962,962 @@
 
 
 %% Example:
-%% get_system_response() :: #{
-%%   <<"system">> => system()
+%% system_event_details() :: #{
+%%   <<"description">> => [string()],
+%%   <<"eventMetadata">> => list(),
+%%   <<"title">> => [string()]
 %% }
--type get_system_response() :: #{binary() => any()}.
+-type system_event_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_system_response() :: #{
-%%   <<"systemArn">> => string()
+%% system_policy_associated_metadata() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"policyName">> => [string()]
 %% }
--type delete_system_response() :: #{binary() => any()}.
+-type system_policy_associated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_service_functions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceFunctions">> => list(service_function())
+%% system_policy_disassociated_metadata() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"policyName">> => [string()]
 %% }
--type list_service_functions_response() :: #{binary() => any()}.
+-type system_policy_disassociated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% string_change() :: #{
-%%   <<"newValue">> => [string()],
-%%   <<"oldValue">> => [string()]
+%% system_service_associated_metadata() :: #{
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => [string()],
+%%   <<"userJourneys">> => list([string()]())
 %% }
--type string_change() :: #{binary() => any()}.
+-type system_service_associated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_failure_mode_findings_request() :: #{
-%%   <<"failureCategory">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string(),
-%%   <<"severity">> => list(any()),
-%%   <<"status">> => list(any())
+%% system_service_disassociated_metadata() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => [string()],
+%%   <<"userJourneysAffected">> => list([string()]())
 %% }
--type list_failure_mode_findings_request() :: #{binary() => any()}.
+-type system_service_disassociated_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assertions_response() :: #{
-%%   <<"assertions">> => list(assertion()),
-%%   <<"nextToken">> => string()
+%% system_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"organizationId">> => string(),
+%%   <<"ouId">> => string(),
+%%   <<"servicesCount">> => [integer()],
+%%   <<"systemArn">> => string(),
+%%   <<"systemId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userJourneysCount">> => [integer()]
 %% }
--type list_assertions_response() :: #{binary() => any()}.
+-type system_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% assessment_summary() :: #{
-%%   <<"achievability">> => achievability(),
-%%   <<"assessmentCost">> => assessment_cost(),
-%%   <<"assessmentId">> => string(),
-%%   <<"assessmentStatus">> => list(any()),
-%%   <<"assessmentStep">> => list(any()),
-%%   <<"billableAssessmentUnitCount">> => [integer()],
+%% system_user_journey_created_metadata() :: #{
+%%   <<"associatedServices">> => list(service_reference()),
+%%   <<"userJourneyName">> => [string()]
+%% }
+-type system_user_journey_created_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_user_journey_deleted_metadata() :: #{
+%%   <<"associatedServicesAtDeletion">> => list(service_reference()),
+%%   <<"userJourneyName">> => [string()]
+%% }
+-type system_user_journey_deleted_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_user_journey_updated_metadata() :: #{
+%%   <<"changes">> => user_journey_changes(),
+%%   <<"userJourneyName">> => [string()]
+%% }
+-type system_user_journey_updated_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_source() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"value">> => [integer()]
+%% }
+-type target_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% test() :: #{
+%%   <<"actions">> => list(test_action()),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"roleName">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"stopConditions">> => list(stop_condition()),
+%%   <<"successfulTestRuns">> => [integer()],
+%%   <<"testId">> => string(),
+%%   <<"testTemplateArn">> => string(),
+%%   <<"totalTestRuns">> => [integer()]
+%% }
+-type test() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_action() :: #{
+%%   <<"actionId">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type test_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run() :: #{
+%%   <<"accountTargeting">> => list(any()),
 %%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"eventCount">> => [integer()],
+%%   <<"experiments">> => list(experiment_details()),
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"parameters">> => map(),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policy">> => test_run_policy_snapshot(),
+%%   <<"regionSwitchExecutionId">> => string(),
+%%   <<"regionSwitchPlanArn">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"reportConfiguration">> => test_run_report_configuration(),
+%%   <<"reportOutput">> => report_generation_result(),
+%%   <<"roleName">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"stopConditions">> => list(stop_condition()),
+%%   <<"testId">> => string(),
+%%   <<"testRunId">> => string(),
+%%   <<"testTemplateArn">> => string()
+%% }
+-type test_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_event() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"eventId">> => [string()],
+%%   <<"eventType">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type test_run_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_observability_alarm_summary() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"alarmArn">> => string(),
+%%   <<"alarmName">> => [string()],
+%%   <<"region">> => [string()]
+%% }
+-type test_run_observability_alarm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_policy_snapshot() :: #{
+%%   <<"availabilitySlo">> => availability_slo(),
+%%   <<"dataRecovery">> => data_recovery_targets(),
+%%   <<"multiAz">> => multi_az_targets(),
+%%   <<"multiRegion">> => multi_region_targets(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type test_run_policy_snapshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_report_configuration() :: #{
+%%   <<"reportOutput">> => list(list())
+%% }
+-type test_run_report_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_success_criteria_alarm_summary() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"alarmArn">> => string(),
+%%   <<"alarmName">> => [string()],
+%%   <<"outcome">> => list(any()),
+%%   <<"outcomeReason">> => [string()],
+%%   <<"region">> => [string()]
+%% }
+-type test_run_success_criteria_alarm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_summary() :: #{
+%%   <<"accountTargeting">> => list(any()),
+%%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"serviceArn">> => string(),
 %%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"totalFindings">> => [integer()]
+%%   <<"status">> => list(any()),
+%%   <<"testRunId">> => string(),
+%%   <<"testTemplateArn">> => string()
 %% }
--type assessment_summary() :: #{binary() => any()}.
+-type test_run_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_system_request() :: #{
-%%   <<"systemArn">> := string()
+%% test_summary() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"serviceArn">> => string(),
+%%   <<"successfulTestRuns">> => [integer()],
+%%   <<"testId">> => string(),
+%%   <<"testTemplateArn">> => string(),
+%%   <<"totalTestRuns">> => [integer()]
 %% }
--type get_system_request() :: #{binary() => any()}.
+-type test_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_service_topology_edges_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArn">> := string()
+%% test_template() :: #{
+%%   <<"actions">> => list(test_action()),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list(test_template_parameter()),
+%%   <<"testTemplateArn">> => string()
 %% }
--type list_service_topology_edges_request() :: #{binary() => any()}.
-
-%% Example:
-%% system_deleted_metadata() :: #{}
--type system_deleted_metadata() :: #{}.
+-type test_template() :: #{binary() => any()}.
 
 
 %% Example:
-%% infrastructure_and_code_recommendation() :: #{
+%% test_template_parameter() :: #{
+%%   <<"defaultValue">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"maxValues">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type test_template_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_template_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"testTemplateArn">> => string()
+%% }
+-type test_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% testing_recommendation() :: #{
 %%   <<"suggestedChanges">> => list(string())
 %% }
--type infrastructure_and_code_recommendation() :: #{binary() => any()}.
+-type testing_recommendation() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"identifier">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type resource() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_system_request() :: #{
-%%   <<"clientToken">> => string(),
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_assertion_request() :: #{
+%%   <<"assertionId">> := string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"text">> => string()
+%% }
+-type update_assertion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assertion_response() :: #{
+%%   <<"assertion">> => assertion()
+%% }
+-type update_assertion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dependency_request() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"criticality">> => list(any()),
+%%   <<"dependencyId">> := string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type update_dependency_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dependency_response() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"criticality">> => list(any()),
+%%   <<"dependencyId">> => string(),
+%%   <<"dependencyName">> => [string()],
+%%   <<"location">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_dependency_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_failure_mode_finding_request() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"findingId">> := string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type update_failure_mode_finding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_failure_mode_finding_response() :: #{
+%%   <<"finding">> => finding()
+%% }
+-type update_failure_mode_finding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy_request() :: #{
+%%   <<"availabilitySlo">> => availability_slo(),
+%%   <<"dataRecovery">> => data_recovery_targets(),
 %%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sharingEnabled">> => [boolean()],
-%%   <<"tags">> => map()
+%%   <<"multiAz">> => multi_az_targets(),
+%%   <<"multiRegion">> => multi_region_targets(),
+%%   <<"policyArn">> := string()
 %% }
--type create_system_request() :: #{binary() => any()}.
+-type update_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type update_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_function_request() :: #{
+%%   <<"criticality">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"serviceFunctionId">> := string()
+%% }
+-type update_service_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_function_response() :: #{
+%%   <<"serviceFunction">> => service_function()
+%% }
+-type update_service_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"associatedSystems">> => list(associated_system()),
+%%   <<"dependencyDiscovery">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"reportConfiguration">> => service_report_configuration(),
+%%   <<"serviceArn">> := string()
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type update_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_system_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"sharingEnabled">> => [boolean()],
+%%   <<"systemArn">> := string()
+%% }
+-type update_system_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_system_response() :: #{
+%%   <<"system">> => system()
+%% }
+-type update_system_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_test_request() :: #{
+%%   <<"loggingConfiguration">> => logging_configuration(),
+%%   <<"parameters">> => map(),
+%%   <<"roleName">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"stopConditions">> => list(stop_condition()),
+%%   <<"testId">> := string()
+%% }
+-type update_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_test_response() :: #{
+%%   <<"test">> => test()
+%% }
+-type update_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_journey_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"systemArn">> := string(),
+%%   <<"userJourneyId">> := string()
+%% }
+-type update_user_journey_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_journey_response() :: #{
+%%   <<"userJourney">> => user_journey()
+%% }
+-type update_user_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_journey() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userJourneyId">> => string()
+%% }
+-type user_journey() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_journey_changes() :: #{
+%%   <<"associatedServices">> => service_reference_changes(),
+%%   <<"journeyDescription">> => string_change()
+%% }
+-type user_journey_changes() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_journey_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userJourneyId">> => string()
+%% }
+-type user_journey_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_assertion_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_input_source_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_function_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_function_resources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_system_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_test_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_journey_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_assertion_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_input_source_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_function_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_function_resources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_system_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_test_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_test_sources_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_user_journey_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_failure_mode_finding_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_system_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type get_test_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_test_run_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_test_template_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_user_journey_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_app_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type import_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_assertions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_dependencies_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_failure_mode_assessments_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_failure_mode_findings_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_input_sources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policies_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_reports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_resolved_test_run_target_resources_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resources_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_service_events_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_service_functions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_service_topology_edges_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_system_events_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_systems_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_test_run_events_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_test_run_sources_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_test_runs_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_test_sources_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_test_templates_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tests_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_user_journeys_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type put_test_sources_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_failure_mode_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_test_run_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type stop_test_run_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_assertion_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dependency_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_failure_mode_finding_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_function_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_system_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_test_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_journey_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -2501,6 +3180,42 @@ create_system(Client, Input) ->
 create_system(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/create-system"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a test for a service by configuring a test template.
+%%
+%% Each service has one test per template.
+-spec create_test(aws_client:aws_client(), create_test_request()) ->
+    {ok, create_test_response(), tuple()} |
+    {error, any()} |
+    {error, create_test_errors(), tuple()}.
+create_test(Client, Input) ->
+    create_test(Client, Input, []).
+
+-spec create_test(aws_client:aws_client(), create_test_request(), proplists:proplist()) ->
+    {ok, create_test_response(), tuple()} |
+    {error, any()} |
+    {error, create_test_errors(), tuple()}.
+create_test(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/create-test"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2792,6 +3507,77 @@ delete_system(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a test.
+-spec delete_test(aws_client:aws_client(), delete_test_request()) ->
+    {ok, delete_test_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_errors(), tuple()}.
+delete_test(Client, Input) ->
+    delete_test(Client, Input, []).
+
+-spec delete_test(aws_client:aws_client(), delete_test_request(), proplists:proplist()) ->
+    {ok, delete_test_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_errors(), tuple()}.
+delete_test(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/delete-test"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes monitoring sources from a test.
+%%
+%% The operation is transactional and idempotent — removing a source that is
+%% not attached is a no-op.
+-spec delete_test_sources(aws_client:aws_client(), delete_test_sources_request()) ->
+    {ok, delete_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_sources_errors(), tuple()}.
+delete_test_sources(Client, Input) ->
+    delete_test_sources(Client, Input, []).
+
+-spec delete_test_sources(aws_client:aws_client(), delete_test_sources_request(), proplists:proplist()) ->
+    {ok, delete_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, delete_test_sources_errors(), tuple()}.
+delete_test_sources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/delete-test-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a user journey.
 -spec delete_user_journey(aws_client:aws_client(), delete_user_journey_request()) ->
     {ok, delete_user_journey_response(), tuple()} |
@@ -2986,6 +3772,133 @@ get_system(Client, SystemArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"systemArn">>, SystemArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a test by ID.
+-spec get_test(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_errors(), tuple()}.
+get_test(Client, ServiceArn, TestId)
+  when is_map(Client) ->
+    get_test(Client, ServiceArn, TestId, #{}, #{}).
+
+-spec get_test(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_errors(), tuple()}.
+get_test(Client, ServiceArn, TestId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_test(Client, ServiceArn, TestId, QueryMap, HeadersMap, []).
+
+-spec get_test(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_test_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_errors(), tuple()}.
+get_test(Client, ServiceArn, TestId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/get-test"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"serviceArn">>, ServiceArn},
+        {<<"testId">>, TestId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a test run by ID, including its status, results, and the
+%% configuration snapshotted when the run started.
+-spec get_test_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_run_errors(), tuple()}.
+get_test_run(Client, ServiceArn, TestRunId)
+  when is_map(Client) ->
+    get_test_run(Client, ServiceArn, TestRunId, #{}, #{}).
+
+-spec get_test_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_run_errors(), tuple()}.
+get_test_run(Client, ServiceArn, TestRunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_test_run(Client, ServiceArn, TestRunId, QueryMap, HeadersMap, []).
+
+-spec get_test_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_run_errors(), tuple()}.
+get_test_run(Client, ServiceArn, TestRunId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/get-test-run"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"serviceArn">>, ServiceArn},
+        {<<"testRunId">>, TestRunId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a resilience test template by ARN, including the parameters
+%% it accepts and the fault actions it runs.
+-spec get_test_template(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_test_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_template_errors(), tuple()}.
+get_test_template(Client, TestTemplateArn)
+  when is_map(Client) ->
+    get_test_template(Client, TestTemplateArn, #{}, #{}).
+
+-spec get_test_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_test_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_template_errors(), tuple()}.
+get_test_template(Client, TestTemplateArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_test_template(Client, TestTemplateArn, QueryMap, HeadersMap, []).
+
+-spec get_test_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_test_template_response(), tuple()} |
+    {error, any()} |
+    {error, get_test_template_errors(), tuple()}.
+get_test_template(Client, TestTemplateArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/get-test-template"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"testTemplateArn">>, TestTemplateArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3228,9 +4141,14 @@ list_failure_mode_assessments(Client, ServiceArn, QueryMap, HeadersMap, Options0
 
     Query0_ =
       [
+        {<<"assessmentStatuses">>, maps:get(<<"assessmentStatuses">>, QueryMap, undefined)},
+        {<<"endedBefore">>, maps:get(<<"endedBefore">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"serviceArn">>, ServiceArn}
+        {<<"serviceArn">>, ServiceArn},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"startedAfter">>, maps:get(<<"startedAfter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3407,7 +4325,52 @@ list_reports(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"reportType">>, maps:get(<<"reportType">>, QueryMap, undefined)},
-        {<<"serviceArn">>, maps:get(<<"serviceArn">>, QueryMap, undefined)}
+        {<<"serviceArn">>, maps:get(<<"serviceArn">>, QueryMap, undefined)},
+        {<<"testRunId">>, maps:get(<<"testRunId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the AWS resources that AWS Fault Injection Service (AWS FIS)
+%% resolved as targets for a test run.
+-spec list_resolved_test_run_target_resources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_resolved_test_run_target_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_resolved_test_run_target_resources_errors(), tuple()}.
+list_resolved_test_run_target_resources(Client, TestRunId, ServiceArn)
+  when is_map(Client) ->
+    list_resolved_test_run_target_resources(Client, TestRunId, ServiceArn, #{}, #{}).
+
+-spec list_resolved_test_run_target_resources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_resolved_test_run_target_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_resolved_test_run_target_resources_errors(), tuple()}.
+list_resolved_test_run_target_resources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resolved_test_run_target_resources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_resolved_test_run_target_resources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_resolved_test_run_target_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_resolved_test_run_target_resources_errors(), tuple()}.
+list_resolved_test_run_target_resources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/test-runs/", aws_util:encode_uri(TestRunId), "/resolved-target-resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3449,8 +4412,10 @@ list_resources(Client, ServiceArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"billable">>, maps:get(<<"billable">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceTypes">>, maps:get(<<"resourceTypes">>, QueryMap, undefined)},
         {<<"serviceArn">>, ServiceArn},
         {<<"serviceFunctionId">>, maps:get(<<"serviceFunctionId">>, QueryMap, undefined)}
       ],
@@ -3764,6 +4729,268 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the events in a test run's timeline.
+-spec list_test_run_events(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_test_run_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_events_errors(), tuple()}.
+list_test_run_events(Client, TestRunId, ServiceArn)
+  when is_map(Client) ->
+    list_test_run_events(Client, TestRunId, ServiceArn, #{}, #{}).
+
+-spec list_test_run_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_run_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_events_errors(), tuple()}.
+list_test_run_events(Client, TestRunId, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_run_events(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_run_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_run_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_events_errors(), tuple()}.
+list_test_run_events(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/test-runs/", aws_util:encode_uri(TestRunId), "/events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endedAt">>, maps:get(<<"endedAt">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn},
+        {<<"startedAt">>, maps:get(<<"startedAt">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the monitoring source snapshots captured for a test run,
+%% optionally filtered by type.
+-spec list_test_run_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_test_run_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_sources_errors(), tuple()}.
+list_test_run_sources(Client, TestRunId, ServiceArn)
+  when is_map(Client) ->
+    list_test_run_sources(Client, TestRunId, ServiceArn, #{}, #{}).
+
+-spec list_test_run_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_run_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_sources_errors(), tuple()}.
+list_test_run_sources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_run_sources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_run_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_run_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_sources_errors(), tuple()}.
+list_test_run_sources(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/test-runs/", aws_util:encode_uri(TestRunId), "/sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the runs of a test, or all test runs for a service.
+-spec list_test_runs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_test_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_runs_errors(), tuple()}.
+list_test_runs(Client, ServiceArn)
+  when is_map(Client) ->
+    list_test_runs(Client, ServiceArn, #{}, #{}).
+
+-spec list_test_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_test_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_runs_errors(), tuple()}.
+list_test_runs(Client, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_runs(Client, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_runs_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_runs_errors(), tuple()}.
+list_test_runs(Client, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/list-test-runs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn},
+        {<<"testId">>, maps:get(<<"testId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the monitoring sources attached to a test, optionally filtered
+%% by type.
+-spec list_test_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_sources_errors(), tuple()}.
+list_test_sources(Client, TestId, ServiceArn)
+  when is_map(Client) ->
+    list_test_sources(Client, TestId, ServiceArn, #{}, #{}).
+
+-spec list_test_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_sources_errors(), tuple()}.
+list_test_sources(Client, TestId, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_sources(Client, TestId, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_sources_errors(), tuple()}.
+list_test_sources(Client, TestId, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/tests/", aws_util:encode_uri(TestId), "/sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the available resilience test templates.
+%%
+%% A test template is a pre-configured, AWS recommended test that defines
+%% which resilience capability to validate.
+-spec list_test_templates(aws_client:aws_client()) ->
+    {ok, list_test_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_templates_errors(), tuple()}.
+list_test_templates(Client)
+  when is_map(Client) ->
+    list_test_templates(Client, #{}, #{}).
+
+-spec list_test_templates(aws_client:aws_client(), map(), map()) ->
+    {ok, list_test_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_templates_errors(), tuple()}.
+list_test_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_templates(Client, QueryMap, HeadersMap, []).
+
+-spec list_test_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_templates_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_templates_errors(), tuple()}.
+list_test_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/list-test-templates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the tests configured for a service.
+-spec list_tests(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_tests_errors(), tuple()}.
+list_tests(Client, ServiceArn)
+  when is_map(Client) ->
+    list_tests(Client, ServiceArn, #{}, #{}).
+
+-spec list_tests(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_tests_errors(), tuple()}.
+list_tests(Client, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tests(Client, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_tests(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tests_response(), tuple()} |
+    {error, any()} |
+    {error, list_tests_errors(), tuple()}.
+list_tests(Client, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/list-tests"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists user journeys for a system.
 -spec list_user_journeys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_user_journeys_response(), tuple()} |
@@ -3807,7 +5034,44 @@ list_user_journeys(Client, SystemArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Start a failure mode assessment.
+%% @doc Adds or updates the monitoring sources on a test.
+%%
+%% The operation is transactional — either every source is written or the
+%% call fails and nothing is written.
+-spec put_test_sources(aws_client:aws_client(), put_test_sources_request()) ->
+    {ok, put_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, put_test_sources_errors(), tuple()}.
+put_test_sources(Client, Input) ->
+    put_test_sources(Client, Input, []).
+
+-spec put_test_sources(aws_client:aws_client(), put_test_sources_request(), proplists:proplist()) ->
+    {ok, put_test_sources_response(), tuple()} |
+    {error, any()} |
+    {error, put_test_sources_errors(), tuple()}.
+put_test_sources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/put-test-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a failure mode assessment.
 -spec start_failure_mode_assessment(aws_client:aws_client(), start_failure_mode_assessment_request()) ->
     {ok, start_failure_mode_assessment_response(), tuple()} |
     {error, any()} |
@@ -3822,6 +5086,77 @@ start_failure_mode_assessment(Client, Input) ->
 start_failure_mode_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/start-failure-mode-assessment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a run of a test.
+%%
+%% Each run scopes to the current resources in the service and produces a
+%% pass or fail outcome.
+-spec start_test_run(aws_client:aws_client(), start_test_run_request()) ->
+    {ok, start_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_test_run_errors(), tuple()}.
+start_test_run(Client, Input) ->
+    start_test_run(Client, Input, []).
+
+-spec start_test_run(aws_client:aws_client(), start_test_run_request(), proplists:proplist()) ->
+    {ok, start_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, start_test_run_errors(), tuple()}.
+start_test_run(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/start-test-run"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops an in-progress test run.
+-spec stop_test_run(aws_client:aws_client(), stop_test_run_request()) ->
+    {ok, stop_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, stop_test_run_errors(), tuple()}.
+stop_test_run(Client, Input) ->
+    stop_test_run(Client, Input, []).
+
+-spec stop_test_run(aws_client:aws_client(), stop_test_run_request(), proplists:proplist()) ->
+    {ok, stop_test_run_response(), tuple()} |
+    {error, any()} |
+    {error, stop_test_run_errors(), tuple()}.
+stop_test_run(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/stop-test-run"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4129,6 +5464,40 @@ update_system(Client, Input) ->
 update_system(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/update-system"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing test.
+-spec update_test(aws_client:aws_client(), update_test_request()) ->
+    {ok, update_test_response(), tuple()} |
+    {error, any()} |
+    {error, update_test_errors(), tuple()}.
+update_test(Client, Input) ->
+    update_test(Client, Input, []).
+
+-spec update_test(aws_client:aws_client(), update_test_request(), proplists:proplist()) ->
+    {ok, update_test_response(), tuple()} |
+    {error, any()} |
+    {error, update_test_errors(), tuple()}.
+update_test(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/update-test"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

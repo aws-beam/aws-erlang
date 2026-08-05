@@ -246,14 +246,70 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
+%% Example:
+%% a_i_config() :: #{}
+-type a_i_config() :: #{}.
+
 
 %% Example:
-%% insight_field() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
+%% a_i_ml_options_input() :: #{
+%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_input(),
+%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
+%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
 %% }
--type insight_field() :: #{binary() => any()}.
+-type a_i_ml_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_ml_options_output() :: #{
+%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_output(),
+%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
+%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
+%% }
+-type a_i_ml_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_i_ml_options_status() :: #{
+%%   <<"Options">> => a_i_ml_options_output(),
+%%   <<"Status">> => option_status()
+%% }
+-type a_i_ml_options_status() :: #{binary() => any()}.
+
+%% Example:
+%% accept_inbound_connection_request() :: #{}
+-type accept_inbound_connection_request() :: #{}.
+
+
+%% Example:
+%% accept_inbound_connection_response() :: #{
+%%   <<"Connection">> => inbound_connection()
+%% }
+-type accept_inbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_policies_status() :: #{
+%%   <<"Options">> => string(),
+%%   <<"Status">> => option_status()
+%% }
+-type access_policies_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_data_source_request() :: #{
+%%   <<"DataSourceType">> := list(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type add_data_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,624 +320,131 @@
 
 
 %% Example:
-%% inbound_connection_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => list(any())
-%% }
--type inbound_connection_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% dry_run_progress_status() :: #{
-%%   <<"CreationDate">> => string(),
-%%   <<"DryRunId">> => string(),
-%%   <<"DryRunStatus">> => string(),
-%%   <<"UpdateDate">> => string(),
-%%   <<"ValidationFailures">> => list(validation_failure())
-%% }
--type dry_run_progress_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% window_start_time() :: #{
-%%   <<"Hours">> => float(),
-%%   <<"Minutes">> => float()
-%% }
--type window_start_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_names_request() :: #{
-%%   <<"EngineType">> => list(any())
-%% }
--type list_domain_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_connection() :: #{
-%%   <<"ConnectionAlias">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"ConnectionProperties">> => connection_properties(),
-%%   <<"ConnectionStatus">> => outbound_connection_status(),
-%%   <<"LocalDomainInfo">> => domain_information_container(),
-%%   <<"RemoteDomainInfo">> => domain_information_container()
-%% }
--type outbound_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_feedback_request() :: #{
-%%   <<"Entity">> := insight_feedback_entity(),
-%%   <<"FeedbackText">> => string(),
-%%   <<"InsightId">> := string(),
-%%   <<"Thumbs">> := list(any())
-%% }
--type insight_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% modifying_properties() :: #{
-%%   <<"ActiveValue">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PendingValue">> => string(),
-%%   <<"ValueType">> => list(any())
-%% }
--type modifying_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_options() :: #{
-%%   <<"includeReferencesDeep">> => boolean(),
-%%   <<"objects">> => list(saved_object_identifier()),
-%%   <<"types">> => list(string())
-%% }
--type export_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options_output() :: #{
-%%   <<"ErrorMessage">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"UseOffPeakWindow">> => boolean()
-%% }
--type auto_tune_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_capability_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"capabilityConfig">> => list(),
-%%   <<"capabilityName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type register_capability_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_scope_request() :: #{
-%%   <<"Operation">> := list(any()),
-%%   <<"PackageID">> := string(),
-%%   <<"PackageUserList">> := list(string())
-%% }
--type update_package_scope_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_response() :: #{
-%%   <<"DomainStatus">> => domain_status()
-%% }
--type delete_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_auto_tunes_response() :: #{
-%%   <<"AutoTunes">> => list(auto_tune()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_domain_auto_tunes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_request() :: #{
-%%   <<"Entity">> := insight_entity(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"TimeRange">> => insight_time_range()
-%% }
--type list_insights_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type migration_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_vending_options() :: #{
-%%   <<"VendingEnabled">> => boolean()
-%% }
--type package_vending_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_for_domain_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
-%% }
--type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_auto_tunes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_domain_auto_tunes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_source() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3Key">> => string()
-%% }
--type package_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_summary() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => migration_error(),
-%%   <<"exportedCount">> => integer(),
-%%   <<"importedCount">> => integer(),
-%%   <<"migrationId">> => string(),
-%%   <<"source">> => migration_source(),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type migration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_migration_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => migration_error(),
-%%   <<"exportedCount">> => integer(),
-%%   <<"importedCount">> => integer(),
-%%   <<"migrationId">> => string(),
-%%   <<"source">> => migration_source(),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_migration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_outbound_connections_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_outbound_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% compatible_versions_map() :: #{
-%%   <<"SourceVersion">> => string(),
-%%   <<"TargetVersions">> => list(string())
-%% }
--type compatible_versions_map() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_scope_response() :: #{
-%%   <<"Operation">> => list(any()),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageUserList">> => list(string())
-%% }
--type update_package_scope_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% snapshot_options() :: #{
-%%   <<"AutomatedSnapshotStartHour">> => integer()
-%% }
--type snapshot_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_details() :: #{
-%%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
-%% }
--type auto_tune_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% dissociate_packages_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details())
-%% }
--type dissociate_packages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_outbound_connections_response() :: #{
-%%   <<"Connections">> => list(outbound_connection()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_outbound_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorize_vpc_endpoint_access_response() :: #{
-%%   <<"AuthorizedPrincipal">> => authorized_principal()
-%% }
--type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_data_source_request() :: #{
-%%   <<"dataSourceArn">> := string()
-%% }
--type detach_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% direct_query_data_source() :: #{
-%%   <<"DataSourceArn">> => string(),
-%%   <<"DataSourceName">> => string(),
-%%   <<"DataSourceType">> => list(),
+%% add_direct_query_data_source_request() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
+%%   <<"DataSourceName">> := string(),
+%%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
 %%   <<"OpenSearchArns">> => list(string()),
 %%   <<"TagList">> => list(tag())
 %% }
--type direct_query_data_source() :: #{binary() => any()}.
+-type add_direct_query_data_source_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% deregister_capability_response() :: #{
-%%   <<"status">> => list(any())
+%% add_direct_query_data_source_response() :: #{
+%%   <<"DataSourceArn">> => string()
 %% }
--type deregister_capability_response() :: #{binary() => any()}.
+-type add_direct_query_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% package_details() :: #{
-%%   <<"AllowListedUserList">> => list(string()),
-%%   <<"AvailablePackageConfiguration">> => package_configuration(),
-%%   <<"AvailablePackageVersion">> => string(),
-%%   <<"AvailablePluginProperties">> => plugin_properties(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"PackageDescription">> => string(),
-%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageName">> => string(),
-%%   <<"PackageOwner">> => string(),
-%%   <<"PackageStatus">> => list(any()),
-%%   <<"PackageType">> => list(any()),
-%%   <<"PackageVendingOptions">> => package_vending_options()
+%% add_tags_request() :: #{
+%%   <<"ARN">> := string(),
+%%   <<"TagList">> := list(tag())
 %% }
--type package_details() :: #{binary() => any()}.
+-type add_tags_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_domain_change_progress_request() :: #{
-%%   <<"ChangeId">> => string()
+%% additional_limit() :: #{
+%%   <<"LimitName">> => string(),
+%%   <<"LimitValues">> => list(string())
 %% }
--type describe_domain_change_progress_request() :: #{binary() => any()}.
+-type additional_limit() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_insight_details_response() :: #{
-%%   <<"Fields">> => list(insight_field())
-%% }
--type describe_insight_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_config_status() :: #{
-%%   <<"Options">> => cluster_config(),
+%% advanced_options_status() :: #{
+%%   <<"Options">> => map(),
 %%   <<"Status">> => option_status()
 %% }
--type cluster_config_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_application_setting_request() :: #{}
--type get_default_application_setting_request() :: #{}.
+-type advanced_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_outbound_connection_request() :: #{
-%%   <<"ConnectionAlias">> := string(),
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"ConnectionProperties">> => connection_properties(),
-%%   <<"LocalDomainInfo">> := domain_information_container(),
-%%   <<"RemoteDomainInfo">> := domain_information_container()
+%% advanced_security_options() :: #{
+%%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
+%%   <<"AnonymousAuthEnabled">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IAMFederationOptions">> => iam_federation_options_output(),
+%%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"JWTOptions">> => j_w_t_options_output(),
+%%   <<"SAMLOptions">> => saml_options_output()
 %% }
--type create_outbound_connection_request() :: #{binary() => any()}.
+-type advanced_security_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_package_request() :: #{
-%%   <<"EngineVersion">> => string(),
-%%   <<"PackageConfiguration">> => package_configuration(),
-%%   <<"PackageDescription">> => string(),
-%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
-%%   <<"PackageName">> := string(),
-%%   <<"PackageSource">> := package_source(),
-%%   <<"PackageType">> := list(any()),
-%%   <<"PackageVendingOptions">> => package_vending_options()
+%% advanced_security_options_input() :: #{
+%%   <<"AnonymousAuthEnabled">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IAMFederationOptions">> => iam_federation_options_input(),
+%%   <<"InternalUserDatabaseEnabled">> => boolean(),
+%%   <<"JWTOptions">> => j_w_t_options_input(),
+%%   <<"MasterUserOptions">> => master_user_options(),
+%%   <<"SAMLOptions">> => saml_options_input()
 %% }
--type create_package_request() :: #{binary() => any()}.
+-type advanced_security_options_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_tune_status() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"PendingDeletion">> => boolean(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateDate">> => non_neg_integer(),
-%%   <<"UpdateVersion">> => integer()
-%% }
--type auto_tune_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_request() :: #{}
--type delete_index_request() :: #{}.
-
-
-%% Example:
-%% package_configuration() :: #{
-%%   <<"ConfigurationRequirement">> => list(any()),
-%%   <<"LicenseFilepath">> => string(),
-%%   <<"LicenseRequirement">> => list(any()),
-%%   <<"RequiresRestartForConfigurationUpdate">> => boolean()
-%% }
--type package_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_migration_request() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"migrationOptions">> := migration_options()
-%% }
--type start_migration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cold_storage_options() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type cold_storage_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vpc_endpoints_request() :: #{
-%%   <<"VpcEndpointIds">> := list(string())
-%% }
--type describe_vpc_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options_status() :: #{
-%%   <<"Options">> => auto_tune_options(),
-%%   <<"Status">> => auto_tune_status()
-%% }
--type auto_tune_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% natural_language_query_generation_options_output() :: #{
-%%   <<"CurrentState">> => list(any()),
-%%   <<"DesiredState">> => list(any())
-%% }
--type natural_language_query_generation_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% snapshot_options_status() :: #{
-%%   <<"Options">> => snapshot_options(),
+%% advanced_security_options_status() :: #{
+%%   <<"Options">> => advanced_security_options(),
 %%   <<"Status">> => option_status()
 %% }
--type snapshot_options_status() :: #{binary() => any()}.
+-type advanced_security_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_watch_direct_query_data_source() :: #{
-%%   <<"RoleArn">> => string()
+%% app_config() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
 %% }
--type cloud_watch_direct_query_data_source() :: #{binary() => any()}.
+-type app_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_endpoint_summary() :: #{
-%%   <<"DomainArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcEndpointOwner">> => string()
-%% }
--type vpc_endpoint_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_charge() :: #{
-%%   <<"RecurringChargeAmount">> => float(),
-%%   <<"RecurringChargeFrequency">> => string()
-%% }
--type recurring_charge() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_instance_offerings_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedInstanceOfferings">> => list(reserved_instance_offering())
-%% }
--type describe_reserved_instance_offerings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
-%% }
--type list_vpc_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dry_run_progress_response() :: #{
-%%   <<"DryRunConfig">> => domain_status(),
-%%   <<"DryRunProgressStatus">> => dry_run_progress_status(),
-%%   <<"DryRunResults">> => dry_run_results()
-%% }
--type describe_dry_run_progress_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_type_details() :: #{
-%%   <<"AdvancedSecurityEnabled">> => boolean(),
-%%   <<"AppLogsEnabled">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"CognitoEnabled">> => boolean(),
-%%   <<"EncryptionEnabled">> => boolean(),
-%%   <<"InstanceRole">> => list(string()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"WarmEnabled">> => boolean()
-%% }
--type instance_type_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_association_configuration() :: #{
-%%   <<"KeyStoreAccessOption">> => key_store_access_option()
-%% }
--type package_association_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domains_request() :: #{
-%%   <<"DomainNames">> := list(string())
-%% }
--type describe_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_derived_info() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"EgressEnabled">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VPCId">> => string()
-%% }
--type vpc_derived_info() :: #{binary() => any()}.
-
-%% Example:
-%% reject_inbound_connection_request() :: #{}
--type reject_inbound_connection_request() :: #{}.
-
-
-%% Example:
-%% get_capability_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"capabilityConfig">> => list(),
-%%   <<"capabilityName">> => string(),
-%%   <<"failures">> => list(capability_failure()),
+%% application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpoint">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type get_capability_response() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% saml_idp() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"MetadataContent">> => string()
+%% associate_package_request() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
+%%   <<"PrerequisitePackageIDList">> => list(string())
 %% }
--type saml_idp() :: #{binary() => any()}.
+-type associate_package_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_config() :: #{
-%%   <<"AIMLOptions">> => a_i_ml_options_status(),
-%%   <<"AccessPolicies">> => access_policies_status(),
-%%   <<"AdvancedOptions">> => advanced_options_status(),
-%%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
-%%   <<"AutoTuneOptions">> => auto_tune_options_status(),
-%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options_status(),
-%%   <<"ChangeProgressDetails">> => change_progress_details(),
-%%   <<"ClusterConfig">> => cluster_config_status(),
-%%   <<"CognitoOptions">> => cognito_options_status(),
-%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options_status(),
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status(),
-%%   <<"EBSOptions">> => ebs_options_status(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
-%%   <<"EngineMode">> => engine_mode_status(),
-%%   <<"EngineVersion">> => version_status(),
-%%   <<"IPAddressType">> => ip_address_type_status(),
-%%   <<"IdentityCenterOptions">> => identity_center_options_status(),
-%%   <<"LogPublishingOptions">> => log_publishing_options_status(),
-%%   <<"ModifyingProperties">> => list(modifying_properties()),
-%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options_status(),
-%%   <<"OffPeakWindowOptions">> => off_peak_window_options_status(),
-%%   <<"SnapshotOptions">> => snapshot_options_status(),
-%%   <<"SoftwareUpdateOptions">> => software_update_options_status(),
-%%   <<"UseCase">> => use_case_status(),
-%%   <<"VPCOptions">> => vpc_derived_info_status()
+%% associate_package_response() :: #{
+%%   <<"DomainPackageDetails">> => domain_package_details()
 %% }
--type domain_config() :: #{binary() => any()}.
+-type associate_package_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_insights_response() :: #{
-%%   <<"Insights">> => list(insight()),
-%%   <<"NextToken">> => string()
+%% associate_packages_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"PackageList">> := list(package_details_for_association())
 %% }
--type list_insights_response() :: #{binary() => any()}.
+-type associate_packages_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_domain_maintenance_status_request() :: #{
-%%   <<"MaintenanceId">> := string()
+%% associate_packages_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details())
 %% }
--type get_domain_maintenance_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_maintenance_status_response() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"NodeId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_domain_maintenance_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inbound_connection_request() :: #{}
--type delete_inbound_connection_request() :: #{}.
+-type associate_packages_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -895,56 +458,30 @@
 
 
 %% Example:
-%% outbound_connection_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => list(any())
+%% attach_data_source_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type outbound_connection_status() :: #{binary() => any()}.
+-type attach_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_domain_maintenance_request() :: #{
-%%   <<"Action">> := list(any()),
-%%   <<"NodeId">> => string()
+%% authorize_vpc_endpoint_access_request() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Service">> => list(any()),
+%%   <<"ServiceOptions">> => service_options()
 %% }
--type start_domain_maintenance_request() :: #{binary() => any()}.
+-type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% storage_type_limit() :: #{
-%%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string())
+%% authorize_vpc_endpoint_access_response() :: #{
+%%   <<"AuthorizedPrincipal">> => authorized_principal()
 %% }
--type storage_type_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_direct_query_data_sources_response() :: #{
-%%   <<"DirectQueryDataSources">> => list(direct_query_data_source()),
-%%   <<"NextToken">> => string()
-%% }
--type list_direct_query_data_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_outbound_connection_response() :: #{
-%%   <<"ConnectionAlias">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"ConnectionProperties">> => connection_properties(),
-%%   <<"ConnectionStatus">> => outbound_connection_status(),
-%%   <<"LocalDomainInfo">> => domain_information_container(),
-%%   <<"RemoteDomainInfo">> => domain_information_container()
-%% }
--type create_outbound_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_options_status() :: #{
-%%   <<"Options">> => ebs_options(),
-%%   <<"Status">> => option_status()
-%% }
--type ebs_options_status() :: #{binary() => any()}.
+-type authorize_vpc_endpoint_access_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -957,248 +494,18 @@
 
 
 %% Example:
-%% disabled_operation_exception() :: #{
-%%   <<"message">> => string()
+%% auto_tune() :: #{
+%%   <<"AutoTuneDetails">> => auto_tune_details(),
+%%   <<"AutoTuneType">> => list(any())
 %% }
--type disabled_operation_exception() :: #{binary() => any()}.
+-type auto_tune() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
+%% auto_tune_details() :: #{
+%%   <<"ScheduledAutoTuneDetails">> => scheduled_auto_tune_details()
 %% }
--type delete_vpc_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_type() :: #{
-%%   <<"StorageSubTypeName">> => string(),
-%%   <<"StorageTypeLimits">> => list(storage_type_limit()),
-%%   <<"StorageTypeName">> => string()
-%% }
--type storage_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
-%% }
--type update_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_source_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type update_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_packages_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details())
-%% }
--type associate_packages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_capability_request() :: #{
-%%   <<"capabilityConfig">> := list(),
-%%   <<"capabilityName">> := string()
-%% }
--type register_capability_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% engine_mode_status() :: #{
-%%   <<"Options">> => list(any()),
-%%   <<"Status">> => option_status()
-%% }
--type engine_mode_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_limit() :: #{
-%%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string())
-%% }
--type additional_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_inbound_connection_response() :: #{
-%%   <<"Connection">> => inbound_connection()
-%% }
--type reject_inbound_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_center_options_input() :: #{
-%%   <<"EnabledAPIAccess">> => boolean(),
-%%   <<"IdentityCenterInstanceARN">> => string(),
-%%   <<"IdentityCenterInstanceRegion">> => string(),
-%%   <<"RolesKey">> => list(any()),
-%%   <<"SubjectKey">> => list(any())
-%% }
--type identity_center_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_derived_info_status() :: #{
-%%   <<"Options">> => vpc_derived_info(),
-%%   <<"Status">> => option_status()
-%% }
--type vpc_derived_info_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_config_request() :: #{}
--type describe_domain_config_request() :: #{}.
-
-
-%% Example:
-%% update_scheduled_action_response() :: #{
-%%   <<"ScheduledAction">> => scheduled_action()
-%% }
--type update_scheduled_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_maintenance_details() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"MaintenanceId">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type domain_maintenance_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_health_response() :: #{
-%%   <<"ActiveAvailabilityZoneCount">> => string(),
-%%   <<"AvailabilityZoneCount">> => string(),
-%%   <<"ClusterHealth">> => list(any()),
-%%   <<"DataNodeCount">> => string(),
-%%   <<"DedicatedMaster">> => boolean(),
-%%   <<"DomainState">> => list(any()),
-%%   <<"EnvironmentInformation">> => list(environment_info()),
-%%   <<"MasterEligibleNodeCount">> => string(),
-%%   <<"MasterNode">> => list(any()),
-%%   <<"StandByAvailabilityZoneCount">> => string(),
-%%   <<"TotalShards">> => string(),
-%%   <<"TotalUnAssignedShards">> => string(),
-%%   <<"WarmNodeCount">> => string()
-%% }
--type describe_domain_health_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_service_software_update_response() :: #{
-%%   <<"ServiceSoftwareOptions">> => service_software_options()
-%% }
--type start_service_software_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_inbound_connection_response() :: #{
-%%   <<"Connection">> => inbound_connection()
-%% }
--type accept_inbound_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_inbound_connections_response() :: #{
-%%   <<"Connections">> => list(inbound_connection()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_inbound_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_index_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_migrations_response() :: #{
-%%   <<"migrations">> => list(migration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_migrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_domain_config_change_request() :: #{
-%%   <<"DryRun">> => boolean()
-%% }
--type cancel_domain_config_change_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_options_output() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Idp">> => saml_idp(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SessionTimeoutMinutes">> => integer(),
-%%   <<"SubjectKey">> => string()
-%% }
--type saml_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_options_status() :: #{
-%%   <<"Options">> => cognito_options(),
-%%   <<"Status">> => option_status()
-%% }
--type cognito_options_status() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_config() :: #{}
--type a_i_config() :: #{}.
-
-
-%% Example:
-%% rollback_service_software_options() :: #{
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NewVersion">> => string(),
-%%   <<"RollbackAvailable">> => boolean()
-%% }
--type rollback_service_software_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_source() :: #{
-%%   <<"datasourceArn">> => string()
-%% }
--type migration_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scheduled_actions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_scheduled_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% j_w_t_options_input() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"JwksUrl">> => string(),
-%%   <<"PublicKey">> => string(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SubjectKey">> => string()
-%% }
--type j_w_t_options_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{}
--type delete_domain_request() :: #{}.
+-type auto_tune_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1211,29 +518,175 @@
 
 
 %% Example:
-%% list_packages_for_domain_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
-%%   <<"NextToken">> => string()
+%% auto_tune_options() :: #{
+%%   <<"DesiredState">> => list(any()),
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
+%%   <<"RollbackOnDisable">> => list(any()),
+%%   <<"UseOffPeakWindow">> => boolean()
 %% }
--type list_packages_for_domain_response() :: #{binary() => any()}.
+-type auto_tune_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_compatible_versions_request() :: #{
-%%   <<"DomainName">> => string()
+%% auto_tune_options_input() :: #{
+%%   <<"DesiredState">> => list(any()),
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
+%%   <<"UseOffPeakWindow">> => boolean()
 %% }
--type get_compatible_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_sources_request() :: #{}
--type list_data_sources_request() :: #{}.
+-type auto_tune_options_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_data_source_response() :: #{
-%%   <<"Message">> => string()
+%% auto_tune_options_output() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UseOffPeakWindow">> => boolean()
 %% }
--type delete_data_source_response() :: #{binary() => any()}.
+-type auto_tune_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_options_status() :: #{
+%%   <<"Options">> => auto_tune_options(),
+%%   <<"Status">> => auto_tune_status()
+%% }
+-type auto_tune_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_tune_status() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PendingDeletion">> => boolean(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer(),
+%%   <<"UpdateVersion">> => integer()
+%% }
+-type auto_tune_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_snapshot_pause_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type automated_snapshot_pause_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_snapshot_pause_options_status() :: #{
+%%   <<"Options">> => automated_snapshot_pause_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type automated_snapshot_pause_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_snapshot_pause_request_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type automated_snapshot_pause_request_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% availability_zone_info() :: #{
+%%   <<"AvailabilityZoneName">> => string(),
+%%   <<"AvailableDataNodeCount">> => string(),
+%%   <<"ConfiguredDataNodeCount">> => string(),
+%%   <<"TotalShards">> => string(),
+%%   <<"TotalUnAssignedShards">> => string(),
+%%   <<"ZoneStatus">> => list(any())
+%% }
+-type availability_zone_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_domain_information() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type aws_domain_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% base_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type base_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_domain_config_change_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type cancel_domain_config_change_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_domain_config_change_response() :: #{
+%%   <<"CancelledChangeIds">> => list(string()),
+%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()),
+%%   <<"DryRun">> => boolean()
+%% }
+-type cancel_domain_config_change_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_service_software_update_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type cancel_service_software_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_service_software_update_response() :: #{
+%%   <<"ServiceSoftwareOptions">> => service_software_options()
+%% }
+-type cancel_service_software_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancelled_change_property() :: #{
+%%   <<"ActiveValue">> => string(),
+%%   <<"CancelledValue">> => string(),
+%%   <<"PropertyName">> => string()
+%% }
+-type cancelled_change_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_failure() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type capability_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_details() :: #{
+%%   <<"ChangeId">> => string(),
+%%   <<"ConfigChangeStatus">> => list(any()),
+%%   <<"InitiatedBy">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type change_progress_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_stage() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type change_progress_stage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1253,85 +706,70 @@
 
 
 %% Example:
-%% a_i_ml_options_output() :: #{
-%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_output(),
-%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
-%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
+%% cloud_watch_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string()
 %% }
--type a_i_ml_options_output() :: #{binary() => any()}.
+-type cloud_watch_direct_query_data_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_scheduled_action_request() :: #{
-%%   <<"ActionID">> := string(),
-%%   <<"ActionType">> := list(any()),
-%%   <<"DesiredStartTime">> => float(),
-%%   <<"ScheduleAt">> := list(any())
+%% cluster_config() :: #{
+%%   <<"ColdStorageOptions">> => cold_storage_options(),
+%%   <<"DedicatedMasterCount">> => integer(),
+%%   <<"DedicatedMasterEnabled">> => boolean(),
+%%   <<"DedicatedMasterType">> => list(any()),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"MultiAZWithStandbyEnabled">> => boolean(),
+%%   <<"NodeOptions">> => list(node_option()),
+%%   <<"WarmCount">> => integer(),
+%%   <<"WarmEnabled">> => boolean(),
+%%   <<"WarmType">> => list(any()),
+%%   <<"ZoneAwarenessConfig">> => zone_awareness_config(),
+%%   <<"ZoneAwarenessEnabled">> => boolean()
 %% }
--type update_scheduled_action_request() :: #{binary() => any()}.
+-type cluster_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_tags_request() :: #{
-%%   <<"ARN">> := string(),
-%%   <<"TagList">> := list(tag())
+%% cluster_config_status() :: #{
+%%   <<"Options">> => cluster_config(),
+%%   <<"Status">> => option_status()
 %% }
--type add_tags_request() :: #{binary() => any()}.
+-type cluster_config_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_failure() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type validation_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedInstanceId">> => string()
-%% }
--type describe_reserved_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_history() :: #{
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"StepsList">> => list(upgrade_step_item()),
-%%   <<"UpgradeName">> => string(),
-%%   <<"UpgradeStatus">> => list(any())
-%% }
--type upgrade_history() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_config() :: #{
-%%   <<"Count">> => integer(),
+%% cognito_options() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Type">> => list(any())
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> => string()
 %% }
--type node_config() :: #{binary() => any()}.
+-type cognito_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_default_application_setting_response() :: #{
-%%   <<"applicationArn">> => string()
+%% cognito_options_status() :: #{
+%%   <<"Options">> => cognito_options(),
+%%   <<"Status">> => option_status()
 %% }
--type put_default_application_setting_response() :: #{binary() => any()}.
+-type cognito_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_direct_query_data_source_response() :: #{
-%%   <<"DataSourceAccessPolicy">> => string(),
-%%   <<"DataSourceArn">> => string(),
-%%   <<"DataSourceName">> => string(),
-%%   <<"DataSourceType">> => list(),
-%%   <<"Description">> => string(),
-%%   <<"OpenSearchArns">> => list(string())
+%% cold_storage_options() :: #{
+%%   <<"Enabled">> => boolean()
 %% }
--type get_direct_query_data_source_response() :: #{binary() => any()}.
+-type cold_storage_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% compatible_versions_map() :: #{
+%%   <<"SourceVersion">> => string(),
+%%   <<"TargetVersions">> => list(string())
+%% }
+-type compatible_versions_map() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1342,24 +780,39 @@
 
 
 %% Example:
-%% delete_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
+%% connection_properties() :: #{
+%%   <<"CrossClusterSearch">> => cross_cluster_search_connection_properties(),
+%%   <<"Endpoint">> => string()
 %% }
--type delete_package_response() :: #{binary() => any()}.
+-type connection_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% create_application_request() :: #{
+%%   <<"appConfigs">> => list(app_config()),
+%%   <<"clientToken">> => string(),
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tagList">> => list(tag())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_application_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% security_lake_direct_query_data_source() :: #{
-%%   <<"RoleArn">> => string()
+%% create_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tagList">> => list(tag())
 %% }
--type security_lake_direct_query_data_source() :: #{binary() => any()}.
+-type create_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1394,6 +847,462 @@
 
 
 %% Example:
+%% create_domain_response() :: #{
+%%   <<"DomainStatus">> => domain_status()
+%% }
+-type create_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_request() :: #{
+%%   <<"IndexName">> := string(),
+%%   <<"IndexSchema">> := any()
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_outbound_connection_request() :: #{
+%%   <<"ConnectionAlias">> := string(),
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"ConnectionProperties">> => connection_properties(),
+%%   <<"LocalDomainInfo">> := domain_information_container(),
+%%   <<"RemoteDomainInfo">> := domain_information_container()
+%% }
+-type create_outbound_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_outbound_connection_response() :: #{
+%%   <<"ConnectionAlias">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"ConnectionProperties">> => connection_properties(),
+%%   <<"ConnectionStatus">> => outbound_connection_status(),
+%%   <<"LocalDomainInfo">> => domain_information_container(),
+%%   <<"RemoteDomainInfo">> => domain_information_container()
+%% }
+-type create_outbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_package_request() :: #{
+%%   <<"EngineVersion">> => string(),
+%%   <<"PackageConfiguration">> => package_configuration(),
+%%   <<"PackageDescription">> => string(),
+%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
+%%   <<"PackageName">> := string(),
+%%   <<"PackageSource">> := package_source(),
+%%   <<"PackageType">> := list(any()),
+%%   <<"PackageVendingOptions">> => package_vending_options()
+%% }
+-type create_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
+%% }
+-type create_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DomainArn">> := string(),
+%%   <<"VpcOptions">> := vpc_options()
+%% }
+-type create_vpc_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpoint">> => vpc_endpoint()
+%% }
+-type create_vpc_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_cluster_search_connection_properties() :: #{
+%%   <<"SkipUnavailable">> => list(any())
+%% }
+-type cross_cluster_search_connection_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"dataSourceArn">> => string(),
+%%   <<"dataSourceDescription">> => string(),
+%%   <<"iamRoleForDataSourceArn">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_attachment_summary() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type data_source_attachment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_details() :: #{
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type data_source_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+
+%% Example:
+%% delete_data_source_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_query_data_source_request() :: #{}
+-type delete_direct_query_data_source_request() :: #{}.
+
+%% Example:
+%% delete_domain_request() :: #{}
+-type delete_domain_request() :: #{}.
+
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"DomainStatus">> => domain_status()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inbound_connection_request() :: #{}
+-type delete_inbound_connection_request() :: #{}.
+
+
+%% Example:
+%% delete_inbound_connection_response() :: #{
+%%   <<"Connection">> => inbound_connection()
+%% }
+-type delete_inbound_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_request() :: #{}
+-type delete_index_request() :: #{}.
+
+
+%% Example:
+%% delete_index_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outbound_connection_request() :: #{}
+-type delete_outbound_connection_request() :: #{}.
+
+
+%% Example:
+%% delete_outbound_connection_response() :: #{
+%%   <<"Connection">> => outbound_connection()
+%% }
+-type delete_outbound_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_request() :: #{}
+-type delete_package_request() :: #{}.
+
+
+%% Example:
+%% delete_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
+%% }
+-type delete_package_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_request() :: #{}
+-type delete_vpc_endpoint_request() :: #{}.
+
+
+%% Example:
+%% delete_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpointSummary">> => vpc_endpoint_summary()
+%% }
+-type delete_vpc_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_options() :: #{
+%%   <<"DeploymentStrategy">> => list(any())
+%% }
+-type deployment_strategy_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_options_status() :: #{
+%%   <<"Options">> => deployment_strategy_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type deployment_strategy_options_status() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_capability_request() :: #{}
+-type deregister_capability_request() :: #{}.
+
+
+%% Example:
+%% deregister_capability_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type deregister_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_source_attachment_request() :: #{
+%%   <<"dataSourceArn">> := string()
+%% }
+-type describe_data_source_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_data_source_attachment_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachmentId">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_data_source_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_auto_tunes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_auto_tunes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_auto_tunes_response() :: #{
+%%   <<"AutoTunes">> => list(auto_tune()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_domain_auto_tunes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_change_progress_request() :: #{
+%%   <<"ChangeId">> => string()
+%% }
+-type describe_domain_change_progress_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_change_progress_response() :: #{
+%%   <<"ChangeProgressStatus">> => change_progress_status_details()
+%% }
+-type describe_domain_change_progress_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_config_request() :: #{}
+-type describe_domain_config_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_config_response() :: #{
+%%   <<"DomainConfig">> => domain_config()
+%% }
+-type describe_domain_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_health_request() :: #{}
+-type describe_domain_health_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_health_response() :: #{
+%%   <<"ActiveAvailabilityZoneCount">> => string(),
+%%   <<"AvailabilityZoneCount">> => string(),
+%%   <<"ClusterHealth">> => list(any()),
+%%   <<"DataNodeCount">> => string(),
+%%   <<"DedicatedMaster">> => boolean(),
+%%   <<"DomainState">> => list(any()),
+%%   <<"EnvironmentInformation">> => list(environment_info()),
+%%   <<"MasterEligibleNodeCount">> => string(),
+%%   <<"MasterNode">> => list(any()),
+%%   <<"StandByAvailabilityZoneCount">> => string(),
+%%   <<"TotalShards">> => string(),
+%%   <<"TotalUnAssignedShards">> => string(),
+%%   <<"WarmNodeCount">> => string()
+%% }
+-type describe_domain_health_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_nodes_request() :: #{}
+-type describe_domain_nodes_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_nodes_response() :: #{
+%%   <<"DomainNodesStatusList">> => list(domain_nodes_status())
+%% }
+-type describe_domain_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_request() :: #{}
+-type describe_domain_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_response() :: #{
+%%   <<"DomainStatus">> => domain_status()
+%% }
+-type describe_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domains_request() :: #{
+%%   <<"DomainNames">> := list(string())
+%% }
+-type describe_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domains_response() :: #{
+%%   <<"DomainStatusList">> => list(domain_status())
+%% }
+-type describe_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dry_run_progress_request() :: #{
+%%   <<"DryRunId">> => string(),
+%%   <<"LoadDryRunConfig">> => boolean()
+%% }
+-type describe_dry_run_progress_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dry_run_progress_response() :: #{
+%%   <<"DryRunConfig">> => domain_status(),
+%%   <<"DryRunProgressStatus">> => dry_run_progress_status(),
+%%   <<"DryRunResults">> => dry_run_results()
+%% }
+-type describe_dry_run_progress_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_inbound_connections_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inbound_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_inbound_connections_response() :: #{
+%%   <<"Connections">> => list(inbound_connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inbound_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_insight_details_request() :: #{
+%%   <<"Entity">> := insight_entity(),
+%%   <<"InsightId">> := string(),
+%%   <<"ShowHtmlContent">> => boolean()
+%% }
+-type describe_insight_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_insight_details_response() :: #{
+%%   <<"Fields">> => list(insight_field())
+%% }
+-type describe_insight_details_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_instance_type_limits_request() :: #{
+%%   <<"DomainName">> => string()
+%% }
+-type describe_instance_type_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_instance_type_limits_response() :: #{
+%%   <<"LimitsByRole">> => map()
+%% }
+-type describe_instance_type_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_outbound_connections_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_outbound_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_outbound_connections_response() :: #{
+%%   <<"Connections">> => list(outbound_connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_outbound_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packages_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => list(string())
+%% }
+-type describe_packages_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_packages_request() :: #{
+%%   <<"Filters">> => list(describe_packages_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_packages_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PackageDetailsList">> => list(package_details())
@@ -1402,22 +1311,278 @@
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% describe_reserved_instance_offerings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedInstanceOfferingId">> => string()
 %% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_capability_request() :: #{}
--type deregister_capability_request() :: #{}.
+-type describe_reserved_instance_offerings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_vectors_engine() :: #{
-%%   <<"Enabled">> => boolean()
+%% describe_reserved_instance_offerings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedInstanceOfferings">> => list(reserved_instance_offering())
 %% }
--type s3_vectors_engine() :: #{binary() => any()}.
+-type describe_reserved_instance_offerings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedInstanceId">> => string()
+%% }
+-type describe_reserved_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_reserved_instances_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedInstances">> => list(reserved_instance())
+%% }
+-type describe_reserved_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vpc_endpoints_request() :: #{
+%%   <<"VpcEndpointIds">> := list(string())
+%% }
+-type describe_vpc_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vpc_endpoints_response() :: #{
+%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
+%% }
+-type describe_vpc_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_data_source_request() :: #{
+%%   <<"dataSourceArn">> := string()
+%% }
+-type detach_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_data_source_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dataSourceArn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type detach_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% direct_query_data_source() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> => list(string()),
+%%   <<"TagList">> => list(tag())
+%% }
+-type direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% disabled_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% dissociate_package_request() :: #{}
+-type dissociate_package_request() :: #{}.
+
+
+%% Example:
+%% dissociate_package_response() :: #{
+%%   <<"DomainPackageDetails">> => domain_package_details()
+%% }
+-type dissociate_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dissociate_packages_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"PackageList">> := list(string())
+%% }
+-type dissociate_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dissociate_packages_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details())
+%% }
+-type dissociate_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_config() :: #{
+%%   <<"AIMLOptions">> => a_i_ml_options_status(),
+%%   <<"AccessPolicies">> => access_policies_status(),
+%%   <<"AdvancedOptions">> => advanced_options_status(),
+%%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
+%%   <<"AutoTuneOptions">> => auto_tune_options_status(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options_status(),
+%%   <<"ChangeProgressDetails">> => change_progress_details(),
+%%   <<"ClusterConfig">> => cluster_config_status(),
+%%   <<"CognitoOptions">> => cognito_options_status(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options_status(),
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status(),
+%%   <<"EBSOptions">> => ebs_options_status(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
+%%   <<"EngineMode">> => engine_mode_status(),
+%%   <<"EngineVersion">> => version_status(),
+%%   <<"IPAddressType">> => ip_address_type_status(),
+%%   <<"IdentityCenterOptions">> => identity_center_options_status(),
+%%   <<"LogPublishingOptions">> => log_publishing_options_status(),
+%%   <<"ModifyingProperties">> => list(modifying_properties()),
+%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options_status(),
+%%   <<"OffPeakWindowOptions">> => off_peak_window_options_status(),
+%%   <<"SnapshotOptions">> => snapshot_options_status(),
+%%   <<"SoftwareUpdateOptions">> => software_update_options_status(),
+%%   <<"UseCase">> => use_case_status(),
+%%   <<"VPCOptions">> => vpc_derived_info_status()
+%% }
+-type domain_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_endpoint_options() :: #{
+%%   <<"CustomEndpoint">> => string(),
+%%   <<"CustomEndpointCertificateArn">> => string(),
+%%   <<"CustomEndpointEnabled">> => boolean(),
+%%   <<"EnforceHTTPS">> => boolean(),
+%%   <<"TLSSecurityPolicy">> => list(any())
+%% }
+-type domain_endpoint_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_endpoint_options_status() :: #{
+%%   <<"Options">> => domain_endpoint_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type domain_endpoint_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_info() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EngineType">> => list(any())
+%% }
+-type domain_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_information_container() :: #{
+%%   <<"AWSDomainInformation">> => aws_domain_information()
+%% }
+-type domain_information_container() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_maintenance_details() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"MaintenanceId">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type domain_maintenance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_nodes_status() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"NodeId">> => string(),
+%%   <<"NodeStatus">> => list(any()),
+%%   <<"NodeType">> => list(any()),
+%%   <<"StorageSize">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"StorageVolumeType">> => list(any())
+%% }
+-type domain_nodes_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_package_details() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainPackageStatus">> => list(any()),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageName">> => string(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"PackageVersion">> => string(),
+%%   <<"PrerequisitePackageIDList">> => list(string()),
+%%   <<"ReferencePath">> => string()
+%% }
+-type domain_package_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_status() :: #{
+%%   <<"AIMLOptions">> => a_i_ml_options_output(),
+%%   <<"ARN">> => string(),
+%%   <<"AccessPolicies">> => string(),
+%%   <<"AdvancedOptions">> => map(),
+%%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
+%%   <<"AutoTuneOptions">> => auto_tune_options_output(),
+%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options(),
+%%   <<"ChangeProgressDetails">> => change_progress_details(),
+%%   <<"ClusterConfig">> => cluster_config(),
+%%   <<"CognitoOptions">> => cognito_options(),
+%%   <<"Created">> => boolean(),
+%%   <<"Deleted">> => boolean(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
+%%   <<"DomainEndpointV2HostedZoneId">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainProcessingStatus">> => list(any()),
+%%   <<"EBSOptions">> => ebs_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointV2">> => string(),
+%%   <<"Endpoints">> => map(),
+%%   <<"EngineMode">> => list(any()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IPAddressType">> => list(any()),
+%%   <<"IdentityCenterOptions">> => identity_center_options(),
+%%   <<"LogPublishingOptions">> => map(),
+%%   <<"ModifyingProperties">> => list(modifying_properties()),
+%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
+%%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
+%%   <<"Processing">> => boolean(),
+%%   <<"ServiceSoftwareOptions">> => service_software_options(),
+%%   <<"SnapshotOptions">> => snapshot_options(),
+%%   <<"SoftwareUpdateOptions">> => software_update_options(),
+%%   <<"UpgradeProcessing">> => boolean(),
+%%   <<"UseCase">> => list(any()),
+%%   <<"VPCOptions">> => vpc_derived_info()
+%% }
+-type domain_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% dry_run_progress_status() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"DryRunId">> => string(),
+%%   <<"DryRunStatus">> => string(),
+%%   <<"UpdateDate">> => string(),
+%%   <<"ValidationFailures">> => list(validation_failure())
+%% }
+-type dry_run_progress_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1429,36 +1594,953 @@
 
 
 %% Example:
-%% use_case_status() :: #{
+%% duration() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type duration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_options() :: #{
+%%   <<"EBSEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type ebs_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_options_status() :: #{
+%%   <<"Options">> => ebs_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type ebs_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type encryption_at_rest_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options_status() :: #{
+%%   <<"Options">> => encryption_at_rest_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type encryption_at_rest_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_mode_status() :: #{
 %%   <<"Options">> => list(any()),
 %%   <<"Status">> => option_status()
 %% }
--type use_case_status() :: #{binary() => any()}.
+-type engine_mode_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% availability_zone_info() :: #{
-%%   <<"AvailabilityZoneName">> => string(),
-%%   <<"AvailableDataNodeCount">> => string(),
-%%   <<"ConfiguredDataNodeCount">> => string(),
-%%   <<"TotalShards">> => string(),
-%%   <<"TotalUnAssignedShards">> => string(),
-%%   <<"ZoneStatus">> => list(any())
+%% environment_info() :: #{
+%%   <<"AvailabilityZoneInformation">> => list(availability_zone_info())
 %% }
--type availability_zone_info() :: #{binary() => any()}.
+-type environment_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% advanced_security_options() :: #{
-%%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
-%%   <<"AnonymousAuthEnabled">> => boolean(),
+%% error_details() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_options() :: #{
+%%   <<"includeReferencesDeep">> => boolean(),
+%%   <<"objects">> => list(saved_object_identifier()),
+%%   <<"types">> => list(string())
+%% }
+-type export_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"endpoint">> => string(),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_capability_request() :: #{}
+-type get_capability_request() :: #{}.
+
+
+%% Example:
+%% get_capability_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"capabilityConfig">> => list(),
+%%   <<"capabilityName">> => string(),
+%%   <<"failures">> => list(capability_failure()),
+%%   <<"status">> => list(any())
+%% }
+-type get_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_versions_request() :: #{
+%%   <<"DomainName">> => string()
+%% }
+-type get_compatible_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_versions_response() :: #{
+%%   <<"CompatibleVersions">> => list(compatible_versions_map())
+%% }
+-type get_compatible_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_request() :: #{}
+-type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% get_data_source_response() :: #{
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_application_setting_request() :: #{}
+-type get_default_application_setting_request() :: #{}.
+
+
+%% Example:
+%% get_default_application_setting_response() :: #{
+%%   <<"applicationArn">> => string()
+%% }
+-type get_default_application_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_direct_query_data_source_request() :: #{}
+-type get_direct_query_data_source_request() :: #{}.
+
+
+%% Example:
+%% get_direct_query_data_source_response() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
+%%   <<"DataSourceArn">> => string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"DataSourceType">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> => list(string())
+%% }
+-type get_direct_query_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_maintenance_status_request() :: #{
+%%   <<"MaintenanceId">> := string()
+%% }
+-type get_domain_maintenance_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_maintenance_status_response() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"NodeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_domain_maintenance_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_request() :: #{}
+-type get_index_request() :: #{}.
+
+
+%% Example:
+%% get_index_response() :: #{
+%%   <<"IndexSchema">> => any()
+%% }
+-type get_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_migration_request() :: #{}
+-type get_migration_request() :: #{}.
+
+
+%% Example:
+%% get_migration_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => migration_error(),
+%%   <<"exportedCount">> => integer(),
+%%   <<"importedCount">> => integer(),
+%%   <<"migrationId">> => string(),
+%%   <<"source">> => migration_source(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_migration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_package_version_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageVersionHistoryList">> => list(package_version_history())
+%% }
+-type get_package_version_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_upgrade_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_upgrade_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_upgrade_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UpgradeHistories">> => list(upgrade_history())
+%% }
+-type get_upgrade_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_upgrade_status_request() :: #{}
+-type get_upgrade_status_request() :: #{}.
+
+
+%% Example:
+%% get_upgrade_status_response() :: #{
+%%   <<"StepStatus">> => list(any()),
+%%   <<"UpgradeName">> => string(),
+%%   <<"UpgradeStep">> => list(any())
+%% }
+-type get_upgrade_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_federation_options_input() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"IAMFederationOptions">> => iam_federation_options_output(),
-%%   <<"InternalUserDatabaseEnabled">> => boolean(),
-%%   <<"JWTOptions">> => j_w_t_options_output(),
-%%   <<"SAMLOptions">> => saml_options_output()
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
 %% }
--type advanced_security_options() :: #{binary() => any()}.
+-type iam_federation_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_federation_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type iam_federation_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_identity_center_options() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"iamIdentityCenterApplicationArn">> => string(),
+%%   <<"iamIdentityCenterInstanceArn">> => string(),
+%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
+%% }
+-type iam_identity_center_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_identity_center_options_input() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"iamIdentityCenterInstanceArn">> => string(),
+%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
+%% }
+-type iam_identity_center_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options() :: #{
+%%   <<"EnabledAPIAccess">> => boolean(),
+%%   <<"IdentityCenterApplicationARN">> => string(),
+%%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"IdentityCenterInstanceRegion">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"RolesKey">> => list(any()),
+%%   <<"SubjectKey">> => list(any())
+%% }
+-type identity_center_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options_input() :: #{
+%%   <<"EnabledAPIAccess">> => boolean(),
+%%   <<"IdentityCenterInstanceARN">> => string(),
+%%   <<"IdentityCenterInstanceRegion">> => string(),
+%%   <<"RolesKey">> => list(any()),
+%%   <<"SubjectKey">> => list(any())
+%% }
+-type identity_center_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_options_status() :: #{
+%%   <<"Options">> => identity_center_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type identity_center_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connection() :: #{
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"ConnectionStatus">> => inbound_connection_status(),
+%%   <<"LocalDomainInfo">> => domain_information_container(),
+%%   <<"RemoteDomainInfo">> => domain_information_container()
+%% }
+-type inbound_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connection_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type inbound_connection_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"InsightId">> => string(),
+%%   <<"IsExperimental">> => boolean(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_entity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_entity() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_feedback_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_request() :: #{
+%%   <<"Entity">> := insight_feedback_entity(),
+%%   <<"FeedbackText">> => string(),
+%%   <<"InsightId">> := string(),
+%%   <<"Thumbs">> := list(any())
+%% }
+-type insight_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_feedback_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type insight_feedback_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_field() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type insight_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_time_range() :: #{
+%%   <<"From">> => float(),
+%%   <<"To">> => float()
+%% }
+-type insight_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_count_limits() :: #{
+%%   <<"MaximumInstanceCount">> => integer(),
+%%   <<"MinimumInstanceCount">> => integer()
+%% }
+-type instance_count_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_limits() :: #{
+%%   <<"InstanceCountLimits">> => instance_count_limits()
+%% }
+-type instance_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_type_details() :: #{
+%%   <<"AdvancedSecurityEnabled">> => boolean(),
+%%   <<"AppLogsEnabled">> => boolean(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"CognitoEnabled">> => boolean(),
+%%   <<"EncryptionEnabled">> => boolean(),
+%%   <<"InstanceRole">> => list(string()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"WarmEnabled">> => boolean()
+%% }
+-type instance_type_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_address_type_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
+%% }
+-type ip_address_type_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% j_w_t_options_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"JwksUrl">> => string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type j_w_t_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% j_w_t_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"JwksUrl">> => string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type j_w_t_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_store_access_option() :: #{
+%%   <<"KeyAccessRoleArn">> => string(),
+%%   <<"KeyStoreAccessEnabled">> => boolean()
+%% }
+-type key_store_access_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits() :: #{
+%%   <<"AdditionalLimits">> => list(additional_limit()),
+%%   <<"InstanceLimits">> => instance_limits(),
+%%   <<"StorageTypes">> => list(storage_type())
+%% }
+-type limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationSummaries">> => list(application_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_attachments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_attachments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_attachments_response() :: #{
+%%   <<"attachments">> => list(data_source_attachment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_attachments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_sources_request() :: #{}
+-type list_data_sources_request() :: #{}.
+
+
+%% Example:
+%% list_data_sources_response() :: #{
+%%   <<"DataSources">> => list(data_source_details())
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_direct_query_data_sources_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_direct_query_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_direct_query_data_sources_response() :: #{
+%%   <<"DirectQueryDataSources">> => list(direct_query_data_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_direct_query_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_maintenances_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_domain_maintenances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_maintenances_response() :: #{
+%%   <<"DomainMaintenances">> => list(domain_maintenance_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_maintenances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_names_request() :: #{
+%%   <<"EngineType">> => list(any())
+%% }
+-type list_domain_names_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_names_response() :: #{
+%%   <<"DomainNames">> => list(domain_info())
+%% }
+-type list_domain_names_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_for_package_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_for_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_for_package_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_for_package_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_request() :: #{
+%%   <<"Entity">> := insight_entity(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeRange">> => insight_time_range()
+%% }
+-type list_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_response() :: #{
+%%   <<"Insights">> => list(insight()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_type_details_request() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RetrieveAZs">> => boolean()
+%% }
+-type list_instance_type_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_type_details_response() :: #{
+%%   <<"InstanceTypeDetails">> => list(instance_type_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instance_type_details_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migrations_request() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_migrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migrations_response() :: #{
+%%   <<"migrations">> => list(migration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_migrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_packages_for_domain_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_packages_for_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_packages_for_domain_response() :: #{
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_packages_for_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduled_actions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_scheduled_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduled_actions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledActions">> => list(scheduled_action())
+%% }
+-type list_scheduled_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"ARN">> := string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(string())
+%% }
+-type list_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoint_access_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoint_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoint_access_response() :: #{
+%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoint_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_for_domain_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_for_domain_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
+%% }
+-type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_endpoints_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
+%% }
+-type list_vpc_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_publishing_option() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type log_publishing_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_publishing_options_status() :: #{
+%%   <<"Options">> => map(),
+%%   <<"Status">> => option_status()
+%% }
+-type log_publishing_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% master_user_options() :: #{
+%%   <<"MasterUserARN">> => string(),
+%%   <<"MasterUserName">> => string(),
+%%   <<"MasterUserPassword">> => string()
+%% }
+-type master_user_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type migration_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_options() :: #{
+%%   <<"conflictResolution">> => string(),
+%%   <<"exportOptions">> => export_options(),
+%%   <<"source">> => migration_source(),
+%%   <<"workspace">> => migration_workspace()
+%% }
+-type migration_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_source() :: #{
+%%   <<"datasourceArn">> => string()
+%% }
+-type migration_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => migration_error(),
+%%   <<"exportedCount">> => integer(),
+%%   <<"importedCount">> => integer(),
+%%   <<"migrationId">> => string(),
+%%   <<"source">> => migration_source(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type migration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_workspace() :: #{
+%%   <<"createWorkspace">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string(),
+%%   <<"workspaceId">> => string()
+%% }
+-type migration_workspace() :: #{binary() => any()}.
+
+
+%% Example:
+%% modifying_properties() :: #{
+%%   <<"ActiveValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PendingValue">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type modifying_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% natural_language_query_generation_options_input() :: #{
+%%   <<"DesiredState">> => list(any())
+%% }
+-type natural_language_query_generation_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% natural_language_query_generation_options_output() :: #{
+%%   <<"CurrentState">> => list(any()),
+%%   <<"DesiredState">> => list(any())
+%% }
+-type natural_language_query_generation_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_config() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Type">> => list(any())
+%% }
+-type node_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_option() :: #{
+%%   <<"NodeConfig">> => node_config(),
+%%   <<"NodeType">> => list(any())
+%% }
+-type node_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_to_node_encryption_options() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type node_to_node_encryption_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_to_node_encryption_options_status() :: #{
+%%   <<"Options">> => node_to_node_encryption_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type node_to_node_encryption_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% off_peak_window() :: #{
+%%   <<"WindowStartTime">> => window_start_time()
+%% }
+-type off_peak_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% off_peak_window_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"OffPeakWindow">> => off_peak_window()
+%% }
+-type off_peak_window_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% off_peak_window_options_status() :: #{
+%%   <<"Options">> => off_peak_window_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type off_peak_window_options_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1473,24 +2555,387 @@
 
 
 %% Example:
-%% off_peak_window_options_status() :: #{
-%%   <<"Options">> => off_peak_window_options(),
-%%   <<"Status">> => option_status()
+%% outbound_connection() :: #{
+%%   <<"ConnectionAlias">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"ConnectionProperties">> => connection_properties(),
+%%   <<"ConnectionStatus">> => outbound_connection_status(),
+%%   <<"LocalDomainInfo">> => domain_information_container(),
+%%   <<"RemoteDomainInfo">> => domain_information_container()
 %% }
--type off_peak_window_options_status() :: #{binary() => any()}.
+-type outbound_connection() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_data_source_request() :: #{}
--type get_data_source_request() :: #{}.
+%% outbound_connection_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type outbound_connection_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_domain_config_change_response() :: #{
-%%   <<"CancelledChangeIds">> => list(string()),
-%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()),
-%%   <<"DryRun">> => boolean()
+%% package_association_configuration() :: #{
+%%   <<"KeyStoreAccessOption">> => key_store_access_option()
 %% }
--type cancel_domain_config_change_response() :: #{binary() => any()}.
+-type package_association_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_configuration() :: #{
+%%   <<"ConfigurationRequirement">> => list(any()),
+%%   <<"LicenseFilepath">> => string(),
+%%   <<"LicenseRequirement">> => list(any()),
+%%   <<"RequiresRestartForConfigurationUpdate">> => boolean()
+%% }
+-type package_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_details() :: #{
+%%   <<"AllowListedUserList">> => list(string()),
+%%   <<"AvailablePackageConfiguration">> => package_configuration(),
+%%   <<"AvailablePackageVersion">> => string(),
+%%   <<"AvailablePluginProperties">> => plugin_properties(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"PackageDescription">> => string(),
+%%   <<"PackageEncryptionOptions">> => package_encryption_options(),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageName">> => string(),
+%%   <<"PackageOwner">> => string(),
+%%   <<"PackageStatus">> => list(any()),
+%%   <<"PackageType">> => list(any()),
+%%   <<"PackageVendingOptions">> => package_vending_options()
+%% }
+-type package_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_details_for_association() :: #{
+%%   <<"AssociationConfiguration">> => package_association_configuration(),
+%%   <<"PackageID">> => string(),
+%%   <<"PrerequisitePackageIDList">> => list(string())
+%% }
+-type package_details_for_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_encryption_options() :: #{
+%%   <<"EncryptionEnabled">> => boolean(),
+%%   <<"KmsKeyIdentifier">> => string()
+%% }
+-type package_encryption_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_source() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type package_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_vending_options() :: #{
+%%   <<"VendingEnabled">> => boolean()
+%% }
+-type package_vending_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_version_history() :: #{
+%%   <<"CommitMessage">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"PackageConfiguration">> => package_configuration(),
+%%   <<"PackageVersion">> => string(),
+%%   <<"PluginProperties">> => plugin_properties()
+%% }
+-type package_version_history() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_properties() :: #{
+%%   <<"ClassName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UncompressedSizeInBytes">> => float(),
+%%   <<"Version">> => string()
+%% }
+-type plugin_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% prometheus_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"WorkspaceArn">> => string()
+%% }
+-type prometheus_direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_reserved_instance_offering_request() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"ReservationName">> := string(),
+%%   <<"ReservedInstanceOfferingId">> := string()
+%% }
+-type purchase_reserved_instance_offering_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_reserved_instance_offering_response() :: #{
+%%   <<"ReservationName">> => string(),
+%%   <<"ReservedInstanceId">> => string()
+%% }
+-type purchase_reserved_instance_offering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_application_setting_request() :: #{
+%%   <<"applicationArn">> := string(),
+%%   <<"setAsDefault">> := boolean()
+%% }
+-type put_default_application_setting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_application_setting_response() :: #{
+%%   <<"applicationArn">> => string()
+%% }
+-type put_default_application_setting_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_capability_request() :: #{
+%%   <<"capabilityConfig">> := list(),
+%%   <<"capabilityName">> := string()
+%% }
+-type register_capability_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_capability_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"capabilityConfig">> => list(),
+%%   <<"capabilityName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type register_capability_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_inbound_connection_request() :: #{}
+-type reject_inbound_connection_request() :: #{}.
+
+
+%% Example:
+%% reject_inbound_connection_response() :: #{
+%%   <<"Connection">> => inbound_connection()
+%% }
+-type reject_inbound_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_tags_request() :: #{
+%%   <<"ARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reserved_instance() :: #{
+%%   <<"BillingSubscriptionId">> => float(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservationName">> => string(),
+%%   <<"ReservedInstanceId">> => string(),
+%%   <<"ReservedInstanceOfferingId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% reserved_instance_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservedInstanceOfferingId">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_instance_offering() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_vpc_endpoint_access_request() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Service">> => list(any()),
+%%   <<"ServiceOptions">> => service_options()
+%% }
+-type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_vpc_endpoint_access_response() :: #{}
+-type revoke_vpc_endpoint_access_response() :: #{}.
+
+
+%% Example:
+%% rollback_service_software_options() :: #{
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NewVersion">> => string(),
+%%   <<"RollbackAvailable">> => boolean()
+%% }
+-type rollback_service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_service_software_update_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type rollback_service_software_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_service_software_update_response() :: #{
+%%   <<"RollbackServiceSoftwareOptions">> => rollback_service_software_options()
+%% }
+-type rollback_service_software_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_glue_data_catalog() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type s3_glue_data_catalog() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_vectors_engine() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type s3_vectors_engine() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_idp() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"MetadataContent">> => string()
+%% }
+-type saml_idp() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_options_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Idp">> => saml_idp(),
+%%   <<"MasterBackendRole">> => string(),
+%%   <<"MasterUserName">> => string(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SessionTimeoutMinutes">> => integer(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type saml_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Idp">> => saml_idp(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SessionTimeoutMinutes">> => integer(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type saml_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% saved_object_identifier() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type saved_object_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_action() :: #{
+%%   <<"Cancellable">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Mandatory">> => boolean(),
+%%   <<"ScheduledBy">> => list(any()),
+%%   <<"ScheduledTime">> => float(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type scheduled_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_auto_tune_details() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Severity">> => list(any())
+%% }
+-type scheduled_auto_tune_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_lake_direct_query_data_source() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type security_lake_direct_query_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_vector_acceleration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type serverless_vector_acceleration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_options() :: #{
+%%   <<"SupportedRegions">> => list(string())
+%% }
+-type service_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1501,63 +2946,192 @@
 
 
 %% Example:
-%% node_to_node_encryption_options_status() :: #{
-%%   <<"Options">> => node_to_node_encryption_options(),
+%% service_software_options() :: #{
+%%   <<"AutomatedUpdateDate">> => non_neg_integer(),
+%%   <<"Cancellable">> => boolean(),
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NewVersion">> => string(),
+%%   <<"OptionalDeployment">> => boolean(),
+%%   <<"UpdateAvailable">> => boolean(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type service_software_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_not_available_exception() :: #{
+%%   <<"SlotSuggestions">> => list(float()),
+%%   <<"message">> => string()
+%% }
+-type slot_not_available_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_options() :: #{
+%%   <<"AutomatedSnapshotStartHour">> => integer()
+%% }
+-type snapshot_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% snapshot_options_status() :: #{
+%%   <<"Options">> => snapshot_options(),
 %%   <<"Status">> => option_status()
 %% }
--type node_to_node_encryption_options_status() :: #{binary() => any()}.
+-type snapshot_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_snapshot_pause_request_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
+%% software_update_options() :: #{
+%%   <<"AutoSoftwareUpdateEnabled">> => boolean(),
+%%   <<"UseLatestServiceSoftwareForBlueGreen">> => boolean()
 %% }
--type automated_snapshot_pause_request_options() :: #{binary() => any()}.
+-type software_update_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_insight_details_request() :: #{
-%%   <<"Entity">> := insight_entity(),
-%%   <<"InsightId">> := string(),
-%%   <<"ShowHtmlContent">> => boolean()
-%% }
--type describe_insight_details_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upgrade_history_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UpgradeHistories">> => list(upgrade_history())
-%% }
--type get_upgrade_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_ml_options_status() :: #{
-%%   <<"Options">> => a_i_ml_options_output(),
+%% software_update_options_status() :: #{
+%%   <<"Options">> => software_update_options(),
 %%   <<"Status">> => option_status()
 %% }
--type a_i_ml_options_status() :: #{binary() => any()}.
+-type software_update_options_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_domain_config_response() :: #{
-%%   <<"DomainConfig">> => domain_config(),
-%%   <<"DryRunProgressStatus">> => dry_run_progress_status(),
-%%   <<"DryRunResults">> => dry_run_results()
+%% start_domain_maintenance_request() :: #{
+%%   <<"Action">> := list(any()),
+%%   <<"NodeId">> => string()
 %% }
--type update_domain_config_response() :: #{binary() => any()}.
+-type start_domain_maintenance_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_data_source_request() :: #{
+%% start_domain_maintenance_response() :: #{
+%%   <<"MaintenanceId">> => string()
+%% }
+-type start_domain_maintenance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_migration_request() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"migrationOptions">> := migration_options()
+%% }
+-type start_migration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_migration_response() :: #{
+%%   <<"migrationId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type start_migration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_service_software_update_request() :: #{
+%%   <<"DesiredStartTime">> => float(),
+%%   <<"DomainName">> := string(),
+%%   <<"ScheduleAt">> => list(any())
+%% }
+-type start_service_software_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_service_software_update_response() :: #{
+%%   <<"ServiceSoftwareOptions">> => service_software_options()
+%% }
+-type start_service_software_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_type() :: #{
+%%   <<"StorageSubTypeName">> => string(),
+%%   <<"StorageTypeLimits">> => list(storage_type_limit()),
+%%   <<"StorageTypeName">> => string()
+%% }
+-type storage_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_type_limit() :: #{
+%%   <<"LimitName">> => string(),
+%%   <<"LimitValues">> => list(string())
+%% }
+-type storage_type_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"appConfigs">> => list(app_config()),
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"appConfigs">> => list(app_config()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_request() :: #{
 %%   <<"DataSourceType">> := list(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string()
+%%   <<"Status">> => list(any())
 %% }
--type add_data_source_request() :: #{binary() => any()}.
+-type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_query_data_source_request() :: #{
+%%   <<"DataSourceAccessPolicy">> => string(),
+%%   <<"DataSourceType">> := list(),
+%%   <<"Description">> => string(),
+%%   <<"OpenSearchArns">> => list(string())
+%% }
+-type update_direct_query_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_query_data_source_response() :: #{
+%%   <<"DataSourceArn">> => string()
+%% }
+-type update_direct_query_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1591,346 +3165,26 @@
 
 
 %% Example:
-%% scheduled_action() :: #{
-%%   <<"Cancellable">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Mandatory">> => boolean(),
-%%   <<"ScheduledBy">> => list(any()),
-%%   <<"ScheduledTime">> => float(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
+%% update_domain_config_response() :: #{
+%%   <<"DomainConfig">> => domain_config(),
+%%   <<"DryRunProgressStatus">> => dry_run_progress_status(),
+%%   <<"DryRunResults">> => dry_run_results()
 %% }
--type scheduled_action() :: #{binary() => any()}.
+-type update_domain_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scheduled_actions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledActions">> => list(scheduled_action())
+%% update_index_request() :: #{
+%%   <<"IndexSchema">> := any()
 %% }
--type list_scheduled_actions_response() :: #{binary() => any()}.
+-type update_index_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% off_peak_window_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"OffPeakWindow">> => off_peak_window()
-%% }
--type off_peak_window_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_properties() :: #{
-%%   <<"CrossClusterSearch">> => cross_cluster_search_connection_properties(),
-%%   <<"Endpoint">> => string()
-%% }
--type connection_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_failure() :: #{
-%%   <<"details">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type capability_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_data_source_attachment_request() :: #{
-%%   <<"dataSourceArn">> := string()
-%% }
--type describe_data_source_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type dependency_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_config_response() :: #{
-%%   <<"DomainConfig">> => domain_config()
-%% }
--type describe_domain_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_instance_type_limits_response() :: #{
-%%   <<"LimitsByRole">> => map()
-%% }
--type describe_instance_type_limits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_attachment_summary() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"dataSourceArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type data_source_attachment_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vpc_endpoints_response() :: #{
-%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint())
-%% }
--type describe_vpc_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_inbound_connection_response() :: #{
-%%   <<"Connection">> => inbound_connection()
-%% }
--type delete_inbound_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_configuration_input() :: #{
-%%   <<"name">> => string(),
-%%   <<"workspaceType">> => string()
-%% }
--type workspace_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_service_software_update_response() :: #{
-%%   <<"RollbackServiceSoftwareOptions">> => rollback_service_software_options()
-%% }
--type rollback_service_software_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sources_response() :: #{
-%%   <<"DataSources">> => list(data_source_details())
-%% }
--type list_data_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_request() :: #{}
--type delete_data_source_request() :: #{}.
-
-
-%% Example:
-%% list_data_source_attachments_response() :: #{
-%%   <<"attachments">> => list(data_source_attachment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_source_attachments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_packages_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => list(string())
-%% }
--type describe_packages_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpoint">> => vpc_endpoint()
-%% }
--type update_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_nodes_request() :: #{}
--type describe_domain_nodes_request() :: #{}.
-
-%% Example:
-%% delete_outbound_connection_request() :: #{}
--type delete_outbound_connection_request() :: #{}.
-
-
-%% Example:
-%% error_details() :: #{
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ErrorType">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_instance_type_limits_request() :: #{
-%%   <<"DomainName">> => string()
-%% }
--type describe_instance_type_limits_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_at_rest_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"KmsKeyId">> => string()
-%% }
--type encryption_at_rest_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_direct_query_data_sources_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_direct_query_data_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_feedback_response() :: #{
+%% update_index_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
--type insight_feedback_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_history_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageVersionHistoryList">> => list(package_version_history())
-%% }
--type get_package_version_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_response() :: #{
-%%   <<"DomainStatus">> => domain_status()
-%% }
--type describe_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"appConfigs">> => list(app_config()),
-%%   <<"clientToken">> => string(),
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tagList">> => list(tag())
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_status() :: #{
-%%   <<"Options">> => string(),
-%%   <<"Status">> => option_status()
-%% }
--type version_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoints_for_domain_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoints_for_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_options_input() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Idp">> => saml_idp(),
-%%   <<"MasterBackendRole">> => string(),
-%%   <<"MasterUserName">> => string(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SessionTimeoutMinutes">> => integer(),
-%%   <<"SubjectKey">> => string()
-%% }
--type saml_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_instances_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedInstances">> => list(reserved_instance())
-%% }
--type describe_reserved_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_inbound_connection_request() :: #{}
--type accept_inbound_connection_request() :: #{}.
-
-
-%% Example:
-%% vpc_endpoint() :: #{
-%%   <<"DomainArn">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcEndpointOwner">> => string(),
-%%   <<"VpcOptions">> => vpc_derived_info()
-%% }
--type vpc_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_federation_options_input() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SubjectKey">> => string()
-%% }
--type iam_federation_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_package_version_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_auto_tune_details() :: #{
-%%   <<"Action">> => string(),
-%%   <<"ActionType">> => list(any()),
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Severity">> => list(any())
-%% }
--type scheduled_auto_tune_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_response() :: #{
-%%   <<"appConfigs">> => list(app_config()),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
-%%   <<"id">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tagList">> => list(tag())
-%% }
--type create_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(string())
-%% }
--type list_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_address_type_status() :: #{
-%%   <<"Options">> => list(any()),
-%%   <<"Status">> => option_status()
-%% }
--type ip_address_type_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_options() :: #{
-%%   <<"EBSEnabled">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"Throughput">> => integer(),
-%%   <<"VolumeSize">> => integer(),
-%%   <<"VolumeType">> => list(any())
-%% }
--type ebs_options() :: #{binary() => any()}.
+-type update_index_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1946,684 +3200,60 @@
 
 
 %% Example:
-%% list_domain_names_response() :: #{
-%%   <<"DomainNames">> => list(domain_info())
+%% update_package_response() :: #{
+%%   <<"PackageDetails">> => package_details()
 %% }
--type list_domain_names_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_health_request() :: #{}
--type describe_domain_health_request() :: #{}.
+-type update_package_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% plugin_properties() :: #{
-%%   <<"ClassName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"UncompressedSizeInBytes">> => float(),
-%%   <<"Version">> => string()
+%% update_package_scope_request() :: #{
+%%   <<"Operation">> := list(any()),
+%%   <<"PackageID">> := string(),
+%%   <<"PackageUserList">> := list(string())
 %% }
--type plugin_properties() :: #{binary() => any()}.
+-type update_package_scope_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_package_request() :: #{
-%%   <<"AssociationConfiguration">> => package_association_configuration(),
-%%   <<"PrerequisitePackageIDList">> => list(string())
+%% update_package_scope_response() :: #{
+%%   <<"Operation">> => list(any()),
+%%   <<"PackageID">> => string(),
+%%   <<"PackageUserList">> => list(string())
 %% }
--type associate_package_request() :: #{binary() => any()}.
+-type update_package_scope_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
+%% update_scheduled_action_request() :: #{
+%%   <<"ActionID">> := string(),
+%%   <<"ActionType">> := list(any()),
+%%   <<"DesiredStartTime">> => float(),
+%%   <<"ScheduleAt">> := list(any())
 %% }
--type filter() :: #{binary() => any()}.
+-type update_scheduled_action_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_snapshot_pause_options_status() :: #{
-%%   <<"Options">> => automated_snapshot_pause_options(),
-%%   <<"Status">> => option_status()
+%% update_scheduled_action_response() :: #{
+%%   <<"ScheduledAction">> => scheduled_action()
 %% }
--type automated_snapshot_pause_options_status() :: #{binary() => any()}.
+-type update_scheduled_action_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% inbound_connection() :: #{
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"ConnectionStatus">> => inbound_connection_status(),
-%%   <<"LocalDomainInfo">> => domain_information_container(),
-%%   <<"RemoteDomainInfo">> => domain_information_container()
-%% }
--type inbound_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_options() :: #{
-%%   <<"SupportedRegions">> => list(string())
-%% }
--type service_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_response() :: #{}
--type delete_application_response() :: #{}.
-
-
-%% Example:
-%% s3_glue_data_catalog() :: #{
-%%   <<"RoleArn">> => string()
-%% }
--type s3_glue_data_catalog() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_identity_center_options() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"iamIdentityCenterApplicationArn">> => string(),
-%%   <<"iamIdentityCenterInstanceArn">> => string(),
-%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
-%% }
--type iam_identity_center_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_data_source_attachment_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"attachmentId">> => string(),
-%%   <<"dataSourceArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type describe_data_source_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% dissociate_package_request() :: #{}
--type dissociate_package_request() :: #{}.
-
-
-%% Example:
-%% insight_entity() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type insight_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_security_options_input() :: #{
-%%   <<"AnonymousAuthEnabled">> => boolean(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IAMFederationOptions">> => iam_federation_options_input(),
-%%   <<"InternalUserDatabaseEnabled">> => boolean(),
-%%   <<"JWTOptions">> => j_w_t_options_input(),
-%%   <<"MasterUserOptions">> => master_user_options(),
-%%   <<"SAMLOptions">> => saml_options_input()
-%% }
--type advanced_security_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_details() :: #{
-%%   <<"DataSourceType">> => list(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type data_source_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"appConfigs">> => list(app_config()),
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options_input()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_response() :: #{
-%%   <<"appConfigs">> => list(app_config()),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type update_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_center_options() :: #{
-%%   <<"EnabledAPIAccess">> => boolean(),
-%%   <<"IdentityCenterApplicationARN">> => string(),
-%%   <<"IdentityCenterInstanceARN">> => string(),
-%%   <<"IdentityCenterInstanceRegion">> => string(),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"RolesKey">> => list(any()),
-%%   <<"SubjectKey">> => list(any())
-%% }
--type identity_center_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_status() :: #{
-%%   <<"IdentityCenterOptions">> => identity_center_options(),
-%%   <<"DomainName">> => string(),
-%%   <<"AutoTuneOptions">> => auto_tune_options_output(),
-%%   <<"CognitoOptions">> => cognito_options(),
-%%   <<"Processing">> => boolean(),
-%%   <<"UpgradeProcessing">> => boolean(),
-%%   <<"OffPeakWindowOptions">> => off_peak_window_options(),
-%%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
-%%   <<"SnapshotOptions">> => snapshot_options(),
-%%   <<"LogPublishingOptions">> => map(),
-%%   <<"ARN">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"EndpointV2">> => string(),
-%%   <<"ModifyingProperties">> => list(modifying_properties()),
-%%   <<"Created">> => boolean(),
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"UseCase">> => list(any()),
-%%   <<"AdvancedOptions">> => map(),
-%%   <<"ServiceSoftwareOptions">> => service_software_options(),
-%%   <<"EngineMode">> => list(any()),
-%%   <<"IPAddressType">> => list(any()),
-%%   <<"Endpoints">> => map(),
-%%   <<"DomainEndpointV2HostedZoneId">> => string(),
-%%   <<"SoftwareUpdateOptions">> => software_update_options(),
-%%   <<"VPCOptions">> => vpc_derived_info(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options(),
-%%   <<"AccessPolicies">> => string(),
-%%   <<"EBSOptions">> => ebs_options(),
-%%   <<"Endpoint">> => string(),
-%%   <<"ChangeProgressDetails">> => change_progress_details(),
-%%   <<"ClusterConfig">> => cluster_config(),
-%%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
-%%   <<"DomainProcessingStatus">> => list(any()),
-%%   <<"Deleted">> => boolean(),
-%%   <<"AIMLOptions">> => a_i_ml_options_output(),
-%%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options()
-%% }
--type domain_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_info() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"EngineType">> => list(any())
-%% }
--type domain_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserPoolId">> => string()
-%% }
--type cognito_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_time_range() :: #{
-%%   <<"From">> => float(),
-%%   <<"To">> => float()
-%% }
--type insight_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_endpoint_access_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoint_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_endpoint_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DomainArn">> := string(),
+%% update_vpc_endpoint_request() :: #{
+%%   <<"VpcEndpointId">> := string(),
 %%   <<"VpcOptions">> := vpc_options()
 %% }
--type create_vpc_endpoint_request() :: #{binary() => any()}.
+-type update_vpc_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_tune_options_input() :: #{
-%%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
-%%   <<"UseOffPeakWindow">> => boolean()
+%% update_vpc_endpoint_response() :: #{
+%%   <<"VpcEndpoint">> => vpc_endpoint()
 %% }
--type auto_tune_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancelled_change_property() :: #{
-%%   <<"ActiveValue">> => string(),
-%%   <<"CancelledValue">> => string(),
-%%   <<"PropertyName">> => string()
-%% }
--type cancelled_change_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_response() :: #{
-%%   <<"appConfigs">> => list(app_config()),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"endpoint">> => string(),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_options(),
-%%   <<"id">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_change_progress_response() :: #{
-%%   <<"ChangeProgressStatus">> => change_progress_status_details()
-%% }
--type describe_domain_change_progress_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_limits() :: #{
-%%   <<"InstanceCountLimits">> => instance_count_limits()
-%% }
--type instance_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_migration_response() :: #{
-%%   <<"migrationId">> => string(),
-%%   <<"status">> => string()
-%% }
--type start_migration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_type_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% reserved_instance_offering() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"PaymentOption">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservedInstanceOfferingId">> => string(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_instance_offering() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_details() :: #{
-%%   <<"ChangeId">> => string(),
-%%   <<"ConfigChangeStatus">> => list(any()),
-%%   <<"InitiatedBy">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type change_progress_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reserved_instance_offerings_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedInstanceOfferingId">> => string()
-%% }
--type describe_reserved_instance_offerings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_service_software_update_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type cancel_service_software_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% zone_awareness_config() :: #{
-%%   <<"AvailabilityZoneCount">> => integer()
-%% }
--type zone_awareness_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upgrade_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_upgrade_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_default_application_setting_response() :: #{
-%%   <<"applicationArn">> => string()
-%% }
--type get_default_application_setting_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_domain_information() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"Region">> => string()
-%% }
--type aws_domain_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_stage() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type change_progress_stage() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"statuses">> => list(list(any())())
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_index_request() :: #{
-%%   <<"IndexName">> := string(),
-%%   <<"IndexSchema">> := any()
-%% }
--type create_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_store_access_option() :: #{
-%%   <<"KeyAccessRoleArn">> => string(),
-%%   <<"KeyStoreAccessEnabled">> => boolean()
-%% }
--type key_store_access_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% dissociate_package_response() :: #{
-%%   <<"DomainPackageDetails">> => domain_package_details()
-%% }
--type dissociate_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_index_request() :: #{
-%%   <<"IndexSchema">> := any()
-%% }
--type update_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_maintenances_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_domain_maintenances_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_package_request() :: #{}
--type delete_package_request() :: #{}.
-
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_attachments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_source_attachments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_identity_center_options_input() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"iamIdentityCenterInstanceArn">> => string(),
-%%   <<"iamRoleForIdentityCenterApplicationArn">> => string()
-%% }
--type iam_identity_center_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_details_for_association() :: #{
-%%   <<"AssociationConfiguration">> => package_association_configuration(),
-%%   <<"PackageID">> => string(),
-%%   <<"PrerequisitePackageIDList">> => list(string())
-%% }
--type package_details_for_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_feedback_entity() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type insight_feedback_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_config() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type app_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_federation_options_output() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SubjectKey">> => string()
-%% }
--type iam_federation_options_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_request() :: #{}
--type describe_domain_request() :: #{}.
-
-
-%% Example:
-%% automated_snapshot_pause_options() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type automated_snapshot_pause_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% natural_language_query_generation_options_input() :: #{
-%%   <<"DesiredState">> => list(any())
-%% }
--type natural_language_query_generation_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_nodes_status() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"NodeId">> => string(),
-%%   <<"NodeStatus">> => list(any()),
-%%   <<"NodeType">> => list(any()),
-%%   <<"StorageSize">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"StorageVolumeType">> => list(any())
-%% }
--type domain_nodes_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_packages_for_domain_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_packages_for_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_strategy_options() :: #{
-%%   <<"DeploymentStrategy">> => list(any())
-%% }
--type deployment_strategy_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_security_options_status() :: #{
-%%   <<"Options">> => advanced_security_options(),
-%%   <<"Status">> => option_status()
-%% }
--type advanced_security_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_workspace() :: #{
-%%   <<"createWorkspace">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string(),
-%%   <<"workspaceId">> => string()
-%% }
--type migration_workspace() :: #{binary() => any()}.
-
-
-%% Example:
-%% duration() :: #{
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type duration() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_option() :: #{
-%%   <<"NodeConfig">> => node_config(),
-%%   <<"NodeType">> => list(any())
-%% }
--type node_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_encryption_options() :: #{
-%%   <<"EncryptionEnabled">> => boolean(),
-%%   <<"KmsKeyIdentifier">> => string()
-%% }
--type package_encryption_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% prometheus_direct_query_data_source() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"WorkspaceArn">> => string()
-%% }
--type prometheus_direct_query_data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_for_package_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_for_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_reserved_instance_offering_response() :: #{
-%%   <<"ReservationName">> => string(),
-%%   <<"ReservedInstanceId">> => string()
-%% }
--type purchase_reserved_instance_offering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_not_available_exception() :: #{
-%%   <<"SlotSuggestions">> => list(float()),
-%%   <<"message">> => string()
-%% }
--type slot_not_available_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorize_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Service">> => list(any()),
-%%   <<"ServiceOptions">> => service_options()
-%% }
--type authorize_vpc_endpoint_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_software_options() :: #{
-%%   <<"AutomatedUpdateDate">> => non_neg_integer(),
-%%   <<"Cancellable">> => boolean(),
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NewVersion">> => string(),
-%%   <<"OptionalDeployment">> => boolean(),
-%%   <<"UpdateAvailable">> => boolean(),
-%%   <<"UpdateStatus">> => list(any())
-%% }
--type service_software_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% saved_object_identifier() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
-%% }
--type saved_object_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_publishing_options_status() :: #{
-%%   <<"Options">> => map(),
-%%   <<"Status">> => option_status()
-%% }
--type log_publishing_options_status() :: #{binary() => any()}.
+-type update_vpc_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2634,92 +3264,6 @@
 %%   <<"TargetVersion">> := string()
 %% }
 -type upgrade_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_service_software_update_request() :: #{
-%%   <<"DesiredStartTime">> => float(),
-%%   <<"DomainName">> := string(),
-%%   <<"ScheduleAt">> => list(any())
-%% }
--type start_service_software_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instance_type_details_request() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RetrieveAZs">> => boolean()
-%% }
--type list_instance_type_details_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% j_w_t_options_output() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"JwksUrl">> => string(),
-%%   <<"PublicKey">> => string(),
-%%   <<"RolesKey">> => string(),
-%%   <<"SubjectKey">> => string()
-%% }
--type j_w_t_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_strategy_options_status() :: #{
-%%   <<"Options">> => deployment_strategy_options(),
-%%   <<"Status">> => option_status()
-%% }
--type deployment_strategy_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune_options() :: #{
-%%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
-%%   <<"RollbackOnDisable">> => list(any()),
-%%   <<"UseOffPeakWindow">> => boolean()
-%% }
--type auto_tune_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% software_update_options() :: #{
-%%   <<"AutoSoftwareUpdateEnabled">> => boolean(),
-%%   <<"UseLatestServiceSoftwareForBlueGreen">> => boolean()
-%% }
--type software_update_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_source_request() :: #{
-%%   <<"DataSourceType">> := list(),
-%%   <<"Description">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_i_ml_options_input() :: #{
-%%   <<"NaturalLanguageQueryGenerationOptions">> => natural_language_query_generation_options_input(),
-%%   <<"S3VectorsEngine">> => s3_vectors_engine(),
-%%   <<"ServerlessVectorAcceleration">> => serverless_vector_acceleration()
-%% }
--type a_i_ml_options_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_upgrade_status_request() :: #{}
--type get_upgrade_status_request() :: #{}.
 
 
 %% Example:
@@ -2735,452 +3279,13 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
+%% upgrade_history() :: #{
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"StepsList">> => list(upgrade_step_item()),
+%%   <<"UpgradeName">> => string(),
+%%   <<"UpgradeStatus">> => list(any())
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_request() :: #{}
--type delete_vpc_endpoint_request() :: #{}.
-
-
-%% Example:
-%% create_domain_response() :: #{
-%%   <<"DomainStatus">> => domain_status()
-%% }
--type create_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_migration_request() :: #{}
--type get_migration_request() :: #{}.
-
-
-%% Example:
-%% migration_options() :: #{
-%%   <<"conflictResolution">> => string(),
-%%   <<"exportOptions">> => export_options(),
-%%   <<"source">> => migration_source(),
-%%   <<"workspace">> => migration_workspace()
-%% }
--type migration_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% base_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type base_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_to_node_encryption_options() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type node_to_node_encryption_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_package_response() :: #{
-%%   <<"PackageDetails">> => package_details()
-%% }
--type create_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% limits() :: #{
-%%   <<"AdditionalLimits">> => list(additional_limit()),
-%%   <<"InstanceLimits">> => instance_limits(),
-%%   <<"StorageTypes">> => list(storage_type())
-%% }
--type limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dry_run_progress_request() :: #{
-%%   <<"DryRunId">> => string(),
-%%   <<"LoadDryRunConfig">> => boolean()
-%% }
--type describe_dry_run_progress_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_domain_maintenance_response() :: #{
-%%   <<"MaintenanceId">> => string()
-%% }
--type start_domain_maintenance_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_query_data_source_request() :: #{}
--type delete_direct_query_data_source_request() :: #{}.
-
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endpoint">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type application_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_vpc_endpoint_access_request() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Service">> => list(any()),
-%%   <<"ServiceOptions">> => service_options()
-%% }
--type revoke_vpc_endpoint_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_info() :: #{
-%%   <<"AvailabilityZoneInformation">> => list(availability_zone_info())
-%% }
--type environment_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_options() :: #{
-%%   <<"EgressEnabled">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domains_response() :: #{
-%%   <<"DomainStatusList">> => list(domain_status())
-%% }
--type describe_domains_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_outbound_connection_response() :: #{
-%%   <<"Connection">> => outbound_connection()
-%% }
--type delete_outbound_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_config() :: #{
-%%   <<"ColdStorageOptions">> => cold_storage_options(),
-%%   <<"DedicatedMasterCount">> => integer(),
-%%   <<"DedicatedMasterEnabled">> => boolean(),
-%%   <<"DedicatedMasterType">> => list(any()),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"MultiAZWithStandbyEnabled">> => boolean(),
-%%   <<"NodeOptions">> => list(node_option()),
-%%   <<"WarmCount">> => integer(),
-%%   <<"WarmEnabled">> => boolean(),
-%%   <<"WarmType">> => list(any()),
-%%   <<"ZoneAwarenessConfig">> => zone_awareness_config(),
-%%   <<"ZoneAwarenessEnabled">> => boolean()
-%% }
--type cluster_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_endpoint_response() :: #{
-%%   <<"VpcEndpoint">> => vpc_endpoint()
-%% }
--type create_vpc_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"ApplicationSummaries">> => list(application_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_center_options_status() :: #{
-%%   <<"Options">> => identity_center_options(),
-%%   <<"Status">> => option_status()
-%% }
--type identity_center_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_direct_query_data_source_request() :: #{
-%%   <<"DataSourceAccessPolicy">> => string(),
-%%   <<"DataSourceName">> := string(),
-%%   <<"DataSourceType">> := list(),
-%%   <<"Description">> => string(),
-%%   <<"OpenSearchArns">> => list(string()),
-%%   <<"TagList">> => list(tag())
-%% }
--type add_direct_query_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_endpoint_options_status() :: #{
-%%   <<"Options">> => domain_endpoint_options(),
-%%   <<"Status">> => option_status()
-%% }
--type domain_endpoint_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_inbound_connections_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_inbound_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_direct_query_data_source_request() :: #{
-%%   <<"DataSourceAccessPolicy">> => string(),
-%%   <<"DataSourceType">> := list(),
-%%   <<"Description">> => string(),
-%%   <<"OpenSearchArns">> => list(string())
-%% }
--type update_direct_query_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_package_details() :: #{
-%%   <<"AssociationConfiguration">> => package_association_configuration(),
-%%   <<"DomainName">> => string(),
-%%   <<"DomainPackageStatus">> => list(any()),
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"PackageID">> => string(),
-%%   <<"PackageName">> => string(),
-%%   <<"PackageType">> => list(any()),
-%%   <<"PackageVersion">> => string(),
-%%   <<"PrerequisitePackageIDList">> => list(string()),
-%%   <<"ReferencePath">> => string()
-%% }
--type domain_package_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_migrations_request() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_migrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_options_status() :: #{
-%%   <<"Options">> => map(),
-%%   <<"Status">> => option_status()
-%% }
--type advanced_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_index_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type create_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_policies_status() :: #{
-%%   <<"Options">> => string(),
-%%   <<"Status">> => option_status()
-%% }
--type access_policies_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% reserved_instance() :: #{
-%%   <<"BillingSubscriptionId">> => float(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"PaymentOption">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservationName">> => string(),
-%%   <<"ReservedInstanceId">> => string(),
-%%   <<"ReservedInstanceOfferingId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_history() :: #{
-%%   <<"CommitMessage">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"PackageConfiguration">> => package_configuration(),
-%%   <<"PackageVersion">> => string(),
-%%   <<"PluginProperties">> => plugin_properties()
-%% }
--type package_version_history() :: #{binary() => any()}.
-
-%% Example:
-%% get_direct_query_data_source_request() :: #{}
--type get_direct_query_data_source_request() :: #{}.
-
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_default_application_setting_request() :: #{
-%%   <<"applicationArn">> := string(),
-%%   <<"setAsDefault">> := boolean()
-%% }
--type put_default_application_setting_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source() :: #{
-%%   <<"dataSourceArn">> => string(),
-%%   <<"dataSourceDescription">> => string(),
-%%   <<"iamRoleForDataSourceArn">> => string()
-%% }
--type data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_endpoint_request() :: #{
-%%   <<"VpcEndpointId">> := string(),
-%%   <<"VpcOptions">> := vpc_options()
-%% }
--type update_vpc_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_tags_request() :: #{
-%%   <<"ARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_packages_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"PackageList">> := list(package_details_for_association())
-%% }
--type associate_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"InsightId">> => string(),
-%%   <<"IsExperimental">> => boolean(),
-%%   <<"Priority">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type insight() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_maintenances_response() :: #{
-%%   <<"DomainMaintenances">> => list(domain_maintenance_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_maintenances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_request() :: #{
-%%   <<"ARN">> := string()
-%% }
--type list_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_service_software_update_response() :: #{
-%%   <<"ServiceSoftwareOptions">> => service_software_options()
-%% }
--type cancel_service_software_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_tune() :: #{
-%%   <<"AutoTuneDetails">> => auto_tune_details(),
-%%   <<"AutoTuneType">> => list(any())
-%% }
--type auto_tune() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_reserved_instance_offering_request() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"ReservationName">> := string(),
-%%   <<"ReservedInstanceOfferingId">> := string()
-%% }
--type purchase_reserved_instance_offering_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_index_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type update_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_packages_request() :: #{
-%%   <<"Filters">> => list(describe_packages_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_cluster_search_connection_properties() :: #{
-%%   <<"SkipUnavailable">> => list(any())
-%% }
--type cross_cluster_search_connection_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_data_source_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"attachmentId">> => string(),
-%%   <<"dataSourceArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type attach_data_source_response() :: #{binary() => any()}.
+-type upgrade_history() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3194,61 +3299,65 @@
 
 
 %% Example:
-%% log_publishing_option() :: #{
-%%   <<"CloudWatchLogsLogGroupArn">> => string(),
-%%   <<"Enabled">> => boolean()
+%% use_case_status() :: #{
+%%   <<"Options">> => list(any()),
+%%   <<"Status">> => option_status()
 %% }
--type log_publishing_option() :: #{binary() => any()}.
+-type use_case_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_direct_query_data_source_response() :: #{
-%%   <<"DataSourceArn">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type add_direct_query_data_source_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_vpc_endpoint_access_response() :: #{
-%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()),
-%%   <<"NextToken">> => string()
+%% validation_failure() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
 %% }
--type list_vpc_endpoint_access_response() :: #{binary() => any()}.
+-type validation_failure() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_data_source_response() :: #{
-%%   <<"DataSourceType">> => list(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
+%% version_status() :: #{
+%%   <<"Options">> => string(),
+%%   <<"Status">> => option_status()
 %% }
--type get_data_source_response() :: #{binary() => any()}.
+-type version_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_instance_type_details_response() :: #{
-%%   <<"InstanceTypeDetails">> => list(instance_type_details()),
-%%   <<"NextToken">> => string()
+%% vpc_derived_info() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"EgressEnabled">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VPCId">> => string()
 %% }
--type list_instance_type_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-%% Example:
-%% get_index_request() :: #{}
--type get_index_request() :: #{}.
+-type vpc_derived_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% detach_data_source_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dataSourceArn">> => string(),
-%%   <<"id">> => string()
+%% vpc_derived_info_status() :: #{
+%%   <<"Options">> => vpc_derived_info(),
+%%   <<"Status">> => option_status()
 %% }
--type detach_data_source_response() :: #{binary() => any()}.
+-type vpc_derived_info_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcEndpointOwner">> => string(),
+%%   <<"VpcOptions">> => vpc_derived_info()
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3261,254 +3370,145 @@
 
 
 %% Example:
-%% get_upgrade_status_response() :: #{
-%%   <<"StepStatus">> => list(any()),
-%%   <<"UpgradeName">> => string(),
-%%   <<"UpgradeStep">> => list(any())
+%% vpc_endpoint_summary() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcEndpointOwner">> => string()
 %% }
--type get_upgrade_status_response() :: #{binary() => any()}.
+-type vpc_endpoint_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_endpoint_options() :: #{
-%%   <<"CustomEndpoint">> => string(),
-%%   <<"CustomEndpointCertificateArn">> => string(),
-%%   <<"CustomEndpointEnabled">> => boolean(),
-%%   <<"EnforceHTTPS">> => boolean(),
-%%   <<"TLSSecurityPolicy">> => list(any())
+%% vpc_options() :: #{
+%%   <<"EgressEnabled">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type domain_endpoint_options() :: #{binary() => any()}.
+-type vpc_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% rollback_service_software_update_request() :: #{
-%%   <<"DomainName">> := string()
+%% window_start_time() :: #{
+%%   <<"Hours">> => float(),
+%%   <<"Minutes">> => float()
 %% }
--type rollback_service_software_update_request() :: #{binary() => any()}.
+-type window_start_time() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_direct_query_data_source_response() :: #{
-%%   <<"DataSourceArn">> => string()
+%% workspace_configuration_input() :: #{
+%%   <<"name">> => string(),
+%%   <<"workspaceType">> => string()
 %% }
--type update_direct_query_data_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_capability_request() :: #{}
--type get_capability_request() :: #{}.
+-type workspace_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_package_response() :: #{
-%%   <<"DomainPackageDetails">> => domain_package_details()
+%% zone_awareness_config() :: #{
+%%   <<"AvailabilityZoneCount">> => integer()
 %% }
--type associate_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% serverless_vector_acceleration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type serverless_vector_acceleration() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_at_rest_options_status() :: #{
-%%   <<"Options">> => encryption_at_rest_options(),
-%%   <<"Status">> => option_status()
-%% }
--type encryption_at_rest_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_information_container() :: #{
-%%   <<"AWSDomainInformation">> => aws_domain_information()
-%% }
--type domain_information_container() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_count_limits() :: #{
-%%   <<"MaximumInstanceCount">> => integer(),
-%%   <<"MinimumInstanceCount">> => integer()
-%% }
--type instance_count_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_nodes_response() :: #{
-%%   <<"DomainNodesStatusList">> => list(domain_nodes_status())
-%% }
--type describe_domain_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_vpc_endpoint_access_response() :: #{}
--type revoke_vpc_endpoint_access_response() :: #{}.
-
-
-%% Example:
-%% software_update_options_status() :: #{
-%%   <<"Options">> => software_update_options(),
-%%   <<"Status">> => option_status()
-%% }
--type software_update_options_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% off_peak_window() :: #{
-%%   <<"WindowStartTime">> => window_start_time()
-%% }
--type off_peak_window() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
-
-%% Example:
-%% list_domains_for_package_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_for_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_index_response() :: #{
-%%   <<"IndexSchema">> => any()
-%% }
--type get_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_compatible_versions_response() :: #{
-%%   <<"CompatibleVersions">> => list(compatible_versions_map())
-%% }
--type get_compatible_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dissociate_packages_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"PackageList">> := list(string())
-%% }
--type dissociate_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% master_user_options() :: #{
-%%   <<"MasterUserARN">> => string(),
-%%   <<"MasterUserName">> => string(),
-%%   <<"MasterUserPassword">> => string()
-%% }
--type master_user_options() :: #{binary() => any()}.
+-type zone_awareness_config() :: #{binary() => any()}.
 
 -type accept_inbound_connection_errors() ::
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     disabled_operation_exception().
 
 -type add_data_source_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type add_direct_query_data_source_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type add_tags_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    base_exception().
 
 -type associate_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type associate_packages_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type attach_data_source_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type authorize_vpc_endpoint_access_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type cancel_domain_config_change_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type cancel_service_software_update_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type create_application_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
     internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    base_exception() | 
-    validation_exception() | 
-    internal_exception() | 
     invalid_type_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type create_index_errors() ::
-    resource_already_exists_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    resource_already_exists_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    access_denied_exception().
 
 -type create_outbound_connection_errors() ::
     resource_already_exists_exception() | 
@@ -3517,576 +3517,576 @@
     disabled_operation_exception().
 
 -type create_package_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    base_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    invalid_type_exception() | 
     internal_exception() | 
-    invalid_type_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type create_vpc_endpoint_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type delete_application_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type delete_data_source_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type delete_direct_query_data_source_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type delete_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type delete_inbound_connection_errors() ::
     resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type delete_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    access_denied_exception().
 
 -type delete_outbound_connection_errors() ::
     resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type delete_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type delete_vpc_endpoint_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type deregister_capability_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type describe_data_source_attachment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type describe_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_domain_auto_tunes_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_domain_change_progress_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_domain_config_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_domain_health_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_domain_nodes_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type describe_domains_errors() ::
-    base_exception() | 
-    validation_exception() | 
-    internal_exception().
-
--type describe_dry_run_progress_errors() ::
-    base_exception() | 
     validation_exception() | 
     internal_exception() | 
+    base_exception().
+
+-type describe_dry_run_progress_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_inbound_connections_errors() ::
     invalid_pagination_token_exception() | 
     disabled_operation_exception().
 
 -type describe_insight_details_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_instance_type_limits_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type describe_outbound_connections_errors() ::
     invalid_pagination_token_exception() | 
     disabled_operation_exception().
 
 -type describe_packages_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type describe_reserved_instance_offerings_errors() ::
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
     disabled_operation_exception().
 
 -type describe_reserved_instances_errors() ::
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
     disabled_operation_exception().
 
 -type describe_vpc_endpoints_errors() ::
-    base_exception() | 
     validation_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    base_exception().
 
 -type detach_data_source_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type dissociate_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type dissociate_packages_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type get_application_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type get_capability_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_compatible_versions_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_data_source_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type get_default_application_setting_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_direct_query_data_source_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_domain_maintenance_status_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    access_denied_exception().
 
 -type get_migration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_package_version_history_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type get_upgrade_history_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type get_upgrade_status_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type insight_feedback_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_applications_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception() | 
+    access_denied_exception().
 
 -type list_data_source_attachments_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_data_sources_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type list_direct_query_data_sources_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_domain_maintenances_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_domain_names_errors() ::
-    base_exception() | 
-    validation_exception().
+    validation_exception() | 
+    base_exception().
 
 -type list_domains_for_package_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type list_insights_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_instance_type_details_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_migrations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_packages_for_domain_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type list_scheduled_actions_errors() ::
-    invalid_pagination_token_exception() | 
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_pagination_token_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_tags_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_versions_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_vpc_endpoint_access_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_vpc_endpoints_errors() ::
-    base_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    base_exception().
 
 -type list_vpc_endpoints_for_domain_errors() ::
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type purchase_reserved_instance_offering_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
     internal_exception() | 
-    resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type put_default_application_setting_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_capability_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type reject_inbound_connection_errors() ::
     resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type remove_tags_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type revoke_vpc_endpoint_access_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type rollback_service_software_update_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type start_domain_maintenance_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type start_migration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type start_service_software_update_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type update_application_errors() ::
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    base_exception().
 
 -type update_direct_query_data_source_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type update_domain_config_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type update_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
-    dependency_failure_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    dependency_failure_exception() | 
+    access_denied_exception().
 
 -type update_package_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception() | 
+    access_denied_exception().
 
 -type update_package_scope_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type update_scheduled_action_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
     slot_not_available_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    conflict_exception() | 
+    base_exception().
 
 -type update_vpc_endpoint_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    base_exception().
 
 -type upgrade_domain_errors() ::
-    resource_already_exists_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    resource_already_exists_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 %%====================================================================
 %% API

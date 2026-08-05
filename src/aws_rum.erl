@@ -67,225 +67,12 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% put_rum_metrics_destination_response() :: #{}
--type put_rum_metrics_destination_response() :: #{}.
-
 
 %% Example:
-%% data_storage() :: #{
-%%   <<"CwLog">> => cw_log()
-%% }
--type data_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type query_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-%%   <<"PolicyRevisionId">> => string()
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_rum_events_request() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"AppMonitorDetails">> := app_monitor_details(),
-%%   <<"BatchId">> := [string()],
-%%   <<"RumEvents">> := list(rum_event()),
-%%   <<"UserDetails">> := user_details()
-%% }
--type put_rum_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_monitor_summary() :: #{
-%%   <<"Created">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModified">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"State">> => string()
-%% }
--type app_monitor_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_app_monitor_response() :: #{
-%%   <<"AppMonitor">> => app_monitor()
-%% }
--type get_app_monitor_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_monitor_details() :: #{
-%%   <<"id">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"version">> => [string()]
-%% }
--type app_monitor_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% metric_destination_summary() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"IamRoleArn">> => string()
-%% }
--type metric_destination_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% cw_log() :: #{
-%%   <<"CwLogEnabled">> => [boolean()],
-%%   <<"CwLogGroup">> => [string()]
-%% }
--type cw_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_rum_metric_definitions_request() :: #{
-%%   <<"Destination">> := string(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"MetricDefinitionIds">> := list(string())
-%% }
--type batch_delete_rum_metric_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_monitor_configuration() :: #{
-%%   <<"AllowCookies">> => [boolean()],
-%%   <<"EnableXRay">> => [boolean()],
-%%   <<"ExcludedPages">> => list(string()),
-%%   <<"FavoritePages">> => list([string()]()),
-%%   <<"GuestRoleArn">> => string(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"IncludedPages">> => list(string()),
-%%   <<"SessionSampleRate">> => float(),
-%%   <<"Telemetries">> => list(string())
-%% }
--type app_monitor_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_details() :: #{
-%%   <<"sessionId">> => [string()],
-%%   <<"userId">> => [string()]
-%% }
--type user_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"PolicyDocument">> => [string()],
-%%   <<"PolicyRevisionId">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_monitor_request() :: #{
-%%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
-%%   <<"CustomEvents">> => custom_events(),
-%%   <<"CwLogEnabled">> => [boolean()],
-%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainList">> => list(string())
-%% }
--type update_app_monitor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_app_monitor_data_request() :: #{
-%%   <<"Filters">> => list(query_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TimeRange">> := time_range()
-%% }
--type get_app_monitor_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_definition() :: #{
-%%   <<"DimensionKeys">> => map(),
-%%   <<"EventPattern">> => string(),
-%%   <<"MetricDefinitionId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"UnitLabel">> => string(),
-%%   <<"ValueKey">> => string()
-%% }
--type metric_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_size_limit_exceeded_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_monitors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_app_monitors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% rum_event() :: #{
-%%   <<"details">> => string(),
-%%   <<"id">> => [string()],
-%%   <<"metadata">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"type">> => [string()]
-%% }
--type rum_event() :: #{binary() => any()}.
-
-%% Example:
-%% get_app_monitor_request() :: #{}
--type get_app_monitor_request() :: #{}.
-
-
-%% Example:
-%% create_app_monitor_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_app_monitor_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% java_script_source_maps() :: #{
-%%   <<"S3Uri">> => string(),
-%%   <<"Status">> => string()
-%% }
--type java_script_source_maps() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -306,39 +93,41 @@
 %% }
 -type app_monitor() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_app_monitor_response() :: #{}
--type delete_app_monitor_response() :: #{}.
+%% app_monitor_configuration() :: #{
+%%   <<"AllowCookies">> => [boolean()],
+%%   <<"EnableXRay">> => [boolean()],
+%%   <<"ExcludedPages">> => list(string()),
+%%   <<"FavoritePages">> => list([string()]()),
+%%   <<"GuestRoleArn">> => string(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"IncludedPages">> => list(string()),
+%%   <<"SessionSampleRate">> => float(),
+%%   <<"Telemetries">> => list(string())
+%% }
+-type app_monitor_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_app_monitor_request() :: #{
-%%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
-%%   <<"CustomEvents">> => custom_events(),
-%%   <<"CwLogEnabled">> => [boolean()],
-%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainList">> => list(string()),
-%%   <<"Name">> := string(),
+%% app_monitor_details() :: #{
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"version">> => [string()]
+%% }
+-type app_monitor_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_monitor_summary() :: #{
+%%   <<"Created">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"Platform">> => string(),
-%%   <<"Tags">> => map()
+%%   <<"State">> => string()
 %% }
--type create_app_monitor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_rum_metrics_destination_request() :: #{
-%%   <<"Destination">> := string(),
-%%   <<"DestinationArn">> => string()
-%% }
--type delete_rum_metrics_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type policy_not_found_exception() :: #{binary() => any()}.
+-type app_monitor_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -360,60 +149,11 @@
 
 
 %% Example:
-%% invalid_policy_revision_id_exception() :: #{
-%%   <<"message">> => [string()]
+%% batch_create_rum_metric_definitions_response() :: #{
+%%   <<"Errors">> := list(batch_create_rum_metric_definitions_error()),
+%%   <<"MetricDefinitions">> => list(metric_definition())
 %% }
--type invalid_policy_revision_id_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rum_metric_definition_request() :: #{
-%%   <<"Destination">> := string(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"MetricDefinition">> := metric_definition_request(),
-%%   <<"MetricDefinitionId">> := string()
-%% }
--type update_rum_metric_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_rum_metric_definitions_response() :: #{
-%%   <<"Errors">> := list(batch_delete_rum_metric_definitions_error()),
-%%   <<"MetricDefinitionIds">> => list(string())
-%% }
--type batch_delete_rum_metric_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% deobfuscation_configuration() :: #{
-%%   <<"JavaScriptSourceMaps">> => java_script_source_maps()
-%% }
--type deobfuscation_configuration() :: #{binary() => any()}.
+-type batch_create_rum_metric_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -426,11 +166,322 @@
 
 
 %% Example:
+%% batch_delete_rum_metric_definitions_request() :: #{
+%%   <<"Destination">> := string(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"MetricDefinitionIds">> := list(string())
+%% }
+-type batch_delete_rum_metric_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_rum_metric_definitions_response() :: #{
+%%   <<"Errors">> := list(batch_delete_rum_metric_definitions_error()),
+%%   <<"MetricDefinitionIds">> => list(string())
+%% }
+-type batch_delete_rum_metric_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_rum_metric_definitions_request() :: #{
+%%   <<"Destination">> := string(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type batch_get_rum_metric_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_rum_metric_definitions_response() :: #{
+%%   <<"MetricDefinitions">> => list(metric_definition()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type batch_get_rum_metric_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_monitor_request() :: #{
+%%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
+%%   <<"CustomEvents">> => custom_events(),
+%%   <<"CwLogEnabled">> => [boolean()],
+%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainList">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"Platform">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_app_monitor_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_monitor_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_app_monitor_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_events() :: #{
+%%   <<"Status">> => string()
+%% }
+-type custom_events() :: #{binary() => any()}.
+
+
+%% Example:
+%% cw_log() :: #{
+%%   <<"CwLogEnabled">> => [boolean()],
+%%   <<"CwLogGroup">> => [string()]
+%% }
+-type cw_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_storage() :: #{
+%%   <<"CwLog">> => cw_log()
+%% }
+-type data_storage() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_monitor_request() :: #{}
+-type delete_app_monitor_request() :: #{}.
+
+%% Example:
+%% delete_app_monitor_response() :: #{}
+-type delete_app_monitor_response() :: #{}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_rum_metrics_destination_request() :: #{
+%%   <<"Destination">> := string(),
+%%   <<"DestinationArn">> => string()
+%% }
+-type delete_rum_metrics_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rum_metrics_destination_response() :: #{}
+-type delete_rum_metrics_destination_response() :: #{}.
+
+
+%% Example:
+%% deobfuscation_configuration() :: #{
+%%   <<"JavaScriptSourceMaps">> => java_script_source_maps()
+%% }
+-type deobfuscation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_app_monitor_data_request() :: #{
+%%   <<"Filters">> => list(query_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimeRange">> := time_range()
+%% }
+-type get_app_monitor_data_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_app_monitor_data_response() :: #{
 %%   <<"Events">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_app_monitor_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_monitor_request() :: #{}
+-type get_app_monitor_request() :: #{}.
+
+
+%% Example:
+%% get_app_monitor_response() :: #{
+%%   <<"AppMonitor">> => app_monitor()
+%% }
+-type get_app_monitor_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_policy_revision_id_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_policy_revision_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% java_script_source_maps() :: #{
+%%   <<"S3Uri">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type java_script_source_maps() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_monitors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_app_monitors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_monitors_response() :: #{
+%%   <<"AppMonitorSummaries">> => list(app_monitor_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_app_monitors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rum_metrics_destinations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_rum_metrics_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rum_metrics_destinations_response() :: #{
+%%   <<"Destinations">> => list(metric_destination_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_rum_metrics_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"DimensionKeys">> => map(),
+%%   <<"EventPattern">> => string(),
+%%   <<"MetricDefinitionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"UnitLabel">> => string(),
+%%   <<"ValueKey">> => string()
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_definition_request() :: #{
+%%   <<"DimensionKeys">> => map(),
+%%   <<"EventPattern">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"UnitLabel">> => string(),
+%%   <<"ValueKey">> => string()
+%% }
+-type metric_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_destination_summary() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"IamRoleArn">> => string()
+%% }
+-type metric_destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"PolicyDocument">> := [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => [string()],
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_rum_events_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"AppMonitorDetails">> := app_monitor_details(),
+%%   <<"BatchId">> := [string()],
+%%   <<"RumEvents">> := list(rum_event()),
+%%   <<"UserDetails">> := user_details()
+%% }
+-type put_rum_events_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_rum_events_response() :: #{}
@@ -445,109 +496,55 @@
 %% }
 -type put_rum_metrics_destination_request() :: #{binary() => any()}.
 
+%% Example:
+%% put_rum_metrics_destination_response() :: #{}
+-type put_rum_metrics_destination_response() :: #{}.
+
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := map()
+%% query_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_monitor_request() :: #{}
--type delete_app_monitor_request() :: #{}.
+-type query_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_rum_metrics_destinations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_rum_metrics_destinations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-%% Example:
-%% delete_rum_metrics_destination_response() :: #{}
--type delete_rum_metrics_destination_response() :: #{}.
-
-
-%% Example:
-%% batch_get_rum_metric_definitions_response() :: #{
-%%   <<"MetricDefinitions">> => list(metric_definition()),
-%%   <<"NextToken">> => [string()]
-%% }
--type batch_get_rum_metric_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%%   <<"resourceName">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_rum_metric_definitions_request() :: #{
-%%   <<"Destination">> := string(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
+%% rum_event() :: #{
+%%   <<"details">> => string(),
+%%   <<"id">> => [string()],
+%%   <<"metadata">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"type">> => [string()]
 %% }
--type batch_get_rum_metric_definitions_request() :: #{binary() => any()}.
+-type rum_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"PolicyDocument">> := [string()],
-%%   <<"PolicyRevisionId">> => string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_range() :: #{
-%%   <<"After">> => float(),
-%%   <<"Before">> => float()
-%% }
--type time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% batch_create_rum_metric_definitions_response() :: #{
-%%   <<"Errors">> := list(batch_create_rum_metric_definitions_error()),
-%%   <<"MetricDefinitions">> => list(metric_definition())
-%% }
--type batch_create_rum_metric_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% update_app_monitor_response() :: #{}
--type update_app_monitor_response() :: #{}.
 
 
 %% Example:
@@ -561,22 +558,48 @@
 
 
 %% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"message">> => [string()]
+%% time_range() :: #{
+%%   <<"After">> => float(),
+%%   <<"Before">> => float()
 %% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
+-type time_range() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_definition_request() :: #{
-%%   <<"DimensionKeys">> => map(),
-%%   <<"EventPattern">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"UnitLabel">> => string(),
-%%   <<"ValueKey">> => string()
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type metric_definition_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_app_monitor_request() :: #{
+%%   <<"AppMonitorConfiguration">> => app_monitor_configuration(),
+%%   <<"CustomEvents">> => custom_events(),
+%%   <<"CwLogEnabled">> => [boolean()],
+%%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainList">> => list(string())
+%% }
+-type update_app_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_monitor_response() :: #{}
+-type update_app_monitor_response() :: #{}.
+
+
+%% Example:
+%% update_rum_metric_definition_request() :: #{
+%%   <<"Destination">> := string(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"MetricDefinition">> := metric_definition_request(),
+%%   <<"MetricDefinitionId">> := string()
+%% }
+-type update_rum_metric_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_rum_metric_definition_response() :: #{}
@@ -584,192 +607,169 @@
 
 
 %% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"PolicyDocument">> => [string()],
-%%   <<"PolicyRevisionId">> => string()
+%% user_details() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"userId">> => [string()]
 %% }
--type put_resource_policy_response() :: #{binary() => any()}.
+-type user_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"PolicyRevisionId">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_monitors_response() :: #{
-%%   <<"AppMonitorSummaries">> => list(app_monitor_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_app_monitors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rum_metrics_destinations_response() :: #{
-%%   <<"Destinations">> => list(metric_destination_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_rum_metrics_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_events() :: #{
-%%   <<"Status">> => string()
-%% }
--type custom_events() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type batch_create_rum_metric_definitions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_rum_metric_definitions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_rum_metric_definitions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_app_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    policy_not_found_exception() | 
     invalid_policy_revision_id_exception() | 
-    policy_not_found_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_rum_metrics_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_app_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_app_monitor_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    policy_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    policy_not_found_exception().
+    access_denied_exception().
 
 -type list_app_monitors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_rum_metrics_destinations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_resource_policy_errors() ::
-    malformed_policy_document_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    policy_size_limit_exceeded_exception() | 
+    malformed_policy_document_exception() | 
     invalid_policy_revision_id_exception() | 
-    policy_size_limit_exceeded_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_rum_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_rum_metrics_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_app_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_rum_metric_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

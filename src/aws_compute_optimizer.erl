@@ -87,6 +87,95 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_enrollment_status() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type account_enrollment_status() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_configuration() :: #{
+%%   <<"allocationStrategy">> => list(any()),
+%%   <<"desiredCapacity">> => integer(),
+%%   <<"estimatedInstanceHourReductionPercentage">> => float(),
+%%   <<"instanceType">> => string(),
+%%   <<"maxSize">> => integer(),
+%%   <<"minSize">> => integer(),
+%%   <<"mixedInstanceTypes">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type auto_scaling_group_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type auto_scaling_group_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"autoScalingGroupArn">> => string(),
+%%   <<"autoScalingGroupName">> => string(),
+%%   <<"currentConfiguration">> => auto_scaling_group_configuration(),
+%%   <<"currentInstanceGpuInfo">> => gpu_info(),
+%%   <<"currentPerformanceRisk">> => list(any()),
+%%   <<"effectiveRecommendationPreferences">> => effective_recommendation_preferences(),
+%%   <<"finding">> => list(any()),
+%%   <<"inferredWorkloadTypes">> => list(list(any())()),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookBackPeriodInDays">> => float(),
+%%   <<"recommendationOptions">> => list(auto_scaling_group_recommendation_option()),
+%%   <<"utilizationMetrics">> => list(utilization_metric())
+%% }
+-type auto_scaling_group_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_recommendation_option() :: #{
+%%   <<"configuration">> => auto_scaling_group_configuration(),
+%%   <<"instanceGpuInfo">> => gpu_info(),
+%%   <<"migrationEffort">> => list(any()),
+%%   <<"performanceRisk">> => float(),
+%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => auto_scaling_group_savings_opportunity_after_discounts()
+%% }
+-type auto_scaling_group_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => auto_scaling_group_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type auto_scaling_group_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% container_configuration() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"cpu">> => integer(),
+%%   <<"memorySizeConfiguration">> => memory_size_configuration()
+%% }
+-type container_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% container_recommendation() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"cpu">> => integer(),
+%%   <<"memorySizeConfiguration">> => memory_size_configuration()
+%% }
+-type container_recommendation() :: #{binary() => any()}.
+
+%% Example:
 %% current_performance_risk_ratings() :: #{
 %%   <<"high">> => float(),
 %%   <<"low">> => float(),
@@ -94,6 +183,591 @@
 %%   <<"veryLow">> => float()
 %% }
 -type current_performance_risk_ratings() :: #{binary() => any()}.
+
+%% Example:
+%% customizable_metric_parameters() :: #{
+%%   <<"headroom">> => list(any()),
+%%   <<"threshold">> => list(any())
+%% }
+-type customizable_metric_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% db_storage_configuration() :: #{
+%%   <<"allocatedStorage">> => integer(),
+%%   <<"iops">> => integer(),
+%%   <<"maxAllocatedStorage">> => integer(),
+%%   <<"storageThroughput">> => integer(),
+%%   <<"storageType">> => string()
+%% }
+-type db_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommendation_preferences_request() :: #{
+%%   <<"recommendationPreferenceNames">> := list(list(any())()),
+%%   <<"resourceType">> := list(any()),
+%%   <<"scope">> => scope()
+%% }
+-type delete_recommendation_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommendation_preferences_response() :: #{
+
+%% }
+-type delete_recommendation_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendation_export_jobs_request() :: #{
+%%   <<"filters">> => list(job_filter()),
+%%   <<"jobIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_recommendation_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendation_export_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationExportJobs">> => list(recommendation_export_job())
+%% }
+-type describe_recommendation_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_effective_recommendation_preferences() :: #{
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"savingsEstimationMode">> => e_c_s_savings_estimation_mode()
+%% }
+-type e_c_s_effective_recommendation_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type e_c_s_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type e_c_s_savings_estimation_mode() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => e_c_s_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type e_c_s_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_projected_metric() :: #{
+%%   <<"lowerBoundValues">> => list(float()),
+%%   <<"name">> => list(any()),
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"upperBoundValues">> => list(float())
+%% }
+-type e_c_s_service_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_projected_utilization_metric() :: #{
+%%   <<"lowerBoundValue">> => float(),
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"upperBoundValue">> => float()
+%% }
+-type e_c_s_service_projected_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentPerformanceRisk">> => list(any()),
+%%   <<"currentServiceConfiguration">> => service_configuration(),
+%%   <<"effectiveRecommendationPreferences">> => e_c_s_effective_recommendation_preferences(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingReasonCodes">> => list(list(any())()),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"launchType">> => list(any()),
+%%   <<"lookbackPeriodInDays">> => float(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceRecommendationOptions">> => list(e_c_s_service_recommendation_option()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(e_c_s_service_utilization_metric())
+%% }
+-type e_c_s_service_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type e_c_s_service_recommendation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_recommendation_option() :: #{
+%%   <<"containerRecommendations">> => list(container_recommendation()),
+%%   <<"cpu">> => integer(),
+%%   <<"memory">> => integer(),
+%%   <<"projectedUtilizationMetrics">> => list(e_c_s_service_projected_utilization_metric()),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => e_c_s_savings_opportunity_after_discounts()
+%% }
+-type e_c_s_service_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_recommended_option_projected_metric() :: #{
+%%   <<"projectedMetrics">> => list(e_c_s_service_projected_metric()),
+%%   <<"recommendedCpuUnits">> => integer(),
+%%   <<"recommendedMemorySize">> => integer()
+%% }
+-type e_c_s_service_recommended_option_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% e_c_s_service_utilization_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type e_c_s_service_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_effective_recommendation_preferences() :: #{
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"savingsEstimationMode">> => ebs_savings_estimation_mode()
+%% }
+-type ebs_effective_recommendation_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type ebs_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type ebs_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type ebs_savings_estimation_mode() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => ebs_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type ebs_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_utilization_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type ebs_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% effective_preferred_resource() :: #{
+%%   <<"effectiveIncludeList">> => list(string()),
+%%   <<"excludeList">> => list(string()),
+%%   <<"includeList">> => list(string()),
+%%   <<"name">> => list(any())
+%% }
+-type effective_preferred_resource() :: #{binary() => any()}.
+
+%% Example:
+%% effective_recommendation_preferences() :: #{
+%%   <<"cpuVendorArchitectures">> => list(list(any())()),
+%%   <<"enhancedInfrastructureMetrics">> => list(any()),
+%%   <<"externalMetricsPreference">> => external_metrics_preference(),
+%%   <<"inferredWorkloadTypes">> => list(any()),
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"preferredResources">> => list(effective_preferred_resource()),
+%%   <<"savingsEstimationMode">> => instance_savings_estimation_mode(),
+%%   <<"utilizationPreferences">> => list(utilization_preference())
+%% }
+-type effective_recommendation_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% enrollment_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type enrollment_filter() :: #{binary() => any()}.
+
+%% Example:
+%% estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% export_auto_scaling_group_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_auto_scaling_group_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_auto_scaling_group_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_destination() :: #{
+%%   <<"s3">> => s3_destination()
+%% }
+-type export_destination() :: #{binary() => any()}.
+
+%% Example:
+%% export_e_c_s_service_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_e_c_s_service_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_e_c_s_service_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_e_c_s_service_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_ebs_volume_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(ebs_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_ebs_volume_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_ebs_volume_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_ebs_volume_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_ec2_instance_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_ec2_instance_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_ec2_instance_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_ec2_instance_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_idle_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(idle_recommendation_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_idle_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_idle_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_idle_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_lambda_function_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(lambda_function_recommendation_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_lambda_function_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_lambda_function_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_lambda_function_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_license_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(license_recommendation_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_license_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_license_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_license_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_rds_database_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"fieldsToExport">> => list(list(any())()),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()),
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"s3DestinationConfig">> := s3_destination_config()
+%% }
+-type export_rds_database_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_rds_database_recommendations_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type export_rds_database_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% external_metric_status() :: #{
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type external_metric_status() :: #{binary() => any()}.
+
+%% Example:
+%% external_metrics_preference() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type external_metrics_preference() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_scaling_group_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"autoScalingGroupArns">> => list(string()),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationPreferences">> => recommendation_preferences()
+%% }
+-type get_auto_scaling_group_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_scaling_group_recommendations_response() :: #{
+%%   <<"autoScalingGroupRecommendations">> => list(auto_scaling_group_recommendation()),
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_e_c_s_service_recommendation_projected_metrics_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"period">> := integer(),
+%%   <<"serviceArn">> := string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"stat">> := list(any())
+%% }
+-type get_e_c_s_service_recommendation_projected_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_e_c_s_service_recommendation_projected_metrics_response() :: #{
+%%   <<"recommendedOptionProjectedMetrics">> => list(e_c_s_service_recommended_option_projected_metric())
+%% }
+-type get_e_c_s_service_recommendation_projected_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_e_c_s_service_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArns">> => list(string())
+%% }
+-type get_e_c_s_service_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_e_c_s_service_recommendations_response() :: #{
+%%   <<"ecsServiceRecommendations">> => list(e_c_s_service_recommendation()),
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_e_c_s_service_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ebs_volume_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(ebs_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"volumeArns">> => list(string())
+%% }
+-type get_ebs_volume_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ebs_volume_recommendations_response() :: #{
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"nextToken">> => string(),
+%%   <<"volumeRecommendations">> => list(volume_recommendation())
+%% }
+-type get_ebs_volume_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ec2_instance_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(filter()),
+%%   <<"instanceArns">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationPreferences">> => recommendation_preferences()
+%% }
+-type get_ec2_instance_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ec2_instance_recommendations_response() :: #{
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"instanceRecommendations">> => list(instance_recommendation()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_ec2_instance_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ec2_recommendation_projected_metrics_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"instanceArn">> := string(),
+%%   <<"period">> := integer(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"stat">> := list(any())
+%% }
+-type get_ec2_recommendation_projected_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ec2_recommendation_projected_metrics_response() :: #{
+%%   <<"recommendedOptionProjectedMetrics">> => list(recommended_option_projected_metric())
+%% }
+-type get_ec2_recommendation_projected_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_effective_recommendation_preferences_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type get_effective_recommendation_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_effective_recommendation_preferences_response() :: #{
+%%   <<"enhancedInfrastructureMetrics">> => list(any()),
+%%   <<"externalMetricsPreference">> => external_metrics_preference(),
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"preferredResources">> => list(effective_preferred_resource()),
+%%   <<"utilizationPreferences">> => list(utilization_preference())
+%% }
+-type get_effective_recommendation_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_enrollment_status_request() :: #{
+
+%% }
+-type get_enrollment_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_enrollment_status_response() :: #{
+%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"memberAccountsEnrolled">> => boolean(),
+%%   <<"numberOfMemberAccountsOptedIn">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type get_enrollment_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_enrollment_statuses_for_organization_request() :: #{
+%%   <<"filters">> => list(enrollment_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_enrollment_statuses_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_enrollment_statuses_for_organization_response() :: #{
+%%   <<"accountEnrollmentStatuses">> => list(account_enrollment_status()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_enrollment_statuses_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_idle_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(idle_recommendation_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => order_by(),
+%%   <<"resourceArns">> => list(string())
+%% }
+-type get_idle_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_idle_recommendations_response() :: #{
+%%   <<"errors">> => list(idle_recommendation_error()),
+%%   <<"idleRecommendations">> => list(idle_recommendation()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_idle_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lambda_function_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(lambda_function_recommendation_filter()),
+%%   <<"functionArns">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_lambda_function_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_lambda_function_recommendations_response() :: #{
+%%   <<"lambdaFunctionRecommendations">> => list(lambda_function_recommendation()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_lambda_function_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_license_recommendations_request() :: #{
@@ -106,10 +780,72 @@
 -type get_license_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_ec2_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(recommended_option_projected_metric())
+%% get_license_recommendations_response() :: #{
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"licenseRecommendations">> => list(license_recommendation()),
+%%   <<"nextToken">> => string()
 %% }
--type get_ec2_recommendation_projected_metrics_response() :: #{binary() => any()}.
+-type get_license_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendation_projected_metrics_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"period">> := integer(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"resourceArn">> := string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"stat">> := list(any())
+%% }
+-type get_rds_database_recommendation_projected_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendation_projected_metrics_response() :: #{
+%%   <<"recommendedOptionProjectedMetrics">> => list(rds_database_recommended_option_projected_metric())
+%% }
+-type get_rds_database_recommendation_projected_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendations_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationPreferences">> => recommendation_preferences(),
+%%   <<"resourceArns">> => list(string())
+%% }
+-type get_rds_database_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rds_database_recommendations_response() :: #{
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"nextToken">> => string(),
+%%   <<"rdsDBRecommendations">> => list(rds_db_recommendation())
+%% }
+-type get_rds_database_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"message">> => string()
+%% }
+-type get_recommendation_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_preferences_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"scope">> => scope()
+%% }
+-type get_recommendation_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_preferences_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationPreferencesDetails">> => list(recommendation_preferences_detail())
+%% }
+-type get_recommendation_preferences_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_recommendation_summaries_request() :: #{
@@ -120,10 +856,409 @@
 -type get_recommendation_summaries_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_enrollment_status_request() :: #{
+%% get_recommendation_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
+%% }
+-type get_recommendation_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% gpu() :: #{
+%%   <<"gpuCount">> => integer(),
+%%   <<"gpuMemorySizeInMiB">> => integer()
+%% }
+-type gpu() :: #{binary() => any()}.
+
+%% Example:
+%% gpu_info() :: #{
+%%   <<"gpus">> => list(gpu())
+%% }
+-type gpu_info() :: #{binary() => any()}.
+
+%% Example:
+%% idle_dimension() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type idle_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% idle_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% idle_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingDescription">> => string(),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookBackPeriodInDays">> => float(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"savingsOpportunity">> => idle_savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => idle_savings_opportunity_after_discounts(),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(idle_utilization_metric())
+%% }
+-type idle_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% idle_recommendation_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type idle_recommendation_error() :: #{binary() => any()}.
+
+%% Example:
+%% idle_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type idle_recommendation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% idle_savings_opportunity() :: #{
+%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type idle_savings_opportunity() :: #{binary() => any()}.
+
+%% Example:
+%% idle_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type idle_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% idle_summary() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_summary() :: #{binary() => any()}.
+
+%% Example:
+%% idle_utilization_metric() :: #{
+%%   <<"dimensions">> => list(idle_dimension()),
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type idle_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% inferred_workload_saving() :: #{
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"inferredWorkloadTypes">> => list(list(any())())
+%% }
+-type inferred_workload_saving() :: #{binary() => any()}.
+
+%% Example:
+%% instance_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type instance_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% instance_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentInstanceGpuInfo">> => gpu_info(),
+%%   <<"currentInstanceType">> => string(),
+%%   <<"currentPerformanceRisk">> => list(any()),
+%%   <<"effectiveRecommendationPreferences">> => effective_recommendation_preferences(),
+%%   <<"externalMetricStatus">> => external_metric_status(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingReasonCodes">> => list(list(any())()),
+%%   <<"idle">> => list(any()),
+%%   <<"inferredWorkloadTypes">> => list(list(any())()),
+%%   <<"instanceArn">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"instanceState">> => list(any()),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookBackPeriodInDays">> => float(),
+%%   <<"recommendationOptions">> => list(instance_recommendation_option()),
+%%   <<"recommendationSources">> => list(recommendation_source()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(utilization_metric())
+%% }
+-type instance_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% instance_recommendation_option() :: #{
+%%   <<"instanceGpuInfo">> => gpu_info(),
+%%   <<"instanceType">> => string(),
+%%   <<"migrationEffort">> => list(any()),
+%%   <<"performanceRisk">> => float(),
+%%   <<"platformDifferences">> => list(list(any())()),
+%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => instance_savings_opportunity_after_discounts()
+%% }
+-type instance_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% instance_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type instance_savings_estimation_mode() :: #{binary() => any()}.
+
+%% Example:
+%% instance_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => instance_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type instance_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type job_filter() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_effective_recommendation_preferences() :: #{
+%%   <<"savingsEstimationMode">> => lambda_savings_estimation_mode()
+%% }
+-type lambda_effective_recommendation_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type lambda_estimated_monthly_savings() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_memory_projected_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type lambda_function_memory_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_memory_recommendation_option() :: #{
+%%   <<"memorySize">> => integer(),
+%%   <<"projectedUtilizationMetrics">> => list(lambda_function_memory_projected_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => lambda_savings_opportunity_after_discounts()
+%% }
+-type lambda_function_memory_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentMemorySize">> => integer(),
+%%   <<"currentPerformanceRisk">> => list(any()),
+%%   <<"effectiveRecommendationPreferences">> => lambda_effective_recommendation_preferences(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingReasonCodes">> => list(list(any())()),
+%%   <<"functionArn">> => string(),
+%%   <<"functionVersion">> => string(),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"lookbackPeriodInDays">> => float(),
+%%   <<"memorySizeRecommendationOptions">> => list(lambda_function_memory_recommendation_option()),
+%%   <<"numberOfInvocations">> => float(),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(lambda_function_utilization_metric())
+%% }
+-type lambda_function_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type lambda_function_recommendation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_utilization_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type lambda_function_utilization_metric() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type lambda_savings_estimation_mode() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => lambda_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type lambda_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration() :: #{
+%%   <<"instanceType">> => string(),
+%%   <<"licenseEdition">> => list(any()),
+%%   <<"licenseModel">> => list(any()),
+%%   <<"licenseName">> => list(any()),
+%%   <<"licenseVersion">> => string(),
+%%   <<"metricsSource">> => list(metric_source()),
+%%   <<"numberOfCores">> => integer(),
+%%   <<"operatingSystem">> => string()
+%% }
+-type license_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% license_recommendation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentLicenseConfiguration">> => license_configuration(),
+%%   <<"finding">> => list(any()),
+%%   <<"findingReasonCodes">> => list(list(any())()),
+%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
+%%   <<"licenseRecommendationOptions">> => list(license_recommendation_option()),
+%%   <<"lookbackPeriodInDays">> => float(),
+%%   <<"resourceArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type license_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% license_recommendation_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type license_recommendation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% license_recommendation_option() :: #{
+%%   <<"licenseEdition">> => list(any()),
+%%   <<"licenseModel">> => list(any()),
+%%   <<"operatingSystem">> => string(),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity()
+%% }
+-type license_recommendation_option() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% memory_size_configuration() :: #{
+%%   <<"memory">> => integer(),
+%%   <<"memoryReservation">> => integer()
+%% }
+-type memory_size_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% metric_source() :: #{
+%%   <<"provider">> => list(any()),
+%%   <<"providerArn">> => string()
+%% }
+-type metric_source() :: #{binary() => any()}.
+
+%% Example:
+%% missing_authentication_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_authentication_token() :: #{binary() => any()}.
+
+%% Example:
+%% opt_in_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type opt_in_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% order_by() :: #{
+%%   <<"dimension">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type order_by() :: #{binary() => any()}.
+
+%% Example:
+%% preferred_resource() :: #{
+%%   <<"excludeList">> => list(string()),
+%%   <<"includeList">> => list(string()),
+%%   <<"name">> => list(any())
+%% }
+-type preferred_resource() :: #{binary() => any()}.
+
+%% Example:
+%% projected_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"values">> => list(float())
+%% }
+-type projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% put_recommendation_preferences_request() :: #{
+%%   <<"enhancedInfrastructureMetrics">> => list(any()),
+%%   <<"externalMetricsPreference">> => external_metrics_preference(),
+%%   <<"inferredWorkloadTypes">> => list(any()),
+%%   <<"lookBackPeriod">> => list(any()),
+%%   <<"preferredResources">> => list(preferred_resource()),
+%%   <<"resourceType">> := list(any()),
+%%   <<"savingsEstimationMode">> => list(any()),
+%%   <<"scope">> => scope(),
+%%   <<"utilizationPreferences">> => list(utilization_preference())
+%% }
+-type put_recommendation_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_recommendation_preferences_response() :: #{
 
 %% }
--type get_enrollment_status_request() :: #{binary() => any()}.
+-type put_recommendation_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% rds_database_projected_metric() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"values">> => list(float())
+%% }
+-type rds_database_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% rds_database_recommended_option_projected_metric() :: #{
+%%   <<"projectedMetrics">> => list(rds_database_projected_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"recommendedDBInstanceClass">> => string()
+%% }
+-type rds_database_recommended_option_projected_metric() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_instance_recommendation_option() :: #{
+%%   <<"dbInstanceClass">> => string(),
+%%   <<"performanceRisk">> => float(),
+%%   <<"projectedUtilizationMetrics">> => list(rds_db_utilization_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => rds_instance_savings_opportunity_after_discounts()
+%% }
+-type rds_db_instance_recommendation_option() :: #{binary() => any()}.
 
 %% Example:
 %% rds_db_recommendation() :: #{
@@ -153,219 +1288,58 @@
 -type rds_db_recommendation() :: #{binary() => any()}.
 
 %% Example:
-%% license_configuration() :: #{
-%%   <<"instanceType">> => string(),
-%%   <<"licenseEdition">> => list(any()),
-%%   <<"licenseModel">> => list(any()),
-%%   <<"licenseName">> => list(any()),
-%%   <<"licenseVersion">> => string(),
-%%   <<"metricsSource">> => list(metric_source()),
-%%   <<"numberOfCores">> => integer(),
-%%   <<"operatingSystem">> => string()
-%% }
--type license_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type lambda_estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_memory_projected_metric() :: #{
+%% rds_db_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type lambda_function_memory_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% idle_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"finding">> => list(any()),
-%%   <<"findingDescription">> => string(),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"savingsOpportunity">> => idle_savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => idle_savings_opportunity_after_discounts(),
-%%   <<"tags">> => list(tag()),
-%%   <<"utilizationMetrics">> => list(idle_utilization_metric())
-%% }
--type idle_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% get_e_c_s_service_recommendation_projected_metrics_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"period">> := integer(),
-%%   <<"serviceArn">> := string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"stat">> := list(any())
-%% }
--type get_e_c_s_service_recommendation_projected_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_recommendation() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"cpu">> => integer(),
-%%   <<"memorySizeConfiguration">> => memory_size_configuration()
-%% }
--type container_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type auto_scaling_group_estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% account_enrollment_status() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string()
-%% }
--type account_enrollment_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendation_export_jobs_request() :: #{
-%%   <<"filters">> => list(job_filter()),
-%%   <<"jobIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_recommendation_export_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_effective_recommendation_preferences() :: #{
-%%   <<"lookBackPeriod">> => list(any()),
-%%   <<"savingsEstimationMode">> => ebs_savings_estimation_mode()
-%% }
--type ebs_effective_recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% get_lambda_function_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(lambda_function_recommendation_filter()),
-%%   <<"functionArns">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_lambda_function_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ebs_volume_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"nextToken">> => string(),
-%%   <<"volumeRecommendations">> => list(volume_recommendation())
-%% }
--type get_ebs_volume_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"currentMemorySize">> => integer(),
-%%   <<"currentPerformanceRisk">> => list(any()),
-%%   <<"effectiveRecommendationPreferences">> => lambda_effective_recommendation_preferences(),
-%%   <<"finding">> => list(any()),
-%%   <<"findingReasonCodes">> => list(list(any())()),
-%%   <<"functionArn">> => string(),
-%%   <<"functionVersion">> => string(),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"lookbackPeriodInDays">> => float(),
-%%   <<"memorySizeRecommendationOptions">> => list(lambda_function_memory_recommendation_option()),
-%%   <<"numberOfInvocations">> => float(),
-%%   <<"tags">> => list(tag()),
-%%   <<"utilizationMetrics">> => list(lambda_function_utilization_metric())
-%% }
--type lambda_function_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% idle_utilization_metric() :: #{
-%%   <<"dimensions">> => list(idle_dimension()),
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type idle_utilization_metric() :: #{binary() => any()}.
-
-%% Example:
-%% db_storage_configuration() :: #{
-%%   <<"allocatedStorage">> => integer(),
-%%   <<"iops">> => integer(),
-%%   <<"maxAllocatedStorage">> => integer(),
-%%   <<"storageThroughput">> => integer(),
-%%   <<"storageType">> => string()
-%% }
--type db_storage_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% idle_dimension() :: #{
-%%   <<"key">> => string(),
 %%   <<"values">> => list(string())
 %% }
--type idle_dimension() :: #{binary() => any()}.
+-type rds_db_recommendation_filter() :: #{binary() => any()}.
 
 %% Example:
-%% idle_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
+%% rds_db_storage_recommendation_option() :: #{
+%%   <<"estimatedMonthlyVolumeIOPsCostVariation">> => list(any()),
+%%   <<"rank">> => integer(),
+%%   <<"savingsOpportunity">> => savings_opportunity(),
+%%   <<"savingsOpportunityAfterDiscounts">> => rds_storage_savings_opportunity_after_discounts(),
+%%   <<"storageConfiguration">> => db_storage_configuration()
 %% }
--type idle_estimated_monthly_savings() :: #{binary() => any()}.
+-type rds_db_storage_recommendation_option() :: #{binary() => any()}.
 
 %% Example:
-%% get_enrollment_statuses_for_organization_request() :: #{
-%%   <<"filters">> => list(enrollment_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_enrollment_statuses_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% missing_authentication_token() :: #{
-%%   <<"message">> => string()
-%% }
--type missing_authentication_token() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_utilization_metric() :: #{
+%% rds_db_utilization_metric() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"statistic">> => list(any()),
 %%   <<"value">> => float()
 %% }
--type ebs_utilization_metric() :: #{binary() => any()}.
+-type rds_db_utilization_metric() :: #{binary() => any()}.
 
 %% Example:
-%% get_effective_recommendation_preferences_response() :: #{
+%% rds_effective_recommendation_preferences() :: #{
+%%   <<"cpuVendorArchitectures">> => list(list(any())()),
 %%   <<"enhancedInfrastructureMetrics">> => list(any()),
-%%   <<"externalMetricsPreference">> => external_metrics_preference(),
 %%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(effective_preferred_resource()),
-%%   <<"utilizationPreferences">> => list(utilization_preference())
+%%   <<"savingsEstimationMode">> => rds_savings_estimation_mode()
 %% }
--type get_effective_recommendation_preferences_response() :: #{binary() => any()}.
+-type rds_effective_recommendation_preferences() :: #{binary() => any()}.
 
 %% Example:
-%% get_recommendation_preferences_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationPreferencesDetails">> => list(recommendation_preferences_detail())
+%% rds_instance_estimated_monthly_savings() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => float()
 %% }
--type get_recommendation_preferences_response() :: #{binary() => any()}.
+-type rds_instance_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
-%% e_c_s_service_recommendation_option() :: #{
-%%   <<"containerRecommendations">> => list(container_recommendation()),
-%%   <<"cpu">> => integer(),
-%%   <<"memory">> => integer(),
-%%   <<"projectedUtilizationMetrics">> => list(e_c_s_service_projected_utilization_metric()),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => e_c_s_savings_opportunity_after_discounts()
+%% rds_instance_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => rds_instance_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
 %% }
--type e_c_s_service_recommendation_option() :: #{binary() => any()}.
+-type rds_instance_savings_opportunity_after_discounts() :: #{binary() => any()}.
+
+%% Example:
+%% rds_savings_estimation_mode() :: #{
+%%   <<"source">> => list(any())
+%% }
+-type rds_savings_estimation_mode() :: #{binary() => any()}.
 
 %% Example:
 %% rds_storage_estimated_monthly_savings() :: #{
@@ -375,17 +1349,36 @@
 -type rds_storage_estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
-%% customizable_metric_parameters() :: #{
-%%   <<"headroom">> => list(any()),
-%%   <<"threshold">> => list(any())
+%% rds_storage_savings_opportunity_after_discounts() :: #{
+%%   <<"estimatedMonthlySavings">> => rds_storage_estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
 %% }
--type customizable_metric_parameters() :: #{binary() => any()}.
+-type rds_storage_savings_opportunity_after_discounts() :: #{binary() => any()}.
 
 %% Example:
-%% ebs_savings_estimation_mode() :: #{
-%%   <<"source">> => list(any())
+%% reason_code_summary() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => float()
 %% }
--type ebs_savings_estimation_mode() :: #{binary() => any()}.
+-type reason_code_summary() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_export_job() :: #{
+%%   <<"creationTimestamp">> => non_neg_integer(),
+%%   <<"destination">> => export_destination(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type recommendation_export_job() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_preferences() :: #{
+%%   <<"cpuVendorArchitectures">> => list(list(any())())
+%% }
+-type recommendation_preferences() :: #{binary() => any()}.
 
 %% Example:
 %% recommendation_preferences_detail() :: #{
@@ -402,200 +1395,33 @@
 -type recommendation_preferences_detail() :: #{binary() => any()}.
 
 %% Example:
-%% e_c_s_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
+%% recommendation_source() :: #{
+%%   <<"recommendationSourceArn">> => string(),
+%%   <<"recommendationSourceType">> => list(any())
 %% }
--type e_c_s_estimated_monthly_savings() :: #{binary() => any()}.
+-type recommendation_source() :: #{binary() => any()}.
 
 %% Example:
-%% idle_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type idle_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% rds_effective_recommendation_preferences() :: #{
-%%   <<"cpuVendorArchitectures">> => list(list(any())()),
-%%   <<"enhancedInfrastructureMetrics">> => list(any()),
-%%   <<"lookBackPeriod">> => list(any()),
-%%   <<"savingsEstimationMode">> => rds_savings_estimation_mode()
-%% }
--type rds_effective_recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendation_export_jobs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationExportJobs">> => list(recommendation_export_job())
-%% }
--type describe_recommendation_export_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% external_metric_status() :: #{
-%%   <<"statusCode">> => list(any()),
-%%   <<"statusReason">> => string()
-%% }
--type external_metric_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommendation_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationSummaries">> => list(recommendation_summary())
-%% }
--type get_recommendation_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% order_by() :: #{
-%%   <<"dimension">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type order_by() :: #{binary() => any()}.
-
-%% Example:
-%% instance_savings_estimation_mode() :: #{
-%%   <<"source">> => list(any())
-%% }
--type instance_savings_estimation_mode() :: #{binary() => any()}.
-
-%% Example:
-%% get_e_c_s_service_recommendations_response() :: #{
-%%   <<"ecsServiceRecommendations">> => list(e_c_s_service_recommendation()),
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"nextToken">> => string()
-%% }
--type get_e_c_s_service_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_recommendation_preferences_response() :: #{
-
-%% }
--type put_recommendation_preferences_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_enrollment_status_request() :: #{
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"status">> := list(any())
-%% }
--type update_enrollment_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => auto_scaling_group_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type auto_scaling_group_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommendation_preferences_request() :: #{
-%%   <<"recommendationPreferenceNames">> := list(list(any())()),
-%%   <<"resourceType">> := list(any()),
-%%   <<"scope">> => scope()
-%% }
--type delete_recommendation_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_memory_recommendation_option() :: #{
-%%   <<"memorySize">> => integer(),
-%%   <<"projectedUtilizationMetrics">> => list(lambda_function_memory_projected_metric()),
-%%   <<"rank">> => integer(),
+%% recommendation_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"aggregatedSavingsOpportunity">> => savings_opportunity(),
+%%   <<"currentPerformanceRiskRatings">> => current_performance_risk_ratings(),
+%%   <<"idleSavingsOpportunity">> => savings_opportunity(),
+%%   <<"idleSummaries">> => list(idle_summary()),
+%%   <<"inferredWorkloadSavings">> => list(inferred_workload_saving()),
+%%   <<"recommendationResourceType">> => list(any()),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => lambda_savings_opportunity_after_discounts()
+%%   <<"summaries">> => list(summary())
 %% }
--type lambda_function_memory_recommendation_option() :: #{binary() => any()}.
+-type recommendation_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_enrollment_status_response() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string()
+%% recommended_option_projected_metric() :: #{
+%%   <<"projectedMetrics">> => list(projected_metric()),
+%%   <<"rank">> => integer(),
+%%   <<"recommendedInstanceType">> => string()
 %% }
--type update_enrollment_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% job_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% rds_database_projected_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()),
-%%   <<"values">> => list(float())
-%% }
--type rds_database_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% export_lambda_function_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(lambda_function_recommendation_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_lambda_function_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_enrollment_statuses_for_organization_response() :: #{
-%%   <<"accountEnrollmentStatuses">> => list(account_enrollment_status()),
-%%   <<"nextToken">> => string()
-%% }
--type get_enrollment_statuses_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% rds_savings_estimation_mode() :: #{
-%%   <<"source">> => list(any())
-%% }
--type rds_savings_estimation_mode() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_effective_recommendation_preferences() :: #{
-%%   <<"savingsEstimationMode">> => lambda_savings_estimation_mode()
-%% }
--type lambda_effective_recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% export_e_c_s_service_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_e_c_s_service_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% rds_instance_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type rds_instance_estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% get_idle_recommendations_response() :: #{
-%%   <<"errors">> => list(idle_recommendation_error()),
-%%   <<"idleRecommendations">> => list(idle_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type get_idle_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ec2_instance_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"instanceRecommendations">> => list(instance_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type get_ec2_instance_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% idle_summary() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type idle_summary() :: #{binary() => any()}.
+-type recommended_option_projected_metric() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -604,17 +1430,57 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% opt_in_required_exception() :: #{
-%%   <<"message">> => string()
+%% s3_destination() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"metadataKey">> => string()
 %% }
--type opt_in_required_exception() :: #{binary() => any()}.
+-type s3_destination() :: #{binary() => any()}.
 
 %% Example:
-%% idle_recommendation_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
+%% s3_destination_config() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"keyPrefix">> => string()
 %% }
--type idle_recommendation_filter() :: #{binary() => any()}.
+-type s3_destination_config() :: #{binary() => any()}.
+
+%% Example:
+%% savings_opportunity() :: #{
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"savingsOpportunityPercentage">> => float()
+%% }
+-type savings_opportunity() :: #{binary() => any()}.
+
+%% Example:
+%% scope() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type scope() :: #{binary() => any()}.
+
+%% Example:
+%% service_configuration() :: #{
+%%   <<"autoScalingConfiguration">> => list(any()),
+%%   <<"containerConfigurations">> => list(container_configuration()),
+%%   <<"cpu">> => integer(),
+%%   <<"memory">> => integer(),
+%%   <<"taskDefinitionArn">> => string()
+%% }
+-type service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% summary() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"reasonCodeSummaries">> => list(reason_code_summary()),
+%%   <<"value">> => float()
+%% }
+-type summary() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -624,98 +1490,51 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
-%% metric_source() :: #{
-%%   <<"provider">> => list(any()),
-%%   <<"providerArn">> => string()
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type metric_source() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_e_c_s_service_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(e_c_s_service_recommended_option_projected_metric())
+%% update_enrollment_status_request() :: #{
+%%   <<"includeMemberAccounts">> => boolean(),
+%%   <<"status">> := list(any())
 %% }
--type get_e_c_s_service_recommendation_projected_metrics_response() :: #{binary() => any()}.
+-type update_enrollment_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% lambda_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => lambda_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
+%% update_enrollment_status_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
 %% }
--type lambda_savings_opportunity_after_discounts() :: #{binary() => any()}.
+-type update_enrollment_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% export_ebs_volume_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_ebs_volume_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% rds_db_utilization_metric() :: #{
+%% utilization_metric() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"statistic">> => list(any()),
 %%   <<"value">> => float()
 %% }
--type rds_db_utilization_metric() :: #{binary() => any()}.
+-type utilization_metric() :: #{binary() => any()}.
 
 %% Example:
-%% put_recommendation_preferences_request() :: #{
-%%   <<"enhancedInfrastructureMetrics">> => list(any()),
-%%   <<"externalMetricsPreference">> => external_metrics_preference(),
-%%   <<"inferredWorkloadTypes">> => list(any()),
-%%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(preferred_resource()),
-%%   <<"resourceType">> := list(any()),
-%%   <<"savingsEstimationMode">> => list(any()),
-%%   <<"scope">> => scope(),
-%%   <<"utilizationPreferences">> => list(utilization_preference())
+%% utilization_preference() :: #{
+%%   <<"metricName">> => list(any()),
+%%   <<"metricParameters">> => customizable_metric_parameters()
 %% }
--type put_recommendation_preferences_request() :: #{binary() => any()}.
+-type utilization_preference() :: #{binary() => any()}.
 
 %% Example:
-%% get_rds_database_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(rds_db_recommendation_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"resourceArns">> => list(string())
+%% volume_configuration() :: #{
+%%   <<"rootVolume">> => boolean(),
+%%   <<"volumeBaselineIOPS">> => integer(),
+%%   <<"volumeBaselineThroughput">> => integer(),
+%%   <<"volumeBurstIOPS">> => integer(),
+%%   <<"volumeBurstThroughput">> => integer(),
+%%   <<"volumeSize">> => integer(),
+%%   <<"volumeType">> => string()
 %% }
--type get_rds_database_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% export_idle_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(idle_recommendation_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_idle_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% license_recommendation_option() :: #{
-%%   <<"licenseEdition">> => list(any()),
-%%   <<"licenseModel">> => list(any()),
-%%   <<"operatingSystem">> => string(),
-%%   <<"rank">> => integer(),
-%%   <<"savingsOpportunity">> => savings_opportunity()
-%% }
--type license_recommendation_option() :: #{binary() => any()}.
-
-%% Example:
-%% idle_savings_opportunity() :: #{
-%%   <<"estimatedMonthlySavings">> => idle_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type idle_savings_opportunity() :: #{binary() => any()}.
+-type volume_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% volume_recommendation() :: #{
@@ -734,326 +1553,6 @@
 -type volume_recommendation() :: #{binary() => any()}.
 
 %% Example:
-%% export_license_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(license_recommendation_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_license_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_utilization_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type e_c_s_service_utilization_metric() :: #{binary() => any()}.
-
-%% Example:
-%% instance_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type instance_estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommendation_preferences_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceType">> := list(any()),
-%%   <<"scope">> => scope()
-%% }
--type get_recommendation_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% gpu() :: #{
-%%   <<"gpuCount">> => integer(),
-%%   <<"gpuMemorySizeInMiB">> => integer()
-%% }
--type gpu() :: #{binary() => any()}.
-
-%% Example:
-%% get_ebs_volume_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(ebs_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"volumeArns">> => list(string())
-%% }
--type get_ebs_volume_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => instance_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type instance_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% export_auto_scaling_group_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_auto_scaling_group_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_e_c_s_service_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceArns">> => list(string())
-%% }
--type get_e_c_s_service_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% utilization_preference() :: #{
-%%   <<"metricName">> => list(any()),
-%%   <<"metricParameters">> => customizable_metric_parameters()
-%% }
--type utilization_preference() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% export_lambda_function_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_lambda_function_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"currentInstanceGpuInfo">> => gpu_info(),
-%%   <<"currentInstanceType">> => string(),
-%%   <<"currentPerformanceRisk">> => list(any()),
-%%   <<"effectiveRecommendationPreferences">> => effective_recommendation_preferences(),
-%%   <<"externalMetricStatus">> => external_metric_status(),
-%%   <<"finding">> => list(any()),
-%%   <<"findingReasonCodes">> => list(list(any())()),
-%%   <<"idle">> => list(any()),
-%%   <<"inferredWorkloadTypes">> => list(list(any())()),
-%%   <<"instanceArn">> => string(),
-%%   <<"instanceName">> => string(),
-%%   <<"instanceState">> => list(any()),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"recommendationOptions">> => list(instance_recommendation_option()),
-%%   <<"recommendationSources">> => list(recommendation_source()),
-%%   <<"tags">> => list(tag()),
-%%   <<"utilizationMetrics">> => list(utilization_metric())
-%% }
--type instance_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% container_configuration() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"cpu">> => integer(),
-%%   <<"memorySizeConfiguration">> => memory_size_configuration()
-%% }
--type container_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% export_rds_database_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_rds_database_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% s3_destination() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string(),
-%%   <<"metadataKey">> => string()
-%% }
--type s3_destination() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommendation_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"message">> => string()
-%% }
--type get_recommendation_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommendation_preferences_response() :: #{
-
-%% }
--type delete_recommendation_preferences_response() :: #{binary() => any()}.
-
-%% Example:
-%% savings_opportunity() :: #{
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type savings_opportunity() :: #{binary() => any()}.
-
-%% Example:
-%% memory_size_configuration() :: #{
-%%   <<"memory">> => integer(),
-%%   <<"memoryReservation">> => integer()
-%% }
--type memory_size_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_effective_recommendation_preferences_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type get_effective_recommendation_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"autoScalingGroupArn">> => string(),
-%%   <<"autoScalingGroupName">> => string(),
-%%   <<"currentConfiguration">> => auto_scaling_group_configuration(),
-%%   <<"currentInstanceGpuInfo">> => gpu_info(),
-%%   <<"currentPerformanceRisk">> => list(any()),
-%%   <<"effectiveRecommendationPreferences">> => effective_recommendation_preferences(),
-%%   <<"finding">> => list(any()),
-%%   <<"inferredWorkloadTypes">> => list(list(any())()),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"recommendationOptions">> => list(auto_scaling_group_recommendation_option()),
-%%   <<"utilizationMetrics">> => list(utilization_metric())
-%% }
--type auto_scaling_group_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% license_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"currentLicenseConfiguration">> => license_configuration(),
-%%   <<"finding">> => list(any()),
-%%   <<"findingReasonCodes">> => list(list(any())()),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"licenseRecommendationOptions">> => list(license_recommendation_option()),
-%%   <<"lookbackPeriodInDays">> => float(),
-%%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type license_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% get_ec2_instance_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(filter()),
-%%   <<"instanceArns">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationPreferences">> => recommendation_preferences()
-%% }
--type get_ec2_instance_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => e_c_s_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type e_c_s_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% scope() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type scope() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_source() :: #{
-%%   <<"recommendationSourceArn">> => string(),
-%%   <<"recommendationSourceType">> => list(any())
-%% }
--type recommendation_source() :: #{binary() => any()}.
-
-%% Example:
-%% rds_db_storage_recommendation_option() :: #{
-%%   <<"estimatedMonthlyVolumeIOPsCostVariation">> => list(any()),
-%%   <<"rank">> => integer(),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => rds_storage_savings_opportunity_after_discounts(),
-%%   <<"storageConfiguration">> => db_storage_configuration()
-%% }
--type rds_db_storage_recommendation_option() :: #{binary() => any()}.
-
-%% Example:
-%% get_idle_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"filters">> => list(idle_recommendation_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"orderBy">> => order_by(),
-%%   <<"resourceArns">> => list(string())
-%% }
--type get_idle_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_scaling_group_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"autoScalingGroupArns">> => list(string()),
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationPreferences">> => recommendation_preferences()
-%% }
--type get_auto_scaling_group_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% utilization_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type utilization_metric() :: #{binary() => any()}.
-
-%% Example:
-%% instance_recommendation_option() :: #{
-%%   <<"instanceGpuInfo">> => gpu_info(),
-%%   <<"instanceType">> => string(),
-%%   <<"migrationEffort">> => list(any()),
-%%   <<"performanceRisk">> => float(),
-%%   <<"platformDifferences">> => list(list(any())()),
-%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
-%%   <<"rank">> => integer(),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => instance_savings_opportunity_after_discounts()
-%% }
--type instance_recommendation_option() :: #{binary() => any()}.
-
-%% Example:
 %% volume_recommendation_option() :: #{
 %%   <<"configuration">> => volume_configuration(),
 %%   <<"performanceRisk">> => float(),
@@ -1063,777 +1562,278 @@
 %% }
 -type volume_recommendation_option() :: #{binary() => any()}.
 
-%% Example:
-%% e_c_s_service_projected_metric() :: #{
-%%   <<"lowerBoundValues">> => list(float()),
-%%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()),
-%%   <<"upperBoundValues">> => list(float())
-%% }
--type e_c_s_service_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% enrollment_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type enrollment_filter() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_recommendation_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type e_c_s_service_recommendation_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_license_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"licenseRecommendations">> => list(license_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type get_license_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_recommendation_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type license_recommendation_filter() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(e_c_s_service_projected_metric()),
-%%   <<"recommendedCpuUnits">> => integer(),
-%%   <<"recommendedMemorySize">> => integer()
-%% }
--type e_c_s_service_recommended_option_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% rds_database_recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(rds_database_projected_metric()),
-%%   <<"rank">> => integer(),
-%%   <<"recommendedDBInstanceClass">> => string()
-%% }
--type rds_database_recommended_option_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_estimated_monthly_savings() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type ebs_estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% external_metrics_preference() :: #{
-%%   <<"source">> => list(any())
-%% }
--type external_metrics_preference() :: #{binary() => any()}.
-
-%% Example:
-%% export_ebs_volume_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(ebs_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_ebs_volume_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_idle_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_idle_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_scaling_group_recommendations_response() :: #{
-%%   <<"autoScalingGroupRecommendations">> => list(auto_scaling_group_recommendation()),
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"nextToken">> => string()
-%% }
--type get_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% rds_instance_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => rds_instance_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type rds_instance_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_savings_estimation_mode() :: #{
-%%   <<"source">> => list(any())
-%% }
--type e_c_s_savings_estimation_mode() :: #{binary() => any()}.
-
-%% Example:
-%% get_ec2_recommendation_projected_metrics_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"instanceArn">> := string(),
-%%   <<"period">> := integer(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"stat">> := list(any())
-%% }
--type get_ec2_recommendation_projected_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% effective_preferred_resource() :: #{
-%%   <<"effectiveIncludeList">> => list(string()),
-%%   <<"excludeList">> => list(string()),
-%%   <<"includeList">> => list(string()),
-%%   <<"name">> => list(any())
-%% }
--type effective_preferred_resource() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_effective_recommendation_preferences() :: #{
-%%   <<"lookBackPeriod">> => list(any()),
-%%   <<"savingsEstimationMode">> => e_c_s_savings_estimation_mode()
-%% }
--type e_c_s_effective_recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% reason_code_summary() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type reason_code_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_enrollment_status_response() :: #{
-%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"memberAccountsEnrolled">> => boolean(),
-%%   <<"numberOfMemberAccountsOptedIn">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string()
-%% }
--type get_enrollment_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => ebs_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type ebs_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% export_e_c_s_service_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_e_c_s_service_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% projected_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()),
-%%   <<"values">> => list(float())
-%% }
--type projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% rds_storage_savings_opportunity_after_discounts() :: #{
-%%   <<"estimatedMonthlySavings">> => rds_storage_estimated_monthly_savings(),
-%%   <<"savingsOpportunityPercentage">> => float()
-%% }
--type rds_storage_savings_opportunity_after_discounts() :: #{binary() => any()}.
-
-%% Example:
-%% export_license_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_license_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_projected_utilization_metric() :: #{
-%%   <<"lowerBoundValue">> => float(),
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"upperBoundValue">> => float()
-%% }
--type e_c_s_service_projected_utilization_metric() :: #{binary() => any()}.
-
-%% Example:
-%% effective_recommendation_preferences() :: #{
-%%   <<"cpuVendorArchitectures">> => list(list(any())()),
-%%   <<"enhancedInfrastructureMetrics">> => list(any()),
-%%   <<"externalMetricsPreference">> => external_metrics_preference(),
-%%   <<"inferredWorkloadTypes">> => list(any()),
-%%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(effective_preferred_resource()),
-%%   <<"savingsEstimationMode">> => instance_savings_estimation_mode(),
-%%   <<"utilizationPreferences">> => list(utilization_preference())
-%% }
--type effective_recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_recommendation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"currentPerformanceRisk">> => list(any()),
-%%   <<"currentServiceConfiguration">> => service_configuration(),
-%%   <<"effectiveRecommendationPreferences">> => e_c_s_effective_recommendation_preferences(),
-%%   <<"finding">> => list(any()),
-%%   <<"findingReasonCodes">> => list(list(any())()),
-%%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"launchType">> => list(any()),
-%%   <<"lookbackPeriodInDays">> => float(),
-%%   <<"serviceArn">> => string(),
-%%   <<"serviceRecommendationOptions">> => list(e_c_s_service_recommendation_option()),
-%%   <<"tags">> => list(tag()),
-%%   <<"utilizationMetrics">> => list(e_c_s_service_utilization_metric())
-%% }
--type e_c_s_service_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% get_lambda_function_recommendations_response() :: #{
-%%   <<"lambdaFunctionRecommendations">> => list(lambda_function_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type get_lambda_function_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% volume_configuration() :: #{
-%%   <<"rootVolume">> => boolean(),
-%%   <<"volumeBaselineIOPS">> => integer(),
-%%   <<"volumeBaselineThroughput">> => integer(),
-%%   <<"volumeBurstIOPS">> => integer(),
-%%   <<"volumeBurstThroughput">> => integer(),
-%%   <<"volumeSize">> => integer(),
-%%   <<"volumeType">> => string()
-%% }
--type volume_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"aggregatedSavingsOpportunity">> => savings_opportunity(),
-%%   <<"currentPerformanceRiskRatings">> => current_performance_risk_ratings(),
-%%   <<"idleSavingsOpportunity">> => savings_opportunity(),
-%%   <<"idleSummaries">> => list(idle_summary()),
-%%   <<"inferredWorkloadSavings">> => list(inferred_workload_saving()),
-%%   <<"recommendationResourceType">> => list(any()),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"summaries">> => list(summary())
-%% }
--type recommendation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_configuration() :: #{
-%%   <<"allocationStrategy">> => list(any()),
-%%   <<"desiredCapacity">> => integer(),
-%%   <<"estimatedInstanceHourReductionPercentage">> => float(),
-%%   <<"instanceType">> => string(),
-%%   <<"maxSize">> => integer(),
-%%   <<"minSize">> => integer(),
-%%   <<"mixedInstanceTypes">> => list(string()),
-%%   <<"type">> => list(any())
-%% }
--type auto_scaling_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group_recommendation_option() :: #{
-%%   <<"configuration">> => auto_scaling_group_configuration(),
-%%   <<"instanceGpuInfo">> => gpu_info(),
-%%   <<"migrationEffort">> => list(any()),
-%%   <<"performanceRisk">> => float(),
-%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
-%%   <<"rank">> => integer(),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => auto_scaling_group_savings_opportunity_after_discounts()
-%% }
--type auto_scaling_group_recommendation_option() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_recommendation_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type lambda_function_recommendation_filter() :: #{binary() => any()}.
-
-%% Example:
-%% inferred_workload_saving() :: #{
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"inferredWorkloadTypes">> => list(list(any())())
-%% }
--type inferred_workload_saving() :: #{binary() => any()}.
-
-%% Example:
-%% rds_db_instance_recommendation_option() :: #{
-%%   <<"dbInstanceClass">> => string(),
-%%   <<"performanceRisk">> => float(),
-%%   <<"projectedUtilizationMetrics">> => list(rds_db_utilization_metric()),
-%%   <<"rank">> => integer(),
-%%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"savingsOpportunityAfterDiscounts">> => rds_instance_savings_opportunity_after_discounts()
-%% }
--type rds_db_instance_recommendation_option() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_utilization_metric() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type lambda_function_utilization_metric() :: #{binary() => any()}.
-
-%% Example:
-%% rds_db_recommendation_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type rds_db_recommendation_filter() :: #{binary() => any()}.
-
-%% Example:
-%% export_rds_database_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(rds_db_recommendation_filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_rds_database_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type ebs_filter() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_savings_estimation_mode() :: #{
-%%   <<"source">> => list(any())
-%% }
--type lambda_savings_estimation_mode() :: #{binary() => any()}.
-
-%% Example:
-%% export_auto_scaling_group_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_destination() :: #{
-%%   <<"s3">> => s3_destination()
-%% }
--type export_destination() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_preferences() :: #{
-%%   <<"cpuVendorArchitectures">> => list(list(any())())
-%% }
--type recommendation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(projected_metric()),
-%%   <<"rank">> => integer(),
-%%   <<"recommendedInstanceType">> => string()
-%% }
--type recommended_option_projected_metric() :: #{binary() => any()}.
-
-%% Example:
-%% export_ec2_instance_recommendations_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"s3Destination">> => s3_destination()
-%% }
--type export_ec2_instance_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_export_job() :: #{
-%%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"destination">> => export_destination(),
-%%   <<"failureReason">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"lastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type recommendation_export_job() :: #{binary() => any()}.
-
-%% Example:
-%% s3_destination_config() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"keyPrefix">> => string()
-%% }
--type s3_destination_config() :: #{binary() => any()}.
-
-%% Example:
-%% summary() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"reasonCodeSummaries">> => list(reason_code_summary()),
-%%   <<"value">> => float()
-%% }
--type summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_rds_database_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(rds_database_recommended_option_projected_metric())
-%% }
--type get_rds_database_recommendation_projected_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_ec2_instance_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"fieldsToExport">> => list(list(any())()),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(filter()),
-%%   <<"includeMemberAccounts">> => boolean(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"s3DestinationConfig">> := s3_destination_config()
-%% }
--type export_ec2_instance_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_rds_database_recommendation_projected_metrics_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"period">> := integer(),
-%%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"resourceArn">> := string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"stat">> := list(any())
-%% }
--type get_rds_database_recommendation_projected_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% idle_recommendation_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"message">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type idle_recommendation_error() :: #{binary() => any()}.
-
-%% Example:
-%% preferred_resource() :: #{
-%%   <<"excludeList">> => list(string()),
-%%   <<"includeList">> => list(string()),
-%%   <<"name">> => list(any())
-%% }
--type preferred_resource() :: #{binary() => any()}.
-
-%% Example:
-%% service_configuration() :: #{
-%%   <<"autoScalingConfiguration">> => list(any()),
-%%   <<"containerConfigurations">> => list(container_configuration()),
-%%   <<"cpu">> => integer(),
-%%   <<"memory">> => integer(),
-%%   <<"taskDefinitionArn">> => string()
-%% }
--type service_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_rds_database_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()),
-%%   <<"nextToken">> => string(),
-%%   <<"rdsDBRecommendations">> => list(rds_db_recommendation())
-%% }
--type get_rds_database_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% gpu_info() :: #{
-%%   <<"gpus">> => list(gpu())
-%% }
--type gpu_info() :: #{binary() => any()}.
-
 -type delete_recommendation_preferences_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_recommendation_export_jobs_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_auto_scaling_group_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_e_c_s_service_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_ebs_volume_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_ec2_instance_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_idle_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_lambda_function_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_license_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_rds_database_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_auto_scaling_group_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_e_c_s_service_recommendation_projected_metrics_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_e_c_s_service_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_ebs_volume_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_ec2_instance_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_ec2_recommendation_projected_metrics_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_effective_recommendation_preferences_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_enrollment_status_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
+    missing_authentication_token() | 
     invalid_parameter_value_exception() | 
-    missing_authentication_token().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_enrollment_statuses_for_organization_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
+    missing_authentication_token() | 
     invalid_parameter_value_exception() | 
-    missing_authentication_token().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_idle_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_lambda_function_recommendations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_license_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_rds_database_recommendation_projected_metrics_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_rds_database_recommendations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_recommendation_preferences_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_recommendation_summaries_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    missing_authentication_token().
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_recommendation_preferences_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    missing_authentication_token().
+    opt_in_required_exception() | 
+    missing_authentication_token() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_enrollment_status_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
+    missing_authentication_token() | 
     invalid_parameter_value_exception() | 
-    missing_authentication_token().
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

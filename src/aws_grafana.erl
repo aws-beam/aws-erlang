@@ -80,147 +80,36 @@
 
 
 %% Example:
-%% list_permissions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> := list(permission_entry())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_permissions_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_configuration_request() :: #{
-%%   <<"configuration">> := string(),
-%%   <<"grafanaVersion">> => string()
-%% }
--type update_workspace_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_api_key_response() :: #{
-%%   <<"key">> := string(),
-%%   <<"keyName">> := string(),
-%%   <<"workspaceId">> := string()
-%% }
--type create_workspace_api_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_workspace_service_accounts_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_workspace_service_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_workspace_authentication_response() :: #{
-%%   <<"authentication">> := authentication_description()
-%% }
--type describe_workspace_authentication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_access_configuration() :: #{
-%%   <<"prefixListIds">> => list(string()),
-%%   <<"vpceIds">> => list(string())
-%% }
--type network_access_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_authentication() :: #{
-%%   <<"configuration">> => saml_configuration(),
-%%   <<"status">> => string()
-%% }
--type saml_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_summary() :: #{
-%%   <<"authentication">> => authentication_summary(),
-%%   <<"created">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"grafanaToken">> => string(),
-%%   <<"grafanaVersion">> => string(),
-%%   <<"id">> => string(),
-%%   <<"licenseType">> => string(),
-%%   <<"modified">> => [non_neg_integer()],
+%% assertion_attributes() :: #{
+%%   <<"email">> => string(),
+%%   <<"groups">> => string(),
+%%   <<"login">> => string(),
 %%   <<"name">> => string(),
-%%   <<"notificationDestinations">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%%   <<"org">> => string(),
+%%   <<"role">> => string()
 %% }
--type workspace_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_configuration_request() :: #{}
--type describe_workspace_configuration_request() :: #{}.
+-type assertion_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_workspace_service_account_token_response() :: #{
-%%   <<"serviceAccountId">> => [string()],
-%%   <<"tokenId">> => [string()],
-%%   <<"workspaceId">> => string()
+%% associate_license_request() :: #{
+%%   <<"grafanaToken">> => string()
 %% }
--type delete_workspace_service_account_token_response() :: #{binary() => any()}.
+-type associate_license_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_api_key_request() :: #{
-%%   <<"keyName">> := string(),
-%%   <<"keyRole">> := [string()],
-%%   <<"secondsToLive">> := [integer()]
-%% }
--type create_workspace_api_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workspace_response() :: #{
+%% associate_license_response() :: #{
 %%   <<"workspace">> := workspace_description()
 %% }
--type delete_workspace_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_configuration_response() :: #{}
--type update_workspace_configuration_response() :: #{}.
-
-
-%% Example:
-%% service_account_summary() :: #{
-%%   <<"grafanaRole">> => string(),
-%%   <<"id">> => [string()],
-%%   <<"isDisabled">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type service_account_summary() :: #{binary() => any()}.
+-type associate_license_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -233,42 +122,18 @@
 
 
 %% Example:
-%% delete_workspace_service_account_response() :: #{
-%%   <<"serviceAccountId">> => [string()],
-%%   <<"workspaceId">> => string()
+%% authentication_summary() :: #{
+%%   <<"providers">> => list(string()),
+%%   <<"samlConfigurationStatus">> => string()
 %% }
--type delete_workspace_service_account_response() :: #{binary() => any()}.
+-type authentication_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_workspace_authentication_response() :: #{
-%%   <<"authentication">> := authentication_description()
+%% aws_sso_authentication() :: #{
+%%   <<"ssoClientId">> => string()
 %% }
--type update_workspace_authentication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_error() :: #{
-%%   <<"causedBy">> => update_instruction(),
-%%   <<"code">> => [integer()],
-%%   <<"message">> => [string()]
-%% }
--type update_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_workspace_response() :: #{
-%%   <<"workspace">> := workspace_description()
-%% }
--type describe_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_workspace_configuration_response() :: #{
-%%   <<"configuration">> := string(),
-%%   <<"grafanaVersion">> => string()
-%% }
--type describe_workspace_configuration_response() :: #{binary() => any()}.
+-type aws_sso_authentication() :: #{binary() => any()}.
 
 
 %% Example:
@@ -281,55 +146,61 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% create_workspace_api_key_request() :: #{
+%%   <<"keyName">> := string(),
+%%   <<"keyRole">> := [string()],
+%%   <<"secondsToLive">> := [integer()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_workspace_api_key_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_workspace_authentication_request() :: #{
+%% create_workspace_api_key_response() :: #{
+%%   <<"key">> := string(),
+%%   <<"keyName">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type create_workspace_api_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"accountAccessType">> := string(),
 %%   <<"authenticationProviders">> := list(string()),
-%%   <<"samlConfiguration">> => saml_configuration()
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> => string(),
+%%   <<"grafanaVersion">> => string(),
+%%   <<"ipAddressType">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"networkAccessControl">> => network_access_configuration(),
+%%   <<"organizationRoleName">> => string(),
+%%   <<"permissionType">> := string(),
+%%   <<"stackSetName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfiguration">> => vpc_configuration(),
+%%   <<"workspaceDataSources">> => list(string()),
+%%   <<"workspaceDescription">> => string(),
+%%   <<"workspaceName">> => string(),
+%%   <<"workspaceNotificationDestinations">> => list(string()),
+%%   <<"workspaceOrganizationalUnits">> => list(string()),
+%%   <<"workspaceRoleArn">> => string()
 %% }
--type update_workspace_authentication_request() :: #{binary() => any()}.
+-type create_workspace_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_service_account_token_response() :: #{
-%%   <<"serviceAccountId">> => [string()],
-%%   <<"serviceAccountToken">> => service_account_token_summary_with_key(),
-%%   <<"workspaceId">> => string()
-%% }
--type create_workspace_service_account_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_summary() :: #{
-%%   <<"providers">> => list(string()),
-%%   <<"samlConfigurationStatus">> => string()
-%% }
--type authentication_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_license_response() :: #{
+%% create_workspace_response() :: #{
 %%   <<"workspace">> := workspace_description()
 %% }
--type associate_license_response() :: #{binary() => any()}.
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_service_account_request() :: #{
+%%   <<"grafanaRole">> := string(),
+%%   <<"name">> := string()
+%% }
+-type create_workspace_service_account_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -341,9 +212,146 @@
 %% }
 -type create_workspace_service_account_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_workspace_service_account_token_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"secondsToLive">> := [integer()]
+%% }
+-type create_workspace_service_account_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_service_account_token_response() :: #{
+%%   <<"serviceAccountId">> => [string()],
+%%   <<"serviceAccountToken">> => service_account_token_summary_with_key(),
+%%   <<"workspaceId">> => string()
+%% }
+-type create_workspace_service_account_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_api_key_request() :: #{}
+-type delete_workspace_api_key_request() :: #{}.
+
+
+%% Example:
+%% delete_workspace_api_key_response() :: #{
+%%   <<"keyName">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type delete_workspace_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
+
+
+%% Example:
+%% delete_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type delete_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_service_account_request() :: #{}
+-type delete_workspace_service_account_request() :: #{}.
+
+
+%% Example:
+%% delete_workspace_service_account_response() :: #{
+%%   <<"serviceAccountId">> => [string()],
+%%   <<"workspaceId">> => string()
+%% }
+-type delete_workspace_service_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_service_account_token_request() :: #{}
+-type delete_workspace_service_account_token_request() :: #{}.
+
+
+%% Example:
+%% delete_workspace_service_account_token_response() :: #{
+%%   <<"serviceAccountId">> => [string()],
+%%   <<"tokenId">> => [string()],
+%%   <<"workspaceId">> => string()
+%% }
+-type delete_workspace_service_account_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_authentication_request() :: #{}
+-type describe_workspace_authentication_request() :: #{}.
+
+
+%% Example:
+%% describe_workspace_authentication_response() :: #{
+%%   <<"authentication">> := authentication_description()
+%% }
+-type describe_workspace_authentication_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_configuration_request() :: #{}
+-type describe_workspace_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_workspace_configuration_response() :: #{
+%%   <<"configuration">> := string(),
+%%   <<"grafanaVersion">> => string()
+%% }
+-type describe_workspace_configuration_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_workspace_request() :: #{}
 -type describe_workspace_request() :: #{}.
+
+
+%% Example:
+%% describe_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_license_request() :: #{}
+-type disassociate_license_request() :: #{}.
+
+
+%% Example:
+%% disassociate_license_response() :: #{
+%%   <<"workspace">> := workspace_description()
+%% }
+-type disassociate_license_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_request() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string(),
+%%   <<"userType">> => string()
+%% }
+-type list_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> := list(permission_entry())
+%% }
+-type list_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -352,17 +360,135 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% describe_workspace_authentication_request() :: #{}
--type describe_workspace_authentication_request() :: #{}.
+%% list_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceId">> => string()
+%% }
+-type list_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
+%% list_versions_response() :: #{
+%%   <<"grafanaVersions">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_service_account_tokens_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspace_service_account_tokens_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_service_account_tokens_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceAccountId">> => [string()],
+%%   <<"serviceAccountTokens">> => list(service_account_token_summary()),
+%%   <<"workspaceId">> => string()
+%% }
+-type list_workspace_service_account_tokens_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_service_accounts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspace_service_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_service_accounts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceAccounts">> => list(service_account_summary()),
+%%   <<"workspaceId">> => string()
+%% }
+-type list_workspace_service_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaces">> := list(workspace_summary())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_access_configuration() :: #{
+%%   <<"prefixListIds">> => list(string()),
+%%   <<"vpceIds">> => list(string())
+%% }
+-type network_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_entry() :: #{
+%%   <<"role">> => string(),
+%%   <<"user">> => user()
+%% }
+-type permission_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% role_values() :: #{
+%%   <<"admin">> => list(string()),
+%%   <<"editor">> => list(string())
+%% }
+-type role_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_authentication() :: #{
+%%   <<"configuration">> => saml_configuration(),
+%%   <<"status">> => string()
+%% }
+-type saml_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_configuration() :: #{
+%%   <<"allowedOrganizations">> => list(string()),
+%%   <<"assertionAttributes">> => assertion_attributes(),
+%%   <<"idpMetadata">> => list(),
+%%   <<"loginValidityDuration">> => integer(),
+%%   <<"roleValues">> => role_values()
+%% }
+-type saml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_account_summary() :: #{
+%%   <<"grafanaRole">> => string(),
+%%   <<"id">> => [string()],
+%%   <<"isDisabled">> => [string()],
 %%   <<"name">> => [string()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type service_account_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -377,32 +503,114 @@
 
 
 %% Example:
-%% update_workspace_response() :: #{
-%%   <<"workspace">> := workspace_description()
+%% service_account_token_summary_with_key() :: #{
+%%   <<"id">> => [string()],
+%%   <<"key">> => string(),
+%%   <<"name">> => [string()]
 %% }
--type update_workspace_response() :: #{binary() => any()}.
+-type service_account_token_summary_with_key() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_versions_response() :: #{
-%%   <<"grafanaVersions">> => list(string()),
-%%   <<"nextToken">> => string()
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
 %% }
--type list_versions_response() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workspace_service_account_tokens_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceAccountId">> => [string()],
-%%   <<"serviceAccountTokens">> => list(service_account_token_summary()),
-%%   <<"workspaceId">> => string()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type list_workspace_service_account_tokens_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_workspace_request() :: #{}
--type delete_workspace_request() :: #{}.
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_error() :: #{
+%%   <<"causedBy">> => update_instruction(),
+%%   <<"code">> => [integer()],
+%%   <<"message">> => [string()]
+%% }
+-type update_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instruction() :: #{
+%%   <<"action">> => string(),
+%%   <<"role">> => string(),
+%%   <<"users">> => list(user())
+%% }
+-type update_instruction() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permissions_request() :: #{
+%%   <<"updateInstructionBatch">> := list(update_instruction())
+%% }
+-type update_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permissions_response() :: #{
+%%   <<"errors">> := list(update_error())
+%% }
+-type update_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_authentication_request() :: #{
+%%   <<"authenticationProviders">> := list(string()),
+%%   <<"samlConfiguration">> => saml_configuration()
+%% }
+-type update_workspace_authentication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_authentication_response() :: #{
+%%   <<"authentication">> := authentication_description()
+%% }
+-type update_workspace_authentication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_configuration_request() :: #{
+%%   <<"configuration">> := string(),
+%%   <<"grafanaVersion">> => string()
+%% }
+-type update_workspace_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_configuration_response() :: #{}
+-type update_workspace_configuration_response() :: #{}.
 
 
 %% Example:
@@ -427,14 +635,43 @@
 
 
 %% Example:
-%% list_permissions_request() :: #{
-%%   <<"groupId">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"userId">> => string(),
-%%   <<"userType">> => string()
+%% update_workspace_response() :: #{
+%%   <<"workspace">> := workspace_description()
 %% }
--type list_permissions_request() :: #{binary() => any()}.
+-type update_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -472,448 +709,211 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_response() :: #{
-%%   <<"workspace">> := workspace_description()
-%% }
--type create_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workspaces">> := list(workspace_summary())
-%% }
--type list_workspaces_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_license_request() :: #{
-%%   <<"grafanaToken">> => string()
-%% }
--type associate_license_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_permissions_response() :: #{
-%%   <<"errors">> := list(update_error())
-%% }
--type update_permissions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_service_account_request() :: #{}
--type delete_workspace_service_account_request() :: #{}.
-
-%% Example:
-%% delete_workspace_service_account_token_request() :: #{}
--type delete_workspace_service_account_token_request() :: #{}.
-
-
-%% Example:
-%% permission_entry() :: #{
-%%   <<"role">> => string(),
-%%   <<"user">> => user()
-%% }
--type permission_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_sso_authentication() :: #{
-%%   <<"ssoClientId">> => string()
-%% }
--type aws_sso_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_workspaces_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_workspaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_instruction() :: #{
-%%   <<"action">> => string(),
-%%   <<"role">> => string(),
-%%   <<"users">> => list(user())
-%% }
--type update_instruction() :: #{binary() => any()}.
-
-
-%% Example:
-%% user() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_api_key_request() :: #{}
--type delete_workspace_api_key_request() :: #{}.
-
-
-%% Example:
-%% list_versions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"workspaceId">> => string()
-%% }
--type list_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assertion_attributes() :: #{
-%%   <<"email">> => string(),
-%%   <<"groups">> => string(),
-%%   <<"login">> => string(),
-%%   <<"name">> => string(),
-%%   <<"org">> => string(),
-%%   <<"role">> => string()
-%% }
--type assertion_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspace_service_account_tokens_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_workspace_service_account_tokens_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% role_values() :: #{
-%%   <<"admin">> => list(string()),
-%%   <<"editor">> => list(string())
-%% }
--type role_values() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_license_response() :: #{
-%%   <<"workspace">> := workspace_description()
-%% }
--type disassociate_license_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_service_account_request() :: #{
-%%   <<"grafanaRole">> := string(),
-%%   <<"name">> := string()
-%% }
--type create_workspace_service_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_permissions_request() :: #{
-%%   <<"updateInstructionBatch">> := list(update_instruction())
-%% }
--type update_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_account_token_summary_with_key() :: #{
-%%   <<"id">> => [string()],
-%%   <<"key">> => string(),
-%%   <<"name">> => [string()]
-%% }
--type service_account_token_summary_with_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workspace_api_key_response() :: #{
-%%   <<"keyName">> := string(),
-%%   <<"workspaceId">> := string()
-%% }
--type delete_workspace_api_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_license_request() :: #{}
--type disassociate_license_request() :: #{}.
-
-
-%% Example:
-%% list_workspace_service_accounts_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serviceAccounts">> => list(service_account_summary()),
-%%   <<"workspaceId">> => string()
-%% }
--type list_workspace_service_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_service_account_token_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"secondsToLive">> := [integer()]
-%% }
--type create_workspace_service_account_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_configuration() :: #{
-%%   <<"allowedOrganizations">> => list(string()),
-%%   <<"assertionAttributes">> => assertion_attributes(),
-%%   <<"idpMetadata">> => list(),
-%%   <<"loginValidityDuration">> => integer(),
-%%   <<"roleValues">> => role_values()
-%% }
--type saml_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_request() :: #{
-%%   <<"accountAccessType">> := string(),
-%%   <<"authenticationProviders">> := list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> => string(),
+%% workspace_summary() :: #{
+%%   <<"authentication">> => authentication_summary(),
+%%   <<"created">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"grafanaToken">> => string(),
 %%   <<"grafanaVersion">> => string(),
-%%   <<"ipAddressType">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"networkAccessControl">> => network_access_configuration(),
-%%   <<"organizationRoleName">> => string(),
-%%   <<"permissionType">> := string(),
-%%   <<"stackSetName">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"vpcConfiguration">> => vpc_configuration(),
-%%   <<"workspaceDataSources">> => list(string()),
-%%   <<"workspaceDescription">> => string(),
-%%   <<"workspaceName">> => string(),
-%%   <<"workspaceNotificationDestinations">> => list(string()),
-%%   <<"workspaceOrganizationalUnits">> => list(string()),
-%%   <<"workspaceRoleArn">> => string()
+%%   <<"id">> => string(),
+%%   <<"licenseType">> => string(),
+%%   <<"modified">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"notificationDestinations">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
 %% }
--type create_workspace_request() :: #{binary() => any()}.
+-type workspace_summary() :: #{binary() => any()}.
 
 -type associate_license_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_api_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_service_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_service_account_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_api_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_service_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_service_account_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspace_authentication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_workspace_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_license_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_permissions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workspace_service_account_tokens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_workspace_service_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_workspaces_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_permissions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workspace_authentication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workspace_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -388,71 +388,96 @@
 
 
 %% Example:
-%% describe_package_group_request() :: #{
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_summary() :: #{
+%%   <<"hashes">> => map(),
+%%   <<"name">> => string(),
+%%   <<"size">> => float()
+%% }
+-type asset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_external_connection_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"packageGroup">> := string()
+%%   <<"externalConnection">> := string(),
+%%   <<"repository">> := string()
 %% }
--type describe_package_group_request() :: #{binary() => any()}.
+-type associate_external_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_package_group_result() :: #{
-%%   <<"packageGroup">> => package_group_description()
+%% associate_external_connection_result() :: #{
+%%   <<"repository">> => repository_description()
 %% }
--type update_package_group_result() :: #{binary() => any()}.
+-type associate_external_connection_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_package_version_assets_request() :: #{
+%% associated_package() :: #{
+%%   <<"associationType">> => list(any()),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string()
+%% }
+-type associated_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_package_versions_request() :: #{
+%%   <<"allowOverwrite">> => boolean(),
+%%   <<"destinationRepository">> := string(),
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"format">> := list(any()),
-%%   <<"maxResults">> => integer(),
+%%   <<"includeFromUpstream">> => boolean(),
 %%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
 %%   <<"package">> := string(),
-%%   <<"packageVersion">> := string(),
-%%   <<"repository">> := string()
+%%   <<"sourceRepository">> := string(),
+%%   <<"versionRevisions">> => map(),
+%%   <<"versions">> => list(string())
 %% }
--type list_package_version_assets_request() :: #{binary() => any()}.
+-type copy_package_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_package_groups_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packageGroups">> => list(package_group_summary())
-%% }
--type list_package_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_versions_status_result() :: #{
+%% copy_package_versions_result() :: #{
 %%   <<"failedVersions">> => map(),
 %%   <<"successfulVersions">> => map()
 %% }
--type update_package_versions_status_result() :: #{binary() => any()}.
+-type copy_package_versions_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_package_version_assets_result() :: #{
-%%   <<"assets">> => list(asset_summary()),
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"package">> => string(),
-%%   <<"version">> => string(),
-%%   <<"versionRevision">> => string()
+%% create_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type list_package_version_assets_result() :: #{binary() => any()}.
+-type create_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type create_domain_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -468,21 +493,253 @@
 
 
 %% Example:
-%% list_package_version_dependencies_request() :: #{
+%% create_package_group_result() :: #{
+%%   <<"packageGroup">> => package_group_description()
+%% }
+-type create_package_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_repository_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"upstreams">> => list(upstream_repository())
+%% }
+-type create_repository_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type create_repository_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyRevision">> => string()
+%% }
+-type delete_domain_permissions_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type delete_domain_permissions_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type delete_domain_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_group_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"packageGroup">> := string()
+%% }
+-type delete_package_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_group_result() :: #{
+%%   <<"packageGroup">> => package_group_description()
+%% }
+-type delete_package_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"format">> := list(any()),
 %%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_result() :: #{
+%%   <<"deletedPackage">> => package_summary()
+%% }
+-type delete_package_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_versions_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"expectedStatus">> => list(any()),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"versions">> := list(string())
+%% }
+-type delete_package_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_package_versions_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type delete_package_versions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_repository_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyRevision">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_repository_permissions_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type delete_repository_permissions_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_repository_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_repository_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type delete_repository_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type describe_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type describe_domain_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_package_group_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"packageGroup">> := string()
+%% }
+-type describe_package_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_package_group_result() :: #{
+%%   <<"packageGroup">> => package_group_description()
+%% }
+-type describe_package_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_package_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type describe_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_package_result() :: #{
+%%   <<"package">> => package_description()
+%% }
+-type describe_package_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_package_version_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
 %%   <<"package">> := string(),
 %%   <<"packageVersion">> := string(),
 %%   <<"repository">> := string()
 %% }
--type list_package_version_dependencies_request() :: #{binary() => any()}.
+-type describe_package_version_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% untag_resource_result() :: #{}
--type untag_resource_result() :: #{}.
+%% describe_package_version_result() :: #{
+%%   <<"packageVersion">> => package_version_description()
+%% }
+-type describe_package_version_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_repository_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type describe_repository_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type describe_repository_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_external_connection_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"externalConnection">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type disassociate_external_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_external_connection_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type disassociate_external_connection_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -501,33 +758,34 @@
 
 
 %% Example:
-%% package_origin_configuration() :: #{
-%%   <<"restrictions">> => package_origin_restrictions()
+%% dispose_package_versions_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
 %% }
--type package_origin_configuration() :: #{binary() => any()}.
+-type dispose_package_versions_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_repository_result() :: #{
-%%   <<"repository">> => repository_description()
+%% domain_description() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetSizeBytes">> => float(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"repositoryCount">> => integer(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type describe_repository_result() :: #{binary() => any()}.
+-type domain_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_allowed_repositories_for_group_result() :: #{
-%%   <<"allowedRepositories">> => list(string()),
-%%   <<"nextToken">> => string()
+%% domain_entry_point() :: #{
+%%   <<"externalConnectionName">> => string(),
+%%   <<"repositoryName">> => string()
 %% }
--type list_allowed_repositories_for_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_origin() :: #{
-%%   <<"domainEntryPoint">> => domain_entry_point(),
-%%   <<"originType">> => list(any())
-%% }
--type package_version_origin() :: #{binary() => any()}.
+-type domain_entry_point() :: #{binary() => any()}.
 
 
 %% Example:
@@ -540,6 +798,315 @@
 %%   <<"status">> => list(any())
 %% }
 -type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_associated_package_group_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string()
+%% }
+-type get_associated_package_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_associated_package_group_result() :: #{
+%%   <<"associationType">> => list(any()),
+%%   <<"packageGroup">> => package_group_description()
+%% }
+-type get_associated_package_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authorization_token_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"durationSeconds">> => float()
+%% }
+-type get_authorization_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authorization_token_result() :: #{
+%%   <<"authorizationToken">> => string(),
+%%   <<"expiration">> => non_neg_integer()
+%% }
+-type get_authorization_token_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type get_domain_permissions_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type get_domain_permissions_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_asset_request() :: #{
+%%   <<"asset">> := string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"packageVersionRevision">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type get_package_version_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_asset_result() :: #{
+%%   <<"asset">> => binary(),
+%%   <<"assetName">> => string(),
+%%   <<"packageVersion">> => string(),
+%%   <<"packageVersionRevision">> => string()
+%% }
+-type get_package_version_asset_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_readme_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type get_package_version_readme_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_package_version_readme_result() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string(),
+%%   <<"readme">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type get_package_version_readme_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_repository_endpoint_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"endpointType">> => list(any()),
+%%   <<"format">> := list(any()),
+%%   <<"repository">> := string()
+%% }
+-type get_repository_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_repository_endpoint_result() :: #{
+%%   <<"repositoryEndpoint">> => string()
+%% }
+-type get_repository_endpoint_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_repository_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type get_repository_permissions_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type get_repository_permissions_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% license_info() :: #{
+%%   <<"name">> => string(),
+%%   <<"url">> => string()
+%% }
+-type license_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_allowed_repositories_for_group_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"originRestrictionType">> := list(any()),
+%%   <<"packageGroup">> := string()
+%% }
+-type list_allowed_repositories_for_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_allowed_repositories_for_group_result() :: #{
+%%   <<"allowedRepositories">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_allowed_repositories_for_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_packages_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"packageGroup">> := string(),
+%%   <<"preview">> => boolean()
+%% }
+-type list_associated_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_packages_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packages">> => list(associated_package())
+%% }
+-type list_associated_packages_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_result() :: #{
+%%   <<"domains">> => list(domain_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_groups_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type list_package_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_groups_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packageGroups">> => list(package_group_summary())
+%% }
+-type list_package_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_version_assets_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type list_package_version_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_version_assets_result() :: #{
+%%   <<"assets">> => list(asset_summary()),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type list_package_version_assets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_version_dependencies_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type list_package_version_dependencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_version_dependencies_result() :: #{
+%%   <<"dependencies">> => list(package_dependency()),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type list_package_version_dependencies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_versions_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"originType">> => list(any()),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_package_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_package_versions_result() :: #{
+%%   <<"defaultDisplayVersion">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"versions">> => list(package_version_summary())
+%% }
+-type list_package_versions_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -559,109 +1126,141 @@
 
 
 %% Example:
-%% delete_repository_result() :: #{
-%%   <<"repository">> => repository_description()
+%% list_packages_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packages">> => list(package_summary())
 %% }
--type delete_repository_result() :: #{binary() => any()}.
+-type list_packages_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_package_group_result() :: #{
-%%   <<"packageGroup">> => package_group_description()
-%% }
--type delete_package_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_asset_result() :: #{
-%%   <<"asset">> => binary(),
-%%   <<"assetName">> => string(),
-%%   <<"packageVersion">> => string(),
-%%   <<"packageVersionRevision">> => string()
-%% }
--type get_package_version_asset_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_package_version_result() :: #{
-%%   <<"asset">> => asset_summary(),
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string(),
-%%   <<"versionRevision">> => string()
-%% }
--type publish_package_version_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_result() :: #{
-%%   <<"domain">> => domain_description()
-%% }
--type create_domain_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_summary() :: #{
-%%   <<"hashes">> => map(),
-%%   <<"name">> => string(),
-%%   <<"size">> => float()
-%% }
--type asset_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_group_request() :: #{
-%%   <<"contactInfo">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"packageGroup">> := string()
-%% }
--type update_package_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_associated_package_group_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string()
-%% }
--type get_associated_package_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_allowed_repositories_for_group_request() :: #{
+%% list_repositories_in_domain_request() :: #{
+%%   <<"administratorAccount">> => string(),
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"originRestrictionType">> := list(any()),
-%%   <<"packageGroup">> := string()
+%%   <<"repositoryPrefix">> => string()
 %% }
--type list_allowed_repositories_for_group_request() :: #{binary() => any()}.
+-type list_repositories_in_domain_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_repository_permissions_policy_request() :: #{
+%% list_repositories_in_domain_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_summary())
+%% }
+-type list_repositories_in_domain_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_repositories_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryPrefix">> => string()
+%% }
+-type list_repositories_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_repositories_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_summary())
+%% }
+-type list_repositories_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_package_groups_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"policyDocument">> := string(),
-%%   <<"policyRevision">> => string(),
-%%   <<"repository">> := string()
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"packageGroup">> := string()
 %% }
--type put_repository_permissions_policy_request() :: #{binary() => any()}.
+-type list_sub_package_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_package_groups_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packageGroups">> => list(package_group_summary())
+%% }
+-type list_sub_package_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_dependency() :: #{
+%%   <<"dependencyType">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string(),
+%%   <<"versionRequirement">> => string()
+%% }
+-type package_dependency() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_description() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"originConfiguration">> => package_origin_configuration()
+%% }
+-type package_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_group_allowed_repository() :: #{
+%%   <<"originRestrictionType">> => list(any()),
+%%   <<"repositoryName">> => string()
+%% }
+-type package_group_allowed_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_group_description() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contactInfo">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"originConfiguration">> => package_group_origin_configuration(),
+%%   <<"parent">> => package_group_reference(),
+%%   <<"pattern">> => string()
+%% }
+-type package_group_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_group_origin_configuration() :: #{
+%%   <<"restrictions">> => map()
+%% }
+-type package_group_origin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_group_origin_restriction() :: #{
+%%   <<"effectiveMode">> => list(any()),
+%%   <<"inheritedFrom">> => package_group_reference(),
+%%   <<"mode">> => list(any()),
+%%   <<"repositoriesCount">> => float()
+%% }
+-type package_group_origin_restriction() :: #{binary() => any()}.
 
 
 %% Example:
@@ -670,6 +1269,46 @@
 %%   <<"pattern">> => string()
 %% }
 -type package_group_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_group_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contactInfo">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"originConfiguration">> => package_group_origin_configuration(),
+%%   <<"parent">> => package_group_reference(),
+%%   <<"pattern">> => string()
+%% }
+-type package_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_origin_configuration() :: #{
+%%   <<"restrictions">> => package_origin_restrictions()
+%% }
+-type package_origin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_origin_restrictions() :: #{
+%%   <<"publish">> => list(any()),
+%%   <<"upstream">> => list(any())
+%% }
+-type package_origin_restrictions() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_summary() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"originConfiguration">> => package_origin_configuration(),
+%%   <<"package">> => string()
+%% }
+-type package_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,344 +1331,29 @@
 
 
 %% Example:
-%% get_package_version_readme_result() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> => string(),
-%%   <<"readme">> => string(),
-%%   <<"version">> => string(),
-%%   <<"versionRevision">> => string()
+%% package_version_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
 %% }
--type get_package_version_readme_result() :: #{binary() => any()}.
+-type package_version_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_package_version_dependencies_result() :: #{
-%%   <<"dependencies">> => list(package_dependency()),
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"package">> => string(),
-%%   <<"version">> => string(),
-%%   <<"versionRevision">> => string()
+%% package_version_origin() :: #{
+%%   <<"domainEntryPoint">> => domain_entry_point(),
+%%   <<"originType">> => list(any())
 %% }
--type list_package_version_dependencies_result() :: #{binary() => any()}.
+-type package_version_origin() :: #{binary() => any()}.
 
 
 %% Example:
-%% upstream_repository() :: #{
-%%   <<"repositoryName">> => string()
-%% }
--type upstream_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_repositories_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_summary())
-%% }
--type list_repositories_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_packages_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packages">> => list(associated_package())
-%% }
--type list_associated_packages_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_summary() :: #{
-%%   <<"administratorAccount">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"name">> => string()
-%% }
--type repository_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_versions_result() :: #{
-%%   <<"failedVersions">> => map(),
-%%   <<"successfulVersions">> => map()
-%% }
--type delete_package_versions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_package_groups_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"packageGroup">> := string()
-%% }
--type list_sub_package_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_permissions_policy_result() :: #{
-%%   <<"policy">> => resource_policy()
-%% }
--type delete_domain_permissions_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_group_origin_restriction() :: #{
-%%   <<"effectiveMode">> => list(any()),
-%%   <<"inheritedFrom">> => package_group_reference(),
-%%   <<"mode">> => list(any()),
-%%   <<"repositoriesCount">> => float()
-%% }
--type package_group_origin_restriction() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_group_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"packageGroup">> := string()
-%% }
--type delete_package_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_repositories_in_domain_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_summary())
-%% }
--type list_repositories_in_domain_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_entry_point() :: #{
-%%   <<"externalConnectionName">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type domain_entry_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_versions_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"expectedStatus">> => list(any()),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"repository">> := string(),
-%%   <<"versions">> := list(string())
-%% }
--type delete_package_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_repository_endpoint_result() :: #{
-%%   <<"repositoryEndpoint">> => string()
-%% }
--type get_repository_endpoint_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_result() :: #{
-%%   <<"domain">> => domain_description()
-%% }
--type delete_domain_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_readme_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"packageVersion">> := string(),
-%%   <<"repository">> := string()
-%% }
--type get_package_version_readme_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_repository_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"repository">> := string()
-%% }
--type delete_repository_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_group_allowed_repository() :: #{
-%%   <<"originRestrictionType">> => list(any()),
-%%   <<"repositoryName">> => string()
-%% }
--type package_group_allowed_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_repositories_in_domain_request() :: #{
-%%   <<"administratorAccount">> => string(),
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryPrefix">> => string()
-%% }
--type list_repositories_in_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_external_connection_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"externalConnection">> := string(),
-%%   <<"repository">> := string()
-%% }
--type associate_external_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_package_result() :: #{
-%%   <<"package">> => package_description()
-%% }
--type describe_package_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% dispose_package_versions_result() :: #{
-%%   <<"failedVersions">> => map(),
-%%   <<"successfulVersions">> => map()
-%% }
--type dispose_package_versions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_result() :: #{
-%%   <<"domains">> => list(domain_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_domains_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_group_origin_configuration_request() :: #{
-%%   <<"addAllowedRepositories">> => list(package_group_allowed_repository()),
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"packageGroup">> := string(),
-%%   <<"removeAllowedRepositories">> => list(package_group_allowed_repository()),
-%%   <<"restrictions">> => map()
-%% }
--type update_package_group_origin_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_packages_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packages">> => list(package_summary())
-%% }
--type list_packages_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% successful_package_version_info() :: #{
+%% package_version_summary() :: #{
+%%   <<"origin">> => package_version_origin(),
 %%   <<"revision">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
 %% }
--type successful_package_version_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_authorization_token_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"durationSeconds">> => float()
-%% }
--type get_authorization_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_package_versions_result() :: #{
-%%   <<"failedVersions">> => map(),
-%%   <<"successfulVersions">> => map()
-%% }
--type copy_package_versions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_package_groups_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type list_package_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% license_info() :: #{
-%%   <<"name">> => string(),
-%%   <<"url">> => string()
-%% }
--type license_info() :: #{binary() => any()}.
+-type package_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1050,127 +1374,26 @@
 
 
 %% Example:
-%% describe_package_group_result() :: #{
-%%   <<"packageGroup">> => package_group_description()
-%% }
--type describe_package_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_repository_permissions_policy_result() :: #{
-%%   <<"policy">> => resource_policy()
-%% }
--type delete_repository_permissions_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_group_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"contactInfo">> => string(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"originConfiguration">> => package_group_origin_configuration(),
-%%   <<"parent">> => package_group_reference(),
-%%   <<"pattern">> => string()
-%% }
--type package_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_description() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"originConfiguration">> => package_origin_configuration()
-%% }
--type package_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_summary() :: #{
+%% publish_package_version_result() :: #{
+%%   <<"asset">> => asset_summary(),
 %%   <<"format">> => list(any()),
 %%   <<"namespace">> => string(),
-%%   <<"originConfiguration">> => package_origin_configuration(),
-%%   <<"package">> => string()
+%%   <<"package">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
 %% }
--type package_summary() :: #{binary() => any()}.
+-type publish_package_version_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_package_groups_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packageGroups">> => list(package_group_summary())
-%% }
--type list_sub_package_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_policy() :: #{
-%%   <<"document">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"revision">> => string()
-%% }
--type resource_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_permissions_policy_result() :: #{
-%%   <<"policy">> => resource_policy()
-%% }
--type get_domain_permissions_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_external_connection_result() :: #{
-%%   <<"repository">> => repository_description()
-%% }
--type disassociate_external_connection_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_repository_request() :: #{
-%%   <<"description">> => string(),
+%% put_domain_permissions_policy_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"repository">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"upstreams">> => list(upstream_repository())
+%%   <<"policyDocument">> := string(),
+%%   <<"policyRevision">> => string()
 %% }
--type create_repository_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_external_connection_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"externalConnection">> := string(),
-%%   <<"repository">> := string()
-%% }
--type disassociate_external_connection_request() :: #{binary() => any()}.
+-type put_domain_permissions_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1178,87 +1401,6 @@
 %%   <<"policy">> => resource_policy()
 %% }
 -type put_domain_permissions_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_group_description() :: #{
-%%   <<"arn">> => string(),
-%%   <<"contactInfo">> => string(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"originConfiguration">> => package_group_origin_configuration(),
-%%   <<"parent">> => package_group_reference(),
-%%   <<"pattern">> => string()
-%% }
--type package_group_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_package_version_result() :: #{
-%%   <<"packageVersion">> => package_version_description()
-%% }
--type describe_package_version_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"repository">> := string()
-%% }
--type delete_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_repository_permissions_policy_result() :: #{
-%%   <<"policy">> => resource_policy()
-%% }
--type put_repository_permissions_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string()
-%% }
--type describe_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% upstream_repository_info() :: #{
-%%   <<"repositoryName">> => string()
-%% }
--type upstream_repository_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_package() :: #{
-%%   <<"associationType">> => list(any()),
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> => string()
-%% }
--type associated_package() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_authorization_token_result() :: #{
-%%   <<"authorizationToken">> => string(),
-%%   <<"expiration">> => non_neg_integer()
-%% }
--type get_authorization_token_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1275,264 +1417,28 @@
 
 
 %% Example:
-%% get_repository_endpoint_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"endpointType">> => list(any()),
-%%   <<"format">> := list(any()),
-%%   <<"repository">> := string()
+%% put_package_origin_configuration_result() :: #{
+%%   <<"originConfiguration">> => package_origin_configuration()
 %% }
--type get_repository_endpoint_request() :: #{binary() => any()}.
+-type put_package_origin_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_domain_permissions_policy_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string()
-%% }
--type get_domain_permissions_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_associated_package_group_result() :: #{
-%%   <<"associationType">> => list(any()),
-%%   <<"packageGroup">> => package_group_description()
-%% }
--type get_associated_package_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_repository_permissions_policy_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"repository">> := string()
-%% }
--type get_repository_permissions_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_packages_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"packageGroup">> := string(),
-%%   <<"preview">> => boolean()
-%% }
--type list_associated_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_domain_permissions_policy_request() :: #{
+%% put_repository_permissions_policy_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"policyDocument">> := string(),
-%%   <<"policyRevision">> => string()
-%% }
--type put_domain_permissions_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_package_versions_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"originType">> => list(any()),
-%%   <<"package">> := string(),
-%%   <<"repository">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_package_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_package_group_result() :: #{
-%%   <<"packageGroup">> => package_group_description()
-%% }
--type create_package_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_external_connection_result() :: #{
-%%   <<"repository">> => repository_description()
-%% }
--type associate_external_connection_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_package_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
+%%   <<"policyRevision">> => string(),
 %%   <<"repository">> := string()
 %% }
--type describe_package_request() :: #{binary() => any()}.
+-type put_repository_permissions_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
+%% put_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_dependency() :: #{
-%%   <<"dependencyType">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"package">> => string(),
-%%   <<"versionRequirement">> => string()
-%% }
--type package_dependency() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_description() :: #{
-%%   <<"arn">> => string(),
-%%   <<"assetSizeBytes">> => float(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"repositoryCount">> => integer(),
-%%   <<"s3BucketArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type domain_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_package_versions_result() :: #{
-%%   <<"defaultDisplayVersion">> => string(),
-%%   <<"format">> => list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"package">> => string(),
-%%   <<"versions">> => list(package_version_summary())
-%% }
--type list_package_versions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_result() :: #{
-%%   <<"deletedPackage">> => package_summary()
-%% }
--type delete_package_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_external_connection_info() :: #{
-%%   <<"externalConnectionName">> => string(),
-%%   <<"packageFormat">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type repository_external_connection_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_repository_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"repository">> := string(),
-%%   <<"upstreams">> => list(upstream_repository())
-%% }
--type update_repository_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_result() :: #{}
--type tag_resource_result() :: #{}.
-
-
-%% Example:
-%% list_repositories_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryPrefix">> => string()
-%% }
--type list_repositories_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_summary() :: #{
-%%   <<"origin">> => package_version_origin(),
-%%   <<"revision">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type package_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_group_origin_configuration_result() :: #{
-%%   <<"allowedRepositoryUpdates">> => map(),
-%%   <<"packageGroup">> => package_group_description()
-%% }
--type update_package_group_origin_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_result() :: #{
-%%   <<"domain">> => domain_description()
-%% }
--type describe_domain_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_asset_request() :: #{
-%%   <<"asset">> := string(),
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"packageVersion">> := string(),
-%%   <<"packageVersionRevision">> => string(),
-%%   <<"repository">> := string()
-%% }
--type get_package_version_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_repository_result() :: #{
-%%   <<"repository">> => repository_description()
-%% }
--type create_repository_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_package_version_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"packageVersion">> := string(),
-%%   <<"repository">> := string()
-%% }
--type describe_package_version_request() :: #{binary() => any()}.
+-type put_repository_permissions_policy_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1551,60 +1457,138 @@
 
 
 %% Example:
-%% get_repository_permissions_policy_result() :: #{
-%%   <<"policy">> => resource_policy()
+%% repository_external_connection_info() :: #{
+%%   <<"externalConnectionName">> => string(),
+%%   <<"packageFormat">> => list(any()),
+%%   <<"status">> => list(any())
 %% }
--type get_repository_permissions_policy_result() :: #{binary() => any()}.
+-type repository_external_connection_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% package_version_error() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
+%% repository_summary() :: #{
+%%   <<"administratorAccount">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"name">> => string()
 %% }
--type package_version_error() :: #{binary() => any()}.
+-type repository_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_package_origin_configuration_result() :: #{
-%%   <<"originConfiguration">> => package_origin_configuration()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
 %% }
--type put_package_origin_configuration_result() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_repository_permissions_policy_request() :: #{
+%% resource_policy() :: #{
+%%   <<"document">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_package_version_info() :: #{
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type successful_package_version_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{}
+-type tag_resource_result() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% update_package_group_origin_configuration_request() :: #{
+%%   <<"addAllowedRepositories">> => list(package_group_allowed_repository()),
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"policyRevision">> => string(),
-%%   <<"repository">> := string()
+%%   <<"packageGroup">> := string(),
+%%   <<"removeAllowedRepositories">> => list(package_group_allowed_repository()),
+%%   <<"restrictions">> => map()
 %% }
--type delete_repository_permissions_policy_request() :: #{binary() => any()}.
+-type update_package_group_origin_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% package_origin_restrictions() :: #{
-%%   <<"publish">> => list(any()),
-%%   <<"upstream">> => list(any())
+%% update_package_group_origin_configuration_result() :: #{
+%%   <<"allowedRepositoryUpdates">> => map(),
+%%   <<"packageGroup">> => package_group_description()
 %% }
--type package_origin_restrictions() :: #{binary() => any()}.
+-type update_package_group_origin_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_package_versions_request() :: #{
-%%   <<"allowOverwrite">> => boolean(),
-%%   <<"destinationRepository">> := string(),
+%% update_package_group_request() :: #{
+%%   <<"contactInfo">> => string(),
+%%   <<"description">> => string(),
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"includeFromUpstream">> => boolean(),
-%%   <<"namespace">> => string(),
-%%   <<"package">> := string(),
-%%   <<"sourceRepository">> := string(),
-%%   <<"versionRevisions">> => map(),
-%%   <<"versions">> => list(string())
+%%   <<"packageGroup">> := string()
 %% }
--type copy_package_versions_request() :: #{binary() => any()}.
+-type update_package_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_package_group_result() :: #{
+%%   <<"packageGroup">> => package_group_description()
+%% }
+-type update_package_group_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1624,6 +1608,25 @@
 
 
 %% Example:
+%% update_package_versions_status_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type update_package_versions_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_repository_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string(),
+%%   <<"upstreams">> => list(upstream_repository())
+%% }
+-type update_repository_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_repository_result() :: #{
 %%   <<"repository">> => repository_description()
 %% }
@@ -1631,392 +1634,389 @@
 
 
 %% Example:
-%% delete_domain_permissions_policy_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"policyRevision">> => string()
+%% upstream_repository() :: #{
+%%   <<"repositoryName">> => string()
 %% }
--type delete_domain_permissions_policy_request() :: #{binary() => any()}.
+-type upstream_repository() :: #{binary() => any()}.
 
 
 %% Example:
-%% package_group_origin_configuration() :: #{
-%%   <<"restrictions">> => map()
+%% upstream_repository_info() :: #{
+%%   <<"repositoryName">> => string()
 %% }
--type package_group_origin_configuration() :: #{binary() => any()}.
+-type upstream_repository_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_repository_request() :: #{
-%%   <<"domain">> := string(),
-%%   <<"domainOwner">> => string(),
-%%   <<"repository">> := string()
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
 %% }
--type describe_repository_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_external_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type copy_package_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_package_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_package_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_package_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_repository_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_package_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_external_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type dispose_package_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_associated_package_group_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_authorization_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_domain_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_package_version_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_package_version_readme_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_repository_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_repository_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_allowed_repositories_for_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_associated_packages_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_package_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_package_version_assets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_package_version_dependencies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_package_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_packages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_repositories_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_repositories_in_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_sub_package_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type publish_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_domain_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_package_origin_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_repository_permissions_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_package_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_package_group_origin_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_package_versions_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

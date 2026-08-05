@@ -172,140 +172,13 @@
 
 
 %% Example:
-%% enable_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string())
+%% alarm_contributor() :: #{
+%%   <<"ContributorAttributes">> => map(),
+%%   <<"ContributorId">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"StateTransitionedTimestamp">> => non_neg_integer()
 %% }
--type enable_insight_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dashboards_output() :: #{
-
-%% }
--type delete_dashboards_output() :: #{binary() => any()}.
-
-%% Example:
-%% associate_dataset_kms_key_output() :: #{
-
-%% }
--type associate_dataset_kms_key_output() :: #{binary() => any()}.
-
-%% Example:
-%% metric_stream_filter() :: #{
-%%   <<"MetricNames">> => list(string()),
-%%   <<"Namespace">> => string()
-%% }
--type metric_stream_filter() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% sliding_window() :: #{
-
-%% }
--type sliding_window() :: #{binary() => any()}.
-
-%% Example:
-%% range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type range() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateName">> => string()
-%% }
--type managed_rule() :: #{binary() => any()}.
-
-%% Example:
-%% start_metric_streams_input() :: #{
-%%   <<"Names">> := list(string())
-%% }
--type start_metric_streams_input() :: #{binary() => any()}.
-
-%% Example:
-%% label_options() :: #{
-%%   <<"Timezone">> => string()
-%% }
--type label_options() :: #{binary() => any()}.
-
-%% Example:
-%% dashboard_not_found_error() :: #{
-%%   <<"message">> => string()
-%% }
--type dashboard_not_found_error() :: #{binary() => any()}.
-
-%% Example:
-%% wall_clock_window() :: #{
-%%   <<"Timezone">> => string()
-%% }
--type wall_clock_window() :: #{binary() => any()}.
-
-%% Example:
-%% put_insight_rule_input() :: #{
-%%   <<"ApplyOnTransformedLogs">> => boolean(),
-%%   <<"RuleDefinition">> := string(),
-%%   <<"RuleName">> := string(),
-%%   <<"RuleState">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type put_insight_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_alarm_mute_rule_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ExpireDate">> => non_neg_integer(),
-%%   <<"MuteTargets">> => mute_targets(),
-%%   <<"Name">> := string(),
-%%   <<"Rule">> := rule(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type put_alarm_mute_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_composite_alarm_input() :: #{
-%%   <<"ActionsEnabled">> => boolean(),
-%%   <<"ActionsSuppressor">> => string(),
-%%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
-%%   <<"ActionsSuppressorWaitPeriod">> => integer(),
-%%   <<"AlarmActions">> => list(string()),
-%%   <<"AlarmDescription">> => string(),
-%%   <<"AlarmName">> := string(),
-%%   <<"AlarmRule">> := string(),
-%%   <<"InsufficientDataActions">> => list(string()),
-%%   <<"OKActions">> => list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type put_composite_alarm_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_anomaly_detector_input() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"SingleMetricAnomalyDetector">> => single_metric_anomaly_detector(),
-%%   <<"Stat">> => string()
-%% }
--type delete_anomaly_detector_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_insight_rule_report_output() :: #{
-%%   <<"AggregateValue">> => float(),
-%%   <<"AggregationStatistic">> => string(),
-%%   <<"ApproximateUniqueCount">> => float(),
-%%   <<"Contributors">> => list(insight_rule_contributor()),
-%%   <<"KeyLabels">> => list(string()),
-%%   <<"MetricDatapoints">> => list(insight_rule_metric_datapoint())
-%% }
--type get_insight_rule_report_output() :: #{binary() => any()}.
+-type alarm_contributor() :: #{binary() => any()}.
 
 %% Example:
 %% alarm_history_item() :: #{
@@ -321,101 +194,6 @@
 -type alarm_history_item() :: #{binary() => any()}.
 
 %% Example:
-%% entity() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"KeyAttributes">> => map()
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dashboards_input() :: #{
-%%   <<"DashboardNames">> := list(string())
-%% }
--type delete_dashboards_input() :: #{binary() => any()}.
-
-%% Example:
-%% enable_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure())
-%% }
--type enable_insight_rules_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_insight_rule_report_input() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"MaxContributorCount">> => integer(),
-%%   <<"Metrics">> => list(string()),
-%%   <<"OrderBy">> => string(),
-%%   <<"Period">> := integer(),
-%%   <<"RuleName">> := string(),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type get_insight_rule_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% metric() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
-%% }
--type metric() :: #{binary() => any()}.
-
-%% Example:
-%% anomaly_detector_configuration() :: #{
-%%   <<"ExcludedTimeRanges">> => list(range()),
-%%   <<"MetricTimezone">> => string()
-%% }
--type anomaly_detector_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metric_stream_input() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_metric_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_key_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type kms_key_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_stream_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type put_metric_stream_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_o_tel_enrichment_output() :: #{
-
-%% }
--type start_o_tel_enrichment_output() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% disable_alarm_actions_input() :: #{
-%%   <<"AlarmNames">> := list(string())
-%% }
--type disable_alarm_actions_input() :: #{binary() => any()}.
-
-%% Example:
-%% missing_required_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type missing_required_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_insight_rules_output() :: #{
-%%   <<"ManagedRules">> => list(managed_rule_description()),
-%%   <<"NextToken">> => string()
-%% }
--type list_managed_insight_rules_output() :: #{binary() => any()}.
-
-%% Example:
 %% alarm_mute_rule_summary() :: #{
 %%   <<"AlarmMuteRuleArn">> => string(),
 %%   <<"ExpireDate">> => non_neg_integer(),
@@ -426,92 +204,244 @@
 -type alarm_mute_rule_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_metrics_input() :: #{
-%%   <<"Dimensions">> => list(dimension_filter()),
-%%   <<"IncludeLinkedAccounts">> => boolean(),
+%% alarm_prom_q_l_criteria() :: #{
+%%   <<"PendingPeriod">> => integer(),
+%%   <<"Query">> => string(),
+%%   <<"RecoveryPeriod">> => integer()
+%% }
+-type alarm_prom_q_l_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly_detector() :: #{
+%%   <<"AnomalyDetectorId">> => string(),
+%%   <<"Configuration">> => anomaly_detector_configuration(),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricCharacteristics">> => metric_characteristics(),
+%%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"OwningAccount">> => string(),
-%%   <<"RecentlyActive">> => list(any())
+%%   <<"SingleMetricAnomalyDetector">> => single_metric_anomaly_detector(),
+%%   <<"Stat">> => string(),
+%%   <<"StateValue">> => list(any())
 %% }
--type list_metrics_input() :: #{binary() => any()}.
+-type anomaly_detector() :: #{binary() => any()}.
 
 %% Example:
-%% get_metric_widget_image_output() :: #{
-%%   <<"MetricWidgetImage">> => binary()
+%% anomaly_detector_configuration() :: #{
+%%   <<"ExcludedTimeRanges">> => list(range()),
+%%   <<"MetricTimezone">> => string()
 %% }
--type get_metric_widget_image_output() :: #{binary() => any()}.
+-type anomaly_detector_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_metric_widget_image_input() :: #{
-%%   <<"MetricWidget">> := string(),
-%%   <<"OutputFormat">> => string()
+%% associate_dataset_kms_key_input() :: #{
+%%   <<"DatasetIdentifier">> := string(),
+%%   <<"KmsKeyArn">> := string()
 %% }
--type get_metric_widget_image_input() :: #{binary() => any()}.
+-type associate_dataset_kms_key_input() :: #{binary() => any()}.
 
 %% Example:
-%% managed_rule_state() :: #{
-%%   <<"RuleName">> => string(),
-%%   <<"State">> => string()
+%% associate_dataset_kms_key_output() :: #{
+
 %% }
--type managed_rule_state() :: #{binary() => any()}.
+-type associate_dataset_kms_key_output() :: #{binary() => any()}.
 
 %% Example:
-%% metric_stream_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"FirehoseArn">> => string(),
-%%   <<"LastUpdateDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OutputFormat">> => list(any()),
-%%   <<"State">> => string()
+%% composite_alarm() :: #{
+%%   <<"ActionsEnabled">> => boolean(),
+%%   <<"ActionsSuppressedBy">> => list(any()),
+%%   <<"ActionsSuppressedReason">> => string(),
+%%   <<"ActionsSuppressor">> => string(),
+%%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
+%%   <<"ActionsSuppressorWaitPeriod">> => integer(),
+%%   <<"AlarmActions">> => list(string()),
+%%   <<"AlarmArn">> => string(),
+%%   <<"AlarmConfigurationUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"AlarmDescription">> => string(),
+%%   <<"AlarmName">> => string(),
+%%   <<"AlarmRule">> => string(),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonData">> => string(),
+%%   <<"StateTransitionedTimestamp">> => non_neg_integer(),
+%%   <<"StateUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"StateValue">> => list(any())
 %% }
--type metric_stream_entry() :: #{binary() => any()}.
+-type composite_alarm() :: #{binary() => any()}.
 
 %% Example:
-%% metric_stream_statistics_configuration() :: #{
-%%   <<"AdditionalStatistics">> => list(string()),
-%%   <<"IncludeMetrics">> => list(metric_stream_statistics_metric())
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type metric_stream_statistics_configuration() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_managed_insight_rules_input() :: #{
-%%   <<"ManagedRules">> := list(managed_rule())
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type put_managed_insight_rules_input() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_managed_insight_rules_output() :: #{
+%% dashboard_entry() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"DashboardName">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Size">> => float()
+%% }
+-type dashboard_entry() :: #{binary() => any()}.
+
+%% Example:
+%% dashboard_invalid_input_error() :: #{
+%%   <<"dashboardValidationMessages">> => list(dashboard_validation_message()),
+%%   <<"message">> => string()
+%% }
+-type dashboard_invalid_input_error() :: #{binary() => any()}.
+
+%% Example:
+%% dashboard_not_found_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type dashboard_not_found_error() :: #{binary() => any()}.
+
+%% Example:
+%% dashboard_validation_message() :: #{
+%%   <<"DataPath">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type dashboard_validation_message() :: #{binary() => any()}.
+
+%% Example:
+%% datapoint() :: #{
+%%   <<"Average">> => float(),
+%%   <<"ExtendedStatistics">> => map(),
+%%   <<"Maximum">> => float(),
+%%   <<"Minimum">> => float(),
+%%   <<"SampleCount">> => float(),
+%%   <<"Sum">> => float(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Unit">> => list(any())
+%% }
+-type datapoint() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alarm_mute_rule_input() :: #{
+%%   <<"AlarmMuteRuleName">> := string()
+%% }
+-type delete_alarm_mute_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alarms_input() :: #{
+%%   <<"AlarmNames">> := list(string())
+%% }
+-type delete_alarms_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_anomaly_detector_input() :: #{
+%%   <<"AnomalyDetectorId">> => string(),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"SingleMetricAnomalyDetector">> => single_metric_anomaly_detector(),
+%%   <<"Stat">> => string()
+%% }
+-type delete_anomaly_detector_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_anomaly_detector_output() :: #{
+
+%% }
+-type delete_anomaly_detector_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboards_input() :: #{
+%%   <<"DashboardNames">> := list(string())
+%% }
+-type delete_dashboards_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboards_output() :: #{
+
+%% }
+-type delete_dashboards_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_insight_rules_input() :: #{
+%%   <<"RuleNames">> := list(string())
+%% }
+-type delete_insight_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_insight_rules_output() :: #{
 %%   <<"Failures">> => list(partial_failure())
 %% }
--type put_managed_insight_rules_output() :: #{binary() => any()}.
+-type delete_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
-%% mute_targets() :: #{
-%%   <<"AlarmNames">> => list(string())
+%% delete_metric_stream_input() :: #{
+%%   <<"Name">> := string()
 %% }
--type mute_targets() :: #{binary() => any()}.
+-type delete_metric_stream_input() :: #{binary() => any()}.
 
 %% Example:
-%% start_o_tel_enrichment_input() :: #{
+%% delete_metric_stream_output() :: #{
 
 %% }
--type start_o_tel_enrichment_input() :: #{binary() => any()}.
+-type delete_metric_stream_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_dashboards_input() :: #{
-%%   <<"DashboardNamePrefix">> => string(),
+%% describe_alarm_contributors_input() :: #{
+%%   <<"AlarmName">> := string(),
 %%   <<"NextToken">> => string()
 %% }
--type list_dashboards_input() :: #{binary() => any()}.
+-type describe_alarm_contributors_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag())
+%% describe_alarm_contributors_output() :: #{
+%%   <<"AlarmContributors">> => list(alarm_contributor()),
+%%   <<"NextToken">> => string()
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type describe_alarm_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alarm_history_input() :: #{
+%%   <<"AlarmContributorId">> => string(),
+%%   <<"AlarmName">> => string(),
+%%   <<"AlarmTypes">> => list(list(any())()),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"HistoryItemType">> => list(any()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanBy">> => list(any()),
+%%   <<"StartDate">> => non_neg_integer()
+%% }
+-type describe_alarm_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alarm_history_output() :: #{
+%%   <<"AlarmHistoryItems">> => list(alarm_history_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_alarm_history_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alarms_for_metric_input() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"ExtendedStatistic">> => string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Namespace">> := string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Unit">> => list(any())
+%% }
+-type describe_alarms_for_metric_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alarms_for_metric_output() :: #{
+%%   <<"MetricAlarms">> => list(metric_alarm())
+%% }
+-type describe_alarms_for_metric_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_alarms_input() :: #{
@@ -537,275 +467,16 @@
 -type describe_alarms_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_parameter_combination_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_combination_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alarm_history_input() :: #{
-%%   <<"AlarmContributorId">> => string(),
-%%   <<"AlarmName">> => string(),
-%%   <<"AlarmTypes">> => list(list(any())()),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"HistoryItemType">> => list(any()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScanBy">> => list(any()),
-%%   <<"StartDate">> => non_neg_integer()
-%% }
--type describe_alarm_history_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_insight_rule_output() :: #{
-
-%% }
--type put_insight_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_anomaly_detector_input() :: #{
-%%   <<"Configuration">> => anomaly_detector_configuration(),
+%% describe_anomaly_detectors_input() :: #{
+%%   <<"AnomalyDetectorIds">> => list(string()),
+%%   <<"AnomalyDetectorTypes">> => list(list(any())()),
 %%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricCharacteristics">> => metric_characteristics(),
-%%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
+%%   <<"MaxResults">> => integer(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
-%%   <<"SingleMetricAnomalyDetector">> => single_metric_anomaly_detector(),
-%%   <<"Stat">> => string()
+%%   <<"NextToken">> => string()
 %% }
--type put_anomaly_detector_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure())
-%% }
--type disable_insight_rules_output() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_query_configuration() :: #{
-%%   <<"AggregationExpression">> => string(),
-%%   <<"LogGroupIdentifiers">> => list(string()),
-%%   <<"QueryARN">> => string(),
-%%   <<"QueryString">> => string(),
-%%   <<"ScheduleConfiguration">> => schedule_configuration(),
-%%   <<"ScheduledQueryRoleARN">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type scheduled_query_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% metric_stream_statistics_metric() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
-%% }
--type metric_stream_statistics_metric() :: #{binary() => any()}.
-
-%% Example:
-%% message_data() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Value">> => string()
-%% }
--type message_data() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_contributor() :: #{
-%%   <<"ContributorAttributes">> => map(),
-%%   <<"ContributorId">> => string(),
-%%   <<"StateReason">> => string(),
-%%   <<"StateTransitionedTimestamp">> => non_neg_integer()
-%% }
--type alarm_contributor() :: #{binary() => any()}.
-
-%% Example:
-%% stop_metric_streams_output() :: #{
-
-%% }
--type stop_metric_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% dashboard_invalid_input_error() :: #{
-%%   <<"dashboardValidationMessages">> => list(dashboard_validation_message()),
-%%   <<"message">> => string()
-%% }
--type dashboard_invalid_input_error() :: #{binary() => any()}.
-
-%% Example:
-%% set_alarm_state_input() :: #{
-%%   <<"AlarmName">> := string(),
-%%   <<"StateReason">> := string(),
-%%   <<"StateReasonData">> => string(),
-%%   <<"StateValue">> := list(any())
-%% }
--type set_alarm_state_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string())
-%% }
--type disable_insight_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% metric_datum() :: #{
-%%   <<"Counts">> => list(float()),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"StatisticValues">> => statistic_set(),
-%%   <<"StorageResolution">> => integer(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => float(),
-%%   <<"Values">> => list(float())
-%% }
--type metric_datum() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_alarm_input() :: #{
-%%   <<"ActionsEnabled">> => boolean(),
-%%   <<"AlarmActions">> => list(string()),
-%%   <<"AlarmDescription">> => string(),
-%%   <<"AlarmName">> := string(),
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"EvaluateLowSampleCountPercentile">> => string(),
-%%   <<"EvaluationCriteria">> => list(),
-%%   <<"EvaluationInterval">> => integer(),
-%%   <<"EvaluationPeriods">> => integer(),
-%%   <<"EvaluationWindow">> => list(),
-%%   <<"ExtendedStatistic">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()),
-%%   <<"MetricName">> => string(),
-%%   <<"Metrics">> => list(metric_data_query()),
-%%   <<"Namespace">> => string(),
-%%   <<"OKActions">> => list(string()),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Threshold">> => float(),
-%%   <<"ThresholdMetricId">> => string(),
-%%   <<"TreatMissingData">> => string(),
-%%   <<"Unit">> => list(any())
-%% }
--type put_metric_alarm_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_o_tel_enrichment_input() :: #{
-
-%% }
--type stop_o_tel_enrichment_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_alarm_mute_rules_input() :: #{
-%%   <<"AlarmName">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Statuses">> => list(list(any())())
-%% }
--type list_alarm_mute_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% stop_o_tel_enrichment_output() :: #{
-
-%% }
--type stop_o_tel_enrichment_output() :: #{binary() => any()}.
-
-%% Example:
-%% insight_rule_metric_datapoint() :: #{
-%%   <<"Average">> => float(),
-%%   <<"MaxContributorValue">> => float(),
-%%   <<"Maximum">> => float(),
-%%   <<"Minimum">> => float(),
-%%   <<"SampleCount">> => float(),
-%%   <<"Sum">> => float(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"UniqueContributors">> => float()
-%% }
--type insight_rule_metric_datapoint() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_prom_q_l_criteria() :: #{
-%%   <<"PendingPeriod">> => integer(),
-%%   <<"Query">> => string(),
-%%   <<"RecoveryPeriod">> => integer()
-%% }
--type alarm_prom_q_l_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% datapoint() :: #{
-%%   <<"Average">> => float(),
-%%   <<"ExtendedStatistics">> => map(),
-%%   <<"Maximum">> => float(),
-%%   <<"Minimum">> => float(),
-%%   <<"SampleCount">> => float(),
-%%   <<"Sum">> => float(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Unit">> => list(any())
-%% }
--type datapoint() :: #{binary() => any()}.
-
-%% Example:
-%% metric_data_query() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Expression">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"MetricStat">> => metric_stat(),
-%%   <<"Period">> => integer(),
-%%   <<"ReturnData">> => boolean()
-%% }
--type metric_data_query() :: #{binary() => any()}.
-
-%% Example:
-%% dashboard_entry() :: #{
-%%   <<"DashboardArn">> => string(),
-%%   <<"DashboardName">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Size">> => float()
-%% }
--type dashboard_entry() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% single_metric_anomaly_detector() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"Stat">> => string()
-%% }
--type single_metric_anomaly_detector() :: #{binary() => any()}.
-
-%% Example:
-%% metric_characteristics() :: #{
-%%   <<"PeriodicSpikes">> => boolean()
-%% }
--type metric_characteristics() :: #{binary() => any()}.
+-type describe_anomaly_detectors_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_anomaly_detectors_output() :: #{
@@ -815,11 +486,100 @@
 -type describe_anomaly_detectors_output() :: #{binary() => any()}.
 
 %% Example:
-%% insight_rule_contributor_datapoint() :: #{
-%%   <<"ApproximateValue">> => float(),
-%%   <<"Timestamp">> => non_neg_integer()
+%% describe_insight_rules_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type insight_rule_contributor_datapoint() :: #{binary() => any()}.
+-type describe_insight_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_insight_rules_output() :: #{
+%%   <<"InsightRules">> => list(insight_rule()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dimension_filter() :: #{binary() => any()}.
+
+%% Example:
+%% disable_alarm_actions_input() :: #{
+%%   <<"AlarmNames">> := list(string())
+%% }
+-type disable_alarm_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_insight_rules_input() :: #{
+%%   <<"RuleNames">> := list(string())
+%% }
+-type disable_insight_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_insight_rules_output() :: #{
+%%   <<"Failures">> => list(partial_failure())
+%% }
+-type disable_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_dataset_kms_key_input() :: #{
+%%   <<"DatasetIdentifier">> := string()
+%% }
+-type disassociate_dataset_kms_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_dataset_kms_key_output() :: #{
+
+%% }
+-type disassociate_dataset_kms_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% enable_alarm_actions_input() :: #{
+%%   <<"AlarmNames">> := list(string())
+%% }
+-type enable_alarm_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% enable_insight_rules_input() :: #{
+%%   <<"RuleNames">> := list(string())
+%% }
+-type enable_insight_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% enable_insight_rules_output() :: #{
+%%   <<"Failures">> => list(partial_failure())
+%% }
+-type enable_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"KeyAttributes">> => map()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% entity_metric_data() :: #{
+%%   <<"Entity">> => entity(),
+%%   <<"MetricData">> => list(metric_datum())
+%% }
+-type entity_metric_data() :: #{binary() => any()}.
+
+%% Example:
+%% get_alarm_mute_rule_input() :: #{
+%%   <<"AlarmMuteRuleName">> := string()
+%% }
+-type get_alarm_mute_rule_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_alarm_mute_rule_output() :: #{
@@ -837,47 +597,67 @@
 -type get_alarm_mute_rule_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_anomaly_detectors_input() :: #{
-%%   <<"AnomalyDetectorTypes">> => list(list(any())()),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"NextToken">> => string()
+%% get_dashboard_input() :: #{
+%%   <<"DashboardName">> := string()
 %% }
--type describe_anomaly_detectors_input() :: #{binary() => any()}.
+-type get_dashboard_input() :: #{binary() => any()}.
 
 %% Example:
-%% enable_alarm_actions_input() :: #{
-%%   <<"AlarmNames">> := list(string())
+%% get_dashboard_output() :: #{
+%%   <<"DashboardArn">> => string(),
+%%   <<"DashboardBody">> => string(),
+%%   <<"DashboardName">> => string()
 %% }
--type enable_alarm_actions_input() :: #{binary() => any()}.
+-type get_dashboard_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_format_fault() :: #{
-%%   <<"message">> => string()
+%% get_dataset_input() :: #{
+%%   <<"DatasetIdentifier">> := string()
 %% }
--type invalid_format_fault() :: #{binary() => any()}.
+-type get_dataset_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_o_tel_enrichment_input() :: #{
-
+%% get_dataset_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DatasetId">> => string(),
+%%   <<"KmsKeyArn">> => string()
 %% }
--type get_o_tel_enrichment_input() :: #{binary() => any()}.
-
-%% Example:
-%% insight_rule_contributor() :: #{
-%%   <<"ApproximateAggregateValue">> => float(),
-%%   <<"Datapoints">> => list(insight_rule_contributor_datapoint()),
-%%   <<"Keys">> => list(string())
-%% }
--type insight_rule_contributor() :: #{binary() => any()}.
+-type get_dataset_output() :: #{binary() => any()}.
 
 %% Example:
-%% metric_math_anomaly_detector() :: #{
-%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% get_insight_rule_report_input() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"MaxContributorCount">> => integer(),
+%%   <<"Metrics">> => list(string()),
+%%   <<"OrderBy">> => string(),
+%%   <<"Period">> := integer(),
+%%   <<"RuleName">> := string(),
+%%   <<"StartTime">> := non_neg_integer()
 %% }
--type metric_math_anomaly_detector() :: #{binary() => any()}.
+-type get_insight_rule_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_insight_rule_report_output() :: #{
+%%   <<"AggregateValue">> => float(),
+%%   <<"AggregationStatistic">> => string(),
+%%   <<"ApproximateUniqueCount">> => float(),
+%%   <<"Contributors">> => list(insight_rule_contributor()),
+%%   <<"KeyLabels">> => list(string()),
+%%   <<"MetricDatapoints">> => list(insight_rule_metric_datapoint())
+%% }
+-type get_insight_rule_report_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_data_input() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"LabelOptions">> => label_options(),
+%%   <<"MaxDatapoints">> => integer(),
+%%   <<"MetricDataQueries">> := list(metric_data_query()),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanBy">> => list(any()),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_metric_data_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_metric_data_output() :: #{
@@ -888,17 +668,269 @@
 -type get_metric_data_output() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% get_metric_statistics_input() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"ExtendedStatistics">> => list(string()),
+%%   <<"MetricName">> := string(),
+%%   <<"Namespace">> := string(),
+%%   <<"Period">> := integer(),
+%%   <<"StartTime">> := non_neg_integer(),
+%%   <<"Statistics">> => list(list(any())()),
+%%   <<"Unit">> => list(any())
 %% }
--type tag_resource_input() :: #{binary() => any()}.
+-type get_metric_statistics_input() :: #{binary() => any()}.
 
 %% Example:
-%% rule() :: #{
-%%   <<"Schedule">> => schedule()
+%% get_metric_statistics_output() :: #{
+%%   <<"Datapoints">> => list(datapoint()),
+%%   <<"Label">> => string()
 %% }
--type rule() :: #{binary() => any()}.
+-type get_metric_statistics_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_stream_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_metric_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_stream_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
+%%   <<"FirehoseArn">> => string(),
+%%   <<"IncludeFilters">> => list(metric_stream_filter()),
+%%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
+%%   <<"LastUpdateDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => string(),
+%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration())
+%% }
+-type get_metric_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_widget_image_input() :: #{
+%%   <<"MetricWidget">> := string(),
+%%   <<"OutputFormat">> => string()
+%% }
+-type get_metric_widget_image_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_widget_image_output() :: #{
+%%   <<"MetricWidgetImage">> => binary()
+%% }
+-type get_metric_widget_image_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_o_tel_enrichment_input() :: #{
+
+%% }
+-type get_o_tel_enrichment_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_o_tel_enrichment_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type get_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
+%% insight_rule() :: #{
+%%   <<"ApplyOnTransformedLogs">> => boolean(),
+%%   <<"Definition">> => string(),
+%%   <<"ManagedRule">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"State">> => string()
+%% }
+-type insight_rule() :: #{binary() => any()}.
+
+%% Example:
+%% insight_rule_contributor() :: #{
+%%   <<"ApproximateAggregateValue">> => float(),
+%%   <<"Datapoints">> => list(insight_rule_contributor_datapoint()),
+%%   <<"Keys">> => list(string())
+%% }
+-type insight_rule_contributor() :: #{binary() => any()}.
+
+%% Example:
+%% insight_rule_contributor_datapoint() :: #{
+%%   <<"ApproximateValue">> => float(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type insight_rule_contributor_datapoint() :: #{binary() => any()}.
+
+%% Example:
+%% insight_rule_metric_datapoint() :: #{
+%%   <<"Average">> => float(),
+%%   <<"MaxContributorValue">> => float(),
+%%   <<"Maximum">> => float(),
+%%   <<"Minimum">> => float(),
+%%   <<"SampleCount">> => float(),
+%%   <<"Sum">> => float(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"UniqueContributors">> => float()
+%% }
+-type insight_rule_metric_datapoint() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_format_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_format_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type kms_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% label_options() :: #{
+%%   <<"Timezone">> => string()
+%% }
+-type label_options() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_alarm_mute_rules_input() :: #{
+%%   <<"AlarmName">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_alarm_mute_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_alarm_mute_rules_output() :: #{
+%%   <<"AlarmMuteRuleSummaries">> => list(alarm_mute_rule_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alarm_mute_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_dashboards_input() :: #{
+%%   <<"DashboardNamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dashboards_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_dashboards_output() :: #{
+%%   <<"DashboardEntries">> => list(dashboard_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dashboards_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_insight_rules_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_managed_insight_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_insight_rules_output() :: #{
+%%   <<"ManagedRules">> => list(managed_rule_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_streams_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_metric_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_streams_output() :: #{
+%%   <<"Entries">> => list(metric_stream_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_metric_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_metrics_input() :: #{
+%%   <<"Dimensions">> => list(dimension_filter()),
+%%   <<"IncludeLinkedAccounts">> => boolean(),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"OwningAccount">> => string(),
+%%   <<"RecentlyActive">> => list(any())
+%% }
+-type list_metrics_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_metrics_output() :: #{
+%%   <<"Metrics">> => list(metric()),
+%%   <<"NextToken">> => string(),
+%%   <<"OwningAccounts">> => list(string())
+%% }
+-type list_metrics_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% log_alarm() :: #{
@@ -928,134 +960,12 @@
 -type log_alarm() :: #{binary() => any()}.
 
 %% Example:
-%% list_metrics_output() :: #{
-%%   <<"Metrics">> => list(metric()),
-%%   <<"NextToken">> => string(),
-%%   <<"OwningAccounts">> => list(string())
+%% managed_rule() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateName">> => string()
 %% }
--type list_metrics_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_data_input() :: #{
-%%   <<"EntityMetricData">> => list(entity_metric_data()),
-%%   <<"MetricData">> => list(metric_datum()),
-%%   <<"Namespace">> := string(),
-%%   <<"StrictEntityValidation">> => boolean()
-%% }
--type put_metric_data_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_metric_stream_input() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_metric_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_metric_streams_output() :: #{
-%%   <<"Entries">> => list(metric_stream_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_metric_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_dataset_kms_key_input() :: #{
-%%   <<"DatasetIdentifier">> := string()
-%% }
--type disassociate_dataset_kms_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_metric_stream_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
-%%   <<"FirehoseArn">> => string(),
-%%   <<"IncludeFilters">> => list(metric_stream_filter()),
-%%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
-%%   <<"LastUpdateDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OutputFormat">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => string(),
-%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration())
-%% }
--type get_metric_stream_output() :: #{binary() => any()}.
-
-%% Example:
-%% kms_access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type kms_access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% schedule() :: #{
-%%   <<"Duration">> => string(),
-%%   <<"Expression">> => string(),
-%%   <<"Timezone">> => string()
-%% }
--type schedule() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alarms_for_metric_input() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"ExtendedStatistic">> => string(),
-%%   <<"MetricName">> := string(),
-%%   <<"Namespace">> := string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Unit">> => list(any())
-%% }
--type describe_alarms_for_metric_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alarms_input() :: #{
-%%   <<"AlarmNames">> := list(string())
-%% }
--type delete_alarms_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_stream_input() :: #{
-%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
-%%   <<"FirehoseArn">> := string(),
-%%   <<"IncludeFilters">> => list(metric_stream_filter()),
-%%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"OutputFormat">> := list(any()),
-%%   <<"RoleArn">> := string(),
-%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration()),
-%%   <<"Tags">> => list(tag())
-%% }
--type put_metric_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_dashboard_output() :: #{
-%%   <<"DashboardValidationMessages">> => list(dashboard_validation_message())
-%% }
--type put_dashboard_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_metric_streams_output() :: #{
-
-%% }
--type start_metric_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% dashboard_validation_message() :: #{
-%%   <<"DataPath">> => string(),
-%%   <<"Message">> => string()
-%% }
--type dashboard_validation_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_anomaly_detector_output() :: #{
-
-%% }
--type delete_anomaly_detector_output() :: #{binary() => any()}.
+-type managed_rule() :: #{binary() => any()}.
 
 %% Example:
 %% managed_rule_description() :: #{
@@ -1066,199 +976,26 @@
 -type managed_rule_description() :: #{binary() => any()}.
 
 %% Example:
-%% describe_alarm_contributors_output() :: #{
-%%   <<"AlarmContributors">> => list(alarm_contributor()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_alarm_contributors_output() :: #{binary() => any()}.
-
-%% Example:
-%% associate_dataset_kms_key_input() :: #{
-%%   <<"DatasetIdentifier">> := string(),
-%%   <<"KmsKeyArn">> := string()
-%% }
--type associate_dataset_kms_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_metric_statistics_output() :: #{
-%%   <<"Datapoints">> => list(datapoint()),
-%%   <<"Label">> => string()
-%% }
--type get_metric_statistics_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_metric_streams_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_metric_streams_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string())
-%% }
--type delete_insight_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metric_stream_output() :: #{
-
-%% }
--type delete_metric_stream_output() :: #{binary() => any()}.
-
-%% Example:
-%% metric_stat() :: #{
-%%   <<"Metric">> => metric(),
-%%   <<"Period">> => integer(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => list(any())
-%% }
--type metric_stat() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_alarm_mute_rule_input() :: #{
-%%   <<"AlarmMuteRuleName">> := string()
-%% }
--type get_alarm_mute_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% insight_rule() :: #{
-%%   <<"ApplyOnTransformedLogs">> => boolean(),
-%%   <<"Definition">> => string(),
-%%   <<"ManagedRule">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string(),
+%% managed_rule_state() :: #{
+%%   <<"RuleName">> => string(),
 %%   <<"State">> => string()
 %% }
--type insight_rule() :: #{binary() => any()}.
+-type managed_rule_state() :: #{binary() => any()}.
 
 %% Example:
-%% kms_key_disabled_exception() :: #{
-%%   <<"Message">> => string()
+%% message_data() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Value">> => string()
 %% }
--type kms_key_disabled_exception() :: #{binary() => any()}.
+-type message_data() :: #{binary() => any()}.
 
 %% Example:
-%% get_dataset_input() :: #{
-%%   <<"DatasetIdentifier">> := string()
+%% metric() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
 %% }
--type get_dataset_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_dashboards_output() :: #{
-%%   <<"DashboardEntries">> => list(dashboard_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_dashboards_output() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_conflict() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_conflict() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_dataset_kms_key_output() :: #{
-
-%% }
--type disassociate_dataset_kms_key_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_configuration() :: #{
-%%   <<"EndTimeOffset">> => float(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"StartTimeOffset">> => float()
-%% }
--type schedule_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_alarm_mute_rules_output() :: #{
-%%   <<"AlarmMuteRuleSummaries">> => list(alarm_mute_rule_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_alarm_mute_rules_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_metric_data_input() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"LabelOptions">> => label_options(),
-%%   <<"MaxDatapoints">> => integer(),
-%%   <<"MetricDataQueries">> := list(metric_data_query()),
-%%   <<"NextToken">> => string(),
-%%   <<"ScanBy">> => list(any()),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type get_metric_data_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alarm_history_output() :: #{
-%%   <<"AlarmHistoryItems">> => list(alarm_history_item()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_alarm_history_output() :: #{binary() => any()}.
-
-%% Example:
-%% composite_alarm() :: #{
-%%   <<"ActionsEnabled">> => boolean(),
-%%   <<"ActionsSuppressedBy">> => list(any()),
-%%   <<"ActionsSuppressedReason">> => string(),
-%%   <<"ActionsSuppressor">> => string(),
-%%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
-%%   <<"ActionsSuppressorWaitPeriod">> => integer(),
-%%   <<"AlarmActions">> => list(string()),
-%%   <<"AlarmArn">> => string(),
-%%   <<"AlarmConfigurationUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"AlarmDescription">> => string(),
-%%   <<"AlarmName">> => string(),
-%%   <<"AlarmRule">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()),
-%%   <<"OKActions">> => list(string()),
-%%   <<"StateReason">> => string(),
-%%   <<"StateReasonData">> => string(),
-%%   <<"StateTransitionedTimestamp">> => non_neg_integer(),
-%%   <<"StateUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"StateValue">> => list(any())
-%% }
--type composite_alarm() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alarm_contributors_input() :: #{
-%%   <<"AlarmName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_alarm_contributors_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_dashboard_output() :: #{
-%%   <<"DashboardArn">> => string(),
-%%   <<"DashboardBody">> => string(),
-%%   <<"DashboardName">> => string()
-%% }
--type get_dashboard_output() :: #{binary() => any()}.
+-type metric() :: #{binary() => any()}.
 
 %% Example:
 %% metric_alarm() :: #{
@@ -1298,26 +1035,131 @@
 -type metric_alarm() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% metric_characteristics() :: #{
+%%   <<"PeriodicSpikes">> => boolean()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type metric_characteristics() :: #{binary() => any()}.
 
 %% Example:
-%% dimension() :: #{
+%% metric_data_query() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => metric_stat(),
+%%   <<"Period">> => integer(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data_result() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"Messages">> => list(message_data()),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
+%% }
+-type metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% metric_datum() :: #{
+%%   <<"Counts">> => list(float()),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"StatisticValues">> => statistic_set(),
+%%   <<"StorageResolution">> => integer(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => float(),
+%%   <<"Values">> => list(float())
+%% }
+-type metric_datum() :: #{binary() => any()}.
+
+%% Example:
+%% metric_math_anomaly_detector() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% }
+-type metric_math_anomaly_detector() :: #{binary() => any()}.
+
+%% Example:
+%% metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Period">> => integer(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => list(any())
+%% }
+-type metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% metric_stream_entry() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"FirehoseArn">> => string(),
+%%   <<"LastUpdateDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"State">> => string()
 %% }
--type dimension() :: #{binary() => any()}.
+-type metric_stream_entry() :: #{binary() => any()}.
 
 %% Example:
-%% internal_service_fault() :: #{
-%%   <<"Message">> => string()
+%% metric_stream_filter() :: #{
+%%   <<"MetricNames">> => list(string()),
+%%   <<"Namespace">> => string()
 %% }
--type internal_service_fault() :: #{binary() => any()}.
+-type metric_stream_filter() :: #{binary() => any()}.
 
 %% Example:
-%% anomaly_detector() :: #{
+%% metric_stream_statistics_configuration() :: #{
+%%   <<"AdditionalStatistics">> => list(string()),
+%%   <<"IncludeMetrics">> => list(metric_stream_statistics_metric())
+%% }
+-type metric_stream_statistics_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% metric_stream_statistics_metric() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type metric_stream_statistics_metric() :: #{binary() => any()}.
+
+%% Example:
+%% missing_required_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_required_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mute_targets() :: #{
+%%   <<"AlarmNames">> => list(string())
+%% }
+-type mute_targets() :: #{binary() => any()}.
+
+%% Example:
+%% partial_failure() :: #{
+%%   <<"ExceptionType">> => string(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureDescription">> => string(),
+%%   <<"FailureResource">> => string()
+%% }
+-type partial_failure() :: #{binary() => any()}.
+
+%% Example:
+%% put_alarm_mute_rule_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExpireDate">> => non_neg_integer(),
+%%   <<"MuteTargets">> => mute_targets(),
+%%   <<"Name">> := string(),
+%%   <<"Rule">> := rule(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type put_alarm_mute_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_anomaly_detector_input() :: #{
 %%   <<"Configuration">> => anomaly_detector_configuration(),
 %%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricCharacteristics">> => metric_characteristics(),
@@ -1325,45 +1167,31 @@
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
 %%   <<"SingleMetricAnomalyDetector">> => single_metric_anomaly_detector(),
-%%   <<"Stat">> => string(),
-%%   <<"StateValue">> => list(any())
+%%   <<"Stat">> => string()
 %% }
--type anomaly_detector() :: #{binary() => any()}.
+-type put_anomaly_detector_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_anomaly_detector_output() :: #{
-
+%%   <<"AnomalyDetectorId">> => string()
 %% }
 -type put_anomaly_detector_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_dataset_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DatasetId">> => string(),
-%%   <<"KmsKeyArn">> => string()
+%% put_composite_alarm_input() :: #{
+%%   <<"ActionsEnabled">> => boolean(),
+%%   <<"ActionsSuppressor">> => string(),
+%%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
+%%   <<"ActionsSuppressorWaitPeriod">> => integer(),
+%%   <<"AlarmActions">> => list(string()),
+%%   <<"AlarmDescription">> => string(),
+%%   <<"AlarmName">> := string(),
+%%   <<"AlarmRule">> := string(),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
--type get_dataset_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alarms_for_metric_output() :: #{
-%%   <<"MetricAlarms">> => list(metric_alarm())
-%% }
--type describe_alarms_for_metric_output() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type dimension_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_insight_rules_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_managed_insight_rules_input() :: #{binary() => any()}.
+-type put_composite_alarm_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_dashboard_input() :: #{
@@ -1372,6 +1200,28 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type put_dashboard_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_dashboard_output() :: #{
+%%   <<"DashboardValidationMessages">> => list(dashboard_validation_message())
+%% }
+-type put_dashboard_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_insight_rule_input() :: #{
+%%   <<"ApplyOnTransformedLogs">> => boolean(),
+%%   <<"RuleDefinition">> := string(),
+%%   <<"RuleName">> := string(),
+%%   <<"RuleState">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type put_insight_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_insight_rule_output() :: #{
+
+%% }
+-type put_insight_rule_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_log_alarm_input() :: #{
@@ -1394,75 +1244,185 @@
 -type put_log_alarm_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_o_tel_enrichment_output() :: #{
-%%   <<"Status">> => list(any())
+%% put_managed_insight_rules_input() :: #{
+%%   <<"ManagedRules">> := list(managed_rule())
 %% }
--type get_o_tel_enrichment_output() :: #{binary() => any()}.
+-type put_managed_insight_rules_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_insight_rules_output() :: #{
-%%   <<"InsightRules">> => list(insight_rule()),
-%%   <<"NextToken">> => string()
+%% put_managed_insight_rules_output() :: #{
+%%   <<"Failures">> => list(partial_failure())
 %% }
--type describe_insight_rules_output() :: #{binary() => any()}.
+-type put_managed_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
-%% stop_metric_streams_input() :: #{
-%%   <<"Names">> := list(string())
+%% put_metric_alarm_input() :: #{
+%%   <<"ActionsEnabled">> => boolean(),
+%%   <<"AlarmActions">> => list(string()),
+%%   <<"AlarmDescription">> => string(),
+%%   <<"AlarmName">> := string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"EvaluateLowSampleCountPercentile">> => string(),
+%%   <<"EvaluationCriteria">> => list(),
+%%   <<"EvaluationInterval">> => integer(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"EvaluationWindow">> => list(),
+%%   <<"ExtendedStatistic">> => string(),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"MetricName">> => string(),
+%%   <<"Metrics">> => list(metric_data_query()),
+%%   <<"Namespace">> => string(),
+%%   <<"OKActions">> => list(string()),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Threshold">> => float(),
+%%   <<"ThresholdMetricId">> => string(),
+%%   <<"TreatMissingData">> => string(),
+%%   <<"Unit">> => list(any())
 %% }
--type stop_metric_streams_input() :: #{binary() => any()}.
+-type put_metric_alarm_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_next_token() :: #{
+%% put_metric_data_input() :: #{
+%%   <<"EntityMetricData">> => list(entity_metric_data()),
+%%   <<"MetricData">> => list(metric_datum()),
+%%   <<"Namespace">> := string(),
+%%   <<"StrictEntityValidation">> => boolean()
+%% }
+-type put_metric_data_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_stream_input() :: #{
+%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
+%%   <<"FirehoseArn">> := string(),
+%%   <<"IncludeFilters">> => list(metric_stream_filter()),
+%%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"OutputFormat">> := list(any()),
+%%   <<"RoleArn">> := string(),
+%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type put_metric_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_stream_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type put_metric_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type range() :: #{binary() => any()}.
+
+%% Example:
+%% resource_conflict() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_next_token() :: #{binary() => any()}.
+-type resource_conflict() :: #{binary() => any()}.
 
 %% Example:
-%% metric_data_result() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"Messages">> => list(message_data()),
-%%   <<"StatusCode">> => list(any()),
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Values">> => list(float())
+%% resource_not_found() :: #{
+%%   <<"message">> => string()
 %% }
--type metric_data_result() :: #{binary() => any()}.
+-type resource_not_found() :: #{binary() => any()}.
 
 %% Example:
-%% partial_failure() :: #{
-%%   <<"ExceptionType">> => string(),
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureDescription">> => string(),
-%%   <<"FailureResource">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type partial_failure() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_insight_rules_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% rule() :: #{
+%%   <<"Schedule">> => schedule()
 %% }
--type describe_insight_rules_input() :: #{binary() => any()}.
+-type rule() :: #{binary() => any()}.
 
 %% Example:
-%% delete_alarm_mute_rule_input() :: #{
-%%   <<"AlarmMuteRuleName">> := string()
+%% schedule() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"Timezone">> => string()
 %% }
--type delete_alarm_mute_rule_input() :: #{binary() => any()}.
+-type schedule() :: #{binary() => any()}.
 
 %% Example:
-%% entity_metric_data() :: #{
-%%   <<"Entity">> => entity(),
-%%   <<"MetricData">> => list(metric_datum())
+%% schedule_configuration() :: #{
+%%   <<"EndTimeOffset">> => float(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartTimeOffset">> => float()
 %% }
--type entity_metric_data() :: #{binary() => any()}.
+-type schedule_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_dashboard_input() :: #{
-%%   <<"DashboardName">> := string()
+%% scheduled_query_configuration() :: #{
+%%   <<"AggregationExpression">> => string(),
+%%   <<"LogGroupIdentifiers">> => list(string()),
+%%   <<"QueryARN">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"ScheduledQueryRoleARN">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type get_dashboard_input() :: #{binary() => any()}.
+-type scheduled_query_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% set_alarm_state_input() :: #{
+%%   <<"AlarmName">> := string(),
+%%   <<"StateReason">> := string(),
+%%   <<"StateReasonData">> => string(),
+%%   <<"StateValue">> := list(any())
+%% }
+-type set_alarm_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% single_metric_anomaly_detector() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Stat">> => string()
+%% }
+-type single_metric_anomaly_detector() :: #{binary() => any()}.
+
+%% Example:
+%% sliding_window() :: #{
+
+%% }
+-type sliding_window() :: #{binary() => any()}.
+
+%% Example:
+%% start_metric_streams_input() :: #{
+%%   <<"Names">> := list(string())
+%% }
+-type start_metric_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_metric_streams_output() :: #{
+
+%% }
+-type start_metric_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_o_tel_enrichment_input() :: #{
+
+%% }
+-type start_o_tel_enrichment_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_o_tel_enrichment_output() :: #{
+
+%% }
+-type start_o_tel_enrichment_output() :: #{binary() => any()}.
 
 %% Example:
 %% statistic_set() :: #{
@@ -1474,60 +1434,103 @@
 -type statistic_set() :: #{binary() => any()}.
 
 %% Example:
-%% get_metric_statistics_input() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"ExtendedStatistics">> => list(string()),
-%%   <<"MetricName">> := string(),
-%%   <<"Namespace">> := string(),
-%%   <<"Period">> := integer(),
-%%   <<"StartTime">> := non_neg_integer(),
-%%   <<"Statistics">> => list(list(any())()),
-%%   <<"Unit">> => list(any())
+%% stop_metric_streams_input() :: #{
+%%   <<"Names">> := list(string())
 %% }
--type get_metric_statistics_input() :: #{binary() => any()}.
+-type stop_metric_streams_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure())
+%% stop_metric_streams_output() :: #{
+
 %% }
--type delete_insight_rules_output() :: #{binary() => any()}.
+-type stop_metric_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_o_tel_enrichment_input() :: #{
+
+%% }
+-type stop_o_tel_enrichment_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_o_tel_enrichment_output() :: #{
+
+%% }
+-type stop_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% wall_clock_window() :: #{
+%%   <<"Timezone">> => string()
+%% }
+-type wall_clock_window() :: #{binary() => any()}.
 
 -type associate_dataset_kms_key_errors() ::
+    resource_not_found_exception() | 
+    kms_key_not_found_exception() | 
     kms_key_disabled_exception() | 
     kms_access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    kms_key_not_found_exception().
+    conflict_exception().
 
 -type delete_alarms_errors() ::
-    resource_conflict() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_conflict().
 
 -type delete_anomaly_detector_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type delete_dashboards_errors() ::
-    internal_service_fault() | 
     invalid_parameter_value_exception() | 
+    internal_service_fault() | 
     conflict_exception().
 
 -type delete_insight_rules_errors() ::
-    invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_metric_stream_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type describe_alarm_contributors_errors() ::
-    invalid_next_token() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_next_token().
 
 -type describe_alarm_history_errors() ::
     invalid_next_token().
@@ -1536,161 +1539,161 @@
     invalid_next_token().
 
 -type describe_anomaly_detectors_errors() ::
-    invalid_next_token() | 
-    internal_service_fault() | 
     invalid_parameter_value_exception() | 
-    invalid_parameter_combination_exception().
+    invalid_parameter_combination_exception() | 
+    invalid_next_token() | 
+    internal_service_fault().
 
 -type describe_insight_rules_errors() ::
     invalid_next_token().
 
 -type disable_insight_rules_errors() ::
-    invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception().
 
 -type disassociate_dataset_kms_key_errors() ::
     resource_not_found_exception() | 
     conflict_exception().
 
 -type enable_insight_rules_errors() ::
+    missing_required_parameter_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    invalid_parameter_value_exception().
 
 -type get_alarm_mute_rule_errors() ::
     resource_not_found_exception().
 
 -type get_dashboard_errors() ::
-    internal_service_fault() | 
     invalid_parameter_value_exception() | 
+    internal_service_fault() | 
     dashboard_not_found_error().
 
 -type get_dataset_errors() ::
     resource_not_found_exception().
 
 -type get_insight_rule_report_errors() ::
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_metric_data_errors() ::
     invalid_next_token().
 
 -type get_metric_statistics_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type get_metric_stream_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type list_alarm_mute_rules_errors() ::
-    invalid_next_token() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_next_token().
 
 -type list_dashboards_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_value_exception().
+    invalid_parameter_value_exception() | 
+    internal_service_fault().
 
 -type list_managed_insight_rules_errors() ::
-    invalid_next_token() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    invalid_next_token().
 
 -type list_metric_streams_errors() ::
-    invalid_next_token() | 
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    invalid_next_token() | 
+    internal_service_fault().
 
 -type list_metrics_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_value_exception().
+    invalid_parameter_value_exception() | 
+    internal_service_fault().
 
 -type list_tags_for_resource_errors() ::
-    internal_service_fault() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    internal_service_fault().
 
 -type put_alarm_mute_rule_errors() ::
     limit_exceeded_fault().
 
 -type put_anomaly_detector_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type put_composite_alarm_errors() ::
     limit_exceeded_fault().
 
 -type put_dashboard_errors() ::
     internal_service_fault() | 
-    conflict_exception() | 
-    dashboard_invalid_input_error().
+    dashboard_invalid_input_error() | 
+    conflict_exception().
 
 -type put_insight_rule_errors() ::
+    missing_required_parameter_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    invalid_parameter_value_exception().
 
 -type put_log_alarm_errors() ::
     resource_conflict() | 
     limit_exceeded_fault().
 
 -type put_managed_insight_rules_errors() ::
-    invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_metric_alarm_errors() ::
     limit_exceeded_fault().
 
 -type put_metric_data_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type put_metric_stream_errors() ::
-    internal_service_fault() | 
-    concurrent_modification_exception() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault() | 
+    concurrent_modification_exception().
 
 -type set_alarm_state_errors() ::
-    invalid_format_fault() | 
-    resource_not_found().
+    resource_not_found() | 
+    invalid_format_fault().
 
 -type start_metric_streams_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type stop_metric_streams_errors() ::
-    internal_service_fault() | 
+    missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
-    missing_required_parameter_exception().
+    internal_service_fault().
 
 -type tag_resource_errors() ::
-    internal_service_fault() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_parameter_value_exception() | 
+    internal_service_fault() | 
+    conflict_exception() | 
+    concurrent_modification_exception().
 
 -type untag_resource_errors() ::
-    internal_service_fault() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_parameter_value_exception() | 
+    internal_service_fault() | 
+    conflict_exception() | 
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

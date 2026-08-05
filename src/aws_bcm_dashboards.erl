@@ -53,39 +53,49 @@
 
 
 %% Example:
-%% list_dashboards_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_dashboards_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_dashboard_request() :: #{
-%%   <<"arn">> := string()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_dashboard_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_dashboard_response() :: #{
-%%   <<"arn">> => string()
+%% cost_and_usage_query() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"granularity">> => list(any()),
+%%   <<"groupBy">> => list(group_definition()),
+%%   <<"metrics">> => list(list(any())()),
+%%   <<"timeRange">> => date_time_range()
 %% }
--type update_dashboard_response() :: #{binary() => any()}.
+-type cost_and_usage_query() :: #{binary() => any()}.
 
 %% Example:
-%% update_dashboard_request() :: #{
-%%   <<"arn">> := string(),
+%% cost_category_values() :: #{
+%%   <<"key">> => [string()],
+%%   <<"matchOptions">> => list(list(any())()),
+%%   <<"values">> => list([string()]())
+%% }
+-type cost_category_values() :: #{binary() => any()}.
+
+%% Example:
+%% create_dashboard_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"widgets">> => list(widget())
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"widgets">> := list(widget())
 %% }
--type update_dashboard_request() :: #{binary() => any()}.
+-type create_dashboard_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"resourceTags">> := list(resource_tag())
+%% create_dashboard_response() :: #{
+%%   <<"arn">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_scheduled_report_request() :: #{
@@ -96,10 +106,10 @@
 -type create_scheduled_report_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% create_scheduled_report_response() :: #{
+%%   <<"arn">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type create_scheduled_report_response() :: #{binary() => any()}.
 
 %% Example:
 %% dashboard_reference() :: #{
@@ -113,12 +123,11 @@
 -type dashboard_reference() :: #{binary() => any()}.
 
 %% Example:
-%% tag_values() :: #{
-%%   <<"key">> => [string()],
-%%   <<"matchOptions">> => list(list(any())()),
-%%   <<"values">> => list([string()]())
+%% date_time_range() :: #{
+%%   <<"endTime">> => date_time_value(),
+%%   <<"startTime">> => date_time_value()
 %% }
--type tag_values() :: #{binary() => any()}.
+-type date_time_range() :: #{binary() => any()}.
 
 %% Example:
 %% date_time_value() :: #{
@@ -128,11 +137,231 @@
 -type date_time_value() :: #{binary() => any()}.
 
 %% Example:
+%% delete_dashboard_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboard_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type delete_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_report_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_report_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type delete_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_values() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"matchOptions">> => list(list(any())()),
+%%   <<"values">> => list([string()]())
+%% }
+-type dimension_values() :: #{binary() => any()}.
+
+%% Example:
+%% execute_scheduled_report_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"dryRun">> => [boolean()]
+%% }
+-type execute_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_scheduled_report_response() :: #{
+%%   <<"executionTriggered">> => [boolean()],
+%%   <<"healthStatus">> => health_status()
+%% }
+-type execute_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% expression() :: #{
+%%   <<"and">> => list(expression()),
+%%   <<"costCategories">> => cost_category_values(),
+%%   <<"dimensions">> => dimension_values(),
+%%   <<"not">> => expression(),
+%%   <<"or">> => list(expression()),
+%%   <<"tags">> => tag_values()
+%% }
+-type expression() :: #{binary() => any()}.
+
+%% Example:
+%% get_dashboard_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_dashboard_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"widgets">> => list(widget())
+%% }
+-type get_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_resource_policy_response() :: #{
 %%   <<"policyDocument">> => string(),
 %%   <<"resourceArn">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_report_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_scheduled_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_report_response() :: #{
+%%   <<"scheduledReport">> => scheduled_report()
+%% }
+-type get_scheduled_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% graph_display_config() :: #{
+%%   <<"visualType">> => list(any())
+%% }
+-type graph_display_config() :: #{binary() => any()}.
+
+%% Example:
+%% group_definition() :: #{
+%%   <<"key">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type group_definition() :: #{binary() => any()}.
+
+%% Example:
+%% health_status() :: #{
+%%   <<"lastRefreshedAt">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReasons">> => list(list(any())())
+%% }
+-type health_status() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_dashboards_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dashboards_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dashboards_response() :: #{
+%%   <<"dashboards">> => list(dashboard_reference()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dashboards_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduled_reports_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_reports_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledReports">> => list(scheduled_report_summary())
+%% }
+-type list_scheduled_reports_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"resourceTags">> => list(resource_tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% reservation_coverage_query() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"granularity">> => list(any()),
+%%   <<"groupBy">> => list(group_definition()),
+%%   <<"metrics">> => list(list(any())()),
+%%   <<"timeRange">> => date_time_range()
+%% }
+-type reservation_coverage_query() :: #{binary() => any()}.
+
+%% Example:
+%% reservation_utilization_query() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"granularity">> => list(any()),
+%%   <<"groupBy">> => list(group_definition()),
+%%   <<"timeRange">> => date_time_range()
+%% }
+-type reservation_utilization_query() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plans_coverage_query() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"granularity">> => list(any()),
+%%   <<"groupBy">> => list(group_definition()),
+%%   <<"metrics">> => list(list(any())()),
+%%   <<"timeRange">> => date_time_range()
+%% }
+-type savings_plans_coverage_query() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plans_utilization_query() :: #{
+%%   <<"filter">> => expression(),
+%%   <<"granularity">> => list(any()),
+%%   <<"timeRange">> => date_time_range()
+%% }
+-type savings_plans_utilization_query() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_config() :: #{
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleExpressionTimeZone">> => string(),
+%%   <<"schedulePeriod">> => schedule_period(),
+%%   <<"state">> => list(any())
+%% }
+-type schedule_config() :: #{binary() => any()}.
 
 %% Example:
 %% schedule_period() :: #{
@@ -159,6 +388,70 @@
 -type scheduled_report() :: #{binary() => any()}.
 
 %% Example:
+%% scheduled_report_input() :: #{
+%%   <<"dashboardArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scheduleConfig">> => schedule_config(),
+%%   <<"scheduledReportExecutionRoleArn">> => string(),
+%%   <<"widgetDateRangeOverride">> => date_time_range(),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type scheduled_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_report_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dashboardArn">> => string(),
+%%   <<"healthStatus">> => health_status(),
+%%   <<"name">> => string(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleExpressionTimeZone">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"widgetIds">> => list([string()]())
+%% }
+-type scheduled_report_summary() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% table_display_config_struct() :: #{
+
+%% }
+-type table_display_config_struct() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceTags">> := list(resource_tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_values() :: #{
+%%   <<"key">> => [string()],
+%%   <<"matchOptions">> => list(list(any())()),
+%%   <<"values">> => list([string()]())
+%% }
+-type tag_values() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"resourceTagKeys">> := list(string())
@@ -166,19 +459,25 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% savings_plans_utilization_query() :: #{
-%%   <<"filter">> => expression(),
-%%   <<"granularity">> => list(any()),
-%%   <<"timeRange">> => date_time_range()
+%% untag_resource_response() :: #{
+
 %% }
--type savings_plans_utilization_query() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% group_definition() :: #{
-%%   <<"key">> => [string()],
-%%   <<"type">> => list(any())
+%% update_dashboard_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"widgets">> => list(widget())
 %% }
--type group_definition() :: #{binary() => any()}.
+-type update_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dashboard_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type update_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_scheduled_report_request() :: #{
@@ -196,280 +495,16 @@
 -type update_scheduled_report_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_scheduled_report_response() :: #{
-%%   <<"scheduledReport">> => scheduled_report()
-%% }
--type get_scheduled_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% table_display_config_struct() :: #{
-
-%% }
--type table_display_config_struct() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_values() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"matchOptions">> => list(list(any())()),
-%%   <<"values">> => list([string()]())
-%% }
--type dimension_values() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_report_input() :: #{
-%%   <<"dashboardArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"scheduleConfig">> => schedule_config(),
-%%   <<"scheduledReportExecutionRoleArn">> => string(),
-%%   <<"widgetDateRangeOverride">> => date_time_range(),
-%%   <<"widgetIds">> => list([string()]())
-%% }
--type scheduled_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% graph_display_config() :: #{
-%%   <<"visualType">> => list(any())
-%% }
--type graph_display_config() :: #{binary() => any()}.
-
-%% Example:
-%% reservation_utilization_query() :: #{
-%%   <<"filter">> => expression(),
-%%   <<"granularity">> => list(any()),
-%%   <<"groupBy">> => list(group_definition()),
-%%   <<"timeRange">> => date_time_range()
-%% }
--type reservation_utilization_query() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"resourceTags">> => list(resource_tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% widget_config() :: #{
-%%   <<"displayConfig">> => list(),
-%%   <<"queryParameters">> => list()
-%% }
--type widget_config() :: #{binary() => any()}.
-
-%% Example:
-%% date_time_range() :: #{
-%%   <<"endTime">> => date_time_value(),
-%%   <<"startTime">> => date_time_value()
-%% }
--type date_time_range() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% savings_plans_coverage_query() :: #{
-%%   <<"filter">> => expression(),
-%%   <<"granularity">> => list(any()),
-%%   <<"groupBy">> => list(group_definition()),
-%%   <<"metrics">> => list(list(any())()),
-%%   <<"timeRange">> => date_time_range()
-%% }
--type savings_plans_coverage_query() :: #{binary() => any()}.
-
-%% Example:
-%% get_dashboard_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"widgets">> => list(widget())
-%% }
--type get_dashboard_response() :: #{binary() => any()}.
-
-%% Example:
-%% health_status() :: #{
-%%   <<"lastRefreshedAt">> => non_neg_integer(),
-%%   <<"statusCode">> => list(any()),
-%%   <<"statusReasons">> => list(list(any())())
-%% }
--type health_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dashboard_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_dashboard_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_scheduled_report_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"dryRun">> => [boolean()]
-%% }
--type execute_scheduled_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_config() :: #{
-%%   <<"scheduleExpression">> => string(),
-%%   <<"scheduleExpressionTimeZone">> => string(),
-%%   <<"schedulePeriod">> => schedule_period(),
-%%   <<"state">> => list(any())
-%% }
--type schedule_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dashboard_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type delete_dashboard_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_dashboard_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type create_dashboard_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% cost_category_values() :: #{
-%%   <<"key">> => [string()],
-%%   <<"matchOptions">> => list(list(any())()),
-%%   <<"values">> => list([string()]())
-%% }
--type cost_category_values() :: #{binary() => any()}.
-
-%% Example:
 %% update_scheduled_report_response() :: #{
 %%   <<"arn">> => string()
 %% }
 -type update_scheduled_report_response() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_report_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_scheduled_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_reports_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scheduledReports">> => list(scheduled_report_summary())
-%% }
--type list_scheduled_reports_response() :: #{binary() => any()}.
-
-%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% expression() :: #{
-%%   <<"and">> => list(expression()),
-%%   <<"costCategories">> => cost_category_values(),
-%%   <<"dimensions">> => dimension_values(),
-%%   <<"not">> => expression(),
-%%   <<"or">> => list(expression()),
-%%   <<"tags">> => tag_values()
-%% }
--type expression() :: #{binary() => any()}.
-
-%% Example:
-%% create_dashboard_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"resourceTags">> => list(resource_tag()),
-%%   <<"widgets">> := list(widget())
-%% }
--type create_dashboard_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_scheduled_report_response() :: #{
-%%   <<"executionTriggered">> => [boolean()],
-%%   <<"healthStatus">> => health_status()
-%% }
--type execute_scheduled_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_report_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_scheduled_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_reports_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_scheduled_reports_request() :: #{binary() => any()}.
-
-%% Example:
-%% reservation_coverage_query() :: #{
-%%   <<"filter">> => expression(),
-%%   <<"granularity">> => list(any()),
-%%   <<"groupBy">> => list(group_definition()),
-%%   <<"metrics">> => list(list(any())()),
-%%   <<"timeRange">> => date_time_range()
-%% }
--type reservation_coverage_query() :: #{binary() => any()}.
 
 %% Example:
 %% widget() :: #{
@@ -484,148 +519,113 @@
 -type widget() :: #{binary() => any()}.
 
 %% Example:
-%% create_scheduled_report_response() :: #{
-%%   <<"arn">> => string()
+%% widget_config() :: #{
+%%   <<"displayConfig">> => list(),
+%%   <<"queryParameters">> => list()
 %% }
--type create_scheduled_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_report_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type delete_scheduled_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_dashboards_response() :: #{
-%%   <<"dashboards">> => list(dashboard_reference()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dashboards_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_report_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dashboardArn">> => string(),
-%%   <<"healthStatus">> => health_status(),
-%%   <<"name">> => string(),
-%%   <<"scheduleExpression">> => string(),
-%%   <<"scheduleExpressionTimeZone">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"widgetIds">> => list([string()]())
-%% }
--type scheduled_report_summary() :: #{binary() => any()}.
-
-%% Example:
-%% cost_and_usage_query() :: #{
-%%   <<"filter">> => expression(),
-%%   <<"granularity">> => list(any()),
-%%   <<"groupBy">> => list(group_definition()),
-%%   <<"metrics">> => list(list(any())()),
-%%   <<"timeRange">> => date_time_range()
-%% }
--type cost_and_usage_query() :: #{binary() => any()}.
+-type widget_config() :: #{binary() => any()}.
 
 -type create_dashboard_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type create_scheduled_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dashboard_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_scheduled_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type execute_scheduled_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_dashboard_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_scheduled_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_dashboards_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_scheduled_reports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_dashboard_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_scheduled_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

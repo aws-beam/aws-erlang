@@ -202,38 +202,96 @@
 
 
 %% Example:
-%% list_network_migration_deployer_job_filters() :: #{
-%%   <<"jobIDs">> => list(string())
+%% access_denied_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type list_network_migration_deployer_job_filters() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_cutover_response() :: #{
-%%   <<"job">> => job()
+%% application() :: #{
+%%   <<"applicationAggregatedStatus">> => application_aggregated_status(),
+%%   <<"applicationID">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"isArchived">> => [boolean()],
+%%   <<"lastModifiedDateTime">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"waveID">> => string()
 %% }
--type start_cutover_response() :: #{binary() => any()}.
+-type application() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_code_generations_request() :: #{
-%%   <<"filters">> => list_network_migration_code_generations_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
+%% application_aggregated_status() :: #{
+%%   <<"healthStatus">> => string(),
+%%   <<"lastUpdateDateTime">> => string(),
+%%   <<"progressStatus">> => string(),
+%%   <<"totalSourceServers">> => float()
 %% }
--type list_network_migration_code_generations_request() :: #{binary() => any()}.
+-type application_aggregated_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_job_log_items_request() :: #{
+%% archive_application_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"jobID">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"applicationID">> := string()
 %% }
--type describe_job_log_items_request() :: #{binary() => any()}.
+-type archive_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% archive_wave_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"waveID">> := string()
+%% }
+-type archive_wave_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_applications_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationIDs">> := list(string()),
+%%   <<"waveID">> := string()
+%% }
+-type associate_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_applications_response() :: #{}
+-type associate_applications_response() :: #{}.
+
+
+%% Example:
+%% associate_source_servers_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> := string(),
+%%   <<"sourceServerIDs">> := list(string())
+%% }
+-type associate_source_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_servers_response() :: #{}
+-type associate_source_servers_response() :: #{}.
+
+
+%% Example:
+%% c_p_u() :: #{
+%%   <<"cores">> => float(),
+%%   <<"modelName">> => string()
+%% }
+-type c_p_u() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_server_life_cycle_state_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"lifeCycle">> := change_server_life_cycle_state_source_server_lifecycle(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type change_server_life_cycle_state_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -244,19 +302,30 @@
 
 
 %% Example:
-%% network_migration_code_generation_segment() :: #{
-%%   <<"artifacts">> => list(network_migration_code_generation_artifact()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"logicalID">> => string(),
-%%   <<"mapperSegmentID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"referencedSegments">> => list(string()),
-%%   <<"segmentID">> => string(),
-%%   <<"segmentType">> => string()
+%% checksum() :: #{
+%%   <<"encryptionAlgorithm">> => string(),
+%%   <<"hash">> => string()
 %% }
--type network_migration_code_generation_segment() :: #{binary() => any()}.
+-type checksum() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_generation_output_format_status_details() :: #{
+%%   <<"status">> => string(),
+%%   <<"statusDetailList">> => string()
+%% }
+-type code_generation_output_format_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"errors">> => list(error_details()),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,430 +341,69 @@
 
 
 %% Example:
-%% describe_source_servers_request() :: #{
+%% connector_ssm_command_config() :: #{
+%%   <<"cloudWatchLogGroupName">> => string(),
+%%   <<"cloudWatchOutputEnabled">> => [boolean()],
+%%   <<"outputS3BucketName">> => string(),
+%%   <<"s3OutputEnabled">> => [boolean()]
+%% }
+-type connector_ssm_command_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"filters">> => describe_source_servers_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_source_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_migration_mapper_segment_construct_response() :: #{
-%%   <<"construct">> => network_migration_mapper_segment_construct()
-%% }
--type get_network_migration_mapper_segment_construct_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_analysis_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string()
-%% }
--type start_network_migration_analysis_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mapping_updates_request() :: #{
-%%   <<"filters">> => list_network_migration_mapping_updates_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mapping_updates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_update_segment() :: #{
-%%   <<"scopeTags">> => map(),
-%%   <<"segmentID">> => string(),
-%%   <<"targetAccount">> => string()
-%% }
--type start_network_migration_mapping_update_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vcenter_clients_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_vcenter_clients_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"securityGroupMappingStrategy">> => string()
-%% }
--type start_network_migration_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle() :: #{
-%%   <<"addedToServiceDateTime">> => string(),
-%%   <<"elapsedReplicationDuration">> => string(),
-%%   <<"firstByteDateTime">> => string(),
-%%   <<"lastCutover">> => life_cycle_last_cutover(),
-%%   <<"lastSeenByServiceDateTime">> => string(),
-%%   <<"lastTest">> => life_cycle_last_test(),
-%%   <<"state">> => string()
-%% }
--type life_cycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_network_update() :: #{
-%%   <<"inboundCidr">> => string(),
-%%   <<"inspectionCidr">> => string(),
-%%   <<"outboundCidr">> => string(),
-%%   <<"topology">> => string()
-%% }
--type target_network_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_migration_mapper_segment_construct_request() :: #{
-%%   <<"constructID">> := string(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"segmentID">> := string()
-%% }
--type get_network_migration_mapper_segment_construct_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_exports_request_filters() :: #{
-%%   <<"exportIDs">> => list(string())
-%% }
--type list_exports_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_operation() :: #{
-%%   <<"excluded">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"properties">> => map()
-%% }
--type update_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% unarchive_application_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string()
-%% }
--type unarchive_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_code_generations_filters() :: #{
-%%   <<"jobIDs">> => list(string())
-%% }
--type list_network_migration_code_generations_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_response() :: #{
-%%   <<"items">> => list(connector()),
-%%   <<"nextToken">> => string()
-%% }
--type list_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_waves_request_filters() :: #{
-%%   <<"isArchived">> => [boolean()],
-%%   <<"waveIDs">> => list(string())
-%% }
--type list_waves_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_analyses_filters() :: #{
-%%   <<"jobIDs">> => list(string())
-%% }
--type list_network_migration_analyses_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_source_server_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"connectorAction">> => source_server_connector_action(),
-%%   <<"fqdnForActionFramework">> => string(),
-%%   <<"platform">> => string(),
-%%   <<"sourceServerID">> := string(),
-%%   <<"userProvidedID">> => string()
-%% }
--type update_source_server_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_wave_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"waveID">> := string()
-%% }
--type archive_wave_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mapper_segment_constructs_response() :: #{
-%%   <<"items">> => list(network_migration_mapper_segment_construct()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mapper_segment_constructs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_launch_configuration_templates_request() :: #{
-%%   <<"launchConfigurationTemplateIDs">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_launch_configuration_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_server_response() :: #{}
--type delete_source_server_response() :: #{}.
-
-
-%% Example:
-%% delete_source_server_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type delete_source_server_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_aggregated_status() :: #{
-%%   <<"healthStatus">> => string(),
-%%   <<"lastUpdateDateTime">> => string(),
-%%   <<"progressStatus">> => string(),
-%%   <<"totalSourceServers">> => float()
-%% }
--type application_aggregated_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"associateDefaultSecurityGroup">> => [boolean()],
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"createPublicIP">> => [boolean()],
-%%   <<"dataPlaneRouting">> => string(),
-%%   <<"defaultLargeStagingDiskType">> => string(),
-%%   <<"ebsEncryption">> => string(),
-%%   <<"ebsEncryptionKeyArn">> => string(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"replicationConfigurationTemplateID">> := string(),
-%%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
-%%   <<"stagingAreaSubnetId">> => string(),
-%%   <<"stagingAreaTags">> => map(),
-%%   <<"storageConfiguration">> => storage_configuration(),
-%%   <<"storeSnapshotOnLocalZone">> => [boolean()],
-%%   <<"tags">> => map(),
-%%   <<"useDedicatedReplicationServer">> => [boolean()],
-%%   <<"useFipsEndpoint">> => [boolean()]
-%% }
--type replication_configuration_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% resume_replication_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type resume_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_waves_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"filters">> => list_waves_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_waves_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_file_enrichments_request() :: #{
-%%   <<"filters">> => list_import_file_enrichments_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_file_enrichments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_replication_configuration_template_request() :: #{
-%%   <<"arn">> => string(),
-%%   <<"associateDefaultSecurityGroup">> => [boolean()],
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"createPublicIP">> => [boolean()],
-%%   <<"dataPlaneRouting">> => string(),
-%%   <<"defaultLargeStagingDiskType">> => string(),
-%%   <<"ebsEncryption">> => string(),
-%%   <<"ebsEncryptionKeyArn">> => string(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"replicationConfigurationTemplateID">> := string(),
-%%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
-%%   <<"stagingAreaSubnetId">> => string(),
-%%   <<"stagingAreaTags">> => map(),
-%%   <<"storageConfiguration">> => storage_configuration(),
-%%   <<"storeSnapshotOnLocalZone">> => [boolean()],
-%%   <<"useDedicatedReplicationServer">> => [boolean()],
-%%   <<"useFipsEndpoint">> => [boolean()]
-%% }
--type update_replication_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_s3_configuration_update() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string()
-%% }
--type target_s3_configuration_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_definition() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"ssmCommandConfig">> => connector_ssm_command_config(),
+%%   <<"ssmInstanceID">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_launch_configuration_template_request() :: #{
+%%   <<"associatePublicIpAddress">> => [boolean()],
+%%   <<"bootMode">> => string(),
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"enableParametersEncryption">> => [boolean()],
+%%   <<"largeVolumeConf">> => launch_template_disk_conf(),
+%%   <<"launchDisposition">> => string(),
+%%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingMpeID">> => string(),
+%%   <<"parametersEncryptionKey">> => string(),
+%%   <<"postLaunchActions">> => post_launch_actions(),
+%%   <<"smallVolumeConf">> => launch_template_disk_conf(),
+%%   <<"smallVolumeMaxSize">> => float(),
+%%   <<"tags">> => map(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
+%% }
+-type create_launch_configuration_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_migration_definition_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
 %%   <<"scopeTags">> => map(),
 %%   <<"sourceConfigurations">> => list(source_configuration()),
 %%   <<"tags">> => map(),
 %%   <<"targetDeployment">> => string(),
-%%   <<"targetNetwork">> => target_network(),
-%%   <<"targetS3Configuration">> => target_s3_configuration(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"targetNetwork">> := target_network(),
+%%   <<"targetS3Configuration">> := target_s3_configuration()
 %% }
--type network_migration_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration_replicated_disk() :: #{
-%%   <<"deviceName">> => string(),
-%%   <<"iops">> => float(),
-%%   <<"isBootDisk">> => [boolean()],
-%%   <<"stagingDiskType">> => string(),
-%%   <<"throughput">> => float()
-%% }
--type replication_configuration_replicated_disk() :: #{binary() => any()}.
-
-%% Example:
-%% associate_applications_response() :: #{}
--type associate_applications_response() :: #{}.
-
-
-%% Example:
-%% update_connector_request() :: #{
-%%   <<"connectorID">> := string(),
-%%   <<"name">> => string(),
-%%   <<"ssmCommandConfig">> => connector_ssm_command_config()
-%% }
--type update_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% pause_replication_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type pause_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mapper_segments_response() :: #{
-%%   <<"items">> => list(network_migration_mapper_segment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mapper_segments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_file_enrichment_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_import_file_enrichment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mappings_request() :: #{
-%%   <<"filters">> => list_network_migration_mappings_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mapper_segments_filters() :: #{
-%%   <<"segmentIDs">> => list(string())
-%% }
--type list_network_migration_mapper_segments_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_mapping_update_job_details() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusDetails">> => string()
-%% }
--type network_migration_mapping_update_job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_code_generation_segments_filters() :: #{
-%%   <<"segmentIDs">> => list(string())
-%% }
--type list_network_migration_code_generation_segments_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"ips">> => list(string()),
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"macAddress">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle_last_test_finalized() :: #{
-%%   <<"apiCallDateTime">> => string()
-%% }
--type life_cycle_last_test_finalized() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_failed_resource_details() :: #{
-%%   <<"logicalID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => string()
-%% }
--type network_migration_failed_resource_details() :: #{binary() => any()}.
+-type create_network_migration_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -720,9 +428,479 @@
 %% }
 -type create_replication_configuration_template_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_wave_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_wave_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_error() :: #{
+%%   <<"error">> => string(),
+%%   <<"rawError">> => string()
+%% }
+-type data_replication_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_info() :: #{
+%%   <<"dataReplicationError">> => data_replication_error(),
+%%   <<"dataReplicationInitiation">> => data_replication_initiation(),
+%%   <<"dataReplicationState">> => string(),
+%%   <<"etaDateTime">> => string(),
+%%   <<"lagDuration">> => string(),
+%%   <<"lastSnapshotDateTime">> => string(),
+%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
+%%   <<"replicatorId">> => string()
+%% }
+-type data_replication_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_info_replicated_disk() :: #{
+%%   <<"backloggedStorageBytes">> => float(),
+%%   <<"deviceName">> => string(),
+%%   <<"replicatedStorageBytes">> => float(),
+%%   <<"rescannedStorageBytes">> => float(),
+%%   <<"totalStorageBytes">> => float()
+%% }
+-type data_replication_info_replicated_disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_initiation() :: #{
+%%   <<"nextAttemptDateTime">> => string(),
+%%   <<"startDateTime">> => string(),
+%%   <<"steps">> => list(data_replication_initiation_step())
+%% }
+-type data_replication_initiation() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_initiation_step() :: #{
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type data_replication_initiation_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_application_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> := string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+
+%% Example:
+%% delete_connector_request() :: #{
+%%   <<"connectorID">> := string()
+%% }
+-type delete_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_job_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"jobID">> := string()
+%% }
+-type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_response() :: #{}
+-type delete_job_response() :: #{}.
+
+
+%% Example:
+%% delete_launch_configuration_template_request() :: #{
+%%   <<"launchConfigurationTemplateID">> := string()
+%% }
+-type delete_launch_configuration_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_launch_configuration_template_response() :: #{}
+-type delete_launch_configuration_template_response() :: #{}.
+
+
+%% Example:
+%% delete_network_migration_definition_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string()
+%% }
+-type delete_network_migration_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_migration_definition_response() :: #{}
+-type delete_network_migration_definition_response() :: #{}.
+
+%% Example:
+%% delete_operation() :: #{}
+-type delete_operation() :: #{}.
+
+
+%% Example:
+%% delete_replication_configuration_template_request() :: #{
+%%   <<"replicationConfigurationTemplateID">> := string()
+%% }
+-type delete_replication_configuration_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_configuration_template_response() :: #{}
+-type delete_replication_configuration_template_response() :: #{}.
+
+
+%% Example:
+%% delete_source_server_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type delete_source_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_server_response() :: #{}
+-type delete_source_server_response() :: #{}.
+
+
+%% Example:
+%% delete_vcenter_client_request() :: #{
+%%   <<"vcenterClientID">> := string()
+%% }
+-type delete_vcenter_client_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_wave_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"waveID">> := string()
+%% }
+-type delete_wave_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_wave_response() :: #{}
+-type delete_wave_response() :: #{}.
+
+
+%% Example:
+%% describe_job_log_items_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"jobID">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_job_log_items_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_log_items_response() :: #{
+%%   <<"items">> => list(job_log()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_job_log_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => describe_jobs_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_request_filters() :: #{
+%%   <<"fromDate">> => string(),
+%%   <<"jobIDs">> => list(string()),
+%%   <<"toDate">> => string()
+%% }
+-type describe_jobs_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_response() :: #{
+%%   <<"items">> => list(job()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_launch_configuration_templates_request() :: #{
+%%   <<"launchConfigurationTemplateIDs">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_launch_configuration_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_launch_configuration_templates_response() :: #{
+%%   <<"items">> => list(launch_configuration_template()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_launch_configuration_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_replication_configuration_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"replicationConfigurationTemplateIDs">> => list(string())
+%% }
+-type describe_replication_configuration_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_replication_configuration_templates_response() :: #{
+%%   <<"items">> => list(replication_configuration_template()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_replication_configuration_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => describe_source_servers_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_source_servers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_request_filters() :: #{
+%%   <<"applicationIDs">> => list(string()),
+%%   <<"isArchived">> => [boolean()],
+%%   <<"lifeCycleStates">> => list(string()),
+%%   <<"replicationTypes">> => list(string()),
+%%   <<"sourceServerIDs">> => list(string())
+%% }
+-type describe_source_servers_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_response() :: #{
+%%   <<"items">> => list(source_server()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_source_servers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vcenter_clients_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_vcenter_clients_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_vcenter_clients_response() :: #{
+%%   <<"items">> => list(vcenter_client()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_vcenter_clients_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_applications_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationIDs">> := list(string()),
+%%   <<"waveID">> := string()
+%% }
+-type disassociate_applications_request() :: #{binary() => any()}.
+
 %% Example:
 %% disassociate_applications_response() :: #{}
 -type disassociate_applications_response() :: #{}.
+
+
+%% Example:
+%% disassociate_source_servers_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> := string(),
+%%   <<"sourceServerIDs">> := list(string())
+%% }
+-type disassociate_source_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_servers_response() :: #{}
+-type disassociate_source_servers_response() :: #{}.
+
+
+%% Example:
+%% disconnect_from_service_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type disconnect_from_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disk() :: #{
+%%   <<"bytes">> => float(),
+%%   <<"deviceName">> => string()
+%% }
+-type disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% enrichment_source_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type enrichment_source_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% enrichment_target_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type enrichment_target_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_error_data() :: #{
+%%   <<"rawError">> => string()
+%% }
+-type export_error_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_task() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"endDateTime">> => string(),
+%%   <<"exportID">> => string(),
+%%   <<"progressPercentage">> => [float()],
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string(),
+%%   <<"status">> => string(),
+%%   <<"summary">> => export_task_summary(),
+%%   <<"tags">> => map()
+%% }
+-type export_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_task_error() :: #{
+%%   <<"errorData">> => export_error_data(),
+%%   <<"errorDateTime">> => string()
+%% }
+-type export_task_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_task_summary() :: #{
+%%   <<"applicationsCount">> => float(),
+%%   <<"serversCount">> => float(),
+%%   <<"wavesCount">> => float()
+%% }
+-type export_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% finalize_cutover_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type finalize_cutover_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% fsx_ontap_configuration() :: #{
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"storageVirtualMachineId">> => string()
+%% }
+-type fsx_ontap_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_launch_configuration_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type get_launch_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_migration_definition_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string()
+%% }
+-type get_network_migration_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_migration_mapper_segment_construct_request() :: #{
+%%   <<"constructID">> := string(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"segmentID">> := string()
+%% }
+-type get_network_migration_mapper_segment_construct_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_migration_mapper_segment_construct_response() :: #{
+%%   <<"construct">> => network_migration_mapper_segment_construct()
+%% }
+-type get_network_migration_mapper_segment_construct_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_replication_configuration_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type get_replication_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% identification_hints() :: #{
+%%   <<"awsInstanceID">> => string(),
+%%   <<"fqdn">> => string(),
+%%   <<"hostname">> => string(),
+%%   <<"vmPath">> => string(),
+%%   <<"vmWareUuid">> => string()
+%% }
+-type identification_hints() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_error_data() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> => string(),
+%%   <<"ec2LaunchTemplateID">> => string(),
+%%   <<"rawError">> => string(),
+%%   <<"rowNumber">> => float(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"waveID">> => string()
+%% }
+-type import_error_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -739,131 +917,18 @@
 
 
 %% Example:
-%% network_migration_analysis_job_details() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusDetails">> => string()
-%% }
--type network_migration_analysis_job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_source_server_action_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"actionID">> := string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type remove_source_server_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_applications_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationIDs">> := list(string()),
-%%   <<"waveID">> := string()
-%% }
--type associate_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_executions_request() :: #{
-%%   <<"filters">> => list_network_migration_execution_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_file_enrichments_response() :: #{
-%%   <<"items">> => list(import_file_enrichment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_file_enrichments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_server_connector_action() :: #{
-%%   <<"connectorArn">> => string(),
-%%   <<"credentialsSecretArn">> => string()
-%% }
--type source_server_connector_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_update_construct() :: #{
-%%   <<"constructID">> => string(),
-%%   <<"constructType">> => string(),
-%%   <<"operation">> => list(),
-%%   <<"segmentID">> => string()
-%% }
--type start_network_migration_mapping_update_construct() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_deployer_job_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_network_migration_deployer_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_migration_definition_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"scopeTags">> => map(),
-%%   <<"sourceConfigurations">> => list(source_configuration()),
-%%   <<"targetDeployment">> => string(),
-%%   <<"targetNetwork">> => target_network_update(),
-%%   <<"targetS3Configuration">> => target_s3_configuration_update()
-%% }
--type update_network_migration_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request_filters() :: #{
-%%   <<"applicationIDs">> => list(string()),
-%%   <<"isArchived">> => [boolean()],
-%%   <<"waveIDs">> => list(string())
-%% }
--type list_applications_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_definition_summary() :: #{
+%% import_task() :: #{
 %%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"scopeTags">> => map(),
-%%   <<"sourceEnvironment">> => string(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"endDateTime">> => string(),
+%%   <<"importID">> => string(),
+%%   <<"progressPercentage">> => [float()],
+%%   <<"s3BucketSource">> => s3_bucket_source(),
+%%   <<"status">> => string(),
+%%   <<"summary">> => import_task_summary(),
 %%   <<"tags">> => map()
 %% }
--type network_migration_definition_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_definitions_request() :: #{
-%%   <<"filters">> => list_network_migration_definitions_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_ssm_command_config() :: #{
-%%   <<"cloudWatchLogGroupName">> => string(),
-%%   <<"cloudWatchOutputEnabled">> => [boolean()],
-%%   <<"outputS3BucketName">> => string(),
-%%   <<"s3OutputEnabled">> => [boolean()]
-%% }
--type connector_ssm_command_config() :: #{binary() => any()}.
+-type import_task() :: #{binary() => any()}.
 
 
 %% Example:
@@ -876,189 +941,128 @@
 
 
 %% Example:
-%% launched_instance() :: #{
-%%   <<"ec2InstanceID">> => string(),
-%%   <<"firstBoot">> => string(),
-%%   <<"jobID">> => string(),
-%%   <<"lastKnownChecks">> => list(last_known_check()),
-%%   <<"lastKnownFsxChecksStatus">> => string()
+%% import_task_summary() :: #{
+%%   <<"applications">> => import_task_summary_applications(),
+%%   <<"servers">> => import_task_summary_servers(),
+%%   <<"waves">> => import_task_summary_waves()
 %% }
--type launched_instance() :: #{binary() => any()}.
+-type import_task_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_definitions_response() :: #{
-%%   <<"items">> => list(network_migration_definition_summary()),
-%%   <<"nextToken">> => string()
+%% import_task_summary_applications() :: #{
+%%   <<"createdCount">> => float(),
+%%   <<"modifiedCount">> => float()
 %% }
--type list_network_migration_definitions_response() :: #{binary() => any()}.
+-type import_task_summary_applications() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_test_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()),
-%%   <<"tags">> => map()
+%% import_task_summary_servers() :: #{
+%%   <<"createdCount">> => float(),
+%%   <<"modifiedCount">> => float()
 %% }
--type start_test_request() :: #{binary() => any()}.
+-type import_task_summary_servers() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_connectors_request() :: #{
-%%   <<"filters">> => list_connectors_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% import_task_summary_waves() :: #{
+%%   <<"createdCount">> => float(),
+%%   <<"modifiedCount">> => float()
 %% }
--type list_connectors_request() :: #{binary() => any()}.
+-type import_task_summary_waves() :: #{binary() => any()}.
+
+%% Example:
+%% initialize_service_request() :: #{}
+-type initialize_service_request() :: #{}.
+
+%% Example:
+%% initialize_service_response() :: #{}
+-type initialize_service_response() :: #{}.
 
 
 %% Example:
-%% template_action_document() :: #{
-%%   <<"actionID">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"active">> => [boolean()],
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
-%%   <<"documentIdentifier">> => string(),
-%%   <<"documentVersion">> => string(),
-%%   <<"externalParameters">> => map(),
-%%   <<"mustSucceedForCutover">> => [boolean()],
-%%   <<"operatingSystem">> => string(),
-%%   <<"order">> => integer(),
-%%   <<"parameters">> => map(),
-%%   <<"timeoutSeconds">> => integer()
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => float()
 %% }
--type template_action_document() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% retry_data_replication_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type retry_data_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_replication_configuration_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type get_replication_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_replication_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type start_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle_last_test_reverted() :: #{
-%%   <<"apiCallDateTime">> => string()
-%% }
--type life_cycle_last_test_reverted() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_actions_response() :: #{
-%%   <<"items">> => list(template_action_document()),
-%%   <<"nextToken">> => string()
-%% }
--type list_template_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vcenter_client() :: #{
+%% job() :: #{
 %%   <<"arn">> => string(),
-%%   <<"datacenterName">> => string(),
-%%   <<"hostname">> => string(),
-%%   <<"lastSeenDatetime">> => string(),
-%%   <<"sourceServerTags">> => map(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"endDateTime">> => string(),
+%%   <<"initiatedBy">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"participatingServers">> => list(participating_server()),
+%%   <<"status">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"vcenterClientID">> => string(),
-%%   <<"vcenterUUID">> => string()
+%%   <<"type">> => string()
 %% }
--type vcenter_client() :: #{binary() => any()}.
+-type job() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_mapper_segments_request() :: #{
-%%   <<"filters">> => list_network_migration_mapper_segments_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
+%% job_log() :: #{
+%%   <<"event">> => string(),
+%%   <<"eventData">> => job_log_event_data(),
+%%   <<"logDateTime">> => string()
 %% }
--type list_network_migration_mapper_segments_request() :: #{binary() => any()}.
+-type job_log() :: #{binary() => any()}.
 
 
 %% Example:
-%% stop_replication_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
+%% job_log_event_data() :: #{
+%%   <<"attemptCount">> => integer(),
+%%   <<"conversionServerID">> => string(),
+%%   <<"maxAttemptsCount">> => integer(),
+%%   <<"rawError">> => string(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"targetInstanceID">> => string()
 %% }
--type stop_replication_request() :: #{binary() => any()}.
+-type job_log_event_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_exports_request() :: #{
-%%   <<"filters">> => list_exports_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% job_post_launch_actions_launch_status() :: #{
+%%   <<"executionID">> => string(),
+%%   <<"executionStatus">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"ssmDocument">> => ssm_document(),
+%%   <<"ssmDocumentType">> => string()
 %% }
--type list_exports_request() :: #{binary() => any()}.
+-type job_post_launch_actions_launch_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_source_server_actions_response() :: #{
-%%   <<"items">> => list(source_server_action_document()),
-%%   <<"nextToken">> => string()
-%% }
--type list_source_server_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_mapper_segment_construct() :: #{
-%%   <<"constructID">> => string(),
-%%   <<"constructType">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"excluded">> => [boolean()],
-%%   <<"logicalID">> => string(),
+%% last_known_check() :: #{
+%%   <<"checkedAt">> => [non_neg_integer()],
+%%   <<"error">> => string(),
 %%   <<"name">> => string(),
-%%   <<"properties">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
 %% }
--type network_migration_mapper_segment_construct() :: #{binary() => any()}.
+-type last_known_check() :: #{binary() => any()}.
 
 
 %% Example:
-%% unarchive_wave_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"waveID">> := string()
+%% launch_configuration() :: #{
+%%   <<"bootMode">> => string(),
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"ec2LaunchTemplateID">> => string(),
+%%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"launchDisposition">> => string(),
+%%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingMpeID">> => string(),
+%%   <<"name">> => string(),
+%%   <<"postLaunchActions">> => post_launch_actions(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
 %% }
--type unarchive_wave_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_server_actions_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"filters">> => source_server_actions_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type list_source_server_actions_request() :: #{binary() => any()}.
+-type launch_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1087,6 +1091,711 @@
 
 
 %% Example:
+%% launch_template_disk_conf() :: #{
+%%   <<"iops">> => float(),
+%%   <<"throughput">> => float(),
+%%   <<"volumeType">> => string()
+%% }
+-type launch_template_disk_conf() :: #{binary() => any()}.
+
+
+%% Example:
+%% launched_instance() :: #{
+%%   <<"ec2InstanceID">> => string(),
+%%   <<"firstBoot">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"lastKnownChecks">> => list(last_known_check()),
+%%   <<"lastKnownFsxChecksStatus">> => string()
+%% }
+-type launched_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% licensing() :: #{
+%%   <<"osByol">> => [boolean()]
+%% }
+-type licensing() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle() :: #{
+%%   <<"addedToServiceDateTime">> => string(),
+%%   <<"elapsedReplicationDuration">> => string(),
+%%   <<"firstByteDateTime">> => string(),
+%%   <<"lastCutover">> => life_cycle_last_cutover(),
+%%   <<"lastSeenByServiceDateTime">> => string(),
+%%   <<"lastTest">> => life_cycle_last_test(),
+%%   <<"state">> => string()
+%% }
+-type life_cycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_cutover() :: #{
+%%   <<"finalized">> => life_cycle_last_cutover_finalized(),
+%%   <<"initiated">> => life_cycle_last_cutover_initiated(),
+%%   <<"reverted">> => life_cycle_last_cutover_reverted()
+%% }
+-type life_cycle_last_cutover() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_cutover_finalized() :: #{
+%%   <<"apiCallDateTime">> => string()
+%% }
+-type life_cycle_last_cutover_finalized() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_cutover_initiated() :: #{
+%%   <<"apiCallDateTime">> => string(),
+%%   <<"jobID">> => string()
+%% }
+-type life_cycle_last_cutover_initiated() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_cutover_reverted() :: #{
+%%   <<"apiCallDateTime">> => string()
+%% }
+-type life_cycle_last_cutover_reverted() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_test() :: #{
+%%   <<"finalized">> => life_cycle_last_test_finalized(),
+%%   <<"initiated">> => life_cycle_last_test_initiated(),
+%%   <<"reverted">> => life_cycle_last_test_reverted()
+%% }
+-type life_cycle_last_test() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_test_finalized() :: #{
+%%   <<"apiCallDateTime">> => string()
+%% }
+-type life_cycle_last_test_finalized() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_test_initiated() :: #{
+%%   <<"apiCallDateTime">> => string(),
+%%   <<"jobID">> => string()
+%% }
+-type life_cycle_last_test_initiated() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_test_reverted() :: #{
+%%   <<"apiCallDateTime">> => string()
+%% }
+-type life_cycle_last_test_reverted() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => list_applications_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request_filters() :: #{
+%%   <<"applicationIDs">> => list(string()),
+%%   <<"isArchived">> => [boolean()],
+%%   <<"waveIDs">> => list(string())
+%% }
+-type list_applications_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"items">> => list(application()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_request() :: #{
+%%   <<"filters">> => list_connectors_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_request_filters() :: #{
+%%   <<"connectorIDs">> => list(string())
+%% }
+-type list_connectors_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"items">> => list(connector()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_errors_request() :: #{
+%%   <<"exportID">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_export_errors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_errors_response() :: #{
+%%   <<"items">> => list(export_task_error()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_export_errors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exports_request() :: #{
+%%   <<"filters">> => list_exports_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_exports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exports_request_filters() :: #{
+%%   <<"exportIDs">> => list(string())
+%% }
+-type list_exports_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exports_response() :: #{
+%%   <<"items">> => list(export_task()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_exports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_errors_request() :: #{
+%%   <<"importID">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_errors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_errors_response() :: #{
+%%   <<"items">> => list(import_task_error()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_errors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_enrichments_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_import_file_enrichments_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_enrichments_request() :: #{
+%%   <<"filters">> => list_import_file_enrichments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_enrichments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_enrichments_response() :: #{
+%%   <<"items">> => list(import_file_enrichment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_enrichments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imports_request() :: #{
+%%   <<"filters">> => list_imports_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_imports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imports_request_filters() :: #{
+%%   <<"importIDs">> => list(string())
+%% }
+-type list_imports_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imports_response() :: #{
+%%   <<"items">> => list(import_task()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_imports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_accounts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_accounts_response() :: #{
+%%   <<"items">> => list(managed_account()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analyses_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_analyses_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analyses_request() :: #{
+%%   <<"filters">> => list_network_migration_analyses_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analyses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analyses_response() :: #{
+%%   <<"items">> => list(network_migration_analysis_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analyses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analysis_results_filters() :: #{
+%%   <<"vpcIDs">> => list(string())
+%% }
+-type list_network_migration_analysis_results_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analysis_results_request() :: #{
+%%   <<"filters">> => list_network_migration_analysis_results_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analysis_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_analysis_results_response() :: #{
+%%   <<"items">> => list(network_migration_analysis_result()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_analysis_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generation_segments_filters() :: #{
+%%   <<"segmentIDs">> => list(string())
+%% }
+-type list_network_migration_code_generation_segments_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generation_segments_request() :: #{
+%%   <<"filters">> => list_network_migration_code_generation_segments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generation_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generation_segments_response() :: #{
+%%   <<"items">> => list(network_migration_code_generation_segment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generation_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_code_generations_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_request() :: #{
+%%   <<"filters">> => list_network_migration_code_generations_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_code_generations_response() :: #{
+%%   <<"items">> => list(network_migration_code_generation_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_code_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_request() :: #{
+%%   <<"filters">> => list_network_migration_definitions_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_request_filters() :: #{
+%%   <<"networkMigrationDefinitionIDs">> => list(string())
+%% }
+-type list_network_migration_definitions_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_definitions_response() :: #{
+%%   <<"items">> => list(network_migration_definition_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployed_stacks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployed_stacks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployed_stacks_response() :: #{
+%%   <<"items">> => list(network_migration_deployed_stack_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployed_stacks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployer_job_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_deployer_job_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployer_job_response() :: #{
+%%   <<"items">> => list(network_migration_deployer_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployer_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_deployments_request() :: #{
+%%   <<"filters">> => list_network_migration_deployer_job_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_execution_request_filters() :: #{
+%%   <<"networkMigrationExecutionIDs">> => list(string()),
+%%   <<"networkMigrationExecutionStatuses">> => list(string())
+%% }
+-type list_network_migration_execution_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_executions_request() :: #{
+%%   <<"filters">> => list_network_migration_execution_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_executions_response() :: #{
+%%   <<"items">> => list(network_migration_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segment_constructs_filters() :: #{
+%%   <<"constructIDs">> => list(string()),
+%%   <<"constructTypes">> => list(string())
+%% }
+-type list_network_migration_mapper_segment_constructs_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segment_constructs_request() :: #{
+%%   <<"filters">> => list_network_migration_mapper_segment_constructs_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"segmentID">> := string()
+%% }
+-type list_network_migration_mapper_segment_constructs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segment_constructs_response() :: #{
+%%   <<"items">> => list(network_migration_mapper_segment_construct()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segment_constructs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segments_filters() :: #{
+%%   <<"segmentIDs">> => list(string())
+%% }
+-type list_network_migration_mapper_segments_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segments_request() :: #{
+%%   <<"filters">> => list_network_migration_mapper_segments_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapper_segments_response() :: #{
+%%   <<"items">> => list(network_migration_mapper_segment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapper_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapping_updates_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_mapping_updates_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapping_updates_request() :: #{
+%%   <<"filters">> => list_network_migration_mapping_updates_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapping_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mapping_updates_response() :: #{
+%%   <<"items">> => list(network_migration_mapping_update_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mapping_updates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mappings_filters() :: #{
+%%   <<"jobIDs">> => list(string())
+%% }
+-type list_network_migration_mappings_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mappings_request() :: #{
+%%   <<"filters">> => list_network_migration_mappings_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_mappings_response() :: #{
+%%   <<"items">> => list(network_migration_mapping_job_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_server_actions_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => source_server_actions_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type list_source_server_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_server_actions_response() :: #{
+%%   <<"items">> => list(source_server_action_document()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_source_server_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_actions_request() :: #{
+%%   <<"filters">> => template_actions_request_filters(),
+%%   <<"launchConfigurationTemplateID">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_template_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_actions_response() :: #{
+%%   <<"items">> => list(template_action_document()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_template_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_waves_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => list_waves_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_waves_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_waves_request_filters() :: #{
+%%   <<"isArchived">> => [boolean()],
+%%   <<"waveIDs">> => list(string())
+%% }
+-type list_waves_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_waves_response() :: #{
+%%   <<"items">> => list(wave()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_waves_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_account() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type managed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% mark_as_archived_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type mark_as_archived_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"segmentID">> => string()
+%% }
+-type merge_construct() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_operation() :: #{
+%%   <<"mergeConstructs">> => list(merge_construct())
+%% }
+-type merge_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"ips">> => list(string()),
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"macAddress">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_migration_analysis_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
+%% }
+-type network_migration_analysis_job_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_migration_analysis_result() :: #{
 %%   <<"analysisResult">> => [string()],
 %%   <<"analyzerType">> => string(),
@@ -1101,164 +1810,246 @@
 
 
 %% Example:
-%% licensing() :: #{
-%%   <<"osByol">> => [boolean()]
+%% network_migration_analysis_result_source() :: #{
+%%   <<"subnetID">> => string(),
+%%   <<"vpcID">> => string()
 %% }
--type licensing() :: #{binary() => any()}.
+-type network_migration_analysis_result_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_execution_request_filters() :: #{
-%%   <<"networkMigrationExecutionIDs">> => list(string()),
-%%   <<"networkMigrationExecutionStatuses">> => list(string())
+%% network_migration_analysis_result_target() :: #{
+%%   <<"subnetID">> => string(),
+%%   <<"vpcID">> => string()
 %% }
--type list_network_migration_execution_request_filters() :: #{binary() => any()}.
+-type network_migration_analysis_result_target() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_export_response() :: #{
-%%   <<"exportTask">> => export_task()
+%% network_migration_code_generation_artifact() :: #{
+%%   <<"artifactID">> => string(),
+%%   <<"artifactSubType">> => string(),
+%%   <<"artifactType">> => string(),
+%%   <<"checksum">> => checksum(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logicalID">> => string(),
+%%   <<"outputS3Configuration">> => s3_configuration()
 %% }
--type start_export_response() :: #{binary() => any()}.
+-type network_migration_code_generation_artifact() :: #{binary() => any()}.
 
 
 %% Example:
-%% export_task_summary() :: #{
-%%   <<"applicationsCount">> => float(),
-%%   <<"serversCount">> => float(),
-%%   <<"wavesCount">> => float()
-%% }
--type export_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imports_response() :: #{
-%%   <<"items">> => list(import_task()),
-%%   <<"nextToken">> => string()
-%% }
--type list_imports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% last_known_check() :: #{
-%%   <<"checkedAt">> => [non_neg_integer()],
-%%   <<"error">> => string(),
-%%   <<"name">> => string(),
+%% network_migration_code_generation_job_details() :: #{
+%%   <<"codeGenerationOutputFormatStatusDetailsMap">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
 %%   <<"status">> => string(),
-%%   <<"type">> => string()
+%%   <<"statusDetails">> => string()
 %% }
--type last_known_check() :: #{binary() => any()}.
+-type network_migration_code_generation_job_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% target_network() :: #{
-%%   <<"inboundCidr">> => string(),
-%%   <<"inspectionCidr">> => string(),
-%%   <<"outboundCidr">> => string(),
-%%   <<"topology">> => string()
+%% network_migration_code_generation_segment() :: #{
+%%   <<"artifacts">> => list(network_migration_code_generation_artifact()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"logicalID">> => string(),
+%%   <<"mapperSegmentID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"referencedSegments">> => list(string()),
+%%   <<"segmentID">> => string(),
+%%   <<"segmentType">> => string()
 %% }
--type target_network() :: #{binary() => any()}.
+-type network_migration_code_generation_segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_network_migration_code_generation_request() :: #{
-%%   <<"codeGenerationOutputFormatTypes">> => list(string()),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string()
+%% network_migration_definition() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceConfigurations">> => list(source_configuration()),
+%%   <<"tags">> => map(),
+%%   <<"targetDeployment">> => string(),
+%%   <<"targetNetwork">> => target_network(),
+%%   <<"targetS3Configuration">> => target_s3_configuration(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type start_network_migration_code_generation_request() :: #{binary() => any()}.
+-type network_migration_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% identification_hints() :: #{
-%%   <<"awsInstanceID">> => string(),
-%%   <<"fqdn">> => string(),
-%%   <<"hostname">> => string(),
-%%   <<"vmPath">> => string(),
-%%   <<"vmWareUuid">> => string()
+%% network_migration_definition_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceEnvironment">> => string(),
+%%   <<"tags">> => map()
 %% }
--type identification_hints() :: #{binary() => any()}.
+-type network_migration_definition_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_server_actions_request_filters() :: #{
-%%   <<"actionIDs">> => list(string())
+%% network_migration_deployed_stack_details() :: #{
+%%   <<"failedResources">> => list(network_migration_failed_resource_details()),
+%%   <<"segmentID">> => string(),
+%%   <<"stackLogicalID">> => string(),
+%%   <<"stackPhysicalID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"targetAccount">> => string()
 %% }
--type source_server_actions_request_filters() :: #{binary() => any()}.
+-type network_migration_deployed_stack_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% life_cycle_last_cutover() :: #{
-%%   <<"finalized">> => life_cycle_last_cutover_finalized(),
-%%   <<"initiated">> => life_cycle_last_cutover_initiated(),
-%%   <<"reverted">> => life_cycle_last_cutover_reverted()
+%% network_migration_deployer_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
 %% }
--type life_cycle_last_cutover() :: #{binary() => any()}.
+-type network_migration_deployer_job_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_properties() :: #{
-%%   <<"cpus">> => list(c_p_u()),
-%%   <<"disks">> => list(disk()),
-%%   <<"identificationHints">> => identification_hints(),
-%%   <<"lastUpdatedDateTime">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"os">> => o_s(),
-%%   <<"ramBytes">> => float(),
-%%   <<"recommendedInstanceType">> => string()
+%% network_migration_execution() :: #{
+%%   <<"activity">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"stage">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type source_properties() :: #{binary() => any()}.
+-type network_migration_execution() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_source_servers_response() :: #{
-%%   <<"items">> => list(source_server()),
-%%   <<"nextToken">> => string()
+%% network_migration_failed_resource_details() :: #{
+%%   <<"logicalID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string()
 %% }
--type describe_source_servers_response() :: #{binary() => any()}.
+-type network_migration_failed_resource_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_replication_configuration_templates_response() :: #{
-%%   <<"items">> => list(replication_configuration_template()),
-%%   <<"nextToken">> => string()
+%% network_migration_mapper_segment() :: #{
+%%   <<"checksum">> => checksum(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"logicalID">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"outputS3Configuration">> => s3_configuration(),
+%%   <<"referencedSegments">> => list(string()),
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> => string(),
+%%   <<"segmentType">> => string(),
+%%   <<"targetAccount">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type describe_replication_configuration_templates_response() :: #{binary() => any()}.
+-type network_migration_mapper_segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% life_cycle_last_cutover_reverted() :: #{
-%%   <<"apiCallDateTime">> => string()
+%% network_migration_mapper_segment_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"constructType">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"excluded">> => [boolean()],
+%%   <<"logicalID">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type life_cycle_last_cutover_reverted() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_configuration_template_response() :: #{}
--type delete_replication_configuration_template_response() :: #{}.
-
-%% Example:
-%% delete_wave_response() :: #{}
--type delete_wave_response() :: #{}.
-
-%% Example:
-%% disassociate_source_servers_response() :: #{}
--type disassociate_source_servers_response() :: #{}.
+-type network_migration_mapper_segment_construct() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_mapper_segment_constructs_filters() :: #{
-%%   <<"constructIDs">> => list(string()),
-%%   <<"constructTypes">> => list(string())
+%% network_migration_mapping_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
 %% }
--type list_network_migration_mapper_segment_constructs_filters() :: #{binary() => any()}.
+-type network_migration_mapping_job_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% life_cycle_last_test_initiated() :: #{
-%%   <<"apiCallDateTime">> => string(),
-%%   <<"jobID">> => string()
+%% network_migration_mapping_update_job_details() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusDetails">> => string()
 %% }
--type life_cycle_last_test_initiated() :: #{binary() => any()}.
+-type network_migration_mapping_update_job_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_s() :: #{
+%%   <<"fullString">> => string()
+%% }
+-type o_s() :: #{binary() => any()}.
+
+
+%% Example:
+%% participating_server() :: #{
+%%   <<"launchStatus">> => string(),
+%%   <<"launchedEc2InstanceID">> => string(),
+%%   <<"postLaunchActionsStatus">> => post_launch_actions_status(),
+%%   <<"sourceServerID">> => string()
+%% }
+-type participating_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% pause_replication_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type pause_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_launch_actions() :: #{
+%%   <<"cloudWatchLogGroupName">> => string(),
+%%   <<"deployment">> => string(),
+%%   <<"s3LogBucket">> => string(),
+%%   <<"s3OutputKeyPrefix">> => string(),
+%%   <<"ssmDocuments">> => list(ssm_document())
+%% }
+-type post_launch_actions() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_launch_actions_status() :: #{
+%%   <<"postLaunchActionsLaunchStatusList">> => list(job_post_launch_actions_launch_status()),
+%%   <<"ssmAgentDiscoveryDatetime">> => string()
+%% }
+-type post_launch_actions_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1279,6 +2070,51 @@
 %%   <<"timeoutSeconds">> => integer()
 %% }
 -type put_source_server_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_template_action_request() :: #{
+%%   <<"actionID">> := string(),
+%%   <<"actionName">> := string(),
+%%   <<"active">> => [boolean()],
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"documentIdentifier">> := string(),
+%%   <<"documentVersion">> => string(),
+%%   <<"externalParameters">> => map(),
+%%   <<"launchConfigurationTemplateID">> := string(),
+%%   <<"mustSucceedForCutover">> => [boolean()],
+%%   <<"operatingSystem">> => string(),
+%%   <<"order">> := integer(),
+%%   <<"parameters">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type put_template_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_source_server_action_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"actionID">> := string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type remove_source_server_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_source_server_action_response() :: #{}
+-type remove_source_server_action_response() :: #{}.
+
+
+%% Example:
+%% remove_template_action_request() :: #{
+%%   <<"actionID">> := string(),
+%%   <<"launchConfigurationTemplateID">> := string()
+%% }
+-type remove_template_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_template_action_response() :: #{}
+-type remove_template_action_response() :: #{}.
 
 
 %% Example:
@@ -1307,18 +2143,39 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"errors">> => list(error_details()),
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
+%% replication_configuration_replicated_disk() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"iops">> => float(),
+%%   <<"isBootDisk">> => [boolean()],
+%%   <<"stagingDiskType">> => string(),
+%%   <<"throughput">> => float()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type replication_configuration_replicated_disk() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_operation() :: #{}
--type delete_operation() :: #{}.
+%% replication_configuration_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"associateDefaultSecurityGroup">> => [boolean()],
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"createPublicIP">> => [boolean()],
+%%   <<"dataPlaneRouting">> => string(),
+%%   <<"defaultLargeStagingDiskType">> => string(),
+%%   <<"ebsEncryption">> => string(),
+%%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"replicationConfigurationTemplateID">> := string(),
+%%   <<"replicationServerInstanceType">> => string(),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
+%%   <<"stagingAreaSubnetId">> => string(),
+%%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
+%%   <<"storeSnapshotOnLocalZone">> => [boolean()],
+%%   <<"tags">> => map(),
+%%   <<"useDedicatedReplicationServer">> => [boolean()],
+%%   <<"useFipsEndpoint">> => [boolean()]
+%% }
+-type replication_configuration_template() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1332,106 +2189,37 @@
 
 
 %% Example:
-%% list_network_migration_analyses_response() :: #{
-%%   <<"items">> => list(network_migration_analysis_job_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_analyses_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_mapping_job_details() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusDetails">> => string()
-%% }
--type network_migration_mapping_job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_error() :: #{
-%%   <<"error">> => string(),
-%%   <<"rawError">> => string()
-%% }
--type data_replication_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_applications_request() :: #{
+%% resume_replication_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"applicationIDs">> := list(string()),
-%%   <<"waveID">> := string()
-%% }
--type disassociate_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_task_error() :: #{
-%%   <<"errorData">> => export_error_data(),
-%%   <<"errorDateTime">> => string()
-%% }
--type export_task_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_source_server_replication_type_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"replicationType">> := string(),
 %%   <<"sourceServerID">> := string()
 %% }
--type update_source_server_replication_type_request() :: #{binary() => any()}.
+-type resume_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% post_launch_actions() :: #{
-%%   <<"cloudWatchLogGroupName">> => string(),
-%%   <<"deployment">> => string(),
-%%   <<"s3LogBucket">> => string(),
-%%   <<"s3OutputKeyPrefix">> => string(),
-%%   <<"ssmDocuments">> => list(ssm_document())
-%% }
--type post_launch_actions() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_operation() :: #{
-%%   <<"mergeConstructs">> => list(merge_construct())
-%% }
--type merge_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_execution() :: #{
-%%   <<"activity">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"stage">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type network_migration_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_analysis_result_source() :: #{
-%%   <<"subnetID">> => string(),
-%%   <<"vpcID">> => string()
-%% }
--type network_migration_analysis_result_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_wave_request() :: #{
+%% retry_data_replication_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"waveID">> := string()
+%%   <<"sourceServerID">> := string()
 %% }
--type delete_wave_request() :: #{binary() => any()}.
+-type retry_data_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_source() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type s3_bucket_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1448,185 +2236,6 @@
 
 
 %% Example:
-%% post_launch_actions_status() :: #{
-%%   <<"postLaunchActionsLaunchStatusList">> => list(job_post_launch_actions_launch_status()),
-%%   <<"ssmAgentDiscoveryDatetime">> => string()
-%% }
--type post_launch_actions_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_network_migration_mapping_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wave_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_wave_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_wave_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"waveID">> := string()
-%% }
--type update_wave_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_template_action_response() :: #{}
--type remove_template_action_response() :: #{}.
-
-
-%% Example:
-%% start_import_file_enrichment_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"ipAssignmentStrategy">> => string(),
-%%   <<"s3BucketSource">> := enrichment_source_s3_configuration(),
-%%   <<"s3BucketTarget">> := enrichment_target_s3_configuration()
-%% }
--type start_import_file_enrichment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_deployer_job_response() :: #{
-%%   <<"items">> => list(network_migration_deployer_job_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_deployer_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% c_p_u() :: #{
-%%   <<"cores">> => float(),
-%%   <<"modelName">> => string()
-%% }
--type c_p_u() :: #{binary() => any()}.
-
-
-%% Example:
-%% uninitialized_account_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type uninitialized_account_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mappings_filters() :: #{
-%%   <<"jobIDs">> => list(string())
-%% }
--type list_network_migration_mappings_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% application() :: #{
-%%   <<"applicationAggregatedStatus">> => application_aggregated_status(),
-%%   <<"applicationID">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"isArchived">> => [boolean()],
-%%   <<"lastModifiedDateTime">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"waveID">> => string()
-%% }
--type application() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_analysis_result_target() :: #{
-%%   <<"subnetID">> => string(),
-%%   <<"vpcID">> => string()
-%% }
--type network_migration_analysis_result_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_configuration() :: #{
-%%   <<"fsxOntapConfiguration">> => fsx_ontap_configuration(),
-%%   <<"storageType">> => string()
-%% }
--type storage_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% initialize_service_request() :: #{}
--type initialize_service_request() :: #{}.
-
-
-%% Example:
-%% create_launch_configuration_template_request() :: #{
-%%   <<"associatePublicIpAddress">> => [boolean()],
-%%   <<"bootMode">> => string(),
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"enableMapAutoTagging">> => [boolean()],
-%%   <<"enableParametersEncryption">> => [boolean()],
-%%   <<"largeVolumeConf">> => launch_template_disk_conf(),
-%%   <<"launchDisposition">> => string(),
-%%   <<"licensing">> => licensing(),
-%%   <<"mapAutoTaggingMpeID">> => string(),
-%%   <<"parametersEncryptionKey">> => string(),
-%%   <<"postLaunchActions">> => post_launch_actions(),
-%%   <<"smallVolumeConf">> => launch_template_disk_conf(),
-%%   <<"smallVolumeMaxSize">> => float(),
-%%   <<"tags">> => map(),
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
-%% }
--type create_launch_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_details() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_update_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_network_migration_mapping_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_account() :: #{
-%%   <<"accountId">> => string()
-%% }
--type managed_account() :: #{binary() => any()}.
-
-
-%% Example:
 %% source_configuration() :: #{
 %%   <<"sourceEnvironment">> => string(),
 %%   <<"sourceS3Configuration">> => source_s3_configuration()
@@ -1635,94 +2244,17 @@
 
 
 %% Example:
-%% list_template_actions_request() :: #{
-%%   <<"filters">> => template_actions_request_filters(),
-%%   <<"launchConfigurationTemplateID">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% source_properties() :: #{
+%%   <<"cpus">> => list(c_p_u()),
+%%   <<"disks">> => list(disk()),
+%%   <<"identificationHints">> => identification_hints(),
+%%   <<"lastUpdatedDateTime">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"os">> => o_s(),
+%%   <<"ramBytes">> => float(),
+%%   <<"recommendedInstanceType">> => string()
 %% }
--type list_template_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_info() :: #{
-%%   <<"dataReplicationError">> => data_replication_error(),
-%%   <<"dataReplicationInitiation">> => data_replication_initiation(),
-%%   <<"dataReplicationState">> => string(),
-%%   <<"etaDateTime">> => string(),
-%%   <<"lagDuration">> => string(),
-%%   <<"lastSnapshotDateTime">> => string(),
-%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
-%%   <<"replicatorId">> => string()
-%% }
--type data_replication_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_analysis_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_network_migration_analysis_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_source_servers_request_filters() :: #{
-%%   <<"applicationIDs">> => list(string()),
-%%   <<"isArchived">> => [boolean()],
-%%   <<"lifeCycleStates">> => list(string()),
-%%   <<"replicationTypes">> => list(string()),
-%%   <<"sourceServerIDs">> => list(string())
-%% }
--type describe_source_servers_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mapping_updates_response() :: #{
-%%   <<"items">> => list(network_migration_mapping_update_job_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mapping_updates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_source_servers_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string(),
-%%   <<"sourceServerIDs">> := list(string())
-%% }
--type associate_source_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vcenter_client_request() :: #{
-%%   <<"vcenterClientID">> := string()
-%% }
--type delete_vcenter_client_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_deployed_stacks_response() :: #{
-%%   <<"items">> => list(network_migration_deployed_stack_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_deployed_stacks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_target_instances_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()),
-%%   <<"tags">> => map()
-%% }
--type terminate_target_instances_request() :: #{binary() => any()}.
+-type source_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1735,232 +2267,106 @@
 
 
 %% Example:
-%% data_replication_info_replicated_disk() :: #{
-%%   <<"backloggedStorageBytes">> => float(),
-%%   <<"deviceName">> => string(),
-%%   <<"replicatedStorageBytes">> => float(),
-%%   <<"rescannedStorageBytes">> => float(),
-%%   <<"totalStorageBytes">> => float()
-%% }
--type data_replication_info_replicated_disk() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_task() :: #{
+%% source_server() :: #{
+%%   <<"applicationID">> => string(),
 %%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"endDateTime">> => string(),
-%%   <<"importID">> => string(),
-%%   <<"progressPercentage">> => [float()],
-%%   <<"s3BucketSource">> => s3_bucket_source(),
-%%   <<"status">> => string(),
-%%   <<"summary">> => import_task_summary(),
-%%   <<"tags">> => map()
-%% }
--type import_task() :: #{binary() => any()}.
-
-%% Example:
-%% initialize_service_response() :: #{}
--type initialize_service_response() :: #{}.
-
-
-%% Example:
-%% fsx_ontap_configuration() :: #{
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"storageVirtualMachineId">> => string()
-%% }
--type fsx_ontap_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% remove_source_server_action_response() :: #{}
--type remove_source_server_action_response() :: #{}.
-
-
-%% Example:
-%% import_task_summary() :: #{
-%%   <<"applications">> => import_task_summary_applications(),
-%%   <<"servers">> => import_task_summary_servers(),
-%%   <<"waves">> => import_task_summary_waves()
-%% }
--type import_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% mark_as_archived_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type mark_as_archived_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_response() :: #{}
--type delete_application_response() :: #{}.
-
-
-%% Example:
-%% describe_vcenter_clients_response() :: #{
-%%   <<"items">> => list(vcenter_client()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_vcenter_clients_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_executions_response() :: #{
-%%   <<"items">> => list(network_migration_execution()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_code_generations_response() :: #{
-%%   <<"items">> => list(network_migration_code_generation_job_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_code_generations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% wave() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"description">> => string(),
+%%   <<"connectorAction">> => source_server_connector_action(),
+%%   <<"dataReplicationInfo">> => data_replication_info(),
+%%   <<"fqdnForActionFramework">> => string(),
 %%   <<"isArchived">> => [boolean()],
-%%   <<"lastModifiedDateTime">> => string(),
-%%   <<"name">> => string(),
+%%   <<"launchedInstance">> => launched_instance(),
+%%   <<"lifeCycle">> => life_cycle(),
+%%   <<"replicationType">> => string(),
+%%   <<"sourceProperties">> => source_properties(),
+%%   <<"sourceServerID">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"waveAggregatedStatus">> => wave_aggregated_status(),
-%%   <<"waveID">> => string()
+%%   <<"userProvidedID">> => string(),
+%%   <<"vcenterClientID">> => string()
 %% }
--type wave() :: #{binary() => any()}.
+-type source_server() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_jobs_request_filters() :: #{
-%%   <<"fromDate">> => string(),
-%%   <<"jobIDs">> => list(string()),
-%%   <<"toDate">> => string()
+%% source_server_action_document() :: #{
+%%   <<"actionID">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"active">> => [boolean()],
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"documentIdentifier">> => string(),
+%%   <<"documentVersion">> => string(),
+%%   <<"externalParameters">> => map(),
+%%   <<"mustSucceedForCutover">> => [boolean()],
+%%   <<"order">> => integer(),
+%%   <<"parameters">> => map(),
+%%   <<"timeoutSeconds">> => integer()
 %% }
--type describe_jobs_request_filters() :: #{binary() => any()}.
+-type source_server_action_document() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_replication_initiation() :: #{
-%%   <<"nextAttemptDateTime">> => string(),
-%%   <<"startDateTime">> => string(),
-%%   <<"steps">> => list(data_replication_initiation_step())
+%% source_server_actions_request_filters() :: #{
+%%   <<"actionIDs">> => list(string())
 %% }
--type data_replication_initiation() :: #{binary() => any()}.
+-type source_server_actions_request_filters() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_managed_accounts_response() :: #{
-%%   <<"items">> => list(managed_account()),
-%%   <<"nextToken">> => string()
+%% source_server_connector_action() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"credentialsSecretArn">> => string()
 %% }
--type list_managed_accounts_response() :: #{binary() => any()}.
+-type source_server_connector_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% export_task() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"endDateTime">> => string(),
-%%   <<"exportID">> => string(),
-%%   <<"progressPercentage">> => [float()],
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string(),
-%%   <<"status">> => string(),
-%%   <<"summary">> => export_task_summary(),
+%% split_construct() :: #{
+%%   <<"cidrBlock">> => string()
+%% }
+-type split_construct() :: #{binary() => any()}.
+
+
+%% Example:
+%% split_operation() :: #{
+%%   <<"splitConstructs">> => list(split_construct())
+%% }
+-type split_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% ssm_document() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"externalParameters">> => map(),
+%%   <<"mustSucceedForCutover">> => [boolean()],
+%%   <<"parameters">> => map(),
+%%   <<"ssmDocumentName">> => string(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type ssm_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% ssm_parameter_store_parameter() :: #{
+%%   <<"parameterName">> => string(),
+%%   <<"parameterType">> => string()
+%% }
+-type ssm_parameter_store_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_cutover_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
--type export_task() :: #{binary() => any()}.
+-type start_cutover_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% merge_construct() :: #{
-%%   <<"constructID">> => string(),
-%%   <<"segmentID">> => string()
+%% start_cutover_response() :: #{
+%%   <<"job">> => job()
 %% }
--type merge_construct() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_launch_configuration_templates_response() :: #{
-%%   <<"items">> => list(launch_configuration_template()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_launch_configuration_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_launch_configuration_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type get_launch_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle_last_cutover_finalized() :: #{
-%%   <<"apiCallDateTime">> => string()
-%% }
--type life_cycle_last_cutover_finalized() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => float()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% participating_server() :: #{
-%%   <<"launchStatus">> => string(),
-%%   <<"launchedEc2InstanceID">> => string(),
-%%   <<"postLaunchActionsStatus">> => post_launch_actions_status(),
-%%   <<"sourceServerID">> => string()
-%% }
--type participating_server() :: #{binary() => any()}.
-
-
-%% Example:
-%% checksum() :: #{
-%%   <<"encryptionAlgorithm">> => string(),
-%%   <<"hash">> => string()
-%% }
--type checksum() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_errors_request() :: #{
-%%   <<"importID">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_errors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_initiation_step() :: #{
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type data_replication_initiation_step() :: #{binary() => any()}.
+-type start_cutover_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1974,208 +2380,158 @@
 
 
 %% Example:
-%% network_migration_deployer_job_details() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusDetails">> => string()
+%% start_export_response() :: #{
+%%   <<"exportTask">> => export_task()
 %% }
--type network_migration_deployer_job_details() :: #{binary() => any()}.
+-type start_export_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_task_summary_applications() :: #{
-%%   <<"createdCount">> => float(),
-%%   <<"modifiedCount">> => float()
+%% start_import_file_enrichment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ipAssignmentStrategy">> => string(),
+%%   <<"s3BucketSource">> := enrichment_source_s3_configuration(),
+%%   <<"s3BucketTarget">> := enrichment_target_s3_configuration()
 %% }
--type import_task_summary_applications() :: #{binary() => any()}.
+-type start_import_file_enrichment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% disconnect_from_service_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
+%% start_import_file_enrichment_response() :: #{
+%%   <<"jobID">> => string()
 %% }
--type disconnect_from_service_request() :: #{binary() => any()}.
+-type start_import_file_enrichment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_network_migration_definition_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"scopeTags">> => map(),
-%%   <<"sourceConfigurations">> => list(source_configuration()),
-%%   <<"tags">> => map(),
-%%   <<"targetDeployment">> => string(),
-%%   <<"targetNetwork">> := target_network(),
-%%   <<"targetS3Configuration">> := target_s3_configuration()
-%% }
--type create_network_migration_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_code_generation_segments_request() :: #{
-%%   <<"filters">> => list_network_migration_code_generation_segments_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_code_generation_segments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle_last_test() :: #{
-%%   <<"finalized">> => life_cycle_last_test_finalized(),
-%%   <<"initiated">> => life_cycle_last_test_initiated(),
-%%   <<"reverted">> => life_cycle_last_test_reverted()
-%% }
--type life_cycle_last_test() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_analysis_results_request() :: #{
-%%   <<"filters">> => list_network_migration_analysis_results_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_analysis_results_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_task_summary_waves() :: #{
-%%   <<"createdCount">> => float(),
-%%   <<"modifiedCount">> => float()
-%% }
--type import_task_summary_waves() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"filters">> => list_applications_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_mapper_segment() :: #{
-%%   <<"checksum">> => checksum(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"jobID">> => string(),
-%%   <<"logicalID">> => string(),
-%%   <<"name">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"outputS3Configuration">> => s3_configuration(),
-%%   <<"referencedSegments">> => list(string()),
-%%   <<"scopeTags">> => map(),
-%%   <<"segmentID">> => string(),
-%%   <<"segmentType">> => string(),
-%%   <<"targetAccount">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type network_migration_mapper_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_export_errors_request() :: #{
-%%   <<"exportID">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_export_errors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_deployed_stacks_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_deployed_stacks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"ssmCommandConfig">> => connector_ssm_command_config(),
-%%   <<"ssmInstanceID">> := string(),
+%% start_import_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"s3BucketSource">> => s3_bucket_source(),
 %%   <<"tags">> => map()
 %% }
--type create_connector_request() :: #{binary() => any()}.
+-type start_import_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% remove_template_action_request() :: #{
-%%   <<"actionID">> := string(),
-%%   <<"launchConfigurationTemplateID">> := string()
+%% start_import_response() :: #{
+%%   <<"importTask">> => import_task()
 %% }
--type remove_template_action_request() :: #{binary() => any()}.
+-type start_import_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_mapping_updates_filters() :: #{
-%%   <<"jobIDs">> => list(string())
+%% start_network_migration_analysis_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
 %% }
--type list_network_migration_mapping_updates_filters() :: #{binary() => any()}.
+-type start_network_migration_analysis_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% export_error_data() :: #{
-%%   <<"rawError">> => string()
+%% start_network_migration_analysis_response() :: #{
+%%   <<"jobID">> => string()
 %% }
--type export_error_data() :: #{binary() => any()}.
+-type start_network_migration_analysis_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_export_errors_response() :: #{
-%%   <<"items">> => list(export_task_error()),
-%%   <<"nextToken">> => string()
+%% start_network_migration_code_generation_request() :: #{
+%%   <<"codeGenerationOutputFormatTypes">> => list(string()),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
 %% }
--type list_export_errors_response() :: #{binary() => any()}.
+-type start_network_migration_code_generation_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% change_server_life_cycle_state_request() :: #{
+%% start_network_migration_code_generation_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_code_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_deployer_job_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_deployer_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_deployment_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string()
+%% }
+-type start_network_migration_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"securityGroupMappingStrategy">> => string()
+%% }
+-type start_network_migration_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_construct() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"constructType">> => string(),
+%%   <<"operation">> => list(),
+%%   <<"segmentID">> => string()
+%% }
+-type start_network_migration_mapping_update_construct() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_request() :: #{
+%%   <<"constructs">> => list(start_network_migration_mapping_update_construct()),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"segments">> => list(start_network_migration_mapping_update_segment())
+%% }
+-type start_network_migration_mapping_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_response() :: #{
+%%   <<"jobID">> => string()
+%% }
+-type start_network_migration_mapping_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_network_migration_mapping_update_segment() :: #{
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> => string(),
+%%   <<"targetAccount">> => string()
+%% }
+-type start_network_migration_mapping_update_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_replication_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"lifeCycle">> := change_server_life_cycle_state_source_server_lifecycle(),
 %%   <<"sourceServerID">> := string()
 %% }
--type change_server_life_cycle_state_request() :: #{binary() => any()}.
+-type start_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% archive_application_request() :: #{
+%% start_test_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string()
+%%   <<"sourceServerIDs">> := list(string()),
+%%   <<"tags">> => map()
 %% }
--type archive_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_job_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"jobID">> := string()
-%% }
--type delete_job_request() :: #{binary() => any()}.
+-type start_test_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2186,27 +2542,164 @@
 
 
 %% Example:
-%% ssm_parameter_store_parameter() :: #{
-%%   <<"parameterName">> => string(),
-%%   <<"parameterType">> => string()
+%% stop_replication_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
 %% }
--type ssm_parameter_store_parameter() :: #{binary() => any()}.
+-type stop_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_jobs_response() :: #{
-%%   <<"items">> => list(job()),
-%%   <<"nextToken">> => string()
+%% storage_configuration() :: #{
+%%   <<"fsxOntapConfiguration">> => fsx_ontap_configuration(),
+%%   <<"storageType">> => string()
 %% }
--type describe_jobs_response() :: #{binary() => any()}.
+-type storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% disk() :: #{
-%%   <<"bytes">> => float(),
-%%   <<"deviceName">> => string()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type disk() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_network() :: #{
+%%   <<"inboundCidr">> => string(),
+%%   <<"inspectionCidr">> => string(),
+%%   <<"outboundCidr">> => string(),
+%%   <<"topology">> => string()
+%% }
+-type target_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_network_update() :: #{
+%%   <<"inboundCidr">> => string(),
+%%   <<"inspectionCidr">> => string(),
+%%   <<"outboundCidr">> => string(),
+%%   <<"topology">> => string()
+%% }
+-type target_network_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_s3_configuration() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string()
+%% }
+-type target_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_s3_configuration_update() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3BucketOwner">> => string()
+%% }
+-type target_s3_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_action_document() :: #{
+%%   <<"actionID">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"active">> => [boolean()],
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"documentIdentifier">> => string(),
+%%   <<"documentVersion">> => string(),
+%%   <<"externalParameters">> => map(),
+%%   <<"mustSucceedForCutover">> => [boolean()],
+%%   <<"operatingSystem">> => string(),
+%%   <<"order">> => integer(),
+%%   <<"parameters">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type template_action_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_actions_request_filters() :: #{
+%%   <<"actionIDs">> => list(string())
+%% }
+-type template_actions_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_target_instances_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerIDs">> := list(string()),
+%%   <<"tags">> => map()
+%% }
+-type terminate_target_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_target_instances_response() :: #{
+%%   <<"job">> => job()
+%% }
+-type terminate_target_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unarchive_application_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> := string()
+%% }
+-type unarchive_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unarchive_wave_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"waveID">> := string()
+%% }
+-type unarchive_wave_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% uninitialized_account_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type uninitialized_account_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"applicationID">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connector_request() :: #{
+%%   <<"connectorID">> := string(),
+%%   <<"name">> => string(),
+%%   <<"ssmCommandConfig">> => connector_ssm_command_config()
+%% }
+-type update_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2228,294 +2721,58 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% delete_replication_configuration_template_request() :: #{
-%%   <<"replicationConfigurationTemplateID">> := string()
-%% }
--type delete_replication_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"endDateTime">> => string(),
-%%   <<"initiatedBy">> => string(),
-%%   <<"jobID">> => string(),
-%%   <<"participatingServers">> => list(participating_server()),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type job() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_template_disk_conf() :: #{
-%%   <<"iops">> => float(),
-%%   <<"throughput">> => float(),
-%%   <<"volumeType">> => string()
-%% }
--type launch_template_disk_conf() :: #{binary() => any()}.
-
-
-%% Example:
-%% split_construct() :: #{
-%%   <<"cidrBlock">> => string()
-%% }
--type split_construct() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_analysis_results_filters() :: #{
-%%   <<"vpcIDs">> => list(string())
-%% }
--type list_network_migration_analysis_results_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_task_summary_servers() :: #{
-%%   <<"createdCount">> => float(),
-%%   <<"modifiedCount">> => float()
-%% }
--type import_task_summary_servers() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_deployments_request() :: #{
-%%   <<"filters">> => list_network_migration_deployer_job_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_migration_definition_response() :: #{}
--type delete_network_migration_definition_response() :: #{}.
-
-
-%% Example:
-%% list_network_migration_mapper_segment_constructs_request() :: #{
-%%   <<"filters">> => list_network_migration_mapper_segment_constructs_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"segmentID">> := string()
-%% }
--type list_network_migration_mapper_segment_constructs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ssm_document() :: #{
-%%   <<"actionName">> => string(),
-%%   <<"externalParameters">> => map(),
-%%   <<"mustSucceedForCutover">> => [boolean()],
-%%   <<"parameters">> => map(),
-%%   <<"ssmDocumentName">> => string(),
-%%   <<"timeoutSeconds">> => integer()
-%% }
--type ssm_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_template_action_request() :: #{
-%%   <<"actionID">> := string(),
-%%   <<"actionName">> := string(),
-%%   <<"active">> => [boolean()],
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
-%%   <<"documentIdentifier">> := string(),
-%%   <<"documentVersion">> => string(),
-%%   <<"externalParameters">> => map(),
-%%   <<"launchConfigurationTemplateID">> := string(),
-%%   <<"mustSucceedForCutover">> => [boolean()],
-%%   <<"operatingSystem">> => string(),
-%%   <<"order">> := integer(),
-%%   <<"parameters">> => map(),
-%%   <<"timeoutSeconds">> => integer()
-%% }
--type put_template_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enrichment_source_s3_configuration() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string()
-%% }
--type enrichment_source_s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_code_generation_job_details() :: #{
-%%   <<"codeGenerationOutputFormatStatusDetailsMap">> => map(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"networkMigrationDefinitionID">> => string(),
-%%   <<"networkMigrationExecutionID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusDetails">> => string()
-%% }
--type network_migration_code_generation_job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imports_request() :: #{
-%%   <<"filters">> => list_imports_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_imports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_configuration() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string()
-%% }
--type s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imports_request_filters() :: #{
-%%   <<"importIDs">> => list(string())
-%% }
--type list_imports_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% split_operation() :: #{
-%%   <<"splitConstructs">> => list(split_construct())
-%% }
--type split_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_mappings_response() :: #{
-%%   <<"items">> => list(network_migration_mapping_job_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_deployed_stack_details() :: #{
-%%   <<"failedResources">> => list(network_migration_failed_resource_details()),
-%%   <<"segmentID">> => string(),
-%%   <<"stackLogicalID">> => string(),
-%%   <<"stackPhysicalID">> => string(),
-%%   <<"status">> => string(),
-%%   <<"targetAccount">> => string()
-%% }
--type network_migration_deployed_stack_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_accounts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_log_event_data() :: #{
-%%   <<"attemptCount">> => integer(),
-%%   <<"conversionServerID">> => string(),
-%%   <<"maxAttemptsCount">> => integer(),
-%%   <<"rawError">> => string(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"targetInstanceID">> => string()
-%% }
--type job_log_event_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_jobs_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"filters">> => describe_jobs_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_configuration() :: #{
+%% update_launch_configuration_template_request() :: #{
+%%   <<"associatePublicIpAddress">> => [boolean()],
 %%   <<"bootMode">> => string(),
 %%   <<"copyPrivateIp">> => [boolean()],
 %%   <<"copyTags">> => [boolean()],
-%%   <<"ec2LaunchTemplateID">> => string(),
 %%   <<"enableMapAutoTagging">> => [boolean()],
+%%   <<"enableParametersEncryption">> => [boolean()],
+%%   <<"largeVolumeConf">> => launch_template_disk_conf(),
+%%   <<"launchConfigurationTemplateID">> := string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
-%%   <<"name">> => string(),
+%%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
-%%   <<"sourceServerID">> => string(),
+%%   <<"smallVolumeConf">> => launch_template_disk_conf(),
+%%   <<"smallVolumeMaxSize">> => float(),
 %%   <<"targetInstanceTypeRightSizingMethod">> => string()
 %% }
--type launch_configuration() :: #{binary() => any()}.
+-type update_launch_configuration_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_applications_response() :: #{
-%%   <<"items">> => list(application()),
-%%   <<"nextToken">> => string()
+%% update_network_migration_definition_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"sourceConfigurations">> => list(source_configuration()),
+%%   <<"targetDeployment">> => string(),
+%%   <<"targetNetwork">> => target_network_update(),
+%%   <<"targetS3Configuration">> => target_s3_configuration_update()
 %% }
--type list_applications_response() :: #{binary() => any()}.
+-type update_network_migration_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_post_launch_actions_launch_status() :: #{
-%%   <<"executionID">> => string(),
-%%   <<"executionStatus">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"ssmDocument">> => ssm_document(),
-%%   <<"ssmDocumentType">> => string()
+%% update_network_migration_mapper_segment_request() :: #{
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> := string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"segmentID">> := string()
 %% }
--type job_post_launch_actions_launch_status() :: #{binary() => any()}.
+-type update_network_migration_mapper_segment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_error_data() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> => string(),
-%%   <<"ec2LaunchTemplateID">> => string(),
-%%   <<"rawError">> => string(),
-%%   <<"rowNumber">> => float(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"waveID">> => string()
+%% update_operation() :: #{
+%%   <<"excluded">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"properties">> => map()
 %% }
--type import_error_data() :: #{binary() => any()}.
+-type update_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2545,56 +2802,105 @@
 
 
 %% Example:
-%% list_network_migration_analyses_request() :: #{
-%%   <<"filters">> => list_network_migration_analyses_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_analyses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connector_request() :: #{
-%%   <<"connectorID">> := string()
-%% }
--type delete_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_server() :: #{
-%%   <<"applicationID">> => string(),
+%% update_replication_configuration_template_request() :: #{
 %%   <<"arn">> => string(),
+%%   <<"associateDefaultSecurityGroup">> => [boolean()],
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"createPublicIP">> => [boolean()],
+%%   <<"dataPlaneRouting">> => string(),
+%%   <<"defaultLargeStagingDiskType">> => string(),
+%%   <<"ebsEncryption">> => string(),
+%%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"replicationConfigurationTemplateID">> := string(),
+%%   <<"replicationServerInstanceType">> => string(),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
+%%   <<"stagingAreaSubnetId">> => string(),
+%%   <<"stagingAreaTags">> => map(),
+%%   <<"storageConfiguration">> => storage_configuration(),
+%%   <<"storeSnapshotOnLocalZone">> => [boolean()],
+%%   <<"useDedicatedReplicationServer">> => [boolean()],
+%%   <<"useFipsEndpoint">> => [boolean()]
+%% }
+-type update_replication_configuration_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_source_server_replication_type_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"replicationType">> := string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type update_source_server_replication_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_source_server_request() :: #{
+%%   <<"accountID">> => string(),
 %%   <<"connectorAction">> => source_server_connector_action(),
-%%   <<"dataReplicationInfo">> => data_replication_info(),
 %%   <<"fqdnForActionFramework">> => string(),
-%%   <<"isArchived">> => [boolean()],
-%%   <<"launchedInstance">> => launched_instance(),
-%%   <<"lifeCycle">> => life_cycle(),
-%%   <<"replicationType">> => string(),
-%%   <<"sourceProperties">> => source_properties(),
-%%   <<"sourceServerID">> => string(),
+%%   <<"platform">> => string(),
+%%   <<"sourceServerID">> := string(),
+%%   <<"userProvidedID">> => string()
+%% }
+-type update_source_server_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_wave_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"waveID">> := string()
+%% }
+-type update_wave_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vcenter_client() :: #{
+%%   <<"arn">> => string(),
+%%   <<"datacenterName">> => string(),
+%%   <<"hostname">> => string(),
+%%   <<"lastSeenDatetime">> => string(),
+%%   <<"sourceServerTags">> => map(),
 %%   <<"tags">> => map(),
-%%   <<"userProvidedID">> => string(),
-%%   <<"vcenterClientID">> => string()
+%%   <<"vcenterClientID">> => string(),
+%%   <<"vcenterUUID">> => string()
 %% }
--type source_server() :: #{binary() => any()}.
+-type vcenter_client() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_migration_analysis_results_response() :: #{
-%%   <<"items">> => list(network_migration_analysis_result()),
-%%   <<"nextToken">> => string()
+%% wave() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"isArchived">> => [boolean()],
+%%   <<"lastModifiedDateTime">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"waveAggregatedStatus">> => wave_aggregated_status(),
+%%   <<"waveID">> => string()
 %% }
--type list_network_migration_analysis_results_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_migration_definition_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string()
-%% }
--type get_network_migration_definition_request() :: #{binary() => any()}.
+-type wave() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2606,312 +2912,6 @@
 %%   <<"totalApplications">> => float()
 %% }
 -type wave_aggregated_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_errors_response() :: #{
-%%   <<"items">> => list(import_task_error()),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_errors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_migration_code_generation_artifact() :: #{
-%%   <<"artifactID">> => string(),
-%%   <<"artifactSubType">> => string(),
-%%   <<"artifactType">> => string(),
-%%   <<"checksum">> => checksum(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"logicalID">> => string(),
-%%   <<"outputS3Configuration">> => s3_configuration()
-%% }
--type network_migration_code_generation_artifact() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_mapping_update_request() :: #{
-%%   <<"constructs">> => list(start_network_migration_mapping_update_construct()),
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"segments">> => list(start_network_migration_mapping_update_segment())
-%% }
--type start_network_migration_mapping_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_migration_mapper_segment_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string(),
-%%   <<"scopeTags">> => map(),
-%%   <<"segmentID">> := string()
-%% }
--type update_network_migration_mapper_segment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_waves_response() :: #{
-%%   <<"items">> => list(wave()),
-%%   <<"nextToken">> => string()
-%% }
--type list_waves_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% enrichment_target_s3_configuration() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string()
-%% }
--type enrichment_target_s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_server_action_document() :: #{
-%%   <<"actionID">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"active">> => [boolean()],
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
-%%   <<"documentIdentifier">> => string(),
-%%   <<"documentVersion">> => string(),
-%%   <<"externalParameters">> => map(),
-%%   <<"mustSucceedForCutover">> => [boolean()],
-%%   <<"order">> => integer(),
-%%   <<"parameters">> => map(),
-%%   <<"timeoutSeconds">> => integer()
-%% }
--type source_server_action_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% finalize_cutover_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerID">> := string()
-%% }
--type finalize_cutover_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_code_generation_response() :: #{
-%%   <<"jobID">> => string()
-%% }
--type start_network_migration_code_generation_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_source_servers_response() :: #{}
--type associate_source_servers_response() :: #{}.
-
-
-%% Example:
-%% life_cycle_last_cutover_initiated() :: #{
-%%   <<"apiCallDateTime">> => string(),
-%%   <<"jobID">> => string()
-%% }
--type life_cycle_last_cutover_initiated() :: #{binary() => any()}.
-
-%% Example:
-%% delete_launch_configuration_template_response() :: #{}
--type delete_launch_configuration_template_response() :: #{}.
-
-%% Example:
-%% delete_job_response() :: #{}
--type delete_job_response() :: #{}.
-
-
-%% Example:
-%% disassociate_source_servers_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string(),
-%%   <<"sourceServerIDs">> := list(string())
-%% }
--type disassociate_source_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_replication_configuration_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"replicationConfigurationTemplateIDs">> => list(string())
-%% }
--type describe_replication_configuration_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_s() :: #{
-%%   <<"fullString">> => string()
-%% }
--type o_s() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_request_filters() :: #{
-%%   <<"connectorIDs">> => list(string())
-%% }
--type list_connectors_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_log_items_response() :: #{
-%%   <<"items">> => list(job_log()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_job_log_items_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_target_instances_response() :: #{
-%%   <<"job">> => job()
-%% }
--type terminate_target_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_s3_configuration() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string()
-%% }
--type target_s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_definitions_request_filters() :: #{
-%%   <<"networkMigrationDefinitionIDs">> => list(string())
-%% }
--type list_network_migration_definitions_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"s3BucketSource">> => s3_bucket_source(),
-%%   <<"tags">> => map()
-%% }
--type start_import_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_launch_configuration_template_request() :: #{
-%%   <<"associatePublicIpAddress">> => [boolean()],
-%%   <<"bootMode">> => string(),
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"enableMapAutoTagging">> => [boolean()],
-%%   <<"enableParametersEncryption">> => [boolean()],
-%%   <<"largeVolumeConf">> => launch_template_disk_conf(),
-%%   <<"launchConfigurationTemplateID">> := string(),
-%%   <<"launchDisposition">> => string(),
-%%   <<"licensing">> => licensing(),
-%%   <<"mapAutoTaggingMpeID">> => string(),
-%%   <<"parametersEncryptionKey">> => string(),
-%%   <<"postLaunchActions">> => post_launch_actions(),
-%%   <<"smallVolumeConf">> => launch_template_disk_conf(),
-%%   <<"smallVolumeMaxSize">> => float(),
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
-%% }
--type update_launch_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_source() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3Key">> => string()
-%% }
--type s3_bucket_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_response() :: #{
-%%   <<"importTask">> => import_task()
-%% }
--type start_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_network_migration_deployment_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string(),
-%%   <<"networkMigrationExecutionID">> := string()
-%% }
--type start_network_migration_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_cutover_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()),
-%%   <<"tags">> => map()
-%% }
--type start_cutover_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_network_migration_definition_request() :: #{
-%%   <<"networkMigrationDefinitionID">> := string()
-%% }
--type delete_network_migration_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_log() :: #{
-%%   <<"event">> => string(),
-%%   <<"eventData">> => job_log_event_data(),
-%%   <<"logDateTime">> => string()
-%% }
--type job_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_actions_request_filters() :: #{
-%%   <<"actionIDs">> => list(string())
-%% }
--type template_actions_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_network_migration_code_generation_segments_response() :: #{
-%%   <<"items">> => list(network_migration_code_generation_segment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_migration_code_generation_segments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_application_request() :: #{
-%%   <<"accountID">> => string(),
-%%   <<"applicationID">> := string()
-%% }
--type delete_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_exports_response() :: #{
-%%   <<"items">> => list(export_task()),
-%%   <<"nextToken">> => string()
-%% }
--type list_exports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_generation_output_format_status_details() :: #{
-%%   <<"status">> => string(),
-%%   <<"statusDetailList">> => string()
-%% }
--type code_generation_output_format_status_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_launch_configuration_template_request() :: #{
-%%   <<"launchConfigurationTemplateID">> := string()
-%% }
--type delete_launch_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_file_enrichments_filters() :: #{
-%%   <<"jobIDs">> => list(string())
-%% }
--type list_import_file_enrichments_filters() :: #{binary() => any()}.
 
 -type archive_application_errors() ::
     uninitialized_account_exception() | 
@@ -2954,8 +2954,8 @@
 
 -type create_launch_configuration_template_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    access_denied_exception().
 
 -type create_network_migration_definition_errors() ::
     validation_exception() | 
@@ -2963,8 +2963,8 @@
 
 -type create_replication_configuration_template_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    access_denied_exception().
 
 -type create_wave_errors() ::
     uninitialized_account_exception() | 
@@ -2992,9 +2992,9 @@
     conflict_exception().
 
 -type delete_network_migration_definition_errors() ::
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_replication_configuration_template_errors() ::
     uninitialized_account_exception() | 
@@ -3069,13 +3069,13 @@
     resource_not_found_exception().
 
 -type get_network_migration_definition_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_network_migration_mapper_segment_construct_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_replication_configuration_errors() ::
     uninitialized_account_exception() | 
@@ -3115,82 +3115,82 @@
     uninitialized_account_exception().
 
 -type list_network_migration_analyses_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_analysis_results_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_code_generation_segments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_code_generations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_definitions_errors() ::
     access_denied_exception().
 
 -type list_network_migration_deployed_stacks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_deployments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_executions_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_mapper_segment_constructs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_mapper_segments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_mapping_updates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_network_migration_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_source_server_actions_errors() ::
     uninitialized_account_exception() | 
     resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_template_actions_errors() ::
     uninitialized_account_exception() | 
@@ -3263,51 +3263,51 @@
     conflict_exception().
 
 -type start_import_file_enrichment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_network_migration_analysis_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_network_migration_code_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_network_migration_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_network_migration_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_network_migration_mapping_update_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_replication_errors() ::
     validation_exception() | 
@@ -3329,11 +3329,11 @@
     conflict_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type terminate_target_instances_errors() ::
     validation_exception() | 
@@ -3351,11 +3351,11 @@
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_application_errors() ::
     uninitialized_account_exception() | 
@@ -3375,32 +3375,32 @@
 
 -type update_launch_configuration_template_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_network_migration_definition_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_network_migration_mapper_segment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_replication_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     uninitialized_account_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_replication_configuration_template_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_source_server_errors() ::
     uninitialized_account_exception() | 

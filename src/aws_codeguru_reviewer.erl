@@ -74,89 +74,51 @@
 
 
 %% Example:
-%% repository_association_summary() :: #{
-%%   <<"AssociationArn">> => string(),
-%%   <<"AssociationId">> => string(),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"State">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type repository_association_summary() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_recommendation_feedback_request() :: #{
-%%   <<"RecommendationId">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type describe_recommendation_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_association() :: #{
-%%   <<"AssociationArn">> => string(),
-%%   <<"AssociationId">> => string(),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%% associate_repository_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
 %%   <<"KMSKeyDetails">> => kms_key_details(),
-%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"S3RepositoryDetails">> => s3_repository_details(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
+%%   <<"Repository">> := repository(),
+%%   <<"Tags">> => map()
 %% }
--type repository_association() :: #{binary() => any()}.
+-type associate_repository_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% request_metadata() :: #{
-%%   <<"EventInfo">> => event_info(),
-%%   <<"RequestId">> => string(),
-%%   <<"Requester">> => string(),
-%%   <<"VendorName">> => list(any())
+%% associate_repository_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
 %% }
--type request_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type associate_repository_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% repository_analysis() :: #{
-%%   <<"RepositoryHead">> => repository_head_source_code_type(),
-%%   <<"SourceCodeType">> => source_code_type()
+%% branch_diff_source_code_type() :: #{
+%%   <<"DestinationBranchName">> => string(),
+%%   <<"SourceBranchName">> => string()
 %% }
--type repository_analysis() :: #{binary() => any()}.
+-type branch_diff_source_code_type() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_code_reviews_response() :: #{
-%%   <<"CodeReviewSummaries">> => list(code_review_summary()),
-%%   <<"NextToken">> => string()
+%% code_artifacts() :: #{
+%%   <<"BuildArtifactsObjectKey">> => string(),
+%%   <<"SourceCodeArtifactsObjectKey">> => string()
 %% }
--type list_code_reviews_response() :: #{binary() => any()}.
+-type code_artifacts() :: #{binary() => any()}.
 
 
 %% Example:
-%% recommendation_feedback_summary() :: #{
-%%   <<"Reactions">> => list(list(any())()),
-%%   <<"RecommendationId">> => string(),
-%%   <<"UserId">> => string()
+%% code_commit_repository() :: #{
+%%   <<"Name">> => string()
 %% }
--type recommendation_feedback_summary() :: #{binary() => any()}.
+-type code_commit_repository() :: #{binary() => any()}.
 
 
 %% Example:
@@ -182,221 +144,6 @@
 
 
 %% Example:
-%% associate_repository_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"KMSKeyDetails">> => kms_key_details(),
-%%   <<"Repository">> := repository(),
-%%   <<"Tags">> => map()
-%% }
--type associate_repository_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_code_review_response() :: #{
-%%   <<"CodeReview">> => code_review()
-%% }
--type describe_code_review_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_repository_association_response() :: #{
-%%   <<"RepositoryAssociation">> => repository_association(),
-%%   <<"Tags">> => map()
-%% }
--type describe_repository_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics_summary() :: #{
-%%   <<"FindingsCount">> => float(),
-%%   <<"MeteredLinesOfCodeCount">> => float(),
-%%   <<"SuppressedLinesOfCodeCount">> => float()
-%% }
--type metrics_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recommendation_feedback_response() :: #{
-%%   <<"RecommendationFeedback">> => recommendation_feedback()
-%% }
--type describe_recommendation_feedback_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_repository_request() :: #{}
--type disassociate_repository_request() :: #{}.
-
-
-%% Example:
-%% list_repository_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"Owners">> => list(string()),
-%%   <<"ProviderTypes">> => list(list(any())()),
-%%   <<"States">> => list(list(any())())
-%% }
--type list_repository_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_repository() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"Name">> => string()
-%% }
--type s3_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics() :: #{
-%%   <<"FindingsCount">> => float(),
-%%   <<"MeteredLinesOfCodeCount">> => float(),
-%%   <<"SuppressedLinesOfCodeCount">> => float()
-%% }
--type metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% third_party_source_repository() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string()
-%% }
--type third_party_source_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_feedback() :: #{
-%%   <<"CodeReviewArn">> => string(),
-%%   <<"CreatedTimeStamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
-%%   <<"Reactions">> => list(list(any())()),
-%%   <<"RecommendationId">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type recommendation_feedback() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository() :: #{
-%%   <<"Bitbucket">> => third_party_source_repository(),
-%%   <<"CodeCommit">> => code_commit_repository(),
-%%   <<"GitHubEnterpriseServer">> => third_party_source_repository(),
-%%   <<"S3Bucket">> => s3_repository()
-%% }
--type repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% branch_diff_source_code_type() :: #{
-%%   <<"DestinationBranchName">> => string(),
-%%   <<"SourceBranchName">> => string()
-%% }
--type branch_diff_source_code_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_review_type() :: #{
-%%   <<"AnalysisTypes">> => list(list(any())()),
-%%   <<"RepositoryAnalysis">> => repository_analysis()
-%% }
--type code_review_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_review_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RepositoryAssociationArn">> := string(),
-%%   <<"Type">> := code_review_type()
-%% }
--type create_code_review_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_repository() :: #{
-%%   <<"Details">> => s3_repository_details(),
-%%   <<"Name">> => string()
-%% }
--type s3_bucket_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_repository_response() :: #{
-%%   <<"RepositoryAssociation">> => repository_association(),
-%%   <<"Tags">> => map()
-%% }
--type associate_repository_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_review_response() :: #{
-%%   <<"CodeReview">> => code_review()
-%% }
--type create_code_review_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_recommendation_feedback_response() :: #{}
--type put_recommendation_feedback_response() :: #{}.
-
-
-%% Example:
-%% rule_metadata() :: #{
-%%   <<"LongDescription">> => string(),
-%%   <<"RuleId">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"RuleTags">> => list(string()),
-%%   <<"ShortDescription">> => string()
-%% }
--type rule_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_code_type() :: #{
-%%   <<"BranchDiff">> => branch_diff_source_code_type(),
-%%   <<"CommitDiff">> => commit_diff_source_code_type(),
-%%   <<"RepositoryHead">> => repository_head_source_code_type(),
-%%   <<"RequestMetadata">> => request_metadata(),
-%%   <<"S3BucketRepository">> => s3_bucket_repository()
-%% }
--type source_code_type() :: #{binary() => any()}.
-
-
-%% Example:
 %% code_review_summary() :: #{
 %%   <<"CodeReviewArn">> => string(),
 %%   <<"CreatedTimeStamp">> => non_neg_integer(),
@@ -415,18 +162,11 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
+%% code_review_type() :: #{
+%%   <<"AnalysisTypes">> => list(list(any())()),
+%%   <<"RepositoryAnalysis">> => repository_analysis()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_repository_response() :: #{
-%%   <<"RepositoryAssociation">> => repository_association(),
-%%   <<"Tags">> => map()
-%% }
--type disassociate_repository_response() :: #{binary() => any()}.
+-type code_review_type() :: #{binary() => any()}.
 
 
 %% Example:
@@ -439,39 +179,100 @@
 
 
 %% Example:
-%% code_artifacts() :: #{
-%%   <<"BuildArtifactsObjectKey">> => string(),
-%%   <<"SourceCodeArtifactsObjectKey">> => string()
-%% }
--type code_artifacts() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_repository_details() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"CodeArtifacts">> => code_artifacts()
-%% }
--type s3_repository_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_recommendation_feedback_request() :: #{
-%%   <<"CodeReviewArn">> := string(),
-%%   <<"Reactions">> := list(list(any())()),
-%%   <<"RecommendationId">> := string()
+%% create_code_review_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RepositoryAssociationArn">> := string(),
+%%   <<"Type">> := code_review_type()
 %% }
--type put_recommendation_feedback_request() :: #{binary() => any()}.
+-type create_code_review_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% create_code_review_response() :: #{
+%%   <<"CodeReview">> => code_review()
+%% }
+-type create_code_review_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_review_request() :: #{}
+-type describe_code_review_request() :: #{}.
+
+
+%% Example:
+%% describe_code_review_response() :: #{
+%%   <<"CodeReview">> => code_review()
+%% }
+-type describe_code_review_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recommendation_feedback_request() :: #{
+%%   <<"RecommendationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type describe_recommendation_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recommendation_feedback_response() :: #{
+%%   <<"RecommendationFeedback">> => recommendation_feedback()
+%% }
+-type describe_recommendation_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repository_association_request() :: #{}
+-type describe_repository_association_request() :: #{}.
+
+
+%% Example:
+%% describe_repository_association_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_repository_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_repository_request() :: #{}
+-type disassociate_repository_request() :: #{}.
+
+
+%% Example:
+%% disassociate_repository_response() :: #{
+%%   <<"RepositoryAssociation">> => repository_association(),
+%%   <<"Tags">> => map()
+%% }
+-type disassociate_repository_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type event_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_details() :: #{
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KMSKeyId">> => string()
+%% }
+-type kms_key_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -487,11 +288,11 @@
 
 
 %% Example:
-%% kms_key_details() :: #{
-%%   <<"EncryptionOption">> => list(any()),
-%%   <<"KMSKeyId">> => string()
+%% list_code_reviews_response() :: #{
+%%   <<"CodeReviewSummaries">> => list(code_review_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type kms_key_details() :: #{binary() => any()}.
+-type list_code_reviews_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -505,28 +306,39 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
+%% list_recommendation_feedback_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary())
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type list_recommendation_feedback_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
+%% list_recommendations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% repository_head_source_code_type() :: #{
-%%   <<"BranchName">> => string()
+%% list_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommendationSummaries">> => list(recommendation_summary())
 %% }
--type repository_head_source_code_type() :: #{binary() => any()}.
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_repository_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"Owners">> => list(string()),
+%%   <<"ProviderTypes">> => list(list(any())()),
+%%   <<"States">> => list(list(any())())
+%% }
+-type list_repository_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -536,12 +348,75 @@
 %% }
 -type list_repository_associations_response() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
-%% code_commit_repository() :: #{
-%%   <<"Name">> => string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type code_commit_repository() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"FindingsCount">> => float(),
+%%   <<"MeteredLinesOfCodeCount">> => float(),
+%%   <<"SuppressedLinesOfCodeCount">> => float()
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_summary() :: #{
+%%   <<"FindingsCount">> => float(),
+%%   <<"MeteredLinesOfCodeCount">> => float(),
+%%   <<"SuppressedLinesOfCodeCount">> => float()
+%% }
+-type metrics_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_recommendation_feedback_request() :: #{
+%%   <<"CodeReviewArn">> := string(),
+%%   <<"Reactions">> := list(list(any())()),
+%%   <<"RecommendationId">> := string()
+%% }
+-type put_recommendation_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_recommendation_feedback_response() :: #{}
+-type put_recommendation_feedback_response() :: #{}.
+
+
+%% Example:
+%% recommendation_feedback() :: #{
+%%   <<"CodeReviewArn">> => string(),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Reactions">> => list(list(any())()),
+%%   <<"RecommendationId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type recommendation_feedback() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_feedback_summary() :: #{
+%%   <<"Reactions">> => list(list(any())()),
+%%   <<"RecommendationId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type recommendation_feedback_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -559,134 +434,259 @@
 
 
 %% Example:
-%% list_recommendation_feedback_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary())
+%% repository() :: #{
+%%   <<"Bitbucket">> => third_party_source_repository(),
+%%   <<"CodeCommit">> => code_commit_repository(),
+%%   <<"GitHubEnterpriseServer">> => third_party_source_repository(),
+%%   <<"S3Bucket">> => s3_repository()
 %% }
--type list_recommendation_feedback_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_code_review_request() :: #{}
--type describe_code_review_request() :: #{}.
+-type repository() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_recommendations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecommendationSummaries">> => list(recommendation_summary())
+%% repository_analysis() :: #{
+%%   <<"RepositoryHead">> => repository_head_source_code_type(),
+%%   <<"SourceCodeType">> => source_code_type()
 %% }
--type list_recommendations_response() :: #{binary() => any()}.
+-type repository_analysis() :: #{binary() => any()}.
 
 
 %% Example:
-%% event_info() :: #{
+%% repository_association() :: #{
+%%   <<"AssociationArn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"KMSKeyDetails">> => kms_key_details(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"State">> => string()
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"S3RepositoryDetails">> => s3_repository_details(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
 %% }
--type event_info() :: #{binary() => any()}.
+-type repository_association() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_repository_association_request() :: #{}
--type describe_repository_association_request() :: #{}.
+%% repository_association_summary() :: #{
+%%   <<"AssociationArn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"LastUpdatedTimeStamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type repository_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_recommendations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% repository_head_source_code_type() :: #{
+%%   <<"BranchName">> => string()
 %% }
--type list_recommendations_request() :: #{binary() => any()}.
+-type repository_head_source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_metadata() :: #{
+%%   <<"EventInfo">> => event_info(),
+%%   <<"RequestId">> => string(),
+%%   <<"Requester">> => string(),
+%%   <<"VendorName">> => list(any())
+%% }
+-type request_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_metadata() :: #{
+%%   <<"LongDescription">> => string(),
+%%   <<"RuleId">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"RuleTags">> => list(string()),
+%%   <<"ShortDescription">> => string()
+%% }
+-type rule_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_repository() :: #{
+%%   <<"Details">> => s3_repository_details(),
+%%   <<"Name">> => string()
+%% }
+-type s3_bucket_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_repository() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type s3_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_repository_details() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"CodeArtifacts">> => code_artifacts()
+%% }
+-type s3_repository_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_code_type() :: #{
+%%   <<"BranchDiff">> => branch_diff_source_code_type(),
+%%   <<"CommitDiff">> => commit_diff_source_code_type(),
+%%   <<"RepositoryHead">> => repository_head_source_code_type(),
+%%   <<"RequestMetadata">> => request_metadata(),
+%%   <<"S3BucketRepository">> => s3_bucket_repository()
+%% }
+-type source_code_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% third_party_source_repository() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string()
+%% }
+-type third_party_source_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_code_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_code_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_recommendation_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_repository_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type disassociate_repository_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_code_reviews_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendation_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_repository_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_recommendation_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

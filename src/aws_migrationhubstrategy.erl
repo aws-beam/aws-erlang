@@ -78,187 +78,30 @@
 
 
 %% Example:
-%% ip_address_based_remote_info() :: #{
-%%   <<"authType">> => string(),
-%%   <<"ipAddressConfigurationTimeStamp">> => string(),
-%%   <<"osType">> => string()
-%% }
--type ip_address_based_remote_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_latest_assessment_id_request() :: #{}
--type get_latest_assessment_id_request() :: #{}.
-
-
-%% Example:
-%% start_import_file_task_request() :: #{
-%%   <<"S3Bucket">> := string(),
-%%   <<"dataSourceType">> => string(),
-%%   <<"groupId">> => list(group()),
-%%   <<"name">> := string(),
-%%   <<"s3bucketForReportData">> => string(),
-%%   <<"s3key">> := string()
-%% }
--type start_import_file_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_latest_assessment_id_response() :: #{
-%%   <<"id">> => string()
-%% }
--type get_latest_assessment_id_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_database_migration_preference() :: #{
-%%   <<"targetDatabaseEngine">> => list(string())
-%% }
--type no_database_migration_preference() :: #{binary() => any()}.
-
-
-%% Example:
-%% heterogeneous() :: #{
-%%   <<"targetDatabaseEngine">> => list(string())
-%% }
--type heterogeneous() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type dependency_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_collectors_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_file_task_response() :: #{
-%%   <<"id">> => string()
-%% }
--type start_import_file_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_component_details_response() :: #{
-%%   <<"applicationComponentDetail">> => application_component_detail(),
-%%   <<"associatedApplications">> => list(associated_application()),
-%%   <<"associatedServerIds">> => list(string()),
-%%   <<"moreApplicationResource">> => boolean()
-%% }
--type get_application_component_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_status_summary() :: #{
-%%   <<"count">> => integer(),
-%%   <<"runTimeAssessmentStatus">> => string()
-%% }
--type server_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_s_info() :: #{
-%%   <<"type">> => string(),
-%%   <<"version">> => string()
-%% }
--type o_s_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_unit_error() :: #{
-%%   <<"appUnitErrorCategory">> => string()
-%% }
--type app_unit_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% strategy_summary() :: #{
-%%   <<"count">> => integer(),
-%%   <<"strategy">> => string()
-%% }
--type strategy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% collector() :: #{
-%%   <<"collectorHealth">> => string(),
-%%   <<"collectorId">> => string(),
-%%   <<"collectorVersion">> => string(),
-%%   <<"configurationSummary">> => configuration_summary(),
-%%   <<"hostName">> => string(),
+%% analyzable_server_summary() :: #{
+%%   <<"hostname">> => string(),
 %%   <<"ipAddress">> => string(),
-%%   <<"lastActivityTimeStamp">> => string(),
-%%   <<"registeredTimeStamp">> => string()
+%%   <<"source">> => string(),
+%%   <<"vmId">> => string()
 %% }
--type collector() :: #{binary() => any()}.
+-type analyzable_server_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_collectors_response() :: #{
-%%   <<"Collectors">> => list(collector()),
-%%   <<"nextToken">> => string()
+%% antipattern_report_result() :: #{
+%%   <<"analyzerName">> => list(),
+%%   <<"antiPatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string()
 %% }
--type list_collectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_info() :: #{
-%%   <<"cpuArchitecture">> => string(),
-%%   <<"fileSystemType">> => string(),
-%%   <<"networkInfoList">> => list(network_info()),
-%%   <<"osInfo">> => o_s_info()
-%% }
--type system_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% homogeneous() :: #{
-%%   <<"targetDatabaseEngine">> => list(string())
-%% }
--type homogeneous() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_server_details_response() :: #{
-%%   <<"associatedApplications">> => list(associated_application()),
-%%   <<"nextToken">> => string(),
-%%   <<"serverDetail">> => server_detail()
-%% }
--type get_server_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_server_config_request() :: #{
-%%   <<"serverId">> := string(),
-%%   <<"strategyOption">> => strategy_option()
-%% }
--type update_server_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_assessment_request() :: #{
-%%   <<"assessmentId">> := string()
-%% }
--type stop_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_servers_request() :: #{
-%%   <<"filterValue">> => string(),
-%%   <<"groupIdFilter">> => list(group()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"serverCriteria">> => string(),
-%%   <<"sort">> => string()
-%% }
--type list_servers_request() :: #{binary() => any()}.
+-type antipattern_report_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -270,189 +113,10 @@
 
 
 %% Example:
-%% prioritize_business_goals() :: #{
-%%   <<"businessGoals">> => business_goals()
+%% app_unit_error() :: #{
+%%   <<"appUnitErrorCategory">> => string()
 %% }
--type prioritize_business_goals() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_file_task_response() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"importName">> => string(),
-%%   <<"inputS3Bucket">> => string(),
-%%   <<"inputS3Key">> => string(),
-%%   <<"numberOfRecordsFailed">> => integer(),
-%%   <<"numberOfRecordsSuccess">> => integer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"statusReportS3Bucket">> => string(),
-%%   <<"statusReportS3Key">> => string()
-%% }
--type get_import_file_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3key">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_application() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type associated_application() :: #{binary() => any()}.
-
-%% Example:
-%% get_portfolio_summary_request() :: #{}
--type get_portfolio_summary_request() :: #{}.
-
-
-%% Example:
-%% list_application_components_request() :: #{
-%%   <<"applicationComponentCriteria">> => string(),
-%%   <<"filterValue">> => string(),
-%%   <<"groupIdFilter">> => list(group()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => string()
-%% }
--type list_application_components_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_component_strategies_request() :: #{}
--type get_application_component_strategies_request() :: #{}.
-
-
-%% Example:
-%% no_management_preference() :: #{
-%%   <<"targetDestination">> => list(string())
-%% }
--type no_management_preference() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_summary() :: #{
-%%   <<"ipAddressBasedRemoteInfoList">> => list(ip_address_based_remote_info()),
-%%   <<"pipelineInfoList">> => list(pipeline_info()),
-%%   <<"remoteSourceCodeAnalysisServerInfo">> => remote_source_code_analysis_server_info(),
-%%   <<"vcenterBasedRemoteInfoList">> => list(vcenter_based_remote_info()),
-%%   <<"versionControlInfoList">> => list(version_control_info())
-%% }
--type configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_assessment_response() :: #{}
--type stop_assessment_response() :: #{}.
-
-
-%% Example:
-%% application_component_status_summary() :: #{
-%%   <<"count">> => integer(),
-%%   <<"srcCodeOrDbAnalysisStatus">> => string()
-%% }
--type application_component_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_info() :: #{
-%%   <<"pipelineConfigurationTimeStamp">> => string(),
-%%   <<"pipelineType">> => string()
-%% }
--type pipeline_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzable_servers_response() :: #{
-%%   <<"analyzableServers">> => list(analyzable_server_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_analyzable_servers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_error() :: #{
-%%   <<"serverErrorCategory">> => string()
-%% }
--type server_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_control_info() :: #{
-%%   <<"versionControlConfigurationTimeStamp">> => string(),
-%%   <<"versionControlType">> => string()
-%% }
--type version_control_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_import_file_task_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_import_file_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_preferences() :: #{
-%%   <<"databaseManagementPreference">> => string(),
-%%   <<"databaseMigrationPreference">> => list()
-%% }
--type database_preferences() :: #{binary() => any()}.
-
-
-%% Example:
-%% strategy_option() :: #{
-%%   <<"isPreferred">> => boolean(),
-%%   <<"strategy">> => string(),
-%%   <<"targetDestination">> => string(),
-%%   <<"toolName">> => string()
-%% }
--type strategy_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_set() :: #{
-%%   <<"strategy">> => string(),
-%%   <<"targetDestination">> => string(),
-%%   <<"transformationTool">> => transformation_tool()
-%% }
--type recommendation_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_managed_resources() :: #{
-%%   <<"targetDestination">> => list(string())
-%% }
--type aws_managed_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_component_strategy() :: #{
-%%   <<"isPreferred">> => boolean(),
-%%   <<"recommendation">> => recommendation_set(),
-%%   <<"status">> => string()
-%% }
--type application_component_strategy() :: #{binary() => any()}.
+-type app_unit_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -485,162 +149,20 @@
 
 
 %% Example:
-%% server_detail() :: #{
-%%   <<"antipatternReportS3Object">> => s3_object(),
-%%   <<"antipatternReportStatus">> => string(),
-%%   <<"antipatternReportStatusMessage">> => string(),
-%%   <<"applicationComponentStrategySummary">> => list(strategy_summary()),
-%%   <<"dataCollectionStatus">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
-%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()),
-%%   <<"name">> => string(),
-%%   <<"recommendationSet">> => recommendation_set(),
-%%   <<"serverError">> => server_error(),
-%%   <<"serverType">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"systemInfo">> => system_info()
+%% application_component_status_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"srcCodeOrDbAnalysisStatus">> => string()
 %% }
--type server_detail() :: #{binary() => any()}.
+-type application_component_status_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_server_strategies_response() :: #{
-%%   <<"serverStrategies">> => list(server_strategy())
-%% }
--type get_server_strategies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_report_details() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3Keys">> => list(string()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type recommendation_report_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_server_strategies_request() :: #{}
--type get_server_strategies_request() :: #{}.
-
-
-%% Example:
-%% result() :: #{
-%%   <<"analysisStatus">> => list(),
-%%   <<"analysisType">> => string(),
-%%   <<"antipatternReportResultList">> => list(antipattern_report_result()),
-%%   <<"statusMessage">> => string()
-%% }
--type result() :: #{binary() => any()}.
-
-
-%% Example:
-%% business_goals() :: #{
-%%   <<"licenseCostReduction">> => integer(),
-%%   <<"modernizeInfrastructureWithCloudNativeTechnologies">> => integer(),
-%%   <<"reduceOperationalOverheadWithManagedServices">> => integer(),
-%%   <<"speedOfMigration">> => integer()
-%% }
--type business_goals() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_strategy() :: #{
+%% application_component_strategy() :: #{
 %%   <<"isPreferred">> => boolean(),
-%%   <<"numberOfApplicationComponents">> => integer(),
 %%   <<"recommendation">> => recommendation_set(),
 %%   <<"status">> => string()
 %% }
--type server_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_assessment_request() :: #{
-%%   <<"assessmentDataSourceType">> => string(),
-%%   <<"assessmentTargets">> => list(assessment_target()),
-%%   <<"s3bucketForAnalysisData">> => string(),
-%%   <<"s3bucketForReportData">> => string()
-%% }
--type start_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_component_strategies_response() :: #{
-%%   <<"applicationComponentStrategies">> => list(application_component_strategy())
-%% }
--type get_application_component_strategies_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommendation_report_details_request() :: #{}
--type get_recommendation_report_details_request() :: #{}.
-
-
-%% Example:
-%% list_import_file_task_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taskInfos">> => list(import_file_task_information())
-%% }
--type list_import_file_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_recommendation_report_generation_request() :: #{
-%%   <<"groupIdFilter">> => list(group()),
-%%   <<"outputFormat">> => string()
-%% }
--type start_recommendation_report_generation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_info() :: #{
-%%   <<"interfaceName">> => string(),
-%%   <<"ipAddress">> => string(),
-%%   <<"macAddress">> => string(),
-%%   <<"netMask">> => string()
-%% }
--type network_info() :: #{binary() => any()}.
-
-%% Example:
-%% put_portfolio_preferences_response() :: #{}
--type put_portfolio_preferences_response() :: #{}.
-
-
-%% Example:
-%% source_code_repository() :: #{
-%%   <<"branch">> => string(),
-%%   <<"projectName">> => string(),
-%%   <<"repository">> => string(),
-%%   <<"versionControlType">> => string()
-%% }
--type source_code_repository() :: #{binary() => any()}.
-
-%% Example:
-%% get_assessment_request() :: #{}
--type get_assessment_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_preferences() :: #{
-%%   <<"managementPreference">> => list()
-%% }
--type application_preferences() :: #{binary() => any()}.
+-type application_component_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,245 +174,10 @@
 
 
 %% Example:
-%% server_summary() :: #{
-%%   <<"ServerOsType">> => string(),
-%%   <<"count">> => integer()
+%% application_preferences() :: #{
+%%   <<"managementPreference">> => list()
 %% }
--type server_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% analyzable_server_summary() :: #{
-%%   <<"hostname">> => string(),
-%%   <<"ipAddress">> => string(),
-%%   <<"source">> => string(),
-%%   <<"vmId">> => string()
-%% }
--type analyzable_server_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_component_config_request() :: #{
-%%   <<"appType">> => string(),
-%%   <<"applicationComponentId">> := string(),
-%%   <<"configureOnly">> => boolean(),
-%%   <<"inclusionStatus">> => string(),
-%%   <<"secretsManagerKey">> => string(),
-%%   <<"sourceCodeList">> => list(source_code()),
-%%   <<"strategyOption">> => strategy_option()
-%% }
--type update_application_component_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_import_file_task_request() :: #{}
--type get_import_file_task_request() :: #{}.
-
-
-%% Example:
-%% transformation_tool() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tranformationToolInstallationLink">> => string()
-%% }
--type transformation_tool() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assessment_response() :: #{
-%%   <<"assessmentTargets">> => list(assessment_target()),
-%%   <<"dataCollectionDetails">> => data_collection_details(),
-%%   <<"id">> => string()
-%% }
--type get_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_component_details_request() :: #{}
--type get_application_component_details_request() :: #{}.
-
-
-%% Example:
-%% get_server_details_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_server_details_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_collection_details() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"failed">> => integer(),
-%%   <<"inProgress">> => integer(),
-%%   <<"servers">> => integer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"success">> => integer()
-%% }
--type data_collection_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_application_components_response() :: #{
-%%   <<"applicationComponentInfos">> => list(application_component_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type list_application_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_portfolio_preferences_response() :: #{
-%%   <<"applicationMode">> => string(),
-%%   <<"applicationPreferences">> => application_preferences(),
-%%   <<"databasePreferences">> => database_preferences(),
-%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
-%% }
--type get_portfolio_preferences_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_portfolio_preferences_request() :: #{}
--type get_portfolio_preferences_request() :: #{}.
-
-
-%% Example:
-%% get_recommendation_report_details_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"recommendationReportDetails">> => recommendation_report_details()
-%% }
--type get_recommendation_report_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_config_detail() :: #{
-%%   <<"secretName">> => string()
-%% }
--type database_config_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_linked_role_lock_client_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_linked_role_lock_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_code() :: #{
-%%   <<"location">> => string(),
-%%   <<"projectName">> => string(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"versionControl">> => string()
-%% }
--type source_code() :: #{binary() => any()}.
-
-%% Example:
-%% update_server_config_response() :: #{}
--type update_server_config_response() :: #{}.
-
-
-%% Example:
-%% list_servers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"serverInfos">> => list(server_detail())
-%% }
--type list_servers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_recommendation_report_generation_response() :: #{
-%%   <<"id">> => string()
-%% }
--type start_recommendation_report_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_portfolio_preferences_request() :: #{
-%%   <<"applicationMode">> => string(),
-%%   <<"applicationPreferences">> => application_preferences(),
-%%   <<"databasePreferences">> => database_preferences(),
-%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
-%% }
--type put_portfolio_preferences_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_assessment_response() :: #{
-%%   <<"assessmentId">> => string()
-%% }
--type start_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzable_servers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => string()
-%% }
--type list_analyzable_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_source_code_analysis_server_info() :: #{
-%%   <<"remoteSourceCodeAnalysisServerConfigurationTimestamp">> => string()
-%% }
--type remote_source_code_analysis_server_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_component_config_response() :: #{}
--type update_application_component_config_response() :: #{}.
-
-
-%% Example:
-%% vcenter_based_remote_info() :: #{
-%%   <<"osType">> => string(),
-%%   <<"vcenterConfigurationTimeStamp">> => string()
-%% }
--type vcenter_based_remote_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_manage_resources() :: #{
-%%   <<"targetDestination">> => list(string())
-%% }
--type self_manage_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_target() :: #{
-%%   <<"condition">> => string(),
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type assessment_target() :: #{binary() => any()}.
+-type application_preferences() :: #{binary() => any()}.
 
 
 %% Example:
@@ -911,13 +198,262 @@
 
 
 %% Example:
-%% antipattern_report_result() :: #{
-%%   <<"analyzerName">> => list(),
-%%   <<"antiPatternReportS3Object">> => s3_object(),
-%%   <<"antipatternReportStatus">> => string(),
-%%   <<"antipatternReportStatusMessage">> => string()
+%% assessment_target() :: #{
+%%   <<"condition">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type antipattern_report_result() :: #{binary() => any()}.
+-type assessment_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_application() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type associated_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_managed_resources() :: #{
+%%   <<"targetDestination">> => list(string())
+%% }
+-type aws_managed_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% business_goals() :: #{
+%%   <<"licenseCostReduction">> => integer(),
+%%   <<"modernizeInfrastructureWithCloudNativeTechnologies">> => integer(),
+%%   <<"reduceOperationalOverheadWithManagedServices">> => integer(),
+%%   <<"speedOfMigration">> => integer()
+%% }
+-type business_goals() :: #{binary() => any()}.
+
+
+%% Example:
+%% collector() :: #{
+%%   <<"collectorHealth">> => string(),
+%%   <<"collectorId">> => string(),
+%%   <<"collectorVersion">> => string(),
+%%   <<"configurationSummary">> => configuration_summary(),
+%%   <<"hostName">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"lastActivityTimeStamp">> => string(),
+%%   <<"registeredTimeStamp">> => string()
+%% }
+-type collector() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_summary() :: #{
+%%   <<"ipAddressBasedRemoteInfoList">> => list(ip_address_based_remote_info()),
+%%   <<"pipelineInfoList">> => list(pipeline_info()),
+%%   <<"remoteSourceCodeAnalysisServerInfo">> => remote_source_code_analysis_server_info(),
+%%   <<"vcenterBasedRemoteInfoList">> => list(vcenter_based_remote_info()),
+%%   <<"versionControlInfoList">> => list(version_control_info())
+%% }
+-type configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_collection_details() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"failed">> => integer(),
+%%   <<"inProgress">> => integer(),
+%%   <<"servers">> => integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"success">> => integer()
+%% }
+-type data_collection_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_config_detail() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type database_config_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_preferences() :: #{
+%%   <<"databaseManagementPreference">> => string(),
+%%   <<"databaseMigrationPreference">> => list()
+%% }
+-type database_preferences() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_component_details_request() :: #{}
+-type get_application_component_details_request() :: #{}.
+
+
+%% Example:
+%% get_application_component_details_response() :: #{
+%%   <<"applicationComponentDetail">> => application_component_detail(),
+%%   <<"associatedApplications">> => list(associated_application()),
+%%   <<"associatedServerIds">> => list(string()),
+%%   <<"moreApplicationResource">> => boolean()
+%% }
+-type get_application_component_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_component_strategies_request() :: #{}
+-type get_application_component_strategies_request() :: #{}.
+
+
+%% Example:
+%% get_application_component_strategies_response() :: #{
+%%   <<"applicationComponentStrategies">> => list(application_component_strategy())
+%% }
+-type get_application_component_strategies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assessment_request() :: #{}
+-type get_assessment_request() :: #{}.
+
+
+%% Example:
+%% get_assessment_response() :: #{
+%%   <<"assessmentTargets">> => list(assessment_target()),
+%%   <<"dataCollectionDetails">> => data_collection_details(),
+%%   <<"id">> => string()
+%% }
+-type get_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_file_task_request() :: #{}
+-type get_import_file_task_request() :: #{}.
+
+
+%% Example:
+%% get_import_file_task_response() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"importName">> => string(),
+%%   <<"inputS3Bucket">> => string(),
+%%   <<"inputS3Key">> => string(),
+%%   <<"numberOfRecordsFailed">> => integer(),
+%%   <<"numberOfRecordsSuccess">> => integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReportS3Bucket">> => string(),
+%%   <<"statusReportS3Key">> => string()
+%% }
+-type get_import_file_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_latest_assessment_id_request() :: #{}
+-type get_latest_assessment_id_request() :: #{}.
+
+
+%% Example:
+%% get_latest_assessment_id_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type get_latest_assessment_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portfolio_preferences_request() :: #{}
+-type get_portfolio_preferences_request() :: #{}.
+
+
+%% Example:
+%% get_portfolio_preferences_response() :: #{
+%%   <<"applicationMode">> => string(),
+%%   <<"applicationPreferences">> => application_preferences(),
+%%   <<"databasePreferences">> => database_preferences(),
+%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
+%% }
+-type get_portfolio_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portfolio_summary_request() :: #{}
+-type get_portfolio_summary_request() :: #{}.
+
+
+%% Example:
+%% get_portfolio_summary_response() :: #{
+%%   <<"assessmentSummary">> => assessment_summary()
+%% }
+-type get_portfolio_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_report_details_request() :: #{}
+-type get_recommendation_report_details_request() :: #{}.
+
+
+%% Example:
+%% get_recommendation_report_details_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"recommendationReportDetails">> => recommendation_report_details()
+%% }
+-type get_recommendation_report_details_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_server_details_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_server_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_server_details_response() :: #{
+%%   <<"associatedApplications">> => list(associated_application()),
+%%   <<"nextToken">> => string(),
+%%   <<"serverDetail">> => server_detail()
+%% }
+-type get_server_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_strategies_request() :: #{}
+-type get_server_strategies_request() :: #{}.
+
+
+%% Example:
+%% get_server_strategies_response() :: #{
+%%   <<"serverStrategies">> => list(server_strategy())
+%% }
+-type get_server_strategies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% heterogeneous() :: #{
+%%   <<"targetDatabaseEngine">> => list(string())
+%% }
+-type heterogeneous() :: #{binary() => any()}.
+
+
+%% Example:
+%% homogeneous() :: #{
+%%   <<"targetDatabaseEngine">> => list(string())
+%% }
+-type homogeneous() :: #{binary() => any()}.
 
 
 %% Example:
@@ -938,146 +474,610 @@
 
 
 %% Example:
-%% get_portfolio_summary_response() :: #{
-%%   <<"assessmentSummary">> => assessment_summary()
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_portfolio_summary_response() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_address_based_remote_info() :: #{
+%%   <<"authType">> => string(),
+%%   <<"ipAddressConfigurationTimeStamp">> => string(),
+%%   <<"osType">> => string()
+%% }
+-type ip_address_based_remote_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzable_servers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_analyzable_servers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzable_servers_response() :: #{
+%%   <<"analyzableServers">> => list(analyzable_server_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzable_servers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_components_request() :: #{
+%%   <<"applicationComponentCriteria">> => string(),
+%%   <<"filterValue">> => string(),
+%%   <<"groupIdFilter">> => list(group()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_application_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_components_response() :: #{
+%%   <<"applicationComponentInfos">> => list(application_component_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_application_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collectors_response() :: #{
+%%   <<"Collectors">> => list(collector()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_task_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_file_task_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskInfos">> => list(import_file_task_information())
+%% }
+-type list_import_file_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_servers_request() :: #{
+%%   <<"filterValue">> => string(),
+%%   <<"groupIdFilter">> => list(group()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serverCriteria">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_servers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_servers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serverInfos">> => list(server_detail())
+%% }
+-type list_servers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_info() :: #{
+%%   <<"interfaceName">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"macAddress">> => string(),
+%%   <<"netMask">> => string()
+%% }
+-type network_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_database_migration_preference() :: #{
+%%   <<"targetDatabaseEngine">> => list(string())
+%% }
+-type no_database_migration_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_management_preference() :: #{
+%%   <<"targetDestination">> => list(string())
+%% }
+-type no_management_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_s_info() :: #{
+%%   <<"type">> => string(),
+%%   <<"version">> => string()
+%% }
+-type o_s_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_info() :: #{
+%%   <<"pipelineConfigurationTimeStamp">> => string(),
+%%   <<"pipelineType">> => string()
+%% }
+-type pipeline_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% prioritize_business_goals() :: #{
+%%   <<"businessGoals">> => business_goals()
+%% }
+-type prioritize_business_goals() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_portfolio_preferences_request() :: #{
+%%   <<"applicationMode">> => string(),
+%%   <<"applicationPreferences">> => application_preferences(),
+%%   <<"databasePreferences">> => database_preferences(),
+%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
+%% }
+-type put_portfolio_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_portfolio_preferences_response() :: #{}
+-type put_portfolio_preferences_response() :: #{}.
+
+
+%% Example:
+%% recommendation_report_details() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Keys">> => list(string()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type recommendation_report_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_set() :: #{
+%%   <<"strategy">> => string(),
+%%   <<"targetDestination">> => string(),
+%%   <<"transformationTool">> => transformation_tool()
+%% }
+-type recommendation_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_source_code_analysis_server_info() :: #{
+%%   <<"remoteSourceCodeAnalysisServerConfigurationTimestamp">> => string()
+%% }
+-type remote_source_code_analysis_server_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% result() :: #{
+%%   <<"analysisStatus">> => list(),
+%%   <<"analysisType">> => string(),
+%%   <<"antipatternReportResultList">> => list(antipattern_report_result()),
+%%   <<"statusMessage">> => string()
+%% }
+-type result() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3key">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_manage_resources() :: #{
+%%   <<"targetDestination">> => list(string())
+%% }
+-type self_manage_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_detail() :: #{
+%%   <<"antipatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string(),
+%%   <<"applicationComponentStrategySummary">> => list(strategy_summary()),
+%%   <<"dataCollectionStatus">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()),
+%%   <<"name">> => string(),
+%%   <<"recommendationSet">> => recommendation_set(),
+%%   <<"serverError">> => server_error(),
+%%   <<"serverType">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"systemInfo">> => system_info()
+%% }
+-type server_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_error() :: #{
+%%   <<"serverErrorCategory">> => string()
+%% }
+-type server_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_status_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"runTimeAssessmentStatus">> => string()
+%% }
+-type server_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_strategy() :: #{
+%%   <<"isPreferred">> => boolean(),
+%%   <<"numberOfApplicationComponents">> => integer(),
+%%   <<"recommendation">> => recommendation_set(),
+%%   <<"status">> => string()
+%% }
+-type server_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_summary() :: #{
+%%   <<"ServerOsType">> => string(),
+%%   <<"count">> => integer()
+%% }
+-type server_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_linked_role_lock_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_lock_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_code() :: #{
+%%   <<"location">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"versionControl">> => string()
+%% }
+-type source_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_code_repository() :: #{
+%%   <<"branch">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"repository">> => string(),
+%%   <<"versionControlType">> => string()
+%% }
+-type source_code_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_assessment_request() :: #{
+%%   <<"assessmentDataSourceType">> => string(),
+%%   <<"assessmentTargets">> => list(assessment_target()),
+%%   <<"s3bucketForAnalysisData">> => string(),
+%%   <<"s3bucketForReportData">> => string()
+%% }
+-type start_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_assessment_response() :: #{
+%%   <<"assessmentId">> => string()
+%% }
+-type start_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_file_task_request() :: #{
+%%   <<"S3Bucket">> := string(),
+%%   <<"dataSourceType">> => string(),
+%%   <<"groupId">> => list(group()),
+%%   <<"name">> := string(),
+%%   <<"s3bucketForReportData">> => string(),
+%%   <<"s3key">> := string()
+%% }
+-type start_import_file_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_file_task_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type start_import_file_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recommendation_report_generation_request() :: #{
+%%   <<"groupIdFilter">> => list(group()),
+%%   <<"outputFormat">> => string()
+%% }
+-type start_recommendation_report_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recommendation_report_generation_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type start_recommendation_report_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_assessment_request() :: #{
+%%   <<"assessmentId">> := string()
+%% }
+-type stop_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_assessment_response() :: #{}
+-type stop_assessment_response() :: #{}.
+
+
+%% Example:
+%% strategy_option() :: #{
+%%   <<"isPreferred">> => boolean(),
+%%   <<"strategy">> => string(),
+%%   <<"targetDestination">> => string(),
+%%   <<"toolName">> => string()
+%% }
+-type strategy_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% strategy_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"strategy">> => string()
+%% }
+-type strategy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_info() :: #{
+%%   <<"cpuArchitecture">> => string(),
+%%   <<"fileSystemType">> => string(),
+%%   <<"networkInfoList">> => list(network_info()),
+%%   <<"osInfo">> => o_s_info()
+%% }
+-type system_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_tool() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tranformationToolInstallationLink">> => string()
+%% }
+-type transformation_tool() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_component_config_request() :: #{
+%%   <<"appType">> => string(),
+%%   <<"applicationComponentId">> := string(),
+%%   <<"configureOnly">> => boolean(),
+%%   <<"inclusionStatus">> => string(),
+%%   <<"secretsManagerKey">> => string(),
+%%   <<"sourceCodeList">> => list(source_code()),
+%%   <<"strategyOption">> => strategy_option()
+%% }
+-type update_application_component_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_component_config_response() :: #{}
+-type update_application_component_config_response() :: #{}.
+
+
+%% Example:
+%% update_server_config_request() :: #{
+%%   <<"serverId">> := string(),
+%%   <<"strategyOption">> => strategy_option()
+%% }
+-type update_server_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_config_response() :: #{}
+-type update_server_config_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vcenter_based_remote_info() :: #{
+%%   <<"osType">> => string(),
+%%   <<"vcenterConfigurationTimeStamp">> => string()
+%% }
+-type vcenter_based_remote_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_control_info() :: #{
+%%   <<"versionControlConfigurationTimeStamp">> => string(),
+%%   <<"versionControlType">> => string()
+%% }
+-type version_control_info() :: #{binary() => any()}.
 
 -type get_application_component_details_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_application_component_strategies_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_assessment_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_import_file_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_latest_assessment_id_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_exception().
 
 -type get_portfolio_preferences_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_portfolio_summary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_recommendation_report_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_server_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_server_strategies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_analyzable_servers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_application_components_errors() ::
-    service_linked_role_lock_client_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    service_linked_role_lock_client_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_collectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_import_file_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_servers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_portfolio_preferences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_assessment_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type start_import_file_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type start_recommendation_report_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_application_component_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_server_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -92,18 +92,22 @@
 
 
 %% Example:
-%% get_environment_output() :: #{
-%%   <<"Environment">> => environment()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type get_environment_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_cli_token_request() :: #{}
+-type create_cli_token_request() :: #{}.
 
 
 %% Example:
-%% invoke_rest_api_response() :: #{
-%%   <<"RestApiResponse">> => any(),
-%%   <<"RestApiStatusCode">> => [integer()]
+%% create_cli_token_response() :: #{
+%%   <<"CliToken">> => string(),
+%%   <<"WebServerHostname">> => string()
 %% }
--type invoke_rest_api_response() :: #{binary() => any()}.
+-type create_cli_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -135,29 +139,129 @@
 %% }
 -type create_environment_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_environment_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_environment_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_web_login_token_request() :: #{}
+-type create_web_login_token_request() :: #{}.
+
+
+%% Example:
+%% create_web_login_token_response() :: #{
+%%   <<"AirflowIdentity">> => string(),
+%%   <<"IamIdentity">> => string(),
+%%   <<"WebServerHostname">> => string(),
+%%   <<"WebToken">> => string()
+%% }
+-type create_web_login_token_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_environment_input() :: #{}
 -type delete_environment_input() :: #{}.
 
-
 %% Example:
-%% module_logging_configuration() :: #{
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"LogLevel">> => string()
-%% }
--type module_logging_configuration() :: #{binary() => any()}.
+%% delete_environment_output() :: #{}
+-type delete_environment_output() :: #{}.
 
 
 %% Example:
-%% logging_configuration_input() :: #{
-%%   <<"DagProcessingLogs">> => module_logging_configuration_input(),
-%%   <<"SchedulerLogs">> => module_logging_configuration_input(),
-%%   <<"TaskLogs">> => module_logging_configuration_input(),
-%%   <<"WebserverLogs">> => module_logging_configuration_input(),
-%%   <<"WorkerLogs">> => module_logging_configuration_input()
+%% dimension() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Value">> => [string()]
 %% }
--type logging_configuration_input() :: #{binary() => any()}.
+-type dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"AirflowConfigurationOptions">> => map(),
+%%   <<"AirflowVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CeleryExecutorQueue">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DagS3Path">> => string(),
+%%   <<"DatabaseVpcEndpointService">> => string(),
+%%   <<"EndpointManagement">> => string(),
+%%   <<"EnvironmentClass">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LastUpdate">> => last_update(),
+%%   <<"LoggingConfiguration">> => logging_configuration(),
+%%   <<"MaxWebservers">> => integer(),
+%%   <<"MaxWorkers">> => integer(),
+%%   <<"MinWebservers">> => integer(),
+%%   <<"MinWorkers">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PluginsS3ObjectVersion">> => string(),
+%%   <<"PluginsS3Path">> => string(),
+%%   <<"RequirementsS3ObjectVersion">> => string(),
+%%   <<"RequirementsS3Path">> => string(),
+%%   <<"Schedulers">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"SourceBucketArn">> => string(),
+%%   <<"StartupScriptS3ObjectVersion">> => [string()],
+%%   <<"StartupScriptS3Path">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WebserverAccessMode">> => string(),
+%%   <<"WebserverUrl">> => string(),
+%%   <<"WebserverVpcEndpointService">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_input() :: #{}
+-type get_environment_input() :: #{}.
+
+
+%% Example:
+%% get_environment_output() :: #{
+%%   <<"Environment">> => environment()
+%% }
+-type get_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_rest_api_request() :: #{
+%%   <<"Body">> => any(),
+%%   <<"Method">> := string(),
+%%   <<"Path">> := string(),
+%%   <<"QueryParameters">> => [any()]
+%% }
+-type invoke_rest_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_rest_api_response() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
+%% }
+-type invoke_rest_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_update() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Error">> => update_error(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"WorkerReplacementStrategy">> => string()
+%% }
+-type last_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -169,17 +273,22 @@
 
 
 %% Example:
+%% list_environments_output() :: #{
+%%   <<"Environments">> := list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_configuration_input() :: #{
-%%   <<"SecurityGroupIds">> => list(string())
-%% }
--type update_network_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -194,18 +303,14 @@
 
 
 %% Example:
-%% create_environment_output() :: #{
-%%   <<"Arn">> => string()
+%% logging_configuration_input() :: #{
+%%   <<"DagProcessingLogs">> => module_logging_configuration_input(),
+%%   <<"SchedulerLogs">> => module_logging_configuration_input(),
+%%   <<"TaskLogs">> => module_logging_configuration_input(),
+%%   <<"WebserverLogs">> => module_logging_configuration_input(),
+%%   <<"WorkerLogs">> => module_logging_configuration_input()
 %% }
--type create_environment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type update_error() :: #{binary() => any()}.
+-type logging_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -221,6 +326,42 @@
 
 
 %% Example:
+%% module_logging_configuration() :: #{
+%%   <<"CloudWatchLogGroupArn">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogLevel">> => string()
+%% }
+-type module_logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% module_logging_configuration_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogLevel">> => string()
+%% }
+-type module_logging_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_metrics_input() :: #{
+%%   <<"MetricData">> => list(metric_datum())
+%% }
+-type publish_metrics_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_metrics_output() :: #{}
+-type publish_metrics_output() :: #{}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -228,73 +369,58 @@
 
 
 %% Example:
-%% update_environment_output() :: #{
-%%   <<"Arn">> => string()
+%% rest_api_client_exception() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
 %% }
--type update_environment_output() :: #{binary() => any()}.
+-type rest_api_client_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% last_update() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Error">> => update_error(),
-%%   <<"Source">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"WorkerReplacementStrategy">> => string()
+%% rest_api_server_exception() :: #{
+%%   <<"RestApiResponse">> => any(),
+%%   <<"RestApiStatusCode">> => [integer()]
 %% }
--type last_update() :: #{binary() => any()}.
+-type rest_api_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment() :: #{
-%%   <<"LastUpdate">> => last_update(),
-%%   <<"MaxWorkers">> => integer(),
-%%   <<"AirflowConfigurationOptions">> => map(),
-%%   <<"RequirementsS3Path">> => string(),
-%%   <<"MaxWebservers">> => integer(),
-%%   <<"StartupScriptS3ObjectVersion">> => [string()],
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"SourceBucketArn">> => string(),
-%%   <<"EnvironmentClass">> => string(),
-%%   <<"RequirementsS3ObjectVersion">> => string(),
-%%   <<"DatabaseVpcEndpointService">> => string(),
-%%   <<"WebserverVpcEndpointService">> => string(),
-%%   <<"WebserverUrl">> => string(),
-%%   <<"WebserverAccessMode">> => string(),
-%%   <<"PluginsS3ObjectVersion">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"KmsKey">> => string(),
-%%   <<"PluginsS3Path">> => string(),
-%%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"WeeklyMaintenanceWindowStart">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"CeleryExecutorQueue">> => string(),
-%%   <<"DagS3Path">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"StartupScriptS3Path">> => [string()],
-%%   <<"MinWebservers">> => integer(),
-%%   <<"Schedulers">> => integer(),
-%%   <<"EndpointManagement">> => string(),
-%%   <<"LoggingConfiguration">> => logging_configuration(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"MinWorkers">> => integer(),
-%%   <<"AirflowVersion">> => string()
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type environment() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_input() :: #{}
--type get_environment_input() :: #{}.
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_environments_output() :: #{
-%%   <<"Environments">> := list(string()),
-%%   <<"NextToken">> => string()
+%% statistic_set() :: #{
+%%   <<"Maximum">> => [float()],
+%%   <<"Minimum">> => [float()],
+%%   <<"SampleCount">> => [integer()],
+%%   <<"Sum">> => [float()]
 %% }
--type list_environments_output() :: #{binary() => any()}.
+-type statistic_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -326,96 +452,25 @@
 
 
 %% Example:
-%% rest_api_client_exception() :: #{
-%%   <<"RestApiResponse">> => any(),
-%%   <<"RestApiStatusCode">> => [integer()]
+%% update_environment_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type rest_api_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_web_login_token_request() :: #{}
--type create_web_login_token_request() :: #{}.
+-type update_environment_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
 %% }
--type service_unavailable_exception() :: #{binary() => any()}.
+-type update_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% invoke_rest_api_request() :: #{
-%%   <<"Body">> => any(),
-%%   <<"Method">> := string(),
-%%   <<"Path">> := string(),
-%%   <<"QueryParameters">> => [any()]
+%% update_network_configuration_input() :: #{
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
--type invoke_rest_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_output() :: #{}
--type delete_environment_output() :: #{}.
-
-
-%% Example:
-%% create_cli_token_response() :: #{
-%%   <<"CliToken">> => string(),
-%%   <<"WebServerHostname">> => string()
-%% }
--type create_cli_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_cli_token_request() :: #{}
--type create_cli_token_request() :: #{}.
-
-
-%% Example:
-%% rest_api_server_exception() :: #{
-%%   <<"RestApiResponse">> => any(),
-%%   <<"RestApiStatusCode">> => [integer()]
-%% }
--type rest_api_server_exception() :: #{binary() => any()}.
+-type update_network_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -424,93 +479,38 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% create_web_login_token_response() :: #{
-%%   <<"AirflowIdentity">> => string(),
-%%   <<"IamIdentity">> => string(),
-%%   <<"WebServerHostname">> => string(),
-%%   <<"WebToken">> => string()
-%% }
--type create_web_login_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimension() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"Value">> => [string()]
-%% }
--type dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_metrics_input() :: #{
-%%   <<"MetricData">> => list(metric_datum())
-%% }
--type publish_metrics_input() :: #{binary() => any()}.
-
-%% Example:
-%% publish_metrics_output() :: #{}
--type publish_metrics_output() :: #{}.
-
-
-%% Example:
-%% module_logging_configuration_input() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"LogLevel">> => string()
-%% }
--type module_logging_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% statistic_set() :: #{
-%%   <<"Maximum">> => [float()],
-%%   <<"Minimum">> => [float()],
-%%   <<"SampleCount">> => [integer()],
-%%   <<"Sum">> => [float()]
-%% }
--type statistic_set() :: #{binary() => any()}.
-
 -type create_cli_token_errors() ::
     resource_not_found_exception().
 
 -type create_environment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    internal_server_exception().
 
 -type create_web_login_token_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_environment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_environment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type invoke_rest_api_errors() ::
     validation_exception() | 
     rest_api_server_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     rest_api_client_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_environments_errors() ::
     validation_exception() | 
@@ -518,8 +518,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type publish_metrics_errors() ::
     validation_exception() | 
@@ -527,19 +527,19 @@
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_environment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

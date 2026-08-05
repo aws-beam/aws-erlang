@@ -182,17 +182,412 @@
 
 
 %% Example:
-%% list_receipt_rule_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleSets">> => list(receipt_rule_set_metadata())
+%% account_sending_paused_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_receipt_rule_sets_response() :: #{binary() => any()}.
+-type account_sending_paused_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_receipt_rule_sets_request() :: #{
-%%   <<"NextToken">> => string()
+%% add_header_action() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"HeaderValue">> => string()
 %% }
--type list_receipt_rule_sets_request() :: #{binary() => any()}.
+-type add_header_action() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% body() :: #{
+%%   <<"Html">> => content(),
+%%   <<"Text">> => content()
+%% }
+-type body() :: #{binary() => any()}.
+
+%% Example:
+%% bounce_action() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Sender">> => string(),
+%%   <<"SmtpReplyCode">> => string(),
+%%   <<"StatusCode">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type bounce_action() :: #{binary() => any()}.
+
+%% Example:
+%% bounced_recipient_info() :: #{
+%%   <<"BounceType">> => list(any()),
+%%   <<"Recipient">> => string(),
+%%   <<"RecipientArn">> => string(),
+%%   <<"RecipientDsnFields">> => recipient_dsn_fields()
+%% }
+-type bounced_recipient_info() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_email_destination() :: #{
+%%   <<"Destination">> => destination(),
+%%   <<"ReplacementTags">> => list(message_tag()),
+%%   <<"ReplacementTemplateData">> => string()
+%% }
+-type bulk_email_destination() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_email_destination_status() :: #{
+%%   <<"Error">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type bulk_email_destination_status() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_delete_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type cannot_delete_exception() :: #{binary() => any()}.
+
+%% Example:
+%% clone_receipt_rule_set_request() :: #{
+%%   <<"OriginalRuleSetName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type clone_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% clone_receipt_rule_set_response() :: #{
+
+%% }
+-type clone_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_destination() :: #{
+%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
+%% }
+-type cloud_watch_destination() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_dimension_configuration() :: #{
+%%   <<"DefaultDimensionValue">> => string(),
+%%   <<"DimensionName">> => string(),
+%%   <<"DimensionValueSource">> => list(any())
+%% }
+-type cloud_watch_dimension_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set() :: #{
+%%   <<"Name">> => string()
+%% }
+-type configuration_set() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_does_not_exist_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_sending_paused_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_sending_paused_exception() :: #{binary() => any()}.
+
+%% Example:
+%% connect_action() :: #{
+%%   <<"IAMRoleARN">> => string(),
+%%   <<"InstanceARN">> => string()
+%% }
+-type connect_action() :: #{binary() => any()}.
+
+%% Example:
+%% content() :: #{
+%%   <<"Charset">> => string(),
+%%   <<"Data">> => string()
+%% }
+-type content() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestination">> := event_destination()
+%% }
+-type create_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_response() :: #{
+
+%% }
+-type create_configuration_set_event_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_request() :: #{
+%%   <<"ConfigurationSet">> := configuration_set()
+%% }
+-type create_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_response() :: #{
+
+%% }
+-type create_configuration_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"TrackingOptions">> := tracking_options()
+%% }
+-type create_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_tracking_options_response() :: #{
+
+%% }
+-type create_configuration_set_tracking_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_verification_email_template_request() :: #{
+%%   <<"FailureRedirectionURL">> := string(),
+%%   <<"FromEmailAddress">> := string(),
+%%   <<"SuccessRedirectionURL">> := string(),
+%%   <<"TemplateContent">> := string(),
+%%   <<"TemplateName">> := string(),
+%%   <<"TemplateSubject">> := string()
+%% }
+-type create_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_filter_request() :: #{
+%%   <<"Filter">> := receipt_filter()
+%% }
+-type create_receipt_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_filter_response() :: #{
+
+%% }
+-type create_receipt_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_request() :: #{
+%%   <<"After">> => string(),
+%%   <<"Rule">> := receipt_rule(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type create_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_response() :: #{
+
+%% }
+-type create_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
+%% }
+-type create_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_set_response() :: #{
+
+%% }
+-type create_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_template_request() :: #{
+%%   <<"Template">> := template()
+%% }
+-type create_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_template_response() :: #{
+
+%% }
+-type create_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_invalid_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_invalid_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateSubject">> => string()
+%% }
+-type custom_verification_email_template() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template_already_exists_exception() :: #{
+%%   <<"CustomVerificationEmailTemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_template_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template_does_not_exist_exception() :: #{
+%%   <<"CustomVerificationEmailTemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_template_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestinationName">> := string()
+%% }
+-type delete_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_event_destination_response() :: #{
+
+%% }
+-type delete_configuration_set_event_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_request() :: #{
+%%   <<"ConfigurationSetName">> := string()
+%% }
+-type delete_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_response() :: #{
+
+%% }
+-type delete_configuration_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string()
+%% }
+-type delete_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_tracking_options_response() :: #{
+
+%% }
+-type delete_configuration_set_tracking_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_verification_email_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type delete_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_policy_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_identity_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_policy_response() :: #{
+
+%% }
+-type delete_identity_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_request() :: #{
+%%   <<"Identity">> := string()
+%% }
+-type delete_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_response() :: #{
+
+%% }
+-type delete_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_filter_request() :: #{
+%%   <<"FilterName">> := string()
+%% }
+-type delete_receipt_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_filter_response() :: #{
+
+%% }
+-type delete_receipt_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_request() :: #{
+%%   <<"RuleName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type delete_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_response() :: #{
+
+%% }
+-type delete_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
+%% }
+-type delete_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_set_response() :: #{
+
+%% }
+-type delete_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type delete_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_response() :: #{
+
+%% }
+-type delete_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_verified_email_address_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type delete_verified_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_options() :: #{
+%%   <<"TlsPolicy">> => list(any())
+%% }
+-type delivery_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_active_receipt_rule_set_request() :: #{
+
+%% }
+-type describe_active_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_active_receipt_rule_set_response() :: #{
+%%   <<"Metadata">> => receipt_rule_set_metadata(),
+%%   <<"Rules">> => list(receipt_rule())
+%% }
+-type describe_active_receipt_rule_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_configuration_set_request() :: #{
@@ -202,35 +597,215 @@
 -type describe_configuration_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_identity_policy_response() :: #{
-
+%% describe_configuration_set_response() :: #{
+%%   <<"ConfigurationSet">> => configuration_set(),
+%%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"EventDestinations">> => list(event_destination()),
+%%   <<"ReputationOptions">> => reputation_options(),
+%%   <<"TrackingOptions">> => tracking_options()
 %% }
--type delete_identity_policy_response() :: #{binary() => any()}.
+-type describe_configuration_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% tracking_options() :: #{
-%%   <<"CustomRedirectDomain">> => string()
+%% describe_receipt_rule_request() :: #{
+%%   <<"RuleName">> := string(),
+%%   <<"RuleSetName">> := string()
 %% }
--type tracking_options() :: #{binary() => any()}.
+-type describe_receipt_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_verified_email_address_request() :: #{
-%%   <<"EmailAddress">> := string()
+%% describe_receipt_rule_response() :: #{
+%%   <<"Rule">> => receipt_rule()
 %% }
--type delete_verified_email_address_request() :: #{binary() => any()}.
+-type describe_receipt_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% set_identity_feedback_forwarding_enabled_request() :: #{
-%%   <<"ForwardingEnabled">> := boolean(),
-%%   <<"Identity">> := string()
+%% describe_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
 %% }
--type set_identity_feedback_forwarding_enabled_request() :: #{binary() => any()}.
+-type describe_receipt_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_configuration_set_response() :: #{
-
+%% describe_receipt_rule_set_response() :: #{
+%%   <<"Metadata">> => receipt_rule_set_metadata(),
+%%   <<"Rules">> => list(receipt_rule())
 %% }
--type delete_configuration_set_response() :: #{binary() => any()}.
+-type describe_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"BccAddresses">> => list(string()),
+%%   <<"CcAddresses">> => list(string()),
+%%   <<"ToAddresses">> => list(string())
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination() :: #{
+%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"Name">> => string(),
+%%   <<"SNSDestination">> => s_n_s_destination()
+%% }
+-type event_destination() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type event_destination_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination_does_not_exist_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type event_destination_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% extension_field() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type extension_field() :: #{binary() => any()}.
+
+%% Example:
+%% from_email_address_not_verified_exception() :: #{
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"message">> => string()
+%% }
+-type from_email_address_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_sending_enabled_response() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type get_account_sending_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_verification_email_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type get_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_verification_email_template_response() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateContent">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateSubject">> => string()
+%% }
+-type get_custom_verification_email_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_dkim_attributes_request() :: #{
+%%   <<"Identities">> := list(string())
+%% }
+-type get_identity_dkim_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_dkim_attributes_response() :: #{
+%%   <<"DkimAttributes">> => map()
+%% }
+-type get_identity_dkim_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_mail_from_domain_attributes_request() :: #{
+%%   <<"Identities">> := list(string())
+%% }
+-type get_identity_mail_from_domain_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_mail_from_domain_attributes_response() :: #{
+%%   <<"MailFromDomainAttributes">> => map()
+%% }
+-type get_identity_mail_from_domain_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_notification_attributes_request() :: #{
+%%   <<"Identities">> := list(string())
+%% }
+-type get_identity_notification_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_notification_attributes_response() :: #{
+%%   <<"NotificationAttributes">> => map()
+%% }
+-type get_identity_notification_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_policies_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"PolicyNames">> := list(string())
+%% }
+-type get_identity_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_policies_response() :: #{
+%%   <<"Policies">> => map()
+%% }
+-type get_identity_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_verification_attributes_request() :: #{
+%%   <<"Identities">> := list(string())
+%% }
+-type get_identity_verification_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_verification_attributes_response() :: #{
+%%   <<"VerificationAttributes">> => map()
+%% }
+-type get_identity_verification_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_send_quota_response() :: #{
+%%   <<"Max24HourSend">> => float(),
+%%   <<"MaxSendRate">> => float(),
+%%   <<"SentLast24Hours">> => float()
+%% }
+-type get_send_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_send_statistics_response() :: #{
+%%   <<"SendDataPoints">> => list(send_data_point())
+%% }
+-type get_send_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type get_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_response() :: #{
+%%   <<"Template">> => template()
+%% }
+-type get_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% identity_dkim_attributes() :: #{
+%%   <<"DkimEnabled">> => boolean(),
+%%   <<"DkimTokens">> => list(string()),
+%%   <<"DkimVerificationStatus">> => list(any())
+%% }
+-type identity_dkim_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% identity_mail_from_domain_attributes() :: #{
+%%   <<"BehaviorOnMXFailure">> => list(any()),
+%%   <<"MailFromDomain">> => string(),
+%%   <<"MailFromDomainStatus">> => list(any())
+%% }
+-type identity_mail_from_domain_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% identity_notification_attributes() :: #{
@@ -245,135 +820,11 @@
 -type identity_notification_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% set_receipt_rule_position_response() :: #{
-
+%% identity_verification_attributes() :: #{
+%%   <<"VerificationStatus">> => list(any()),
+%%   <<"VerificationToken">> => string()
 %% }
--type set_receipt_rule_position_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_identity_policy_request() :: #{
-%%   <<"Identity">> := string(),
-%%   <<"Policy">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type put_identity_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% verify_domain_identity_request() :: #{
-%%   <<"Domain">> := string()
-%% }
--type verify_domain_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_request() :: #{
-%%   <<"Identity">> := string()
-%% }
--type delete_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_tracking_options_response() :: #{
-
-%% }
--type create_configuration_set_tracking_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% connect_action() :: #{
-%%   <<"IAMRoleARN">> => string(),
-%%   <<"InstanceARN">> => string()
-%% }
--type connect_action() :: #{binary() => any()}.
-
-%% Example:
-%% create_receipt_rule_set_response() :: #{
-
-%% }
--type create_receipt_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_receipt_rule_set_request() :: #{
-%%   <<"RuleSetName">> := string()
-%% }
--type describe_receipt_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_verification_email_invalid_content_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_verification_email_invalid_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_templates_request() :: #{
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_set_does_not_exist_exception() :: #{
-%%   <<"Name">> => string(),
-%%   <<"message">> => string()
-%% }
--type rule_set_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_identities_request() :: #{
-%%   <<"IdentityType">> => list(any()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identities_request() :: #{binary() => any()}.
-
-%% Example:
-%% identity_dkim_attributes() :: #{
-%%   <<"DkimEnabled">> => boolean(),
-%%   <<"DkimTokens">> => list(string()),
-%%   <<"DkimVerificationStatus">> => list(any())
-%% }
--type identity_dkim_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% describe_receipt_rule_request() :: #{
-%%   <<"RuleName">> := string(),
-%%   <<"RuleSetName">> := string()
-%% }
--type describe_receipt_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% verify_domain_dkim_response() :: #{
-%%   <<"DkimTokens">> => list(string())
-%% }
--type verify_domain_dkim_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_verification_email_template_does_not_exist_exception() :: #{
-%%   <<"CustomVerificationEmailTemplateName">> => string(),
-%%   <<"message">> => string()
-%% }
--type custom_verification_email_template_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s3_action() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"ObjectKeyPrefix">> => string(),
-%%   <<"TopicArn">> => string()
-%% }
--type s3_action() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_destination() :: #{
-%%   <<"DeliveryStreamARN">> => string(),
-%%   <<"IAMRoleARN">> => string()
-%% }
--type kinesis_firehose_destination() :: #{binary() => any()}.
-
-%% Example:
-%% already_exists_exception() :: #{
-%%   <<"Name">> => string(),
-%%   <<"message">> => string()
-%% }
--type already_exists_exception() :: #{binary() => any()}.
+-type identity_verification_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_cloud_watch_destination_exception() :: #{
@@ -384,41 +835,24 @@
 -type invalid_cloud_watch_destination_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_receipt_rule_set_response() :: #{
-%%   <<"Metadata">> => receipt_rule_set_metadata(),
-%%   <<"Rules">> => list(receipt_rule())
+%% invalid_configuration_set_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_receipt_rule_set_response() :: #{binary() => any()}.
+-type invalid_configuration_set_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_receipt_filters_response() :: #{
-%%   <<"Filters">> => list(receipt_filter())
+%% invalid_delivery_options_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_receipt_filters_response() :: #{binary() => any()}.
+-type invalid_delivery_options_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_custom_verification_email_template_response() :: #{
-%%   <<"FailureRedirectionURL">> => string(),
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"SuccessRedirectionURL">> => string(),
-%%   <<"TemplateContent">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateSubject">> => string()
-%% }
--type get_custom_verification_email_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_raw_email_request() :: #{
+%% invalid_firehose_destination_exception() :: #{
 %%   <<"ConfigurationSetName">> => string(),
-%%   <<"Destinations">> => list(string()),
-%%   <<"FromArn">> => string(),
-%%   <<"RawMessage">> := raw_message(),
-%%   <<"ReturnPathArn">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Tags">> => list(message_tag())
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
 %% }
--type send_raw_email_request() :: #{binary() => any()}.
+-type invalid_firehose_destination_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_lambda_function_exception() :: #{
@@ -428,201 +862,17 @@
 -type invalid_lambda_function_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_mail_from_domain_attributes_request() :: #{
-%%   <<"Identities">> := list(string())
-%% }
--type get_identity_mail_from_domain_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_verification_email_template_already_exists_exception() :: #{
-%%   <<"CustomVerificationEmailTemplateName">> => string(),
+%% invalid_policy_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type custom_verification_email_template_already_exists_exception() :: #{binary() => any()}.
+-type invalid_policy_exception() :: #{binary() => any()}.
 
 %% Example:
-%% verify_domain_identity_response() :: #{
-%%   <<"VerificationToken">> => string()
-%% }
--type verify_domain_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_template_request() :: #{
-%%   <<"Template">> := template()
-%% }
--type create_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_render_template_response() :: #{
-%%   <<"RenderedTemplate">> => string()
-%% }
--type test_render_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_set_response() :: #{
-%%   <<"ConfigurationSet">> => configuration_set(),
-%%   <<"DeliveryOptions">> => delivery_options(),
-%%   <<"EventDestinations">> => list(event_destination()),
-%%   <<"ReputationOptions">> => reputation_options(),
-%%   <<"TrackingOptions">> => tracking_options()
-%% }
--type describe_configuration_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_active_receipt_rule_set_response() :: #{
-%%   <<"Metadata">> => receipt_rule_set_metadata(),
-%%   <<"Rules">> => list(receipt_rule())
-%% }
--type describe_active_receipt_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_response() :: #{
-%%   <<"Template">> => template()
-%% }
--type get_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_verification_attributes_request() :: #{
-%%   <<"Identities">> := list(string())
-%% }
--type get_identity_verification_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% template_metadata() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type template_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_verification_email_template_request() :: #{
-%%   <<"TemplateName">> := string()
-%% }
--type get_custom_verification_email_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_sns_topic_exception() :: #{
-%%   <<"Topic">> => string(),
+%% invalid_rendering_parameter_exception() :: #{
+%%   <<"TemplateName">> => string(),
 %%   <<"message">> => string()
 %% }
--type invalid_sns_topic_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_configuration_set_delivery_options_response() :: #{
-
-%% }
--type put_configuration_set_delivery_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_set_event_destination_response() :: #{
-
-%% }
--type delete_configuration_set_event_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_dimension_configuration() :: #{
-%%   <<"DefaultDimensionValue">> => string(),
-%%   <<"DimensionName">> => string(),
-%%   <<"DimensionValueSource">> => list(any())
-%% }
--type cloud_watch_dimension_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_receipt_filter_request() :: #{
-%%   <<"FilterName">> := string()
-%% }
--type delete_receipt_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_mail_from_domain_request() :: #{
-%%   <<"BehaviorOnMXFailure">> => list(any()),
-%%   <<"Identity">> := string(),
-%%   <<"MailFromDomain">> => string()
-%% }
--type set_identity_mail_from_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_receipt_rule_request() :: #{
-%%   <<"Rule">> := receipt_rule(),
-%%   <<"RuleSetName">> := string()
-%% }
--type update_receipt_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_template_request() :: #{
-%%   <<"Template">> := template()
-%% }
--type update_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% reorder_receipt_rule_set_request() :: #{
-%%   <<"RuleNames">> := list(string()),
-%%   <<"RuleSetName">> := string()
-%% }
--type reorder_receipt_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% configuration_set() :: #{
-%%   <<"Name">> => string()
-%% }
--type configuration_set() :: #{binary() => any()}.
-
-%% Example:
-%% bulk_email_destination_status() :: #{
-%%   <<"Error">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type bulk_email_destination_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_set_request() :: #{
-%%   <<"ConfigurationSetName">> := string()
-%% }
--type delete_configuration_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_mail_from_domain_response() :: #{
-
-%% }
--type set_identity_mail_from_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_notification_attributes_response() :: #{
-%%   <<"NotificationAttributes">> => map()
-%% }
--type get_identity_notification_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_email_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_email_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_raw_email_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_raw_email_response() :: #{binary() => any()}.
-
-%% Example:
-%% configuration_set_sending_paused_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"message">> => string()
-%% }
--type configuration_set_sending_paused_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_destination() :: #{
-%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
-%% }
--type cloud_watch_destination() :: #{binary() => any()}.
-
-%% Example:
-%% mail_from_domain_not_verified_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
+-type invalid_rendering_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_s3_configuration_exception() :: #{
@@ -630,214 +880,6 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_s3_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% verify_domain_dkim_request() :: #{
-%%   <<"Domain">> := string()
-%% }
--type verify_domain_dkim_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_notification_attributes_request() :: #{
-%%   <<"Identities">> := list(string())
-%% }
--type get_identity_notification_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_receipt_filter_response() :: #{
-
-%% }
--type delete_receipt_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_dkim_attributes_response() :: #{
-%%   <<"DkimAttributes">> => map()
-%% }
--type get_identity_dkim_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_set_tracking_options_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"TrackingOptions">> := tracking_options()
-%% }
--type update_configuration_set_tracking_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_headers_in_notifications_enabled_response() :: #{
-
-%% }
--type set_identity_headers_in_notifications_enabled_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_response() :: #{
-
-%% }
--type create_configuration_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% message_dsn() :: #{
-%%   <<"ArrivalDate">> => non_neg_integer(),
-%%   <<"ExtensionFields">> => list(extension_field()),
-%%   <<"ReportingMta">> => string()
-%% }
--type message_dsn() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_verification_email_templates_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_verification_email_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_policy_request() :: #{
-%%   <<"Identity">> := string(),
-%%   <<"PolicyName">> := string()
-%% }
--type delete_identity_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% reputation_options() :: #{
-%%   <<"LastFreshStart">> => non_neg_integer(),
-%%   <<"ReputationMetricsEnabled">> => boolean(),
-%%   <<"SendingEnabled">> => boolean()
-%% }
--type reputation_options() :: #{binary() => any()}.
-
-%% Example:
-%% test_render_template_request() :: #{
-%%   <<"TemplateData">> := string(),
-%%   <<"TemplateName">> := string()
-%% }
--type test_render_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% identity_verification_attributes() :: #{
-%%   <<"VerificationStatus">> => list(any()),
-%%   <<"VerificationToken">> => string()
-%% }
--type identity_verification_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% set_active_receipt_rule_set_response() :: #{
-
-%% }
--type set_active_receipt_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_request() :: #{
-%%   <<"TemplateName">> := string()
-%% }
--type delete_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_set_sending_enabled_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"Enabled">> := boolean()
-%% }
--type update_configuration_set_sending_enabled_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_receipt_rule_set_request() :: #{
-%%   <<"RuleSetName">> := string()
-%% }
--type create_receipt_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% from_email_address_not_verified_exception() :: #{
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"message">> => string()
-%% }
--type from_email_address_not_verified_exception() :: #{binary() => any()}.
-
-%% Example:
-%% verify_email_identity_response() :: #{
-
-%% }
--type verify_email_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_action() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"InvocationType">> => list(any()),
-%%   <<"TopicArn">> => string()
-%% }
--type lambda_action() :: #{binary() => any()}.
-
-%% Example:
-%% reorder_receipt_rule_set_response() :: #{
-
-%% }
--type reorder_receipt_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_receipt_rule_response() :: #{
-%%   <<"Rule">> => receipt_rule()
-%% }
--type describe_receipt_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% event_destination() :: #{
-%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> => list(list(any())()),
-%%   <<"Name">> => string(),
-%%   <<"SNSDestination">> => s_n_s_destination()
-%% }
--type event_destination() :: #{binary() => any()}.
-
-%% Example:
-%% verify_email_address_request() :: #{
-%%   <<"EmailAddress">> := string()
-%% }
--type verify_email_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_set_event_destination_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"EventDestination">> := event_destination()
-%% }
--type update_configuration_set_event_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_policies_request() :: #{
-%%   <<"Identity">> := string(),
-%%   <<"PolicyNames">> := list(string())
-%% }
--type get_identity_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_receipt_filter_request() :: #{
-%%   <<"Filter">> := receipt_filter()
-%% }
--type create_receipt_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% message_tag() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type message_tag() :: #{binary() => any()}.
-
-%% Example:
-%% cannot_delete_exception() :: #{
-%%   <<"Name">> => string(),
-%%   <<"message">> => string()
-%% }
--type cannot_delete_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_notification_topic_response() :: #{
-
-%% }
--type set_identity_notification_topic_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_s_n_s_destination_exception() :: #{
@@ -848,18 +890,213 @@
 -type invalid_s_n_s_destination_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_identity_response() :: #{
-
+%% invalid_sns_topic_exception() :: #{
+%%   <<"Topic">> => string(),
+%%   <<"message">> => string()
 %% }
--type delete_identity_response() :: #{binary() => any()}.
+-type invalid_sns_topic_exception() :: #{binary() => any()}.
 
 %% Example:
-%% set_identity_headers_in_notifications_enabled_request() :: #{
-%%   <<"Enabled">> := boolean(),
-%%   <<"Identity">> := string(),
-%%   <<"NotificationType">> := list(any())
+%% invalid_template_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
 %% }
--type set_identity_headers_in_notifications_enabled_request() :: #{binary() => any()}.
+-type invalid_template_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tracking_options_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tracking_options_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_destination() :: #{
+%%   <<"DeliveryStreamARN">> => string(),
+%%   <<"IAMRoleARN">> => string()
+%% }
+-type kinesis_firehose_destination() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_action() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"TopicArn">> => string()
+%% }
+-type lambda_action() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_response() :: #{
+%%   <<"ConfigurationSets">> => list(configuration_set()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_verification_email_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_verification_email_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_verification_email_templates_response() :: #{
+%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_verification_email_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_request() :: #{
+%%   <<"IdentityType">> => list(any()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_response() :: #{
+%%   <<"Identities">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_policies_request() :: #{
+%%   <<"Identity">> := string()
+%% }
+-type list_identity_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_policies_response() :: #{
+%%   <<"PolicyNames">> => list(string())
+%% }
+-type list_identity_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_filters_request() :: #{
+
+%% }
+-type list_receipt_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_filters_response() :: #{
+%%   <<"Filters">> => list(receipt_filter())
+%% }
+-type list_receipt_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_rule_sets_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_receipt_rule_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_rule_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSets">> => list(receipt_rule_set_metadata())
+%% }
+-type list_receipt_rule_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_templates_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_templates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TemplatesMetadata">> => list(template_metadata())
+%% }
+-type list_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_verified_email_addresses_response() :: #{
+%%   <<"VerifiedEmailAddresses">> => list(string())
+%% }
+-type list_verified_email_addresses_response() :: #{binary() => any()}.
+
+%% Example:
+%% mail_from_domain_not_verified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% message() :: #{
+%%   <<"Body">> => body(),
+%%   <<"Subject">> => content()
+%% }
+-type message() :: #{binary() => any()}.
+
+%% Example:
+%% message_dsn() :: #{
+%%   <<"ArrivalDate">> => non_neg_integer(),
+%%   <<"ExtensionFields">> => list(extension_field()),
+%%   <<"ReportingMta">> => string()
+%% }
+-type message_dsn() :: #{binary() => any()}.
+
+%% Example:
+%% message_rejected() :: #{
+%%   <<"message">> => string()
+%% }
+-type message_rejected() :: #{binary() => any()}.
+
+%% Example:
+%% message_tag() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type message_tag() :: #{binary() => any()}.
+
+%% Example:
+%% missing_rendering_attribute_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type missing_rendering_attribute_exception() :: #{binary() => any()}.
+
+%% Example:
+%% production_access_not_granted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type production_access_not_granted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_delivery_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"DeliveryOptions">> => delivery_options()
+%% }
+-type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_delivery_options_response() :: #{
+
+%% }
+-type put_configuration_set_delivery_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_identity_policy_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"Policy">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type put_identity_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_identity_policy_response() :: #{
@@ -868,23 +1105,10 @@
 -type put_identity_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_receipt_rule_request() :: #{
-%%   <<"RuleName">> := string(),
-%%   <<"RuleSetName">> := string()
+%% raw_message() :: #{
+%%   <<"Data">> => binary()
 %% }
--type delete_receipt_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% clone_receipt_rule_set_response() :: #{
-
-%% }
--type clone_receipt_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_custom_verification_email_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_custom_verification_email_response() :: #{binary() => any()}.
+-type raw_message() :: #{binary() => any()}.
 
 %% Example:
 %% receipt_action() :: #{
@@ -900,73 +1124,11 @@
 -type receipt_action() :: #{binary() => any()}.
 
 %% Example:
-%% production_access_not_granted_exception() :: #{
-%%   <<"message">> => string()
+%% receipt_filter() :: #{
+%%   <<"IpFilter">> => receipt_ip_filter(),
+%%   <<"Name">> => string()
 %% }
--type production_access_not_granted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_verification_email_template_request() :: #{
-%%   <<"FailureRedirectionURL">> := string(),
-%%   <<"FromEmailAddress">> := string(),
-%%   <<"SuccessRedirectionURL">> := string(),
-%%   <<"TemplateContent">> := string(),
-%%   <<"TemplateName">> := string(),
-%%   <<"TemplateSubject">> := string()
-%% }
--type create_custom_verification_email_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_receipt_filters_request() :: #{
-
-%% }
--type list_receipt_filters_request() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_destination() :: #{
-%%   <<"TopicARN">> => string()
-%% }
--type s_n_s_destination() :: #{binary() => any()}.
-
-%% Example:
-%% event_destination_already_exists_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"EventDestinationName">> => string(),
-%%   <<"message">> => string()
-%% }
--type event_destination_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_configuration_sets_response() :: #{
-%%   <<"ConfigurationSets">> => list(configuration_set()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_mail_from_domain_attributes_response() :: #{
-%%   <<"MailFromDomainAttributes">> => map()
-%% }
--type get_identity_mail_from_domain_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_verification_email_template_request() :: #{
-%%   <<"FailureRedirectionURL">> => string(),
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"SuccessRedirectionURL">> => string(),
-%%   <<"TemplateContent">> => string(),
-%%   <<"TemplateName">> := string(),
-%%   <<"TemplateSubject">> => string()
-%% }
--type update_custom_verification_email_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_receipt_rule_request() :: #{
-%%   <<"After">> => string(),
-%%   <<"Rule">> := receipt_rule(),
-%%   <<"RuleSetName">> := string()
-%% }
--type create_receipt_rule_request() :: #{binary() => any()}.
+-type receipt_filter() :: #{binary() => any()}.
 
 %% Example:
 %% receipt_ip_filter() :: #{
@@ -976,92 +1138,109 @@
 -type receipt_ip_filter() :: #{binary() => any()}.
 
 %% Example:
-%% list_configuration_sets_request() :: #{
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
+%% receipt_rule() :: #{
+%%   <<"Actions">> => list(receipt_action()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Recipients">> => list(string()),
+%%   <<"ScanEnabled">> => boolean(),
+%%   <<"TlsPolicy">> => list(any())
 %% }
--type list_configuration_sets_request() :: #{binary() => any()}.
+-type receipt_rule() :: #{binary() => any()}.
 
 %% Example:
-%% update_receipt_rule_response() :: #{
-
+%% receipt_rule_set_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
 %% }
--type update_receipt_rule_response() :: #{binary() => any()}.
+-type receipt_rule_set_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% delete_configuration_set_tracking_options_request() :: #{
-%%   <<"ConfigurationSetName">> := string()
+%% recipient_dsn_fields() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"DiagnosticCode">> => string(),
+%%   <<"ExtensionFields">> => list(extension_field()),
+%%   <<"FinalRecipient">> => string(),
+%%   <<"LastAttemptDate">> => non_neg_integer(),
+%%   <<"RemoteMta">> => string(),
+%%   <<"Status">> => string()
 %% }
--type delete_configuration_set_tracking_options_request() :: #{binary() => any()}.
+-type recipient_dsn_fields() :: #{binary() => any()}.
 
 %% Example:
-%% raw_message() :: #{
-%%   <<"Data">> => binary()
+%% reorder_receipt_rule_set_request() :: #{
+%%   <<"RuleNames">> := list(string()),
+%%   <<"RuleSetName">> := string()
 %% }
--type raw_message() :: #{binary() => any()}.
+-type reorder_receipt_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_custom_verification_email_templates_response() :: #{
-%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template()),
-%%   <<"NextToken">> => string()
+%% reorder_receipt_rule_set_response() :: #{
+
 %% }
--type list_custom_verification_email_templates_response() :: #{binary() => any()}.
+-type reorder_receipt_rule_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% send_bulk_templated_email_response() :: #{
-%%   <<"Status">> => list(bulk_email_destination_status())
+%% reputation_options() :: #{
+%%   <<"LastFreshStart">> => non_neg_integer(),
+%%   <<"ReputationMetricsEnabled">> => boolean(),
+%%   <<"SendingEnabled">> => boolean()
 %% }
--type send_bulk_templated_email_response() :: #{binary() => any()}.
+-type reputation_options() :: #{binary() => any()}.
 
 %% Example:
-%% set_identity_feedback_forwarding_enabled_response() :: #{
-
+%% rule_does_not_exist_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
 %% }
--type set_identity_feedback_forwarding_enabled_response() :: #{binary() => any()}.
+-type rule_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_custom_verification_email_template_request() :: #{
-%%   <<"TemplateName">> := string()
+%% rule_set_does_not_exist_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
 %% }
--type delete_custom_verification_email_template_request() :: #{binary() => any()}.
+-type rule_set_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_action() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ObjectKeyPrefix">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type s3_action() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_action() :: #{
+%%   <<"Encoding">> => list(any()),
+%%   <<"TopicArn">> => string()
+%% }
+-type s_n_s_action() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_destination() :: #{
+%%   <<"TopicARN">> => string()
+%% }
+-type s_n_s_destination() :: #{binary() => any()}.
+
+%% Example:
+%% send_bounce_request() :: #{
+%%   <<"BounceSender">> := string(),
+%%   <<"BounceSenderArn">> => string(),
+%%   <<"BouncedRecipientInfoList">> := list(bounced_recipient_info()),
+%%   <<"Explanation">> => string(),
+%%   <<"MessageDsn">> => message_dsn(),
+%%   <<"OriginalMessageId">> := string()
+%% }
+-type send_bounce_request() :: #{binary() => any()}.
 
 %% Example:
 %% send_bounce_response() :: #{
 %%   <<"MessageId">> => string()
 %% }
 -type send_bounce_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_receipt_rule_set_request() :: #{
-%%   <<"RuleSetName">> := string()
-%% }
--type delete_receipt_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_receipt_rule_response() :: #{
-
-%% }
--type create_receipt_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tracking_options_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tracking_options_exception() :: #{binary() => any()}.
-
-%% Example:
-%% send_custom_verification_email_request() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"EmailAddress">> := string(),
-%%   <<"TemplateName">> := string()
-%% }
--type send_custom_verification_email_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_active_receipt_rule_set_request() :: #{
-%%   <<"RuleSetName">> => string()
-%% }
--type set_active_receipt_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% send_bulk_templated_email_request() :: #{
@@ -1080,56 +1259,73 @@
 -type send_bulk_templated_email_request() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_set_does_not_exist_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"message">> => string()
+%% send_bulk_templated_email_response() :: #{
+%%   <<"Status">> => list(bulk_email_destination_status())
 %% }
--type configuration_set_does_not_exist_exception() :: #{binary() => any()}.
+-type send_bulk_templated_email_response() :: #{binary() => any()}.
 
 %% Example:
-%% send_templated_email_response() :: #{
+%% send_custom_verification_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"TemplateName">> := string()
+%% }
+-type send_custom_verification_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_custom_verification_email_response() :: #{
 %%   <<"MessageId">> => string()
 %% }
--type send_templated_email_response() :: #{binary() => any()}.
+-type send_custom_verification_email_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_template_response() :: #{
-
+%% send_data_point() :: #{
+%%   <<"Bounces">> => float(),
+%%   <<"Complaints">> => float(),
+%%   <<"DeliveryAttempts">> => float(),
+%%   <<"Rejects">> => float(),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type update_template_response() :: #{binary() => any()}.
+-type send_data_point() :: #{binary() => any()}.
 
 %% Example:
-%% list_identity_policies_request() :: #{
-%%   <<"Identity">> := string()
+%% send_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Destination">> := destination(),
+%%   <<"Message">> := message(),
+%%   <<"ReplyToAddresses">> => list(string()),
+%%   <<"ReturnPath">> => string(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> := string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Tags">> => list(message_tag())
 %% }
--type list_identity_policies_request() :: #{binary() => any()}.
+-type send_email_request() :: #{binary() => any()}.
 
 %% Example:
-%% receipt_filter() :: #{
-%%   <<"IpFilter">> => receipt_ip_filter(),
-%%   <<"Name">> => string()
+%% send_email_response() :: #{
+%%   <<"MessageId">> => string()
 %% }
--type receipt_filter() :: #{binary() => any()}.
+-type send_email_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_configuration_set_event_destination_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"EventDestinationName">> := string()
+%% send_raw_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Destinations">> => list(string()),
+%%   <<"FromArn">> => string(),
+%%   <<"RawMessage">> := raw_message(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Tags">> => list(message_tag())
 %% }
--type delete_configuration_set_event_destination_request() :: #{binary() => any()}.
+-type send_raw_email_request() :: #{binary() => any()}.
 
 %% Example:
-%% receipt_rule_set_metadata() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string()
+%% send_raw_email_response() :: #{
+%%   <<"MessageId">> => string()
 %% }
--type receipt_rule_set_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_event_destination_response() :: #{
-
-%% }
--type create_configuration_set_event_destination_response() :: #{binary() => any()}.
+-type send_raw_email_response() :: #{binary() => any()}.
 
 %% Example:
 %% send_templated_email_request() :: #{
@@ -1148,67 +1344,76 @@
 -type send_templated_email_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_action() :: #{
-%%   <<"Scope">> => list(any()),
-%%   <<"TopicArn">> => string()
+%% send_templated_email_response() :: #{
+%%   <<"MessageId">> => string()
 %% }
--type stop_action() :: #{binary() => any()}.
+-type send_templated_email_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_configuration_set_delivery_options_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"DeliveryOptions">> => delivery_options()
+%% set_active_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> => string()
 %% }
--type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
+-type set_active_receipt_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% receipt_rule() :: #{
-%%   <<"Actions">> => list(receipt_action()),
-%%   <<"Enabled">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Recipients">> => list(string()),
-%%   <<"ScanEnabled">> => boolean(),
-%%   <<"TlsPolicy">> => list(any())
+%% set_active_receipt_rule_set_response() :: #{
+
 %% }
--type receipt_rule() :: #{binary() => any()}.
+-type set_active_receipt_rule_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% account_sending_paused_exception() :: #{
-%%   <<"message">> => string()
+%% set_identity_dkim_enabled_request() :: #{
+%%   <<"DkimEnabled">> := boolean(),
+%%   <<"Identity">> := string()
 %% }
--type account_sending_paused_exception() :: #{binary() => any()}.
+-type set_identity_dkim_enabled_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_configuration_set_exception() :: #{
-%%   <<"message">> => string()
+%% set_identity_dkim_enabled_response() :: #{
+
 %% }
--type invalid_configuration_set_exception() :: #{binary() => any()}.
+-type set_identity_dkim_enabled_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_configuration_set_tracking_options_response() :: #{
-
+%% set_identity_feedback_forwarding_enabled_request() :: #{
+%%   <<"ForwardingEnabled">> := boolean(),
+%%   <<"Identity">> := string()
 %% }
--type delete_configuration_set_tracking_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% verify_email_identity_request() :: #{
-%%   <<"EmailAddress">> := string()
-%% }
--type verify_email_identity_request() :: #{binary() => any()}.
+-type set_identity_feedback_forwarding_enabled_request() :: #{binary() => any()}.
 
 %% Example:
-%% rule_does_not_exist_exception() :: #{
-%%   <<"Name">> => string(),
-%%   <<"message">> => string()
+%% set_identity_feedback_forwarding_enabled_response() :: #{
+
 %% }
--type rule_does_not_exist_exception() :: #{binary() => any()}.
+-type set_identity_feedback_forwarding_enabled_response() :: #{binary() => any()}.
 
 %% Example:
-%% s_n_s_action() :: #{
-%%   <<"Encoding">> => list(any()),
-%%   <<"TopicArn">> => string()
+%% set_identity_headers_in_notifications_enabled_request() :: #{
+%%   <<"Enabled">> := boolean(),
+%%   <<"Identity">> := string(),
+%%   <<"NotificationType">> := list(any())
 %% }
--type s_n_s_action() :: #{binary() => any()}.
+-type set_identity_headers_in_notifications_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_headers_in_notifications_enabled_response() :: #{
+
+%% }
+-type set_identity_headers_in_notifications_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_mail_from_domain_request() :: #{
+%%   <<"BehaviorOnMXFailure">> => list(any()),
+%%   <<"Identity">> := string(),
+%%   <<"MailFromDomain">> => string()
+%% }
+-type set_identity_mail_from_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_mail_from_domain_response() :: #{
+
+%% }
+-type set_identity_mail_from_domain_response() :: #{binary() => any()}.
 
 %% Example:
 %% set_identity_notification_topic_request() :: #{
@@ -1219,199 +1424,10 @@
 -type set_identity_notification_topic_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_verification_attributes_response() :: #{
-%%   <<"VerificationAttributes">> => map()
-%% }
--type get_identity_verification_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% bounced_recipient_info() :: #{
-%%   <<"BounceType">> => list(any()),
-%%   <<"Recipient">> => string(),
-%%   <<"RecipientArn">> => string(),
-%%   <<"RecipientDsnFields">> => recipient_dsn_fields()
-%% }
--type bounced_recipient_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_templates_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TemplatesMetadata">> => list(template_metadata())
-%% }
--type list_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_template_exception() :: #{
-%%   <<"TemplateName">> => string(),
-%%   <<"message">> => string()
-%% }
--type invalid_template_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_request() :: #{
-%%   <<"TemplateName">> := string()
-%% }
--type get_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_tracking_options_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"TrackingOptions">> := tracking_options()
-%% }
--type create_configuration_set_tracking_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_rendering_parameter_exception() :: #{
-%%   <<"TemplateName">> => string(),
-%%   <<"message">> => string()
-%% }
--type invalid_rendering_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_active_receipt_rule_set_request() :: #{
+%% set_identity_notification_topic_response() :: #{
 
 %% }
--type describe_active_receipt_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_sending_enabled_request() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type update_account_sending_enabled_request() :: #{binary() => any()}.
-
-%% Example:
-%% missing_rendering_attribute_exception() :: #{
-%%   <<"TemplateName">> => string(),
-%%   <<"message">> => string()
-%% }
--type missing_rendering_attribute_exception() :: #{binary() => any()}.
-
-%% Example:
-%% custom_verification_email_template() :: #{
-%%   <<"FailureRedirectionURL">> => string(),
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"SuccessRedirectionURL">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateSubject">> => string()
-%% }
--type custom_verification_email_template() :: #{binary() => any()}.
-
-%% Example:
-%% event_destination_does_not_exist_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"EventDestinationName">> => string(),
-%%   <<"message">> => string()
-%% }
--type event_destination_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% destination() :: #{
-%%   <<"BccAddresses">> => list(string()),
-%%   <<"CcAddresses">> => list(string()),
-%%   <<"ToAddresses">> => list(string())
-%% }
--type destination() :: #{binary() => any()}.
-
-%% Example:
-%% body() :: #{
-%%   <<"Html">> => content(),
-%%   <<"Text">> => content()
-%% }
--type body() :: #{binary() => any()}.
-
-%% Example:
-%% delete_receipt_rule_response() :: #{
-
-%% }
--type delete_receipt_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% message_rejected() :: #{
-%%   <<"message">> => string()
-%% }
--type message_rejected() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_dkim_enabled_request() :: #{
-%%   <<"DkimEnabled">> := boolean(),
-%%   <<"Identity">> := string()
-%% }
--type set_identity_dkim_enabled_request() :: #{binary() => any()}.
-
-%% Example:
-%% template_does_not_exist_exception() :: #{
-%%   <<"TemplateName">> => string(),
-%%   <<"message">> => string()
-%% }
--type template_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_policies_response() :: #{
-%%   <<"Policies">> => map()
-%% }
--type get_identity_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_event_destination_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"EventDestination">> := event_destination()
-%% }
--type create_configuration_set_event_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_bounce_request() :: #{
-%%   <<"BounceSender">> := string(),
-%%   <<"BounceSenderArn">> => string(),
-%%   <<"BouncedRecipientInfoList">> := list(bounced_recipient_info()),
-%%   <<"Explanation">> => string(),
-%%   <<"MessageDsn">> => message_dsn(),
-%%   <<"OriginalMessageId">> := string()
-%% }
--type send_bounce_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_identities_response() :: #{
-%%   <<"Identities">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_identities_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% recipient_dsn_fields() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"DiagnosticCode">> => string(),
-%%   <<"ExtensionFields">> => list(extension_field()),
-%%   <<"FinalRecipient">> => string(),
-%%   <<"LastAttemptDate">> => non_neg_integer(),
-%%   <<"RemoteMta">> => string(),
-%%   <<"Status">> => string()
-%% }
--type recipient_dsn_fields() :: #{binary() => any()}.
-
-%% Example:
-%% delivery_options() :: #{
-%%   <<"TlsPolicy">> => list(any())
-%% }
--type delivery_options() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_set_event_destination_response() :: #{
-
-%% }
--type update_configuration_set_event_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% workmail_action() :: #{
-%%   <<"OrganizationArn">> => string(),
-%%   <<"TopicArn">> => string()
-%% }
--type workmail_action() :: #{binary() => any()}.
+-type set_identity_notification_topic_response() :: #{binary() => any()}.
 
 %% Example:
 %% set_receipt_rule_position_request() :: #{
@@ -1422,51 +1438,17 @@
 -type set_receipt_rule_position_request() :: #{binary() => any()}.
 
 %% Example:
-%% tracking_options_already_exists_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"message">> => string()
+%% set_receipt_rule_position_response() :: #{
+
 %% }
--type tracking_options_already_exists_exception() :: #{binary() => any()}.
+-type set_receipt_rule_position_response() :: #{binary() => any()}.
 
 %% Example:
-%% bulk_email_destination() :: #{
-%%   <<"Destination">> => destination(),
-%%   <<"ReplacementTags">> => list(message_tag()),
-%%   <<"ReplacementTemplateData">> => string()
+%% stop_action() :: #{
+%%   <<"Scope">> => list(any()),
+%%   <<"TopicArn">> => string()
 %% }
--type bulk_email_destination() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_policies_response() :: #{
-%%   <<"PolicyNames">> => list(string())
-%% }
--type list_identity_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% content() :: #{
-%%   <<"Charset">> => string(),
-%%   <<"Data">> => string()
-%% }
--type content() :: #{binary() => any()}.
-
-%% Example:
-%% create_template_response() :: #{
-
-%% }
--type create_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_response() :: #{
-
-%% }
--type delete_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% extension_field() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type extension_field() :: #{binary() => any()}.
+-type stop_action() :: #{binary() => any()}.
 
 %% Example:
 %% template() :: #{
@@ -1478,90 +1460,44 @@
 -type template() :: #{binary() => any()}.
 
 %% Example:
-%% send_email_request() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"Destination">> := destination(),
-%%   <<"Message">> := message(),
-%%   <<"ReplyToAddresses">> => list(string()),
-%%   <<"ReturnPath">> => string(),
-%%   <<"ReturnPathArn">> => string(),
-%%   <<"Source">> := string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Tags">> => list(message_tag())
-%% }
--type send_email_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_sending_enabled_response() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type get_account_sending_enabled_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_verified_email_addresses_response() :: #{
-%%   <<"VerifiedEmailAddresses">> => list(string())
-%% }
--type list_verified_email_addresses_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_send_statistics_response() :: #{
-%%   <<"SendDataPoints">> => list(send_data_point())
-%% }
--type get_send_statistics_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_delivery_options_exception() :: #{
+%% template_does_not_exist_exception() :: #{
+%%   <<"TemplateName">> => string(),
 %%   <<"message">> => string()
 %% }
--type invalid_delivery_options_exception() :: #{binary() => any()}.
+-type template_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_receipt_rule_set_response() :: #{
-
+%% template_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
 %% }
--type delete_receipt_rule_set_response() :: #{binary() => any()}.
+-type template_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% send_data_point() :: #{
-%%   <<"Bounces">> => float(),
-%%   <<"Complaints">> => float(),
-%%   <<"DeliveryAttempts">> => float(),
-%%   <<"Rejects">> => float(),
-%%   <<"Timestamp">> => non_neg_integer()
+%% test_render_template_request() :: #{
+%%   <<"TemplateData">> := string(),
+%%   <<"TemplateName">> := string()
 %% }
--type send_data_point() :: #{binary() => any()}.
+-type test_render_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_receipt_filter_response() :: #{
-
+%% test_render_template_response() :: #{
+%%   <<"RenderedTemplate">> => string()
 %% }
--type create_receipt_filter_response() :: #{binary() => any()}.
+-type test_render_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_send_quota_response() :: #{
-%%   <<"Max24HourSend">> => float(),
-%%   <<"MaxSendRate">> => float(),
-%%   <<"SentLast24Hours">> => float()
+%% tracking_options() :: #{
+%%   <<"CustomRedirectDomain">> => string()
 %% }
--type get_send_quota_response() :: #{binary() => any()}.
+-type tracking_options() :: #{binary() => any()}.
 
 %% Example:
-%% update_configuration_set_tracking_options_response() :: #{
-
+%% tracking_options_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
 %% }
--type update_configuration_set_tracking_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_identity_dkim_enabled_response() :: #{
-
-%% }
--type set_identity_dkim_enabled_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_configuration_set_request() :: #{
-%%   <<"ConfigurationSet">> := configuration_set()
-%% }
--type create_configuration_set_request() :: #{binary() => any()}.
+-type tracking_options_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% tracking_options_does_not_exist_exception() :: #{
@@ -1571,29 +1507,23 @@
 -type tracking_options_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_firehose_destination_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"EventDestinationName">> => string(),
-%%   <<"message">> => string()
+%% update_account_sending_enabled_request() :: #{
+%%   <<"Enabled">> => boolean()
 %% }
--type invalid_firehose_destination_exception() :: #{binary() => any()}.
+-type update_account_sending_enabled_request() :: #{binary() => any()}.
 
 %% Example:
-%% bounce_action() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Sender">> => string(),
-%%   <<"SmtpReplyCode">> => string(),
-%%   <<"StatusCode">> => string(),
-%%   <<"TopicArn">> => string()
+%% update_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestination">> := event_destination()
 %% }
--type bounce_action() :: #{binary() => any()}.
+-type update_configuration_set_event_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% clone_receipt_rule_set_request() :: #{
-%%   <<"OriginalRuleSetName">> := string(),
-%%   <<"RuleSetName">> := string()
+%% update_configuration_set_event_destination_response() :: #{
+
 %% }
--type clone_receipt_rule_set_request() :: #{binary() => any()}.
+-type update_configuration_set_event_destination_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_configuration_set_reputation_metrics_enabled_request() :: #{
@@ -1603,62 +1533,132 @@
 -type update_configuration_set_reputation_metrics_enabled_request() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_set_already_exists_exception() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"message">> => string()
+%% update_configuration_set_sending_enabled_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"Enabled">> := boolean()
 %% }
--type configuration_set_already_exists_exception() :: #{binary() => any()}.
+-type update_configuration_set_sending_enabled_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_header_action() :: #{
-%%   <<"HeaderName">> => string(),
-%%   <<"HeaderValue">> => string()
+%% update_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"TrackingOptions">> := tracking_options()
 %% }
--type add_header_action() :: #{binary() => any()}.
+-type update_configuration_set_tracking_options_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_dkim_attributes_request() :: #{
-%%   <<"Identities">> := list(string())
+%% update_configuration_set_tracking_options_response() :: #{
+
 %% }
--type get_identity_dkim_attributes_request() :: #{binary() => any()}.
+-type update_configuration_set_tracking_options_response() :: #{binary() => any()}.
 
 %% Example:
-%% message() :: #{
-%%   <<"Body">> => body(),
-%%   <<"Subject">> => content()
+%% update_custom_verification_email_template_request() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateContent">> => string(),
+%%   <<"TemplateName">> := string(),
+%%   <<"TemplateSubject">> => string()
 %% }
--type message() :: #{binary() => any()}.
+-type update_custom_verification_email_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% identity_mail_from_domain_attributes() :: #{
-%%   <<"BehaviorOnMXFailure">> => list(any()),
-%%   <<"MailFromDomain">> => string(),
-%%   <<"MailFromDomainStatus">> => list(any())
+%% update_receipt_rule_request() :: #{
+%%   <<"Rule">> := receipt_rule(),
+%%   <<"RuleSetName">> := string()
 %% }
--type identity_mail_from_domain_attributes() :: #{binary() => any()}.
+-type update_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_receipt_rule_response() :: #{
+
+%% }
+-type update_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_template_request() :: #{
+%%   <<"Template">> := template()
+%% }
+-type update_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_template_response() :: #{
+
+%% }
+-type update_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_dkim_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type verify_domain_dkim_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_dkim_response() :: #{
+%%   <<"DkimTokens">> => list(string())
+%% }
+-type verify_domain_dkim_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_identity_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type verify_domain_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_identity_response() :: #{
+%%   <<"VerificationToken">> => string()
+%% }
+-type verify_domain_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_address_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type verify_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_identity_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type verify_email_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_identity_response() :: #{
+
+%% }
+-type verify_email_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% workmail_action() :: #{
+%%   <<"OrganizationArn">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type workmail_action() :: #{binary() => any()}.
 
 -type clone_receipt_rule_set_errors() ::
+    rule_set_does_not_exist_exception() | 
     limit_exceeded_exception() | 
-    already_exists_exception() | 
-    rule_set_does_not_exist_exception().
+    already_exists_exception().
 
 -type create_configuration_set_errors() ::
-    configuration_set_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_configuration_set_exception().
+    invalid_configuration_set_exception() | 
+    configuration_set_already_exists_exception().
 
 -type create_configuration_set_event_destination_errors() ::
-    invalid_firehose_destination_exception() | 
     limit_exceeded_exception() | 
-    configuration_set_does_not_exist_exception() | 
-    event_destination_already_exists_exception() | 
     invalid_s_n_s_destination_exception() | 
-    invalid_cloud_watch_destination_exception().
+    invalid_firehose_destination_exception() | 
+    invalid_cloud_watch_destination_exception() | 
+    event_destination_already_exists_exception() | 
+    configuration_set_does_not_exist_exception().
 
 -type create_configuration_set_tracking_options_errors() ::
     tracking_options_already_exists_exception() | 
-    configuration_set_does_not_exist_exception() | 
-    invalid_tracking_options_exception().
+    invalid_tracking_options_exception() | 
+    configuration_set_does_not_exist_exception().
 
 -type create_custom_verification_email_template_errors() ::
     limit_exceeded_exception() | 
@@ -1671,13 +1671,13 @@
     already_exists_exception().
 
 -type create_receipt_rule_errors() ::
-    limit_exceeded_exception() | 
+    rule_set_does_not_exist_exception() | 
     rule_does_not_exist_exception() | 
-    invalid_s3_configuration_exception() | 
+    limit_exceeded_exception() | 
     invalid_sns_topic_exception() | 
+    invalid_s3_configuration_exception() | 
     invalid_lambda_function_exception() | 
-    already_exists_exception() | 
-    rule_set_does_not_exist_exception().
+    already_exists_exception().
 
 -type create_receipt_rule_set_errors() ::
     limit_exceeded_exception() | 
@@ -1709,8 +1709,8 @@
     configuration_set_does_not_exist_exception().
 
 -type describe_receipt_rule_errors() ::
-    rule_does_not_exist_exception() | 
-    rule_set_does_not_exist_exception().
+    rule_set_does_not_exist_exception() | 
+    rule_does_not_exist_exception().
 
 -type describe_receipt_rule_set_errors() ::
     rule_set_does_not_exist_exception().
@@ -1729,8 +1729,8 @@
     invalid_policy_exception().
 
 -type reorder_receipt_rule_set_errors() ::
-    rule_does_not_exist_exception() | 
-    rule_set_does_not_exist_exception().
+    rule_set_does_not_exist_exception() | 
+    rule_does_not_exist_exception().
 
 -type send_bounce_errors() ::
     message_rejected().
@@ -1738,46 +1738,46 @@
 -type send_bulk_templated_email_errors() ::
     template_does_not_exist_exception() | 
     message_rejected() | 
-    account_sending_paused_exception() | 
-    configuration_set_does_not_exist_exception() | 
     mail_from_domain_not_verified_exception() | 
-    configuration_set_sending_paused_exception().
+    configuration_set_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    account_sending_paused_exception().
 
 -type send_custom_verification_email_errors() ::
-    message_rejected() | 
-    configuration_set_does_not_exist_exception() | 
     production_access_not_granted_exception() | 
+    message_rejected() | 
     from_email_address_not_verified_exception() | 
-    custom_verification_email_template_does_not_exist_exception().
+    custom_verification_email_template_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception().
 
 -type send_email_errors() ::
     message_rejected() | 
-    account_sending_paused_exception() | 
-    configuration_set_does_not_exist_exception() | 
     mail_from_domain_not_verified_exception() | 
-    configuration_set_sending_paused_exception().
+    configuration_set_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    account_sending_paused_exception().
 
 -type send_raw_email_errors() ::
     message_rejected() | 
-    account_sending_paused_exception() | 
-    configuration_set_does_not_exist_exception() | 
     mail_from_domain_not_verified_exception() | 
-    configuration_set_sending_paused_exception().
+    configuration_set_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    account_sending_paused_exception().
 
 -type send_templated_email_errors() ::
     template_does_not_exist_exception() | 
     message_rejected() | 
-    account_sending_paused_exception() | 
-    configuration_set_does_not_exist_exception() | 
     mail_from_domain_not_verified_exception() | 
-    configuration_set_sending_paused_exception().
+    configuration_set_sending_paused_exception() | 
+    configuration_set_does_not_exist_exception() | 
+    account_sending_paused_exception().
 
 -type set_active_receipt_rule_set_errors() ::
     rule_set_does_not_exist_exception().
 
 -type set_receipt_rule_position_errors() ::
-    rule_does_not_exist_exception() | 
-    rule_set_does_not_exist_exception().
+    rule_set_does_not_exist_exception() | 
+    rule_does_not_exist_exception().
 
 -type test_render_template_errors() ::
     template_does_not_exist_exception() | 
@@ -1785,11 +1785,11 @@
     invalid_rendering_parameter_exception().
 
 -type update_configuration_set_event_destination_errors() ::
-    invalid_firehose_destination_exception() | 
-    event_destination_does_not_exist_exception() | 
-    configuration_set_does_not_exist_exception() | 
     invalid_s_n_s_destination_exception() | 
-    invalid_cloud_watch_destination_exception().
+    invalid_firehose_destination_exception() | 
+    invalid_cloud_watch_destination_exception() | 
+    event_destination_does_not_exist_exception() | 
+    configuration_set_does_not_exist_exception().
 
 -type update_configuration_set_reputation_metrics_enabled_errors() ::
     configuration_set_does_not_exist_exception().
@@ -1799,8 +1799,8 @@
 
 -type update_configuration_set_tracking_options_errors() ::
     tracking_options_does_not_exist_exception() | 
-    configuration_set_does_not_exist_exception() | 
-    invalid_tracking_options_exception().
+    invalid_tracking_options_exception() | 
+    configuration_set_does_not_exist_exception().
 
 -type update_custom_verification_email_template_errors() ::
     from_email_address_not_verified_exception() | 
@@ -1808,12 +1808,12 @@
     custom_verification_email_invalid_content_exception().
 
 -type update_receipt_rule_errors() ::
-    limit_exceeded_exception() | 
+    rule_set_does_not_exist_exception() | 
     rule_does_not_exist_exception() | 
-    invalid_s3_configuration_exception() | 
+    limit_exceeded_exception() | 
     invalid_sns_topic_exception() | 
-    invalid_lambda_function_exception() | 
-    rule_set_does_not_exist_exception().
+    invalid_s3_configuration_exception() | 
+    invalid_lambda_function_exception().
 
 -type update_template_errors() ::
     template_does_not_exist_exception() | 

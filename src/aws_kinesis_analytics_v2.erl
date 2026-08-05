@@ -84,18 +84,97 @@
 
 
 %% Example:
-%% monitoring_configuration_description() :: #{
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"MetricsLevel">> => list(any())
+%% add_application_cloud_watch_logging_option_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CloudWatchLoggingOption">> := cloud_watch_logging_option(),
+%%   <<"ConditionalToken">> => string(),
+%%   <<"CurrentApplicationVersionId">> => float()
 %% }
--type monitoring_configuration_description() :: #{binary() => any()}.
+-type add_application_cloud_watch_logging_option_request() :: #{binary() => any()}.
 
 %% Example:
-%% input_parallelism_update() :: #{
-%%   <<"CountUpdate">> => integer()
+%% add_application_cloud_watch_logging_option_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
+%%   <<"OperationId">> => string()
 %% }
--type input_parallelism_update() :: #{binary() => any()}.
+-type add_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_input_processing_configuration_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float(),
+%%   <<"InputId">> := string(),
+%%   <<"InputProcessingConfiguration">> := input_processing_configuration()
+%% }
+-type add_application_input_processing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_input_processing_configuration_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"InputId">> => string(),
+%%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description()
+%% }
+-type add_application_input_processing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_input_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float(),
+%%   <<"Input">> := input()
+%% }
+-type add_application_input_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_input_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"InputDescriptions">> => list(input_description())
+%% }
+-type add_application_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_output_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float(),
+%%   <<"Output">> := output()
+%% }
+-type add_application_output_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_output_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"OutputDescriptions">> => list(output_description())
+%% }
+-type add_application_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_reference_data_source_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float(),
+%%   <<"ReferenceDataSource">> := reference_data_source()
+%% }
+-type add_application_reference_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_reference_data_source_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
+%% }
+-type add_application_reference_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_application_vpc_configuration_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"ConditionalToken">> => string(),
+%%   <<"CurrentApplicationVersionId">> => float(),
+%%   <<"VpcConfiguration">> := vpc_configuration()
+%% }
+-type add_application_vpc_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% add_application_vpc_configuration_response() :: #{
@@ -107,35 +186,68 @@
 -type add_application_vpc_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% application_maintenance_configuration_update() :: #{
-%%   <<"ApplicationMaintenanceWindowStartTimeUpdate">> => string()
+%% application_code_configuration() :: #{
+%%   <<"CodeContent">> => code_content(),
+%%   <<"CodeContentType">> => list(any())
 %% }
--type application_maintenance_configuration_update() :: #{binary() => any()}.
+-type application_code_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% input_update() :: #{
-%%   <<"InputId">> => string(),
-%%   <<"InputParallelismUpdate">> => input_parallelism_update(),
-%%   <<"InputProcessingConfigurationUpdate">> => input_processing_configuration_update(),
-%%   <<"InputSchemaUpdate">> => input_schema_update(),
-%%   <<"KinesisFirehoseInputUpdate">> => kinesis_firehose_input_update(),
-%%   <<"KinesisStreamsInputUpdate">> => kinesis_streams_input_update(),
-%%   <<"NamePrefixUpdate">> => string()
+%% application_code_configuration_description() :: #{
+%%   <<"CodeContentDescription">> => code_content_description(),
+%%   <<"CodeContentType">> => list(any())
 %% }
--type input_update() :: #{binary() => any()}.
+-type application_code_configuration_description() :: #{binary() => any()}.
 
 %% Example:
-%% zeppelin_monitoring_configuration() :: #{
-%%   <<"LogLevel">> => list(any())
+%% application_code_configuration_update() :: #{
+%%   <<"CodeContentTypeUpdate">> => list(any()),
+%%   <<"CodeContentUpdate">> => code_content_update()
 %% }
--type zeppelin_monitoring_configuration() :: #{binary() => any()}.
+-type application_code_configuration_update() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% application_configuration() :: #{
+%%   <<"ApplicationCodeConfiguration">> => application_code_configuration(),
+%%   <<"ApplicationEncryptionConfiguration">> => application_encryption_configuration(),
+%%   <<"ApplicationSnapshotConfiguration">> => application_snapshot_configuration(),
+%%   <<"ApplicationSystemRollbackConfiguration">> => application_system_rollback_configuration(),
+%%   <<"EnvironmentProperties">> => environment_properties(),
+%%   <<"FlinkApplicationConfiguration">> => flink_application_configuration(),
+%%   <<"SqlApplicationConfiguration">> => sql_application_configuration(),
+%%   <<"VpcConfigurations">> => list(vpc_configuration()),
+%%   <<"ZeppelinApplicationConfiguration">> => zeppelin_application_configuration()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type application_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% application_configuration_description() :: #{
+%%   <<"ApplicationCodeConfigurationDescription">> => application_code_configuration_description(),
+%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
+%%   <<"ApplicationSnapshotConfigurationDescription">> => application_snapshot_configuration_description(),
+%%   <<"ApplicationSystemRollbackConfigurationDescription">> => application_system_rollback_configuration_description(),
+%%   <<"EnvironmentPropertyDescriptions">> => environment_property_descriptions(),
+%%   <<"FlinkApplicationConfigurationDescription">> => flink_application_configuration_description(),
+%%   <<"RunConfigurationDescription">> => run_configuration_description(),
+%%   <<"SqlApplicationConfigurationDescription">> => sql_application_configuration_description(),
+%%   <<"VpcConfigurationDescriptions">> => list(vpc_configuration_description()),
+%%   <<"ZeppelinApplicationConfigurationDescription">> => zeppelin_application_configuration_description()
+%% }
+-type application_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% application_configuration_update() :: #{
+%%   <<"ApplicationCodeConfigurationUpdate">> => application_code_configuration_update(),
+%%   <<"ApplicationEncryptionConfigurationUpdate">> => application_encryption_configuration_update(),
+%%   <<"ApplicationSnapshotConfigurationUpdate">> => application_snapshot_configuration_update(),
+%%   <<"ApplicationSystemRollbackConfigurationUpdate">> => application_system_rollback_configuration_update(),
+%%   <<"EnvironmentPropertyUpdates">> => environment_property_updates(),
+%%   <<"FlinkApplicationConfigurationUpdate">> => flink_application_configuration_update(),
+%%   <<"SqlApplicationConfigurationUpdate">> => sql_application_configuration_update(),
+%%   <<"VpcConfigurationUpdates">> => list(vpc_configuration_update()),
+%%   <<"ZeppelinApplicationConfigurationUpdate">> => zeppelin_application_configuration_update()
+%% }
+-type application_configuration_update() :: #{binary() => any()}.
 
 %% Example:
 %% application_detail() :: #{
@@ -161,140 +273,18 @@
 -type application_detail() :: #{binary() => any()}.
 
 %% Example:
-%% application_snapshot_configuration() :: #{
-%%   <<"SnapshotsEnabled">> => boolean()
+%% application_encryption_configuration() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
 %% }
--type application_snapshot_configuration() :: #{binary() => any()}.
+-type application_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"Message">> => string()
+%% application_encryption_configuration_description() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
 %% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% glue_data_catalog_configuration_description() :: #{
-%%   <<"DatabaseARN">> => string()
-%% }
--type glue_data_catalog_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% parallelism_configuration_update() :: #{
-%%   <<"AutoScalingEnabledUpdate">> => boolean(),
-%%   <<"ConfigurationTypeUpdate">> => list(any()),
-%%   <<"ParallelismPerKPUUpdate">> => integer(),
-%%   <<"ParallelismUpdate">> => integer()
-%% }
--type parallelism_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_as_application_configuration_update() :: #{
-%%   <<"S3ContentLocationUpdate">> => s3_content_base_location_update()
-%% }
--type deploy_as_application_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% glue_data_catalog_configuration() :: #{
-%%   <<"DatabaseARN">> => string()
-%% }
--type glue_data_catalog_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% custom_artifact_configuration() :: #{
-%%   <<"ArtifactType">> => list(any()),
-%%   <<"MavenReference">> => maven_reference(),
-%%   <<"S3ContentLocation">> => s3_content_location()
-%% }
--type custom_artifact_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_input_processing_configuration_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"InputId">> => string(),
-%%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description()
-%% }
--type add_application_input_processing_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% property_group() :: #{
-%%   <<"PropertyGroupId">> => string(),
-%%   <<"PropertyMap">> => map()
-%% }
--type property_group() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% flink_run_configuration() :: #{
-%%   <<"AllowNonRestoredState">> => boolean()
-%% }
--type flink_run_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_configuration_description() :: #{
-%%   <<"GlueDataCatalogConfigurationDescription">> => glue_data_catalog_configuration_description()
-%% }
--type catalog_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_logging_option_description() :: #{
-%%   <<"CloudWatchLoggingOptionId">> => string(),
-%%   <<"LogStreamARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type cloud_watch_logging_option_description() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_cloud_watch_logging_option_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
-%%   <<"OperationId">> => string()
-%% }
--type add_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
-
-%% Example:
-%% input_schema_update() :: #{
-%%   <<"RecordColumnUpdates">> => list(record_column()),
-%%   <<"RecordEncodingUpdate">> => string(),
-%%   <<"RecordFormatUpdate">> => record_format()
-%% }
--type input_schema_update() :: #{binary() => any()}.
-
-%% Example:
-%% discover_input_schema_response() :: #{
-%%   <<"InputSchema">> => source_schema(),
-%%   <<"ParsedInputRecords">> => list(list(string())()),
-%%   <<"ProcessedInputRecords">> => list(string()),
-%%   <<"RawInputRecords">> => list(string())
-%% }
--type discover_input_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% sql_application_configuration_update() :: #{
-%%   <<"InputUpdates">> => list(input_update()),
-%%   <<"OutputUpdates">> => list(output_update()),
-%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update())
-%% }
--type sql_application_configuration_update() :: #{binary() => any()}.
+-type application_encryption_configuration_description() :: #{binary() => any()}.
 
 %% Example:
 %% application_encryption_configuration_update() :: #{
@@ -304,451 +294,27 @@
 -type application_encryption_configuration_update() :: #{binary() => any()}.
 
 %% Example:
-%% add_application_vpc_configuration_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"ConditionalToken">> => string(),
-%%   <<"CurrentApplicationVersionId">> => float(),
-%%   <<"VpcConfiguration">> := vpc_configuration()
+%% application_maintenance_configuration_description() :: #{
+%%   <<"ApplicationMaintenanceWindowEndTime">> => string(),
+%%   <<"ApplicationMaintenanceWindowStartTime">> => string()
 %% }
--type add_application_vpc_configuration_request() :: #{binary() => any()}.
+-type application_maintenance_configuration_description() :: #{binary() => any()}.
 
 %% Example:
-%% resource_provisioned_throughput_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% application_maintenance_configuration_update() :: #{
+%%   <<"ApplicationMaintenanceWindowStartTimeUpdate">> => string()
 %% }
--type resource_provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+-type application_maintenance_configuration_update() :: #{binary() => any()}.
 
 %% Example:
-%% custom_artifact_configuration_description() :: #{
-%%   <<"ArtifactType">> => list(any()),
-%%   <<"MavenReferenceDescription">> => maven_reference(),
-%%   <<"S3ContentLocationDescription">> => s3_content_location()
+%% application_operation_info() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Operation">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type custom_artifact_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_operation_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"OperationId">> := string()
-%% }
--type describe_application_operation_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_version_response() :: #{
-%%   <<"ApplicationVersionDetail">> => application_detail()
-%% }
--type describe_application_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_reference_data_source_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float()
-%% }
--type delete_application_reference_data_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% input_starting_position_configuration() :: #{
-%%   <<"InputStartingPosition">> => list(any())
-%% }
--type input_starting_position_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_configuration_description() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcConfigurationId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type vpc_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% zeppelin_monitoring_configuration_description() :: #{
-%%   <<"LogLevel">> => list(any())
-%% }
--type zeppelin_monitoring_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_input_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"InputDescriptions">> => list(input_description())
-%% }
--type add_application_input_response() :: #{binary() => any()}.
-
-%% Example:
-%% zeppelin_application_configuration_description() :: #{
-%%   <<"CatalogConfigurationDescription">> => catalog_configuration_description(),
-%%   <<"CustomArtifactsConfigurationDescription">> => list(custom_artifact_configuration_description()),
-%%   <<"DeployAsApplicationConfigurationDescription">> => deploy_as_application_configuration_description(),
-%%   <<"MonitoringConfigurationDescription">> => zeppelin_monitoring_configuration_description()
-%% }
--type zeppelin_application_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_input_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type kinesis_firehose_input_description() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_configuration_update() :: #{
-%%   <<"SecurityGroupIdUpdates">> => list(string()),
-%%   <<"SubnetIdUpdates">> => list(string()),
-%%   <<"VpcConfigurationId">> => string()
-%% }
--type vpc_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_output_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type kinesis_firehose_output_description() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_input_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
-%% }
--type kinesis_firehose_input_update() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_logging_option_update() :: #{
-%%   <<"CloudWatchLoggingOptionId">> => string(),
-%%   <<"LogStreamARNUpdate">> => string()
-%% }
--type cloud_watch_logging_option_update() :: #{binary() => any()}.
-
-%% Example:
-%% code_content_description() :: #{
-%%   <<"CodeMD5">> => string(),
-%%   <<"CodeSize">> => float(),
-%%   <<"S3ApplicationCodeLocationDescription">> => s3_application_code_location_description(),
-%%   <<"TextContent">> => string()
-%% }
--type code_content_description() :: #{binary() => any()}.
-
-%% Example:
-%% application_system_rollback_configuration() :: #{
-%%   <<"RollbackEnabled">> => boolean()
-%% }
--type application_system_rollback_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_operation_response() :: #{
-%%   <<"ApplicationOperationInfoDetails">> => application_operation_info_details()
-%% }
--type describe_application_operation_response() :: #{binary() => any()}.
-
-%% Example:
-%% application_version_summary() :: #{
-%%   <<"ApplicationStatus">> => list(any()),
-%%   <<"ApplicationVersionId">> => float()
-%% }
--type application_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streams_input_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
-%% }
--type kinesis_streams_input_update() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_snapshots_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SnapshotSummaries">> => list(snapshot_details())
-%% }
--type list_application_snapshots_response() :: #{binary() => any()}.
-
-%% Example:
-%% input_processing_configuration() :: #{
-%%   <<"InputLambdaProcessor">> => input_lambda_processor()
-%% }
--type input_processing_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_input_processing_configuration_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"InputId">> := string()
-%% }
--type delete_application_input_processing_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% output_description() :: #{
-%%   <<"DestinationSchema">> => destination_schema(),
-%%   <<"KinesisFirehoseOutputDescription">> => kinesis_firehose_output_description(),
-%%   <<"KinesisStreamsOutputDescription">> => kinesis_streams_output_description(),
-%%   <<"LambdaOutputDescription">> => lambda_output_description(),
-%%   <<"Name">> => string(),
-%%   <<"OutputId">> => string()
-%% }
--type output_description() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_configuration() :: #{
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"MetricsLevel">> => list(any())
-%% }
--type monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% error_info() :: #{
-%%   <<"ErrorString">> => string()
-%% }
--type error_info() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_cloud_watch_logging_option_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CloudWatchLoggingOptionId">> := string(),
-%%   <<"ConditionalToken">> => string(),
-%%   <<"CurrentApplicationVersionId">> => float()
-%% }
--type delete_application_cloud_watch_logging_option_request() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streams_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type kinesis_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type kinesis_firehose_output() :: #{binary() => any()}.
-
-%% Example:
-%% unable_to_detect_schema_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ProcessedInputRecords">> => list(string()),
-%%   <<"RawInputRecords">> => list(string())
-%% }
--type unable_to_detect_schema_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_presigned_url_response() :: #{
-%%   <<"AuthorizedUrl">> => string()
-%% }
--type create_application_presigned_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_snapshot_response() :: #{
-%%   <<"SnapshotDetails">> => snapshot_details()
-%% }
--type describe_application_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_snapshot_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"SnapshotName">> := string()
-%% }
--type create_application_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% reference_data_source() :: #{
-%%   <<"ReferenceSchema">> => source_schema(),
-%%   <<"S3ReferenceDataSource">> => s3_reference_data_source(),
-%%   <<"TableName">> => string()
-%% }
--type reference_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% destination_schema() :: #{
-%%   <<"RecordFormatType">> => list(any())
-%% }
--type destination_schema() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_output_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
-%% }
--type lambda_output_update() :: #{binary() => any()}.
-
-%% Example:
-%% discover_input_schema_request() :: #{
-%%   <<"InputProcessingConfiguration">> => input_processing_configuration(),
-%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"S3Configuration">> => s3_configuration(),
-%%   <<"ServiceExecutionRole">> := string()
-%% }
--type discover_input_schema_request() :: #{binary() => any()}.
-
-%% Example:
-%% input_lambda_processor() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type input_lambda_processor() :: #{binary() => any()}.
-
-%% Example:
-%% application_code_configuration_description() :: #{
-%%   <<"CodeContentDescription">> => code_content_description(),
-%%   <<"CodeContentType">> => list(any())
-%% }
--type application_code_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% input() :: #{
-%%   <<"InputParallelism">> => input_parallelism(),
-%%   <<"InputProcessingConfiguration">> => input_processing_configuration(),
-%%   <<"InputSchema">> => source_schema(),
-%%   <<"KinesisFirehoseInput">> => kinesis_firehose_input(),
-%%   <<"KinesisStreamsInput">> => kinesis_streams_input(),
-%%   <<"NamePrefix">> => string()
-%% }
--type input() :: #{binary() => any()}.
-
-%% Example:
-%% application_restore_configuration() :: #{
-%%   <<"ApplicationRestoreType">> => list(any()),
-%%   <<"SnapshotName">> => string()
-%% }
--type application_restore_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% application_snapshot_configuration_description() :: #{
-%%   <<"SnapshotsEnabled">> => boolean()
-%% }
--type application_snapshot_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_presigned_url_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"SessionExpirationDurationInSeconds">> => float(),
-%%   <<"UrlType">> := list(any())
-%% }
--type create_application_presigned_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_reference_data_source() :: #{
-%%   <<"BucketARN">> => string(),
-%%   <<"FileKey">> => string()
-%% }
--type s3_reference_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% flink_application_configuration_update() :: #{
-%%   <<"CheckpointConfigurationUpdate">> => checkpoint_configuration_update(),
-%%   <<"MonitoringConfigurationUpdate">> => monitoring_configuration_update(),
-%%   <<"ParallelismConfigurationUpdate">> => parallelism_configuration_update()
-%% }
--type flink_application_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% run_configuration() :: #{
-%%   <<"ApplicationRestoreConfiguration">> => application_restore_configuration(),
-%%   <<"FlinkRunConfiguration">> => flink_run_configuration(),
-%%   <<"SqlRunConfigurations">> => list(sql_run_configuration())
-%% }
--type run_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% environment_properties() :: #{
-%%   <<"PropertyGroups">> => list(property_group())
-%% }
--type environment_properties() :: #{binary() => any()}.
-
-%% Example:
-%% s3_application_code_location_description() :: #{
-%%   <<"BucketARN">> => string(),
-%%   <<"FileKey">> => string(),
-%%   <<"ObjectVersion">> => string()
-%% }
--type s3_application_code_location_description() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% flink_application_configuration() :: #{
-%%   <<"CheckpointConfiguration">> => checkpoint_configuration(),
-%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration()
-%% }
--type flink_application_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% run_configuration_update() :: #{
-%%   <<"ApplicationRestoreConfiguration">> => application_restore_configuration(),
-%%   <<"FlinkRunConfiguration">> => flink_run_configuration()
-%% }
--type run_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% application_configuration() :: #{
-%%   <<"ApplicationCodeConfiguration">> => application_code_configuration(),
-%%   <<"ApplicationEncryptionConfiguration">> => application_encryption_configuration(),
-%%   <<"ApplicationSnapshotConfiguration">> => application_snapshot_configuration(),
-%%   <<"ApplicationSystemRollbackConfiguration">> => application_system_rollback_configuration(),
-%%   <<"EnvironmentProperties">> => environment_properties(),
-%%   <<"FlinkApplicationConfiguration">> => flink_application_configuration(),
-%%   <<"SqlApplicationConfiguration">> => sql_application_configuration(),
-%%   <<"VpcConfigurations">> => list(vpc_configuration()),
-%%   <<"ZeppelinApplicationConfiguration">> => zeppelin_application_configuration()
-%% }
--type application_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_application_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"Force">> => boolean()
-%% }
--type stop_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% input_lambda_processor_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
-%% }
--type input_lambda_processor_update() :: #{binary() => any()}.
-
-%% Example:
-%% checkpoint_configuration_update() :: #{
-%%   <<"CheckpointIntervalUpdate">> => float(),
-%%   <<"CheckpointingEnabledUpdate">> => boolean(),
-%%   <<"ConfigurationTypeUpdate">> => list(any()),
-%%   <<"MinPauseBetweenCheckpointsUpdate">> => float()
-%% }
--type checkpoint_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_application_response() :: #{
-%%   <<"ApplicationDetail">> => application_detail(),
-%%   <<"OperationId">> => string()
-%% }
--type rollback_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% csv_mapping_parameters() :: #{
-%%   <<"RecordColumnDelimiter">> => string(),
-%%   <<"RecordRowDelimiter">> => string()
-%% }
--type csv_mapping_parameters() :: #{binary() => any()}.
+-type application_operation_info() :: #{binary() => any()}.
 
 %% Example:
 %% application_operation_info_details() :: #{
@@ -762,51 +328,189 @@
 -type application_operation_info_details() :: #{binary() => any()}.
 
 %% Example:
-%% output_update() :: #{
-%%   <<"DestinationSchemaUpdate">> => destination_schema(),
-%%   <<"KinesisFirehoseOutputUpdate">> => kinesis_firehose_output_update(),
-%%   <<"KinesisStreamsOutputUpdate">> => kinesis_streams_output_update(),
-%%   <<"LambdaOutputUpdate">> => lambda_output_update(),
-%%   <<"NameUpdate">> => string(),
-%%   <<"OutputId">> => string()
+%% application_restore_configuration() :: #{
+%%   <<"ApplicationRestoreType">> => list(any()),
+%%   <<"SnapshotName">> => string()
 %% }
--type output_update() :: #{binary() => any()}.
+-type application_restore_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_snapshot_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"SnapshotCreationTimestamp">> := non_neg_integer(),
-%%   <<"SnapshotName">> := string()
+%% application_snapshot_configuration() :: #{
+%%   <<"SnapshotsEnabled">> => boolean()
 %% }
--type delete_application_snapshot_request() :: #{binary() => any()}.
+-type application_snapshot_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% json_mapping_parameters() :: #{
-%%   <<"RecordRowPath">> => string()
+%% application_snapshot_configuration_description() :: #{
+%%   <<"SnapshotsEnabled">> => boolean()
 %% }
--type json_mapping_parameters() :: #{binary() => any()}.
+-type application_snapshot_configuration_description() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_cloud_watch_logging_option_response() :: #{
+%% application_snapshot_configuration_update() :: #{
+%%   <<"SnapshotsEnabledUpdate">> => boolean()
+%% }
+-type application_snapshot_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% application_summary() :: #{
 %%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationMode">> => list(any()),
+%%   <<"ApplicationName">> => string(),
+%%   <<"ApplicationStatus">> => list(any()),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
-%%   <<"OperationId">> => string()
+%%   <<"RuntimeEnvironment">> => list(any())
 %% }
--type delete_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 %% Example:
-%% sql_run_configuration() :: #{
-%%   <<"InputId">> => string(),
-%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration()
+%% application_system_rollback_configuration() :: #{
+%%   <<"RollbackEnabled">> => boolean()
 %% }
--type sql_run_configuration() :: #{binary() => any()}.
+-type application_system_rollback_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
+%% application_system_rollback_configuration_description() :: #{
+%%   <<"RollbackEnabled">> => boolean()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type application_system_rollback_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% application_system_rollback_configuration_update() :: #{
+%%   <<"RollbackEnabledUpdate">> => boolean()
+%% }
+-type application_system_rollback_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% application_version_change_details() :: #{
+%%   <<"ApplicationVersionUpdatedFrom">> => float(),
+%%   <<"ApplicationVersionUpdatedTo">> => float()
+%% }
+-type application_version_change_details() :: #{binary() => any()}.
+
+%% Example:
+%% application_version_summary() :: #{
+%%   <<"ApplicationStatus">> => list(any()),
+%%   <<"ApplicationVersionId">> => float()
+%% }
+-type application_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_configuration() :: #{
+%%   <<"GlueDataCatalogConfiguration">> => glue_data_catalog_configuration()
+%% }
+-type catalog_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_configuration_description() :: #{
+%%   <<"GlueDataCatalogConfigurationDescription">> => glue_data_catalog_configuration_description()
+%% }
+-type catalog_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_configuration_update() :: #{
+%%   <<"GlueDataCatalogConfigurationUpdate">> => glue_data_catalog_configuration_update()
+%% }
+-type catalog_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% checkpoint_configuration() :: #{
+%%   <<"CheckpointInterval">> => float(),
+%%   <<"CheckpointingEnabled">> => boolean(),
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"MinPauseBetweenCheckpoints">> => float()
+%% }
+-type checkpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% checkpoint_configuration_description() :: #{
+%%   <<"CheckpointInterval">> => float(),
+%%   <<"CheckpointingEnabled">> => boolean(),
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"MinPauseBetweenCheckpoints">> => float()
+%% }
+-type checkpoint_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% checkpoint_configuration_update() :: #{
+%%   <<"CheckpointIntervalUpdate">> => float(),
+%%   <<"CheckpointingEnabledUpdate">> => boolean(),
+%%   <<"ConfigurationTypeUpdate">> => list(any()),
+%%   <<"MinPauseBetweenCheckpointsUpdate">> => float()
+%% }
+-type checkpoint_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logging_option() :: #{
+%%   <<"LogStreamARN">> => string()
+%% }
+-type cloud_watch_logging_option() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logging_option_description() :: #{
+%%   <<"CloudWatchLoggingOptionId">> => string(),
+%%   <<"LogStreamARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type cloud_watch_logging_option_description() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logging_option_update() :: #{
+%%   <<"CloudWatchLoggingOptionId">> => string(),
+%%   <<"LogStreamARNUpdate">> => string()
+%% }
+-type cloud_watch_logging_option_update() :: #{binary() => any()}.
+
+%% Example:
+%% code_content() :: #{
+%%   <<"S3ContentLocation">> => s3_content_location(),
+%%   <<"TextContent">> => string(),
+%%   <<"ZipFileContent">> => binary()
+%% }
+-type code_content() :: #{binary() => any()}.
+
+%% Example:
+%% code_content_description() :: #{
+%%   <<"CodeMD5">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"S3ApplicationCodeLocationDescription">> => s3_application_code_location_description(),
+%%   <<"TextContent">> => string()
+%% }
+-type code_content_description() :: #{binary() => any()}.
+
+%% Example:
+%% code_content_update() :: #{
+%%   <<"S3ContentLocationUpdate">> => s3_content_location_update(),
+%%   <<"TextContentUpdate">> => string(),
+%%   <<"ZipFileContentUpdate">> => binary()
+%% }
+-type code_content_update() :: #{binary() => any()}.
+
+%% Example:
+%% code_validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type code_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_presigned_url_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"SessionExpirationDurationInSeconds">> => float(),
+%%   <<"UrlType">> := list(any())
+%% }
+-type create_application_presigned_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_presigned_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
+%% }
+-type create_application_presigned_url_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_application_request() :: #{
@@ -822,20 +526,94 @@
 -type create_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_vpc_configuration_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"OperationId">> => string()
+%% create_application_response() :: #{
+%%   <<"ApplicationDetail">> => application_detail()
 %% }
--type delete_application_vpc_configuration_response() :: #{binary() => any()}.
+-type create_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% add_application_reference_data_source_request() :: #{
+%% create_application_snapshot_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"SnapshotName">> := string()
+%% }
+-type create_application_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_snapshot_response() :: #{
+
+%% }
+-type create_application_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% csv_mapping_parameters() :: #{
+%%   <<"RecordColumnDelimiter">> => string(),
+%%   <<"RecordRowDelimiter">> => string()
+%% }
+-type csv_mapping_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% custom_artifact_configuration() :: #{
+%%   <<"ArtifactType">> => list(any()),
+%%   <<"MavenReference">> => maven_reference(),
+%%   <<"S3ContentLocation">> => s3_content_location()
+%% }
+-type custom_artifact_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% custom_artifact_configuration_description() :: #{
+%%   <<"ArtifactType">> => list(any()),
+%%   <<"MavenReferenceDescription">> => maven_reference(),
+%%   <<"S3ContentLocationDescription">> => s3_content_location()
+%% }
+-type custom_artifact_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_cloud_watch_logging_option_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CloudWatchLoggingOptionId">> := string(),
+%%   <<"ConditionalToken">> => string(),
+%%   <<"CurrentApplicationVersionId">> => float()
+%% }
+-type delete_application_cloud_watch_logging_option_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_cloud_watch_logging_option_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
+%%   <<"OperationId">> => string()
+%% }
+-type delete_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_input_processing_configuration_request() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"ReferenceDataSource">> := reference_data_source()
+%%   <<"InputId">> := string()
 %% }
--type add_application_reference_data_source_request() :: #{binary() => any()}.
+-type delete_application_input_processing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_input_processing_configuration_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float()
+%% }
+-type delete_application_input_processing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_output_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float(),
+%%   <<"OutputId">> := string()
+%% }
+-type delete_application_output_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_output_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float()
+%% }
+-type delete_application_output_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_application_reference_data_source_request() :: #{
@@ -846,38 +624,99 @@
 -type delete_application_reference_data_source_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_application_reference_data_source_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationVersionId">> => float()
 %% }
--type service_unavailable_exception() :: #{binary() => any()}.
+-type delete_application_reference_data_source_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_application_response() :: #{
-%%   <<"ApplicationDetail">> => application_detail()
+%% delete_application_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CreateTimestamp">> := non_neg_integer()
 %% }
--type create_application_response() :: #{binary() => any()}.
+-type delete_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_application_output_response() :: #{
+%% delete_application_response() :: #{
+
+%% }
+-type delete_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_snapshot_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"SnapshotCreationTimestamp">> := non_neg_integer(),
+%%   <<"SnapshotName">> := string()
+%% }
+-type delete_application_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_snapshot_response() :: #{
+
+%% }
+-type delete_application_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_vpc_configuration_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"ConditionalToken">> => string(),
+%%   <<"CurrentApplicationVersionId">> => float(),
+%%   <<"VpcConfigurationId">> := string()
+%% }
+-type delete_application_vpc_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_vpc_configuration_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"OutputDescriptions">> => list(output_description())
+%%   <<"OperationId">> => string()
 %% }
--type add_application_output_response() :: #{binary() => any()}.
+-type delete_application_vpc_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% application_encryption_configuration_description() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"KeyType">> => list(any())
+%% deploy_as_application_configuration() :: #{
+%%   <<"S3ContentLocation">> => s3_content_base_location()
 %% }
--type application_encryption_configuration_description() :: #{binary() => any()}.
+-type deploy_as_application_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% kinesis_streams_input_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
+%% deploy_as_application_configuration_description() :: #{
+%%   <<"S3ContentLocationDescription">> => s3_content_base_location_description()
 %% }
--type kinesis_streams_input_description() :: #{binary() => any()}.
+-type deploy_as_application_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_as_application_configuration_update() :: #{
+%%   <<"S3ContentLocationUpdate">> => s3_content_base_location_update()
+%% }
+-type deploy_as_application_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_operation_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"OperationId">> := string()
+%% }
+-type describe_application_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_operation_response() :: #{
+%%   <<"ApplicationOperationInfoDetails">> => application_operation_info_details()
+%% }
+-type describe_application_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"IncludeAdditionalDetails">> => boolean()
+%% }
+-type describe_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_response() :: #{
+%%   <<"ApplicationDetail">> => application_detail()
+%% }
+-type describe_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_snapshot_request() :: #{
@@ -887,11 +726,346 @@
 -type describe_application_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
-%% application_encryption_configuration() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"KeyType">> => list(any())
+%% describe_application_snapshot_response() :: #{
+%%   <<"SnapshotDetails">> => snapshot_details()
 %% }
--type application_encryption_configuration() :: #{binary() => any()}.
+-type describe_application_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_version_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"ApplicationVersionId">> := float()
+%% }
+-type describe_application_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_version_response() :: #{
+%%   <<"ApplicationVersionDetail">> => application_detail()
+%% }
+-type describe_application_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_schema() :: #{
+%%   <<"RecordFormatType">> => list(any())
+%% }
+-type destination_schema() :: #{binary() => any()}.
+
+%% Example:
+%% discover_input_schema_request() :: #{
+%%   <<"InputProcessingConfiguration">> => input_processing_configuration(),
+%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"S3Configuration">> => s3_configuration(),
+%%   <<"ServiceExecutionRole">> := string()
+%% }
+-type discover_input_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_input_schema_response() :: #{
+%%   <<"InputSchema">> => source_schema(),
+%%   <<"ParsedInputRecords">> => list(list(string())()),
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string())
+%% }
+-type discover_input_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% environment_properties() :: #{
+%%   <<"PropertyGroups">> => list(property_group())
+%% }
+-type environment_properties() :: #{binary() => any()}.
+
+%% Example:
+%% environment_property_descriptions() :: #{
+%%   <<"PropertyGroupDescriptions">> => list(property_group())
+%% }
+-type environment_property_descriptions() :: #{binary() => any()}.
+
+%% Example:
+%% environment_property_updates() :: #{
+%%   <<"PropertyGroups">> => list(property_group())
+%% }
+-type environment_property_updates() :: #{binary() => any()}.
+
+%% Example:
+%% error_info() :: #{
+%%   <<"ErrorString">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
+
+%% Example:
+%% flink_application_configuration() :: #{
+%%   <<"CheckpointConfiguration">> => checkpoint_configuration(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration()
+%% }
+-type flink_application_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% flink_application_configuration_description() :: #{
+%%   <<"CheckpointConfigurationDescription">> => checkpoint_configuration_description(),
+%%   <<"JobPlanDescription">> => string(),
+%%   <<"MonitoringConfigurationDescription">> => monitoring_configuration_description(),
+%%   <<"ParallelismConfigurationDescription">> => parallelism_configuration_description()
+%% }
+-type flink_application_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% flink_application_configuration_update() :: #{
+%%   <<"CheckpointConfigurationUpdate">> => checkpoint_configuration_update(),
+%%   <<"MonitoringConfigurationUpdate">> => monitoring_configuration_update(),
+%%   <<"ParallelismConfigurationUpdate">> => parallelism_configuration_update()
+%% }
+-type flink_application_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% flink_run_configuration() :: #{
+%%   <<"AllowNonRestoredState">> => boolean()
+%% }
+-type flink_run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% glue_data_catalog_configuration() :: #{
+%%   <<"DatabaseARN">> => string()
+%% }
+-type glue_data_catalog_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% glue_data_catalog_configuration_description() :: #{
+%%   <<"DatabaseARN">> => string()
+%% }
+-type glue_data_catalog_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% glue_data_catalog_configuration_update() :: #{
+%%   <<"DatabaseARNUpdate">> => string()
+%% }
+-type glue_data_catalog_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% input() :: #{
+%%   <<"InputParallelism">> => input_parallelism(),
+%%   <<"InputProcessingConfiguration">> => input_processing_configuration(),
+%%   <<"InputSchema">> => source_schema(),
+%%   <<"KinesisFirehoseInput">> => kinesis_firehose_input(),
+%%   <<"KinesisStreamsInput">> => kinesis_streams_input(),
+%%   <<"NamePrefix">> => string()
+%% }
+-type input() :: #{binary() => any()}.
+
+%% Example:
+%% input_description() :: #{
+%%   <<"InAppStreamNames">> => list(string()),
+%%   <<"InputId">> => string(),
+%%   <<"InputParallelism">> => input_parallelism(),
+%%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description(),
+%%   <<"InputSchema">> => source_schema(),
+%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration(),
+%%   <<"KinesisFirehoseInputDescription">> => kinesis_firehose_input_description(),
+%%   <<"KinesisStreamsInputDescription">> => kinesis_streams_input_description(),
+%%   <<"NamePrefix">> => string()
+%% }
+-type input_description() :: #{binary() => any()}.
+
+%% Example:
+%% input_lambda_processor() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type input_lambda_processor() :: #{binary() => any()}.
+
+%% Example:
+%% input_lambda_processor_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type input_lambda_processor_description() :: #{binary() => any()}.
+
+%% Example:
+%% input_lambda_processor_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type input_lambda_processor_update() :: #{binary() => any()}.
+
+%% Example:
+%% input_parallelism() :: #{
+%%   <<"Count">> => integer()
+%% }
+-type input_parallelism() :: #{binary() => any()}.
+
+%% Example:
+%% input_parallelism_update() :: #{
+%%   <<"CountUpdate">> => integer()
+%% }
+-type input_parallelism_update() :: #{binary() => any()}.
+
+%% Example:
+%% input_processing_configuration() :: #{
+%%   <<"InputLambdaProcessor">> => input_lambda_processor()
+%% }
+-type input_processing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% input_processing_configuration_description() :: #{
+%%   <<"InputLambdaProcessorDescription">> => input_lambda_processor_description()
+%% }
+-type input_processing_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% input_processing_configuration_update() :: #{
+%%   <<"InputLambdaProcessorUpdate">> => input_lambda_processor_update()
+%% }
+-type input_processing_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% input_schema_update() :: #{
+%%   <<"RecordColumnUpdates">> => list(record_column()),
+%%   <<"RecordEncodingUpdate">> => string(),
+%%   <<"RecordFormatUpdate">> => record_format()
+%% }
+-type input_schema_update() :: #{binary() => any()}.
+
+%% Example:
+%% input_starting_position_configuration() :: #{
+%%   <<"InputStartingPosition">> => list(any())
+%% }
+-type input_starting_position_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% input_update() :: #{
+%%   <<"InputId">> => string(),
+%%   <<"InputParallelismUpdate">> => input_parallelism_update(),
+%%   <<"InputProcessingConfigurationUpdate">> => input_processing_configuration_update(),
+%%   <<"InputSchemaUpdate">> => input_schema_update(),
+%%   <<"KinesisFirehoseInputUpdate">> => kinesis_firehose_input_update(),
+%%   <<"KinesisStreamsInputUpdate">> => kinesis_streams_input_update(),
+%%   <<"NamePrefixUpdate">> => string()
+%% }
+-type input_update() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_application_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_application_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% json_mapping_parameters() :: #{
+%%   <<"RecordRowPath">> => string()
+%% }
+-type json_mapping_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_input() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type kinesis_firehose_input() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_input_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_firehose_input_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_input_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type kinesis_firehose_input_update() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type kinesis_firehose_output() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_output_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_firehose_output_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_output_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type kinesis_firehose_output_update() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_input() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type kinesis_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_input_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_streams_input_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_input_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type kinesis_streams_input_update() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type kinesis_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_output_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type kinesis_streams_output_description() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_streams_output_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type kinesis_streams_output_update() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type lambda_output() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_output_description() :: #{
+%%   <<"ResourceARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type lambda_output_description() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_output_update() :: #{
+%%   <<"ResourceARNUpdate">> => string()
+%% }
+-type lambda_output_update() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_application_operations_request() :: #{
@@ -904,30 +1078,297 @@
 -type list_application_operations_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_application_input_request() :: #{
+%% list_application_operations_response() :: #{
+%%   <<"ApplicationOperationInfoList">> => list(application_operation_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_snapshots_request() :: #{
 %%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"Input">> := input()
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type add_application_input_request() :: #{binary() => any()}.
+-type list_application_snapshots_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_response() :: #{
-
+%% list_application_snapshots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotSummaries">> => list(snapshot_details())
 %% }
--type delete_application_response() :: #{binary() => any()}.
+-type list_application_snapshots_response() :: #{binary() => any()}.
 
 %% Example:
-%% application_system_rollback_configuration_update() :: #{
-%%   <<"RollbackEnabledUpdate">> => boolean()
+%% list_application_versions_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type application_system_rollback_configuration_update() :: #{binary() => any()}.
+-type list_application_versions_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_application_response() :: #{
+%% list_application_versions_response() :: #{
+%%   <<"ApplicationVersionSummaries">> => list(application_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationSummaries">> => list(application_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% mapping_parameters() :: #{
+%%   <<"CSVMappingParameters">> => csv_mapping_parameters(),
+%%   <<"JSONMappingParameters">> => json_mapping_parameters()
+%% }
+-type mapping_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maven_reference() :: #{
+%%   <<"ArtifactId">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type maven_reference() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"MetricsLevel">> => list(any())
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration_description() :: #{
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"MetricsLevel">> => list(any())
+%% }
+-type monitoring_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration_update() :: #{
+%%   <<"ConfigurationTypeUpdate">> => list(any()),
+%%   <<"LogLevelUpdate">> => list(any()),
+%%   <<"MetricsLevelUpdate">> => list(any())
+%% }
+-type monitoring_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% operation_failure_details() :: #{
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"RollbackOperationId">> => string()
+%% }
+-type operation_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% output() :: #{
+%%   <<"DestinationSchema">> => destination_schema(),
+%%   <<"KinesisFirehoseOutput">> => kinesis_firehose_output(),
+%%   <<"KinesisStreamsOutput">> => kinesis_streams_output(),
+%%   <<"LambdaOutput">> => lambda_output(),
+%%   <<"Name">> => string()
+%% }
+-type output() :: #{binary() => any()}.
+
+%% Example:
+%% output_description() :: #{
+%%   <<"DestinationSchema">> => destination_schema(),
+%%   <<"KinesisFirehoseOutputDescription">> => kinesis_firehose_output_description(),
+%%   <<"KinesisStreamsOutputDescription">> => kinesis_streams_output_description(),
+%%   <<"LambdaOutputDescription">> => lambda_output_description(),
+%%   <<"Name">> => string(),
+%%   <<"OutputId">> => string()
+%% }
+-type output_description() :: #{binary() => any()}.
+
+%% Example:
+%% output_update() :: #{
+%%   <<"DestinationSchemaUpdate">> => destination_schema(),
+%%   <<"KinesisFirehoseOutputUpdate">> => kinesis_firehose_output_update(),
+%%   <<"KinesisStreamsOutputUpdate">> => kinesis_streams_output_update(),
+%%   <<"LambdaOutputUpdate">> => lambda_output_update(),
+%%   <<"NameUpdate">> => string(),
+%%   <<"OutputId">> => string()
+%% }
+-type output_update() :: #{binary() => any()}.
+
+%% Example:
+%% parallelism_configuration() :: #{
+%%   <<"AutoScalingEnabled">> => boolean(),
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"Parallelism">> => integer(),
+%%   <<"ParallelismPerKPU">> => integer()
+%% }
+-type parallelism_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% parallelism_configuration_description() :: #{
+%%   <<"AutoScalingEnabled">> => boolean(),
+%%   <<"ConfigurationType">> => list(any()),
+%%   <<"CurrentParallelism">> => integer(),
+%%   <<"Parallelism">> => integer(),
+%%   <<"ParallelismPerKPU">> => integer()
+%% }
+-type parallelism_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% parallelism_configuration_update() :: #{
+%%   <<"AutoScalingEnabledUpdate">> => boolean(),
+%%   <<"ConfigurationTypeUpdate">> => list(any()),
+%%   <<"ParallelismPerKPUUpdate">> => integer(),
+%%   <<"ParallelismUpdate">> => integer()
+%% }
+-type parallelism_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% property_group() :: #{
+%%   <<"PropertyGroupId">> => string(),
+%%   <<"PropertyMap">> => map()
+%% }
+-type property_group() :: #{binary() => any()}.
+
+%% Example:
+%% record_column() :: #{
+%%   <<"Mapping">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SqlType">> => string()
+%% }
+-type record_column() :: #{binary() => any()}.
+
+%% Example:
+%% record_format() :: #{
+%%   <<"MappingParameters">> => mapping_parameters(),
+%%   <<"RecordFormatType">> => list(any())
+%% }
+-type record_format() :: #{binary() => any()}.
+
+%% Example:
+%% reference_data_source() :: #{
+%%   <<"ReferenceSchema">> => source_schema(),
+%%   <<"S3ReferenceDataSource">> => s3_reference_data_source(),
+%%   <<"TableName">> => string()
+%% }
+-type reference_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% reference_data_source_description() :: #{
+%%   <<"ReferenceId">> => string(),
+%%   <<"ReferenceSchema">> => source_schema(),
+%%   <<"S3ReferenceDataSourceDescription">> => s3_reference_data_source_description(),
+%%   <<"TableName">> => string()
+%% }
+-type reference_data_source_description() :: #{binary() => any()}.
+
+%% Example:
+%% reference_data_source_update() :: #{
+%%   <<"ReferenceId">> => string(),
+%%   <<"ReferenceSchemaUpdate">> => source_schema(),
+%%   <<"S3ReferenceDataSourceUpdate">> => s3_reference_data_source_update(),
+%%   <<"TableNameUpdate">> => string()
+%% }
+-type reference_data_source_update() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_provisioned_throughput_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_application_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CurrentApplicationVersionId">> := float()
+%% }
+-type rollback_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_application_response() :: #{
+%%   <<"ApplicationDetail">> => application_detail(),
 %%   <<"OperationId">> => string()
 %% }
--type start_application_response() :: #{binary() => any()}.
+-type rollback_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% run_configuration() :: #{
+%%   <<"ApplicationRestoreConfiguration">> => application_restore_configuration(),
+%%   <<"FlinkRunConfiguration">> => flink_run_configuration(),
+%%   <<"SqlRunConfigurations">> => list(sql_run_configuration())
+%% }
+-type run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% run_configuration_description() :: #{
+%%   <<"ApplicationRestoreConfigurationDescription">> => application_restore_configuration(),
+%%   <<"FlinkRunConfigurationDescription">> => flink_run_configuration()
+%% }
+-type run_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% run_configuration_update() :: #{
+%%   <<"ApplicationRestoreConfiguration">> => application_restore_configuration(),
+%%   <<"FlinkRunConfiguration">> => flink_run_configuration()
+%% }
+-type run_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% s3_application_code_location_description() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"FileKey">> => string(),
+%%   <<"ObjectVersion">> => string()
+%% }
+-type s3_application_code_location_description() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"FileKey">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_content_base_location() :: #{
+%%   <<"BasePath">> => string(),
+%%   <<"BucketARN">> => string()
+%% }
+-type s3_content_base_location() :: #{binary() => any()}.
 
 %% Example:
 %% s3_content_base_location_description() :: #{
@@ -937,13 +1378,19 @@
 -type s3_content_base_location_description() :: #{binary() => any()}.
 
 %% Example:
-%% zeppelin_application_configuration() :: #{
-%%   <<"CatalogConfiguration">> => catalog_configuration(),
-%%   <<"CustomArtifactsConfiguration">> => list(custom_artifact_configuration()),
-%%   <<"DeployAsApplicationConfiguration">> => deploy_as_application_configuration(),
-%%   <<"MonitoringConfiguration">> => zeppelin_monitoring_configuration()
+%% s3_content_base_location_update() :: #{
+%%   <<"BasePathUpdate">> => string(),
+%%   <<"BucketARNUpdate">> => string()
 %% }
--type zeppelin_application_configuration() :: #{binary() => any()}.
+-type s3_content_base_location_update() :: #{binary() => any()}.
+
+%% Example:
+%% s3_content_location() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"FileKey">> => string(),
+%%   <<"ObjectVersion">> => string()
+%% }
+-type s3_content_location() :: #{binary() => any()}.
 
 %% Example:
 %% s3_content_location_update() :: #{
@@ -954,18 +1401,175 @@
 -type s3_content_location_update() :: #{binary() => any()}.
 
 %% Example:
-%% list_application_operations_response() :: #{
-%%   <<"ApplicationOperationInfoList">> => list(application_operation_info()),
-%%   <<"NextToken">> => string()
+%% s3_reference_data_source() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"FileKey">> => string()
 %% }
--type list_application_operations_response() :: #{binary() => any()}.
+-type s3_reference_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% describe_application_version_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"ApplicationVersionId">> := float()
+%% s3_reference_data_source_description() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"FileKey">> => string(),
+%%   <<"ReferenceRoleARN">> => string()
 %% }
--type describe_application_version_request() :: #{binary() => any()}.
+-type s3_reference_data_source_description() :: #{binary() => any()}.
+
+%% Example:
+%% s3_reference_data_source_update() :: #{
+%%   <<"BucketARNUpdate">> => string(),
+%%   <<"FileKeyUpdate">> => string()
+%% }
+-type s3_reference_data_source_update() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_details() :: #{
+%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
+%%   <<"ApplicationVersionId">> => float(),
+%%   <<"RuntimeEnvironment">> => list(any()),
+%%   <<"SnapshotCreationTimestamp">> => non_neg_integer(),
+%%   <<"SnapshotName">> => string(),
+%%   <<"SnapshotStatus">> => list(any())
+%% }
+-type snapshot_details() :: #{binary() => any()}.
+
+%% Example:
+%% source_schema() :: #{
+%%   <<"RecordColumns">> => list(record_column()),
+%%   <<"RecordEncoding">> => string(),
+%%   <<"RecordFormat">> => record_format()
+%% }
+-type source_schema() :: #{binary() => any()}.
+
+%% Example:
+%% sql_application_configuration() :: #{
+%%   <<"Inputs">> => list(input()),
+%%   <<"Outputs">> => list(output()),
+%%   <<"ReferenceDataSources">> => list(reference_data_source())
+%% }
+-type sql_application_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% sql_application_configuration_description() :: #{
+%%   <<"InputDescriptions">> => list(input_description()),
+%%   <<"OutputDescriptions">> => list(output_description()),
+%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
+%% }
+-type sql_application_configuration_description() :: #{binary() => any()}.
+
+%% Example:
+%% sql_application_configuration_update() :: #{
+%%   <<"InputUpdates">> => list(input_update()),
+%%   <<"OutputUpdates">> => list(output_update()),
+%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update())
+%% }
+-type sql_application_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% sql_run_configuration() :: #{
+%%   <<"InputId">> => string(),
+%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration()
+%% }
+-type sql_run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% start_application_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"RunConfiguration">> => run_configuration()
+%% }
+-type start_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_application_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type start_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"Force">> => boolean()
+%% }
+-type stop_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type stop_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_detect_schema_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string())
+%% }
+-type unable_to_detect_schema_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_maintenance_configuration_request() :: #{
+%%   <<"ApplicationMaintenanceConfigurationUpdate">> := application_maintenance_configuration_update(),
+%%   <<"ApplicationName">> := string()
+%% }
+-type update_application_maintenance_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_maintenance_configuration_response() :: #{
+%%   <<"ApplicationARN">> => string(),
+%%   <<"ApplicationMaintenanceConfigurationDescription">> => application_maintenance_configuration_description()
+%% }
+-type update_application_maintenance_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_application_request() :: #{
@@ -988,105 +1592,46 @@
 -type update_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% parallelism_configuration() :: #{
-%%   <<"AutoScalingEnabled">> => boolean(),
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"Parallelism">> => integer(),
-%%   <<"ParallelismPerKPU">> => integer()
+%% vpc_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type parallelism_configuration() :: #{binary() => any()}.
+-type vpc_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_application_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"IncludeAdditionalDetails">> => boolean()
+%% vpc_configuration_description() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcConfigurationId">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type describe_application_request() :: #{binary() => any()}.
+-type vpc_configuration_description() :: #{binary() => any()}.
 
 %% Example:
-%% zeppelin_monitoring_configuration_update() :: #{
-%%   <<"LogLevelUpdate">> => list(any())
+%% vpc_configuration_update() :: #{
+%%   <<"SecurityGroupIdUpdates">> => list(string()),
+%%   <<"SubnetIdUpdates">> => list(string()),
+%%   <<"VpcConfigurationId">> => string()
 %% }
--type zeppelin_monitoring_configuration_update() :: #{binary() => any()}.
+-type vpc_configuration_update() :: #{binary() => any()}.
 
 %% Example:
-%% start_application_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"RunConfiguration">> => run_configuration()
+%% zeppelin_application_configuration() :: #{
+%%   <<"CatalogConfiguration">> => catalog_configuration(),
+%%   <<"CustomArtifactsConfiguration">> => list(custom_artifact_configuration()),
+%%   <<"DeployAsApplicationConfiguration">> => deploy_as_application_configuration(),
+%%   <<"MonitoringConfiguration">> => zeppelin_monitoring_configuration()
 %% }
--type start_application_request() :: #{binary() => any()}.
+-type zeppelin_application_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% code_validation_exception() :: #{
-%%   <<"Message">> => string()
+%% zeppelin_application_configuration_description() :: #{
+%%   <<"CatalogConfigurationDescription">> => catalog_configuration_description(),
+%%   <<"CustomArtifactsConfigurationDescription">> => list(custom_artifact_configuration_description()),
+%%   <<"DeployAsApplicationConfigurationDescription">> => deploy_as_application_configuration_description(),
+%%   <<"MonitoringConfigurationDescription">> => zeppelin_monitoring_configuration_description()
 %% }
--type code_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% input_lambda_processor_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type input_lambda_processor_description() :: #{binary() => any()}.
-
-%% Example:
-%% checkpoint_configuration() :: #{
-%%   <<"CheckpointInterval">> => float(),
-%%   <<"CheckpointingEnabled">> => boolean(),
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"MinPauseBetweenCheckpoints">> => float()
-%% }
--type checkpoint_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% input_parallelism() :: #{
-%%   <<"Count">> => integer()
-%% }
--type input_parallelism() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_logging_option() :: #{
-%%   <<"LogStreamARN">> => string()
-%% }
--type cloud_watch_logging_option() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% code_content() :: #{
-%%   <<"S3ContentLocation">> => s3_content_location(),
-%%   <<"TextContent">> => string(),
-%%   <<"ZipFileContent">> => binary()
-%% }
--type code_content() :: #{binary() => any()}.
-
-%% Example:
-%% reference_data_source_update() :: #{
-%%   <<"ReferenceId">> => string(),
-%%   <<"ReferenceSchemaUpdate">> => source_schema(),
-%%   <<"S3ReferenceDataSourceUpdate">> => s3_reference_data_source_update(),
-%%   <<"TableNameUpdate">> => string()
-%% }
--type reference_data_source_update() :: #{binary() => any()}.
-
-%% Example:
-%% s3_reference_data_source_description() :: #{
-%%   <<"BucketARN">> => string(),
-%%   <<"FileKey">> => string(),
-%%   <<"ReferenceRoleARN">> => string()
-%% }
--type s3_reference_data_source_description() :: #{binary() => any()}.
-
-%% Example:
-%% environment_property_descriptions() :: #{
-%%   <<"PropertyGroupDescriptions">> => list(property_group())
-%% }
--type environment_property_descriptions() :: #{binary() => any()}.
+-type zeppelin_application_configuration_description() :: #{binary() => any()}.
 
 %% Example:
 %% zeppelin_application_configuration_update() :: #{
@@ -1098,791 +1643,246 @@
 -type zeppelin_application_configuration_update() :: #{binary() => any()}.
 
 %% Example:
-%% kinesis_streams_output_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
+%% zeppelin_monitoring_configuration() :: #{
+%%   <<"LogLevel">> => list(any())
 %% }
--type kinesis_streams_output_update() :: #{binary() => any()}.
+-type zeppelin_monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% stop_application_response() :: #{
-%%   <<"OperationId">> => string()
+%% zeppelin_monitoring_configuration_description() :: #{
+%%   <<"LogLevel">> => list(any())
 %% }
--type stop_application_response() :: #{binary() => any()}.
+-type zeppelin_monitoring_configuration_description() :: #{binary() => any()}.
 
 %% Example:
-%% application_code_configuration() :: #{
-%%   <<"CodeContent">> => code_content(),
-%%   <<"CodeContentType">> => list(any())
+%% zeppelin_monitoring_configuration_update() :: #{
+%%   <<"LogLevelUpdate">> => list(any())
 %% }
--type application_code_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_configuration() :: #{
-%%   <<"GlueDataCatalogConfiguration">> => glue_data_catalog_configuration()
-%% }
--type catalog_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_as_application_configuration() :: #{
-%%   <<"S3ContentLocation">> => s3_content_base_location()
-%% }
--type deploy_as_application_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_cloud_watch_logging_option_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CloudWatchLoggingOption">> := cloud_watch_logging_option(),
-%%   <<"ConditionalToken">> => string(),
-%%   <<"CurrentApplicationVersionId">> => float()
-%% }
--type add_application_cloud_watch_logging_option_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_maintenance_configuration_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationMaintenanceConfigurationDescription">> => application_maintenance_configuration_description()
-%% }
--type update_application_maintenance_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_argument_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_argument_exception() :: #{binary() => any()}.
-
-%% Example:
-%% application_snapshot_configuration_update() :: #{
-%%   <<"SnapshotsEnabledUpdate">> => boolean()
-%% }
--type application_snapshot_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_application_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_application_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_snapshot_response() :: #{
-
-%% }
--type delete_application_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% operation_failure_details() :: #{
-%%   <<"ErrorInfo">> => error_info(),
-%%   <<"RollbackOperationId">> => string()
-%% }
--type operation_failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% application_maintenance_configuration_description() :: #{
-%%   <<"ApplicationMaintenanceWindowEndTime">> => string(),
-%%   <<"ApplicationMaintenanceWindowStartTime">> => string()
-%% }
--type application_maintenance_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% environment_property_updates() :: #{
-%%   <<"PropertyGroups">> => list(property_group())
-%% }
--type environment_property_updates() :: #{binary() => any()}.
-
-%% Example:
-%% input_processing_configuration_description() :: #{
-%%   <<"InputLambdaProcessorDescription">> => input_lambda_processor_description()
-%% }
--type input_processing_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% application_system_rollback_configuration_description() :: #{
-%%   <<"RollbackEnabled">> => boolean()
-%% }
--type application_system_rollback_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% checkpoint_configuration_description() :: #{
-%%   <<"CheckpointInterval">> => float(),
-%%   <<"CheckpointingEnabled">> => boolean(),
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"MinPauseBetweenCheckpoints">> => float()
-%% }
--type checkpoint_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_application_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float()
-%% }
--type rollback_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% source_schema() :: #{
-%%   <<"RecordColumns">> => list(record_column()),
-%%   <<"RecordEncoding">> => string(),
-%%   <<"RecordFormat">> => record_format()
-%% }
--type source_schema() :: #{binary() => any()}.
-
-%% Example:
-%% mapping_parameters() :: #{
-%%   <<"CSVMappingParameters">> => csv_mapping_parameters(),
-%%   <<"JSONMappingParameters">> => json_mapping_parameters()
-%% }
--type mapping_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_input_processing_configuration_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float()
-%% }
--type delete_application_input_processing_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_versions_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% input_description() :: #{
-%%   <<"InAppStreamNames">> => list(string()),
-%%   <<"InputId">> => string(),
-%%   <<"InputParallelism">> => input_parallelism(),
-%%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description(),
-%%   <<"InputSchema">> => source_schema(),
-%%   <<"InputStartingPositionConfiguration">> => input_starting_position_configuration(),
-%%   <<"KinesisFirehoseInputDescription">> => kinesis_firehose_input_description(),
-%%   <<"KinesisStreamsInputDescription">> => kinesis_streams_input_description(),
-%%   <<"NamePrefix">> => string()
-%% }
--type input_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_vpc_configuration_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"ConditionalToken">> => string(),
-%%   <<"CurrentApplicationVersionId">> => float(),
-%%   <<"VpcConfigurationId">> := string()
-%% }
--type delete_application_vpc_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type lambda_output() :: #{binary() => any()}.
-
-%% Example:
-%% s3_configuration() :: #{
-%%   <<"BucketARN">> => string(),
-%%   <<"FileKey">> => string()
-%% }
--type s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% application_version_change_details() :: #{
-%%   <<"ApplicationVersionUpdatedFrom">> => float(),
-%%   <<"ApplicationVersionUpdatedTo">> => float()
-%% }
--type application_version_change_details() :: #{binary() => any()}.
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationMode">> => list(any()),
-%%   <<"ApplicationName">> => string(),
-%%   <<"ApplicationStatus">> => list(any()),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"RuntimeEnvironment">> => list(any())
-%% }
--type application_summary() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streams_output_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type kinesis_streams_output_description() :: #{binary() => any()}.
-
-%% Example:
-%% application_operation_info() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Operation">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationStatus">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type application_operation_info() :: #{binary() => any()}.
-
-%% Example:
-%% application_configuration_description() :: #{
-%%   <<"ApplicationCodeConfigurationDescription">> => application_code_configuration_description(),
-%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
-%%   <<"ApplicationSnapshotConfigurationDescription">> => application_snapshot_configuration_description(),
-%%   <<"ApplicationSystemRollbackConfigurationDescription">> => application_system_rollback_configuration_description(),
-%%   <<"EnvironmentPropertyDescriptions">> => environment_property_descriptions(),
-%%   <<"FlinkApplicationConfigurationDescription">> => flink_application_configuration_description(),
-%%   <<"RunConfigurationDescription">> => run_configuration_description(),
-%%   <<"SqlApplicationConfigurationDescription">> => sql_application_configuration_description(),
-%%   <<"VpcConfigurationDescriptions">> => list(vpc_configuration_description()),
-%%   <<"ZeppelinApplicationConfigurationDescription">> => zeppelin_application_configuration_description()
-%% }
--type application_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% application_code_configuration_update() :: #{
-%%   <<"CodeContentTypeUpdate">> => list(any()),
-%%   <<"CodeContentUpdate">> => code_content_update()
-%% }
--type application_code_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% record_format() :: #{
-%%   <<"MappingParameters">> => mapping_parameters(),
-%%   <<"RecordFormatType">> => list(any())
-%% }
--type record_format() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maven_reference() :: #{
-%%   <<"ArtifactId">> => string(),
-%%   <<"GroupId">> => string(),
-%%   <<"Version">> => string()
-%% }
--type maven_reference() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"ApplicationSummaries">> => list(application_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_output_description() :: #{
-%%   <<"ResourceARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type lambda_output_description() :: #{binary() => any()}.
-
-%% Example:
-%% parallelism_configuration_description() :: #{
-%%   <<"AutoScalingEnabled">> => boolean(),
-%%   <<"ConfigurationType">> => list(any()),
-%%   <<"CurrentParallelism">> => integer(),
-%%   <<"Parallelism">> => integer(),
-%%   <<"ParallelismPerKPU">> => integer()
-%% }
--type parallelism_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_versions_response() :: #{
-%%   <<"ApplicationVersionSummaries">> => list(application_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_snapshot_response() :: #{
-
-%% }
--type create_application_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% glue_data_catalog_configuration_update() :: #{
-%%   <<"DatabaseARNUpdate">> => string()
-%% }
--type glue_data_catalog_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_output_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"OutputId">> := string()
-%% }
--type delete_application_output_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_configuration_update() :: #{
-%%   <<"ConfigurationTypeUpdate">> => list(any()),
-%%   <<"LogLevelUpdate">> => list(any()),
-%%   <<"MetricsLevelUpdate">> => list(any())
-%% }
--type monitoring_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_streams_input() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type kinesis_streams_input() :: #{binary() => any()}.
-
-%% Example:
-%% s3_reference_data_source_update() :: #{
-%%   <<"BucketARNUpdate">> => string(),
-%%   <<"FileKeyUpdate">> => string()
-%% }
--type s3_reference_data_source_update() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_input() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type kinesis_firehose_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_output_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"Output">> := output()
-%% }
--type add_application_output_request() :: #{binary() => any()}.
-
-%% Example:
-%% sql_application_configuration() :: #{
-%%   <<"Inputs">> => list(input()),
-%%   <<"Outputs">> => list(output()),
-%%   <<"ReferenceDataSources">> => list(reference_data_source())
-%% }
--type sql_application_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% input_processing_configuration_update() :: #{
-%%   <<"InputLambdaProcessorUpdate">> => input_lambda_processor_update()
-%% }
--type input_processing_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_details() :: #{
-%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"RuntimeEnvironment">> => list(any()),
-%%   <<"SnapshotCreationTimestamp">> => non_neg_integer(),
-%%   <<"SnapshotName">> => string(),
-%%   <<"SnapshotStatus">> => list(any())
-%% }
--type snapshot_details() :: #{binary() => any()}.
-
-%% Example:
-%% s3_content_location() :: #{
-%%   <<"BucketARN">> => string(),
-%%   <<"FileKey">> => string(),
-%%   <<"ObjectVersion">> => string()
-%% }
--type s3_content_location() :: #{binary() => any()}.
-
-%% Example:
-%% record_column() :: #{
-%%   <<"Mapping">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SqlType">> => string()
-%% }
--type record_column() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_input_processing_configuration_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CurrentApplicationVersionId">> := float(),
-%%   <<"InputId">> := string(),
-%%   <<"InputProcessingConfiguration">> := input_processing_configuration()
-%% }
--type add_application_input_processing_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_as_application_configuration_description() :: #{
-%%   <<"S3ContentLocationDescription">> => s3_content_base_location_description()
-%% }
--type deploy_as_application_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% s3_content_base_location() :: #{
-%%   <<"BasePath">> => string(),
-%%   <<"BucketARN">> => string()
-%% }
--type s3_content_base_location() :: #{binary() => any()}.
-
-%% Example:
-%% run_configuration_description() :: #{
-%%   <<"ApplicationRestoreConfigurationDescription">> => application_restore_configuration(),
-%%   <<"FlinkRunConfigurationDescription">> => flink_run_configuration()
-%% }
--type run_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% code_content_update() :: #{
-%%   <<"S3ContentLocationUpdate">> => s3_content_location_update(),
-%%   <<"TextContentUpdate">> => string(),
-%%   <<"ZipFileContentUpdate">> => binary()
-%% }
--type code_content_update() :: #{binary() => any()}.
-
-%% Example:
-%% add_application_reference_data_source_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float(),
-%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
-%% }
--type add_application_reference_data_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% sql_application_configuration_description() :: #{
-%%   <<"InputDescriptions">> => list(input_description()),
-%%   <<"OutputDescriptions">> => list(output_description()),
-%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
-%% }
--type sql_application_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_snapshots_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_firehose_output_update() :: #{
-%%   <<"ResourceARNUpdate">> => string()
-%% }
--type kinesis_firehose_output_update() :: #{binary() => any()}.
-
-%% Example:
-%% flink_application_configuration_description() :: #{
-%%   <<"CheckpointConfigurationDescription">> => checkpoint_configuration_description(),
-%%   <<"JobPlanDescription">> => string(),
-%%   <<"MonitoringConfigurationDescription">> => monitoring_configuration_description(),
-%%   <<"ParallelismConfigurationDescription">> => parallelism_configuration_description()
-%% }
--type flink_application_configuration_description() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_configuration_update() :: #{
-%%   <<"GlueDataCatalogConfigurationUpdate">> => glue_data_catalog_configuration_update()
-%% }
--type catalog_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% application_configuration_update() :: #{
-%%   <<"ApplicationCodeConfigurationUpdate">> => application_code_configuration_update(),
-%%   <<"ApplicationEncryptionConfigurationUpdate">> => application_encryption_configuration_update(),
-%%   <<"ApplicationSnapshotConfigurationUpdate">> => application_snapshot_configuration_update(),
-%%   <<"ApplicationSystemRollbackConfigurationUpdate">> => application_system_rollback_configuration_update(),
-%%   <<"EnvironmentPropertyUpdates">> => environment_property_updates(),
-%%   <<"FlinkApplicationConfigurationUpdate">> => flink_application_configuration_update(),
-%%   <<"SqlApplicationConfigurationUpdate">> => sql_application_configuration_update(),
-%%   <<"VpcConfigurationUpdates">> => list(vpc_configuration_update()),
-%%   <<"ZeppelinApplicationConfigurationUpdate">> => zeppelin_application_configuration_update()
-%% }
--type application_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% s3_content_base_location_update() :: #{
-%%   <<"BasePathUpdate">> => string(),
-%%   <<"BucketARNUpdate">> => string()
-%% }
--type s3_content_base_location_update() :: #{binary() => any()}.
-
-%% Example:
-%% reference_data_source_description() :: #{
-%%   <<"ReferenceId">> => string(),
-%%   <<"ReferenceSchema">> => source_schema(),
-%%   <<"S3ReferenceDataSourceDescription">> => s3_reference_data_source_description(),
-%%   <<"TableName">> => string()
-%% }
--type reference_data_source_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_response() :: #{
-%%   <<"ApplicationDetail">> => application_detail()
-%% }
--type describe_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_maintenance_configuration_request() :: #{
-%%   <<"ApplicationMaintenanceConfigurationUpdate">> := application_maintenance_configuration_update(),
-%%   <<"ApplicationName">> := string()
-%% }
--type update_application_maintenance_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% output() :: #{
-%%   <<"DestinationSchema">> => destination_schema(),
-%%   <<"KinesisFirehoseOutput">> => kinesis_firehose_output(),
-%%   <<"KinesisStreamsOutput">> => kinesis_streams_output(),
-%%   <<"LambdaOutput">> => lambda_output(),
-%%   <<"Name">> => string()
-%% }
--type output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CreateTimestamp">> := non_neg_integer()
-%% }
--type delete_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_output_response() :: #{
-%%   <<"ApplicationARN">> => string(),
-%%   <<"ApplicationVersionId">> => float()
-%% }
--type delete_application_output_response() :: #{binary() => any()}.
+-type zeppelin_monitoring_configuration_update() :: #{binary() => any()}.
 
 -type add_application_cloud_watch_logging_option_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
 
 -type add_application_input_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    code_validation_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception() | 
+    code_validation_exception().
 
 -type add_application_input_processing_configuration_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type add_application_output_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type add_application_reference_data_source_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type add_application_vpc_configuration_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
 
 -type create_application_errors() ::
+    unsupported_operation_exception() | 
     too_many_tags_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    code_validation_exception() | 
-    invalid_request_exception() | 
     resource_in_use_exception() | 
-    unsupported_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception() | 
+    code_validation_exception().
 
 -type create_application_presigned_url_errors() ::
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception().
 
 -type create_application_snapshot_errors() ::
-    limit_exceeded_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
-    unsupported_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception().
 
 -type delete_application_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type delete_application_cloud_watch_logging_option_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type delete_application_input_processing_configuration_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type delete_application_output_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type delete_application_reference_data_source_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type delete_application_snapshot_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
+
+-type delete_application_cloud_watch_logging_option_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
+
+-type delete_application_input_processing_configuration_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
+-type delete_application_output_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
+-type delete_application_reference_data_source_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
+-type delete_application_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type delete_application_vpc_configuration_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
 
 -type describe_application_errors() ::
-    invalid_argument_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_argument_exception().
 
 -type describe_application_operation_errors() ::
-    invalid_argument_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception().
 
 -type describe_application_snapshot_errors() ::
-    invalid_argument_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception().
 
 -type describe_application_version_errors() ::
-    invalid_argument_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception().
 
 -type discover_input_schema_errors() ::
-    invalid_argument_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
+    unsupported_operation_exception() | 
     unable_to_detect_schema_exception() | 
+    service_unavailable_exception() | 
     resource_provisioned_throughput_exceeded_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    invalid_argument_exception().
 
 -type list_application_operations_errors() ::
-    invalid_argument_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception().
 
 -type list_application_snapshots_errors() ::
-    invalid_argument_exception() | 
-    unsupported_operation_exception().
+    unsupported_operation_exception() | 
+    invalid_argument_exception().
 
 -type list_application_versions_errors() ::
-    invalid_argument_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception().
 
 -type list_applications_errors() ::
     invalid_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type rollback_application_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type start_application_errors() ::
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception().
 
 -type stop_application_errors() ::
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type untag_resource_errors() ::
     too_many_tags_exception() | 
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type update_application_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_application_configuration_exception() | 
-    invalid_argument_exception() | 
-    code_validation_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type update_application_maintenance_configuration_errors() ::
-    concurrent_modification_exception() | 
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
-    unsupported_operation_exception().
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
+-type update_application_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception() | 
+    code_validation_exception().
+
+-type update_application_maintenance_configuration_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

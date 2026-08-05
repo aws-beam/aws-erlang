@@ -46,12 +46,26 @@
 
 
 %% Example:
-%% control_mapping() :: #{
-%%   <<"ControlArn">> => string(),
-%%   <<"Mapping">> => list(),
-%%   <<"MappingType">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type control_mapping() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_domain_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type associated_domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_objective_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type associated_objective_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -62,49 +76,40 @@
 
 
 %% Example:
-%% list_control_mappings_response() :: #{
-%%   <<"ControlMappings">> => list(control_mapping()),
-%%   <<"NextToken">> => string()
+%% common_control_mapping_details() :: #{
+%%   <<"CommonControlArn">> => string()
 %% }
--type list_control_mappings_response() :: #{binary() => any()}.
+-type common_control_mapping_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"Name">> => [string()]
-%% }
--type domain_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objectives_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Objectives">> => list(objective_summary())
-%% }
--type list_objectives_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_control_request() :: #{
-%%   <<"ControlArn">> := string()
-%% }
--type get_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_summary() :: #{
+%% common_control_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
 %%   <<"Domain">> => associated_domain_summary(),
 %%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"Name">> => [string()]
+%%   <<"Name">> => [string()],
+%%   <<"Objective">> => associated_objective_summary()
 %% }
--type objective_summary() :: #{binary() => any()}.
+-type common_control_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_filter() :: #{
+%%   <<"GovernedProviders">> => list(string()),
+%%   <<"Implementations">> => implementation_filter()
+%% }
+-type control_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_mapping() :: #{
+%%   <<"ControlArn">> => string(),
+%%   <<"Mapping">> => list(),
+%%   <<"MappingType">> => list(any())
+%% }
+-type control_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -117,59 +122,11 @@
 
 
 %% Example:
-%% list_controls_response() :: #{
-%%   <<"Controls">> => list(control_summary()),
-%%   <<"NextToken">> => string()
+%% control_parameter() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Requirement">> => list(any())
 %% }
--type list_controls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_control_mapping_details() :: #{
-%%   <<"ControlArn">> => string(),
-%%   <<"RelationType">> => list(any())
-%% }
--type related_control_mapping_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_mappings_request() :: #{
-%%   <<"Filter">> => control_mapping_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_control_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_resource_filter() :: #{
-%%   <<"Arn">> => string()
-%% }
--type objective_resource_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_controls_request() :: #{
-%%   <<"Filter">> => control_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_controls_request() :: #{binary() => any()}.
+-type control_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -190,80 +147,21 @@
 
 
 %% Example:
-%% implementation_details() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"Type">> => string()
+%% domain_resource_filter() :: #{
+%%   <<"Arn">> => string()
 %% }
--type implementation_details() :: #{binary() => any()}.
+-type domain_resource_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_common_controls_response() :: #{
-%%   <<"CommonControls">> => list(common_control_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_common_controls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% region_configuration() :: #{
-%%   <<"DeployableRegions">> => list(string()),
-%%   <<"Scope">> => list(any())
-%% }
--type region_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_domain_summary() :: #{
+%% domain_summary() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
 %%   <<"Name">> => [string()]
 %% }
--type associated_domain_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objectives_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectiveFilter">> => objective_filter()
-%% }
--type list_objectives_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% objective_filter() :: #{
-%%   <<"Domains">> => list(domain_resource_filter())
-%% }
--type objective_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type domain_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -275,34 +173,10 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
+%% get_control_request() :: #{
+%%   <<"ControlArn">> := string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_objective_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()]
-%% }
--type associated_objective_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% implementation_filter() :: #{
-%%   <<"Identifiers">> => list(string()),
-%%   <<"Types">> => list(string())
-%% }
--type implementation_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_filter() :: #{
-%%   <<"GovernedProviders">> => list(string()),
-%%   <<"Implementations">> => implementation_filter()
-%% }
--type control_filter() :: #{binary() => any()}.
+-type get_control_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -325,10 +199,19 @@
 
 
 %% Example:
-%% common_control_mapping_details() :: #{
-%%   <<"CommonControlArn">> => string()
+%% implementation_details() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
 %% }
--type common_control_mapping_details() :: #{binary() => any()}.
+-type implementation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% implementation_filter() :: #{
+%%   <<"Identifiers">> => list(string()),
+%%   <<"Types">> => list(string())
+%% }
+-type implementation_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -340,31 +223,10 @@
 
 
 %% Example:
-%% control_parameter() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"Requirement">> => list(any())
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type control_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% common_control_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateTime">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Domain">> => associated_domain_summary(),
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"Name">> => [string()],
-%%   <<"Objective">> => associated_objective_summary()
-%% }
--type common_control_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_resource_filter() :: #{
-%%   <<"Arn">> => string()
-%% }
--type domain_resource_filter() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,42 +237,180 @@
 %% }
 -type list_common_controls_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_common_controls_response() :: #{
+%%   <<"CommonControls">> => list(common_control_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_common_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_mappings_request() :: #{
+%%   <<"Filter">> => control_mapping_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_control_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_mappings_response() :: #{
+%%   <<"ControlMappings">> => list(control_mapping()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_control_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_request() :: #{
+%%   <<"Filter">> => control_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_response() :: #{
+%%   <<"Controls">> => list(control_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objectives_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectiveFilter">> => objective_filter()
+%% }
+-type list_objectives_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objectives_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Objectives">> => list(objective_summary())
+%% }
+-type list_objectives_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_filter() :: #{
+%%   <<"Domains">> => list(domain_resource_filter())
+%% }
+-type objective_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_resource_filter() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type objective_resource_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% objective_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateTime">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Domain">> => associated_domain_summary(),
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"Name">> => [string()]
+%% }
+-type objective_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_configuration() :: #{
+%%   <<"DeployableRegions">> => list(string()),
+%%   <<"Scope">> => list(any())
+%% }
+-type region_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_control_mapping_details() :: #{
+%%   <<"ControlArn">> => string(),
+%%   <<"RelationType">> => list(any())
+%% }
+-type related_control_mapping_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type get_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_common_controls_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_control_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_controls_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_objectives_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

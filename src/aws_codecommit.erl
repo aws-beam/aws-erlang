@@ -463,16 +463,238 @@
 
 
 %% Example:
-%% branch_name_required_exception() :: #{
+%% actor_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type branch_name_required_exception() :: #{binary() => any()}.
+-type actor_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% source_and_destination_are_same_exception() :: #{
+%% approval() :: #{
+%%   <<"approvalState">> => list(any()),
+%%   <<"userArn">> => string()
+%% }
+-type approval() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule() :: #{
+%%   <<"approvalRuleContent">> => string(),
+%%   <<"approvalRuleId">> => string(),
+%%   <<"approvalRuleName">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"lastModifiedUser">> => string(),
+%%   <<"originApprovalRuleTemplate">> => origin_approval_rule_template(),
+%%   <<"ruleContentSha256">> => string()
+%% }
+-type approval_rule() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_content_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type source_and_destination_are_same_exception() :: #{binary() => any()}.
+-type approval_rule_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_event_metadata() :: #{
+%%   <<"approvalRuleContent">> => string(),
+%%   <<"approvalRuleId">> => string(),
+%%   <<"approvalRuleName">> => string()
+%% }
+-type approval_rule_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_name_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_name_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_overridden_event_metadata() :: #{
+%%   <<"overrideStatus">> => list(any()),
+%%   <<"revisionId">> => string()
+%% }
+-type approval_rule_overridden_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template() :: #{
+%%   <<"approvalRuleTemplateContent">> => string(),
+%%   <<"approvalRuleTemplateDescription">> => string(),
+%%   <<"approvalRuleTemplateId">> => string(),
+%%   <<"approvalRuleTemplateName">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"lastModifiedUser">> => string(),
+%%   <<"ruleContentSha256">> => string()
+%% }
+-type approval_rule_template() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_name_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_name_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_state_changed_event_metadata() :: #{
+%%   <<"approvalStatus">> => list(any()),
+%%   <<"revisionId">> => string()
+%% }
+-type approval_state_changed_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% approval_state_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_state_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_approval_rule_template_with_repository_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type associate_approval_rule_template_with_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% author_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type author_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type batch_associate_approval_rule_template_with_repositories_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryNames">> := list(string())
+%% }
+-type batch_associate_approval_rule_template_with_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_output() :: #{
+%%   <<"associatedRepositoryNames">> => list(string()),
+%%   <<"errors">> => list(batch_associate_approval_rule_template_with_repositories_error())
+%% }
+-type batch_associate_approval_rule_template_with_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_error() :: #{
+%%   <<"exceptionName">> => string(),
+%%   <<"filePath">> => string(),
+%%   <<"message">> => string()
+%% }
+-type batch_describe_merge_conflicts_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"filePaths">> => list(string()),
+%%   <<"maxConflictFiles">> => integer(),
+%%   <<"maxMergeHunks">> => integer(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type batch_describe_merge_conflicts_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflicts">> => list(conflict()),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"errors">> => list(batch_describe_merge_conflicts_error()),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type batch_describe_merge_conflicts_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryNames">> := list(string())
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_output() :: #{
+%%   <<"disassociatedRepositoryNames">> => list(string()),
+%%   <<"errors">> => list(batch_disassociate_approval_rule_template_from_repositories_error())
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_error() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_commits_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_input() :: #{
+%%   <<"commitIds">> := list(string()),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_get_commits_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_output() :: #{
+%%   <<"commits">> => list(commit()),
+%%   <<"errors">> => list(batch_get_commits_error())
+%% }
+-type batch_get_commits_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_repositories_error() :: #{
@@ -484,213 +706,24 @@
 -type batch_get_repositories_error() :: #{binary() => any()}.
 
 %% Example:
-%% evaluate_pull_request_approval_rules_output() :: #{
-%%   <<"evaluation">> => evaluation()
+%% batch_get_repositories_input() :: #{
+%%   <<"repositoryNames">> := list(string())
 %% }
--type evaluate_pull_request_approval_rules_output() :: #{binary() => any()}.
+-type batch_get_repositories_input() :: #{binary() => any()}.
 
 %% Example:
-%% approval_rule_template_name_required_exception() :: #{
+%% batch_get_repositories_output() :: #{
+%%   <<"errors">> => list(batch_get_repositories_error()),
+%%   <<"repositories">> => list(repository_metadata()),
+%%   <<"repositoriesNotFound">> => list(string())
+%% }
+-type batch_get_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% before_commit_id_and_after_commit_id_are_same_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type approval_rule_template_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% default_branch_cannot_be_deleted_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type default_branch_cannot_be_deleted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% client_request_token_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type client_request_token_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_rule_templates_associated_with_repository_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_rule_templates_associated_with_repository_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_approval_rule_template_output() :: #{
-%%   <<"approvalRuleTemplate">> => approval_rule_template()
-%% }
--type get_approval_rule_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_pull_request_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type get_pull_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% commit() :: #{
-%%   <<"additionalData">> => string(),
-%%   <<"author">> => user_info(),
-%%   <<"commitId">> => string(),
-%%   <<"committer">> => user_info(),
-%%   <<"message">> => string(),
-%%   <<"parents">> => list(string()),
-%%   <<"treeId">> => string()
-%% }
--type commit() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_order_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_order_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_file_output() :: #{
-%%   <<"blobId">> => string(),
-%%   <<"commitId">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type put_file_output() :: #{binary() => any()}.
-
-%% Example:
-%% tips_divergence_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tips_divergence_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_rule_template_description_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_rule_template_description_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_name_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_name_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_max_results_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_max_results_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_blob_input() :: #{
-%%   <<"blobId">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_blob_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_file_position_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_file_position_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_continuation_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_continuation_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% symbolic_link() :: #{
-%%   <<"absolutePath">> => string(),
-%%   <<"blobId">> => string(),
-%%   <<"fileMode">> => list(any()),
-%%   <<"relativePath">> => string()
-%% }
--type symbolic_link() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_content_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_content_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_target_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_options_input() :: #{
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string()
-%% }
--type get_merge_options_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_repository_encryption_key_output() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"originalKmsKeyId">> => string(),
-%%   <<"repositoryId">> => string()
-%% }
--type update_repository_encryption_key_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_commit_input() :: #{
-%%   <<"commitId">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_commit_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_destination_commit_specifier_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_destination_commit_specifier_exception() :: #{binary() => any()}.
-
-%% Example:
-%% comment_deleted_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type comment_deleted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_associated_approval_rule_templates_for_repository_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type list_associated_approval_rule_templates_for_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pull_request_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pull_request_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_names_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_names_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_branch_input() :: #{
-%%   <<"branchName">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_branch_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_pull_requests_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pullRequestIds">> => list(string())
-%% }
--type list_pull_requests_output() :: #{binary() => any()}.
+-type before_commit_id_and_after_commit_id_are_same_exception() :: #{binary() => any()}.
 
 %% Example:
 %% blob_id_does_not_exist_exception() :: #{
@@ -699,162 +732,10 @@
 -type blob_id_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_repository_input() :: #{
-%%   <<"repositoryName">> := string()
-%% }
--type get_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% merge_branches_by_squash_input() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolution">> => conflict_resolution(),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"email">> => string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string(),
-%%   <<"targetBranch">> => string()
-%% }
--type merge_branches_by_squash_input() :: #{binary() => any()}.
-
-%% Example:
-%% comment_id_required_exception() :: #{
+%% blob_id_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type comment_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% commit_ids_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_ids_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_integrity_checks_failed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_integrity_checks_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_name_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_name_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_merge_conflicts_output() :: #{
-%%   <<"baseCommitId">> => string(),
-%%   <<"conflictMetadata">> => conflict_metadata(),
-%%   <<"destinationCommitId">> => string(),
-%%   <<"mergeHunks">> => list(merge_hunk()),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type describe_merge_conflicts_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_max_merge_hunks_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_max_merge_hunks_exception() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_resolution() :: #{
-%%   <<"deleteFiles">> => list(delete_file_entry()),
-%%   <<"replaceContents">> => list(replace_content_entry()),
-%%   <<"setFileModes">> => list(set_file_mode_entry())
-%% }
--type conflict_resolution() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_client_request_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_client_request_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_repository_output() :: #{
-%%   <<"repositoryMetadata">> => repository_metadata()
-%% }
--type create_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% source_file_specifier() :: #{
-%%   <<"filePath">> => string(),
-%%   <<"isMove">> => boolean()
-%% }
--type source_file_specifier() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_content_output() :: #{
-%%   <<"approvalRuleTemplate">> => approval_rule_template()
-%% }
--type update_approval_rule_template_content_output() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_target() :: #{
-%%   <<"destinationCommit">> => string(),
-%%   <<"destinationReference">> => string(),
-%%   <<"mergeBase">> => string(),
-%%   <<"mergeMetadata">> => merge_metadata(),
-%%   <<"repositoryName">> => string(),
-%%   <<"sourceCommit">> => string(),
-%%   <<"sourceReference">> => string()
-%% }
--type pull_request_target() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pull_request_approval_rule_input() :: #{
-%%   <<"approvalRuleName">> := string(),
-%%   <<"pullRequestId">> := string()
-%% }
--type delete_pull_request_approval_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% difference() :: #{
-%%   <<"afterBlob">> => blob_metadata(),
-%%   <<"beforeBlob">> => blob_metadata(),
-%%   <<"changeType">> => list(any())
-%% }
--type difference() :: #{binary() => any()}.
-
-%% Example:
-%% list_repositories_for_approval_rule_template_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryNames">> => list(string())
-%% }
--type list_repositories_for_approval_rule_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_approval_rules_not_satisfied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_request_approval_rules_not_satisfied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_pull_requests_input() :: #{
-%%   <<"authorArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pullRequestStatus">> => list(any()),
-%%   <<"repositoryName">> := string()
-%% }
--type list_pull_requests_input() :: #{binary() => any()}.
+-type blob_id_required_exception() :: #{binary() => any()}.
 
 %% Example:
 %% blob_metadata() :: #{
@@ -865,448 +746,23 @@
 -type blob_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% reaction_value_formats() :: #{
-%%   <<"emoji">> => string(),
-%%   <<"shortCode">> => string(),
-%%   <<"unicode">> => string()
-%% }
--type reaction_value_formats() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_author_arn_exception() :: #{
+%% branch_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_author_arn_exception() :: #{binary() => any()}.
+-type branch_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% maximum_repository_triggers_exceeded_exception() :: #{
+%% branch_info() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"commitId">> => string()
+%% }
+-type branch_info() :: #{binary() => any()}.
+
+%% Example:
+%% branch_name_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type maximum_repository_triggers_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_reaction_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_reaction_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_event_metadata() :: #{
-%%   <<"approvalRuleContent">> => string(),
-%%   <<"approvalRuleId">> => string(),
-%%   <<"approvalRuleName">> => string()
-%% }
--type approval_rule_event_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% folder_content_size_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type folder_content_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% source_file_or_content_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type source_file_or_content_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_trigger_custom_data_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_repository_trigger_custom_data_exception() :: #{binary() => any()}.
-
-%% Example:
-%% test_repository_triggers_input() :: #{
-%%   <<"repositoryName">> := string(),
-%%   <<"triggers">> := list(repository_trigger())
-%% }
--type test_repository_triggers_input() :: #{binary() => any()}.
-
-%% Example:
-%% tags_map_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tags_map_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_differences_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"differences">> => list(difference())
-%% }
--type get_differences_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_conflict_resolution_strategy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_conflict_resolution_strategy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_conflicts_output() :: #{
-%%   <<"baseCommitId">> => string(),
-%%   <<"conflictMetadataList">> => list(conflict_metadata()),
-%%   <<"destinationCommitId">> => string(),
-%%   <<"mergeable">> => boolean(),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type get_merge_conflicts_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_override_status_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_override_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_options_output() :: #{
-%%   <<"baseCommitId">> => string(),
-%%   <<"destinationCommitId">> => string(),
-%%   <<"mergeOptions">> => list(list(any())()),
-%%   <<"sourceCommitId">> => string()
-%% }
--type get_merge_options_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_entry() :: #{
-%%   <<"filePath">> => string()
-%% }
--type delete_file_entry() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_targets_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_targets_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_triggers_list_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_triggers_list_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_hunk_detail() :: #{
-%%   <<"endLine">> => integer(),
-%%   <<"hunkContent">> => string(),
-%%   <<"startLine">> => integer()
-%% }
--type merge_hunk_detail() :: #{binary() => any()}.
-
-%% Example:
-%% path_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type path_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_pull_request_approval_states_output() :: #{
-%%   <<"approvals">> => list(approval())
-%% }
--type get_pull_request_approval_states_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_pull_request_input() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"targets">> := list(target()),
-%%   <<"title">> := string()
-%% }
--type create_pull_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_status_changed_event_metadata() :: #{
-%%   <<"pullRequestStatus">> => list(any())
-%% }
--type pull_request_status_changed_event_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% file_name_conflicts_with_directory_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_name_conflicts_with_directory_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_approval_rule_template_output() :: #{
-%%   <<"approvalRuleTemplateId">> => string()
-%% }
--type delete_approval_rule_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_branches_output() :: #{
-%%   <<"branches">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_branches_output() :: #{binary() => any()}.
-
-%% Example:
-%% same_file_content_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type same_file_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_repositories_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"order">> => list(any()),
-%%   <<"sortBy">> => list(any())
-%% }
--type list_repositories_input() :: #{binary() => any()}.
-
-%% Example:
-%% repository_name_id_pair() :: #{
-%%   <<"repositoryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type repository_name_id_pair() :: #{binary() => any()}.
-
-%% Example:
-%% create_approval_rule_template_input() :: #{
-%%   <<"approvalRuleTemplateContent">> := string(),
-%%   <<"approvalRuleTemplateDescription">> => string(),
-%%   <<"approvalRuleTemplateName">> := string()
-%% }
--type create_approval_rule_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% commit_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_triggers_output() :: #{
-%%   <<"configurationId">> => string(),
-%%   <<"triggers">> => list(repository_trigger())
-%% }
--type get_repository_triggers_output() :: #{binary() => any()}.
-
-%% Example:
-%% post_comment_reply_output() :: #{
-%%   <<"comment">> => comment()
-%% }
--type post_comment_reply_output() :: #{binary() => any()}.
-
-%% Example:
-%% same_path_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type same_path_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_output() :: #{
-%%   <<"repositoryMetadata">> => repository_metadata()
-%% }
--type get_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_number_of_approvals_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_number_of_approvals_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_rule_content_sha256_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_rule_content_sha256_exception() :: #{binary() => any()}.
-
-%% Example:
-%% author_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type author_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% post_comment_for_pull_request_output() :: #{
-%%   <<"afterBlobId">> => string(),
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeBlobId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"comment">> => comment(),
-%%   <<"location">> => location(),
-%%   <<"pullRequestId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type post_comment_for_pull_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% file() :: #{
-%%   <<"absolutePath">> => string(),
-%%   <<"blobId">> => string(),
-%%   <<"fileMode">> => list(any()),
-%%   <<"relativePath">> => string()
-%% }
--type file() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_template_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_template_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tip_of_source_reference_is_different_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tip_of_source_reference_is_different_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_replacement_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_replacement_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_repository_description_input() :: #{
-%%   <<"repositoryDescription">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type update_repository_description_input() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_template_content_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_template_content_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_description_output() :: #{
-%%   <<"approvalRuleTemplate">> => approval_rule_template()
-%% }
--type update_approval_rule_template_description_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_repository_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_state_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_state_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_entry_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_entry_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_merge_conflicts_error() :: #{
-%%   <<"exceptionName">> => string(),
-%%   <<"filePath">> => string(),
-%%   <<"message">> => string()
-%% }
--type batch_describe_merge_conflicts_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% merge_branches_by_fast_forward_output() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type merge_branches_by_fast_forward_output() :: #{binary() => any()}.
-
-%% Example:
-%% target_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type target_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_modes() :: #{
-%%   <<"base">> => list(any()),
-%%   <<"destination">> => list(any()),
-%%   <<"source">> => list(any())
-%% }
--type file_modes() :: #{binary() => any()}.
-
-%% Example:
-%% repository_trigger_branch_name_list_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_trigger_branch_name_list_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_approval_rule_content_input() :: #{
-%%   <<"approvalRuleName">> := string(),
-%%   <<"existingRuleContentSha256">> => string(),
-%%   <<"newRuleContent">> := string(),
-%%   <<"pullRequestId">> := string()
-%% }
--type update_pull_request_approval_rule_content_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parent_commit_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parent_commit_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_template_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_template_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_branches_by_three_way_output() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type merge_branches_by_three_way_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_branch_output() :: #{
-%%   <<"deletedBranch">> => branch_info()
-%% }
--type delete_branch_output() :: #{binary() => any()}.
-
-%% Example:
-%% cannot_modify_approval_rule_from_template_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cannot_modify_approval_rule_from_template_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_content_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_content_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% blob_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type blob_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_approval_rule_template_from_repository_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type disassociate_approval_rule_template_from_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_cannot_be_approved_by_author_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_request_cannot_be_approved_by_author_exception() :: #{binary() => any()}.
+-type branch_name_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% branch_name_is_tag_name_exception() :: #{
@@ -1315,256 +771,28 @@
 -type branch_name_is_tag_name_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_file_commit_history_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"revisionDag">> => list(file_version())
-%% }
--type list_file_commit_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% file_metadata() :: #{
-%%   <<"absolutePath">> => string(),
-%%   <<"blobId">> => string(),
-%%   <<"fileMode">> => list(any())
-%% }
--type file_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_description_input() :: #{
-%%   <<"approvalRuleTemplateDescription">> := string(),
-%%   <<"approvalRuleTemplateName">> := string()
-%% }
--type update_approval_rule_template_description_input() :: #{binary() => any()}.
-
-%% Example:
-%% reference_name_required_exception() :: #{
+%% branch_name_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type reference_name_required_exception() :: #{binary() => any()}.
+-type branch_name_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% comment_content_size_limit_exceeded_exception() :: #{
+%% cannot_delete_approval_rule_from_template_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type comment_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+-type cannot_delete_approval_rule_from_template_exception() :: #{binary() => any()}.
 
 %% Example:
-%% replacement_content_required_exception() :: #{
+%% cannot_modify_approval_rule_from_template_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type replacement_content_required_exception() :: #{binary() => any()}.
+-type cannot_modify_approval_rule_from_template_exception() :: #{binary() => any()}.
 
 %% Example:
-%% merge_branches_by_three_way_input() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolution">> => conflict_resolution(),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"email">> => string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string(),
-%%   <<"targetBranch">> => string()
-%% }
--type merge_branches_by_three_way_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_approval_rule_template_output() :: #{
-%%   <<"approvalRuleTemplate">> => approval_rule_template()
-%% }
--type create_approval_rule_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% replace_content_entry() :: #{
-%%   <<"content">> => binary(),
-%%   <<"fileMode">> => list(any()),
-%%   <<"filePath">> => string(),
-%%   <<"replacementType">> => list(any())
-%% }
--type replace_content_entry() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_trigger_events_exception() :: #{
+%% client_request_token_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_repository_trigger_events_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target() :: #{
-%%   <<"destinationReference">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"sourceReference">> => string()
-%% }
--type target() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_request_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_option_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type merge_option_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_approval_rule_template_with_repositories_output() :: #{
-%%   <<"associatedRepositoryNames">> => list(string()),
-%%   <<"errors">> => list(batch_associate_approval_rule_template_with_repositories_error())
-%% }
--type batch_associate_approval_rule_template_with_repositories_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_comment_content_input() :: #{
-%%   <<"commentId">> := string()
-%% }
--type delete_comment_content_input() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_items_to_compare_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_items_to_compare_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_commit_input() :: #{
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string()
-%% }
--type get_merge_commit_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_output() :: #{
-%%   <<"repositoryId">> => string()
-%% }
--type delete_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% multiple_conflict_resolution_entries_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type multiple_conflict_resolution_entries_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_pull_request_by_fast_forward_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type merge_pull_request_by_fast_forward_output() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_rule_template_content_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_rule_template_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_metadata() :: #{
-%%   <<"isMerged">> => boolean(),
-%%   <<"mergeCommitId">> => string(),
-%%   <<"mergeOption">> => list(any()),
-%%   <<"mergedBy">> => string()
-%% }
--type merge_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_replacement_content_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_replacement_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_conflicts_input() :: #{
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"maxConflictFiles">> => integer(),
-%%   <<"mergeOption">> := list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string()
-%% }
--type get_merge_conflicts_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_comment_reactions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reactionsForComment">> => list(reaction_for_comment())
-%% }
--type get_comment_reactions_output() :: #{binary() => any()}.
-
-%% Example:
-%% merge_pull_request_by_squash_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type merge_pull_request_by_squash_output() :: #{binary() => any()}.
-
-%% Example:
-%% merge_branches_by_squash_output() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type merge_branches_by_squash_output() :: #{binary() => any()}.
-
-%% Example:
-%% revision_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type revision_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_branches_by_fast_forward_input() :: #{
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string(),
-%%   <<"targetBranch">> => string()
-%% }
--type merge_branches_by_fast_forward_input() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_status_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_request_status_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_branch_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_branch_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_hunk() :: #{
-%%   <<"base">> => merge_hunk_detail(),
-%%   <<"destination">> => merge_hunk_detail(),
-%%   <<"isConflict">> => boolean(),
-%%   <<"source">> => merge_hunk_detail()
-%% }
--type merge_hunk() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_rule_content_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_rule_content_exception() :: #{binary() => any()}.
+-type client_request_token_required_exception() :: #{binary() => any()}.
 
 %% Example:
 %% comment() :: #{
@@ -1582,83 +810,169 @@
 -type comment() :: #{binary() => any()}.
 
 %% Example:
-%% post_comment_for_pull_request_input() :: #{
-%%   <<"afterCommitId">> := string(),
-%%   <<"beforeCommitId">> := string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"content">> := string(),
+%% comment_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_deleted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_deleted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_not_created_by_caller_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_not_created_by_caller_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comments_for_compared_commit() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comments">> => list(comment()),
 %%   <<"location">> => location(),
-%%   <<"pullRequestId">> := string(),
-%%   <<"repositoryName">> := string()
+%%   <<"repositoryName">> => string()
 %% }
--type post_comment_for_pull_request_input() :: #{binary() => any()}.
+-type comments_for_compared_commit() :: #{binary() => any()}.
 
 %% Example:
-%% update_repository_encryption_key_input() :: #{
-%%   <<"kmsKeyId">> := string(),
-%%   <<"repositoryName">> := string()
+%% comments_for_pull_request() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comments">> => list(comment()),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> => string(),
+%%   <<"repositoryName">> => string()
 %% }
--type update_repository_encryption_key_input() :: #{binary() => any()}.
+-type comments_for_pull_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_pull_request_event_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pull_request_event_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_file_mode_entry() :: #{
-%%   <<"fileMode">> => list(any()),
-%%   <<"filePath">> => string()
-%% }
--type set_file_mode_entry() :: #{binary() => any()}.
-
-%% Example:
-%% reaction_value_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type reaction_value_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_comment_reactions_input() :: #{
-%%   <<"commentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reactionUserArn">> => string()
-%% }
--type get_comment_reactions_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_folder_output() :: #{
+%% commit() :: #{
+%%   <<"additionalData">> => string(),
+%%   <<"author">> => user_info(),
 %%   <<"commitId">> => string(),
-%%   <<"files">> => list(file()),
-%%   <<"folderPath">> => string(),
-%%   <<"subFolders">> => list(folder()),
-%%   <<"subModules">> => list(sub_module()),
-%%   <<"symbolicLinks">> => list(symbolic_link()),
+%%   <<"committer">> => user_info(),
+%%   <<"message">> => string(),
+%%   <<"parents">> => list(string()),
 %%   <<"treeId">> => string()
 %% }
--type get_folder_output() :: #{binary() => any()}.
+-type commit() :: #{binary() => any()}.
 
 %% Example:
-%% maximum_repository_names_exceeded_exception() :: #{
+%% commit_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type maximum_repository_names_exceeded_exception() :: #{binary() => any()}.
+-type commit_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% merge_pull_request_by_fast_forward_input() :: #{
-%%   <<"pullRequestId">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type merge_pull_request_by_fast_forward_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_revision_id_exception() :: #{
+%% commit_id_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_revision_id_exception() :: #{binary() => any()}.
+-type commit_id_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_ids_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_ids_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_ids_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_ids_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_message_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_message_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_reference_update_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_reference_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict() :: #{
+%%   <<"conflictMetadata">> => conflict_metadata(),
+%%   <<"mergeHunks">> => list(merge_hunk())
+%% }
+-type conflict() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_metadata() :: #{
+%%   <<"contentConflict">> => boolean(),
+%%   <<"fileModeConflict">> => boolean(),
+%%   <<"fileModes">> => file_modes(),
+%%   <<"filePath">> => string(),
+%%   <<"fileSizes">> => file_sizes(),
+%%   <<"isBinaryFile">> => is_binary_file(),
+%%   <<"mergeOperations">> => merge_operations(),
+%%   <<"numberOfConflicts">> => integer(),
+%%   <<"objectTypeConflict">> => boolean(),
+%%   <<"objectTypes">> => object_types()
+%% }
+-type conflict_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_resolution() :: #{
+%%   <<"deleteFiles">> => list(delete_file_entry()),
+%%   <<"replaceContents">> => list(replace_content_entry()),
+%%   <<"setFileModes">> => list(set_file_mode_entry())
+%% }
+-type conflict_resolution() :: #{binary() => any()}.
+
+%% Example:
+%% create_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateContent">> := string(),
+%%   <<"approvalRuleTemplateDescription">> => string(),
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type create_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type create_approval_rule_template_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_branch_input() :: #{
@@ -1669,103 +983,73 @@
 -type create_branch_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_commits_error() :: #{
+%% create_commit_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"deleteFiles">> => list(delete_file_entry()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"parentCommitId">> => string(),
+%%   <<"putFiles">> => list(put_file_entry()),
+%%   <<"repositoryName">> := string(),
+%%   <<"setFileModes">> => list(set_file_mode_entry())
+%% }
+-type create_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_commit_output() :: #{
 %%   <<"commitId">> => string(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
+%%   <<"filesAdded">> => list(file_metadata()),
+%%   <<"filesDeleted">> => list(file_metadata()),
+%%   <<"filesUpdated">> => list(file_metadata()),
+%%   <<"treeId">> => string()
 %% }
--type batch_get_commits_error() :: #{binary() => any()}.
+-type create_commit_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_blob_id_exception() :: #{
-%%   <<"message">> => string()
+%% create_pull_request_approval_rule_input() :: #{
+%%   <<"approvalRuleContent">> := string(),
+%%   <<"approvalRuleName">> := string(),
+%%   <<"pullRequestId">> := string()
 %% }
--type invalid_blob_id_exception() :: #{binary() => any()}.
+-type create_pull_request_approval_rule_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_describe_merge_conflicts_output() :: #{
-%%   <<"baseCommitId">> => string(),
-%%   <<"conflicts">> => list(conflict()),
-%%   <<"destinationCommitId">> => string(),
-%%   <<"errors">> => list(batch_describe_merge_conflicts_error()),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceCommitId">> => string()
+%% create_pull_request_approval_rule_output() :: #{
+%%   <<"approvalRule">> => approval_rule()
 %% }
--type batch_describe_merge_conflicts_output() :: #{binary() => any()}.
+-type create_pull_request_approval_rule_output() :: #{binary() => any()}.
 
 %% Example:
-%% pull_request_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
+%% create_pull_request_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"targets">> := list(target()),
+%%   <<"title">> := string()
 %% }
--type pull_request_does_not_exist_exception() :: #{binary() => any()}.
+-type create_pull_request_input() :: #{binary() => any()}.
 
 %% Example:
-%% repository_trigger_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_trigger_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_pull_request_by_three_way_output() :: #{
+%% create_pull_request_output() :: #{
 %%   <<"pullRequest">> => pull_request()
 %% }
--type merge_pull_request_by_three_way_output() :: #{binary() => any()}.
+-type create_pull_request_output() :: #{binary() => any()}.
 
 %% Example:
-%% commit_ids_list_required_exception() :: #{
-%%   <<"message">> => string()
+%% create_repository_input() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"repositoryDescription">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"tags">> => map()
 %% }
--type commit_ids_list_required_exception() :: #{binary() => any()}.
+-type create_repository_input() :: #{binary() => any()}.
 
 %% Example:
-%% repository_name_required_exception() :: #{
-%%   <<"message">> => string()
+%% create_repository_output() :: #{
+%%   <<"repositoryMetadata">> => repository_metadata()
 %% }
--type repository_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_email_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_email_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_invalid_usage_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_invalid_usage_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_commit_output() :: #{
-%%   <<"commit">> => commit()
-%% }
--type get_commit_output() :: #{binary() => any()}.
-
-%% Example:
-%% comment_not_created_by_caller_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type comment_not_created_by_caller_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_relative_file_version_enum_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_relative_file_version_enum_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parent_commit_id_outdated_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type parent_commit_id_outdated_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_sizes() :: #{
-%%   <<"base">> => float(),
-%%   <<"destination">> => float(),
-%%   <<"source">> => float()
-%% }
--type file_sizes() :: #{binary() => any()}.
+-type create_repository_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_unreferenced_merge_commit_input() :: #{
@@ -1784,85 +1068,107 @@
 -type create_unreferenced_merge_commit_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_pull_request_title_output() :: #{
-%%   <<"pullRequest">> => pull_request()
+%% create_unreferenced_merge_commit_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
 %% }
--type update_pull_request_title_output() :: #{binary() => any()}.
+-type create_unreferenced_merge_commit_output() :: #{binary() => any()}.
 
 %% Example:
-%% pull_request_source_reference_updated_event_metadata() :: #{
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"mergeBase">> => string(),
-%%   <<"repositoryName">> => string()
+%% default_branch_cannot_be_deleted_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type pull_request_source_reference_updated_event_metadata() :: #{binary() => any()}.
+-type default_branch_cannot_be_deleted_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_pull_request_input() :: #{
-%%   <<"pullRequestId">> := string()
+%% delete_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string()
 %% }
--type get_pull_request_input() :: #{binary() => any()}.
+-type delete_approval_rule_template_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_comment_output() :: #{
+%% delete_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplateId">> => string()
+%% }
+-type delete_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_branch_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_branch_output() :: #{
+%%   <<"deletedBranch">> => branch_info()
+%% }
+-type delete_branch_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_comment_content_input() :: #{
+%%   <<"commentId">> := string()
+%% }
+-type delete_comment_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_comment_content_output() :: #{
 %%   <<"comment">> => comment()
 %% }
--type get_comment_output() :: #{binary() => any()}.
+-type delete_comment_content_output() :: #{binary() => any()}.
 
 %% Example:
-%% approval_rule_template() :: #{
-%%   <<"approvalRuleTemplateContent">> => string(),
-%%   <<"approvalRuleTemplateDescription">> => string(),
-%%   <<"approvalRuleTemplateId">> => string(),
-%%   <<"approvalRuleTemplateName">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"lastModifiedUser">> => string(),
-%%   <<"ruleContentSha256">> => string()
+%% delete_file_entry() :: #{
+%%   <<"filePath">> => string()
 %% }
--type approval_rule_template() :: #{binary() => any()}.
+-type delete_file_entry() :: #{binary() => any()}.
 
 %% Example:
-%% post_comment_reply_input() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"content">> := string(),
-%%   <<"inReplyTo">> := string()
+%% delete_file_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"email">> => string(),
+%%   <<"filePath">> := string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"parentCommitId">> := string(),
+%%   <<"repositoryName">> := string()
 %% }
--type post_comment_reply_input() :: #{binary() => any()}.
+-type delete_file_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_associate_approval_rule_template_with_repositories_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"repositoryName">> => string()
+%% delete_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"filePath">> => string(),
+%%   <<"treeId">> => string()
 %% }
--type batch_associate_approval_rule_template_with_repositories_error() :: #{binary() => any()}.
+-type delete_file_output() :: #{binary() => any()}.
 
 %% Example:
-%% conflict() :: #{
-%%   <<"conflictMetadata">> => conflict_metadata(),
-%%   <<"mergeHunks">> => list(merge_hunk())
+%% delete_pull_request_approval_rule_input() :: #{
+%%   <<"approvalRuleName">> := string(),
+%%   <<"pullRequestId">> := string()
 %% }
--type conflict() :: #{binary() => any()}.
+-type delete_pull_request_approval_rule_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_reaction_user_arn_exception() :: #{
-%%   <<"message">> => string()
+%% delete_pull_request_approval_rule_output() :: #{
+%%   <<"approvalRuleId">> => string()
 %% }
--type invalid_reaction_user_arn_exception() :: #{binary() => any()}.
+-type delete_pull_request_approval_rule_output() :: #{binary() => any()}.
 
 %% Example:
-%% file_mode_required_exception() :: #{
-%%   <<"message">> => string()
+%% delete_repository_input() :: #{
+%%   <<"repositoryName">> := string()
 %% }
--type file_mode_required_exception() :: #{binary() => any()}.
+-type delete_repository_input() :: #{binary() => any()}.
 
 %% Example:
-%% reaction_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% delete_repository_output() :: #{
+%%   <<"repositoryId">> => string()
 %% }
--type reaction_limit_exceeded_exception() :: #{binary() => any()}.
+-type delete_repository_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_merge_conflicts_input() :: #{
@@ -1879,58 +1185,498 @@
 -type describe_merge_conflicts_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_approval_rule_template_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string()
+%% describe_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflictMetadata">> => conflict_metadata(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeHunks">> => list(merge_hunk()),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
 %% }
--type delete_approval_rule_template_input() :: #{binary() => any()}.
+-type describe_merge_conflicts_output() :: #{binary() => any()}.
 
 %% Example:
-%% override_already_set_exception() :: #{
+%% describe_pull_request_events_input() :: #{
+%%   <<"actorArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestEventType">> => list(any()),
+%%   <<"pullRequestId">> := string()
+%% }
+-type describe_pull_request_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pull_request_events_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestEvents">> => list(pull_request_event())
+%% }
+-type describe_pull_request_events_output() :: #{binary() => any()}.
+
+%% Example:
+%% difference() :: #{
+%%   <<"afterBlob">> => blob_metadata(),
+%%   <<"beforeBlob">> => blob_metadata(),
+%%   <<"changeType">> => list(any())
+%% }
+-type difference() :: #{binary() => any()}.
+
+%% Example:
+%% directory_name_conflicts_with_file_name_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type override_already_set_exception() :: #{binary() => any()}.
+-type directory_name_conflicts_with_file_name_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_file_entry() :: #{
+%% disassociate_approval_rule_template_from_repository_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type disassociate_approval_rule_template_from_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_integrity_checks_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_integrity_checks_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_invalid_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_invalid_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_invalid_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_invalid_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_pull_request_approval_rules_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type evaluate_pull_request_approval_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_pull_request_approval_rules_output() :: #{
+%%   <<"evaluation">> => evaluation()
+%% }
+-type evaluate_pull_request_approval_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation() :: #{
+%%   <<"approvalRulesNotSatisfied">> => list(string()),
+%%   <<"approvalRulesSatisfied">> => list(string()),
+%%   <<"approved">> => boolean(),
+%%   <<"overridden">> => boolean()
+%% }
+-type evaluation() :: #{binary() => any()}.
+
+%% Example:
+%% file() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"relativePath">> => string()
+%% }
+-type file() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_and_source_file_specified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_and_source_file_specified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_entry_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_entry_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_metadata() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any())
+%% }
+-type file_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% file_mode_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_mode_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_modes() :: #{
+%%   <<"base">> => list(any()),
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type file_modes() :: #{binary() => any()}.
+
+%% Example:
+%% file_name_conflicts_with_directory_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_name_conflicts_with_directory_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_path_conflicts_with_submodule_path_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_path_conflicts_with_submodule_path_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_sizes() :: #{
+%%   <<"base">> => float(),
+%%   <<"destination">> => float(),
+%%   <<"source">> => float()
+%% }
+-type file_sizes() :: #{binary() => any()}.
+
+%% Example:
+%% file_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_version() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commit">> => commit(),
+%%   <<"path">> => string(),
+%%   <<"revisionChildren">> => list(string())
+%% }
+-type file_version() :: #{binary() => any()}.
+
+%% Example:
+%% folder() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"relativePath">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type folder() :: #{binary() => any()}.
+
+%% Example:
+%% folder_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type folder_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% folder_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type folder_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type get_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type get_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_input() :: #{
+%%   <<"blobId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_blob_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_output() :: #{
+%%   <<"content">> => binary()
+%% }
+-type get_blob_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_branch_input() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_branch_output() :: #{
+%%   <<"branch">> => branch_info()
+%% }
+-type get_branch_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_input() :: #{
+%%   <<"commentId">> := string()
+%% }
+-type get_comment_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type get_comment_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_reactions_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reactionUserArn">> => string()
+%% }
+-type get_comment_reactions_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_reactions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reactionsForComment">> => list(reaction_for_comment())
+%% }
+-type get_comment_reactions_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_compared_commit_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_comments_for_compared_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_compared_commit_output() :: #{
+%%   <<"commentsForComparedCommitData">> => list(comments_for_compared_commit()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_comments_for_compared_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_pull_request_input() :: #{
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_comments_for_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_pull_request_output() :: #{
+%%   <<"commentsForPullRequestData">> => list(comments_for_pull_request()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_comments_for_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_commit_input() :: #{
+%%   <<"commitId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_commit_output() :: #{
+%%   <<"commit">> => commit()
+%% }
+-type get_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_differences_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"afterCommitSpecifier">> := string(),
+%%   <<"afterPath">> => string(),
+%%   <<"beforeCommitSpecifier">> => string(),
+%%   <<"beforePath">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_differences_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_differences_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"differences">> => list(difference())
+%% }
+-type get_differences_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_input() :: #{
+%%   <<"commitSpecifier">> => string(),
+%%   <<"filePath">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_file_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
 %%   <<"fileContent">> => binary(),
 %%   <<"fileMode">> => list(any()),
 %%   <<"filePath">> => string(),
-%%   <<"sourceFile">> => source_file_specifier()
+%%   <<"fileSize">> => float()
 %% }
--type put_file_entry() :: #{binary() => any()}.
+-type get_file_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_associate_approval_rule_template_with_repositories_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"repositoryNames">> := list(string())
+%% get_folder_input() :: #{
+%%   <<"commitSpecifier">> => string(),
+%%   <<"folderPath">> := string(),
+%%   <<"repositoryName">> := string()
 %% }
--type batch_associate_approval_rule_template_with_repositories_input() :: #{binary() => any()}.
+-type get_folder_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_commit_exception() :: #{
-%%   <<"message">> => string()
+%% get_folder_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"files">> => list(file()),
+%%   <<"folderPath">> => string(),
+%%   <<"subFolders">> => list(folder()),
+%%   <<"subModules">> => list(sub_module()),
+%%   <<"symbolicLinks">> => list(symbolic_link()),
+%%   <<"treeId">> => string()
 %% }
--type invalid_commit_exception() :: #{binary() => any()}.
+-type get_folder_output() :: #{binary() => any()}.
 
 %% Example:
-%% comment_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
+%% get_merge_commit_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
 %% }
--type comment_does_not_exist_exception() :: #{binary() => any()}.
+-type get_merge_commit_input() :: #{binary() => any()}.
 
 %% Example:
-%% location() :: #{
-%%   <<"filePath">> => string(),
-%%   <<"filePosition">> => float(),
-%%   <<"relativeFileVersion">> => list(any())
+%% get_merge_commit_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergedCommitId">> => string(),
+%%   <<"sourceCommitId">> => string()
 %% }
--type location() :: #{binary() => any()}.
+-type get_merge_commit_output() :: #{binary() => any()}.
 
 %% Example:
-%% repository_trigger_destination_arn_required_exception() :: #{
-%%   <<"message">> => string()
+%% get_merge_conflicts_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"maxConflictFiles">> => integer(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
 %% }
--type repository_trigger_destination_arn_required_exception() :: #{binary() => any()}.
+-type get_merge_conflicts_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflictMetadataList">> => list(conflict_metadata()),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeable">> => boolean(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type get_merge_conflicts_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_options_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type get_merge_options_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_options_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeOptions">> => list(list(any())()),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type get_merge_options_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_approval_states_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type get_pull_request_approval_states_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_approval_states_output() :: #{
+%%   <<"approvals">> => list(approval())
+%% }
+-type get_pull_request_approval_states_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_input() :: #{
+%%   <<"pullRequestId">> := string()
+%% }
+-type get_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type get_pull_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_pull_request_override_state_input() :: #{
@@ -1940,10 +1686,156 @@
 -type get_pull_request_override_state_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_target_branch_exception() :: #{
+%% get_pull_request_override_state_output() :: #{
+%%   <<"overridden">> => boolean(),
+%%   <<"overrider">> => string()
+%% }
+-type get_pull_request_override_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_input() :: #{
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_output() :: #{
+%%   <<"repositoryMetadata">> => repository_metadata()
+%% }
+-type get_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_triggers_output() :: #{
+%%   <<"configurationId">> => string(),
+%%   <<"triggers">> => list(repository_trigger())
+%% }
+-type get_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% idempotency_parameter_mismatch_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_target_branch_exception() :: #{binary() => any()}.
+-type idempotency_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_actor_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_actor_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_description_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_description_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_author_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_author_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blob_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blob_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_branch_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_branch_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_client_request_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_request_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_comment_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_comment_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_commit_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_commit_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_commit_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_commit_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_detail_level_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_detail_level_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_resolution_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_resolution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_resolution_strategy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_resolution_strategy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_continuation_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_continuation_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deletion_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deletion_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_description_exception() :: #{
@@ -1952,14 +1844,34 @@
 -type invalid_description_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_commit_output() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"filesAdded">> => list(file_metadata()),
-%%   <<"filesDeleted">> => list(file_metadata()),
-%%   <<"filesUpdated">> => list(file_metadata()),
-%%   <<"treeId">> => string()
+%% invalid_destination_commit_specifier_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_commit_output() :: #{binary() => any()}.
+-type invalid_destination_commit_specifier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_email_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_email_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_location_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_location_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_mode_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_position_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_position_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_max_conflict_files_exception() :: #{
@@ -1968,16 +1880,277 @@
 -type invalid_max_conflict_files_exception() :: #{binary() => any()}.
 
 %% Example:
-%% targets_required_exception() :: #{
+%% invalid_max_merge_hunks_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type targets_required_exception() :: #{binary() => any()}.
+-type invalid_max_merge_hunks_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_commit_id_exception() :: #{
+%% invalid_max_results_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_commit_id_exception() :: #{binary() => any()}.
+-type invalid_max_results_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_merge_option_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_merge_option_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_order_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_order_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_override_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_override_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parent_commit_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parent_commit_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_path_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_path_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_event_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_event_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_status_update_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_status_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reaction_user_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reaction_user_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reaction_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reaction_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reference_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reference_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_relative_file_version_enum_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_relative_file_version_enum_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_replacement_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_replacement_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_replacement_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_replacement_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_description_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_description_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_branch_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_branch_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_custom_data_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_custom_data_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_destination_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_destination_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_events_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_events_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_region_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_revision_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_revision_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_rule_content_sha256_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_rule_content_sha256_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sort_by_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sort_by_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_source_commit_specifier_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_source_commit_specifier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_system_tag_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_system_tag_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_keys_list_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_keys_list_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tags_map_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tags_map_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_branch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_branch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_targets_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_targets_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_title_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_title_exception() :: #{binary() => any()}.
+
+%% Example:
+%% is_binary_file() :: #{
+%%   <<"base">> => boolean(),
+%%   <<"destination">> => boolean(),
+%%   <<"source">> => boolean()
+%% }
+-type is_binary_file() :: #{binary() => any()}.
+
+%% Example:
+%% list_approval_rule_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_approval_rule_templates_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_approval_rule_templates_output() :: #{
+%%   <<"approvalRuleTemplateNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_approval_rule_templates_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_associated_approval_rule_templates_for_repository_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_associated_approval_rule_templates_for_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_associated_approval_rule_templates_for_repository_output() :: #{
+%%   <<"approvalRuleTemplateNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_approval_rule_templates_for_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_branches_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_branches_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_branches_output() :: #{
+%%   <<"branches">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_branches_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_file_commit_history_request() :: #{
@@ -1988,6 +2161,474 @@
 %%   <<"repositoryName">> := string()
 %% }
 -type list_file_commit_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_commit_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"revisionDag">> => list(file_version())
+%% }
+-type list_file_commit_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_requests_input() :: #{
+%%   <<"authorArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestStatus">> => list(any()),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_pull_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_requests_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestIds">> => list(string())
+%% }
+-type list_pull_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_for_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_repositories_for_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_for_approval_rule_template_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryNames">> => list(string())
+%% }
+-type list_repositories_for_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"order">> => list(any()),
+%%   <<"sortBy">> => list(any())
+%% }
+-type list_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_name_id_pair())
+%% }
+-type list_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% location() :: #{
+%%   <<"filePath">> => string(),
+%%   <<"filePosition">> => float(),
+%%   <<"relativeFileVersion">> => list(any())
+%% }
+-type location() :: #{binary() => any()}.
+
+%% Example:
+%% manual_merge_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type manual_merge_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_branches_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_branches_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_conflict_resolution_entries_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_conflict_resolution_entries_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_file_content_to_load_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_file_content_to_load_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_file_entries_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_file_entries_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_items_to_compare_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_items_to_compare_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_number_of_approvals_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_number_of_approvals_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_open_pull_requests_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_open_pull_requests_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_repository_names_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_repository_names_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_repository_triggers_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_repository_triggers_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_rule_templates_associated_with_repository_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_rule_templates_associated_with_repository_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_fast_forward_input() :: #{
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_fast_forward_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_fast_forward_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_fast_forward_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_squash_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_squash_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_squash_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_squash_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_three_way_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_three_way_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_three_way_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_three_way_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_hunk() :: #{
+%%   <<"base">> => merge_hunk_detail(),
+%%   <<"destination">> => merge_hunk_detail(),
+%%   <<"isConflict">> => boolean(),
+%%   <<"source">> => merge_hunk_detail()
+%% }
+-type merge_hunk() :: #{binary() => any()}.
+
+%% Example:
+%% merge_hunk_detail() :: #{
+%%   <<"endLine">> => integer(),
+%%   <<"hunkContent">> => string(),
+%%   <<"startLine">> => integer()
+%% }
+-type merge_hunk_detail() :: #{binary() => any()}.
+
+%% Example:
+%% merge_metadata() :: #{
+%%   <<"isMerged">> => boolean(),
+%%   <<"mergeCommitId">> => string(),
+%%   <<"mergeOption">> => list(any()),
+%%   <<"mergedBy">> => string()
+%% }
+-type merge_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% merge_operations() :: #{
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type merge_operations() :: #{binary() => any()}.
+
+%% Example:
+%% merge_option_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type merge_option_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_fast_forward_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_fast_forward_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_fast_forward_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_fast_forward_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_squash_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_squash_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_squash_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_squash_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_three_way_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_three_way_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_three_way_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_three_way_output() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_conflict_resolution_entries_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type multiple_conflict_resolution_entries_exception() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_repositories_in_pull_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type multiple_repositories_in_pull_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% name_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type name_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% no_change_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_change_exception() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_rule_templates_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_rule_templates_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_rules_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_rules_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% object_types() :: #{
+%%   <<"base">> => list(any()),
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type object_types() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% origin_approval_rule_template() :: #{
+%%   <<"approvalRuleTemplateId">> => string(),
+%%   <<"approvalRuleTemplateName">> => string()
+%% }
+-type origin_approval_rule_template() :: #{binary() => any()}.
+
+%% Example:
+%% override_already_set_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type override_already_set_exception() :: #{binary() => any()}.
+
+%% Example:
+%% override_pull_request_approval_rules_input() :: #{
+%%   <<"overrideStatus">> := list(any()),
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type override_pull_request_approval_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% override_status_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type override_status_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_id_outdated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_id_outdated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% path_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type path_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% path_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type path_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_compared_commit_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"location">> => location(),
+%%   <<"repositoryName">> := string()
+%% }
+-type post_comment_for_compared_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_compared_commit_output() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comment">> => comment(),
+%%   <<"location">> => location(),
+%%   <<"repositoryName">> => string()
+%% }
+-type post_comment_for_compared_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_pull_request_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type post_comment_for_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_pull_request_output() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comment">> => comment(),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type post_comment_for_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_reply_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"inReplyTo">> := string()
+%% }
+-type post_comment_reply_input() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_reply_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type post_comment_reply_output() :: #{binary() => any()}.
 
 %% Example:
 %% pull_request() :: #{
@@ -2006,889 +2647,22 @@
 -type pull_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% manual_merge_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type manual_merge_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% merge_pull_request_by_squash_input() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolution">> => conflict_resolution(),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"email">> => string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"pullRequestId">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type merge_pull_request_by_squash_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_commits_output() :: #{
-%%   <<"commits">> => list(commit()),
-%%   <<"errors">> => list(batch_get_commits_error())
-%% }
--type batch_get_commits_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_file_input() :: #{
-%%   <<"commitSpecifier">> => string(),
-%%   <<"filePath">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_file_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_triggers_input() :: #{
-%%   <<"repositoryName">> := string()
-%% }
--type get_repository_triggers_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_commit_input() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"branchName">> := string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"deleteFiles">> => list(delete_file_entry()),
-%%   <<"email">> => string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"parentCommitId">> => string(),
-%%   <<"putFiles">> => list(put_file_entry()),
-%%   <<"repositoryName">> := string(),
-%%   <<"setFileModes">> => list(set_file_mode_entry())
-%% }
--type create_commit_input() :: #{binary() => any()}.
-
-%% Example:
-%% file_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% multiple_repositories_in_pull_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type multiple_repositories_in_pull_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_status_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type update_pull_request_status_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deletion_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deletion_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% number_of_rule_templates_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type number_of_rule_templates_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_approval_rule_templates_output() :: #{
-%%   <<"approvalRuleTemplateNames">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_approval_rule_templates_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_actor_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_actor_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_conflict_resolution_entries_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_conflict_resolution_entries_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% before_commit_id_and_after_commit_id_are_same_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type before_commit_id_and_after_commit_id_are_same_exception() :: #{binary() => any()}.
-
-%% Example:
-%% override_pull_request_approval_rules_input() :: #{
-%%   <<"overrideStatus">> := list(any()),
-%%   <<"pullRequestId">> := string(),
-%%   <<"revisionId">> := string()
-%% }
--type override_pull_request_approval_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% merge_pull_request_by_three_way_input() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolution">> => conflict_resolution(),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"email">> => string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"pullRequestId">> := string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type merge_pull_request_by_three_way_input() :: #{binary() => any()}.
-
-%% Example:
-%% folder_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type folder_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pull_request_approval_rule_output() :: #{
-%%   <<"approvalRuleId">> => string()
-%% }
--type delete_pull_request_approval_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_repository_triggers_output() :: #{
-%%   <<"configurationId">> => string()
-%% }
--type put_repository_triggers_output() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key_invalid_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type encryption_key_invalid_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_arn_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_arn_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_trigger_region_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_repository_trigger_region_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_pull_request_override_state_output() :: #{
-%%   <<"overridden">> => boolean(),
-%%   <<"overrider">> => string()
-%% }
--type get_pull_request_override_state_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_approval_rule_content_output() :: #{
-%%   <<"approvalRule">> => approval_rule()
-%% }
--type update_pull_request_approval_rule_content_output() :: #{binary() => any()}.
-
-%% Example:
-%% sub_module() :: #{
-%%   <<"absolutePath">> => string(),
-%%   <<"commitId">> => string(),
-%%   <<"relativePath">> => string()
-%% }
--type sub_module() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_description_input() :: #{
-%%   <<"description">> := string(),
-%%   <<"pullRequestId">> := string()
-%% }
--type update_pull_request_description_input() :: #{binary() => any()}.
-
-%% Example:
-%% title_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type title_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_merge_commit_output() :: #{
-%%   <<"baseCommitId">> => string(),
-%%   <<"destinationCommitId">> => string(),
-%%   <<"mergedCommitId">> => string(),
-%%   <<"sourceCommitId">> => string()
-%% }
--type get_merge_commit_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% commit_message_length_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_message_length_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_open_pull_requests_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_open_pull_requests_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_file_entry_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type put_file_entry_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_associated_approval_rule_templates_for_repository_output() :: #{
-%%   <<"approvalRuleTemplateNames">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_associated_approval_rule_templates_for_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% actor_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type actor_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_comment_content_output() :: #{
-%%   <<"comment">> => comment()
-%% }
--type delete_comment_content_output() :: #{binary() => any()}.
-
-%% Example:
-%% repository_not_associated_with_pull_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_not_associated_with_pull_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_input() :: #{
-%%   <<"repositoryName">> := string()
-%% }
--type delete_repository_input() :: #{binary() => any()}.
-
-%% Example:
 %% pull_request_already_closed_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type pull_request_already_closed_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_file_input() :: #{
-%%   <<"branchName">> := string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"email">> => string(),
-%%   <<"fileContent">> := binary(),
-%%   <<"fileMode">> => list(any()),
-%%   <<"filePath">> := string(),
-%%   <<"name">> => string(),
-%%   <<"parentCommitId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type put_file_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_title_exception() :: #{
+%% pull_request_approval_rules_not_satisfied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_title_exception() :: #{binary() => any()}.
+-type pull_request_approval_rules_not_satisfied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_key_disabled_exception() :: #{
+%% pull_request_cannot_be_approved_by_author_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type encryption_key_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% is_binary_file() :: #{
-%%   <<"base">> => boolean(),
-%%   <<"destination">> => boolean(),
-%%   <<"source">> => boolean()
-%% }
--type is_binary_file() :: #{binary() => any()}.
-
-%% Example:
-%% get_branch_input() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type get_branch_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_merge_conflicts_input() :: #{
-%%   <<"conflictDetailLevel">> => list(any()),
-%%   <<"conflictResolutionStrategy">> => list(any()),
-%%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"filePaths">> => list(string()),
-%%   <<"maxConflictFiles">> => integer(),
-%%   <<"maxMergeHunks">> => integer(),
-%%   <<"mergeOption">> := list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"sourceCommitSpecifier">> := string()
-%% }
--type batch_describe_merge_conflicts_input() :: #{binary() => any()}.
-
-%% Example:
-%% file_content_and_source_file_specified_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_content_and_source_file_specified_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_approval_rule_template_from_repositories_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"repositoryNames">> := list(string())
-%% }
--type batch_disassociate_approval_rule_template_from_repositories_input() :: #{binary() => any()}.
-
-%% Example:
-%% replacement_type_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type replacement_type_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_keys_list_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_keys_list_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_sort_by_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_sort_by_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_differences_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"afterCommitSpecifier">> := string(),
-%%   <<"afterPath">> => string(),
-%%   <<"beforeCommitSpecifier">> => string(),
-%%   <<"beforePath">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_differences_input() :: #{binary() => any()}.
-
-%% Example:
-%% parent_commit_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type parent_commit_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_trigger() :: #{
-%%   <<"branches">> => list(string()),
-%%   <<"customData">> => string(),
-%%   <<"destinationArn">> => string(),
-%%   <<"events">> => list(list(any())()),
-%%   <<"name">> => string()
-%% }
--type repository_trigger() :: #{binary() => any()}.
-
-%% Example:
-%% branch_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type branch_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_repository_triggers_input() :: #{
-%%   <<"repositoryName">> := string(),
-%%   <<"triggers">> := list(repository_trigger())
-%% }
--type put_repository_triggers_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pull_request_events_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pullRequestEvents">> => list(pull_request_event())
-%% }
--type describe_pull_request_events_output() :: #{binary() => any()}.
-
-%% Example:
-%% file_content_size_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_content_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% comments_for_compared_commit() :: #{
-%%   <<"afterBlobId">> => string(),
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeBlobId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"comments">> => list(comment()),
-%%   <<"location">> => location(),
-%%   <<"repositoryName">> => string()
-%% }
--type comments_for_compared_commit() :: #{binary() => any()}.
-
-%% Example:
-%% origin_approval_rule_template() :: #{
-%%   <<"approvalRuleTemplateId">> => string(),
-%%   <<"approvalRuleTemplateName">> => string()
-%% }
--type origin_approval_rule_template() :: #{binary() => any()}.
-
-%% Example:
-%% parent_commit_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type parent_commit_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_system_tag_usage_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_system_tag_usage_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pull_request_events_input() :: #{
-%%   <<"actorArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pullRequestEventType">> => list(any()),
-%%   <<"pullRequestId">> := string()
-%% }
--type describe_pull_request_events_input() :: #{binary() => any()}.
-
-%% Example:
-%% idempotency_parameter_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type idempotency_parameter_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% file_path_conflicts_with_submodule_path_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_path_conflicts_with_submodule_path_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_commits_input() :: #{
-%%   <<"commitIds">> := list(string()),
-%%   <<"repositoryName">> := string()
-%% }
--type batch_get_commits_input() :: #{binary() => any()}.
-
-%% Example:
-%% reaction_for_comment() :: #{
-%%   <<"reaction">> => reaction_value_formats(),
-%%   <<"reactionUsers">> => list(string()),
-%%   <<"reactionsFromDeletedUsersCount">> => integer()
-%% }
--type reaction_for_comment() :: #{binary() => any()}.
-
-%% Example:
-%% repository_trigger_execution_failure() :: #{
-%%   <<"failureMessage">> => string(),
-%%   <<"trigger">> => string()
-%% }
--type repository_trigger_execution_failure() :: #{binary() => any()}.
-
-%% Example:
-%% list_repositories_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_name_id_pair())
-%% }
--type list_repositories_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_description_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type update_pull_request_description_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_input() :: #{
-%%   <<"branchName">> := string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"email">> => string(),
-%%   <<"filePath">> := string(),
-%%   <<"keepEmptyFolders">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"parentCommitId">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_file_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_approval_state_input() :: #{
-%%   <<"approvalState">> := list(any()),
-%%   <<"pullRequestId">> := string(),
-%%   <<"revisionId">> := string()
-%% }
--type update_pull_request_approval_state_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_trigger_branch_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_repository_trigger_branch_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_too_large_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type file_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% file_version() :: #{
-%%   <<"blobId">> => string(),
-%%   <<"commit">> => commit(),
-%%   <<"path">> => string(),
-%%   <<"revisionChildren">> => list(string())
-%% }
--type file_version() :: #{binary() => any()}.
-
-%% Example:
-%% get_blob_output() :: #{
-%%   <<"content">> => binary()
-%% }
--type get_blob_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_path_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_path_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_comments_for_pull_request_input() :: #{
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"pullRequestId">> := string(),
-%%   <<"repositoryName">> => string()
-%% }
--type get_comments_for_pull_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pull_request_status_update_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pull_request_status_update_exception() :: #{binary() => any()}.
-
-%% Example:
-%% folder() :: #{
-%%   <<"absolutePath">> => string(),
-%%   <<"relativePath">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type folder() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_repository_trigger_destination_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_repository_trigger_destination_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_comments_for_compared_commit_output() :: #{
-%%   <<"commentsForComparedCommitData">> => list(comments_for_compared_commit()),
-%%   <<"nextToken">> => string()
-%% }
--type get_comments_for_compared_commit_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_resource_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_approval_rule_template_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string()
-%% }
--type get_approval_rule_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_source_commit_specifier_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_source_commit_specifier_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_comment_reaction_input() :: #{
-%%   <<"commentId">> := string(),
-%%   <<"reactionValue">> := string()
-%% }
--type put_comment_reaction_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_comment_output() :: #{
-%%   <<"comment">> => comment()
-%% }
--type update_comment_output() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_branches_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_branches_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_merge_option_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_merge_option_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_unreferenced_merge_commit_output() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type create_unreferenced_merge_commit_output() :: #{binary() => any()}.
-
-%% Example:
-%% cannot_delete_approval_rule_from_template_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cannot_delete_approval_rule_from_template_exception() :: #{binary() => any()}.
-
-%% Example:
-%% override_status_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type override_status_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% reference_type_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type reference_type_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_folder_input() :: #{
-%%   <<"commitSpecifier">> => string(),
-%%   <<"folderPath">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_folder_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_comment_input() :: #{
-%%   <<"commentId">> := string()
-%% }
--type get_comment_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_name_output() :: #{
-%%   <<"approvalRuleTemplate">> => approval_rule_template()
-%% }
--type update_approval_rule_template_name_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_conflict_resolution_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_conflict_resolution_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_approval_rule_templates_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_approval_rule_templates_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pull_request_status_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pull_request_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_comments_for_pull_request_output() :: #{
-%%   <<"commentsForPullRequestData">> => list(comments_for_pull_request()),
-%%   <<"nextToken">> => string()
-%% }
--type get_comments_for_pull_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_reference_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_reference_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_approval_rule_template_from_repositories_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type batch_disassociate_approval_rule_template_from_repositories_error() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation() :: #{
-%%   <<"approvalRulesNotSatisfied">> => list(string()),
-%%   <<"approvalRulesSatisfied">> => list(string()),
-%%   <<"approved">> => boolean(),
-%%   <<"overridden">> => boolean()
-%% }
--type evaluation() :: #{binary() => any()}.
-
-%% Example:
-%% create_pull_request_output() :: #{
-%%   <<"pullRequest">> => pull_request()
-%% }
--type create_pull_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% comment_content_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type comment_content_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_output() :: #{
-%%   <<"blobId">> => string(),
-%%   <<"commitId">> => string(),
-%%   <<"filePath">> => string(),
-%%   <<"treeId">> => string()
-%% }
--type delete_file_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_comment_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_comment_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_branch_output() :: #{
-%%   <<"branch">> => branch_info()
-%% }
--type get_branch_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_keys_list_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_keys_list_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% reference_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type reference_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% object_types() :: #{
-%%   <<"base">> => list(any()),
-%%   <<"destination">> => list(any()),
-%%   <<"source">> => list(any())
-%% }
--type object_types() :: #{binary() => any()}.
-
-%% Example:
-%% revision_not_current_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type revision_not_current_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_comment_input() :: #{
-%%   <<"commentId">> := string(),
-%%   <<"content">> := string()
-%% }
--type update_comment_input() :: #{binary() => any()}.
-
-%% Example:
-%% commit_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval() :: #{
-%%   <<"approvalState">> => list(any()),
-%%   <<"userArn">> => string()
-%% }
--type approval() :: #{binary() => any()}.
-
-%% Example:
-%% name_length_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type name_length_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_file_location_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_file_location_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_repository_input() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"repositoryDescription">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% repository_trigger_events_list_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_trigger_events_list_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% post_comment_for_compared_commit_output() :: #{
-%%   <<"afterBlobId">> => string(),
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeBlobId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"comment">> => comment(),
-%%   <<"location">> => location(),
-%%   <<"repositoryName">> => string()
-%% }
--type post_comment_for_compared_commit_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_approval_rule_template_from_repositories_output() :: #{
-%%   <<"disassociatedRepositoryNames">> => list(string()),
-%%   <<"errors">> => list(batch_disassociate_approval_rule_template_from_repositories_error())
-%% }
--type batch_disassociate_approval_rule_template_from_repositories_output() :: #{binary() => any()}.
+-type pull_request_cannot_be_approved_by_author_exception() :: #{binary() => any()}.
 
 %% Example:
 %% pull_request_created_event_metadata() :: #{
@@ -2900,248 +2674,10 @@
 -type pull_request_created_event_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_repositories_input() :: #{
-%%   <<"repositoryNames">> := list(string())
-%% }
--type batch_get_repositories_input() :: #{binary() => any()}.
-
-%% Example:
-%% branch_info() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"commitId">> => string()
-%% }
--type branch_info() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_allowed_exception() :: #{
+%% pull_request_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type operation_not_allowed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_branches_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type list_branches_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_name_input() :: #{
-%%   <<"newApprovalRuleTemplateName">> := string(),
-%%   <<"oldApprovalRuleTemplateName">> := string()
-%% }
--type update_approval_rule_template_name_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_conflict_detail_level_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_conflict_detail_level_exception() :: #{binary() => any()}.
-
-%% Example:
-%% restricted_source_file_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type restricted_source_file_exception() :: #{binary() => any()}.
-
-%% Example:
-%% commit_id_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_id_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% number_of_rules_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type number_of_rules_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_overridden_event_metadata() :: #{
-%%   <<"overrideStatus">> => list(any()),
-%%   <<"revisionId">> => string()
-%% }
--type approval_rule_overridden_event_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_rule_template_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_rule_template_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_repositories_for_approval_rule_template_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_repositories_for_approval_rule_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_repositories_output() :: #{
-%%   <<"errors">> => list(batch_get_repositories_error()),
-%%   <<"repositories">> => list(repository_metadata()),
-%%   <<"repositoriesNotFound">> => list(string())
-%% }
--type batch_get_repositories_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_pull_request_approval_states_input() :: #{
-%%   <<"pullRequestId">> := string(),
-%%   <<"revisionId">> := string()
-%% }
--type get_pull_request_approval_states_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_repository_name_input() :: #{
-%%   <<"newName">> := string(),
-%%   <<"oldName">> := string()
-%% }
--type update_repository_name_input() :: #{binary() => any()}.
-
-%% Example:
-%% merge_operations() :: #{
-%%   <<"destination">> => list(any()),
-%%   <<"source">> => list(any())
-%% }
--type merge_operations() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_status_input() :: #{
-%%   <<"pullRequestId">> := string(),
-%%   <<"pullRequestStatus">> := list(any())
-%% }
--type update_pull_request_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% comments_for_pull_request() :: #{
-%%   <<"afterBlobId">> => string(),
-%%   <<"afterCommitId">> => string(),
-%%   <<"beforeBlobId">> => string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"comments">> => list(comment()),
-%%   <<"location">> => location(),
-%%   <<"pullRequestId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type comments_for_pull_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_approval_rule_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_approval_rule_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% commit_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type commit_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% post_comment_for_compared_commit_input() :: #{
-%%   <<"afterCommitId">> := string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"content">> := string(),
-%%   <<"location">> => location(),
-%%   <<"repositoryName">> := string()
-%% }
--type post_comment_for_compared_commit_input() :: #{binary() => any()}.
-
-%% Example:
-%% branch_name_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type branch_name_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% approval_rule_template_name_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type approval_rule_template_name_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_request_title_input() :: #{
-%%   <<"pullRequestId">> := string(),
-%%   <<"title">> := string()
-%% }
--type update_pull_request_title_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_file_output() :: #{
-%%   <<"blobId">> => string(),
-%%   <<"commitId">> => string(),
-%%   <<"fileContent">> => binary(),
-%%   <<"fileMode">> => list(any()),
-%%   <<"filePath">> => string(),
-%%   <<"fileSize">> => float()
-%% }
--type get_file_output() :: #{binary() => any()}.
-
-%% Example:
-%% test_repository_triggers_output() :: #{
-%%   <<"failedExecutions">> => list(repository_trigger_execution_failure()),
-%%   <<"successfulExecutions">> => list(string())
-%% }
--type test_repository_triggers_output() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_file_entries_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type maximum_file_entries_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_approval_rule_template_content_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"existingRuleContentSha256">> => string(),
-%%   <<"newRuleContent">> := string()
-%% }
--type update_approval_rule_template_content_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_comments_for_compared_commit_input() :: #{
-%%   <<"afterCommitId">> := string(),
-%%   <<"beforeCommitId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_comments_for_compared_commit_input() :: #{binary() => any()}.
-
-%% Example:
-%% path_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type path_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_default_branch_input() :: #{
-%%   <<"defaultBranchName">> := string(),
-%%   <<"repositoryName">> := string()
-%% }
--type update_default_branch_input() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_pull_request_approval_rules_input() :: #{
-%%   <<"pullRequestId">> := string(),
-%%   <<"revisionId">> := string()
-%% }
--type evaluate_pull_request_approval_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% approval_state_changed_event_metadata() :: #{
-%%   <<"approvalStatus">> => list(any()),
-%%   <<"revisionId">> => string()
-%% }
--type approval_state_changed_event_metadata() :: #{binary() => any()}.
+-type pull_request_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
 %% pull_request_event() :: #{
@@ -3160,6 +2696,12 @@
 -type pull_request_event() :: #{binary() => any()}.
 
 %% Example:
+%% pull_request_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
 %% pull_request_merged_state_changed_event_metadata() :: #{
 %%   <<"destinationReference">> => string(),
 %%   <<"mergeMetadata">> => merge_metadata(),
@@ -3168,88 +2710,173 @@
 -type pull_request_merged_state_changed_event_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% approval_rule() :: #{
-%%   <<"approvalRuleContent">> => string(),
-%%   <<"approvalRuleId">> => string(),
-%%   <<"approvalRuleName">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"lastModifiedUser">> => string(),
-%%   <<"originApprovalRuleTemplate">> => origin_approval_rule_template(),
-%%   <<"ruleContentSha256">> => string()
+%% pull_request_source_reference_updated_event_metadata() :: #{
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"mergeBase">> => string(),
+%%   <<"repositoryName">> => string()
 %% }
--type approval_rule() :: #{binary() => any()}.
+-type pull_request_source_reference_updated_event_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_tags_map_exception() :: #{
+%% pull_request_status_changed_event_metadata() :: #{
+%%   <<"pullRequestStatus">> => list(any())
+%% }
+-type pull_request_status_changed_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_status_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_tags_map_exception() :: #{binary() => any()}.
+-type pull_request_status_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tags_exception() :: #{
+%% pull_request_target() :: #{
+%%   <<"destinationCommit">> => string(),
+%%   <<"destinationReference">> => string(),
+%%   <<"mergeBase">> => string(),
+%%   <<"mergeMetadata">> => merge_metadata(),
+%%   <<"repositoryName">> => string(),
+%%   <<"sourceCommit">> => string(),
+%%   <<"sourceReference">> => string()
+%% }
+-type pull_request_target() :: #{binary() => any()}.
+
+%% Example:
+%% put_comment_reaction_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"reactionValue">> := string()
+%% }
+-type put_comment_reaction_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_entry() :: #{
+%%   <<"fileContent">> => binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string(),
+%%   <<"sourceFile">> => source_file_specifier()
+%% }
+-type put_file_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_entry_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type put_file_entry_conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% concurrent_reference_update_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_reference_update_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_approval_rule_template_with_repository_input() :: #{
-%%   <<"approvalRuleTemplateName">> := string(),
+%% put_file_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"email">> => string(),
+%%   <<"fileContent">> := binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> := string(),
+%%   <<"name">> => string(),
+%%   <<"parentCommitId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
--type associate_approval_rule_template_with_repository_input() :: #{binary() => any()}.
+-type put_file_input() :: #{binary() => any()}.
 
 %% Example:
-%% directory_name_conflicts_with_file_name_exception() :: #{
+%% put_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type put_file_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string(),
+%%   <<"triggers">> := list(repository_trigger())
+%% }
+-type put_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_triggers_output() :: #{
+%%   <<"configurationId">> => string()
+%% }
+-type put_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_for_comment() :: #{
+%%   <<"reaction">> => reaction_value_formats(),
+%%   <<"reactionUsers">> => list(string()),
+%%   <<"reactionsFromDeletedUsersCount">> => integer()
+%% }
+-type reaction_for_comment() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type directory_name_conflicts_with_file_name_exception() :: #{binary() => any()}.
+-type reaction_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_pull_request_approval_rule_output() :: #{
-%%   <<"approvalRule">> => approval_rule()
+%% reaction_value_formats() :: #{
+%%   <<"emoji">> => string(),
+%%   <<"shortCode">> => string(),
+%%   <<"unicode">> => string()
 %% }
--type create_pull_request_approval_rule_output() :: #{binary() => any()}.
+-type reaction_value_formats() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_file_mode_exception() :: #{
+%% reaction_value_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_file_mode_exception() :: #{binary() => any()}.
+-type reaction_value_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_repository_description_exception() :: #{
+%% reference_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_repository_description_exception() :: #{binary() => any()}.
+-type reference_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% user_info() :: #{
-%%   <<"date">> => string(),
-%%   <<"email">> => string(),
-%%   <<"name">> => string()
-%% }
--type user_info() :: #{binary() => any()}.
-
-%% Example:
-%% create_pull_request_approval_rule_input() :: #{
-%%   <<"approvalRuleContent">> := string(),
-%%   <<"approvalRuleName">> := string(),
-%%   <<"pullRequestId">> := string()
-%% }
--type create_pull_request_approval_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% maximum_file_content_to_load_exceeded_exception() :: #{
+%% reference_name_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type maximum_file_content_to_load_exceeded_exception() :: #{binary() => any()}.
+-type reference_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reference_type_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reference_type_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replace_content_entry() :: #{
+%%   <<"content">> => binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string(),
+%%   <<"replacementType">> => list(any())
+%% }
+-type replace_content_entry() :: #{binary() => any()}.
+
+%% Example:
+%% replacement_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replacement_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replacement_type_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replacement_type_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% repository_metadata() :: #{
@@ -3268,1293 +2895,1666 @@
 -type repository_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_repository_trigger_name_exception() :: #{
+%% repository_name_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_repository_trigger_name_exception() :: #{binary() => any()}.
+-type repository_name_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_metadata() :: #{
-%%   <<"contentConflict">> => boolean(),
-%%   <<"fileModeConflict">> => boolean(),
-%%   <<"fileModes">> => file_modes(),
+%% repository_name_id_pair() :: #{
+%%   <<"repositoryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type repository_name_id_pair() :: #{binary() => any()}.
+
+%% Example:
+%% repository_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_names_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_names_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_associated_with_pull_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_associated_with_pull_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger() :: #{
+%%   <<"branches">> => list(string()),
+%%   <<"customData">> => string(),
+%%   <<"destinationArn">> => string(),
+%%   <<"events">> => list(list(any())()),
+%%   <<"name">> => string()
+%% }
+-type repository_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_branch_name_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_branch_name_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_destination_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_destination_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_events_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_events_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_execution_failure() :: #{
+%%   <<"failureMessage">> => string(),
+%%   <<"trigger">> => string()
+%% }
+-type repository_trigger_execution_failure() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_triggers_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_triggers_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restricted_source_file_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type restricted_source_file_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revision_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revision_not_current_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_not_current_exception() :: #{binary() => any()}.
+
+%% Example:
+%% same_file_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type same_file_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% same_path_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type same_path_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_file_mode_entry() :: #{
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string()
+%% }
+-type set_file_mode_entry() :: #{binary() => any()}.
+
+%% Example:
+%% source_and_destination_are_same_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_and_destination_are_same_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_file_or_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_file_or_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_file_specifier() :: #{
 %%   <<"filePath">> => string(),
-%%   <<"fileSizes">> => file_sizes(),
-%%   <<"isBinaryFile">> => is_binary_file(),
-%%   <<"mergeOperations">> => merge_operations(),
-%%   <<"numberOfConflicts">> => integer(),
-%%   <<"objectTypeConflict">> => boolean(),
-%%   <<"objectTypes">> => object_types()
+%%   <<"isMove">> => boolean()
 %% }
--type conflict_metadata() :: #{binary() => any()}.
+-type source_file_specifier() :: #{binary() => any()}.
 
 %% Example:
-%% no_change_exception() :: #{
-%%   <<"message">> => string()
+%% sub_module() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"relativePath">> => string()
 %% }
--type no_change_exception() :: #{binary() => any()}.
+-type sub_module() :: #{binary() => any()}.
 
 %% Example:
-%% repository_does_not_exist_exception() :: #{
+%% symbolic_link() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"relativePath">> => string()
+%% }
+-type symbolic_link() :: #{binary() => any()}.
+
+%% Example:
+%% tag_keys_list_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type repository_does_not_exist_exception() :: #{binary() => any()}.
+-type tag_keys_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tags_map_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tags_map_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"destinationReference">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"sourceReference">> => string()
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% target_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% targets_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type targets_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% test_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string(),
+%%   <<"triggers">> := list(repository_trigger())
+%% }
+-type test_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% test_repository_triggers_output() :: #{
+%%   <<"failedExecutions">> => list(repository_trigger_execution_failure()),
+%%   <<"successfulExecutions">> => list(string())
+%% }
+-type test_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% tip_of_source_reference_is_different_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tip_of_source_reference_is_different_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tips_divergence_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tips_divergence_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% title_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type title_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_content_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"existingRuleContentSha256">> => string(),
+%%   <<"newRuleContent">> := string()
+%% }
+-type update_approval_rule_template_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_content_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_description_input() :: #{
+%%   <<"approvalRuleTemplateDescription">> := string(),
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type update_approval_rule_template_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_description_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_description_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_name_input() :: #{
+%%   <<"newApprovalRuleTemplateName">> := string(),
+%%   <<"oldApprovalRuleTemplateName">> := string()
+%% }
+-type update_approval_rule_template_name_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_name_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_name_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_comment_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"content">> := string()
+%% }
+-type update_comment_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_comment_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type update_comment_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_default_branch_input() :: #{
+%%   <<"defaultBranchName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_default_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_rule_content_input() :: #{
+%%   <<"approvalRuleName">> := string(),
+%%   <<"existingRuleContentSha256">> => string(),
+%%   <<"newRuleContent">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type update_pull_request_approval_rule_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_rule_content_output() :: #{
+%%   <<"approvalRule">> => approval_rule()
+%% }
+-type update_pull_request_approval_rule_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_state_input() :: #{
+%%   <<"approvalState">> := list(any()),
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type update_pull_request_approval_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_description_input() :: #{
+%%   <<"description">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type update_pull_request_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_description_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_description_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_status_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"pullRequestStatus">> := list(any())
+%% }
+-type update_pull_request_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_status_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_title_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"title">> := string()
+%% }
+-type update_pull_request_title_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_title_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_title_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_description_input() :: #{
+%%   <<"repositoryDescription">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_repository_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_encryption_key_input() :: #{
+%%   <<"kmsKeyId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_repository_encryption_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_encryption_key_output() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"originalKmsKeyId">> => string(),
+%%   <<"repositoryId">> => string()
+%% }
+-type update_repository_encryption_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_name_input() :: #{
+%%   <<"newName">> := string(),
+%%   <<"oldName">> := string()
+%% }
+-type update_repository_name_input() :: #{binary() => any()}.
+
+%% Example:
+%% user_info() :: #{
+%%   <<"date">> => string(),
+%%   <<"email">> => string(),
+%%   <<"name">> => string()
+%% }
+-type user_info() :: #{binary() => any()}.
 
 -type associate_approval_rule_template_with_repository_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_approval_rule_template_name_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
+    repository_does_not_exist_exception() | 
+    maximum_rule_templates_associated_with_repository_exception() | 
     invalid_repository_name_exception() | 
+    invalid_approval_rule_template_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    maximum_rule_templates_associated_with_repository_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type batch_associate_approval_rule_template_with_repositories_errors() ::
-    invalid_approval_rule_template_name_exception() | 
-    encryption_key_disabled_exception() | 
+    repository_names_required_exception() | 
     maximum_repository_names_exceeded_exception() | 
-    encryption_key_access_denied_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
+    invalid_approval_rule_template_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    repository_names_required_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type batch_describe_merge_conflicts_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_merge_option_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_max_conflict_files_exception() | 
-    invalid_commit_exception() | 
+    tips_divergence_exceeded_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
+    repository_does_not_exist_exception() | 
     merge_option_required_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     invalid_repository_name_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_max_merge_hunks_exception() | 
+    invalid_max_conflict_files_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    invalid_max_merge_hunks_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    tips_divergence_exceeded_exception().
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type batch_disassociate_approval_rule_template_from_repositories_errors() ::
-    invalid_approval_rule_template_name_exception() | 
-    encryption_key_disabled_exception() | 
+    repository_names_required_exception() | 
     maximum_repository_names_exceeded_exception() | 
-    encryption_key_access_denied_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
+    invalid_approval_rule_template_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    repository_names_required_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type batch_get_commits_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    commit_ids_list_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
+    commit_ids_list_required_exception() | 
     commit_ids_limit_exceeded_exception().
 
 -type batch_get_repositories_errors() ::
-    encryption_key_disabled_exception() | 
+    repository_names_required_exception() | 
     maximum_repository_names_exceeded_exception() | 
-    encryption_key_access_denied_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    repository_names_required_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type create_approval_rule_template_errors() ::
-    approval_rule_template_name_already_exists_exception() | 
-    invalid_approval_rule_template_name_exception() | 
     number_of_rule_templates_exceeded_exception() | 
-    invalid_approval_rule_template_content_exception() | 
-    approval_rule_template_content_required_exception() | 
+    invalid_approval_rule_template_name_exception() | 
     invalid_approval_rule_template_description_exception() | 
-    approval_rule_template_name_required_exception().
+    invalid_approval_rule_template_content_exception() | 
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_name_already_exists_exception() | 
+    approval_rule_template_content_required_exception().
 
 -type create_branch_errors() ::
-    repository_does_not_exist_exception() | 
-    branch_name_exists_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_id_exception() | 
     repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
+    invalid_commit_id_exception() | 
+    invalid_branch_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    branch_name_required_exception().
+    commit_id_required_exception() | 
+    commit_does_not_exist_exception() | 
+    branch_name_required_exception() | 
+    branch_name_exists_exception().
 
 -type create_commit_errors() ::
-    repository_does_not_exist_exception() | 
-    no_change_exception() | 
-    invalid_file_mode_exception() | 
-    directory_name_conflicts_with_file_name_exception() | 
-    path_required_exception() | 
-    maximum_file_entries_exceeded_exception() | 
-    restricted_source_file_exception() | 
-    name_length_exceeded_exception() | 
-    invalid_path_exception() | 
-    file_path_conflicts_with_submodule_path_exception() | 
-    parent_commit_id_required_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    branch_does_not_exist_exception() | 
-    parent_commit_does_not_exist_exception() | 
-    file_content_and_source_file_specified_exception() | 
-    encryption_key_disabled_exception() | 
-    put_file_entry_conflict_exception() | 
-    commit_message_length_exceeded_exception() | 
-    invalid_deletion_parameter_exception() | 
-    file_does_not_exist_exception() | 
-    file_mode_required_exception() | 
-    parent_commit_id_outdated_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
-    branch_name_is_tag_name_exception() | 
-    invalid_parent_commit_id_exception() | 
-    file_entry_required_exception() | 
-    invalid_repository_name_exception() | 
-    same_path_request_exception() | 
-    file_name_conflicts_with_directory_name_exception() | 
     source_file_or_content_required_exception() | 
+    same_path_request_exception() | 
+    restricted_source_file_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    put_file_entry_conflict_exception() | 
+    path_required_exception() | 
+    parent_commit_id_required_exception() | 
+    parent_commit_id_outdated_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    no_change_exception() | 
+    name_length_exceeded_exception() | 
+    maximum_file_entries_exceeded_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_parent_commit_id_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
+    invalid_deletion_parameter_exception() | 
+    invalid_branch_name_exception() | 
     folder_content_size_limit_exceeded_exception() | 
+    file_path_conflicts_with_submodule_path_exception() | 
+    file_name_conflicts_with_directory_name_exception() | 
+    file_mode_required_exception() | 
+    file_entry_required_exception() | 
+    file_does_not_exist_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    file_content_and_source_file_specified_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    branch_name_required_exception().
+    directory_name_conflicts_with_file_name_exception() | 
+    commit_message_length_exceeded_exception() | 
+    branch_name_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    branch_does_not_exist_exception().
 
 -type create_pull_request_errors() ::
-    repository_does_not_exist_exception() | 
-    reference_does_not_exist_exception() | 
-    invalid_reference_name_exception() | 
-    reference_type_not_supported_exception() | 
-    idempotency_parameter_mismatch_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_title_exception() | 
-    maximum_open_pull_requests_exceeded_exception() | 
     title_required_exception() | 
-    multiple_repositories_in_pull_request_exception() | 
     targets_required_exception() | 
-    invalid_description_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    reference_name_required_exception() | 
     target_required_exception() | 
-    invalid_repository_name_exception() | 
+    source_and_destination_are_same_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    reference_type_not_supported_exception() | 
+    reference_name_required_exception() | 
+    reference_does_not_exist_exception() | 
+    multiple_repositories_in_pull_request_exception() | 
+    maximum_open_pull_requests_exceeded_exception() | 
+    invalid_title_exception() | 
     invalid_targets_exception() | 
+    invalid_target_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_reference_name_exception() | 
+    invalid_description_exception() | 
     invalid_client_request_token_exception() | 
+    idempotency_parameter_mismatch_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_target_exception() | 
-    client_request_token_required_exception() | 
-    source_and_destination_are_same_exception().
+    client_request_token_required_exception().
 
 -type create_pull_request_approval_rule_errors() ::
-    invalid_approval_rule_name_exception() | 
-    number_of_rules_exceeded_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    pull_request_does_not_exist_exception() | 
-    invalid_approval_rule_content_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
-    approval_rule_content_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
+    number_of_rules_exceeded_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_approval_rule_name_exception() | 
+    invalid_approval_rule_content_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    approval_rule_name_already_exists_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    approval_rule_name_required_exception().
+    approval_rule_name_required_exception() | 
+    approval_rule_name_already_exists_exception() | 
+    approval_rule_content_required_exception().
 
 -type create_repository_errors() ::
-    invalid_repository_description_exception() | 
     too_many_tags_exception() | 
-    invalid_tags_map_exception() | 
+    tag_policy_exception() | 
+    repository_name_required_exception() | 
+    repository_name_exists_exception() | 
     repository_limit_exceeded_exception() | 
     operation_not_allowed_exception() | 
+    invalid_tags_map_exception() | 
     invalid_system_tag_usage_exception() | 
-    encryption_key_disabled_exception() | 
-    encryption_key_invalid_id_exception() | 
-    encryption_key_invalid_usage_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
     invalid_repository_name_exception() | 
-    tag_policy_exception() | 
+    invalid_repository_description_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    repository_name_exists_exception().
+    encryption_key_invalid_usage_exception() | 
+    encryption_key_invalid_id_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type create_unreferenced_merge_commit_errors() ::
+    tips_divergence_exceeded_exception() | 
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    invalid_file_mode_exception() | 
-    concurrent_reference_update_exception() | 
-    path_required_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    name_length_exceeded_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_conflict_resolution_exception() | 
-    invalid_merge_option_exception() | 
-    invalid_path_exception() | 
-    file_content_size_limit_exceeded_exception() | 
     replacement_type_required_exception() | 
-    encryption_key_disabled_exception() | 
-    commit_message_length_exceeded_exception() | 
+    replacement_content_required_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    merge_option_required_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     maximum_conflict_resolution_entries_exceeded_exception() | 
     manual_merge_required_exception() | 
-    invalid_commit_exception() | 
-    file_mode_required_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_replacement_content_exception() | 
-    encryption_key_access_denied_exception() | 
-    multiple_conflict_resolution_entries_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
-    merge_option_required_exception() | 
-    replacement_content_required_exception() | 
     invalid_repository_name_exception() | 
     invalid_replacement_type_exception() | 
+    invalid_replacement_content_exception() | 
+    invalid_path_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
     folder_content_size_limit_exceeded_exception() | 
+    file_mode_required_exception() | 
+    file_content_size_limit_exceeded_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    tips_divergence_exceeded_exception().
+    concurrent_reference_update_exception() | 
+    commit_required_exception() | 
+    commit_message_length_exceeded_exception() | 
+    commit_does_not_exist_exception().
 
 -type delete_approval_rule_template_errors() ::
     invalid_approval_rule_template_name_exception() | 
-    approval_rule_template_in_use_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_in_use_exception().
 
 -type delete_branch_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_branch_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
     default_branch_cannot_be_deleted_exception() | 
     branch_name_required_exception().
 
 -type delete_comment_content_errors() ::
     invalid_comment_id_exception() | 
-    comment_does_not_exist_exception() | 
     comment_id_required_exception() | 
+    comment_does_not_exist_exception() | 
     comment_deleted_exception().
 
 -type delete_file_errors() ::
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
     path_required_exception() | 
-    name_length_exceeded_exception() | 
-    invalid_path_exception() | 
     parent_commit_id_required_exception() | 
-    branch_does_not_exist_exception() | 
-    parent_commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    commit_message_length_exceeded_exception() | 
-    file_does_not_exist_exception() | 
     parent_commit_id_outdated_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
-    branch_name_is_tag_name_exception() | 
-    invalid_parent_commit_id_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    name_length_exceeded_exception() | 
     invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_parent_commit_id_exception() | 
+    invalid_email_exception() | 
+    invalid_branch_name_exception() | 
+    file_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    branch_name_required_exception().
+    commit_message_length_exceeded_exception() | 
+    branch_name_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    branch_does_not_exist_exception().
 
 -type delete_pull_request_approval_rule_errors() ::
-    invalid_approval_rule_name_exception() | 
-    cannot_delete_approval_rule_from_template_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    pull_request_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_approval_rule_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
+    cannot_delete_approval_rule_from_template_exception() | 
     approval_rule_name_required_exception().
 
 -type delete_repository_errors() ::
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type describe_merge_conflicts_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    path_required_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_merge_option_exception() | 
-    invalid_path_exception() | 
-    encryption_key_disabled_exception() | 
-    file_does_not_exist_exception() | 
-    invalid_commit_exception() | 
+    tips_divergence_exceeded_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
     merge_option_required_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_max_merge_hunks_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
+    file_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    invalid_max_merge_hunks_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    tips_divergence_exceeded_exception().
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type describe_pull_request_events_errors() ::
-    encryption_key_disabled_exception() | 
-    actor_does_not_exist_exception() | 
-    invalid_actor_arn_exception() | 
-    pull_request_does_not_exist_exception() | 
-    invalid_pull_request_event_type_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_pull_request_event_type_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_actor_arn_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    actor_does_not_exist_exception().
 
 -type disassociate_approval_rule_template_from_repository_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_approval_rule_template_name_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_approval_rule_template_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type evaluate_pull_request_approval_rules_errors() ::
     revision_not_current_exception() | 
-    encryption_key_disabled_exception() | 
+    revision_id_required_exception() | 
+    pull_request_id_required_exception() | 
     pull_request_does_not_exist_exception() | 
     invalid_revision_id_exception() | 
-    revision_id_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    pull_request_id_required_exception() | 
+    invalid_pull_request_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type get_approval_rule_template_errors() ::
     invalid_approval_rule_template_name_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type get_blob_errors() ::
-    repository_does_not_exist_exception() | 
-    file_too_large_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    invalid_blob_id_exception() | 
-    encryption_key_access_denied_exception() | 
-    blob_id_required_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_blob_id_exception() | 
+    file_too_large_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
+    blob_id_required_exception() | 
     blob_id_does_not_exist_exception().
 
 -type get_branch_errors() ::
-    repository_does_not_exist_exception() | 
-    branch_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_branch_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    branch_name_required_exception().
+    branch_name_required_exception() | 
+    branch_does_not_exist_exception().
 
 -type get_comment_errors() ::
     invalid_comment_id_exception() | 
-    encryption_key_disabled_exception() | 
-    comment_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
     comment_id_required_exception() | 
+    comment_does_not_exist_exception() | 
     comment_deleted_exception().
 
 -type get_comment_reactions_errors() ::
-    invalid_comment_id_exception() | 
-    comment_does_not_exist_exception() | 
     invalid_reaction_user_arn_exception() | 
-    comment_id_required_exception() | 
-    comment_deleted_exception() | 
+    invalid_max_results_exception() | 
     invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    invalid_comment_id_exception() | 
+    comment_id_required_exception() | 
+    comment_does_not_exist_exception() | 
+    comment_deleted_exception().
 
 -type get_comments_for_compared_commit_errors() ::
-    repository_does_not_exist_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_id_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_commit_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    commit_id_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_comments_for_pull_request_errors() ::
-    repository_does_not_exist_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_not_associated_with_pull_request_exception() | 
-    invalid_commit_id_exception() | 
     repository_name_required_exception() | 
-    pull_request_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
+    invalid_commit_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    commit_id_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_commit_errors() ::
-    repository_does_not_exist_exception() | 
-    commit_id_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_id_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
+    invalid_commit_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_id_required_exception() | 
+    commit_id_does_not_exist_exception().
 
 -type get_differences_errors() ::
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
-    commit_required_exception() | 
-    commit_does_not_exist_exception() | 
+    path_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
     invalid_path_exception() | 
-    encryption_key_disabled_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_commit_id_exception() | 
     invalid_commit_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    invalid_repository_name_exception() | 
-    path_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_file_errors() ::
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
     path_required_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_path_exception() | 
-    file_too_large_exception() | 
-    encryption_key_disabled_exception() | 
-    file_does_not_exist_exception() | 
-    invalid_commit_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
     invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_commit_exception() | 
+    file_too_large_exception() | 
+    file_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_folder_errors() ::
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
     path_required_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_path_exception() | 
-    encryption_key_disabled_exception() | 
-    folder_does_not_exist_exception() | 
-    invalid_commit_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
     invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_commit_exception() | 
+    folder_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_merge_commit_errors() ::
-    repository_does_not_exist_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_merge_conflicts_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_merge_option_exception() | 
-    invalid_source_commit_specifier_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_max_conflict_files_exception() | 
-    invalid_commit_exception() | 
+    tips_divergence_exceeded_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
+    repository_does_not_exist_exception() | 
     merge_option_required_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    invalid_source_commit_specifier_exception() | 
     invalid_repository_name_exception() | 
-    invalid_conflict_resolution_strategy_exception() | 
-    encryption_key_unavailable_exception() | 
-    encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
+    invalid_merge_option_exception() | 
+    invalid_max_conflict_files_exception() | 
     invalid_destination_commit_specifier_exception() | 
     invalid_continuation_token_exception() | 
-    tips_divergence_exceeded_exception().
+    invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_merge_options_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_exception() | 
+    tips_divergence_exceeded_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     invalid_repository_name_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    tips_divergence_exceeded_exception().
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type get_pull_request_errors() ::
-    encryption_key_disabled_exception() | 
-    pull_request_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_pull_request_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type get_pull_request_approval_states_errors() ::
-    encryption_key_disabled_exception() | 
+    revision_id_required_exception() | 
+    pull_request_id_required_exception() | 
     pull_request_does_not_exist_exception() | 
     invalid_revision_id_exception() | 
-    revision_id_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    pull_request_id_required_exception() | 
+    invalid_pull_request_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type get_pull_request_override_state_errors() ::
-    encryption_key_disabled_exception() | 
+    revision_id_required_exception() | 
+    pull_request_id_required_exception() | 
     pull_request_does_not_exist_exception() | 
     invalid_revision_id_exception() | 
-    revision_id_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    pull_request_id_required_exception() | 
+    invalid_pull_request_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type get_repository_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type get_repository_triggers_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type list_approval_rule_templates_errors() ::
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
-
--type list_associated_approval_rule_templates_for_repository_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    invalid_repository_name_exception() | 
-    encryption_key_unavailable_exception() | 
-    encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
-
--type list_branches_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    invalid_repository_name_exception() | 
-    encryption_key_unavailable_exception() | 
-    encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
+    invalid_max_results_exception() | 
     invalid_continuation_token_exception().
 
--type list_file_commit_history_errors() ::
-    repository_does_not_exist_exception() | 
-    commit_required_exception() | 
-    commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_commit_exception() | 
+-type list_associated_approval_rule_templates_for_repository_errors() ::
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type list_branches_errors() ::
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
     invalid_continuation_token_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
+
+-type list_file_commit_history_errors() ::
+    tips_divergence_exceeded_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
     invalid_max_results_exception() | 
-    tips_divergence_exceeded_exception().
+    invalid_continuation_token_exception() | 
+    invalid_commit_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    commit_required_exception() | 
+    commit_does_not_exist_exception().
 
 -type list_pull_requests_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_pull_request_status_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
-    author_does_not_exist_exception() | 
+    invalid_pull_request_status_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_author_arn_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception().
+    author_does_not_exist_exception().
 
 -type list_repositories_errors() ::
     invalid_sort_by_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_order_exception().
+    invalid_order_exception() | 
+    invalid_continuation_token_exception().
 
 -type list_repositories_for_approval_rule_template_errors() ::
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_approval_rule_template_name_exception() | 
-    encryption_key_disabled_exception() | 
-    encryption_key_access_denied_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_continuation_token_exception() | 
-    invalid_max_results_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type list_tags_for_resource_errors() ::
+    resource_arn_required_exception() | 
     repository_does_not_exist_exception() | 
     invalid_resource_arn_exception() | 
-    resource_arn_required_exception() | 
     invalid_repository_name_exception().
 
 -type merge_branches_by_fast_forward_errors() ::
+    tips_divergence_exceeded_exception() | 
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
+    manual_merge_required_exception() | 
+    invalid_target_branch_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_commit_exception() | 
+    invalid_branch_name_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
     concurrent_reference_update_exception() | 
     commit_required_exception() | 
     commit_does_not_exist_exception() | 
-    branch_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    manual_merge_required_exception() | 
-    invalid_target_branch_exception() | 
-    invalid_commit_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
+    branch_name_required_exception() | 
     branch_name_is_tag_name_exception() | 
-    invalid_repository_name_exception() | 
-    encryption_key_unavailable_exception() | 
-    encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    tips_divergence_exceeded_exception() | 
-    branch_name_required_exception().
+    branch_does_not_exist_exception().
 
 -type merge_branches_by_squash_errors() ::
+    tips_divergence_exceeded_exception() | 
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    invalid_file_mode_exception() | 
-    concurrent_reference_update_exception() | 
-    path_required_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    name_length_exceeded_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_conflict_resolution_exception() | 
-    invalid_path_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    branch_does_not_exist_exception() | 
     replacement_type_required_exception() | 
-    encryption_key_disabled_exception() | 
-    commit_message_length_exceeded_exception() | 
+    replacement_content_required_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     maximum_conflict_resolution_entries_exceeded_exception() | 
     manual_merge_required_exception() | 
     invalid_target_branch_exception() | 
-    invalid_commit_exception() | 
-    file_mode_required_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    invalid_replacement_content_exception() | 
-    encryption_key_access_denied_exception() | 
-    multiple_conflict_resolution_entries_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
-    replacement_content_required_exception() | 
-    branch_name_is_tag_name_exception() | 
     invalid_repository_name_exception() | 
     invalid_replacement_type_exception() | 
+    invalid_replacement_content_exception() | 
+    invalid_path_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
+    invalid_branch_name_exception() | 
     folder_content_size_limit_exceeded_exception() | 
+    file_mode_required_exception() | 
+    file_content_size_limit_exceeded_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    tips_divergence_exceeded_exception() | 
-    branch_name_required_exception().
+    concurrent_reference_update_exception() | 
+    commit_required_exception() | 
+    commit_message_length_exceeded_exception() | 
+    commit_does_not_exist_exception() | 
+    branch_name_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    branch_does_not_exist_exception().
 
 -type merge_branches_by_three_way_errors() ::
+    tips_divergence_exceeded_exception() | 
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    invalid_file_mode_exception() | 
-    concurrent_reference_update_exception() | 
-    path_required_exception() | 
-    commit_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    name_length_exceeded_exception() | 
-    commit_does_not_exist_exception() | 
-    invalid_conflict_resolution_exception() | 
-    invalid_path_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    branch_does_not_exist_exception() | 
     replacement_type_required_exception() | 
-    encryption_key_disabled_exception() | 
-    commit_message_length_exceeded_exception() | 
+    replacement_content_required_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
+    multiple_conflict_resolution_entries_exception() | 
+    maximum_items_to_compare_exceeded_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
     maximum_conflict_resolution_entries_exceeded_exception() | 
     manual_merge_required_exception() | 
     invalid_target_branch_exception() | 
-    invalid_commit_exception() | 
-    file_mode_required_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    invalid_replacement_content_exception() | 
-    encryption_key_access_denied_exception() | 
-    multiple_conflict_resolution_entries_exception() | 
-    maximum_items_to_compare_exceeded_exception() | 
-    replacement_content_required_exception() | 
-    branch_name_is_tag_name_exception() | 
     invalid_repository_name_exception() | 
     invalid_replacement_type_exception() | 
+    invalid_replacement_content_exception() | 
+    invalid_path_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_exception() | 
+    invalid_branch_name_exception() | 
     folder_content_size_limit_exceeded_exception() | 
+    file_mode_required_exception() | 
+    file_content_size_limit_exceeded_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    tips_divergence_exceeded_exception() | 
-    branch_name_required_exception().
+    concurrent_reference_update_exception() | 
+    commit_required_exception() | 
+    commit_message_length_exceeded_exception() | 
+    commit_does_not_exist_exception() | 
+    branch_name_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    branch_does_not_exist_exception().
 
 -type merge_pull_request_by_fast_forward_errors() ::
-    repository_does_not_exist_exception() | 
-    concurrent_reference_update_exception() | 
-    reference_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    repository_not_associated_with_pull_request_exception() | 
-    manual_merge_required_exception() | 
-    invalid_commit_id_exception() | 
-    repository_name_required_exception() | 
-    pull_request_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
-    pull_request_id_required_exception() | 
-    invalid_repository_name_exception() | 
     tip_of_source_reference_is_different_exception() | 
+    repository_not_associated_with_pull_request_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    reference_does_not_exist_exception() | 
+    pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
     pull_request_approval_rules_not_satisfied_exception() | 
+    pull_request_already_closed_exception() | 
+    manual_merge_required_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_commit_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    concurrent_reference_update_exception().
 
 -type merge_pull_request_by_squash_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    invalid_file_mode_exception() | 
-    concurrent_reference_update_exception() | 
-    path_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    name_length_exceeded_exception() | 
-    invalid_conflict_resolution_exception() | 
-    invalid_path_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    replacement_type_required_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
+    tips_divergence_exceeded_exception() | 
+    tip_of_source_reference_is_different_exception() | 
     repository_not_associated_with_pull_request_exception() | 
-    commit_message_length_exceeded_exception() | 
-    maximum_conflict_resolution_entries_exceeded_exception() | 
-    manual_merge_required_exception() | 
-    invalid_commit_id_exception() | 
-    invalid_email_exception() | 
     repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    replacement_type_required_exception() | 
+    replacement_content_required_exception() | 
+    pull_request_id_required_exception() | 
     pull_request_does_not_exist_exception() | 
-    invalid_replacement_content_exception() | 
-    encryption_key_access_denied_exception() | 
+    pull_request_approval_rules_not_satisfied_exception() | 
+    pull_request_already_closed_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
     multiple_conflict_resolution_entries_exception() | 
     maximum_items_to_compare_exceeded_exception() | 
-    pull_request_id_required_exception() | 
-    replacement_content_required_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
     invalid_repository_name_exception() | 
     invalid_replacement_type_exception() | 
-    tip_of_source_reference_is_different_exception() | 
+    invalid_replacement_content_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_path_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_id_exception() | 
     folder_content_size_limit_exceeded_exception() | 
-    pull_request_approval_rules_not_satisfied_exception() | 
+    file_content_size_limit_exceeded_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    tips_divergence_exceeded_exception().
+    concurrent_reference_update_exception() | 
+    commit_message_length_exceeded_exception().
 
 -type merge_pull_request_by_three_way_errors() ::
-    repository_does_not_exist_exception() | 
-    maximum_file_content_to_load_exceeded_exception() | 
-    invalid_file_mode_exception() | 
-    concurrent_reference_update_exception() | 
-    path_required_exception() | 
-    invalid_conflict_detail_level_exception() | 
-    name_length_exceeded_exception() | 
-    invalid_conflict_resolution_exception() | 
-    invalid_path_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    replacement_type_required_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
+    tips_divergence_exceeded_exception() | 
+    tip_of_source_reference_is_different_exception() | 
     repository_not_associated_with_pull_request_exception() | 
-    commit_message_length_exceeded_exception() | 
-    maximum_conflict_resolution_entries_exceeded_exception() | 
-    manual_merge_required_exception() | 
-    invalid_commit_id_exception() | 
-    invalid_email_exception() | 
     repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    replacement_type_required_exception() | 
+    replacement_content_required_exception() | 
+    pull_request_id_required_exception() | 
     pull_request_does_not_exist_exception() | 
-    invalid_replacement_content_exception() | 
-    encryption_key_access_denied_exception() | 
+    pull_request_approval_rules_not_satisfied_exception() | 
+    pull_request_already_closed_exception() | 
+    path_required_exception() | 
+    name_length_exceeded_exception() | 
     multiple_conflict_resolution_entries_exception() | 
     maximum_items_to_compare_exceeded_exception() | 
-    pull_request_id_required_exception() | 
-    replacement_content_required_exception() | 
+    maximum_file_content_to_load_exceeded_exception() | 
+    maximum_conflict_resolution_entries_exceeded_exception() | 
+    manual_merge_required_exception() | 
     invalid_repository_name_exception() | 
     invalid_replacement_type_exception() | 
-    tip_of_source_reference_is_different_exception() | 
+    invalid_replacement_content_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_path_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
     invalid_conflict_resolution_strategy_exception() | 
+    invalid_conflict_resolution_exception() | 
+    invalid_conflict_detail_level_exception() | 
+    invalid_commit_id_exception() | 
     folder_content_size_limit_exceeded_exception() | 
-    pull_request_approval_rules_not_satisfied_exception() | 
+    file_content_size_limit_exceeded_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    tips_divergence_exceeded_exception().
+    concurrent_reference_update_exception() | 
+    commit_message_length_exceeded_exception().
 
 -type override_pull_request_approval_rules_errors() ::
     revision_not_current_exception() | 
-    override_status_required_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    override_already_set_exception() | 
-    pull_request_does_not_exist_exception() | 
-    invalid_revision_id_exception() | 
     revision_id_required_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
+    override_status_required_exception() | 
+    override_already_set_exception() | 
+    invalid_revision_id_exception() | 
+    invalid_pull_request_id_exception() | 
     invalid_override_status_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type post_comment_for_compared_commit_errors() ::
+    repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
     path_required_exception() | 
-    invalid_file_location_exception() | 
-    commit_does_not_exist_exception() | 
-    comment_content_required_exception() | 
-    invalid_path_exception() | 
-    idempotency_parameter_mismatch_exception() | 
-    encryption_key_disabled_exception() | 
-    before_commit_id_and_after_commit_id_are_same_exception() | 
-    invalid_commit_id_exception() | 
-    invalid_relative_file_version_enum_exception() | 
-    repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    comment_content_size_limit_exceeded_exception() | 
-    invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
     path_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_relative_file_version_enum_exception() | 
+    invalid_path_exception() | 
+    invalid_file_position_exception() | 
+    invalid_file_location_exception() | 
+    invalid_commit_id_exception() | 
     invalid_client_request_token_exception() | 
+    idempotency_parameter_mismatch_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_file_position_exception() | 
-    client_request_token_required_exception().
+    commit_id_required_exception() | 
+    commit_does_not_exist_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    comment_content_required_exception() | 
+    client_request_token_required_exception() | 
+    before_commit_id_and_after_commit_id_are_same_exception().
 
 -type post_comment_for_pull_request_errors() ::
-    repository_does_not_exist_exception() | 
-    path_required_exception() | 
-    invalid_file_location_exception() | 
-    commit_does_not_exist_exception() | 
-    comment_content_required_exception() | 
-    invalid_path_exception() | 
-    idempotency_parameter_mismatch_exception() | 
-    encryption_key_disabled_exception() | 
     repository_not_associated_with_pull_request_exception() | 
-    before_commit_id_and_after_commit_id_are_same_exception() | 
-    invalid_commit_id_exception() | 
-    invalid_relative_file_version_enum_exception() | 
     repository_name_required_exception() | 
-    pull_request_does_not_exist_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     pull_request_id_required_exception() | 
-    comment_content_size_limit_exceeded_exception() | 
-    invalid_repository_name_exception() | 
-    commit_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    path_required_exception() | 
     path_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_relative_file_version_enum_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_path_exception() | 
+    invalid_file_position_exception() | 
+    invalid_file_location_exception() | 
+    invalid_commit_id_exception() | 
     invalid_client_request_token_exception() | 
+    idempotency_parameter_mismatch_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    invalid_file_position_exception() | 
-    client_request_token_required_exception().
+    commit_id_required_exception() | 
+    commit_does_not_exist_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    comment_content_required_exception() | 
+    client_request_token_required_exception() | 
+    before_commit_id_and_after_commit_id_are_same_exception().
 
 -type post_comment_reply_errors() ::
     invalid_comment_id_exception() | 
-    comment_content_required_exception() | 
+    invalid_client_request_token_exception() | 
     idempotency_parameter_mismatch_exception() | 
+    comment_id_required_exception() | 
     comment_does_not_exist_exception() | 
     comment_content_size_limit_exceeded_exception() | 
-    invalid_client_request_token_exception() | 
-    comment_id_required_exception() | 
+    comment_content_required_exception() | 
     client_request_token_required_exception().
 
 -type put_comment_reaction_errors() ::
-    invalid_comment_id_exception() | 
-    comment_does_not_exist_exception() | 
-    reaction_limit_exceeded_exception() | 
     reaction_value_required_exception() | 
+    reaction_limit_exceeded_exception() | 
     invalid_reaction_value_exception() | 
+    invalid_comment_id_exception() | 
     comment_id_required_exception() | 
+    comment_does_not_exist_exception() | 
     comment_deleted_exception().
 
 -type put_file_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_file_mode_exception() | 
-    directory_name_conflicts_with_file_name_exception() | 
-    path_required_exception() | 
-    name_length_exceeded_exception() | 
-    invalid_path_exception() | 
-    file_path_conflicts_with_submodule_path_exception() | 
-    parent_commit_id_required_exception() | 
-    file_content_size_limit_exceeded_exception() | 
-    branch_does_not_exist_exception() | 
-    parent_commit_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    commit_message_length_exceeded_exception() | 
-    invalid_deletion_parameter_exception() | 
-    parent_commit_id_outdated_exception() | 
-    invalid_email_exception() | 
-    repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
-    branch_name_is_tag_name_exception() | 
-    invalid_parent_commit_id_exception() | 
-    invalid_repository_name_exception() | 
     same_file_content_exception() | 
-    file_name_conflicts_with_directory_name_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    path_required_exception() | 
+    parent_commit_id_required_exception() | 
+    parent_commit_id_outdated_exception() | 
+    parent_commit_does_not_exist_exception() | 
+    name_length_exceeded_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_path_exception() | 
+    invalid_parent_commit_id_exception() | 
+    invalid_file_mode_exception() | 
+    invalid_email_exception() | 
+    invalid_deletion_parameter_exception() | 
+    invalid_branch_name_exception() | 
     folder_content_size_limit_exceeded_exception() | 
+    file_path_conflicts_with_submodule_path_exception() | 
+    file_name_conflicts_with_directory_name_exception() | 
+    file_content_size_limit_exceeded_exception() | 
+    file_content_required_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    file_content_required_exception() | 
-    branch_name_required_exception().
+    directory_name_conflicts_with_file_name_exception() | 
+    commit_message_length_exceeded_exception() | 
+    branch_name_required_exception() | 
+    branch_name_is_tag_name_exception() | 
+    branch_does_not_exist_exception().
 
 -type put_repository_triggers_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_repository_trigger_name_exception() | 
-    repository_trigger_events_list_required_exception() | 
-    maximum_branches_exceeded_exception() | 
-    invalid_repository_trigger_destination_arn_exception() | 
-    invalid_repository_trigger_branch_name_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_repository_trigger_region_exception() | 
-    repository_trigger_destination_arn_required_exception() | 
-    repository_name_required_exception() | 
-    repository_trigger_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    invalid_repository_trigger_events_exception() | 
-    repository_trigger_branch_name_list_required_exception() | 
-    invalid_repository_name_exception() | 
     repository_triggers_list_required_exception() | 
-    invalid_repository_trigger_custom_data_exception() | 
+    repository_trigger_name_required_exception() | 
+    repository_trigger_events_list_required_exception() | 
+    repository_trigger_destination_arn_required_exception() | 
+    repository_trigger_branch_name_list_required_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
     maximum_repository_triggers_exceeded_exception() | 
+    maximum_branches_exceeded_exception() | 
+    invalid_repository_trigger_region_exception() | 
+    invalid_repository_trigger_name_exception() | 
+    invalid_repository_trigger_events_exception() | 
+    invalid_repository_trigger_destination_arn_exception() | 
+    invalid_repository_trigger_custom_data_exception() | 
+    invalid_repository_trigger_branch_name_exception() | 
+    invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type tag_resource_errors() ::
-    repository_does_not_exist_exception() | 
     too_many_tags_exception() | 
-    invalid_tags_map_exception() | 
-    invalid_resource_arn_exception() | 
-    invalid_system_tag_usage_exception() | 
-    resource_arn_required_exception() | 
-    invalid_repository_name_exception() | 
+    tags_map_required_exception() | 
     tag_policy_exception() | 
-    tags_map_required_exception().
+    resource_arn_required_exception() | 
+    repository_does_not_exist_exception() | 
+    invalid_tags_map_exception() | 
+    invalid_system_tag_usage_exception() | 
+    invalid_resource_arn_exception() | 
+    invalid_repository_name_exception().
 
 -type test_repository_triggers_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_repository_trigger_name_exception() | 
-    repository_trigger_events_list_required_exception() | 
-    maximum_branches_exceeded_exception() | 
-    invalid_repository_trigger_destination_arn_exception() | 
-    invalid_repository_trigger_branch_name_exception() | 
-    encryption_key_disabled_exception() | 
-    invalid_repository_trigger_region_exception() | 
-    repository_trigger_destination_arn_required_exception() | 
-    repository_name_required_exception() | 
-    repository_trigger_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    invalid_repository_trigger_events_exception() | 
-    repository_trigger_branch_name_list_required_exception() | 
-    invalid_repository_name_exception() | 
     repository_triggers_list_required_exception() | 
-    invalid_repository_trigger_custom_data_exception() | 
+    repository_trigger_name_required_exception() | 
+    repository_trigger_events_list_required_exception() | 
+    repository_trigger_destination_arn_required_exception() | 
+    repository_trigger_branch_name_list_required_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
     maximum_repository_triggers_exceeded_exception() | 
+    maximum_branches_exceeded_exception() | 
+    invalid_repository_trigger_region_exception() | 
+    invalid_repository_trigger_name_exception() | 
+    invalid_repository_trigger_events_exception() | 
+    invalid_repository_trigger_destination_arn_exception() | 
+    invalid_repository_trigger_custom_data_exception() | 
+    invalid_repository_trigger_branch_name_exception() | 
+    invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type untag_resource_errors() ::
-    repository_does_not_exist_exception() | 
     too_many_tags_exception() | 
+    tag_policy_exception() | 
     tag_keys_list_required_exception() | 
-    invalid_resource_arn_exception() | 
-    invalid_system_tag_usage_exception() | 
-    invalid_tag_keys_list_exception() | 
     resource_arn_required_exception() | 
-    invalid_repository_name_exception() | 
-    tag_policy_exception().
+    repository_does_not_exist_exception() | 
+    invalid_tag_keys_list_exception() | 
+    invalid_system_tag_usage_exception() | 
+    invalid_resource_arn_exception() | 
+    invalid_repository_name_exception().
 
 -type update_approval_rule_template_content_errors() ::
+    invalid_rule_content_sha256_exception() | 
     invalid_approval_rule_template_name_exception() | 
     invalid_approval_rule_template_content_exception() | 
+    approval_rule_template_name_required_exception() | 
     approval_rule_template_does_not_exist_exception() | 
-    approval_rule_template_content_required_exception() | 
-    invalid_rule_content_sha256_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_content_required_exception().
 
 -type update_approval_rule_template_description_errors() ::
     invalid_approval_rule_template_name_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
     invalid_approval_rule_template_description_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type update_approval_rule_template_name_errors() ::
-    approval_rule_template_name_already_exists_exception() | 
     invalid_approval_rule_template_name_exception() | 
-    approval_rule_template_does_not_exist_exception() | 
-    approval_rule_template_name_required_exception().
+    approval_rule_template_name_required_exception() | 
+    approval_rule_template_name_already_exists_exception() | 
+    approval_rule_template_does_not_exist_exception().
 
 -type update_comment_errors() ::
     invalid_comment_id_exception() | 
-    comment_content_required_exception() | 
-    comment_does_not_exist_exception() | 
     comment_not_created_by_caller_exception() | 
-    comment_content_size_limit_exceeded_exception() | 
     comment_id_required_exception() | 
-    comment_deleted_exception().
+    comment_does_not_exist_exception() | 
+    comment_deleted_exception() | 
+    comment_content_size_limit_exceeded_exception() | 
+    comment_content_required_exception().
 
 -type update_default_branch_errors() ::
-    repository_does_not_exist_exception() | 
-    branch_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    invalid_branch_name_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_branch_name_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    branch_name_required_exception().
+    branch_name_required_exception() | 
+    branch_does_not_exist_exception().
 
 -type update_pull_request_approval_rule_content_errors() ::
-    invalid_approval_rule_name_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    approval_rule_does_not_exist_exception() | 
-    pull_request_does_not_exist_exception() | 
-    invalid_approval_rule_content_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
-    approval_rule_content_required_exception() | 
-    cannot_modify_approval_rule_from_template_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
     invalid_rule_content_sha256_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_approval_rule_name_exception() | 
+    invalid_approval_rule_content_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception() | 
-    approval_rule_name_required_exception().
+    cannot_modify_approval_rule_from_template_exception() | 
+    approval_rule_name_required_exception() | 
+    approval_rule_does_not_exist_exception() | 
+    approval_rule_content_required_exception().
 
 -type update_pull_request_approval_state_errors() ::
     revision_not_current_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_already_closed_exception() | 
-    invalid_approval_state_exception() | 
-    pull_request_does_not_exist_exception() | 
-    invalid_revision_id_exception() | 
     revision_id_required_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
     pull_request_cannot_be_approved_by_author_exception() | 
-    approval_state_required_exception() | 
+    pull_request_already_closed_exception() | 
     maximum_number_of_approvals_exceeded_exception() | 
+    invalid_revision_id_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_approval_state_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    approval_state_required_exception().
 
 -type update_pull_request_description_errors() ::
-    pull_request_already_closed_exception() | 
-    invalid_description_exception() | 
-    pull_request_does_not_exist_exception() | 
     pull_request_id_required_exception() | 
-    invalid_pull_request_id_exception().
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
+    invalid_pull_request_id_exception() | 
+    invalid_description_exception().
 
 -type update_pull_request_status_errors() ::
-    invalid_pull_request_status_exception() | 
-    invalid_pull_request_status_update_exception() | 
-    encryption_key_disabled_exception() | 
-    pull_request_does_not_exist_exception() | 
     pull_request_status_required_exception() | 
-    encryption_key_access_denied_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    invalid_pull_request_status_update_exception() | 
+    invalid_pull_request_status_exception() | 
+    invalid_pull_request_id_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
-    encryption_integrity_checks_failed_exception() | 
-    invalid_pull_request_id_exception().
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception().
 
 -type update_pull_request_title_errors() ::
-    invalid_title_exception() | 
-    pull_request_already_closed_exception() | 
     title_required_exception() | 
-    pull_request_does_not_exist_exception() | 
     pull_request_id_required_exception() | 
+    pull_request_does_not_exist_exception() | 
+    pull_request_already_closed_exception() | 
+    invalid_title_exception() | 
     invalid_pull_request_id_exception().
 
 -type update_repository_description_errors() ::
-    repository_does_not_exist_exception() | 
-    invalid_repository_description_exception() | 
-    encryption_key_disabled_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_repository_description_exception() | 
     encryption_key_unavailable_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type update_repository_encryption_key_errors() ::
-    repository_does_not_exist_exception() | 
-    encryption_key_disabled_exception() | 
-    encryption_key_invalid_id_exception() | 
-    encryption_key_invalid_usage_exception() | 
     repository_name_required_exception() | 
-    encryption_key_access_denied_exception() | 
-    encryption_key_required_exception() | 
+    repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
     encryption_key_unavailable_exception() | 
+    encryption_key_required_exception() | 
     encryption_key_not_found_exception() | 
+    encryption_key_invalid_usage_exception() | 
+    encryption_key_invalid_id_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
     encryption_integrity_checks_failed_exception().
 
 -type update_repository_name_errors() ::
-    repository_does_not_exist_exception() | 
     repository_name_required_exception() | 
-    invalid_repository_name_exception() | 
-    repository_name_exists_exception().
+    repository_name_exists_exception() | 
+    repository_does_not_exist_exception() | 
+    invalid_repository_name_exception().
 
 %%====================================================================
 %% API

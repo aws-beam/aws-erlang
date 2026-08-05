@@ -142,45 +142,72 @@
 
 
 %% Example:
-%% get_repository_link_input() :: #{
-%%   <<"RepositoryLinkId">> := string()
-%% }
--type get_repository_link_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_sync_configuration_output() :: #{
-%%   <<"SyncConfiguration">> => sync_configuration()
-%% }
--type create_sync_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% repository_sync_attempt() :: #{
-%%   <<"Events">> => list(repository_sync_event()),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type repository_sync_attempt() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_input() :: #{
-%%   <<"ConnectionArn">> := string()
-%% }
--type delete_connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unsupported_operation_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"TlsCertificate">> => string(),
-%%   <<"VpcId">> => string()
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type vpc_configuration() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_check_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conditional_check_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% connection() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionStatus">> => list(any()),
+%%   <<"HostArn">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProviderType">> => list(any())
+%% }
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_input() :: #{
+%%   <<"ConnectionName">> := string(),
+%%   <<"HostArn">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_output() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_host_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ProviderEndpoint">> := string(),
+%%   <<"ProviderType">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type create_host_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_host_output() :: #{
+%%   <<"HostArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_host_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_repository_link_input() :: #{
@@ -193,130 +220,66 @@
 -type create_repository_link_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_sync_configurations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SyncConfigurations">> => list(sync_configuration())
-%% }
--type list_sync_configurations_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_link_output() :: #{
-
-%% }
--type delete_repository_link_output() :: #{binary() => any()}.
-
-%% Example:
-%% sync_blocker_context() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type sync_blocker_context() :: #{binary() => any()}.
-
-%% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_sync_status_input() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type get_resource_sync_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_sync_blocker_input() :: #{
-%%   <<"Id">> := string(),
-%%   <<"ResolvedReason">> := string(),
-%%   <<"ResourceName">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type update_sync_blocker_input() :: #{binary() => any()}.
-
-%% Example:
-%% sync_blocker_summary() :: #{
-%%   <<"LatestBlockers">> => list(sync_blocker()),
-%%   <<"ParentResourceName">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type sync_blocker_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_output() :: #{
-%%   <<"Connections">> => list(connection()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connections_output() :: #{binary() => any()}.
-
-%% Example:
 %% create_repository_link_output() :: #{
 %%   <<"RepositoryLinkInfo">> => repository_link_info()
 %% }
 -type create_repository_link_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_output() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_connection_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_sync_status_output() :: #{
-%%   <<"DesiredState">> => revision(),
-%%   <<"LatestSuccessfulSync">> => resource_sync_attempt(),
-%%   <<"LatestSync">> => resource_sync_attempt()
-%% }
--type get_resource_sync_status_output() :: #{binary() => any()}.
-
-%% Example:
-%% sync_configuration_still_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type sync_configuration_still_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% retry_latest_commit_failed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type retry_latest_commit_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_host_output() :: #{
-%%   <<"HostArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_host_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_sync_configuration_input() :: #{
-%%   <<"Branch">> => string(),
-%%   <<"ConfigFile">> => string(),
+%% create_sync_configuration_input() :: #{
+%%   <<"Branch">> := string(),
+%%   <<"ConfigFile">> := string(),
 %%   <<"PublishDeploymentStatus">> => list(any()),
 %%   <<"PullRequestComment">> => list(any()),
-%%   <<"RepositoryLinkId">> => string(),
+%%   <<"RepositoryLinkId">> := string(),
 %%   <<"ResourceName">> := string(),
-%%   <<"RoleArn">> => string(),
+%%   <<"RoleArn">> := string(),
 %%   <<"SyncType">> := list(any()),
 %%   <<"TriggerResourceUpdateOn">> => list(any())
 %% }
--type update_sync_configuration_input() :: #{binary() => any()}.
+-type create_sync_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag())
+%% create_sync_configuration_output() :: #{
+%%   <<"SyncConfiguration">> => sync_configuration()
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type create_sync_configuration_output() :: #{binary() => any()}.
 
 %% Example:
-%% repository_sync_definition() :: #{
-%%   <<"Branch">> => string(),
-%%   <<"Directory">> => string(),
-%%   <<"Parent">> => string(),
-%%   <<"Target">> => string()
+%% delete_connection_input() :: #{
+%%   <<"ConnectionArn">> := string()
 %% }
--type repository_sync_definition() :: #{binary() => any()}.
+-type delete_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_output() :: #{
+
+%% }
+-type delete_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_host_input() :: #{
+%%   <<"HostArn">> := string()
+%% }
+-type delete_host_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_host_output() :: #{
+
+%% }
+-type delete_host_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_link_input() :: #{
+%%   <<"RepositoryLinkId">> := string()
+%% }
+-type delete_repository_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_link_output() :: #{
+
+%% }
+-type delete_repository_link_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_sync_configuration_input() :: #{
@@ -326,64 +289,10 @@
 -type delete_sync_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_repository_links_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RepositoryLinks">> => list(repository_link_info())
-%% }
--type list_repository_links_output() :: #{binary() => any()}.
+%% delete_sync_configuration_output() :: #{
 
-%% Example:
-%% update_repository_link_output() :: #{
-%%   <<"RepositoryLinkInfo">> => repository_link_info()
 %% }
--type update_repository_link_output() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_sync_blocker_output() :: #{
-%%   <<"ParentResourceName">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"SyncBlocker">> => sync_blocker()
-%% }
--type update_sync_blocker_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_sync_configuration_output() :: #{
-%%   <<"SyncConfiguration">> => sync_configuration()
-%% }
--type get_sync_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_provider_type_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_provider_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% update_host_input() :: #{
-%%   <<"HostArn">> := string(),
-%%   <<"ProviderEndpoint">> => string(),
-%%   <<"VpcConfiguration">> => vpc_configuration()
-%% }
--type update_host_input() :: #{binary() => any()}.
+-type delete_sync_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_connection_input() :: #{
@@ -398,21 +307,175 @@
 -type get_connection_output() :: #{binary() => any()}.
 
 %% Example:
-%% connection() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionStatus">> => list(any()),
-%%   <<"HostArn">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ProviderType">> => list(any())
+%% get_host_input() :: #{
+%%   <<"HostArn">> := string()
 %% }
--type connection() :: #{binary() => any()}.
+-type get_host_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_sync_configuration_output() :: #{
+%% get_host_output() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ProviderEndpoint">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => string(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type get_host_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_link_input() :: #{
+%%   <<"RepositoryLinkId">> := string()
+%% }
+-type get_repository_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_link_output() :: #{
+%%   <<"RepositoryLinkInfo">> => repository_link_info()
+%% }
+-type get_repository_link_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_sync_status_input() :: #{
+%%   <<"Branch">> := string(),
+%%   <<"RepositoryLinkId">> := string(),
+%%   <<"SyncType">> := list(any())
+%% }
+-type get_repository_sync_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_sync_status_output() :: #{
+%%   <<"LatestSync">> => repository_sync_attempt()
+%% }
+-type get_repository_sync_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_sync_status_input() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"SyncType">> := list(any())
+%% }
+-type get_resource_sync_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_sync_status_output() :: #{
+%%   <<"DesiredState">> => revision(),
+%%   <<"LatestSuccessfulSync">> => resource_sync_attempt(),
+%%   <<"LatestSync">> => resource_sync_attempt()
+%% }
+-type get_resource_sync_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_blocker_summary_input() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"SyncType">> := list(any())
+%% }
+-type get_sync_blocker_summary_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_blocker_summary_output() :: #{
+%%   <<"SyncBlockerSummary">> => sync_blocker_summary()
+%% }
+-type get_sync_blocker_summary_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_configuration_input() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"SyncType">> := list(any())
+%% }
+-type get_sync_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_configuration_output() :: #{
 %%   <<"SyncConfiguration">> => sync_configuration()
 %% }
--type update_sync_configuration_output() :: #{binary() => any()}.
+-type get_sync_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% host() :: #{
+%%   <<"HostArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProviderEndpoint">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type host() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_input() :: #{
+%%   <<"HostArnFilter">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProviderTypeFilter">> => list(any())
+%% }
+-type list_connections_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_output() :: #{
+%%   <<"Connections">> => list(connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosts_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hosts_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosts_output() :: #{
+%%   <<"Hosts">> => list(host()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hosts_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_repository_links_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_repository_links_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_repository_links_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RepositoryLinks">> => list(repository_link_info())
+%% }
+-type list_repository_links_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_repository_sync_definitions_input() :: #{
+%%   <<"RepositoryLinkId">> := string(),
+%%   <<"SyncType">> := list(any())
+%% }
+-type list_repository_sync_definitions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_repository_sync_definitions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RepositorySyncDefinitions">> => list(repository_sync_definition())
+%% }
+-type list_repository_sync_definitions_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_sync_configurations_input() :: #{
@@ -424,16 +487,116 @@
 -type list_sync_configurations_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_repository_sync_status_output() :: #{
-%%   <<"LatestSync">> => repository_sync_attempt()
+%% list_sync_configurations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SyncConfigurations">> => list(sync_configuration())
 %% }
--type get_repository_sync_status_output() :: #{binary() => any()}.
+-type list_sync_configurations_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_input_exception() :: #{
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% repository_link_info() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"RepositoryLinkArn">> => string(),
+%%   <<"RepositoryLinkId">> => string(),
+%%   <<"RepositoryName">> => string()
+%% }
+-type repository_link_info() :: #{binary() => any()}.
+
+%% Example:
+%% repository_sync_attempt() :: #{
+%%   <<"Events">> => list(repository_sync_event()),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type repository_sync_attempt() :: #{binary() => any()}.
+
+%% Example:
+%% repository_sync_definition() :: #{
+%%   <<"Branch">> => string(),
+%%   <<"Directory">> => string(),
+%%   <<"Parent">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type repository_sync_definition() :: #{binary() => any()}.
+
+%% Example:
+%% repository_sync_event() :: #{
+%%   <<"Event">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"Type">> => string()
+%% }
+-type repository_sync_event() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_input_exception() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_sync_attempt() :: #{
+%%   <<"Events">> => list(resource_sync_event()),
+%%   <<"InitialRevision">> => revision(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => string(),
+%%   <<"TargetRevision">> => revision()
+%% }
+-type resource_sync_attempt() :: #{binary() => any()}.
+
+%% Example:
+%% resource_sync_event() :: #{
+%%   <<"Event">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"Type">> => string()
+%% }
+-type resource_sync_event() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retry_latest_commit_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type retry_latest_commit_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revision() :: #{
+%%   <<"Branch">> => string(),
+%%   <<"Directory">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"RepositoryName">> => string(),
+%%   <<"Sha">> => string()
+%% }
+-type revision() :: #{binary() => any()}.
 
 %% Example:
 %% sync_blocker() :: #{
@@ -449,69 +612,25 @@
 -type sync_blocker() :: #{binary() => any()}.
 
 %% Example:
-%% update_repository_link_input() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"RepositoryLinkId">> := string()
+%% sync_blocker_context() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type update_repository_link_input() :: #{binary() => any()}.
+-type sync_blocker_context() :: #{binary() => any()}.
 
 %% Example:
-%% get_sync_blocker_summary_output() :: #{
-%%   <<"SyncBlockerSummary">> => sync_blocker_summary()
-%% }
--type get_sync_blocker_summary_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_repository_sync_definitions_input() :: #{
-%%   <<"RepositoryLinkId">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type list_repository_sync_definitions_input() :: #{binary() => any()}.
-
-%% Example:
-%% host() :: #{
-%%   <<"HostArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProviderEndpoint">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VpcConfiguration">> => vpc_configuration()
-%% }
--type host() :: #{binary() => any()}.
-
-%% Example:
-%% list_hosts_output() :: #{
-%%   <<"Hosts">> => list(host()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hosts_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% conditional_check_failed_exception() :: #{
+%% sync_blocker_does_not_exist_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type conditional_check_failed_exception() :: #{binary() => any()}.
+-type sync_blocker_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
+%% sync_blocker_summary() :: #{
+%%   <<"LatestBlockers">> => list(sync_blocker()),
+%%   <<"ParentResourceName">> => string(),
+%%   <<"ResourceName">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type sync_blocker_summary() :: #{binary() => any()}.
 
 %% Example:
 %% sync_configuration() :: #{
@@ -531,10 +650,48 @@
 -type sync_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
+%% sync_configuration_still_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type sync_configuration_still_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_provider_type_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_provider_type_exception() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_input() :: #{
@@ -544,131 +701,18 @@
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_host_input() :: #{
-%%   <<"HostArn">> := string()
-%% }
--type delete_host_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_sync_configuration_input() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type get_sync_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_output() :: #{
-
-%% }
--type delete_connection_output() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_sync_attempt() :: #{
-%%   <<"Events">> => list(resource_sync_event()),
-%%   <<"InitialRevision">> => revision(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Target">> => string(),
-%%   <<"TargetRevision">> => revision()
-%% }
--type resource_sync_attempt() :: #{binary() => any()}.
-
-%% Example:
 %% untag_resource_output() :: #{
 
 %% }
 -type untag_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_host_output() :: #{
-
-%% }
--type delete_host_output() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_sync_status_input() :: #{
-%%   <<"Branch">> := string(),
-%%   <<"RepositoryLinkId">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type get_repository_sync_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_repository_links_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_repository_links_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_host_input() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ProviderEndpoint">> := string(),
-%%   <<"ProviderType">> := list(any()),
-%%   <<"Tags">> => list(tag()),
+%% update_host_input() :: #{
+%%   <<"HostArn">> := string(),
+%%   <<"ProviderEndpoint">> => string(),
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
--type create_host_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_repository_sync_definitions_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RepositorySyncDefinitions">> => list(repository_sync_definition())
-%% }
--type list_repository_sync_definitions_output() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_input() :: #{
-%%   <<"HostArnFilter">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProviderTypeFilter">> => list(any())
-%% }
--type list_connections_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_sync_configuration_input() :: #{
-%%   <<"Branch">> := string(),
-%%   <<"ConfigFile">> := string(),
-%%   <<"PublishDeploymentStatus">> => list(any()),
-%%   <<"PullRequestComment">> => list(any()),
-%%   <<"RepositoryLinkId">> := string(),
-%%   <<"ResourceName">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SyncType">> := list(any()),
-%%   <<"TriggerResourceUpdateOn">> => list(any())
-%% }
--type create_sync_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_link_input() :: #{
-%%   <<"RepositoryLinkId">> := string()
-%% }
--type delete_repository_link_input() :: #{binary() => any()}.
+-type update_host_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_host_output() :: #{
@@ -677,277 +721,233 @@
 -type update_host_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_repository_link_output() :: #{
-%%   <<"RepositoryLinkInfo">> => repository_link_info()
-%% }
--type get_repository_link_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_sync_blocker_summary_input() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"SyncType">> := list(any())
-%% }
--type get_sync_blocker_summary_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_input() :: #{
-%%   <<"ConnectionName">> := string(),
-%%   <<"HostArn">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% sync_blocker_does_not_exist_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type sync_blocker_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sync_configuration_output() :: #{
-
-%% }
--type delete_sync_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% repository_link_info() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"RepositoryLinkArn">> => string(),
-%%   <<"RepositoryLinkId">> => string(),
-%%   <<"RepositoryName">> => string()
-%% }
--type repository_link_info() :: #{binary() => any()}.
-
-%% Example:
-%% resource_sync_event() :: #{
-%%   <<"Event">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"Type">> => string()
-%% }
--type resource_sync_event() :: #{binary() => any()}.
-
-%% Example:
-%% repository_sync_event() :: #{
-%%   <<"Event">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"Type">> => string()
-%% }
--type repository_sync_event() :: #{binary() => any()}.
-
-%% Example:
-%% revision() :: #{
-%%   <<"Branch">> => string(),
-%%   <<"Directory">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"RepositoryName">> => string(),
-%%   <<"Sha">> => string()
-%% }
--type revision() :: #{binary() => any()}.
-
-%% Example:
 %% update_out_of_sync_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type update_out_of_sync_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_host_output() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ProviderEndpoint">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"Status">> => string(),
-%%   <<"VpcConfiguration">> => vpc_configuration()
+%% update_repository_link_input() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"RepositoryLinkId">> := string()
 %% }
--type get_host_output() :: #{binary() => any()}.
+-type update_repository_link_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_hosts_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_repository_link_output() :: #{
+%%   <<"RepositoryLinkInfo">> => repository_link_info()
 %% }
--type list_hosts_input() :: #{binary() => any()}.
+-type update_repository_link_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_host_input() :: #{
-%%   <<"HostArn">> := string()
+%% update_sync_blocker_input() :: #{
+%%   <<"Id">> := string(),
+%%   <<"ResolvedReason">> := string(),
+%%   <<"ResourceName">> := string(),
+%%   <<"SyncType">> := list(any())
 %% }
--type get_host_input() :: #{binary() => any()}.
+-type update_sync_blocker_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_sync_blocker_output() :: #{
+%%   <<"ParentResourceName">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"SyncBlocker">> => sync_blocker()
+%% }
+-type update_sync_blocker_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_sync_configuration_input() :: #{
+%%   <<"Branch">> => string(),
+%%   <<"ConfigFile">> => string(),
+%%   <<"PublishDeploymentStatus">> => list(any()),
+%%   <<"PullRequestComment">> => list(any()),
+%%   <<"RepositoryLinkId">> => string(),
+%%   <<"ResourceName">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SyncType">> := list(any()),
+%%   <<"TriggerResourceUpdateOn">> => list(any())
+%% }
+-type update_sync_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_sync_configuration_output() :: #{
+%%   <<"SyncConfiguration">> => sync_configuration()
+%% }
+-type update_sync_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"TlsCertificate">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
 
 -type create_connection_errors() ::
-    limit_exceeded_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    limit_exceeded_exception().
 
 -type create_host_errors() ::
     limit_exceeded_exception().
 
 -type create_repository_link_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    invalid_input_exception() | 
     internal_server_exception() | 
-    invalid_input_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type create_sync_configuration_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    invalid_input_exception() | 
     internal_server_exception() | 
-    invalid_input_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_connection_errors() ::
     resource_not_found_exception().
 
 -type delete_host_errors() ::
-    resource_not_found_exception() | 
-    resource_unavailable_exception().
+    resource_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type delete_repository_link_errors() ::
-    throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     unsupported_provider_type_exception() | 
+    throttling_exception() | 
+    sync_configuration_still_exists_exception() | 
     resource_not_found_exception() | 
-    sync_configuration_still_exists_exception().
+    invalid_input_exception() | 
+    internal_server_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_sync_configuration_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
     internal_server_exception() | 
-    invalid_input_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type get_connection_errors() ::
-    resource_not_found_exception() | 
-    resource_unavailable_exception().
+    resource_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type get_host_errors() ::
-    resource_not_found_exception() | 
-    resource_unavailable_exception().
+    resource_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type get_repository_link_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type get_repository_sync_status_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_resource_sync_status_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_sync_blocker_summary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_sync_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_connections_errors() ::
     resource_not_found_exception().
 
 -type list_repository_links_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type list_repository_sync_definitions_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sync_configurations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception().
 
 -type untag_resource_errors() ::
     resource_not_found_exception().
 
 -type update_host_errors() ::
-    resource_not_found_exception() | 
-    conflict_exception() | 
+    unsupported_operation_exception() | 
     resource_unavailable_exception() | 
-    unsupported_operation_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_repository_link_errors() ::
     update_out_of_sync_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_server_exception() | 
     conditional_check_failed_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_sync_blocker_errors() ::
-    sync_blocker_does_not_exist_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
+    sync_blocker_does_not_exist_exception() | 
+    retry_latest_commit_failed_exception() | 
     resource_not_found_exception() | 
-    retry_latest_commit_failed_exception().
+    invalid_input_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_sync_configuration_errors() ::
     update_out_of_sync_exception() | 
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

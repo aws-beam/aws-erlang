@@ -109,72 +109,23 @@
 
 
 %% Example:
-%% delete_retraining_scheduler_request() :: #{
-%%   <<"ModelName">> := string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_retraining_scheduler_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_inference_schedulers_request() :: #{
-%%   <<"InferenceSchedulerNameBeginsWith">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"NextToken">> => string(),
+%% categorical_values() :: #{
+%%   <<"NumberOfCategory">> => integer(),
 %%   <<"Status">> => list(any())
 %% }
--type list_inference_schedulers_request() :: #{binary() => any()}.
+-type categorical_values() :: #{binary() => any()}.
 
 %% Example:
-%% update_active_model_version_request() :: #{
-%%   <<"ModelName">> := string(),
-%%   <<"ModelVersion">> := float()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_active_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_input_name_configuration() :: #{
-%%   <<"ComponentTimestampDelimiter">> => string(),
-%%   <<"TimestampFormat">> => string()
-%% }
--type inference_input_name_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_models_request() :: #{
-%%   <<"DatasetNameBeginsWith">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelNameBeginsWith">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_models_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_models_response() :: #{
-%%   <<"ModelSummaries">> => list(model_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_models_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_labels_response() :: #{
-%%   <<"LabelSummaries">> => list(label_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_labels_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_label_group_response() :: #{
-%%   <<"LabelGroupArn">> => string(),
-%%   <<"LabelGroupName">> => string()
-%% }
--type create_label_group_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% count_percent() :: #{
@@ -184,93 +135,22 @@
 -type count_percent() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% inference_output_configuration() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputConfiguration">> => inference_s3_output_configuration()
-%% }
--type inference_output_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% monotonic_values() :: #{
-%%   <<"Monotonicity">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type monotonic_values() :: #{binary() => any()}.
-
-%% Example:
-%% ingestion_input_configuration() :: #{
-%%   <<"S3InputConfiguration">> => ingestion_s3_input_configuration()
-%% }
--type ingestion_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_label_request() :: #{
+%% create_dataset_request() :: #{
 %%   <<"ClientToken">> := string(),
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"Equipment">> => string(),
-%%   <<"FaultCode">> => string(),
-%%   <<"LabelGroupName">> := string(),
-%%   <<"Notes">> => string(),
-%%   <<"Rating">> := list(any()),
-%%   <<"StartTime">> := non_neg_integer()
+%%   <<"DatasetName">> := string(),
+%%   <<"DatasetSchema">> => dataset_schema(),
+%%   <<"ServerSideKmsKeyId">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type create_label_request() :: #{binary() => any()}.
+-type create_dataset_request() :: #{binary() => any()}.
 
 %% Example:
-%% model_summary() :: #{
-%%   <<"ActiveModelVersion">> => float(),
-%%   <<"ActiveModelVersionArn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
+%% create_dataset_response() :: #{
 %%   <<"DatasetArn">> => string(),
 %%   <<"DatasetName">> => string(),
-%%   <<"LatestScheduledRetrainingModelVersion">> => float(),
-%%   <<"LatestScheduledRetrainingStartTime">> => non_neg_integer(),
-%%   <<"LatestScheduledRetrainingStatus">> => list(any()),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelQuality">> => list(any()),
-%%   <<"NextScheduledRetrainingStartDate">> => non_neg_integer(),
-%%   <<"RetrainingSchedulerStatus">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
--type model_summary() :: #{binary() => any()}.
-
-%% Example:
-%% retraining_scheduler_summary() :: #{
-%%   <<"LookbackWindow">> => string(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"RetrainingFrequency">> => string(),
-%%   <<"RetrainingStartDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type retraining_scheduler_summary() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_timestamps() :: #{
-%%   <<"TotalNumberOfDuplicateTimestamps">> => integer()
-%% }
--type duplicate_timestamps() :: #{binary() => any()}.
-
-%% Example:
-%% multiple_operating_modes() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type multiple_operating_modes() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_executions_response() :: #{
-%%   <<"InferenceExecutionSummaries">> => list(inference_execution_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_inference_executions_response() :: #{binary() => any()}.
+-type create_dataset_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_inference_scheduler_request() :: #{
@@ -288,18 +168,48 @@
 -type create_inference_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_schema() :: #{
-%%   <<"InlineDataSchema">> => string()
+%% create_inference_scheduler_response() :: #{
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string(),
+%%   <<"ModelQuality">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type dataset_schema() :: #{binary() => any()}.
+-type create_inference_scheduler_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_datasets_request() :: #{
-%%   <<"DatasetNameBeginsWith">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_label_group_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"FaultCodes">> => list(string()),
+%%   <<"LabelGroupName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_datasets_request() :: #{binary() => any()}.
+-type create_label_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_label_group_response() :: #{
+%%   <<"LabelGroupArn">> => string(),
+%%   <<"LabelGroupName">> => string()
+%% }
+-type create_label_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_label_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Equipment">> => string(),
+%%   <<"FaultCode">> => string(),
+%%   <<"LabelGroupName">> := string(),
+%%   <<"Notes">> => string(),
+%%   <<"Rating">> := list(any()),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type create_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_label_response() :: #{
+%%   <<"LabelId">> => string()
+%% }
+-type create_label_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_model_request() :: #{
@@ -322,71 +232,120 @@
 -type create_model_request() :: #{binary() => any()}.
 
 %% Example:
-%% s3_object() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
+%% create_model_response() :: #{
+%%   <<"ModelArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type s3_object() :: #{binary() => any()}.
+-type create_model_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_model_request() :: #{
-%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
-%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
+%% create_retraining_scheduler_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"LookbackWindow">> := string(),
 %%   <<"ModelName">> := string(),
-%%   <<"RoleArn">> => string()
+%%   <<"PromoteMode">> => list(any()),
+%%   <<"RetrainingFrequency">> := string(),
+%%   <<"RetrainingStartDate">> => non_neg_integer()
 %% }
--type update_model_request() :: #{binary() => any()}.
+-type create_retraining_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_inference_scheduler_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataDelayOffsetInMinutes">> => float(),
-%%   <<"DataInputConfiguration">> => inference_input_configuration(),
-%%   <<"DataOutputConfiguration">> => inference_output_configuration(),
-%%   <<"DataUploadFrequency">> => list(any()),
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string(),
-%%   <<"LatestInferenceResult">> => list(any()),
+%% create_retraining_scheduler_response() :: #{
 %%   <<"ModelArn">> => string(),
 %%   <<"ModelName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"Status">> => list(any())
 %% }
--type describe_inference_scheduler_response() :: #{binary() => any()}.
+-type create_retraining_scheduler_response() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_timestamps() :: #{
-%%   <<"TotalNumberOfUnsupportedTimestamps">> => integer()
+%% data_ingestion_job_summary() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"IngestionInputConfiguration">> => ingestion_input_configuration(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type unsupported_timestamps() :: #{binary() => any()}.
+-type data_ingestion_job_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_model_request() :: #{
+%% data_pre_processing_configuration() :: #{
+%%   <<"TargetSamplingRate">> => list(any())
+%% }
+-type data_pre_processing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_summary() :: #{
+%%   <<"DuplicateTimestamps">> => duplicate_timestamps(),
+%%   <<"InsufficientSensorData">> => insufficient_sensor_data(),
+%%   <<"InvalidSensorData">> => invalid_sensor_data(),
+%%   <<"MissingSensorData">> => missing_sensor_data(),
+%%   <<"UnsupportedTimestamps">> => unsupported_timestamps()
+%% }
+-type data_quality_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_schema() :: #{
+%%   <<"InlineDataSchema">> => string()
+%% }
+-type dataset_schema() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"DatasetName">> := string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_scheduler_request() :: #{
+%%   <<"InferenceSchedulerName">> := string()
+%% }
+-type delete_inference_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_label_group_request() :: #{
+%%   <<"LabelGroupName">> := string()
+%% }
+-type delete_label_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_label_request() :: #{
+%%   <<"LabelGroupName">> := string(),
+%%   <<"LabelId">> := string()
+%% }
+-type delete_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_request() :: #{
 %%   <<"ModelName">> := string()
 %% }
--type describe_model_request() :: #{binary() => any()}.
+-type delete_model_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_model_versions_response() :: #{
-%%   <<"ModelVersionSummaries">> => list(model_version_summary()),
-%%   <<"NextToken">> => string()
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type list_model_versions_response() :: #{binary() => any()}.
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% delete_retraining_scheduler_request() :: #{
+%%   <<"ModelName">> := string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type delete_retraining_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_label_response() :: #{
-%%   <<"LabelId">> => string()
+%% describe_data_ingestion_job_request() :: #{
+%%   <<"JobId">> := string()
 %% }
--type create_label_response() :: #{binary() => any()}.
+-type describe_data_ingestion_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_ingestion_job_response() :: #{
@@ -408,593 +367,10 @@
 -type describe_data_ingestion_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% ingestion_s3_input_configuration() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPattern">> => string(),
-%%   <<"Prefix">> => string()
+%% describe_dataset_request() :: #{
+%%   <<"DatasetName">> := string()
 %% }
--type ingestion_s3_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_inference_scheduler_response() :: #{
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type stop_inference_scheduler_response() :: #{binary() => any()}.
-
-%% Example:
-%% inference_event_summary() :: #{
-%%   <<"Diagnostics">> => string(),
-%%   <<"EventDurationInSeconds">> => float(),
-%%   <<"EventEndTime">> => non_neg_integer(),
-%%   <<"EventStartTime">> => non_neg_integer(),
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string()
-%% }
--type inference_event_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_response() :: #{
-%%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"ActiveModelVersionArn">> => string(),
-%%   <<"TrainingExecutionStartTime">> => non_neg_integer(),
-%%   <<"Schema">> => string(),
-%%   <<"DatasetArn">> => string(),
-%%   <<"OffCondition">> => string(),
-%%   <<"ModelMetrics">> => string(),
-%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
-%%   <<"EvaluationDataEndTime">> => non_neg_integer(),
-%%   <<"PreviousActiveModelVersionArn">> => string(),
-%%   <<"ImportJobEndTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"DataPreProcessingConfiguration">> => data_pre_processing_configuration(),
-%%   <<"EvaluationDataStartTime">> => non_neg_integer(),
-%%   <<"SourceModelVersionArn">> => string(),
-%%   <<"ActiveModelVersion">> => float(),
-%%   <<"AccumulatedInferenceDataStartTime">> => non_neg_integer(),
-%%   <<"PriorModelMetrics">> => string(),
-%%   <<"ModelQuality">> => list(any()),
-%%   <<"PreviousModelVersionActivatedAt">> => non_neg_integer(),
-%%   <<"LatestScheduledRetrainingStartTime">> => non_neg_integer(),
-%%   <<"DatasetName">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"RetrainingSchedulerStatus">> => list(any()),
-%%   <<"ImportJobStartTime">> => non_neg_integer(),
-%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
-%%   <<"ModelArn">> => string(),
-%%   <<"FailedReason">> => string(),
-%%   <<"LatestScheduledRetrainingFailedReason">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"TrainingExecutionEndTime">> => non_neg_integer(),
-%%   <<"AccumulatedInferenceDataEndTime">> => non_neg_integer(),
-%%   <<"LatestScheduledRetrainingModelVersion">> => float(),
-%%   <<"ModelVersionActivatedAt">> => non_neg_integer(),
-%%   <<"LatestScheduledRetrainingAvailableDataInDays">> => integer(),
-%%   <<"LatestScheduledRetrainingStatus">> => list(any()),
-%%   <<"TrainingDataStartTime">> => non_neg_integer(),
-%%   <<"PreviousActiveModelVersion">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"TrainingDataEndTime">> => non_neg_integer(),
-%%   <<"NextScheduledRetrainingStartDate">> => non_neg_integer()
-%% }
--type describe_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_executions_request() :: #{
-%%   <<"DataEndTimeBefore">> => non_neg_integer(),
-%%   <<"DataStartTimeAfter">> => non_neg_integer(),
-%%   <<"InferenceSchedulerName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_inference_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% labels_input_configuration() :: #{
-%%   <<"LabelGroupName">> => string(),
-%%   <<"S3InputConfiguration">> => labels_s3_input_configuration()
-%% }
--type labels_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_label_request() :: #{
-%%   <<"LabelGroupName">> := string(),
-%%   <<"LabelId">> := string()
-%% }
--type describe_label_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_retraining_scheduler_request() :: #{
-%%   <<"ModelName">> := string()
-%% }
--type stop_retraining_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_label_group_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"FaultCodes">> => list(string()),
-%%   <<"LabelGroupName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_label_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% sensors_with_short_date_range() :: #{
-%%   <<"AffectedSensorCount">> => integer()
-%% }
--type sensors_with_short_date_range() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type dataset_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% start_retraining_scheduler_response() :: #{
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type start_retraining_scheduler_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_label_request() :: #{
-%%   <<"LabelGroupName">> := string(),
-%%   <<"LabelId">> := string()
-%% }
--type delete_label_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_retraining_scheduler_request() :: #{
-%%   <<"ModelName">> := string()
-%% }
--type describe_retraining_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_label_groups_response() :: #{
-%%   <<"LabelGroupSummaries">> => list(label_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_label_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_inference_scheduler_request() :: #{
-%%   <<"InferenceSchedulerName">> := string()
-%% }
--type stop_inference_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_scheduler_summary() :: #{
-%%   <<"DataDelayOffsetInMinutes">> => float(),
-%%   <<"DataUploadFrequency">> => list(any()),
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string(),
-%%   <<"LatestInferenceResult">> => list(any()),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type inference_scheduler_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_ingestion_jobs_request() :: #{
-%%   <<"DatasetName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_data_ingestion_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_retraining_schedulers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelNameBeginsWith">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_retraining_schedulers_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_labels_request() :: #{
-%%   <<"Equipment">> => string(),
-%%   <<"FaultCode">> => string(),
-%%   <<"IntervalEndTime">> => non_neg_integer(),
-%%   <<"IntervalStartTime">> => non_neg_integer(),
-%%   <<"LabelGroupName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_labels_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_ingestion_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type start_data_ingestion_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_events_response() :: #{
-%%   <<"InferenceEventSummaries">> => list(inference_event_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_inference_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_label_group_request() :: #{
-%%   <<"LabelGroupName">> := string()
-%% }
--type describe_label_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_retraining_scheduler_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"LookbackWindow">> := string(),
-%%   <<"ModelName">> := string(),
-%%   <<"PromoteMode">> => list(any()),
-%%   <<"RetrainingFrequency">> := string(),
-%%   <<"RetrainingStartDate">> => non_neg_integer()
-%% }
--type create_retraining_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_diagnostics_output_configuration() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputConfiguration">> => model_diagnostics_s3_output_configuration()
-%% }
--type model_diagnostics_output_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% model_diagnostics_s3_output_configuration() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Prefix">> => string()
-%% }
--type model_diagnostics_s3_output_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% inference_s3_input_configuration() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Prefix">> => string()
-%% }
--type inference_s3_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_response() :: #{
-%%   <<"ModelArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_active_model_version_response() :: #{
-%%   <<"CurrentActiveVersion">> => float(),
-%%   <<"CurrentActiveVersionArn">> => string(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"PreviousActiveVersion">> => float(),
-%%   <<"PreviousActiveVersionArn">> => string()
-%% }
--type update_active_model_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_label_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Equipment">> => string(),
-%%   <<"FaultCode">> => string(),
-%%   <<"LabelGroupArn">> => string(),
-%%   <<"LabelGroupName">> => string(),
-%%   <<"LabelId">> => string(),
-%%   <<"Notes">> => string(),
-%%   <<"Rating">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type describe_label_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_ingestion_job_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"DatasetName">> := string(),
-%%   <<"IngestionInputConfiguration">> := ingestion_input_configuration(),
-%%   <<"RoleArn">> := string()
-%% }
--type start_data_ingestion_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_ingestion_jobs_response() :: #{
-%%   <<"DataIngestionJobSummaries">> => list(data_ingestion_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_ingestion_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_label_group_request() :: #{
-%%   <<"LabelGroupName">> := string()
-%% }
--type delete_label_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_model_version_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"DatasetName">> := string(),
-%%   <<"InferenceDataImportStrategy">> => list(any()),
-%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
-%%   <<"ModelName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"SourceModelVersionArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_retraining_schedulers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RetrainingSchedulerSummaries">> => list(retraining_scheduler_summary())
-%% }
--type list_retraining_schedulers_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_inference_scheduler_response() :: #{
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type start_inference_scheduler_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_model_version_response() :: #{
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelVersion">> => float(),
-%%   <<"ModelVersionArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type import_model_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_request() :: #{
-%%   <<"ModelName">> := string()
-%% }
--type delete_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_sensor_statistics_request() :: #{
-%%   <<"DatasetName">> := string(),
-%%   <<"IngestionJobId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sensor_statistics_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_input_configuration() :: #{
-%%   <<"InferenceInputNameConfiguration">> => inference_input_name_configuration(),
-%%   <<"InputTimeZoneOffset">> => string(),
-%%   <<"S3InputConfiguration">> => inference_s3_input_configuration()
-%% }
--type inference_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_ingestion_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_data_ingestion_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% missing_complete_sensor_data() :: #{
-%%   <<"AffectedSensorCount">> => integer()
-%% }
--type missing_complete_sensor_data() :: #{binary() => any()}.
-
-%% Example:
-%% sensor_statistics_summary() :: #{
-%%   <<"CategoricalValues">> => categorical_values(),
-%%   <<"ComponentName">> => string(),
-%%   <<"DataEndTime">> => non_neg_integer(),
-%%   <<"DataExists">> => boolean(),
-%%   <<"DataStartTime">> => non_neg_integer(),
-%%   <<"DuplicateTimestamps">> => count_percent(),
-%%   <<"InvalidDateEntries">> => count_percent(),
-%%   <<"InvalidValues">> => count_percent(),
-%%   <<"LargeTimestampGaps">> => large_timestamp_gaps(),
-%%   <<"MissingValues">> => count_percent(),
-%%   <<"MonotonicValues">> => monotonic_values(),
-%%   <<"MultipleOperatingModes">> => multiple_operating_modes(),
-%%   <<"SensorName">> => string()
-%% }
--type sensor_statistics_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourcePolicy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_scheduler_request() :: #{
-%%   <<"InferenceSchedulerName">> := string()
-%% }
--type describe_inference_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% ingested_files_summary() :: #{
-%%   <<"DiscardedFiles">> => list(s3_object()),
-%%   <<"IngestedNumberOfFiles">> => integer(),
-%%   <<"TotalNumberOfFiles">> => integer()
-%% }
--type ingested_files_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_ingestion_job_summary() :: #{
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"IngestionInputConfiguration">> => ingestion_input_configuration(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type data_ingestion_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_events_request() :: #{
-%%   <<"InferenceSchedulerName">> := string(),
-%%   <<"IntervalEndTime">> := non_neg_integer(),
-%%   <<"IntervalStartTime">> := non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_inference_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_label_group_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"FaultCodes">> => list(string()),
-%%   <<"LabelGroupArn">> => string(),
-%%   <<"LabelGroupName">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type describe_label_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_summary() :: #{
-%%   <<"DuplicateTimestamps">> => duplicate_timestamps(),
-%%   <<"InsufficientSensorData">> => insufficient_sensor_data(),
-%%   <<"InvalidSensorData">> => invalid_sensor_data(),
-%%   <<"MissingSensorData">> => missing_sensor_data(),
-%%   <<"UnsupportedTimestamps">> => unsupported_timestamps()
-%% }
--type data_quality_summary() :: #{binary() => any()}.
-
-%% Example:
-%% model_version_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelQuality">> => list(any()),
-%%   <<"ModelVersion">> => float(),
-%%   <<"ModelVersionArn">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type model_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_version_response() :: #{
-%%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"ModelVersionArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"ImportedDataSizeInBytes">> => float(),
-%%   <<"TrainingExecutionStartTime">> => non_neg_integer(),
-%%   <<"AutoPromotionResult">> => list(any()),
-%%   <<"Schema">> => string(),
-%%   <<"DatasetArn">> => string(),
-%%   <<"OffCondition">> => string(),
-%%   <<"ModelMetrics">> => string(),
-%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
-%%   <<"EvaluationDataEndTime">> => non_neg_integer(),
-%%   <<"ImportJobEndTime">> => non_neg_integer(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"DataPreProcessingConfiguration">> => data_pre_processing_configuration(),
-%%   <<"EvaluationDataStartTime">> => non_neg_integer(),
-%%   <<"ModelDiagnosticsResultsObject">> => s3_object(),
-%%   <<"SourceModelVersionArn">> => string(),
-%%   <<"PriorModelMetrics">> => string(),
-%%   <<"ModelQuality">> => list(any()),
-%%   <<"DatasetName">> => string(),
-%%   <<"RetrainingAvailableDataInDays">> => integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ImportJobStartTime">> => non_neg_integer(),
-%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
-%%   <<"ModelArn">> => string(),
-%%   <<"FailedReason">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"TrainingExecutionEndTime">> => non_neg_integer(),
-%%   <<"TrainingDataStartTime">> => non_neg_integer(),
-%%   <<"AutoPromotionResultReason">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TrainingDataEndTime">> => non_neg_integer(),
-%%   <<"ModelVersion">> => float()
-%% }
--type describe_model_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_sensor_data() :: #{
-%%   <<"AffectedSensorCount">> => integer(),
-%%   <<"TotalNumberOfInvalidValues">> => integer()
-%% }
--type invalid_sensor_data() :: #{binary() => any()}.
+-type describe_dataset_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_dataset_response() :: #{
@@ -1016,61 +392,120 @@
 -type describe_dataset_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_sensor_statistics_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SensorStatisticsSummaries">> => list(sensor_statistics_summary())
-%% }
--type list_sensor_statistics_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_label_groups_request() :: #{
-%%   <<"LabelGroupNameBeginsWith">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_label_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_retraining_scheduler_response() :: #{
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_retraining_scheduler_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"DatasetName">> := string(),
-%%   <<"DatasetSchema">> => dataset_schema(),
-%%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_inference_scheduler_request() :: #{
+%% describe_inference_scheduler_request() :: #{
 %%   <<"InferenceSchedulerName">> := string()
 %% }
--type start_inference_scheduler_request() :: #{binary() => any()}.
+-type describe_inference_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_inference_scheduler_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataDelayOffsetInMinutes">> => float(),
+%%   <<"DataInputConfiguration">> => inference_input_configuration(),
+%%   <<"DataOutputConfiguration">> => inference_output_configuration(),
+%%   <<"DataUploadFrequency">> => list(any()),
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string(),
+%%   <<"LatestInferenceResult">> => list(any()),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ServerSideKmsKeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type describe_inference_scheduler_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_label_group_request() :: #{
+%%   <<"LabelGroupName">> := string()
+%% }
+-type describe_label_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_label_group_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FaultCodes">> => list(string()),
+%%   <<"LabelGroupArn">> => string(),
+%%   <<"LabelGroupName">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type describe_label_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_label_request() :: #{
+%%   <<"LabelGroupName">> := string(),
+%%   <<"LabelId">> := string()
+%% }
+-type describe_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_label_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Equipment">> => string(),
+%%   <<"FaultCode">> => string(),
+%%   <<"LabelGroupArn">> => string(),
+%%   <<"LabelGroupName">> => string(),
+%%   <<"LabelId">> => string(),
+%%   <<"Notes">> => string(),
+%%   <<"Rating">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_label_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_request() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type describe_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_response() :: #{
+%%   <<"AccumulatedInferenceDataEndTime">> => non_neg_integer(),
+%%   <<"AccumulatedInferenceDataStartTime">> => non_neg_integer(),
+%%   <<"ActiveModelVersion">> => float(),
+%%   <<"ActiveModelVersionArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataPreProcessingConfiguration">> => data_pre_processing_configuration(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"EvaluationDataEndTime">> => non_neg_integer(),
+%%   <<"EvaluationDataStartTime">> => non_neg_integer(),
+%%   <<"FailedReason">> => string(),
+%%   <<"ImportJobEndTime">> => non_neg_integer(),
+%%   <<"ImportJobStartTime">> => non_neg_integer(),
+%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"LatestScheduledRetrainingAvailableDataInDays">> => integer(),
+%%   <<"LatestScheduledRetrainingFailedReason">> => string(),
+%%   <<"LatestScheduledRetrainingModelVersion">> => float(),
+%%   <<"LatestScheduledRetrainingStartTime">> => non_neg_integer(),
+%%   <<"LatestScheduledRetrainingStatus">> => list(any()),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
+%%   <<"ModelMetrics">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelQuality">> => list(any()),
+%%   <<"ModelVersionActivatedAt">> => non_neg_integer(),
+%%   <<"NextScheduledRetrainingStartDate">> => non_neg_integer(),
+%%   <<"OffCondition">> => string(),
+%%   <<"PreviousActiveModelVersion">> => float(),
+%%   <<"PreviousActiveModelVersionArn">> => string(),
+%%   <<"PreviousModelVersionActivatedAt">> => non_neg_integer(),
+%%   <<"PriorModelMetrics">> => string(),
+%%   <<"RetrainingSchedulerStatus">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"ServerSideKmsKeyId">> => string(),
+%%   <<"SourceModelVersionArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TrainingDataEndTime">> => non_neg_integer(),
+%%   <<"TrainingDataStartTime">> => non_neg_integer(),
+%%   <<"TrainingExecutionEndTime">> => non_neg_integer(),
+%%   <<"TrainingExecutionStartTime">> => non_neg_integer()
+%% }
+-type describe_model_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_version_request() :: #{
@@ -1080,10 +515,50 @@
 -type describe_model_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% data_pre_processing_configuration() :: #{
-%%   <<"TargetSamplingRate">> => list(any())
+%% describe_model_version_response() :: #{
+%%   <<"AutoPromotionResult">> => list(any()),
+%%   <<"AutoPromotionResultReason">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataPreProcessingConfiguration">> => data_pre_processing_configuration(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"EvaluationDataEndTime">> => non_neg_integer(),
+%%   <<"EvaluationDataStartTime">> => non_neg_integer(),
+%%   <<"FailedReason">> => string(),
+%%   <<"ImportJobEndTime">> => non_neg_integer(),
+%%   <<"ImportJobStartTime">> => non_neg_integer(),
+%%   <<"ImportedDataSizeInBytes">> => float(),
+%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
+%%   <<"ModelDiagnosticsResultsObject">> => s3_object(),
+%%   <<"ModelMetrics">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelQuality">> => list(any()),
+%%   <<"ModelVersion">> => float(),
+%%   <<"ModelVersionArn">> => string(),
+%%   <<"OffCondition">> => string(),
+%%   <<"PriorModelMetrics">> => string(),
+%%   <<"RetrainingAvailableDataInDays">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"ServerSideKmsKeyId">> => string(),
+%%   <<"SourceModelVersionArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TrainingDataEndTime">> => non_neg_integer(),
+%%   <<"TrainingDataStartTime">> => non_neg_integer(),
+%%   <<"TrainingExecutionEndTime">> => non_neg_integer(),
+%%   <<"TrainingExecutionStartTime">> => non_neg_integer()
 %% }
--type data_pre_processing_configuration() :: #{binary() => any()}.
+-type describe_model_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type describe_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_resource_policy_response() :: #{
@@ -1095,28 +570,10 @@
 -type describe_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% label_group_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"LabelGroupArn">> => string(),
-%%   <<"LabelGroupName">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% describe_retraining_scheduler_request() :: #{
+%%   <<"ModelName">> := string()
 %% }
--type label_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% large_timestamp_gaps() :: #{
-%%   <<"MaxTimestampGapInDays">> => integer(),
-%%   <<"NumberOfLargeTimestampGaps">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type large_timestamp_gaps() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_sensor_data() :: #{
-%%   <<"MissingCompleteSensorData">> => missing_complete_sensor_data(),
-%%   <<"SensorsWithShortDateRange">> => sensors_with_short_date_range()
-%% }
--type insufficient_sensor_data() :: #{binary() => any()}.
+-type describe_retraining_scheduler_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_retraining_scheduler_response() :: #{
@@ -1133,32 +590,10 @@
 -type describe_retraining_scheduler_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_label_group_request() :: #{
-%%   <<"FaultCodes">> => list(string()),
-%%   <<"LabelGroupName">> := string()
+%% duplicate_timestamps() :: #{
+%%   <<"TotalNumberOfDuplicateTimestamps">> => integer()
 %% }
--type update_label_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% categorical_values() :: #{
-%%   <<"NumberOfCategory">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type categorical_values() :: #{binary() => any()}.
-
-%% Example:
-%% inference_s3_output_configuration() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Prefix">> => string()
-%% }
--type inference_s3_output_configuration() :: #{binary() => any()}.
+-type duplicate_timestamps() :: #{binary() => any()}.
 
 %% Example:
 %% import_dataset_request() :: #{
@@ -1171,46 +606,48 @@
 -type import_dataset_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% import_dataset_response() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type delete_resource_policy_request() :: #{binary() => any()}.
+-type import_dataset_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_inference_scheduler_request() :: #{
-%%   <<"InferenceSchedulerName">> := string()
+%% import_model_version_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"DatasetName">> := string(),
+%%   <<"InferenceDataImportStrategy">> => list(any()),
+%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
+%%   <<"ModelName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ServerSideKmsKeyId">> => string(),
+%%   <<"SourceModelVersionArn">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type delete_inference_scheduler_request() :: #{binary() => any()}.
+-type import_model_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_inference_scheduler_request() :: #{
-%%   <<"DataDelayOffsetInMinutes">> => float(),
-%%   <<"DataInputConfiguration">> => inference_input_configuration(),
-%%   <<"DataOutputConfiguration">> => inference_output_configuration(),
-%%   <<"DataUploadFrequency">> => list(any()),
-%%   <<"InferenceSchedulerName">> := string(),
-%%   <<"RoleArn">> => string()
+%% import_model_version_response() :: #{
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => float(),
+%%   <<"ModelVersionArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type update_inference_scheduler_request() :: #{binary() => any()}.
+-type import_model_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_request() :: #{
-%%   <<"DatasetName">> := string()
+%% inference_event_summary() :: #{
+%%   <<"Diagnostics">> => string(),
+%%   <<"EventDurationInSeconds">> => float(),
+%%   <<"EventEndTime">> => non_neg_integer(),
+%%   <<"EventStartTime">> => non_neg_integer(),
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string()
 %% }
--type describe_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dataset_request() :: #{
-%%   <<"DatasetName">> := string()
-%% }
--type delete_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_datasets_response() :: #{
-%%   <<"DatasetSummaries">> => list(dataset_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_response() :: #{binary() => any()}.
+-type inference_event_summary() :: #{binary() => any()}.
 
 %% Example:
 %% inference_execution_summary() :: #{
@@ -1232,50 +669,104 @@
 -type inference_execution_summary() :: #{binary() => any()}.
 
 %% Example:
-%% labels_s3_input_configuration() :: #{
+%% inference_input_configuration() :: #{
+%%   <<"InferenceInputNameConfiguration">> => inference_input_name_configuration(),
+%%   <<"InputTimeZoneOffset">> => string(),
+%%   <<"S3InputConfiguration">> => inference_s3_input_configuration()
+%% }
+-type inference_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% inference_input_name_configuration() :: #{
+%%   <<"ComponentTimestampDelimiter">> => string(),
+%%   <<"TimestampFormat">> => string()
+%% }
+-type inference_input_name_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% inference_output_configuration() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputConfiguration">> => inference_s3_output_configuration()
+%% }
+-type inference_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% inference_s3_input_configuration() :: #{
 %%   <<"Bucket">> => string(),
 %%   <<"Prefix">> => string()
 %% }
--type labels_s3_input_configuration() :: #{binary() => any()}.
+-type inference_s3_input_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% start_retraining_scheduler_request() :: #{
-%%   <<"ModelName">> := string()
+%% inference_s3_output_configuration() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Prefix">> => string()
 %% }
--type start_retraining_scheduler_request() :: #{binary() => any()}.
+-type inference_s3_output_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% stop_retraining_scheduler_response() :: #{
+%% inference_scheduler_summary() :: #{
+%%   <<"DataDelayOffsetInMinutes">> => float(),
+%%   <<"DataUploadFrequency">> => list(any()),
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string(),
+%%   <<"LatestInferenceResult">> => list(any()),
 %%   <<"ModelArn">> => string(),
 %%   <<"ModelName">> => string(),
 %%   <<"Status">> => list(any())
 %% }
--type stop_retraining_scheduler_response() :: #{binary() => any()}.
+-type inference_scheduler_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_inference_schedulers_response() :: #{
-%%   <<"InferenceSchedulerSummaries">> => list(inference_scheduler_summary()),
-%%   <<"NextToken">> => string()
+%% ingested_files_summary() :: #{
+%%   <<"DiscardedFiles">> => list(s3_object()),
+%%   <<"IngestedNumberOfFiles">> => integer(),
+%%   <<"TotalNumberOfFiles">> => integer()
 %% }
--type list_inference_schedulers_response() :: #{binary() => any()}.
+-type ingested_files_summary() :: #{binary() => any()}.
 
 %% Example:
-%% import_dataset_response() :: #{
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => list(any())
+%% ingestion_input_configuration() :: #{
+%%   <<"S3InputConfiguration">> => ingestion_s3_input_configuration()
 %% }
--type import_dataset_response() :: #{binary() => any()}.
+-type ingestion_input_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% create_inference_scheduler_response() :: #{
-%%   <<"InferenceSchedulerArn">> => string(),
-%%   <<"InferenceSchedulerName">> => string(),
-%%   <<"ModelQuality">> => list(any()),
-%%   <<"Status">> => list(any())
+%% ingestion_s3_input_configuration() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPattern">> => string(),
+%%   <<"Prefix">> => string()
 %% }
--type create_inference_scheduler_response() :: #{binary() => any()}.
+-type ingestion_s3_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_sensor_data() :: #{
+%%   <<"MissingCompleteSensorData">> => missing_complete_sensor_data(),
+%%   <<"SensorsWithShortDateRange">> => sensors_with_short_date_range()
+%% }
+-type insufficient_sensor_data() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sensor_data() :: #{
+%%   <<"AffectedSensorCount">> => integer(),
+%%   <<"TotalNumberOfInvalidValues">> => integer()
+%% }
+-type invalid_sensor_data() :: #{binary() => any()}.
+
+%% Example:
+%% label_group_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LabelGroupArn">> => string(),
+%%   <<"LabelGroupName">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type label_group_summary() :: #{binary() => any()}.
 
 %% Example:
 %% label_summary() :: #{
@@ -1292,27 +783,143 @@
 -type label_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_retraining_scheduler_request() :: #{
-%%   <<"LookbackWindow">> => string(),
-%%   <<"ModelName">> := string(),
-%%   <<"PromoteMode">> => list(any()),
-%%   <<"RetrainingFrequency">> => string(),
-%%   <<"RetrainingStartDate">> => non_neg_integer()
+%% labels_input_configuration() :: #{
+%%   <<"LabelGroupName">> => string(),
+%%   <<"S3InputConfiguration">> => labels_s3_input_configuration()
 %% }
--type update_retraining_scheduler_request() :: #{binary() => any()}.
+-type labels_input_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% missing_sensor_data() :: #{
-%%   <<"AffectedSensorCount">> => integer(),
-%%   <<"TotalNumberOfMissingValues">> => integer()
+%% labels_s3_input_configuration() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Prefix">> => string()
 %% }
--type missing_sensor_data() :: #{binary() => any()}.
+-type labels_s3_input_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% large_timestamp_gaps() :: #{
+%%   <<"MaxTimestampGapInDays">> => integer(),
+%%   <<"NumberOfLargeTimestampGaps">> => integer(),
+%%   <<"Status">> => list(any())
 %% }
--type describe_resource_policy_request() :: #{binary() => any()}.
+-type large_timestamp_gaps() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_ingestion_jobs_request() :: #{
+%%   <<"DatasetName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_data_ingestion_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_ingestion_jobs_response() :: #{
+%%   <<"DataIngestionJobSummaries">> => list(data_ingestion_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_ingestion_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"DatasetNameBeginsWith">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"DatasetSummaries">> => list(dataset_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_events_request() :: #{
+%%   <<"InferenceSchedulerName">> := string(),
+%%   <<"IntervalEndTime">> := non_neg_integer(),
+%%   <<"IntervalStartTime">> := non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_events_response() :: #{
+%%   <<"InferenceEventSummaries">> => list(inference_event_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_executions_request() :: #{
+%%   <<"DataEndTimeBefore">> => non_neg_integer(),
+%%   <<"DataStartTimeAfter">> => non_neg_integer(),
+%%   <<"InferenceSchedulerName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_inference_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_executions_response() :: #{
+%%   <<"InferenceExecutionSummaries">> => list(inference_execution_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_schedulers_request() :: #{
+%%   <<"InferenceSchedulerNameBeginsWith">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_inference_schedulers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_schedulers_response() :: #{
+%%   <<"InferenceSchedulerSummaries">> => list(inference_scheduler_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_schedulers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_label_groups_request() :: #{
+%%   <<"LabelGroupNameBeginsWith">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_label_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_label_groups_response() :: #{
+%%   <<"LabelGroupSummaries">> => list(label_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_label_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_labels_request() :: #{
+%%   <<"Equipment">> => string(),
+%%   <<"FaultCode">> => string(),
+%%   <<"IntervalEndTime">> => non_neg_integer(),
+%%   <<"IntervalStartTime">> => non_neg_integer(),
+%%   <<"LabelGroupName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labels_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_labels_response() :: #{
+%%   <<"LabelSummaries">> => list(label_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labels_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_versions_request() :: #{
@@ -1328,375 +935,768 @@
 %% }
 -type list_model_versions_request() :: #{binary() => any()}.
 
+%% Example:
+%% list_model_versions_response() :: #{
+%%   <<"ModelVersionSummaries">> => list(model_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_request() :: #{
+%%   <<"DatasetNameBeginsWith">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameBeginsWith">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_response() :: #{
+%%   <<"ModelSummaries">> => list(model_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_models_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_retraining_schedulers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameBeginsWith">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_retraining_schedulers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_retraining_schedulers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrainingSchedulerSummaries">> => list(retraining_scheduler_summary())
+%% }
+-type list_retraining_schedulers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sensor_statistics_request() :: #{
+%%   <<"DatasetName">> := string(),
+%%   <<"IngestionJobId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sensor_statistics_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sensor_statistics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SensorStatisticsSummaries">> => list(sensor_statistics_summary())
+%% }
+-type list_sensor_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% missing_complete_sensor_data() :: #{
+%%   <<"AffectedSensorCount">> => integer()
+%% }
+-type missing_complete_sensor_data() :: #{binary() => any()}.
+
+%% Example:
+%% missing_sensor_data() :: #{
+%%   <<"AffectedSensorCount">> => integer(),
+%%   <<"TotalNumberOfMissingValues">> => integer()
+%% }
+-type missing_sensor_data() :: #{binary() => any()}.
+
+%% Example:
+%% model_diagnostics_output_configuration() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputConfiguration">> => model_diagnostics_s3_output_configuration()
+%% }
+-type model_diagnostics_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% model_diagnostics_s3_output_configuration() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Prefix">> => string()
+%% }
+-type model_diagnostics_s3_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"ActiveModelVersion">> => float(),
+%%   <<"ActiveModelVersionArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"LatestScheduledRetrainingModelVersion">> => float(),
+%%   <<"LatestScheduledRetrainingStartTime">> => non_neg_integer(),
+%%   <<"LatestScheduledRetrainingStatus">> => list(any()),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelQuality">> => list(any()),
+%%   <<"NextScheduledRetrainingStartDate">> => non_neg_integer(),
+%%   <<"RetrainingSchedulerStatus">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_version_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelQuality">> => list(any()),
+%%   <<"ModelVersion">> => float(),
+%%   <<"ModelVersionArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type model_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monotonic_values() :: #{
+%%   <<"Monotonicity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type monotonic_values() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_operating_modes() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type multiple_operating_modes() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourcePolicy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retraining_scheduler_summary() :: #{
+%%   <<"LookbackWindow">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"RetrainingFrequency">> => string(),
+%%   <<"RetrainingStartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type retraining_scheduler_summary() :: #{binary() => any()}.
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+%% Example:
+%% sensor_statistics_summary() :: #{
+%%   <<"CategoricalValues">> => categorical_values(),
+%%   <<"ComponentName">> => string(),
+%%   <<"DataEndTime">> => non_neg_integer(),
+%%   <<"DataExists">> => boolean(),
+%%   <<"DataStartTime">> => non_neg_integer(),
+%%   <<"DuplicateTimestamps">> => count_percent(),
+%%   <<"InvalidDateEntries">> => count_percent(),
+%%   <<"InvalidValues">> => count_percent(),
+%%   <<"LargeTimestampGaps">> => large_timestamp_gaps(),
+%%   <<"MissingValues">> => count_percent(),
+%%   <<"MonotonicValues">> => monotonic_values(),
+%%   <<"MultipleOperatingModes">> => multiple_operating_modes(),
+%%   <<"SensorName">> => string()
+%% }
+-type sensor_statistics_summary() :: #{binary() => any()}.
+
+%% Example:
+%% sensors_with_short_date_range() :: #{
+%%   <<"AffectedSensorCount">> => integer()
+%% }
+-type sensors_with_short_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_ingestion_job_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"DatasetName">> := string(),
+%%   <<"IngestionInputConfiguration">> := ingestion_input_configuration(),
+%%   <<"RoleArn">> := string()
+%% }
+-type start_data_ingestion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_ingestion_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_data_ingestion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_scheduler_request() :: #{
+%%   <<"InferenceSchedulerName">> := string()
+%% }
+-type start_inference_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_scheduler_response() :: #{
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_inference_scheduler_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_retraining_scheduler_request() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type start_retraining_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_retraining_scheduler_response() :: #{
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_retraining_scheduler_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_scheduler_request() :: #{
+%%   <<"InferenceSchedulerName">> := string()
+%% }
+-type stop_inference_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_scheduler_response() :: #{
+%%   <<"InferenceSchedulerArn">> => string(),
+%%   <<"InferenceSchedulerName">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stop_inference_scheduler_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_retraining_scheduler_request() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type stop_retraining_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_retraining_scheduler_response() :: #{
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stop_retraining_scheduler_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_timestamps() :: #{
+%%   <<"TotalNumberOfUnsupportedTimestamps">> => integer()
+%% }
+-type unsupported_timestamps() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_active_model_version_request() :: #{
+%%   <<"ModelName">> := string(),
+%%   <<"ModelVersion">> := float()
+%% }
+-type update_active_model_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_active_model_version_response() :: #{
+%%   <<"CurrentActiveVersion">> => float(),
+%%   <<"CurrentActiveVersionArn">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"PreviousActiveVersion">> => float(),
+%%   <<"PreviousActiveVersionArn">> => string()
+%% }
+-type update_active_model_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_scheduler_request() :: #{
+%%   <<"DataDelayOffsetInMinutes">> => float(),
+%%   <<"DataInputConfiguration">> => inference_input_configuration(),
+%%   <<"DataOutputConfiguration">> => inference_output_configuration(),
+%%   <<"DataUploadFrequency">> => list(any()),
+%%   <<"InferenceSchedulerName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_inference_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_label_group_request() :: #{
+%%   <<"FaultCodes">> => list(string()),
+%%   <<"LabelGroupName">> := string()
+%% }
+-type update_label_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_request() :: #{
+%%   <<"LabelsInputConfiguration">> => labels_input_configuration(),
+%%   <<"ModelDiagnosticsOutputConfiguration">> => model_diagnostics_output_configuration(),
+%%   <<"ModelName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_retraining_scheduler_request() :: #{
+%%   <<"LookbackWindow">> => string(),
+%%   <<"ModelName">> := string(),
+%%   <<"PromoteMode">> => list(any()),
+%%   <<"RetrainingFrequency">> => string(),
+%%   <<"RetrainingStartDate">> => non_neg_integer()
+%% }
+-type update_retraining_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type create_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_label_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_label_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_data_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_label_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type import_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_ingestion_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_datasets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_inference_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_inference_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_inference_schedulers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_label_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_labels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_model_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_retraining_schedulers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sensor_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_data_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_active_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_inference_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_label_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_retraining_scheduler_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

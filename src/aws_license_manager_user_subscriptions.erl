@@ -47,29 +47,104 @@
 
 
 %% Example:
-%% stop_product_subscription_request() :: #{
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_directory_identity_provider() :: #{
+%%   <<"ActiveDirectorySettings">> => active_directory_settings(),
+%%   <<"ActiveDirectoryType">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"IsSharedActiveDirectory">> => [boolean()]
+%% }
+-type active_directory_identity_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_directory_settings() :: #{
+%%   <<"DomainCredentialsProvider">> => list(),
+%%   <<"DomainIpv4List">> => list(string()),
+%%   <<"DomainIpv6List">> => list(string()),
+%%   <<"DomainName">> => [string()],
+%%   <<"DomainNetworkSettings">> => domain_network_settings()
+%% }
+-type active_directory_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_request() :: #{
 %%   <<"Domain">> => [string()],
+%%   <<"IdentityProvider">> := list(),
+%%   <<"InstanceId">> := [string()],
+%%   <<"Tags">> => map(),
+%%   <<"Username">> := [string()]
+%% }
+-type associate_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_user_response() :: #{
+%%   <<"InstanceUserSummary">> => instance_user_summary()
+%% }
+-type associate_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_server_endpoint_request() :: #{
+%%   <<"IdentityProviderArn">> := string(),
+%%   <<"LicenseServerSettings">> := license_server_settings(),
+%%   <<"Tags">> => map()
+%% }
+-type create_license_server_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_server_endpoint_response() :: #{
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"LicenseServerEndpointArn">> => string()
+%% }
+-type create_license_server_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_license_server_endpoint_request() :: #{
+%%   <<"LicenseServerEndpointArn">> := string(),
+%%   <<"ServerType">> := string()
+%% }
+-type delete_license_server_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_license_server_endpoint_response() :: #{
+%%   <<"LicenseServerEndpoint">> => license_server_endpoint()
+%% }
+-type delete_license_server_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_identity_provider_request() :: #{
 %%   <<"IdentityProvider">> => list(),
-%%   <<"Product">> => [string()],
-%%   <<"ProductUserArn">> => string(),
-%%   <<"Username">> => [string()]
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"Product">> => [string()]
 %% }
--type stop_product_subscription_request() :: #{binary() => any()}.
+-type deregister_identity_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_license_server_endpoints_response() :: #{
-%%   <<"LicenseServerEndpoints">> => list(license_server_endpoint()),
-%%   <<"NextToken">> => [string()]
+%% deregister_identity_provider_response() :: #{
+%%   <<"IdentityProviderSummary">> => identity_provider_summary()
 %% }
--type list_license_server_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type deregister_identity_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -84,35 +159,52 @@
 
 
 %% Example:
-%% list_identity_providers_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
+%% disassociate_user_response() :: #{
+%%   <<"InstanceUserSummary">> => instance_user_summary()
 %% }
--type list_identity_providers_request() :: #{binary() => any()}.
+-type disassociate_user_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_license_server_endpoint_response() :: #{
+%% domain_network_settings() :: #{
+%%   <<"Subnets">> => list(string())
+%% }
+-type domain_network_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Attribute">> => [string()],
+%%   <<"Operation">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_provider_summary() :: #{
+%%   <<"FailureMessage">> => [string()],
+%%   <<"IdentityProvider">> => list(),
 %%   <<"IdentityProviderArn">> => string(),
-%%   <<"LicenseServerEndpointArn">> => string()
+%%   <<"OwnerAccountId">> => [string()],
+%%   <<"Product">> => [string()],
+%%   <<"Settings">> => settings(),
+%%   <<"Status">> => [string()]
 %% }
--type create_license_server_endpoint_response() :: #{binary() => any()}.
+-type identity_provider_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_product_subscriptions_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"IdentityProvider">> := list(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Product">> => [string()]
+%% instance_summary() :: #{
+%%   <<"IdentityProvider">> => list(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"LastStatusCheckDate">> => [string()],
+%%   <<"OwnerAccountId">> => [string()],
+%%   <<"Products">> => list([string()]()),
+%%   <<"Status">> => [string()],
+%%   <<"StatusMessage">> => [string()]
 %% }
--type list_product_subscriptions_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type instance_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -131,63 +223,135 @@
 
 
 %% Example:
-%% create_license_server_endpoint_request() :: #{
-%%   <<"IdentityProviderArn">> := string(),
-%%   <<"LicenseServerSettings">> := license_server_settings(),
-%%   <<"Tags">> => map()
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type create_license_server_endpoint_request() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_license_server_endpoint_request() :: #{
-%%   <<"LicenseServerEndpointArn">> := string(),
-%%   <<"ServerType">> := string()
+%% license_server() :: #{
+%%   <<"HealthStatus">> => string(),
+%%   <<"Ipv4Address">> => [string()],
+%%   <<"Ipv6Address">> => [string()],
+%%   <<"ProvisioningStatus">> => string()
 %% }
--type delete_license_server_endpoint_request() :: #{binary() => any()}.
+-type license_server() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_settings() :: #{
-%%   <<"AddSubnets">> => list(string()),
-%%   <<"RemoveSubnets">> => list(string()),
-%%   <<"SecurityGroupId">> => string()
+%% license_server_endpoint() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"IdentityProviderArn">> => [string()],
+%%   <<"LicenseServerEndpointArn">> => string(),
+%%   <<"LicenseServerEndpointId">> => string(),
+%%   <<"LicenseServerEndpointProvisioningStatus">> => string(),
+%%   <<"LicenseServers">> => list(license_server()),
+%%   <<"ServerEndpoint">> => server_endpoint(),
+%%   <<"ServerType">> => string(),
+%%   <<"StatusMessage">> => [string()]
 %% }
--type update_settings() :: #{binary() => any()}.
+-type license_server_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
+%% license_server_settings() :: #{
+%%   <<"ServerSettings">> => list(),
+%%   <<"ServerType">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type license_server_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% active_directory_settings() :: #{
-%%   <<"DomainCredentialsProvider">> => list(),
-%%   <<"DomainIpv4List">> => list(string()),
-%%   <<"DomainIpv6List">> => list(string()),
-%%   <<"DomainName">> => [string()],
-%%   <<"DomainNetworkSettings">> => domain_network_settings()
+%% list_identity_providers_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
 %% }
--type active_directory_settings() :: #{binary() => any()}.
+-type list_identity_providers_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% server_endpoint() :: #{
-%%   <<"Endpoint">> => [string()]
+%% list_identity_providers_response() :: #{
+%%   <<"IdentityProviderSummaries">> => list(identity_provider_summary()),
+%%   <<"NextToken">> => [string()]
 %% }
--type server_endpoint() :: #{binary() => any()}.
+-type list_identity_providers_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% deregister_identity_provider_request() :: #{
-%%   <<"IdentityProvider">> => list(),
-%%   <<"IdentityProviderArn">> => string(),
+%% list_instances_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"InstanceSummaries">> => list(instance_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_license_server_endpoints_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_license_server_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_license_server_endpoints_response() :: #{
+%%   <<"LicenseServerEndpoints">> => list(license_server_endpoint()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_license_server_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_subscriptions_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"IdentityProvider">> := list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
 %%   <<"Product">> => [string()]
 %% }
--type deregister_identity_provider_request() :: #{binary() => any()}.
+-type list_product_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_subscriptions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ProductUserSummaries">> => list(product_user_summary())
+%% }
+-type list_product_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_associations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"IdentityProvider">> := list(),
+%%   <<"InstanceId">> := [string()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_user_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -196,84 +360,6 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_user_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_identity_provider_settings_response() :: #{
-%%   <<"IdentityProviderSummary">> => identity_provider_summary()
-%% }
--type update_identity_provider_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_identity_provider_response() :: #{
-%%   <<"IdentityProviderSummary">> => identity_provider_summary()
-%% }
--type register_identity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% settings() :: #{
-%%   <<"SecurityGroupId">> => string(),
-%%   <<"Subnets">> => list(string())
-%% }
--type settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_product_subscription_response() :: #{
-%%   <<"ProductUserSummary">> => product_user_summary()
-%% }
--type stop_product_subscription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_user_response() :: #{
-%%   <<"InstanceUserSummary">> => instance_user_summary()
-%% }
--type disassociate_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_user_response() :: #{
-%%   <<"InstanceUserSummary">> => instance_user_summary()
-%% }
--type associate_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_manager_credentials_provider() :: #{
-%%   <<"SecretId">> => [string()]
-%% }
--type secrets_manager_credentials_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -292,90 +378,10 @@
 
 
 %% Example:
-%% identity_provider_summary() :: #{
-%%   <<"FailureMessage">> => [string()],
-%%   <<"IdentityProvider">> => list(),
-%%   <<"IdentityProviderArn">> => string(),
-%%   <<"OwnerAccountId">> => [string()],
-%%   <<"Product">> => [string()],
-%%   <<"Settings">> => settings(),
-%%   <<"Status">> => [string()]
+%% rds_sal_settings() :: #{
+%%   <<"RdsSalCredentialsProvider">> => list()
 %% }
--type identity_provider_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_network_settings() :: #{
-%%   <<"Subnets">> => list(string())
-%% }
--type domain_network_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instances_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Attribute">> => [string()],
-%%   <<"Operation">> => [string()],
-%%   <<"Value">> => [string()]
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_product_subscriptions_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ProductUserSummaries">> => list(product_user_summary())
-%% }
--type list_product_subscriptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instances_response() :: #{
-%%   <<"InstanceSummaries">> => list(instance_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_license_server_endpoint_response() :: #{
-%%   <<"LicenseServerEndpoint">> => license_server_endpoint()
-%% }
--type delete_license_server_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_license_server_endpoints_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_license_server_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_identity_provider_settings_request() :: #{
-%%   <<"IdentityProvider">> => list(),
-%%   <<"IdentityProviderArn">> => string(),
-%%   <<"Product">> => [string()],
-%%   <<"UpdateSettings">> := update_settings()
-%% }
--type update_identity_provider_settings_request() :: #{binary() => any()}.
+-type rds_sal_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -389,83 +395,46 @@
 
 
 %% Example:
-%% deregister_identity_provider_response() :: #{
+%% register_identity_provider_response() :: #{
 %%   <<"IdentityProviderSummary">> => identity_provider_summary()
 %% }
--type deregister_identity_provider_response() :: #{binary() => any()}.
+-type register_identity_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% license_server_endpoint() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"IdentityProviderArn">> => [string()],
-%%   <<"LicenseServerEndpointArn">> => string(),
-%%   <<"LicenseServerEndpointId">> => string(),
-%%   <<"LicenseServerEndpointProvisioningStatus">> => string(),
-%%   <<"LicenseServers">> => list(license_server()),
-%%   <<"ServerEndpoint">> => server_endpoint(),
-%%   <<"ServerType">> => string(),
-%%   <<"StatusMessage">> => [string()]
+%% secrets_manager_credentials_provider() :: #{
+%%   <<"SecretId">> => [string()]
 %% }
--type license_server_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type secrets_manager_credentials_provider() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
+%% server_endpoint() :: #{
+%%   <<"Endpoint">> => [string()]
+%% }
+-type server_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_identity_providers_response() :: #{
-%%   <<"IdentityProviderSummaries">> => list(identity_provider_summary()),
-%%   <<"NextToken">> => [string()]
+%% settings() :: #{
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"Subnets">> => list(string())
 %% }
--type list_identity_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_summary() :: #{
-%%   <<"IdentityProvider">> => list(),
-%%   <<"InstanceId">> => [string()],
-%%   <<"LastStatusCheckDate">> => [string()],
-%%   <<"OwnerAccountId">> => [string()],
-%%   <<"Products">> => list([string()]()),
-%%   <<"Status">> => [string()],
-%%   <<"StatusMessage">> => [string()]
-%% }
--type instance_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% license_server_settings() :: #{
-%%   <<"ServerSettings">> => list(),
-%%   <<"ServerType">> => string()
-%% }
--type license_server_settings() :: #{binary() => any()}.
+-type settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -487,188 +456,219 @@
 
 
 %% Example:
-%% associate_user_request() :: #{
+%% stop_product_subscription_request() :: #{
 %%   <<"Domain">> => [string()],
-%%   <<"IdentityProvider">> := list(),
-%%   <<"InstanceId">> := [string()],
-%%   <<"Tags">> => map(),
-%%   <<"Username">> := [string()]
+%%   <<"IdentityProvider">> => list(),
+%%   <<"Product">> => [string()],
+%%   <<"ProductUserArn">> => string(),
+%%   <<"Username">> => [string()]
 %% }
--type associate_user_request() :: #{binary() => any()}.
+-type stop_product_subscription_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% license_server() :: #{
-%%   <<"HealthStatus">> => string(),
-%%   <<"Ipv4Address">> => [string()],
-%%   <<"Ipv6Address">> => [string()],
-%%   <<"ProvisioningStatus">> => string()
+%% stop_product_subscription_response() :: #{
+%%   <<"ProductUserSummary">> => product_user_summary()
 %% }
--type license_server() :: #{binary() => any()}.
+-type stop_product_subscription_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_user_associations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"IdentityProvider">> := list(),
-%%   <<"InstanceId">> := [string()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type list_user_associations_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% active_directory_identity_provider() :: #{
-%%   <<"ActiveDirectorySettings">> => active_directory_settings(),
-%%   <<"ActiveDirectoryType">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"IsSharedActiveDirectory">> => [boolean()]
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type active_directory_identity_provider() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% rds_sal_settings() :: #{
-%%   <<"RdsSalCredentialsProvider">> => list()
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
 %% }
--type rds_sal_settings() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_identity_provider_settings_request() :: #{
+%%   <<"IdentityProvider">> => list(),
+%%   <<"IdentityProviderArn">> => string(),
+%%   <<"Product">> => [string()],
+%%   <<"UpdateSettings">> := update_settings()
+%% }
+-type update_identity_provider_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_identity_provider_settings_response() :: #{
+%%   <<"IdentityProviderSummary">> => identity_provider_summary()
+%% }
+-type update_identity_provider_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_settings() :: #{
+%%   <<"AddSubnets">> => list(string()),
+%%   <<"RemoveSubnets">> => list(string()),
+%%   <<"SecurityGroupId">> => string()
+%% }
+-type update_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_license_server_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_license_server_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deregister_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_identity_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_license_server_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_product_subscriptions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_user_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type register_identity_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_product_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_product_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_identity_provider_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

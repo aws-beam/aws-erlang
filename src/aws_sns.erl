@@ -121,10 +121,92 @@
 
 
 %% Example:
-%% set_sms_attributes_response() :: #{
-
+%% add_permission_input() :: #{
+%%   <<"AWSAccountId">> := list(string()),
+%%   <<"ActionName">> := list(string()),
+%%   <<"Label">> := string(),
+%%   <<"TopicArn">> := string()
 %% }
--type set_sms_attributes_response() :: #{binary() => any()}.
+-type add_permission_input() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_entry_ids_not_distinct_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_entry_ids_not_distinct_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_request_too_long_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_request_too_long_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_result_error_entry() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SenderFault">> => boolean()
+%% }
+-type batch_result_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% check_if_phone_number_is_opted_out_input() :: #{
+%%   <<"phoneNumber">> := string()
+%% }
+-type check_if_phone_number_is_opted_out_input() :: #{binary() => any()}.
+
+%% Example:
+%% check_if_phone_number_is_opted_out_response() :: #{
+%%   <<"isOptedOut">> => boolean()
+%% }
+-type check_if_phone_number_is_opted_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_access_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_subscription_input() :: #{
+%%   <<"AuthenticateOnUnsubscribe">> => string(),
+%%   <<"Token">> := string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type confirm_subscription_input() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_subscription_response() :: #{
+%%   <<"SubscriptionArn">> => string()
+%% }
+-type confirm_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_response() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type create_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_platform_application_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"Name">> := string(),
+%%   <<"Platform">> := string()
+%% }
+-type create_platform_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_platform_application_response() :: #{
+%%   <<"PlatformApplicationArn">> => string()
+%% }
+-type create_platform_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_platform_endpoint_input() :: #{
@@ -134,177 +216,6 @@
 %%   <<"Token">> := string()
 %% }
 -type create_platform_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_subscription_response() :: #{
-%%   <<"SubscriptionArn">> => string()
-%% }
--type confirm_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_origination_numbers_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number_information())
-%% }
--type list_origination_numbers_result() :: #{binary() => any()}.
-
-%% Example:
-%% phone_number_information() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Iso2CountryCode">> => string(),
-%%   <<"NumberCapabilities">> => list(list(any())()),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"RouteType">> => list(any()),
-%%   <<"Status">> => string()
-%% }
--type phone_number_information() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% platform_application_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type platform_application_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsubscribe_input() :: #{
-%%   <<"SubscriptionArn">> := string()
-%% }
--type unsubscribe_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_topic_input() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"DataProtectionPolicy">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_topic_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_opt_in_required() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_opt_in_required() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sms_sandbox_phone_number_input() :: #{
-%%   <<"PhoneNumber">> := string()
-%% }
--type delete_sms_sandbox_phone_number_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_platform_applications_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_platform_applications_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_attributes_response() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type get_subscription_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_topic_input() :: #{
-%%   <<"TopicArn">> := string()
-%% }
--type delete_topic_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_topic_attributes_input() :: #{
-%%   <<"TopicArn">> := string()
-%% }
--type get_topic_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% platform_application() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"PlatformApplicationArn">> => string()
-%% }
--type platform_application() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_platform_application_response() :: #{
-%%   <<"PlatformApplicationArn">> => string()
-%% }
--type create_platform_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% kms_throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_endpoint_attributes_input() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type get_endpoint_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_batch_entry_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_batch_entry_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscriptions_by_topic_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type list_subscriptions_by_topic_response() :: #{binary() => any()}.
-
-%% Example:
-%% message_attribute_value() :: #{
-%%   <<"BinaryValue">> => binary(),
-%%   <<"DataType">> => string(),
-%%   <<"StringValue">> => string()
-%% }
--type message_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% check_if_phone_number_is_opted_out_input() :: #{
-%%   <<"phoneNumber">> := string()
-%% }
--type check_if_phone_number_is_opted_out_input() :: #{binary() => any()}.
-
-%% Example:
-%% replay_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type replay_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_phone_numbers_opted_out_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"phoneNumbers">> => list(string())
-%% }
--type list_phone_numbers_opted_out_response() :: #{binary() => any()}.
-
-%% Example:
-%% opt_in_phone_number_response() :: #{
-
-%% }
--type opt_in_phone_number_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_sms_sandbox_phone_number_input() :: #{
@@ -320,98 +231,13 @@
 -type create_sms_sandbox_phone_number_result() :: #{binary() => any()}.
 
 %% Example:
-%% user_error_exception() :: #{
-%%   <<"message">> => string()
+%% create_topic_input() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"DataProtectionPolicy">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type user_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscriptions_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_subscriptions_input() :: #{binary() => any()}.
-
-%% Example:
-%% set_topic_attributes_input() :: #{
-%%   <<"AttributeName">> := string(),
-%%   <<"AttributeValue">> => string(),
-%%   <<"TopicArn">> := string()
-%% }
--type set_topic_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_platform_application_attributes_input() :: #{
-%%   <<"PlatformApplicationArn">> := string()
-%% }
--type get_platform_application_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_sms_sandbox_phone_numbers_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(sms_sandbox_phone_number())
-%% }
--type list_sms_sandbox_phone_numbers_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_platform_application_attributes_input() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"PlatformApplicationArn">> := string()
-%% }
--type set_platform_application_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_result_error_entry() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"SenderFault">> => boolean()
-%% }
--type batch_result_error_entry() :: #{binary() => any()}.
-
-%% Example:
-%% publish_batch_response() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()),
-%%   <<"Successful">> => list(publish_batch_result_entry())
-%% }
--type publish_batch_response() :: #{binary() => any()}.
-
-%% Example:
-%% verify_sms_sandbox_phone_number_input() :: #{
-%%   <<"OneTimePassword">> := string(),
-%%   <<"PhoneNumber">> := string()
-%% }
--type verify_sms_sandbox_phone_number_input() :: #{binary() => any()}.
-
-%% Example:
-%% publish_batch_request_entry() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"MessageAttributes">> => map(),
-%%   <<"MessageDeduplicationId">> => string(),
-%%   <<"MessageGroupId">> => string(),
-%%   <<"MessageStructure">> => string(),
-%%   <<"Subject">> => string()
-%% }
--type publish_batch_request_entry() :: #{binary() => any()}.
+-type create_topic_input() :: #{binary() => any()}.
 
 %% Example:
 %% create_topic_response() :: #{
@@ -420,177 +246,34 @@
 -type create_topic_response() :: #{binary() => any()}.
 
 %% Example:
-%% topic_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% delete_endpoint_input() :: #{
+%%   <<"EndpointArn">> := string()
 %% }
--type topic_limit_exceeded_exception() :: #{binary() => any()}.
+-type delete_endpoint_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_security_exception() :: #{
-%%   <<"message">> => string()
+%% delete_platform_application_input() :: #{
+%%   <<"PlatformApplicationArn">> := string()
 %% }
--type invalid_security_exception() :: #{binary() => any()}.
+-type delete_platform_application_input() :: #{binary() => any()}.
 
 %% Example:
-%% confirm_subscription_input() :: #{
-%%   <<"AuthenticateOnUnsubscribe">> => string(),
-%%   <<"Token">> := string(),
+%% delete_sms_sandbox_phone_number_input() :: #{
+%%   <<"PhoneNumber">> := string()
+%% }
+-type delete_sms_sandbox_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sms_sandbox_phone_number_result() :: #{
+
+%% }
+-type delete_sms_sandbox_phone_number_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_topic_input() :: #{
 %%   <<"TopicArn">> := string()
 %% }
--type confirm_subscription_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_platform_application_input() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"Name">> := string(),
-%%   <<"Platform">> := string()
-%% }
--type create_platform_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% throttled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_attributes_input() :: #{
-%%   <<"SubscriptionArn">> := string()
-%% }
--type get_subscription_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_input() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Endpoint">> => string(),
-%%   <<"Protocol">> := string(),
-%%   <<"ReturnSubscriptionArn">> => boolean(),
-%%   <<"TopicArn">> := string()
-%% }
--type subscribe_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% opted_out_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type opted_out_exception() :: #{binary() => any()}.
-
-%% Example:
-%% sms_sandbox_phone_number() :: #{
-%%   <<"PhoneNumber">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type sms_sandbox_phone_number() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscriptions_by_topic_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TopicArn">> := string()
-%% }
--type list_subscriptions_by_topic_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_sms_sandbox_phone_numbers_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sms_sandbox_phone_numbers_input() :: #{binary() => any()}.
-
-%% Example:
-%% topic() :: #{
-%%   <<"TopicArn">> => string()
-%% }
--type topic() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_endpoint_attributes_response() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type get_endpoint_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_sms_attributes_input() :: #{
-%%   <<"attributes">> => list(string())
-%% }
--type get_sms_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_topics_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Topics">> => list(topic())
-%% }
--type list_topics_response() :: #{binary() => any()}.
-
-%% Example:
-%% verification_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Status">> => string()
-%% }
--type verification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type endpoint_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_permission_input() :: #{
-%%   <<"Label">> := string(),
-%%   <<"TopicArn">> := string()
-%% }
--type remove_permission_input() :: #{binary() => any()}.
-
-%% Example:
-%% publish_batch_result_entry() :: #{
-%%   <<"Id">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type publish_batch_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_sms_sandbox_account_status_result() :: #{
-%%   <<"IsInSandbox">> => boolean()
-%% }
--type get_sms_sandbox_account_status_result() :: #{binary() => any()}.
+-type delete_topic_input() :: #{binary() => any()}.
 
 %% Example:
 %% empty_batch_request_exception() :: #{
@@ -606,22 +289,112 @@
 -type endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% kms_access_denied_exception() :: #{
+%% endpoint_disabled_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_access_denied_exception() :: #{binary() => any()}.
+-type endpoint_disabled_exception() :: #{binary() => any()}.
 
 %% Example:
-%% verify_sms_sandbox_phone_number_result() :: #{
-
-%% }
--type verify_sms_sandbox_phone_number_result() :: #{binary() => any()}.
-
-%% Example:
-%% kms_not_found_exception() :: #{
+%% filter_policy_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_not_found_exception() :: #{binary() => any()}.
+-type filter_policy_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_data_protection_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_response() :: #{
+%%   <<"DataProtectionPolicy">> => string()
+%% }
+-type get_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_attributes_input() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type get_endpoint_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_endpoint_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_platform_application_attributes_input() :: #{
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type get_platform_application_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_platform_application_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_platform_application_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_attributes_input() :: #{
+%%   <<"attributes">> => list(string())
+%% }
+-type get_sms_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_attributes_response() :: #{
+%%   <<"attributes">> => map()
+%% }
+-type get_sms_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_sandbox_account_status_input() :: #{
+
+%% }
+-type get_sms_sandbox_account_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_sandbox_account_status_result() :: #{
+%%   <<"IsInSandbox">> => boolean()
+%% }
+-type get_sms_sandbox_account_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_attributes_input() :: #{
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type get_subscription_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_subscription_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_attributes_input() :: #{
+%%   <<"TopicArn">> := string()
+%% }
+-type get_topic_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_topic_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_batch_entry_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_batch_entry_id_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -630,124 +403,72 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
-%% batch_entry_ids_not_distinct_exception() :: #{
+%% invalid_parameter_value_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type batch_entry_ids_not_distinct_exception() :: #{binary() => any()}.
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
 
 %% Example:
-%% set_sms_attributes_input() :: #{
-%%   <<"attributes">> := map()
+%% invalid_security_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type set_sms_attributes_input() :: #{binary() => any()}.
+-type invalid_security_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_platform_applications_response() :: #{
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_opt_in_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_opt_in_required() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_by_platform_application_input() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PlatformApplications">> => list(platform_application())
+%%   <<"PlatformApplicationArn">> := string()
 %% }
--type list_platform_applications_response() :: #{binary() => any()}.
+-type list_endpoints_by_platform_application_input() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
+%% list_endpoints_by_platform_application_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()),
+%%   <<"NextToken">> => string()
 %% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_subscription_attributes_input() :: #{
-%%   <<"AttributeName">> := string(),
-%%   <<"AttributeValue">> => string(),
-%%   <<"SubscriptionArn">> := string()
-%% }
--type set_subscription_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_input() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type delete_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_response() :: #{
-%%   <<"SubscriptionArn">> => string()
-%% }
--type subscribe_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% subscription() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"Protocol">> => string(),
-%%   <<"SubscriptionArn">> => string(),
-%%   <<"TopicArn">> => string()
-%% }
--type subscription() :: #{binary() => any()}.
-
-%% Example:
-%% list_phone_numbers_opted_out_input() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_phone_numbers_opted_out_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscriptions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type list_subscriptions_response() :: #{binary() => any()}.
-
-%% Example:
-%% publish_response() :: #{
-%%   <<"MessageId">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type publish_response() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% check_if_phone_number_is_opted_out_response() :: #{
-%%   <<"isOptedOut">> => boolean()
-%% }
--type check_if_phone_number_is_opted_out_response() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_access_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_access_exception() :: #{binary() => any()}.
-
-%% Example:
-%% add_permission_input() :: #{
-%%   <<"AWSAccountId">> := list(string()),
-%%   <<"ActionName">> := list(string()),
-%%   <<"Label">> := string(),
-%%   <<"TopicArn">> := string()
-%% }
--type add_permission_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_protection_policy_response() :: #{
-%%   <<"DataProtectionPolicy">> => string()
-%% }
--type get_data_protection_policy_response() :: #{binary() => any()}.
+-type list_endpoints_by_platform_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_origination_numbers_request() :: #{
@@ -757,11 +478,193 @@
 -type list_origination_numbers_request() :: #{binary() => any()}.
 
 %% Example:
-%% set_endpoint_attributes_input() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"EndpointArn">> := string()
+%% list_origination_numbers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number_information())
 %% }
--type set_endpoint_attributes_input() :: #{binary() => any()}.
+-type list_origination_numbers_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_phone_numbers_opted_out_input() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_phone_numbers_opted_out_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_phone_numbers_opted_out_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"phoneNumbers">> => list(string())
+%% }
+-type list_phone_numbers_opted_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_platform_applications_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_platform_applications_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_platform_applications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformApplications">> => list(platform_application())
+%% }
+-type list_platform_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sms_sandbox_phone_numbers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sms_sandbox_phone_numbers_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_sms_sandbox_phone_numbers_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(sms_sandbox_phone_number())
+%% }
+-type list_sms_sandbox_phone_numbers_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_by_topic_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type list_subscriptions_by_topic_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_by_topic_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type list_subscriptions_by_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscriptions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_topics_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Topics">> => list(topic())
+%% }
+-type list_topics_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_attribute_value() :: #{
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringValue">> => string()
+%% }
+-type message_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% opt_in_phone_number_input() :: #{
+%%   <<"phoneNumber">> := string()
+%% }
+-type opt_in_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% opt_in_phone_number_response() :: #{
+
+%% }
+-type opt_in_phone_number_response() :: #{binary() => any()}.
+
+%% Example:
+%% opted_out_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type opted_out_exception() :: #{binary() => any()}.
+
+%% Example:
+%% phone_number_information() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Iso2CountryCode">> => string(),
+%%   <<"NumberCapabilities">> => list(list(any())()),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"RouteType">> => list(any()),
+%%   <<"Status">> => string()
+%% }
+-type phone_number_information() :: #{binary() => any()}.
+
+%% Example:
+%% platform_application() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"PlatformApplicationArn">> => string()
+%% }
+-type platform_application() :: #{binary() => any()}.
+
+%% Example:
+%% platform_application_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_application_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_input() :: #{
+%%   <<"PublishBatchRequestEntries">> := list(publish_batch_request_entry()),
+%%   <<"TopicArn">> := string()
+%% }
+-type publish_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageStructure">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type publish_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_response() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(publish_batch_result_entry())
+%% }
+-type publish_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% publish_batch_result_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type publish_batch_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% publish_input() :: #{
@@ -778,35 +681,11 @@
 -type publish_input() :: #{binary() => any()}.
 
 %% Example:
-%% filter_policy_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% publish_response() :: #{
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
 %% }
--type filter_policy_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_response() :: #{
-%%   <<"EndpointArn">> => string()
-%% }
--type create_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoints_by_platform_application_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoints_by_platform_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_topic_attributes_response() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type get_topic_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_topics_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_topics_input() :: #{binary() => any()}.
+-type publish_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_data_protection_policy_input() :: #{
@@ -816,28 +695,72 @@
 -type put_data_protection_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% subscription_limit_exceeded_exception() :: #{
+%% remove_permission_input() :: #{
+%%   <<"Label">> := string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type remove_permission_input() :: #{binary() => any()}.
+
+%% Example:
+%% replay_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type subscription_limit_exceeded_exception() :: #{binary() => any()}.
+-type replay_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_sms_sandbox_phone_number_result() :: #{
-
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_sms_sandbox_phone_number_result() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_sms_attributes_response() :: #{
-%%   <<"attributes">> => map()
+%% set_endpoint_attributes_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"EndpointArn">> := string()
 %% }
--type get_sms_attributes_response() :: #{binary() => any()}.
+-type set_endpoint_attributes_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_sms_sandbox_account_status_input() :: #{
+%% set_platform_application_attributes_input() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"PlatformApplicationArn">> := string()
+%% }
+-type set_platform_application_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_sms_attributes_input() :: #{
+%%   <<"attributes">> := map()
+%% }
+-type set_sms_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_sms_attributes_response() :: #{
 
 %% }
--type get_sms_sandbox_account_status_input() :: #{binary() => any()}.
+-type set_sms_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_subscription_attributes_input() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type set_subscription_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_topic_attributes_input() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"TopicArn">> := string()
+%% }
+-type set_topic_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% sms_sandbox_phone_number() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type sms_sandbox_phone_number() :: #{binary() => any()}.
 
 %% Example:
 %% stale_tag_exception() :: #{
@@ -846,29 +769,74 @@
 -type stale_tag_exception() :: #{binary() => any()}.
 
 %% Example:
-%% kms_invalid_state_exception() :: #{
+%% subscribe_input() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Protocol">> := string(),
+%%   <<"ReturnSubscriptionArn">> => boolean(),
+%%   <<"TopicArn">> := string()
+%% }
+-type subscribe_input() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_response() :: #{
+%%   <<"SubscriptionArn">> => string()
+%% }
+-type subscribe_response() :: #{binary() => any()}.
+
+%% Example:
+%% subscription() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"SubscriptionArn">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
+-type subscription_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_endpoints_by_platform_application_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PlatformApplicationArn">> := string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type list_endpoints_by_platform_application_input() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% opt_in_phone_number_input() :: #{
-%%   <<"phoneNumber">> := string()
+%% tag_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type opt_in_phone_number_input() :: #{binary() => any()}.
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_platform_application_attributes_response() :: #{
-%%   <<"Attributes">> => map()
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_platform_application_attributes_response() :: #{binary() => any()}.
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_entries_in_batch_request_exception() :: #{
@@ -877,345 +845,377 @@
 -type too_many_entries_in_batch_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% internal_error_exception() :: #{
+%% topic() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type topic() :: #{binary() => any()}.
+
+%% Example:
+%% topic_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_error_exception() :: #{binary() => any()}.
+-type topic_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% batch_request_too_long_exception() :: #{
+%% unsubscribe_input() :: #{
+%%   <<"SubscriptionArn">> := string()
+%% }
+-type unsubscribe_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type batch_request_too_long_exception() :: #{binary() => any()}.
+-type user_error_exception() :: #{binary() => any()}.
 
 %% Example:
-%% publish_batch_input() :: #{
-%%   <<"PublishBatchRequestEntries">> := list(publish_batch_request_entry()),
-%%   <<"TopicArn">> := string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type publish_batch_input() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_data_protection_policy_input() :: #{
-%%   <<"ResourceArn">> := string()
+%% verification_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
 %% }
--type get_data_protection_policy_input() :: #{binary() => any()}.
+-type verification_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_platform_application_input() :: #{
-%%   <<"PlatformApplicationArn">> := string()
+%% verify_sms_sandbox_phone_number_input() :: #{
+%%   <<"OneTimePassword">> := string(),
+%%   <<"PhoneNumber">> := string()
 %% }
--type delete_platform_application_input() :: #{binary() => any()}.
+-type verify_sms_sandbox_phone_number_input() :: #{binary() => any()}.
+
+%% Example:
+%% verify_sms_sandbox_phone_number_result() :: #{
+
+%% }
+-type verify_sms_sandbox_phone_number_result() :: #{binary() => any()}.
 
 -type add_permission_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type check_if_phone_number_is_opted_out_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    throttled_exception() | 
     invalid_parameter_exception() | 
-    throttled_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type confirm_subscription_errors() ::
-    internal_error_exception() | 
     subscription_limit_exceeded_exception() | 
-    filter_policy_limit_exceeded_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    replay_limit_exceeded_exception() | 
     not_found_exception() | 
-    replay_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception().
 
 -type create_platform_application_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type create_platform_endpoint_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type create_sms_sandbox_phone_number_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    opted_out_exception() | 
+    user_error_exception() | 
     throttled_exception() | 
-    user_error_exception().
+    opted_out_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type create_topic_errors() ::
-    internal_error_exception() | 
-    stale_tag_exception() | 
-    concurrent_access_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    tag_limit_exceeded_exception() | 
-    invalid_security_exception() | 
     topic_limit_exceeded_exception() | 
-    tag_policy_exception().
+    tag_policy_exception() | 
+    tag_limit_exceeded_exception() | 
+    stale_tag_exception() | 
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception().
 
 -type delete_endpoint_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type delete_platform_application_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type delete_sms_sandbox_phone_number_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    resource_not_found_exception() | 
+    user_error_exception() | 
     throttled_exception() | 
-    user_error_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type delete_topic_errors() ::
-    internal_error_exception() | 
+    tag_policy_exception() | 
     stale_tag_exception() | 
-    concurrent_access_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     not_found_exception() | 
     invalid_state_exception() | 
-    tag_policy_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception().
 
 -type get_data_protection_policy_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     not_found_exception() | 
-    invalid_security_exception().
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type get_endpoint_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type get_platform_application_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type get_sms_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    throttled_exception() | 
     invalid_parameter_exception() | 
-    throttled_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type get_sms_sandbox_account_status_errors() ::
+    throttled_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    throttled_exception().
+    authorization_error_exception().
 
 -type get_subscription_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type get_topic_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     not_found_exception() | 
-    invalid_security_exception().
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_endpoints_by_platform_application_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_origination_numbers_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
     validation_exception() | 
+    throttled_exception() | 
     invalid_parameter_exception() | 
-    throttled_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_phone_numbers_opted_out_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    throttled_exception() | 
     invalid_parameter_exception() | 
-    throttled_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_platform_applications_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type list_sms_sandbox_phone_numbers_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_subscriptions_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type list_subscriptions_by_topic_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    concurrent_access_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    tag_policy_exception() | 
     resource_not_found_exception() | 
-    tag_policy_exception().
+    invalid_parameter_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception().
 
 -type list_topics_errors() ::
+    invalid_parameter_exception() | 
     internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception().
+    authorization_error_exception().
 
 -type opt_in_phone_number_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
+    throttled_exception() | 
     invalid_parameter_exception() | 
-    throttled_exception().
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type publish_errors() ::
-    internal_error_exception() | 
-    kms_invalid_state_exception() | 
-    authorization_error_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    endpoint_disabled_exception() | 
+    platform_application_disabled_exception() | 
     not_found_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_security_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
-    platform_application_disabled_exception() | 
-    kms_disabled_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_security_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    endpoint_disabled_exception() | 
+    authorization_error_exception().
 
 -type publish_batch_errors() ::
-    batch_request_too_long_exception() | 
-    internal_error_exception() | 
-    too_many_entries_in_batch_request_exception() | 
-    kms_invalid_state_exception() | 
-    authorization_error_exception() | 
     validation_exception() | 
-    batch_entry_ids_not_distinct_exception() | 
-    invalid_parameter_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    empty_batch_request_exception() | 
-    endpoint_disabled_exception() | 
+    too_many_entries_in_batch_request_exception() | 
+    platform_application_disabled_exception() | 
     not_found_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_security_exception() | 
-    invalid_batch_entry_id_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
-    platform_application_disabled_exception() | 
-    kms_disabled_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_security_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    invalid_batch_entry_id_exception() | 
+    internal_error_exception() | 
+    endpoint_disabled_exception() | 
+    empty_batch_request_exception() | 
+    batch_request_too_long_exception() | 
+    batch_entry_ids_not_distinct_exception() | 
+    authorization_error_exception().
 
 -type put_data_protection_policy_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception() | 
-    invalid_security_exception().
-
--type remove_permission_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception().
-
--type set_endpoint_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception().
-
--type set_platform_application_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception().
-
--type set_sms_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    throttled_exception().
-
--type set_subscription_attributes_errors() ::
-    internal_error_exception() | 
-    filter_policy_limit_exceeded_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception() | 
-    replay_limit_exceeded_exception().
-
--type set_topic_attributes_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
-    not_found_exception() | 
-    invalid_security_exception().
-
--type subscribe_errors() ::
-    internal_error_exception() | 
-    subscription_limit_exceeded_exception() | 
-    filter_policy_limit_exceeded_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     not_found_exception() | 
     invalid_security_exception() | 
-    replay_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type remove_permission_errors() ::
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type set_endpoint_attributes_errors() ::
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type set_platform_application_attributes_errors() ::
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type set_sms_attributes_errors() ::
+    throttled_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type set_subscription_attributes_errors() ::
+    replay_limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception().
+
+-type set_topic_attributes_errors() ::
+    not_found_exception() | 
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
+
+-type subscribe_errors() ::
+    subscription_limit_exceeded_exception() | 
+    replay_limit_exceeded_exception() | 
+    not_found_exception() | 
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    filter_policy_limit_exceeded_exception() | 
+    authorization_error_exception().
 
 -type tag_resource_errors() ::
-    stale_tag_exception() | 
-    concurrent_access_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    tag_policy_exception() | 
     tag_limit_exceeded_exception() | 
+    stale_tag_exception() | 
     resource_not_found_exception() | 
-    tag_policy_exception().
+    invalid_parameter_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception().
 
 -type unsubscribe_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     not_found_exception() | 
-    invalid_security_exception().
+    invalid_security_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 -type untag_resource_errors() ::
-    stale_tag_exception() | 
-    concurrent_access_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    tag_policy_exception() | 
     tag_limit_exceeded_exception() | 
+    stale_tag_exception() | 
     resource_not_found_exception() | 
-    tag_policy_exception().
+    invalid_parameter_exception() | 
+    concurrent_access_exception() | 
+    authorization_error_exception().
 
 -type verify_sms_sandbox_phone_number_errors() ::
-    internal_error_exception() | 
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
     verification_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    authorization_error_exception().
 
 %%====================================================================
 %% API

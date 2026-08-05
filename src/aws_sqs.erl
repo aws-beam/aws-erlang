@@ -103,167 +103,25 @@
 
 
 %% Example:
-%% list_queue_tags_request() :: #{
+%% add_permission_request() :: #{
+%%   <<"AWSAccountIds">> := list(string()),
+%%   <<"Actions">> := list(string()),
+%%   <<"Label">> := string(),
 %%   <<"QueueUrl">> := string()
 %% }
--type list_queue_tags_request() :: #{binary() => any()}.
+-type add_permission_request() :: #{binary() => any()}.
 
 %% Example:
-%% kms_access_denied() :: #{
+%% batch_entry_ids_not_distinct() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_access_denied() :: #{binary() => any()}.
+-type batch_entry_ids_not_distinct() :: #{binary() => any()}.
 
 %% Example:
-%% tag_queue_request() :: #{
-%%   <<"QueueUrl">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% queue_name_exists() :: #{
+%% batch_request_too_long() :: #{
 %%   <<"message">> => string()
 %% }
--type queue_name_exists() :: #{binary() => any()}.
-
-%% Example:
-%% list_queues_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueueNamePrefix">> => string()
-%% }
--type list_queues_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_queue_attributes_request() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"QueueUrl">> := string()
-%% }
--type set_queue_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_message_contents() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_message_contents() :: #{binary() => any()}.
-
-%% Example:
-%% kms_opt_in_required() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_opt_in_required() :: #{binary() => any()}.
-
-%% Example:
-%% purge_queue_in_progress() :: #{
-%%   <<"message">> => string()
-%% }
--type purge_queue_in_progress() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_attribute_name() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_attribute_name() :: #{binary() => any()}.
-
-%% Example:
-%% queue_does_not_exist() :: #{
-%%   <<"message">> => string()
-%% }
--type queue_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% receive_message_result() :: #{
-%%   <<"Messages">> => list(message())
-%% }
--type receive_message_result() :: #{binary() => any()}.
-
-%% Example:
-%% purge_queue_request() :: #{
-%%   <<"QueueUrl">> := string()
-%% }
--type purge_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_security() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_security() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_batch_request() :: #{
-%%   <<"Entries">> := list(send_message_batch_request_entry()),
-%%   <<"QueueUrl">> := string()
-%% }
--type send_message_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_batch_request() :: #{
-%%   <<"Entries">> := list(delete_message_batch_request_entry()),
-%%   <<"QueueUrl">> := string()
-%% }
--type delete_message_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_entries_in_batch_request() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_entries_in_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_request() :: #{
-%%   <<"QueueUrl">> := string(),
-%%   <<"ReceiptHandle">> := string()
-%% }
--type delete_message_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_url_request() :: #{
-%%   <<"QueueName">> := string(),
-%%   <<"QueueOwnerAWSAccountId">> => string()
-%% }
--type get_queue_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% kms_throttled() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_throttled() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_message_move_task_request() :: #{
-%%   <<"TaskHandle">> := string()
-%% }
--type cancel_message_move_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% message_attribute_value() :: #{
-%%   <<"BinaryListValues">> => list(binary()),
-%%   <<"BinaryValue">> => binary(),
-%%   <<"DataType">> => string(),
-%%   <<"StringListValues">> => list(string()),
-%%   <<"StringValue">> => string()
-%% }
--type message_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% list_message_move_tasks_result() :: #{
-%%   <<"Results">> => list(list_message_move_tasks_result_entry())
-%% }
--type list_message_move_tasks_result() :: #{binary() => any()}.
-
-%% Example:
-%% kms_disabled() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_disabled() :: #{binary() => any()}.
-
-%% Example:
-%% list_queues_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueueUrls">> => list(string())
-%% }
--type list_queues_result() :: #{binary() => any()}.
+-type batch_request_too_long() :: #{binary() => any()}.
 
 %% Example:
 %% batch_result_error_entry() :: #{
@@ -275,10 +133,80 @@
 -type batch_result_error_entry() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_message_move_task_request() :: #{
+%%   <<"TaskHandle">> := string()
+%% }
+-type cancel_message_move_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_message_move_task_result() :: #{
+%%   <<"ApproximateNumberOfMessagesMoved">> => float()
+%% }
+-type cancel_message_move_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_request() :: #{
+%%   <<"Entries">> := list(change_message_visibility_batch_request_entry()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type change_message_visibility_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ReceiptHandle">> => string(),
+%%   <<"VisibilityTimeout">> => integer()
+%% }
+-type change_message_visibility_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_result() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(change_message_visibility_batch_result_entry())
+%% }
+-type change_message_visibility_batch_result() :: #{binary() => any()}.
+
+%% Example:
 %% change_message_visibility_batch_result_entry() :: #{
 %%   <<"Id">> => string()
 %% }
 -type change_message_visibility_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"ReceiptHandle">> := string(),
+%%   <<"VisibilityTimeout">> := integer()
+%% }
+-type change_message_visibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"QueueName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_result() :: #{
+%%   <<"QueueUrl">> => string()
+%% }
+-type create_queue_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_request() :: #{
+%%   <<"Entries">> := list(delete_message_batch_request_entry()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type delete_message_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type delete_message_batch_request_entry() :: #{binary() => any()}.
 
 %% Example:
 %% delete_message_batch_result() :: #{
@@ -286,6 +214,169 @@
 %%   <<"Successful">> => list(delete_message_batch_result_entry())
 %% }
 -type delete_message_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_result_entry() :: #{
+%%   <<"Id">> => string()
+%% }
+-type delete_message_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"ReceiptHandle">> := string()
+%% }
+-type delete_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queue_request() :: #{
+%%   <<"QueueUrl">> := string()
+%% }
+-type delete_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% empty_batch_request() :: #{
+%%   <<"message">> => string()
+%% }
+-type empty_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_attributes_request() :: #{
+%%   <<"AttributeNames">> => list(list(any())()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type get_queue_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_attributes_result() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_queue_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_url_request() :: #{
+%%   <<"QueueName">> := string(),
+%%   <<"QueueOwnerAWSAccountId">> => string()
+%% }
+-type get_queue_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_url_result() :: #{
+%%   <<"QueueUrl">> => string()
+%% }
+-type get_queue_url_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_address() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_address() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_attribute_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_attribute_name() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_attribute_value() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_batch_entry_id() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_batch_entry_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_id_format() :: #{
+
+%% }
+-type invalid_id_format() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_message_contents() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_message_contents() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_security() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_key_usage() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% kms_opt_in_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_opt_in_required() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttled() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttled() :: #{binary() => any()}.
+
+%% Example:
+%% list_dead_letter_source_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type list_dead_letter_source_queues_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dead_letter_source_queues_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"queueUrls">> => list(string())
+%% }
+-type list_dead_letter_source_queues_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_message_move_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"SourceArn">> := string()
+%% }
+-type list_message_move_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_message_move_tasks_result() :: #{
+%%   <<"Results">> => list(list_message_move_tasks_result_entry())
+%% }
+-type list_message_move_tasks_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_message_move_tasks_result_entry() :: #{
@@ -302,130 +393,10 @@
 -type list_message_move_tasks_result_entry() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_operation() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_operation() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_batch_result() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()),
-%%   <<"Successful">> => list(send_message_batch_result_entry())
-%% }
--type send_message_batch_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_queue_request() :: #{
-%%   <<"QueueUrl">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_attribute_value() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% list_message_move_tasks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"SourceArn">> := string()
-%% }
--type list_message_move_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_message_move_task_result() :: #{
-%%   <<"ApproximateNumberOfMessagesMoved">> => float()
-%% }
--type cancel_message_move_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_batch_result_entry() :: #{
-%%   <<"Id">> => string(),
-%%   <<"MD5OfMessageAttributes">> => string(),
-%%   <<"MD5OfMessageBody">> => string(),
-%%   <<"MD5OfMessageSystemAttributes">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type send_message_batch_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% empty_batch_request() :: #{
-%%   <<"message">> => string()
-%% }
--type empty_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% request_throttled() :: #{
-%%   <<"message">> => string()
-%% }
--type request_throttled() :: #{binary() => any()}.
-
-%% Example:
-%% create_queue_result() :: #{
-%%   <<"QueueUrl">> => string()
-%% }
--type create_queue_result() :: #{binary() => any()}.
-
-%% Example:
-%% change_message_visibility_batch_request() :: #{
-%%   <<"Entries">> := list(change_message_visibility_batch_request_entry()),
+%% list_queue_tags_request() :: #{
 %%   <<"QueueUrl">> := string()
 %% }
--type change_message_visibility_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_batch_request_entry() :: #{
-%%   <<"DelaySeconds">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"MessageAttributes">> => map(),
-%%   <<"MessageBody">> => string(),
-%%   <<"MessageDeduplicationId">> => string(),
-%%   <<"MessageGroupId">> => string(),
-%%   <<"MessageSystemAttributes">> => map()
-%% }
--type send_message_batch_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% remove_permission_request() :: #{
-%%   <<"Label">> := string(),
-%%   <<"QueueUrl">> := string()
-%% }
--type remove_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% change_message_visibility_request() :: #{
-%%   <<"QueueUrl">> := string(),
-%%   <<"ReceiptHandle">> := string(),
-%%   <<"VisibilityTimeout">> := integer()
-%% }
--type change_message_visibility_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_result() :: #{
-%%   <<"MD5OfMessageAttributes">> => string(),
-%%   <<"MD5OfMessageBody">> => string(),
-%%   <<"MD5OfMessageSystemAttributes">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type send_message_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_queue_request() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"QueueName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_queue_request() :: #{binary() => any()}.
+-type list_queue_tags_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_queue_tags_result() :: #{
@@ -434,45 +405,99 @@
 -type list_queue_tags_result() :: #{binary() => any()}.
 
 %% Example:
-%% kms_not_found() :: #{
+%% list_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueueNamePrefix">> => string()
+%% }
+-type list_queues_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueueUrls">> => list(string())
+%% }
+-type list_queues_result() :: #{binary() => any()}.
+
+%% Example:
+%% message() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Body">> => string(),
+%%   <<"MD5OfBody">> => string(),
+%%   <<"MD5OfMessageAttributes">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageId">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type message() :: #{binary() => any()}.
+
+%% Example:
+%% message_attribute_value() :: #{
+%%   <<"BinaryListValues">> => list(binary()),
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringListValues">> => list(string()),
+%%   <<"StringValue">> => string()
+%% }
+-type message_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% message_not_inflight() :: #{
+
+%% }
+-type message_not_inflight() :: #{binary() => any()}.
+
+%% Example:
+%% message_system_attribute_value() :: #{
+%%   <<"BinaryListValues">> => list(binary()),
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringListValues">> => list(string()),
+%%   <<"StringValue">> => string()
+%% }
+-type message_system_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% over_limit() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_not_found() :: #{binary() => any()}.
+-type over_limit() :: #{binary() => any()}.
 
 %% Example:
-%% change_message_visibility_batch_request_entry() :: #{
-%%   <<"Id">> => string(),
-%%   <<"ReceiptHandle">> => string(),
-%%   <<"VisibilityTimeout">> => integer()
+%% purge_queue_in_progress() :: #{
+%%   <<"message">> => string()
 %% }
--type change_message_visibility_batch_request_entry() :: #{binary() => any()}.
+-type purge_queue_in_progress() :: #{binary() => any()}.
 
 %% Example:
-%% start_message_move_task_request() :: #{
-%%   <<"DestinationArn">> => string(),
-%%   <<"MaxNumberOfMessagesPerSecond">> => integer(),
-%%   <<"SourceArn">> := string()
-%% }
--type start_message_move_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_attributes_request() :: #{
-%%   <<"AttributeNames">> => list(list(any())()),
+%% purge_queue_request() :: #{
 %%   <<"QueueUrl">> := string()
 %% }
--type get_queue_attributes_request() :: #{binary() => any()}.
+-type purge_queue_request() :: #{binary() => any()}.
 
 %% Example:
-%% kms_invalid_state() :: #{
+%% queue_deleted_recently() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_invalid_state() :: #{binary() => any()}.
+-type queue_deleted_recently() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_id_format() :: #{
-
+%% queue_does_not_exist() :: #{
+%%   <<"message">> => string()
 %% }
--type invalid_id_format() :: #{binary() => any()}.
+-type queue_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% queue_name_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type queue_name_exists() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_handle_is_invalid() :: #{
+%%   <<"message">> => string()
+%% }
+-type receipt_handle_is_invalid() :: #{binary() => any()}.
 
 %% Example:
 %% receive_message_request() :: #{
@@ -488,57 +513,66 @@
 -type receive_message_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_message_batch_result_entry() :: #{
-%%   <<"Id">> => string()
+%% receive_message_result() :: #{
+%%   <<"Messages">> => list(message())
 %% }
--type delete_message_batch_result_entry() :: #{binary() => any()}.
+-type receive_message_result() :: #{binary() => any()}.
 
 %% Example:
-%% message_system_attribute_value() :: #{
-%%   <<"BinaryListValues">> => list(binary()),
-%%   <<"BinaryValue">> => binary(),
-%%   <<"DataType">> => string(),
-%%   <<"StringListValues">> => list(string()),
-%%   <<"StringValue">> => string()
+%% remove_permission_request() :: #{
+%%   <<"Label">> := string(),
+%%   <<"QueueUrl">> := string()
 %% }
--type message_system_attribute_value() :: #{binary() => any()}.
+-type remove_permission_request() :: #{binary() => any()}.
 
 %% Example:
-%% queue_deleted_recently() :: #{
+%% request_throttled() :: #{
 %%   <<"message">> => string()
 %% }
--type queue_deleted_recently() :: #{binary() => any()}.
+-type request_throttled() :: #{binary() => any()}.
 
 %% Example:
-%% start_message_move_task_result() :: #{
-%%   <<"TaskHandle">> => string()
-%% }
--type start_message_move_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_dead_letter_source_queues_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"queueUrls">> => list(string())
-%% }
--type list_dead_letter_source_queues_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_batch_entry_id() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_batch_entry_id() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% batch_entry_ids_not_distinct() :: #{
-%%   <<"message">> => string()
+%% send_message_batch_request() :: #{
+%%   <<"Entries">> := list(send_message_batch_request_entry()),
+%%   <<"QueueUrl">> := string()
 %% }
--type batch_entry_ids_not_distinct() :: #{binary() => any()}.
+-type send_message_batch_request() :: #{binary() => any()}.
 
 %% Example:
-%% kms_invalid_key_usage() :: #{
-%%   <<"message">> => string()
+%% send_message_batch_request_entry() :: #{
+%%   <<"DelaySeconds">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageBody">> => string(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageSystemAttributes">> => map()
 %% }
--type kms_invalid_key_usage() :: #{binary() => any()}.
+-type send_message_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_result() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(send_message_batch_result_entry())
+%% }
+-type send_message_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_result_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MD5OfMessageAttributes">> => string(),
+%%   <<"MD5OfMessageBody">> => string(),
+%%   <<"MD5OfMessageSystemAttributes">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type send_message_batch_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% send_message_request() :: #{
@@ -553,304 +587,270 @@
 -type send_message_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_queue_request() :: #{
-%%   <<"QueueUrl">> := string()
-%% }
--type delete_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% message_not_inflight() :: #{
-
-%% }
--type message_not_inflight() :: #{binary() => any()}.
-
-%% Example:
-%% over_limit() :: #{
-%%   <<"message">> => string()
-%% }
--type over_limit() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_url_result() :: #{
-%%   <<"QueueUrl">> => string()
-%% }
--type get_queue_url_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_request_too_long() :: #{
-%%   <<"message">> => string()
-%% }
--type batch_request_too_long() :: #{binary() => any()}.
-
-%% Example:
-%% change_message_visibility_batch_result() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()),
-%%   <<"Successful">> => list(change_message_visibility_batch_result_entry())
-%% }
--type change_message_visibility_batch_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_address() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_address() :: #{binary() => any()}.
-
-%% Example:
-%% list_dead_letter_source_queues_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueueUrl">> := string()
-%% }
--type list_dead_letter_source_queues_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_message_batch_request_entry() :: #{
-%%   <<"Id">> => string(),
-%%   <<"ReceiptHandle">> => string()
-%% }
--type delete_message_batch_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_attributes_result() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type get_queue_attributes_result() :: #{binary() => any()}.
-
-%% Example:
-%% receipt_handle_is_invalid() :: #{
-%%   <<"message">> => string()
-%% }
--type receipt_handle_is_invalid() :: #{binary() => any()}.
-
-%% Example:
-%% add_permission_request() :: #{
-%%   <<"AWSAccountIds">> := list(string()),
-%%   <<"Actions">> := list(string()),
-%%   <<"Label">> := string(),
-%%   <<"QueueUrl">> := string()
-%% }
--type add_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% message() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Body">> => string(),
-%%   <<"MD5OfBody">> => string(),
+%% send_message_result() :: #{
 %%   <<"MD5OfMessageAttributes">> => string(),
-%%   <<"MessageAttributes">> => map(),
+%%   <<"MD5OfMessageBody">> => string(),
+%%   <<"MD5OfMessageSystemAttributes">> => string(),
 %%   <<"MessageId">> => string(),
-%%   <<"ReceiptHandle">> => string()
+%%   <<"SequenceNumber">> => string()
 %% }
--type message() :: #{binary() => any()}.
+-type send_message_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_queue_attributes_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type set_queue_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_message_move_task_request() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"MaxNumberOfMessagesPerSecond">> => integer(),
+%%   <<"SourceArn">> := string()
+%% }
+-type start_message_move_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_message_move_task_result() :: #{
+%%   <<"TaskHandle">> => string()
+%% }
+-type start_message_move_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag_queue_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_entries_in_batch_request() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_entries_in_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_operation() :: #{binary() => any()}.
+
+%% Example:
+%% untag_queue_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_queue_request() :: #{binary() => any()}.
 
 -type add_permission_errors() ::
-    invalid_address() | 
-    over_limit() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
+    over_limit() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type cancel_message_move_task_errors() ::
-    invalid_address() | 
-    request_throttled() | 
-    resource_not_found_exception() | 
     unsupported_operation() | 
-    invalid_security().
+    resource_not_found_exception() | 
+    request_throttled() | 
+    invalid_security() | 
+    invalid_address().
 
 -type change_message_visibility_errors() ::
-    receipt_handle_is_invalid() | 
-    invalid_address() | 
-    message_not_inflight() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    receipt_handle_is_invalid() | 
+    queue_does_not_exist() | 
+    message_not_inflight() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type change_message_visibility_batch_errors() ::
-    invalid_address() | 
-    batch_entry_ids_not_distinct() | 
-    invalid_batch_entry_id() | 
-    request_throttled() | 
-    empty_batch_request() | 
     unsupported_operation() | 
     too_many_entries_in_batch_request() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_batch_entry_id() | 
+    invalid_address() | 
+    empty_batch_request() | 
+    batch_entry_ids_not_distinct().
 
 -type create_queue_errors() ::
-    invalid_address() | 
-    queue_deleted_recently() | 
-    request_throttled() | 
-    invalid_attribute_value() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_name_exists() | 
+    queue_deleted_recently() | 
     invalid_security() | 
+    invalid_attribute_value() | 
     invalid_attribute_name() | 
-    queue_name_exists().
+    invalid_address().
 
 -type delete_message_errors() ::
-    receipt_handle_is_invalid() | 
-    invalid_address() | 
-    invalid_id_format() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    receipt_handle_is_invalid() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_id_format() | 
+    invalid_address().
 
 -type delete_message_batch_errors() ::
-    invalid_address() | 
-    batch_entry_ids_not_distinct() | 
-    invalid_batch_entry_id() | 
-    request_throttled() | 
-    empty_batch_request() | 
     unsupported_operation() | 
     too_many_entries_in_batch_request() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_batch_entry_id() | 
+    invalid_address() | 
+    empty_batch_request() | 
+    batch_entry_ids_not_distinct().
 
 -type delete_queue_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type get_queue_attributes_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
-    invalid_attribute_name().
+    invalid_security() | 
+    invalid_attribute_name() | 
+    invalid_address().
 
 -type get_queue_url_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type list_dead_letter_source_queues_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type list_message_move_tasks_errors() ::
-    invalid_address() | 
-    request_throttled() | 
-    resource_not_found_exception() | 
     unsupported_operation() | 
-    invalid_security().
+    resource_not_found_exception() | 
+    request_throttled() | 
+    invalid_security() | 
+    invalid_address().
 
 -type list_queue_tags_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type list_queues_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
-    invalid_security().
+    request_throttled() | 
+    invalid_security() | 
+    invalid_address().
 
 -type purge_queue_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
-    purge_queue_in_progress().
+    purge_queue_in_progress() | 
+    invalid_security() | 
+    invalid_address().
 
 -type receive_message_errors() ::
-    invalid_address() | 
-    over_limit() | 
-    kms_invalid_key_usage() | 
-    kms_invalid_state() | 
-    kms_not_found() | 
-    request_throttled() | 
     unsupported_operation() | 
-    kms_disabled() | 
-    kms_throttled() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
+    over_limit() | 
+    kms_throttled() | 
     kms_opt_in_required() | 
-    kms_access_denied().
+    kms_not_found() | 
+    kms_invalid_state() | 
+    kms_invalid_key_usage() | 
+    kms_disabled() | 
+    kms_access_denied() | 
+    invalid_security() | 
+    invalid_address().
 
 -type remove_permission_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type send_message_errors() ::
-    invalid_address() | 
-    kms_invalid_key_usage() | 
-    kms_invalid_state() | 
-    kms_not_found() | 
-    request_throttled() | 
     unsupported_operation() | 
-    kms_disabled() | 
-    kms_throttled() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
+    kms_throttled() | 
     kms_opt_in_required() | 
+    kms_not_found() | 
+    kms_invalid_state() | 
+    kms_invalid_key_usage() | 
+    kms_disabled() | 
+    kms_access_denied() | 
+    invalid_security() | 
     invalid_message_contents() | 
-    kms_access_denied().
+    invalid_address().
 
 -type send_message_batch_errors() ::
-    invalid_address() | 
-    batch_request_too_long() | 
-    kms_invalid_key_usage() | 
-    batch_entry_ids_not_distinct() | 
-    invalid_batch_entry_id() | 
-    kms_invalid_state() | 
-    kms_not_found() | 
-    request_throttled() | 
-    empty_batch_request() | 
     unsupported_operation() | 
-    kms_disabled() | 
-    kms_throttled() | 
     too_many_entries_in_batch_request() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
+    kms_throttled() | 
     kms_opt_in_required() | 
-    kms_access_denied().
+    kms_not_found() | 
+    kms_invalid_state() | 
+    kms_invalid_key_usage() | 
+    kms_disabled() | 
+    kms_access_denied() | 
+    invalid_security() | 
+    invalid_batch_entry_id() | 
+    invalid_address() | 
+    empty_batch_request() | 
+    batch_request_too_long() | 
+    batch_entry_ids_not_distinct().
 
 -type set_queue_attributes_errors() ::
-    invalid_address() | 
-    over_limit() | 
-    request_throttled() | 
-    invalid_attribute_value() | 
     unsupported_operation() | 
-    invalid_security() | 
+    request_throttled() | 
     queue_does_not_exist() | 
-    invalid_attribute_name().
+    over_limit() | 
+    invalid_security() | 
+    invalid_attribute_value() | 
+    invalid_attribute_name() | 
+    invalid_address().
 
 -type start_message_move_task_errors() ::
-    invalid_address() | 
-    request_throttled() | 
-    resource_not_found_exception() | 
     unsupported_operation() | 
-    invalid_security().
+    resource_not_found_exception() | 
+    request_throttled() | 
+    invalid_security() | 
+    invalid_address().
 
 -type tag_queue_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 -type untag_queue_errors() ::
-    invalid_address() | 
-    request_throttled() | 
     unsupported_operation() | 
+    request_throttled() | 
+    queue_does_not_exist() | 
     invalid_security() | 
-    queue_does_not_exist().
+    invalid_address().
 
 %%====================================================================
 %% API

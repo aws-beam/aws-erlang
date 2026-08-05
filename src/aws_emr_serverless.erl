@@ -86,67 +86,193 @@
 
 
 %% Example:
-%% get_job_run_response() :: #{
-%%   <<"jobRun">> := job_run()
-%% }
--type get_job_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_configuration_input() :: #{
-%%   <<"applicationLevelDigestResolution">> => [boolean()],
-%%   <<"imageUri">> => string()
-%% }
--type image_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_resource_config() :: #{
-%%   <<"cpu">> => string(),
-%%   <<"disk">> => string(),
-%%   <<"diskType">> => string(),
-%%   <<"memory">> => string()
-%% }
--type worker_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
+%% application() :: #{
 %%   <<"applicationId">> => string(),
+%%   <<"architecture">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"autoStartConfiguration">> => auto_start_config(),
+%%   <<"autoStopConfiguration">> => auto_stop_config(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"executionRoleArn">> => string(),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration(),
+%%   <<"imageConfiguration">> => image_configuration(),
+%%   <<"initialCapacity">> => map(),
+%%   <<"interactiveConfiguration">> => interactive_configuration(),
+%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
+%%   <<"maximumCapacity">> => maximum_allowed_resources(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
-%%   <<"sessionId">> => string(),
+%%   <<"runtimeConfiguration">> => list(configuration()),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"state">> => string(),
 %%   <<"stateDetails">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"workerTypeSpecifications">> => map()
+%% }
+-type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"type">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type session_summary() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_monitoring_configuration() :: #{
+%% auto_start_config() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type auto_start_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_stop_config() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"idleTimeoutMinutes">> => [integer()]
+%% }
+-type auto_stop_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_run_request() :: #{
+%%   <<"shutdownGracePeriodInSeconds">> => integer()
+%% }
+-type cancel_job_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_run_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"jobRunId">> := string()
+%% }
+-type cancel_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logging_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
 %%   <<"encryptionKeyArn">> => string(),
-%%   <<"logUri">> => string()
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"logTypes">> => map()
 %% }
--type s3_monitoring_configuration() :: #{binary() => any()}.
+-type cloud_watch_logging_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_session_response() :: #{
-%%   <<"session">> => session()
+%% configuration() :: #{
+%%   <<"classification">> => string(),
+%%   <<"configurations">> => list(configuration()),
+%%   <<"properties">> => map()
 %% }
--type get_session_response() :: #{binary() => any()}.
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_overrides() :: #{
+%%   <<"applicationConfiguration">> => list(configuration()),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration()
+%% }
+-type configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"autoStartConfiguration">> => auto_start_config(),
+%%   <<"autoStopConfiguration">> => auto_stop_config(),
+%%   <<"clientToken">> := string(),
+%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
+%%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
+%%   <<"imageConfiguration">> => image_configuration_input(),
+%%   <<"initialCapacity">> => map(),
+%%   <<"interactiveConfiguration">> => interactive_configuration(),
+%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
+%%   <<"maximumCapacity">> => maximum_allowed_resources(),
+%%   <<"monitoringConfiguration">> => monitoring_configuration(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"releaseLabel">> := string(),
+%%   <<"runtimeConfiguration">> => list(configuration()),
+%%   <<"schedulerConfiguration">> => scheduler_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string(),
+%%   <<"workerTypeSpecifications">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"arn">> := string(),
+%%   <<"name">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+
+%% Example:
+%% disk_encryption_configuration() :: #{
+%%   <<"encryptionContext">> => map(),
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type disk_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+
+%% Example:
+%% get_application_response() :: #{
+%%   <<"application">> := application()
+%% }
+-type get_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dashboard_for_job_run_request() :: #{
+%%   <<"accessSystemProfileLogs">> => [boolean()],
+%%   <<"attempt">> => integer()
+%% }
+-type get_dashboard_for_job_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dashboard_for_job_run_response() :: #{
+%%   <<"url">> => string()
+%% }
+-type get_dashboard_for_job_run_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -157,48 +283,29 @@
 
 
 %% Example:
-%% resource_utilization() :: #{
-%%   <<"memoryGBHour">> => [float()],
-%%   <<"storageGBHour">> => [float()],
-%%   <<"vCPUHour">> => [float()]
+%% get_job_run_response() :: #{
+%%   <<"jobRun">> := job_run()
 %% }
--type resource_utilization() :: #{binary() => any()}.
+-type get_job_run_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_job_run_attempts_response() :: #{
-%%   <<"jobRunAttempts">> => list(job_run_attempt_summary()),
-%%   <<"nextToken">> => string()
+%% get_resource_dashboard_request() :: #{
+%%   <<"resourceId">> := string(),
+%%   <<"resourceType">> := string()
 %% }
--type list_job_run_attempts_response() :: #{binary() => any()}.
+-type get_resource_dashboard_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_job_run_attempts_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% get_resource_dashboard_response() :: #{
+%%   <<"url">> => string()
 %% }
--type list_job_run_attempts_request() :: #{binary() => any()}.
-
+-type get_resource_dashboard_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_session_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"configurationOverrides">> => session_configuration_overrides(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"idleTimeoutMinutes">> => float(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type start_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% initial_capacity_config() :: #{
-%%   <<"workerConfiguration">> => worker_resource_config(),
-%%   <<"workerCount">> => float()
-%% }
--type initial_capacity_config() :: #{binary() => any()}.
+%% get_session_endpoint_request() :: #{}
+-type get_session_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -210,6 +317,91 @@
 %%   <<"sessionId">> => string()
 %% }
 -type get_session_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"session">> => session()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hive() :: #{
+%%   <<"initQueryFile">> => string(),
+%%   <<"parameters">> => string(),
+%%   <<"query">> => string()
+%% }
+-type hive() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_configuration_input() :: #{
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
+%% }
+-type identity_center_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_configuration() :: #{
+%%   <<"applicationLevelDigestResolution">> => [boolean()],
+%%   <<"imageUri">> => string(),
+%%   <<"resolvedImageDigest">> => string()
+%% }
+-type image_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_configuration_input() :: #{
+%%   <<"applicationLevelDigestResolution">> => [boolean()],
+%%   <<"imageUri">> => string()
+%% }
+-type image_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% initial_capacity_config() :: #{
+%%   <<"workerConfiguration">> => worker_resource_config(),
+%%   <<"workerCount">> => float()
+%% }
+-type initial_capacity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% interactive_configuration() :: #{
+%%   <<"livyEndpointEnabled">> => [boolean()],
+%%   <<"sessionEnabled">> => [boolean()],
+%%   <<"studioEnabled">> => [boolean()]
+%% }
+-type interactive_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_level_cost_allocation_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type job_level_cost_allocation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -247,9 +439,34 @@
 %% }
 -type job_run() :: #{binary() => any()}.
 
+
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% job_run_attempt_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"attempt">> => integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"jobCreatedAt">> => non_neg_integer(),
+%%   <<"mode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type job_run_attempt_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_execution_iam_policy() :: #{
+%%   <<"policy">> => string(),
+%%   <<"policyArns">> => list(string())
+%% }
+-type job_run_execution_iam_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -275,6 +492,39 @@
 
 
 %% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(string())
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> := list(application_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_run_attempts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_run_attempts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_run_attempts_response() :: #{
+%%   <<"jobRunAttempts">> => list(job_run_attempt_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_run_attempts_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_job_runs_request() :: #{
 %%   <<"createdAtAfter">> => non_neg_integer(),
 %%   <<"createdAtBefore">> => non_neg_integer(),
@@ -285,9 +535,51 @@
 %% }
 -type list_job_runs_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_session_endpoint_request() :: #{}
--type get_session_endpoint_request() :: #{}.
+%% list_job_runs_response() :: #{
+%%   <<"jobRuns">> := list(job_run_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"createdAtAfter">> => non_neg_integer(),
+%%   <<"createdAtBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"states">> => list(string())
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_summary())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_persistence_monitoring_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"encryptionKeyArn">> => string()
+%% }
+-type managed_persistence_monitoring_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -297,51 +589,6 @@
 %%   <<"memory">> => string()
 %% }
 -type maximum_allowed_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_level_cost_allocation_configuration() :: #{
-%%   <<"enabled">> => [boolean()]
-%% }
--type job_level_cost_allocation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"classification">> => string(),
-%%   <<"configurations">> => list(configuration()),
-%%   <<"properties">> => map()
-%% }
--type configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% disk_encryption_configuration() :: #{
-%%   <<"encryptionContext">> => map(),
-%%   <<"encryptionKeyArn">> => string()
-%% }
--type disk_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_run_attempt_summary() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"attempt">> => integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"executionRole">> => string(),
-%%   <<"id">> => string(),
-%%   <<"jobCreatedAt">> => non_neg_integer(),
-%%   <<"mode">> => string(),
-%%   <<"name">> => string(),
-%%   <<"releaseLabel">> => string(),
-%%   <<"state">> => string(),
-%%   <<"stateDetails">> => string(),
-%%   <<"type">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type job_run_attempt_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -355,95 +602,11 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% network_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_center_configuration_input() :: #{
-%%   <<"identityCenterInstanceArn">> => string(),
-%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
-%% }
--type identity_center_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_configuration_overrides() :: #{
-%%   <<"runtimeConfiguration">> => list(configuration())
-%% }
--type session_configuration_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_start_config() :: #{
-%%   <<"enabled">> => [boolean()]
-%% }
--type auto_start_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
-
-%% Example:
-%% auto_stop_config() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"idleTimeoutMinutes">> => [integer()]
-%% }
--type auto_stop_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_type_specification() :: #{
-%%   <<"imageConfiguration">> => image_configuration()
-%% }
--type worker_type_specification() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_request() :: #{}
--type terminate_session_request() :: #{}.
-
-
-%% Example:
-%% job_run_execution_iam_policy() :: #{
-%%   <<"policy">> => string(),
-%%   <<"policyArns">> => list(string())
-%% }
--type job_run_execution_iam_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_session_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type terminate_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_summary())
-%% }
--type list_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_submit() :: #{
-%%   <<"entryPoint">> => string(),
-%%   <<"entryPointArguments">> => list(string()),
-%%   <<"sparkSubmitParameters">> => string()
-%% }
--type spark_submit() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
+-type network_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -461,27 +624,36 @@
 
 
 %% Example:
-%% start_job_run_response() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"arn">> := string(),
-%%   <<"jobRunId">> := string()
+%% resource_utilization() :: #{
+%%   <<"memoryGBHour">> => [float()],
+%%   <<"storageGBHour">> => [float()],
+%%   <<"vCPUHour">> => [float()]
 %% }
--type start_job_run_response() :: #{binary() => any()}.
+-type resource_utilization() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_job_run_response() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"jobRunId">> := string()
+%% retry_policy() :: #{
+%%   <<"maxAttempts">> => integer(),
+%%   <<"maxFailedAttemptsPerHour">> => [integer()]
 %% }
--type cancel_job_run_response() :: #{binary() => any()}.
+-type retry_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_dashboard_for_job_run_response() :: #{
-%%   <<"url">> => string()
+%% s3_monitoring_configuration() :: #{
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"logUri">> => string()
 %% }
--type get_dashboard_for_job_run_response() :: #{binary() => any()}.
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduler_configuration() :: #{
+%%   <<"maxConcurrentRuns">> => [integer()],
+%%   <<"queueTimeoutMinutes">> => [integer()]
+%% }
+-type scheduler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -489,102 +661,6 @@
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_application_request() :: #{}
--type stop_application_request() :: #{}.
-
-
-%% Example:
-%% list_job_runs_response() :: #{
-%%   <<"jobRuns">> := list(job_run_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% application() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"architecture">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"autoStartConfiguration">> => auto_start_config(),
-%%   <<"autoStopConfiguration">> => auto_stop_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
-%%   <<"identityCenterConfiguration">> => identity_center_configuration(),
-%%   <<"imageConfiguration">> => image_configuration(),
-%%   <<"initialCapacity">> => map(),
-%%   <<"interactiveConfiguration">> => interactive_configuration(),
-%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
-%%   <<"maximumCapacity">> => maximum_allowed_resources(),
-%%   <<"monitoringConfiguration">> => monitoring_configuration(),
-%%   <<"name">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"releaseLabel">> => string(),
-%%   <<"runtimeConfiguration">> => list(configuration()),
-%%   <<"schedulerConfiguration">> => scheduler_configuration(),
-%%   <<"state">> => string(),
-%%   <<"stateDetails">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"workerTypeSpecifications">> => map()
-%% }
--type application() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"autoStartConfiguration">> => auto_start_config(),
-%%   <<"autoStopConfiguration">> => auto_stop_config(),
-%%   <<"clientToken">> := string(),
-%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
-%%   <<"identityCenterConfiguration">> => identity_center_configuration_input(),
-%%   <<"imageConfiguration">> => image_configuration_input(),
-%%   <<"initialCapacity">> => map(),
-%%   <<"interactiveConfiguration">> => interactive_configuration(),
-%%   <<"jobLevelCostAllocationConfiguration">> => job_level_cost_allocation_configuration(),
-%%   <<"maximumCapacity">> => maximum_allowed_resources(),
-%%   <<"monitoringConfiguration">> => monitoring_configuration(),
-%%   <<"name">> => string(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"releaseLabel">> := string(),
-%%   <<"runtimeConfiguration">> => list(configuration()),
-%%   <<"schedulerConfiguration">> => scheduler_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string(),
-%%   <<"workerTypeSpecifications">> => map()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"createdAtAfter">> => non_neg_integer(),
-%%   <<"createdAtBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"states">> => list(string())
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_response() :: #{
-%%   <<"applicationId">> := string(),
-%%   <<"arn">> := string(),
-%%   <<"name">> => string()
-%% }
--type create_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -615,16 +691,40 @@
 
 
 %% Example:
-%% interactive_configuration() :: #{
-%%   <<"livyEndpointEnabled">> => [boolean()],
-%%   <<"sessionEnabled">> => [boolean()],
-%%   <<"studioEnabled">> => [boolean()]
+%% session_configuration_overrides() :: #{
+%%   <<"runtimeConfiguration">> => list(configuration())
 %% }
--type interactive_configuration() :: #{binary() => any()}.
+-type session_configuration_overrides() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_application_response() :: #{}
--type delete_application_response() :: #{}.
+%% session_summary() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"releaseLabel">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"stateDetails">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_submit() :: #{
+%%   <<"entryPoint">> => string(),
+%%   <<"entryPointArguments">> => list(string()),
+%%   <<"sparkSubmitParameters">> => string()
+%% }
+-type spark_submit() :: #{binary() => any()}.
+
+%% Example:
+%% start_application_request() :: #{}
+-type start_application_request() :: #{}.
 
 %% Example:
 %% start_application_response() :: #{}
@@ -632,19 +732,100 @@
 
 
 %% Example:
-%% worker_type_specification_input() :: #{
-%%   <<"imageConfiguration">> => image_configuration_input()
+%% start_job_run_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => configuration_overrides(),
+%%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"jobDriver">> => list(),
+%%   <<"mode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"retryPolicy">> => retry_policy(),
+%%   <<"tags">> => map()
 %% }
--type worker_type_specification_input() :: #{binary() => any()}.
+-type start_job_run_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% hive() :: #{
-%%   <<"initQueryFile">> => string(),
-%%   <<"parameters">> => string(),
-%%   <<"query">> => string()
+%% start_job_run_response() :: #{
+%%   <<"applicationId">> := string(),
+%%   <<"arn">> := string(),
+%%   <<"jobRunId">> := string()
 %% }
--type hive() :: #{binary() => any()}.
+-type start_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_session_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"configurationOverrides">> => session_configuration_overrides(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"idleTimeoutMinutes">> => float(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type start_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_application_request() :: #{}
+-type stop_application_request() :: #{}.
+
+%% Example:
+%% stop_application_response() :: #{}
+-type stop_application_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% terminate_session_request() :: #{}
+-type terminate_session_request() :: #{}.
+
+
+%% Example:
+%% terminate_session_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type terminate_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% total_resource_utilization() :: #{
+%%   <<"memoryGBHour">> => [float()],
+%%   <<"storageGBHour">> => [float()],
+%%   <<"vCPUHour">> => [float()]
+%% }
+-type total_resource_utilization() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -678,261 +859,80 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduler_configuration() :: #{
-%%   <<"maxConcurrentRuns">> => [integer()],
-%%   <<"queueTimeoutMinutes">> => [integer()]
-%% }
--type scheduler_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% start_application_request() :: #{}
--type start_application_request() :: #{}.
-
-
-%% Example:
-%% start_job_run_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"configurationOverrides">> => configuration_overrides(),
-%%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"executionTimeoutMinutes">> => float(),
-%%   <<"jobDriver">> => list(),
-%%   <<"mode">> => string(),
-%%   <<"name">> => string(),
-%%   <<"retryPolicy">> => retry_policy(),
-%%   <<"tags">> => map()
-%% }
--type start_job_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_response() :: #{
-%%   <<"application">> := application()
-%% }
--type get_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"states">> => list(string())
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_session_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type start_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_application_response() :: #{}
--type stop_application_response() :: #{}.
-
-
-%% Example:
-%% get_resource_dashboard_response() :: #{
-%%   <<"url">> => string()
-%% }
--type get_resource_dashboard_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_dashboard_for_job_run_request() :: #{
-%%   <<"accessSystemProfileLogs">> => [boolean()],
-%%   <<"attempt">> => integer()
-%% }
--type get_dashboard_for_job_run_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
 
 %% Example:
-%% identity_center_configuration() :: #{
-%%   <<"identityCenterApplicationArn">> => string(),
-%%   <<"identityCenterInstanceArn">> => string(),
-%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
+%% worker_resource_config() :: #{
+%%   <<"cpu">> => string(),
+%%   <<"disk">> => string(),
+%%   <<"diskType">> => string(),
+%%   <<"memory">> => string()
 %% }
--type identity_center_configuration() :: #{binary() => any()}.
+-type worker_resource_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_resource_dashboard_request() :: #{
-%%   <<"resourceId">> := string(),
-%%   <<"resourceType">> := string()
+%% worker_type_specification() :: #{
+%%   <<"imageConfiguration">> => image_configuration()
 %% }
--type get_resource_dashboard_request() :: #{binary() => any()}.
+-type worker_type_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% total_resource_utilization() :: #{
-%%   <<"memoryGBHour">> => [float()],
-%%   <<"storageGBHour">> => [float()],
-%%   <<"vCPUHour">> => [float()]
+%% worker_type_specification_input() :: #{
+%%   <<"imageConfiguration">> => image_configuration_input()
 %% }
--type total_resource_utilization() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_overrides() :: #{
-%%   <<"applicationConfiguration">> => list(configuration()),
-%%   <<"diskEncryptionConfiguration">> => disk_encryption_configuration(),
-%%   <<"monitoringConfiguration">> => monitoring_configuration()
-%% }
--type configuration_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"releaseLabel">> => string(),
-%%   <<"state">> => string(),
-%%   <<"stateDetails">> => string(),
-%%   <<"type">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type application_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"applications">> := list(application_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_persistence_monitoring_configuration() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"encryptionKeyArn">> => string()
-%% }
--type managed_persistence_monitoring_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_run_request() :: #{
-%%   <<"shutdownGracePeriodInSeconds">> => integer()
-%% }
--type cancel_job_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_configuration() :: #{
-%%   <<"applicationLevelDigestResolution">> => [boolean()],
-%%   <<"imageUri">> => string(),
-%%   <<"resolvedImageDigest">> => string()
-%% }
--type image_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logging_configuration() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamNamePrefix">> => string(),
-%%   <<"logTypes">> => map()
-%% }
--type cloud_watch_logging_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_policy() :: #{
-%%   <<"maxAttempts">> => integer(),
-%%   <<"maxFailedAttemptsPerHour">> => [integer()]
-%% }
--type retry_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
+-type worker_type_specification_input() :: #{binary() => any()}.
 
 -type cancel_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type create_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_dashboard_for_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_resource_dashboard_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_session_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_session_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_applications_errors() ::
     validation_exception() | 
@@ -940,8 +940,8 @@
 
 -type list_job_run_attempts_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_job_runs_errors() ::
     validation_exception() | 
@@ -949,57 +949,57 @@
 
 -type list_sessions_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_job_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_session_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type terminate_session_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -144,54 +144,129 @@
 
 
 %% Example:
-%% image_scan_findings_summary() :: #{
-%%   <<"findingSeverityCounts">> => map(),
-%%   <<"imageScanCompletedAt">> => non_neg_integer(),
-%%   <<"vulnerabilitySourceUpdatedAt">> => non_neg_integer()
+%% attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type image_scan_findings_summary() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
 
 %% Example:
-%% get_repository_policy_request() :: #{
+%% authorization_data() :: #{
+%%   <<"authorizationToken">> => string(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"proxyEndpoint">> => string()
+%% }
+-type authorization_data() :: #{binary() => any()}.
+
+%% Example:
+%% aws_ecr_container_image_details() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"author">> => string(),
+%%   <<"imageHash">> => string(),
+%%   <<"imageTags">> => list(string()),
+%%   <<"inUseCount">> => float(),
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"pushedAt">> => non_neg_integer(),
+%%   <<"registry">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type aws_ecr_container_image_details() :: #{binary() => any()}.
+
+%% Example:
+%% batch_check_layer_availability_request() :: #{
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
--type get_repository_policy_request() :: #{binary() => any()}.
+-type batch_check_layer_availability_request() :: #{binary() => any()}.
 
 %% Example:
-%% upload_not_found_exception() :: #{
+%% batch_check_layer_availability_response() :: #{
+%%   <<"failures">> => list(layer_failure()),
+%%   <<"layers">> => list(layer())
+%% }
+-type batch_check_layer_availability_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_request() :: #{
+%%   <<"imageIds">> := list(image_identifier()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_response() :: #{
+%%   <<"failures">> => list(image_failure()),
+%%   <<"imageIds">> => list(image_identifier())
+%% }
+-type batch_delete_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_image_request() :: #{
+%%   <<"acceptedMediaTypes">> => list(string()),
+%%   <<"imageIds">> := list(image_identifier()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_get_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_image_response() :: #{
+%%   <<"failures">> => list(image_failure()),
+%%   <<"images">> => list(image())
+%% }
+-type batch_get_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_repository_scanning_configuration_request() :: #{
+%%   <<"repositoryNames">> := list(string())
+%% }
+-type batch_get_repository_scanning_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_repository_scanning_configuration_response() :: #{
+%%   <<"failures">> => list(repository_scanning_configuration_failure()),
+%%   <<"scanningConfigurations">> => list(repository_scanning_configuration())
+%% }
+-type batch_get_repository_scanning_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% blocked_by_organization_policy_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type upload_not_found_exception() :: #{binary() => any()}.
+-type blocked_by_organization_policy_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_repository_response() :: #{
-%%   <<"repository">> => repository()
-%% }
--type create_repository_response() :: #{binary() => any()}.
-
-%% Example:
-%% signing_rule() :: #{
-%%   <<"repositoryFilters">> => list(signing_repository_filter()),
-%%   <<"signingProfileArn">> => string()
-%% }
--type signing_rule() :: #{binary() => any()}.
-
-%% Example:
-%% image_replication_status() :: #{
-%%   <<"failureCode">> => string(),
-%%   <<"region">> => string(),
+%% complete_layer_upload_request() :: #{
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"repositoryName">> := string(),
+%%   <<"uploadId">> := string()
 %% }
--type image_replication_status() :: #{binary() => any()}.
+-type complete_layer_upload_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_registry_scanning_configuration_request() :: #{
-%%   <<"rules">> => list(registry_scanning_rule()),
-%%   <<"scanType">> => list(any())
+%% complete_layer_upload_response() :: #{
+%%   <<"layerDigest">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
 %% }
--type put_registry_scanning_configuration_request() :: #{binary() => any()}.
+-type complete_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_pull_through_cache_rule_request() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"upstreamRegistry">> => list(any()),
+%%   <<"upstreamRegistryUrl">> := string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type create_pull_through_cache_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_pull_through_cache_rule_response() :: #{
@@ -205,151 +280,6 @@
 %%   <<"upstreamRepositoryPrefix">> => string()
 %% }
 -type create_pull_through_cache_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKey">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% template_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type template_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_digest_does_not_match_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_digest_does_not_match_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_image_tag_mutability_response() :: #{
-%%   <<"imageTagMutability">> => list(any()),
-%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type put_image_tag_mutability_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_registry_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string()
-%% }
--type put_registry_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_preview_in_progress_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type lifecycle_policy_preview_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_image_referrers_request() :: #{
-%%   <<"filter">> => list_image_referrers_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"subjectId">> := subject_identifier()
-%% }
--type list_image_referrers_request() :: #{binary() => any()}.
-
-%% Example:
-%% exclusion_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type exclusion_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_download_url_for_layer_response() :: #{
-%%   <<"downloadUrl">> => string(),
-%%   <<"layerDigest">> => string()
-%% }
--type get_download_url_for_layer_response() :: #{binary() => any()}.
-
-%% Example:
-%% remediation() :: #{
-%%   <<"recommendation">> => recommendation()
-%% }
--type remediation() :: #{binary() => any()}.
-
-%% Example:
-%% image_scanning_configuration() :: #{
-%%   <<"scanOnPush">> => boolean()
-%% }
--type image_scanning_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_repository_creation_template_response() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryCreationTemplate">> => repository_creation_template()
-%% }
--type update_repository_creation_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_setting_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_account_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% layer_failure() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"layerDigest">> => string()
-%% }
--type layer_failure() :: #{binary() => any()}.
-
-%% Example:
-%% image_signing_status() :: #{
-%%   <<"failureCode">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"signingProfileArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type image_signing_status() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_tag_mutability_exclusion_filter() :: #{
-%%   <<"filter">> => string(),
-%%   <<"filterType">> => list(any())
-%% }
--type image_tag_mutability_exclusion_filter() :: #{binary() => any()}.
-
-%% Example:
-%% image_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_signing_configuration_request() :: #{
-%%   <<"signingConfiguration">> := signing_configuration()
-%% }
--type put_signing_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_repository_creation_template_request() :: #{
@@ -367,6 +297,233 @@
 -type create_repository_creation_template_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_repository_creation_template_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%% }
+-type create_repository_creation_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_request() :: #{
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_response() :: #{
+%%   <<"repository">> => repository()
+%% }
+-type create_repository_response() :: #{binary() => any()}.
+
+%% Example:
+%% cvss_score() :: #{
+%%   <<"baseScore">> => float(),
+%%   <<"scoringVector">> => string(),
+%%   <<"source">> => string(),
+%%   <<"version">> => string()
+%% }
+-type cvss_score() :: #{binary() => any()}.
+
+%% Example:
+%% cvss_score_adjustment() :: #{
+%%   <<"metric">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type cvss_score_adjustment() :: #{binary() => any()}.
+
+%% Example:
+%% cvss_score_details() :: #{
+%%   <<"adjustments">> => list(cvss_score_adjustment()),
+%%   <<"score">> => float(),
+%%   <<"scoreSource">> => string(),
+%%   <<"scoringVector">> => string(),
+%%   <<"version">> => string()
+%% }
+-type cvss_score_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_response() :: #{
+%%   <<"lastEvaluatedAt">> => non_neg_integer(),
+%%   <<"lifecyclePolicyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type delete_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pull_through_cache_rule_request() :: #{
+%%   <<"ecrRepositoryPrefix">> := string(),
+%%   <<"registryId">> => string()
+%% }
+-type delete_pull_through_cache_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pull_through_cache_rule_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type delete_pull_through_cache_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_policy_request() :: #{
+
+%% }
+-type delete_registry_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type delete_registry_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_creation_template_request() :: #{
+%%   <<"prefix">> := string()
+%% }
+-type delete_repository_creation_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_creation_template_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%% }
+-type delete_repository_creation_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type delete_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_response() :: #{
+%%   <<"repository">> => repository()
+%% }
+-type delete_repository_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signing_configuration_request() :: #{
+
+%% }
+-type delete_signing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signing_configuration_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"signingConfiguration">> => signing_configuration()
+%% }
+-type delete_signing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_pull_time_update_exclusion_request() :: #{
+%%   <<"principalArn">> := string()
+%% }
+-type deregister_pull_time_update_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_pull_time_update_exclusion_response() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type deregister_pull_time_update_exclusion_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_replication_status_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_image_replication_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_replication_status_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"replicationStatuses">> => list(image_replication_status()),
+%%   <<"repositoryName">> => string()
+%% }
+-type describe_image_replication_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_scan_findings_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_image_scan_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_scan_findings_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"imageScanFindings">> => image_scan_findings(),
+%%   <<"imageScanStatus">> => image_scan_status(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type describe_image_scan_findings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_signing_status_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_image_signing_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_signing_status_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"signingStatuses">> => list(image_signing_status())
+%% }
+-type describe_image_signing_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_images_filter() :: #{
+%%   <<"imageStatus">> => list(any()),
+%%   <<"tagStatus">> => list(any())
+%% }
+-type describe_images_filter() :: #{binary() => any()}.
+
+%% Example:
 %% describe_images_request() :: #{
 %%   <<"filter">> => describe_images_filter(),
 %%   <<"imageIds">> => list(image_identifier()),
@@ -378,203 +535,40 @@
 -type describe_images_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_account_setting_response() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type put_account_setting_response() :: #{binary() => any()}.
-
-%% Example:
-%% scan_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type scan_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_scan_status() :: #{
-%%   <<"description">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type image_scan_status() :: #{binary() => any()}.
-
-%% Example:
-%% set_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type set_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% initiate_layer_upload_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type initiate_layer_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_registry_scanning_configuration_response() :: #{
-%%   <<"registryScanningConfiguration">> => registry_scanning_configuration()
-%% }
--type put_registry_scanning_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_through_cache_rule_request() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> := string(),
-%%   <<"registryId">> => string()
-%% }
--type update_pull_through_cache_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_check_layer_availability_response() :: #{
-%%   <<"failures">> => list(layer_failure()),
-%%   <<"layers">> => list(layer())
-%% }
--type batch_check_layer_availability_response() :: #{binary() => any()}.
-
-%% Example:
-%% layers_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layers_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_configuration_for_repository_creation_template() :: #{
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKey">> => string()
-%% }
--type encryption_configuration_for_repository_creation_template() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_policy_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_repository_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% image_scan_findings() :: #{
-%%   <<"enhancedFindings">> => list(enhanced_image_scan_finding()),
-%%   <<"findingSeverityCounts">> => map(),
-%%   <<"findings">> => list(image_scan_finding()),
-%%   <<"imageScanCompletedAt">> => non_neg_integer(),
-%%   <<"vulnerabilitySourceUpdatedAt">> => non_neg_integer()
-%% }
--type image_scan_findings() :: #{binary() => any()}.
-
-%% Example:
-%% start_image_scan_request() :: #{
-%%   <<"imageId">> := image_identifier(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type start_image_scan_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_not_empty_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_not_empty_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_creation_template_request() :: #{
-%%   <<"prefix">> := string()
-%% }
--type delete_repository_creation_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_policy_request() :: #{
-
-%% }
--type delete_registry_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_filter() :: #{
-%%   <<"filter">> => string(),
-%%   <<"filterType">> => list(any())
-%% }
--type repository_filter() :: #{binary() => any()}.
-
-%% Example:
-%% registry_policy_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type registry_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_image_scanning_configuration_response() :: #{
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type put_image_scanning_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_image_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_image_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_policy_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% blocked_by_organization_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type blocked_by_organization_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type get_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% layer_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layer_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% registry_scanning_configuration() :: #{
-%%   <<"rules">> => list(registry_scanning_rule()),
-%%   <<"scanType">> => list(any())
-%% }
--type registry_scanning_configuration() :: #{binary() => any()}.
-
-%% Example:
 %% describe_images_response() :: #{
 %%   <<"imageDetails">> => list(image_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_images_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pull_through_cache_rules_request() :: #{
+%%   <<"ecrRepositoryPrefixes">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type describe_pull_through_cache_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pull_through_cache_rules_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullThroughCacheRules">> => list(pull_through_cache_rule())
+%% }
+-type describe_pull_through_cache_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_registry_request() :: #{
+
+%% }
+-type describe_registry_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_registry_response() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"replicationConfiguration">> => replication_configuration()
+%% }
+-type describe_registry_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_repositories_request() :: #{
@@ -586,78 +580,47 @@
 -type describe_repositories_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_image_request() :: #{
-%%   <<"imageDigest">> => string(),
-%%   <<"imageManifest">> := string(),
-%%   <<"imageManifestMediaType">> => string(),
-%%   <<"imageTag">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
+%% describe_repositories_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository())
 %% }
--type put_image_request() :: #{binary() => any()}.
+-type describe_repositories_response() :: #{binary() => any()}.
 
 %% Example:
-%% lifecycle_policy_preview_not_found_exception() :: #{
+%% describe_repository_creation_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefixes">> => list(string())
+%% }
+-type describe_repository_creation_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repository_creation_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryCreationTemplates">> => list(repository_creation_template())
+%% }
+-type describe_repository_creation_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% empty_upload_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type lifecycle_policy_preview_not_found_exception() :: #{binary() => any()}.
+-type empty_upload_exception() :: #{binary() => any()}.
 
 %% Example:
-%% complete_layer_upload_request() :: #{
-%%   <<"layerDigests">> := list(string()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"uploadId">> := string()
+%% encryption_configuration() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKey">> => string()
 %% }
--type complete_layer_upload_request() :: #{binary() => any()}.
+-type encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% unable_to_get_upstream_image_exception() :: #{
-%%   <<"message">> => string()
+%% encryption_configuration_for_repository_creation_template() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKey">> => string()
 %% }
--type unable_to_get_upstream_image_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_repository_policy_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"policyText">> := string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type set_repository_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_policy_request() :: #{
-
-%% }
--type get_registry_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_image_scanning_configuration_request() :: #{
-%%   <<"imageScanningConfiguration">> := image_scanning_configuration(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type put_image_scanning_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_preview_filter() :: #{
-%%   <<"tagStatus">> => list(any())
-%% }
--type lifecycle_policy_preview_filter() :: #{binary() => any()}.
-
-%% Example:
-%% unable_to_list_upstream_image_referrers_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unable_to_list_upstream_image_referrers_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_setting_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"value">> := string()
-%% }
--type put_account_setting_request() :: #{binary() => any()}.
+-type encryption_configuration_for_repository_creation_template() :: #{binary() => any()}.
 
 %% Example:
 %% enhanced_image_scan_finding() :: #{
@@ -682,23 +645,67 @@
 -type enhanced_image_scan_finding() :: #{binary() => any()}.
 
 %% Example:
-%% list_image_referrers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"referrers">> => list(image_referrer())
-%% }
--type list_image_referrers_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_archived_exception() :: #{
+%% exclusion_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type image_archived_exception() :: #{binary() => any()}.
+-type exclusion_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% signing_configuration() :: #{
-%%   <<"rules">> => list(signing_rule())
+%% exclusion_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type signing_configuration() :: #{binary() => any()}.
+-type exclusion_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_setting_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_setting_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type get_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_request() :: #{
+%%   <<"registryIds">> => list(string())
+%% }
+-type get_authorization_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_response() :: #{
+%%   <<"authorizationData">> => list(authorization_data())
+%% }
+-type get_authorization_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_download_url_for_layer_request() :: #{
+%%   <<"layerDigest">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_download_url_for_layer_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_download_url_for_layer_response() :: #{
+%%   <<"downloadUrl">> => string(),
+%%   <<"layerDigest">> => string()
+%% }
+-type get_download_url_for_layer_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_preview_request() :: #{
+%%   <<"filter">> => lifecycle_policy_preview_filter(),
+%%   <<"imageIds">> => list(image_identifier()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_lifecycle_policy_preview_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_lifecycle_policy_preview_response() :: #{
@@ -713,392 +720,39 @@
 -type get_lifecycle_policy_preview_response() :: #{binary() => any()}.
 
 %% Example:
-%% template_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% get_lifecycle_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
 %% }
--type template_not_found_exception() :: #{binary() => any()}.
+-type get_lifecycle_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% lifecycle_policy_rule_action() :: #{
-%%   <<"targetStorageClass">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type lifecycle_policy_rule_action() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_response() :: #{
+%% get_lifecycle_policy_response() :: #{
 %%   <<"lastEvaluatedAt">> => non_neg_integer(),
 %%   <<"lifecyclePolicyText">> => string(),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string()
 %% }
--type delete_lifecycle_policy_response() :: #{binary() => any()}.
+-type get_lifecycle_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_image_request() :: #{
-%%   <<"imageIds">> := list(image_identifier()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
+%% get_registry_policy_request() :: #{
+
 %% }
--type batch_delete_image_request() :: #{binary() => any()}.
+-type get_registry_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_lifecycle_policy_request() :: #{
-%%   <<"lifecyclePolicyText">> := string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type put_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% complete_layer_upload_response() :: #{
-%%   <<"layerDigest">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type complete_layer_upload_response() :: #{binary() => any()}.
-
-%% Example:
-%% repository_creation_template() :: #{
-%%   <<"appliedFor">> => list(list(any())()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
-%%   <<"imageTagMutability">> => list(any()),
-%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
-%%   <<"lifecyclePolicy">> => string(),
-%%   <<"prefix">> => string(),
-%%   <<"repositoryPolicy">> => string(),
-%%   <<"resourceTags">> => list(tag()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type repository_creation_template() :: #{binary() => any()}.
-
-%% Example:
-%% replication_configuration() :: #{
-%%   <<"rules">> => list(replication_rule())
-%% }
--type replication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% image_failure() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"imageId">> => image_identifier()
-%% }
--type image_failure() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type lifecycle_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_layer_part_exception() :: #{
-%%   <<"lastValidByteReceived">> => float(),
-%%   <<"message">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type invalid_layer_part_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_signing_configuration_response() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"signingConfiguration">> => signing_configuration()
-%% }
--type get_signing_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_pull_through_cache_rule_request() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> := string(),
-%%   <<"registryId">> => string(),
-%%   <<"upstreamRegistry">> => list(any()),
-%%   <<"upstreamRegistryUrl">> := string(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type create_pull_through_cache_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% image_tag_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_tag_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_image_response() :: #{
-%%   <<"image">> => image()
-%% }
--type put_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% pull_through_cache_rule_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_through_cache_rule_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% replication_destination() :: #{
-%%   <<"region">> => string(),
-%%   <<"registryId">> => string()
-%% }
--type replication_destination() :: #{binary() => any()}.
-
-%% Example:
-%% validate_pull_through_cache_rule_request() :: #{
-%%   <<"ecrRepositoryPrefix">> := string(),
-%%   <<"registryId">> => string()
-%% }
--type validate_pull_through_cache_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_lifecycle_policy_preview_request() :: #{
-%%   <<"filter">> => lifecycle_policy_preview_filter(),
-%%   <<"imageIds">> => list(image_identifier()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_lifecycle_policy_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pull_time_update_exclusions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pullTimeUpdateExclusions">> => list(string())
-%% }
--type list_pull_time_update_exclusions_response() :: #{binary() => any()}.
-
-%% Example:
-%% repository() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"imageTagMutability">> => list(any()),
-%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryArn">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"repositoryUri">> => string()
-%% }
--type repository() :: #{binary() => any()}.
-
-%% Example:
-%% list_images_request() :: #{
-%%   <<"filter">> => list_images_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type list_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"text">> => string(),
-%%   <<"url">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_repository_request() :: #{binary() => any()}.
-
-%% Example:
-%% transitioning_image_total_count() :: #{
-%%   <<"imageTotalCount">> => integer(),
-%%   <<"targetStorageClass">> => list(any())
-%% }
--type transitioning_image_total_count() :: #{binary() => any()}.
-
-%% Example:
-%% layer() :: #{
-%%   <<"layerAvailability">> => list(any()),
-%%   <<"layerDigest">> => string(),
-%%   <<"layerSize">> => float(),
-%%   <<"mediaType">> => string()
-%% }
--type layer() :: #{binary() => any()}.
-
-%% Example:
-%% list_images_filter() :: #{
-%%   <<"imageStatus">> => list(any()),
-%%   <<"tagStatus">> => list(any())
-%% }
--type list_images_filter() :: #{binary() => any()}.
-
-%% Example:
-%% cvss_score_details() :: #{
-%%   <<"adjustments">> => list(cvss_score_adjustment()),
-%%   <<"score">> => float(),
-%%   <<"scoreSource">> => string(),
-%%   <<"scoringVector">> => string(),
-%%   <<"version">> => string()
-%% }
--type cvss_score_details() :: #{binary() => any()}.
-
-%% Example:
-%% layer_part_too_small_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layer_part_too_small_exception() :: #{binary() => any()}.
-
-%% Example:
-%% referenced_images_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type referenced_images_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% vulnerable_package() :: #{
-%%   <<"arch">> => string(),
-%%   <<"epoch">> => integer(),
-%%   <<"filePath">> => string(),
-%%   <<"fixedInVersion">> => string(),
-%%   <<"name">> => string(),
-%%   <<"packageManager">> => string(),
-%%   <<"release">> => string(),
-%%   <<"sourceLayerHash">> => string(),
-%%   <<"version">> => string()
-%% }
--type vulnerable_package() :: #{binary() => any()}.
-
-%% Example:
-%% register_pull_time_update_exclusion_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"principalArn">> => string()
-%% }
--type register_pull_time_update_exclusion_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% cvss_score_adjustment() :: #{
-%%   <<"metric">> => string(),
-%%   <<"reason">> => string()
-%% }
--type cvss_score_adjustment() :: #{binary() => any()}.
-
-%% Example:
-%% unable_to_get_upstream_layer_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unable_to_get_upstream_layer_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_pull_time_update_exclusion_request() :: #{
-%%   <<"principalArn">> := string()
-%% }
--type deregister_pull_time_update_exclusion_request() :: #{binary() => any()}.
-
-%% Example:
-%% validate_pull_through_cache_rule_response() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> => string(),
-%%   <<"failure">> => string(),
-%%   <<"isValid">> => boolean(),
-%%   <<"registryId">> => string(),
-%%   <<"upstreamRegistryUrl">> => string(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type validate_pull_through_cache_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_repository_scanning_configuration_response() :: #{
-%%   <<"failures">> => list(repository_scanning_configuration_failure()),
-%%   <<"scanningConfigurations">> => list(repository_scanning_configuration())
-%% }
--type batch_get_repository_scanning_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% registry_scanning_rule() :: #{
-%%   <<"repositoryFilters">> => list(scanning_repository_filter()),
-%%   <<"scanFrequency">> => list(any())
-%% }
--type registry_scanning_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_authorization_token_response() :: #{
-%%   <<"authorizationData">> => list(authorization_data())
-%% }
--type get_authorization_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signing_configuration_response() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"signingConfiguration">> => signing_configuration()
-%% }
--type delete_signing_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_authorization_token_request() :: #{
-%%   <<"registryIds">> => list(string())
-%% }
--type get_authorization_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% score_details() :: #{
-%%   <<"cvss">> => cvss_score_details()
-%% }
--type score_details() :: #{binary() => any()}.
-
-%% Example:
-%% start_image_scan_response() :: #{
-%%   <<"imageId">> => image_identifier(),
-%%   <<"imageScanStatus">> => image_scan_status(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type start_image_scan_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_registry_response() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"replicationConfiguration">> => replication_configuration()
-%% }
--type describe_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% layer_inaccessible_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layer_inaccessible_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_images_response() :: #{
-%%   <<"imageIds">> => list(image_identifier()),
-%%   <<"nextToken">> => string()
-%% }
--type list_images_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_policy_response() :: #{
+%% get_registry_policy_response() :: #{
 %%   <<"policyText">> => string(),
 %%   <<"registryId">> => string()
 %% }
--type delete_registry_policy_response() :: #{binary() => any()}.
+-type get_registry_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_scanning_configuration_request() :: #{
+
+%% }
+-type get_registry_scanning_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_registry_scanning_configuration_response() :: #{
@@ -1108,110 +762,32 @@
 -type get_registry_scanning_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% unable_to_decrypt_secret_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unable_to_decrypt_secret_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% signing_configuration_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type signing_configuration_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_image_request() :: #{
-%%   <<"acceptedMediaTypes">> => list(string()),
-%%   <<"imageIds">> := list(image_identifier()),
+%% get_repository_policy_request() :: #{
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
--type batch_get_image_request() :: #{binary() => any()}.
+-type get_repository_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_account_setting_response() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type get_account_setting_response() :: #{binary() => any()}.
-
-%% Example:
-%% upload_layer_part_response() :: #{
-%%   <<"lastByteReceived">> => float(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type upload_layer_part_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_repository_request() :: #{
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"imageTagMutability">> => list(any()),
-%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_repository_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% image_scan_finding() :: #{
-%%   <<"attributes">> => list(attribute()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"severity">> => list(any()),
-%%   <<"uri">> => string()
-%% }
--type image_scan_finding() :: #{binary() => any()}.
-
-%% Example:
-%% pull_through_cache_rule_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pull_through_cache_rule_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_scan_findings_response() :: #{
-%%   <<"imageId">> => image_identifier(),
-%%   <<"imageScanFindings">> => image_scan_findings(),
-%%   <<"imageScanStatus">> => image_scan_status(),
-%%   <<"nextToken">> => string(),
+%% get_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string()
 %% }
--type describe_image_scan_findings_response() :: #{binary() => any()}.
+-type get_repository_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_replication_configuration_response() :: #{
-%%   <<"replicationConfiguration">> => replication_configuration()
+%% get_signing_configuration_request() :: #{
+
 %% }
--type put_replication_configuration_response() :: #{binary() => any()}.
+-type get_signing_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_repository_creation_template_response() :: #{
+%% get_signing_configuration_response() :: #{
 %%   <<"registryId">> => string(),
-%%   <<"repositoryCreationTemplate">> => repository_creation_template()
+%%   <<"signingConfiguration">> => signing_configuration()
 %% }
--type create_repository_creation_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_scan_findings_request() :: #{
-%%   <<"imageId">> := image_identifier(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type describe_image_scan_findings_request() :: #{binary() => any()}.
+-type get_signing_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% image() :: #{
@@ -1224,461 +800,16 @@
 -type image() :: #{binary() => any()}.
 
 %% Example:
-%% put_image_tag_mutability_request() :: #{
-%%   <<"imageTagMutability">> := list(any()),
-%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type put_image_tag_mutability_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type delete_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_repository_creation_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryCreationTemplates">> => list(repository_creation_template())
-%% }
--type describe_repository_creation_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pull_through_cache_rules_request() :: #{
-%%   <<"ecrRepositoryPrefixes">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string()
-%% }
--type describe_pull_through_cache_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_creation_template_response() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryCreationTemplate">> => repository_creation_template()
-%% }
--type delete_repository_creation_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"relatedVulnerabilities">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"vendorCreatedAt">> => non_neg_integer(),
-%%   <<"vendorSeverity">> => string(),
-%%   <<"vendorUpdatedAt">> => non_neg_integer(),
-%%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package())
-%% }
--type package_vulnerability_details() :: #{binary() => any()}.
-
-%% Example:
-%% cvss_score() :: #{
-%%   <<"baseScore">> => float(),
-%%   <<"scoringVector">> => string(),
-%%   <<"source">> => string(),
-%%   <<"version">> => string()
-%% }
--type cvss_score() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_image_response() :: #{
-%%   <<"failures">> => list(image_failure()),
-%%   <<"imageIds">> => list(image_identifier())
-%% }
--type batch_delete_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_signing_status_request() :: #{
-%%   <<"imageId">> := image_identifier(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type describe_image_signing_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% secret_not_found_exception() :: #{
+%% image_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type secret_not_found_exception() :: #{binary() => any()}.
+-type image_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_parameter_exception() :: #{
+%% image_archived_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_layer_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_layer_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_registry_request() :: #{
-
-%% }
--type describe_registry_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_pull_time_update_exclusion_request() :: #{
-%%   <<"principalArn">> := string()
-%% }
--type register_pull_time_update_exclusion_request() :: #{binary() => any()}.
-
-%% Example:
-%% image_storage_class_update_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_storage_class_update_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pull_through_cache_rule_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"upstreamRegistryUrl">> => string(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type delete_pull_through_cache_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% signing_repository_filter() :: #{
-%%   <<"filter">> => string(),
-%%   <<"filterType">> => list(any())
-%% }
--type signing_repository_filter() :: #{binary() => any()}.
-
-%% Example:
-%% replication_rule() :: #{
-%%   <<"destinations">> => list(replication_destination()),
-%%   <<"repositoryFilters">> => list(repository_filter())
-%% }
--type replication_rule() :: #{binary() => any()}.
-
-%% Example:
-%% kms_exception() :: #{
-%%   <<"kmsError">> => string(),
-%%   <<"message">> => string()
-%% }
--type kms_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_scanning_configuration() :: #{
-%%   <<"appliedScanFilters">> => list(scanning_repository_filter()),
-%%   <<"repositoryArn">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"scanFrequency">> => list(any()),
-%%   <<"scanOnPush">> => boolean()
-%% }
--type repository_scanning_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_lifecycle_policy_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_signing_status_response() :: #{
-%%   <<"imageId">> => image_identifier(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"signingStatuses">> => list(image_signing_status())
-%% }
--type describe_image_signing_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_pull_through_cache_rule_response() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type update_pull_through_cache_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_replication_configuration_request() :: #{
-%%   <<"replicationConfiguration">> := replication_configuration()
-%% }
--type put_replication_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_check_layer_availability_request() :: #{
-%%   <<"layerDigests">> := list(string()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type batch_check_layer_availability_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_image_referrers_filter() :: #{
-%%   <<"artifactStatus">> => list(any()),
-%%   <<"artifactTypes">> => list(string())
-%% }
--type list_image_referrers_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_scanning_configuration_request() :: #{
-
-%% }
--type get_registry_scanning_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_storage_class_response() :: #{
-%%   <<"imageId">> => image_identifier(),
-%%   <<"imageStatus">> => list(any()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type update_image_storage_class_response() :: #{binary() => any()}.
-
-%% Example:
-%% server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_identifier() :: #{
-%%   <<"imageDigest">> => string(),
-%%   <<"imageTag">> => string()
-%% }
--type image_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_preview_summary() :: #{
-%%   <<"expiringImageTotalCount">> => integer(),
-%%   <<"transitioningImageTotalCounts">> => list(transitioning_image_total_count())
-%% }
--type lifecycle_policy_preview_summary() :: #{binary() => any()}.
-
-%% Example:
-%% repository_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_storage_class_request() :: #{
-%%   <<"imageId">> := image_identifier(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"targetStorageClass">> := list(any())
-%% }
--type update_image_storage_class_request() :: #{binary() => any()}.
-
-%% Example:
-%% attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-%% Example:
-%% put_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type put_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_replication_status_request() :: #{
-%%   <<"imageId">> := image_identifier(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type describe_image_replication_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_response() :: #{
-%%   <<"repository">> => repository()
-%% }
--type delete_repository_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_repositories_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository())
-%% }
--type describe_repositories_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string()
-%% }
--type get_registry_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signing_configuration_request() :: #{
-
-%% }
--type delete_signing_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pull_through_cache_rules_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pullThroughCacheRules">> => list(pull_through_cache_rule())
-%% }
--type describe_pull_through_cache_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% pull_through_cache_rule() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialArn">> => string(),
-%%   <<"customRoleArn">> => string(),
-%%   <<"ecrRepositoryPrefix">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"upstreamRegistry">> => list(any()),
-%%   <<"upstreamRegistryUrl">> => string(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type pull_through_cache_rule() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_repository_scanning_configuration_request() :: #{
-%%   <<"repositoryNames">> := list(string())
-%% }
--type batch_get_repository_scanning_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_details() :: #{
-%%   <<"awsEcrContainerImage">> => aws_ecr_container_image_details()
-%% }
--type resource_details() :: #{binary() => any()}.
-
-%% Example:
-%% repository_scanning_configuration_failure() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type repository_scanning_configuration_failure() :: #{binary() => any()}.
-
-%% Example:
-%% put_signing_configuration_response() :: #{
-%%   <<"signingConfiguration">> => signing_configuration()
-%% }
--type put_signing_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_referrer() :: #{
-%%   <<"annotations">> => map(),
-%%   <<"artifactStatus">> => list(any()),
-%%   <<"artifactType">> => string(),
-%%   <<"digest">> => string(),
-%%   <<"mediaType">> => string(),
-%%   <<"size">> => float()
-%% }
--type image_referrer() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pull_through_cache_rule_request() :: #{
-%%   <<"ecrRepositoryPrefix">> := string(),
-%%   <<"registryId">> => string()
-%% }
--type delete_pull_through_cache_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% subject_identifier() :: #{
-%%   <<"imageDigest">> => string()
-%% }
--type subject_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_pull_time_update_exclusion_response() :: #{
-%%   <<"principalArn">> => string()
-%% }
--type deregister_pull_time_update_exclusion_response() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_preview_result() :: #{
-%%   <<"action">> => lifecycle_policy_rule_action(),
-%%   <<"appliedRulePriority">> => integer(),
-%%   <<"imageDigest">> => string(),
-%%   <<"imagePushedAt">> => non_neg_integer(),
-%%   <<"imageTags">> => list(string()),
-%%   <<"storageClass">> => list(any())
-%% }
--type lifecycle_policy_preview_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_lifecycle_policy_preview_request() :: #{
-%%   <<"lifecyclePolicyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type start_lifecycle_policy_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% aws_ecr_container_image_details() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"author">> => string(),
-%%   <<"imageHash">> => string(),
-%%   <<"imageTags">> => list(string()),
-%%   <<"inUseCount">> => float(),
-%%   <<"lastInUseAt">> => non_neg_integer(),
-%%   <<"platform">> => string(),
-%%   <<"pushedAt">> => non_neg_integer(),
-%%   <<"registry">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type aws_ecr_container_image_details() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_data() :: #{
-%%   <<"authorizationToken">> => string(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"proxyEndpoint">> => string()
-%% }
--type authorization_data() :: #{binary() => any()}.
-
-%% Example:
-%% describe_repository_creation_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"prefixes">> => list(string())
-%% }
--type describe_repository_creation_templates_request() :: #{binary() => any()}.
+-type image_archived_exception() :: #{binary() => any()}.
 
 %% Example:
 %% image_detail() :: #{
@@ -1701,23 +832,127 @@
 -type image_detail() :: #{binary() => any()}.
 
 %% Example:
-%% exclusion_already_exists_exception() :: #{
+%% image_digest_does_not_match_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type exclusion_already_exists_exception() :: #{binary() => any()}.
+-type image_digest_does_not_match_exception() :: #{binary() => any()}.
 
 %% Example:
-%% empty_upload_exception() :: #{
+%% image_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"imageId">> => image_identifier()
+%% }
+-type image_failure() :: #{binary() => any()}.
+
+%% Example:
+%% image_identifier() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageTag">> => string()
+%% }
+-type image_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% image_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type empty_upload_exception() :: #{binary() => any()}.
+-type image_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_images_filter() :: #{
-%%   <<"imageStatus">> => list(any()),
-%%   <<"tagStatus">> => list(any())
+%% image_referrer() :: #{
+%%   <<"annotations">> => map(),
+%%   <<"artifactStatus">> => list(any()),
+%%   <<"artifactType">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"mediaType">> => string(),
+%%   <<"size">> => float()
 %% }
--type describe_images_filter() :: #{binary() => any()}.
+-type image_referrer() :: #{binary() => any()}.
+
+%% Example:
+%% image_replication_status() :: #{
+%%   <<"failureCode">> => string(),
+%%   <<"region">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type image_replication_status() :: #{binary() => any()}.
+
+%% Example:
+%% image_scan_finding() :: #{
+%%   <<"attributes">> => list(attribute()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"severity">> => list(any()),
+%%   <<"uri">> => string()
+%% }
+-type image_scan_finding() :: #{binary() => any()}.
+
+%% Example:
+%% image_scan_findings() :: #{
+%%   <<"enhancedFindings">> => list(enhanced_image_scan_finding()),
+%%   <<"findingSeverityCounts">> => map(),
+%%   <<"findings">> => list(image_scan_finding()),
+%%   <<"imageScanCompletedAt">> => non_neg_integer(),
+%%   <<"vulnerabilitySourceUpdatedAt">> => non_neg_integer()
+%% }
+-type image_scan_findings() :: #{binary() => any()}.
+
+%% Example:
+%% image_scan_findings_summary() :: #{
+%%   <<"findingSeverityCounts">> => map(),
+%%   <<"imageScanCompletedAt">> => non_neg_integer(),
+%%   <<"vulnerabilitySourceUpdatedAt">> => non_neg_integer()
+%% }
+-type image_scan_findings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% image_scan_status() :: #{
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type image_scan_status() :: #{binary() => any()}.
+
+%% Example:
+%% image_scanning_configuration() :: #{
+%%   <<"scanOnPush">> => boolean()
+%% }
+-type image_scanning_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% image_signing_status() :: #{
+%%   <<"failureCode">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"signingProfileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type image_signing_status() :: #{binary() => any()}.
+
+%% Example:
+%% image_storage_class_update_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_storage_class_update_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_tag_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_mutability_exclusion_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type image_tag_mutability_exclusion_filter() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_layer_upload_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type initiate_layer_upload_request() :: #{binary() => any()}.
 
 %% Example:
 %% initiate_layer_upload_response() :: #{
@@ -1727,11 +962,801 @@
 -type initiate_layer_upload_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_image_response() :: #{
-%%   <<"failures">> => list(image_failure()),
-%%   <<"images">> => list(image())
+%% invalid_layer_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type batch_get_image_response() :: #{binary() => any()}.
+-type invalid_layer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_layer_part_exception() :: #{
+%%   <<"lastValidByteReceived">> => float(),
+%%   <<"message">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type invalid_layer_part_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_exception() :: #{
+%%   <<"kmsError">> => string(),
+%%   <<"message">> => string()
+%% }
+-type kms_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer() :: #{
+%%   <<"layerAvailability">> => list(any()),
+%%   <<"layerDigest">> => string(),
+%%   <<"layerSize">> => float(),
+%%   <<"mediaType">> => string()
+%% }
+-type layer() :: #{binary() => any()}.
+
+%% Example:
+%% layer_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"layerDigest">> => string()
+%% }
+-type layer_failure() :: #{binary() => any()}.
+
+%% Example:
+%% layer_inaccessible_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_inaccessible_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer_part_too_small_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_part_too_small_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layers_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layers_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lifecycle_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_preview_filter() :: #{
+%%   <<"tagStatus">> => list(any())
+%% }
+-type lifecycle_policy_preview_filter() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_preview_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lifecycle_policy_preview_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_preview_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lifecycle_policy_preview_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_preview_result() :: #{
+%%   <<"action">> => lifecycle_policy_rule_action(),
+%%   <<"appliedRulePriority">> => integer(),
+%%   <<"imageDigest">> => string(),
+%%   <<"imagePushedAt">> => non_neg_integer(),
+%%   <<"imageTags">> => list(string()),
+%%   <<"storageClass">> => list(any())
+%% }
+-type lifecycle_policy_preview_result() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_preview_summary() :: #{
+%%   <<"expiringImageTotalCount">> => integer(),
+%%   <<"transitioningImageTotalCounts">> => list(transitioning_image_total_count())
+%% }
+-type lifecycle_policy_preview_summary() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_rule_action() :: #{
+%%   <<"targetStorageClass">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type lifecycle_policy_rule_action() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_referrers_filter() :: #{
+%%   <<"artifactStatus">> => list(any()),
+%%   <<"artifactTypes">> => list(string())
+%% }
+-type list_image_referrers_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_referrers_request() :: #{
+%%   <<"filter">> => list_image_referrers_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"subjectId">> := subject_identifier()
+%% }
+-type list_image_referrers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_referrers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"referrers">> => list(image_referrer())
+%% }
+-type list_image_referrers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_filter() :: #{
+%%   <<"imageStatus">> => list(any()),
+%%   <<"tagStatus">> => list(any())
+%% }
+-type list_images_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_request() :: #{
+%%   <<"filter">> => list_images_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_response() :: #{
+%%   <<"imageIds">> => list(image_identifier()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_images_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_time_update_exclusions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pull_time_update_exclusions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_time_update_exclusions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullTimeUpdateExclusions">> => list(string())
+%% }
+-type list_pull_time_update_exclusions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% package_vulnerability_details() :: #{
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"vendorCreatedAt">> => non_neg_integer(),
+%%   <<"vendorSeverity">> => string(),
+%%   <<"vendorUpdatedAt">> => non_neg_integer(),
+%%   <<"vulnerabilityId">> => string(),
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
+%% }
+-type package_vulnerability_details() :: #{binary() => any()}.
+
+%% Example:
+%% pull_through_cache_rule() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"upstreamRegistry">> => list(any()),
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type pull_through_cache_rule() :: #{binary() => any()}.
+
+%% Example:
+%% pull_through_cache_rule_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_through_cache_rule_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pull_through_cache_rule_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_through_cache_rule_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type put_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_request() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifest">> := string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imageTag">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_response() :: #{
+%%   <<"image">> => image()
+%% }
+-type put_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_scanning_configuration_request() :: #{
+%%   <<"imageScanningConfiguration">> := image_scanning_configuration(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_image_scanning_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_scanning_configuration_response() :: #{
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type put_image_scanning_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_tag_mutability_request() :: #{
+%%   <<"imageTagMutability">> := list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_image_tag_mutability_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_tag_mutability_response() :: #{
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type put_image_tag_mutability_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_policy_request() :: #{
+%%   <<"lifecyclePolicyText">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type put_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_policy_request() :: #{
+%%   <<"policyText">> := string()
+%% }
+-type put_registry_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type put_registry_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_scanning_configuration_request() :: #{
+%%   <<"rules">> => list(registry_scanning_rule()),
+%%   <<"scanType">> => list(any())
+%% }
+-type put_registry_scanning_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_scanning_configuration_response() :: #{
+%%   <<"registryScanningConfiguration">> => registry_scanning_configuration()
+%% }
+-type put_registry_scanning_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_replication_configuration_request() :: #{
+%%   <<"replicationConfiguration">> := replication_configuration()
+%% }
+-type put_replication_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_replication_configuration_response() :: #{
+%%   <<"replicationConfiguration">> => replication_configuration()
+%% }
+-type put_replication_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_signing_configuration_request() :: #{
+%%   <<"signingConfiguration">> := signing_configuration()
+%% }
+-type put_signing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_signing_configuration_response() :: #{
+%%   <<"signingConfiguration">> => signing_configuration()
+%% }
+-type put_signing_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"text">> => string(),
+%%   <<"url">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% referenced_images_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type referenced_images_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_pull_time_update_exclusion_request() :: #{
+%%   <<"principalArn">> := string()
+%% }
+-type register_pull_time_update_exclusion_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_pull_time_update_exclusion_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"principalArn">> => string()
+%% }
+-type register_pull_time_update_exclusion_response() :: #{binary() => any()}.
+
+%% Example:
+%% registry_policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type registry_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% registry_scanning_configuration() :: #{
+%%   <<"rules">> => list(registry_scanning_rule()),
+%%   <<"scanType">> => list(any())
+%% }
+-type registry_scanning_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% registry_scanning_rule() :: #{
+%%   <<"repositoryFilters">> => list(scanning_repository_filter()),
+%%   <<"scanFrequency">> => list(any())
+%% }
+-type registry_scanning_rule() :: #{binary() => any()}.
+
+%% Example:
+%% remediation() :: #{
+%%   <<"recommendation">> => recommendation()
+%% }
+-type remediation() :: #{binary() => any()}.
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"rules">> => list(replication_rule())
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% replication_destination() :: #{
+%%   <<"region">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type replication_destination() :: #{binary() => any()}.
+
+%% Example:
+%% replication_rule() :: #{
+%%   <<"destinations">> => list(replication_destination()),
+%%   <<"repositoryFilters">> => list(repository_filter())
+%% }
+-type replication_rule() :: #{binary() => any()}.
+
+%% Example:
+%% repository() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryArn">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"repositoryUri">> => string()
+%% }
+-type repository() :: #{binary() => any()}.
+
+%% Example:
+%% repository_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_creation_template() :: #{
+%%   <<"appliedFor">> => list(list(any())()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
+%%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
+%%   <<"lifecyclePolicy">> => string(),
+%%   <<"prefix">> => string(),
+%%   <<"repositoryPolicy">> => string(),
+%%   <<"resourceTags">> => list(tag()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type repository_creation_template() :: #{binary() => any()}.
+
+%% Example:
+%% repository_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type repository_filter() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_empty_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_scanning_configuration() :: #{
+%%   <<"appliedScanFilters">> => list(scanning_repository_filter()),
+%%   <<"repositoryArn">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"scanFrequency">> => list(any()),
+%%   <<"scanOnPush">> => boolean()
+%% }
+-type repository_scanning_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% repository_scanning_configuration_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type repository_scanning_configuration_failure() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"details">> => resource_details(),
+%%   <<"id">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% resource_details() :: #{
+%%   <<"awsEcrContainerImage">> => aws_ecr_container_image_details()
+%% }
+-type resource_details() :: #{binary() => any()}.
+
+%% Example:
+%% scan_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type scan_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scanning_repository_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type scanning_repository_filter() :: #{binary() => any()}.
+
+%% Example:
+%% score_details() :: #{
+%%   <<"cvss">> => cvss_score_details()
+%% }
+-type score_details() :: #{binary() => any()}.
+
+%% Example:
+%% secret_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type secret_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"policyText">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type set_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type set_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% signing_configuration() :: #{
+%%   <<"rules">> => list(signing_rule())
+%% }
+-type signing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% signing_configuration_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type signing_configuration_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% signing_repository_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type signing_repository_filter() :: #{binary() => any()}.
+
+%% Example:
+%% signing_rule() :: #{
+%%   <<"repositoryFilters">> => list(signing_repository_filter()),
+%%   <<"signingProfileArn">> => string()
+%% }
+-type signing_rule() :: #{binary() => any()}.
+
+%% Example:
+%% start_image_scan_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type start_image_scan_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_image_scan_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"imageScanStatus">> => image_scan_status(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type start_image_scan_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_lifecycle_policy_preview_request() :: #{
+%%   <<"lifecyclePolicyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type start_lifecycle_policy_preview_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_lifecycle_policy_preview_response() :: #{
+%%   <<"lifecyclePolicyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_lifecycle_policy_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% subject_identifier() :: #{
+%%   <<"imageDigest">> => string()
+%% }
+-type subject_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% template_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type template_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% template_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type template_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% transitioning_image_total_count() :: #{
+%%   <<"imageTotalCount">> => integer(),
+%%   <<"targetStorageClass">> => list(any())
+%% }
+-type transitioning_image_total_count() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_access_secret_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_access_secret_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_decrypt_secret_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_decrypt_secret_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_get_upstream_image_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_get_upstream_image_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_get_upstream_layer_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_get_upstream_layer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unable_to_list_upstream_image_referrers_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unable_to_list_upstream_image_referrers_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_image_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_image_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_upstream_registry_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_upstream_registry_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_storage_class_request() :: #{
+%%   <<"imageId">> := image_identifier(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"targetStorageClass">> := list(any())
+%% }
+-type update_image_storage_class_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_storage_class_response() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"imageStatus">> => list(any()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type update_image_storage_class_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_through_cache_rule_request() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> := string(),
+%%   <<"registryId">> => string()
+%% }
+-type update_pull_through_cache_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_through_cache_rule_response() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type update_pull_through_cache_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_repository_creation_template_request() :: #{
@@ -1749,70 +1774,11 @@
 -type update_repository_creation_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_download_url_for_layer_request() :: #{
-%%   <<"layerDigest">> := string(),
+%% update_repository_creation_template_response() :: #{
 %%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
+%%   <<"repositoryCreationTemplate">> => repository_creation_template()
 %% }
--type get_download_url_for_layer_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_registry_policy_request() :: #{
-%%   <<"policyText">> := string()
-%% }
--type put_registry_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_replication_status_response() :: #{
-%%   <<"imageId">> => image_identifier(),
-%%   <<"replicationStatuses">> => list(image_replication_status()),
-%%   <<"repositoryName">> => string()
-%% }
--type describe_image_replication_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_lifecycle_policy_response() :: #{
-%%   <<"lastEvaluatedAt">> => non_neg_integer(),
-%%   <<"lifecyclePolicyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type get_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_lifecycle_policy_preview_response() :: #{
-%%   <<"lifecyclePolicyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type start_lifecycle_policy_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_pull_time_update_exclusions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_pull_time_update_exclusions_request() :: #{binary() => any()}.
-
-%% Example:
-%% scanning_repository_filter() :: #{
-%%   <<"filter">> => string(),
-%%   <<"filterType">> => list(any())
-%% }
--type scanning_repository_filter() :: #{binary() => any()}.
-
-%% Example:
-%% unable_to_access_secret_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unable_to_access_secret_exception() :: #{binary() => any()}.
+-type update_repository_creation_template_response() :: #{binary() => any()}.
 
 %% Example:
 %% upload_layer_part_request() :: #{
@@ -1826,189 +1792,223 @@
 -type upload_layer_part_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_signing_configuration_request() :: #{
-
+%% upload_layer_part_response() :: #{
+%%   <<"lastByteReceived">> => float(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
 %% }
--type get_signing_configuration_request() :: #{binary() => any()}.
+-type upload_layer_part_response() :: #{binary() => any()}.
 
 %% Example:
-%% resource() :: #{
-%%   <<"details">> => resource_details(),
-%%   <<"id">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type resource() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_upstream_registry_exception() :: #{
+%% upload_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type unsupported_upstream_registry_exception() :: #{binary() => any()}.
+-type upload_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validate_pull_through_cache_rule_request() :: #{
+%%   <<"ecrRepositoryPrefix">> := string(),
+%%   <<"registryId">> => string()
+%% }
+-type validate_pull_through_cache_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_pull_through_cache_rule_response() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"customRoleArn">> => string(),
+%%   <<"ecrRepositoryPrefix">> => string(),
+%%   <<"failure">> => string(),
+%%   <<"isValid">> => boolean(),
+%%   <<"registryId">> => string(),
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type validate_pull_through_cache_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% vulnerable_package() :: #{
+%%   <<"arch">> => string(),
+%%   <<"epoch">> => integer(),
+%%   <<"filePath">> => string(),
+%%   <<"fixedInVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"packageManager">> => string(),
+%%   <<"release">> => string(),
+%%   <<"sourceLayerHash">> => string(),
+%%   <<"version">> => string()
+%% }
+-type vulnerable_package() :: #{binary() => any()}.
 
 -type batch_check_layer_availability_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type batch_delete_image_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type batch_get_image_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
+    unable_to_get_upstream_image_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unable_to_get_upstream_image_exception().
+    repository_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type batch_get_repository_scanning_configuration_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type complete_layer_upload_errors() ::
-    empty_upload_exception() | 
-    repository_not_found_exception() | 
+    upload_not_found_exception() | 
     server_exception() | 
-    kms_exception() | 
-    invalid_layer_exception() | 
-    invalid_parameter_exception() | 
+    repository_not_found_exception() | 
     layer_part_too_small_exception() | 
     layer_already_exists_exception() | 
-    upload_not_found_exception().
+    kms_exception() | 
+    invalid_parameter_exception() | 
+    invalid_layer_exception() | 
+    empty_upload_exception().
 
 -type create_pull_through_cache_rule_errors() ::
-    unsupported_upstream_registry_exception() | 
-    unable_to_access_secret_exception() | 
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    secret_not_found_exception() | 
+    unsupported_upstream_registry_exception() | 
     unable_to_decrypt_secret_value_exception() | 
-    pull_through_cache_rule_already_exists_exception().
+    unable_to_access_secret_exception() | 
+    server_exception() | 
+    secret_not_found_exception() | 
+    pull_through_cache_rule_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type create_repository_errors() ::
     too_many_tags_exception() | 
-    limit_exceeded_exception() | 
     server_exception() | 
-    kms_exception() | 
-    invalid_parameter_exception() | 
     repository_already_exists_exception() | 
-    invalid_tag_parameter_exception().
+    limit_exceeded_exception() | 
+    kms_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type create_repository_creation_template_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    template_already_exists_exception().
+    template_already_exists_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type delete_lifecycle_policy_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    lifecycle_policy_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    lifecycle_policy_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type delete_pull_through_cache_rule_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    pull_through_cache_rule_not_found_exception().
+    server_exception() | 
+    pull_through_cache_rule_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type delete_registry_policy_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    registry_policy_not_found_exception().
+    server_exception() | 
+    registry_policy_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type delete_repository_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
+    repository_not_empty_exception() | 
     kms_exception() | 
-    invalid_parameter_exception() | 
-    repository_not_empty_exception().
+    invalid_parameter_exception().
 
 -type delete_repository_creation_template_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    template_not_found_exception().
+    template_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
 
 -type delete_repository_policy_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    repository_policy_not_found_exception().
+    repository_policy_not_found_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type delete_signing_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
-    signing_configuration_not_found_exception().
+    signing_configuration_not_found_exception() | 
+    server_exception().
 
 -type deregister_pull_time_update_exclusion_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     exclusion_not_found_exception().
 
 -type describe_image_replication_status_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_image_scan_findings_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
+    server_exception() | 
     scan_not_found_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_image_signing_status_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_images_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_pull_through_cache_rules_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    pull_through_cache_rule_not_found_exception().
+    server_exception() | 
+    pull_through_cache_rule_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_registry_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type describe_repositories_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type describe_repository_creation_templates_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type get_account_setting_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type get_authorization_token_errors() ::
@@ -2016,216 +2016,216 @@
     invalid_parameter_exception().
 
 -type get_download_url_for_layer_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    layer_inaccessible_exception() | 
     unable_to_get_upstream_layer_exception() | 
-    layers_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    layers_not_found_exception() | 
+    layer_inaccessible_exception() | 
+    invalid_parameter_exception().
 
 -type get_lifecycle_policy_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    lifecycle_policy_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    lifecycle_policy_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_lifecycle_policy_preview_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    lifecycle_policy_preview_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    lifecycle_policy_preview_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_registry_policy_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    registry_policy_not_found_exception().
+    server_exception() | 
+    registry_policy_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_registry_scanning_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type get_repository_policy_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    repository_policy_not_found_exception().
+    repository_policy_not_found_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_signing_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    signing_configuration_not_found_exception().
+    signing_configuration_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
 
 -type initiate_layer_upload_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     kms_exception() | 
     invalid_parameter_exception().
 
 -type list_image_referrers_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    unable_to_list_upstream_image_referrers_exception().
+    unable_to_list_upstream_image_referrers_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_images_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type list_pull_time_update_exclusions_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type put_account_setting_errors() ::
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception().
 
 -type put_image_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
+    referenced_images_not_found_exception() | 
+    limit_exceeded_exception() | 
+    layers_not_found_exception() | 
     kms_exception() | 
     invalid_parameter_exception() | 
-    referenced_images_not_found_exception() | 
     image_tag_already_exists_exception() | 
-    layers_not_found_exception() | 
-    image_already_exists_exception() | 
-    image_digest_does_not_match_exception().
+    image_digest_does_not_match_exception() | 
+    image_already_exists_exception().
 
 -type put_image_scanning_configuration_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type put_image_tag_mutability_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type put_lifecycle_policy_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type put_registry_policy_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type put_registry_scanning_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception() | 
     blocked_by_organization_policy_exception().
 
 -type put_replication_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type put_signing_configuration_errors() ::
-    server_exception() | 
     validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type register_pull_time_update_exclusion_errors() ::
-    exclusion_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception().
+    server_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    exclusion_already_exists_exception().
 
 -type set_repository_policy_errors() ::
-    repository_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception().
 
 -type start_image_scan_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    image_archived_exception() | 
     unsupported_image_type_exception() | 
-    image_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    image_not_found_exception() | 
+    image_archived_exception().
 
 -type start_lifecycle_policy_preview_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
+    lifecycle_policy_preview_in_progress_exception() | 
     lifecycle_policy_not_found_exception() | 
-    lifecycle_policy_preview_in_progress_exception().
+    invalid_parameter_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    repository_not_found_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_tag_parameter_exception().
+    repository_not_found_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type untag_resource_errors() ::
     too_many_tags_exception() | 
-    repository_not_found_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_tag_parameter_exception().
+    repository_not_found_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type update_image_storage_class_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
     validation_exception() | 
-    image_storage_class_update_not_supported_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     invalid_parameter_exception() | 
+    image_storage_class_update_not_supported_exception() | 
     image_not_found_exception().
 
 -type update_pull_through_cache_rule_errors() ::
+    validation_exception() | 
+    unable_to_decrypt_secret_value_exception() | 
     unable_to_access_secret_exception() | 
     server_exception() | 
-    validation_exception() | 
-    invalid_parameter_exception() | 
     secret_not_found_exception() | 
     pull_through_cache_rule_not_found_exception() | 
-    unable_to_decrypt_secret_value_exception().
+    invalid_parameter_exception().
 
 -type update_repository_creation_template_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    template_not_found_exception().
+    template_not_found_exception() | 
+    server_exception() | 
+    invalid_parameter_exception().
 
 -type upload_layer_part_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
+    upload_not_found_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
+    limit_exceeded_exception() | 
     kms_exception() | 
     invalid_parameter_exception() | 
-    invalid_layer_part_exception() | 
-    upload_not_found_exception().
+    invalid_layer_part_exception().
 
 -type validate_pull_through_cache_rule_errors() ::
-    server_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    pull_through_cache_rule_not_found_exception().
+    server_exception() | 
+    pull_through_cache_rule_not_found_exception() | 
+    invalid_parameter_exception().
 
 %%====================================================================
 %% API

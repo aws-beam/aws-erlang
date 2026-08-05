@@ -61,454 +61,12 @@
 
 
 %% Example:
-%% photo() :: #{
-%%   <<"Display">> => string(),
-%%   <<"Primary">> => boolean(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type photo() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_id_request() :: #{
-%%   <<"AlternateIdentifier">> := list(),
-%%   <<"IdentityStoreId">> := string()
-%% }
--type get_group_id_request() :: #{binary() => any()}.
-
-%% Example:
-%% external_id() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Issuer">> => string()
-%% }
--type external_id() :: #{binary() => any()}.
-
-%% Example:
-%% name() :: #{
-%%   <<"FamilyName">> => string(),
-%%   <<"Formatted">> => string(),
-%%   <<"GivenName">> => string(),
-%%   <<"HonorificPrefix">> => string(),
-%%   <<"HonorificSuffix">> => string(),
-%%   <<"MiddleName">> => string()
-%% }
--type name() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_membership_id_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
-%% }
--type get_group_membership_id_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_response() :: #{
-
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% unique_attribute() :: #{
-%%   <<"AttributePath">> => string(),
-%%   <<"AttributeValue">> => any()
-%% }
--type unique_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_memberships_for_member_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_memberships_for_member_response() :: #{binary() => any()}.
-
-%% Example:
-%% role() :: #{
-%%   <<"Primary">> => boolean(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type role() :: #{binary() => any()}.
-
-%% Example:
-%% phone_number() :: #{
-%%   <<"Primary">> => boolean(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type phone_number() :: #{binary() => any()}.
-
-%% Example:
-%% email() :: #{
-%%   <<"Primary">> => boolean(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type email() :: #{binary() => any()}.
-
-%% Example:
-%% is_member_in_groups_request() :: #{
-%%   <<"GroupIds">> := list(string()),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MemberId">> := list()
-%% }
--type is_member_in_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"Operations">> := list(attribute_operation())
-%% }
--type update_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_membership_id_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MemberId">> := list()
-%% }
--type get_group_membership_id_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"RequestId">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"RequestId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> := list(user())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_memberships_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_memberships_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IdentityStoreId">> := string()
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_operation() :: #{
-%%   <<"AttributePath">> => string(),
-%%   <<"AttributeValue">> => any()
-%% }
--type attribute_operation() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_membership_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MemberId">> := list()
-%% }
--type create_group_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_group_membership_request() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
-%% }
--type describe_group_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% is_member_in_groups_response() :: #{
-%%   <<"Results">> := list(group_membership_existence_result())
-%% }
--type is_member_in_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"AttributePath">> => string(),
-%%   <<"AttributeValue">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% group_membership() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"GroupId">> => string(),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"MemberId">> => list(),
-%%   <<"MembershipId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string()
-%% }
--type group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_response() :: #{
-
-%% }
--type delete_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_response() :: #{
-%%   <<"Addresses">> => list(address()),
-%%   <<"Birthdate">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Emails">> => list(email()),
-%%   <<"Extensions">> => map(),
-%%   <<"ExternalIds">> => list(external_id()),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"Locale">> => string(),
-%%   <<"Name">> => name(),
-%%   <<"NickName">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()),
-%%   <<"Photos">> => list(photo()),
-%%   <<"PreferredLanguage">> => string(),
-%%   <<"ProfileUrl">> => string(),
-%%   <<"Roles">> => list(role()),
-%%   <<"Timezone">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string(),
-%%   <<"UserId">> := string(),
-%%   <<"UserName">> => string(),
-%%   <<"UserStatus">> => list(any()),
-%%   <<"UserType">> => string(),
-%%   <<"Website">> => string()
-%% }
--type describe_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_group_membership_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MemberId">> := list(),
-%%   <<"MembershipId">> := string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string()
-%% }
--type describe_group_membership_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_membership_response() :: #{
-
-%% }
--type delete_group_membership_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_response() :: #{
-
-%% }
--type delete_group_response() :: #{binary() => any()}.
-
-%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any()),
 %%   <<"RequestId">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_request() :: #{
-%%   <<"Extensions">> => list(string()),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type describe_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"Operations">> := list(attribute_operation()),
-%%   <<"UserId">> := string()
-%% }
--type update_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"RequestId">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% group_membership_existence_result() :: #{
-%%   <<"GroupId">> => string(),
-%%   <<"MemberId">> => list(),
-%%   <<"MembershipExists">> => boolean()
-%% }
--type group_membership_existence_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_membership_request() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
-%% }
--type delete_group_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"RequestId">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% group() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExternalIds">> => list(external_id()),
-%%   <<"GroupId">> => string(),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string()
-%% }
--type group() :: #{binary() => any()}.
-
-%% Example:
-%% user() :: #{
-%%   <<"Addresses">> => list(address()),
-%%   <<"Birthdate">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Emails">> => list(email()),
-%%   <<"Extensions">> => map(),
-%%   <<"ExternalIds">> => list(external_id()),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"Locale">> => string(),
-%%   <<"Name">> => name(),
-%%   <<"NickName">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()),
-%%   <<"Photos">> => list(photo()),
-%%   <<"PreferredLanguage">> => string(),
-%%   <<"ProfileUrl">> => string(),
-%%   <<"Roles">> => list(role()),
-%%   <<"Timezone">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string(),
-%%   <<"UserId">> => string(),
-%%   <<"UserName">> => string(),
-%%   <<"UserStatus">> => list(any()),
-%%   <<"UserType">> => string(),
-%%   <<"Website">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-%% Example:
-%% describe_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string()
-%% }
--type describe_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"Extensions">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_group_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExternalIds">> => list(external_id()),
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string()
-%% }
--type describe_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_membership_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
-%% }
--type create_group_membership_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_id_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type get_user_id_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_memberships_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_memberships_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> := list(group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% address() :: #{
@@ -524,40 +82,42 @@
 -type address() :: #{binary() => any()}.
 
 %% Example:
-%% list_groups_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% attribute_operation() :: #{
+%%   <<"AttributePath">> => string(),
+%%   <<"AttributeValue">> => any()
 %% }
--type list_groups_request() :: #{binary() => any()}.
+-type attribute_operation() :: #{binary() => any()}.
 
 %% Example:
-%% get_user_id_request() :: #{
-%%   <<"AlternateIdentifier">> := list(),
-%%   <<"IdentityStoreId">> := string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"RequestId">> => string()
 %% }
--type get_user_id_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_group_id_response() :: #{
+%% create_group_membership_request() :: #{
 %%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MemberId">> := list()
+%% }
+-type create_group_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_membership_response() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MembershipId">> := string()
+%% }
+-type create_group_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
 %%   <<"IdentityStoreId">> := string()
 %% }
--type get_group_id_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type create_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_response() :: #{
-
-%% }
--type update_group_response() :: #{binary() => any()}.
+-type create_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_group_response() :: #{
@@ -591,6 +151,254 @@
 -type create_user_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_user_response() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_membership_request() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MembershipId">> := string()
+%% }
+-type delete_group_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_membership_response() :: #{
+
+%% }
+-type delete_group_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_response() :: #{
+
+%% }
+-type delete_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_response() :: #{
+
+%% }
+-type delete_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_membership_request() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MembershipId">> := string()
+%% }
+-type describe_group_membership_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_membership_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MemberId">> := list(),
+%%   <<"MembershipId">> := string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
+%% }
+-type describe_group_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type describe_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExternalIds">> => list(external_id()),
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
+%% }
+-type describe_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{
+%%   <<"Extensions">> => list(string()),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type describe_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_response() :: #{
+%%   <<"Addresses">> => list(address()),
+%%   <<"Birthdate">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Emails">> => list(email()),
+%%   <<"Extensions">> => map(),
+%%   <<"ExternalIds">> => list(external_id()),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"Locale">> => string(),
+%%   <<"Name">> => name(),
+%%   <<"NickName">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number()),
+%%   <<"Photos">> => list(photo()),
+%%   <<"PreferredLanguage">> => string(),
+%%   <<"ProfileUrl">> => string(),
+%%   <<"Roles">> => list(role()),
+%%   <<"Timezone">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string(),
+%%   <<"UserId">> := string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserStatus">> => list(any()),
+%%   <<"UserType">> => string(),
+%%   <<"Website">> => string()
+%% }
+-type describe_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% email() :: #{
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type email() :: #{binary() => any()}.
+
+%% Example:
+%% external_id() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Issuer">> => string()
+%% }
+-type external_id() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"AttributePath">> => string(),
+%%   <<"AttributeValue">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_id_request() :: #{
+%%   <<"AlternateIdentifier">> := list(),
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type get_group_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_id_response() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type get_group_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_membership_id_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MemberId">> := list()
+%% }
+-type get_group_membership_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_membership_id_response() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MembershipId">> := string()
+%% }
+-type get_group_membership_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_id_request() :: #{
+%%   <<"AlternateIdentifier">> := list(),
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type get_user_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_id_response() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type get_user_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% group() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExternalIds">> => list(external_id()),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+%% Example:
+%% group_membership() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"MemberId">> => list(),
+%%   <<"MembershipId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
+%% }
+-type group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% group_membership_existence_result() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"MemberId">> => list(),
+%%   <<"MembershipExists">> => boolean()
+%% }
+-type group_membership_existence_result() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% is_member_in_groups_request() :: #{
+%%   <<"GroupIds">> := list(string()),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MemberId">> := list()
+%% }
+-type is_member_in_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% is_member_in_groups_response() :: #{
+%%   <<"Results">> := list(group_membership_existence_result())
+%% }
+-type is_member_in_groups_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_group_memberships_for_member_request() :: #{
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -598,6 +406,198 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_for_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_memberships_for_member_response() :: #{
+%%   <<"GroupMemberships">> := list(group_membership()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_memberships_for_member_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_memberships_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_memberships_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_memberships_response() :: #{
+%%   <<"GroupMemberships">> := list(group_membership()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_memberships_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> := list(group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"Extensions">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> := list(user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% name() :: #{
+%%   <<"FamilyName">> => string(),
+%%   <<"Formatted">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"HonorificPrefix">> => string(),
+%%   <<"HonorificSuffix">> => string(),
+%%   <<"MiddleName">> => string()
+%% }
+-type name() :: #{binary() => any()}.
+
+%% Example:
+%% phone_number() :: #{
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type phone_number() :: #{binary() => any()}.
+
+%% Example:
+%% photo() :: #{
+%%   <<"Display">> => string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type photo() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% role() :: #{
+%%   <<"Primary">> => boolean(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type role() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unique_attribute() :: #{
+%%   <<"AttributePath">> => string(),
+%%   <<"AttributeValue">> => any()
+%% }
+-type unique_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"Operations">> := list(attribute_operation())
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_response() :: #{
+
+%% }
+-type update_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"Operations">> := list(attribute_operation()),
+%%   <<"UserId">> := string()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_response() :: #{
+
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"Addresses">> => list(address()),
+%%   <<"Birthdate">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Emails">> => list(email()),
+%%   <<"Extensions">> => map(),
+%%   <<"ExternalIds">> => list(external_id()),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Locale">> => string(),
+%%   <<"Name">> => name(),
+%%   <<"NickName">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number()),
+%%   <<"Photos">> => list(photo()),
+%%   <<"PreferredLanguage">> => string(),
+%%   <<"ProfileUrl">> => string(),
+%%   <<"Roles">> => list(role()),
+%%   <<"Timezone">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string(),
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserStatus">> => list(any()),
+%%   <<"UserType">> => string(),
+%%   <<"Website">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"RequestId">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_group_errors() ::
     validation_exception() | 

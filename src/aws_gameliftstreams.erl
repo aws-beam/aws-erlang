@@ -30,6 +30,8 @@
          create_stream_session_admin_shell/5,
          create_stream_session_connection/4,
          create_stream_session_connection/5,
+         create_stream_url/3,
+         create_stream_url/4,
          delete_application/3,
          delete_application/4,
          delete_stream_group/3,
@@ -47,6 +49,12 @@
          get_stream_session/3,
          get_stream_session/5,
          get_stream_session/6,
+         get_stream_url/3,
+         get_stream_url/5,
+         get_stream_url/6,
+         list_application_shader_caches/2,
+         list_application_shader_caches/4,
+         list_application_shader_caches/5,
          list_applications/1,
          list_applications/3,
          list_applications/4,
@@ -59,11 +67,16 @@
          list_stream_sessions_by_account/1,
          list_stream_sessions_by_account/3,
          list_stream_sessions_by_account/4,
+         list_stream_urls/1,
+         list_stream_urls/3,
+         list_stream_urls/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          remove_stream_group_locations/3,
          remove_stream_group_locations/4,
+         revoke_stream_url/4,
+         revoke_stream_url/5,
          start_stream_session/3,
          start_stream_session/4,
          tag_resource/3,
@@ -82,71 +95,38 @@
 
 
 %% Example:
-%% stream_session_summary() :: #{
-%%   <<"ApplicationArn">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_stream_group_locations_input() :: #{
+%%   <<"LocationConfigurations">> := list(location_configuration())
+%% }
+-type add_stream_group_locations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_stream_group_locations_output() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Locations">> => list(location_state())
+%% }
+-type add_stream_group_locations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"ExportFilesMetadata">> => export_files_metadata(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"Location">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UserId">> => string()
+%%   <<"RuntimeEnvironment">> => runtime_environment(),
+%%   <<"Status">> => list(any())
 %% }
--type stream_session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stream_session_connection_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"SignalRequest">> := string()
-%% }
--type create_stream_session_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_applications_input() :: #{
-%%   <<"ApplicationIdentifiers">> := list(string())
-%% }
--type disassociate_applications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_stats_configuration() :: #{
-%%   <<"SharedWithClient">> => [boolean()]
-%% }
--type performance_stats_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_stream_group_locations_input() :: #{
-%%   <<"Locations">> := list([string()]())
-%% }
--type remove_stream_group_locations_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_stream_sessions_output() :: #{
-%%   <<"Items">> => list(stream_session_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_stream_sessions_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_stream_group_input() :: #{}
--type get_stream_group_input() :: #{}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -157,38 +137,32 @@
 
 
 %% Example:
-%% start_stream_session_output() :: #{
-%%   <<"AdditionalEnvironmentVariables">> => map(),
-%%   <<"AdditionalLaunchArgs">> => list([string()]()),
-%%   <<"ApplicationArn">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ConnectionTimeoutSeconds">> => integer(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ExportFilesMetadata">> => export_files_metadata(),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"Location">> => string(),
-%%   <<"LogFileLocationUri">> => string(),
-%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"SessionLengthSeconds">> => integer(),
-%%   <<"SignalRequest">> => string(),
-%%   <<"SignalResponse">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"StreamGroupId">> => string(),
-%%   <<"UserId">> => string(),
-%%   <<"WebSdkProtocolUrl">> => string()
+%% associate_applications_output() :: #{
+%%   <<"ApplicationArns">> => list(string()),
+%%   <<"Arn">> => string()
 %% }
--type start_stream_session_output() :: #{binary() => any()}.
+-type associate_applications_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_stream_sessions_by_account_output() :: #{
-%%   <<"Items">> => list(stream_session_summary()),
-%%   <<"NextToken">> => string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type list_stream_sessions_by_account_output() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_input() :: #{
+%%   <<"ApplicationLogOutputUri">> => string(),
+%%   <<"ApplicationLogPaths">> => list(string()),
+%%   <<"ApplicationSourceUri">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> := string(),
+%%   <<"ExecutablePath">> := string(),
+%%   <<"RuntimeEnvironment">> := runtime_environment(),
+%%   <<"Tags">> => map()
+%% }
+-type create_application_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,18 +186,15 @@
 
 
 %% Example:
-%% default_application() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% create_stream_group_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DefaultApplicationIdentifier">> => string(),
+%%   <<"Description">> := string(),
+%%   <<"LocationConfigurations">> => list(location_configuration()),
+%%   <<"StreamClass">> := list(any()),
+%%   <<"Tags">> => map()
 %% }
--type default_application() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_session_access_not_ready_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type stream_session_access_not_ready_exception() :: #{binary() => any()}.
+-type create_stream_group_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -243,12 +214,358 @@
 %% }
 -type create_stream_group_output() :: #{binary() => any()}.
 
+%% Example:
+%% create_stream_session_admin_shell_input() :: #{}
+-type create_stream_session_admin_shell_input() :: #{}.
+
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
+%% create_stream_session_admin_shell_output() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_stream_session_admin_shell_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_session_connection_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"SignalRequest">> := string()
+%% }
+-type create_stream_session_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_session_connection_output() :: #{
+%%   <<"SignalResponse">> => string()
+%% }
+-type create_stream_session_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_url_input() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationIdentifier">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"Locations">> := list(string()),
+%%   <<"Protocol">> := list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"UrlExpiresAfterMinutes">> := integer(),
+%%   <<"UsageLimit">> => integer()
+%% }
+-type create_stream_url_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_url_output() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"Locations">> => list(string()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RemainingUses">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamGroupArn">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"StreamUrlId">> => string(),
+%%   <<"UsageLimit">> => integer()
+%% }
+-type create_stream_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_application() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type default_application() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_input() :: #{}
+-type delete_application_input() :: #{}.
+
+%% Example:
+%% delete_stream_group_input() :: #{}
+-type delete_stream_group_input() :: #{}.
+
+
+%% Example:
+%% disassociate_applications_input() :: #{
+%%   <<"ApplicationIdentifiers">> := list(string())
+%% }
+-type disassociate_applications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_applications_output() :: #{
+%%   <<"ApplicationArns">> => list(string()),
+%%   <<"Arn">> => string()
+%% }
+-type disassociate_applications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% display_configuration() :: #{
+%%   <<"Resolution">> => resolution()
+%% }
+-type display_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_files_metadata() :: #{
+%%   <<"OutputUri">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type export_files_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_stream_session_files_input() :: #{
+%%   <<"OutputUri">> := string()
+%% }
+-type export_stream_session_files_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_stream_session_files_output() :: #{}
+-type export_stream_session_files_output() :: #{}.
+
+%% Example:
+%% get_application_input() :: #{}
+-type get_application_input() :: #{}.
+
+
+%% Example:
+%% get_application_output() :: #{
+%%   <<"ApplicationLogOutputUri">> => string(),
+%%   <<"ApplicationLogPaths">> => list(string()),
+%%   <<"ApplicationSourceUri">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedStreamGroups">> => list(string()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ExecutablePath">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"ReplicationStatuses">> => list(replication_status()),
+%%   <<"RuntimeEnvironment">> => runtime_environment(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type get_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_group_input() :: #{}
+-type get_stream_group_input() :: #{}.
+
+
+%% Example:
+%% get_stream_group_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedApplications">> => list(string()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DefaultApplication">> => default_application(),
+%%   <<"Description">> => string(),
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"LocationStates">> => list(location_state()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamClass">> => list(any())
+%% }
+-type get_stream_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_session_input() :: #{}
+-type get_stream_session_input() :: #{}.
+
+
+%% Example:
+%% get_stream_session_output() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ConnectionTimeoutSeconds">> => integer(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"ExportFilesMetadata">> => export_files_metadata(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Location">> => string(),
+%%   <<"LogFileLocationUri">> => string(),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"SignalRequest">> => string(),
+%%   <<"SignalResponse">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamGroupId">> => string(),
+%%   <<"UserId">> => string(),
+%%   <<"WebSdkProtocolUrl">> => string()
+%% }
+-type get_stream_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_url_input() :: #{}
+-type get_stream_url_input() :: #{}.
+
+
+%% Example:
+%% get_stream_url_output() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"Locations">> => list(string()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RemainingUses">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamGroupArn">> => string(),
+%%   <<"StreamSessions">> => list(stream_session_summary()),
+%%   <<"StreamUrl">> => string(),
+%%   <<"StreamUrlId">> => string(),
+%%   <<"UsageLimit">> => integer()
+%% }
+-type get_stream_url_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_shader_caches_input() :: #{}
+-type list_application_shader_caches_input() :: #{}.
+
+
+%% Example:
+%% list_application_shader_caches_output() :: #{
+%%   <<"Items">> => list(shader_cache_summary())
+%% }
+-type list_application_shader_caches_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_output() :: #{
+%%   <<"Items">> => list(application_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_groups_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_groups_output() :: #{
+%%   <<"Items">> => list(stream_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_by_account_input() :: #{
+%%   <<"ExportFilesStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_stream_sessions_by_account_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_by_account_output() :: #{
+%%   <<"Items">> => list(stream_session_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_sessions_by_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_input() :: #{
+%%   <<"ExportFilesStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_stream_sessions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_output() :: #{
+%%   <<"Items">> => list(stream_session_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_sessions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_urls_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StreamGroupIdentifier">> => string()
+%% }
+-type list_stream_urls_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_urls_output() :: #{
+%%   <<"Items">> => list(stream_url_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_urls_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,157 +596,19 @@
 %% }
 -type location_state() :: #{binary() => any()}.
 
-%% Example:
-%% delete_stream_group_input() :: #{}
--type delete_stream_group_input() :: #{}.
 
 %% Example:
-%% export_stream_session_files_output() :: #{}
--type export_stream_session_files_output() :: #{}.
-
-
-%% Example:
-%% associate_applications_output() :: #{
-%%   <<"ApplicationArns">> => list(string()),
-%%   <<"Arn">> => string()
+%% performance_stats_configuration() :: #{
+%%   <<"SharedWithClient">> => [boolean()]
 %% }
--type associate_applications_output() :: #{binary() => any()}.
+-type performance_stats_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_applications_output() :: #{
-%%   <<"Items">> => list(application_summary()),
-%%   <<"NextToken">> => string()
+%% remove_stream_group_locations_input() :: #{
+%%   <<"Locations">> := list([string()]())
 %% }
--type list_applications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_stream_session_admin_shell_input() :: #{}
--type create_stream_session_admin_shell_input() :: #{}.
-
-%% Example:
-%% terminate_stream_session_input() :: #{}
--type terminate_stream_session_input() :: #{}.
-
-
-%% Example:
-%% create_application_input() :: #{
-%%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()),
-%%   <<"ApplicationSourceUri">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> := string(),
-%%   <<"ExecutablePath">> := string(),
-%%   <<"RuntimeEnvironment">> := runtime_environment(),
-%%   <<"Tags">> => map()
-%% }
--type create_application_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_sessions_by_account_input() :: #{
-%%   <<"ExportFilesStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_stream_sessions_by_account_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_files_metadata() :: #{
-%%   <<"OutputUri">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type export_files_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_applications_output() :: #{
-%%   <<"ApplicationArns">> => list(string()),
-%%   <<"Arn">> => string()
-%% }
--type disassociate_applications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_stream_group_locations_output() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"Locations">> => list(location_state())
-%% }
--type add_stream_group_locations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_stream_session_input() :: #{
-%%   <<"AdditionalEnvironmentVariables">> => map(),
-%%   <<"AdditionalLaunchArgs">> => list([string()]()),
-%%   <<"ApplicationIdentifier">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectionTimeoutSeconds">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"Locations">> => list(string()),
-%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
-%%   <<"Protocol">> := list(any()),
-%%   <<"SessionLengthSeconds">> => integer(),
-%%   <<"SignalRequest">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type start_stream_session_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_stream_group_input() :: #{
-%%   <<"DefaultApplicationIdentifier">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LocationConfigurations">> => list(location_configuration())
-%% }
--type update_stream_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_groups_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_stream_groups_input() :: #{binary() => any()}.
+-type remove_stream_group_locations_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -441,23 +620,101 @@
 
 
 %% Example:
-%% get_application_output() :: #{
-%%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()),
-%%   <<"ApplicationSourceUri">> => string(),
-%%   <<"Arn">> => string(),
+%% resolution() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer()
+%% }
+-type resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_stream_url_input() :: #{
+%%   <<"RevocationMode">> => list(any())
+%% }
+-type revoke_stream_url_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_environment() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type runtime_environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% shader_cache_summary() :: #{
+%%   <<"ApplicationArn">> => string(),
 %%   <<"AssociatedStreamGroups">> => list(string()),
+%%   <<"Identifier">> => string(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StorageBytes">> => [float()]
+%% }
+-type shader_cache_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_stream_session_input() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationIdentifier">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectionTimeoutSeconds">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"Locations">> => list(string()),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
+%%   <<"Protocol">> := list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"SignalRequest">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type start_stream_session_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_stream_session_output() :: #{
+%%   <<"AdditionalEnvironmentVariables">> => map(),
+%%   <<"AdditionalLaunchArgs">> => list([string()]()),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ConnectionTimeoutSeconds">> => integer(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
-%%   <<"ExecutablePath">> => string(),
-%%   <<"Id">> => string(),
+%%   <<"DisplayConfiguration">> => display_configuration(),
+%%   <<"ExportFilesMetadata">> => export_files_metadata(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"ReplicationStatuses">> => list(replication_status()),
-%%   <<"RuntimeEnvironment">> => runtime_environment(),
+%%   <<"Location">> => string(),
+%%   <<"LogFileLocationUri">> => string(),
+%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"SignalRequest">> => string(),
+%%   <<"SignalResponse">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any())
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamGroupId">> => string(),
+%%   <<"UserId">> => string(),
+%%   <<"WebSdkProtocolUrl">> => string()
 %% }
--type get_application_output() :: #{binary() => any()}.
+-type start_stream_session_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,98 +733,61 @@
 
 
 %% Example:
-%% create_stream_group_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DefaultApplicationIdentifier">> => string(),
-%%   <<"Description">> := string(),
-%%   <<"LocationConfigurations">> => list(location_configuration()),
-%%   <<"StreamClass">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_stream_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
+%% stream_session_access_not_ready_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type stream_session_access_not_ready_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_transit_configuration() :: #{
-%%   <<"Ipv4CidrBlocks">> => list(string()),
-%%   <<"VpcId">> => string()
+%% stream_session_summary() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ExportFilesMetadata">> => export_files_metadata(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Location">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UserId">> => string()
 %% }
--type vpc_transit_configuration() :: #{binary() => any()}.
+-type stream_session_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
+%% stream_url_summary() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"RemainingUses">> => integer(),
+%%   <<"SessionLengthSeconds">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamGroupArn">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"StreamUrlId">> => string(),
+%%   <<"UsageLimit">> => integer()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type stream_url_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_application_input() :: #{}
--type delete_application_input() :: #{}.
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
-
 %% Example:
-%% create_stream_session_admin_shell_output() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"StreamUrl">> => string(),
-%%   <<"TokenValue">> => string()
-%% }
--type create_stream_session_admin_shell_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stream_session_connection_output() :: #{
-%%   <<"SignalResponse">> => string()
-%% }
--type create_stream_session_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_environment() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type runtime_environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_group_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedApplications">> => list(string()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DefaultApplication">> => default_application(),
-%%   <<"Description">> => string(),
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"LocationStates">> => list(location_state()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"StreamClass">> => list(any())
-%% }
--type get_stream_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+%% terminate_stream_session_input() :: #{}
+-type terminate_stream_session_input() :: #{}.
 
 
 %% Example:
@@ -578,16 +798,14 @@
 
 
 %% Example:
-%% application_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"RuntimeEnvironment">> => runtime_environment(),
-%%   <<"Status">> => list(any())
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type application_summary() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -597,101 +815,6 @@
 %%   <<"Description">> => string()
 %% }
 -type update_application_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_stream_group_locations_input() :: #{
-%%   <<"LocationConfigurations">> := list(location_configuration())
-%% }
--type add_stream_group_locations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_transit_configuration_response() :: #{
-%%   <<"Ipv4CidrBlocks">> => list(string()),
-%%   <<"TransitGatewayId">> => [string()],
-%%   <<"TransitGatewayResourceShareArn">> => [string()],
-%%   <<"VpcId">> => string()
-%% }
--type vpc_transit_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_stream_group_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedApplications">> => list(string()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DefaultApplication">> => default_application(),
-%%   <<"Description">> => string(),
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"LocationStates">> => list(location_state()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"StreamClass">> => list(any())
-%% }
--type update_stream_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_stream_session_files_input() :: #{
-%%   <<"OutputUri">> := string()
-%% }
--type export_stream_session_files_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_groups_output() :: #{
-%%   <<"Items">> => list(stream_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_stream_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_input() :: #{}
--type get_application_input() :: #{}.
-
-
-%% Example:
-%% list_stream_sessions_input() :: #{
-%%   <<"ExportFilesStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_stream_sessions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_session_output() :: #{
-%%   <<"AdditionalEnvironmentVariables">> => map(),
-%%   <<"AdditionalLaunchArgs">> => list([string()]()),
-%%   <<"ApplicationArn">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ConnectionTimeoutSeconds">> => integer(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ExportFilesMetadata">> => export_files_metadata(),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"Location">> => string(),
-%%   <<"LogFileLocationUri">> => string(),
-%%   <<"PerformanceStatsConfiguration">> => performance_stats_configuration(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"SessionLengthSeconds">> => integer(),
-%%   <<"SignalRequest">> => string(),
-%%   <<"SignalResponse">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"StreamGroupId">> => string(),
-%%   <<"UserId">> => string(),
-%%   <<"WebSdkProtocolUrl">> => string()
-%% }
--type get_stream_session_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_stream_session_input() :: #{}
--type get_stream_session_input() :: #{}.
 
 
 %% Example:
@@ -713,186 +836,274 @@
 %% }
 -type update_application_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_stream_group_input() :: #{
+%%   <<"DefaultApplicationIdentifier">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LocationConfigurations">> => list(location_configuration())
+%% }
+-type update_stream_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stream_group_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedApplications">> => list(string()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DefaultApplication">> => default_application(),
+%%   <<"Description">> => string(),
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"LocationStates">> => list(location_state()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"StreamClass">> => list(any())
+%% }
+-type update_stream_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_transit_configuration() :: #{
+%%   <<"Ipv4CidrBlocks">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_transit_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_transit_configuration_response() :: #{
+%%   <<"Ipv4CidrBlocks">> => list(string()),
+%%   <<"TransitGatewayId">> => [string()],
+%%   <<"TransitGatewayResourceShareArn">> => [string()],
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_transit_configuration_response() :: #{binary() => any()}.
+
 -type add_stream_group_locations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type associate_applications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_stream_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_stream_session_admin_shell_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
+    stream_session_access_not_ready_exception() | 
     resource_not_found_exception() | 
-    stream_session_access_not_ready_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_stream_session_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
--type delete_stream_group_errors() ::
-    throttling_exception() | 
+-type create_stream_url_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type disassociate_applications_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type export_stream_session_files_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_stream_group_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_stream_session_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_applications_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type list_stream_groups_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type list_stream_sessions_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_stream_sessions_by_account_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type list_tags_for_resource_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type remove_stream_group_locations_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type start_stream_session_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type tag_resource_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type terminate_stream_session_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type untag_resource_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
-
--type update_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_stream_group_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_stream_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type disassociate_applications_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type export_stream_session_files_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_stream_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_stream_session_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_stream_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_application_shader_caches_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_applications_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_stream_groups_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_stream_sessions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_stream_sessions_by_account_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_stream_urls_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type remove_stream_group_locations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type revoke_stream_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_stream_session_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type terminate_stream_session_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_stream_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1261,6 +1472,49 @@ create_stream_session_connection(Client, Identifier, StreamSessionIdentifier, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a stream URL that grants temporary access to a stream session
+%% in a web browser without requiring an Amazon Web Services account or
+%% client integration.
+%%
+%% You can use the stream URL to start a stream session up to the number of
+%% times set by `UsageLimit', until it expires after
+%% `UrlExpiresAfterMinutes'. Each successful use starts a new stream
+%% session.
+%%
+%% To make the request idempotent, provide a `ClientToken'.
+-spec create_stream_url(aws_client:aws_client(), binary() | list(), create_stream_url_input()) ->
+    {ok, create_stream_url_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_url_errors(), tuple()}.
+create_stream_url(Client, Identifier, Input) ->
+    create_stream_url(Client, Identifier, Input, []).
+
+-spec create_stream_url(aws_client:aws_client(), binary() | list(), create_stream_url_input(), proplists:proplist()) ->
+    {ok, create_stream_url_output(), tuple()} |
+    {error, any()} |
+    {error, create_stream_url_errors(), tuple()}.
+create_stream_url(Client, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/streamgroups/", aws_util:encode_uri(Identifier), "/streamurls"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Permanently deletes an Amazon GameLift Streams application resource.
 %%
 %% This also deletes the application content files stored with Amazon
@@ -1608,6 +1862,91 @@ get_stream_session(Client, Identifier, StreamSessionIdentifier, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves properties for a stream URL, including its current status,
+%% usage, and the stream sessions started through it.
+%%
+%% If you delete the stream group or application that backs the stream URL,
+%% this operation updates the status of the stream URL to `REVOKED'.
+-spec get_stream_url(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_stream_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_url_errors(), tuple()}.
+get_stream_url(Client, Identifier, StreamUrlIdentifier)
+  when is_map(Client) ->
+    get_stream_url(Client, Identifier, StreamUrlIdentifier, #{}, #{}).
+
+-spec get_stream_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_stream_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_url_errors(), tuple()}.
+get_stream_url(Client, Identifier, StreamUrlIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stream_url(Client, Identifier, StreamUrlIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_stream_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_stream_url_output(), tuple()} |
+    {error, any()} |
+    {error, get_stream_url_errors(), tuple()}.
+get_stream_url(Client, Identifier, StreamUrlIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/streamgroups/", aws_util:encode_uri(Identifier), "/streamurls/", aws_util:encode_uri(StreamUrlIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the shader caches associated with an Amazon GameLift Streams
+%% application.
+%%
+%% Each shader cache entry includes its status, associated stream groups, and
+%% size in bytes.
+%%
+%% Returns shader caches associated with the specified Amazon GameLift
+%% Streams application in all statuses.
+-spec list_application_shader_caches(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_application_shader_caches_output(), tuple()} |
+    {error, any()} |
+    {error, list_application_shader_caches_errors(), tuple()}.
+list_application_shader_caches(Client, Identifier)
+  when is_map(Client) ->
+    list_application_shader_caches(Client, Identifier, #{}, #{}).
+
+-spec list_application_shader_caches(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_application_shader_caches_output(), tuple()} |
+    {error, any()} |
+    {error, list_application_shader_caches_errors(), tuple()}.
+list_application_shader_caches(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_application_shader_caches(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec list_application_shader_caches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_application_shader_caches_output(), tuple()} |
+    {error, any()} |
+    {error, list_application_shader_caches_errors(), tuple()}.
+list_application_shader_caches(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(Identifier), "/shadercaches"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of all Amazon GameLift Streams applications that are
 %% associated with the Amazon Web Services account in use.
 %%
@@ -1806,6 +2145,56 @@ list_stream_sessions_by_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of the stream URLs in the current Amazon Web
+%% Services Region for your Amazon Web Services account.
+%%
+%% You can filter the results by status or by stream group. Use the
+%% pagination parameters to retrieve results as a set of sequential pages. If
+%% you delete the stream group or application that backs a stream URL, this
+%% operation updates that stream URL's status to `REVOKED'.
+-spec list_stream_urls(aws_client:aws_client()) ->
+    {ok, list_stream_urls_output(), tuple()} |
+    {error, any()} |
+    {error, list_stream_urls_errors(), tuple()}.
+list_stream_urls(Client)
+  when is_map(Client) ->
+    list_stream_urls(Client, #{}, #{}).
+
+-spec list_stream_urls(aws_client:aws_client(), map(), map()) ->
+    {ok, list_stream_urls_output(), tuple()} |
+    {error, any()} |
+    {error, list_stream_urls_errors(), tuple()}.
+list_stream_urls(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_stream_urls(Client, QueryMap, HeadersMap, []).
+
+-spec list_stream_urls(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_stream_urls_output(), tuple()} |
+    {error, any()} |
+    {error, list_stream_urls_errors(), tuple()}.
+list_stream_urls(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/streamurls"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)},
+        {<<"StreamGroupIdentifier">>, maps:get(<<"StreamGroupIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves all tags assigned to a Amazon GameLift Streams resource.
 %%
 %% To list tags for a resource, specify the ARN value for the resource.
@@ -1899,6 +2288,48 @@ remove_stream_group_locations(Client, Identifier, Input0, Options0) ->
                      {<<"locations">>, <<"Locations">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Revokes a stream URL so that it can no longer start new stream
+%% sessions.
+%%
+%% By default, stream sessions that are already running continue until they
+%% end on their own. To also end running sessions, set `RevocationMode'
+%% to `REVOKE_AND_TERMINATE_SESSIONS'.
+%%
+%% Revoking a stream URL is permanent. The status of the stream URL changes
+%% to `REVOKED'.
+-spec revoke_stream_url(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_stream_url_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_stream_url_errors(), tuple()}.
+revoke_stream_url(Client, Identifier, StreamUrlIdentifier, Input) ->
+    revoke_stream_url(Client, Identifier, StreamUrlIdentifier, Input, []).
+
+-spec revoke_stream_url(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_stream_url_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, revoke_stream_url_errors(), tuple()}.
+revoke_stream_url(Client, Identifier, StreamUrlIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/streamgroups/", aws_util:encode_uri(Identifier), "/streamurls/", aws_util:encode_uri(StreamUrlIdentifier), "/revoke"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This action initiates a new stream session and outputs connection

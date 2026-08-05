@@ -68,290 +68,19 @@
 
 
 %% Example:
-%% get_component_output() :: #{
-%%   <<"Component">> => component(),
-%%   <<"Tags">> => map()
-%% }
--type get_component_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% operation() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
+%% application() :: #{
+%%   <<"AppRegistryArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedApplicationArns">> => list(string()),
+%%   <<"Components">> => list(string()),
+%%   <<"DiscoveryStatus">> => list(any()),
 %%   <<"Id">> => string(),
-%%   <<"LastUpdatedTime">> => [non_neg_integer()],
-%%   <<"Properties">> => map(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"LastUpdated">> => [non_neg_integer()],
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => [string()],
-%%   <<"Type">> => string()
+%%   <<"Type">> => list(any())
 %% }
--type operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_permission_output() :: #{
-%%   <<"Policy">> => [string()]
-%% }
--type put_resource_permission_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_check_result() :: #{
-%%   <<"Description">> => [string()],
-%%   <<"Id">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"References">> => list([string()]())
-%% }
--type sub_check_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_configuration_checks_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"ConfigurationCheckIds">> => list(list(any())())
-%% }
--type start_configuration_checks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_application_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type start_application_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_check_rule_results_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SubCheckResultId">> := string()
-%% }
--type list_sub_check_rule_results_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% database() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ComponentId">> => string(),
-%%   <<"ConnectedComponentArns">> => list(string()),
-%%   <<"Credentials">> => list(application_credential()),
-%%   <<"DatabaseId">> => string(),
-%%   <<"DatabaseName">> => [string()],
-%%   <<"DatabaseType">> => list(any()),
-%%   <<"LastUpdated">> => [non_neg_integer()],
-%%   <<"PrimaryHost">> => [string()],
-%%   <<"SQLPort">> => [integer()],
-%%   <<"Status">> => list(any())
-%% }
--type database() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_application_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type stop_application_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_check_rule_results_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleResults">> => list(rule_result())
-%% }
--type list_sub_check_rule_results_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% register_application_output() :: #{
-%%   <<"Application">> => application(),
-%%   <<"OperationId">> => string()
-%% }
--type register_application_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_operations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Operations">> => list(operation())
-%% }
--type list_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_connection() :: #{
-%%   <<"ConnectionIp">> => [string()],
-%%   <<"DatabaseArn">> => string(),
-%%   <<"DatabaseConnectionMethod">> => list(any())
-%% }
--type database_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_address_member() :: #{
-%%   <<"AllocationType">> => list(any()),
-%%   <<"IpAddress">> => [string()],
-%%   <<"Primary">> => [boolean()]
-%% }
--type ip_address_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% backint_config() :: #{
-%%   <<"BackintMode">> => list(any()),
-%%   <<"EnsureNoBackupInProcess">> => [boolean()]
-%% }
--type backint_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_check_operation_output() :: #{
-%%   <<"ConfigurationCheckOperation">> => configuration_check_operation()
-%% }
--type get_configuration_check_operation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_permission_output() :: #{
-%%   <<"Policy">> => [string()]
-%% }
--type delete_resource_permission_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_check_operations_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"ListMode">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_check_operations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_operation_events_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OperationEvents">> => list(operation_event())
-%% }
--type list_operation_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_summary() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ComponentId">> => string(),
-%%   <<"ComponentType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type component_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_output() :: #{
-%%   <<"Components">> => list(component_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_components_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resilience() :: #{
-%%   <<"ClusterStatus">> => list(any()),
-%%   <<"EnqueueReplication">> => [boolean()],
-%%   <<"HsrOperationMode">> => list(any()),
-%%   <<"HsrReplicationMode">> => list(any()),
-%%   <<"HsrTier">> => [string()]
-%% }
--type resilience() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_application_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"IncludeEc2InstanceShutdown">> => [boolean()],
-%%   <<"StopConnectedEntity">> => list(any())
-%% }
--type stop_application_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_configuration_checks_output() :: #{
-%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation())
-%% }
--type start_configuration_checks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_databases_input() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ComponentId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_databases_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_operation_events_input() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationId">> := string()
-%% }
--type list_operation_events_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_output() :: #{
-%%   <<"Applications">> => list(application_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_application_input() :: #{
-%%   <<"ApplicationId">> := string()
-%% }
--type deregister_application_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_operation_output() :: #{
-%%   <<"Operation">> => operation()
-%% }
--type get_operation_output() :: #{binary() => any()}.
+-type application() :: #{binary() => any()}.
 
 
 %% Example:
@@ -364,80 +93,32 @@
 
 
 %% Example:
-%% start_application_refresh_input() :: #{
-%%   <<"ApplicationId">> := string()
-%% }
--type start_application_refresh_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_input() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_database_output() :: #{
-%%   <<"Database">> => database(),
-%%   <<"Tags">> => map()
-%% }
--type get_database_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_operation_input() :: #{
-%%   <<"OperationId">> := string()
-%% }
--type get_operation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_check_operation() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ConfigurationCheckDescription">> => [string()],
-%%   <<"ConfigurationCheckId">> => list(any()),
-%%   <<"ConfigurationCheckName">> => [string()],
-%%   <<"EndTime">> => [non_neg_integer()],
+%% application_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DiscoveryStatus">> => list(any()),
 %%   <<"Id">> => string(),
-%%   <<"RuleStatusCounts">> => rule_status_counts(),
-%%   <<"StartTime">> => [non_neg_integer()],
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
 %% }
--type configuration_check_operation() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_application_settings_output() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"OperationIds">> => list(string())
+%% associated_host() :: #{
+%%   <<"Ec2InstanceId">> => [string()],
+%%   <<"Hostname">> => [string()],
+%%   <<"IpAddresses">> => list(ip_address_member()),
+%%   <<"OsVersion">> => [string()]
 %% }
--type update_application_settings_output() :: #{binary() => any()}.
+-type associated_host() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_databases_output() :: #{
-%%   <<"Databases">> => list(database_summary()),
-%%   <<"NextToken">> => string()
+%% backint_config() :: #{
+%%   <<"BackintMode">> => list(any()),
+%%   <<"EnsureNoBackupInProcess">> => [boolean()]
 %% }
--type list_databases_output() :: #{binary() => any()}.
+-type backint_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,154 +148,23 @@
 
 
 %% Example:
-%% list_components_input() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% component_info() :: #{
+%%   <<"ComponentType">> => list(any()),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Sid">> => string()
 %% }
--type list_components_input() :: #{binary() => any()}.
+-type component_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% application() :: #{
-%%   <<"AppRegistryArn">> => string(),
+%% component_summary() :: #{
+%%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedApplicationArns">> => list(string()),
-%%   <<"Components">> => list(string()),
-%%   <<"DiscoveryStatus">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdated">> => [non_neg_integer()],
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()],
-%%   <<"Type">> => list(any())
-%% }
--type application() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_check_operations_output() :: #{
-%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_check_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_permission_input() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceResourceArn">> => string()
-%% }
--type delete_resource_permission_input() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_application_output() :: #{}
--type deregister_application_output() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_database_input() :: #{
-%%   <<"ApplicationId">> => string(),
 %%   <<"ComponentId">> => string(),
-%%   <<"DatabaseArn">> => string(),
-%%   <<"DatabaseId">> => string()
-%% }
--type get_database_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% operation_event() :: #{
-%%   <<"Description">> => [string()],
-%%   <<"Resource">> => resource(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()],
-%%   <<"Timestamp">> => [non_neg_integer()]
-%% }
--type operation_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_check_definitions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_check_definitions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% host() :: #{
-%%   <<"EC2InstanceId">> => [string()],
-%%   <<"HostIp">> => [string()],
-%%   <<"HostName">> => [string()],
-%%   <<"HostRole">> => list(any()),
-%%   <<"InstanceId">> => [string()],
-%%   <<"OsVersion">> => [string()]
-%% }
--type host() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_application_input() :: #{
-%%   <<"ApplicationId">> := string()
-%% }
--type start_application_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_output() :: #{
-%%   <<"Application">> => application(),
+%%   <<"ComponentType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type get_application_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_check_definitions_output() :: #{
-%%   <<"ConfigurationChecks">> => list(configuration_check_definition()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_check_definitions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"ComponentId">> := string()
-%% }
--type get_component_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_host() :: #{
-%%   <<"Ec2InstanceId">> => [string()],
-%%   <<"Hostname">> => [string()],
-%%   <<"IpAddresses">> => list(ip_address_member()),
-%%   <<"OsVersion">> => [string()]
-%% }
--type associated_host() :: #{binary() => any()}.
+-type component_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -628,66 +178,53 @@
 
 
 %% Example:
-%% get_configuration_check_operation_input() :: #{
-%%   <<"OperationId">> := string()
-%% }
--type get_configuration_check_operation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_info() :: #{
-%%   <<"ComponentType">> => list(any()),
-%%   <<"Ec2InstanceId">> => string(),
-%%   <<"Sid">> => string()
-%% }
--type component_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_settings_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"Backint">> => backint_config(),
-%%   <<"CredentialsToAddOrUpdate">> => list(application_credential()),
-%%   <<"CredentialsToRemove">> => list(application_credential()),
-%%   <<"DatabaseArn">> => string()
-%% }
--type update_application_settings_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% rule_result() :: #{
-%%   <<"Description">> => [string()],
+%% configuration_check_operation() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationCheckDescription">> => [string()],
+%%   <<"ConfigurationCheckId">> => list(any()),
+%%   <<"ConfigurationCheckName">> => [string()],
+%%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"Id">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"Metadata">> => map(),
-%%   <<"Status">> => list(any())
+%%   <<"RuleStatusCounts">> => rule_status_counts(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
 %% }
--type rule_result() :: #{binary() => any()}.
+-type configuration_check_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_operations_input() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% database() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"ConnectedComponentArns">> => list(string()),
+%%   <<"Credentials">> => list(application_credential()),
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseName">> => [string()],
+%%   <<"DatabaseType">> => list(any()),
+%%   <<"LastUpdated">> => [non_neg_integer()],
+%%   <<"PrimaryHost">> => [string()],
+%%   <<"SQLPort">> => [integer()],
+%%   <<"Status">> => list(any())
 %% }
--type list_operations_input() :: #{binary() => any()}.
+-type database() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_connection() :: #{
+%%   <<"ConnectionIp">> => [string()],
+%%   <<"DatabaseArn">> => string(),
+%%   <<"DatabaseConnectionMethod">> => list(any())
+%% }
+-type database_connection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -703,53 +240,39 @@
 
 
 %% Example:
-%% get_resource_permission_input() :: #{
+%% delete_resource_permission_input() :: #{
 %%   <<"ActionType">> => list(any()),
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_permission_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_check_results_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SubCheckResults">> => list(sub_check_result())
-%% }
--type list_sub_check_results_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_application_refresh_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type start_application_refresh_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DiscoveryStatus">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type application_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_permission_input() :: #{
-%%   <<"ActionType">> := list(any()),
 %%   <<"ResourceArn">> := string(),
-%%   <<"SourceResourceArn">> := string()
+%%   <<"SourceResourceArn">> => string()
 %% }
--type put_resource_permission_input() :: #{binary() => any()}.
+-type delete_resource_permission_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_resource_permission_output() :: #{
+%% delete_resource_permission_output() :: #{
 %%   <<"Policy">> => [string()]
 %% }
--type get_resource_permission_output() :: #{binary() => any()}.
+-type delete_resource_permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_application_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type deregister_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_application_output() :: #{}
+-type deregister_application_output() :: #{}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,14 +285,328 @@
 
 
 %% Example:
-%% rule_status_counts() :: #{
-%%   <<"Failed">> => [integer()],
-%%   <<"Info">> => [integer()],
-%%   <<"Passed">> => [integer()],
-%%   <<"Unknown">> => [integer()],
-%%   <<"Warning">> => [integer()]
+%% get_application_output() :: #{
+%%   <<"Application">> => application(),
+%%   <<"Tags">> => map()
 %% }
--type rule_status_counts() :: #{binary() => any()}.
+-type get_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"ComponentId">> := string()
+%% }
+-type get_component_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_output() :: #{
+%%   <<"Component">> => component(),
+%%   <<"Tags">> => map()
+%% }
+-type get_component_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_check_operation_input() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_configuration_check_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_check_operation_output() :: #{
+%%   <<"ConfigurationCheckOperation">> => configuration_check_operation()
+%% }
+-type get_configuration_check_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_database_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"DatabaseArn">> => string(),
+%%   <<"DatabaseId">> => string()
+%% }
+-type get_database_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_database_output() :: #{
+%%   <<"Database">> => database(),
+%%   <<"Tags">> => map()
+%% }
+-type get_database_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_operation_input() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_operation_output() :: #{
+%%   <<"Operation">> => operation()
+%% }
+-type get_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_permission_input() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_permission_output() :: #{
+%%   <<"Policy">> => [string()]
+%% }
+-type get_resource_permission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% host() :: #{
+%%   <<"EC2InstanceId">> => [string()],
+%%   <<"HostIp">> => [string()],
+%%   <<"HostName">> => [string()],
+%%   <<"HostRole">> => list(any()),
+%%   <<"InstanceId">> => [string()],
+%%   <<"OsVersion">> => [string()]
+%% }
+-type host() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_address_member() :: #{
+%%   <<"AllocationType">> => list(any()),
+%%   <<"IpAddress">> => [string()],
+%%   <<"Primary">> => [boolean()]
+%% }
+-type ip_address_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_input() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_output() :: #{
+%%   <<"Applications">> => list(application_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_output() :: #{
+%%   <<"Components">> => list(component_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_definitions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_definitions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_definitions_output() :: #{
+%%   <<"ConfigurationChecks">> => list(configuration_check_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_definitions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_operations_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ListMode">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_operations_output() :: #{
+%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_databases_input() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ComponentId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_databases_output() :: #{
+%%   <<"Databases">> => list(database_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operation_events_input() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string()
+%% }
+-type list_operation_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operation_events_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OperationEvents">> => list(operation_event())
+%% }
+-type list_operation_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operations_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_operations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Operations">> => list(operation())
+%% }
+-type list_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string()
+%% }
+-type list_sub_check_results_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubCheckResults">> => list(sub_check_result())
+%% }
+-type list_sub_check_results_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_rule_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubCheckResultId">> := string()
+%% }
+-type list_sub_check_rule_results_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_rule_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleResults">> => list(rule_result())
+%% }
+-type list_sub_check_rule_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Properties">> => map(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation_event() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Resource">> => resource(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type operation_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_input() :: #{
+%%   <<"ActionType">> := list(any()),
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceResourceArn">> := string()
+%% }
+-type put_resource_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_permission_output() :: #{
+%%   <<"Policy">> => [string()]
+%% }
+-type put_resource_permission_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -788,12 +625,22 @@
 
 
 %% Example:
-%% list_sub_check_results_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationId">> := string()
+%% register_application_output() :: #{
+%%   <<"Application">> => application(),
+%%   <<"OperationId">> => string()
 %% }
--type list_sub_check_results_input() :: #{binary() => any()}.
+-type register_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resilience() :: #{
+%%   <<"ClusterStatus">> => list(any()),
+%%   <<"EnqueueReplication">> => [boolean()],
+%%   <<"HsrOperationMode">> => list(any()),
+%%   <<"HsrReplicationMode">> => list(any()),
+%%   <<"HsrTier">> => [string()]
+%% }
+-type resilience() :: #{binary() => any()}.
 
 
 %% Example:
@@ -803,15 +650,168 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_result() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"Metadata">> => map(),
+%%   <<"Status">> => list(any())
+%% }
+-type rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_status_counts() :: #{
+%%   <<"Failed">> => [integer()],
+%%   <<"Info">> => [integer()],
+%%   <<"Passed">> => [integer()],
+%%   <<"Unknown">> => [integer()],
+%%   <<"Warning">> => [integer()]
+%% }
+-type rule_status_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type start_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type start_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_refresh_input() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type start_application_refresh_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_application_refresh_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type start_application_refresh_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_checks_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"ConfigurationCheckIds">> => list(list(any())())
+%% }
+-type start_configuration_checks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_checks_output() :: #{
+%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation())
+%% }
+-type start_configuration_checks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_application_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"IncludeEc2InstanceShutdown">> => [boolean()],
+%%   <<"StopConnectedEntity">> => list(any())
+%% }
+-type stop_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_application_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type stop_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sub_check_result() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"References">> => list([string()]())
+%% }
+-type sub_check_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_application_settings_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Backint">> => backint_config(),
+%%   <<"CredentialsToAddOrUpdate">> => list(application_credential()),
+%%   <<"CredentialsToRemove">> => list(application_credential()),
+%%   <<"DatabaseArn">> => string()
+%% }
+-type update_application_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_settings_output() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"OperationIds">> => list(string())
+%% }
+-type update_application_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type delete_resource_permission_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type deregister_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    unauthorized_exception().
+    unauthorized_exception() | 
+    internal_server_exception().
 
 -type get_application_errors() ::
     validation_exception() | 
@@ -819,8 +819,8 @@
 
 -type get_component_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    unauthorized_exception().
+    unauthorized_exception() | 
+    internal_server_exception().
 
 -type get_configuration_check_operation_errors() ::
     validation_exception() | 
@@ -836,19 +836,19 @@
 
 -type get_resource_permission_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_applications_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_components_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception().
 
 -type list_configuration_check_definitions_errors() ::
     validation_exception() | 
@@ -856,13 +856,13 @@
 
 -type list_configuration_check_operations_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_databases_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_operation_events_errors() ::
     validation_exception() | 
@@ -887,38 +887,38 @@
 
 -type put_resource_permission_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type register_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_application_refresh_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    conflict_exception().
 
 -type start_configuration_checks_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
@@ -933,10 +933,10 @@
 
 -type update_application_settings_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API

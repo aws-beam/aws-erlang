@@ -19,8 +19,14 @@
          associate_assets/4,
          associate_time_series_to_asset_property/2,
          associate_time_series_to_asset_property/3,
+         batch_associate_data_segments_to_dataset/3,
+         batch_associate_data_segments_to_dataset/4,
          batch_associate_project_assets/3,
          batch_associate_project_assets/4,
+         batch_delete_dataset_data_segments/3,
+         batch_delete_dataset_data_segments/4,
+         batch_disassociate_data_segments_from_dataset/3,
+         batch_disassociate_data_segments_from_dataset/4,
          batch_disassociate_project_assets/3,
          batch_disassociate_project_assets/4,
          batch_get_asset_property_aggregates/2,
@@ -31,8 +37,16 @@
          batch_get_asset_property_value_history/3,
          batch_put_asset_property_value/2,
          batch_put_asset_property_value/3,
+         cancel_enrichment_job/4,
+         cancel_enrichment_job/5,
+         cancel_pipeline_execution/5,
+         cancel_pipeline_execution/6,
+         cancel_query/4,
+         cancel_query/5,
          create_access_policy/2,
          create_access_policy/3,
+         create_application/2,
+         create_application/3,
          create_asset/2,
          create_asset/3,
          create_asset_model/2,
@@ -47,14 +61,26 @@
          create_dashboard/3,
          create_dataset/2,
          create_dataset/3,
+         create_dataset_export_job/3,
+         create_dataset_export_job/4,
+         create_enrichment_job/3,
+         create_enrichment_job/4,
          create_gateway/2,
          create_gateway/3,
+         create_pipeline/3,
+         create_pipeline/4,
          create_portal/2,
          create_portal/3,
          create_project/2,
          create_project/3,
+         create_task/3,
+         create_task/4,
+         create_workspace/2,
+         create_workspace/3,
          delete_access_policy/3,
          delete_access_policy/4,
+         delete_application/4,
+         delete_application/5,
          delete_asset/3,
          delete_asset/4,
          delete_asset_model/3,
@@ -71,18 +97,27 @@
          delete_dataset/4,
          delete_gateway/3,
          delete_gateway/4,
+         delete_pipeline/4,
+         delete_pipeline/5,
          delete_portal/3,
          delete_portal/4,
          delete_project/3,
          delete_project/4,
+         delete_task/4,
+         delete_task/5,
          delete_time_series/2,
          delete_time_series/3,
+         delete_workspace/3,
+         delete_workspace/4,
          describe_access_policy/2,
          describe_access_policy/4,
          describe_access_policy/5,
          describe_action/2,
          describe_action/4,
          describe_action/5,
+         describe_application/3,
+         describe_application/5,
+         describe_application/6,
          describe_asset/2,
          describe_asset/4,
          describe_asset/5,
@@ -116,9 +151,15 @@
          describe_dataset/2,
          describe_dataset/4,
          describe_dataset/5,
+         describe_dataset_export_job/3,
+         describe_dataset_export_job/5,
+         describe_dataset_export_job/6,
          describe_default_encryption_configuration/1,
          describe_default_encryption_configuration/3,
          describe_default_encryption_configuration/4,
+         describe_enrichment_job/3,
+         describe_enrichment_job/5,
+         describe_enrichment_job/6,
          describe_execution/2,
          describe_execution/4,
          describe_execution/5,
@@ -131,18 +172,36 @@
          describe_logging_options/1,
          describe_logging_options/3,
          describe_logging_options/4,
+         describe_pipeline/3,
+         describe_pipeline/5,
+         describe_pipeline/6,
+         describe_pipeline_execution/4,
+         describe_pipeline_execution/6,
+         describe_pipeline_execution/7,
          describe_portal/2,
          describe_portal/4,
          describe_portal/5,
          describe_project/2,
          describe_project/4,
          describe_project/5,
+         describe_query/3,
+         describe_query/5,
+         describe_query/6,
+         describe_search/3,
+         describe_search/5,
+         describe_search/6,
          describe_storage_configuration/1,
          describe_storage_configuration/3,
          describe_storage_configuration/4,
+         describe_task/3,
+         describe_task/5,
+         describe_task/6,
          describe_time_series/1,
          describe_time_series/3,
          describe_time_series/4,
+         describe_workspace/2,
+         describe_workspace/4,
+         describe_workspace/5,
          disassociate_assets/3,
          disassociate_assets/4,
          disassociate_time_series_from_asset_property/2,
@@ -160,9 +219,17 @@
          get_asset_property_value_history/1,
          get_asset_property_value_history/3,
          get_asset_property_value_history/4,
+         get_capture_data/3,
+         get_capture_data/4,
          get_interpolated_asset_property_values/6,
          get_interpolated_asset_property_values/8,
          get_interpolated_asset_property_values/9,
+         get_query_results/3,
+         get_query_results/5,
+         get_query_results/6,
+         get_search_results/3,
+         get_search_results/5,
+         get_search_results/6,
          invoke_assistant/2,
          invoke_assistant/3,
          list_access_policies/1,
@@ -171,6 +238,9 @@
          list_actions/3,
          list_actions/5,
          list_actions/6,
+         list_applications/1,
+         list_applications/3,
+         list_applications/4,
          list_asset_model_composite_models/2,
          list_asset_model_composite_models/4,
          list_asset_model_composite_models/5,
@@ -209,9 +279,21 @@
          list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
+         list_dataset_data_segment_relationships/3,
+         list_dataset_data_segment_relationships/5,
+         list_dataset_data_segment_relationships/6,
+         list_dataset_data_segments/3,
+         list_dataset_data_segments/5,
+         list_dataset_data_segments/6,
+         list_dataset_export_jobs/2,
+         list_dataset_export_jobs/4,
+         list_dataset_export_jobs/5,
          list_datasets/2,
          list_datasets/4,
          list_datasets/5,
+         list_enrichment_jobs/2,
+         list_enrichment_jobs/4,
+         list_enrichment_jobs/5,
          list_executions/3,
          list_executions/5,
          list_executions/6,
@@ -221,6 +303,12 @@
          list_interface_relationships/2,
          list_interface_relationships/4,
          list_interface_relationships/5,
+         list_pipeline_executions/3,
+         list_pipeline_executions/5,
+         list_pipeline_executions/6,
+         list_pipelines/2,
+         list_pipelines/4,
+         list_pipelines/5,
          list_portals/1,
          list_portals/3,
          list_portals/4,
@@ -230,12 +318,23 @@
          list_projects/2,
          list_projects/4,
          list_projects/5,
+         list_queries/2,
+         list_queries/4,
+         list_queries/5,
+         list_searches/3,
+         list_searches/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_tasks/2,
+         list_tasks/4,
+         list_tasks/5,
          list_time_series/1,
          list_time_series/3,
          list_time_series/4,
+         list_workspaces/1,
+         list_workspaces/3,
+         list_workspaces/4,
          put_asset_model_interface_relationship/4,
          put_asset_model_interface_relationship/5,
          put_default_encryption_configuration/2,
@@ -244,6 +343,12 @@
          put_logging_options/3,
          put_storage_configuration/2,
          put_storage_configuration/3,
+         start_pipeline_execution/4,
+         start_pipeline_execution/5,
+         start_query/3,
+         start_query/4,
+         start_search/3,
+         start_search/4,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -268,52 +373,54 @@
          update_gateway/4,
          update_gateway_capability_configuration/3,
          update_gateway_capability_configuration/4,
+         update_pipeline/4,
+         update_pipeline/5,
          update_portal/3,
          update_portal/4,
          update_project/3,
-         update_project/4]).
+         update_project/4,
+         update_task/4,
+         update_task/5,
+         update_workspace/3,
+         update_workspace/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
 
 %% Example:
-%% delete_asset_model_response() :: #{
-%%   <<"assetModelStatus">> => asset_model_status()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_asset_model_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_property_binding_value() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"propertyId">> => string()
+%% access_policy_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"identity">> => identity(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"permission">> => list(any()),
+%%   <<"resource">> => resource()
 %% }
--type asset_property_binding_value() :: #{binary() => any()}.
+-type access_policy_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% siemens_i_e() :: #{
-%%   <<"iotCoreThingName">> => string()
+%% action_definition() :: #{
+%%   <<"actionDefinitionId">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"actionType">> => string()
 %% }
--type siemens_i_e() :: #{binary() => any()}.
+-type action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_gateway_request() :: #{
-%%   <<"gatewayName">> := string()
+%% action_payload() :: #{
+%%   <<"stringValue">> => string()
 %% }
--type update_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_query_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryStatement">> := string()
-%% }
--type execute_query_request() :: #{binary() => any()}.
+-type action_payload() :: #{binary() => any()}.
 
 
 %% Example:
@@ -327,130 +434,275 @@
 
 
 %% Example:
-%% list_dashboards_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectId">> := string()
+%% aggregated_value() :: #{
+%%   <<"quality">> => list(any()),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => aggregates()
 %% }
--type list_dashboards_request() :: #{binary() => any()}.
+-type aggregated_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_asset_property_aggregates_response() :: #{
-%%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()),
-%%   <<"nextToken">> => string(),
-%%   <<"skippedEntries">> => list(batch_get_asset_property_aggregates_skipped_entry()),
-%%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry())
+%% aggregates() :: #{
+%%   <<"average">> => float(),
+%%   <<"count">> => float(),
+%%   <<"maximum">> => float(),
+%%   <<"minimum">> => float(),
+%%   <<"standardDeviation">> => float(),
+%%   <<"sum">> => float()
 %% }
--type batch_get_asset_property_aggregates_response() :: #{binary() => any()}.
+-type aggregates() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_project_response() :: #{
-%%   <<"portalId">> => string(),
-%%   <<"projectArn">> => string(),
-%%   <<"projectCreationDate">> => non_neg_integer(),
-%%   <<"projectDescription">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"projectLastUpdateDate">> => non_neg_integer(),
-%%   <<"projectName">> => string()
+%% alarms() :: #{
+%%   <<"alarmRoleArn">> => string(),
+%%   <<"notificationLambdaArn">> => string()
 %% }
--type describe_project_response() :: #{binary() => any()}.
+-type alarms() :: #{binary() => any()}.
+
+%% Example:
+%% annotation() :: #{}
+-type annotation() :: #{}.
 
 
 %% Example:
-%% put_default_encryption_configuration_response() :: #{
-%%   <<"configurationStatus">> => configuration_status(),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
+%% application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workspaceName">> => string()
 %% }
--type put_default_encryption_configuration_response() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_composition_relationships_response() :: #{
-%%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()),
-%%   <<"nextToken">> => string()
+%% asset_binding_value_filter() :: #{
+%%   <<"assetId">> => string()
 %% }
--type list_composition_relationships_response() :: #{binary() => any()}.
+-type asset_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_asset_model_interface_relationship_response() :: #{
-%%   <<"assetModelArn">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetModelStatus">> => asset_model_status(),
-%%   <<"interfaceAssetModelId">> => string()
+%% asset_composite_model() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_property()),
+%%   <<"type">> => string()
 %% }
--type put_asset_model_interface_relationship_response() :: #{binary() => any()}.
+-type asset_composite_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_policies_response() :: #{
-%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
-%%   <<"nextToken">> => string()
+%% asset_composite_model_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
 %% }
--type list_access_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_dashboard_response() :: #{}
--type update_dashboard_response() :: #{}.
+-type asset_composite_model_path_segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% portal_resource() :: #{
-%%   <<"id">> => string()
+%% asset_composite_model_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_composite_model_path_segment()),
+%%   <<"type">> => string()
 %% }
--type portal_resource() :: #{binary() => any()}.
+-type asset_composite_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_asset_model_composite_model_response() :: #{
-%%   <<"actionDefinitions">> => list(action_definition()),
-%%   <<"assetModelCompositeModelDescription">> => string(),
-%%   <<"assetModelCompositeModelExternalId">> => string(),
-%%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"assetModelCompositeModelName">> => string(),
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
-%%   <<"assetModelCompositeModelType">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"compositionDetails">> => composition_details()
-%% }
--type describe_asset_model_composite_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dashboard_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"dashboardDefinition">> := string(),
-%%   <<"dashboardDescription">> => string(),
-%%   <<"dashboardName">> := string()
-%% }
--type update_dashboard_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
+%% asset_error_details() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"code">> => list(any()),
 %%   <<"message">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
+-type asset_error_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_associate_project_assets_response() :: #{
-%%   <<"errors">> => list(asset_error_details())
+%% asset_hierarchy() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
 %% }
--type batch_associate_project_assets_response() :: #{binary() => any()}.
+-type asset_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_hierarchy_info() :: #{
+%%   <<"childAssetId">> => string(),
+%%   <<"parentAssetId">> => string()
+%% }
+-type asset_hierarchy_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_binding_value_filter() :: #{
+%%   <<"assetModelId">> => string()
+%% }
+-type asset_model_binding_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_model_property()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_definition() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(asset_model_property_definition()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_composite_model_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_composite_model_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_composite_model_path_segment()),
+%%   <<"type">> => string()
+%% }
+-type asset_model_composite_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_hierarchy() :: #{
+%%   <<"childAssetModelId">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_hierarchy_definition() :: #{
+%%   <<"childAssetModelId">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_hierarchy_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property() :: #{
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_property_path_segment()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_binding_value() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_model_property_binding_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_binding_value_filter() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_model_property_binding_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_definition() :: #{
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_path_segment() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type asset_model_property_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_summary() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"interfaceSummaries">> => list(interface_summary()),
+%%   <<"name">> => string(),
+%%   <<"path">> => list(asset_model_property_path_segment()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type asset_model_property_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type asset_model_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetModelType">> => list(any()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => asset_model_status(),
+%%   <<"version">> => string()
+%% }
+-type asset_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -469,229 +721,40 @@
 
 
 %% Example:
-%% conflicting_operation_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string()
+%% asset_property_binding_value() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string()
 %% }
--type conflicting_operation_exception() :: #{binary() => any()}.
+-type asset_property_binding_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_asset_model_composite_model_request() :: #{
-%%   <<"assetModelVersion">> => string()
+%% asset_property_binding_value_filter() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string()
 %% }
--type describe_asset_model_composite_model_request() :: #{binary() => any()}.
+-type asset_property_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_computation_model_response() :: #{
-%%   <<"computationModelStatus">> => computation_model_status()
-%% }
--type update_computation_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_property_aggregates_response() :: #{
-%%   <<"aggregatedValues">> => list(aggregated_value()),
-%%   <<"nextToken">> => string()
-%% }
--type get_asset_property_aggregates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_response() :: #{
-%%   <<"datasetStatus">> => dataset_status()
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_project_assets_response() :: #{
-%%   <<"assetIds">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_project_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset_source() :: #{
-%%   <<"sourceDetail">> => source_detail(),
-%%   <<"sourceFormat">> => list(any()),
-%%   <<"sourceType">> => list(any())
-%% }
--type dataset_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_execution_request() :: #{}
--type describe_execution_request() :: #{}.
-
-
-%% Example:
-%% update_dataset_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetStatus">> => dataset_status()
-%% }
--type update_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% interpolated_asset_property_value() :: #{
-%%   <<"timestamp">> => time_in_nanos(),
-%%   <<"value">> => variant()
-%% }
--type interpolated_asset_property_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% greengrass() :: #{
-%%   <<"groupArn">> => string()
-%% }
--type greengrass() :: #{binary() => any()}.
-
-%% Example:
-%% describe_asset_model_interface_relationship_request() :: #{}
--type describe_asset_model_interface_relationship_request() :: #{}.
-
-
-%% Example:
-%% project_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
+%% asset_property_path_segment() :: #{
 %%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"name">> => string()
 %% }
--type project_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type asset_property_path_segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% detailed_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type detailed_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_hierarchy() :: #{
-%%   <<"childAssetModelId">> => string(),
+%% asset_property_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetCompositeModelId">> => string(),
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string()
+%%   <<"notification">> => property_notification(),
+%%   <<"path">> => list(asset_property_path_segment()),
+%%   <<"unit">> => string()
 %% }
--type asset_model_hierarchy() :: #{binary() => any()}.
-
-
-%% Example:
-%% computation_model_status() :: #{
-%%   <<"error">> => error_details(),
-%%   <<"state">> => list(any())
-%% }
--type computation_model_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_computation_model_response() :: #{
-%%   <<"actionDefinitions">> => list(action_definition()),
-%%   <<"computationModelArn">> => string(),
-%%   <<"computationModelConfiguration">> => computation_model_configuration(),
-%%   <<"computationModelCreationDate">> => non_neg_integer(),
-%%   <<"computationModelDataBinding">> => map(),
-%%   <<"computationModelDescription">> => string(),
-%%   <<"computationModelId">> => string(),
-%%   <<"computationModelLastUpdateDate">> => non_neg_integer(),
-%%   <<"computationModelName">> => string(),
-%%   <<"computationModelStatus">> => computation_model_status(),
-%%   <<"computationModelVersion">> => string()
-%% }
--type describe_computation_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_response() :: #{
-%%   <<"gatewayArn">> => string(),
-%%   <<"gatewayId">> => string()
-%% }
--type create_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_summary() :: #{
-%%   <<"interfaceAssetModelId">> => string(),
-%%   <<"interfaceAssetModelPropertyId">> => string()
-%% }
--type interface_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric() :: #{
-%%   <<"expression">> => string(),
-%%   <<"processingConfig">> => metric_processing_config(),
-%%   <<"variables">> => list(expression_variable()),
-%%   <<"window">> => metric_window()
-%% }
--type metric() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_policy_response() :: #{}
--type delete_access_policy_response() :: #{}.
-
-
-%% Example:
-%% list_gateways_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_gateways_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% expression_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => variable_value()
-%% }
--type expression_variable() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_model_composite_models_response() :: #{
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_model_composite_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bulk_import_job_request() :: #{
-%%   <<"adaptiveIngestion">> => boolean(),
-%%   <<"deleteFilesAfterImport">> => boolean(),
-%%   <<"errorReportLocation">> := error_report_location(),
-%%   <<"files">> := list(file()),
-%%   <<"jobConfiguration">> := job_configuration(),
-%%   <<"jobName">> := string(),
-%%   <<"jobRoleArn">> := string()
-%% }
--type create_bulk_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_property_value_response() :: #{
-%%   <<"propertyValue">> => asset_property_value()
-%% }
--type get_asset_property_value_response() :: #{binary() => any()}.
+-type asset_property_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,418 +765,13 @@
 %% }
 -type asset_property_value() :: #{binary() => any()}.
 
-%% Example:
-%% put_logging_options_response() :: #{}
--type put_logging_options_response() :: #{}.
-
 
 %% Example:
-%% identity() :: #{
-%%   <<"group">> => group_identity(),
-%%   <<"iamRole">> => iam_role_identity(),
-%%   <<"iamUser">> => iam_user_identity(),
-%%   <<"user">> => user_identity()
+%% asset_relationship_summary() :: #{
+%%   <<"hierarchyInfo">> => asset_hierarchy_info(),
+%%   <<"relationshipType">> => list(any())
 %% }
--type identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_format() :: #{
-%%   <<"csv">> => csv(),
-%%   <<"parquet">> => parquet()
-%% }
--type file_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bulk_import_jobs_request() :: #{
-%%   <<"filter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_bulk_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_default_encryption_configuration_response() :: #{
-%%   <<"configurationStatus">> => configuration_status(),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type describe_default_encryption_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_project_request() :: #{}
--type describe_project_request() :: #{}.
-
-
-%% Example:
-%% describe_action_response() :: #{
-%%   <<"actionDefinitionId">> => string(),
-%%   <<"actionId">> => string(),
-%%   <<"actionPayload">> => action_payload(),
-%%   <<"executionTime">> => non_neg_integer(),
-%%   <<"resolveTo">> => resolve_to(),
-%%   <<"targetResource">> => target_resource()
-%% }
--type describe_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bulk_import_job_request() :: #{}
--type describe_bulk_import_job_request() :: #{}.
-
-
-%% Example:
-%% property_value_null_value() :: #{
-%%   <<"valueType">> => list(any())
-%% }
--type property_value_null_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_computation_model_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_computation_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_response() :: #{
-%%   <<"assetArn">> => string(),
-%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
-%%   <<"assetCompositeModels">> => list(asset_composite_model()),
-%%   <<"assetCreationDate">> => non_neg_integer(),
-%%   <<"assetDescription">> => string(),
-%%   <<"assetExternalId">> => string(),
-%%   <<"assetHierarchies">> => list(asset_hierarchy()),
-%%   <<"assetId">> => string(),
-%%   <<"assetLastUpdateDate">> => non_neg_integer(),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetName">> => string(),
-%%   <<"assetProperties">> => list(asset_property()),
-%%   <<"assetStatus">> => asset_status()
-%% }
--type describe_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_asset_property_value_entry() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"entryId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"propertyValues">> => list(asset_property_value())
-%% }
--type put_asset_property_value_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% retention_period() :: #{
-%%   <<"numberOfDays">> => integer(),
-%%   <<"unlimited">> => boolean()
-%% }
--type retention_period() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_skipped_entry() :: #{
-%%   <<"completionStatus">> => list(any()),
-%%   <<"entryId">> => string(),
-%%   <<"errorInfo">> => batch_get_asset_property_value_error_info()
-%% }
--type batch_get_asset_property_value_skipped_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_access_policy_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_access_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_property() :: #{
-%%   <<"dataType">> => list(any()),
-%%   <<"dataTypeSpec">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_property_path_segment()),
-%%   <<"type">> => property_type(),
-%%   <<"unit">> => string()
-%% }
--type asset_model_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% datum() :: #{
-%%   <<"arrayValue">> => list(datum()),
-%%   <<"nullValue">> => boolean(),
-%%   <<"rowValue">> => row(),
-%%   <<"scalarValue">> => string()
-%% }
--type datum() :: #{binary() => any()}.
-
-
-%% Example:
-%% citation() :: #{
-%%   <<"content">> => content(),
-%%   <<"reference">> => reference()
-%% }
--type citation() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_resource() :: #{
-%%   <<"id">> => string()
-%% }
--type project_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_portal_response() :: #{
-%%   <<"portalArn">> => string(),
-%%   <<"portalId">> => string(),
-%%   <<"portalStartUrl">> => string(),
-%%   <<"portalStatus">> => portal_status(),
-%%   <<"ssoApplicationId">> => string()
-%% }
--type create_portal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_property_response() :: #{
-%%   <<"assetExternalId">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetName">> => string(),
-%%   <<"assetProperty">> => property(),
-%%   <<"compositeModel">> => composite_model_property()
-%% }
--type describe_asset_property_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_computation_model_resolve_to_resources_response() :: #{
-%%   <<"computationModelResolveToResourceSummaries">> => list(computation_model_resolve_to_resource_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_computation_model_resolve_to_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_property_value_request() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string()
-%% }
--type get_asset_property_value_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceType">> := list(any())
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_composite_model() :: #{
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_model_property()),
-%%   <<"type">> => string()
-%% }
--type asset_model_composite_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_binding_value_filter() :: #{
-%%   <<"assetModelId">> => string()
-%% }
--type asset_model_binding_value_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_policies_request() :: #{
-%%   <<"iamArn">> => string(),
-%%   <<"identityId">> => string(),
-%%   <<"identityType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type list_access_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_policy_response() :: #{
-%%   <<"accessPolicyArn">> => string(),
-%%   <<"accessPolicyId">> => string()
-%% }
--type create_access_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_report_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type error_report_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_execution_response() :: #{
-%%   <<"actionType">> => string(),
-%%   <<"executionDetails">> => map(),
-%%   <<"executionEndTime">> => non_neg_integer(),
-%%   <<"executionEntityVersion">> => string(),
-%%   <<"executionId">> => string(),
-%%   <<"executionResult">> => map(),
-%%   <<"executionStartTime">> => non_neg_integer(),
-%%   <<"executionStatus">> => execution_status(),
-%%   <<"resolveTo">> => resolve_to(),
-%%   <<"targetResource">> => target_resource(),
-%%   <<"targetResourceVersion">> => string()
-%% }
--type describe_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_history_skipped_entry() :: #{
-%%   <<"completionStatus">> => list(any()),
-%%   <<"entryId">> => string(),
-%%   <<"errorInfo">> => batch_get_asset_property_value_history_error_info()
-%% }
--type batch_get_asset_property_value_history_skipped_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_computation_models_response() :: #{
-%%   <<"computationModelSummaries">> => list(computation_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_computation_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_policy_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"identity">> => identity(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"permission">> => list(any()),
-%%   <<"resource">> => resource()
-%% }
--type access_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_model_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"ifMatch">> => string(),
-%%   <<"ifNoneMatch">> => string(),
-%%   <<"matchForVersionType">> => list(any())
-%% }
--type delete_asset_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_aggregates_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_aggregates_entry()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type batch_get_asset_property_aggregates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_logging_options_response() :: #{
-%%   <<"loggingOptions">> => logging_options()
-%% }
--type describe_logging_options_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% composite_model_property() :: #{
-%%   <<"assetProperty">> => property(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type composite_model_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_identity() :: #{
-%%   <<"id">> => string()
-%% }
--type user_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% kendra_source_detail() :: #{
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type kendra_source_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% invocation_output() :: #{
-%%   <<"citations">> => list(citation()),
-%%   <<"message">> => string()
-%% }
--type invocation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_processing_config() :: #{
-%%   <<"computeLocation">> => list(any())
-%% }
--type metric_processing_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_identity() :: #{
-%%   <<"id">> => string()
-%% }
--type group_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_request() :: #{
-%%   <<"assetDescription">> => string(),
-%%   <<"assetExternalId">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"assetModelId">> := string(),
-%%   <<"assetName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_window() :: #{
-%%   <<"tumbling">> => tumbling_window()
-%% }
--type metric_window() :: #{binary() => any()}.
-
-
-%% Example:
-%% file() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string(),
-%%   <<"versionId">> => string()
-%% }
--type file() :: #{binary() => any()}.
+-type asset_relationship_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1141,6 +799,194 @@
 
 
 %% Example:
+%% associate_assets_request() :: #{
+%%   <<"childAssetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"hierarchyId">> := string()
+%% }
+-type associate_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_data_segment_entry() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type associate_data_segment_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_time_series_to_asset_property_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"assetId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"propertyId">> := string()
+%% }
+-type associate_time_series_to_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_assets_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"hierarchies">> => list(asset_hierarchy()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => asset_status()
+%% }
+-type associated_assets_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute() :: #{
+%%   <<"defaultValue">> => string()
+%% }
+-type attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_data_segments_to_dataset_request() :: #{
+%%   <<"associateDataSegmentEntries">> := list(associate_data_segment_entry()),
+%%   <<"clientToken">> => string(),
+%%   <<"workspaceName">> := string()
+%% }
+-type batch_associate_data_segments_to_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_data_segments_to_dataset_response() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"failedAssociations">> => list(failed_data_segment_association())
+%% }
+-type batch_associate_data_segments_to_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_project_assets_request() :: #{
+%%   <<"assetIds">> := list(string()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_associate_project_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_project_assets_response() :: #{
+%%   <<"errors">> => list(asset_error_details())
+%% }
+-type batch_associate_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_dataset_data_segments_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deleteDataSegmentEntries">> := list(delete_data_segment_entry()),
+%%   <<"workspaceName">> := string()
+%% }
+-type batch_delete_dataset_data_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_dataset_data_segments_response() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"errors">> => list(failed_data_segment_deletion())
+%% }
+-type batch_delete_dataset_data_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_data_segments_from_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"disassociateDataSegmentEntries">> := list(disassociate_data_segment_entry()),
+%%   <<"workspaceName">> := string()
+%% }
+-type batch_disassociate_data_segments_from_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_data_segments_from_dataset_response() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"failedDisassociations">> => list(failed_data_segment_disassociation())
+%% }
+-type batch_disassociate_data_segments_from_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_project_assets_request() :: #{
+%%   <<"assetIds">> := list(string()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_disassociate_project_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_project_assets_response() :: #{
+%%   <<"errors">> => list(asset_error_details())
+%% }
+-type batch_disassociate_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_entry() :: #{
+%%   <<"aggregateTypes">> => list(list(any())()),
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"resolution">> => string(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
+%% }
+-type batch_get_asset_property_aggregates_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_asset_property_aggregates_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
+%% }
+-type batch_get_asset_property_aggregates_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_aggregates_entry()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type batch_get_asset_property_aggregates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_aggregates_response() :: #{
+%%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()),
+%%   <<"nextToken">> => string(),
+%%   <<"skippedEntries">> => list(batch_get_asset_property_aggregates_skipped_entry()),
+%%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry())
+%% }
+-type batch_get_asset_property_aggregates_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_asset_property_aggregates_skipped_entry() :: #{
 %%   <<"completionStatus">> => list(any()),
 %%   <<"entryId">> => string(),
@@ -1150,96 +996,78 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
+%% batch_get_asset_property_aggregates_success_entry() :: #{
+%%   <<"aggregatedValues">> => list(aggregated_value()),
+%%   <<"entryId">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type batch_get_asset_property_aggregates_success_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% computation_model_anomaly_detection_configuration() :: #{
-%%   <<"inputProperties">> => string(),
-%%   <<"resultProperty">> => string()
-%% }
--type computation_model_anomaly_detection_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_response() :: #{}
--type update_project_response() :: #{}.
-
-
-%% Example:
-%% portal_status() :: #{
-%%   <<"error">> => monitor_error_details(),
-%%   <<"state">> => list(any())
-%% }
--type portal_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"assetModelType">> => list(any()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => asset_model_status(),
-%%   <<"version">> => string()
-%% }
--type asset_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_time_series_request() :: #{
-%%   <<"alias">> => string(),
+%% batch_get_asset_property_value_entry() :: #{
 %%   <<"assetId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
 %%   <<"propertyId">> => string()
 %% }
--type describe_time_series_request() :: #{binary() => any()}.
+-type batch_get_asset_property_value_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% iotsitewise_reference() :: #{
-%%   <<"dataset">> => data_set_reference()
+%% batch_get_asset_property_value_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
 %% }
--type iotsitewise_reference() :: #{binary() => any()}.
+-type batch_get_asset_property_value_error_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% alarms() :: #{
-%%   <<"alarmRoleArn">> => string(),
-%%   <<"notificationLambdaArn">> => string()
+%% batch_get_asset_property_value_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
 %% }
--type alarms() :: #{binary() => any()}.
+-type batch_get_asset_property_value_error_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% execution_status() :: #{
-%%   <<"state">> => list(any())
+%% batch_get_asset_property_value_history_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
 %% }
--type execution_status() :: #{binary() => any()}.
+-type batch_get_asset_property_value_history_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_associated_assets_request() :: #{
-%%   <<"hierarchyId">> => string(),
+%% batch_get_asset_property_value_history_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_asset_property_value_history_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_error_info() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorTimestamp">> => non_neg_integer()
+%% }
+-type batch_get_asset_property_value_history_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_value_history_entry()),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"traversalDirection">> => list(any())
+%%   <<"nextToken">> => string()
 %% }
--type list_associated_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_status() :: #{
-%%   <<"error">> => configuration_error_details(),
-%%   <<"state">> => list(any())
-%% }
--type configuration_status() :: #{binary() => any()}.
+-type batch_get_asset_property_value_history_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1253,127 +1081,205 @@
 
 
 %% Example:
-%% list_interface_relationships_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_interface_relationships_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_layer_storage() :: #{
-%%   <<"customerManagedS3Storage">> => customer_managed_s3_storage()
-%% }
--type multi_layer_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"computationModelId">> => string()
-%% }
--type target_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_project_assets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_project_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_computation_model_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"computationModelConfiguration">> := computation_model_configuration(),
-%%   <<"computationModelDataBinding">> := map(),
-%%   <<"computationModelDescription">> => string(),
-%%   <<"computationModelName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_computation_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_action_request() :: #{}
--type describe_action_request() :: #{}.
-
-
-%% Example:
-%% list_computation_model_data_binding_usages_response() :: #{
-%%   <<"dataBindingUsageSummaries">> => list(computation_model_data_binding_usage_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_computation_model_data_binding_usages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bulk_import_job_response() :: #{
-%%   <<"adaptiveIngestion">> => boolean(),
-%%   <<"deleteFilesAfterImport">> => boolean(),
-%%   <<"errorReportLocation">> => error_report_location(),
-%%   <<"files">> => list(file()),
-%%   <<"jobConfiguration">> => job_configuration(),
-%%   <<"jobCreationDate">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"jobLastUpdateDate">> => non_neg_integer(),
-%%   <<"jobName">> => string(),
-%%   <<"jobRoleArn">> => string(),
-%%   <<"jobStatus">> => list(any())
-%% }
--type describe_bulk_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_project_assets_request() :: #{
-%%   <<"assetIds">> := list(string()),
-%%   <<"clientToken">> => string()
-%% }
--type batch_associate_project_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_model_response() :: #{
-%%   <<"assetModelArn">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetModelStatus">> => asset_model_status()
-%% }
--type create_asset_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_summary() :: #{
-%%   <<"actionType">> => string(),
-%%   <<"executionEndTime">> => non_neg_integer(),
-%%   <<"executionEntityVersion">> => string(),
-%%   <<"executionId">> => string(),
-%%   <<"executionStartTime">> => non_neg_integer(),
-%%   <<"executionStatus">> => execution_status(),
-%%   <<"resolveTo">> => resolve_to(),
-%%   <<"targetResource">> => target_resource(),
-%%   <<"targetResourceVersion">> => string()
-%% }
--type execution_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_response() :: #{
-%%   <<"assetStatus">> => asset_status()
-%% }
--type update_asset_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_policy_response() :: #{}
--type update_access_policy_response() :: #{}.
-
-
-%% Example:
-%% batch_get_asset_property_value_error_entry() :: #{
+%% batch_get_asset_property_value_history_skipped_entry() :: #{
+%%   <<"completionStatus">> => list(any()),
 %%   <<"entryId">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
+%%   <<"errorInfo">> => batch_get_asset_property_value_history_error_info()
 %% }
--type batch_get_asset_property_value_error_entry() :: #{binary() => any()}.
+-type batch_get_asset_property_value_history_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_history_success_entry() :: #{
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
+%%   <<"entryId">> => string()
+%% }
+-type batch_get_asset_property_value_history_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_request() :: #{
+%%   <<"entries">> := list(batch_get_asset_property_value_entry()),
+%%   <<"nextToken">> => string()
+%% }
+-type batch_get_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_response() :: #{
+%%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()),
+%%   <<"nextToken">> => string(),
+%%   <<"skippedEntries">> => list(batch_get_asset_property_value_skipped_entry()),
+%%   <<"successEntries">> => list(batch_get_asset_property_value_success_entry())
+%% }
+-type batch_get_asset_property_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_skipped_entry() :: #{
+%%   <<"completionStatus">> => list(any()),
+%%   <<"entryId">> => string(),
+%%   <<"errorInfo">> => batch_get_asset_property_value_error_info()
+%% }
+-type batch_get_asset_property_value_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_asset_property_value_success_entry() :: #{
+%%   <<"assetPropertyValue">> => asset_property_value(),
+%%   <<"entryId">> => string()
+%% }
+-type batch_get_asset_property_value_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"timestamps">> => list(time_in_nanos())
+%% }
+-type batch_put_asset_property_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_error_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errors">> => list(batch_put_asset_property_error())
+%% }
+-type batch_put_asset_property_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_value_request() :: #{
+%%   <<"enablePartialEntryProcessing">> => boolean(),
+%%   <<"entries">> := list(put_asset_property_value_entry())
+%% }
+-type batch_put_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_asset_property_value_response() :: #{
+%%   <<"errorEntries">> => list(batch_put_asset_property_error_entry())
+%% }
+-type batch_put_asset_property_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_enrichment_job_request() :: #{}
+-type cancel_enrichment_job_request() :: #{}.
+
+
+%% Example:
+%% cancel_enrichment_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cancel_enrichment_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_pipeline_execution_request() :: #{
+%%   <<"reason">> => string()
+%% }
+-type cancel_pipeline_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_pipeline_execution_response() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type cancel_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_query_request() :: #{}
+-type cancel_query_request() :: #{}.
+
+
+%% Example:
+%% cancel_query_response() :: #{
+%%   <<"queryId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cancel_query_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"content">> => content(),
+%%   <<"reference">> => reference()
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_info() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => column_type()
+%% }
+-type column_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_information() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type column_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_type() :: #{
+%%   <<"scalarType">> => list(any())
+%% }
+-type column_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_model_property() :: #{
+%%   <<"assetProperty">> => property(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type composite_model_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_details() :: #{
+%%   <<"compositionRelationship">> => list(composition_relationship_item())
+%% }
+-type composition_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_relationship_item() :: #{
+%%   <<"id">> => string()
+%% }
+-type composition_relationship_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_relationship_summary() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelType">> => string(),
+%%   <<"assetModelId">> => string()
+%% }
+-type composition_relationship_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_anomaly_detection_configuration() :: #{
+%%   <<"inputProperties">> => string(),
+%%   <<"resultProperty">> => string()
+%% }
+-type computation_model_anomaly_detection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_configuration() :: #{
+%%   <<"anomalyDetection">> => computation_model_anomaly_detection_configuration()
+%% }
+-type computation_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1382,123 +1288,6 @@
 %%   <<"matchedDataBinding">> => matched_data_binding()
 %% }
 -type computation_model_data_binding_usage_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_action_response() :: #{
-%%   <<"actionId">> => string()
-%% }
--type execute_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
-%%   <<"gatewayId">> => string(),
-%%   <<"gatewayName">> => string(),
-%%   <<"gatewayPlatform">> => gateway_platform(),
-%%   <<"gatewayVersion">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer()
-%% }
--type gateway_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_time_series_response() :: #{
-%%   <<"TimeSeriesSummaries">> => list(time_series_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_time_series_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portals_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_portals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetStatus">> => dataset_status()
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_composite_model() :: #{
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_property()),
-%%   <<"type">> => string()
-%% }
--type asset_composite_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_model_interface_relationship_response() :: #{
-%%   <<"assetModelArn">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetModelStatus">> => asset_model_status(),
-%%   <<"interfaceAssetModelId">> => string()
-%% }
--type delete_asset_model_interface_relationship_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_gateway_capability_configuration_request() :: #{}
--type describe_gateway_capability_configuration_request() :: #{}.
-
-
-%% Example:
-%% update_gateway_capability_configuration_request() :: #{
-%%   <<"capabilityConfiguration">> := string(),
-%%   <<"capabilityNamespace">> := string()
-%% }
--type update_gateway_capability_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_portal_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_portal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_relationship() :: #{
-%%   <<"id">> => string()
-%% }
--type interface_relationship() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_time_series_response() :: #{
-%%   <<"alias">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"dataTypeSpec">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"timeSeriesArn">> => string(),
-%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
-%%   <<"timeSeriesId">> => string(),
-%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
-%% }
--type describe_time_series_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1511,116 +1300,18 @@
 
 
 %% Example:
-%% batch_get_asset_property_aggregates_success_entry() :: #{
-%%   <<"aggregatedValues">> => list(aggregated_value()),
-%%   <<"entryId">> => string()
+%% computation_model_resolve_to_resource_summary() :: #{
+%%   <<"resolveTo">> => resolve_to()
 %% }
--type batch_get_asset_property_aggregates_success_entry() :: #{binary() => any()}.
+-type computation_model_resolve_to_resource_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_interpolated_asset_property_values_request() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"endTimeInSeconds">> := float(),
-%%   <<"endTimeOffsetInNanos">> => integer(),
-%%   <<"intervalInSeconds">> := float(),
-%%   <<"intervalWindowInSeconds">> => float(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"quality">> := list(any()),
-%%   <<"startTimeInSeconds">> := float(),
-%%   <<"startTimeOffsetInNanos">> => integer(),
-%%   <<"type">> := string()
+%% computation_model_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
 %% }
--type get_interpolated_asset_property_values_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_response() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"projectId">> => string()
-%% }
--type create_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitor_error_details() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type monitor_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_aggregates_error_entry() :: #{
-%%   <<"entryId">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_get_asset_property_aggregates_error_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_assistant_request() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"enableTrace">> => [boolean()],
-%%   <<"message">> := string()
-%% }
--type invoke_assistant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% warm_tier_retention_period() :: #{
-%%   <<"numberOfDays">> => integer(),
-%%   <<"unlimited">> => boolean()
-%% }
--type warm_tier_retention_period() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_error_info() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorTimestamp">> => non_neg_integer()
-%% }
--type batch_get_asset_property_value_error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_executions_response() :: #{
-%%   <<"executionSummaries">> => list(execution_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => dataset_status()
-%% }
--type dataset_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_composite_model_path_segment() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_composite_model_path_segment() :: #{binary() => any()}.
+-type computation_model_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1639,74 +1330,372 @@
 
 
 %% Example:
-%% invalid_request_exception() :: #{
+%% compute_node() :: #{
+%%   <<"computeNodeName">> => string(),
+%%   <<"dependsOn">> => list(string()),
+%%   <<"environmentVariables">> => map(),
+%%   <<"taskName">> => string()
+%% }
+-type compute_node() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_node_execution_details() :: #{
+%%   <<"computeNodeName">> => string(),
+%%   <<"dependsOn">> => list(string()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"executionEnvironmentVariables">> => map(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => compute_node_execution_status(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"taskVersion">> => string()
+%% }
+-type compute_node_execution_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_node_execution_state_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"details">> => list(detailed_pipeline_error()),
+%%   <<"message">> => [string()]
+%% }
+-type compute_node_execution_state_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% compute_node_execution_status() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => compute_node_execution_state_details()
+%% }
+-type compute_node_execution_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_error_details() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"message">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type configuration_error_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregated_value() :: #{
-%%   <<"quality">> => list(any()),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"value">> => aggregates()
+%% configuration_status() :: #{
+%%   <<"error">> => configuration_error_details(),
+%%   <<"state">> => list(any())
 %% }
--type aggregated_value() :: #{binary() => any()}.
+-type configuration_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_detail() :: #{
-%%   <<"kendra">> => kendra_source_detail()
+%% conflicting_operation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
 %% }
--type source_detail() :: #{binary() => any()}.
+-type conflicting_operation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_computation_model_resolve_to_resources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% container_task_configuration() :: #{
+%%   <<"command">> => list([string()]()),
+%%   <<"ecrUri">> => string(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"processingType">> => list(any()),
+%%   <<"processingUnit">> => list(any()),
+%%   <<"taskExecutionRole">> => string(),
+%%   <<"timeoutSeconds">> => float()
 %% }
--type list_computation_model_resolve_to_resources_request() :: #{binary() => any()}.
+-type container_task_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% row() :: #{
-%%   <<"data">> => list(datum())
+%% content() :: #{
+%%   <<"text">> => string()
 %% }
--type row() :: #{binary() => any()}.
+-type content() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_time_series_from_asset_property_request() :: #{
-%%   <<"alias">> := string(),
-%%   <<"assetId">> := string(),
+%% create_access_policy_request() :: #{
+%%   <<"accessPolicyIdentity">> := identity(),
+%%   <<"accessPolicyPermission">> := list(any()),
+%%   <<"accessPolicyResource">> := resource(),
 %%   <<"clientToken">> => string(),
-%%   <<"propertyId">> := string()
+%%   <<"tags">> => map()
 %% }
--type disassociate_time_series_from_asset_property_request() :: #{binary() => any()}.
+-type create_access_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_portal_response() :: #{
-%%   <<"portalStatus">> => portal_status()
+%% create_access_policy_response() :: #{
+%%   <<"accessPolicyArn">> => string(),
+%%   <<"accessPolicyId">> => string()
 %% }
--type delete_portal_response() :: #{binary() => any()}.
+-type create_access_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_asset_model_request() :: #{
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
-%%   <<"assetModelDescription">> => string(),
-%%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
-%%   <<"assetModelName">> := string(),
-%%   <<"assetModelProperties">> => list(asset_model_property()),
+%% create_application_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"idcInstanceArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceName">> := string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dnsSubdomain">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_composite_model_request() :: #{
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelName">> := string(),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property_definition()),
+%%   <<"assetModelCompositeModelType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"composedAssetModelId">> => string(),
 %%   <<"ifMatch">> => string(),
 %%   <<"ifNoneMatch">> => string(),
-%%   <<"matchForVersionType">> => list(any())
+%%   <<"matchForVersionType">> => list(any()),
+%%   <<"parentAssetModelCompositeModelId">> => string()
 %% }
--type update_asset_model_request() :: #{binary() => any()}.
+-type create_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_composite_model_response() :: #{
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type create_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_request() :: #{
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model_definition()),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy_definition()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelName">> := string(),
+%%   <<"assetModelProperties">> => list(asset_model_property_definition()),
+%%   <<"assetModelType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_model_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type create_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_request() :: #{
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetModelId">> := string(),
+%%   <<"assetName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_response() :: #{
+%%   <<"assetArn">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type create_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bulk_import_job_request() :: #{
+%%   <<"adaptiveIngestion">> => boolean(),
+%%   <<"datasetId">> => string(),
+%%   <<"deleteFilesAfterImport">> => boolean(),
+%%   <<"errorReportLocation">> := error_report_location(),
+%%   <<"files">> := list(file()),
+%%   <<"jobConfiguration">> => job_configuration(),
+%%   <<"jobName">> := string(),
+%%   <<"jobRoleArn">> := string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type create_bulk_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bulk_import_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type create_bulk_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_computation_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computationModelConfiguration">> := computation_model_configuration(),
+%%   <<"computationModelDataBinding">> := map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_computation_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_computation_model_response() :: #{
+%%   <<"computationModelArn">> => string(),
+%%   <<"computationModelId">> => string(),
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type create_computation_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dashboardDefinition">> := string(),
+%%   <<"dashboardDescription">> => string(),
+%%   <<"dashboardName">> := string(),
+%%   <<"projectId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dashboard_response() :: #{
+%%   <<"dashboardArn">> => string(),
+%%   <<"dashboardId">> => string()
+%% }
+-type create_dashboard_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_export_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinationS3Uri">> := string(),
+%%   <<"errorReportLocation">> := export_error_report_location(),
+%%   <<"input">> := list()
+%% }
+-type create_dataset_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_export_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type create_dataset_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetConfig">> => dataset_config(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"datasetSource">> := dataset_source(),
+%%   <<"datasetType">> => list(any()),
+%%   <<"metadata">> => map(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceName">> => string()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_enrichment_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"jobConfiguration">> := list()
+%% }
+-type create_enrichment_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_enrichment_job_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_enrichment_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_request() :: #{
+%%   <<"gatewayName">> := string(),
+%%   <<"gatewayPlatform">> := gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayId">> => string()
+%% }
+-type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computations">> := list(compute_node()),
+%%   <<"description">> => string(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"pipelineName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_response() :: #{
+%%   <<"pipelineArn">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"status">> => resource_status(),
+%%   <<"version">> => string()
+%% }
+-type create_pipeline_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1728,77 +1717,74 @@
 
 
 %% Example:
-%% associated_assets_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
+%% create_portal_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"portalId">> => string(),
+%%   <<"portalStartUrl">> => string(),
+%%   <<"portalStatus">> => portal_status(),
+%%   <<"ssoApplicationId">> => string()
+%% }
+-type create_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"portalId">> := string(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectId">> => string()
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_task_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"hierarchies">> => list(asset_hierarchy()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => asset_status()
+%%   <<"tags">> => map(),
+%%   <<"taskConfiguration">> := list(),
+%%   <<"taskName">> := string()
 %% }
--type associated_assets_summary() :: #{binary() => any()}.
+-type create_task_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_capability_summary() :: #{
-%%   <<"capabilityNamespace">> => string(),
-%%   <<"capabilitySyncStatus">> => list(any())
+%% create_task_response() :: #{
+%%   <<"status">> => resource_status(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"version">> => string()
 %% }
--type gateway_capability_summary() :: #{binary() => any()}.
+-type create_task_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% configuration_error_details() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
+%% create_workspace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionConfiguration">> := workspace_encryption_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceDescription">> => string(),
+%%   <<"workspaceName">> := string()
 %% }
--type configuration_error_details() :: #{binary() => any()}.
+-type create_workspace_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_portal_response() :: #{
-%%   <<"portalStatus">> => portal_status()
+%% create_workspace_response() :: #{
+%%   <<"workspaceArn">> => string(),
+%%   <<"workspaceName">> => string(),
+%%   <<"workspaceStatus">> => workspace_status()
 %% }
--type update_portal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_gateway_capability_configuration_response() :: #{
-%%   <<"capabilityConfiguration">> => string(),
-%%   <<"capabilityNamespace">> => string(),
-%%   <<"capabilitySyncStatus">> => list(any()),
-%%   <<"gatewayId">> => string()
-%% }
--type describe_gateway_capability_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_property_summary() :: #{
-%%   <<"alias">> => string(),
-%%   <<"assetCompositeModelId">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"notification">> => property_notification(),
-%%   <<"path">> => list(asset_property_path_segment()),
-%%   <<"unit">> => string()
-%% }
--type asset_property_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_composite_model_definition() :: #{
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_model_property_definition()),
-%%   <<"type">> => string()
-%% }
--type asset_model_composite_model_definition() :: #{binary() => any()}.
+-type create_workspace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1807,9 +1793,193 @@
 %% }
 -type csv() :: #{binary() => any()}.
 
+
 %% Example:
-%% describe_default_encryption_configuration_request() :: #{}
--type describe_default_encryption_configuration_request() :: #{}.
+%% customer_managed_s3_storage() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"s3ResourceArn">> => string()
+%% }
+-type customer_managed_s3_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% dashboard_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type dashboard_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_binding_value() :: #{
+%%   <<"assetModelProperty">> => asset_model_property_binding_value(),
+%%   <<"assetProperty">> => asset_property_binding_value()
+%% }
+-type data_binding_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_binding_value_filter() :: #{
+%%   <<"asset">> => asset_binding_value_filter(),
+%%   <<"assetModel">> => asset_model_binding_value_filter(),
+%%   <<"assetModelProperty">> => asset_model_property_binding_value_filter(),
+%%   <<"assetProperty">> => asset_property_binding_value_filter()
+%% }
+-type data_binding_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_segment_enrichment() :: #{
+%%   <<"lastEnrichedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type data_segment_enrichment() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_segment_relationship_summary() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"targetDatasetId">> => string(),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type data_segment_relationship_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_segment_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"enrichment">> => data_segment_enrichment(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type data_segment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_reference() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"source">> => source()
+%% }
+-type data_set_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_config() :: #{
+%%   <<"session">> => session_config()
+%% }
+-type dataset_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_enrichment() :: #{
+%%   <<"video">> => dataset_enrichment_entry()
+%% }
+-type dataset_enrichment() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_enrichment_entry() :: #{
+%%   <<"lastEnrichedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type dataset_enrichment_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_item() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"exportDataTypes">> => list(list(any())()),
+%%   <<"trimSettings">> => trim_settings()
+%% }
+-type dataset_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_source() :: #{
+%%   <<"sourceDetail">> => source_detail(),
+%%   <<"sourceFormat">> => list(any()),
+%%   <<"sourceType">> => list(any())
+%% }
+-type dataset_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type dataset_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"datasetType">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"enrichmentStatus">> => dataset_enrichment(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"sourceType">> => list(any()),
+%%   <<"status">> => dataset_status()
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% datum() :: #{
+%%   <<"arrayValue">> => list(datum()),
+%%   <<"nullValue">> => boolean(),
+%%   <<"rowValue">> => row(),
+%%   <<"scalarValue">> => string()
+%% }
+-type datum() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_policy_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_policy_response() :: #{}
+-type delete_access_policy_response() :: #{}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+
+%% Example:
+%% delete_asset_model_composite_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
+%% }
+-type delete_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_composite_model_response() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type delete_asset_model_composite_model_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1820,12 +1990,425 @@
 
 
 %% Example:
-%% list_asset_relationships_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"traversalType">> := list(any())
+%% delete_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"interfaceAssetModelId">> => string()
 %% }
--type list_asset_relationships_request() :: #{binary() => any()}.
+-type delete_asset_model_interface_relationship_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
+%% }
+-type delete_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_model_response() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type delete_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_asset_response() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type delete_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_computation_model_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_computation_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_computation_model_response() :: #{
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type delete_computation_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dashboard_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dashboard_response() :: #{}
+-type delete_dashboard_response() :: #{}.
+
+
+%% Example:
+%% delete_data_segment_entry() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type delete_data_segment_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_request() :: #{}
+-type delete_gateway_request() :: #{}.
+
+%% Example:
+%% delete_pipeline_request() :: #{}
+-type delete_pipeline_request() :: #{}.
+
+
+%% Example:
+%% delete_pipeline_response() :: #{
+%%   <<"status">> => resource_status()
+%% }
+-type delete_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_portal_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_portal_response() :: #{
+%%   <<"portalStatus">> => portal_status()
+%% }
+-type delete_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_project_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_response() :: #{}
+-type delete_project_response() :: #{}.
+
+%% Example:
+%% delete_task_request() :: #{}
+-type delete_task_request() :: #{}.
+
+
+%% Example:
+%% delete_task_response() :: #{
+%%   <<"status">> => resource_status()
+%% }
+-type delete_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_time_series_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type delete_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_response() :: #{
+%%   <<"workspaceStatus">> => workspace_status()
+%% }
+-type delete_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_policy_request() :: #{}
+-type describe_access_policy_request() :: #{}.
+
+
+%% Example:
+%% describe_access_policy_response() :: #{
+%%   <<"accessPolicyArn">> => string(),
+%%   <<"accessPolicyCreationDate">> => non_neg_integer(),
+%%   <<"accessPolicyId">> => string(),
+%%   <<"accessPolicyIdentity">> => identity(),
+%%   <<"accessPolicyLastUpdateDate">> => non_neg_integer(),
+%%   <<"accessPolicyPermission">> => list(any()),
+%%   <<"accessPolicyResource">> => resource()
+%% }
+-type describe_access_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_request() :: #{}
+-type describe_action_request() :: #{}.
+
+
+%% Example:
+%% describe_action_response() :: #{
+%%   <<"actionDefinitionId">> => string(),
+%%   <<"actionId">> => string(),
+%%   <<"actionPayload">> => action_payload(),
+%%   <<"executionTime">> => non_neg_integer(),
+%%   <<"resolveTo">> => resolve_to(),
+%%   <<"targetResource">> => target_resource()
+%% }
+-type describe_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_request() :: #{}
+-type describe_application_request() :: #{}.
+
+
+%% Example:
+%% describe_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"dnsSubdomain">> => string(),
+%%   <<"id">> => string(),
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_composite_model_request() :: #{}
+-type describe_asset_composite_model_request() :: #{}.
+
+
+%% Example:
+%% describe_asset_composite_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()),
+%%   <<"assetCompositeModelDescription">> => string(),
+%%   <<"assetCompositeModelExternalId">> => string(),
+%%   <<"assetCompositeModelId">> => string(),
+%%   <<"assetCompositeModelName">> => string(),
+%%   <<"assetCompositeModelPath">> => list(asset_composite_model_path_segment()),
+%%   <<"assetCompositeModelProperties">> => list(asset_property()),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
+%%   <<"assetCompositeModelType">> => string(),
+%%   <<"assetId">> => string()
+%% }
+-type describe_asset_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_composite_model_request() :: #{
+%%   <<"assetModelVersion">> => string()
+%% }
+-type describe_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_composite_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()),
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelId">> => string(),
+%%   <<"assetModelCompositeModelName">> => string(),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
+%%   <<"assetModelCompositeModelType">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"compositionDetails">> => composition_details()
+%% }
+-type describe_asset_model_composite_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_model_interface_relationship_request() :: #{}
+-type describe_asset_model_interface_relationship_request() :: #{}.
+
+
+%% Example:
+%% describe_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"hierarchyMappings">> => list(hierarchy_mapping()),
+%%   <<"interfaceAssetModelId">> => string(),
+%%   <<"propertyMappings">> => list(property_mapping())
+%% }
+-type describe_asset_model_interface_relationship_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_request() :: #{
+%%   <<"assetModelVersion">> => string(),
+%%   <<"excludeProperties">> => boolean()
+%% }
+-type describe_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_model_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
+%%   <<"assetModelCreationDate">> => non_neg_integer(),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelLastUpdateDate">> => non_neg_integer(),
+%%   <<"assetModelName">> => string(),
+%%   <<"assetModelProperties">> => list(asset_model_property()),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"assetModelType">> => list(any()),
+%%   <<"assetModelVersion">> => string(),
+%%   <<"eTag">> => string(),
+%%   <<"interfaceDetails">> => list(interface_relationship())
+%% }
+-type describe_asset_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_asset_property_request() :: #{}
+-type describe_asset_property_request() :: #{}.
+
+
+%% Example:
+%% describe_asset_property_response() :: #{
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetProperty">> => property(),
+%%   <<"compositeModel">> => composite_model_property()
+%% }
+-type describe_asset_property_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_request() :: #{
+%%   <<"excludeProperties">> => boolean()
+%% }
+-type describe_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_asset_response() :: #{
+%%   <<"assetArn">> => string(),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
+%%   <<"assetCompositeModels">> => list(asset_composite_model()),
+%%   <<"assetCreationDate">> => non_neg_integer(),
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetHierarchies">> => list(asset_hierarchy()),
+%%   <<"assetId">> => string(),
+%%   <<"assetLastUpdateDate">> => non_neg_integer(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetProperties">> => list(asset_property()),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type describe_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bulk_import_job_request() :: #{
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_bulk_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_bulk_import_job_response() :: #{
+%%   <<"adaptiveIngestion">> => boolean(),
+%%   <<"datasetId">> => string(),
+%%   <<"deleteFilesAfterImport">> => boolean(),
+%%   <<"errorReportLocation">> => error_report_location(),
+%%   <<"files">> => list(file()),
+%%   <<"jobConfiguration">> => job_configuration(),
+%%   <<"jobCreationDate">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"jobLastUpdateDate">> => non_neg_integer(),
+%%   <<"jobName">> => string(),
+%%   <<"jobRoleArn">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_bulk_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_execution_summary_request() :: #{
+%%   <<"resolveToResourceId">> => string(),
+%%   <<"resolveToResourceType">> => list(any())
+%% }
+-type describe_computation_model_execution_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_execution_summary_response() :: #{
+%%   <<"computationModelExecutionSummary">> => map(),
+%%   <<"computationModelId">> => string(),
+%%   <<"resolveTo">> => resolve_to()
+%% }
+-type describe_computation_model_execution_summary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_request() :: #{
+%%   <<"computationModelVersion">> => string()
+%% }
+-type describe_computation_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()),
+%%   <<"computationModelArn">> => string(),
+%%   <<"computationModelConfiguration">> => computation_model_configuration(),
+%%   <<"computationModelCreationDate">> => non_neg_integer(),
+%%   <<"computationModelDataBinding">> => map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelId">> => string(),
+%%   <<"computationModelLastUpdateDate">> => non_neg_integer(),
+%%   <<"computationModelName">> => string(),
+%%   <<"computationModelStatus">> => computation_model_status(),
+%%   <<"computationModelVersion">> => string()
+%% }
+-type describe_computation_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dashboard_request() :: #{}
+-type describe_dashboard_request() :: #{}.
 
 
 %% Example:
@@ -1840,6 +2423,204 @@
 %%   <<"projectId">> => string()
 %% }
 -type describe_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_export_job_request() :: #{}
+-type describe_dataset_export_job_request() :: #{}.
+
+
+%% Example:
+%% describe_dataset_export_job_response() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"destinationS3Uri">> => string(),
+%%   <<"errorReportLocation">> => export_error_report_location(),
+%%   <<"input">> => list(),
+%%   <<"jobId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_dataset_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dataset_request() :: #{
+%%   <<"datasetVersion">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetConfig">> => dataset_config(),
+%%   <<"datasetCreationDate">> => non_neg_integer(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetLastUpdateDate">> => non_neg_integer(),
+%%   <<"datasetName">> => string(),
+%%   <<"datasetSource">> => dataset_source(),
+%%   <<"datasetStatus">> => dataset_status(),
+%%   <<"datasetType">> => list(any()),
+%%   <<"datasetVersion">> => string(),
+%%   <<"enrichmentStatus">> => dataset_enrichment(),
+%%   <<"metadata">> => map(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_encryption_configuration_request() :: #{}
+-type describe_default_encryption_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type describe_default_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_enrichment_job_request() :: #{}
+-type describe_enrichment_job_request() :: #{}.
+
+
+%% Example:
+%% describe_enrichment_job_response() :: #{
+%%   <<"cancelledAt">> => [non_neg_integer()],
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"jobConfiguration">> => list(),
+%%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_enrichment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_request() :: #{}
+-type describe_execution_request() :: #{}.
+
+
+%% Example:
+%% describe_execution_response() :: #{
+%%   <<"actionType">> => string(),
+%%   <<"executionDetails">> => map(),
+%%   <<"executionEndTime">> => non_neg_integer(),
+%%   <<"executionEntityVersion">> => string(),
+%%   <<"executionId">> => string(),
+%%   <<"executionResult">> => map(),
+%%   <<"executionStartTime">> => non_neg_integer(),
+%%   <<"executionStatus">> => execution_status(),
+%%   <<"resolveTo">> => resolve_to(),
+%%   <<"targetResource">> => target_resource(),
+%%   <<"targetResourceVersion">> => string()
+%% }
+-type describe_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_capability_configuration_request() :: #{}
+-type describe_gateway_capability_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_gateway_capability_configuration_response() :: #{
+%%   <<"capabilityConfiguration">> => string(),
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any()),
+%%   <<"gatewayId">> => string()
+%% }
+-type describe_gateway_capability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_request() :: #{}
+-type describe_gateway_request() :: #{}.
+
+
+%% Example:
+%% describe_gateway_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayName">> => string(),
+%%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer()
+%% }
+-type describe_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_logging_options_request() :: #{
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_logging_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_logging_options_response() :: #{
+%%   <<"loggingOptions">> => logging_options()
+%% }
+-type describe_logging_options_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_pipeline_execution_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_pipeline_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_pipeline_execution_response() :: #{
+%%   <<"computeNodeExecutionDetails">> => list(compute_node_execution_details()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"executionPriority">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"pipelineVersion">> => string(),
+%%   <<"requestEnvironmentVariables">> => execution_environment_variables(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => pipeline_execution_status(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_pipeline_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_pipeline_request() :: #{
+%%   <<"pipelineVersion">> => string()
+%% }
+-type describe_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_pipeline_response() :: #{
+%%   <<"computations">> => list(compute_node()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"status">> => resource_status(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portal_request() :: #{}
+-type describe_portal_request() :: #{}.
 
 
 %% Example:
@@ -1864,838 +2645,60 @@
 %% }
 -type describe_portal_response() :: #{binary() => any()}.
 
-
-%% Example:
-%% asset_model_property_path_segment() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_model_property_path_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_projects_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projectSummaries">> => list(project_summary())
-%% }
--type list_projects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_computation_model_data_binding_usages_request() :: #{
-%%   <<"dataBindingValueFilter">> := data_binding_value_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_computation_model_data_binding_usages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_response() :: #{
-%%   <<"assetStatus">> => asset_status()
-%% }
--type delete_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_computation_model_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"computationModelConfiguration">> := computation_model_configuration(),
-%%   <<"computationModelDataBinding">> := map(),
-%%   <<"computationModelDescription">> => string(),
-%%   <<"computationModelName">> := string()
-%% }
--type update_computation_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_configuration() :: #{
-%%   <<"fileFormat">> => file_format()
-%% }
--type job_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_details() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"details">> => list(detailed_error()),
-%%   <<"message">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_notification() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"topic">> => string()
-%% }
--type property_notification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_property_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyNotificationState">> => list(any()),
-%%   <<"propertyUnit">> => string()
-%% }
--type update_asset_property_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_capability_configuration_response() :: #{
-%%   <<"capabilityNamespace">> => string(),
-%%   <<"capabilitySyncStatus">> => list(any())
-%% }
--type update_gateway_capability_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_payload() :: #{
-%%   <<"stringValue">> => string()
-%% }
--type action_payload() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actions_response() :: #{
-%%   <<"actionSummaries">> => list(action_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_managed_s3_storage() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"s3ResourceArn">> => string()
-%% }
--type customer_managed_s3_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_asset_model_interface_relationship_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"propertyMappingConfiguration">> := property_mapping_configuration()
-%% }
--type put_asset_model_interface_relationship_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_location() :: #{
-%%   <<"id">> => string(),
-%%   <<"url">> => string()
-%% }
--type image_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_relationship_summary() :: #{
-%%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"assetModelCompositeModelType">> => string(),
-%%   <<"assetModelId">> => string()
-%% }
--type composition_relationship_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resolveToResourceId">> => string(),
-%%   <<"resolveToResourceType">> => list(any()),
-%%   <<"targetResourceId">> := string(),
-%%   <<"targetResourceType">> := list(any())
-%% }
--type list_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% location() :: #{
-%%   <<"uri">> => string()
-%% }
--type location() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_role_identity() :: #{
-%%   <<"arn">> => string()
-%% }
--type iam_role_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% transform_processing_config() :: #{
-%%   <<"computeLocation">> => list(any()),
-%%   <<"forwardingConfig">> => forwarding_config()
-%% }
--type transform_processing_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"datasetDescription">> => string(),
-%%   <<"datasetName">> := string(),
-%%   <<"datasetSource">> := dataset_source()
-%% }
--type update_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_property_binding_value_filter() :: #{
-%%   <<"assetModelId">> => string(),
-%%   <<"propertyId">> => string()
-%% }
--type asset_model_property_binding_value_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_model_composite_model_request() :: #{
-%%   <<"assetModelCompositeModelDescription">> => string(),
-%%   <<"assetModelCompositeModelExternalId">> => string(),
-%%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"assetModelCompositeModelName">> := string(),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property_definition()),
-%%   <<"assetModelCompositeModelType">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"composedAssetModelId">> => string(),
-%%   <<"ifMatch">> => string(),
-%%   <<"ifNoneMatch">> => string(),
-%%   <<"matchForVersionType">> => list(any()),
-%%   <<"parentAssetModelCompositeModelId">> => string()
-%% }
--type create_asset_model_composite_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_file() :: #{
-%%   <<"data">> => binary(),
-%%   <<"type">> => list(any())
-%% }
--type image_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_model_request() :: #{
-%%   <<"assetModelVersion">> => string(),
-%%   <<"excludeProperties">> => boolean()
-%% }
--type describe_asset_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_storage_configuration_response() :: #{
-%%   <<"configurationStatus">> => configuration_status(),
-%%   <<"disallowIngestNullNaN">> => boolean(),
-%%   <<"disassociatedDataStorage">> => list(any()),
-%%   <<"multiLayerStorage">> => multi_layer_storage(),
-%%   <<"retentionPeriod">> => retention_period(),
-%%   <<"storageType">> => list(any()),
-%%   <<"warmTier">> => list(any()),
-%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
-%% }
--type put_storage_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_binding_value_filter() :: #{
-%%   <<"asset">> => asset_binding_value_filter(),
-%%   <<"assetModel">> => asset_model_binding_value_filter(),
-%%   <<"assetModelProperty">> => asset_model_property_binding_value_filter(),
-%%   <<"assetProperty">> => asset_property_binding_value_filter()
-%% }
--type data_binding_value_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_history_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_value_history_entry()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type batch_get_asset_property_value_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_model_interface_relationship_response() :: #{
-%%   <<"assetModelId">> => string(),
-%%   <<"hierarchyMappings">> => list(hierarchy_mapping()),
-%%   <<"interfaceAssetModelId">> => string(),
-%%   <<"propertyMappings">> => list(property_mapping())
-%% }
--type describe_asset_model_interface_relationship_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_computation_model_response() :: #{
-%%   <<"computationModelStatus">> => computation_model_status()
-%% }
--type delete_computation_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_logging_options_request() :: #{}
--type describe_logging_options_request() :: #{}.
-
-
-%% Example:
-%% iam_user_identity() :: #{
-%%   <<"arn">> => string()
-%% }
--type iam_user_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_history_error_entry() :: #{
-%%   <<"entryId">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_get_asset_property_value_history_error_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_model_composite_model_response() :: #{
-%%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
-%%   <<"assetModelStatus">> => asset_model_status()
-%% }
--type create_asset_model_composite_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dashboard_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_dashboard_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_model_composite_model_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"ifMatch">> => string(),
-%%   <<"ifNoneMatch">> => string(),
-%%   <<"matchForVersionType">> => list(any())
-%% }
--type delete_asset_model_composite_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_models_response() :: #{
-%%   <<"assetModelSummaries">> => list(asset_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_models_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_asset_property_request() :: #{}
--type describe_asset_property_request() :: #{}.
-
-
-%% Example:
-%% asset_binding_value_filter() :: #{
-%%   <<"assetId">> => string()
-%% }
--type asset_binding_value_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_status() :: #{
-%%   <<"error">> => error_details(),
-%%   <<"state">> => list(any())
-%% }
--type asset_model_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_mapping() :: #{
-%%   <<"assetModelHierarchyId">> => string(),
-%%   <<"interfaceAssetModelHierarchyId">> => string()
-%% }
--type hierarchy_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_policy_request() :: #{}
--type describe_access_policy_request() :: #{}.
-
-
-%% Example:
-%% list_asset_model_composite_models_request() :: #{
-%%   <<"assetModelVersion">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_model_composite_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_mapping() :: #{
-%%   <<"assetModelPropertyId">> => string(),
-%%   <<"interfaceAssetModelPropertyId">> => string()
-%% }
--type property_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_relationship_summary() :: #{
-%%   <<"id">> => string()
-%% }
--type interface_relationship_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_asset_composite_model_request() :: #{}
--type describe_asset_composite_model_request() :: #{}.
-
-%% Example:
-%% delete_dashboard_response() :: #{}
--type delete_dashboard_response() :: #{}.
-
-
-%% Example:
-%% batch_put_asset_property_value_request() :: #{
-%%   <<"enablePartialEntryProcessing">> => boolean(),
-%%   <<"entries">> := list(put_asset_property_value_entry())
-%% }
--type batch_put_asset_property_value_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_hierarchy_definition() :: #{
-%%   <<"childAssetModelId">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_model_hierarchy_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% trace() :: #{
-%%   <<"text">> => string()
-%% }
--type trace() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_model_response() :: #{
-%%   <<"assetModelArn">> => string(),
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
-%%   <<"assetModelCreationDate">> => non_neg_integer(),
-%%   <<"assetModelDescription">> => string(),
-%%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetModelLastUpdateDate">> => non_neg_integer(),
-%%   <<"assetModelName">> => string(),
-%%   <<"assetModelProperties">> => list(asset_model_property()),
-%%   <<"assetModelStatus">> => asset_model_status(),
-%%   <<"assetModelType">> => list(any()),
-%%   <<"assetModelVersion">> => string(),
-%%   <<"eTag">> => string(),
-%%   <<"interfaceDetails">> => list(interface_relationship())
-%% }
--type describe_asset_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_computation_model_execution_summary_response() :: #{
-%%   <<"computationModelExecutionSummary">> => map(),
-%%   <<"computationModelId">> => string(),
-%%   <<"resolveTo">> => resolve_to()
-%% }
--type describe_computation_model_execution_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_computation_model_request() :: #{
-%%   <<"computationModelVersion">> => string()
-%% }
--type describe_computation_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% source() :: #{
-%%   <<"arn">> => string(),
-%%   <<"location">> => location()
-%% }
--type source() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_success_entry() :: #{
-%%   <<"assetPropertyValue">> => asset_property_value(),
-%%   <<"entryId">> => string()
-%% }
--type batch_get_asset_property_value_success_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portals_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"portalSummaries">> => list(portal_summary())
-%% }
--type list_portals_response() :: #{binary() => any()}.
-
-%% Example:
-%% parquet() :: #{}
--type parquet() :: #{}.
-
-
-%% Example:
-%% put_storage_configuration_request() :: #{
-%%   <<"disallowIngestNullNaN">> => boolean(),
-%%   <<"disassociatedDataStorage">> => list(any()),
-%%   <<"multiLayerStorage">> => multi_layer_storage(),
-%%   <<"retentionPeriod">> => retention_period(),
-%%   <<"storageType">> := list(any()),
-%%   <<"warmTier">> => list(any()),
-%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
-%% }
--type put_storage_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_response() :: #{}
--type delete_project_response() :: #{}.
-
-
-%% Example:
-%% forwarding_config() :: #{
-%%   <<"state">> => list(any())
-%% }
--type forwarding_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_platform() :: #{
-%%   <<"greengrass">> => greengrass(),
-%%   <<"greengrassV2">> => greengrass_v2(),
-%%   <<"siemensIE">> => siemens_i_e()
-%% }
--type gateway_platform() :: #{binary() => any()}.
-
-
 %% Example:
-%% create_dashboard_response() :: #{
-%%   <<"dashboardArn">> => string(),
-%%   <<"dashboardId">> => string()
-%% }
--type create_dashboard_response() :: #{binary() => any()}.
+%% describe_project_request() :: #{}
+-type describe_project_request() :: #{}.
 
 
 %% Example:
-%% update_project_request() :: #{
-%%   <<"clientToken">> => string(),
+%% describe_project_response() :: #{
+%%   <<"portalId">> => string(),
+%%   <<"projectArn">> => string(),
+%%   <<"projectCreationDate">> => non_neg_integer(),
 %%   <<"projectDescription">> => string(),
-%%   <<"projectName">> := string()
+%%   <<"projectId">> => string(),
+%%   <<"projectLastUpdateDate">> => non_neg_integer(),
+%%   <<"projectName">> => string()
 %% }
--type update_project_request() :: #{binary() => any()}.
+-type describe_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_request() :: #{}
+-type describe_query_request() :: #{}.
 
 
 %% Example:
-%% create_gateway_request() :: #{
-%%   <<"gatewayName">> := string(),
-%%   <<"gatewayPlatform">> := gateway_platform(),
-%%   <<"gatewayVersion">> => string(),
-%%   <<"tags">> => map()
+%% describe_query_response() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"errorMessage">> => string(),
+%%   <<"queryId">> => string(),
+%%   <<"statistics">> => query_statistics(),
+%%   <<"status">> => list(any()),
+%%   <<"submittedAt">> => [non_neg_integer()]
 %% }
--type create_gateway_request() :: #{binary() => any()}.
+-type describe_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_search_request() :: #{}
+-type describe_search_request() :: #{}.
 
 
 %% Example:
-%% create_bulk_import_job_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobStatus">> => list(any())
+%% describe_search_response() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"queryStatement">> => string(),
+%%   <<"searchId">> => string(),
+%%   <<"searchType">> => list(any()),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"workspaceName">> => string()
 %% }
--type create_bulk_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_model_properties_request() :: #{
-%%   <<"assetModelVersion">> => string(),
-%%   <<"filter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_model_properties_request() :: #{binary() => any()}.
-
+-type describe_search_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_access_policy_response() :: #{
-%%   <<"accessPolicyArn">> => string(),
-%%   <<"accessPolicyCreationDate">> => non_neg_integer(),
-%%   <<"accessPolicyId">> => string(),
-%%   <<"accessPolicyIdentity">> => identity(),
-%%   <<"accessPolicyLastUpdateDate">> => non_neg_integer(),
-%%   <<"accessPolicyPermission">> => list(any()),
-%%   <<"accessPolicyResource">> => resource()
-%% }
--type describe_access_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_composite_model_path_segment() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_model_composite_model_path_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_computation_model_response() :: #{
-%%   <<"computationModelArn">> => string(),
-%%   <<"computationModelId">> => string(),
-%%   <<"computationModelStatus">> => computation_model_status()
-%% }
--type create_computation_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_interpolated_asset_property_values_response() :: #{
-%%   <<"interpolatedAssetPropertyValues">> => list(interpolated_asset_property_value()),
-%%   <<"nextToken">> => string()
-%% }
--type get_interpolated_asset_property_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image() :: #{
-%%   <<"file">> => image_file(),
-%%   <<"id">> => string()
-%% }
--type image() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_assets_request() :: #{
-%%   <<"childAssetId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"hierarchyId">> := string()
-%% }
--type associate_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_aggregates_entry() :: #{
-%%   <<"aggregateTypes">> => list(list(any())()),
-%%   <<"assetId">> => string(),
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"entryId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"qualities">> => list(list(any())()),
-%%   <<"resolution">> => string(),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"timeOrdering">> => list(any())
-%% }
--type batch_get_asset_property_aggregates_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_response() :: #{
-%%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()),
-%%   <<"nextToken">> => string(),
-%%   <<"skippedEntries">> => list(batch_get_asset_property_value_skipped_entry()),
-%%   <<"successEntries">> => list(batch_get_asset_property_value_success_entry())
-%% }
--type batch_get_asset_property_value_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transform() :: #{
-%%   <<"expression">> => string(),
-%%   <<"processingConfig">> => transform_processing_config(),
-%%   <<"variables">> => list(expression_variable())
-%% }
--type transform() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_property_value_history_request() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"qualities">> => list(list(any())()),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"timeOrdering">> => list(any())
-%% }
--type get_asset_property_value_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_relationship_summary() :: #{
-%%   <<"hierarchyInfo">> => asset_hierarchy_info(),
-%%   <<"relationshipType">> => list(any())
-%% }
--type asset_relationship_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_composite_model_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"path">> => list(asset_composite_model_path_segment()),
-%%   <<"type">> => string()
-%% }
--type asset_composite_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_response() :: #{
-%%   <<"assetArn">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"assetStatus">> => asset_status()
-%% }
--type create_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_policy_request() :: #{
-%%   <<"accessPolicyIdentity">> := identity(),
-%%   <<"accessPolicyPermission">> := list(any()),
-%%   <<"accessPolicyResource">> := resource(),
-%%   <<"clientToken">> => string()
-%% }
--type update_access_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_request() :: #{
-%%   <<"assetDescription">> => string(),
-%%   <<"assetExternalId">> => string(),
-%%   <<"assetName">> := string(),
-%%   <<"clientToken">> => string()
-%% }
--type update_asset_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% dashboard_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type dashboard_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_logging_options_request() :: #{
-%%   <<"loggingOptions">> := logging_options()
-%% }
--type put_logging_options_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% measurement_processing_config() :: #{
-%%   <<"forwardingConfig">> => forwarding_config()
-%% }
--type measurement_processing_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_type() :: #{
-%%   <<"attribute">> => attribute(),
-%%   <<"measurement">> => measurement(),
-%%   <<"metric">> => metric(),
-%%   <<"transform">> => transform()
-%% }
--type property_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_time_series_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"propertyId">> => string()
-%% }
--type delete_time_series_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_request() :: #{}
--type delete_gateway_request() :: #{}.
-
-%% Example:
-%% describe_gateway_request() :: #{}
--type describe_gateway_request() :: #{}.
-
-
-%% Example:
-%% batch_disassociate_project_assets_response() :: #{
-%%   <<"errors">> => list(asset_error_details())
-%% }
--type batch_disassociate_project_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_portal_request() :: #{
-%%   <<"alarms">> => alarms(),
-%%   <<"clientToken">> => string(),
-%%   <<"notificationSenderEmail">> => string(),
-%%   <<"portalContactEmail">> := string(),
-%%   <<"portalDescription">> => string(),
-%%   <<"portalLogoImage">> => image(),
-%%   <<"portalName">> := string(),
-%%   <<"portalType">> => list(any()),
-%%   <<"portalTypeConfiguration">> => map(),
-%%   <<"roleArn">> := string()
-%% }
--type update_portal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dataset_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetCreationDate">> => non_neg_integer(),
-%%   <<"datasetDescription">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetLastUpdateDate">> => non_neg_integer(),
-%%   <<"datasetName">> => string(),
-%%   <<"datasetSource">> => dataset_source(),
-%%   <<"datasetStatus">> => dataset_status(),
-%%   <<"datasetVersion">> => string()
-%% }
--type describe_dataset_response() :: #{binary() => any()}.
+%% describe_storage_configuration_request() :: #{}
+-type describe_storage_configuration_request() :: #{}.
 
 
 %% Example:
@@ -2714,190 +2717,84 @@
 
 
 %% Example:
-%% asset_error_details() :: #{
+%% describe_task_request() :: #{
+%%   <<"taskVersion">> => string()
+%% }
+-type describe_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_task_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => resource_status(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskConfiguration">> => list(),
+%%   <<"taskName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_time_series_request() :: #{
+%%   <<"alias">> => string(),
 %%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_time_series_response() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"timeSeriesArn">> => string(),
+%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer(),
+%%   <<"workspaceName">> => string()
+%% }
+-type describe_time_series_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
+
+
+%% Example:
+%% describe_workspace_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => workspace_encryption_configuration_info(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"workspaceArn">> => string(),
+%%   <<"workspaceDescription">> => string(),
+%%   <<"workspaceName">> => string(),
+%%   <<"workspaceStatus">> => workspace_status()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detailed_error() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string()
 %% }
--type asset_error_details() :: #{binary() => any()}.
+-type detailed_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% time_in_nanos() :: #{
-%%   <<"offsetInNanos">> => integer(),
-%%   <<"timeInSeconds">> => float()
+%% detailed_pipeline_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
 %% }
--type time_in_nanos() :: #{binary() => any()}.
-
-
-%% Example:
-%% tumbling_window() :: #{
-%%   <<"interval">> => string(),
-%%   <<"offset">> => string()
-%% }
--type tumbling_window() :: #{binary() => any()}.
-
-
-%% Example:
-%% measurement() :: #{
-%%   <<"processingConfig">> => measurement_processing_config()
-%% }
--type measurement() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_history_error_info() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorTimestamp">> => non_neg_integer()
-%% }
--type batch_get_asset_property_value_history_error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_asset_model_composite_model_response() :: #{
-%%   <<"assetModelStatus">> => asset_model_status()
-%% }
--type delete_asset_model_composite_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataset_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"datasetDescription">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetName">> := string(),
-%%   <<"datasetSource">> := dataset_source(),
-%%   <<"tags">> => map()
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% property() :: #{
-%%   <<"alias">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"notification">> => property_notification(),
-%%   <<"path">> => list(asset_property_path_segment()),
-%%   <<"type">> => property_type(),
-%%   <<"unit">> => string()
-%% }
--type property() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_query_response() :: #{
-%%   <<"columns">> => list(column_info()),
-%%   <<"nextToken">> => string(),
-%%   <<"rows">> => list(row())
-%% }
--type execute_query_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_timeout_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type query_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_property_value_history_response() :: #{
-%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
-%%   <<"nextToken">> => string()
-%% }
--type get_asset_property_value_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_composite_model_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_composite_model_path_segment()),
-%%   <<"type">> => string()
-%% }
--type asset_model_composite_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_composition_relationships_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_composition_relationships_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_details() :: #{
-%%   <<"compositionRelationship">> => list(composition_relationship_item())
-%% }
--type composition_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_property_binding_value() :: #{
-%%   <<"assetModelId">> => string(),
-%%   <<"propertyId">> => string()
-%% }
--type asset_model_property_binding_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"portalId">> := string(),
-%%   <<"projectDescription">> => string(),
-%%   <<"projectName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_gateway_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
-%%   <<"gatewayId">> => string(),
-%%   <<"gatewayName">> => string(),
-%%   <<"gatewayPlatform">> => gateway_platform(),
-%%   <<"gatewayVersion">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer()
-%% }
--type describe_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_asset_property_value_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_value_entry()),
-%%   <<"nextToken">> => string()
-%% }
--type batch_get_asset_property_value_request() :: #{binary() => any()}.
+-type detailed_pipeline_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2910,392 +2807,73 @@
 
 
 %% Example:
-%% batch_get_asset_property_value_history_success_entry() :: #{
-%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
-%%   <<"entryId">> => string()
+%% disassociate_data_segment_entry() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
 %% }
--type batch_get_asset_property_value_history_success_entry() :: #{binary() => any()}.
+-type disassociate_data_segment_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_property_path_segment() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_property_path_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_time_series_request() :: #{
-%%   <<"aliasPrefix">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"timeSeriesType">> => list(any())
-%% }
--type list_time_series_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_projects_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"portalId">> := string()
-%% }
--type list_projects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dashboard_request() :: #{
+%% disassociate_time_series_from_asset_property_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"assetId">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"dashboardDefinition">> := string(),
-%%   <<"dashboardDescription">> => string(),
-%%   <<"dashboardName">> := string(),
-%%   <<"projectId">> := string(),
-%%   <<"tags">> => map()
+%%   <<"propertyId">> := string()
 %% }
--type create_dashboard_request() :: #{binary() => any()}.
+-type disassociate_time_series_from_asset_property_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_property_binding_value_filter() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"propertyId">> => string()
+%% enrichment_job_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"propertyAlias">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"workspaceName">> => string()
 %% }
--type asset_property_binding_value_filter() :: #{binary() => any()}.
+-type enrichment_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_asset_model_composite_model_request() :: #{
-%%   <<"assetModelCompositeModelDescription">> => string(),
-%%   <<"assetModelCompositeModelExternalId">> => string(),
-%%   <<"assetModelCompositeModelName">> := string(),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
-%%   <<"clientToken">> => string(),
-%%   <<"ifMatch">> => string(),
-%%   <<"ifNoneMatch">> => string(),
-%%   <<"matchForVersionType">> => list(any())
+%% enrichment_trim_settings() :: #{
+%%   <<"endTime">> => time_in_nanos(),
+%%   <<"startTime">> => time_in_nanos()
 %% }
--type update_asset_model_composite_model_request() :: #{binary() => any()}.
+-type enrichment_trim_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_asset_relationships_response() :: #{
-%%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_relationships_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregates() :: #{
-%%   <<"average">> => float(),
-%%   <<"count">> => float(),
-%%   <<"maximum">> => float(),
-%%   <<"minimum">> => float(),
-%%   <<"standardDeviation">> => float(),
-%%   <<"sum">> => float()
-%% }
--type aggregates() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_model_properties_response() :: #{
-%%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_model_properties_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute() :: #{
-%%   <<"defaultValue">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"portalType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"startUrl">> => string(),
-%%   <<"status">> => portal_status()
-%% }
--type portal_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
+%% error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"details">> => list(detailed_error()),
 %%   <<"message">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type error_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assets_request() :: #{
-%%   <<"assetModelId">> => string(),
-%%   <<"filter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% error_report_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
 %% }
--type list_assets_request() :: #{binary() => any()}.
+-type error_report_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_project_assets_request() :: #{
-%%   <<"assetIds">> := list(string()),
-%%   <<"clientToken">> => string()
-%% }
--type batch_disassociate_project_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_asset_property_value_response() :: #{
-%%   <<"errorEntries">> => list(batch_put_asset_property_error_entry())
-%% }
--type batch_put_asset_property_value_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_composite_model_response() :: #{
-%%   <<"actionDefinitions">> => list(action_definition()),
-%%   <<"assetCompositeModelDescription">> => string(),
-%%   <<"assetCompositeModelExternalId">> => string(),
-%%   <<"assetCompositeModelId">> => string(),
-%%   <<"assetCompositeModelName">> => string(),
-%%   <<"assetCompositeModelPath">> => list(asset_composite_model_path_segment()),
-%%   <<"assetCompositeModelProperties">> => list(asset_property()),
-%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
-%%   <<"assetCompositeModelType">> => string(),
-%%   <<"assetId">> => string()
-%% }
--type describe_asset_composite_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_relationship_item() :: #{
-%%   <<"id">> => string()
-%% }
--type composition_relationship_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_computation_model_execution_summary_request() :: #{
-%%   <<"resolveToResourceId">> => string(),
-%%   <<"resolveToResourceType">> => list(any())
-%% }
--type describe_computation_model_execution_summary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_options() :: #{
-%%   <<"level">> => list(any())
-%% }
--type logging_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_mapping_configuration() :: #{
-%%   <<"createMissingProperty">> => boolean(),
-%%   <<"matchByPropertyName">> => boolean(),
-%%   <<"overrides">> => list(property_mapping())
-%% }
--type property_mapping_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dashboard_request() :: #{}
--type describe_dashboard_request() :: #{}.
-
-
-%% Example:
-%% list_asset_properties_response() :: #{
-%%   <<"assetPropertySummaries">> => list(asset_property_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_properties_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% content() :: #{
-%%   <<"text">> => string()
-%% }
--type content() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_hierarchy() :: #{
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type asset_hierarchy() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_model_property_definition() :: #{
-%%   <<"dataType">> => list(any()),
-%%   <<"dataTypeSpec">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => property_type(),
-%%   <<"unit">> => string()
-%% }
--type asset_model_property_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% matched_data_binding() :: #{
-%%   <<"value">> => data_binding_value()
-%% }
--type matched_data_binding() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_binding_value() :: #{
-%%   <<"assetModelProperty">> => asset_model_property_binding_value(),
-%%   <<"assetProperty">> => asset_property_binding_value()
-%% }
--type data_binding_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_hierarchy_info() :: #{
-%%   <<"childAssetId">> => string(),
-%%   <<"parentAssetId">> => string()
-%% }
--type asset_hierarchy_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_asset_property_error_entry() :: #{
-%%   <<"entryId">> => string(),
-%%   <<"errors">> => list(batch_put_asset_property_error())
-%% }
--type batch_put_asset_property_error_entry() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_request() :: #{}
--type describe_dataset_request() :: #{}.
-
-
-%% Example:
-%% delete_dataset_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_response() :: #{
-%%   <<"datasetSummaries">> => list(dataset_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_properties_request() :: #{
-%%   <<"filter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_properties_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% variable_value() :: #{
-%%   <<"hierarchyId">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"propertyPath">> => list(asset_model_property_path_segment())
-%% }
--type variable_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% resolve_to() :: #{
-%%   <<"assetId">> => string()
-%% }
--type resolve_to() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portal_request() :: #{}
--type describe_portal_request() :: #{}.
-
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_info() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => column_type()
-%% }
--type column_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_set_reference() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"source">> => source()
-%% }
--type data_set_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_series_summary() :: #{
-%%   <<"alias">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"dataTypeSpec">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"timeSeriesArn">> => string(),
-%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
+%% event_detection() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"propertyAlias">> => string(),
 %%   <<"timeSeriesId">> => string(),
-%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
+%%   <<"trimSettings">> => enrichment_trim_settings()
 %% }
--type time_series_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_type_entry() :: #{
-%%   <<"portalTools">> => list(string())
-%% }
--type portal_type_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_project_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_model_request() :: #{
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model_definition()),
-%%   <<"assetModelDescription">> => string(),
-%%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy_definition()),
-%%   <<"assetModelId">> => string(),
-%%   <<"assetModelName">> := string(),
-%%   <<"assetModelProperties">> => list(asset_model_property_definition()),
-%%   <<"assetModelType">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_asset_model_request() :: #{binary() => any()}.
+-type event_detection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3310,142 +2888,188 @@
 
 
 %% Example:
-%% batch_put_asset_property_error() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"timestamps">> => list(time_in_nanos())
+%% execute_action_response() :: #{
+%%   <<"actionId">> => string()
 %% }
--type batch_put_asset_property_error() :: #{binary() => any()}.
+-type execute_action_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assets_response() :: #{
-%%   <<"assetSummaries">> => list(asset_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_model_response() :: #{
-%%   <<"assetModelStatus">> => asset_model_status()
-%% }
--type update_asset_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_asset_request() :: #{
-%%   <<"excludeProperties">> => boolean()
-%% }
--type describe_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dashboards_response() :: #{
-%%   <<"dashboardSummaries">> => list(dashboard_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dashboards_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_computation_models_request() :: #{
-%%   <<"computationModelType">> => list(any()),
+%% execute_query_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"queryStatement">> := string()
 %% }
--type list_computation_models_request() :: #{binary() => any()}.
+-type execute_query_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_asset_property_value_entry() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"entryId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string()
+%% execute_query_response() :: #{
+%%   <<"columns">> => list(column_info()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(row())
 %% }
--type batch_get_asset_property_value_entry() :: #{binary() => any()}.
+-type execute_query_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% dataset_status() :: #{
-%%   <<"error">> => error_details(),
+%% execution_environment_variables() :: #{
+%%   <<"computeNodes">> => map(),
+%%   <<"global">> => map()
+%% }
+-type execution_environment_variables() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_status() :: #{
 %%   <<"state">> => list(any())
 %% }
--type dataset_status() :: #{binary() => any()}.
+-type execution_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_gateways_response() :: #{
-%%   <<"gatewaySummaries">> => list(gateway_summary()),
-%%   <<"nextToken">> => string()
+%% execution_summary() :: #{
+%%   <<"actionType">> => string(),
+%%   <<"executionEndTime">> => non_neg_integer(),
+%%   <<"executionEntityVersion">> => string(),
+%%   <<"executionId">> => string(),
+%%   <<"executionStartTime">> => non_neg_integer(),
+%%   <<"executionStatus">> => execution_status(),
+%%   <<"resolveTo">> => resolve_to(),
+%%   <<"targetResource">> => target_resource(),
+%%   <<"targetResourceVersion">> => string()
 %% }
--type list_gateways_response() :: #{binary() => any()}.
+-type execution_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% precondition_failed_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string()
+%% export_error_report_location() :: #{
+%%   <<"s3Uri">> => string()
 %% }
--type precondition_failed_exception() :: #{binary() => any()}.
+-type export_error_report_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_asset_property_aggregates_error_info() :: #{
+%% export_job_summary() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"destinationS3Uri">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type export_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% expression_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => variable_value()
+%% }
+-type expression_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_data_segment_association() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
 %%   <<"errorCode">> => list(any()),
-%%   <<"errorTimestamp">> => non_neg_integer()
+%%   <<"errorMessage">> => string(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
 %% }
--type batch_get_asset_property_aggregates_error_info() :: #{binary() => any()}.
+-type failed_data_segment_association() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_access_policy_request() :: #{
-%%   <<"accessPolicyIdentity">> := identity(),
-%%   <<"accessPolicyPermission">> := list(any()),
-%%   <<"accessPolicyResource">> := resource(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
+%% failed_data_segment_deletion() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
 %% }
--type create_access_policy_request() :: #{binary() => any()}.
+-type failed_data_segment_deletion() :: #{binary() => any()}.
 
 
 %% Example:
-%% computation_model_resolve_to_resource_summary() :: #{
-%%   <<"resolveTo">> => resolve_to()
+%% failed_data_segment_disassociation() :: #{
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"sourceDatasetId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
 %% }
--type computation_model_resolve_to_resource_summary() :: #{binary() => any()}.
+-type failed_data_segment_disassociation() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_default_encryption_configuration_request() :: #{
-%%   <<"encryptionType">> := list(any()),
-%%   <<"kmsKeyId">> => string()
+%% file() :: #{
+%%   <<"alias">> => string(),
+%%   <<"bucket">> => string(),
+%%   <<"fileFormat">> => file_format(),
+%%   <<"key">> => string(),
+%%   <<"startTime">> => time_in_nanos(),
+%%   <<"versionId">> => string()
 %% }
--type put_default_encryption_configuration_request() :: #{binary() => any()}.
+-type file() :: #{binary() => any()}.
 
 
 %% Example:
-%% greengrass_v2() :: #{
-%%   <<"coreDeviceOperatingSystem">> => list(any()),
-%%   <<"coreDeviceThingName">> => string()
+%% file_format() :: #{
+%%   <<"annotation">> => annotation(),
+%%   <<"csv">> => csv(),
+%%   <<"mp4">> => mp4(),
+%%   <<"parquet">> => parquet()
 %% }
--type greengrass_v2() :: #{binary() => any()}.
+-type file_format() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_asset_property_value_history_entry() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"entryId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"qualities">> => list(list(any())()),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"timeOrdering">> => list(any())
+%% format_settings() :: #{
+%%   <<"framesPerSecond">> => integer(),
+%%   <<"heightInPixels">> => integer(),
+%%   <<"widthInPixels">> => integer()
 %% }
--type batch_get_asset_property_value_history_entry() :: #{binary() => any()}.
+-type format_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% forwarding_config() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type forwarding_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_capability_summary() :: #{
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any())
+%% }
+-type gateway_capability_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_platform() :: #{
+%%   <<"greengrass">> => greengrass(),
+%%   <<"greengrassV2">> => greengrass_v2(),
+%%   <<"siemensIE">> => siemens_i_e()
+%% }
+-type gateway_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayName">> => string(),
+%%   <<"gatewayPlatform">> => gateway_platform(),
+%%   <<"gatewayVersion">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer()
+%% }
+-type gateway_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3466,21 +3090,410 @@
 
 
 %% Example:
-%% computation_model_configuration() :: #{
-%%   <<"anomalyDetection">> => computation_model_anomaly_detection_configuration()
+%% get_asset_property_aggregates_response() :: #{
+%%   <<"aggregatedValues">> => list(aggregated_value()),
+%%   <<"nextToken">> => string()
 %% }
--type computation_model_configuration() :: #{binary() => any()}.
+-type get_asset_property_aggregates_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% variant() :: #{
-%%   <<"booleanValue">> => boolean(),
-%%   <<"doubleValue">> => float(),
-%%   <<"integerValue">> => integer(),
-%%   <<"nullValue">> => property_value_null_value(),
-%%   <<"stringValue">> => string()
+%% get_asset_property_value_history_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"qualities">> => list(list(any())()),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"timeOrdering">> => list(any())
 %% }
--type variant() :: #{binary() => any()}.
+-type get_asset_property_value_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_history_response() :: #{
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_asset_property_value_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type get_asset_property_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_property_value_response() :: #{
+%%   <<"propertyValue">> => asset_property_value()
+%% }
+-type get_asset_property_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_capture_data_request() :: #{
+%%   <<"endTime">> := time_in_nanos(),
+%%   <<"formatSettings">> => format_settings(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"startTime">> := time_in_nanos(),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type get_capture_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_capture_data_response() :: #{
+%%   <<"data">> => binary(),
+%%   <<"dataType">> => list(any()),
+%%   <<"endTime">> => time_in_nanos(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => time_in_nanos()
+%% }
+-type get_capture_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_interpolated_asset_property_values_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"endTimeInSeconds">> := float(),
+%%   <<"endTimeOffsetInNanos">> => integer(),
+%%   <<"intervalInSeconds">> := float(),
+%%   <<"intervalWindowInSeconds">> => float(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"quality">> := list(any()),
+%%   <<"startTimeInSeconds">> := float(),
+%%   <<"startTimeOffsetInNanos">> => integer(),
+%%   <<"type">> := string()
+%% }
+-type get_interpolated_asset_property_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_interpolated_asset_property_values_response() :: #{
+%%   <<"interpolatedAssetPropertyValues">> => list(interpolated_asset_property_value()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_interpolated_asset_property_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_query_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_response() :: #{
+%%   <<"columnInfo">> => list(column_information()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(list(string())())
+%% }
+-type get_query_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_search_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_search_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_search_results_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchResults">> => list(search_result())
+%% }
+-type get_search_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% greengrass() :: #{
+%%   <<"groupArn">> => string()
+%% }
+-type greengrass() :: #{binary() => any()}.
+
+
+%% Example:
+%% greengrass_v2() :: #{
+%%   <<"coreDeviceOperatingSystem">> => list(any()),
+%%   <<"coreDeviceThingName">> => string()
+%% }
+-type greengrass_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_identity() :: #{
+%%   <<"id">> => string()
+%% }
+-type group_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_mapping() :: #{
+%%   <<"assetModelHierarchyId">> => string(),
+%%   <<"interfaceAssetModelHierarchyId">> => string()
+%% }
+-type hierarchy_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_role_identity() :: #{
+%%   <<"arn">> => string()
+%% }
+-type iam_role_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_user_identity() :: #{
+%%   <<"arn">> => string()
+%% }
+-type iam_user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity() :: #{
+%%   <<"group">> => group_identity(),
+%%   <<"iamRole">> => iam_role_identity(),
+%%   <<"iamUser">> => iam_user_identity(),
+%%   <<"user">> => user_identity()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% image() :: #{
+%%   <<"file">> => image_file(),
+%%   <<"id">> => string()
+%% }
+-type image() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_file() :: #{
+%%   <<"data">> => binary(),
+%%   <<"type">> => list(any())
+%% }
+-type image_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_location() :: #{
+%%   <<"id">> => string(),
+%%   <<"url">> => string()
+%% }
+-type image_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_relationship() :: #{
+%%   <<"id">> => string()
+%% }
+-type interface_relationship() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_relationship_summary() :: #{
+%%   <<"id">> => string()
+%% }
+-type interface_relationship_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_summary() :: #{
+%%   <<"interfaceAssetModelId">> => string(),
+%%   <<"interfaceAssetModelPropertyId">> => string()
+%% }
+-type interface_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% interpolated_asset_property_value() :: #{
+%%   <<"timestamp">> => time_in_nanos(),
+%%   <<"value">> => variant()
+%% }
+-type interpolated_asset_property_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_output() :: #{
+%%   <<"citations">> => list(citation()),
+%%   <<"message">> => string()
+%% }
+-type invocation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_assistant_request() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"enableTrace">> => [boolean()],
+%%   <<"message">> := string()
+%% }
+-type invoke_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_assistant_response() :: #{
+%%   <<"body">> => list(),
+%%   <<"conversationId">> => string()
+%% }
+-type invoke_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iotsitewise_reference() :: #{
+%%   <<"dataset">> => data_set_reference()
+%% }
+-type iotsitewise_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_configuration() :: #{
+%%   <<"fileFormat">> => file_format()
+%% }
+-type job_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% kendra_source_detail() :: #{
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type kendra_source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_request() :: #{
+%%   <<"iamArn">> => string(),
+%%   <<"identityId">> => string(),
+%%   <<"identityType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type list_access_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_response() :: #{
+%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolveToResourceId">> => string(),
+%%   <<"resolveToResourceType">> => list(any()),
+%%   <<"targetResourceId">> := string(),
+%%   <<"targetResourceType">> := list(any())
+%% }
+-type list_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_response() :: #{
+%%   <<"actionSummaries">> => list(action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> => list(application_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_composite_models_request() :: #{
+%%   <<"assetModelVersion">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_composite_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_composite_models_response() :: #{
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_composite_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_properties_request() :: #{
+%%   <<"assetModelVersion">> => string(),
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_model_properties_response() :: #{
+%%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_model_properties_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3494,11 +3507,73 @@
 
 
 %% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
+%% list_asset_models_response() :: #{
+%%   <<"assetModelSummaries">> => list(asset_model_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type list_asset_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_properties_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_properties_response() :: #{
+%%   <<"assetPropertySummaries">> => list(asset_property_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"traversalType">> := list(any())
+%% }
+-type list_asset_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_relationships_response() :: #{
+%%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_request() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_response() :: #{
+%%   <<"assetSummaries">> => list(asset_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_assets_request() :: #{
+%%   <<"hierarchyId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"traversalDirection">> => list(any())
+%% }
+-type list_associated_assets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3508,25 +3583,201 @@
 %% }
 -type list_associated_assets_response() :: #{binary() => any()}.
 
-%% Example:
-%% describe_storage_configuration_request() :: #{}
--type describe_storage_configuration_request() :: #{}.
-
 
 %% Example:
-%% update_asset_model_composite_model_response() :: #{
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
-%%   <<"assetModelStatus">> => asset_model_status()
+%% list_bulk_import_jobs_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceName">> => string()
 %% }
--type update_asset_model_composite_model_response() :: #{binary() => any()}.
+-type list_bulk_import_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invoke_assistant_response() :: #{
-%%   <<"body">> => list(),
-%%   <<"conversationId">> => string()
+%% list_bulk_import_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(job_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type invoke_assistant_response() :: #{binary() => any()}.
+-type list_bulk_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_composition_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_composition_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_composition_relationships_response() :: #{
+%%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_composition_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_model_data_binding_usages_request() :: #{
+%%   <<"dataBindingValueFilter">> := data_binding_value_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_data_binding_usages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_model_data_binding_usages_response() :: #{
+%%   <<"dataBindingUsageSummaries">> => list(computation_model_data_binding_usage_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_data_binding_usages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_model_resolve_to_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_resolve_to_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_model_resolve_to_resources_response() :: #{
+%%   <<"computationModelResolveToResourceSummaries">> => list(computation_model_resolve_to_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_resolve_to_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_models_request() :: #{
+%%   <<"computationModelType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_models_response() :: #{
+%%   <<"computationModelSummaries">> => list(computation_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectId">> := string()
+%% }
+-type list_dashboards_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dashboards_response() :: #{
+%%   <<"dashboardSummaries">> => list(dashboard_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dashboards_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_data_segment_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceName">> := string()
+%% }
+-type list_dataset_data_segment_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_data_segment_relationships_response() :: #{
+%%   <<"dataSegmentRelationshipSummaries">> => list(data_segment_relationship_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_data_segment_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_data_segments_request() :: #{
+%%   <<"datasetVersion">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceName">> := string()
+%% }
+-type list_dataset_data_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_data_segments_response() :: #{
+%%   <<"dataSegments">> => list(data_segment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_data_segments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_export_jobs_request() :: #{
+%%   <<"filter">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_export_jobs_response() :: #{
+%%   <<"jobs">> => list(export_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"datasetType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceType">> := list(any()),
+%%   <<"workspaceName">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasetSummaries">> => list(dataset_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enrichment_jobs_request() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"jobType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"startDate">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"timeSeriesId">> => string()
+%% }
+-type list_enrichment_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enrichment_jobs_response() :: #{
+%%   <<"jobs">> => list(enrichment_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_enrichment_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3543,45 +3794,35 @@
 
 
 %% Example:
-%% action_definition() :: #{
-%%   <<"actionDefinitionId">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"actionType">> => string()
+%% list_executions_response() :: #{
+%%   <<"executionSummaries">> => list(execution_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type action_definition() :: #{binary() => any()}.
+-type list_executions_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_model_property_summary() :: #{
-%%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"dataTypeSpec">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"interfaceSummaries">> => list(interface_summary()),
-%%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_property_path_segment()),
-%%   <<"type">> => property_type(),
-%%   <<"unit">> => string()
+%% list_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type asset_model_property_summary() :: #{binary() => any()}.
+-type list_gateways_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% column_type() :: #{
-%%   <<"scalarType">> => list(any())
+%% list_gateways_response() :: #{
+%%   <<"gatewaySummaries">> => list(gateway_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type column_type() :: #{binary() => any()}.
+-type list_gateways_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_time_series_to_asset_property_request() :: #{
-%%   <<"alias">> := string(),
-%%   <<"assetId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"propertyId">> := string()
+%% list_interface_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type associate_time_series_to_asset_property_request() :: #{binary() => any()}.
+-type list_interface_relationships_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3593,6 +3834,567 @@
 
 
 %% Example:
+%% list_pipeline_executions_request() :: #{
+%%   <<"endTimeAfter">> => non_neg_integer(),
+%%   <<"endTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTimeAfter">> => non_neg_integer(),
+%%   <<"startTimeBefore">> => non_neg_integer(),
+%%   <<"state">> => list(any())
+%% }
+-type list_pipeline_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_executions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary())
+%% }
+-type list_pipeline_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pipelineSummaries">> => list(pipeline_summary())
+%% }
+-type list_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"portalSummaries">> => list(portal_summary())
+%% }
+-type list_portals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_assets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_assets_response() :: #{
+%%   <<"assetIds">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"portalId">> := string()
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projectSummaries">> => list(project_summary())
+%% }
+-type list_projects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_request() :: #{
+%%   <<"filter">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_queries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queries">> => list(query_summary())
+%% }
+-type list_queries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_searches_filters() :: #{
+%%   <<"groupIdFilter">> => list(string()),
+%%   <<"searchTypeFilter">> => list(list(any())()),
+%%   <<"startedAfter">> => [non_neg_integer()],
+%%   <<"startedBefore">> => [non_neg_integer()],
+%%   <<"statusFilter">> => list(list(any())())
+%% }
+-type list_searches_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_searches_request() :: #{
+%%   <<"listSearchesFilters">> => list_searches_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_searches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_searches_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchSummaries">> => list(search_summary())
+%% }
+-type list_searches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskSummaries">> => list(task_summary())
+%% }
+-type list_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_request() :: #{
+%%   <<"aliasPrefix">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"timeSeriesType">> => list(any()),
+%%   <<"workspaceName">> => string()
+%% }
+-type list_time_series_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_response() :: #{
+%%   <<"TimeSeriesSummaries">> => list(time_series_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceName">> => string()
+%% }
+-type list_time_series_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceSummaries">> => list(workspace_summary())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% location() :: #{
+%%   <<"uri">> => string()
+%% }
+-type location() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_options() :: #{
+%%   <<"level">> => list(any())
+%% }
+-type logging_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% matched_data_binding() :: #{
+%%   <<"value">> => data_binding_value()
+%% }
+-type matched_data_binding() :: #{binary() => any()}.
+
+
+%% Example:
+%% measurement() :: #{
+%%   <<"processingConfig">> => measurement_processing_config()
+%% }
+-type measurement() :: #{binary() => any()}.
+
+
+%% Example:
+%% measurement_processing_config() :: #{
+%%   <<"forwardingConfig">> => forwarding_config()
+%% }
+-type measurement_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric() :: #{
+%%   <<"expression">> => string(),
+%%   <<"processingConfig">> => metric_processing_config(),
+%%   <<"variables">> => list(expression_variable()),
+%%   <<"window">> => metric_window()
+%% }
+-type metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_processing_config() :: #{
+%%   <<"computeLocation">> => list(any())
+%% }
+-type metric_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_window() :: #{
+%%   <<"tumbling">> => tumbling_window()
+%% }
+-type metric_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type monitor_error_details() :: #{binary() => any()}.
+
+%% Example:
+%% mp4() :: #{}
+-type mp4() :: #{}.
+
+
+%% Example:
+%% multi_layer_storage() :: #{
+%%   <<"customerManagedS3Storage">> => customer_managed_s3_storage()
+%% }
+-type multi_layer_storage() :: #{binary() => any()}.
+
+%% Example:
+%% parquet() :: #{}
+-type parquet() :: #{}.
+
+
+%% Example:
+%% pipeline_execution_state_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"details">> => list(detailed_pipeline_error()),
+%%   <<"message">> => [string()]
+%% }
+-type pipeline_execution_state_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_execution_status() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"stateDetails">> => pipeline_execution_state_details()
+%% }
+-type pipeline_execution_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_execution_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"executionPriority">> => integer(),
+%%   <<"pipelineExecutionId">> => string(),
+%%   <<"pipelineVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => pipeline_execution_status()
+%% }
+-type pipeline_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"pipelineArn">> => string(),
+%%   <<"pipelineName">> => string(),
+%%   <<"status">> => resource_status(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_resource() :: #{
+%%   <<"id">> => string()
+%% }
+-type portal_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_status() :: #{
+%%   <<"error">> => monitor_error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type portal_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"portalType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"startUrl">> => string(),
+%%   <<"status">> => portal_status()
+%% }
+-type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_type_entry() :: #{
+%%   <<"portalTools">> => list(string())
+%% }
+-type portal_type_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_resource() :: #{
+%%   <<"id">> => string()
+%% }
+-type project_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% property() :: #{
+%%   <<"alias">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notification">> => property_notification(),
+%%   <<"path">> => list(asset_property_path_segment()),
+%%   <<"type">> => property_type(),
+%%   <<"unit">> => string()
+%% }
+-type property() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_mapping() :: #{
+%%   <<"assetModelPropertyId">> => string(),
+%%   <<"interfaceAssetModelPropertyId">> => string()
+%% }
+-type property_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_mapping_configuration() :: #{
+%%   <<"createMissingProperty">> => boolean(),
+%%   <<"matchByPropertyName">> => boolean(),
+%%   <<"overrides">> => list(property_mapping())
+%% }
+-type property_mapping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_notification() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"topic">> => string()
+%% }
+-type property_notification() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_type() :: #{
+%%   <<"attribute">> => attribute(),
+%%   <<"measurement">> => measurement(),
+%%   <<"metric">> => metric(),
+%%   <<"transform">> => transform()
+%% }
+-type property_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_value_null_value() :: #{
+%%   <<"valueType">> => list(any())
+%% }
+-type property_value_null_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_model_interface_relationship_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"propertyMappingConfiguration">> := property_mapping_configuration()
+%% }
+-type put_asset_model_interface_relationship_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"interfaceAssetModelId">> => string()
+%% }
+-type put_asset_model_interface_relationship_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_property_value_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"propertyValues">> => list(asset_property_value())
+%% }
+-type put_asset_property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type put_default_encryption_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type put_default_encryption_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_logging_options_request() :: #{
+%%   <<"loggingOptions">> := logging_options(),
+%%   <<"workspaceName">> => string()
+%% }
+-type put_logging_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_logging_options_response() :: #{}
+-type put_logging_options_response() :: #{}.
+
+
+%% Example:
+%% put_storage_configuration_request() :: #{
+%%   <<"disallowIngestNullNaN">> => boolean(),
+%%   <<"disassociatedDataStorage">> => list(any()),
+%%   <<"multiLayerStorage">> => multi_layer_storage(),
+%%   <<"retentionPeriod">> => retention_period(),
+%%   <<"storageType">> := list(any()),
+%%   <<"warmTier">> => list(any()),
+%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
+%% }
+-type put_storage_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"disallowIngestNullNaN">> => boolean(),
+%%   <<"disassociatedDataStorage">> => list(any()),
+%%   <<"multiLayerStorage">> => multi_layer_storage(),
+%%   <<"retentionPeriod">> => retention_period(),
+%%   <<"storageType">> => list(any()),
+%%   <<"warmTier">> => list(any()),
+%%   <<"warmTierRetentionPeriod">> => warm_tier_retention_period()
+%% }
+-type put_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_statistics() :: #{
+%%   <<"bytesScanned">> => [float()],
+%%   <<"executionTimeInMillis">> => [float()],
+%%   <<"rowCount">> => [float()]
+%% }
+-type query_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_summary() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"queryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"submittedAt">> => [non_neg_integer()]
+%% }
+-type query_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_to() :: #{
+%%   <<"assetId">> => string()
+%% }
+-type resolve_to() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource() :: #{
 %%   <<"portal">> => portal_resource(),
 %%   <<"project">> => project_resource()
@@ -3601,39 +4403,711 @@
 
 
 %% Example:
-%% list_bulk_import_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(job_summary()),
-%%   <<"nextToken">> => string()
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
 %% }
--type list_bulk_import_jobs_response() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type resource_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_status() :: #{
+%%   <<"error">> => resource_error(),
+%%   <<"state">> => list(any())
+%% }
+-type resource_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% retention_period() :: #{
+%%   <<"numberOfDays">> => integer(),
+%%   <<"unlimited">> => boolean()
+%% }
+-type retention_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% row() :: #{
+%%   <<"data">> => list(datum())
+%% }
+-type row() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_filters() :: #{
+%%   <<"datasetIds">> => list(string()),
+%%   <<"timeIntervals">> => list(time_interval()),
+%%   <<"timeSeriesIds">> => list(string())
+%% }
+-type search_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"endTimestamp">> => time_in_nanos(),
+%%   <<"score">> => [float()],
+%%   <<"searchId">> => string(),
+%%   <<"startTimestamp">> => time_in_nanos(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"topTimestamp">> => time_in_nanos(),
+%%   <<"workspaceName">> => string()
+%% }
+-type search_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_summary() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"queryStatement">> => string(),
+%%   <<"searchId">> => string(),
+%%   <<"searchType">> => list(any()),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"workspaceName">> => string()
+%% }
+-type search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_config() :: #{
+%%   <<"sessionEndTimestamp">> => time_in_nanos(),
+%%   <<"sessionStartTimestamp">> => time_in_nanos()
+%% }
+-type session_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% siemens_i_e() :: #{
+%%   <<"iotCoreThingName">> => string()
+%% }
+-type siemens_i_e() :: #{binary() => any()}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"arn">> => string(),
+%%   <<"location">> => location()
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_detail() :: #{
+%%   <<"kendra">> => kendra_source_detail()
+%% }
+-type source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_pipeline_execution_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"executionEnvironmentVariableOverrides">> => execution_environment_variables(),
+%%   <<"executionPriority">> => integer()
+%% }
+-type start_pipeline_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_pipeline_execution_response() :: #{
+%%   <<"pipelineExecutionId">> => string()
+%% }
+-type start_pipeline_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"queryStatement">> := string()
+%% }
+-type start_query_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_response() :: #{
+%%   <<"queryId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_query_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_search_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"queryStatement">> := string(),
+%%   <<"searchFilters">> => search_filters(),
+%%   <<"searchType">> => list(any())
+%% }
+-type start_search_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_search_response() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"searchId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workspaceName">> => string()
+%% }
+-type start_search_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_resource() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"computationModelId">> => string()
+%% }
+-type target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => resource_status(),
+%%   <<"taskArn">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_in_nanos() :: #{
+%%   <<"offsetInNanos">> => integer(),
+%%   <<"timeInSeconds">> => float()
+%% }
+-type time_in_nanos() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_interval() :: #{
+%%   <<"endTime">> => time_in_nanos(),
+%%   <<"startTime">> => time_in_nanos()
+%% }
+-type time_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_series_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"dataTypeSpec">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"timeSeriesArn">> => string(),
+%%   <<"timeSeriesCreationDate">> => non_neg_integer(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"timeSeriesLastUpdateDate">> => non_neg_integer()
+%% }
+-type time_series_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% timeseries_item() :: #{
+%%   <<"formatSettings">> => format_settings(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"timeSeriesId">> => string(),
+%%   <<"trimSettings">> => trim_settings()
+%% }
+-type timeseries_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace() :: #{
+%%   <<"text">> => string()
+%% }
+-type trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% transform() :: #{
+%%   <<"expression">> => string(),
+%%   <<"processingConfig">> => transform_processing_config(),
+%%   <<"variables">> => list(expression_variable())
+%% }
+-type transform() :: #{binary() => any()}.
+
+
+%% Example:
+%% transform_processing_config() :: #{
+%%   <<"computeLocation">> => list(any()),
+%%   <<"forwardingConfig">> => forwarding_config()
+%% }
+-type transform_processing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% trim_settings() :: #{
+%%   <<"endTime">> => time_in_nanos(),
+%%   <<"startTime">> => time_in_nanos()
+%% }
+-type trim_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% tumbling_window() :: #{
+%%   <<"interval">> => string(),
+%%   <<"offset">> => string()
+%% }
+-type tumbling_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_access_policy_request() :: #{
+%%   <<"accessPolicyIdentity">> := identity(),
+%%   <<"accessPolicyPermission">> := list(any()),
+%%   <<"accessPolicyResource">> := resource(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_policy_response() :: #{}
+-type update_access_policy_response() :: #{}.
+
+
+%% Example:
+%% update_asset_model_composite_model_request() :: #{
+%%   <<"assetModelCompositeModelDescription">> => string(),
+%%   <<"assetModelCompositeModelExternalId">> => string(),
+%%   <<"assetModelCompositeModelName">> := string(),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
+%% }
+-type update_asset_model_composite_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_composite_model_response() :: #{
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type update_asset_model_composite_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_request() :: #{
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
+%%   <<"assetModelDescription">> => string(),
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
+%%   <<"assetModelName">> := string(),
+%%   <<"assetModelProperties">> => list(asset_model_property()),
+%%   <<"clientToken">> => string(),
+%%   <<"ifMatch">> => string(),
+%%   <<"ifNoneMatch">> => string(),
+%%   <<"matchForVersionType">> => list(any())
+%% }
+-type update_asset_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_model_response() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status()
+%% }
+-type update_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_property_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyNotificationState">> => list(any()),
+%%   <<"propertyUnit">> => string()
+%% }
+-type update_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"assetDescription">> => string(),
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetName">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetStatus">> => asset_status()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_computation_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computationModelConfiguration">> := computation_model_configuration(),
+%%   <<"computationModelDataBinding">> := map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelName">> := string()
+%% }
+-type update_computation_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_computation_model_response() :: #{
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type update_computation_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dashboard_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dashboardDefinition">> := string(),
+%%   <<"dashboardDescription">> => string(),
+%%   <<"dashboardName">> := string()
+%% }
+-type update_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dashboard_response() :: #{}
+-type update_dashboard_response() :: #{}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetConfig">> => dataset_config(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"datasetSource">> := dataset_source(),
+%%   <<"metadata">> => map(),
+%%   <<"workspaceName">> => string()
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetStatus">> => dataset_status()
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_capability_configuration_request() :: #{
+%%   <<"capabilityConfiguration">> := string(),
+%%   <<"capabilityNamespace">> := string()
+%% }
+-type update_gateway_capability_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_capability_configuration_response() :: #{
+%%   <<"capabilityNamespace">> => string(),
+%%   <<"capabilitySyncStatus">> => list(any())
+%% }
+-type update_gateway_capability_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_request() :: #{
+%%   <<"gatewayName">> := string()
+%% }
+-type update_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"computations">> => list(compute_node()),
+%%   <<"description">> => string(),
+%%   <<"environmentVariables">> => map()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"status">> => resource_status(),
+%%   <<"version">> => string()
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_request() :: #{
+%%   <<"alarms">> => alarms(),
+%%   <<"clientToken">> => string(),
+%%   <<"notificationSenderEmail">> => string(),
+%%   <<"portalContactEmail">> := string(),
+%%   <<"portalDescription">> => string(),
+%%   <<"portalLogoImage">> => image(),
+%%   <<"portalName">> := string(),
+%%   <<"portalType">> => list(any()),
+%%   <<"portalTypeConfiguration">> => map(),
+%%   <<"roleArn">> := string()
+%% }
+-type update_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_response() :: #{
+%%   <<"portalStatus">> => portal_status()
+%% }
+-type update_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectName">> := string()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_response() :: #{}
+-type update_project_response() :: #{}.
+
+
+%% Example:
+%% update_task_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"taskConfiguration">> => list()
+%% }
+-type update_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_task_response() :: #{
+%%   <<"status">> => resource_status(),
+%%   <<"version">> => string()
+%% }
+-type update_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionConfiguration">> => workspace_encryption_configuration(),
+%%   <<"workspaceDescription">> => string()
+%% }
+-type update_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_response() :: #{
+%%   <<"workspaceStatus">> => workspace_status()
+%% }
+-type update_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_identity() :: #{
+%%   <<"id">> => string()
+%% }
+-type user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% variable_value() :: #{
+%%   <<"hierarchyId">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"propertyPath">> => list(asset_model_property_path_segment())
+%% }
+-type variable_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant() :: #{
+%%   <<"booleanValue">> => boolean(),
+%%   <<"doubleValue">> => float(),
+%%   <<"integerValue">> => integer(),
+%%   <<"nullValue">> => property_value_null_value(),
+%%   <<"stringValue">> => string()
+%% }
+-type variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% warm_tier_retention_period() :: #{
+%%   <<"numberOfDays">> => integer(),
+%%   <<"unlimited">> => boolean()
+%% }
+-type warm_tier_retention_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_encryption_configuration() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type workspace_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_encryption_configuration_info() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type workspace_encryption_configuration_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_error_details() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type workspace_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_status() :: #{
+%%   <<"error">> => workspace_error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type workspace_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => workspace_status(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
 
 -type associate_assets_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type associate_time_series_to_asset_property_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type batch_associate_data_segments_to_dataset_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type batch_associate_project_assets_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type batch_delete_dataset_data_segments_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type batch_disassociate_data_segments_from_dataset_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type batch_disassociate_project_assets_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type batch_get_asset_property_aggregates_errors() ::
@@ -3655,387 +5129,583 @@
     internal_failure_exception().
 
 -type batch_put_asset_property_value_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type cancel_enrichment_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
+
+-type cancel_pipeline_execution_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
+-type cancel_query_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type create_access_policy_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type create_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type create_asset_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type create_asset_model_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type create_asset_model_composite_model_errors() ::
-    precondition_failed_exception() | 
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    resource_already_exists_exception() | 
+    precondition_failed_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type create_bulk_import_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type create_computation_model_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type create_dashboard_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_dataset_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type create_dataset_export_job_errors() ::
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
+
+-type create_enrichment_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type create_gateway_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
--type create_portal_errors() ::
-    limit_exceeded_exception() | 
+-type create_pipeline_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
+-type create_portal_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_project_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type create_task_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
+-type create_workspace_errors() ::
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type delete_access_policy_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type delete_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type delete_asset_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_asset_model_errors() ::
-    precondition_failed_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_asset_model_composite_model_errors() ::
-    precondition_failed_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    precondition_failed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_asset_model_interface_relationship_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_computation_model_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_dashboard_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_dataset_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_gateway_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type delete_pipeline_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type delete_portal_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type delete_project_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type delete_task_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type delete_time_series_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type delete_workspace_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type describe_access_policy_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_action_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type describe_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_asset_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_asset_composite_model_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_asset_model_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_asset_model_composite_model_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_asset_model_interface_relationship_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_asset_property_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_bulk_import_job_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_computation_model_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_computation_model_execution_summary_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_dashboard_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_dataset_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type describe_dataset_export_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_default_encryption_configuration_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
+-type describe_enrichment_job_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
 -type describe_execution_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_gateway_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_gateway_capability_configuration_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_logging_options_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type describe_pipeline_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_pipeline_execution_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_portal_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_project_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
--type describe_storage_configuration_errors() ::
-    limit_exceeded_exception() | 
+-type describe_query_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_search_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_storage_configuration_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type describe_task_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_time_series_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type describe_workspace_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type disassociate_assets_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type disassociate_time_series_from_asset_property_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type execute_action_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type execute_query_errors() ::
-    throttling_exception() | 
-    query_timeout_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    query_timeout_exception() | 
     invalid_request_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type get_asset_property_aggregates_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_asset_property_value_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_asset_property_value_history_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type get_capture_data_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type get_interpolated_asset_property_values_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
--type invoke_assistant_errors() ::
-    limit_exceeded_exception() | 
+-type get_query_results_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type get_search_results_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type invoke_assistant_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type list_access_policies_errors() ::
     throttling_exception() | 
@@ -4044,61 +5714,69 @@
 
 -type list_actions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type list_applications_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type list_asset_model_composite_models_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_asset_model_properties_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_asset_models_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_asset_properties_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_asset_relationships_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_assets_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_associated_assets_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_bulk_import_jobs_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_composition_relationships_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_computation_model_data_binding_usages_errors() ::
@@ -4108,8 +5786,8 @@
 
 -type list_computation_model_resolve_to_resources_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_computation_models_errors() ::
@@ -4122,15 +5800,44 @@
     invalid_request_exception() | 
     internal_failure_exception().
 
--type list_datasets_errors() ::
+-type list_dataset_data_segment_relationships_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
+-type list_dataset_data_segments_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_dataset_export_jobs_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_datasets_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_enrichment_jobs_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
 -type list_executions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_gateways_errors() ::
@@ -4140,9 +5847,23 @@
 
 -type list_interface_relationships_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type list_pipeline_executions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_pipelines_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type list_portals_errors() ::
     throttling_exception() | 
@@ -4159,162 +5880,242 @@
     invalid_request_exception() | 
     internal_failure_exception().
 
--type list_tags_for_resource_errors() ::
-    limit_exceeded_exception() | 
+-type list_queries_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_searches_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
     unauthorized_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type list_tasks_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type list_time_series_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type list_workspaces_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type put_asset_model_interface_relationship_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type put_default_encryption_configuration_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type put_logging_options_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type put_storage_configuration_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type start_pipeline_execution_errors() ::
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
+
+-type start_query_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
+-type start_search_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type untag_resource_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_access_policy_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_asset_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_asset_model_errors() ::
-    precondition_failed_exception() | 
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    resource_already_exists_exception() | 
+    precondition_failed_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_asset_model_composite_model_errors() ::
-    precondition_failed_exception() | 
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    resource_already_exists_exception() | 
+    precondition_failed_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_asset_property_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_computation_model_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_dashboard_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_dataset_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_gateway_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_gateway_capability_configuration_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
+
+-type update_pipeline_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflicting_operation_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type update_portal_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflicting_operation_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception().
 
 -type update_project_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
+
+-type update_task_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
+
+-type update_workspace_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_operation_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -4398,8 +6199,58 @@ associate_time_series_to_asset_property(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a group (batch) of assets with an IoT SiteWise Monitor
-%% project.
+%% @doc Associates a batch of data segments with a curated dataset.
+%%
+%% Data segments are
+%% time-bounded slices of time series data selected from source session
+%% datasets. Data segments
+%% that belong to the same time series can't overlap in time, regardless
+%% of which dataset they
+%% belong to.
+-spec batch_associate_data_segments_to_dataset(aws_client:aws_client(), binary() | list(), batch_associate_data_segments_to_dataset_request()) ->
+    {ok, batch_associate_data_segments_to_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_data_segments_to_dataset_errors(), tuple()}.
+batch_associate_data_segments_to_dataset(Client, DatasetId, Input) ->
+    batch_associate_data_segments_to_dataset(Client, DatasetId, Input, []).
+
+-spec batch_associate_data_segments_to_dataset(aws_client:aws_client(), binary() | list(), batch_associate_data_segments_to_dataset_request(), proplists:proplist()) ->
+    {ok, batch_associate_data_segments_to_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, batch_associate_data_segments_to_dataset_errors(), tuple()}.
+batch_associate_data_segments_to_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/data-segments/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Associates a group (batch) of assets with an IoT SiteWise Monitor project.
 -spec batch_associate_project_assets(aws_client:aws_client(), binary() | list(), batch_associate_project_assets_request()) ->
     {ok, batch_associate_project_assets_response(), tuple()} |
     {error, any()} |
@@ -4414,6 +6265,81 @@ batch_associate_project_assets(Client, ProjectId, Input) ->
 batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/associate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a batch of data segments from a session dataset.
+%%
+%% Deleting a data segment deletes
+%% the underlying time series data for the segment's time range.
+-spec batch_delete_dataset_data_segments(aws_client:aws_client(), binary() | list(), batch_delete_dataset_data_segments_request()) ->
+    {ok, batch_delete_dataset_data_segments_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_dataset_data_segments_errors(), tuple()}.
+batch_delete_dataset_data_segments(Client, DatasetId, Input) ->
+    batch_delete_dataset_data_segments(Client, DatasetId, Input, []).
+
+-spec batch_delete_dataset_data_segments(aws_client:aws_client(), binary() | list(), batch_delete_dataset_data_segments_request(), proplists:proplist()) ->
+    {ok, batch_delete_dataset_data_segments_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_dataset_data_segments_errors(), tuple()}.
+batch_delete_dataset_data_segments(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/data-segments/batch-delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a batch of data segments from a curated dataset.
+%%
+%% Disassociating a data
+%% segment doesn't delete the underlying data in the source session
+%% dataset.
+-spec batch_disassociate_data_segments_from_dataset(aws_client:aws_client(), binary() | list(), batch_disassociate_data_segments_from_dataset_request()) ->
+    {ok, batch_disassociate_data_segments_from_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_data_segments_from_dataset_errors(), tuple()}.
+batch_disassociate_data_segments_from_dataset(Client, DatasetId, Input) ->
+    batch_disassociate_data_segments_from_dataset(Client, DatasetId, Input, []).
+
+-spec batch_disassociate_data_segments_from_dataset(aws_client:aws_client(), binary() | list(), batch_disassociate_data_segments_from_dataset_request(), proplists:proplist()) ->
+    {ok, batch_disassociate_data_segments_from_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_data_segments_from_dataset_errors(), tuple()}.
+batch_disassociate_data_segments_from_dataset(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/data-segments/disassociate"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4656,8 +6582,163 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an access policy that grants the specified identity (IAM
-%% Identity Center user, IAM Identity Center group, or
+%% @doc Cancels a running or pending enrichment job.
+%%
+%% This is an idempotent operation—calling it multiple
+%% times with the same jobId is safe and returns the current status.
+%%
+%% Behavior
+%%
+%% Jobs in PENDING or RUNNING status transition to CANCELLED
+%% Jobs in RUNNING state may not be cancellable once they have progressed to
+%% certain processing stages
+%% Jobs already in terminal states (COMPLETED, FAILED, TIMED_OUT) cannot be
+%% cancelled;
+%% the operation returns a ConflictingOperationException
+%% Cancelling an already-CANCELLED job is a no-op and returns the current
+%% status (idempotent behavior)
+%% The API responds immediately after recording the cancellation
+%% Cleanup of job resources happens asynchronously in the background
+%%
+%% When to Cancel
+%% Cancel a job when:
+%%
+%% The job is taking longer than expected
+%% The job was created with incorrect parameters
+%% You no longer need the results
+%%
+%% Idempotency
+%% You can safely retry cancellation requests. Calling CancelEnrichmentJob
+%% multiple times for the same
+%% job returns the current status without error as long as the job is not in
+%% a terminal state other
+%% than CANCELLED.
+-spec cancel_enrichment_job(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_enrichment_job_request()) ->
+    {ok, cancel_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_enrichment_job_errors(), tuple()}.
+cancel_enrichment_job(Client, JobId, WorkspaceName, Input) ->
+    cancel_enrichment_job(Client, JobId, WorkspaceName, Input, []).
+
+-spec cancel_enrichment_job(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_enrichment_job_request(), proplists:proplist()) ->
+    {ok, cancel_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_enrichment_job_errors(), tuple()}.
+cancel_enrichment_job(Client, JobId, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/enrichment-jobs/", aws_util:encode_uri(JobId), "/cancel"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a pipeline execution in the specified workspace.
+%%
+%% If the execution
+%% is not in a terminal state (such as NOT_STARTED or RUNNING), it
+%% transitions to
+%% CANCELLING and asynchronously to CANCELLED. This operation is idempotent:
+%% calling
+%% it on an execution that is already CANCELLING or CANCELLED returns success
+%% with
+%% the current state. Calling it on a terminal execution (SUCCEEDED or
+%% FAILED)
+%% returns a conflict error. You can optionally provide a reason; it is
+%% returned in
+%% the stateDetails field when you describe the execution.
+-spec cancel_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_pipeline_execution_request()) ->
+    {ok, cancel_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_pipeline_execution_errors(), tuple()}.
+cancel_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, Input) ->
+    cancel_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, Input, []).
+
+-spec cancel_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, cancel_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_pipeline_execution_errors(), tuple()}.
+cancel_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), "/executions/", aws_util:encode_uri(PipelineExecutionId), "/cancel"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a running query.
+-spec cancel_query(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_query_request()) ->
+    {ok, cancel_query_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
+cancel_query(Client, QueryId, WorkspaceName, Input) ->
+    cancel_query(Client, QueryId, WorkspaceName, Input, []).
+
+-spec cancel_query(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_query_request(), proplists:proplist()) ->
+    {ok, cancel_query_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_query_errors(), tuple()}.
+cancel_query(Client, QueryId, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/queries/", aws_util:encode_uri(QueryId), "/cancel"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Creates an access policy that grants the specified identity (IAM Identity
+%% Center user, IAM Identity Center group, or
 %% IAM user) access to the specified IoT SiteWise Monitor portal or project
 %% resource.
 %%
@@ -4678,6 +6759,41 @@ create_access_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/access-policies"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new application for the workspace and IdC application
+%% provided
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
+create_application(Client, Input) ->
+    create_application(Client, Input, []).
+
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_application_errors(), tuple()}.
+create_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/applications"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4876,11 +6992,17 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/CreateBulkImportJob.html
 %% in the Amazon Simple Storage Service User Guide.
 %%
-%% Before you create a bulk import job, you must enable IoT SiteWise warm
-%% tier or IoT SiteWise cold tier.
-%% For more information about how to configure storage settings, see
-%% PutStorageConfiguration:
+%% Before you create a bulk import job that ingests data into time series
+%% outside of a
+%% workspace, you must enable IoT SiteWise warm tier or IoT SiteWise cold
+%% tier. For more information about how
+%% to configure storage settings, see PutStorageConfiguration:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_PutStorageConfiguration.html.
+%% This requirement doesn't apply to bulk import jobs that
+%% ingest data into a session dataset in a workspace (jobs that specify a
+%% `workspaceName' and `datasetId'). Those jobs don't use IoT
+%% SiteWise warm or
+%% cold tier storage.
 %%
 %% Bulk import is designed to store historical data to IoT SiteWise.
 %%
@@ -4959,7 +7081,17 @@ create_computation_model(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a dashboard in an IoT SiteWise Monitor project.
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Creates a dashboard in an IoT SiteWise Monitor project.
 -spec create_dashboard(aws_client:aws_client(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
@@ -4993,7 +7125,12 @@ create_dashboard(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a dataset to connect an external datasource.
+%% @doc Creates a dataset.
+%%
+%% Session and curated datasets are created in a workspace. A session dataset
+%% contains data segments of time series data, and a curated dataset curates
+%% data segments selected from source session datasets. A dataset that
+%% connects to an external datasource is created outside of a workspace.
 -spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
@@ -5009,6 +7146,120 @@ create_dataset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/datasets"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous job that exports dataset and time-series data
+%% from a workspace to Amazon
+%% S3.
+%%
+%% The operation returns a jobId immediately; poll DescribeDatasetExportJob
+%% to track progress and
+%% ListDatasetExportJobs to enumerate a workspace's jobs.
+-spec create_dataset_export_job(aws_client:aws_client(), binary() | list(), create_dataset_export_job_request()) ->
+    {ok, create_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_export_job_errors(), tuple()}.
+create_dataset_export_job(Client, WorkspaceName, Input) ->
+    create_dataset_export_job(Client, WorkspaceName, Input, []).
+
+-spec create_dataset_export_job(aws_client:aws_client(), binary() | list(), create_dataset_export_job_request(), proplists:proplist()) ->
+    {ok, create_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_export_job_errors(), tuple()}.
+create_dataset_export_job(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/dataset-export-jobs"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an asynchronous enrichment job to analyze time-series sensor
+%% data.
+%%
+%% The operation returns
+%% immediately with job details while processing continues in the background.
+%%
+%% Idempotency
+%% Include a clientToken to make the operation idempotent. If you submit the
+%% same request with the same
+%% token within the idempotency window, you receive the original job details
+%% without creating a duplicate.
+%%
+%% Prerequisites
+%% Before creating a job, ensure:
+%%
+%% The workspace is in ACTIVE state (not being deleted)
+%% You have IAM permissions for the workspace, dataset, and time-series
+%% resources
+%% You have KMS Decrypt permission on the workspace's customer-managed
+%% encryption key
+%% No duplicate job (same workspace, dataset, property, and job type) is
+%% currently running
+%%
+%% Workflow
+%%
+%% Submit the job with configuration specifying which video data to analyze
+%% and the time range
+%% Capture the jobId from the response
+%% Use DescribeEnrichmentJob to monitor progress and check job status
+%% When status reaches a terminal state (COMPLETED, FAILED, TIMED_OUT,
+%% CANCELLED), check results
+%% For COMPLETED jobs, query IoT SiteWise for semantic search on video events
+%%
+%% Error Handling
+%%
+%% ConflictingOperationException: A duplicate job is already running for the
+%% same configuration
+%% InvalidRequestException: Invalid parameters (e.g., both timeSeriesId and
+%% propertyAlias specified)
+%% AccessDeniedException: Insufficient IAM or KMS permissions
+%% LimitExceededException: Too many concurrent jobs or requests
+-spec create_enrichment_job(aws_client:aws_client(), binary() | list(), create_enrichment_job_request()) ->
+    {ok, create_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_enrichment_job_errors(), tuple()}.
+create_enrichment_job(Client, WorkspaceName, Input) ->
+    create_enrichment_job(Client, WorkspaceName, Input, []).
+
+-spec create_enrichment_job(aws_client:aws_client(), binary() | list(), create_enrichment_job_request(), proplists:proplist()) ->
+    {ok, create_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_enrichment_job_errors(), tuple()}.
+create_enrichment_job(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/enrichment-jobs"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5068,9 +7319,64 @@ create_gateway(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a portal, which can contain projects and dashboards.
+%% @doc Creates a new pipeline in the specified workspace.
 %%
-%% IoT SiteWise Monitor uses IAM Identity Center or IAM
+%% A pipeline defines a
+%% directed acyclic graph (DAG) of compute nodes, where each node references
+%% a task
+%% and can declare dependencies on other nodes. Cyclic dependencies are not
+%% allowed. Nodes without dependencies run in parallel, while nodes with
+%% dependencies
+%% wait for all upstream nodes to complete successfully before starting.
+%%
+%% You can set environment variables at the pipeline level that are shared
+%% across all
+%% compute nodes, and override them at the individual compute node level.
+-spec create_pipeline(aws_client:aws_client(), binary() | list(), create_pipeline_request()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
+create_pipeline(Client, WorkspaceName, Input) ->
+    create_pipeline(Client, WorkspaceName, Input, []).
+
+-spec create_pipeline(aws_client:aws_client(), binary() | list(), create_pipeline_request(), proplists:proplist()) ->
+    {ok, create_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_errors(), tuple()}.
+create_pipeline(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Creates a portal, which can contain projects and dashboards. IoT SiteWise
+%% Monitor uses IAM Identity Center or IAM
 %% to authenticate portal users and manage user permissions.
 %%
 %% Before you can sign in to a new portal, you must add at least one identity
@@ -5112,7 +7418,17 @@ create_portal(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a project in the specified portal.
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Creates a project in the specified portal.
 %%
 %% Make sure that the project name and description don't contain
 %% confidential
@@ -5132,6 +7448,95 @@ create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new task in the specified workspace.
+%%
+%% A task defines a reusable
+%% containerized compute workload that can be referenced by one or more
+%% pipeline compute nodes.
+%%
+%% Specify a `containerTaskConfiguration':
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ContainerTaskConfiguration.html
+%% for custom container workloads with
+%% configurable ECR image, processing type, processing unit, and environment
+%% variables.
+-spec create_task(aws_client:aws_client(), binary() | list(), create_task_request()) ->
+    {ok, create_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_task_errors(), tuple()}.
+create_task(Client, WorkspaceName, Input) ->
+    create_task(Client, WorkspaceName, Input, []).
+
+-spec create_task(aws_client:aws_client(), binary() | list(), create_task_request(), proplists:proplist()) ->
+    {ok, create_task_response(), tuple()} |
+    {error, any()} |
+    {error, create_task_errors(), tuple()}.
+create_task(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a workspace in IoT SiteWise.
+%%
+%% A workspace isolates its resources, such as datasets, time
+%% series, pipelines, and tasks, and their data from other workspaces, and
+%% has its own quotas
+%% and throttling limits. You must specify an encryption configuration when
+%% you create
+%% a workspace. The operation returns immediately with the workspace in the
+%% `CREATING' state. Provisioning completes asynchronously, after which
+%% the workspace
+%% state is `ACTIVE', or `FAILED' if provisioning doesn't
+%% complete.
+-spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
+create_workspace(Client, Input) ->
+    create_workspace(Client, Input, []).
+
+-spec create_workspace(aws_client:aws_client(), create_workspace_request(), proplists:proplist()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, create_workspace_errors(), tuple()}.
+create_workspace(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -5188,6 +7593,40 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
                      {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an application by ID
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
+delete_application(Client, Id, WorkspaceName, Input) ->
+    delete_application(Client, Id, WorkspaceName, Input, []).
+
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_application_errors(), tuple()}.
+delete_application(Client, Id, WorkspaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/applications/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an asset.
@@ -5447,7 +7886,12 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
 
 %% @doc Deletes a dataset.
 %%
-%% This cannot be undone.
+%% This can't be undone. Deleting a session dataset also deletes the
+%% underlying time series data in the session. You can't delete a session
+%% dataset while a curated dataset references its data segments. First delete
+%% the curated dataset or disassociate the data segments. Deleting a curated
+%% dataset doesn't delete the underlying data in the source session
+%% datasets.
 -spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
@@ -5477,7 +7921,8 @@ delete_dataset(Client, DatasetId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"clientToken">>, <<"clientToken">>}
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"workspaceName">>, <<"workspaceName">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -5500,6 +7945,48 @@ delete_gateway(Client, GatewayId, Input) ->
 delete_gateway(Client, GatewayId, Input0, Options0) ->
     Method = delete,
     Path = ["/20200301/gateways/", aws_util:encode_uri(GatewayId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a pipeline from the specified workspace.
+%%
+%% A pipeline cannot be
+%% deleted if it has any active executions. Wait for all executions to
+%% complete before
+%% attempting to delete the pipeline, or use CancelPipelineExecution:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_CancelPipelineExecution.html
+%% to stop a running
+%% execution.
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), delete_pipeline_request()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
+delete_pipeline(Client, PipelineName, WorkspaceName, Input) ->
+    delete_pipeline(Client, PipelineName, WorkspaceName, Input, []).
+
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
+    {ok, delete_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_errors(), tuple()}.
+delete_pipeline(Client, PipelineName, WorkspaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5589,12 +8076,53 @@ delete_project(Client, ProjectId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a task from the specified workspace.
+%%
+%% A task cannot be deleted
+%% if it is currently referenced by any existing pipeline. Remove the task
+%% from all
+%% pipelines before attempting to delete it.
+-spec delete_task(aws_client:aws_client(), binary() | list(), binary() | list(), delete_task_request()) ->
+    {ok, delete_task_response(), tuple()} |
+    {error, any()} |
+    {error, delete_task_errors(), tuple()}.
+delete_task(Client, TaskName, WorkspaceName, Input) ->
+    delete_task(Client, TaskName, WorkspaceName, Input, []).
+
+-spec delete_task(aws_client:aws_client(), binary() | list(), binary() | list(), delete_task_request(), proplists:proplist()) ->
+    {ok, delete_task_response(), tuple()} |
+    {error, any()} |
+    {error, delete_task_errors(), tuple()}.
+delete_task(Client, TaskName, WorkspaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/tasks/", aws_util:encode_uri(TaskName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a time series (data stream).
 %%
 %% If you delete a time series that's associated with an
 %% asset property, the asset property still exists, but the time series will
 %% no longer be
-%% associated with this asset property.
+%% associated with this asset property. You can't delete a time series
+%% until all of its data
+%% segments have been deleted from session datasets.
 %%
 %% To identify a time series, do one of the following:
 %%
@@ -5638,7 +8166,48 @@ delete_time_series(Client, Input0, Options0) ->
     QueryMapping = [
                      {<<"alias">>, <<"alias">>},
                      {<<"assetId">>, <<"assetId">>},
-                     {<<"propertyId">>, <<"propertyId">>}
+                     {<<"propertyId">>, <<"propertyId">>},
+                     {<<"workspaceName">>, <<"workspaceName">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a workspace.
+%%
+%% Before you delete a workspace, you must delete all resources
+%% contained in or associated with the workspace, such as datasets, time
+%% series, pipelines,
+%% and tasks.
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
+delete_workspace(Client, WorkspaceName, Input) ->
+    delete_workspace(Client, WorkspaceName, Input, []).
+
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, delete_workspace_errors(), tuple()}.
+delete_workspace(Client, WorkspaceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -5706,6 +8275,43 @@ describe_action(Client, ActionId, QueryMap, HeadersMap)
 describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/actions/", aws_util:encode_uri(ActionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves Application details based on the ID
+-spec describe_application(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_application_errors(), tuple()}.
+describe_application(Client, Id, WorkspaceName)
+  when is_map(Client) ->
+    describe_application(Client, Id, WorkspaceName, #{}, #{}).
+
+-spec describe_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_application_errors(), tuple()}.
+describe_application(Client, Id, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_application(Client, Id, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_application_errors(), tuple()}.
+describe_application(Client, Id, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/applications/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6041,7 +8647,11 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6199,6 +8809,48 @@ describe_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
+    Query0_ =
+      [
+        {<<"datasetVersion">>, maps:get(<<"datasetVersion">>, QueryMap, undefined)},
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a dataset export job.
+-spec describe_dataset_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_export_job_errors(), tuple()}.
+describe_dataset_export_job(Client, JobId, WorkspaceName)
+  when is_map(Client) ->
+    describe_dataset_export_job(Client, JobId, WorkspaceName, #{}, #{}).
+
+-spec describe_dataset_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_export_job_errors(), tuple()}.
+describe_dataset_export_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dataset_export_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_dataset_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dataset_export_job_errors(), tuple()}.
+describe_dataset_export_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/dataset-export-jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
@@ -6234,6 +8886,72 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
 describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/configuration/account/encryption"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific enrichment job,
+%% including its current status,
+%% configuration, and timestamps.
+%%
+%% Use Cases
+%%
+%% Monitor job progress by checking status updates with DescribeEnrichmentJob
+%% Retrieve the complete job configuration submitted during creation
+%% Debug failed jobs by examining the failureMessage field
+%% Track job lifecycle with creation, update, completion, and cancellation
+%% timestamps
+%%
+%% Status Monitoring
+%% Jobs progress through statuses: PENDING → RUNNING → terminal state
+%%
+%% Terminal states:
+%%
+%% COMPLETED: Job finished successfully; query IoT SiteWise for semantic
+%% search results
+%% FAILED: Job encountered an error; check failureMessage for details
+%% TIMED_OUT: Job exceeded maximum processing time
+%% CANCELLED: Job was cancelled via CancelEnrichmentJob
+%%
+%% Response Fields
+%% The response includes:
+%%
+%% Current job status and type
+%% Full job configuration as originally submitted
+%% Lifecycle timestamps (created, updated, completed, cancelled)
+%% Failure details if status is FAILED
+-spec describe_enrichment_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_enrichment_job_errors(), tuple()}.
+describe_enrichment_job(Client, JobId, WorkspaceName)
+  when is_map(Client) ->
+    describe_enrichment_job(Client, JobId, WorkspaceName, #{}, #{}).
+
+-spec describe_enrichment_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_enrichment_job_errors(), tuple()}.
+describe_enrichment_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_enrichment_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_enrichment_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_enrichment_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_enrichment_job_errors(), tuple()}.
+describe_enrichment_job(Client, JobId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/enrichment-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6415,7 +9133,102 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific pipeline in a
+%% workspace.
+-spec describe_pipeline(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_errors(), tuple()}.
+describe_pipeline(Client, PipelineName, WorkspaceName)
+  when is_map(Client) ->
+    describe_pipeline(Client, PipelineName, WorkspaceName, #{}, #{}).
+
+-spec describe_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_errors(), tuple()}.
+describe_pipeline(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_pipeline(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_errors(), tuple()}.
+describe_pipeline(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific pipeline execution,
+%% including the
+%% overall execution status and the status of each individual compute node.
+%%
+%% Use this
+%% operation to monitor execution progress and inspect per-node results,
+%% environment
+%% variables, and error details.
+-spec describe_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_execution_errors(), tuple()}.
+describe_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName)
+  when is_map(Client) ->
+    describe_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, #{}, #{}).
+
+-spec describe_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_execution_errors(), tuple()}.
+describe_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_pipeline_execution_errors(), tuple()}.
+describe_pipeline_execution(Client, PipelineExecutionId, PipelineName, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), "/executions/", aws_util:encode_uri(PipelineExecutionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6493,6 +9306,87 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a query, including its status.
+-spec describe_query(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_query_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_errors(), tuple()}.
+describe_query(Client, QueryId, WorkspaceName)
+  when is_map(Client) ->
+    describe_query(Client, QueryId, WorkspaceName, #{}, #{}).
+
+-spec describe_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_query_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_errors(), tuple()}.
+describe_query(Client, QueryId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_query(Client, QueryId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_query_response(), tuple()} |
+    {error, any()} |
+    {error, describe_query_errors(), tuple()}.
+describe_query(Client, QueryId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/queries/", aws_util:encode_uri(QueryId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the current status and metadata of a single search, including
+%% the query that was
+%% submitted, the search type, and — when the search has failed — the reason.
+%%
+%% Use this to poll a
+%% search started with `StartSearch' until it reaches a terminal status
+%% (`SUCCEEDED' or
+%% `FAILED').
+-spec describe_search(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_search_response(), tuple()} |
+    {error, any()} |
+    {error, describe_search_errors(), tuple()}.
+describe_search(Client, SearchId, WorkspaceName)
+  when is_map(Client) ->
+    describe_search(Client, SearchId, WorkspaceName, #{}, #{}).
+
+-spec describe_search(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_search_response(), tuple()} |
+    {error, any()} |
+    {error, describe_search_errors(), tuple()}.
+describe_search(Client, SearchId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_search(Client, SearchId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_search(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_search_response(), tuple()} |
+    {error, any()} |
+    {error, describe_search_errors(), tuple()}.
+describe_search(Client, SearchId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/searches/", aws_util:encode_uri(SearchId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about the storage configuration for IoT
 %% SiteWise.
 -spec describe_storage_configuration(aws_client:aws_client()) ->
@@ -6528,6 +9422,47 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific task in a workspace.
+-spec describe_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_task_errors(), tuple()}.
+describe_task(Client, TaskName, WorkspaceName)
+  when is_map(Client) ->
+    describe_task(Client, TaskName, WorkspaceName, #{}, #{}).
+
+-spec describe_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_task_errors(), tuple()}.
+describe_task(Client, TaskName, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_task(Client, TaskName, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_task_response(), tuple()} |
+    {error, any()} |
+    {error, describe_task_errors(), tuple()}.
+describe_task(Client, TaskName, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/tasks/", aws_util:encode_uri(TaskName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6580,9 +9515,47 @@ describe_time_series(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"alias">>, maps:get(<<"alias">>, QueryMap, undefined)},
         {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
-        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)}
+        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)},
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a workspace.
+-spec describe_workspace(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, WorkspaceName)
+  when is_map(Client) ->
+    describe_workspace(Client, WorkspaceName, #{}, #{}).
+
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_workspace(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, describe_workspace_errors(), tuple()}.
+describe_workspace(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6914,6 +9887,40 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves video data for a specific time range.
+-spec get_capture_data(aws_client:aws_client(), binary() | list(), get_capture_data_request()) ->
+    {ok, get_capture_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_capture_data_errors(), tuple()}.
+get_capture_data(Client, WorkspaceName, Input) ->
+    get_capture_data(Client, WorkspaceName, Input, []).
+
+-spec get_capture_data(aws_client:aws_client(), binary() | list(), get_capture_data_request(), proplists:proplist()) ->
+    {ok, get_capture_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_capture_data_errors(), tuple()}.
+get_capture_data(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/get-capture-data"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get interpolated values for an asset property for a specified time
 %% interval, during a
 %% period of time.
@@ -6981,6 +9988,103 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
         {<<"startTimeInSeconds">>, StartTimeInSeconds},
         {<<"startTimeOffsetInNanos">>, maps:get(<<"startTimeOffsetInNanos">>, QueryMap, undefined)},
         {<<"type">>, Type}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the paginated results of a query.
+%%
+%% Returns empty rows if the query is not yet complete.
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_errors(), tuple()}.
+get_query_results(Client, QueryId, WorkspaceName)
+  when is_map(Client) ->
+    get_query_results(Client, QueryId, WorkspaceName, #{}, #{}).
+
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_errors(), tuple()}.
+get_query_results(Client, QueryId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_results(Client, QueryId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_errors(), tuple()}.
+get_query_results(Client, QueryId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/queries/", aws_util:encode_uri(QueryId), "/results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the ranked results of a search, ordered by descending
+%% relevance score.
+%%
+%% Results are
+%% available only after the search has reached the `SUCCEEDED' status.
+%% Calling this on a search
+%% that exists but has not yet completed returns
+%% `InvalidRequestException', while calling it on a
+%% search that does not exist returns `ResourceNotFoundException'. The
+%% response is paginated: when
+%% `nextToken' is present, pass it on a subsequent call to retrieve the
+%% next page.
+-spec get_search_results(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_search_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_search_results_errors(), tuple()}.
+get_search_results(Client, SearchId, WorkspaceName)
+  when is_map(Client) ->
+    get_search_results(Client, SearchId, WorkspaceName, #{}, #{}).
+
+-spec get_search_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_search_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_search_results_errors(), tuple()}.
+get_search_results(Client, SearchId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_search_results(Client, SearchId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec get_search_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_search_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_search_results_errors(), tuple()}.
+get_search_results(Client, SearchId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/searches/", aws_util:encode_uri(SearchId), "/results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7127,6 +10231,48 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap,
         {<<"resolveToResourceType">>, maps:get(<<"resolveToResourceType">>, QueryMap, undefined)},
         {<<"targetResourceId">>, TargetResourceId},
         {<<"targetResourceType">>, TargetResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of existing applications
+-spec list_applications(aws_client:aws_client()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client)
+  when is_map(Client) ->
+    list_applications(Client, #{}, #{}).
+
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_applications(Client, QueryMap, HeadersMap, []).
+
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_applications_errors(), tuple()}.
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7513,7 +10659,8 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7733,6 +10880,145 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of data segment relationships for a
+%% session dataset.
+%%
+%% Use this
+%% operation to find the curated datasets that reference data segments of the
+%% specified session
+%% dataset. Use the `nextToken' parameter to retrieve additional results.
+-spec list_dataset_data_segment_relationships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_dataset_data_segment_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segment_relationships_errors(), tuple()}.
+list_dataset_data_segment_relationships(Client, DatasetId, WorkspaceName)
+  when is_map(Client) ->
+    list_dataset_data_segment_relationships(Client, DatasetId, WorkspaceName, #{}, #{}).
+
+-spec list_dataset_data_segment_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_data_segment_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segment_relationships_errors(), tuple()}.
+list_dataset_data_segment_relationships(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_data_segment_relationships(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_dataset_data_segment_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_data_segment_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segment_relationships_errors(), tuple()}.
+list_dataset_data_segment_relationships(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/data-segment-relationships"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"workspaceName">>, WorkspaceName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of data segments associated with a
+%% dataset.
+%%
+%% Use the `nextToken' parameter to retrieve additional results.
+-spec list_dataset_data_segments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_dataset_data_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segments_errors(), tuple()}.
+list_dataset_data_segments(Client, DatasetId, WorkspaceName)
+  when is_map(Client) ->
+    list_dataset_data_segments(Client, DatasetId, WorkspaceName, #{}, #{}).
+
+-spec list_dataset_data_segments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_data_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segments_errors(), tuple()}.
+list_dataset_data_segments(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_data_segments(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_dataset_data_segments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_data_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_data_segments_errors(), tuple()}.
+list_dataset_data_segments(Client, DatasetId, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/data-segments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"datasetVersion">>, maps:get(<<"datasetVersion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"workspaceName">>, WorkspaceName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of dataset export jobs for a workspace.
+-spec list_dataset_export_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dataset_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_export_jobs_errors(), tuple()}.
+list_dataset_export_jobs(Client, WorkspaceName)
+  when is_map(Client) ->
+    list_dataset_export_jobs(Client, WorkspaceName, #{}, #{}).
+
+-spec list_dataset_export_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_export_jobs_errors(), tuple()}.
+list_dataset_export_jobs(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_export_jobs(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_dataset_export_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_export_jobs_errors(), tuple()}.
+list_dataset_export_jobs(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/dataset-export-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of datasets for a specific target
 %% resource.
 -spec list_datasets(aws_client:aws_client(), binary() | list()) ->
@@ -7769,9 +11055,100 @@ list_datasets(Client, SourceType, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"datasetType">>, maps:get(<<"datasetType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"sourceType">>, SourceType}
+        {<<"sourceType">>, SourceType},
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists enrichment jobs within a workspace with optional filtering and
+%% pagination.
+%%
+%% Results are ordered
+%% by createdAt timestamp descending (newest first).
+%%
+%% Filtering
+%% Combine filters to narrow results:
+%%
+%% datasetId: Filter by dataset
+%% propertyAlias OR timeSeriesId: Filter by time series (specify one, not
+%% both)
+%% status: Filter by job status (e.g., RUNNING to find active jobs)
+%% jobType: Filter by enrichment type (currently only EVENT_DETECTION)
+%% startDate and endDate: Filter by job creation time range
+%%
+%% Important Constraints
+%%
+%% You must specify either propertyAlias OR timeSeriesId, but not both
+%% Attempting to specify both results in an InvalidRequestException
+%% Date filters use ISO 8601 format
+%% startDate is exclusive, endDate is inclusive
+%%
+%% Pagination
+%% The operation returns up to maxResults jobs per page (default 50). If more
+%% results exist, the
+%% response includes a nextToken. Submit this token in a subsequent request
+%% to retrieve the next page.
+%%
+%% Common Use Cases
+%%
+%% Find all running jobs: Filter by status=RUNNING
+%% List recent jobs for a dataset: Filter by datasetId with optional date
+%% range
+%% Monitor jobs for a specific sensor: Filter by propertyAlias or
+%% timeSeriesId
+%% Track all event detection jobs: Filter by jobType=EVENT_DETECTION
+%%
+%% Performance
+%% Performance is optimal when filtering by supported fields (datasetId,
+%% propertyAlias, timeSeriesId, status, jobType).
+-spec list_enrichment_jobs(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_enrichment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_enrichment_jobs_errors(), tuple()}.
+list_enrichment_jobs(Client, WorkspaceName)
+  when is_map(Client) ->
+    list_enrichment_jobs(Client, WorkspaceName, #{}, #{}).
+
+-spec list_enrichment_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_enrichment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_enrichment_jobs_errors(), tuple()}.
+list_enrichment_jobs(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_enrichment_jobs(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_enrichment_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_enrichment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_enrichment_jobs_errors(), tuple()}.
+list_enrichment_jobs(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/enrichment-jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"datasetId">>, maps:get(<<"datasetId">>, QueryMap, undefined)},
+        {<<"endDate">>, maps:get(<<"endDate">>, QueryMap, undefined)},
+        {<<"jobType">>, maps:get(<<"jobType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"propertyAlias">>, maps:get(<<"propertyAlias">>, QueryMap, undefined)},
+        {<<"startDate">>, maps:get(<<"startDate">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"timeSeriesId">>, maps:get(<<"timeSeriesId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7892,6 +11269,110 @@ list_interface_relationships(Client, InterfaceAssetModelId, QueryMap, HeadersMap
 list_interface_relationships(Client, InterfaceAssetModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/interface/", aws_util:encode_uri(InterfaceAssetModelId), "/asset-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists pipeline executions for a specific pipeline in a workspace.
+%%
+%% Supports filtering by state and time range. State can be combined with
+%% either
+%% startTime or endTime filters. Time range filters are grouped: use
+%% startTime filters
+%% (startTimeAfter, startTimeBefore) or endTime filters (endTimeAfter,
+%% endTimeBefore),
+%% but not both. Combining startTime and endTime filters returns an
+%% InvalidRequestException.
+%% Note: endTime filters only return executions in terminal states, as
+%% in-progress
+%% executions have no endTime.
+-spec list_pipeline_executions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_pipeline_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
+list_pipeline_executions(Client, PipelineName, WorkspaceName)
+  when is_map(Client) ->
+    list_pipeline_executions(Client, PipelineName, WorkspaceName, #{}, #{}).
+
+-spec list_pipeline_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_pipeline_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
+list_pipeline_executions(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipeline_executions(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_pipeline_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipeline_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_executions_errors(), tuple()}.
+list_pipeline_executions(Client, PipelineName, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), "/executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTimeAfter">>, maps:get(<<"endTimeAfter">>, QueryMap, undefined)},
+        {<<"endTimeBefore">>, maps:get(<<"endTimeBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"startTimeAfter">>, maps:get(<<"startTimeAfter">>, QueryMap, undefined)},
+        {<<"startTimeBefore">>, maps:get(<<"startTimeBefore">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists pipelines in a workspace.
+%%
+%% To get complete details about a pipeline, use DescribePipeline:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribePipeline.html.
+-spec list_pipelines(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
+list_pipelines(Client, WorkspaceName)
+  when is_map(Client) ->
+    list_pipelines(Client, WorkspaceName, #{}, #{}).
+
+-spec list_pipelines(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
+list_pipelines(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipelines(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_pipelines(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipelines_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipelines_errors(), tuple()}.
+list_pipelines(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8039,6 +11520,89 @@ list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of queries for a workspace.
+-spec list_queries(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
+list_queries(Client, WorkspaceName)
+  when is_map(Client) ->
+    list_queries(Client, WorkspaceName, #{}, #{}).
+
+-spec list_queries(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
+list_queries(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queries(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_queries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_queries_response(), tuple()} |
+    {error, any()} |
+    {error, list_queries_errors(), tuple()}.
+list_queries(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/queries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the searches in a workspace, most recently started first.
+%%
+%% Results can be narrowed with
+%% optional filters (status, search type, group, and started-at time range)
+%% and are paginated: when
+%% `nextToken' is present, pass it on a subsequent call to retrieve the
+%% next page.
+-spec list_searches(aws_client:aws_client(), binary() | list(), list_searches_request()) ->
+    {ok, list_searches_response(), tuple()} |
+    {error, any()} |
+    {error, list_searches_errors(), tuple()}.
+list_searches(Client, WorkspaceName, Input) ->
+    list_searches(Client, WorkspaceName, Input, []).
+
+-spec list_searches(aws_client:aws_client(), binary() | list(), list_searches_request(), proplists:proplist()) ->
+    {ok, list_searches_response(), tuple()} |
+    {error, any()} |
+    {error, list_searches_errors(), tuple()}.
+list_searches(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/searches/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the list of tags for an IoT SiteWise resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -8075,6 +11639,51 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists tasks in a workspace.
+%%
+%% To get complete details about a task, use DescribeTask:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeTask.html.
+-spec list_tasks(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
+list_tasks(Client, WorkspaceName)
+  when is_map(Client) ->
+    list_tasks(Client, WorkspaceName, #{}, #{}).
+
+-spec list_tasks(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
+list_tasks(Client, WorkspaceName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tasks(Client, WorkspaceName, QueryMap, HeadersMap, []).
+
+-spec list_tasks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, list_tasks_errors(), tuple()}.
+list_tasks(Client, WorkspaceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/tasks"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -8119,7 +11728,52 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
         {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"timeSeriesType">>, maps:get(<<"timeSeriesType">>, QueryMap, undefined)}
+        {<<"timeSeriesType">>, maps:get(<<"timeSeriesType">>, QueryMap, undefined)},
+        {<<"workspaceName">>, maps:get(<<"workspaceName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of workspaces.
+%%
+%% Use the `nextToken' parameter to retrieve additional results.
+-spec list_workspaces(aws_client:aws_client()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client)
+  when is_map(Client) ->
+    list_workspaces(Client, #{}, #{}).
+
+-spec list_workspaces(aws_client:aws_client(), map(), map()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_workspaces(Client, QueryMap, HeadersMap, []).
+
+-spec list_workspaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, list_workspaces_errors(), tuple()}.
+list_workspaces(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -8272,6 +11926,130 @@ put_storage_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts execution of a pipeline in the specified workspace.
+%%
+%% Each compute node runs
+%% according to the DAG dependency order defined in the pipeline. Nodes
+%% without
+%% dependencies start immediately, while dependent nodes wait for all
+%% upstream nodes
+%% to complete successfully.
+%%
+%% You can provide runtime environment variable overrides that take the
+%% highest priority
+%% in the environment variable hierarchy, without modifying the pipeline
+%% definition.
+-spec start_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_pipeline_execution_request()) ->
+    {ok, start_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
+start_pipeline_execution(Client, PipelineName, WorkspaceName, Input) ->
+    start_pipeline_execution(Client, PipelineName, WorkspaceName, Input, []).
+
+-spec start_pipeline_execution(aws_client:aws_client(), binary() | list(), binary() | list(), start_pipeline_execution_request(), proplists:proplist()) ->
+    {ok, start_pipeline_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_pipeline_execution_errors(), tuple()}.
+start_pipeline_execution(Client, PipelineName, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), "/executions"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous SQL query against workspace telemetry,
+%% annotations, data segment, and dataset data.
+-spec start_query(aws_client:aws_client(), binary() | list(), start_query_request()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_query_errors(), tuple()}.
+start_query(Client, WorkspaceName, Input) ->
+    start_query(Client, WorkspaceName, Input, []).
+
+-spec start_query(aws_client:aws_client(), binary() | list(), start_query_request(), proplists:proplist()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_query_errors(), tuple()}.
+start_query(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/queries"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an asynchronous search over the data in a workspace.
+%%
+%% The search runs in the background;
+%% the response returns immediately with a `searchId' and an initial
+%% status of `QUEUED'. Use
+%% `DescribeSearch' to poll for completion and `GetSearchResults' to
+%% retrieve the results once the
+%% search reaches `SUCCEEDED'. The request is idempotent on
+%% `clientToken': repeating a call with the
+%% same token returns the original search instead of starting a new one.
+-spec start_search(aws_client:aws_client(), binary() | list(), start_search_request()) ->
+    {ok, start_search_response(), tuple()} |
+    {error, any()} |
+    {error, start_search_errors(), tuple()}.
+start_search(Client, WorkspaceName, Input) ->
+    start_search(Client, WorkspaceName, Input, []).
+
+-spec start_search(aws_client:aws_client(), binary() | list(), start_search_request(), proplists:proplist()) ->
+    {ok, start_search_response(), tuple()} |
+    {error, any()} |
+    {error, start_search_errors(), tuple()}.
+start_search(Client, WorkspaceName, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/searches"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds tags to an IoT SiteWise resource.
 %%
 %% If a tag already exists for the resource, this operation
@@ -8346,8 +12124,18 @@ untag_resource(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing access policy that specifies an identity's
-%% access to an IoT SiteWise Monitor
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Updates an existing access policy that specifies an identity's access
+%% to an IoT SiteWise Monitor
 %% portal or project resource.
 -spec update_access_policy(aws_client:aws_client(), binary() | list(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
@@ -8623,7 +12411,17 @@ update_computation_model(Client, ComputationModelId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an IoT SiteWise Monitor dashboard.
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Updates an IoT SiteWise Monitor dashboard.
 -spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
@@ -8789,7 +12587,58 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an IoT SiteWise Monitor portal.
+%% @doc Updates an existing pipeline in the specified workspace.
+%%
+%% Only the fields
+%% provided in the request are updated; fields not included in the request
+%% are preserved
+%% unchanged. You can update the pipeline description, environment variables,
+%% and the
+%% list of compute nodes independently.
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), update_pipeline_request()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
+update_pipeline(Client, PipelineName, WorkspaceName, Input) ->
+    update_pipeline(Client, PipelineName, WorkspaceName, Input, []).
+
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
+    {ok, update_pipeline_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_errors(), tuple()}.
+update_pipeline(Client, PipelineName, WorkspaceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/pipelines/", aws_util:encode_uri(PipelineName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Updates an IoT SiteWise Monitor portal.
 -spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
@@ -8823,7 +12672,17 @@ update_portal(Client, PortalId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an IoT SiteWise Monitor project.
+%% @doc
+%% The IoT SiteWise Monitor feature will no longer be open to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use the IoT SiteWise Monitor feature, sign up prior
+%% to that date. Existing customers can
+%% continue to use the service as normal. For more information, see
+%% IoT SiteWise Monitor availability change:
+%% https://docs.aws.amazon.com/iot-sitewise/latest/appguide/iotsitewise-monitor-availability-change.html.
+%%
+%% Updates an IoT SiteWise Monitor project.
 -spec update_project(aws_client:aws_client(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
@@ -8838,6 +12697,86 @@ update_project(Client, ProjectId, Input) ->
 update_project(Client, ProjectId, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing task in the specified workspace.
+%%
+%% Only the fields
+%% provided in the request are updated; fields not included in the request
+%% are preserved
+%% unchanged.
+-spec update_task(aws_client:aws_client(), binary() | list(), binary() | list(), update_task_request()) ->
+    {ok, update_task_response(), tuple()} |
+    {error, any()} |
+    {error, update_task_errors(), tuple()}.
+update_task(Client, TaskName, WorkspaceName, Input) ->
+    update_task(Client, TaskName, WorkspaceName, Input, []).
+
+-spec update_task(aws_client:aws_client(), binary() | list(), binary() | list(), update_task_request(), proplists:proplist()) ->
+    {ok, update_task_response(), tuple()} |
+    {error, any()} |
+    {error, update_task_errors(), tuple()}.
+update_task(Client, TaskName, WorkspaceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), "/tasks/", aws_util:encode_uri(TaskName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a workspace.
+%%
+%% You can update only workspaces in the `ACTIVE' or
+%% `FAILED' state. Fields that you omit from the request are left
+%% unchanged. To
+%% recover a workspace in the `FAILED' state, call this operation and
+%% supply its
+%% encryption configuration again.
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_errors(), tuple()}.
+update_workspace(Client, WorkspaceName, Input) ->
+    update_workspace(Client, WorkspaceName, Input, []).
+
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, update_workspace_errors(), tuple()}.
+update_workspace(Client, WorkspaceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

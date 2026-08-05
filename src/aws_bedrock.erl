@@ -276,46 +276,1545 @@
 
 
 %% Example:
-%% model_customization_job_summary() :: #{
-%%   <<"baseModelArn">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_enforced_guardrail_inference_input_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"modelEnforcement">> => model_enforcement(),
+%%   <<"selectiveContentGuarding">> => selective_content_guarding()
+%% }
+-type account_enforced_guardrail_inference_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_enforced_guardrail_output_configuration() :: #{
+%%   <<"configId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => [string()],
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"inputTags">> => list(any()),
+%%   <<"modelEnforcement">> => model_enforcement(),
+%%   <<"owner">> => string(),
+%%   <<"selectiveContentGuarding">> => selective_content_guarding(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()]
+%% }
+-type account_enforced_guardrail_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_prompt_optimization_input_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type advanced_prompt_optimization_input_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_prompt_optimization_job_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customModelArn">> => string(),
-%%   <<"customModelName">> => string(),
-%%   <<"customizationType">> => list(any()),
-%%   <<"endTime">> => non_neg_integer(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer()
+%% }
+-type advanced_prompt_optimization_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_prompt_optimization_output_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type advanced_prompt_optimization_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% agreement_availability() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type agreement_availability() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_evaluation_config() :: #{
+%%   <<"customMetricConfig">> => automated_evaluation_custom_metric_config(),
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
+%%   <<"evaluatorModelConfig">> => list()
+%% }
+-type automated_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_evaluation_custom_metric_config() :: #{
+%%   <<"customMetrics">> => list(list()),
+%%   <<"evaluatorModelConfig">> => custom_metric_evaluator_model_config()
+%% }
+-type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_impossible_finding() :: #{
+%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_impossible_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_input_text_reference() :: #{
+%%   <<"text">> => string()
+%% }
+-type automated_reasoning_check_input_text_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_invalid_finding() :: #{
+%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_invalid_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_logic_warning() :: #{
+%%   <<"claims">> => list(automated_reasoning_logic_statement()),
+%%   <<"premises">> => list(automated_reasoning_logic_statement()),
+%%   <<"type">> => list(any())
+%% }
+-type automated_reasoning_check_logic_warning() :: #{binary() => any()}.
+
+%% Example:
+%% automated_reasoning_check_no_translations_finding() :: #{}
+-type automated_reasoning_check_no_translations_finding() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_check_rule() :: #{
+%%   <<"id">> => string(),
+%%   <<"policyVersionArn">> => string()
+%% }
+-type automated_reasoning_check_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_satisfiable_finding() :: #{
+%%   <<"claimsFalseScenario">> => automated_reasoning_check_scenario(),
+%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_satisfiable_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_scenario() :: #{
+%%   <<"statements">> => list(automated_reasoning_logic_statement())
+%% }
+-type automated_reasoning_check_scenario() :: #{binary() => any()}.
+
+%% Example:
+%% automated_reasoning_check_too_complex_finding() :: #{}
+-type automated_reasoning_check_too_complex_finding() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_check_translation() :: #{
+%%   <<"claims">> => list(automated_reasoning_logic_statement()),
+%%   <<"confidence">> => float(),
+%%   <<"premises">> => list(automated_reasoning_logic_statement()),
+%%   <<"untranslatedClaims">> => list(automated_reasoning_check_input_text_reference()),
+%%   <<"untranslatedPremises">> => list(automated_reasoning_check_input_text_reference())
+%% }
+-type automated_reasoning_check_translation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_translation_ambiguous_finding() :: #{
+%%   <<"differenceScenarios">> => list(automated_reasoning_check_scenario()),
+%%   <<"options">> => list(automated_reasoning_check_translation_option())
+%% }
+-type automated_reasoning_check_translation_ambiguous_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_translation_option() :: #{
+%%   <<"translations">> => list(automated_reasoning_check_translation())
+%% }
+-type automated_reasoning_check_translation_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_valid_finding() :: #{
+%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"supportingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_valid_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_logic_statement() :: #{
+%%   <<"logic">> => string(),
+%%   <<"naturalLanguage">> => string()
+%% }
+-type automated_reasoning_logic_statement() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_rule_annotation() :: #{
+%%   <<"expression">> => string()
+%% }
+-type automated_reasoning_policy_add_rule_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{
+%%   <<"naturalLanguage">> => string()
+%% }
+-type automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_rule_mutation() :: #{
+%%   <<"rule">> => automated_reasoning_policy_definition_rule()
+%% }
+-type automated_reasoning_policy_add_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_type_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
+%% }
+-type automated_reasoning_policy_add_type_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_type_mutation() :: #{
+%%   <<"type">> => automated_reasoning_policy_definition_type()
+%% }
+-type automated_reasoning_policy_add_type_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_add_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_variable_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type automated_reasoning_policy_add_variable_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_variable_mutation() :: #{
+%%   <<"variable">> => automated_reasoning_policy_definition_variable()
+%% }
+-type automated_reasoning_policy_add_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_annotated_chunk() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"pageNumber">> => [integer()]
+%% }
+-type automated_reasoning_policy_annotated_chunk() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_annotated_line() :: #{
+%%   <<"lineNumber">> => [integer()],
+%%   <<"lineText">> => string()
+%% }
+-type automated_reasoning_policy_annotated_line() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_atomic_statement() :: #{
+%%   <<"id">> => string(),
+%%   <<"location">> => automated_reasoning_policy_statement_location(),
+%%   <<"text">> => string()
+%% }
+-type automated_reasoning_policy_atomic_statement() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_log() :: #{
+%%   <<"entries">> => list(automated_reasoning_policy_build_log_entry())
+%% }
+-type automated_reasoning_policy_build_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_log_entry() :: #{
+%%   <<"annotation">> => list(),
+%%   <<"buildSteps">> => list(automated_reasoning_policy_build_step()),
+%%   <<"status">> => list(any())
+%% }
+-type automated_reasoning_policy_build_log_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_result_asset_manifest() :: #{
+%%   <<"entries">> => list(automated_reasoning_policy_build_result_asset_manifest_entry())
+%% }
+-type automated_reasoning_policy_build_result_asset_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_result_asset_manifest_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetName">> => string(),
+%%   <<"assetType">> => list(any())
+%% }
+-type automated_reasoning_policy_build_result_asset_manifest_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_step() :: #{
+%%   <<"context">> => list(),
+%%   <<"messages">> => list(automated_reasoning_policy_build_step_message()),
+%%   <<"priorElement">> => list()
+%% }
+-type automated_reasoning_policy_build_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_step_message() :: #{
+%%   <<"message">> => [string()],
+%%   <<"messageType">> => list(any())
+%% }
+-type automated_reasoning_policy_build_step_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_document() :: #{
+%%   <<"document">> => binary(),
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_build_workflow_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_repair_content() :: #{
+%%   <<"annotations">> => list(list())
+%% }
+-type automated_reasoning_policy_build_workflow_repair_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_source() :: #{
+%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
+%%   <<"workflowContent">> => list()
+%% }
+-type automated_reasoning_policy_build_workflow_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_summary() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"buildWorkflowType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => status_details()
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type model_customization_job_summary() :: #{binary() => any()}.
+-type automated_reasoning_policy_build_workflow_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_custom_models_request() :: #{
-%%   <<"baseModelArnEquals">> => string(),
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"foundationModelArnEquals">> => string(),
-%%   <<"isOwned">> => [boolean()],
-%%   <<"maxResults">> => integer(),
+%% automated_reasoning_policy_definition() :: #{
+%%   <<"rules">> => list(automated_reasoning_policy_definition_rule()),
+%%   <<"types">> => list(automated_reasoning_policy_definition_type()),
+%%   <<"variables">> => list(automated_reasoning_policy_definition_variable()),
+%%   <<"version">> => string()
+%% }
+-type automated_reasoning_policy_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_quality_report() :: #{
+%%   <<"conflictingRules">> => list(string()),
+%%   <<"disjointRuleSets">> => list(automated_reasoning_policy_disjoint_rule_set()),
+%%   <<"ruleCount">> => [integer()],
+%%   <<"typeCount">> => [integer()],
+%%   <<"unusedTypeValues">> => list(automated_reasoning_policy_definition_type_value_pair()),
+%%   <<"unusedTypes">> => list(string()),
+%%   <<"unusedVariables">> => list(string()),
+%%   <<"variableCount">> => [integer()]
+%% }
+-type automated_reasoning_policy_definition_quality_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_rule() :: #{
+%%   <<"alternateExpression">> => string(),
+%%   <<"expression">> => string(),
+%%   <<"id">> => string()
+%% }
+-type automated_reasoning_policy_definition_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_type() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
+%% }
+-type automated_reasoning_policy_definition_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_definition_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_type_value_pair() :: #{
+%%   <<"typeName">> => string(),
+%%   <<"valueName">> => string()
+%% }
+-type automated_reasoning_policy_definition_type_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_variable() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type automated_reasoning_policy_definition_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_rule_annotation() :: #{
+%%   <<"ruleId">> => string()
+%% }
+-type automated_reasoning_policy_delete_rule_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_rule_mutation() :: #{
+%%   <<"id">> => string()
+%% }
+-type automated_reasoning_policy_delete_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_type_annotation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_type_mutation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_type_value() :: #{
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_variable_annotation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_variable_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_variable_mutation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_disjoint_rule_set() :: #{
+%%   <<"rules">> => list(string()),
+%%   <<"variables">> => list(string())
+%% }
+-type automated_reasoning_policy_disjoint_rule_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_fidelity_report() :: #{
+%%   <<"accuracyScore">> => float(),
+%%   <<"coverageScore">> => float(),
+%%   <<"documentSources">> => list(automated_reasoning_policy_report_source_document()),
+%%   <<"ruleReports">> => map(),
+%%   <<"variableReports">> => map()
+%% }
+-type automated_reasoning_policy_fidelity_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_generated_test_case() :: #{
+%%   <<"expectedAggregatedFindingsResult">> => list(any()),
+%%   <<"guardContent">> => string(),
+%%   <<"queryContent">> => string()
+%% }
+-type automated_reasoning_policy_generated_test_case() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_generated_test_cases() :: #{
+%%   <<"generatedTestCases">> => list(automated_reasoning_policy_generated_test_case())
+%% }
+-type automated_reasoning_policy_generated_test_cases() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_ingest_content_annotation() :: #{
+%%   <<"content">> => string()
+%% }
+-type automated_reasoning_policy_ingest_content_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_iterative_refinement_content() :: #{
+%%   <<"documents">> => list(automated_reasoning_policy_build_workflow_document()),
+%%   <<"feedback">> => string()
+%% }
+-type automated_reasoning_policy_iterative_refinement_content() :: #{binary() => any()}.
+
+%% Example:
+%% automated_reasoning_policy_planning() :: #{}
+-type automated_reasoning_policy_planning() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_report_source_document() :: #{
+%%   <<"atomicStatements">> => list(automated_reasoning_policy_atomic_statement()),
+%%   <<"documentContent">> => list(automated_reasoning_policy_annotated_chunk()),
+%%   <<"documentHash">> => string(),
+%%   <<"documentId">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_report_source_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_rule_report() :: #{
+%%   <<"accuracyJustification">> => string(),
+%%   <<"accuracyScore">> => float(),
+%%   <<"groundingJustifications">> => list(string()),
+%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
+%%   <<"rule">> => string()
+%% }
+-type automated_reasoning_policy_rule_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_scenario() :: #{
+%%   <<"alternateExpression">> => string(),
+%%   <<"expectedResult">> => list(any()),
+%%   <<"expression">> => string(),
+%%   <<"ruleIds">> => list(string())
+%% }
+-type automated_reasoning_policy_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_scenarios() :: #{
+%%   <<"policyScenarios">> => list(automated_reasoning_policy_scenario())
+%% }
+-type automated_reasoning_policy_scenarios() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_source_document() :: #{
+%%   <<"document">> => binary(),
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentHash">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_source_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_statement_location() :: #{
+%%   <<"lines">> => list([integer()]())
+%% }
+-type automated_reasoning_policy_statement_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_statement_reference() :: #{
+%%   <<"documentId">> => string(),
+%%   <<"statementId">> => string()
+%% }
+-type automated_reasoning_policy_statement_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type automated_reasoning_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_test_case() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expectedAggregatedFindingsResult">> => list(any()),
+%%   <<"guardContent">> => string(),
+%%   <<"queryContent">> => string(),
+%%   <<"testCaseId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type automated_reasoning_policy_test_case() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_test_result() :: #{
+%%   <<"aggregatedTestFindingsResult">> => list(any()),
+%%   <<"policyArn">> => string(),
+%%   <<"testCase">> => automated_reasoning_policy_test_case(),
+%%   <<"testFindings">> => list(list()),
+%%   <<"testRunResult">> => list(any()),
+%%   <<"testRunStatus">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type automated_reasoning_policy_test_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{
+%%   <<"feedback">> => string(),
+%%   <<"ruleIds">> => list(string())
+%% }
+-type automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{
+%%   <<"feedback">> => string(),
+%%   <<"ruleIds">> => list(string()),
+%%   <<"scenarioExpression">> => string()
+%% }
+-type automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_rule_annotation() :: #{
+%%   <<"expression">> => string(),
+%%   <<"ruleId">> => string()
+%% }
+-type automated_reasoning_policy_update_rule_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_rule_mutation() :: #{
+%%   <<"rule">> => automated_reasoning_policy_definition_rule()
+%% }
+-type automated_reasoning_policy_update_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_type_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"newName">> => string(),
+%%   <<"values">> => list(list())
+%% }
+-type automated_reasoning_policy_update_type_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_type_mutation() :: #{
+%%   <<"type">> => automated_reasoning_policy_definition_type()
+%% }
+-type automated_reasoning_policy_update_type_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"newValue">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_update_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_variable_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"newName">> => string()
+%% }
+-type automated_reasoning_policy_update_variable_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_variable_mutation() :: #{
+%%   <<"variable">> => automated_reasoning_policy_definition_variable()
+%% }
+-type automated_reasoning_policy_update_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_variable_report() :: #{
+%%   <<"accuracyJustification">> => string(),
+%%   <<"accuracyScore">> => float(),
+%%   <<"groundingJustifications">> => list(string()),
+%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
+%%   <<"policyVariable">> => string()
+%% }
+-type automated_reasoning_policy_variable_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_advanced_prompt_optimization_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"jobIdentifier">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_delete_advanced_prompt_optimization_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_advanced_prompt_optimization_job_item() :: #{
+%%   <<"jobIdentifier">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_advanced_prompt_optimization_job_request() :: #{
+%%   <<"jobIdentifiers">> := list(string())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_advanced_prompt_optimization_job_response() :: #{
+%%   <<"advancedPromptOptimizationJobs">> => list(batch_delete_advanced_prompt_optimization_job_item()),
+%%   <<"errors">> => list(batch_delete_advanced_prompt_optimization_job_error())
+%% }
+-type batch_delete_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"jobIdentifier">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type batch_delete_evaluation_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_item() :: #{
+%%   <<"jobIdentifier">> => string(),
+%%   <<"jobStatus">> => list(any())
+%% }
+-type batch_delete_evaluation_job_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_request() :: #{
+%%   <<"jobIdentifiers">> := list(string())
+%% }
+-type batch_delete_evaluation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_evaluation_job_response() :: #{
+%%   <<"errors">> => list(batch_delete_evaluation_job_error()),
+%%   <<"evaluationJobs">> => list(batch_delete_evaluation_job_item())
+%% }
+-type batch_delete_evaluation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_evaluator_model() :: #{
+%%   <<"modelIdentifier">> => string()
+%% }
+-type bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% byte_content_doc() :: #{
+%%   <<"contentType">> => string(),
+%%   <<"data">> => binary(),
+%%   <<"identifier">> => string()
+%% }
+-type byte_content_doc() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_automated_reasoning_policy_build_workflow_request() :: #{}
+-type cancel_automated_reasoning_policy_build_workflow_request() :: #{}.
+
+%% Example:
+%% cancel_automated_reasoning_policy_build_workflow_response() :: #{}
+-type cancel_automated_reasoning_policy_build_workflow_response() :: #{}.
+
+
+%% Example:
+%% cloud_watch_config() :: #{
+%%   <<"largeDataDeliveryS3Config">> => s3_config(),
+%%   <<"logGroupName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type cloud_watch_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_advanced_prompt_optimization_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"inputConfig">> := advanced_prompt_optimization_input_config(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"modelConfigurations">> := list(model_configuration()),
+%%   <<"outputConfig">> := advanced_prompt_optimization_output_config(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_advanced_prompt_optimization_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automated_reasoning_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type create_automated_reasoning_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"expectedAggregatedFindingsResult">> := list(any()),
+%%   <<"guardContent">> := string(),
+%%   <<"queryContent">> => string()
+%% }
+-type create_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCaseId">> => string()
+%% }
+-type create_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_version_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"lastUpdatedDefinitionHash">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automated_reasoning_policy_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_version_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_automated_reasoning_policy_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_model_deployment_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelArn">> := string(),
+%%   <<"modelDeploymentName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_custom_model_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_model_deployment_response() :: #{
+%%   <<"customModelDeploymentArn">> => string()
+%% }
+-type create_custom_model_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_model_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"customModelDataSource">> => list(),
+%%   <<"modelKmsKeyArn">> => string(),
+%%   <<"modelName">> := string(),
+%%   <<"modelSourceConfig">> => list(),
+%%   <<"modelTags">> => list(tag()),
+%%   <<"roleArn">> => string()
+%% }
+-type create_custom_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_model_response() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type create_custom_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluation_job_request() :: #{
+%%   <<"applicationType">> => list(any()),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"customerEncryptionKeyId">> => string(),
+%%   <<"evaluationConfig">> := list(),
+%%   <<"inferenceConfig">> := list(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobTags">> => list(tag()),
+%%   <<"outputDataConfig">> := evaluation_output_data_config(),
+%%   <<"roleArn">> := string()
+%% }
+-type create_evaluation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluation_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_evaluation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_foundation_model_agreement_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"offerToken">> := string()
+%% }
+-type create_foundation_model_agreement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_foundation_model_agreement_response() :: #{
+%%   <<"modelId">> => string()
+%% }
+-type create_foundation_model_agreement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_request() :: #{
+%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
+%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
+%%   <<"tags">> => list(tag()),
+%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
+%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
+%% }
+-type create_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_version_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type create_guardrail_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_guardrail_version_response() :: #{
+%%   <<"guardrailId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_guardrail_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inference_profile_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileName">> := string(),
+%%   <<"modelSource">> := list(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_inference_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inference_profile_response() :: #{
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_inference_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_marketplace_model_endpoint_request() :: #{
+%%   <<"acceptEula">> => boolean(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endpointConfig">> := list(),
+%%   <<"endpointName">> := string(),
+%%   <<"modelSourceIdentifier">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_marketplace_model_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type create_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_copy_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"modelKmsKeyId">> => string(),
+%%   <<"sourceModelArn">> := string(),
+%%   <<"targetModelName">> := string(),
+%%   <<"targetModelTags">> => list(tag())
+%% }
+-type create_model_copy_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_copy_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_copy_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_customization_job_request() :: #{
+%%   <<"baseModelIdentifier">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"customModelKmsKeyId">> => string(),
+%%   <<"customModelName">> := string(),
+%%   <<"customModelTags">> => list(tag()),
+%%   <<"customizationConfig">> => list(),
+%%   <<"customizationType">> => list(any()),
+%%   <<"hyperParameters">> => map(),
+%%   <<"jobName">> := string(),
+%%   <<"jobTags">> => list(tag()),
+%%   <<"outputDataConfig">> := output_data_config(),
+%%   <<"roleArn">> := string(),
+%%   <<"trainingDataConfig">> := training_data_config(),
+%%   <<"validationDataConfig">> => validation_data_config(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_model_customization_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_customization_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_customization_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_import_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"importedModelKmsKeyId">> => string(),
+%%   <<"importedModelName">> := string(),
+%%   <<"importedModelTags">> => list(tag()),
+%%   <<"jobName">> := string(),
+%%   <<"jobTags">> => list(tag()),
+%%   <<"modelDataSource">> := list(),
+%%   <<"roleArn">> := string(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_model_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_import_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_invocation_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"inputDataConfig">> := list(),
+%%   <<"jobName">> := string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelInvocationType">> => list(any()),
+%%   <<"outputDataConfig">> := list(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_model_invocation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_invocation_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type create_model_invocation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_router_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> := prompt_router_target_model(),
+%%   <<"models">> := list(prompt_router_target_model()),
+%%   <<"promptRouterName">> := string(),
+%%   <<"routingCriteria">> := routing_criteria(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_prompt_router_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_router_response() :: #{
+%%   <<"promptRouterArn">> => string()
+%% }
+-type create_prompt_router_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_provisioned_model_throughput_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"commitmentDuration">> => list(any()),
+%%   <<"modelId">> := string(),
+%%   <<"modelUnits">> := integer(),
+%%   <<"provisionedModelName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_provisioned_model_throughput_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_provisioned_model_throughput_response() :: #{
+%%   <<"provisionedModelArn">> => string()
+%% }
+-type create_provisioned_model_throughput_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metric_bedrock_evaluator_model() :: #{
+%%   <<"modelIdentifier">> => string()
+%% }
+-type custom_metric_bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metric_definition() :: #{
+%%   <<"instructions">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ratingScale">> => list(rating_scale_item())
+%% }
+-type custom_metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metric_evaluator_model_config() :: #{
+%%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model())
+%% }
+-type custom_metric_evaluator_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_model_deployment_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customModelDeploymentArn">> => string(),
+%%   <<"customModelDeploymentName">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type custom_model_deployment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_model_deployment_update_details() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"updateStatus">> => list(any())
+%% }
+-type custom_model_deployment_update_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_model_summary() :: #{
+%%   <<"baseModelArn">> => string(),
+%%   <<"baseModelName">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customizationType">> => list(any()),
+%%   <<"modelArn">> => string(),
+%%   <<"modelName">> => string(),
 %%   <<"modelStatus">> => list(any()),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
+%%   <<"ownerAccountId">> => string()
 %% }
--type list_custom_models_request() :: #{binary() => any()}.
+-type custom_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_automated_reasoning_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"policyArn">> => string()
+%% custom_model_units() :: #{
+%%   <<"customModelUnitsPerModelCopy">> => [integer()],
+%%   <<"customModelUnitsVersion">> => string()
 %% }
--type list_automated_reasoning_policies_request() :: #{binary() => any()}.
+-type custom_model_units() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_processing_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type data_processing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_automated_reasoning_policy_build_workflow_request() :: #{
+%%   <<"lastUpdatedAt">> := non_neg_integer()
+%% }
+-type delete_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automated_reasoning_policy_build_workflow_response() :: #{}
+-type delete_automated_reasoning_policy_build_workflow_response() :: #{}.
+
+
+%% Example:
+%% delete_automated_reasoning_policy_request() :: #{
+%%   <<"force">> => [boolean()]
+%% }
+-type delete_automated_reasoning_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automated_reasoning_policy_response() :: #{}
+-type delete_automated_reasoning_policy_response() :: #{}.
+
+
+%% Example:
+%% delete_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"lastUpdatedAt">> := non_neg_integer()
+%% }
+-type delete_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automated_reasoning_policy_test_case_response() :: #{}
+-type delete_automated_reasoning_policy_test_case_response() :: #{}.
+
+%% Example:
+%% delete_custom_model_deployment_request() :: #{}
+-type delete_custom_model_deployment_request() :: #{}.
+
+%% Example:
+%% delete_custom_model_deployment_response() :: #{}
+-type delete_custom_model_deployment_response() :: #{}.
+
+%% Example:
+%% delete_custom_model_request() :: #{}
+-type delete_custom_model_request() :: #{}.
+
+%% Example:
+%% delete_custom_model_response() :: #{}
+-type delete_custom_model_response() :: #{}.
+
+%% Example:
+%% delete_enforced_guardrail_configuration_request() :: #{}
+-type delete_enforced_guardrail_configuration_request() :: #{}.
+
+%% Example:
+%% delete_enforced_guardrail_configuration_response() :: #{}
+-type delete_enforced_guardrail_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_foundation_model_agreement_request() :: #{
+%%   <<"modelId">> := string()
+%% }
+-type delete_foundation_model_agreement_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_foundation_model_agreement_response() :: #{}
+-type delete_foundation_model_agreement_response() :: #{}.
+
+
+%% Example:
+%% delete_guardrail_request() :: #{
+%%   <<"guardrailVersion">> => string()
+%% }
+-type delete_guardrail_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_guardrail_response() :: #{}
+-type delete_guardrail_response() :: #{}.
+
+%% Example:
+%% delete_imported_model_request() :: #{}
+-type delete_imported_model_request() :: #{}.
+
+%% Example:
+%% delete_imported_model_response() :: #{}
+-type delete_imported_model_response() :: #{}.
+
+%% Example:
+%% delete_inference_profile_request() :: #{}
+-type delete_inference_profile_request() :: #{}.
+
+%% Example:
+%% delete_inference_profile_response() :: #{}
+-type delete_inference_profile_response() :: #{}.
+
+%% Example:
+%% delete_marketplace_model_endpoint_request() :: #{}
+-type delete_marketplace_model_endpoint_request() :: #{}.
+
+%% Example:
+%% delete_marketplace_model_endpoint_response() :: #{}
+-type delete_marketplace_model_endpoint_response() :: #{}.
+
+%% Example:
+%% delete_model_invocation_logging_configuration_request() :: #{}
+-type delete_model_invocation_logging_configuration_request() :: #{}.
+
+%% Example:
+%% delete_model_invocation_logging_configuration_response() :: #{}
+-type delete_model_invocation_logging_configuration_response() :: #{}.
+
+%% Example:
+%% delete_prompt_router_request() :: #{}
+-type delete_prompt_router_request() :: #{}.
+
+%% Example:
+%% delete_prompt_router_response() :: #{}
+-type delete_prompt_router_response() :: #{}.
+
+%% Example:
+%% delete_provisioned_model_throughput_request() :: #{}
+-type delete_provisioned_model_throughput_request() :: #{}.
+
+%% Example:
+%% delete_provisioned_model_throughput_response() :: #{}
+-type delete_provisioned_model_throughput_response() :: #{}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+%% Example:
+%% deregister_marketplace_model_endpoint_request() :: #{}
+-type deregister_marketplace_model_endpoint_request() :: #{}.
+
+%% Example:
+%% deregister_marketplace_model_endpoint_response() :: #{}
+-type deregister_marketplace_model_endpoint_response() :: #{}.
+
+
+%% Example:
+%% dimensional_price_rate() :: #{
+%%   <<"description">> => [string()],
+%%   <<"dimension">> => [string()],
+%%   <<"price">> => [string()],
+%%   <<"unit">> => [string()]
+%% }
+-type dimensional_price_rate() :: #{binary() => any()}.
+
+
+%% Example:
+%% distillation_config() :: #{
+%%   <<"teacherModelConfig">> => teacher_model_config()
+%% }
+-type distillation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_bedrock_model() :: #{
+%%   <<"inferenceParams">> => string(),
+%%   <<"modelIdentifier">> => string(),
+%%   <<"performanceConfig">> => performance_configuration()
+%% }
+-type evaluation_bedrock_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_dataset() :: #{
+%%   <<"datasetLocation">> => list(),
+%%   <<"name">> => string()
+%% }
+-type evaluation_dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_dataset_metric_config() :: #{
+%%   <<"dataset">> => evaluation_dataset(),
+%%   <<"metricNames">> => list(string()),
+%%   <<"taskType">> => list(any())
+%% }
+-type evaluation_dataset_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_inference_config_summary() :: #{
+%%   <<"modelConfigSummary">> => evaluation_model_config_summary(),
+%%   <<"ragConfigSummary">> => evaluation_rag_config_summary()
+%% }
+-type evaluation_inference_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_model_config_summary() :: #{
+%%   <<"bedrockModelIdentifiers">> => list(string()),
+%%   <<"precomputedInferenceSourceIdentifiers">> => list(string())
+%% }
+-type evaluation_model_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_output_data_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type evaluation_output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_precomputed_inference_source() :: #{
+%%   <<"inferenceSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_inference_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_precomputed_retrieve_and_generate_source_config() :: #{
+%%   <<"ragSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_retrieve_and_generate_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_precomputed_retrieve_source_config() :: #{
+%%   <<"ragSourceIdentifier">> => string()
+%% }
+-type evaluation_precomputed_retrieve_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_rag_config_summary() :: #{
+%%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()),
+%%   <<"precomputedRagSourceIdentifiers">> => list(string())
+%% }
+-type evaluation_rag_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_summary() :: #{
+%%   <<"applicationType">> => list(any()),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customMetricsEvaluatorModelIdentifiers">> => list(string()),
+%%   <<"evaluationTaskTypes">> => list(list(any())()),
+%%   <<"evaluatorModelIdentifiers">> => list(string()),
+%%   <<"inferenceConfigSummary">> => evaluation_inference_config_summary(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"modelIdentifiers">> => list(string()),
+%%   <<"ragIdentifiers">> => list(string()),
+%%   <<"status">> => list(any())
+%% }
+-type evaluation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% export_automated_reasoning_policy_version_request() :: #{}
+-type export_automated_reasoning_policy_version_request() :: #{}.
 
 
 %% Example:
@@ -326,42 +1825,288 @@
 
 
 %% Example:
-%% marketplace_model_endpoint_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endpointArn">> => string(),
-%%   <<"modelSourceIdentifier">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
+%% external_source() :: #{
+%%   <<"byteContent">> => byte_content_doc(),
+%%   <<"s3Location">> => s3_object_doc(),
+%%   <<"sourceType">> => list(any())
 %% }
--type marketplace_model_endpoint_summary() :: #{binary() => any()}.
+-type external_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% guardrail_automated_reasoning_policy_config() :: #{
-%%   <<"confidenceThreshold">> => float(),
-%%   <<"policies">> => list(string())
+%% external_sources_generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"kbInferenceConfig">> => kb_inference_config(),
+%%   <<"promptTemplate">> => prompt_template()
 %% }
--type guardrail_automated_reasoning_policy_config() :: #{binary() => any()}.
+-type external_sources_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_sources_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => external_sources_generation_configuration(),
+%%   <<"modelArn">> => string(),
+%%   <<"sources">> => list(external_source())
+%% }
+-type external_sources_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_for_reranking() :: #{
+%%   <<"fieldName">> => [string()]
+%% }
+-type field_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => any()
+%% }
+-type filter_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% foundation_model_details() :: #{
+%%   <<"customizationsSupported">> => list(list(any())()),
+%%   <<"inferenceTypesSupported">> => list(list(any())()),
+%%   <<"inputModalities">> => list(list(any())()),
+%%   <<"modelArn">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modelLifecycle">> => foundation_model_lifecycle(),
+%%   <<"modelName">> => string(),
+%%   <<"outputModalities">> => list(list(any())()),
+%%   <<"providerName">> => string(),
+%%   <<"responseStreamingSupported">> => [boolean()]
+%% }
+-type foundation_model_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% foundation_model_lifecycle() :: #{
+%%   <<"endOfLifeTime">> => non_neg_integer(),
+%%   <<"legacyTime">> => non_neg_integer(),
+%%   <<"publicExtendedAccessTime">> => non_neg_integer(),
+%%   <<"startOfLifeTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type foundation_model_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% foundation_model_summary() :: #{
+%%   <<"customizationsSupported">> => list(list(any())()),
+%%   <<"inferenceTypesSupported">> => list(list(any())()),
+%%   <<"inputModalities">> => list(list(any())()),
+%%   <<"modelArn">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modelLifecycle">> => foundation_model_lifecycle(),
+%%   <<"modelName">> => string(),
+%%   <<"outputModalities">> => list(list(any())()),
+%%   <<"providerName">> => string(),
+%%   <<"responseStreamingSupported">> => [boolean()]
+%% }
+-type foundation_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"kbInferenceConfig">> => kb_inference_config(),
+%%   <<"promptTemplate">> => prompt_template()
+%% }
+-type generation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_data_retention_request() :: #{}
+-type get_account_data_retention_request() :: #{}.
+
+
+%% Example:
+%% get_account_data_retention_response() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_account_data_retention_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_advanced_prompt_optimization_job_request() :: #{}
+-type get_advanced_prompt_optimization_job_request() :: #{}.
+
+
+%% Example:
+%% get_advanced_prompt_optimization_job_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"inputConfig">> => advanced_prompt_optimization_input_config(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobDescription">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelConfigurations">> => list(model_configuration()),
+%%   <<"outputConfig">> => advanced_prompt_optimization_output_config()
+%% }
+-type get_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_annotations_request() :: #{}
+-type get_automated_reasoning_policy_annotations_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_annotations_response() :: #{
+%%   <<"annotationSetHash">> => string(),
+%%   <<"annotations">> => list(list()),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_request() :: #{}
+-type get_automated_reasoning_policy_build_workflow_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_response() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"buildWorkflowType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentName">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetType">> := list(any())
+%% }
+-type get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{
+%%   <<"buildWorkflowAssets">> => list(),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_automated_reasoning_policy_next_scenario_request() :: #{}
 -type get_automated_reasoning_policy_next_scenario_request() :: #{}.
 
-%% Example:
-%% delete_provisioned_model_throughput_response() :: #{}
--type delete_provisioned_model_throughput_response() :: #{}.
-
 
 %% Example:
-%% create_model_import_job_response() :: #{
-%%   <<"jobArn">> => string()
+%% get_automated_reasoning_policy_next_scenario_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"scenario">> => automated_reasoning_policy_scenario()
 %% }
--type create_model_import_job_response() :: #{binary() => any()}.
+-type get_automated_reasoning_policy_next_scenario_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_request() :: #{}
+-type get_automated_reasoning_policy_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type get_automated_reasoning_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_test_case_request() :: #{}
+-type get_automated_reasoning_policy_test_case_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCase">> => automated_reasoning_policy_test_case()
+%% }
+-type get_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_automated_reasoning_policy_test_result_request() :: #{}
 -type get_automated_reasoning_policy_test_result_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_test_result_response() :: #{
+%%   <<"testResult">> => automated_reasoning_policy_test_result()
+%% }
+-type get_automated_reasoning_policy_test_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_model_deployment_request() :: #{}
+-type get_custom_model_deployment_request() :: #{}.
+
+
+%% Example:
+%% get_custom_model_deployment_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customModelDeploymentArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelDeploymentName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateDetails">> => custom_model_deployment_update_details()
+%% }
+-type get_custom_model_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_model_request() :: #{}
+-type get_custom_model_request() :: #{}.
+
+
+%% Example:
+%% get_custom_model_response() :: #{
+%%   <<"baseModelArn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customizationConfig">> => list(),
+%%   <<"customizationType">> => list(any()),
+%%   <<"failureMessage">> => string(),
+%%   <<"hyperParameters">> => map(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelKmsKeyArn">> => string(),
+%%   <<"modelName">> => string(),
+%%   <<"modelStatus">> => list(any()),
+%%   <<"outputDataConfig">> => output_data_config(),
+%%   <<"trainingDataConfig">> => training_data_config(),
+%%   <<"trainingMetrics">> => training_metrics(),
+%%   <<"validationDataConfig">> => validation_data_config(),
+%%   <<"validationMetrics">> => list(validator_metric())
+%% }
+-type get_custom_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_evaluation_job_request() :: #{}
+-type get_evaluation_job_request() :: #{}.
 
 
 %% Example:
@@ -383,188 +2128,38 @@
 %% }
 -type get_evaluation_job_response() :: #{binary() => any()}.
 
-
-%% Example:
-%% foundation_model_summary() :: #{
-%%   <<"customizationsSupported">> => list(list(any())()),
-%%   <<"inferenceTypesSupported">> => list(list(any())()),
-%%   <<"inputModalities">> => list(list(any())()),
-%%   <<"modelArn">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modelLifecycle">> => foundation_model_lifecycle(),
-%%   <<"modelName">> => string(),
-%%   <<"outputModalities">> => list(list(any())()),
-%%   <<"providerName">> => string(),
-%%   <<"responseStreamingSupported">> => [boolean()]
-%% }
--type foundation_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_marketplace_model_endpoints_response() :: #{
-%%   <<"marketplaceModelEndpoints">> => list(marketplace_model_endpoint_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_marketplace_model_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_attribute_schema() :: #{
-%%   <<"description">> => [string()],
-%%   <<"key">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type metadata_attribute_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_filters_tier_config() :: #{
-%%   <<"tierName">> => list(any())
-%% }
--type guardrail_content_filters_tier_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_guardrail_request() :: #{
-%%   <<"guardrailVersion">> => string()
-%% }
--type delete_guardrail_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_model_invocation_job_request() :: #{}
--type stop_model_invocation_job_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_type_annotation() :: #{
-%%   <<"name">> => string()
-%% }
--type automated_reasoning_policy_delete_type_annotation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_model_response() :: #{}
--type delete_custom_model_response() :: #{}.
-
-
-%% Example:
-%% evaluation_inference_config_summary() :: #{
-%%   <<"modelConfigSummary">> => evaluation_model_config_summary(),
-%%   <<"ragConfigSummary">> => evaluation_rag_config_summary()
-%% }
--type evaluation_inference_config_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policies_response() :: #{
-%%   <<"automatedReasoningPolicySummaries">> => list(automated_reasoning_policy_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_reasoning_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_invocation_job_response() :: #{
-%%   <<"jobArn">> => string()
-%% }
--type create_model_invocation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% list_inference_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"typeEquals">> => list(any())
-%% }
--type list_inference_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{
-%%   <<"buildWorkflowAssets">> => list(),
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"policyArn">> => string()
-%% }
--type get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_evaluation_job_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"jobIdentifier">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type batch_delete_evaluation_job_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% offer() :: #{
-%%   <<"offerId">> => string(),
-%%   <<"offerToken">> => string(),
-%%   <<"termDetails">> => term_details()
-%% }
--type offer() :: #{binary() => any()}.
-
-%% Example:
-%% get_evaluation_job_request() :: #{}
--type get_evaluation_job_request() :: #{}.
-
 %% Example:
 %% get_foundation_model_availability_request() :: #{}
 -type get_foundation_model_availability_request() :: #{}.
 
-%% Example:
-%% stop_evaluation_job_response() :: #{}
--type stop_evaluation_job_response() :: #{}.
 
 %% Example:
-%% get_provisioned_model_throughput_request() :: #{}
--type get_provisioned_model_throughput_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition_type_value_pair() :: #{
-%%   <<"typeName">> => string(),
-%%   <<"valueName">> => string()
+%% get_foundation_model_availability_response() :: #{
+%%   <<"agreementAvailability">> => agreement_availability(),
+%%   <<"authorizationStatus">> => list(any()),
+%%   <<"entitlementAvailability">> => list(any()),
+%%   <<"modelId">> => string(),
+%%   <<"regionAvailability">> => list(any())
 %% }
--type automated_reasoning_policy_definition_type_value_pair() :: #{binary() => any()}.
+-type get_foundation_model_availability_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_enforced_guardrail_configuration_request() :: #{}
--type delete_enforced_guardrail_configuration_request() :: #{}.
-
-%% Example:
-%% automated_reasoning_policy_planning() :: #{}
--type automated_reasoning_policy_planning() :: #{}.
+%% get_foundation_model_request() :: #{}
+-type get_foundation_model_request() :: #{}.
 
 
 %% Example:
-%% create_model_customization_job_response() :: #{
-%%   <<"jobArn">> => string()
+%% get_foundation_model_response() :: #{
+%%   <<"modelDetails">> => foundation_model_details()
 %% }
--type create_model_customization_job_response() :: #{binary() => any()}.
+-type get_foundation_model_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% sage_maker_endpoint() :: #{
-%%   <<"executionRole">> => string(),
-%%   <<"initialInstanceCount">> => integer(),
-%%   <<"instanceType">> => string(),
-%%   <<"kmsEncryptionKey">> => string(),
-%%   <<"vpc">> => vpc_config()
+%% get_guardrail_request() :: #{
+%%   <<"guardrailVersion">> => string()
 %% }
--type sage_maker_endpoint() :: #{binary() => any()}.
+-type get_guardrail_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -592,2397 +2187,9 @@
 %% }
 -type get_guardrail_response() :: #{binary() => any()}.
 
-
-%% Example:
-%% foundation_model_details() :: #{
-%%   <<"customizationsSupported">> => list(list(any())()),
-%%   <<"inferenceTypesSupported">> => list(list(any())()),
-%%   <<"inputModalities">> => list(list(any())()),
-%%   <<"modelArn">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modelLifecycle">> => foundation_model_lifecycle(),
-%%   <<"modelName">> => string(),
-%%   <<"outputModalities">> => list(list(any())()),
-%%   <<"providerName">> => string(),
-%%   <<"responseStreamingSupported">> => [boolean()]
-%% }
--type foundation_model_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic_policy_config() :: #{
-%%   <<"tierConfig">> => guardrail_topics_tier_config(),
-%%   <<"topicsConfig">> => list(guardrail_topic_config())
-%% }
--type guardrail_topic_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_invocation_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any()),
-%%   <<"submitTimeAfter">> => non_neg_integer(),
-%%   <<"submitTimeBefore">> => non_neg_integer()
-%% }
--type list_model_invocation_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_variable_annotation() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"newName">> => string()
-%% }
--type automated_reasoning_policy_update_variable_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_advanced_prompt_optimization_job_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"failureMessage">> => string(),
-%%   <<"inputConfig">> => advanced_prompt_optimization_input_config(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobDescription">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelConfigurations">> => list(model_configuration()),
-%%   <<"outputConfig">> => advanced_prompt_optimization_output_config()
-%% }
--type get_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_guardrail_request() :: #{
-%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
-%%   <<"blockedInputMessaging">> := string(),
-%%   <<"blockedOutputsMessaging">> := string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
-%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
-%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
-%%   <<"tags">> => list(tag()),
-%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
-%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
-%% }
--type create_guardrail_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_type_annotation() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
-%% }
--type automated_reasoning_policy_add_type_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_inference_config() :: #{
-%%   <<"maxTokens">> => integer(),
-%%   <<"stopSequences">> => list([string()]()),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type text_inference_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_marketplace_model_endpoints_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"modelSourceEquals">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_marketplace_model_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"crossRegionDetails">> => guardrail_cross_region_details(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type guardrail_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_generated_test_case() :: #{
-%%   <<"expectedAggregatedFindingsResult">> => list(any()),
-%%   <<"guardContent">> => string(),
-%%   <<"queryContent">> => string()
-%% }
--type automated_reasoning_policy_generated_test_case() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word_policy() :: #{
-%%   <<"managedWordLists">> => list(guardrail_managed_words()),
-%%   <<"words">> => list(guardrail_word())
-%% }
--type guardrail_word_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_evaluation_jobs_request() :: #{
-%%   <<"applicationTypeEquals">> => list(any()),
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any())
-%% }
--type list_evaluation_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_test_case_response() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"testCase">> => automated_reasoning_policy_test_case()
-%% }
--type get_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_inference_profile_response() :: #{
-%%   <<"inferenceProfileArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_inference_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_source() :: #{
-%%   <<"byteContent">> => byte_content_doc(),
-%%   <<"s3Location">> => s3_object_doc(),
-%%   <<"sourceType">> => list(any())
-%% }
--type external_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_configuration() :: #{
-%%   <<"maxTokens">> => [integer()],
-%%   <<"stopSequences">> => list([string()]()),
-%%   <<"temperature">> => [float()],
-%%   <<"topP">> => [float()]
-%% }
--type inference_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_evaluation_config() :: #{
-%%   <<"customMetricConfig">> => automated_evaluation_custom_metric_config(),
-%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
-%%   <<"evaluatorModelConfig">> => list()
-%% }
--type automated_evaluation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic_config() :: #{
-%%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()),
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_topic_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_inference_profile_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"inferenceProfileArn">> => string(),
-%%   <<"inferenceProfileId">> => string(),
-%%   <<"inferenceProfileName">> => string(),
-%%   <<"models">> => list(inference_profile_model()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_inference_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topics_tier() :: #{
-%%   <<"tierName">> => list(any())
-%% }
--type guardrail_topics_tier() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_type_annotation() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"newName">> => string(),
-%%   <<"values">> => list(list())
-%% }
--type automated_reasoning_policy_update_type_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% human_workflow_config() :: #{
-%%   <<"flowDefinitionArn">> => string(),
-%%   <<"instructions">> => string()
-%% }
--type human_workflow_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_policy() :: #{
-%%   <<"filters">> => list(guardrail_content_filter()),
-%%   <<"tier">> => guardrail_content_filters_tier()
-%% }
--type guardrail_content_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_criteria() :: #{
-%%   <<"responseQualityDifference">> => [float()]
-%% }
--type routing_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object_doc() :: #{
-%%   <<"uri">> => string()
-%% }
--type s3_object_doc() :: #{binary() => any()}.
-
-%% Example:
-%% get_marketplace_model_endpoint_request() :: #{}
--type get_marketplace_model_endpoint_request() :: #{}.
-
-
-%% Example:
-%% delete_automated_reasoning_policy_build_workflow_request() :: #{
-%%   <<"lastUpdatedAt">> := non_neg_integer()
-%% }
--type delete_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_satisfiable_finding() :: #{
-%%   <<"claimsFalseScenario">> => automated_reasoning_check_scenario(),
-%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
-%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
-%%   <<"translation">> => automated_reasoning_check_translation()
-%% }
--type automated_reasoning_check_satisfiable_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_import_jobs_request() :: #{
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any())
-%% }
--type list_model_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topics_tier_config() :: #{
-%%   <<"tierName">> => list(any())
-%% }
--type guardrail_topics_tier_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_workflow_repair_content() :: #{
-%%   <<"annotations">> => list(list())
-%% }
--type automated_reasoning_policy_build_workflow_repair_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_logic_warning() :: #{
-%%   <<"claims">> => list(automated_reasoning_logic_statement()),
-%%   <<"premises">> => list(automated_reasoning_logic_statement()),
-%%   <<"type">> => list(any())
-%% }
--type automated_reasoning_check_logic_warning() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_filter_config() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"enabled">> => [boolean()],
-%%   <<"threshold">> => [float()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_model_deployment_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"modelArn">> := string(),
-%%   <<"modelDeploymentName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_custom_model_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetType">> := list(any())
-%% }
--type get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_customization_jobs_request() :: #{
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any())
-%% }
--type list_model_customization_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_foundation_model_agreement_offers_response() :: #{
-%%   <<"modelId">> => string(),
-%%   <<"offers">> => list(offer())
-%% }
--type list_foundation_model_agreement_offers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioned_model_throughputs_request() :: #{
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"modelArnEquals">> => string(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any())
-%% }
--type list_provisioned_model_throughputs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_rule() :: #{
-%%   <<"id">> => string(),
-%%   <<"policyVersionArn">> => string()
-%% }
--type automated_reasoning_check_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_annotations_response() :: #{
-%%   <<"annotationSetHash">> => string(),
-%%   <<"annotations">> => list(list()),
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition_rule() :: #{
-%%   <<"alternateExpression">> => string(),
-%%   <<"expression">> => string(),
-%%   <<"id">> => string()
-%% }
--type automated_reasoning_policy_definition_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% pricing_term() :: #{
-%%   <<"rateCard">> => list(dimensional_price_rate())
-%% }
--type pricing_term() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_model_deployment_request() :: #{}
--type delete_custom_model_deployment_request() :: #{}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definitionHash">> => string(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type get_automated_reasoning_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_guardrail_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"guardrailArn">> => string(),
-%%   <<"guardrailId">> => string(),
-%%   <<"version">> => string()
-%% }
--type create_guardrail_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_evaluation_job_request() :: #{}
--type stop_evaluation_job_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_annotated_chunk() :: #{
-%%   <<"content">> => list(list()),
-%%   <<"pageNumber">> => [integer()]
-%% }
--type automated_reasoning_policy_annotated_chunk() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_enforced_guardrails_configuration_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_enforced_guardrails_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% marketplace_model_endpoint() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endpointArn">> => string(),
-%%   <<"endpointConfig">> => list(),
-%%   <<"endpointStatus">> => [string()],
-%%   <<"endpointStatusMessage">> => [string()],
-%%   <<"modelSourceIdentifier">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type marketplace_model_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_account_data_retention_request() :: #{
-%%   <<"mode">> := list(any())
-%% }
--type put_account_data_retention_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_evaluation_custom_metric_config() :: #{
-%%   <<"customMetrics">> => list(list()),
-%%   <<"evaluatorModelConfig">> => custom_metric_evaluator_model_config()
-%% }
--type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"resourcePolicy">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_model_deployment_request() :: #{}
--type get_custom_model_deployment_request() :: #{}.
-
-
-%% Example:
-%% advanced_prompt_optimization_job_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"lastModifiedTime">> => non_neg_integer()
-%% }
--type advanced_prompt_optimization_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_model_config_summary() :: #{
-%%   <<"bedrockModelIdentifiers">> => list(string()),
-%%   <<"precomputedInferenceSourceIdentifiers">> => list(string())
-%% }
--type evaluation_model_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_enforced_guardrail_configuration_response() :: #{}
--type delete_enforced_guardrail_configuration_response() :: #{}.
-
-
-%% Example:
-%% invocation_logs_config() :: #{
-%%   <<"invocationLogSource">> => list(),
-%%   <<"requestMetadataFilters">> => list(),
-%%   <<"usePromptResponse">> => boolean()
-%% }
--type invocation_logs_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_build_workflows_response() :: #{
-%%   <<"automatedReasoningPolicyBuildWorkflowSummaries">> => list(automated_reasoning_policy_build_workflow_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_reasoning_policy_build_workflows_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_prompt_router_request() :: #{}
--type get_prompt_router_request() :: #{}.
-
-
-%% Example:
-%% agreement_availability() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type agreement_availability() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_rule_annotation() :: #{
-%%   <<"expression">> => string()
-%% }
--type automated_reasoning_policy_add_rule_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% support_term() :: #{
-%%   <<"refundPolicyDescription">> => [string()]
-%% }
--type support_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_test_results_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testResults">> => list(automated_reasoning_policy_test_result())
-%% }
--type list_automated_reasoning_policy_test_results_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_inference_profiles_response() :: #{
-%%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_inference_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_enforced_guardrail_output_configuration() :: #{
-%%   <<"configId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => [string()],
-%%   <<"guardrailArn">> => string(),
-%%   <<"guardrailId">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"inputTags">> => list(any()),
-%%   <<"modelEnforcement">> => model_enforcement(),
-%%   <<"owner">> => string(),
-%%   <<"selectiveContentGuarding">> => selective_content_guarding(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => [string()]
-%% }
--type account_enforced_guardrail_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_rule_annotation() :: #{
-%%   <<"ruleId">> => string()
-%% }
--type automated_reasoning_policy_delete_rule_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_model_response() :: #{
-%%   <<"modelArn">> => string()
-%% }
--type create_custom_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prompt_router_request() :: #{}
--type delete_prompt_router_request() :: #{}.
-
-
-%% Example:
-%% cloud_watch_config() :: #{
-%%   <<"largeDataDeliveryS3Config">> => s3_config(),
-%%   <<"logGroupName">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type cloud_watch_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inference_profile_request() :: #{}
--type delete_inference_profile_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_scenario() :: #{
-%%   <<"alternateExpression">> => string(),
-%%   <<"expectedResult">> => list(any()),
-%%   <<"expression">> => string(),
-%%   <<"ruleIds">> => list(string())
-%% }
--type automated_reasoning_policy_scenario() :: #{binary() => any()}.
-
-
-%% Example:
-%% r_f_t_hyper_parameters() :: #{
-%%   <<"batchSize">> => integer(),
-%%   <<"epochCount">> => integer(),
-%%   <<"evalInterval">> => integer(),
-%%   <<"inferenceMaxTokens">> => integer(),
-%%   <<"learningRate">> => float(),
-%%   <<"maxPromptLength">> => integer(),
-%%   <<"reasoningEffort">> => list(any()),
-%%   <<"trainingSamplePerPrompt">> => integer()
-%% }
--type r_f_t_hyper_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_config() :: #{
-%%   <<"audioDataDeliveryEnabled">> => [boolean()],
-%%   <<"cloudWatchConfig">> => cloud_watch_config(),
-%%   <<"embeddingDataDeliveryEnabled">> => [boolean()],
-%%   <<"imageDataDeliveryEnabled">> => [boolean()],
-%%   <<"s3Config">> => s3_config(),
-%%   <<"textDataDeliveryEnabled">> => [boolean()],
-%%   <<"videoDataDeliveryEnabled">> => [boolean()]
-%% }
--type logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_metric_bedrock_evaluator_model() :: #{
-%%   <<"modelIdentifier">> => string()
-%% }
--type custom_metric_bedrock_evaluator_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_type_mutation() :: #{
-%%   <<"type">> => automated_reasoning_policy_definition_type()
-%% }
--type automated_reasoning_policy_update_type_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_details() :: #{
-%%   <<"dataProcessingDetails">> => data_processing_details(),
-%%   <<"trainingDetails">> => training_details(),
-%%   <<"validationDetails">> => validation_details()
-%% }
--type status_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_inference_profile_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"inferenceProfileName">> := string(),
-%%   <<"modelSource">> := list(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_inference_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioned_model_throughputs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"provisionedModelSummaries">> => list(provisioned_model_summary())
-%% }
--type list_provisioned_model_throughputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_model_summary() :: #{
-%%   <<"commitmentDuration">> => list(any()),
-%%   <<"commitmentExpirationTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"desiredModelArn">> => string(),
-%%   <<"desiredModelUnits">> => integer(),
-%%   <<"foundationModelArn">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"modelUnits">> => integer(),
-%%   <<"provisionedModelArn">> => string(),
-%%   <<"provisionedModelName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type provisioned_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieve_and_generate_configuration() :: #{
-%%   <<"externalSourcesConfiguration">> => external_sources_retrieve_and_generate_configuration(),
-%%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type retrieve_and_generate_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_variable_mutation() :: #{
-%%   <<"variable">> => automated_reasoning_policy_definition_variable()
-%% }
--type automated_reasoning_policy_update_variable_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_workflow_document() :: #{
-%%   <<"document">> => binary(),
-%%   <<"documentContentType">> => list(any()),
-%%   <<"documentDescription">> => string(),
-%%   <<"documentName">> => string()
-%% }
--type automated_reasoning_policy_build_workflow_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_copy_job_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"modelKmsKeyId">> => string(),
-%%   <<"sourceModelArn">> := string(),
-%%   <<"targetModelName">> := string(),
-%%   <<"targetModelTags">> => list(tag())
-%% }
--type create_model_copy_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_router_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"fallbackModel">> => prompt_router_target_model(),
-%%   <<"models">> => list(prompt_router_target_model()),
-%%   <<"promptRouterArn">> => string(),
-%%   <<"promptRouterName">> => string(),
-%%   <<"routingCriteria">> => routing_criteria(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type prompt_router_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_test_case_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"confidenceThreshold">> => float(),
-%%   <<"expectedAggregatedFindingsResult">> := list(any()),
-%%   <<"guardContent">> := string(),
-%%   <<"lastUpdatedAt">> := non_neg_integer(),
-%%   <<"queryContent">> => string()
-%% }
--type update_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_model_deployments_request() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"modelArnEquals">> => string(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any())
-%% }
--type list_custom_model_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_import_job_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"importedModelArn">> => string(),
-%%   <<"importedModelName">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type model_import_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_managed_words_config() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_managed_words_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"text">> => [string()]
-%% }
--type guardrail_word() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definitionHash">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type create_automated_reasoning_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{
-%%   <<"feedback">> => string(),
-%%   <<"ruleIds">> => list(string())
-%% }
--type automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_translation_option() :: #{
-%%   <<"translations">> => list(automated_reasoning_check_translation())
-%% }
--type automated_reasoning_check_translation_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_profile_model() :: #{
-%%   <<"modelArn">> => string()
-%% }
--type inference_profile_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_type_value() :: #{
-%%   <<"description">> => string(),
-%%   <<"newValue">> => string(),
-%%   <<"value">> => string()
-%% }
--type automated_reasoning_policy_update_type_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_profile_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"inferenceProfileArn">> => string(),
-%%   <<"inferenceProfileId">> => string(),
-%%   <<"inferenceProfileName">> => string(),
-%%   <<"models">> => list(inference_profile_model()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type inference_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_invocation_job_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"inputDataConfig">> := list(),
-%%   <<"jobName">> := string(),
-%%   <<"modelId">> := string(),
-%%   <<"modelInvocationType">> => list(any()),
-%%   <<"outputDataConfig">> := list(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"timeoutDurationInHours">> => integer(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_model_invocation_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_automated_reasoning_policy_test_case_request() :: #{
-%%   <<"lastUpdatedAt">> := non_neg_integer()
-%% }
--type delete_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_provisioned_model_throughput_response() :: #{
-%%   <<"commitmentDuration">> => list(any()),
-%%   <<"commitmentExpirationTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"desiredModelArn">> => string(),
-%%   <<"desiredModelUnits">> => integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"foundationModelArn">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"modelUnits">> => integer(),
-%%   <<"provisionedModelArn">> => string(),
-%%   <<"provisionedModelName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_provisioned_model_throughput_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_invocation_job_s3_output_data_config() :: #{
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3EncryptionKeyId">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type model_invocation_job_s3_output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_automated_reasoning_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyDefinition">> := automated_reasoning_policy_definition()
-%% }
--type update_automated_reasoning_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_evaluator_model() :: #{
-%%   <<"modelIdentifier">> => string()
-%% }
--type bedrock_evaluator_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition_type() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
-%% }
--type automated_reasoning_policy_definition_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_use_case_for_model_access_response() :: #{
-%%   <<"formData">> => binary()
-%% }
--type get_use_case_for_model_access_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_retrieve_and_generate_configuration() :: #{
-%%   <<"generationConfiguration">> => generation_configuration(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"modelArn">> => string(),
-%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
-%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
-%% }
--type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_annotated_line() :: #{
-%%   <<"lineNumber">> => [integer()],
-%%   <<"lineText">> => string()
-%% }
--type automated_reasoning_policy_annotated_line() :: #{binary() => any()}.
-
-%% Example:
-%% get_foundation_model_request() :: #{}
--type get_foundation_model_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_variable_annotation() :: #{
-%%   <<"name">> => string()
-%% }
--type automated_reasoning_policy_delete_variable_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_model_deployments_response() :: #{
-%%   <<"modelDeploymentSummaries">> => list(custom_model_deployment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_model_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_marketplace_model_endpoint_response() :: #{}
--type deregister_marketplace_model_endpoint_response() :: #{}.
-
-
-%% Example:
-%% imported_model_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"instructSupported">> => boolean(),
-%%   <<"modelArchitecture">> => string(),
-%%   <<"modelArn">> => string(),
-%%   <<"modelName">> => string()
-%% }
--type imported_model_summary() :: #{binary() => any()}.
-
 %% Example:
 %% get_imported_model_request() :: #{}
 -type get_imported_model_request() :: #{}.
-
-%% Example:
-%% get_automated_reasoning_policy_build_workflow_request() :: #{}
--type get_automated_reasoning_policy_build_workflow_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_scenarios() :: #{
-%%   <<"policyScenarios">> => list(automated_reasoning_policy_scenario())
-%% }
--type automated_reasoning_policy_scenarios() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_version_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definitionHash">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"version">> => string()
-%% }
--type create_automated_reasoning_policy_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_model_customization_job_response() :: #{}
--type stop_model_customization_job_response() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_enforcement() :: #{
-%%   <<"excludedModels">> => list(string()),
-%%   <<"includedModels">> => list(string())
-%% }
--type model_enforcement() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_transformation_configuration() :: #{
-%%   <<"type">> => list(any())
-%% }
--type query_transformation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieve_config() :: #{
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseRetrievalConfiguration">> => knowledge_base_retrieval_configuration()
-%% }
--type retrieve_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_disjoint_rule_set() :: #{
-%%   <<"rules">> => list(string()),
-%%   <<"variables">> => list(string())
-%% }
--type automated_reasoning_policy_disjoint_rule_set() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_copy_job_request() :: #{}
--type get_model_copy_job_request() :: #{}.
-
-
-%% Example:
-%% guardrail_content_filter_config() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"inputModalities">> => list(list(any())()),
-%%   <<"inputStrength">> => list(any()),
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"outputModalities">> => list(list(any())()),
-%%   <<"outputStrength">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type guardrail_content_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_log_entry() :: #{
-%%   <<"annotation">> => list(),
-%%   <<"buildSteps">> => list(automated_reasoning_policy_build_step()),
-%%   <<"status">> => list(any())
-%% }
--type automated_reasoning_policy_build_log_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_valid_finding() :: #{
-%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
-%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
-%%   <<"supportingRules">> => list(automated_reasoning_check_rule()),
-%%   <<"translation">> => automated_reasoning_check_translation()
-%% }
--type automated_reasoning_check_valid_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_processing_details() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type data_processing_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_test_results_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_reasoning_policy_test_results_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_automated_reasoning_policy_test_workflow_response() :: #{
-%%   <<"policyArn">> => string()
-%% }
--type start_automated_reasoning_policy_test_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_guardrails_response() :: #{
-%%   <<"guardrails">> => list(guardrail_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_guardrails_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_metric_definition() :: #{
-%%   <<"instructions">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ratingScale">> => list(rating_scale_item())
-%% }
--type custom_metric_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_build_workflows_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_reasoning_policy_build_workflows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_for_reranking() :: #{
-%%   <<"fieldName">> => [string()]
-%% }
--type field_for_reranking() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_inference_profile_request() :: #{}
--type get_inference_profile_request() :: #{}.
-
-
-%% Example:
-%% knowledge_base_retrieval_configuration() :: #{
-%%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
-%% }
--type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_marketplace_model_endpoint_request() :: #{
-%%   <<"acceptEula">> => boolean(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"endpointConfig">> := list(),
-%%   <<"endpointName">> := string(),
-%%   <<"modelSourceIdentifier">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_marketplace_model_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioned_model_throughput_request() :: #{}
--type delete_provisioned_model_throughput_request() :: #{}.
-
-
-%% Example:
-%% evaluation_dataset_metric_config() :: #{
-%%   <<"dataset">> => evaluation_dataset(),
-%%   <<"metricNames">> => list(string()),
-%%   <<"taskType">> => list(any())
-%% }
--type evaluation_dataset_metric_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_automated_reasoning_policy_annotations_request() :: #{}
--type get_automated_reasoning_policy_annotations_request() :: #{}.
-
-
-%% Example:
-%% guardrail_content_filter() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"inputModalities">> => list(list(any())()),
-%%   <<"inputStrength">> => list(any()),
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"outputModalities">> => list(list(any())()),
-%%   <<"outputStrength">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type guardrail_content_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{
-%%   <<"feedback">> => string(),
-%%   <<"ruleIds">> => list(string()),
-%%   <<"scenarioExpression">> => string()
-%% }
--type automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_source_document() :: #{
-%%   <<"document">> => binary(),
-%%   <<"documentContentType">> => list(any()),
-%%   <<"documentDescription">> => string(),
-%%   <<"documentHash">> => string(),
-%%   <<"documentName">> => string()
-%% }
--type automated_reasoning_policy_source_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_filters_tier() :: #{
-%%   <<"tierName">> => list(any())
-%% }
--type guardrail_content_filters_tier() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_response() :: #{
-%%   <<"definitionHash">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_automated_reasoning_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_provisioned_model_throughput_response() :: #{
-%%   <<"provisionedModelArn">> => string()
-%% }
--type create_provisioned_model_throughput_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_model_deployment_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customModelDeploymentArn">> => string(),
-%%   <<"customModelDeploymentName">> => string(),
-%%   <<"failureMessage">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type custom_model_deployment_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_config() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"keyPrefix">> => string()
-%% }
--type s3_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_invocation_jobs_response() :: #{
-%%   <<"invocationJobSummaries">> => list(model_invocation_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_model_invocation_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_custom_model_response() :: #{
-%%   <<"baseModelArn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customizationConfig">> => list(),
-%%   <<"customizationType">> => list(any()),
-%%   <<"failureMessage">> => string(),
-%%   <<"hyperParameters">> => map(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"modelArn">> => string(),
-%%   <<"modelKmsKeyArn">> => string(),
-%%   <<"modelName">> => string(),
-%%   <<"modelStatus">> => list(any()),
-%%   <<"outputDataConfig">> => output_data_config(),
-%%   <<"trainingDataConfig">> => training_data_config(),
-%%   <<"trainingMetrics">> => training_metrics(),
-%%   <<"validationDataConfig">> => validation_data_config(),
-%%   <<"validationMetrics">> => list(validator_metric())
-%% }
--type get_custom_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_variable_mutation() :: #{
-%%   <<"name">> => string()
-%% }
--type automated_reasoning_policy_delete_variable_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_copy_job_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"sourceModelArn">> => string(),
-%%   <<"sourceModelName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetModelArn">> => string(),
-%%   <<"targetModelKmsKeyArn">> => string(),
-%%   <<"targetModelName">> => string(),
-%%   <<"targetModelTags">> => list(tag())
-%% }
--type model_copy_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_type_mutation() :: #{
-%%   <<"name">> => string()
-%% }
--type automated_reasoning_policy_delete_type_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_filter() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"enabled">> => [boolean()],
-%%   <<"threshold">> => [float()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_provisioned_model_throughput_request() :: #{
-%%   <<"desiredModelId">> => string(),
-%%   <<"desiredProvisionedModelName">> => string()
-%% }
--type update_provisioned_model_throughput_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_build_workflow_response() :: #{
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"buildWorkflowType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"documentContentType">> => list(any()),
-%%   <<"documentDescription">> => string(),
-%%   <<"documentName">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_managed_words() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_managed_words() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_model_deployment_response() :: #{}
--type delete_custom_model_deployment_response() :: #{}.
-
-
-%% Example:
-%% guardrail_content_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_content_filter_config()),
-%%   <<"tierConfig">> => guardrail_content_filters_tier_config()
-%% }
--type guardrail_content_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_model_deployment_update_details() :: #{
-%%   <<"modelArn">> => string(),
-%%   <<"updateStatus">> => list(any())
-%% }
--type custom_model_deployment_update_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_output_data_config() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type evaluation_output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_precomputed_inference_source() :: #{
-%%   <<"inferenceSourceIdentifier">> => string()
-%% }
--type evaluation_precomputed_inference_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_variable_mutation() :: #{
-%%   <<"variable">> => automated_reasoning_policy_definition_variable()
-%% }
--type automated_reasoning_policy_add_variable_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_test_cases_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testCases">> => list(automated_reasoning_policy_test_case())
-%% }
--type list_automated_reasoning_policy_test_cases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rating_scale_item() :: #{
-%%   <<"definition">> => string(),
-%%   <<"value">> => list()
-%% }
--type rating_scale_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_iterative_refinement_content() :: #{
-%%   <<"documents">> => list(automated_reasoning_policy_build_workflow_document()),
-%%   <<"feedback">> => string()
-%% }
--type automated_reasoning_policy_iterative_refinement_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_provisioned_model_throughput_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"commitmentDuration">> => list(any()),
-%%   <<"modelId">> := string(),
-%%   <<"modelUnits">> := integer(),
-%%   <<"provisionedModelName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_provisioned_model_throughput_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prompt_router_response() :: #{}
--type delete_prompt_router_response() :: #{}.
-
-
-%% Example:
-%% delete_foundation_model_agreement_request() :: #{
-%%   <<"modelId">> := string()
-%% }
--type delete_foundation_model_agreement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_ingest_content_annotation() :: #{
-%%   <<"content">> => string()
-%% }
--type automated_reasoning_policy_ingest_content_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_test_case_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"confidenceThreshold">> => float(),
-%%   <<"expectedAggregatedFindingsResult">> := list(any()),
-%%   <<"guardContent">> := string(),
-%%   <<"queryContent">> => string()
-%% }
--type create_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% teacher_model_config() :: #{
-%%   <<"maxResponseLengthForInference">> => [integer()],
-%%   <<"teacherModelIdentifier">> => string()
-%% }
--type teacher_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_details() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_cross_region_details() :: #{
-%%   <<"guardrailProfileArn">> => string(),
-%%   <<"guardrailProfileId">> => string()
-%% }
--type guardrail_cross_region_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_sources_retrieve_and_generate_configuration() :: #{
-%%   <<"generationConfiguration">> => external_sources_generation_configuration(),
-%%   <<"modelArn">> => string(),
-%%   <<"sources">> => list(external_source())
-%% }
--type external_sources_retrieve_and_generate_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inference_profile_response() :: #{}
--type delete_inference_profile_response() :: #{}.
-
-
-%% Example:
-%% batch_delete_evaluation_job_response() :: #{
-%%   <<"errors">> => list(batch_delete_evaluation_job_error()),
-%%   <<"evaluationJobs">> => list(batch_delete_evaluation_job_item())
-%% }
--type batch_delete_evaluation_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_prompt_router_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"fallbackModel">> => prompt_router_target_model(),
-%%   <<"models">> => list(prompt_router_target_model()),
-%%   <<"promptRouterArn">> => string(),
-%%   <<"promptRouterName">> => string(),
-%%   <<"routingCriteria">> => routing_criteria(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_prompt_router_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_marketplace_model_endpoint_response() :: #{
-%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
-%% }
--type update_marketplace_model_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_pii_entity() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_pii_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_cross_region_config() :: #{
-%%   <<"guardrailProfileIdentifier">> => string()
-%% }
--type guardrail_cross_region_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imported_models_request() :: #{
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_imported_models_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_invocation_logging_configuration_response() :: #{}
--type delete_model_invocation_logging_configuration_response() :: #{}.
-
-
-%% Example:
-%% training_metrics() :: #{
-%%   <<"trainingLoss">> => float()
-%% }
--type training_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_advanced_prompt_optimization_job_request() :: #{}
--type get_advanced_prompt_optimization_job_request() :: #{}.
-
-
-%% Example:
-%% r_f_t_config() :: #{
-%%   <<"graderConfig">> => list(),
-%%   <<"hyperParameters">> => r_f_t_hyper_parameters()
-%% }
--type r_f_t_config() :: #{binary() => any()}.
-
-%% Example:
-%% put_use_case_for_model_access_response() :: #{}
--type put_use_case_for_model_access_response() :: #{}.
-
-
-%% Example:
-%% update_guardrail_request() :: #{
-%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
-%%   <<"blockedInputMessaging">> := string(),
-%%   <<"blockedOutputsMessaging">> := string(),
-%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
-%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
-%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
-%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
-%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
-%% }
--type update_guardrail_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_import_job_request() :: #{}
--type get_model_import_job_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_check_input_text_reference() :: #{
-%%   <<"text">> => string()
-%% }
--type automated_reasoning_check_input_text_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_model_import_job_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"importedModelArn">> => string(),
-%%   <<"importedModelKmsKeyArn">> => string(),
-%%   <<"importedModelName">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelDataSource">> => list(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type get_model_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_invocation_job_s3_input_data_config() :: #{
-%%   <<"s3BucketOwner">> => string(),
-%%   <<"s3InputFormat">> => list(any()),
-%%   <<"s3Uri">> => string()
-%% }
--type model_invocation_job_s3_input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_model_request() :: #{}
--type get_custom_model_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_variable_annotation() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type automated_reasoning_policy_add_variable_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_search_reranking_configuration() :: #{
-%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type vector_search_reranking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% byte_content_doc() :: #{
-%%   <<"contentType">> => string(),
-%%   <<"data">> => binary(),
-%%   <<"identifier">> => string()
-%% }
--type byte_content_doc() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_statement_location() :: #{
-%%   <<"lines">> => list([integer()]())
-%% }
--type automated_reasoning_policy_statement_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% legal_term() :: #{
-%%   <<"url">> => [string()]
-%% }
--type legal_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_imported_models_response() :: #{
-%%   <<"modelSummaries">> => list(imported_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_imported_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_grader_config() :: #{
-%%   <<"lambdaArn">> => string()
-%% }
--type lambda_grader_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_rule_mutation() :: #{
-%%   <<"rule">> => automated_reasoning_policy_definition_rule()
-%% }
--type automated_reasoning_policy_update_rule_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_next_scenario_response() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"scenario">> => automated_reasoning_policy_scenario()
-%% }
--type get_automated_reasoning_policy_next_scenario_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_sources_generation_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"kbInferenceConfig">> => kb_inference_config(),
-%%   <<"promptTemplate">> => prompt_template()
-%% }
--type external_sources_generation_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_customization_job_request() :: #{}
--type get_model_customization_job_request() :: #{}.
-
-
-%% Example:
-%% human_evaluation_custom_metric() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ratingMethod">> => string()
-%% }
--type human_evaluation_custom_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prompt_router_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fallbackModel">> := prompt_router_target_model(),
-%%   <<"models">> := list(prompt_router_target_model()),
-%%   <<"promptRouterName">> := string(),
-%%   <<"routingCriteria">> := routing_criteria(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_prompt_router_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_automated_reasoning_policy_build_workflow_response() :: #{}
--type cancel_automated_reasoning_policy_build_workflow_response() :: #{}.
-
-
-%% Example:
-%% knowledge_base_vector_search_configuration() :: #{
-%%   <<"filter">> => list(),
-%%   <<"implicitFilterConfiguration">> => implicit_filter_configuration(),
-%%   <<"numberOfResults">> => [integer()],
-%%   <<"overrideSearchType">> => list(any()),
-%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
-%% }
--type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_policy() :: #{
-%%   <<"confidenceThreshold">> => float(),
-%%   <<"policies">> => list(string())
-%% }
--type guardrail_automated_reasoning_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_automated_reasoning_policy_request() :: #{}
--type get_automated_reasoning_policy_request() :: #{}.
-
-%% Example:
-%% get_model_invocation_logging_configuration_request() :: #{}
--type get_model_invocation_logging_configuration_request() :: #{}.
-
-
-%% Example:
-%% delete_automated_reasoning_policy_request() :: #{
-%%   <<"force">> => [boolean()]
-%% }
--type delete_automated_reasoning_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% put_account_data_retention_response() :: #{
-%%   <<"mode">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type put_account_data_retention_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"inferenceConfig">> => inference_configuration(),
-%%   <<"modelId">> => string()
-%% }
--type model_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => any()
-%% }
--type filter_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% delete_marketplace_model_endpoint_response() :: #{}
--type delete_marketplace_model_endpoint_response() :: #{}.
-
-
-%% Example:
-%% get_automated_reasoning_policy_test_result_response() :: #{
-%%   <<"testResult">> => automated_reasoning_policy_test_result()
-%% }
--type get_automated_reasoning_policy_test_result_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_imported_model_response() :: #{}
--type delete_imported_model_response() :: #{}.
-
-
-%% Example:
-%% list_foundation_models_request() :: #{
-%%   <<"byCustomizationType">> => list(any()),
-%%   <<"byInferenceType">> => list(any()),
-%%   <<"byOutputModality">> => list(any()),
-%%   <<"byProvider">> => string()
-%% }
--type list_foundation_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_statement_reference() :: #{
-%%   <<"documentId">> => string(),
-%%   <<"statementId">> => string()
-%% }
--type automated_reasoning_policy_statement_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word_config() :: #{
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"text">> => [string()]
-%% }
--type guardrail_word_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_automated_reasoning_policy_test_case_request() :: #{}
--type get_automated_reasoning_policy_test_case_request() :: #{}.
-
-
-%% Example:
-%% guardrail_sensitive_information_policy() :: #{
-%%   <<"piiEntities">> => list(guardrail_pii_entity()),
-%%   <<"regexes">> => list(guardrail_regex())
-%% }
--type guardrail_sensitive_information_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% implicit_filter_configuration() :: #{
-%%   <<"metadataAttributes">> => list(metadata_attribute_schema()),
-%%   <<"modelArn">> => string()
-%% }
--type implicit_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% foundation_model_lifecycle() :: #{
-%%   <<"endOfLifeTime">> => non_neg_integer(),
-%%   <<"legacyTime">> => non_neg_integer(),
-%%   <<"publicExtendedAccessTime">> => non_neg_integer(),
-%%   <<"startOfLifeTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type foundation_model_lifecycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_marketplace_model_endpoint_response() :: #{
-%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
-%% }
--type create_marketplace_model_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_advanced_prompt_optimization_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"inputConfig">> := advanced_prompt_optimization_input_config(),
-%%   <<"jobDescription">> => string(),
-%%   <<"jobName">> := string(),
-%%   <<"modelConfigurations">> := list(model_configuration()),
-%%   <<"outputConfig">> := advanced_prompt_optimization_output_config(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
-%% }
--type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_rule_report() :: #{
-%%   <<"accuracyJustification">> => string(),
-%%   <<"accuracyScore">> => float(),
-%%   <<"groundingJustifications">> => list(string()),
-%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
-%%   <<"rule">> => string()
-%% }
--type automated_reasoning_policy_rule_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_use_case_for_model_access_request() :: #{
-%%   <<"formData">> := binary()
-%% }
--type put_use_case_for_model_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_rag_config_summary() :: #{
-%%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()),
-%%   <<"precomputedRagSourceIdentifiers">> => list(string())
-%% }
--type evaluation_rag_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_imported_model_request() :: #{}
--type delete_imported_model_request() :: #{}.
-
-
-%% Example:
-%% distillation_config() :: #{
-%%   <<"teacherModelConfig">> => teacher_model_config()
-%% }
--type distillation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_search_bedrock_reranking_configuration() :: #{
-%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
-%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
-%%   <<"numberOfRerankedResults">> => [integer()]
-%% }
--type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_annotations_request() :: #{
-%%   <<"annotations">> := list(list()),
-%%   <<"lastUpdatedAnnotationSetHash">> := string()
-%% }
--type update_automated_reasoning_policy_annotations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_enforced_guardrail_configuration_response() :: #{
-%%   <<"configId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => [string()]
-%% }
--type put_enforced_guardrail_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_foundation_model_agreement_offers_request() :: #{
-%%   <<"offerType">> => list(any())
-%% }
--type list_foundation_model_agreement_offers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_step_message() :: #{
-%%   <<"message">> => [string()],
-%%   <<"messageType">> => list(any())
-%% }
--type automated_reasoning_policy_build_step_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_copy_jobs_response() :: #{
-%%   <<"modelCopyJobSummaries">> => list(model_copy_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_model_copy_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_log() :: #{
-%%   <<"entries">> => list(automated_reasoning_policy_build_log_entry())
-%% }
--type automated_reasoning_policy_build_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_type_mutation() :: #{
-%%   <<"type">> => automated_reasoning_policy_definition_type()
-%% }
--type automated_reasoning_policy_add_type_mutation() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_automated_reasoning_policy_build_workflow_request() :: #{}
--type cancel_automated_reasoning_policy_build_workflow_request() :: #{}.
-
-%% Example:
-%% delete_guardrail_response() :: #{}
--type delete_guardrail_response() :: #{}.
-
-
-%% Example:
-%% validation_data_config() :: #{
-%%   <<"validators">> => list(validator())
-%% }
--type validation_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_evaluation_job_item() :: #{
-%%   <<"jobIdentifier">> => string(),
-%%   <<"jobStatus">> => list(any())
-%% }
--type batch_delete_evaluation_job_item() :: #{binary() => any()}.
-
-%% Example:
-%% stop_model_invocation_job_response() :: #{}
--type stop_model_invocation_job_response() :: #{}.
-
-
-%% Example:
-%% list_prompt_routers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type list_prompt_routers_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_model_throughput_response() :: #{}
--type update_provisioned_model_throughput_response() :: #{}.
-
-
-%% Example:
-%% start_automated_reasoning_policy_test_workflow_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"testCaseIds">> => list(string())
-%% }
--type start_automated_reasoning_policy_test_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_regex_config() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"description">> => [string()],
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"name">> => [string()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"pattern">> => [string()]
-%% }
--type guardrail_regex_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_model_invocation_logging_configuration_request() :: #{
-%%   <<"loggingConfig">> := logging_config()
-%% }
--type put_model_invocation_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_scenario() :: #{
-%%   <<"statements">> => list(automated_reasoning_logic_statement())
-%% }
--type automated_reasoning_check_scenario() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_model_deployment_response() :: #{
-%%   <<"customModelDeploymentArn">> => string()
-%% }
--type update_custom_model_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"resourcePolicy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_advanced_prompt_optimization_job_request() :: #{}
--type stop_advanced_prompt_optimization_job_request() :: #{}.
-
-
-%% Example:
-%% custom_metric_evaluator_model_config() :: #{
-%%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model())
-%% }
--type custom_metric_evaluator_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_foundation_model_agreement_request() :: #{
-%%   <<"modelId">> := string(),
-%%   <<"offerToken">> := string()
-%% }
--type create_foundation_model_agreement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_customization_jobs_response() :: #{
-%%   <<"modelCustomizationJobSummaries">> => list(model_customization_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_model_customization_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_foundation_models_response() :: #{
-%%   <<"modelSummaries">> => list(foundation_model_summary())
-%% }
--type list_foundation_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_custom_model_deployment_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customModelDeploymentArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"failureMessage">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"modelDeploymentName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updateDetails">> => custom_model_deployment_update_details()
-%% }
--type get_custom_model_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_foundation_model_availability_response() :: #{
-%%   <<"agreementAvailability">> => agreement_availability(),
-%%   <<"authorizationStatus">> => list(any()),
-%%   <<"entitlementAvailability">> => list(any()),
-%%   <<"modelId">> => string(),
-%%   <<"regionAvailability">> => list(any())
-%% }
--type get_foundation_model_availability_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% orchestration_configuration() :: #{
-%%   <<"queryTransformationConfiguration">> => query_transformation_configuration()
-%% }
--type orchestration_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_template() :: #{
-%%   <<"textPromptTemplate">> => string()
-%% }
--type prompt_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_report_source_document() :: #{
-%%   <<"atomicStatements">> => list(automated_reasoning_policy_atomic_statement()),
-%%   <<"documentContent">> => list(automated_reasoning_policy_annotated_chunk()),
-%%   <<"documentHash">> => string(),
-%%   <<"documentId">> => string(),
-%%   <<"documentName">> => string()
-%% }
--type automated_reasoning_policy_report_source_document() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3001,97 +2208,27 @@
 -type get_imported_model_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_model_invocation_job_request() :: #{}
--type get_model_invocation_job_request() :: #{}.
+%% get_inference_profile_request() :: #{}
+-type get_inference_profile_request() :: #{}.
 
 
 %% Example:
-%% list_advanced_prompt_optimization_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(advanced_prompt_optimization_job_summary()),
-%%   <<"nextToken">> => string()
+%% get_inference_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"inferenceProfileId">> => string(),
+%%   <<"inferenceProfileName">> => string(),
+%%   <<"models">> => list(inference_profile_model()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_advanced_prompt_optimization_jobs_response() :: #{binary() => any()}.
+-type get_inference_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_automated_reasoning_policy_response() :: #{}
--type delete_automated_reasoning_policy_response() :: #{}.
-
-%% Example:
-%% delete_automated_reasoning_policy_build_workflow_response() :: #{}
--type delete_automated_reasoning_policy_build_workflow_response() :: #{}.
-
-
-%% Example:
-%% batch_delete_advanced_prompt_optimization_job_request() :: #{
-%%   <<"jobIdentifiers">> := list(string())
-%% }
--type batch_delete_advanced_prompt_optimization_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_customization_job_request() :: #{
-%%   <<"baseModelIdentifier">> := string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"customModelKmsKeyId">> => string(),
-%%   <<"customModelName">> := string(),
-%%   <<"customModelTags">> => list(tag()),
-%%   <<"customizationConfig">> => list(),
-%%   <<"customizationType">> => list(any()),
-%%   <<"hyperParameters">> => map(),
-%%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()),
-%%   <<"outputDataConfig">> := output_data_config(),
-%%   <<"roleArn">> := string(),
-%%   <<"trainingDataConfig">> := training_data_config(),
-%%   <<"validationDataConfig">> => validation_data_config(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_model_customization_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% generation_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"kbInferenceConfig">> => kb_inference_config(),
-%%   <<"promptTemplate">> => prompt_template()
-%% }
--type generation_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_use_case_for_model_access_request() :: #{}
--type get_use_case_for_model_access_request() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_prompt_router_response() :: #{
-%%   <<"promptRouterArn">> => string()
-%% }
--type create_prompt_router_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_evaluation_job_request() :: #{
-%%   <<"applicationType">> => list(any()),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"customerEncryptionKeyId">> => string(),
-%%   <<"evaluationConfig">> := list(),
-%%   <<"inferenceConfig">> := list(),
-%%   <<"jobDescription">> => string(),
-%%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()),
-%%   <<"outputDataConfig">> := evaluation_output_data_config(),
-%%   <<"roleArn">> := string()
-%% }
--type create_evaluation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% automated_reasoning_check_no_translations_finding() :: #{}
--type automated_reasoning_check_no_translations_finding() :: #{}.
+%% get_marketplace_model_endpoint_request() :: #{}
+-type get_marketplace_model_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -3100,294 +2237,30 @@
 %% }
 -type get_marketplace_model_endpoint_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% create_custom_model_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"customModelDataSource">> => list(),
-%%   <<"modelKmsKeyArn">> => string(),
-%%   <<"modelName">> := string(),
-%%   <<"modelSourceConfig">> => list(),
-%%   <<"modelTags">> => list(tag()),
-%%   <<"roleArn">> => string()
-%% }
--type create_custom_model_request() :: #{binary() => any()}.
+%% get_model_copy_job_request() :: #{}
+-type get_model_copy_job_request() :: #{}.
 
 
 %% Example:
-%% automated_reasoning_policy_definition_quality_report() :: #{
-%%   <<"conflictingRules">> => list(string()),
-%%   <<"disjointRuleSets">> => list(automated_reasoning_policy_disjoint_rule_set()),
-%%   <<"ruleCount">> => [integer()],
-%%   <<"typeCount">> => [integer()],
-%%   <<"unusedTypeValues">> => list(automated_reasoning_policy_definition_type_value_pair()),
-%%   <<"unusedTypes">> => list(string()),
-%%   <<"unusedVariables">> => list(string()),
-%%   <<"variableCount">> => [integer()]
-%% }
--type automated_reasoning_policy_definition_quality_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition_variable() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type automated_reasoning_policy_definition_variable() :: #{binary() => any()}.
-
-
-%% Example:
-%% training_details() :: #{
+%% get_model_copy_job_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%%   <<"failureMessage">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceModelArn">> => string(),
+%%   <<"sourceModelName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetModelArn">> => string(),
+%%   <<"targetModelKmsKeyArn">> => string(),
+%%   <<"targetModelName">> => string(),
+%%   <<"targetModelTags">> => list(tag())
 %% }
--type training_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word_policy_config() :: #{
-%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
-%%   <<"wordsConfig">> => list(guardrail_word_config())
-%% }
--type guardrail_word_policy_config() :: #{binary() => any()}.
-
+-type get_model_copy_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% automated_reasoning_policy_fidelity_report() :: #{
-%%   <<"accuracyScore">> => float(),
-%%   <<"coverageScore">> => float(),
-%%   <<"documentSources">> => list(automated_reasoning_policy_report_source_document()),
-%%   <<"ruleReports">> => map(),
-%%   <<"variableReports">> => map()
-%% }
--type automated_reasoning_policy_fidelity_report() :: #{binary() => any()}.
-
-%% Example:
-%% export_automated_reasoning_policy_version_request() :: #{}
--type export_automated_reasoning_policy_version_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_check_translation() :: #{
-%%   <<"claims">> => list(automated_reasoning_logic_statement()),
-%%   <<"confidence">> => float(),
-%%   <<"premises">> => list(automated_reasoning_logic_statement()),
-%%   <<"untranslatedClaims">> => list(automated_reasoning_check_input_text_reference()),
-%%   <<"untranslatedPremises">> => list(automated_reasoning_check_input_text_reference())
-%% }
--type automated_reasoning_check_translation() :: #{binary() => any()}.
-
-
-%% Example:
-%% validator_metric() :: #{
-%%   <<"validationLoss">> => float()
-%% }
--type validator_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_test_case_response() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"testCaseId">> => string()
-%% }
--type create_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_evaluation_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(evaluation_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_evaluation_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_sensitive_information_policy_config() :: #{
-%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
-%%   <<"regexesConfig">> => list(guardrail_regex_config())
-%% }
--type guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
-
-%% Example:
-%% stop_model_customization_job_request() :: #{}
--type stop_model_customization_job_request() :: #{}.
-
-
-%% Example:
-%% metadata_configuration_for_reranking() :: #{
-%%   <<"selectionMode">> => list(any()),
-%%   <<"selectiveModeConfiguration">> => list()
-%% }
--type metadata_configuration_for_reranking() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_guardrail_version_response() :: #{
-%%   <<"guardrailId">> => string(),
-%%   <<"version">> => string()
-%% }
--type create_guardrail_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_model_request() :: #{}
--type delete_custom_model_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_copy_job_response() :: #{
-%%   <<"jobArn">> => string()
-%% }
--type create_model_copy_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_pii_entity_config() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_pii_entity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_annotations_response() :: #{
-%%   <<"annotationSetHash">> => string(),
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_impossible_finding() :: #{
-%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
-%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
-%%   <<"translation">> => automated_reasoning_check_translation()
-%% }
--type automated_reasoning_check_impossible_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_dataset() :: #{
-%%   <<"datasetLocation">> => list(),
-%%   <<"name">> => string()
-%% }
--type evaluation_dataset() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_automated_reasoning_policy_version_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"lastUpdatedDefinitionHash">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_automated_reasoning_policy_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_update_rule_annotation() :: #{
-%%   <<"expression">> => string(),
-%%   <<"ruleId">> => string()
-%% }
--type automated_reasoning_policy_update_rule_annotation() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_workflow_source() :: #{
-%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
-%%   <<"workflowContent">> => list()
-%% }
--type automated_reasoning_policy_build_workflow_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_rule_mutation() :: #{
-%%   <<"rule">> => automated_reasoning_policy_definition_rule()
-%% }
--type automated_reasoning_policy_add_rule_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_reasoning_policy_test_cases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_reasoning_policy_test_cases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_advanced_prompt_optimization_job_response() :: #{
-%%   <<"advancedPromptOptimizationJobs">> => list(batch_delete_advanced_prompt_optimization_job_item()),
-%%   <<"errors">> => list(batch_delete_advanced_prompt_optimization_job_error())
-%% }
--type batch_delete_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_model_units() :: #{
-%%   <<"customModelUnitsPerModelCopy">> => [integer()],
-%%   <<"customModelUnitsVersion">> => string()
-%% }
--type custom_model_units() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_automated_reasoning_policy_build_workflow_response() :: #{
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"policyArn">> => string()
-%% }
--type start_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_result_asset_manifest_entry() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetName">> => string(),
-%%   <<"assetType">> => list(any())
-%% }
--type automated_reasoning_policy_build_result_asset_manifest_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_enforced_guardrail_configuration_request() :: #{
-%%   <<"configId">> => string(),
-%%   <<"guardrailInferenceConfig">> := account_enforced_guardrail_inference_input_configuration()
-%% }
--type put_enforced_guardrail_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_model_deployment_request() :: #{
-%%   <<"modelArn">> := string()
-%% }
--type update_custom_model_deployment_request() :: #{binary() => any()}.
+%% get_model_customization_job_request() :: #{}
+-type get_model_customization_job_request() :: #{}.
 
 
 %% Example:
@@ -3418,720 +2291,32 @@
 %% }
 -type get_model_customization_job_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_model_import_job_request() :: #{}
+-type get_model_import_job_request() :: #{}.
+
 
 %% Example:
-%% get_model_copy_job_response() :: #{
+%% get_model_import_job_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"sourceAccountId">> => string(),
-%%   <<"sourceModelArn">> => string(),
-%%   <<"sourceModelName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetModelArn">> => string(),
-%%   <<"targetModelKmsKeyArn">> => string(),
-%%   <<"targetModelName">> => string(),
-%%   <<"targetModelTags">> => list(tag())
-%% }
--type get_model_copy_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type automated_reasoning_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_marketplace_model_endpoint_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"endpointConfig">> := list()
-%% }
--type update_marketplace_model_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_models_response() :: #{
-%%   <<"modelSummaries">> => list(custom_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_generated_test_cases() :: #{
-%%   <<"generatedTestCases">> => list(automated_reasoning_policy_generated_test_case())
-%% }
--type automated_reasoning_policy_generated_test_cases() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_test_case() :: #{
-%%   <<"confidenceThreshold">> => float(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"expectedAggregatedFindingsResult">> => list(any()),
-%%   <<"guardContent">> => string(),
-%%   <<"queryContent">> => string(),
-%%   <<"testCaseId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type automated_reasoning_policy_test_case() :: #{binary() => any()}.
-
-%% Example:
-%% automated_reasoning_check_too_complex_finding() :: #{}
--type automated_reasoning_check_too_complex_finding() :: #{}.
-
-
-%% Example:
-%% selective_content_guarding() :: #{
-%%   <<"messages">> => list(any()),
-%%   <<"system">> => list(any())
-%% }
--type selective_content_guarding() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prompt_routers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"promptRouterSummaries">> => list(prompt_router_summary())
-%% }
--type list_prompt_routers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_translation_ambiguous_finding() :: #{
-%%   <<"differenceScenarios">> => list(automated_reasoning_check_scenario()),
-%%   <<"options">> => list(automated_reasoning_check_translation_option())
-%% }
--type automated_reasoning_check_translation_ambiguous_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_search_bedrock_reranking_model_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"modelArn">> => string()
-%% }
--type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_logic_statement() :: #{
-%%   <<"logic">> => string(),
-%%   <<"naturalLanguage">> => string()
-%% }
--type automated_reasoning_logic_statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic_policy() :: #{
-%%   <<"tier">> => guardrail_topics_tier(),
-%%   <<"topics">> => list(guardrail_topic())
-%% }
--type guardrail_topic_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_data_config() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_model_invocation_logging_configuration_response() :: #{
-%%   <<"loggingConfig">> => logging_config()
-%% }
--type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_automated_reasoning_policy_test_case_response() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"testCaseId">> => string()
-%% }
--type update_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_advanced_prompt_optimization_job_response() :: #{
-%%   <<"jobArn">> => string()
-%% }
--type create_advanced_prompt_optimization_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_type_value() :: #{
-%%   <<"value">> => string()
-%% }
--type automated_reasoning_policy_delete_type_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_step() :: #{
-%%   <<"context">> => list(),
-%%   <<"messages">> => list(automated_reasoning_policy_build_step_message()),
-%%   <<"priorElement">> => list()
-%% }
--type automated_reasoning_policy_build_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_import_job_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"importedModelKmsKeyId">> => string(),
-%%   <<"importedModelName">> := string(),
-%%   <<"importedModelTags">> => list(tag()),
-%%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()),
-%%   <<"modelDataSource">> := list(),
-%%   <<"roleArn">> := string(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_model_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_guardrail_version_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"description">> => string()
-%% }
--type create_guardrail_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_model_copy_jobs_request() :: #{
-%%   <<"creationTimeAfter">> => non_neg_integer(),
-%%   <<"creationTimeBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"sourceAccountEquals">> => string(),
-%%   <<"sourceModelArnEquals">> => string(),
-%%   <<"statusEquals">> => list(any()),
-%%   <<"targetModelNameContains">> => string()
-%% }
--type list_model_copy_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_router_target_model() :: #{
-%%   <<"modelArn">> => string()
-%% }
--type prompt_router_target_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_precomputed_retrieve_source_config() :: #{
-%%   <<"ragSourceIdentifier">> => string()
-%% }
--type evaluation_precomputed_retrieve_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_guardrails_request() :: #{
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_guardrails_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% term_details() :: #{
-%%   <<"legalTerm">> => legal_term(),
-%%   <<"supportTerm">> => support_term(),
-%%   <<"usageBasedPricingTerm">> => pricing_term(),
-%%   <<"validityTerm">> => validity_term()
-%% }
--type term_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% validity_term() :: #{
-%%   <<"agreementDuration">> => [string()]
-%% }
--type validity_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimensional_price_rate() :: #{
-%%   <<"description">> => [string()],
-%%   <<"dimension">> => [string()],
-%%   <<"price">> => [string()],
-%%   <<"unit">> => [string()]
-%% }
--type dimensional_price_rate() :: #{binary() => any()}.
-
-%% Example:
-%% put_model_invocation_logging_configuration_response() :: #{}
--type put_model_invocation_logging_configuration_response() :: #{}.
-
-
-%% Example:
-%% guardrail_configuration() :: #{
-%%   <<"guardrailId">> => [string()],
-%%   <<"guardrailVersion">> => [string()]
-%% }
--type guardrail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{
-%%   <<"naturalLanguage">> => string()
-%% }
--type automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{}
--type delete_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_delete_rule_mutation() :: #{
-%%   <<"id">> => string()
-%% }
--type automated_reasoning_policy_delete_rule_mutation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_foundation_model_agreement_response() :: #{
-%%   <<"modelId">> => string()
-%% }
--type create_foundation_model_agreement_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validator() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type validator() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_marketplace_model_endpoint_request() :: #{
-%%   <<"modelSourceIdentifier">> := string()
-%% }
--type register_marketplace_model_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_atomic_statement() :: #{
-%%   <<"id">> => string(),
-%%   <<"location">> => automated_reasoning_policy_statement_location(),
-%%   <<"text">> => string()
-%% }
--type automated_reasoning_policy_atomic_statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_regex() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"description">> => [string()],
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"name">> => [string()],
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"pattern">> => [string()]
-%% }
--type guardrail_regex() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_test_result() :: #{
-%%   <<"aggregatedTestFindingsResult">> => list(any()),
-%%   <<"policyArn">> => string(),
-%%   <<"testCase">> => automated_reasoning_policy_test_case(),
-%%   <<"testFindings">> => list(list()),
-%%   <<"testRunResult">> => list(any()),
-%%   <<"testRunStatus">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type automated_reasoning_policy_test_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_evaluation_job_request() :: #{
-%%   <<"jobIdentifiers">> := list(string())
-%% }
--type batch_delete_evaluation_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_prompt_optimization_input_config() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type advanced_prompt_optimization_input_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_automated_reasoning_policy_test_case_response() :: #{}
--type delete_automated_reasoning_policy_test_case_response() :: #{}.
-
-
-%% Example:
-%% create_evaluation_job_response() :: #{
-%%   <<"jobArn">> => string()
-%% }
--type create_evaluation_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_guardrail_response() :: #{
-%%   <<"guardrailArn">> => string(),
-%%   <<"guardrailId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type update_guardrail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_invocation_job_summary() :: #{
-%%   <<"clientRequestToken">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"errorRecordCount">> => float(),
-%%   <<"inputDataConfig">> => list(),
+%%   <<"failureMessage">> => string(),
+%%   <<"importedModelArn">> => string(),
+%%   <<"importedModelKmsKeyArn">> => string(),
+%%   <<"importedModelName">> => string(),
 %%   <<"jobArn">> => string(),
-%%   <<"jobExpirationTime">> => non_neg_integer(),
 %%   <<"jobName">> => string(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modelInvocationType">> => list(any()),
-%%   <<"outputDataConfig">> => list(),
-%%   <<"processedRecordCount">> => float(),
+%%   <<"modelDataSource">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"submitTime">> => non_neg_integer(),
-%%   <<"successRecordCount">> => float(),
-%%   <<"timeoutDurationInHours">> => integer(),
-%%   <<"totalRecordCount">> => float(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
--type model_invocation_job_summary() :: #{binary() => any()}.
+-type get_model_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_marketplace_model_endpoint_request() :: #{}
--type deregister_marketplace_model_endpoint_request() :: #{}.
-
-
-%% Example:
-%% model_package_arn_data_source() :: #{
-%%   <<"modelPackageArn">> => string()
-%% }
--type model_package_arn_data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_metadata_base_filters() :: #{
-%%   <<"equals">> => map(),
-%%   <<"notEquals">> => map()
-%% }
--type request_metadata_base_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_add_type_value() :: #{
-%%   <<"description">> => string(),
-%%   <<"value">> => string()
-%% }
--type automated_reasoning_policy_add_type_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_marketplace_model_endpoint_response() :: #{
-%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
-%% }
--type register_marketplace_model_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_result_asset_manifest() :: #{
-%%   <<"entries">> => list(automated_reasoning_policy_build_result_asset_manifest_entry())
-%% }
--type automated_reasoning_policy_build_result_asset_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% kb_inference_config() :: #{
-%%   <<"textInferenceConfig">> => text_inference_config()
-%% }
--type kb_inference_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_summary() :: #{
-%%   <<"applicationType">> => list(any()),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customMetricsEvaluatorModelIdentifiers">> => list(string()),
-%%   <<"evaluationTaskTypes">> => list(list(any())()),
-%%   <<"evaluatorModelIdentifiers">> => list(string()),
-%%   <<"inferenceConfigSummary">> => evaluation_inference_config_summary(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobType">> => list(any()),
-%%   <<"modelIdentifiers">> => list(string()),
-%%   <<"ragIdentifiers">> => list(string()),
-%%   <<"status">> => list(any())
-%% }
--type evaluation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_automated_reasoning_policy_build_workflow_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"sourceContent">> := automated_reasoning_policy_build_workflow_source()
-%% }
--type start_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_model_deployment_response() :: #{
-%%   <<"customModelDeploymentArn">> => string()
-%% }
--type create_custom_model_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% training_data_config() :: #{
-%%   <<"invocationLogsConfig">> => invocation_logs_config(),
-%%   <<"s3Uri">> => string()
-%% }
--type training_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_check_invalid_finding() :: #{
-%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
-%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
-%%   <<"translation">> => automated_reasoning_check_translation()
-%% }
--type automated_reasoning_check_invalid_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_bedrock_model() :: #{
-%%   <<"inferenceParams">> => string(),
-%%   <<"modelIdentifier">> => string(),
-%%   <<"performanceConfig">> => performance_configuration()
-%% }
--type evaluation_bedrock_model() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_invocation_logging_configuration_request() :: #{}
--type delete_model_invocation_logging_configuration_request() :: #{}.
-
-
-%% Example:
-%% batch_delete_advanced_prompt_optimization_job_item() :: #{
-%%   <<"jobIdentifier">> => string(),
-%%   <<"jobStatus">> => list(any())
-%% }
--type batch_delete_advanced_prompt_optimization_job_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition() :: #{
-%%   <<"rules">> => list(automated_reasoning_policy_definition_rule()),
-%%   <<"types">> => list(automated_reasoning_policy_definition_type()),
-%%   <<"variables">> => list(automated_reasoning_policy_definition_variable()),
-%%   <<"version">> => string()
-%% }
--type automated_reasoning_policy_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_build_workflow_summary() :: #{
-%%   <<"buildWorkflowId">> => string(),
-%%   <<"buildWorkflowType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"policyArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type automated_reasoning_policy_build_workflow_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_precomputed_retrieve_and_generate_source_config() :: #{
-%%   <<"ragSourceIdentifier">> => string()
-%% }
--type evaluation_precomputed_retrieve_and_generate_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_model_summary() :: #{
-%%   <<"baseModelArn">> => string(),
-%%   <<"baseModelName">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customizationType">> => list(any()),
-%%   <<"modelArn">> => string(),
-%%   <<"modelName">> => string(),
-%%   <<"modelStatus">> => list(any()),
-%%   <<"ownerAccountId">> => string()
-%% }
--type custom_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_enforced_guardrail_inference_input_configuration() :: #{
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"modelEnforcement">> => model_enforcement(),
-%%   <<"selectiveContentGuarding">> => selective_content_guarding()
-%% }
--type account_enforced_guardrail_inference_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% automated_reasoning_policy_definition_type_value() :: #{
-%%   <<"description">> => string(),
-%%   <<"value">> => string()
-%% }
--type automated_reasoning_policy_definition_type_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_guardrail_request() :: #{
-%%   <<"guardrailVersion">> => string()
-%% }
--type get_guardrail_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_advanced_prompt_optimization_job_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"jobIdentifier">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type batch_delete_advanced_prompt_optimization_job_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_foundation_model_response() :: #{
-%%   <<"modelDetails">> => foundation_model_details()
-%% }
--type get_foundation_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_advanced_prompt_optimization_job_response() :: #{}
--type stop_advanced_prompt_optimization_job_response() :: #{}.
-
-%% Example:
-%% get_account_data_retention_request() :: #{}
--type get_account_data_retention_request() :: #{}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic() :: #{
-%%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()),
-%%   <<"inputAction">> => list(any()),
-%%   <<"inputEnabled">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"outputAction">> => list(any()),
-%%   <<"outputEnabled">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_topic() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_data_retention_response() :: #{
-%%   <<"mode">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_account_data_retention_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_enforced_guardrails_configuration_response() :: #{
-%%   <<"guardrailsConfig">> => list(account_enforced_guardrail_output_configuration()),
-%%   <<"nextToken">> => string()
-%% }
--type list_enforced_guardrails_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_policy() :: #{
-%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
-%% }
--type guardrail_contextual_grounding_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% human_evaluation_config() :: #{
-%%   <<"customMetrics">> => list(human_evaluation_custom_metric()),
-%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
-%%   <<"humanWorkflowConfig">> => human_workflow_config()
-%% }
--type human_evaluation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_configuration() :: #{
-%%   <<"latency">> => list(any())
-%% }
--type performance_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_prompt_optimization_output_config() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type advanced_prompt_optimization_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_marketplace_model_endpoint_request() :: #{}
--type delete_marketplace_model_endpoint_request() :: #{}.
-
-
-%% Example:
-%% automated_reasoning_policy_variable_report() :: #{
-%%   <<"accuracyJustification">> => string(),
-%%   <<"accuracyScore">> => float(),
-%%   <<"groundingJustifications">> => list(string()),
-%%   <<"groundingStatements">> => list(automated_reasoning_policy_statement_reference()),
-%%   <<"policyVariable">> => string()
-%% }
--type automated_reasoning_policy_variable_report() :: #{binary() => any()}.
-
-%% Example:
-%% delete_foundation_model_agreement_response() :: #{}
--type delete_foundation_model_agreement_response() :: #{}.
-
-
-%% Example:
-%% list_advanced_prompt_optimization_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_advanced_prompt_optimization_jobs_request() :: #{binary() => any()}.
+%% get_model_invocation_job_request() :: #{}
+-type get_model_invocation_job_request() :: #{}.
 
 
 %% Example:
@@ -4159,6 +2344,892 @@
 %% }
 -type get_model_invocation_job_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_model_invocation_logging_configuration_request() :: #{}
+-type get_model_invocation_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_model_invocation_logging_configuration_response() :: #{
+%%   <<"loggingConfig">> => logging_config()
+%% }
+-type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_prompt_router_request() :: #{}
+-type get_prompt_router_request() :: #{}.
+
+
+%% Example:
+%% get_prompt_router_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> => prompt_router_target_model(),
+%%   <<"models">> => list(prompt_router_target_model()),
+%%   <<"promptRouterArn">> => string(),
+%%   <<"promptRouterName">> => string(),
+%%   <<"routingCriteria">> => routing_criteria(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_prompt_router_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_model_throughput_request() :: #{}
+-type get_provisioned_model_throughput_request() :: #{}.
+
+
+%% Example:
+%% get_provisioned_model_throughput_response() :: #{
+%%   <<"commitmentDuration">> => list(any()),
+%%   <<"commitmentExpirationTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"desiredModelArn">> => string(),
+%%   <<"desiredModelUnits">> => integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"foundationModelArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelUnits">> => integer(),
+%%   <<"provisionedModelArn">> => string(),
+%%   <<"provisionedModelName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_provisioned_model_throughput_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_use_case_for_model_access_request() :: #{}
+-type get_use_case_for_model_access_request() :: #{}.
+
+
+%% Example:
+%% get_use_case_for_model_access_response() :: #{
+%%   <<"formData">> => binary()
+%% }
+-type get_use_case_for_model_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_policy() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"policies">> => list(string())
+%% }
+-type guardrail_automated_reasoning_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_policy_config() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"policies">> => list(string())
+%% }
+-type guardrail_automated_reasoning_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailId">> => [string()],
+%%   <<"guardrailVersion">> => [string()]
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"inputModalities">> => list(list(any())()),
+%%   <<"inputStrength">> => list(any()),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"outputModalities">> => list(list(any())()),
+%%   <<"outputStrength">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"inputModalities">> => list(list(any())()),
+%%   <<"inputStrength">> => list(any()),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"outputModalities">> => list(list(any())()),
+%%   <<"outputStrength">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filters_tier() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_content_filters_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filters_tier_config() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_content_filters_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_policy() :: #{
+%%   <<"filters">> => list(guardrail_content_filter()),
+%%   <<"tier">> => guardrail_content_filters_tier()
+%% }
+-type guardrail_content_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config()),
+%%   <<"tierConfig">> => guardrail_content_filters_tier_config()
+%% }
+-type guardrail_content_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"enabled">> => [boolean()],
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"enabled">> => [boolean()],
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_policy() :: #{
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
+%% }
+-type guardrail_contextual_grounding_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_policy_config() :: #{
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
+%% }
+-type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_cross_region_config() :: #{
+%%   <<"guardrailProfileIdentifier">> => string()
+%% }
+-type guardrail_cross_region_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_cross_region_details() :: #{
+%%   <<"guardrailProfileArn">> => string(),
+%%   <<"guardrailProfileId">> => string()
+%% }
+-type guardrail_cross_region_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_managed_words() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_words() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_managed_words_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_words_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"pattern">> => [string()]
+%% }
+-type guardrail_regex() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex_config() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"pattern">> => [string()]
+%% }
+-type guardrail_regex_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_sensitive_information_policy() :: #{
+%%   <<"piiEntities">> => list(guardrail_pii_entity()),
+%%   <<"regexes">> => list(guardrail_regex())
+%% }
+-type guardrail_sensitive_information_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_sensitive_information_policy_config() :: #{
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config())
+%% }
+-type guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"crossRegionDetails">> => guardrail_cross_region_details(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type guardrail_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"examples">> => list(string()),
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_policy() :: #{
+%%   <<"tier">> => guardrail_topics_tier(),
+%%   <<"topics">> => list(guardrail_topic())
+%% }
+-type guardrail_topic_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic_policy_config() :: #{
+%%   <<"tierConfig">> => guardrail_topics_tier_config(),
+%%   <<"topicsConfig">> => list(guardrail_topic_config())
+%% }
+-type guardrail_topic_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topics_tier() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_topics_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topics_tier_config() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_topics_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_word() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_config() :: #{
+%%   <<"inputAction">> => list(any()),
+%%   <<"inputEnabled">> => [boolean()],
+%%   <<"outputAction">> => list(any()),
+%%   <<"outputEnabled">> => [boolean()],
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_word_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_policy() :: #{
+%%   <<"managedWordLists">> => list(guardrail_managed_words()),
+%%   <<"words">> => list(guardrail_word())
+%% }
+-type guardrail_word_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_word_policy_config() :: #{
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
+%%   <<"wordsConfig">> => list(guardrail_word_config())
+%% }
+-type guardrail_word_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_evaluation_config() :: #{
+%%   <<"customMetrics">> => list(human_evaluation_custom_metric()),
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
+%%   <<"humanWorkflowConfig">> => human_workflow_config()
+%% }
+-type human_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_evaluation_custom_metric() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ratingMethod">> => string()
+%% }
+-type human_evaluation_custom_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% human_workflow_config() :: #{
+%%   <<"flowDefinitionArn">> => string(),
+%%   <<"instructions">> => string()
+%% }
+-type human_workflow_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% implicit_filter_configuration() :: #{
+%%   <<"metadataAttributes">> => list(metadata_attribute_schema()),
+%%   <<"modelArn">> => string()
+%% }
+-type implicit_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% imported_model_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"instructSupported">> => boolean(),
+%%   <<"modelArchitecture">> => string(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelName">> => string()
+%% }
+-type imported_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_profile_model() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type inference_profile_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_profile_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"inferenceProfileArn">> => string(),
+%%   <<"inferenceProfileId">> => string(),
+%%   <<"inferenceProfileName">> => string(),
+%%   <<"models">> => list(inference_profile_model()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type inference_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_logs_config() :: #{
+%%   <<"invocationLogSource">> => list(),
+%%   <<"requestMetadataFilters">> => list(),
+%%   <<"usePromptResponse">> => boolean()
+%% }
+-type invocation_logs_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kb_inference_config() :: #{
+%%   <<"textInferenceConfig">> => text_inference_config()
+%% }
+-type kb_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieval_configuration() :: #{
+%%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
+%% }
+-type knowledge_base_retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_retrieve_and_generate_configuration() :: #{
+%%   <<"generationConfiguration">> => generation_configuration(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"modelArn">> => string(),
+%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
+%%   <<"retrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type knowledge_base_retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_vector_search_configuration() :: #{
+%%   <<"filter">> => list(),
+%%   <<"implicitFilterConfiguration">> => implicit_filter_configuration(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"overrideSearchType">> => list(any()),
+%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
+%% }
+-type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_grader_config() :: #{
+%%   <<"lambdaArn">> => string()
+%% }
+-type lambda_grader_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% legal_term() :: #{
+%%   <<"url">> => [string()]
+%% }
+-type legal_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_advanced_prompt_optimization_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_advanced_prompt_optimization_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_advanced_prompt_optimization_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(advanced_prompt_optimization_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_advanced_prompt_optimization_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type list_automated_reasoning_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policies_response() :: #{
+%%   <<"automatedReasoningPolicySummaries">> => list(automated_reasoning_policy_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_build_workflows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_build_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_build_workflows_response() :: #{
+%%   <<"automatedReasoningPolicyBuildWorkflowSummaries">> => list(automated_reasoning_policy_build_workflow_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_build_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_cases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_test_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_cases_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testCases">> => list(automated_reasoning_policy_test_case())
+%% }
+-type list_automated_reasoning_policy_test_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_test_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_results_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testResults">> => list(automated_reasoning_policy_test_result())
+%% }
+-type list_automated_reasoning_policy_test_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_model_deployments_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelArnEquals">> => string(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_custom_model_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_model_deployments_response() :: #{
+%%   <<"modelDeploymentSummaries">> => list(custom_model_deployment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_model_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_models_request() :: #{
+%%   <<"baseModelArnEquals">> => string(),
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"foundationModelArnEquals">> => string(),
+%%   <<"isOwned">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"modelStatus">> => list(any()),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_custom_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_models_response() :: #{
+%%   <<"modelSummaries">> => list(custom_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enforced_guardrails_configuration_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_enforced_guardrails_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enforced_guardrails_configuration_response() :: #{
+%%   <<"guardrailsConfig">> => list(account_enforced_guardrail_output_configuration()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_enforced_guardrails_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_jobs_request() :: #{
+%%   <<"applicationTypeEquals">> => list(any()),
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_evaluation_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(evaluation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_evaluation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_foundation_model_agreement_offers_request() :: #{
+%%   <<"offerType">> => list(any())
+%% }
+-type list_foundation_model_agreement_offers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_foundation_model_agreement_offers_response() :: #{
+%%   <<"modelId">> => string(),
+%%   <<"offers">> => list(offer())
+%% }
+-type list_foundation_model_agreement_offers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_foundation_models_request() :: #{
+%%   <<"byCustomizationType">> => list(any()),
+%%   <<"byInferenceType">> => list(any()),
+%%   <<"byOutputModality">> => list(any()),
+%%   <<"byProvider">> => string()
+%% }
+-type list_foundation_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_foundation_models_response() :: #{
+%%   <<"modelSummaries">> => list(foundation_model_summary())
+%% }
+-type list_foundation_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_guardrails_request() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_guardrails_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_guardrails_response() :: #{
+%%   <<"guardrails">> => list(guardrail_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_guardrails_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imported_models_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_imported_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_imported_models_response() :: #{
+%%   <<"modelSummaries">> => list(imported_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_imported_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inference_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"typeEquals">> => list(any())
+%% }
+-type list_inference_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inference_profiles_response() :: #{
+%%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_inference_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_marketplace_model_endpoints_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"modelSourceEquals">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_marketplace_model_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_marketplace_model_endpoints_response() :: #{
+%%   <<"marketplaceModelEndpoints">> => list(marketplace_model_endpoint_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_marketplace_model_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_copy_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"sourceAccountEquals">> => string(),
+%%   <<"sourceModelArnEquals">> => string(),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"targetModelNameContains">> => string()
+%% }
+-type list_model_copy_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_copy_jobs_response() :: #{
+%%   <<"modelCopyJobSummaries">> => list(model_copy_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_copy_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_customization_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_model_customization_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_customization_jobs_response() :: #{
+%%   <<"modelCustomizationJobSummaries">> => list(model_customization_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_customization_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_import_jobs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_model_import_jobs_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_model_import_jobs_response() :: #{
@@ -4169,822 +3240,1751 @@
 
 
 %% Example:
+%% list_model_invocation_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"submitTimeAfter">> => non_neg_integer(),
+%%   <<"submitTimeBefore">> => non_neg_integer()
+%% }
+-type list_model_invocation_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_model_invocation_jobs_response() :: #{
+%%   <<"invocationJobSummaries">> => list(model_invocation_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_model_invocation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompt_routers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_prompt_routers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompt_routers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"promptRouterSummaries">> => list(prompt_router_summary())
+%% }
+-type list_prompt_routers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioned_model_throughputs_request() :: #{
+%%   <<"creationTimeAfter">> => non_neg_integer(),
+%%   <<"creationTimeBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelArnEquals">> => string(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_provisioned_model_throughputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioned_model_throughputs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"provisionedModelSummaries">> => list(provisioned_model_summary())
+%% }
+-type list_provisioned_model_throughputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"audioDataDeliveryEnabled">> => [boolean()],
+%%   <<"cloudWatchConfig">> => cloud_watch_config(),
+%%   <<"embeddingDataDeliveryEnabled">> => [boolean()],
+%%   <<"imageDataDeliveryEnabled">> => [boolean()],
+%%   <<"s3Config">> => s3_config(),
+%%   <<"textDataDeliveryEnabled">> => [boolean()],
+%%   <<"videoDataDeliveryEnabled">> => [boolean()]
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketplace_model_endpoint() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointArn">> => string(),
+%%   <<"endpointConfig">> => list(),
+%%   <<"endpointStatus">> => [string()],
+%%   <<"endpointStatusMessage">> => [string()],
+%%   <<"modelSourceIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type marketplace_model_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketplace_model_endpoint_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointArn">> => string(),
+%%   <<"modelSourceIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type marketplace_model_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_attribute_schema() :: #{
+%%   <<"description">> => [string()],
+%%   <<"key">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type metadata_attribute_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_for_reranking() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"selectiveModeConfiguration">> => list()
+%% }
+-type metadata_configuration_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"modelId">> => string()
+%% }
+-type model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_copy_job_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceModelArn">> => string(),
+%%   <<"sourceModelName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetModelArn">> => string(),
+%%   <<"targetModelKmsKeyArn">> => string(),
+%%   <<"targetModelName">> => string(),
+%%   <<"targetModelTags">> => list(tag())
+%% }
+-type model_copy_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_customization_job_summary() :: #{
+%%   <<"baseModelArn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"customModelArn">> => string(),
+%%   <<"customModelName">> => string(),
+%%   <<"customizationType">> => list(any()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details()
+%% }
+-type model_customization_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_enforcement() :: #{
+%%   <<"excludedModels">> => list(string()),
+%%   <<"includedModels">> => list(string())
+%% }
+-type model_enforcement() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_import_job_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"importedModelArn">> => string(),
+%%   <<"importedModelName">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type model_import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_job_s3_input_data_config() :: #{
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3InputFormat">> => list(any()),
+%%   <<"s3Uri">> => string()
+%% }
+-type model_invocation_job_s3_input_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_job_s3_output_data_config() :: #{
+%%   <<"s3BucketOwner">> => string(),
+%%   <<"s3EncryptionKeyId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type model_invocation_job_s3_output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_invocation_job_summary() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorRecordCount">> => float(),
+%%   <<"inputDataConfig">> => list(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobExpirationTime">> => non_neg_integer(),
+%%   <<"jobName">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modelInvocationType">> => list(any()),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"processedRecordCount">> => float(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"successRecordCount">> => float(),
+%%   <<"timeoutDurationInHours">> => integer(),
+%%   <<"totalRecordCount">> => float(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type model_invocation_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_package_arn_data_source() :: #{
+%%   <<"modelPackageArn">> => string()
+%% }
+-type model_package_arn_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer() :: #{
+%%   <<"offerId">> => string(),
+%%   <<"offerToken">> => string(),
+%%   <<"termDetails">> => term_details()
+%% }
+-type offer() :: #{binary() => any()}.
+
+
+%% Example:
+%% orchestration_configuration() :: #{
+%%   <<"queryTransformationConfiguration">> => query_transformation_configuration()
+%% }
+-type orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pricing_term() :: #{
+%%   <<"rateCard">> => list(dimensional_price_rate())
+%% }
+-type pricing_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_router_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"fallbackModel">> => prompt_router_target_model(),
+%%   <<"models">> => list(prompt_router_target_model()),
+%%   <<"promptRouterArn">> => string(),
+%%   <<"promptRouterName">> => string(),
+%%   <<"routingCriteria">> => routing_criteria(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type prompt_router_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_router_target_model() :: #{
+%%   <<"modelArn">> => string()
+%% }
+-type prompt_router_target_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_template() :: #{
+%%   <<"textPromptTemplate">> => string()
+%% }
+-type prompt_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_model_summary() :: #{
+%%   <<"commitmentDuration">> => list(any()),
+%%   <<"commitmentExpirationTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"desiredModelArn">> => string(),
+%%   <<"desiredModelUnits">> => integer(),
+%%   <<"foundationModelArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelUnits">> => integer(),
+%%   <<"provisionedModelArn">> => string(),
+%%   <<"provisionedModelName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type provisioned_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_data_retention_request() :: #{
+%%   <<"mode">> := list(any())
+%% }
+-type put_account_data_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_data_retention_response() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_account_data_retention_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_enforced_guardrail_configuration_request() :: #{
+%%   <<"configId">> => string(),
+%%   <<"guardrailInferenceConfig">> := account_enforced_guardrail_inference_input_configuration()
+%% }
+-type put_enforced_guardrail_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_enforced_guardrail_configuration_response() :: #{
+%%   <<"configId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => [string()]
+%% }
+-type put_enforced_guardrail_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_model_invocation_logging_configuration_request() :: #{
+%%   <<"loggingConfig">> := logging_config()
+%% }
+-type put_model_invocation_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_model_invocation_logging_configuration_response() :: #{}
+-type put_model_invocation_logging_configuration_response() :: #{}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"resourcePolicy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_use_case_for_model_access_request() :: #{
+%%   <<"formData">> := binary()
+%% }
+-type put_use_case_for_model_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_use_case_for_model_access_response() :: #{}
+-type put_use_case_for_model_access_response() :: #{}.
+
+
+%% Example:
+%% query_transformation_configuration() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type query_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% r_f_t_config() :: #{
+%%   <<"graderConfig">> => list(),
+%%   <<"hyperParameters">> => r_f_t_hyper_parameters()
+%% }
+-type r_f_t_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% r_f_t_hyper_parameters() :: #{
+%%   <<"batchSize">> => integer(),
+%%   <<"epochCount">> => integer(),
+%%   <<"evalInterval">> => integer(),
+%%   <<"inferenceMaxTokens">> => integer(),
+%%   <<"learningRate">> => float(),
+%%   <<"maxPromptLength">> => integer(),
+%%   <<"reasoningEffort">> => list(any()),
+%%   <<"trainingSamplePerPrompt">> => integer()
+%% }
+-type r_f_t_hyper_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% rating_scale_item() :: #{
+%%   <<"definition">> => string(),
+%%   <<"value">> => list()
+%% }
+-type rating_scale_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_marketplace_model_endpoint_request() :: #{
+%%   <<"modelSourceIdentifier">> := string()
+%% }
+-type register_marketplace_model_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type register_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_metadata_base_filters() :: #{
+%%   <<"equals">> => map(),
+%%   <<"notEquals">> => map()
+%% }
+-type request_metadata_base_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_and_generate_configuration() :: #{
+%%   <<"externalSourcesConfiguration">> => external_sources_retrieve_and_generate_configuration(),
+%%   <<"knowledgeBaseConfiguration">> => knowledge_base_retrieve_and_generate_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type retrieve_and_generate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_config() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseRetrievalConfiguration">> => knowledge_base_retrieval_configuration()
+%% }
+-type retrieve_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria() :: #{
+%%   <<"responseQualityDifference">> => [float()]
+%% }
+-type routing_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"keyPrefix">> => string()
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_data_source() :: #{
 %%   <<"s3Uri">> => string()
 %% }
 -type s3_data_source() :: #{binary() => any()}.
 
+
+%% Example:
+%% s3_object_doc() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_object_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_endpoint() :: #{
+%%   <<"executionRole">> => string(),
+%%   <<"initialInstanceCount">> => integer(),
+%%   <<"instanceType">> => string(),
+%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"vpc">> => vpc_config()
+%% }
+-type sage_maker_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% selective_content_guarding() :: #{
+%%   <<"messages">> => list(any()),
+%%   <<"system">> => list(any())
+%% }
+-type selective_content_guarding() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_build_workflow_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"sourceContent">> := automated_reasoning_policy_build_workflow_source()
+%% }
+-type start_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_build_workflow_response() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type start_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_test_workflow_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"testCaseIds">> => list(string())
+%% }
+-type start_automated_reasoning_policy_test_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_test_workflow_response() :: #{
+%%   <<"policyArn">> => string()
+%% }
+-type start_automated_reasoning_policy_test_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_details() :: #{
+%%   <<"dataProcessingDetails">> => data_processing_details(),
+%%   <<"trainingDetails">> => training_details(),
+%%   <<"validationDetails">> => validation_details()
+%% }
+-type status_details() :: #{binary() => any()}.
+
+%% Example:
+%% stop_advanced_prompt_optimization_job_request() :: #{}
+-type stop_advanced_prompt_optimization_job_request() :: #{}.
+
+%% Example:
+%% stop_advanced_prompt_optimization_job_response() :: #{}
+-type stop_advanced_prompt_optimization_job_response() :: #{}.
+
+%% Example:
+%% stop_evaluation_job_request() :: #{}
+-type stop_evaluation_job_request() :: #{}.
+
+%% Example:
+%% stop_evaluation_job_response() :: #{}
+-type stop_evaluation_job_response() :: #{}.
+
+%% Example:
+%% stop_model_customization_job_request() :: #{}
+-type stop_model_customization_job_request() :: #{}.
+
+%% Example:
+%% stop_model_customization_job_response() :: #{}
+-type stop_model_customization_job_response() :: #{}.
+
+%% Example:
+%% stop_model_invocation_job_request() :: #{}
+-type stop_model_invocation_job_request() :: #{}.
+
+%% Example:
+%% stop_model_invocation_job_response() :: #{}
+-type stop_model_invocation_job_response() :: #{}.
+
+
+%% Example:
+%% support_term() :: #{
+%%   <<"refundPolicyDescription">> => [string()]
+%% }
+-type support_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% teacher_model_config() :: #{
+%%   <<"maxResponseLengthForInference">> => [integer()],
+%%   <<"teacherModelIdentifier">> => string()
+%% }
+-type teacher_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% term_details() :: #{
+%%   <<"legalTerm">> => legal_term(),
+%%   <<"supportTerm">> => support_term(),
+%%   <<"usageBasedPricingTerm">> => pricing_term(),
+%%   <<"validityTerm">> => validity_term()
+%% }
+-type term_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_inference_config() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type text_inference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% training_data_config() :: #{
+%%   <<"invocationLogsConfig">> => invocation_logs_config(),
+%%   <<"s3Uri">> => string()
+%% }
+-type training_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% training_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type training_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% training_metrics() :: #{
+%%   <<"trainingLoss">> => float()
+%% }
+-type training_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_annotations_request() :: #{
+%%   <<"annotations">> := list(list()),
+%%   <<"lastUpdatedAnnotationSetHash">> := string()
+%% }
+-type update_automated_reasoning_policy_annotations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_annotations_response() :: #{
+%%   <<"annotationSetHash">> => string(),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyDefinition">> := automated_reasoning_policy_definition()
+%% }
+-type update_automated_reasoning_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_response() :: #{
+%%   <<"definitionHash">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_automated_reasoning_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"expectedAggregatedFindingsResult">> := list(any()),
+%%   <<"guardContent">> := string(),
+%%   <<"lastUpdatedAt">> := non_neg_integer(),
+%%   <<"queryContent">> => string()
+%% }
+-type update_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCaseId">> => string()
+%% }
+-type update_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_model_deployment_request() :: #{
+%%   <<"modelArn">> := string()
+%% }
+-type update_custom_model_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_model_deployment_response() :: #{
+%%   <<"customModelDeploymentArn">> => string()
+%% }
+-type update_custom_model_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_guardrail_request() :: #{
+%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
+%%   <<"blockedInputMessaging">> := string(),
+%%   <<"blockedOutputsMessaging">> := string(),
+%%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
+%%   <<"contextualGroundingPolicyConfig">> => guardrail_contextual_grounding_policy_config(),
+%%   <<"crossRegionConfig">> => guardrail_cross_region_config(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
+%%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
+%%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
+%% }
+-type update_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_guardrail_response() :: #{
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type update_guardrail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_marketplace_model_endpoint_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endpointConfig">> := list()
+%% }
+-type update_marketplace_model_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_marketplace_model_endpoint_response() :: #{
+%%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
+%% }
+-type update_marketplace_model_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_provisioned_model_throughput_request() :: #{
+%%   <<"desiredModelId">> => string(),
+%%   <<"desiredProvisionedModelName">> => string()
+%% }
+-type update_provisioned_model_throughput_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_model_throughput_response() :: #{}
+-type update_provisioned_model_throughput_response() :: #{}.
+
+
+%% Example:
+%% validation_data_config() :: #{
+%%   <<"validators">> => list(validator())
+%% }
+-type validation_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validator() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type validator() :: #{binary() => any()}.
+
+
+%% Example:
+%% validator_metric() :: #{
+%%   <<"validationLoss">> => float()
+%% }
+-type validator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% validity_term() :: #{
+%%   <<"agreementDuration">> => [string()]
+%% }
+-type validity_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
+%% }
+-type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
+%% }
+-type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type vector_search_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
 -type batch_delete_advanced_prompt_optimization_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_delete_evaluation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_automated_reasoning_policy_build_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_advanced_prompt_optimization_job_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_automated_reasoning_policy_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_automated_reasoning_policy_test_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_automated_reasoning_policy_version_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_custom_model_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_custom_model_deployment_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_evaluation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_foundation_model_agreement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_guardrail_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_guardrail_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_inference_profile_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_model_copy_job_errors() ::
     too_many_tags_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_model_customization_job_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_model_import_job_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_model_invocation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_prompt_router_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_provisioned_model_throughput_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_automated_reasoning_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_automated_reasoning_policy_build_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_automated_reasoning_policy_test_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_custom_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_custom_model_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_enforced_guardrail_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_foundation_model_agreement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_imported_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_inference_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_model_invocation_logging_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_prompt_router_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_provisioned_model_throughput_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type deregister_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type export_automated_reasoning_policy_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_account_data_retention_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_advanced_prompt_optimization_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_annotations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_build_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_build_workflow_result_assets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_next_scenario_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_test_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_reasoning_policy_test_result_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_custom_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_custom_model_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_evaluation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_foundation_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_foundation_model_availability_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_imported_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_inference_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_copy_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_customization_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_invocation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_invocation_logging_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_prompt_router_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_provisioned_model_throughput_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_use_case_for_model_access_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_advanced_prompt_optimization_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_automated_reasoning_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_automated_reasoning_policy_build_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_automated_reasoning_policy_test_cases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_automated_reasoning_policy_test_results_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_custom_model_deployments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_custom_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_enforced_guardrails_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_evaluation_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_foundation_model_agreement_offers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_foundation_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_guardrails_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_imported_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_inference_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_marketplace_model_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_model_copy_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_model_customization_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_model_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_model_invocation_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_prompt_routers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_provisioned_model_throughputs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_account_data_retention_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_enforced_guardrail_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_model_invocation_logging_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_use_case_for_model_access_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type register_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_automated_reasoning_policy_build_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type start_automated_reasoning_policy_test_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type stop_advanced_prompt_optimization_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_evaluation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_model_customization_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_model_invocation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_automated_reasoning_policy_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_automated_reasoning_policy_annotations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_automated_reasoning_policy_test_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type update_custom_model_deployment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_marketplace_model_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_provisioned_model_throughput_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

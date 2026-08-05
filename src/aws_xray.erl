@@ -88,10 +88,461 @@
 
 
 %% Example:
-%% put_encryption_config_result() :: #{
+%% alias() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"Type">> => string()
+%% }
+-type alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomalous_service() :: #{
+%%   <<"ServiceId">> => service_id()
+%% }
+-type anomalous_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% availability_zone_detail() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% backend_connection_errors() :: #{
+%%   <<"ConnectionRefusedCount">> => integer(),
+%%   <<"HTTPCode4XXCount">> => integer(),
+%%   <<"HTTPCode5XXCount">> => integer(),
+%%   <<"OtherCount">> => integer(),
+%%   <<"TimeoutCount">> => integer(),
+%%   <<"UnknownHostCount">> => integer()
+%% }
+-type backend_connection_errors() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_traces_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TraceIds">> := list(string())
+%% }
+-type batch_get_traces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_traces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Traces">> => list(trace()),
+%%   <<"UnprocessedTraceIds">> => list(string())
+%% }
+-type batch_get_traces_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_trace_retrieval_request() :: #{
+%%   <<"RetrievalToken">> := string()
+%% }
+-type cancel_trace_retrieval_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_trace_retrieval_result() :: #{}
+-type cancel_trace_retrieval_result() :: #{}.
+
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"FilterExpression">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"InsightsConfiguration">> => insights_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_result() :: #{
+%%   <<"Group">> => group()
+%% }
+-type create_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sampling_rule_request() :: #{
+%%   <<"SamplingRule">> := sampling_rule(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_sampling_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sampling_rule_result() :: #{
+%%   <<"SamplingRuleRecord">> => sampling_rule_record()
+%% }
+-type create_sampling_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_result() :: #{}
+-type delete_group_result() :: #{}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_result() :: #{}
+-type delete_resource_policy_result() :: #{}.
+
+
+%% Example:
+%% delete_sampling_rule_request() :: #{
+%%   <<"RuleARN">> => string(),
+%%   <<"RuleName">> => string()
+%% }
+-type delete_sampling_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_sampling_rule_result() :: #{
+%%   <<"SamplingRuleRecord">> => sampling_rule_record()
+%% }
+-type delete_sampling_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge() :: #{
+%%   <<"Aliases">> => list(alias()),
+%%   <<"EdgeType">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ReceivedEventAgeHistogram">> => list(histogram_entry()),
+%%   <<"ReferenceId">> => integer(),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"SummaryStatistics">> => edge_statistics()
+%% }
+-type edge() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_statistics() :: #{
+%%   <<"ErrorStatistics">> => error_statistics(),
+%%   <<"FaultStatistics">> => fault_statistics(),
+%%   <<"OkCount">> => float(),
+%%   <<"TotalCount">> => float(),
+%%   <<"TotalResponseTime">> => float()
+%% }
+-type edge_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_config() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_root_cause() :: #{
+%%   <<"ClientImpacting">> => boolean(),
+%%   <<"Services">> => list(error_root_cause_service())
+%% }
+-type error_root_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_root_cause_entity() :: #{
+%%   <<"Exceptions">> => list(root_cause_exception()),
+%%   <<"Name">> => string(),
+%%   <<"Remote">> => boolean()
+%% }
+-type error_root_cause_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_root_cause_service() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EntityPath">> => list(error_root_cause_entity()),
+%%   <<"Inferred">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"Type">> => string()
+%% }
+-type error_root_cause_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_statistics() :: #{
+%%   <<"OtherCount">> => float(),
+%%   <<"ThrottleCount">> => float(),
+%%   <<"TotalCount">> => float()
+%% }
+-type error_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% fault_root_cause() :: #{
+%%   <<"ClientImpacting">> => boolean(),
+%%   <<"Services">> => list(fault_root_cause_service())
+%% }
+-type fault_root_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% fault_root_cause_entity() :: #{
+%%   <<"Exceptions">> => list(root_cause_exception()),
+%%   <<"Name">> => string(),
+%%   <<"Remote">> => boolean()
+%% }
+-type fault_root_cause_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% fault_root_cause_service() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EntityPath">> => list(fault_root_cause_entity()),
+%%   <<"Inferred">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"Type">> => string()
+%% }
+-type fault_root_cause_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% fault_statistics() :: #{
+%%   <<"OtherCount">> => float(),
+%%   <<"TotalCount">> => float()
+%% }
+-type fault_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_statistics() :: #{
+%%   <<"FaultCountHigh">> => float(),
+%%   <<"FaultCountLow">> => float()
+%% }
+-type forecast_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% get_encryption_config_request() :: #{}
+-type get_encryption_config_request() :: #{}.
+
+
+%% Example:
+%% get_encryption_config_result() :: #{
 %%   <<"EncryptionConfig">> => encryption_config()
 %% }
--type put_encryption_config_result() :: #{binary() => any()}.
+-type get_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_result() :: #{
+%%   <<"Group">> => group()
+%% }
+-type get_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_groups_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_groups_result() :: #{
+%%   <<"Groups">> => list(group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_indexing_rules_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_indexing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_indexing_rules_result() :: #{
+%%   <<"IndexingRules">> => list(indexing_rule()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_indexing_rules_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_events_request() :: #{
+%%   <<"InsightId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_insight_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_events_result() :: #{
+%%   <<"InsightEvents">> => list(insight_event()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_insight_events_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_impact_graph_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"InsightId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_insight_impact_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_impact_graph_result() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InsightId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceGraphEndTime">> => non_neg_integer(),
+%%   <<"ServiceGraphStartTime">> => non_neg_integer(),
+%%   <<"Services">> => list(insight_impact_graph_service()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type get_insight_impact_graph_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_request() :: #{
+%%   <<"InsightId">> := string()
+%% }
+-type get_insight_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_result() :: #{
+%%   <<"Insight">> => insight()
+%% }
+-type get_insight_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_summaries_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer(),
+%%   <<"States">> => list(list(any())())
+%% }
+-type get_insight_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_insight_summaries_result() :: #{
+%%   <<"InsightSummaries">> => list(insight_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_insight_summaries_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieved_traces_graph_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalToken">> := string()
+%% }
+-type get_retrieved_traces_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieved_traces_graph_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalStatus">> => list(any()),
+%%   <<"Services">> => list(retrieved_service())
+%% }
+-type get_retrieved_traces_graph_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_rules_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_sampling_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_rules_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SamplingRuleRecords">> => list(sampling_rule_record())
+%% }
+-type get_sampling_rules_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_statistic_summaries_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_sampling_statistic_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_statistic_summaries_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SamplingStatisticSummaries">> => list(sampling_statistic_summary())
+%% }
+-type get_sampling_statistic_summaries_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_targets_request() :: #{
+%%   <<"SamplingBoostStatisticsDocuments">> => list(sampling_boost_statistics_document()),
+%%   <<"SamplingStatisticsDocuments">> := list(sampling_statistics_document())
+%% }
+-type get_sampling_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sampling_targets_result() :: #{
+%%   <<"LastRuleModification">> => non_neg_integer(),
+%%   <<"SamplingTargetDocuments">> => list(sampling_target_document()),
+%%   <<"UnprocessedBoostStatistics">> => list(unprocessed_statistics()),
+%%   <<"UnprocessedStatistics">> => list(unprocessed_statistics())
+%% }
+-type get_sampling_targets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_graph_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_service_graph_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,6 +557,166 @@
 
 
 %% Example:
+%% get_time_series_service_statistics_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"EntitySelectorExpression">> => string(),
+%%   <<"ForecastStatistics">> => boolean(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_time_series_service_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_time_series_service_statistics_result() :: #{
+%%   <<"ContainsOldGroupVersions">> => boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimeSeriesServiceStatistics">> => list(time_series_service_statistics())
+%% }
+-type get_time_series_service_statistics_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trace_graph_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TraceIds">> := list(string())
+%% }
+-type get_trace_graph_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trace_graph_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service())
+%% }
+-type get_trace_graph_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_trace_segment_destination_request() :: #{}
+-type get_trace_segment_destination_request() :: #{}.
+
+
+%% Example:
+%% get_trace_segment_destination_result() :: #{
+%%   <<"Destination">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_trace_segment_destination_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trace_summaries_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sampling">> => boolean(),
+%%   <<"SamplingStrategy">> => sampling_strategy(),
+%%   <<"StartTime">> := non_neg_integer(),
+%%   <<"TimeRangeType">> => list(any())
+%% }
+-type get_trace_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trace_summaries_result() :: #{
+%%   <<"ApproximateTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TraceSummaries">> => list(trace_summary()),
+%%   <<"TracesProcessedCount">> => float()
+%% }
+-type get_trace_summaries_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_link() :: #{
+%%   <<"DestinationTraceIds">> => list(string()),
+%%   <<"ReferenceType">> => string(),
+%%   <<"SourceTraceId">> => string()
+%% }
+-type graph_link() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"FilterExpression">> => string(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"InsightsConfiguration">> => insights_configuration()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"FilterExpression">> => string(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"InsightsConfiguration">> => insights_configuration()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% histogram_entry() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Value">> => float()
+%% }
+-type histogram_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% http() :: #{
+%%   <<"ClientIp">> => string(),
+%%   <<"HttpMethod">> => string(),
+%%   <<"HttpStatus">> => integer(),
+%%   <<"HttpURL">> => string(),
+%%   <<"UserAgent">> => string()
+%% }
+-type http() :: #{binary() => any()}.
+
+
+%% Example:
+%% indexing_rule() :: #{
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Rule">> => list()
+%% }
+-type indexing_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight() :: #{
+%%   <<"Categories">> => list(list(any())()),
+%%   <<"ClientRequestImpactStatistics">> => request_impact_statistics(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"GroupARN">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"InsightId">> => string(),
+%%   <<"RootCauseServiceId">> => service_id(),
+%%   <<"RootCauseServiceRequestImpactStatistics">> => request_impact_statistics(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Summary">> => string(),
+%%   <<"TopAnomalousServices">> => list(anomalous_service())
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_event() :: #{
+%%   <<"ClientRequestImpactStatistics">> => request_impact_statistics(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"RootCauseServiceRequestImpactStatistics">> => request_impact_statistics(),
+%%   <<"Summary">> => string(),
+%%   <<"TopAnomalousServices">> => list(anomalous_service())
+%% }
+-type insight_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% insight_impact_graph_edge() :: #{
 %%   <<"ReferenceId">> => integer()
 %% }
@@ -113,14 +724,15 @@
 
 
 %% Example:
-%% edge_statistics() :: #{
-%%   <<"ErrorStatistics">> => error_statistics(),
-%%   <<"FaultStatistics">> => fault_statistics(),
-%%   <<"OkCount">> => float(),
-%%   <<"TotalCount">> => float(),
-%%   <<"TotalResponseTime">> => float()
+%% insight_impact_graph_service() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Edges">> => list(insight_impact_graph_edge()),
+%%   <<"Name">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"ReferenceId">> => integer(),
+%%   <<"Type">> => string()
 %% }
--type edge_statistics() :: #{binary() => any()}.
+-type insight_impact_graph_service() :: #{binary() => any()}.
 
 
 %% Example:
@@ -143,12 +755,236 @@
 
 
 %% Example:
-%% graph_link() :: #{
-%%   <<"DestinationTraceIds">> => list(string()),
-%%   <<"ReferenceType">> => string(),
-%%   <<"SourceTraceId">> => string()
+%% insights_configuration() :: #{
+%%   <<"InsightsEnabled">> => boolean(),
+%%   <<"NotificationsEnabled">> => boolean()
 %% }
--type graph_link() :: #{binary() => any()}.
+-type insights_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_id_detail() :: #{
+%%   <<"Id">> => string()
+%% }
+-type instance_id_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_policy_revision_id_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_policy_revision_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_policies_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_policies_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourcePolicies">> => list(resource_policy())
+%% }
+-type list_resource_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieved_traces_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalToken">> := string(),
+%%   <<"TraceFormat">> => list(any())
+%% }
+-type list_retrieved_traces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieved_traces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RetrievalStatus">> => list(any()),
+%%   <<"TraceFormat">> => list(any()),
+%%   <<"Traces">> => list(retrieved_trace())
+%% }
+-type list_retrieved_traces_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lockout_prevention_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type lockout_prevention_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_count_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_count_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% probabilistic_rule_value() :: #{
+%%   <<"ActualSamplingPercentage">> => float(),
+%%   <<"DesiredSamplingPercentage">> => float()
+%% }
+-type probabilistic_rule_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% probabilistic_rule_value_update() :: #{
+%%   <<"DesiredSamplingPercentage">> => float()
+%% }
+-type probabilistic_rule_value_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_encryption_config_request() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type put_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_encryption_config_result() :: #{
+%%   <<"EncryptionConfig">> => encryption_config()
+%% }
+-type put_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"BypassPolicyLockoutCheck">> => boolean(),
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_result() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_telemetry_records_request() :: #{
+%%   <<"EC2InstanceId">> => string(),
+%%   <<"Hostname">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"TelemetryRecords">> := list(telemetry_record())
+%% }
+-type put_telemetry_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_telemetry_records_result() :: #{}
+-type put_telemetry_records_result() :: #{}.
+
+
+%% Example:
+%% put_trace_segments_request() :: #{
+%%   <<"TraceSegmentDocuments">> := list(string())
+%% }
+-type put_trace_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trace_segments_result() :: #{
+%%   <<"UnprocessedTraceSegments">> => list(unprocessed_trace_segment())
+%% }
+-type put_trace_segments_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_impact_statistics() :: #{
+%%   <<"FaultCount">> => float(),
+%%   <<"OkCount">> => float(),
+%%   <<"TotalCount">> => float()
+%% }
+-type request_impact_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_arn_detail() :: #{
+%%   <<"ARN">> => string()
+%% }
+-type resource_arn_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_time_root_cause() :: #{
+%%   <<"ClientImpacting">> => boolean(),
+%%   <<"Services">> => list(response_time_root_cause_service())
+%% }
+-type response_time_root_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_time_root_cause_entity() :: #{
+%%   <<"Coverage">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Remote">> => boolean()
+%% }
+-type response_time_root_cause_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -164,318 +1000,11 @@
 
 
 %% Example:
-%% start_trace_retrieval_result() :: #{
-%%   <<"RetrievalToken">> => string()
+%% retrieved_service() :: #{
+%%   <<"Links">> => list(graph_link()),
+%%   <<"Service">> => service()
 %% }
--type start_trace_retrieval_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights_configuration() :: #{
-%%   <<"InsightsEnabled">> => boolean(),
-%%   <<"NotificationsEnabled">> => boolean()
-%% }
--type insights_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_config() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_encryption_config_request() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Type">> := list(any())
-%% }
--type put_encryption_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_result() :: #{
-%%   <<"Group">> => group()
-%% }
--type create_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_id_detail() :: #{
-%%   <<"Id">> => string()
-%% }
--type instance_id_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_indexing_rules_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_indexing_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_result() :: #{
-%%   <<"Group">> => group()
-%% }
--type get_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_trace_segments_request() :: #{
-%%   <<"TraceSegmentDocuments">> := list(string())
-%% }
--type put_trace_segments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_groups_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_retrieved_traces_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RetrievalStatus">> => list(any()),
-%%   <<"TraceFormat">> => list(any()),
-%%   <<"Traces">> => list(retrieved_trace())
-%% }
--type list_retrieved_traces_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_rule_update() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"FixedRate">> => float(),
-%%   <<"HTTPMethod">> => string(),
-%%   <<"Host">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ReservoirSize">> => integer(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"RuleARN">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"SamplingRateBoost">> => sampling_rate_boost(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceType">> => string(),
-%%   <<"URLPath">> => string()
-%% }
--type sampling_rule_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_request() :: #{
-%%   <<"InsightId">> := string()
-%% }
--type get_insight_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% anomalous_service() :: #{
-%%   <<"ServiceId">> => service_id()
-%% }
--type anomalous_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trace_summaries_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"FilterExpression">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Sampling">> => boolean(),
-%%   <<"SamplingStrategy">> => sampling_strategy(),
-%%   <<"StartTime">> := non_neg_integer(),
-%%   <<"TimeRangeType">> => list(any())
-%% }
--type get_trace_summaries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% probabilistic_rule_value() :: #{
-%%   <<"ActualSamplingPercentage">> => float(),
-%%   <<"DesiredSamplingPercentage">> => float()
-%% }
--type probabilistic_rule_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_impact_graph_service() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Edges">> => list(insight_impact_graph_edge()),
-%%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"ReferenceId">> => integer(),
-%%   <<"Type">> => string()
-%% }
--type insight_impact_graph_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_retrieved_traces_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RetrievalToken">> := string(),
-%%   <<"TraceFormat">> => list(any())
-%% }
--type list_retrieved_traces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trace_summaries_result() :: #{
-%%   <<"ApproximateTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TraceSummaries">> => list(trace_summary()),
-%%   <<"TracesProcessedCount">> => float()
-%% }
--type get_trace_summaries_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sampling_rule_result() :: #{
-%%   <<"SamplingRuleRecord">> => sampling_rule_record()
-%% }
--type create_sampling_rule_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_result() :: #{
-%%   <<"ResourcePolicy">> => resource_policy()
-%% }
--type put_resource_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% availability_zone_detail() :: #{
-%%   <<"Name">> => string()
-%% }
--type availability_zone_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sampling_rule_request() :: #{
-%%   <<"RuleARN">> => string(),
-%%   <<"RuleName">> => string()
-%% }
--type delete_sampling_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_telemetry_records_request() :: #{
-%%   <<"EC2InstanceId">> => string(),
-%%   <<"Hostname">> => string(),
-%%   <<"ResourceARN">> => string(),
-%%   <<"TelemetryRecords">> := list(telemetry_record())
-%% }
--type put_telemetry_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_statistic_summary() :: #{
-%%   <<"BorrowCount">> => integer(),
-%%   <<"RequestCount">> => integer(),
-%%   <<"RuleName">> => string(),
-%%   <<"SampledCount">> => integer(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type sampling_statistic_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_root_cause() :: #{
-%%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(error_root_cause_service())
-%% }
--type error_root_cause() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trace_graph_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service())
-%% }
--type get_trace_graph_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_rate_boost() :: #{
-%%   <<"CooldownWindowMinutes">> => integer(),
-%%   <<"MaxRate">> => float()
-%% }
--type sampling_rate_boost() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sampling_rules_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_sampling_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DurationHistogram">> => list(histogram_entry()),
-%%   <<"Edges">> => list(edge()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"ReferenceId">> => integer(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
-%%   <<"Root">> => boolean(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"SummaryStatistics">> => service_statistics(),
-%%   <<"Type">> => string()
-%% }
--type service() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% probabilistic_rule_value_update() :: #{
-%%   <<"DesiredSamplingPercentage">> => float()
-%% }
--type probabilistic_rule_value_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_target_document() :: #{
-%%   <<"FixedRate">> => float(),
-%%   <<"Interval">> => integer(),
-%%   <<"ReservoirQuota">> => integer(),
-%%   <<"ReservoirQuotaTTL">> => non_neg_integer(),
-%%   <<"RuleName">> => string(),
-%%   <<"SamplingBoost">> => sampling_boost()
-%% }
--type sampling_target_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type retrieved_service() :: #{binary() => any()}.
 
 
 %% Example:
@@ -488,174 +1017,46 @@
 
 
 %% Example:
-%% batch_get_traces_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Traces">> => list(trace()),
-%%   <<"UnprocessedTraceIds">> => list(string())
-%% }
--type batch_get_traces_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% indexing_rule() :: #{
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Rule">> => list()
-%% }
--type indexing_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"FilterExpression">> => string(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"InsightsConfiguration">> => insights_configuration()
-%% }
--type update_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment() :: #{
-%%   <<"Document">> => string(),
-%%   <<"Id">> => string()
-%% }
--type segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trace_segment_destination_result() :: #{
-%%   <<"Destination">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type update_trace_segment_destination_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_events_request() :: #{
-%%   <<"InsightId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_insight_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieved_service() :: #{
-%%   <<"Links">> => list(graph_link()),
-%%   <<"Service">> => service()
-%% }
--type retrieved_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_traces_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TraceIds">> := list(string())
-%% }
--type batch_get_traces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_statistics() :: #{
-%%   <<"OtherCount">> => float(),
-%%   <<"ThrottleCount">> => float(),
-%%   <<"TotalCount">> => float()
-%% }
--type error_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% value_with_service_ids() :: #{
-%%   <<"AnnotationValue">> => list(),
-%%   <<"ServiceIds">> => list(service_id())
-%% }
--type value_with_service_ids() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_trace_retrieval_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"StartTime">> := non_neg_integer(),
-%%   <<"TraceIds">> := list(string())
-%% }
--type start_trace_retrieval_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% span() :: #{
-%%   <<"Document">> => string(),
-%%   <<"Id">> => string()
-%% }
--type span() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessed_statistics() :: #{
-%%   <<"ErrorCode">> => string(),
+%% root_cause_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"RuleName">> => string()
+%%   <<"Name">> => string()
 %% }
--type unprocessed_statistics() :: #{binary() => any()}.
+-type root_cause_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_policy_revision_id_exception() :: #{
+%% rule_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_policy_revision_id_exception() :: #{binary() => any()}.
+-type rule_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttled_exception() :: #{
-%%   <<"Message">> => string()
+%% sampling_boost() :: #{
+%%   <<"BoostRate">> => float(),
+%%   <<"BoostRateTTL">> => non_neg_integer()
 %% }
--type throttled_exception() :: #{binary() => any()}.
+-type sampling_boost() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sampling_rule_result() :: #{
-%%   <<"SamplingRuleRecord">> => sampling_rule_record()
+%% sampling_boost_statistics_document() :: #{
+%%   <<"AnomalyCount">> => integer(),
+%%   <<"RuleName">> => string(),
+%%   <<"SampledAnomalyCount">> => integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"TotalCount">> => integer()
 %% }
--type update_sampling_rule_result() :: #{binary() => any()}.
+-type sampling_boost_statistics_document() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sampling_rule_request() :: #{
-%%   <<"SamplingRuleUpdate">> := sampling_rule_update()
+%% sampling_rate_boost() :: #{
+%%   <<"CooldownWindowMinutes">> => integer(),
+%%   <<"MaxRate">> => float()
 %% }
--type update_sampling_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_telemetry_records_result() :: #{}
--type put_telemetry_records_result() :: #{}.
-
-
-%% Example:
-%% insight_event() :: #{
-%%   <<"ClientRequestImpactStatistics">> => request_impact_statistics(),
-%%   <<"EventTime">> => non_neg_integer(),
-%%   <<"RootCauseServiceRequestImpactStatistics">> => request_impact_statistics(),
-%%   <<"Summary">> => string(),
-%%   <<"TopAnomalousServices">> => list(anomalous_service())
-%% }
--type insight_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_time_root_cause() :: #{
-%%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(response_time_root_cause_service())
-%% }
--type response_time_root_cause() :: #{binary() => any()}.
+-type sampling_rate_boost() :: #{binary() => any()}.
 
 
 %% Example:
@@ -679,54 +1080,54 @@
 
 
 %% Example:
-%% unprocessed_trace_segment() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string()
+%% sampling_rule_record() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"SamplingRule">> => sampling_rule()
 %% }
--type unprocessed_trace_segment() :: #{binary() => any()}.
+-type sampling_rule_record() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_service_graph_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := non_neg_integer()
+%% sampling_rule_update() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"FixedRate">> => float(),
+%%   <<"HTTPMethod">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ReservoirSize">> => integer(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"RuleARN">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"SamplingRateBoost">> => sampling_rate_boost(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceType">> => string(),
+%%   <<"URLPath">> => string()
 %% }
--type get_service_graph_request() :: #{binary() => any()}.
+-type sampling_rule_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% sampling_statistic_summary() :: #{
+%%   <<"BorrowCount">> => integer(),
+%%   <<"RequestCount">> => integer(),
+%%   <<"RuleName">> => string(),
+%%   <<"SampledCount">> => integer(),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type tag() :: #{binary() => any()}.
+-type sampling_statistic_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
+%% sampling_statistics_document() :: #{
+%%   <<"BorrowCount">> => integer(),
+%%   <<"ClientID">> => string(),
+%%   <<"RequestCount">> => integer(),
+%%   <<"RuleName">> => string(),
+%%   <<"SampledCount">> => integer(),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_events_result() :: #{
-%%   <<"InsightEvents">> => list(insight_event()),
-%%   <<"NextToken">> => string()
-%% }
--type get_insight_events_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sampling_targets_request() :: #{
-%%   <<"SamplingBoostStatisticsDocuments">> => list(sampling_boost_statistics_document()),
-%%   <<"SamplingStatisticsDocuments">> := list(sampling_statistics_document())
-%% }
--type get_sampling_targets_request() :: #{binary() => any()}.
+-type sampling_statistics_document() :: #{binary() => any()}.
 
 
 %% Example:
@@ -738,312 +1139,107 @@
 
 
 %% Example:
-%% get_insight_summaries_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := non_neg_integer(),
-%%   <<"States">> => list(list(any())())
+%% sampling_target_document() :: #{
+%%   <<"FixedRate">> => float(),
+%%   <<"Interval">> => integer(),
+%%   <<"ReservoirQuota">> => integer(),
+%%   <<"ReservoirQuotaTTL">> => non_neg_integer(),
+%%   <<"RuleName">> => string(),
+%%   <<"SamplingBoost">> => sampling_boost()
 %% }
--type get_insight_summaries_request() :: #{binary() => any()}.
+-type sampling_target_document() :: #{binary() => any()}.
 
 
 %% Example:
-%% time_series_service_statistics() :: #{
-%%   <<"EdgeSummaryStatistics">> => edge_statistics(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
-%%   <<"ServiceForecastStatistics">> => forecast_statistics(),
-%%   <<"ServiceSummaryStatistics">> => service_statistics(),
-%%   <<"Timestamp">> => non_neg_integer()
+%% segment() :: #{
+%%   <<"Document">> => string(),
+%%   <<"Id">> => string()
 %% }
--type time_series_service_statistics() :: #{binary() => any()}.
+-type segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_sampling_targets_result() :: #{
-%%   <<"LastRuleModification">> => non_neg_integer(),
-%%   <<"SamplingTargetDocuments">> => list(sampling_target_document()),
-%%   <<"UnprocessedBoostStatistics">> => list(unprocessed_statistics()),
-%%   <<"UnprocessedStatistics">> => list(unprocessed_statistics())
-%% }
--type get_sampling_targets_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_result() :: #{}
--type delete_group_result() :: #{}.
-
-
-%% Example:
-%% sampling_boost() :: #{
-%%   <<"BoostRate">> => float(),
-%%   <<"BoostRateTTL">> => non_neg_integer()
-%% }
--type sampling_boost() :: #{binary() => any()}.
-
-
-%% Example:
-%% fault_root_cause_service() :: #{
+%% service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"EntityPath">> => list(fault_root_cause_entity()),
-%%   <<"Inferred">> => boolean(),
+%%   <<"DurationHistogram">> => list(histogram_entry()),
+%%   <<"Edges">> => list(edge()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"ReferenceId">> => integer(),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
+%%   <<"Root">> => boolean(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"SummaryStatistics">> => service_statistics(),
+%%   <<"Type">> => string()
+%% }
+-type service() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_id() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
--type fault_root_cause_service() :: #{binary() => any()}.
+-type service_id() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_resource_policies_request() :: #{
-%%   <<"NextToken">> => string()
+%% service_statistics() :: #{
+%%   <<"ErrorStatistics">> => error_statistics(),
+%%   <<"FaultStatistics">> => fault_statistics(),
+%%   <<"OkCount">> => float(),
+%%   <<"TotalCount">> => float(),
+%%   <<"TotalResponseTime">> => float()
 %% }
--type list_resource_policies_request() :: #{binary() => any()}.
+-type service_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
+%% span() :: #{
+%%   <<"Document">> => string(),
+%%   <<"Id">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type span() :: #{binary() => any()}.
 
 
 %% Example:
-%% fault_statistics() :: #{
-%%   <<"OtherCount">> => float(),
-%%   <<"TotalCount">> => float()
-%% }
--type fault_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"FilterExpression">> => string(),
-%%   <<"GroupName">> := string(),
-%%   <<"InsightsConfiguration">> => insights_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_time_series_service_statistics_request() :: #{
+%% start_trace_retrieval_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
-%%   <<"EntitySelectorExpression">> => string(),
-%%   <<"ForecastStatistics">> => boolean(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type get_time_series_service_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sampling_statistic_summaries_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SamplingStatisticSummaries">> => list(sampling_statistic_summary())
-%% }
--type get_sampling_statistic_summaries_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_groups_result() :: #{
-%%   <<"Groups">> => list(group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type get_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trace_graph_request() :: #{
-%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer(),
 %%   <<"TraceIds">> := list(string())
 %% }
--type get_trace_graph_request() :: #{binary() => any()}.
+-type start_trace_retrieval_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% error_root_cause_service() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"EntityPath">> => list(error_root_cause_entity()),
-%%   <<"Inferred">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"Type">> => string()
+%% start_trace_retrieval_result() :: #{
+%%   <<"RetrievalToken">> => string()
 %% }
--type error_root_cause_service() :: #{binary() => any()}.
+-type start_trace_retrieval_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% trace() :: #{
-%%   <<"Duration">> => float(),
-%%   <<"Id">> => string(),
-%%   <<"LimitExceeded">> => boolean(),
-%%   <<"Segments">> => list(segment())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type trace() :: #{binary() => any()}.
-
-%% Example:
-%% get_encryption_config_request() :: #{}
--type get_encryption_config_request() :: #{}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_policy() :: #{
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyRevisionId">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type resource_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_boost_statistics_document() :: #{
-%%   <<"AnomalyCount">> => integer(),
-%%   <<"RuleName">> => string(),
-%%   <<"SampledAnomalyCount">> => integer(),
-%%   <<"ServiceName">> => string(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"TotalCount">> => integer()
-%% }
--type sampling_boost_statistics_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% fault_root_cause_entity() :: #{
-%%   <<"Exceptions">> => list(root_cause_exception()),
-%%   <<"Name">> => string(),
-%%   <<"Remote">> => boolean()
-%% }
--type fault_root_cause_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_root_cause_entity() :: #{
-%%   <<"Exceptions">> => list(root_cause_exception()),
-%%   <<"Name">> => string(),
-%%   <<"Remote">> => boolean()
-%% }
--type error_root_cause_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trace_segment_destination_request() :: #{
-%%   <<"Destination">> => list(any())
-%% }
--type update_trace_segment_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_retrieved_traces_graph_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RetrievalToken">> := string()
-%% }
--type get_retrieved_traces_graph_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sampling_rule_result() :: #{
-%%   <<"SamplingRuleRecord">> => sampling_rule_record()
-%% }
--type delete_sampling_rule_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sampling_rule_request() :: #{
-%%   <<"SamplingRule">> := sampling_rule(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_sampling_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"BypassPolicyLockoutCheck">> => boolean(),
-%%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyRevisionId">> => string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lockout_prevention_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type lockout_prevention_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% alias() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"Type">> => string()
-%% }
--type alias() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_trace_retrieval_result() :: #{}
--type cancel_trace_retrieval_result() :: #{}.
-
-
-%% Example:
-%% put_trace_segments_result() :: #{
-%%   <<"UnprocessedTraceSegments">> => list(unprocessed_trace_segment())
-%% }
--type put_trace_segments_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% forecast_statistics() :: #{
-%%   <<"FaultCountHigh">> => float(),
-%%   <<"FaultCountLow">> => float()
-%% }
--type forecast_statistics() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% sampling_rule_record() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"SamplingRule">> => sampling_rule()
-%% }
--type sampling_rule_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type rule_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sampling_statistic_summaries_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_sampling_statistic_summaries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_connection_errors() :: #{
-%%   <<"ConnectionRefusedCount">> => integer(),
-%%   <<"HTTPCode4XXCount">> => integer(),
-%%   <<"HTTPCode5XXCount">> => integer(),
-%%   <<"OtherCount">> => integer(),
-%%   <<"TimeoutCount">> => integer(),
-%%   <<"UnknownHostCount">> => integer()
-%% }
--type backend_connection_errors() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1059,33 +1255,39 @@
 
 
 %% Example:
-%% get_indexing_rules_result() :: #{
-%%   <<"IndexingRules">> => list(indexing_rule()),
-%%   <<"NextToken">> => string()
+%% throttled_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_indexing_rules_result() :: #{binary() => any()}.
+-type throttled_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
+%% time_series_service_statistics() :: #{
+%%   <<"EdgeSummaryStatistics">> => edge_statistics(),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
+%%   <<"ServiceForecastStatistics">> => forecast_statistics(),
+%%   <<"ServiceSummaryStatistics">> => service_statistics(),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type time_series_service_statistics() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_trace_segment_destination_request() :: #{}
--type get_trace_segment_destination_request() :: #{}.
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_id() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"Type">> => string()
+%% trace() :: #{
+%%   <<"Duration">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"LimitExceeded">> => boolean(),
+%%   <<"Segments">> => list(segment())
 %% }
--type service_id() :: #{binary() => any()}.
+-type trace() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1116,74 +1318,6 @@
 
 
 %% Example:
-%% update_group_result() :: #{
-%%   <<"Group">> => group()
-%% }
--type update_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"FilterExpression">> => string(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"InsightsConfiguration">> => insights_configuration()
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_impact_statistics() :: #{
-%%   <<"FaultCount">> => float(),
-%%   <<"OkCount">> => float(),
-%%   <<"TotalCount">> => float()
-%% }
--type request_impact_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% fault_root_cause() :: #{
-%%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(fault_root_cause_service())
-%% }
--type fault_root_cause() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_statistics() :: #{
-%%   <<"ErrorStatistics">> => error_statistics(),
-%%   <<"FaultStatistics">> => fault_statistics(),
-%%   <<"OkCount">> => float(),
-%%   <<"TotalCount">> => float(),
-%%   <<"TotalResponseTime">> => float()
-%% }
--type service_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sampling_rules_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SamplingRuleRecords">> => list(sampling_rule_record())
-%% }
--type get_sampling_rules_result() :: #{binary() => any()}.
-
-
-%% Example:
 %% trace_user() :: #{
 %%   <<"ServiceIds">> => list(service_id()),
 %%   <<"UserName">> => string()
@@ -1192,220 +1326,50 @@
 
 
 %% Example:
-%% response_time_root_cause_entity() :: #{
-%%   <<"Coverage">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Remote">> => boolean()
+%% unprocessed_statistics() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RuleName">> => string()
 %% }
--type response_time_root_cause_entity() :: #{binary() => any()}.
+-type unprocessed_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyRevisionId">> => string()
+%% unprocessed_trace_segment() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string()
 %% }
--type delete_resource_policy_request() :: #{binary() => any()}.
+-type unprocessed_trace_segment() :: #{binary() => any()}.
 
 
 %% Example:
-%% group_summary() :: #{
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_group_request() :: #{
 %%   <<"FilterExpression">> => string(),
 %%   <<"GroupARN">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"InsightsConfiguration">> => insights_configuration()
 %% }
--type group_summary() :: #{binary() => any()}.
+-type update_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_insight_impact_graph_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"InsightId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := non_neg_integer()
+%% update_group_result() :: #{
+%%   <<"Group">> => group()
 %% }
--type get_insight_impact_graph_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trace_segment_destination_result() :: #{
-%%   <<"Destination">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type get_trace_segment_destination_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_arn_detail() :: #{
-%%   <<"ARN">> => string()
-%% }
--type resource_arn_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% root_cause_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type root_cause_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight() :: #{
-%%   <<"Categories">> => list(list(any())()),
-%%   <<"ClientRequestImpactStatistics">> => request_impact_statistics(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"InsightId">> => string(),
-%%   <<"RootCauseServiceId">> => service_id(),
-%%   <<"RootCauseServiceRequestImpactStatistics">> => request_impact_statistics(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Summary">> => string(),
-%%   <<"TopAnomalousServices">> => list(anomalous_service())
-%% }
--type insight() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_result() :: #{}
--type delete_resource_policy_result() :: #{}.
-
-
-%% Example:
-%% edge() :: #{
-%%   <<"Aliases">> => list(alias()),
-%%   <<"EdgeType">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ReceivedEventAgeHistogram">> => list(histogram_entry()),
-%%   <<"ReferenceId">> => integer(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"SummaryStatistics">> => edge_statistics()
-%% }
--type edge() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_request() :: #{
-%%   <<"GroupARN">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type get_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_trace_retrieval_request() :: #{
-%%   <<"RetrievalToken">> := string()
-%% }
--type cancel_trace_retrieval_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_retrieved_traces_graph_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RetrievalStatus">> => list(any()),
-%%   <<"Services">> => list(retrieved_service())
-%% }
--type get_retrieved_traces_graph_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% histogram_entry() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Value">> => float()
-%% }
--type histogram_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_time_series_service_statistics_result() :: #{
-%%   <<"ContainsOldGroupVersions">> => boolean(),
-%%   <<"NextToken">> => string(),
-%%   <<"TimeSeriesServiceStatistics">> => list(time_series_service_statistics())
-%% }
--type get_time_series_service_statistics_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_summaries_result() :: #{
-%%   <<"InsightSummaries">> => list(insight_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type get_insight_summaries_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_encryption_config_result() :: #{
-%%   <<"EncryptionConfig">> => encryption_config()
-%% }
--type get_encryption_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_statistics_document() :: #{
-%%   <<"BorrowCount">> => integer(),
-%%   <<"ClientID">> => string(),
-%%   <<"RequestCount">> => integer(),
-%%   <<"RuleName">> => string(),
-%%   <<"SampledCount">> => integer(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type sampling_statistics_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_impact_graph_result() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InsightId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceGraphEndTime">> => non_neg_integer(),
-%%   <<"ServiceGraphStartTime">> => non_neg_integer(),
-%%   <<"Services">> => list(insight_impact_graph_service()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type get_insight_impact_graph_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_indexing_rule_result() :: #{
-%%   <<"IndexingRule">> => indexing_rule()
-%% }
--type update_indexing_rule_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insight_result() :: #{
-%%   <<"Insight">> => insight()
-%% }
--type get_insight_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% http() :: #{
-%%   <<"ClientIp">> => string(),
-%%   <<"HttpMethod">> => string(),
-%%   <<"HttpStatus">> => integer(),
-%%   <<"HttpURL">> => string(),
-%%   <<"UserAgent">> => string()
-%% }
--type http() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_count_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_count_limit_exceeded_exception() :: #{binary() => any()}.
+-type update_group_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1417,178 +1381,214 @@
 
 
 %% Example:
-%% list_resource_policies_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourcePolicies">> => list(resource_policy())
+%% update_indexing_rule_result() :: #{
+%%   <<"IndexingRule">> => indexing_rule()
 %% }
--type list_resource_policies_result() :: #{binary() => any()}.
+-type update_indexing_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sampling_rule_request() :: #{
+%%   <<"SamplingRuleUpdate">> := sampling_rule_update()
+%% }
+-type update_sampling_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sampling_rule_result() :: #{
+%%   <<"SamplingRuleRecord">> => sampling_rule_record()
+%% }
+-type update_sampling_rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trace_segment_destination_request() :: #{
+%%   <<"Destination">> => list(any())
+%% }
+-type update_trace_segment_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trace_segment_destination_result() :: #{
+%%   <<"Destination">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_trace_segment_destination_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% value_with_service_ids() :: #{
+%%   <<"AnnotationValue">> => list(),
+%%   <<"ServiceIds">> => list(service_id())
+%% }
+-type value_with_service_ids() :: #{binary() => any()}.
 
 -type batch_get_traces_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type cancel_trace_retrieval_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type create_group_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type create_sampling_rule_errors() ::
+    throttled_exception() | 
     rule_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type delete_group_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type delete_resource_policy_errors() ::
-    invalid_request_exception() | 
     throttled_exception() | 
+    invalid_request_exception() | 
     invalid_policy_revision_id_exception().
 
 -type delete_sampling_rule_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_encryption_config_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_group_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_groups_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_indexing_rules_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_insight_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_insight_events_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_insight_impact_graph_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_insight_summaries_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_retrieved_traces_graph_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type get_sampling_rules_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_sampling_statistic_summaries_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_sampling_targets_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_service_graph_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_time_series_service_statistics_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_trace_graph_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_trace_segment_destination_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type get_trace_summaries_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type list_resource_policies_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type list_retrieved_traces_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type put_encryption_config_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type put_resource_policy_errors() ::
+    throttled_exception() | 
+    policy_size_limit_exceeded_exception() | 
     policy_count_limit_exceeded_exception() | 
     malformed_policy_document_exception() | 
     lockout_prevention_exception() | 
-    throttled_exception() | 
-    invalid_policy_revision_id_exception() | 
-    policy_size_limit_exceeded_exception().
+    invalid_policy_revision_id_exception().
 
 -type put_telemetry_records_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type put_trace_segments_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type start_trace_retrieval_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type untag_resource_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type update_group_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type update_indexing_rule_errors() ::
-    invalid_request_exception() | 
+    throttled_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_request_exception().
 
 -type update_sampling_rule_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 -type update_trace_segment_destination_errors() ::
-    invalid_request_exception() | 
-    throttled_exception().
+    throttled_exception() | 
+    invalid_request_exception().
 
 %%====================================================================
 %% API

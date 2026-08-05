@@ -42,25 +42,32 @@
 
 
 %% Example:
-%% synthesize_speech_input() :: #{
-%%   <<"Engine">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LexiconNames">> => list(string()),
-%%   <<"OutputFormat">> := list(any()),
-%%   <<"SampleRate">> => string(),
-%%   <<"SpeechMarkTypes">> => list(list(any())()),
-%%   <<"Text">> := string(),
-%%   <<"TextType">> => list(any()),
-%%   <<"VoiceId">> := list(any())
+%% audio_event() :: #{
+%%   <<"AudioChunk">> => binary()
 %% }
--type synthesize_speech_input() :: #{binary() => any()}.
+-type audio_event() :: #{binary() => any()}.
+
+%% Example:
+%% close_stream_event() :: #{}
+-type close_stream_event() :: #{}.
+
+%% Example:
+%% delete_lexicon_input() :: #{}
+-type delete_lexicon_input() :: #{}.
+
+%% Example:
+%% delete_lexicon_output() :: #{}
+-type delete_lexicon_output() :: #{}.
 
 
 %% Example:
-%% put_lexicon_input() :: #{
-%%   <<"Content">> := string()
+%% describe_voices_input() :: #{
+%%   <<"Engine">> => list(any()),
+%%   <<"IncludeAdditionalLanguageCodes">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"NextToken">> => string()
 %% }
--type put_lexicon_input() :: #{binary() => any()}.
+-type describe_voices_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -72,26 +79,61 @@
 
 
 %% Example:
-%% text_event() :: #{
-%%   <<"FlushStreamConfiguration">> => flush_stream_configuration(),
-%%   <<"Text">> => string(),
-%%   <<"TextType">> => list(any())
-%% }
--type text_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% max_lexicons_number_exceeded_exception() :: #{
+%% engine_not_supported_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type max_lexicons_number_exceeded_exception() :: #{binary() => any()}.
+-type engine_not_supported_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_speech_synthesis_task_output() :: #{
+%% flush_stream_configuration() :: #{
+%%   <<"Force">> => boolean()
+%% }
+-type flush_stream_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_lexicon_input() :: #{}
+-type get_lexicon_input() :: #{}.
+
+
+%% Example:
+%% get_lexicon_output() :: #{
+%%   <<"Lexicon">> => lexicon(),
+%%   <<"LexiconAttributes">> => lexicon_attributes()
+%% }
+-type get_lexicon_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_speech_synthesis_task_input() :: #{}
+-type get_speech_synthesis_task_input() :: #{}.
+
+
+%% Example:
+%% get_speech_synthesis_task_output() :: #{
 %%   <<"SynthesisTask">> => synthesis_task()
 %% }
--type start_speech_synthesis_task_output() :: #{binary() => any()}.
+-type get_speech_synthesis_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_lexicon_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lexicon_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_s3_bucket_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_bucket_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -102,6 +144,76 @@
 
 
 %% Example:
+%% invalid_sample_rate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sample_rate_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_sns_topic_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sns_topic_arn_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_ssml_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ssml_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_task_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_task_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% language_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type language_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lexicon() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type lexicon() :: #{binary() => any()}.
+
+
+%% Example:
+%% lexicon_attributes() :: #{
+%%   <<"Alphabet">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LexemesCount">> => integer(),
+%%   <<"LexiconArn">> => string(),
+%%   <<"Size">> => integer()
+%% }
+-type lexicon_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% lexicon_description() :: #{
+%%   <<"Attributes">> => lexicon_attributes(),
+%%   <<"Name">> => string()
+%% }
+-type lexicon_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% lexicon_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lexicon_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% lexicon_size_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -109,24 +221,10 @@
 
 
 %% Example:
-%% flush_stream_configuration() :: #{
-%%   <<"Force">> => boolean()
+%% list_lexicons_input() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type flush_stream_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_event() :: #{
-%%   <<"AudioChunk">> => binary()
-%% }
--type audio_event() :: #{binary() => any()}.
+-type list_lexicons_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -135,20 +233,6 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_lexicons_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_lexicon_input() :: #{}
--type get_lexicon_input() :: #{}.
-
-
-%% Example:
-%% describe_voices_input() :: #{
-%%   <<"Engine">> => list(any()),
-%%   <<"IncludeAdditionalLanguageCodes">> => boolean(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_voices_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -169,88 +253,42 @@
 
 
 %% Example:
-%% lexicon_not_found_exception() :: #{
+%% marks_not_supported_for_format_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type lexicon_not_found_exception() :: #{binary() => any()}.
+-type marks_not_supported_for_format_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% ssml_marks_not_supported_for_text_type_exception() :: #{
+%% max_lexeme_length_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type ssml_marks_not_supported_for_text_type_exception() :: #{binary() => any()}.
+-type max_lexeme_length_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% engine_not_supported_exception() :: #{
+%% max_lexicons_number_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type engine_not_supported_exception() :: #{binary() => any()}.
+-type max_lexicons_number_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_lexicon_output() :: #{
-%%   <<"Lexicon">> => lexicon(),
-%%   <<"LexiconAttributes">> => lexicon_attributes()
+%% put_lexicon_input() :: #{
+%%   <<"Content">> := string()
 %% }
--type get_lexicon_output() :: #{binary() => any()}.
+-type put_lexicon_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_lexicon_output() :: #{}
+-type put_lexicon_output() :: #{}.
 
 
 %% Example:
-%% invalid_ssml_exception() :: #{
+%% service_failure_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_ssml_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_pls_alphabet_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_pls_alphabet_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lexicon_input() :: #{}
--type delete_lexicon_input() :: #{}.
-
-
-%% Example:
-%% voice() :: #{
-%%   <<"AdditionalLanguageCodes">> => list(list(any())()),
-%%   <<"Gender">> => list(any()),
-%%   <<"Id">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SupportedEngines">> => list(list(any())())
-%% }
--type voice() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_speech_synthesis_stream_output() :: #{
-%%   <<"EventStream">> => list()
-%% }
--type start_speech_synthesis_stream_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_speech_synthesis_task_output() :: #{
-%%   <<"SynthesisTask">> => synthesis_task()
-%% }
--type get_speech_synthesis_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_s3_bucket_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_s3_bucket_exception() :: #{binary() => any()}.
-
-%% Example:
-%% close_stream_event() :: #{}
--type close_stream_event() :: #{}.
+-type service_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -263,22 +301,10 @@
 
 
 %% Example:
-%% lexicon_attributes() :: #{
-%%   <<"Alphabet">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LexemesCount">> => integer(),
-%%   <<"LexiconArn">> => string(),
-%%   <<"Size">> => integer()
-%% }
--type lexicon_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_next_token_exception() :: #{
+%% ssml_marks_not_supported_for_text_type_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_next_token_exception() :: #{binary() => any()}.
+-type ssml_marks_not_supported_for_text_type_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -295,11 +321,42 @@
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% start_speech_synthesis_stream_output() :: #{
+%%   <<"EventStream">> => list()
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type start_speech_synthesis_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speech_synthesis_task_input() :: #{
+%%   <<"Engine">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LexiconNames">> => list(string()),
+%%   <<"OutputFormat">> := list(any()),
+%%   <<"OutputS3BucketName">> := string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"SampleRate">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SpeechMarkTypes">> => list(list(any())()),
+%%   <<"Text">> := string(),
+%%   <<"TextType">> => list(any()),
+%%   <<"VoiceId">> := list(any())
+%% }
+-type start_speech_synthesis_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speech_synthesis_task_output() :: #{
+%%   <<"SynthesisTask">> => synthesis_task()
+%% }
+-type start_speech_synthesis_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_closed_event() :: #{
+%%   <<"RequestCharacters">> => integer()
+%% }
+-type stream_closed_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -324,103 +381,25 @@
 
 
 %% Example:
-%% max_lexeme_length_exceeded_exception() :: #{
+%% synthesis_task_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type max_lexeme_length_exceeded_exception() :: #{binary() => any()}.
+-type synthesis_task_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% language_not_supported_exception() :: #{
-%%   <<"message">> => string()
+%% synthesize_speech_input() :: #{
+%%   <<"Engine">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LexiconNames">> => list(string()),
+%%   <<"OutputFormat">> := list(any()),
+%%   <<"SampleRate">> => string(),
+%%   <<"SpeechMarkTypes">> => list(list(any())()),
+%%   <<"Text">> := string(),
+%%   <<"TextType">> => list(any()),
+%%   <<"VoiceId">> := list(any())
 %% }
--type language_not_supported_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lexicons_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_lexicons_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_task_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_task_id_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_lexicon_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_lexicon_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_sns_topic_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_sns_topic_arn_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lexicon_description() :: #{
-%%   <<"Attributes">> => lexicon_attributes(),
-%%   <<"Name">> => string()
-%% }
--type lexicon_description() :: #{binary() => any()}.
-
-%% Example:
-%% put_lexicon_output() :: #{}
--type put_lexicon_output() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"throttlingReasons">> => list(throttling_reason())
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_closed_event() :: #{
-%%   <<"RequestCharacters">> => integer()
-%% }
--type stream_closed_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% lexicon() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Name">> => string()
-%% }
--type lexicon() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_sample_rate_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_sample_rate_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_pls_language_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_pls_language_exception() :: #{binary() => any()}.
+-type synthesize_speech_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -433,35 +412,27 @@
 
 
 %% Example:
-%% start_speech_synthesis_task_input() :: #{
-%%   <<"Engine">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LexiconNames">> => list(string()),
-%%   <<"OutputFormat">> := list(any()),
-%%   <<"OutputS3BucketName">> := string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"SampleRate">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SpeechMarkTypes">> => list(list(any())()),
-%%   <<"Text">> := string(),
-%%   <<"TextType">> => list(any()),
-%%   <<"VoiceId">> := list(any())
+%% text_event() :: #{
+%%   <<"FlushStreamConfiguration">> => flush_stream_configuration(),
+%%   <<"Text">> => string(),
+%%   <<"TextType">> => list(any())
 %% }
--type start_speech_synthesis_task_input() :: #{binary() => any()}.
+-type text_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% marks_not_supported_for_format_exception() :: #{
+%% text_length_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type marks_not_supported_for_format_exception() :: #{binary() => any()}.
+-type text_length_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% synthesis_task_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
 %% }
--type synthesis_task_not_found_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -471,85 +442,114 @@
 %% }
 -type throttling_reason() :: #{binary() => any()}.
 
-%% Example:
-%% get_speech_synthesis_task_input() :: #{}
--type get_speech_synthesis_task_input() :: #{}.
-
 
 %% Example:
-%% text_length_exceeded_exception() :: #{
+%% unsupported_pls_alphabet_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type text_length_exceeded_exception() :: #{binary() => any()}.
+-type unsupported_pls_alphabet_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_lexicon_output() :: #{}
--type delete_lexicon_output() :: #{}.
+%% unsupported_pls_language_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_pls_language_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice() :: #{
+%%   <<"AdditionalLanguageCodes">> => list(list(any())()),
+%%   <<"Gender">> => list(any()),
+%%   <<"Id">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SupportedEngines">> => list(list(any())())
+%% }
+-type voice() :: #{binary() => any()}.
 
 -type delete_lexicon_errors() ::
-    lexicon_not_found_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    lexicon_not_found_exception().
 
 -type describe_voices_errors() ::
-    invalid_next_token_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    invalid_next_token_exception().
 
 -type get_lexicon_errors() ::
-    lexicon_not_found_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    lexicon_not_found_exception().
 
 -type get_speech_synthesis_task_errors() ::
     synthesis_task_not_found_exception() | 
-    invalid_task_id_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    invalid_task_id_exception().
 
 -type list_lexicons_errors() ::
-    invalid_next_token_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    invalid_next_token_exception().
 
 -type list_speech_synthesis_tasks_errors() ::
-    invalid_next_token_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    invalid_next_token_exception().
 
 -type put_lexicon_errors() ::
     unsupported_pls_language_exception() | 
-    invalid_lexicon_exception() | 
-    max_lexeme_length_exceeded_exception() | 
     unsupported_pls_alphabet_exception() | 
     service_failure_exception() | 
+    max_lexicons_number_exceeded_exception() | 
+    max_lexeme_length_exceeded_exception() | 
     lexicon_size_exceeded_exception() | 
-    max_lexicons_number_exceeded_exception().
+    invalid_lexicon_exception().
 
 -type start_speech_synthesis_stream_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     service_failure_exception().
 
 -type start_speech_synthesis_task_errors() ::
     text_length_exceeded_exception() | 
-    marks_not_supported_for_format_exception() | 
-    invalid_sample_rate_exception() | 
-    invalid_sns_topic_arn_exception() | 
-    language_not_supported_exception() | 
-    invalid_s3_bucket_exception() | 
-    invalid_ssml_exception() | 
-    engine_not_supported_exception() | 
     ssml_marks_not_supported_for_text_type_exception() | 
-    lexicon_not_found_exception() | 
     service_failure_exception() | 
-    invalid_s3_key_exception().
+    marks_not_supported_for_format_exception() | 
+    lexicon_not_found_exception() | 
+    language_not_supported_exception() | 
+    invalid_ssml_exception() | 
+    invalid_sns_topic_arn_exception() | 
+    invalid_sample_rate_exception() | 
+    invalid_s3_key_exception() | 
+    invalid_s3_bucket_exception() | 
+    engine_not_supported_exception().
 
 -type synthesize_speech_errors() ::
     text_length_exceeded_exception() | 
+    ssml_marks_not_supported_for_text_type_exception() | 
+    service_failure_exception() | 
     marks_not_supported_for_format_exception() | 
-    invalid_sample_rate_exception() | 
+    lexicon_not_found_exception() | 
     language_not_supported_exception() | 
     invalid_ssml_exception() | 
-    engine_not_supported_exception() | 
-    ssml_marks_not_supported_for_text_type_exception() | 
-    lexicon_not_found_exception() | 
-    service_failure_exception().
+    invalid_sample_rate_exception() | 
+    engine_not_supported_exception().
 
 %%====================================================================
 %% API

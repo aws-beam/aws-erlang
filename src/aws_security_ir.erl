@@ -64,6 +64,39 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_member_account_details_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type batch_get_member_account_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_member_account_details_response() :: #{
+%%   <<"errors">> => list(get_membership_account_detail_error()),
+%%   <<"items">> => list(get_membership_account_detail_item())
+%% }
+-type batch_get_member_account_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_membership_request() :: #{}
+-type cancel_membership_request() :: #{}.
+
+
+%% Example:
+%% cancel_membership_response() :: #{
+%%   <<"membershipId">> => string()
+%% }
+-type cancel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% case_attachment_attributes() :: #{
 %%   <<"attachmentId">> => string(),
 %%   <<"attachmentStatus">> => list(any()),
@@ -75,66 +108,42 @@
 
 
 %% Example:
-%% get_membership_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"customerType">> => list(any()),
-%%   <<"incidentResponseTeam">> => list(incident_responder()),
-%%   <<"membershipAccountsConfigurations">> => membership_accounts_configurations(),
-%%   <<"membershipActivationTimestamp">> => [non_neg_integer()],
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipDeactivationTimestamp">> => [non_neg_integer()],
-%%   <<"membershipId">> => string(),
-%%   <<"membershipName">> => string(),
-%%   <<"membershipStatus">> => list(any()),
-%%   <<"numberOfAccountsCovered">> => [float()],
-%%   <<"optInFeatures">> => list(opt_in_feature()),
-%%   <<"region">> => list(any())
+%% case_edit_item() :: #{
+%%   <<"action">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"message">> => string(),
+%%   <<"principal">> => [string()]
 %% }
--type get_membership_response() :: #{binary() => any()}.
+-type case_edit_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% security_incident_response_not_active_exception() :: #{
-%%   <<"message">> => [string()]
+%% case_metadata_entry() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
 %% }
--type security_incident_response_not_active_exception() :: #{binary() => any()}.
+-type case_metadata_entry() :: #{binary() => any()}.
+
+%% Example:
+%% close_case_request() :: #{}
+-type close_case_request() :: #{}.
 
 
 %% Example:
-%% send_feedback_request() :: #{
-%%   <<"comment">> => string(),
-%%   <<"usefulness">> := list(any())
+%% close_case_response() :: #{
+%%   <<"caseStatus">> => list(any()),
+%%   <<"closedDate">> => [non_neg_integer()]
 %% }
--type send_feedback_request() :: #{binary() => any()}.
+-type close_case_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_membership_account_detail_error() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"error">> => [string()],
-%%   <<"message">> => [string()]
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type get_membership_account_detail_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_membership_item() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"membershipArn">> => string(),
-%%   <<"membershipId">> => string(),
-%%   <<"membershipStatus">> => list(any()),
-%%   <<"region">> => list(any())
-%% }
--type list_membership_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_membership_account_detail_item() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"relationshipStatus">> => list(any()),
-%%   <<"relationshipType">> => list(any())
-%% }
--type get_membership_account_detail_item() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,27 +155,10 @@
 
 
 %% Example:
-%% watcher() :: #{
-%%   <<"email">> => string(),
-%%   <<"jobTitle">> => string(),
-%%   <<"name">> => string()
+%% create_case_comment_response() :: #{
+%%   <<"commentId">> => string()
 %% }
--type watcher() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_memberships_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% impacted_aws_region() :: #{
-%%   <<"region">> => list(any())
-%% }
--type impacted_aws_region() :: #{binary() => any()}.
+-type create_case_comment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -186,41 +178,6 @@
 %% }
 -type create_case_request() :: #{binary() => any()}.
 
-%% Example:
-%% send_feedback_response() :: #{}
--type send_feedback_response() :: #{}.
-
-
-%% Example:
-%% incident_responder() :: #{
-%%   <<"communicationPreferences">> => list(list(any())()),
-%%   <<"email">> => string(),
-%%   <<"jobTitle">> => string(),
-%%   <<"name">> => string()
-%% }
--type incident_responder() :: #{binary() => any()}.
-
-
-%% Example:
-%% investigation_action() :: #{
-%%   <<"actionType">> => list(any()),
-%%   <<"content">> => string(),
-%%   <<"feedback">> => investigation_feedback(),
-%%   <<"investigationId">> => string(),
-%%   <<"lastUpdated">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"title">> => string()
-%% }
--type investigation_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_accounts_configurations() :: #{
-%%   <<"coverEntireOrganization">> => [boolean()],
-%%   <<"organizationalUnits">> => list(string())
-%% }
--type membership_accounts_configurations() :: #{binary() => any()}.
-
 
 %% Example:
 %% create_case_response() :: #{
@@ -230,27 +187,53 @@
 
 
 %% Example:
-%% batch_get_member_account_details_request() :: #{
-%%   <<"accountIds">> := list(string())
+%% create_membership_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"coverEntireOrganization">> => [boolean()],
+%%   <<"incidentResponseTeam">> := list(incident_responder()),
+%%   <<"membershipName">> := string(),
+%%   <<"optInFeatures">> => list(opt_in_feature()),
+%%   <<"tags">> => map()
 %% }
--type batch_get_member_account_details_request() :: #{binary() => any()}.
+-type create_membership_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_resolver_type_response() :: #{
-%%   <<"caseId">> => string(),
-%%   <<"caseStatus">> => list(any()),
-%%   <<"resolverType">> => list(any())
+%% create_membership_response() :: #{
+%%   <<"membershipId">> => string()
 %% }
--type update_resolver_type_response() :: #{binary() => any()}.
+-type create_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_case_attachment_download_url_request() :: #{}
+-type get_case_attachment_download_url_request() :: #{}.
 
 
 %% Example:
-%% list_cases_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%% get_case_attachment_download_url_response() :: #{
+%%   <<"attachmentPresignedUrl">> => string()
 %% }
--type list_cases_request() :: #{binary() => any()}.
+-type get_case_attachment_download_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_attachment_upload_url_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"contentLength">> := float(),
+%%   <<"fileName">> := string()
+%% }
+-type get_case_attachment_upload_url_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_attachment_upload_url_response() :: #{
+%%   <<"attachmentPresignedUrl">> => string()
+%% }
+-type get_case_attachment_upload_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_case_request() :: #{}
+-type get_case_request() :: #{}.
 
 
 %% Example:
@@ -280,43 +263,115 @@
 
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
+%% get_membership_account_detail_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"error">> => [string()],
+%%   <<"message">> => [string()]
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type get_membership_account_detail_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_cases_response() :: #{
-%%   <<"items">> => list(list_cases_item()),
-%%   <<"nextToken">> => [string()],
-%%   <<"total">> => [float()]
+%% get_membership_account_detail_item() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"relationshipStatus">> => list(any()),
+%%   <<"relationshipType">> => list(any())
 %% }
--type list_cases_response() :: #{binary() => any()}.
+-type get_membership_account_detail_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_membership_request() :: #{}
+-type get_membership_request() :: #{}.
 
 
 %% Example:
-%% list_comments_request() :: #{
+%% get_membership_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"customerType">> => list(any()),
+%%   <<"incidentResponseTeam">> => list(incident_responder()),
+%%   <<"membershipAccountsConfigurations">> => membership_accounts_configurations(),
+%%   <<"membershipActivationTimestamp">> => [non_neg_integer()],
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipDeactivationTimestamp">> => [non_neg_integer()],
+%%   <<"membershipId">> => string(),
+%%   <<"membershipName">> => string(),
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"numberOfAccountsCovered">> => [float()],
+%%   <<"optInFeatures">> => list(opt_in_feature()),
+%%   <<"region">> => list(any())
+%% }
+-type get_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% impacted_aws_region() :: #{
+%%   <<"region">> => list(any())
+%% }
+-type impacted_aws_region() :: #{binary() => any()}.
+
+
+%% Example:
+%% incident_responder() :: #{
+%%   <<"communicationPreferences">> => list(list(any())()),
+%%   <<"email">> => string(),
+%%   <<"jobTitle">> => string(),
+%%   <<"name">> => string()
+%% }
+-type incident_responder() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_action() :: #{
+%%   <<"actionType">> => list(any()),
+%%   <<"content">> => string(),
+%%   <<"feedback">> => investigation_feedback(),
+%%   <<"investigationId">> => string(),
+%%   <<"lastUpdated">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string()
+%% }
+-type investigation_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_feedback() :: #{
+%%   <<"comment">> => string(),
+%%   <<"submittedAt">> => [non_neg_integer()],
+%%   <<"usefulness">> => list(any())
+%% }
+-type investigation_feedback() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_case_edits_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
--type list_comments_request() :: #{binary() => any()}.
+-type list_case_edits_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_investigations_response() :: #{
-%%   <<"investigationActions">> => list(investigation_action()),
-%%   <<"nextToken">> => [string()]
+%% list_case_edits_response() :: #{
+%%   <<"items">> => list(case_edit_item()),
+%%   <<"nextToken">> => [string()],
+%%   <<"total">> => [integer()]
 %% }
--type list_investigations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_metadata_entry() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type case_metadata_entry() :: #{binary() => any()}.
+-type list_case_edits_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -336,31 +391,49 @@
 
 
 %% Example:
-%% close_case_response() :: #{
-%%   <<"caseStatus">> => list(any()),
-%%   <<"closedDate">> => [non_neg_integer()]
+%% list_cases_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
 %% }
--type close_case_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_case_attachment_download_url_request() :: #{}
--type get_case_attachment_download_url_request() :: #{}.
+-type list_cases_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% list_cases_response() :: #{
+%%   <<"items">> => list(list_cases_item()),
+%%   <<"nextToken">> => [string()],
+%%   <<"total">> => [float()]
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type list_cases_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_comments_item() :: #{
+%%   <<"body">> => string(),
+%%   <<"commentId">> => string(),
+%%   <<"createdDate">> => [non_neg_integer()],
+%%   <<"creator">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"lastUpdatedDate">> => [non_neg_integer()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type list_comments_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_comments_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_comments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_comments_response() :: #{
+%%   <<"items">> => list(list_comments_item()),
+%%   <<"nextToken">> => [string()],
+%%   <<"total">> => [integer()]
+%% }
+-type list_comments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -369,6 +442,60 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_investigations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_response() :: #{
+%%   <<"investigationActions">> => list(investigation_action()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_membership_item() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"membershipArn">> => string(),
+%%   <<"membershipId">> => string(),
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"region">> => list(any())
+%% }
+-type list_membership_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_response() :: #{
+%%   <<"items">> => list(list_membership_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_memberships_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_accounts_configurations() :: #{
+%%   <<"coverEntireOrganization">> => [boolean()],
+%%   <<"organizationalUnits">> => list(string())
+%% }
+-type membership_accounts_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -381,16 +508,37 @@
 
 
 %% Example:
-%% get_case_attachment_upload_url_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"contentLength">> := float(),
-%%   <<"fileName">> := string()
+%% opt_in_feature() :: #{
+%%   <<"featureName">> => list(any()),
+%%   <<"isEnabled">> => [boolean()]
 %% }
--type get_case_attachment_upload_url_request() :: #{binary() => any()}.
+-type opt_in_feature() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_case_request() :: #{}
--type get_case_request() :: #{}.
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_incident_response_not_active_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type security_incident_response_not_active_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_feedback_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"usefulness">> := list(any())
+%% }
+-type send_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_feedback_response() :: #{}
+-type send_feedback_response() :: #{}.
 
 
 %% Example:
@@ -405,37 +553,43 @@
 
 
 %% Example:
-%% list_case_edits_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
 %% }
--type list_case_edits_request() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_membership_response() :: #{}
--type update_membership_response() :: #{}.
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
 
 
 %% Example:
-%% update_case_status_response() :: #{
-%%   <<"caseStatus">> => list(any())
+%% threat_actor_ip() :: #{
+%%   <<"ipAddress">> => string(),
+%%   <<"userAgent">> => string()
 %% }
--type update_case_status_response() :: #{binary() => any()}.
+-type threat_actor_ip() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
+%% throttling_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_case_attachment_download_url_response() :: #{
-%%   <<"attachmentPresignedUrl">> => string()
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type get_case_attachment_download_url_response() :: #{binary() => any()}.
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -446,57 +600,11 @@
 
 
 %% Example:
-%% list_case_edits_response() :: #{
-%%   <<"items">> => list(case_edit_item()),
-%%   <<"nextToken">> => [string()],
-%%   <<"total">> => [integer()]
+%% update_case_comment_response() :: #{
+%%   <<"body">> => string(),
+%%   <<"commentId">> => string()
 %% }
--type list_case_edits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% close_case_request() :: #{}
--type close_case_request() :: #{}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% update_case_status_request() :: #{
-%%   <<"caseStatus">> := list(any())
-%% }
--type update_case_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_membership_request() :: #{}
--type get_membership_request() :: #{}.
-
-
-%% Example:
-%% update_membership_request() :: #{
-%%   <<"incidentResponseTeam">> => list(incident_responder()),
-%%   <<"membershipAccountsConfigurationsUpdate">> => membership_accounts_configurations_update(),
-%%   <<"membershipName">> => string(),
-%%   <<"optInFeatures">> => list(opt_in_feature()),
-%%   <<"undoMembershipCancellation">> => [boolean()]
-%% }
--type update_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type update_case_comment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -520,123 +628,38 @@
 %% }
 -type update_case_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_case_response() :: #{}
+-type update_case_response() :: #{}.
+
 
 %% Example:
-%% investigation_feedback() :: #{
-%%   <<"comment">> => string(),
-%%   <<"submittedAt">> => [non_neg_integer()],
-%%   <<"usefulness">> => list(any())
+%% update_case_status_request() :: #{
+%%   <<"caseStatus">> := list(any())
 %% }
--type investigation_feedback() :: #{binary() => any()}.
+-type update_case_status_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_case_status_response() :: #{
+%%   <<"caseStatus">> => list(any())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type update_case_status_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% opt_in_feature() :: #{
-%%   <<"featureName">> => list(any()),
-%%   <<"isEnabled">> => [boolean()]
+%% update_membership_request() :: #{
+%%   <<"incidentResponseTeam">> => list(incident_responder()),
+%%   <<"membershipAccountsConfigurationsUpdate">> => membership_accounts_configurations_update(),
+%%   <<"membershipName">> => string(),
+%%   <<"optInFeatures">> => list(opt_in_feature()),
+%%   <<"undoMembershipCancellation">> => [boolean()]
 %% }
--type opt_in_feature() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
+-type update_membership_request() :: #{binary() => any()}.
 
 %% Example:
-%% case_edit_item() :: #{
-%%   <<"action">> => string(),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"message">> => string(),
-%%   <<"principal">> => [string()]
-%% }
--type case_edit_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memberships_response() :: #{
-%%   <<"items">> => list(list_membership_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_memberships_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_case_attachment_upload_url_response() :: #{
-%%   <<"attachmentPresignedUrl">> => string()
-%% }
--type get_case_attachment_upload_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_member_account_details_response() :: #{
-%%   <<"errors">> => list(get_membership_account_detail_error()),
-%%   <<"items">> => list(get_membership_account_detail_item())
-%% }
--type batch_get_member_account_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_case_comment_response() :: #{
-%%   <<"body">> => string(),
-%%   <<"commentId">> => string()
-%% }
--type update_case_comment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_comments_item() :: #{
-%%   <<"body">> => string(),
-%%   <<"commentId">> => string(),
-%%   <<"createdDate">> => [non_neg_integer()],
-%%   <<"creator">> => string(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"lastUpdatedDate">> => [non_neg_integer()]
-%% }
--type list_comments_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_case_comment_response() :: #{
-%%   <<"commentId">> => string()
-%% }
--type create_case_comment_response() :: #{binary() => any()}.
+%% update_membership_response() :: #{}
+-type update_membership_response() :: #{}.
 
 
 %% Example:
@@ -647,76 +670,53 @@
 
 
 %% Example:
-%% create_membership_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"coverEntireOrganization">> => [boolean()],
-%%   <<"incidentResponseTeam">> := list(incident_responder()),
-%%   <<"membershipName">> := string(),
-%%   <<"optInFeatures">> => list(opt_in_feature()),
-%%   <<"tags">> => map()
+%% update_resolver_type_response() :: #{
+%%   <<"caseId">> => string(),
+%%   <<"caseStatus">> => list(any()),
+%%   <<"resolverType">> => list(any())
 %% }
--type create_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_membership_request() :: #{}
--type cancel_membership_request() :: #{}.
-
-%% Example:
-%% update_case_response() :: #{}
--type update_case_response() :: #{}.
+-type update_resolver_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_comments_response() :: #{
-%%   <<"items">> => list(list_comments_item()),
-%%   <<"nextToken">> => [string()],
-%%   <<"total">> => [integer()]
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
 %% }
--type list_comments_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_token_exception() :: #{
-%%   <<"message">> => [string()]
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
 %% }
--type invalid_token_exception() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_membership_response() :: #{
-%%   <<"membershipId">> => string()
+%% watcher() :: #{
+%%   <<"email">> => string(),
+%%   <<"jobTitle">> => string(),
+%%   <<"name">> => string()
 %% }
--type create_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_membership_response() :: #{
-%%   <<"membershipId">> => string()
-%% }
--type cancel_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_actor_ip() :: #{
-%%   <<"ipAddress">> => string(),
-%%   <<"userAgent">> => string()
-%% }
--type threat_actor_ip() :: #{binary() => any()}.
+-type watcher() :: #{binary() => any()}.
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

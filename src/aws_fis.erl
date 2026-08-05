@@ -82,12 +82,23 @@
 
 
 %% Example:
-%% target_account_configuration() :: #{
-%%   <<"accountId">> => string(),
+%% action() :: #{
+%%   <<"arn">> => string(),
 %%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
+%%   <<"id">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => map()
 %% }
--type target_account_configuration() :: #{binary() => any()}.
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_parameter() :: #{
+%%   <<"description">> => string(),
+%%   <<"required">> => boolean()
+%% }
+-type action_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -102,329 +113,10 @@
 
 
 %% Example:
-%% list_experiments_response() :: #{
-%%   <<"experiments">> => list(experiment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_experiments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_resolved_targets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetName">> => string()
-%% }
--type list_experiment_resolved_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_configuration_outputs() :: #{
-%%   <<"s3Configuration">> => experiment_report_configuration_outputs_s3_configuration()
-%% }
--type experiment_report_configuration_outputs() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"experimentOptions">> => experiment_options(),
-%%   <<"experimentTemplateId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"state">> => experiment_state(),
-%%   <<"tags">> => map()
-%% }
--type experiment_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_experiment_target_account_configuration_response() :: #{
-%%   <<"targetAccountConfiguration">> => experiment_target_account_configuration()
-%% }
--type get_experiment_target_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_experiment_template_report_configuration_input() :: #{
-%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
-%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
-%%   <<"postExperimentDuration">> => string(),
-%%   <<"preExperimentDuration">> => string()
-%% }
--type create_experiment_template_report_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_experiment_response() :: #{
-%%   <<"experiment">> => experiment()
-%% }
--type get_experiment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_target_account_configuration_response() :: #{
-%%   <<"targetAccountConfiguration">> => target_account_configuration()
-%% }
--type update_target_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_target() :: #{
-%%   <<"filters">> => list(experiment_template_target_filter()),
-%%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceTags">> => map(),
-%%   <<"resourceType">> => string(),
-%%   <<"selectionMode">> => string()
-%% }
--type experiment_template_target() :: #{binary() => any()}.
-
-%% Example:
-%% get_safety_lever_request() :: #{}
--type get_safety_lever_request() :: #{}.
-
-
-%% Example:
-%% experiment_target_account_configuration() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type experiment_target_account_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% experiment_report_configuration_data_sources() :: #{
-%%   <<"cloudWatchDashboards">> => list(experiment_report_configuration_cloud_watch_dashboard())
-%% }
--type experiment_report_configuration_data_sources() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_templates_response() :: #{
-%%   <<"experimentTemplates">> => list(experiment_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_experiment_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_request() :: #{
-%%   <<"actions">> => map(),
-%%   <<"description">> => string(),
-%%   <<"experimentOptions">> => update_experiment_template_experiment_options_input(),
-%%   <<"experimentReportConfiguration">> => update_experiment_template_report_configuration_input(),
-%%   <<"logConfiguration">> => update_experiment_template_log_configuration_input(),
-%%   <<"roleArn">> => string(),
-%%   <<"stopConditions">> => list(update_experiment_template_stop_condition_input()),
-%%   <<"targets">> => map()
-%% }
--type update_experiment_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_target_resource_type_response() :: #{
-%%   <<"targetResourceType">> => target_resource_type()
-%% }
--type get_target_resource_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_s3_log_configuration() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type experiment_s3_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_action_state() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type experiment_action_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_action() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => experiment_action_state(),
-%%   <<"targets">> => map()
-%% }
--type experiment_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_account_configuration_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type target_account_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_s3_report() :: #{
-%%   <<"arn">> => string(),
-%%   <<"reportType">> => string()
-%% }
--type experiment_report_s3_report() :: #{binary() => any()}.
-
-%% Example:
-%% get_experiment_template_request() :: #{}
--type get_experiment_template_request() :: #{}.
-
-
-%% Example:
-%% experiment_template_s3_log_configuration_input() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type experiment_template_s3_log_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_target_filter() :: #{
-%%   <<"path">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type experiment_template_target_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_target_account_configuration_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type update_target_account_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_safety_lever_state_response() :: #{
-%%   <<"safetyLever">> => safety_lever()
-%% }
--type update_safety_lever_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_log_configuration() :: #{
-%%   <<"cloudWatchLogsConfiguration">> => experiment_cloud_watch_logs_log_configuration(),
-%%   <<"logSchemaVersion">> => integer(),
-%%   <<"s3Configuration">> => experiment_s3_log_configuration()
-%% }
--type experiment_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_experiment_template_request() :: #{}
--type delete_experiment_template_request() :: #{}.
-
-
-%% Example:
-%% report_configuration_s3_output_input() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type report_configuration_s3_output_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_target_account_configuration_response() :: #{
-%%   <<"targetAccountConfiguration">> => target_account_configuration()
-%% }
--type create_target_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_configuration_outputs_s3_configuration() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type experiment_report_configuration_outputs_s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_target_account_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary())
-%% }
--type list_experiment_target_account_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_configuration_cloud_watch_dashboard() :: #{
-%%   <<"dashboardIdentifier">> => string()
-%% }
--type experiment_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
-
-%% Example:
-%% delete_target_account_configuration_request() :: #{}
--type delete_target_account_configuration_request() :: #{}.
-
-
-%% Example:
-%% experiment_template_cloud_watch_logs_log_configuration_input() :: #{
-%%   <<"logGroupArn">> => string()
-%% }
--type experiment_template_cloud_watch_logs_log_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_account_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_target_account_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource_type_summary() :: #{
-%%   <<"description">> => string(),
+%% action_target() :: #{
 %%   <<"resourceType">> => string()
 %% }
--type target_resource_type_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_action_input_item() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()),
-%%   <<"targets">> => map()
-%% }
--type update_experiment_template_action_input_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_target_filter() :: #{
-%%   <<"path">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type experiment_target_filter() :: #{binary() => any()}.
+-type action_target() :: #{binary() => any()}.
 
 
 %% Example:
@@ -435,47 +127,22 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% create_experiment_template_action_input() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"startAfter">> => list(string()),
+%%   <<"targets">> => map()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_experiment_template_action_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% report_configuration_cloud_watch_dashboard_input() :: #{
-%%   <<"dashboardIdentifier">> => string()
+%% create_experiment_template_experiment_options_input() :: #{
+%%   <<"accountTargeting">> => list(any()),
+%%   <<"emptyTargetResolutionMode">> => list(any())
 %% }
--type report_configuration_cloud_watch_dashboard_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_experiment_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_log_configuration_input() :: #{
-%%   <<"cloudWatchLogsConfiguration">> => experiment_template_cloud_watch_logs_log_configuration_input(),
-%%   <<"logSchemaVersion">> => integer(),
-%%   <<"s3Configuration">> => experiment_template_s3_log_configuration_input()
-%% }
--type update_experiment_template_log_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_state() :: #{
-%%   <<"error">> => experiment_error(),
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type experiment_state() :: #{binary() => any()}.
-
-%% Example:
-%% get_experiment_request() :: #{}
--type get_experiment_request() :: #{}.
+-type create_experiment_template_experiment_options_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -488,63 +155,13 @@
 
 
 %% Example:
-%% resolved_target() :: #{
-%%   <<"resourceType">> => string(),
-%%   <<"targetInformation">> => map(),
-%%   <<"targetName">> => string()
+%% create_experiment_template_report_configuration_input() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
 %% }
--type resolved_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_resource_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_target_resource_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"tags">> => map()
-%% }
--type experiment_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_target_account_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"roleArn">> := string()
-%% }
--type create_target_account_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_report_configuration_data_sources_input() :: #{
-%%   <<"cloudWatchDashboards">> => list(report_configuration_cloud_watch_dashboard_input())
-%% }
--type experiment_template_report_configuration_data_sources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource_type_parameter() :: #{
-%%   <<"description">> => string(),
-%%   <<"required">> => boolean()
-%% }
--type target_resource_type_parameter() :: #{binary() => any()}.
+-type create_experiment_template_report_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -562,406 +179,12 @@
 %% }
 -type create_experiment_template_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_action_request() :: #{}
--type get_action_request() :: #{}.
-
 
 %% Example:
-%% experiment_template_report_configuration_cloud_watch_dashboard() :: #{
-%%   <<"dashboardIdentifier">> => string()
-%% }
--type experiment_template_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_configuration() :: #{
-%%   <<"dataSources">> => experiment_report_configuration_data_sources(),
-%%   <<"outputs">> => experiment_report_configuration_outputs(),
-%%   <<"postExperimentDuration">> => string(),
-%%   <<"preExperimentDuration">> => string()
-%% }
--type experiment_report_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_target() :: #{
-%%   <<"filters">> => list(experiment_target_filter()),
-%%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceTags">> => map(),
-%%   <<"resourceType">> => string(),
-%%   <<"selectionMode">> => string()
-%% }
--type experiment_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_action_response() :: #{
-%%   <<"action">> => action()
-%% }
--type get_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_target_account_configurations_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_experiment_target_account_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_s3_log_configuration() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type experiment_template_s3_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actions_response() :: #{
-%%   <<"actions">> => list(action_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report() :: #{
-%%   <<"s3Reports">> => list(experiment_report_s3_report()),
-%%   <<"state">> => experiment_report_state()
-%% }
--type experiment_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_report_configuration_outputs_input() :: #{
-%%   <<"s3Configuration">> => report_configuration_s3_output_input()
-%% }
--type experiment_template_report_configuration_outputs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_stop_condition() :: #{
-%%   <<"source">> => string(),
-%%   <<"value">> => string()
-%% }
--type experiment_stop_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource_type() :: #{
-%%   <<"description">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"resourceType">> => string()
-%% }
--type target_resource_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_safety_lever_state_request() :: #{
-%%   <<"state">> := update_safety_lever_state_input()
-%% }
--type update_safety_lever_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_target() :: #{
-%%   <<"resourceType">> => string()
-%% }
--type action_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_target_account_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary())
-%% }
--type list_target_account_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_error() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"code">> => string(),
-%%   <<"location">> => string()
-%% }
--type experiment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_state() :: #{
-%%   <<"error">> => experiment_report_error(),
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type experiment_report_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_report_configuration_outputs() :: #{
-%%   <<"s3Configuration">> => report_configuration_s3_output()
-%% }
--type experiment_template_report_configuration_outputs() :: #{binary() => any()}.
-
-%% Example:
-%% stop_experiment_request() :: #{}
--type stop_experiment_request() :: #{}.
-
-
-%% Example:
-%% experiment_template_stop_condition() :: #{
-%%   <<"source">> => string(),
-%%   <<"value">> => string()
-%% }
--type experiment_template_stop_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_action() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()),
-%%   <<"targets">> => map()
-%% }
--type experiment_template_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_experiment_template_response() :: #{
+%% create_experiment_template_response() :: #{
 %%   <<"experimentTemplate">> => experiment_template()
 %% }
--type delete_experiment_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_report_configuration_data_sources() :: #{
-%%   <<"cloudWatchDashboards">> => list(experiment_template_report_configuration_cloud_watch_dashboard())
-%% }
--type experiment_template_report_configuration_data_sources() :: #{binary() => any()}.
-
-
-%% Example:
-%% action() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"tags">> => map(),
-%%   <<"targets">> => map()
-%% }
--type action() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template() :: #{
-%%   <<"actions">> => map(),
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"experimentOptions">> => experiment_template_experiment_options(),
-%%   <<"experimentReportConfiguration">> => experiment_template_report_configuration(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"logConfiguration">> => experiment_template_log_configuration(),
-%%   <<"roleArn">> => string(),
-%%   <<"stopConditions">> => list(experiment_template_stop_condition()),
-%%   <<"tags">> => map(),
-%%   <<"targetAccountConfigurationsCount">> => float(),
-%%   <<"targets">> => map()
-%% }
--type experiment_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_experiment_response() :: #{
-%%   <<"experiment">> => experiment()
-%% }
--type start_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_target_account_configuration_request() :: #{}
--type get_target_account_configuration_request() :: #{}.
-
-
-%% Example:
-%% get_safety_lever_response() :: #{
-%%   <<"safetyLever">> => safety_lever()
-%% }
--type get_safety_lever_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_response() :: #{
-%%   <<"experimentTemplate">> => experiment_template()
-%% }
--type update_experiment_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_resolved_targets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resolvedTargets">> => list(resolved_target())
-%% }
--type list_experiment_resolved_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_experiment_target_account_configuration_request() :: #{}
--type get_experiment_target_account_configuration_request() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_experiment_template_response() :: #{
-%%   <<"experimentTemplate">> => experiment_template()
-%% }
--type get_experiment_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_experiment_template_action_input() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()),
-%%   <<"targets">> => map()
-%% }
--type create_experiment_template_action_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_target_input_filter() :: #{
-%%   <<"path">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type experiment_template_target_input_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_report_error() :: #{
-%%   <<"code">> => string()
-%% }
--type experiment_report_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_target_resource_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetResourceTypes">> => list(target_resource_type_summary())
-%% }
--type list_target_resource_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_target_account_configuration_response() :: #{
-%%   <<"targetAccountConfiguration">> => target_account_configuration()
-%% }
--type get_target_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_target_account_configuration_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type experiment_target_account_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_safety_lever_state_input() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_safety_lever_state_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_options() :: #{
-%%   <<"accountTargeting">> => list(any()),
-%%   <<"actionsMode">> => list(any()),
-%%   <<"emptyTargetResolutionMode">> => list(any())
-%% }
--type experiment_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiments_request() :: #{
-%%   <<"experimentTemplateId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_experiments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_experiment_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"experimentOptions">> => start_experiment_experiment_options_input(),
-%%   <<"experimentTemplateId">> := string(),
-%%   <<"tags">> => map()
-%% }
--type start_experiment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_report_configuration_input() :: #{
-%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
-%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
-%%   <<"postExperimentDuration">> => string(),
-%%   <<"preExperimentDuration">> => string()
-%% }
--type update_experiment_template_report_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_experiment_template_experiment_options_input() :: #{
-%%   <<"accountTargeting">> => list(any()),
-%%   <<"emptyTargetResolutionMode">> => list(any())
-%% }
--type create_experiment_template_experiment_options_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_target_resource_type_request() :: #{}
--type get_target_resource_type_request() :: #{}.
-
-
-%% Example:
-%% experiment_template_experiment_options() :: #{
-%%   <<"accountTargeting">> => list(any()),
-%%   <<"emptyTargetResolutionMode">> => list(any())
-%% }
--type experiment_template_experiment_options() :: #{binary() => any()}.
+-type create_experiment_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -970,13 +193,6 @@
 %%   <<"value">> => string()
 %% }
 -type create_experiment_template_stop_condition_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_experiment_template_response() :: #{
-%%   <<"experimentTemplate">> => experiment_template()
-%% }
--type create_experiment_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -992,26 +208,34 @@
 
 
 %% Example:
-%% report_configuration_s3_output() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type report_configuration_s3_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_parameter() :: #{
+%% create_target_account_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"required">> => boolean()
+%%   <<"roleArn">> := string()
 %% }
--type action_parameter() :: #{binary() => any()}.
+-type create_target_account_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_experiment_experiment_options_input() :: #{
-%%   <<"actionsMode">> => list(any())
+%% create_target_account_configuration_response() :: #{
+%%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
--type start_experiment_experiment_options_input() :: #{binary() => any()}.
+-type create_target_account_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experiment_template_request() :: #{}
+-type delete_experiment_template_request() :: #{}.
+
+
+%% Example:
+%% delete_experiment_template_response() :: #{
+%%   <<"experimentTemplate">> => experiment_template()
+%% }
+-type delete_experiment_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_target_account_configuration_request() :: #{}
+-type delete_target_account_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1019,42 +243,6 @@
 %%   <<"targetAccountConfiguration">> => target_account_configuration()
 %% }
 -type delete_target_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_experiment_response() :: #{
-%%   <<"experiment">> => experiment()
-%% }
--type stop_experiment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_target_input() :: #{
-%%   <<"filters">> => list(experiment_template_target_input_filter()),
-%%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceTags">> => map(),
-%%   <<"resourceType">> => string(),
-%%   <<"selectionMode">> => string()
-%% }
--type update_experiment_template_target_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_template_report_configuration() :: #{
-%%   <<"dataSources">> => experiment_template_report_configuration_data_sources(),
-%%   <<"outputs">> => experiment_template_report_configuration_outputs(),
-%%   <<"postExperimentDuration">> => string(),
-%%   <<"preExperimentDuration">> => string()
-%% }
--type experiment_template_report_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_experiment_template_experiment_options_input() :: #{
-%%   <<"emptyTargetResolutionMode">> => list(any())
-%% }
--type update_experiment_template_experiment_options_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1081,12 +269,617 @@
 
 
 %% Example:
+%% experiment_action() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"parameters">> => map(),
+%%   <<"startAfter">> => list(string()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => experiment_action_state(),
+%%   <<"targets">> => map()
+%% }
+-type experiment_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_action_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type experiment_action_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_cloud_watch_logs_log_configuration() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type experiment_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"location">> => string()
+%% }
+-type experiment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_log_configuration() :: #{
+%%   <<"cloudWatchLogsConfiguration">> => experiment_cloud_watch_logs_log_configuration(),
+%%   <<"logSchemaVersion">> => integer(),
+%%   <<"s3Configuration">> => experiment_s3_log_configuration()
+%% }
+-type experiment_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_options() :: #{
+%%   <<"accountTargeting">> => list(any()),
+%%   <<"actionsMode">> => list(any()),
+%%   <<"emptyTargetResolutionMode">> => list(any())
+%% }
+-type experiment_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report() :: #{
+%%   <<"s3Reports">> => list(experiment_report_s3_report()),
+%%   <<"state">> => experiment_report_state()
+%% }
+-type experiment_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration() :: #{
+%%   <<"dataSources">> => experiment_report_configuration_data_sources(),
+%%   <<"outputs">> => experiment_report_configuration_outputs(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type experiment_report_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_cloud_watch_dashboard() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type experiment_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_data_sources() :: #{
+%%   <<"cloudWatchDashboards">> => list(experiment_report_configuration_cloud_watch_dashboard())
+%% }
+-type experiment_report_configuration_data_sources() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_outputs() :: #{
+%%   <<"s3Configuration">> => experiment_report_configuration_outputs_s3_configuration()
+%% }
+-type experiment_report_configuration_outputs() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_configuration_outputs_s3_configuration() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type experiment_report_configuration_outputs_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_error() :: #{
+%%   <<"code">> => string()
+%% }
+-type experiment_report_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_s3_report() :: #{
+%%   <<"arn">> => string(),
+%%   <<"reportType">> => string()
+%% }
+-type experiment_report_s3_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_report_state() :: #{
+%%   <<"error">> => experiment_report_error(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type experiment_report_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_s3_log_configuration() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type experiment_s3_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_state() :: #{
+%%   <<"error">> => experiment_error(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type experiment_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_stop_condition() :: #{
+%%   <<"source">> => string(),
+%%   <<"value">> => string()
+%% }
+-type experiment_stop_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"experimentOptions">> => experiment_options(),
+%%   <<"experimentTemplateId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"state">> => experiment_state(),
+%%   <<"tags">> => map()
+%% }
+-type experiment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_target() :: #{
+%%   <<"filters">> => list(experiment_target_filter()),
+%%   <<"parameters">> => map(),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceTags">> => map(),
+%%   <<"resourceType">> => string(),
+%%   <<"selectionMode">> => string()
+%% }
+-type experiment_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_target_account_configuration() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type experiment_target_account_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_target_account_configuration_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type experiment_target_account_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_target_filter() :: #{
+%%   <<"path">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type experiment_target_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template() :: #{
+%%   <<"actions">> => map(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"experimentOptions">> => experiment_template_experiment_options(),
+%%   <<"experimentReportConfiguration">> => experiment_template_report_configuration(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"logConfiguration">> => experiment_template_log_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"stopConditions">> => list(experiment_template_stop_condition()),
+%%   <<"tags">> => map(),
+%%   <<"targetAccountConfigurationsCount">> => float(),
+%%   <<"targets">> => map()
+%% }
+-type experiment_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_action() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"startAfter">> => list(string()),
+%%   <<"targets">> => map()
+%% }
+-type experiment_template_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_cloud_watch_logs_log_configuration() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type experiment_template_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_cloud_watch_logs_log_configuration_input() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type experiment_template_cloud_watch_logs_log_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_experiment_options() :: #{
+%%   <<"accountTargeting">> => list(any()),
+%%   <<"emptyTargetResolutionMode">> => list(any())
+%% }
+-type experiment_template_experiment_options() :: #{binary() => any()}.
+
+
+%% Example:
 %% experiment_template_log_configuration() :: #{
 %%   <<"cloudWatchLogsConfiguration">> => experiment_template_cloud_watch_logs_log_configuration(),
 %%   <<"logSchemaVersion">> => integer(),
 %%   <<"s3Configuration">> => experiment_template_s3_log_configuration()
 %% }
 -type experiment_template_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type experiment_template_report_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_cloud_watch_dashboard() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type experiment_template_report_configuration_cloud_watch_dashboard() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_data_sources() :: #{
+%%   <<"cloudWatchDashboards">> => list(experiment_template_report_configuration_cloud_watch_dashboard())
+%% }
+-type experiment_template_report_configuration_data_sources() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_data_sources_input() :: #{
+%%   <<"cloudWatchDashboards">> => list(report_configuration_cloud_watch_dashboard_input())
+%% }
+-type experiment_template_report_configuration_data_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_outputs() :: #{
+%%   <<"s3Configuration">> => report_configuration_s3_output()
+%% }
+-type experiment_template_report_configuration_outputs() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_report_configuration_outputs_input() :: #{
+%%   <<"s3Configuration">> => report_configuration_s3_output_input()
+%% }
+-type experiment_template_report_configuration_outputs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_s3_log_configuration() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type experiment_template_s3_log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_s3_log_configuration_input() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type experiment_template_s3_log_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_stop_condition() :: #{
+%%   <<"source">> => string(),
+%%   <<"value">> => string()
+%% }
+-type experiment_template_stop_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
+%%   <<"tags">> => map()
+%% }
+-type experiment_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_target() :: #{
+%%   <<"filters">> => list(experiment_template_target_filter()),
+%%   <<"parameters">> => map(),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceTags">> => map(),
+%%   <<"resourceType">> => string(),
+%%   <<"selectionMode">> => string()
+%% }
+-type experiment_template_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_target_filter() :: #{
+%%   <<"path">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type experiment_template_target_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_template_target_input_filter() :: #{
+%%   <<"path">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type experiment_template_target_input_filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_action_request() :: #{}
+-type get_action_request() :: #{}.
+
+
+%% Example:
+%% get_action_response() :: #{
+%%   <<"action">> => action()
+%% }
+-type get_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_experiment_request() :: #{}
+-type get_experiment_request() :: #{}.
+
+
+%% Example:
+%% get_experiment_response() :: #{
+%%   <<"experiment">> => experiment()
+%% }
+-type get_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_experiment_target_account_configuration_request() :: #{}
+-type get_experiment_target_account_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_experiment_target_account_configuration_response() :: #{
+%%   <<"targetAccountConfiguration">> => experiment_target_account_configuration()
+%% }
+-type get_experiment_target_account_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_experiment_template_request() :: #{}
+-type get_experiment_template_request() :: #{}.
+
+
+%% Example:
+%% get_experiment_template_response() :: #{
+%%   <<"experimentTemplate">> => experiment_template()
+%% }
+-type get_experiment_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_safety_lever_request() :: #{}
+-type get_safety_lever_request() :: #{}.
+
+
+%% Example:
+%% get_safety_lever_response() :: #{
+%%   <<"safetyLever">> => safety_lever()
+%% }
+-type get_safety_lever_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_account_configuration_request() :: #{}
+-type get_target_account_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_target_account_configuration_response() :: #{
+%%   <<"targetAccountConfiguration">> => target_account_configuration()
+%% }
+-type get_target_account_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_resource_type_request() :: #{}
+-type get_target_resource_type_request() :: #{}.
+
+
+%% Example:
+%% get_target_resource_type_response() :: #{
+%%   <<"targetResourceType">> => target_resource_type()
+%% }
+-type get_target_resource_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_response() :: #{
+%%   <<"actions">> => list(action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_resolved_targets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetName">> => string()
+%% }
+-type list_experiment_resolved_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_resolved_targets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resolvedTargets">> => list(resolved_target())
+%% }
+-type list_experiment_resolved_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_target_account_configurations_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_experiment_target_account_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_target_account_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary())
+%% }
+-type list_experiment_target_account_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_experiment_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_templates_response() :: #{
+%%   <<"experimentTemplates">> => list(experiment_template_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_experiment_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiments_request() :: #{
+%%   <<"experimentTemplateId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_experiments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiments_response() :: #{
+%%   <<"experiments">> => list(experiment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_account_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_target_account_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_account_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary())
+%% }
+-type list_target_account_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_resource_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_target_resource_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_target_resource_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceTypes">> => list(target_resource_type_summary())
+%% }
+-type list_target_resource_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_configuration_cloud_watch_dashboard_input() :: #{
+%%   <<"dashboardIdentifier">> => string()
+%% }
+-type report_configuration_cloud_watch_dashboard_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_configuration_s3_output() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type report_configuration_s3_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_configuration_s3_output_input() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type report_configuration_s3_output_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolved_target() :: #{
+%%   <<"resourceType">> => string(),
+%%   <<"targetInformation">> => map(),
+%%   <<"targetName">> => string()
+%% }
+-type resolved_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1099,6 +892,179 @@
 
 
 %% Example:
+%% safety_lever_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type safety_lever_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_experiment_experiment_options_input() :: #{
+%%   <<"actionsMode">> => list(any())
+%% }
+-type start_experiment_experiment_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_experiment_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"experimentOptions">> => start_experiment_experiment_options_input(),
+%%   <<"experimentTemplateId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_experiment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_experiment_response() :: #{
+%%   <<"experiment">> => experiment()
+%% }
+-type start_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_experiment_request() :: #{}
+-type stop_experiment_request() :: #{}.
+
+
+%% Example:
+%% stop_experiment_response() :: #{
+%%   <<"experiment">> => experiment()
+%% }
+-type stop_experiment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_account_configuration() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type target_account_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_account_configuration_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type target_account_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_resource_type() :: #{
+%%   <<"description">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"resourceType">> => string()
+%% }
+-type target_resource_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_resource_type_parameter() :: #{
+%%   <<"description">> => string(),
+%%   <<"required">> => boolean()
+%% }
+-type target_resource_type_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_resource_type_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type target_resource_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> => list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_experiment_template_action_input_item() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"startAfter">> => list(string()),
+%%   <<"targets">> => map()
+%% }
+-type update_experiment_template_action_input_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_template_experiment_options_input() :: #{
+%%   <<"emptyTargetResolutionMode">> => list(any())
+%% }
+-type update_experiment_template_experiment_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_template_log_configuration_input() :: #{
+%%   <<"cloudWatchLogsConfiguration">> => experiment_template_cloud_watch_logs_log_configuration_input(),
+%%   <<"logSchemaVersion">> => integer(),
+%%   <<"s3Configuration">> => experiment_template_s3_log_configuration_input()
+%% }
+-type update_experiment_template_log_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_template_report_configuration_input() :: #{
+%%   <<"dataSources">> => experiment_template_report_configuration_data_sources_input(),
+%%   <<"outputs">> => experiment_template_report_configuration_outputs_input(),
+%%   <<"postExperimentDuration">> => string(),
+%%   <<"preExperimentDuration">> => string()
+%% }
+-type update_experiment_template_report_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_template_request() :: #{
+%%   <<"actions">> => map(),
+%%   <<"description">> => string(),
+%%   <<"experimentOptions">> => update_experiment_template_experiment_options_input(),
+%%   <<"experimentReportConfiguration">> => update_experiment_template_report_configuration_input(),
+%%   <<"logConfiguration">> => update_experiment_template_log_configuration_input(),
+%%   <<"roleArn">> => string(),
+%%   <<"stopConditions">> => list(update_experiment_template_stop_condition_input()),
+%%   <<"targets">> => map()
+%% }
+-type update_experiment_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_experiment_template_response() :: #{
+%%   <<"experimentTemplate">> => experiment_template()
+%% }
+-type update_experiment_template_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_experiment_template_stop_condition_input() :: #{
 %%   <<"source">> => string(),
 %%   <<"value">> => string()
@@ -1107,25 +1073,59 @@
 
 
 %% Example:
-%% experiment_cloud_watch_logs_log_configuration() :: #{
-%%   <<"logGroupArn">> => string()
+%% update_experiment_template_target_input() :: #{
+%%   <<"filters">> => list(experiment_template_target_input_filter()),
+%%   <<"parameters">> => map(),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceTags">> => map(),
+%%   <<"resourceType">> => string(),
+%%   <<"selectionMode">> => string()
 %% }
--type experiment_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
+-type update_experiment_template_target_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% experiment_template_cloud_watch_logs_log_configuration() :: #{
-%%   <<"logGroupArn">> => string()
-%% }
--type experiment_template_cloud_watch_logs_log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% safety_lever_state() :: #{
+%% update_safety_lever_state_input() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type safety_lever_state() :: #{binary() => any()}.
+-type update_safety_lever_state_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_safety_lever_state_request() :: #{
+%%   <<"state">> := update_safety_lever_state_input()
+%% }
+-type update_safety_lever_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_safety_lever_state_response() :: #{
+%%   <<"safetyLever">> => safety_lever()
+%% }
+-type update_safety_lever_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_target_account_configuration_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_target_account_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_target_account_configuration_response() :: #{
+%%   <<"targetAccountConfiguration">> => target_account_configuration()
+%% }
+-type update_target_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_experiment_template_errors() ::
     validation_exception() | 

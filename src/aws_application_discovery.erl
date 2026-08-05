@@ -171,248 +171,12 @@
 
 
 %% Example:
-%% describe_continuous_exports_response() :: #{
-%%   <<"descriptions">> => list(continuous_export_description()),
-%%   <<"nextToken">> => string()
+%% agent_configuration_status() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"operationSucceeded">> => boolean()
 %% }
--type describe_continuous_exports_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_continuous_export_request() :: #{
-
-%% }
--type start_continuous_export_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_configurations_response() :: #{
-%%   <<"exportId">> => string()
-%% }
--type export_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% configuration_tag() :: #{
-%%   <<"configurationId">> => string(),
-%%   <<"configurationType">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"timeOfCreation">> => non_neg_integer(),
-%%   <<"value">> => string()
-%% }
--type configuration_tag() :: #{binary() => any()}.
-
-%% Example:
-%% neighbor_connection_detail() :: #{
-%%   <<"connectionsCount">> => float(),
-%%   <<"destinationPort">> => integer(),
-%%   <<"destinationServerId">> => string(),
-%%   <<"sourceServerId">> => string(),
-%%   <<"transportProtocol">> => string()
-%% }
--type neighbor_connection_detail() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_agents_request() :: #{
-%%   <<"deleteAgents">> := list(delete_agent())
-%% }
--type batch_delete_agents_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_request() :: #{
-%%   <<"configurationIds">> := list(string()),
-%%   <<"tags">> => list(tag())
-%% }
--type delete_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% customer_connector_info() :: #{
-%%   <<"activeConnectors">> => integer(),
-%%   <<"blackListedConnectors">> => integer(),
-%%   <<"healthyConnectors">> => integer(),
-%%   <<"shutdownConnectors">> => integer(),
-%%   <<"totalConnectors">> => integer(),
-%%   <<"unhealthyConnectors">> => integer(),
-%%   <<"unknownConnectors">> => integer()
-%% }
--type customer_connector_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_applications_response() :: #{
-
-%% }
--type delete_applications_response() :: #{binary() => any()}.
-
-%% Example:
-%% server_internal_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type server_internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_import_task_response() :: #{
-%%   <<"task">> => import_task()
-%% }
--type start_import_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_configurations_response() :: #{
-%%   <<"configurations">> => list(map()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_server_neighbors_response() :: #{
-%%   <<"knownDependencyCount">> => float(),
-%%   <<"neighbors">> => list(neighbor_connection_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type list_server_neighbors_response() :: #{binary() => any()}.
-
-%% Example:
-%% failed_configuration() :: #{
-%%   <<"configurationId">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"errorStatusCode">> => integer()
-%% }
--type failed_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_configurations_response() :: #{
-%%   <<"exportsInfo">> => list(export_info()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_export_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_filter() :: #{
-%%   <<"condition">> => string(),
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type export_filter() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_configuration_items_from_application_request() :: #{
-%%   <<"applicationConfigurationId">> := string(),
-%%   <<"configurationIds">> := list(string())
-%% }
--type disassociate_configuration_items_from_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_tasks_response() :: #{
-%%   <<"exportsInfo">> => list(export_info()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_export_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configurations_request() :: #{
-%%   <<"configurationIds">> := list(string())
-%% }
--type describe_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agents_request() :: #{
-%%   <<"agentIds">> => list(string()),
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_agents_request() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_instance_options() :: #{
-%%   <<"offeringClass">> => list(any()),
-%%   <<"purchasingOption">> => list(any()),
-%%   <<"termLength">> => list(any())
-%% }
--type reserved_instance_options() :: #{binary() => any()}.
-
-%% Example:
-%% associate_configuration_items_to_application_response() :: #{
-
-%% }
--type associate_configuration_items_to_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(configuration_tag())
-%% }
--type describe_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_batch_delete_configuration_task_request() :: #{
-%%   <<"configurationIds">> := list(string()),
-%%   <<"configurationType">> := list(any())
-%% }
--type start_batch_delete_configuration_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_configurations_request() :: #{
-%%   <<"configurationType">> := list(any()),
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"orderBy">> => list(order_by_element())
-%% }
--type list_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_batch_delete_configuration_task_response() :: #{
-%%   <<"taskId">> => string()
-%% }
--type start_batch_delete_configuration_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_tags_request() :: #{
-%%   <<"configurationIds">> := list(string()),
-%%   <<"tags">> := list(tag())
-%% }
--type create_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% customer_agent_info() :: #{
-%%   <<"activeAgents">> => integer(),
-%%   <<"blackListedAgents">> => integer(),
-%%   <<"healthyAgents">> => integer(),
-%%   <<"shutdownAgents">> => integer(),
-%%   <<"totalAgents">> => integer(),
-%%   <<"unhealthyAgents">> => integer(),
-%%   <<"unknownAgents">> => integer()
-%% }
--type customer_agent_info() :: #{binary() => any()}.
-
-%% Example:
-%% agent_network_info() :: #{
-%%   <<"ipAddress">> => string(),
-%%   <<"macAddress">> => string()
-%% }
--type agent_network_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_response() :: #{
-
-%% }
--type delete_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_continuous_export_response() :: #{
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"stopTime">> => non_neg_integer()
-%% }
--type stop_continuous_export_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type agent_configuration_status() :: #{binary() => any()}.
 
 %% Example:
 %% agent_info() :: #{
@@ -430,36 +194,153 @@
 -type agent_info() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% agent_network_info() :: #{
+%%   <<"ipAddress">> => string(),
+%%   <<"macAddress">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type agent_network_info() :: #{binary() => any()}.
 
 %% Example:
-%% describe_export_tasks_request() :: #{
-%%   <<"exportIds">> => list(string()),
-%%   <<"filters">> => list(export_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% associate_configuration_items_to_application_request() :: #{
+%%   <<"applicationConfigurationId">> := string(),
+%%   <<"configurationIds">> := list(string())
 %% }
--type describe_export_tasks_request() :: #{binary() => any()}.
+-type associate_configuration_items_to_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_continuous_export_response() :: #{
-%%   <<"dataSource">> => list(any()),
-%%   <<"exportId">> => string(),
-%%   <<"s3Bucket">> => string(),
-%%   <<"schemaStorageConfig">> => map(),
-%%   <<"startTime">> => non_neg_integer()
+%% associate_configuration_items_to_application_response() :: #{
+
 %% }
--type start_continuous_export_response() :: #{binary() => any()}.
+-type associate_configuration_items_to_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_agent_error() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_delete_agent_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_agents_request() :: #{
+%%   <<"deleteAgents">> := list(delete_agent())
+%% }
+-type batch_delete_agents_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_agents_response() :: #{
+%%   <<"errors">> => list(batch_delete_agent_error())
+%% }
+-type batch_delete_agents_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_configuration_task() :: #{
+%%   <<"configurationType">> => list(any()),
+%%   <<"deletedConfigurations">> => list(string()),
+%%   <<"deletionWarnings">> => list(deletion_warning()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failedConfigurations">> => list(failed_configuration()),
+%%   <<"requestedConfigurations">> => list(string()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type batch_delete_configuration_task() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_import_data_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorDescription">> => string(),
+%%   <<"importTaskId">> => string()
+%% }
+-type batch_delete_import_data_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_import_data_request() :: #{
+%%   <<"deleteHistory">> => boolean(),
+%%   <<"importTaskIds">> := list(string())
+%% }
+-type batch_delete_import_data_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_import_data_response() :: #{
 %%   <<"errors">> => list(batch_delete_import_data_error())
 %% }
 -type batch_delete_import_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_tag() :: #{
+%%   <<"configurationId">> => string(),
+%%   <<"configurationType">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"timeOfCreation">> => non_neg_integer(),
+%%   <<"value">> => string()
+%% }
+-type configuration_tag() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_export_description() :: #{
+%%   <<"dataSource">> => list(any()),
+%%   <<"exportId">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"schemaStorageConfig">> => map(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetail">> => string(),
+%%   <<"stopTime">> => non_neg_integer()
+%% }
+-type continuous_export_description() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"wave">> => string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"configurationId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_tags_request() :: #{
+%%   <<"configurationIds">> := list(string()),
+%%   <<"tags">> := list(tag())
+%% }
+-type create_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_tags_response() :: #{
+
+%% }
+-type create_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% customer_agent_info() :: #{
+%%   <<"activeAgents">> => integer(),
+%%   <<"blackListedAgents">> => integer(),
+%%   <<"healthyAgents">> => integer(),
+%%   <<"shutdownAgents">> => integer(),
+%%   <<"totalAgents">> => integer(),
+%%   <<"unhealthyAgents">> => integer(),
+%%   <<"unknownAgents">> => integer()
+%% }
+-type customer_agent_info() :: #{binary() => any()}.
 
 %% Example:
 %% customer_agentless_collector_info() :: #{
@@ -474,24 +355,28 @@
 -type customer_agentless_collector_info() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => string()
+%% customer_connector_info() :: #{
+%%   <<"activeConnectors">> => integer(),
+%%   <<"blackListedConnectors">> => integer(),
+%%   <<"healthyConnectors">> => integer(),
+%%   <<"shutdownConnectors">> => integer(),
+%%   <<"totalConnectors">> => integer(),
+%%   <<"unhealthyConnectors">> => integer(),
+%%   <<"unknownConnectors">> => integer()
 %% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
+-type customer_connector_info() :: #{binary() => any()}.
 
 %% Example:
-%% agent_configuration_status() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"operationSucceeded">> => boolean()
+%% customer_me_collector_info() :: #{
+%%   <<"activeMeCollectors">> => integer(),
+%%   <<"denyListedMeCollectors">> => integer(),
+%%   <<"healthyMeCollectors">> => integer(),
+%%   <<"shutdownMeCollectors">> => integer(),
+%%   <<"totalMeCollectors">> => integer(),
+%%   <<"unhealthyMeCollectors">> => integer(),
+%%   <<"unknownMeCollectors">> => integer()
 %% }
--type agent_configuration_status() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_agents_response() :: #{
-%%   <<"errors">> => list(batch_delete_agent_error())
-%% }
--type batch_delete_agents_response() :: #{binary() => any()}.
+-type customer_me_collector_info() :: #{binary() => any()}.
 
 %% Example:
 %% delete_agent() :: #{
@@ -501,24 +386,166 @@
 -type delete_agent() :: #{binary() => any()}.
 
 %% Example:
-%% create_application_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"wave">> => string()
+%% delete_applications_request() :: #{
+%%   <<"configurationIds">> := list(string())
 %% }
--type create_application_request() :: #{binary() => any()}.
+-type delete_applications_request() :: #{binary() => any()}.
 
 %% Example:
-%% operation_not_permitted_exception() :: #{
-%%   <<"message">> => string()
+%% delete_applications_response() :: #{
+
 %% }
--type operation_not_permitted_exception() :: #{binary() => any()}.
+-type delete_applications_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_application_response() :: #{
-%%   <<"configurationId">> => string()
+%% delete_tags_request() :: #{
+%%   <<"configurationIds">> := list(string()),
+%%   <<"tags">> => list(tag())
 %% }
--type create_application_response() :: #{binary() => any()}.
+-type delete_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_response() :: #{
+
+%% }
+-type delete_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% deletion_warning() :: #{
+%%   <<"configurationId">> => string(),
+%%   <<"warningCode">> => integer(),
+%%   <<"warningText">> => string()
+%% }
+-type deletion_warning() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agents_request() :: #{
+%%   <<"agentIds">> => list(string()),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_agents_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agents_response() :: #{
+%%   <<"agentsInfo">> => list(agent_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_agents_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_delete_configuration_task_request() :: #{
+%%   <<"taskId">> := string()
+%% }
+-type describe_batch_delete_configuration_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_delete_configuration_task_response() :: #{
+%%   <<"task">> => batch_delete_configuration_task()
+%% }
+-type describe_batch_delete_configuration_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configurations_request() :: #{
+%%   <<"configurationIds">> := list(string())
+%% }
+-type describe_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configurations_response() :: #{
+%%   <<"configurations">> => list(map())
+%% }
+-type describe_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_continuous_exports_request() :: #{
+%%   <<"exportIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_continuous_exports_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_continuous_exports_response() :: #{
+%%   <<"descriptions">> => list(continuous_export_description()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_continuous_exports_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_configurations_request() :: #{
+%%   <<"exportIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_configurations_response() :: #{
+%%   <<"exportsInfo">> => list(export_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_request() :: #{
+%%   <<"exportIds">> => list(string()),
+%%   <<"filters">> => list(export_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_response() :: #{
+%%   <<"exportsInfo">> => list(export_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_request() :: #{
+%%   <<"filters">> => list(import_task_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(import_task())
+%% }
+-type describe_import_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_request() :: #{
+%%   <<"filters">> => list(tag_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(configuration_tag())
+%% }
+-type describe_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_configuration_items_from_application_request() :: #{
+%%   <<"applicationConfigurationId">> := string(),
+%%   <<"configurationIds">> := list(string())
+%% }
+-type disassociate_configuration_items_from_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_configuration_items_from_application_response() :: #{
+
+%% }
+-type disassociate_configuration_items_from_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% ec2_recommendations_export_preferences() :: #{
@@ -533,23 +560,72 @@
 -type ec2_recommendations_export_preferences() :: #{binary() => any()}.
 
 %% Example:
-%% stop_data_collection_by_agent_ids_response() :: #{
-%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
+%% export_configurations_response() :: #{
+%%   <<"exportId">> => string()
 %% }
--type stop_data_collection_by_agent_ids_response() :: #{binary() => any()}.
+-type export_configurations_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_batch_delete_configuration_task_response() :: #{
-%%   <<"task">> => batch_delete_configuration_task()
+%% export_filter() :: #{
+%%   <<"condition">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type describe_batch_delete_configuration_task_response() :: #{binary() => any()}.
+-type export_filter() :: #{binary() => any()}.
 
 %% Example:
-%% associate_configuration_items_to_application_request() :: #{
-%%   <<"applicationConfigurationId">> := string(),
-%%   <<"configurationIds">> := list(string())
+%% export_info() :: #{
+%%   <<"configurationsDownloadUrl">> => string(),
+%%   <<"exportId">> => string(),
+%%   <<"exportRequestTime">> => non_neg_integer(),
+%%   <<"exportStatus">> => list(any()),
+%%   <<"isTruncated">> => boolean(),
+%%   <<"requestedEndTime">> => non_neg_integer(),
+%%   <<"requestedStartTime">> => non_neg_integer(),
+%%   <<"statusMessage">> => string()
 %% }
--type associate_configuration_items_to_application_request() :: #{binary() => any()}.
+-type export_info() :: #{binary() => any()}.
+
+%% Example:
+%% failed_configuration() :: #{
+%%   <<"configurationId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"errorStatusCode">> => integer()
+%% }
+-type failed_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"condition">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_discovery_summary_request() :: #{
+
+%% }
+-type get_discovery_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_discovery_summary_response() :: #{
+%%   <<"agentSummary">> => customer_agent_info(),
+%%   <<"agentlessCollectorSummary">> => customer_agentless_collector_info(),
+%%   <<"applications">> => float(),
+%%   <<"connectorSummary">> => customer_connector_info(),
+%%   <<"meCollectorSummary">> => customer_me_collector_info(),
+%%   <<"servers">> => float(),
+%%   <<"serversMappedToApplications">> => float(),
+%%   <<"serversMappedtoTags">> => float()
+%% }
+-type get_discovery_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% home_region_not_set_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type home_region_not_set_exception() :: #{binary() => any()}.
 
 %% Example:
 %% import_task() :: #{
@@ -571,42 +647,223 @@
 -type import_task() :: #{binary() => any()}.
 
 %% Example:
-%% describe_configurations_response() :: #{
-%%   <<"configurations">> => list(map())
-%% }
--type describe_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"condition">> => string(),
-%%   <<"name">> => string(),
+%% import_task_filter() :: #{
+%%   <<"name">> => list(any()),
 %%   <<"values">> => list(string())
 %% }
--type filter() :: #{binary() => any()}.
+-type import_task_filter() :: #{binary() => any()}.
 
 %% Example:
-%% customer_me_collector_info() :: #{
-%%   <<"activeMeCollectors">> => integer(),
-%%   <<"denyListedMeCollectors">> => integer(),
-%%   <<"healthyMeCollectors">> => integer(),
-%%   <<"shutdownMeCollectors">> => integer(),
-%%   <<"totalMeCollectors">> => integer(),
-%%   <<"unhealthyMeCollectors">> => integer(),
-%%   <<"unknownMeCollectors">> => integer()
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type customer_me_collector_info() :: #{binary() => any()}.
+-type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_discovery_summary_request() :: #{
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_configurations_request() :: #{
+%%   <<"configurationType">> := list(any()),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => list(order_by_element())
+%% }
+-type list_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_configurations_response() :: #{
+%%   <<"configurations">> => list(map()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_neighbors_request() :: #{
+%%   <<"configurationId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"neighborConfigurationIds">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"portInformationNeeded">> => boolean()
+%% }
+-type list_server_neighbors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_neighbors_response() :: #{
+%%   <<"knownDependencyCount">> => float(),
+%%   <<"neighbors">> => list(neighbor_connection_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_server_neighbors_response() :: #{binary() => any()}.
+
+%% Example:
+%% neighbor_connection_detail() :: #{
+%%   <<"connectionsCount">> => float(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"destinationServerId">> => string(),
+%%   <<"sourceServerId">> => string(),
+%%   <<"transportProtocol">> => string()
+%% }
+-type neighbor_connection_detail() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% order_by_element() :: #{
+%%   <<"fieldName">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type order_by_element() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_instance_options() :: #{
+%%   <<"offeringClass">> => list(any()),
+%%   <<"purchasingOption">> => list(any()),
+%%   <<"termLength">> => list(any())
+%% }
+-type reserved_instance_options() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_batch_delete_configuration_task_request() :: #{
+%%   <<"configurationIds">> := list(string()),
+%%   <<"configurationType">> := list(any())
+%% }
+-type start_batch_delete_configuration_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_batch_delete_configuration_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type start_batch_delete_configuration_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_continuous_export_request() :: #{
 
 %% }
--type get_discovery_summary_request() :: #{binary() => any()}.
+-type start_continuous_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_continuous_export_response() :: #{
+%%   <<"dataSource">> => list(any()),
+%%   <<"exportId">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"schemaStorageConfig">> => map(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type start_continuous_export_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_data_collection_by_agent_ids_request() :: #{
 %%   <<"agentIds">> := list(string())
 %% }
 -type start_data_collection_by_agent_ids_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_collection_by_agent_ids_response() :: #{
+%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
+%% }
+-type start_data_collection_by_agent_ids_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_export_task_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"exportDataFormat">> => list(list(any())()),
+%%   <<"filters">> => list(export_filter()),
+%%   <<"preferences">> => list(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type start_export_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_export_task_response() :: #{
+%%   <<"exportId">> => string()
+%% }
+-type start_export_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_import_task_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"importUrl">> := string(),
+%%   <<"name">> := string()
+%% }
+-type start_import_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_import_task_response() :: #{
+%%   <<"task">> => import_task()
+%% }
+-type start_import_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_continuous_export_request() :: #{
+%%   <<"exportId">> := string()
+%% }
+-type stop_continuous_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_continuous_export_response() :: #{
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"stopTime">> => non_neg_integer()
+%% }
+-type stop_continuous_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_collection_by_agent_ids_request() :: #{
+%%   <<"agentIds">> := list(string())
+%% }
+-type stop_data_collection_by_agent_ids_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_collection_by_agent_ids_response() :: #{
+%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
+%% }
+-type stop_data_collection_by_agent_ids_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type tag_filter() :: #{binary() => any()}.
 
 %% Example:
 %% update_application_request() :: #{
@@ -624,480 +881,223 @@
 -type update_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% export_info() :: #{
-%%   <<"configurationsDownloadUrl">> => string(),
-%%   <<"exportId">> => string(),
-%%   <<"exportRequestTime">> => non_neg_integer(),
-%%   <<"exportStatus">> => list(any()),
-%%   <<"isTruncated">> => boolean(),
-%%   <<"requestedEndTime">> => non_neg_integer(),
-%%   <<"requestedStartTime">> => non_neg_integer(),
-%%   <<"statusMessage">> => string()
-%% }
--type export_info() :: #{binary() => any()}.
-
-%% Example:
-%% stop_continuous_export_request() :: #{
-%%   <<"exportId">> := string()
-%% }
--type stop_continuous_export_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_configuration_task() :: #{
-%%   <<"configurationType">> => list(any()),
-%%   <<"deletedConfigurations">> => list(string()),
-%%   <<"deletionWarnings">> => list(deletion_warning()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"failedConfigurations">> => list(failed_configuration()),
-%%   <<"requestedConfigurations">> => list(string()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type batch_delete_configuration_task() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_import_data_request() :: #{
-%%   <<"deleteHistory">> => boolean(),
-%%   <<"importTaskIds">> := list(string())
-%% }
--type batch_delete_import_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_continuous_exports_request() :: #{
-%%   <<"exportIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_continuous_exports_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_data_collection_by_agent_ids_request() :: #{
-%%   <<"agentIds">> := list(string())
-%% }
--type stop_data_collection_by_agent_ids_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_batch_delete_configuration_task_request() :: #{
-%%   <<"taskId">> := string()
-%% }
--type describe_batch_delete_configuration_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_collection_by_agent_ids_response() :: #{
-%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
-%% }
--type start_data_collection_by_agent_ids_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_import_data_error() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorDescription">> => string(),
-%%   <<"importTaskId">> => string()
-%% }
--type batch_delete_import_data_error() :: #{binary() => any()}.
-
-%% Example:
-%% import_task_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type import_task_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agents_response() :: #{
-%%   <<"agentsInfo">> => list(agent_info()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_agents_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_export_task_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"exportDataFormat">> => list(list(any())()),
-%%   <<"filters">> => list(export_filter()),
-%%   <<"preferences">> => list(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type start_export_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_tags_response() :: #{
-
-%% }
--type create_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_configurations_request() :: #{
-%%   <<"exportIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_export_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% order_by_element() :: #{
-%%   <<"fieldName">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type order_by_element() :: #{binary() => any()}.
-
-%% Example:
-%% start_import_task_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"importUrl">> := string(),
-%%   <<"name">> := string()
-%% }
--type start_import_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_discovery_summary_response() :: #{
-%%   <<"agentSummary">> => customer_agent_info(),
-%%   <<"agentlessCollectorSummary">> => customer_agentless_collector_info(),
-%%   <<"applications">> => float(),
-%%   <<"connectorSummary">> => customer_connector_info(),
-%%   <<"meCollectorSummary">> => customer_me_collector_info(),
-%%   <<"servers">> => float(),
-%%   <<"serversMappedToApplications">> => float(),
-%%   <<"serversMappedtoTags">> => float()
-%% }
--type get_discovery_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_agent_error() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_delete_agent_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_server_neighbors_request() :: #{
-%%   <<"configurationId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"neighborConfigurationIds">> => list(string()),
-%%   <<"nextToken">> => string(),
-%%   <<"portInformationNeeded">> => boolean()
-%% }
--type list_server_neighbors_request() :: #{binary() => any()}.
-
-%% Example:
-%% deletion_warning() :: #{
-%%   <<"configurationId">> => string(),
-%%   <<"warningCode">> => integer(),
-%%   <<"warningText">> => string()
-%% }
--type deletion_warning() :: #{binary() => any()}.
-
-%% Example:
-%% home_region_not_set_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type home_region_not_set_exception() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_export_description() :: #{
-%%   <<"dataSource">> => list(any()),
-%%   <<"exportId">> => string(),
-%%   <<"s3Bucket">> => string(),
-%%   <<"schemaStorageConfig">> => map(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusDetail">> => string(),
-%%   <<"stopTime">> => non_neg_integer()
-%% }
--type continuous_export_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_request() :: #{
-%%   <<"filters">> => list(tag_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type tag_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_tasks_request() :: #{
-%%   <<"filters">> => list(import_task_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_import_tasks_request() :: #{binary() => any()}.
-
-%% Example:
 %% usage_metric_basis() :: #{
 %%   <<"name">> => string(),
 %%   <<"percentageAdjust">> => float()
 %% }
 -type usage_metric_basis() :: #{binary() => any()}.
 
-%% Example:
-%% start_export_task_response() :: #{
-%%   <<"exportId">> => string()
-%% }
--type start_export_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_configuration_items_from_application_response() :: #{
-
-%% }
--type disassociate_configuration_items_from_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(import_task())
-%% }
--type describe_import_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_applications_request() :: #{
-%%   <<"configurationIds">> := list(string())
-%% }
--type delete_applications_request() :: #{binary() => any()}.
-
 -type associate_configuration_items_to_application_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type batch_delete_agents_errors() ::
-    authorization_error_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    authorization_error_exception().
 
 -type batch_delete_import_data_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type create_application_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type create_tags_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type delete_applications_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type delete_tags_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_agents_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_batch_delete_configuration_task_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_configurations_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_continuous_exports_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_export_configurations_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_export_tasks_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_import_tasks_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type describe_tags_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type disassociate_configuration_items_from_application_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type export_configurations_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     operation_not_permitted_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type get_discovery_summary_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type list_configurations_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type list_server_neighbors_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type start_batch_delete_configuration_task_errors() ::
-    limit_exceeded_exception() | 
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type start_continuous_export_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    conflict_error_exception() | 
+    server_internal_error_exception() | 
+    resource_in_use_exception() | 
     operation_not_permitted_exception() | 
     invalid_parameter_value_exception() | 
-    resource_in_use_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    conflict_error_exception() | 
+    authorization_error_exception().
 
 -type start_data_collection_by_agent_ids_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type start_export_task_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     operation_not_permitted_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type start_import_task_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_in_use_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type stop_continuous_export_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_permitted_exception() | 
-    invalid_parameter_value_exception() | 
+    server_internal_error_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
-    server_internal_error_exception().
+    operation_not_permitted_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type stop_data_collection_by_agent_ids_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 -type update_application_errors() ::
-    authorization_error_exception() | 
-    home_region_not_set_exception() | 
-    invalid_parameter_exception() | 
+    server_internal_error_exception() | 
     invalid_parameter_value_exception() | 
-    server_internal_error_exception().
+    invalid_parameter_exception() | 
+    home_region_not_set_exception() | 
+    authorization_error_exception().
 
 %%====================================================================
 %% API

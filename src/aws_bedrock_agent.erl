@@ -180,1017 +180,10 @@
 
 
 %% Example:
-%% validate_flow_definition_response() :: #{
-%%   <<"validations">> => list(flow_validation())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type validate_flow_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_orchestration() :: #{
-%%   <<"executor">> => list()
-%% }
--type custom_orchestration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_knowledge_base_documents_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"documentIdentifiers">> := list(document_identifier())
-%% }
--type delete_knowledge_base_documents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiple_loop_controller_nodes_flow_validation_details() :: #{
-%%   <<"loopNode">> => string()
-%% }
--type multiple_loop_controller_nodes_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_configuration() :: #{
-%%   <<"kendraKnowledgeBaseConfiguration">> => kendra_knowledge_base_configuration(),
-%%   <<"managedKnowledgeBaseConfiguration">> => managed_knowledge_base_configuration(),
-%%   <<"sqlKnowledgeBaseConfiguration">> => sql_knowledge_base_configuration(),
-%%   <<"type">> => list(any()),
-%%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
-%% }
--type knowledge_base_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_node_output_flow_validation_details() :: #{
-%%   <<"node">> => string(),
-%%   <<"output">> => string()
-%% }
--type unknown_node_output_flow_validation_details() :: #{binary() => any()}.
-
-%% Example:
-%% prepare_agent_request() :: #{}
--type prepare_agent_request() :: #{}.
-
-
-%% Example:
-%% update_flow_request() :: #{
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"name">> := string()
-%% }
--type update_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_flow_node_s3_configuration() :: #{
-%%   <<"bucketName">> => string()
-%% }
--type storage_flow_node_s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_agent_collaborator_response() :: #{}
--type disassociate_agent_collaborator_response() :: #{}.
-
-
-%% Example:
-%% ingestion_job_statistics() :: #{
-%%   <<"numberOfDocumentsDeleted">> => [float()],
-%%   <<"numberOfDocumentsFailed">> => [float()],
-%%   <<"numberOfDocumentsScanned">> => [float()],
-%%   <<"numberOfDocumentsSkipped">> => [float()],
-%%   <<"numberOfMetadataDocumentsModified">> => [float()],
-%%   <<"numberOfMetadataDocumentsScanned">> => [float()],
-%%   <<"numberOfModifiedDocumentsIndexed">> => [float()],
-%%   <<"numberOfNewDocumentsIndexed">> => [float()]
-%% }
--type ingestion_job_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_alias_request() :: #{
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item())
-%% }
--type update_flow_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_extraction_configuration() :: #{
-%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
-%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
-%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
-%% }
--type media_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_serverless_auth_configuration() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"usernamePasswordSecretArn">> => string()
-%% }
--type redshift_serverless_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_action_group_request() :: #{
-%%   <<"actionGroupExecutor">> => list(),
-%%   <<"actionGroupName">> := string(),
-%%   <<"actionGroupState">> => list(any()),
-%%   <<"apiSchema">> => list(),
-%%   <<"description">> => string(),
-%%   <<"functionSchema">> => list(),
-%%   <<"parentActionGroupSignature">> => list(any()),
-%%   <<"parentActionGroupSignatureParams">> => map()
-%% }
--type update_agent_action_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_node_input_flow_validation_details() :: #{
-%%   <<"input">> => string(),
-%%   <<"node">> => string()
-%% }
--type missing_node_input_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_knowledge_base_configuration() :: #{
-%%   <<"embeddingModelArn">> => string(),
-%%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
-%%   <<"embeddingModelType">> => list(any()),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration()
-%% }
--type managed_knowledge_base_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% share_point_data_source_configuration() :: #{
-%%   <<"crawlerConfiguration">> => share_point_crawler_configuration(),
-%%   <<"sourceConfiguration">> => share_point_source_configuration()
-%% }
--type share_point_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_prompt_template_configuration() :: #{
-%%   <<"cachePoint">> => cache_point_block(),
-%%   <<"inputVariables">> => list(prompt_input_variable()),
-%%   <<"text">> => string()
-%% }
--type text_prompt_template_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_default_condition_flow_validation_details() :: #{
-%%   <<"node">> => string()
-%% }
--type missing_default_condition_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% specific_tool_choice() :: #{
-%%   <<"name">> => string()
-%% }
--type specific_tool_choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_alias_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"flowId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_flow_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_configuration() :: #{
-%%   <<"enabledMemoryTypes">> => list(list(any())()),
-%%   <<"sessionSummaryConfiguration">> => session_summary_configuration(),
-%%   <<"storageDays">> => integer()
-%% }
--type memory_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_generation_context() :: #{
-%%   <<"curatedQueries">> => list(curated_query()),
-%%   <<"tables">> => list(query_generation_table())
-%% }
--type query_generation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% unreachable_node_flow_validation_details() :: #{
-%%   <<"node">> => string()
-%% }
--type unreachable_node_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% context_enrichment_configuration() :: #{
-%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_context_enrichment_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type context_enrichment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_connection_configuration_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type missing_connection_configuration_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_alias_response() :: #{
-%%   <<"agentAlias">> => agent_alias()
-%% }
--type get_agent_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prompt_version_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()),
-%%   <<"version">> => string()
-%% }
--type create_prompt_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_condition() :: #{
-%%   <<"expression">> => string(),
-%%   <<"name">> => string()
-%% }
--type flow_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_code_flow_node_configuration() :: #{
-%%   <<"code">> => string(),
-%%   <<"language">> => list(any())
-%% }
--type inline_code_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_flow_node_inline_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => [any()],
-%%   <<"inferenceConfiguration">> => list(),
-%%   <<"modelId">> => string(),
-%%   <<"templateConfiguration">> => list(),
-%%   <<"templateType">> => list(any())
-%% }
--type prompt_flow_node_inline_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type prompt_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_search_managed_cluster_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string(),
-%%   <<"vectorField">> => string()
-%% }
--type open_search_managed_cluster_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_flow_node_configuration() :: #{
-%%   <<"serviceConfiguration">> => list()
-%% }
--type storage_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_query_engine_storage_configuration() :: #{
-%%   <<"awsDataCatalogConfiguration">> => redshift_query_engine_aws_data_catalog_storage_configuration(),
-%%   <<"redshiftConfiguration">> => redshift_query_engine_redshift_storage_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type redshift_query_engine_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_action_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_action_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"dataDeletionPolicy">> => list(any()),
-%%   <<"dataSourceConfiguration">> := data_source_configuration(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
-%% }
--type create_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_segmentation_configuration() :: #{
-%%   <<"fixedLengthDuration">> => [integer()]
-%% }
--type video_segmentation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% loop_flow_node_configuration() :: #{
-%%   <<"definition">> => flow_definition()
-%% }
--type loop_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% loop_incompatible_node_type_flow_validation_details() :: #{
-%%   <<"incompatibleNodeName">> => string(),
-%%   <<"incompatibleNodeType">> => list(any()),
-%%   <<"node">> => string()
-%% }
--type loop_incompatible_node_type_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_configuration() :: #{
-%%   <<"confluenceConfiguration">> => confluence_data_source_configuration(),
-%%   <<"managedKnowledgeBaseConnectorConfiguration">> => managed_knowledge_base_connector_configuration(),
-%%   <<"s3Configuration">> => s3_data_source_configuration(),
-%%   <<"salesforceConfiguration">> => salesforce_data_source_configuration(),
-%%   <<"sharePointConfiguration">> => share_point_data_source_configuration(),
-%%   <<"type">> => list(any()),
-%%   <<"webConfiguration">> => web_data_source_configuration()
-%% }
--type data_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% pattern_object_filter_configuration() :: #{
-%%   <<"filters">> => list(pattern_object_filter())
-%% }
--type pattern_object_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_knowledge_base_documents_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"documents">> := list(knowledge_base_document())
-%% }
--type ingest_knowledge_base_documents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_source_configuration() :: #{
-%%   <<"urlConfiguration">> => url_configuration()
-%% }
--type web_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_ingestion_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string()
-%% }
--type start_ingestion_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% any_tool_choice() :: #{}
--type any_tool_choice() :: #{}.
-
-
-%% Example:
-%% inference_configuration() :: #{
-%%   <<"maximumLength">> => integer(),
-%%   <<"stopSequences">> => list([string()]()),
-%%   <<"temperature">> => float(),
-%%   <<"topK">> => integer(),
-%%   <<"topP">> => float()
-%% }
--type inference_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% fixed_size_chunking_configuration() :: #{
-%%   <<"maxTokens">> => [integer()],
-%%   <<"overlapPercentage">> => [integer()]
-%% }
--type fixed_size_chunking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agents_response() :: #{
-%%   <<"agentSummaries">> => list(agent_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transformation() :: #{
-%%   <<"stepToApply">> => list(any()),
-%%   <<"transformationFunction">> => transformation_function()
-%% }
--type transformation() :: #{binary() => any()}.
-
-%% Example:
-%% auto_tool_choice() :: #{}
--type auto_tool_choice() :: #{}.
-
-
-%% Example:
-%% mismatched_node_input_type_flow_validation_details() :: #{
-%%   <<"expectedType">> => list(any()),
-%%   <<"input">> => string(),
-%%   <<"node">> => string()
-%% }
--type mismatched_node_input_type_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_transformation_configuration() :: #{
-%%   <<"intermediateStorage">> => intermediate_storage(),
-%%   <<"transformations">> => list(transformation())
-%% }
--type custom_transformation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_request() :: #{
-%%   <<"agentCollaboration">> => list(any()),
-%%   <<"agentName">> := string(),
-%%   <<"agentResourceRoleArn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"customOrchestration">> => custom_orchestration(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"foundationModel">> => string(),
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"instruction">> => string(),
-%%   <<"memoryConfiguration">> => memory_configuration(),
-%%   <<"orchestrationType">> => list(any()),
-%%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary_configuration() :: #{
-%%   <<"maxRecentSessions">> => integer()
-%% }
--type session_summary_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_connection_source_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type unknown_connection_source_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"validations">> => list(flow_validation()),
-%%   <<"version">> => string()
-%% }
--type get_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_data_connection_configuration() :: #{
-%%   <<"sourceOutput">> => string(),
-%%   <<"targetInput">> => string()
-%% }
--type flow_data_connection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% salesforce_data_source_configuration() :: #{
-%%   <<"crawlerConfiguration">> => salesforce_crawler_configuration(),
-%%   <<"sourceConfiguration">> => salesforce_source_configuration()
-%% }
--type salesforce_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prompts_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"promptSummaries">> => list(prompt_summary())
-%% }
--type list_prompts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_search_serverless_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string(),
-%%   <<"vectorField">> => string()
-%% }
--type open_search_serverless_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_alias_request() :: #{
-%%   <<"agentAliasName">> := string(),
-%%   <<"aliasInvocationState">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item())
-%% }
--type update_agent_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_override_configuration() :: #{
-%%   <<"overrideLambda">> => string(),
-%%   <<"promptConfigurations">> => list(prompt_configuration())
-%% }
--type prompt_override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% mongo_db_atlas_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string(),
-%%   <<"vectorField">> => string()
-%% }
--type mongo_db_atlas_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_knowledge_base_response() :: #{
-%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
-%% }
--type update_agent_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_knowledge_base_documents_request() :: #{
-%%   <<"documentIdentifiers">> := list(document_identifier())
-%% }
--type get_knowledge_base_documents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_node() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"inputs">> => list(flow_node_input()),
-%%   <<"name">> => string(),
-%%   <<"outputs">> => list(flow_node_output()),
-%%   <<"type">> => list(any())
-%% }
--type flow_node() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_generation_column() :: #{
-%%   <<"description">> => string(),
-%%   <<"inclusion">> => list(any()),
-%%   <<"name">> => string()
-%% }
--type query_generation_column() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_base_documents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_knowledge_base_documents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_content_doc() :: #{
-%%   <<"data">> => string()
-%% }
--type text_content_doc() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => metadata_attribute_value()
-%% }
--type metadata_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% curated_query() :: #{
-%%   <<"naturalLanguage">> => string(),
-%%   <<"sql">> => string()
-%% }
--type curated_query() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_segmentation_configuration() :: #{
-%%   <<"fixedLengthDuration">> => [integer()]
-%% }
--type audio_segmentation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_collaborator_summary() :: #{
-%%   <<"agentDescriptor">> => agent_descriptor(),
-%%   <<"agentId">> => string(),
-%%   <<"agentVersion">> => string(),
-%%   <<"collaborationInstruction">> => string(),
-%%   <<"collaboratorId">> => string(),
-%%   <<"collaboratorName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"relayConversationHistory">> => list(any())
-%% }
--type agent_collaborator_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_flow_request() :: #{
-%%   <<"skipResourceInUseCheck">> => [boolean()]
-%% }
--type delete_flow_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_ingestion_job_request() :: #{}
--type stop_ingestion_job_request() :: #{}.
-
-
-%% Example:
-%% update_knowledge_base_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"storageConfiguration">> => storage_configuration()
-%% }
--type update_knowledge_base_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_validation() :: #{
-%%   <<"details">> => list(),
-%%   <<"message">> => string(),
-%%   <<"severity">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type flow_validation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter_detail() :: #{
-%%   <<"description">> => string(),
-%%   <<"required">> => [boolean()],
-%%   <<"type">> => list(any())
-%% }
--type parameter_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_extraction_configuration() :: #{
-%%   <<"videoExtractionStatus">> => list(any())
-%% }
--type video_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_definition() :: #{
-%%   <<"connections">> => list(flow_connection()),
-%%   <<"nodes">> => list(flow_node())
-%% }
--type flow_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_version_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type get_flow_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_knowledge_base_response() :: #{
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_search_serverless_configuration() :: #{
-%%   <<"collectionArn">> => string(),
-%%   <<"fieldMapping">> => open_search_serverless_field_mapping(),
-%%   <<"vectorIndexName">> => string()
-%% }
--type open_search_serverless_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_loop_controller_node_flow_validation_details() :: #{
-%%   <<"loopNode">> => string()
-%% }
--type missing_loop_controller_node_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_vectors_configuration() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"vectorBucketArn">> => string()
-%% }
--type s3_vectors_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_flow_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_prompt_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()),
-%%   <<"version">> => string()
-%% }
--type update_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_node_input() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"expression">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type flow_node_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% loop_controller_flow_node_configuration() :: #{
-%%   <<"continueCondition">> => flow_condition(),
-%%   <<"maxIterations">> => [integer()]
-%% }
--type loop_controller_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% prepare_agent_response() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"agentStatus">> => list(any()),
-%%   <<"agentVersion">> => string(),
-%%   <<"preparedAt">> => non_neg_integer()
-%% }
--type prepare_agent_response() :: #{binary() => any()}.
-
-%% Example:
-%% iterator_flow_node_configuration() :: #{}
--type iterator_flow_node_configuration() :: #{}.
-
-
-%% Example:
-%% prompt_metadata_entry() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type prompt_metadata_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_input_variable() :: #{
-%%   <<"name">> => string()
-%% }
--type prompt_input_variable() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
-%% }
--type update_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type create_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_configuration() :: #{
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"fieldMapping">> => rds_field_mapping(),
-%%   <<"resourceArn">> => string(),
-%%   <<"tableName">> => string()
-%% }
--type rds_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_flow_response() :: #{
-%%   <<"id">> => string()
-%% }
--type delete_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base()
-%% }
--type create_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% parsing_configuration() :: #{
-%%   <<"bedrockDataAutomationConfiguration">> => bedrock_data_automation_configuration(),
-%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
-%%   <<"parsingStrategy">> => list(any())
-%% }
--type parsing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_aliases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_flow_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_knowledge_base_request() :: #{}
--type get_agent_knowledge_base_request() :: #{}.
-
-
-%% Example:
-%% agent_version_summary() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"agentStatus">> => list(any()),
-%%   <<"agentVersion">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type agent_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_identifier() :: #{
-%%   <<"custom">> => custom_document_identifier(),
-%%   <<"dataSourceType">> => list(any()),
-%%   <<"s3">> => s3_location()
-%% }
--type document_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_node_input_expression_flow_validation_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"input">> => string(),
-%%   <<"node">> => string()
-%% }
--type malformed_node_input_expression_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% share_point_crawler_configuration() :: #{
-%%   <<"filterConfiguration">> => crawl_filter_configuration()
-%% }
--type share_point_crawler_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail())
-%% }
--type ingest_knowledge_base_documents_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1202,734 +195,6 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type action_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_foundation_model_context_enrichment_configuration() :: #{
-%%   <<"enrichmentStrategyConfiguration">> => enrichment_strategy_configuration(),
-%%   <<"modelArn">> => string()
-%% }
--type bedrock_foundation_model_context_enrichment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_provisioned_auth_configuration() :: #{
-%%   <<"databaseUser">> => [string()],
-%%   <<"type">> => list(any()),
-%%   <<"usernamePasswordSecretArn">> => string()
-%% }
--type redshift_provisioned_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_flow_node_configuration() :: #{
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"inferenceConfiguration">> => list(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"numberOfResults">> => [integer()],
-%%   <<"orchestrationConfiguration">> => knowledge_base_orchestration_configuration(),
-%%   <<"promptTemplate">> => knowledge_base_prompt_template(),
-%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
-%% }
--type knowledge_base_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_alias_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"flowId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type create_flow_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_query_engine_configuration() :: #{
-%%   <<"provisionedConfiguration">> => redshift_provisioned_configuration(),
-%%   <<"serverlessConfiguration">> => redshift_serverless_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type redshift_query_engine_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_version_request() :: #{
-%%   <<"skipResourceInUseCheck">> => [boolean()]
-%% }
--type delete_agent_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_prompt_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"version">> => string()
-%% }
--type delete_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_orchestration_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"inferenceConfig">> => list(),
-%%   <<"performanceConfig">> => performance_configuration(),
-%%   <<"promptTemplate">> => knowledge_base_prompt_template()
-%% }
--type knowledge_base_orchestration_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% salesforce_source_configuration() :: #{
-%%   <<"authType">> => list(any()),
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"hostUrl">> => string()
-%% }
--type salesforce_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion_job() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"ingestionJobId">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"statistics">> => ingestion_job_statistics(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type ingestion_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_collaborator_request() :: #{
-%%   <<"agentDescriptor">> := agent_descriptor(),
-%%   <<"collaborationInstruction">> := string(),
-%%   <<"collaboratorName">> := string(),
-%%   <<"relayConversationHistory">> => list(any())
-%% }
--type update_agent_collaborator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_prompt_request() :: #{
-%%   <<"promptVersion">> => string()
-%% }
--type delete_prompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_extraction_configuration() :: #{
-%%   <<"imageExtractionStatus">> => list(any())
-%% }
--type image_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% kendra_knowledge_base_configuration() :: #{
-%%   <<"kendraIndexArn">> => string()
-%% }
--type kendra_knowledge_base_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchical_chunking_configuration() :: #{
-%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
-%%   <<"overlapTokens">> => [integer()]
-%% }
--type hierarchical_chunking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_connection() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"name">> => string(),
-%%   <<"source">> => string(),
-%%   <<"target">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type flow_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_prompt_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()),
-%%   <<"version">> => string()
-%% }
--type get_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_action_group_response() :: #{
-%%   <<"agentActionGroup">> => agent_action_group()
-%% }
--type get_agent_action_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_provisioned_configuration() :: #{
-%%   <<"authConfiguration">> => redshift_provisioned_auth_configuration(),
-%%   <<"clusterIdentifier">> => string()
-%% }
--type redshift_provisioned_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% transformation_function() :: #{
-%%   <<"transformationLambdaConfiguration">> => transformation_lambda_configuration()
-%% }
--type transformation_function() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agent_action_group_response() :: #{}
--type delete_agent_action_group_response() :: #{}.
-
-
-%% Example:
-%% mismatched_node_output_type_flow_validation_details() :: #{
-%%   <<"expectedType">> => list(any()),
-%%   <<"node">> => string(),
-%%   <<"output">> => string()
-%% }
--type mismatched_node_output_type_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_action_group_response() :: #{
-%%   <<"agentActionGroup">> => agent_action_group()
-%% }
--type create_agent_action_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_alias_response() :: #{
-%%   <<"agentAliasId">> => string(),
-%%   <<"agentAliasStatus">> => list(any()),
-%%   <<"agentId">> => string()
-%% }
--type delete_agent_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flows_response() :: #{
-%%   <<"flowSummaries">> => list(flow_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_flows_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_version_request() :: #{}
--type get_agent_version_request() :: #{}.
-
-
-%% Example:
-%% create_agent_response() :: #{
-%%   <<"agent">> => agent()
-%% }
--type create_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieval_flow_node_configuration() :: #{
-%%   <<"serviceConfiguration">> => list()
-%% }
--type retrieval_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_flow_version_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"version">> => string()
-%% }
--type delete_flow_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_source_response() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_aliases_response() :: #{
-%%   <<"agentAliasSummaries">> => list(agent_alias_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_knowledge_base_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"storageConfiguration">> => storage_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_knowledge_base_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseConfiguration">> => knowledge_base_configuration(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"storageConfiguration">> => storage_configuration(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type knowledge_base() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_extraction_configuration() :: #{
-%%   <<"audioExtractionStatus">> => list(any())
-%% }
--type audio_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_versions_response() :: #{
-%%   <<"flowVersionSummaries">> => list(flow_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_flow_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_alias_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()),
-%%   <<"tags">> => map()
-%% }
--type create_flow_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ingestion_job_request() :: #{}
--type get_ingestion_job_request() :: #{}.
-
-
-%% Example:
-%% knowledge_base_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type knowledge_base_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_response() :: #{
-%%   <<"agent">> => agent()
-%% }
--type update_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% duplicate_condition_expression_flow_validation_details() :: #{
-%%   <<"expression">> => string(),
-%%   <<"node">> => string()
-%% }
--type duplicate_condition_expression_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_bases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_knowledge_bases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prompt_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"variants">> => list(prompt_variant())
-%% }
--type create_prompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_knowledge_base_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseState">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type agent_knowledge_base_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion_job_summary() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"ingestionJobId">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"statistics">> => ingestion_job_statistics(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type ingestion_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% pattern_object_filter() :: #{
-%%   <<"exclusionFilters">> => list(string()),
-%%   <<"inclusionFilters">> => list(string()),
-%%   <<"objectType">> => string()
-%% }
--type pattern_object_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_document() :: #{
-%%   <<"content">> => document_content(),
-%%   <<"metadata">> => document_metadata()
-%% }
--type knowledge_base_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_node_output() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type flow_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% embedding_model_configuration() :: #{
-%%   <<"bedrockEmbeddingModelConfiguration">> => bedrock_embedding_model_configuration()
-%% }
--type embedding_model_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_for_reranking() :: #{
-%%   <<"fieldName">> => [string()]
-%% }
--type field_for_reranking() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_version_request() :: #{
-%%   <<"includedData">> => list(any())
-%% }
--type get_flow_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prompt_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()),
-%%   <<"version">> => string()
-%% }
--type create_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% seed_url() :: #{
-%%   <<"url">> => string()
-%% }
--type seed_url() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ingestion_job_response() :: #{
-%%   <<"ingestionJob">> => ingestion_job()
-%% }
--type get_ingestion_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_version_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type flow_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% transformation_lambda_configuration() :: #{
-%%   <<"lambdaArn">> => string()
-%% }
--type transformation_lambda_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_source_request() :: #{}
--type get_data_source_request() :: #{}.
-
-
-%% Example:
-%% url_configuration() :: #{
-%%   <<"seedUrls">> => list(seed_url())
-%% }
--type url_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_flow_definition_request() :: #{
-%%   <<"definition">> := flow_definition()
-%% }
--type validate_flow_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_connection_source_output_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type unknown_connection_source_output_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_flow_node_configuration() :: #{
-%%   <<"agentAliasArn">> => string()
-%% }
--type agent_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_crawler_limits() :: #{
-%%   <<"maxPages">> => [integer()],
-%%   <<"rateLimit">> => [integer()]
-%% }
--type web_crawler_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_content() :: #{
-%%   <<"s3Location">> => s3_location()
-%% }
--type s3_content() :: #{binary() => any()}.
-
-%% Example:
-%% input_flow_node_configuration() :: #{}
--type input_flow_node_configuration() :: #{}.
-
-
-%% Example:
-%% intermediate_storage() :: #{
-%%   <<"s3Location">> => s3_location()
-%% }
--type intermediate_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_knowledge_base_documents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_flow_alias_response() :: #{
-%%   <<"flowId">> => string(),
-%%   <<"id">> => string()
-%% }
--type delete_flow_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_agent_function() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"requireConfirmation">> => list(any())
-%% }
--type bedrock_agent_function() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_foundation_model_configuration() :: #{
-%%   <<"modelArn">> => string(),
-%%   <<"parsingModality">> => list(any()),
-%%   <<"parsingPrompt">> => parsing_prompt()
-%% }
--type bedrock_foundation_model_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_specification() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => list(),
-%%   <<"name">> => string(),
-%%   <<"strict">> => [boolean()]
-%% }
--type tool_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_alias_response() :: #{
-%%   <<"agentAlias">> => agent_alias()
-%% }
--type update_agent_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% prepare_flow_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type prepare_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% redis_enterprise_cloud_configuration() :: #{
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"fieldMapping">> => redis_enterprise_cloud_field_mapping(),
-%%   <<"vectorIndexName">> => string()
-%% }
--type redis_enterprise_cloud_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_configuration() :: #{
-%%   <<"mongoDbAtlasConfiguration">> => mongo_db_atlas_configuration(),
-%%   <<"neptuneAnalyticsConfiguration">> => neptune_analytics_configuration(),
-%%   <<"opensearchManagedClusterConfiguration">> => open_search_managed_cluster_configuration(),
-%%   <<"opensearchServerlessConfiguration">> => open_search_serverless_configuration(),
-%%   <<"pineconeConfiguration">> => pinecone_configuration(),
-%%   <<"rdsConfiguration">> => rds_configuration(),
-%%   <<"redisEnterpriseCloudConfiguration">> => redis_enterprise_cloud_configuration(),
-%%   <<"s3VectorsConfiguration">> => s3_vectors_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_knowledge_bases_response() :: #{
-%%   <<"agentKnowledgeBaseSummaries">> => list(agent_knowledge_base_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_knowledge_bases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sources_response() :: #{
-%%   <<"dataSourceSummaries">> => list(data_source_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_request() :: #{}
--type delete_data_source_request() :: #{}.
-
-
-%% Example:
-%% confluence_data_source_configuration() :: #{
-%%   <<"crawlerConfiguration">> => confluence_crawler_configuration(),
-%%   <<"sourceConfiguration">> => confluence_source_configuration()
-%% }
--type confluence_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_document_detail() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"identifier">> => document_identifier(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type knowledge_base_document_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% chunking_configuration() :: #{
-%%   <<"chunkingStrategy">> => list(any()),
-%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
-%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
-%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
-%% }
--type chunking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1962,50 +227,59 @@
 
 
 %% Example:
-%% delete_agent_action_group_request() :: #{
-%%   <<"skipResourceInUseCheck">> => [boolean()]
-%% }
--type delete_agent_action_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_alias_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%% agent_action_group() :: #{
+%%   <<"actionGroupExecutor">> => list(),
+%%   <<"actionGroupId">> => string(),
+%%   <<"actionGroupName">> => string(),
+%%   <<"actionGroupState">> => list(any()),
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"apiSchema">> => list(),
+%%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"flowId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
+%%   <<"functionSchema">> => list(),
+%%   <<"parentActionGroupSignatureParams">> => map(),
+%%   <<"parentActionSignature">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_flow_alias_response() :: #{binary() => any()}.
+-type agent_action_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ingestion_jobs_response() :: #{
-%%   <<"ingestionJobSummaries">> => list(ingestion_job_summary()),
-%%   <<"nextToken">> => string()
+%% agent_alias() :: #{
+%%   <<"agentAliasArn">> => string(),
+%%   <<"agentAliasHistoryEvents">> => list(agent_alias_history_event()),
+%%   <<"agentAliasId">> => string(),
+%%   <<"agentAliasName">> => string(),
+%%   <<"agentAliasStatus">> => list(any()),
+%%   <<"agentId">> => string(),
+%%   <<"aliasInvocationState">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_ingestion_jobs_response() :: #{binary() => any()}.
+-type agent_alias() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% agent_alias_history_event() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
+%%   <<"startDate">> => non_neg_integer()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type agent_alias_history_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ingestion_jobs_request() :: #{
-%%   <<"filters">> => list(ingestion_job_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => ingestion_job_sort_by()
+%% agent_alias_routing_configuration_list_item() :: #{
+%%   <<"agentVersion">> => string(),
+%%   <<"provisionedThroughput">> => string()
 %% }
--type list_ingestion_jobs_request() :: #{binary() => any()}.
+-type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2023,206 +297,84 @@
 
 
 %% Example:
-%% parsing_prompt() :: #{
-%%   <<"parsingPromptText">> => string()
-%% }
--type parsing_prompt() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_point_block() :: #{
-%%   <<"type">> => list(any())
-%% }
--type cache_point_block() :: #{binary() => any()}.
-
-%% Example:
-%% delete_knowledge_base_request() :: #{}
--type delete_knowledge_base_request() :: #{}.
-
-
-%% Example:
-%% create_flow_version_request() :: #{
+%% agent_collaborator() :: #{
+%%   <<"agentDescriptor">> => agent_descriptor(),
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string()
-%% }
--type create_flow_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_search_reranking_configuration() :: #{
-%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type vector_search_reranking_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% byte_content_doc() :: #{
-%%   <<"data">> => binary(),
-%%   <<"mimeType">> => [string()]
-%% }
--type byte_content_doc() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_alias_request() :: #{}
--type delete_flow_alias_request() :: #{}.
-
-%% Example:
-%% get_agent_action_group_request() :: #{}
--type get_agent_action_group_request() :: #{}.
-
-
-%% Example:
-%% associate_agent_collaborator_request() :: #{
-%%   <<"agentDescriptor">> := agent_descriptor(),
-%%   <<"clientToken">> => string(),
-%%   <<"collaborationInstruction">> := string(),
-%%   <<"collaboratorName">> := string(),
+%%   <<"collaborationInstruction">> => string(),
+%%   <<"collaboratorId">> => string(),
+%%   <<"collaboratorName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"relayConversationHistory">> => list(any())
 %% }
--type associate_agent_collaborator_request() :: #{binary() => any()}.
+-type agent_collaborator() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_agent_response() :: #{
+%% agent_collaborator_summary() :: #{
+%%   <<"agentDescriptor">> => agent_descriptor(),
 %%   <<"agentId">> => string(),
-%%   <<"agentStatus">> => list(any())
+%%   <<"agentVersion">> => string(),
+%%   <<"collaborationInstruction">> => string(),
+%%   <<"collaboratorId">> => string(),
+%%   <<"collaboratorName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"relayConversationHistory">> => list(any())
 %% }
--type delete_agent_response() :: #{binary() => any()}.
+-type agent_collaborator_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% salesforce_crawler_configuration() :: #{
-%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% agent_descriptor() :: #{
+%%   <<"aliasArn">> => string()
 %% }
--type salesforce_crawler_configuration() :: #{binary() => any()}.
+-type agent_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_agent_aliases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% agent_flow_node_configuration() :: #{
+%%   <<"agentAliasArn">> => string()
 %% }
--type list_agent_aliases_request() :: #{binary() => any()}.
+-type agent_flow_node_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_agent_action_group_response() :: #{
-%%   <<"agentActionGroup">> => agent_action_group()
-%% }
--type update_agent_action_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_alias_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%% agent_knowledge_base() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"flowId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseState">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type flow_alias_summary() :: #{binary() => any()}.
+-type agent_knowledge_base() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_location() :: #{
-%%   <<"uri">> => string()
+%% agent_knowledge_base_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseState">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type s3_location() :: #{binary() => any()}.
+-type agent_knowledge_base_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_flows_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% agent_summary() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"agentName">> => string(),
+%%   <<"agentStatus">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"latestAgentVersion">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_flows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_connection_target_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type unknown_connection_target_flow_validation_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% multiple_node_input_connections_flow_validation_details() :: #{
-%%   <<"input">> => string(),
-%%   <<"node">> => string()
-%% }
--type multiple_node_input_connections_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_source_configuration() :: #{
-%%   <<"authType">> => list(any()),
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"hostType">> => list(any()),
-%%   <<"hostUrl">> => string()
-%% }
--type confluence_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_agent_knowledge_base_request() :: #{}
--type disassociate_agent_knowledge_base_request() :: #{}.
-
-
-%% Example:
-%% get_prompt_request() :: #{
-%%   <<"includedData">> => list(any()),
-%%   <<"promptVersion">> => string()
-%% }
--type get_prompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_document_identifier() :: #{
-%%   <<"id">> => [string()]
-%% }
--type custom_document_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% knowledge_base_prompt_template() :: #{
-%%   <<"textPromptTemplate">> => string()
-%% }
--type knowledge_base_prompt_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"kmsKeyArn">> => string()
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% neptune_analytics_configuration() :: #{
-%%   <<"fieldMapping">> => neptune_analytics_field_mapping(),
-%%   <<"graphArn">> => string()
-%% }
--type neptune_analytics_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% missing_ending_nodes_flow_validation_details() :: #{}
--type missing_ending_nodes_flow_validation_details() :: #{}.
+-type agent_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2251,145 +403,217 @@
 
 
 %% Example:
-%% agent_collaborator() :: #{
-%%   <<"agentDescriptor">> => agent_descriptor(),
-%%   <<"agentId">> => string(),
+%% agent_version_summary() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"agentStatus">> => list(any()),
 %%   <<"agentVersion">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"collaborationInstruction">> => string(),
-%%   <<"collaboratorId">> => string(),
-%%   <<"collaboratorName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"relayConversationHistory">> => list(any())
-%% }
--type agent_collaborator() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_alias_routing_configuration_list_item() :: #{
-%%   <<"agentVersion">> => string(),
-%%   <<"provisionedThroughput">> => string()
-%% }
--type agent_alias_routing_configuration_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_collaborator_response() :: #{
-%%   <<"agentCollaborator">> => agent_collaborator()
-%% }
--type update_agent_collaborator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% semantic_chunking_configuration() :: #{
-%%   <<"breakpointPercentileThreshold">> => [integer()],
-%%   <<"bufferSize">> => [integer()],
-%%   <<"maxTokens">> => [integer()]
-%% }
--type semantic_chunking_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% missing_starting_nodes_flow_validation_details() :: #{}
--type missing_starting_nodes_flow_validation_details() :: #{}.
-
-
-%% Example:
-%% pinecone_configuration() :: #{
-%%   <<"connectionString">> => string(),
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"fieldMapping">> => pinecone_field_mapping(),
-%%   <<"namespace">> => string()
-%% }
--type pinecone_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_alias() :: #{
-%%   <<"agentAliasArn">> => string(),
-%%   <<"agentAliasHistoryEvents">> => list(agent_alias_history_event()),
-%%   <<"agentAliasId">> => string(),
-%%   <<"agentAliasName">> => string(),
-%%   <<"agentAliasStatus">> => list(any()),
-%%   <<"agentId">> => string(),
-%%   <<"aliasInvocationState">> => list(any()),
-%%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type agent_alias() :: #{binary() => any()}.
+-type agent_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% any_tool_choice() :: #{}
+-type any_tool_choice() :: #{}.
 
 
 %% Example:
-%% vector_search_bedrock_reranking_configuration() :: #{
-%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
-%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
-%%   <<"numberOfRerankedResults">> => [integer()]
+%% associate_agent_collaborator_request() :: #{
+%%   <<"agentDescriptor">> := agent_descriptor(),
+%%   <<"clientToken">> => string(),
+%%   <<"collaborationInstruction">> := string(),
+%%   <<"collaboratorName">> := string(),
+%%   <<"relayConversationHistory">> => list(any())
 %% }
--type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
+-type associate_agent_collaborator_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_identifier() :: #{
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3ObjectKey">> => string()
+%% associate_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
 %% }
--type s3_identifier() :: #{binary() => any()}.
+-type associate_agent_collaborator_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_prompts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"promptIdentifier">> => string()
+%% associate_agent_knowledge_base_request() :: #{
+%%   <<"description">> := string(),
+%%   <<"knowledgeBaseId">> := string(),
+%%   <<"knowledgeBaseState">> => list(any())
 %% }
--type list_prompts_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_agent_collaborator_request() :: #{}
--type disassociate_agent_collaborator_request() :: #{}.
+-type associate_agent_knowledge_base_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_agent_collaborators_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% associate_agent_knowledge_base_response() :: #{
+%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
 %% }
--type list_agent_collaborators_request() :: #{binary() => any()}.
+-type associate_agent_knowledge_base_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% share_point_source_configuration() :: #{
-%%   <<"authType">> => list(any()),
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"domain">> => string(),
-%%   <<"hostType">> => list(any()),
-%%   <<"siteUrls">> => list(string()),
-%%   <<"tenantId">> => string()
+%% audio_configuration() :: #{
+%%   <<"segmentationConfiguration">> => audio_segmentation_configuration()
 %% }
--type share_point_source_configuration() :: #{binary() => any()}.
+-type audio_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% web_crawler_configuration() :: #{
-%%   <<"crawlerLimits">> => web_crawler_limits(),
-%%   <<"exclusionFilters">> => list(string()),
-%%   <<"inclusionFilters">> => list(string()),
-%%   <<"scope">> => list(any()),
-%%   <<"userAgent">> => string(),
-%%   <<"userAgentHeader">> => string()
+%% audio_extraction_configuration() :: #{
+%%   <<"audioExtractionStatus">> => list(any())
 %% }
--type web_crawler_configuration() :: #{binary() => any()}.
+-type audio_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% audio_segmentation_configuration() :: #{
+%%   <<"fixedLengthDuration">> => [integer()]
+%% }
+-type audio_segmentation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_tool_choice() :: #{}
+-type auto_tool_choice() :: #{}.
+
+
+%% Example:
+%% bedrock_agent_function() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"requireConfirmation">> => list(any())
+%% }
+-type bedrock_agent_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_data_automation_configuration() :: #{
+%%   <<"parsingModality">> => list(any())
+%% }
+-type bedrock_data_automation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_embedding_model_configuration() :: #{
+%%   <<"audio">> => list(audio_configuration()),
+%%   <<"dimensions">> => integer(),
+%%   <<"embeddingDataType">> => list(any()),
+%%   <<"video">> => list(video_configuration())
+%% }
+-type bedrock_embedding_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_configuration() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"parsingModality">> => list(any()),
+%%   <<"parsingPrompt">> => parsing_prompt()
+%% }
+-type bedrock_foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_foundation_model_context_enrichment_configuration() :: #{
+%%   <<"enrichmentStrategyConfiguration">> => enrichment_strategy_configuration(),
+%%   <<"modelArn">> => string()
+%% }
+-type bedrock_foundation_model_context_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% byte_content_doc() :: #{
+%%   <<"data">> => binary(),
+%%   <<"mimeType">> => [string()]
+%% }
+-type byte_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_point_block() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type cache_point_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_prompt_template_configuration() :: #{
+%%   <<"inputVariables">> => list(prompt_input_variable()),
+%%   <<"messages">> => list(message()),
+%%   <<"system">> => list(list()),
+%%   <<"toolConfiguration">> => tool_configuration()
+%% }
+-type chat_prompt_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% chunking_configuration() :: #{
+%%   <<"chunkingStrategy">> => list(any()),
+%%   <<"fixedSizeChunkingConfiguration">> => fixed_size_chunking_configuration(),
+%%   <<"hierarchicalChunkingConfiguration">> => hierarchical_chunking_configuration(),
+%%   <<"semanticChunkingConfiguration">> => semantic_chunking_configuration()
+%% }
+-type chunking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% collector_flow_node_configuration() :: #{}
+-type collector_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% condition_flow_node_configuration() :: #{
+%%   <<"conditions">> => list(flow_condition())
+%% }
+-type condition_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type confluence_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => confluence_crawler_configuration(),
+%%   <<"sourceConfiguration">> => confluence_source_configuration()
+%% }
+-type confluence_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% confluence_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"hostType">> => list(any()),
+%%   <<"hostUrl">> => string()
+%% }
+-type confluence_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_enrichment_configuration() :: #{
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_context_enrichment_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type context_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% crawl_filter_configuration() :: #{
+%%   <<"patternObjectFilter">> => pattern_object_filter_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type crawl_filter_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2406,17 +630,265 @@
 %% }
 -type create_agent_action_group_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_agent_collaborator_request() :: #{}
--type get_agent_collaborator_request() :: #{}.
-
 
 %% Example:
-%% list_agent_action_groups_response() :: #{
-%%   <<"actionGroupSummaries">> => list(action_group_summary()),
-%%   <<"nextToken">> => string()
+%% create_agent_action_group_response() :: #{
+%%   <<"agentActionGroup">> => agent_action_group()
 %% }
--type list_agent_action_groups_response() :: #{binary() => any()}.
+-type create_agent_action_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_alias_request() :: #{
+%%   <<"agentAliasName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
+%%   <<"tags">> => map()
+%% }
+-type create_agent_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_alias_response() :: #{
+%%   <<"agentAlias">> => agent_alias()
+%% }
+-type create_agent_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_request() :: #{
+%%   <<"agentCollaboration">> => list(any()),
+%%   <<"agentName">> := string(),
+%%   <<"agentResourceRoleArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"customOrchestration">> => custom_orchestration(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"foundationModel">> => string(),
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"instruction">> => string(),
+%%   <<"memoryConfiguration">> => memory_configuration(),
+%%   <<"orchestrationType">> => list(any()),
+%%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_response() :: #{
+%%   <<"agent">> => agent()
+%% }
+-type create_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataDeletionPolicy">> => list(any()),
+%%   <<"dataSourceConfiguration">> := data_source_configuration(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%% }
+-type create_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
+%% }
+-type create_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_alias_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()),
+%%   <<"tags">> => map()
+%% }
+-type create_flow_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type create_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type create_flow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type create_flow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"storageConfiguration">> => storage_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base()
+%% }
+-type create_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"variants">> => list(prompt_variant())
+%% }
+-type create_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()),
+%%   <<"version">> => string()
+%% }
+-type create_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_prompt_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()),
+%%   <<"version">> => string()
+%% }
+-type create_prompt_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% curated_query() :: #{
+%%   <<"naturalLanguage">> => string(),
+%%   <<"sql">> => string()
+%% }
+-type curated_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_content() :: #{
+%%   <<"customDocumentIdentifier">> => custom_document_identifier(),
+%%   <<"inlineContent">> => inline_content(),
+%%   <<"s3Location">> => custom_s3_location(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type custom_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_document_identifier() :: #{
+%%   <<"id">> => [string()]
+%% }
+-type custom_document_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_orchestration() :: #{
+%%   <<"executor">> => list()
+%% }
+-type custom_orchestration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2428,27 +900,260 @@
 
 
 %% Example:
-%% crawl_filter_configuration() :: #{
-%%   <<"patternObjectFilter">> => pattern_object_filter_configuration(),
+%% custom_transformation_configuration() :: #{
+%%   <<"intermediateStorage">> => intermediate_storage(),
+%%   <<"transformations">> => list(transformation())
+%% }
+-type custom_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cyclic_connection_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type cyclic_connection_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataDeletionPolicy">> => list(any()),
+%%   <<"dataSourceConfiguration">> => data_source_configuration(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_configuration() :: #{
+%%   <<"confluenceConfiguration">> => confluence_data_source_configuration(),
+%%   <<"managedKnowledgeBaseConnectorConfiguration">> => managed_knowledge_base_connector_configuration(),
+%%   <<"s3Configuration">> => s3_data_source_configuration(),
+%%   <<"salesforceConfiguration">> => salesforce_data_source_configuration(),
+%%   <<"sharePointConfiguration">> => share_point_data_source_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"webConfiguration">> => web_data_source_configuration()
+%% }
+-type data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_summary() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_action_group_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_agent_action_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_agent_action_group_response() :: #{}
+-type delete_agent_action_group_response() :: #{}.
+
+%% Example:
+%% delete_agent_alias_request() :: #{}
+-type delete_agent_alias_request() :: #{}.
+
+
+%% Example:
+%% delete_agent_alias_response() :: #{
+%%   <<"agentAliasId">> => string(),
+%%   <<"agentAliasStatus">> => list(any()),
+%%   <<"agentId">> => string()
+%% }
+-type delete_agent_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_agent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"agentStatus">> => list(any())
+%% }
+-type delete_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_version_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_agent_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_version_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"agentStatus">> => list(any()),
+%%   <<"agentVersion">> => string()
+%% }
+-type delete_agent_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+
+%% Example:
+%% delete_data_source_response() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_alias_request() :: #{}
+-type delete_flow_alias_request() :: #{}.
+
+
+%% Example:
+%% delete_flow_alias_response() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string()
+%% }
+-type delete_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_version_request() :: #{
+%%   <<"skipResourceInUseCheck">> => [boolean()]
+%% }
+-type delete_flow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_flow_version_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"version">> => string()
+%% }
+-type delete_flow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_knowledge_base_documents_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"documentIdentifiers">> := list(document_identifier())
+%% }
+-type delete_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
+%% }
+-type delete_knowledge_base_documents_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_knowledge_base_request() :: #{}
+-type delete_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% delete_knowledge_base_response() :: #{
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_prompt_request() :: #{
+%%   <<"promptVersion">> => string()
+%% }
+-type delete_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_prompt_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"version">> => string()
+%% }
+-type delete_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deletion_protection_configuration() :: #{
+%%   <<"deletionProtectionStatus">> => list(any()),
+%%   <<"deletionProtectionThreshold">> => [integer()]
+%% }
+-type deletion_protection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_agent_collaborator_request() :: #{}
+-type disassociate_agent_collaborator_request() :: #{}.
+
+%% Example:
+%% disassociate_agent_collaborator_response() :: #{}
+-type disassociate_agent_collaborator_response() :: #{}.
+
+%% Example:
+%% disassociate_agent_knowledge_base_request() :: #{}
+-type disassociate_agent_knowledge_base_request() :: #{}.
+
+%% Example:
+%% disassociate_agent_knowledge_base_response() :: #{}
+-type disassociate_agent_knowledge_base_response() :: #{}.
+
+
+%% Example:
+%% document_access_control_entry() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"name">> => [string()],
 %%   <<"type">> => list(any())
 %% }
--type crawl_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
-%% }
--type create_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion_job_filter() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type ingestion_job_filter() :: #{binary() => any()}.
+-type document_access_control_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2458,6 +1163,171 @@
 %%   <<"s3">> => s3_content()
 %% }
 -type document_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_identifier() :: #{
+%%   <<"custom">> => custom_document_identifier(),
+%%   <<"dataSourceType">> => list(any()),
+%%   <<"s3">> => s3_location()
+%% }
+-type document_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_metadata() :: #{
+%%   <<"accessControlList">> => list(document_access_control_entry()),
+%%   <<"inlineAttributes">> => list(metadata_attribute()),
+%%   <<"s3Location">> => custom_s3_location(),
+%%   <<"type">> => list(any())
+%% }
+-type document_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_condition_expression_flow_validation_details() :: #{
+%%   <<"expression">> => string(),
+%%   <<"node">> => string()
+%% }
+-type duplicate_condition_expression_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_connections_flow_validation_details() :: #{
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type duplicate_connections_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% embedding_model_configuration() :: #{
+%%   <<"bedrockEmbeddingModelConfiguration">> => bedrock_embedding_model_configuration()
+%% }
+-type embedding_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% enrichment_strategy_configuration() :: #{
+%%   <<"method">> => list(any())
+%% }
+-type enrichment_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_for_reranking() :: #{
+%%   <<"fieldName">> => [string()]
+%% }
+-type field_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixed_size_chunking_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"overlapPercentage">> => [integer()]
+%% }
+-type fixed_size_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_alias_concurrency_configuration() :: #{
+%%   <<"maxConcurrency">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type flow_alias_concurrency_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_alias_routing_configuration_list_item() :: #{
+%%   <<"flowVersion">> => string()
+%% }
+-type flow_alias_routing_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_alias_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type flow_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_condition() :: #{
+%%   <<"expression">> => string(),
+%%   <<"name">> => string()
+%% }
+-type flow_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_conditional_connection_configuration() :: #{
+%%   <<"condition">> => string()
+%% }
+-type flow_conditional_connection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_connection() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"name">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_data_connection_configuration() :: #{
+%%   <<"sourceOutput">> => string(),
+%%   <<"targetInput">> => string()
+%% }
+-type flow_data_connection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_definition() :: #{
+%%   <<"connections">> => list(flow_connection()),
+%%   <<"nodes">> => list(flow_node())
+%% }
+-type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_node() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"inputs">> => list(flow_node_input()),
+%%   <<"name">> => string(),
+%%   <<"outputs">> => list(flow_node_output()),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_node_input() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"expression">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_node_output() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_node_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2475,115 +1345,818 @@
 
 
 %% Example:
-%% create_agent_alias_response() :: #{
-%%   <<"agentAlias">> => agent_alias()
+%% flow_validation() :: #{
+%%   <<"details">> => list(),
+%%   <<"message">> => string(),
+%%   <<"severity">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type create_agent_alias_response() :: #{binary() => any()}.
+-type flow_validation() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_source_summary() :: #{
+%% flow_version_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type flow_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_action_group_request() :: #{}
+-type get_agent_action_group_request() :: #{}.
+
+
+%% Example:
+%% get_agent_action_group_response() :: #{
+%%   <<"agentActionGroup">> => agent_action_group()
+%% }
+-type get_agent_action_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_alias_request() :: #{}
+-type get_agent_alias_request() :: #{}.
+
+
+%% Example:
+%% get_agent_alias_response() :: #{
+%%   <<"agentAlias">> => agent_alias()
+%% }
+-type get_agent_alias_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_collaborator_request() :: #{}
+-type get_agent_collaborator_request() :: #{}.
+
+
+%% Example:
+%% get_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
+%% }
+-type get_agent_collaborator_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_knowledge_base_request() :: #{}
+-type get_agent_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% get_agent_knowledge_base_response() :: #{
+%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
+%% }
+-type get_agent_knowledge_base_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_request() :: #{}
+-type get_agent_request() :: #{}.
+
+
+%% Example:
+%% get_agent_response() :: #{
+%%   <<"agent">> => agent()
+%% }
+-type get_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_version_request() :: #{}
+-type get_agent_version_request() :: #{}.
+
+
+%% Example:
+%% get_agent_version_response() :: #{
+%%   <<"agentVersion">> => agent_version()
+%% }
+-type get_agent_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_request() :: #{}
+-type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% get_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
+%% }
+-type get_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_alias_request() :: #{}
+-type get_flow_alias_request() :: #{}.
+
+
+%% Example:
+%% get_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_flow_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"validations">> => list(flow_validation()),
+%%   <<"version">> => string()
+%% }
+-type get_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_version_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_flow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type get_flow_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_job_request() :: #{}
+-type get_ingestion_job_request() :: #{}.
+
+
+%% Example:
+%% get_ingestion_job_response() :: #{
+%%   <<"ingestionJob">> => ingestion_job()
+%% }
+-type get_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_knowledge_base_documents_request() :: #{
+%%   <<"documentIdentifiers">> := list(document_identifier())
+%% }
+-type get_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
+%% }
+-type get_knowledge_base_documents_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_knowledge_base_request() :: #{}
+-type get_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% get_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base()
+%% }
+-type get_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_prompt_request() :: #{
+%%   <<"includedData">> => list(any()),
+%%   <<"promptVersion">> => string()
+%% }
+-type get_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"variants">> => list(prompt_variant()),
+%%   <<"version">> => string()
+%% }
+-type get_prompt_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string()
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_configuration() :: #{
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
+%%   <<"overlapTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchical_chunking_level_configuration() :: #{
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_extraction_configuration() :: #{
+%%   <<"imageExtractionStatus">> => list(any())
+%% }
+-type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% incompatible_connection_data_type_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type incompatible_connection_data_type_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maximumLength">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_knowledge_base_documents_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"documents">> := list(knowledge_base_document())
+%% }
+-type ingest_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
+%% }
+-type ingest_knowledge_base_documents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_job() :: #{
 %%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"ingestionJobId">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"statistics">> => ingestion_job_statistics(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ingestion_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_job_filter() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type ingestion_job_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_job_sort_by() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"order">> => list(any())
+%% }
+-type ingestion_job_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_job_statistics() :: #{
+%%   <<"numberOfDocumentsDeleted">> => [float()],
+%%   <<"numberOfDocumentsFailed">> => [float()],
+%%   <<"numberOfDocumentsScanned">> => [float()],
+%%   <<"numberOfDocumentsSkipped">> => [float()],
+%%   <<"numberOfMetadataDocumentsModified">> => [float()],
+%%   <<"numberOfMetadataDocumentsScanned">> => [float()],
+%%   <<"numberOfModifiedDocumentsIndexed">> => [float()],
+%%   <<"numberOfNewDocumentsIndexed">> => [float()]
+%% }
+-type ingestion_job_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_job_summary() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"ingestionJobId">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"statistics">> => ingestion_job_statistics(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ingestion_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_code_flow_node_configuration() :: #{
+%%   <<"code">> => string(),
+%%   <<"language">> => list(any())
+%% }
+-type inline_code_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_content() :: #{
+%%   <<"byteContent">> => byte_content_doc(),
+%%   <<"textContent">> => text_content_doc(),
+%%   <<"type">> => list(any())
+%% }
+-type inline_content() :: #{binary() => any()}.
+
+%% Example:
+%% input_flow_node_configuration() :: #{}
+-type input_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% intermediate_storage() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type intermediate_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_loop_boundary_flow_validation_details() :: #{
+%%   <<"connection">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type invalid_loop_boundary_flow_validation_details() :: #{binary() => any()}.
+
+%% Example:
+%% iterator_flow_node_configuration() :: #{}
+-type iterator_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% kendra_knowledge_base_configuration() :: #{
+%%   <<"kendraIndexArn">> => string()
+%% }
+-type kendra_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseConfiguration">> => knowledge_base_configuration(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"storageConfiguration">> => storage_configuration(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type knowledge_base() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_configuration() :: #{
+%%   <<"kendraKnowledgeBaseConfiguration">> => kendra_knowledge_base_configuration(),
+%%   <<"managedKnowledgeBaseConfiguration">> => managed_knowledge_base_configuration(),
+%%   <<"sqlKnowledgeBaseConfiguration">> => sql_knowledge_base_configuration(),
+%%   <<"type">> => list(any()),
+%%   <<"vectorKnowledgeBaseConfiguration">> => vector_knowledge_base_configuration()
+%% }
+-type knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_document() :: #{
+%%   <<"content">> => document_content(),
+%%   <<"metadata">> => document_metadata()
+%% }
+-type knowledge_base_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_document_detail() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"identifier">> => document_identifier(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type knowledge_base_document_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_flow_node_configuration() :: #{
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"inferenceConfiguration">> => list(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"numberOfResults">> => [integer()],
+%%   <<"orchestrationConfiguration">> => knowledge_base_orchestration_configuration(),
+%%   <<"promptTemplate">> => knowledge_base_prompt_template(),
+%%   <<"rerankingConfiguration">> => vector_search_reranking_configuration()
+%% }
+-type knowledge_base_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_orchestration_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"inferenceConfig">> => list(),
+%%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"promptTemplate">> => knowledge_base_prompt_template()
+%% }
+-type knowledge_base_orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_prompt_template() :: #{
+%%   <<"textPromptTemplate">> => string()
+%% }
+-type knowledge_base_prompt_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type data_source_summary() :: #{binary() => any()}.
+-type knowledge_base_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% agent_descriptor() :: #{
-%%   <<"aliasArn">> => string()
+%% lambda_function_flow_node_configuration() :: #{
+%%   <<"lambdaArn">> => string()
 %% }
--type agent_descriptor() :: #{binary() => any()}.
+-type lambda_function_flow_node_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% enrichment_strategy_configuration() :: #{
-%%   <<"method">> => list(any())
+%% lex_flow_node_configuration() :: #{
+%%   <<"botAliasArn">> => string(),
+%%   <<"localeId">> => string()
 %% }
--type enrichment_strategy_configuration() :: #{binary() => any()}.
+-type lex_flow_node_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% missing_loop_input_node_flow_validation_details() :: #{
-%%   <<"loopNode">> => string()
+%% list_agent_action_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type missing_loop_input_node_flow_validation_details() :: #{binary() => any()}.
+-type list_agent_action_groups_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% open_search_managed_cluster_configuration() :: #{
-%%   <<"domainArn">> => string(),
-%%   <<"domainEndpoint">> => string(),
-%%   <<"fieldMapping">> => open_search_managed_cluster_field_mapping(),
-%%   <<"vectorIndexName">> => string()
+%% list_agent_action_groups_response() :: #{
+%%   <<"actionGroupSummaries">> => list(action_group_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type open_search_managed_cluster_configuration() :: #{binary() => any()}.
+-type list_agent_action_groups_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% sql_knowledge_base_configuration() :: #{
-%%   <<"redshiftConfiguration">> => redshift_configuration(),
-%%   <<"type">> => list(any())
+%% list_agent_aliases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type sql_knowledge_base_configuration() :: #{binary() => any()}.
+-type list_agent_aliases_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_prompt_request() :: #{
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"defaultVariant">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"variants">> => list(prompt_variant())
+%% list_agent_aliases_response() :: #{
+%%   <<"agentAliasSummaries">> => list(agent_alias_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type update_prompt_request() :: #{binary() => any()}.
+-type list_agent_aliases_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% unknown_node_input_flow_validation_details() :: #{
+%% list_agent_collaborators_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_collaborators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_collaborators_response() :: #{
+%%   <<"agentCollaboratorSummaries">> => list(agent_collaborator_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_collaborators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_knowledge_bases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_knowledge_bases_response() :: #{
+%%   <<"agentKnowledgeBaseSummaries">> => list(agent_knowledge_base_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_versions_response() :: #{
+%%   <<"agentVersionSummaries">> => list(agent_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agents_response() :: #{
+%%   <<"agentSummaries">> => list(agent_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_response() :: #{
+%%   <<"dataSourceSummaries">> => list(data_source_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_aliases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_aliases_response() :: #{
+%%   <<"flowAliasSummaries">> => list(flow_alias_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_versions_response() :: #{
+%%   <<"flowVersionSummaries">> => list(flow_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flows_response() :: #{
+%%   <<"flowSummaries">> => list(flow_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestion_jobs_request() :: #{
+%%   <<"filters">> => list(ingestion_job_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => ingestion_job_sort_by()
+%% }
+-type list_ingestion_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestion_jobs_response() :: #{
+%%   <<"ingestionJobSummaries">> => list(ingestion_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ingestion_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_documents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_base_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_documents_response() :: #{
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_knowledge_base_documents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_response() :: #{
+%%   <<"knowledgeBaseSummaries">> => list(knowledge_base_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"promptIdentifier">> => string()
+%% }
+-type list_prompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"promptSummaries">> => list(prompt_summary())
+%% }
+-type list_prompts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_controller_flow_node_configuration() :: #{
+%%   <<"continueCondition">> => flow_condition(),
+%%   <<"maxIterations">> => [integer()]
+%% }
+-type loop_controller_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_flow_node_configuration() :: #{
+%%   <<"definition">> => flow_definition()
+%% }
+-type loop_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% loop_incompatible_node_type_flow_validation_details() :: #{
+%%   <<"incompatibleNodeName">> => string(),
+%%   <<"incompatibleNodeType">> => list(any()),
+%%   <<"node">> => string()
+%% }
+-type loop_incompatible_node_type_flow_validation_details() :: #{binary() => any()}.
+
+%% Example:
+%% loop_input_flow_node_configuration() :: #{}
+-type loop_input_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% malformed_condition_expression_flow_validation_details() :: #{
+%%   <<"cause">> => string(),
+%%   <<"condition">> => string(),
+%%   <<"node">> => string()
+%% }
+-type malformed_condition_expression_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_node_input_expression_flow_validation_details() :: #{
+%%   <<"cause">> => string(),
 %%   <<"input">> => string(),
 %%   <<"node">> => string()
 %% }
--type unknown_node_input_flow_validation_details() :: #{binary() => any()}.
+-type malformed_node_input_expression_flow_validation_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string(),
-%%   <<"policy">> := string()
+%% managed_knowledge_base_configuration() :: #{
+%%   <<"embeddingModelArn">> => string(),
+%%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
+%%   <<"embeddingModelType">> => list(any()),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration()
 %% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiple_loop_input_nodes_flow_validation_details() :: #{
-%%   <<"loopNode">> => string()
-%% }
--type multiple_loop_input_nodes_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_action_group() :: #{
-%%   <<"actionGroupExecutor">> => list(),
-%%   <<"actionGroupId">> => string(),
-%%   <<"actionGroupName">> => string(),
-%%   <<"actionGroupState">> => list(any()),
-%%   <<"agentId">> => string(),
-%%   <<"agentVersion">> => string(),
-%%   <<"apiSchema">> => list(),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"functionSchema">> => list(),
-%%   <<"parentActionGroupSignatureParams">> => map(),
-%%   <<"parentActionSignature">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type agent_action_group() :: #{binary() => any()}.
+-type managed_knowledge_base_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2596,63 +2169,37 @@
 
 
 %% Example:
-%% lex_flow_node_configuration() :: #{
-%%   <<"botAliasArn">> => string(),
-%%   <<"localeId">> => string()
+%% media_extraction_configuration() :: #{
+%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
+%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
 %% }
--type lex_flow_node_configuration() :: #{binary() => any()}.
+-type media_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% tool_configuration() :: #{
-%%   <<"toolChoice">> => list(),
-%%   <<"tools">> => list(list())
+%% memory_configuration() :: #{
+%%   <<"enabledMemoryTypes">> => list(list(any())()),
+%%   <<"sessionSummaryConfiguration">> => session_summary_configuration(),
+%%   <<"storageDays">> => integer()
 %% }
--type tool_configuration() :: #{binary() => any()}.
+-type memory_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% prompt_model_inference_configuration() :: #{
-%%   <<"maxTokens">> => integer(),
-%%   <<"stopSequences">> => list([string()]()),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
+%% message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
 %% }
--type prompt_model_inference_configuration() :: #{binary() => any()}.
+-type message() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_prompt_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"tags">> => map()
+%% metadata_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => metadata_attribute_value()
 %% }
--type create_prompt_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_knowledge_base_response() :: #{
-%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
-%% }
--type get_agent_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_alias_request() :: #{
-%%   <<"agentAliasName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
-%%   <<"tags">> => map()
-%% }
--type create_agent_alias_request() :: #{binary() => any()}.
+-type metadata_attribute() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2667,18 +2214,1021 @@
 
 
 %% Example:
-%% audio_configuration() :: #{
-%%   <<"segmentationConfiguration">> => audio_segmentation_configuration()
+%% metadata_configuration_for_reranking() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"selectiveModeConfiguration">> => list()
 %% }
--type audio_configuration() :: #{binary() => any()}.
+-type metadata_configuration_for_reranking() :: #{binary() => any()}.
+
+
+%% Example:
+%% mismatched_node_input_type_flow_validation_details() :: #{
+%%   <<"expectedType">> => list(any()),
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type mismatched_node_input_type_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% mismatched_node_output_type_flow_validation_details() :: #{
+%%   <<"expectedType">> => list(any()),
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type mismatched_node_output_type_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_connection_configuration_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type missing_connection_configuration_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_default_condition_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type missing_default_condition_flow_validation_details() :: #{binary() => any()}.
+
+%% Example:
+%% missing_ending_nodes_flow_validation_details() :: #{}
+-type missing_ending_nodes_flow_validation_details() :: #{}.
+
+
+%% Example:
+%% missing_loop_controller_node_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type missing_loop_controller_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_loop_input_node_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type missing_loop_input_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_node_configuration_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type missing_node_configuration_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type missing_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_node_output_flow_validation_details() :: #{
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type missing_node_output_flow_validation_details() :: #{binary() => any()}.
+
+%% Example:
+%% missing_starting_nodes_flow_validation_details() :: #{}
+-type missing_starting_nodes_flow_validation_details() :: #{}.
+
+
+%% Example:
+%% mongo_db_atlas_configuration() :: #{
+%%   <<"collectionName">> => string(),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"endpointServiceName">> => string(),
+%%   <<"fieldMapping">> => mongo_db_atlas_field_mapping(),
+%%   <<"textIndexName">> => string(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type mongo_db_atlas_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mongo_db_atlas_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type mongo_db_atlas_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_loop_controller_nodes_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type multiple_loop_controller_nodes_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_loop_input_nodes_flow_validation_details() :: #{
+%%   <<"loopNode">> => string()
+%% }
+-type multiple_loop_input_nodes_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiple_node_input_connections_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type multiple_node_input_connections_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% neptune_analytics_configuration() :: #{
+%%   <<"fieldMapping">> => neptune_analytics_field_mapping(),
+%%   <<"graphArn">> => string()
+%% }
+-type neptune_analytics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% neptune_analytics_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string()
+%% }
+-type neptune_analytics_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_managed_cluster_configuration() :: #{
+%%   <<"domainArn">> => string(),
+%%   <<"domainEndpoint">> => string(),
+%%   <<"fieldMapping">> => open_search_managed_cluster_field_mapping(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type open_search_managed_cluster_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_managed_cluster_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type open_search_managed_cluster_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_serverless_configuration() :: #{
+%%   <<"collectionArn">> => string(),
+%%   <<"fieldMapping">> => open_search_serverless_field_mapping(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type open_search_serverless_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_serverless_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type open_search_serverless_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% output_flow_node_configuration() :: #{}
+-type output_flow_node_configuration() :: #{}.
+
+
+%% Example:
+%% parameter_detail() :: #{
+%%   <<"description">> => string(),
+%%   <<"required">> => [boolean()],
+%%   <<"type">> => list(any())
+%% }
+-type parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_configuration() :: #{
+%%   <<"bedrockDataAutomationConfiguration">> => bedrock_data_automation_configuration(),
+%%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
+%%   <<"parsingStrategy">> => list(any())
+%% }
+-type parsing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% parsing_prompt() :: #{
+%%   <<"parsingPromptText">> => string()
+%% }
+-type parsing_prompt() :: #{binary() => any()}.
+
+
+%% Example:
+%% pattern_object_filter() :: #{
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
+%%   <<"objectType">> => string()
+%% }
+-type pattern_object_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% pattern_object_filter_configuration() :: #{
+%%   <<"filters">> => list(pattern_object_filter())
+%% }
+-type pattern_object_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pinecone_configuration() :: #{
+%%   <<"connectionString">> => string(),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"fieldMapping">> => pinecone_field_mapping(),
+%%   <<"namespace">> => string()
+%% }
+-type pinecone_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pinecone_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string()
+%% }
+-type pinecone_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% prepare_agent_request() :: #{}
+-type prepare_agent_request() :: #{}.
+
+
+%% Example:
+%% prepare_agent_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"agentStatus">> => list(any()),
+%%   <<"agentVersion">> => string(),
+%%   <<"preparedAt">> => non_neg_integer()
+%% }
+-type prepare_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% prepare_flow_request() :: #{}
+-type prepare_flow_request() :: #{}.
+
+
+%% Example:
+%% prepare_flow_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type prepare_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_agent_resource() :: #{
+%%   <<"agentIdentifier">> => string()
+%% }
+-type prompt_agent_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"basePromptTemplate">> => string(),
+%%   <<"foundationModel">> => string(),
+%%   <<"inferenceConfiguration">> => inference_configuration(),
+%%   <<"parserMode">> => list(any()),
+%%   <<"promptCreationMode">> => list(any()),
+%%   <<"promptState">> => list(any()),
+%%   <<"promptType">> => list(any())
+%% }
+-type prompt_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_flow_node_configuration() :: #{
+%%   <<"guardrailConfiguration">> => guardrail_configuration(),
+%%   <<"sourceConfiguration">> => list()
+%% }
+-type prompt_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_flow_node_inline_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"inferenceConfiguration">> => list(),
+%%   <<"modelId">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => list(any())
+%% }
+-type prompt_flow_node_inline_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_flow_node_resource_configuration() :: #{
+%%   <<"promptArn">> => string()
+%% }
+-type prompt_flow_node_resource_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_input_variable() :: #{
+%%   <<"name">> => string()
+%% }
+-type prompt_input_variable() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_metadata_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type prompt_metadata_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_model_inference_configuration() :: #{
+%%   <<"maxTokens">> => integer(),
+%%   <<"stopSequences">> => list([string()]()),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type prompt_model_inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_override_configuration() :: #{
+%%   <<"overrideLambda">> => string(),
+%%   <<"promptConfigurations">> => list(prompt_configuration())
+%% }
+-type prompt_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type prompt_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_variant() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"genAiResource">> => list(),
+%%   <<"inferenceConfiguration">> => list(),
+%%   <<"metadata">> => list(prompt_metadata_entry()),
+%%   <<"modelId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"templateConfiguration">> => list(),
+%%   <<"templateType">> => list(any())
+%% }
+-type prompt_variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_column() :: #{
+%%   <<"description">> => string(),
+%%   <<"inclusion">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type query_generation_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_configuration() :: #{
+%%   <<"executionTimeoutSeconds">> => integer(),
+%%   <<"generationContext">> => query_generation_context()
+%% }
+-type query_generation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_context() :: #{
+%%   <<"curatedQueries">> => list(curated_query()),
+%%   <<"tables">> => list(query_generation_table())
+%% }
+-type query_generation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_generation_table() :: #{
+%%   <<"columns">> => list(query_generation_column()),
+%%   <<"description">> => string(),
+%%   <<"inclusion">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type query_generation_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_configuration() :: #{
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"fieldMapping">> => rds_field_mapping(),
+%%   <<"resourceArn">> => string(),
+%%   <<"tableName">> => string()
+%% }
+-type rds_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_field_mapping() :: #{
+%%   <<"customMetadataField">> => string(),
+%%   <<"metadataField">> => string(),
+%%   <<"primaryKeyField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type rds_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% redis_enterprise_cloud_configuration() :: #{
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"fieldMapping">> => redis_enterprise_cloud_field_mapping(),
+%%   <<"vectorIndexName">> => string()
+%% }
+-type redis_enterprise_cloud_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redis_enterprise_cloud_field_mapping() :: #{
+%%   <<"metadataField">> => string(),
+%%   <<"textField">> => string(),
+%%   <<"vectorField">> => string()
+%% }
+-type redis_enterprise_cloud_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_configuration() :: #{
+%%   <<"queryEngineConfiguration">> => redshift_query_engine_configuration(),
+%%   <<"queryGenerationConfiguration">> => query_generation_configuration(),
+%%   <<"storageConfigurations">> => list(redshift_query_engine_storage_configuration())
+%% }
+-type redshift_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_provisioned_auth_configuration() :: #{
+%%   <<"databaseUser">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"usernamePasswordSecretArn">> => string()
+%% }
+-type redshift_provisioned_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_provisioned_configuration() :: #{
+%%   <<"authConfiguration">> => redshift_provisioned_auth_configuration(),
+%%   <<"clusterIdentifier">> => string()
+%% }
+-type redshift_provisioned_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_aws_data_catalog_storage_configuration() :: #{
+%%   <<"tableNames">> => list(string())
+%% }
+-type redshift_query_engine_aws_data_catalog_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_configuration() :: #{
+%%   <<"provisionedConfiguration">> => redshift_provisioned_configuration(),
+%%   <<"serverlessConfiguration">> => redshift_serverless_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type redshift_query_engine_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_redshift_storage_configuration() :: #{
+%%   <<"databaseName">> => string()
+%% }
+-type redshift_query_engine_redshift_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_query_engine_storage_configuration() :: #{
+%%   <<"awsDataCatalogConfiguration">> => redshift_query_engine_aws_data_catalog_storage_configuration(),
+%%   <<"redshiftConfiguration">> => redshift_query_engine_redshift_storage_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type redshift_query_engine_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_serverless_auth_configuration() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"usernamePasswordSecretArn">> => string()
+%% }
+-type redshift_serverless_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_serverless_configuration() :: #{
+%%   <<"authConfiguration">> => redshift_serverless_auth_configuration(),
+%%   <<"workgroupArn">> => string()
+%% }
+-type redshift_serverless_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_flow_node_configuration() :: #{
+%%   <<"serviceConfiguration">> => list()
+%% }
+-type retrieval_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_flow_node_s3_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type retrieval_flow_node_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_content() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type s3_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_data_source_configuration() :: #{
+%%   <<"bucketArn">> => string(),
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"inclusionPrefixes">> => list(string())
+%% }
+-type s3_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_identifier() :: #{
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3ObjectKey">> => string()
+%% }
+-type s3_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_vectors_configuration() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketArn">> => string()
+%% }
+-type s3_vectors_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type salesforce_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => salesforce_crawler_configuration(),
+%%   <<"sourceConfiguration">> => salesforce_source_configuration()
+%% }
+-type salesforce_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"hostUrl">> => string()
+%% }
+-type salesforce_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% seed_url() :: #{
+%%   <<"url">> => string()
+%% }
+-type seed_url() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_chunking_configuration() :: #{
+%%   <<"breakpointPercentileThreshold">> => [integer()],
+%%   <<"bufferSize">> => [integer()],
+%%   <<"maxTokens">> => [integer()]
+%% }
+-type semantic_chunking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary_configuration() :: #{
+%%   <<"maxRecentSessions">> => integer()
+%% }
+-type session_summary_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_crawler_configuration() :: #{
+%%   <<"filterConfiguration">> => crawl_filter_configuration()
+%% }
+-type share_point_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => share_point_crawler_configuration(),
+%%   <<"sourceConfiguration">> => share_point_source_configuration()
+%% }
+-type share_point_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_source_configuration() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"credentialsSecretArn">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"hostType">> => list(any()),
+%%   <<"siteUrls">> => list(string()),
+%%   <<"tenantId">> => string()
+%% }
+-type share_point_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% specific_tool_choice() :: #{
+%%   <<"name">> => string()
+%% }
+-type specific_tool_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% sql_knowledge_base_configuration() :: #{
+%%   <<"redshiftConfiguration">> => redshift_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type sql_knowledge_base_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_ingestion_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type start_ingestion_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_ingestion_job_response() :: #{
+%%   <<"ingestionJob">> => ingestion_job()
+%% }
+-type start_ingestion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_ingestion_job_request() :: #{}
+-type stop_ingestion_job_request() :: #{}.
+
+
+%% Example:
+%% stop_ingestion_job_response() :: #{
+%%   <<"ingestionJob">> => ingestion_job()
+%% }
+-type stop_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_configuration() :: #{
+%%   <<"mongoDbAtlasConfiguration">> => mongo_db_atlas_configuration(),
+%%   <<"neptuneAnalyticsConfiguration">> => neptune_analytics_configuration(),
+%%   <<"opensearchManagedClusterConfiguration">> => open_search_managed_cluster_configuration(),
+%%   <<"opensearchServerlessConfiguration">> => open_search_serverless_configuration(),
+%%   <<"pineconeConfiguration">> => pinecone_configuration(),
+%%   <<"rdsConfiguration">> => rds_configuration(),
+%%   <<"redisEnterpriseCloudConfiguration">> => redis_enterprise_cloud_configuration(),
+%%   <<"s3VectorsConfiguration">> => s3_vectors_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_flow_node_configuration() :: #{
+%%   <<"serviceConfiguration">> => list()
+%% }
+-type storage_flow_node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_flow_node_s3_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type storage_flow_node_s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_data_storage_configuration() :: #{
+%%   <<"storageLocations">> => list(supplemental_data_storage_location())
+%% }
+-type supplemental_data_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_data_storage_location() :: #{
+%%   <<"s3Location">> => s3_location(),
+%%   <<"type">> => list(any())
+%% }
+-type supplemental_data_storage_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+
 %% Example:
-%% get_flow_alias_request() :: #{}
--type get_flow_alias_request() :: #{}.
+%% text_content_doc() :: #{
+%%   <<"data">> => string()
+%% }
+-type text_content_doc() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_prompt_template_configuration() :: #{
+%%   <<"cachePoint">> => cache_point_block(),
+%%   <<"inputVariables">> => list(prompt_input_variable()),
+%%   <<"text">> => string()
+%% }
+-type text_prompt_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_configuration() :: #{
+%%   <<"toolChoice">> => list(),
+%%   <<"tools">> => list(list())
+%% }
+-type tool_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_specification() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => list(),
+%%   <<"name">> => string(),
+%%   <<"strict">> => [boolean()]
+%% }
+-type tool_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation() :: #{
+%%   <<"stepToApply">> => list(any()),
+%%   <<"transformationFunction">> => transformation_function()
+%% }
+-type transformation() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_function() :: #{
+%%   <<"transformationLambdaConfiguration">> => transformation_lambda_configuration()
+%% }
+-type transformation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% transformation_lambda_configuration() :: #{
+%%   <<"lambdaArn">> => string()
+%% }
+-type transformation_lambda_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unfulfilled_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type unfulfilled_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_condition_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_condition_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_source_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_source_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_source_output_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_source_output_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_target_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_target_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_connection_target_input_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unknown_connection_target_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_node_input_flow_validation_details() :: #{
+%%   <<"input">> => string(),
+%%   <<"node">> => string()
+%% }
+-type unknown_node_input_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_node_output_flow_validation_details() :: #{
+%%   <<"node">> => string(),
+%%   <<"output">> => string()
+%% }
+-type unknown_node_output_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unreachable_node_flow_validation_details() :: #{
+%%   <<"node">> => string()
+%% }
+-type unreachable_node_flow_validation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsatisfied_connection_conditions_flow_validation_details() :: #{
+%%   <<"connection">> => string()
+%% }
+-type unsatisfied_connection_conditions_flow_validation_details() :: #{binary() => any()}.
+
+%% Example:
+%% unspecified_flow_validation_details() :: #{}
+-type unspecified_flow_validation_details() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_agent_action_group_request() :: #{
+%%   <<"actionGroupExecutor">> => list(),
+%%   <<"actionGroupName">> := string(),
+%%   <<"actionGroupState">> => list(any()),
+%%   <<"apiSchema">> => list(),
+%%   <<"description">> => string(),
+%%   <<"functionSchema">> => list(),
+%%   <<"parentActionGroupSignature">> => list(any()),
+%%   <<"parentActionGroupSignatureParams">> => map()
+%% }
+-type update_agent_action_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_action_group_response() :: #{
+%%   <<"agentActionGroup">> => agent_action_group()
+%% }
+-type update_agent_action_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_alias_request() :: #{
+%%   <<"agentAliasName">> := string(),
+%%   <<"aliasInvocationState">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item())
+%% }
+-type update_agent_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_alias_response() :: #{
+%%   <<"agentAlias">> => agent_alias()
+%% }
+-type update_agent_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_collaborator_request() :: #{
+%%   <<"agentDescriptor">> := agent_descriptor(),
+%%   <<"collaborationInstruction">> := string(),
+%%   <<"collaboratorName">> := string(),
+%%   <<"relayConversationHistory">> => list(any())
+%% }
+-type update_agent_collaborator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_collaborator_response() :: #{
+%%   <<"agentCollaborator">> => agent_collaborator()
+%% }
+-type update_agent_collaborator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_knowledge_base_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseState">> => list(any())
+%% }
+-type update_agent_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_knowledge_base_response() :: #{
+%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
+%% }
+-type update_agent_knowledge_base_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2701,133 +3251,10 @@
 
 
 %% Example:
-%% document_access_control_entry() :: #{
-%%   <<"access">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"type">> => list(any())
+%% update_agent_response() :: #{
+%%   <<"agent">> => agent()
 %% }
--type document_access_control_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% cyclic_connection_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type cyclic_connection_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_alias_concurrency_configuration() :: #{
-%%   <<"maxConcurrency">> => [integer()],
-%%   <<"type">> => list(any())
-%% }
--type flow_alias_concurrency_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_request() :: #{
-%%   <<"skipResourceInUseCheck">> => [boolean()]
-%% }
--type delete_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition_flow_node_configuration() :: #{
-%%   <<"conditions">> => list(flow_condition())
-%% }
--type condition_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_prompt_template_configuration() :: #{
-%%   <<"inputVariables">> => list(prompt_input_variable()),
-%%   <<"messages">> => list(message()),
-%%   <<"system">> => list(list()),
-%%   <<"toolConfiguration">> => tool_configuration()
-%% }
--type chat_prompt_template_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_collaborators_response() :: #{
-%%   <<"agentCollaboratorSummaries">> => list(agent_collaborator_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_collaborators_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_condition_expression_flow_validation_details() :: #{
-%%   <<"cause">> => string(),
-%%   <<"condition">> => string(),
-%%   <<"node">> => string()
-%% }
--type malformed_condition_expression_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_configuration_for_reranking() :: #{
-%%   <<"selectionMode">> => list(any()),
-%%   <<"selectiveModeConfiguration">> => list()
-%% }
--type metadata_configuration_for_reranking() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_version_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customerEncryptionKeyArn">> => string(),
-%%   <<"definition">> => flow_definition(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type create_flow_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agent_alias_request() :: #{}
--type delete_agent_alias_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% update_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base()
-%% }
--type update_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_alias_history_event() :: #{
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
-%%   <<"startDate">> => non_neg_integer()
-%% }
--type agent_alias_history_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_loop_boundary_flow_validation_details() :: #{
-%%   <<"connection">> => string(),
-%%   <<"source">> => string(),
-%%   <<"target">> => string()
-%% }
--type invalid_loop_boundary_flow_validation_details() :: #{binary() => any()}.
+-type update_agent_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2843,297 +3270,46 @@
 
 
 %% Example:
-%% update_agent_knowledge_base_request() :: #{
+%% update_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
+%% }
+-type update_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_alias_request() :: #{
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"description">> => string(),
-%%   <<"knowledgeBaseState">> => list(any())
+%%   <<"name">> := string(),
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item())
 %% }
--type update_agent_knowledge_base_request() :: #{binary() => any()}.
+-type update_flow_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% redis_enterprise_cloud_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string(),
-%%   <<"vectorField">> => string()
-%% }
--type redis_enterprise_cloud_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_metadata() :: #{
-%%   <<"accessControlList">> => list(document_access_control_entry()),
-%%   <<"inlineAttributes">> => list(metadata_attribute()),
-%%   <<"s3Location">> => custom_s3_location(),
-%%   <<"type">> => list(any())
-%% }
--type document_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% output_flow_node_configuration() :: #{}
--type output_flow_node_configuration() :: #{}.
-
-
-%% Example:
-%% ingestion_job_sort_by() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"order">> => list(any())
-%% }
--type ingestion_job_sort_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_aliases_response() :: #{
-%%   <<"flowAliasSummaries">> => list(flow_alias_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_flow_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% duplicate_connections_flow_validation_details() :: #{
-%%   <<"source">> => string(),
-%%   <<"target">> => string()
-%% }
--type duplicate_connections_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_ingestion_job_response() :: #{
-%%   <<"ingestionJob">> => ingestion_job()
-%% }
--type stop_ingestion_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_response() :: #{
-%%   <<"agent">> => agent()
-%% }
--type get_agent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchical_chunking_level_configuration() :: #{
-%%   <<"maxTokens">> => [integer()]
-%% }
--type hierarchical_chunking_level_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsatisfied_connection_conditions_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type unsatisfied_connection_conditions_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_serverless_configuration() :: #{
-%%   <<"authConfiguration">> => redshift_serverless_auth_configuration(),
-%%   <<"workgroupArn">> => string()
-%% }
--type redshift_serverless_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_knowledge_base() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"agentVersion">> => string(),
+%% update_flow_alias_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseState">> => list(any()),
+%%   <<"flowId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type agent_knowledge_base() :: #{binary() => any()}.
+-type update_flow_alias_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% lambda_function_flow_node_configuration() :: #{
-%%   <<"lambdaArn">> => string()
-%% }
--type lambda_function_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_search_bedrock_reranking_model_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => map(),
-%%   <<"modelArn">> => string()
-%% }
--type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% collector_flow_node_configuration() :: #{}
--type collector_flow_node_configuration() :: #{}.
-
-
-%% Example:
-%% agent_summary() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"agentName">> => string(),
-%%   <<"agentStatus">> => list(any()),
+%% update_flow_request() :: #{
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"definition">> => flow_definition(),
 %%   <<"description">> => string(),
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"latestAgentVersion">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := string()
 %% }
--type agent_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_data_automation_configuration() :: #{
-%%   <<"parsingModality">> => list(any())
-%% }
--type bedrock_data_automation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% confluence_crawler_configuration() :: #{
-%%   <<"filterConfiguration">> => crawl_filter_configuration()
-%% }
--type confluence_crawler_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_bases_response() :: #{
-%%   <<"knowledgeBaseSummaries">> => list(knowledge_base_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_knowledge_bases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base()
-%% }
--type get_knowledge_base_response() :: #{binary() => any()}.
-
-%% Example:
-%% prepare_flow_request() :: #{}
--type prepare_flow_request() :: #{}.
-
-
-%% Example:
-%% flow_conditional_connection_configuration() :: #{
-%%   <<"condition">> => string()
-%% }
--type flow_conditional_connection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail())
-%% }
--type get_knowledge_base_documents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% incompatible_connection_data_type_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type incompatible_connection_data_type_flow_validation_details() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_agent_knowledge_base_response() :: #{}
--type disassociate_agent_knowledge_base_response() :: #{}.
-
-
-%% Example:
-%% list_agent_versions_response() :: #{
-%%   <<"agentVersionSummaries">> => list(agent_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_data_source_configuration() :: #{
-%%   <<"crawlerConfiguration">> => web_crawler_configuration(),
-%%   <<"sourceConfiguration">> => web_source_configuration()
-%% }
--type web_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_version_response() :: #{
-%%   <<"agentVersion">> => agent_version()
-%% }
--type get_agent_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% supplemental_data_storage_location() :: #{
-%%   <<"s3Location">> => s3_location(),
-%%   <<"type">> => list(any())
-%% }
--type supplemental_data_storage_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_configuration() :: #{
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string()
-%% }
--type guardrail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_node_output_flow_validation_details() :: #{
-%%   <<"node">> => string(),
-%%   <<"output">> => string()
-%% }
--type missing_node_output_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_ingestion_job_response() :: #{
-%%   <<"ingestionJob">> => ingestion_job()
-%% }
--type start_ingestion_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_request() :: #{}
--type get_agent_request() :: #{}.
-
-
-%% Example:
-%% inline_content() :: #{
-%%   <<"byteContent">> => byte_content_doc(),
-%%   <<"textContent">> => text_content_doc(),
-%%   <<"type">> => list(any())
-%% }
--type inline_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_alias_routing_configuration_list_item() :: #{
-%%   <<"flowVersion">> => string()
-%% }
--type flow_alias_routing_configuration_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% unspecified_flow_validation_details() :: #{}
--type unspecified_flow_validation_details() :: #{}.
+-type update_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3154,131 +3330,85 @@
 
 
 %% Example:
-%% prompt_agent_resource() :: #{
-%%   <<"agentIdentifier">> => string()
-%% }
--type prompt_agent_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_flow_node_resource_configuration() :: #{
-%%   <<"promptArn">> => string()
-%% }
--type prompt_flow_node_resource_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% neptune_analytics_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string()
-%% }
--type neptune_analytics_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_query_engine_redshift_storage_configuration() :: #{
-%%   <<"databaseName">> => string()
-%% }
--type redshift_query_engine_redshift_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_request() :: #{
-%%   <<"includedData">> => list(any())
-%% }
--type get_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_collaborator_response() :: #{
-%%   <<"agentCollaborator">> => agent_collaborator()
-%% }
--type get_agent_collaborator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_knowledge_bases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_knowledge_bases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataDeletionPolicy">> => list(any()),
-%%   <<"dataSourceConfiguration">> => data_source_configuration(),
-%%   <<"dataSourceId">> => string(),
+%% update_knowledge_base_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()),
-%%   <<"knowledgeBaseId">> => string(),
+%%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"storageConfiguration">> => storage_configuration()
+%% }
+-type update_knowledge_base_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base()
+%% }
+-type update_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_prompt_request() :: #{
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"variants">> => list(prompt_variant())
+%% }
+-type update_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_prompt_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"defaultVariant">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"vectorIngestionConfiguration">> => vector_ingestion_configuration()
+%%   <<"variants">> => list(prompt_variant()),
+%%   <<"version">> => string()
 %% }
--type data_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_knowledge_base_request() :: #{}
--type get_knowledge_base_request() :: #{}.
+-type update_prompt_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% unfulfilled_node_input_flow_validation_details() :: #{
-%%   <<"input">> => string(),
-%%   <<"node">> => string()
+%% url_configuration() :: #{
+%%   <<"seedUrls">> => list(seed_url())
 %% }
--type unfulfilled_node_input_flow_validation_details() :: #{binary() => any()}.
+-type url_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_agent_knowledge_base_request() :: #{
-%%   <<"description">> := string(),
-%%   <<"knowledgeBaseId">> := string(),
-%%   <<"knowledgeBaseState">> => list(any())
+%% validate_flow_definition_request() :: #{
+%%   <<"definition">> := flow_definition()
 %% }
--type associate_agent_knowledge_base_request() :: #{binary() => any()}.
+-type validate_flow_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% unknown_connection_target_input_flow_validation_details() :: #{
-%%   <<"connection">> => string()
+%% validate_flow_definition_response() :: #{
+%%   <<"validations">> => list(flow_validation())
 %% }
--type unknown_connection_target_input_flow_validation_details() :: #{binary() => any()}.
+-type validate_flow_definition_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% redshift_configuration() :: #{
-%%   <<"queryEngineConfiguration">> => redshift_query_engine_configuration(),
-%%   <<"queryGenerationConfiguration">> => query_generation_configuration(),
-%%   <<"storageConfigurations">> => list(redshift_query_engine_storage_configuration())
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string()
 %% }
--type redshift_configuration() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_agent_knowledge_base_response() :: #{
-%%   <<"agentKnowledgeBase">> => agent_knowledge_base()
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
 %% }
--type associate_agent_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% pinecone_field_mapping() :: #{
-%%   <<"metadataField">> => string(),
-%%   <<"textField">> => string()
-%% }
--type pinecone_field_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_configuration() :: #{
-%%   <<"segmentationConfiguration">> => video_segmentation_configuration()
-%% }
--type video_configuration() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3292,21 +3422,6 @@
 
 
 %% Example:
-%% deletion_protection_configuration() :: #{
-%%   <<"deletionProtectionStatus">> => list(any()),
-%%   <<"deletionProtectionThreshold">> => [integer()]
-%% }
--type deletion_protection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_connection_condition_flow_validation_details() :: #{
-%%   <<"connection">> => string()
-%% }
--type unknown_connection_condition_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
 %% vector_knowledge_base_configuration() :: #{
 %%   <<"embeddingModelArn">> => string(),
 %%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
@@ -3316,782 +3431,667 @@
 
 
 %% Example:
-%% get_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
+%% vector_search_bedrock_reranking_configuration() :: #{
+%%   <<"metadataConfiguration">> => metadata_configuration_for_reranking(),
+%%   <<"modelConfiguration">> => vector_search_bedrock_reranking_model_configuration(),
+%%   <<"numberOfRerankedResults">> => [integer()]
 %% }
--type get_data_source_response() :: #{binary() => any()}.
+-type vector_search_bedrock_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% redshift_query_engine_aws_data_catalog_storage_configuration() :: #{
-%%   <<"tableNames">> => list(string())
+%% vector_search_bedrock_reranking_model_configuration() :: #{
+%%   <<"additionalModelRequestFields">> => map(),
+%%   <<"modelArn">> => string()
 %% }
--type redshift_query_engine_aws_data_catalog_storage_configuration() :: #{binary() => any()}.
+-type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% retrieval_flow_node_s3_configuration() :: #{
-%%   <<"bucketName">> => string()
+%% vector_search_reranking_configuration() :: #{
+%%   <<"bedrockRerankingConfiguration">> => vector_search_bedrock_reranking_configuration(),
+%%   <<"type">> => list(any())
 %% }
--type retrieval_flow_node_s3_configuration() :: #{binary() => any()}.
+-type vector_search_reranking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_agent_version_response() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"agentStatus">> => list(any()),
-%%   <<"agentVersion">> => string()
+%% video_configuration() :: #{
+%%   <<"segmentationConfiguration">> => video_segmentation_configuration()
 %% }
--type delete_agent_version_response() :: #{binary() => any()}.
+-type video_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_generation_table() :: #{
-%%   <<"columns">> => list(query_generation_column()),
-%%   <<"description">> => string(),
-%%   <<"inclusion">> => list(any()),
-%%   <<"name">> => string()
+%% video_extraction_configuration() :: #{
+%%   <<"videoExtractionStatus">> => list(any())
 %% }
--type query_generation_table() :: #{binary() => any()}.
+-type video_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% mongo_db_atlas_configuration() :: #{
-%%   <<"collectionName">> => string(),
-%%   <<"credentialsSecretArn">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"endpointServiceName">> => string(),
-%%   <<"fieldMapping">> => mongo_db_atlas_field_mapping(),
-%%   <<"textIndexName">> => string(),
-%%   <<"vectorIndexName">> => string()
+%% video_segmentation_configuration() :: #{
+%%   <<"fixedLengthDuration">> => [integer()]
 %% }
--type mongo_db_atlas_configuration() :: #{binary() => any()}.
+-type video_segmentation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% custom_content() :: #{
-%%   <<"customDocumentIdentifier">> => custom_document_identifier(),
-%%   <<"inlineContent">> => inline_content(),
-%%   <<"s3Location">> => custom_s3_location(),
-%%   <<"sourceType">> => list(any())
+%% web_crawler_configuration() :: #{
+%%   <<"crawlerLimits">> => web_crawler_limits(),
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
+%%   <<"scope">> => list(any()),
+%%   <<"userAgent">> => string(),
+%%   <<"userAgentHeader">> => string()
 %% }
--type custom_content() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_alias_request() :: #{}
--type get_agent_alias_request() :: #{}.
+-type web_crawler_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail())
+%% web_crawler_limits() :: #{
+%%   <<"maxPages">> => [integer()],
+%%   <<"rateLimit">> => [integer()]
 %% }
--type delete_knowledge_base_documents_response() :: #{binary() => any()}.
+-type web_crawler_limits() :: #{binary() => any()}.
 
 
 %% Example:
-%% bedrock_embedding_model_configuration() :: #{
-%%   <<"audio">> => list(audio_configuration()),
-%%   <<"dimensions">> => integer(),
-%%   <<"embeddingDataType">> => list(any()),
-%%   <<"video">> => list(video_configuration())
+%% web_data_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => web_crawler_configuration(),
+%%   <<"sourceConfiguration">> => web_source_configuration()
 %% }
--type bedrock_embedding_model_configuration() :: #{binary() => any()}.
+-type web_data_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% missing_node_configuration_flow_validation_details() :: #{
-%%   <<"node">> => string()
+%% web_source_configuration() :: #{
+%%   <<"urlConfiguration">> => url_configuration()
 %% }
--type missing_node_configuration_flow_validation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_flow_node_configuration() :: #{
-%%   <<"guardrailConfiguration">> => guardrail_configuration(),
-%%   <<"sourceConfiguration">> => list()
-%% }
--type prompt_flow_node_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_agent_collaborator_response() :: #{
-%%   <<"agentCollaborator">> => agent_collaborator()
-%% }
--type associate_agent_collaborator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_data_source_configuration() :: #{
-%%   <<"bucketArn">> => string(),
-%%   <<"bucketOwnerAccountId">> => string(),
-%%   <<"inclusionPrefixes">> => list(string())
-%% }
--type s3_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_field_mapping() :: #{
-%%   <<"customMetadataField">> => string(),
-%%   <<"metadataField">> => string(),
-%%   <<"primaryKeyField">> => string(),
-%%   <<"textField">> => string(),
-%%   <<"vectorField">> => string()
-%% }
--type rds_field_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% loop_input_flow_node_configuration() :: #{}
--type loop_input_flow_node_configuration() :: #{}.
-
-
-%% Example:
-%% delete_flow_version_request() :: #{
-%%   <<"skipResourceInUseCheck">> => [boolean()]
-%% }
--type delete_flow_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_configuration() :: #{
-%%   <<"additionalModelRequestFields">> => [any()],
-%%   <<"basePromptTemplate">> => string(),
-%%   <<"foundationModel">> => string(),
-%%   <<"inferenceConfiguration">> => inference_configuration(),
-%%   <<"parserMode">> => list(any()),
-%%   <<"promptCreationMode">> => list(any()),
-%%   <<"promptState">> => list(any()),
-%%   <<"promptType">> => list(any())
-%% }
--type prompt_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_configuration() :: #{
-%%   <<"latency">> => list(any())
-%% }
--type performance_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% supplemental_data_storage_configuration() :: #{
-%%   <<"storageLocations">> => list(supplemental_data_storage_location())
-%% }
--type supplemental_data_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% message() :: #{
-%%   <<"content">> => list(list()),
-%%   <<"role">> => list(any())
-%% }
--type message() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_variant() :: #{
-%%   <<"additionalModelRequestFields">> => [any()],
-%%   <<"genAiResource">> => list(),
-%%   <<"inferenceConfiguration">> => list(),
-%%   <<"metadata">> => list(prompt_metadata_entry()),
-%%   <<"modelId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"templateConfiguration">> => list(),
-%%   <<"templateType">> => list(any())
-%% }
--type prompt_variant() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_generation_configuration() :: #{
-%%   <<"executionTimeoutSeconds">> => integer(),
-%%   <<"generationContext">> => query_generation_context()
-%% }
--type query_generation_configuration() :: #{binary() => any()}.
+-type web_source_configuration() :: #{binary() => any()}.
 
 -type associate_agent_collaborator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_agent_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agent_action_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agent_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_flow_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_flow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_prompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_prompt_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_agent_action_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_agent_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_agent_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_flow_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_flow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_knowledge_base_documents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_prompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_agent_collaborator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_agent_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_action_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_collaborator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_flow_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_flow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_knowledge_base_documents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_prompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type ingest_knowledge_base_documents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_agent_action_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_aliases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_collaborators_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_knowledge_bases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_flow_aliases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_flow_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_flows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_ingestion_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_knowledge_base_documents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_knowledge_bases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_prompts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type prepare_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type prepare_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_agent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_agent_action_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_agent_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_agent_collaborator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_agent_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_flow_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_knowledge_base_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_prompt_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type validate_flow_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

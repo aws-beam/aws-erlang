@@ -59,34 +59,26 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentless_dialer_config() :: #{
+%%   <<"dialingCapacity">> => float()
+%% }
+-type agentless_dialer_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% answer_machine_detection_config() :: #{
 %%   <<"awaitAnswerMachinePrompt">> => [boolean()],
 %%   <<"enableAnswerMachineDetection">> => [boolean()]
 %% }
 -type answer_machine_detection_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_campaign_response() :: #{
-%%   <<"campaign">> => campaign()
-%% }
--type describe_campaign_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_config() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"encryptionType">> => string(),
-%%   <<"keyArn">> => string()
-%% }
--type encryption_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -103,124 +95,20 @@
 
 
 %% Example:
-%% successful_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"id">> => string()
+%% campaign_filters() :: #{
+%%   <<"instanceIdFilter">> => instance_id_filter()
 %% }
--type successful_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_onboarding_job_request() :: #{}
--type delete_instance_onboarding_job_request() :: #{}.
-
-%% Example:
-%% delete_connect_instance_config_request() :: #{}
--type delete_connect_instance_config_request() :: #{}.
+-type campaign_filters() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_campaign_state_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_campaign_state_response()),
-%%   <<"successfulRequests">> => list(successful_campaign_state_response())
-%% }
--type get_campaign_state_batch_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_onboarding_job_status() :: #{
+%% campaign_summary() :: #{
+%%   <<"arn">> => string(),
 %%   <<"connectInstanceId">> => string(),
-%%   <<"failureCode">> => string(),
-%%   <<"status">> => string()
-%% }
--type instance_onboarding_job_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_campaigns_response() :: #{
-%%   <<"campaignSummaryList">> => list(campaign_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_campaigns_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_state_response() :: #{
-%%   <<"state">> => string()
-%% }
--type get_campaign_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_campaign_request() :: #{}
--type delete_campaign_request() :: #{}.
-
-%% Example:
-%% describe_campaign_request() :: #{}
--type describe_campaign_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_id_filter() :: #{
-%%   <<"operator">> => string(),
-%%   <<"value">> => string()
-%% }
--type instance_id_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_campaign_state_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"state">> => string(),
-%%   <<"xAmzErrorType">> => string()
-%% }
--type invalid_campaign_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_campaigns_request() :: #{
-%%   <<"filters">> => campaign_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_campaigns_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dial_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"expirationTime">> => non_neg_integer(),
-%%   <<"phoneNumber">> => string()
-%% }
--type dial_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_campaign_name_request() :: #{
+%%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
--type update_campaign_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_instance_onboarding_job_response() :: #{
-%%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
-%% }
--type start_instance_onboarding_job_response() :: #{binary() => any()}.
+-type campaign_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -229,113 +117,6 @@
 %%   <<"xAmzErrorType">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_campaign_state_request() :: #{}
--type get_campaign_state_request() :: #{}.
-
-
-%% Example:
-%% agentless_dialer_config() :: #{
-%%   <<"dialingCapacity">> => float()
-%% }
--type agentless_dialer_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_dial_request_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_request()),
-%%   <<"successfulRequests">> => list(successful_request())
-%% }
--type put_dial_request_batch_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resume_campaign_request() :: #{}
--type resume_campaign_request() :: #{}.
-
-%% Example:
-%% get_connect_instance_config_request() :: #{}
--type get_connect_instance_config_request() :: #{}.
-
-
-%% Example:
-%% get_campaign_state_batch_request() :: #{
-%%   <<"campaignIds">> => list(string())
-%% }
--type get_campaign_state_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_campaign_dialer_config_request() :: #{
-%%   <<"dialerConfig">> => list()
-%% }
--type update_campaign_dialer_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_dial_request_batch_request() :: #{
-%%   <<"dialRequests">> => list(dial_request())
-%% }
--type put_dial_request_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% progressive_dialer_config() :: #{
-%%   <<"bandwidthAllocation">> => float(),
-%%   <<"dialingCapacity">> => float()
-%% }
--type progressive_dialer_config() :: #{binary() => any()}.
-
-%% Example:
-%% stop_campaign_request() :: #{}
--type stop_campaign_request() :: #{}.
-
-%% Example:
-%% pause_campaign_request() :: #{}
--type pause_campaign_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_campaign_request() :: #{}
--type start_campaign_request() :: #{}.
 
 
 %% Example:
@@ -350,65 +131,62 @@
 
 
 %% Example:
-%% get_instance_onboarding_job_status_response() :: #{
-%%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
+%% create_campaign_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"tags">> => map()
 %% }
--type get_instance_onboarding_job_status_response() :: #{binary() => any()}.
+-type create_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_request() :: #{}
+-type delete_campaign_request() :: #{}.
+
+%% Example:
+%% delete_connect_instance_config_request() :: #{}
+-type delete_connect_instance_config_request() :: #{}.
+
+%% Example:
+%% delete_instance_onboarding_job_request() :: #{}
+-type delete_instance_onboarding_job_request() :: #{}.
+
+%% Example:
+%% describe_campaign_request() :: #{}
+-type describe_campaign_request() :: #{}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
+%% describe_campaign_response() :: #{
+%%   <<"campaign">> => campaign()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type describe_campaign_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_connect_instance_config_response() :: #{
-%%   <<"connectInstanceConfig">> => instance_config()
+%% dial_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"expirationTime">> => non_neg_integer(),
+%%   <<"phoneNumber">> => string()
 %% }
--type get_connect_instance_config_response() :: #{binary() => any()}.
+-type dial_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% instance_config() :: #{
-%%   <<"connectInstanceId">> => string(),
-%%   <<"encryptionConfig">> => encryption_config(),
-%%   <<"serviceLinkedRoleArn">> => string()
+%% encryption_config() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"encryptionType">> => string(),
+%%   <<"keyArn">> => string()
 %% }
--type instance_config() :: #{binary() => any()}.
+-type encryption_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"xAmzErrorType">> => string()
+%% failed_campaign_state_response() :: #{
+%%   <<"campaignId">> => string(),
+%%   <<"failureCode">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_call_config() :: #{
-%%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
-%%   <<"connectContactFlowId">> => string(),
-%%   <<"connectQueueId">> => string(),
-%%   <<"connectSourcePhoneNumber">> => string()
-%% }
--type outbound_call_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_campaign_outbound_call_config_request() :: #{
-%%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
-%%   <<"connectContactFlowId">> => string(),
-%%   <<"connectSourcePhoneNumber">> => string()
-%% }
--type update_campaign_outbound_call_config_request() :: #{binary() => any()}.
+-type failed_campaign_state_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -421,6 +199,147 @@
 
 
 %% Example:
+%% get_campaign_state_batch_request() :: #{
+%%   <<"campaignIds">> => list(string())
+%% }
+-type get_campaign_state_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_state_batch_response() :: #{
+%%   <<"failedRequests">> => list(failed_campaign_state_response()),
+%%   <<"successfulRequests">> => list(successful_campaign_state_response())
+%% }
+-type get_campaign_state_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_campaign_state_request() :: #{}
+-type get_campaign_state_request() :: #{}.
+
+
+%% Example:
+%% get_campaign_state_response() :: #{
+%%   <<"state">> => string()
+%% }
+-type get_campaign_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connect_instance_config_request() :: #{}
+-type get_connect_instance_config_request() :: #{}.
+
+
+%% Example:
+%% get_connect_instance_config_response() :: #{
+%%   <<"connectInstanceConfig">> => instance_config()
+%% }
+-type get_connect_instance_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_onboarding_job_status_request() :: #{}
+-type get_instance_onboarding_job_status_request() :: #{}.
+
+
+%% Example:
+%% get_instance_onboarding_job_status_response() :: #{
+%%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
+%% }
+-type get_instance_onboarding_job_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_config() :: #{
+%%   <<"connectInstanceId">> => string(),
+%%   <<"encryptionConfig">> => encryption_config(),
+%%   <<"serviceLinkedRoleArn">> => string()
+%% }
+-type instance_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_id_filter() :: #{
+%%   <<"operator">> => string(),
+%%   <<"value">> => string()
+%% }
+-type instance_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_onboarding_job_status() :: #{
+%%   <<"connectInstanceId">> => string(),
+%%   <<"failureCode">> => string(),
+%%   <<"status">> => string()
+%% }
+-type instance_onboarding_job_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_campaign_state_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"state">> => string(),
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type invalid_campaign_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_campaigns_request() :: #{
+%%   <<"filters">> => campaign_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_campaigns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_campaigns_response() :: #{
+%%   <<"campaignSummaryList">> => list(campaign_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_campaigns_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_call_config() :: #{
+%%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
+%%   <<"connectContactFlowId">> => string(),
+%%   <<"connectQueueId">> => string(),
+%%   <<"connectSourcePhoneNumber">> => string()
+%% }
+-type outbound_call_config() :: #{binary() => any()}.
+
+%% Example:
+%% pause_campaign_request() :: #{}
+-type pause_campaign_request() :: #{}.
+
+
+%% Example:
 %% predictive_dialer_config() :: #{
 %%   <<"bandwidthAllocation">> => float(),
 %%   <<"dialingCapacity">> => float()
@@ -429,12 +348,68 @@
 
 
 %% Example:
-%% create_campaign_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"tags">> => map()
+%% progressive_dialer_config() :: #{
+%%   <<"bandwidthAllocation">> => float(),
+%%   <<"dialingCapacity">> => float()
 %% }
--type create_campaign_response() :: #{binary() => any()}.
+-type progressive_dialer_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_dial_request_batch_request() :: #{
+%%   <<"dialRequests">> => list(dial_request())
+%% }
+-type put_dial_request_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_dial_request_batch_response() :: #{
+%%   <<"failedRequests">> => list(failed_request()),
+%%   <<"successfulRequests">> => list(successful_request())
+%% }
+-type put_dial_request_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resume_campaign_request() :: #{}
+-type resume_campaign_request() :: #{}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_campaign_request() :: #{}
+-type start_campaign_request() :: #{}.
+
+
+%% Example:
+%% start_instance_onboarding_job_request() :: #{
+%%   <<"encryptionConfig">> => encryption_config()
+%% }
+-type start_instance_onboarding_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_instance_onboarding_job_response() :: #{
+%%   <<"connectInstanceOnboardingJobStatus">> => instance_onboarding_job_status()
+%% }
+-type start_instance_onboarding_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_campaign_request() :: #{}
+-type stop_campaign_request() :: #{}.
 
 
 %% Example:
@@ -446,201 +421,226 @@
 
 
 %% Example:
-%% campaign_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"connectInstanceId">> => string(),
-%%   <<"id">> => string(),
+%% successful_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> => string()
+%% }
+-type successful_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> => list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_campaign_dialer_config_request() :: #{
+%%   <<"dialerConfig">> => list()
+%% }
+-type update_campaign_dialer_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_campaign_name_request() :: #{
 %%   <<"name">> => string()
 %% }
--type campaign_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_onboarding_job_status_request() :: #{}
--type get_instance_onboarding_job_status_request() :: #{}.
+-type update_campaign_name_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% failed_campaign_state_response() :: #{
-%%   <<"campaignId">> => string(),
-%%   <<"failureCode">> => string()
+%% update_campaign_outbound_call_config_request() :: #{
+%%   <<"answerMachineDetectionConfig">> => answer_machine_detection_config(),
+%%   <<"connectContactFlowId">> => string(),
+%%   <<"connectSourcePhoneNumber">> => string()
 %% }
--type failed_campaign_state_response() :: #{binary() => any()}.
+-type update_campaign_outbound_call_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_instance_onboarding_job_request() :: #{
-%%   <<"encryptionConfig">> => encryption_config()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"xAmzErrorType">> => string()
 %% }
--type start_instance_onboarding_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_filters() :: #{
-%%   <<"instanceIdFilter">> => instance_id_filter()
-%% }
--type campaign_filters() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_campaign_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_connect_instance_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_instance_onboarding_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_campaign_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_campaign_state_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_campaign_state_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_connect_instance_config_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_instance_onboarding_job_status_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_campaigns_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type pause_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_campaign_state_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_campaign_state_exception().
+    access_denied_exception().
 
 -type put_dial_request_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_campaign_state_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_campaign_state_exception().
+    access_denied_exception().
 
 -type resume_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_campaign_state_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_campaign_state_exception().
+    access_denied_exception().
 
 -type start_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_campaign_state_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_campaign_state_exception().
+    access_denied_exception().
 
 -type start_instance_onboarding_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_campaign_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    invalid_campaign_state_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_campaign_state_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_campaign_dialer_config_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_campaign_name_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_campaign_outbound_call_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

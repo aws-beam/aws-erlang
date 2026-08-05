@@ -200,60 +200,48 @@
 
 
 %% Example:
-%% get_resolver_query_log_config_association_request() :: #{
-%%   <<"ResolverQueryLogConfigAssociationId">> := string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_resolver_query_log_config_association_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_rule_group_association_response() :: #{
+%% associate_firewall_rule_group_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Priority">> := integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcId">> := string()
+%% }
+-type associate_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_rule_group_response() :: #{
 %%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
 %% }
--type update_firewall_rule_group_association_response() :: #{binary() => any()}.
+-type associate_firewall_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% resolver_config() :: #{
-%%   <<"AutodefinedReverse">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResourceId">> => string()
+%% associate_resolver_endpoint_ip_address_request() :: #{
+%%   <<"IpAddress">> := ip_address_update(),
+%%   <<"ResolverEndpointId">> := string()
 %% }
--type resolver_config() :: #{binary() => any()}.
+-type associate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
 
 %% Example:
-%% ip_address_update() :: #{
-%%   <<"Ip">> => string(),
-%%   <<"IpId">> => string(),
-%%   <<"Ipv6">> => string(),
-%%   <<"SubnetId">> => string()
+%% associate_resolver_endpoint_ip_address_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
 %% }
--type ip_address_update() :: #{binary() => any()}.
+-type associate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_resolver_dnssec_config_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"Validation">> := list(any())
+%% associate_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string(),
+%%   <<"ResourceId">> := string()
 %% }
--type update_resolver_dnssec_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_firewall_rule_group_request() :: #{
-%%   <<"FirewallRuleGroupAssociationId">> := string()
-%% }
--type disassociate_firewall_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_rule_group_response() :: #{
-%%   <<"FirewallRuleGroup">> => firewall_rule_group()
-%% }
--type create_firewall_rule_group_response() :: #{binary() => any()}.
+-type associate_resolver_query_log_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_resolver_query_log_config_response() :: #{
@@ -262,82 +250,18 @@
 -type associate_resolver_query_log_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_update_firewall_rule_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"FirewallRule">> => update_firewall_rule_entry(),
-%%   <<"Message">> => string()
-%% }
--type batch_update_firewall_rule_error() :: #{binary() => any()}.
-
-%% Example:
-%% create_resolver_query_log_config_response() :: #{
-%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
-%% }
--type create_resolver_query_log_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_group_association_response() :: #{
-%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
-%% }
--type get_firewall_rule_group_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_rule_type() :: #{
-%%   <<"DnsThreatProtection">> => dns_threat_protection_rule_type_config(),
-%%   <<"FirewallAdvancedContentCategory">> => firewall_advanced_content_category_config(),
-%%   <<"FirewallAdvancedThreatCategory">> => firewall_advanced_threat_category_config(),
-%%   <<"PartnerThreatProtection">> => partner_threat_protection_config()
-%% }
--type firewall_rule_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_rule_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"BlockOverrideDnsType">> => list(any()),
-%%   <<"BlockOverrideDomain">> => string(),
-%%   <<"BlockOverrideTtl">> => integer(),
-%%   <<"BlockResponse">> => list(any()),
-%%   <<"ConfidenceThreshold">> => list(any()),
-%%   <<"DnsThreatProtection">> => list(any()),
-%%   <<"FirewallDomainListId">> => string(),
-%%   <<"FirewallDomainRedirectionAction">> => list(any()),
-%%   <<"FirewallRuleGroupId">> := string(),
-%%   <<"FirewallRuleType">> => firewall_rule_type(),
-%%   <<"FirewallThreatProtectionId">> => string(),
+%% associate_resolver_rule_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Qtype">> => string()
+%%   <<"ResolverRuleId">> := string(),
+%%   <<"VPCId">> := string()
 %% }
--type update_firewall_rule_request() :: #{binary() => any()}.
+-type associate_resolver_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_firewall_rules_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"FirewallRuleGroupId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Priority">> => integer()
+%% associate_resolver_rule_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
 %% }
--type list_firewall_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_dnssec_config_response() :: #{
-%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
-%% }
--type get_resolver_dnssec_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_endpoint_request() :: #{
-%%   <<"ResolverEndpointId">> := string()
-%% }
--type get_resolver_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rules_response() :: #{
-%%   <<"FirewallRules">> => list(firewall_rule()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_rules_response() :: #{binary() => any()}.
+-type associate_resolver_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_firewall_rule_error() :: #{
@@ -348,107 +272,113 @@
 -type batch_create_firewall_rule_error() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% batch_create_firewall_rule_request() :: #{
+%%   <<"CreateFirewallRuleEntries">> := list(create_firewall_rule_entry())
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type batch_create_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resolver_query_log_config_response() :: #{
-%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
+%% batch_create_firewall_rule_response() :: #{
+%%   <<"CreateErrors">> => list(batch_create_firewall_rule_error()),
+%%   <<"CreatedFirewallRules">> => list(firewall_rule())
 %% }
--type delete_resolver_query_log_config_response() :: #{binary() => any()}.
+-type batch_create_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_firewall_configs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% batch_delete_firewall_rule_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"FirewallRule">> => delete_firewall_rule_entry(),
+%%   <<"Message">> => string()
 %% }
--type list_firewall_configs_request() :: #{binary() => any()}.
+-type batch_delete_firewall_rule_error() :: #{binary() => any()}.
 
 %% Example:
-%% associate_resolver_query_log_config_request() :: #{
-%%   <<"ResolverQueryLogConfigId">> := string(),
-%%   <<"ResourceId">> := string()
+%% batch_delete_firewall_rule_request() :: #{
+%%   <<"DeleteFirewallRuleEntries">> := list(delete_firewall_rule_entry())
 %% }
--type associate_resolver_query_log_config_request() :: #{binary() => any()}.
+-type batch_delete_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
+%% batch_delete_firewall_rule_response() :: #{
+%%   <<"DeleteErrors">> => list(batch_delete_firewall_rule_error()),
+%%   <<"DeletedFirewallRules">> => list(firewall_rule())
 %% }
--type resource_in_use_exception() :: #{binary() => any()}.
+-type batch_delete_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_resolver_endpoint_response() :: #{
-%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% batch_update_firewall_rule_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"FirewallRule">> => update_firewall_rule_entry(),
+%%   <<"Message">> => string()
 %% }
--type update_resolver_endpoint_response() :: #{binary() => any()}.
+-type batch_update_firewall_rule_error() :: #{binary() => any()}.
 
 %% Example:
-%% get_firewall_domain_list_response() :: #{
+%% batch_update_firewall_rule_request() :: #{
+%%   <<"UpdateFirewallRuleEntries">> := list(update_firewall_rule_entry())
+%% }
+-type batch_update_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_firewall_rule_response() :: #{
+%%   <<"UpdateErrors">> => list(batch_update_firewall_rule_error()),
+%%   <<"UpdatedFirewallRules">> => list(firewall_rule())
+%% }
+-type batch_update_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_domain_list_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_domain_list_response() :: #{
 %%   <<"FirewallDomainList">> => firewall_domain_list()
 %% }
--type get_firewall_domain_list_response() :: #{binary() => any()}.
+-type create_firewall_domain_list_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_rule_group_association_request() :: #{
-%%   <<"FirewallRuleGroupAssociationId">> := string(),
-%%   <<"MutationProtection">> => list(any()),
+%% create_firewall_rule_entry() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallDomainRedirectionAction">> => list(any()),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
 %%   <<"Name">> => string(),
-%%   <<"Priority">> => integer()
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
 %% }
--type update_firewall_rule_group_association_request() :: #{binary() => any()}.
+-type create_firewall_rule_entry() :: #{binary() => any()}.
 
 %% Example:
-%% list_firewall_rule_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RuleType">> => string()
+%% create_firewall_rule_group_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_firewall_rule_types_request() :: #{binary() => any()}.
+-type create_firewall_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_resolver_dnssec_configs_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group()
 %% }
--type list_resolver_dnssec_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_query_log_configs_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_resolver_query_log_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_outpost_resolver_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"PreferredInstanceType">> => string()
-%% }
--type update_outpost_resolver_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_domain_lists_response() :: #{
-%%   <<"FirewallDomainLists">> => list(firewall_domain_list_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_domain_lists_response() :: #{binary() => any()}.
+-type create_firewall_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_firewall_rule_request() :: #{
@@ -471,229 +401,27 @@
 -type create_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% firewall_domain_list() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Category">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"DomainCount">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"ManagedListType">> => list(any()),
-%%   <<"ManagedOwnerName">> => string(),
-%%   <<"ModificationTime">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type firewall_domain_list() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_group_response() :: #{
-%%   <<"FirewallRuleGroup">> => firewall_rule_group()
-%% }
--type get_firewall_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_domain_lists_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_domain_lists_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_rules_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resolver_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_group_request() :: #{
-%%   <<"FirewallRuleGroupId">> := string()
-%% }
--type get_firewall_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_config() :: #{
-%%   <<"FirewallFailOpen">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type firewall_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_resolver_rule_request() :: #{
-%%   <<"Config">> := resolver_rule_config(),
-%%   <<"ResolverRuleId">> := string()
-%% }
--type update_resolver_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_domain_list_response() :: #{
-%%   <<"FirewallDomainList">> => firewall_domain_list()
-%% }
--type delete_firewall_domain_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_advanced_content_category_config() :: #{
-%%   <<"Category">> => string()
-%% }
--type firewall_advanced_content_category_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_domain_list_request() :: #{
-%%   <<"FirewallDomainListId">> := string()
-%% }
--type delete_firewall_domain_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_domain_list_request() :: #{
-%%   <<"FirewallDomainListId">> := string()
-%% }
--type get_firewall_domain_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_dnssec_config_request() :: #{
-%%   <<"ResourceId">> := string()
-%% }
--type get_resolver_dnssec_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% resolver_query_log_config() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociationCount">> => integer(),
-%%   <<"CreationTime">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ShareStatus">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type resolver_query_log_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_endpoints_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resolver_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_resolver_query_log_config_request() :: #{
-%%   <<"CreatorRequestId">> := string(),
-%%   <<"DestinationArn">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_resolver_query_log_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_resolver_rule_policy_response() :: #{
-%%   <<"ReturnValue">> => boolean()
-%% }
--type put_resolver_rule_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_domain_list_request() :: #{
-%%   <<"CreatorRequestId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_firewall_domain_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_resolver_query_log_config_request() :: #{
-%%   <<"ResolverQueryLogConfigId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type disassociate_resolver_query_log_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_rule_association_request() :: #{
-%%   <<"ResolverRuleAssociationId">> := string()
-%% }
--type get_resolver_rule_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_query_log_config_association_response() :: #{
-%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
-%% }
--type get_resolver_query_log_config_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% ip_address_request() :: #{
-%%   <<"Ip">> => string(),
-%%   <<"Ipv6">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type ip_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resolver_query_log_config_request() :: #{
-%%   <<"ResolverQueryLogConfigId">> := string()
-%% }
--type delete_resolver_query_log_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_domains_request() :: #{
-%%   <<"FirewallDomainListId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_resolver_config_response() :: #{
-%%   <<"ResolverConfig">> => resolver_config()
-%% }
--type update_resolver_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% resolver_rule_association() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResolverRuleId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VPCId">> => string()
-%% }
--type resolver_rule_association() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_rule_response() :: #{
+%% create_firewall_rule_response() :: #{
 %%   <<"FirewallRule">> => firewall_rule()
 %% }
--type update_firewall_rule_response() :: #{binary() => any()}.
+-type create_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_firewall_rule_group_request() :: #{
+%% create_outpost_resolver_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
-%%   <<"FirewallRuleGroupId">> := string(),
-%%   <<"MutationProtection">> => list(any()),
+%%   <<"InstanceCount">> => integer(),
 %%   <<"Name">> := string(),
-%%   <<"Priority">> := integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcId">> := string()
+%%   <<"OutpostArn">> := string(),
+%%   <<"PreferredInstanceType">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type associate_firewall_rule_group_request() :: #{binary() => any()}.
+-type create_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type create_outpost_resolver_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_resolver_endpoint_request() :: #{
@@ -715,71 +443,65 @@
 -type create_resolver_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_firewall_rule_response() :: #{
-%%   <<"FirewallRule">> => firewall_rule()
+%% create_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
 %% }
--type delete_firewall_rule_response() :: #{binary() => any()}.
+-type create_resolver_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_outpost_resolver_request() :: #{
+%% create_resolver_query_log_config_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
-%%   <<"InstanceCount">> => integer(),
+%%   <<"DestinationArn">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"OutpostArn">> := string(),
-%%   <<"PreferredInstanceType">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_outpost_resolver_request() :: #{binary() => any()}.
+-type create_resolver_query_log_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resolver_rule_request() :: #{
-%%   <<"ResolverRuleId">> := string()
+%% create_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
 %% }
--type delete_resolver_rule_request() :: #{binary() => any()}.
+-type create_resolver_query_log_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_resolver_query_log_config_response() :: #{
-%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
-%% }
--type disassociate_resolver_query_log_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_rule_association_response() :: #{
-%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
-%% }
--type get_resolver_rule_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_endpoints_response() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverEndpoints">> => list(resolver_endpoint())
-%% }
--type list_resolver_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_rule_group_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Id">> => string(),
+%% create_resolver_rule_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"DelegationRecord">> => string(),
+%%   <<"DomainName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ShareStatus">> => list(any())
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"RuleType">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetIps">> => list(target_address())
 %% }
--type firewall_rule_group_metadata() :: #{binary() => any()}.
+-type create_resolver_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_resolver_rule_policy_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ResolverRulePolicy">> := string()
+%% create_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
 %% }
--type put_resolver_rule_policy_request() :: #{binary() => any()}.
+-type create_resolver_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_firewall_config_response() :: #{
-%%   <<"FirewallConfig">> => firewall_config()
+%% delete_firewall_domain_list_request() :: #{
+%%   <<"FirewallDomainListId">> := string()
 %% }
--type get_firewall_config_response() :: #{binary() => any()}.
+-type delete_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_domain_list_response() :: #{
+%%   <<"FirewallDomainList">> => firewall_domain_list()
+%% }
+-type delete_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_entry() :: #{
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Qtype">> => string()
+%% }
+-type delete_firewall_rule_entry() :: #{binary() => any()}.
 
 %% Example:
 %% delete_firewall_rule_group_request() :: #{
@@ -788,192 +510,43 @@
 -type delete_firewall_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_resolver_config_request() :: #{
-%%   <<"ResourceId">> := string()
-%% }
--type get_resolver_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_endpoint_ip_addresses_response() :: #{
-%%   <<"IpAddresses">> => list(ip_address_response()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resolver_endpoint_ip_addresses_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_rule_entry() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"BlockOverrideDnsType">> => list(any()),
-%%   <<"BlockOverrideDomain">> => string(),
-%%   <<"BlockOverrideTtl">> => integer(),
-%%   <<"BlockResponse">> => list(any()),
-%%   <<"ConfidenceThreshold">> => list(any()),
-%%   <<"DnsThreatProtection">> => list(any()),
-%%   <<"FirewallDomainListId">> => string(),
-%%   <<"FirewallDomainRedirectionAction">> => list(any()),
-%%   <<"FirewallRuleGroupId">> => string(),
-%%   <<"FirewallRuleType">> => firewall_rule_type(),
-%%   <<"FirewallThreatProtectionId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Qtype">> => string()
-%% }
--type update_firewall_rule_entry() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_resolver_endpoint_ip_address_response() :: #{
-%%   <<"ResolverEndpoint">> => resolver_endpoint()
-%% }
--type disassociate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resolver_rule_response() :: #{
-%%   <<"ResolverRule">> => resolver_rule()
-%% }
--type update_resolver_rule_response() :: #{binary() => any()}.
-
-%% Example:
 %% delete_firewall_rule_group_response() :: #{
 %%   <<"FirewallRuleGroup">> => firewall_rule_group()
 %% }
 -type delete_firewall_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_firewall_rule_request() :: #{
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Qtype">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type delete_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
+%% delete_firewall_rule_response() :: #{
+%%   <<"FirewallRule">> => firewall_rule()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type delete_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_resolver_rule_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ResolverRuleId">> := string(),
-%%   <<"VPCId">> := string()
+%% delete_outpost_resolver_request() :: #{
+%%   <<"Id">> := string()
 %% }
--type associate_resolver_rule_request() :: #{binary() => any()}.
+-type delete_outpost_resolver_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_outpost_resolvers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostArn">> => string()
+%% delete_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
 %% }
--type list_outpost_resolvers_request() :: #{binary() => any()}.
+-type delete_outpost_resolver_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_resolver_rule_policy_response() :: #{
-%%   <<"ResolverRulePolicy">> => string()
+%% delete_resolver_endpoint_request() :: #{
+%%   <<"ResolverEndpointId">> := string()
 %% }
--type get_resolver_rule_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% partner_threat_protection_config() :: #{
-%%   <<"Partner">> => string()
-%% }
--type partner_threat_protection_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_configs_response() :: #{
-%%   <<"FirewallConfigs">> => list(firewall_config()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rule_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_rule_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_domain_list_response() :: #{
-%%   <<"FirewallDomainList">> => firewall_domain_list()
-%% }
--type create_firewall_domain_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resolver_rule() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"DelegationRecord">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModificationTime">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResolverEndpointId">> => string(),
-%%   <<"RuleType">> => list(any()),
-%%   <<"ShareStatus">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"TargetIps">> => list(target_address())
-%% }
--type resolver_rule() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_advanced_threat_category_config() :: #{
-%%   <<"Category">> => string()
-%% }
--type firewall_advanced_threat_category_config() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_rule_request() :: #{
-%%   <<"ResolverRuleId">> := string()
-%% }
--type get_resolver_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_rule_group_association() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"FirewallRuleGroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ManagedOwnerName">> => string(),
-%%   <<"ModificationTime">> => string(),
-%%   <<"MutationProtection">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type firewall_rule_group_association() :: #{binary() => any()}.
+-type delete_resolver_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resolver_endpoint_response() :: #{
@@ -982,74 +555,143 @@
 -type delete_resolver_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_firewall_rule_group_policy_request() :: #{
-%%   <<"Arn">> := string()
+%% delete_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string()
 %% }
--type get_firewall_rule_group_policy_request() :: #{binary() => any()}.
+-type delete_resolver_query_log_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_resolver_query_log_config_policy_response() :: #{
-%%   <<"ReturnValue">> => boolean()
+%% delete_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
 %% }
--type put_resolver_query_log_config_policy_response() :: #{binary() => any()}.
+-type delete_resolver_query_log_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_firewall_rule_request() :: #{
-%%   <<"CreateFirewallRuleEntries">> := list(create_firewall_rule_entry())
+%% delete_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string()
 %% }
--type batch_create_firewall_rule_request() :: #{binary() => any()}.
+-type delete_resolver_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_config_request() :: #{
-%%   <<"FirewallFailOpen">> := list(any()),
-%%   <<"ResourceId">> := string()
+%% delete_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
 %% }
--type update_firewall_config_request() :: #{binary() => any()}.
+-type delete_resolver_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_firewall_rule_request() :: #{
-%%   <<"DeleteFirewallRuleEntries">> := list(delete_firewall_rule_entry())
-%% }
--type batch_delete_firewall_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_group_association_request() :: #{
+%% disassociate_firewall_rule_group_request() :: #{
 %%   <<"FirewallRuleGroupAssociationId">> := string()
 %% }
--type get_firewall_rule_group_association_request() :: #{binary() => any()}.
+-type disassociate_firewall_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_firewall_rule_group_policy_response() :: #{
-%%   <<"ReturnValue">> => boolean()
+%% disassociate_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
 %% }
--type put_firewall_rule_group_policy_response() :: #{binary() => any()}.
+-type disassociate_firewall_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
+%% disassociate_resolver_endpoint_ip_address_request() :: #{
+%%   <<"IpAddress">> := ip_address_update(),
+%%   <<"ResolverEndpointId">> := string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type disassociate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_resolver_query_log_config_policy_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ResolverQueryLogConfigPolicy">> := string()
+%% disassociate_resolver_endpoint_ip_address_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
 %% }
--type put_resolver_query_log_config_policy_request() :: #{binary() => any()}.
+-type disassociate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_firewall_rule_response() :: #{
-%%   <<"CreateErrors">> => list(batch_create_firewall_rule_error()),
-%%   <<"CreatedFirewallRules">> => list(firewall_rule())
+%% disassociate_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string(),
+%%   <<"ResourceId">> := string()
 %% }
--type batch_create_firewall_rule_response() :: #{binary() => any()}.
+-type disassociate_resolver_query_log_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_outpost_resolver_response() :: #{
-%%   <<"OutpostResolver">> => outpost_resolver()
+%% disassociate_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
 %% }
--type get_outpost_resolver_response() :: #{binary() => any()}.
+-type disassociate_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string(),
+%%   <<"VPCId">> := string()
+%% }
+-type disassociate_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_rule_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
+%% }
+-type disassociate_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_threat_protection_rule_type_config() :: #{
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dns_threat_protection_rule_type_config() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_advanced_content_category_config() :: #{
+%%   <<"Category">> => string()
+%% }
+-type firewall_advanced_content_category_config() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_advanced_threat_category_config() :: #{
+%%   <<"Category">> => string()
+%% }
+-type firewall_advanced_threat_category_config() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_config() :: #{
+%%   <<"FirewallFailOpen">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type firewall_config() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_domain_list() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DomainCount">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedListType">> => list(any()),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type firewall_domain_list() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_domain_list_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedListType">> => list(any()),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type firewall_domain_list_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_rule() :: #{
@@ -1077,10 +719,686 @@
 -type firewall_rule() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_firewall_rule_group_response() :: #{
+%% firewall_rule_group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"RuleCount">> => integer(),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type firewall_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group_association() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type firewall_rule_group_association() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ShareStatus">> => list(any())
+%% }
+-type firewall_rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_type() :: #{
+%%   <<"DnsThreatProtection">> => dns_threat_protection_rule_type_config(),
+%%   <<"FirewallAdvancedContentCategory">> => firewall_advanced_content_category_config(),
+%%   <<"FirewallAdvancedThreatCategory">> => firewall_advanced_threat_category_config(),
+%%   <<"PartnerThreatProtection">> => partner_threat_protection_config()
+%% }
+-type firewall_rule_type() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_type_definition() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"RuleType">> => string(),
+%%   <<"SubscriptionInfo">> => subscription_info(),
+%%   <<"Value">> => string()
+%% }
+-type firewall_rule_type_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_firewall_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_config_response() :: #{
+%%   <<"FirewallConfig">> => firewall_config()
+%% }
+-type get_firewall_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_domain_list_request() :: #{
+%%   <<"FirewallDomainListId">> := string()
+%% }
+-type get_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_domain_list_response() :: #{
+%%   <<"FirewallDomainList">> => firewall_domain_list()
+%% }
+-type get_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_association_request() :: #{
+%%   <<"FirewallRuleGroupAssociationId">> := string()
+%% }
+-type get_firewall_rule_group_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_association_response() :: #{
 %%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
 %% }
--type disassociate_firewall_rule_group_response() :: #{binary() => any()}.
+-type get_firewall_rule_group_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_firewall_rule_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_policy_response() :: #{
+%%   <<"FirewallRuleGroupPolicy">> => string()
+%% }
+-type get_firewall_rule_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_request() :: #{
+%%   <<"FirewallRuleGroupId">> := string()
+%% }
+-type get_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group()
+%% }
+-type get_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_outpost_resolver_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type get_outpost_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_resolver_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_config_response() :: #{
+%%   <<"ResolverConfig">> => resolver_config()
+%% }
+-type get_resolver_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_dnssec_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_resolver_dnssec_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_dnssec_config_response() :: #{
+%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
+%% }
+-type get_resolver_dnssec_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_endpoint_request() :: #{
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type get_resolver_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type get_resolver_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_association_request() :: #{
+%%   <<"ResolverQueryLogConfigAssociationId">> := string()
+%% }
+-type get_resolver_query_log_config_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_association_response() :: #{
+%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
+%% }
+-type get_resolver_query_log_config_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_resolver_query_log_config_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_policy_response() :: #{
+%%   <<"ResolverQueryLogConfigPolicy">> => string()
+%% }
+-type get_resolver_query_log_config_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string()
+%% }
+-type get_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
+%% }
+-type get_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_association_request() :: #{
+%%   <<"ResolverRuleAssociationId">> := string()
+%% }
+-type get_resolver_rule_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_association_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
+%% }
+-type get_resolver_rule_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_resolver_rule_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_policy_response() :: #{
+%%   <<"ResolverRulePolicy">> => string()
+%% }
+-type get_resolver_rule_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string()
+%% }
+-type get_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
+%% }
+-type get_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_firewall_domains_request() :: #{
+%%   <<"DomainFileUrl">> := string(),
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"Operation">> := list(any())
+%% }
+-type import_firewall_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_firewall_domains_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type import_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_document() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_policy_document() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_request() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_response() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"IpId">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_response() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_update() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"IpId">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_update() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_configs_response() :: #{
+%%   <<"FirewallConfigs">> => list(firewall_config()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domain_lists_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domain_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domain_lists_response() :: #{
+%%   <<"FirewallDomainLists">> => list(firewall_domain_list_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domain_lists_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domains_request() :: #{
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domains_response() :: #{
+%%   <<"Domains">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_group_associations_request() :: #{
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type list_firewall_rule_group_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_group_associations_response() :: #{
+%%   <<"FirewallRuleGroupAssociations">> => list(firewall_rule_group_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_group_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_groups_response() :: #{
+%%   <<"FirewallRuleGroups">> => list(firewall_rule_group_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleType">> => string()
+%% }
+-type list_firewall_rule_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_types_response() :: #{
+%%   <<"FirewallRuleTypes">> => list(firewall_rule_type_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rules_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type list_firewall_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rules_response() :: #{
+%%   <<"FirewallRules">> => list(firewall_rule()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_outpost_resolvers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostArn">> => string()
+%% }
+-type list_outpost_resolvers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_outpost_resolvers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostResolvers">> => list(outpost_resolver())
+%% }
+-type list_outpost_resolvers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverConfigs">> => list(resolver_config())
+%% }
+-type list_resolver_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_dnssec_configs_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_dnssec_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_dnssec_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverDnssecConfigs">> => list(resolver_dnssec_config())
+%% }
+-type list_resolver_dnssec_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoint_ip_addresses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type list_resolver_endpoint_ip_addresses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoint_ip_addresses_response() :: #{
+%%   <<"IpAddresses">> => list(ip_address_response()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_endpoint_ip_addresses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoints_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoints_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverEndpoints">> => list(resolver_endpoint())
+%% }
+-type list_resolver_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_config_associations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resolver_query_log_config_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_config_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverQueryLogConfigAssociations">> => list(resolver_query_log_config_association()),
+%%   <<"TotalCount">> => integer(),
+%%   <<"TotalFilteredCount">> => integer()
+%% }
+-type list_resolver_query_log_config_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_configs_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resolver_query_log_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverQueryLogConfigs">> => list(resolver_query_log_config()),
+%%   <<"TotalCount">> => integer(),
+%%   <<"TotalFilteredCount">> => integer()
+%% }
+-type list_resolver_query_log_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rule_associations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_rule_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rule_associations_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverRuleAssociations">> => list(resolver_rule_association())
+%% }
+-type list_resolver_rule_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rules_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rules_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverRules">> => list(resolver_rule())
+%% }
+-type list_resolver_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% outpost_resolver() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"PreferredInstanceType">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type outpost_resolver() :: #{binary() => any()}.
+
+%% Example:
+%% partner_threat_protection_config() :: #{
+%%   <<"Partner">> => string()
+%% }
+-type partner_threat_protection_config() :: #{binary() => any()}.
+
+%% Example:
+%% put_firewall_rule_group_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"FirewallRuleGroupPolicy">> := string()
+%% }
+-type put_firewall_rule_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_firewall_rule_group_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_firewall_rule_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_query_log_config_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ResolverQueryLogConfigPolicy">> := string()
+%% }
+-type put_resolver_query_log_config_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_query_log_config_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_resolver_query_log_config_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_rule_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ResolverRulePolicy">> := string()
+%% }
+-type put_resolver_rule_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_rule_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_resolver_rule_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_config() :: #{
+%%   <<"AutodefinedReverse">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type resolver_config() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_dnssec_config() :: #{
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ValidationStatus">> => list(any())
+%% }
+-type resolver_dnssec_config() :: #{binary() => any()}.
 
 %% Example:
 %% resolver_endpoint() :: #{
@@ -1108,155 +1426,187 @@
 -type resolver_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% batch_update_firewall_rule_request() :: #{
-%%   <<"UpdateFirewallRuleEntries">> := list(update_firewall_rule_entry())
-%% }
--type batch_update_firewall_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_rule_policy_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type get_resolver_rule_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_firewall_rule_response() :: #{
-%%   <<"UpdateErrors">> => list(batch_update_firewall_rule_error()),
-%%   <<"UpdatedFirewallRules">> => list(firewall_rule())
-%% }
--type batch_update_firewall_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_firewall_domains_response() :: #{
+%% resolver_query_log_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociationCount">> => integer(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DestinationArn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"OwnerId">> => string(),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type import_firewall_domains_response() :: #{binary() => any()}.
+-type resolver_query_log_config() :: #{binary() => any()}.
 
 %% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
+%% resolver_query_log_config_association() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"Error">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ResolverQueryLogConfigId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type filter() :: #{binary() => any()}.
+-type resolver_query_log_config_association() :: #{binary() => any()}.
 
 %% Example:
-%% firewall_rule_group() :: #{
+%% resolver_rule() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => string(),
 %%   <<"CreatorRequestId">> => string(),
+%%   <<"DelegationRecord">> => string(),
+%%   <<"DomainName">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"ModificationTime">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"RuleCount">> => integer(),
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"RuleType">> => list(any()),
 %%   <<"ShareStatus">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetIps">> => list(target_address())
 %% }
--type firewall_rule_group() :: #{binary() => any()}.
+-type resolver_rule() :: #{binary() => any()}.
 
 %% Example:
-%% put_firewall_rule_group_policy_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"FirewallRuleGroupPolicy">> := string()
+%% resolver_rule_association() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResolverRuleId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VPCId">> => string()
 %% }
--type put_firewall_rule_group_policy_request() :: #{binary() => any()}.
+-type resolver_rule_association() :: #{binary() => any()}.
 
 %% Example:
-%% list_resolver_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverConfigs">> => list(resolver_config())
+%% resolver_rule_config() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"TargetIps">> => list(target_address())
 %% }
--type list_resolver_configs_response() :: #{binary() => any()}.
+-type resolver_rule_config() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_resolver_rule_request() :: #{
-%%   <<"ResolverRuleId">> := string(),
-%%   <<"VPCId">> := string()
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type disassociate_resolver_rule_request() :: #{binary() => any()}.
+-type resource_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% import_firewall_domains_request() :: #{
-%%   <<"DomainFileUrl">> := string(),
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_info() :: #{
+%%   <<"ProductId">> => string(),
+%%   <<"VendorName">> => string()
+%% }
+-type subscription_info() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_address() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ServerNameIndication">> => string()
+%% }
+-type target_address() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unknown_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unknown_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_config_request() :: #{
+%%   <<"FirewallFailOpen">> := list(any()),
+%%   <<"ResourceId">> := string()
+%% }
+-type update_firewall_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_config_response() :: #{
+%%   <<"FirewallConfig">> => firewall_config()
+%% }
+-type update_firewall_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_domains_request() :: #{
+%%   <<"Domains">> := list(string()),
 %%   <<"FirewallDomainListId">> := string(),
 %%   <<"Operation">> := list(any())
 %% }
--type import_firewall_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_dnssec_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverDnssecConfigs">> => list(resolver_dnssec_config())
-%% }
--type list_resolver_dnssec_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_rule_request() :: #{
-%%   <<"FirewallDomainListId">> => string(),
-%%   <<"FirewallRuleGroupId">> := string(),
-%%   <<"FirewallThreatProtectionId">> => string(),
-%%   <<"Qtype">> => string()
-%% }
--type delete_firewall_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_resolver_rule_request() :: #{
-%%   <<"CreatorRequestId">> := string(),
-%%   <<"DelegationRecord">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResolverEndpointId">> => string(),
-%%   <<"RuleType">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetIps">> => list(target_address())
-%% }
--type create_resolver_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_resolver_rule_response() :: #{
-%%   <<"ResolverRule">> => resolver_rule()
-%% }
--type create_resolver_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resolver_endpoint_request() :: #{
-%%   <<"ResolverEndpointId">> := string()
-%% }
--type delete_resolver_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_query_log_config_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverQueryLogConfigAssociations">> => list(resolver_query_log_config_association()),
-%%   <<"TotalCount">> => integer(),
-%%   <<"TotalFilteredCount">> => integer()
-%% }
--type list_resolver_query_log_config_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_rule_group_request() :: #{
-%%   <<"CreatorRequestId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_firewall_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_firewall_rule_group_response() :: #{
-%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
-%% }
--type associate_firewall_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rule_groups_response() :: #{
-%%   <<"FirewallRuleGroups">> => list(firewall_rule_group_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_rule_groups_response() :: #{binary() => any()}.
+-type update_firewall_domains_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_firewall_domains_response() :: #{
@@ -1268,67 +1618,65 @@
 -type update_firewall_domains_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_resolver_rules_response() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverRules">> => list(resolver_rule())
-%% }
--type list_resolver_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resolver_config_request() :: #{
-%%   <<"AutodefinedReverseFlag">> := list(any()),
-%%   <<"ResourceId">> := string()
-%% }
--type update_resolver_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% dns_threat_protection_rule_type_config() :: #{
+%% update_firewall_rule_entry() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
 %%   <<"ConfidenceThreshold">> => list(any()),
-%%   <<"Value">> => string()
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallDomainRedirectionAction">> => list(any()),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
 %% }
--type dns_threat_protection_rule_type_config() :: #{binary() => any()}.
+-type update_firewall_rule_entry() :: #{binary() => any()}.
 
 %% Example:
-%% resource_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
+%% update_firewall_rule_group_association_request() :: #{
+%%   <<"FirewallRuleGroupAssociationId">> := string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer()
 %% }
--type resource_exists_exception() :: #{binary() => any()}.
+-type update_firewall_rule_group_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% resolver_dnssec_config() :: #{
-%%   <<"Id">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ValidationStatus">> => list(any())
+%% update_firewall_rule_group_association_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
 %% }
--type resolver_dnssec_config() :: #{binary() => any()}.
+-type update_firewall_rule_group_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% unknown_resource_exception() :: #{
-%%   <<"Message">> => string()
+%% update_firewall_rule_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"ConfidenceThreshold">> => list(any()),
+%%   <<"DnsThreatProtection">> => list(any()),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallDomainRedirectionAction">> => list(any()),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallRuleType">> => firewall_rule_type(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
 %% }
--type unknown_resource_exception() :: #{binary() => any()}.
+-type update_firewall_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_outpost_resolver_response() :: #{
-%%   <<"OutpostResolver">> => outpost_resolver()
+%% update_firewall_rule_response() :: #{
+%%   <<"FirewallRule">> => firewall_rule()
 %% }
--type delete_outpost_resolver_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"FieldName">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type update_firewall_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_ip_address() :: #{
@@ -1338,24 +1686,13 @@
 -type update_ip_address() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
+%% update_outpost_resolver_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PreferredInstanceType">> => string()
 %% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_firewall_rule_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"FirewallRule">> => delete_firewall_rule_entry(),
-%%   <<"Message">> => string()
-%% }
--type batch_delete_firewall_rule_error() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_query_log_config_response() :: #{
-%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
-%% }
--type get_resolver_query_log_config_response() :: #{binary() => any()}.
+-type update_outpost_resolver_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_outpost_resolver_response() :: #{
@@ -1364,62 +1701,30 @@
 -type update_outpost_resolver_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_resolver_endpoint_ip_address_response() :: #{
-%%   <<"ResolverEndpoint">> => resolver_endpoint()
-%% }
--type associate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_outpost_resolver_response() :: #{
-%%   <<"OutpostResolver">> => outpost_resolver()
-%% }
--type create_outpost_resolver_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_query_log_config_policy_response() :: #{
-%%   <<"ResolverQueryLogConfigPolicy">> => string()
-%% }
--type get_resolver_query_log_config_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rule_group_associations_response() :: #{
-%%   <<"FirewallRuleGroupAssociations">> => list(firewall_rule_group_association()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_rule_group_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_config_request() :: #{
+%% update_resolver_config_request() :: #{
+%%   <<"AutodefinedReverseFlag">> := list(any()),
 %%   <<"ResourceId">> := string()
 %% }
--type get_firewall_config_request() :: #{binary() => any()}.
+-type update_resolver_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_firewall_rule_response() :: #{
-%%   <<"DeleteErrors">> => list(batch_delete_firewall_rule_error()),
-%%   <<"DeletedFirewallRules">> => list(firewall_rule())
+%% update_resolver_config_response() :: #{
+%%   <<"ResolverConfig">> => resolver_config()
 %% }
--type batch_delete_firewall_rule_response() :: #{binary() => any()}.
+-type update_resolver_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_resolver_rule_response() :: #{
-%%   <<"ResolverRule">> => resolver_rule()
+%% update_resolver_dnssec_config_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"Validation">> := list(any())
 %% }
--type get_resolver_rule_response() :: #{binary() => any()}.
+-type update_resolver_dnssec_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_dnssec_config_response() :: #{
+%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
+%% }
+-type update_resolver_dnssec_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_resolver_endpoint_request() :: #{
@@ -1436,885 +1741,580 @@
 -type update_resolver_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_domains_request() :: #{
-%%   <<"Domains">> := list(string()),
-%%   <<"FirewallDomainListId">> := string(),
-%%   <<"Operation">> := list(any())
-%% }
--type update_firewall_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_resolver_endpoint_ip_address_request() :: #{
-%%   <<"IpAddress">> := ip_address_update(),
-%%   <<"ResolverEndpointId">> := string()
-%% }
--type associate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_resolver_endpoint_response() :: #{
+%% update_resolver_endpoint_response() :: #{
 %%   <<"ResolverEndpoint">> => resolver_endpoint()
 %% }
--type create_resolver_endpoint_response() :: #{binary() => any()}.
+-type update_resolver_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_resolver_endpoint_ip_address_request() :: #{
-%%   <<"IpAddress">> := ip_address_update(),
-%%   <<"ResolverEndpointId">> := string()
+%% update_resolver_rule_request() :: #{
+%%   <<"Config">> := resolver_rule_config(),
+%%   <<"ResolverRuleId">> := string()
 %% }
--type disassociate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
+-type update_resolver_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_firewall_rule_entry() :: #{
-%%   <<"FirewallDomainListId">> => string(),
-%%   <<"FirewallRuleGroupId">> => string(),
-%%   <<"FirewallThreatProtectionId">> => string(),
-%%   <<"Qtype">> => string()
-%% }
--type delete_firewall_rule_entry() :: #{binary() => any()}.
-
-%% Example:
-%% target_address() :: #{
-%%   <<"Ip">> => string(),
-%%   <<"Ipv6">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"ServerNameIndication">> => string()
-%% }
--type target_address() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_rule_response() :: #{
-%%   <<"FirewallRule">> => firewall_rule()
-%% }
--type create_firewall_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% resolver_rule_config() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ResolverEndpointId">> => string(),
-%%   <<"TargetIps">> => list(target_address())
-%% }
--type resolver_rule_config() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_query_log_config_request() :: #{
-%%   <<"ResolverQueryLogConfigId">> := string()
-%% }
--type get_resolver_query_log_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_config_response() :: #{
-%%   <<"FirewallConfig">> => firewall_config()
-%% }
--type update_firewall_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_query_log_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverQueryLogConfigs">> => list(resolver_query_log_config()),
-%%   <<"TotalCount">> => integer(),
-%%   <<"TotalFilteredCount">> => integer()
-%% }
--type list_resolver_query_log_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_rule_associations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resolver_rule_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_info() :: #{
-%%   <<"ProductId">> => string(),
-%%   <<"VendorName">> => string()
-%% }
--type subscription_info() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_domain_list_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Category">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ManagedListType">> => list(any()),
-%%   <<"ManagedOwnerName">> => string(),
-%%   <<"Name">> => string()
-%% }
--type firewall_domain_list_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_rule_type_definition() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"RuleType">> => string(),
-%%   <<"SubscriptionInfo">> => subscription_info(),
-%%   <<"Value">> => string()
-%% }
--type firewall_rule_type_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rule_types_response() :: #{
-%%   <<"FirewallRuleTypes">> => list(firewall_rule_type_definition()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_rule_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_query_log_config_policy_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type get_resolver_query_log_config_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% outpost_resolver() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"ModificationTime">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"PreferredInstanceType">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type outpost_resolver() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_query_log_config_associations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_resolver_query_log_config_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_rule_associations_response() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverRuleAssociations">> => list(resolver_rule_association())
-%% }
--type list_resolver_rule_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_domains_response() :: #{
-%%   <<"Domains">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_firewall_rule_group_policy_response() :: #{
-%%   <<"FirewallRuleGroupPolicy">> => string()
-%% }
--type get_firewall_rule_group_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_rule_entry() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"BlockOverrideDnsType">> => list(any()),
-%%   <<"BlockOverrideDomain">> => string(),
-%%   <<"BlockOverrideTtl">> => integer(),
-%%   <<"BlockResponse">> => list(any()),
-%%   <<"ConfidenceThreshold">> => list(any()),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"DnsThreatProtection">> => list(any()),
-%%   <<"FirewallDomainListId">> => string(),
-%%   <<"FirewallDomainRedirectionAction">> => list(any()),
-%%   <<"FirewallRuleGroupId">> => string(),
-%%   <<"FirewallRuleType">> => firewall_rule_type(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Qtype">> => string()
-%% }
--type create_firewall_rule_entry() :: #{binary() => any()}.
-
-%% Example:
-%% list_outpost_resolvers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostResolvers">> => list(outpost_resolver())
-%% }
--type list_outpost_resolvers_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_outpost_resolver_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type get_outpost_resolver_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_resolver_rule_response() :: #{
-%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
-%% }
--type disassociate_resolver_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_endpoint_response() :: #{
-%%   <<"ResolverEndpoint">> => resolver_endpoint()
-%% }
--type get_resolver_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_policy_document() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_policy_document() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_endpoint_ip_addresses_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResolverEndpointId">> := string()
-%% }
--type list_resolver_endpoint_ip_addresses_request() :: #{binary() => any()}.
-
-%% Example:
-%% ip_address_response() :: #{
-%%   <<"CreationTime">> => string(),
-%%   <<"Ip">> => string(),
-%%   <<"IpId">> => string(),
-%%   <<"Ipv6">> => string(),
-%%   <<"ModificationTime">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type ip_address_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_rule_group_associations_request() :: #{
-%%   <<"FirewallRuleGroupId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcId">> => string()
-%% }
--type list_firewall_rule_group_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% resolver_query_log_config_association() :: #{
-%%   <<"CreationTime">> => string(),
-%%   <<"Error">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ResolverQueryLogConfigId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type resolver_query_log_config_association() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resolver_rule_response() :: #{
+%% update_resolver_rule_response() :: #{
 %%   <<"ResolverRule">> => resolver_rule()
 %% }
--type delete_resolver_rule_response() :: #{binary() => any()}.
+-type update_resolver_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_outpost_resolver_request() :: #{
-%%   <<"Id">> := string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_outpost_resolver_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_resolver_dnssec_config_response() :: #{
-%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
-%% }
--type update_resolver_dnssec_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_config_response() :: #{
-%%   <<"ResolverConfig">> => resolver_config()
-%% }
--type get_resolver_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_resolver_rule_response() :: #{
-%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
-%% }
--type associate_resolver_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resolver_configs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resolver_configs_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_firewall_rule_group_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type associate_resolver_endpoint_ip_address_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type associate_resolver_query_log_config_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type associate_resolver_rule_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception() | 
-    resource_unavailable_exception().
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception().
 
 -type batch_create_firewall_rule_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type batch_delete_firewall_rule_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type batch_update_firewall_rule_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_firewall_domain_list_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_firewall_rule_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_firewall_rule_group_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_outpost_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_resolver_endpoint_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_resolver_query_log_config_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_resolver_rule_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 -type delete_firewall_domain_list_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type delete_firewall_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_firewall_rule_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type delete_outpost_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type delete_resolver_endpoint_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type delete_resolver_query_log_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_resolver_rule_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception().
 
 -type disassociate_firewall_rule_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type disassociate_resolver_endpoint_ip_address_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type disassociate_resolver_query_log_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type disassociate_resolver_rule_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type get_firewall_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_firewall_domain_list_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_firewall_rule_group_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_firewall_rule_group_association_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_firewall_rule_group_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_outpost_resolver_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_dnssec_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_endpoint_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type get_resolver_query_log_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_query_log_config_association_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_query_log_config_policy_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unknown_resource_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_rule_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type get_resolver_rule_association_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type get_resolver_rule_policy_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unknown_resource_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type import_firewall_domains_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type list_firewall_configs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_domain_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_rule_group_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_rule_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_rule_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_firewall_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_outpost_resolvers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_configs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    throttling_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_dnssec_configs_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_endpoint_ip_addresses_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    resource_not_found_exception() | 
     internal_service_error_exception().
 
 -type list_resolver_endpoints_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_resolver_query_log_config_associations_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_query_log_configs_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_rule_associations_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_resolver_rules_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     internal_service_error_exception().
 
 -type put_firewall_rule_group_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type put_resolver_query_log_config_policy_errors() ::
-    invalid_policy_document() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unknown_resource_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    invalid_policy_document() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type put_resolver_rule_policy_errors() ::
+    unknown_resource_exception() | 
     invalid_policy_document() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    unknown_resource_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    invalid_tag_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tag_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception().
 
 -type update_firewall_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    internal_service_error_exception().
-
--type update_firewall_domains_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_service_error_exception().
-
--type update_firewall_rule_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_service_error_exception().
-
--type update_firewall_rule_group_association_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_service_error_exception().
-
--type update_outpost_resolver_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_service_error_exception().
-
--type update_resolver_config_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_error_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
+
+-type update_firewall_domains_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_firewall_rule_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_firewall_rule_group_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_outpost_resolver_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_resolver_config_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type update_resolver_dnssec_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type update_resolver_endpoint_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type update_resolver_rule_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_error_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

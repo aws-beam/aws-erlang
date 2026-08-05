@@ -45,83 +45,152 @@
 
 
 %% Example:
-%% recall_benefit_application_output() :: #{
-
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type recall_benefit_application_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% credit_details() :: #{
-%%   <<"AllocatedAmount">> => monetary_value(),
-%%   <<"Codes">> => list(credit_code()),
-%%   <<"IssuedAmount">> => monetary_value()
+%% access_details() :: #{
+%%   <<"Description">> => [string()]
 %% }
--type credit_details() :: #{binary() => any()}.
+-type access_details() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_benefit_application_input() :: #{
-%%   <<"BenefitApplicationDetails">> => [any()],
+%% amend_benefit_application_input() :: #{
+%%   <<"AmendmentReason">> := [string()],
+%%   <<"Amendments">> := list(amendment()),
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := [string()],
-%%   <<"Description">> => string(),
-%%   <<"FileDetails">> => list(file_input()),
 %%   <<"Identifier">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"PartnerContacts">> => list(contact()),
 %%   <<"Revision">> := [string()]
 %% }
--type update_benefit_application_input() :: #{binary() => any()}.
+-type amend_benefit_application_input() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
+%% amend_benefit_application_output() :: #{
 
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type amend_benefit_application_output() :: #{binary() => any()}.
 
 %% Example:
-%% file_input() :: #{
-%%   <<"BusinessUseCase">> => [string()],
-%%   <<"FileURI">> => string()
+%% amendment() :: #{
+%%   <<"FieldPath">> => [string()],
+%%   <<"NewValue">> => [string()]
 %% }
--type file_input() :: #{binary() => any()}.
+-type amendment() :: #{binary() => any()}.
 
 %% Example:
-%% list_benefit_allocations_input() :: #{
-%%   <<"BenefitApplicationIdentifiers">> => list(string()),
-%%   <<"BenefitIdentifiers">> => list(string()),
+%% associate_benefit_application_resource_input() :: #{
+%%   <<"BenefitApplicationIdentifier">> := string(),
 %%   <<"Catalog">> := string(),
-%%   <<"FulfillmentTypes">> => list(list(any())()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"Status">> => list(list(any())())
+%%   <<"ResourceArn">> := string()
 %% }
--type list_benefit_allocations_input() :: #{binary() => any()}.
+-type associate_benefit_application_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_benefit_application_resource_output() :: #{
+%% associate_benefit_application_resource_output() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"Id">> => string(),
 %%   <<"Revision">> => [string()]
 %% }
--type disassociate_benefit_application_resource_output() :: #{binary() => any()}.
+-type associate_benefit_application_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% credit_code() :: #{
-%%   <<"AwsAccountId">> => [string()],
-%%   <<"AwsCreditCode">> => [string()],
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"IssuedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Value">> => monetary_value()
+%% associated_resource() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceIdentifier">> => [string()],
+%%   <<"ResourceType">> => list(any())
 %% }
--type credit_code() :: #{binary() => any()}.
+-type associated_resource() :: #{binary() => any()}.
+
+%% Example:
+%% benefit_allocation_summary() :: #{
+%%   <<"ApplicableBenefitIds">> => list(string()),
+%%   <<"Arn">> => [string()],
+%%   <<"BenefitApplicationId">> => string(),
+%%   <<"BenefitId">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"FulfillmentTypes">> => list(list(any())()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => [string()]
+%% }
+-type benefit_allocation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% benefit_application_summary() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"AssociatedResources">> => list(string()),
+%%   <<"BenefitApplicationDetails">> => map(),
+%%   <<"BenefitId">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FulfillmentTypes">> => list(list(any())()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Programs">> => list(string()),
+%%   <<"Stage">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type benefit_application_summary() :: #{binary() => any()}.
+
+%% Example:
+%% benefit_summary() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Catalog">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"FulfillmentTypes">> => list(list(any())()),
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Programs">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type benefit_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_benefit_application_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := [string()],
+%%   <<"Identifier">> := string(),
+%%   <<"Reason">> => [string()]
+%% }
+-type cancel_benefit_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_benefit_application_output() :: #{
+
+%% }
+-type cancel_benefit_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% consumable_details() :: #{
+%%   <<"AllocatedAmount">> => monetary_value(),
+%%   <<"IssuanceDetails">> => issuance_detail(),
+%%   <<"RemainingAmount">> => monetary_value(),
+%%   <<"UtilizedAmount">> => monetary_value()
+%% }
+-type consumable_details() :: #{binary() => any()}.
+
+%% Example:
+%% contact() :: #{
+%%   <<"BusinessTitle">> => [string()],
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Phone">> => string()
+%% }
+-type contact() :: #{binary() => any()}.
 
 %% Example:
 %% create_benefit_application_input() :: #{
@@ -140,12 +209,109 @@
 -type create_benefit_application_input() :: #{binary() => any()}.
 
 %% Example:
-%% associate_benefit_application_resource_output() :: #{
+%% create_benefit_application_output() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"Id">> => string(),
 %%   <<"Revision">> => [string()]
 %% }
--type associate_benefit_application_resource_output() :: #{binary() => any()}.
+-type create_benefit_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% credit_code() :: #{
+%%   <<"AwsAccountId">> => [string()],
+%%   <<"AwsCreditCode">> => [string()],
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"IssuedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => monetary_value()
+%% }
+-type credit_code() :: #{binary() => any()}.
+
+%% Example:
+%% credit_details() :: #{
+%%   <<"AllocatedAmount">> => monetary_value(),
+%%   <<"Codes">> => list(credit_code()),
+%%   <<"IssuedAmount">> => monetary_value()
+%% }
+-type credit_details() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_benefit_application_resource_input() :: #{
+%%   <<"BenefitApplicationIdentifier">> := string(),
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type disassociate_benefit_application_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_benefit_application_resource_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Revision">> => [string()]
+%% }
+-type disassociate_benefit_application_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% disbursement_details() :: #{
+%%   <<"DisbursedAmount">> => monetary_value(),
+%%   <<"IssuanceDetails">> => issuance_detail()
+%% }
+-type disbursement_details() :: #{binary() => any()}.
+
+%% Example:
+%% file_detail() :: #{
+%%   <<"BusinessUseCase">> => [string()],
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => [string()],
+%%   <<"FileName">> => [string()],
+%%   <<"FileStatus">> => [string()],
+%%   <<"FileStatusReason">> => [string()],
+%%   <<"FileType">> => list(any()),
+%%   <<"FileURI">> => string()
+%% }
+-type file_detail() :: #{binary() => any()}.
+
+%% Example:
+%% file_input() :: #{
+%%   <<"BusinessUseCase">> => [string()],
+%%   <<"FileURI">> => string()
+%% }
+-type file_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_benefit_allocation_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_benefit_allocation_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_benefit_allocation_output() :: #{
+%%   <<"ApplicableBenefitIds">> => list(string()),
+%%   <<"Arn">> => string(),
+%%   <<"BenefitApplicationId">> => string(),
+%%   <<"BenefitId">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => [string()],
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"FulfillmentDetail">> => list(),
+%%   <<"FulfillmentType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"StartsAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => [string()],
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_benefit_allocation_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_benefit_application_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_benefit_application_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_benefit_application_output() :: #{
@@ -173,24 +339,11 @@
 -type get_benefit_application_output() :: #{binary() => any()}.
 
 %% Example:
-%% benefit_summary() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Catalog">> => string(),
-%%   <<"Description">> => [string()],
-%%   <<"FulfillmentTypes">> => list(list(any())()),
-%%   <<"Id">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Programs">> => list(string()),
-%%   <<"Status">> => list(any())
+%% get_benefit_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := [string()]
 %% }
--type benefit_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type get_benefit_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_benefit_output() :: #{
@@ -207,155 +360,37 @@
 -type get_benefit_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_benefit_application_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Id">> => string(),
-%%   <<"Revision">> => [string()]
-%% }
--type create_benefit_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_benefit_application_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Id">> => string(),
-%%   <<"Revision">> => [string()]
-%% }
--type update_benefit_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% associate_benefit_application_resource_input() :: #{
-%%   <<"BenefitApplicationIdentifier">> := string(),
-%%   <<"Catalog">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type associate_benefit_application_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_benefit_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := [string()]
-%% }
--type get_benefit_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_benefit_application_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := [string()],
-%%   <<"Identifier">> := string(),
-%%   <<"Reason">> => [string()]
-%% }
--type cancel_benefit_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% amendment() :: #{
-%%   <<"FieldPath">> => [string()],
-%%   <<"NewValue">> => [string()]
-%% }
--type amendment() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% consumable_details() :: #{
-%%   <<"AllocatedAmount">> => monetary_value(),
-%%   <<"IssuanceDetails">> => issuance_detail(),
-%%   <<"RemainingAmount">> => monetary_value(),
-%%   <<"UtilizedAmount">> => monetary_value()
-%% }
--type consumable_details() :: #{binary() => any()}.
-
-%% Example:
-%% amend_benefit_application_input() :: #{
-%%   <<"AmendmentReason">> := [string()],
-%%   <<"Amendments">> := list(amendment()),
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := [string()],
-%%   <<"Identifier">> := string(),
-%%   <<"Revision">> := [string()]
-%% }
--type amend_benefit_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% contact() :: #{
-%%   <<"BusinessTitle">> => [string()],
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Phone">> => string()
-%% }
--type contact() :: #{binary() => any()}.
-
-%% Example:
-%% access_details() :: #{
-%%   <<"Description">> => [string()]
-%% }
--type access_details() :: #{binary() => any()}.
-
-%% Example:
-%% file_detail() :: #{
-%%   <<"BusinessUseCase">> => [string()],
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => [string()],
-%%   <<"FileName">> => [string()],
-%%   <<"FileStatus">> => [string()],
-%%   <<"FileStatusReason">> => [string()],
-%%   <<"FileType">> => list(any()),
-%%   <<"FileURI">> => string()
-%% }
--type file_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_benefit_application_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_benefit_application_input() :: #{binary() => any()}.
-
-%% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% issuance_detail() :: #{
+%%   <<"IssuanceAmount">> => monetary_value(),
+%%   <<"IssuanceId">> => [string()],
+%%   <<"IssuedAt">> => non_neg_integer()
+%% }
+-type issuance_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_benefit_allocations_input() :: #{
+%%   <<"BenefitApplicationIdentifiers">> => list(string()),
+%%   <<"BenefitIdentifiers">> => list(string()),
+%%   <<"Catalog">> := string(),
+%%   <<"FulfillmentTypes">> => list(list(any())()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"Status">> => list(list(any())())
+%% }
+-type list_benefit_allocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_benefit_allocations_output() :: #{
+%%   <<"BenefitAllocationSummaries">> => list(benefit_allocation_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_benefit_allocations_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_benefit_applications_input() :: #{
@@ -380,41 +415,6 @@
 -type list_benefit_applications_output() :: #{binary() => any()}.
 
 %% Example:
-%% submit_benefit_application_output() :: #{
-
-%% }
--type submit_benefit_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_benefits_output() :: #{
-%%   <<"BenefitSummaries">> => list(benefit_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_benefits_output() :: #{binary() => any()}.
-
-%% Example:
-%% submit_benefit_application_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type submit_benefit_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% recall_benefit_application_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> => [string()],
-%%   <<"Identifier">> := string(),
-%%   <<"Reason">> := [string()]
-%% }
--type recall_benefit_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_benefit_application_output() :: #{
-
-%% }
--type cancel_benefit_application_output() :: #{binary() => any()}.
-
-%% Example:
 %% list_benefits_input() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"FulfillmentTypes">> => list(list(any())()),
@@ -426,10 +426,87 @@
 -type list_benefits_input() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
+%% list_benefits_output() :: #{
+%%   <<"BenefitSummaries">> => list(benefit_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_benefits_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% monetary_value() :: #{
+%%   <<"Amount">> => [string()],
+%%   <<"CurrencyCode">> => list(any())
+%% }
+-type monetary_value() :: #{binary() => any()}.
+
+%% Example:
+%% recall_benefit_application_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => [string()],
+%%   <<"Identifier">> := string(),
+%%   <<"Reason">> := [string()]
+%% }
+-type recall_benefit_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% recall_benefit_application_output() :: #{
+
+%% }
+-type recall_benefit_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% submit_benefit_application_input() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type submit_benefit_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% submit_benefit_application_output() :: #{
+
+%% }
+-type submit_benefit_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -438,55 +515,45 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% benefit_allocation_summary() :: #{
-%%   <<"ApplicableBenefitIds">> => list(string()),
-%%   <<"Arn">> => [string()],
-%%   <<"BenefitApplicationId">> => string(),
-%%   <<"BenefitId">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"FulfillmentTypes">> => list(list(any())()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => [string()]
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type benefit_allocation_summary() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_benefit_application_resource_input() :: #{
-%%   <<"BenefitApplicationIdentifier">> := string(),
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_benefit_application_input() :: #{
+%%   <<"BenefitApplicationDetails">> => [any()],
 %%   <<"Catalog">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type disassociate_benefit_application_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% associated_resource() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceIdentifier">> => [string()],
-%%   <<"ResourceType">> => list(any())
-%% }
--type associated_resource() :: #{binary() => any()}.
-
-%% Example:
-%% benefit_application_summary() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"AssociatedResources">> => list(string()),
-%%   <<"BenefitApplicationDetails">> => map(),
-%%   <<"BenefitId">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"FulfillmentTypes">> => list(list(any())()),
-%%   <<"Id">> => string(),
+%%   <<"ClientToken">> := [string()],
+%%   <<"Description">> => string(),
+%%   <<"FileDetails">> => list(file_input()),
+%%   <<"Identifier">> := string(),
 %%   <<"Name">> => string(),
-%%   <<"Programs">> => list(string()),
-%%   <<"Stage">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"PartnerContacts">> => list(contact()),
+%%   <<"Revision">> := [string()]
 %% }
--type benefit_application_summary() :: #{binary() => any()}.
+-type update_benefit_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_benefit_application_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Revision">> => [string()]
+%% }
+-type update_benefit_application_output() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -497,211 +564,144 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
+%% validation_exception_field() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()]
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_benefit_allocation_input() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_benefit_allocation_input() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% amend_benefit_application_output() :: #{
-
-%% }
--type amend_benefit_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% disbursement_details() :: #{
-%%   <<"DisbursedAmount">> => monetary_value(),
-%%   <<"IssuanceDetails">> => issuance_detail()
-%% }
--type disbursement_details() :: #{binary() => any()}.
-
-%% Example:
-%% issuance_detail() :: #{
-%%   <<"IssuanceAmount">> => monetary_value(),
-%%   <<"IssuanceId">> => [string()],
-%%   <<"IssuedAt">> => non_neg_integer()
-%% }
--type issuance_detail() :: #{binary() => any()}.
-
-%% Example:
-%% monetary_value() :: #{
-%%   <<"Amount">> => [string()],
-%%   <<"CurrencyCode">> => list(any())
-%% }
--type monetary_value() :: #{binary() => any()}.
-
-%% Example:
-%% list_benefit_allocations_output() :: #{
-%%   <<"BenefitAllocationSummaries">> => list(benefit_allocation_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_benefit_allocations_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_benefit_allocation_output() :: #{
-%%   <<"ApplicableBenefitIds">> => list(string()),
-%%   <<"Arn">> => string(),
-%%   <<"BenefitApplicationId">> => string(),
-%%   <<"BenefitId">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => [string()],
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"FulfillmentDetail">> => list(),
-%%   <<"FulfillmentType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"StartsAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => [string()],
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_benefit_allocation_output() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type amend_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_benefit_application_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_benefit_application_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_benefit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_benefit_allocation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_benefit_allocations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_benefit_applications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_benefits_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type recall_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type submit_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_benefit_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

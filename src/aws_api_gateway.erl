@@ -312,10 +312,37 @@
 
 
 %% Example:
-%% update_stage_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% access_log_settings() :: #{
+%%   <<"destinationArn">> => string(),
+%%   <<"format">> => string()
 %% }
--type update_stage_request() :: #{binary() => any()}.
+-type access_log_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"apiKeyVersion">> => string(),
+%%   <<"cloudwatchRoleArn">> => string(),
+%%   <<"features">> => list(string()),
+%%   <<"throttleSettings">> => throttle_settings()
+%% }
+-type account() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_key() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"customerId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"stageKeys">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"value">> => string()
+%% }
+-type api_key() :: #{binary() => any()}.
 
 
 %% Example:
@@ -327,100 +354,21 @@
 
 
 %% Example:
-%% endpoint_configuration() :: #{
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"types">> => list(list(any())()),
-%%   <<"vpcEndpointIds">> => list(string())
+%% api_keys() :: #{
+%%   <<"items">> => list(api_key()),
+%%   <<"position">> => string(),
+%%   <<"warnings">> => list(string())
 %% }
--type endpoint_configuration() :: #{binary() => any()}.
+-type api_keys() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_api_keys_request() :: #{
-%%   <<"body">> := binary(),
-%%   <<"failOnWarnings">> => boolean(),
-%%   <<"format">> := list(any())
+%% api_stage() :: #{
+%%   <<"apiId">> => string(),
+%%   <<"stage">> => string(),
+%%   <<"throttle">> => map()
 %% }
--type import_api_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stages_request() :: #{
-%%   <<"deploymentId">> => string()
-%% }
--type get_stages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sdk_types_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_sdk_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_settings() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"percentTraffic">> => float(),
-%%   <<"stageVariableOverrides">> => map(),
-%%   <<"useStageCache">> => boolean()
-%% }
--type canary_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% method_setting() :: #{
-%%   <<"cacheDataEncrypted">> => boolean(),
-%%   <<"cacheTtlInSeconds">> => integer(),
-%%   <<"cachingEnabled">> => boolean(),
-%%   <<"dataTraceEnabled">> => boolean(),
-%%   <<"loggingLevel">> => string(),
-%%   <<"metricsEnabled">> => boolean(),
-%%   <<"requireAuthorizationForCacheControl">> => boolean(),
-%%   <<"throttlingBurstLimit">> => integer(),
-%%   <<"throttlingRateLimit">> => float(),
-%%   <<"unauthorizedCacheControlHeaderStrategy">> => list(any())
-%% }
--type method_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage() :: #{
-%%   <<"accessLogSettings">> => access_log_settings(),
-%%   <<"cacheClusterEnabled">> => boolean(),
-%%   <<"cacheClusterSize">> => list(any()),
-%%   <<"cacheClusterStatus">> => list(any()),
-%%   <<"canarySettings">> => canary_settings(),
-%%   <<"clientCertificateId">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"deploymentId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"documentationVersion">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"methodSettings">> => map(),
-%%   <<"stageName">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"tracingEnabled">> => boolean(),
-%%   <<"variables">> => map(),
-%%   <<"webAclArn">> => string()
-%% }
--type stage() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployments_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type api_stage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -440,169 +388,18 @@
 
 
 %% Example:
-%% get_usage_request() :: #{
-%%   <<"endDate">> := string(),
-%%   <<"keyId">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string(),
-%%   <<"startDate">> := string()
-%% }
--type get_usage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sdk_response() :: #{
-%%   <<"body">> => binary(),
-%%   <<"contentDisposition">> => string(),
-%%   <<"contentType">> => string()
-%% }
--type sdk_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_response() :: #{
-%%   <<"body">> => binary(),
-%%   <<"contentDisposition">> => string(),
-%%   <<"contentType">> => string()
-%% }
--type export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tags_request() :: #{
-%%   <<"limit">> => integer(),
+%% authorizers() :: #{
+%%   <<"items">> => list(authorizer()),
 %%   <<"position">> => string()
 %% }
--type get_tags_request() :: #{binary() => any()}.
+-type authorizers() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttle_settings() :: #{
-%%   <<"burstLimit">> => integer(),
-%%   <<"rateLimit">> => float()
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type throttle_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_request() :: #{}
--type delete_resource_request() :: #{}.
-
-
-%% Example:
-%% update_resource_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment() :: #{
-%%   <<"apiSummary">> => map(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string()
-%% }
--type deployment() :: #{binary() => any()}.
-
-
-%% Example:
-%% integration() :: #{
-%%   <<"cacheKeyParameters">> => list(string()),
-%%   <<"cacheNamespace">> => string(),
-%%   <<"connectionId">> => string(),
-%%   <<"connectionType">> => list(any()),
-%%   <<"contentHandling">> => list(any()),
-%%   <<"credentials">> => string(),
-%%   <<"httpMethod">> => string(),
-%%   <<"integrationResponses">> => map(),
-%%   <<"integrationTarget">> => string(),
-%%   <<"passthroughBehavior">> => string(),
-%%   <<"requestParameters">> => map(),
-%%   <<"requestTemplates">> => map(),
-%%   <<"responseTransferMode">> => list(any()),
-%%   <<"timeoutInMillis">> => integer(),
-%%   <<"tlsConfig">> => tls_config(),
-%%   <<"type">> => list(any()),
-%%   <<"uri">> => string()
-%% }
--type integration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_client_certificate_request() :: #{}
--type delete_client_certificate_request() :: #{}.
-
-%% Example:
-%% get_usage_plan_key_request() :: #{}
--type get_usage_plan_key_request() :: #{}.
-
-%% Example:
-%% delete_documentation_part_request() :: #{}
--type delete_documentation_part_request() :: #{}.
-
-
-%% Example:
-%% get_documentation_parts_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"locationStatus">> => list(any()),
-%%   <<"nameQuery">> => string(),
-%%   <<"path">> => string(),
-%%   <<"position">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type get_documentation_parts_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_method_response_request() :: #{}
--type get_method_response_request() :: #{}.
-
-
-%% Example:
-%% test_invoke_authorizer_request() :: #{
-%%   <<"additionalContext">> => map(),
-%%   <<"body">> => string(),
-%%   <<"headers">> => map(),
-%%   <<"multiValueHeaders">> => map(),
-%%   <<"pathWithQueryString">> => string(),
-%%   <<"stageVariables">> => map()
-%% }
--type test_invoke_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_client_certificate_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_client_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_response_request() :: #{}
--type delete_integration_response_request() :: #{}.
-
-
-%% Example:
-%% patch_operation() :: #{
-%%   <<"from">> => string(),
-%%   <<"op">> => list(any()),
-%%   <<"path">> => string(),
-%%   <<"value">> => string()
-%% }
--type patch_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% mutual_tls_authentication() :: #{
-%%   <<"truststoreUri">> => string(),
-%%   <<"truststoreVersion">> => string(),
-%%   <<"truststoreWarnings">> => list(string())
-%% }
--type mutual_tls_authentication() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -615,67 +412,87 @@
 
 
 %% Example:
-%% create_documentation_version_request() :: #{
+%% base_path_mappings() :: #{
+%%   <<"items">> => list(base_path_mapping()),
+%%   <<"position">> => string()
+%% }
+-type base_path_mappings() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_settings() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"percentTraffic">> => float(),
+%%   <<"stageVariableOverrides">> => map(),
+%%   <<"useStageCache">> => boolean()
+%% }
+-type canary_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_certificate() :: #{
+%%   <<"clientCertificateId">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"documentationVersion">> := string(),
-%%   <<"stageName">> => string()
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"pemEncodedCertificate">> => string(),
+%%   <<"tags">> => map()
 %% }
--type create_documentation_version_request() :: #{binary() => any()}.
+-type client_certificate() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_response() :: #{
-%%   <<"defaultResponse">> => boolean(),
-%%   <<"responseParameters">> => map(),
-%%   <<"responseTemplates">> => map(),
-%%   <<"responseType">> => list(any()),
-%%   <<"statusCode">> => string()
-%% }
--type gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_rest_api_request() :: #{
-%%   <<"body">> := binary(),
-%%   <<"failOnWarnings">> => boolean(),
-%%   <<"parameters">> => map()
-%% }
--type import_rest_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% documentation_versions() :: #{
-%%   <<"items">> => list(documentation_version()),
+%% client_certificates() :: #{
+%%   <<"items">> => list(client_certificate()),
 %%   <<"position">> => string()
 %% }
--type documentation_versions() :: #{binary() => any()}.
+-type client_certificates() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_api_key_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_api_key_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_links() :: #{
-%%   <<"items">> => list(vpc_link()),
-%%   <<"position">> => string()
+%% create_api_key_request() :: #{
+%%   <<"customerId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"generateDistinctId">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"stageKeys">> => list(stage_key()),
+%%   <<"tags">> => map(),
+%%   <<"value">> => string()
 %% }
--type vpc_links() :: #{binary() => any()}.
-
-%% Example:
-%% get_usage_plan_request() :: #{}
--type get_usage_plan_request() :: #{}.
+-type create_api_key_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% usage_plans() :: #{
-%%   <<"items">> => list(usage_plan()),
-%%   <<"position">> => string()
+%% create_authorizer_request() :: #{
+%%   <<"authType">> => string(),
+%%   <<"authorizerCredentials">> => string(),
+%%   <<"authorizerResultTtlInSeconds">> => integer(),
+%%   <<"authorizerUri">> => string(),
+%%   <<"identitySource">> => string(),
+%%   <<"identityValidationExpression">> => string(),
+%%   <<"name">> := string(),
+%%   <<"providerARNs">> => list(string()),
+%%   <<"type">> := list(any())
 %% }
--type usage_plans() :: #{binary() => any()}.
+-type create_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_base_path_mapping_request() :: #{
+%%   <<"basePath">> => string(),
+%%   <<"domainNameId">> => string(),
+%%   <<"restApiId">> := string(),
+%%   <<"stage">> => string()
+%% }
+-type create_base_path_mapping_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -693,64 +510,30 @@
 
 
 %% Example:
-%% get_base_path_mapping_request() :: #{
-%%   <<"domainNameId">> => string()
+%% create_documentation_part_request() :: #{
+%%   <<"location">> := documentation_part_location(),
+%%   <<"properties">> := string()
 %% }
--type get_base_path_mapping_request() :: #{binary() => any()}.
+-type create_documentation_part_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_model_request() :: #{
-%%   <<"contentType">> := string(),
+%% create_documentation_version_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"schema">> => string()
+%%   <<"documentationVersion">> := string(),
+%%   <<"stageName">> => string()
 %% }
--type create_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_name_access_association_request() :: #{}
--type delete_domain_name_access_association_request() :: #{}.
+-type create_documentation_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_integration_request() :: #{
-%%   <<"cacheKeyParameters">> => list(string()),
-%%   <<"cacheNamespace">> => string(),
-%%   <<"connectionId">> => string(),
-%%   <<"connectionType">> => list(any()),
-%%   <<"contentHandling">> => list(any()),
-%%   <<"credentials">> => string(),
-%%   <<"integrationHttpMethod">> => string(),
-%%   <<"integrationTarget">> => string(),
-%%   <<"passthroughBehavior">> => string(),
-%%   <<"requestParameters">> => map(),
-%%   <<"requestTemplates">> => map(),
-%%   <<"responseTransferMode">> => list(any()),
-%%   <<"timeoutInMillis">> => integer(),
-%%   <<"tlsConfig">> => tls_config(),
-%%   <<"type">> := list(any()),
-%%   <<"uri">> => string()
+%% create_domain_name_access_association_request() :: #{
+%%   <<"accessAssociationSource">> := string(),
+%%   <<"accessAssociationSourceType">> := list(any()),
+%%   <<"domainNameArn">> := string(),
+%%   <<"tags">> => map()
 %% }
--type put_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_response_request() :: #{}
--type get_gateway_response_request() :: #{}.
-
-
-%% Example:
-%% update_request_validator_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_request_validator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_model_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_model_request() :: #{binary() => any()}.
+-type create_domain_name_access_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -776,313 +559,13 @@
 
 
 %% Example:
-%% update_base_path_mapping_request() :: #{
-%%   <<"domainNameId">> => string(),
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_base_path_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_plan_keys() :: #{
-%%   <<"items">> => list(usage_plan_key()),
-%%   <<"position">> => string()
-%% }
--type usage_plan_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% sdk_type() :: #{
-%%   <<"configurationProperties">> => list(sdk_configuration_property()),
+%% create_model_request() :: #{
+%%   <<"contentType">> := string(),
 %%   <<"description">> => string(),
-%%   <<"friendlyName">> => string(),
-%%   <<"id">> => string()
-%% }
--type sdk_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_link() :: #{
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targetArns">> => list(string())
-%% }
--type vpc_link() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_documentation_part_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_documentation_part_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_name_access_association() :: #{
-%%   <<"accessAssociationSource">> => string(),
-%%   <<"accessAssociationSourceType">> => list(any()),
-%%   <<"domainNameAccessAssociationArn">> => string(),
-%%   <<"domainNameArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type domain_name_access_association() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_template_request() :: #{}
--type get_model_template_request() :: #{}.
-
-%% Example:
-%% delete_authorizer_request() :: #{}
--type delete_authorizer_request() :: #{}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_request_validator_request() :: #{}
--type delete_request_validator_request() :: #{}.
-
-
-%% Example:
-%% create_authorizer_request() :: #{
-%%   <<"authType">> => string(),
-%%   <<"authorizerCredentials">> => string(),
-%%   <<"authorizerResultTtlInSeconds">> => integer(),
-%%   <<"authorizerUri">> => string(),
-%%   <<"identitySource">> => string(),
-%%   <<"identityValidationExpression">> => string(),
 %%   <<"name">> := string(),
-%%   <<"providerARNs">> => list(string()),
-%%   <<"type">> := list(any())
+%%   <<"schema">> => string()
 %% }
--type create_authorizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_stage_request() :: #{}
--type get_stage_request() :: #{}.
-
-%% Example:
-%% get_authorizer_request() :: #{}
--type get_authorizer_request() :: #{}.
-
-
-%% Example:
-%% stages() :: #{
-%%   <<"item">> => list(stage())
-%% }
--type stages() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_usage_plan_keys_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nameQuery">> => string(),
-%%   <<"position">> => string()
-%% }
--type get_usage_plan_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_gateway_response_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage() :: #{
-%%   <<"endDate">> => string(),
-%%   <<"items">> => map(),
-%%   <<"position">> => string(),
-%%   <<"startDate">> => string(),
-%%   <<"usagePlanId">> => string()
-%% }
--type usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_responses() :: #{
-%%   <<"items">> => list(gateway_response()),
-%%   <<"position">> => string()
-%% }
--type gateway_responses() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage_key() :: #{
-%%   <<"restApiId">> => string(),
-%%   <<"stageName">> => string()
-%% }
--type stage_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_method_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_method_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_certificates() :: #{
-%%   <<"items">> => list(client_certificate()),
-%%   <<"position">> => string()
-%% }
--type client_certificates() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_plan_key_request() :: #{}
--type delete_usage_plan_key_request() :: #{}.
-
-
-%% Example:
-%% domain_names() :: #{
-%%   <<"items">> => list(domain_name()),
-%%   <<"position">> => string()
-%% }
--type domain_names() :: #{binary() => any()}.
-
-
-%% Example:
-%% resources() :: #{
-%%   <<"items">> => list(resource()),
-%%   <<"position">> => string()
-%% }
--type resources() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stage_request() :: #{}
--type delete_stage_request() :: #{}.
-
-
-%% Example:
-%% get_authorizers_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_authorizers_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rest_api_request() :: #{}
--type delete_rest_api_request() :: #{}.
-
-%% Example:
-%% delete_documentation_version_request() :: #{}
--type delete_documentation_version_request() :: #{}.
-
-
-%% Example:
-%% create_documentation_part_request() :: #{
-%%   <<"location">> := documentation_part_location(),
-%%   <<"properties">> := string()
-%% }
--type create_documentation_part_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_validator() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"validateRequestBody">> => boolean(),
-%%   <<"validateRequestParameters">> => boolean()
-%% }
--type request_validator() :: #{binary() => any()}.
-
-%% Example:
-%% get_method_request() :: #{}
--type get_method_request() :: #{}.
-
-
-%% Example:
-%% rest_api() :: #{
-%%   <<"apiKeySource">> => list(any()),
-%%   <<"apiStatus">> => list(any()),
-%%   <<"apiStatusMessage">> => string(),
-%%   <<"binaryMediaTypes">> => list(string()),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"disableExecuteApiEndpoint">> => boolean(),
-%%   <<"endpointAccessMode">> => list(any()),
-%%   <<"endpointConfiguration">> => endpoint_configuration(),
-%%   <<"id">> => string(),
-%%   <<"minimumCompressionSize">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"rootResourceId">> => string(),
-%%   <<"securityPolicy">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"version">> => string(),
-%%   <<"warnings">> => list(string())
-%% }
--type rest_api() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_client_certificates_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_client_certificates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resources_request() :: #{
-%%   <<"embed">> => list(string()),
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gateway_responses_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_gateway_responses_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_request() :: #{}
--type delete_integration_request() :: #{}.
-
-
-%% Example:
-%% get_sdk_request() :: #{
-%%   <<"parameters">> => map()
-%% }
--type get_sdk_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_documentation_parts_request() :: #{
-%%   <<"body">> := binary(),
-%%   <<"failOnWarnings">> => boolean(),
-%%   <<"mode">> => list(any())
-%% }
--type import_documentation_parts_request() :: #{binary() => any()}.
+-type create_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1095,29 +578,65 @@
 
 
 %% Example:
-%% sdk_configuration_property() :: #{
-%%   <<"defaultValue">> => string(),
+%% create_resource_request() :: #{
+%%   <<"pathPart">> := string()
+%% }
+-type create_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rest_api_request() :: #{
+%%   <<"apiKeySource">> => list(any()),
+%%   <<"binaryMediaTypes">> => list(string()),
+%%   <<"cloneFrom">> => string(),
 %%   <<"description">> => string(),
-%%   <<"friendlyName">> => string(),
-%%   <<"name">> => string(),
-%%   <<"required">> => boolean()
+%%   <<"disableExecuteApiEndpoint">> => boolean(),
+%%   <<"endpointAccessMode">> => list(any()),
+%%   <<"endpointConfiguration">> => endpoint_configuration(),
+%%   <<"minimumCompressionSize">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"policy">> => string(),
+%%   <<"securityPolicy">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
 %% }
--type sdk_configuration_property() :: #{binary() => any()}.
+-type create_rest_api_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% base_path_mappings() :: #{
-%%   <<"items">> => list(base_path_mapping()),
-%%   <<"position">> => string()
+%% create_stage_request() :: #{
+%%   <<"cacheClusterEnabled">> => boolean(),
+%%   <<"cacheClusterSize">> => list(any()),
+%%   <<"canarySettings">> => canary_settings(),
+%%   <<"deploymentId">> := string(),
+%%   <<"description">> => string(),
+%%   <<"documentationVersion">> => string(),
+%%   <<"stageName">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"tracingEnabled">> => boolean(),
+%%   <<"variables">> => map()
 %% }
--type base_path_mappings() :: #{binary() => any()}.
+-type create_stage_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_deployment_request() :: #{
-%%   <<"embed">> => list(string())
+%% create_usage_plan_key_request() :: #{
+%%   <<"keyId">> := string(),
+%%   <<"keyType">> := string()
 %% }
--type get_deployment_request() :: #{binary() => any()}.
+-type create_usage_plan_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_usage_plan_request() :: #{
+%%   <<"apiStages">> => list(api_stage()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"quota">> => quota_settings(),
+%%   <<"tags">> => map(),
+%%   <<"throttle">> => throttle_settings()
+%% }
+-type create_usage_plan_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1129,92 +648,143 @@
 %% }
 -type create_vpc_link_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_api_key_request() :: #{}
+-type delete_api_key_request() :: #{}.
 
 %% Example:
-%% get_request_validators_request() :: #{
-%%   <<"limit">> => integer(),
+%% delete_authorizer_request() :: #{}
+-type delete_authorizer_request() :: #{}.
+
+
+%% Example:
+%% delete_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type delete_base_path_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_client_certificate_request() :: #{}
+-type delete_client_certificate_request() :: #{}.
+
+%% Example:
+%% delete_deployment_request() :: #{}
+-type delete_deployment_request() :: #{}.
+
+%% Example:
+%% delete_documentation_part_request() :: #{}
+-type delete_documentation_part_request() :: #{}.
+
+%% Example:
+%% delete_documentation_version_request() :: #{}
+-type delete_documentation_version_request() :: #{}.
+
+%% Example:
+%% delete_domain_name_access_association_request() :: #{}
+-type delete_domain_name_access_association_request() :: #{}.
+
+
+%% Example:
+%% delete_domain_name_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type delete_domain_name_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_response_request() :: #{}
+-type delete_gateway_response_request() :: #{}.
+
+%% Example:
+%% delete_integration_request() :: #{}
+-type delete_integration_request() :: #{}.
+
+%% Example:
+%% delete_integration_response_request() :: #{}
+-type delete_integration_response_request() :: #{}.
+
+%% Example:
+%% delete_method_request() :: #{}
+-type delete_method_request() :: #{}.
+
+%% Example:
+%% delete_method_response_request() :: #{}
+-type delete_method_response_request() :: #{}.
+
+%% Example:
+%% delete_model_request() :: #{}
+-type delete_model_request() :: #{}.
+
+%% Example:
+%% delete_request_validator_request() :: #{}
+-type delete_request_validator_request() :: #{}.
+
+%% Example:
+%% delete_resource_request() :: #{}
+-type delete_resource_request() :: #{}.
+
+%% Example:
+%% delete_rest_api_request() :: #{}
+-type delete_rest_api_request() :: #{}.
+
+%% Example:
+%% delete_stage_request() :: #{}
+-type delete_stage_request() :: #{}.
+
+%% Example:
+%% delete_usage_plan_key_request() :: #{}
+-type delete_usage_plan_key_request() :: #{}.
+
+%% Example:
+%% delete_usage_plan_request() :: #{}
+-type delete_usage_plan_request() :: #{}.
+
+%% Example:
+%% delete_vpc_link_request() :: #{}
+-type delete_vpc_link_request() :: #{}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"apiSummary">> => map(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_canary_settings() :: #{
+%%   <<"percentTraffic">> => float(),
+%%   <<"stageVariableOverrides">> => map(),
+%%   <<"useStageCache">> => boolean()
+%% }
+-type deployment_canary_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployments() :: #{
+%%   <<"items">> => list(deployment()),
 %%   <<"position">> => string()
 %% }
--type get_request_validators_request() :: #{binary() => any()}.
+-type deployments() :: #{binary() => any()}.
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
+%% documentation_part() :: #{
+%%   <<"id">> => string(),
+%%   <<"location">> => documentation_part_location(),
+%%   <<"properties">> => string()
 %% }
--type not_found_exception() :: #{binary() => any()}.
+-type documentation_part() :: #{binary() => any()}.
 
 
 %% Example:
-%% generate_client_certificate_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"tags">> => map()
+%% documentation_part_ids() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"warnings">> => list(string())
 %% }
--type generate_client_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"apiKeyVersion">> => string(),
-%%   <<"cloudwatchRoleArn">> => string(),
-%%   <<"features">> => list(string()),
-%%   <<"throttleSettings">> => throttle_settings()
-%% }
--type account() :: #{binary() => any()}.
-
-%% Example:
-%% flush_stage_authorizers_cache_request() :: #{}
--type flush_stage_authorizers_cache_request() :: #{}.
-
-
-%% Example:
-%% tags() :: #{
-%%   <<"tags">> => map()
-%% }
--type tags() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_domain_name_access_association_request() :: #{
-%%   <<"domainNameAccessAssociationArn">> := string(),
-%%   <<"domainNameArn">> := string()
-%% }
--type reject_domain_name_access_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_names_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string(),
-%%   <<"resourceOwner">> => list(any())
-%% }
--type get_domain_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_usage_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_usage_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_request() :: #{}
--type get_integration_request() :: #{}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_integration_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_integration_response_request() :: #{binary() => any()}.
+-type documentation_part_ids() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1229,83 +799,28 @@
 
 
 %% Example:
-%% update_rest_api_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_rest_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_integration_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_method_request() :: #{
-%%   <<"apiKeyRequired">> => boolean(),
-%%   <<"authorizationScopes">> => list(string()),
-%%   <<"authorizationType">> := string(),
-%%   <<"authorizerId">> => string(),
-%%   <<"operationName">> => string(),
-%%   <<"requestModels">> => map(),
-%%   <<"requestParameters">> => map(),
-%%   <<"requestValidatorId">> => string()
-%% }
--type put_method_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_request() :: #{
-%%   <<"pathPart">> := string()
-%% }
--type create_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_name_request() :: #{
-%%   <<"domainNameId">> => string(),
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_domain_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% rest_apis() :: #{
-%%   <<"items">> => list(rest_api()),
+%% documentation_parts() :: #{
+%%   <<"items">> => list(documentation_part()),
 %%   <<"position">> => string()
 %% }
--type rest_apis() :: #{binary() => any()}.
+-type documentation_parts() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_api_key_request() :: #{
-%%   <<"customerId">> => string(),
+%% documentation_version() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"generateDistinctId">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"stageKeys">> => list(stage_key()),
-%%   <<"tags">> => map(),
-%%   <<"value">> => string()
+%%   <<"version">> => string()
 %% }
--type create_api_key_request() :: #{binary() => any()}.
+-type documentation_version() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_account_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_name_access_associations() :: #{
-%%   <<"items">> => list(domain_name_access_association()),
+%% documentation_versions() :: #{
+%%   <<"items">> => list(documentation_version()),
 %%   <<"position">> => string()
 %% }
--type domain_name_access_associations() :: #{binary() => any()}.
+-type documentation_versions() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1338,46 +853,94 @@
 
 
 %% Example:
-%% create_stage_request() :: #{
-%%   <<"cacheClusterEnabled">> => boolean(),
-%%   <<"cacheClusterSize">> => list(any()),
-%%   <<"canarySettings">> => canary_settings(),
-%%   <<"deploymentId">> := string(),
-%%   <<"description">> => string(),
-%%   <<"documentationVersion">> => string(),
-%%   <<"stageName">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"tracingEnabled">> => boolean(),
-%%   <<"variables">> => map()
-%% }
--type create_stage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_method_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_method_response_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_request() :: #{}
--type delete_deployment_request() :: #{}.
-
-%% Example:
-%% delete_method_response_request() :: #{}
--type delete_method_response_request() :: #{}.
-
-
-%% Example:
-%% client_certificate() :: #{
-%%   <<"clientCertificateId">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"pemEncodedCertificate">> => string(),
+%% domain_name_access_association() :: #{
+%%   <<"accessAssociationSource">> => string(),
+%%   <<"accessAssociationSourceType">> => list(any()),
+%%   <<"domainNameAccessAssociationArn">> => string(),
+%%   <<"domainNameArn">> => string(),
 %%   <<"tags">> => map()
 %% }
--type client_certificate() :: #{binary() => any()}.
+-type domain_name_access_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_name_access_associations() :: #{
+%%   <<"items">> => list(domain_name_access_association()),
+%%   <<"position">> => string()
+%% }
+-type domain_name_access_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_names() :: #{
+%%   <<"items">> => list(domain_name()),
+%%   <<"position">> => string()
+%% }
+-type domain_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_configuration() :: #{
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"types">> => list(list(any())()),
+%%   <<"vpcEndpointIds">> => list(string())
+%% }
+-type endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_response() :: #{
+%%   <<"body">> => binary(),
+%%   <<"contentDisposition">> => string(),
+%%   <<"contentType">> => string()
+%% }
+-type export_response() :: #{binary() => any()}.
+
+%% Example:
+%% flush_stage_authorizers_cache_request() :: #{}
+-type flush_stage_authorizers_cache_request() :: #{}.
+
+%% Example:
+%% flush_stage_cache_request() :: #{}
+-type flush_stage_cache_request() :: #{}.
+
+
+%% Example:
+%% gateway_response() :: #{
+%%   <<"defaultResponse">> => boolean(),
+%%   <<"responseParameters">> => map(),
+%%   <<"responseTemplates">> => map(),
+%%   <<"responseType">> => list(any()),
+%%   <<"statusCode">> => string()
+%% }
+-type gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_responses() :: #{
+%%   <<"items">> => list(gateway_response()),
+%%   <<"position">> => string()
+%% }
+-type gateway_responses() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_client_certificate_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type generate_client_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_request() :: #{}
+-type get_account_request() :: #{}.
+
+
+%% Example:
+%% get_api_key_request() :: #{
+%%   <<"includeValue">> => boolean()
+%% }
+-type get_api_key_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1390,50 +953,88 @@
 %% }
 -type get_api_keys_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_authorizer_request() :: #{}
+-type get_authorizer_request() :: #{}.
+
 
 %% Example:
-%% mutual_tls_authentication_input() :: #{
-%%   <<"truststoreUri">> => string(),
-%%   <<"truststoreVersion">> => string()
+%% get_authorizers_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
 %% }
--type mutual_tls_authentication_input() :: #{binary() => any()}.
+-type get_authorizers_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_resource_request() :: #{
+%% get_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string()
+%% }
+-type get_base_path_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_base_path_mappings_request() :: #{
+%%   <<"domainNameId">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_base_path_mappings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_client_certificate_request() :: #{}
+-type get_client_certificate_request() :: #{}.
+
+
+%% Example:
+%% get_client_certificates_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_client_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_request() :: #{
 %%   <<"embed">> => list(string())
 %% }
--type get_resource_request() :: #{binary() => any()}.
+-type get_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% deployment_canary_settings() :: #{
-%%   <<"percentTraffic">> => float(),
-%%   <<"stageVariableOverrides">> => map(),
-%%   <<"useStageCache">> => boolean()
+%% get_deployments_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
 %% }
--type deployment_canary_settings() :: #{binary() => any()}.
+-type get_deployments_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_method_request() :: #{}
--type delete_method_request() :: #{}.
+%% get_documentation_part_request() :: #{}
+-type get_documentation_part_request() :: #{}.
 
 
 %% Example:
-%% api_stage() :: #{
-%%   <<"apiId">> => string(),
-%%   <<"stage">> => string(),
-%%   <<"throttle">> => map()
+%% get_documentation_parts_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"locationStatus">> => list(any()),
+%%   <<"nameQuery">> => string(),
+%%   <<"path">> => string(),
+%%   <<"position">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type api_stage() :: #{binary() => any()}.
+-type get_documentation_parts_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_documentation_version_request() :: #{}
+-type get_documentation_version_request() :: #{}.
 
 
 %% Example:
-%% get_export_request() :: #{
-%%   <<"accepts">> => string(),
-%%   <<"parameters">> => map()
+%% get_documentation_versions_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
 %% }
--type get_export_request() :: #{binary() => any()}.
+-type get_documentation_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1444,107 +1045,6 @@
 %% }
 -type get_domain_name_access_associations_request() :: #{binary() => any()}.
 
-%% Example:
-%% delete_model_request() :: #{}
--type delete_model_request() :: #{}.
-
-
-%% Example:
-%% tls_config() :: #{
-%%   <<"insecureSkipVerification">> => boolean()
-%% }
--type tls_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_documentation_part_request() :: #{}
--type get_documentation_part_request() :: #{}.
-
-
-%% Example:
-%% access_log_settings() :: #{
-%%   <<"destinationArn">> => string(),
-%%   <<"format">> => string()
-%% }
--type access_log_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% documentation_version() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"version">> => string()
-%% }
--type documentation_version() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_response_request() :: #{}
--type get_integration_response_request() :: #{}.
-
-%% Example:
-%% get_rest_api_request() :: #{}
--type get_rest_api_request() :: #{}.
-
-
-%% Example:
-%% api_keys() :: #{
-%%   <<"items">> => list(api_key()),
-%%   <<"position">> => string(),
-%%   <<"warnings">> => list(string())
-%% }
--type api_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_models_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_base_path_mapping_request() :: #{
-%%   <<"basePath">> => string(),
-%%   <<"domainNameId">> => string(),
-%%   <<"restApiId">> := string(),
-%%   <<"stage">> => string()
-%% }
--type create_base_path_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% method_response() :: #{
-%%   <<"responseModels">> => map(),
-%%   <<"responseParameters">> => map(),
-%%   <<"statusCode">> => string()
-%% }
--type method_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_link_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
-%% }
--type update_vpc_link_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_sdk_type_request() :: #{}
--type get_sdk_type_request() :: #{}.
-
-
-%% Example:
-%% usage_plan() :: #{
-%%   <<"apiStages">> => list(api_stage()),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"productCode">> => string(),
-%%   <<"quota">> => quota_settings(),
-%%   <<"tags">> => map(),
-%%   <<"throttle">> => throttle_settings()
-%% }
--type usage_plan() :: #{binary() => any()}.
-
 
 %% Example:
 %% get_domain_name_request() :: #{
@@ -1554,29 +1054,48 @@
 
 
 %% Example:
-%% update_usage_plan_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% get_domain_names_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string(),
+%%   <<"resourceOwner">> => list(any())
 %% }
--type update_usage_plan_request() :: #{binary() => any()}.
+-type get_domain_names_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% sdk_types() :: #{
-%%   <<"items">> => list(sdk_type())
+%% get_export_request() :: #{
+%%   <<"accepts">> => string(),
+%%   <<"parameters">> => map()
 %% }
--type sdk_types() :: #{binary() => any()}.
+-type get_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_response_request() :: #{}
+-type get_gateway_response_request() :: #{}.
 
 
 %% Example:
-%% create_usage_plan_key_request() :: #{
-%%   <<"keyId">> := string(),
-%%   <<"keyType">> := string()
+%% get_gateway_responses_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
 %% }
--type create_usage_plan_key_request() :: #{binary() => any()}.
+-type get_gateway_responses_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_api_key_request() :: #{}
--type delete_api_key_request() :: #{}.
+%% get_integration_request() :: #{}
+-type get_integration_request() :: #{}.
+
+%% Example:
+%% get_integration_response_request() :: #{}
+-type get_integration_response_request() :: #{}.
+
+%% Example:
+%% get_method_request() :: #{}
+-type get_method_request() :: #{}.
+
+%% Example:
+%% get_method_response_request() :: #{}
+-type get_method_response_request() :: #{}.
 
 
 %% Example:
@@ -1586,8 +1105,111 @@
 -type get_model_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_documentation_version_request() :: #{}
--type get_documentation_version_request() :: #{}.
+%% get_model_template_request() :: #{}
+-type get_model_template_request() :: #{}.
+
+
+%% Example:
+%% get_models_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_request_validator_request() :: #{}
+-type get_request_validator_request() :: #{}.
+
+
+%% Example:
+%% get_request_validators_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_request_validators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_request() :: #{
+%%   <<"embed">> => list(string())
+%% }
+-type get_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resources_request() :: #{
+%%   <<"embed">> => list(string()),
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rest_api_request() :: #{}
+-type get_rest_api_request() :: #{}.
+
+
+%% Example:
+%% get_rest_apis_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_rest_apis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sdk_request() :: #{
+%%   <<"parameters">> => map()
+%% }
+-type get_sdk_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_sdk_type_request() :: #{}
+-type get_sdk_type_request() :: #{}.
+
+
+%% Example:
+%% get_sdk_types_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_sdk_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_stage_request() :: #{}
+-type get_stage_request() :: #{}.
+
+
+%% Example:
+%% get_stages_request() :: #{
+%%   <<"deploymentId">> => string()
+%% }
+-type get_stages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tags_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string()
+%% }
+-type get_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_plan_key_request() :: #{}
+-type get_usage_plan_key_request() :: #{}.
+
+
+%% Example:
+%% get_usage_plan_keys_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nameQuery">> => string(),
+%%   <<"position">> => string()
+%% }
+-type get_usage_plan_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_plan_request() :: #{}
+-type get_usage_plan_request() :: #{}.
 
 
 %% Example:
@@ -1600,60 +1222,87 @@
 
 
 %% Example:
-%% create_usage_plan_request() :: #{
-%%   <<"apiStages">> => list(api_stage()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"quota">> => quota_settings(),
-%%   <<"tags">> => map(),
-%%   <<"throttle">> => throttle_settings()
+%% get_usage_request() :: #{
+%%   <<"endDate">> := string(),
+%%   <<"keyId">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"position">> => string(),
+%%   <<"startDate">> := string()
 %% }
--type create_usage_plan_request() :: #{binary() => any()}.
+-type get_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_link_request() :: #{}
+-type get_vpc_link_request() :: #{}.
 
 
 %% Example:
-%% get_rest_apis_request() :: #{
+%% get_vpc_links_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
--type get_rest_apis_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_client_certificate_request() :: #{}
--type get_client_certificate_request() :: #{}.
+-type get_vpc_links_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% documentation_part() :: #{
-%%   <<"id">> => string(),
-%%   <<"location">> => documentation_part_location(),
-%%   <<"properties">> => string()
+%% import_api_keys_request() :: #{
+%%   <<"body">> := binary(),
+%%   <<"failOnWarnings">> => boolean(),
+%%   <<"format">> := list(any())
 %% }
--type documentation_part() :: #{binary() => any()}.
+-type import_api_keys_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% method_snapshot() :: #{
-%%   <<"apiKeyRequired">> => boolean(),
-%%   <<"authorizationType">> => string()
+%% import_documentation_parts_request() :: #{
+%%   <<"body">> := binary(),
+%%   <<"failOnWarnings">> => boolean(),
+%%   <<"mode">> => list(any())
 %% }
--type method_snapshot() :: #{binary() => any()}.
+-type import_documentation_parts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_method_response_request() :: #{
-%%   <<"responseModels">> => map(),
-%%   <<"responseParameters">> => map()
+%% import_rest_api_request() :: #{
+%%   <<"body">> := binary(),
+%%   <<"failOnWarnings">> => boolean(),
+%%   <<"parameters">> => map()
 %% }
--type put_method_response_request() :: #{binary() => any()}.
+-type import_rest_api_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% request_validators() :: #{
-%%   <<"items">> => list(request_validator()),
-%%   <<"position">> => string()
+%% integration() :: #{
+%%   <<"cacheKeyParameters">> => list(string()),
+%%   <<"cacheNamespace">> => string(),
+%%   <<"connectionId">> => string(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"contentHandling">> => list(any()),
+%%   <<"credentials">> => string(),
+%%   <<"httpMethod">> => string(),
+%%   <<"integrationResponses">> => map(),
+%%   <<"integrationTarget">> => string(),
+%%   <<"passthroughBehavior">> => string(),
+%%   <<"requestParameters">> => map(),
+%%   <<"requestTemplates">> => map(),
+%%   <<"responseTransferMode">> => list(any()),
+%%   <<"timeoutInMillis">> => integer(),
+%%   <<"tlsConfig">> => tls_config(),
+%%   <<"type">> => list(any()),
+%%   <<"uri">> => string()
 %% }
--type request_validators() :: #{binary() => any()}.
+-type integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration_response() :: #{
+%%   <<"contentHandling">> => list(any()),
+%%   <<"responseParameters">> => map(),
+%%   <<"responseTemplates">> => map(),
+%%   <<"selectionPattern">> => string(),
+%%   <<"statusCode">> => string()
+%% }
+-type integration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1662,72 +1311,6 @@
 %%   <<"retryAfterSeconds">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% models() :: #{
-%%   <<"items">> => list(model()),
-%%   <<"position">> => string()
-%% }
--type models() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_base_path_mapping_request() :: #{
-%%   <<"domainNameId">> => string()
-%% }
--type delete_base_path_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_name_request() :: #{
-%%   <<"domainNameId">> => string()
-%% }
--type delete_domain_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% documentation_parts() :: #{
-%%   <<"items">> => list(documentation_part()),
-%%   <<"position">> => string()
-%% }
--type documentation_parts() :: #{binary() => any()}.
-
-%% Example:
-%% get_vpc_link_request() :: #{}
--type get_vpc_link_request() :: #{}.
-
-
-%% Example:
-%% test_invoke_authorizer_response() :: #{
-%%   <<"authorization">> => map(),
-%%   <<"claims">> => map(),
-%%   <<"clientStatus">> => integer(),
-%%   <<"latency">> => float(),
-%%   <<"log">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"principalId">> => string()
-%% }
--type test_invoke_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% documentation_part_ids() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"warnings">> => list(string())
-%% }
--type documentation_part_ids() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_plan_request() :: #{}
--type delete_usage_plan_request() :: #{}.
 
 
 %% Example:
@@ -1748,115 +1331,36 @@
 
 
 %% Example:
-%% template() :: #{
-%%   <<"value">> => string()
-%% }
--type template() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_invoke_method_request() :: #{
-%%   <<"body">> => string(),
-%%   <<"clientCertificateId">> => string(),
-%%   <<"headers">> => map(),
-%%   <<"multiValueHeaders">> => map(),
-%%   <<"pathWithQueryString">> => string(),
-%%   <<"stageVariables">> => map()
-%% }
--type test_invoke_method_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_key_request() :: #{
-%%   <<"includeValue">> => boolean()
-%% }
--type get_api_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vpc_links_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_vpc_links_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorizers() :: #{
-%%   <<"items">> => list(authorizer()),
-%%   <<"position">> => string()
-%% }
--type authorizers() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_base_path_mappings_request() :: #{
-%%   <<"domainNameId">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
-%% }
--type get_base_path_mappings_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_request_validator_request() :: #{}
--type get_request_validator_request() :: #{}.
-
-
-%% Example:
-%% api_key() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"customerId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"stageKeys">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"value">> => string()
-%% }
--type api_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_integration_response_request() :: #{
-%%   <<"contentHandling">> => list(any()),
+%% method_response() :: #{
+%%   <<"responseModels">> => map(),
 %%   <<"responseParameters">> => map(),
-%%   <<"responseTemplates">> => map(),
-%%   <<"selectionPattern">> => string()
-%% }
--type put_integration_response_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_request() :: #{}
--type get_account_request() :: #{}.
-
-
-%% Example:
-%% integration_response() :: #{
-%%   <<"contentHandling">> => list(any()),
-%%   <<"responseParameters">> => map(),
-%%   <<"responseTemplates">> => map(),
-%%   <<"selectionPattern">> => string(),
 %%   <<"statusCode">> => string()
 %% }
--type integration_response() :: #{binary() => any()}.
+-type method_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% test_invoke_method_response() :: #{
-%%   <<"body">> => string(),
-%%   <<"headers">> => map(),
-%%   <<"latency">> => float(),
-%%   <<"log">> => string(),
-%%   <<"multiValueHeaders">> => map(),
-%%   <<"status">> => integer()
+%% method_setting() :: #{
+%%   <<"cacheDataEncrypted">> => boolean(),
+%%   <<"cacheTtlInSeconds">> => integer(),
+%%   <<"cachingEnabled">> => boolean(),
+%%   <<"dataTraceEnabled">> => boolean(),
+%%   <<"loggingLevel">> => string(),
+%%   <<"metricsEnabled">> => boolean(),
+%%   <<"requireAuthorizationForCacheControl">> => boolean(),
+%%   <<"throttlingBurstLimit">> => integer(),
+%%   <<"throttlingRateLimit">> => float(),
+%%   <<"unauthorizedCacheControlHeaderStrategy">> => list(any())
 %% }
--type test_invoke_method_response() :: #{binary() => any()}.
+-type method_setting() :: #{binary() => any()}.
+
 
 %% Example:
-%% flush_stage_cache_request() :: #{}
--type flush_stage_cache_request() :: #{}.
+%% method_snapshot() :: #{
+%%   <<"apiKeyRequired">> => boolean(),
+%%   <<"authorizationType">> => string()
+%% }
+-type method_snapshot() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1871,25 +1375,108 @@
 
 
 %% Example:
-%% deployments() :: #{
-%%   <<"items">> => list(deployment()),
+%% models() :: #{
+%%   <<"items">> => list(model()),
 %%   <<"position">> => string()
 %% }
--type deployments() :: #{binary() => any()}.
+-type models() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_documentation_version_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% mutual_tls_authentication() :: #{
+%%   <<"truststoreUri">> => string(),
+%%   <<"truststoreVersion">> => string(),
+%%   <<"truststoreWarnings">> => list(string())
 %% }
--type update_documentation_version_request() :: #{binary() => any()}.
+-type mutual_tls_authentication() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_deployment_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% mutual_tls_authentication_input() :: #{
+%%   <<"truststoreUri">> => string(),
+%%   <<"truststoreVersion">> => string()
 %% }
--type update_deployment_request() :: #{binary() => any()}.
+-type mutual_tls_authentication_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% patch_operation() :: #{
+%%   <<"from">> => string(),
+%%   <<"op">> => list(any()),
+%%   <<"path">> => string(),
+%%   <<"value">> => string()
+%% }
+-type patch_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_gateway_response_request() :: #{
+%%   <<"responseParameters">> => map(),
+%%   <<"responseTemplates">> => map(),
+%%   <<"statusCode">> => string()
+%% }
+-type put_gateway_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_request() :: #{
+%%   <<"cacheKeyParameters">> => list(string()),
+%%   <<"cacheNamespace">> => string(),
+%%   <<"connectionId">> => string(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"contentHandling">> => list(any()),
+%%   <<"credentials">> => string(),
+%%   <<"integrationHttpMethod">> => string(),
+%%   <<"integrationTarget">> => string(),
+%%   <<"passthroughBehavior">> => string(),
+%%   <<"requestParameters">> => map(),
+%%   <<"requestTemplates">> => map(),
+%%   <<"responseTransferMode">> => list(any()),
+%%   <<"timeoutInMillis">> => integer(),
+%%   <<"tlsConfig">> => tls_config(),
+%%   <<"type">> := list(any()),
+%%   <<"uri">> => string()
+%% }
+-type put_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_response_request() :: #{
+%%   <<"contentHandling">> => list(any()),
+%%   <<"responseParameters">> => map(),
+%%   <<"responseTemplates">> => map(),
+%%   <<"selectionPattern">> => string()
+%% }
+-type put_integration_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_method_request() :: #{
+%%   <<"apiKeyRequired">> => boolean(),
+%%   <<"authorizationScopes">> => list(string()),
+%%   <<"authorizationType">> := string(),
+%%   <<"authorizerId">> => string(),
+%%   <<"operationName">> => string(),
+%%   <<"requestModels">> => map(),
+%%   <<"requestParameters">> => map(),
+%%   <<"requestValidatorId">> => string()
+%% }
+-type put_method_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_method_response_request() :: #{
+%%   <<"responseModels">> => map(),
+%%   <<"responseParameters">> => map()
+%% }
+-type put_method_response_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1910,76 +1497,31 @@
 %% }
 -type quota_settings() :: #{binary() => any()}.
 
-%% Example:
-%% delete_gateway_response_request() :: #{}
--type delete_gateway_response_request() :: #{}.
-
 
 %% Example:
-%% get_documentation_versions_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"position">> => string()
+%% reject_domain_name_access_association_request() :: #{
+%%   <<"domainNameAccessAssociationArn">> := string(),
+%%   <<"domainNameArn">> := string()
 %% }
--type get_documentation_versions_request() :: #{binary() => any()}.
+-type reject_domain_name_access_association_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_domain_name_access_association_request() :: #{
-%%   <<"accessAssociationSource">> := string(),
-%%   <<"accessAssociationSourceType">> := list(any()),
-%%   <<"domainNameArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_domain_name_access_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_plan_key() :: #{
+%% request_validator() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
+%%   <<"validateRequestBody">> => boolean(),
+%%   <<"validateRequestParameters">> => boolean()
 %% }
--type usage_plan_key() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_link_request() :: #{}
--type delete_vpc_link_request() :: #{}.
+-type request_validator() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_authorizer_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation())
+%% request_validators() :: #{
+%%   <<"items">> => list(request_validator()),
+%%   <<"position">> => string()
 %% }
--type update_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_gateway_response_request() :: #{
-%%   <<"responseParameters">> => map(),
-%%   <<"responseTemplates">> => map(),
-%%   <<"statusCode">> => string()
-%% }
--type put_gateway_response_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_rest_api_request() :: #{
-%%   <<"apiKeySource">> => list(any()),
-%%   <<"binaryMediaTypes">> => list(string()),
-%%   <<"cloneFrom">> => string(),
-%%   <<"description">> => string(),
-%%   <<"disableExecuteApiEndpoint">> => boolean(),
-%%   <<"endpointAccessMode">> => list(any()),
-%%   <<"endpointConfiguration">> => endpoint_configuration(),
-%%   <<"minimumCompressionSize">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"policy">> => string(),
-%%   <<"securityPolicy">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"version">> => string()
-%% }
--type create_rest_api_request() :: #{binary() => any()}.
+-type request_validators() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1992,878 +1534,1336 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+
+%% Example:
+%% resources() :: #{
+%%   <<"items">> => list(resource()),
+%%   <<"position">> => string()
+%% }
+-type resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% rest_api() :: #{
+%%   <<"apiKeySource">> => list(any()),
+%%   <<"apiStatus">> => list(any()),
+%%   <<"apiStatusMessage">> => string(),
+%%   <<"binaryMediaTypes">> => list(string()),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"disableExecuteApiEndpoint">> => boolean(),
+%%   <<"endpointAccessMode">> => list(any()),
+%%   <<"endpointConfiguration">> => endpoint_configuration(),
+%%   <<"id">> => string(),
+%%   <<"minimumCompressionSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"rootResourceId">> => string(),
+%%   <<"securityPolicy">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string(),
+%%   <<"warnings">> => list(string())
+%% }
+-type rest_api() :: #{binary() => any()}.
+
+
+%% Example:
+%% rest_apis() :: #{
+%%   <<"items">> => list(rest_api()),
+%%   <<"position">> => string()
+%% }
+-type rest_apis() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdk_configuration_property() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"friendlyName">> => string(),
+%%   <<"name">> => string(),
+%%   <<"required">> => boolean()
+%% }
+-type sdk_configuration_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdk_response() :: #{
+%%   <<"body">> => binary(),
+%%   <<"contentDisposition">> => string(),
+%%   <<"contentType">> => string()
+%% }
+-type sdk_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdk_type() :: #{
+%%   <<"configurationProperties">> => list(sdk_configuration_property()),
+%%   <<"description">> => string(),
+%%   <<"friendlyName">> => string(),
+%%   <<"id">> => string()
+%% }
+-type sdk_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdk_types() :: #{
+%%   <<"items">> => list(sdk_type())
+%% }
+-type sdk_types() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage() :: #{
+%%   <<"accessLogSettings">> => access_log_settings(),
+%%   <<"cacheClusterEnabled">> => boolean(),
+%%   <<"cacheClusterSize">> => list(any()),
+%%   <<"cacheClusterStatus">> => list(any()),
+%%   <<"canarySettings">> => canary_settings(),
+%%   <<"clientCertificateId">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"deploymentId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"documentationVersion">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"methodSettings">> => map(),
+%%   <<"stageName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"tracingEnabled">> => boolean(),
+%%   <<"variables">> => map(),
+%%   <<"webAclArn">> => string()
+%% }
+-type stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage_key() :: #{
+%%   <<"restApiId">> => string(),
+%%   <<"stageName">> => string()
+%% }
+-type stage_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% stages() :: #{
+%%   <<"item">> => list(stage())
+%% }
+-type stages() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% template() :: #{
+%%   <<"value">> => string()
+%% }
+-type template() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_authorizer_request() :: #{
+%%   <<"additionalContext">> => map(),
+%%   <<"body">> => string(),
+%%   <<"headers">> => map(),
+%%   <<"multiValueHeaders">> => map(),
+%%   <<"pathWithQueryString">> => string(),
+%%   <<"stageVariables">> => map()
+%% }
+-type test_invoke_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_authorizer_response() :: #{
+%%   <<"authorization">> => map(),
+%%   <<"claims">> => map(),
+%%   <<"clientStatus">> => integer(),
+%%   <<"latency">> => float(),
+%%   <<"log">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"principalId">> => string()
+%% }
+-type test_invoke_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_method_request() :: #{
+%%   <<"body">> => string(),
+%%   <<"clientCertificateId">> => string(),
+%%   <<"headers">> => map(),
+%%   <<"multiValueHeaders">> => map(),
+%%   <<"pathWithQueryString">> => string(),
+%%   <<"stageVariables">> => map()
+%% }
+-type test_invoke_method_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_method_response() :: #{
+%%   <<"body">> => string(),
+%%   <<"headers">> => map(),
+%%   <<"latency">> => float(),
+%%   <<"log">> => string(),
+%%   <<"multiValueHeaders">> => map(),
+%%   <<"status">> => integer()
+%% }
+-type test_invoke_method_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttle_settings() :: #{
+%%   <<"burstLimit">> => integer(),
+%%   <<"rateLimit">> => float()
+%% }
+-type throttle_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_config() :: #{
+%%   <<"insecureSkipVerification">> => boolean()
+%% }
+-type tls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_key_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_api_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_authorizer_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_base_path_mapping_request() :: #{
+%%   <<"domainNameId">> => string(),
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_base_path_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_client_certificate_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_client_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_deployment_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_documentation_part_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_documentation_part_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_documentation_version_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_documentation_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_name_request() :: #{
+%%   <<"domainNameId">> => string(),
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_domain_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_response_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_gateway_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_integration_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_integration_response_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_integration_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_method_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_method_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_method_response_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_method_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_model_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_request_validator_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_request_validator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rest_api_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_rest_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stage_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_usage_plan_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_usage_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_usage_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_usage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_link_request() :: #{
+%%   <<"patchOperations">> => list(patch_operation())
+%% }
+-type update_vpc_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage() :: #{
+%%   <<"endDate">> => string(),
+%%   <<"items">> => map(),
+%%   <<"position">> => string(),
+%%   <<"startDate">> => string(),
+%%   <<"usagePlanId">> => string()
+%% }
+-type usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_plan() :: #{
+%%   <<"apiStages">> => list(api_stage()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"productCode">> => string(),
+%%   <<"quota">> => quota_settings(),
+%%   <<"tags">> => map(),
+%%   <<"throttle">> => throttle_settings()
+%% }
+-type usage_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_plan_key() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type usage_plan_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_plan_keys() :: #{
+%%   <<"items">> => list(usage_plan_key()),
+%%   <<"position">> => string()
+%% }
+-type usage_plan_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_plans() :: #{
+%%   <<"items">> => list(usage_plan()),
+%%   <<"position">> => string()
+%% }
+-type usage_plans() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_link() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetArns">> => list(string())
+%% }
+-type vpc_link() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_links() :: #{
+%%   <<"items">> => list(vpc_link()),
+%%   <<"position">> => string()
+%% }
+-type vpc_links() :: #{binary() => any()}.
+
 -type create_api_key_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_authorizer_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_base_path_mapping_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_deployment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type create_documentation_part_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_documentation_version_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_domain_name_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type create_domain_name_access_association_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type create_model_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_request_validator_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_rest_api_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type create_stage_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_usage_plan_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_usage_plan_key_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_vpc_link_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_api_key_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_authorizer_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_base_path_mapping_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_client_certificate_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_deployment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_documentation_part_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_documentation_version_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_domain_name_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_domain_name_access_association_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_gateway_response_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_integration_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_integration_response_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_method_errors() ::
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    conflict_exception().
 
 -type delete_method_response_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_model_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_request_validator_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_resource_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_rest_api_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_stage_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_usage_plan_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_usage_plan_key_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_vpc_link_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type flush_stage_authorizers_cache_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type flush_stage_cache_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type generate_client_certificate_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_account_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_api_key_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_api_keys_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_authorizer_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_authorizers_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_base_path_mapping_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_base_path_mappings_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_client_certificate_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_client_certificates_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_deployment_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_deployments_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_documentation_part_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_documentation_parts_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_documentation_version_errors() ::
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception().
 
 -type get_documentation_versions_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_domain_name_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_domain_name_access_associations_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_domain_names_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_export_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_gateway_response_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_gateway_responses_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_integration_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_integration_response_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_method_errors() ::
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception().
 
 -type get_method_response_errors() ::
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception().
 
 -type get_model_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_model_template_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_models_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_request_validator_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_request_validators_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_resource_errors() ::
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception().
 
 -type get_resources_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_rest_api_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_rest_apis_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_sdk_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_sdk_type_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_sdk_types_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_stage_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_stages_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_tags_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_usage_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_usage_plan_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_usage_plan_key_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_usage_plan_keys_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_usage_plans_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_vpc_link_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type get_vpc_links_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type import_api_keys_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type import_documentation_parts_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type import_rest_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_gateway_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_integration_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_integration_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_method_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_method_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_rest_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type reject_domain_name_access_association_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type test_invoke_authorizer_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type test_invoke_method_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_account_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_api_key_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_authorizer_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_base_path_mapping_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_client_certificate_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_deployment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_documentation_part_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_documentation_version_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_domain_name_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_gateway_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_integration_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_integration_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_method_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_method_response_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_model_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_request_validator_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_resource_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_rest_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_stage_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_usage_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_usage_plan_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_vpc_link_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

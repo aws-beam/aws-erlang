@@ -126,187 +126,87 @@
 
 
 %% Example:
-%% create_virtual_gateway_output() :: #{
-%%   <<"virtualGateway">> := virtual_gateway_data()
-%% }
--type create_virtual_gateway_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_timeout() :: #{
-%%   <<"idle">> => duration(),
-%%   <<"perRequest">> => duration()
-%% }
--type http_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% subject_alternative_names() :: #{
-%%   <<"match">> => subject_alternative_name_matchers()
-%% }
--type subject_alternative_names() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_ref() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshName">> => string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"version">> => [float()],
-%%   <<"virtualGatewayName">> => string()
-%% }
--type virtual_gateway_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> => route_spec()
-%% }
--type update_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_router_output() :: #{
-%%   <<"virtualRouter">> => virtual_router_data()
-%% }
--type describe_virtual_router_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_virtual_service_output() :: #{
-%%   <<"virtualService">> => virtual_service_data()
-%% }
--type create_virtual_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_service_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type delete_virtual_service_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_validation_context_sds_trust() :: #{
-%%   <<"secretName">> => string()
-%% }
--type tls_validation_context_sds_trust() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_metadata() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"uid">> => [string()],
-%%   <<"version">> => [float()]
-%% }
--type resource_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% mesh_ref() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshName">> => string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"version">> => [float()]
-%% }
--type mesh_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% outlier_detection() :: #{
-%%   <<"baseEjectionDuration">> => duration(),
-%%   <<"interval">> => duration(),
-%%   <<"maxEjectionPercent">> => integer(),
-%%   <<"maxServerErrors">> => float()
-%% }
--type outlier_detection() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_gateway_route_rewrite() :: #{
-%%   <<"hostname">> => gateway_route_hostname_rewrite()
-%% }
--type grpc_gateway_route_rewrite() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_gateway_route_prefix_rewrite() :: #{
-%%   <<"defaultPrefix">> => string(),
+%% aws_cloud_map_instance_attribute() :: #{
+%%   <<"key">> => string(),
 %%   <<"value">> => string()
 %% }
--type http_gateway_route_prefix_rewrite() :: #{binary() => any()}.
+-type aws_cloud_map_instance_attribute() :: #{binary() => any()}.
 
 
 %% Example:
-%% virtual_node_grpc_connection_pool() :: #{
-%%   <<"maxRequests">> => integer()
+%% aws_cloud_map_service_discovery() :: #{
+%%   <<"attributes">> => list(aws_cloud_map_instance_attribute()),
+%%   <<"ipPreference">> => string(),
+%%   <<"namespaceName">> => string(),
+%%   <<"serviceName">> => string()
 %% }
--type virtual_node_grpc_connection_pool() :: #{binary() => any()}.
+-type aws_cloud_map_service_discovery() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_mesh_input() :: #{
+%% backend_defaults() :: #{
+%%   <<"clientPolicy">> => client_policy()
+%% }
+-type backend_defaults() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_policy() :: #{
+%%   <<"tls">> => client_policy_tls()
+%% }
+-type client_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_policy_tls() :: #{
+%%   <<"certificate">> => list(),
+%%   <<"enforce">> => [boolean()],
+%%   <<"ports">> => list(integer()),
+%%   <<"validation">> => tls_validation_context()
+%% }
+-type client_policy_tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_route_input() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"spec">> => mesh_spec()
-%% }
--type update_mesh_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_gateways_input() :: #{
-%%   <<"limit">> => integer(),
+%%   <<"gatewayRouteName">> := string(),
 %%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
+%%   <<"spec">> := gateway_route_spec(),
+%%   <<"tags">> => list(tag_ref())
 %% }
--type list_virtual_gateways_input() :: #{binary() => any()}.
+-type create_gateway_route_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_route_hostname_match() :: #{
-%%   <<"exact">> => string(),
-%%   <<"suffix">> => string()
+%% create_gateway_route_output() :: #{
+%%   <<"gatewayRoute">> := gateway_route_data()
 %% }
--type gateway_route_hostname_match() :: #{binary() => any()}.
+-type create_gateway_route_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_virtual_router_output() :: #{
-%%   <<"virtualRouter">> => virtual_router_data()
+%% create_mesh_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshName">> => string(),
+%%   <<"spec">> => mesh_spec(),
+%%   <<"tags">> => list(tag_ref())
 %% }
--type update_virtual_router_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_virtual_router_output() :: #{
-%%   <<"virtualRouter">> => virtual_router_data()
-%% }
--type create_virtual_router_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_output() :: #{
-%%   <<"route">> => route_data()
-%% }
--type create_route_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_gateway_output() :: #{
-%%   <<"virtualGateway">> := virtual_gateway_data()
-%% }
--type delete_virtual_gateway_output() :: #{binary() => any()}.
+-type create_mesh_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,50 +214,6 @@
 %%   <<"mesh">> => mesh_data()
 %% }
 -type create_mesh_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_route_match() :: #{
-%%   <<"metadata">> => list(grpc_route_metadata()),
-%%   <<"methodName">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"serviceName">> => string()
-%% }
--type grpc_route_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_route_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type describe_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener() :: #{
-%%   <<"connectionPool">> => list(),
-%%   <<"healthCheck">> => health_check_policy(),
-%%   <<"outlierDetection">> => outlier_detection(),
-%%   <<"portMapping">> => port_mapping(),
-%%   <<"timeout">> => list(),
-%%   <<"tls">> => listener_tls()
-%% }
--type listener() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_validation_context_acm_trust() :: #{
-%%   <<"certificateAuthorityArns">> => list(string())
-%% }
--type tls_validation_context_acm_trust() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_range() :: #{
-%%   <<"end">> => [float()],
-%%   <<"start">> => [float()]
-%% }
--type match_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -372,632 +228,28 @@
 
 
 %% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_virtual_node_output() :: #{
-%%   <<"virtualNode">> => virtual_node_data()
-%% }
--type update_virtual_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_service_output() :: #{
-%%   <<"virtualService">> => virtual_service_data()
-%% }
--type delete_virtual_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tcp_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target())
-%% }
--type tcp_route_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% weighted_target() :: #{
-%%   <<"port">> => integer(),
-%%   <<"virtualNode">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type weighted_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_ref() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_client_policy() :: #{
-%%   <<"tls">> => virtual_gateway_client_policy_tls()
-%% }
--type virtual_gateway_client_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_service_status() :: #{
-%%   <<"status">> => string()
-%% }
--type virtual_service_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_virtual_gateway_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> := virtual_gateway_spec()
-%% }
--type update_virtual_gateway_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_gateway_route_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type describe_gateway_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routes_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"routes">> => list(route_ref())
-%% }
--type list_routes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% mesh_spec() :: #{
-%%   <<"egressFilter">> => egress_filter(),
-%%   <<"serviceDiscovery">> => mesh_service_discovery()
-%% }
--type mesh_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_http2_connection_pool() :: #{
-%%   <<"maxRequests">> => integer()
-%% }
--type virtual_node_http2_connection_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_retry_policy() :: #{
-%%   <<"httpRetryEvents">> => list(string()),
-%%   <<"maxRetries">> => float(),
-%%   <<"perRetryTimeout">> => duration(),
-%%   <<"tcpRetryEvents">> => list(string())
-%% }
--type http_retry_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_spec() :: #{
-%%   <<"backendDefaults">> => virtual_gateway_backend_defaults(),
-%%   <<"listeners">> => list(virtual_gateway_listener()),
-%%   <<"logging">> => virtual_gateway_logging()
-%% }
--type virtual_gateway_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_gateway_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type describe_virtual_gateway_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener_tls_validation_context() :: #{
-%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
-%%   <<"trust">> => list()
-%% }
--type listener_tls_validation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_router_listener() :: #{
-%%   <<"portMapping">> => port_mapping()
-%% }
--type virtual_router_listener() :: #{binary() => any()}.
-
-
-%% Example:
-%% mesh_status() :: #{
-%%   <<"status">> => string()
-%% }
--type mesh_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_cloud_map_service_discovery() :: #{
-%%   <<"attributes">> => list(aws_cloud_map_instance_attribute()),
-%%   <<"ipPreference">> => string(),
-%%   <<"namespaceName">> => string(),
-%%   <<"serviceName">> => string()
-%% }
--type aws_cloud_map_service_discovery() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_virtual_router_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> => virtual_router_spec()
-%% }
--type update_virtual_router_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% mesh_service_discovery() :: #{
-%%   <<"ipPreference">> => string()
-%% }
--type mesh_service_discovery() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_meshes_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_meshes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"tags">> => list(tag_ref())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_service_spec() :: #{
-%%   <<"provider">> => list()
-%% }
--type virtual_service_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% mesh_data() :: #{
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => mesh_spec(),
-%%   <<"status">> => mesh_status()
-%% }
--type mesh_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_grpc_connection_pool() :: #{
-%%   <<"maxRequests">> => integer()
-%% }
--type virtual_gateway_grpc_connection_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_gateway_route_rewrite() :: #{
-%%   <<"hostname">> => gateway_route_hostname_rewrite(),
-%%   <<"path">> => http_gateway_route_path_rewrite(),
-%%   <<"prefix">> => http_gateway_route_prefix_rewrite()
-%% }
--type http_gateway_route_rewrite() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_route_output() :: #{
+%% create_route_output() :: #{
 %%   <<"route">> => route_data()
 %% }
--type delete_route_output() :: #{binary() => any()}.
+-type create_route_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_virtual_nodes_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"virtualNodes">> => list(virtual_node_ref())
-%% }
--type list_virtual_nodes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_status() :: #{
-%%   <<"status">> => string()
-%% }
--type route_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_listener_tls_validation_context() :: #{
-%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
-%%   <<"trust">> => list()
-%% }
--type virtual_gateway_listener_tls_validation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_router_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type describe_virtual_router_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_meshes_output() :: #{
-%%   <<"meshes">> => list(mesh_ref()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_meshes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_listener_tls_sds_certificate() :: #{
-%%   <<"secretName">> => string()
-%% }
--type virtual_gateway_listener_tls_sds_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_routers_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_virtual_routers_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_route_target() :: #{
-%%   <<"port">> => integer(),
-%%   <<"virtualService">> => gateway_route_virtual_service()
-%% }
--type gateway_route_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_tcp_connection_pool() :: #{
-%%   <<"maxConnections">> => integer()
-%% }
--type virtual_node_tcp_connection_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_route_spec() :: #{
-%%   <<"grpcRoute">> => grpc_gateway_route(),
-%%   <<"http2Route">> => http_gateway_route(),
-%%   <<"httpRoute">> => http_gateway_route(),
-%%   <<"priority">> => integer()
-%% }
--type gateway_route_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_nodes_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_virtual_nodes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_router_service_provider() :: #{
-%%   <<"virtualRouterName">> => string()
-%% }
--type virtual_router_service_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_route_metadata() :: #{
-%%   <<"invert">> => [boolean()],
-%%   <<"match">> => list(),
-%%   <<"name">> => string()
-%% }
--type grpc_route_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_ref() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshName">> => string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"version">> => [float()],
-%%   <<"virtualNodeName">> => string()
-%% }
--type virtual_node_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_route_input() :: #{
+%% create_virtual_gateway_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"meshOwner">> => string(),
-%%   <<"spec">> := gateway_route_spec()
-%% }
--type update_gateway_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_route_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type delete_gateway_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_ref() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshName">> => string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"routeName">> => string(),
-%%   <<"version">> => [float()],
-%%   <<"virtualRouterName">> => string()
-%% }
--type route_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_validation_context() :: #{
-%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
-%%   <<"trust">> => list()
-%% }
--type tls_validation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_gateway_route_header() :: #{
-%%   <<"invert">> => [boolean()],
-%%   <<"match">> => list(),
-%%   <<"name">> => string()
-%% }
--type http_gateway_route_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_route_output() :: #{
-%%   <<"route">> => route_data()
-%% }
--type describe_route_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_timeout() :: #{
-%%   <<"idle">> => duration(),
-%%   <<"perRequest">> => duration()
-%% }
--type grpc_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_policy() :: #{
-%%   <<"tls">> => client_policy_tls()
-%% }
--type client_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_virtual_router_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> => virtual_router_spec(),
+%%   <<"spec">> := virtual_gateway_spec(),
 %%   <<"tags">> => list(tag_ref()),
-%%   <<"virtualRouterName">> => string()
+%%   <<"virtualGatewayName">> := string()
 %% }
--type create_virtual_router_input() :: #{binary() => any()}.
+-type create_virtual_gateway_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% tcp_route_match() :: #{
-%%   <<"port">> => integer()
-%% }
--type tcp_route_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_virtual_service_output() :: #{
-%%   <<"virtualService">> => virtual_service_data()
-%% }
--type update_virtual_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% subject_alternative_name_matchers() :: #{
-%%   <<"exact">> => list(string())
-%% }
--type subject_alternative_name_matchers() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_backend_defaults() :: #{
-%%   <<"clientPolicy">> => virtual_gateway_client_policy()
-%% }
--type virtual_gateway_backend_defaults() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_gateways_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"virtualGateways">> := list(virtual_gateway_ref())
-%% }
--type list_virtual_gateways_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_node_output() :: #{
-%%   <<"virtualNode">> => virtual_node_data()
-%% }
--type describe_virtual_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_file_access_log() :: #{
-%%   <<"format">> => list(),
-%%   <<"path">> => string()
-%% }
--type virtual_gateway_file_access_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_logging() :: #{
-%%   <<"accessLog">> => list()
-%% }
--type virtual_gateway_logging() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateway_routes_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_gateway_routes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_status() :: #{
-%%   <<"status">> => string()
-%% }
--type virtual_node_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_route_virtual_service() :: #{
-%%   <<"virtualServiceName">> => string()
-%% }
--type gateway_route_virtual_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_gateway_output() :: #{
+%% create_virtual_gateway_output() :: #{
 %%   <<"virtualGateway">> := virtual_gateway_data()
 %% }
--type describe_virtual_gateway_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_route_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type delete_route_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_data() :: #{
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => virtual_node_spec(),
-%%   <<"status">> => virtual_node_status(),
-%%   <<"virtualNodeName">> => string()
-%% }
--type virtual_node_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_service_ref() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"meshName">> => string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"resourceOwner">> => string(),
-%%   <<"version">> => [float()],
-%%   <<"virtualServiceName">> => string()
-%% }
--type virtual_service_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener_tls_file_certificate() :: #{
-%%   <<"certificateChain">> => string(),
-%%   <<"privateKey">> => string()
-%% }
--type listener_tls_file_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_status() :: #{
-%%   <<"status">> => string()
-%% }
--type virtual_gateway_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mesh_input() :: #{}
--type delete_mesh_input() :: #{}.
-
-
-%% Example:
-%% virtual_node_service_provider() :: #{
-%%   <<"virtualNodeName">> => string()
-%% }
--type virtual_node_service_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_router_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type delete_virtual_router_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_listener_tls_acm_certificate() :: #{
-%%   <<"certificateArn">> => string()
-%% }
--type virtual_gateway_listener_tls_acm_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_gateway_route_output() :: #{
-%%   <<"gatewayRoute">> := gateway_route_data()
-%% }
--type describe_gateway_route_output() :: #{binary() => any()}.
+-type create_virtual_gateway_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1012,50 +264,28 @@
 
 
 %% Example:
-%% virtual_router_spec() :: #{
-%%   <<"listeners">> => list(virtual_router_listener())
+%% create_virtual_node_output() :: #{
+%%   <<"virtualNode">> => virtual_node_data()
 %% }
--type virtual_router_spec() :: #{binary() => any()}.
+-type create_virtual_node_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% virtual_gateway_listener() :: #{
-%%   <<"connectionPool">> => list(),
-%%   <<"healthCheck">> => virtual_gateway_health_check_policy(),
-%%   <<"portMapping">> => virtual_gateway_port_mapping(),
-%%   <<"tls">> => virtual_gateway_listener_tls()
+%% create_virtual_router_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> => virtual_router_spec(),
+%%   <<"tags">> => list(tag_ref()),
+%%   <<"virtualRouterName">> => string()
 %% }
--type virtual_gateway_listener() :: #{binary() => any()}.
+-type create_virtual_router_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% json_format_ref() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% create_virtual_router_output() :: #{
+%%   <<"virtualRouter">> => virtual_router_data()
 %% }
--type json_format_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag_ref())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_tls_validation_context_sds_trust() :: #{
-%%   <<"secretName">> => string()
-%% }
--type virtual_gateway_tls_validation_context_sds_trust() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener_tls_acm_certificate() :: #{
-%%   <<"certificateArn">> => string()
-%% }
--type listener_tls_acm_certificate() :: #{binary() => any()}.
+-type create_virtual_router_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1070,18 +300,84 @@
 
 
 %% Example:
-%% list_virtual_routers_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"virtualRouters">> => list(virtual_router_ref())
+%% create_virtual_service_output() :: #{
+%%   <<"virtualService">> => virtual_service_data()
 %% }
--type list_virtual_routers_output() :: #{binary() => any()}.
+-type create_virtual_service_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% grpc_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target())
+%% delete_gateway_route_input() :: #{
+%%   <<"meshOwner">> => string()
 %% }
--type grpc_route_action() :: #{binary() => any()}.
+-type delete_gateway_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_gateway_route_output() :: #{
+%%   <<"gatewayRoute">> := gateway_route_data()
+%% }
+-type delete_gateway_route_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mesh_input() :: #{}
+-type delete_mesh_input() :: #{}.
+
+
+%% Example:
+%% delete_mesh_output() :: #{
+%%   <<"mesh">> => mesh_data()
+%% }
+-type delete_mesh_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_route_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type delete_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_route_output() :: #{
+%%   <<"route">> => route_data()
+%% }
+-type delete_route_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_gateway_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type delete_virtual_gateway_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_gateway_output() :: #{
+%%   <<"virtualGateway">> := virtual_gateway_data()
+%% }
+-type delete_virtual_gateway_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_node_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type delete_virtual_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_node_output() :: #{
+%%   <<"virtualNode">> => virtual_node_data()
+%% }
+-type delete_virtual_node_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_virtual_router_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type delete_virtual_router_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1092,181 +388,38 @@
 
 
 %% Example:
-%% list_virtual_services_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"virtualServices">> => list(virtual_service_ref())
-%% }
--type list_virtual_services_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% virtual_gateway_health_check_policy() :: #{
-%%   <<"healthyThreshold">> => integer(),
-%%   <<"intervalMillis">> => float(),
-%%   <<"path">> => [string()],
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string(),
-%%   <<"timeoutMillis">> => float(),
-%%   <<"unhealthyThreshold">> => integer()
-%% }
--type virtual_gateway_health_check_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_port_mapping() :: #{
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string()
-%% }
--type virtual_gateway_port_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routes_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_routes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_node_input() :: #{
+%% delete_virtual_service_input() :: #{
 %%   <<"meshOwner">> => string()
 %% }
--type describe_virtual_node_input() :: #{binary() => any()}.
+-type delete_virtual_service_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_gateway_route_output() :: #{
+%% delete_virtual_service_output() :: #{
+%%   <<"virtualService">> => virtual_service_data()
+%% }
+-type delete_virtual_service_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_gateway_route_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type describe_gateway_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_gateway_route_output() :: #{
 %%   <<"gatewayRoute">> := gateway_route_data()
 %% }
--type create_gateway_route_output() :: #{binary() => any()}.
+-type describe_gateway_route_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target())
+%% describe_mesh_input() :: #{
+%%   <<"meshOwner">> => string()
 %% }
--type http_route_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% tcp_timeout() :: #{
-%%   <<"idle">> => duration()
-%% }
--type tcp_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_route_output() :: #{
-%%   <<"gatewayRoute">> := gateway_route_data()
-%% }
--type update_gateway_route_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_output() :: #{
-%%   <<"route">> => route_data()
-%% }
--type update_route_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_validation_context_file_trust() :: #{
-%%   <<"certificateChain">> => string()
-%% }
--type tls_validation_context_file_trust() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_http_connection_pool() :: #{
-%%   <<"maxConnections">> => integer(),
-%%   <<"maxPendingRequests">> => integer()
-%% }
--type virtual_gateway_http_connection_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_tls_validation_context() :: #{
-%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
-%%   <<"trust">> => list()
-%% }
--type virtual_gateway_tls_validation_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_data() :: #{
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"routeName">> => string(),
-%%   <<"spec">> => route_spec(),
-%%   <<"status">> => route_status(),
-%%   <<"virtualRouterName">> => string()
-%% }
--type route_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_route_output() :: #{
-%%   <<"gatewayRoute">> := gateway_route_data()
-%% }
--type delete_gateway_route_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_node_http_connection_pool() :: #{
-%%   <<"maxConnections">> => integer(),
-%%   <<"maxPendingRequests">> => integer()
-%% }
--type virtual_node_http_connection_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_client_policy_tls() :: #{
-%%   <<"certificate">> => list(),
-%%   <<"enforce">> => [boolean()],
-%%   <<"ports">> => list(integer()),
-%%   <<"validation">> => virtual_gateway_tls_validation_context()
-%% }
--type virtual_gateway_client_policy_tls() :: #{binary() => any()}.
-
-
-%% Example:
-%% tcp_route() :: #{
-%%   <<"action">> => tcp_route_action(),
-%%   <<"match">> => tcp_route_match(),
-%%   <<"timeout">> => tcp_timeout()
-%% }
--type tcp_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_gateway_route() :: #{
-%%   <<"action">> => grpc_gateway_route_action(),
-%%   <<"match">> => grpc_gateway_route_match()
-%% }
--type grpc_gateway_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_gateway_route_metadata() :: #{
-%%   <<"invert">> => [boolean()],
-%%   <<"match">> => list(),
-%%   <<"name">> => string()
-%% }
--type grpc_gateway_route_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"tagKeys">> => list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
+-type describe_mesh_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1277,25 +430,82 @@
 
 
 %% Example:
-%% virtual_gateway_tls_validation_context_file_trust() :: #{
-%%   <<"certificateChain">> => string()
+%% describe_route_input() :: #{
+%%   <<"meshOwner">> => string()
 %% }
--type virtual_gateway_tls_validation_context_file_trust() :: #{binary() => any()}.
+-type describe_route_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% backend_defaults() :: #{
-%%   <<"clientPolicy">> => client_policy()
+%% describe_route_output() :: #{
+%%   <<"route">> => route_data()
 %% }
--type backend_defaults() :: #{binary() => any()}.
+-type describe_route_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% port_mapping() :: #{
-%%   <<"port">> => integer(),
-%%   <<"protocol">> => string()
+%% describe_virtual_gateway_input() :: #{
+%%   <<"meshOwner">> => string()
 %% }
--type port_mapping() :: #{binary() => any()}.
+-type describe_virtual_gateway_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_gateway_output() :: #{
+%%   <<"virtualGateway">> := virtual_gateway_data()
+%% }
+-type describe_virtual_gateway_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_node_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type describe_virtual_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_node_output() :: #{
+%%   <<"virtualNode">> => virtual_node_data()
+%% }
+-type describe_virtual_node_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_router_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type describe_virtual_router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_router_output() :: #{
+%%   <<"virtualRouter">> => virtual_router_data()
+%% }
+-type describe_virtual_router_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_service_input() :: #{
+%%   <<"meshOwner">> => string()
+%% }
+-type describe_virtual_service_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_virtual_service_output() :: #{
+%%   <<"virtualService">> => virtual_service_data()
+%% }
+-type describe_virtual_service_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_service_discovery() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"ipPreference">> => string(),
+%%   <<"responseType">> => string()
+%% }
+-type dns_service_discovery() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1304,6 +514,55 @@
 %%   <<"value">> => float()
 %% }
 -type duration() :: #{binary() => any()}.
+
+
+%% Example:
+%% egress_filter() :: #{
+%%   <<"type">> => string()
+%% }
+-type egress_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_access_log() :: #{
+%%   <<"format">> => list(),
+%%   <<"path">> => string()
+%% }
+-type file_access_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_route_data() :: #{
+%%   <<"gatewayRouteName">> => string(),
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => gateway_route_spec(),
+%%   <<"status">> => gateway_route_status(),
+%%   <<"virtualGatewayName">> => string()
+%% }
+-type gateway_route_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_route_hostname_match() :: #{
+%%   <<"exact">> => string(),
+%%   <<"suffix">> => string()
+%% }
+-type gateway_route_hostname_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_route_hostname_rewrite() :: #{
+%%   <<"defaultTargetHostname">> => string()
+%% }
+-type gateway_route_hostname_rewrite() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1322,76 +581,43 @@
 
 
 %% Example:
-%% virtual_node_spec() :: #{
-%%   <<"backendDefaults">> => backend_defaults(),
-%%   <<"backends">> => list(list()),
-%%   <<"listeners">> => list(listener()),
-%%   <<"logging">> => logging(),
-%%   <<"serviceDiscovery">> => list()
+%% gateway_route_spec() :: #{
+%%   <<"grpcRoute">> => grpc_gateway_route(),
+%%   <<"http2Route">> => http_gateway_route(),
+%%   <<"httpRoute">> => http_gateway_route(),
+%%   <<"priority">> => integer()
 %% }
--type virtual_node_spec() :: #{binary() => any()}.
+-type gateway_route_spec() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_route_hostname_rewrite() :: #{
-%%   <<"defaultTargetHostname">> => string()
+%% gateway_route_status() :: #{
+%%   <<"status">> => string()
 %% }
--type gateway_route_hostname_rewrite() :: #{binary() => any()}.
+-type gateway_route_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_mesh_output() :: #{
-%%   <<"mesh">> => mesh_data()
+%% gateway_route_target() :: #{
+%%   <<"port">> => integer(),
+%%   <<"virtualService">> => gateway_route_virtual_service()
 %% }
--type delete_mesh_output() :: #{binary() => any()}.
+-type gateway_route_target() :: #{binary() => any()}.
 
 
 %% Example:
-%% route_spec() :: #{
-%%   <<"grpcRoute">> => grpc_route(),
-%%   <<"http2Route">> => http_route(),
-%%   <<"httpRoute">> => http_route(),
-%%   <<"priority">> => integer(),
-%%   <<"tcpRoute">> => tcp_route()
-%% }
--type route_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_service_backend() :: #{
-%%   <<"clientPolicy">> => client_policy(),
+%% gateway_route_virtual_service() :: #{
 %%   <<"virtualServiceName">> => string()
 %% }
--type virtual_service_backend() :: #{binary() => any()}.
+-type gateway_route_virtual_service() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => [string()],
-%%   <<"resourceArn">> => string()
+%% grpc_gateway_route() :: #{
+%%   <<"action">> => grpc_gateway_route_action(),
+%%   <<"match">> => grpc_gateway_route_match()
 %% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_service_discovery() :: #{
-%%   <<"hostname">> => string(),
-%%   <<"ipPreference">> => string(),
-%%   <<"responseType">> => string()
-%% }
--type dns_service_discovery() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
+-type grpc_gateway_route() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1400,22 +626,6 @@
 %%   <<"target">> => gateway_route_target()
 %% }
 -type grpc_gateway_route_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_gateway_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type delete_virtual_gateway_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_virtual_node_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> => virtual_node_spec()
-%% }
--type update_virtual_node_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1429,77 +639,74 @@
 
 
 %% Example:
-%% http_gateway_route_path_rewrite() :: #{
-%%   <<"exact">> => string()
+%% grpc_gateway_route_metadata() :: #{
+%%   <<"invert">> => [boolean()],
+%%   <<"match">> => list(),
+%%   <<"name">> => string()
 %% }
--type http_gateway_route_path_rewrite() :: #{binary() => any()}.
+-type grpc_gateway_route_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% client_policy_tls() :: #{
-%%   <<"certificate">> => list(),
-%%   <<"enforce">> => [boolean()],
-%%   <<"ports">> => list(integer()),
-%%   <<"validation">> => tls_validation_context()
+%% grpc_gateway_route_rewrite() :: #{
+%%   <<"hostname">> => gateway_route_hostname_rewrite()
 %% }
--type client_policy_tls() :: #{binary() => any()}.
+-type grpc_gateway_route_rewrite() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_virtual_service_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> => virtual_service_spec()
+%% grpc_retry_policy() :: #{
+%%   <<"grpcRetryEvents">> => list(string()),
+%%   <<"httpRetryEvents">> => list(string()),
+%%   <<"maxRetries">> => float(),
+%%   <<"perRetryTimeout">> => duration(),
+%%   <<"tcpRetryEvents">> => list(string())
 %% }
--type update_virtual_service_input() :: #{binary() => any()}.
+-type grpc_retry_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_gateway_route_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"gatewayRouteName">> := string(),
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> := gateway_route_spec(),
-%%   <<"tags">> => list(tag_ref())
+%% grpc_route() :: #{
+%%   <<"action">> => grpc_route_action(),
+%%   <<"match">> => grpc_route_match(),
+%%   <<"retryPolicy">> => grpc_retry_policy(),
+%%   <<"timeout">> => grpc_timeout()
 %% }
--type create_gateway_route_input() :: #{binary() => any()}.
+-type grpc_route() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_virtual_node_input() :: #{
-%%   <<"meshOwner">> => string()
+%% grpc_route_action() :: #{
+%%   <<"weightedTargets">> => list(weighted_target())
 %% }
--type delete_virtual_node_input() :: #{binary() => any()}.
+-type grpc_route_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
+%% grpc_route_match() :: #{
+%%   <<"metadata">> => list(grpc_route_metadata()),
+%%   <<"methodName">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"serviceName">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type grpc_route_match() :: #{binary() => any()}.
 
 
 %% Example:
-%% virtual_router_status() :: #{
-%%   <<"status">> => string()
+%% grpc_route_metadata() :: #{
+%%   <<"invert">> => [boolean()],
+%%   <<"match">> => list(),
+%%   <<"name">> => string()
 %% }
--type virtual_router_status() :: #{binary() => any()}.
+-type grpc_route_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% aws_cloud_map_instance_attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% grpc_timeout() :: #{
+%%   <<"idle">> => duration(),
+%%   <<"perRequest">> => duration()
 %% }
--type aws_cloud_map_instance_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateway_routes_output() :: #{
-%%   <<"gatewayRoutes">> := list(gateway_route_ref()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_gateway_routes_output() :: #{binary() => any()}.
+-type grpc_timeout() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1516,10 +723,11 @@
 
 
 %% Example:
-%% listener_tls_sds_certificate() :: #{
-%%   <<"secretName">> => string()
+%% http_gateway_route() :: #{
+%%   <<"action">> => http_gateway_route_action(),
+%%   <<"match">> => http_gateway_route_match()
 %% }
--type listener_tls_sds_certificate() :: #{binary() => any()}.
+-type http_gateway_route() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1531,10 +739,49 @@
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => [string()]
+%% http_gateway_route_header() :: #{
+%%   <<"invert">> => [boolean()],
+%%   <<"match">> => list(),
+%%   <<"name">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type http_gateway_route_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_gateway_route_match() :: #{
+%%   <<"headers">> => list(http_gateway_route_header()),
+%%   <<"hostname">> => gateway_route_hostname_match(),
+%%   <<"method">> => string(),
+%%   <<"path">> => http_path_match(),
+%%   <<"port">> => integer(),
+%%   <<"prefix">> => [string()],
+%%   <<"queryParameters">> => list(http_query_parameter())
+%% }
+-type http_gateway_route_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_gateway_route_path_rewrite() :: #{
+%%   <<"exact">> => string()
+%% }
+-type http_gateway_route_path_rewrite() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_gateway_route_prefix_rewrite() :: #{
+%%   <<"defaultPrefix">> => string(),
+%%   <<"value">> => string()
+%% }
+-type http_gateway_route_prefix_rewrite() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_gateway_route_rewrite() :: #{
+%%   <<"hostname">> => gateway_route_hostname_rewrite(),
+%%   <<"path">> => http_gateway_route_path_rewrite(),
+%%   <<"prefix">> => http_gateway_route_prefix_rewrite()
+%% }
+-type http_gateway_route_rewrite() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1546,21 +793,38 @@
 
 
 %% Example:
-%% create_virtual_gateway_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshOwner">> => string(),
-%%   <<"spec">> := virtual_gateway_spec(),
-%%   <<"tags">> => list(tag_ref()),
-%%   <<"virtualGatewayName">> := string()
+%% http_query_parameter() :: #{
+%%   <<"match">> => query_parameter_match(),
+%%   <<"name">> => string()
 %% }
--type create_virtual_gateway_input() :: #{binary() => any()}.
+-type http_query_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% virtual_gateway_http2_connection_pool() :: #{
-%%   <<"maxRequests">> => integer()
+%% http_retry_policy() :: #{
+%%   <<"httpRetryEvents">> => list(string()),
+%%   <<"maxRetries">> => float(),
+%%   <<"perRetryTimeout">> => duration(),
+%%   <<"tcpRetryEvents">> => list(string())
 %% }
--type virtual_gateway_http2_connection_pool() :: #{binary() => any()}.
+-type http_retry_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_route() :: #{
+%%   <<"action">> => http_route_action(),
+%%   <<"match">> => http_route_match(),
+%%   <<"retryPolicy">> => http_retry_policy(),
+%%   <<"timeout">> => http_timeout()
+%% }
+-type http_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_route_action() :: #{
+%%   <<"weightedTargets">> => list(weighted_target())
+%% }
+-type http_route_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1570,84 +834,6 @@
 %%   <<"name">> => string()
 %% }
 -type http_route_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_access_log() :: #{
-%%   <<"format">> => list(),
-%%   <<"path">> => string()
-%% }
--type file_access_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_mesh_input() :: #{
-%%   <<"meshOwner">> => string()
-%% }
--type describe_mesh_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_route_data() :: #{
-%%   <<"gatewayRouteName">> => string(),
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => gateway_route_spec(),
-%%   <<"status">> => gateway_route_status(),
-%%   <<"virtualGatewayName">> => string()
-%% }
--type gateway_route_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_tls_validation_context_acm_trust() :: #{
-%%   <<"certificateAuthorityArns">> => list(string())
-%% }
--type virtual_gateway_tls_validation_context_acm_trust() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_listener_tls_file_certificate() :: #{
-%%   <<"certificateChain">> => string(),
-%%   <<"privateKey">> => string()
-%% }
--type virtual_gateway_listener_tls_file_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_virtual_service_output() :: #{
-%%   <<"virtualService">> => virtual_service_data()
-%% }
--type describe_virtual_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_retry_policy() :: #{
-%%   <<"grpcRetryEvents">> => list(string()),
-%%   <<"httpRetryEvents">> => list(string()),
-%%   <<"maxRetries">> => float(),
-%%   <<"perRetryTimeout">> => duration(),
-%%   <<"tcpRetryEvents">> => list(string())
-%% }
--type grpc_retry_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_virtual_services_input() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"meshOwner">> => string(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_virtual_services_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_listener_tls() :: #{
-%%   <<"certificate">> => list(),
-%%   <<"mode">> => string(),
-%%   <<"validation">> => virtual_gateway_listener_tls_validation_context()
-%% }
--type virtual_gateway_listener_tls() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1664,31 +850,304 @@
 
 
 %% Example:
-%% update_mesh_output() :: #{
-%%   <<"mesh">> => mesh_data()
+%% http_timeout() :: #{
+%%   <<"idle">> => duration(),
+%%   <<"perRequest">> => duration()
 %% }
--type update_mesh_output() :: #{binary() => any()}.
+-type http_timeout() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_virtual_service_input() :: #{
-%%   <<"meshOwner">> => string()
+%% internal_server_error_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type describe_virtual_service_input() :: #{binary() => any()}.
+-type internal_server_error_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_virtual_gateway_output() :: #{
-%%   <<"virtualGateway">> := virtual_gateway_data()
+%% json_format_ref() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type update_virtual_gateway_output() :: #{binary() => any()}.
+-type json_format_ref() :: #{binary() => any()}.
 
 
 %% Example:
-%% egress_filter() :: #{
-%%   <<"type">> => string()
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type egress_filter() :: #{binary() => any()}.
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_routes_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_gateway_routes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_routes_output() :: #{
+%%   <<"gatewayRoutes">> := list(gateway_route_ref()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_gateway_routes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_meshes_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_meshes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_meshes_output() :: #{
+%%   <<"meshes">> => list(mesh_ref()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_meshes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routes_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_routes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routes_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"routes">> => list(route_ref())
+%% }
+-type list_routes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceArn">> => string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"tags">> => list(tag_ref())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_gateways_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_virtual_gateways_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_gateways_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"virtualGateways">> := list(virtual_gateway_ref())
+%% }
+-type list_virtual_gateways_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_nodes_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_virtual_nodes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_nodes_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"virtualNodes">> => list(virtual_node_ref())
+%% }
+-type list_virtual_nodes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_routers_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_virtual_routers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_routers_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"virtualRouters">> => list(virtual_router_ref())
+%% }
+-type list_virtual_routers_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_services_input() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"meshOwner">> => string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_virtual_services_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_virtual_services_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"virtualServices">> => list(virtual_service_ref())
+%% }
+-type list_virtual_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener() :: #{
+%%   <<"connectionPool">> => list(),
+%%   <<"healthCheck">> => health_check_policy(),
+%%   <<"outlierDetection">> => outlier_detection(),
+%%   <<"portMapping">> => port_mapping(),
+%%   <<"timeout">> => list(),
+%%   <<"tls">> => listener_tls()
+%% }
+-type listener() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_tls() :: #{
+%%   <<"certificate">> => list(),
+%%   <<"mode">> => string(),
+%%   <<"validation">> => listener_tls_validation_context()
+%% }
+-type listener_tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_tls_acm_certificate() :: #{
+%%   <<"certificateArn">> => string()
+%% }
+-type listener_tls_acm_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_tls_file_certificate() :: #{
+%%   <<"certificateChain">> => string(),
+%%   <<"privateKey">> => string()
+%% }
+-type listener_tls_file_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_tls_sds_certificate() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type listener_tls_sds_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% listener_tls_validation_context() :: #{
+%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
+%%   <<"trust">> => list()
+%% }
+-type listener_tls_validation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging() :: #{
+%%   <<"accessLog">> => list()
+%% }
+-type logging() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_range() :: #{
+%%   <<"end">> => [float()],
+%%   <<"start">> => [float()]
+%% }
+-type match_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% mesh_data() :: #{
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => mesh_spec(),
+%%   <<"status">> => mesh_status()
+%% }
+-type mesh_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% mesh_ref() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshName">> => string(),
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"version">> => [float()]
+%% }
+-type mesh_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% mesh_service_discovery() :: #{
+%%   <<"ipPreference">> => string()
+%% }
+-type mesh_service_discovery() :: #{binary() => any()}.
+
+
+%% Example:
+%% mesh_spec() :: #{
+%%   <<"egressFilter">> => egress_filter(),
+%%   <<"serviceDiscovery">> => mesh_service_discovery()
+%% }
+-type mesh_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% mesh_status() :: #{
+%%   <<"status">> => string()
+%% }
+-type mesh_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% outlier_detection() :: #{
+%%   <<"baseEjectionDuration">> => duration(),
+%%   <<"interval">> => duration(),
+%%   <<"maxEjectionPercent">> => integer(),
+%%   <<"maxServerErrors">> => float()
+%% }
+-type outlier_detection() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string()
+%% }
+-type port_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1699,54 +1158,603 @@
 
 
 %% Example:
-%% create_virtual_node_output() :: #{
-%%   <<"virtualNode">> => virtual_node_data()
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type create_virtual_node_output() :: #{binary() => any()}.
+-type resource_in_use_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% virtual_service_data() :: #{
+%% resource_metadata() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"uid">> => [string()],
+%%   <<"version">> => [float()]
+%% }
+-type resource_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_data() :: #{
 %%   <<"meshName">> => string(),
 %%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => virtual_service_spec(),
-%%   <<"status">> => virtual_service_status(),
-%%   <<"virtualServiceName">> => string()
+%%   <<"routeName">> => string(),
+%%   <<"spec">> => route_spec(),
+%%   <<"status">> => route_status(),
+%%   <<"virtualRouterName">> => string()
 %% }
--type virtual_service_data() :: #{binary() => any()}.
+-type route_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_gateway_route() :: #{
-%%   <<"action">> => http_gateway_route_action(),
-%%   <<"match">> => http_gateway_route_match()
+%% route_ref() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshName">> => string(),
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"routeName">> => string(),
+%%   <<"version">> => [float()],
+%%   <<"virtualRouterName">> => string()
 %% }
--type http_gateway_route() :: #{binary() => any()}.
+-type route_ref() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_route_status() :: #{
+%% route_spec() :: #{
+%%   <<"grpcRoute">> => grpc_route(),
+%%   <<"http2Route">> => http_route(),
+%%   <<"httpRoute">> => http_route(),
+%%   <<"priority">> => integer(),
+%%   <<"tcpRoute">> => tcp_route()
+%% }
+-type route_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_status() :: #{
 %%   <<"status">> => string()
 %% }
--type gateway_route_status() :: #{binary() => any()}.
+-type route_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_query_parameter() :: #{
-%%   <<"match">> => query_parameter_match(),
-%%   <<"name">> => string()
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type http_query_parameter() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_route() :: #{
-%%   <<"action">> => http_route_action(),
-%%   <<"match">> => http_route_match(),
-%%   <<"retryPolicy">> => http_retry_policy(),
-%%   <<"timeout">> => http_timeout()
+%% subject_alternative_name_matchers() :: #{
+%%   <<"exact">> => list(string())
 %% }
--type http_route() :: #{binary() => any()}.
+-type subject_alternative_name_matchers() :: #{binary() => any()}.
+
+
+%% Example:
+%% subject_alternative_names() :: #{
+%%   <<"match">> => subject_alternative_name_matchers()
+%% }
+-type subject_alternative_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_ref() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"tags">> => list(tag_ref())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% tcp_route() :: #{
+%%   <<"action">> => tcp_route_action(),
+%%   <<"match">> => tcp_route_match(),
+%%   <<"timeout">> => tcp_timeout()
+%% }
+-type tcp_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% tcp_route_action() :: #{
+%%   <<"weightedTargets">> => list(weighted_target())
+%% }
+-type tcp_route_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% tcp_route_match() :: #{
+%%   <<"port">> => integer()
+%% }
+-type tcp_route_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% tcp_timeout() :: #{
+%%   <<"idle">> => duration()
+%% }
+-type tcp_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_validation_context() :: #{
+%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
+%%   <<"trust">> => list()
+%% }
+-type tls_validation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_validation_context_acm_trust() :: #{
+%%   <<"certificateAuthorityArns">> => list(string())
+%% }
+-type tls_validation_context_acm_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_validation_context_file_trust() :: #{
+%%   <<"certificateChain">> => string()
+%% }
+-type tls_validation_context_file_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_validation_context_sds_trust() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type tls_validation_context_sds_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"tagKeys">> => list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_gateway_route_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> := gateway_route_spec()
+%% }
+-type update_gateway_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_route_output() :: #{
+%%   <<"gatewayRoute">> := gateway_route_data()
+%% }
+-type update_gateway_route_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_mesh_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"spec">> => mesh_spec()
+%% }
+-type update_mesh_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_mesh_output() :: #{
+%%   <<"mesh">> => mesh_data()
+%% }
+-type update_mesh_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> => route_spec()
+%% }
+-type update_route_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_output() :: #{
+%%   <<"route">> => route_data()
+%% }
+-type update_route_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_gateway_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> := virtual_gateway_spec()
+%% }
+-type update_virtual_gateway_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_gateway_output() :: #{
+%%   <<"virtualGateway">> := virtual_gateway_data()
+%% }
+-type update_virtual_gateway_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_node_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> => virtual_node_spec()
+%% }
+-type update_virtual_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_node_output() :: #{
+%%   <<"virtualNode">> => virtual_node_data()
+%% }
+-type update_virtual_node_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_router_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> => virtual_router_spec()
+%% }
+-type update_virtual_router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_router_output() :: #{
+%%   <<"virtualRouter">> => virtual_router_data()
+%% }
+-type update_virtual_router_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_service_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"meshOwner">> => string(),
+%%   <<"spec">> => virtual_service_spec()
+%% }
+-type update_virtual_service_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_virtual_service_output() :: #{
+%%   <<"virtualService">> => virtual_service_data()
+%% }
+-type update_virtual_service_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_backend_defaults() :: #{
+%%   <<"clientPolicy">> => virtual_gateway_client_policy()
+%% }
+-type virtual_gateway_backend_defaults() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_client_policy() :: #{
+%%   <<"tls">> => virtual_gateway_client_policy_tls()
+%% }
+-type virtual_gateway_client_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_client_policy_tls() :: #{
+%%   <<"certificate">> => list(),
+%%   <<"enforce">> => [boolean()],
+%%   <<"ports">> => list(integer()),
+%%   <<"validation">> => virtual_gateway_tls_validation_context()
+%% }
+-type virtual_gateway_client_policy_tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_data() :: #{
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => virtual_gateway_spec(),
+%%   <<"status">> => virtual_gateway_status(),
+%%   <<"virtualGatewayName">> => string()
+%% }
+-type virtual_gateway_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_file_access_log() :: #{
+%%   <<"format">> => list(),
+%%   <<"path">> => string()
+%% }
+-type virtual_gateway_file_access_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_grpc_connection_pool() :: #{
+%%   <<"maxRequests">> => integer()
+%% }
+-type virtual_gateway_grpc_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_health_check_policy() :: #{
+%%   <<"healthyThreshold">> => integer(),
+%%   <<"intervalMillis">> => float(),
+%%   <<"path">> => [string()],
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string(),
+%%   <<"timeoutMillis">> => float(),
+%%   <<"unhealthyThreshold">> => integer()
+%% }
+-type virtual_gateway_health_check_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_http2_connection_pool() :: #{
+%%   <<"maxRequests">> => integer()
+%% }
+-type virtual_gateway_http2_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_http_connection_pool() :: #{
+%%   <<"maxConnections">> => integer(),
+%%   <<"maxPendingRequests">> => integer()
+%% }
+-type virtual_gateway_http_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener() :: #{
+%%   <<"connectionPool">> => list(),
+%%   <<"healthCheck">> => virtual_gateway_health_check_policy(),
+%%   <<"portMapping">> => virtual_gateway_port_mapping(),
+%%   <<"tls">> => virtual_gateway_listener_tls()
+%% }
+-type virtual_gateway_listener() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener_tls() :: #{
+%%   <<"certificate">> => list(),
+%%   <<"mode">> => string(),
+%%   <<"validation">> => virtual_gateway_listener_tls_validation_context()
+%% }
+-type virtual_gateway_listener_tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener_tls_acm_certificate() :: #{
+%%   <<"certificateArn">> => string()
+%% }
+-type virtual_gateway_listener_tls_acm_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener_tls_file_certificate() :: #{
+%%   <<"certificateChain">> => string(),
+%%   <<"privateKey">> => string()
+%% }
+-type virtual_gateway_listener_tls_file_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener_tls_sds_certificate() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type virtual_gateway_listener_tls_sds_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_listener_tls_validation_context() :: #{
+%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
+%%   <<"trust">> => list()
+%% }
+-type virtual_gateway_listener_tls_validation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_logging() :: #{
+%%   <<"accessLog">> => list()
+%% }
+-type virtual_gateway_logging() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_port_mapping() :: #{
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => string()
+%% }
+-type virtual_gateway_port_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_ref() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshName">> => string(),
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"version">> => [float()],
+%%   <<"virtualGatewayName">> => string()
+%% }
+-type virtual_gateway_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_spec() :: #{
+%%   <<"backendDefaults">> => virtual_gateway_backend_defaults(),
+%%   <<"listeners">> => list(virtual_gateway_listener()),
+%%   <<"logging">> => virtual_gateway_logging()
+%% }
+-type virtual_gateway_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_status() :: #{
+%%   <<"status">> => string()
+%% }
+-type virtual_gateway_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_tls_validation_context() :: #{
+%%   <<"subjectAlternativeNames">> => subject_alternative_names(),
+%%   <<"trust">> => list()
+%% }
+-type virtual_gateway_tls_validation_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_tls_validation_context_acm_trust() :: #{
+%%   <<"certificateAuthorityArns">> => list(string())
+%% }
+-type virtual_gateway_tls_validation_context_acm_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_tls_validation_context_file_trust() :: #{
+%%   <<"certificateChain">> => string()
+%% }
+-type virtual_gateway_tls_validation_context_file_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_gateway_tls_validation_context_sds_trust() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type virtual_gateway_tls_validation_context_sds_trust() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_data() :: #{
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => virtual_node_spec(),
+%%   <<"status">> => virtual_node_status(),
+%%   <<"virtualNodeName">> => string()
+%% }
+-type virtual_node_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_grpc_connection_pool() :: #{
+%%   <<"maxRequests">> => integer()
+%% }
+-type virtual_node_grpc_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_http2_connection_pool() :: #{
+%%   <<"maxRequests">> => integer()
+%% }
+-type virtual_node_http2_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_http_connection_pool() :: #{
+%%   <<"maxConnections">> => integer(),
+%%   <<"maxPendingRequests">> => integer()
+%% }
+-type virtual_node_http_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_ref() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshName">> => string(),
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"version">> => [float()],
+%%   <<"virtualNodeName">> => string()
+%% }
+-type virtual_node_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_service_provider() :: #{
+%%   <<"virtualNodeName">> => string()
+%% }
+-type virtual_node_service_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_spec() :: #{
+%%   <<"backendDefaults">> => backend_defaults(),
+%%   <<"backends">> => list(list()),
+%%   <<"listeners">> => list(listener()),
+%%   <<"logging">> => logging(),
+%%   <<"serviceDiscovery">> => list()
+%% }
+-type virtual_node_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_status() :: #{
+%%   <<"status">> => string()
+%% }
+-type virtual_node_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_node_tcp_connection_pool() :: #{
+%%   <<"maxConnections">> => integer()
+%% }
+-type virtual_node_tcp_connection_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_router_data() :: #{
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => virtual_router_spec(),
+%%   <<"status">> => virtual_router_status(),
+%%   <<"virtualRouterName">> => string()
+%% }
+-type virtual_router_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_router_listener() :: #{
+%%   <<"portMapping">> => port_mapping()
+%% }
+-type virtual_router_listener() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1764,427 +1772,419 @@
 
 
 %% Example:
-%% http_gateway_route_match() :: #{
-%%   <<"headers">> => list(http_gateway_route_header()),
-%%   <<"hostname">> => gateway_route_hostname_match(),
-%%   <<"method">> => string(),
-%%   <<"path">> => http_path_match(),
-%%   <<"port">> => integer(),
-%%   <<"prefix">> => [string()],
-%%   <<"queryParameters">> => list(http_query_parameter())
-%% }
--type http_gateway_route_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% listener_tls() :: #{
-%%   <<"certificate">> => list(),
-%%   <<"mode">> => string(),
-%%   <<"validation">> => listener_tls_validation_context()
-%% }
--type listener_tls() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_virtual_node_output() :: #{
-%%   <<"virtualNode">> => virtual_node_data()
-%% }
--type delete_virtual_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging() :: #{
-%%   <<"accessLog">> => list()
-%% }
--type logging() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_route() :: #{
-%%   <<"action">> => grpc_route_action(),
-%%   <<"match">> => grpc_route_match(),
-%%   <<"retryPolicy">> => grpc_retry_policy(),
-%%   <<"timeout">> => grpc_timeout()
-%% }
--type grpc_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_gateway_data() :: #{
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => virtual_gateway_spec(),
-%%   <<"status">> => virtual_gateway_status(),
-%%   <<"virtualGatewayName">> => string()
-%% }
--type virtual_gateway_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_router_data() :: #{
-%%   <<"meshName">> => string(),
-%%   <<"metadata">> => resource_metadata(),
-%%   <<"spec">> => virtual_router_spec(),
-%%   <<"status">> => virtual_router_status(),
+%% virtual_router_service_provider() :: #{
 %%   <<"virtualRouterName">> => string()
 %% }
--type virtual_router_data() :: #{binary() => any()}.
+-type virtual_router_service_provider() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_mesh_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"meshName">> => string(),
-%%   <<"spec">> => mesh_spec(),
-%%   <<"tags">> => list(tag_ref())
+%% virtual_router_spec() :: #{
+%%   <<"listeners">> => list(virtual_router_listener())
 %% }
--type create_mesh_input() :: #{binary() => any()}.
+-type virtual_router_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_router_status() :: #{
+%%   <<"status">> => string()
+%% }
+-type virtual_router_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_service_backend() :: #{
+%%   <<"clientPolicy">> => client_policy(),
+%%   <<"virtualServiceName">> => string()
+%% }
+-type virtual_service_backend() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_service_data() :: #{
+%%   <<"meshName">> => string(),
+%%   <<"metadata">> => resource_metadata(),
+%%   <<"spec">> => virtual_service_spec(),
+%%   <<"status">> => virtual_service_status(),
+%%   <<"virtualServiceName">> => string()
+%% }
+-type virtual_service_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_service_ref() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"meshName">> => string(),
+%%   <<"meshOwner">> => string(),
+%%   <<"resourceOwner">> => string(),
+%%   <<"version">> => [float()],
+%%   <<"virtualServiceName">> => string()
+%% }
+-type virtual_service_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_service_spec() :: #{
+%%   <<"provider">> => list()
+%% }
+-type virtual_service_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_service_status() :: #{
+%%   <<"status">> => string()
+%% }
+-type virtual_service_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_target() :: #{
+%%   <<"port">> => integer(),
+%%   <<"virtualNode">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type weighted_target() :: #{binary() => any()}.
 
 -type create_gateway_route_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_mesh_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_route_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_virtual_gateway_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_virtual_node_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_virtual_router_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_virtual_service_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_gateway_route_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_mesh_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_route_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_virtual_gateway_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_virtual_node_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_virtual_router_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type delete_virtual_service_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    resource_in_use_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    bad_request_exception().
 
 -type describe_gateway_route_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_mesh_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_route_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_virtual_gateway_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_virtual_node_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_virtual_router_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_virtual_service_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_gateway_routes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_meshes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_routes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_virtual_gateways_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_virtual_nodes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_virtual_routers_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_virtual_services_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_gateway_route_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_mesh_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_route_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_virtual_gateway_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_virtual_node_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_virtual_router_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_virtual_service_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

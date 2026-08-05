@@ -45,6 +45,149 @@
 
 
 %% Example:
+%% alternative() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"Items">> => list(item()),
+%%   <<"Transcript">> => string()
+%% }
+-type alternative() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_event() :: #{
+%%   <<"AudioChunk">> => binary()
+%% }
+-type audio_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% call_analytics_entity() :: #{
+%%   <<"BeginOffsetMillis">> => float(),
+%%   <<"Category">> => string(),
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndOffsetMillis">> => float(),
+%%   <<"Type">> => string()
+%% }
+-type call_analytics_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% call_analytics_item() :: #{
+%%   <<"BeginOffsetMillis">> => float(),
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndOffsetMillis">> => float(),
+%%   <<"Stable">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyFilterMatch">> => boolean()
+%% }
+-type call_analytics_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% call_analytics_language_with_score() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type call_analytics_language_with_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% category_event() :: #{
+%%   <<"MatchedCategories">> => list(string()),
+%%   <<"MatchedDetails">> => map()
+%% }
+-type category_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type channel_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% character_offsets() :: #{
+%%   <<"Begin">> => integer(),
+%%   <<"End">> => integer()
+%% }
+-type character_offsets() :: #{binary() => any()}.
+
+
+%% Example:
+%% clinical_note_generation_result() :: #{
+%%   <<"ClinicalNoteOutputLocation">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TranscriptOutputLocation">> => string()
+%% }
+-type clinical_note_generation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% clinical_note_generation_settings() :: #{
+%%   <<"NoteTemplate">> => list(any()),
+%%   <<"OutputBucketName">> => string()
+%% }
+-type clinical_note_generation_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_event() :: #{
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
+%%   <<"PostCallAnalyticsSettings">> => post_call_analytics_settings()
+%% }
+-type configuration_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"StartTime">> => float(),
+%%   <<"Type">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_scribe_stream_request() :: #{}
+-type get_medical_scribe_stream_request() :: #{}.
+
+
+%% Example:
+%% get_medical_scribe_stream_response() :: #{
+%%   <<"MedicalScribeStreamDetails">> => medical_scribe_stream_details()
+%% }
+-type get_medical_scribe_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% issue_detected() :: #{
 %%   <<"CharacterOffsets">> => character_offsets()
 %% }
@@ -52,21 +195,112 @@
 
 
 %% Example:
-%% start_medical_stream_transcription_request() :: #{
-%%   <<"AudioStream">> := list(),
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"EnableChannelIdentification">> => boolean(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"MediaEncoding">> := list(any()),
-%%   <<"MediaSampleRateHertz">> := integer(),
-%%   <<"NumberOfChannels">> => integer(),
-%%   <<"SessionId">> => string(),
-%%   <<"ShowSpeakerLabel">> => boolean(),
-%%   <<"Specialty">> := list(any()),
-%%   <<"Type">> := list(any()),
+%% item() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"Speaker">> => string(),
+%%   <<"Stable">> => boolean(),
+%%   <<"StartTime">> => float(),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyFilterMatch">> => boolean()
+%% }
+-type item() :: #{binary() => any()}.
+
+
+%% Example:
+%% language_with_score() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type language_with_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_alternative() :: #{
+%%   <<"Entities">> => list(medical_entity()),
+%%   <<"Items">> => list(medical_item()),
+%%   <<"Transcript">> => string()
+%% }
+-type medical_alternative() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_entity() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"StartTime">> => float()
+%% }
+-type medical_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_item() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Content">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"Speaker">> => string(),
+%%   <<"StartTime">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type medical_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_result() :: #{
+%%   <<"Alternatives">> => list(medical_alternative()),
+%%   <<"ChannelId">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"IsPartial">> => boolean(),
+%%   <<"ResultId">> => string(),
+%%   <<"StartTime">> => float()
+%% }
+-type medical_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_audio_event() :: #{
+%%   <<"AudioChunk">> => binary()
+%% }
+-type medical_scribe_audio_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type medical_scribe_channel_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_configuration_event() :: #{
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
+%%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
+%%   <<"MedicalScribeContext">> => medical_scribe_context(),
+%%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
+%%   <<"ResourceAccessRoleArn">> => string(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
 %%   <<"VocabularyName">> => string()
 %% }
--type start_medical_stream_transcription_request() :: #{binary() => any()}.
+-type medical_scribe_configuration_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_context() :: #{
+%%   <<"PatientContext">> => medical_scribe_patient_context()
+%% }
+-type medical_scribe_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -78,29 +312,31 @@
 
 
 %% Example:
-%% start_medical_scribe_stream_response() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"MediaEncoding">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"RequestId">> => string(),
-%%   <<"ResultStream">> => list(),
-%%   <<"SessionId">> => string()
+%% medical_scribe_patient_context() :: #{
+%%   <<"Pronouns">> => list(any())
 %% }
--type start_medical_scribe_stream_response() :: #{binary() => any()}.
+-type medical_scribe_patient_context() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_failure_exception() :: #{
-%%   <<"Message">> => string()
+%% medical_scribe_post_stream_analytics_result() :: #{
+%%   <<"ClinicalNoteGenerationResult">> => clinical_note_generation_result()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
+-type medical_scribe_post_stream_analytics_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% points_of_interest() :: #{
-%%   <<"TimestampRanges">> => list(timestamp_range())
+%% medical_scribe_post_stream_analytics_settings() :: #{
+%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings()
 %% }
--type points_of_interest() :: #{binary() => any()}.
+-type medical_scribe_post_stream_analytics_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_session_control_event() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type medical_scribe_session_control_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -126,116 +362,6 @@
 
 
 %% Example:
-%% medical_scribe_audio_event() :: #{
-%%   <<"AudioChunk">> => binary()
-%% }
--type medical_scribe_audio_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_post_stream_analytics_settings() :: #{
-%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings()
-%% }
--type medical_scribe_post_stream_analytics_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"StartTime">> => float(),
-%%   <<"Type">> => string()
-%% }
--type entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% character_offsets() :: #{
-%%   <<"Begin">> => integer(),
-%%   <<"End">> => integer()
-%% }
--type character_offsets() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_event() :: #{
-%%   <<"AudioChunk">> => binary()
-%% }
--type audio_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% clinical_note_generation_settings() :: #{
-%%   <<"NoteTemplate">> => list(any()),
-%%   <<"OutputBucketName">> => string()
-%% }
--type clinical_note_generation_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_alternative() :: #{
-%%   <<"Entities">> => list(medical_entity()),
-%%   <<"Items">> => list(medical_item()),
-%%   <<"Transcript">> => string()
-%% }
--type medical_alternative() :: #{binary() => any()}.
-
-
-%% Example:
-%% call_analytics_language_with_score() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type call_analytics_language_with_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% category_event() :: #{
-%%   <<"MatchedCategories">> => list(string()),
-%%   <<"MatchedDetails">> => map()
-%% }
--type category_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_post_stream_analytics_result() :: #{
-%%   <<"ClinicalNoteGenerationResult">> => clinical_note_generation_result()
-%% }
--type medical_scribe_post_stream_analytics_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_configuration_event() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
-%%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
-%%   <<"MedicalScribeContext">> => medical_scribe_context(),
-%%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
-%%   <<"ResourceAccessRoleArn">> => string(),
-%%   <<"VocabularyFilterMethod">> => list(any()),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type medical_scribe_configuration_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% language_with_score() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type language_with_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript() :: #{
-%%   <<"Results">> => list(result())
-%% }
--type transcript() :: #{binary() => any()}.
-
-
-%% Example:
 %% medical_scribe_transcript_event() :: #{
 %%   <<"TranscriptSegment">> => medical_scribe_transcript_segment()
 %% }
@@ -243,14 +369,28 @@
 
 
 %% Example:
-%% medical_entity() :: #{
-%%   <<"Category">> => string(),
+%% medical_scribe_transcript_item() :: #{
+%%   <<"BeginAudioTime">> => float(),
 %%   <<"Confidence">> => float(),
 %%   <<"Content">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"StartTime">> => float()
+%%   <<"EndAudioTime">> => float(),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyFilterMatch">> => boolean()
 %% }
--type medical_entity() :: #{binary() => any()}.
+-type medical_scribe_transcript_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_transcript_segment() :: #{
+%%   <<"BeginAudioTime">> => float(),
+%%   <<"ChannelId">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"EndAudioTime">> => float(),
+%%   <<"IsPartial">> => boolean(),
+%%   <<"Items">> => list(medical_scribe_transcript_item()),
+%%   <<"SegmentId">> => string()
+%% }
+-type medical_scribe_transcript_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -261,10 +401,80 @@
 
 
 %% Example:
-%% get_medical_scribe_stream_response() :: #{
-%%   <<"MedicalScribeStreamDetails">> => medical_scribe_stream_details()
+%% medical_transcript_event() :: #{
+%%   <<"Transcript">> => medical_transcript()
 %% }
--type get_medical_scribe_stream_response() :: #{binary() => any()}.
+-type medical_transcript_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% points_of_interest() :: #{
+%%   <<"TimestampRanges">> => list(timestamp_range())
+%% }
+-type points_of_interest() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_call_analytics_settings() :: #{
+%%   <<"ContentRedactionOutput">> => list(any()),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"OutputLocation">> => string()
+%% }
+-type post_call_analytics_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% result() :: #{
+%%   <<"Alternatives">> => list(alternative()),
+%%   <<"ChannelId">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"IsPartial">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageIdentification">> => list(language_with_score()),
+%%   <<"ResultId">> => string(),
+%%   <<"StartTime">> => float()
+%% }
+-type result() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_call_analytics_stream_transcription_request() :: #{
+%%   <<"AudioStream">> := list(),
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"ContentRedactionType">> => list(any()),
+%%   <<"EnablePartialResultsStabilization">> => boolean(),
+%%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => string(),
+%%   <<"MediaEncoding">> := list(any()),
+%%   <<"MediaSampleRateHertz">> := integer(),
+%%   <<"PartialResultsStability">> => list(any()),
+%%   <<"PiiEntityTypes">> => string(),
+%%   <<"PreferredLanguage">> => list(any()),
+%%   <<"SessionId">> => string(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyFilterNames">> => string(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyNames">> => string()
+%% }
+-type start_call_analytics_stream_transcription_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -294,24 +504,44 @@
 
 
 %% Example:
-%% item() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"Speaker">> => string(),
-%%   <<"Stable">> => boolean(),
-%%   <<"StartTime">> => float(),
-%%   <<"Type">> => list(any()),
-%%   <<"VocabularyFilterMatch">> => boolean()
+%% start_medical_scribe_stream_request() :: #{
+%%   <<"InputStream">> := list(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"MediaEncoding">> := list(any()),
+%%   <<"MediaSampleRateHertz">> := integer(),
+%%   <<"SessionId">> => string()
 %% }
--type item() :: #{binary() => any()}.
+-type start_medical_scribe_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% start_medical_scribe_stream_response() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MediaEncoding">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResultStream">> => list(),
+%%   <<"SessionId">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type start_medical_scribe_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_medical_stream_transcription_request() :: #{
+%%   <<"AudioStream">> := list(),
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"EnableChannelIdentification">> => boolean(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"MediaEncoding">> := list(any()),
+%%   <<"MediaSampleRateHertz">> := integer(),
+%%   <<"NumberOfChannels">> => integer(),
+%%   <<"SessionId">> => string(),
+%%   <<"ShowSpeakerLabel">> => boolean(),
+%%   <<"Specialty">> := list(any()),
+%%   <<"Type">> := list(any()),
+%%   <<"VocabularyName">> => string()
+%% }
+-type start_medical_stream_transcription_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -331,122 +561,6 @@
 %%   <<"VocabularyName">> => string()
 %% }
 -type start_medical_stream_transcription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% call_analytics_item() :: #{
-%%   <<"BeginOffsetMillis">> => float(),
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndOffsetMillis">> => float(),
-%%   <<"Stable">> => boolean(),
-%%   <<"Type">> => list(any()),
-%%   <<"VocabularyFilterMatch">> => boolean()
-%% }
--type call_analytics_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_definition() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type channel_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% result() :: #{
-%%   <<"Alternatives">> => list(alternative()),
-%%   <<"ChannelId">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"IsPartial">> => boolean(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageIdentification">> => list(language_with_score()),
-%%   <<"ResultId">> => string(),
-%%   <<"StartTime">> => float()
-%% }
--type result() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_call_analytics_settings() :: #{
-%%   <<"ContentRedactionOutput">> => list(any()),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"OutputLocation">> => string()
-%% }
--type post_call_analytics_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% call_analytics_entity() :: #{
-%%   <<"BeginOffsetMillis">> => float(),
-%%   <<"Category">> => string(),
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndOffsetMillis">> => float(),
-%%   <<"Type">> => string()
-%% }
--type call_analytics_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_stream_transcription_response() :: #{
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"ContentRedactionType">> => list(any()),
-%%   <<"EnableChannelIdentification">> => boolean(),
-%%   <<"EnablePartialResultsStabilization">> => boolean(),
-%%   <<"IdentifyLanguage">> => boolean(),
-%%   <<"IdentifyMultipleLanguages">> => boolean(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageModelName">> => string(),
-%%   <<"LanguageOptions">> => string(),
-%%   <<"MediaEncoding">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"NumberOfChannels">> => integer(),
-%%   <<"PartialResultsStability">> => list(any()),
-%%   <<"PiiEntityTypes">> => string(),
-%%   <<"PreferredLanguage">> => list(any()),
-%%   <<"RequestId">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"SessionResumeWindow">> => integer(),
-%%   <<"ShowSpeakerLabel">> => boolean(),
-%%   <<"TranscriptResultStream">> => list(),
-%%   <<"VocabularyFilterMethod">> => list(any()),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyFilterNames">> => string(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyNames">> => string()
-%% }
--type start_stream_transcription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_patient_context() :: #{
-%%   <<"Pronouns">> => list(any())
-%% }
--type medical_scribe_patient_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_transcript_event() :: #{
-%%   <<"Transcript">> => medical_transcript()
-%% }
--type medical_transcript_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -470,6 +584,7 @@
 %%   <<"SessionId">> => string(),
 %%   <<"SessionResumeWindow">> => integer(),
 %%   <<"ShowSpeakerLabel">> => boolean(),
+%%   <<"TranscriptFormat">> => list(any()),
 %%   <<"VocabularyFilterMethod">> => list(any()),
 %%   <<"VocabularyFilterName">> => string(),
 %%   <<"VocabularyFilterNames">> => string(),
@@ -480,40 +595,35 @@
 
 
 %% Example:
-%% medical_result() :: #{
-%%   <<"Alternatives">> => list(medical_alternative()),
-%%   <<"ChannelId">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"IsPartial">> => boolean(),
-%%   <<"ResultId">> => string(),
-%%   <<"StartTime">> => float()
-%% }
--type medical_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_call_analytics_stream_transcription_request() :: #{
-%%   <<"AudioStream">> := list(),
+%% start_stream_transcription_response() :: #{
 %%   <<"ContentIdentificationType">> => list(any()),
 %%   <<"ContentRedactionType">> => list(any()),
+%%   <<"EnableChannelIdentification">> => boolean(),
 %%   <<"EnablePartialResultsStabilization">> => boolean(),
 %%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"IdentifyMultipleLanguages">> => boolean(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LanguageModelName">> => string(),
 %%   <<"LanguageOptions">> => string(),
-%%   <<"MediaEncoding">> := list(any()),
-%%   <<"MediaSampleRateHertz">> := integer(),
+%%   <<"MediaEncoding">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"NumberOfChannels">> => integer(),
 %%   <<"PartialResultsStability">> => list(any()),
 %%   <<"PiiEntityTypes">> => string(),
 %%   <<"PreferredLanguage">> => list(any()),
+%%   <<"RequestId">> => string(),
 %%   <<"SessionId">> => string(),
+%%   <<"SessionResumeWindow">> => integer(),
+%%   <<"ShowSpeakerLabel">> => boolean(),
+%%   <<"TranscriptFormat">> => list(any()),
+%%   <<"TranscriptResultStream">> => list(),
 %%   <<"VocabularyFilterMethod">> => list(any()),
 %%   <<"VocabularyFilterName">> => string(),
 %%   <<"VocabularyFilterNames">> => string(),
 %%   <<"VocabularyName">> => string(),
 %%   <<"VocabularyNames">> => string()
 %% }
--type start_call_analytics_stream_transcription_request() :: #{binary() => any()}.
+-type start_stream_transcription_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -525,26 +635,17 @@
 
 
 %% Example:
-%% configuration_event() :: #{
-%%   <<"ChannelDefinitions">> => list(channel_definition()),
-%%   <<"PostCallAnalyticsSettings">> => post_call_analytics_settings()
+%% transcript() :: #{
+%%   <<"Results">> => list(result())
 %% }
--type configuration_event() :: #{binary() => any()}.
+-type transcript() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_medical_scribe_stream_request() :: #{
-%%   <<"InputStream">> := list(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"MediaEncoding">> := list(any()),
-%%   <<"MediaSampleRateHertz">> := integer(),
-%%   <<"SessionId">> => string()
+%% transcript_event() :: #{
+%%   <<"Transcript">> => transcript()
 %% }
--type start_medical_scribe_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_scribe_stream_request() :: #{}
--type get_medical_scribe_stream_request() :: #{}.
+-type transcript_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,138 +665,39 @@
 %% }
 -type utterance_event() :: #{binary() => any()}.
 
-
-%% Example:
-%% medical_scribe_transcript_item() :: #{
-%%   <<"BeginAudioTime">> => float(),
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndAudioTime">> => float(),
-%%   <<"Type">> => list(any()),
-%%   <<"VocabularyFilterMatch">> => boolean()
-%% }
--type medical_scribe_transcript_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_session_control_event() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type medical_scribe_session_control_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_transcript_segment() :: #{
-%%   <<"BeginAudioTime">> => float(),
-%%   <<"ChannelId">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"EndAudioTime">> => float(),
-%%   <<"IsPartial">> => boolean(),
-%%   <<"Items">> => list(medical_scribe_transcript_item()),
-%%   <<"SegmentId">> => string()
-%% }
--type medical_scribe_transcript_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_context() :: #{
-%%   <<"PatientContext">> => medical_scribe_patient_context()
-%% }
--type medical_scribe_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_item() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Content">> => string(),
-%%   <<"EndTime">> => float(),
-%%   <<"Speaker">> => string(),
-%%   <<"StartTime">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type medical_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% medical_scribe_channel_definition() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type medical_scribe_channel_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript_event() :: #{
-%%   <<"Transcript">> => transcript()
-%% }
--type transcript_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% clinical_note_generation_result() :: #{
-%%   <<"ClinicalNoteOutputLocation">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TranscriptOutputLocation">> => string()
-%% }
--type clinical_note_generation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% alternative() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"Items">> => list(item()),
-%%   <<"Transcript">> => string()
-%% }
--type alternative() :: #{binary() => any()}.
-
 -type get_medical_scribe_stream_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_call_analytics_stream_transcription_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_medical_scribe_stream_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_medical_stream_transcription_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_stream_transcription_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API
@@ -1098,6 +1100,7 @@ start_stream_transcription(Client, Input0, Options0) ->
                        {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
                        {<<"x-amzn-transcribe-session-resume-window">>, <<"SessionResumeWindow">>},
                        {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
+                       {<<"x-amzn-transcribe-transcript-format">>, <<"TranscriptFormat">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},
@@ -1135,6 +1138,7 @@ start_stream_transcription(Client, Input0, Options0) ->
             {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
             {<<"x-amzn-transcribe-session-resume-window">>, <<"SessionResumeWindow">>},
             {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
+            {<<"x-amzn-transcribe-transcript-format">>, <<"TranscriptFormat">>},
             {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
             {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
             {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},

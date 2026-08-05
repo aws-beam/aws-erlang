@@ -134,197 +134,29 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-
-%% Example:
-%% missing_parameter_value_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type missing_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_archive_input() :: #{}
--type delete_archive_input() :: #{}.
-
-
-%% Example:
-%% initiate_job_output() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"jobOutputPath">> => string(),
-%%   <<"location">> => string()
-%% }
--type initiate_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_input() :: #{}
--type describe_job_input() :: #{}.
-
-
-%% Example:
-%% remove_tags_from_vault_input() :: #{
-%%   <<"TagKeys">> => list(string())
-%% }
--type remove_tags_from_vault_input() :: #{binary() => any()}.
-
 %% Example:
 %% abort_multipart_upload_input() :: #{}
 -type abort_multipart_upload_input() :: #{}.
 
-
 %% Example:
-%% get_vault_access_policy_output() :: #{
-%%   <<"policy">> => vault_access_policy()
-%% }
--type get_vault_access_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioned_capacity_input() :: #{}
--type list_provisioned_capacity_input() :: #{}.
-
-%% Example:
-%% get_data_retrieval_policy_input() :: #{}
--type get_data_retrieval_policy_input() :: #{}.
-
-%% Example:
-%% describe_vault_input() :: #{}
--type describe_vault_input() :: #{}.
+%% abort_vault_lock_input() :: #{}
+-type abort_vault_lock_input() :: #{}.
 
 
 %% Example:
-%% list_tags_for_vault_output() :: #{
+%% add_tags_to_vault_input() :: #{
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_vault_output() :: #{binary() => any()}.
+-type add_tags_to_vault_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% set_vault_access_policy_input() :: #{
-%%   <<"policy">> => vault_access_policy()
-%% }
--type set_vault_access_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_retrieval_rule() :: #{
-%%   <<"BytesPerHour">> => float(),
-%%   <<"Strategy">> => string()
-%% }
--type data_retrieval_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_archive_input() :: #{
-%%   <<"archiveDescription">> => string(),
-%%   <<"body">> => binary(),
-%%   <<"checksum">> => string()
-%% }
--type upload_archive_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_serialization() :: #{
-%%   <<"csv">> => csv_input()
-%% }
--type input_serialization() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioned_capacity_output() :: #{
-%%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description())
-%% }
--type list_provisioned_capacity_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% grantee() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"ID">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"URI">> => string()
-%% }
--type grantee() :: #{binary() => any()}.
-
-%% Example:
-%% get_vault_notifications_input() :: #{}
--type get_vault_notifications_input() :: #{}.
-
-
-%% Example:
-%% request_timeout_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type request_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vault_access_policy() :: #{
-%%   <<"Policy">> => string()
-%% }
--type vault_access_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_job_input() :: #{
-%%   <<"jobParameters">> => job_parameters()
-%% }
--type initiate_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_retrieval_job_description() :: #{
-%%   <<"EndDate">> => string(),
-%%   <<"Format">> => string(),
-%%   <<"Limit">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"StartDate">> => string()
-%% }
--type inventory_retrieval_job_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% select_parameters() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"ExpressionType">> => list(any()),
-%%   <<"InputSerialization">> => input_serialization(),
-%%   <<"OutputSerialization">> => output_serialization()
-%% }
--type select_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% insufficient_capacity_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type insufficient_capacity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vault_output() :: #{
+%% archive_creation_output() :: #{
+%%   <<"archiveId">> => string(),
+%%   <<"checksum">> => string(),
 %%   <<"location">> => string()
 %% }
--type create_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_parameters() :: #{
-%%   <<"ArchiveId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Format">> => string(),
-%%   <<"InventoryRetrievalParameters">> => inventory_retrieval_job_input(),
-%%   <<"OutputLocation">> => output_location(),
-%%   <<"RetrievalByteRange">> => string(),
-%%   <<"SNSTopic">> => string(),
-%%   <<"SelectParameters">> => select_parameters(),
-%%   <<"Tier">> => string(),
-%%   <<"Type">> => string()
-%% }
--type job_parameters() :: #{binary() => any()}.
+-type archive_creation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -335,84 +167,19 @@
 -type complete_multipart_upload_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_vault_notifications_input() :: #{}
--type delete_vault_notifications_input() :: #{}.
+%% complete_vault_lock_input() :: #{}
+-type complete_vault_lock_input() :: #{}.
+
+%% Example:
+%% create_vault_input() :: #{}
+-type create_vault_input() :: #{}.
 
 
 %% Example:
-%% set_vault_notifications_input() :: #{
-%%   <<"vaultNotificationConfig">> => vault_notification_config()
+%% create_vault_output() :: #{
+%%   <<"location">> => string()
 %% }
--type set_vault_notifications_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_vault_lock_input() :: #{}
--type get_vault_lock_input() :: #{}.
-
-
-%% Example:
-%% data_retrieval_policy() :: #{
-%%   <<"Rules">> => list(data_retrieval_rule())
-%% }
--type data_retrieval_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_capacity_description() :: #{
-%%   <<"CapacityId">> => string(),
-%%   <<"ExpirationDate">> => string(),
-%%   <<"StartDate">> => string()
-%% }
--type provisioned_capacity_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% part_list_element() :: #{
-%%   <<"RangeInBytes">> => string(),
-%%   <<"SHA256TreeHash">> => string()
-%% }
--type part_list_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% grant() :: #{
-%%   <<"Grantee">> => grantee(),
-%%   <<"Permission">> => list(any())
-%% }
--type grant() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vault_notifications_output() :: #{
-%%   <<"vaultNotificationConfig">> => vault_notification_config()
-%% }
--type get_vault_notifications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vaults_input() :: #{
-%%   <<"limit">> => [integer()],
-%%   <<"marker">> => string()
-%% }
--type list_vaults_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
+-type create_vault_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -428,19 +195,65 @@
 
 
 %% Example:
-%% get_job_output_input() :: #{
-%%   <<"range">> => string()
+%% csv_output() :: #{
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"QuoteFields">> => list(any()),
+%%   <<"RecordDelimiter">> => string()
 %% }
--type get_job_output_input() :: #{binary() => any()}.
+-type csv_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% archive_creation_output() :: #{
-%%   <<"archiveId">> => string(),
-%%   <<"checksum">> => string(),
-%%   <<"location">> => string()
+%% data_retrieval_policy() :: #{
+%%   <<"Rules">> => list(data_retrieval_rule())
 %% }
--type archive_creation_output() :: #{binary() => any()}.
+-type data_retrieval_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_retrieval_rule() :: #{
+%%   <<"BytesPerHour">> => float(),
+%%   <<"Strategy">> => string()
+%% }
+-type data_retrieval_rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_archive_input() :: #{}
+-type delete_archive_input() :: #{}.
+
+%% Example:
+%% delete_vault_access_policy_input() :: #{}
+-type delete_vault_access_policy_input() :: #{}.
+
+%% Example:
+%% delete_vault_input() :: #{}
+-type delete_vault_input() :: #{}.
+
+%% Example:
+%% delete_vault_notifications_input() :: #{}
+-type delete_vault_notifications_input() :: #{}.
+
+%% Example:
+%% describe_job_input() :: #{}
+-type describe_job_input() :: #{}.
+
+%% Example:
+%% describe_vault_input() :: #{}
+-type describe_vault_input() :: #{}.
+
+
+%% Example:
+%% describe_vault_output() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"LastInventoryDate">> => string(),
+%%   <<"NumberOfArchives">> => float(),
+%%   <<"SizeInBytes">> => float(),
+%%   <<"VaultARN">> => string(),
+%%   <<"VaultName">> => string()
+%% }
+-type describe_vault_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,92 +265,35 @@
 -type encryption() :: #{binary() => any()}.
 
 %% Example:
-%% delete_vault_access_policy_input() :: #{}
--type delete_vault_access_policy_input() :: #{}.
-
-%% Example:
-%% purchase_provisioned_capacity_input() :: #{}
--type purchase_provisioned_capacity_input() :: #{}.
+%% get_data_retrieval_policy_input() :: #{}
+-type get_data_retrieval_policy_input() :: #{}.
 
 
 %% Example:
-%% output_location() :: #{
-%%   <<"S3">> => s3_location()
-%% }
--type output_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_list_element() :: #{
-%%   <<"ArchiveDescription">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"MultipartUploadId">> => string(),
-%%   <<"PartSizeInBytes">> => float(),
-%%   <<"VaultARN">> => string()
-%% }
--type upload_list_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_multipart_part_input() :: #{
-%%   <<"body">> => binary(),
-%%   <<"checksum">> => string(),
-%%   <<"range">> => string()
-%% }
--type upload_multipart_part_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"AccessControlList">> => list(grant()),
-%%   <<"BucketName">> => string(),
-%%   <<"CannedACL">> => list(any()),
-%%   <<"Encryption">> => encryption(),
-%%   <<"Prefix">> => string(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"Tagging">> => map(),
-%%   <<"UserMetadata">> => map()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_multipart_upload_input() :: #{
-%%   <<"archiveDescription">> => string(),
-%%   <<"partSize">> => string()
-%% }
--type initiate_multipart_upload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_data_retrieval_policy_input() :: #{
+%% get_data_retrieval_policy_output() :: #{
 %%   <<"Policy">> => data_retrieval_policy()
 %% }
--type set_data_retrieval_policy_input() :: #{binary() => any()}.
+-type get_data_retrieval_policy_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_vaults_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"VaultList">> => list(describe_vault_output())
+%% get_job_output_input() :: #{
+%%   <<"range">> => string()
 %% }
--type list_vaults_output() :: #{binary() => any()}.
+-type get_job_output_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% vault_lock_policy() :: #{
-%%   <<"Policy">> => string()
+%% get_job_output_output() :: #{
+%%   <<"acceptRanges">> => string(),
+%%   <<"archiveDescription">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string(),
+%%   <<"contentRange">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"status">> => integer()
 %% }
--type vault_lock_policy() :: #{binary() => any()}.
+-type get_job_output_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_vault_access_policy_input() :: #{}
@@ -545,57 +301,35 @@
 
 
 %% Example:
-%% policy_enforced_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"type">> => string()
+%% get_vault_access_policy_output() :: #{
+%%   <<"policy">> => vault_access_policy()
 %% }
--type policy_enforced_exception() :: #{binary() => any()}.
+-type get_vault_access_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_vault_lock_input() :: #{}
+-type get_vault_lock_input() :: #{}.
 
 
 %% Example:
-%% list_jobs_output() :: #{
-%%   <<"JobList">> => list(glacier_job_description()),
-%%   <<"Marker">> => string()
+%% get_vault_lock_output() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"ExpirationDate">> => string(),
+%%   <<"Policy">> => string(),
+%%   <<"State">> => string()
 %% }
--type list_jobs_output() :: #{binary() => any()}.
+-type get_vault_lock_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_vault_input() :: #{}
--type delete_vault_input() :: #{}.
+%% get_vault_notifications_input() :: #{}
+-type get_vault_notifications_input() :: #{}.
 
 
 %% Example:
-%% upload_multipart_part_output() :: #{
-%%   <<"checksum">> => string()
+%% get_vault_notifications_output() :: #{
+%%   <<"vaultNotificationConfig">> => vault_notification_config()
 %% }
--type upload_multipart_part_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_vault_input() :: #{}
--type list_tags_for_vault_input() :: #{}.
-
-
-%% Example:
-%% initiate_vault_lock_input() :: #{
-%%   <<"policy">> => vault_lock_policy()
-%% }
--type initiate_vault_lock_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_provisioned_capacity_output() :: #{
-%%   <<"capacityId">> => string()
-%% }
--type purchase_provisioned_capacity_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% vault_notification_config() :: #{
-%%   <<"Events">> => list(string()),
-%%   <<"SNSTopic">> => string()
-%% }
--type vault_notification_config() :: #{binary() => any()}.
+-type get_vault_notifications_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -626,6 +360,142 @@
 
 
 %% Example:
+%% grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"ID">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_job_input() :: #{
+%%   <<"jobParameters">> => job_parameters()
+%% }
+-type initiate_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_job_output() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOutputPath">> => string(),
+%%   <<"location">> => string()
+%% }
+-type initiate_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_multipart_upload_input() :: #{
+%%   <<"archiveDescription">> => string(),
+%%   <<"partSize">> => string()
+%% }
+-type initiate_multipart_upload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_multipart_upload_output() :: #{
+%%   <<"location">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type initiate_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_vault_lock_input() :: #{
+%%   <<"policy">> => vault_lock_policy()
+%% }
+-type initiate_vault_lock_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiate_vault_lock_output() :: #{
+%%   <<"lockId">> => string()
+%% }
+-type initiate_vault_lock_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_serialization() :: #{
+%%   <<"csv">> => csv_input()
+%% }
+-type input_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_retrieval_job_description() :: #{
+%%   <<"EndDate">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"Limit">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type inventory_retrieval_job_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_retrieval_job_input() :: #{
+%%   <<"EndDate">> => string(),
+%%   <<"Limit">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type inventory_retrieval_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_parameters() :: #{
+%%   <<"ArchiveId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"InventoryRetrievalParameters">> => inventory_retrieval_job_input(),
+%%   <<"OutputLocation">> => output_location(),
+%%   <<"RetrievalByteRange">> => string(),
+%%   <<"SNSTopic">> => string(),
+%%   <<"SelectParameters">> => select_parameters(),
+%%   <<"Tier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type job_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_jobs_input() :: #{
 %%   <<"completed">> => string(),
 %%   <<"limit">> => [integer()],
@@ -633,6 +503,22 @@
 %%   <<"statuscode">> => string()
 %% }
 -type list_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_output() :: #{
+%%   <<"JobList">> => list(glacier_job_description()),
+%%   <<"Marker">> => string()
+%% }
+-type list_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_uploads_input() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string()
+%% }
+-type list_multipart_uploads_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,13 +538,6 @@
 
 
 %% Example:
-%% initiate_vault_lock_output() :: #{
-%%   <<"lockId">> => string()
-%% }
--type initiate_vault_lock_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% list_parts_output() :: #{
 %%   <<"ArchiveDescription">> => string(),
 %%   <<"CreationDate">> => string(),
@@ -670,90 +549,52 @@
 %% }
 -type list_parts_output() :: #{binary() => any()}.
 
+%% Example:
+%% list_provisioned_capacity_input() :: #{}
+-type list_provisioned_capacity_input() :: #{}.
+
 
 %% Example:
-%% csv_output() :: #{
-%%   <<"FieldDelimiter">> => string(),
-%%   <<"QuoteCharacter">> => string(),
-%%   <<"QuoteEscapeCharacter">> => string(),
-%%   <<"QuoteFields">> => list(any()),
-%%   <<"RecordDelimiter">> => string()
+%% list_provisioned_capacity_output() :: #{
+%%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description())
 %% }
--type csv_output() :: #{binary() => any()}.
+-type list_provisioned_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_vault_input() :: #{}
+-type list_tags_for_vault_input() :: #{}.
 
 
 %% Example:
-%% inventory_retrieval_job_input() :: #{
-%%   <<"EndDate">> => string(),
-%%   <<"Limit">> => string(),
+%% list_tags_for_vault_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vaults_input() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string()
+%% }
+-type list_vaults_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vaults_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"StartDate">> => string()
+%%   <<"VaultList">> => list(describe_vault_output())
 %% }
--type inventory_retrieval_job_input() :: #{binary() => any()}.
+-type list_vaults_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
+%% missing_parameter_value_exception() :: #{
 %%   <<"code">> => string(),
 %%   <<"message">> => string(),
 %%   <<"type">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_output_output() :: #{
-%%   <<"acceptRanges">> => string(),
-%%   <<"archiveDescription">> => string(),
-%%   <<"body">> => binary(),
-%%   <<"checksum">> => string(),
-%%   <<"contentRange">> => string(),
-%%   <<"contentType">> => string(),
-%%   <<"status">> => integer()
-%% }
--type get_job_output_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_vault_output() :: #{
-%%   <<"CreationDate">> => string(),
-%%   <<"LastInventoryDate">> => string(),
-%%   <<"NumberOfArchives">> => float(),
-%%   <<"SizeInBytes">> => float(),
-%%   <<"VaultARN">> => string(),
-%%   <<"VaultName">> => string()
-%% }
--type describe_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiate_multipart_upload_output() :: #{
-%%   <<"location">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type initiate_multipart_upload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_tags_to_vault_input() :: #{
-%%   <<"Tags">> => map()
-%% }
--type add_tags_to_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multipart_uploads_input() :: #{
-%%   <<"limit">> => [integer()],
-%%   <<"marker">> => string()
-%% }
--type list_multipart_uploads_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_serialization() :: #{
-%%   <<"csv">> => csv_output()
-%% }
--type output_serialization() :: #{binary() => any()}.
+-type missing_parameter_value_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -764,267 +605,426 @@
 %% }
 -type no_longer_supported_exception() :: #{binary() => any()}.
 
-%% Example:
-%% create_vault_input() :: #{}
--type create_vault_input() :: #{}.
 
 %% Example:
-%% abort_vault_lock_input() :: #{}
--type abort_vault_lock_input() :: #{}.
-
-
-%% Example:
-%% get_vault_lock_output() :: #{
-%%   <<"CreationDate">> => string(),
-%%   <<"ExpirationDate">> => string(),
-%%   <<"Policy">> => string(),
-%%   <<"State">> => string()
+%% output_location() :: #{
+%%   <<"S3">> => s3_location()
 %% }
--type get_vault_lock_output() :: #{binary() => any()}.
+-type output_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_data_retrieval_policy_output() :: #{
+%% output_serialization() :: #{
+%%   <<"csv">> => csv_output()
+%% }
+-type output_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% part_list_element() :: #{
+%%   <<"RangeInBytes">> => string(),
+%%   <<"SHA256TreeHash">> => string()
+%% }
+-type part_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_enforced_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type policy_enforced_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_capacity_description() :: #{
+%%   <<"CapacityId">> => string(),
+%%   <<"ExpirationDate">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type provisioned_capacity_description() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_provisioned_capacity_input() :: #{}
+-type purchase_provisioned_capacity_input() :: #{}.
+
+
+%% Example:
+%% purchase_provisioned_capacity_output() :: #{
+%%   <<"capacityId">> => string()
+%% }
+-type purchase_provisioned_capacity_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_tags_from_vault_input() :: #{
+%%   <<"TagKeys">> => list(string())
+%% }
+-type remove_tags_from_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"AccessControlList">> => list(grant()),
+%%   <<"BucketName">> => string(),
+%%   <<"CannedACL">> => list(any()),
+%%   <<"Encryption">> => encryption(),
+%%   <<"Prefix">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => map(),
+%%   <<"UserMetadata">> => map()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_parameters() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"InputSerialization">> => input_serialization(),
+%%   <<"OutputSerialization">> => output_serialization()
+%% }
+-type select_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_data_retrieval_policy_input() :: #{
 %%   <<"Policy">> => data_retrieval_policy()
 %% }
--type get_data_retrieval_policy_output() :: #{binary() => any()}.
+-type set_data_retrieval_policy_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% complete_vault_lock_input() :: #{}
--type complete_vault_lock_input() :: #{}.
+%% set_vault_access_policy_input() :: #{
+%%   <<"policy">> => vault_access_policy()
+%% }
+-type set_vault_access_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_vault_notifications_input() :: #{
+%%   <<"vaultNotificationConfig">> => vault_notification_config()
+%% }
+-type set_vault_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_archive_input() :: #{
+%%   <<"archiveDescription">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string()
+%% }
+-type upload_archive_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_list_element() :: #{
+%%   <<"ArchiveDescription">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"MultipartUploadId">> => string(),
+%%   <<"PartSizeInBytes">> => float(),
+%%   <<"VaultARN">> => string()
+%% }
+-type upload_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_multipart_part_input() :: #{
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string(),
+%%   <<"range">> => string()
+%% }
+-type upload_multipart_part_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_multipart_part_output() :: #{
+%%   <<"checksum">> => string()
+%% }
+-type upload_multipart_part_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% vault_access_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type vault_access_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% vault_lock_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type vault_lock_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% vault_notification_config() :: #{
+%%   <<"Events">> => list(string()),
+%%   <<"SNSTopic">> => string()
+%% }
+-type vault_notification_config() :: #{binary() => any()}.
 
 -type abort_multipart_upload_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type abort_vault_lock_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type add_tags_to_vault_errors() ::
-    no_longer_supported_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type complete_multipart_upload_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type complete_vault_lock_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type create_vault_errors() ::
-    no_longer_supported_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_archive_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_vault_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_vault_access_policy_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_vault_notifications_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_job_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_vault_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_data_retrieval_policy_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_job_output_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_vault_access_policy_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_vault_lock_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_vault_notifications_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type initiate_job_errors() ::
-    no_longer_supported_exception() | 
-    policy_enforced_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    insufficient_capacity_exception() | 
-    missing_parameter_value_exception().
+    policy_enforced_exception() | 
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    insufficient_capacity_exception().
 
 -type initiate_multipart_upload_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type initiate_vault_lock_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_jobs_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_multipart_uploads_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_parts_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_provisioned_capacity_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_tags_for_vault_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_vaults_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type purchase_provisioned_capacity_errors() ::
-    no_longer_supported_exception() | 
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type remove_tags_from_vault_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type set_data_retrieval_policy_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type set_vault_access_policy_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type set_vault_notifications_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type upload_archive_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     request_timeout_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type upload_multipart_part_errors() ::
-    no_longer_supported_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     request_timeout_exception() | 
-    missing_parameter_value_exception().
+    no_longer_supported_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 %%====================================================================
 %% API

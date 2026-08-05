@@ -350,11 +350,125 @@
 
 
 %% Example:
-%% list_enabled_controls_output() :: #{
-%%   <<"enabledControls">> => list(enabled_control_summary()),
-%%   <<"nextToken">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_enabled_controls_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% baseline_operation() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()]
+%% }
+-type baseline_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% baseline_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type baseline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_operation() :: #{
+%%   <<"controlIdentifier">> => string(),
+%%   <<"enabledControlIdentifier">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"targetIdentifier">> => string()
+%% }
+-type control_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_operation_filter() :: #{
+%%   <<"controlIdentifiers">> => list(string()),
+%%   <<"controlOperationTypes">> => list(list(any())()),
+%%   <<"enabledControlIdentifiers">> => list(string()),
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"targetIdentifiers">> => list(string())
+%% }
+-type control_operation_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_operation_summary() :: #{
+%%   <<"controlIdentifier">> => string(),
+%%   <<"enabledControlIdentifier">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"targetIdentifier">> => string()
+%% }
+-type control_operation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_landing_zone_input() :: #{
+%%   <<"manifest">> => any(),
+%%   <<"remediationTypes">> => list(list(any())()),
+%%   <<"tags">> => map(),
+%%   <<"version">> := string()
+%% }
+-type create_landing_zone_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_landing_zone_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"operationIdentifier">> => string()
+%% }
+-type create_landing_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_landing_zone_input() :: #{
+%%   <<"landingZoneIdentifier">> := [string()]
+%% }
+-type delete_landing_zone_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_landing_zone_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type delete_landing_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_baseline_input() :: #{
+%%   <<"enabledBaselineIdentifier">> := string()
+%% }
+-type disable_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_baseline_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type disable_baseline_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -374,29 +488,145 @@
 
 
 %% Example:
-%% enablement_status_summary() :: #{
-%%   <<"lastOperationIdentifier">> => string(),
+%% drift_status_summary() :: #{
+%%   <<"driftStatus">> => list(any()),
+%%   <<"types">> => enabled_control_drift_types()
+%% }
+-type drift_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_baseline_input() :: #{
+%%   <<"baselineIdentifier">> := string(),
+%%   <<"baselineVersion">> := string(),
+%%   <<"parameters">> => list(enabled_baseline_parameter()),
+%%   <<"tags">> => map(),
+%%   <<"targetIdentifier">> := string()
+%% }
+-type enable_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_baseline_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"operationIdentifier">> => string()
+%% }
+-type enable_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_control_input() :: #{
+%%   <<"controlIdentifier">> := string(),
+%%   <<"parameters">> => list(enabled_control_parameter()),
+%%   <<"tags">> => map(),
+%%   <<"targetIdentifier">> := string()
+%% }
+-type enable_control_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_control_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"operationIdentifier">> => string()
+%% }
+-type enable_control_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_details() :: #{
+%%   <<"arn">> => string(),
+%%   <<"baselineIdentifier">> => [string()],
+%%   <<"baselineVersion">> => [string()],
+%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
+%%   <<"parameters">> => list(enabled_baseline_parameter_summary()),
+%%   <<"parentIdentifier">> => string(),
+%%   <<"statusSummary">> => enablement_status_summary(),
+%%   <<"targetIdentifier">> => [string()]
+%% }
+-type enabled_baseline_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_drift_status_summary() :: #{
+%%   <<"types">> => enabled_baseline_drift_types()
+%% }
+-type enabled_baseline_drift_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_drift_types() :: #{
+%%   <<"inheritance">> => enabled_baseline_inheritance_drift()
+%% }
+-type enabled_baseline_drift_types() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_filter() :: #{
+%%   <<"baselineIdentifiers">> => list(string()),
+%%   <<"inheritanceDriftStatuses">> => list(list(any())()),
+%%   <<"parentIdentifiers">> => list(string()),
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"targetIdentifiers">> => list(string())
+%% }
+-type enabled_baseline_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_inheritance_drift() :: #{
 %%   <<"status">> => list(any())
 %% }
--type enablement_status_summary() :: #{binary() => any()}.
+-type enabled_baseline_inheritance_drift() :: #{binary() => any()}.
 
 
 %% Example:
-%% enabled_control_parameter() :: #{
+%% enabled_baseline_parameter() :: #{
 %%   <<"key">> => [string()],
-%%   <<"value">> => [any()]
+%%   <<"value">> => any()
 %% }
--type enabled_control_parameter() :: #{binary() => any()}.
+-type enabled_baseline_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_enabled_baselines_input() :: #{
-%%   <<"filter">> => enabled_baseline_filter(),
-%%   <<"includeChildren">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% enabled_baseline_parameter_summary() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => any()
 %% }
--type list_enabled_baselines_input() :: #{binary() => any()}.
+-type enabled_baseline_parameter_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"baselineIdentifier">> => [string()],
+%%   <<"baselineVersion">> => [string()],
+%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
+%%   <<"parentIdentifier">> => string(),
+%%   <<"statusSummary">> => enablement_status_summary(),
+%%   <<"targetIdentifier">> => [string()]
+%% }
+-type enabled_baseline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_details() :: #{
+%%   <<"arn">> => string(),
+%%   <<"controlIdentifier">> => string(),
+%%   <<"driftStatusSummary">> => drift_status_summary(),
+%%   <<"parameters">> => list(enabled_control_parameter_summary()),
+%%   <<"parentIdentifier">> => string(),
+%%   <<"statusSummary">> => enablement_status_summary(),
+%%   <<"targetIdentifier">> => string(),
+%%   <<"targetRegions">> => list(region())
+%% }
+-type enabled_control_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_drift_types() :: #{
+%%   <<"inheritance">> => enabled_control_inheritance_drift(),
+%%   <<"resource">> => enabled_control_resource_drift()
+%% }
+-type enabled_control_drift_types() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,135 +649,26 @@
 
 
 %% Example:
-%% landing_zone_operation_summary() :: #{
-%%   <<"operationIdentifier">> => string(),
-%%   <<"operationType">> => list(any()),
+%% enabled_control_parameter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [any()]
+%% }
+-type enabled_control_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_parameter_summary() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [any()]
+%% }
+-type enabled_control_parameter_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_resource_drift() :: #{
 %%   <<"status">> => list(any())
 %% }
--type landing_zone_operation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_drift_status_summary() :: #{
-%%   <<"types">> => enabled_baseline_drift_types()
-%% }
--type enabled_baseline_drift_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_control_input() :: #{
-%%   <<"controlIdentifier">> := string(),
-%%   <<"parameters">> => list(enabled_control_parameter()),
-%%   <<"tags">> => map(),
-%%   <<"targetIdentifier">> := string()
-%% }
--type enable_control_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_landing_zone_output() :: #{
-%%   <<"operationIdentifier">> => string()
-%% }
--type update_landing_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_enabled_control_output() :: #{
-%%   <<"enabledControlDetails">> => enabled_control_details()
-%% }
--type get_enabled_control_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_enabled_controls_input() :: #{
-%%   <<"filter">> => enabled_control_filter(),
-%%   <<"includeChildren">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()],
-%%   <<"targetIdentifier">> => string()
-%% }
--type list_enabled_controls_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_enabled_control_input() :: #{
-%%   <<"enabledControlIdentifier">> := string()
-%% }
--type reset_enabled_control_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_landing_zones_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_landing_zones_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_operations_output() :: #{
-%%   <<"controlOperations">> => list(control_operation_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_enabled_baseline_input() :: #{
-%%   <<"enabledBaselineIdentifier">> := string()
-%% }
--type reset_enabled_baseline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"baselineIdentifier">> => [string()],
-%%   <<"baselineVersion">> => [string()],
-%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
-%%   <<"parentIdentifier">> => string(),
-%%   <<"statusSummary">> => enablement_status_summary(),
-%%   <<"targetIdentifier">> => [string()]
-%% }
--type enabled_baseline_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_baseline_operation_input() :: #{
-%%   <<"operationIdentifier">> := string()
-%% }
--type get_baseline_operation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% landing_zone_operation_filter() :: #{
-%%   <<"statuses">> => list(list(any())()),
-%%   <<"types">> => list(list(any())())
-%% }
--type landing_zone_operation_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_baselines_output() :: #{
-%%   <<"baselines">> => list(baseline_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_baselines_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_enabled_baselines_output() :: #{
-%%   <<"enabledBaselines">> => list(enabled_baseline_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_enabled_baselines_output() :: #{binary() => any()}.
+-type enabled_control_resource_drift() :: #{binary() => any()}.
 
 
 %% Example:
@@ -563,17 +684,62 @@
 
 
 %% Example:
-%% region() :: #{
-%%   <<"name">> => string()
+%% enablement_status_summary() :: #{
+%%   <<"lastOperationIdentifier">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type region() :: #{binary() => any()}.
+-type enablement_status_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% disable_baseline_input() :: #{
+%% get_baseline_input() :: #{
+%%   <<"baselineIdentifier">> := string()
+%% }
+-type get_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_baseline_operation_input() :: #{
+%%   <<"operationIdentifier">> := string()
+%% }
+-type get_baseline_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_baseline_operation_output() :: #{
+%%   <<"baselineOperation">> => baseline_operation()
+%% }
+-type get_baseline_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_baseline_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type get_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_operation_input() :: #{
+%%   <<"operationIdentifier">> := string()
+%% }
+-type get_control_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_control_operation_output() :: #{
+%%   <<"controlOperation">> => control_operation()
+%% }
+-type get_control_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_enabled_baseline_input() :: #{
 %%   <<"enabledBaselineIdentifier">> := string()
 %% }
--type disable_baseline_input() :: #{binary() => any()}.
+-type get_enabled_baseline_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -584,38 +750,6 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_parameter() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => any()
-%% }
--type enabled_baseline_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_landing_zone_input() :: #{
-%%   <<"manifest">> => any(),
-%%   <<"remediationTypes">> => list(list(any())()),
-%%   <<"tags">> => map(),
-%%   <<"version">> := string()
-%% }
--type create_landing_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_enabled_control_input() :: #{
 %%   <<"enabledControlIdentifier">> := string()
 %% }
@@ -623,11 +757,45 @@
 
 
 %% Example:
-%% enabled_control_drift_types() :: #{
-%%   <<"inheritance">> => enabled_control_inheritance_drift(),
-%%   <<"resource">> => enabled_control_resource_drift()
+%% get_enabled_control_output() :: #{
+%%   <<"enabledControlDetails">> => enabled_control_details()
 %% }
--type enabled_control_drift_types() :: #{binary() => any()}.
+-type get_enabled_control_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_landing_zone_input() :: #{
+%%   <<"landingZoneIdentifier">> := [string()]
+%% }
+-type get_landing_zone_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_landing_zone_operation_input() :: #{
+%%   <<"operationIdentifier">> := string()
+%% }
+-type get_landing_zone_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_landing_zone_operation_output() :: #{
+%%   <<"operationDetails">> => landing_zone_operation_detail()
+%% }
+-type get_landing_zone_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_landing_zone_output() :: #{
+%%   <<"landingZone">> => landing_zone_detail()
+%% }
+-type get_landing_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -644,423 +812,10 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_landing_zone_input() :: #{
-%%   <<"landingZoneIdentifier">> := [string()],
-%%   <<"manifest">> => any(),
-%%   <<"remediationTypes">> => list(list(any())()),
-%%   <<"version">> := string()
-%% }
--type update_landing_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_landing_zones_output() :: #{
-%%   <<"landingZones">> => list(landing_zone_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_landing_zones_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_control_resource_drift() :: #{
-%%   <<"status">> => list(any())
-%% }
--type enabled_control_resource_drift() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_landing_zone_output() :: #{
-%%   <<"landingZone">> => landing_zone_detail()
-%% }
--type get_landing_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_landing_zone_operation_input() :: #{
-%%   <<"operationIdentifier">> := string()
-%% }
--type get_landing_zone_operation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_control_parameter_summary() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => [any()]
-%% }
--type enabled_control_parameter_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_baseline_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"operationIdentifier">> => string()
-%% }
--type enable_baseline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_control_operation_input() :: #{
-%%   <<"operationIdentifier">> := string()
-%% }
--type get_control_operation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_landing_zone_input() :: #{
-%%   <<"landingZoneIdentifier">> := [string()]
-%% }
--type delete_landing_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_landing_zone_output() :: #{
-%%   <<"operationIdentifier">> => string()
-%% }
--type delete_landing_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_landing_zone_operation_output() :: #{
-%%   <<"operationDetails">> => landing_zone_operation_detail()
-%% }
--type get_landing_zone_operation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_control_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"operationIdentifier">> => string()
-%% }
--type enable_control_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% landing_zone_summary() :: #{
-%%   <<"arn">> => string()
-%% }
--type landing_zone_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_landing_zone_operations_input() :: #{
-%%   <<"filter">> => landing_zone_operation_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_landing_zone_operations_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_baseline_operation_output() :: #{
-%%   <<"baselineOperation">> => baseline_operation()
-%% }
--type get_baseline_operation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% baseline_operation() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"operationIdentifier">> => string(),
-%%   <<"operationType">> => list(any()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()]
-%% }
--type baseline_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_filter() :: #{
-%%   <<"baselineIdentifiers">> => list(string()),
-%%   <<"inheritanceDriftStatuses">> => list(list(any())()),
-%%   <<"parentIdentifiers">> => list(string()),
-%%   <<"statuses">> => list(list(any())()),
-%%   <<"targetIdentifiers">> => list(string())
-%% }
--type enabled_baseline_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_baseline_input() :: #{
-%%   <<"baselineIdentifier">> := string(),
-%%   <<"baselineVersion">> := string(),
-%%   <<"parameters">> => list(enabled_baseline_parameter()),
-%%   <<"tags">> => map(),
-%%   <<"targetIdentifier">> := string()
-%% }
--type enable_baseline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_operation() :: #{
-%%   <<"controlIdentifier">> => string(),
-%%   <<"enabledControlIdentifier">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"operationIdentifier">> => string(),
-%%   <<"operationType">> => list(any()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"targetIdentifier">> => string()
-%% }
--type control_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% enabled_baseline_drift_types() :: #{
-%%   <<"inheritance">> => enabled_baseline_inheritance_drift()
-%% }
--type enabled_baseline_drift_types() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_operations_input() :: #{
-%%   <<"filter">> => control_operation_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_operations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_enabled_baseline_input() :: #{
-%%   <<"baselineVersion">> := string(),
-%%   <<"enabledBaselineIdentifier">> := string(),
-%%   <<"parameters">> => list(enabled_baseline_parameter())
-%% }
--type update_enabled_baseline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_operation_filter() :: #{
-%%   <<"controlIdentifiers">> => list(string()),
-%%   <<"controlOperationTypes">> => list(list(any())()),
-%%   <<"enabledControlIdentifiers">> => list(string()),
-%%   <<"statuses">> => list(list(any())()),
-%%   <<"targetIdentifiers">> => list(string())
-%% }
--type control_operation_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_enabled_baseline_input() :: #{
-%%   <<"enabledBaselineIdentifier">> := string()
-%% }
--type get_enabled_baseline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_details() :: #{
-%%   <<"arn">> => string(),
-%%   <<"baselineIdentifier">> => [string()],
-%%   <<"baselineVersion">> => [string()],
-%%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
-%%   <<"parameters">> => list(enabled_baseline_parameter_summary()),
-%%   <<"parentIdentifier">> => string(),
-%%   <<"statusSummary">> => enablement_status_summary(),
-%%   <<"targetIdentifier">> => [string()]
-%% }
--type enabled_baseline_details() :: #{binary() => any()}.
-
-
-%% Example:
 %% landing_zone_drift_status_summary() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type landing_zone_drift_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_enabled_control_input() :: #{
-%%   <<"enabledControlIdentifier">> := string(),
-%%   <<"parameters">> := list(enabled_control_parameter())
-%% }
--type update_enabled_control_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% baseline_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type baseline_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_landing_zone_input() :: #{
-%%   <<"landingZoneIdentifier">> := [string()]
-%% }
--type reset_landing_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_control_details() :: #{
-%%   <<"arn">> => string(),
-%%   <<"controlIdentifier">> => string(),
-%%   <<"driftStatusSummary">> => drift_status_summary(),
-%%   <<"parameters">> => list(enabled_control_parameter_summary()),
-%%   <<"parentIdentifier">> => string(),
-%%   <<"statusSummary">> => enablement_status_summary(),
-%%   <<"targetIdentifier">> => string(),
-%%   <<"targetRegions">> => list(region())
-%% }
--type enabled_control_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_control_operation_output() :: #{
-%%   <<"controlOperation">> => control_operation()
-%% }
--type get_control_operation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_enabled_baseline_output() :: #{
-%%   <<"operationIdentifier">> => string()
-%% }
--type update_enabled_baseline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_landing_zone_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"operationIdentifier">> => string()
-%% }
--type create_landing_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_baseline_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type get_baseline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_inheritance_drift() :: #{
-%%   <<"status">> => list(any())
-%% }
--type enabled_baseline_inheritance_drift() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_landing_zone_output() :: #{
-%%   <<"operationIdentifier">> => string()
-%% }
--type reset_landing_zone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_landing_zone_operations_output() :: #{
-%%   <<"landingZoneOperations">> => list(landing_zone_operation_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_landing_zone_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% enabled_baseline_parameter_summary() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => any()
-%% }
--type enabled_baseline_parameter_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_baselines_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_baselines_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_enabled_baseline_output() :: #{
-%%   <<"operationIdentifier">> => string()
-%% }
--type reset_enabled_baseline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_landing_zone_input() :: #{
-%%   <<"landingZoneIdentifier">> := [string()]
-%% }
--type get_landing_zone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% drift_status_summary() :: #{
-%%   <<"driftStatus">> => list(any()),
-%%   <<"types">> => enabled_control_drift_types()
-%% }
--type drift_status_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1076,17 +831,169 @@
 
 
 %% Example:
-%% update_enabled_control_output() :: #{
-%%   <<"operationIdentifier">> => string()
+%% landing_zone_operation_filter() :: #{
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"types">> => list(list(any())())
 %% }
--type update_enabled_control_output() :: #{binary() => any()}.
+-type landing_zone_operation_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% disable_baseline_output() :: #{
+%% landing_zone_operation_summary() :: #{
+%%   <<"operationIdentifier">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type landing_zone_operation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% landing_zone_summary() :: #{
+%%   <<"arn">> => string()
+%% }
+-type landing_zone_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_baselines_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_baselines_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_baselines_output() :: #{
+%%   <<"baselines">> => list(baseline_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_baselines_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_operations_input() :: #{
+%%   <<"filter">> => control_operation_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_operations_output() :: #{
+%%   <<"controlOperations">> => list(control_operation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enabled_baselines_input() :: #{
+%%   <<"filter">> => enabled_baseline_filter(),
+%%   <<"includeChildren">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_enabled_baselines_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enabled_baselines_output() :: #{
+%%   <<"enabledBaselines">> => list(enabled_baseline_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_enabled_baselines_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enabled_controls_input() :: #{
+%%   <<"filter">> => enabled_control_filter(),
+%%   <<"includeChildren">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"targetIdentifier">> => string()
+%% }
+-type list_enabled_controls_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_enabled_controls_output() :: #{
+%%   <<"enabledControls">> => list(enabled_control_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_enabled_controls_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_landing_zone_operations_input() :: #{
+%%   <<"filter">> => landing_zone_operation_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_landing_zone_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_landing_zone_operations_output() :: #{
+%%   <<"landingZoneOperations">> => list(landing_zone_operation_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_landing_zone_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_landing_zones_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_landing_zones_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_landing_zones_output() :: #{
+%%   <<"landingZones">> => list(landing_zone_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_landing_zones_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% region() :: #{
+%%   <<"name">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_enabled_baseline_input() :: #{
+%%   <<"enabledBaselineIdentifier">> := string()
+%% }
+-type reset_enabled_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_enabled_baseline_output() :: #{
 %%   <<"operationIdentifier">> => string()
 %% }
--type disable_baseline_output() :: #{binary() => any()}.
+-type reset_enabled_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_enabled_control_input() :: #{
+%%   <<"enabledControlIdentifier">> := string()
+%% }
+-type reset_enabled_control_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1097,229 +1004,322 @@
 
 
 %% Example:
-%% control_operation_summary() :: #{
-%%   <<"controlIdentifier">> => string(),
-%%   <<"enabledControlIdentifier">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"operationIdentifier">> => string(),
-%%   <<"operationType">> => list(any()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"targetIdentifier">> => string()
+%% reset_landing_zone_input() :: #{
+%%   <<"landingZoneIdentifier">> := [string()]
 %% }
--type control_operation_summary() :: #{binary() => any()}.
+-type reset_landing_zone_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_baseline_input() :: #{
-%%   <<"baselineIdentifier">> := string()
+%% reset_landing_zone_output() :: #{
+%%   <<"operationIdentifier">> => string()
 %% }
--type get_baseline_input() :: #{binary() => any()}.
+-type reset_landing_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_enabled_baseline_input() :: #{
+%%   <<"baselineVersion">> := string(),
+%%   <<"enabledBaselineIdentifier">> := string(),
+%%   <<"parameters">> => list(enabled_baseline_parameter())
+%% }
+-type update_enabled_baseline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_enabled_baseline_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type update_enabled_baseline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_enabled_control_input() :: #{
+%%   <<"enabledControlIdentifier">> := string(),
+%%   <<"parameters">> := list(enabled_control_parameter())
+%% }
+-type update_enabled_control_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_enabled_control_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type update_enabled_control_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_landing_zone_input() :: #{
+%%   <<"landingZoneIdentifier">> := [string()],
+%%   <<"manifest">> => any(),
+%%   <<"remediationTypes">> => list(list(any())()),
+%%   <<"version">> := string()
+%% }
+-type update_landing_zone_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_landing_zone_output() :: #{
+%%   <<"operationIdentifier">> => string()
+%% }
+-type update_landing_zone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_landing_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_landing_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_baseline_operation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_control_operation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_enabled_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_enabled_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_landing_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_landing_zone_operation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_baselines_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_control_operations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_enabled_baselines_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_enabled_controls_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_landing_zone_operations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_landing_zones_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type reset_enabled_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reset_enabled_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reset_landing_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_enabled_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_enabled_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_landing_zone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

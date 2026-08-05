@@ -187,51 +187,33 @@
 
 
 %% Example:
-%% list_nodegroups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"nodegroups">> => list(string())
+%% access_config_response() :: #{
+%%   <<"authenticationMode">> => list(any()),
+%%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
 %% }
--type list_nodegroups_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_request() :: #{}
--type describe_cluster_request() :: #{}.
+-type access_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_fargate_profile_response() :: #{
-%%   <<"fargateProfile">> => fargate_profile()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_fargate_profile_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_policies_response() :: #{
-%%   <<"accessPolicies">> => list(access_policy()),
-%%   <<"nextToken">> => string()
+%% access_entry() :: #{
+%%   <<"accessEntryArn">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"kubernetesGroups">> => list(string()),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"principalArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"username">> => string()
 %% }
--type list_access_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_summary() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"insightStatus">> => insight_status(),
-%%   <<"kubernetesVersion">> => string(),
-%%   <<"lastRefreshTime">> => non_neg_integer(),
-%%   <<"lastTransitionTime">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type insight_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_capability_response() :: #{
-%%   <<"capability">> => capability()
-%% }
--type describe_capability_response() :: #{binary() => any()}.
+-type access_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -243,651 +225,11 @@
 
 
 %% Example:
-%% addon_issue() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string())
-%% }
--type addon_issue() :: #{binary() => any()}.
-
-
-%% Example:
-%% argo_cd_role_mapping() :: #{
-%%   <<"identities">> => list(sso_identity()),
-%%   <<"role">> => list(any())
-%% }
--type argo_cd_role_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_config() :: #{
-%%   <<"timeoutMinutes">> => integer()
-%% }
--type rollback_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_request() :: #{
-%%   <<"filter">> => insights_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_insights_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_insight_response() :: #{
-%%   <<"insight">> => insight()
-%% }
--type describe_insight_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% addon_namespace_config_request() :: #{
-%%   <<"namespace">> => string()
-%% }
--type addon_namespace_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_config() :: #{
-%%   <<"provider">> => provider(),
-%%   <<"resources">> => list(string())
-%% }
--type encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_labels_payload() :: #{
-%%   <<"addOrUpdateLabels">> => map(),
-%%   <<"removeLabels">> => list(string())
-%% }
--type update_labels_payload() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_eks_anywhere_subscription_response() :: #{
-%%   <<"subscription">> => eks_anywhere_subscription()
-%% }
--type describe_eks_anywhere_subscription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% outpost_config_response() :: #{
-%%   <<"controlPlaneInstanceType">> => string(),
-%%   <<"controlPlanePlacement">> => control_plane_placement_response(),
-%%   <<"etcdInstanceType">> => string(),
-%%   <<"etcdPlacement">> => etcd_placement_response(),
-%%   <<"outpostArns">> => list(string())
-%% }
--type outpost_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% compute_config_response() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"nodePools">> => list(string()),
-%%   <<"nodeRoleArn">> => string()
-%% }
--type compute_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% compatibility() :: #{
-%%   <<"clusterVersion">> => string(),
-%%   <<"defaultVersion">> => boolean(),
-%%   <<"platformVersions">> => list(string())
-%% }
--type compatibility() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_addon_response() :: #{
-%%   <<"addon">> => addon()
-%% }
--type describe_addon_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_configuration_request() :: #{
-%%   <<"argoCd">> => argo_cd_config_request()
-%% }
--type capability_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_nodegroup_request() :: #{
-%%   <<"amiType">> => list(any()),
-%%   <<"capacityType">> => list(any()),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"diskSize">> => integer(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"labels">> => map(),
-%%   <<"launchTemplate">> => launch_template_specification(),
-%%   <<"nodeRepairConfig">> => node_repair_config(),
-%%   <<"nodeRole">> := string(),
-%%   <<"nodegroupName">> := string(),
-%%   <<"releaseVersion">> => string(),
-%%   <<"remoteAccess">> => remote_access_config(),
-%%   <<"scalingConfig">> => nodegroup_scaling_config(),
-%%   <<"subnets">> := list(string()),
-%%   <<"tags">> => map(),
-%%   <<"taints">> => list(taint()),
-%%   <<"updateConfig">> => nodegroup_update_config(),
-%%   <<"version">> => string(),
-%%   <<"warmPoolConfig">> => warm_pool_config()
-%% }
--type create_nodegroup_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_addon_request() :: #{
-%%   <<"preserve">> => boolean()
-%% }
--type delete_addon_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_capability_request() :: #{
-%%   <<"capabilityName">> := string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"configuration">> => capability_configuration_request(),
-%%   <<"deletePropagationPolicy">> := list(any()),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any())
-%% }
--type create_capability_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type describe_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_availability_zone_exception() :: #{
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"validZones">> => list(string())
-%% }
--type unsupported_availability_zone_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_cluster_request() :: #{}
--type deregister_cluster_request() :: #{}.
-
-
-%% Example:
-%% update_nodegroup_config_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"labels">> => update_labels_payload(),
-%%   <<"nodeRepairConfig">> => node_repair_config(),
-%%   <<"scalingConfig">> => nodegroup_scaling_config(),
-%%   <<"taints">> => update_taints_payload(),
-%%   <<"updateConfig">> => nodegroup_update_config(),
-%%   <<"warmPoolConfig">> => warm_pool_config()
-%% }
--type update_nodegroup_config_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% access_scope() :: #{
 %%   <<"namespaces">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type access_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_access_policies_response() :: #{
-%%   <<"associatedAccessPolicies">> => list(associated_access_policy()),
-%%   <<"clusterName">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"principalArn">> => string()
-%% }
--type list_associated_access_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_update_response() :: #{
-%%   <<"update">> => update()
-%% }
--type cancel_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_addon_response() :: #{
-%%   <<"addon">> => addon()
-%% }
--type delete_addon_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_fargate_profile_response() :: #{
-%%   <<"fargateProfile">> => fargate_profile()
-%% }
--type create_fargate_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_network_config_request() :: #{
-%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
-%%   <<"remotePodNetworks">> => list(remote_pod_network())
-%% }
--type remote_network_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_argo_cd_config() :: #{
-%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
-%%   <<"rbacRoleMappings">> => update_role_mappings()
-%% }
--type update_argo_cd_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% pod_identity_association() :: #{
-%%   <<"associationArn">> => string(),
-%%   <<"associationId">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"disableSessionTags">> => boolean(),
-%%   <<"externalId">> => string(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"namespace">> => string(),
-%%   <<"ownerArn">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"serviceAccount">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targetRoleArn">> => string()
-%% }
--type pod_identity_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_identity_provider_config_request() :: #{
-%%   <<"identityProviderConfig">> := identity_provider_config()
-%% }
--type describe_identity_provider_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_addon_configuration_response() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"addonVersion">> => string(),
-%%   <<"configurationSchema">> => string(),
-%%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration())
-%% }
--type describe_addon_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_role_mappings() :: #{
-%%   <<"addOrUpdateRoleMappings">> => list(argo_cd_role_mapping()),
-%%   <<"removeRoleMappings">> => list(argo_cd_role_mapping())
-%% }
--type update_role_mappings() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity() :: #{
-%%   <<"oidc">> => o_id_c()
-%% }
--type identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% nodegroup_update_config() :: #{
-%%   <<"maxUnavailable">> => integer(),
-%%   <<"maxUnavailablePercentage">> => integer(),
-%%   <<"updateStrategy">> => list(any())
-%% }
--type nodegroup_update_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_identity_provider_config_response() :: #{
-%%   <<"tags">> => map(),
-%%   <<"update">> => update()
-%% }
--type associate_identity_provider_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_provider_config() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type identity_provider_config() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_access_policy_request() :: #{}
--type disassociate_access_policy_request() :: #{}.
-
-
-%% Example:
-%% addon_pod_identity_configuration() :: #{
-%%   <<"recommendedManagedPolicies">> => list(string()),
-%%   <<"serviceAccount">> => string()
-%% }
--type addon_pod_identity_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% license() :: #{
-%%   <<"id">> => string(),
-%%   <<"token">> => string()
-%% }
--type license() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_entry_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"kubernetesGroups">> => list(string()),
-%%   <<"username">> => string()
-%% }
--type update_access_entry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% addon_compatibility_detail() :: #{
-%%   <<"compatibleVersions">> => list(string()),
-%%   <<"name">> => string()
-%% }
--type addon_compatibility_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% nodegroup() :: #{
-%%   <<"amiType">> => list(any()),
-%%   <<"capacityType">> => list(any()),
-%%   <<"clusterName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"diskSize">> => integer(),
-%%   <<"health">> => nodegroup_health(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"labels">> => map(),
-%%   <<"launchTemplate">> => launch_template_specification(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"nodeRepairConfig">> => node_repair_config(),
-%%   <<"nodeRole">> => string(),
-%%   <<"nodegroupArn">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"releaseVersion">> => string(),
-%%   <<"remoteAccess">> => remote_access_config(),
-%%   <<"resources">> => nodegroup_resources(),
-%%   <<"scalingConfig">> => nodegroup_scaling_config(),
-%%   <<"status">> => list(any()),
-%%   <<"subnets">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"taints">> => list(taint()),
-%%   <<"updateConfig">> => nodegroup_update_config(),
-%%   <<"version">> => string(),
-%%   <<"warmPoolConfig">> => warm_pool_config()
-%% }
--type nodegroup() :: #{binary() => any()}.
-
-
-%% Example:
-%% nodegroup_scaling_config() :: #{
-%%   <<"desiredSize">> => integer(),
-%%   <<"maxSize">> => integer(),
-%%   <<"minSize">> => integer()
-%% }
--type nodegroup_scaling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type deregister_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_eks_anywhere_subscriptions_request() :: #{
-%%   <<"includeStatus">> => list(list(any())()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_eks_anywhere_subscriptions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_response() :: #{
-%%   <<"insights">> => list(insight_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% elastic_load_balancing() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type elastic_load_balancing() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_capability_response() :: #{
-%%   <<"capability">> => capability()
-%% }
--type delete_capability_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% addon_pod_identity_associations() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"serviceAccount">> => string()
-%% }
--type addon_pod_identity_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_provider_config_response() :: #{
-%%   <<"oidc">> => oidc_identity_provider_config()
-%% }
--type identity_provider_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_capability_request() :: #{}
--type describe_capability_request() :: #{}.
-
-
-%% Example:
-%% create_access_config_request() :: #{
-%%   <<"authenticationMode">> => list(any()),
-%%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
-%% }
--type create_access_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_eks_anywhere_subscription_request() :: #{}
--type delete_eks_anywhere_subscription_request() :: #{}.
-
-
-%% Example:
-%% control_plane_scaling_config() :: #{
-%%   <<"tier">> => list(any())
-%% }
--type control_plane_scaling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_cluster_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"connectorConfig">> := connector_config_request(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type register_cluster_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_insights_refresh_response() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type describe_insights_refresh_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_plane_placement_response() :: #{
-%%   <<"groupName">> => string(),
-%%   <<"spreadLevel">> => list(any())
-%% }
--type control_plane_placement_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_status() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type insight_status() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_access_policy_response() :: #{}
--type disassociate_access_policy_response() :: #{}.
-
-
-%% Example:
-%% create_capability_response() :: #{
-%%   <<"capability">> => capability()
-%% }
--type create_capability_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pod_identity_associations_response() :: #{
-%%   <<"associations">> => list(pod_identity_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_pod_identity_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability() :: #{
-%%   <<"arn">> => string(),
-%%   <<"capabilityName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"configuration">> => capability_configuration_response(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deletePropagationPolicy">> => list(any()),
-%%   <<"health">> => capability_health(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_addons_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_addons_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fargate_profile_issue() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string())
-%% }
--type fargate_profile_issue() :: #{binary() => any()}.
-
-
-%% Example:
-%% compute_config_request() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"nodePools">> => list(string()),
-%%   <<"nodeRoleArn">> => string()
-%% }
--type compute_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_capability_response() :: #{
-%%   <<"update">> => update()
-%% }
--type update_capability_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_addon_versions_request() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"kubernetesVersion">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owners">> => list(string()),
-%%   <<"publishers">> => list(string()),
-%%   <<"types">> => list(string())
-%% }
--type describe_addon_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -913,39 +255,47 @@
 
 
 %% Example:
-%% capability_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"capabilityName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
+%% addon_compatibility_detail() :: #{
+%%   <<"compatibleVersions">> => list(string()),
+%%   <<"name">> => string()
 %% }
--type capability_summary() :: #{binary() => any()}.
+-type addon_compatibility_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_taints_payload() :: #{
-%%   <<"addOrUpdateTaints">> => list(taint()),
-%%   <<"removeTaints">> => list(taint())
+%% addon_health() :: #{
+%%   <<"issues">> => list(addon_issue())
 %% }
--type update_taints_payload() :: #{binary() => any()}.
+-type addon_health() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_entry() :: #{
-%%   <<"accessEntryArn">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"kubernetesGroups">> => list(string()),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"principalArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"username">> => string()
+%% addon_info() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"addonVersions">> => list(addon_version_info()),
+%%   <<"defaultNamespace">> => string(),
+%%   <<"marketplaceInformation">> => marketplace_information(),
+%%   <<"owner">> => string(),
+%%   <<"publisher">> => string(),
+%%   <<"type">> => string()
 %% }
--type access_entry() :: #{binary() => any()}.
+-type addon_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% addon_issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string())
+%% }
+-type addon_issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% addon_namespace_config_request() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type addon_namespace_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -954,147 +304,60 @@
 %% }
 -type addon_namespace_config_response() :: #{binary() => any()}.
 
-%% Example:
-%% describe_fargate_profile_request() :: #{}
--type describe_fargate_profile_request() :: #{}.
-
 
 %% Example:
-%% provider() :: #{
-%%   <<"keyArn">> => string()
+%% addon_pod_identity_associations() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"serviceAccount">> => string()
 %% }
--type provider() :: #{binary() => any()}.
+-type addon_pod_identity_associations() :: #{binary() => any()}.
 
 
 %% Example:
-%% eks_anywhere_subscription_term() :: #{
-%%   <<"duration">> => integer(),
-%%   <<"unit">> => list(any())
+%% addon_pod_identity_configuration() :: #{
+%%   <<"recommendedManagedPolicies">> => list(string()),
+%%   <<"serviceAccount">> => string()
 %% }
--type eks_anywhere_subscription_term() :: #{binary() => any()}.
+-type addon_pod_identity_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_access_entry_response() :: #{
-%%   <<"accessEntry">> => access_entry()
-%% }
--type update_access_entry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_eks_anywhere_subscription_request() :: #{
-%%   <<"autoRenew">> => boolean(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"licenseQuantity">> => integer(),
-%%   <<"licenseType">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"term">> := eks_anywhere_subscription_term()
-%% }
--type create_eks_anywhere_subscription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% zonal_shift_config_request() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type zonal_shift_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"accessConfig">> => create_access_config_request(),
-%%   <<"bootstrapSelfManagedAddons">> => boolean(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"computeConfig">> => compute_config_request(),
-%%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
-%%   <<"deletionProtection">> => boolean(),
-%%   <<"encryptionConfig">> => list(encryption_config()),
-%%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
-%%   <<"logging">> => logging(),
-%%   <<"name">> := string(),
-%%   <<"outpostConfig">> => outpost_config_request(),
-%%   <<"remoteNetworkConfig">> => remote_network_config_request(),
-%%   <<"resourcesVpcConfig">> := vpc_config_request(),
-%%   <<"roleArn">> := string(),
-%%   <<"storageConfig">> => storage_config_request(),
-%%   <<"tags">> => map(),
-%%   <<"upgradePolicy">> => upgrade_policy_request(),
-%%   <<"version">> => string(),
-%%   <<"zonalShiftConfig">> => zonal_shift_config_request()
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update() :: #{
-%%   <<"cancellation">> => cancellation(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"errors">> => list(error_detail()),
-%%   <<"id">> => string(),
-%%   <<"params">> => list(update_param()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type update() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights_filter() :: #{
-%%   <<"categories">> => list(list(any())()),
-%%   <<"kubernetesVersions">> => list(string()),
-%%   <<"statuses">> => list(list(any())())
-%% }
--type insights_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_encryption_config_response() :: #{
-%%   <<"update">> => update()
-%% }
--type associate_encryption_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_exception() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
-%% }
--type client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"fargateProfileName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_addon_request() :: #{
+%% addon_version_info() :: #{
 %%   <<"addonVersion">> => string(),
-%%   <<"clientRequestToken">> => string(),
-%%   <<"configurationValues">> => string(),
-%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()),
-%%   <<"resolveConflicts">> => list(any()),
-%%   <<"serviceAccountRoleArn">> => string()
+%%   <<"architecture">> => list(string()),
+%%   <<"compatibilities">> => list(compatibility()),
+%%   <<"computeTypes">> => list(string()),
+%%   <<"requiresConfiguration">> => boolean(),
+%%   <<"requiresIamPermissions">> => boolean()
 %% }
--type update_addon_request() :: #{binary() => any()}.
+-type addon_version_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_pod_identity_association_response() :: #{
-%%   <<"association">> => pod_identity_association()
+%% argo_cd_aws_idc_config_request() :: #{
+%%   <<"idcInstanceArn">> => string(),
+%%   <<"idcRegion">> => string()
 %% }
--type update_pod_identity_association_response() :: #{binary() => any()}.
+-type argo_cd_aws_idc_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_aws_idc_config_response() :: #{
+%%   <<"idcInstanceArn">> => string(),
+%%   <<"idcManagedApplicationArn">> => string(),
+%%   <<"idcRegion">> => string()
+%% }
+-type argo_cd_aws_idc_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% argo_cd_config_request() :: #{
+%%   <<"awsIdc">> => argo_cd_aws_idc_config_request(),
+%%   <<"namespace">> => string(),
+%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
+%%   <<"rbacRoleMappings">> => list(argo_cd_role_mapping())
+%% }
+-type argo_cd_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1109,71 +372,42 @@
 
 
 %% Example:
-%% outpost_config_request() :: #{
-%%   <<"controlPlaneInstanceType">> => string(),
-%%   <<"controlPlanePlacement">> => control_plane_placement_request(),
-%%   <<"etcdInstanceType">> => string(),
-%%   <<"etcdPlacement">> => etcd_placement_request(),
-%%   <<"outpostArns">> => list(string())
+%% argo_cd_network_access_config_request() :: #{
+%%   <<"vpceIds">> => list(string())
 %% }
--type outpost_config_request() :: #{binary() => any()}.
+-type argo_cd_network_access_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_fargate_profile_response() :: #{
-%%   <<"fargateProfile">> => fargate_profile()
+%% argo_cd_network_access_config_response() :: #{
+%%   <<"vpceIds">> => list(string())
 %% }
--type describe_fargate_profile_response() :: #{binary() => any()}.
+-type argo_cd_network_access_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_cluster_versions_request() :: #{
-%%   <<"clusterType">> => string(),
-%%   <<"clusterVersions">> => list(string()),
-%%   <<"defaultOnly">> => boolean(),
-%%   <<"includeAll">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"versionStatus">> => list(any())
+%% argo_cd_role_mapping() :: #{
+%%   <<"identities">> => list(sso_identity()),
+%%   <<"role">> => list(any())
 %% }
--type describe_cluster_versions_request() :: #{binary() => any()}.
+-type argo_cd_role_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% deprecation_detail() :: #{
-%%   <<"clientStats">> => list(client_stat()),
-%%   <<"replacedWith">> => string(),
-%%   <<"startServingReplacementVersion">> => string(),
-%%   <<"stopServingVersion">> => string(),
-%%   <<"usage">> => string()
+%% associate_access_policy_request() :: #{
+%%   <<"accessScope">> := access_scope(),
+%%   <<"policyArn">> := string()
 %% }
--type deprecation_detail() :: #{binary() => any()}.
+-type associate_access_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"addonName">> => string(),
+%% associate_access_policy_response() :: #{
+%%   <<"associatedAccessPolicy">> => associated_access_policy(),
 %%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
+%%   <<"principalArn">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% zonal_shift_config_response() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type zonal_shift_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_policy_response() :: #{
-%%   <<"supportType">> => list(any())
-%% }
--type upgrade_policy_response() :: #{binary() => any()}.
+-type associate_access_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1185,19 +419,168 @@
 
 
 %% Example:
-%% issue() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string())
+%% associate_encryption_config_response() :: #{
+%%   <<"update">> => update()
 %% }
--type issue() :: #{binary() => any()}.
+-type associate_encryption_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_eks_anywhere_subscription_response() :: #{
-%%   <<"subscription">> => eks_anywhere_subscription()
+%% associate_identity_provider_config_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"oidc">> := oidc_identity_provider_config_request(),
+%%   <<"tags">> => map()
 %% }
--type create_eks_anywhere_subscription_response() :: #{binary() => any()}.
+-type associate_identity_provider_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_identity_provider_config_response() :: #{
+%%   <<"tags">> => map(),
+%%   <<"update">> => update()
+%% }
+-type associate_identity_provider_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_access_policy() :: #{
+%%   <<"accessScope">> => access_scope(),
+%%   <<"associatedAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"policyArn">> => string()
+%% }
+-type associated_access_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_scaling_group() :: #{
+%%   <<"name">> => string()
+%% }
+-type auto_scaling_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% block_storage() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type block_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_update_request() :: #{
+%%   <<"clientRequestToken">> => string()
+%% }
+-type cancel_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_update_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type cancel_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancellation() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cancellation() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => capability_configuration_response(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deletePropagationPolicy">> => list(any()),
+%%   <<"health">> => capability_health(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type capability() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_configuration_request() :: #{
+%%   <<"argoCd">> => argo_cd_config_request()
+%% }
+-type capability_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_configuration_response() :: #{
+%%   <<"argoCd">> => argo_cd_config_response()
+%% }
+-type capability_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_health() :: #{
+%%   <<"issues">> => list(capability_issue())
+%% }
+-type capability_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type capability_issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type capability_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"data">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_stat() :: #{
+%%   <<"lastRequestTime">> => non_neg_integer(),
+%%   <<"numberOfRequestsLast30Days">> => integer(),
+%%   <<"userAgent">> => string()
+%% }
+-type client_stat() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1235,122 +618,131 @@
 
 
 %% Example:
-%% update_cluster_config_response() :: #{
-%%   <<"update">> => update()
+%% cluster_health() :: #{
+%%   <<"issues">> => list(cluster_issue())
 %% }
--type update_cluster_config_response() :: #{binary() => any()}.
+-type cluster_health() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_pod_identity_association_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"disableSessionTags">> => boolean(),
-%%   <<"policy">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"targetRoleArn">> => string()
+%% cluster_issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string())
 %% }
--type update_pod_identity_association_request() :: #{binary() => any()}.
+-type cluster_issue() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_updates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"updateIds">> => list(string())
+%% cluster_version_information() :: #{
+%%   <<"clusterType">> => string(),
+%%   <<"clusterVersion">> => string(),
+%%   <<"defaultPlatformVersion">> => string(),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"endOfExtendedSupportDate">> => non_neg_integer(),
+%%   <<"endOfStandardSupportDate">> => non_neg_integer(),
+%%   <<"kubernetesPatchVersion">> => string(),
+%%   <<"releaseDate">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"versionStatus">> => list(any())
 %% }
--type list_updates_response() :: #{binary() => any()}.
+-type cluster_version_information() :: #{binary() => any()}.
 
 
 %% Example:
-%% capability_configuration_response() :: #{
-%%   <<"argoCd">> => argo_cd_config_response()
+%% compatibility() :: #{
+%%   <<"clusterVersion">> => string(),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"platformVersions">> => list(string())
 %% }
--type capability_configuration_response() :: #{binary() => any()}.
+-type compatibility() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_addon_versions_response() :: #{
-%%   <<"addons">> => list(addon_info()),
-%%   <<"nextToken">> => string()
+%% compute_config_request() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"nodePools">> => list(string()),
+%%   <<"nodeRoleArn">> => string()
 %% }
--type describe_addon_versions_response() :: #{binary() => any()}.
+-type compute_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_config_response() :: #{
+%% compute_config_response() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"nodePools">> => list(string()),
+%%   <<"nodeRoleArn">> => string()
+%% }
+-type compute_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_config_request() :: #{
+%%   <<"provider">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type connector_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_config_response() :: #{
+%%   <<"activationCode">> => string(),
+%%   <<"activationExpiry">> => non_neg_integer(),
+%%   <<"activationId">> => string(),
+%%   <<"provider">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type connector_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_placement_request() :: #{
+%%   <<"groupName">> => string(),
+%%   <<"spreadLevel">> => list(any())
+%% }
+-type control_plane_placement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_placement_response() :: #{
+%%   <<"groupName">> => string(),
+%%   <<"spreadLevel">> => list(any())
+%% }
+-type control_plane_placement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_scaling_config() :: #{
+%%   <<"tier">> => list(any())
+%% }
+-type control_plane_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_config_request() :: #{
 %%   <<"authenticationMode">> => list(any()),
 %%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
 %% }
--type access_config_response() :: #{binary() => any()}.
+-type create_access_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_capabilities_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_access_entry_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"kubernetesGroups">> => list(string()),
+%%   <<"principalArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"username">> => string()
 %% }
--type list_capabilities_request() :: #{binary() => any()}.
+-type create_access_entry_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
+%% create_access_entry_response() :: #{
+%%   <<"accessEntry">> => access_entry()
 %% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_updates_request() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"capabilityName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"nodegroupName">> => string()
-%% }
--type list_updates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% argo_cd_aws_idc_config_response() :: #{
-%%   <<"idcInstanceArn">> => string(),
-%%   <<"idcManagedApplicationArn">> => string(),
-%%   <<"idcRegion">> => string()
-%% }
--type argo_cd_aws_idc_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_cluster_versions_response() :: #{
-%%   <<"clusterVersions">> => list(cluster_version_information()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_cluster_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_repair_config_overrides() :: #{
-%%   <<"minRepairWaitTimeMins">> => integer(),
-%%   <<"nodeMonitoringCondition">> => string(),
-%%   <<"nodeUnhealthyReason">> => string(),
-%%   <<"repairAction">> => list(any())
-%% }
--type node_repair_config_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% fargate_profile_health() :: #{
-%%   <<"issues">> => list(fargate_profile_issue())
-%% }
--type fargate_profile_health() :: #{binary() => any()}.
+-type create_access_entry_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1369,361 +761,82 @@
 
 
 %% Example:
-%% remote_network_config_response() :: #{
-%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
-%%   <<"remotePodNetworks">> => list(remote_pod_network())
+%% create_addon_response() :: #{
+%%   <<"addon">> => addon()
 %% }
--type remote_network_config_response() :: #{binary() => any()}.
+-type create_addon_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_addon_configuration_request() :: #{
-%%   <<"addonName">> := string(),
-%%   <<"addonVersion">> := string()
-%% }
--type describe_addon_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_nodegroup_request() :: #{}
--type describe_nodegroup_request() :: #{}.
-
-
-%% Example:
-%% argo_cd_network_access_config_response() :: #{
-%%   <<"vpceIds">> => list(string())
-%% }
--type argo_cd_network_access_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_access_entry_response() :: #{
-%%   <<"accessEntry">> => access_entry()
-%% }
--type describe_access_entry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_pod_identity_association_response() :: #{
-%%   <<"association">> => pod_identity_association()
-%% }
--type delete_pod_identity_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_insight_request() :: #{}
--type describe_insight_request() :: #{}.
-
-
-%% Example:
-%% list_nodegroups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_nodegroups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancellation() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type cancellation() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config_request() :: #{
-%%   <<"controlPlaneEgressMode">> => list(any()),
-%%   <<"endpointPrivateAccess">> => boolean(),
-%%   <<"endpointPublicAccess">> => boolean(),
-%%   <<"publicAccessCidrs">> => list(string()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type vpc_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% pod_identity_association_summary() :: #{
-%%   <<"associationArn">> => string(),
-%%   <<"associationId">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"ownerArn">> => string(),
-%%   <<"serviceAccount">> => string()
-%% }
--type pod_identity_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_identity_provider_config_request() :: #{
+%% create_capability_request() :: #{
+%%   <<"capabilityName">> := string(),
 %%   <<"clientRequestToken">> => string(),
-%%   <<"oidc">> := oidc_identity_provider_config_request(),
-%%   <<"tags">> => map()
+%%   <<"configuration">> => capability_configuration_request(),
+%%   <<"deletePropagationPolicy">> := list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
 %% }
--type associate_identity_provider_config_request() :: #{binary() => any()}.
+-type create_capability_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_nodegroup_response() :: #{
-%%   <<"nodegroup">> => nodegroup()
+%% create_capability_response() :: #{
+%%   <<"capability">> => capability()
 %% }
--type create_nodegroup_response() :: #{binary() => any()}.
+-type create_capability_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_capability_request() :: #{
+%% create_cluster_request() :: #{
+%%   <<"accessConfig">> => create_access_config_request(),
+%%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
-%%   <<"configuration">> => update_capability_configuration(),
-%%   <<"deletePropagationPolicy">> => list(any()),
-%%   <<"roleArn">> => string()
+%%   <<"computeConfig">> => compute_config_request(),
+%%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
+%%   <<"deletionProtection">> => boolean(),
+%%   <<"encryptionConfig">> => list(encryption_config()),
+%%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
+%%   <<"logging">> => logging(),
+%%   <<"name">> := string(),
+%%   <<"outpostConfig">> => outpost_config_request(),
+%%   <<"remoteNetworkConfig">> => remote_network_config_request(),
+%%   <<"resourcesVpcConfig">> := vpc_config_request(),
+%%   <<"roleArn">> := string(),
+%%   <<"storageConfig">> => storage_config_request(),
+%%   <<"tags">> => map(),
+%%   <<"upgradePolicy">> => upgrade_policy_request(),
+%%   <<"version">> => string(),
+%%   <<"zonalShiftConfig">> => zonal_shift_config_request()
 %% }
--type update_capability_request() :: #{binary() => any()}.
+-type create_cluster_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_identity_provider_config_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"identityProviderConfig">> := identity_provider_config()
-%% }
--type disassociate_identity_provider_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_id_c() :: #{
-%%   <<"issuer">> => string()
-%% }
--type o_id_c() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"clusters">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_response() :: #{
+%% create_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
--type delete_cluster_response() :: #{binary() => any()}.
+-type create_cluster_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_fargate_profiles_response() :: #{
-%%   <<"fargateProfileNames">> => list(string()),
-%%   <<"nextToken">> => string()
+%% create_eks_anywhere_subscription_request() :: #{
+%%   <<"autoRenew">> => boolean(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"licenseQuantity">> => integer(),
+%%   <<"licenseType">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"term">> := eks_anywhere_subscription_term()
 %% }
--type list_fargate_profiles_response() :: #{binary() => any()}.
+-type create_eks_anywhere_subscription_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_repair_config() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"maxParallelNodesRepairedCount">> => integer(),
-%%   <<"maxParallelNodesRepairedPercentage">> => integer(),
-%%   <<"maxUnhealthyNodeThresholdCount">> => integer(),
-%%   <<"maxUnhealthyNodeThresholdPercentage">> => integer(),
-%%   <<"nodeRepairConfigOverrides">> => list(node_repair_config_overrides())
-%% }
--type node_repair_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% argo_cd_network_access_config_request() :: #{
-%%   <<"vpceIds">> => list(string())
-%% }
--type argo_cd_network_access_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fargate_profile_request() :: #{}
--type delete_fargate_profile_request() :: #{}.
-
-
-%% Example:
-%% block_storage() :: #{
-%%   <<"enabled">> => boolean()
-%% }
--type block_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_policy_request() :: #{
-%%   <<"supportType">> => list(any())
-%% }
--type upgrade_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% etcd_placement_request() :: #{
-%%   <<"spreadLevel">> => list(any())
-%% }
--type etcd_placement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_update_request() :: #{
-%%   <<"clientRequestToken">> => string()
-%% }
--type cancel_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_access_policy_response() :: #{
-%%   <<"associatedAccessPolicy">> => associated_access_policy(),
-%%   <<"clusterName">> => string(),
-%%   <<"principalArn">> => string()
-%% }
--type associate_access_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_addon_response() :: #{
-%%   <<"update">> => update()
-%% }
--type update_addon_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_request() :: #{
-%%   <<"include">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_nodegroup_config_response() :: #{
-%%   <<"update">> => update()
-%% }
--type update_nodegroup_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_nodegroup_version_response() :: #{
-%%   <<"update">> => update()
-%% }
--type update_nodegroup_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_network_config_request() :: #{
-%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
-%%   <<"ipFamily">> => list(any()),
-%%   <<"serviceIpv4Cidr">> => string()
-%% }
--type kubernetes_network_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_plane_placement_request() :: #{
-%%   <<"groupName">> => string(),
-%%   <<"spreadLevel">> => list(any())
-%% }
--type control_plane_placement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"data">> => string()
-%% }
--type certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% marketplace_information() :: #{
-%%   <<"productId">> => string(),
-%%   <<"productUrl">> => string()
-%% }
--type marketplace_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_resource_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"insightStatus">> => insight_status(),
-%%   <<"kubernetesResourceUri">> => string()
-%% }
--type insight_resource_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_entry_response() :: #{
-%%   <<"accessEntry">> => access_entry()
-%% }
--type create_access_entry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_access_policy() :: #{
-%%   <<"accessScope">> => access_scope(),
-%%   <<"associatedAt">> => non_neg_integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"policyArn">> => string()
-%% }
--type associated_access_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_issue() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type capability_issue() :: #{binary() => any()}.
-
-
-%% Example:
-%% argo_cd_aws_idc_config_request() :: #{
-%%   <<"idcInstanceArn">> => string(),
-%%   <<"idcRegion">> => string()
-%% }
--type argo_cd_aws_idc_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sso_identity() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type sso_identity() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_request() :: #{}
--type delete_cluster_request() :: #{}.
-
-
-%% Example:
-%% delete_eks_anywhere_subscription_response() :: #{
+%% create_eks_anywhere_subscription_response() :: #{
 %%   <<"subscription">> => eks_anywhere_subscription()
 %% }
--type delete_eks_anywhere_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_insights_refresh_request() :: #{}
--type start_insights_refresh_request() :: #{}.
-
-
-%% Example:
-%% list_capabilities_response() :: #{
-%%   <<"capabilities">> => list(capability_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_capabilities_response() :: #{binary() => any()}.
+-type create_eks_anywhere_subscription_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1739,35 +852,400 @@
 
 
 %% Example:
-%% update_eks_anywhere_subscription_request() :: #{
-%%   <<"autoRenew">> := boolean(),
-%%   <<"clientRequestToken">> => string()
+%% create_fargate_profile_response() :: #{
+%%   <<"fargateProfile">> => fargate_profile()
 %% }
--type update_eks_anywhere_subscription_request() :: #{binary() => any()}.
+-type create_fargate_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% error_detail() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"resourceIds">> => list(string())
+%% create_nodegroup_request() :: #{
+%%   <<"amiType">> => list(any()),
+%%   <<"capacityType">> => list(any()),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"diskSize">> => integer(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"labels">> => map(),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
+%%   <<"nodeRole">> := string(),
+%%   <<"nodegroupName">> := string(),
+%%   <<"releaseVersion">> => string(),
+%%   <<"remoteAccess">> => remote_access_config(),
+%%   <<"scalingConfig">> => nodegroup_scaling_config(),
+%%   <<"subnets">> := list(string()),
+%%   <<"tags">> => map(),
+%%   <<"taints">> => list(taint()),
+%%   <<"updateConfig">> => nodegroup_update_config(),
+%%   <<"version">> => string(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
 %% }
--type error_detail() :: #{binary() => any()}.
+-type create_nodegroup_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_param() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
+%% create_nodegroup_response() :: #{
+%%   <<"nodegroup">> => nodegroup()
 %% }
--type update_param() :: #{binary() => any()}.
+-type create_nodegroup_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% create_pod_identity_association_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"disableSessionTags">> => boolean(),
+%%   <<"namespace">> := string(),
+%%   <<"policy">> => string(),
+%%   <<"roleArn">> := string(),
+%%   <<"serviceAccount">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetRoleArn">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type create_pod_identity_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pod_identity_association_response() :: #{
+%%   <<"association">> => pod_identity_association()
+%% }
+-type create_pod_identity_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_entry_request() :: #{}
+-type delete_access_entry_request() :: #{}.
+
+%% Example:
+%% delete_access_entry_response() :: #{}
+-type delete_access_entry_response() :: #{}.
+
+
+%% Example:
+%% delete_addon_request() :: #{
+%%   <<"preserve">> => boolean()
+%% }
+-type delete_addon_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_addon_response() :: #{
+%%   <<"addon">> => addon()
+%% }
+-type delete_addon_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capability_request() :: #{}
+-type delete_capability_request() :: #{}.
+
+
+%% Example:
+%% delete_capability_response() :: #{
+%%   <<"capability">> => capability()
+%% }
+-type delete_capability_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{}
+-type delete_cluster_request() :: #{}.
+
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_eks_anywhere_subscription_request() :: #{}
+-type delete_eks_anywhere_subscription_request() :: #{}.
+
+
+%% Example:
+%% delete_eks_anywhere_subscription_response() :: #{
+%%   <<"subscription">> => eks_anywhere_subscription()
+%% }
+-type delete_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fargate_profile_request() :: #{}
+-type delete_fargate_profile_request() :: #{}.
+
+
+%% Example:
+%% delete_fargate_profile_response() :: #{
+%%   <<"fargateProfile">> => fargate_profile()
+%% }
+-type delete_fargate_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_nodegroup_request() :: #{}
+-type delete_nodegroup_request() :: #{}.
+
+
+%% Example:
+%% delete_nodegroup_response() :: #{
+%%   <<"nodegroup">> => nodegroup()
+%% }
+-type delete_nodegroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pod_identity_association_request() :: #{}
+-type delete_pod_identity_association_request() :: #{}.
+
+
+%% Example:
+%% delete_pod_identity_association_response() :: #{
+%%   <<"association">> => pod_identity_association()
+%% }
+-type delete_pod_identity_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deprecation_detail() :: #{
+%%   <<"clientStats">> => list(client_stat()),
+%%   <<"replacedWith">> => string(),
+%%   <<"startServingReplacementVersion">> => string(),
+%%   <<"stopServingVersion">> => string(),
+%%   <<"usage">> => string()
+%% }
+-type deprecation_detail() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_cluster_request() :: #{}
+-type deregister_cluster_request() :: #{}.
+
+
+%% Example:
+%% deregister_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type deregister_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_entry_request() :: #{}
+-type describe_access_entry_request() :: #{}.
+
+
+%% Example:
+%% describe_access_entry_response() :: #{
+%%   <<"accessEntry">> => access_entry()
+%% }
+-type describe_access_entry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_addon_configuration_request() :: #{
+%%   <<"addonName">> := string(),
+%%   <<"addonVersion">> := string()
+%% }
+-type describe_addon_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_addon_configuration_response() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"addonVersion">> => string(),
+%%   <<"configurationSchema">> => string(),
+%%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration())
+%% }
+-type describe_addon_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_addon_request() :: #{}
+-type describe_addon_request() :: #{}.
+
+
+%% Example:
+%% describe_addon_response() :: #{
+%%   <<"addon">> => addon()
+%% }
+-type describe_addon_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_addon_versions_request() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"kubernetesVersion">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owners">> => list(string()),
+%%   <<"publishers">> => list(string()),
+%%   <<"types">> => list(string())
+%% }
+-type describe_addon_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_addon_versions_response() :: #{
+%%   <<"addons">> => list(addon_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_addon_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capability_request() :: #{}
+-type describe_capability_request() :: #{}.
+
+
+%% Example:
+%% describe_capability_response() :: #{
+%%   <<"capability">> => capability()
+%% }
+-type describe_capability_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{}
+-type describe_cluster_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type describe_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_cluster_versions_request() :: #{
+%%   <<"clusterType">> => string(),
+%%   <<"clusterVersions">> => list(string()),
+%%   <<"defaultOnly">> => boolean(),
+%%   <<"includeAll">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"versionStatus">> => list(any())
+%% }
+-type describe_cluster_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_cluster_versions_response() :: #{
+%%   <<"clusterVersions">> => list(cluster_version_information()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_cluster_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_eks_anywhere_subscription_request() :: #{}
+-type describe_eks_anywhere_subscription_request() :: #{}.
+
+
+%% Example:
+%% describe_eks_anywhere_subscription_response() :: #{
+%%   <<"subscription">> => eks_anywhere_subscription()
+%% }
+-type describe_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fargate_profile_request() :: #{}
+-type describe_fargate_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_fargate_profile_response() :: #{
+%%   <<"fargateProfile">> => fargate_profile()
+%% }
+-type describe_fargate_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_identity_provider_config_request() :: #{
+%%   <<"identityProviderConfig">> := identity_provider_config()
+%% }
+-type describe_identity_provider_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_identity_provider_config_response() :: #{
+%%   <<"identityProviderConfig">> => identity_provider_config_response()
+%% }
+-type describe_identity_provider_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_insight_request() :: #{}
+-type describe_insight_request() :: #{}.
+
+
+%% Example:
+%% describe_insight_response() :: #{
+%%   <<"insight">> => insight()
+%% }
+-type describe_insight_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_insights_refresh_request() :: #{}
+-type describe_insights_refresh_request() :: #{}.
+
+
+%% Example:
+%% describe_insights_refresh_response() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_insights_refresh_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_nodegroup_request() :: #{}
+-type describe_nodegroup_request() :: #{}.
+
+
+%% Example:
+%% describe_nodegroup_response() :: #{
+%%   <<"nodegroup">> => nodegroup()
+%% }
+-type describe_nodegroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pod_identity_association_request() :: #{}
+-type describe_pod_identity_association_request() :: #{}.
+
+
+%% Example:
+%% describe_pod_identity_association_response() :: #{
+%%   <<"association">> => pod_identity_association()
+%% }
+-type describe_pod_identity_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_update_request() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"nodegroupName">> => string()
+%% }
+-type describe_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_update_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type describe_update_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_access_policy_request() :: #{}
+-type disassociate_access_policy_request() :: #{}.
+
+%% Example:
+%% disassociate_access_policy_response() :: #{}
+-type disassociate_access_policy_response() :: #{}.
+
+
+%% Example:
+%% disassociate_identity_provider_config_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"identityProviderConfig">> := identity_provider_config()
+%% }
+-type disassociate_identity_provider_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_identity_provider_config_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type disassociate_identity_provider_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1790,257 +1268,49 @@
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"fargateProfileName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
+%% eks_anywhere_subscription_term() :: #{
+%%   <<"duration">> => integer(),
+%%   <<"unit">> => list(any())
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type eks_anywhere_subscription_term() :: #{binary() => any()}.
 
 
 %% Example:
-%% storage_config_request() :: #{
-%%   <<"blockStorage">> => block_storage()
+%% elastic_load_balancing() :: #{
+%%   <<"enabled">> => boolean()
 %% }
--type storage_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pod_identity_association_request() :: #{}
--type delete_pod_identity_association_request() :: #{}.
+-type elastic_load_balancing() :: #{binary() => any()}.
 
 
 %% Example:
-%% cluster_health() :: #{
-%%   <<"issues">> => list(cluster_issue())
+%% encryption_config() :: #{
+%%   <<"provider">> => provider(),
+%%   <<"resources">> => list(string())
 %% }
--type cluster_health() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type encryption_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% remote_access_config() :: #{
-%%   <<"ec2SshKey">> => string(),
-%%   <<"sourceSecurityGroups">> => list(string())
+%% error_detail() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"resourceIds">> => list(string())
 %% }
--type remote_access_config() :: #{binary() => any()}.
+-type error_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_identity_provider_configs_response() :: #{
-%%   <<"identityProviderConfigs">> => list(identity_provider_config()),
-%%   <<"nextToken">> => string()
+%% etcd_placement_request() :: #{
+%%   <<"spreadLevel">> => list(any())
 %% }
--type list_identity_provider_configs_response() :: #{binary() => any()}.
+-type etcd_placement_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_associated_access_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% etcd_placement_response() :: #{
+%%   <<"spreadLevel">> => list(any())
 %% }
--type list_associated_access_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% oidc_identity_provider_config_request() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"groupsClaim">> => string(),
-%%   <<"groupsPrefix">> => string(),
-%%   <<"identityProviderConfigName">> => string(),
-%%   <<"issuerUrl">> => string(),
-%%   <<"requiredClaims">> => map(),
-%%   <<"usernameClaim">> => string(),
-%%   <<"usernamePrefix">> => string()
-%% }
--type oidc_identity_provider_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_entry_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"kubernetesGroups">> => list(string()),
-%%   <<"principalArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"username">> => string()
-%% }
--type create_access_entry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% taint() :: #{
-%%   <<"effect">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type taint() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_scaling_group() :: #{
-%%   <<"name">> => string()
-%% }
--type auto_scaling_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% addon_health() :: #{
-%%   <<"issues">> => list(addon_issue())
-%% }
--type addon_health() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capability_request() :: #{}
--type delete_capability_request() :: #{}.
-
-
-%% Example:
-%% describe_update_request() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"capabilityName">> => string(),
-%%   <<"nodegroupName">> => string()
-%% }
--type describe_update_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_insights_refresh_request() :: #{}
--type describe_insights_refresh_request() :: #{}.
-
-
-%% Example:
-%% oidc_identity_provider_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"groupsClaim">> => string(),
-%%   <<"groupsPrefix">> => string(),
-%%   <<"identityProviderConfigArn">> => string(),
-%%   <<"identityProviderConfigName">> => string(),
-%%   <<"issuerUrl">> => string(),
-%%   <<"requiredClaims">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"usernameClaim">> => string(),
-%%   <<"usernamePrefix">> => string()
-%% }
--type oidc_identity_provider_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% nodegroup_health() :: #{
-%%   <<"issues">> => list(issue())
-%% }
--type nodegroup_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_nodegroup_version_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"force">> => boolean(),
-%%   <<"launchTemplate">> => launch_template_specification(),
-%%   <<"releaseVersion">> => string(),
-%%   <<"version">> => string()
-%% }
--type update_nodegroup_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_config_request() :: #{
-%%   <<"provider">> => list(any()),
-%%   <<"roleArn">> => string()
-%% }
--type connector_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_entry_request() :: #{}
--type describe_access_entry_request() :: #{}.
-
-
-%% Example:
-%% delete_nodegroup_response() :: #{
-%%   <<"nodegroup">> => nodegroup()
-%% }
--type delete_nodegroup_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_stat() :: #{
-%%   <<"lastRequestTime">> => non_neg_integer(),
-%%   <<"numberOfRequestsLast30Days">> => integer(),
-%%   <<"userAgent">> => string()
-%% }
--type client_stat() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_config_response() :: #{
-%%   <<"activationCode">> => string(),
-%%   <<"activationExpiry">> => non_neg_integer(),
-%%   <<"activationId">> => string(),
-%%   <<"provider">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type connector_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_config_response() :: #{
-%%   <<"blockStorage">> => block_storage()
-%% }
--type storage_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% nodegroup_resources() :: #{
-%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
-%%   <<"remoteAccessSecurityGroup">> => string()
-%% }
--type nodegroup_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_identity_provider_config_response() :: #{
-%%   <<"update">> => update()
-%% }
--type disassociate_identity_provider_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_exception() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"clusterName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nodegroupName">> => string(),
-%%   <<"subscriptionId">> => string()
-%% }
--type server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_network_config_response() :: #{
-%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
-%%   <<"ipFamily">> => list(any()),
-%%   <<"serviceIpv4Cidr">> => string(),
-%%   <<"serviceIpv6Cidr">> => string()
-%% }
--type kubernetes_network_config_response() :: #{binary() => any()}.
+-type etcd_placement_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2060,148 +1330,49 @@
 
 
 %% Example:
-%% argo_cd_config_request() :: #{
-%%   <<"awsIdc">> => argo_cd_aws_idc_config_request(),
-%%   <<"namespace">> => string(),
-%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
-%%   <<"rbacRoleMappings">> => list(argo_cd_role_mapping())
+%% fargate_profile_health() :: #{
+%%   <<"issues">> => list(fargate_profile_issue())
 %% }
--type argo_cd_config_request() :: #{binary() => any()}.
+-type fargate_profile_health() :: #{binary() => any()}.
 
 
 %% Example:
-%% etcd_placement_response() :: #{
-%%   <<"spreadLevel">> => list(any())
-%% }
--type etcd_placement_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_insights_refresh_response() :: #{
+%% fargate_profile_issue() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"resourceIds">> => list(string())
 %% }
--type start_insights_refresh_response() :: #{binary() => any()}.
+-type fargate_profile_issue() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_access_config_request() :: #{
-%%   <<"authenticationMode">> => list(any())
+%% fargate_profile_selector() :: #{
+%%   <<"labels">> => map(),
+%%   <<"namespace">> => string()
 %% }
--type update_access_config_request() :: #{binary() => any()}.
+-type fargate_profile_selector() :: #{binary() => any()}.
 
 
 %% Example:
-%% addon_info() :: #{
-%%   <<"addonName">> => string(),
-%%   <<"addonVersions">> => list(addon_version_info()),
-%%   <<"defaultNamespace">> => string(),
-%%   <<"marketplaceInformation">> => marketplace_information(),
-%%   <<"owner">> => string(),
-%%   <<"publisher">> => string(),
+%% identity() :: #{
+%%   <<"oidc">> => o_id_c()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_provider_config() :: #{
+%%   <<"name">> => string(),
 %%   <<"type">> => string()
 %% }
--type addon_info() :: #{binary() => any()}.
+-type identity_provider_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_eks_anywhere_subscriptions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(eks_anywhere_subscription())
+%% identity_provider_config_response() :: #{
+%%   <<"oidc">> => oidc_identity_provider_config()
 %% }
--type list_eks_anywhere_subscriptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pod_identity_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"serviceAccount">> => string()
-%% }
--type list_pod_identity_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_node_network() :: #{
-%%   <<"cidrs">> => list(string())
-%% }
--type remote_node_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_version_response() :: #{
-%%   <<"update">> => update()
-%% }
--type update_cluster_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_access_policy_request() :: #{
-%%   <<"accessScope">> := access_scope(),
-%%   <<"policyArn">> := string()
-%% }
--type associate_access_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_template_specification() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type launch_template_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config_response() :: #{
-%%   <<"clusterSecurityGroupId">> => string(),
-%%   <<"controlPlaneEgressMode">> => list(any()),
-%%   <<"endpointPrivateAccess">> => boolean(),
-%%   <<"endpointPublicAccess">> => boolean(),
-%%   <<"publicAccessCidrs">> => list(string()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_eks_anywhere_subscription_response() :: #{
-%%   <<"subscription">> => eks_anywhere_subscription()
-%% }
--type update_eks_anywhere_subscription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fargate_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_fargate_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pod_identity_association_request() :: #{}
--type describe_pod_identity_association_request() :: #{}.
-
-%% Example:
-%% delete_access_entry_request() :: #{}
--type delete_access_entry_request() :: #{}.
-
-
-%% Example:
-%% update_capability_configuration() :: #{
-%%   <<"argoCd">> => update_argo_cd_config()
-%% }
--type update_capability_configuration() :: #{binary() => any()}.
+-type identity_provider_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2223,6 +1394,865 @@
 
 
 %% Example:
+%% insight_category_specific_summary() :: #{
+%%   <<"addonCompatibilityDetails">> => list(addon_compatibility_detail()),
+%%   <<"deprecationDetails">> => list(deprecation_detail())
+%% }
+-type insight_category_specific_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_resource_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"insightStatus">> => insight_status(),
+%%   <<"kubernetesResourceUri">> => string()
+%% }
+-type insight_resource_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_status() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type insight_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_summary() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"insightStatus">> => insight_status(),
+%%   <<"kubernetesVersion">> => string(),
+%%   <<"lastRefreshTime">> => non_neg_integer(),
+%%   <<"lastTransitionTime">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type insight_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights_filter() :: #{
+%%   <<"categories">> => list(list(any())()),
+%%   <<"kubernetesVersions">> => list(string()),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type insights_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"fargateProfileName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string())
+%% }
+-type issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_network_config_request() :: #{
+%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
+%%   <<"ipFamily">> => list(any()),
+%%   <<"serviceIpv4Cidr">> => string()
+%% }
+-type kubernetes_network_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_network_config_response() :: #{
+%%   <<"elasticLoadBalancing">> => elastic_load_balancing(),
+%%   <<"ipFamily">> => list(any()),
+%%   <<"serviceIpv4Cidr">> => string(),
+%%   <<"serviceIpv6Cidr">> => string()
+%% }
+-type kubernetes_network_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% license() :: #{
+%%   <<"id">> => string(),
+%%   <<"token">> => string()
+%% }
+-type license() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_entries_request() :: #{
+%%   <<"associatedPolicyArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_entries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_entries_response() :: #{
+%%   <<"accessEntries">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_entries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_policies_response() :: #{
+%%   <<"accessPolicies">> => list(access_policy()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_addons_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_addons_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_addons_response() :: #{
+%%   <<"addons">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_addons_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_access_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_access_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_access_policies_response() :: #{
+%%   <<"associatedAccessPolicies">> => list(associated_access_policy()),
+%%   <<"clusterName">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string()
+%% }
+-type list_associated_access_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capabilities_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capabilities_response() :: #{
+%%   <<"capabilities">> => list(capability_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capabilities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"include">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"clusters">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_eks_anywhere_subscriptions_request() :: #{
+%%   <<"includeStatus">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_eks_anywhere_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_eks_anywhere_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(eks_anywhere_subscription())
+%% }
+-type list_eks_anywhere_subscriptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fargate_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fargate_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fargate_profiles_response() :: #{
+%%   <<"fargateProfileNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fargate_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_provider_configs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_provider_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_provider_configs_response() :: #{
+%%   <<"identityProviderConfigs">> => list(identity_provider_config()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_identity_provider_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_request() :: #{
+%%   <<"filter">> => insights_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_response() :: #{
+%%   <<"insights">> => list(insight_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodegroups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_nodegroups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodegroups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"nodegroups">> => list(string())
+%% }
+-type list_nodegroups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pod_identity_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceAccount">> => string()
+%% }
+-type list_pod_identity_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pod_identity_associations_response() :: #{
+%%   <<"associations">> => list(pod_identity_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_pod_identity_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_updates_request() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"capabilityName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"nodegroupName">> => string()
+%% }
+-type list_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_updates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"updateIds">> => list(string())
+%% }
+-type list_updates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_setup() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"types">> => list(list(any())())
+%% }
+-type log_setup() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging() :: #{
+%%   <<"clusterLogging">> => list(log_setup())
+%% }
+-type logging() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketplace_information() :: #{
+%%   <<"productId">> => string(),
+%%   <<"productUrl">> => string()
+%% }
+-type marketplace_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_repair_config() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"maxParallelNodesRepairedCount">> => integer(),
+%%   <<"maxParallelNodesRepairedPercentage">> => integer(),
+%%   <<"maxUnhealthyNodeThresholdCount">> => integer(),
+%%   <<"maxUnhealthyNodeThresholdPercentage">> => integer(),
+%%   <<"nodeRepairConfigOverrides">> => list(node_repair_config_overrides())
+%% }
+-type node_repair_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_repair_config_overrides() :: #{
+%%   <<"minRepairWaitTimeMins">> => integer(),
+%%   <<"nodeMonitoringCondition">> => string(),
+%%   <<"nodeUnhealthyReason">> => string(),
+%%   <<"repairAction">> => list(any())
+%% }
+-type node_repair_config_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% nodegroup() :: #{
+%%   <<"amiType">> => list(any()),
+%%   <<"capacityType">> => list(any()),
+%%   <<"clusterName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"diskSize">> => integer(),
+%%   <<"health">> => nodegroup_health(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"labels">> => map(),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
+%%   <<"nodeRole">> => string(),
+%%   <<"nodegroupArn">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"releaseVersion">> => string(),
+%%   <<"remoteAccess">> => remote_access_config(),
+%%   <<"resources">> => nodegroup_resources(),
+%%   <<"scalingConfig">> => nodegroup_scaling_config(),
+%%   <<"status">> => list(any()),
+%%   <<"subnets">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"taints">> => list(taint()),
+%%   <<"updateConfig">> => nodegroup_update_config(),
+%%   <<"version">> => string(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
+%% }
+-type nodegroup() :: #{binary() => any()}.
+
+
+%% Example:
+%% nodegroup_health() :: #{
+%%   <<"issues">> => list(issue())
+%% }
+-type nodegroup_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% nodegroup_resources() :: #{
+%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
+%%   <<"remoteAccessSecurityGroup">> => string()
+%% }
+-type nodegroup_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% nodegroup_scaling_config() :: #{
+%%   <<"desiredSize">> => integer(),
+%%   <<"maxSize">> => integer(),
+%%   <<"minSize">> => integer()
+%% }
+-type nodegroup_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% nodegroup_update_config() :: #{
+%%   <<"maxUnavailable">> => integer(),
+%%   <<"maxUnavailablePercentage">> => integer(),
+%%   <<"updateStrategy">> => list(any())
+%% }
+-type nodegroup_update_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_id_c() :: #{
+%%   <<"issuer">> => string()
+%% }
+-type o_id_c() :: #{binary() => any()}.
+
+
+%% Example:
+%% oidc_identity_provider_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"groupsClaim">> => string(),
+%%   <<"groupsPrefix">> => string(),
+%%   <<"identityProviderConfigArn">> => string(),
+%%   <<"identityProviderConfigName">> => string(),
+%%   <<"issuerUrl">> => string(),
+%%   <<"requiredClaims">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"usernameClaim">> => string(),
+%%   <<"usernamePrefix">> => string()
+%% }
+-type oidc_identity_provider_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% oidc_identity_provider_config_request() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"groupsClaim">> => string(),
+%%   <<"groupsPrefix">> => string(),
+%%   <<"identityProviderConfigName">> => string(),
+%%   <<"issuerUrl">> => string(),
+%%   <<"requiredClaims">> => map(),
+%%   <<"usernameClaim">> => string(),
+%%   <<"usernamePrefix">> => string()
+%% }
+-type oidc_identity_provider_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% outpost_config_request() :: #{
+%%   <<"controlPlaneInstanceType">> => string(),
+%%   <<"controlPlanePlacement">> => control_plane_placement_request(),
+%%   <<"etcdInstanceType">> => string(),
+%%   <<"etcdPlacement">> => etcd_placement_request(),
+%%   <<"outpostArns">> => list(string())
+%% }
+-type outpost_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% outpost_config_response() :: #{
+%%   <<"controlPlaneInstanceType">> => string(),
+%%   <<"controlPlanePlacement">> => control_plane_placement_response(),
+%%   <<"etcdInstanceType">> => string(),
+%%   <<"etcdPlacement">> => etcd_placement_response(),
+%%   <<"outpostArns">> => list(string())
+%% }
+-type outpost_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pod_identity_association() :: #{
+%%   <<"associationArn">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"disableSessionTags">> => boolean(),
+%%   <<"externalId">> => string(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"namespace">> => string(),
+%%   <<"ownerArn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"serviceAccount">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type pod_identity_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% pod_identity_association_summary() :: #{
+%%   <<"associationArn">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"ownerArn">> => string(),
+%%   <<"serviceAccount">> => string()
+%% }
+-type pod_identity_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider() :: #{
+%%   <<"keyArn">> => string()
+%% }
+-type provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_cluster_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"connectorConfig">> := connector_config_request(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type register_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type register_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_access_config() :: #{
+%%   <<"ec2SshKey">> => string(),
+%%   <<"sourceSecurityGroups">> => list(string())
+%% }
+-type remote_access_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_network_config_request() :: #{
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network())
+%% }
+-type remote_network_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_network_config_response() :: #{
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network())
+%% }
+-type remote_network_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_node_network() :: #{
+%%   <<"cidrs">> => list(string())
+%% }
+-type remote_node_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_pod_network() :: #{
+%%   <<"cidrs">> => list(string())
+%% }
+-type remote_pod_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"fargateProfileName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_propagation_delay_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_propagation_delay_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_config() :: #{
+%%   <<"timeoutMinutes">> => integer()
+%% }
+-type rollback_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"addonName">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sso_identity() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type sso_identity() :: #{binary() => any()}.
+
+%% Example:
+%% start_insights_refresh_request() :: #{}
+-type start_insights_refresh_request() :: #{}.
+
+
+%% Example:
+%% start_insights_refresh_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_insights_refresh_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_config_request() :: #{
+%%   <<"blockStorage">> => block_storage()
+%% }
+-type storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_config_response() :: #{
+%%   <<"blockStorage">> => block_storage()
+%% }
+-type storage_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% taint() :: #{
+%%   <<"effect">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type taint() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_availability_zone_exception() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nodegroupName">> => string(),
+%%   <<"validZones">> => list(string())
+%% }
+-type unsupported_availability_zone_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update() :: #{
+%%   <<"cancellation">> => cancellation(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"errors">> => list(error_detail()),
+%%   <<"id">> => string(),
+%%   <<"params">> => list(update_param()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type update() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_config_request() :: #{
+%%   <<"authenticationMode">> => list(any())
+%% }
+-type update_access_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_entry_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"kubernetesGroups">> => list(string()),
+%%   <<"username">> => string()
+%% }
+-type update_access_entry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_entry_response() :: #{
+%%   <<"accessEntry">> => access_entry()
+%% }
+-type update_access_entry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_addon_request() :: #{
+%%   <<"addonVersion">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"configurationValues">> => string(),
+%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()),
+%%   <<"resolveConflicts">> => list(any()),
+%%   <<"serviceAccountRoleArn">> => string()
+%% }
+-type update_addon_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_addon_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type update_addon_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_argo_cd_config() :: #{
+%%   <<"networkAccess">> => argo_cd_network_access_config_request(),
+%%   <<"rbacRoleMappings">> => update_role_mappings()
+%% }
+-type update_argo_cd_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capability_configuration() :: #{
+%%   <<"argoCd">> => update_argo_cd_config()
+%% }
+-type update_capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capability_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"configuration">> => update_capability_configuration(),
+%%   <<"deletePropagationPolicy">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type update_capability_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capability_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type update_capability_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_cluster_config_request() :: #{
 %%   <<"accessConfig">> => update_access_config_request(),
 %%   <<"clientRequestToken">> => string(),
@@ -2241,143 +2271,10 @@
 
 
 %% Example:
-%% remote_pod_network() :: #{
-%%   <<"cidrs">> => list(string())
+%% update_cluster_config_response() :: #{
+%%   <<"update">> => update()
 %% }
--type remote_pod_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_issue() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string())
-%% }
--type cluster_issue() :: #{binary() => any()}.
-
-%% Example:
-%% describe_addon_request() :: #{}
--type describe_addon_request() :: #{}.
-
-
-%% Example:
-%% list_addons_response() :: #{
-%%   <<"addons">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_addons_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_category_specific_summary() :: #{
-%%   <<"addonCompatibilityDetails">> => list(addon_compatibility_detail()),
-%%   <<"deprecationDetails">> => list(deprecation_detail())
-%% }
--type insight_category_specific_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_setup() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"types">> => list(list(any())())
-%% }
--type log_setup() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_addon_response() :: #{
-%%   <<"addon">> => addon()
-%% }
--type create_addon_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type register_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_health() :: #{
-%%   <<"issues">> => list(capability_issue())
-%% }
--type capability_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_nodegroup_response() :: #{
-%%   <<"nodegroup">> => nodegroup()
-%% }
--type describe_nodegroup_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_entries_response() :: #{
-%%   <<"accessEntries">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_entries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pod_identity_association_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"disableSessionTags">> => boolean(),
-%%   <<"namespace">> := string(),
-%%   <<"policy">> => string(),
-%%   <<"roleArn">> := string(),
-%%   <<"serviceAccount">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"targetRoleArn">> => string()
-%% }
--type create_pod_identity_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_identity_provider_config_response() :: #{
-%%   <<"identityProviderConfig">> => identity_provider_config_response()
-%% }
--type describe_identity_provider_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fargate_profile_selector() :: #{
-%%   <<"labels">> => map(),
-%%   <<"namespace">> => string()
-%% }
--type fargate_profile_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_entries_request() :: #{
-%%   <<"associatedPolicyArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_entries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_pod_identity_association_response() :: #{
-%%   <<"association">> => pod_identity_association()
-%% }
--type describe_pod_identity_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging() :: #{
-%%   <<"clusterLogging">> => list(log_setup())
-%% }
--type logging() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_provider_configs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_identity_provider_configs_request() :: #{binary() => any()}.
+-type update_cluster_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2391,14 +2288,153 @@
 
 
 %% Example:
-%% resource_propagation_delay_exception() :: #{
-%%   <<"message">> => string()
+%% update_cluster_version_response() :: #{
+%%   <<"update">> => update()
 %% }
--type resource_propagation_delay_exception() :: #{binary() => any()}.
+-type update_cluster_version_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_eks_anywhere_subscription_request() :: #{}
--type describe_eks_anywhere_subscription_request() :: #{}.
+%% update_eks_anywhere_subscription_request() :: #{
+%%   <<"autoRenew">> := boolean(),
+%%   <<"clientRequestToken">> => string()
+%% }
+-type update_eks_anywhere_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_eks_anywhere_subscription_response() :: #{
+%%   <<"subscription">> => eks_anywhere_subscription()
+%% }
+-type update_eks_anywhere_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_labels_payload() :: #{
+%%   <<"addOrUpdateLabels">> => map(),
+%%   <<"removeLabels">> => list(string())
+%% }
+-type update_labels_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_nodegroup_config_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"labels">> => update_labels_payload(),
+%%   <<"nodeRepairConfig">> => node_repair_config(),
+%%   <<"scalingConfig">> => nodegroup_scaling_config(),
+%%   <<"taints">> => update_taints_payload(),
+%%   <<"updateConfig">> => nodegroup_update_config(),
+%%   <<"warmPoolConfig">> => warm_pool_config()
+%% }
+-type update_nodegroup_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_nodegroup_config_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type update_nodegroup_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_nodegroup_version_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"force">> => boolean(),
+%%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"releaseVersion">> => string(),
+%%   <<"version">> => string()
+%% }
+-type update_nodegroup_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_nodegroup_version_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type update_nodegroup_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_param() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type update_param() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pod_identity_association_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"disableSessionTags">> => boolean(),
+%%   <<"policy">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type update_pod_identity_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pod_identity_association_response() :: #{
+%%   <<"association">> => pod_identity_association()
+%% }
+-type update_pod_identity_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_role_mappings() :: #{
+%%   <<"addOrUpdateRoleMappings">> => list(argo_cd_role_mapping()),
+%%   <<"removeRoleMappings">> => list(argo_cd_role_mapping())
+%% }
+-type update_role_mappings() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_taints_payload() :: #{
+%%   <<"addOrUpdateTaints">> => list(taint()),
+%%   <<"removeTaints">> => list(taint())
+%% }
+-type update_taints_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_policy_request() :: #{
+%%   <<"supportType">> => list(any())
+%% }
+-type upgrade_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_policy_response() :: #{
+%%   <<"supportType">> => list(any())
+%% }
+-type upgrade_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config_request() :: #{
+%%   <<"controlPlaneEgressMode">> => list(any()),
+%%   <<"endpointPrivateAccess">> => boolean(),
+%%   <<"endpointPublicAccess">> => boolean(),
+%%   <<"publicAccessCidrs">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type vpc_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config_response() :: #{
+%%   <<"clusterSecurityGroupId">> => string(),
+%%   <<"controlPlaneEgressMode">> => list(any()),
+%%   <<"endpointPrivateAccess">> => boolean(),
+%%   <<"endpointPublicAccess">> => boolean(),
+%%   <<"publicAccessCidrs">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2411,491 +2447,455 @@
 %% }
 -type warm_pool_config() :: #{binary() => any()}.
 
-%% Example:
-%% delete_access_entry_response() :: #{}
--type delete_access_entry_response() :: #{}.
-
 
 %% Example:
-%% describe_update_response() :: #{
-%%   <<"update">> => update()
+%% zonal_shift_config_request() :: #{
+%%   <<"enabled">> => boolean()
 %% }
--type describe_update_response() :: #{binary() => any()}.
+-type zonal_shift_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% cluster_version_information() :: #{
-%%   <<"clusterType">> => string(),
-%%   <<"clusterVersion">> => string(),
-%%   <<"defaultPlatformVersion">> => string(),
-%%   <<"defaultVersion">> => boolean(),
-%%   <<"endOfExtendedSupportDate">> => non_neg_integer(),
-%%   <<"endOfStandardSupportDate">> => non_neg_integer(),
-%%   <<"kubernetesPatchVersion">> => string(),
-%%   <<"releaseDate">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"versionStatus">> => list(any())
+%% zonal_shift_config_response() :: #{
+%%   <<"enabled">> => boolean()
 %% }
--type cluster_version_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pod_identity_association_response() :: #{
-%%   <<"association">> => pod_identity_association()
-%% }
--type create_pod_identity_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% addon_version_info() :: #{
-%%   <<"addonVersion">> => string(),
-%%   <<"architecture">> => list(string()),
-%%   <<"compatibilities">> => list(compatibility()),
-%%   <<"computeTypes">> => list(string()),
-%%   <<"requiresConfiguration">> => boolean(),
-%%   <<"requiresIamPermissions">> => boolean()
-%% }
--type addon_version_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_nodegroup_request() :: #{}
--type delete_nodegroup_request() :: #{}.
+-type zonal_shift_config_response() :: #{binary() => any()}.
 
 -type associate_access_policy_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type associate_encryption_config_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type associate_identity_provider_config_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type cancel_update_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
+    resource_in_use_exception() | 
     invalid_state_exception() | 
-    resource_in_use_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type create_access_entry_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type create_addon_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type create_capability_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    server_exception() | 
     resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type create_cluster_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_availability_zone_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_limit_exceeded_exception() | 
-    client_exception() | 
     resource_in_use_exception() | 
-    unsupported_availability_zone_exception().
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type create_eks_anywhere_subscription_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type create_fargate_profile_errors() ::
+    unsupported_availability_zone_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_limit_exceeded_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    unsupported_availability_zone_exception().
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type create_nodegroup_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type create_pod_identity_association_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type delete_access_entry_errors() ::
     server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type delete_addon_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type delete_capability_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type delete_cluster_errors() ::
-    server_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    client_exception().
 
 -type delete_eks_anywhere_subscription_errors() ::
     server_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     client_exception().
 
 -type delete_fargate_profile_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type delete_nodegroup_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type delete_pod_identity_association_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type deregister_cluster_errors() ::
-    server_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     client_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type describe_access_entry_errors() ::
     server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type describe_addon_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type describe_addon_configuration_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_addon_versions_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_capability_errors() ::
     server_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_cluster_errors() ::
-    server_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
     client_exception().
 
 -type describe_cluster_versions_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type describe_eks_anywhere_subscription_errors() ::
-    server_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
     client_exception().
 
 -type describe_fargate_profile_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type describe_identity_provider_config_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type describe_insight_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type describe_insights_refresh_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type describe_nodegroup_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type describe_pod_identity_association_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type describe_update_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type disassociate_access_policy_errors() ::
     server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type disassociate_identity_provider_config_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type list_access_entries_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type list_access_policies_errors() ::
     server_exception().
 
 -type list_addons_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type list_associated_access_policies_errors() ::
     server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type list_capabilities_errors() ::
     server_exception() | 
     invalid_parameter_exception().
 
 -type list_clusters_errors() ::
+    service_unavailable_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
     client_exception().
 
 -type list_eks_anywhere_subscriptions_errors() ::
+    service_unavailable_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
     client_exception().
 
 -type list_fargate_profiles_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type list_identity_provider_configs_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type list_insights_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type list_nodegroups_errors() ::
-    server_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type list_pod_identity_associations_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type list_updates_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type register_cluster_errors() ::
-    resource_propagation_delay_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
+    server_exception() | 
+    resource_propagation_delay_exception() | 
     resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
     client_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type start_insights_refresh_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    bad_request_exception().
 
 -type update_access_entry_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type update_addon_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type update_capability_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type update_cluster_config_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type update_cluster_version_errors() ::
-    server_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    server_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
+    resource_in_use_exception() | 
     invalid_state_exception() | 
-    resource_in_use_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type update_eks_anywhere_subscription_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     client_exception().
 
 -type update_nodegroup_config_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type update_nodegroup_version_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    client_exception().
 
 -type update_pod_identity_association_errors() ::
     server_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 %%====================================================================
 %% API

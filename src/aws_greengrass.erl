@@ -246,39 +246,10 @@
 
 
 %% Example:
-%% function_definition_version() :: #{
-%%   <<"DefaultConfig">> => function_default_config(),
-%%   <<"Functions">> => list(function())
+%% associate_role_to_group_request() :: #{
+%%   <<"RoleArn">> := string()
 %% }
--type function_definition_version() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connector_definition_response() :: #{}
--type delete_connector_definition_response() :: #{}.
-
-
-%% Example:
-%% update_device_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_device_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector() :: #{
-%%   <<"ConnectorArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Parameters">> => map()
-%% }
--type connector() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Resources">> => list(resource())
-%% }
--type create_resource_definition_version_request() :: #{binary() => any()}.
+-type associate_role_to_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -289,878 +260,25 @@
 
 
 %% Example:
-%% function_execution_config() :: #{
-%%   <<"IsolationMode">> => list(any()),
-%%   <<"RunAs">> => function_run_as_config()
+%% associate_service_role_to_account_request() :: #{
+%%   <<"RoleArn">> := string()
 %% }
--type function_execution_config() :: #{binary() => any()}.
+-type associate_service_role_to_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% local_volume_resource_data() :: #{
-%%   <<"DestinationPath">> => string(),
-%%   <<"GroupOwnerSetting">> => group_owner_setting(),
-%%   <<"SourcePath">> => string()
+%% associate_service_role_to_account_response() :: #{
+%%   <<"AssociatedAt">> => string()
 %% }
--type local_volume_resource_data() :: #{binary() => any()}.
+-type associate_service_role_to_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_service_role_from_account_response() :: #{
-%%   <<"DisassociatedAt">> => string()
-%% }
--type disassociate_service_role_from_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_logger_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_logger_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connectivity_info_response() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Version">> => string()
-%% }
--type update_connectivity_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_definition_request() :: #{}
--type delete_function_definition_request() :: #{}.
-
-%% Example:
-%% delete_device_definition_response() :: #{}
--type delete_device_definition_response() :: #{}.
-
-%% Example:
-%% get_subscription_definition_request() :: #{}
--type get_subscription_definition_request() :: #{}.
-
-%% Example:
-%% delete_logger_definition_response() :: #{}
--type delete_logger_definition_response() :: #{}.
-
-
-%% Example:
-%% list_logger_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_logger_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_resource_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_information() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type version_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment() :: #{
-%%   <<"CreatedAt">> => string(),
-%%   <<"DeploymentArn">> => string(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"GroupArn">> => string()
-%% }
--type deployment() :: #{binary() => any()}.
-
-%% Example:
-%% get_logger_definition_request() :: #{}
--type get_logger_definition_request() :: #{}.
-
-
-%% Example:
-%% secrets_manager_secret_resource_data() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"AdditionalStagingLabelsToDownload">> => list(string())
-%% }
--type secrets_manager_secret_resource_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_certificate_authority_response() :: #{
-%%   <<"GroupCertificateAuthorityArn">> => string(),
-%%   <<"GroupCertificateAuthorityId">> => string(),
-%%   <<"PemEncodedCertificate">> => string()
-%% }
--type get_group_certificate_authority_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"ConnectorDefinitionVersionArn">> => string(),
-%%   <<"CoreDefinitionVersionArn">> => string(),
-%%   <<"DeviceDefinitionVersionArn">> => string(),
-%%   <<"FunctionDefinitionVersionArn">> => string(),
-%%   <<"LoggerDefinitionVersionArn">> => string(),
-%%   <<"ResourceDefinitionVersionArn">> => string(),
-%%   <<"SubscriptionDefinitionVersionArn">> => string()
-%% }
--type create_group_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_logger_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_logger_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscription_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_subscription_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_thing_runtime_configuration_request() :: #{
-%%   <<"TelemetryConfiguration">> => telemetry_configuration_update()
-%% }
--type update_thing_runtime_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscription_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => subscription_definition_version(),
-%%   <<"Id">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_subscription_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bulk_deployment_detailed_reports_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_bulk_deployment_detailed_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => connector_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_connector_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_response() :: #{
-%%   <<"Deployments">> => list(deployment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_core_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_core_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_certificate_authorities_request() :: #{}
--type list_group_certificate_authorities_request() :: #{}.
-
-
-%% Example:
-%% list_connector_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connector_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"DefaultConfig">> => function_default_config(),
-%%   <<"Functions">> => list(function())
-%% }
--type create_function_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => core_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_core_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_associated_role_request() :: #{}
--type get_associated_role_request() :: #{}.
-
-
-%% Example:
-%% resource_definition_version() :: #{
-%%   <<"Resources">> => list(resource())
-%% }
--type resource_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_logger_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_logger_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_default_config() :: #{
-%%   <<"Execution">> => function_default_execution_config()
-%% }
--type function_default_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => function_definition_version(),
-%%   <<"Id">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_function_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_owner_setting() :: #{
-%%   <<"AutoAddGroupOwner">> => boolean(),
-%%   <<"GroupOwner">> => string()
-%% }
--type group_owner_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => device_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_device_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_configuration() :: #{
-%%   <<"TelemetryConfiguration">> => telemetry_configuration()
-%% }
--type runtime_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_subscription_definition_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"DeploymentType">> := list(any()),
-%%   <<"GroupVersionId">> => string()
-%% }
--type create_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Devices">> => list(device())
-%% }
--type create_device_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_run_as_config() :: #{
-%%   <<"Gid">> => integer(),
-%%   <<"Uid">> => integer()
-%% }
--type function_run_as_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_configuration_update() :: #{
-%%   <<"Telemetry">> => list(any())
-%% }
--type telemetry_configuration_update() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_definition_request() :: #{}
--type delete_subscription_definition_request() :: #{}.
-
-
-%% Example:
-%% list_bulk_deployments_response() :: #{
-%%   <<"BulkDeployments">> => list(bulk_deployment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_bulk_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => resource_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_resource_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_definition_version() :: #{
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type subscription_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_group_certificate_configuration_request() :: #{
-%%   <<"CertificateExpiryInMilliseconds">> => string()
-%% }
--type update_group_certificate_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_function_definition_request() :: #{}
--type get_function_definition_request() :: #{}.
-
-
-%% Example:
-%% create_software_update_job_response() :: #{
-%%   <<"IotJobArn">> => string(),
-%%   <<"IotJobId">> => string(),
-%%   <<"PlatformSoftwareVersion">> => string()
-%% }
--type create_software_update_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% definition_information() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type definition_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_response() :: #{
-%%   <<"DeploymentArn">> => string(),
-%%   <<"DeploymentId">> => string()
-%% }
--type create_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_definition_version() :: #{
-%%   <<"Connectors">> => list(connector())
-%% }
--type connector_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_configuration_environment() :: #{
-%%   <<"AccessSysfs">> => boolean(),
-%%   <<"Execution">> => function_execution_config(),
-%%   <<"ResourceAccessPolicies">> => list(resource_access_policy()),
-%%   <<"Variables">> => map()
-%% }
--type function_configuration_environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => device_definition_version(),
-%%   <<"Id">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_device_definition_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_definition_request() :: #{}
--type delete_resource_definition_request() :: #{}.
-
-%% Example:
-%% get_service_role_for_account_request() :: #{}
--type get_service_role_for_account_request() :: #{}.
-
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_function_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_definition_version() :: #{
-%%   <<"Cores">> => list(core())
-%% }
--type core_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_associated_role_response() :: #{
-%%   <<"AssociatedAt">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type get_associated_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_definition_response() :: #{}
--type delete_function_definition_response() :: #{}.
-
-
-%% Example:
-%% update_connectivity_info_request() :: #{
-%%   <<"ConnectivityInfo">> => list(connectivity_info())
-%% }
--type update_connectivity_info_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_core_definition_request() :: #{}
--type delete_core_definition_request() :: #{}.
-
-%% Example:
-%% delete_connector_definition_request() :: #{}
--type delete_connector_definition_request() :: #{}.
-
-
-%% Example:
-%% disassociate_role_from_group_response() :: #{
-%%   <<"DisassociatedAt">> => string()
-%% }
--type disassociate_role_from_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_core_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_core_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => resource_definition_version(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_resource_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_core_definition_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connector_definition_request() :: #{}
--type get_connector_definition_request() :: #{}.
-
-
-%% Example:
-%% telemetry_configuration() :: #{
-%%   <<"ConfigurationSyncStatus">> => list(any()),
-%%   <<"Telemetry">> => list(any())
-%% }
--type telemetry_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_download_owner_setting() :: #{
-%%   <<"GroupOwner">> => string(),
-%%   <<"GroupPermission">> => list(any())
-%% }
--type resource_download_owner_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_core_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_subscription_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bulk_deployment_detailed_reports_response() :: #{
-%%   <<"Deployments">> => list(bulk_deployment_result()),
-%%   <<"NextToken">> => string()
-%% }
--type list_bulk_deployment_detailed_reports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connectivity_info() :: #{
-%%   <<"HostAddress">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"PortNumber">> => integer()
-%% }
--type connectivity_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connectivity_info_response() :: #{
-%%   <<"ConnectivityInfo">> => list(connectivity_info()),
+%% bad_request_exception() :: #{
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"Message">> => string()
 %% }
--type get_connectivity_info_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_connector_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_definition_version() :: #{
-%%   <<"Devices">> => list(device())
-%% }
--type device_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_function_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_bulk_deployment_request() :: #{}
--type stop_bulk_deployment_request() :: #{}.
-
-
-%% Example:
-%% list_group_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_group_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_connector_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_subscription_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connector_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_logger_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_logger_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_certificate_authority_request() :: #{}
--type get_group_certificate_authority_request() :: #{}.
-
-
-%% Example:
-%% resource_data_container() :: #{
-%%   <<"LocalDeviceResourceData">> => local_device_resource_data(),
-%%   <<"LocalVolumeResourceData">> => local_volume_resource_data(),
-%%   <<"S3MachineLearningModelResourceData">> => s3_machine_learning_model_resource_data(),
-%%   <<"SageMakerMachineLearningModelResourceData">> => sage_maker_machine_learning_model_resource_data(),
-%%   <<"SecretsManagerSecretResourceData">> => secrets_manager_secret_resource_data()
-%% }
--type resource_data_container() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_certificate_authority_response() :: #{
-%%   <<"GroupCertificateAuthorityArn">> => string()
-%% }
--type create_group_certificate_authority_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_function_definition_response() :: #{}
--type update_function_definition_response() :: #{}.
-
-
-%% Example:
-%% create_subscription_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_subscription_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_definition_request() :: #{}
--type delete_device_definition_request() :: #{}.
-
-
-%% Example:
-%% update_subscription_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_subscription_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_group_certificate_authorities_response() :: #{
-%%   <<"GroupCertificateAuthorities">> => list(group_certificate_authority_properties())
-%% }
--type list_group_certificate_authorities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% local_device_resource_data() :: #{
-%%   <<"GroupOwnerSetting">> => group_owner_setting(),
-%%   <<"SourcePath">> => string()
-%% }
--type local_device_resource_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_core_definition_version_request() :: #{}
--type get_core_definition_version_request() :: #{}.
-
-
-%% Example:
-%% get_connector_definition_version_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_connector_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_deployments_response() :: #{
-%%   <<"DeploymentArn">> => string(),
-%%   <<"DeploymentId">> => string()
-%% }
--type reset_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_resource_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_status_response() :: #{
-%%   <<"DeploymentStatus">> => string(),
-%%   <<"DeploymentType">> => list(any()),
-%%   <<"ErrorDetails">> => list(error_detail()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"UpdatedAt">> => string()
-%% }
--type get_deployment_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_certificate_authority_properties() :: #{
-%%   <<"GroupCertificateAuthorityArn">> => string(),
-%%   <<"GroupCertificateAuthorityId">> => string()
-%% }
--type group_certificate_authority_properties() :: #{binary() => any()}.
-
-%% Example:
-%% update_core_definition_response() :: #{}
--type update_core_definition_response() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_information() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type group_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_logger_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Loggers">> => list(logger())
-%% }
--type create_logger_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_definition_version_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_function_definition_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_certificate_configuration_request() :: #{}
--type get_group_certificate_configuration_request() :: #{}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1173,500 +291,12 @@
 
 
 %% Example:
-%% update_connector_definition_request() :: #{
-%%   <<"Name">> => string()
+%% bulk_deployment_metrics() :: #{
+%%   <<"InvalidInputRecords">> => integer(),
+%%   <<"RecordsProcessed">> => integer(),
+%%   <<"RetryAttempts">> => integer()
 %% }
--type update_connector_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% greengrass_function() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionConfiguration">> => function_configuration(),
-%%   <<"Id">> => string()
-%% }
--type greengrass_function() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => group_version(),
-%%   <<"Name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_role_from_group_request() :: #{}
--type disassociate_role_from_group_request() :: #{}.
-
-
-%% Example:
-%% sage_maker_machine_learning_model_resource_data() :: #{
-%%   <<"DestinationPath">> => string(),
-%%   <<"OwnerSetting">> => resource_download_owner_setting(),
-%%   <<"SageMakerJobArn">> => string()
-%% }
--type sage_maker_machine_learning_model_resource_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_runtime_configuration_response() :: #{
-%%   <<"RuntimeConfiguration">> => runtime_configuration()
-%% }
--type get_thing_runtime_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connectivity_info_request() :: #{}
--type get_connectivity_info_request() :: #{}.
-
-%% Example:
-%% get_resource_definition_version_request() :: #{}
--type get_resource_definition_version_request() :: #{}.
-
-
-%% Example:
-%% create_resource_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_resource_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_service_role_to_account_request() :: #{
-%%   <<"RoleArn">> := string()
-%% }
--type associate_service_role_to_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_device_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_deployments_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Force">> => boolean()
-%% }
--type reset_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bulk_deployments_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_bulk_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_logger_definition_version_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_logger_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_group_certificate_configuration_response() :: #{
-%%   <<"CertificateAuthorityExpiryInMilliseconds">> => string(),
-%%   <<"CertificateExpiryInMilliseconds">> => string(),
-%%   <<"GroupId">> => string()
-%% }
--type update_group_certificate_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_device_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_function_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => group_version(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_group_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% logger() :: #{
-%%   <<"Component">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Level">> => list(any()),
-%%   <<"Space">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type logger() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_logger_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_logger_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => function_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_function_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_version() :: #{
-%%   <<"ConnectorDefinitionVersionArn">> => string(),
-%%   <<"CoreDefinitionVersionArn">> => string(),
-%%   <<"DeviceDefinitionVersionArn">> => string(),
-%%   <<"FunctionDefinitionVersionArn">> => string(),
-%%   <<"LoggerDefinitionVersionArn">> => string(),
-%%   <<"ResourceDefinitionVersionArn">> => string(),
-%%   <<"SubscriptionDefinitionVersionArn">> => string()
-%% }
--type group_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"DetailedErrorCode">> => string(),
-%%   <<"DetailedErrorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_default_execution_config() :: #{
-%%   <<"IsolationMode">> => list(any()),
-%%   <<"RunAs">> => function_run_as_config()
-%% }
--type function_default_execution_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% logger_definition_version() :: #{
-%%   <<"Loggers">> => list(logger())
-%% }
--type logger_definition_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_definition_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_response() :: #{}
--type delete_group_response() :: #{}.
-
-
-%% Example:
-%% core() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"SyncShadow">> => boolean(),
-%%   <<"ThingArn">> => string()
-%% }
--type core() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_status_request() :: #{}
--type get_deployment_status_request() :: #{}.
-
-
-%% Example:
-%% create_logger_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_logger_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_function_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_definition_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Cores">> => list(core())
-%% }
--type create_core_definition_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_definition_request() :: #{}
--type get_device_definition_request() :: #{}.
-
-
-%% Example:
-%% create_subscription_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type create_subscription_definition_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_connector_definition_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_logger_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_logger_definition_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_logger_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => logger_definition_version(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type get_logger_definition_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_function_definition_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_function_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% get_group_certificate_configuration_response() :: #{
-%%   <<"CertificateAuthorityExpiryInMilliseconds">> => string(),
-%%   <<"CertificateExpiryInMilliseconds">> => string(),
-%%   <<"GroupId">> => string()
-%% }
--type get_group_certificate_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_configuration() :: #{
-%%   <<"EncodingType">> => list(any()),
-%%   <<"Environment">> => function_configuration_environment(),
-%%   <<"ExecArgs">> => string(),
-%%   <<"Executable">> => string(),
-%%   <<"FunctionRuntimeOverride">> => string(),
-%%   <<"MemorySize">> => integer(),
-%%   <<"Pinned">> => boolean(),
-%%   <<"Timeout">> => integer()
-%% }
--type function_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bulk_deployment_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputFileUri">> := string(),
-%%   <<"tags">> => map()
-%% }
--type start_bulk_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_certificate_authority_request() :: #{
-%%   <<"AmznClientToken">> => string()
-%% }
--type create_group_certificate_authority_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_bulk_deployment_status_request() :: #{}
--type get_bulk_deployment_status_request() :: #{}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bulk_deployment_response() :: #{
-%%   <<"BulkDeploymentArn">> => string(),
-%%   <<"BulkDeploymentId">> => string()
-%% }
--type start_bulk_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_version_request() :: #{}
--type get_group_version_request() :: #{}.
-
-
-%% Example:
-%% list_function_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_function_definition_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connector_definition_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"Target">> => string()
-%% }
--type subscription() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_device_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_thing_runtime_configuration_response() :: #{}
--type update_thing_runtime_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_group_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_group_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_device_definition_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_request() :: #{}
--type delete_group_request() :: #{}.
-
-%% Example:
-%% get_resource_definition_request() :: #{}
--type get_resource_definition_request() :: #{}.
+-type bulk_deployment_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1684,6 +314,344 @@
 
 
 %% Example:
+%% connectivity_info() :: #{
+%%   <<"HostAddress">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"PortNumber">> => integer()
+%% }
+-type connectivity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector() :: #{
+%%   <<"ConnectorArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_definition_version() :: #{
+%%   <<"Connectors">> => list(connector())
+%% }
+-type connector_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% core() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"SyncShadow">> => boolean(),
+%%   <<"ThingArn">> => string()
+%% }
+-type core() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_definition_version() :: #{
+%%   <<"Cores">> => list(core())
+%% }
+-type core_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => connector_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_connector_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_connector_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Connectors">> => list(connector())
+%% }
+-type create_connector_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_connector_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => core_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_core_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_core_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Cores">> => list(core())
+%% }
+-type create_core_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_core_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentType">> := list(any()),
+%%   <<"GroupVersionId">> => string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_response() :: #{
+%%   <<"DeploymentArn">> => string(),
+%%   <<"DeploymentId">> => string()
+%% }
+-type create_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => device_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_device_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_device_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Devices">> => list(device())
+%% }
+-type create_device_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_device_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => function_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_function_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_function_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"DefaultConfig">> => function_default_config(),
+%%   <<"Functions">> => list(function())
+%% }
+-type create_function_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_function_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_certificate_authority_request() :: #{
+%%   <<"AmznClientToken">> => string()
+%% }
+-type create_group_certificate_authority_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_certificate_authority_response() :: #{
+%%   <<"GroupCertificateAuthorityArn">> => string()
+%% }
+-type create_group_certificate_authority_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => group_version(),
+%%   <<"Name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"ConnectorDefinitionVersionArn">> => string(),
+%%   <<"CoreDefinitionVersionArn">> => string(),
+%%   <<"DeviceDefinitionVersionArn">> => string(),
+%%   <<"FunctionDefinitionVersionArn">> => string(),
+%%   <<"LoggerDefinitionVersionArn">> => string(),
+%%   <<"ResourceDefinitionVersionArn">> => string(),
+%%   <<"SubscriptionDefinitionVersionArn">> => string()
+%% }
+-type create_group_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_group_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logger_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => logger_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_logger_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logger_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_logger_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logger_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Loggers">> => list(logger())
+%% }
+-type create_logger_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logger_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_logger_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => resource_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_resource_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_resource_definition_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTimestamp">> => string(),
@@ -1697,70 +665,327 @@
 
 
 %% Example:
-%% list_core_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
+%% create_resource_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Resources">> => list(resource())
 %% }
--type list_core_definitions_response() :: #{binary() => any()}.
+-type create_resource_definition_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_device_definition_version_request() :: #{
-%%   <<"NextToken">> => string()
+%% create_resource_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
 %% }
--type get_device_definition_version_request() :: #{binary() => any()}.
+-type create_resource_definition_version_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% bulk_deployment_metrics() :: #{
-%%   <<"InvalidInputRecords">> => integer(),
-%%   <<"RecordsProcessed">> => integer(),
-%%   <<"RetryAttempts">> => integer()
+%% create_software_update_job_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"S3UrlSignerRole">> := string(),
+%%   <<"SoftwareToUpdate">> := list(any()),
+%%   <<"UpdateAgentLogLevel">> => list(any()),
+%%   <<"UpdateTargets">> := list(string()),
+%%   <<"UpdateTargetsArchitecture">> := list(any()),
+%%   <<"UpdateTargetsOperatingSystem">> := list(any())
 %% }
--type bulk_deployment_metrics() :: #{binary() => any()}.
+-type create_software_update_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()),
-%%   <<"Message">> => string()
+%% create_software_update_job_response() :: #{
+%%   <<"IotJobArn">> => string(),
+%%   <<"IotJobId">> => string(),
+%%   <<"PlatformSoftwareVersion">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type create_software_update_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_definition_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"InitialVersion">> => subscription_definition_version(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_subscription_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_subscription_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_definition_version_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type create_subscription_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_subscription_definition_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% definition_information() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type definition_information() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connector_definition_request() :: #{}
+-type delete_connector_definition_request() :: #{}.
+
+%% Example:
+%% delete_connector_definition_response() :: #{}
+-type delete_connector_definition_response() :: #{}.
+
+%% Example:
+%% delete_core_definition_request() :: #{}
+-type delete_core_definition_request() :: #{}.
+
+%% Example:
+%% delete_core_definition_response() :: #{}
+-type delete_core_definition_response() :: #{}.
+
+%% Example:
+%% delete_device_definition_request() :: #{}
+-type delete_device_definition_request() :: #{}.
+
+%% Example:
+%% delete_device_definition_response() :: #{}
+-type delete_device_definition_response() :: #{}.
+
+%% Example:
+%% delete_function_definition_request() :: #{}
+-type delete_function_definition_request() :: #{}.
+
+%% Example:
+%% delete_function_definition_response() :: #{}
+-type delete_function_definition_response() :: #{}.
+
+%% Example:
+%% delete_group_request() :: #{}
+-type delete_group_request() :: #{}.
+
+%% Example:
+%% delete_group_response() :: #{}
+-type delete_group_response() :: #{}.
+
+%% Example:
+%% delete_logger_definition_request() :: #{}
+-type delete_logger_definition_request() :: #{}.
+
+%% Example:
+%% delete_logger_definition_response() :: #{}
+-type delete_logger_definition_response() :: #{}.
+
+%% Example:
+%% delete_resource_definition_request() :: #{}
+-type delete_resource_definition_request() :: #{}.
 
 %% Example:
 %% delete_resource_definition_response() :: #{}
 -type delete_resource_definition_response() :: #{}.
 
+%% Example:
+%% delete_subscription_definition_request() :: #{}
+-type delete_subscription_definition_request() :: #{}.
 
 %% Example:
-%% list_subscription_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()),
-%%   <<"NextToken">> => string()
+%% delete_subscription_definition_response() :: #{}
+-type delete_subscription_definition_response() :: #{}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"CreatedAt">> => string(),
+%%   <<"DeploymentArn">> => string(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"GroupArn">> => string()
 %% }
--type list_subscription_definitions_response() :: #{binary() => any()}.
+-type deployment() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_core_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => core_definition_version(),
+%% device() :: #{
+%%   <<"CertificateArn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Version">> => string()
+%%   <<"SyncShadow">> => boolean(),
+%%   <<"ThingArn">> => string()
 %% }
--type get_core_definition_version_response() :: #{binary() => any()}.
+-type device() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_subscription_definition_version_request() :: #{
-%%   <<"NextToken">> => string()
+%% device_definition_version() :: #{
+%%   <<"Devices">> => list(device())
 %% }
--type get_subscription_definition_version_request() :: #{binary() => any()}.
+-type device_definition_version() :: #{binary() => any()}.
 
 %% Example:
-%% update_connector_definition_response() :: #{}
--type update_connector_definition_response() :: #{}.
+%% disassociate_role_from_group_request() :: #{}
+-type disassociate_role_from_group_request() :: #{}.
+
+
+%% Example:
+%% disassociate_role_from_group_response() :: #{
+%%   <<"DisassociatedAt">> => string()
+%% }
+-type disassociate_role_from_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_role_from_account_request() :: #{}
+-type disassociate_service_role_from_account_request() :: #{}.
+
+
+%% Example:
+%% disassociate_service_role_from_account_response() :: #{
+%%   <<"DisassociatedAt">> => string()
+%% }
+-type disassociate_service_role_from_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"DetailedErrorCode">> => string(),
+%%   <<"DetailedErrorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_configuration() :: #{
+%%   <<"EncodingType">> => list(any()),
+%%   <<"Environment">> => function_configuration_environment(),
+%%   <<"ExecArgs">> => string(),
+%%   <<"Executable">> => string(),
+%%   <<"FunctionRuntimeOverride">> => string(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"Pinned">> => boolean(),
+%%   <<"Timeout">> => integer()
+%% }
+-type function_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_configuration_environment() :: #{
+%%   <<"AccessSysfs">> => boolean(),
+%%   <<"Execution">> => function_execution_config(),
+%%   <<"ResourceAccessPolicies">> => list(resource_access_policy()),
+%%   <<"Variables">> => map()
+%% }
+-type function_configuration_environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_default_config() :: #{
+%%   <<"Execution">> => function_default_execution_config()
+%% }
+-type function_default_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_default_execution_config() :: #{
+%%   <<"IsolationMode">> => list(any()),
+%%   <<"RunAs">> => function_run_as_config()
+%% }
+-type function_default_execution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_definition_version() :: #{
+%%   <<"DefaultConfig">> => function_default_config(),
+%%   <<"Functions">> => list(function())
+%% }
+-type function_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_execution_config() :: #{
+%%   <<"IsolationMode">> => list(any()),
+%%   <<"RunAs">> => function_run_as_config()
+%% }
+-type function_execution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_run_as_config() :: #{
+%%   <<"Gid">> => integer(),
+%%   <<"Uid">> => integer()
+%% }
+-type function_run_as_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_associated_role_request() :: #{}
+-type get_associated_role_request() :: #{}.
+
+
+%% Example:
+%% get_associated_role_response() :: #{
+%%   <<"AssociatedAt">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type get_associated_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bulk_deployment_status_request() :: #{}
+-type get_bulk_deployment_status_request() :: #{}.
+
+
+%% Example:
+%% get_bulk_deployment_status_response() :: #{
+%%   <<"BulkDeploymentMetrics">> => bulk_deployment_metrics(),
+%%   <<"BulkDeploymentStatus">> => list(any()),
+%%   <<"CreatedAt">> => string(),
+%%   <<"ErrorDetails">> => list(error_detail()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_bulk_deployment_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connectivity_info_request() :: #{}
+-type get_connectivity_info_request() :: #{}.
+
+
+%% Example:
+%% get_connectivity_info_response() :: #{
+%%   <<"ConnectivityInfo">> => list(connectivity_info()),
+%%   <<"Message">> => string()
+%% }
+-type get_connectivity_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connector_definition_request() :: #{}
+-type get_connector_definition_request() :: #{}.
 
 
 %% Example:
@@ -1778,63 +1003,171 @@
 
 
 %% Example:
-%% device() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"SyncShadow">> => boolean(),
-%%   <<"ThingArn">> => string()
+%% get_connector_definition_version_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type device() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_definition_response() :: #{}
--type delete_subscription_definition_response() :: #{}.
+-type get_connector_definition_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_core_definition_response() :: #{
+%% get_connector_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => connector_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_connector_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_core_definition_request() :: #{}
+-type get_core_definition_request() :: #{}.
+
+
+%% Example:
+%% get_core_definition_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTimestamp">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedTimestamp">> => string(),
 %%   <<"LatestVersion">> => string(),
 %%   <<"LatestVersionArn">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
 %% }
--type create_core_definition_response() :: #{binary() => any()}.
+-type get_core_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% stop_bulk_deployment_response() :: #{}
--type stop_bulk_deployment_response() :: #{}.
+%% get_core_definition_version_request() :: #{}
+-type get_core_definition_version_request() :: #{}.
 
 
 %% Example:
-%% create_software_update_job_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"S3UrlSignerRole">> := string(),
-%%   <<"SoftwareToUpdate">> := list(any()),
-%%   <<"UpdateAgentLogLevel">> => list(any()),
-%%   <<"UpdateTargets">> := list(string()),
-%%   <<"UpdateTargetsArchitecture">> := list(any()),
-%%   <<"UpdateTargetsOperatingSystem">> := list(any())
+%% get_core_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => core_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => string()
 %% }
--type create_software_update_job_request() :: #{binary() => any()}.
+-type get_core_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_status_request() :: #{}
+-type get_deployment_status_request() :: #{}.
 
 
 %% Example:
-%% create_connector_definition_version_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"Connectors">> => list(connector())
+%% get_deployment_status_response() :: #{
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"DeploymentType">> => list(any()),
+%%   <<"ErrorDetails">> => list(error_detail()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"UpdatedAt">> => string()
 %% }
--type create_connector_definition_version_request() :: #{binary() => any()}.
+-type get_deployment_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_definition_request() :: #{}
+-type get_device_definition_request() :: #{}.
 
 
 %% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_information()),
+%% get_device_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_device_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
--type list_groups_response() :: #{binary() => any()}.
+-type get_device_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => device_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_device_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_definition_request() :: #{}
+-type get_function_definition_request() :: #{}.
+
+
+%% Example:
+%% get_function_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_function_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_definition_version_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_function_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => function_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_function_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_certificate_authority_request() :: #{}
+-type get_group_certificate_authority_request() :: #{}.
+
+
+%% Example:
+%% get_group_certificate_authority_response() :: #{
+%%   <<"GroupCertificateAuthorityArn">> => string(),
+%%   <<"GroupCertificateAuthorityId">> => string(),
+%%   <<"PemEncodedCertificate">> => string()
+%% }
+-type get_group_certificate_authority_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_certificate_configuration_request() :: #{}
+-type get_group_certificate_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_group_certificate_configuration_response() :: #{
+%%   <<"CertificateAuthorityExpiryInMilliseconds">> => string(),
+%%   <<"CertificateExpiryInMilliseconds">> => string(),
+%%   <<"GroupId">> => string()
+%% }
+-type get_group_certificate_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_group_request() :: #{}
@@ -1842,67 +1175,72 @@
 
 
 %% Example:
-%% list_subscription_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
+%% get_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_version_request() :: #{}
+-type get_group_version_request() :: #{}.
+
+
+%% Example:
+%% get_group_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => group_version(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_group_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_logger_definition_request() :: #{}
+-type get_logger_definition_request() :: #{}.
+
+
+%% Example:
+%% get_logger_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_logger_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_logger_definition_version_request() :: #{
 %%   <<"NextToken">> => string()
 %% }
--type list_subscription_definitions_request() :: #{binary() => any()}.
+-type get_logger_definition_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_service_role_for_account_response() :: #{
-%%   <<"AssociatedAt">> => string(),
-%%   <<"RoleArn">> => string()
+%% get_logger_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => logger_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
 %% }
--type get_service_role_for_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_definitions_request() :: #{binary() => any()}.
+-type get_logger_definition_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_subscription_definition_response() :: #{}
--type update_subscription_definition_response() :: #{}.
-
-
-%% Example:
-%% list_function_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_function_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_definition_versions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_definition_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_thing_runtime_configuration_request() :: #{}
--type get_thing_runtime_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_definition_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information())
-%% }
--type list_function_definition_versions_response() :: #{binary() => any()}.
+%% get_resource_definition_request() :: #{}
+-type get_resource_definition_request() :: #{}.
 
 
 %% Example:
@@ -1918,32 +1256,525 @@
 %% }
 -type get_resource_definition_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_resource_definition_version_request() :: #{}
+-type get_resource_definition_version_request() :: #{}.
+
 
 %% Example:
-%% get_bulk_deployment_status_response() :: #{
-%%   <<"BulkDeploymentMetrics">> => bulk_deployment_metrics(),
-%%   <<"BulkDeploymentStatus">> => list(any()),
-%%   <<"CreatedAt">> => string(),
-%%   <<"ErrorDetails">> => list(error_detail()),
-%%   <<"ErrorMessage">> => string(),
+%% get_resource_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => resource_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_resource_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_role_for_account_request() :: #{}
+-type get_service_role_for_account_request() :: #{}.
+
+
+%% Example:
+%% get_service_role_for_account_response() :: #{
+%%   <<"AssociatedAt">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type get_service_role_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_definition_request() :: #{}
+-type get_subscription_definition_request() :: #{}.
+
+
+%% Example:
+%% get_subscription_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"tags">> => map()
 %% }
--type get_bulk_deployment_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_logger_definition_response() :: #{}
--type update_logger_definition_response() :: #{}.
-
-%% Example:
-%% update_group_response() :: #{}
--type update_group_response() :: #{}.
+-type get_subscription_definition_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_service_role_to_account_response() :: #{
-%%   <<"AssociatedAt">> => string()
+%% get_subscription_definition_version_request() :: #{
+%%   <<"NextToken">> => string()
 %% }
--type associate_service_role_to_account_response() :: #{binary() => any()}.
+-type get_subscription_definition_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_subscription_definition_version_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Definition">> => subscription_definition_version(),
+%%   <<"Id">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type get_subscription_definition_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_thing_runtime_configuration_request() :: #{}
+-type get_thing_runtime_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_thing_runtime_configuration_response() :: #{
+%%   <<"RuntimeConfiguration">> => runtime_configuration()
+%% }
+-type get_thing_runtime_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% greengrass_function() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionConfiguration">> => function_configuration(),
+%%   <<"Id">> => string()
+%% }
+-type greengrass_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_certificate_authority_properties() :: #{
+%%   <<"GroupCertificateAuthorityArn">> => string(),
+%%   <<"GroupCertificateAuthorityId">> => string()
+%% }
+-type group_certificate_authority_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_information() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedTimestamp">> => string(),
+%%   <<"LatestVersion">> => string(),
+%%   <<"LatestVersionArn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type group_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_owner_setting() :: #{
+%%   <<"AutoAddGroupOwner">> => boolean(),
+%%   <<"GroupOwner">> => string()
+%% }
+-type group_owner_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_version() :: #{
+%%   <<"ConnectorDefinitionVersionArn">> => string(),
+%%   <<"CoreDefinitionVersionArn">> => string(),
+%%   <<"DeviceDefinitionVersionArn">> => string(),
+%%   <<"FunctionDefinitionVersionArn">> => string(),
+%%   <<"LoggerDefinitionVersionArn">> => string(),
+%%   <<"ResourceDefinitionVersionArn">> => string(),
+%%   <<"SubscriptionDefinitionVersionArn">> => string()
+%% }
+-type group_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"ErrorDetails">> => list(error_detail()),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_deployment_detailed_reports_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_deployment_detailed_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_deployment_detailed_reports_response() :: #{
+%%   <<"Deployments">> => list(bulk_deployment_result()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_deployment_detailed_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_deployments_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bulk_deployments_response() :: #{
+%%   <<"BulkDeployments">> => list(bulk_deployment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connector_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_connector_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connector_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connector_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_core_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_response() :: #{
+%%   <<"Deployments">> => list(deployment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_device_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_function_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_function_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_function_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_function_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_certificate_authorities_request() :: #{}
+-type list_group_certificate_authorities_request() :: #{}.
+
+
+%% Example:
+%% list_group_certificate_authorities_response() :: #{
+%%   <<"GroupCertificateAuthorities">> => list(group_certificate_authority_properties())
+%% }
+-type list_group_certificate_authorities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_group_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logger_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_logger_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logger_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_logger_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logger_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_logger_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logger_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_logger_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_resource_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_definition_versions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscription_definition_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_definition_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_information())
+%% }
+-type list_subscription_definition_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_definitions_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscription_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_definitions_response() :: #{
+%%   <<"Definitions">> => list(definition_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscription_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_device_resource_data() :: #{
+%%   <<"GroupOwnerSetting">> => group_owner_setting(),
+%%   <<"SourcePath">> => string()
+%% }
+-type local_device_resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_volume_resource_data() :: #{
+%%   <<"DestinationPath">> => string(),
+%%   <<"GroupOwnerSetting">> => group_owner_setting(),
+%%   <<"SourcePath">> => string()
+%% }
+-type local_volume_resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% logger() :: #{
+%%   <<"Component">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Level">> => list(any()),
+%%   <<"Space">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type logger() :: #{binary() => any()}.
+
+
+%% Example:
+%% logger_definition_version() :: #{
+%%   <<"Loggers">> => list(logger())
+%% }
+-type logger_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_deployments_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"Force">> => boolean()
+%% }
+-type reset_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_deployments_response() :: #{
+%%   <<"DeploymentArn">> => string(),
+%%   <<"DeploymentId">> => string()
+%% }
+-type reset_deployments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceDataContainer">> => resource_data_container()
+%% }
+-type resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1955,17 +1786,36 @@
 
 
 %% Example:
-%% create_subscription_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => subscription_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
+%% resource_data_container() :: #{
+%%   <<"LocalDeviceResourceData">> => local_device_resource_data(),
+%%   <<"LocalVolumeResourceData">> => local_volume_resource_data(),
+%%   <<"S3MachineLearningModelResourceData">> => s3_machine_learning_model_resource_data(),
+%%   <<"SageMakerMachineLearningModelResourceData">> => sage_maker_machine_learning_model_resource_data(),
+%%   <<"SecretsManagerSecretResourceData">> => secrets_manager_secret_resource_data()
 %% }
--type create_subscription_definition_request() :: #{binary() => any()}.
+-type resource_data_container() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_core_definition_response() :: #{}
--type delete_core_definition_response() :: #{}.
+%% resource_definition_version() :: #{
+%%   <<"Resources">> => list(resource())
+%% }
+-type resource_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_download_owner_setting() :: #{
+%%   <<"GroupOwner">> => string(),
+%%   <<"GroupPermission">> => list(any())
+%% }
+-type resource_download_owner_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_configuration() :: #{
+%%   <<"TelemetryConfiguration">> => telemetry_configuration()
+%% }
+-type runtime_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1978,36 +1828,136 @@
 
 
 %% Example:
-%% get_connector_definition_version_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Definition">> => connector_definition_version(),
+%% sage_maker_machine_learning_model_resource_data() :: #{
+%%   <<"DestinationPath">> => string(),
+%%   <<"OwnerSetting">> => resource_download_owner_setting(),
+%%   <<"SageMakerJobArn">> => string()
+%% }
+-type sage_maker_machine_learning_model_resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_secret_resource_data() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AdditionalStagingLabelsToDownload">> => list(string())
+%% }
+-type secrets_manager_secret_resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bulk_deployment_request() :: #{
+%%   <<"AmznClientToken">> => string(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputFileUri">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_bulk_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bulk_deployment_response() :: #{
+%%   <<"BulkDeploymentArn">> => string(),
+%%   <<"BulkDeploymentId">> => string()
+%% }
+-type start_bulk_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_bulk_deployment_request() :: #{}
+-type stop_bulk_deployment_request() :: #{}.
+
+%% Example:
+%% stop_bulk_deployment_response() :: #{}
+-type stop_bulk_deployment_response() :: #{}.
+
+
+%% Example:
+%% subscription() :: #{
 %%   <<"Id">> => string(),
-%%   <<"NextToken">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_definition_version() :: #{
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type subscription_definition_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_configuration() :: #{
+%%   <<"ConfigurationSyncStatus">> => list(any()),
+%%   <<"Telemetry">> => list(any())
+%% }
+-type telemetry_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_configuration_update() :: #{
+%%   <<"Telemetry">> => list(any())
+%% }
+-type telemetry_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_info_request() :: #{
+%%   <<"ConnectivityInfo">> => list(connectivity_info())
+%% }
+-type update_connectivity_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_info_response() :: #{
+%%   <<"Message">> => string(),
 %%   <<"Version">> => string()
 %% }
--type get_connector_definition_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_logger_definition_request() :: #{}
--type delete_logger_definition_request() :: #{}.
-
-%% Example:
-%% disassociate_service_role_from_account_request() :: #{}
--type disassociate_service_role_from_account_request() :: #{}.
+-type update_connectivity_info_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTimestamp">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedTimestamp">> => string(),
-%%   <<"LatestVersion">> => string(),
-%%   <<"LatestVersionArn">> => string(),
+%% update_connector_definition_request() :: #{
 %%   <<"Name">> => string()
 %% }
--type create_group_response() :: #{binary() => any()}.
+-type update_connector_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connector_definition_response() :: #{}
+-type update_connector_definition_response() :: #{}.
+
+
+%% Example:
+%% update_core_definition_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_core_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_core_definition_response() :: #{}
+-type update_core_definition_response() :: #{}.
+
+
+%% Example:
+%% update_device_definition_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_device_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_device_definition_response() :: #{}
@@ -2015,10 +1965,59 @@
 
 
 %% Example:
-%% associate_role_to_group_request() :: #{
-%%   <<"RoleArn">> := string()
+%% update_function_definition_request() :: #{
+%%   <<"Name">> => string()
 %% }
--type associate_role_to_group_request() :: #{binary() => any()}.
+-type update_function_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_function_definition_response() :: #{}
+-type update_function_definition_response() :: #{}.
+
+
+%% Example:
+%% update_group_certificate_configuration_request() :: #{
+%%   <<"CertificateExpiryInMilliseconds">> => string()
+%% }
+-type update_group_certificate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_certificate_configuration_response() :: #{
+%%   <<"CertificateAuthorityExpiryInMilliseconds">> => string(),
+%%   <<"CertificateExpiryInMilliseconds">> => string(),
+%%   <<"GroupId">> => string()
+%% }
+-type update_group_certificate_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_response() :: #{}
+-type update_group_response() :: #{}.
+
+
+%% Example:
+%% update_logger_definition_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_logger_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_logger_definition_response() :: #{}
+-type update_logger_definition_response() :: #{}.
+
+
+%% Example:
+%% update_resource_definition_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_resource_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_resource_definition_response() :: #{}
@@ -2026,42 +2025,43 @@
 
 
 %% Example:
-%% list_device_definitions_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
+%% update_subscription_definition_request() :: #{
+%%   <<"Name">> => string()
 %% }
--type list_device_definitions_request() :: #{binary() => any()}.
+-type update_subscription_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_core_definition_request() :: #{}
--type get_core_definition_request() :: #{}.
+%% update_subscription_definition_response() :: #{}
+-type update_subscription_definition_response() :: #{}.
 
 
 %% Example:
-%% create_logger_definition_request() :: #{
-%%   <<"AmznClientToken">> => string(),
-%%   <<"InitialVersion">> => logger_definition_version(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
+%% update_thing_runtime_configuration_request() :: #{
+%%   <<"TelemetryConfiguration">> => telemetry_configuration_update()
 %% }
--type create_logger_definition_request() :: #{binary() => any()}.
+-type update_thing_runtime_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_thing_runtime_configuration_response() :: #{}
+-type update_thing_runtime_configuration_response() :: #{}.
 
 
 %% Example:
-%% resource() :: #{
+%% version_information() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTimestamp">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceDataContainer">> => resource_data_container()
+%%   <<"Version">> => string()
 %% }
--type resource() :: #{binary() => any()}.
+-type version_information() :: #{binary() => any()}.
 
 -type associate_role_to_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type associate_service_role_to_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_connector_definition_errors() ::
     bad_request_exception().
@@ -2094,8 +2094,8 @@
     bad_request_exception().
 
 -type create_group_certificate_authority_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_group_version_errors() ::
     bad_request_exception().
@@ -2113,8 +2113,8 @@
     bad_request_exception().
 
 -type create_software_update_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_subscription_definition_errors() ::
     bad_request_exception().
@@ -2147,22 +2147,22 @@
     bad_request_exception().
 
 -type disassociate_role_from_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type disassociate_service_role_from_account_errors() ::
     internal_server_error_exception().
 
 -type get_associated_role_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_bulk_deployment_status_errors() ::
     bad_request_exception().
 
 -type get_connectivity_info_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_connector_definition_errors() ::
     bad_request_exception().
@@ -2195,12 +2195,12 @@
     bad_request_exception().
 
 -type get_group_certificate_authority_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_group_certificate_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_group_version_errors() ::
     bad_request_exception().
@@ -2227,8 +2227,8 @@
     bad_request_exception().
 
 -type get_thing_runtime_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_bulk_deployment_detailed_reports_errors() ::
     bad_request_exception().
@@ -2252,8 +2252,8 @@
     bad_request_exception().
 
 -type list_group_certificate_authorities_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_group_versions_errors() ::
     bad_request_exception().
@@ -2286,8 +2286,8 @@
     bad_request_exception().
 
 -type update_connectivity_info_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_connector_definition_errors() ::
     bad_request_exception().
@@ -2305,8 +2305,8 @@
     bad_request_exception().
 
 -type update_group_certificate_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_logger_definition_errors() ::
     bad_request_exception().
@@ -2318,8 +2318,8 @@
     bad_request_exception().
 
 -type update_thing_runtime_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

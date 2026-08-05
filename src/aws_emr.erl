@@ -146,6 +146,138 @@
 
 
 %% Example:
+%% add_instance_fleet_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"InstanceFleet">> := instance_fleet_config()
+%% }
+-type add_instance_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_instance_fleet_output() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterId">> => string(),
+%%   <<"InstanceFleetId">> => string()
+%% }
+-type add_instance_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_instance_groups_input() :: #{
+%%   <<"InstanceGroups">> := list(instance_group_config()),
+%%   <<"JobFlowId">> := string()
+%% }
+-type add_instance_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_instance_groups_output() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"InstanceGroupIds">> => list(string()),
+%%   <<"JobFlowId">> => string()
+%% }
+-type add_instance_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_job_flow_steps_input() :: #{
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"JobFlowId">> := string(),
+%%   <<"Steps">> := list(step_config())
+%% }
+-type add_job_flow_steps_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_job_flow_steps_output() :: #{
+%%   <<"StepIds">> => list(string())
+%% }
+-type add_job_flow_steps_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% application() :: #{
+%%   <<"AdditionalInfo">> => map(),
+%%   <<"Args">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type application() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy() :: #{
+%%   <<"Constraints">> => scaling_constraints(),
+%%   <<"Rules">> => list(scaling_rule())
+%% }
+-type auto_scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_description() :: #{
+%%   <<"Constraints">> => scaling_constraints(),
+%%   <<"Rules">> => list(scaling_rule()),
+%%   <<"Status">> => auto_scaling_policy_status()
+%% }
+-type auto_scaling_policy_description() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type auto_scaling_policy_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_policy_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => auto_scaling_policy_state_change_reason()
+%% }
+-type auto_scaling_policy_status() :: #{binary() => any()}.
+
+%% Example:
+%% auto_termination_policy() :: #{
+%%   <<"IdleTimeout">> => float()
+%% }
+-type auto_termination_policy() :: #{binary() => any()}.
+
+%% Example:
+%% block_public_access_configuration() :: #{
+%%   <<"BlockPublicSecurityGroupRules">> => boolean(),
+%%   <<"Classification">> => string(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"PermittedPublicSecurityGroupRuleRanges">> => list(port_range()),
+%%   <<"Properties">> => map()
+%% }
+-type block_public_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% block_public_access_configuration_metadata() :: #{
+%%   <<"CreatedByArn">> => string(),
+%%   <<"CreationDateTime">> => non_neg_integer()
+%% }
+-type block_public_access_configuration_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% bootstrap_action_config() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ScriptBootstrapAction">> => script_bootstrap_action_config()
+%% }
+-type bootstrap_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% bootstrap_action_detail() :: #{
+%%   <<"BootstrapActionConfig">> => bootstrap_action_config()
+%% }
+-type bootstrap_action_detail() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_steps_info() :: #{
 %%   <<"Reason">> => string(),
 %%   <<"Status">> => list(any()),
@@ -154,34 +286,145 @@
 -type cancel_steps_info() :: #{binary() => any()}.
 
 %% Example:
-%% instance_state_change_reason() :: #{
+%% cancel_steps_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"StepCancellationOption">> => list(any()),
+%%   <<"StepIds">> := list(string())
+%% }
+-type cancel_steps_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_steps_output() :: #{
+%%   <<"CancelStepsInfoList">> => list(cancel_steps_info())
+%% }
+-type cancel_steps_output() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_alarm_definition() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Dimensions">> => list(metric_dimension()),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"Unit">> => list(any())
+%% }
+-type cloud_watch_alarm_definition() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_log_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type cloud_watch_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"Applications">> => list(application()),
+%%   <<"AutoScalingRole">> => string(),
+%%   <<"AutoTerminate">> => boolean(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EbsRootVolumeIops">> => integer(),
+%%   <<"EbsRootVolumeSize">> => integer(),
+%%   <<"EbsRootVolumeThroughput">> => integer(),
+%%   <<"Ec2InstanceAttributes">> => ec2_instance_attributes(),
+%%   <<"ExtendedSupport">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceCollectionType">> => list(any()),
+%%   <<"KerberosAttributes">> => kerberos_attributes(),
+%%   <<"LogEncryptionKmsKeyId">> => string(),
+%%   <<"LogUri">> => string(),
+%%   <<"MasterPublicDnsName">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"NormalizedInstanceHours">> => integer(),
+%%   <<"OSReleaseLabel">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"PlacementGroups">> => list(placement_group_config()),
+%%   <<"ReleaseLabel">> => string(),
+%%   <<"RepoUpgradeOnBoot">> => list(any()),
+%%   <<"RequestedAmiVersion">> => string(),
+%%   <<"RunningAmiVersion">> => string(),
+%%   <<"ScaleDownBehavior">> => list(any()),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"SessionEnabled">> => boolean(),
+%%   <<"Status">> => cluster_status(),
+%%   <<"StepConcurrencyLevel">> => integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TerminationProtected">> => boolean(),
+%%   <<"UnhealthyNodeReplacement">> => boolean(),
+%%   <<"VisibleToAllUsers">> => boolean()
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_state_change_reason() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
--type instance_state_change_reason() :: #{binary() => any()}.
+-type cluster_state_change_reason() :: #{binary() => any()}.
 
 %% Example:
-%% output_notebook_s3_location_from_input() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
+%% cluster_status() :: #{
+%%   <<"ErrorDetails">> => list(error_detail()),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => cluster_state_change_reason(),
+%%   <<"Timeline">> => cluster_timeline()
 %% }
--type output_notebook_s3_location_from_input() :: #{binary() => any()}.
+-type cluster_status() :: #{binary() => any()}.
 
 %% Example:
-%% start_session_output() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ClusterId">> => string(),
+%% cluster_summary() :: #{
+%%   <<"ClusterArn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"Name">> => string(),
+%%   <<"NormalizedInstanceHours">> => integer(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"Status">> => cluster_status()
 %% }
--type start_session_output() :: #{binary() => any()}.
+-type cluster_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_auto_termination_policy_input() :: #{
-%%   <<"ClusterId">> := string()
+%% cluster_timeline() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"ReadyDateTime">> => non_neg_integer()
 %% }
--type get_auto_termination_policy_input() :: #{binary() => any()}.
+-type cluster_timeline() :: #{binary() => any()}.
+
+%% Example:
+%% command() :: #{
+%%   <<"Args">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"ScriptPath">> => string()
+%% }
+-type command() :: #{binary() => any()}.
+
+%% Example:
+%% compute_limits() :: #{
+%%   <<"MaximumCapacityUnits">> => integer(),
+%%   <<"MaximumCoreCapacityUnits">> => integer(),
+%%   <<"MaximumOnDemandCapacityUnits">> => integer(),
+%%   <<"MinimumCapacityUnits">> => integer(),
+%%   <<"UnitType">> => list(any())
+%% }
+-type compute_limits() :: #{binary() => any()}.
+
+%% Example:
+%% configuration() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"Properties">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_persistent_app_ui_input() :: #{
@@ -194,105 +437,54 @@
 -type create_persistent_app_ui_input() :: #{binary() => any()}.
 
 %% Example:
-%% bootstrap_action_detail() :: #{
-%%   <<"BootstrapActionConfig">> => bootstrap_action_config()
+%% create_persistent_app_ui_output() :: #{
+%%   <<"PersistentAppUIId">> => string(),
+%%   <<"RuntimeRoleEnabledCluster">> => boolean()
 %% }
--type bootstrap_action_detail() :: #{binary() => any()}.
+-type create_persistent_app_ui_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_bootstrap_actions_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"Marker">> => string()
+%% create_security_configuration_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SecurityConfiguration">> := string()
 %% }
--type list_bootstrap_actions_input() :: #{binary() => any()}.
+-type create_security_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% put_auto_termination_policy_output() :: #{
-
-%% }
--type put_auto_termination_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% s3_monitoring_configuration() :: #{
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"LogUri">> => string()
-%% }
--type s3_monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% auto_termination_policy() :: #{
-%%   <<"IdleTimeout">> => float()
-%% }
--type auto_termination_policy() :: #{binary() => any()}.
-
-%% Example:
-%% describe_release_label_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReleaseLabel">> => string()
-%% }
--type describe_release_label_input() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_trigger() :: #{
-%%   <<"CloudWatchAlarmDefinition">> => cloud_watch_alarm_definition()
-%% }
--type scaling_trigger() :: #{binary() => any()}.
-
-%% Example:
-%% bootstrap_action_config() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ScriptBootstrapAction">> => script_bootstrap_action_config()
-%% }
--type bootstrap_action_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_studio_input() :: #{
-%%   <<"StudioId">> := string()
-%% }
--type delete_studio_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_security_configuration_output() :: #{
+%% create_security_configuration_output() :: #{
 %%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecurityConfiguration">> => string()
+%%   <<"Name">> => string()
 %% }
--type describe_security_configuration_output() :: #{binary() => any()}.
+-type create_security_configuration_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_instance_groups_output() :: #{
-%%   <<"InstanceGroups">> => list(instance_group()),
-%%   <<"Marker">> => string()
+%% create_studio_input() :: #{
+%%   <<"AuthMode">> := list(any()),
+%%   <<"DefaultS3Location">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EngineSecurityGroupId">> := string(),
+%%   <<"IdcInstanceArn">> => string(),
+%%   <<"IdcUserAssignment">> => list(any()),
+%%   <<"IdpAuthUrl">> => string(),
+%%   <<"IdpRelayStateParameterName">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ServiceRole">> := string(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrustedIdentityPropagationEnabled">> => boolean(),
+%%   <<"UserRole">> => string(),
+%%   <<"VpcId">> := string(),
+%%   <<"WorkspaceSecurityGroupId">> := string()
 %% }
--type list_instance_groups_output() :: #{binary() => any()}.
+-type create_studio_input() :: #{binary() => any()}.
 
 %% Example:
-%% step_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% create_studio_output() :: #{
+%%   <<"StudioId">> => string(),
+%%   <<"Url">> => string()
 %% }
--type step_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% release_label_filter() :: #{
-%%   <<"Application">> => string(),
-%%   <<"Prefix">> => string()
-%% }
--type release_label_filter() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => auto_scaling_policy_state_change_reason()
-%% }
--type auto_scaling_policy_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_output() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type describe_cluster_output() :: #{binary() => any()}.
+-type create_studio_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_studio_session_mapping_input() :: #{
@@ -305,25 +497,120 @@
 -type create_studio_session_mapping_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_cluster_session_credentials_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"ExecutionRoleArn">> => string()
+%% delete_security_configuration_input() :: #{
+%%   <<"Name">> := string()
 %% }
--type get_cluster_session_credentials_input() :: #{binary() => any()}.
+-type delete_security_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% simplified_application() :: #{
+%% delete_security_configuration_output() :: #{
+
+%% }
+-type delete_security_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_studio_input() :: #{
+%%   <<"StudioId">> := string()
+%% }
+-type delete_studio_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_studio_session_mapping_input() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> := list(any()),
+%%   <<"StudioId">> := string()
+%% }
+-type delete_studio_session_mapping_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_input() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type describe_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_output() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type describe_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_flows_input() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"JobFlowIds">> => list(string()),
+%%   <<"JobFlowStates">> => list(list(any())())
+%% }
+-type describe_job_flows_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_flows_output() :: #{
+%%   <<"JobFlows">> => list(job_flow_detail())
+%% }
+-type describe_job_flows_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_execution_input() :: #{
+%%   <<"NotebookExecutionId">> := string()
+%% }
+-type describe_notebook_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_execution_output() :: #{
+%%   <<"NotebookExecution">> => notebook_execution()
+%% }
+-type describe_notebook_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_persistent_app_ui_input() :: #{
+%%   <<"PersistentAppUIId">> := string()
+%% }
+-type describe_persistent_app_ui_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_persistent_app_ui_output() :: #{
+%%   <<"PersistentAppUI">> => persistent_app_ui()
+%% }
+-type describe_persistent_app_ui_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_release_label_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReleaseLabel">> => string()
+%% }
+-type describe_release_label_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_release_label_output() :: #{
+%%   <<"Applications">> => list(simplified_application()),
+%%   <<"AvailableOSReleases">> => list(o_s_release()),
+%%   <<"NextToken">> => string(),
+%%   <<"ReleaseLabel">> => string()
+%% }
+-type describe_release_label_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_configuration_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_security_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_configuration_output() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Version">> => string()
+%%   <<"SecurityConfiguration">> => string()
 %% }
--type simplified_application() :: #{binary() => any()}.
+-type describe_security_configuration_output() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_authority() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateData">> => string()
+%% describe_step_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"StepId">> := string()
 %% }
--type certificate_authority() :: #{binary() => any()}.
+-type describe_step_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_step_output() :: #{
@@ -332,69 +619,159 @@
 -type describe_step_output() :: #{binary() => any()}.
 
 %% Example:
-%% set_visible_to_all_users_input() :: #{
-%%   <<"JobFlowIds">> := list(string()),
-%%   <<"VisibleToAllUsers">> := boolean()
+%% describe_studio_input() :: #{
+%%   <<"StudioId">> := string()
 %% }
--type set_visible_to_all_users_input() :: #{binary() => any()}.
+-type describe_studio_input() :: #{binary() => any()}.
 
 %% Example:
-%% put_block_public_access_configuration_input() :: #{
-%%   <<"BlockPublicAccessConfiguration">> := block_public_access_configuration()
+%% describe_studio_output() :: #{
+%%   <<"Studio">> => studio()
 %% }
--type put_block_public_access_configuration_input() :: #{binary() => any()}.
+-type describe_studio_output() :: #{binary() => any()}.
 
 %% Example:
-%% add_instance_fleet_input() :: #{
+%% ebs_block_device() :: #{
+%%   <<"Device">> => string(),
+%%   <<"VolumeSpecification">> => volume_specification()
+%% }
+-type ebs_block_device() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_block_device_config() :: #{
+%%   <<"VolumeSpecification">> => volume_specification(),
+%%   <<"VolumesPerInstance">> => integer()
+%% }
+-type ebs_block_device_config() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_configuration() :: #{
+%%   <<"EbsBlockDeviceConfigs">> => list(ebs_block_device_config()),
+%%   <<"EbsOptimized">> => boolean()
+%% }
+-type ebs_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_volume() :: #{
+%%   <<"Device">> => string(),
+%%   <<"VolumeId">> => string()
+%% }
+-type ebs_volume() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_attributes() :: #{
+%%   <<"AdditionalMasterSecurityGroups">> => list(string()),
+%%   <<"AdditionalSlaveSecurityGroups">> => list(string()),
+%%   <<"Ec2AvailabilityZone">> => string(),
+%%   <<"Ec2KeyName">> => string(),
+%%   <<"Ec2SubnetId">> => string(),
+%%   <<"EmrManagedMasterSecurityGroup">> => string(),
+%%   <<"EmrManagedSlaveSecurityGroup">> => string(),
+%%   <<"IamInstanceProfile">> => string(),
+%%   <<"RequestedEc2AvailabilityZones">> => list(string()),
+%%   <<"RequestedEc2SubnetIds">> => list(string()),
+%%   <<"ServiceAccessSecurityGroup">> => string()
+%% }
+-type ec2_instance_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% emr_containers_config() :: #{
+%%   <<"JobRunId">> => string()
+%% }
+-type emr_containers_config() :: #{binary() => any()}.
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorData">> => list(map()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% execution_engine_config() :: #{
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MasterInstanceSecurityGroupId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type execution_engine_config() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"LogFile">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_termination_policy_input() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type get_auto_termination_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_termination_policy_output() :: #{
+%%   <<"AutoTerminationPolicy">> => auto_termination_policy()
+%% }
+-type get_auto_termination_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_block_public_access_configuration_input() :: #{
+
+%% }
+-type get_block_public_access_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_block_public_access_configuration_output() :: #{
+%%   <<"BlockPublicAccessConfiguration">> => block_public_access_configuration(),
+%%   <<"BlockPublicAccessConfigurationMetadata">> => block_public_access_configuration_metadata()
+%% }
+-type get_block_public_access_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_session_credentials_input() :: #{
 %%   <<"ClusterId">> := string(),
-%%   <<"InstanceFleet">> := instance_fleet_config()
+%%   <<"ExecutionRoleArn">> => string()
 %% }
--type add_instance_fleet_input() :: #{binary() => any()}.
+-type get_cluster_session_credentials_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_instance_fleets_output() :: #{
-%%   <<"InstanceFleets">> => list(instance_fleet()),
-%%   <<"Marker">> => string()
+%% get_cluster_session_credentials_output() :: #{
+%%   <<"Credentials">> => list(),
+%%   <<"ExpiresAt">> => non_neg_integer()
 %% }
--type list_instance_fleets_output() :: #{binary() => any()}.
+-type get_cluster_session_credentials_output() :: #{binary() => any()}.
 
 %% Example:
-%% step_detail() :: #{
-%%   <<"ExecutionStatusDetail">> => step_execution_status_detail(),
-%%   <<"StepConfig">> => step_config()
+%% get_managed_scaling_policy_input() :: #{
+%%   <<"ClusterId">> := string()
 %% }
--type step_detail() :: #{binary() => any()}.
+-type get_managed_scaling_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% terminate_session_input() :: #{
+%% get_managed_scaling_policy_output() :: #{
+%%   <<"ManagedScalingPolicy">> => managed_scaling_policy()
+%% }
+-type get_managed_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_on_cluster_app_ui_presigned_url_input() :: #{
+%%   <<"ApplicationId">> => string(),
 %%   <<"ClusterId">> := string(),
-%%   <<"SessionId">> := string()
+%%   <<"DryRun">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"OnClusterAppUIType">> => list(any())
 %% }
--type terminate_session_input() :: #{binary() => any()}.
+-type get_on_cluster_app_ui_presigned_url_input() :: #{binary() => any()}.
 
 %% Example:
-%% script_bootstrap_action_config() :: #{
-%%   <<"Args">> => list(string()),
-%%   <<"Path">> => string()
+%% get_on_cluster_app_ui_presigned_url_output() :: #{
+%%   <<"PresignedURL">> => string(),
+%%   <<"PresignedURLReady">> => boolean()
 %% }
--type script_bootstrap_action_config() :: #{binary() => any()}.
-
-%% Example:
-%% add_instance_groups_output() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"InstanceGroupIds">> => list(string()),
-%%   <<"JobFlowId">> => string()
-%% }
--type add_instance_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% volume_specification() :: #{
-%%   <<"Iops">> => integer(),
-%%   <<"SizeInGB">> => integer(),
-%%   <<"Throughput">> => integer(),
-%%   <<"VolumeType">> => string()
-%% }
--type volume_specification() :: #{binary() => any()}.
+-type get_on_cluster_app_ui_presigned_url_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_persistent_app_ui_presigned_url_input() :: #{
@@ -407,75 +784,90 @@
 -type get_persistent_app_ui_presigned_url_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_steps_input() :: #{
+%% get_persistent_app_ui_presigned_url_output() :: #{
+%%   <<"PresignedURL">> => string(),
+%%   <<"PresignedURLReady">> => boolean()
+%% }
+-type get_persistent_app_ui_presigned_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_input() :: #{
 %%   <<"ClusterId">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"StepIds">> => list(string()),
-%%   <<"StepStates">> => list(list(any())())
+%%   <<"SessionId">> := string()
 %% }
--type list_steps_input() :: #{binary() => any()}.
+-type get_session_endpoint_input() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_output() :: #{
-
+%% get_session_endpoint_output() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"Credentials">> => list(),
+%%   <<"Endpoint">> => string()
 %% }
--type add_tags_output() :: #{binary() => any()}.
+-type get_session_endpoint_output() :: #{binary() => any()}.
 
 %% Example:
-%% start_notebook_execution_output() :: #{
-%%   <<"NotebookExecutionId">> => string()
+%% get_session_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"SessionId">> := string()
 %% }
--type start_notebook_execution_output() :: #{binary() => any()}.
+-type get_session_input() :: #{binary() => any()}.
 
 %% Example:
-%% spot_resizing_specification() :: #{
-%%   <<"AllocationStrategy">> => list(any()),
-%%   <<"TimeoutDurationMinutes">> => integer()
+%% get_session_output() :: #{
+%%   <<"Session">> => session()
 %% }
--type spot_resizing_specification() :: #{binary() => any()}.
+-type get_session_output() :: #{binary() => any()}.
 
 %% Example:
-%% session_managed_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EncryptionKeyArn">> => string()
+%% get_studio_session_mapping_input() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> := list(any()),
+%%   <<"StudioId">> := string()
 %% }
--type session_managed_logging_configuration() :: #{binary() => any()}.
+-type get_studio_session_mapping_input() :: #{binary() => any()}.
 
 %% Example:
-%% configuration() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"Configurations">> => list(configuration()),
+%% get_studio_session_mapping_output() :: #{
+%%   <<"SessionMapping">> => session_mapping_detail()
+%% }
+-type get_studio_session_mapping_output() :: #{binary() => any()}.
+
+%% Example:
+%% hadoop_jar_step_config() :: #{
+%%   <<"Args">> => list(string()),
+%%   <<"Jar">> => string(),
+%%   <<"MainClass">> => string(),
+%%   <<"Properties">> => list(key_value())
+%% }
+-type hadoop_jar_step_config() :: #{binary() => any()}.
+
+%% Example:
+%% hadoop_step_config() :: #{
+%%   <<"Args">> => list(string()),
+%%   <<"Jar">> => string(),
+%%   <<"MainClass">> => string(),
 %%   <<"Properties">> => map()
 %% }
--type configuration() :: #{binary() => any()}.
+-type hadoop_step_config() :: #{binary() => any()}.
 
 %% Example:
-%% instance_group_timeline() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"ReadyDateTime">> => non_neg_integer()
+%% instance() :: #{
+%%   <<"EbsVolumes">> => list(ebs_volume()),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceFleetId">> => string(),
+%%   <<"InstanceGroupId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Market">> => list(any()),
+%%   <<"PrivateDnsName">> => string(),
+%%   <<"PrivateIpAddress">> => string(),
+%%   <<"PublicDnsName">> => string(),
+%%   <<"PublicIpAddress">> => string(),
+%%   <<"Status">> => instance_status()
 %% }
--type instance_group_timeline() :: #{binary() => any()}.
-
-%% Example:
-%% supported_product_config() :: #{
-%%   <<"Args">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type supported_product_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_configurations_input() :: #{
-%%   <<"Marker">> => string()
-%% }
--type list_security_configurations_input() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy() :: #{
-%%   <<"Constraints">> => scaling_constraints(),
-%%   <<"Rules">> => list(scaling_rule())
-%% }
--type auto_scaling_policy() :: #{binary() => any()}.
+-type instance() :: #{binary() => any()}.
 
 %% Example:
 %% instance_fleet() :: #{
@@ -495,570 +887,28 @@
 -type instance_fleet() :: #{binary() => any()}.
 
 %% Example:
-%% describe_job_flows_input() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"JobFlowIds">> => list(string()),
-%%   <<"JobFlowStates">> => list(list(any())())
-%% }
--type describe_job_flows_input() :: #{binary() => any()}.
-
-%% Example:
-%% placement_group_config() :: #{
-%%   <<"InstanceRole">> => list(any()),
-%%   <<"PlacementStrategy">> => list(any())
-%% }
--type placement_group_config() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_input() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% hadoop_step_config() :: #{
-%%   <<"Args">> => list(string()),
-%%   <<"Jar">> => string(),
-%%   <<"MainClass">> => string(),
-%%   <<"Properties">> => map()
-%% }
--type hadoop_step_config() :: #{binary() => any()}.
-
-%% Example:
-%% session_cloud_watch_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"LogGroup">> => string(),
-%%   <<"LogStreamNamePrefix">> => string(),
-%%   <<"LogTypes">> => map()
-%% }
--type session_cloud_watch_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_configuration() :: #{
-%%   <<"CloudWatchLogConfiguration">> => cloud_watch_log_configuration(),
-%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
-%% }
--type monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_supported_instance_types_input() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReleaseLabel">> := string()
-%% }
--type list_supported_instance_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_release_label_output() :: #{
-%%   <<"Applications">> => list(simplified_application()),
-%%   <<"AvailableOSReleases">> => list(o_s_release()),
-%%   <<"NextToken">> => string(),
-%%   <<"ReleaseLabel">> => string()
-%% }
--type describe_release_label_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_scaling_policy_input() :: #{
-%%   <<"ClusterId">> := string()
-%% }
--type get_managed_scaling_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% security_configuration_summary() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type security_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% job_flow_detail() :: #{
-%%   <<"AmiVersion">> => string(),
-%%   <<"AutoScalingRole">> => string(),
-%%   <<"BootstrapActions">> => list(bootstrap_action_detail()),
-%%   <<"ExecutionStatusDetail">> => job_flow_execution_status_detail(),
-%%   <<"Instances">> => job_flow_instances_detail(),
-%%   <<"JobFlowId">> => string(),
-%%   <<"JobFlowRole">> => string(),
-%%   <<"LogEncryptionKmsKeyId">> => string(),
-%%   <<"LogUri">> => string(),
+%% instance_fleet_config() :: #{
+%%   <<"Context">> => string(),
+%%   <<"InstanceFleetType">> => list(any()),
+%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
+%%   <<"LaunchSpecifications">> => instance_fleet_provisioning_specifications(),
 %%   <<"Name">> => string(),
-%%   <<"ScaleDownBehavior">> => list(any()),
-%%   <<"ServiceRole">> => string(),
-%%   <<"Steps">> => list(step_detail()),
-%%   <<"SupportedProducts">> => list(string()),
-%%   <<"VisibleToAllUsers">> => boolean()
+%%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
+%%   <<"TargetOnDemandCapacity">> => integer(),
+%%   <<"TargetSpotCapacity">> => integer()
 %% }
--type job_flow_detail() :: #{binary() => any()}.
+-type instance_fleet_config() :: #{binary() => any()}.
 
 %% Example:
-%% remove_auto_termination_policy_input() :: #{
-%%   <<"ClusterId">> := string()
+%% instance_fleet_modify_config() :: #{
+%%   <<"Context">> => string(),
+%%   <<"InstanceFleetId">> => string(),
+%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
+%%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
+%%   <<"TargetOnDemandCapacity">> => integer(),
+%%   <<"TargetSpotCapacity">> => integer()
 %% }
--type remove_auto_termination_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_instances_output() :: #{
-%%   <<"Instances">> => list(instance()),
-%%   <<"Marker">> => string()
-%% }
--type list_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% failure_details() :: #{
-%%   <<"LogFile">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => string()
-%% }
--type failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_output() :: #{
-%%   <<"Clusters">> => list(cluster_summary()),
-%%   <<"Marker">> => string()
-%% }
--type list_clusters_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_termination_policy_output() :: #{
-%%   <<"AutoTerminationPolicy">> => auto_termination_policy()
-%% }
--type get_auto_termination_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_execution() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"EditorId">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EnvironmentVariables">> => map(),
-%%   <<"ExecutionEngine">> => execution_engine_config(),
-%%   <<"LastStateChangeReason">> => string(),
-%%   <<"NotebookExecutionId">> => string(),
-%%   <<"NotebookExecutionName">> => string(),
-%%   <<"NotebookInstanceSecurityGroupId">> => string(),
-%%   <<"NotebookParams">> => string(),
-%%   <<"NotebookS3Location">> => notebook_s3_location_for_output(),
-%%   <<"OutputNotebookFormat">> => list(any()),
-%%   <<"OutputNotebookS3Location">> => output_notebook_s3_location_for_output(),
-%%   <<"OutputNotebookURI">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type notebook_execution() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_output() :: #{
-
-%% }
--type remove_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ClusterId">> := string(),
-%%   <<"EngineConfigurations">> => list(configuration()),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
-%%   <<"Name">> => string(),
-%%   <<"SessionIdleTimeoutInMinutes">> => float(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_session_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => instance_group_state_change_reason(),
-%%   <<"Timeline">> => instance_group_timeline()
-%% }
--type instance_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_s3_location_from_input() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type notebook_s3_location_from_input() :: #{binary() => any()}.
-
-%% Example:
-%% block_public_access_configuration_metadata() :: #{
-%%   <<"CreatedByArn">> => string(),
-%%   <<"CreationDateTime">> => non_neg_integer()
-%% }
--type block_public_access_configuration_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% put_block_public_access_configuration_output() :: #{
-
-%% }
--type put_block_public_access_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_summary() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NormalizedInstanceHours">> => integer(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"Status">> => cluster_status()
-%% }
--type cluster_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_auto_scaling_policy_input() :: #{
-%%   <<"AutoScalingPolicy">> := auto_scaling_policy(),
-%%   <<"ClusterId">> := string(),
-%%   <<"InstanceGroupId">> := string()
-%% }
--type put_auto_scaling_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_alarm_definition() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Dimensions">> => list(metric_dimension()),
-%%   <<"EvaluationPeriods">> => integer(),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"Unit">> => list(any())
-%% }
--type cloud_watch_alarm_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_persistent_app_ui_output() :: #{
-%%   <<"PersistentAppUIId">> => string(),
-%%   <<"RuntimeRoleEnabledCluster">> => boolean()
-%% }
--type create_persistent_app_ui_output() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_output() :: #{
-%%   <<"ExtendedSupport">> => boolean(),
-%%   <<"StepConcurrencyLevel">> => integer()
-%% }
--type modify_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% step_status() :: #{
-%%   <<"FailureDetails">> => failure_details(),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => step_state_change_reason(),
-%%   <<"Timeline">> => step_timeline()
-%% }
--type step_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_on_cluster_app_ui_presigned_url_input() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ClusterId">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"OnClusterAppUIType">> => list(any())
-%% }
--type get_on_cluster_app_ui_presigned_url_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_studio_session_mapping_input() :: #{
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> := list(any()),
-%%   <<"StudioId">> := string()
-%% }
--type delete_studio_session_mapping_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_managed_scaling_policy_input() :: #{
-%%   <<"ClusterId">> := string()
-%% }
--type remove_managed_scaling_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% on_demand_capacity_reservation_options() :: #{
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"CapacityReservationResourceGroupArn">> => string(),
-%%   <<"UsageStrategy">> => list(any())
-%% }
--type on_demand_capacity_reservation_options() :: #{binary() => any()}.
-
-%% Example:
-%% set_keep_job_flow_alive_when_no_steps_input() :: #{
-%%   <<"JobFlowIds">> := list(string()),
-%%   <<"KeepJobFlowAliveWhenNoSteps">> := boolean()
-%% }
--type set_keep_job_flow_alive_when_no_steps_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_configuration_output() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type create_security_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_job_flow_steps_output() :: #{
-%%   <<"StepIds">> => list(string())
-%% }
--type add_job_flow_steps_output() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type auto_scaling_policy_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_executions_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"NotebookExecutions">> => list(notebook_execution_summary())
-%% }
--type list_notebook_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% session_mapping_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> => list(any()),
-%%   <<"SessionPolicyArn">> => string(),
-%%   <<"StudioId">> => string()
-%% }
--type session_mapping_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_studios_input() :: #{
-%%   <<"Marker">> => string()
-%% }
--type list_studios_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_instance_groups_input() :: #{
-%%   <<"InstanceGroups">> := list(instance_group_config()),
-%%   <<"JobFlowId">> := string()
-%% }
--type add_instance_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_detail() :: #{
-%%   <<"BidPrice">> => string(),
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"InstanceGroupId">> => string(),
-%%   <<"InstanceRequestCount">> => integer(),
-%%   <<"InstanceRole">> => list(any()),
-%%   <<"InstanceRunningCount">> => integer(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LastStateChangeReason">> => string(),
-%%   <<"Market">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ReadyDateTime">> => non_neg_integer(),
-%%   <<"StartDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type instance_group_detail() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_studio_session_mappings_input() :: #{
-%%   <<"IdentityType">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"StudioId">> => string()
-%% }
--type list_studio_session_mappings_input() :: #{binary() => any()}.
-
-%% Example:
-%% s3_logging_configuration() :: #{
-%%   <<"LogTypeUploadPolicy">> => map()
-%% }
--type s3_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_volume() :: #{
-%%   <<"Device">> => string(),
-%%   <<"VolumeId">> => string()
-%% }
--type ebs_volume() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"SessionId">> := string()
-%% }
--type get_session_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_security_configuration_input() :: #{
-%%   <<"Name">> := string()
-%% }
--type describe_security_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% cluster() :: #{
-%%   <<"Ec2InstanceAttributes">> => ec2_instance_attributes(),
-%%   <<"LogEncryptionKmsKeyId">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SessionEnabled">> => boolean(),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
-%%   <<"EbsRootVolumeIops">> => integer(),
-%%   <<"AutoScalingRole">> => string(),
-%%   <<"RequestedAmiVersion">> => string(),
-%%   <<"KerberosAttributes">> => kerberos_attributes(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"TerminationProtected">> => boolean(),
-%%   <<"NormalizedInstanceHours">> => integer(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"RunningAmiVersion">> => string(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"ReleaseLabel">> => string(),
-%%   <<"LogUri">> => string(),
-%%   <<"Applications">> => list(application()),
-%%   <<"UnhealthyNodeReplacement">> => boolean(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"EbsRootVolumeThroughput">> => integer(),
-%%   <<"AutoTerminate">> => boolean(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"MasterPublicDnsName">> => string(),
-%%   <<"ScaleDownBehavior">> => list(any()),
-%%   <<"EbsRootVolumeSize">> => integer(),
-%%   <<"ExtendedSupport">> => boolean(),
-%%   <<"OSReleaseLabel">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RepoUpgradeOnBoot">> => list(any()),
-%%   <<"Status">> => cluster_status(),
-%%   <<"StepConcurrencyLevel">> => integer(),
-%%   <<"VisibleToAllUsers">> => boolean(),
-%%   <<"InstanceCollectionType">> => list(any()),
-%%   <<"PlacementGroups">> => list(placement_group_config())
-%% }
--type cluster() :: #{binary() => any()}.
-
-%% Example:
-%% get_studio_session_mapping_output() :: #{
-%%   <<"SessionMapping">> => session_mapping_detail()
-%% }
--type get_studio_session_mapping_output() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_config() :: #{
-%%   <<"AutoScalingPolicy">> => auto_scaling_policy(),
-%%   <<"BidPrice">> => string(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"EbsConfiguration">> => ebs_configuration(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceRole">> => list(any()),
-%%   <<"InstanceType">> => string(),
-%%   <<"Market">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type instance_group_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_configurations_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SecurityConfigurations">> => list(security_configuration_summary())
-%% }
--type list_security_configurations_output() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_policy_description() :: #{
-%%   <<"Constraints">> => scaling_constraints(),
-%%   <<"Rules">> => list(scaling_rule()),
-%%   <<"Status">> => auto_scaling_policy_status()
-%% }
--type auto_scaling_policy_description() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_scaling_policy_output() :: #{
-%%   <<"ManagedScalingPolicy">> => managed_scaling_policy()
-%% }
--type get_managed_scaling_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% run_job_flow_output() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"JobFlowId">> => string()
-%% }
--type run_job_flow_output() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type cluster_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_fleets_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"Marker">> => string()
-%% }
--type list_instance_fleets_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_input() :: #{
-%%   <<"ClusterStates">> => list(list(any())()),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_clusters_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_auto_scaling_policy_output() :: #{
-%%   <<"AutoScalingPolicy">> => auto_scaling_policy_description(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterId">> => string(),
-%%   <<"InstanceGroupId">> => string()
-%% }
--type put_auto_scaling_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_notebook_execution_input() :: #{
-%%   <<"NotebookExecutionId">> := string()
-%% }
--type stop_notebook_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_studio_session_mappings_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SessionMappings">> => list(session_mapping_summary())
-%% }
--type list_studio_session_mappings_output() :: #{binary() => any()}.
-
-%% Example:
-%% remove_auto_termination_policy_output() :: #{
-
-%% }
--type remove_auto_termination_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_session_credentials_output() :: #{
-%%   <<"Credentials">> => list(),
-%%   <<"ExpiresAt">> => non_neg_integer()
-%% }
--type get_cluster_session_credentials_output() :: #{binary() => any()}.
+-type instance_fleet_modify_config() :: #{binary() => any()}.
 
 %% Example:
 %% instance_fleet_provisioning_specifications() :: #{
@@ -1068,40 +918,6 @@
 -type instance_fleet_provisioning_specifications() :: #{binary() => any()}.
 
 %% Example:
-%% application() :: #{
-%%   <<"AdditionalInfo">> => map(),
-%%   <<"Args">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type application() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_configuration_output() :: #{
-
-%% }
--type delete_security_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_studio_input() :: #{
-%%   <<"StudioId">> := string()
-%% }
--type describe_studio_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_supported_instance_types_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SupportedInstanceTypes">> => list(supported_instance_type())
-%% }
--type list_supported_instance_types_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_output() :: #{
-%%   <<"Session">> => session()
-%% }
--type get_session_output() :: #{binary() => any()}.
-
-%% Example:
 %% instance_fleet_resizing_specifications() :: #{
 %%   <<"OnDemandResizeSpecification">> => on_demand_resizing_specification(),
 %%   <<"SpotResizeSpecification">> => spot_resizing_specification()
@@ -1109,39 +925,11 @@
 -type instance_fleet_resizing_specifications() :: #{binary() => any()}.
 
 %% Example:
-%% instance_type_config() :: #{
-%%   <<"BidPrice">> => string(),
-%%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"EbsConfiguration">> => ebs_configuration(),
-%%   <<"InstanceType">> => string(),
-%%   <<"Priority">> => float(),
-%%   <<"WeightedCapacity">> => integer()
+%% instance_fleet_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type instance_type_config() :: #{binary() => any()}.
-
-%% Example:
-%% supported_instance_type() :: #{
-%%   <<"Architecture">> => string(),
-%%   <<"EbsOptimizedAvailable">> => boolean(),
-%%   <<"EbsOptimizedByDefault">> => boolean(),
-%%   <<"EbsStorageOnly">> => boolean(),
-%%   <<"InstanceFamilyId">> => string(),
-%%   <<"Is64BitsOnly">> => boolean(),
-%%   <<"MemoryGB">> => float(),
-%%   <<"NumberOfDisks">> => integer(),
-%%   <<"StorageGB">> => integer(),
-%%   <<"Type">> => string(),
-%%   <<"VCPU">> => integer()
-%% }
--type supported_instance_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_flows_output() :: #{
-%%   <<"JobFlows">> => list(job_flow_detail())
-%% }
--type describe_job_flows_output() :: #{binary() => any()}.
+-type instance_fleet_state_change_reason() :: #{binary() => any()}.
 
 %% Example:
 %% instance_fleet_status() :: #{
@@ -1152,28 +940,12 @@
 -type instance_fleet_status() :: #{binary() => any()}.
 
 %% Example:
-%% step_config() :: #{
-%%   <<"ActionOnFailure">> => list(any()),
-%%   <<"HadoopJarStep">> => hadoop_jar_step_config(),
-%%   <<"Name">> => string(),
-%%   <<"StepMonitoringConfiguration">> => step_monitoring_configuration()
+%% instance_fleet_timeline() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"ReadyDateTime">> => non_neg_integer()
 %% }
--type step_config() :: #{binary() => any()}.
-
-%% Example:
-%% add_instance_fleet_output() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterId">> => string(),
-%%   <<"InstanceFleetId">> => string()
-%% }
--type add_instance_fleet_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_bootstrap_actions_output() :: #{
-%%   <<"BootstrapActions">> => list(command()),
-%%   <<"Marker">> => string()
-%% }
--type list_bootstrap_actions_output() :: #{binary() => any()}.
+-type instance_fleet_timeline() :: #{binary() => any()}.
 
 %% Example:
 %% instance_group() :: #{
@@ -1199,37 +971,73 @@
 -type instance_group() :: #{binary() => any()}.
 
 %% Example:
-%% step_timeline() :: #{
+%% instance_group_config() :: #{
+%%   <<"AutoScalingPolicy">> => auto_scaling_policy(),
+%%   <<"BidPrice">> => string(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EbsConfiguration">> => ebs_configuration(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceRole">> => list(any()),
+%%   <<"InstanceType">> => string(),
+%%   <<"Market">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type instance_group_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_detail() :: #{
+%%   <<"BidPrice">> => string(),
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"InstanceGroupId">> => string(),
+%%   <<"InstanceRequestCount">> => integer(),
+%%   <<"InstanceRole">> => list(any()),
+%%   <<"InstanceRunningCount">> => integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"Market">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ReadyDateTime">> => non_neg_integer(),
+%%   <<"StartDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type instance_group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_modify_config() :: #{
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"EC2InstanceIdsToTerminate">> => list(string()),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupId">> => string(),
+%%   <<"ReconfigurationType">> => list(any()),
+%%   <<"ShrinkPolicy">> => shrink_policy()
+%% }
+-type instance_group_modify_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type instance_group_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => instance_group_state_change_reason(),
+%%   <<"Timeline">> => instance_group_timeline()
+%% }
+-type instance_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_timeline() :: #{
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"StartDateTime">> => non_neg_integer()
+%%   <<"ReadyDateTime">> => non_neg_integer()
 %% }
--type step_timeline() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_block_device() :: #{
-%%   <<"Device">> => string(),
-%%   <<"VolumeSpecification">> => volume_specification()
-%% }
--type ebs_block_device() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_configuration() :: #{
-%%   <<"EbsBlockDeviceConfigs">> => list(ebs_block_device_config()),
-%%   <<"EbsOptimized">> => boolean()
-%% }
--type ebs_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_studio_input() :: #{
-%%   <<"DefaultS3Location">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"StudioId">> := string(),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type update_studio_input() :: #{binary() => any()}.
+-type instance_group_timeline() :: #{binary() => any()}.
 
 %% Example:
 %% instance_resize_policy() :: #{
@@ -1240,72 +1048,104 @@
 -type instance_resize_policy() :: #{binary() => any()}.
 
 %% Example:
-%% session() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CertificateAuthority">> => certificate_authority(),
-%%   <<"ClusterId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"EngineConfigurations">> => list(configuration()),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IdleSince">> => non_neg_integer(),
-%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
-%%   <<"Name">> => string(),
-%%   <<"ReleaseLabel">> => string(),
-%%   <<"ServerUrl">> => string(),
-%%   <<"SessionIdleTimeoutInMinutes">> => float(),
-%%   <<"StartedAt">> => non_neg_integer(),
+%% instance_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type instance_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% instance_status() :: #{
 %%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"StateChangeReason">> => instance_state_change_reason(),
+%%   <<"Timeline">> => instance_timeline()
 %% }
--type session() :: #{binary() => any()}.
+-type instance_status() :: #{binary() => any()}.
 
 %% Example:
-%% get_studio_session_mapping_input() :: #{
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> := list(any()),
-%%   <<"StudioId">> := string()
+%% instance_timeline() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"ReadyDateTime">> => non_neg_integer()
 %% }
--type get_studio_session_mapping_input() :: #{binary() => any()}.
+-type instance_timeline() :: #{binary() => any()}.
 
 %% Example:
-%% get_block_public_access_configuration_output() :: #{
-%%   <<"BlockPublicAccessConfiguration">> => block_public_access_configuration(),
-%%   <<"BlockPublicAccessConfigurationMetadata">> => block_public_access_configuration_metadata()
+%% instance_type_config() :: #{
+%%   <<"BidPrice">> => string(),
+%%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EbsConfiguration">> => ebs_configuration(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Priority">> => float(),
+%%   <<"WeightedCapacity">> => integer()
 %% }
--type get_block_public_access_configuration_output() :: #{binary() => any()}.
+-type instance_type_config() :: #{binary() => any()}.
 
 %% Example:
-%% metric_dimension() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% instance_type_specification() :: #{
+%%   <<"BidPrice">> => string(),
+%%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EbsBlockDevices">> => list(ebs_block_device()),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Priority">> => float(),
+%%   <<"WeightedCapacity">> => integer()
 %% }
--type metric_dimension() :: #{binary() => any()}.
+-type instance_type_specification() :: #{binary() => any()}.
 
 %% Example:
-%% remove_managed_scaling_policy_output() :: #{
+%% internal_server_error() :: #{
 
 %% }
--type remove_managed_scaling_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% remove_auto_scaling_policy_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"InstanceGroupId">> := string()
-%% }
--type remove_auto_scaling_policy_input() :: #{binary() => any()}.
+-type internal_server_error() :: #{binary() => any()}.
 
 %% Example:
-%% list_studios_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Studios">> => list(studio_summary())
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_studios_output() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_flow_detail() :: #{
+%%   <<"AmiVersion">> => string(),
+%%   <<"AutoScalingRole">> => string(),
+%%   <<"BootstrapActions">> => list(bootstrap_action_detail()),
+%%   <<"ExecutionStatusDetail">> => job_flow_execution_status_detail(),
+%%   <<"Instances">> => job_flow_instances_detail(),
+%%   <<"JobFlowId">> => string(),
+%%   <<"JobFlowRole">> => string(),
+%%   <<"LogEncryptionKmsKeyId">> => string(),
+%%   <<"LogUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ScaleDownBehavior">> => list(any()),
+%%   <<"ServiceRole">> => string(),
+%%   <<"Steps">> => list(step_detail()),
+%%   <<"SupportedProducts">> => list(string()),
+%%   <<"VisibleToAllUsers">> => boolean()
+%% }
+-type job_flow_detail() :: #{binary() => any()}.
+
+%% Example:
+%% job_flow_execution_status_detail() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"ReadyDateTime">> => non_neg_integer(),
+%%   <<"StartDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type job_flow_execution_status_detail() :: #{binary() => any()}.
 
 %% Example:
 %% job_flow_instances_config() :: #{
@@ -1331,488 +1171,6 @@
 -type job_flow_instances_config() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_steps_output() :: #{
-%%   <<"CancelStepsInfoList">> => list(cancel_steps_info())
-%% }
--type cancel_steps_output() :: #{binary() => any()}.
-
-%% Example:
-%% execution_engine_config() :: #{
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MasterInstanceSecurityGroupId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type execution_engine_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_notebook_execution_input() :: #{
-%%   <<"EditorId">> => string(),
-%%   <<"EnvironmentVariables">> => map(),
-%%   <<"ExecutionEngine">> := execution_engine_config(),
-%%   <<"NotebookExecutionName">> => string(),
-%%   <<"NotebookInstanceSecurityGroupId">> => string(),
-%%   <<"NotebookParams">> => string(),
-%%   <<"NotebookS3Location">> => notebook_s3_location_from_input(),
-%%   <<"OutputNotebookFormat">> => list(any()),
-%%   <<"OutputNotebookS3Location">> => output_notebook_s3_location_from_input(),
-%%   <<"RelativePath">> => string(),
-%%   <<"ServiceRole">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_notebook_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% o_s_release() :: #{
-%%   <<"Label">> => string()
-%% }
--type o_s_release() :: #{binary() => any()}.
-
-%% Example:
-%% studio_summary() :: #{
-%%   <<"AuthMode">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"StudioId">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type studio_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_block_public_access_configuration_input() :: #{
-
-%% }
--type get_block_public_access_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% block_public_access_configuration() :: #{
-%%   <<"BlockPublicSecurityGroupRules">> => boolean(),
-%%   <<"Classification">> => string(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"PermittedPublicSecurityGroupRuleRanges">> => list(port_range()),
-%%   <<"Properties">> => map()
-%% }
--type block_public_access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_modify_config() :: #{
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"EC2InstanceIdsToTerminate">> => list(string()),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroupId">> => string(),
-%%   <<"ReconfigurationType">> => list(any()),
-%%   <<"ShrinkPolicy">> => shrink_policy()
-%% }
--type instance_group_modify_config() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_constraints() :: #{
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer()
-%% }
--type scaling_constraints() :: #{binary() => any()}.
-
-%% Example:
-%% describe_step_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"StepId">> := string()
-%% }
--type describe_step_input() :: #{binary() => any()}.
-
-%% Example:
-%% port_range() :: #{
-%%   <<"MaxRange">> => integer(),
-%%   <<"MinRange">> => integer()
-%% }
--type port_range() :: #{binary() => any()}.
-
-%% Example:
-%% create_studio_output() :: #{
-%%   <<"StudioId">> => string(),
-%%   <<"Url">> => string()
-%% }
--type create_studio_output() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_block_device_config() :: #{
-%%   <<"VolumeSpecification">> => volume_specification(),
-%%   <<"VolumesPerInstance">> => integer()
-%% }
--type ebs_block_device_config() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_s3_location_for_output() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type notebook_s3_location_for_output() :: #{binary() => any()}.
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorData">> => list(map()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% kerberos_attributes() :: #{
-%%   <<"ADDomainJoinPassword">> => string(),
-%%   <<"ADDomainJoinUser">> => string(),
-%%   <<"CrossRealmTrustPrincipalPassword">> => string(),
-%%   <<"KdcAdminPassword">> => string(),
-%%   <<"Realm">> => string()
-%% }
--type kerberos_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% instance_timeline() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"ReadyDateTime">> => non_neg_integer()
-%% }
--type instance_timeline() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_endpoint_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"SessionId">> := string()
-%% }
--type get_session_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% update_studio_session_mapping_input() :: #{
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> := list(any()),
-%%   <<"SessionPolicyArn">> := string(),
-%%   <<"StudioId">> := string()
-%% }
--type update_studio_session_mapping_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_instances_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"InstanceFleetId">> => string(),
-%%   <<"InstanceFleetType">> => list(any()),
-%%   <<"InstanceGroupId">> => string(),
-%%   <<"InstanceGroupTypes">> => list(list(any())()),
-%%   <<"InstanceStates">> => list(list(any())()),
-%%   <<"Marker">> => string()
-%% }
--type list_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance() :: #{
-%%   <<"EbsVolumes">> => list(ebs_volume()),
-%%   <<"Ec2InstanceId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceFleetId">> => string(),
-%%   <<"InstanceGroupId">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"Market">> => list(any()),
-%%   <<"PrivateDnsName">> => string(),
-%%   <<"PrivateIpAddress">> => string(),
-%%   <<"PublicDnsName">> => string(),
-%%   <<"PublicIpAddress">> => string(),
-%%   <<"Status">> => instance_status()
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% step_monitoring_configuration() :: #{
-%%   <<"S3MonitoringConfiguration">> => s3_monitoring_configuration()
-%% }
--type step_monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_persistent_app_ui_input() :: #{
-%%   <<"PersistentAppUIId">> := string()
-%% }
--type describe_persistent_app_ui_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type instance_group_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_timeline() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"ReadyDateTime">> => non_neg_integer()
-%% }
--type cluster_timeline() :: #{binary() => any()}.
-
-%% Example:
-%% remove_auto_scaling_policy_output() :: #{
-
-%% }
--type remove_auto_scaling_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notebook_execution_input() :: #{
-%%   <<"NotebookExecutionId">> := string()
-%% }
--type describe_notebook_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_steps_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"StepCancellationOption">> => list(any()),
-%%   <<"StepIds">> := list(string())
-%% }
--type cancel_steps_input() :: #{binary() => any()}.
-
-%% Example:
-%% simple_scaling_policy_configuration() :: #{
-%%   <<"AdjustmentType">> => list(any()),
-%%   <<"CoolDown">> => integer(),
-%%   <<"ScalingAdjustment">> => integer()
-%% }
--type simple_scaling_policy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% username_password() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type username_password() :: #{binary() => any()}.
-
-%% Example:
-%% list_release_labels_input() :: #{
-%%   <<"Filters">> => release_label_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_release_labels_input() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"ExtendedSupport">> => boolean(),
-%%   <<"StepConcurrencyLevel">> => integer()
-%% }
--type modify_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% hadoop_jar_step_config() :: #{
-%%   <<"Args">> => list(string()),
-%%   <<"Jar">> => string(),
-%%   <<"MainClass">> => string(),
-%%   <<"Properties">> => list(key_value())
-%% }
--type hadoop_jar_step_config() :: #{binary() => any()}.
-
-%% Example:
-%% compute_limits() :: #{
-%%   <<"MaximumCapacityUnits">> => integer(),
-%%   <<"MaximumCoreCapacityUnits">> => integer(),
-%%   <<"MaximumOnDemandCapacityUnits">> => integer(),
-%%   <<"MinimumCapacityUnits">> => integer(),
-%%   <<"UnitType">> => list(any())
-%% }
--type compute_limits() :: #{binary() => any()}.
-
-%% Example:
-%% add_job_flow_steps_input() :: #{
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"JobFlowId">> := string(),
-%%   <<"Steps">> := list(step_config())
-%% }
--type add_job_flow_steps_input() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_status() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => cluster_state_change_reason(),
-%%   <<"Timeline">> => cluster_timeline()
-%% }
--type cluster_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_on_cluster_app_ui_presigned_url_output() :: #{
-%%   <<"PresignedURL">> => string(),
-%%   <<"PresignedURLReady">> => boolean()
-%% }
--type get_on_cluster_app_ui_presigned_url_output() :: #{binary() => any()}.
-
-%% Example:
-%% persistent_app_ui() :: #{
-%%   <<"AuthorId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastStateChangeReason">> => string(),
-%%   <<"PersistentAppUIId">> => string(),
-%%   <<"PersistentAppUIStatus">> => string(),
-%%   <<"PersistentAppUITypeList">> => list(list(any())()),
-%%   <<"Tags">> => list(tag())
-%% }
--type persistent_app_ui() :: #{binary() => any()}.
-
-%% Example:
-%% set_unhealthy_node_replacement_input() :: #{
-%%   <<"JobFlowIds">> := list(string()),
-%%   <<"UnhealthyNodeReplacement">> := boolean()
-%% }
--type set_unhealthy_node_replacement_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_steps_output() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Steps">> => list(step_summary())
-%% }
--type list_steps_output() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_job_flows_input() :: #{
-%%   <<"JobFlowIds">> := list(string())
-%% }
--type terminate_job_flows_input() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_instance_attributes() :: #{
-%%   <<"AdditionalMasterSecurityGroups">> => list(string()),
-%%   <<"AdditionalSlaveSecurityGroups">> => list(string()),
-%%   <<"Ec2AvailabilityZone">> => string(),
-%%   <<"Ec2KeyName">> => string(),
-%%   <<"Ec2SubnetId">> => string(),
-%%   <<"EmrManagedMasterSecurityGroup">> => string(),
-%%   <<"EmrManagedSlaveSecurityGroup">> => string(),
-%%   <<"IamInstanceProfile">> => string(),
-%%   <<"RequestedEc2AvailabilityZones">> => list(string()),
-%%   <<"RequestedEc2SubnetIds">> => list(string()),
-%%   <<"ServiceAccessSecurityGroup">> => string()
-%% }
--type ec2_instance_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% on_demand_resizing_specification() :: #{
-%%   <<"AllocationStrategy">> => list(any()),
-%%   <<"CapacityReservationOptions">> => on_demand_capacity_reservation_options(),
-%%   <<"TimeoutDurationMinutes">> => integer()
-%% }
--type on_demand_resizing_specification() :: #{binary() => any()}.
-
-%% Example:
-%% create_studio_input() :: #{
-%%   <<"AuthMode">> := list(any()),
-%%   <<"DefaultS3Location">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EngineSecurityGroupId">> := string(),
-%%   <<"IdcInstanceArn">> => string(),
-%%   <<"IdcUserAssignment">> => list(any()),
-%%   <<"IdpAuthUrl">> => string(),
-%%   <<"IdpRelayStateParameterName">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ServiceRole">> := string(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrustedIdentityPropagationEnabled">> => boolean(),
-%%   <<"UserRole">> => string(),
-%%   <<"VpcId">> := string(),
-%%   <<"WorkspaceSecurityGroupId">> := string()
-%% }
--type create_studio_input() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_output() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type terminate_session_output() :: #{binary() => any()}.
-
-%% Example:
-%% job_flow_execution_status_detail() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"LastStateChangeReason">> => string(),
-%%   <<"ReadyDateTime">> => non_neg_integer(),
-%%   <<"StartDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type job_flow_execution_status_detail() :: #{binary() => any()}.
-
-%% Example:
-%% describe_studio_output() :: #{
-%%   <<"Studio">> => studio()
-%% }
--type describe_studio_output() :: #{binary() => any()}.
-
-%% Example:
-%% session_mapping_detail() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SessionPolicyArn">> => string(),
-%%   <<"StudioId">> => string()
-%% }
--type session_mapping_detail() :: #{binary() => any()}.
-
-%% Example:
-%% step_execution_status_detail() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"LastStateChangeReason">> => string(),
-%%   <<"StartDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type step_execution_status_detail() :: #{binary() => any()}.
-
-%% Example:
-%% put_auto_termination_policy_input() :: #{
-%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
-%%   <<"ClusterId">> := string()
-%% }
--type put_auto_termination_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_action() :: #{
-%%   <<"Market">> => list(any()),
-%%   <<"SimpleScalingPolicyConfiguration">> => simple_scaling_policy_configuration()
-%% }
--type scaling_action() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_groups_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"Marker">> => string()
-%% }
--type list_instance_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_executions_input() :: #{
-%%   <<"EditorId">> => string(),
-%%   <<"ExecutionEngineId">> => string(),
-%%   <<"From">> => non_neg_integer(),
-%%   <<"Marker">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"To">> => non_neg_integer()
-%% }
--type list_notebook_executions_input() :: #{binary() => any()}.
-
-%% Example:
 %% job_flow_instances_detail() :: #{
 %%   <<"Ec2KeyName">> => string(),
 %%   <<"Ec2SubnetId">> => string(),
@@ -1832,11 +1190,153 @@
 -type job_flow_instances_detail() :: #{binary() => any()}.
 
 %% Example:
-%% shrink_policy() :: #{
-%%   <<"DecommissionTimeout">> => integer(),
-%%   <<"InstanceResizePolicy">> => instance_resize_policy()
+%% kerberos_attributes() :: #{
+%%   <<"ADDomainJoinPassword">> => string(),
+%%   <<"ADDomainJoinUser">> => string(),
+%%   <<"CrossRealmTrustPrincipalPassword">> => string(),
+%%   <<"KdcAdminPassword">> => string(),
+%%   <<"Realm">> => string()
 %% }
--type shrink_policy() :: #{binary() => any()}.
+-type kerberos_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% key_value() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type key_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_bootstrap_actions_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"Marker">> => string()
+%% }
+-type list_bootstrap_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_bootstrap_actions_output() :: #{
+%%   <<"BootstrapActions">> => list(command()),
+%%   <<"Marker">> => string()
+%% }
+-type list_bootstrap_actions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_input() :: #{
+%%   <<"ClusterStates">> => list(list(any())()),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_output() :: #{
+%%   <<"Clusters">> => list(cluster_summary()),
+%%   <<"Marker">> => string()
+%% }
+-type list_clusters_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_fleets_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_fleets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_fleets_output() :: #{
+%%   <<"InstanceFleets">> => list(instance_fleet()),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_fleets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_groups_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_groups_output() :: #{
+%%   <<"InstanceGroups">> => list(instance_group()),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"InstanceFleetId">> => string(),
+%%   <<"InstanceFleetType">> => list(any()),
+%%   <<"InstanceGroupId">> => string(),
+%%   <<"InstanceGroupTypes">> => list(list(any())()),
+%%   <<"InstanceStates">> => list(list(any())()),
+%%   <<"Marker">> => string()
+%% }
+-type list_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_output() :: #{
+%%   <<"Instances">> => list(instance()),
+%%   <<"Marker">> => string()
+%% }
+-type list_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_executions_input() :: #{
+%%   <<"EditorId">> => string(),
+%%   <<"ExecutionEngineId">> => string(),
+%%   <<"From">> => non_neg_integer(),
+%%   <<"Marker">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"To">> => non_neg_integer()
+%% }
+-type list_notebook_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_executions_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"NotebookExecutions">> => list(notebook_execution_summary())
+%% }
+-type list_notebook_executions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_release_labels_input() :: #{
+%%   <<"Filters">> => release_label_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_release_labels_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_release_labels_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReleaseLabels">> => list(string())
+%% }
+-type list_release_labels_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_configurations_input() :: #{
+%%   <<"Marker">> => string()
+%% }
+-type list_security_configurations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_configurations_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SecurityConfigurations">> => list(security_configuration_summary())
+%% }
+-type list_security_configurations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_sessions_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SessionStates">> => list(list(any())())
+%% }
+-type list_sessions_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_sessions_output() :: #{
@@ -1844,6 +1344,137 @@
 %%   <<"Sessions">> => list(session())
 %% }
 -type list_sessions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_steps_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"StepIds">> => list(string()),
+%%   <<"StepStates">> => list(list(any())())
+%% }
+-type list_steps_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_steps_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Steps">> => list(step_summary())
+%% }
+-type list_steps_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_studio_session_mappings_input() :: #{
+%%   <<"IdentityType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"StudioId">> => string()
+%% }
+-type list_studio_session_mappings_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_studio_session_mappings_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SessionMappings">> => list(session_mapping_summary())
+%% }
+-type list_studio_session_mappings_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_studios_input() :: #{
+%%   <<"Marker">> => string()
+%% }
+-type list_studios_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_studios_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Studios">> => list(studio_summary())
+%% }
+-type list_studios_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_supported_instance_types_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReleaseLabel">> := string()
+%% }
+-type list_supported_instance_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_supported_instance_types_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SupportedInstanceTypes">> => list(supported_instance_type())
+%% }
+-type list_supported_instance_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% managed_scaling_policy() :: #{
+%%   <<"ComputeLimits">> => compute_limits(),
+%%   <<"ScalingStrategy">> => list(any()),
+%%   <<"UtilizationPerformanceIndex">> => integer()
+%% }
+-type managed_scaling_policy() :: #{binary() => any()}.
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"ExtendedSupport">> => boolean(),
+%%   <<"StepConcurrencyLevel">> => integer()
+%% }
+-type modify_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_output() :: #{
+%%   <<"ExtendedSupport">> => boolean(),
+%%   <<"StepConcurrencyLevel">> => integer()
+%% }
+-type modify_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_fleet_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"InstanceFleet">> := instance_fleet_modify_config()
+%% }
+-type modify_instance_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_groups_input() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"InstanceGroups">> => list(instance_group_modify_config())
+%% }
+-type modify_instance_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_configuration() :: #{
+%%   <<"CloudWatchLogConfiguration">> => cloud_watch_log_configuration(),
+%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
+%% }
+-type monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% notebook_execution() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"EditorId">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"ExecutionEngine">> => execution_engine_config(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"NotebookExecutionId">> => string(),
+%%   <<"NotebookExecutionName">> => string(),
+%%   <<"NotebookInstanceSecurityGroupId">> => string(),
+%%   <<"NotebookParams">> => string(),
+%%   <<"NotebookS3Location">> => notebook_s3_location_for_output(),
+%%   <<"OutputNotebookFormat">> => list(any()),
+%%   <<"OutputNotebookS3Location">> => output_notebook_s3_location_for_output(),
+%%   <<"OutputNotebookURI">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type notebook_execution() :: #{binary() => any()}.
 
 %% Example:
 %% notebook_execution_summary() :: #{
@@ -1859,31 +1490,442 @@
 -type notebook_execution_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_security_configuration_input() :: #{
-%%   <<"Name">> := string()
+%% notebook_s3_location_for_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
 %% }
--type delete_security_configuration_input() :: #{binary() => any()}.
+-type notebook_s3_location_for_output() :: #{binary() => any()}.
 
 %% Example:
-%% command() :: #{
+%% notebook_s3_location_from_input() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type notebook_s3_location_from_input() :: #{binary() => any()}.
+
+%% Example:
+%% o_s_release() :: #{
+%%   <<"Label">> => string()
+%% }
+-type o_s_release() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_capacity_reservation_options() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"CapacityReservationResourceGroupArn">> => string(),
+%%   <<"UsageStrategy">> => list(any())
+%% }
+-type on_demand_capacity_reservation_options() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_provisioning_specification() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"CapacityReservationOptions">> => on_demand_capacity_reservation_options()
+%% }
+-type on_demand_provisioning_specification() :: #{binary() => any()}.
+
+%% Example:
+%% on_demand_resizing_specification() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"CapacityReservationOptions">> => on_demand_capacity_reservation_options(),
+%%   <<"TimeoutDurationMinutes">> => integer()
+%% }
+-type on_demand_resizing_specification() :: #{binary() => any()}.
+
+%% Example:
+%% output_notebook_s3_location_for_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type output_notebook_s3_location_for_output() :: #{binary() => any()}.
+
+%% Example:
+%% output_notebook_s3_location_from_input() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type output_notebook_s3_location_from_input() :: #{binary() => any()}.
+
+%% Example:
+%% persistent_app_ui() :: #{
+%%   <<"AuthorId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"PersistentAppUIId">> => string(),
+%%   <<"PersistentAppUIStatus">> => string(),
+%%   <<"PersistentAppUITypeList">> => list(list(any())()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type persistent_app_ui() :: #{binary() => any()}.
+
+%% Example:
+%% placement_group_config() :: #{
+%%   <<"InstanceRole">> => list(any()),
+%%   <<"PlacementStrategy">> => list(any())
+%% }
+-type placement_group_config() :: #{binary() => any()}.
+
+%% Example:
+%% placement_type() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZones">> => list(string())
+%% }
+-type placement_type() :: #{binary() => any()}.
+
+%% Example:
+%% port_range() :: #{
+%%   <<"MaxRange">> => integer(),
+%%   <<"MinRange">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+%% Example:
+%% put_auto_scaling_policy_input() :: #{
+%%   <<"AutoScalingPolicy">> := auto_scaling_policy(),
+%%   <<"ClusterId">> := string(),
+%%   <<"InstanceGroupId">> := string()
+%% }
+-type put_auto_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_auto_scaling_policy_output() :: #{
+%%   <<"AutoScalingPolicy">> => auto_scaling_policy_description(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterId">> => string(),
+%%   <<"InstanceGroupId">> => string()
+%% }
+-type put_auto_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_auto_termination_policy_input() :: #{
+%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
+%%   <<"ClusterId">> := string()
+%% }
+-type put_auto_termination_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_auto_termination_policy_output() :: #{
+
+%% }
+-type put_auto_termination_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_block_public_access_configuration_input() :: #{
+%%   <<"BlockPublicAccessConfiguration">> := block_public_access_configuration()
+%% }
+-type put_block_public_access_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_block_public_access_configuration_output() :: #{
+
+%% }
+-type put_block_public_access_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_managed_scaling_policy_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"ManagedScalingPolicy">> := managed_scaling_policy()
+%% }
+-type put_managed_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_managed_scaling_policy_output() :: #{
+
+%% }
+-type put_managed_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% release_label_filter() :: #{
+%%   <<"Application">> => string(),
+%%   <<"Prefix">> => string()
+%% }
+-type release_label_filter() :: #{binary() => any()}.
+
+%% Example:
+%% remove_auto_scaling_policy_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"InstanceGroupId">> := string()
+%% }
+-type remove_auto_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_auto_scaling_policy_output() :: #{
+
+%% }
+-type remove_auto_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_auto_termination_policy_input() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type remove_auto_termination_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_auto_termination_policy_output() :: #{
+
+%% }
+-type remove_auto_termination_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_managed_scaling_policy_input() :: #{
+%%   <<"ClusterId">> := string()
+%% }
+-type remove_managed_scaling_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_managed_scaling_policy_output() :: #{
+
+%% }
+-type remove_managed_scaling_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_input() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% run_job_flow_input() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"AmiVersion">> => string(),
+%%   <<"Applications">> => list(application()),
+%%   <<"AutoScalingRole">> => string(),
+%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
+%%   <<"BootstrapActions">> => list(bootstrap_action_config()),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"CustomAmiId">> => string(),
+%%   <<"EbsRootVolumeIops">> => integer(),
+%%   <<"EbsRootVolumeSize">> => integer(),
+%%   <<"EbsRootVolumeThroughput">> => integer(),
+%%   <<"ExtendedSupport">> => boolean(),
+%%   <<"Instances">> := job_flow_instances_config(),
+%%   <<"JobFlowRole">> => string(),
+%%   <<"KerberosAttributes">> => kerberos_attributes(),
+%%   <<"LogEncryptionKmsKeyId">> => string(),
+%%   <<"LogUri">> => string(),
+%%   <<"ManagedScalingPolicy">> => managed_scaling_policy(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"NewSupportedProducts">> => list(supported_product_config()),
+%%   <<"OSReleaseLabel">> => string(),
+%%   <<"PlacementGroupConfigs">> => list(placement_group_config()),
+%%   <<"ReleaseLabel">> => string(),
+%%   <<"RepoUpgradeOnBoot">> => list(any()),
+%%   <<"ScaleDownBehavior">> => list(any()),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"SessionEnabled">> => boolean(),
+%%   <<"StepConcurrencyLevel">> => integer(),
+%%   <<"StepExecutionRoleArn">> => string(),
+%%   <<"Steps">> => list(step_config()),
+%%   <<"SupportedProducts">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VisibleToAllUsers">> => boolean()
+%% }
+-type run_job_flow_input() :: #{binary() => any()}.
+
+%% Example:
+%% run_job_flow_output() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"JobFlowId">> => string()
+%% }
+-type run_job_flow_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_logging_configuration() :: #{
+%%   <<"LogTypeUploadPolicy">> => map()
+%% }
+-type s3_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_monitoring_configuration() :: #{
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogUri">> => string()
+%% }
+-type s3_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_action() :: #{
+%%   <<"Market">> => list(any()),
+%%   <<"SimpleScalingPolicyConfiguration">> => simple_scaling_policy_configuration()
+%% }
+-type scaling_action() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_constraints() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer()
+%% }
+-type scaling_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_rule() :: #{
+%%   <<"Action">> => scaling_action(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Trigger">> => scaling_trigger()
+%% }
+-type scaling_rule() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_trigger() :: #{
+%%   <<"CloudWatchAlarmDefinition">> => cloud_watch_alarm_definition()
+%% }
+-type scaling_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% script_bootstrap_action_config() :: #{
 %%   <<"Args">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"ScriptPath">> => string()
+%%   <<"Path">> => string()
 %% }
--type command() :: #{binary() => any()}.
+-type script_bootstrap_action_config() :: #{binary() => any()}.
 
 %% Example:
-%% instance_fleet_config() :: #{
-%%   <<"Context">> => string(),
-%%   <<"InstanceFleetType">> => list(any()),
-%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
-%%   <<"LaunchSpecifications">> => instance_fleet_provisioning_specifications(),
-%%   <<"Name">> => string(),
-%%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
-%%   <<"TargetOnDemandCapacity">> => integer(),
-%%   <<"TargetSpotCapacity">> => integer()
+%% security_configuration_summary() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
 %% }
--type instance_fleet_config() :: #{binary() => any()}.
+-type security_configuration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ClusterId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"EngineConfigurations">> => list(configuration()),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IdleSince">> => non_neg_integer(),
+%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"ReleaseLabel">> => string(),
+%%   <<"ServerUrl">> => string(),
+%%   <<"SessionIdleTimeoutInMinutes">> => float(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type session() :: #{binary() => any()}.
+
+%% Example:
+%% session_cloud_watch_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type session_cloud_watch_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_managed_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string()
+%% }
+-type session_managed_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_mapping_detail() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SessionPolicyArn">> => string(),
+%%   <<"StudioId">> => string()
+%% }
+-type session_mapping_detail() :: #{binary() => any()}.
+
+%% Example:
+%% session_mapping_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"SessionPolicyArn">> => string(),
+%%   <<"StudioId">> => string()
+%% }
+-type session_mapping_summary() :: #{binary() => any()}.
+
+%% Example:
+%% session_monitoring_configuration() :: #{
+%%   <<"CloudWatchLoggingConfiguration">> => session_cloud_watch_logging_configuration(),
+%%   <<"ManagedLoggingConfiguration">> => session_managed_logging_configuration(),
+%%   <<"S3LoggingConfiguration">> => session_s3_logging_configuration()
+%% }
+-type session_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_s3_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"LogTypes">> => map(),
+%%   <<"LogUri">> => string()
+%% }
+-type session_s3_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% set_keep_job_flow_alive_when_no_steps_input() :: #{
+%%   <<"JobFlowIds">> := list(string()),
+%%   <<"KeepJobFlowAliveWhenNoSteps">> := boolean()
+%% }
+-type set_keep_job_flow_alive_when_no_steps_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_termination_protection_input() :: #{
+%%   <<"JobFlowIds">> := list(string()),
+%%   <<"TerminationProtected">> := boolean()
+%% }
+-type set_termination_protection_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_unhealthy_node_replacement_input() :: #{
+%%   <<"JobFlowIds">> := list(string()),
+%%   <<"UnhealthyNodeReplacement">> := boolean()
+%% }
+-type set_unhealthy_node_replacement_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_visible_to_all_users_input() :: #{
+%%   <<"JobFlowIds">> := list(string()),
+%%   <<"VisibleToAllUsers">> := boolean()
+%% }
+-type set_visible_to_all_users_input() :: #{binary() => any()}.
+
+%% Example:
+%% shrink_policy() :: #{
+%%   <<"DecommissionTimeout">> => integer(),
+%%   <<"InstanceResizePolicy">> => instance_resize_policy()
+%% }
+-type shrink_policy() :: #{binary() => any()}.
+
+%% Example:
+%% simple_scaling_policy_configuration() :: #{
+%%   <<"AdjustmentType">> => list(any()),
+%%   <<"CoolDown">> => integer(),
+%%   <<"ScalingAdjustment">> => integer()
+%% }
+-type simple_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% simplified_application() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type simplified_application() :: #{binary() => any()}.
 
 %% Example:
 %% spot_provisioning_specification() :: #{
@@ -1895,106 +1937,57 @@
 -type spot_provisioning_specification() :: #{binary() => any()}.
 
 %% Example:
-%% key_value() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% spot_resizing_specification() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"TimeoutDurationMinutes">> => integer()
 %% }
--type key_value() :: #{binary() => any()}.
+-type spot_resizing_specification() :: #{binary() => any()}.
 
 %% Example:
-%% instance_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => instance_state_change_reason(),
-%%   <<"Timeline">> => instance_timeline()
+%% start_notebook_execution_input() :: #{
+%%   <<"EditorId">> => string(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"ExecutionEngine">> := execution_engine_config(),
+%%   <<"NotebookExecutionName">> => string(),
+%%   <<"NotebookInstanceSecurityGroupId">> => string(),
+%%   <<"NotebookParams">> => string(),
+%%   <<"NotebookS3Location">> => notebook_s3_location_from_input(),
+%%   <<"OutputNotebookFormat">> => list(any()),
+%%   <<"OutputNotebookS3Location">> => output_notebook_s3_location_from_input(),
+%%   <<"RelativePath">> => string(),
+%%   <<"ServiceRole">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type instance_status() :: #{binary() => any()}.
+-type start_notebook_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% instance_fleet_modify_config() :: #{
-%%   <<"Context">> => string(),
-%%   <<"InstanceFleetId">> => string(),
-%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
-%%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
-%%   <<"TargetOnDemandCapacity">> => integer(),
-%%   <<"TargetSpotCapacity">> => integer()
+%% start_notebook_execution_output() :: #{
+%%   <<"NotebookExecutionId">> => string()
 %% }
--type instance_fleet_modify_config() :: #{binary() => any()}.
+-type start_notebook_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% managed_scaling_policy() :: #{
-%%   <<"ComputeLimits">> => compute_limits(),
-%%   <<"ScalingStrategy">> => list(any()),
-%%   <<"UtilizationPerformanceIndex">> => integer()
+%% start_session_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ClusterId">> := string(),
+%%   <<"EngineConfigurations">> => list(configuration()),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"MonitoringConfiguration">> => session_monitoring_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"SessionIdleTimeoutInMinutes">> => float(),
+%%   <<"Tags">> => list(tag())
 %% }
--type managed_scaling_policy() :: #{binary() => any()}.
+-type start_session_input() :: #{binary() => any()}.
 
 %% Example:
-%% placement_type() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZones">> => list(string())
-%% }
--type placement_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_persistent_app_ui_presigned_url_output() :: #{
-%%   <<"PresignedURL">> => string(),
-%%   <<"PresignedURLReady">> => boolean()
-%% }
--type get_persistent_app_ui_presigned_url_output() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_log_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"LogGroupName">> => string(),
-%%   <<"LogStreamNamePrefix">> => string(),
-%%   <<"LogTypes">> => map()
-%% }
--type cloud_watch_log_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% set_termination_protection_input() :: #{
-%%   <<"JobFlowIds">> := list(string()),
-%%   <<"TerminationProtected">> := boolean()
-%% }
--type set_termination_protection_input() :: #{binary() => any()}.
-
-%% Example:
-%% output_notebook_s3_location_for_output() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type output_notebook_s3_location_for_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_release_labels_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReleaseLabels">> => list(string())
-%% }
--type list_release_labels_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_endpoint_output() :: #{
-%%   <<"AuthToken">> => string(),
-%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
-%%   <<"Credentials">> => list(),
-%%   <<"Endpoint">> => string()
-%% }
--type get_session_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_input() :: #{
-%%   <<"ClusterId">> := string()
-%% }
--type describe_cluster_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_input() :: #{
+%% start_session_output() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
 %%   <<"ClusterId">> => string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string())
+%%   <<"Id">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type remove_tags_input() :: #{binary() => any()}.
+-type start_session_output() :: #{binary() => any()}.
 
 %% Example:
 %% step() :: #{
@@ -2010,25 +2003,52 @@
 -type step() :: #{binary() => any()}.
 
 %% Example:
-%% modify_instance_groups_input() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"InstanceGroups">> => list(instance_group_modify_config())
+%% step_config() :: #{
+%%   <<"ActionOnFailure">> => list(any()),
+%%   <<"HadoopJarStep">> => hadoop_jar_step_config(),
+%%   <<"Name">> => string(),
+%%   <<"StepMonitoringConfiguration">> => step_monitoring_configuration()
 %% }
--type modify_instance_groups_input() :: #{binary() => any()}.
+-type step_config() :: #{binary() => any()}.
 
 %% Example:
-%% put_managed_scaling_policy_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"ManagedScalingPolicy">> := managed_scaling_policy()
+%% step_detail() :: #{
+%%   <<"ExecutionStatusDetail">> => step_execution_status_detail(),
+%%   <<"StepConfig">> => step_config()
 %% }
--type put_managed_scaling_policy_input() :: #{binary() => any()}.
+-type step_detail() :: #{binary() => any()}.
 
 %% Example:
-%% on_demand_provisioning_specification() :: #{
-%%   <<"AllocationStrategy">> => list(any()),
-%%   <<"CapacityReservationOptions">> => on_demand_capacity_reservation_options()
+%% step_execution_status_detail() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"LastStateChangeReason">> => string(),
+%%   <<"StartDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
 %% }
--type on_demand_provisioning_specification() :: #{binary() => any()}.
+-type step_execution_status_detail() :: #{binary() => any()}.
+
+%% Example:
+%% step_monitoring_configuration() :: #{
+%%   <<"S3MonitoringConfiguration">> => s3_monitoring_configuration()
+%% }
+-type step_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% step_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type step_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% step_status() :: #{
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => step_state_change_reason(),
+%%   <<"Timeline">> => step_timeline()
+%% }
+-type step_status() :: #{binary() => any()}.
 
 %% Example:
 %% step_summary() :: #{
@@ -2043,38 +2063,18 @@
 -type step_summary() :: #{binary() => any()}.
 
 %% Example:
-%% instance_fleet_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type instance_fleet_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notebook_execution_output() :: #{
-%%   <<"NotebookExecution">> => notebook_execution()
-%% }
--type describe_notebook_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% instance_fleet_timeline() :: #{
+%% step_timeline() :: #{
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"ReadyDateTime">> => non_neg_integer()
+%%   <<"StartDateTime">> => non_neg_integer()
 %% }
--type instance_fleet_timeline() :: #{binary() => any()}.
+-type step_timeline() :: #{binary() => any()}.
 
 %% Example:
-%% emr_containers_config() :: #{
-%%   <<"JobRunId">> => string()
+%% stop_notebook_execution_input() :: #{
+%%   <<"NotebookExecutionId">> := string()
 %% }
--type emr_containers_config() :: #{binary() => any()}.
-
-%% Example:
-%% modify_instance_fleet_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"InstanceFleet">> := instance_fleet_modify_config()
-%% }
--type modify_instance_fleet_input() :: #{binary() => any()}.
+-type stop_notebook_execution_input() :: #{binary() => any()}.
 
 %% Example:
 %% studio() :: #{
@@ -2103,116 +2103,108 @@
 -type studio() :: #{binary() => any()}.
 
 %% Example:
-%% put_managed_scaling_policy_output() :: #{
-
-%% }
--type put_managed_scaling_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_persistent_app_ui_output() :: #{
-%%   <<"PersistentAppUI">> => persistent_app_ui()
-%% }
--type describe_persistent_app_ui_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_sessions_input() :: #{
-%%   <<"ClusterId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SessionStates">> => list(list(any())())
-%% }
--type list_sessions_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_type_specification() :: #{
-%%   <<"BidPrice">> => string(),
-%%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"EbsBlockDevices">> => list(ebs_block_device()),
-%%   <<"EbsOptimized">> => boolean(),
-%%   <<"InstanceType">> => string(),
-%%   <<"Priority">> => float(),
-%%   <<"WeightedCapacity">> => integer()
-%% }
--type instance_type_specification() :: #{binary() => any()}.
-
-%% Example:
-%% run_job_flow_input() :: #{
-%%   <<"LogEncryptionKmsKeyId">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SupportedProducts">> => list(string()),
-%%   <<"SessionEnabled">> => boolean(),
-%%   <<"CustomAmiId">> => string(),
-%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
-%%   <<"EbsRootVolumeIops">> => integer(),
-%%   <<"AutoScalingRole">> => string(),
-%%   <<"KerberosAttributes">> => kerberos_attributes(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"Instances">> := job_flow_instances_config(),
-%%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
-%%   <<"StepExecutionRoleArn">> => string(),
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"AmiVersion">> => string(),
-%%   <<"JobFlowRole">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"PlacementGroupConfigs">> => list(placement_group_config()),
-%%   <<"ManagedScalingPolicy">> => managed_scaling_policy(),
-%%   <<"ReleaseLabel">> => string(),
-%%   <<"LogUri">> => string(),
-%%   <<"Applications">> => list(application()),
-%%   <<"EbsRootVolumeThroughput">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ScaleDownBehavior">> => list(any()),
-%%   <<"EbsRootVolumeSize">> => integer(),
-%%   <<"ExtendedSupport">> => boolean(),
-%%   <<"OSReleaseLabel">> => string(),
-%%   <<"NewSupportedProducts">> => list(supported_product_config()),
-%%   <<"RepoUpgradeOnBoot">> => list(any()),
-%%   <<"Steps">> => list(step_config()),
-%%   <<"StepConcurrencyLevel">> => integer(),
-%%   <<"BootstrapActions">> => list(bootstrap_action_config()),
-%%   <<"VisibleToAllUsers">> => boolean()
-%% }
--type run_job_flow_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_configuration_input() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SecurityConfiguration">> := string()
-%% }
--type create_security_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% session_monitoring_configuration() :: #{
-%%   <<"CloudWatchLoggingConfiguration">> => session_cloud_watch_logging_configuration(),
-%%   <<"ManagedLoggingConfiguration">> => session_managed_logging_configuration(),
-%%   <<"S3LoggingConfiguration">> => session_s3_logging_configuration()
-%% }
--type session_monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% session_s3_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"LogTypes">> => map(),
-%%   <<"LogUri">> => string()
-%% }
--type session_s3_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_rule() :: #{
-%%   <<"Action">> => scaling_action(),
+%% studio_summary() :: #{
+%%   <<"AuthMode">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Trigger">> => scaling_trigger()
+%%   <<"StudioId">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type scaling_rule() :: #{binary() => any()}.
+-type studio_summary() :: #{binary() => any()}.
+
+%% Example:
+%% supported_instance_type() :: #{
+%%   <<"Architecture">> => string(),
+%%   <<"EbsOptimizedAvailable">> => boolean(),
+%%   <<"EbsOptimizedByDefault">> => boolean(),
+%%   <<"EbsStorageOnly">> => boolean(),
+%%   <<"InstanceFamilyId">> => string(),
+%%   <<"Is64BitsOnly">> => boolean(),
+%%   <<"MemoryGB">> => float(),
+%%   <<"NumberOfDisks">> => integer(),
+%%   <<"StorageGB">> => integer(),
+%%   <<"Type">> => string(),
+%%   <<"VCPU">> => integer()
+%% }
+-type supported_instance_type() :: #{binary() => any()}.
+
+%% Example:
+%% supported_product_config() :: #{
+%%   <<"Args">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type supported_product_config() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_job_flows_input() :: #{
+%%   <<"JobFlowIds">> := list(string())
+%% }
+-type terminate_job_flows_input() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_session_input() :: #{
+%%   <<"ClusterId">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type terminate_session_input() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_session_output() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type terminate_session_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_studio_input() :: #{
+%%   <<"DefaultS3Location">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StudioId">> := string(),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type update_studio_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_studio_session_mapping_input() :: #{
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> := list(any()),
+%%   <<"SessionPolicyArn">> := string(),
+%%   <<"StudioId">> := string()
+%% }
+-type update_studio_session_mapping_input() :: #{binary() => any()}.
+
+%% Example:
+%% username_password() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type username_password() :: #{binary() => any()}.
+
+%% Example:
+%% volume_specification() :: #{
+%%   <<"Iops">> => integer(),
+%%   <<"SizeInGB">> => integer(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeType">> => string()
+%% }
+-type volume_specification() :: #{binary() => any()}.
 
 -type add_instance_fleet_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type add_instance_groups_errors() ::
     internal_server_error().
@@ -2221,170 +2213,170 @@
     internal_server_error().
 
 -type add_tags_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type cancel_steps_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type create_persistent_app_ui_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_security_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_studio_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_studio_session_mapping_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type delete_security_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_studio_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_studio_session_mapping_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type describe_cluster_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_job_flows_errors() ::
     internal_server_error().
 
 -type describe_notebook_execution_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type describe_persistent_app_ui_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_release_label_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_security_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_step_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_studio_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_block_public_access_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_cluster_session_credentials_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type get_on_cluster_app_ui_presigned_url_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type get_persistent_app_ui_presigned_url_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type get_session_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_session_endpoint_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_studio_session_mapping_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_bootstrap_actions_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_clusters_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_instance_fleets_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_instance_groups_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_instances_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_notebook_executions_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_release_labels_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_security_configurations_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_sessions_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_steps_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_studio_session_mappings_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_studios_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_supported_instance_types_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type modify_cluster_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type modify_instance_fleet_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type modify_instance_groups_errors() ::
     internal_server_error().
 
 -type put_block_public_access_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type remove_tags_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type run_job_flow_errors() ::
     internal_server_error().
@@ -2402,31 +2394,31 @@
     internal_server_error().
 
 -type start_notebook_execution_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_session_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_notebook_execution_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type terminate_job_flows_errors() ::
     internal_server_error().
 
 -type terminate_session_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_studio_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_studio_session_mapping_errors() ::
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 %%====================================================================
 %% API

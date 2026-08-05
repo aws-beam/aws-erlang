@@ -99,72 +99,31 @@
 
 
 %% Example:
-%% list_service_operations_input() :: #{
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"KeyAttributes">> := map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_service_operations_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_service_input() :: #{
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"KeyAttributes">> := map(),
-%%   <<"StartTime">> := [non_neg_integer()]
+%% application_signals_node() :: #{
+%%   <<"Duration">> => [float()],
+%%   <<"KeyAttributes">> => map(),
+%%   <<"Name">> => [string()],
+%%   <<"NodeId">> => [string()],
+%%   <<"Operation">> => [string()],
+%%   <<"Status">> => [string()],
+%%   <<"Type">> => [string()]
 %% }
--type get_service_input() :: #{binary() => any()}.
+-type application_signals_node() :: #{binary() => any()}.
 
 
 %% Example:
-%% auditor_result() :: #{
-%%   <<"Auditor">> => [string()],
-%%   <<"Data">> => map(),
-%%   <<"Description">> => [string()],
-%%   <<"Severity">> => list(any())
+%% attribute_filter() :: #{
+%%   <<"AttributeFilterName">> => string(),
+%%   <<"AttributeFilterValues">> => list(string())
 %% }
--type auditor_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entity_events_output() :: #{
-%%   <<"ChangeEvents">> => list(change_event()),
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_entity_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_dependencies_input() :: #{
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"KeyAttributes">> := map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
-%% }
--type list_service_dependencies_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_dependency() :: #{
-%%   <<"DependencyKeyAttributes">> => map(),
-%%   <<"DependencyOperationName">> => string(),
-%%   <<"MetricReferences">> => list(metric_reference()),
-%%   <<"OperationName">> => string()
-%% }
--type service_dependency() :: #{binary() => any()}.
+-type attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -180,12 +139,177 @@
 
 
 %% Example:
-%% report_instrumentation_configuration_status_request() :: #{
-%%   <<"Configurations">> := list(instrumentation_configuration_status_report()),
-%%   <<"Environment">> := [string()],
-%%   <<"Service">> := [string()]
+%% audit_target() :: #{
+%%   <<"Data">> => list(),
+%%   <<"Type">> => [string()]
 %% }
--type report_instrumentation_configuration_status_request() :: #{binary() => any()}.
+-type audit_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% auditor_result() :: #{
+%%   <<"Auditor">> => [string()],
+%%   <<"Data">> => map(),
+%%   <<"Description">> => [string()],
+%%   <<"Severity">> => list(any())
+%% }
+-type auditor_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_by_resource_arns() :: #{
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"ResourceArns">> => list([string()]())
+%% }
+-type batch_delete_by_resource_arns() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => [string()],
+%%   <<"ResourceArn">> => [string()]
+%% }
+-type batch_delete_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_instrumentation_configurations_request() :: #{
+%%   <<"DeletionTarget">> := list()
+%% }
+-type batch_delete_instrumentation_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_instrumentation_configurations_response() :: #{
+%%   <<"DeletedCount">> => [integer()],
+%%   <<"Errors">> => list(batch_delete_error()),
+%%   <<"SuccessfulDeletions">> => list(batch_delete_successful_deletion())
+%% }
+-type batch_delete_instrumentation_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_scope() :: #{
+%%   <<"Environment">> => [string()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Service">> => [string()]
+%% }
+-type batch_delete_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_successful_deletion() :: #{
+%%   <<"LocationHash">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"SignalType">> => [string()]
+%% }
+-type batch_delete_successful_deletion() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_service_level_objective_budget_report_input() :: #{
+%%   <<"SloIds">> := list([string()]()),
+%%   <<"Timestamp">> := [non_neg_integer()]
+%% }
+-type batch_get_service_level_objective_budget_report_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_service_level_objective_budget_report_output() :: #{
+%%   <<"Errors">> => list(service_level_objective_budget_report_error()),
+%%   <<"Reports">> => list(service_level_objective_budget_report()),
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type batch_get_service_level_objective_budget_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_exclusion_windows_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"SloId">> => string()
+%% }
+-type batch_update_exclusion_windows_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_exclusion_windows_input() :: #{
+%%   <<"AddExclusionWindows">> => list(exclusion_window()),
+%%   <<"RemoveExclusionWindows">> => list(exclusion_window()),
+%%   <<"SloIds">> := list([string()]())
+%% }
+-type batch_update_exclusion_windows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_exclusion_windows_output() :: #{
+%%   <<"Errors">> => list(batch_update_exclusion_windows_error()),
+%%   <<"SloIds">> => list([string()]())
+%% }
+-type batch_update_exclusion_windows_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% burn_rate_configuration() :: #{
+%%   <<"LookBackWindowMinutes">> => integer()
+%% }
+-type burn_rate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% calendar_interval() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnit">> => list(any()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type calendar_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_entity() :: #{
+%%   <<"CanaryName">> => [string()]
+%% }
+-type canary_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% capture_limits_config() :: #{
+%%   <<"MaxCollectionDepth">> => [integer()],
+%%   <<"MaxCollectionWidth">> => [integer()],
+%%   <<"MaxFieldsPerObject">> => [integer()],
+%%   <<"MaxHits">> => [integer()],
+%%   <<"MaxObjectDepth">> => [integer()],
+%%   <<"MaxStackFrames">> => [integer()],
+%%   <<"MaxStackTraceSize">> => [integer()],
+%%   <<"MaxStringLength">> => [integer()]
+%% }
+-type capture_limits_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_event() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ChangeEventType">> => list(any()),
+%%   <<"Entity">> => map(),
+%%   <<"EventId">> => [string()],
+%%   <<"EventName">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"UserName">> => [string()]
+%% }
+-type change_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_capture_configuration() :: #{
+%%   <<"CaptureArguments">> => list([string()]()),
+%%   <<"CaptureLimits">> => capture_limits_config(),
+%%   <<"CaptureLocals">> => list([string()]()),
+%%   <<"CaptureReturn">> => [boolean()],
+%%   <<"CaptureStackTrace">> => [boolean()]
+%% }
+-type code_capture_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -201,189 +325,34 @@
 
 
 %% Example:
-%% list_service_dependencies_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceDependencies">> => list(service_dependency()),
-%%   <<"StartTime">> => [non_neg_integer()]
+%% composite_sli_config() :: #{
+%%   <<"Components">> => list(list()),
+%%   <<"SelectionConfig">> => selection_config()
 %% }
--type list_service_dependencies_output() :: #{binary() => any()}.
+-type composite_sli_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_operation() :: #{
-%%   <<"MetricReferences">> => list(metric_reference()),
-%%   <<"Name">> => string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type service_operation() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% grouping_attribute_definition() :: #{
-%%   <<"DefaultGroupingValue">> => string(),
-%%   <<"GroupingName">> => string(),
-%%   <<"GroupingSourceKeys">> => list(string())
+%% create_instrumentation_configuration_request() :: #{
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> := list(),
+%%   <<"Description">> => [string()],
+%%   <<"Environment">> := [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"Location">> := list(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type grouping_attribute_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% calendar_interval() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnit">> => list(any()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type calendar_interval() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_audit_findings_input() :: #{
-%%   <<"AuditTargets">> := list(audit_target()),
-%%   <<"Auditors">> => list([string()]()),
-%%   <<"DetailLevel">> => list(any()),
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
-%% }
--type list_audit_findings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric() :: #{
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
-%% }
--type metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_exclusion_windows_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"SloId">> => string()
-%% }
--type batch_update_exclusion_windows_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_objective_budget_report_error() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Name">> => string()
-%% }
--type service_level_objective_budget_report_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_instrumentation_configurations_request() :: #{
-%%   <<"DeletionTarget">> := list()
-%% }
--type batch_delete_instrumentation_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_entity() :: #{
-%%   <<"AwsAccountId">> => [string()],
-%%   <<"Environment">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type service_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_objective_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CompositeSliConfig">> => composite_sli_config(),
-%%   <<"CreatedTime">> => [non_neg_integer()],
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"EvaluationType">> => list(any()),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricSourceType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"OperationName">> => string()
-%% }
--type service_level_objective_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_instrumentation_configuration_response() :: #{
-%%   <<"Configuration">> => instrumentation_configuration()
-%% }
--type get_instrumentation_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_level_objective_input() :: #{}
--type delete_service_level_objective_input() :: #{}.
-
-
-%% Example:
-%% service_level_indicator_metric_config() :: #{
-%%   <<"CompositeSliConfig">> => composite_sli_config(),
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricDataQueries">> => list(metric_data_query()),
-%%   <<"MetricName">> => string(),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricType">> => list(any()),
-%%   <<"OperationName">> => string(),
-%%   <<"PeriodSeconds">> => integer(),
-%%   <<"Statistic">> => string()
-%% }
--type service_level_indicator_metric_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_group() :: #{
-%%   <<"GroupIdentifier">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"GroupSource">> => string(),
-%%   <<"GroupValue">> => string()
-%% }
--type service_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_level_objectives_input() :: #{
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"IncludeLinkedAccounts">> => [boolean()],
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricSourceTypes">> => list(list(any())()),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"SloOwnerAwsAccountId">> => string()
-%% }
--type list_service_level_objectives_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_reference() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"MetricType">> => string(),
-%%   <<"Namespace">> => string()
-%% }
--type metric_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => [string()],
-%%   <<"ResourceArn">> => [string()]
-%% }
--type batch_delete_error() :: #{binary() => any()}.
+-type create_instrumentation_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -405,35 +374,6 @@
 
 
 %% Example:
-%% list_grouping_attribute_definitions_input() :: #{
-%%   <<"AwsAccountId">> => string(),
-%%   <<"IncludeLinkedAccounts">> => [boolean()],
-%%   <<"NextToken">> => string()
-%% }
--type list_grouping_attribute_definitions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service() :: #{
-%%   <<"AttributeMaps">> => list(map()),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"LogGroupReferences">> => list(map()),
-%%   <<"MetricReferences">> => list(metric_reference()),
-%%   <<"ServiceGroups">> => list(service_group())
-%% }
--type service() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_successful_deletion() :: #{
-%%   <<"LocationHash">> => [string()],
-%%   <<"ResourceArn">> => [string()],
-%%   <<"SignalType">> => [string()]
-%% }
--type batch_delete_successful_deletion() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_service_level_objective_input() :: #{
 %%   <<"AutoInvestigationEnabled">> => [boolean()],
 %%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
@@ -449,104 +389,14 @@
 
 
 %% Example:
-%% dependency_graph() :: #{
-%%   <<"Edges">> => list(edge()),
-%%   <<"Nodes">> => list(node())
+%% create_service_level_objective_output() :: #{
+%%   <<"Slo">> => service_level_objective()
 %% }
--type dependency_graph() :: #{binary() => any()}.
-
+-type create_service_level_objective_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_service_states_input() :: #{
-%%   <<"AttributeFilters">> => list(attribute_filter()),
-%%   <<"AwsAccountId">> => string(),
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"IncludeLinkedAccounts">> => [boolean()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
-%% }
--type list_service_states_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_objective() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AutoInvestigationEnabled">> => [boolean()],
-%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
-%%   <<"CreatedTime">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"EvaluationType">> => list(any()),
-%%   <<"Goal">> => goal(),
-%%   <<"LastUpdatedTime">> => [non_neg_integer()],
-%%   <<"MetricSourceType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RequestBasedSli">> => request_based_service_level_indicator(),
-%%   <<"Sli">> => service_level_indicator()
-%% }
--type service_level_objective() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_exclusion_windows_output() :: #{
-%%   <<"Errors">> => list(batch_update_exclusion_windows_error()),
-%%   <<"SloIds">> => list([string()]())
-%% }
--type batch_update_exclusion_windows_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% goal() :: #{
-%%   <<"AttainmentGoal">> => float(),
-%%   <<"Interval">> => list(),
-%%   <<"WarningThreshold">> => float()
-%% }
--type goal() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_service_level_objective_budget_report_output() :: #{
-%%   <<"Errors">> => list(service_level_objective_budget_report_error()),
-%%   <<"Reports">> => list(service_level_objective_budget_report()),
-%%   <<"Timestamp">> => [non_neg_integer()]
-%% }
--type batch_get_service_level_objective_budget_report_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_indicator_metric() :: #{
-%%   <<"CompositeSliConfig">> => composite_sli_config(),
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricDataQueries">> => list(metric_data_query()),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricType">> => list(any()),
-%%   <<"OperationName">> => string()
-%% }
--type service_level_indicator_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_based_service_level_indicator_metric_config() :: #{
-%%   <<"CompositeSliConfig">> => composite_sli_config(),
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricName">> => string(),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricType">> => list(any()),
-%%   <<"MonitoredRequestCountMetric">> => list(),
-%%   <<"OperationName">> => string(),
-%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
-%% }
--type request_based_service_level_indicator_metric_config() :: #{binary() => any()}.
+%% delete_grouping_configuration_output() :: #{}
+-type delete_grouping_configuration_output() :: #{}.
 
 
 %% Example:
@@ -561,126 +411,62 @@
 
 
 %% Example:
-%% batch_delete_scope() :: #{
-%%   <<"Environment">> => [string()],
-%%   <<"InstrumentationType">> => list(any()),
-%%   <<"Service">> => [string()]
-%% }
--type batch_delete_scope() :: #{binary() => any()}.
-
-
-%% Example:
 %% delete_instrumentation_configuration_response() :: #{
 %%   <<"DeletionStatus">> => list(any())
 %% }
 -type delete_instrumentation_configuration_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_service_level_objective_input() :: #{}
+-type delete_service_level_objective_input() :: #{}.
 
 %% Example:
-%% selection_config() :: #{
-%%   <<"Pattern">> => string(),
-%%   <<"Type">> => list(any())
+%% delete_service_level_objective_output() :: #{}
+-type delete_service_level_objective_output() :: #{}.
+
+
+%% Example:
+%% dependency_config() :: #{
+%%   <<"DependencyKeyAttributes">> => map(),
+%%   <<"DependencyOperationName">> => string()
 %% }
--type selection_config() :: #{binary() => any()}.
+-type dependency_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% rolling_interval() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnit">> => list(any())
+%% dependency_graph() :: #{
+%%   <<"Edges">> => list(edge()),
+%%   <<"Nodes">> => list(node())
 %% }
--type rolling_interval() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_level_objective_input() :: #{}
--type get_service_level_objective_input() :: #{}.
+-type dependency_graph() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_service_states_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceStates">> => list(service_state()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_service_states_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_graph() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"MetricDataQueries">> => list(metric_data_query()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type metric_graph() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_level_objective_exclusion_windows_output() :: #{
-%%   <<"ExclusionWindows">> => list(exclusion_window()),
-%%   <<"NextToken">> => string()
-%% }
--type list_service_level_objective_exclusion_windows_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_capture_configuration() :: #{
-%%   <<"CaptureArguments">> => list([string()]()),
-%%   <<"CaptureLimits">> => capture_limits_config(),
-%%   <<"CaptureLocals">> => list([string()]()),
-%%   <<"CaptureReturn">> => [boolean()],
-%%   <<"CaptureStackTrace">> => [boolean()]
-%% }
--type code_capture_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"LogGroupReferences">> => list(map()),
-%%   <<"Service">> => service(),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type get_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
+%% dimension() :: #{
+%%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type dimension() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_source() :: #{
-%%   <<"MetricSourceAttributes">> => map(),
-%%   <<"MetricSourceKeyAttributes">> => map()
+%% edge() :: #{
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"DestinationNodeId">> => [string()],
+%%   <<"Duration">> => [float()],
+%%   <<"SourceNodeId">> => [string()]
 %% }
--type metric_source() :: #{binary() => any()}.
+-type edge() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
+%% exclusion_window() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"RecurrenceRule">> => recurrence_rule(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Window">> => window()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type exclusion_window() :: #{binary() => any()}.
 
 
 %% Example:
@@ -695,34 +481,26 @@
 
 
 %% Example:
-%% service_summary() :: #{
-%%   <<"AttributeMaps">> => list(map()),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricReferences">> => list(metric_reference()),
-%%   <<"ServiceGroups">> => list(service_group())
+%% get_instrumentation_configuration_response() :: #{
+%%   <<"Configuration">> => instrumentation_configuration()
 %% }
--type service_summary() :: #{binary() => any()}.
+-type get_instrumentation_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_data_query() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Expression">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"MetricStat">> => metric_stat(),
-%%   <<"Period">> => integer(),
-%%   <<"ReturnData">> => boolean()
+%% get_instrumentation_configuration_status_request() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"Environment">> := [string()],
+%%   <<"InstrumentationType">> := list(any()),
+%%   <<"LocationIdentifier">> := list(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> := [string()],
+%%   <<"SignalType">> := list(any()),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any())
 %% }
--type metric_data_query() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_objective_entity() :: #{
-%%   <<"SloArn">> => [string()],
-%%   <<"SloName">> => [string()]
-%% }
--type service_level_objective_entity() :: #{binary() => any()}.
+-type get_instrumentation_configuration_status_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -739,12 +517,16 @@
 
 
 %% Example:
-%% service_level_indicator() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"MetricThreshold">> => float(),
-%%   <<"SliMetric">> => service_level_indicator_metric()
+%% get_service_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"KeyAttributes">> := map(),
+%%   <<"StartTime">> := [non_neg_integer()]
 %% }
--type service_level_indicator() :: #{binary() => any()}.
+-type get_service_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_level_objective_input() :: #{}
+-type get_service_level_objective_input() :: #{}.
 
 
 %% Example:
@@ -755,51 +537,39 @@
 
 
 %% Example:
-%% instrumentation_configuration_status_report() :: #{
-%%   <<"ErrorCause">> => list(any()),
-%%   <<"InstrumentationType">> => list(any()),
-%%   <<"LocationHash">> => [string()],
-%%   <<"SignalType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Time">> => [non_neg_integer()]
+%% get_service_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"LogGroupReferences">> => list(map()),
+%%   <<"Service">> => service(),
+%%   <<"StartTime">> => [non_neg_integer()]
 %% }
--type instrumentation_configuration_status_report() :: #{binary() => any()}.
+-type get_service_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% burn_rate_configuration() :: #{
-%%   <<"LookBackWindowMinutes">> => integer()
+%% goal() :: #{
+%%   <<"AttainmentGoal">> => float(),
+%%   <<"Interval">> => list(),
+%%   <<"WarningThreshold">> => float()
 %% }
--type burn_rate_configuration() :: #{binary() => any()}.
+-type goal() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
+%% grouping_attribute_definition() :: #{
+%%   <<"DefaultGroupingValue">> => string(),
+%%   <<"GroupingName">> => string(),
+%%   <<"GroupingSourceKeys">> => list(string())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type grouping_attribute_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_grouping_attribute_definitions_output() :: #{
+%% grouping_configuration() :: #{
 %%   <<"GroupingAttributeDefinitions">> => list(grouping_attribute_definition()),
-%%   <<"NextToken">> => string(),
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type list_grouping_attribute_definitions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% instrumentation_configurations_page() :: #{
-%%   <<"Changed">> => [boolean()],
-%%   <<"Environment">> => [string()],
-%%   <<"LatestConfigurations">> => list(instrumentation_configuration_without_service_env()),
-%%   <<"NextToken">> => string(),
-%%   <<"Service">> => [string()],
-%%   <<"SyncInterval">> => [integer()],
-%%   <<"SyncedAt">> => [non_neg_integer()]
-%% }
--type instrumentation_configurations_page() :: #{binary() => any()}.
+-type grouping_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -821,27 +591,479 @@
 
 
 %% Example:
-%% composite_sli_config() :: #{
-%%   <<"Components">> => list(list()),
-%%   <<"SelectionConfig">> => selection_config()
+%% instrumentation_configuration_status_report() :: #{
+%%   <<"ErrorCause">> => list(any()),
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"LocationHash">> => [string()],
+%%   <<"SignalType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => [non_neg_integer()]
 %% }
--type composite_sli_config() :: #{binary() => any()}.
+-type instrumentation_configuration_status_report() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_instrumentation_configuration_status_request() :: #{
+%% instrumentation_configuration_without_service_env() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AttributeFilters">> => list(map()),
+%%   <<"CaptureConfiguration">> => list(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"InstrumentationType">> => list(any()),
+%%   <<"Location">> => list(),
+%%   <<"LocationHash">> => [string()],
+%%   <<"SignalType">> => list(any())
+%% }
+-type instrumentation_configuration_without_service_env() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_configurations_page() :: #{
+%%   <<"Changed">> => [boolean()],
+%%   <<"Environment">> => [string()],
+%%   <<"LatestConfigurations">> => list(instrumentation_configuration_without_service_env()),
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> => [string()],
+%%   <<"SyncInterval">> => [integer()],
+%%   <<"SyncedAt">> => [non_neg_integer()]
+%% }
+-type instrumentation_configurations_page() :: #{binary() => any()}.
+
+
+%% Example:
+%% instrumentation_status_event() :: #{
+%%   <<"ErrorCause">> => list(any()),
+%%   <<"Time">> => [non_neg_integer()]
+%% }
+-type instrumentation_status_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_findings_input() :: #{
+%%   <<"AuditTargets">> := list(audit_target()),
+%%   <<"Auditors">> => list([string()]()),
+%%   <<"DetailLevel">> => list(any()),
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_audit_findings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_findings_output() :: #{
+%%   <<"AuditFindings">> => list(audit_finding()),
 %%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_audit_findings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_events_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"Entity">> := map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_entity_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_events_output() :: #{
+%%   <<"ChangeEvents">> => list(change_event()),
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_entity_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_attribute_definitions_input() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_attribute_definitions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_attribute_definitions_output() :: #{
+%%   <<"GroupingAttributeDefinitions">> => list(grouping_attribute_definition()),
+%%   <<"NextToken">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type list_grouping_attribute_definitions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instrumentation_configurations_request() :: #{
 %%   <<"Environment">> := [string()],
 %%   <<"InstrumentationType">> := list(any()),
-%%   <<"LocationIdentifier">> := list(),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => string(),
 %%   <<"Service">> := [string()],
-%%   <<"SignalType">> := list(any()),
-%%   <<"StartTime">> => [non_neg_integer()],
-%%   <<"Status">> => list(any())
+%%   <<"SyncedAt">> => [non_neg_integer()]
 %% }
--type get_instrumentation_configuration_status_request() :: #{binary() => any()}.
+-type list_instrumentation_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_dependencies_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"KeyAttributes">> := map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_service_dependencies_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_dependencies_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceDependencies">> => list(service_dependency()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_service_dependencies_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_dependents_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"KeyAttributes">> := map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_service_dependents_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_dependents_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceDependents">> => list(service_dependent()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_service_dependents_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_level_objective_exclusion_windows_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_level_objective_exclusion_windows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_level_objective_exclusion_windows_output() :: #{
+%%   <<"ExclusionWindows">> => list(exclusion_window()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_level_objective_exclusion_windows_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_level_objectives_input() :: #{
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricSourceTypes">> => list(list(any())()),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"SloOwnerAwsAccountId">> => string()
+%% }
+-type list_service_level_objectives_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_level_objectives_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SloSummaries">> => list(service_level_objective_summary())
+%% }
+-type list_service_level_objectives_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_operations_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"KeyAttributes">> := map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_service_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_operations_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceOperations">> => list(service_operation()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_service_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_states_input() :: #{
+%%   <<"AttributeFilters">> => list(attribute_filter()),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_service_states_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_states_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceStates">> => list(service_state()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_service_states_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_input() :: #{
+%%   <<"AwsAccountId">> => string(),
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_services_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceSummaries">> => list(service_summary()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric() :: #{
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_data_query() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => metric_stat(),
+%%   <<"Period">> => integer(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type metric_data_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_graph() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type metric_graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_reference() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricType">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type metric_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_source() :: #{
+%%   <<"MetricSourceAttributes">> => map(),
+%%   <<"MetricSourceKeyAttributes">> => map()
+%% }
+-type metric_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Period">> => integer(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => list(any())
+%% }
+-type metric_stat() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_grouping_configuration_input() :: #{
+%%   <<"GroupingAttributeDefinitions">> := list(grouping_attribute_definition())
+%% }
+-type put_grouping_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_grouping_configuration_output() :: #{
+%%   <<"GroupingConfiguration">> => grouping_configuration()
+%% }
+-type put_grouping_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurrence_rule() :: #{
+%%   <<"Expression">> => string()
+%% }
+-type recurrence_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_instrumentation_configuration_status_request() :: #{
+%%   <<"Configurations">> := list(instrumentation_configuration_status_report()),
+%%   <<"Environment">> := [string()],
+%%   <<"Service">> := [string()]
+%% }
+-type report_instrumentation_configuration_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_instrumentation_configuration_status_response() :: #{
+%%   <<"Environment">> => [string()],
+%%   <<"Service">> => [string()],
+%%   <<"UnprocessedStatusEvents">> => list(unprocessed_status_event())
+%% }
+-type report_instrumentation_configuration_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_based_service_level_indicator() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"RequestBasedSliMetric">> => request_based_service_level_indicator_metric()
+%% }
+-type request_based_service_level_indicator() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_based_service_level_indicator_config() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"RequestBasedSliMetricConfig">> => request_based_service_level_indicator_metric_config()
+%% }
+-type request_based_service_level_indicator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_based_service_level_indicator_metric() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"MonitoredRequestCountMetric">> => list(),
+%%   <<"OperationName">> => string(),
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
+%% }
+-type request_based_service_level_indicator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_based_service_level_indicator_metric_config() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"MonitoredRequestCountMetric">> => list(),
+%%   <<"OperationName">> => string(),
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
+%% }
+-type request_based_service_level_indicator_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rolling_interval() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnit">> => list(any())
+%% }
+-type rolling_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% selection_config() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type selection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service() :: #{
+%%   <<"AttributeMaps">> => list(map()),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"LogGroupReferences">> => list(map()),
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"ServiceGroups">> => list(service_group())
+%% }
+-type service() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_dependency() :: #{
+%%   <<"DependencyKeyAttributes">> => map(),
+%%   <<"DependencyOperationName">> => string(),
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"OperationName">> => string()
+%% }
+-type service_dependency() :: #{binary() => any()}.
 
 
 %% Example:
@@ -852,6 +1074,91 @@
 %%   <<"OperationName">> => string()
 %% }
 -type service_dependent() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_entity() :: #{
+%%   <<"AwsAccountId">> => [string()],
+%%   <<"Environment">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type service_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_group() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"GroupSource">> => string(),
+%%   <<"GroupValue">> => string()
+%% }
+-type service_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_indicator() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"SliMetric">> => service_level_indicator_metric()
+%% }
+-type service_level_indicator() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_indicator_config() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"MetricThreshold">> => float(),
+%%   <<"SliMetricConfig">> => service_level_indicator_metric_config()
+%% }
+-type service_level_indicator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_indicator_metric() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"OperationName">> => string()
+%% }
+-type service_level_indicator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_indicator_metric_config() :: #{
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"OperationName">> => string(),
+%%   <<"PeriodSeconds">> => integer(),
+%%   <<"Statistic">> => string()
+%% }
+-type service_level_indicator_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_objective() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AutoInvestigationEnabled">> => [boolean()],
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"Goal">> => goal(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"MetricSourceType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RequestBasedSli">> => request_based_service_level_indicator(),
+%%   <<"Sli">> => service_level_indicator()
+%% }
+-type service_level_objective() :: #{binary() => any()}.
 
 
 %% Example:
@@ -873,66 +1180,45 @@
 
 
 %% Example:
-%% instrumentation_status_event() :: #{
-%%   <<"ErrorCause">> => list(any()),
-%%   <<"Time">> => [non_neg_integer()]
+%% service_level_objective_budget_report_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Name">> => string()
 %% }
--type instrumentation_status_event() :: #{binary() => any()}.
+-type service_level_objective_budget_report_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_service_level_objective_output() :: #{
-%%   <<"Slo">> => service_level_objective()
+%% service_level_objective_entity() :: #{
+%%   <<"SloArn">> => [string()],
+%%   <<"SloName">> => [string()]
 %% }
--type update_service_level_objective_output() :: #{binary() => any()}.
+-type service_level_objective_entity() :: #{binary() => any()}.
 
 
 %% Example:
-%% recurrence_rule() :: #{
-%%   <<"Expression">> => string()
+%% service_level_objective_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompositeSliConfig">> => composite_sli_config(),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"DependencyConfig">> => dependency_config(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricSource">> => metric_source(),
+%%   <<"MetricSourceType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"OperationName">> => string()
 %% }
--type recurrence_rule() :: #{binary() => any()}.
+-type service_level_objective_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_service_dependents_input() :: #{
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"KeyAttributes">> := map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
+%% service_operation() :: #{
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"Name">> => string()
 %% }
--type list_service_dependents_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_exclusion_windows_input() :: #{
-%%   <<"AddExclusionWindows">> => list(exclusion_window()),
-%%   <<"RemoveExclusionWindows">> => list(exclusion_window()),
-%%   <<"SloIds">> := list([string()]())
-%% }
--type batch_update_exclusion_windows_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_level_objectives_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SloSummaries">> => list(service_level_objective_summary())
-%% }
--type list_service_level_objectives_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_grouping_configuration_output() :: #{}
--type delete_grouping_configuration_output() :: #{}.
-
-
-%% Example:
-%% request_based_service_level_indicator() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"MetricThreshold">> => float(),
-%%   <<"RequestBasedSliMetric">> => request_based_service_level_indicator_metric()
-%% }
--type request_based_service_level_indicator() :: #{binary() => any()}.
+-type service_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -945,37 +1231,53 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_stat() :: #{
-%%   <<"Metric">> => metric(),
-%%   <<"Period">> => integer(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => list(any())
+%% service_state() :: #{
+%%   <<"AttributeFilters">> => list(attribute_filter()),
+%%   <<"LatestChangeEvents">> => list(change_event()),
+%%   <<"Service">> => map()
 %% }
--type metric_stat() :: #{binary() => any()}.
+-type service_state() :: #{binary() => any()}.
 
 
 %% Example:
-%% report_instrumentation_configuration_status_response() :: #{
-%%   <<"Environment">> => [string()],
-%%   <<"Service">> => [string()],
-%%   <<"UnprocessedStatusEvents">> => list(unprocessed_status_event())
+%% service_summary() :: #{
+%%   <<"AttributeMaps">> => list(map()),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"ServiceGroups">> => list(service_group())
 %% }
--type report_instrumentation_configuration_status_response() :: #{binary() => any()}.
+-type service_summary() :: #{binary() => any()}.
+
+%% Example:
+%% start_discovery_input() :: #{}
+-type start_discovery_input() :: #{}.
+
+%% Example:
+%% start_discovery_output() :: #{}
+-type start_discovery_output() :: #{}.
 
 
 %% Example:
-%% batch_get_service_level_objective_budget_report_input() :: #{
-%%   <<"SloIds">> := list([string()]()),
-%%   <<"Timestamp">> := [non_neg_integer()]
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type batch_get_service_level_objective_budget_report_input() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -983,153 +1285,10 @@
 
 
 %% Example:
-%% request_based_service_level_indicator_metric() :: #{
-%%   <<"CompositeSliConfig">> => composite_sli_config(),
-%%   <<"DependencyConfig">> => dependency_config(),
-%%   <<"KeyAttributes">> => map(),
-%%   <<"MetricSource">> => metric_source(),
-%%   <<"MetricType">> => list(any()),
-%%   <<"MonitoredRequestCountMetric">> => list(),
-%%   <<"OperationName">> => string(),
-%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
-%% }
--type request_based_service_level_indicator_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_operations_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceOperations">> => list(service_operation()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_service_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_level_objective_input() :: #{
-%%   <<"AutoInvestigationEnabled">> => [boolean()],
-%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"Goal">> => goal(),
-%%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
-%%   <<"SliConfig">> => service_level_indicator_config()
-%% }
--type update_service_level_objective_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_config() :: #{
-%%   <<"DependencyKeyAttributes">> => map(),
-%%   <<"DependencyOperationName">> => string()
-%% }
--type dependency_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_discovery_input() :: #{}
--type start_discovery_input() :: #{}.
-
-
-%% Example:
-%% put_grouping_configuration_output() :: #{
-%%   <<"GroupingConfiguration">> => grouping_configuration()
-%% }
--type put_grouping_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_level_objective_exclusion_windows_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_service_level_objective_exclusion_windows_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% window() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnit">> => list(any())
-%% }
--type window() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_entity() :: #{
-%%   <<"CanaryName">> => [string()]
-%% }
--type canary_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_findings_output() :: #{
-%%   <<"AuditFindings">> => list(audit_finding()),
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_audit_findings_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_by_resource_arns() :: #{
-%%   <<"InstrumentationType">> => list(any()),
-%%   <<"ResourceArns">> => list([string()]())
-%% }
--type batch_delete_by_resource_arns() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_filter() :: #{
-%%   <<"AttributeFilterName">> => string(),
-%%   <<"AttributeFilterValues">> => list(string())
-%% }
--type attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_level_indicator_config() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"MetricThreshold">> => float(),
-%%   <<"SliMetricConfig">> => service_level_indicator_metric_config()
-%% }
--type service_level_indicator_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_target() :: #{
-%%   <<"Data">> => list(),
-%%   <<"Type">> => [string()]
-%% }
--type audit_target() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1145,332 +1304,173 @@
 
 
 %% Example:
-%% batch_delete_instrumentation_configurations_response() :: #{
-%%   <<"DeletedCount">> => [integer()],
-%%   <<"Errors">> => list(batch_delete_error()),
-%%   <<"SuccessfulDeletions">> => list(batch_delete_successful_deletion())
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type batch_delete_instrumentation_configurations_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% instrumentation_configuration_without_service_env() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"AttributeFilters">> => list(map()),
-%%   <<"CaptureConfiguration">> => list(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => [string()],
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"InstrumentationType">> => list(any()),
-%%   <<"Location">> => list(),
-%%   <<"LocationHash">> => [string()],
-%%   <<"SignalType">> => list(any())
+%% update_service_level_objective_input() :: #{
+%%   <<"AutoInvestigationEnabled">> => [boolean()],
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Goal">> => goal(),
+%%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
+%%   <<"SliConfig">> => service_level_indicator_config()
 %% }
--type instrumentation_configuration_without_service_env() :: #{binary() => any()}.
+-type update_service_level_objective_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% change_event() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ChangeEventType">> => list(any()),
-%%   <<"Entity">> => map(),
-%%   <<"EventId">> => [string()],
-%%   <<"EventName">> => [string()],
-%%   <<"Region">> => [string()],
-%%   <<"Timestamp">> => [non_neg_integer()],
-%%   <<"UserName">> => [string()]
-%% }
--type change_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% capture_limits_config() :: #{
-%%   <<"MaxCollectionDepth">> => [integer()],
-%%   <<"MaxCollectionWidth">> => [integer()],
-%%   <<"MaxFieldsPerObject">> => [integer()],
-%%   <<"MaxHits">> => [integer()],
-%%   <<"MaxObjectDepth">> => [integer()],
-%%   <<"MaxStackFrames">> => [integer()],
-%%   <<"MaxStackTraceSize">> => [integer()],
-%%   <<"MaxStringLength">> => [integer()]
-%% }
--type capture_limits_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% edge() :: #{
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"DestinationNodeId">> => [string()],
-%%   <<"Duration">> => [float()],
-%%   <<"SourceNodeId">> => [string()]
-%% }
--type edge() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instrumentation_configurations_request() :: #{
-%%   <<"Environment">> := [string()],
-%%   <<"InstrumentationType">> := list(any()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"Service">> := [string()],
-%%   <<"SyncedAt">> => [non_neg_integer()]
-%% }
--type list_instrumentation_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_level_objective_output() :: #{
+%% update_service_level_objective_output() :: #{
 %%   <<"Slo">> => service_level_objective()
 %% }
--type create_service_level_objective_output() :: #{binary() => any()}.
+-type update_service_level_objective_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_entity_events_input() :: #{
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"Entity">> := map(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_entity_events_input() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% grouping_configuration() :: #{
-%%   <<"GroupingAttributeDefinitions">> => list(grouping_attribute_definition()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% window() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnit">> => list(any())
 %% }
--type grouping_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_signals_node() :: #{
-%%   <<"Duration">> => [float()],
-%%   <<"KeyAttributes">> => map(),
-%%   <<"Name">> => [string()],
-%%   <<"NodeId">> => [string()],
-%%   <<"Operation">> => [string()],
-%%   <<"Status">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type application_signals_node() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_level_objective_output() :: #{}
--type delete_service_level_objective_output() :: #{}.
-
-
-%% Example:
-%% list_service_dependents_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceDependents">> => list(service_dependent()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_service_dependents_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_discovery_output() :: #{}
--type start_discovery_output() :: #{}.
-
-
-%% Example:
-%% list_services_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaries">> => list(service_summary()),
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type list_services_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% exclusion_window() :: #{
-%%   <<"Reason">> => string(),
-%%   <<"RecurrenceRule">> => recurrence_rule(),
-%%   <<"StartTime">> => [non_neg_integer()],
-%%   <<"Window">> => window()
-%% }
--type exclusion_window() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_input() :: #{
-%%   <<"AwsAccountId">> => string(),
-%%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"IncludeLinkedAccounts">> => [boolean()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := [non_neg_integer()]
-%% }
--type list_services_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_grouping_configuration_input() :: #{
-%%   <<"GroupingAttributeDefinitions">> := list(grouping_attribute_definition())
-%% }
--type put_grouping_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_instrumentation_configuration_request() :: #{
-%%   <<"AttributeFilters">> => list(map()),
-%%   <<"CaptureConfiguration">> := list(),
-%%   <<"Description">> => [string()],
-%%   <<"Environment">> := [string()],
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"InstrumentationType">> := list(any()),
-%%   <<"Location">> := list(),
-%%   <<"Service">> := [string()],
-%%   <<"SignalType">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_instrumentation_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_based_service_level_indicator_config() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"MetricThreshold">> => float(),
-%%   <<"RequestBasedSliMetricConfig">> => request_based_service_level_indicator_metric_config()
-%% }
--type request_based_service_level_indicator_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_state() :: #{
-%%   <<"AttributeFilters">> => list(attribute_filter()),
-%%   <<"LatestChangeEvents">> => list(change_event()),
-%%   <<"Service">> => map()
-%% }
--type service_state() :: #{binary() => any()}.
+-type window() :: #{binary() => any()}.
 
 -type batch_delete_instrumentation_configurations_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type batch_get_service_level_objective_budget_report_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type batch_update_exclusion_windows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type create_instrumentation_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_service_level_objective_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_grouping_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type delete_instrumentation_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type delete_service_level_objective_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type get_instrumentation_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type get_instrumentation_configuration_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type get_service_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type get_service_level_objective_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type list_audit_findings_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_entity_events_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_grouping_attribute_definitions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_instrumentation_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type list_service_dependencies_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_service_dependents_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_service_level_objective_exclusion_windows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type list_service_level_objectives_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_service_operations_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_service_states_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_services_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     resource_not_found_exception().
 
 -type put_grouping_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type report_instrumentation_configuration_status_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type start_discovery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1483,8 +1483,8 @@
     resource_not_found_exception().
 
 -type update_service_level_objective_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 %%====================================================================

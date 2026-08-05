@@ -68,126 +68,10 @@
 
 
 %% Example:
-%% update_environment_response() :: #{
-%%   <<"environment">> => environment_summary()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_devices_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_devices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_software_set_request() :: #{
-%%   <<"validationStatus">> := list(any())
-%% }
--type update_software_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_device_response() :: #{
-%%   <<"device">> => device_summary()
-%% }
--type update_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_device_request() :: #{
-%%   <<"desiredSoftwareSetId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"softwareSetUpdateSchedule">> => list(any())
-%% }
--type update_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_summary() :: #{
-%%   <<"activationCode">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"desiredSoftwareSetId">> => string(),
-%%   <<"desktopArn">> => string(),
-%%   <<"desktopEndpoint">> => string(),
-%%   <<"desktopType">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"maintenanceWindow">> => maintenance_window(),
-%%   <<"name">> => string(),
-%%   <<"pendingSoftwareSetId">> => string(),
-%%   <<"softwareSetUpdateMode">> => list(any()),
-%%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type environment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_request() :: #{}
--type get_environment_request() :: #{}.
-
-%% Example:
-%% get_software_set_request() :: #{}
--type get_software_set_request() :: #{}.
-
-
-%% Example:
-%% delete_device_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% software_set_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"releasedAt">> => non_neg_integer(),
-%%   <<"supportedUntil">> => non_neg_integer(),
-%%   <<"validationStatus">> => list(any()),
-%%   <<"version">> => [string()]
-%% }
--type software_set_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_environment_response() :: #{
-%%   <<"environment">> => environment()
-%% }
--type get_environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% software_set() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"releasedAt">> => non_neg_integer(),
-%%   <<"software">> => list(software()),
-%%   <<"supportedUntil">> => non_neg_integer(),
-%%   <<"validationStatus">> => list(any()),
-%%   <<"version">> => [string()]
-%% }
--type software_set() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -200,98 +84,49 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_software_set_response() :: #{
-%%   <<"softwareSet">> => software_set()
-%% }
--type get_software_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment() :: #{
-%%   <<"activationCode">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
+%% create_environment_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"desiredSoftwareSetId">> => string(),
-%%   <<"desktopArn">> => string(),
+%%   <<"desktopArn">> := string(),
 %%   <<"desktopEndpoint">> => string(),
-%%   <<"desktopType">> => list(any()),
 %%   <<"deviceCreationTags">> => map(),
-%%   <<"id">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"maintenanceWindow">> => maintenance_window(),
 %%   <<"name">> => string(),
-%%   <<"pendingSoftwareSetId">> => string(),
-%%   <<"pendingSoftwareSetVersion">> => [string()],
-%%   <<"registeredDevicesCount">> => [integer()],
-%%   <<"softwareSetComplianceStatus">> => list(any()),
 %%   <<"softwareSetUpdateMode">> => list(any()),
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type create_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_devices_response() :: #{
-%%   <<"devices">> => list(device_summary()),
-%%   <<"nextToken">> => string()
+%% create_environment_response() :: #{
+%%   <<"environment">> => environment_summary()
 %% }
--type list_devices_response() :: #{binary() => any()}.
+-type create_environment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_environments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% delete_device_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type list_environments_request() :: #{binary() => any()}.
+-type delete_device_request() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_device_response() :: #{}
--type deregister_device_response() :: #{}.
+%% delete_device_response() :: #{}
+-type delete_device_response() :: #{}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% delete_environment_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type validation_exception_field() :: #{binary() => any()}.
-
+-type delete_environment_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_software_sets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_software_sets_request() :: #{binary() => any()}.
+%% delete_environment_response() :: #{}
+-type delete_environment_response() :: #{}.
 
 
 %% Example:
@@ -302,114 +137,8 @@
 -type deregister_device_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_device_request() :: #{}
--type get_device_request() :: #{}.
-
-
-%% Example:
-%% create_environment_response() :: #{
-%%   <<"environment">> => environment_summary()
-%% }
--type create_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_response() :: #{}
--type delete_device_response() :: #{}.
-
-
-%% Example:
-%% device_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currentSoftwareSetId">> => string(),
-%%   <<"desiredSoftwareSetId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastConnectedAt">> => non_neg_integer(),
-%%   <<"lastPostureAt">> => non_neg_integer(),
-%%   <<"lastUserId">> => string(),
-%%   <<"model">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"pendingSoftwareSetId">> => string(),
-%%   <<"serialNumber">> => [string()],
-%%   <<"softwareSetUpdateSchedule">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type device_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_environment_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_software_sets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"softwareSets">> => list(software_set_summary())
-%% }
--type list_software_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% software() :: #{
-%%   <<"name">> => [string()],
-%%   <<"version">> => [string()]
-%% }
--type software() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_response() :: #{
-%%   <<"environments">> => list(environment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environments_response() :: #{binary() => any()}.
+%% deregister_device_response() :: #{}
+-type deregister_device_response() :: #{}.
 
 
 %% Example:
@@ -440,20 +169,284 @@
 
 
 %% Example:
-%% create_environment_request() :: #{
-%%   <<"clientToken">> => string(),
+%% device_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentSoftwareSetId">> => string(),
 %%   <<"desiredSoftwareSetId">> => string(),
-%%   <<"desktopArn">> := string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastConnectedAt">> => non_neg_integer(),
+%%   <<"lastPostureAt">> => non_neg_integer(),
+%%   <<"lastUserId">> => string(),
+%%   <<"model">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"pendingSoftwareSetId">> => string(),
+%%   <<"serialNumber">> => [string()],
+%%   <<"softwareSetUpdateSchedule">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type device_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"activationCode">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"desiredSoftwareSetId">> => string(),
+%%   <<"desktopArn">> => string(),
 %%   <<"desktopEndpoint">> => string(),
+%%   <<"desktopType">> => list(any()),
 %%   <<"deviceCreationTags">> => map(),
+%%   <<"id">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"maintenanceWindow">> => maintenance_window(),
 %%   <<"name">> => string(),
+%%   <<"pendingSoftwareSetId">> => string(),
+%%   <<"pendingSoftwareSetVersion">> => [string()],
+%%   <<"registeredDevicesCount">> => [integer()],
+%%   <<"softwareSetComplianceStatus">> => list(any()),
 %%   <<"softwareSetUpdateMode">> => list(any()),
 %%   <<"softwareSetUpdateSchedule">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"activationCode">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"desiredSoftwareSetId">> => string(),
+%%   <<"desktopArn">> => string(),
+%%   <<"desktopEndpoint">> => string(),
+%%   <<"desktopType">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"maintenanceWindow">> => maintenance_window(),
+%%   <<"name">> => string(),
+%%   <<"pendingSoftwareSetId">> => string(),
+%%   <<"softwareSetUpdateMode">> => list(any()),
+%%   <<"softwareSetUpdateSchedule">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_request() :: #{}
+-type get_device_request() :: #{}.
+
+
+%% Example:
+%% get_device_response() :: #{
+%%   <<"device">> => device()
+%% }
+-type get_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{}
+-type get_environment_request() :: #{}.
+
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"environment">> => environment()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_software_set_request() :: #{}
+-type get_software_set_request() :: #{}.
+
+
+%% Example:
+%% get_software_set_response() :: #{
+%%   <<"softwareSet">> => software_set()
+%% }
+-type get_software_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"devices">> => list(device_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_response() :: #{
+%%   <<"environments">> => list(environment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_software_sets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_software_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_software_sets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"softwareSets">> => list(software_set_summary())
+%% }
+-type list_software_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
--type create_environment_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_window() :: #{
+%%   <<"applyTimeOf">> => list(any()),
+%%   <<"daysOfTheWeek">> => list(list(any())()),
+%%   <<"endTimeHour">> => integer(),
+%%   <<"endTimeMinute">> => integer(),
+%%   <<"startTimeHour">> => integer(),
+%%   <<"startTimeMinute">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type maintenance_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% software() :: #{
+%%   <<"name">> => [string()],
+%%   <<"version">> => [string()]
+%% }
+-type software() :: #{binary() => any()}.
+
+
+%% Example:
+%% software_set() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"releasedAt">> => non_neg_integer(),
+%%   <<"software">> => list(software()),
+%%   <<"supportedUntil">> => non_neg_integer(),
+%%   <<"validationStatus">> => list(any()),
+%%   <<"version">> => [string()]
+%% }
+-type software_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% software_set_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"releasedAt">> => non_neg_integer(),
+%%   <<"supportedUntil">> => non_neg_integer(),
+%%   <<"validationStatus">> => list(any()),
+%%   <<"version">> => [string()]
+%% }
+-type software_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_device_request() :: #{
+%%   <<"desiredSoftwareSetId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"softwareSetUpdateSchedule">> => list(any())
+%% }
+-type update_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_device_response() :: #{
+%%   <<"device">> => device_summary()
+%% }
+-type update_device_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -471,20 +464,17 @@
 
 
 %% Example:
-%% maintenance_window() :: #{
-%%   <<"applyTimeOf">> => list(any()),
-%%   <<"daysOfTheWeek">> => list(list(any())()),
-%%   <<"endTimeHour">> => integer(),
-%%   <<"endTimeMinute">> => integer(),
-%%   <<"startTimeHour">> => integer(),
-%%   <<"startTimeMinute">> => integer(),
-%%   <<"type">> => list(any())
+%% update_environment_response() :: #{
+%%   <<"environment">> => environment_summary()
 %% }
--type maintenance_window() :: #{binary() => any()}.
+-type update_environment_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_environment_response() :: #{}
--type delete_environment_response() :: #{}.
+%% update_software_set_request() :: #{
+%%   <<"validationStatus">> := list(any())
+%% }
+-type update_software_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_software_set_response() :: #{}
@@ -492,127 +482,137 @@
 
 
 %% Example:
-%% get_device_response() :: #{
-%%   <<"device">> => device()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
 %% }
--type get_device_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deregister_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_software_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_environments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_software_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_software_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

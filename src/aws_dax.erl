@@ -60,263 +60,6 @@
 
 
 %% Example:
-%% sse_description() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type sse_description() :: #{binary() => any()}.
-
-%% Example:
-%% node_quota_for_customer_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type node_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_node_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type reboot_node_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_subnet_group_response() :: #{
-%%   <<"SubnetGroup">> => subnet_group()
-%% }
--type create_subnet_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_parameter_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ParameterGroupName">> := string()
-%% }
--type create_parameter_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameter_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ParameterGroups">> => list(parameter_group())
-%% }
--type describe_parameter_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subnet_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_parameter_group_response() :: #{
-%%   <<"ParameterGroup">> => parameter_group()
-%% }
--type create_parameter_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParameterGroupName">> := string(),
-%%   <<"Source">> => string()
-%% }
--type describe_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% security_group_membership() :: #{
-%%   <<"SecurityGroupIdentifier">> => string(),
-%%   <<"Status">> => string()
-%% }
--type security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% subnet() :: #{
-%%   <<"SubnetAvailabilityZone">> => string(),
-%%   <<"SubnetIdentifier">> => string(),
-%%   <<"SupportedNetworkTypes">> => list(list(any())())
-%% }
--type subnet() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_subnet() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_name_value() :: #{
-%%   <<"ParameterName">> => string(),
-%%   <<"ParameterValue">> => string()
-%% }
--type parameter_name_value() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameters_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type describe_parameters_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subnet_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameter_group_request() :: #{
-%%   <<"ParameterGroupName">> := string()
-%% }
--type delete_parameter_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_group_status() :: #{
-%%   <<"NodeIdsToReboot">> => list(string()),
-%%   <<"ParameterApplyStatus">> => string(),
-%%   <<"ParameterGroupName">> => string()
-%% }
--type parameter_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% tag_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"NotificationTopicArn">> => string(),
-%%   <<"NotificationTopicStatus">> => string(),
-%%   <<"ParameterGroupName">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SecurityGroupIds">> => list(string())
-%% }
--type update_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_combination_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_combination_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_vpc_network_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_vpc_network_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% tag_quota_per_resource_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_quota_per_resource_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_not_allowed_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subnet_not_allowed_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subnet_group_request() :: #{
-%%   <<"SubnetGroupName">> := string()
-%% }
--type delete_subnet_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_group() :: #{
-%%   <<"Description">> => string(),
-%%   <<"SubnetGroupName">> => string(),
-%%   <<"Subnets">> => list(subnet()),
-%%   <<"SupportedNetworkTypes">> => list(list(any())()),
-%%   <<"VpcId">> => string()
-%% }
--type subnet_group() :: #{binary() => any()}.
-
-%% Example:
-%% decrease_replication_factor_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type decrease_replication_factor_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ClusterEndpointEncryptionType">> => list(any()),
-%%   <<"ClusterName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"NodeType">> := string(),
-%%   <<"NotificationTopicArn">> => string(),
-%%   <<"ParameterGroupName">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ReplicationFactor">> := integer(),
-%%   <<"SSESpecification">> => sse_specification(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetGroupName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_default_parameters_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type describe_default_parameters_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
 %% cluster() :: #{
 %%   <<"ActiveNodes">> => integer(),
 %%   <<"ClusterArn">> => string(),
@@ -341,22 +84,248 @@
 -type cluster() :: #{binary() => any()}.
 
 %% Example:
-%% subnet_group_quota_exceeded_fault() :: #{
+%% cluster_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+-type cluster_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
+%% cluster_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
+-type cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ClusterEndpointEncryptionType">> => list(any()),
+%%   <<"ClusterName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"NodeType">> := string(),
+%%   <<"NotificationTopicArn">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ReplicationFactor">> := integer(),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type create_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type create_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string())
+%% }
+-type create_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type create_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% dax_node() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"NodeCreateTime">> => non_neg_integer(),
+%%   <<"NodeId">> => string(),
+%%   <<"NodeStatus">> => string(),
+%%   <<"ParameterGroupStatus">> => string()
+%% }
+-type dax_node() :: #{binary() => any()}.
+
+%% Example:
+%% decrease_replication_factor_request() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ClusterName">> := string(),
+%%   <<"NewReplicationFactor">> := integer(),
+%%   <<"NodeIdsToRemove">> => list(string())
+%% }
+-type decrease_replication_factor_request() :: #{binary() => any()}.
+
+%% Example:
+%% decrease_replication_factor_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type decrease_replication_factor_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_request() :: #{
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type delete_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_response() :: #{
+%%   <<"DeletionMessage">> => string()
+%% }
+-type delete_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_request() :: #{
+%%   <<"SubnetGroupName">> := string()
+%% }
+-type delete_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_response() :: #{
+%%   <<"DeletionMessage">> => string()
+%% }
+-type delete_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"ClusterNames">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"Clusters">> => list(cluster()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_default_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_parameters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type describe_default_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupNames">> => list(string())
+%% }
+-type describe_parameter_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroups">> => list(parameter_group())
+%% }
+-type describe_parameter_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Source">> => string()
+%% }
+-type describe_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type describe_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroupNames">> => list(string())
+%% }
+-type describe_subnet_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroups">> => list(subnet_group())
+%% }
+-type describe_subnet_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"URL">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
 
 %% Example:
 %% increase_replication_factor_request() :: #{
@@ -367,11 +336,104 @@
 -type increase_replication_factor_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_subnet_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SubnetGroups">> => list(subnet_group())
+%% increase_replication_factor_response() :: #{
+%%   <<"Cluster">> => cluster()
 %% }
--type describe_subnet_groups_response() :: #{binary() => any()}.
+-type increase_replication_factor_response() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceName">> := string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% node_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_cluster_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_cluster_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_type_specific_value() :: #{
+%%   <<"NodeType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type node_type_specific_value() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicStatus">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% parameter() :: #{
@@ -389,33 +451,11 @@
 -type parameter() :: #{binary() => any()}.
 
 %% Example:
-%% update_subnet_group_request() :: #{
+%% parameter_group() :: #{
 %%   <<"Description">> => string(),
-%%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> => list(string())
+%%   <<"ParameterGroupName">> => string()
 %% }
--type update_subnet_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_arn_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_arn_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_default_parameters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_default_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_subnet_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string())
-%% }
--type create_subnet_group_request() :: #{binary() => any()}.
+-type parameter_group() :: #{binary() => any()}.
 
 %% Example:
 %% parameter_group_already_exists_fault() :: #{
@@ -424,85 +464,10 @@
 -type parameter_group_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% node_type_specific_value() :: #{
-%%   <<"NodeType">> => string(),
-%%   <<"Value">> => string()
-%% }
--type node_type_specific_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subnet_group_response() :: #{
-%%   <<"DeletionMessage">> => string()
-%% }
--type delete_subnet_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% decrease_replication_factor_request() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ClusterName">> := string(),
-%%   <<"NewReplicationFactor">> := integer(),
-%%   <<"NodeIdsToRemove">> => list(string())
-%% }
--type decrease_replication_factor_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_quota_for_customer_exceeded_fault() :: #{
+%% parameter_group_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% notification_configuration() :: #{
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicStatus">> => string()
-%% }
--type notification_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameter_group_response() :: #{
-%%   <<"DeletionMessage">> => string()
-%% }
--type delete_parameter_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"URL">> => string()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% dax_node() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"NodeCreateTime">> => non_neg_integer(),
-%%   <<"NodeId">> => string(),
-%%   <<"NodeStatus">> => string(),
-%%   <<"ParameterGroupStatus">> => string()
-%% }
--type dax_node() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_request() :: #{
-%%   <<"ClusterName">> := string()
-%% }
--type delete_cluster_request() :: #{binary() => any()}.
+-type parameter_group_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
 %% parameter_group_quota_exceeded_fault() :: #{
@@ -511,69 +476,19 @@
 -type parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_request() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
+%% parameter_group_status() :: #{
+%%   <<"NodeIdsToReboot">> => list(string()),
+%%   <<"ParameterApplyStatus">> => string(),
+%%   <<"ParameterGroupName">> => string()
 %% }
--type describe_events_request() :: #{binary() => any()}.
+-type parameter_group_status() :: #{binary() => any()}.
 
 %% Example:
-%% describe_subnet_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SubnetGroupNames">> => list(string())
+%% parameter_name_value() :: #{
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string()
 %% }
--type describe_subnet_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_in_use() :: #{
-%%   <<"message">> => string()
-%% }
--type subnet_in_use() :: #{binary() => any()}.
-
-%% Example:
-%% service_linked_role_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type service_linked_role_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% increase_replication_factor_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type increase_replication_factor_response() :: #{binary() => any()}.
-
-%% Example:
-%% sse_specification() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type sse_specification() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameter_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParameterGroupNames">> => list(string())
-%% }
--type describe_parameter_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_clusters_response() :: #{binary() => any()}.
+-type parameter_name_value() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_node_request() :: #{
@@ -583,22 +498,164 @@
 -type reboot_node_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_cluster_state_fault() :: #{
-%%   <<"message">> => string()
+%% reboot_node_response() :: #{
+%%   <<"Cluster">> => cluster()
 %% }
--type invalid_cluster_state_fault() :: #{binary() => any()}.
+-type reboot_node_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_parameter_group_response() :: #{
-%%   <<"ParameterGroup">> => parameter_group()
+%% security_group_membership() :: #{
+%%   <<"SecurityGroupIdentifier">> => string(),
+%%   <<"Status">> => string()
 %% }
--type update_parameter_group_response() :: #{binary() => any()}.
+-type security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sse_description() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type sse_description() :: #{binary() => any()}.
+
+%% Example:
+%% sse_specification() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type sse_specification() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => string(),
+%%   <<"SubnetIdentifier">> => string(),
+%%   <<"SupportedNetworkTypes">> => list(list(any())())
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(list(any())()),
+%%   <<"VpcId">> => string()
+%% }
+-type subnet_group() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
 %% subnet_group_in_use_fault() :: #{
 %%   <<"message">> => string()
 %% }
 -type subnet_group_in_use_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_not_allowed_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_not_allowed_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag_quota_per_resource_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_quota_per_resource_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"NotificationTopicArn">> => string(),
+%%   <<"NotificationTopicStatus">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SecurityGroupIds">> => list(string())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_parameter_group_request() :: #{
@@ -608,63 +665,18 @@
 -type update_parameter_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% parameter_group() :: #{
+%% update_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type update_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_group_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ParameterGroupName">> => string()
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type parameter_group() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_cluster_capacity_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceName">> := string()
-%% }
--type list_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subnet_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% node_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type node_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_clusters_request() :: #{
-%%   <<"ClusterNames">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_clusters_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_response() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_events_response() :: #{binary() => any()}.
+-type update_subnet_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_subnet_group_response() :: #{
@@ -672,77 +684,65 @@
 %% }
 -type update_subnet_group_response() :: #{binary() => any()}.
 
-%% Example:
-%% node_quota_for_cluster_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type node_quota_for_cluster_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_response() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type update_cluster_response() :: #{binary() => any()}.
-
 -type create_cluster_errors() ::
-    node_quota_for_cluster_exceeded_fault() | 
-    parameter_group_not_found_fault() | 
-    cluster_already_exists_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    invalid_cluster_state_fault() | 
-    service_linked_role_not_found_fault() | 
-    cluster_quota_for_customer_exceeded_fault() | 
-    invalid_parameter_value_exception() | 
-    service_quota_exceeded_exception() | 
     tag_quota_per_resource_exceeded() | 
-    invalid_vpc_network_state_fault() | 
-    invalid_parameter_combination_exception() | 
     subnet_group_not_found_fault() | 
+    service_quota_exceeded_exception() | 
+    service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
+    node_quota_for_customer_exceeded_fault() | 
+    node_quota_for_cluster_exceeded_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_parameter_value_exception() | 
     invalid_parameter_group_state_fault() | 
-    node_quota_for_customer_exceeded_fault().
+    invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    cluster_quota_for_customer_exceeded_fault() | 
+    cluster_already_exists_fault().
 
 -type create_parameter_group_errors() ::
     service_linked_role_not_found_fault() | 
     parameter_group_quota_exceeded_fault() | 
     parameter_group_already_exists_fault() | 
     invalid_parameter_value_exception() | 
-    invalid_parameter_combination_exception() | 
-    invalid_parameter_group_state_fault().
+    invalid_parameter_group_state_fault() | 
+    invalid_parameter_combination_exception().
 
 -type create_subnet_group_errors() ::
     subnet_quota_exceeded_fault() | 
-    service_linked_role_not_found_fault() | 
-    subnet_group_quota_exceeded_fault() | 
     subnet_not_allowed_fault() | 
-    invalid_subnet() | 
-    subnet_group_already_exists_fault().
+    subnet_group_quota_exceeded_fault() | 
+    subnet_group_already_exists_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_subnet().
 
 -type decrease_replication_factor_errors() ::
-    node_not_found_fault() | 
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
+    node_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type delete_cluster_errors() ::
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type delete_parameter_group_errors() ::
-    parameter_group_not_found_fault() | 
     service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
     invalid_parameter_value_exception() | 
-    invalid_parameter_combination_exception() | 
-    invalid_parameter_group_state_fault().
+    invalid_parameter_group_state_fault() | 
+    invalid_parameter_combination_exception().
 
 -type delete_subnet_group_errors() ::
+    subnet_group_not_found_fault() | 
     subnet_group_in_use_fault() | 
-    service_linked_role_not_found_fault() | 
-    subnet_group_not_found_fault().
+    service_linked_role_not_found_fault().
 
 -type describe_clusters_errors() ::
     service_linked_role_not_found_fault() | 
@@ -761,88 +761,88 @@
     invalid_parameter_combination_exception().
 
 -type describe_parameter_groups_errors() ::
-    parameter_group_not_found_fault() | 
     service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception().
 
 -type describe_parameters_errors() ::
-    parameter_group_not_found_fault() | 
     service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception().
 
 -type describe_subnet_groups_errors() ::
-    service_linked_role_not_found_fault() | 
-    subnet_group_not_found_fault().
+    subnet_group_not_found_fault() | 
+    service_linked_role_not_found_fault().
 
 -type increase_replication_factor_errors() ::
-    node_quota_for_cluster_exceeded_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
-    invalid_parameter_value_exception() | 
+    node_quota_for_customer_exceeded_fault() | 
+    node_quota_for_cluster_exceeded_fault() | 
     invalid_vpc_network_state_fault() | 
+    invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    cluster_not_found_fault() | 
-    node_quota_for_customer_exceeded_fault().
+    invalid_cluster_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    cluster_not_found_fault().
 
 -type list_tags_errors() ::
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
-    invalid_arn_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
+    invalid_arn_fault() | 
     cluster_not_found_fault().
 
 -type reboot_node_errors() ::
-    node_not_found_fault() | 
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
+    node_not_found_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type tag_resource_errors() ::
-    invalid_cluster_state_fault() | 
-    service_linked_role_not_found_fault() | 
-    invalid_arn_fault() | 
-    invalid_parameter_value_exception() | 
     tag_quota_per_resource_exceeded() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
+    invalid_arn_fault() | 
     cluster_not_found_fault().
 
 -type untag_resource_errors() ::
-    invalid_cluster_state_fault() | 
+    tag_not_found_fault() | 
     service_linked_role_not_found_fault() | 
-    invalid_arn_fault() | 
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
-    tag_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_arn_fault() | 
     cluster_not_found_fault().
 
 -type update_cluster_errors() ::
-    parameter_group_not_found_fault() | 
-    invalid_cluster_state_fault() | 
     service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
     invalid_parameter_value_exception() | 
-    invalid_parameter_combination_exception() | 
     invalid_parameter_group_state_fault() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type update_parameter_group_errors() ::
-    parameter_group_not_found_fault() | 
     service_linked_role_not_found_fault() | 
+    parameter_group_not_found_fault() | 
     invalid_parameter_value_exception() | 
-    invalid_parameter_combination_exception() | 
-    invalid_parameter_group_state_fault().
+    invalid_parameter_group_state_fault() | 
+    invalid_parameter_combination_exception().
 
 -type update_subnet_group_errors() ::
     subnet_quota_exceeded_fault() | 
-    service_linked_role_not_found_fault() | 
-    subnet_in_use() | 
     subnet_not_allowed_fault() | 
+    subnet_in_use() | 
     subnet_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
     invalid_subnet().
 
 %%====================================================================

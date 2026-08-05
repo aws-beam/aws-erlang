@@ -171,96 +171,139 @@
 
 
 %% Example:
-%% get_notebook_metadata_input() :: #{
-%%   <<"NotebookId">> := string()
+%% acl_configuration() :: #{
+%%   <<"S3AclOption">> => list(any())
 %% }
--type get_notebook_metadata_input() :: #{binary() => any()}.
+-type acl_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% query_stage_plan_node() :: #{
-%%   <<"Children">> => list(query_stage_plan_node()),
-%%   <<"Identifier">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RemoteSources">> => list(string())
+%% application_d_p_u_sizes() :: #{
+%%   <<"ApplicationRuntimeId">> => string(),
+%%   <<"SupportedDPUSizes">> => list(integer())
 %% }
--type query_stage_plan_node() :: #{binary() => any()}.
+-type application_d_p_u_sizes() :: #{binary() => any()}.
 
 %% Example:
-%% named_query() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NamedQueryId">> => string(),
-%%   <<"QueryString">> => string(),
-%%   <<"WorkGroup">> => string()
+%% athena_error() :: #{
+%%   <<"ErrorCategory">> => integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => integer(),
+%%   <<"Retryable">> => boolean()
 %% }
--type named_query() :: #{binary() => any()}.
+-type athena_error() :: #{binary() => any()}.
 
 %% Example:
-%% data_catalog_summary() :: #{
-%%   <<"CatalogName">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"Error">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
+%% batch_get_named_query_input() :: #{
+%%   <<"NamedQueryIds">> := list(string())
 %% }
--type data_catalog_summary() :: #{binary() => any()}.
+-type batch_get_named_query_input() :: #{binary() => any()}.
 
 %% Example:
-%% managed_query_results_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EncryptionConfiguration">> => managed_query_results_encryption_configuration()
+%% batch_get_named_query_output() :: #{
+%%   <<"NamedQueries">> => list(named_query()),
+%%   <<"UnprocessedNamedQueryIds">> => list(unprocessed_named_query_id())
 %% }
--type managed_query_results_configuration() :: #{binary() => any()}.
+-type batch_get_named_query_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_data_catalog_input() :: #{
-%%   <<"DeleteCatalogOnly">> => boolean(),
-%%   <<"Name">> := string()
-%% }
--type delete_data_catalog_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_execution_output() :: #{
-
-%% }
--type stop_query_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_prepared_statement_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"QueryStatement">> := string(),
-%%   <<"StatementName">> := string(),
+%% batch_get_prepared_statement_input() :: #{
+%%   <<"PreparedStatementNames">> := list(string()),
 %%   <<"WorkGroup">> := string()
 %% }
--type update_prepared_statement_input() :: #{binary() => any()}.
+-type batch_get_prepared_statement_input() :: #{binary() => any()}.
 
 %% Example:
-%% metadata_exception() :: #{
-%%   <<"Message">> => string()
+%% batch_get_prepared_statement_output() :: #{
+%%   <<"PreparedStatements">> => list(prepared_statement()),
+%%   <<"UnprocessedPreparedStatementNames">> => list(unprocessed_prepared_statement_name())
 %% }
--type metadata_exception() :: #{binary() => any()}.
+-type batch_get_prepared_statement_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_notebook_metadata_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NotebookId">> := string()
+%% batch_get_query_execution_input() :: #{
+%%   <<"QueryExecutionIds">> := list(string())
 %% }
--type update_notebook_metadata_input() :: #{binary() => any()}.
+-type batch_get_query_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"EncryptionOption">> => list(any()),
-%%   <<"KmsKey">> => string()
+%% batch_get_query_execution_output() :: #{
+%%   <<"QueryExecutions">> => list(query_execution()),
+%%   <<"UnprocessedQueryExecutionIds">> => list(unprocessed_query_execution_id())
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type batch_get_query_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_data_catalog_output() :: #{
-%%   <<"DataCatalog">> => data_catalog()
+%% calculation_configuration() :: #{
+%%   <<"CodeBlock">> => string()
 %% }
--type get_data_catalog_output() :: #{binary() => any()}.
+-type calculation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% calculation_result() :: #{
+%%   <<"ResultS3Uri">> => string(),
+%%   <<"ResultType">> => string(),
+%%   <<"StdErrorS3Uri">> => string(),
+%%   <<"StdOutS3Uri">> => string()
+%% }
+-type calculation_result() :: #{binary() => any()}.
+
+%% Example:
+%% calculation_statistics() :: #{
+%%   <<"DpuExecutionInMillis">> => float(),
+%%   <<"Progress">> => string()
+%% }
+-type calculation_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% calculation_status() :: #{
+%%   <<"CompletionDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => string(),
+%%   <<"SubmissionDateTime">> => non_neg_integer()
+%% }
+-type calculation_status() :: #{binary() => any()}.
+
+%% Example:
+%% calculation_summary() :: #{
+%%   <<"CalculationExecutionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => calculation_status()
+%% }
+-type calculation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_capacity_reservation_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type cancel_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_capacity_reservation_output() :: #{
+
+%% }
+-type cancel_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_allocation() :: #{
+%%   <<"RequestCompletionTime">> => non_neg_integer(),
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type capacity_allocation() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_assignment() :: #{
+%%   <<"WorkGroupNames">> => list(string())
+%% }
+-type capacity_assignment() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_assignment_configuration() :: #{
+%%   <<"CapacityAssignments">> => list(capacity_assignment()),
+%%   <<"CapacityReservationName">> => string()
+%% }
+-type capacity_assignment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_reservation() :: #{
@@ -275,17 +318,176 @@
 -type capacity_reservation() :: #{binary() => any()}.
 
 %% Example:
-%% result_set_metadata() :: #{
-%%   <<"ColumnInfo">> => list(column_info())
+%% classification() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => map()
 %% }
--type result_set_metadata() :: #{binary() => any()}.
+-type classification() :: #{binary() => any()}.
 
 %% Example:
-%% get_prepared_statement_input() :: #{
+%% cloud_watch_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStreamNamePrefix">> => string(),
+%%   <<"LogTypes">> => map()
+%% }
+-type cloud_watch_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% column() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type column() :: #{binary() => any()}.
+
+%% Example:
+%% column_info() :: #{
+%%   <<"CaseSensitive">> => boolean(),
+%%   <<"CatalogName">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nullable">> => list(any()),
+%%   <<"Precision">> => integer(),
+%%   <<"Scale">> => integer(),
+%%   <<"SchemaName">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type column_info() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_reservation_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDpus">> := integer()
+%% }
+-type create_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_reservation_output() :: #{
+
+%% }
+-type create_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_catalog_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_data_catalog_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_catalog_output() :: #{
+%%   <<"DataCatalog">> => data_catalog()
+%% }
+-type create_data_catalog_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_named_query_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Database">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"QueryString">> := string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type create_named_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_named_query_output() :: #{
+%%   <<"NamedQueryId">> => string()
+%% }
+-type create_named_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type create_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_output() :: #{
+%%   <<"NotebookId">> => string()
+%% }
+-type create_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_prepared_statement_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"QueryStatement">> := string(),
 %%   <<"StatementName">> := string(),
 %%   <<"WorkGroup">> := string()
 %% }
--type get_prepared_statement_input() :: #{binary() => any()}.
+-type create_prepared_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_prepared_statement_output() :: #{
+
+%% }
+-type create_prepared_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_notebook_url_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type create_presigned_notebook_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_presigned_notebook_url_response() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => float(),
+%%   <<"NotebookUrl">> => string()
+%% }
+-type create_presigned_notebook_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_work_group_input() :: #{
+%%   <<"Configuration">> => work_group_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_work_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_work_group_output() :: #{
+
+%% }
+-type create_work_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% customer_content_encryption_configuration() :: #{
+%%   <<"KmsKey">> => string()
+%% }
+-type customer_content_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% data_catalog() :: #{
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type data_catalog() :: #{binary() => any()}.
+
+%% Example:
+%% data_catalog_summary() :: #{
+%%   <<"CatalogName">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Error">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type data_catalog_summary() :: #{binary() => any()}.
 
 %% Example:
 %% database() :: #{
@@ -296,20 +498,344 @@
 -type database() :: #{binary() => any()}.
 
 %% Example:
-%% session_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EngineVersion">> => engine_version(),
-%%   <<"NotebookVersion">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"Status">> => session_status()
+%% datum() :: #{
+%%   <<"VarCharValue">> => string()
 %% }
--type session_summary() :: #{binary() => any()}.
+-type datum() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_reservation_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_reservation_output() :: #{
+
+%% }
+-type delete_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_catalog_input() :: #{
+%%   <<"DeleteCatalogOnly">> => boolean(),
+%%   <<"Name">> := string()
+%% }
+-type delete_data_catalog_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_catalog_output() :: #{
+%%   <<"DataCatalog">> => data_catalog()
+%% }
+-type delete_data_catalog_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_named_query_input() :: #{
+%%   <<"NamedQueryId">> := string()
+%% }
+-type delete_named_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_named_query_output() :: #{
+
+%% }
+-type delete_named_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_input() :: #{
+%%   <<"NotebookId">> := string()
+%% }
+-type delete_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_output() :: #{
+
+%% }
+-type delete_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_prepared_statement_input() :: #{
+%%   <<"StatementName">> := string(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type delete_prepared_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_prepared_statement_output() :: #{
+
+%% }
+-type delete_prepared_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_work_group_input() :: #{
+%%   <<"RecursiveDeleteOption">> => boolean(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type delete_work_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_work_group_output() :: #{
+
+%% }
+-type delete_work_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"KmsKey">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% engine_configuration() :: #{
+%%   <<"AdditionalConfigs">> => map(),
+%%   <<"Classifications">> => list(classification()),
+%%   <<"CoordinatorDpuSize">> => integer(),
+%%   <<"DefaultExecutorDpuSize">> => integer(),
+%%   <<"MaxConcurrentDpus">> => integer(),
+%%   <<"SparkProperties">> => map()
+%% }
+-type engine_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% engine_version() :: #{
+%%   <<"EffectiveEngineVersion">> => string(),
+%%   <<"SelectedEngineVersion">> => string()
+%% }
+-type engine_version() :: #{binary() => any()}.
+
+%% Example:
+%% executors_summary() :: #{
+%%   <<"ExecutorId">> => string(),
+%%   <<"ExecutorSize">> => float(),
+%%   <<"ExecutorState">> => list(any()),
+%%   <<"ExecutorType">> => list(any()),
+%%   <<"StartDateTime">> => float(),
+%%   <<"TerminationDateTime">> => float()
+%% }
+-type executors_summary() :: #{binary() => any()}.
+
+%% Example:
+%% export_notebook_input() :: #{
+%%   <<"NotebookId">> := string()
+%% }
+-type export_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% export_notebook_output() :: #{
+%%   <<"NotebookMetadata">> => notebook_metadata(),
+%%   <<"Payload">> => string()
+%% }
+-type export_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% filter_definition() :: #{
+%%   <<"Name">> => string()
+%% }
+-type filter_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculation_execution_code_request() :: #{
+%%   <<"CalculationExecutionId">> := string()
+%% }
+-type get_calculation_execution_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculation_execution_code_response() :: #{
+%%   <<"CodeBlock">> => string()
+%% }
+-type get_calculation_execution_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculation_execution_request() :: #{
+%%   <<"CalculationExecutionId">> := string()
+%% }
+-type get_calculation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculation_execution_response() :: #{
+%%   <<"CalculationExecutionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Result">> => calculation_result(),
+%%   <<"SessionId">> => string(),
+%%   <<"Statistics">> => calculation_statistics(),
+%%   <<"Status">> => calculation_status(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type get_calculation_execution_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_calculation_execution_status_request() :: #{
 %%   <<"CalculationExecutionId">> := string()
 %% }
 -type get_calculation_execution_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculation_execution_status_response() :: #{
+%%   <<"Statistics">> => calculation_statistics(),
+%%   <<"Status">> => calculation_status()
+%% }
+-type get_calculation_execution_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_assignment_configuration_input() :: #{
+%%   <<"CapacityReservationName">> := string()
+%% }
+-type get_capacity_assignment_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_assignment_configuration_output() :: #{
+%%   <<"CapacityAssignmentConfiguration">> => capacity_assignment_configuration()
+%% }
+-type get_capacity_assignment_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_reservation_input() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_reservation_output() :: #{
+%%   <<"CapacityReservation">> => capacity_reservation()
+%% }
+-type get_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type get_data_catalog_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_output() :: #{
+%%   <<"DataCatalog">> => data_catalog()
+%% }
+-type get_data_catalog_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_database_input() :: #{
+%%   <<"CatalogName">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type get_database_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_database_output() :: #{
+%%   <<"Database">> => database()
+%% }
+-type get_database_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_named_query_input() :: #{
+%%   <<"NamedQueryId">> := string()
+%% }
+-type get_named_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_named_query_output() :: #{
+%%   <<"NamedQuery">> => named_query()
+%% }
+-type get_named_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_metadata_input() :: #{
+%%   <<"NotebookId">> := string()
+%% }
+-type get_notebook_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_metadata_output() :: #{
+%%   <<"NotebookMetadata">> => notebook_metadata()
+%% }
+-type get_notebook_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_prepared_statement_input() :: #{
+%%   <<"StatementName">> := string(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type get_prepared_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_prepared_statement_output() :: #{
+%%   <<"PreparedStatement">> => prepared_statement()
+%% }
+-type get_prepared_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_execution_input() :: #{
+%%   <<"QueryExecutionId">> := string()
+%% }
+-type get_query_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_execution_output() :: #{
+%%   <<"QueryExecution">> => query_execution()
+%% }
+-type get_query_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryExecutionId">> := string(),
+%%   <<"QueryResultType">> => list(any())
+%% }
+-type get_query_results_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResultSet">> => result_set(),
+%%   <<"UpdateCount">> => float()
+%% }
+-type get_query_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_runtime_statistics_input() :: #{
+%%   <<"QueryExecutionId">> := string()
+%% }
+-type get_query_runtime_statistics_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_runtime_statistics_output() :: #{
+%%   <<"QueryRuntimeStatistics">> => query_runtime_statistics()
+%% }
+-type get_query_runtime_statistics_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_dashboard_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type get_resource_dashboard_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_dashboard_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type get_resource_dashboard_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_response() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"EndpointUrl">> => string()
+%% }
+-type get_session_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_session_response() :: #{
@@ -327,18 +853,218 @@
 -type get_session_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_query_results_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResultSet">> => result_set(),
-%%   <<"UpdateCount">> => float()
+%% get_session_status_request() :: #{
+%%   <<"SessionId">> := string()
 %% }
--type get_query_results_output() :: #{binary() => any()}.
+-type get_session_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_notebook_metadata_output() :: #{
-%%   <<"NotebookMetadata">> => notebook_metadata()
+%% get_session_status_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"Status">> => session_status()
 %% }
--type get_notebook_metadata_output() :: #{binary() => any()}.
+-type get_session_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_metadata_input() :: #{
+%%   <<"CatalogName">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type get_table_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_metadata_output() :: #{
+%%   <<"TableMetadata">> => table_metadata()
+%% }
+-type get_table_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_work_group_input() :: #{
+%%   <<"WorkGroup">> := string()
+%% }
+-type get_work_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_work_group_output() :: #{
+%%   <<"WorkGroup">> => work_group()
+%% }
+-type get_work_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"EnableIdentityCenter">> => boolean(),
+%%   <<"IdentityCenterInstanceArn">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% import_notebook_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NotebookS3LocationUri">> => string(),
+%%   <<"Payload">> => string(),
+%%   <<"Type">> := list(any()),
+%%   <<"WorkGroup">> := string()
+%% }
+-type import_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_notebook_output() :: #{
+%%   <<"NotebookId">> => string()
+%% }
+-type import_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"AthenaErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_d_p_u_sizes_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_d_p_u_sizes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_d_p_u_sizes_output() :: #{
+%%   <<"ApplicationDPUSizes">> => list(application_d_p_u_sizes()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_d_p_u_sizes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_calculation_executions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SessionId">> := string(),
+%%   <<"StateFilter">> => list(any())
+%% }
+-type list_calculation_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_calculation_executions_response() :: #{
+%%   <<"Calculations">> => list(calculation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculation_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_capacity_reservations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_reservations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_capacity_reservations_output() :: #{
+%%   <<"CapacityReservations">> => list(capacity_reservation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_reservations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_catalogs_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type list_data_catalogs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_catalogs_output() :: #{
+%%   <<"DataCatalogsSummary">> => list(data_catalog_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_catalogs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_input() :: #{
+%%   <<"CatalogName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type list_databases_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_databases_output() :: #{
+%%   <<"DatabaseList">> => list(database()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_databases_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_engine_versions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_engine_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_engine_versions_output() :: #{
+%%   <<"EngineVersions">> => list(engine_version()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_engine_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_executors_request() :: #{
+%%   <<"ExecutorStateFilter">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SessionId">> := string()
+%% }
+-type list_executors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_executors_response() :: #{
+%%   <<"ExecutorsSummary">> => list(executors_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"SessionId">> => string()
+%% }
+-type list_executors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_named_queries_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type list_named_queries_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_named_queries_output() :: #{
+%%   <<"NamedQueryIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_named_queries_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_metadata_input() :: #{
+%%   <<"Filters">> => filter_definition(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type list_notebook_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_metadata_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookMetadataList">> => list(notebook_metadata())
+%% }
+-type list_notebook_metadata_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_notebook_sessions_request() :: #{
@@ -349,147 +1075,57 @@
 -type list_notebook_sessions_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_notebook_metadata_output() :: #{
+%% list_notebook_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotebookMetadataList">> => list(notebook_metadata())
+%%   <<"NotebookSessionsList">> => list(notebook_session_summary())
 %% }
--type list_notebook_metadata_output() :: #{binary() => any()}.
+-type list_notebook_sessions_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_work_group_output() :: #{
-
-%% }
--type create_work_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CopyWorkGroupTags">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"EngineConfiguration">> := engine_configuration(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
-%%   <<"NotebookVersion">> => string(),
-%%   <<"SessionIdleTimeoutInMinutes">> => integer(),
-%%   <<"Tags">> => list(tag()),
+%% list_prepared_statements_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
 %%   <<"WorkGroup">> := string()
 %% }
--type start_session_request() :: #{binary() => any()}.
+-type list_prepared_statements_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_prepared_statement_output() :: #{
-
+%% list_prepared_statements_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PreparedStatements">> => list(prepared_statement_summary())
 %% }
--type delete_prepared_statement_output() :: #{binary() => any()}.
+-type list_prepared_statements_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_capacity_reservation_input() :: #{
-%%   <<"Name">> := string()
+%% list_query_executions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkGroup">> => string()
 %% }
--type get_capacity_reservation_input() :: #{binary() => any()}.
+-type list_query_executions_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_session_endpoint_response() :: #{
-%%   <<"AuthToken">> => string(),
-%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
-%%   <<"EndpointUrl">> => string()
+%% list_query_executions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryExecutionIds">> => list(string())
 %% }
--type get_session_endpoint_response() :: #{binary() => any()}.
+-type list_query_executions_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_notebook_output() :: #{
-
-%% }
--type update_notebook_output() :: #{binary() => any()}.
-
-%% Example:
-%% result_configuration_updates() :: #{
-%%   <<"AclConfiguration">> => acl_configuration(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"OutputLocation">> => string(),
-%%   <<"RemoveAclConfiguration">> => boolean(),
-%%   <<"RemoveEncryptionConfiguration">> => boolean(),
-%%   <<"RemoveExpectedBucketOwner">> => boolean(),
-%%   <<"RemoveOutputLocation">> => boolean()
-%% }
--type result_configuration_updates() :: #{binary() => any()}.
-
-%% Example:
-%% engine_version() :: #{
-%%   <<"EffectiveEngineVersion">> => string(),
-%%   <<"SelectedEngineVersion">> => string()
-%% }
--type engine_version() :: #{binary() => any()}.
-
-%% Example:
-%% engine_configuration() :: #{
-%%   <<"AdditionalConfigs">> => map(),
-%%   <<"Classifications">> => list(classification()),
-%%   <<"CoordinatorDpuSize">> => integer(),
-%%   <<"DefaultExecutorDpuSize">> => integer(),
-%%   <<"MaxConcurrentDpus">> => integer(),
-%%   <<"SparkProperties">> => map()
-%% }
--type engine_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_capacity_assignment_configuration_input() :: #{
-%%   <<"CapacityReservationName">> := string()
-%% }
--type get_capacity_assignment_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_prepared_statement_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"QueryStatement">> := string(),
-%%   <<"StatementName">> := string(),
+%% list_sessions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => list(any()),
 %%   <<"WorkGroup">> := string()
 %% }
--type create_prepared_statement_input() :: #{binary() => any()}.
+-type list_sessions_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_query_execution_input() :: #{
-%%   <<"QueryExecutionId">> := string()
+%% list_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session_summary())
 %% }
--type get_query_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% result_reuse_information() :: #{
-%%   <<"ReusedPreviousResult">> => boolean()
-%% }
--type result_reuse_information() :: #{binary() => any()}.
-
-%% Example:
-%% stop_calculation_execution_response() :: #{
-%%   <<"State">> => list(any())
-%% }
--type stop_calculation_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% query_runtime_statistics() :: #{
-%%   <<"OutputStage">> => query_stage(),
-%%   <<"Rows">> => query_runtime_statistics_rows(),
-%%   <<"Timeline">> => query_runtime_statistics_timeline()
-%% }
--type query_runtime_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% column() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type column() :: #{binary() => any()}.
-
-%% Example:
-%% athena_error() :: #{
-%%   <<"ErrorCategory">> => integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ErrorType">> => integer(),
-%%   <<"Retryable">> => boolean()
-%% }
--type athena_error() :: #{binary() => any()}.
+-type list_sessions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_table_metadata_input() :: #{
@@ -503,148 +1139,19 @@
 -type list_table_metadata_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_application_d_p_u_sizes_output() :: #{
-%%   <<"ApplicationDPUSizes">> => list(application_d_p_u_sizes()),
-%%   <<"NextToken">> => string()
+%% list_table_metadata_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TableMetadataList">> => list(table_metadata())
 %% }
--type list_application_d_p_u_sizes_output() :: #{binary() => any()}.
+-type list_table_metadata_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_notebook_metadata_output() :: #{
-
+%% list_tags_for_resource_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
 %% }
--type update_notebook_metadata_output() :: #{binary() => any()}.
-
-%% Example:
-%% work_group() :: #{
-%%   <<"Configuration">> => work_group_configuration(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"IdentityCenterApplicationArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type work_group() :: #{binary() => any()}.
-
-%% Example:
-%% update_work_group_output() :: #{
-
-%% }
--type update_work_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% datum() :: #{
-%%   <<"VarCharValue">> => string()
-%% }
--type datum() :: #{binary() => any()}.
-
-%% Example:
-%% update_named_query_output() :: #{
-
-%% }
--type update_named_query_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_endpoint_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type get_session_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_capacity_assignment_configuration_input() :: #{
-%%   <<"CapacityAssignments">> := list(capacity_assignment()),
-%%   <<"CapacityReservationName">> := string()
-%% }
--type put_capacity_assignment_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_notebook_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"WorkGroup">> := string()
-%% }
--type create_notebook_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_execution_input() :: #{
-%%   <<"QueryExecutionId">> := string()
-%% }
--type stop_query_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% export_notebook_output() :: #{
-%%   <<"NotebookMetadata">> => notebook_metadata(),
-%%   <<"Payload">> => string()
-%% }
--type export_notebook_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculation_execution_status_response() :: #{
-%%   <<"Statistics">> => calculation_statistics(),
-%%   <<"Status">> => calculation_status()
-%% }
--type get_calculation_execution_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_capacity_reservations_output() :: #{
-%%   <<"CapacityReservations">> => list(capacity_reservation()),
-%%   <<"NextToken">> => string()
-%% }
--type list_capacity_reservations_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_execution_output() :: #{
-%%   <<"QueryExecution">> => query_execution()
-%% }
--type get_query_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_named_query_input() :: #{
-%%   <<"NamedQueryId">> := string()
-%% }
--type get_named_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_session_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SessionId">> => string()
-%% }
--type notebook_session_summary() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_configuration() :: #{
-%%   <<"CloudWatchLoggingConfiguration">> => cloud_watch_logging_configuration(),
-%%   <<"ManagedLoggingConfiguration">> => managed_logging_configuration(),
-%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
-%% }
--type monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_assignment_configuration() :: #{
-%%   <<"CapacityAssignments">> => list(capacity_assignment()),
-%%   <<"CapacityReservationName">> => string()
-%% }
--type capacity_assignment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_named_query_input() :: #{
-%%   <<"NamedQueryIds">> := list(string())
-%% }
--type batch_get_named_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% calculation_statistics() :: #{
-%%   <<"DpuExecutionInMillis">> => float(),
-%%   <<"Progress">> => string()
-%% }
--type calculation_statistics() :: #{binary() => any()}.
+-type list_tags_for_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
@@ -654,190 +1161,32 @@
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% prepared_statement_summary() :: #{
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"StatementName">> => string()
-%% }
--type prepared_statement_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type get_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_output() :: #{
-
-%% }
--type delete_notebook_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_prepared_statements_input() :: #{
+%% list_work_groups_input() :: #{
 %%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_work_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_work_groups_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> := string()
+%%   <<"WorkGroups">> => list(work_group_summary())
 %% }
--type list_prepared_statements_input() :: #{binary() => any()}.
+-type list_work_groups_output() :: #{binary() => any()}.
 
 %% Example:
-%% session_configuration() :: #{
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"IdleTimeoutSeconds">> => float(),
-%%   <<"SessionIdleTimeoutInMinutes">> => integer(),
-%%   <<"WorkingDirectory">> => string()
+%% managed_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKey">> => string()
 %% }
--type session_configuration() :: #{binary() => any()}.
+-type managed_logging_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_capacity_reservation_input() :: #{
-%%   <<"Name">> := string()
+%% managed_query_results_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionConfiguration">> => managed_query_results_encryption_configuration()
 %% }
--type cancel_capacity_reservation_input() :: #{binary() => any()}.
-
-%% Example:
-%% data_catalog() :: #{
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type data_catalog() :: #{binary() => any()}.
-
-%% Example:
-%% create_prepared_statement_output() :: #{
-
-%% }
--type create_prepared_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% result_reuse_configuration() :: #{
-%%   <<"ResultReuseByAgeConfiguration">> => result_reuse_by_age_configuration()
-%% }
--type result_reuse_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% start_calculation_execution_response() :: #{
-%%   <<"CalculationExecutionId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type start_calculation_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_prepared_statement_input() :: #{
-%%   <<"PreparedStatementNames">> := list(string()),
-%%   <<"WorkGroup">> := string()
-%% }
--type batch_get_prepared_statement_input() :: #{binary() => any()}.
-
-%% Example:
-%% export_notebook_input() :: #{
-%%   <<"NotebookId">> := string()
-%% }
--type export_notebook_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_calculation_executions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SessionId">> := string(),
-%%   <<"StateFilter">> => list(any())
-%% }
--type list_calculation_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type terminate_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_catalog_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_data_catalog_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_databases_input() :: #{
-%%   <<"CatalogName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type list_databases_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_capacity_assignment_configuration_output() :: #{
-%%   <<"CapacityAssignmentConfiguration">> => capacity_assignment_configuration()
-%% }
--type get_capacity_assignment_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_capacity_reservation_input() :: #{
-%%   <<"Name">> := string(),
-%%   <<"TargetDpus">> := integer()
-%% }
--type update_capacity_reservation_input() :: #{binary() => any()}.
-
-%% Example:
-%% unprocessed_query_execution_id() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"QueryExecutionId">> => string()
-%% }
--type unprocessed_query_execution_id() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_response() :: #{
-%%   <<"State">> => list(any())
-%% }
--type terminate_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_named_queries_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type list_named_queries_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_named_query_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Database">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"QueryString">> := string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type create_named_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% table_metadata() :: #{
-%%   <<"Columns">> => list(column()),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"LastAccessTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"PartitionKeys">> => list(column()),
-%%   <<"TableType">> => string()
-%% }
--type table_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% list_sessions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session_summary())
-%% }
--type list_sessions_response() :: #{binary() => any()}.
+-type managed_query_results_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% managed_query_results_configuration_updates() :: #{
@@ -848,164 +1197,83 @@
 -type managed_query_results_configuration_updates() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
+%% managed_query_results_encryption_configuration() :: #{
+%%   <<"KmsKey">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type managed_query_results_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_database_output() :: #{
-%%   <<"Database">> => database()
-%% }
--type get_database_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_named_query_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NamedQueryId">> := string(),
-%%   <<"QueryString">> := string()
-%% }
--type update_named_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% calculation_configuration() :: #{
-%%   <<"CodeBlock">> => string()
-%% }
--type calculation_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_table_metadata_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TableMetadataList">> => list(table_metadata())
-%% }
--type list_table_metadata_output() :: #{binary() => any()}.
-
-%% Example:
-%% application_d_p_u_sizes() :: #{
-%%   <<"ApplicationRuntimeId">> => string(),
-%%   <<"SupportedDPUSizes">> => list(integer())
-%% }
--type application_d_p_u_sizes() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% query_execution_context() :: #{
-%%   <<"Catalog">> => string(),
-%%   <<"Database">> => string()
-%% }
--type query_execution_context() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"AthenaErrorCode">> => string(),
+%% metadata_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type metadata_exception() :: #{binary() => any()}.
 
 %% Example:
-%% capacity_assignment() :: #{
-%%   <<"WorkGroupNames">> => list(string())
+%% monitoring_configuration() :: #{
+%%   <<"CloudWatchLoggingConfiguration">> => cloud_watch_logging_configuration(),
+%%   <<"ManagedLoggingConfiguration">> => managed_logging_configuration(),
+%%   <<"S3LoggingConfiguration">> => s3_logging_configuration()
 %% }
--type capacity_assignment() :: #{binary() => any()}.
+-type monitoring_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% s3_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"KmsKey">> => string(),
-%%   <<"LogLocation">> => string()
-%% }
--type s3_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% calculation_result() :: #{
-%%   <<"ResultS3Uri">> => string(),
-%%   <<"ResultType">> => string(),
-%%   <<"StdErrorS3Uri">> => string(),
-%%   <<"StdOutS3Uri">> => string()
-%% }
--type calculation_result() :: #{binary() => any()}.
-
-%% Example:
-%% row() :: #{
-%%   <<"Data">> => list(datum())
-%% }
--type row() :: #{binary() => any()}.
-
-%% Example:
-%% update_capacity_reservation_output() :: #{
-
-%% }
--type update_capacity_reservation_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_databases_output() :: #{
-%%   <<"DatabaseList">> => list(database()),
-%%   <<"NextToken">> => string()
-%% }
--type list_databases_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_catalog_input() :: #{
-%%   <<"Name">> := string(),
+%% named_query() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NamedQueryId">> => string(),
+%%   <<"QueryString">> => string(),
 %%   <<"WorkGroup">> => string()
 %% }
--type get_data_catalog_input() :: #{binary() => any()}.
+-type named_query() :: #{binary() => any()}.
 
 %% Example:
-%% list_notebook_sessions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotebookSessionsList">> => list(notebook_session_summary())
+%% notebook_metadata() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NotebookId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WorkGroup">> => string()
 %% }
--type list_notebook_sessions_response() :: #{binary() => any()}.
+-type notebook_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% query_stage() :: #{
-%%   <<"ExecutionTime">> => float(),
-%%   <<"InputBytes">> => float(),
-%%   <<"InputRows">> => float(),
-%%   <<"OutputBytes">> => float(),
-%%   <<"OutputRows">> => float(),
-%%   <<"QueryStagePlan">> => query_stage_plan_node(),
-%%   <<"StageId">> => float(),
-%%   <<"State">> => string(),
-%%   <<"SubStages">> => list(query_stage())
-%% }
--type query_stage() :: #{binary() => any()}.
-
-%% Example:
-%% list_executors_response() :: #{
-%%   <<"ExecutorsSummary">> => list(executors_summary()),
-%%   <<"NextToken">> => string(),
+%% notebook_session_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"SessionId">> => string()
 %% }
--type list_executors_response() :: #{binary() => any()}.
+-type notebook_session_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_capacity_reservation_input() :: #{
-%%   <<"Name">> := string()
+%% prepared_statement() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"QueryStatement">> => string(),
+%%   <<"StatementName">> => string(),
+%%   <<"WorkGroupName">> => string()
 %% }
--type delete_capacity_reservation_input() :: #{binary() => any()}.
+-type prepared_statement() :: #{binary() => any()}.
 
 %% Example:
-%% create_notebook_output() :: #{
-%%   <<"NotebookId">> => string()
+%% prepared_statement_summary() :: #{
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StatementName">> => string()
 %% }
--type create_notebook_output() :: #{binary() => any()}.
+-type prepared_statement_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_capacity_reservations_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% put_capacity_assignment_configuration_input() :: #{
+%%   <<"CapacityAssignments">> := list(capacity_assignment()),
+%%   <<"CapacityReservationName">> := string()
 %% }
--type list_capacity_reservations_input() :: #{binary() => any()}.
+-type put_capacity_assignment_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_capacity_assignment_configuration_output() :: #{
+
+%% }
+-type put_capacity_assignment_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% query_execution() :: #{
@@ -1027,150 +1295,26 @@
 -type query_execution() :: #{binary() => any()}.
 
 %% Example:
-%% get_table_metadata_output() :: #{
-%%   <<"TableMetadata">> => table_metadata()
+%% query_execution_context() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Database">> => string()
 %% }
--type get_table_metadata_output() :: #{binary() => any()}.
+-type query_execution_context() :: #{binary() => any()}.
 
 %% Example:
-%% create_capacity_reservation_input() :: #{
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDpus">> := integer()
+%% query_execution_statistics() :: #{
+%%   <<"DataManifestLocation">> => string(),
+%%   <<"DataScannedInBytes">> => float(),
+%%   <<"DpuCount">> => float(),
+%%   <<"EngineExecutionTimeInMillis">> => float(),
+%%   <<"QueryPlanningTimeInMillis">> => float(),
+%%   <<"QueryQueueTimeInMillis">> => float(),
+%%   <<"ResultReuseInformation">> => result_reuse_information(),
+%%   <<"ServicePreProcessingTimeInMillis">> => float(),
+%%   <<"ServiceProcessingTimeInMillis">> => float(),
+%%   <<"TotalExecutionTimeInMillis">> => float()
 %% }
--type create_capacity_reservation_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_catalog_output() :: #{
-%%   <<"DataCatalog">> => data_catalog()
-%% }
--type delete_data_catalog_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_notebook_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"NotebookId">> := string(),
-%%   <<"Payload">> := string(),
-%%   <<"SessionId">> => string(),
-%%   <<"Type">> := list(any())
-%% }
--type update_notebook_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_named_query_output() :: #{
-%%   <<"NamedQueries">> => list(named_query()),
-%%   <<"UnprocessedNamedQueryIds">> => list(unprocessed_named_query_id())
-%% }
--type batch_get_named_query_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_database_input() :: #{
-%%   <<"CatalogName">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type get_database_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateFilter">> => list(any()),
-%%   <<"WorkGroup">> := string()
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculation_execution_response() :: #{
-%%   <<"CalculationExecutionId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Result">> => calculation_result(),
-%%   <<"SessionId">> => string(),
-%%   <<"Statistics">> => calculation_statistics(),
-%%   <<"Status">> => calculation_status(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type get_calculation_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% prepared_statement() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"QueryStatement">> => string(),
-%%   <<"StatementName">> => string(),
-%%   <<"WorkGroupName">> => string()
-%% }
--type prepared_statement() :: #{binary() => any()}.
-
-%% Example:
-%% get_work_group_output() :: #{
-%%   <<"WorkGroup">> => work_group()
-%% }
--type get_work_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_work_group_output() :: #{
-
-%% }
--type delete_work_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_work_group_input() :: #{
-%%   <<"Configuration">> => work_group_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_work_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_query_execution_input() :: #{
-%%   <<"QueryExecutionIds">> := list(string())
-%% }
--type batch_get_query_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_d_p_u_sizes_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_d_p_u_sizes_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_catalog_output() :: #{
-%%   <<"DataCatalog">> => data_catalog()
-%% }
--type create_data_catalog_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_runtime_statistics_input() :: #{
-%%   <<"QueryExecutionId">> := string()
-%% }
--type get_query_runtime_statistics_input() :: #{binary() => any()}.
-
-%% Example:
-%% unprocessed_prepared_statement_name() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"StatementName">> => string()
-%% }
--type unprocessed_prepared_statement_name() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_allocation() :: #{
-%%   <<"RequestCompletionTime">> => non_neg_integer(),
-%%   <<"RequestTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type capacity_allocation() :: #{binary() => any()}.
+-type query_execution_statistics() :: #{binary() => any()}.
 
 %% Example:
 %% query_execution_status() :: #{
@@ -1183,15 +1327,289 @@
 -type query_execution_status() :: #{binary() => any()}.
 
 %% Example:
-%% executors_summary() :: #{
-%%   <<"ExecutorId">> => string(),
-%%   <<"ExecutorSize">> => float(),
-%%   <<"ExecutorState">> => list(any()),
-%%   <<"ExecutorType">> => list(any()),
-%%   <<"StartDateTime">> => float(),
-%%   <<"TerminationDateTime">> => float()
+%% query_results_s3_access_grants_configuration() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CreateUserLevelPrefix">> => boolean(),
+%%   <<"EnableS3AccessGrants">> => boolean()
 %% }
--type executors_summary() :: #{binary() => any()}.
+-type query_results_s3_access_grants_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% query_runtime_statistics() :: #{
+%%   <<"OutputStage">> => query_stage(),
+%%   <<"Rows">> => query_runtime_statistics_rows(),
+%%   <<"Timeline">> => query_runtime_statistics_timeline()
+%% }
+-type query_runtime_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% query_runtime_statistics_rows() :: #{
+%%   <<"InputBytes">> => float(),
+%%   <<"InputRows">> => float(),
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float()
+%% }
+-type query_runtime_statistics_rows() :: #{binary() => any()}.
+
+%% Example:
+%% query_runtime_statistics_timeline() :: #{
+%%   <<"EngineExecutionTimeInMillis">> => float(),
+%%   <<"QueryPlanningTimeInMillis">> => float(),
+%%   <<"QueryQueueTimeInMillis">> => float(),
+%%   <<"ServicePreProcessingTimeInMillis">> => float(),
+%%   <<"ServiceProcessingTimeInMillis">> => float(),
+%%   <<"TotalExecutionTimeInMillis">> => float()
+%% }
+-type query_runtime_statistics_timeline() :: #{binary() => any()}.
+
+%% Example:
+%% query_stage() :: #{
+%%   <<"ExecutionTime">> => float(),
+%%   <<"InputBytes">> => float(),
+%%   <<"InputRows">> => float(),
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float(),
+%%   <<"QueryStagePlan">> => query_stage_plan_node(),
+%%   <<"StageId">> => float(),
+%%   <<"State">> => string(),
+%%   <<"SubStages">> => list(query_stage())
+%% }
+-type query_stage() :: #{binary() => any()}.
+
+%% Example:
+%% query_stage_plan_node() :: #{
+%%   <<"Children">> => list(query_stage_plan_node()),
+%%   <<"Identifier">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RemoteSources">> => list(string())
+%% }
+-type query_stage_plan_node() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% result_configuration() :: #{
+%%   <<"AclConfiguration">> => acl_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OutputLocation">> => string()
+%% }
+-type result_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% result_configuration_updates() :: #{
+%%   <<"AclConfiguration">> => acl_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OutputLocation">> => string(),
+%%   <<"RemoveAclConfiguration">> => boolean(),
+%%   <<"RemoveEncryptionConfiguration">> => boolean(),
+%%   <<"RemoveExpectedBucketOwner">> => boolean(),
+%%   <<"RemoveOutputLocation">> => boolean()
+%% }
+-type result_configuration_updates() :: #{binary() => any()}.
+
+%% Example:
+%% result_reuse_by_age_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"MaxAgeInMinutes">> => integer()
+%% }
+-type result_reuse_by_age_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% result_reuse_configuration() :: #{
+%%   <<"ResultReuseByAgeConfiguration">> => result_reuse_by_age_configuration()
+%% }
+-type result_reuse_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% result_reuse_information() :: #{
+%%   <<"ReusedPreviousResult">> => boolean()
+%% }
+-type result_reuse_information() :: #{binary() => any()}.
+
+%% Example:
+%% result_set() :: #{
+%%   <<"ResultSetMetadata">> => result_set_metadata(),
+%%   <<"Rows">> => list(row())
+%% }
+-type result_set() :: #{binary() => any()}.
+
+%% Example:
+%% result_set_metadata() :: #{
+%%   <<"ColumnInfo">> => list(column_info())
+%% }
+-type result_set_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% row() :: #{
+%%   <<"Data">> => list(datum())
+%% }
+-type row() :: #{binary() => any()}.
+
+%% Example:
+%% s3_logging_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LogLocation">> => string()
+%% }
+-type s3_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type session_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session_configuration() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"IdleTimeoutSeconds">> => float(),
+%%   <<"SessionIdleTimeoutInMinutes">> => integer(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type session_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% session_statistics() :: #{
+%%   <<"DpuExecutionInMillis">> => float()
+%% }
+-type session_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% session_status() :: #{
+%%   <<"EndDateTime">> => non_neg_integer(),
+%%   <<"IdleSinceDateTime">> => non_neg_integer(),
+%%   <<"LastModifiedDateTime">> => non_neg_integer(),
+%%   <<"StartDateTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => string()
+%% }
+-type session_status() :: #{binary() => any()}.
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => engine_version(),
+%%   <<"NotebookVersion">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"Status">> => session_status()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+%% Example:
+%% start_calculation_execution_request() :: #{
+%%   <<"CalculationConfiguration">> => calculation_configuration(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CodeBlock">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"SessionId">> := string()
+%% }
+-type start_calculation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_calculation_execution_response() :: #{
+%%   <<"CalculationExecutionId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type start_calculation_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_execution_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"EngineConfiguration">> => engine_configuration(),
+%%   <<"ExecutionParameters">> => list(string()),
+%%   <<"QueryExecutionContext">> => query_execution_context(),
+%%   <<"QueryString">> := string(),
+%%   <<"ResultConfiguration">> => result_configuration(),
+%%   <<"ResultReuseConfiguration">> => result_reuse_configuration(),
+%%   <<"WorkGroup">> => string()
+%% }
+-type start_query_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_execution_output() :: #{
+%%   <<"QueryExecutionId">> => string()
+%% }
+-type start_query_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CopyWorkGroupTags">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EngineConfiguration">> := engine_configuration(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"MonitoringConfiguration">> => monitoring_configuration(),
+%%   <<"NotebookVersion">> => string(),
+%%   <<"SessionIdleTimeoutInMinutes">> => integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WorkGroup">> := string()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type start_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_calculation_execution_request() :: #{
+%%   <<"CalculationExecutionId">> := string()
+%% }
+-type stop_calculation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_calculation_execution_response() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type stop_calculation_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_execution_input() :: #{
+%%   <<"QueryExecutionId">> := string()
+%% }
+-type stop_query_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_execution_output() :: #{
+
+%% }
+-type stop_query_execution_output() :: #{binary() => any()}.
+
+%% Example:
+%% table_metadata() :: #{
+%%   <<"Columns">> => list(column()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"LastAccessTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"PartitionKeys">> => list(column()),
+%%   <<"TableType">> => string()
+%% }
+-type table_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_output() :: #{
@@ -1200,19 +1618,73 @@
 -type tag_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_work_group_input() :: #{
-%%   <<"ConfigurationUpdates">> => work_group_configuration_updates(),
-%%   <<"Description">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"WorkGroup">> := string()
+%% terminate_session_request() :: #{
+%%   <<"SessionId">> := string()
 %% }
--type update_work_group_input() :: #{binary() => any()}.
+-type terminate_session_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_capacity_assignment_configuration_output() :: #{
+%% terminate_session_response() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type terminate_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_named_query_id() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"NamedQueryId">> => string()
+%% }
+-type unprocessed_named_query_id() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_prepared_statement_name() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"StatementName">> => string()
+%% }
+-type unprocessed_prepared_statement_name() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_query_execution_id() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"QueryExecutionId">> => string()
+%% }
+-type unprocessed_query_execution_id() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
 
 %% }
--type put_capacity_assignment_configuration_output() :: #{binary() => any()}.
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_reservation_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"TargetDpus">> := integer()
+%% }
+-type update_capacity_reservation_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_reservation_output() :: #{
+
+%% }
+-type update_capacity_reservation_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_data_catalog_input() :: #{
@@ -1224,16 +1696,96 @@
 -type update_data_catalog_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_calculation_execution_code_response() :: #{
-%%   <<"CodeBlock">> => string()
+%% update_data_catalog_output() :: #{
+
 %% }
--type get_calculation_execution_code_response() :: #{binary() => any()}.
+-type update_data_catalog_output() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
+%% update_named_query_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NamedQueryId">> := string(),
+%%   <<"QueryString">> := string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type update_named_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_named_query_output() :: #{
+
+%% }
+-type update_named_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"NotebookId">> := string(),
+%%   <<"Payload">> := string(),
+%%   <<"SessionId">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type update_notebook_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_metadata_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NotebookId">> := string()
+%% }
+-type update_notebook_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_metadata_output() :: #{
+
+%% }
+-type update_notebook_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_output() :: #{
+
+%% }
+-type update_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_prepared_statement_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"QueryStatement">> := string(),
+%%   <<"StatementName">> := string(),
+%%   <<"WorkGroup">> := string()
+%% }
+-type update_prepared_statement_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_prepared_statement_output() :: #{
+
+%% }
+-type update_prepared_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_work_group_input() :: #{
+%%   <<"ConfigurationUpdates">> => work_group_configuration_updates(),
+%%   <<"Description">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"WorkGroup">> := string()
+%% }
+-type update_work_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_work_group_output() :: #{
+
+%% }
+-type update_work_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% work_group() :: #{
+%%   <<"Configuration">> => work_group_configuration(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type work_group() :: #{binary() => any()}.
 
 %% Example:
 %% work_group_configuration() :: #{
@@ -1254,12 +1806,6 @@
 %%   <<"ResultConfiguration">> => result_configuration()
 %% }
 -type work_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculation_execution_request() :: #{
-%%   <<"CalculationExecutionId">> := string()
-%% }
--type get_calculation_execution_request() :: #{binary() => any()}.
 
 %% Example:
 %% work_group_configuration_updates() :: #{
@@ -1283,305 +1829,6 @@
 -type work_group_configuration_updates() :: #{binary() => any()}.
 
 %% Example:
-%% get_work_group_input() :: #{
-%%   <<"WorkGroup">> := string()
-%% }
--type get_work_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_query_execution_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"EngineConfiguration">> => engine_configuration(),
-%%   <<"ExecutionParameters">> => list(string()),
-%%   <<"QueryExecutionContext">> => query_execution_context(),
-%%   <<"QueryString">> := string(),
-%%   <<"ResultConfiguration">> => result_configuration(),
-%%   <<"ResultReuseConfiguration">> => result_reuse_configuration(),
-%%   <<"WorkGroup">> => string()
-%% }
--type start_query_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_query_executions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type list_query_executions_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_prepared_statement_output() :: #{
-
-%% }
--type update_prepared_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_response() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type start_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_catalog_output() :: #{
-
-%% }
--type update_data_catalog_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_capacity_reservation_output() :: #{
-%%   <<"CapacityReservation">> => capacity_reservation()
-%% }
--type get_capacity_reservation_output() :: #{binary() => any()}.
-
-%% Example:
-%% result_configuration() :: #{
-%%   <<"AclConfiguration">> => acl_configuration(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"OutputLocation">> => string()
-%% }
--type result_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculation_execution_code_request() :: #{
-%%   <<"CalculationExecutionId">> := string()
-%% }
--type get_calculation_execution_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_runtime_statistics_rows() :: #{
-%%   <<"InputBytes">> => float(),
-%%   <<"InputRows">> => float(),
-%%   <<"OutputBytes">> => float(),
-%%   <<"OutputRows">> => float()
-%% }
--type query_runtime_statistics_rows() :: #{binary() => any()}.
-
-%% Example:
-%% import_notebook_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NotebookS3LocationUri">> => string(),
-%%   <<"Payload">> => string(),
-%%   <<"Type">> := list(any()),
-%%   <<"WorkGroup">> := string()
-%% }
--type import_notebook_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_dashboard_response() :: #{
-%%   <<"Url">> => string()
-%% }
--type get_resource_dashboard_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% filter_definition() :: #{
-%%   <<"Name">> => string()
-%% }
--type filter_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_notebook_url_response() :: #{
-%%   <<"AuthToken">> => string(),
-%%   <<"AuthTokenExpirationTime">> => float(),
-%%   <<"NotebookUrl">> => string()
-%% }
--type create_presigned_notebook_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_runtime_statistics_output() :: #{
-%%   <<"QueryRuntimeStatistics">> => query_runtime_statistics()
-%% }
--type get_query_runtime_statistics_output() :: #{binary() => any()}.
-
-%% Example:
-%% import_notebook_output() :: #{
-%%   <<"NotebookId">> => string()
-%% }
--type import_notebook_output() :: #{binary() => any()}.
-
-%% Example:
-%% result_reuse_by_age_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"MaxAgeInMinutes">> => integer()
-%% }
--type result_reuse_by_age_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prepared_statement_input() :: #{
-%%   <<"StatementName">> := string(),
-%%   <<"WorkGroup">> := string()
-%% }
--type delete_prepared_statement_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_calculation_executions_response() :: #{
-%%   <<"Calculations">> => list(calculation_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_calculation_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% result_set() :: #{
-%%   <<"ResultSetMetadata">> => result_set_metadata(),
-%%   <<"Rows">> => list(row())
-%% }
--type result_set() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_results_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryExecutionId">> := string(),
-%%   <<"QueryResultType">> => list(any())
-%% }
--type get_query_results_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_status_response() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"Status">> => session_status()
-%% }
--type get_session_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% identity_center_configuration() :: #{
-%%   <<"EnableIdentityCenter">> => boolean(),
-%%   <<"IdentityCenterInstanceArn">> => string()
-%% }
--type identity_center_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_dashboard_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type get_resource_dashboard_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_calculation_execution_request() :: #{
-%%   <<"CalculationExecutionId">> := string()
-%% }
--type stop_calculation_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_results_s3_access_grants_configuration() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"CreateUserLevelPrefix">> => boolean(),
-%%   <<"EnableS3AccessGrants">> => boolean()
-%% }
--type query_results_s3_access_grants_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_notebook_url_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type create_presigned_notebook_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% calculation_summary() :: #{
-%%   <<"CalculationExecutionId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Status">> => calculation_status()
-%% }
--type calculation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_work_groups_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroups">> => list(work_group_summary())
-%% }
--type list_work_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_prepared_statement_output() :: #{
-%%   <<"PreparedStatements">> => list(prepared_statement()),
-%%   <<"UnprocessedPreparedStatementNames">> => list(unprocessed_prepared_statement_name())
-%% }
--type batch_get_prepared_statement_output() :: #{binary() => any()}.
-
-%% Example:
-%% query_runtime_statistics_timeline() :: #{
-%%   <<"EngineExecutionTimeInMillis">> => float(),
-%%   <<"QueryPlanningTimeInMillis">> => float(),
-%%   <<"QueryQueueTimeInMillis">> => float(),
-%%   <<"ServicePreProcessingTimeInMillis">> => float(),
-%%   <<"ServiceProcessingTimeInMillis">> => float(),
-%%   <<"TotalExecutionTimeInMillis">> => float()
-%% }
--type query_runtime_statistics_timeline() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_catalogs_output() :: #{
-%%   <<"DataCatalogsSummary">> => list(data_catalog_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_catalogs_output() :: #{binary() => any()}.
-
-%% Example:
-%% classification() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Properties">> => map()
-%% }
--type classification() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_input() :: #{
-%%   <<"NotebookId">> := string()
-%% }
--type delete_notebook_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_query_execution_output() :: #{
-%%   <<"QueryExecutionId">> => string()
-%% }
--type start_query_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_executors_request() :: #{
-%%   <<"ExecutorStateFilter">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type list_executors_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_named_query_input() :: #{
-%%   <<"NamedQueryId">> := string()
-%% }
--type delete_named_query_input() :: #{binary() => any()}.
-
-%% Example:
-%% unprocessed_named_query_id() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"NamedQueryId">> => string()
-%% }
--type unprocessed_named_query_id() :: #{binary() => any()}.
-
-%% Example:
 %% work_group_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -1592,571 +1839,324 @@
 %% }
 -type work_group_summary() :: #{binary() => any()}.
 
-%% Example:
-%% list_work_groups_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_work_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_status_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type get_session_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_capacity_reservation_output() :: #{
-
-%% }
--type cancel_capacity_reservation_output() :: #{binary() => any()}.
-
-%% Example:
-%% managed_query_results_encryption_configuration() :: #{
-%%   <<"KmsKey">> => string()
-%% }
--type managed_query_results_encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_query_executions_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueryExecutionIds">> => list(string())
-%% }
--type list_query_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% calculation_status() :: #{
-%%   <<"CompletionDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => string(),
-%%   <<"SubmissionDateTime">> => non_neg_integer()
-%% }
--type calculation_status() :: #{binary() => any()}.
-
-%% Example:
-%% column_info() :: #{
-%%   <<"CaseSensitive">> => boolean(),
-%%   <<"CatalogName">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nullable">> => list(any()),
-%%   <<"Precision">> => integer(),
-%%   <<"Scale">> => integer(),
-%%   <<"SchemaName">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"Type">> => string()
-%% }
--type column_info() :: #{binary() => any()}.
-
-%% Example:
-%% managed_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"KmsKey">> => string()
-%% }
--type managed_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_catalogs_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type list_data_catalogs_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_query_execution_output() :: #{
-%%   <<"QueryExecutions">> => list(query_execution()),
-%%   <<"UnprocessedQueryExecutionIds">> => list(unprocessed_query_execution_id())
-%% }
--type batch_get_query_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% session_status() :: #{
-%%   <<"EndDateTime">> => non_neg_integer(),
-%%   <<"IdleSinceDateTime">> => non_neg_integer(),
-%%   <<"LastModifiedDateTime">> => non_neg_integer(),
-%%   <<"StartDateTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => string()
-%% }
--type session_status() :: #{binary() => any()}.
-
-%% Example:
-%% start_calculation_execution_request() :: #{
-%%   <<"CalculationConfiguration">> => calculation_configuration(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CodeBlock">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type start_calculation_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_metadata_input() :: #{
-%%   <<"CatalogName">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type get_table_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_engine_versions_output() :: #{
-%%   <<"EngineVersions">> => list(engine_version()),
-%%   <<"NextToken">> => string()
-%% }
--type list_engine_versions_output() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_metadata() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NotebookId">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"WorkGroup">> => string()
-%% }
--type notebook_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_capacity_reservation_output() :: #{
-
-%% }
--type create_capacity_reservation_output() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_logging_configuration() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"LogGroup">> => string(),
-%%   <<"LogStreamNamePrefix">> => string(),
-%%   <<"LogTypes">> => map()
-%% }
--type cloud_watch_logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_named_query_output() :: #{
-%%   <<"NamedQuery">> => named_query()
-%% }
--type get_named_query_output() :: #{binary() => any()}.
-
-%% Example:
-%% acl_configuration() :: #{
-%%   <<"S3AclOption">> => list(any())
-%% }
--type acl_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_named_queries_output() :: #{
-%%   <<"NamedQueryIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_named_queries_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_named_query_output() :: #{
-
-%% }
--type delete_named_query_output() :: #{binary() => any()}.
-
-%% Example:
-%% session_statistics() :: #{
-%%   <<"DpuExecutionInMillis">> => float()
-%% }
--type session_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% list_engine_versions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_engine_versions_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_named_query_output() :: #{
-%%   <<"NamedQueryId">> => string()
-%% }
--type create_named_query_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_prepared_statements_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PreparedStatements">> => list(prepared_statement_summary())
-%% }
--type list_prepared_statements_output() :: #{binary() => any()}.
-
-%% Example:
-%% session_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type session_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% customer_content_encryption_configuration() :: #{
-%%   <<"KmsKey">> => string()
-%% }
--type customer_content_encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capacity_reservation_output() :: #{
-
-%% }
--type delete_capacity_reservation_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_metadata_input() :: #{
-%%   <<"Filters">> => filter_definition(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkGroup">> := string()
-%% }
--type list_notebook_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_work_group_input() :: #{
-%%   <<"RecursiveDeleteOption">> => boolean(),
-%%   <<"WorkGroup">> := string()
-%% }
--type delete_work_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% query_execution_statistics() :: #{
-%%   <<"DataManifestLocation">> => string(),
-%%   <<"DataScannedInBytes">> => float(),
-%%   <<"DpuCount">> => float(),
-%%   <<"EngineExecutionTimeInMillis">> => float(),
-%%   <<"QueryPlanningTimeInMillis">> => float(),
-%%   <<"QueryQueueTimeInMillis">> => float(),
-%%   <<"ResultReuseInformation">> => result_reuse_information(),
-%%   <<"ServicePreProcessingTimeInMillis">> => float(),
-%%   <<"ServiceProcessingTimeInMillis">> => float(),
-%%   <<"TotalExecutionTimeInMillis">> => float()
-%% }
--type query_execution_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% get_prepared_statement_output() :: #{
-%%   <<"PreparedStatement">> => prepared_statement()
-%% }
--type get_prepared_statement_output() :: #{binary() => any()}.
-
 -type batch_get_named_query_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type batch_get_prepared_statement_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type batch_get_query_execution_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type cancel_capacity_reservation_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_capacity_reservation_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_data_catalog_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_named_query_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_notebook_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type create_prepared_statement_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_presigned_notebook_url_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type create_work_group_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_capacity_reservation_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_data_catalog_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_named_query_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_notebook_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type delete_prepared_statement_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_work_group_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type export_notebook_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type get_calculation_execution_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_calculation_execution_code_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_calculation_execution_status_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_capacity_assignment_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_capacity_reservation_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_data_catalog_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_database_errors() ::
-    internal_server_exception() | 
+    metadata_exception() | 
     invalid_request_exception() | 
-    metadata_exception().
+    internal_server_exception().
 
 -type get_named_query_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_notebook_metadata_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type get_prepared_statement_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_query_execution_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_query_results_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type get_query_runtime_statistics_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type get_resource_dashboard_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_session_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_session_endpoint_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_session_status_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_table_metadata_errors() ::
-    internal_server_exception() | 
+    metadata_exception() | 
     invalid_request_exception() | 
-    metadata_exception().
+    internal_server_exception().
 
 -type get_work_group_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type import_notebook_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_application_d_p_u_sizes_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_calculation_executions_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_capacity_reservations_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_data_catalogs_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_databases_errors() ::
-    internal_server_exception() | 
+    metadata_exception() | 
     invalid_request_exception() | 
-    metadata_exception().
+    internal_server_exception().
 
 -type list_engine_versions_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_executors_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_named_queries_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_notebook_metadata_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_notebook_sessions_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_prepared_statements_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_query_executions_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_sessions_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_table_metadata_errors() ::
-    internal_server_exception() | 
+    metadata_exception() | 
     invalid_request_exception() | 
-    metadata_exception().
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_work_groups_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type put_capacity_assignment_configuration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_calculation_execution_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type start_query_execution_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type start_session_errors() ::
+    too_many_requests_exception() | 
     session_already_exists_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_calculation_execution_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type stop_query_execution_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type terminate_session_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_capacity_reservation_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_data_catalog_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_named_query_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_notebook_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type update_notebook_metadata_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type update_prepared_statement_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_work_group_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -183,39 +183,91 @@
 
 
 %% Example:
-%% update_test_grid_project_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectArn">> := string(),
-%%   <<"vpcConfig">> => test_grid_vpc_config()
+%% account_settings() :: #{
+%%   <<"awsAccountNumber">> => string(),
+%%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"maxJobTimeoutMinutes">> => integer(),
+%%   <<"maxSlots">> => map(),
+%%   <<"skipAppResign">> => boolean(),
+%%   <<"trialMinutes">> => trial_minutes(),
+%%   <<"unmeteredDevices">> => map(),
+%%   <<"unmeteredRemoteAccessDevices">> => map()
 %% }
--type update_test_grid_project_request() :: #{binary() => any()}.
+-type account_settings() :: #{binary() => any()}.
 
 %% Example:
-%% device_pool() :: #{
+%% argument_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% artifact() :: #{
 %%   <<"arn">> => string(),
+%%   <<"extension">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"url">> => string()
+%% }
+-type artifact() :: #{binary() => any()}.
+
+%% Example:
+%% c_p_u() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"clock">> => float(),
+%%   <<"frequency">> => string()
+%% }
+-type c_p_u() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_delete_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cannot_delete_exception() :: #{binary() => any()}.
+
+%% Example:
+%% counters() :: #{
+%%   <<"errored">> => integer(),
+%%   <<"failed">> => integer(),
+%%   <<"passed">> => integer(),
+%%   <<"skipped">> => integer(),
+%%   <<"stopped">> => integer(),
+%%   <<"total">> => integer(),
+%%   <<"warned">> => integer()
+%% }
+-type counters() :: #{binary() => any()}.
+
+%% Example:
+%% create_device_pool_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"maxDevices">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"rules">> => list(rule()),
-%%   <<"type">> => list(any())
+%%   <<"name">> := string(),
+%%   <<"projectArn">> := string(),
+%%   <<"rules">> := list(rule())
 %% }
--type device_pool() :: #{binary() => any()}.
+-type create_device_pool_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_vpce_configuration_result() :: #{
-%%   <<"vpceConfiguration">> => vpce_configuration()
+%% create_device_pool_result() :: #{
+%%   <<"devicePool">> => device_pool()
 %% }
--type create_vpce_configuration_result() :: #{binary() => any()}.
+-type create_device_pool_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_remote_access_session_configuration() :: #{
-%%   <<"auxiliaryApps">> => list(string()),
-%%   <<"billingMethod">> => list(any()),
-%%   <<"deviceProxy">> => device_proxy(),
-%%   <<"vpceConfigurationArns">> => list(string())
+%% create_instance_profile_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"packageCleanup">> => boolean(),
+%%   <<"rebootAfterUse">> => boolean()
 %% }
--type create_remote_access_session_configuration() :: #{binary() => any()}.
+-type create_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_result() :: #{
+%%   <<"instanceProfile">> => instance_profile()
+%% }
+-type create_instance_profile_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_network_profile_request() :: #{
@@ -235,55 +287,35 @@
 -type create_network_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tests_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tests">> => list(test())
+%% create_network_profile_result() :: #{
+%%   <<"networkProfile">> => network_profile()
 %% }
--type list_tests_result() :: #{binary() => any()}.
+-type create_network_profile_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_instance_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_instance_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_device_pool_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"maxDevices">> => integer(),
+%% create_project_request() :: #{
+%%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
 %%   <<"name">> := string(),
-%%   <<"projectArn">> := string(),
-%%   <<"rules">> := list(rule())
+%%   <<"vpcConfig">> => vpc_config()
 %% }
--type create_device_pool_request() :: #{binary() => any()}.
+-type create_project_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_suite_request() :: #{
-%%   <<"arn">> := string()
+%% create_project_result() :: #{
+%%   <<"project">> => project()
 %% }
--type get_suite_request() :: #{binary() => any()}.
+-type create_project_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_upload_request() :: #{
-%%   <<"arn">> := string()
+%% create_remote_access_session_configuration() :: #{
+%%   <<"auxiliaryApps">> => list(string()),
+%%   <<"billingMethod">> => list(any()),
+%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"vpceConfigurationArns">> => list(string())
 %% }
--type get_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_devices_request() :: #{
-%%   <<"arn">> => string(),
-%%   <<"filters">> => list(device_filter()),
-%%   <<"nextToken">> => string()
-%% }
--type list_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_remote_access_session_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_remote_access_session_request() :: #{
@@ -299,750 +331,18 @@
 -type create_remote_access_session_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_profile() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"packageCleanup">> => boolean(),
-%%   <<"rebootAfterUse">> => boolean()
-%% }
--type instance_profile() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_session_actions_request() :: #{
-%%   <<"maxResult">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionArn">> := string()
-%% }
--type list_test_grid_session_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_session_artifacts_request() :: #{
-%%   <<"maxResult">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionArn">> := string(),
-%%   <<"type">> => list(any())
-%% }
--type list_test_grid_session_artifacts_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_upload_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_run_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_remote_access_session_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_remote_access_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% suite() :: #{
-%%   <<"arn">> => string(),
-%%   <<"counters">> => counters(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"result">> => list(any()),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopped">> => non_neg_integer(),
-%%   <<"type">> => list(any())
-%% }
--type suite() :: #{binary() => any()}.
-
-%% Example:
-%% tag_operation_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type tag_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_unique_problems_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_unique_problems_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_result() :: #{
-%%   <<"jobs">> => list(job()),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpce_configuration_request() :: #{
-%%   <<"serviceDnsName">> := string(),
-%%   <<"vpceConfigurationDescription">> => string(),
-%%   <<"vpceConfigurationName">> := string(),
-%%   <<"vpceServiceName">> := string()
-%% }
--type create_vpce_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% not_eligible_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_eligible_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_run_request() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"configuration">> => schedule_run_configuration(),
-%%   <<"devicePoolArn">> => string(),
-%%   <<"deviceSelectionConfiguration">> => device_selection_configuration(),
-%%   <<"executionConfiguration">> => execution_configuration(),
-%%   <<"name">> => string(),
-%%   <<"projectArn">> := string(),
-%%   <<"test">> := schedule_run_test()
-%% }
--type schedule_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% renew_offering_request() :: #{
-%%   <<"offeringId">> := string(),
-%%   <<"quantity">> := integer()
-%% }
--type renew_offering_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_upload_result() :: #{
-%%   <<"upload">> => upload()
-%% }
--type update_upload_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_network_profiles_result() :: #{
-%%   <<"networkProfiles">> => list(network_profile()),
-%%   <<"nextToken">> => string()
-%% }
--type list_network_profiles_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_settings_request() :: #{
-
-%% }
--type get_account_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_offering_promotions_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"offeringPromotions">> => list(offering_promotion())
-%% }
--type list_offering_promotions_result() :: #{binary() => any()}.
-
-%% Example:
-%% monetary_amount() :: #{
-%%   <<"amount">> => float(),
-%%   <<"currencyCode">> => list(any())
-%% }
--type monetary_amount() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_run_result() :: #{
-%%   <<"run">> => run()
-%% }
--type schedule_run_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_devices_result() :: #{
-%%   <<"devices">> => list(device()),
-%%   <<"nextToken">> => string()
-%% }
--type list_devices_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_upload_result() :: #{
-
-%% }
--type delete_upload_result() :: #{binary() => any()}.
-
-%% Example:
-%% device_selection_configuration() :: #{
-%%   <<"filters">> => list(device_filter()),
-%%   <<"maxDevices">> => integer()
-%% }
--type device_selection_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_test_grid_session_request() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type get_test_grid_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_offerings_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_offerings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_result() :: #{
-
-%% }
--type delete_project_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_remote_access_session_result() :: #{
+%% create_remote_access_session_result() :: #{
 %%   <<"remoteAccessSession">> => remote_access_session()
 %% }
--type get_remote_access_session_result() :: #{binary() => any()}.
+-type create_remote_access_session_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_network_profile_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_network_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% environment_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type environment_variable() :: #{binary() => any()}.
-
-%% Example:
-%% get_vpce_configuration_result() :: #{
-%%   <<"vpceConfiguration">> => vpce_configuration()
-%% }
--type get_vpce_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_project_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% recurring_charge() :: #{
-%%   <<"cost">> => monetary_amount(),
-%%   <<"frequency">> => list(any())
-%% }
--type recurring_charge() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_profile_result() :: #{
-
-%% }
--type delete_instance_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_device_instance_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"labels">> => list(string()),
-%%   <<"profileArn">> => string()
-%% }
--type update_device_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_profile_result() :: #{
-%%   <<"instanceProfile">> => instance_profile()
-%% }
--type get_instance_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_result() :: #{
-%%   <<"instanceProfile">> => instance_profile()
-%% }
--type create_instance_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_instance_result() :: #{
-%%   <<"deviceInstance">> => device_instance()
-%% }
--type get_device_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_job_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type stop_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% vpce_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"serviceDnsName">> => string(),
-%%   <<"vpceConfigurationDescription">> => string(),
-%%   <<"vpceConfigurationName">> => string(),
-%%   <<"vpceServiceName">> => string()
-%% }
--type vpce_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% install_to_remote_access_session_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"remoteAccessSessionArn">> := string()
-%% }
--type install_to_remote_access_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_offering_status_result() :: #{
-%%   <<"current">> => map(),
-%%   <<"nextPeriod">> => map(),
-%%   <<"nextToken">> => string()
-%% }
--type get_offering_status_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpce_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_vpce_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_uploads_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type list_uploads_request() :: #{binary() => any()}.
-
-%% Example:
-%% offering_status() :: #{
-%%   <<"effectiveOn">> => non_neg_integer(),
-%%   <<"offering">> => offering(),
-%%   <<"quantity">> => integer(),
-%%   <<"type">> => list(any())
-%% }
--type offering_status() :: #{binary() => any()}.
-
-%% Example:
-%% list_unique_problems_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"uniqueProblems">> => map()
-%% }
--type list_unique_problems_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_remote_access_sessions_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_remote_access_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type tag_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_profiles_result() :: #{
-%%   <<"instanceProfiles">> => list(instance_profile()),
-%%   <<"nextToken">> => string()
-%% }
--type list_instance_profiles_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_device_pool_result() :: #{
-%%   <<"devicePool">> => device_pool()
-%% }
--type create_device_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_upload_result() :: #{
-%%   <<"upload">> => upload()
-%% }
--type get_upload_result() :: #{binary() => any()}.
-
-%% Example:
-%% test() :: #{
-%%   <<"arn">> => string(),
-%%   <<"counters">> => counters(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"result">> => list(any()),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopped">> => non_neg_integer(),
-%%   <<"type">> => list(any())
-%% }
--type test() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_pool_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_device_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_grid_vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type test_grid_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% upload() :: #{
-%%   <<"arn">> => string(),
-%%   <<"category">> => list(any()),
-%%   <<"contentType">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"metadata">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"url">> => string()
-%% }
--type upload() :: #{binary() => any()}.
-
-%% Example:
-%% network_profile() :: #{
-%%   <<"arn">> => string(),
+%% create_test_grid_project_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"downlinkBandwidthBits">> => float(),
-%%   <<"downlinkDelayMs">> => float(),
-%%   <<"downlinkJitterMs">> => float(),
-%%   <<"downlinkLossPercent">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"uplinkBandwidthBits">> => float(),
-%%   <<"uplinkDelayMs">> => float(),
-%%   <<"uplinkJitterMs">> => float(),
-%%   <<"uplinkLossPercent">> => integer()
-%% }
--type network_profile() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_profile_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_run_configuration() :: #{
-%%   <<"auxiliaryApps">> => list(string()),
-%%   <<"billingMethod">> => list(any()),
-%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
-%%   <<"deviceProxy">> => device_proxy(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"extraDataPackageArn">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"location">> => location(),
-%%   <<"networkProfileArn">> => string(),
-%%   <<"radios">> => radios(),
-%%   <<"vpceConfigurationArns">> => list(string())
-%% }
--type schedule_run_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
 %%   <<"name">> := string(),
-%%   <<"packageCleanup">> => boolean(),
-%%   <<"rebootAfterUse">> => boolean()
-%% }
--type create_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_device_pools_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type list_device_pools_request() :: #{binary() => any()}.
-
-%% Example:
-%% unique_problem() :: #{
-%%   <<"message">> => string(),
-%%   <<"problems">> => list(problem())
-%% }
--type unique_problem() :: #{binary() => any()}.
-
-%% Example:
-%% list_network_profiles_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type list_network_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_result() :: #{
-%%   <<"job">> => job()
-%% }
--type get_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpce_configuration_result() :: #{
-
-%% }
--type delete_vpce_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tests_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_tests_request() :: #{binary() => any()}.
-
-%% Example:
-%% counters() :: #{
-%%   <<"errored">> => integer(),
-%%   <<"failed">> => integer(),
-%%   <<"passed">> => integer(),
-%%   <<"skipped">> => integer(),
-%%   <<"stopped">> => integer(),
-%%   <<"total">> => integer(),
-%%   <<"warned">> => integer()
-%% }
--type counters() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_profile_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_network_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% radios() :: #{
-%%   <<"bluetooth">> => boolean(),
-%%   <<"gps">> => boolean(),
-%%   <<"nfc">> => boolean(),
-%%   <<"wifi">> => boolean()
-%% }
--type radios() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpce_configuration_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"serviceDnsName">> => string(),
-%%   <<"vpceConfigurationDescription">> => string(),
-%%   <<"vpceConfigurationName">> => string(),
-%%   <<"vpceServiceName">> => string()
-%% }
--type update_vpce_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_run_test() :: #{
-%%   <<"filter">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"testPackageArn">> => string(),
-%%   <<"testSpecArn">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type schedule_run_test() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_profile_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_pool_result() :: #{
-
-%% }
--type delete_device_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_project_result() :: #{
-%%   <<"project">> => project()
-%% }
--type get_project_result() :: #{binary() => any()}.
-
-%% Example:
-%% trial_minutes() :: #{
-%%   <<"remaining">> => float(),
-%%   <<"total">> => float()
-%% }
--type trial_minutes() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_profile_result() :: #{
-%%   <<"instanceProfile">> => instance_profile()
-%% }
--type update_instance_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_samples_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"samples">> => list(sample())
-%% }
--type list_samples_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_suite_result() :: #{
-%%   <<"suite">> => suite()
-%% }
--type get_suite_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_projects_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testGridProjects">> => list(test_grid_project())
-%% }
--type list_test_grid_projects_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_offering_status_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type get_offering_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_offering_transactions_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"offeringTransactions">> => list(offering_transaction())
-%% }
--type list_offering_transactions_result() :: #{binary() => any()}.
-
-%% Example:
-%% project() :: #{
-%%   <<"arn">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"defaultJobTimeoutMinutes">> => integer(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type project() :: #{binary() => any()}.
-
-%% Example:
-%% test_grid_session_action() :: #{
-%%   <<"action">> => string(),
-%%   <<"duration">> => float(),
-%%   <<"requestMethod">> => string(),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"statusCode">> => string()
-%% }
--type test_grid_session_action() :: #{binary() => any()}.
-
-%% Example:
-%% cannot_delete_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cannot_delete_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_pool_compatibility_result() :: #{
-%%   <<"compatibleDevices">> => list(device_pool_compatibility_result()),
-%%   <<"incompatibleDevices">> => list(device_pool_compatibility_result())
-%% }
--type get_device_pool_compatibility_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_pool_compatibility_request() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"configuration">> => schedule_run_configuration(),
-%%   <<"devicePoolArn">> := string(),
-%%   <<"projectArn">> => string(),
-%%   <<"test">> => schedule_run_test(),
-%%   <<"testType">> => list(any())
-%% }
--type get_device_pool_compatibility_request() :: #{binary() => any()}.
-
-%% Example:
-%% offering_transaction() :: #{
-%%   <<"cost">> => monetary_amount(),
-%%   <<"createdOn">> => non_neg_integer(),
-%%   <<"offeringPromotionId">> => string(),
-%%   <<"offeringStatus">> => offering_status(),
-%%   <<"transactionId">> => string()
-%% }
--type offering_transaction() :: #{binary() => any()}.
-
-%% Example:
-%% test_grid_project() :: #{
-%%   <<"arn">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
 %%   <<"vpcConfig">> => test_grid_vpc_config()
 %% }
--type test_grid_project() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_offering_result() :: #{
-%%   <<"offeringTransaction">> => offering_transaction()
-%% }
--type purchase_offering_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpce_configuration_result() :: #{
-%%   <<"vpceConfiguration">> => vpce_configuration()
-%% }
--type update_vpce_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_remote_access_session_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_remote_access_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% c_p_u() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"clock">> => float(),
-%%   <<"frequency">> => string()
-%% }
--type c_p_u() :: #{binary() => any()}.
-
-%% Example:
-%% get_run_result() :: #{
-%%   <<"run">> => run()
-%% }
--type get_run_result() :: #{binary() => any()}.
+-type create_test_grid_project_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_test_grid_project_result() :: #{
@@ -1051,193 +351,11 @@
 -type create_test_grid_project_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_device_instances_result() :: #{
-%%   <<"deviceInstances">> => list(device_instance()),
-%%   <<"nextToken">> => string()
-%% }
--type list_device_instances_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_runs_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"runs">> => list(run())
-%% }
--type list_runs_result() :: #{binary() => any()}.
-
-%% Example:
-%% renew_offering_result() :: #{
-%%   <<"offeringTransaction">> => offering_transaction()
-%% }
--type renew_offering_result() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_test_grid_project_request() :: #{
+%% create_test_grid_url_request() :: #{
+%%   <<"expiresInSeconds">> := integer(),
 %%   <<"projectArn">> := string()
 %% }
--type delete_test_grid_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% sample() :: #{
-%%   <<"arn">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"url">> => string()
-%% }
--type sample() :: #{binary() => any()}.
-
-%% Example:
-%% update_device_pool_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"clearMaxDevices">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"maxDevices">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"rules">> => list(rule())
-%% }
--type update_device_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_session_artifacts_result() :: #{
-%%   <<"artifacts">> => list(test_grid_session_artifact()),
-%%   <<"nextToken">> => string()
-%% }
--type list_test_grid_session_artifacts_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_result() :: #{
-%%   <<"device">> => device()
-%% }
--type get_device_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% problem_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type problem_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_network_profile_result() :: #{
-%%   <<"networkProfile">> => network_profile()
-%% }
--type create_network_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% location() :: #{
-%%   <<"latitude">> => float(),
-%%   <<"longitude">> => float()
-%% }
--type location() :: #{binary() => any()}.
-
-%% Example:
-%% execution_configuration() :: #{
-%%   <<"accountsCleanup">> => boolean(),
-%%   <<"appPackagesCleanup">> => boolean(),
-%%   <<"jobTimeoutMinutes">> => integer(),
-%%   <<"skipAppResign">> => boolean(),
-%%   <<"videoCapture">> => boolean()
-%% }
--type execution_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_offering_transactions_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_offering_transactions_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_account_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_account_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_test_grid_project_request() :: #{
-%%   <<"projectArn">> := string()
-%% }
--type get_test_grid_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% install_to_remote_access_session_result() :: #{
-%%   <<"appUpload">> => upload()
-%% }
--type install_to_remote_access_session_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_samples_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_samples_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_grid_session_artifact() :: #{
-%%   <<"filename">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"url">> => string()
-%% }
--type test_grid_session_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% rule() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_run_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% device_pool_compatibility_result() :: #{
-%%   <<"compatible">> => boolean(),
-%%   <<"device">> => device(),
-%%   <<"incompatibilityMessages">> => list(incompatibility_message())
-%% }
--type device_pool_compatibility_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% device_selection_result() :: #{
-%%   <<"filters">> => list(device_filter()),
-%%   <<"matchedDevicesCount">> => integer(),
-%%   <<"maxDevices">> => integer()
-%% }
--type device_selection_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_upload_result() :: #{
-%%   <<"upload">> => upload()
-%% }
--type create_upload_result() :: #{binary() => any()}.
+-type create_test_grid_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_test_grid_url_result() :: #{
@@ -1245,233 +363,6 @@
 %%   <<"url">> => string()
 %% }
 -type create_test_grid_url_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_profile_result() :: #{
-%%   <<"networkProfile">> => network_profile()
-%% }
--type get_network_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_remote_access_session_result() :: #{
-%%   <<"remoteAccessSession">> => remote_access_session()
-%% }
--type stop_remote_access_session_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_device_instance_result() :: #{
-%%   <<"deviceInstance">> => device_instance()
-%% }
--type update_device_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_remote_access_session_result() :: #{
-
-%% }
--type delete_remote_access_session_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_run_result() :: #{
-%%   <<"run">> => run()
-%% }
--type stop_run_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_offering_promotions_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_offering_promotions_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"defaultJobTimeoutMinutes">> => integer(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type update_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_grid_session() :: #{
-%%   <<"arn">> => string(),
-%%   <<"billingMinutes">> => float(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"ended">> => non_neg_integer(),
-%%   <<"seleniumProperties">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type test_grid_session() :: #{binary() => any()}.
-
-%% Example:
-%% update_upload_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"contentType">> => string(),
-%%   <<"editContent">> => boolean(),
-%%   <<"name">> => string()
-%% }
--type update_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_run_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type stop_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_test_grid_project_result() :: #{
-
-%% }
--type delete_test_grid_project_result() :: #{binary() => any()}.
-
-%% Example:
-%% incompatibility_message() :: #{
-%%   <<"message">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type incompatibility_message() :: #{binary() => any()}.
-
-%% Example:
-%% problem() :: #{
-%%   <<"device">> => device(),
-%%   <<"job">> => problem_detail(),
-%%   <<"message">> => string(),
-%%   <<"result">> => list(any()),
-%%   <<"run">> => problem_detail(),
-%%   <<"suite">> => problem_detail(),
-%%   <<"test">> => problem_detail()
-%% }
--type problem() :: #{binary() => any()}.
-
-%% Example:
-%% delete_run_result() :: #{
-
-%% }
--type delete_run_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_test_grid_project_result() :: #{
-%%   <<"testGridProject">> => test_grid_project()
-%% }
--type update_test_grid_project_result() :: #{binary() => any()}.
-
-%% Example:
-%% remote_access_session() :: #{
-%%   <<"appUpload">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"billingMethod">> => list(any()),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"device">> => device(),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"deviceProxy">> => device_proxy(),
-%%   <<"deviceUdid">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"endpoints">> => remote_access_endpoints(),
-%%   <<"instanceArn">> => string(),
-%%   <<"interactionMode">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"result">> => list(any()),
-%%   <<"skipAppResign">> => boolean(),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopped">> => non_neg_integer(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type remote_access_session() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_sessions_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testGridSessions">> => list(test_grid_session())
-%% }
--type list_test_grid_sessions_result() :: #{binary() => any()}.
-
-%% Example:
-%% customer_artifact_paths() :: #{
-%%   <<"androidPaths">> => list(string()),
-%%   <<"deviceHostPaths">> => list(string()),
-%%   <<"iosPaths">> => list(string())
-%% }
--type customer_artifact_paths() :: #{binary() => any()}.
-
-%% Example:
-%% device_instance() :: #{
-%%   <<"arn">> => string(),
-%%   <<"deviceArn">> => string(),
-%%   <<"instanceProfile">> => instance_profile(),
-%%   <<"labels">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"udid">> => string()
-%% }
--type device_instance() :: #{binary() => any()}.
-
-%% Example:
-%% create_remote_access_session_result() :: #{
-%%   <<"remoteAccessSession">> => remote_access_session()
-%% }
--type create_remote_access_session_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_pool_result() :: #{
-%%   <<"devicePool">> => device_pool()
-%% }
--type get_device_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_pool_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_device_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_network_profile_result() :: #{
-%%   <<"networkProfile">> => network_profile()
-%% }
--type update_network_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% account_settings() :: #{
-%%   <<"awsAccountNumber">> => string(),
-%%   <<"defaultJobTimeoutMinutes">> => integer(),
-%%   <<"maxJobTimeoutMinutes">> => integer(),
-%%   <<"maxSlots">> => map(),
-%%   <<"skipAppResign">> => boolean(),
-%%   <<"trialMinutes">> => trial_minutes(),
-%%   <<"unmeteredDevices">> => map(),
-%%   <<"unmeteredRemoteAccessDevices">> => map()
-%% }
--type account_settings() :: #{binary() => any()}.
-
-%% Example:
-%% update_device_pool_result() :: #{
-%%   <<"devicePool">> => device_pool()
-%% }
--type update_device_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_network_profile_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"description">> => string(),
-%%   <<"downlinkBandwidthBits">> => float(),
-%%   <<"downlinkDelayMs">> => float(),
-%%   <<"downlinkJitterMs">> => float(),
-%%   <<"downlinkLossPercent">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"uplinkBandwidthBits">> => float(),
-%%   <<"uplinkDelayMs">> => float(),
-%%   <<"uplinkJitterMs">> => float(),
-%%   <<"uplinkLossPercent">> => integer()
-%% }
--type update_network_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_upload_request() :: #{
@@ -1483,44 +374,63 @@
 -type create_upload_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
+%% create_upload_result() :: #{
+%%   <<"upload">> => upload()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type create_upload_result() :: #{binary() => any()}.
 
 %% Example:
-%% idempotency_exception() :: #{
-%%   <<"message">> => string()
+%% create_vpce_configuration_request() :: #{
+%%   <<"serviceDnsName">> := string(),
+%%   <<"vpceConfigurationDescription">> => string(),
+%%   <<"vpceConfigurationName">> := string(),
+%%   <<"vpceServiceName">> := string()
 %% }
--type idempotency_exception() :: #{binary() => any()}.
+-type create_vpce_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% job() :: #{
-%%   <<"arn">> => string(),
-%%   <<"counters">> => counters(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"device">> => device(),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"instanceArn">> => string(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"result">> => list(any()),
-%%   <<"started">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stopped">> => non_neg_integer(),
-%%   <<"type">> => list(any()),
-%%   <<"videoCapture">> => boolean(),
-%%   <<"videoEndpoint">> => string()
+%% create_vpce_configuration_result() :: #{
+%%   <<"vpceConfiguration">> => vpce_configuration()
 %% }
--type job() :: #{binary() => any()}.
+-type create_vpce_configuration_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_artifacts_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> := list(any())
+%% customer_artifact_paths() :: #{
+%%   <<"androidPaths">> => list(string()),
+%%   <<"deviceHostPaths">> => list(string()),
+%%   <<"iosPaths">> => list(string())
 %% }
--type list_artifacts_request() :: #{binary() => any()}.
+-type customer_artifact_paths() :: #{binary() => any()}.
+
+%% Example:
+%% delete_device_pool_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_device_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_device_pool_result() :: #{
+
+%% }
+-type delete_device_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_result() :: #{
+
+%% }
+-type delete_instance_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_profile_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_network_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_network_profile_result() :: #{
@@ -1529,167 +439,76 @@
 -type delete_network_profile_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_device_instances_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_device_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_request() :: #{
+%% delete_project_request() :: #{
 %%   <<"arn">> := string()
 %% }
--type get_job_request() :: #{binary() => any()}.
+-type delete_project_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_project_request() :: #{
-%%   <<"defaultJobTimeoutMinutes">> => integer(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"vpcConfig">> => vpc_config()
+%% delete_project_result() :: #{
+
 %% }
--type create_project_request() :: #{binary() => any()}.
+-type delete_project_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_vpce_configurations_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"vpceConfigurations">> => list(vpce_configuration())
+%% delete_remote_access_session_request() :: #{
+%%   <<"arn">> := string()
 %% }
--type list_vpce_configurations_result() :: #{binary() => any()}.
+-type delete_remote_access_session_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_suites_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"nextToken">> => string()
+%% delete_remote_access_session_result() :: #{
+
 %% }
--type list_suites_request() :: #{binary() => any()}.
+-type delete_remote_access_session_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_projects_request() :: #{
-%%   <<"arn">> => string(),
-%%   <<"nextToken">> => string()
+%% delete_run_request() :: #{
+%%   <<"arn">> := string()
 %% }
--type list_projects_request() :: #{binary() => any()}.
+-type delete_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_account_settings_result() :: #{
-%%   <<"accountSettings">> => account_settings()
+%% delete_run_result() :: #{
+
 %% }
--type get_account_settings_result() :: #{binary() => any()}.
+-type delete_run_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_vpce_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_vpce_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% offering() :: #{
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"recurringCharges">> => list(recurring_charge()),
-%%   <<"type">> => list(any())
-%% }
--type offering() :: #{binary() => any()}.
-
-%% Example:
-%% device_minutes() :: #{
-%%   <<"metered">> => float(),
-%%   <<"total">> => float(),
-%%   <<"unmetered">> => float()
-%% }
--type device_minutes() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resolution() :: #{
-%%   <<"height">> => integer(),
-%%   <<"width">> => integer()
-%% }
--type resolution() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_profile_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"packageCleanup">> => boolean(),
-%%   <<"rebootAfterUse">> => boolean()
-%% }
--type update_instance_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_test_grid_url_request() :: #{
-%%   <<"expiresInSeconds">> := integer(),
+%% delete_test_grid_project_request() :: #{
 %%   <<"projectArn">> := string()
 %% }
--type create_test_grid_url_request() :: #{binary() => any()}.
+-type delete_test_grid_project_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_test_result() :: #{
-%%   <<"test">> => test()
+%% delete_test_grid_project_result() :: #{
+
 %% }
--type get_test_result() :: #{binary() => any()}.
+-type delete_test_grid_project_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_device_pools_result() :: #{
-%%   <<"devicePools">> => list(device_pool()),
-%%   <<"nextToken">> => string()
-%% }
--type list_device_pools_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_suites_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"suites">> => list(suite())
-%% }
--type list_suites_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_test_request() :: #{
+%% delete_upload_request() :: #{
 %%   <<"arn">> := string()
 %% }
--type get_test_request() :: #{binary() => any()}.
+-type delete_upload_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_test_grid_project_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"vpcConfig">> => test_grid_vpc_config()
+%% delete_upload_result() :: #{
+
 %% }
--type create_test_grid_project_request() :: #{binary() => any()}.
+-type delete_upload_result() :: #{binary() => any()}.
 
 %% Example:
-%% stop_remote_access_session_request() :: #{
+%% delete_vpce_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
--type stop_remote_access_session_request() :: #{binary() => any()}.
+-type delete_vpce_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% artifact() :: #{
-%%   <<"arn">> => string(),
-%%   <<"extension">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"url">> => string()
-%% }
--type artifact() :: #{binary() => any()}.
+%% delete_vpce_configuration_result() :: #{
 
-%% Example:
-%% list_artifacts_result() :: #{
-%%   <<"artifacts">> => list(artifact()),
-%%   <<"nextToken">> => string()
 %% }
--type list_artifacts_result() :: #{binary() => any()}.
+-type delete_vpce_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% device() :: #{
@@ -1718,64 +537,50 @@
 -type device() :: #{binary() => any()}.
 
 %% Example:
-%% list_projects_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(project())
+%% device_filter() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
 %% }
--type list_projects_result() :: #{binary() => any()}.
+-type device_filter() :: #{binary() => any()}.
 
 %% Example:
-%% delete_project_request() :: #{
-%%   <<"arn">> := string()
+%% device_instance() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deviceArn">> => string(),
+%%   <<"instanceProfile">> => instance_profile(),
+%%   <<"labels">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"udid">> => string()
 %% }
--type delete_project_request() :: #{binary() => any()}.
+-type device_instance() :: #{binary() => any()}.
 
 %% Example:
-%% list_remote_access_sessions_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"remoteAccessSessions">> => list(remote_access_session())
+%% device_minutes() :: #{
+%%   <<"metered">> => float(),
+%%   <<"total">> => float(),
+%%   <<"unmetered">> => float()
 %% }
--type list_remote_access_sessions_result() :: #{binary() => any()}.
+-type device_minutes() :: #{binary() => any()}.
 
 %% Example:
-%% get_test_grid_project_result() :: #{
-%%   <<"testGridProject">> => test_grid_project()
-%% }
--type get_test_grid_project_result() :: #{binary() => any()}.
-
-%% Example:
-%% offering_promotion() :: #{
+%% device_pool() :: #{
+%%   <<"arn">> => string(),
 %%   <<"description">> => string(),
-%%   <<"id">> => string()
+%%   <<"maxDevices">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"rules">> => list(rule()),
+%%   <<"type">> => list(any())
 %% }
--type offering_promotion() :: #{binary() => any()}.
+-type device_pool() :: #{binary() => any()}.
 
 %% Example:
-%% remote_access_endpoints() :: #{
-%%   <<"interactiveEndpoint">> => string(),
-%%   <<"remoteDriverEndpoint">> => string()
+%% device_pool_compatibility_result() :: #{
+%%   <<"compatible">> => boolean(),
+%%   <<"device">> => device(),
+%%   <<"incompatibilityMessages">> => list(incompatibility_message())
 %% }
--type remote_access_endpoints() :: #{binary() => any()}.
-
-%% Example:
-%% list_offerings_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"offerings">> => list(offering())
-%% }
--type list_offerings_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_test_grid_session_actions_result() :: #{
-%%   <<"actions">> => list(test_grid_session_action()),
-%%   <<"nextToken">> => string()
-%% }
--type list_test_grid_session_actions_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_result() :: #{
-%%   <<"project">> => project()
-%% }
--type create_project_result() :: #{binary() => any()}.
+-type device_pool_compatibility_result() :: #{binary() => any()}.
 
 %% Example:
 %% device_proxy() :: #{
@@ -1785,10 +590,506 @@
 -type device_proxy() :: #{binary() => any()}.
 
 %% Example:
-%% stop_job_result() :: #{
+%% device_selection_configuration() :: #{
+%%   <<"filters">> => list(device_filter()),
+%%   <<"maxDevices">> => integer()
+%% }
+-type device_selection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% device_selection_result() :: #{
+%%   <<"filters">> => list(device_filter()),
+%%   <<"matchedDevicesCount">> => integer(),
+%%   <<"maxDevices">> => integer()
+%% }
+-type device_selection_result() :: #{binary() => any()}.
+
+%% Example:
+%% environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% execution_configuration() :: #{
+%%   <<"accountsCleanup">> => boolean(),
+%%   <<"appPackagesCleanup">> => boolean(),
+%%   <<"jobTimeoutMinutes">> => integer(),
+%%   <<"skipAppResign">> => boolean(),
+%%   <<"videoCapture">> => boolean()
+%% }
+-type execution_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_request() :: #{
+
+%% }
+-type get_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_result() :: #{
+%%   <<"accountSettings">> => account_settings()
+%% }
+-type get_account_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_instance_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_device_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_instance_result() :: #{
+%%   <<"deviceInstance">> => device_instance()
+%% }
+-type get_device_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_pool_compatibility_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"configuration">> => schedule_run_configuration(),
+%%   <<"devicePoolArn">> := string(),
+%%   <<"projectArn">> => string(),
+%%   <<"test">> => schedule_run_test(),
+%%   <<"testType">> => list(any())
+%% }
+-type get_device_pool_compatibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_pool_compatibility_result() :: #{
+%%   <<"compatibleDevices">> => list(device_pool_compatibility_result()),
+%%   <<"incompatibleDevices">> => list(device_pool_compatibility_result())
+%% }
+-type get_device_pool_compatibility_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_pool_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_device_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_pool_result() :: #{
+%%   <<"devicePool">> => device_pool()
+%% }
+-type get_device_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_result() :: #{
+%%   <<"device">> => device()
+%% }
+-type get_device_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_result() :: #{
+%%   <<"instanceProfile">> => instance_profile()
+%% }
+-type get_instance_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_result() :: #{
 %%   <<"job">> => job()
 %% }
--type stop_job_result() :: #{binary() => any()}.
+-type get_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_profile_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_network_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_profile_result() :: #{
+%%   <<"networkProfile">> => network_profile()
+%% }
+-type get_network_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_offering_status_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type get_offering_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_offering_status_result() :: #{
+%%   <<"current">> => map(),
+%%   <<"nextPeriod">> => map(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_offering_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_result() :: #{
+%%   <<"project">> => project()
+%% }
+-type get_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_remote_access_session_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_remote_access_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_remote_access_session_result() :: #{
+%%   <<"remoteAccessSession">> => remote_access_session()
+%% }
+-type get_remote_access_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_run_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_run_result() :: #{
+%%   <<"run">> => run()
+%% }
+-type get_run_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_suite_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_result() :: #{
+%%   <<"suite">> => suite()
+%% }
+-type get_suite_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_grid_project_request() :: #{
+%%   <<"projectArn">> := string()
+%% }
+-type get_test_grid_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_grid_project_result() :: #{
+%%   <<"testGridProject">> => test_grid_project()
+%% }
+-type get_test_grid_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_grid_session_request() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type get_test_grid_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_grid_session_result() :: #{
+%%   <<"testGridSession">> => test_grid_session()
+%% }
+-type get_test_grid_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_test_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_result() :: #{
+%%   <<"test">> => test()
+%% }
+-type get_test_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_result() :: #{
+%%   <<"upload">> => upload()
+%% }
+-type get_upload_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpce_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_vpce_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpce_configuration_result() :: #{
+%%   <<"vpceConfiguration">> => vpce_configuration()
+%% }
+-type get_vpce_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% idempotency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type idempotency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% incompatibility_message() :: #{
+%%   <<"message">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type incompatibility_message() :: #{binary() => any()}.
+
+%% Example:
+%% install_to_remote_access_session_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"remoteAccessSessionArn">> := string()
+%% }
+-type install_to_remote_access_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% install_to_remote_access_session_result() :: #{
+%%   <<"appUpload">> => upload()
+%% }
+-type install_to_remote_access_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_profile() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"packageCleanup">> => boolean(),
+%%   <<"rebootAfterUse">> => boolean()
+%% }
+-type instance_profile() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"arn">> => string(),
+%%   <<"counters">> => counters(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"device">> => device(),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"instanceArn">> => string(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"result">> => list(any()),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"videoCapture">> => boolean(),
+%%   <<"videoEndpoint">> => string()
+%% }
+-type job() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> := list(any())
+%% }
+-type list_artifacts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_result() :: #{
+%%   <<"artifacts">> => list(artifact()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_artifacts_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_instances_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_device_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_instances_result() :: #{
+%%   <<"deviceInstances">> => list(device_instance()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_device_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_pools_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_device_pools_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_pools_result() :: #{
+%%   <<"devicePools">> => list(device_pool()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_device_pools_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"arn">> => string(),
+%%   <<"filters">> => list(device_filter()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_result() :: #{
+%%   <<"devices">> => list(device()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_devices_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instance_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_result() :: #{
+%%   <<"instanceProfiles">> => list(instance_profile()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instance_profiles_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_result() :: #{
+%%   <<"jobs">> => list(job()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_network_profiles_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_network_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_network_profiles_result() :: #{
+%%   <<"networkProfiles">> => list(network_profile()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_profiles_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_offering_promotions_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_offering_promotions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_offering_promotions_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"offeringPromotions">> => list(offering_promotion())
+%% }
+-type list_offering_promotions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_offering_transactions_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_offering_transactions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_offering_transactions_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"offeringTransactions">> => list(offering_transaction())
+%% }
+-type list_offering_transactions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_offerings_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_offerings_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"offerings">> => list(offering())
+%% }
+-type list_offerings_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_request() :: #{
+%%   <<"arn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projects">> => list(project())
+%% }
+-type list_projects_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_remote_access_sessions_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_access_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_remote_access_sessions_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"remoteAccessSessions">> => list(remote_access_session())
+%% }
+-type list_remote_access_sessions_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_runs_request() :: #{
@@ -1798,18 +1099,96 @@
 -type list_runs_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_vpce_configuration_request() :: #{
-%%   <<"arn">> := string()
+%% list_runs_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"runs">> => list(run())
 %% }
--type get_vpce_configuration_request() :: #{binary() => any()}.
+-type list_runs_result() :: #{binary() => any()}.
 
 %% Example:
-%% device_filter() :: #{
-%%   <<"attribute">> => list(any()),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
+%% list_samples_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
 %% }
--type device_filter() :: #{binary() => any()}.
+-type list_samples_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_samples_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"samples">> => list(sample())
+%% }
+-type list_samples_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_suites_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_suites_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_suites_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suites">> => list(suite())
+%% }
+-type list_suites_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_projects_request() :: #{
+%%   <<"maxResult">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_grid_projects_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_projects_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testGridProjects">> => list(test_grid_project())
+%% }
+-type list_test_grid_projects_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_session_actions_request() :: #{
+%%   <<"maxResult">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionArn">> := string()
+%% }
+-type list_test_grid_session_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_session_actions_result() :: #{
+%%   <<"actions">> => list(test_grid_session_action()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_grid_session_actions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_session_artifacts_request() :: #{
+%%   <<"maxResult">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionArn">> := string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_test_grid_session_artifacts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_test_grid_session_artifacts_result() :: #{
+%%   <<"artifacts">> => list(test_grid_session_artifact()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_grid_session_artifacts_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_test_grid_sessions_request() :: #{
@@ -1825,6 +1204,49 @@
 -type list_test_grid_sessions_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_test_grid_sessions_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testGridSessions">> => list(test_grid_session())
+%% }
+-type list_test_grid_sessions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tests_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tests_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tests_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tests">> => list(test())
+%% }
+-type list_tests_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_unique_problems_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_unique_problems_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_unique_problems_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"uniqueProblems">> => map()
+%% }
+-type list_unique_problems_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_uploads_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_uploads_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_uploads_result() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"uploads">> => list(upload())
@@ -1832,23 +1254,128 @@
 -type list_uploads_result() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tags_exception() :: #{
+%% list_vpce_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vpce_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpce_configurations_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"vpceConfigurations">> => list(vpce_configuration())
+%% }
+-type list_vpce_configurations_result() :: #{binary() => any()}.
+
+%% Example:
+%% location() :: #{
+%%   <<"latitude">> => float(),
+%%   <<"longitude">> => float()
+%% }
+-type location() :: #{binary() => any()}.
+
+%% Example:
+%% monetary_amount() :: #{
+%%   <<"amount">> => float(),
+%%   <<"currencyCode">> => list(any())
+%% }
+-type monetary_amount() :: #{binary() => any()}.
+
+%% Example:
+%% network_profile() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"downlinkBandwidthBits">> => float(),
+%%   <<"downlinkDelayMs">> => float(),
+%%   <<"downlinkJitterMs">> => float(),
+%%   <<"downlinkLossPercent">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"uplinkBandwidthBits">> => float(),
+%%   <<"uplinkDelayMs">> => float(),
+%%   <<"uplinkJitterMs">> => float(),
+%%   <<"uplinkLossPercent">> => integer()
+%% }
+-type network_profile() :: #{binary() => any()}.
+
+%% Example:
+%% not_eligible_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_eligible_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% offering() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"recurringCharges">> => list(recurring_charge()),
+%%   <<"type">> => list(any())
+%% }
+-type offering() :: #{binary() => any()}.
+
+%% Example:
+%% offering_promotion() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string()
+%% }
+-type offering_promotion() :: #{binary() => any()}.
+
+%% Example:
+%% offering_status() :: #{
+%%   <<"effectiveOn">> => non_neg_integer(),
+%%   <<"offering">> => offering(),
+%%   <<"quantity">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type offering_status() :: #{binary() => any()}.
+
+%% Example:
+%% offering_transaction() :: #{
+%%   <<"cost">> => monetary_amount(),
+%%   <<"createdOn">> => non_neg_integer(),
+%%   <<"offeringPromotionId">> => string(),
+%%   <<"offeringStatus">> => offering_status(),
+%%   <<"transactionId">> => string()
+%% }
+-type offering_transaction() :: #{binary() => any()}.
+
+%% Example:
+%% problem() :: #{
+%%   <<"device">> => device(),
+%%   <<"job">> => problem_detail(),
 %%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
+%%   <<"result">> => list(any()),
+%%   <<"run">> => problem_detail(),
+%%   <<"suite">> => problem_detail(),
+%%   <<"test">> => problem_detail()
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type problem() :: #{binary() => any()}.
 
 %% Example:
-%% get_test_grid_session_result() :: #{
-%%   <<"testGridSession">> => test_grid_session()
+%% problem_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
 %% }
--type get_test_grid_session_result() :: #{binary() => any()}.
+-type problem_detail() :: #{binary() => any()}.
 
 %% Example:
-%% get_device_instance_request() :: #{
-%%   <<"arn">> := string()
+%% project() :: #{
+%%   <<"arn">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
--type get_device_instance_request() :: #{binary() => any()}.
+-type project() :: #{binary() => any()}.
 
 %% Example:
 %% purchase_offering_request() :: #{
@@ -1859,57 +1386,451 @@
 -type purchase_offering_request() :: #{binary() => any()}.
 
 %% Example:
-%% run() :: #{
-%%   <<"networkProfile">> => network_profile(),
-%%   <<"type">> => list(any()),
-%%   <<"deviceMinutes">> => device_minutes(),
-%%   <<"seed">> => integer(),
-%%   <<"completedJobs">> => integer(),
-%%   <<"testSpecArn">> => string(),
-%%   <<"billingMethod">> => list(any()),
-%%   <<"webUrl">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"location">> => location(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"counters">> => counters(),
-%%   <<"status">> => list(any()),
-%%   <<"jobTimeoutMinutes">> => integer(),
-%%   <<"result">> => list(any()),
-%%   <<"totalJobs">> => integer(),
-%%   <<"vpcConfig">> => vpc_config(),
-%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
-%%   <<"locale">> => string(),
-%%   <<"skipAppResign">> => boolean(),
+%% purchase_offering_result() :: #{
+%%   <<"offeringTransaction">> => offering_transaction()
+%% }
+-type purchase_offering_result() :: #{binary() => any()}.
+
+%% Example:
+%% radios() :: #{
+%%   <<"bluetooth">> => boolean(),
+%%   <<"gps">> => boolean(),
+%%   <<"nfc">> => boolean(),
+%%   <<"wifi">> => boolean()
+%% }
+-type radios() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"cost">> => monetary_amount(),
+%%   <<"frequency">> => list(any())
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% remote_access_endpoints() :: #{
+%%   <<"interactiveEndpoint">> => string(),
+%%   <<"remoteDriverEndpoint">> => string()
+%% }
+-type remote_access_endpoints() :: #{binary() => any()}.
+
+%% Example:
+%% remote_access_session() :: #{
 %%   <<"appUpload">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"deviceSelectionResult">> => device_selection_result(),
-%%   <<"radios">> => radios(),
-%%   <<"stopped">> => non_neg_integer(),
 %%   <<"arn">> => string(),
-%%   <<"parsingResultUrl">> => string(),
-%%   <<"devicePoolArn">> => string(),
-%%   <<"resultCode">> => list(any()),
-%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"billingMethod">> => list(any()),
 %%   <<"created">> => non_neg_integer(),
+%%   <<"device">> => device(),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"deviceUdid">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"endpoints">> => remote_access_endpoints(),
+%%   <<"instanceArn">> => string(),
+%%   <<"interactionMode">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"eventCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"result">> => list(any()),
+%%   <<"skipAppResign">> => boolean(),
 %%   <<"started">> => non_neg_integer(),
-%%   <<"name">> => string()
+%%   <<"status">> => list(any()),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type remote_access_session() :: #{binary() => any()}.
+
+%% Example:
+%% renew_offering_request() :: #{
+%%   <<"offeringId">> := string(),
+%%   <<"quantity">> := integer()
+%% }
+-type renew_offering_request() :: #{binary() => any()}.
+
+%% Example:
+%% renew_offering_result() :: #{
+%%   <<"offeringTransaction">> => offering_transaction()
+%% }
+-type renew_offering_result() :: #{binary() => any()}.
+
+%% Example:
+%% resolution() :: #{
+%%   <<"height">> => integer(),
+%%   <<"width">> => integer()
+%% }
+-type resolution() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"attribute">> => list(any()),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% run() :: #{
+%%   <<"appUpload">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"billingMethod">> => list(any()),
+%%   <<"completedJobs">> => integer(),
+%%   <<"counters">> => counters(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"devicePoolArn">> => string(),
+%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"deviceSelectionResult">> => device_selection_result(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"eventCount">> => integer(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"jobTimeoutMinutes">> => integer(),
+%%   <<"locale">> => string(),
+%%   <<"location">> => location(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkProfile">> => network_profile(),
+%%   <<"parsingResultUrl">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"radios">> => radios(),
+%%   <<"result">> => list(any()),
+%%   <<"resultCode">> => list(any()),
+%%   <<"seed">> => integer(),
+%%   <<"skipAppResign">> => boolean(),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"testSpecArn">> => string(),
+%%   <<"totalJobs">> => integer(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config(),
+%%   <<"webUrl">> => string()
 %% }
 -type run() :: #{binary() => any()}.
 
 %% Example:
-%% argument_exception() :: #{
-%%   <<"message">> => string()
+%% sample() :: #{
+%%   <<"arn">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"url">> => string()
 %% }
--type argument_exception() :: #{binary() => any()}.
+-type sample() :: #{binary() => any()}.
 
 %% Example:
-%% list_test_grid_projects_request() :: #{
-%%   <<"maxResult">> => integer(),
-%%   <<"nextToken">> => string()
+%% schedule_run_configuration() :: #{
+%%   <<"auxiliaryApps">> => list(string()),
+%%   <<"billingMethod">> => list(any()),
+%%   <<"customerArtifactPaths">> => customer_artifact_paths(),
+%%   <<"deviceProxy">> => device_proxy(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"extraDataPackageArn">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"location">> => location(),
+%%   <<"networkProfileArn">> => string(),
+%%   <<"radios">> => radios(),
+%%   <<"vpceConfigurationArns">> => list(string())
 %% }
--type list_test_grid_projects_request() :: #{binary() => any()}.
+-type schedule_run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_run_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"configuration">> => schedule_run_configuration(),
+%%   <<"devicePoolArn">> => string(),
+%%   <<"deviceSelectionConfiguration">> => device_selection_configuration(),
+%%   <<"executionConfiguration">> => execution_configuration(),
+%%   <<"name">> => string(),
+%%   <<"projectArn">> := string(),
+%%   <<"test">> := schedule_run_test()
+%% }
+-type schedule_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_run_result() :: #{
+%%   <<"run">> => run()
+%% }
+-type schedule_run_result() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_run_test() :: #{
+%%   <<"filter">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"testPackageArn">> => string(),
+%%   <<"testSpecArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type schedule_run_test() :: #{binary() => any()}.
+
+%% Example:
+%% service_account_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type stop_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_result() :: #{
+%%   <<"job">> => job()
+%% }
+-type stop_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_remote_access_session_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type stop_remote_access_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_remote_access_session_result() :: #{
+%%   <<"remoteAccessSession">> => remote_access_session()
+%% }
+-type stop_remote_access_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_run_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type stop_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_run_result() :: #{
+%%   <<"run">> => run()
+%% }
+-type stop_run_result() :: #{binary() => any()}.
+
+%% Example:
+%% suite() :: #{
+%%   <<"arn">> => string(),
+%%   <<"counters">> => counters(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"result">> => list(any()),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type suite() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_operation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type tag_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% test() :: #{
+%%   <<"arn">> => string(),
+%%   <<"counters">> => counters(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"result">> => list(any()),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stopped">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type test() :: #{binary() => any()}.
+
+%% Example:
+%% test_grid_project() :: #{
+%%   <<"arn">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"vpcConfig">> => test_grid_vpc_config()
+%% }
+-type test_grid_project() :: #{binary() => any()}.
+
+%% Example:
+%% test_grid_session() :: #{
+%%   <<"arn">> => string(),
+%%   <<"billingMinutes">> => float(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"ended">> => non_neg_integer(),
+%%   <<"seleniumProperties">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type test_grid_session() :: #{binary() => any()}.
+
+%% Example:
+%% test_grid_session_action() :: #{
+%%   <<"action">> => string(),
+%%   <<"duration">> => float(),
+%%   <<"requestMethod">> => string(),
+%%   <<"started">> => non_neg_integer(),
+%%   <<"statusCode">> => string()
+%% }
+-type test_grid_session_action() :: #{binary() => any()}.
+
+%% Example:
+%% test_grid_session_artifact() :: #{
+%%   <<"filename">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"url">> => string()
+%% }
+-type test_grid_session_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% test_grid_vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type test_grid_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trial_minutes() :: #{
+%%   <<"remaining">> => float(),
+%%   <<"total">> => float()
+%% }
+-type trial_minutes() :: #{binary() => any()}.
+
+%% Example:
+%% unique_problem() :: #{
+%%   <<"message">> => string(),
+%%   <<"problems">> => list(problem())
+%% }
+-type unique_problem() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_instance_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"labels">> => list(string()),
+%%   <<"profileArn">> => string()
+%% }
+-type update_device_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_instance_result() :: #{
+%%   <<"deviceInstance">> => device_instance()
+%% }
+-type update_device_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_pool_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"clearMaxDevices">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"maxDevices">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"rules">> => list(rule())
+%% }
+-type update_device_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_pool_result() :: #{
+%%   <<"devicePool">> => device_pool()
+%% }
+-type update_device_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_profile_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"packageCleanup">> => boolean(),
+%%   <<"rebootAfterUse">> => boolean()
+%% }
+-type update_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_profile_result() :: #{
+%%   <<"instanceProfile">> => instance_profile()
+%% }
+-type update_instance_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_network_profile_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"downlinkBandwidthBits">> => float(),
+%%   <<"downlinkDelayMs">> => float(),
+%%   <<"downlinkJitterMs">> => float(),
+%%   <<"downlinkLossPercent">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"uplinkBandwidthBits">> => float(),
+%%   <<"uplinkDelayMs">> => float(),
+%%   <<"uplinkJitterMs">> => float(),
+%%   <<"uplinkLossPercent">> => integer()
+%% }
+-type update_network_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_network_profile_result() :: #{
+%%   <<"networkProfile">> => network_profile()
+%% }
+-type update_network_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"defaultJobTimeoutMinutes">> => integer(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type update_project_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_project_result() :: #{
@@ -1917,461 +1838,540 @@
 %% }
 -type update_project_result() :: #{binary() => any()}.
 
+%% Example:
+%% update_test_grid_project_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectArn">> := string(),
+%%   <<"vpcConfig">> => test_grid_vpc_config()
+%% }
+-type update_test_grid_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_test_grid_project_result() :: #{
+%%   <<"testGridProject">> => test_grid_project()
+%% }
+-type update_test_grid_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_upload_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"contentType">> => string(),
+%%   <<"editContent">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type update_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_upload_result() :: #{
+%%   <<"upload">> => upload()
+%% }
+-type update_upload_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpce_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"serviceDnsName">> => string(),
+%%   <<"vpceConfigurationDescription">> => string(),
+%%   <<"vpceConfigurationName">> => string(),
+%%   <<"vpceServiceName">> => string()
+%% }
+-type update_vpce_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpce_configuration_result() :: #{
+%%   <<"vpceConfiguration">> => vpce_configuration()
+%% }
+-type update_vpce_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% upload() :: #{
+%%   <<"arn">> => string(),
+%%   <<"category">> => list(any()),
+%%   <<"contentType">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"metadata">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"url">> => string()
+%% }
+-type upload() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% vpce_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"serviceDnsName">> => string(),
+%%   <<"vpceConfigurationDescription">> => string(),
+%%   <<"vpceConfigurationName">> => string(),
+%%   <<"vpceServiceName">> => string()
+%% }
+-type vpce_configuration() :: #{binary() => any()}.
+
 -type create_device_pool_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_instance_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_network_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_project_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
+    tag_operation_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    tag_operation_exception().
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_remote_access_session_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_test_grid_project_errors() ::
-    argument_exception() | 
     limit_exceeded_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type create_test_grid_url_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type create_upload_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type create_vpce_configuration_errors() ::
-    argument_exception() | 
+    service_account_exception() | 
     limit_exceeded_exception() | 
-    service_account_exception().
+    argument_exception().
 
 -type delete_device_pool_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_instance_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_network_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_project_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_remote_access_session_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_run_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_test_grid_project_errors() ::
-    argument_exception() | 
     not_found_exception() | 
+    internal_service_exception() | 
     cannot_delete_exception() | 
-    internal_service_exception().
+    argument_exception().
 
 -type delete_upload_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type delete_vpce_configuration_errors() ::
-    argument_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    argument_exception().
 
 -type get_account_settings_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_device_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_device_instance_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_device_pool_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_device_pool_compatibility_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_instance_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_job_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_network_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_offering_status_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_project_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_remote_access_session_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_run_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_suite_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_test_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_test_grid_project_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type get_test_grid_session_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type get_upload_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type get_vpce_configuration_errors() ::
-    argument_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    argument_exception().
 
 -type install_to_remote_access_session_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_artifacts_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_device_instances_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_device_pools_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_devices_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_instance_profiles_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_jobs_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_network_profiles_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_offering_promotions_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_offering_transactions_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_offerings_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_projects_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_remote_access_sessions_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_runs_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_samples_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_suites_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_tags_for_resource_errors() ::
-    argument_exception() | 
+    tag_operation_exception() | 
     not_found_exception() | 
-    tag_operation_exception().
+    argument_exception().
 
 -type list_test_grid_projects_errors() ::
-    argument_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type list_test_grid_session_actions_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type list_test_grid_session_artifacts_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type list_test_grid_sessions_errors() ::
-    argument_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    argument_exception().
 
 -type list_tests_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_unique_problems_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_uploads_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type list_vpce_configurations_errors() ::
-    argument_exception() | 
-    service_account_exception().
+    service_account_exception() | 
+    argument_exception().
 
 -type purchase_offering_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type renew_offering_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    not_eligible_exception().
+    not_eligible_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type schedule_run_errors() ::
-    argument_exception() | 
+    service_account_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     idempotency_exception() | 
-    service_account_exception() | 
-    not_found_exception().
+    argument_exception().
 
 -type stop_job_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type stop_remote_access_session_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type stop_run_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type tag_resource_errors() ::
-    argument_exception() | 
     too_many_tags_exception() | 
-    not_found_exception() | 
     tag_policy_exception() | 
-    tag_operation_exception().
+    tag_operation_exception() | 
+    not_found_exception() | 
+    argument_exception().
 
 -type untag_resource_errors() ::
-    argument_exception() | 
+    tag_operation_exception() | 
     not_found_exception() | 
-    tag_operation_exception().
+    argument_exception().
 
 -type update_device_instance_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type update_device_pool_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type update_instance_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type update_network_profile_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type update_project_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     service_account_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    argument_exception().
 
 -type update_test_grid_project_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    internal_service_exception() | 
+    argument_exception().
 
 -type update_upload_errors() ::
-    argument_exception() | 
-    limit_exceeded_exception() | 
-    service_account_exception() | 
-    not_found_exception().
-
--type update_vpce_configuration_errors() ::
-    argument_exception() | 
     service_account_exception() | 
     not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    argument_exception().
+
+-type update_vpce_configuration_errors() ::
+    service_account_exception() | 
+    not_found_exception() | 
+    invalid_operation_exception() | 
+    argument_exception().
 
 %%====================================================================
 %% API

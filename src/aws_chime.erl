@@ -222,10 +222,342 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountStatus">> => list(any()),
+%%   <<"AccountType">> => list(any()),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"DefaultLicense">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"SigninDelegateGroups">> => list(signin_delegate_group()),
+%%   <<"SupportedLicenses">> => list(list(any())())
+%% }
+-type account() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_settings() :: #{
+%%   <<"DisableRemoteControl">> => boolean(),
+%%   <<"EnableDialOut">> => boolean()
+%% }
+-type account_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% alexa_for_business_metadata() :: #{
+%%   <<"AlexaForBusinessRoomArn">> => string(),
+%%   <<"IsAlexaForBusinessEnabled">> => boolean()
+%% }
+-type alexa_for_business_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_number_with_user_request() :: #{
+%%   <<"E164PhoneNumber">> := string()
+%% }
+-type associate_phone_number_with_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_phone_number_with_user_response() :: #{}
+-type associate_phone_number_with_user_response() :: #{}.
+
+
+%% Example:
+%% associate_signin_delegate_groups_with_account_request() :: #{
+%%   <<"SigninDelegateGroups">> := list(signin_delegate_group())
+%% }
+-type associate_signin_delegate_groups_with_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_signin_delegate_groups_with_account_response() :: #{}
+-type associate_signin_delegate_groups_with_account_response() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_room_membership_request() :: #{
+%%   <<"MembershipItemList">> := list(membership_item())
+%% }
+-type batch_create_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_room_membership_response() :: #{
+%%   <<"Errors">> => list(member_error())
+%% }
+-type batch_create_room_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_phone_number_request() :: #{
+%%   <<"PhoneNumberIds">> := list(string())
+%% }
+-type batch_delete_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type batch_delete_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_suspend_user_request() :: #{
+%%   <<"UserIdList">> := list(string())
+%% }
+-type batch_suspend_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_suspend_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error())
+%% }
+-type batch_suspend_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_unsuspend_user_request() :: #{
+%%   <<"UserIdList">> := list(string())
+%% }
+-type batch_unsuspend_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_unsuspend_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error())
+%% }
+-type batch_unsuspend_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_phone_number_request() :: #{
+%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
+%% }
+-type batch_update_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type batch_update_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_user_request() :: #{
+%%   <<"UpdateUserRequestItems">> := list(update_user_request_item())
+%% }
+-type batch_update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_user_response() :: #{
+%%   <<"UserErrors">> => list(user_error())
+%% }
+-type batch_update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot() :: #{
+%%   <<"BotEmail">> => string(),
+%%   <<"BotId">> => string(),
+%%   <<"BotType">> => list(any()),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SecurityToken">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"UserId">> => string()
+%% }
+-type bot() :: #{binary() => any()}.
+
+
+%% Example:
+%% business_calling_settings() :: #{
+%%   <<"CdrBucket">> => string()
+%% }
+-type business_calling_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type conversation_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type create_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_response() :: #{
+%%   <<"Account">> => account()
+%% }
+-type create_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_request() :: #{
+%%   <<"DisplayName">> := string(),
+%%   <<"Domain">> => string()
+%% }
+-type create_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type create_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_dial_out_request() :: #{
+%%   <<"FromPhoneNumber">> := string(),
+%%   <<"JoinToken">> := string(),
+%%   <<"ToPhoneNumber">> := string()
+%% }
+-type create_meeting_dial_out_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_meeting_dial_out_response() :: #{
 %%   <<"TransactionId">> => string()
 %% }
 -type create_meeting_dial_out_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_phone_number_order_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()),
+%%   <<"ProductType">> := list(any())
+%% }
+-type create_phone_number_order_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_phone_number_order_response() :: #{
+%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% }
+-type create_phone_number_order_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_membership_request() :: #{
+%%   <<"MemberId">> := string(),
+%%   <<"Role">> => list(any())
+%% }
+-type create_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_membership_response() :: #{
+%%   <<"RoomMembership">> => room_membership()
+%% }
+-type create_room_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type create_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type create_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"Email">> => string(),
+%%   <<"UserType">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_request() :: #{}
+-type delete_account_request() :: #{}.
+
+%% Example:
+%% delete_account_response() :: #{}
+-type delete_account_response() :: #{}.
+
+%% Example:
+%% delete_events_configuration_request() :: #{}
+-type delete_events_configuration_request() :: #{}.
+
+%% Example:
+%% delete_phone_number_request() :: #{}
+-type delete_phone_number_request() :: #{}.
+
+%% Example:
+%% delete_room_membership_request() :: #{}
+-type delete_room_membership_request() :: #{}.
+
+%% Example:
+%% delete_room_request() :: #{}
+-type delete_room_request() :: #{}.
+
+%% Example:
+%% disassociate_phone_number_from_user_request() :: #{}
+-type disassociate_phone_number_from_user_request() :: #{}.
+
+%% Example:
+%% disassociate_phone_number_from_user_response() :: #{}
+-type disassociate_phone_number_from_user_response() :: #{}.
+
+
+%% Example:
+%% disassociate_signin_delegate_groups_from_account_request() :: #{
+%%   <<"GroupNames">> := list(string())
+%% }
+-type disassociate_signin_delegate_groups_from_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_signin_delegate_groups_from_account_response() :: #{}
+-type disassociate_signin_delegate_groups_from_account_response() :: #{}.
 
 
 %% Example:
@@ -238,58 +570,15 @@
 
 
 %% Example:
-%% business_calling_settings() :: #{
-%%   <<"CdrBucket">> => string()
+%% forbidden_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type business_calling_settings() :: #{binary() => any()}.
-
+-type forbidden_exception() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_phone_number_request() :: #{
-%%   <<"PhoneNumberIds">> := list(string())
-%% }
--type batch_delete_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_phone_number_order_response() :: #{
-%%   <<"PhoneNumberOrder">> => phone_number_order()
-%% }
--type create_phone_number_order_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error())
-%% }
--type batch_update_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_room_membership_response() :: #{
-%%   <<"Errors">> => list(member_error())
-%% }
--type batch_create_room_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"MemberId">> => string()
-%% }
--type member_error() :: #{binary() => any()}.
-
-%% Example:
-%% redact_room_message_request() :: #{}
--type redact_room_message_request() :: #{}.
-
-
-%% Example:
-%% batch_update_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type batch_update_phone_number_response() :: #{binary() => any()}.
+%% get_account_request() :: #{}
+-type get_account_request() :: #{}.
 
 
 %% Example:
@@ -299,12 +588,187 @@
 -type get_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_room_request() :: #{}
--type delete_room_request() :: #{}.
+%% get_account_settings_request() :: #{}
+-type get_account_settings_request() :: #{}.
+
 
 %% Example:
-%% reset_personal_pin_request() :: #{}
--type reset_personal_pin_request() :: #{}.
+%% get_account_settings_response() :: #{
+%%   <<"AccountSettings">> => account_settings()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_request() :: #{}
+-type get_bot_request() :: #{}.
+
+
+%% Example:
+%% get_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type get_bot_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_events_configuration_request() :: #{}
+-type get_events_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_events_configuration_response() :: #{
+%%   <<"EventsConfiguration">> => events_configuration()
+%% }
+-type get_events_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_global_settings_response() :: #{
+%%   <<"BusinessCalling">> => business_calling_settings(),
+%%   <<"VoiceConnector">> => voice_connector_settings()
+%% }
+-type get_global_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_order_request() :: #{}
+-type get_phone_number_order_request() :: #{}.
+
+
+%% Example:
+%% get_phone_number_order_response() :: #{
+%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% }
+-type get_phone_number_order_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_request() :: #{}
+-type get_phone_number_request() :: #{}.
+
+
+%% Example:
+%% get_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type get_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_phone_number_settings_response() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
+%% }
+-type get_phone_number_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_retention_settings_request() :: #{}
+-type get_retention_settings_request() :: #{}.
+
+
+%% Example:
+%% get_retention_settings_response() :: #{
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
+%%   <<"RetentionSettings">> => retention_settings()
+%% }
+-type get_retention_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_room_request() :: #{}
+-type get_room_request() :: #{}.
+
+
+%% Example:
+%% get_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type get_room_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_settings_request() :: #{}
+-type get_user_settings_request() :: #{}.
+
+
+%% Example:
+%% get_user_settings_response() :: #{
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type get_user_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite() :: #{
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailStatus">> => list(any()),
+%%   <<"InviteId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type invite() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_users_request() :: #{
+%%   <<"UserEmailList">> := list(string()),
+%%   <<"UserType">> => list(any())
+%% }
+-type invite_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_users_response() :: #{
+%%   <<"Invites">> => list(invite())
+%% }
+-type invite_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserEmail">> => string()
+%% }
+-type list_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_response() :: #{
+%%   <<"Accounts">> => list(account()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_response() :: #{
+%%   <<"Bots">> => list(bot()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_number_orders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_phone_number_orders_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,28 +778,33 @@
 %% }
 -type list_phone_number_orders_response() :: #{binary() => any()}.
 
-%% Example:
-%% redact_conversation_message_response() :: #{}
--type redact_conversation_message_response() :: #{}.
-
 
 %% Example:
-%% room() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RoomId">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% list_phone_numbers_request() :: #{
+%%   <<"FilterName">> => list(any()),
+%%   <<"FilterValue">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type room() :: #{binary() => any()}.
+-type list_phone_numbers_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_unsuspend_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error())
+%% list_phone_numbers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number())
 %% }
--type batch_unsuspend_user_response() :: #{binary() => any()}.
+-type list_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_room_memberships_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_room_memberships_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,26 +816,12 @@
 
 
 %% Example:
-%% update_user_response() :: #{
-%%   <<"User">> => user()
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_country() :: #{
-%%   <<"CountryCode">> => string(),
-%%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
-%% }
--type phone_number_country() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_response() :: #{
-%%   <<"E164PhoneNumbers">> => list(string()),
+%% list_rooms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
--type search_available_phone_numbers_response() :: #{binary() => any()}.
+-type list_rooms_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,95 +831,89 @@
 %% }
 -type list_rooms_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_account_settings_request() :: #{}
--type get_account_settings_request() :: #{}.
-
 
 %% Example:
-%% update_phone_number_settings_request() :: #{
-%%   <<"CallingName">> := string()
+%% list_supported_phone_number_countries_request() :: #{
+%%   <<"ProductType">> := list(any())
 %% }
--type update_phone_number_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_bot_request() :: #{}
--type get_bot_request() :: #{}.
+-type list_supported_phone_number_countries_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% list_supported_phone_number_countries_response() :: #{
+%%   <<"PhoneNumberCountries">> => list(phone_number_country())
 %% }
--type service_failure_exception() :: #{binary() => any()}.
+-type list_supported_phone_number_countries_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_account_settings_response() :: #{
-%%   <<"AccountSettings">> => account_settings()
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserEmail">> => string(),
+%%   <<"UserType">> => list(any())
 %% }
--type get_account_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_phone_number_request() :: #{}
--type restore_phone_number_request() :: #{}.
+-type list_users_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user())
 %% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bot_response() :: #{
-%%   <<"Bot">> => bot()
-%% }
--type get_bot_response() :: #{binary() => any()}.
+-type list_users_response() :: #{binary() => any()}.
 
 %% Example:
 %% logout_user_request() :: #{}
 -type logout_user_request() :: #{}.
 
 %% Example:
-%% update_account_settings_response() :: #{}
--type update_account_settings_response() :: #{}.
+%% logout_user_response() :: #{}
+-type logout_user_response() :: #{}.
 
 
 %% Example:
-%% telephony_settings() :: #{
-%%   <<"InboundCalling">> => boolean(),
-%%   <<"OutboundCalling">> => boolean(),
-%%   <<"SMS">> => boolean()
+%% member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FullName">> => string(),
+%%   <<"MemberId">> => string(),
+%%   <<"MemberType">> => list(any())
 %% }
--type telephony_settings() :: #{binary() => any()}.
+-type member() :: #{binary() => any()}.
 
 
 %% Example:
-%% phone_number_association() :: #{
-%%   <<"AssociatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
+%% member_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"MemberId">> => string()
 %% }
--type phone_number_association() :: #{binary() => any()}.
+-type member_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_user_response() :: #{
-%%   <<"User">> => user()
+%% membership_item() :: #{
+%%   <<"MemberId">> => string(),
+%%   <<"Role">> => list(any())
 %% }
--type get_user_response() :: #{binary() => any()}.
+-type membership_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% unauthorized_client_exception() :: #{
+%% not_found_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
--type unauthorized_client_exception() :: #{binary() => any()}.
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ordered_phone_number() :: #{
+%%   <<"E164PhoneNumber">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ordered_phone_number() :: #{binary() => any()}.
 
 
 %% Example:
@@ -485,259 +934,43 @@
 %% }
 -type phone_number() :: #{binary() => any()}.
 
-%% Example:
-%% get_phone_number_order_request() :: #{}
--type get_phone_number_order_request() :: #{}.
 
 %% Example:
-%% delete_room_membership_request() :: #{}
--type delete_room_membership_request() :: #{}.
-
-
-%% Example:
-%% update_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
+%% phone_number_association() :: #{
+%%   <<"AssociatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type update_phone_number_response() :: #{binary() => any()}.
+-type phone_number_association() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttled_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% phone_number_capabilities() :: #{
+%%   <<"InboundCall">> => boolean(),
+%%   <<"InboundMMS">> => boolean(),
+%%   <<"InboundSMS">> => boolean(),
+%%   <<"OutboundCall">> => boolean(),
+%%   <<"OutboundMMS">> => boolean(),
+%%   <<"OutboundSMS">> => boolean()
 %% }
--type throttled_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_events_configuration_request() :: #{}
--type delete_events_configuration_request() :: #{}.
+-type phone_number_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
-%% signin_delegate_group() :: #{
-%%   <<"GroupName">> => string()
+%% phone_number_country() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
 %% }
--type signin_delegate_group() :: #{binary() => any()}.
+-type phone_number_country() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_room_response() :: #{
-%%   <<"Room">> => room()
+%% phone_number_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PhoneNumberId">> => string()
 %% }
--type update_room_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_settings_response() :: #{
-%%   <<"UserSettings">> => user_settings()
-%% }
--type get_user_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ordered_phone_number() :: #{
-%%   <<"E164PhoneNumber">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type ordered_phone_number() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_phone_number_order_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()),
-%%   <<"ProductType">> := list(any())
-%% }
--type create_phone_number_order_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_connector_settings() :: #{
-%%   <<"CdrBucket">> => string()
-%% }
--type voice_connector_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
-%% }
--type restore_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_number_orders_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_phone_number_orders_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_retention_settings_response() :: #{
-%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
-%%   <<"RetentionSettings">> => retention_settings()
-%% }
--type put_retention_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_phone_number_countries_response() :: #{
-%%   <<"PhoneNumberCountries">> => list(phone_number_country())
-%% }
--type list_supported_phone_number_countries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_room_membership_request() :: #{
-%%   <<"MembershipItemList">> := list(membership_item())
-%% }
--type batch_create_room_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retention_settings() :: #{
-%%   <<"ConversationRetentionSettings">> => conversation_retention_settings(),
-%%   <<"RoomRetentionSettings">> => room_retention_settings()
-%% }
--type retention_settings() :: #{binary() => any()}.
-
-%% Example:
-%% associate_phone_number_with_user_response() :: #{}
--type associate_phone_number_with_user_response() :: #{}.
-
-
-%% Example:
-%% room_membership() :: #{
-%%   <<"InvitedBy">> => string(),
-%%   <<"Member">> => member(),
-%%   <<"Role">> => list(any()),
-%%   <<"RoomId">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type room_membership() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_bots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_room_memberships_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_room_memberships_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_accounts_response() :: #{
-%%   <<"Accounts">> => list(account()),
-%%   <<"NextToken">> => string()
-%% }
--type list_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_request() :: #{}
--type get_user_request() :: #{}.
-
-
-%% Example:
-%% associate_phone_number_with_user_request() :: #{
-%%   <<"E164PhoneNumber">> := string()
-%% }
--type associate_phone_number_with_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_settings_request() :: #{}
--type get_user_settings_request() :: #{}.
-
-
-%% Example:
-%% batch_delete_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type batch_delete_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_phone_number_order_response() :: #{
-%%   <<"PhoneNumberOrder">> => phone_number_order()
-%% }
--type get_phone_number_order_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_room_membership_response() :: #{
-%%   <<"RoomMembership">> => room_membership()
-%% }
--type create_room_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_request() :: #{
-%%   <<"FilterName">> => list(any()),
-%%   <<"FilterValue">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProductType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type list_phone_numbers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_phone_number_request() :: #{}
--type get_phone_number_request() :: #{}.
-
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AccountStatus">> => list(any()),
-%%   <<"AccountType">> => list(any()),
-%%   <<"AwsAccountId">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"DefaultLicense">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"SigninDelegateGroups">> => list(signin_delegate_group()),
-%%   <<"SupportedLicenses">> => list(list(any())())
-%% }
--type account() :: #{binary() => any()}.
+-type phone_number_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -753,43 +986,158 @@
 
 
 %% Example:
+%% put_events_configuration_request() :: #{
+%%   <<"LambdaFunctionArn">> => string(),
+%%   <<"OutboundEventsHTTPSEndpoint">> => string()
+%% }
+-type put_events_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_events_configuration_response() :: #{
+%%   <<"EventsConfiguration">> => events_configuration()
+%% }
+-type put_events_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_retention_settings_request() :: #{
 %%   <<"RetentionSettings">> := retention_settings()
 %% }
 -type put_retention_settings_request() :: #{binary() => any()}.
 
-%% Example:
-%% delete_phone_number_request() :: #{}
--type delete_phone_number_request() :: #{}.
-
 
 %% Example:
-%% disassociate_signin_delegate_groups_from_account_request() :: #{
-%%   <<"GroupNames">> := list(string())
+%% put_retention_settings_response() :: #{
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
+%%   <<"RetentionSettings">> => retention_settings()
 %% }
--type disassociate_signin_delegate_groups_from_account_request() :: #{binary() => any()}.
+-type put_retention_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% redact_conversation_message_request() :: #{}
+-type redact_conversation_message_request() :: #{}.
+
+%% Example:
+%% redact_conversation_message_response() :: #{}
+-type redact_conversation_message_response() :: #{}.
+
+%% Example:
+%% redact_room_message_request() :: #{}
+-type redact_room_message_request() :: #{}.
+
+%% Example:
+%% redact_room_message_response() :: #{}
+-type redact_room_message_response() :: #{}.
+
+%% Example:
+%% regenerate_security_token_request() :: #{}
+-type regenerate_security_token_request() :: #{}.
 
 
 %% Example:
-%% update_room_membership_request() :: #{
-%%   <<"Role">> => list(any())
+%% regenerate_security_token_response() :: #{
+%%   <<"Bot">> => bot()
 %% }
--type update_room_membership_request() :: #{binary() => any()}.
+-type regenerate_security_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_personal_pin_request() :: #{}
+-type reset_personal_pin_request() :: #{}.
 
 
 %% Example:
-%% get_global_settings_response() :: #{
-%%   <<"BusinessCalling">> => business_calling_settings(),
-%%   <<"VoiceConnector">> => voice_connector_settings()
+%% reset_personal_pin_response() :: #{
+%%   <<"User">> => user()
 %% }
--type get_global_settings_response() :: #{binary() => any()}.
+-type reset_personal_pin_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_account_settings_request() :: #{
-%%   <<"AccountSettings">> := account_settings()
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type update_account_settings_request() :: #{binary() => any()}.
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_phone_number_request() :: #{}
+-type restore_phone_number_request() :: #{}.
+
+
+%% Example:
+%% restore_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type restore_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% retention_settings() :: #{
+%%   <<"ConversationRetentionSettings">> => conversation_retention_settings(),
+%%   <<"RoomRetentionSettings">> => room_retention_settings()
+%% }
+-type retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% room() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoomId">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type room() :: #{binary() => any()}.
+
+
+%% Example:
+%% room_membership() :: #{
+%%   <<"InvitedBy">> => string(),
+%%   <<"Member">> => member(),
+%%   <<"Role">> => list(any()),
+%%   <<"RoomId">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type room_membership() :: #{binary() => any()}.
+
+
+%% Example:
+%% room_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type room_retention_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_request() :: #{
+%%   <<"AreaCode">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberType">> => list(any()),
+%%   <<"State">> => string(),
+%%   <<"TollFreePrefix">> => string()
+%% }
+-type search_available_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_response() :: #{
+%%   <<"E164PhoneNumbers">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_available_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -799,98 +1147,37 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
-%% Example:
-%% associate_signin_delegate_groups_with_account_response() :: #{}
--type associate_signin_delegate_groups_with_account_response() :: #{}.
-
 
 %% Example:
-%% get_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
+%% signin_delegate_group() :: #{
+%%   <<"GroupName">> => string()
 %% }
--type get_phone_number_response() :: #{binary() => any()}.
+-type signin_delegate_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_global_settings_request() :: #{
-%%   <<"BusinessCalling">> => business_calling_settings(),
-%%   <<"VoiceConnector">> => voice_connector_settings()
+%% telephony_settings() :: #{
+%%   <<"InboundCalling">> => boolean(),
+%%   <<"OutboundCalling">> => boolean(),
+%%   <<"SMS">> => boolean()
 %% }
--type update_global_settings_request() :: #{binary() => any()}.
+-type telephony_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_settings_request() :: #{
-%%   <<"UserSettings">> := user_settings()
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type update_user_settings_request() :: #{binary() => any()}.
+-type throttled_client_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_account_request() :: #{
-%%   <<"DefaultLicense">> => list(any()),
-%%   <<"Name">> => string()
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type update_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type user_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_request() :: #{}
--type delete_account_request() :: #{}.
-
-%% Example:
-%% redact_conversation_message_request() :: #{}
--type redact_conversation_message_request() :: #{}.
-
-%% Example:
-%% delete_account_response() :: #{}
--type delete_account_response() :: #{}.
-
-
-%% Example:
-%% alexa_for_business_metadata() :: #{
-%%   <<"AlexaForBusinessRoomArn">> => string(),
-%%   <<"IsAlexaForBusinessEnabled">> => boolean()
-%% }
--type alexa_for_business_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_account_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type create_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invite_users_response() :: #{
-%%   <<"Invites">> => list(invite())
-%% }
--type invite_users_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_room_request() :: #{}
--type get_room_request() :: #{}.
-
-
-%% Example:
-%% list_bots_response() :: #{
-%%   <<"Bots">> => list(bot()),
-%%   <<"NextToken">> => string()
-%% }
--type list_bots_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_phone_number_from_user_request() :: #{}
--type disassociate_phone_number_from_user_request() :: #{}.
+-type unauthorized_client_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -902,27 +1189,59 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% update_account_request() :: #{
+%%   <<"DefaultLicense">> => list(any()),
+%%   <<"Name">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type update_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_room_response() :: #{
-%%   <<"Room">> => room()
+%% update_account_response() :: #{
+%%   <<"Account">> => account()
 %% }
--type get_room_response() :: #{binary() => any()}.
+-type update_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% phone_number_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"PhoneNumberId">> => string()
+%% update_account_settings_request() :: #{
+%%   <<"AccountSettings">> := account_settings()
 %% }
--type phone_number_error() :: #{binary() => any()}.
+-type update_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_response() :: #{}
+-type update_account_settings_response() :: #{}.
+
+
+%% Example:
+%% update_bot_request() :: #{
+%%   <<"Disabled">> => boolean()
+%% }
+-type update_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bot_response() :: #{
+%%   <<"Bot">> => bot()
+%% }
+-type update_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_request() :: #{
+%%   <<"BusinessCalling">> => business_calling_settings(),
+%%   <<"VoiceConnector">> => voice_connector_settings()
+%% }
+-type update_global_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_request() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type update_phone_number_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -935,25 +1254,45 @@
 
 
 %% Example:
-%% account_settings() :: #{
-%%   <<"DisableRemoteControl">> => boolean(),
-%%   <<"EnableDialOut">> => boolean()
+%% update_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
 %% }
--type account_settings() :: #{binary() => any()}.
+-type update_phone_number_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_suspend_user_request() :: #{
-%%   <<"UserIdList">> := list(string())
+%% update_phone_number_settings_request() :: #{
+%%   <<"CallingName">> := string()
 %% }
--type batch_suspend_user_request() :: #{binary() => any()}.
+-type update_phone_number_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_bot_request() :: #{
-%%   <<"Disabled">> => boolean()
+%% update_room_membership_request() :: #{
+%%   <<"Role">> => list(any())
 %% }
--type update_bot_request() :: #{binary() => any()}.
+-type update_room_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_membership_response() :: #{
+%%   <<"RoomMembership">> => room_membership()
+%% }
+-type update_room_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_room_response() :: #{
+%%   <<"Room">> => room()
+%% }
+-type update_room_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -974,41 +1313,19 @@
 %% }
 -type update_user_request_item() :: #{binary() => any()}.
 
-%% Example:
-%% get_events_configuration_request() :: #{}
--type get_events_configuration_request() :: #{}.
-
 
 %% Example:
-%% create_room_membership_request() :: #{
-%%   <<"MemberId">> := string(),
-%%   <<"Role">> => list(any())
+%% update_user_response() :: #{
+%%   <<"User">> => user()
 %% }
--type create_room_membership_request() :: #{binary() => any()}.
+-type update_user_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_room_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string()
+%% update_user_settings_request() :: #{
+%%   <<"UserSettings">> := user_settings()
 %% }
--type create_room_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_unsuspend_user_request() :: #{
-%%   <<"UserIdList">> := list(string())
-%% }
--type batch_unsuspend_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rooms_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberId">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_rooms_request() :: #{binary() => any()}.
+-type update_user_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1031,117 +1348,12 @@
 
 
 %% Example:
-%% invite_users_request() :: #{
-%%   <<"UserEmailList">> := list(string()),
-%%   <<"UserType">> => list(any())
+%% user_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"UserId">> => string()
 %% }
--type invite_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_phone_number_settings_response() :: #{
-%%   <<"CallingName">> => string(),
-%%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
-%% }
--type get_phone_number_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_item() :: #{
-%%   <<"MemberId">> => string(),
-%%   <<"Role">> => list(any())
-%% }
--type membership_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_request() :: #{
-%%   <<"DisplayName">> := string(),
-%%   <<"Domain">> => string()
-%% }
--type create_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% regenerate_security_token_response() :: #{
-%%   <<"Bot">> => bot()
-%% }
--type regenerate_security_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FullName">> => string(),
-%%   <<"MemberId">> => string(),
-%%   <<"MemberType">> => list(any())
-%% }
--type member() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserEmail">> => string(),
-%%   <<"UserType">> => list(any())
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_events_configuration_response() :: #{
-%%   <<"EventsConfiguration">> => events_configuration()
-%% }
--type get_events_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_response() :: #{
-%%   <<"Bot">> => bot()
-%% }
--type create_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_account_response() :: #{
-%%   <<"Account">> => account()
-%% }
--type create_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_personal_pin_response() :: #{
-%%   <<"User">> => user()
-%% }
--type reset_personal_pin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number())
-%% }
--type list_phone_numbers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invite() :: #{
-%%   <<"EmailAddress">> => string(),
-%%   <<"EmailStatus">> => list(any()),
-%%   <<"InviteId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type invite() :: #{binary() => any()}.
+-type user_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1152,787 +1364,575 @@
 
 
 %% Example:
-%% update_room_membership_response() :: #{
-%%   <<"RoomMembership">> => room_membership()
+%% voice_connector_settings() :: #{
+%%   <<"CdrBucket">> => string()
 %% }
--type update_room_membership_response() :: #{binary() => any()}.
-
-%% Example:
-%% logout_user_response() :: #{}
--type logout_user_response() :: #{}.
-
-%% Example:
-%% disassociate_phone_number_from_user_response() :: #{}
--type disassociate_phone_number_from_user_response() :: #{}.
-
-
-%% Example:
-%% associate_signin_delegate_groups_with_account_request() :: #{
-%%   <<"SigninDelegateGroups">> := list(signin_delegate_group())
-%% }
--type associate_signin_delegate_groups_with_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_capabilities() :: #{
-%%   <<"InboundCall">> => boolean(),
-%%   <<"InboundMMS">> => boolean(),
-%%   <<"InboundSMS">> => boolean(),
-%%   <<"OutboundCall">> => boolean(),
-%%   <<"OutboundMMS">> => boolean(),
-%%   <<"OutboundSMS">> => boolean()
-%% }
--type phone_number_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot() :: #{
-%%   <<"BotEmail">> => string(),
-%%   <<"BotId">> => string(),
-%%   <<"BotType">> => list(any()),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Disabled">> => boolean(),
-%%   <<"DisplayName">> => string(),
-%%   <<"SecurityToken">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"UserId">> => string()
-%% }
--type bot() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserEmail">> => string()
-%% }
--type list_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_phone_number_request() :: #{
-%%   <<"CallingName">> => string(),
-%%   <<"ProductType">> => list(any())
-%% }
--type update_phone_number_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_request() :: #{}
--type get_account_request() :: #{}.
-
-%% Example:
-%% redact_room_message_response() :: #{}
--type redact_room_message_response() :: #{}.
-
-
-%% Example:
-%% put_events_configuration_request() :: #{
-%%   <<"LambdaFunctionArn">> => string(),
-%%   <<"OutboundEventsHTTPSEndpoint">> => string()
-%% }
--type put_events_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_retention_settings_response() :: #{
-%%   <<"InitiateDeletionTimestamp">> => non_neg_integer(),
-%%   <<"RetentionSettings">> => retention_settings()
-%% }
--type get_retention_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_room_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_room_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_retention_settings_request() :: #{}
--type get_retention_settings_request() :: #{}.
-
-
-%% Example:
-%% update_account_response() :: #{
-%%   <<"Account">> => account()
-%% }
--type update_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_response() :: #{
-%%   <<"User">> => user()
-%% }
--type create_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_response() :: #{
-%%   <<"Bot">> => bot()
-%% }
--type update_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_suspend_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error())
-%% }
--type batch_suspend_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_phone_number_request() :: #{
-%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
-%% }
--type batch_update_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_request() :: #{
-%%   <<"AreaCode">> => string(),
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberType">> => list(any()),
-%%   <<"State">> => string(),
-%%   <<"TollFreePrefix">> => string()
-%% }
--type search_available_phone_numbers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_events_configuration_response() :: #{
-%%   <<"EventsConfiguration">> => events_configuration()
-%% }
--type put_events_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_meeting_dial_out_request() :: #{
-%%   <<"FromPhoneNumber">> := string(),
-%%   <<"JoinToken">> := string(),
-%%   <<"ToPhoneNumber">> := string()
-%% }
--type create_meeting_dial_out_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_room_response() :: #{
-%%   <<"Room">> => room()
-%% }
--type create_room_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% room_retention_settings() :: #{
-%%   <<"RetentionDays">> => integer()
-%% }
--type room_retention_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_phone_number_countries_request() :: #{
-%%   <<"ProductType">> := list(any())
-%% }
--type list_supported_phone_number_countries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_retention_settings() :: #{
-%%   <<"RetentionDays">> => integer()
-%% }
--type conversation_retention_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"Email">> => string(),
-%%   <<"UserType">> => list(any()),
-%%   <<"Username">> => string()
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_user_request() :: #{
-%%   <<"UpdateUserRequestItems">> := list(update_user_request_item())
-%% }
--type batch_update_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% regenerate_security_token_request() :: #{}
--type regenerate_security_token_request() :: #{}.
-
-%% Example:
-%% disassociate_signin_delegate_groups_from_account_response() :: #{}
--type disassociate_signin_delegate_groups_from_account_response() :: #{}.
+-type voice_connector_settings() :: #{binary() => any()}.
 
 -type associate_phone_number_with_user_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type associate_signin_delegate_groups_with_account_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_create_room_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_delete_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_suspend_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_unsuspend_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_update_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_update_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_account_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_meeting_dial_out_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_phone_number_order_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_room_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_room_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_account_errors() ::
-    bad_request_exception() | 
     unprocessable_entity_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_events_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_room_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_room_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type disassociate_phone_number_from_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type disassociate_signin_delegate_groups_from_account_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_account_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_account_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_events_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_global_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_order_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_retention_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_room_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_user_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type invite_users_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_accounts_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_bots_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_phone_number_orders_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_phone_numbers_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_room_memberships_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_rooms_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_supported_phone_number_countries_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_users_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type logout_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_events_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_retention_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type redact_conversation_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type redact_room_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type regenerate_security_token_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type reset_personal_pin_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type restore_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type search_available_phone_numbers_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_account_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_account_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_global_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_phone_number_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_room_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_room_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_user_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

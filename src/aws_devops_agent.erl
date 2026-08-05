@@ -162,6 +162,509 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_space() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type agent_space() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetType">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_file() :: #{
+%%   <<"content">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_file_content() :: #{
+%%   <<"body">> => list(),
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string()
+%% }
+-type asset_file_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_file_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"metadata">> => [any()],
+%%   <<"path">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_file_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_source_url_content() :: #{
+%%   <<"url">> => string()
+%% }
+-type asset_source_url_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_type_summary() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"description">> => [string()]
+%% }
+-type asset_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_version_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [integer()]
+%% }
+-type asset_version_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_zip_content() :: #{
+%%   <<"zipFile">> => binary()
+%% }
+-type asset_zip_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_service_input() :: #{
+%%   <<"capabilities">> => map(),
+%%   <<"configuration">> := list(),
+%%   <<"serviceId">> := string()
+%% }
+-type associate_service_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_service_output() :: #{
+%%   <<"association">> => association(),
+%%   <<"webhook">> => generic_webhook()
+%% }
+-type associate_service_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% association() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"capabilities">> => map(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"serviceId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type association() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_configuration() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"accountType">> => list(any()),
+%%   <<"assumableRoleArn">> => string()
+%% }
+-type aws_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_configuration() :: #{
+%%   <<"subscriptionId">> => [string()]
+%% }
+-type azure_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_dev_ops_configuration() :: #{
+%%   <<"organizationName">> => [string()],
+%%   <<"projectId">> => [string()],
+%%   <<"projectName">> => [string()]
+%% }
+-type azure_dev_ops_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% capability_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type capability_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_execution() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionId">> => string(),
+%%   <<"summary">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type chat_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_size_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type content_size_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_space_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_agent_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_space_output() :: #{
+%%   <<"agentSpace">> => agent_space(),
+%%   <<"tags">> => map()
+%% }
+-type create_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_file_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type create_asset_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type create_asset_file_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_request() :: #{
+%%   <<"assetType">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type create_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type create_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backlog_task_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"priority">> := list(any()),
+%%   <<"reference">> => reference_input(),
+%%   <<"taskType">> := list(any()),
+%%   <<"title">> := string()
+%% }
+-type create_backlog_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backlog_task_response() :: #{
+%%   <<"task">> => task()
+%% }
+-type create_backlog_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_chat_request() :: #{
+%%   <<"userId">> => string(),
+%%   <<"userType">> => list(any())
+%% }
+-type create_chat_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_chat_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionId">> => string()
+%% }
+-type create_chat_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_connection_input() :: #{
+%%   <<"mode">> := list(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_private_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type create_private_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trigger_request() :: #{
+%%   <<"action">> := any(),
+%%   <<"clientToken">> => [string()],
+%%   <<"condition">> := list(),
+%%   <<"status">> => string(),
+%%   <<"type">> := string()
+%% }
+-type create_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trigger_response() :: #{
+%%   <<"trigger">> => trigger()
+%% }
+-type create_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% datadog_service_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type datadog_service_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_agent_space_input() :: #{}
+-type delete_agent_space_input() :: #{}.
+
+%% Example:
+%% delete_agent_space_output() :: #{}
+-type delete_agent_space_output() :: #{}.
+
+%% Example:
+%% delete_asset_file_request() :: #{}
+-type delete_asset_file_request() :: #{}.
+
+%% Example:
+%% delete_asset_file_response() :: #{}
+-type delete_asset_file_response() :: #{}.
+
+%% Example:
+%% delete_asset_request() :: #{}
+-type delete_asset_request() :: #{}.
+
+%% Example:
+%% delete_asset_response() :: #{}
+-type delete_asset_response() :: #{}.
+
+%% Example:
+%% delete_private_connection_input() :: #{}
+-type delete_private_connection_input() :: #{}.
+
+
+%% Example:
+%% delete_private_connection_output() :: #{
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_private_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trigger_request() :: #{}
+-type delete_trigger_request() :: #{}.
+
+%% Example:
+%% delete_trigger_response() :: #{}
+-type delete_trigger_response() :: #{}.
+
+%% Example:
+%% deregister_service_input() :: #{}
+-type deregister_service_input() :: #{}.
+
+%% Example:
+%% deregister_service_output() :: #{}
+-type deregister_service_output() :: #{}.
+
+%% Example:
+%% describe_private_connection_input() :: #{}
+-type describe_private_connection_input() :: #{}.
+
+
+%% Example:
+%% describe_private_connection_output() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type describe_private_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_operator_app_input() :: #{
+%%   <<"authFlow">> => list(any())
+%% }
+-type disable_operator_app_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_input() :: #{}
+-type disassociate_service_input() :: #{}.
+
+%% Example:
+%% disassociate_service_output() :: #{}
+-type disassociate_service_output() :: #{}.
+
+
+%% Example:
+%% dynatrace_configuration() :: #{
+%%   <<"envId">> => [string()],
+%%   <<"resources">> => list([string()]())
+%% }
+-type dynatrace_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynatrace_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map()
+%% }
+-type dynatrace_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynatrace_service_details() :: #{
+%%   <<"accountUrn">> => [string()],
+%%   <<"authorizationConfig">> => list()
+%% }
+-type dynatrace_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_operator_app_input() :: #{
+%%   <<"authFlow">> := list(any()),
+%%   <<"idcInstanceArn">> => [string()],
+%%   <<"idpClientId">> => string(),
+%%   <<"idpClientSecret">> => string(),
+%%   <<"issuerUrl">> => [string()],
+%%   <<"operatorAppRoleArn">> := string(),
+%%   <<"provider">> => [string()]
+%% }
+-type enable_operator_app_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_operator_app_output() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"iam">> => iam_auth_configuration(),
+%%   <<"idc">> => idc_auth_configuration(),
+%%   <<"idp">> => idp_auth_configuration(),
+%%   <<"operatorAppUrl">> => string()
+%% }
+-type enable_operator_app_output() :: #{binary() => any()}.
+
+%% Example:
+%% event_channel_configuration() :: #{}
+-type event_channel_configuration() :: #{}.
+
+
+%% Example:
+%% event_channel_details() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type event_channel_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"agentSubTask">> => [string()],
+%%   <<"agentType">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionId">> => [string()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"parentExecutionId">> => [string()],
+%%   <<"uid">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% generic_webhook() :: #{
+%%   <<"apiKey">> => string(),
+%%   <<"webhookId">> => [string()],
+%%   <<"webhookSecret">> => string(),
+%%   <<"webhookType">> => list(any()),
+%%   <<"webhookUrl">> => [string()]
+%% }
+-type generic_webhook() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_usage_input() :: #{}
+-type get_account_usage_input() :: #{}.
+
+
+%% Example:
 %% get_account_usage_output() :: #{
 %%   <<"monthlyAccountEvaluationHours">> => usage_metric(),
 %%   <<"monthlyAccountInvestigationHours">> => usage_metric(),
@@ -172,6 +675,580 @@
 %% }
 -type get_account_usage_output() :: #{binary() => any()}.
 
+%% Example:
+%% get_agent_space_input() :: #{}
+-type get_agent_space_input() :: #{}.
+
+
+%% Example:
+%% get_agent_space_output() :: #{
+%%   <<"agentSpace">> => agent_space(),
+%%   <<"tags">> => map()
+%% }
+-type get_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_content_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_content_response() :: #{
+%%   <<"content">> => asset_zip_content(),
+%%   <<"version">> => [integer()]
+%% }
+-type get_asset_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_file_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type get_asset_file_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_request() :: #{
+%%   <<"assetVersion">> => [integer()]
+%% }
+-type get_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type get_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_association_input() :: #{}
+-type get_association_input() :: #{}.
+
+
+%% Example:
+%% get_association_output() :: #{
+%%   <<"association">> => association()
+%% }
+-type get_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backlog_task_request() :: #{}
+-type get_backlog_task_request() :: #{}.
+
+
+%% Example:
+%% get_backlog_task_response() :: #{
+%%   <<"task">> => task()
+%% }
+-type get_backlog_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_operator_app_input() :: #{}
+-type get_operator_app_input() :: #{}.
+
+
+%% Example:
+%% get_operator_app_output() :: #{
+%%   <<"iam">> => iam_auth_configuration(),
+%%   <<"idc">> => idc_auth_configuration(),
+%%   <<"idp">> => idp_auth_configuration(),
+%%   <<"operatorAppUrl">> => string()
+%% }
+-type get_operator_app_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendation_request() :: #{
+%%   <<"recommendationVersion">> => [float()]
+%% }
+-type get_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendation_response() :: #{
+%%   <<"recommendation">> => recommendation()
+%% }
+-type get_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_input() :: #{}
+-type get_service_input() :: #{}.
+
+
+%% Example:
+%% get_service_output() :: #{
+%%   <<"service">> => registered_service(),
+%%   <<"tags">> => map()
+%% }
+-type get_service_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_trigger_request() :: #{}
+-type get_trigger_request() :: #{}.
+
+
+%% Example:
+%% get_trigger_response() :: #{
+%%   <<"trigger">> => trigger()
+%% }
+-type get_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_configuration() :: #{
+%%   <<"instanceIdentifier">> => [string()],
+%%   <<"owner">> => [string()],
+%%   <<"ownerType">> => list(any()),
+%%   <<"repoId">> => [string()],
+%%   <<"repoName">> => [string()],
+%%   <<"runtimeRoleArn">> => string()
+%% }
+-type git_hub_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_configuration() :: #{
+%%   <<"instanceIdentifier">> => [string()],
+%%   <<"projectId">> => [string()],
+%%   <<"projectPath">> => [string()],
+%%   <<"runtimeRoleArn">> => string()
+%% }
+-type git_lab_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_lab_details() :: #{
+%%   <<"groupId">> => [string()],
+%%   <<"targetUrl">> => [string()],
+%%   <<"tokenType">> => list(any()),
+%%   <<"tokenValue">> => string()
+%% }
+-type git_lab_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% goal() :: #{
+%%   <<"agentSpaceArn">> => [string()],
+%%   <<"content">> => goal_content(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"evaluationSchedule">> => goal_schedule(),
+%%   <<"goalId">> => [string()],
+%%   <<"goalType">> => list(any()),
+%%   <<"lastEvaluatedAt">> => non_neg_integer(),
+%%   <<"lastSuccessfulTaskId">> => [string()],
+%%   <<"lastTaskId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => [integer()]
+%% }
+-type goal() :: #{binary() => any()}.
+
+
+%% Example:
+%% goal_content() :: #{
+%%   <<"description">> => [string()],
+%%   <<"objectives">> => [string()]
+%% }
+-type goal_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% goal_schedule() :: #{
+%%   <<"expression">> => [string()],
+%%   <<"state">> => list(any())
+%% }
+-type goal_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% goal_schedule_input() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type goal_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% grafana_service_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type grafana_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_auth_configuration() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"operatorAppRoleArn">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type iam_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% idc_auth_configuration() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"idcApplicationArn">> => [string()],
+%%   <<"idcInstanceArn">> => [string()],
+%%   <<"operatorAppRoleArn">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type idc_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_service_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"underlyingErrorCode">> => [string()]
+%% }
+-type identity_center_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_auth_configuration() :: #{
+%%   <<"clientId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"issuerUrl">> => [string()],
+%%   <<"operatorAppRoleArn">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type idp_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% journal_record() :: #{
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"content">> => [any()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionId">> => [string()],
+%%   <<"recordId">> => [string()],
+%%   <<"recordType">> => [string()],
+%%   <<"userReference">> => user_reference()
+%% }
+-type journal_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_spaces_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_spaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_spaces_output() :: #{
+%%   <<"agentSpaces">> => list(agent_space()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_spaces_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_files_request() :: #{
+%%   <<"assetVersion">> => [integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_files_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_files_response() :: #{
+%%   <<"items">> => list(asset_file_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_files_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_types_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_types_response() :: #{
+%%   <<"items">> => list(asset_type_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_versions_response() :: #{
+%%   <<"items">> => list(asset_version_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_request() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"updatedAfter">> => [non_neg_integer()],
+%%   <<"updatedBefore">> => [non_neg_integer()]
+%% }
+-type list_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_response() :: #{
+%%   <<"items">> => list(asset()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_input() :: #{
+%%   <<"filterServiceTypes">> => [string()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_output() :: #{
+%%   <<"associations">> => list(association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backlog_tasks_request() :: #{
+%%   <<"filter">> => task_filter(),
+%%   <<"limit">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"order">> => list(any()),
+%%   <<"sortField">> => list(any())
+%% }
+-type list_backlog_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backlog_tasks_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"tasks">> => list(task())
+%% }
+-type list_backlog_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chats_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"userId">> => string()
+%% }
+-type list_chats_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chats_response() :: #{
+%%   <<"executions">> => list(chat_execution()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_chats_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_request() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"taskId">> := string()
+%% }
+-type list_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_response() :: #{
+%%   <<"executions">> => list(execution()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_goals_request() :: #{
+%%   <<"goalType">> => list(any()),
+%%   <<"limit">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_goals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_goals_response() :: #{
+%%   <<"goals">> => list(goal()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_goals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_records_request() :: #{
+%%   <<"executionId">> := string(),
+%%   <<"limit">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"order">> => list(any()),
+%%   <<"recordType">> => [string()]
+%% }
+-type list_journal_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journal_records_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"records">> => list(journal_record())
+%% }
+-type list_journal_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_messages_request() :: #{
+%%   <<"executionId">> := string()
+%% }
+-type list_pending_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_messages_response() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionId">> => [string()],
+%%   <<"messages">> => list(pending_message())
+%% }
+-type list_pending_messages_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_private_connections_input() :: #{}
+-type list_private_connections_input() :: #{}.
+
+
+%% Example:
+%% list_private_connections_output() :: #{
+%%   <<"privateConnections">> => list(private_connection_summary())
+%% }
+-type list_private_connections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"goalId">> => string(),
+%%   <<"limit">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"priority">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendations">> => list(recommendation())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_input() :: #{
+%%   <<"filterServiceType">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_services_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"services">> => list(registered_service())
+%% }
+-type list_services_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_triggers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_triggers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_triggers_response() :: #{
+%%   <<"items">> => list(trigger()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_triggers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_webhooks_input() :: #{}
+-type list_webhooks_input() :: #{}.
+
+
+%% Example:
+%% list_webhooks_output() :: #{
+%%   <<"webhooks">> => list(webhook())
+%% }
+-type list_webhooks_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% m_c_p_server_api_key_config() :: #{
@@ -181,21 +1258,21 @@
 %% }
 -type m_c_p_server_api_key_config() :: #{binary() => any()}.
 
-%% Example:
-%% delete_asset_file_request() :: #{}
--type delete_asset_file_request() :: #{}.
-
 
 %% Example:
-%% create_chat_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionId">> => string()
+%% m_c_p_server_authorization_discovery_config() :: #{
+%%   <<"returnToEndpoint">> => [string()]
 %% }
--type create_chat_response() :: #{binary() => any()}.
+-type m_c_p_server_authorization_discovery_config() :: #{binary() => any()}.
+
 
 %% Example:
-%% disassociate_service_input() :: #{}
--type disassociate_service_input() :: #{}.
+%% m_c_p_server_bearer_token_config() :: #{
+%%   <<"authorizationHeader">> => [string()],
+%%   <<"tokenName">> => [string()],
+%%   <<"tokenValue">> => string()
+%% }
+-type m_c_p_server_bearer_token_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -203,6 +1280,281 @@
 %%   <<"tools">> => list([string()]())
 %% }
 -type m_c_p_server_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% m_c_p_server_datadog_configuration() :: #{}
+-type m_c_p_server_datadog_configuration() :: #{}.
+
+
+%% Example:
+%% m_c_p_server_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type m_c_p_server_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_grafana_configuration() :: #{
+%%   <<"endpoint">> => [string()],
+%%   <<"organizationId">> => [string()],
+%%   <<"tools">> => list([string()]())
+%% }
+-type m_c_p_server_grafana_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_new_relic_configuration() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"endpoint">> => [string()]
+%% }
+-type m_c_p_server_new_relic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_o_auth3_l_o_config() :: #{
+%%   <<"authorizationUrl">> => [string()],
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map(),
+%%   <<"exchangeUrl">> => [string()],
+%%   <<"returnToEndpoint">> => [string()],
+%%   <<"scopes">> => list(string()),
+%%   <<"supportCodeChallenge">> => [boolean()]
+%% }
+-type m_c_p_server_o_auth3_l_o_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map(),
+%%   <<"exchangeUrl">> => [string()],
+%%   <<"scopes">> => list(string())
+%% }
+-type m_c_p_server_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_sig_v4_authorization_config() :: #{
+%%   <<"customHeaders">> => map(),
+%%   <<"mcpRoleArn">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => [string()],
+%%   <<"service">> => [string()]
+%% }
+-type m_c_p_server_sig_v4_authorization_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_sig_v4_configuration() :: #{
+%%   <<"tools">> => list([string()]())
+%% }
+-type m_c_p_server_sig_v4_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_server_sig_v4_service_details() :: #{
+%%   <<"authorizationConfig">> => m_c_p_server_sig_v4_authorization_config(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type m_c_p_server_sig_v4_service_details() :: #{binary() => any()}.
+
+%% Example:
+%% m_c_p_server_splunk_configuration() :: #{}
+-type m_c_p_server_splunk_configuration() :: #{}.
+
+
+%% Example:
+%% new_relic_api_key_config() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"alertPolicyIds">> => list([string()]()),
+%%   <<"apiKey">> => string(),
+%%   <<"applicationIds">> => list([string()]()),
+%%   <<"entityGuids">> => list([string()]()),
+%%   <<"region">> => list(any())
+%% }
+-type new_relic_api_key_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% new_relic_service_details() :: #{
+%%   <<"authorizationConfig">> => list()
+%% }
+-type new_relic_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_additional_step_details() :: #{
+%%   <<"authorizationUrl">> => [string()]
+%% }
+-type o_auth_additional_step_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_configuration() :: #{
+%%   <<"customerEmail">> => string(),
+%%   <<"services">> => list([string()]())
+%% }
+-type pager_duty_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"scopes">> => list([string()]())
+%% }
+-type pager_duty_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map()
+%% }
+-type pager_duty_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_message() :: #{
+%%   <<"message">> => list(),
+%%   <<"messageId">> => [string()]
+%% }
+-type pending_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_connection_summary() :: #{
+%%   <<"certificateExpiryTime">> => [non_neg_integer()],
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"failureMessage">> => string(),
+%%   <<"hostAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfigurationId">> => string(),
+%%   <<"resourceGatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"vpcId">> => string()
+%% }
+-type private_connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"additionalContext">> => [string()],
+%%   <<"agentSpaceArn">> => [string()],
+%%   <<"content">> => recommendation_content(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"goalId">> => [string()],
+%%   <<"goalVersion">> => [float()],
+%%   <<"priority">> => list(any()),
+%%   <<"rankPosition">> => [integer()],
+%%   <<"rankedAt">> => non_neg_integer(),
+%%   <<"recommendationId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => [float()]
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_content() :: #{
+%%   <<"spec">> => [string()],
+%%   <<"summary">> => [string()]
+%% }
+-type recommendation_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_input() :: #{
+%%   <<"associationId">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"referenceUrl">> => [string()],
+%%   <<"system">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type reference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_output() :: #{
+%%   <<"associationId">> => [string()],
+%%   <<"referenceId">> => [string()],
+%%   <<"referenceUrl">> => [string()],
+%%   <<"system">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type reference_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_service_input() :: #{
+%%   <<"exchangeUrlPrivateConnectionName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"privateConnectionName">> => string(),
+%%   <<"serviceDetails">> := list(),
+%%   <<"tags">> => map(),
+%%   <<"targetUrlPrivateConnectionName">> => string()
+%% }
+-type register_service_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_service_output() :: #{
+%%   <<"additionalStep">> => list(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"serviceId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type register_service_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_azure_dev_ops_service_details() :: #{
+%%   <<"organizationName">> => [string()]
+%% }
+-type registered_azure_dev_ops_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_azure_identity_details() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"tenantId">> => string(),
+%%   <<"webIdentityRoleArn">> => string(),
+%%   <<"webIdentityTokenAudiences">> => list([string()]())
+%% }
+-type registered_azure_identity_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_git_lab_service_details() :: #{
+%%   <<"groupId">> => [string()],
+%%   <<"targetUrl">> => [string()],
+%%   <<"tokenType">> => list(any())
+%% }
+-type registered_git_lab_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_github_service_details() :: #{
+%%   <<"owner">> => [string()],
+%%   <<"ownerType">> => list(any()),
+%%   <<"targetUrl">> => [string()]
+%% }
+-type registered_github_service_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,9 +1564,408 @@
 %% }
 -type registered_grafana_server_details() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_service_input() :: #{}
--type get_service_input() :: #{}.
+%% registered_m_c_p_server_details() :: #{
+%%   <<"apiKeyHeader">> => [string()],
+%%   <<"authorizationMethod">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type registered_m_c_p_server_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_m_c_p_server_sig_v4_details() :: #{
+%%   <<"customHeaders">> => map(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"mcpRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => [string()],
+%%   <<"service">> => [string()]
+%% }
+-type registered_m_c_p_server_sig_v4_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_new_relic_details() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"region">> => list(any())
+%% }
+-type registered_new_relic_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_pager_duty_details() :: #{
+%%   <<"scopes">> => list([string()]())
+%% }
+-type registered_pager_duty_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_remote_agent_details() :: #{
+%%   <<"apiKeyHeader">> => [string()],
+%%   <<"authorizationMethod">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type registered_remote_agent_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_remote_agent_sig_v4_details() :: #{
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type registered_remote_agent_sig_v4_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_service() :: #{
+%%   <<"accessibleResources">> => list([any()]()),
+%%   <<"additionalServiceDetails">> => list(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"privateConnectionName">> => string(),
+%%   <<"serviceId">> => string(),
+%%   <<"serviceType">> => list(any())
+%% }
+-type registered_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_service_now_details() :: #{
+%%   <<"instanceUrl">> => string()
+%% }
+-type registered_service_now_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% registered_slack_service_details() :: #{
+%%   <<"teamId">> => [string()],
+%%   <<"teamName">> => [string()]
+%% }
+-type registered_slack_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_api_key_config() :: #{
+%%   <<"apiKeyHeader">> => [string()],
+%%   <<"apiKeyName">> => [string()],
+%%   <<"apiKeyValue">> => string()
+%% }
+-type remote_agent_api_key_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_bearer_token_config() :: #{
+%%   <<"authorizationHeader">> => [string()],
+%%   <<"tokenName">> => [string()],
+%%   <<"tokenValue">> => string()
+%% }
+-type remote_agent_bearer_token_config() :: #{binary() => any()}.
+
+%% Example:
+%% remote_agent_configuration() :: #{}
+-type remote_agent_configuration() :: #{}.
+
+
+%% Example:
+%% remote_agent_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map(),
+%%   <<"exchangeUrl">> => [string()],
+%%   <<"scopes">> => list(string())
+%% }
+-type remote_agent_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_service_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type remote_agent_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_agent_sig_v4_authorization_config() :: #{
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => [string()]
+%% }
+-type remote_agent_sig_v4_authorization_config() :: #{binary() => any()}.
+
+%% Example:
+%% remote_agent_sig_v4_configuration() :: #{}
+-type remote_agent_sig_v4_configuration() :: #{}.
+
+
+%% Example:
+%% remote_agent_sig_v4_service_details() :: #{
+%%   <<"authorizationConfig">> => remote_agent_sig_v4_authorization_config(),
+%%   <<"description">> => string(),
+%%   <<"endpoint">> => string(),
+%%   <<"name">> => string()
+%% }
+-type remote_agent_sig_v4_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_condition() :: #{
+%%   <<"expression">> => string()
+%% }
+-type schedule_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"resourceConfigurationId">> => string()
+%% }
+-type self_managed_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_content_block_delta_event() :: #{
+%%   <<"delta">> => list(),
+%%   <<"index">> => [integer()],
+%%   <<"sequenceNumber">> => [integer()]
+%% }
+-type send_message_content_block_delta_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_content_block_start_event() :: #{
+%%   <<"id">> => [string()],
+%%   <<"index">> => [integer()],
+%%   <<"parentId">> => [string()],
+%%   <<"sequenceNumber">> => [integer()],
+%%   <<"type">> => [string()]
+%% }
+-type send_message_content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_content_block_stop_event() :: #{
+%%   <<"index">> => [integer()],
+%%   <<"last">> => [boolean()],
+%%   <<"sequenceNumber">> => [integer()],
+%%   <<"text">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type send_message_content_block_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_context() :: #{
+%%   <<"currentPage">> => [string()],
+%%   <<"lastMessage">> => [string()],
+%%   <<"userActionResponse">> => [string()]
+%% }
+-type send_message_context() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_heartbeat_event() :: #{}
+-type send_message_heartbeat_event() :: #{}.
+
+
+%% Example:
+%% send_message_json_delta() :: #{
+%%   <<"partialJson">> => [string()]
+%% }
+-type send_message_json_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_request() :: #{
+%%   <<"assetIds">> => list([string()]()),
+%%   <<"content">> := string(),
+%%   <<"context">> => send_message_context(),
+%%   <<"executionId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type send_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_response() :: #{
+%%   <<"events">> => list()
+%% }
+-type send_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_response_completed_event() :: #{
+%%   <<"responseId">> => [string()],
+%%   <<"sequenceNumber">> => [integer()],
+%%   <<"usage">> => send_message_usage_info()
+%% }
+-type send_message_response_completed_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_response_created_event() :: #{
+%%   <<"responseId">> => [string()],
+%%   <<"sequenceNumber">> => [integer()]
+%% }
+-type send_message_response_created_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_response_failed_event() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"responseId">> => [string()],
+%%   <<"sequenceNumber">> => [integer()]
+%% }
+-type send_message_response_failed_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_response_in_progress_event() :: #{
+%%   <<"responseId">> => [string()],
+%%   <<"sequenceNumber">> => [integer()]
+%% }
+-type send_message_response_in_progress_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_summary_event() :: #{
+%%   <<"content">> => [string()],
+%%   <<"sequenceNumber">> => [integer()]
+%% }
+-type send_message_summary_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_text_delta() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type send_message_text_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_usage_info() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type send_message_usage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_input() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"dnsResolution">> => list(any()),
+%%   <<"hostAddress">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv4AddressesPerEni">> => integer(),
+%%   <<"portRanges">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type service_managed_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_configuration() :: #{
+%%   <<"authScopes">> => list([string()]()),
+%%   <<"instanceId">> => [string()]
+%% }
+-type service_now_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_o_auth_client_credentials_config() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientName">> => [string()],
+%%   <<"clientSecret">> => string(),
+%%   <<"exchangeParameters">> => map()
+%% }
+-type service_now_o_auth_client_credentials_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_service_details() :: #{
+%%   <<"authorizationConfig">> => list(),
+%%   <<"instanceUrl">> => string()
+%% }
+-type service_now_service_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_channel() :: #{
+%%   <<"channelId">> => [string()],
+%%   <<"channelName">> => [string()]
+%% }
+-type slack_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_configuration() :: #{
+%%   <<"transmissionTarget">> => slack_transmission_target(),
+%%   <<"workspaceId">> => [string()],
+%%   <<"workspaceName">> => [string()]
+%% }
+-type slack_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_transmission_target() :: #{
+%%   <<"opsOncallTarget">> => slack_channel(),
+%%   <<"opsSRETarget">> => slack_channel()
+%% }
+-type slack_transmission_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_aws_configuration() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"accountType">> => list(any()),
+%%   <<"assumableRoleArn">> => string(),
+%%   <<"externalId">> => [string()]
+%% }
+-type source_aws_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -239,117 +1990,24 @@
 %% }
 -type task() :: #{binary() => any()}.
 
-%% Example:
-%% delete_trigger_request() :: #{}
--type delete_trigger_request() :: #{}.
-
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% task_filter() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"primaryTaskId">> => string(),
+%%   <<"priority">> => list(list(any())()),
+%%   <<"status">> => list(list(any())()),
+%%   <<"taskType">> => list(list(any())())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type task_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% idp_auth_configuration() :: #{
-%%   <<"clientId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"issuerUrl">> => [string()],
-%%   <<"operatorAppRoleArn">> => [string()],
-%%   <<"provider">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type idp_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_space_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_agent_space_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_now_o_auth_client_credentials_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map()
-%% }
--type service_now_o_auth_client_credentials_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_m_c_p_server_details() :: #{
-%%   <<"apiKeyHeader">> => [string()],
-%%   <<"authorizationMethod">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type registered_m_c_p_server_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_lab_configuration() :: #{
-%%   <<"instanceIdentifier">> => [string()],
-%%   <<"projectId">> => [string()],
-%%   <<"projectPath">> => [string()],
-%%   <<"runtimeRoleArn">> => string()
-%% }
--type git_lab_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_association_input() :: #{
-%%   <<"capabilities">> => map(),
-%%   <<"configuration">> := list()
-%% }
--type update_association_input() :: #{binary() => any()}.
-
-%% Example:
-%% validate_aws_associations_input() :: #{}
--type validate_aws_associations_input() :: #{}.
-
-
-%% Example:
-%% list_triggers_response() :: #{
-%%   <<"items">> => list(trigger()),
-%%   <<"nextToken">> => string()
-%% }
--type list_triggers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_service_input() :: #{
-%%   <<"exchangeUrlPrivateConnectionName">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"privateConnectionName">> => string(),
-%%   <<"serviceDetails">> := list(),
-%%   <<"tags">> => map(),
-%%   <<"targetUrlPrivateConnectionName">> => string()
-%% }
--type register_service_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_channel_details() :: #{
-%%   <<"type">> => list(any())
-%% }
--type event_channel_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_file_content() :: #{
-%%   <<"body">> => list(),
-%%   <<"metadata">> => [any()],
-%%   <<"path">> => string()
-%% }
--type asset_file_content() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -367,58 +2025,10 @@
 
 
 %% Example:
-%% create_private_connection_output() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => string(),
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type create_private_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_spaces_output() :: #{
-%%   <<"agentSpaces">> => list(agent_space()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_spaces_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% idc_auth_configuration() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"idcApplicationArn">> => [string()],
-%%   <<"idcInstanceArn">> => [string()],
-%%   <<"operatorAppRoleArn">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type idc_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_operator_app_output() :: #{
-%%   <<"iam">> => iam_auth_configuration(),
-%%   <<"idc">> => idc_auth_configuration(),
-%%   <<"idp">> => idp_auth_configuration(),
-%%   <<"operatorAppUrl">> => string()
-%% }
--type get_operator_app_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associations_input() :: #{
-%%   <<"filterServiceTypes">> => [string()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_associations_input() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -426,14 +2036,75 @@
 
 
 %% Example:
-%% list_backlog_tasks_request() :: #{
-%%   <<"filter">> => task_filter(),
-%%   <<"limit">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"order">> => list(any()),
-%%   <<"sortField">> => list(any())
+%% update_agent_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"locale">> => string(),
+%%   <<"name">> => string()
 %% }
--type list_backlog_tasks_request() :: #{binary() => any()}.
+-type update_agent_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_space_output() :: #{
+%%   <<"agentSpace">> => agent_space()
+%% }
+-type update_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_file_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> => list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type update_asset_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_file_response() :: #{
+%%   <<"file">> => asset_file()
+%% }
+-type update_asset_file_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> => list(),
+%%   <<"metadata">> => [any()]
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"asset">> => asset()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_association_input() :: #{
+%%   <<"capabilities">> => map(),
+%%   <<"configuration">> := list()
+%% }
+-type update_association_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_association_output() :: #{
+%%   <<"association">> => association(),
+%%   <<"webhook">> => generic_webhook()
+%% }
+-type update_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backlog_task_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"taskStatus">> => list(any())
+%% }
+-type update_backlog_task_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,189 +2115,40 @@
 
 
 %% Example:
-%% git_hub_configuration() :: #{
-%%   <<"instanceIdentifier">> => [string()],
-%%   <<"owner">> => [string()],
-%%   <<"ownerType">> => list(any()),
-%%   <<"repoId">> => [string()],
-%%   <<"repoName">> => [string()],
-%%   <<"runtimeRoleArn">> => string()
-%% }
--type git_hub_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommendation_request() :: #{
-%%   <<"additionalContext">> => [string()],
+%% update_goal_request() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"status">> => list(any())
+%%   <<"evaluationSchedule">> => goal_schedule_input()
 %% }
--type update_recommendation_request() :: #{binary() => any()}.
+-type update_goal_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% iam_auth_configuration() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"operatorAppRoleArn">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% update_goal_response() :: #{
+%%   <<"goal">> => goal()
 %% }
--type iam_auth_configuration() :: #{binary() => any()}.
+-type update_goal_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% datadog_service_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
+%% update_operator_app_idp_config_input() :: #{
+%%   <<"idpClientSecret">> => string()
 %% }
--type datadog_service_details() :: #{binary() => any()}.
+-type update_operator_app_idp_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_aws_configuration() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"accountType">> => list(any()),
-%%   <<"assumableRoleArn">> => string(),
-%%   <<"externalId">> => [string()]
+%% update_operator_app_idp_config_output() :: #{
+%%   <<"agentSpaceId">> => string(),
+%%   <<"idp">> => idp_auth_configuration()
 %% }
--type source_aws_configuration() :: #{binary() => any()}.
+-type update_operator_app_idp_config_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_association_output() :: #{
-%%   <<"association">> => association()
+%% update_private_connection_certificate_input() :: #{
+%%   <<"certificate">> := string()
 %% }
--type get_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% goal_schedule() :: #{
-%%   <<"expression">> => [string()],
-%%   <<"state">> => list(any())
-%% }
--type goal_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% m_c_p_server_splunk_configuration() :: #{}
--type m_c_p_server_splunk_configuration() :: #{}.
-
-
-%% Example:
-%% m_c_p_server_new_relic_configuration() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"endpoint">> => [string()]
-%% }
--type m_c_p_server_new_relic_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% grafana_service_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type grafana_service_details() :: #{binary() => any()}.
-
-%% Example:
-%% remote_agent_sig_v4_configuration() :: #{}
--type remote_agent_sig_v4_configuration() :: #{}.
-
-
-%% Example:
-%% asset_file() :: #{
-%%   <<"content">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"metadata">> => [any()],
-%%   <<"path">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"version">> => [integer()]
-%% }
--type asset_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_agent_sig_v4_authorization_config() :: #{
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"service">> => [string()]
-%% }
--type remote_agent_sig_v4_authorization_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_types_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backlog_task_response() :: #{
-%%   <<"task">> => task()
-%% }
--type get_backlog_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_private_connection_input() :: #{
-%%   <<"mode">> := list(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_private_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"agentSubTask">> => [string()],
-%%   <<"agentType">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"executionId">> => [string()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"parentExecutionId">> => [string()],
-%%   <<"uid">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendation_request() :: #{
-%%   <<"recommendationVersion">> => [float()]
-%% }
--type get_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_versions_response() :: #{
-%%   <<"items">> => list(asset_version_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% generic_webhook() :: #{
-%%   <<"apiKey">> => string(),
-%%   <<"webhookId">> => [string()],
-%%   <<"webhookSecret">> => string(),
-%%   <<"webhookType">> => list(any()),
-%%   <<"webhookUrl">> => [string()]
-%% }
--type generic_webhook() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_response_completed_event() :: #{
-%%   <<"responseId">> => [string()],
-%%   <<"sequenceNumber">> => [integer()],
-%%   <<"usage">> => send_message_usage_info()
-%% }
--type send_message_response_completed_event() :: #{binary() => any()}.
+-type update_private_connection_certificate_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -646,328 +2168,12 @@
 
 
 %% Example:
-%% registered_azure_identity_details() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"tenantId">> => string(),
-%%   <<"webIdentityRoleArn">> => string(),
-%%   <<"webIdentityTokenAudiences">> => list([string()]())
-%% }
--type registered_azure_identity_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_agent_sig_v4_service_details() :: #{
-%%   <<"authorizationConfig">> => remote_agent_sig_v4_authorization_config(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type remote_agent_sig_v4_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_webhooks_output() :: #{
-%%   <<"webhooks">> => list(webhook())
-%% }
--type list_webhooks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_request() :: #{
-%%   <<"assetType">> := string(),
+%% update_recommendation_request() :: #{
+%%   <<"additionalContext">> => [string()],
 %%   <<"clientToken">> => [string()],
-%%   <<"content">> := list(),
-%%   <<"metadata">> => [any()]
+%%   <<"status">> => list(any())
 %% }
--type create_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_operator_app_output() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"iam">> => iam_auth_configuration(),
-%%   <<"idc">> => idc_auth_configuration(),
-%%   <<"idp">> => idp_auth_configuration(),
-%%   <<"operatorAppUrl">> => string()
-%% }
--type enable_operator_app_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynatrace_configuration() :: #{
-%%   <<"envId">> => [string()],
-%%   <<"resources">> => list([string()]())
-%% }
--type dynatrace_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backlog_task_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"taskStatus">> => list(any())
-%% }
--type update_backlog_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_remote_agent_details() :: #{
-%%   <<"apiKeyHeader">> => [string()],
-%%   <<"authorizationMethod">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type registered_remote_agent_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% pager_duty_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"scopes">> => list([string()]())
-%% }
--type pager_duty_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% azure_dev_ops_configuration() :: #{
-%%   <<"organizationName">> => [string()],
-%%   <<"projectId">> => [string()],
-%%   <<"projectName">> => [string()]
-%% }
--type azure_dev_ops_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_server_sig_v4_authorization_config() :: #{
-%%   <<"customHeaders">> => map(),
-%%   <<"mcpRoleArn">> => string(),
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => [string()],
-%%   <<"service">> => [string()]
-%% }
--type m_c_p_server_sig_v4_authorization_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% goal() :: #{
-%%   <<"agentSpaceArn">> => [string()],
-%%   <<"content">> => goal_content(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"evaluationSchedule">> => goal_schedule(),
-%%   <<"goalId">> => [string()],
-%%   <<"goalType">> => list(any()),
-%%   <<"lastEvaluatedAt">> => non_neg_integer(),
-%%   <<"lastSuccessfulTaskId">> => [string()],
-%%   <<"lastTaskId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => [integer()]
-%% }
--type goal() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_chats_response() :: #{
-%%   <<"executions">> => list(chat_execution()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_chats_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_execution() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionId">> => string(),
-%%   <<"summary">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type chat_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_version_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"version">> => [integer()]
-%% }
--type asset_version_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_auth_additional_step_details() :: #{
-%%   <<"authorizationUrl">> => [string()]
-%% }
--type o_auth_additional_step_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_file_request() :: #{
-%%   <<"assetVersion">> => [integer()]
-%% }
--type get_asset_file_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_webhooks_input() :: #{}
--type list_webhooks_input() :: #{}.
-
-
-%% Example:
-%% reference_input() :: #{
-%%   <<"associationId">> => string(),
-%%   <<"referenceId">> => string(),
-%%   <<"referenceUrl">> => [string()],
-%%   <<"system">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type reference_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_git_lab_service_details() :: #{
-%%   <<"groupId">> => [string()],
-%%   <<"targetUrl">> => [string()],
-%%   <<"tokenType">> => list(any())
-%% }
--type registered_git_lab_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_connection_summary() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => string(),
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
-%% }
--type private_connection_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_private_connections_output() :: #{
-%%   <<"privateConnections">> => list(private_connection_summary())
-%% }
--type list_private_connections_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_content_block_start_event() :: #{
-%%   <<"id">> => [string()],
-%%   <<"index">> => [integer()],
-%%   <<"parentId">> => [string()],
-%%   <<"sequenceNumber">> => [integer()],
-%%   <<"type">> => [string()]
-%% }
--type send_message_content_block_start_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_configuration() :: #{
-%%   <<"enabled">> => [boolean()]
-%% }
--type capability_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_operator_app_input() :: #{
-%%   <<"authFlow">> => list(any())
-%% }
--type disable_operator_app_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_response_in_progress_event() :: #{
-%%   <<"responseId">> => [string()],
-%%   <<"sequenceNumber">> => [integer()]
-%% }
--type send_message_response_in_progress_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_response() :: #{
-%%   <<"asset">> => asset()
-%% }
--type update_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_context() :: #{
-%%   <<"currentPage">> => [string()],
-%%   <<"lastMessage">> => [string()],
-%%   <<"userActionResponse">> => [string()]
-%% }
--type send_message_context() :: #{binary() => any()}.
-
-%% Example:
-%% validate_aws_associations_output() :: #{}
--type validate_aws_associations_output() :: #{}.
-
-
-%% Example:
-%% m_c_p_server_authorization_discovery_config() :: #{
-%%   <<"returnToEndpoint">> => [string()]
-%% }
--type m_c_p_server_authorization_discovery_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% journal_record() :: #{
-%%   <<"agentSpaceId">> => [string()],
-%%   <<"content">> => [any()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"executionId">> => [string()],
-%%   <<"recordId">> => [string()],
-%%   <<"recordType">> => [string()],
-%%   <<"userReference">> => user_reference()
-%% }
--type journal_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_configuration() :: #{
-%%   <<"transmissionTarget">> => slack_transmission_target(),
-%%   <<"workspaceId">> => [string()],
-%%   <<"workspaceName">> => [string()]
-%% }
--type slack_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_service_output() :: #{
-%%   <<"additionalStep">> => list(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"serviceId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type register_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_transmission_target() :: #{
-%%   <<"opsOncallTarget">> => slack_channel(),
-%%   <<"opsSRETarget">> => slack_channel()
-%% }
--type slack_transmission_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynatrace_service_details() :: #{
-%%   <<"accountUrn">> => [string()],
-%%   <<"authorizationConfig">> => list()
-%% }
--type dynatrace_service_details() :: #{binary() => any()}.
+-type update_recommendation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -986,412 +2192,10 @@
 
 
 %% Example:
-%% identity_center_service_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"underlyingErrorCode">> => [string()]
-%% }
--type identity_center_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pending_messages_request() :: #{
-%%   <<"executionId">> := string()
-%% }
--type list_pending_messages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_text_delta() :: #{
-%%   <<"text">> => [string()]
-%% }
--type send_message_text_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_operator_app_input() :: #{
-%%   <<"authFlow">> := list(any()),
-%%   <<"idcInstanceArn">> => [string()],
-%%   <<"idpClientId">> => string(),
-%%   <<"idpClientSecret">> => string(),
-%%   <<"issuerUrl">> => [string()],
-%%   <<"operatorAppRoleArn">> := string(),
-%%   <<"provider">> => [string()]
-%% }
--type enable_operator_app_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetType">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"metadata">> => [any()],
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"version">> => [integer()]
-%% }
--type asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_content_block_delta_event() :: #{
-%%   <<"delta">> => list(),
-%%   <<"index">> => [integer()],
-%%   <<"sequenceNumber">> => [integer()]
-%% }
--type send_message_content_block_delta_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_pager_duty_details() :: #{
-%%   <<"scopes">> => list([string()]())
-%% }
--type registered_pager_duty_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_operator_app_input() :: #{}
--type get_operator_app_input() :: #{}.
-
-
-%% Example:
-%% get_asset_content_request() :: #{
-%%   <<"assetVersion">> => [integer()]
-%% }
--type get_asset_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_summary_event() :: #{
-%%   <<"content">> => [string()],
-%%   <<"sequenceNumber">> => [integer()]
-%% }
--type send_message_summary_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% reference_output() :: #{
-%%   <<"associationId">> => [string()],
-%%   <<"referenceId">> => [string()],
-%%   <<"referenceUrl">> => [string()],
-%%   <<"system">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type reference_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% git_lab_details() :: #{
-%%   <<"groupId">> => [string()],
-%%   <<"targetUrl">> => [string()],
-%%   <<"tokenType">> => list(any()),
-%%   <<"tokenValue">> => string()
-%% }
--type git_lab_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trigger_response() :: #{
+%% update_trigger_response() :: #{
 %%   <<"trigger">> => trigger()
 %% }
--type create_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_m_c_p_server_sig_v4_details() :: #{
-%%   <<"customHeaders">> => map(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"mcpRoleArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => [string()],
-%%   <<"service">> => [string()]
-%% }
--type registered_m_c_p_server_sig_v4_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_executions_response() :: #{
-%%   <<"executions">> => list(execution()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_space() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type agent_space() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_private_connection_output() :: #{
-%%   <<"certificateExpiryTime">> => [non_neg_integer()],
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"failureMessage">> => string(),
-%%   <<"hostAddress">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfigurationId">> => string(),
-%%   <<"resourceGatewayId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"vpcId">> => string()
-%% }
--type describe_private_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_size_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type content_size_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_output() :: #{
-%%   <<"service">> => registered_service(),
-%%   <<"tags">> => map()
-%% }
--type get_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% goal_content() :: #{
-%%   <<"description">> => [string()],
-%%   <<"objectives">> => [string()]
-%% }
--type goal_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_association_output() :: #{
-%%   <<"association">> => association(),
-%%   <<"webhook">> => generic_webhook()
-%% }
--type update_association_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% goal_schedule_input() :: #{
-%%   <<"state">> => list(any())
-%% }
--type goal_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_service_output() :: #{}
--type disassociate_service_output() :: #{}.
-
-
-%% Example:
-%% pager_duty_o_auth_client_credentials_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map()
-%% }
--type pager_duty_o_auth_client_credentials_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_new_relic_details() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"region">> => list(any())
-%% }
--type registered_new_relic_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_agent_o_auth_client_credentials_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map(),
-%%   <<"exchangeUrl">> => [string()],
-%%   <<"scopes">> => list(string())
-%% }
--type remote_agent_o_auth_client_credentials_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_triggers_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_triggers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_zip_content() :: #{
-%%   <<"zipFile">> => binary()
-%% }
--type asset_zip_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"additionalContext">> => [string()],
-%%   <<"agentSpaceArn">> => [string()],
-%%   <<"content">> => recommendation_content(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"goalId">> => [string()],
-%%   <<"goalVersion">> => [float()],
-%%   <<"priority">> => list(any()),
-%%   <<"rankPosition">> => [integer()],
-%%   <<"rankedAt">> => non_neg_integer(),
-%%   <<"recommendationId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => [string()],
-%%   <<"title">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => [float()]
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_space_input() :: #{}
--type get_agent_space_input() :: #{}.
-
-
-%% Example:
-%% create_backlog_task_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"priority">> := list(any()),
-%%   <<"reference">> => reference_input(),
-%%   <<"taskType">> := list(any()),
-%%   <<"title">> := string()
-%% }
--type create_backlog_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_now_service_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"instanceUrl">> => string()
-%% }
--type service_now_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_space_output() :: #{
-%%   <<"agentSpace">> => agent_space()
-%% }
--type update_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_journal_records_request() :: #{
-%%   <<"executionId">> := string(),
-%%   <<"limit">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"order">> => list(any()),
-%%   <<"recordType">> => [string()]
-%% }
--type list_journal_records_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agent_space_input() :: #{}
--type delete_agent_space_input() :: #{}.
-
-
-%% Example:
-%% m_c_p_server_sig_v4_configuration() :: #{
-%%   <<"tools">> => list([string()]())
-%% }
--type m_c_p_server_sig_v4_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_files_response() :: #{
-%%   <<"items">> => list(asset_file_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_files_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% association() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"associationId">> => string(),
-%%   <<"capabilities">> => map(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"serviceId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type association() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_response() :: #{}
--type delete_asset_response() :: #{}.
-
-
-%% Example:
-%% remote_agent_api_key_config() :: #{
-%%   <<"apiKeyHeader">> => [string()],
-%%   <<"apiKeyName">> => [string()],
-%%   <<"apiKeyValue">> => string()
-%% }
--type remote_agent_api_key_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_chat_request() :: #{
-%%   <<"userId">> => string(),
-%%   <<"userType">> => list(any())
-%% }
--type create_chat_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_usage_input() :: #{}
--type get_account_usage_input() :: #{}.
-
-
-%% Example:
-%% create_asset_file_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"content">> := list(),
-%%   <<"metadata">> => [any()]
-%% }
--type create_asset_file_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% new_relic_service_details() :: #{
-%%   <<"authorizationConfig">> => list()
-%% }
--type new_relic_service_details() :: #{binary() => any()}.
+-type update_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1403,44 +2207,27 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% user_reference() :: #{
+%%   <<"userId">> => [string()],
+%%   <<"userType">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type user_reference() :: #{binary() => any()}.
+
+%% Example:
+%% validate_aws_associations_input() :: #{}
+-type validate_aws_associations_input() :: #{}.
+
+%% Example:
+%% validate_aws_associations_output() :: #{}
+-type validate_aws_associations_output() :: #{}.
 
 
 %% Example:
-%% update_trigger_response() :: #{
-%%   <<"trigger">> => trigger()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
 %% }
--type update_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_slack_service_details() :: #{
-%%   <<"teamId">> => [string()],
-%%   <<"teamName">> => [string()]
-%% }
--type registered_slack_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% pager_duty_configuration() :: #{
-%%   <<"customerEmail">> => string(),
-%%   <<"services">> => list([string()]())
-%% }
--type pager_duty_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_file_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"metadata">> => [any()],
-%%   <<"path">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"version">> => [integer()]
-%% }
--type asset_file_summary() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1452,700 +2239,6 @@
 
 
 %% Example:
-%% list_asset_versions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynatrace_o_auth_client_credentials_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map()
-%% }
--type dynatrace_o_auth_client_credentials_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_file_response() :: #{
-%%   <<"file">> => asset_file()
-%% }
--type update_asset_file_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_service_now_details() :: #{
-%%   <<"instanceUrl">> => string()
-%% }
--type registered_service_now_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_response_created_event() :: #{
-%%   <<"responseId">> => [string()],
-%%   <<"sequenceNumber">> => [integer()]
-%% }
--type send_message_response_created_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trigger_request() :: #{
-%%   <<"action">> := any(),
-%%   <<"clientToken">> => [string()],
-%%   <<"condition">> := list(),
-%%   <<"status">> => string(),
-%%   <<"type">> := string()
-%% }
--type create_trigger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_chats_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"userId">> => string()
-%% }
--type list_chats_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_goals_response() :: #{
-%%   <<"goals">> => list(goal()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_goals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_response() :: #{
-%%   <<"asset">> => asset()
-%% }
--type get_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_service() :: #{
-%%   <<"accessibleResources">> => list([any()]()),
-%%   <<"additionalServiceDetails">> => list(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"privateConnectionName">> => string(),
-%%   <<"serviceId">> => string(),
-%%   <<"serviceType">> => list(any())
-%% }
--type registered_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associations_output() :: #{
-%%   <<"associations">> => list(association()),
-%%   <<"nextToken">> => string()
-%% }
--type list_associations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_server_sig_v4_service_details() :: #{
-%%   <<"authorizationConfig">> => m_c_p_server_sig_v4_authorization_config(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type m_c_p_server_sig_v4_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_file_response() :: #{
-%%   <<"file">> => asset_file()
-%% }
--type get_asset_file_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_reference() :: #{
-%%   <<"userId">> => [string()],
-%%   <<"userType">> => list(any())
-%% }
--type user_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_server_o_auth3_l_o_config() :: #{
-%%   <<"authorizationUrl">> => [string()],
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map(),
-%%   <<"exchangeUrl">> => [string()],
-%%   <<"returnToEndpoint">> => [string()],
-%%   <<"scopes">> => list(string()),
-%%   <<"supportCodeChallenge">> => [boolean()]
-%% }
--type m_c_p_server_o_auth3_l_o_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agent_space_output() :: #{}
--type delete_agent_space_output() :: #{}.
-
-
-%% Example:
-%% get_trigger_response() :: #{
-%%   <<"trigger">> => trigger()
-%% }
--type get_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_content_block_stop_event() :: #{
-%%   <<"index">> => [integer()],
-%%   <<"last">> => [boolean()],
-%%   <<"sequenceNumber">> => [integer()],
-%%   <<"text">> => [string()],
-%%   <<"type">> => [string()]
-%% }
--type send_message_content_block_stop_event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_private_connection_input() :: #{}
--type delete_private_connection_input() :: #{}.
-
-
-%% Example:
-%% list_asset_files_request() :: #{
-%%   <<"assetVersion">> => [integer()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_files_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_now_configuration() :: #{
-%%   <<"authScopes">> => list([string()]()),
-%%   <<"instanceId">> => [string()]
-%% }
--type service_now_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% m_c_p_server_datadog_configuration() :: #{}
--type m_c_p_server_datadog_configuration() :: #{}.
-
-
-%% Example:
-%% create_agent_space_output() :: #{
-%%   <<"agentSpace">> => agent_space(),
-%%   <<"tags">> => map()
-%% }
--type create_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_agent_bearer_token_config() :: #{
-%%   <<"authorizationHeader">> => [string()],
-%%   <<"tokenName">> => [string()],
-%%   <<"tokenValue">> => string()
-%% }
--type remote_agent_bearer_token_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_private_connection_output() :: #{
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_private_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_server_grafana_configuration() :: #{
-%%   <<"endpoint">> => [string()],
-%%   <<"organizationId">> => [string()],
-%%   <<"tools">> => list([string()]())
-%% }
--type m_c_p_server_grafana_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% new_relic_api_key_config() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"alertPolicyIds">> => list([string()]()),
-%%   <<"apiKey">> => string(),
-%%   <<"applicationIds">> => list([string()]()),
-%%   <<"entityGuids">> => list([string()]()),
-%%   <<"region">> => list(any())
-%% }
--type new_relic_api_key_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_space_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"locale">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_agent_space_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_request() :: #{}
--type delete_asset_request() :: #{}.
-
-
-%% Example:
-%% m_c_p_server_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type m_c_p_server_details() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_service_input() :: #{}
--type deregister_service_input() :: #{}.
-
-
-%% Example:
-%% list_pending_messages_response() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionId">> => [string()],
-%%   <<"messages">> => list(pending_message())
-%% }
--type list_pending_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backlog_tasks_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"tasks">> => list(task())
-%% }
--type list_backlog_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_file_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"content">> => list(),
-%%   <<"metadata">> => [any()]
-%% }
--type update_asset_file_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_response() :: #{
-%%   <<"asset">> => asset()
-%% }
--type create_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"content">> => list(),
-%%   <<"metadata">> => [any()]
-%% }
--type update_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backlog_task_response() :: #{
-%%   <<"task">> => task()
-%% }
--type create_backlog_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% azure_configuration() :: #{
-%%   <<"subscriptionId">> => [string()]
-%% }
--type azure_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% send_message_json_delta() :: #{
-%%   <<"partialJson">> => [string()]
-%% }
--type send_message_json_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_managed_input() :: #{
-%%   <<"certificate">> => string(),
-%%   <<"resourceConfigurationId">> => string()
-%% }
--type self_managed_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_file_response() :: #{}
--type delete_asset_file_response() :: #{}.
-
-
-%% Example:
-%% recommendation_content() :: #{
-%%   <<"spec">> => [string()],
-%%   <<"summary">> => [string()]
-%% }
--type recommendation_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_journal_records_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"records">> => list(journal_record())
-%% }
--type list_journal_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_server_bearer_token_config() :: #{
-%%   <<"authorizationHeader">> => [string()],
-%%   <<"tokenName">> => [string()],
-%%   <<"tokenValue">> => string()
-%% }
--type m_c_p_server_bearer_token_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% update_operator_app_idp_config_input() :: #{
-%%   <<"idpClientSecret">> => string()
-%% }
--type update_operator_app_idp_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trigger_response() :: #{}
--type delete_trigger_response() :: #{}.
-
-
-%% Example:
-%% send_message_response_failed_event() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"responseId">> => [string()],
-%%   <<"sequenceNumber">> => [integer()]
-%% }
--type send_message_response_failed_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_goal_response() :: #{
-%%   <<"goal">> => goal()
-%% }
--type update_goal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_request() :: #{
-%%   <<"assetVersion">> => [integer()]
-%% }
--type get_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_type_summary() :: #{
-%%   <<"assetType">> => string(),
-%%   <<"description">> => [string()]
-%% }
--type asset_type_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_service_output() :: #{}
--type deregister_service_output() :: #{}.
-
-
-%% Example:
-%% get_asset_content_response() :: #{
-%%   <<"content">> => asset_zip_content(),
-%%   <<"version">> => [integer()]
-%% }
--type get_asset_content_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_azure_dev_ops_service_details() :: #{
-%%   <<"organizationName">> => [string()]
-%% }
--type registered_azure_dev_ops_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% pending_message() :: #{
-%%   <<"message">> => list(),
-%%   <<"messageId">> => [string()]
-%% }
--type pending_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_managed_input() :: #{
-%%   <<"certificate">> => string(),
-%%   <<"dnsResolution">> => list(any()),
-%%   <<"hostAddress">> => string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv4AddressesPerEni">> => integer(),
-%%   <<"portRanges">> => list(string()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type service_managed_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_request() :: #{
-%%   <<"assetIds">> => list([string()]()),
-%%   <<"content">> := string(),
-%%   <<"context">> => send_message_context(),
-%%   <<"executionId">> := string(),
-%%   <<"userId">> => string()
-%% }
--type send_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_usage_info() :: #{
-%%   <<"inputTokens">> => [integer()],
-%%   <<"outputTokens">> => [integer()],
-%%   <<"totalTokens">> => [integer()]
-%% }
--type send_message_usage_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_channel() :: #{
-%%   <<"channelId">> => [string()],
-%%   <<"channelName">> => [string()]
-%% }
--type slack_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assets_request() :: #{
-%%   <<"assetType">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"updatedAfter">> => [non_neg_integer()],
-%%   <<"updatedBefore">> => [non_neg_integer()]
-%% }
--type list_assets_request() :: #{binary() => any()}.
-
-%% Example:
-%% remote_agent_configuration() :: #{}
--type remote_agent_configuration() :: #{}.
-
-
-%% Example:
-%% update_goal_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"evaluationSchedule">> => goal_schedule_input()
-%% }
--type update_goal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_operator_app_idp_config_output() :: #{
-%%   <<"agentSpaceId">> => string(),
-%%   <<"idp">> => idp_auth_configuration()
-%% }
--type update_operator_app_idp_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_private_connections_input() :: #{}
--type list_private_connections_input() :: #{}.
-
-
-%% Example:
-%% list_goals_request() :: #{
-%%   <<"goalType">> => list(any()),
-%%   <<"limit">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_goals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_configuration() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"accountType">> => list(any()),
-%%   <<"assumableRoleArn">> => string()
-%% }
--type aws_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_space_output() :: #{
-%%   <<"agentSpace">> => agent_space(),
-%%   <<"tags">> => map()
-%% }
--type get_agent_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_spaces_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_spaces_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_private_connection_input() :: #{}
--type describe_private_connection_input() :: #{}.
-
-%% Example:
-%% get_trigger_request() :: #{}
--type get_trigger_request() :: #{}.
-
-
-%% Example:
-%% schedule_condition() :: #{
-%%   <<"expression">> => string()
-%% }
--type schedule_condition() :: #{binary() => any()}.
-
-%% Example:
-%% get_backlog_task_request() :: #{}
--type get_backlog_task_request() :: #{}.
-
-%% Example:
-%% event_channel_configuration() :: #{}
--type event_channel_configuration() :: #{}.
-
-
-%% Example:
-%% associate_service_input() :: #{
-%%   <<"capabilities">> => map(),
-%%   <<"configuration">> := list(),
-%%   <<"serviceId">> := string()
-%% }
--type associate_service_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_response() :: #{
-%%   <<"events">> => list()
-%% }
--type send_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"recommendations">> => list(recommendation())
-%% }
--type list_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assets_response() :: #{
-%%   <<"items">> => list(asset()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_filter() :: #{
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"primaryTaskId">> => string(),
-%%   <<"priority">> => list(list(any())()),
-%%   <<"status">> => list(list(any())()),
-%%   <<"taskType">> => list(list(any())())
-%% }
--type task_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_private_connection_certificate_input() :: #{
-%%   <<"certificate">> := string()
-%% }
--type update_private_connection_certificate_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_agent_service_details() :: #{
-%%   <<"authorizationConfig">> => list(),
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string()
-%% }
--type remote_agent_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendation_response() :: #{
-%%   <<"recommendation">> => recommendation()
-%% }
--type get_recommendation_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_association_input() :: #{}
--type get_association_input() :: #{}.
-
-
-%% Example:
-%% m_c_p_server_o_auth_client_credentials_config() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientName">> => [string()],
-%%   <<"clientSecret">> => string(),
-%%   <<"exchangeParameters">> => map(),
-%%   <<"exchangeUrl">> => [string()],
-%%   <<"scopes">> => list(string())
-%% }
--type m_c_p_server_o_auth_client_credentials_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% webhook() :: #{
 %%   <<"webhookId">> => [string()],
 %%   <<"webhookType">> => list(any()),
@@ -2153,518 +2246,425 @@
 %% }
 -type webhook() :: #{binary() => any()}.
 
-
-%% Example:
-%% list_services_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"services">> => list(registered_service())
-%% }
--type list_services_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_source_url_content() :: #{
-%%   <<"url">> => string()
-%% }
--type asset_source_url_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_types_response() :: #{
-%%   <<"items">> => list(asset_type_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_message_heartbeat_event() :: #{}
--type send_message_heartbeat_event() :: #{}.
-
-
-%% Example:
-%% registered_remote_agent_sig_v4_details() :: #{
-%%   <<"description">> => string(),
-%%   <<"endpoint">> => string(),
-%%   <<"name">> => string(),
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"service">> => [string()]
-%% }
--type registered_remote_agent_sig_v4_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_service_output() :: #{
-%%   <<"association">> => association(),
-%%   <<"webhook">> => generic_webhook()
-%% }
--type associate_service_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_executions_request() :: #{
-%%   <<"limit">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"taskId">> := string()
-%% }
--type list_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_request() :: #{
-%%   <<"goalId">> => string(),
-%%   <<"limit">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"priority">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type list_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_input() :: #{
-%%   <<"filterServiceType">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_services_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% registered_github_service_details() :: #{
-%%   <<"owner">> => [string()],
-%%   <<"ownerType">> => list(any()),
-%%   <<"targetUrl">> => [string()]
-%% }
--type registered_github_service_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_file_response() :: #{
-%%   <<"file">> => asset_file()
-%% }
--type create_asset_file_response() :: #{binary() => any()}.
-
 -type associate_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_agent_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_asset_file_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     content_size_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_backlog_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_chat_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type create_private_connection_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
--type create_trigger_errors() ::
-    throttling_exception() | 
+-type create_private_connection_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type create_trigger_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_agent_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_asset_file_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_private_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_trigger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deregister_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type describe_private_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disable_operator_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     identity_center_service_exception().
 
 -type disassociate_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type enable_operator_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     identity_center_service_exception().
 
 -type get_account_usage_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_asset_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_asset_file_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_backlog_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_operator_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type get_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_trigger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_spaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_asset_files_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_asset_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_asset_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_assets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_backlog_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_chats_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_goals_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_journal_records_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_pending_messages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_private_connections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_triggers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_webhooks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type register_service_errors() ::
     validation_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type send_message_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_agent_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_asset_file_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     content_size_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_backlog_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_goal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_operator_app_idp_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_private_connection_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_trigger_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type validate_aws_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

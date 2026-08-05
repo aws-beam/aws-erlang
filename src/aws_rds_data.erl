@@ -37,42 +37,54 @@
 
 
 %% Example:
-%% statement_timeout_exception() :: #{
-%%   <<"dbConnectionId">> => float(),
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type statement_timeout_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% result_set_metadata() :: #{
-%%   <<"columnCount">> => float(),
-%%   <<"columnMetadata">> => list(column_metadata())
-%% }
--type result_set_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_resuming_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type database_resuming_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% unsupported_result_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_result_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_transaction_request() :: #{
+%% batch_execute_statement_request() :: #{
+%%   <<"database">> => string(),
+%%   <<"parameterSets">> => list(list(sql_parameter())()),
 %%   <<"resourceArn">> => string(),
+%%   <<"schema">> => string(),
 %%   <<"secretArn">> => string(),
+%%   <<"sql">> => string(),
 %%   <<"transactionId">> => string()
 %% }
--type rollback_transaction_request() :: #{binary() => any()}.
+-type batch_execute_statement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_execute_statement_response() :: #{
+%%   <<"updateResults">> => list(update_result())
+%% }
+-type batch_execute_statement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% begin_transaction_request() :: #{
+%%   <<"database">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"schema">> => string(),
+%%   <<"secretArn">> => string()
+%% }
+-type begin_transaction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% begin_transaction_response() :: #{
+%%   <<"transactionId">> => string()
+%% }
+-type begin_transaction_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -105,6 +117,38 @@
 
 
 %% Example:
+%% commit_transaction_response() :: #{
+%%   <<"transactionStatus">> => string()
+%% }
+-type commit_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type database_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type database_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_resuming_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type database_resuming_exception() :: #{binary() => any()}.
+
+%% Example:
+%% database_unavailable_exception() :: #{}
+-type database_unavailable_exception() :: #{}.
+
+
+%% Example:
 %% execute_sql_request() :: #{
 %%   <<"awsSecretStoreArn">> => string(),
 %%   <<"database">> => string(),
@@ -116,179 +160,10 @@
 
 
 %% Example:
-%% transaction_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% execute_sql_response() :: #{
+%%   <<"sqlStatementResults">> => list(sql_statement_result())
 %% }
--type transaction_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_result() :: #{
-%%   <<"generatedFields">> => list(list())
-%% }
--type update_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sql_parameter() :: #{
-%%   <<"name">> => string(),
-%%   <<"typeHint">> => list(any()),
-%%   <<"value">> => list()
-%% }
--type sql_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_execute_statement_request() :: #{
-%%   <<"database">> => string(),
-%%   <<"parameterSets">> => list(list(sql_parameter())()),
-%%   <<"resourceArn">> => string(),
-%%   <<"schema">> => string(),
-%%   <<"secretArn">> => string(),
-%%   <<"sql">> => string(),
-%%   <<"transactionId">> => string()
-%% }
--type batch_execute_statement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% begin_transaction_request() :: #{
-%%   <<"database">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"schema">> => string(),
-%%   <<"secretArn">> => string()
-%% }
--type begin_transaction_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_statement_response() :: #{
-%%   <<"columnMetadata">> => list(column_metadata()),
-%%   <<"formattedRecords">> => string(),
-%%   <<"generatedFields">> => list(list()),
-%%   <<"numberOfRecordsUpdated">> => float(),
-%%   <<"records">> => list(list(list())())
-%% }
--type execute_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_error() :: #{}
--type service_unavailable_error() :: #{}.
-
-
-%% Example:
-%% invalid_secret_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_secret_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% result_set_options() :: #{
-%%   <<"decimalReturnType">> => list(any()),
-%%   <<"longReturnType">> => list(any())
-%% }
--type result_set_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% commit_transaction_response() :: #{
-%%   <<"transactionStatus">> => string()
-%% }
--type commit_transaction_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% database_unavailable_exception() :: #{}
--type database_unavailable_exception() :: #{}.
-
-
-%% Example:
-%% invalid_resource_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_resource_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type secrets_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_endpoint_not_enabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type http_endpoint_not_enabled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type database_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_transaction_response() :: #{
-%%   <<"transactionStatus">> => string()
-%% }
--type rollback_transaction_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type database_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% begin_transaction_response() :: #{
-%%   <<"transactionId">> => string()
-%% }
--type begin_transaction_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_data_record() :: #{
-%%   <<"values">> => list(list())
-%% }
--type rds_data_record() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error_exception() :: #{}
--type internal_server_error_exception() :: #{}.
-
-
-%% Example:
-%% result_frame() :: #{
-%%   <<"records">> => list(record()),
-%%   <<"resultSetMetadata">> => result_set_metadata()
-%% }
--type result_frame() :: #{binary() => any()}.
+-type execute_sql_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -309,6 +184,123 @@
 
 
 %% Example:
+%% execute_statement_response() :: #{
+%%   <<"columnMetadata">> => list(column_metadata()),
+%%   <<"formattedRecords">> => string(),
+%%   <<"generatedFields">> => list(list()),
+%%   <<"numberOfRecordsUpdated">> => float(),
+%%   <<"records">> => list(list(list())())
+%% }
+-type execute_statement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_endpoint_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type http_endpoint_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error_exception() :: #{}
+-type internal_server_error_exception() :: #{}.
+
+
+%% Example:
+%% invalid_resource_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_secret_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_secret_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_data_record() :: #{
+%%   <<"values">> => list(list())
+%% }
+-type rds_data_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_frame() :: #{
+%%   <<"records">> => list(record()),
+%%   <<"resultSetMetadata">> => result_set_metadata()
+%% }
+-type result_frame() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_set_metadata() :: #{
+%%   <<"columnCount">> => float(),
+%%   <<"columnMetadata">> => list(column_metadata())
+%% }
+-type result_set_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% result_set_options() :: #{
+%%   <<"decimalReturnType">> => list(any()),
+%%   <<"longReturnType">> => list(any())
+%% }
+-type result_set_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_transaction_request() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"secretArn">> => string(),
+%%   <<"transactionId">> => string()
+%% }
+-type rollback_transaction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_transaction_response() :: #{
+%%   <<"transactionStatus">> => string()
+%% }
+-type rollback_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type secrets_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_error() :: #{}
+-type service_unavailable_error() :: #{}.
+
+
+%% Example:
+%% sql_parameter() :: #{
+%%   <<"name">> => string(),
+%%   <<"typeHint">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type sql_parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% sql_statement_result() :: #{
 %%   <<"numberOfRecordsUpdated">> => float(),
 %%   <<"resultFrame">> => result_frame()
@@ -317,17 +309,11 @@
 
 
 %% Example:
-%% bad_request_exception() :: #{
+%% statement_timeout_exception() :: #{
+%%   <<"dbConnectionId">> => float(),
 %%   <<"message">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_sql_response() :: #{
-%%   <<"sqlStatementResults">> => list(sql_statement_result())
-%% }
--type execute_sql_response() :: #{binary() => any()}.
+-type statement_timeout_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -338,103 +324,117 @@
 
 
 %% Example:
-%% batch_execute_statement_response() :: #{
-%%   <<"updateResults">> => list(update_result())
+%% transaction_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type batch_execute_statement_response() :: #{binary() => any()}.
+-type transaction_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_result_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_result_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_result() :: #{
+%%   <<"generatedFields">> => list(list())
+%% }
+-type update_result() :: #{binary() => any()}.
 
 -type batch_execute_statement_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    database_error_exception() | 
-    access_denied_exception() | 
-    database_not_found_exception() | 
-    http_endpoint_not_enabled_exception() | 
-    secrets_error_exception() | 
-    invalid_resource_state_exception() | 
-    database_unavailable_exception() | 
-    invalid_secret_exception() | 
-    service_unavailable_error() | 
-    forbidden_exception() | 
     transaction_not_found_exception() | 
+    statement_timeout_exception() | 
+    service_unavailable_error() | 
+    secrets_error_exception() | 
+    invalid_secret_exception() | 
+    invalid_resource_state_exception() | 
+    internal_server_error_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    forbidden_exception() | 
+    database_unavailable_exception() | 
     database_resuming_exception() | 
-    statement_timeout_exception().
+    database_not_found_exception() | 
+    database_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type begin_transaction_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    database_error_exception() | 
-    access_denied_exception() | 
-    database_not_found_exception() | 
-    http_endpoint_not_enabled_exception() | 
-    secrets_error_exception() | 
-    invalid_resource_state_exception() | 
-    database_unavailable_exception() | 
-    invalid_secret_exception() | 
-    service_unavailable_error() | 
-    forbidden_exception() | 
     transaction_not_found_exception() | 
+    statement_timeout_exception() | 
+    service_unavailable_error() | 
+    secrets_error_exception() | 
+    invalid_secret_exception() | 
+    invalid_resource_state_exception() | 
+    internal_server_error_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    forbidden_exception() | 
+    database_unavailable_exception() | 
     database_resuming_exception() | 
-    statement_timeout_exception().
+    database_not_found_exception() | 
+    database_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type commit_transaction_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    database_error_exception() | 
-    access_denied_exception() | 
-    database_not_found_exception() | 
-    http_endpoint_not_enabled_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception() | 
+    service_unavailable_error() | 
     secrets_error_exception() | 
-    invalid_resource_state_exception() | 
-    database_unavailable_exception() | 
     not_found_exception() | 
     invalid_secret_exception() | 
-    service_unavailable_error() | 
+    invalid_resource_state_exception() | 
+    internal_server_error_exception() | 
+    http_endpoint_not_enabled_exception() | 
     forbidden_exception() | 
-    transaction_not_found_exception() | 
-    statement_timeout_exception().
+    database_unavailable_exception() | 
+    database_not_found_exception() | 
+    database_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type execute_sql_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    access_denied_exception() | 
     service_unavailable_error() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type execute_statement_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    database_error_exception() | 
-    access_denied_exception() | 
-    database_not_found_exception() | 
-    http_endpoint_not_enabled_exception() | 
-    secrets_error_exception() | 
-    invalid_resource_state_exception() | 
-    database_unavailable_exception() | 
-    invalid_secret_exception() | 
-    service_unavailable_error() | 
-    forbidden_exception() | 
-    transaction_not_found_exception() | 
     unsupported_result_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception() | 
+    service_unavailable_error() | 
+    secrets_error_exception() | 
+    invalid_secret_exception() | 
+    invalid_resource_state_exception() | 
+    internal_server_error_exception() | 
+    http_endpoint_not_enabled_exception() | 
+    forbidden_exception() | 
+    database_unavailable_exception() | 
     database_resuming_exception() | 
-    statement_timeout_exception().
+    database_not_found_exception() | 
+    database_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type rollback_transaction_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    database_error_exception() | 
-    access_denied_exception() | 
-    database_not_found_exception() | 
-    http_endpoint_not_enabled_exception() | 
+    transaction_not_found_exception() | 
+    statement_timeout_exception() | 
+    service_unavailable_error() | 
     secrets_error_exception() | 
-    invalid_resource_state_exception() | 
-    database_unavailable_exception() | 
     not_found_exception() | 
     invalid_secret_exception() | 
-    service_unavailable_error() | 
+    invalid_resource_state_exception() | 
+    internal_server_error_exception() | 
+    http_endpoint_not_enabled_exception() | 
     forbidden_exception() | 
-    transaction_not_found_exception() | 
-    statement_timeout_exception().
+    database_unavailable_exception() | 
+    database_not_found_exception() | 
+    database_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

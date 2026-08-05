@@ -112,64 +112,12 @@
 
 
 %% Example:
-%% describe_events_for_organization_response() :: #{
-%%   <<"events">> => list(organization_event()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_events_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_locale() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_locale() :: #{binary() => any()}.
-
-%% Example:
 %% account_entity_aggregate() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"count">> => integer(),
 %%   <<"statuses">> => map()
 %% }
 -type account_entity_aggregate() :: #{binary() => any()}.
-
-%% Example:
-%% organization_event_filter() :: #{
-%%   <<"actionabilities">> => list(list(any())()),
-%%   <<"awsAccountIds">> => list(string()),
-%%   <<"endTime">> => date_time_range(),
-%%   <<"entityArns">> => list(string()),
-%%   <<"entityValues">> => list(string()),
-%%   <<"eventStatusCodes">> => list(list(any())()),
-%%   <<"eventTypeCategories">> => list(list(any())()),
-%%   <<"eventTypeCodes">> => list(string()),
-%%   <<"lastUpdatedTime">> => date_time_range(),
-%%   <<"personas">> => list(list(any())()),
-%%   <<"regions">> => list(string()),
-%%   <<"services">> => list(string()),
-%%   <<"startTime">> => date_time_range()
-%% }
--type organization_event_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_details_for_organization_request() :: #{
-%%   <<"locale">> => string(),
-%%   <<"organizationEventDetailFilters">> := list(event_account_filter())
-%% }
--type describe_event_details_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_affected_accounts_for_organization_response() :: #{
-%%   <<"affectedAccounts">> => list(string()),
-%%   <<"eventScopeCode">> => list(any()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_affected_accounts_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pagination_token() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token() :: #{binary() => any()}.
 
 %% Example:
 %% affected_entity() :: #{
@@ -186,53 +134,33 @@
 -type affected_entity() :: #{binary() => any()}.
 
 %% Example:
-%% describe_entity_aggregates_response() :: #{
-%%   <<"entityAggregates">> => list(entity_aggregate())
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_entity_aggregates_response() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
-%% event_details() :: #{
-%%   <<"event">> => event(),
-%%   <<"eventDescription">> => event_description(),
-%%   <<"eventMetadata">> => map()
+%% date_time_range() :: #{
+%%   <<"from">> => non_neg_integer(),
+%%   <<"to">> => non_neg_integer()
 %% }
--type event_details() :: #{binary() => any()}.
+-type date_time_range() :: #{binary() => any()}.
 
 %% Example:
-%% organization_event_details_error_item() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"errorName">> => string(),
-%%   <<"eventArn">> => string()
+%% describe_affected_accounts_for_organization_request() :: #{
+%%   <<"eventArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type organization_event_details_error_item() :: #{binary() => any()}.
+-type describe_affected_accounts_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
-%% organization_event_details() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"event">> => event(),
-%%   <<"eventDescription">> => event_description(),
-%%   <<"eventMetadata">> => map()
+%% describe_affected_accounts_for_organization_response() :: #{
+%%   <<"affectedAccounts">> => list(string()),
+%%   <<"eventScopeCode">> => list(any()),
+%%   <<"nextToken">> => string()
 %% }
--type organization_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% entity_filter() :: #{
-%%   <<"entityArns">> => list(string()),
-%%   <<"entityValues">> => list(string()),
-%%   <<"eventArns">> => list(string()),
-%%   <<"lastUpdatedTimes">> => list(date_time_range()),
-%%   <<"statusCodes">> => list(list(any())()),
-%%   <<"tags">> => list(map())
-%% }
--type entity_filter() :: #{binary() => any()}.
-
-%% Example:
-%% event_description() :: #{
-%%   <<"latestDescription">> => string()
-%% }
--type event_description() :: #{binary() => any()}.
+-type describe_affected_accounts_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_affected_entities_for_organization_request() :: #{
@@ -253,52 +181,13 @@
 -type describe_affected_entities_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
-%% event_account_filter() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"eventArn">> => string()
-%% }
--type event_account_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_aggregates_for_organization_response() :: #{
-%%   <<"organizationEntityAggregates">> => list(organization_entity_aggregate())
-%% }
--type describe_entity_aggregates_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_aggregates_for_organization_request() :: #{
-%%   <<"awsAccountIds">> => list(string()),
-%%   <<"eventArns">> := list(string())
-%% }
--type describe_entity_aggregates_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_details_request() :: #{
-%%   <<"eventArns">> := list(string()),
-%%   <<"locale">> => string()
-%% }
--type describe_event_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_types_response() :: #{
-%%   <<"eventTypes">> => list(event_type()),
+%% describe_affected_entities_request() :: #{
+%%   <<"filter">> := entity_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type describe_event_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_aggregates_request() :: #{
-%%   <<"eventArns">> => list(string())
-%% }
--type describe_entity_aggregates_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_aggregate() :: #{
-%%   <<"count">> => integer(),
-%%   <<"eventArn">> => string(),
-%%   <<"statuses">> => map()
-%% }
--type entity_aggregate() :: #{binary() => any()}.
+-type describe_affected_entities_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_affected_entities_response() :: #{
@@ -308,27 +197,127 @@
 -type describe_affected_entities_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_entity_aggregates_for_organization_request() :: #{
+%%   <<"awsAccountIds">> => list(string()),
+%%   <<"eventArns">> := list(string())
+%% }
+-type describe_entity_aggregates_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_for_organization_response() :: #{
+%%   <<"organizationEntityAggregates">> => list(organization_entity_aggregate())
+%% }
+-type describe_entity_aggregates_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_request() :: #{
+%%   <<"eventArns">> => list(string())
+%% }
+-type describe_entity_aggregates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_aggregates_response() :: #{
+%%   <<"entityAggregates">> => list(entity_aggregate())
+%% }
+-type describe_entity_aggregates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_aggregates_request() :: #{
+%%   <<"aggregateField">> := list(any()),
+%%   <<"filter">> => event_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_aggregates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_aggregates_response() :: #{
+%%   <<"eventAggregates">> => list(event_aggregate()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_aggregates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_for_organization_request() :: #{
+%%   <<"locale">> => string(),
+%%   <<"organizationEventDetailFilters">> := list(event_account_filter())
+%% }
+-type describe_event_details_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_for_organization_response() :: #{
+%%   <<"failedSet">> => list(organization_event_details_error_item()),
+%%   <<"successfulSet">> => list(organization_event_details())
+%% }
+-type describe_event_details_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_request() :: #{
+%%   <<"eventArns">> := list(string()),
+%%   <<"locale">> => string()
+%% }
+-type describe_event_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_details_response() :: #{
+%%   <<"failedSet">> => list(event_details_error_item()),
+%%   <<"successfulSet">> => list(event_details())
+%% }
+-type describe_event_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_types_request() :: #{
+%%   <<"filter">> => event_type_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_types_response() :: #{
+%%   <<"eventTypes">> => list(event_type()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_event_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_for_organization_request() :: #{
+%%   <<"filter">> => organization_event_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_for_organization_response() :: #{
+%%   <<"events">> => list(organization_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"filter">> => event_filter(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"events">> => list(event()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_health_service_status_for_organization_response() :: #{
 %%   <<"healthServiceAccessStatusForOrganization">> => string()
 %% }
 -type describe_health_service_status_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% organization_entity_aggregate() :: #{
-%%   <<"accounts">> => list(account_entity_aggregate()),
-%%   <<"count">> => integer(),
-%%   <<"eventArn">> => string(),
-%%   <<"statuses">> => map()
-%% }
--type organization_entity_aggregate() :: #{binary() => any()}.
-
-%% Example:
-%% describe_affected_accounts_for_organization_request() :: #{
-%%   <<"eventArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_affected_accounts_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% entity_account_filter() :: #{
@@ -339,20 +328,77 @@
 -type entity_account_filter() :: #{binary() => any()}.
 
 %% Example:
-%% organization_affected_entities_error_item() :: #{
+%% entity_aggregate() :: #{
+%%   <<"count">> => integer(),
+%%   <<"eventArn">> => string(),
+%%   <<"statuses">> => map()
+%% }
+-type entity_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% entity_filter() :: #{
+%%   <<"entityArns">> => list(string()),
+%%   <<"entityValues">> => list(string()),
+%%   <<"eventArns">> => list(string()),
+%%   <<"lastUpdatedTimes">> => list(date_time_range()),
+%%   <<"statusCodes">> => list(list(any())()),
+%%   <<"tags">> => list(map())
+%% }
+-type entity_filter() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"actionability">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"availabilityZone">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"eventScopeCode">> => list(any()),
+%%   <<"eventTypeCategory">> => list(any()),
+%%   <<"eventTypeCode">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"personas">> => list(list(any())()),
+%%   <<"region">> => string(),
+%%   <<"service">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"statusCode">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% event_account_filter() :: #{
 %%   <<"awsAccountId">> => string(),
+%%   <<"eventArn">> => string()
+%% }
+-type event_account_filter() :: #{binary() => any()}.
+
+%% Example:
+%% event_aggregate() :: #{
+%%   <<"aggregateValue">> => string(),
+%%   <<"count">> => integer()
+%% }
+-type event_aggregate() :: #{binary() => any()}.
+
+%% Example:
+%% event_description() :: #{
+%%   <<"latestDescription">> => string()
+%% }
+-type event_description() :: #{binary() => any()}.
+
+%% Example:
+%% event_details() :: #{
+%%   <<"event">> => event(),
+%%   <<"eventDescription">> => event_description(),
+%%   <<"eventMetadata">> => map()
+%% }
+-type event_details() :: #{binary() => any()}.
+
+%% Example:
+%% event_details_error_item() :: #{
 %%   <<"errorMessage">> => string(),
 %%   <<"errorName">> => string(),
 %%   <<"eventArn">> => string()
 %% }
--type organization_affected_entities_error_item() :: #{binary() => any()}.
-
-%% Example:
-%% date_time_range() :: #{
-%%   <<"from">> => non_neg_integer(),
-%%   <<"to">> => non_neg_integer()
-%% }
--type date_time_range() :: #{binary() => any()}.
+-type event_details_error_item() :: #{binary() => any()}.
 
 %% Example:
 %% event_filter() :: #{
@@ -375,62 +421,14 @@
 -type event_filter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_aggregates_request() :: #{
-%%   <<"aggregateField">> := list(any()),
-%%   <<"filter">> => event_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_event_aggregates_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_for_organization_request() :: #{
-%%   <<"filter">> => organization_event_filter(),
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_events_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
+%% event_type() :: #{
 %%   <<"actionability">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"availabilityZone">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"eventScopeCode">> => list(any()),
-%%   <<"eventTypeCategory">> => list(any()),
-%%   <<"eventTypeCode">> => string(),
-%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"category">> => list(any()),
+%%   <<"code">> => string(),
 %%   <<"personas">> => list(list(any())()),
-%%   <<"region">> => string(),
-%%   <<"service">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"statusCode">> => list(any())
+%%   <<"service">> => string()
 %% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_request() :: #{
-%%   <<"filter">> => event_filter(),
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_aggregates_response() :: #{
-%%   <<"eventAggregates">> => list(event_aggregate()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_event_aggregates_response() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
+-type event_type() :: #{binary() => any()}.
 
 %% Example:
 %% event_type_filter() :: #{
@@ -443,30 +441,28 @@
 -type event_type_filter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_details_for_organization_response() :: #{
-%%   <<"failedSet">> => list(organization_event_details_error_item()),
-%%   <<"successfulSet">> => list(organization_event_details())
+%% invalid_pagination_token() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_event_details_for_organization_response() :: #{binary() => any()}.
+-type invalid_pagination_token() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_types_request() :: #{
-%%   <<"filter">> => event_type_filter(),
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% organization_affected_entities_error_item() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"errorName">> => string(),
+%%   <<"eventArn">> => string()
 %% }
--type describe_event_types_request() :: #{binary() => any()}.
+-type organization_affected_entities_error_item() :: #{binary() => any()}.
 
 %% Example:
-%% event_type() :: #{
-%%   <<"actionability">> => list(any()),
-%%   <<"category">> => list(any()),
-%%   <<"code">> => string(),
-%%   <<"personas">> => list(list(any())()),
-%%   <<"service">> => string()
+%% organization_entity_aggregate() :: #{
+%%   <<"accounts">> => list(account_entity_aggregate()),
+%%   <<"count">> => integer(),
+%%   <<"eventArn">> => string(),
+%%   <<"statuses">> => map()
 %% }
--type event_type() :: #{binary() => any()}.
+-type organization_entity_aggregate() :: #{binary() => any()}.
 
 %% Example:
 %% organization_event() :: #{
@@ -486,53 +482,57 @@
 -type organization_event() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_details_response() :: #{
-%%   <<"failedSet">> => list(event_details_error_item()),
-%%   <<"successfulSet">> => list(event_details())
+%% organization_event_details() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"event">> => event(),
+%%   <<"eventDescription">> => event_description(),
+%%   <<"eventMetadata">> => map()
 %% }
--type describe_event_details_response() :: #{binary() => any()}.
+-type organization_event_details() :: #{binary() => any()}.
 
 %% Example:
-%% event_details_error_item() :: #{
+%% organization_event_details_error_item() :: #{
+%%   <<"awsAccountId">> => string(),
 %%   <<"errorMessage">> => string(),
 %%   <<"errorName">> => string(),
 %%   <<"eventArn">> => string()
 %% }
--type event_details_error_item() :: #{binary() => any()}.
+-type organization_event_details_error_item() :: #{binary() => any()}.
 
 %% Example:
-%% event_aggregate() :: #{
-%%   <<"aggregateValue">> => string(),
-%%   <<"count">> => integer()
+%% organization_event_filter() :: #{
+%%   <<"actionabilities">> => list(list(any())()),
+%%   <<"awsAccountIds">> => list(string()),
+%%   <<"endTime">> => date_time_range(),
+%%   <<"entityArns">> => list(string()),
+%%   <<"entityValues">> => list(string()),
+%%   <<"eventStatusCodes">> => list(list(any())()),
+%%   <<"eventTypeCategories">> => list(list(any())()),
+%%   <<"eventTypeCodes">> => list(string()),
+%%   <<"lastUpdatedTime">> => date_time_range(),
+%%   <<"personas">> => list(list(any())()),
+%%   <<"regions">> => list(string()),
+%%   <<"services">> => list(string()),
+%%   <<"startTime">> => date_time_range()
 %% }
--type event_aggregate() :: #{binary() => any()}.
+-type organization_event_filter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_response() :: #{
-%%   <<"events">> => list(event()),
-%%   <<"nextToken">> => string()
+%% unsupported_locale() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_affected_entities_request() :: #{
-%%   <<"filter">> := entity_filter(),
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_affected_entities_request() :: #{binary() => any()}.
+-type unsupported_locale() :: #{binary() => any()}.
 
 -type describe_affected_accounts_for_organization_errors() ::
     invalid_pagination_token().
 
 -type describe_affected_entities_errors() ::
-    invalid_pagination_token() | 
-    unsupported_locale().
+    unsupported_locale() | 
+    invalid_pagination_token().
 
 -type describe_affected_entities_for_organization_errors() ::
-    invalid_pagination_token() | 
-    unsupported_locale().
+    unsupported_locale() | 
+    invalid_pagination_token().
 
 -type describe_event_aggregates_errors() ::
     invalid_pagination_token().
@@ -544,16 +544,16 @@
     unsupported_locale().
 
 -type describe_event_types_errors() ::
-    invalid_pagination_token() | 
-    unsupported_locale().
+    unsupported_locale() | 
+    invalid_pagination_token().
 
 -type describe_events_errors() ::
-    invalid_pagination_token() | 
-    unsupported_locale().
+    unsupported_locale() | 
+    invalid_pagination_token().
 
 -type describe_events_for_organization_errors() ::
-    invalid_pagination_token() | 
-    unsupported_locale().
+    unsupported_locale() | 
+    invalid_pagination_token().
 
 -type disable_health_service_access_for_organization_errors() ::
     concurrent_modification_exception().

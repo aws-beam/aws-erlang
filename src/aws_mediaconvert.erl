@@ -89,65 +89,58 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% cancel_job_request() :: #{}
--type cancel_job_request() :: #{}.
-
 
 %% Example:
-%% video_overlay() :: #{
-%%   <<"Crop">> => video_overlay_crop(),
-%%   <<"EndTimecode">> => string(),
-%%   <<"InitialPosition">> => video_overlay_position(),
-%%   <<"Input">> => video_overlay_input(),
-%%   <<"Playback">> => list(any()),
-%%   <<"StartTimecode">> => string(),
-%%   <<"Transitions">> => list(video_overlay_transition())
+%% aac_settings() :: #{
+%%   <<"AudioDescriptionBroadcasterMix">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"LoudnessMeasurementMode">> => list(any()),
+%%   <<"RapInterval">> => integer(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"RawFormat">> => list(any()),
+%%   <<"SampleRate">> => integer(),
+%%   <<"Specification">> => list(any()),
+%%   <<"TargetLoudnessRange">> => integer(),
+%%   <<"VbrQuality">> => list(any())
 %% }
--type video_overlay() :: #{binary() => any()}.
+-type aac_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% deinterlacer() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"Control">> => list(any()),
-%%   <<"Mode">> => list(any())
+%% ac3_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"Dialnorm">> => integer(),
+%%   <<"DynamicRangeCompressionLine">> => list(any()),
+%%   <<"DynamicRangeCompressionProfile">> => list(any()),
+%%   <<"DynamicRangeCompressionRf">> => list(any()),
+%%   <<"LfeFilter">> => list(any()),
+%%   <<"MetadataControl">> => list(any()),
+%%   <<"SampleRate">> => integer()
 %% }
--type deinterlacer() :: #{binary() => any()}.
+-type ac3_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% xavc4k_intra_vbr_profile_settings() :: #{
-%%   <<"XavcClass">> => list(any())
+%% ac4_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"DynamicRangeCompressionFlatPanelTv">> => list(any()),
+%%   <<"DynamicRangeCompressionHomeTheater">> => list(any()),
+%%   <<"DynamicRangeCompressionPortableHeadphones">> => list(any()),
+%%   <<"DynamicRangeCompressionPortableSpeakers">> => list(any()),
+%%   <<"LoRoCenterMixLevel">> => float(),
+%%   <<"LoRoSurroundMixLevel">> => float(),
+%%   <<"LtRtCenterMixLevel">> => float(),
+%%   <<"LtRtSurroundMixLevel">> => float(),
+%%   <<"SampleRate">> => integer(),
+%%   <<"StereoDownmix">> => list(any())
 %% }
--type xavc4k_intra_vbr_profile_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_share_response() :: #{}
--type create_resource_share_response() :: #{}.
-
-
-%% Example:
-%% output_detail() :: #{
-%%   <<"DurationInMs">> => integer(),
-%%   <<"VideoDetails">> => video_detail()
-%% }
--type output_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% mp4_settings() :: #{
-%%   <<"AudioDuration">> => list(any()),
-%%   <<"C2paManifest">> => list(any()),
-%%   <<"CertificateSecret">> => string(),
-%%   <<"CslgAtom">> => list(any()),
-%%   <<"CttsVersion">> => integer(),
-%%   <<"FreeSpaceBox">> => list(any()),
-%%   <<"MoovPlacement">> => list(any()),
-%%   <<"Mp4MajorBrand">> => string(),
-%%   <<"SigningKmsKey">> => string()
-%% }
--type mp4_settings() :: #{binary() => any()}.
+-type ac4_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -155,92 +148,6 @@
 %%   <<"Mode">> => list(any())
 %% }
 -type acceleration_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_group_settings() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"DestinationSettings">> => destination_settings()
-%% }
--type file_group_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_preset_response() :: #{}
--type delete_preset_response() :: #{}.
-
-
-%% Example:
-%% motion_image_insertion_framerate() :: #{
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer()
-%% }
--type motion_image_insertion_framerate() :: #{binary() => any()}.
-
-
-%% Example:
-%% mxf_settings() :: #{
-%%   <<"AfdSignaling">> => list(any()),
-%%   <<"Profile">> => list(any()),
-%%   <<"UncompressedAudioWrapping">> => list(any()),
-%%   <<"XavcProfileSettings">> => mxf_xavc_profile_settings()
-%% }
--type mxf_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_queue_response() :: #{
-%%   <<"Queue">> => queue()
-%% }
--type get_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_template_request() :: #{
-%%   <<"AccelerationSettings">> => acceleration_settings(),
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()),
-%%   <<"Priority">> => integer(),
-%%   <<"Queue">> => string(),
-%%   <<"Settings">> => job_template_settings(),
-%%   <<"StatusUpdateInterval">> => list(any())
-%% }
--type update_job_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prores_settings() :: #{
-%%   <<"ChromaSampling">> => list(any()),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"ParControl">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any())
-%% }
--type prores_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_template_response() :: #{
-%%   <<"JobTemplate">> => job_template()
-%% }
--type create_job_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -252,159 +159,41 @@
 
 
 %% Example:
-%% list_queues_request() :: #{
-%%   <<"ListBy">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any())
-%% }
--type list_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% partner_watermarking() :: #{
-%%   <<"NexguardFileMarkerSettings">> => nex_guard_file_marker_settings()
-%% }
--type partner_watermarking() :: #{binary() => any()}.
-
-
-%% Example:
-%% container() :: #{
-%%   <<"Duration">> => float(),
-%%   <<"Format">> => list(any()),
-%%   <<"StartTimecode">> => string(),
-%%   <<"Tracks">> => list(track())
-%% }
--type container() :: #{binary() => any()}.
-
-
-%% Example:
-%% rectangle() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Width">> => integer(),
-%%   <<"X">> => integer(),
-%%   <<"Y">> => integer()
-%% }
--type rectangle() :: #{binary() => any()}.
-
-
-%% Example:
-%% force_include_rendition_size() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Width">> => integer()
-%% }
--type force_include_rendition_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% mov_settings() :: #{
-%%   <<"ClapAtom">> => list(any()),
-%%   <<"CslgAtom">> => list(any()),
-%%   <<"Mpeg2FourCCControl">> => list(any()),
-%%   <<"PaddingControl">> => list(any()),
-%%   <<"Reference">> => list(any())
-%% }
--type mov_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_response() :: #{
-%%   <<"Job">> => job()
-%% }
--type create_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_template_response() :: #{}
--type delete_job_template_response() :: #{}.
-
-
-%% Example:
-%% hls_caption_language_mapping() :: #{
-%%   <<"CaptionChannel">> => integer(),
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageDescription">> => string()
-%% }
--type hls_caption_language_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_preset_request() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Settings">> := preset_settings(),
-%%   <<"Tags">> => map()
-%% }
--type create_preset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_encryption_settings() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"KmsEncryptionContext">> => string(),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type s3_encryption_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_share_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"SupportCaseId">> := string()
-%% }
--type create_resource_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_jobs_query_request() :: #{
-%%   <<"FilterList">> => list(jobs_query_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any())
-%% }
--type start_jobs_query_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mp2_settings() :: #{
-%%   <<"AudioDescriptionMix">> => list(any()),
-%%   <<"Bitrate">> => integer(),
+%% aiff_settings() :: #{
+%%   <<"BitDepth">> => integer(),
 %%   <<"Channels">> => integer(),
 %%   <<"SampleRate">> => integer()
 %% }
--type mp2_settings() :: #{binary() => any()}.
+-type aiff_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% jobs_query_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string())
+%% allowed_rendition_size() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Required">> => list(any()),
+%%   <<"Width">> => integer()
 %% }
--type jobs_query_filter() :: #{binary() => any()}.
+-type allowed_rendition_size() :: #{binary() => any()}.
 
 
 %% Example:
-%% extended_data_services() :: #{
-%%   <<"CopyProtectionAction">> => list(any()),
-%%   <<"VchipAction">> => list(any())
+%% ancillary_source_settings() :: #{
+%%   <<"Convert608To708">> => list(any()),
+%%   <<"SourceAncillaryChannelNumber">> => integer(),
+%%   <<"TerminateCaptions">> => list(any())
 %% }
--type extended_data_services() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type ancillary_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_presets_request() :: #{
-%%   <<"Category">> => string(),
-%%   <<"ListBy">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any())
+%% associate_certificate_request() :: #{
+%%   <<"Arn">> := string()
 %% }
--type list_presets_request() :: #{binary() => any()}.
+-type associate_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_certificate_response() :: #{}
+-type associate_certificate_response() :: #{}.
 
 
 %% Example:
@@ -413,70 +202,6 @@
 %%   <<"ChannelTags">> => list(list(any())())
 %% }
 -type audio_channel_tagging_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% nielsen_configuration() :: #{
-%%   <<"BreakoutCode">> => integer(),
-%%   <<"DistributorId">> => string()
-%% }
--type nielsen_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_selector() :: #{
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"SourceSettings">> => caption_source_settings()
-%% }
--type caption_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% timecode_burnin() :: #{
-%%   <<"FontSize">> => integer(),
-%%   <<"Position">> => list(any()),
-%%   <<"Prefix">> => string()
-%% }
--type timecode_burnin() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any()),
-%%   <<"Queue">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_jobs_query_results_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_jobs_query_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{}
--type get_policy_request() :: #{}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_settings() :: #{
-%%   <<"S3Settings">> => s3_destination_settings()
-%% }
--type destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -499,29 +224,184 @@
 
 
 %% Example:
-%% resource_tags() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Tags">> => map()
+%% audio_description() :: #{
+%%   <<"AudioChannelTaggingSettings">> => audio_channel_tagging_settings(),
+%%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
+%%   <<"AudioPitchCorrectionSettings">> => audio_pitch_correction_settings(),
+%%   <<"AudioSourceName">> => string(),
+%%   <<"AudioType">> => integer(),
+%%   <<"AudioTypeControl">> => list(any()),
+%%   <<"CodecSettings">> => audio_codec_settings(),
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageCodeControl">> => list(any()),
+%%   <<"RemixSettings">> => remix_settings(),
+%%   <<"StreamName">> => string()
 %% }
--type resource_tags() :: #{binary() => any()}.
+-type audio_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% aiff_settings() :: #{
+%% audio_normalization_settings() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"AlgorithmControl">> => list(any()),
+%%   <<"CorrectionGateLevel">> => integer(),
+%%   <<"LoudnessLogging">> => list(any()),
+%%   <<"PeakCalculation">> => list(any()),
+%%   <<"TargetLkfs">> => float(),
+%%   <<"TruePeakLimiterThreshold">> => float()
+%% }
+-type audio_normalization_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pitch_correction_settings() :: #{
+%%   <<"SlowPalPitchCorrection">> => list(any())
+%% }
+-type audio_pitch_correction_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_properties() :: #{
 %%   <<"BitDepth">> => integer(),
+%%   <<"BitRate">> => float(),
 %%   <<"Channels">> => integer(),
+%%   <<"FrameRate">> => frame_rate(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"ObjectCount">> => integer(),
 %%   <<"SampleRate">> => integer()
 %% }
--type aiff_settings() :: #{binary() => any()}.
+-type audio_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% esam_settings() :: #{
-%%   <<"ManifestConfirmConditionNotification">> => esam_manifest_confirm_condition_notification(),
-%%   <<"ResponseSignalPreroll">> => integer(),
-%%   <<"SignalProcessingNotification">> => esam_signal_processing_notification()
+%% audio_selector() :: #{
+%%   <<"AudioDurationCorrection">> => list(any()),
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"DefaultSelection">> => list(any()),
+%%   <<"ExternalAudioFileInput">> => string(),
+%%   <<"HlsRenditionGroupSettings">> => hls_rendition_group_settings(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Offset">> => integer(),
+%%   <<"Pids">> => list(integer()),
+%%   <<"ProgramSelection">> => integer(),
+%%   <<"RemixSettings">> => remix_settings(),
+%%   <<"SelectorType">> => list(any()),
+%%   <<"Streams">> => list(integer()),
+%%   <<"Tracks">> => list(integer())
 %% }
--type esam_settings() :: #{binary() => any()}.
+-type audio_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_selector_group() :: #{
+%%   <<"AudioSelectorNames">> => list(string())
+%% }
+-type audio_selector_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_abr_rule() :: #{
+%%   <<"AllowedRenditions">> => list(allowed_rendition_size()),
+%%   <<"ForceIncludeRenditions">> => list(force_include_rendition_size()),
+%%   <<"MinBottomRenditionSize">> => min_bottom_rendition_size(),
+%%   <<"MinTopRenditionSize">> => min_top_rendition_size(),
+%%   <<"Type">> => list(any())
+%% }
+-type automated_abr_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_abr_settings() :: #{
+%%   <<"MaxAbrBitrate">> => integer(),
+%%   <<"MaxQualityLevel">> => float(),
+%%   <<"MaxRenditions">> => integer(),
+%%   <<"MinAbrBitrate">> => integer(),
+%%   <<"Rules">> => list(automated_abr_rule())
+%% }
+-type automated_abr_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_encoding_settings() :: #{
+%%   <<"AbrSettings">> => automated_abr_settings()
+%% }
+-type automated_encoding_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% av1_qvbr_settings() :: #{
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"QvbrQualityLevelFineTune">> => float()
+%% }
+-type av1_qvbr_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% av1_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"BitDepth">> => list(any()),
+%%   <<"FilmGrainSynthesis">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"QvbrSettings">> => av1_qvbr_settings(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"SpatialAdaptiveQuantization">> => list(any())
+%% }
+-type av1_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% avail_blanking() :: #{
+%%   <<"AvailBlankingImage">> => string()
+%% }
+-type avail_blanking() :: #{binary() => any()}.
+
+
+%% Example:
+%% avc_intra_settings() :: #{
+%%   <<"AvcIntraClass">> => list(any()),
+%%   <<"AvcIntraUhdSettings">> => avc_intra_uhd_settings(),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Telecine">> => list(any())
+%% }
+-type avc_intra_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% avc_intra_uhd_settings() :: #{
+%%   <<"QualityTuningLevel">> => list(any())
+%% }
+-type avc_intra_uhd_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bandwidth_reduction_filter() :: #{
+%%   <<"Sharpening">> => list(any()),
+%%   <<"Strength">> => list(any())
+%% }
+-type bandwidth_reduction_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -555,499 +435,119 @@
 %% }
 -type burnin_destination_settings() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_job_request() :: #{}
+-type cancel_job_request() :: #{}.
 
 %% Example:
-%% hls_rendition_group_settings() :: #{
-%%   <<"RenditionGroupId">> => string(),
-%%   <<"RenditionLanguageCode">> => list(any()),
-%%   <<"RenditionName">> => string()
+%% cancel_job_response() :: #{}
+-type cancel_job_response() :: #{}.
+
+
+%% Example:
+%% caption_description() :: #{
+%%   <<"CaptionSelectorName">> => string(),
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"DestinationSettings">> => caption_destination_settings(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageDescription">> => string()
 %% }
--type hls_rendition_group_settings() :: #{binary() => any()}.
+-type caption_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% xavc4k_profile_settings() :: #{
-%%   <<"BitrateClass">> => list(any()),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"FlickerAdaptiveQuantization">> => list(any()),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"HrdBufferSize">> => integer(),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"Slices">> => integer()
+%% caption_description_preset() :: #{
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"DestinationSettings">> => caption_destination_settings(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageDescription">> => string()
 %% }
--type xavc4k_profile_settings() :: #{binary() => any()}.
+-type caption_description_preset() :: #{binary() => any()}.
 
 
 %% Example:
-%% color_corrector() :: #{
-%%   <<"Brightness">> => integer(),
-%%   <<"ClipLimits">> => clip_limits(),
-%%   <<"ColorSpaceConversion">> => list(any()),
-%%   <<"Contrast">> => integer(),
-%%   <<"Hdr10Metadata">> => hdr10_metadata(),
-%%   <<"HdrToSdrToneMapper">> => list(any()),
-%%   <<"Hue">> => integer(),
-%%   <<"MaxLuminance">> => integer(),
-%%   <<"SampleRangeConversion">> => list(any()),
-%%   <<"Saturation">> => integer(),
-%%   <<"SdrReferenceWhiteLevel">> => integer()
+%% caption_destination_settings() :: #{
+%%   <<"BurninDestinationSettings">> => burnin_destination_settings(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"DvbSubDestinationSettings">> => dvb_sub_destination_settings(),
+%%   <<"EmbeddedDestinationSettings">> => embedded_destination_settings(),
+%%   <<"ImscDestinationSettings">> => imsc_destination_settings(),
+%%   <<"SccDestinationSettings">> => scc_destination_settings(),
+%%   <<"SrtDestinationSettings">> => srt_destination_settings(),
+%%   <<"TeletextDestinationSettings">> => teletext_destination_settings(),
+%%   <<"TtmlDestinationSettings">> => ttml_destination_settings(),
+%%   <<"WebvttDestinationSettings">> => webvtt_destination_settings()
 %% }
--type color_corrector() :: #{binary() => any()}.
+-type caption_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% aac_settings() :: #{
-%%   <<"AudioDescriptionBroadcasterMix">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"LoudnessMeasurementMode">> => list(any()),
-%%   <<"RapInterval">> => integer(),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"RawFormat">> => list(any()),
-%%   <<"SampleRate">> => integer(),
-%%   <<"Specification">> => list(any()),
-%%   <<"TargetLoudnessRange">> => integer(),
-%%   <<"VbrQuality">> => list(any())
+%% caption_selector() :: #{
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"SourceSettings">> => caption_source_settings()
 %% }
--type aac_settings() :: #{binary() => any()}.
+-type caption_selector() :: #{binary() => any()}.
 
 
 %% Example:
-%% bandwidth_reduction_filter() :: #{
-%%   <<"Sharpening">> => list(any()),
-%%   <<"Strength">> => list(any())
-%% }
--type bandwidth_reduction_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FileSize">> => float(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"MimeType">> => string()
-%% }
--type metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_video_generator() :: #{
-%%   <<"Channels">> => integer(),
-%%   <<"Duration">> => integer(),
+%% caption_source_framerate() :: #{
 %%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"Height">> => integer(),
-%%   <<"ImageInput">> => string(),
-%%   <<"SampleRate">> => integer(),
-%%   <<"Width">> => integer()
+%%   <<"FramerateNumerator">> => integer()
 %% }
--type input_video_generator() :: #{binary() => any()}.
+-type caption_source_framerate() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()),
-%%   <<"NextToken">> => string()
+%% caption_source_settings() :: #{
+%%   <<"AncillarySourceSettings">> => ancillary_source_settings(),
+%%   <<"DvbSubSourceSettings">> => dvb_sub_source_settings(),
+%%   <<"EmbeddedSourceSettings">> => embedded_source_settings(),
+%%   <<"FileSourceSettings">> => file_source_settings(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"TeletextSourceSettings">> => teletext_source_settings(),
+%%   <<"TrackSourceSettings">> => track_source_settings(),
+%%   <<"WebvttHlsSourceSettings">> => webvtt_hls_source_settings()
 %% }
--type describe_endpoints_response() :: #{binary() => any()}.
+-type caption_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_overlay_position() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Opacity">> => integer(),
-%%   <<"Unit">> => list(any()),
-%%   <<"Width">> => integer(),
-%%   <<"XPosition">> => integer(),
-%%   <<"YPosition">> => integer()
+%% channel_mapping() :: #{
+%%   <<"OutputChannels">> => list(output_channel_mapping())
 %% }
--type video_overlay_position() :: #{binary() => any()}.
+-type channel_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_template() :: #{
-%%   <<"AccelerationSettings">> => acceleration_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"Category">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Queue">> => string(),
-%%   <<"Settings">> => job_template_settings(),
-%%   <<"StatusUpdateInterval">> => list(any()),
-%%   <<"Type">> => list(any())
+%% clip_limits() :: #{
+%%   <<"MaximumRGBTolerance">> => integer(),
+%%   <<"MaximumYUV">> => integer(),
+%%   <<"MinimumRGBTolerance">> => integer(),
+%%   <<"MinimumYUV">> => integer()
 %% }
--type job_template() :: #{binary() => any()}.
+-type clip_limits() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_abr_rule() :: #{
-%%   <<"AllowedRenditions">> => list(allowed_rendition_size()),
-%%   <<"ForceIncludeRenditions">> => list(force_include_rendition_size()),
-%%   <<"MinBottomRenditionSize">> => min_bottom_rendition_size(),
-%%   <<"MinTopRenditionSize">> => min_top_rendition_size(),
-%%   <<"Type">> => list(any())
+%% cmaf_additional_manifest() :: #{
+%%   <<"ManifestNameModifier">> => string(),
+%%   <<"SelectedOutputs">> => list(string())
 %% }
--type automated_abr_rule() :: #{binary() => any()}.
+-type cmaf_additional_manifest() :: #{binary() => any()}.
 
 
 %% Example:
-%% m3u8_settings() :: #{
-%%   <<"AudioDuration">> => list(any()),
-%%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"AudioPids">> => list(integer()),
-%%   <<"AudioPtsOffsetDelta">> => integer(),
-%%   <<"DataPTSControl">> => list(any()),
-%%   <<"MaxPcrInterval">> => integer(),
-%%   <<"NielsenId3">> => list(any()),
-%%   <<"PatInterval">> => integer(),
-%%   <<"PcrControl">> => list(any()),
-%%   <<"PcrPid">> => integer(),
-%%   <<"PmtInterval">> => integer(),
-%%   <<"PmtPid">> => integer(),
-%%   <<"PrivateMetadataPid">> => integer(),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"PtsOffset">> => integer(),
-%%   <<"PtsOffsetMode">> => list(any()),
-%%   <<"Scte35Pid">> => integer(),
-%%   <<"Scte35Source">> => list(any()),
-%%   <<"TimedMetadata">> => list(any()),
-%%   <<"TimedMetadataPid">> => integer(),
-%%   <<"TransportStreamId">> => integer(),
-%%   <<"VideoPid">> => integer()
-%% }
--type m3u8_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"AccelerationSettings">> => acceleration_settings(),
-%%   <<"BillingTagsSource">> => list(any()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()),
-%%   <<"JobEngineVersion">> => string(),
-%%   <<"JobTemplate">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Queue">> => string(),
-%%   <<"Role">> := string(),
-%%   <<"Settings">> := job_settings(),
-%%   <<"SimulateReservedQueue">> => list(any()),
-%%   <<"StatusUpdateInterval">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UserMetadata">> => map()
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% nex_guard_file_marker_settings() :: #{
-%%   <<"License">> => string(),
-%%   <<"Payload">> => integer(),
-%%   <<"Preset">> => string(),
-%%   <<"Strength">> => list(any())
-%% }
--type nex_guard_file_marker_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% ms_smooth_encryption_settings() :: #{
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
-%% }
--type ms_smooth_encryption_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_pitch_correction_settings() :: #{
-%%   <<"SlowPalPitchCorrection">> => list(any())
-%% }
--type audio_pitch_correction_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_sub_source_settings() :: #{
-%%   <<"Pid">> => integer()
-%% }
--type dvb_sub_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% reservation_plan_settings() :: #{
-%%   <<"Commitment">> => list(any()),
-%%   <<"RenewalType">> => list(any()),
-%%   <<"ReservedSlots">> => integer()
-%% }
--type reservation_plan_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ConcurrentJobs">> => integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"MaximumConcurrentFeeds">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"PricingPlan">> => list(any()),
-%%   <<"ProgressingJobsCount">> => integer(),
-%%   <<"ReservationPlan">> => reservation_plan(),
-%%   <<"ServiceOverrides">> => list(service_override()),
-%%   <<"Status">> => list(any()),
-%%   <<"SubmittedJobsCount">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type queue() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_response() :: #{}
--type delete_policy_response() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> => list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_request() :: #{
-%%   <<"ConcurrentJobs">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"MaximumConcurrentFeeds">> => integer(),
-%%   <<"ReservationPlanSettings">> => reservation_plan_settings(),
-%%   <<"Status">> => list(any())
-%% }
--type update_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% flac_settings() :: #{
-%%   <<"BitDepth">> => integer(),
-%%   <<"Channels">> => integer(),
-%%   <<"SampleRate">> => integer()
-%% }
--type flac_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_access_control() :: #{
-%%   <<"CannedAcl">> => list(any())
-%% }
--type s3_destination_access_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% static_key_provider() :: #{
-%%   <<"KeyFormat">> => string(),
-%%   <<"KeyFormatVersions">> => string(),
-%%   <<"StaticKeyValue">> => string(),
-%%   <<"Url">> => string()
-%% }
--type static_key_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_template_settings() :: #{
-%%   <<"AdAvailOffset">> => integer(),
-%%   <<"AvailBlanking">> => avail_blanking(),
-%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
-%%   <<"Esam">> => esam_settings(),
-%%   <<"ExtendedDataServices">> => extended_data_services(),
-%%   <<"FollowSource">> => integer(),
-%%   <<"Inputs">> => list(input_template()),
-%%   <<"KantarWatermark">> => kantar_watermark_settings(),
-%%   <<"MotionImageInserter">> => motion_image_inserter(),
-%%   <<"NielsenConfiguration">> => nielsen_configuration(),
-%%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
-%%   <<"OutputGroups">> => list(output_group()),
-%%   <<"TimecodeConfig">> => timecode_config(),
-%%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
-%% }
--type job_template_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% track() :: #{
-%%   <<"AudioProperties">> => audio_properties(),
-%%   <<"Codec">> => list(any()),
-%%   <<"DataProperties">> => data_properties(),
-%%   <<"Duration">> => float(),
-%%   <<"Index">> => integer(),
-%%   <<"TrackType">> => list(any()),
-%%   <<"VideoProperties">> => video_properties()
-%% }
--type track() :: #{binary() => any()}.
-
-
-%% Example:
-%% track_mapping() :: #{
-%%   <<"AudioTrackIndexes">> => list(integer()),
-%%   <<"DataTrackIndexes">> => list(integer()),
-%%   <<"VideoTrackIndexes">> => list(integer())
-%% }
--type track_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% speke_key_provider_cmaf() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DashSignaledSystemIds">> => list(string()),
-%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
-%%   <<"HlsSignaledSystemIds">> => list(string()),
-%%   <<"ResourceId">> => string(),
-%%   <<"Url">> => string()
-%% }
--type speke_key_provider_cmaf() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_description() :: #{
-%%   <<"AfdSignaling">> => list(any()),
-%%   <<"AntiAlias">> => list(any()),
-%%   <<"ChromaPositionMode">> => list(any()),
-%%   <<"CodecSettings">> => video_codec_settings(),
-%%   <<"ColorMetadata">> => list(any()),
-%%   <<"Crop">> => rectangle(),
-%%   <<"DropFrameTimecode">> => list(any()),
-%%   <<"FixedAfd">> => integer(),
-%%   <<"Height">> => integer(),
-%%   <<"Position">> => rectangle(),
-%%   <<"RespondToAfd">> => list(any()),
-%%   <<"ScalingBehavior">> => list(any()),
-%%   <<"Sharpness">> => integer(),
-%%   <<"TimecodeInsertion">> => list(any()),
-%%   <<"TimecodeTrack">> => list(any()),
-%%   <<"VideoPreprocessors">> => video_preprocessor(),
-%%   <<"Width">> => integer()
-%% }
--type video_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_template() :: #{
-%%   <<"AdvancedInputFilter">> => list(any()),
-%%   <<"AdvancedInputFilterSettings">> => advanced_input_filter_settings(),
-%%   <<"AudioSelectorGroups">> => map(),
-%%   <<"AudioSelectors">> => map(),
-%%   <<"CaptionSelectors">> => map(),
-%%   <<"Crop">> => rectangle(),
-%%   <<"DeblockFilter">> => list(any()),
-%%   <<"DenoiseFilter">> => list(any()),
-%%   <<"DolbyVisionMetadataXml">> => string(),
-%%   <<"DynamicAudioSelectors">> => map(),
-%%   <<"FilterEnable">> => list(any()),
-%%   <<"FilterStrength">> => integer(),
-%%   <<"ImageInserter">> => image_inserter(),
-%%   <<"InputClippings">> => list(input_clipping()),
-%%   <<"InputScanType">> => list(any()),
-%%   <<"MultiViewSettings">> => list(multi_view_settings()),
-%%   <<"Position">> => rectangle(),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"PsiControl">> => list(any()),
-%%   <<"TimecodeSource">> => list(any()),
-%%   <<"TimecodeStart">> => string(),
-%%   <<"VideoOverlays">> => list(video_overlay()),
-%%   <<"VideoSelector">> => video_selector()
-%% }
--type input_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_encryption_settings() :: #{
+%% cmaf_encryption_settings() :: #{
+%%   <<"ClearLeadSegments">> => integer(),
 %%   <<"ConstantInitializationVector">> => string(),
 %%   <<"EncryptionMethod">> => list(any()),
 %%   <<"InitializationVectorInManifest">> => list(any()),
-%%   <<"OfflineEncrypted">> => list(any()),
-%%   <<"SpekeKeyProvider">> => speke_key_provider(),
+%%   <<"SpekeKeyProvider">> => speke_key_provider_cmaf(),
 %%   <<"StaticKeyProvider">> => static_key_provider(),
 %%   <<"Type">> => list(any())
 %% }
--type hls_encryption_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% ttml_destination_settings() :: #{
-%%   <<"StylePassthrough">> => list(any())
-%% }
--type ttml_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% noise_reducer() :: #{
-%%   <<"Filter">> => list(any()),
-%%   <<"FilterSettings">> => noise_reducer_filter_settings(),
-%%   <<"SpatialFilterSettings">> => noise_reducer_spatial_filter_settings(),
-%%   <<"TemporalFilterSettings">> => noise_reducer_temporal_filter_settings()
-%% }
--type noise_reducer() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_template_request() :: #{}
--type delete_job_template_request() :: #{}.
-
-%% Example:
-%% associate_certificate_response() :: #{}
--type associate_certificate_response() :: #{}.
-
-
-%% Example:
-%% timecode_config() :: #{
-%%   <<"Anchor">> => string(),
-%%   <<"Source">> => list(any()),
-%%   <<"Start">> => string(),
-%%   <<"TimestampOffset">> => string()
-%% }
--type timecode_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_selector_group() :: #{
-%%   <<"AudioSelectorNames">> => list(string())
-%% }
--type audio_selector_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_overlay_transition() :: #{
-%%   <<"EndPosition">> => video_overlay_position(),
-%%   <<"EndTimecode">> => string(),
-%%   <<"StartTimecode">> => string()
-%% }
--type video_overlay_transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_group_settings() :: #{
-%%   <<"CmafGroupSettings">> => cmaf_group_settings(),
-%%   <<"DashIsoGroupSettings">> => dash_iso_group_settings(),
-%%   <<"FileGroupSettings">> => file_group_settings(),
-%%   <<"HlsGroupSettings">> => hls_group_settings(),
-%%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"Type">> => list(any())
-%% }
--type output_group_settings() :: #{binary() => any()}.
+-type cmaf_encryption_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1086,203 +586,7 @@
 
 
 %% Example:
-%% dynamic_audio_selector() :: #{
-%%   <<"AudioDurationCorrection">> => list(any()),
-%%   <<"ExternalAudioFileInput">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Offset">> => integer(),
-%%   <<"SelectorType">> => list(any())
-%% }
--type dynamic_audio_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_inserter() :: #{
-%%   <<"InsertableImages">> => list(insertable_image()),
-%%   <<"SdrReferenceWhiteLevel">> => integer()
-%% }
--type image_inserter() :: #{binary() => any()}.
-
-
-%% Example:
-%% esam_manifest_confirm_condition_notification() :: #{
-%%   <<"MccXml">> => string()
-%% }
--type esam_manifest_confirm_condition_notification() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_settings() :: #{
-%%   <<"AdAvailOffset">> => integer(),
-%%   <<"AvailBlanking">> => avail_blanking(),
-%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
-%%   <<"Esam">> => esam_settings(),
-%%   <<"ExtendedDataServices">> => extended_data_services(),
-%%   <<"FollowSource">> => integer(),
-%%   <<"Inputs">> => list(input()),
-%%   <<"KantarWatermark">> => kantar_watermark_settings(),
-%%   <<"MotionImageInserter">> => motion_image_inserter(),
-%%   <<"NielsenConfiguration">> => nielsen_configuration(),
-%%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
-%%   <<"OutputGroups">> => list(output_group()),
-%%   <<"TimecodeConfig">> => timecode_config(),
-%%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
-%% }
--type job_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% timed_metadata_insertion() :: #{
-%%   <<"Id3Insertions">> => list(id3_insertion())
-%% }
--type timed_metadata_insertion() :: #{binary() => any()}.
-
-
-%% Example:
-%% ms_smooth_group_settings() :: #{
-%%   <<"AdditionalManifests">> => list(ms_smooth_additional_manifest()),
-%%   <<"AudioDeduplication">> => list(any()),
-%%   <<"Destination">> => string(),
-%%   <<"DestinationSettings">> => destination_settings(),
-%%   <<"Encryption">> => ms_smooth_encryption_settings(),
-%%   <<"FragmentLength">> => integer(),
-%%   <<"FragmentLengthControl">> => list(any()),
-%%   <<"ManifestEncoding">> => list(any())
-%% }
--type ms_smooth_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% min_top_rendition_size() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Width">> => integer()
-%% }
--type min_top_rendition_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_request() :: #{
-%%   <<"InputFile">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any()),
-%%   <<"Queue">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type search_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_settings() :: #{
-%%   <<"AudioGroupId">> => string(),
-%%   <<"AudioOnlyContainer">> => list(any()),
-%%   <<"AudioRenditionSets">> => string(),
-%%   <<"AudioTrackType">> => list(any()),
-%%   <<"DescriptiveVideoServiceFlag">> => list(any()),
-%%   <<"IFrameOnlyManifest">> => list(any()),
-%%   <<"SegmentModifier">> => string()
-%% }
--type hls_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_light_level() :: #{
-%%   <<"MaxContentLightLevel">> => integer(),
-%%   <<"MaxFrameAverageLightLevel">> => integer()
-%% }
--type content_light_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_overlay_input_clipping() :: #{
-%%   <<"EndTimecode">> => string(),
-%%   <<"StartTimecode">> => string()
-%% }
--type video_overlay_input_clipping() :: #{binary() => any()}.
-
-
-%% Example:
-%% input() :: #{
-%%   <<"AdvancedInputFilter">> => list(any()),
-%%   <<"AdvancedInputFilterSettings">> => advanced_input_filter_settings(),
-%%   <<"AudioSelectorGroups">> => map(),
-%%   <<"AudioSelectors">> => map(),
-%%   <<"CaptionSelectors">> => map(),
-%%   <<"Crop">> => rectangle(),
-%%   <<"DeblockFilter">> => list(any()),
-%%   <<"DecryptionSettings">> => input_decryption_settings(),
-%%   <<"DenoiseFilter">> => list(any()),
-%%   <<"DolbyVisionMetadataXml">> => string(),
-%%   <<"DynamicAudioSelectors">> => map(),
-%%   <<"FileInput">> => string(),
-%%   <<"FilterEnable">> => list(any()),
-%%   <<"FilterStrength">> => integer(),
-%%   <<"ImageInserter">> => image_inserter(),
-%%   <<"InputClippings">> => list(input_clipping()),
-%%   <<"InputScanType">> => list(any()),
-%%   <<"MultiViewSettings">> => list(multi_view_settings()),
-%%   <<"Position">> => rectangle(),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"PsiControl">> => list(any()),
-%%   <<"SupplementalImps">> => list(string()),
-%%   <<"TamsSettings">> => input_tams_settings(),
-%%   <<"TimecodeSource">> => list(any()),
-%%   <<"TimecodeStart">> => string(),
-%%   <<"VideoGenerator">> => input_video_generator(),
-%%   <<"VideoOverlays">> => list(video_overlay()),
-%%   <<"VideoSelector">> => video_selector()
-%% }
--type input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Mode">> => list(any()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% color_conversion3_d_l_u_t_setting() :: #{
-%%   <<"FileInput">> => string(),
-%%   <<"InputColorSpace">> => list(any()),
-%%   <<"InputMasteringLuminance">> => integer(),
-%%   <<"OutputColorSpace">> => list(any()),
-%%   <<"OutputMasteringLuminance">> => integer()
-%% }
--type color_conversion3_d_l_u_t_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_template_response() :: #{
-%%   <<"JobTemplate">> => job_template()
-%% }
--type get_job_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reservation_plan() :: #{
-%%   <<"Commitment">> => list(any()),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"PurchasedAt">> => non_neg_integer(),
-%%   <<"RenewalType">> => list(any()),
-%%   <<"ReservedSlots">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type reservation_plan() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_image_based_trick_play_variant() :: #{
+%% cmaf_image_based_trick_play_settings() :: #{
 %%   <<"IntervalCadence">> => list(any()),
 %%   <<"ThumbnailHeight">> => integer(),
 %%   <<"ThumbnailInterval">> => float(),
@@ -1290,80 +594,7 @@
 %%   <<"TileHeight">> => integer(),
 %%   <<"TileWidth">> => integer()
 %% }
--type hls_image_based_trick_play_variant() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_group() :: #{
-%%   <<"AutomatedEncodingSettings">> => automated_encoding_settings(),
-%%   <<"CustomName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputGroupSettings">> => output_group_settings(),
-%%   <<"Outputs">> => list(output())
-%% }
--type output_group() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_request() :: #{}
--type get_queue_request() :: #{}.
-
-
-%% Example:
-%% audio_description() :: #{
-%%   <<"AudioChannelTaggingSettings">> => audio_channel_tagging_settings(),
-%%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
-%%   <<"AudioPitchCorrectionSettings">> => audio_pitch_correction_settings(),
-%%   <<"AudioSourceName">> => string(),
-%%   <<"AudioType">> => integer(),
-%%   <<"AudioTypeControl">> => list(any()),
-%%   <<"CodecSettings">> => audio_codec_settings(),
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageCodeControl">> => list(any()),
-%%   <<"RemixSettings">> => remix_settings(),
-%%   <<"StreamName">> => string()
-%% }
--type audio_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% xavc_settings() :: #{
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"EntropyEncoding">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"Profile">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Softness">> => integer(),
-%%   <<"SpatialAdaptiveQuantization">> => list(any()),
-%%   <<"TemporalAdaptiveQuantization">> => list(any()),
-%%   <<"Xavc4kIntraCbgProfileSettings">> => xavc4k_intra_cbg_profile_settings(),
-%%   <<"Xavc4kIntraVbrProfileSettings">> => xavc4k_intra_vbr_profile_settings(),
-%%   <<"Xavc4kProfileSettings">> => xavc4k_profile_settings(),
-%%   <<"XavcHdIntraCbgProfileSettings">> => xavc_hd_intra_cbg_profile_settings(),
-%%   <<"XavcHdProfileSettings">> => xavc_hd_profile_settings()
-%% }
--type xavc_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% preset_settings() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()),
-%%   <<"CaptionDescriptions">> => list(caption_description_preset()),
-%%   <<"ContainerSettings">> => container_settings(),
-%%   <<"VideoDescription">> => video_description()
-%% }
--type preset_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scc_destination_settings() :: #{
-%%   <<"Framerate">> => list(any())
-%% }
--type scc_destination_settings() :: #{binary() => any()}.
+-type cmaf_image_based_trick_play_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1379,398 +610,183 @@
 
 
 %% Example:
-%% video_codec_settings() :: #{
-%%   <<"Av1Settings">> => av1_settings(),
-%%   <<"AvcIntraSettings">> => avc_intra_settings(),
-%%   <<"Codec">> => list(any()),
-%%   <<"FrameCaptureSettings">> => frame_capture_settings(),
-%%   <<"GifSettings">> => gif_settings(),
-%%   <<"H264Settings">> => h264_settings(),
-%%   <<"H265Settings">> => h265_settings(),
-%%   <<"Mpeg2Settings">> => mpeg2_settings(),
-%%   <<"PassthroughSettings">> => passthrough_settings(),
-%%   <<"ProresSettings">> => prores_settings(),
-%%   <<"UncompressedSettings">> => uncompressed_settings(),
-%%   <<"Vc3Settings">> => vc3_settings(),
-%%   <<"Vp8Settings">> => vp8_settings(),
-%%   <<"Vp9Settings">> => vp9_settings(),
-%%   <<"XavcSettings">> => xavc_settings()
+%% cmfc_settings() :: #{
+%%   <<"AudioDuration">> => list(any()),
+%%   <<"AudioGroupId">> => string(),
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"AudioTrackType">> => list(any()),
+%%   <<"C2paManifest">> => list(any()),
+%%   <<"CertificateSecret">> => string(),
+%%   <<"DescriptiveVideoServiceFlag">> => list(any()),
+%%   <<"IFrameOnlyManifest">> => list(any()),
+%%   <<"KlvMetadata">> => list(any()),
+%%   <<"ManifestMetadataSignaling">> => list(any()),
+%%   <<"Scte35Esam">> => list(any()),
+%%   <<"Scte35Source">> => list(any()),
+%%   <<"SigningKmsKey">> => string(),
+%%   <<"TimedMetadata">> => list(any()),
+%%   <<"TimedMetadataBoxVersion">> => list(any()),
+%%   <<"TimedMetadataSchemeIdUri">> => string(),
+%%   <<"TimedMetadataValue">> => string()
 %% }
--type video_codec_settings() :: #{binary() => any()}.
+-type cmfc_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% motion_image_insertion_offset() :: #{
-%%   <<"ImageX">> => integer(),
-%%   <<"ImageY">> => integer()
-%% }
--type motion_image_insertion_offset() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_properties() :: #{
+%% codec_metadata() :: #{
 %%   <<"BitDepth">> => integer(),
-%%   <<"BitRate">> => float(),
-%%   <<"Channels">> => integer(),
-%%   <<"FrameRate">> => frame_rate(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"ObjectCount">> => integer(),
-%%   <<"SampleRate">> => integer()
+%%   <<"ChromaSubsampling">> => string(),
+%%   <<"CodedFrameRate">> => frame_rate(),
+%%   <<"ColorPrimaries">> => list(any()),
+%%   <<"ContentLightLevel">> => content_light_level(),
+%%   <<"FieldOrder">> => string(),
+%%   <<"Height">> => integer(),
+%%   <<"Level">> => string(),
+%%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"Profile">> => string(),
+%%   <<"Rotation">> => integer(),
+%%   <<"ScanType">> => string(),
+%%   <<"TransferCharacteristics">> => list(any()),
+%%   <<"Width">> => integer()
 %% }
--type audio_properties() :: #{binary() => any()}.
+-type codec_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_policy_response() :: #{
-%%   <<"Policy">> => policy()
+%% color_conversion3_d_l_u_t_setting() :: #{
+%%   <<"FileInput">> => string(),
+%%   <<"InputColorSpace">> => list(any()),
+%%   <<"InputMasteringLuminance">> => integer(),
+%%   <<"OutputColorSpace">> => list(any()),
+%%   <<"OutputMasteringLuminance">> => integer()
 %% }
--type put_policy_response() :: #{binary() => any()}.
+-type color_conversion3_d_l_u_t_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_engine_version() :: #{
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"Version">> => string()
+%% color_corrector() :: #{
+%%   <<"Brightness">> => integer(),
+%%   <<"ClipLimits">> => clip_limits(),
+%%   <<"ColorSpaceConversion">> => list(any()),
+%%   <<"Contrast">> => integer(),
+%%   <<"Hdr10Metadata">> => hdr10_metadata(),
+%%   <<"HdrToSdrToneMapper">> => list(any()),
+%%   <<"Hue">> => integer(),
+%%   <<"MaxLuminance">> => integer(),
+%%   <<"SampleRangeConversion">> => list(any()),
+%%   <<"Saturation">> => integer(),
+%%   <<"SdrReferenceWhiteLevel">> => integer()
 %% }
--type job_engine_version() :: #{binary() => any()}.
+-type color_corrector() :: #{binary() => any()}.
 
 
 %% Example:
-%% avc_intra_settings() :: #{
-%%   <<"AvcIntraClass">> => list(any()),
-%%   <<"AvcIntraUhdSettings">> => avc_intra_uhd_settings(),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any())
-%% }
--type avc_intra_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% eac3_settings() :: #{
-%%   <<"AttenuationControl">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"DcFilter">> => list(any()),
-%%   <<"Dialnorm">> => integer(),
-%%   <<"DynamicRangeCompressionLine">> => list(any()),
-%%   <<"DynamicRangeCompressionRf">> => list(any()),
-%%   <<"LfeControl">> => list(any()),
-%%   <<"LfeFilter">> => list(any()),
-%%   <<"LoRoCenterMixLevel">> => float(),
-%%   <<"LoRoSurroundMixLevel">> => float(),
-%%   <<"LtRtCenterMixLevel">> => float(),
-%%   <<"LtRtSurroundMixLevel">> => float(),
-%%   <<"MetadataControl">> => list(any()),
-%%   <<"PassthroughControl">> => list(any()),
-%%   <<"PhaseControl">> => list(any()),
-%%   <<"SampleRate">> => integer(),
-%%   <<"StereoDownmix">> => list(any()),
-%%   <<"SurroundExMode">> => list(any()),
-%%   <<"SurroundMode">> => list(any())
-%% }
--type eac3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% vp9_settings() :: #{
-%%   <<"Bitrate">> => integer(),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"GopSize">> => float(),
-%%   <<"HrdBufferSize">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"ParControl">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"RateControlMode">> => list(any())
-%% }
--type vp9_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_group_detail() :: #{
-%%   <<"OutputDetails">> => list(output_detail())
-%% }
--type output_group_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type not_found_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% caption_destination_settings() :: #{
-%%   <<"BurninDestinationSettings">> => burnin_destination_settings(),
-%%   <<"DestinationType">> => list(any()),
-%%   <<"DvbSubDestinationSettings">> => dvb_sub_destination_settings(),
-%%   <<"EmbeddedDestinationSettings">> => embedded_destination_settings(),
-%%   <<"ImscDestinationSettings">> => imsc_destination_settings(),
-%%   <<"SccDestinationSettings">> => scc_destination_settings(),
-%%   <<"SrtDestinationSettings">> => srt_destination_settings(),
-%%   <<"TeletextDestinationSettings">> => teletext_destination_settings(),
-%%   <<"TtmlDestinationSettings">> => ttml_destination_settings(),
-%%   <<"WebvttDestinationSettings">> => webvtt_destination_settings()
+%% container() :: #{
+%%   <<"BitRate">> => float(),
+%%   <<"Duration">> => float(),
+%%   <<"Format">> => list(any()),
+%%   <<"StartTimecode">> => string(),
+%%   <<"Tracks">> => list(track())
 %% }
--type caption_destination_settings() :: #{binary() => any()}.
+-type container() :: #{binary() => any()}.
 
 
 %% Example:
-%% speke_key_provider() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
-%%   <<"ResourceId">> => string(),
-%%   <<"SystemIds">> => list(string()),
-%%   <<"Url">> => string()
+%% container_settings() :: #{
+%%   <<"CmfcSettings">> => cmfc_settings(),
+%%   <<"Container">> => list(any()),
+%%   <<"F4vSettings">> => f4v_settings(),
+%%   <<"M2tsSettings">> => m2ts_settings(),
+%%   <<"M3u8Settings">> => m3u8_settings(),
+%%   <<"MovSettings">> => mov_settings(),
+%%   <<"Mp4Settings">> => mp4_settings(),
+%%   <<"MpdSettings">> => mpd_settings(),
+%%   <<"MxfSettings">> => mxf_settings()
 %% }
--type speke_key_provider() :: #{binary() => any()}.
+-type container_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% frame_rate() :: #{
-%%   <<"Denominator">> => integer(),
-%%   <<"Numerator">> => integer()
+%% content_light_level() :: #{
+%%   <<"MaxContentLightLevel">> => integer(),
+%%   <<"MaxFrameAverageLightLevel">> => integer()
 %% }
--type frame_rate() :: #{binary() => any()}.
+-type content_light_level() :: #{binary() => any()}.
 
 
 %% Example:
-%% elemental_inference_feed() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FeedManagementState">> => list(any())
+%% create_job_request() :: #{
+%%   <<"AccelerationSettings">> => acceleration_settings(),
+%%   <<"BillingTagsSource">> => list(any()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"HopDestinations">> => list(hop_destination()),
+%%   <<"JobEngineVersion">> => string(),
+%%   <<"JobTemplate">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Queue">> => string(),
+%%   <<"Role">> := string(),
+%%   <<"Settings">> := job_settings(),
+%%   <<"SimulateReservedQueue">> => list(any()),
+%%   <<"StatusUpdateInterval">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UserMetadata">> => map()
 %% }
--type elemental_inference_feed() :: #{binary() => any()}.
+-type create_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_destination_settings() :: #{
-%%   <<"AccessControl">> => s3_destination_access_control(),
-%%   <<"Encryption">> => s3_encryption_settings(),
-%%   <<"StorageClass">> => list(any())
+%% create_job_response() :: #{
+%%   <<"Job">> => job()
 %% }
--type s3_destination_settings() :: #{binary() => any()}.
+-type create_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% dash_iso_image_based_trick_play_variant() :: #{
-%%   <<"IntervalCadence">> => list(any()),
-%%   <<"ThumbnailHeight">> => integer(),
-%%   <<"ThumbnailInterval">> => float(),
-%%   <<"ThumbnailWidth">> => integer(),
-%%   <<"TileHeight">> => integer(),
-%%   <<"TileWidth">> => integer()
+%% create_job_template_request() :: #{
+%%   <<"AccelerationSettings">> => acceleration_settings(),
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HopDestinations">> => list(hop_destination()),
+%%   <<"Name">> := string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Queue">> => string(),
+%%   <<"Settings">> := job_template_settings(),
+%%   <<"StatusUpdateInterval">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
--type dash_iso_image_based_trick_play_variant() :: #{binary() => any()}.
+-type create_job_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% h265_settings() :: #{
-%%   <<"FlickerAdaptiveQuantization">> => list(any()),
-%%   <<"QvbrSettings">> => h265_qvbr_settings(),
-%%   <<"SampleAdaptiveOffsetFilterMode">> => list(any()),
-%%   <<"EndOfStreamMarkers">> => list(any()),
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"HrdBufferFinalFillPercentage">> => integer(),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"HrdBufferInitialFillPercentage">> => integer(),
-%%   <<"MvOverPictureBoundaries">> => list(any()),
-%%   <<"AlternateTransferFunctionSei">> => list(any()),
-%%   <<"Tiles">> => list(any()),
-%%   <<"DynamicSubGop">> => list(any()),
-%%   <<"GopSize">> => float(),
-%%   <<"UnregisteredSeiTimecode">> => list(any()),
-%%   <<"WriteMp4PackagingType">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any()),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"BandwidthReductionFilter">> => bandwidth_reduction_filter(),
-%%   <<"TreeBlockSize">> => list(any()),
-%%   <<"ParControl">> => list(any()),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"TileHeight">> => integer(),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"Deblocking">> => list(any()),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"NumberReferenceFrames">> => integer(),
-%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
-%%   <<"MinIInterval">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"TilePadding">> => list(any()),
-%%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"SpatialAdaptiveQuantization">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"TileWidth">> => integer(),
-%%   <<"HrdBufferSize">> => integer(),
-%%   <<"TemporalAdaptiveQuantization">> => list(any()),
-%%   <<"CodecLevel">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"TemporalIds">> => list(any()),
-%%   <<"MvTemporalPredictor">> => list(any())
+%% create_job_template_response() :: #{
+%%   <<"JobTemplate">> => job_template()
 %% }
--type h265_settings() :: #{binary() => any()}.
+-type create_job_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% av1_qvbr_settings() :: #{
-%%   <<"QvbrQualityLevel">> => integer(),
-%%   <<"QvbrQualityLevelFineTune">> => float()
+%% create_preset_request() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Settings">> := preset_settings(),
+%%   <<"Tags">> => map()
 %% }
--type av1_qvbr_settings() :: #{binary() => any()}.
+-type create_preset_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% teletext_destination_settings() :: #{
-%%   <<"PageNumber">> => string(),
-%%   <<"PageTypes">> => list(list(any())())
+%% create_preset_response() :: #{
+%%   <<"Preset">> => preset()
 %% }
--type teletext_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_source_settings() :: #{
-%%   <<"ByteRateLimit">> => list(any()),
-%%   <<"Convert608To708">> => list(any()),
-%%   <<"ConvertPaintToPop">> => list(any()),
-%%   <<"Framerate">> => caption_source_framerate(),
-%%   <<"SourceFile">> => string(),
-%%   <<"TimeDelta">> => integer(),
-%%   <<"TimeDeltaUnits">> => list(any()),
-%%   <<"UpconvertSTLToTeletext">> => list(any())
-%% }
--type file_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% mastering_display_color_volume() :: #{
-%%   <<"BluePrimaryX">> => integer(),
-%%   <<"BluePrimaryY">> => integer(),
-%%   <<"GreenPrimaryX">> => integer(),
-%%   <<"GreenPrimaryY">> => integer(),
-%%   <<"MaxLuminance">> => float(),
-%%   <<"MinLuminance">> => float(),
-%%   <<"RedPrimaryX">> => integer(),
-%%   <<"RedPrimaryY">> => integer(),
-%%   <<"WhitePointX">> => integer(),
-%%   <<"WhitePointY">> => integer()
-%% }
--type mastering_display_color_volume() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => resource_tags()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_additional_manifest() :: #{
-%%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string())
-%% }
--type hls_additional_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% mxf_xavc_profile_settings() :: #{
-%%   <<"DurationMode">> => list(any()),
-%%   <<"MaxAncDataSize">> => integer()
-%% }
--type mxf_xavc_profile_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_iso_encryption_settings() :: #{
-%%   <<"PlaybackDeviceCompatibility">> => list(any()),
-%%   <<"SpekeKeyProvider">> => speke_key_provider()
-%% }
--type dash_iso_encryption_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dolby_vision() :: #{
-%%   <<"Compatibility">> => list(any()),
-%%   <<"L6Metadata">> => dolby_vision_level6_metadata(),
-%%   <<"L6Mode">> => list(any()),
-%%   <<"Mapping">> => list(any()),
-%%   <<"Profile">> => list(any())
-%% }
--type dolby_vision() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"NextToken">> => string()
-%% }
--type search_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_description_preset() :: #{
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"DestinationSettings">> => caption_destination_settings(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageDescription">> => string()
-%% }
--type caption_description_preset() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_presets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Presets">> => list(preset())
-%% }
--type list_presets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% noise_reducer_temporal_filter_settings() :: #{
-%%   <<"AggressiveMode">> => integer(),
-%%   <<"PostTemporalSharpening">> => list(any()),
-%%   <<"PostTemporalSharpeningStrength">> => list(any()),
-%%   <<"Speed">> => integer(),
-%%   <<"Strength">> => integer()
-%% }
--type noise_reducer_temporal_filter_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(job_engine_version())
-%% }
--type list_versions_response() :: #{binary() => any()}.
+-type create_preset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1788,28 +804,71 @@
 
 
 %% Example:
-%% ancillary_source_settings() :: #{
-%%   <<"Convert608To708">> => list(any()),
-%%   <<"SourceAncillaryChannelNumber">> => integer(),
-%%   <<"TerminateCaptions">> => list(any())
+%% create_queue_response() :: #{
+%%   <<"Queue">> => queue()
 %% }
--type ancillary_source_settings() :: #{binary() => any()}.
+-type create_queue_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_messages() :: #{
-%%   <<"Info">> => list(string()),
-%%   <<"Warning">> => list(string())
+%% create_resource_share_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"SupportCaseId">> := string()
 %% }
--type job_messages() :: #{binary() => any()}.
+-type create_resource_share_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_preset_request() :: #{}
--type delete_preset_request() :: #{}.
+%% create_resource_share_response() :: #{}
+-type create_resource_share_response() :: #{}.
 
 
 %% Example:
-%% hls_image_based_trick_play_settings() :: #{
+%% dash_additional_manifest() :: #{
+%%   <<"ManifestNameModifier">> => string(),
+%%   <<"SelectedOutputs">> => list(string())
+%% }
+-type dash_additional_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_iso_encryption_settings() :: #{
+%%   <<"PlaybackDeviceCompatibility">> => list(any()),
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
+%% }
+-type dash_iso_encryption_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_iso_group_settings() :: #{
+%%   <<"AdditionalManifests">> => list(dash_additional_manifest()),
+%%   <<"AudioChannelConfigSchemeIdUri">> => list(any()),
+%%   <<"BaseUrl">> => string(),
+%%   <<"DashIFrameTrickPlayNameModifier">> => string(),
+%%   <<"DashManifestStyle">> => list(any()),
+%%   <<"Destination">> => string(),
+%%   <<"DestinationSettings">> => destination_settings(),
+%%   <<"Encryption">> => dash_iso_encryption_settings(),
+%%   <<"FragmentLength">> => integer(),
+%%   <<"HbbtvCompliance">> => list(any()),
+%%   <<"ImageBasedTrickPlay">> => list(any()),
+%%   <<"ImageBasedTrickPlaySettings">> => dash_iso_image_based_trick_play_settings(),
+%%   <<"ImageBasedTrickPlayVariants">> => list(dash_iso_image_based_trick_play_variant()),
+%%   <<"MinBufferTime">> => integer(),
+%%   <<"MinFinalSegmentLength">> => float(),
+%%   <<"MpdManifestBandwidthType">> => list(any()),
+%%   <<"MpdProfile">> => list(any()),
+%%   <<"PtsOffsetHandlingForBFrames">> => list(any()),
+%%   <<"SegmentControl">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentLengthControl">> => list(any()),
+%%   <<"VideoCompositionOffsets">> => list(any()),
+%%   <<"WriteSegmentTimelineInRepresentation">> => list(any())
+%% }
+-type dash_iso_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_iso_image_based_trick_play_settings() :: #{
 %%   <<"IntervalCadence">> => list(any()),
 %%   <<"ThumbnailHeight">> => integer(),
 %%   <<"ThumbnailInterval">> => float(),
@@ -1817,7 +876,146 @@
 %%   <<"TileHeight">> => integer(),
 %%   <<"TileWidth">> => integer()
 %% }
--type hls_image_based_trick_play_settings() :: #{binary() => any()}.
+-type dash_iso_image_based_trick_play_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_iso_image_based_trick_play_variant() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
+%% }
+-type dash_iso_image_based_trick_play_variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_properties() :: #{
+%%   <<"LanguageCode">> => string()
+%% }
+-type data_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% deinterlacer() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"Control">> => list(any()),
+%%   <<"Mode">> => list(any())
+%% }
+-type deinterlacer() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_template_request() :: #{}
+-type delete_job_template_request() :: #{}.
+
+%% Example:
+%% delete_job_template_response() :: #{}
+-type delete_job_template_response() :: #{}.
+
+%% Example:
+%% delete_policy_request() :: #{}
+-type delete_policy_request() :: #{}.
+
+%% Example:
+%% delete_policy_response() :: #{}
+-type delete_policy_response() :: #{}.
+
+%% Example:
+%% delete_preset_request() :: #{}
+-type delete_preset_request() :: #{}.
+
+%% Example:
+%% delete_preset_response() :: #{}
+-type delete_preset_response() :: #{}.
+
+%% Example:
+%% delete_queue_request() :: #{}
+-type delete_queue_request() :: #{}.
+
+%% Example:
+%% delete_queue_response() :: #{}
+-type delete_queue_response() :: #{}.
+
+
+%% Example:
+%% describe_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_settings() :: #{
+%%   <<"S3Settings">> => s3_destination_settings()
+%% }
+-type destination_settings() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_certificate_request() :: #{}
+-type disassociate_certificate_request() :: #{}.
+
+%% Example:
+%% disassociate_certificate_response() :: #{}
+-type disassociate_certificate_response() :: #{}.
+
+
+%% Example:
+%% dolby_vision() :: #{
+%%   <<"Compatibility">> => list(any()),
+%%   <<"L6Metadata">> => dolby_vision_level6_metadata(),
+%%   <<"L6Mode">> => list(any()),
+%%   <<"Mapping">> => list(any()),
+%%   <<"Profile">> => list(any())
+%% }
+-type dolby_vision() :: #{binary() => any()}.
+
+
+%% Example:
+%% dolby_vision_level6_metadata() :: #{
+%%   <<"MaxCll">> => integer(),
+%%   <<"MaxFall">> => integer()
+%% }
+-type dolby_vision_level6_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% duration_control() :: #{
+%%   <<"IntegerDurationMaximumCompressionDenominator">> => integer(),
+%%   <<"IntegerDurationMaximumCompressionNumerator">> => integer(),
+%%   <<"IntegerDurationTrimThresholdMilliseconds">> => integer()
+%% }
+-type duration_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_nit_settings() :: #{
+%%   <<"NetworkId">> => integer(),
+%%   <<"NetworkName">> => string(),
+%%   <<"NitInterval">> => integer()
+%% }
+-type dvb_nit_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_sdt_settings() :: #{
+%%   <<"OutputSdt">> => list(any()),
+%%   <<"SdtInterval">> => integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceProviderName">> => string()
+%% }
+-type dvb_sdt_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1858,366 +1056,78 @@
 
 
 %% Example:
-%% esam_signal_processing_notification() :: #{
-%%   <<"SccXml">> => string()
+%% dvb_sub_source_settings() :: #{
+%%   <<"Pid">> => integer()
 %% }
--type esam_signal_processing_notification() :: #{binary() => any()}.
+-type dvb_sub_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_selector() :: #{
-%%   <<"AlphaBehavior">> => list(any()),
-%%   <<"ColorSpace">> => list(any()),
-%%   <<"ColorSpaceUsage">> => list(any()),
-%%   <<"EmbeddedTimecodeOverride">> => list(any()),
-%%   <<"Hdr10Metadata">> => hdr10_metadata(),
-%%   <<"MaxLuminance">> => integer(),
-%%   <<"PadVideo">> => list(any()),
-%%   <<"Pid">> => integer(),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"Rotate">> => list(any()),
-%%   <<"SampleRange">> => list(any()),
-%%   <<"SelectorType">> => list(any()),
-%%   <<"Streams">> => list(integer())
+%% dvb_tdt_settings() :: #{
+%%   <<"TdtInterval">> => integer()
 %% }
--type video_selector() :: #{binary() => any()}.
+-type dvb_tdt_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% hdr10_plus() :: #{
-%%   <<"MasteringMonitorNits">> => integer(),
-%%   <<"TargetMonitorNits">> => integer()
-%% }
--type hdr10_plus() :: #{binary() => any()}.
-
-
-%% Example:
-%% opus_settings() :: #{
-%%   <<"Bitrate">> => integer(),
-%%   <<"Channels">> => integer(),
-%%   <<"SampleRate">> => integer()
-%% }
--type opus_settings() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_certificate_request() :: #{}
--type disassociate_certificate_request() :: #{}.
-
-
-%% Example:
-%% hls_group_settings() :: #{
-%%   <<"SegmentLengthControl">> => list(any()),
-%%   <<"AudioOnlyHeader">> => list(any()),
-%%   <<"ProgramDateTime">> => list(any()),
-%%   <<"MinFinalSegmentLength">> => float(),
-%%   <<"TimestampDeltaMilliseconds">> => integer(),
-%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()),
-%%   <<"ClientCache">> => list(any()),
-%%   <<"ProgramDateTimePeriod">> => integer(),
-%%   <<"ImageBasedTrickPlayVariants">> => list(hls_image_based_trick_play_variant()),
-%%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"StreamInfResolution">> => list(any()),
-%%   <<"SegmentsPerSubdirectory">> => integer(),
-%%   <<"DirectoryStructure">> => list(any()),
-%%   <<"CodecSpecification">> => list(any()),
-%%   <<"AdMarkers">> => list(list(any())()),
-%%   <<"CaptionSegmentLengthControl">> => list(any()),
-%%   <<"SegmentControl">> => list(any()),
-%%   <<"Encryption">> => hls_encryption_settings(),
-%%   <<"BaseUrl">> => string(),
-%%   <<"ProgressiveWriteHlsManifest">> => list(any()),
-%%   <<"TargetDurationCompatibilityMode">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
-%%   <<"MinSegmentLength">> => integer(),
-%%   <<"ImageBasedTrickPlaySettings">> => hls_image_based_trick_play_settings(),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
-%%   <<"DestinationSettings">> => destination_settings(),
-%%   <<"ManifestDurationFormat">> => list(any()),
-%%   <<"ManifestCompression">> => list(any()),
-%%   <<"ImageBasedTrickPlay">> => list(any()),
-%%   <<"CaptionLanguageSetting">> => list(any()),
-%%   <<"OutputSelection">> => list(any()),
-%%   <<"AdditionalManifests">> => list(hls_additional_manifest()),
-%%   <<"Destination">> => string()
-%% }
--type hls_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_settings() :: #{
-%%   <<"HlsSettings">> => hls_settings()
-%% }
--type output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_selector() :: #{
+%% dynamic_audio_selector() :: #{
 %%   <<"AudioDurationCorrection">> => list(any()),
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"DefaultSelection">> => list(any()),
 %%   <<"ExternalAudioFileInput">> => string(),
-%%   <<"HlsRenditionGroupSettings">> => hls_rendition_group_settings(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"Offset">> => integer(),
-%%   <<"Pids">> => list(integer()),
-%%   <<"ProgramSelection">> => integer(),
-%%   <<"RemixSettings">> => remix_settings(),
-%%   <<"SelectorType">> => list(any()),
-%%   <<"Streams">> => list(integer()),
-%%   <<"Tracks">> => list(integer())
+%%   <<"SelectorType">> => list(any())
 %% }
--type audio_selector() :: #{binary() => any()}.
+-type dynamic_audio_selector() :: #{binary() => any()}.
 
 
 %% Example:
-%% av1_settings() :: #{
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"BitDepth">> => list(any()),
-%%   <<"FilmGrainSynthesis">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"GopSize">> => float(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"QvbrSettings">> => av1_qvbr_settings(),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"SpatialAdaptiveQuantization">> => list(any())
+%% eac3_atmos_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"DialogueIntelligence">> => list(any()),
+%%   <<"DownmixControl">> => list(any()),
+%%   <<"DynamicRangeCompressionLine">> => list(any()),
+%%   <<"DynamicRangeCompressionRf">> => list(any()),
+%%   <<"DynamicRangeControl">> => list(any()),
+%%   <<"LoRoCenterMixLevel">> => float(),
+%%   <<"LoRoSurroundMixLevel">> => float(),
+%%   <<"LtRtCenterMixLevel">> => float(),
+%%   <<"LtRtSurroundMixLevel">> => float(),
+%%   <<"MeteringMode">> => list(any()),
+%%   <<"SampleRate">> => integer(),
+%%   <<"SpeechThreshold">> => integer(),
+%%   <<"StereoDownmix">> => list(any()),
+%%   <<"SurroundExMode">> => list(any())
 %% }
--type av1_settings() :: #{binary() => any()}.
+-type eac3_atmos_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_override() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OverrideValue">> => string(),
-%%   <<"Value">> => string()
+%% eac3_settings() :: #{
+%%   <<"AttenuationControl">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"DcFilter">> => list(any()),
+%%   <<"Dialnorm">> => integer(),
+%%   <<"DynamicRangeCompressionLine">> => list(any()),
+%%   <<"DynamicRangeCompressionRf">> => list(any()),
+%%   <<"LfeControl">> => list(any()),
+%%   <<"LfeFilter">> => list(any()),
+%%   <<"LoRoCenterMixLevel">> => float(),
+%%   <<"LoRoSurroundMixLevel">> => float(),
+%%   <<"LtRtCenterMixLevel">> => float(),
+%%   <<"LtRtSurroundMixLevel">> => float(),
+%%   <<"MetadataControl">> => list(any()),
+%%   <<"PassthroughControl">> => list(any()),
+%%   <<"PhaseControl">> => list(any()),
+%%   <<"SampleRate">> => integer(),
+%%   <<"StereoDownmix">> => list(any()),
+%%   <<"SurroundExMode">> => list(any()),
+%%   <<"SurroundMode">> => list(any())
 %% }
--type service_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% xavc_hd_profile_settings() :: #{
-%%   <<"BitrateClass">> => list(any()),
-%%   <<"FlickerAdaptiveQuantization">> => list(any()),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"HrdBufferSize">> => integer(),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"Telecine">> => list(any())
-%% }
--type xavc_hd_profile_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"Policy">> => policy()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_detail() :: #{
-%%   <<"HeightInPx">> => integer(),
-%%   <<"WidthInPx">> => integer()
-%% }
--type video_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Url">> => string()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_preprocessor() :: #{
-%%   <<"ColorCorrector">> => color_corrector(),
-%%   <<"Deinterlacer">> => deinterlacer(),
-%%   <<"DolbyVision">> => dolby_vision(),
-%%   <<"DurationControl">> => duration_control(),
-%%   <<"Hdr10Plus">> => hdr10_plus(),
-%%   <<"ImageInserter">> => image_inserter(),
-%%   <<"NoiseReducer">> => noise_reducer(),
-%%   <<"PartnerWatermarking">> => partner_watermarking(),
-%%   <<"TimecodeBurnin">> => timecode_burnin()
-%% }
--type video_preprocessor() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_certificate_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type associate_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% avail_blanking() :: #{
-%%   <<"AvailBlankingImage">> => string()
-%% }
--type avail_blanking() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_additional_manifest() :: #{
-%%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string())
-%% }
--type dash_additional_manifest() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_template_request() :: #{}
--type get_job_template_request() :: #{}.
-
-
-%% Example:
-%% encryption_contract_configuration() :: #{
-%%   <<"SpekeAudioPreset">> => list(any()),
-%%   <<"SpekeVideoPreset">> => list(any())
-%% }
--type encryption_contract_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_preset_request() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Settings">> => preset_settings()
-%% }
--type update_preset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% avc_intra_uhd_settings() :: #{
-%%   <<"QualityTuningLevel">> => list(any())
-%% }
--type avc_intra_uhd_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% motion_image_inserter() :: #{
-%%   <<"Framerate">> => motion_image_insertion_framerate(),
-%%   <<"Input">> => string(),
-%%   <<"InsertionMode">> => list(any()),
-%%   <<"Offset">> => motion_image_insertion_offset(),
-%%   <<"Playback">> => list(any()),
-%%   <<"StartTime">> => string()
-%% }
--type motion_image_inserter() :: #{binary() => any()}.
-
-
-%% Example:
-%% timing() :: #{
-%%   <<"FinishTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"SubmitTime">> => non_neg_integer()
-%% }
--type timing() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{}
--type delete_policy_request() :: #{}.
-
-
-%% Example:
-%% video_properties() :: #{
-%%   <<"BitDepth">> => integer(),
-%%   <<"BitRate">> => float(),
-%%   <<"CodecMetadata">> => codec_metadata(),
-%%   <<"ColorPrimaries">> => list(any()),
-%%   <<"FrameRate">> => frame_rate(),
-%%   <<"HdrMetadata">> => hdr_metadata(),
-%%   <<"Height">> => integer(),
-%%   <<"MatrixCoefficients">> => list(any()),
-%%   <<"Rotation">> => integer(),
-%%   <<"TransferCharacteristics">> => list(any()),
-%%   <<"Width">> => integer()
-%% }
--type video_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_preset_request() :: #{}
--type get_preset_request() :: #{}.
-
-
-%% Example:
-%% teletext_source_settings() :: #{
-%%   <<"PageNumber">> => string()
-%% }
--type teletext_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% hdr_metadata() :: #{
-%%   <<"ContentLightLevel">> => content_light_level(),
-%%   <<"MasteringDisplayColorVolume">> => mastering_display_color_volume()
-%% }
--type hdr_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_transition() :: #{
-%%   <<"DestinationQueue">> => string(),
-%%   <<"SourceQueue">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type queue_transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% codec_metadata() :: #{
-%%   <<"BitDepth">> => integer(),
-%%   <<"ChromaSubsampling">> => string(),
-%%   <<"CodedFrameRate">> => frame_rate(),
-%%   <<"ColorPrimaries">> => list(any()),
-%%   <<"ContentLightLevel">> => content_light_level(),
-%%   <<"Height">> => integer(),
-%%   <<"Level">> => string(),
-%%   <<"MatrixCoefficients">> => list(any()),
-%%   <<"Profile">> => string(),
-%%   <<"Rotation">> => integer(),
-%%   <<"ScanType">> => string(),
-%%   <<"TransferCharacteristics">> => list(any()),
-%%   <<"Width">> => integer()
-%% }
--type codec_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_templates_request() :: #{
-%%   <<"Category">> => string(),
-%%   <<"ListBy">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Order">> => list(any())
-%% }
--type list_job_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy() :: #{
-%%   <<"HttpInputs">> => list(any()),
-%%   <<"HttpsInputs">> => list(any()),
-%%   <<"S3Inputs">> => list(any())
-%% }
--type policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% probe_result() :: #{
-%%   <<"Container">> => container(),
-%%   <<"Metadata">> => metadata(),
-%%   <<"TrackMappings">> => list(track_mapping())
-%% }
--type probe_result() :: #{binary() => any()}.
+-type eac3_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2229,49 +1139,352 @@
 
 
 %% Example:
-%% cmaf_additional_manifest() :: #{
-%%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string())
+%% elemental_inference_feed() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FeedManagementState">> => list(any())
 %% }
--type cmaf_additional_manifest() :: #{binary() => any()}.
+-type elemental_inference_feed() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_job_template_request() :: #{
-%%   <<"AccelerationSettings">> => acceleration_settings(),
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()),
-%%   <<"Name">> := string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Queue">> => string(),
-%%   <<"Settings">> := job_template_settings(),
-%%   <<"StatusUpdateInterval">> => list(any()),
-%%   <<"Tags">> => map()
+%% embedded_destination_settings() :: #{
+%%   <<"Destination608ChannelNumber">> => integer(),
+%%   <<"Destination708ServiceNumber">> => integer()
 %% }
--type create_job_template_request() :: #{binary() => any()}.
+-type embedded_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_encoding_settings() :: #{
-%%   <<"AbrSettings">> => automated_abr_settings()
+%% embedded_source_settings() :: #{
+%%   <<"Convert608To708">> => list(any()),
+%%   <<"Source608ChannelNumber">> => integer(),
+%%   <<"Source608TrackNumber">> => integer(),
+%%   <<"TerminateCaptions">> => list(any())
 %% }
--type automated_encoding_settings() :: #{binary() => any()}.
+-type embedded_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% dvb_tdt_settings() :: #{
-%%   <<"TdtInterval">> => integer()
+%% encryption_contract_configuration() :: #{
+%%   <<"SpekeAudioPreset">> => list(any()),
+%%   <<"SpekeVideoPreset">> => list(any())
 %% }
--type dvb_tdt_settings() :: #{binary() => any()}.
+-type encryption_contract_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% id3_insertion() :: #{
-%%   <<"Id3">> => string(),
-%%   <<"Timecode">> => string()
+%% endpoint() :: #{
+%%   <<"Url">> => string()
 %% }
--type id3_insertion() :: #{binary() => any()}.
+-type endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% esam_manifest_confirm_condition_notification() :: #{
+%%   <<"MccXml">> => string()
+%% }
+-type esam_manifest_confirm_condition_notification() :: #{binary() => any()}.
+
+
+%% Example:
+%% esam_settings() :: #{
+%%   <<"ManifestConfirmConditionNotification">> => esam_manifest_confirm_condition_notification(),
+%%   <<"ResponseSignalPreroll">> => integer(),
+%%   <<"SignalProcessingNotification">> => esam_signal_processing_notification()
+%% }
+-type esam_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% esam_signal_processing_notification() :: #{
+%%   <<"SccXml">> => string()
+%% }
+-type esam_signal_processing_notification() :: #{binary() => any()}.
+
+
+%% Example:
+%% extended_data_services() :: #{
+%%   <<"CopyProtectionAction">> => list(any()),
+%%   <<"VchipAction">> => list(any())
+%% }
+-type extended_data_services() :: #{binary() => any()}.
+
+
+%% Example:
+%% f4v_settings() :: #{
+%%   <<"MoovPlacement">> => list(any())
+%% }
+-type f4v_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_group_settings() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"DestinationSettings">> => destination_settings()
+%% }
+-type file_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_source_settings() :: #{
+%%   <<"ByteRateLimit">> => list(any()),
+%%   <<"Convert608To708">> => list(any()),
+%%   <<"ConvertPaintToPop">> => list(any()),
+%%   <<"Framerate">> => caption_source_framerate(),
+%%   <<"SourceFile">> => string(),
+%%   <<"TimeDelta">> => integer(),
+%%   <<"TimeDeltaUnits">> => list(any()),
+%%   <<"UpconvertSTLToTeletext">> => list(any())
+%% }
+-type file_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% flac_settings() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"Channels">> => integer(),
+%%   <<"SampleRate">> => integer()
+%% }
+-type flac_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% force_include_rendition_size() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer()
+%% }
+-type force_include_rendition_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_capture_settings() :: #{
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"MaxCaptures">> => integer(),
+%%   <<"Quality">> => integer()
+%% }
+-type frame_capture_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_rate() :: #{
+%%   <<"Denominator">> => integer(),
+%%   <<"Numerator">> => integer()
+%% }
+-type frame_rate() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
+
+
+%% Example:
+%% get_job_response() :: #{
+%%   <<"Job">> => job()
+%% }
+-type get_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_template_request() :: #{}
+-type get_job_template_request() :: #{}.
+
+
+%% Example:
+%% get_job_template_response() :: #{
+%%   <<"JobTemplate">> => job_template()
+%% }
+-type get_job_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_jobs_query_results_request() :: #{}
+-type get_jobs_query_results_request() :: #{}.
+
+
+%% Example:
+%% get_jobs_query_results_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_jobs_query_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_preset_request() :: #{}
+-type get_preset_request() :: #{}.
+
+
+%% Example:
+%% get_preset_response() :: #{
+%%   <<"Preset">> => preset()
+%% }
+-type get_preset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_request() :: #{}
+-type get_queue_request() :: #{}.
+
+
+%% Example:
+%% get_queue_response() :: #{
+%%   <<"Queue">> => queue()
+%% }
+-type get_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gif_settings() :: #{
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer()
+%% }
+-type gif_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h264_qvbr_settings() :: #{
+%%   <<"MaxAverageBitrate">> => integer(),
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"QvbrQualityLevelFineTune">> => float()
+%% }
+-type h264_qvbr_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h264_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"BandwidthReductionFilter">> => bandwidth_reduction_filter(),
+%%   <<"Bitrate">> => integer(),
+%%   <<"CodecLevel">> => list(any()),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"DynamicSubGop">> => list(any()),
+%%   <<"EndOfStreamMarkers">> => list(any()),
+%%   <<"EntropyEncoding">> => list(any()),
+%%   <<"ExplicitWeightedPrediction">> => list(any()),
+%%   <<"FieldEncoding">> => list(any()),
+%%   <<"FlickerAdaptiveQuantization">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"HrdBufferFinalFillPercentage">> => integer(),
+%%   <<"HrdBufferInitialFillPercentage">> => integer(),
+%%   <<"HrdBufferSize">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
+%%   <<"NumberReferenceFrames">> => integer(),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"QvbrSettings">> => h264_qvbr_settings(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"RepeatPps">> => list(any()),
+%%   <<"SaliencyAwareEncoding">> => list(any()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Softness">> => integer(),
+%%   <<"SpatialAdaptiveQuantization">> => list(any()),
+%%   <<"Syntax">> => list(any()),
+%%   <<"Telecine">> => list(any()),
+%%   <<"TemporalAdaptiveQuantization">> => list(any()),
+%%   <<"UnregisteredSeiTimecode">> => list(any()),
+%%   <<"WriteMp4PackagingType">> => list(any())
+%% }
+-type h264_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h265_qvbr_settings() :: #{
+%%   <<"MaxAverageBitrate">> => integer(),
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"QvbrQualityLevelFineTune">> => float()
+%% }
+-type h265_qvbr_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h265_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"AlternateTransferFunctionSei">> => list(any()),
+%%   <<"BandwidthReductionFilter">> => bandwidth_reduction_filter(),
+%%   <<"Bitrate">> => integer(),
+%%   <<"CodecLevel">> => list(any()),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"Deblocking">> => list(any()),
+%%   <<"DynamicSubGop">> => list(any()),
+%%   <<"EndOfStreamMarkers">> => list(any()),
+%%   <<"FlickerAdaptiveQuantization">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"HrdBufferFinalFillPercentage">> => integer(),
+%%   <<"HrdBufferInitialFillPercentage">> => integer(),
+%%   <<"HrdBufferSize">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"MvOverPictureBoundaries">> => list(any()),
+%%   <<"MvTemporalPredictor">> => list(any()),
+%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
+%%   <<"NumberReferenceFrames">> => integer(),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"QvbrSettings">> => h265_qvbr_settings(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"SampleAdaptiveOffsetFilterMode">> => list(any()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"SpatialAdaptiveQuantization">> => list(any()),
+%%   <<"Telecine">> => list(any()),
+%%   <<"TemporalAdaptiveQuantization">> => list(any()),
+%%   <<"TemporalIds">> => list(any()),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TilePadding">> => list(any()),
+%%   <<"TileWidth">> => integer(),
+%%   <<"Tiles">> => list(any()),
+%%   <<"TreeBlockSize">> => list(any()),
+%%   <<"UnregisteredSeiTimecode">> => list(any()),
+%%   <<"WriteMp4PackagingType">> => list(any())
+%% }
+-type h265_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2293,143 +1506,135 @@
 
 
 %% Example:
-%% mp3_settings() :: #{
-%%   <<"Bitrate">> => integer(),
-%%   <<"Channels">> => integer(),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"SampleRate">> => integer(),
-%%   <<"VbrQuality">> => integer()
+%% hdr10_plus() :: #{
+%%   <<"MasteringMonitorNits">> => integer(),
+%%   <<"TargetMonitorNits">> => integer()
 %% }
--type mp3_settings() :: #{binary() => any()}.
+-type hdr10_plus() :: #{binary() => any()}.
 
 
 %% Example:
-%% webvtt_destination_settings() :: #{
-%%   <<"Accessibility">> => list(any()),
-%%   <<"StylePassthrough">> => list(any())
+%% hdr_metadata() :: #{
+%%   <<"ContentLightLevel">> => content_light_level(),
+%%   <<"MasteringDisplayColorVolume">> => mastering_display_color_volume()
 %% }
--type webvtt_destination_settings() :: #{binary() => any()}.
+-type hdr_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% multi_view_settings() :: #{
-%%   <<"Input">> => multi_view_input()
+%% hls_additional_manifest() :: #{
+%%   <<"ManifestNameModifier">> => string(),
+%%   <<"SelectedOutputs">> => list(string())
 %% }
--type multi_view_settings() :: #{binary() => any()}.
+-type hls_additional_manifest() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_job_template_response() :: #{
-%%   <<"JobTemplate">> => job_template()
+%% hls_caption_language_mapping() :: #{
+%%   <<"CaptionChannel">> => integer(),
+%%   <<"CustomLanguageCode">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageDescription">> => string()
 %% }
--type update_job_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type hls_caption_language_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% uncompressed_settings() :: #{
-%%   <<"Fourcc">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any())
+%% hls_encryption_settings() :: #{
+%%   <<"ConstantInitializationVector">> => string(),
+%%   <<"EncryptionMethod">> => list(any()),
+%%   <<"InitializationVectorInManifest">> => list(any()),
+%%   <<"OfflineEncrypted">> => list(any()),
+%%   <<"SpekeKeyProvider">> => speke_key_provider(),
+%%   <<"StaticKeyProvider">> => static_key_provider(),
+%%   <<"Type">> => list(any())
 %% }
--type uncompressed_settings() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_certificate_response() :: #{}
--type disassociate_certificate_response() :: #{}.
+-type hls_encryption_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% remix_settings() :: #{
-%%   <<"AudioDescriptionAudioChannel">> => integer(),
-%%   <<"AudioDescriptionDataChannel">> => integer(),
-%%   <<"ChannelMapping">> => channel_mapping(),
-%%   <<"ChannelsIn">> => integer(),
-%%   <<"ChannelsOut">> => integer()
+%% hls_group_settings() :: #{
+%%   <<"AdMarkers">> => list(list(any())()),
+%%   <<"AdditionalManifests">> => list(hls_additional_manifest()),
+%%   <<"AudioOnlyHeader">> => list(any()),
+%%   <<"BaseUrl">> => string(),
+%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()),
+%%   <<"CaptionLanguageSetting">> => list(any()),
+%%   <<"CaptionSegmentLengthControl">> => list(any()),
+%%   <<"ClientCache">> => list(any()),
+%%   <<"CodecSpecification">> => list(any()),
+%%   <<"Destination">> => string(),
+%%   <<"DestinationSettings">> => destination_settings(),
+%%   <<"DirectoryStructure">> => list(any()),
+%%   <<"Encryption">> => hls_encryption_settings(),
+%%   <<"ImageBasedTrickPlay">> => list(any()),
+%%   <<"ImageBasedTrickPlaySettings">> => hls_image_based_trick_play_settings(),
+%%   <<"ImageBasedTrickPlayVariants">> => list(hls_image_based_trick_play_variant()),
+%%   <<"ManifestCompression">> => list(any()),
+%%   <<"ManifestDurationFormat">> => list(any()),
+%%   <<"MinFinalSegmentLength">> => float(),
+%%   <<"MinSegmentLength">> => integer(),
+%%   <<"OutputSelection">> => list(any()),
+%%   <<"ProgramDateTime">> => list(any()),
+%%   <<"ProgramDateTimePeriod">> => integer(),
+%%   <<"ProgressiveWriteHlsManifest">> => list(any()),
+%%   <<"SegmentControl">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentLengthControl">> => list(any()),
+%%   <<"SegmentsPerSubdirectory">> => integer(),
+%%   <<"StreamInfResolution">> => list(any()),
+%%   <<"TargetDurationCompatibilityMode">> => list(any()),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer(),
+%%   <<"TimestampDeltaMilliseconds">> => integer()
 %% }
--type remix_settings() :: #{binary() => any()}.
+-type hls_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% mpeg2_settings() :: #{
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"Softness">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"HrdBufferFinalFillPercentage">> => integer(),
-%%   <<"HrdBufferInitialFillPercentage">> => integer(),
-%%   <<"DynamicSubGop">> => list(any()),
-%%   <<"GopSize">> => float(),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any()),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"ParControl">> => list(any()),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
-%%   <<"MinIInterval">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"IntraDcPrecision">> => list(any()),
-%%   <<"SpatialAdaptiveQuantization">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"Syntax">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"HrdBufferSize">> => integer(),
-%%   <<"TemporalAdaptiveQuantization">> => list(any()),
-%%   <<"CodecLevel">> => list(any()),
-%%   <<"FramerateDenominator">> => integer()
+%% hls_image_based_trick_play_settings() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
 %% }
--type mpeg2_settings() :: #{binary() => any()}.
+-type hls_image_based_trick_play_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% caption_source_settings() :: #{
-%%   <<"AncillarySourceSettings">> => ancillary_source_settings(),
-%%   <<"DvbSubSourceSettings">> => dvb_sub_source_settings(),
-%%   <<"EmbeddedSourceSettings">> => embedded_source_settings(),
-%%   <<"FileSourceSettings">> => file_source_settings(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"TeletextSourceSettings">> => teletext_source_settings(),
-%%   <<"TrackSourceSettings">> => track_source_settings(),
-%%   <<"WebvttHlsSourceSettings">> => webvtt_hls_source_settings()
+%% hls_image_based_trick_play_variant() :: #{
+%%   <<"IntervalCadence">> => list(any()),
+%%   <<"ThumbnailHeight">> => integer(),
+%%   <<"ThumbnailInterval">> => float(),
+%%   <<"ThumbnailWidth">> => integer(),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TileWidth">> => integer()
 %% }
--type caption_source_settings() :: #{binary() => any()}.
+-type hls_image_based_trick_play_variant() :: #{binary() => any()}.
 
 
 %% Example:
-%% kantar_watermark_settings() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"ContentReference">> => string(),
-%%   <<"CredentialsSecretName">> => string(),
-%%   <<"FileOffset">> => float(),
-%%   <<"KantarLicenseId">> => integer(),
-%%   <<"KantarServerUrl">> => string(),
-%%   <<"LogDestination">> => string(),
-%%   <<"Metadata3">> => string(),
-%%   <<"Metadata4">> => string(),
-%%   <<"Metadata5">> => string(),
-%%   <<"Metadata6">> => string(),
-%%   <<"Metadata7">> => string(),
-%%   <<"Metadata8">> => string()
+%% hls_rendition_group_settings() :: #{
+%%   <<"RenditionGroupId">> => string(),
+%%   <<"RenditionLanguageCode">> => list(any()),
+%%   <<"RenditionName">> => string()
 %% }
--type kantar_watermark_settings() :: #{binary() => any()}.
+-type hls_rendition_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_settings() :: #{
+%%   <<"AudioGroupId">> => string(),
+%%   <<"AudioOnlyContainer">> => list(any()),
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"AudioTrackType">> => list(any()),
+%%   <<"DescriptiveVideoServiceFlag">> => list(any()),
+%%   <<"IFrameOnlyManifest">> => list(any()),
+%%   <<"SegmentModifier">> => string()
+%% }
+-type hls_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2442,68 +1647,156 @@
 
 
 %% Example:
-%% get_job_response() :: #{
-%%   <<"Job">> => job()
+%% id3_insertion() :: #{
+%%   <<"Id3">> => string(),
+%%   <<"Timecode">> => string()
 %% }
--type get_job_response() :: #{binary() => any()}.
+-type id3_insertion() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_preset_response() :: #{
-%%   <<"Preset">> => preset()
+%% image_inserter() :: #{
+%%   <<"InsertableImages">> => list(insertable_image()),
+%%   <<"SdrReferenceWhiteLevel">> => integer()
 %% }
--type update_preset_response() :: #{binary() => any()}.
+-type image_inserter() :: #{binary() => any()}.
 
 
 %% Example:
-%% ms_smooth_additional_manifest() :: #{
-%%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string())
+%% imsc_destination_settings() :: #{
+%%   <<"Accessibility">> => list(any()),
+%%   <<"StylePassthrough">> => list(any())
 %% }
--type ms_smooth_additional_manifest() :: #{binary() => any()}.
+-type imsc_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% multi_view_input() :: #{
-%%   <<"FileInput">> => string()
+%% input() :: #{
+%%   <<"AdvancedInputFilter">> => list(any()),
+%%   <<"AdvancedInputFilterSettings">> => advanced_input_filter_settings(),
+%%   <<"AudioSelectorGroups">> => map(),
+%%   <<"AudioSelectors">> => map(),
+%%   <<"CaptionSelectors">> => map(),
+%%   <<"Crop">> => rectangle(),
+%%   <<"DeblockFilter">> => list(any()),
+%%   <<"DecryptionSettings">> => input_decryption_settings(),
+%%   <<"DenoiseFilter">> => list(any()),
+%%   <<"DolbyVisionMetadataXml">> => string(),
+%%   <<"DynamicAudioSelectors">> => map(),
+%%   <<"FileInput">> => string(),
+%%   <<"FilterEnable">> => list(any()),
+%%   <<"FilterStrength">> => integer(),
+%%   <<"ImageInserter">> => image_inserter(),
+%%   <<"InputClippings">> => list(input_clipping()),
+%%   <<"InputScanType">> => list(any()),
+%%   <<"MultiViewSettings">> => list(multi_view_settings()),
+%%   <<"Position">> => rectangle(),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"PsiControl">> => list(any()),
+%%   <<"SupplementalImps">> => list(string()),
+%%   <<"TamsSettings">> => input_tams_settings(),
+%%   <<"TimecodeSource">> => list(any()),
+%%   <<"TimecodeStart">> => string(),
+%%   <<"VideoGenerator">> => input_video_generator(),
+%%   <<"VideoOverlays">> => list(video_overlay()),
+%%   <<"VideoSelector">> => video_selector()
 %% }
--type multi_view_input() :: #{binary() => any()}.
+-type input() :: #{binary() => any()}.
 
 
 %% Example:
-%% vorbis_settings() :: #{
+%% input_clipping() :: #{
+%%   <<"EndTimecode">> => string(),
+%%   <<"StartTimecode">> => string()
+%% }
+-type input_clipping() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_decryption_settings() :: #{
+%%   <<"DecryptionMode">> => list(any()),
+%%   <<"EncryptedDecryptionKey">> => string(),
+%%   <<"InitializationVector">> => string(),
+%%   <<"KmsKeyRegion">> => string()
+%% }
+-type input_decryption_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_tams_settings() :: #{
+%%   <<"AuthConnectionArn">> => string(),
+%%   <<"GapHandling">> => list(any()),
+%%   <<"SourceId">> => string(),
+%%   <<"Timerange">> => string()
+%% }
+-type input_tams_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_template() :: #{
+%%   <<"AdvancedInputFilter">> => list(any()),
+%%   <<"AdvancedInputFilterSettings">> => advanced_input_filter_settings(),
+%%   <<"AudioSelectorGroups">> => map(),
+%%   <<"AudioSelectors">> => map(),
+%%   <<"CaptionSelectors">> => map(),
+%%   <<"Crop">> => rectangle(),
+%%   <<"DeblockFilter">> => list(any()),
+%%   <<"DenoiseFilter">> => list(any()),
+%%   <<"DolbyVisionMetadataXml">> => string(),
+%%   <<"DynamicAudioSelectors">> => map(),
+%%   <<"FilterEnable">> => list(any()),
+%%   <<"FilterStrength">> => integer(),
+%%   <<"ImageInserter">> => image_inserter(),
+%%   <<"InputClippings">> => list(input_clipping()),
+%%   <<"InputScanType">> => list(any()),
+%%   <<"MultiViewSettings">> => list(multi_view_settings()),
+%%   <<"Position">> => rectangle(),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"PsiControl">> => list(any()),
+%%   <<"TimecodeSource">> => list(any()),
+%%   <<"TimecodeStart">> => string(),
+%%   <<"VideoOverlays">> => list(video_overlay()),
+%%   <<"VideoSelector">> => video_selector()
+%% }
+-type input_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_video_generator() :: #{
 %%   <<"Channels">> => integer(),
+%%   <<"Duration">> => integer(),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"Height">> => integer(),
+%%   <<"ImageInput">> => string(),
 %%   <<"SampleRate">> => integer(),
-%%   <<"VbrQuality">> => integer()
+%%   <<"Width">> => integer()
 %% }
--type vorbis_settings() :: #{binary() => any()}.
+-type input_video_generator() :: #{binary() => any()}.
 
 
 %% Example:
-%% probe_response() :: #{
-%%   <<"ProbeResults">> => list(probe_result())
+%% insertable_image() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"FadeIn">> => integer(),
+%%   <<"FadeOut">> => integer(),
+%%   <<"Height">> => integer(),
+%%   <<"ImageInserterInput">> => string(),
+%%   <<"ImageX">> => integer(),
+%%   <<"ImageY">> => integer(),
+%%   <<"Layer">> => integer(),
+%%   <<"Opacity">> => integer(),
+%%   <<"StartTime">> => string(),
+%%   <<"Width">> => integer()
 %% }
--type probe_response() :: #{binary() => any()}.
+-type insertable_image() :: #{binary() => any()}.
 
 
 %% Example:
-%% ac3_settings() :: #{
-%%   <<"Bitrate">> => integer(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"Dialnorm">> => integer(),
-%%   <<"DynamicRangeCompressionLine">> => list(any()),
-%%   <<"DynamicRangeCompressionProfile">> => list(any()),
-%%   <<"DynamicRangeCompressionRf">> => list(any()),
-%%   <<"LfeFilter">> => list(any()),
-%%   <<"MetadataControl">> => list(any()),
-%%   <<"SampleRate">> => integer()
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type ac3_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type internal_server_error_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2545,232 +1838,172 @@
 
 
 %% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string()
+%% job_engine_version() :: #{
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Version">> => string()
 %% }
--type internal_server_error_exception() :: #{binary() => any()}.
+-type job_engine_version() :: #{binary() => any()}.
 
 
 %% Example:
-%% passthrough_settings() :: #{
-%%   <<"FrameControl">> => list(any()),
-%%   <<"VideoSelectorMode">> => list(any())
+%% job_messages() :: #{
+%%   <<"Info">> => list(string()),
+%%   <<"Warning">> => list(string())
 %% }
--type passthrough_settings() :: #{binary() => any()}.
+-type job_messages() :: #{binary() => any()}.
 
 
 %% Example:
-%% embedded_source_settings() :: #{
-%%   <<"Convert608To708">> => list(any()),
-%%   <<"Source608ChannelNumber">> => integer(),
-%%   <<"Source608TrackNumber">> => integer(),
-%%   <<"TerminateCaptions">> => list(any())
+%% job_settings() :: #{
+%%   <<"AdAvailOffset">> => integer(),
+%%   <<"AvailBlanking">> => avail_blanking(),
+%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
+%%   <<"Esam">> => esam_settings(),
+%%   <<"ExtendedDataServices">> => extended_data_services(),
+%%   <<"FollowSource">> => integer(),
+%%   <<"Inputs">> => list(input()),
+%%   <<"KantarWatermark">> => kantar_watermark_settings(),
+%%   <<"MotionImageInserter">> => motion_image_inserter(),
+%%   <<"NielsenConfiguration">> => nielsen_configuration(),
+%%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
+%%   <<"OutputGroups">> => list(output_group()),
+%%   <<"TimecodeConfig">> => timecode_config(),
+%%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
 %% }
--type embedded_source_settings() :: #{binary() => any()}.
+-type job_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% dash_iso_image_based_trick_play_settings() :: #{
-%%   <<"IntervalCadence">> => list(any()),
-%%   <<"ThumbnailHeight">> => integer(),
-%%   <<"ThumbnailInterval">> => float(),
-%%   <<"ThumbnailWidth">> => integer(),
-%%   <<"TileHeight">> => integer(),
-%%   <<"TileWidth">> => integer()
-%% }
--type dash_iso_image_based_trick_play_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_settings() :: #{
-%%   <<"CmfcSettings">> => cmfc_settings(),
-%%   <<"Container">> => list(any()),
-%%   <<"F4vSettings">> => f4v_settings(),
-%%   <<"M2tsSettings">> => m2ts_settings(),
-%%   <<"M3u8Settings">> => m3u8_settings(),
-%%   <<"MovSettings">> => mov_settings(),
-%%   <<"Mp4Settings">> => mp4_settings(),
-%%   <<"MpdSettings">> => mpd_settings(),
-%%   <<"MxfSettings">> => mxf_settings()
-%% }
--type container_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_overlay_input() :: #{
-%%   <<"AudioSelectors">> => map(),
-%%   <<"FileInput">> => string(),
-%%   <<"InputClippings">> => list(video_overlay_input_clipping()),
-%%   <<"TimecodeSource">> => list(any()),
-%%   <<"TimecodeStart">> => string()
-%% }
--type video_overlay_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% probe_input_file() :: #{
-%%   <<"FileUrl">> => string()
-%% }
--type probe_input_file() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_request() :: #{}
--type get_job_request() :: #{}.
-
-
-%% Example:
-%% cmaf_encryption_settings() :: #{
-%%   <<"ClearLeadSegments">> => integer(),
-%%   <<"ConstantInitializationVector">> => string(),
-%%   <<"EncryptionMethod">> => list(any()),
-%%   <<"InitializationVectorInManifest">> => list(any()),
-%%   <<"SpekeKeyProvider">> => speke_key_provider_cmaf(),
-%%   <<"StaticKeyProvider">> => static_key_provider(),
+%% job_template() :: #{
+%%   <<"AccelerationSettings">> => acceleration_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"HopDestinations">> => list(hop_destination()),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Queue">> => string(),
+%%   <<"Settings">> => job_template_settings(),
+%%   <<"StatusUpdateInterval">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
--type cmaf_encryption_settings() :: #{binary() => any()}.
+-type job_template() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_preset_response() :: #{
-%%   <<"Preset">> => preset()
+%% job_template_settings() :: #{
+%%   <<"AdAvailOffset">> => integer(),
+%%   <<"AvailBlanking">> => avail_blanking(),
+%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
+%%   <<"Esam">> => esam_settings(),
+%%   <<"ExtendedDataServices">> => extended_data_services(),
+%%   <<"FollowSource">> => integer(),
+%%   <<"Inputs">> => list(input_template()),
+%%   <<"KantarWatermark">> => kantar_watermark_settings(),
+%%   <<"MotionImageInserter">> => motion_image_inserter(),
+%%   <<"NielsenConfiguration">> => nielsen_configuration(),
+%%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
+%%   <<"OutputGroups">> => list(output_group()),
+%%   <<"TimecodeConfig">> => timecode_config(),
+%%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
 %% }
--type get_preset_response() :: #{binary() => any()}.
+-type job_template_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_jobs_query_response() :: #{
-%%   <<"Id">> => string()
+%% jobs_query_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type start_jobs_query_response() :: #{binary() => any()}.
+-type jobs_query_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_versions_request() :: #{
+%% kantar_watermark_settings() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"ContentReference">> => string(),
+%%   <<"CredentialsSecretName">> => string(),
+%%   <<"FileOffset">> => float(),
+%%   <<"KantarLicenseId">> => integer(),
+%%   <<"KantarServerUrl">> => string(),
+%%   <<"LogDestination">> => string(),
+%%   <<"Metadata3">> => string(),
+%%   <<"Metadata4">> => string(),
+%%   <<"Metadata5">> => string(),
+%%   <<"Metadata6">> => string(),
+%%   <<"Metadata7">> => string(),
+%%   <<"Metadata8">> => string()
+%% }
+-type kantar_watermark_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_request() :: #{
+%%   <<"Category">> => string(),
+%%   <<"ListBy">> => list(any()),
 %%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any())
+%% }
+-type list_job_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_response() :: #{
+%%   <<"JobTemplates">> => list(job_template()),
 %%   <<"NextToken">> => string()
 %% }
--type list_versions_request() :: #{binary() => any()}.
+-type list_job_templates_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% caption_description() :: #{
-%%   <<"CaptionSelectorName">> => string(),
-%%   <<"CustomLanguageCode">> => string(),
-%%   <<"DestinationSettings">> => caption_destination_settings(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageDescription">> => string()
+%% list_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Queue">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type caption_description() :: #{binary() => any()}.
+-type list_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_overlay_crop() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Unit">> => list(any()),
-%%   <<"Width">> => integer(),
-%%   <<"X">> => integer(),
-%%   <<"Y">> => integer()
+%% list_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string()
 %% }
--type video_overlay_crop() :: #{binary() => any()}.
+-type list_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% nielsen_non_linear_watermark_settings() :: #{
-%%   <<"ActiveWatermarkProcess">> => list(any()),
-%%   <<"AdiFilename">> => string(),
-%%   <<"AssetId">> => string(),
-%%   <<"AssetName">> => string(),
-%%   <<"CbetSourceId">> => string(),
-%%   <<"EpisodeId">> => string(),
-%%   <<"MetadataDestination">> => string(),
-%%   <<"SourceId">> => integer(),
-%%   <<"SourceWatermarkStatus">> => list(any()),
-%%   <<"TicServerUrl">> => string(),
-%%   <<"UniqueTicPerAudioTrack">> => list(any())
+%% list_presets_request() :: #{
+%%   <<"Category">> => string(),
+%%   <<"ListBy">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any())
 %% }
--type nielsen_non_linear_watermark_settings() :: #{binary() => any()}.
+-type list_presets_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% cmaf_image_based_trick_play_settings() :: #{
-%%   <<"IntervalCadence">> => list(any()),
-%%   <<"ThumbnailHeight">> => integer(),
-%%   <<"ThumbnailInterval">> => float(),
-%%   <<"ThumbnailWidth">> => integer(),
-%%   <<"TileHeight">> => integer(),
-%%   <<"TileWidth">> => integer()
+%% list_presets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Presets">> => list(preset())
 %% }
--type cmaf_image_based_trick_play_settings() :: #{binary() => any()}.
+-type list_presets_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% frame_capture_settings() :: #{
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"MaxCaptures">> => integer(),
-%%   <<"Quality">> => integer()
+%% list_queues_request() :: #{
+%%   <<"ListBy">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any())
 %% }
--type frame_capture_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% m2ts_settings() :: #{
-%%   <<"EbpPlacement">> => list(any()),
-%%   <<"EsRateInPes">> => list(any()),
-%%   <<"PcrControl">> => list(any()),
-%%   <<"PtsOffset">> => integer(),
-%%   <<"AudioDuration">> => list(any()),
-%%   <<"NielsenId3">> => list(any()),
-%%   <<"PcrPid">> => integer(),
-%%   <<"Scte35Source">> => list(any()),
-%%   <<"DataPTSControl">> => list(any()),
-%%   <<"MinEbpInterval">> => integer(),
-%%   <<"PatInterval">> => integer(),
-%%   <<"TimedMetadataPid">> => integer(),
-%%   <<"FragmentTime">> => float(),
-%%   <<"PreventBufferUnderflow">> => list(any()),
-%%   <<"PmtPid">> => integer(),
-%%   <<"DvbSdtSettings">> => dvb_sdt_settings(),
-%%   <<"Scte35Esam">> => m2ts_scte35_esam(),
-%%   <<"NullPacketBitrate">> => float(),
-%%   <<"AudioBufferModel">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"PrivateMetadataPid">> => integer(),
-%%   <<"Scte35Pid">> => integer(),
-%%   <<"ForceTsVideoEbpOrder">> => list(any()),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"VideoPid">> => integer(),
-%%   <<"MaxPcrInterval">> => integer(),
-%%   <<"AudioPids">> => list(integer()),
-%%   <<"RateMode">> => list(any()),
-%%   <<"DvbNitSettings">> => dvb_nit_settings(),
-%%   <<"SegmentationTime">> => float(),
-%%   <<"BufferModel">> => list(any()),
-%%   <<"SegmentationMarkers">> => list(any()),
-%%   <<"DvbTeletextPid">> => integer(),
-%%   <<"PtsOffsetMode">> => list(any()),
-%%   <<"DvbSubPids">> => list(integer()),
-%%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"KlvMetadata">> => list(any()),
-%%   <<"TransportStreamId">> => integer(),
-%%   <<"SegmentationStyle">> => list(any()),
-%%   <<"AudioPtsOffsetDelta">> => integer(),
-%%   <<"PmtInterval">> => integer(),
-%%   <<"DvbTdtSettings">> => dvb_tdt_settings(),
-%%   <<"EbpAudioInterval">> => list(any())
-%% }
--type m2ts_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_sdt_settings() :: #{
-%%   <<"OutputSdt">> => list(any()),
-%%   <<"SdtInterval">> => integer(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceProviderName">> => string()
-%% }
--type dvb_sdt_settings() :: #{binary() => any()}.
+-type list_queues_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2782,12 +2015,32 @@
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
-%% data_properties() :: #{
-%%   <<"LanguageCode">> => string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTags">> => resource_tags()
 %% }
--type data_properties() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(job_engine_version())
+%% }
+-type list_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2798,37 +2051,106 @@
 
 
 %% Example:
-%% warning_group() :: #{
-%%   <<"Code">> => integer(),
-%%   <<"Count">> => integer()
-%% }
--type warning_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% ac4_settings() :: #{
+%% m2ts_settings() :: #{
+%%   <<"AudioBufferModel">> => list(any()),
+%%   <<"AudioDuration">> => list(any()),
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioPids">> => list(integer()),
+%%   <<"AudioPtsOffsetDelta">> => integer(),
 %%   <<"Bitrate">> => integer(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"DynamicRangeCompressionFlatPanelTv">> => list(any()),
-%%   <<"DynamicRangeCompressionHomeTheater">> => list(any()),
-%%   <<"DynamicRangeCompressionPortableHeadphones">> => list(any()),
-%%   <<"DynamicRangeCompressionPortableSpeakers">> => list(any()),
-%%   <<"LoRoCenterMixLevel">> => float(),
-%%   <<"LoRoSurroundMixLevel">> => float(),
-%%   <<"LtRtCenterMixLevel">> => float(),
-%%   <<"LtRtSurroundMixLevel">> => float(),
-%%   <<"SampleRate">> => integer(),
-%%   <<"StereoDownmix">> => list(any())
+%%   <<"BufferModel">> => list(any()),
+%%   <<"DataPTSControl">> => list(any()),
+%%   <<"DvbNitSettings">> => dvb_nit_settings(),
+%%   <<"DvbSdtSettings">> => dvb_sdt_settings(),
+%%   <<"DvbSubPids">> => list(integer()),
+%%   <<"DvbTdtSettings">> => dvb_tdt_settings(),
+%%   <<"DvbTeletextPid">> => integer(),
+%%   <<"EbpAudioInterval">> => list(any()),
+%%   <<"EbpPlacement">> => list(any()),
+%%   <<"EsRateInPes">> => list(any()),
+%%   <<"ForceTsVideoEbpOrder">> => list(any()),
+%%   <<"FragmentTime">> => float(),
+%%   <<"KlvMetadata">> => list(any()),
+%%   <<"MaxPcrInterval">> => integer(),
+%%   <<"MinEbpInterval">> => integer(),
+%%   <<"NielsenId3">> => list(any()),
+%%   <<"NullPacketBitrate">> => float(),
+%%   <<"PatInterval">> => integer(),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPid">> => integer(),
+%%   <<"PmtInterval">> => integer(),
+%%   <<"PmtPid">> => integer(),
+%%   <<"PreventBufferUnderflow">> => list(any()),
+%%   <<"PrivateMetadataPid">> => integer(),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"PtsOffset">> => integer(),
+%%   <<"PtsOffsetMode">> => list(any()),
+%%   <<"RateMode">> => list(any()),
+%%   <<"Scte35Esam">> => m2ts_scte35_esam(),
+%%   <<"Scte35Pid">> => integer(),
+%%   <<"Scte35Source">> => list(any()),
+%%   <<"SegmentationMarkers">> => list(any()),
+%%   <<"SegmentationStyle">> => list(any()),
+%%   <<"SegmentationTime">> => float(),
+%%   <<"TimedMetadataPid">> => integer(),
+%%   <<"TransportStreamId">> => integer(),
+%%   <<"VideoPid">> => integer()
 %% }
--type ac4_settings() :: #{binary() => any()}.
+-type m2ts_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% srt_destination_settings() :: #{
-%%   <<"StylePassthrough">> => list(any())
+%% m3u8_settings() :: #{
+%%   <<"AudioDuration">> => list(any()),
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioPids">> => list(integer()),
+%%   <<"AudioPtsOffsetDelta">> => integer(),
+%%   <<"DataPTSControl">> => list(any()),
+%%   <<"MaxPcrInterval">> => integer(),
+%%   <<"NielsenId3">> => list(any()),
+%%   <<"PatInterval">> => integer(),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPid">> => integer(),
+%%   <<"PmtInterval">> => integer(),
+%%   <<"PmtPid">> => integer(),
+%%   <<"PrivateMetadataPid">> => integer(),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"PtsOffset">> => integer(),
+%%   <<"PtsOffsetMode">> => list(any()),
+%%   <<"Scte35Pid">> => integer(),
+%%   <<"Scte35Source">> => list(any()),
+%%   <<"TimedMetadata">> => list(any()),
+%%   <<"TimedMetadataPid">> => integer(),
+%%   <<"TransportStreamId">> => integer(),
+%%   <<"VideoPid">> => integer()
 %% }
--type srt_destination_settings() :: #{binary() => any()}.
+-type m3u8_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mastering_display_color_volume() :: #{
+%%   <<"BluePrimaryX">> => integer(),
+%%   <<"BluePrimaryY">> => integer(),
+%%   <<"GreenPrimaryX">> => integer(),
+%%   <<"GreenPrimaryY">> => integer(),
+%%   <<"MaxLuminance">> => float(),
+%%   <<"MinLuminance">> => float(),
+%%   <<"RedPrimaryX">> => integer(),
+%%   <<"RedPrimaryY">> => integer(),
+%%   <<"WhitePointX">> => integer(),
+%%   <<"WhitePointY">> => integer()
+%% }
+-type mastering_display_color_volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FileSize">> => float(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"MimeType">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2840,135 +2162,87 @@
 
 
 %% Example:
-%% eac3_atmos_settings() :: #{
+%% min_top_rendition_size() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer()
+%% }
+-type min_top_rendition_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% motion_image_inserter() :: #{
+%%   <<"Framerate">> => motion_image_insertion_framerate(),
+%%   <<"Input">> => string(),
+%%   <<"InsertionMode">> => list(any()),
+%%   <<"Offset">> => motion_image_insertion_offset(),
+%%   <<"Playback">> => list(any()),
+%%   <<"StartTime">> => string()
+%% }
+-type motion_image_inserter() :: #{binary() => any()}.
+
+
+%% Example:
+%% motion_image_insertion_framerate() :: #{
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer()
+%% }
+-type motion_image_insertion_framerate() :: #{binary() => any()}.
+
+
+%% Example:
+%% motion_image_insertion_offset() :: #{
+%%   <<"ImageX">> => integer(),
+%%   <<"ImageY">> => integer()
+%% }
+-type motion_image_insertion_offset() :: #{binary() => any()}.
+
+
+%% Example:
+%% mov_settings() :: #{
+%%   <<"AudioDuration">> => list(any()),
+%%   <<"ClapAtom">> => list(any()),
+%%   <<"CslgAtom">> => list(any()),
+%%   <<"Mpeg2FourCCControl">> => list(any()),
+%%   <<"PaddingControl">> => list(any()),
+%%   <<"Reference">> => list(any())
+%% }
+-type mov_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mp2_settings() :: #{
+%%   <<"AudioDescriptionMix">> => list(any()),
 %%   <<"Bitrate">> => integer(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"DialogueIntelligence">> => list(any()),
-%%   <<"DownmixControl">> => list(any()),
-%%   <<"DynamicRangeCompressionLine">> => list(any()),
-%%   <<"DynamicRangeCompressionRf">> => list(any()),
-%%   <<"DynamicRangeControl">> => list(any()),
-%%   <<"LoRoCenterMixLevel">> => float(),
-%%   <<"LoRoSurroundMixLevel">> => float(),
-%%   <<"LtRtCenterMixLevel">> => float(),
-%%   <<"LtRtSurroundMixLevel">> => float(),
-%%   <<"MeteringMode">> => list(any()),
-%%   <<"SampleRate">> => integer(),
-%%   <<"SpeechThreshold">> => integer(),
-%%   <<"StereoDownmix">> => list(any()),
-%%   <<"SurroundExMode">> => list(any())
-%% }
--type eac3_atmos_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dolby_vision_level6_metadata() :: #{
-%%   <<"MaxCll">> => integer(),
-%%   <<"MaxFall">> => integer()
-%% }
--type dolby_vision_level6_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% f4v_settings() :: #{
-%%   <<"MoovPlacement">> => list(any())
-%% }
--type f4v_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_decryption_settings() :: #{
-%%   <<"DecryptionMode">> => list(any()),
-%%   <<"EncryptedDecryptionKey">> => string(),
-%%   <<"InitializationVector">> => string(),
-%%   <<"KmsKeyRegion">> => string()
-%% }
--type input_decryption_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_mapping() :: #{
-%%   <<"OutputChannels">> => list(output_channel_mapping())
-%% }
--type channel_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% wav_settings() :: #{
-%%   <<"BitDepth">> => integer(),
 %%   <<"Channels">> => integer(),
-%%   <<"Format">> => list(any()),
 %%   <<"SampleRate">> => integer()
 %% }
--type wav_settings() :: #{binary() => any()}.
+-type mp2_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_clipping() :: #{
-%%   <<"EndTimecode">> => string(),
-%%   <<"StartTimecode">> => string()
+%% mp3_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"Channels">> => integer(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"SampleRate">> => integer(),
+%%   <<"VbrQuality">> => integer()
 %% }
--type input_clipping() :: #{binary() => any()}.
+-type mp3_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
+%% mp4_settings() :: #{
+%%   <<"AudioDuration">> => list(any()),
+%%   <<"C2paManifest">> => list(any()),
+%%   <<"CertificateSecret">> => string(),
+%%   <<"CslgAtom">> => list(any()),
+%%   <<"CttsVersion">> => integer(),
+%%   <<"FreeSpaceBox">> => list(any()),
+%%   <<"MoovPlacement">> => list(any()),
+%%   <<"Mp4MajorBrand">> => string(),
+%%   <<"SigningKmsKey">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_response() :: #{
-%%   <<"Queue">> => queue()
-%% }
--type update_queue_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_request() :: #{}
--type delete_queue_request() :: #{}.
-
-
-%% Example:
-%% automated_abr_settings() :: #{
-%%   <<"MaxAbrBitrate">> => integer(),
-%%   <<"MaxQualityLevel">> => float(),
-%%   <<"MaxRenditions">> => integer(),
-%%   <<"MinAbrBitrate">> => integer(),
-%%   <<"Rules">> => list(automated_abr_rule())
-%% }
--type automated_abr_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% xavc_hd_intra_cbg_profile_settings() :: #{
-%%   <<"XavcClass">> => list(any())
-%% }
--type xavc_hd_intra_cbg_profile_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% embedded_destination_settings() :: #{
-%%   <<"Destination608ChannelNumber">> => integer(),
-%%   <<"Destination708ServiceNumber">> => integer()
-%% }
--type embedded_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_policy_request() :: #{
-%%   <<"Policy">> := policy()
-%% }
--type put_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_templates_response() :: #{
-%%   <<"JobTemplates">> => list(job_template()),
-%%   <<"NextToken">> => string()
-%% }
--type list_job_templates_response() :: #{binary() => any()}.
+-type mp4_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2992,50 +2266,206 @@
 
 
 %% Example:
-%% create_preset_response() :: #{
-%%   <<"Preset">> => preset()
-%% }
--type create_preset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% gif_settings() :: #{
+%% mpeg2_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"CodecLevel">> => list(any()),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"DynamicSubGop">> => list(any()),
 %%   <<"FramerateControl">> => list(any()),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer()
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"HrdBufferFinalFillPercentage">> => integer(),
+%%   <<"HrdBufferInitialFillPercentage">> => integer(),
+%%   <<"HrdBufferSize">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"IntraDcPrecision">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Softness">> => integer(),
+%%   <<"SpatialAdaptiveQuantization">> => list(any()),
+%%   <<"Syntax">> => list(any()),
+%%   <<"Telecine">> => list(any()),
+%%   <<"TemporalAdaptiveQuantization">> => list(any())
 %% }
--type gif_settings() :: #{binary() => any()}.
+-type mpeg2_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% caption_source_framerate() :: #{
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer()
+%% ms_smooth_additional_manifest() :: #{
+%%   <<"ManifestNameModifier">> => string(),
+%%   <<"SelectedOutputs">> => list(string())
 %% }
--type caption_source_framerate() :: #{binary() => any()}.
+-type ms_smooth_additional_manifest() :: #{binary() => any()}.
 
 
 %% Example:
-%% h265_qvbr_settings() :: #{
-%%   <<"MaxAverageBitrate">> => integer(),
-%%   <<"QvbrQualityLevel">> => integer(),
-%%   <<"QvbrQualityLevelFineTune">> => float()
+%% ms_smooth_encryption_settings() :: #{
+%%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
--type h265_qvbr_settings() :: #{binary() => any()}.
+-type ms_smooth_encryption_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_normalization_settings() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"AlgorithmControl">> => list(any()),
-%%   <<"CorrectionGateLevel">> => integer(),
-%%   <<"LoudnessLogging">> => list(any()),
-%%   <<"PeakCalculation">> => list(any()),
-%%   <<"TargetLkfs">> => float(),
-%%   <<"TruePeakLimiterThreshold">> => float()
+%% ms_smooth_group_settings() :: #{
+%%   <<"AdditionalManifests">> => list(ms_smooth_additional_manifest()),
+%%   <<"AudioDeduplication">> => list(any()),
+%%   <<"Destination">> => string(),
+%%   <<"DestinationSettings">> => destination_settings(),
+%%   <<"Encryption">> => ms_smooth_encryption_settings(),
+%%   <<"FragmentLength">> => integer(),
+%%   <<"FragmentLengthControl">> => list(any()),
+%%   <<"ManifestEncoding">> => list(any())
 %% }
--type audio_normalization_settings() :: #{binary() => any()}.
+-type ms_smooth_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_view_input() :: #{
+%%   <<"FileInput">> => string()
+%% }
+-type multi_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_view_settings() :: #{
+%%   <<"Input">> => multi_view_input()
+%% }
+-type multi_view_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mxf_settings() :: #{
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"Profile">> => list(any()),
+%%   <<"UncompressedAudioWrapping">> => list(any()),
+%%   <<"XavcProfileSettings">> => mxf_xavc_profile_settings()
+%% }
+-type mxf_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mxf_xavc_profile_settings() :: #{
+%%   <<"DurationMode">> => list(any()),
+%%   <<"MaxAncDataSize">> => integer()
+%% }
+-type mxf_xavc_profile_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% nex_guard_file_marker_settings() :: #{
+%%   <<"License">> => string(),
+%%   <<"Payload">> => integer(),
+%%   <<"Preset">> => string(),
+%%   <<"Strength">> => list(any())
+%% }
+-type nex_guard_file_marker_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_configuration() :: #{
+%%   <<"BreakoutCode">> => integer(),
+%%   <<"DistributorId">> => string()
+%% }
+-type nielsen_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_non_linear_watermark_settings() :: #{
+%%   <<"ActiveWatermarkProcess">> => list(any()),
+%%   <<"AdiFilename">> => string(),
+%%   <<"AssetId">> => string(),
+%%   <<"AssetName">> => string(),
+%%   <<"CbetSourceId">> => string(),
+%%   <<"EpisodeId">> => string(),
+%%   <<"MetadataDestination">> => string(),
+%%   <<"SourceId">> => integer(),
+%%   <<"SourceWatermarkStatus">> => list(any()),
+%%   <<"TicServerUrl">> => string(),
+%%   <<"UniqueTicPerAudioTrack">> => list(any())
+%% }
+-type nielsen_non_linear_watermark_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% noise_reducer() :: #{
+%%   <<"Filter">> => list(any()),
+%%   <<"FilterSettings">> => noise_reducer_filter_settings(),
+%%   <<"SpatialFilterSettings">> => noise_reducer_spatial_filter_settings(),
+%%   <<"TemporalFilterSettings">> => noise_reducer_temporal_filter_settings()
+%% }
+-type noise_reducer() :: #{binary() => any()}.
+
+
+%% Example:
+%% noise_reducer_filter_settings() :: #{
+%%   <<"Strength">> => integer()
+%% }
+-type noise_reducer_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% noise_reducer_spatial_filter_settings() :: #{
+%%   <<"PostFilterSharpenStrength">> => integer(),
+%%   <<"Speed">> => integer(),
+%%   <<"Strength">> => integer()
+%% }
+-type noise_reducer_spatial_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% noise_reducer_temporal_filter_settings() :: #{
+%%   <<"AggressiveMode">> => integer(),
+%%   <<"PostTemporalSharpening">> => list(any()),
+%%   <<"PostTemporalSharpeningStrength">> => list(any()),
+%%   <<"Speed">> => integer(),
+%%   <<"Strength">> => integer()
+%% }
+-type noise_reducer_temporal_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% opus_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"Channels">> => integer(),
+%%   <<"SampleRate">> => integer()
+%% }
+-type opus_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% output() :: #{
+%%   <<"AudioDescriptions">> => list(audio_description()),
+%%   <<"CaptionDescriptions">> => list(caption_description()),
+%%   <<"ContainerSettings">> => container_settings(),
+%%   <<"Extension">> => string(),
+%%   <<"NameModifier">> => string(),
+%%   <<"OutputSettings">> => output_settings(),
+%%   <<"Preset">> => string(),
+%%   <<"VideoDescription">> => video_description()
+%% }
+-type output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3047,75 +2477,73 @@
 
 
 %% Example:
-%% probe_request() :: #{
-%%   <<"InputFiles">> => list(probe_input_file())
+%% output_detail() :: #{
+%%   <<"DurationInMs">> => integer(),
+%%   <<"VideoDetails">> => video_detail()
 %% }
--type probe_request() :: #{binary() => any()}.
+-type output_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% dash_iso_group_settings() :: #{
-%%   <<"AdditionalManifests">> => list(dash_additional_manifest()),
-%%   <<"AudioChannelConfigSchemeIdUri">> => list(any()),
-%%   <<"BaseUrl">> => string(),
-%%   <<"DashIFrameTrickPlayNameModifier">> => string(),
-%%   <<"DashManifestStyle">> => list(any()),
-%%   <<"Destination">> => string(),
-%%   <<"DestinationSettings">> => destination_settings(),
-%%   <<"Encryption">> => dash_iso_encryption_settings(),
-%%   <<"FragmentLength">> => integer(),
-%%   <<"HbbtvCompliance">> => list(any()),
-%%   <<"ImageBasedTrickPlay">> => list(any()),
-%%   <<"ImageBasedTrickPlaySettings">> => dash_iso_image_based_trick_play_settings(),
-%%   <<"ImageBasedTrickPlayVariants">> => list(dash_iso_image_based_trick_play_variant()),
-%%   <<"MinBufferTime">> => integer(),
-%%   <<"MinFinalSegmentLength">> => float(),
-%%   <<"MpdManifestBandwidthType">> => list(any()),
-%%   <<"MpdProfile">> => list(any()),
-%%   <<"PtsOffsetHandlingForBFrames">> => list(any()),
-%%   <<"SegmentControl">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
-%%   <<"SegmentLengthControl">> => list(any()),
-%%   <<"VideoCompositionOffsets">> => list(any()),
-%%   <<"WriteSegmentTimelineInRepresentation">> => list(any())
+%% output_group() :: #{
+%%   <<"AutomatedEncodingSettings">> => automated_encoding_settings(),
+%%   <<"CustomName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputGroupSettings">> => output_group_settings(),
+%%   <<"Outputs">> => list(output())
 %% }
--type dash_iso_group_settings() :: #{binary() => any()}.
+-type output_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% imsc_destination_settings() :: #{
-%%   <<"Accessibility">> => list(any()),
-%%   <<"StylePassthrough">> => list(any())
+%% output_group_detail() :: #{
+%%   <<"OutputDetails">> => list(output_detail())
 %% }
--type imsc_destination_settings() :: #{binary() => any()}.
+-type output_group_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_tams_settings() :: #{
-%%   <<"AuthConnectionArn">> => string(),
-%%   <<"GapHandling">> => list(any()),
-%%   <<"SourceId">> => string(),
-%%   <<"Timerange">> => string()
+%% output_group_settings() :: #{
+%%   <<"CmafGroupSettings">> => cmaf_group_settings(),
+%%   <<"DashIsoGroupSettings">> => dash_iso_group_settings(),
+%%   <<"FileGroupSettings">> => file_group_settings(),
+%%   <<"HlsGroupSettings">> => hls_group_settings(),
+%%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"Type">> => list(any())
 %% }
--type input_tams_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_response() :: #{}
--type delete_queue_response() :: #{}.
-
-%% Example:
-%% cancel_job_response() :: #{}
--type cancel_job_response() :: #{}.
+-type output_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% clip_limits() :: #{
-%%   <<"MaximumRGBTolerance">> => integer(),
-%%   <<"MaximumYUV">> => integer(),
-%%   <<"MinimumRGBTolerance">> => integer(),
-%%   <<"MinimumYUV">> => integer()
+%% output_settings() :: #{
+%%   <<"HlsSettings">> => hls_settings()
 %% }
--type clip_limits() :: #{binary() => any()}.
+-type output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% partner_watermarking() :: #{
+%%   <<"NexguardFileMarkerSettings">> => nex_guard_file_marker_settings()
+%% }
+-type partner_watermarking() :: #{binary() => any()}.
+
+
+%% Example:
+%% passthrough_settings() :: #{
+%%   <<"FrameControl">> => list(any()),
+%%   <<"VideoSelectorMode">> => list(any())
+%% }
+-type passthrough_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy() :: #{
+%%   <<"HttpInputs">> => list(any()),
+%%   <<"HttpsInputs">> => list(any()),
+%%   <<"S3Inputs">> => list(any())
+%% }
+-type policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3133,12 +2561,660 @@
 
 
 %% Example:
-%% noise_reducer_spatial_filter_settings() :: #{
-%%   <<"PostFilterSharpenStrength">> => integer(),
-%%   <<"Speed">> => integer(),
-%%   <<"Strength">> => integer()
+%% preset_settings() :: #{
+%%   <<"AudioDescriptions">> => list(audio_description()),
+%%   <<"CaptionDescriptions">> => list(caption_description_preset()),
+%%   <<"ContainerSettings">> => container_settings(),
+%%   <<"VideoDescription">> => video_description()
 %% }
--type noise_reducer_spatial_filter_settings() :: #{binary() => any()}.
+-type preset_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_input_file() :: #{
+%%   <<"FileUrl">> => string()
+%% }
+-type probe_input_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_request() :: #{
+%%   <<"InputFiles">> => list(probe_input_file())
+%% }
+-type probe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_response() :: #{
+%%   <<"ProbeResults">> => list(probe_result())
+%% }
+-type probe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_result() :: #{
+%%   <<"Container">> => container(),
+%%   <<"Metadata">> => metadata(),
+%%   <<"TrackMappings">> => list(track_mapping())
+%% }
+-type probe_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% prores_settings() :: #{
+%%   <<"ChromaSampling">> => list(any()),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Telecine">> => list(any())
+%% }
+-type prores_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_request() :: #{
+%%   <<"Policy">> := policy()
+%% }
+-type put_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type put_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConcurrentJobs">> => integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MaximumConcurrentFeeds">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PricingPlan">> => list(any()),
+%%   <<"ProgressingJobsCount">> => integer(),
+%%   <<"ReservationPlan">> => reservation_plan(),
+%%   <<"ServiceOverrides">> => list(service_override()),
+%%   <<"Status">> => list(any()),
+%%   <<"SubmittedJobsCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type queue() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_transition() :: #{
+%%   <<"DestinationQueue">> => string(),
+%%   <<"SourceQueue">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type queue_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% rectangle() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer(),
+%%   <<"X">> => integer(),
+%%   <<"Y">> => integer()
+%% }
+-type rectangle() :: #{binary() => any()}.
+
+
+%% Example:
+%% remix_settings() :: #{
+%%   <<"AudioDescriptionAudioChannel">> => integer(),
+%%   <<"AudioDescriptionDataChannel">> => integer(),
+%%   <<"ChannelMapping">> => channel_mapping(),
+%%   <<"ChannelsIn">> => integer(),
+%%   <<"ChannelsOut">> => integer()
+%% }
+-type remix_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% reservation_plan() :: #{
+%%   <<"Commitment">> => list(any()),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"PurchasedAt">> => non_neg_integer(),
+%%   <<"RenewalType">> => list(any()),
+%%   <<"ReservedSlots">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type reservation_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% reservation_plan_settings() :: #{
+%%   <<"Commitment">> => list(any()),
+%%   <<"RenewalType">> => list(any()),
+%%   <<"ReservedSlots">> => integer()
+%% }
+-type reservation_plan_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tags() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type resource_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_access_control() :: #{
+%%   <<"CannedAcl">> => list(any())
+%% }
+-type s3_destination_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_settings() :: #{
+%%   <<"AccessControl">> => s3_destination_access_control(),
+%%   <<"Encryption">> => s3_encryption_settings(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type s3_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_encryption_settings() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KmsEncryptionContext">> => string(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type s3_encryption_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scc_destination_settings() :: #{
+%%   <<"Framerate">> => list(any())
+%% }
+-type scc_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_request() :: #{
+%%   <<"InputFile">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Queue">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type search_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_override() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OverrideValue">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type service_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SystemIds">> => list(string()),
+%%   <<"Url">> => string()
+%% }
+-type speke_key_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider_cmaf() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DashSignaledSystemIds">> => list(string()),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"HlsSignaledSystemIds">> => list(string()),
+%%   <<"ResourceId">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type speke_key_provider_cmaf() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_destination_settings() :: #{
+%%   <<"StylePassthrough">> => list(any())
+%% }
+-type srt_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_jobs_query_request() :: #{
+%%   <<"FilterList">> => list(jobs_query_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any())
+%% }
+-type start_jobs_query_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_jobs_query_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type start_jobs_query_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_key_provider() :: #{
+%%   <<"KeyFormat">> => string(),
+%%   <<"KeyFormatVersions">> => string(),
+%%   <<"StaticKeyValue">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type static_key_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% teletext_destination_settings() :: #{
+%%   <<"PageNumber">> => string(),
+%%   <<"PageTypes">> => list(list(any())())
+%% }
+-type teletext_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% teletext_source_settings() :: #{
+%%   <<"PageNumber">> => string()
+%% }
+-type teletext_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% timecode_burnin() :: #{
+%%   <<"FontSize">> => integer(),
+%%   <<"Position">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type timecode_burnin() :: #{binary() => any()}.
+
+
+%% Example:
+%% timecode_config() :: #{
+%%   <<"Anchor">> => string(),
+%%   <<"Source">> => list(any()),
+%%   <<"Start">> => string(),
+%%   <<"TimestampOffset">> => string()
+%% }
+-type timecode_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% timed_metadata_insertion() :: #{
+%%   <<"Id3Insertions">> => list(id3_insertion())
+%% }
+-type timed_metadata_insertion() :: #{binary() => any()}.
+
+
+%% Example:
+%% timing() :: #{
+%%   <<"FinishTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"SubmitTime">> => non_neg_integer()
+%% }
+-type timing() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% track() :: #{
+%%   <<"AudioProperties">> => audio_properties(),
+%%   <<"Codec">> => list(any()),
+%%   <<"DataProperties">> => data_properties(),
+%%   <<"Duration">> => float(),
+%%   <<"Index">> => integer(),
+%%   <<"TrackType">> => list(any()),
+%%   <<"VideoProperties">> => video_properties()
+%% }
+-type track() :: #{binary() => any()}.
+
+
+%% Example:
+%% track_mapping() :: #{
+%%   <<"AudioTrackIndexes">> => list(integer()),
+%%   <<"DataTrackIndexes">> => list(integer()),
+%%   <<"VideoTrackIndexes">> => list(integer())
+%% }
+-type track_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% track_source_settings() :: #{
+%%   <<"StreamNumber">> => integer(),
+%%   <<"TrackNumber">> => integer()
+%% }
+-type track_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ttml_destination_settings() :: #{
+%%   <<"StylePassthrough">> => list(any())
+%% }
+-type ttml_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% uncompressed_settings() :: #{
+%%   <<"Fourcc">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Telecine">> => list(any())
+%% }
+-type uncompressed_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> => list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_job_template_request() :: #{
+%%   <<"AccelerationSettings">> => acceleration_settings(),
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HopDestinations">> => list(hop_destination()),
+%%   <<"Priority">> => integer(),
+%%   <<"Queue">> => string(),
+%%   <<"Settings">> => job_template_settings(),
+%%   <<"StatusUpdateInterval">> => list(any())
+%% }
+-type update_job_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_template_response() :: #{
+%%   <<"JobTemplate">> => job_template()
+%% }
+-type update_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_preset_request() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Settings">> => preset_settings()
+%% }
+-type update_preset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_preset_response() :: #{
+%%   <<"Preset">> => preset()
+%% }
+-type update_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_request() :: #{
+%%   <<"ConcurrentJobs">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"MaximumConcurrentFeeds">> => integer(),
+%%   <<"ReservationPlanSettings">> => reservation_plan_settings(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_response() :: #{
+%%   <<"Queue">> => queue()
+%% }
+-type update_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vc3_settings() :: #{
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"ScanTypeConversionMode">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Telecine">> => list(any()),
+%%   <<"Vc3Class">> => list(any())
+%% }
+-type vc3_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_codec_settings() :: #{
+%%   <<"Av1Settings">> => av1_settings(),
+%%   <<"AvcIntraSettings">> => avc_intra_settings(),
+%%   <<"Codec">> => list(any()),
+%%   <<"FrameCaptureSettings">> => frame_capture_settings(),
+%%   <<"GifSettings">> => gif_settings(),
+%%   <<"H264Settings">> => h264_settings(),
+%%   <<"H265Settings">> => h265_settings(),
+%%   <<"Mpeg2Settings">> => mpeg2_settings(),
+%%   <<"PassthroughSettings">> => passthrough_settings(),
+%%   <<"ProresSettings">> => prores_settings(),
+%%   <<"UncompressedSettings">> => uncompressed_settings(),
+%%   <<"Vc3Settings">> => vc3_settings(),
+%%   <<"Vp8Settings">> => vp8_settings(),
+%%   <<"Vp9Settings">> => vp9_settings(),
+%%   <<"XavcSettings">> => xavc_settings()
+%% }
+-type video_codec_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_description() :: #{
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"AntiAlias">> => list(any()),
+%%   <<"ChromaPositionMode">> => list(any()),
+%%   <<"CodecSettings">> => video_codec_settings(),
+%%   <<"ColorMetadata">> => list(any()),
+%%   <<"Crop">> => rectangle(),
+%%   <<"DropFrameTimecode">> => list(any()),
+%%   <<"FixedAfd">> => integer(),
+%%   <<"Height">> => integer(),
+%%   <<"Position">> => rectangle(),
+%%   <<"RespondToAfd">> => list(any()),
+%%   <<"ScalingBehavior">> => list(any()),
+%%   <<"Sharpness">> => integer(),
+%%   <<"TimecodeInsertion">> => list(any()),
+%%   <<"TimecodeTrack">> => list(any()),
+%%   <<"VideoPreprocessors">> => video_preprocessor(),
+%%   <<"Width">> => integer()
+%% }
+-type video_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_detail() :: #{
+%%   <<"HeightInPx">> => integer(),
+%%   <<"WidthInPx">> => integer()
+%% }
+-type video_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay() :: #{
+%%   <<"Crop">> => video_overlay_crop(),
+%%   <<"EndTimecode">> => string(),
+%%   <<"InitialPosition">> => video_overlay_position(),
+%%   <<"Input">> => video_overlay_input(),
+%%   <<"Playback">> => list(any()),
+%%   <<"StartTimecode">> => string(),
+%%   <<"Transitions">> => list(video_overlay_transition())
+%% }
+-type video_overlay() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_crop() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Width">> => integer(),
+%%   <<"X">> => integer(),
+%%   <<"Y">> => integer()
+%% }
+-type video_overlay_crop() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_input() :: #{
+%%   <<"AudioSelectors">> => map(),
+%%   <<"FileInput">> => string(),
+%%   <<"InputClippings">> => list(video_overlay_input_clipping()),
+%%   <<"TimecodeSource">> => list(any()),
+%%   <<"TimecodeStart">> => string()
+%% }
+-type video_overlay_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_input_clipping() :: #{
+%%   <<"EndTimecode">> => string(),
+%%   <<"StartTimecode">> => string()
+%% }
+-type video_overlay_input_clipping() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_position() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Opacity">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Width">> => integer(),
+%%   <<"XPosition">> => integer(),
+%%   <<"YPosition">> => integer()
+%% }
+-type video_overlay_position() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_overlay_transition() :: #{
+%%   <<"EndPosition">> => video_overlay_position(),
+%%   <<"EndTimecode">> => string(),
+%%   <<"StartTimecode">> => string()
+%% }
+-type video_overlay_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_preprocessor() :: #{
+%%   <<"ColorCorrector">> => color_corrector(),
+%%   <<"Deinterlacer">> => deinterlacer(),
+%%   <<"DolbyVision">> => dolby_vision(),
+%%   <<"DurationControl">> => duration_control(),
+%%   <<"Hdr10Plus">> => hdr10_plus(),
+%%   <<"ImageInserter">> => image_inserter(),
+%%   <<"NoiseReducer">> => noise_reducer(),
+%%   <<"PartnerWatermarking">> => partner_watermarking(),
+%%   <<"TimecodeBurnin">> => timecode_burnin()
+%% }
+-type video_preprocessor() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_properties() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"BitRate">> => float(),
+%%   <<"CodecMetadata">> => codec_metadata(),
+%%   <<"ColorPrimaries">> => list(any()),
+%%   <<"FrameRate">> => frame_rate(),
+%%   <<"HdrMetadata">> => hdr_metadata(),
+%%   <<"Height">> => integer(),
+%%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"Rotation">> => integer(),
+%%   <<"TransferCharacteristics">> => list(any()),
+%%   <<"Width">> => integer()
+%% }
+-type video_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector() :: #{
+%%   <<"AlphaBehavior">> => list(any()),
+%%   <<"ColorSpace">> => list(any()),
+%%   <<"ColorSpaceUsage">> => list(any()),
+%%   <<"EmbeddedTimecodeOverride">> => list(any()),
+%%   <<"Hdr10Metadata">> => hdr10_metadata(),
+%%   <<"MaxLuminance">> => integer(),
+%%   <<"PadVideo">> => list(any()),
+%%   <<"Pid">> => integer(),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"Rotate">> => list(any()),
+%%   <<"SampleRange">> => list(any()),
+%%   <<"SelectorType">> => list(any()),
+%%   <<"Streams">> => list(integer())
+%% }
+-type video_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% vorbis_settings() :: #{
+%%   <<"Channels">> => integer(),
+%%   <<"SampleRate">> => integer(),
+%%   <<"VbrQuality">> => integer()
+%% }
+-type vorbis_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3161,187 +3237,48 @@
 
 
 %% Example:
-%% h264_qvbr_settings() :: #{
-%%   <<"MaxAverageBitrate">> => integer(),
-%%   <<"QvbrQualityLevel">> => integer(),
-%%   <<"QvbrQualityLevelFineTune">> => float()
-%% }
--type h264_qvbr_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_nit_settings() :: #{
-%%   <<"NetworkId">> => integer(),
-%%   <<"NetworkName">> => string(),
-%%   <<"NitInterval">> => integer()
-%% }
--type dvb_nit_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% duration_control() :: #{
-%%   <<"IntegerDurationMaximumCompressionDenominator">> => integer(),
-%%   <<"IntegerDurationMaximumCompressionNumerator">> => integer(),
-%%   <<"IntegerDurationTrimThresholdMilliseconds">> => integer()
-%% }
--type duration_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% vc3_settings() :: #{
+%% vp9_settings() :: #{
+%%   <<"Bitrate">> => integer(),
 %%   <<"FramerateControl">> => list(any()),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
 %%   <<"FramerateNumerator">> => integer(),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any()),
-%%   <<"Vc3Class">> => list(any())
-%% }
--type vc3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% track_source_settings() :: #{
-%%   <<"StreamNumber">> => integer(),
-%%   <<"TrackNumber">> => integer()
-%% }
--type track_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% cmfc_settings() :: #{
-%%   <<"AudioDuration">> => list(any()),
-%%   <<"AudioGroupId">> => string(),
-%%   <<"AudioRenditionSets">> => string(),
-%%   <<"AudioTrackType">> => list(any()),
-%%   <<"C2paManifest">> => list(any()),
-%%   <<"CertificateSecret">> => string(),
-%%   <<"DescriptiveVideoServiceFlag">> => list(any()),
-%%   <<"IFrameOnlyManifest">> => list(any()),
-%%   <<"KlvMetadata">> => list(any()),
-%%   <<"ManifestMetadataSignaling">> => list(any()),
-%%   <<"Scte35Esam">> => list(any()),
-%%   <<"Scte35Source">> => list(any()),
-%%   <<"SigningKmsKey">> => string(),
-%%   <<"TimedMetadata">> => list(any()),
-%%   <<"TimedMetadataBoxVersion">> => list(any()),
-%%   <<"TimedMetadataSchemeIdUri">> => string(),
-%%   <<"TimedMetadataValue">> => string()
-%% }
--type cmfc_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_jobs_query_results_request() :: #{}
--type get_jobs_query_results_request() :: #{}.
-
-
-%% Example:
-%% create_queue_response() :: #{
-%%   <<"Queue">> => queue()
-%% }
--type create_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% output() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()),
-%%   <<"CaptionDescriptions">> => list(caption_description()),
-%%   <<"ContainerSettings">> => container_settings(),
-%%   <<"Extension">> => string(),
-%%   <<"NameModifier">> => string(),
-%%   <<"OutputSettings">> => output_settings(),
-%%   <<"Preset">> => string(),
-%%   <<"VideoDescription">> => video_description()
-%% }
--type output() :: #{binary() => any()}.
-
-
-%% Example:
-%% insertable_image() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"FadeIn">> => integer(),
-%%   <<"FadeOut">> => integer(),
-%%   <<"Height">> => integer(),
-%%   <<"ImageInserterInput">> => string(),
-%%   <<"ImageX">> => integer(),
-%%   <<"ImageY">> => integer(),
-%%   <<"Layer">> => integer(),
-%%   <<"Opacity">> => integer(),
-%%   <<"StartTime">> => string(),
-%%   <<"Width">> => integer()
-%% }
--type insertable_image() :: #{binary() => any()}.
-
-
-%% Example:
-%% h264_settings() :: #{
-%%   <<"FlickerAdaptiveQuantization">> => list(any()),
-%%   <<"QvbrSettings">> => h264_qvbr_settings(),
-%%   <<"SaliencyAwareEncoding">> => list(any()),
-%%   <<"EndOfStreamMarkers">> => list(any()),
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"Softness">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"HrdBufferFinalFillPercentage">> => integer(),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"HrdBufferInitialFillPercentage">> => integer(),
-%%   <<"DynamicSubGop">> => list(any()),
 %%   <<"GopSize">> => float(),
-%%   <<"UnregisteredSeiTimecode">> => list(any()),
-%%   <<"WriteMp4PackagingType">> => list(any()),
-%%   <<"SlowPal">> => list(any()),
-%%   <<"Telecine">> => list(any()),
-%%   <<"ExplicitWeightedPrediction">> => list(any()),
-%%   <<"CodecProfile">> => list(any()),
-%%   <<"QualityTuningLevel">> => list(any()),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"BandwidthReductionFilter">> => bandwidth_reduction_filter(),
-%%   <<"ParControl">> => list(any()),
-%%   <<"RepeatPps">> => list(any()),
-%%   <<"InterlaceMode">> => list(any()),
-%%   <<"FieldEncoding">> => list(any()),
-%%   <<"ScanTypeConversionMode">> => list(any()),
-%%   <<"FramerateConversionAlgorithm">> => list(any()),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"NumberReferenceFrames">> => integer(),
-%%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
-%%   <<"MinIInterval">> => integer(),
-%%   <<"PerFrameMetrics">> => list(list(any())()),
-%%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"SpatialAdaptiveQuantization">> => list(any()),
-%%   <<"EntropyEncoding">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"Syntax">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
 %%   <<"HrdBufferSize">> => integer(),
-%%   <<"TemporalAdaptiveQuantization">> => list(any()),
-%%   <<"CodecLevel">> => list(any()),
-%%   <<"FramerateDenominator">> => integer()
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"RateControlMode">> => list(any())
 %% }
--type h264_settings() :: #{binary() => any()}.
+-type vp9_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% allowed_rendition_size() :: #{
-%%   <<"Height">> => integer(),
-%%   <<"Required">> => list(any()),
-%%   <<"Width">> => integer()
+%% warning_group() :: #{
+%%   <<"Code">> => integer(),
+%%   <<"Count">> => integer()
 %% }
--type allowed_rendition_size() :: #{binary() => any()}.
+-type warning_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% noise_reducer_filter_settings() :: #{
-%%   <<"Strength">> => integer()
+%% wav_settings() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"Channels">> => integer(),
+%%   <<"Format">> => list(any()),
+%%   <<"SampleRate">> => integer()
 %% }
--type noise_reducer_filter_settings() :: #{binary() => any()}.
+-type wav_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% webvtt_destination_settings() :: #{
+%%   <<"Accessibility">> => list(any()),
+%%   <<"StylePassthrough">> => list(any())
+%% }
+-type webvtt_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3359,311 +3296,377 @@
 %% }
 -type xavc4k_intra_cbg_profile_settings() :: #{binary() => any()}.
 
+
+%% Example:
+%% xavc4k_intra_vbr_profile_settings() :: #{
+%%   <<"XavcClass">> => list(any())
+%% }
+-type xavc4k_intra_vbr_profile_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% xavc4k_profile_settings() :: #{
+%%   <<"BitrateClass">> => list(any()),
+%%   <<"CodecProfile">> => list(any()),
+%%   <<"FlickerAdaptiveQuantization">> => list(any()),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"HrdBufferSize">> => integer(),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"Slices">> => integer()
+%% }
+-type xavc4k_profile_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% xavc_hd_intra_cbg_profile_settings() :: #{
+%%   <<"XavcClass">> => list(any())
+%% }
+-type xavc_hd_intra_cbg_profile_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% xavc_hd_profile_settings() :: #{
+%%   <<"BitrateClass">> => list(any()),
+%%   <<"FlickerAdaptiveQuantization">> => list(any()),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"HrdBufferSize">> => integer(),
+%%   <<"InterlaceMode">> => list(any()),
+%%   <<"QualityTuningLevel">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"Telecine">> => list(any())
+%% }
+-type xavc_hd_profile_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% xavc_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"EntropyEncoding">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateConversionAlgorithm">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"PerFrameMetrics">> => list(list(any())()),
+%%   <<"Profile">> => list(any()),
+%%   <<"SlowPal">> => list(any()),
+%%   <<"Softness">> => integer(),
+%%   <<"SpatialAdaptiveQuantization">> => list(any()),
+%%   <<"TemporalAdaptiveQuantization">> => list(any()),
+%%   <<"Xavc4kIntraCbgProfileSettings">> => xavc4k_intra_cbg_profile_settings(),
+%%   <<"Xavc4kIntraVbrProfileSettings">> => xavc4k_intra_vbr_profile_settings(),
+%%   <<"Xavc4kProfileSettings">> => xavc4k_profile_settings(),
+%%   <<"XavcHdIntraCbgProfileSettings">> => xavc_hd_intra_cbg_profile_settings(),
+%%   <<"XavcHdProfileSettings">> => xavc_hd_profile_settings()
+%% }
+-type xavc_settings() :: #{binary() => any()}.
+
 -type associate_certificate_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type cancel_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_job_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_preset_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_queue_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_resource_share_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_job_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_preset_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_queue_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type describe_endpoints_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type disassociate_certificate_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_job_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_jobs_query_results_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_preset_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_queue_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_job_templates_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_presets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_queues_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type list_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type probe_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type search_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_jobs_query_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_job_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_preset_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_queue_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

@@ -127,105 +127,59 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% get_connection_request() :: #{}
--type get_connection_request() :: #{}.
-
 
 %% Example:
-%% quote_option() :: #{
-%%   <<"Capacities">> => list(quote_capacity()),
-%%   <<"CapacitySummary">> => capacity_summary(),
-%%   <<"PricingOptions">> => list(pricing_option()),
-%%   <<"QuoteOptionIdentifier">> => string(),
-%%   <<"Specifications">> => list(quote_specification())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type quote_option() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_outpost_supported_instance_types_input() :: #{
+%% address() :: #{
+%%   <<"AddressLine1">> => string(),
+%%   <<"AddressLine2">> => string(),
+%%   <<"AddressLine3">> => string(),
+%%   <<"City">> => string(),
+%%   <<"ContactName">> => string(),
+%%   <<"ContactPhoneNumber">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"DistrictOrCounty">> => string(),
+%%   <<"Municipality">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"StateOrRegion">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_info() :: #{
 %%   <<"AssetId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrderId">> => string()
+%%   <<"AssetLocation">> => asset_location(),
+%%   <<"AssetType">> => list(any()),
+%%   <<"ComputeAttributes">> => compute_attributes(),
+%%   <<"RackId">> => string()
 %% }
--type get_outpost_supported_instance_types_input() :: #{binary() => any()}.
+-type asset_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_outpost_instance_types_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_outpost_instance_types_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_type_item() :: #{
-%%   <<"InstanceType">> => string(),
-%%   <<"VCPUs">> => integer()
-%% }
--type instance_type_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% blocking_instance() :: #{
+%% asset_instance() :: #{
 %%   <<"AccountId">> => string(),
+%%   <<"AssetId">> => string(),
 %%   <<"AwsServiceName">> => list(any()),
-%%   <<"InstanceId">> => string()
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string()
 %% }
--type blocking_instance() :: #{binary() => any()}.
+-type asset_instance() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% asset_instance_type_capacity() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_renewal_output() :: #{
-%%   <<"Currency">> => list(any()),
-%%   <<"MonthlyRecurringPrice">> => float(),
-%%   <<"OutpostId">> => string(),
-%%   <<"PaymentOption">> => list(any()),
-%%   <<"PaymentTerm">> => list(any()),
-%%   <<"UpfrontPrice">> => float()
-%% }
--type create_renewal_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_connection_response() :: #{
-%%   <<"ConnectionId">> => string(),
-%%   <<"UnderlayIpAddress">> => string()
-%% }
--type start_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assets_input() :: #{
-%%   <<"AssetTypeFilter">> => list(list(any())()),
-%%   <<"HostIdFilter">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusFilter">> => list(list(any())())
-%% }
--type list_assets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_instances_input() :: #{
-%%   <<"AccountIdFilter">> => list(string()),
-%%   <<"AssetIdFilter">> => list(string()),
-%%   <<"AwsServiceFilter">> => list(list(any())()),
-%%   <<"InstanceTypeFilter">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_asset_instances_input() :: #{binary() => any()}.
+-type asset_instance_type_capacity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -236,176 +190,59 @@
 
 
 %% Example:
-%% quote_specification() :: #{
-%%   <<"ExistingRackSpecificationDetails">> => rack_specification_details(),
-%%   <<"FinalRackSpecificationDetails">> => rack_specification_details(),
-%%   <<"QuoteSpecificationType">> => list(any()),
-%%   <<"ServerSpecificationDetails">> => server_specification_details()
-%% }
--type quote_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quotes_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_quotes_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_order_input() :: #{}
--type get_order_input() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_capacity_tasks_output() :: #{
-%%   <<"CapacityTasks">> => list(capacity_task_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_capacity_tasks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connection_response() :: #{
-%%   <<"ConnectionDetails">> => connection_details(),
-%%   <<"ConnectionId">> => string()
-%% }
--type get_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_renewal_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"OutpostIdentifier">> := string(),
-%%   <<"PaymentOption">> := list(any()),
-%%   <<"PaymentTerm">> := list(any())
-%% }
--type create_renewal_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_outpost_supported_instance_types_output() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_item()),
-%%   <<"NextToken">> => string()
-%% }
--type get_outpost_supported_instance_types_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% line_item_asset_information() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"MacAddressList">> => list(string())
-%% }
--type line_item_asset_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% pricing_option() :: #{
-%%   <<"PricingType">> => list(any()),
-%%   <<"SubscriptionPricingDetails">> => subscription_pricing_details()
-%% }
--type pricing_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% quote_summary() :: #{
+%% blocking_instance() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"CountryCode">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"QuoteId">> => string(),
-%%   <<"QuoteOptions">> => list(quote_option()),
-%%   <<"QuoteStatus">> => list(any()),
-%%   <<"RequestedCapacities">> => list(quote_capacity()),
-%%   <<"RequestedConstraints">> => list(quote_constraint()),
-%%   <<"RequestedPaymentOptions">> => list(list(any())()),
-%%   <<"RequestedPaymentTerms">> => list(list(any())()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"SubmittedOrderId">> => string()
+%%   <<"AwsServiceName">> => list(any()),
+%%   <<"InstanceId">> => string()
 %% }
--type quote_summary() :: #{binary() => any()}.
+-type blocking_instance() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_capacity_task_input() :: #{}
+-type cancel_capacity_task_input() :: #{}.
+
+%% Example:
+%% cancel_capacity_task_output() :: #{}
+-type cancel_capacity_task_output() :: #{}.
+
+%% Example:
+%% cancel_order_input() :: #{}
+-type cancel_order_input() :: #{}.
+
+%% Example:
+%% cancel_order_output() :: #{}
+-type cancel_order_output() :: #{}.
 
 
 %% Example:
-%% list_orders_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Orders">> => list(order_summary())
+%% capacity_summary() :: #{
+%%   <<"CapacityChange">> => list(quote_capacity()),
+%%   <<"ExistingCapacities">> => list(quote_capacity()),
+%%   <<"FinalCapacities">> => list(quote_capacity())
 %% }
--type list_orders_output() :: #{binary() => any()}.
+-type capacity_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_connection_request() :: #{
-%%   <<"AssetId">> := string(),
-%%   <<"ClientPublicKey">> := string(),
-%%   <<"DeviceSerialNumber">> => string(),
-%%   <<"NetworkInterfaceDeviceIndex">> := integer()
+%% capacity_task_failure() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type start_connection_request() :: #{binary() => any()}.
+-type capacity_task_failure() :: #{binary() => any()}.
 
 
 %% Example:
-%% ordering_requirement() :: #{
-%%   <<"OrderingRequirementType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%% capacity_task_summary() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"CapacityTaskId">> => string(),
+%%   <<"CapacityTaskStatus">> => list(any()),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"OrderId">> => string(),
+%%   <<"OutpostId">> => string()
 %% }
--type ordering_requirement() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_site_output() :: #{
-%%   <<"Site">> => site()
-%% }
--type get_site_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quote_output() :: #{
-%%   <<"Quote">> => quote()
-%% }
--type create_quote_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_site_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Notes">> => string(),
-%%   <<"OperatingAddress">> => address(),
-%%   <<"RackPhysicalProperties">> => rack_physical_properties(),
-%%   <<"ShippingAddress">> => address(),
-%%   <<"Tags">> => map()
-%% }
--type create_site_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_outposts_input() :: #{
-%%   <<"AvailabilityZoneFilter">> => list(string()),
-%%   <<"AvailabilityZoneIdFilter">> => list(string()),
-%%   <<"LifeCycleStatusFilter">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_outposts_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quote_output() :: #{}
--type delete_quote_output() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type capacity_task_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -422,28 +259,74 @@
 
 
 %% Example:
-%% detailed_instance_type_item() :: #{
-%%   <<"FormFactorConfigs">> => list(form_factor_config()),
-%%   <<"InstanceType">> => string(),
-%%   <<"MemoryInMib">> => integer(),
-%%   <<"NetworkPerformance">> => string(),
-%%   <<"VCPUs">> => integer()
+%% compute_attributes() :: #{
+%%   <<"HostId">> => string(),
+%%   <<"InstanceFamilies">> => list(string()),
+%%   <<"InstanceTypeCapacities">> => list(asset_instance_type_capacity()),
+%%   <<"MaxVcpus">> => integer(),
+%%   <<"State">> => list(any())
 %% }
--type detailed_instance_type_item() :: #{binary() => any()}.
+-type compute_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_site_address_input() :: #{
-%%   <<"AddressType">> := list(any())
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
 %% }
--type get_site_address_input() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_site_output() :: #{
-%%   <<"Site">> => site()
+%% connection_details() :: #{
+%%   <<"AllowedIps">> => list(string()),
+%%   <<"ClientPublicKey">> => string(),
+%%   <<"ClientTunnelAddress">> => string(),
+%%   <<"ServerEndpoint">> => string(),
+%%   <<"ServerPublicKey">> => string(),
+%%   <<"ServerTunnelAddress">> => string()
 %% }
--type create_site_output() :: #{binary() => any()}.
+-type connection_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_order_input() :: #{
+%%   <<"LineItems">> => list(line_item_request()),
+%%   <<"OutpostIdentifier">> := string(),
+%%   <<"PaymentOption">> := list(any()),
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"QuoteIdentifier">> => string(),
+%%   <<"QuoteOptionIdentifier">> => string()
+%% }
+-type create_order_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_order_output() :: #{
+%%   <<"Order">> => order()
+%% }
+-type create_order_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_outpost_input() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SiteId">> := string(),
+%%   <<"SupportedHardwareType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_outpost_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_outpost_output() :: #{
+%%   <<"Outpost">> => outpost()
+%% }
+-type create_outpost_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,319 +343,87 @@
 
 
 %% Example:
-%% update_site_address_input() :: #{
-%%   <<"Address">> := address(),
-%%   <<"AddressType">> := list(any())
+%% create_quote_output() :: #{
+%%   <<"Quote">> => quote()
 %% }
--type update_site_address_input() :: #{binary() => any()}.
+-type create_quote_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_outpost_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SupportedHardwareType">> => list(any())
+%% create_renewal_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"OutpostIdentifier">> := string(),
+%%   <<"PaymentOption">> := list(any()),
+%%   <<"PaymentTerm">> := list(any())
 %% }
--type update_outpost_input() :: #{binary() => any()}.
+-type create_renewal_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% subscription_pricing_details() :: #{
+%% create_renewal_output() :: #{
 %%   <<"Currency">> => list(any()),
 %%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"OutpostId">> => string(),
 %%   <<"PaymentOption">> => list(any()),
 %%   <<"PaymentTerm">> => list(any()),
 %%   <<"UpfrontPrice">> => float()
 %% }
--type subscription_pricing_details() :: #{binary() => any()}.
+-type create_renewal_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% server_specification_details() :: #{
-%%   <<"EC2Capacities">> => list(ec2_capacity()),
-%%   <<"RackUnitHeight">> => list(any()),
-%%   <<"ServerDepthInches">> => float(),
-%%   <<"ServerHeightInches">> => float(),
-%%   <<"ServerPowerDrawKva">> => float(),
-%%   <<"ServerWeightLbs">> => float(),
-%%   <<"ServerWidthInches">> => float()
+%% create_site_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Notes">> => string(),
+%%   <<"OperatingAddress">> => address(),
+%%   <<"RackPhysicalProperties">> => rack_physical_properties(),
+%%   <<"ShippingAddress">> => address(),
+%%   <<"Tags">> => map()
 %% }
--type server_specification_details() :: #{binary() => any()}.
+-type create_site_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% rack_physical_properties() :: #{
-%%   <<"FiberOpticCableType">> => list(any()),
-%%   <<"MaximumSupportedWeightLbs">> => list(any()),
-%%   <<"OpticalStandard">> => list(any()),
-%%   <<"PowerConnector">> => list(any()),
-%%   <<"PowerDrawKva">> => list(any()),
-%%   <<"PowerFeedDrop">> => list(any()),
-%%   <<"PowerPhase">> => list(any()),
-%%   <<"UplinkCount">> => list(any()),
-%%   <<"UplinkGbps">> => list(any())
-%% }
--type rack_physical_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_outpost_billing_information_output() :: #{
-%%   <<"ContractEndDate">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PaymentOption">> => list(any()),
-%%   <<"PaymentTerm">> => list(any()),
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type get_outpost_billing_information_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_site_rack_physical_properties_input() :: #{
-%%   <<"FiberOpticCableType">> => list(any()),
-%%   <<"MaximumSupportedWeightLbs">> => list(any()),
-%%   <<"OpticalStandard">> => list(any()),
-%%   <<"PowerConnector">> => list(any()),
-%%   <<"PowerDrawKva">> => list(any()),
-%%   <<"PowerFeedDrop">> => list(any()),
-%%   <<"PowerPhase">> => list(any()),
-%%   <<"UplinkCount">> => list(any()),
-%%   <<"UplinkGbps">> => list(any())
-%% }
--type update_site_rack_physical_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_site_address_output() :: #{
-%%   <<"Address">> => address(),
-%%   <<"AddressType">> => list(any())
-%% }
--type update_site_address_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_quote_output() :: #{
-%%   <<"Quote">> => quote()
-%% }
--type get_quote_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_orders_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostIdentifierFilter">> => string()
-%% }
--type list_orders_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_capacity_task_input() :: #{}
--type get_capacity_task_input() :: #{}.
-
-
-%% Example:
-%% list_asset_instances_output() :: #{
-%%   <<"AssetInstances">> => list(asset_instance()),
-%%   <<"NextToken">> => string()
-%% }
--type list_asset_instances_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outpost_decommission_input() :: #{
-%%   <<"ValidateOnly">> => boolean()
-%% }
--type start_outpost_decommission_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_renewal_pricing_output() :: #{
-%%   <<"PricingOptions">> => list(pricing_option()),
-%%   <<"PricingResult">> => list(any())
-%% }
--type get_renewal_pricing_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_summary() :: #{
-%%   <<"CapacityChange">> => list(quote_capacity()),
-%%   <<"ExistingCapacities">> => list(quote_capacity()),
-%%   <<"FinalCapacities">> => list(quote_capacity())
-%% }
--type capacity_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_instance_type_capacity() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"InstanceType">> => string()
-%% }
--type asset_instance_type_capacity() :: #{binary() => any()}.
-
-%% Example:
-%% get_catalog_item_input() :: #{}
--type get_catalog_item_input() :: #{}.
-
-
-%% Example:
-%% create_order_output() :: #{
-%%   <<"Order">> => order()
-%% }
--type create_order_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_outpost_input() :: #{}
--type get_outpost_input() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quotes_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Quotes">> => list(quote_summary())
-%% }
--type list_quotes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_site_output() :: #{
+%% create_site_output() :: #{
 %%   <<"Site">> => site()
 %% }
--type update_site_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% site() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Notes">> => string(),
-%%   <<"OperatingAddressCity">> => string(),
-%%   <<"OperatingAddressCountryCode">> => string(),
-%%   <<"OperatingAddressStateOrRegion">> => string(),
-%%   <<"RackPhysicalProperties">> => rack_physical_properties(),
-%%   <<"SiteArn">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type site() :: #{binary() => any()}.
-
+-type create_site_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_sites_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperatingAddressCityFilter">> => list(string()),
-%%   <<"OperatingAddressCountryCodeFilter">> => list(string()),
-%%   <<"OperatingAddressStateOrRegionFilter">> => list(string())
-%% }
--type list_sites_input() :: #{binary() => any()}.
-
+%% delete_outpost_input() :: #{}
+-type delete_outpost_input() :: #{}.
 
 %% Example:
-%% list_blocking_instances_for_capacity_task_output() :: #{
-%%   <<"BlockingInstances">> => list(blocking_instance()),
-%%   <<"NextToken">> => string()
-%% }
--type list_blocking_instances_for_capacity_task_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_type_capacity() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"InstanceType">> => string()
-%% }
--type instance_type_capacity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_outpost_output() :: #{
-%%   <<"Outpost">> => outpost()
-%% }
--type get_outpost_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outpost_decommission_output() :: #{
-%%   <<"BlockingResourceTypes">> => list(list(any())()),
-%%   <<"Status">> => list(any())
-%% }
--type start_outpost_decommission_output() :: #{binary() => any()}.
+%% delete_outpost_output() :: #{}
+-type delete_outpost_output() :: #{}.
 
 %% Example:
 %% delete_quote_input() :: #{}
 -type delete_quote_input() :: #{}.
 
 %% Example:
-%% get_renewal_pricing_input() :: #{}
--type get_renewal_pricing_input() :: #{}.
+%% delete_quote_output() :: #{}
+-type delete_quote_output() :: #{}.
+
+%% Example:
+%% delete_site_input() :: #{}
+-type delete_site_input() :: #{}.
+
+%% Example:
+%% delete_site_output() :: #{}
+-type delete_site_output() :: #{}.
 
 
 %% Example:
-%% get_order_output() :: #{
-%%   <<"Order">> => order()
+%% detailed_instance_type_item() :: #{
+%%   <<"FormFactorConfigs">> => list(form_factor_config()),
+%%   <<"InstanceType">> => string(),
+%%   <<"MemoryInMib">> => integer(),
+%%   <<"NetworkPerformance">> => string(),
+%%   <<"VCPUs">> => integer()
 %% }
--type get_order_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% quote_capacity() :: #{
-%%   <<"Quantity">> => float(),
-%%   <<"QuoteCapacityType">> => list(any()),
-%%   <<"Unit">> => string()
-%% }
--type quote_capacity() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_order_input() :: #{
-%%   <<"LineItems">> => list(line_item_request()),
-%%   <<"OutpostIdentifier">> := string(),
-%%   <<"PaymentOption">> := list(any()),
-%%   <<"PaymentTerm">> => list(any()),
-%%   <<"QuoteIdentifier">> => string(),
-%%   <<"QuoteOptionIdentifier">> => string()
-%% }
--type create_order_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_catalog_item_output() :: #{
-%%   <<"CatalogItem">> => catalog_item()
-%% }
--type get_catalog_item_output() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_capacity_task_output() :: #{}
--type cancel_capacity_task_output() :: #{}.
+-type detailed_instance_type_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -785,7 +436,19 @@
 
 
 %% Example:
-%% start_capacity_task_output() :: #{
+%% form_factor_config() :: #{
+%%   <<"FormFactor">> => list(any()),
+%%   <<"OutpostGeneration">> => list(any())
+%% }
+-type form_factor_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_task_input() :: #{}
+-type get_capacity_task_input() :: #{}.
+
+
+%% Example:
+%% get_capacity_task_output() :: #{
 %%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
 %%   <<"CapacityTaskStatus">> => list(any()),
@@ -800,7 +463,391 @@
 %%   <<"RequestedInstancePools">> => list(instance_type_capacity()),
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
--type start_capacity_task_output() :: #{binary() => any()}.
+-type get_capacity_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalog_item_input() :: #{}
+-type get_catalog_item_input() :: #{}.
+
+
+%% Example:
+%% get_catalog_item_output() :: #{
+%%   <<"CatalogItem">> => catalog_item()
+%% }
+-type get_catalog_item_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_request() :: #{}
+-type get_connection_request() :: #{}.
+
+
+%% Example:
+%% get_connection_response() :: #{
+%%   <<"ConnectionDetails">> => connection_details(),
+%%   <<"ConnectionId">> => string()
+%% }
+-type get_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_order_input() :: #{}
+-type get_order_input() :: #{}.
+
+
+%% Example:
+%% get_order_output() :: #{
+%%   <<"Order">> => order()
+%% }
+-type get_order_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_billing_information_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_outpost_billing_information_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_billing_information_output() :: #{
+%%   <<"ContractEndDate">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type get_outpost_billing_information_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_outpost_input() :: #{}
+-type get_outpost_input() :: #{}.
+
+
+%% Example:
+%% get_outpost_instance_types_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_outpost_instance_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_instance_types_output() :: #{
+%%   <<"InstanceTypes">> => list(instance_type_item()),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"OutpostId">> => string()
+%% }
+-type get_outpost_instance_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_output() :: #{
+%%   <<"Outpost">> => outpost()
+%% }
+-type get_outpost_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_supported_instance_types_input() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrderId">> => string()
+%% }
+-type get_outpost_supported_instance_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_outpost_supported_instance_types_output() :: #{
+%%   <<"InstanceTypes">> => list(instance_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_outpost_supported_instance_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_quote_input() :: #{}
+-type get_quote_input() :: #{}.
+
+
+%% Example:
+%% get_quote_output() :: #{
+%%   <<"Quote">> => quote()
+%% }
+-type get_quote_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_renewal_pricing_input() :: #{}
+-type get_renewal_pricing_input() :: #{}.
+
+
+%% Example:
+%% get_renewal_pricing_output() :: #{
+%%   <<"PricingOptions">> => list(pricing_option()),
+%%   <<"PricingResult">> => list(any())
+%% }
+-type get_renewal_pricing_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_site_address_input() :: #{
+%%   <<"AddressType">> := list(any())
+%% }
+-type get_site_address_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_site_address_output() :: #{
+%%   <<"Address">> => address(),
+%%   <<"AddressType">> => list(any()),
+%%   <<"SiteId">> => string()
+%% }
+-type get_site_address_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_site_input() :: #{}
+-type get_site_input() :: #{}.
+
+
+%% Example:
+%% get_site_output() :: #{
+%%   <<"Site">> => site()
+%% }
+-type get_site_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_type_capacity() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => string()
+%% }
+-type instance_type_capacity() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_type_item() :: #{
+%%   <<"InstanceType">> => string(),
+%%   <<"VCPUs">> => integer()
+%% }
+-type instance_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% instances_to_exclude() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Instances">> => list(string()),
+%%   <<"Services">> => list(list(any())())
+%% }
+-type instances_to_exclude() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_item() :: #{
+%%   <<"AssetInformationList">> => list(line_item_asset_information()),
+%%   <<"CatalogItemId">> => string(),
+%%   <<"LineItemId">> => string(),
+%%   <<"PreviousLineItemId">> => string(),
+%%   <<"PreviousOrderId">> => string(),
+%%   <<"Quantity">> => integer(),
+%%   <<"ShipmentInformation">> => shipment_information(),
+%%   <<"Status">> => list(any())
+%% }
+-type line_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_item_asset_information() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"MacAddressList">> => list(string())
+%% }
+-type line_item_asset_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_item_request() :: #{
+%%   <<"CatalogItemId">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type line_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_instances_input() :: #{
+%%   <<"AccountIdFilter">> => list(string()),
+%%   <<"AssetIdFilter">> => list(string()),
+%%   <<"AwsServiceFilter">> => list(list(any())()),
+%%   <<"InstanceTypeFilter">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_instances_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_instances_output() :: #{
+%%   <<"AssetInstances">> => list(asset_instance()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_input() :: #{
+%%   <<"AssetTypeFilter">> => list(list(any())()),
+%%   <<"HostIdFilter">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => list(list(any())())
+%% }
+-type list_assets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assets_output() :: #{
+%%   <<"Assets">> => list(asset_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocking_instances_for_capacity_task_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blocking_instances_for_capacity_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocking_instances_for_capacity_task_output() :: #{
+%%   <<"BlockingInstances">> => list(blocking_instance()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blocking_instances_for_capacity_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_tasks_input() :: #{
+%%   <<"CapacityTaskStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostIdentifierFilter">> => string()
+%% }
+-type list_capacity_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_tasks_output() :: #{
+%%   <<"CapacityTasks">> => list(capacity_task_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_catalog_items_input() :: #{
+%%   <<"EC2FamilyFilter">> => list(string()),
+%%   <<"ItemClassFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SupportedStorageFilter">> => list(list(any())())
+%% }
+-type list_catalog_items_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_catalog_items_output() :: #{
+%%   <<"CatalogItems">> => list(catalog_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_catalog_items_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orderable_instance_types_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostGenerationFilter">> => list(any())
+%% }
+-type list_orderable_instance_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orderable_instance_types_output() :: #{
+%%   <<"InstanceTypes">> => list(detailed_instance_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_orderable_instance_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orders_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostIdentifierFilter">> => string()
+%% }
+-type list_orders_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_orders_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Orders">> => list(order_summary())
+%% }
+-type list_orders_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outposts_input() :: #{
+%%   <<"AvailabilityZoneFilter">> => list(string()),
+%%   <<"AvailabilityZoneIdFilter">> => list(string()),
+%%   <<"LifeCycleStatusFilter">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_outposts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outposts_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Outposts">> => list(outpost())
+%% }
+-type list_outposts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quotes_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_quotes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quotes_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotes">> => list(quote_summary())
+%% }
+-type list_quotes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sites_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperatingAddressCityFilter">> => list(string()),
+%%   <<"OperatingAddressCountryCodeFilter">> => list(string()),
+%%   <<"OperatingAddressStateOrRegionFilter">> => list(string())
+%% }
+-type list_sites_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -810,30 +857,23 @@
 %% }
 -type list_sites_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% update_quote_input() :: #{
-%%   <<"CountryCode">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"OutpostIdentifier">> => string(),
-%%   <<"RequestedCapacities">> => list(quote_capacity()),
-%%   <<"RequestedConstraints">> => list(quote_constraint()),
-%%   <<"RequestedPaymentOptions">> => list(list(any())()),
-%%   <<"RequestedPaymentTerms">> => list(list(any())())
-%% }
--type update_quote_input() :: #{binary() => any()}.
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% start_capacity_task_input() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"InstancePools">> := list(instance_type_capacity()),
-%%   <<"InstancesToExclude">> => instances_to_exclude(),
-%%   <<"OrderId">> => string(),
-%%   <<"TaskActionOnBlockingInstances">> => list(any())
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type start_capacity_task_input() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -852,109 +892,53 @@
 %% }
 -type order() :: #{binary() => any()}.
 
-%% Example:
-%% cancel_order_input() :: #{}
--type cancel_order_input() :: #{}.
-
 
 %% Example:
-%% capacity_task_failure() :: #{
-%%   <<"Reason">> => string(),
-%%   <<"Type">> => list(any())
+%% order_summary() :: #{
+%%   <<"LineItemCountsByStatus">> => map(),
+%%   <<"OrderFulfilledDate">> => non_neg_integer(),
+%%   <<"OrderId">> => string(),
+%%   <<"OrderSubmissionDate">> => non_neg_integer(),
+%%   <<"OrderType">> => list(any()),
+%%   <<"OutpostId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type capacity_task_failure() :: #{binary() => any()}.
+-type order_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% compute_attributes() :: #{
-%%   <<"HostId">> => string(),
-%%   <<"InstanceFamilies">> => list(string()),
-%%   <<"InstanceTypeCapacities">> => list(asset_instance_type_capacity()),
-%%   <<"MaxVcpus">> => integer(),
-%%   <<"State">> => list(any())
+%% ordering_requirement() :: #{
+%%   <<"OrderingRequirementType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
 %% }
--type compute_attributes() :: #{binary() => any()}.
+-type ordering_requirement() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assets_output() :: #{
-%%   <<"Assets">> => list(asset_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_assets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_quote_input() :: #{}
--type get_quote_input() :: #{}.
-
-%% Example:
-%% delete_site_output() :: #{}
--type delete_site_output() :: #{}.
-
-
-%% Example:
-%% get_outpost_billing_information_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_outpost_billing_information_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% quote_constraint() :: #{
-%%   <<"QuoteConstraintType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type quote_constraint() :: #{binary() => any()}.
-
-%% Example:
-%% delete_outpost_output() :: #{}
--type delete_outpost_output() :: #{}.
-
-%% Example:
-%% cancel_order_output() :: #{}
--type cancel_order_output() :: #{}.
-
-
-%% Example:
-%% get_outpost_instance_types_output() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_item()),
-%%   <<"NextToken">> => string(),
+%% outpost() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LifeCycleStatus">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"OutpostArn">> => string(),
-%%   <<"OutpostId">> => string()
+%%   <<"OutpostId">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"SiteArn">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"SupportedHardwareType">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
--type get_outpost_instance_types_output() :: #{binary() => any()}.
+-type outpost() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% pricing_option() :: #{
+%%   <<"PricingType">> => list(any()),
+%%   <<"SubscriptionPricingDetails">> => subscription_pricing_details()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% instances_to_exclude() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"Instances">> => list(string()),
-%%   <<"Services">> => list(list(any())())
-%% }
--type instances_to_exclude() :: #{binary() => any()}.
-
-%% Example:
-%% delete_site_input() :: #{}
--type delete_site_input() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type pricing_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -980,267 +964,77 @@
 
 
 %% Example:
-%% update_site_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Notes">> => string()
+%% quote_capacity() :: #{
+%%   <<"Quantity">> => float(),
+%%   <<"QuoteCapacityType">> => list(any()),
+%%   <<"Unit">> => string()
 %% }
--type update_site_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_site_input() :: #{}
--type get_site_input() :: #{}.
+-type quote_capacity() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_outposts_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Outposts">> => list(outpost())
+%% quote_constraint() :: #{
+%%   <<"QuoteConstraintType">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type list_outposts_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_outpost_input() :: #{}
--type delete_outpost_input() :: #{}.
+-type quote_constraint() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
+%% quote_option() :: #{
+%%   <<"Capacities">> => list(quote_capacity()),
+%%   <<"CapacitySummary">> => capacity_summary(),
+%%   <<"PricingOptions">> => list(pricing_option()),
+%%   <<"QuoteOptionIdentifier">> => string(),
+%%   <<"Specifications">> => list(quote_specification())
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type quote_option() :: #{binary() => any()}.
 
 
 %% Example:
-%% order_summary() :: #{
-%%   <<"LineItemCountsByStatus">> => map(),
-%%   <<"OrderFulfilledDate">> => non_neg_integer(),
-%%   <<"OrderId">> => string(),
-%%   <<"OrderSubmissionDate">> => non_neg_integer(),
-%%   <<"OrderType">> => list(any()),
-%%   <<"OutpostId">> => string(),
-%%   <<"Status">> => list(any())
+%% quote_specification() :: #{
+%%   <<"ExistingRackSpecificationDetails">> => rack_specification_details(),
+%%   <<"FinalRackSpecificationDetails">> => rack_specification_details(),
+%%   <<"QuoteSpecificationType">> => list(any()),
+%%   <<"ServerSpecificationDetails">> => server_specification_details()
 %% }
--type order_summary() :: #{binary() => any()}.
+-type quote_specification() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_capacity_tasks_input() :: #{
-%%   <<"CapacityTaskStatusFilter">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostIdentifierFilter">> => string()
-%% }
--type list_capacity_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription() :: #{
-%%   <<"BeginDate">> => non_neg_integer(),
-%%   <<"Currency">> => list(any()),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"MonthlyRecurringPrice">> => float(),
-%%   <<"OrderIds">> => list(string()),
-%%   <<"SubscriptionId">> => string(),
-%%   <<"SubscriptionStatus">> => list(any()),
-%%   <<"SubscriptionType">> => list(any()),
-%%   <<"UpfrontPrice">> => float()
-%% }
--type subscription() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_quote_output() :: #{
-%%   <<"Quote">> => quote()
-%% }
--type update_quote_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_orderable_instance_types_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostGenerationFilter">> => list(any())
-%% }
--type list_orderable_instance_types_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_blocking_instances_for_capacity_task_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_blocking_instances_for_capacity_task_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_outpost_output() :: #{
-%%   <<"Outpost">> => outpost()
-%% }
--type create_outpost_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_site_address_output() :: #{
-%%   <<"Address">> => address(),
-%%   <<"AddressType">> => list(any()),
-%%   <<"SiteId">> => string()
-%% }
--type get_site_address_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_info() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"AssetLocation">> => asset_location(),
-%%   <<"AssetType">> => list(any()),
-%%   <<"ComputeAttributes">> => compute_attributes(),
-%%   <<"RackId">> => string()
-%% }
--type asset_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_catalog_items_input() :: #{
-%%   <<"EC2FamilyFilter">> => list(string()),
-%%   <<"ItemClassFilter">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SupportedStorageFilter">> => list(list(any())())
-%% }
--type list_catalog_items_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_outpost_output() :: #{
-%%   <<"Outpost">> => outpost()
-%% }
--type update_outpost_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% line_item_request() :: #{
-%%   <<"CatalogItemId">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type line_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_details() :: #{
-%%   <<"AllowedIps">> => list(string()),
-%%   <<"ClientPublicKey">> => string(),
-%%   <<"ClientTunnelAddress">> => string(),
-%%   <<"ServerEndpoint">> => string(),
-%%   <<"ServerPublicKey">> => string(),
-%%   <<"ServerTunnelAddress">> => string()
-%% }
--type connection_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% outpost() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LifeCycleStatus">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"OutpostId">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"SiteArn">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"SupportedHardwareType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type outpost() :: #{binary() => any()}.
-
-
-%% Example:
-%% address() :: #{
-%%   <<"AddressLine1">> => string(),
-%%   <<"AddressLine2">> => string(),
-%%   <<"AddressLine3">> => string(),
-%%   <<"City">> => string(),
-%%   <<"ContactName">> => string(),
-%%   <<"ContactPhoneNumber">> => string(),
-%%   <<"CountryCode">> => string(),
-%%   <<"DistrictOrCounty">> => string(),
-%%   <<"Municipality">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"StateOrRegion">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_task_summary() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"CapacityTaskId">> => string(),
-%%   <<"CapacityTaskStatus">> => list(any()),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"OrderId">> => string(),
-%%   <<"OutpostId">> => string()
-%% }
--type capacity_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_catalog_items_output() :: #{
-%%   <<"CatalogItems">> => list(catalog_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_catalog_items_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_instance() :: #{
+%% quote_summary() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"AssetId">> => string(),
-%%   <<"AwsServiceName">> => list(any()),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceType">> => string()
+%%   <<"CountryCode">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"QuoteId">> => string(),
+%%   <<"QuoteOptions">> => list(quote_option()),
+%%   <<"QuoteStatus">> => list(any()),
+%%   <<"RequestedCapacities">> => list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubmittedOrderId">> => string()
 %% }
--type asset_instance() :: #{binary() => any()}.
+-type quote_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_site_rack_physical_properties_output() :: #{
-%%   <<"Site">> => site()
+%% rack_physical_properties() :: #{
+%%   <<"FiberOpticCableType">> => list(any()),
+%%   <<"MaximumSupportedWeightLbs">> => list(any()),
+%%   <<"OpticalStandard">> => list(any()),
+%%   <<"PowerConnector">> => list(any()),
+%%   <<"PowerDrawKva">> => list(any()),
+%%   <<"PowerFeedDrop">> => list(any()),
+%%   <<"PowerPhase">> => list(any()),
+%%   <<"UplinkCount">> => list(any()),
+%%   <<"UplinkGbps">> => list(any())
 %% }
--type update_site_rack_physical_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% line_item() :: #{
-%%   <<"AssetInformationList">> => list(line_item_asset_information()),
-%%   <<"CatalogItemId">> => string(),
-%%   <<"LineItemId">> => string(),
-%%   <<"PreviousLineItemId">> => string(),
-%%   <<"PreviousOrderId">> => string(),
-%%   <<"Quantity">> => integer(),
-%%   <<"ShipmentInformation">> => shipment_information(),
-%%   <<"Status">> => list(any())
-%% }
--type line_item() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_capacity_task_input() :: #{}
--type cancel_capacity_task_input() :: #{}.
-
-
-%% Example:
-%% shipment_information() :: #{
-%%   <<"ShipmentCarrier">> => list(any()),
-%%   <<"ShipmentTrackingNumber">> => string()
-%% }
--type shipment_information() :: #{binary() => any()}.
+-type rack_physical_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1259,7 +1053,64 @@
 
 
 %% Example:
-%% get_capacity_task_output() :: #{
+%% server_specification_details() :: #{
+%%   <<"EC2Capacities">> => list(ec2_capacity()),
+%%   <<"RackUnitHeight">> => list(any()),
+%%   <<"ServerDepthInches">> => float(),
+%%   <<"ServerHeightInches">> => float(),
+%%   <<"ServerPowerDrawKva">> => float(),
+%%   <<"ServerWeightLbs">> => float(),
+%%   <<"ServerWidthInches">> => float()
+%% }
+-type server_specification_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% shipment_information() :: #{
+%%   <<"ShipmentCarrier">> => list(any()),
+%%   <<"ShipmentTrackingNumber">> => string()
+%% }
+-type shipment_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% site() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Notes">> => string(),
+%%   <<"OperatingAddressCity">> => string(),
+%%   <<"OperatingAddressCountryCode">> => string(),
+%%   <<"OperatingAddressStateOrRegion">> => string(),
+%%   <<"RackPhysicalProperties">> => rack_physical_properties(),
+%%   <<"SiteArn">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type site() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_capacity_task_input() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstancePools">> := list(instance_type_capacity()),
+%%   <<"InstancesToExclude">> => instances_to_exclude(),
+%%   <<"OrderId">> => string(),
+%%   <<"TaskActionOnBlockingInstances">> => list(any())
+%% }
+-type start_capacity_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_capacity_task_output() :: #{
 %%   <<"AssetId">> => string(),
 %%   <<"CapacityTaskId">> => string(),
 %%   <<"CapacityTaskStatus">> => list(any()),
@@ -1274,300 +1125,449 @@
 %%   <<"RequestedInstancePools">> => list(instance_type_capacity()),
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
--type get_capacity_task_output() :: #{binary() => any()}.
+-type start_capacity_task_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_orderable_instance_types_output() :: #{
-%%   <<"InstanceTypes">> => list(detailed_instance_type_item()),
-%%   <<"NextToken">> => string()
+%% start_connection_request() :: #{
+%%   <<"AssetId">> := string(),
+%%   <<"ClientPublicKey">> := string(),
+%%   <<"DeviceSerialNumber">> => string(),
+%%   <<"NetworkInterfaceDeviceIndex">> := integer()
 %% }
--type list_orderable_instance_types_output() :: #{binary() => any()}.
+-type start_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% form_factor_config() :: #{
-%%   <<"FormFactor">> => list(any()),
-%%   <<"OutpostGeneration">> => list(any())
+%% start_connection_response() :: #{
+%%   <<"ConnectionId">> => string(),
+%%   <<"UnderlayIpAddress">> => string()
 %% }
--type form_factor_config() :: #{binary() => any()}.
+-type start_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_outpost_input() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
+%% start_outpost_decommission_input() :: #{
+%%   <<"ValidateOnly">> => boolean()
+%% }
+-type start_outpost_decommission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_outpost_decommission_output() :: #{
+%%   <<"BlockingResourceTypes">> => list(list(any())()),
+%%   <<"Status">> => list(any())
+%% }
+-type start_outpost_decommission_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription() :: #{
+%%   <<"BeginDate">> => non_neg_integer(),
+%%   <<"Currency">> => list(any()),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"OrderIds">> => list(string()),
+%%   <<"SubscriptionId">> => string(),
+%%   <<"SubscriptionStatus">> => list(any()),
+%%   <<"SubscriptionType">> => list(any()),
+%%   <<"UpfrontPrice">> => float()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_pricing_details() :: #{
+%%   <<"Currency">> => list(any()),
+%%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"PaymentOption">> => list(any()),
+%%   <<"PaymentTerm">> => list(any()),
+%%   <<"UpfrontPrice">> => float()
+%% }
+-type subscription_pricing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_outpost_input() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"SiteId">> := string(),
-%%   <<"SupportedHardwareType">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Name">> => string(),
+%%   <<"SupportedHardwareType">> => list(any())
 %% }
--type create_outpost_input() :: #{binary() => any()}.
+-type update_outpost_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_outpost_output() :: #{
+%%   <<"Outpost">> => outpost()
+%% }
+-type update_outpost_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quote_input() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"OutpostIdentifier">> => string(),
+%%   <<"RequestedCapacities">> => list(quote_capacity()),
+%%   <<"RequestedConstraints">> => list(quote_constraint()),
+%%   <<"RequestedPaymentOptions">> => list(list(any())()),
+%%   <<"RequestedPaymentTerms">> => list(list(any())())
+%% }
+-type update_quote_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quote_output() :: #{
+%%   <<"Quote">> => quote()
+%% }
+-type update_quote_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_address_input() :: #{
+%%   <<"Address">> := address(),
+%%   <<"AddressType">> := list(any())
+%% }
+-type update_site_address_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_address_output() :: #{
+%%   <<"Address">> => address(),
+%%   <<"AddressType">> => list(any())
+%% }
+-type update_site_address_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Notes">> => string()
+%% }
+-type update_site_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_output() :: #{
+%%   <<"Site">> => site()
+%% }
+-type update_site_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_rack_physical_properties_input() :: #{
+%%   <<"FiberOpticCableType">> => list(any()),
+%%   <<"MaximumSupportedWeightLbs">> => list(any()),
+%%   <<"OpticalStandard">> => list(any()),
+%%   <<"PowerConnector">> => list(any()),
+%%   <<"PowerDrawKva">> => list(any()),
+%%   <<"PowerFeedDrop">> => list(any()),
+%%   <<"PowerPhase">> => list(any()),
+%%   <<"UplinkCount">> => list(any()),
+%%   <<"UplinkGbps">> => list(any())
+%% }
+-type update_site_rack_physical_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_rack_physical_properties_output() :: #{
+%%   <<"Site">> => site()
+%% }
+-type update_site_rack_physical_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_capacity_task_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_order_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_order_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    not_found_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_outpost_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    not_found_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_quote_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type create_renewal_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type create_site_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_outpost_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_quote_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type delete_site_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_capacity_task_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_catalog_item_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_connection_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_order_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    internal_server_exception().
 
 -type get_outpost_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_outpost_billing_information_errors() ::
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_outpost_instance_types_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_outpost_supported_instance_types_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_quote_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_renewal_pricing_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_site_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type get_site_address_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_asset_instances_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_assets_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_blocking_instances_for_capacity_task_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_capacity_tasks_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_catalog_items_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_orderable_instance_types_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_orders_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type list_outposts_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_quotes_errors() ::
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sites_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    internal_server_exception().
 
 -type start_capacity_task_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_connection_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type start_outpost_decommission_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    internal_server_exception().
 
 -type update_outpost_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_quote_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    not_found_exception() | 
     internal_server_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type update_site_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_site_address_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_site_rack_physical_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

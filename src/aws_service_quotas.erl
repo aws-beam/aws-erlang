@@ -73,76 +73,10 @@
 
 
 %% Example:
-%% request_service_quota_increase_response() :: #{
-%%   <<"RequestedQuota">> => requested_service_quota_change()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type request_service_quota_increase_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_aws_default_service_quota_request() :: #{
-%%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string()
-%% }
--type get_aws_default_service_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_quotas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Quotas">> => list(service_quota())
-%% }
--type list_service_quotas_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_increase_request_in_template() :: #{
-%%   <<"AwsRegion">> => string(),
-%%   <<"DesiredValue">> => float(),
-%%   <<"GlobalQuota">> => boolean(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"QuotaName">> => string(),
-%%   <<"ServiceCode">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"Unit">> => string()
-%% }
--type service_quota_increase_request_in_template() :: #{binary() => any()}.
-
-%% Example:
-%% stop_auto_management_request() :: #{
-
-%% }
--type stop_auto_management_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_aws_default_service_quotas_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceCode">> := string()
-%% }
--type list_aws_default_service_quotas_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_auto_management_response() :: #{
-
-%% }
--type start_auto_management_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_requested_service_quota_change_response() :: #{
-%%   <<"RequestedQuota">> => requested_service_quota_change()
-%% }
--type get_requested_service_quota_change_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% associate_service_quota_template_request() :: #{
@@ -151,73 +85,28 @@
 -type associate_service_quota_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_quota_utilization_report_response() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ReportId">> => string(),
-%%   <<"Status">> => list(any())
+%% associate_service_quota_template_response() :: #{
+
 %% }
--type start_quota_utilization_report_response() :: #{binary() => any()}.
+-type associate_service_quota_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% dependency_access_denied_exception() :: #{
+%% aws_service_access_not_enabled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type dependency_access_denied_exception() :: #{binary() => any()}.
+-type aws_service_access_not_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_service_quota_increase_request_into_template_request() :: #{
-%%   <<"AwsRegion">> := string(),
-%%   <<"DesiredValue">> := float(),
-%%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string()
+%% create_support_case_request() :: #{
+%%   <<"RequestId">> := string()
 %% }
--type put_service_quota_increase_request_into_template_request() :: #{binary() => any()}.
+-type create_support_case_request() :: #{binary() => any()}.
 
 %% Example:
-%% quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type quota_exceeded_exception() :: #{binary() => any()}.
+%% create_support_case_response() :: #{
 
-%% Example:
-%% get_aws_default_service_quota_response() :: #{
-%%   <<"Quota">> => service_quota()
 %% }
--type get_aws_default_service_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_quota_increase_request_from_template_response() :: #{
-%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
-%% }
--type get_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_quota_increase_requests_in_template_request() :: #{
-%%   <<"AwsRegion">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type list_service_quota_increase_requests_in_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% illegal_argument_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_argument_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type create_support_case_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_service_quota_increase_request_from_template_request() :: #{
@@ -234,13 +123,192 @@
 -type delete_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_auto_management_request() :: #{
+%% dependency_access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dependency_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_quota_template_request() :: #{
+
+%% }
+-type disassociate_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_quota_template_response() :: #{
+
+%% }
+-type disassociate_service_quota_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% error_reason() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_reason() :: #{binary() => any()}.
+
+%% Example:
+%% get_association_for_service_quota_template_request() :: #{
+
+%% }
+-type get_association_for_service_quota_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_association_for_service_quota_template_response() :: #{
+%%   <<"ServiceQuotaTemplateAssociationStatus">> => list(any())
+%% }
+-type get_association_for_service_quota_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_management_configuration_request() :: #{
+
+%% }
+-type get_auto_management_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_management_configuration_response() :: #{
 %%   <<"ExclusionList">> => map(),
 %%   <<"NotificationArn">> => string(),
-%%   <<"OptInLevel">> := list(any()),
-%%   <<"OptInType">> := list(any())
+%%   <<"OptInLevel">> => list(any()),
+%%   <<"OptInStatus">> => list(any()),
+%%   <<"OptInType">> => list(any())
 %% }
--type start_auto_management_request() :: #{binary() => any()}.
+-type get_auto_management_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_default_service_quota_request() :: #{
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_aws_default_service_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_default_service_quota_response() :: #{
+%%   <<"Quota">> => service_quota()
+%% }
+-type get_aws_default_service_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_quota_utilization_report_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportId">> := string()
+%% }
+-type get_quota_utilization_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_quota_utilization_report_response() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"GeneratedAt">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(quota_utilization_info()),
+%%   <<"ReportId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalCount">> => integer()
+%% }
+-type get_quota_utilization_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_requested_service_quota_change_request() :: #{
+%%   <<"RequestId">> := string()
+%% }
+-type get_requested_service_quota_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_requested_service_quota_change_response() :: #{
+%%   <<"RequestedQuota">> => requested_service_quota_change()
+%% }
+-type get_requested_service_quota_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_increase_request_from_template_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_service_quota_increase_request_from_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_increase_request_from_template_response() :: #{
+%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
+%% }
+-type get_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_request() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_service_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_quota_response() :: #{
+%%   <<"Quota">> => service_quota()
+%% }
+-type get_service_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_default_service_quotas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type list_aws_default_service_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_default_service_quotas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(service_quota())
+%% }
+-type list_aws_default_service_quotas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_by_quota_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"ServiceCode">> := string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_requested_service_quota_change_history_by_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_by_quota_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestedQuotas">> => list(requested_service_quota_change())
+%% }
+-type list_requested_service_quota_change_history_by_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_requested_service_quota_change_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%%   <<"ServiceCode">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_requested_service_quota_change_history_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_requested_service_quota_change_history_response() :: #{
@@ -250,6 +318,39 @@
 -type list_requested_service_quota_change_history_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_service_quota_increase_requests_in_template_request() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type list_service_quota_increase_requests_in_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quota_increase_requests_in_template_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceQuotaIncreaseRequestInTemplateList">> => list(service_quota_increase_request_in_template())
+%% }
+-type list_service_quota_increase_requests_in_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quotas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuotaAppliedAtLevel">> => list(any()),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type list_service_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quotas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Quotas">> => list(service_quota())
+%% }
+-type list_service_quotas_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_services_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -257,10 +358,23 @@
 -type list_services_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_service_quota_increase_request_into_template_response() :: #{
-%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service_info())
 %% }
--type put_service_quota_increase_request_into_template_response() :: #{binary() => any()}.
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% metric_info() :: #{
@@ -272,16 +386,95 @@
 -type metric_info() :: #{binary() => any()}.
 
 %% Example:
-%% stop_auto_management_response() :: #{
-
+%% no_available_organization_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type stop_auto_management_response() :: #{binary() => any()}.
+-type no_available_organization_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_association_for_service_quota_template_request() :: #{
-
+%% no_such_resource_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_association_for_service_quota_template_request() :: #{binary() => any()}.
+-type no_such_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_in_all_features_mode_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_service_quota_increase_request_into_template_request() :: #{
+%%   <<"AwsRegion">> := string(),
+%%   <<"DesiredValue">> := float(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type put_service_quota_increase_request_into_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_service_quota_increase_request_into_template_response() :: #{
+%%   <<"ServiceQuotaIncreaseRequestInTemplate">> => service_quota_increase_request_in_template()
+%% }
+-type put_service_quota_increase_request_into_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% quota_context_info() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"ContextScope">> => list(any()),
+%%   <<"ContextScopeType">> => string()
+%% }
+-type quota_context_info() :: #{binary() => any()}.
+
+%% Example:
+%% quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% quota_info() :: #{
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string()
+%% }
+-type quota_info() :: #{binary() => any()}.
+
+%% Example:
+%% quota_period() :: #{
+%%   <<"PeriodUnit">> => list(any()),
+%%   <<"PeriodValue">> => integer()
+%% }
+-type quota_period() :: #{binary() => any()}.
+
+%% Example:
+%% quota_utilization_info() :: #{
+%%   <<"Adjustable">> => boolean(),
+%%   <<"AppliedValue">> => float(),
+%%   <<"DefaultValue">> => float(),
+%%   <<"Namespace">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string(),
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"Utilization">> => float()
+%% }
+-type quota_utilization_info() :: #{binary() => any()}.
+
+%% Example:
+%% request_service_quota_increase_request() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"DesiredValue">> := float(),
+%%   <<"QuotaCode">> := string(),
+%%   <<"ServiceCode">> := string(),
+%%   <<"SupportCaseAllowed">> => boolean()
+%% }
+-type request_service_quota_increase_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_service_quota_increase_response() :: #{
+%%   <<"RequestedQuota">> => requested_service_quota_change()
+%% }
+-type request_service_quota_increase_response() :: #{binary() => any()}.
 
 %% Example:
 %% requested_service_quota_change() :: #{
@@ -306,82 +499,10 @@
 -type requested_service_quota_change() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_service_quota_template_response() :: #{
-
-%% }
--type disassociate_service_quota_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_aws_default_service_quotas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Quotas">> => list(service_quota())
-%% }
--type list_aws_default_service_quotas_response() :: #{binary() => any()}.
-
-%% Example:
-%% organization_not_in_all_features_mode_exception() :: #{
+%% resource_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type organization_not_in_all_features_mode_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_service_quota_template_response() :: #{
-
-%% }
--type associate_service_quota_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% list_requested_service_quota_change_history_by_quota_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RequestedQuotas">> => list(requested_service_quota_change())
-%% }
--type list_requested_service_quota_change_history_by_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service_info())
-%% }
--type list_services_response() :: #{binary() => any()}.
-
-%% Example:
-%% quota_context_info() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"ContextScope">> => list(any()),
-%%   <<"ContextScopeType">> => string()
-%% }
--type quota_context_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_quota_response() :: #{
-%%   <<"Quota">> => service_quota()
-%% }
--type get_service_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% request_service_quota_increase_request() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"DesiredValue">> := float(),
-%%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string(),
-%%   <<"SupportCaseAllowed">> => boolean()
-%% }
--type request_service_quota_increase_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_quota_utilization_report_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReportId">> := string()
-%% }
--type get_quota_utilization_report_request() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% service_exception() :: #{
@@ -390,100 +511,11 @@
 -type service_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_support_case_request() :: #{
-%%   <<"RequestId">> := string()
+%% service_info() :: #{
+%%   <<"ServiceCode">> => string(),
+%%   <<"ServiceName">> => string()
 %% }
--type create_support_case_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_auto_management_response() :: #{
-
-%% }
--type update_auto_management_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_service_quota_template_request() :: #{
-
-%% }
--type disassociate_service_quota_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_association_for_service_quota_template_response() :: #{
-%%   <<"ServiceQuotaTemplateAssociationStatus">> => list(any())
-%% }
--type get_association_for_service_quota_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_resource_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_management_configuration_request() :: #{
-
-%% }
--type get_auto_management_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_resource_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_resource_exception() :: #{binary() => any()}.
-
-%% Example:
-%% quota_info() :: #{
-%%   <<"QuotaCode">> => string(),
-%%   <<"QuotaName">> => string()
-%% }
--type quota_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_quota_utilization_report_response() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"GeneratedAt">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Quotas">> => list(quota_utilization_info()),
-%%   <<"ReportId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalCount">> => integer()
-%% }
--type get_quota_utilization_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_quotas_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuotaAppliedAtLevel">> => list(any()),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ServiceCode">> := string()
-%% }
--type list_service_quotas_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_requested_service_quota_change_request() :: #{
-%%   <<"RequestId">> := string()
-%% }
--type get_requested_service_quota_change_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
+-type service_info() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota() :: #{
@@ -506,26 +538,38 @@
 -type service_quota() :: #{binary() => any()}.
 
 %% Example:
-%% list_requested_service_quota_change_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuotaRequestedAtLevel">> => list(any()),
+%% service_quota_increase_request_in_template() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"DesiredValue">> => float(),
+%%   <<"GlobalQuota">> => boolean(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string(),
 %%   <<"ServiceCode">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"ServiceName">> => string(),
+%%   <<"Unit">> => string()
 %% }
--type list_requested_service_quota_change_history_request() :: #{binary() => any()}.
+-type service_quota_increase_request_in_template() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_available_organization_exception() :: #{
+%% service_quota_template_not_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type no_available_organization_exception() :: #{binary() => any()}.
+-type service_quota_template_not_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_auto_management_request() :: #{
+%%   <<"ExclusionList">> => map(),
+%%   <<"NotificationArn">> => string(),
+%%   <<"OptInLevel">> := list(any()),
+%%   <<"OptInType">> := list(any())
+%% }
+-type start_auto_management_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_auto_management_response() :: #{
+
+%% }
+-type start_auto_management_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_quota_utilization_report_request() :: #{
@@ -534,25 +578,81 @@
 -type start_quota_utilization_report_request() :: #{binary() => any()}.
 
 %% Example:
-%% error_reason() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
+%% start_quota_utilization_report_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ReportId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type error_reason() :: #{binary() => any()}.
+-type start_quota_utilization_report_response() :: #{binary() => any()}.
 
 %% Example:
-%% quota_utilization_info() :: #{
-%%   <<"Adjustable">> => boolean(),
-%%   <<"AppliedValue">> => float(),
-%%   <<"DefaultValue">> => float(),
-%%   <<"Namespace">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"QuotaName">> => string(),
-%%   <<"ServiceCode">> => string(),
-%%   <<"ServiceName">> => string(),
-%%   <<"Utilization">> => float()
+%% stop_auto_management_request() :: #{
+
 %% }
--type quota_utilization_info() :: #{binary() => any()}.
+-type stop_auto_management_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_auto_management_response() :: #{
+
+%% }
+-type stop_auto_management_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_violation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tag_policy_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% templates_not_available_in_region_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type templates_not_available_in_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_auto_management_request() :: #{
@@ -563,331 +663,231 @@
 -type update_auto_management_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_template_not_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_template_not_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_support_case_response() :: #{
+%% update_auto_management_response() :: #{
 
 %% }
--type create_support_case_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_quota_request() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string()
-%% }
--type get_service_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% templates_not_available_in_region_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type templates_not_available_in_region_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_quota_increase_request_from_template_request() :: #{
-%%   <<"AwsRegion">> := string(),
-%%   <<"QuotaCode">> := string(),
-%%   <<"ServiceCode">> := string()
-%% }
--type get_service_quota_increase_request_from_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_management_configuration_response() :: #{
-%%   <<"ExclusionList">> => map(),
-%%   <<"NotificationArn">> => string(),
-%%   <<"OptInLevel">> => list(any()),
-%%   <<"OptInStatus">> => list(any()),
-%%   <<"OptInType">> => list(any())
-%% }
--type get_auto_management_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_info() :: #{
-%%   <<"ServiceCode">> => string(),
-%%   <<"ServiceName">> => string()
-%% }
--type service_info() :: #{binary() => any()}.
-
-%% Example:
-%% quota_period() :: #{
-%%   <<"PeriodUnit">> => list(any()),
-%%   <<"PeriodValue">> => integer()
-%% }
--type quota_period() :: #{binary() => any()}.
-
-%% Example:
-%% aws_service_access_not_enabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type aws_service_access_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_requested_service_quota_change_history_by_quota_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuotaCode">> := string(),
-%%   <<"QuotaRequestedAtLevel">> => list(any()),
-%%   <<"ServiceCode">> := string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_requested_service_quota_change_history_by_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_violation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type tag_policy_violation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_quota_increase_requests_in_template_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceQuotaIncreaseRequestInTemplateList">> => list(service_quota_increase_request_in_template())
-%% }
--type list_service_quota_increase_requests_in_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
+-type update_auto_management_response() :: #{binary() => any()}.
 
 -type associate_service_quota_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
+    too_many_requests_exception() | 
     templates_not_available_in_region_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
     service_exception() | 
     organization_not_in_all_features_mode_exception() | 
-    too_many_requests_exception() | 
-    dependency_access_denied_exception().
+    no_available_organization_exception() | 
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type create_support_case_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
     resource_already_exists_exception() | 
-    access_denied_exception() | 
     no_such_resource_exception() | 
     invalid_resource_state_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     illegal_argument_exception() | 
-    dependency_access_denied_exception().
+    dependency_access_denied_exception() | 
+    access_denied_exception().
 
 -type delete_service_quota_increase_request_from_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
-    templates_not_available_in_region_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_exception() | 
+    no_such_resource_exception() | 
+    no_available_organization_exception() | 
     illegal_argument_exception() | 
-    dependency_access_denied_exception().
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type disassociate_service_quota_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
+    too_many_requests_exception() | 
     templates_not_available_in_region_exception() | 
     service_quota_template_not_in_use_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
     service_exception() | 
-    too_many_requests_exception() | 
-    dependency_access_denied_exception().
+    no_available_organization_exception() | 
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type get_association_for_service_quota_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
+    too_many_requests_exception() | 
     templates_not_available_in_region_exception() | 
     service_quota_template_not_in_use_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
     service_exception() | 
-    too_many_requests_exception() | 
-    dependency_access_denied_exception().
+    no_available_organization_exception() | 
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type get_auto_management_configuration_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type get_aws_default_service_quota_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type get_quota_utilization_report_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type get_requested_service_quota_change_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type get_service_quota_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type get_service_quota_increase_request_from_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
-    templates_not_available_in_region_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_exception() | 
+    no_such_resource_exception() | 
+    no_available_organization_exception() | 
     illegal_argument_exception() | 
-    dependency_access_denied_exception().
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_aws_default_service_quotas_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type list_requested_service_quota_change_history_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type list_requested_service_quota_change_history_by_quota_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type list_service_quota_increase_requests_in_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
-    templates_not_available_in_region_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_exception() | 
+    no_available_organization_exception() | 
     illegal_argument_exception() | 
-    dependency_access_denied_exception().
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_service_quotas_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type put_service_quota_increase_request_into_template_errors() ::
-    aws_service_access_not_enabled_exception() | 
-    templates_not_available_in_region_exception() | 
-    no_available_organization_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception() | 
+    templates_not_available_in_region_exception() | 
+    service_exception() | 
     quota_exceeded_exception() | 
-    dependency_access_denied_exception().
+    no_such_resource_exception() | 
+    no_available_organization_exception() | 
+    illegal_argument_exception() | 
+    dependency_access_denied_exception() | 
+    aws_service_access_not_enabled_exception() | 
+    access_denied_exception().
 
 -type request_service_quota_increase_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
     resource_already_exists_exception() | 
-    access_denied_exception() | 
+    quota_exceeded_exception() | 
     no_such_resource_exception() | 
     invalid_resource_state_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     illegal_argument_exception() | 
-    quota_exceeded_exception() | 
-    dependency_access_denied_exception().
+    dependency_access_denied_exception() | 
+    access_denied_exception().
 
 -type start_auto_management_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type start_quota_utilization_report_errors() ::
-    invalid_pagination_token_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    invalid_pagination_token_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type stop_auto_management_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    tag_policy_violation_exception() | 
     too_many_tags_exception() | 
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    tag_policy_violation_exception() | 
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 -type update_auto_management_errors() ::
-    access_denied_exception() | 
-    no_such_resource_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    illegal_argument_exception().
+    service_exception() | 
+    no_such_resource_exception() | 
+    illegal_argument_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

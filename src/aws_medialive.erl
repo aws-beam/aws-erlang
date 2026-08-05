@@ -302,1118 +302,6 @@
 
 
 %% Example:
-%% static_image_output_deactivate_schedule_action_settings() :: #{
-%%   <<"FadeOut">> => integer(),
-%%   <<"Layer">> => integer(),
-%%   <<"OutputNames">> => list(string())
-%% }
--type static_image_output_deactivate_schedule_action_settings() :: #{binary() => any()}.
-
-%% Example:
-%% scte27_destination_settings() :: #{}
--type scte27_destination_settings() :: #{}.
-
-
-%% Example:
-%% multiplex_alert() :: #{
-%%   <<"AlertType">> => string(),
-%%   <<"ClearedTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"PipelineId">> => string(),
-%%   <<"SetTimestamp">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type multiplex_alert() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cloud_watch_alarm_template_group_request() :: #{}
--type delete_cloud_watch_alarm_template_group_request() :: #{}.
-
-
-%% Example:
-%% create_network_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()),
-%%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()),
-%%   <<"State">> => list(any())
-%% }
--type create_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_s3_settings() :: #{
-%%   <<"CannedAcl">> => list(any())
-%% }
--type archive_s3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_rectangle() :: #{
-%%   <<"Height">> => float(),
-%%   <<"LeftOffset">> => float(),
-%%   <<"TopOffset">> => float(),
-%%   <<"Width">> => float()
-%% }
--type caption_rectangle() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_time_signal_apos() :: #{
-%%   <<"AdAvailOffset">> => integer(),
-%%   <<"NoRegionalBlackoutFlag">> => list(any()),
-%%   <<"WebDeliveryAllowedFlag">> => list(any())
-%% }
--type scte35_time_signal_apos() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_watch_alarm_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_output_settings() :: #{
-%%   <<"BufferMsec">> => integer(),
-%%   <<"ContainerSettings">> => udp_container_settings(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"Latency">> => integer()
-%% }
--type srt_output_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_request() :: #{}
--type describe_cluster_request() :: #{}.
-
-
-%% Example:
-%% list_networks_response() :: #{
-%%   <<"Networks">> => list(describe_network_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_networks_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_request() :: #{}
--type delete_channel_request() :: #{}.
-
-
-%% Example:
-%% event_bridge_rule_template_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTargetCount">> => integer(),
-%%   <<"EventType">> => list(any()),
-%%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type event_bridge_rule_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_capture_group_settings() :: #{
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"FrameCaptureCdnSettings">> => frame_capture_cdn_settings()
-%% }
--type frame_capture_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_settings() :: #{
-%%   <<"Id">> => string()
-%% }
--type input_device_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_security_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_input_security_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_bridge_rule_templates_request() :: #{
-%%   <<"GroupIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SignalMapIdentifier">> => string()
-%% }
--type list_event_bridge_rule_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_timecode() :: #{
-%%   <<"LastFrameClippingBehavior">> => list(any()),
-%%   <<"Timecode">> => string()
-%% }
--type stop_timecode() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_placement_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"State">> => list(any())
-%% }
--type describe_channel_placement_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_destination() :: #{
-%%   <<"Ip">> => string(),
-%%   <<"Network">> => string(),
-%%   <<"NetworkRoutes">> => list(input_destination_route()),
-%%   <<"Port">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Vpc">> => input_destination_vpc()
-%% }
--type input_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_input_device_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"DeviceSettingsSyncState">> => list(any()),
-%%   <<"DeviceUpdateStatus">> => list(any()),
-%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
-%%   <<"Id">> => string(),
-%%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => input_device_network_settings(),
-%%   <<"OutputType">> => list(any()),
-%%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
-%% }
--type describe_input_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_start_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()),
-%%   <<"Successful">> => list(batch_successful_result_model())
-%% }
--type batch_start_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte20_source_settings() :: #{
-%%   <<"Convert608To708">> => list(any()),
-%%   <<"Source608ChannelNumber">> => integer()
-%% }
--type scte20_source_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cloud_watch_alarm_template_request() :: #{}
--type delete_cloud_watch_alarm_template_request() :: #{}.
-
-
-%% Example:
-%% list_signal_maps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SignalMaps">> => list(signal_map_summary())
-%% }
--type list_signal_maps_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_multiplex_program_request() :: #{}
--type delete_multiplex_program_request() :: #{}.
-
-
-%% Example:
-%% input_clipping_settings() :: #{
-%%   <<"InputTimecodeSource">> => list(any()),
-%%   <<"StartTimecode">> => start_timecode(),
-%%   <<"StopTimecode">> => stop_timecode()
-%% }
--type input_clipping_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_source() :: #{
-%%   <<"PasswordParam">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Username">> => string()
-%% }
--type input_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_listener_settings() :: #{
-%%   <<"Decryption">> => srt_listener_decryption(),
-%%   <<"MinimumLatency">> => integer(),
-%%   <<"StreamId">> => string()
-%% }
--type srt_listener_settings() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_input_device_transfer_response() :: #{}
--type cancel_input_device_transfer_response() :: #{}.
-
-
-%% Example:
-%% output_destination() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LogicalInterfaceNames">> => list(string()),
-%%   <<"MediaConnectRouterSettings">> => list(media_connect_router_output_destination_settings()),
-%%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()),
-%%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
-%%   <<"Settings">> => list(output_destination_settings()),
-%%   <<"SrtSettings">> => list(srt_output_destination_settings())
-%% }
--type output_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_selector_settings() :: #{
-%%   <<"VideoSelectorPid">> => video_selector_pid(),
-%%   <<"VideoSelectorProgramId">> => video_selector_program_id()
-%% }
--type video_selector_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_group_settings() :: #{
-%%   <<"InputLossAction">> => list(any())
-%% }
--type srt_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_schedule_request() :: #{
-%%   <<"Creates">> => batch_schedule_action_create_request(),
-%%   <<"Deletes">> => batch_schedule_action_delete_request()
-%% }
--type batch_update_schedule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_destination() :: #{
-%%   <<"AvailabilityZoneName">> => string(),
-%%   <<"RouterOutputArn">> => string()
-%% }
--type router_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_inference_settings() :: #{
-%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
-%%   <<"FeedArn">> => string()
-%% }
--type describe_inference_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings_summary(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type multiplex_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_multiplex_request() :: #{}
--type stop_multiplex_request() :: #{}.
-
-
-%% Example:
-%% delete_tags_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type delete_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_input_device_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"HdDeviceSettings">> => input_device_configurable_settings(),
-%%   <<"Name">> => string(),
-%%   <<"UhdDeviceSettings">> => input_device_configurable_settings()
-%% }
--type update_input_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multiplex_programs_response() :: #{
-%%   <<"MultiplexPrograms">> => list(multiplex_program_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multiplex_programs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_input_request() :: #{}
--type describe_input_request() :: #{}.
-
-
-%% Example:
-%% scte27_source_settings() :: #{
-%%   <<"OcrLanguage">> => list(any()),
-%%   <<"Pid">> => integer()
-%% }
--type scte27_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_engine_version_response() :: #{
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"Version">> => string()
-%% }
--type channel_engine_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% restart_channel_pipelines_response() :: #{
-%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"Id">> => string(),
-%%   <<"InferenceSettings">> => describe_inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_status(),
-%%   <<"MaintenanceStatus">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Vpc">> => vpc_output_settings_description()
-%% }
--type restart_channel_pipelines_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_class_response() :: #{
-%%   <<"Channel">> => channel()
-%% }
--type update_channel_class_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_group_settings() :: #{
-%%   <<"ArchiveCdnSettings">> => archive_cdn_settings(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"RolloverInterval">> => integer()
-%% }
--type archive_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_akamai_settings() :: #{
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"FilecacheDuration">> => integer(),
-%%   <<"HttpTransferMode">> => list(any()),
-%%   <<"NumRetries">> => integer(),
-%%   <<"RestartDelay">> => integer(),
-%%   <<"Salt">> => string(),
-%%   <<"Token">> => string()
-%% }
--type hls_akamai_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_signal_map_request() :: #{}
--type get_signal_map_request() :: #{}.
-
-
-%% Example:
-%% sdi_source_mapping() :: #{
-%%   <<"CardNumber">> => integer(),
-%%   <<"ChannelNumber">> => integer(),
-%%   <<"SdiSource">> => string()
-%% }
--type sdi_source_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_only_hls_settings() :: #{
-%%   <<"AudioGroupId">> => string(),
-%%   <<"AudioOnlyImage">> => input_location(),
-%%   <<"AudioTrackType">> => list(any()),
-%%   <<"SegmentType">> => list(any())
-%% }
--type audio_only_hls_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_delivery_restrictions() :: #{
-%%   <<"ArchiveAllowedFlag">> => list(any()),
-%%   <<"DeviceRestrictions">> => list(any()),
-%%   <<"NoRegionalBlackoutFlag">> => list(any()),
-%%   <<"WebDeliveryAllowedFlag">> => list(any())
-%% }
--type scte35_delivery_restrictions() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program_summary() :: #{
-%%   <<"ChannelId">> => string(),
-%%   <<"ProgramName">> => string()
-%% }
--type multiplex_program_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_watch_alarm_template_request() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationPeriods">> => integer(),
-%%   <<"GroupIdentifier">> => string(),
-%%   <<"MetricName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"TargetResourceType">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"TreatMissingData">> => list(any())
-%% }
--type update_cloud_watch_alarm_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_caller_decryption_request() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"PassphraseSecretArn">> => string()
-%% }
--type srt_caller_decryption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_response() :: #{
-%%   <<"Channel">> => channel()
-%% }
--type create_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_placement_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"State">> => list(any())
-%% }
--type describe_channel_placement_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_router_group_settings() :: #{
-%%   <<"AvailabilityZones">> => list(string())
-%% }
--type media_connect_router_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_return_to_network_schedule_action_settings() :: #{
-%%   <<"SpliceEventId">> => float()
-%% }
--type scte35_return_to_network_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_pool_update_request() :: #{
-%%   <<"Cidr">> => string()
-%% }
--type ip_pool_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_engine_version_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type channel_engine_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_input_device_request() :: #{}
--type start_input_device_request() :: #{}.
-
-
-%% Example:
-%% pause_state_schedule_action_settings() :: #{
-%%   <<"Pipelines">> => list(pipeline_pause_state_settings())
-%% }
--type pause_state_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_cluster_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings(),
-%%   <<"State">> => list(any())
-%% }
--type describe_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_placement_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"State">> => list(any())
-%% }
--type update_channel_placement_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_caller_decryption() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"PassphraseSecretArn">> => string()
-%% }
--type srt_caller_decryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_network_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()),
-%%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()),
-%%   <<"State">> => list(any())
-%% }
--type describe_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_input_settings() :: #{
-%%   <<"HlsInputSettings">> => hls_input_settings(),
-%%   <<"MulticastInputSettings">> => multicast_input_settings(),
-%%   <<"ServerValidation">> => list(any())
-%% }
--type network_input_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% mp2_settings() :: #{
-%%   <<"Bitrate">> => float(),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"SampleRate">> => float()
-%% }
--type mp2_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_reservation_request() :: #{}
--type delete_reservation_request() :: #{}.
-
-
-%% Example:
-%% multiplex_output_destination() :: #{
-%%   <<"MediaConnectSettings">> => multiplex_media_connect_output_destination_settings()
-%% }
--type multiplex_output_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitor_deployment() :: #{
-%%   <<"DetailsUri">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type monitor_deployment() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_failed_result_model() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Code">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string()
-%% }
--type batch_failed_result_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_settings() :: #{
-%%   <<"Sources">> => list(multicast_source())
-%% }
--type multicast_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_response() :: #{
-%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"Id">> => string(),
-%%   <<"InferenceSettings">> => describe_inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_status(),
-%%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Vpc">> => vpc_output_settings_description()
-%% }
--type delete_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_configuration() :: #{
-%%   <<"KmsKeyId">> => string()
-%% }
--type account_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_placement_group_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string())
-%% }
--type update_channel_placement_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_input_security_group_request() :: #{
-%%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
-%% }
--type update_input_security_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% thumbnail() :: #{
-%%   <<"Body">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"ThumbnailType">> => list(any()),
-%%   <<"TimeStamp">> => non_neg_integer()
-%% }
--type thumbnail() :: #{binary() => any()}.
-
-
-%% Example:
-%% udp_output_settings() :: #{
-%%   <<"BufferMsec">> => integer(),
-%%   <<"ContainerSettings">> => udp_container_settings(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"FecOutputSettings">> => fec_output_settings()
-%% }
--type udp_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_location() :: #{
-%%   <<"PasswordParam">> => string(),
-%%   <<"Uri">> => string(),
-%%   <<"Username">> => string()
-%% }
--type input_location() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_configuration_request() :: #{}
--type describe_account_configuration_request() :: #{}.
-
-
-%% Example:
-%% nielsen_configuration() :: #{
-%%   <<"DistributorId">> => string(),
-%%   <<"NielsenPcmToId3Tagging">> => list(any())
-%% }
--type nielsen_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_selector() :: #{
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SelectorSettings">> => caption_selector_settings()
-%% }
--type caption_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_node_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping_create_request()),
-%%   <<"RequestId">> => string(),
-%%   <<"Role">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_node_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings(),
-%%   <<"State">> => list(any())
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_input_device_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"DeviceSettingsSyncState">> => list(any()),
-%%   <<"DeviceUpdateStatus">> => list(any()),
-%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
-%%   <<"Id">> => string(),
-%%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => input_device_network_settings(),
-%%   <<"OutputType">> => list(any()),
-%%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
-%% }
--type update_input_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_gateway_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_gateway_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_request() :: #{
-%%   <<"Id">> => string()
-%% }
--type input_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_network_settings() :: #{
-%%   <<"DnsAddresses">> => list(string()),
-%%   <<"Gateway">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"IpScheme">> => list(any()),
-%%   <<"SubnetMask">> => string()
-%% }
--type input_device_network_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_bridge_rule_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_event_bridge_rule_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program() :: #{
-%%   <<"ChannelId">> => string(),
-%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
-%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
-%%   <<"ProgramName">> => string()
-%% }
--type multiplex_program() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_selector_settings() :: #{
-%%   <<"AncillarySourceSettings">> => ancillary_source_settings(),
-%%   <<"AribSourceSettings">> => arib_source_settings(),
-%%   <<"DvbSubSourceSettings">> => dvb_sub_source_settings(),
-%%   <<"EmbeddedSourceSettings">> => embedded_source_settings(),
-%%   <<"Scte20SourceSettings">> => scte20_source_settings(),
-%%   <<"Scte27SourceSettings">> => scte27_source_settings(),
-%%   <<"SmartSubtitleSourceSettings">> => smart_subtitle_source_settings(),
-%%   <<"TeletextSourceSettings">> => teletext_source_settings()
-%% }
--type caption_selector_settings() :: #{binary() => any()}.
-
-%% Example:
-%% hlg2020_settings() :: #{}
--type hlg2020_settings() :: #{}.
-
-
-%% Example:
-%% input_loss_failover_settings() :: #{
-%%   <<"InputLossThresholdMsec">> => integer()
-%% }
--type input_loss_failover_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multiplex_program_request() :: #{
-%%   <<"MultiplexProgramSettings">> := multiplex_program_settings(),
-%%   <<"ProgramName">> := string(),
-%%   <<"RequestId">> := string()
-%% }
--type create_multiplex_program_request() :: #{binary() => any()}.
-
-%% Example:
-%% transfer_input_device_response() :: #{}
--type transfer_input_device_response() :: #{}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reservations_request() :: #{
-%%   <<"ChannelClass">> => string(),
-%%   <<"Codec">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MaximumBitrate">> => string(),
-%%   <<"MaximumFramerate">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Resolution">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SpecialFeature">> => string(),
-%%   <<"VideoQuality">> => string()
-%% }
--type list_reservations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_input_settings() :: #{
-%%   <<"Destinations">> => list(router_destination()),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"SecretArn">> => string()
-%% }
--type router_input_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_cdn_settings() :: #{
-%%   <<"HlsAkamaiSettings">> => hls_akamai_settings(),
-%%   <<"HlsBasicPutSettings">> => hls_basic_put_settings(),
-%%   <<"HlsMediaStoreSettings">> => hls_media_store_settings(),
-%%   <<"HlsS3Settings">> => hls_s3_settings(),
-%%   <<"HlsWebdavSettings">> => hls_webdav_settings()
-%% }
--type hls_cdn_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_alerts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateFilter">> => string()
-%% }
--type list_alerts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_rule_template_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateCount">> => integer()
-%% }
--type event_bridge_rule_template_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_codec_settings() :: #{
-%%   <<"AacSettings">> => aac_settings(),
-%%   <<"Ac3Settings">> => ac3_settings(),
-%%   <<"Eac3AtmosSettings">> => eac3_atmos_settings(),
-%%   <<"Eac3Settings">> => eac3_settings(),
-%%   <<"Mp2Settings">> => mp2_settings(),
-%%   <<"PassThroughSettings">> => pass_through_settings(),
-%%   <<"WavSettings">> => wav_settings()
-%% }
--type audio_codec_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_watch_alarm_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationPeriods">> => integer(),
-%%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MetricName">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetResourceType">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"TreatMissingData">> => list(any())
-%% }
--type update_cloud_watch_alarm_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_offerings_request() :: #{
-%%   <<"ChannelClass">> => string(),
-%%   <<"ChannelConfiguration">> => string(),
-%%   <<"Codec">> => string(),
-%%   <<"Duration">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MaximumBitrate">> => string(),
-%%   <<"MaximumFramerate">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Resolution">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SpecialFeature">> => string(),
-%%   <<"VideoQuality">> => string()
-%% }
--type list_offerings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sdi_source_response() :: #{
-%%   <<"SdiSource">> => sdi_source()
-%% }
--type create_sdi_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_placement_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"State">> => list(any())
-%% }
--type create_channel_placement_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_account_configuration_response() :: #{
-%%   <<"AccountConfiguration">> => account_configuration()
-%% }
--type describe_account_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_input_security_group_response() :: #{}
--type delete_input_security_group_response() :: #{}.
-
-
-%% Example:
-%% list_offerings_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Offerings">> => list(offering())
-%% }
--type list_offerings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signal_map_request() :: #{}
--type delete_signal_map_request() :: #{}.
-
-
-%% Example:
-%% update_input_security_group_response() :: #{
-%%   <<"SecurityGroup">> => input_security_group()
-%% }
--type update_input_security_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_bridge_rule_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
-%%   <<"EventType">> => list(any()),
-%%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_bridge_rule_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transferring_input_device_summary() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"TargetCustomerId">> => string(),
-%%   <<"TransferType">> => list(any())
-%% }
--type transferring_input_device_summary() :: #{binary() => any()}.
-
-
-%% Example:
 %% aac_settings() :: #{
 %%   <<"Bitrate">> => float(),
 %%   <<"CodingMode">> => list(any()),
@@ -1429,961 +317,61 @@
 
 
 %% Example:
-%% input_settings() :: #{
-%%   <<"AudioSelectors">> => list(audio_selector()),
-%%   <<"CaptionSelectors">> => list(caption_selector()),
-%%   <<"DeblockFilter">> => list(any()),
-%%   <<"DenoiseFilter">> => list(any()),
-%%   <<"FilterStrength">> => integer(),
-%%   <<"InputFilter">> => list(any()),
-%%   <<"NetworkInputSettings">> => network_input_settings(),
-%%   <<"Scte35Pid">> => integer(),
-%%   <<"Smpte2038DataPreference">> => list(any()),
-%%   <<"SourceEndBehavior">> => list(any()),
-%%   <<"VideoSelector">> => video_selector()
+%% ac3_settings() :: #{
+%%   <<"AttenuationControl">> => list(any()),
+%%   <<"Bitrate">> => float(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"Dialnorm">> => integer(),
+%%   <<"DrcProfile">> => list(any()),
+%%   <<"LfeFilter">> => list(any()),
+%%   <<"MetadataControl">> => list(any())
 %% }
--type input_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multiplex_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()),
-%%   <<"MultiplexSettings">> := multiplex_settings(),
-%%   <<"Name">> := string(),
-%%   <<"RequestId">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_multiplex_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% h265_color_space_settings() :: #{
-%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
-%%   <<"DolbyVision81Settings">> => dolby_vision81_settings(),
-%%   <<"Hdr10Settings">> => hdr10_settings(),
-%%   <<"Hlg2020Settings">> => hlg2020_settings(),
-%%   <<"Rec601Settings">> => rec601_settings(),
-%%   <<"Rec709Settings">> => rec709_settings()
-%% }
--type h265_color_space_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% smpte2110_receiver_group() :: #{
-%%   <<"SdpSettings">> => smpte2110_receiver_group_sdp_settings()
-%% }
--type smpte2110_receiver_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_node_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"ManagedInstanceId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
-%% }
--type describe_node_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_node_state_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
-%% }
--type update_node_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% smpte2110_receiver_group_settings() :: #{
-%%   <<"Smpte2110ReceiverGroups">> => list(smpte2110_receiver_group())
-%% }
--type smpte2110_receiver_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program_channel_destination_settings() :: #{
-%%   <<"MultiplexId">> => string(),
-%%   <<"ProgramName">> => string()
-%% }
--type multiplex_program_channel_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_interface_mapping_create_request() :: #{
-%%   <<"LogicalInterfaceName">> => string(),
-%%   <<"NetworkInterfaceMode">> => list(any()),
-%%   <<"PhysicalInterfaceName">> => string()
-%% }
--type node_interface_mapping_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_capture_output_settings() :: #{
-%%   <<"NameModifier">> => string()
-%% }
--type frame_capture_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()),
-%%   <<"Successful">> => list(batch_successful_result_model())
-%% }
--type batch_delete_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_update_request() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Gateway">> => string()
-%% }
--type route_update_request() :: #{binary() => any()}.
-
-%% Example:
-%% rec709_settings() :: #{}
--type rec709_settings() :: #{}.
-
-
-%% Example:
-%% id3_segment_tagging_schedule_action_settings() :: #{
-%%   <<"Id3">> => string(),
-%%   <<"Tag">> => string()
-%% }
--type id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% disabled_locking_settings() :: #{
-%%   <<"CustomEpoch">> => string()
-%% }
--type disabled_locking_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_selector_pid() :: #{
-%%   <<"Pid">> => integer()
-%% }
--type video_selector_pid() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_settings_update_request() :: #{
-%%   <<"Sources">> => list(multicast_source_update_request())
-%% }
--type multicast_settings_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% av1_color_space_settings() :: #{
-%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
-%%   <<"Hdr10Settings">> => hdr10_settings(),
-%%   <<"Hlg2020Settings">> => hlg2020_settings(),
-%%   <<"Rec601Settings">> => rec601_settings(),
-%%   <<"Rec709Settings">> => rec709_settings()
-%% }
--type av1_color_space_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% m3u8_settings() :: #{
-%%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"AudioPids">> => string(),
-%%   <<"EcmPid">> => string(),
-%%   <<"KlvBehavior">> => list(any()),
-%%   <<"KlvDataPids">> => string(),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"PatInterval">> => integer(),
-%%   <<"PcrControl">> => list(any()),
-%%   <<"PcrPeriod">> => integer(),
-%%   <<"PcrPid">> => string(),
-%%   <<"PmtInterval">> => integer(),
-%%   <<"PmtPid">> => string(),
-%%   <<"ProgramNum">> => integer(),
-%%   <<"Scte35Behavior">> => list(any()),
-%%   <<"Scte35Pid">> => string(),
-%%   <<"TimedMetadataBehavior">> => list(any()),
-%%   <<"TimedMetadataPid">> => string(),
-%%   <<"TransportStreamId">> => integer(),
-%%   <<"VideoPid">> => string()
-%% }
--type m3u8_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_sub_source_settings() :: #{
-%%   <<"OcrLanguage">> => list(any()),
-%%   <<"Pid">> => integer()
-%% }
--type dvb_sub_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_flow() :: #{
-%%   <<"FlowArn">> => string()
-%% }
--type media_connect_flow() :: #{binary() => any()}.
-
-%% Example:
-%% describe_network_request() :: #{}
--type describe_network_request() :: #{}.
-
-
-%% Example:
-%% scte35_splice_insert_schedule_action_settings() :: #{
-%%   <<"Duration">> => float(),
-%%   <<"SpliceEventId">> => float()
-%% }
--type scte35_splice_insert_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% motion_graphics_configuration() :: #{
-%%   <<"MotionGraphicsInsertion">> => list(any()),
-%%   <<"MotionGraphicsSettings">> => motion_graphics_settings()
-%% }
--type motion_graphics_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_bridge_rule_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_event_bridge_rule_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_bridge_rule_template_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_bridge_rule_template_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% udp_container_settings() :: #{
-%%   <<"M2tsSettings">> => m2ts_settings()
-%% }
--type udp_container_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schedule_response() :: #{}
--type delete_schedule_response() :: #{}.
-
-
-%% Example:
-%% maintenance_update_settings() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceScheduledDate">> => string(),
-%%   <<"MaintenanceStartTime">> => string()
-%% }
--type maintenance_update_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_security_group() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule())
-%% }
--type input_security_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_watch_alarm_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationPeriods">> => integer(),
-%%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MetricName">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetResourceType">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"TreatMissingData">> => list(any())
-%% }
--type create_cloud_watch_alarm_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% smart_subtitle_source_settings() :: #{
-%%   <<"CaptionSynchronizationMode">> => list(any()),
-%%   <<"InferenceFeedOutput">> => string()
-%% }
--type smart_subtitle_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_channel_level() :: #{
-%%   <<"Gain">> => integer(),
-%%   <<"InputChannel">> => integer()
-%% }
--type input_channel_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% ms_smooth_output_settings() :: #{
-%%   <<"H265PackagingType">> => list(any()),
-%%   <<"NameModifier">> => string()
-%% }
--type ms_smooth_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% reboot_input_device_request() :: #{
-%%   <<"Force">> => list(any())
-%% }
--type reboot_input_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% embedded_plus_scte20_destination_settings() :: #{}
--type embedded_plus_scte20_destination_settings() :: #{}.
-
-
-%% Example:
-%% list_cloud_watch_alarm_template_groups_response() :: #{
-%%   <<"CloudWatchAlarmTemplateGroups">> => list(cloud_watch_alarm_template_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cloud_watch_alarm_template_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% motion_graphics_deactivate_schedule_action_settings() :: #{}
--type motion_graphics_deactivate_schedule_action_settings() :: #{}.
-
-
-%% Example:
-%% input_whitelist_rule_cidr() :: #{
-%%   <<"Cidr">> => string()
-%% }
--type input_whitelist_rule_cidr() :: #{binary() => any()}.
-
-
-%% Example:
-%% timed_metadata_schedule_action_settings() :: #{
-%%   <<"Id3">> => string()
-%% }
--type timed_metadata_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% sdi_source() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type sdi_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_channel_placement_group_request() :: #{}
--type describe_channel_placement_group_request() :: #{}.
-
-
-%% Example:
-%% input_device_configurable_settings() :: #{
-%%   <<"AudioChannelPairs">> => list(input_device_configurable_audio_channel_pair_config()),
-%%   <<"Codec">> => list(any()),
-%%   <<"ConfiguredInput">> => list(any()),
-%%   <<"InputResolution">> => string(),
-%%   <<"LatencyMs">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"MediaconnectSettings">> => input_device_media_connect_configurable_settings()
-%% }
--type input_device_configurable_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_rule_template_target() :: #{
-%%   <<"Arn">> => string()
-%% }
--type event_bridge_rule_template_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_node_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
-%% }
--type update_node_response() :: #{binary() => any()}.
-
-%% Example:
-%% smpte_tt_destination_settings() :: #{}
--type smpte_tt_destination_settings() :: #{}.
-
-
-%% Example:
-%% srt_caller_source() :: #{
-%%   <<"Decryption">> => srt_caller_decryption(),
-%%   <<"MinimumLatency">> => integer(),
-%%   <<"SrtListenerAddress">> => string(),
-%%   <<"SrtListenerPort">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type srt_caller_source() :: #{binary() => any()}.
-
-%% Example:
-%% stop_channel_request() :: #{}
--type stop_channel_request() :: #{}.
-
-
-%% Example:
-%% caption_language_mapping() :: #{
-%%   <<"CaptionChannel">> => integer(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"LanguageDescription">> => string()
-%% }
--type caption_language_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multiplex_programs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_multiplex_programs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_node_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
-%% }
--type describe_node_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_node_registration_script_response() :: #{
-%%   <<"NodeRegistrationScript">> => string()
-%% }
--type create_node_registration_script_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings_update_request()
-%% }
--type update_cluster_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_alert() :: #{
-%%   <<"AlertType">> => string(),
-%%   <<"ClearedTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"PipelineId">> => string(),
-%%   <<"SetTimestamp">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type channel_alert() :: #{binary() => any()}.
-
-
-%% Example:
-%% reservation_resource_specification() :: #{
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"Codec">> => list(any()),
-%%   <<"MaximumBitrate">> => list(any()),
-%%   <<"MaximumFramerate">> => list(any()),
-%%   <<"Resolution">> => list(any()),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"SpecialFeature">> => list(any()),
-%%   <<"VideoQuality">> => list(any())
-%% }
--type reservation_resource_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_input_security_group_request() :: #{
-%%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
-%% }
--type create_input_security_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_monitor_deployment_request() :: #{
-%%   <<"DryRun">> => boolean()
-%% }
--type start_monitor_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_network_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()),
-%%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()),
-%%   <<"State">> => list(any())
-%% }
--type delete_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_request() :: #{
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"InputIds">> => list(string()),
-%%   <<"InputSecurityGroupIds">> => list(string()),
-%%   <<"MultiplexIds">> => list(string())
-%% }
--type batch_delete_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_node_registration_script_request() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"RequestId">> => string(),
-%%   <<"Role">> => list(any())
-%% }
--type create_node_registration_script_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_source_update_request() :: #{
-%%   <<"SourceIp">> => string(),
-%%   <<"Url">> => string()
-%% }
--type multicast_source_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_security_groups_response() :: #{
-%%   <<"InputSecurityGroups">> => list(input_security_group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_input_security_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_description() :: #{
-%%   <<"CodecSettings">> => video_codec_settings(),
-%%   <<"Height">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"RespondToAfd">> => list(any()),
-%%   <<"ScalingBehavior">> => list(any()),
-%%   <<"Sharpness">> => integer(),
-%%   <<"Width">> => integer()
-%% }
--type video_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sdi_source_request() :: #{}
--type delete_sdi_source_request() :: #{}.
-
-
-%% Example:
-%% ttml_destination_settings() :: #{
-%%   <<"StyleControl">> => list(any())
-%% }
--type ttml_destination_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_multiplex_request() :: #{}
--type start_multiplex_request() :: #{}.
-
-
-%% Example:
-%% input_attachment() :: #{
-%%   <<"AutomaticInputFailoverSettings">> => automatic_input_failover_settings(),
-%%   <<"InputAttachmentName">> => string(),
-%%   <<"InputId">> => string(),
-%%   <<"InputSettings">> => input_settings(),
-%%   <<"LogicalInterfaceNames">> => list(string())
-%% }
--type input_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdi_input_specification() :: #{
-%%   <<"Resolution">> => list(any())
-%% }
--type cdi_input_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_track() :: #{
-%%   <<"PremixSettings">> => audio_pre_mixer_settings(),
-%%   <<"Track">> => integer()
-%% }
--type audio_track() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_package_output_settings() :: #{
-%%   <<"MediaPackageV2DestinationSettings">> => media_package_v2_destination_settings()
-%% }
--type media_package_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% timecode_config() :: #{
-%%   <<"Source">> => list(any()),
-%%   <<"SyncThreshold">> => integer()
-%% }
--type timecode_config() :: #{binary() => any()}.
+-type ac3_settings() :: #{binary() => any()}.
 
 %% Example:
 %% accept_input_device_transfer_request() :: #{}
 -type accept_input_device_transfer_request() :: #{}.
 
-
 %% Example:
-%% list_input_devices_response() :: #{
-%%   <<"InputDevices">> => list(input_device_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_input_devices_response() :: #{binary() => any()}.
+%% accept_input_device_transfer_response() :: #{}
+-type accept_input_device_transfer_response() :: #{}.
 
 
 %% Example:
-%% input_specification() :: #{
-%%   <<"Codec">> => list(any()),
-%%   <<"MaximumBitrate">> => list(any()),
-%%   <<"Resolution">> => list(any())
+%% account_configuration() :: #{
+%%   <<"KmsKeyId">> => string()
 %% }
--type input_specification() :: #{binary() => any()}.
+-type account_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% multicast_input_settings() :: #{
-%%   <<"SourceIpAddress">> => string()
+%% additional_destinations() :: #{
+%%   <<"Destination">> => output_location_ref()
 %% }
--type multicast_input_settings() :: #{binary() => any()}.
+-type additional_destinations() :: #{binary() => any()}.
 
 
 %% Example:
-%% pipeline_locking_settings() :: #{
-%%   <<"CustomEpoch">> => string(),
-%%   <<"PipelineLockingMethod">> => list(any())
+%% ancillary_source_settings() :: #{
+%%   <<"SourceAncillaryChannelNumber">> => integer()
 %% }
--type pipeline_locking_settings() :: #{binary() => any()}.
+-type ancillary_source_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_partner_input_request() :: #{
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
+%% anywhere_settings() :: #{
+%%   <<"ChannelPlacementGroupId">> => string(),
+%%   <<"ClusterId">> => string()
 %% }
--type create_partner_input_request() :: #{binary() => any()}.
+-type anywhere_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_schedule_action_create_request() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action())
+%% archive_cdn_settings() :: #{
+%%   <<"ArchiveS3Settings">> => archive_s3_settings()
 %% }
--type batch_schedule_action_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_settings_create_request() :: #{
-%%   <<"Sources">> => list(multicast_source_create_request())
-%% }
--type multicast_settings_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_group_settings() :: #{
-%%   <<"ArchiveGroupSettings">> => archive_group_settings(),
-%%   <<"CmafIngestGroupSettings">> => cmaf_ingest_group_settings(),
-%%   <<"FrameCaptureGroupSettings">> => frame_capture_group_settings(),
-%%   <<"HlsGroupSettings">> => hls_group_settings(),
-%%   <<"MediaConnectRouterGroupSettings">> => media_connect_router_group_settings(),
-%%   <<"MediaPackageGroupSettings">> => media_package_group_settings(),
-%%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
-%%   <<"MultiplexGroupSettings">> => multiplex_group_settings(),
-%%   <<"RtmpGroupSettings">> => rtmp_group_settings(),
-%%   <<"SrtGroupSettings">> => srt_group_settings(),
-%%   <<"UdpGroupSettings">> => udp_group_settings()
-%% }
--type output_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_schedule_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduleActions">> => list(schedule_action())
-%% }
--type describe_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_mapping() :: #{
-%%   <<"LogicalInterfaceName">> => string(),
-%%   <<"NetworkId">> => string()
-%% }
--type interface_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% h264_color_space_settings() :: #{
-%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
-%%   <<"Rec601Settings">> => rec601_settings(),
-%%   <<"Rec709Settings">> => rec709_settings()
-%% }
--type h264_color_space_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_reservation_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"RenewalSettings">> => renewal_settings()
-%% }
--type update_reservation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_tags_request() :: #{
-%%   <<"Tags">> => map()
-%% }
--type create_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_multiplex_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Destinations">> => list(multiplex_output_destination()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type stop_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_input_response() :: #{
-%%   <<"Input">> => input()
-%% }
--type create_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_create_request() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Gateway">> => string()
-%% }
--type route_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_source_create_request() :: #{
-%%   <<"SourceIp">> => string(),
-%%   <<"Url">> => string()
-%% }
--type multicast_source_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_uhd_audio_channel_pair_config() :: #{
-%%   <<"Id">> => integer(),
-%%   <<"Profile">> => list(any())
-%% }
--type input_device_uhd_audio_channel_pair_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_placement_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_placement_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_selector_program_id() :: #{
-%%   <<"ProgramId">> => integer()
-%% }
--type video_selector_program_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% ms_smooth_group_settings() :: #{
-%%   <<"AcquisitionPointId">> => string(),
-%%   <<"AudioOnlyTimecodeControl">> => list(any()),
-%%   <<"CertificateMode">> => list(any()),
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"EventId">> => string(),
-%%   <<"EventIdMode">> => list(any()),
-%%   <<"EventStopBehavior">> => list(any()),
-%%   <<"FilecacheDuration">> => integer(),
-%%   <<"FragmentLength">> => integer(),
-%%   <<"InputLossAction">> => list(any()),
-%%   <<"NumRetries">> => integer(),
-%%   <<"RestartDelay">> => integer(),
-%%   <<"SegmentationMode">> => list(any()),
-%%   <<"SendDelayMs">> => integer(),
-%%   <<"SparseTrackType">> => list(any()),
-%%   <<"StreamManifestBehavior">> => list(any()),
-%%   <<"TimestampOffset">> => string(),
-%%   <<"TimestampOffsetMode">> => list(any())
-%% }
--type ms_smooth_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_watch_alarm_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_input_request() :: #{
-%%   <<"Destinations">> => list(input_destination_request()),
-%%   <<"InputDevices">> => list(input_device_settings()),
-%%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputSecurityGroups">> => list(string()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
-%%   <<"MulticastSettings">> => multicast_settings_create_request(),
-%%   <<"Name">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RouterSettings">> => router_settings(),
-%%   <<"SdiSources">> => list(string()),
-%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source_request()),
-%%   <<"SrtSettings">> => srt_settings_request(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"Vpc">> => input_vpc_request()
-%% }
--type create_input_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_id3_segment_tagging_schedule_action_settings() :: #{
-%%   <<"Id3">> => string(),
-%%   <<"Tag">> => string()
-%% }
--type hls_id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multiplex_program_response() :: #{
-%%   <<"ChannelId">> => string(),
-%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
-%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
-%%   <<"ProgramName">> => string()
-%% }
--type delete_multiplex_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_summary() :: #{
-%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
-%%   <<"Id">> => string(),
-%%   <<"InferenceSettings">> => describe_inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_status(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UsedChannelEngineVersions">> => list(channel_engine_version_response()),
-%%   <<"Vpc">> => vpc_output_settings_description()
-%% }
--type channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_settings() :: #{
-%%   <<"AudioOnlyHlsSettings">> => audio_only_hls_settings(),
-%%   <<"Fmp4HlsSettings">> => fmp4_hls_settings(),
-%%   <<"FrameCaptureHlsSettings">> => frame_capture_hls_settings(),
-%%   <<"StandardHlsSettings">> => standard_hls_settings()
-%% }
--type hls_settings() :: #{binary() => any()}.
+-type archive_cdn_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2395,309 +383,32 @@
 
 
 %% Example:
-%% stop_channel_response() :: #{
-%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"Id">> => string(),
-%%   <<"InferenceSettings">> => describe_inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_status(),
-%%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Vpc">> => vpc_output_settings_description()
+%% archive_group_settings() :: #{
+%%   <<"ArchiveCdnSettings">> => archive_cdn_settings(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"RolloverInterval">> => integer()
 %% }
--type stop_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_channel_request() :: #{}
--type start_channel_request() :: #{}.
+-type archive_group_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% router_destination_settings() :: #{
-%%   <<"AvailabilityZoneName">> => string()
+%% archive_output_settings() :: #{
+%%   <<"ContainerSettings">> => archive_container_settings(),
+%%   <<"Extension">> => string(),
+%%   <<"NameModifier">> => string()
 %% }
--type router_destination_settings() :: #{binary() => any()}.
+-type archive_output_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% avail_configuration() :: #{
-%%   <<"AvailSettings">> => avail_settings(),
-%%   <<"Scte35SegmentationScope">> => list(any())
+%% archive_s3_settings() :: #{
+%%   <<"CannedAcl">> => list(any())
 %% }
--type avail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"ClusterType">> => list(any()),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings_create_request(),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
+-type archive_s3_settings() :: #{binary() => any()}.
 
 %% Example:
-%% describe_thumbnails_response() :: #{
-%%   <<"ThumbnailDetails">> => list(thumbnail_detail())
-%% }
--type describe_thumbnails_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% global_configuration() :: #{
-%%   <<"InitialAudioGain">> => integer(),
-%%   <<"InputEndAction">> => list(any()),
-%%   <<"InputLossBehavior">> => input_loss_behavior(),
-%%   <<"OutputLockingMode">> => list(any()),
-%%   <<"OutputLockingSettings">> => output_locking_settings(),
-%%   <<"OutputTimingSource">> => list(any()),
-%%   <<"SupportLowFramerateInputs">> => list(any())
-%% }
--type global_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_stop_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()),
-%%   <<"Successful">> => list(batch_successful_result_model())
-%% }
--type batch_stop_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AttachedChannels">> => list(string()),
-%%   <<"Destinations">> => list(input_destination()),
-%%   <<"Id">> => string(),
-%%   <<"InputClass">> => list(any()),
-%%   <<"InputDevices">> => list(input_device_settings()),
-%%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputPartnerIds">> => list(string()),
-%%   <<"InputSourceType">> => list(any()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
-%%   <<"MulticastSettings">> => multicast_settings(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RouterSettings">> => router_input_settings(),
-%%   <<"SdiSources">> => list(string()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source()),
-%%   <<"SrtSettings">> => srt_settings(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type input() :: #{binary() => any()}.
-
-
-%% Example:
-%% automatic_input_failover_settings() :: #{
-%%   <<"ErrorClearTimeMsec">> => integer(),
-%%   <<"FailoverConditions">> => list(failover_condition()),
-%%   <<"InputPreference">> => list(any()),
-%%   <<"SecondaryInputId">> => string()
-%% }
--type automatic_input_failover_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_input_device_maintenance_window_response() :: #{}
--type start_input_device_maintenance_window_response() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_input_request() :: #{}
--type delete_input_request() :: #{}.
-
-
-%% Example:
-%% update_input_request() :: #{
-%%   <<"Destinations">> => list(input_destination_request()),
-%%   <<"InputDevices">> => list(input_device_request()),
-%%   <<"InputSecurityGroups">> => list(string()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
-%%   <<"MulticastSettings">> => multicast_settings_update_request(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SdiSources">> => list(string()),
-%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source_request()),
-%%   <<"SpecialRouterSettings">> => special_router_settings(),
-%%   <<"SrtSettings">> => srt_settings_request()
-%% }
--type update_input_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_action_settings() :: #{
-%%   <<"HlsId3SegmentTaggingSettings">> => hls_id3_segment_tagging_schedule_action_settings(),
-%%   <<"HlsTimedMetadataSettings">> => hls_timed_metadata_schedule_action_settings(),
-%%   <<"Id3SegmentTaggingSettings">> => id3_segment_tagging_schedule_action_settings(),
-%%   <<"InputPrepareSettings">> => input_prepare_schedule_action_settings(),
-%%   <<"InputSwitchSettings">> => input_switch_schedule_action_settings(),
-%%   <<"MotionGraphicsImageActivateSettings">> => motion_graphics_activate_schedule_action_settings(),
-%%   <<"MotionGraphicsImageDeactivateSettings">> => motion_graphics_deactivate_schedule_action_settings(),
-%%   <<"PauseStateSettings">> => pause_state_schedule_action_settings(),
-%%   <<"Scte35InputSettings">> => scte35_input_schedule_action_settings(),
-%%   <<"Scte35ReturnToNetworkSettings">> => scte35_return_to_network_schedule_action_settings(),
-%%   <<"Scte35SpliceInsertSettings">> => scte35_splice_insert_schedule_action_settings(),
-%%   <<"Scte35TimeSignalSettings">> => scte35_time_signal_schedule_action_settings(),
-%%   <<"StaticImageActivateSettings">> => static_image_activate_schedule_action_settings(),
-%%   <<"StaticImageDeactivateSettings">> => static_image_deactivate_schedule_action_settings(),
-%%   <<"StaticImageOutputActivateSettings">> => static_image_output_activate_schedule_action_settings(),
-%%   <<"StaticImageOutputDeactivateSettings">> => static_image_output_deactivate_schedule_action_settings(),
-%%   <<"TimedMetadataSettings">> => timed_metadata_schedule_action_settings()
-%% }
--type schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_network_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()),
-%%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()),
-%%   <<"State">> => list(any())
-%% }
--type describe_network_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_media_connect_output_destination_settings() :: #{
-%%   <<"EntitlementArn">> => string()
-%% }
--type multiplex_media_connect_output_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_reservation_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"End">> => string(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"OfferingDescription">> => string(),
-%%   <<"OfferingId">> => string(),
-%%   <<"OfferingType">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"RenewalSettings">> => renewal_settings(),
-%%   <<"ReservationId">> => string(),
-%%   <<"ResourceSpecification">> => reservation_resource_specification(),
-%%   <<"Start">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UsagePrice">> => float()
-%% }
--type delete_reservation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% nielsen_naes_ii_nw() :: #{
-%%   <<"CheckDigitString">> => string(),
-%%   <<"Sid">> => float(),
-%%   <<"Timezone">> => list(any())
-%% }
--type nielsen_naes_ii_nw() :: #{binary() => any()}.
-
-%% Example:
-%% rec601_settings() :: #{}
--type rec601_settings() :: #{}.
-
-%% Example:
-%% get_cloud_watch_alarm_template_group_request() :: #{}
--type get_cloud_watch_alarm_template_group_request() :: #{}.
-
-
-%% Example:
-%% batch_stop_request() :: #{
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"MultiplexIds">> => list(string())
-%% }
--type batch_stop_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_request() :: #{}
--type delete_network_request() :: #{}.
-
-%% Example:
-%% get_event_bridge_rule_template_group_request() :: #{}
--type get_event_bridge_rule_template_group_request() :: #{}.
-
-%% Example:
-%% cancel_input_device_transfer_request() :: #{}
--type cancel_input_device_transfer_request() :: #{}.
-
-
-%% Example:
-%% describe_cluster_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings(),
-%%   <<"State">> => list(any())
-%% }
--type describe_cluster_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_group() :: #{
-%%   <<"Name">> => string(),
-%%   <<"OutputGroupSettings">> => output_group_settings(),
-%%   <<"Outputs">> => list(output())
-%% }
--type output_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_uhd_settings() :: #{
-%%   <<"ActiveInput">> => list(any()),
-%%   <<"AudioChannelPairs">> => list(input_device_uhd_audio_channel_pair_config()),
-%%   <<"Codec">> => list(any()),
-%%   <<"ConfiguredInput">> => list(any()),
-%%   <<"DeviceState">> => list(any()),
-%%   <<"Framerate">> => float(),
-%%   <<"Height">> => integer(),
-%%   <<"InputResolution">> => string(),
-%%   <<"LatencyMs">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"MediaconnectSettings">> => input_device_media_connect_settings(),
-%%   <<"ScanType">> => list(any()),
-%%   <<"Width">> => integer()
-%% }
--type input_device_uhd_settings() :: #{binary() => any()}.
+%% arib_destination_settings() :: #{}
+-type arib_destination_settings() :: #{}.
 
 %% Example:
 %% arib_source_settings() :: #{}
@@ -2705,29 +416,24 @@
 
 
 %% Example:
-%% list_inputs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% audio_channel_mapping() :: #{
+%%   <<"InputChannelLevels">> => list(input_channel_level()),
+%%   <<"OutputChannel">> => integer()
 %% }
--type list_inputs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_input_security_group_request() :: #{}
--type delete_input_security_group_request() :: #{}.
+-type audio_channel_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_interface_mapping() :: #{
-%%   <<"LogicalInterfaceName">> => string(),
-%%   <<"NetworkInterfaceMode">> => list(any()),
-%%   <<"PhysicalInterfaceIpAddresses">> => list(string()),
-%%   <<"PhysicalInterfaceName">> => string()
+%% audio_codec_settings() :: #{
+%%   <<"AacSettings">> => aac_settings(),
+%%   <<"Ac3Settings">> => ac3_settings(),
+%%   <<"Eac3AtmosSettings">> => eac3_atmos_settings(),
+%%   <<"Eac3Settings">> => eac3_settings(),
+%%   <<"Mp2Settings">> => mp2_settings(),
+%%   <<"PassThroughSettings">> => pass_through_settings(),
+%%   <<"WavSettings">> => wav_settings()
 %% }
--type node_interface_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% multiplex_group_settings() :: #{}
--type multiplex_group_settings() :: #{}.
+-type audio_codec_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2750,800 +456,90 @@
 
 
 %% Example:
-%% create_partner_input_response() :: #{
-%%   <<"Input">> => input()
+%% audio_dolby_e_decode() :: #{
+%%   <<"ProgramSelection">> => list(any())
 %% }
--type create_partner_input_response() :: #{binary() => any()}.
+-type audio_dolby_e_decode() :: #{binary() => any()}.
 
 
 %% Example:
-%% archive_output_settings() :: #{
-%%   <<"ContainerSettings">> => archive_container_settings(),
-%%   <<"Extension">> => string(),
-%%   <<"NameModifier">> => string()
+%% audio_feed_input() :: #{
+%%   <<"AudioSelectorName">> => string(),
+%%   <<"FeedInput">> => string()
 %% }
--type archive_output_settings() :: #{binary() => any()}.
+-type audio_feed_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_channel_class_request() :: #{
-%%   <<"ChannelClass">> := list(any()),
-%%   <<"Destinations">> => list(output_destination())
-%% }
--type update_channel_class_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_codec_settings() :: #{
-%%   <<"Av1Settings">> => av1_settings(),
-%%   <<"FrameCaptureSettings">> => frame_capture_settings(),
-%%   <<"H264Settings">> => h264_settings(),
-%%   <<"H265Settings">> => h265_settings(),
-%%   <<"Mpeg2Settings">> => mpeg2_settings()
-%% }
--type video_codec_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% udp_group_settings() :: #{
-%%   <<"InputLossAction">> => list(any()),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
-%%   <<"TimedMetadataId3Period">> => integer()
-%% }
--type udp_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_input_security_group_response() :: #{
-%%   <<"SecurityGroup">> => input_security_group()
-%% }
--type create_input_security_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_settings_request() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source_request()),
-%%   <<"SrtListenerSettings">> => srt_listener_settings_request()
-%% }
--type srt_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_response() :: #{
-%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
-%%   <<"Arn">> => string(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"Id">> => string(),
-%%   <<"InferenceSettings">> => describe_inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_status(),
-%%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Vpc">> => vpc_output_settings_description()
-%% }
--type describe_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_multiplex_program_response() :: #{
-%%   <<"ChannelId">> => string(),
-%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
-%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
-%%   <<"ProgramName">> => string()
-%% }
--type describe_multiplex_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rtmp_group_settings() :: #{
-%%   <<"AdMarkers">> => list(list(any())()),
-%%   <<"AuthenticationScheme">> => list(any()),
-%%   <<"CacheFullBehavior">> => list(any()),
-%%   <<"CacheLength">> => integer(),
-%%   <<"CaptionData">> => list(any()),
-%%   <<"IncludeFillerNalUnits">> => list(any()),
-%%   <<"InputLossAction">> => list(any()),
-%%   <<"RestartDelay">> => integer()
-%% }
--type rtmp_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_watch_alarm_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationPeriods">> => integer(),
+%% audio_hls_rendition_selection() :: #{
 %%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MetricName">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetResourceType">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"TreatMissingData">> => list(any())
-%% }
--type get_cloud_watch_alarm_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_loss_behavior() :: #{
-%%   <<"BlackFrameMsec">> => integer(),
-%%   <<"InputLossImageColor">> => string(),
-%%   <<"InputLossImageSlate">> => input_location(),
-%%   <<"InputLossImageType">> => list(any()),
-%%   <<"RepeatFrameMsec">> => integer()
-%% }
--type input_loss_behavior() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_multiplex_request() :: #{
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PacketIdentifiersMapping">> => map()
-%% }
--type update_multiplex_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_package_additional_destinations() :: #{
-%%   <<"Destination">> => output_location_ref()
-%% }
--type media_package_additional_destinations() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_network_settings() :: #{
-%%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping())
-%% }
--type cluster_network_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_mapping_create_request() :: #{
-%%   <<"LogicalInterfaceName">> => string(),
-%%   <<"NetworkId">> => string()
-%% }
--type interface_mapping_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% eac3_settings() :: #{
-%%   <<"AttenuationControl">> => list(any()),
-%%   <<"Bitrate">> => float(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"DcFilter">> => list(any()),
-%%   <<"Dialnorm">> => integer(),
-%%   <<"DrcLine">> => list(any()),
-%%   <<"DrcRf">> => list(any()),
-%%   <<"LfeControl">> => list(any()),
-%%   <<"LfeFilter">> => list(any()),
-%%   <<"LoRoCenterMixLevel">> => float(),
-%%   <<"LoRoSurroundMixLevel">> => float(),
-%%   <<"LtRtCenterMixLevel">> => float(),
-%%   <<"LtRtSurroundMixLevel">> => float(),
-%%   <<"MetadataControl">> => list(any()),
-%%   <<"PassthroughControl">> => list(any()),
-%%   <<"PhaseControl">> => list(any()),
-%%   <<"StereoDownmix">> => list(any()),
-%%   <<"SurroundExMode">> => list(any()),
-%%   <<"SurroundMode">> => list(any())
-%% }
--type eac3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_thumbnails_request() :: #{
-%%   <<"PipelineId">> := string(),
-%%   <<"ThumbnailType">> := string()
-%% }
--type describe_thumbnails_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sdi_sources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sdi_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_primary_channel_settings() :: #{
-%%   <<"FollowingChannelArns">> => list(string()),
-%%   <<"LinkedChannelType">> => list(any())
-%% }
--type describe_primary_channel_settings() :: #{binary() => any()}.
-
-%% Example:
-%% scte20_plus_embedded_destination_settings() :: #{}
--type scte20_plus_embedded_destination_settings() :: #{}.
-
-
-%% Example:
-%% create_signal_map_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DiscoveryEntryPointArn">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
-%%   <<"FailedMediaResourceMap">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"LastDiscoveredAt">> => non_neg_integer(),
-%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
-%%   <<"MediaResourceMap">> => map(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"MonitorChangesPendingDeployment">> => boolean(),
-%%   <<"MonitorDeployment">> => monitor_deployment(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_signal_map_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_timecode() :: #{
-%%   <<"Timecode">> => string()
-%% }
--type start_timecode() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_watch_alarm_template_group_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type update_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_channel_request() :: #{}
--type describe_channel_request() :: #{}.
-
-
-%% Example:
-%% ip_pool() :: #{
-%%   <<"Cidr">> => string()
-%% }
--type ip_pool() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_schedule_response() :: #{
-%%   <<"Creates">> => batch_schedule_action_create_result(),
-%%   <<"Deletes">> => batch_schedule_action_delete_result()
-%% }
--type batch_update_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_input_schedule_action_settings() :: #{
-%%   <<"InputAttachmentNameReference">> => string(),
-%%   <<"Mode">> => list(any())
-%% }
--type scte35_input_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_networks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_networks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% caption_destination_settings() :: #{
-%%   <<"AribDestinationSettings">> => arib_destination_settings(),
-%%   <<"BurnInDestinationSettings">> => burn_in_destination_settings(),
-%%   <<"DvbSubDestinationSettings">> => dvb_sub_destination_settings(),
-%%   <<"EbuTtDDestinationSettings">> => ebu_tt_d_destination_settings(),
-%%   <<"EmbeddedDestinationSettings">> => embedded_destination_settings(),
-%%   <<"EmbeddedPlusScte20DestinationSettings">> => embedded_plus_scte20_destination_settings(),
-%%   <<"RtmpCaptionInfoDestinationSettings">> => rtmp_caption_info_destination_settings(),
-%%   <<"Scte20PlusEmbeddedDestinationSettings">> => scte20_plus_embedded_destination_settings(),
-%%   <<"Scte27DestinationSettings">> => scte27_destination_settings(),
-%%   <<"SmpteTtDestinationSettings">> => smpte_tt_destination_settings(),
-%%   <<"TeletextDestinationSettings">> => teletext_destination_settings(),
-%%   <<"TtmlDestinationSettings">> => ttml_destination_settings(),
-%%   <<"WebvttDestinationSettings">> => webvtt_destination_settings()
-%% }
--type caption_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% route() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Gateway">> => string()
-%% }
--type route() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_input_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AttachedChannels">> => list(string()),
-%%   <<"Destinations">> => list(input_destination()),
-%%   <<"Id">> => string(),
-%%   <<"InputClass">> => list(any()),
-%%   <<"InputDevices">> => list(input_device_settings()),
-%%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputPartnerIds">> => list(string()),
-%%   <<"InputSourceType">> => list(any()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
-%%   <<"MulticastSettings">> => multicast_settings(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RouterSettings">> => router_input_settings(),
-%%   <<"SdiSources">> => list(string()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source()),
-%%   <<"SrtSettings">> => srt_settings(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_resource_neighbor() :: #{
-%%   <<"Arn">> => string(),
 %%   <<"Name">> => string()
 %% }
--type media_resource_neighbor() :: #{binary() => any()}.
+-type audio_hls_rendition_selection() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_channel_request() :: #{
-%%   <<"AnywhereSettings">> => anywhere_settings(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelClass">> => list(any()),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"InferenceSettings">> => inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_create_settings(),
+%% audio_language_selection() :: #{
+%%   <<"LanguageCode">> => string(),
+%%   <<"LanguageSelectionPolicy">> => list(any())
+%% }
+-type audio_language_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_normalization_settings() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"AlgorithmControl">> => list(any()),
+%%   <<"PeakCalculation">> => list(any()),
+%%   <<"PeakLimiterThreshold">> => float(),
+%%   <<"TargetLkfs">> => float()
+%% }
+-type audio_normalization_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_only_hls_settings() :: #{
+%%   <<"AudioGroupId">> => string(),
+%%   <<"AudioOnlyImage">> => input_location(),
+%%   <<"AudioTrackType">> => list(any()),
+%%   <<"SegmentType">> => list(any())
+%% }
+-type audio_only_hls_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pid() :: #{
+%%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
+%%   <<"Pid">> => integer(),
+%%   <<"PremixSettings">> => audio_pre_mixer_settings()
+%% }
+-type audio_pid() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pid_selection() :: #{
+%%   <<"Pid">> => integer(),
+%%   <<"Pids">> => list(audio_pid())
+%% }
+-type audio_pid_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pre_mixer_settings() :: #{
+%%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
+%%   <<"Channels">> => integer(),
+%%   <<"GainDb">> => float(),
+%%   <<"RemixSettings">> => remix_settings()
+%% }
+-type audio_pre_mixer_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_selector() :: #{
 %%   <<"Name">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Reserved">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Vpc">> => vpc_output_settings()
+%%   <<"SelectorSettings">> => audio_selector_settings()
 %% }
--type create_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_nodes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_nodes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_delete_monitor_deployment_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DiscoveryEntryPointArn">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
-%%   <<"FailedMediaResourceMap">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"LastDiscoveredAt">> => non_neg_integer(),
-%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
-%%   <<"MediaResourceMap">> => map(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"MonitorChangesPendingDeployment">> => boolean(),
-%%   <<"MonitorDeployment">> => monitor_deployment(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type start_delete_monitor_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% motion_graphics_settings() :: #{
-%%   <<"HtmlMotionGraphicsSettings">> => html_motion_graphics_settings()
-%% }
--type motion_graphics_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_bridge_rule_template_group_request() :: #{}
--type delete_event_bridge_rule_template_group_request() :: #{}.
-
-
-%% Example:
-%% h265_settings() :: #{
-%%   <<"TimecodeInsertion">> => list(any()),
-%%   <<"Tier">> => list(any()),
-%%   <<"TreeblockSize">> => list(any()),
-%%   <<"SubgopLength">> => list(any()),
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"ColorSpaceSettings">> => h265_color_space_settings(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"MvOverPictureBoundaries">> => list(any()),
-%%   <<"QvbrQualityLevel">> => integer(),
-%%   <<"GopSize">> => float(),
-%%   <<"FlickerAq">> => list(any()),
-%%   <<"AlternativeTransferFunction">> => list(any()),
-%%   <<"GopNumBFrames">> => integer(),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
-%%   <<"TileHeight">> => integer(),
-%%   <<"Deblocking">> => list(any()),
-%%   <<"Profile">> => list(any()),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"ColorMetadata">> => list(any()),
-%%   <<"ScanType">> => list(any()),
-%%   <<"Level">> => list(any()),
-%%   <<"LookAheadRateControl">> => list(any()),
-%%   <<"MinIInterval">> => integer(),
-%%   <<"MinBitrate">> => integer(),
-%%   <<"TilePadding">> => list(any()),
-%%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"BufSize">> => integer(),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"FixedAfd">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"TileWidth">> => integer(),
-%%   <<"AfdSignaling">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"MinQp">> => integer(),
-%%   <<"MvTemporalPredictor">> => list(any()),
-%%   <<"FilterSettings">> => h265_filter_settings()
-%% }
--type h265_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_locking_settings() :: #{
-%%   <<"DisabledLockingSettings">> => disabled_locking_settings(),
-%%   <<"EpochLockingSettings">> => epoch_locking_settings(),
-%%   <<"PipelineLockingSettings">> => pipeline_locking_settings()
-%% }
--type output_locking_settings() :: #{binary() => any()}.
-
-%% Example:
-%% teletext_destination_settings() :: #{}
--type teletext_destination_settings() :: #{}.
-
-%% Example:
-%% color_space_passthrough_settings() :: #{}
--type color_space_passthrough_settings() :: #{}.
-
-
-%% Example:
-%% create_multiplex_program_response() :: #{
-%%   <<"MultiplexProgram">> => multiplex_program()
-%% }
--type create_multiplex_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_multiplex_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Destinations">> => list(multiplex_output_destination()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type start_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_error() :: #{
-%%   <<"ElementPath">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type validation_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% transfer_input_device_request() :: #{
-%%   <<"TargetCustomerId">> => string(),
-%%   <<"TargetRegion">> => string(),
-%%   <<"TransferMessage">> => string()
-%% }
--type transfer_input_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_request_destination_route() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Gateway">> => string()
-%% }
--type input_request_destination_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program_packet_identifiers_map() :: #{
-%%   <<"AribCaptionsPid">> => integer(),
-%%   <<"AudioPids">> => list(integer()),
-%%   <<"DvbSubPids">> => list(integer()),
-%%   <<"DvbTeletextPid">> => integer(),
-%%   <<"DvbTeletextPids">> => list(integer()),
-%%   <<"EcmPid">> => integer(),
-%%   <<"EtvPlatformPid">> => integer(),
-%%   <<"EtvSignalPid">> => integer(),
-%%   <<"KlvDataPids">> => list(integer()),
-%%   <<"PcrPid">> => integer(),
-%%   <<"PmtPid">> => integer(),
-%%   <<"PrivateMetadataPid">> => integer(),
-%%   <<"Scte27Pids">> => list(integer()),
-%%   <<"Scte35Pid">> => integer(),
-%%   <<"Smpte2038Pid">> => integer(),
-%%   <<"TimedMetadataPid">> => integer(),
-%%   <<"VideoPid">> => integer()
-%% }
--type multiplex_program_packet_identifiers_map() :: #{binary() => any()}.
-
-%% Example:
-%% stop_input_device_request() :: #{}
--type stop_input_device_request() :: #{}.
-
-
-%% Example:
-%% update_multiplex_response() :: #{
-%%   <<"Multiplex">> => multiplex()
-%% }
--type update_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_channel_settings() :: #{
-%%   <<"FollowerChannelSettings">> => follower_channel_settings(),
-%%   <<"PrimaryChannelSettings">> => primary_channel_settings()
-%% }
--type linked_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% feature_activations() :: #{
-%%   <<"InputPrepareScheduleActions">> => list(any()),
-%%   <<"OutputStaticImageOverlayScheduleActions">> => list(any())
-%% }
--type feature_activations() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_output_settings() :: #{
-%%   <<"ContainerSettings">> => multiplex_container_settings(),
-%%   <<"Destination">> => output_location_ref()
-%% }
--type multiplex_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% reservation() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"End">> => string(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"OfferingDescription">> => string(),
-%%   <<"OfferingId">> => string(),
-%%   <<"OfferingType">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"RenewalSettings">> => renewal_settings(),
-%%   <<"ReservationId">> => string(),
-%%   <<"ResourceSpecification">> => reservation_resource_specification(),
-%%   <<"Start">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reservation() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_follower_channel_settings() :: #{
-%%   <<"LinkedChannelType">> => list(any()),
-%%   <<"PrimaryChannelArn">> => string()
-%% }
--type describe_follower_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_schedule_action_create_result() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action())
-%% }
--type batch_schedule_action_create_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_output_destination_settings() :: #{
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"EncryptionPassphraseSecretArn">> => string(),
-%%   <<"ListenerPort">> => integer(),
-%%   <<"StreamId">> => string(),
-%%   <<"Url">> => string()
-%% }
--type srt_output_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_router_container_settings() :: #{
-%%   <<"M2tsSettings">> => m2ts_settings()
-%% }
--type media_connect_router_container_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_source() :: #{
-%%   <<"SourceIp">> => string(),
-%%   <<"Url">> => string()
-%% }
--type multicast_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_cdn_settings() :: #{
-%%   <<"ArchiveS3Settings">> => archive_s3_settings()
-%% }
--type archive_cdn_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sdi_source_response() :: #{
-%%   <<"SdiSource">> => sdi_source()
-%% }
--type delete_sdi_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_input_device_thumbnail_request() :: #{
-%%   <<"Accept">> := list(any())
-%% }
--type describe_input_device_thumbnail_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_response() :: #{
-%%   <<"Versions">> => list(channel_engine_version_response())
-%% }
--type list_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_placement_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"State">> => list(any())
-%% }
--type delete_channel_placement_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_inputs_response() :: #{
-%%   <<"Inputs">> => list(input()),
-%%   <<"NextToken">> => string()
-%% }
--type list_inputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ancillary_source_settings() :: #{
-%%   <<"SourceAncillaryChannelNumber">> => integer()
-%% }
--type ancillary_source_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_bridge_rule_template_request() :: #{}
--type delete_event_bridge_rule_template_request() :: #{}.
-
-%% Example:
-%% html_motion_graphics_settings() :: #{}
--type html_motion_graphics_settings() :: #{}.
-
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"Clusters">> => list(describe_cluster_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bandwidth_reduction_filter_settings() :: #{
-%%   <<"PostFilterSharpening">> => list(any()),
-%%   <<"Strength">> => list(any())
-%% }
--type bandwidth_reduction_filter_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_delete_monitor_deployment_request() :: #{}
--type start_delete_monitor_deployment_request() :: #{}.
-
-
-%% Example:
-%% media_connect_router_output_connection() :: #{
-%%   <<"RouterInputArn">> => string()
-%% }
--type media_connect_router_output_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% nielsen_c_b_e_t() :: #{
-%%   <<"CbetCheckDigitString">> => string(),
-%%   <<"CbetStepaside">> => list(any()),
-%%   <<"Csid">> => string()
-%% }
--type nielsen_c_b_e_t() :: #{binary() => any()}.
+-type audio_selector() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3557,218 +553,55 @@
 
 
 %% Example:
-%% input_switch_schedule_action_settings() :: #{
-%%   <<"InputAttachmentNameReference">> => string(),
-%%   <<"InputClippingSettings">> => input_clipping_settings(),
-%%   <<"UrlPath">> => list(string())
+%% audio_silence_failover_settings() :: #{
+%%   <<"AudioSelectorName">> => string(),
+%%   <<"AudioSilenceThresholdMsec">> => integer()
 %% }
--type input_switch_schedule_action_settings() :: #{binary() => any()}.
+-type audio_silence_failover_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_cluster_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => cluster_network_settings(),
-%%   <<"State">> => list(any())
+%% audio_track() :: #{
+%%   <<"PremixSettings">> => audio_pre_mixer_settings(),
+%%   <<"Track">> => integer()
 %% }
--type delete_cluster_response() :: #{binary() => any()}.
+-type audio_track() :: #{binary() => any()}.
 
 
 %% Example:
-%% dvb_sub_destination_settings() :: #{
-%%   <<"Alignment">> => list(any()),
-%%   <<"BackgroundColor">> => list(any()),
-%%   <<"BackgroundOpacity">> => integer(),
-%%   <<"Font">> => input_location(),
-%%   <<"FontColor">> => list(any()),
-%%   <<"FontOpacity">> => integer(),
-%%   <<"FontResolution">> => integer(),
-%%   <<"FontSize">> => string(),
-%%   <<"OutlineColor">> => list(any()),
-%%   <<"OutlineSize">> => integer(),
-%%   <<"ShadowColor">> => list(any()),
-%%   <<"ShadowOpacity">> => integer(),
-%%   <<"ShadowXOffset">> => integer(),
-%%   <<"ShadowYOffset">> => integer(),
-%%   <<"SubtitleRows">> => list(any()),
-%%   <<"TeletextGridControl">> => list(any()),
-%%   <<"XPosition">> => integer(),
-%%   <<"YPosition">> => integer()
+%% audio_track_selection() :: #{
+%%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
+%%   <<"Tracks">> => list(audio_track())
 %% }
--type dvb_sub_destination_settings() :: #{binary() => any()}.
+-type audio_track_selection() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_selector() :: #{
-%%   <<"ColorSpace">> => list(any()),
-%%   <<"ColorSpaceSettings">> => video_selector_color_space_settings(),
-%%   <<"ColorSpaceUsage">> => list(any()),
-%%   <<"SelectorSettings">> => video_selector_settings()
+%% audio_watermark_settings() :: #{
+%%   <<"NielsenWatermarksSettings">> => nielsen_watermarks_settings()
 %% }
--type video_selector() :: #{binary() => any()}.
+-type audio_watermark_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_language_selection() :: #{
-%%   <<"LanguageCode">> => string(),
-%%   <<"LanguageSelectionPolicy">> => list(any())
+%% automatic_input_failover_settings() :: #{
+%%   <<"ErrorClearTimeMsec">> => integer(),
+%%   <<"FailoverConditions">> => list(failover_condition()),
+%%   <<"InputPreference">> => list(any()),
+%%   <<"SecondaryInputId">> => string()
 %% }
--type audio_language_selection() :: #{binary() => any()}.
+-type automatic_input_failover_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_channel_mapping() :: #{
-%%   <<"InputChannelLevels">> => list(input_channel_level()),
-%%   <<"OutputChannel">> => integer()
+%% av1_color_space_settings() :: #{
+%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
+%%   <<"Hdr10Settings">> => hdr10_settings(),
+%%   <<"Hlg2020Settings">> => hlg2020_settings(),
+%%   <<"Rec601Settings">> => rec601_settings(),
+%%   <<"Rec709Settings">> => rec709_settings()
 %% }
--type audio_channel_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_caller_source_request() :: #{
-%%   <<"Decryption">> => srt_caller_decryption_request(),
-%%   <<"MinimumLatency">> => integer(),
-%%   <<"SrtListenerAddress">> => string(),
-%%   <<"SrtListenerPort">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type srt_caller_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_group_settings() :: #{
-%%   <<"ProgramDateTime">> => list(any()),
-%%   <<"KeyFormat">> => string(),
-%%   <<"TimestampDeltaMilliseconds">> => integer(),
-%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
-%%   <<"SegmentationMode">> => list(any()),
-%%   <<"BaseUrlContent1">> => string(),
-%%   <<"ClientCache">> => list(any()),
-%%   <<"ProgramDateTimePeriod">> => integer(),
-%%   <<"DiscontinuityTags">> => list(any()),
-%%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"StreamInfResolution">> => list(any()),
-%%   <<"SegmentsPerSubdirectory">> => integer(),
-%%   <<"IvSource">> => list(any()),
-%%   <<"BaseUrlContent">> => string(),
-%%   <<"BaseUrlManifest">> => string(),
-%%   <<"IFrameOnlyPlaylists">> => list(any()),
-%%   <<"TsFileMode">> => list(any()),
-%%   <<"DirectoryStructure">> => list(any()),
-%%   <<"IvInManifest">> => list(any()),
-%%   <<"CodecSpecification">> => list(any()),
-%%   <<"HlsId3SegmentTagging">> => list(any()),
-%%   <<"KeyFormatVersions">> => string(),
-%%   <<"AdMarkers">> => list(list(any())()),
-%%   <<"KeepSegments">> => integer(),
-%%   <<"KeyProviderSettings">> => key_provider_settings(),
-%%   <<"HlsCdnSettings">> => hls_cdn_settings(),
-%%   <<"BaseUrlManifest1">> => string(),
-%%   <<"RedundantManifest">> => list(any()),
-%%   <<"InputLossAction">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
-%%   <<"MinSegmentLength">> => integer(),
-%%   <<"ConstantIv">> => string(),
-%%   <<"ProgramDateTimeClock">> => list(any()),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"ManifestDurationFormat">> => list(any()),
-%%   <<"ManifestCompression">> => list(any()),
-%%   <<"IncompleteSegmentBehavior">> => list(any()),
-%%   <<"CaptionLanguageSetting">> => list(any()),
-%%   <<"OutputSelection">> => list(any()),
-%%   <<"IndexNSegments">> => integer(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"Mode">> => list(any())
-%% }
--type hls_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% h264_filter_settings() :: #{
-%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
-%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
-%% }
--type h264_filter_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_settings() :: #{
-%%   <<"ArchiveOutputSettings">> => archive_output_settings(),
-%%   <<"CmafIngestOutputSettings">> => cmaf_ingest_output_settings(),
-%%   <<"FrameCaptureOutputSettings">> => frame_capture_output_settings(),
-%%   <<"HlsOutputSettings">> => hls_output_settings(),
-%%   <<"MediaConnectRouterOutputSettings">> => media_connect_router_output_settings(),
-%%   <<"MediaPackageOutputSettings">> => media_package_output_settings(),
-%%   <<"MsSmoothOutputSettings">> => ms_smooth_output_settings(),
-%%   <<"MultiplexOutputSettings">> => multiplex_output_settings(),
-%%   <<"RtmpOutputSettings">> => rtmp_output_settings(),
-%%   <<"SrtOutputSettings">> => srt_output_settings(),
-%%   <<"UdpOutputSettings">> => udp_output_settings()
-%% }
--type output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_request() :: #{
-%%   <<"AnywhereSettings">> => anywhere_settings(),
-%%   <<"CdiInputSpecification">> => cdi_input_specification(),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
-%%   <<"ChannelSecurityGroups">> => list(string()),
-%%   <<"Destinations">> => list(output_destination()),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"InferenceSettings">> => inference_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()),
-%%   <<"InputSpecification">> => input_specification(),
-%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Maintenance">> => maintenance_update_settings(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SpecialRouterSettings">> => special_router_settings()
-%% }
--type update_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fmp4_hls_settings() :: #{
-%%   <<"AudioRenditionSets">> => string(),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"TimedMetadataBehavior">> => list(any())
-%% }
--type fmp4_hls_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_settings() :: #{
-%%   <<"MaximumVideoBufferDelayMilliseconds">> => integer(),
-%%   <<"TransportStreamBitrate">> => integer(),
-%%   <<"TransportStreamId">> => integer(),
-%%   <<"TransportStreamReservedBitrate">> => integer()
-%% }
--type multiplex_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_selector() :: #{
-%%   <<"Name">> => string(),
-%%   <<"SelectorSettings">> => audio_selector_settings()
-%% }
--type audio_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_configurable_audio_channel_pair_config() :: #{
-%%   <<"Id">> => integer(),
-%%   <<"Profile">> => list(any())
-%% }
--type input_device_configurable_audio_channel_pair_config() :: #{binary() => any()}.
+-type av1_color_space_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3802,118 +635,6 @@
 
 
 %% Example:
-%% multiplex_program_service_descriptor() :: #{
-%%   <<"ProviderName">> => string(),
-%%   <<"ServiceName">> => string()
-%% }
--type multiplex_program_service_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_flow_request() :: #{
-%%   <<"FlowArn">> => string()
-%% }
--type media_connect_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_multiplex_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Destinations">> => list(multiplex_output_destination()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type describe_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_pool_create_request() :: #{
-%%   <<"Cidr">> => string()
-%% }
--type ip_pool_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_signal_map_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DiscoveryEntryPointArn">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
-%%   <<"FailedMediaResourceMap">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"LastDiscoveredAt">> => non_neg_integer(),
-%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
-%%   <<"MediaResourceMap">> => map(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"MonitorChangesPendingDeployment">> => boolean(),
-%%   <<"MonitorDeployment">> => monitor_deployment(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_signal_map_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_cloud_watch_alarm_template_request() :: #{}
--type get_cloud_watch_alarm_template_request() :: #{}.
-
-
-%% Example:
-%% describe_input_device_thumbnail_response() :: #{
-%%   <<"Body">> => binary(),
-%%   <<"ContentLength">> => float(),
-%%   <<"ContentType">> => list(any()),
-%%   <<"ETag">> => string(),
-%%   <<"LastModified">> => non_neg_integer()
-%% }
--type describe_input_device_thumbnail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sdi_source_request() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type update_sdi_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% motion_graphics_activate_schedule_action_settings() :: #{
-%%   <<"Duration">> => float(),
-%%   <<"PasswordParam">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Username">> => string()
-%% }
--type motion_graphics_activate_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% nielsen_watermarks_settings() :: #{
-%%   <<"NielsenCbetSettings">> => nielsen_c_b_e_t(),
-%%   <<"NielsenDistributionType">> => list(any()),
-%%   <<"NielsenNaesIiNwSettings">> => nielsen_naes_ii_nw()
-%% }
--type nielsen_watermarks_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_provider_settings() :: #{
-%%   <<"StaticKeySettings">> => static_key_settings()
-%% }
--type key_provider_settings() :: #{binary() => any()}.
-
-
-%% Example:
 %% avail_blanking() :: #{
 %%   <<"AvailBlankingImage">> => input_location(),
 %%   <<"State">> => list(any())
@@ -3922,403 +643,11 @@
 
 
 %% Example:
-%% list_clusters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% avail_configuration() :: #{
+%%   <<"AvailSettings">> => avail_settings(),
+%%   <<"Scte35SegmentationScope">> => list(any())
 %% }
--type list_clusters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_location_ref() :: #{
-%%   <<"DestinationRefId">> => string()
-%% }
--type output_location_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% temporal_filter_settings() :: #{
-%%   <<"PostFilterSharpening">> => list(any()),
-%%   <<"Strength">> => list(any())
-%% }
--type temporal_filter_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_multiplex_program_response() :: #{
-%%   <<"MultiplexProgram">> => multiplex_program()
-%% }
--type update_multiplex_program_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_input_response() :: #{}
--type delete_input_response() :: #{}.
-
-
-%% Example:
-%% multiplex_container_settings() :: #{
-%%   <<"MultiplexM2tsSettings">> => multiplex_m2ts_settings()
-%% }
--type multiplex_container_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_capture_s3_settings() :: #{
-%%   <<"CannedAcl">> => list(any())
-%% }
--type frame_capture_s3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_time_signal_schedule_action_settings() :: #{
-%%   <<"Scte35Descriptors">> => list(scte35_descriptor())
-%% }
--type scte35_time_signal_schedule_action_settings() :: #{binary() => any()}.
-
-%% Example:
-%% arib_destination_settings() :: #{}
--type arib_destination_settings() :: #{}.
-
-
-%% Example:
-%% media_package_v2_group_settings() :: #{
-%%   <<"AdditionalDestinations">> => list(media_package_additional_destinations()),
-%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
-%%   <<"Id3Behavior">> => list(any()),
-%%   <<"KlvBehavior">> => list(any()),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"Scte35Type">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
-%%   <<"SegmentLengthUnits">> => list(any()),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
-%%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"TimedMetadataPassthrough">> => list(any())
-%% }
--type media_package_v2_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% cmaf_ingest_output_settings() :: #{
-%%   <<"NameModifier">> => string()
-%% }
--type cmaf_ingest_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_placement_groups_response() :: #{
-%%   <<"ChannelPlacementGroups">> => list(describe_channel_placement_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_placement_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_action() :: #{
-%%   <<"ActionName">> => string(),
-%%   <<"ScheduleActionSettings">> => schedule_action_settings(),
-%%   <<"ScheduleActionStartSettings">> => schedule_action_start_settings()
-%% }
--type schedule_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_multiplex_program_request() :: #{
-%%   <<"MultiplexProgramSettings">> => multiplex_program_settings()
-%% }
--type update_multiplex_program_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% epoch_locking_settings() :: #{
-%%   <<"CustomEpoch">> => string(),
-%%   <<"JamSyncTime">> => string()
-%% }
--type epoch_locking_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% static_image_deactivate_schedule_action_settings() :: #{
-%%   <<"FadeOut">> => integer(),
-%%   <<"Layer">> => integer()
-%% }
--type static_image_deactivate_schedule_action_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_multiplex_request() :: #{}
--type describe_multiplex_request() :: #{}.
-
-
-%% Example:
-%% media_package_group_settings() :: #{
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"MediapackageV2GroupSettings">> => media_package_v2_group_settings()
-%% }
--type media_package_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_signal_map_request() :: #{
-%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"DiscoveryEntryPointArn">> := string(),
-%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_signal_map_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_multiplex_request() :: #{}
--type delete_multiplex_request() :: #{}.
-
-
-%% Example:
-%% teletext_source_settings() :: #{
-%%   <<"OutputRectangle">> => caption_rectangle(),
-%%   <<"PageNumber">> => string()
-%% }
--type teletext_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_network_request() :: #{
-%%   <<"IpPools">> => list(ip_pool_create_request()),
-%%   <<"Name">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Routes">> => list(route_create_request()),
-%%   <<"Tags">> => map()
-%% }
--type create_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% maintenance_status() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceDeadline">> => string(),
-%%   <<"MaintenanceScheduledDate">> => string(),
-%%   <<"MaintenanceStartTime">> => string()
-%% }
--type maintenance_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_placement_group_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_channel_placement_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% frame_capture_hls_settings() :: #{}
--type frame_capture_hls_settings() :: #{}.
-
-%% Example:
-%% delete_cluster_request() :: #{}
--type delete_cluster_request() :: #{}.
-
-
-%% Example:
-%% esam() :: #{
-%%   <<"AcquisitionPointId">> => string(),
-%%   <<"AdAvailOffset">> => integer(),
-%%   <<"PasswordParam">> => string(),
-%%   <<"PoisEndpoint">> => string(),
-%%   <<"Username">> => string(),
-%%   <<"ZoneIdentity">> => string()
-%% }
--type esam() :: #{binary() => any()}.
-
-
-%% Example:
-%% static_image_output_activate_schedule_action_settings() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"FadeIn">> => integer(),
-%%   <<"FadeOut">> => integer(),
-%%   <<"Height">> => integer(),
-%%   <<"Image">> => input_location(),
-%%   <<"ImageX">> => integer(),
-%%   <<"ImageY">> => integer(),
-%%   <<"Layer">> => integer(),
-%%   <<"Opacity">> => integer(),
-%%   <<"OutputNames">> => list(string()),
-%%   <<"Width">> => integer()
-%% }
--type static_image_output_activate_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_whitelist_rule() :: #{
-%%   <<"Cidr">> => string()
-%% }
--type input_whitelist_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cluster_alerts_response() :: #{
-%%   <<"Alerts">> => list(cluster_alert()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_alerts_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_input_security_group_request() :: #{}
--type describe_input_security_group_request() :: #{}.
-
-
-%% Example:
-%% vpc_output_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"NetworkInterfaceIds">> => list(string()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_output_settings_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% blackout_slate() :: #{
-%%   <<"BlackoutSlateImage">> => input_location(),
-%%   <<"NetworkEndBlackout">> => list(any()),
-%%   <<"NetworkEndBlackoutImage">> => input_location(),
-%%   <<"NetworkId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type blackout_slate() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_output_settings() :: #{
-%%   <<"PublicAddressAllocationIds">> => list(string()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_prepare_schedule_action_settings() :: #{
-%%   <<"InputAttachmentNameReference">> => string(),
-%%   <<"InputClippingSettings">> => input_clipping_settings(),
-%%   <<"UrlPath">> => list(string())
-%% }
--type input_prepare_schedule_action_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_bridge_rule_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_bridge_rule_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failover_condition() :: #{
-%%   <<"FailoverConditionSettings">> => failover_condition_settings()
-%% }
--type failover_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_bridge_rule_template_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
-%%   <<"EventType">> => list(any()),
-%%   <<"GroupIdentifier">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_event_bridge_rule_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% special_router_settings() :: #{
-%%   <<"RouterArn">> => string()
-%% }
--type special_router_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_alert() :: #{
-%%   <<"AlertType">> => string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"ClearedTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"SetTimestamp">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type cluster_alert() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_tdt_settings() :: #{
-%%   <<"RepInterval">> => integer()
-%% }
--type dvb_tdt_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_devices_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_input_devices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% standard_hls_settings() :: #{
-%%   <<"AudioRenditionSets">> => string(),
-%%   <<"M3u8Settings">> => m3u8_settings()
-%% }
--type standard_hls_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessable_entity_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ValidationErrors">> => list(validation_error())
-%% }
--type unprocessable_entity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoder_settings() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()),
-%%   <<"AvailBlanking">> => avail_blanking(),
-%%   <<"AvailConfiguration">> => avail_configuration(),
-%%   <<"BlackoutSlate">> => blackout_slate(),
-%%   <<"CaptionDescriptions">> => list(caption_description()),
-%%   <<"ColorCorrectionSettings">> => color_correction_settings(),
-%%   <<"FeatureActivations">> => feature_activations(),
-%%   <<"GlobalConfiguration">> => global_configuration(),
-%%   <<"MotionGraphicsConfiguration">> => motion_graphics_configuration(),
-%%   <<"NielsenConfiguration">> => nielsen_configuration(),
-%%   <<"OutputGroups">> => list(output_group()),
-%%   <<"ThumbnailConfiguration">> => thumbnail_configuration(),
-%%   <<"TimecodeConfig">> => timecode_config(),
-%%   <<"VideoDescriptions">> => list(video_description())
-%% }
--type encoder_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_placement_group_request() :: #{}
--type delete_channel_placement_group_request() :: #{}.
-
-
-%% Example:
-%% webvtt_destination_settings() :: #{
-%%   <<"StyleControl">> => list(any())
-%% }
--type webvtt_destination_settings() :: #{binary() => any()}.
+-type avail_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4331,143 +660,149 @@
 
 
 %% Example:
-%% create_sdi_source_request() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
+%% bad_gateway_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_sdi_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% dolby_vision81_settings() :: #{}
--type dolby_vision81_settings() :: #{}.
+-type bad_gateway_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_reservations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Reservations">> => list(reservation())
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_reservations_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_input_device_maintenance_window_request() :: #{}
--type start_input_device_maintenance_window_request() :: #{}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% h265_filter_settings() :: #{
-%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
-%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
+%% bandwidth_reduction_filter_settings() :: #{
+%%   <<"PostFilterSharpening">> => list(any()),
+%%   <<"Strength">> => list(any())
 %% }
--type h265_filter_settings() :: #{binary() => any()}.
+-type bandwidth_reduction_filter_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% hls_timed_metadata_schedule_action_settings() :: #{
-%%   <<"Id3">> => string()
+%% batch_delete_request() :: #{
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"InputIds">> => list(string()),
+%%   <<"InputSecurityGroupIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
 %% }
--type hls_timed_metadata_schedule_action_settings() :: #{binary() => any()}.
+-type batch_delete_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% successful_monitor_deployment() :: #{
-%%   <<"DetailsUri">> => string(),
-%%   <<"Status">> => list(any())
+%% batch_delete_response() :: #{
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
 %% }
--type successful_monitor_deployment() :: #{binary() => any()}.
-
-%% Example:
-%% immediate_mode_schedule_action_start_settings() :: #{}
--type immediate_mode_schedule_action_start_settings() :: #{}.
+-type batch_delete_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_feed_input() :: #{
-%%   <<"AudioSelectorName">> => string(),
-%%   <<"FeedInput">> => string()
-%% }
--type audio_feed_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_response() :: #{
+%% batch_failed_result_model() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Code">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()),
-%%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()),
-%%   <<"State">> => list(any())
+%%   <<"Message">> => string()
 %% }
--type update_network_response() :: #{binary() => any()}.
+-type batch_failed_result_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% thumbnail_configuration() :: #{
-%%   <<"State">> => list(any())
+%% batch_schedule_action_create_request() :: #{
+%%   <<"ScheduleActions">> => list(schedule_action())
 %% }
--type thumbnail_configuration() :: #{binary() => any()}.
+-type batch_schedule_action_create_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_reservation_response() :: #{
+%% batch_schedule_action_create_result() :: #{
+%%   <<"ScheduleActions">> => list(schedule_action())
+%% }
+-type batch_schedule_action_create_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_schedule_action_delete_request() :: #{
+%%   <<"ActionNames">> => list(string())
+%% }
+-type batch_schedule_action_delete_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_schedule_action_delete_result() :: #{
+%%   <<"ScheduleActions">> => list(schedule_action())
+%% }
+-type batch_schedule_action_delete_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_start_request() :: #{
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
+%% }
+-type batch_start_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_start_response() :: #{
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
+%% }
+-type batch_start_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_stop_request() :: #{
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
+%% }
+-type batch_stop_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_stop_response() :: #{
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
+%% }
+-type batch_stop_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_successful_result_model() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"End">> => string(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"OfferingDescription">> => string(),
-%%   <<"OfferingId">> => string(),
-%%   <<"OfferingType">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"RenewalSettings">> => renewal_settings(),
-%%   <<"ReservationId">> => string(),
-%%   <<"ResourceSpecification">> => reservation_resource_specification(),
-%%   <<"Start">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UsagePrice">> => float()
+%%   <<"Id">> => string(),
+%%   <<"State">> => string()
 %% }
--type describe_reservation_response() :: #{binary() => any()}.
+-type batch_successful_result_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% remix_settings() :: #{
-%%   <<"ChannelMappings">> => list(audio_channel_mapping()),
-%%   <<"ChannelsIn">> => integer(),
-%%   <<"ChannelsOut">> => integer()
+%% batch_update_schedule_request() :: #{
+%%   <<"Creates">> => batch_schedule_action_create_request(),
+%%   <<"Deletes">> => batch_schedule_action_delete_request()
 %% }
--type remix_settings() :: #{binary() => any()}.
+-type batch_update_schedule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% static_key_settings() :: #{
-%%   <<"KeyProviderServer">> => input_location(),
-%%   <<"StaticKeyValue">> => string()
+%% batch_update_schedule_response() :: #{
+%%   <<"Creates">> => batch_schedule_action_create_result(),
+%%   <<"Deletes">> => batch_schedule_action_delete_result()
 %% }
--type static_key_settings() :: #{binary() => any()}.
+-type batch_update_schedule_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% thumbnail_detail() :: #{
-%%   <<"PipelineId">> => string(),
-%%   <<"Thumbnails">> => list(thumbnail())
+%% blackout_slate() :: #{
+%%   <<"BlackoutSlateImage">> => input_location(),
+%%   <<"NetworkEndBlackout">> => list(any()),
+%%   <<"NetworkEndBlackoutImage">> => input_location(),
+%%   <<"NetworkId">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type thumbnail_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_video_settings() :: #{
-%%   <<"ConstantBitrate">> => integer(),
-%%   <<"StatmuxSettings">> => multiplex_statmux_video_settings()
-%% }
--type multiplex_video_settings() :: #{binary() => any()}.
+-type blackout_slate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4493,370 +828,95 @@
 %% }
 -type burn_in_destination_settings() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_input_device_transfer_request() :: #{}
+-type cancel_input_device_transfer_request() :: #{}.
 
 %% Example:
-%% mpeg2_settings() :: #{
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"AfdSignaling">> => list(any()),
-%%   <<"ColorMetadata">> => list(any()),
-%%   <<"ColorSpace">> => list(any()),
-%%   <<"DisplayAspectRatio">> => list(any()),
-%%   <<"FilterSettings">> => mpeg2_filter_settings(),
-%%   <<"FixedAfd">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"GopNumBFrames">> => integer(),
-%%   <<"GopSize">> => float(),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"ScanType">> => list(any()),
-%%   <<"SubgopLength">> => list(any()),
-%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
-%%   <<"TimecodeInsertion">> => list(any())
+%% cancel_input_device_transfer_response() :: #{}
+-type cancel_input_device_transfer_response() :: #{}.
+
+
+%% Example:
+%% caption_description() :: #{
+%%   <<"Accessibility">> => list(any()),
+%%   <<"CaptionDashRoles">> => list(list(any())()),
+%%   <<"CaptionSelectorName">> => string(),
+%%   <<"DestinationSettings">> => caption_destination_settings(),
+%%   <<"DvbDashAccessibility">> => list(any()),
+%%   <<"LanguageCode">> => string(),
+%%   <<"LanguageDescription">> => string(),
+%%   <<"Name">> => string()
 %% }
--type mpeg2_settings() :: #{binary() => any()}.
+-type caption_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_node_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
+%% caption_destination_settings() :: #{
+%%   <<"AribDestinationSettings">> => arib_destination_settings(),
+%%   <<"BurnInDestinationSettings">> => burn_in_destination_settings(),
+%%   <<"DvbSubDestinationSettings">> => dvb_sub_destination_settings(),
+%%   <<"EbuTtDDestinationSettings">> => ebu_tt_d_destination_settings(),
+%%   <<"EmbeddedDestinationSettings">> => embedded_destination_settings(),
+%%   <<"EmbeddedPlusScte20DestinationSettings">> => embedded_plus_scte20_destination_settings(),
+%%   <<"RtmpCaptionInfoDestinationSettings">> => rtmp_caption_info_destination_settings(),
+%%   <<"Scte20PlusEmbeddedDestinationSettings">> => scte20_plus_embedded_destination_settings(),
+%%   <<"Scte27DestinationSettings">> => scte27_destination_settings(),
+%%   <<"SmpteTtDestinationSettings">> => smpte_tt_destination_settings(),
+%%   <<"TeletextDestinationSettings">> => teletext_destination_settings(),
+%%   <<"TtmlDestinationSettings">> => ttml_destination_settings(),
+%%   <<"WebvttDestinationSettings">> => webvtt_destination_settings()
 %% }
--type create_node_response() :: #{binary() => any()}.
+-type caption_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_event_bridge_rule_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
-%%   <<"EventType">> => list(any()),
-%%   <<"GroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_event_bridge_rule_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_watch_alarm_template_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sdi_source_response() :: #{
-%%   <<"SdiSource">> => sdi_source()
-%% }
--type update_sdi_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Destinations">> => list(multiplex_output_destination()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type multiplex() :: #{binary() => any()}.
-
-
-%% Example:
-%% cmaf_ingest_caption_language_mapping() :: #{
+%% caption_language_mapping() :: #{
 %%   <<"CaptionChannel">> => integer(),
-%%   <<"LanguageCode">> => string()
+%%   <<"LanguageCode">> => string(),
+%%   <<"LanguageDescription">> => string()
 %% }
--type cmaf_ingest_caption_language_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% describe_sdi_source_request() :: #{}
--type describe_sdi_source_request() :: #{}.
+-type caption_language_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% smpte2110_receiver_group_sdp_settings() :: #{
-%%   <<"AncillarySdps">> => list(input_sdp_location()),
-%%   <<"AudioSdps">> => list(input_sdp_location()),
-%%   <<"VideoSdp">> => input_sdp_location()
+%% caption_rectangle() :: #{
+%%   <<"Height">> => float(),
+%%   <<"LeftOffset">> => float(),
+%%   <<"TopOffset">> => float(),
+%%   <<"Width">> => float()
 %% }
--type smpte2110_receiver_group_sdp_settings() :: #{binary() => any()}.
+-type caption_rectangle() :: #{binary() => any()}.
 
 
 %% Example:
-%% cmaf_ingest_group_settings() :: #{
-%%   <<"AdditionalDestinations">> => list(additional_destinations()),
-%%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"Id3Behavior">> => list(any()),
-%%   <<"Id3NameModifier">> => string(),
-%%   <<"KlvBehavior">> => list(any()),
-%%   <<"KlvNameModifier">> => string(),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"NielsenId3NameModifier">> => string(),
-%%   <<"Scte35NameModifier">> => string(),
-%%   <<"Scte35Type">> => list(any()),
-%%   <<"SegmentLength">> => integer(),
-%%   <<"SegmentLengthUnits">> => list(any()),
-%%   <<"SendDelayMs">> => integer(),
-%%   <<"TimedMetadataId3Frame">> => list(any()),
-%%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"TimedMetadataPassthrough">> => list(any())
-%% }
--type cmaf_ingest_group_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_vpc_request() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type input_vpc_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_output_settings() :: #{
-%%   <<"H265PackagingType">> => list(any()),
-%%   <<"HlsSettings">> => hls_settings(),
-%%   <<"NameModifier">> => string(),
-%%   <<"SegmentModifier">> => string()
-%% }
--type hls_output_settings() :: #{binary() => any()}.
-
-%% Example:
-%% accept_input_device_transfer_response() :: #{}
--type accept_input_device_transfer_response() :: #{}.
-
-
-%% Example:
-%% update_event_bridge_rule_template_group_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type update_event_bridge_rule_template_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_node_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()),
-%%   <<"ClusterId">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
+%% caption_selector() :: #{
+%%   <<"LanguageCode">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
-%%   <<"State">> => list(any())
+%%   <<"SelectorSettings">> => caption_selector_settings()
 %% }
--type delete_node_response() :: #{binary() => any()}.
+-type caption_selector() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_device_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"DeviceSettingsSyncState">> => list(any()),
-%%   <<"DeviceUpdateStatus">> => list(any()),
-%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
-%%   <<"Id">> => string(),
-%%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NetworkSettings">> => input_device_network_settings(),
-%%   <<"OutputType">> => list(any()),
-%%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
+%% caption_selector_settings() :: #{
+%%   <<"AncillarySourceSettings">> => ancillary_source_settings(),
+%%   <<"AribSourceSettings">> => arib_source_settings(),
+%%   <<"DvbSubSourceSettings">> => dvb_sub_source_settings(),
+%%   <<"EmbeddedSourceSettings">> => embedded_source_settings(),
+%%   <<"Scte20SourceSettings">> => scte20_source_settings(),
+%%   <<"Scte27SourceSettings">> => scte27_source_settings(),
+%%   <<"SmartSubtitleSourceSettings">> => smart_subtitle_source_settings(),
+%%   <<"TeletextSourceSettings">> => teletext_source_settings()
 %% }
--type input_device_summary() :: #{binary() => any()}.
+-type caption_selector_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% ac3_settings() :: #{
-%%   <<"AttenuationControl">> => list(any()),
-%%   <<"Bitrate">> => float(),
-%%   <<"BitstreamMode">> => list(any()),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"Dialnorm">> => integer(),
-%%   <<"DrcProfile">> => list(any()),
-%%   <<"LfeFilter">> => list(any()),
-%%   <<"MetadataControl">> => list(any())
+%% cdi_input_specification() :: #{
+%%   <<"Resolution">> => list(any())
 %% }
--type ac3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program_settings() :: #{
-%%   <<"PreferredChannelPipeline">> => list(any()),
-%%   <<"ProgramNumber">> => integer(),
-%%   <<"ServiceDescriptor">> => multiplex_program_service_descriptor(),
-%%   <<"VideoSettings">> => multiplex_video_settings()
-%% }
--type multiplex_program_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_package_v2_destination_settings() :: #{
-%%   <<"AudioGroupId">> => string(),
-%%   <<"AudioRenditionSets">> => string(),
-%%   <<"HlsAutoSelect">> => list(any()),
-%%   <<"HlsDefault">> => list(any())
-%% }
--type media_package_v2_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% color_correction_settings() :: #{
-%%   <<"GlobalColorCorrections">> => list(color_correction())
-%% }
--type color_correction_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% sdi_source_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type sdi_source_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_input_security_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule())
-%% }
--type describe_input_security_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reservation_request() :: #{}
--type describe_reservation_request() :: #{}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_node_request() :: #{}
--type delete_node_request() :: #{}.
-
-
-%% Example:
-%% list_cloud_watch_alarm_templates_response() :: #{
-%%   <<"CloudWatchAlarmTemplates">> => list(cloud_watch_alarm_template_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cloud_watch_alarm_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_bridge_rule_template_groups_response() :: #{
-%%   <<"EventBridgeRuleTemplateGroups">> => list(event_bridge_rule_template_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_bridge_rule_template_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_input_device_transfer_response() :: #{}
--type reject_input_device_transfer_response() :: #{}.
-
-
-%% Example:
-%% embedded_source_settings() :: #{
-%%   <<"Convert608To708">> => list(any()),
-%%   <<"Scte20Detection">> => list(any()),
-%%   <<"Source608ChannelNumber">> => integer(),
-%%   <<"Source608TrackNumber">> => integer()
-%% }
--type embedded_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multiplex_response() :: #{
-%%   <<"Multiplex">> => multiplex()
-%% }
--type create_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_bridge_rule_template_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SignalMapIdentifier">> => string()
-%% }
--type list_event_bridge_rule_template_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_resource() :: #{
-%%   <<"Destinations">> => list(media_resource_neighbor()),
-%%   <<"Name">> => string(),
-%%   <<"Sources">> => list(media_resource_neighbor())
-%% }
--type media_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_watch_alarm_template_request() :: #{
-%%   <<"ComparisonOperator">> := list(any()),
-%%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationPeriods">> := integer(),
-%%   <<"GroupIdentifier">> := string(),
-%%   <<"MetricName">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Period">> := integer(),
-%%   <<"RequestId">> => string(),
-%%   <<"Statistic">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetResourceType">> := list(any()),
-%%   <<"Threshold">> := float(),
-%%   <<"TreatMissingData">> := list(any())
-%% }
--type create_cloud_watch_alarm_template_request() :: #{binary() => any()}.
+-type cdi_input_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4887,23 +947,2239 @@
 %% }
 -type channel() :: #{binary() => any()}.
 
-%% Example:
-%% list_versions_request() :: #{}
--type list_versions_request() :: #{}.
-
 
 %% Example:
-%% caption_description() :: #{
-%%   <<"Accessibility">> => list(any()),
-%%   <<"CaptionDashRoles">> => list(list(any())()),
-%%   <<"CaptionSelectorName">> => string(),
-%%   <<"DestinationSettings">> => caption_destination_settings(),
-%%   <<"DvbDashAccessibility">> => list(any()),
-%%   <<"LanguageCode">> => string(),
-%%   <<"LanguageDescription">> => string(),
-%%   <<"Name">> => string()
+%% channel_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PipelineId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
 %% }
--type caption_description() :: #{binary() => any()}.
+-type channel_alert() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_egress_endpoint() :: #{
+%%   <<"SourceIp">> => string()
+%% }
+-type channel_egress_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_engine_version_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type channel_engine_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_engine_version_response() :: #{
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Version">> => string()
+%% }
+-type channel_engine_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_summary() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
+%%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_status(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UsedChannelEngineVersions">> => list(channel_engine_version_response()),
+%%   <<"Vpc">> => vpc_output_settings_description()
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% claim_device_request() :: #{
+%%   <<"Id">> => string()
+%% }
+-type claim_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% claim_device_response() :: #{}
+-type claim_device_response() :: #{}.
+
+
+%% Example:
+%% cloud_watch_alarm_template_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateCount">> => integer()
+%% }
+-type cloud_watch_alarm_template_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_alarm_template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type cloud_watch_alarm_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type cluster_alert() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_network_settings() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping())
+%% }
+-type cluster_network_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_network_settings_create_request() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping_create_request())
+%% }
+-type cluster_network_settings_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_network_settings_update_request() :: #{
+%%   <<"DefaultRoute">> => string(),
+%%   <<"InterfaceMappings">> => list(interface_mapping_update_request())
+%% }
+-type cluster_network_settings_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_ingest_caption_language_mapping() :: #{
+%%   <<"CaptionChannel">> => integer(),
+%%   <<"LanguageCode">> => string()
+%% }
+-type cmaf_ingest_caption_language_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_ingest_group_settings() :: #{
+%%   <<"AdditionalDestinations">> => list(additional_destinations()),
+%%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"Id3Behavior">> => list(any()),
+%%   <<"Id3NameModifier">> => string(),
+%%   <<"KlvBehavior">> => list(any()),
+%%   <<"KlvNameModifier">> => string(),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"NielsenId3NameModifier">> => string(),
+%%   <<"Scte35NameModifier">> => string(),
+%%   <<"Scte35Type">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentLengthUnits">> => list(any()),
+%%   <<"SendDelayMs">> => integer(),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer(),
+%%   <<"TimedMetadataPassthrough">> => list(any())
+%% }
+-type cmaf_ingest_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_ingest_output_settings() :: #{
+%%   <<"NameModifier">> => string()
+%% }
+-type cmaf_ingest_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% color_correction() :: #{
+%%   <<"InputColorSpace">> => list(any()),
+%%   <<"OutputColorSpace">> => list(any()),
+%%   <<"Uri">> => string()
+%% }
+-type color_correction() :: #{binary() => any()}.
+
+
+%% Example:
+%% color_correction_settings() :: #{
+%%   <<"GlobalColorCorrections">> => list(color_correction())
+%% }
+-type color_correction_settings() :: #{binary() => any()}.
+
+%% Example:
+%% color_space_passthrough_settings() :: #{}
+-type color_space_passthrough_settings() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_placement_group_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_placement_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type create_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"AnywhereSettings">> => anywhere_settings(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"InferenceSettings">> => inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_create_settings(),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Reserved">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Vpc">> => vpc_output_settings()
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"Channel">> => channel()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_request() :: #{
+%%   <<"ComparisonOperator">> := list(any()),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> := integer(),
+%%   <<"GroupIdentifier">> := string(),
+%%   <<"MetricName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Period">> := integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"Statistic">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> := list(any()),
+%%   <<"Threshold">> := float(),
+%%   <<"TreatMissingData">> := list(any())
+%% }
+-type create_cloud_watch_alarm_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_watch_alarm_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type create_cloud_watch_alarm_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"ClusterType">> => list(any()),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings_create_request(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
+%%   <<"EventType">> := list(any()),
+%%   <<"GroupIdentifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_bridge_rule_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_input_request() :: #{
+%%   <<"Destinations">> => list(input_destination_request()),
+%%   <<"InputDevices">> => list(input_device_settings()),
+%%   <<"InputNetworkLocation">> => list(any()),
+%%   <<"InputSecurityGroups">> => list(string()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
+%%   <<"MulticastSettings">> => multicast_settings_create_request(),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_settings(),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
+%%   <<"Sources">> => list(input_source_request()),
+%%   <<"SrtSettings">> => srt_settings_request(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"Vpc">> => input_vpc_request()
+%% }
+-type create_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_input_response() :: #{
+%%   <<"Input">> => input()
+%% }
+-type create_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_input_security_group_request() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
+%% }
+-type create_input_security_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_input_security_group_response() :: #{
+%%   <<"SecurityGroup">> => input_security_group()
+%% }
+-type create_input_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multiplex_program_request() :: #{
+%%   <<"MultiplexProgramSettings">> := multiplex_program_settings(),
+%%   <<"ProgramName">> := string(),
+%%   <<"RequestId">> := string()
+%% }
+-type create_multiplex_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multiplex_program_response() :: #{
+%%   <<"MultiplexProgram">> => multiplex_program()
+%% }
+-type create_multiplex_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multiplex_request() :: #{
+%%   <<"AvailabilityZones">> := list(string()),
+%%   <<"MultiplexSettings">> := multiplex_settings(),
+%%   <<"Name">> := string(),
+%%   <<"RequestId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_multiplex_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multiplex_response() :: #{
+%%   <<"Multiplex">> => multiplex()
+%% }
+-type create_multiplex_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_request() :: #{
+%%   <<"IpPools">> => list(ip_pool_create_request()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Routes">> => list(route_create_request()),
+%%   <<"Tags">> => map()
+%% }
+-type create_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()),
+%%   <<"State">> => list(any())
+%% }
+-type create_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_registration_script_request() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"RequestId">> => string(),
+%%   <<"Role">> => list(any())
+%% }
+-type create_node_registration_script_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_registration_script_response() :: #{
+%%   <<"NodeRegistrationScript">> => string()
+%% }
+-type create_node_registration_script_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping_create_request()),
+%%   <<"RequestId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_node_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type create_node_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_partner_input_request() :: #{
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_partner_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_partner_input_response() :: #{
+%%   <<"Input">> => input()
+%% }
+-type create_partner_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sdi_source_request() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type create_sdi_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type create_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_signal_map_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> := string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_signal_map_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_signal_map_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_signal_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tags_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type create_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_placement_group_request() :: #{}
+-type delete_channel_placement_group_request() :: #{}.
+
+
+%% Example:
+%% delete_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_channel_placement_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_status(),
+%%   <<"Name">> => string(),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Vpc">> => vpc_output_settings_description()
+%% }
+-type delete_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cloud_watch_alarm_template_group_request() :: #{}
+-type delete_cloud_watch_alarm_template_group_request() :: #{}.
+
+%% Example:
+%% delete_cloud_watch_alarm_template_request() :: #{}
+-type delete_cloud_watch_alarm_template_request() :: #{}.
+
+%% Example:
+%% delete_cluster_request() :: #{}
+-type delete_cluster_request() :: #{}.
+
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_bridge_rule_template_group_request() :: #{}
+-type delete_event_bridge_rule_template_group_request() :: #{}.
+
+%% Example:
+%% delete_event_bridge_rule_template_request() :: #{}
+-type delete_event_bridge_rule_template_request() :: #{}.
+
+%% Example:
+%% delete_input_request() :: #{}
+-type delete_input_request() :: #{}.
+
+%% Example:
+%% delete_input_response() :: #{}
+-type delete_input_response() :: #{}.
+
+%% Example:
+%% delete_input_security_group_request() :: #{}
+-type delete_input_security_group_request() :: #{}.
+
+%% Example:
+%% delete_input_security_group_response() :: #{}
+-type delete_input_security_group_response() :: #{}.
+
+%% Example:
+%% delete_multiplex_program_request() :: #{}
+-type delete_multiplex_program_request() :: #{}.
+
+
+%% Example:
+%% delete_multiplex_program_response() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
+%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
+%%   <<"ProgramName">> => string()
+%% }
+-type delete_multiplex_program_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_multiplex_request() :: #{}
+-type delete_multiplex_request() :: #{}.
+
+
+%% Example:
+%% delete_multiplex_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type delete_multiplex_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_request() :: #{}
+-type delete_network_request() :: #{}.
+
+
+%% Example:
+%% delete_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_node_request() :: #{}
+-type delete_node_request() :: #{}.
+
+
+%% Example:
+%% delete_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type delete_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_reservation_request() :: #{}
+-type delete_reservation_request() :: #{}.
+
+
+%% Example:
+%% delete_reservation_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"End">> => string(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"OfferingDescription">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"OfferingType">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"RenewalSettings">> => renewal_settings(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ResourceSpecification">> => reservation_resource_specification(),
+%%   <<"Start">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type delete_reservation_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schedule_request() :: #{}
+-type delete_schedule_request() :: #{}.
+
+%% Example:
+%% delete_schedule_response() :: #{}
+-type delete_schedule_response() :: #{}.
+
+%% Example:
+%% delete_sdi_source_request() :: #{}
+-type delete_sdi_source_request() :: #{}.
+
+
+%% Example:
+%% delete_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type delete_sdi_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signal_map_request() :: #{}
+-type delete_signal_map_request() :: #{}.
+
+
+%% Example:
+%% delete_tags_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type delete_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_configuration_request() :: #{}
+-type describe_account_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_account_configuration_response() :: #{
+%%   <<"AccountConfiguration">> => account_configuration()
+%% }
+-type describe_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_anywhere_settings() :: #{
+%%   <<"ChannelPlacementGroupId">> => string(),
+%%   <<"ClusterId">> => string()
+%% }
+-type describe_anywhere_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_placement_group_request() :: #{}
+-type describe_channel_placement_group_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_placement_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_channel_placement_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_request() :: #{}
+-type describe_channel_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_status(),
+%%   <<"Name">> => string(),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Vpc">> => vpc_output_settings_description()
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{}
+-type describe_cluster_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_cluster_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_cluster_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => cluster_network_settings(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_cluster_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_follower_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any()),
+%%   <<"PrimaryChannelArn">> => string()
+%% }
+-type describe_follower_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_inference_settings() :: #{
+%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
+%%   <<"FeedArn">> => string()
+%% }
+-type describe_inference_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_input_device_request() :: #{}
+-type describe_input_device_request() :: #{}.
+
+
+%% Example:
+%% describe_input_device_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"DeviceSettingsSyncState">> => list(any()),
+%%   <<"DeviceUpdateStatus">> => list(any()),
+%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
+%%   <<"Id">> => string(),
+%%   <<"MacAddress">> => string(),
+%%   <<"MedialiveInputArns">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => input_device_network_settings(),
+%%   <<"OutputType">> => list(any()),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
+%% }
+-type describe_input_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_input_device_thumbnail_request() :: #{
+%%   <<"Accept">> := list(any())
+%% }
+-type describe_input_device_thumbnail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_input_device_thumbnail_response() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer()
+%% }
+-type describe_input_device_thumbnail_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_input_request() :: #{}
+-type describe_input_request() :: #{}.
+
+
+%% Example:
+%% describe_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachedChannels">> => list(string()),
+%%   <<"Destinations">> => list(input_destination()),
+%%   <<"Id">> => string(),
+%%   <<"InputClass">> => list(any()),
+%%   <<"InputDevices">> => list(input_device_settings()),
+%%   <<"InputNetworkLocation">> => list(any()),
+%%   <<"InputPartnerIds">> => list(string()),
+%%   <<"InputSourceType">> => list(any()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
+%%   <<"MulticastSettings">> => multicast_settings(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_input_settings(),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
+%%   <<"Sources">> => list(input_source()),
+%%   <<"SrtSettings">> => srt_settings(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_input_security_group_request() :: #{}
+-type describe_input_security_group_request() :: #{}.
+
+
+%% Example:
+%% describe_input_security_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"WhitelistRules">> => list(input_whitelist_rule())
+%% }
+-type describe_input_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_linked_channel_settings() :: #{
+%%   <<"FollowerChannelSettings">> => describe_follower_channel_settings(),
+%%   <<"PrimaryChannelSettings">> => describe_primary_channel_settings()
+%% }
+-type describe_linked_channel_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_multiplex_program_request() :: #{}
+-type describe_multiplex_program_request() :: #{}.
+
+
+%% Example:
+%% describe_multiplex_program_response() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
+%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
+%%   <<"ProgramName">> => string()
+%% }
+-type describe_multiplex_program_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_multiplex_request() :: #{}
+-type describe_multiplex_request() :: #{}.
+
+
+%% Example:
+%% describe_multiplex_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type describe_multiplex_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_network_request() :: #{}
+-type describe_network_request() :: #{}.
+
+
+%% Example:
+%% describe_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_network_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_network_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_node_request() :: #{}
+-type describe_node_request() :: #{}.
+
+
+%% Example:
+%% describe_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_node_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_node_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"ManagedInstanceId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_node_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_offering_request() :: #{}
+-type describe_offering_request() :: #{}.
+
+
+%% Example:
+%% describe_offering_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"FixedPrice">> => float(),
+%%   <<"OfferingDescription">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"OfferingType">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"ResourceSpecification">> => reservation_resource_specification(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type describe_offering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_primary_channel_settings() :: #{
+%%   <<"FollowingChannelArns">> => list(string()),
+%%   <<"LinkedChannelType">> => list(any())
+%% }
+-type describe_primary_channel_settings() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reservation_request() :: #{}
+-type describe_reservation_request() :: #{}.
+
+
+%% Example:
+%% describe_reservation_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"End">> => string(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"OfferingDescription">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"OfferingType">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"RenewalSettings">> => renewal_settings(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ResourceSpecification">> => reservation_resource_specification(),
+%%   <<"Start">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type describe_reservation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_schedule_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_schedule_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduleActions">> => list(schedule_action())
+%% }
+-type describe_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sdi_source_request() :: #{}
+-type describe_sdi_source_request() :: #{}.
+
+
+%% Example:
+%% describe_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type describe_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_thumbnails_request() :: #{
+%%   <<"PipelineId">> := string(),
+%%   <<"ThumbnailType">> := string()
+%% }
+-type describe_thumbnails_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_thumbnails_response() :: #{
+%%   <<"ThumbnailDetails">> => list(thumbnail_detail())
+%% }
+-type describe_thumbnails_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disabled_locking_settings() :: #{
+%%   <<"CustomEpoch">> => string()
+%% }
+-type disabled_locking_settings() :: #{binary() => any()}.
+
+%% Example:
+%% dolby_vision81_settings() :: #{}
+-type dolby_vision81_settings() :: #{}.
+
+
+%% Example:
+%% dvb_nit_settings() :: #{
+%%   <<"NetworkId">> => integer(),
+%%   <<"NetworkName">> => string(),
+%%   <<"RepInterval">> => integer()
+%% }
+-type dvb_nit_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_sdt_settings() :: #{
+%%   <<"OutputSdt">> => list(any()),
+%%   <<"RepInterval">> => integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceProviderName">> => string()
+%% }
+-type dvb_sdt_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_sub_destination_settings() :: #{
+%%   <<"Alignment">> => list(any()),
+%%   <<"BackgroundColor">> => list(any()),
+%%   <<"BackgroundOpacity">> => integer(),
+%%   <<"Font">> => input_location(),
+%%   <<"FontColor">> => list(any()),
+%%   <<"FontOpacity">> => integer(),
+%%   <<"FontResolution">> => integer(),
+%%   <<"FontSize">> => string(),
+%%   <<"OutlineColor">> => list(any()),
+%%   <<"OutlineSize">> => integer(),
+%%   <<"ShadowColor">> => list(any()),
+%%   <<"ShadowOpacity">> => integer(),
+%%   <<"ShadowXOffset">> => integer(),
+%%   <<"ShadowYOffset">> => integer(),
+%%   <<"SubtitleRows">> => list(any()),
+%%   <<"TeletextGridControl">> => list(any()),
+%%   <<"XPosition">> => integer(),
+%%   <<"YPosition">> => integer()
+%% }
+-type dvb_sub_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_sub_source_settings() :: #{
+%%   <<"OcrLanguage">> => list(any()),
+%%   <<"Pid">> => integer()
+%% }
+-type dvb_sub_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dvb_tdt_settings() :: #{
+%%   <<"RepInterval">> => integer()
+%% }
+-type dvb_tdt_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% eac3_atmos_settings() :: #{
+%%   <<"Bitrate">> => float(),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"Dialnorm">> => integer(),
+%%   <<"DrcLine">> => list(any()),
+%%   <<"DrcRf">> => list(any()),
+%%   <<"HeightTrim">> => float(),
+%%   <<"SurroundTrim">> => float()
+%% }
+-type eac3_atmos_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% eac3_settings() :: #{
+%%   <<"AttenuationControl">> => list(any()),
+%%   <<"Bitrate">> => float(),
+%%   <<"BitstreamMode">> => list(any()),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"DcFilter">> => list(any()),
+%%   <<"Dialnorm">> => integer(),
+%%   <<"DrcLine">> => list(any()),
+%%   <<"DrcRf">> => list(any()),
+%%   <<"LfeControl">> => list(any()),
+%%   <<"LfeFilter">> => list(any()),
+%%   <<"LoRoCenterMixLevel">> => float(),
+%%   <<"LoRoSurroundMixLevel">> => float(),
+%%   <<"LtRtCenterMixLevel">> => float(),
+%%   <<"LtRtSurroundMixLevel">> => float(),
+%%   <<"MetadataControl">> => list(any()),
+%%   <<"PassthroughControl">> => list(any()),
+%%   <<"PhaseControl">> => list(any()),
+%%   <<"StereoDownmix">> => list(any()),
+%%   <<"SurroundExMode">> => list(any()),
+%%   <<"SurroundMode">> => list(any())
+%% }
+-type eac3_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebu_tt_d_destination_settings() :: #{
+%%   <<"CopyrightHolder">> => string(),
+%%   <<"DefaultFontSize">> => integer(),
+%%   <<"DefaultLineHeight">> => integer(),
+%%   <<"FillLineGap">> => list(any()),
+%%   <<"FontFamily">> => string(),
+%%   <<"StyleControl">> => list(any())
+%% }
+-type ebu_tt_d_destination_settings() :: #{binary() => any()}.
+
+%% Example:
+%% embedded_destination_settings() :: #{}
+-type embedded_destination_settings() :: #{}.
+
+%% Example:
+%% embedded_plus_scte20_destination_settings() :: #{}
+-type embedded_plus_scte20_destination_settings() :: #{}.
+
+
+%% Example:
+%% embedded_source_settings() :: #{
+%%   <<"Convert608To708">> => list(any()),
+%%   <<"Scte20Detection">> => list(any()),
+%%   <<"Source608ChannelNumber">> => integer(),
+%%   <<"Source608TrackNumber">> => integer()
+%% }
+-type embedded_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoder_settings() :: #{
+%%   <<"AudioDescriptions">> => list(audio_description()),
+%%   <<"AvailBlanking">> => avail_blanking(),
+%%   <<"AvailConfiguration">> => avail_configuration(),
+%%   <<"BlackoutSlate">> => blackout_slate(),
+%%   <<"CaptionDescriptions">> => list(caption_description()),
+%%   <<"ColorCorrectionSettings">> => color_correction_settings(),
+%%   <<"FeatureActivations">> => feature_activations(),
+%%   <<"GlobalConfiguration">> => global_configuration(),
+%%   <<"MotionGraphicsConfiguration">> => motion_graphics_configuration(),
+%%   <<"NielsenConfiguration">> => nielsen_configuration(),
+%%   <<"OutputGroups">> => list(output_group()),
+%%   <<"ThumbnailConfiguration">> => thumbnail_configuration(),
+%%   <<"TimecodeConfig">> => timecode_config(),
+%%   <<"VideoDescriptions">> => list(video_description())
+%% }
+-type encoder_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% epoch_locking_settings() :: #{
+%%   <<"CustomEpoch">> => string(),
+%%   <<"JamSyncTime">> => string()
+%% }
+-type epoch_locking_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% esam() :: #{
+%%   <<"AcquisitionPointId">> => string(),
+%%   <<"AdAvailOffset">> => integer(),
+%%   <<"PasswordParam">> => string(),
+%%   <<"PoisEndpoint">> => string(),
+%%   <<"Username">> => string(),
+%%   <<"ZoneIdentity">> => string()
+%% }
+-type esam() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_rule_template_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateCount">> => integer()
+%% }
+-type event_bridge_rule_template_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_rule_template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargetCount">> => integer(),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type event_bridge_rule_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_rule_template_target() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type event_bridge_rule_template_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_condition() :: #{
+%%   <<"FailoverConditionSettings">> => failover_condition_settings()
+%% }
+-type failover_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_condition_settings() :: #{
+%%   <<"AudioSilenceSettings">> => audio_silence_failover_settings(),
+%%   <<"InputLossSettings">> => input_loss_failover_settings(),
+%%   <<"VideoBlackSettings">> => video_black_failover_settings()
+%% }
+-type failover_condition_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% feature_activations() :: #{
+%%   <<"InputPrepareScheduleActions">> => list(any()),
+%%   <<"OutputStaticImageOverlayScheduleActions">> => list(any())
+%% }
+-type feature_activations() :: #{binary() => any()}.
+
+
+%% Example:
+%% fec_output_settings() :: #{
+%%   <<"ColumnDepth">> => integer(),
+%%   <<"IncludeFec">> => list(any()),
+%%   <<"RowLength">> => integer()
+%% }
+-type fec_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixed_mode_schedule_action_start_settings() :: #{
+%%   <<"Time">> => string()
+%% }
+-type fixed_mode_schedule_action_start_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% fmp4_hls_settings() :: #{
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"TimedMetadataBehavior">> => list(any())
+%% }
+-type fmp4_hls_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% follow_mode_schedule_action_start_settings() :: #{
+%%   <<"FollowPoint">> => list(any()),
+%%   <<"ReferenceActionName">> => string()
+%% }
+-type follow_mode_schedule_action_start_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% follower_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any()),
+%%   <<"PrimaryChannelArn">> => string()
+%% }
+-type follower_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_capture_cdn_settings() :: #{
+%%   <<"FrameCaptureS3Settings">> => frame_capture_s3_settings()
+%% }
+-type frame_capture_cdn_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_capture_group_settings() :: #{
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"FrameCaptureCdnSettings">> => frame_capture_cdn_settings()
+%% }
+-type frame_capture_group_settings() :: #{binary() => any()}.
+
+%% Example:
+%% frame_capture_hls_settings() :: #{}
+-type frame_capture_hls_settings() :: #{}.
+
+
+%% Example:
+%% frame_capture_output_settings() :: #{
+%%   <<"NameModifier">> => string()
+%% }
+-type frame_capture_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_capture_s3_settings() :: #{
+%%   <<"CannedAcl">> => list(any())
+%% }
+-type frame_capture_s3_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_capture_settings() :: #{
+%%   <<"CaptureInterval">> => integer(),
+%%   <<"CaptureIntervalUnits">> => list(any()),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings()
+%% }
+-type frame_capture_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type gateway_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_watch_alarm_template_group_request() :: #{}
+-type get_cloud_watch_alarm_template_group_request() :: #{}.
+
+
+%% Example:
+%% get_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_watch_alarm_template_request() :: #{}
+-type get_cloud_watch_alarm_template_request() :: #{}.
+
+
+%% Example:
+%% get_cloud_watch_alarm_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type get_cloud_watch_alarm_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_bridge_rule_template_group_request() :: #{}
+-type get_event_bridge_rule_template_group_request() :: #{}.
+
+
+%% Example:
+%% get_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_bridge_rule_template_request() :: #{}
+-type get_event_bridge_rule_template_request() :: #{}.
+
+
+%% Example:
+%% get_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_bridge_rule_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_signal_map_request() :: #{}
+-type get_signal_map_request() :: #{}.
+
+
+%% Example:
+%% get_signal_map_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
+%%   <<"FailedMediaResourceMap">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_signal_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% global_configuration() :: #{
+%%   <<"InitialAudioGain">> => integer(),
+%%   <<"InputEndAction">> => list(any()),
+%%   <<"InputLossBehavior">> => input_loss_behavior(),
+%%   <<"OutputLockingMode">> => list(any()),
+%%   <<"OutputLockingSettings">> => output_locking_settings(),
+%%   <<"OutputTimingSource">> => list(any()),
+%%   <<"SupportLowFramerateInputs">> => list(any())
+%% }
+-type global_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% h264_color_space_settings() :: #{
+%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
+%%   <<"Rec601Settings">> => rec601_settings(),
+%%   <<"Rec709Settings">> => rec709_settings()
+%% }
+-type h264_color_space_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h264_filter_settings() :: #{
+%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
+%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
+%% }
+-type h264_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h264_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"BufFillPct">> => integer(),
+%%   <<"BufSize">> => integer(),
+%%   <<"ColorMetadata">> => list(any()),
+%%   <<"ColorSpaceSettings">> => h264_color_space_settings(),
+%%   <<"EntropyEncoding">> => list(any()),
+%%   <<"FilterSettings">> => h264_filter_settings(),
+%%   <<"FixedAfd">> => list(any()),
+%%   <<"FlickerAq">> => list(any()),
+%%   <<"ForceFieldPictures">> => list(any()),
+%%   <<"FramerateControl">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopNumBFrames">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"Level">> => list(any()),
+%%   <<"LookAheadRateControl">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"MinQp">> => integer(),
+%%   <<"NumRefFrames">> => integer(),
+%%   <<"ParControl">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"Profile">> => list(any()),
+%%   <<"QualityLevel">> => list(any()),
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"ScanType">> => list(any()),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"Softness">> => integer(),
+%%   <<"SpatialAq">> => list(any()),
+%%   <<"SubgopLength">> => list(any()),
+%%   <<"Syntax">> => list(any()),
+%%   <<"TemporalAq">> => list(any()),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
+%%   <<"TimecodeInsertion">> => list(any())
+%% }
+-type h264_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h265_color_space_settings() :: #{
+%%   <<"ColorSpacePassthroughSettings">> => color_space_passthrough_settings(),
+%%   <<"DolbyVision81Settings">> => dolby_vision81_settings(),
+%%   <<"Hdr10Settings">> => hdr10_settings(),
+%%   <<"Hlg2020Settings">> => hlg2020_settings(),
+%%   <<"Rec601Settings">> => rec601_settings(),
+%%   <<"Rec709Settings">> => rec709_settings()
+%% }
+-type h265_color_space_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h265_filter_settings() :: #{
+%%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
+%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
+%% }
+-type h265_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% h265_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"AlternativeTransferFunction">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"BufSize">> => integer(),
+%%   <<"ColorMetadata">> => list(any()),
+%%   <<"ColorSpaceSettings">> => h265_color_space_settings(),
+%%   <<"Deblocking">> => list(any()),
+%%   <<"FilterSettings">> => h265_filter_settings(),
+%%   <<"FixedAfd">> => list(any()),
+%%   <<"FlickerAq">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopBReference">> => list(any()),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopNumBFrames">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"Level">> => list(any()),
+%%   <<"LookAheadRateControl">> => list(any()),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MinBitrate">> => integer(),
+%%   <<"MinIInterval">> => integer(),
+%%   <<"MinQp">> => integer(),
+%%   <<"MvOverPictureBoundaries">> => list(any()),
+%%   <<"MvTemporalPredictor">> => list(any()),
+%%   <<"ParDenominator">> => integer(),
+%%   <<"ParNumerator">> => integer(),
+%%   <<"Profile">> => list(any()),
+%%   <<"QvbrQualityLevel">> => integer(),
+%%   <<"RateControlMode">> => list(any()),
+%%   <<"ScanType">> => list(any()),
+%%   <<"SceneChangeDetect">> => list(any()),
+%%   <<"Slices">> => integer(),
+%%   <<"SubgopLength">> => list(any()),
+%%   <<"Tier">> => list(any()),
+%%   <<"TileHeight">> => integer(),
+%%   <<"TilePadding">> => list(any()),
+%%   <<"TileWidth">> => integer(),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
+%%   <<"TimecodeInsertion">> => list(any()),
+%%   <<"TreeblockSize">> => list(any())
+%% }
+-type h265_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hdr10_settings() :: #{
+%%   <<"MaxCll">> => integer(),
+%%   <<"MaxFall">> => integer()
+%% }
+-type hdr10_settings() :: #{binary() => any()}.
+
+%% Example:
+%% hlg2020_settings() :: #{}
+-type hlg2020_settings() :: #{}.
+
+
+%% Example:
+%% hls_akamai_settings() :: #{
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"FilecacheDuration">> => integer(),
+%%   <<"HttpTransferMode">> => list(any()),
+%%   <<"NumRetries">> => integer(),
+%%   <<"RestartDelay">> => integer(),
+%%   <<"Salt">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type hls_akamai_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_basic_put_settings() :: #{
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"FilecacheDuration">> => integer(),
+%%   <<"NumRetries">> => integer(),
+%%   <<"RestartDelay">> => integer()
+%% }
+-type hls_basic_put_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_cdn_settings() :: #{
+%%   <<"HlsAkamaiSettings">> => hls_akamai_settings(),
+%%   <<"HlsBasicPutSettings">> => hls_basic_put_settings(),
+%%   <<"HlsMediaStoreSettings">> => hls_media_store_settings(),
+%%   <<"HlsS3Settings">> => hls_s3_settings(),
+%%   <<"HlsWebdavSettings">> => hls_webdav_settings()
+%% }
+-type hls_cdn_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_group_settings() :: #{
+%%   <<"AdMarkers">> => list(list(any())()),
+%%   <<"BaseUrlContent">> => string(),
+%%   <<"BaseUrlContent1">> => string(),
+%%   <<"BaseUrlManifest">> => string(),
+%%   <<"BaseUrlManifest1">> => string(),
+%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
+%%   <<"CaptionLanguageSetting">> => list(any()),
+%%   <<"ClientCache">> => list(any()),
+%%   <<"CodecSpecification">> => list(any()),
+%%   <<"ConstantIv">> => string(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"DirectoryStructure">> => list(any()),
+%%   <<"DiscontinuityTags">> => list(any()),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"HlsCdnSettings">> => hls_cdn_settings(),
+%%   <<"HlsId3SegmentTagging">> => list(any()),
+%%   <<"IFrameOnlyPlaylists">> => list(any()),
+%%   <<"IncompleteSegmentBehavior">> => list(any()),
+%%   <<"IndexNSegments">> => integer(),
+%%   <<"InputLossAction">> => list(any()),
+%%   <<"IvInManifest">> => list(any()),
+%%   <<"IvSource">> => list(any()),
+%%   <<"KeepSegments">> => integer(),
+%%   <<"KeyFormat">> => string(),
+%%   <<"KeyFormatVersions">> => string(),
+%%   <<"KeyProviderSettings">> => key_provider_settings(),
+%%   <<"ManifestCompression">> => list(any()),
+%%   <<"ManifestDurationFormat">> => list(any()),
+%%   <<"MinSegmentLength">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"OutputSelection">> => list(any()),
+%%   <<"ProgramDateTime">> => list(any()),
+%%   <<"ProgramDateTimeClock">> => list(any()),
+%%   <<"ProgramDateTimePeriod">> => integer(),
+%%   <<"RedundantManifest">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentationMode">> => list(any()),
+%%   <<"SegmentsPerSubdirectory">> => integer(),
+%%   <<"StreamInfResolution">> => list(any()),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer(),
+%%   <<"TimestampDeltaMilliseconds">> => integer(),
+%%   <<"TsFileMode">> => list(any())
+%% }
+-type hls_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_id3_segment_tagging_schedule_action_settings() :: #{
+%%   <<"Id3">> => string(),
+%%   <<"Tag">> => string()
+%% }
+-type hls_id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_input_settings() :: #{
+%%   <<"Bandwidth">> => integer(),
+%%   <<"BufferSegments">> => integer(),
+%%   <<"Retries">> => integer(),
+%%   <<"RetryInterval">> => integer(),
+%%   <<"Scte35Source">> => list(any())
+%% }
+-type hls_input_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_media_store_settings() :: #{
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"FilecacheDuration">> => integer(),
+%%   <<"MediaStoreStorageClass">> => list(any()),
+%%   <<"NumRetries">> => integer(),
+%%   <<"RestartDelay">> => integer()
+%% }
+-type hls_media_store_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_output_settings() :: #{
+%%   <<"H265PackagingType">> => list(any()),
+%%   <<"HlsSettings">> => hls_settings(),
+%%   <<"NameModifier">> => string(),
+%%   <<"SegmentModifier">> => string()
+%% }
+-type hls_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_s3_settings() :: #{
+%%   <<"CannedAcl">> => list(any())
+%% }
+-type hls_s3_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_settings() :: #{
+%%   <<"AudioOnlyHlsSettings">> => audio_only_hls_settings(),
+%%   <<"Fmp4HlsSettings">> => fmp4_hls_settings(),
+%%   <<"FrameCaptureHlsSettings">> => frame_capture_hls_settings(),
+%%   <<"StandardHlsSettings">> => standard_hls_settings()
+%% }
+-type hls_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_timed_metadata_schedule_action_settings() :: #{
+%%   <<"Id3">> => string()
+%% }
+-type hls_timed_metadata_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_webdav_settings() :: #{
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"FilecacheDuration">> => integer(),
+%%   <<"HttpTransferMode">> => list(any()),
+%%   <<"NumRetries">> => integer(),
+%%   <<"RestartDelay">> => integer()
+%% }
+-type hls_webdav_settings() :: #{binary() => any()}.
+
+%% Example:
+%% html_motion_graphics_settings() :: #{}
+-type html_motion_graphics_settings() :: #{}.
+
+
+%% Example:
+%% id3_segment_tagging_schedule_action_settings() :: #{
+%%   <<"Id3">> => string(),
+%%   <<"Tag">> => string()
+%% }
+-type id3_segment_tagging_schedule_action_settings() :: #{binary() => any()}.
+
+%% Example:
+%% immediate_mode_schedule_action_start_settings() :: #{}
+-type immediate_mode_schedule_action_start_settings() :: #{}.
+
+
+%% Example:
+%% inference_settings() :: #{
+%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
+%%   <<"FeedArn">> => string()
+%% }
+-type inference_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachedChannels">> => list(string()),
+%%   <<"Destinations">> => list(input_destination()),
+%%   <<"Id">> => string(),
+%%   <<"InputClass">> => list(any()),
+%%   <<"InputDevices">> => list(input_device_settings()),
+%%   <<"InputNetworkLocation">> => list(any()),
+%%   <<"InputPartnerIds">> => list(string()),
+%%   <<"InputSourceType">> => list(any()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
+%%   <<"MulticastSettings">> => multicast_settings(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RouterSettings">> => router_input_settings(),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
+%%   <<"Sources">> => list(input_source()),
+%%   <<"SrtSettings">> => srt_settings(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type input() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_attachment() :: #{
+%%   <<"AutomaticInputFailoverSettings">> => automatic_input_failover_settings(),
+%%   <<"InputAttachmentName">> => string(),
+%%   <<"InputId">> => string(),
+%%   <<"InputSettings">> => input_settings(),
+%%   <<"LogicalInterfaceNames">> => list(string())
+%% }
+-type input_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_channel_level() :: #{
+%%   <<"Gain">> => integer(),
+%%   <<"InputChannel">> => integer()
+%% }
+-type input_channel_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_clipping_settings() :: #{
+%%   <<"InputTimecodeSource">> => list(any()),
+%%   <<"StartTimecode">> => start_timecode(),
+%%   <<"StopTimecode">> => stop_timecode()
+%% }
+-type input_clipping_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_destination() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"Network">> => string(),
+%%   <<"NetworkRoutes">> => list(input_destination_route()),
+%%   <<"Port">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Vpc">> => input_destination_vpc()
+%% }
+-type input_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_destination_request() :: #{
+%%   <<"Network">> => string(),
+%%   <<"NetworkRoutes">> => list(input_request_destination_route()),
+%%   <<"StaticIpAddress">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type input_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_destination_route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type input_destination_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_destination_vpc() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"NetworkInterfaceId">> => string()
+%% }
+-type input_destination_vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_configurable_audio_channel_pair_config() :: #{
+%%   <<"Id">> => integer(),
+%%   <<"Profile">> => list(any())
+%% }
+-type input_device_configurable_audio_channel_pair_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_configurable_settings() :: #{
+%%   <<"AudioChannelPairs">> => list(input_device_configurable_audio_channel_pair_config()),
+%%   <<"Codec">> => list(any()),
+%%   <<"ConfiguredInput">> => list(any()),
+%%   <<"InputResolution">> => string(),
+%%   <<"LatencyMs">> => integer(),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MediaconnectSettings">> => input_device_media_connect_configurable_settings()
+%% }
+-type input_device_configurable_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_hd_settings() :: #{
+%%   <<"ActiveInput">> => list(any()),
+%%   <<"ConfiguredInput">> => list(any()),
+%%   <<"DeviceState">> => list(any()),
+%%   <<"Framerate">> => float(),
+%%   <<"Height">> => integer(),
+%%   <<"LatencyMs">> => integer(),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Width">> => integer()
+%% }
+-type input_device_hd_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_media_connect_configurable_settings() :: #{
+%%   <<"FlowArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SourceName">> => string()
+%% }
+-type input_device_media_connect_configurable_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4914,6 +3190,2143 @@
 %%   <<"SourceName">> => string()
 %% }
 -type input_device_media_connect_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_network_settings() :: #{
+%%   <<"DnsAddresses">> => list(string()),
+%%   <<"Gateway">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"IpScheme">> => list(any()),
+%%   <<"SubnetMask">> => string()
+%% }
+-type input_device_network_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_request() :: #{
+%%   <<"Id">> => string()
+%% }
+-type input_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_settings() :: #{
+%%   <<"Id">> => string()
+%% }
+-type input_device_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"DeviceSettingsSyncState">> => list(any()),
+%%   <<"DeviceUpdateStatus">> => list(any()),
+%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
+%%   <<"Id">> => string(),
+%%   <<"MacAddress">> => string(),
+%%   <<"MedialiveInputArns">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => input_device_network_settings(),
+%%   <<"OutputType">> => list(any()),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
+%% }
+-type input_device_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_uhd_audio_channel_pair_config() :: #{
+%%   <<"Id">> => integer(),
+%%   <<"Profile">> => list(any())
+%% }
+-type input_device_uhd_audio_channel_pair_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_device_uhd_settings() :: #{
+%%   <<"ActiveInput">> => list(any()),
+%%   <<"AudioChannelPairs">> => list(input_device_uhd_audio_channel_pair_config()),
+%%   <<"Codec">> => list(any()),
+%%   <<"ConfiguredInput">> => list(any()),
+%%   <<"DeviceState">> => list(any()),
+%%   <<"Framerate">> => float(),
+%%   <<"Height">> => integer(),
+%%   <<"InputResolution">> => string(),
+%%   <<"LatencyMs">> => integer(),
+%%   <<"MaxBitrate">> => integer(),
+%%   <<"MediaconnectSettings">> => input_device_media_connect_settings(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Width">> => integer()
+%% }
+-type input_device_uhd_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_location() :: #{
+%%   <<"PasswordParam">> => string(),
+%%   <<"Uri">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type input_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_loss_behavior() :: #{
+%%   <<"BlackFrameMsec">> => integer(),
+%%   <<"InputLossImageColor">> => string(),
+%%   <<"InputLossImageSlate">> => input_location(),
+%%   <<"InputLossImageType">> => list(any()),
+%%   <<"RepeatFrameMsec">> => integer()
+%% }
+-type input_loss_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_loss_failover_settings() :: #{
+%%   <<"InputLossThresholdMsec">> => integer()
+%% }
+-type input_loss_failover_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_prepare_schedule_action_settings() :: #{
+%%   <<"InputAttachmentNameReference">> => string(),
+%%   <<"InputClippingSettings">> => input_clipping_settings(),
+%%   <<"UrlPath">> => list(string())
+%% }
+-type input_prepare_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_request_destination_route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type input_request_destination_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_sdp_location() :: #{
+%%   <<"MediaIndex">> => integer(),
+%%   <<"SdpUrl">> => string()
+%% }
+-type input_sdp_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_security_group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"WhitelistRules">> => list(input_whitelist_rule())
+%% }
+-type input_security_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_settings() :: #{
+%%   <<"AudioSelectors">> => list(audio_selector()),
+%%   <<"CaptionSelectors">> => list(caption_selector()),
+%%   <<"DeblockFilter">> => list(any()),
+%%   <<"DenoiseFilter">> => list(any()),
+%%   <<"FilterStrength">> => integer(),
+%%   <<"InputFilter">> => list(any()),
+%%   <<"NetworkInputSettings">> => network_input_settings(),
+%%   <<"Scte35Pid">> => integer(),
+%%   <<"Smpte2038DataPreference">> => list(any()),
+%%   <<"SourceEndBehavior">> => list(any()),
+%%   <<"VideoSelector">> => video_selector()
+%% }
+-type input_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_source() :: #{
+%%   <<"PasswordParam">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_source_request() :: #{
+%%   <<"PasswordParam">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type input_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_specification() :: #{
+%%   <<"Codec">> => list(any()),
+%%   <<"MaximumBitrate">> => list(any()),
+%%   <<"Resolution">> => list(any())
+%% }
+-type input_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_switch_schedule_action_settings() :: #{
+%%   <<"InputAttachmentNameReference">> => string(),
+%%   <<"InputClippingSettings">> => input_clipping_settings(),
+%%   <<"UrlPath">> => list(string())
+%% }
+-type input_switch_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_vpc_request() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type input_vpc_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_whitelist_rule() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type input_whitelist_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_whitelist_rule_cidr() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type input_whitelist_rule_cidr() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping_create_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_mapping_update_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type interface_mapping_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_pool() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_pool_create_request() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_pool_update_request() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ip_pool_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_provider_settings() :: #{
+%%   <<"StaticKeySettings">> => static_key_settings()
+%% }
+-type key_provider_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_channel_settings() :: #{
+%%   <<"FollowerChannelSettings">> => follower_channel_settings(),
+%%   <<"PrimaryChannelSettings">> => primary_channel_settings()
+%% }
+-type linked_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_response() :: #{
+%%   <<"Alerts">> => list(channel_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_placement_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_placement_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_placement_groups_response() :: #{
+%%   <<"ChannelPlacementGroups">> => list(describe_channel_placement_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_placement_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Channels">> => list(channel_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_template_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_cloud_watch_alarm_template_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_template_groups_response() :: #{
+%%   <<"CloudWatchAlarmTemplateGroups">> => list(cloud_watch_alarm_template_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_watch_alarm_template_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_templates_request() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_cloud_watch_alarm_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_watch_alarm_templates_response() :: #{
+%%   <<"CloudWatchAlarmTemplates">> => list(cloud_watch_alarm_template_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_watch_alarm_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cluster_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_cluster_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cluster_alerts_response() :: #{
+%%   <<"Alerts">> => list(cluster_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"Clusters">> => list(describe_cluster_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_template_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_event_bridge_rule_template_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_template_groups_response() :: #{
+%%   <<"EventBridgeRuleTemplateGroups">> => list(event_bridge_rule_template_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_bridge_rule_template_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_templates_request() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMapIdentifier">> => string()
+%% }
+-type list_event_bridge_rule_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_bridge_rule_templates_response() :: #{
+%%   <<"EventBridgeRuleTemplates">> => list(event_bridge_rule_template_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_bridge_rule_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_device_transfers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransferType">> := string()
+%% }
+-type list_input_device_transfers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_device_transfers_response() :: #{
+%%   <<"InputDeviceTransfers">> => list(transferring_input_device_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_input_device_transfers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_devices_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_input_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_devices_response() :: #{
+%%   <<"InputDevices">> => list(input_device_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_input_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_security_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_input_security_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_input_security_groups_response() :: #{
+%%   <<"InputSecurityGroups">> => list(input_security_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_input_security_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inputs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inputs_response() :: #{
+%%   <<"Inputs">> => list(input()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplex_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_multiplex_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplex_alerts_response() :: #{
+%%   <<"Alerts">> => list(multiplex_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplex_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplex_programs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplex_programs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplex_programs_response() :: #{
+%%   <<"MultiplexPrograms">> => list(multiplex_program_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplex_programs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplexes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplexes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplexes_response() :: #{
+%%   <<"Multiplexes">> => list(multiplex_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplexes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_networks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_networks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_networks_response() :: #{
+%%   <<"Networks">> => list(describe_network_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_networks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_nodes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Nodes">> => list(describe_node_summary())
+%% }
+-type list_nodes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_offerings_request() :: #{
+%%   <<"ChannelClass">> => string(),
+%%   <<"ChannelConfiguration">> => string(),
+%%   <<"Codec">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaximumBitrate">> => string(),
+%%   <<"MaximumFramerate">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Resolution">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SpecialFeature">> => string(),
+%%   <<"VideoQuality">> => string()
+%% }
+-type list_offerings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_offerings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Offerings">> => list(offering())
+%% }
+-type list_offerings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reservations_request() :: #{
+%%   <<"ChannelClass">> => string(),
+%%   <<"Codec">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaximumBitrate">> => string(),
+%%   <<"MaximumFramerate">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Resolution">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SpecialFeature">> => string(),
+%%   <<"VideoQuality">> => string()
+%% }
+-type list_reservations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reservations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Reservations">> => list(reservation())
+%% }
+-type list_reservations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sdi_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sdi_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sdi_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SdiSources">> => list(sdi_source_summary())
+%% }
+-type list_sdi_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signal_maps_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifier">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_signal_maps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signal_maps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SignalMaps">> => list(signal_map_summary())
+%% }
+-type list_signal_maps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_versions_request() :: #{}
+-type list_versions_request() :: #{}.
+
+
+%% Example:
+%% list_versions_response() :: #{
+%%   <<"Versions">> => list(channel_engine_version_response())
+%% }
+-type list_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% m2ts_settings() :: #{
+%%   <<"AbsentInputAudioBehavior">> => list(any()),
+%%   <<"Arib">> => list(any()),
+%%   <<"AribCaptionsPid">> => string(),
+%%   <<"AribCaptionsPidControl">> => list(any()),
+%%   <<"AudioBufferModel">> => list(any()),
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioPids">> => string(),
+%%   <<"AudioStreamType">> => list(any()),
+%%   <<"Bitrate">> => integer(),
+%%   <<"BufferModel">> => list(any()),
+%%   <<"CcDescriptor">> => list(any()),
+%%   <<"DvbNitSettings">> => dvb_nit_settings(),
+%%   <<"DvbSdtSettings">> => dvb_sdt_settings(),
+%%   <<"DvbSubPids">> => string(),
+%%   <<"DvbTdtSettings">> => dvb_tdt_settings(),
+%%   <<"DvbTeletextPid">> => string(),
+%%   <<"Ebif">> => list(any()),
+%%   <<"EbpAudioInterval">> => list(any()),
+%%   <<"EbpLookaheadMs">> => integer(),
+%%   <<"EbpPlacement">> => list(any()),
+%%   <<"EcmPid">> => string(),
+%%   <<"EsRateInPes">> => list(any()),
+%%   <<"EtvPlatformPid">> => string(),
+%%   <<"EtvSignalPid">> => string(),
+%%   <<"FragmentTime">> => float(),
+%%   <<"Klv">> => list(any()),
+%%   <<"KlvDataPids">> => string(),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"NullPacketBitrate">> => float(),
+%%   <<"PatInterval">> => integer(),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPeriod">> => integer(),
+%%   <<"PcrPid">> => string(),
+%%   <<"PmtInterval">> => integer(),
+%%   <<"PmtPid">> => string(),
+%%   <<"ProgramNum">> => integer(),
+%%   <<"RateMode">> => list(any()),
+%%   <<"Scte27Pids">> => string(),
+%%   <<"Scte35Control">> => list(any()),
+%%   <<"Scte35Pid">> => string(),
+%%   <<"Scte35PrerollPullupMilliseconds">> => float(),
+%%   <<"SegmentationMarkers">> => list(any()),
+%%   <<"SegmentationStyle">> => list(any()),
+%%   <<"SegmentationTime">> => float(),
+%%   <<"TimedMetadataBehavior">> => list(any()),
+%%   <<"TimedMetadataPid">> => string(),
+%%   <<"TransportStreamId">> => integer(),
+%%   <<"VideoPid">> => string()
+%% }
+-type m2ts_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% m3u8_settings() :: #{
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioPids">> => string(),
+%%   <<"EcmPid">> => string(),
+%%   <<"KlvBehavior">> => list(any()),
+%%   <<"KlvDataPids">> => string(),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"PatInterval">> => integer(),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPeriod">> => integer(),
+%%   <<"PcrPid">> => string(),
+%%   <<"PmtInterval">> => integer(),
+%%   <<"PmtPid">> => string(),
+%%   <<"ProgramNum">> => integer(),
+%%   <<"Scte35Behavior">> => list(any()),
+%%   <<"Scte35Pid">> => string(),
+%%   <<"TimedMetadataBehavior">> => list(any()),
+%%   <<"TimedMetadataPid">> => string(),
+%%   <<"TransportStreamId">> => integer(),
+%%   <<"VideoPid">> => string()
+%% }
+-type m3u8_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_create_settings() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceStartTime">> => string()
+%% }
+-type maintenance_create_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_status() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceDeadline">> => string(),
+%%   <<"MaintenanceScheduledDate">> => string(),
+%%   <<"MaintenanceStartTime">> => string()
+%% }
+-type maintenance_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_update_settings() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceScheduledDate">> => string(),
+%%   <<"MaintenanceStartTime">> => string()
+%% }
+-type maintenance_update_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_flow() :: #{
+%%   <<"FlowArn">> => string()
+%% }
+-type media_connect_flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_flow_request() :: #{
+%%   <<"FlowArn">> => string()
+%% }
+-type media_connect_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_container_settings() :: #{
+%%   <<"M2tsSettings">> => m2ts_settings()
+%% }
+-type media_connect_router_container_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_group_settings() :: #{
+%%   <<"AvailabilityZones">> => list(string())
+%% }
+-type media_connect_router_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_connection() :: #{
+%%   <<"RouterInputArn">> => string()
+%% }
+-type media_connect_router_output_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_connection_map() :: #{
+%%   <<"Pipeline0">> => string(),
+%%   <<"Pipeline1">> => string()
+%% }
+-type media_connect_router_output_connection_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_destination_settings() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type media_connect_router_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_router_output_settings() :: #{
+%%   <<"ConnectedRouterInputs">> => media_connect_router_output_connection_map(),
+%%   <<"ContainerSettings">> => media_connect_router_container_settings(),
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type media_connect_router_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_additional_destinations() :: #{
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type media_package_additional_destinations() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_group_settings() :: #{
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"MediapackageV2GroupSettings">> => media_package_v2_group_settings()
+%% }
+-type media_package_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_output_destination_settings() :: #{
+%%   <<"ChannelEndpointId">> => string(),
+%%   <<"ChannelGroup">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"MediaPackageRegionName">> => string()
+%% }
+-type media_package_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_output_settings() :: #{
+%%   <<"MediaPackageV2DestinationSettings">> => media_package_v2_destination_settings()
+%% }
+-type media_package_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_v2_destination_settings() :: #{
+%%   <<"AudioGroupId">> => string(),
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"HlsAutoSelect">> => list(any()),
+%%   <<"HlsDefault">> => list(any())
+%% }
+-type media_package_v2_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_v2_group_settings() :: #{
+%%   <<"AdditionalDestinations">> => list(media_package_additional_destinations()),
+%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
+%%   <<"Id3Behavior">> => list(any()),
+%%   <<"KlvBehavior">> => list(any()),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"Scte35Type">> => list(any()),
+%%   <<"SegmentLength">> => integer(),
+%%   <<"SegmentLengthUnits">> => list(any()),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer(),
+%%   <<"TimedMetadataPassthrough">> => list(any())
+%% }
+-type media_package_v2_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_resource() :: #{
+%%   <<"Destinations">> => list(media_resource_neighbor()),
+%%   <<"Name">> => string(),
+%%   <<"Sources">> => list(media_resource_neighbor())
+%% }
+-type media_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_resource_neighbor() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type media_resource_neighbor() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_deployment() :: #{
+%%   <<"DetailsUri">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type monitor_deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% motion_graphics_activate_schedule_action_settings() :: #{
+%%   <<"Duration">> => float(),
+%%   <<"PasswordParam">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type motion_graphics_activate_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% motion_graphics_configuration() :: #{
+%%   <<"MotionGraphicsInsertion">> => list(any()),
+%%   <<"MotionGraphicsSettings">> => motion_graphics_settings()
+%% }
+-type motion_graphics_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% motion_graphics_deactivate_schedule_action_settings() :: #{}
+-type motion_graphics_deactivate_schedule_action_settings() :: #{}.
+
+
+%% Example:
+%% motion_graphics_settings() :: #{
+%%   <<"HtmlMotionGraphicsSettings">> => html_motion_graphics_settings()
+%% }
+-type motion_graphics_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mp2_settings() :: #{
+%%   <<"Bitrate">> => float(),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"SampleRate">> => float()
+%% }
+-type mp2_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mpeg2_filter_settings() :: #{
+%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
+%% }
+-type mpeg2_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% mpeg2_settings() :: #{
+%%   <<"AdaptiveQuantization">> => list(any()),
+%%   <<"AfdSignaling">> => list(any()),
+%%   <<"ColorMetadata">> => list(any()),
+%%   <<"ColorSpace">> => list(any()),
+%%   <<"DisplayAspectRatio">> => list(any()),
+%%   <<"FilterSettings">> => mpeg2_filter_settings(),
+%%   <<"FixedAfd">> => list(any()),
+%%   <<"FramerateDenominator">> => integer(),
+%%   <<"FramerateNumerator">> => integer(),
+%%   <<"GopClosedCadence">> => integer(),
+%%   <<"GopNumBFrames">> => integer(),
+%%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
+%%   <<"ScanType">> => list(any()),
+%%   <<"SubgopLength">> => list(any()),
+%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
+%%   <<"TimecodeInsertion">> => list(any())
+%% }
+-type mpeg2_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ms_smooth_group_settings() :: #{
+%%   <<"AcquisitionPointId">> => string(),
+%%   <<"AudioOnlyTimecodeControl">> => list(any()),
+%%   <<"CertificateMode">> => list(any()),
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"EventId">> => string(),
+%%   <<"EventIdMode">> => list(any()),
+%%   <<"EventStopBehavior">> => list(any()),
+%%   <<"FilecacheDuration">> => integer(),
+%%   <<"FragmentLength">> => integer(),
+%%   <<"InputLossAction">> => list(any()),
+%%   <<"NumRetries">> => integer(),
+%%   <<"RestartDelay">> => integer(),
+%%   <<"SegmentationMode">> => list(any()),
+%%   <<"SendDelayMs">> => integer(),
+%%   <<"SparseTrackType">> => list(any()),
+%%   <<"StreamManifestBehavior">> => list(any()),
+%%   <<"TimestampOffset">> => string(),
+%%   <<"TimestampOffsetMode">> => list(any())
+%% }
+-type ms_smooth_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ms_smooth_output_settings() :: #{
+%%   <<"H265PackagingType">> => list(any()),
+%%   <<"NameModifier">> => string()
+%% }
+-type ms_smooth_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_input_settings() :: #{
+%%   <<"SourceIpAddress">> => string()
+%% }
+-type multicast_input_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_settings() :: #{
+%%   <<"Sources">> => list(multicast_source())
+%% }
+-type multicast_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_settings_create_request() :: #{
+%%   <<"Sources">> => list(multicast_source_create_request())
+%% }
+-type multicast_settings_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_settings_update_request() :: #{
+%%   <<"Sources">> => list(multicast_source_update_request())
+%% }
+-type multicast_settings_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source_create_request() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source_update_request() :: #{
+%%   <<"SourceIp">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type multicast_source_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type multiplex() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PipelineId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type multiplex_alert() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_container_settings() :: #{
+%%   <<"MultiplexM2tsSettings">> => multiplex_m2ts_settings()
+%% }
+-type multiplex_container_settings() :: #{binary() => any()}.
+
+%% Example:
+%% multiplex_group_settings() :: #{}
+-type multiplex_group_settings() :: #{}.
+
+
+%% Example:
+%% multiplex_m2ts_settings() :: #{
+%%   <<"AbsentInputAudioBehavior">> => list(any()),
+%%   <<"Arib">> => list(any()),
+%%   <<"AudioBufferModel">> => list(any()),
+%%   <<"AudioFramesPerPes">> => integer(),
+%%   <<"AudioStreamType">> => list(any()),
+%%   <<"CcDescriptor">> => list(any()),
+%%   <<"Ebif">> => list(any()),
+%%   <<"EsRateInPes">> => list(any()),
+%%   <<"Klv">> => list(any()),
+%%   <<"NielsenId3Behavior">> => list(any()),
+%%   <<"PcrControl">> => list(any()),
+%%   <<"PcrPeriod">> => integer(),
+%%   <<"Scte35Control">> => list(any()),
+%%   <<"Scte35PrerollPullupMilliseconds">> => float()
+%% }
+-type multiplex_m2ts_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_media_connect_output_destination_settings() :: #{
+%%   <<"EntitlementArn">> => string()
+%% }
+-type multiplex_media_connect_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_output_destination() :: #{
+%%   <<"MediaConnectSettings">> => multiplex_media_connect_output_destination_settings()
+%% }
+-type multiplex_output_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_output_settings() :: #{
+%%   <<"ContainerSettings">> => multiplex_container_settings(),
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type multiplex_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
+%%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
+%%   <<"ProgramName">> => string()
+%% }
+-type multiplex_program() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_channel_destination_settings() :: #{
+%%   <<"MultiplexId">> => string(),
+%%   <<"ProgramName">> => string()
+%% }
+-type multiplex_program_channel_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_packet_identifiers_map() :: #{
+%%   <<"AribCaptionsPid">> => integer(),
+%%   <<"AudioPids">> => list(integer()),
+%%   <<"DvbSubPids">> => list(integer()),
+%%   <<"DvbTeletextPid">> => integer(),
+%%   <<"DvbTeletextPids">> => list(integer()),
+%%   <<"EcmPid">> => integer(),
+%%   <<"EtvPlatformPid">> => integer(),
+%%   <<"EtvSignalPid">> => integer(),
+%%   <<"KlvDataPids">> => list(integer()),
+%%   <<"PcrPid">> => integer(),
+%%   <<"PmtPid">> => integer(),
+%%   <<"PrivateMetadataPid">> => integer(),
+%%   <<"Scte27Pids">> => list(integer()),
+%%   <<"Scte35Pid">> => integer(),
+%%   <<"Smpte2038Pid">> => integer(),
+%%   <<"TimedMetadataPid">> => integer(),
+%%   <<"VideoPid">> => integer()
+%% }
+-type multiplex_program_packet_identifiers_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_pipeline_detail() :: #{
+%%   <<"ActiveChannelPipeline">> => string(),
+%%   <<"PipelineId">> => string()
+%% }
+-type multiplex_program_pipeline_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_service_descriptor() :: #{
+%%   <<"ProviderName">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type multiplex_program_service_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_settings() :: #{
+%%   <<"PreferredChannelPipeline">> => list(any()),
+%%   <<"ProgramNumber">> => integer(),
+%%   <<"ServiceDescriptor">> => multiplex_program_service_descriptor(),
+%%   <<"VideoSettings">> => multiplex_video_settings()
+%% }
+-type multiplex_program_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_program_summary() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"ProgramName">> => string()
+%% }
+-type multiplex_program_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_settings() :: #{
+%%   <<"MaximumVideoBufferDelayMilliseconds">> => integer(),
+%%   <<"TransportStreamBitrate">> => integer(),
+%%   <<"TransportStreamId">> => integer(),
+%%   <<"TransportStreamReservedBitrate">> => integer()
+%% }
+-type multiplex_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_settings_summary() :: #{
+%%   <<"TransportStreamBitrate">> => integer()
+%% }
+-type multiplex_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_statmux_video_settings() :: #{
+%%   <<"MaximumBitrate">> => integer(),
+%%   <<"MinimumBitrate">> => integer(),
+%%   <<"Priority">> => integer()
+%% }
+-type multiplex_statmux_video_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings_summary(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type multiplex_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiplex_video_settings() :: #{
+%%   <<"ConstantBitrate">> => integer(),
+%%   <<"StatmuxSettings">> => multiplex_statmux_video_settings()
+%% }
+-type multiplex_video_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_input_settings() :: #{
+%%   <<"HlsInputSettings">> => hls_input_settings(),
+%%   <<"MulticastInputSettings">> => multicast_input_settings(),
+%%   <<"ServerValidation">> => list(any())
+%% }
+-type network_input_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_c_b_e_t() :: #{
+%%   <<"CbetCheckDigitString">> => string(),
+%%   <<"CbetStepaside">> => list(any()),
+%%   <<"Csid">> => string()
+%% }
+-type nielsen_c_b_e_t() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_configuration() :: #{
+%%   <<"DistributorId">> => string(),
+%%   <<"NielsenPcmToId3Tagging">> => list(any())
+%% }
+-type nielsen_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_naes_ii_nw() :: #{
+%%   <<"CheckDigitString">> => string(),
+%%   <<"Sid">> => float(),
+%%   <<"Timezone">> => list(any())
+%% }
+-type nielsen_naes_ii_nw() :: #{binary() => any()}.
+
+
+%% Example:
+%% nielsen_watermarks_settings() :: #{
+%%   <<"NielsenCbetSettings">> => nielsen_c_b_e_t(),
+%%   <<"NielsenDistributionType">> => list(any()),
+%%   <<"NielsenNaesIiNwSettings">> => nielsen_naes_ii_nw()
+%% }
+-type nielsen_watermarks_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_interface_mapping() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkInterfaceMode">> => list(any()),
+%%   <<"PhysicalInterfaceIpAddresses">> => list(string()),
+%%   <<"PhysicalInterfaceName">> => string()
+%% }
+-type node_interface_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_interface_mapping_create_request() :: #{
+%%   <<"LogicalInterfaceName">> => string(),
+%%   <<"NetworkInterfaceMode">> => list(any()),
+%%   <<"PhysicalInterfaceName">> => string()
+%% }
+-type node_interface_mapping_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% offering() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"FixedPrice">> => float(),
+%%   <<"OfferingDescription">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"OfferingType">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"ResourceSpecification">> => reservation_resource_specification(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type offering() :: #{binary() => any()}.
+
+
+%% Example:
+%% output() :: #{
+%%   <<"AudioDescriptionNames">> => list(string()),
+%%   <<"CaptionDescriptionNames">> => list(string()),
+%%   <<"OutputName">> => string(),
+%%   <<"OutputSettings">> => output_settings(),
+%%   <<"VideoDescriptionName">> => string()
+%% }
+-type output() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_destination() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LogicalInterfaceNames">> => list(string()),
+%%   <<"MediaConnectRouterSettings">> => list(media_connect_router_output_destination_settings()),
+%%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()),
+%%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
+%%   <<"Settings">> => list(output_destination_settings()),
+%%   <<"SrtSettings">> => list(srt_output_destination_settings())
+%% }
+-type output_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_destination_settings() :: #{
+%%   <<"PasswordParam">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_group() :: #{
+%%   <<"Name">> => string(),
+%%   <<"OutputGroupSettings">> => output_group_settings(),
+%%   <<"Outputs">> => list(output())
+%% }
+-type output_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_group_settings() :: #{
+%%   <<"ArchiveGroupSettings">> => archive_group_settings(),
+%%   <<"CmafIngestGroupSettings">> => cmaf_ingest_group_settings(),
+%%   <<"FrameCaptureGroupSettings">> => frame_capture_group_settings(),
+%%   <<"HlsGroupSettings">> => hls_group_settings(),
+%%   <<"MediaConnectRouterGroupSettings">> => media_connect_router_group_settings(),
+%%   <<"MediaPackageGroupSettings">> => media_package_group_settings(),
+%%   <<"MsSmoothGroupSettings">> => ms_smooth_group_settings(),
+%%   <<"MultiplexGroupSettings">> => multiplex_group_settings(),
+%%   <<"RtmpGroupSettings">> => rtmp_group_settings(),
+%%   <<"SrtGroupSettings">> => srt_group_settings(),
+%%   <<"UdpGroupSettings">> => udp_group_settings()
+%% }
+-type output_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_location_ref() :: #{
+%%   <<"DestinationRefId">> => string()
+%% }
+-type output_location_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_locking_settings() :: #{
+%%   <<"DisabledLockingSettings">> => disabled_locking_settings(),
+%%   <<"EpochLockingSettings">> => epoch_locking_settings(),
+%%   <<"PipelineLockingSettings">> => pipeline_locking_settings()
+%% }
+-type output_locking_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_settings() :: #{
+%%   <<"ArchiveOutputSettings">> => archive_output_settings(),
+%%   <<"CmafIngestOutputSettings">> => cmaf_ingest_output_settings(),
+%%   <<"FrameCaptureOutputSettings">> => frame_capture_output_settings(),
+%%   <<"HlsOutputSettings">> => hls_output_settings(),
+%%   <<"MediaConnectRouterOutputSettings">> => media_connect_router_output_settings(),
+%%   <<"MediaPackageOutputSettings">> => media_package_output_settings(),
+%%   <<"MsSmoothOutputSettings">> => ms_smooth_output_settings(),
+%%   <<"MultiplexOutputSettings">> => multiplex_output_settings(),
+%%   <<"RtmpOutputSettings">> => rtmp_output_settings(),
+%%   <<"SrtOutputSettings">> => srt_output_settings(),
+%%   <<"UdpOutputSettings">> => udp_output_settings()
+%% }
+-type output_settings() :: #{binary() => any()}.
+
+%% Example:
+%% pass_through_settings() :: #{}
+-type pass_through_settings() :: #{}.
+
+
+%% Example:
+%% pause_state_schedule_action_settings() :: #{
+%%   <<"Pipelines">> => list(pipeline_pause_state_settings())
+%% }
+-type pause_state_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_detail() :: #{
+%%   <<"ActiveInputAttachmentName">> => string(),
+%%   <<"ActiveInputSwitchActionName">> => string(),
+%%   <<"ActiveMotionGraphicsActionName">> => string(),
+%%   <<"ActiveMotionGraphicsUri">> => string(),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"MediaConnectRouterOutputConnectionMap">> => map(),
+%%   <<"PipelineId">> => string()
+%% }
+-type pipeline_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_locking_settings() :: #{
+%%   <<"CustomEpoch">> => string(),
+%%   <<"PipelineLockingMethod">> => list(any())
+%% }
+-type pipeline_locking_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_pause_state_settings() :: #{
+%%   <<"PipelineId">> => list(any())
+%% }
+-type pipeline_pause_state_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_channel_settings() :: #{
+%%   <<"LinkedChannelType">> => list(any())
+%% }
+-type primary_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_offering_request() :: #{
+%%   <<"Count">> := integer(),
+%%   <<"Name">> => string(),
+%%   <<"RenewalSettings">> => renewal_settings(),
+%%   <<"RequestId">> => string(),
+%%   <<"Start">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type purchase_offering_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_offering_response() :: #{
+%%   <<"Reservation">> => reservation()
+%% }
+-type purchase_offering_response() :: #{binary() => any()}.
+
+%% Example:
+%% raw_settings() :: #{}
+-type raw_settings() :: #{}.
+
+
+%% Example:
+%% reboot_input_device_request() :: #{
+%%   <<"Force">> => list(any())
+%% }
+-type reboot_input_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_input_device_response() :: #{}
+-type reboot_input_device_response() :: #{}.
+
+%% Example:
+%% rec601_settings() :: #{}
+-type rec601_settings() :: #{}.
+
+%% Example:
+%% rec709_settings() :: #{}
+-type rec709_settings() :: #{}.
+
+%% Example:
+%% reject_input_device_transfer_request() :: #{}
+-type reject_input_device_transfer_request() :: #{}.
+
+%% Example:
+%% reject_input_device_transfer_response() :: #{}
+-type reject_input_device_transfer_response() :: #{}.
+
+
+%% Example:
+%% remix_settings() :: #{
+%%   <<"ChannelMappings">> => list(audio_channel_mapping()),
+%%   <<"ChannelsIn">> => integer(),
+%%   <<"ChannelsOut">> => integer()
+%% }
+-type remix_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% renewal_settings() :: #{
+%%   <<"AutomaticRenewal">> => list(any()),
+%%   <<"RenewalCount">> => integer()
+%% }
+-type renewal_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% reservation() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"End">> => string(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"OfferingDescription">> => string(),
+%%   <<"OfferingId">> => string(),
+%%   <<"OfferingType">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"RenewalSettings">> => renewal_settings(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ResourceSpecification">> => reservation_resource_specification(),
+%%   <<"Start">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reservation() :: #{binary() => any()}.
+
+
+%% Example:
+%% reservation_resource_specification() :: #{
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"Codec">> => list(any()),
+%%   <<"MaximumBitrate">> => list(any()),
+%%   <<"MaximumFramerate">> => list(any()),
+%%   <<"Resolution">> => list(any()),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SpecialFeature">> => list(any()),
+%%   <<"VideoQuality">> => list(any())
+%% }
+-type reservation_resource_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% restart_channel_pipelines_request() :: #{
+%%   <<"PipelineIds">> => list(list(any())())
+%% }
+-type restart_channel_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% restart_channel_pipelines_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_status(),
+%%   <<"MaintenanceStatus">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Vpc">> => vpc_output_settings_description()
+%% }
+-type restart_channel_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% route() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_create_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route_create_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_update_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Gateway">> => string()
+%% }
+-type route_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_destination() :: #{
+%%   <<"AvailabilityZoneName">> => string(),
+%%   <<"RouterOutputArn">> => string()
+%% }
+-type router_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_destination_settings() :: #{
+%%   <<"AvailabilityZoneName">> => string()
+%% }
+-type router_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_settings() :: #{
+%%   <<"Destinations">> => list(router_destination()),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type router_input_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_settings() :: #{
+%%   <<"Destinations">> => list(router_destination_settings()),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type router_settings() :: #{binary() => any()}.
+
+%% Example:
+%% rtmp_caption_info_destination_settings() :: #{}
+-type rtmp_caption_info_destination_settings() :: #{}.
+
+
+%% Example:
+%% rtmp_group_settings() :: #{
+%%   <<"AdMarkers">> => list(list(any())()),
+%%   <<"AuthenticationScheme">> => list(any()),
+%%   <<"CacheFullBehavior">> => list(any()),
+%%   <<"CacheLength">> => integer(),
+%%   <<"CaptionData">> => list(any()),
+%%   <<"IncludeFillerNalUnits">> => list(any()),
+%%   <<"InputLossAction">> => list(any()),
+%%   <<"RestartDelay">> => integer()
+%% }
+-type rtmp_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_output_settings() :: #{
+%%   <<"CertificateMode">> => list(any()),
+%%   <<"ConnectionRetryInterval">> => integer(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"NumRetries">> => integer()
+%% }
+-type rtmp_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_action() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"ScheduleActionSettings">> => schedule_action_settings(),
+%%   <<"ScheduleActionStartSettings">> => schedule_action_start_settings()
+%% }
+-type schedule_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_action_settings() :: #{
+%%   <<"HlsId3SegmentTaggingSettings">> => hls_id3_segment_tagging_schedule_action_settings(),
+%%   <<"HlsTimedMetadataSettings">> => hls_timed_metadata_schedule_action_settings(),
+%%   <<"Id3SegmentTaggingSettings">> => id3_segment_tagging_schedule_action_settings(),
+%%   <<"InputPrepareSettings">> => input_prepare_schedule_action_settings(),
+%%   <<"InputSwitchSettings">> => input_switch_schedule_action_settings(),
+%%   <<"MotionGraphicsImageActivateSettings">> => motion_graphics_activate_schedule_action_settings(),
+%%   <<"MotionGraphicsImageDeactivateSettings">> => motion_graphics_deactivate_schedule_action_settings(),
+%%   <<"PauseStateSettings">> => pause_state_schedule_action_settings(),
+%%   <<"Scte35InputSettings">> => scte35_input_schedule_action_settings(),
+%%   <<"Scte35ReturnToNetworkSettings">> => scte35_return_to_network_schedule_action_settings(),
+%%   <<"Scte35SpliceInsertSettings">> => scte35_splice_insert_schedule_action_settings(),
+%%   <<"Scte35TimeSignalSettings">> => scte35_time_signal_schedule_action_settings(),
+%%   <<"StaticImageActivateSettings">> => static_image_activate_schedule_action_settings(),
+%%   <<"StaticImageDeactivateSettings">> => static_image_deactivate_schedule_action_settings(),
+%%   <<"StaticImageOutputActivateSettings">> => static_image_output_activate_schedule_action_settings(),
+%%   <<"StaticImageOutputDeactivateSettings">> => static_image_output_deactivate_schedule_action_settings(),
+%%   <<"TimedMetadataSettings">> => timed_metadata_schedule_action_settings()
+%% }
+-type schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_action_start_settings() :: #{
+%%   <<"FixedModeScheduleActionStartSettings">> => fixed_mode_schedule_action_start_settings(),
+%%   <<"FollowModeScheduleActionStartSettings">> => follow_mode_schedule_action_start_settings(),
+%%   <<"ImmediateModeScheduleActionStartSettings">> => immediate_mode_schedule_action_start_settings()
+%% }
+-type schedule_action_start_settings() :: #{binary() => any()}.
+
+%% Example:
+%% scte20_plus_embedded_destination_settings() :: #{}
+-type scte20_plus_embedded_destination_settings() :: #{}.
+
+
+%% Example:
+%% scte20_source_settings() :: #{
+%%   <<"Convert608To708">> => list(any()),
+%%   <<"Source608ChannelNumber">> => integer()
+%% }
+-type scte20_source_settings() :: #{binary() => any()}.
+
+%% Example:
+%% scte27_destination_settings() :: #{}
+-type scte27_destination_settings() :: #{}.
+
+
+%% Example:
+%% scte27_source_settings() :: #{
+%%   <<"OcrLanguage">> => list(any()),
+%%   <<"Pid">> => integer()
+%% }
+-type scte27_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_delivery_restrictions() :: #{
+%%   <<"ArchiveAllowedFlag">> => list(any()),
+%%   <<"DeviceRestrictions">> => list(any()),
+%%   <<"NoRegionalBlackoutFlag">> => list(any()),
+%%   <<"WebDeliveryAllowedFlag">> => list(any())
+%% }
+-type scte35_delivery_restrictions() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_descriptor() :: #{
+%%   <<"Scte35DescriptorSettings">> => scte35_descriptor_settings()
+%% }
+-type scte35_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_descriptor_settings() :: #{
+%%   <<"SegmentationDescriptorScte35DescriptorSettings">> => scte35_segmentation_descriptor()
+%% }
+-type scte35_descriptor_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_input_schedule_action_settings() :: #{
+%%   <<"InputAttachmentNameReference">> => string(),
+%%   <<"Mode">> => list(any())
+%% }
+-type scte35_input_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_return_to_network_schedule_action_settings() :: #{
+%%   <<"SpliceEventId">> => float()
+%% }
+-type scte35_return_to_network_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_segmentation_descriptor() :: #{
+%%   <<"DeliveryRestrictions">> => scte35_delivery_restrictions(),
+%%   <<"SegmentNum">> => integer(),
+%%   <<"SegmentationCancelIndicator">> => list(any()),
+%%   <<"SegmentationDuration">> => float(),
+%%   <<"SegmentationEventId">> => float(),
+%%   <<"SegmentationTypeId">> => integer(),
+%%   <<"SegmentationUpid">> => string(),
+%%   <<"SegmentationUpidType">> => integer(),
+%%   <<"SegmentsExpected">> => integer(),
+%%   <<"SubSegmentNum">> => integer(),
+%%   <<"SubSegmentsExpected">> => integer()
+%% }
+-type scte35_segmentation_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_splice_insert() :: #{
+%%   <<"AdAvailOffset">> => integer(),
+%%   <<"NoRegionalBlackoutFlag">> => list(any()),
+%%   <<"WebDeliveryAllowedFlag">> => list(any())
+%% }
+-type scte35_splice_insert() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_splice_insert_schedule_action_settings() :: #{
+%%   <<"Duration">> => float(),
+%%   <<"SpliceEventId">> => float()
+%% }
+-type scte35_splice_insert_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_time_signal_apos() :: #{
+%%   <<"AdAvailOffset">> => integer(),
+%%   <<"NoRegionalBlackoutFlag">> => list(any()),
+%%   <<"WebDeliveryAllowedFlag">> => list(any())
+%% }
+-type scte35_time_signal_apos() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte35_time_signal_schedule_action_settings() :: #{
+%%   <<"Scte35Descriptors">> => list(scte35_descriptor())
+%% }
+-type scte35_time_signal_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdi_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sdi_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdi_source_mapping() :: #{
+%%   <<"CardNumber">> => integer(),
+%%   <<"ChannelNumber">> => integer(),
+%%   <<"SdiSource">> => string()
+%% }
+-type sdi_source_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdi_source_mapping_update_request() :: #{
+%%   <<"CardNumber">> => integer(),
+%%   <<"ChannelNumber">> => integer(),
+%%   <<"SdiSource">> => string()
+%% }
+-type sdi_source_mapping_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sdi_source_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sdi_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% signal_map_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorDeploymentStatus">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type signal_map_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% smart_subtitle_source_settings() :: #{
+%%   <<"CaptionSynchronizationMode">> => list(any()),
+%%   <<"InferenceFeedOutput">> => string()
+%% }
+-type smart_subtitle_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% smpte2110_receiver_group() :: #{
+%%   <<"SdpSettings">> => smpte2110_receiver_group_sdp_settings()
+%% }
+-type smpte2110_receiver_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% smpte2110_receiver_group_sdp_settings() :: #{
+%%   <<"AncillarySdps">> => list(input_sdp_location()),
+%%   <<"AudioSdps">> => list(input_sdp_location()),
+%%   <<"VideoSdp">> => input_sdp_location()
+%% }
+-type smpte2110_receiver_group_sdp_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% smpte2110_receiver_group_settings() :: #{
+%%   <<"Smpte2110ReceiverGroups">> => list(smpte2110_receiver_group())
+%% }
+-type smpte2110_receiver_group_settings() :: #{binary() => any()}.
+
+%% Example:
+%% smpte_tt_destination_settings() :: #{}
+-type smpte_tt_destination_settings() :: #{}.
+
+
+%% Example:
+%% special_router_settings() :: #{
+%%   <<"RouterArn">> => string()
+%% }
+-type special_router_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_decryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_caller_decryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_decryption_request() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_caller_decryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_source() :: #{
+%%   <<"Decryption">> => srt_caller_decryption(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"SrtListenerAddress">> => string(),
+%%   <<"SrtListenerPort">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_caller_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_source_request() :: #{
+%%   <<"Decryption">> => srt_caller_decryption_request(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"SrtListenerAddress">> => string(),
+%%   <<"SrtListenerPort">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_caller_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_group_settings() :: #{
+%%   <<"InputLossAction">> => list(any())
+%% }
+-type srt_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_decryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_listener_decryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_decryption_request() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"PassphraseSecretArn">> => string()
+%% }
+-type srt_listener_decryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_settings() :: #{
+%%   <<"Decryption">> => srt_listener_decryption(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_listener_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_settings_request() :: #{
+%%   <<"Decryption">> => srt_listener_decryption_request(),
+%%   <<"MinimumLatency">> => integer(),
+%%   <<"StreamId">> => string()
+%% }
+-type srt_listener_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_output_destination_settings() :: #{
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"EncryptionPassphraseSecretArn">> => string(),
+%%   <<"ListenerPort">> => integer(),
+%%   <<"StreamId">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type srt_output_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_output_settings() :: #{
+%%   <<"BufferMsec">> => integer(),
+%%   <<"ContainerSettings">> => udp_container_settings(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"Latency">> => integer()
+%% }
+-type srt_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_settings() :: #{
+%%   <<"SrtCallerSources">> => list(srt_caller_source()),
+%%   <<"SrtListenerSettings">> => srt_listener_settings()
+%% }
+-type srt_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_settings_request() :: #{
+%%   <<"SrtCallerSources">> => list(srt_caller_source_request()),
+%%   <<"SrtListenerSettings">> => srt_listener_settings_request()
+%% }
+-type srt_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_hls_settings() :: #{
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"M3u8Settings">> => m3u8_settings()
+%% }
+-type standard_hls_settings() :: #{binary() => any()}.
+
+%% Example:
+%% start_channel_request() :: #{}
+-type start_channel_request() :: #{}.
 
 
 %% Example:
@@ -4944,487 +5357,56 @@
 %% }
 -type start_channel_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% frame_capture_cdn_settings() :: #{
-%%   <<"FrameCaptureS3Settings">> => frame_capture_s3_settings()
-%% }
--type frame_capture_cdn_settings() :: #{binary() => any()}.
+%% start_delete_monitor_deployment_request() :: #{}
+-type start_delete_monitor_deployment_request() :: #{}.
 
 
 %% Example:
-%% hdr10_settings() :: #{
-%%   <<"MaxCll">> => integer(),
-%%   <<"MaxFall">> => integer()
-%% }
--type hdr10_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% offering() :: #{
+%% start_delete_monitor_deployment_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"FixedPrice">> => float(),
-%%   <<"OfferingDescription">> => string(),
-%%   <<"OfferingId">> => string(),
-%%   <<"OfferingType">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"ResourceSpecification">> => reservation_resource_specification(),
-%%   <<"UsagePrice">> => float()
-%% }
--type offering() :: #{binary() => any()}.
-
-%% Example:
-%% raw_settings() :: #{}
--type raw_settings() :: #{}.
-
-%% Example:
-%% claim_device_response() :: #{}
--type claim_device_response() :: #{}.
-
-
-%% Example:
-%% media_connect_router_output_destination_settings() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"SecretArn">> => string()
-%% }
--type media_connect_router_output_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_pause_state_settings() :: #{
-%%   <<"PipelineId">> => list(any())
-%% }
--type pipeline_pause_state_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_router_output_settings() :: #{
-%%   <<"ConnectedRouterInputs">> => media_connect_router_output_connection_map(),
-%%   <<"ContainerSettings">> => media_connect_router_container_settings(),
-%%   <<"Destination">> => output_location_ref()
-%% }
--type media_connect_router_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_selector_color_space_settings() :: #{
-%%   <<"Hdr10Settings">> => hdr10_settings()
-%% }
--type video_selector_color_space_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_track_selection() :: #{
-%%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
-%%   <<"Tracks">> => list(audio_track())
-%% }
--type audio_track_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_capture_settings() :: #{
-%%   <<"CaptureInterval">> => integer(),
-%%   <<"CaptureIntervalUnits">> => list(any()),
-%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings()
-%% }
--type frame_capture_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_silence_failover_settings() :: #{
-%%   <<"AudioSelectorName">> => string(),
-%%   <<"AudioSilenceThresholdMsec">> => integer()
-%% }
--type audio_silence_failover_settings() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_input_device_response() :: #{}
--type reboot_input_device_response() :: #{}.
-
-
-%% Example:
-%% gateway_timeout_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type gateway_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_settings() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source()),
-%%   <<"SrtListenerSettings">> => srt_listener_settings()
-%% }
--type srt_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% rtmp_output_settings() :: #{
-%%   <<"CertificateMode">> => list(any()),
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"Destination">> => output_location_ref(),
-%%   <<"NumRetries">> => integer()
-%% }
--type rtmp_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% m2ts_settings() :: #{
-%%   <<"EbpPlacement">> => list(any()),
-%%   <<"EsRateInPes">> => list(any()),
-%%   <<"Klv">> => list(any()),
-%%   <<"PcrControl">> => list(any()),
-%%   <<"Scte35PrerollPullupMilliseconds">> => float(),
-%%   <<"AbsentInputAudioBehavior">> => list(any()),
-%%   <<"AribCaptionsPidControl">> => list(any()),
-%%   <<"ProgramNum">> => integer(),
-%%   <<"EbpLookaheadMs">> => integer(),
-%%   <<"AribCaptionsPid">> => string(),
-%%   <<"CcDescriptor">> => list(any()),
-%%   <<"KlvDataPids">> => string(),
-%%   <<"PcrPid">> => string(),
-%%   <<"PatInterval">> => integer(),
-%%   <<"TimedMetadataPid">> => string(),
-%%   <<"FragmentTime">> => float(),
-%%   <<"PmtPid">> => string(),
-%%   <<"DvbSdtSettings">> => dvb_sdt_settings(),
-%%   <<"NullPacketBitrate">> => float(),
-%%   <<"Scte35Control">> => list(any()),
-%%   <<"AudioBufferModel">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"EtvSignalPid">> => string(),
-%%   <<"AudioStreamType">> => list(any()),
-%%   <<"Scte35Pid">> => string(),
-%%   <<"VideoPid">> => string(),
-%%   <<"PcrPeriod">> => integer(),
-%%   <<"EcmPid">> => string(),
-%%   <<"AudioPids">> => string(),
-%%   <<"Ebif">> => list(any()),
-%%   <<"RateMode">> => list(any()),
-%%   <<"Arib">> => list(any()),
-%%   <<"DvbNitSettings">> => dvb_nit_settings(),
-%%   <<"SegmentationTime">> => float(),
-%%   <<"BufferModel">> => list(any()),
-%%   <<"SegmentationMarkers">> => list(any()),
-%%   <<"DvbTeletextPid">> => string(),
-%%   <<"DvbSubPids">> => string(),
-%%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"TimedMetadataBehavior">> => list(any()),
-%%   <<"TransportStreamId">> => integer(),
-%%   <<"SegmentationStyle">> => list(any()),
-%%   <<"EtvPlatformPid">> => string(),
-%%   <<"PmtInterval">> => integer(),
-%%   <<"Scte27Pids">> => string(),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"DvbTdtSettings">> => dvb_tdt_settings(),
-%%   <<"EbpAudioInterval">> => list(any())
-%% }
--type m2ts_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% dvb_sdt_settings() :: #{
-%%   <<"OutputSdt">> => list(any()),
-%%   <<"RepInterval">> => integer(),
-%%   <<"ServiceName">> => string(),
-%%   <<"ServiceProviderName">> => string()
-%% }
--type dvb_sdt_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_destination_request() :: #{
-%%   <<"Network">> => string(),
-%%   <<"NetworkRoutes">> => list(input_request_destination_route()),
-%%   <<"StaticIpAddress">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type input_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_alerts_response() :: #{
-%%   <<"Alerts">> => list(channel_alert()),
-%%   <<"NextToken">> => string()
-%% }
--type list_alerts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_action_start_settings() :: #{
-%%   <<"FixedModeScheduleActionStartSettings">> => fixed_mode_schedule_action_start_settings(),
-%%   <<"FollowModeScheduleActionStartSettings">> => follow_mode_schedule_action_start_settings(),
-%%   <<"ImmediateModeScheduleActionStartSettings">> => immediate_mode_schedule_action_start_settings()
-%% }
--type schedule_action_start_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_m2ts_settings() :: #{
-%%   <<"AbsentInputAudioBehavior">> => list(any()),
-%%   <<"Arib">> => list(any()),
-%%   <<"AudioBufferModel">> => list(any()),
-%%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"AudioStreamType">> => list(any()),
-%%   <<"CcDescriptor">> => list(any()),
-%%   <<"Ebif">> => list(any()),
-%%   <<"EsRateInPes">> => list(any()),
-%%   <<"Klv">> => list(any()),
-%%   <<"NielsenId3Behavior">> => list(any()),
-%%   <<"PcrControl">> => list(any()),
-%%   <<"PcrPeriod">> => integer(),
-%%   <<"Scte35Control">> => list(any()),
-%%   <<"Scte35PrerollPullupMilliseconds">> => float()
-%% }
--type multiplex_m2ts_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_input_response() :: #{
-%%   <<"Input">> => input()
-%% }
--type update_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_destination_vpc() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"NetworkInterfaceId">> => string()
-%% }
--type input_destination_vpc() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schedule_request() :: #{}
--type delete_schedule_request() :: #{}.
-
-
-%% Example:
-%% list_multiplex_alerts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateFilter">> => string()
-%% }
--type list_multiplex_alerts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% eac3_atmos_settings() :: #{
-%%   <<"Bitrate">> => float(),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"Dialnorm">> => integer(),
-%%   <<"DrcLine">> => list(any()),
-%%   <<"DrcRf">> => list(any()),
-%%   <<"HeightTrim">> => float(),
-%%   <<"SurroundTrim">> => float()
-%% }
--type eac3_atmos_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_detail() :: #{
-%%   <<"ActiveInputAttachmentName">> => string(),
-%%   <<"ActiveInputSwitchActionName">> => string(),
-%%   <<"ActiveMotionGraphicsActionName">> => string(),
-%%   <<"ActiveMotionGraphicsUri">> => string(),
-%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"MediaConnectRouterOutputConnectionMap">> => map(),
-%%   <<"PipelineId">> => string()
-%% }
--type pipeline_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_bridge_rule_templates_response() :: #{
-%%   <<"EventBridgeRuleTemplates">> => list(event_bridge_rule_template_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_bridge_rule_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% rtmp_caption_info_destination_settings() :: #{}
--type rtmp_caption_info_destination_settings() :: #{}.
-
-%% Example:
-%% get_event_bridge_rule_template_request() :: #{}
--type get_event_bridge_rule_template_request() :: #{}.
-
-
-%% Example:
-%% follower_channel_settings() :: #{
-%%   <<"LinkedChannelType">> => list(any()),
-%%   <<"PrimaryChannelArn">> => string()
-%% }
--type follower_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% wav_settings() :: #{
-%%   <<"BitDepth">> => float(),
-%%   <<"CodingMode">> => list(any()),
-%%   <<"SampleRate">> => float()
-%% }
--type wav_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_destinations() :: #{
-%%   <<"Destination">> => output_location_ref()
-%% }
--type additional_destinations() :: #{binary() => any()}.
-
-
-%% Example:
-%% fec_output_settings() :: #{
-%%   <<"ColumnDepth">> => integer(),
-%%   <<"IncludeFec">> => list(any()),
-%%   <<"RowLength">> => integer()
-%% }
--type fec_output_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_input_settings() :: #{
-%%   <<"Bandwidth">> => integer(),
-%%   <<"BufferSegments">> => integer(),
-%%   <<"Retries">> => integer(),
-%%   <<"RetryInterval">> => integer(),
-%%   <<"Scte35Source">> => list(any())
-%% }
--type hls_input_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_schedule_action_delete_result() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action())
-%% }
--type batch_schedule_action_delete_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_node_request() :: #{}
--type describe_node_request() :: #{}.
-
-%% Example:
-%% reject_input_device_transfer_request() :: #{}
--type reject_input_device_transfer_request() :: #{}.
-
-
-%% Example:
-%% inference_settings() :: #{
-%%   <<"AudioFeedInputs">> => list(audio_feed_input()),
-%%   <<"FeedArn">> => string()
-%% }
--type inference_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_linked_channel_settings() :: #{
-%%   <<"FollowerChannelSettings">> => describe_follower_channel_settings(),
-%%   <<"PrimaryChannelSettings">> => describe_primary_channel_settings()
-%% }
--type describe_linked_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_bridge_rule_template_response() :: #{
-%%   <<"Arn">> => string(),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
-%%   <<"EventType">> => list(any()),
-%%   <<"GroupId">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
+%%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
+%%   <<"LastDiscoveredAt">> => non_neg_integer(),
+%%   <<"LastSuccessfulMonitorDeployment">> => successful_monitor_deployment(),
+%%   <<"MediaResourceMap">> => map(),
 %%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"MonitorChangesPendingDeployment">> => boolean(),
+%%   <<"MonitorDeployment">> => monitor_deployment(),
 %%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type get_event_bridge_rule_template_response() :: #{binary() => any()}.
+-type start_delete_monitor_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_input_device_maintenance_window_request() :: #{}
+-type start_input_device_maintenance_window_request() :: #{}.
+
+%% Example:
+%% start_input_device_maintenance_window_response() :: #{}
+-type start_input_device_maintenance_window_response() :: #{}.
+
+%% Example:
+%% start_input_device_request() :: #{}
+-type start_input_device_request() :: #{}.
+
+%% Example:
+%% start_input_device_response() :: #{}
+-type start_input_device_response() :: #{}.
 
 
 %% Example:
-%% sdi_source_mapping_update_request() :: #{
-%%   <<"CardNumber">> => integer(),
-%%   <<"ChannelNumber">> => integer(),
-%%   <<"SdiSource">> => string()
+%% start_monitor_deployment_request() :: #{
+%%   <<"DryRun">> => boolean()
 %% }
--type sdi_source_mapping_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_schedule_action_delete_request() :: #{
-%%   <<"ActionNames">> => list(string())
-%% }
--type batch_schedule_action_delete_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sdi_sources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SdiSources">> => list(sdi_source_summary())
-%% }
--type list_sdi_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_device_transfers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TransferType">> := string()
-%% }
--type list_input_device_transfers_request() :: #{binary() => any()}.
-
-%% Example:
-%% embedded_destination_settings() :: #{}
--type embedded_destination_settings() :: #{}.
-
-
-%% Example:
-%% maintenance_create_settings() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceStartTime">> => string()
-%% }
--type maintenance_create_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% restart_channel_pipelines_request() :: #{
-%%   <<"PipelineIds">> => list(list(any())())
-%% }
--type restart_channel_pipelines_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% failover_condition_settings() :: #{
-%%   <<"AudioSilenceSettings">> => audio_silence_failover_settings(),
-%%   <<"InputLossSettings">> => input_loss_failover_settings(),
-%%   <<"VideoBlackSettings">> => video_black_failover_settings()
-%% }
--type failover_condition_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_egress_endpoint() :: #{
-%%   <<"SourceIp">> => string()
-%% }
--type channel_egress_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_media_connect_configurable_settings() :: #{
-%%   <<"FlowArn">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"SourceName">> => string()
-%% }
--type input_device_media_connect_configurable_settings() :: #{binary() => any()}.
+-type start_monitor_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5450,319 +5432,44 @@
 %% }
 -type start_monitor_deployment_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_multiplexes_response() :: #{
-%%   <<"Multiplexes">> => list(multiplex_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multiplexes_response() :: #{binary() => any()}.
-
-%% Example:
-%% pass_through_settings() :: #{}
--type pass_through_settings() :: #{}.
+%% start_multiplex_request() :: #{}
+-type start_multiplex_request() :: #{}.
 
 
 %% Example:
-%% list_multiplexes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_multiplexes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cloud_watch_alarm_template_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Scope">> => string(),
-%%   <<"SignalMapIdentifier">> => string()
-%% }
--type list_cloud_watch_alarm_template_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_response() :: #{
-%%   <<"Channel">> => channel()
-%% }
--type update_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_request() :: #{
-%%   <<"IpPools">> => list(ip_pool_update_request()),
+%% start_multiplex_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route_update_request())
-%% }
--type update_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_pid_selection() :: #{
-%%   <<"Pid">> => integer(),
-%%   <<"Pids">> => list(audio_pid())
-%% }
--type audio_pid_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_source_request() :: #{
-%%   <<"PasswordParam">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Username">> => string()
-%% }
--type input_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_network_settings_update_request() :: #{
-%%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping_update_request())
-%% }
--type cluster_network_settings_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_listener_decryption() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"PassphraseSecretArn">> => string()
-%% }
--type srt_listener_decryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_anywhere_settings() :: #{
-%%   <<"ChannelPlacementGroupId">> => string(),
-%%   <<"ClusterId">> => string()
-%% }
--type describe_anywhere_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% primary_channel_settings() :: #{
-%%   <<"LinkedChannelType">> => list(any())
-%% }
--type primary_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% mpeg2_filter_settings() :: #{
-%%   <<"TemporalFilterSettings">> => temporal_filter_settings()
-%% }
--type mpeg2_filter_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_node_state_request() :: #{
-%%   <<"State">> => list(any())
-%% }
--type update_node_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_normalization_settings() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"AlgorithmControl">> => list(any()),
-%%   <<"PeakCalculation">> => list(any()),
-%%   <<"PeakLimiterThreshold">> => float(),
-%%   <<"TargetLkfs">> => float()
-%% }
--type audio_normalization_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_s3_settings() :: #{
-%%   <<"CannedAcl">> => list(any())
-%% }
--type hls_s3_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_destination_settings() :: #{
-%%   <<"PasswordParam">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"Username">> => string()
-%% }
--type output_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_segmentation_descriptor() :: #{
-%%   <<"DeliveryRestrictions">> => scte35_delivery_restrictions(),
-%%   <<"SegmentNum">> => integer(),
-%%   <<"SegmentationCancelIndicator">> => list(any()),
-%%   <<"SegmentationDuration">> => float(),
-%%   <<"SegmentationEventId">> => float(),
-%%   <<"SegmentationTypeId">> => integer(),
-%%   <<"SegmentationUpid">> => string(),
-%%   <<"SegmentationUpidType">> => integer(),
-%%   <<"SegmentsExpected">> => integer(),
-%%   <<"SubSegmentNum">> => integer(),
-%%   <<"SubSegmentsExpected">> => integer()
-%% }
--type scte35_segmentation_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multiplex_alerts_response() :: #{
-%%   <<"Alerts">> => list(multiplex_alert()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multiplex_alerts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_router_output_connection_map() :: #{
-%%   <<"Pipeline0">> => string(),
-%%   <<"Pipeline1">> => string()
-%% }
--type media_connect_router_output_connection_map() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cluster_alerts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateFilter">> => string()
-%% }
--type list_cluster_alerts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% anywhere_settings() :: #{
-%%   <<"ChannelPlacementGroupId">> => string(),
-%%   <<"ClusterId">> => string()
-%% }
--type anywhere_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% timecode_burnin_settings() :: #{
-%%   <<"FontSize">> => list(any()),
-%%   <<"Position">> => list(any()),
-%%   <<"Prefix">> => string()
-%% }
--type timecode_burnin_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% renewal_settings() :: #{
-%%   <<"AutomaticRenewal">> => list(any()),
-%%   <<"RenewalCount">> => integer()
-%% }
--type renewal_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebu_tt_d_destination_settings() :: #{
-%%   <<"CopyrightHolder">> => string(),
-%%   <<"DefaultFontSize">> => integer(),
-%%   <<"DefaultLineHeight">> => integer(),
-%%   <<"FillLineGap">> => list(any()),
-%%   <<"FontFamily">> => string(),
-%%   <<"StyleControl">> => list(any())
-%% }
--type ebu_tt_d_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_settings() :: #{
-%%   <<"Destinations">> => list(router_destination_settings()),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"SecretArn">> => string()
-%% }
--type router_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_configuration_response() :: #{
-%%   <<"AccountConfiguration">> => account_configuration()
-%% }
--type update_account_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_bridge_rule_template_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
-%%   <<"EventType">> := list(any()),
-%%   <<"GroupIdentifier">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RequestId">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type create_event_bridge_rule_template_request() :: #{binary() => any()}.
+-type start_multiplex_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_black_failover_settings() :: #{
-%%   <<"BlackDetectThreshold">> => float(),
-%%   <<"VideoBlackThresholdMsec">> => integer()
+%% start_timecode() :: #{
+%%   <<"Timecode">> => string()
 %% }
--type video_black_failover_settings() :: #{binary() => any()}.
+-type start_timecode() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_hls_rendition_selection() :: #{
-%%   <<"GroupId">> => string(),
+%% start_update_signal_map_request() :: #{
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryEntryPointArn">> => string(),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
+%%   <<"ForceRediscovery">> => boolean(),
 %%   <<"Name">> => string()
 %% }
--type audio_hls_rendition_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_settings_summary() :: #{
-%%   <<"TransportStreamBitrate">> => integer()
-%% }
--type multiplex_settings_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_dolby_e_decode() :: #{
-%%   <<"ProgramSelection">> => list(any())
-%% }
--type audio_dolby_e_decode() :: #{binary() => any()}.
-
-
-%% Example:
-%% follow_mode_schedule_action_start_settings() :: #{
-%%   <<"FollowPoint">> => list(any()),
-%%   <<"ReferenceActionName">> => string()
-%% }
--type follow_mode_schedule_action_start_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_watermark_settings() :: #{
-%%   <<"NielsenWatermarksSettings">> => nielsen_watermarks_settings()
-%% }
--type audio_watermark_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte35_splice_insert() :: #{
-%%   <<"AdAvailOffset">> => integer(),
-%%   <<"NoRegionalBlackoutFlag">> => list(any()),
-%%   <<"WebDeliveryAllowedFlag">> => list(any())
-%% }
--type scte35_splice_insert() :: #{binary() => any()}.
-
-
-%% Example:
-%% claim_device_request() :: #{
-%%   <<"Id">> => string()
-%% }
--type claim_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_pid() :: #{
-%%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
-%%   <<"Pid">> => integer(),
-%%   <<"PremixSettings">> => audio_pre_mixer_settings()
-%% }
--type audio_pid() :: #{binary() => any()}.
+-type start_update_signal_map_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5790,83 +5497,399 @@
 
 
 %% Example:
-%% list_signal_maps_request() :: #{
-%%   <<"CloudWatchAlarmTemplateGroupIdentifier">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_signal_maps_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_device_hd_settings() :: #{
-%%   <<"ActiveInput">> => list(any()),
-%%   <<"ConfiguredInput">> => list(any()),
-%%   <<"DeviceState">> => list(any()),
-%%   <<"Framerate">> => float(),
+%% static_image_activate_schedule_action_settings() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"FadeIn">> => integer(),
+%%   <<"FadeOut">> => integer(),
 %%   <<"Height">> => integer(),
-%%   <<"LatencyMs">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"ScanType">> => list(any()),
+%%   <<"Image">> => input_location(),
+%%   <<"ImageX">> => integer(),
+%%   <<"ImageY">> => integer(),
+%%   <<"Layer">> => integer(),
+%%   <<"Opacity">> => integer(),
 %%   <<"Width">> => integer()
 %% }
--type input_device_hd_settings() :: #{binary() => any()}.
+-type static_image_activate_schedule_action_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% scte35_descriptor_settings() :: #{
-%%   <<"SegmentationDescriptorScte35DescriptorSettings">> => scte35_segmentation_descriptor()
+%% static_image_deactivate_schedule_action_settings() :: #{
+%%   <<"FadeOut">> => integer(),
+%%   <<"Layer">> => integer()
 %% }
--type scte35_descriptor_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_input_device_response() :: #{}
--type start_input_device_response() :: #{}.
+-type static_image_deactivate_schedule_action_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_channels_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% static_image_output_activate_schedule_action_settings() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"FadeIn">> => integer(),
+%%   <<"FadeOut">> => integer(),
+%%   <<"Height">> => integer(),
+%%   <<"Image">> => input_location(),
+%%   <<"ImageX">> => integer(),
+%%   <<"ImageY">> => integer(),
+%%   <<"Layer">> => integer(),
+%%   <<"Opacity">> => integer(),
+%%   <<"OutputNames">> => list(string()),
+%%   <<"Width">> => integer()
 %% }
--type list_channels_request() :: #{binary() => any()}.
+-type static_image_output_activate_schedule_action_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_sdp_location() :: #{
-%%   <<"MediaIndex">> => integer(),
-%%   <<"SdpUrl">> => string()
+%% static_image_output_deactivate_schedule_action_settings() :: #{
+%%   <<"FadeOut">> => integer(),
+%%   <<"Layer">> => integer(),
+%%   <<"OutputNames">> => list(string())
 %% }
--type input_sdp_location() :: #{binary() => any()}.
+-type static_image_output_deactivate_schedule_action_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% dvb_nit_settings() :: #{
-%%   <<"NetworkId">> => integer(),
-%%   <<"NetworkName">> => string(),
-%%   <<"RepInterval">> => integer()
+%% static_key_settings() :: #{
+%%   <<"KeyProviderServer">> => input_location(),
+%%   <<"StaticKeyValue">> => string()
 %% }
--type dvb_nit_settings() :: #{binary() => any()}.
+-type static_key_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stop_channel_request() :: #{}
+-type stop_channel_request() :: #{}.
 
 
 %% Example:
-%% describe_schedule_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% stop_channel_response() :: #{
+%%   <<"AnywhereSettings">> => describe_anywhere_settings(),
+%%   <<"Arn">> => string(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelClass">> => list(any()),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"Id">> => string(),
+%%   <<"InferenceSettings">> => describe_inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_status(),
+%%   <<"Name">> => string(),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Vpc">> => vpc_output_settings_description()
 %% }
--type describe_schedule_request() :: #{binary() => any()}.
+-type stop_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_input_device_request() :: #{}
+-type stop_input_device_request() :: #{}.
+
+%% Example:
+%% stop_input_device_response() :: #{}
+-type stop_input_device_response() :: #{}.
+
+%% Example:
+%% stop_multiplex_request() :: #{}
+-type stop_multiplex_request() :: #{}.
 
 
 %% Example:
-%% describe_sdi_source_response() :: #{
-%%   <<"SdiSource">> => sdi_source()
+%% stop_multiplex_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
+%%   <<"Id">> => string(),
+%%   <<"MultiplexSettings">> => multiplex_settings(),
+%%   <<"Name">> => string(),
+%%   <<"PipelinesRunningCount">> => integer(),
+%%   <<"ProgramCount">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
--type describe_sdi_source_response() :: #{binary() => any()}.
+-type stop_multiplex_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_watch_alarm_template_summary() :: #{
+%% stop_timecode() :: #{
+%%   <<"LastFrameClippingBehavior">> => list(any()),
+%%   <<"Timecode">> => string()
+%% }
+-type stop_timecode() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_monitor_deployment() :: #{
+%%   <<"DetailsUri">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type successful_monitor_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% teletext_destination_settings() :: #{}
+-type teletext_destination_settings() :: #{}.
+
+
+%% Example:
+%% teletext_source_settings() :: #{
+%%   <<"OutputRectangle">> => caption_rectangle(),
+%%   <<"PageNumber">> => string()
+%% }
+-type teletext_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% temporal_filter_settings() :: #{
+%%   <<"PostFilterSharpening">> => list(any()),
+%%   <<"Strength">> => list(any())
+%% }
+-type temporal_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"ThumbnailType">> => list(any()),
+%%   <<"TimeStamp">> => non_neg_integer()
+%% }
+-type thumbnail() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type thumbnail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail_detail() :: #{
+%%   <<"PipelineId">> => string(),
+%%   <<"Thumbnails">> => list(thumbnail())
+%% }
+-type thumbnail_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% timecode_burnin_settings() :: #{
+%%   <<"FontSize">> => list(any()),
+%%   <<"Position">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type timecode_burnin_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% timecode_config() :: #{
+%%   <<"Source">> => list(any()),
+%%   <<"SyncThreshold">> => integer()
+%% }
+-type timecode_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% timed_metadata_schedule_action_settings() :: #{
+%%   <<"Id3">> => string()
+%% }
+-type timed_metadata_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transfer_input_device_request() :: #{
+%%   <<"TargetCustomerId">> => string(),
+%%   <<"TargetRegion">> => string(),
+%%   <<"TransferMessage">> => string()
+%% }
+-type transfer_input_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_input_device_response() :: #{}
+-type transfer_input_device_response() :: #{}.
+
+
+%% Example:
+%% transferring_input_device_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"TargetCustomerId">> => string(),
+%%   <<"TransferType">> => list(any())
+%% }
+-type transferring_input_device_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ttml_destination_settings() :: #{
+%%   <<"StyleControl">> => list(any())
+%% }
+-type ttml_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% udp_container_settings() :: #{
+%%   <<"M2tsSettings">> => m2ts_settings()
+%% }
+-type udp_container_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% udp_group_settings() :: #{
+%%   <<"InputLossAction">> => list(any()),
+%%   <<"TimedMetadataId3Frame">> => list(any()),
+%%   <<"TimedMetadataId3Period">> => integer()
+%% }
+-type udp_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% udp_output_settings() :: #{
+%%   <<"BufferMsec">> => integer(),
+%%   <<"ContainerSettings">> => udp_container_settings(),
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"FecOutputSettings">> => fec_output_settings()
+%% }
+-type udp_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ValidationErrors">> => list(validation_error())
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_configuration_request() :: #{
+%%   <<"AccountConfiguration">> => account_configuration()
+%% }
+-type update_account_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_configuration_response() :: #{
+%%   <<"AccountConfiguration">> => account_configuration()
+%% }
+-type update_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_class_request() :: #{
+%%   <<"ChannelClass">> := list(any()),
+%%   <<"Destinations">> => list(output_destination())
+%% }
+-type update_channel_class_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_class_response() :: #{
+%%   <<"Channel">> => channel()
+%% }
+-type update_channel_class_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_placement_group_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string())
+%% }
+-type update_channel_placement_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_placement_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Channels">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(string()),
+%%   <<"State">> => list(any())
+%% }
+-type update_channel_placement_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"AnywhereSettings">> => anywhere_settings(),
+%%   <<"CdiInputSpecification">> => cdi_input_specification(),
+%%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
+%%   <<"ChannelSecurityGroups">> => list(string()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncoderSettings">> => encoder_settings(),
+%%   <<"InferenceSettings">> => inference_settings(),
+%%   <<"InputAttachments">> => list(input_attachment()),
+%%   <<"InputSpecification">> => input_specification(),
+%%   <<"LinkedChannelSettings">> => linked_channel_settings(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Maintenance">> => maintenance_update_settings(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SpecialRouterSettings">> => special_router_settings()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"Channel">> => channel()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_group_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_cloud_watch_alarm_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_request() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"DatapointsToAlarm">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"TargetResourceType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"TreatMissingData">> => list(any())
+%% }
+-type update_cloud_watch_alarm_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_watch_alarm_template_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -5885,370 +5908,15 @@
 %%   <<"Threshold">> => float(),
 %%   <<"TreatMissingData">> => list(any())
 %% }
--type cloud_watch_alarm_template_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_input_device_response() :: #{}
--type stop_input_device_response() :: #{}.
+-type update_cloud_watch_alarm_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_watch_alarm_template_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
+%% update_cluster_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateCount">> => integer()
+%%   <<"NetworkSettings">> => cluster_network_settings_update_request()
 %% }
--type cloud_watch_alarm_template_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_listener_settings_request() :: #{
-%%   <<"Decryption">> => srt_listener_decryption_request(),
-%%   <<"MinimumLatency">> => integer(),
-%%   <<"StreamId">> => string()
-%% }
--type srt_listener_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_configuration_request() :: #{
-%%   <<"AccountConfiguration">> => account_configuration()
-%% }
--type update_account_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_offering_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"FixedPrice">> => float(),
-%%   <<"OfferingDescription">> => string(),
-%%   <<"OfferingId">> => string(),
-%%   <<"OfferingType">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"ResourceSpecification">> => reservation_resource_specification(),
-%%   <<"UsagePrice">> => float()
-%% }
--type describe_offering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_basic_put_settings() :: #{
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"FilecacheDuration">> => integer(),
-%%   <<"NumRetries">> => integer(),
-%%   <<"RestartDelay">> => integer()
-%% }
--type hls_basic_put_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_node_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request())
-%% }
--type update_node_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_listener_decryption_request() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"PassphraseSecretArn">> => string()
-%% }
--type srt_listener_decryption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fixed_mode_schedule_action_start_settings() :: #{
-%%   <<"Time">> => string()
-%% }
--type fixed_mode_schedule_action_start_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_network_settings_create_request() :: #{
-%%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping_create_request())
-%% }
--type cluster_network_settings_create_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_destination_route() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Gateway">> => string()
-%% }
--type input_destination_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_nodes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(describe_node_summary())
-%% }
--type list_nodes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_input_device_transfers_response() :: #{
-%%   <<"InputDeviceTransfers">> => list(transferring_input_device_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_input_device_transfers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% signal_map_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"MonitorDeploymentStatus">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type signal_map_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_package_output_destination_settings() :: #{
-%%   <<"ChannelEndpointId">> => string(),
-%%   <<"ChannelGroup">> => string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"MediaPackageRegionName">> => string()
-%% }
--type media_package_output_destination_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_watch_alarm_template_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_cloud_watch_alarm_template_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_successful_result_model() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"State">> => string()
-%% }
--type batch_successful_result_model() :: #{binary() => any()}.
-
-%% Example:
-%% describe_offering_request() :: #{}
--type describe_offering_request() :: #{}.
-
-
-%% Example:
-%% list_cloud_watch_alarm_templates_request() :: #{
-%%   <<"GroupIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Scope">> => string(),
-%%   <<"SignalMapIdentifier">> => string()
-%% }
--type list_cloud_watch_alarm_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_pre_mixer_settings() :: #{
-%%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
-%%   <<"Channels">> => integer(),
-%%   <<"GainDb">> => float(),
-%%   <<"RemixSettings">> => remix_settings()
-%% }
--type audio_pre_mixer_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_start_request() :: #{
-%%   <<"ChannelIds">> => list(string()),
-%%   <<"MultiplexIds">> => list(string())
-%% }
--type batch_start_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_webdav_settings() :: #{
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"FilecacheDuration">> => integer(),
-%%   <<"HttpTransferMode">> => list(any()),
-%%   <<"NumRetries">> => integer(),
-%%   <<"RestartDelay">> => integer()
-%% }
--type hls_webdav_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_statmux_video_settings() :: #{
-%%   <<"MaximumBitrate">> => integer(),
-%%   <<"MinimumBitrate">> => integer(),
-%%   <<"Priority">> => integer()
-%% }
--type multiplex_statmux_video_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_mapping_update_request() :: #{
-%%   <<"LogicalInterfaceName">> => string(),
-%%   <<"NetworkId">> => string()
-%% }
--type interface_mapping_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output() :: #{
-%%   <<"AudioDescriptionNames">> => list(string()),
-%%   <<"CaptionDescriptionNames">> => list(string()),
-%%   <<"OutputName">> => string(),
-%%   <<"OutputSettings">> => output_settings(),
-%%   <<"VideoDescriptionName">> => string()
-%% }
--type output() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_offering_response() :: #{
-%%   <<"Reservation">> => reservation()
-%% }
--type purchase_offering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multiplex_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Destinations">> => list(multiplex_output_destination()),
-%%   <<"Id">> => string(),
-%%   <<"MultiplexSettings">> => multiplex_settings(),
-%%   <<"Name">> => string(),
-%%   <<"PipelinesRunningCount">> => integer(),
-%%   <<"ProgramCount">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type delete_multiplex_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% static_image_activate_schedule_action_settings() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"FadeIn">> => integer(),
-%%   <<"FadeOut">> => integer(),
-%%   <<"Height">> => integer(),
-%%   <<"Image">> => input_location(),
-%%   <<"ImageX">> => integer(),
-%%   <<"ImageY">> => integer(),
-%%   <<"Layer">> => integer(),
-%%   <<"Opacity">> => integer(),
-%%   <<"Width">> => integer()
-%% }
--type static_image_activate_schedule_action_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_multiplex_program_request() :: #{}
--type describe_multiplex_program_request() :: #{}.
-
-
-%% Example:
-%% scte35_descriptor() :: #{
-%%   <<"Scte35DescriptorSettings">> => scte35_descriptor_settings()
-%% }
--type scte35_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_offering_request() :: #{
-%%   <<"Count">> := integer(),
-%%   <<"Name">> => string(),
-%%   <<"RenewalSettings">> => renewal_settings(),
-%%   <<"RequestId">> => string(),
-%%   <<"Start">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type purchase_offering_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% h264_settings() :: #{
-%%   <<"TimecodeInsertion">> => list(any()),
-%%   <<"QualityLevel">> => list(any()),
-%%   <<"SubgopLength">> => list(any()),
-%%   <<"AdaptiveQuantization">> => list(any()),
-%%   <<"Slices">> => integer(),
-%%   <<"ColorSpaceSettings">> => h264_color_space_settings(),
-%%   <<"Softness">> => integer(),
-%%   <<"FramerateNumerator">> => integer(),
-%%   <<"GopBReference">> => list(any()),
-%%   <<"QvbrQualityLevel">> => integer(),
-%%   <<"GopSize">> => float(),
-%%   <<"FlickerAq">> => list(any()),
-%%   <<"SpatialAq">> => list(any()),
-%%   <<"GopNumBFrames">> => integer(),
-%%   <<"TemporalAq">> => list(any()),
-%%   <<"GopSizeUnits">> => list(any()),
-%%   <<"Bitrate">> => integer(),
-%%   <<"TimecodeBurninSettings">> => timecode_burnin_settings(),
-%%   <<"ParControl">> => list(any()),
-%%   <<"NumRefFrames">> => integer(),
-%%   <<"BufFillPct">> => integer(),
-%%   <<"Profile">> => list(any()),
-%%   <<"RateControlMode">> => list(any()),
-%%   <<"FramerateControl">> => list(any()),
-%%   <<"ParNumerator">> => integer(),
-%%   <<"ColorMetadata">> => list(any()),
-%%   <<"ScanType">> => list(any()),
-%%   <<"Level">> => list(any()),
-%%   <<"LookAheadRateControl">> => list(any()),
-%%   <<"MinIInterval">> => integer(),
-%%   <<"MinBitrate">> => integer(),
-%%   <<"ForceFieldPictures">> => list(any()),
-%%   <<"SceneChangeDetect">> => list(any()),
-%%   <<"BufSize">> => integer(),
-%%   <<"EntropyEncoding">> => list(any()),
-%%   <<"ParDenominator">> => integer(),
-%%   <<"Syntax">> => list(any()),
-%%   <<"FixedAfd">> => list(any()),
-%%   <<"GopClosedCadence">> => integer(),
-%%   <<"MaxBitrate">> => integer(),
-%%   <<"AfdSignaling">> => list(any()),
-%%   <<"FramerateDenominator">> => integer(),
-%%   <<"MinQp">> => integer(),
-%%   <<"FilterSettings">> => h264_filter_settings()
-%% }
--type h264_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% multiplex_program_pipeline_detail() :: #{
-%%   <<"ActiveChannelPipeline">> => string(),
-%%   <<"PipelineId">> => string()
-%% }
--type multiplex_program_pipeline_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% color_correction() :: #{
-%%   <<"InputColorSpace">> => list(any()),
-%%   <<"OutputColorSpace">> => list(any()),
-%%   <<"Uri">> => string()
-%% }
--type color_correction() :: #{binary() => any()}.
+-type update_cluster_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6265,15 +5933,232 @@
 
 
 %% Example:
-%% start_update_signal_map_request() :: #{
-%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
+%% update_event_bridge_rule_template_group_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_event_bridge_rule_template_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_bridge_rule_template_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DiscoveryEntryPointArn">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
-%%   <<"ForceRediscovery">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_bridge_rule_template_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_bridge_rule_template_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupIdentifier">> => string(),
 %%   <<"Name">> => string()
 %% }
--type start_update_signal_map_request() :: #{binary() => any()}.
+-type update_event_bridge_rule_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_bridge_rule_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
+%%   <<"EventType">> => list(any()),
+%%   <<"GroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_bridge_rule_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_device_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"HdDeviceSettings">> => input_device_configurable_settings(),
+%%   <<"Name">> => string(),
+%%   <<"UhdDeviceSettings">> => input_device_configurable_settings()
+%% }
+-type update_input_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_device_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"DeviceSettingsSyncState">> => list(any()),
+%%   <<"DeviceUpdateStatus">> => list(any()),
+%%   <<"HdDeviceSettings">> => input_device_hd_settings(),
+%%   <<"Id">> => string(),
+%%   <<"MacAddress">> => string(),
+%%   <<"MedialiveInputArns">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NetworkSettings">> => input_device_network_settings(),
+%%   <<"OutputType">> => list(any()),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"UhdDeviceSettings">> => input_device_uhd_settings()
+%% }
+-type update_input_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_request() :: #{
+%%   <<"Destinations">> => list(input_destination_request()),
+%%   <<"InputDevices">> => list(input_device_request()),
+%%   <<"InputSecurityGroups">> => list(string()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
+%%   <<"MulticastSettings">> => multicast_settings_update_request(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
+%%   <<"Sources">> => list(input_source_request()),
+%%   <<"SpecialRouterSettings">> => special_router_settings(),
+%%   <<"SrtSettings">> => srt_settings_request()
+%% }
+-type update_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_response() :: #{
+%%   <<"Input">> => input()
+%% }
+-type update_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_security_group_request() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
+%% }
+-type update_input_security_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_input_security_group_response() :: #{
+%%   <<"SecurityGroup">> => input_security_group()
+%% }
+-type update_input_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_multiplex_program_request() :: #{
+%%   <<"MultiplexProgramSettings">> => multiplex_program_settings()
+%% }
+-type update_multiplex_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_multiplex_program_response() :: #{
+%%   <<"MultiplexProgram">> => multiplex_program()
+%% }
+-type update_multiplex_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_multiplex_request() :: #{
+%%   <<"MultiplexSettings">> => multiplex_settings(),
+%%   <<"Name">> => string(),
+%%   <<"PacketIdentifiersMapping">> => map()
+%% }
+-type update_multiplex_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_multiplex_response() :: #{
+%%   <<"Multiplex">> => multiplex()
+%% }
+-type update_multiplex_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_request() :: #{
+%%   <<"IpPools">> => list(ip_pool_update_request()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route_update_request())
+%% }
+-type update_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedClusterIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IpPools">> => list(ip_pool()),
+%%   <<"Name">> => string(),
+%%   <<"Routes">> => list(route()),
+%%   <<"State">> => list(any())
+%% }
+-type update_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request())
+%% }
+-type update_node_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type update_node_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_state_request() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type update_node_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_node_state_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ChannelPlacementGroups">> => list(string()),
+%%   <<"ClusterId">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
+%%   <<"Role">> => list(any()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
+%%   <<"State">> => list(any())
+%% }
+-type update_node_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_reservation_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RenewalSettings">> => renewal_settings()
+%% }
+-type update_reservation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6284,1108 +6169,1223 @@
 
 
 %% Example:
-%% hls_media_store_settings() :: #{
-%%   <<"ConnectionRetryInterval">> => integer(),
-%%   <<"FilecacheDuration">> => integer(),
-%%   <<"MediaStoreStorageClass">> => list(any()),
-%%   <<"NumRetries">> => integer(),
-%%   <<"RestartDelay">> => integer()
+%% update_sdi_source_request() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type hls_media_store_settings() :: #{binary() => any()}.
+-type update_sdi_source_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_input_device_request() :: #{}
--type describe_input_device_request() :: #{}.
+%% update_sdi_source_response() :: #{
+%%   <<"SdiSource">> => sdi_source()
+%% }
+-type update_sdi_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"ElementPath">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_black_failover_settings() :: #{
+%%   <<"BlackDetectThreshold">> => float(),
+%%   <<"VideoBlackThresholdMsec">> => integer()
+%% }
+-type video_black_failover_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_codec_settings() :: #{
+%%   <<"Av1Settings">> => av1_settings(),
+%%   <<"FrameCaptureSettings">> => frame_capture_settings(),
+%%   <<"H264Settings">> => h264_settings(),
+%%   <<"H265Settings">> => h265_settings(),
+%%   <<"Mpeg2Settings">> => mpeg2_settings()
+%% }
+-type video_codec_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_description() :: #{
+%%   <<"CodecSettings">> => video_codec_settings(),
+%%   <<"Height">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"RespondToAfd">> => list(any()),
+%%   <<"ScalingBehavior">> => list(any()),
+%%   <<"Sharpness">> => integer(),
+%%   <<"Width">> => integer()
+%% }
+-type video_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector() :: #{
+%%   <<"ColorSpace">> => list(any()),
+%%   <<"ColorSpaceSettings">> => video_selector_color_space_settings(),
+%%   <<"ColorSpaceUsage">> => list(any()),
+%%   <<"SelectorSettings">> => video_selector_settings()
+%% }
+-type video_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector_color_space_settings() :: #{
+%%   <<"Hdr10Settings">> => hdr10_settings()
+%% }
+-type video_selector_color_space_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector_pid() :: #{
+%%   <<"Pid">> => integer()
+%% }
+-type video_selector_pid() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector_program_id() :: #{
+%%   <<"ProgramId">> => integer()
+%% }
+-type video_selector_program_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_selector_settings() :: #{
+%%   <<"VideoSelectorPid">> => video_selector_pid(),
+%%   <<"VideoSelectorProgramId">> => video_selector_program_id()
+%% }
+-type video_selector_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_output_settings() :: #{
+%%   <<"PublicAddressAllocationIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type vpc_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_output_settings_description() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type vpc_output_settings_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% wav_settings() :: #{
+%%   <<"BitDepth">> => float(),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"SampleRate">> => float()
+%% }
+-type wav_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% webvtt_destination_settings() :: #{
+%%   <<"StyleControl">> => list(any())
+%% }
+-type webvtt_destination_settings() :: #{binary() => any()}.
 
 -type accept_input_device_transfer_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type batch_delete_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type batch_start_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type batch_stop_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type batch_update_schedule_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type cancel_input_device_transfer_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type claim_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_channel_placement_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_cloud_watch_alarm_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_cloud_watch_alarm_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_cluster_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_event_bridge_rule_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_event_bridge_rule_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_input_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_input_security_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_multiplex_program_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_network_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_node_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_node_registration_script_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_partner_input_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_sdi_source_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type create_signal_map_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_channel_placement_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_cloud_watch_alarm_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_cloud_watch_alarm_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_cluster_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_event_bridge_rule_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_event_bridge_rule_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_input_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_input_security_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_multiplex_program_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_network_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_node_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_reservation_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_schedule_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_sdi_source_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type delete_signal_map_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_account_configuration_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_channel_placement_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_cluster_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_input_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_input_device_thumbnail_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_input_security_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_multiplex_program_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_network_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_node_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_offering_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_reservation_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_schedule_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_sdi_source_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type describe_thumbnails_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type get_cloud_watch_alarm_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_cloud_watch_alarm_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_event_bridge_rule_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_event_bridge_rule_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_signal_map_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_alerts_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_channel_placement_groups_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_channels_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_cloud_watch_alarm_template_groups_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_cloud_watch_alarm_templates_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_cluster_alerts_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_clusters_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_event_bridge_rule_template_groups_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_event_bridge_rule_templates_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_input_device_transfers_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_input_devices_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_input_security_groups_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_inputs_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_multiplex_alerts_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_multiplex_programs_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_multiplexes_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_networks_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_nodes_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_offerings_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_reservations_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_sdi_sources_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type list_signal_maps_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_versions_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type purchase_offering_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type reboot_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type reject_input_device_transfer_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type restart_channel_pipelines_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type start_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type start_delete_monitor_deployment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type start_input_device_maintenance_window_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type start_monitor_deployment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type start_update_signal_map_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type stop_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type stop_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type stop_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type transfer_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_account_configuration_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_channel_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_channel_class_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_channel_placement_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_cloud_watch_alarm_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_cloud_watch_alarm_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_cluster_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_event_bridge_rule_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_event_bridge_rule_template_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_input_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_input_device_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_input_security_group_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_multiplex_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_multiplex_program_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_network_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_node_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_node_state_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
     unprocessable_entity_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_reservation_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 -type update_sdi_source_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    internal_server_error_exception() | 
+    gateway_timeout_exception() | 
     forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
     bad_gateway_exception().
 
 %%====================================================================

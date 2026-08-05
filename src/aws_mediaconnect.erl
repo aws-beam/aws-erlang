@@ -223,98 +223,132 @@
 
 
 %% Example:
-%% router_input_thumbnail_details() :: #{
-%%   <<"Thumbnail">> => [binary()],
-%%   <<"ThumbnailMessages">> => list(router_input_message()),
-%%   <<"Timecode">> => [string()],
-%%   <<"Timestamp">> => [non_neg_integer()]
-%% }
--type router_input_thumbnail_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_router_input_stream_details() :: #{
-%%   <<"SourceIndexOneStreamDetails">> => merge_router_input_indexed_stream_details(),
-%%   <<"SourceIndexZeroStreamDetails">> => merge_router_input_indexed_stream_details()
-%% }
--type merge_router_input_stream_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_router_network_interface_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list([string()]()),
-%%   <<"SubnetId">> => [string()]
-%% }
--type vpc_router_network_interface_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_network_interface_response() :: #{
-%%   <<"Errors">> => list(batch_get_router_network_interface_error()),
-%%   <<"RouterNetworkInterfaces">> => list(router_network_interface())
-%% }
--type batch_get_router_network_interface_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_gateway_instance_response() :: #{
-%%   <<"GatewayInstanceArn">> => [string()],
-%%   <<"InstanceState">> => list(any())
-%% }
--type deregister_gateway_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_request() :: #{
-%%   <<"EncodingConfig">> => encoding_config(),
-%%   <<"FlowSize">> => list(any()),
-%%   <<"Maintenance">> => update_maintenance(),
-%%   <<"NdiConfig">> => ndi_config(),
-%%   <<"SourceFailoverConfig">> => update_failover_config(),
-%%   <<"SourceMonitoringConfig">> => monitoring_config()
-%% }
--type update_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% take_router_input_response() :: #{
-%%   <<"RoutedState">> => list(any()),
-%%   <<"RouterInputArn">> => string(),
-%%   <<"RouterInputName">> => [string()],
-%%   <<"RouterOutputArn">> => string(),
-%%   <<"RouterOutputName">> => [string()]
-%% }
--type take_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_flow_source_thumbnail_response() :: #{
-%%   <<"ThumbnailDetails">> => thumbnail_details()
-%% }
--type describe_flow_source_thumbnail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_flow_vpc_interface_response() :: #{
+%% add_bridge_flow_source_request() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"NonDeletedNetworkInterfaceIds">> => list([string()]()),
-%%   <<"VpcInterfaceName">> => [string()]
+%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment(),
+%%   <<"Name">> => [string()]
 %% }
--type remove_flow_vpc_interface_response() :: #{binary() => any()}.
+-type add_bridge_flow_source_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% media_stream_output_configuration_request() :: #{
-%%   <<"DestinationConfigurations">> => list(destination_configuration_request()),
-%%   <<"EncodingName">> => list(any()),
-%%   <<"EncodingParameters">> => encoding_parameters_request(),
-%%   <<"MediaStreamName">> => [string()]
+%% add_bridge_network_output_request() :: #{
+%%   <<"IpAddress">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"Ttl">> => [integer()]
 %% }
--type media_stream_output_configuration_request() :: #{binary() => any()}.
+-type add_bridge_network_output_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% stop_router_input_request() :: #{}
--type stop_router_input_request() :: #{}.
+%% add_bridge_network_source_request() :: #{
+%%   <<"MulticastIp">> => [string()],
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
+%%   <<"Name">> => [string()],
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any())
+%% }
+-type add_bridge_network_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_output_request() :: #{
+%%   <<"NetworkOutput">> => add_bridge_network_output_request()
+%% }
+-type add_bridge_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_outputs_request() :: #{
+%%   <<"Outputs">> := list(add_bridge_output_request())
+%% }
+-type add_bridge_outputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_outputs_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"Outputs">> => list(bridge_output())
+%% }
+-type add_bridge_outputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_source_request() :: #{
+%%   <<"FlowSource">> => add_bridge_flow_source_request(),
+%%   <<"NetworkSource">> => add_bridge_network_source_request()
+%% }
+-type add_bridge_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_sources_request() :: #{
+%%   <<"Sources">> := list(add_bridge_source_request())
+%% }
+-type add_bridge_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_bridge_sources_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"Sources">> => list(bridge_source())
+%% }
+-type add_bridge_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_egress_gateway_bridge_request() :: #{
+%%   <<"MaxBitrate">> => [integer()]
+%% }
+-type add_egress_gateway_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_media_streams_request() :: #{
+%%   <<"MediaStreams">> := list(add_media_stream_request())
+%% }
+-type add_flow_media_streams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_media_streams_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"MediaStreams">> => list(media_stream())
+%% }
+-type add_flow_media_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_outputs420_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type add_flow_outputs420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_outputs_request() :: #{
+%%   <<"Outputs">> := list(add_output_request())
+%% }
+-type add_flow_outputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_outputs_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Outputs">> => list(output())
+%% }
+-type add_flow_outputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_flow_sources_request() :: #{
+%%   <<"Sources">> := list(set_source_request())
+%% }
+-type add_flow_sources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -326,30 +360,401 @@
 
 
 %% Example:
-%% listed_entitlement() :: #{
-%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"EntitlementName">> => [string()]
+%% add_flow_vpc_interfaces_request() :: #{
+%%   <<"VpcInterfaces">> := list(vpc_interface_request())
 %% }
--type listed_entitlement() :: #{binary() => any()}.
+-type add_flow_vpc_interfaces_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% add_flow_vpc_interfaces_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"VpcInterfaces">> => list(vpc_interface())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type add_flow_vpc_interfaces_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% transport_stream_program() :: #{
-%%   <<"PcrPid">> => [integer()],
-%%   <<"ProgramName">> => [string()],
-%%   <<"ProgramNumber">> => [integer()],
-%%   <<"ProgramPid">> => [integer()],
-%%   <<"Streams">> => list(transport_stream())
+%% add_ingress_gateway_bridge_request() :: #{
+%%   <<"MaxBitrate">> => [integer()],
+%%   <<"MaxOutputs">> => [integer()]
 %% }
--type transport_stream_program() :: #{binary() => any()}.
+-type add_ingress_gateway_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_maintenance() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceStartHour">> => [string()]
+%% }
+-type add_maintenance() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_media_stream_request() :: #{
+%%   <<"Attributes">> => media_stream_attributes_request(),
+%%   <<"ClockRate">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"MediaStreamId">> => [integer()],
+%%   <<"MediaStreamName">> => [string()],
+%%   <<"MediaStreamTags">> => map(),
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"VideoFormat">> => [string()]
+%% }
+-type add_media_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_output_request() :: #{
+%%   <<"CidrAllowList">> => list([string()]()),
+%%   <<"Description">> => [string()],
+%%   <<"Destination">> => [string()],
+%%   <<"Encryption">> => encryption(),
+%%   <<"MaxLatency">> => [integer()],
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
+%%   <<"MinLatency">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"NdiOutputTimecodeSource">> => list(any()),
+%%   <<"NdiProgramName">> => [string()],
+%%   <<"NdiSpeedHqQuality">> => [integer()],
+%%   <<"OutputStatus">> => list(any()),
+%%   <<"OutputTags">> => map(),
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"RemoteId">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"SenderControlPort">> => [integer()],
+%%   <<"SmoothingLatency">> => [integer()],
+%%   <<"StreamId">> => [string()],
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type add_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_monitoring_setting() :: #{
+%%   <<"SilentAudio">> => silent_audio()
+%% }
+-type audio_monitoring_setting() :: #{binary() => any()}.
+
+%% Example:
+%% automatic_encryption_key_configuration() :: #{}
+-type automatic_encryption_key_configuration() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_input_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_input_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_input_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_input_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_input_error()),
+%%   <<"RouterInputs">> => list(router_input())
+%% }
+-type batch_get_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_network_interface_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_network_interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_network_interface_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_network_interface_error()),
+%%   <<"RouterNetworkInterfaces">> => list(router_network_interface())
+%% }
+-type batch_get_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_output_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_router_output_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_output_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_router_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_router_output_response() :: #{
+%%   <<"Errors">> => list(batch_get_router_output_error()),
+%%   <<"RouterOutputs">> => list(router_output())
+%% }
+-type batch_get_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% black_frames() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => [integer()]
+%% }
+-type black_frames() :: #{binary() => any()}.
+
+
+%% Example:
+%% black_frames_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type black_frames_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"BridgeMessages">> => list(message_detail()),
+%%   <<"BridgeState">> => list(any()),
+%%   <<"EgressGatewayBridge">> => egress_gateway_bridge(),
+%%   <<"IngressGatewayBridge">> => ingress_gateway_bridge(),
+%%   <<"Name">> => [string()],
+%%   <<"Outputs">> => list(bridge_output()),
+%%   <<"PlacementArn">> => [string()],
+%%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"Sources">> => list(bridge_source())
+%% }
+-type bridge() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_flow_output() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"FlowSourceArn">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type bridge_flow_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_flow_source() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment(),
+%%   <<"Name">> => [string()],
+%%   <<"OutputArn">> => [string()]
+%% }
+-type bridge_flow_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_network_output() :: #{
+%%   <<"IpAddress">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"Ttl">> => [integer()]
+%% }
+-type bridge_network_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_network_source() :: #{
+%%   <<"MulticastIp">> => [string()],
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
+%%   <<"Name">> => [string()],
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any())
+%% }
+-type bridge_network_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_output() :: #{
+%%   <<"FlowOutput">> => bridge_flow_output(),
+%%   <<"NetworkOutput">> => bridge_network_output()
+%% }
+-type bridge_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bridge_source() :: #{
+%%   <<"FlowSource">> => bridge_flow_source(),
+%%   <<"NetworkSource">> => bridge_network_source()
+%% }
+-type bridge_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_quality_analysis_feature_configuration() :: #{
+%%   <<"BlackFrames">> => black_frames_configuration(),
+%%   <<"FrozenFrames">> => frozen_frames_configuration(),
+%%   <<"SilentAudio">> => silent_audio_configuration()
+%% }
+-type content_quality_analysis_feature_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bridge420_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type create_bridge420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bridge_request() :: #{
+%%   <<"EgressGatewayBridge">> => add_egress_gateway_bridge_request(),
+%%   <<"IngressGatewayBridge">> => add_ingress_gateway_bridge_request(),
+%%   <<"Name">> := [string()],
+%%   <<"Outputs">> => list(add_bridge_output_request()),
+%%   <<"PlacementArn">> := [string()],
+%%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"Sources">> := list(add_bridge_source_request())
+%% }
+-type create_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bridge_response() :: #{
+%%   <<"Bridge">> => bridge()
+%% }
+-type create_bridge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow420_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type create_flow420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_request() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"EncodingConfig">> => encoding_config(),
+%%   <<"Entitlements">> => list(grant_entitlement_request()),
+%%   <<"FlowSize">> => list(any()),
+%%   <<"FlowTags">> => map(),
+%%   <<"Maintenance">> => add_maintenance(),
+%%   <<"MediaStreams">> => list(add_media_stream_request()),
+%%   <<"Name">> := [string()],
+%%   <<"NdiConfig">> => ndi_config(),
+%%   <<"Outputs">> => list(add_output_request()),
+%%   <<"Source">> => set_source_request(),
+%%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config(),
+%%   <<"Sources">> => list(set_source_request()),
+%%   <<"VpcInterfaces">> => list(vpc_interface_request())
+%% }
+-type create_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_flow_response() :: #{
+%%   <<"Flow">> => flow()
+%% }
+-type create_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway420_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type create_gateway420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_request() :: #{
+%%   <<"EgressCidrBlocks">> := list([string()]()),
+%%   <<"Name">> := [string()],
+%%   <<"Networks">> := list(gateway_network())
+%% }
+-type create_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_response() :: #{
+%%   <<"Gateway">> => gateway()
+%% }
+-type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_input_request() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"ClientToken">> => string(),
+%%   <<"Configuration">> := list(),
+%%   <<"ContentQualityAnalysisConfiguration">> => list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> := [float()],
+%%   <<"Name">> := [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutingScope">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> := list(any()),
+%%   <<"TransitEncryption">> => router_input_transit_encryption()
+%% }
+-type create_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type create_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_network_interface_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Configuration">> := list(),
+%%   <<"Name">> := [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_router_network_interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type create_router_network_interface_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -369,14 +774,78 @@
 
 
 %% Example:
-%% describe_flow_source_metadata_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Messages">> => list(message_detail()),
-%%   <<"NdiInfo">> => ndi_source_metadata_info(),
-%%   <<"Timestamp">> => [non_neg_integer()],
-%%   <<"TransportMediaInfo">> => transport_media_info()
+%% create_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
 %% }
--type describe_flow_source_metadata_response() :: #{binary() => any()}.
+-type create_router_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_maintenance_configuration() :: #{}
+-type default_maintenance_configuration() :: #{}.
+
+%% Example:
+%% delete_bridge_request() :: #{}
+-type delete_bridge_request() :: #{}.
+
+
+%% Example:
+%% delete_bridge_response() :: #{
+%%   <<"BridgeArn">> => [string()]
+%% }
+-type delete_bridge_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_request() :: #{}
+-type delete_flow_request() :: #{}.
+
+
+%% Example:
+%% delete_flow_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type delete_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_request() :: #{}
+-type delete_gateway_request() :: #{}.
+
+
+%% Example:
+%% delete_gateway_response() :: #{
+%%   <<"GatewayArn">> => [string()]
+%% }
+-type delete_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_router_input_request() :: #{}
+-type delete_router_input_request() :: #{}.
+
+
+%% Example:
+%% delete_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type delete_router_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_router_network_interface_request() :: #{}
+-type delete_router_network_interface_request() :: #{}.
+
+
+%% Example:
+%% delete_router_network_interface_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type delete_router_network_interface_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_router_output_request() :: #{}
+-type delete_router_output_request() :: #{}.
 
 
 %% Example:
@@ -389,31 +858,41 @@
 
 
 %% Example:
-%% grant_flow_entitlements_request() :: #{
-%%   <<"Entitlements">> := list(grant_entitlement_request())
+%% deregister_gateway_instance_request() :: #{
+%%   <<"Force">> => [boolean()]
 %% }
--type grant_flow_entitlements_request() :: #{binary() => any()}.
+-type deregister_gateway_instance_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_router_network_interface_request() :: #{
-%%   <<"Configuration">> => list(),
-%%   <<"Name">> => [string()]
+%% deregister_gateway_instance_response() :: #{
+%%   <<"GatewayInstanceArn">> => [string()],
+%%   <<"InstanceState">> => list(any())
 %% }
--type update_router_network_interface_request() :: #{binary() => any()}.
+-type deregister_gateway_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bridge_request() :: #{}
+-type describe_bridge_request() :: #{}.
 
 
 %% Example:
-%% list_router_network_interfaces_request() :: #{
-%%   <<"Filters">> => list(list()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
+%% describe_bridge_response() :: #{
+%%   <<"Bridge">> => bridge()
 %% }
--type list_router_network_interfaces_request() :: #{binary() => any()}.
+-type describe_bridge_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_gateway_instance_request() :: #{}
--type describe_gateway_instance_request() :: #{}.
+%% describe_flow_request() :: #{}
+-type describe_flow_request() :: #{}.
+
+
+%% Example:
+%% describe_flow_response() :: #{
+%%   <<"Flow">> => flow(),
+%%   <<"Messages">> => messages()
+%% }
+-type describe_flow_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_flow_source_metadata_request() :: #{}
@@ -421,12 +900,229 @@
 
 
 %% Example:
-%% srt_listener_router_output_configuration() :: #{
-%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
-%%   <<"MinimumLatencyMilliseconds">> => [float()],
-%%   <<"Port">> => [integer()]
+%% describe_flow_source_metadata_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Messages">> => list(message_detail()),
+%%   <<"NdiInfo">> => ndi_source_metadata_info(),
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"TransportMediaInfo">> => transport_media_info()
 %% }
--type srt_listener_router_output_configuration() :: #{binary() => any()}.
+-type describe_flow_source_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_source_thumbnail_request() :: #{}
+-type describe_flow_source_thumbnail_request() :: #{}.
+
+
+%% Example:
+%% describe_flow_source_thumbnail_response() :: #{
+%%   <<"ThumbnailDetails">> => thumbnail_details()
+%% }
+-type describe_flow_source_thumbnail_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_instance_request() :: #{}
+-type describe_gateway_instance_request() :: #{}.
+
+
+%% Example:
+%% describe_gateway_instance_response() :: #{
+%%   <<"GatewayInstance">> => gateway_instance()
+%% }
+-type describe_gateway_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_request() :: #{}
+-type describe_gateway_request() :: #{}.
+
+
+%% Example:
+%% describe_gateway_response() :: #{
+%%   <<"Gateway">> => gateway()
+%% }
+-type describe_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_offering_request() :: #{}
+-type describe_offering_request() :: #{}.
+
+
+%% Example:
+%% describe_offering_response() :: #{
+%%   <<"Offering">> => offering()
+%% }
+-type describe_offering_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reservation_request() :: #{}
+-type describe_reservation_request() :: #{}.
+
+
+%% Example:
+%% describe_reservation_response() :: #{
+%%   <<"Reservation">> => reservation()
+%% }
+-type describe_reservation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"DestinationIp">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"Interface">> => interface(),
+%%   <<"OutboundIp">> => [string()]
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_configuration_request() :: #{
+%%   <<"DestinationIp">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"Interface">> => interface_request()
+%% }
+-type destination_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% egress_gateway_bridge() :: #{
+%%   <<"InstanceId">> => [string()],
+%%   <<"MaxBitrate">> => [integer()]
+%% }
+-type egress_gateway_bridge() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoding_config() :: #{
+%%   <<"EncodingProfile">> => list(any()),
+%%   <<"VideoMaxBitrate">> => [integer()]
+%% }
+-type encoding_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoding_parameters() :: #{
+%%   <<"CompressionFactor">> => [float()],
+%%   <<"EncoderProfile">> => list(any())
+%% }
+-type encoding_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoding_parameters_request() :: #{
+%%   <<"CompressionFactor">> => [float()],
+%%   <<"EncoderProfile">> => list(any())
+%% }
+-type encoding_parameters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"ConstantInitializationVector">> => [string()],
+%%   <<"DeviceId">> => [string()],
+%%   <<"KeyType">> => list(any()),
+%%   <<"Region">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"RoleArn">> => [string()],
+%%   <<"SecretArn">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% entitlement() :: #{
+%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Encryption">> => encryption(),
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"EntitlementStatus">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"Subscribers">> => list([string()]())
+%% }
+-type entitlement() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_config() :: #{
+%%   <<"FailoverMode">> => list(any()),
+%%   <<"RecoveryWindow">> => [integer()],
+%%   <<"SourcePriority">> => source_priority(),
+%%   <<"State">> => list(any())
+%% }
+-type failover_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_router_input_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"PrimarySourceIndex">> => [integer()],
+%%   <<"ProtocolConfigurations">> => list(list()),
+%%   <<"SourcePriorityMode">> => list(any())
+%% }
+-type failover_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_router_input_indexed_stream_details() :: #{
+%%   <<"SourceIndex">> => [integer()],
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type failover_router_input_indexed_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_router_input_stream_details() :: #{
+%%   <<"SourceIndexOneStreamDetails">> => failover_router_input_indexed_stream_details(),
+%%   <<"SourceIndexZeroStreamDetails">> => failover_router_input_indexed_stream_details()
+%% }
+-type failover_router_input_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"Description">> => [string()],
+%%   <<"EgressIp">> => [string()],
+%%   <<"EncodingConfig">> => encoding_config(),
+%%   <<"Entitlements">> => list(entitlement()),
+%%   <<"FlowArn">> => [string()],
+%%   <<"FlowSize">> => list(any()),
+%%   <<"Maintenance">> => maintenance(),
+%%   <<"MediaStreams">> => list(media_stream()),
+%%   <<"Name">> => [string()],
+%%   <<"NdiConfig">> => ndi_config(),
+%%   <<"Outputs">> => list(output()),
+%%   <<"Source">> => source(),
+%%   <<"SourceFailoverConfig">> => failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config(),
+%%   <<"Sources">> => list(source()),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcInterfaces">> => list(vpc_interface())
+%% }
+-type flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_transit_encryption() :: #{
+%%   <<"EncryptionKeyConfiguration">> => list(),
+%%   <<"EncryptionKeyType">> => list(any())
+%% }
+-type flow_transit_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% fmtp() :: #{
+%%   <<"ChannelOrder">> => [string()],
+%%   <<"Colorimetry">> => list(any()),
+%%   <<"ExactFramerate">> => [string()],
+%%   <<"Par">> => [string()],
+%%   <<"Range">> => list(any()),
+%%   <<"ScanMode">> => list(any()),
+%%   <<"Tcs">> => list(any())
+%% }
+-type fmtp() :: #{binary() => any()}.
 
 
 %% Example:
@@ -443,29 +1139,1015 @@
 
 
 %% Example:
-%% batch_get_router_input_error() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Code">> => [string()],
+%% forbidden_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type batch_get_router_input_error() :: #{binary() => any()}.
+-type forbidden_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_router_network_interface_response() :: #{
+%% frame_resolution() :: #{
+%%   <<"FrameHeight">> => [integer()],
+%%   <<"FrameWidth">> => [integer()]
+%% }
+-type frame_resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% frozen_frames() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => [integer()]
+%% }
+-type frozen_frames() :: #{binary() => any()}.
+
+
+%% Example:
+%% frozen_frames_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
+%% }
+-type frozen_frames_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway() :: #{
+%%   <<"EgressCidrBlocks">> => list([string()]()),
+%%   <<"GatewayArn">> => [string()],
+%%   <<"GatewayMessages">> => list(message_detail()),
+%%   <<"GatewayState">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"Networks">> => list(gateway_network())
+%% }
+-type gateway() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_bridge_source() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type gateway_bridge_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_instance() :: #{
+%%   <<"BridgePlacement">> => list(any()),
+%%   <<"ConnectionStatus">> => list(any()),
+%%   <<"GatewayArn">> => [string()],
+%%   <<"GatewayInstanceArn">> => [string()],
+%%   <<"InstanceId">> => [string()],
+%%   <<"InstanceMessages">> => list(message_detail()),
+%%   <<"InstanceState">> => list(any()),
+%%   <<"RunningBridgeCount">> => [integer()]
+%% }
+-type gateway_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_network() :: #{
+%%   <<"CidrBlock">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type gateway_network() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_request() :: #{}
+-type get_router_input_request() :: #{}.
+
+
+%% Example:
+%% get_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type get_router_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_source_metadata_request() :: #{}
+-type get_router_input_source_metadata_request() :: #{}.
+
+
+%% Example:
+%% get_router_input_source_metadata_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"SourceMetadataDetails">> => router_input_source_metadata_details()
+%% }
+-type get_router_input_source_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_input_thumbnail_request() :: #{}
+-type get_router_input_thumbnail_request() :: #{}.
+
+
+%% Example:
+%% get_router_input_thumbnail_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"ThumbnailDetails">> => router_input_thumbnail_details()
+%% }
+-type get_router_input_thumbnail_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_network_interface_request() :: #{}
+-type get_router_network_interface_request() :: #{}.
+
+
+%% Example:
+%% get_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type get_router_network_interface_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_router_output_request() :: #{}
+-type get_router_output_request() :: #{}.
+
+
+%% Example:
+%% get_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
+%% }
+-type get_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant_entitlement_request() :: #{
+%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Encryption">> => encryption(),
+%%   <<"EntitlementStatus">> => list(any()),
+%%   <<"EntitlementTags">> => map(),
+%%   <<"Name">> => [string()],
+%%   <<"Subscribers">> => list([string()]())
+%% }
+-type grant_entitlement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant_flow_entitlements420_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type grant_flow_entitlements420_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant_flow_entitlements_request() :: #{
+%%   <<"Entitlements">> := list(grant_entitlement_request())
+%% }
+-type grant_flow_entitlements_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant_flow_entitlements_response() :: #{
+%%   <<"Entitlements">> => list(entitlement()),
+%%   <<"FlowArn">> => [string()]
+%% }
+-type grant_flow_entitlements_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingress_gateway_bridge() :: #{
+%%   <<"InstanceId">> => [string()],
+%%   <<"MaxBitrate">> => [integer()],
+%%   <<"MaxOutputs">> => [integer()]
+%% }
+-type ingress_gateway_bridge() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_configuration() :: #{
+%%   <<"InputIp">> => [string()],
+%%   <<"InputPort">> => [integer()],
+%%   <<"Interface">> => interface()
+%% }
+-type input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_configuration_request() :: #{
+%%   <<"InputPort">> => [integer()],
+%%   <<"Interface">> => interface_request()
+%% }
+-type input_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_request() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bridges_request() :: #{
+%%   <<"FilterArn">> => [string()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_bridges_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bridges_response() :: #{
+%%   <<"Bridges">> => list(listed_bridge()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_bridges_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entitlements_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_entitlements_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entitlements_response() :: #{
+%%   <<"Entitlements">> => list(listed_entitlement()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_entitlements_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flows_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flows_response() :: #{
+%%   <<"Flows">> => list(listed_flow()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_instances_request() :: #{
+%%   <<"FilterArn">> => [string()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_gateway_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_instances_response() :: #{
+%%   <<"Instances">> => list(listed_gateway_instance()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_gateway_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateways_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateways_response() :: #{
+%%   <<"Gateways">> => list(listed_gateway()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_offerings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_offerings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_offerings_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Offerings">> => list(offering())
+%% }
+-type list_offerings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reservations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_reservations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reservations_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Reservations">> => list(reservation())
+%% }
+-type list_reservations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_inputs_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_inputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_inputs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterInputs">> => list(listed_router_input())
+%% }
+-type list_router_inputs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_network_interfaces_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_network_interfaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_network_interfaces_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterNetworkInterfaces">> => list(listed_router_network_interface())
+%% }
+-type list_router_network_interfaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_outputs_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_router_outputs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_router_outputs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RouterOutputs">> => list(listed_router_output())
+%% }
+-type list_router_outputs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_global_resource_request() :: #{}
+-type list_tags_for_global_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_global_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_global_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_bridge() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"BridgeState">> => list(any()),
+%%   <<"BridgeType">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"PlacementArn">> => [string()]
+%% }
+-type listed_bridge() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_entitlement() :: #{
+%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"EntitlementName">> => [string()]
+%% }
+-type listed_entitlement() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_flow() :: #{
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"Description">> => [string()],
+%%   <<"FlowArn">> => [string()],
+%%   <<"Maintenance">> => maintenance(),
+%%   <<"Name">> => [string()],
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type listed_flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_gateway() :: #{
+%%   <<"GatewayArn">> => [string()],
+%%   <<"GatewayState">> => list(any()),
+%%   <<"Name">> => [string()]
+%% }
+-type listed_gateway() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_gateway_instance() :: #{
+%%   <<"GatewayArn">> => [string()],
+%%   <<"GatewayInstanceArn">> => [string()],
+%%   <<"InstanceId">> => [string()],
+%%   <<"InstanceState">> => list(any())
+%% }
+-type listed_gateway_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_router_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"InputType">> => list(any()),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedOutputs">> => [integer()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_router_network_interface() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedInputCount">> => [integer()],
+%%   <<"AssociatedOutputCount">> => [integer()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_router_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Id">> => [string()],
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"OutputType">> => list(any()),
+%%   <<"RegionName">> => [string()],
+%%   <<"RoutedInputArn">> => string(),
+%%   <<"RoutedState">> => list(any()),
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_router_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceDeadline">> => [string()],
+%%   <<"MaintenanceScheduledDate">> => [string()],
+%%   <<"MaintenanceStartHour">> => [string()]
+%% }
+-type maintenance() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_connect_flow_router_input_configuration() :: #{
+%%   <<"FlowArn">> => string(),
+%%   <<"FlowOutputArn">> => string(),
+%%   <<"SourceTransitDecryption">> => flow_transit_encryption()
+%% }
+-type media_connect_flow_router_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% media_connect_flow_router_input_stream_details() :: #{}
+-type media_connect_flow_router_input_stream_details() :: #{}.
+
+
+%% Example:
+%% media_connect_flow_router_output_configuration() :: #{
+%%   <<"DestinationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"FlowArn">> => string(),
+%%   <<"FlowSourceArn">> => string()
+%% }
+-type media_connect_flow_router_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% media_connect_flow_router_output_stream_details() :: #{}
+-type media_connect_flow_router_output_stream_details() :: #{}.
+
+
+%% Example:
+%% media_live_channel_router_input_configuration() :: #{
+%%   <<"MediaLiveChannelArn">> => string(),
+%%   <<"MediaLiveChannelOutputName">> => [string()],
+%%   <<"MediaLivePipelineId">> => list(any()),
+%%   <<"SourceTransitDecryption">> => media_live_transit_encryption()
+%% }
+-type media_live_channel_router_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% media_live_channel_router_input_stream_details() :: #{}
+-type media_live_channel_router_input_stream_details() :: #{}.
+
+
+%% Example:
+%% media_live_input_router_output_configuration() :: #{
+%%   <<"DestinationTransitEncryption">> => media_live_transit_encryption(),
+%%   <<"MediaLiveInputArn">> => string(),
+%%   <<"MediaLivePipelineId">> => list(any())
+%% }
+-type media_live_input_router_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% media_live_input_router_output_stream_details() :: #{}
+-type media_live_input_router_output_stream_details() :: #{}.
+
+
+%% Example:
+%% media_live_transit_encryption() :: #{
+%%   <<"EncryptionKeyConfiguration">> => list(),
+%%   <<"EncryptionKeyType">> => list(any())
+%% }
+-type media_live_transit_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream() :: #{
+%%   <<"Attributes">> => media_stream_attributes(),
+%%   <<"ClockRate">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Fmt">> => [integer()],
+%%   <<"MediaStreamId">> => [integer()],
+%%   <<"MediaStreamName">> => [string()],
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"VideoFormat">> => [string()]
+%% }
+-type media_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_attributes() :: #{
+%%   <<"Fmtp">> => fmtp(),
+%%   <<"Lang">> => [string()]
+%% }
+-type media_stream_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_attributes_request() :: #{
+%%   <<"Fmtp">> => fmtp_request(),
+%%   <<"Lang">> => [string()]
+%% }
+-type media_stream_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_output_configuration() :: #{
+%%   <<"DestinationConfigurations">> => list(destination_configuration()),
+%%   <<"EncodingName">> => list(any()),
+%%   <<"EncodingParameters">> => encoding_parameters(),
+%%   <<"MediaStreamName">> => [string()]
+%% }
+-type media_stream_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_output_configuration_request() :: #{
+%%   <<"DestinationConfigurations">> => list(destination_configuration_request()),
+%%   <<"EncodingName">> => list(any()),
+%%   <<"EncodingParameters">> => encoding_parameters_request(),
+%%   <<"MediaStreamName">> => [string()]
+%% }
+-type media_stream_output_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_source_configuration() :: #{
+%%   <<"EncodingName">> => list(any()),
+%%   <<"InputConfigurations">> => list(input_configuration()),
+%%   <<"MediaStreamName">> => [string()]
+%% }
+-type media_stream_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_source_configuration_request() :: #{
+%%   <<"EncodingName">> => list(any()),
+%%   <<"InputConfigurations">> => list(input_configuration_request()),
+%%   <<"MediaStreamName">> => [string()]
+%% }
+-type media_stream_source_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_configuration() :: #{
+%%   <<"MergeRecoveryWindowMilliseconds">> => [float()],
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"ProtocolConfigurations">> => list(list())
+%% }
+-type merge_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_indexed_stream_details() :: #{
+%%   <<"SourceIndex">> => [integer()],
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type merge_router_input_indexed_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_router_input_stream_details() :: #{
+%%   <<"SourceIndexOneStreamDetails">> => merge_router_input_indexed_stream_details(),
+%%   <<"SourceIndexZeroStreamDetails">> => merge_router_input_indexed_stream_details()
+%% }
+-type merge_router_input_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_detail() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()],
+%%   <<"ResourceName">> => [string()]
+%% }
+-type message_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% messages() :: #{
+%%   <<"Errors">> => list([string()]())
+%% }
+-type messages() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_config() :: #{
+%%   <<"AudioMonitoringSettings">> => list(audio_monitoring_setting()),
+%%   <<"ContentQualityAnalysisState">> => list(any()),
+%%   <<"ThumbnailState">> => list(any()),
+%%   <<"VideoMonitoringSettings">> => list(video_monitoring_setting())
+%% }
+-type monitoring_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_source_settings() :: #{
+%%   <<"MulticastSourceIp">> => [string()]
+%% }
+-type multicast_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_config() :: #{
+%%   <<"MachineName">> => [string()],
+%%   <<"NdiDiscoveryServers">> => list(ndi_discovery_server_config()),
+%%   <<"NdiState">> => list(any())
+%% }
+-type ndi_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_discovery_server_config() :: #{
+%%   <<"DiscoveryServerAddress">> => [string()],
+%%   <<"DiscoveryServerPort">> => [integer()],
+%%   <<"VpcInterfaceAdapter">> => [string()]
+%% }
+-type ndi_discovery_server_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_media_info() :: #{
+%%   <<"Streams">> => list(ndi_media_stream_info())
+%% }
+-type ndi_media_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_media_stream_info() :: #{
+%%   <<"Channels">> => [integer()],
+%%   <<"Codec">> => [string()],
+%%   <<"FrameRate">> => [string()],
+%%   <<"FrameResolution">> => frame_resolution(),
+%%   <<"SampleRate">> => [integer()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"StreamId">> => [integer()],
+%%   <<"StreamType">> => [string()]
+%% }
+-type ndi_media_stream_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_info() :: #{
+%%   <<"SourceName">> => [string()]
+%% }
+-type ndi_source_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_metadata_info() :: #{
+%%   <<"ActiveSource">> => ndi_source_info(),
+%%   <<"DiscoveredSources">> => list(ndi_source_info()),
+%%   <<"MediaInfo">> => ndi_media_info(),
+%%   <<"Messages">> => list(message_detail())
+%% }
+-type ndi_source_metadata_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ndi_source_settings() :: #{
+%%   <<"SourceName">> => [string()]
+%% }
+-type ndi_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% offering() :: #{
+%%   <<"CurrencyCode">> => [string()],
+%%   <<"Duration">> => [integer()],
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"OfferingArn">> => [string()],
+%%   <<"OfferingDescription">> => [string()],
+%%   <<"PricePerUnit">> => [string()],
+%%   <<"PriceUnits">> => list(any()),
+%%   <<"ResourceSpecification">> => resource_specification()
+%% }
+-type offering() :: #{binary() => any()}.
+
+
+%% Example:
+%% output() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"BridgePorts">> => list([integer()]()),
+%%   <<"ConnectedRouterInputArn">> => [string()],
+%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"Destination">> => [string()],
+%%   <<"Encryption">> => encryption(),
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"ListenerAddress">> => [string()],
+%%   <<"MediaLiveInputArn">> => [string()],
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration()),
+%%   <<"Name">> => [string()],
+%%   <<"OutputArn">> => [string()],
+%%   <<"OutputStatus">> => list(any()),
+%%   <<"PeerIpAddress">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"Transport">> => transport(),
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type output() :: #{binary() => any()}.
+
+
+%% Example:
+%% preferred_day_time_maintenance_configuration() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"Time">> => [string()]
+%% }
+-type preferred_day_time_maintenance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_router_network_interface_configuration() :: #{
+%%   <<"AllowRules">> => list(public_router_network_interface_rule())
+%% }
+-type public_router_network_interface_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_router_network_interface_rule() :: #{
+%%   <<"Cidr">> => [string()]
+%% }
+-type public_router_network_interface_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_offering_request() :: #{
+%%   <<"ReservationName">> := [string()],
+%%   <<"Start">> := [string()]
+%% }
+-type purchase_offering_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% purchase_offering_response() :: #{
+%%   <<"Reservation">> => reservation()
+%% }
+-type purchase_offering_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_bridge_output_request() :: #{}
+-type remove_bridge_output_request() :: #{}.
+
+
+%% Example:
+%% remove_bridge_output_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"OutputName">> => [string()]
+%% }
+-type remove_bridge_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_bridge_source_request() :: #{}
+-type remove_bridge_source_request() :: #{}.
+
+
+%% Example:
+%% remove_bridge_source_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"SourceName">> => [string()]
+%% }
+-type remove_bridge_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_flow_media_stream_request() :: #{}
+-type remove_flow_media_stream_request() :: #{}.
+
+
+%% Example:
+%% remove_flow_media_stream_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"MediaStreamName">> => [string()]
+%% }
+-type remove_flow_media_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_flow_output_request() :: #{}
+-type remove_flow_output_request() :: #{}.
+
+
+%% Example:
+%% remove_flow_output_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"OutputArn">> => [string()]
+%% }
+-type remove_flow_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_flow_source_request() :: #{}
+-type remove_flow_source_request() :: #{}.
+
+
+%% Example:
+%% remove_flow_source_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"SourceArn">> => [string()]
+%% }
+-type remove_flow_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_flow_vpc_interface_request() :: #{}
+-type remove_flow_vpc_interface_request() :: #{}.
+
+
+%% Example:
+%% remove_flow_vpc_interface_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"NonDeletedNetworkInterfaceIds">> => list([string()]()),
+%%   <<"VpcInterfaceName">> => [string()]
+%% }
+-type remove_flow_vpc_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reservation() :: #{
+%%   <<"CurrencyCode">> => [string()],
+%%   <<"Duration">> => [integer()],
+%%   <<"DurationUnits">> => list(any()),
+%%   <<"End">> => [string()],
+%%   <<"OfferingArn">> => [string()],
+%%   <<"OfferingDescription">> => [string()],
+%%   <<"PricePerUnit">> => [string()],
+%%   <<"PriceUnits">> => list(any()),
+%%   <<"ReservationArn">> => [string()],
+%%   <<"ReservationName">> => [string()],
+%%   <<"ReservationState">> => list(any()),
+%%   <<"ResourceSpecification">> => resource_specification(),
+%%   <<"Start">> => [string()]
+%% }
+-type reservation() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_specification() :: #{
+%%   <<"ReservedBitrate">> => [integer()],
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_specification() :: #{binary() => any()}.
+
+%% Example:
+%% restart_router_input_request() :: #{}
+-type restart_router_input_request() :: #{}.
+
+
+%% Example:
+%% restart_router_input_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Name">> => [string()],
 %%   <<"State">> => list(any())
 %% }
--type delete_router_network_interface_response() :: #{binary() => any()}.
+-type restart_router_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% restart_router_output_request() :: #{}
+-type restart_router_output_request() :: #{}.
 
 
 %% Example:
-%% secrets_manager_encryption_key_configuration() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"SecretArn">> => string()
+%% restart_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
 %% }
--type secrets_manager_encryption_key_configuration() :: #{binary() => any()}.
+-type restart_router_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_flow_entitlement_request() :: #{}
+-type revoke_flow_entitlement_request() :: #{}.
+
+
+%% Example:
+%% revoke_flow_entitlement_response() :: #{
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"FlowArn">> => [string()]
+%% }
+-type revoke_flow_entitlement_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rist_router_input_configuration() :: #{
+%%   <<"Port">> => [integer()],
+%%   <<"RecoveryLatencyMilliseconds">> => [float()]
+%% }
+-type rist_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rist_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()]
+%% }
+-type rist_router_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -501,739 +2183,37 @@
 
 
 %% Example:
-%% restart_router_output_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type restart_router_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ndi_media_info() :: #{
-%%   <<"Streams">> => list(ndi_media_stream_info())
-%% }
--type ndi_media_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_request() :: #{
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"EncodingConfig">> => encoding_config(),
-%%   <<"Entitlements">> => list(grant_entitlement_request()),
-%%   <<"FlowSize">> => list(any()),
-%%   <<"FlowTags">> => map(),
-%%   <<"Maintenance">> => add_maintenance(),
-%%   <<"MediaStreams">> => list(add_media_stream_request()),
-%%   <<"Name">> := [string()],
-%%   <<"NdiConfig">> => ndi_config(),
-%%   <<"Outputs">> => list(add_output_request()),
-%%   <<"Source">> => set_source_request(),
-%%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"SourceMonitoringConfig">> => monitoring_config(),
-%%   <<"Sources">> => list(set_source_request()),
-%%   <<"VpcInterfaces">> => list(vpc_interface_request())
-%% }
--type create_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_state_request() :: #{
-%%   <<"DesiredState">> := list(any())
-%% }
--type update_bridge_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_router_output_request() :: #{}
--type start_router_output_request() :: #{}.
-
-%% Example:
-%% start_router_input_request() :: #{}
--type start_router_input_request() :: #{}.
-
-
-%% Example:
-%% rtp_router_output_configuration() :: #{
-%%   <<"DestinationAddress">> => [string()],
-%%   <<"DestinationPort">> => [integer()],
-%%   <<"ForwardErrorCorrection">> => list(any())
-%% }
--type rtp_router_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_router_output_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"MaintenanceSchedule">> => list(),
-%%   <<"MaintenanceScheduleType">> => list(any()),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type start_router_output_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_global_resource_request() :: #{}
--type list_tags_for_global_resource_request() :: #{}.
-
-
-%% Example:
-%% list_gateway_instances_response() :: #{
-%%   <<"Instances">> => list(listed_gateway_instance()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_gateway_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_router_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Id">> => [string()],
-%%   <<"MaintenanceSchedule">> => list(),
-%%   <<"MaintenanceScheduleType">> => list(any()),
-%%   <<"MaximumBitrate">> => [float()],
-%%   <<"MessageCount">> => [integer()],
-%%   <<"Name">> => [string()],
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"OutputType">> => list(any()),
-%%   <<"RegionName">> => [string()],
-%%   <<"RoutedInputArn">> => string(),
-%%   <<"RoutedState">> => list(any()),
-%%   <<"RoutingScope">> => list(any()),
-%%   <<"State">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type listed_router_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_source_configuration_request() :: #{
-%%   <<"EncodingName">> => list(any()),
-%%   <<"InputConfigurations">> => list(input_configuration_request()),
-%%   <<"MediaStreamName">> => [string()]
-%% }
--type media_stream_source_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_egress_gateway_bridge_request() :: #{
-%%   <<"MaxBitrate">> => [integer()]
-%% }
--type update_egress_gateway_bridge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_sources_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"Sources">> => list(bridge_source())
-%% }
--type add_bridge_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_response() :: #{
-%%   <<"Gateway">> => gateway()
-%% }
--type create_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateways_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_gateways_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_router_input_response() :: #{
-%%   <<"RouterInput">> => router_input()
-%% }
--type create_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_flow_media_streams_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"MediaStreams">> => list(media_stream())
-%% }
--type add_flow_media_streams_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_router_input_source_metadata_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"SourceMetadataDetails">> => router_input_source_metadata_details()
-%% }
--type get_router_input_source_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_flow_outputs_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Outputs">> => list(output())
-%% }
--type add_flow_outputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_source_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Source">> => source()
-%% }
--type update_flow_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reservations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_reservations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_live_transit_encryption() :: #{
-%%   <<"EncryptionKeyConfiguration">> => list(),
-%%   <<"EncryptionKeyType">> => list(any())
-%% }
--type media_live_transit_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_live_input_router_output_configuration() :: #{
-%%   <<"DestinationTransitEncryption">> => media_live_transit_encryption(),
-%%   <<"MediaLiveInputArn">> => string(),
-%%   <<"MediaLivePipelineId">> => list(any())
-%% }
--type media_live_input_router_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_encryption_configuration() :: #{
-%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
-%% }
--type srt_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_router_input_response() :: #{
-%%   <<"RouterInput">> => router_input()
-%% }
--type get_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_output_request() :: #{
-%%   <<"NetworkOutput">> => update_bridge_network_output_request()
-%% }
--type update_bridge_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_offerings_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_offerings_request() :: #{binary() => any()}.
-
-%% Example:
-%% automatic_encryption_key_configuration() :: #{}
--type automatic_encryption_key_configuration() :: #{}.
-
-
-%% Example:
-%% list_bridges_request() :: #{
-%%   <<"FilterArn">> => [string()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_bridges_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface_request() :: #{
-%%   <<"Name">> => [string()]
-%% }
--type interface_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge_flow_source() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment(),
-%%   <<"Name">> => [string()],
-%%   <<"OutputArn">> => [string()]
-%% }
--type bridge_flow_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_offerings_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Offerings">> => list(offering())
-%% }
--type list_offerings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% frozen_frames() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"ThresholdSeconds">> => [integer()]
-%% }
--type frozen_frames() :: #{binary() => any()}.
-
-%% Example:
-%% remove_bridge_source_request() :: #{}
--type remove_bridge_source_request() :: #{}.
-
-
-%% Example:
-%% describe_gateway_instance_response() :: #{
-%%   <<"GatewayInstance">> => gateway_instance()
-%% }
--type describe_gateway_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_maintenance() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceScheduledDate">> => [string()],
-%%   <<"MaintenanceStartHour">> => [string()]
-%% }
--type update_maintenance() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_source_request() :: #{
-%%   <<"FlowSource">> => add_bridge_flow_source_request(),
-%%   <<"NetworkSource">> => add_bridge_network_source_request()
-%% }
--type add_bridge_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ingress_gateway_bridge_request() :: #{
-%%   <<"MaxBitrate">> => [integer()],
-%%   <<"MaxOutputs">> => [integer()]
-%% }
--type update_ingress_gateway_bridge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_response() :: #{
-%%   <<"GatewayArn">> => [string()]
-%% }
--type delete_gateway_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_request() :: #{}
--type delete_flow_request() :: #{}.
-
-
-%% Example:
-%% router_output_message() :: #{
+%% router_input_message() :: #{
 %%   <<"Code">> => [string()],
 %%   <<"Message">> => [string()]
 %% }
--type router_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_router_output_request() :: #{}
--type get_router_output_request() :: #{}.
+-type router_input_message() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_flow420_exception() :: #{
+%% router_input_service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type create_flow420_exception() :: #{binary() => any()}.
+-type router_input_service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% failover_router_input_indexed_stream_details() :: #{
-%%   <<"SourceIndex">> => [integer()],
-%%   <<"SourceIpAddress">> => [string()]
+%% router_input_source_metadata_details() :: #{
+%%   <<"RouterInputMetadata">> => list(),
+%%   <<"SourceMetadataMessages">> => list(router_input_message()),
+%%   <<"Timestamp">> => [non_neg_integer()]
 %% }
--type failover_router_input_indexed_stream_details() :: #{binary() => any()}.
+-type router_input_source_metadata_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% ndi_source_info() :: #{
-%%   <<"SourceName">> => [string()]
-%% }
--type ndi_source_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_flow() :: #{
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"Description">> => [string()],
-%%   <<"FlowArn">> => [string()],
-%%   <<"Maintenance">> => maintenance(),
-%%   <<"Name">> => [string()],
-%%   <<"SourceType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type listed_flow() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_router_input_indexed_stream_details() :: #{
-%%   <<"SourceIndex">> => [integer()],
-%%   <<"SourceIpAddress">> => [string()]
-%% }
--type merge_router_input_indexed_stream_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% thumbnail_details() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Thumbnail">> => [string()],
-%%   <<"ThumbnailMessages">> => list(message_detail()),
+%% router_input_thumbnail_details() :: #{
+%%   <<"Thumbnail">> => [binary()],
+%%   <<"ThumbnailMessages">> => list(router_input_message()),
 %%   <<"Timecode">> => [string()],
 %%   <<"Timestamp">> => [non_neg_integer()]
 %% }
--type thumbnail_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_instance_request() :: #{
-%%   <<"BridgePlacement">> => list(any())
-%% }
--type update_gateway_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_router_input_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type stop_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream() :: #{
-%%   <<"Attributes">> => media_stream_attributes(),
-%%   <<"ClockRate">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Fmt">> => [integer()],
-%%   <<"MediaStreamId">> => [integer()],
-%%   <<"MediaStreamName">> => [string()],
-%%   <<"MediaStreamType">> => list(any()),
-%%   <<"VideoFormat">> => [string()]
-%% }
--type media_stream() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_flow_response() :: #{
-%%   <<"Flow">> => flow()
-%% }
--type create_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_flow_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type delete_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failover_router_input_stream_details() :: #{
-%%   <<"SourceIndexOneStreamDetails">> => failover_router_input_indexed_stream_details(),
-%%   <<"SourceIndexZeroStreamDetails">> => failover_router_input_indexed_stream_details()
-%% }
--type failover_router_input_stream_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_flow_media_stream_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"MediaStreamName">> => [string()]
-%% }
--type remove_flow_media_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_router_network_interface_response() :: #{
-%%   <<"RouterNetworkInterface">> => router_network_interface()
-%% }
--type create_router_network_interface_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_router_network_interface_request() :: #{}
--type delete_router_network_interface_request() :: #{}.
-
-
-%% Example:
-%% remove_bridge_source_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"SourceName">> => [string()]
-%% }
--type remove_bridge_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% default_maintenance_configuration() :: #{}
--type default_maintenance_configuration() :: #{}.
-
-
-%% Example:
-%% update_bridge_flow_source_request() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type update_bridge_flow_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoding_parameters_request() :: #{
-%%   <<"CompressionFactor">> => [float()],
-%%   <<"EncoderProfile">> => list(any())
-%% }
--type encoding_parameters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_caller_router_input_configuration() :: #{
-%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
-%%   <<"MinimumLatencyMilliseconds">> => [float()],
-%%   <<"SourceAddress">> => [string()],
-%%   <<"SourcePort">> => [integer()],
-%%   <<"StreamId">> => [string()]
-%% }
--type srt_caller_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bridge_response() :: #{
-%%   <<"Bridge">> => bridge()
-%% }
--type create_bridge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway() :: #{
-%%   <<"EgressCidrBlocks">> => list([string()]()),
-%%   <<"GatewayArn">> => [string()],
-%%   <<"GatewayMessages">> => list(message_detail()),
-%%   <<"GatewayState">> => list(any()),
-%%   <<"Name">> => [string()],
-%%   <<"Networks">> => list(gateway_network())
-%% }
--type gateway() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_media_stream_request() :: #{
-%%   <<"Attributes">> => media_stream_attributes_request(),
-%%   <<"ClockRate">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"MediaStreamType">> => list(any()),
-%%   <<"VideoFormat">> => [string()]
-%% }
--type update_flow_media_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_media_stream_request() :: #{
-%%   <<"Attributes">> => media_stream_attributes_request(),
-%%   <<"ClockRate">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"MediaStreamId">> => [integer()],
-%%   <<"MediaStreamName">> => [string()],
-%%   <<"MediaStreamTags">> => map(),
-%%   <<"MediaStreamType">> => list(any()),
-%%   <<"VideoFormat">> => [string()]
-%% }
--type add_media_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingress_gateway_bridge() :: #{
-%%   <<"InstanceId">> => [string()],
-%%   <<"MaxBitrate">> => [integer()],
-%%   <<"MaxOutputs">> => [integer()]
-%% }
--type ingress_gateway_bridge() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge_network_output() :: #{
-%%   <<"IpAddress">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"Ttl">> => [integer()]
-%% }
--type bridge_network_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_router_network_interfaces_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"RouterNetworkInterfaces">> => list(listed_router_network_interface())
-%% }
--type list_router_network_interfaces_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_router_network_interface_response() :: #{
-%%   <<"RouterNetworkInterface">> => router_network_interface()
-%% }
--type update_router_network_interface_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_detail() :: #{
-%%   <<"Code">> => [string()],
-%%   <<"Message">> => [string()],
-%%   <<"ResourceName">> => [string()]
-%% }
--type message_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_attributes_request() :: #{
-%%   <<"Fmtp">> => fmtp_request(),
-%%   <<"Lang">> => [string()]
-%% }
--type media_stream_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_global_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
-%% }
--type untag_global_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_router_input_response() :: #{
-%%   <<"RouterInput">> => router_input()
-%% }
--type update_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bridge420_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type create_bridge420_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_network() :: #{
-%%   <<"CidrBlock">> => [string()],
-%%   <<"Name">> => [string()]
-%% }
--type gateway_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_request() :: #{
-%%   <<"EgressGatewayBridge">> => update_egress_gateway_bridge_request(),
-%%   <<"IngressGatewayBridge">> => update_ingress_gateway_bridge_request(),
-%%   <<"SourceFailoverConfig">> => update_failover_config()
-%% }
--type update_bridge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_global_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_global_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% egress_gateway_bridge() :: #{
-%%   <<"InstanceId">> => [string()],
-%%   <<"MaxBitrate">> => [integer()]
-%% }
--type egress_gateway_bridge() :: #{binary() => any()}.
-
-%% Example:
-%% get_router_input_request() :: #{}
--type get_router_input_request() :: #{}.
-
-
-%% Example:
-%% public_router_network_interface_configuration() :: #{
-%%   <<"AllowRules">> => list(public_router_network_interface_rule())
-%% }
--type public_router_network_interface_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_source_request() :: #{
-%%   <<"Decryption">> => update_encryption(),
-%%   <<"Description">> => [string()],
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"GatewayBridgeSource">> => update_gateway_bridge_source_request(),
-%%   <<"IngestPort">> => [integer()],
-%%   <<"MaxBitrate">> => [integer()],
-%%   <<"MaxLatency">> => [integer()],
-%%   <<"MaxSyncBuffer">> => [integer()],
-%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
-%%   <<"MinLatency">> => [integer()],
-%%   <<"NdiSourceSettings">> => ndi_source_settings(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"RouterIntegrationState">> => list(any()),
-%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
-%%   <<"SenderControlPort">> => [integer()],
-%%   <<"SenderIpAddress">> => [string()],
-%%   <<"SourceListenerAddress">> => [string()],
-%%   <<"SourceListenerPort">> => [integer()],
-%%   <<"StreamId">> => [string()],
-%%   <<"VpcInterfaceName">> => [string()],
-%%   <<"WhitelistCidr">> => [string()]
-%% }
--type update_flow_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flows_response() :: #{
-%%   <<"Flows">> => list(listed_flow()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_flows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_flow_router_output_configuration() :: #{
-%%   <<"DestinationTransitEncryption">> => flow_transit_encryption(),
-%%   <<"FlowArn">> => string(),
-%%   <<"FlowSourceArn">> => string()
-%% }
--type media_connect_flow_router_output_configuration() :: #{binary() => any()}.
+-type router_input_thumbnail_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1242,576 +2222,6 @@
 %%   <<"EncryptionKeyType">> => list(any())
 %% }
 -type router_input_transit_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% rist_router_input_configuration() :: #{
-%%   <<"Port">> => [integer()],
-%%   <<"RecoveryLatencyMilliseconds">> => [float()]
-%% }
--type rist_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_egress_gateway_bridge_request() :: #{
-%%   <<"MaxBitrate">> => [integer()]
-%% }
--type add_egress_gateway_bridge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_gateway() :: #{
-%%   <<"GatewayArn">> => [string()],
-%%   <<"GatewayState">> => list(any()),
-%%   <<"Name">> => [string()]
-%% }
--type listed_gateway() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_flow_outputs420_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type add_flow_outputs420_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bridge_request() :: #{}
--type delete_bridge_request() :: #{}.
-
-
-%% Example:
-%% rist_router_output_configuration() :: #{
-%%   <<"DestinationAddress">> => [string()],
-%%   <<"DestinationPort">> => [integer()]
-%% }
--type rist_router_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge_output() :: #{
-%%   <<"FlowOutput">> => bridge_flow_output(),
-%%   <<"NetworkOutput">> => bridge_network_output()
-%% }
--type bridge_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bridge_response() :: #{
-%%   <<"BridgeArn">> => [string()]
-%% }
--type delete_bridge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% transport() :: #{
-%%   <<"CidrAllowList">> => list([string()]()),
-%%   <<"MaxBitrate">> => [integer()],
-%%   <<"MaxLatency">> => [integer()],
-%%   <<"MaxSyncBuffer">> => [integer()],
-%%   <<"MinLatency">> => [integer()],
-%%   <<"NdiOutputTimecodeSource">> => list(any()),
-%%   <<"NdiProgramName">> => [string()],
-%%   <<"NdiSourceSettings">> => ndi_source_settings(),
-%%   <<"NdiSpeedHqQuality">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"RemoteId">> => [string()],
-%%   <<"SenderControlPort">> => [integer()],
-%%   <<"SenderIpAddress">> => [string()],
-%%   <<"SmoothingLatency">> => [integer()],
-%%   <<"SourceListenerAddress">> => [string()],
-%%   <<"SourceListenerPort">> => [integer()],
-%%   <<"StreamId">> => [string()]
-%% }
--type transport() :: #{binary() => any()}.
-
-%% Example:
-%% start_flow_request() :: #{}
--type start_flow_request() :: #{}.
-
-
-%% Example:
-%% create_bridge_request() :: #{
-%%   <<"EgressGatewayBridge">> => add_egress_gateway_bridge_request(),
-%%   <<"IngressGatewayBridge">> => add_ingress_gateway_bridge_request(),
-%%   <<"Name">> := [string()],
-%%   <<"Outputs">> => list(add_bridge_output_request()),
-%%   <<"PlacementArn">> := [string()],
-%%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"Sources">> := list(add_bridge_source_request())
-%% }
--type create_bridge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_flow_vpc_interfaces_request() :: #{
-%%   <<"VpcInterfaces">> := list(vpc_interface_request())
-%% }
--type add_flow_vpc_interfaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_router_input_thumbnail_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"ThumbnailDetails">> => router_input_thumbnail_details()
-%% }
--type get_router_input_thumbnail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% maintenance() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceDeadline">> => [string()],
-%%   <<"MaintenanceScheduledDate">> => [string()],
-%%   <<"MaintenanceStartHour">> => [string()]
-%% }
--type maintenance() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_interface() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"NetworkInterfaceIds">> => list([string()]()),
-%%   <<"NetworkInterfaceType">> => list(any()),
-%%   <<"RoleArn">> => [string()],
-%%   <<"SecurityGroupIds">> => list([string()]()),
-%%   <<"SubnetId">> => [string()]
-%% }
--type vpc_interface() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flow_source_thumbnail_request() :: #{}
--type describe_flow_source_thumbnail_request() :: #{}.
-
-
-%% Example:
-%% remove_bridge_output_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"OutputName">> => [string()]
-%% }
--type remove_bridge_output_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_router_output_request() :: #{}
--type delete_router_output_request() :: #{}.
-
-%% Example:
-%% media_connect_flow_router_output_stream_details() :: #{}
--type media_connect_flow_router_output_stream_details() :: #{}.
-
-
-%% Example:
-%% black_frames_configuration() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"ThresholdSeconds">> => integer()
-%% }
--type black_frames_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% take_router_input_request() :: #{
-%%   <<"RouterInputArn">> => string()
-%% }
--type take_router_input_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fmtp() :: #{
-%%   <<"ChannelOrder">> => [string()],
-%%   <<"Colorimetry">> => list(any()),
-%%   <<"ExactFramerate">> => [string()],
-%%   <<"Par">> => [string()],
-%%   <<"Range">> => list(any()),
-%%   <<"ScanMode">> => list(any()),
-%%   <<"Tcs">> => list(any())
-%% }
--type fmtp() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_global_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_global_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway420_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type create_gateway420_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_priority() :: #{
-%%   <<"PrimarySource">> => [string()]
-%% }
--type source_priority() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_gateway_bridge_source_request() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type set_gateway_bridge_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_router_network_interface_request() :: #{}
--type get_router_network_interface_request() :: #{}.
-
-
-%% Example:
-%% silent_audio() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"ThresholdSeconds">> => [integer()]
-%% }
--type silent_audio() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_network_source_request() :: #{
-%%   <<"MulticastIp">> => [string()],
-%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
-%%   <<"Name">> => [string()],
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any())
-%% }
--type add_bridge_network_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flow_request() :: #{}
--type describe_flow_request() :: #{}.
-
-
-%% Example:
-%% multicast_source_settings() :: #{
-%%   <<"MulticastSourceIp">> => [string()]
-%% }
--type multicast_source_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_flow_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type start_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_flow_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type stop_flow_response() :: #{binary() => any()}.
-
-%% Example:
-%% media_connect_flow_router_input_stream_details() :: #{}
--type media_connect_flow_router_input_stream_details() :: #{}.
-
-
-%% Example:
-%% encryption() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"ConstantInitializationVector">> => [string()],
-%%   <<"DeviceId">> => [string()],
-%%   <<"KeyType">> => list(any()),
-%%   <<"Region">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"RoleArn">> => [string()],
-%%   <<"SecretArn">> => [string()],
-%%   <<"Url">> => [string()]
-%% }
--type encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"BridgeMessages">> => list(message_detail()),
-%%   <<"BridgeState">> => list(any()),
-%%   <<"EgressGatewayBridge">> => egress_gateway_bridge(),
-%%   <<"IngressGatewayBridge">> => ingress_gateway_bridge(),
-%%   <<"Name">> => [string()],
-%%   <<"Outputs">> => list(bridge_output()),
-%%   <<"PlacementArn">> => [string()],
-%%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"Sources">> => list(bridge_source())
-%% }
--type bridge() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_network_output_request() :: #{
-%%   <<"IpAddress">> => [string()],
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"Ttl">> => [integer()]
-%% }
--type update_bridge_network_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_router_output_response() :: #{
-%%   <<"RouterOutput">> => router_output()
-%% }
--type get_router_output_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_router_input_source_metadata_request() :: #{}
--type get_router_input_source_metadata_request() :: #{}.
-
-
-%% Example:
-%% grant_flow_entitlements420_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type grant_flow_entitlements420_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoding_parameters() :: #{
-%%   <<"CompressionFactor">> => [float()],
-%%   <<"EncoderProfile">> => list(any())
-%% }
--type encoding_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_monitoring_setting() :: #{
-%%   <<"SilentAudio">> => silent_audio()
-%% }
--type audio_monitoring_setting() :: #{binary() => any()}.
-
-%% Example:
-%% media_live_input_router_output_stream_details() :: #{}
--type media_live_input_router_output_stream_details() :: #{}.
-
-
-%% Example:
-%% resource_specification() :: #{
-%%   <<"ReservedBitrate">> => [integer()],
-%%   <<"ResourceType">> => list(any())
-%% }
--type resource_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_router_output_response() :: #{
-%%   <<"RouterOutput">> => router_output()
-%% }
--type update_router_output_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_bridge_output_request() :: #{}
--type remove_bridge_output_request() :: #{}.
-
-
-%% Example:
-%% update_bridge_state_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"DesiredState">> => list(any())
-%% }
--type update_bridge_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reservation() :: #{
-%%   <<"CurrencyCode">> => [string()],
-%%   <<"Duration">> => [integer()],
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"End">> => [string()],
-%%   <<"OfferingArn">> => [string()],
-%%   <<"OfferingDescription">> => [string()],
-%%   <<"PricePerUnit">> => [string()],
-%%   <<"PriceUnits">> => list(any()),
-%%   <<"ReservationArn">> => [string()],
-%%   <<"ReservationName">> => [string()],
-%%   <<"ReservationState">> => list(any()),
-%%   <<"ResourceSpecification">> => resource_specification(),
-%%   <<"Start">> => [string()]
-%% }
--type reservation() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoding_config() :: #{
-%%   <<"EncodingProfile">> => list(any()),
-%%   <<"VideoMaxBitrate">> => [integer()]
-%% }
--type encoding_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_configuration() :: #{
-%%   <<"InputIp">> => [string()],
-%%   <<"InputPort">> => [integer()],
-%%   <<"Interface">> => interface()
-%% }
--type input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entitlements_response() :: #{
-%%   <<"Entitlements">> => list(listed_entitlement()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_entitlements_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_flow_sources_request() :: #{
-%%   <<"Sources">> := list(set_source_request())
-%% }
--type add_flow_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_attributes() :: #{
-%%   <<"Fmtp">> => fmtp(),
-%%   <<"Lang">> => [string()]
-%% }
--type media_stream_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flows_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_flows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_source_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"Source">> => bridge_source()
-%% }
--type update_bridge_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_outputs_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"Outputs">> => list(bridge_output())
-%% }
--type add_bridge_outputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_router_network_interface() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedInputCount">> => [integer()],
-%%   <<"AssociatedOutputCount">> => [integer()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Id">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"NetworkInterfaceType">> => list(any()),
-%%   <<"RegionName">> => [string()],
-%%   <<"State">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type listed_router_network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% remove_flow_source_request() :: #{}
--type remove_flow_source_request() :: #{}.
-
-%% Example:
-%% describe_bridge_request() :: #{}
--type describe_bridge_request() :: #{}.
-
-
-%% Example:
-%% list_router_outputs_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"RouterOutputs">> => list(listed_router_output())
-%% }
--type list_router_outputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_flow_source_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"SourceArn">> => [string()]
-%% }
--type remove_flow_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% frozen_frames_configuration() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"ThresholdSeconds">> => integer()
-%% }
--type frozen_frames_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_output_service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type router_output_service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge_network_source() :: #{
-%%   <<"MulticastIp">> => [string()],
-%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
-%%   <<"Name">> => [string()],
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any())
-%% }
--type bridge_network_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_output_configuration() :: #{
-%%   <<"DestinationConfigurations">> => list(destination_configuration()),
-%%   <<"EncodingName">> => list(any()),
-%%   <<"EncodingParameters">> => encoding_parameters(),
-%%   <<"MediaStreamName">> => [string()]
-%% }
--type media_stream_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_ingress_gateway_bridge_request() :: #{
-%%   <<"MaxBitrate">> => [integer()],
-%%   <<"MaxOutputs">> => [integer()]
-%% }
--type add_ingress_gateway_bridge_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1833,796 +2243,10 @@
 
 
 %% Example:
-%% source() :: #{
-%%   <<"ConnectedRouterOutputArn">> => [string()],
-%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
-%%   <<"Decryption">> => encryption(),
-%%   <<"Description">> => [string()],
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"GatewayBridgeSource">> => gateway_bridge_source(),
-%%   <<"IngestIp">> => [string()],
-%%   <<"IngestPort">> => [integer()],
-%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()),
-%%   <<"Name">> => [string()],
-%%   <<"PeerIpAddress">> => [string()],
-%%   <<"RouterIntegrationState">> => list(any()),
-%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
-%%   <<"SenderControlPort">> => [integer()],
-%%   <<"SenderIpAddress">> => [string()],
-%%   <<"SourceArn">> => [string()],
-%%   <<"Transport">> => transport(),
-%%   <<"VpcInterfaceName">> => [string()],
-%%   <<"WhitelistCidr">> => [string()]
-%% }
--type source() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_flow_source_request() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment(),
-%%   <<"Name">> => [string()]
-%% }
--type add_bridge_flow_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_instance_response() :: #{
-%%   <<"BridgePlacement">> => list(any()),
-%%   <<"GatewayInstanceArn">> => [string()]
-%% }
--type update_gateway_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% restart_router_output_request() :: #{}
--type restart_router_output_request() :: #{}.
-
-
-%% Example:
-%% update_router_output_request() :: #{
-%%   <<"Configuration">> => list(),
-%%   <<"MaintenanceConfiguration">> => list(),
-%%   <<"MaximumBitrate">> => [float()],
-%%   <<"Name">> => [string()],
-%%   <<"RoutingScope">> => list(any()),
-%%   <<"Tier">> => list(any())
-%% }
--type update_router_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_router_inputs_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"RouterInputs">> => list(listed_router_input())
-%% }
--type list_router_inputs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_router_input_request() :: #{
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"ClientToken">> => string(),
-%%   <<"Configuration">> := list(),
-%%   <<"ContentQualityAnalysisConfiguration">> => list(),
-%%   <<"MaintenanceConfiguration">> => list(),
-%%   <<"MaximumBitrate">> := [float()],
-%%   <<"Name">> := [string()],
-%%   <<"RegionName">> => [string()],
-%%   <<"RoutingScope">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Tier">> := list(any()),
-%%   <<"TransitEncryption">> => router_input_transit_encryption()
-%% }
--type create_router_input_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_failover_config() :: #{
-%%   <<"FailoverMode">> => list(any()),
-%%   <<"RecoveryWindow">> => [integer()],
-%%   <<"SourcePriority">> => source_priority(),
-%%   <<"State">> => list(any())
-%% }
--type update_failover_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_flow_output_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"OutputArn">> => [string()]
-%% }
--type remove_flow_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_response() :: #{
-%%   <<"Bridge">> => bridge()
-%% }
--type update_bridge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_router_input_configuration() :: #{
-%%   <<"MergeRecoveryWindowMilliseconds">> => [float()],
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"ProtocolConfigurations">> => list(list())
-%% }
--type merge_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_request() :: #{
-%%   <<"EgressCidrBlocks">> := list([string()]()),
-%%   <<"Name">> := [string()],
-%%   <<"Networks">> := list(gateway_network())
-%% }
--type create_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% grant_flow_entitlements_response() :: #{
-%%   <<"Entitlements">> => list(entitlement()),
-%%   <<"FlowArn">> => [string()]
-%% }
--type grant_flow_entitlements_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_outputs_request() :: #{
-%%   <<"Outputs">> := list(add_bridge_output_request())
-%% }
--type add_bridge_outputs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_maintenance() :: #{
-%%   <<"MaintenanceDay">> => list(any()),
-%%   <<"MaintenanceStartHour">> => [string()]
-%% }
--type add_maintenance() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_router_input_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"MaintenanceSchedule">> => list(),
-%%   <<"MaintenanceScheduleType">> => list(any()),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type start_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% entitlement() :: #{
-%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Encryption">> => encryption(),
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"EntitlementStatus">> => list(any()),
-%%   <<"Name">> => [string()],
-%%   <<"Subscribers">> => list([string()]())
-%% }
--type entitlement() :: #{binary() => any()}.
-
-%% Example:
-%% restart_router_input_request() :: #{}
--type restart_router_input_request() :: #{}.
-
-
-%% Example:
-%% update_encryption() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"ConstantInitializationVector">> => [string()],
-%%   <<"DeviceId">> => [string()],
-%%   <<"KeyType">> => list(any()),
-%%   <<"Region">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"RoleArn">> => [string()],
-%%   <<"SecretArn">> => [string()],
-%%   <<"Url">> => [string()]
-%% }
--type update_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_network_source_request() :: #{
-%%   <<"MulticastIp">> => [string()],
-%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any())
-%% }
--type update_bridge_network_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ndi_config() :: #{
-%%   <<"MachineName">> => [string()],
-%%   <<"NdiDiscoveryServers">> => list(ndi_discovery_server_config()),
-%%   <<"NdiState">> => list(any())
-%% }
--type ndi_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% standard_router_output_stream_details() :: #{
-%%   <<"DestinationIpAddress">> => [string()]
-%% }
--type standard_router_output_stream_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_router_inputs_request() :: #{
-%%   <<"Filters">> => list(list()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_router_inputs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_network_interface_request() :: #{
-%%   <<"Arns">> := list(string())
-%% }
--type batch_get_router_network_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_router_input_thumbnail_request() :: #{}
--type get_router_input_thumbnail_request() :: #{}.
-
-
-%% Example:
-%% list_reservations_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Reservations">> => list(reservation())
-%% }
--type list_reservations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_configuration_request() :: #{
-%%   <<"InputPort">> => [integer()],
-%%   <<"Interface">> => interface_request()
-%% }
--type input_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt_decryption_configuration() :: #{
-%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
-%% }
--type srt_decryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ndi_source_metadata_info() :: #{
-%%   <<"ActiveSource">> => ndi_source_info(),
-%%   <<"DiscoveredSources">> => list(ndi_source_info()),
-%%   <<"MediaInfo">> => ndi_media_info(),
-%%   <<"Messages">> => list(message_detail())
-%% }
--type ndi_source_metadata_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% messages() :: #{
-%%   <<"Errors">> => list([string()]())
-%% }
--type messages() :: #{binary() => any()}.
-
-
-%% Example:
-%% window_maintenance_schedule() :: #{
-%%   <<"End">> => [non_neg_integer()],
-%%   <<"ScheduledTime">> => [non_neg_integer()],
-%%   <<"Start">> => [non_neg_integer()]
-%% }
--type window_maintenance_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_router_input_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type delete_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_reservation_response() :: #{
-%%   <<"Reservation">> => reservation()
-%% }
--type describe_reservation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_configuration_request() :: #{
-%%   <<"DestinationIp">> => [string()],
-%%   <<"DestinationPort">> => [integer()],
-%%   <<"Interface">> => interface_request()
-%% }
--type destination_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% interface() :: #{
-%%   <<"Name">> => [string()]
-%% }
--type interface() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_router_output_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type stop_router_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transport_media_info() :: #{
-%%   <<"Programs">> => list(transport_stream_program())
-%% }
--type transport_media_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_interface_request() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"NetworkInterfaceType">> => list(any()),
-%%   <<"RoleArn">> => [string()],
-%%   <<"SecurityGroupIds">> => list([string()]()),
-%%   <<"SubnetId">> => [string()],
-%%   <<"VpcInterfaceTags">> => map()
-%% }
--type vpc_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_request() :: #{}
--type delete_gateway_request() :: #{}.
-
-%% Example:
-%% describe_gateway_request() :: #{}
--type describe_gateway_request() :: #{}.
-
-
-%% Example:
-%% srt_caller_router_output_configuration() :: #{
-%%   <<"DestinationAddress">> => [string()],
-%%   <<"DestinationPort">> => [integer()],
-%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
-%%   <<"MinimumLatencyMilliseconds">> => [float()],
-%%   <<"StreamId">> => [string()]
-%% }
--type srt_caller_router_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_output_request() :: #{
-%%   <<"Arns">> := list(string())
-%% }
--type batch_get_router_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_output_response() :: #{
-%%   <<"Errors">> => list(batch_get_router_output_error()),
-%%   <<"RouterOutputs">> => list(router_output())
-%% }
--type batch_get_router_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entitlements_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_entitlements_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_router_network_interface_rule() :: #{
-%%   <<"Cidr">> => [string()]
-%% }
--type public_router_network_interface_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% restart_router_input_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"State">> => list(any())
-%% }
--type restart_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_input_request() :: #{
-%%   <<"Arns">> := list(string())
-%% }
--type batch_get_router_input_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% rtp_router_input_configuration() :: #{
-%%   <<"ForwardErrorCorrection">> => list(any()),
-%%   <<"Port">> => [integer()]
-%% }
--type rtp_router_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% media_live_channel_router_input_stream_details() :: #{}
--type media_live_channel_router_input_stream_details() :: #{}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% describe_reservation_request() :: #{}
--type describe_reservation_request() :: #{}.
-
-
-%% Example:
-%% srt_listener_router_input_configuration() :: #{
-%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
-%%   <<"MinimumLatencyMilliseconds">> => [float()],
-%%   <<"Port">> => [integer()]
-%% }
--type srt_listener_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% silent_audio_configuration() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"ThresholdSeconds">> => integer()
-%% }
--type silent_audio_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% remove_flow_vpc_interface_request() :: #{}
--type remove_flow_vpc_interface_request() :: #{}.
-
-
-%% Example:
-%% standard_router_input_configuration() :: #{
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"ProtocolConfiguration">> => list()
-%% }
--type standard_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% frame_resolution() :: #{
-%%   <<"FrameHeight">> => [integer()],
-%%   <<"FrameWidth">> => [integer()]
-%% }
--type frame_resolution() :: #{binary() => any()}.
-
-%% Example:
-%% delete_router_input_request() :: #{}
--type delete_router_input_request() :: #{}.
-
-
-%% Example:
-%% batch_get_router_output_error() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Code">> => [string()],
-%%   <<"Message">> => [string()]
-%% }
--type batch_get_router_output_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_bridge_source() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type gateway_bridge_source() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_flow_entitlement_request() :: #{}
--type revoke_flow_entitlement_request() :: #{}.
-
-
-%% Example:
-%% monitoring_config() :: #{
-%%   <<"AudioMonitoringSettings">> => list(audio_monitoring_setting()),
-%%   <<"ContentQualityAnalysisState">> => list(any()),
-%%   <<"ThumbnailState">> => list(any()),
-%%   <<"VideoMonitoringSettings">> => list(video_monitoring_setting())
-%% }
--type monitoring_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_gateway_response() :: #{
-%%   <<"Gateway">> => gateway()
-%% }
--type describe_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_input_source_metadata_details() :: #{
-%%   <<"RouterInputMetadata">> => list(),
-%%   <<"SourceMetadataMessages">> => list(router_input_message()),
-%%   <<"Timestamp">> => [non_neg_integer()]
-%% }
--type router_input_source_metadata_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_output_request() :: #{
-%%   <<"NetworkOutput">> => add_bridge_network_output_request()
-%% }
--type add_bridge_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateway_instances_request() :: #{
-%%   <<"FilterArn">> => [string()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_gateway_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% standard_router_input_stream_details() :: #{
-%%   <<"SourceIpAddress">> => [string()]
-%% }
--type standard_router_input_stream_details() :: #{binary() => any()}.
-
-%% Example:
-%% stop_router_output_request() :: #{}
--type stop_router_output_request() :: #{}.
-
-
-%% Example:
-%% update_bridge_source_request() :: #{
-%%   <<"FlowSource">> => update_bridge_flow_source_request(),
-%%   <<"NetworkSource">> => update_bridge_network_source_request()
-%% }
--type update_bridge_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% offering() :: #{
-%%   <<"CurrencyCode">> => [string()],
-%%   <<"Duration">> => [integer()],
-%%   <<"DurationUnits">> => list(any()),
-%%   <<"OfferingArn">> => [string()],
-%%   <<"OfferingDescription">> => [string()],
-%%   <<"PricePerUnit">> => [string()],
-%%   <<"PriceUnits">> => list(any()),
-%%   <<"ResourceSpecification">> => resource_specification()
-%% }
--type offering() :: #{binary() => any()}.
-
-
-%% Example:
-%% ndi_discovery_server_config() :: #{
-%%   <<"DiscoveryServerAddress">> => [string()],
-%%   <<"DiscoveryServerPort">> => [integer()],
-%%   <<"VpcInterfaceAdapter">> => [string()]
-%% }
--type ndi_discovery_server_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_router_output_response() :: #{
-%%   <<"RouterOutput">> => router_output()
-%% }
--type create_router_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_network_interface_error() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Code">> => [string()],
-%%   <<"Message">> => [string()]
-%% }
--type batch_get_router_network_interface_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_monitoring_setting() :: #{
-%%   <<"BlackFrames">> => black_frames(),
-%%   <<"FrozenFrames">> => frozen_frames()
-%% }
--type video_monitoring_setting() :: #{binary() => any()}.
-
-%% Example:
-%% remove_flow_media_stream_request() :: #{}
--type remove_flow_media_stream_request() :: #{}.
-
-
-%% Example:
-%% grant_entitlement_request() :: #{
-%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Encryption">> => encryption(),
-%%   <<"EntitlementStatus">> => list(any()),
-%%   <<"EntitlementTags">> => map(),
-%%   <<"Name">> => [string()],
-%%   <<"Subscribers">> => list([string()]())
-%% }
--type grant_entitlement_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_bridge_response() :: #{
-%%   <<"Bridge">> => bridge()
-%% }
--type describe_bridge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_output_request() :: #{
-%%   <<"CidrAllowList">> => list([string()]()),
-%%   <<"Description">> => [string()],
-%%   <<"Destination">> => [string()],
-%%   <<"Encryption">> => update_encryption(),
-%%   <<"MaxLatency">> => [integer()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
-%%   <<"MinLatency">> => [integer()],
-%%   <<"NdiOutputTimecodeSource">> => list(any()),
-%%   <<"NdiProgramName">> => [string()],
-%%   <<"NdiSpeedHqQuality">> => [integer()],
-%%   <<"OutputStatus">> => list(any()),
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"RemoteId">> => [string()],
-%%   <<"RouterIntegrationState">> => list(any()),
-%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
-%%   <<"SenderControlPort">> => [integer()],
-%%   <<"SenderIpAddress">> => [string()],
-%%   <<"SmoothingLatency">> => [integer()],
-%%   <<"StreamId">> => [string()],
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type update_flow_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_instance() :: #{
-%%   <<"BridgePlacement">> => list(any()),
-%%   <<"ConnectionStatus">> => list(any()),
-%%   <<"GatewayArn">> => [string()],
-%%   <<"GatewayInstanceArn">> => [string()],
-%%   <<"InstanceId">> => [string()],
-%%   <<"InstanceMessages">> => list(message_detail()),
-%%   <<"InstanceState">> => list(any()),
-%%   <<"RunningBridgeCount">> => [integer()]
-%% }
--type gateway_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_router_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Id">> => [string()],
-%%   <<"InputType">> => list(any()),
-%%   <<"MaintenanceSchedule">> => list(),
-%%   <<"MaintenanceScheduleType">> => list(any()),
-%%   <<"MaximumBitrate">> => [float()],
-%%   <<"MessageCount">> => [integer()],
-%%   <<"Name">> => [string()],
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"RegionName">> => [string()],
-%%   <<"RoutedOutputs">> => [integer()],
-%%   <<"RoutingScope">> => list(any()),
-%%   <<"State">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type listed_router_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_router_input_request() :: #{
-%%   <<"Configuration">> => list(),
-%%   <<"ContentQualityAnalysisConfiguration">> => list(),
-%%   <<"MaintenanceConfiguration">> => list(),
-%%   <<"MaximumBitrate">> => [float()],
-%%   <<"Name">> => [string()],
-%%   <<"RoutingScope">> => list(any()),
-%%   <<"Tier">> => list(any()),
-%%   <<"TransitEncryption">> => router_input_transit_encryption()
-%% }
--type update_router_input_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% router_network_interface_service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type router_network_interface_service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_output_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"Output">> => output()
-%% }
--type update_flow_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_sources_request() :: #{
-%%   <<"Sources">> := list(add_bridge_source_request())
-%% }
--type add_bridge_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_transit_encryption() :: #{
-%%   <<"EncryptionKeyConfiguration">> => list(),
-%%   <<"EncryptionKeyType">> => list(any())
-%% }
--type flow_transit_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_quality_analysis_feature_configuration() :: #{
-%%   <<"BlackFrames">> => black_frames_configuration(),
-%%   <<"FrozenFrames">> => frozen_frames_configuration(),
-%%   <<"SilentAudio">> => silent_audio_configuration()
-%% }
--type content_quality_analysis_feature_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_bridge_source_request() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type update_gateway_bridge_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_entitlement_response() :: #{
-%%   <<"Entitlement">> => entitlement(),
-%%   <<"FlowArn">> => [string()]
-%% }
--type update_flow_entitlement_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% listed_bridge() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"BridgeState">> => list(any()),
-%%   <<"BridgeType">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"PlacementArn">> => [string()]
-%% }
--type listed_bridge() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_flow_response() :: #{
-%%   <<"Flow">> => flow()
-%% }
--type update_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2655,98 +2279,58 @@
 
 
 %% Example:
-%% transport_stream() :: #{
-%%   <<"Channels">> => [integer()],
-%%   <<"Codec">> => [string()],
-%%   <<"FrameRate">> => [string()],
-%%   <<"FrameResolution">> => frame_resolution(),
-%%   <<"Pid">> => [integer()],
-%%   <<"SampleRate">> => [integer()],
-%%   <<"SampleSize">> => [integer()],
-%%   <<"StreamType">> => [string()]
+%% router_output_message() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
 %% }
--type transport_stream() :: #{binary() => any()}.
+-type router_output_message() :: #{binary() => any()}.
 
 
 %% Example:
-%% revoke_flow_entitlement_response() :: #{
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"FlowArn">> => [string()]
+%% router_output_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type revoke_flow_entitlement_response() :: #{binary() => any()}.
+-type router_output_service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% bridge_flow_output() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"FlowSourceArn">> => [string()],
-%%   <<"Name">> => [string()]
+%% rtp_router_input_configuration() :: #{
+%%   <<"ForwardErrorCorrection">> => list(any()),
+%%   <<"Port">> => [integer()]
 %% }
--type bridge_flow_output() :: #{binary() => any()}.
+-type rtp_router_input_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_flow_media_stream_response() :: #{
-%%   <<"FlowArn">> => [string()],
-%%   <<"MediaStream">> => media_stream()
+%% rtp_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"ForwardErrorCorrection">> => list(any())
 %% }
--type update_flow_media_stream_response() :: #{binary() => any()}.
+-type rtp_router_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_flow_outputs_request() :: #{
-%%   <<"Outputs">> := list(add_output_request())
+%% secrets_manager_encryption_key_configuration() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SecretArn">> => string()
 %% }
--type add_flow_outputs_request() :: #{binary() => any()}.
+-type secrets_manager_encryption_key_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_flow_response() :: #{
-%%   <<"Flow">> => flow(),
-%%   <<"Messages">> => messages()
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type describe_flow_response() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% flow() :: #{
-%%   <<"AvailabilityZone">> => [string()],
-%%   <<"Description">> => [string()],
-%%   <<"EgressIp">> => [string()],
-%%   <<"EncodingConfig">> => encoding_config(),
-%%   <<"Entitlements">> => list(entitlement()),
-%%   <<"FlowArn">> => [string()],
-%%   <<"FlowSize">> => list(any()),
-%%   <<"Maintenance">> => maintenance(),
-%%   <<"MediaStreams">> => list(media_stream()),
-%%   <<"Name">> => [string()],
-%%   <<"NdiConfig">> => ndi_config(),
-%%   <<"Outputs">> => list(output()),
-%%   <<"Source">> => source(),
-%%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"SourceMonitoringConfig">> => monitoring_config(),
-%%   <<"Sources">> => list(source()),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcInterfaces">> => list(vpc_interface())
+%% set_gateway_bridge_source_request() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
 %% }
--type flow() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_router_network_interface_response() :: #{
-%%   <<"RouterNetworkInterface">> => router_network_interface()
-%% }
--type get_router_network_interface_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failover_router_input_configuration() :: #{
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"PrimarySourceIndex">> => [integer()],
-%%   <<"ProtocolConfigurations">> => list(list()),
-%%   <<"SourcePriorityMode">> => list(any())
-%% }
--type failover_router_input_configuration() :: #{binary() => any()}.
+-type set_gateway_bridge_source_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2779,115 +2363,460 @@
 
 
 %% Example:
-%% listed_gateway_instance() :: #{
-%%   <<"GatewayArn">> => [string()],
-%%   <<"GatewayInstanceArn">> => [string()],
-%%   <<"InstanceId">> => [string()],
-%%   <<"InstanceState">> => list(any())
-%% }
--type listed_gateway_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateways_response() :: #{
-%%   <<"Gateways">> => list(listed_gateway()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_gateways_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_gateway_instance_request() :: #{
-%%   <<"Force">> => [boolean()]
-%% }
--type deregister_gateway_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_live_channel_router_input_configuration() :: #{
-%%   <<"MediaLiveChannelArn">> => string(),
-%%   <<"MediaLiveChannelOutputName">> => [string()],
-%%   <<"MediaLivePipelineId">> => list(any()),
-%%   <<"SourceTransitDecryption">> => media_live_transit_encryption()
-%% }
--type media_live_channel_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% failover_config() :: #{
-%%   <<"FailoverMode">> => list(any()),
-%%   <<"RecoveryWindow">> => [integer()],
-%%   <<"SourcePriority">> => source_priority(),
-%%   <<"State">> => list(any())
-%% }
--type failover_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_bridge_network_output_request() :: #{
-%%   <<"IpAddress">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"NetworkName">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"Ttl">> => [integer()]
-%% }
--type add_bridge_network_output_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_connect_flow_router_input_configuration() :: #{
-%%   <<"FlowArn">> => string(),
-%%   <<"FlowOutputArn">> => string(),
-%%   <<"SourceTransitDecryption">> => flow_transit_encryption()
-%% }
--type media_connect_flow_router_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% black_frames() :: #{
+%% silent_audio() :: #{
 %%   <<"State">> => list(any()),
 %%   <<"ThresholdSeconds">> => [integer()]
 %% }
--type black_frames() :: #{binary() => any()}.
+-type silent_audio() :: #{binary() => any()}.
 
 
 %% Example:
-%% router_input_service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
+%% silent_audio_configuration() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"ThresholdSeconds">> => integer()
 %% }
--type router_input_service_quota_exceeded_exception() :: #{binary() => any()}.
+-type silent_audio_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_offering_response() :: #{
-%%   <<"Offering">> => offering()
+%% source() :: #{
+%%   <<"ConnectedRouterOutputArn">> => [string()],
+%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
+%%   <<"Decryption">> => encryption(),
+%%   <<"Description">> => [string()],
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"GatewayBridgeSource">> => gateway_bridge_source(),
+%%   <<"IngestIp">> => [string()],
+%%   <<"IngestPort">> => [integer()],
+%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()),
+%%   <<"Name">> => [string()],
+%%   <<"PeerIpAddress">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
+%%   <<"SenderControlPort">> => [integer()],
+%%   <<"SenderIpAddress">> => [string()],
+%%   <<"SourceArn">> => [string()],
+%%   <<"Transport">> => transport(),
+%%   <<"VpcInterfaceName">> => [string()],
+%%   <<"WhitelistCidr">> => [string()]
 %% }
--type describe_offering_response() :: #{binary() => any()}.
+-type source() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_flow_vpc_interfaces_response() :: #{
+%% source_priority() :: #{
+%%   <<"PrimarySource">> => [string()]
+%% }
+-type source_priority() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_router_input_configuration() :: #{
+%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"SourceAddress">> => [string()],
+%%   <<"SourcePort">> => [integer()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_caller_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_router_output_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_caller_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_decryption_configuration() :: #{
+%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
+%% }
+-type srt_decryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_encryption_configuration() :: #{
+%%   <<"EncryptionKey">> => secrets_manager_encryption_key_configuration()
+%% }
+-type srt_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_router_input_configuration() :: #{
+%%   <<"DecryptionConfiguration">> => srt_decryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"Port">> => [integer()]
+%% }
+-type srt_listener_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_router_output_configuration() :: #{
+%%   <<"EncryptionConfiguration">> => srt_encryption_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"Port">> => [integer()]
+%% }
+-type srt_listener_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_input_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list()
+%% }
+-type standard_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_input_stream_details() :: #{
+%%   <<"SourceIpAddress">> => [string()]
+%% }
+-type standard_router_input_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_output_configuration() :: #{
+%%   <<"NetworkInterfaceArn">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list()
+%% }
+-type standard_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_router_output_stream_details() :: #{
+%%   <<"DestinationIpAddress">> => [string()]
+%% }
+-type standard_router_output_stream_details() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_request() :: #{}
+-type start_flow_request() :: #{}.
+
+
+%% Example:
+%% start_flow_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"VpcInterfaces">> => list(vpc_interface())
+%%   <<"Status">> => list(any())
 %% }
--type add_flow_vpc_interfaces_response() :: #{binary() => any()}.
+-type start_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_router_input_request() :: #{}
+-type start_router_input_request() :: #{}.
 
 
 %% Example:
-%% list_bridges_response() :: #{
-%%   <<"Bridges">> => list(listed_bridge()),
-%%   <<"NextToken">> => [string()]
+%% start_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
 %% }
--type list_bridges_response() :: #{binary() => any()}.
+-type start_router_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_router_output_request() :: #{}
+-type start_router_output_request() :: #{}.
+
+
+%% Example:
+%% start_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"MaintenanceSchedule">> => list(),
+%%   <<"MaintenanceScheduleType">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type start_router_output_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_flow_request() :: #{}
 -type stop_flow_request() :: #{}.
 
+
 %% Example:
-%% remove_flow_output_request() :: #{}
--type remove_flow_output_request() :: #{}.
+%% stop_flow_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type stop_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_router_input_request() :: #{}
+-type stop_router_input_request() :: #{}.
+
+
+%% Example:
+%% stop_router_input_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type stop_router_input_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_router_output_request() :: #{}
+-type stop_router_output_request() :: #{}.
+
+
+%% Example:
+%% stop_router_output_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type stop_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_global_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_global_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% take_router_input_request() :: #{
+%%   <<"RouterInputArn">> => string()
+%% }
+-type take_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% take_router_input_response() :: #{
+%%   <<"RoutedState">> => list(any()),
+%%   <<"RouterInputArn">> => string(),
+%%   <<"RouterInputName">> => [string()],
+%%   <<"RouterOutputArn">> => string(),
+%%   <<"RouterOutputName">> => [string()]
+%% }
+-type take_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail_details() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Thumbnail">> => [string()],
+%%   <<"ThumbnailMessages">> => list(message_detail()),
+%%   <<"Timecode">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()]
+%% }
+-type thumbnail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transport() :: #{
+%%   <<"CidrAllowList">> => list([string()]()),
+%%   <<"MaxBitrate">> => [integer()],
+%%   <<"MaxLatency">> => [integer()],
+%%   <<"MaxSyncBuffer">> => [integer()],
+%%   <<"MinLatency">> => [integer()],
+%%   <<"NdiOutputTimecodeSource">> => list(any()),
+%%   <<"NdiProgramName">> => [string()],
+%%   <<"NdiSourceSettings">> => ndi_source_settings(),
+%%   <<"NdiSpeedHqQuality">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"RemoteId">> => [string()],
+%%   <<"SenderControlPort">> => [integer()],
+%%   <<"SenderIpAddress">> => [string()],
+%%   <<"SmoothingLatency">> => [integer()],
+%%   <<"SourceListenerAddress">> => [string()],
+%%   <<"SourceListenerPort">> => [integer()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type transport() :: #{binary() => any()}.
+
+
+%% Example:
+%% transport_media_info() :: #{
+%%   <<"Programs">> => list(transport_stream_program())
+%% }
+-type transport_media_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% transport_stream() :: #{
+%%   <<"Channels">> => [integer()],
+%%   <<"Codec">> => [string()],
+%%   <<"FrameRate">> => [string()],
+%%   <<"FrameResolution">> => frame_resolution(),
+%%   <<"Pid">> => [integer()],
+%%   <<"SampleRate">> => [integer()],
+%%   <<"SampleSize">> => [integer()],
+%%   <<"StreamType">> => [string()]
+%% }
+-type transport_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% transport_stream_program() :: #{
+%%   <<"PcrPid">> => [integer()],
+%%   <<"ProgramName">> => [string()],
+%%   <<"ProgramNumber">> => [integer()],
+%%   <<"ProgramPid">> => [integer()],
+%%   <<"Streams">> => list(transport_stream())
+%% }
+-type transport_stream_program() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_global_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_global_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_flow_source_request() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"FlowVpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type update_bridge_flow_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_network_output_request() :: #{
+%%   <<"IpAddress">> => [string()],
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"Ttl">> => [integer()]
+%% }
+-type update_bridge_network_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_network_source_request() :: #{
+%%   <<"MulticastIp">> => [string()],
+%%   <<"MulticastSourceSettings">> => multicast_source_settings(),
+%%   <<"NetworkName">> => [string()],
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any())
+%% }
+-type update_bridge_network_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_output_request() :: #{
+%%   <<"NetworkOutput">> => update_bridge_network_output_request()
+%% }
+-type update_bridge_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_output_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"Output">> => bridge_output()
+%% }
+-type update_bridge_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_request() :: #{
+%%   <<"EgressGatewayBridge">> => update_egress_gateway_bridge_request(),
+%%   <<"IngressGatewayBridge">> => update_ingress_gateway_bridge_request(),
+%%   <<"SourceFailoverConfig">> => update_failover_config()
+%% }
+-type update_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_response() :: #{
+%%   <<"Bridge">> => bridge()
+%% }
+-type update_bridge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_source_request() :: #{
+%%   <<"FlowSource">> => update_bridge_flow_source_request(),
+%%   <<"NetworkSource">> => update_bridge_network_source_request()
+%% }
+-type update_bridge_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_source_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"Source">> => bridge_source()
+%% }
+-type update_bridge_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_state_request() :: #{
+%%   <<"DesiredState">> := list(any())
+%% }
+-type update_bridge_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bridge_state_response() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"DesiredState">> => list(any())
+%% }
+-type update_bridge_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_egress_gateway_bridge_request() :: #{
+%%   <<"MaxBitrate">> => [integer()]
+%% }
+-type update_egress_gateway_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_encryption() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"ConstantInitializationVector">> => [string()],
+%%   <<"DeviceId">> => [string()],
+%%   <<"KeyType">> => list(any()),
+%%   <<"Region">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"RoleArn">> => [string()],
+%%   <<"SecretArn">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type update_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_failover_config() :: #{
+%%   <<"FailoverMode">> => list(any()),
+%%   <<"RecoveryWindow">> => [integer()],
+%%   <<"SourcePriority">> => source_priority(),
+%%   <<"State">> => list(any())
+%% }
+-type update_failover_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2901,32 +2830,234 @@
 
 
 %% Example:
-%% add_flow_media_streams_request() :: #{
-%%   <<"MediaStreams">> := list(add_media_stream_request())
+%% update_flow_entitlement_response() :: #{
+%%   <<"Entitlement">> => entitlement(),
+%%   <<"FlowArn">> => [string()]
 %% }
--type add_flow_media_streams_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_offering_request() :: #{}
--type describe_offering_request() :: #{}.
+-type update_flow_entitlement_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_router_network_interface_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Configuration">> := list(),
-%%   <<"Name">> := [string()],
-%%   <<"RegionName">> => [string()],
-%%   <<"Tags">> => map()
+%% update_flow_media_stream_request() :: #{
+%%   <<"Attributes">> => media_stream_attributes_request(),
+%%   <<"ClockRate">> => [integer()],
+%%   <<"Description">> => [string()],
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"VideoFormat">> => [string()]
 %% }
--type create_router_network_interface_request() :: #{binary() => any()}.
+-type update_flow_media_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% ndi_source_settings() :: #{
-%%   <<"SourceName">> => [string()]
+%% update_flow_media_stream_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"MediaStream">> => media_stream()
 %% }
--type ndi_source_settings() :: #{binary() => any()}.
+-type update_flow_media_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_output_request() :: #{
+%%   <<"CidrAllowList">> => list([string()]()),
+%%   <<"Description">> => [string()],
+%%   <<"Destination">> => [string()],
+%%   <<"Encryption">> => update_encryption(),
+%%   <<"MaxLatency">> => [integer()],
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
+%%   <<"MinLatency">> => [integer()],
+%%   <<"NdiOutputTimecodeSource">> => list(any()),
+%%   <<"NdiProgramName">> => [string()],
+%%   <<"NdiSpeedHqQuality">> => [integer()],
+%%   <<"OutputStatus">> => list(any()),
+%%   <<"Port">> => [integer()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"RemoteId">> => [string()],
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"SenderControlPort">> => [integer()],
+%%   <<"SenderIpAddress">> => [string()],
+%%   <<"SmoothingLatency">> => [integer()],
+%%   <<"StreamId">> => [string()],
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type update_flow_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_output_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Output">> => output()
+%% }
+-type update_flow_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_request() :: #{
+%%   <<"EncodingConfig">> => encoding_config(),
+%%   <<"FlowSize">> => list(any()),
+%%   <<"Maintenance">> => update_maintenance(),
+%%   <<"NdiConfig">> => ndi_config(),
+%%   <<"SourceFailoverConfig">> => update_failover_config(),
+%%   <<"SourceMonitoringConfig">> => monitoring_config()
+%% }
+-type update_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_response() :: #{
+%%   <<"Flow">> => flow()
+%% }
+-type update_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_source_request() :: #{
+%%   <<"Decryption">> => update_encryption(),
+%%   <<"Description">> => [string()],
+%%   <<"EntitlementArn">> => [string()],
+%%   <<"GatewayBridgeSource">> => update_gateway_bridge_source_request(),
+%%   <<"IngestPort">> => [integer()],
+%%   <<"MaxBitrate">> => [integer()],
+%%   <<"MaxLatency">> => [integer()],
+%%   <<"MaxSyncBuffer">> => [integer()],
+%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
+%%   <<"MinLatency">> => [integer()],
+%%   <<"NdiSourceSettings">> => ndi_source_settings(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RouterIntegrationState">> => list(any()),
+%%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
+%%   <<"SenderControlPort">> => [integer()],
+%%   <<"SenderIpAddress">> => [string()],
+%%   <<"SourceListenerAddress">> => [string()],
+%%   <<"SourceListenerPort">> => [integer()],
+%%   <<"StreamId">> => [string()],
+%%   <<"VpcInterfaceName">> => [string()],
+%%   <<"WhitelistCidr">> => [string()]
+%% }
+-type update_flow_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_flow_source_response() :: #{
+%%   <<"FlowArn">> => [string()],
+%%   <<"Source">> => source()
+%% }
+-type update_flow_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_bridge_source_request() :: #{
+%%   <<"BridgeArn">> => [string()],
+%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%% }
+-type update_gateway_bridge_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_instance_request() :: #{
+%%   <<"BridgePlacement">> => list(any())
+%% }
+-type update_gateway_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_instance_response() :: #{
+%%   <<"BridgePlacement">> => list(any()),
+%%   <<"GatewayInstanceArn">> => [string()]
+%% }
+-type update_gateway_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ingress_gateway_bridge_request() :: #{
+%%   <<"MaxBitrate">> => [integer()],
+%%   <<"MaxOutputs">> => [integer()]
+%% }
+-type update_ingress_gateway_bridge_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_maintenance() :: #{
+%%   <<"MaintenanceDay">> => list(any()),
+%%   <<"MaintenanceScheduledDate">> => [string()],
+%%   <<"MaintenanceStartHour">> => [string()]
+%% }
+-type update_maintenance() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_input_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"ContentQualityAnalysisConfiguration">> => list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Name">> => [string()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"Tier">> => list(any()),
+%%   <<"TransitEncryption">> => router_input_transit_encryption()
+%% }
+-type update_router_input_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_input_response() :: #{
+%%   <<"RouterInput">> => router_input()
+%% }
+-type update_router_input_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_network_interface_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"Name">> => [string()]
+%% }
+-type update_router_network_interface_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_network_interface_response() :: #{
+%%   <<"RouterNetworkInterface">> => router_network_interface()
+%% }
+-type update_router_network_interface_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_output_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"MaintenanceConfiguration">> => list(),
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Name">> => [string()],
+%%   <<"RoutingScope">> => list(any()),
+%%   <<"Tier">> => list(any())
+%% }
+-type update_router_output_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_router_output_response() :: #{
+%%   <<"RouterOutput">> => router_output()
+%% }
+-type update_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_monitoring_setting() :: #{
+%%   <<"BlackFrames">> => black_frames(),
+%%   <<"FrozenFrames">> => frozen_frames()
+%% }
+-type video_monitoring_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_interface() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"NetworkInterfaceIds">> => list([string()]()),
+%%   <<"NetworkInterfaceType">> => list(any()),
+%%   <<"RoleArn">> => [string()],
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type vpc_interface() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2937,819 +3068,688 @@
 
 
 %% Example:
-%% output() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"BridgePorts">> => list([integer()]()),
-%%   <<"ConnectedRouterInputArn">> => [string()],
-%%   <<"DataTransferSubscriberFeePercent">> => [integer()],
-%%   <<"Description">> => [string()],
-%%   <<"Destination">> => [string()],
-%%   <<"Encryption">> => encryption(),
-%%   <<"EntitlementArn">> => [string()],
-%%   <<"ListenerAddress">> => [string()],
-%%   <<"MediaLiveInputArn">> => [string()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration()),
+%% vpc_interface_request() :: #{
 %%   <<"Name">> => [string()],
-%%   <<"OutputArn">> => [string()],
-%%   <<"OutputStatus">> => list(any()),
-%%   <<"PeerIpAddress">> => [string()],
-%%   <<"Port">> => [integer()],
-%%   <<"RouterIntegrationState">> => list(any()),
-%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
-%%   <<"Transport">> => transport(),
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
+%%   <<"NetworkInterfaceType">> => list(any()),
+%%   <<"RoleArn">> => [string()],
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()],
+%%   <<"VpcInterfaceTags">> => map()
 %% }
--type output() :: #{binary() => any()}.
+-type vpc_interface_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% purchase_offering_response() :: #{
-%%   <<"Reservation">> => reservation()
+%% vpc_router_network_interface_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()]
 %% }
--type purchase_offering_response() :: #{binary() => any()}.
+-type vpc_router_network_interface_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% destination_configuration() :: #{
-%%   <<"DestinationIp">> => [string()],
-%%   <<"DestinationPort">> => [integer()],
-%%   <<"Interface">> => interface(),
-%%   <<"OutboundIp">> => [string()]
+%% window_maintenance_schedule() :: #{
+%%   <<"End">> => [non_neg_integer()],
+%%   <<"ScheduledTime">> => [non_neg_integer()],
+%%   <<"Start">> => [non_neg_integer()]
 %% }
--type destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_offering_request() :: #{
-%%   <<"ReservationName">> := [string()],
-%%   <<"Start">> := [string()]
-%% }
--type purchase_offering_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bridge_output_response() :: #{
-%%   <<"BridgeArn">> => [string()],
-%%   <<"Output">> => bridge_output()
-%% }
--type update_bridge_output_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% router_input_message() :: #{
-%%   <<"Code">> => [string()],
-%%   <<"Message">> => [string()]
-%% }
--type router_input_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_router_outputs_request() :: #{
-%%   <<"Filters">> => list(list()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_router_outputs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ndi_media_stream_info() :: #{
-%%   <<"Channels">> => [integer()],
-%%   <<"Codec">> => [string()],
-%%   <<"FrameRate">> => [string()],
-%%   <<"FrameResolution">> => frame_resolution(),
-%%   <<"SampleRate">> => [integer()],
-%%   <<"ScanMode">> => list(any()),
-%%   <<"StreamId">> => [integer()],
-%%   <<"StreamType">> => [string()]
-%% }
--type ndi_media_stream_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_router_input_response() :: #{
-%%   <<"Errors">> => list(batch_get_router_input_error()),
-%%   <<"RouterInputs">> => list(router_input())
-%% }
--type batch_get_router_input_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_source_configuration() :: #{
-%%   <<"EncodingName">> => list(any()),
-%%   <<"InputConfigurations">> => list(input_configuration()),
-%%   <<"MediaStreamName">> => [string()]
-%% }
--type media_stream_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% bridge_source() :: #{
-%%   <<"FlowSource">> => bridge_flow_source(),
-%%   <<"NetworkSource">> => bridge_network_source()
-%% }
--type bridge_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% standard_router_output_configuration() :: #{
-%%   <<"NetworkInterfaceArn">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"ProtocolConfiguration">> => list()
-%% }
--type standard_router_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% preferred_day_time_maintenance_configuration() :: #{
-%%   <<"Day">> => list(any()),
-%%   <<"Time">> => [string()]
-%% }
--type preferred_day_time_maintenance_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_output_request() :: #{
-%%   <<"CidrAllowList">> => list([string()]()),
-%%   <<"Description">> => [string()],
-%%   <<"Destination">> => [string()],
-%%   <<"Encryption">> => encryption(),
-%%   <<"MaxLatency">> => [integer()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
-%%   <<"MinLatency">> => [integer()],
-%%   <<"Name">> => [string()],
-%%   <<"NdiOutputTimecodeSource">> => list(any()),
-%%   <<"NdiProgramName">> => [string()],
-%%   <<"NdiSpeedHqQuality">> => [integer()],
-%%   <<"OutputStatus">> => list(any()),
-%%   <<"OutputTags">> => map(),
-%%   <<"Port">> => [integer()],
-%%   <<"Protocol">> => list(any()),
-%%   <<"RemoteId">> => [string()],
-%%   <<"RouterIntegrationState">> => list(any()),
-%%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
-%%   <<"SenderControlPort">> => [integer()],
-%%   <<"SmoothingLatency">> => [integer()],
-%%   <<"StreamId">> => [string()],
-%%   <<"VpcInterfaceAttachment">> => vpc_interface_attachment()
-%% }
--type add_output_request() :: #{binary() => any()}.
+-type window_maintenance_schedule() :: #{binary() => any()}.
 
 -type add_bridge_outputs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type add_bridge_sources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type add_flow_media_streams_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type add_flow_outputs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    add_flow_outputs420_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception() | 
+    add_flow_outputs420_exception().
 
 -type add_flow_sources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type add_flow_vpc_interfaces_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type batch_get_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type batch_get_router_network_interface_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type batch_get_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_bridge_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    create_bridge420_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    create_bridge420_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     create_flow420_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_gateway_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     create_gateway420_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_router_input_errors() ::
-    router_input_service_quota_exceeded_exception() | 
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_unavailable_exception() | 
+    router_input_service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_router_network_interface_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
     router_network_interface_service_quota_exceeded_exception() | 
     internal_server_error_exception() | 
-    service_unavailable_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    router_output_service_quota_exceeded_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_unavailable_exception() | 
+    router_output_service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_bridge_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_gateway_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_router_network_interface_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type deregister_gateway_instance_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_bridge_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_flow_source_metadata_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_flow_source_thumbnail_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_gateway_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_gateway_instance_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type describe_offering_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type describe_reservation_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type get_router_input_source_metadata_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_router_input_thumbnail_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_router_network_interface_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type get_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type grant_flow_entitlements_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    grant_flow_entitlements420_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    grant_flow_entitlements420_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_bridges_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_entitlements_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_flows_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_gateway_instances_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_gateways_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_offerings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_reservations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
-    too_many_requests_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_router_inputs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_router_network_interfaces_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_router_outputs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_tags_for_global_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type purchase_offering_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type remove_bridge_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type remove_bridge_source_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type remove_flow_media_stream_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type remove_flow_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type remove_flow_source_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type remove_flow_vpc_interface_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type restart_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type restart_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type revoke_flow_entitlement_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type start_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type start_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type start_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type stop_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type stop_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type stop_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type tag_global_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type take_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type untag_global_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type update_bridge_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_bridge_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_bridge_source_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_bridge_state_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_flow_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_flow_entitlement_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_flow_media_stream_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_flow_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_flow_source_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_gateway_instance_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_router_input_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_router_network_interface_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_router_output_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

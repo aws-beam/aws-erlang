@@ -30,6 +30,9 @@
          list_recommendations/1,
          list_recommendations/3,
          list_recommendations/4,
+         list_recommendations_for_resource/2,
+         list_recommendations_for_resource/4,
+         list_recommendations_for_resource/5,
          update_organization_recommendation_lifecycle/3,
          update_organization_recommendation_lifecycle/4,
          update_recommendation_lifecycle/3,
@@ -40,26 +43,107 @@
 
 
 %% Example:
-%% recommendation_resource_exclusion() :: #{
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_recommendation_lifecycle_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountRecommendationArn">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any()),
+%%   <<"updatedOnBehalfOf">> => [string()],
+%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
+%% }
+-type account_recommendation_lifecycle_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_resource_exclusion_request() :: #{
+%%   <<"recommendationResourceExclusions">> := list(recommendation_resource_exclusion())
+%% }
+-type batch_update_recommendation_resource_exclusion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_resource_exclusion_response() :: #{
+%%   <<"batchUpdateRecommendationResourceExclusionErrors">> => list(update_recommendation_resource_exclusion_error())
+%% }
+-type batch_update_recommendation_resource_exclusion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"isExcluded">> => [boolean()]
+%%   <<"awsResourceTypes">> => list([string()]()),
+%%   <<"awsServices">> => list(string()),
+%%   <<"checkGranularity">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"recommendationId">> => [string()],
+%%   <<"resourceArnQueryable">> => [boolean()],
+%%   <<"source">> => list(any())
 %% }
--type recommendation_resource_exclusion() :: #{binary() => any()}.
+-type check_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% recommendation_pillar_specific_aggregates() :: #{
-%%   <<"costOptimizing">> => recommendation_cost_optimizing_aggregates()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type recommendation_pillar_specific_aggregates() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_organization_recommendation_request() :: #{}
+-type get_organization_recommendation_request() :: #{}.
 
 
 %% Example:
-%% list_organization_recommendation_accounts_response() :: #{
-%%   <<"accountRecommendationLifecycleSummaries">> => list(account_recommendation_lifecycle_summary()),
-%%   <<"nextToken">> => [string()]
+%% get_organization_recommendation_response() :: #{
+%%   <<"organizationRecommendation">> => organization_recommendation()
 %% }
--type list_organization_recommendation_accounts_response() :: #{binary() => any()}.
+-type get_organization_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendation_request() :: #{
+%%   <<"language">> => list(any())
+%% }
+-type get_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommendation_response() :: #{
+%%   <<"recommendation">> => recommendation()
+%% }
+-type get_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_checks_request() :: #{
+%%   <<"awsService">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type list_checks_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -71,10 +155,172 @@
 
 
 %% Example:
-%% get_recommendation_request() :: #{
-%%   <<"language">> => list(any())
+%% list_organization_recommendation_accounts_request() :: #{
+%%   <<"affectedAccountId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
 %% }
--type get_recommendation_request() :: #{binary() => any()}.
+-type list_organization_recommendation_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_accounts_response() :: #{
+%%   <<"accountRecommendationLifecycleSummaries">> => list(account_recommendation_lifecycle_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_organization_recommendation_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_resources_request() :: #{
+%%   <<"affectedAccountId">> => string(),
+%%   <<"exclusionStatus">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"regionCode">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_organization_recommendation_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendation_resources_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"organizationRecommendationResourceSummaries">> => list(organization_recommendation_resource_summary())
+%% }
+-type list_organization_recommendation_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendations_request() :: #{
+%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"awsService">> => string(),
+%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"checkIdentifier">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_organization_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_recommendations_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"organizationRecommendationSummaries">> => list(organization_recommendation_summary())
+%% }
+-type list_organization_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_resources_request() :: #{
+%%   <<"exclusionStatus">> => list(any()),
+%%   <<"language">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"regionCode">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_recommendation_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_resources_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendationResourceSummaries">> => list(recommendation_resource_summary())
+%% }
+-type list_recommendation_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_for_resource_request() :: #{
+%%   <<"checkArn">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_recommendations_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_for_resource_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendationForResourceSummaries">> => list(recommendation_for_resource_summary())
+%% }
+-type list_recommendations_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"awsService">> => string(),
+%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
+%%   <<"checkIdentifier">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_recommendation() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsServices">> => list(string()),
+%%   <<"checkArn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"lifecycleStage">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"resolvedAt">> => [non_neg_integer()],
+%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any()),
+%%   <<"updatedOnBehalfOf">> => [string()],
+%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
+%% }
+-type organization_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_recommendation_resource_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"awsResourceId">> => [string()],
+%%   <<"exclusionStatus">> => list(any()),
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"regionCode">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type organization_recommendation_resource_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -95,54 +341,6 @@
 %%   <<"type">> => list(any())
 %% }
 -type organization_recommendation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommendation_lifecycle_request() :: #{
-%%   <<"lifecycleStage">> := list(any()),
-%%   <<"updateReason">> => string(),
-%%   <<"updateReasonCode">> => list(any())
-%% }
--type update_recommendation_lifecycle_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_resource_exclusion_request() :: #{
-%%   <<"recommendationResourceExclusions">> := list(recommendation_resource_exclusion())
-%% }
--type batch_update_recommendation_resource_exclusion_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_resources_aggregates() :: #{
-%%   <<"errorCount">> => [float()],
-%%   <<"excludedCount">> => [float()],
-%%   <<"okCount">> => [float()],
-%%   <<"warningCount">> => [float()]
-%% }
--type recommendation_resources_aggregates() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendation_resources_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"recommendationResourceSummaries">> => list(recommendation_resource_summary())
-%% }
--type list_recommendation_resources_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -174,163 +372,65 @@
 
 
 %% Example:
-%% list_checks_request() :: #{
-%%   <<"awsService">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"pillar">> => list(any()),
-%%   <<"source">> => list(any())
+%% recommendation_cost_optimizing_aggregates() :: #{
+%%   <<"estimatedMonthlySavings">> => [float()],
+%%   <<"estimatedPercentMonthlySavings">> => [float()]
 %% }
--type list_checks_request() :: #{binary() => any()}.
+-type recommendation_cost_optimizing_aggregates() :: #{binary() => any()}.
 
 
 %% Example:
-%% account_recommendation_lifecycle_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"accountRecommendationArn">> => string(),
+%% recommendation_for_resource_summary() :: #{
+%%   <<"awsResourceArn">> => string(),
+%%   <<"checkArn">> => string(),
+%%   <<"exclusionStatus">> => list(any()),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"lifecycleStage">> => list(any()),
-%%   <<"updateReason">> => string(),
-%%   <<"updateReasonCode">> => list(any()),
-%%   <<"updatedOnBehalfOf">> => [string()],
-%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
-%% }
--type account_recommendation_lifecycle_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_organization_recommendation_request() :: #{}
--type get_organization_recommendation_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_recommendations_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"organizationRecommendationSummaries">> => list(organization_recommendation_summary())
-%% }
--type list_organization_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_recommendation_accounts_request() :: #{
-%%   <<"affectedAccountId">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_organization_recommendation_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_resource_exclusion_response() :: #{
-%%   <<"batchUpdateRecommendationResourceExclusionErrors">> => list(update_recommendation_resource_exclusion_error())
-%% }
--type batch_update_recommendation_resource_exclusion_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendation_resources_request() :: #{
-%%   <<"exclusionStatus">> => list(any()),
-%%   <<"language">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"regionCode">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type list_recommendation_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_recommendation_resources_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"organizationRecommendationResourceSummaries">> => list(organization_recommendation_resource_summary())
-%% }
--type list_organization_recommendation_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_organization_recommendation_lifecycle_request() :: #{
-%%   <<"lifecycleStage">> := list(any()),
-%%   <<"updateReason">> => string(),
-%%   <<"updateReasonCode">> => list(any())
-%% }
--type update_organization_recommendation_lifecycle_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_organization_recommendation_response() :: #{
-%%   <<"organizationRecommendation">> => organization_recommendation()
-%% }
--type get_organization_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_recommendation_resources_request() :: #{
-%%   <<"affectedAccountId">> => string(),
-%%   <<"exclusionStatus">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"regionCode">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type list_organization_recommendation_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_recommendations_request() :: #{
-%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
-%%   <<"awsService">> => string(),
-%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
-%%   <<"checkIdentifier">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"pillar">> => list(any()),
-%%   <<"source">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type list_organization_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()),
-%%   <<"description">> => [string()],
-%%   <<"id">> => [string()],
 %%   <<"metadata">> => map(),
-%%   <<"name">> => [string()],
 %%   <<"pillars">> => list(list(any())()),
-%%   <<"source">> => list(any())
+%%   <<"recommendationArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type check_summary() :: #{binary() => any()}.
+-type recommendation_for_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_pillar_specific_aggregates() :: #{
+%%   <<"costOptimizing">> => recommendation_cost_optimizing_aggregates()
+%% }
+-type recommendation_pillar_specific_aggregates() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_resource_exclusion() :: #{
+%%   <<"arn">> => string(),
+%%   <<"isExcluded">> => [boolean()]
+%% }
+-type recommendation_resource_exclusion() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_resource_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsResourceId">> => [string()],
+%%   <<"exclusionStatus">> => list(any()),
+%%   <<"id">> => [string()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"regionCode">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type recommendation_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_resources_aggregates() :: #{
+%%   <<"errorCount">> => [float()],
+%%   <<"excludedCount">> => [float()],
+%%   <<"okCount">> => [float()],
+%%   <<"warningCount">> => [float()]
+%% }
+-type recommendation_resources_aggregates() :: #{binary() => any()}.
 
 
 %% Example:
@@ -355,6 +455,38 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_organization_recommendation_lifecycle_request() :: #{
+%%   <<"lifecycleStage">> := list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any())
+%% }
+-type update_organization_recommendation_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_lifecycle_request() :: #{
+%%   <<"lifecycleStage">> := list(any()),
+%%   <<"updateReason">> => string(),
+%%   <<"updateReasonCode">> => list(any())
+%% }
+-type update_recommendation_lifecycle_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_recommendation_resource_exclusion_error() :: #{
 %%   <<"arn">> => string(),
 %%   <<"errorCode">> => [string()],
@@ -364,177 +496,92 @@
 
 
 %% Example:
-%% organization_recommendation_resource_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"awsResourceId">> => [string()],
-%%   <<"exclusionStatus">> => list(any()),
-%%   <<"id">> => [string()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"metadata">> => map(),
-%%   <<"recommendationArn">> => string(),
-%%   <<"regionCode">> => string(),
-%%   <<"status">> => list(any())
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type organization_recommendation_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"recommendationSummaries">> => list(recommendation_summary())
-%% }
--type list_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_cost_optimizing_aggregates() :: #{
-%%   <<"estimatedMonthlySavings">> => [float()],
-%%   <<"estimatedPercentMonthlySavings">> => [float()]
-%% }
--type recommendation_cost_optimizing_aggregates() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendation_response() :: #{
-%%   <<"recommendation">> => recommendation()
-%% }
--type get_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_recommendation() :: #{
-%%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()),
-%%   <<"checkArn">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"lifecycleStage">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"pillarSpecificAggregates">> => recommendation_pillar_specific_aggregates(),
-%%   <<"pillars">> => list(list(any())()),
-%%   <<"resolvedAt">> => [non_neg_integer()],
-%%   <<"resourcesAggregates">> => recommendation_resources_aggregates(),
-%%   <<"source">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updateReason">> => string(),
-%%   <<"updateReasonCode">> => list(any()),
-%%   <<"updatedOnBehalfOf">> => [string()],
-%%   <<"updatedOnBehalfOfJobTitle">> => [string()]
-%% }
--type organization_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_resource_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"awsResourceId">> => [string()],
-%%   <<"exclusionStatus">> => list(any()),
-%%   <<"id">> => [string()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"metadata">> => map(),
-%%   <<"recommendationArn">> => string(),
-%%   <<"regionCode">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type recommendation_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_request() :: #{
-%%   <<"afterLastUpdatedAt">> => [non_neg_integer()],
-%%   <<"awsService">> => string(),
-%%   <<"beforeLastUpdatedAt">> => [non_neg_integer()],
-%%   <<"checkIdentifier">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"pillar">> => list(any()),
-%%   <<"source">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type list_recommendations_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type batch_update_recommendation_resource_exclusion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_organization_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_checks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_organization_recommendation_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_organization_recommendation_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_organization_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendation_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_recommendations_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_organization_recommendation_lifecycle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_recommendation_lifecycle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -967,6 +1014,53 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
         {<<"source">>, maps:get(<<"source">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all Trusted Advisor recommendations for a given AWS resource
+%% ARN.
+-spec list_recommendations_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_recommendations_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_for_resource_errors(), tuple()}.
+list_recommendations_for_resource(Client, AwsResourceArn)
+  when is_map(Client) ->
+    list_recommendations_for_resource(Client, AwsResourceArn, #{}, #{}).
+
+-spec list_recommendations_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_recommendations_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_for_resource_errors(), tuple()}.
+list_recommendations_for_resource(Client, AwsResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recommendations_for_resource(Client, AwsResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_recommendations_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_recommendations_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_recommendations_for_resource_errors(), tuple()}.
+list_recommendations_for_resource(Client, AwsResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/recommendations-for-resource/", aws_util:encode_uri(AwsResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"checkArn">>, maps:get(<<"checkArn">>, QueryMap, undefined)},
+        {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"pillar">>, maps:get(<<"pillar">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -98,22 +98,18 @@
 
 
 %% Example:
-%% update_problem_request() :: #{
-%%   <<"ProblemId">> := string(),
-%%   <<"UpdateStatus">> => list(any()),
-%%   <<"Visibility">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_problem_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_log_patterns_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PatternSetName">> => string(),
-%%   <<"ResourceGroupName">> := string()
+%% add_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadConfiguration">> := workload_configuration()
 %% }
--type list_log_patterns_request() :: #{binary() => any()}.
+-type add_workload_request() :: #{binary() => any()}.
 
 %% Example:
 %% add_workload_response() :: #{
@@ -123,207 +119,16 @@
 -type add_workload_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workloads_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadList">> => list(workload())
-%% }
--type list_workloads_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_pattern_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"PatternName">> := string(),
-%%   <<"PatternSetName">> := string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type describe_log_pattern_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workloads_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ComponentName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type list_workloads_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_problem_observations_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ProblemId">> := string()
-%% }
--type describe_problem_observations_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_problems_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProblemList">> => list(problem()),
-%%   <<"ResourceGroupName">> => string()
-%% }
--type list_problems_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_observation_response() :: #{
-%%   <<"Observation">> => observation()
-%% }
--type describe_observation_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_configuration_recommendation_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"RecommendationType">> => list(any()),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"Tier">> := list(any()),
-%%   <<"WorkloadName">> => string()
-%% }
--type describe_component_configuration_recommendation_request() :: #{binary() => any()}.
-
-%% Example:
-%% log_pattern() :: #{
-%%   <<"Pattern">> => string(),
-%%   <<"PatternName">> => string(),
-%%   <<"PatternSetName">> => string(),
-%%   <<"Rank">> => integer()
-%% }
--type log_pattern() :: #{binary() => any()}.
-
-%% Example:
-%% delete_component_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type delete_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_configuration_history_response() :: #{
-%%   <<"EventList">> => list(configuration_event()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_configuration_response() :: #{
-%%   <<"ComponentConfiguration">> => string(),
+%% application_component() :: #{
+%%   <<"ComponentName">> => string(),
+%%   <<"ComponentRemarks">> => string(),
+%%   <<"DetectedWorkload">> => map(),
 %%   <<"Monitor">> => boolean(),
+%%   <<"OsType">> => list(any()),
+%%   <<"ResourceType">> => string(),
 %%   <<"Tier">> => list(any())
 %% }
--type describe_component_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_component_response() :: #{
-
-%% }
--type update_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_log_pattern_response() :: #{
-%%   <<"LogPattern">> => log_pattern(),
-%%   <<"ResourceGroupName">> => string()
-%% }
--type update_log_pattern_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_problem_observations_response() :: #{
-%%   <<"RelatedObservations">> => related_observations()
-%% }
--type describe_problem_observations_response() :: #{binary() => any()}.
-
-%% Example:
-%% observation() :: #{
-%%   <<"CodeDeployInstanceGroupId">> => string(),
-%%   <<"XRayRequestCount">> => integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"MetricNamespace">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"XRayThrottlePercent">> => integer(),
-%%   <<"LogFilter">> => list(any()),
-%%   <<"Ec2State">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"StatesInput">> => string(),
-%%   <<"S3EventName">> => string(),
-%%   <<"XRayNodeName">> => string(),
-%%   <<"EbsEvent">> => string(),
-%%   <<"XRayRequestAverageLatency">> => float(),
-%%   <<"LogGroup">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"XRayErrorPercent">> => integer(),
-%%   <<"RdsEventCategories">> => string(),
-%%   <<"EbsCause">> => string(),
-%%   <<"SourceARN">> => string(),
-%%   <<"StatesExecutionArn">> => string(),
-%%   <<"HealthService">> => string(),
-%%   <<"RdsEventMessage">> => string(),
-%%   <<"MetricName">> => string(),
-%%   <<"Unit">> => string(),
-%%   <<"HealthEventTypeCode">> => string(),
-%%   <<"CodeDeployDeploymentId">> => string(),
-%%   <<"EbsResult">> => string(),
-%%   <<"XRayNodeType">> => string(),
-%%   <<"CodeDeployApplication">> => string(),
-%%   <<"CloudWatchEventDetailType">> => string(),
-%%   <<"LogText">> => string(),
-%%   <<"HealthEventArn">> => string(),
-%%   <<"CodeDeployDeploymentGroup">> => string(),
-%%   <<"StatesArn">> => string(),
-%%   <<"LineTime">> => non_neg_integer(),
-%%   <<"CloudWatchEventId">> => string(),
-%%   <<"XRayFaultPercent">> => integer(),
-%%   <<"StatesStatus">> => string(),
-%%   <<"CloudWatchEventSource">> => list(any()),
-%%   <<"CodeDeployState">> => string(),
-%%   <<"EbsRequestId">> => string(),
-%%   <<"HealthEventTypeCategory">> => string(),
-%%   <<"Value">> => float(),
-%%   <<"HealthEventDescription">> => string()
-%% }
--type observation() :: #{binary() => any()}.
-
-%% Example:
-%% create_component_response() :: #{
-
-%% }
--type create_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_component_configuration_response() :: #{
-
-%% }
--type update_component_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_problem_response() :: #{
-%%   <<"Problem">> => problem(),
-%%   <<"SNSNotificationArn">> => string()
-%% }
--type describe_problem_response() :: #{binary() => any()}.
+-type application_component() :: #{binary() => any()}.
 
 %% Example:
 %% application_info() :: #{
@@ -342,107 +147,23 @@
 -type application_info() :: #{binary() => any()}.
 
 %% Example:
-%% update_component_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"NewComponentName">> => string(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"ResourceList">> => list(string())
-%% }
--type update_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% workload() :: #{
-%%   <<"ComponentName">> => string(),
-%%   <<"MissingWorkloadConfig">> => boolean(),
-%%   <<"Tier">> => list(any()),
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadName">> => string(),
-%%   <<"WorkloadRemarks">> => string()
-%% }
--type workload() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_components_request() :: #{
+%% configuration_event() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type list_components_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_pattern_sets_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"LogPatternSets">> => list(string()),
-%%   <<"NextToken">> => string(),
+%%   <<"EventDetail">> => string(),
+%%   <<"EventResourceName">> => string(),
+%%   <<"EventResourceType">> => list(any()),
+%%   <<"EventStatus">> => list(any()),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"MonitoredResourceARN">> => string(),
 %%   <<"ResourceGroupName">> => string()
 %% }
--type list_log_pattern_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_log_pattern_response() :: #{
-
-%% }
--type delete_log_pattern_response() :: #{binary() => any()}.
-
-%% Example:
-%% workload_configuration() :: #{
-%%   <<"Configuration">> => string(),
-%%   <<"Tier">> => list(any()),
-%%   <<"WorkloadName">> => string()
-%% }
--type workload_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workload_response() :: #{
-%%   <<"WorkloadConfiguration">> => workload_configuration(),
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadRemarks">> => string()
-%% }
--type describe_workload_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_component_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"ResourceList">> := list(string())
-%% }
--type create_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_log_pattern_request() :: #{
-%%   <<"Pattern">> := string(),
-%%   <<"PatternName">> := string(),
-%%   <<"PatternSetName">> := string(),
-%%   <<"Rank">> := integer(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type create_log_pattern_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_workload_response() :: #{
-
-%% }
--type remove_workload_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type configuration_event() :: #{binary() => any()}.
 
 %% Example:
 %% create_application_request() :: #{
@@ -460,42 +181,34 @@
 -type create_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_log_patterns_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"LogPatterns">> => list(log_pattern()),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceGroupName">> => string()
-%% }
--type list_log_patterns_response() :: #{binary() => any()}.
-
-%% Example:
 %% create_application_response() :: #{
 %%   <<"ApplicationInfo">> => application_info()
 %% }
 -type create_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_log_pattern_request() :: #{
-%%   <<"Pattern">> => string(),
+%% create_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"ResourceList">> := list(string())
+%% }
+-type create_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_component_response() :: #{
+
+%% }
+-type create_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_pattern_request() :: #{
+%%   <<"Pattern">> := string(),
 %%   <<"PatternName">> := string(),
 %%   <<"PatternSetName">> := string(),
-%%   <<"Rank">> => integer(),
+%%   <<"Rank">> := integer(),
 %%   <<"ResourceGroupName">> := string()
 %% }
--type update_log_pattern_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workload_response() :: #{
-%%   <<"WorkloadConfiguration">> => workload_configuration(),
-%%   <<"WorkloadId">> => string()
-%% }
--type update_workload_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_response() :: #{
-
-%% }
--type delete_application_response() :: #{binary() => any()}.
+-type create_log_pattern_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_log_pattern_response() :: #{
@@ -505,37 +218,214 @@
 -type create_log_pattern_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_application_request() :: #{
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_response() :: #{
+
+%% }
+-type delete_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type delete_component_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_component_response() :: #{
 
 %% }
 -type delete_component_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_application_request() :: #{
-%%   <<"AttachMissingPermission">> => boolean(),
-%%   <<"AutoConfigEnabled">> => boolean(),
-%%   <<"CWEMonitorEnabled">> => boolean(),
-%%   <<"OpsCenterEnabled">> => boolean(),
-%%   <<"OpsItemSNSTopicArn">> => string(),
-%%   <<"RemoveSNSTopic">> => boolean(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"SNSNotificationArn">> => string()
+%% delete_log_pattern_request() :: #{
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"ResourceGroupName">> := string()
 %% }
--type update_application_request() :: #{binary() => any()}.
+-type delete_log_pattern_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_application_response() :: #{
+%% delete_log_pattern_response() :: #{
+
+%% }
+-type delete_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_response() :: #{
 %%   <<"ApplicationInfo">> => application_info()
 %% }
--type update_application_response() :: #{binary() => any()}.
+-type describe_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% remove_workload_request() :: #{
+%% describe_component_configuration_recommendation_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"RecommendationType">> => list(any()),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"Tier">> := list(any()),
+%%   <<"WorkloadName">> => string()
+%% }
+-type describe_component_configuration_recommendation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_recommendation_response() :: #{
+%%   <<"ComponentConfiguration">> => string()
+%% }
+-type describe_component_configuration_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_component_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_response() :: #{
+%%   <<"ComponentConfiguration">> => string(),
+%%   <<"Monitor">> => boolean(),
+%%   <<"Tier">> => list(any())
+%% }
+-type describe_component_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_response() :: #{
+%%   <<"ApplicationComponent">> => application_component(),
+%%   <<"ResourceList">> => list(string())
+%% }
+-type describe_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_pattern_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_pattern_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPattern">> => log_pattern(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type describe_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observation_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ObservationId">> := string()
+%% }
+-type describe_observation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observation_response() :: #{
+%%   <<"Observation">> => observation()
+%% }
+-type describe_observation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_observations_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ProblemId">> := string()
+%% }
+-type describe_problem_observations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_observations_response() :: #{
+%%   <<"RelatedObservations">> => related_observations()
+%% }
+-type describe_problem_observations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ProblemId">> := string()
+%% }
+-type describe_problem_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_response() :: #{
+%%   <<"Problem">> => problem(),
+%%   <<"SNSNotificationArn">> => string()
+%% }
+-type describe_problem_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workload_request() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"ComponentName">> := string(),
 %%   <<"ResourceGroupName">> := string(),
 %%   <<"WorkloadId">> := string()
 %% }
--type remove_workload_request() :: #{binary() => any()}.
+-type describe_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workload_response() :: #{
+%%   <<"WorkloadConfiguration">> => workload_configuration(),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadRemarks">> => string()
+%% }
+-type describe_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationInfoList">> => list(application_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"ApplicationComponentList">> => list(application_component()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_configuration_history_request() :: #{
@@ -550,31 +440,158 @@
 -type list_configuration_history_request() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type describe_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_problem_response() :: #{
-
-%% }
--type update_problem_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"MaxResults">> => integer(),
+%% list_configuration_history_response() :: #{
+%%   <<"EventList">> => list(configuration_event()),
 %%   <<"NextToken">> => string()
 %% }
--type list_applications_request() :: #{binary() => any()}.
+-type list_configuration_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_pattern_sets_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_log_pattern_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_pattern_sets_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPatternSets">> => list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_log_pattern_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_patterns_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PatternSetName">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_log_patterns_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_patterns_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPatterns">> => list(log_pattern()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_log_patterns_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_problems_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_problems_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_problems_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProblemList">> => list(problem()),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_problems_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workloads_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_workloads_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workloads_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadList">> => list(workload())
+%% }
+-type list_workloads_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_pattern() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"PatternName">> => string(),
+%%   <<"PatternSetName">> => string(),
+%%   <<"Rank">> => integer()
+%% }
+-type log_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% observation() :: #{
+%%   <<"CloudWatchEventDetailType">> => string(),
+%%   <<"CloudWatchEventId">> => string(),
+%%   <<"CloudWatchEventSource">> => list(any()),
+%%   <<"CodeDeployApplication">> => string(),
+%%   <<"CodeDeployDeploymentGroup">> => string(),
+%%   <<"CodeDeployDeploymentId">> => string(),
+%%   <<"CodeDeployInstanceGroupId">> => string(),
+%%   <<"CodeDeployState">> => string(),
+%%   <<"EbsCause">> => string(),
+%%   <<"EbsEvent">> => string(),
+%%   <<"EbsRequestId">> => string(),
+%%   <<"EbsResult">> => string(),
+%%   <<"Ec2State">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"HealthEventArn">> => string(),
+%%   <<"HealthEventDescription">> => string(),
+%%   <<"HealthEventTypeCategory">> => string(),
+%%   <<"HealthEventTypeCode">> => string(),
+%%   <<"HealthService">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LineTime">> => non_neg_integer(),
+%%   <<"LogFilter">> => list(any()),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogText">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"MetricNamespace">> => string(),
+%%   <<"RdsEventCategories">> => string(),
+%%   <<"RdsEventMessage">> => string(),
+%%   <<"S3EventName">> => string(),
+%%   <<"SourceARN">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StatesArn">> => string(),
+%%   <<"StatesExecutionArn">> => string(),
+%%   <<"StatesInput">> => string(),
+%%   <<"StatesStatus">> => string(),
+%%   <<"Unit">> => string(),
+%%   <<"Value">> => float(),
+%%   <<"XRayErrorPercent">> => integer(),
+%%   <<"XRayFaultPercent">> => integer(),
+%%   <<"XRayNodeName">> => string(),
+%%   <<"XRayNodeType">> => string(),
+%%   <<"XRayRequestAverageLatency">> => float(),
+%%   <<"XRayRequestCount">> => integer(),
+%%   <<"XRayThrottlePercent">> => integer()
+%% }
+-type observation() :: #{binary() => any()}.
 
 %% Example:
 %% problem() :: #{
@@ -598,30 +615,50 @@
 -type problem() :: #{binary() => any()}.
 
 %% Example:
-%% describe_observation_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ObservationId">> := string()
+%% related_observations() :: #{
+%%   <<"ObservationList">> => list(observation())
 %% }
--type describe_observation_request() :: #{binary() => any()}.
+-type related_observations() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
+%% remove_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadId">> := string()
+%% }
+-type remove_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_workload_response() :: #{
+
+%% }
+-type remove_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type resource_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_event() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"EventDetail">> => string(),
-%%   <<"EventResourceName">> => string(),
-%%   <<"EventResourceType">> => list(any()),
-%%   <<"EventStatus">> => list(any()),
-%%   <<"EventTime">> => non_neg_integer(),
-%%   <<"MonitoredResourceARN">> => string(),
-%%   <<"ResourceGroupName">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type configuration_event() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -630,166 +667,10 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_log_pattern_request() :: #{
-%%   <<"PatternName">> := string(),
-%%   <<"PatternSetName">> := string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type delete_log_pattern_request() :: #{binary() => any()}.
-
-%% Example:
 %% tags_already_exist_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type tags_already_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_configuration_recommendation_response() :: #{
-%%   <<"ComponentConfiguration">> => string()
-%% }
--type describe_component_configuration_recommendation_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_pattern_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"LogPattern">> => log_pattern(),
-%%   <<"ResourceGroupName">> => string()
-%% }
--type describe_log_pattern_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_response() :: #{
-%%   <<"ApplicationComponent">> => application_component(),
-%%   <<"ResourceList">> => list(string())
-%% }
--type describe_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_problems_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ComponentName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceGroupName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Visibility">> => list(any())
-%% }
--type list_problems_request() :: #{binary() => any()}.
-
-%% Example:
-%% related_observations() :: #{
-%%   <<"ObservationList">> => list(observation())
-%% }
--type related_observations() :: #{binary() => any()}.
-
-%% Example:
-%% list_components_response() :: #{
-%%   <<"ApplicationComponentList">> => list(application_component()),
-%%   <<"NextToken">> => string()
-%% }
--type list_components_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"ApplicationInfoList">> => list(application_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% add_workload_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"WorkloadConfiguration">> := workload_configuration()
-%% }
--type add_workload_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_configuration_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type describe_component_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_component_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type describe_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% application_component() :: #{
-%%   <<"ComponentName">> => string(),
-%%   <<"ComponentRemarks">> => string(),
-%%   <<"DetectedWorkload">> => map(),
-%%   <<"Monitor">> => boolean(),
-%%   <<"OsType">> => list(any()),
-%%   <<"ResourceType">> => string(),
-%%   <<"Tier">> => list(any())
-%% }
--type application_component() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workload_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"WorkloadId">> := string()
-%% }
--type describe_workload_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_pattern_sets_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceGroupName">> := string()
-%% }
--type list_log_pattern_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_problem_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ProblemId">> := string()
-%% }
--type describe_problem_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workload_request() :: #{
-%%   <<"ComponentName">> := string(),
-%%   <<"ResourceGroupName">> := string(),
-%%   <<"WorkloadConfiguration">> := workload_configuration(),
-%%   <<"WorkloadId">> => string()
-%% }
--type update_workload_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_response() :: #{
-%%   <<"ApplicationInfo">> => application_info()
-%% }
--type describe_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -797,6 +678,38 @@
 %%   <<"ResourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"AttachMissingPermission">> => boolean(),
+%%   <<"AutoConfigEnabled">> => boolean(),
+%%   <<"CWEMonitorEnabled">> => boolean(),
+%%   <<"OpsCenterEnabled">> => boolean(),
+%%   <<"OpsItemSNSTopicArn">> => string(),
+%%   <<"RemoveSNSTopic">> => boolean(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"SNSNotificationArn">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"ApplicationInfo">> => application_info()
+%% }
+-type update_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_component_configuration_request() :: #{
@@ -810,98 +723,185 @@
 -type update_component_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_request() :: #{
+%% update_component_configuration_response() :: #{
+
+%% }
+-type update_component_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"NewComponentName">> => string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"ResourceList">> => list(string())
+%% }
+-type update_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_response() :: #{
+
+%% }
+-type update_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_pattern_request() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"Rank">> => integer(),
 %%   <<"ResourceGroupName">> := string()
 %% }
--type delete_application_request() :: #{binary() => any()}.
+-type update_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_pattern_response() :: #{
+%%   <<"LogPattern">> => log_pattern(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type update_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_problem_request() :: #{
+%%   <<"ProblemId">> := string(),
+%%   <<"UpdateStatus">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type update_problem_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_problem_response() :: #{
+
+%% }
+-type update_problem_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadConfiguration">> := workload_configuration(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type update_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workload_response() :: #{
+%%   <<"WorkloadConfiguration">> => workload_configuration(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type update_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% workload() :: #{
+%%   <<"ComponentName">> => string(),
+%%   <<"MissingWorkloadConfig">> => boolean(),
+%%   <<"Tier">> => list(any()),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadName">> => string(),
+%%   <<"WorkloadRemarks">> => string()
+%% }
+-type workload() :: #{binary() => any()}.
+
+%% Example:
+%% workload_configuration() :: #{
+%%   <<"Configuration">> => string(),
+%%   <<"Tier">> => list(any()),
+%%   <<"WorkloadName">> => string()
+%% }
+-type workload_configuration() :: #{binary() => any()}.
 
 -type add_workload_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type create_application_errors() ::
     validation_exception() | 
     tags_already_exist_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_component_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type create_log_pattern_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type delete_application_errors() ::
-    bad_request_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type delete_component_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_log_pattern_errors() ::
-    bad_request_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type describe_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_component_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_component_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_component_configuration_recommendation_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_log_pattern_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_observation_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_problem_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_problem_observations_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_workload_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_applications_errors() ::
     validation_exception() | 
@@ -909,28 +909,28 @@
 
 -type list_components_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_configuration_history_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_log_pattern_sets_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_log_patterns_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_problems_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
@@ -938,17 +938,17 @@
 
 -type list_workloads_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type remove_workload_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
+    too_many_tags_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
@@ -957,36 +957,36 @@
 
 -type update_application_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_component_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type update_component_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type update_log_pattern_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_exception().
 
 -type update_problem_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_workload_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

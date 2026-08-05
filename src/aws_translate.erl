@@ -48,33 +48,115 @@
 
 
 %% Example:
-%% terminology_data_location() :: #{
-%%   <<"Location">> => string(),
-%%   <<"RepositoryType">> => string()
+%% applied_terminology() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Terms">> => list(term())
 %% }
--type terminology_data_location() :: #{binary() => any()}.
+-type applied_terminology() :: #{binary() => any()}.
 
 %% Example:
-%% translate_term() :: #{
-%%   <<"SourceText">> => string(),
-%%   <<"TargetText">> => string()
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type translate_term() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_languages_request() :: #{
-%%   <<"DisplayLanguageCode">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_languages_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% create_parallel_data_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => encryption_key(),
+%%   <<"Name">> := string(),
+%%   <<"ParallelDataConfig">> := parallel_data_config(),
+%%   <<"Tags">> => list(tag())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_parallel_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_parallel_data_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_parallel_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parallel_data_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_parallel_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parallel_data_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_parallel_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_terminology_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_terminology_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_text_translation_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_text_translation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_text_translation_job_response() :: #{
+%%   <<"TextTranslationJobProperties">> => text_translation_job_properties()
+%% }
+-type describe_text_translation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% detected_language_low_confidence_exception() :: #{
+%%   <<"DetectedLanguageCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type detected_language_low_confidence_exception() :: #{binary() => any()}.
+
+%% Example:
+%% document() :: #{
+%%   <<"Content">> => binary(),
+%%   <<"ContentType">> => string()
+%% }
+-type document() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type encryption_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_parallel_data_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_parallel_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parallel_data_response() :: #{
+%%   <<"AuxiliaryDataLocation">> => parallel_data_data_location(),
+%%   <<"DataLocation">> => parallel_data_data_location(),
+%%   <<"LatestUpdateAttemptAuxiliaryDataLocation">> => parallel_data_data_location(),
+%%   <<"ParallelDataProperties">> => parallel_data_properties()
+%% }
+-type get_parallel_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_terminology_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"TerminologyDataFormat">> => list(any())
+%% }
+-type get_terminology_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_terminology_response() :: #{
@@ -85,12 +167,166 @@
 -type get_terminology_response() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_language_pair_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"SourceLanguageCode">> => string(),
-%%   <<"TargetLanguageCode">> => string()
+%% import_terminology_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => encryption_key(),
+%%   <<"MergeStrategy">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TerminologyData">> := terminology_data()
 %% }
--type unsupported_language_pair_exception() :: #{binary() => any()}.
+-type import_terminology_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_terminology_response() :: #{
+%%   <<"AuxiliaryDataLocation">> => terminology_data_location(),
+%%   <<"TerminologyProperties">> => terminology_properties()
+%% }
+-type import_terminology_response() :: #{binary() => any()}.
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_filter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_filter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_details() :: #{
+%%   <<"DocumentsWithErrorsCount">> => integer(),
+%%   <<"InputDocumentsCount">> => integer(),
+%%   <<"TranslatedDocumentsCount">> => integer()
+%% }
+-type job_details() :: #{binary() => any()}.
+
+%% Example:
+%% language() :: #{
+%%   <<"LanguageCode">> => string(),
+%%   <<"LanguageName">> => string()
+%% }
+-type language() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_languages_request() :: #{
+%%   <<"DisplayLanguageCode">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_languages_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_languages_response() :: #{
+%%   <<"DisplayLanguageCode">> => list(any()),
+%%   <<"Languages">> => list(language()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_languages_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_parallel_data_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_parallel_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_parallel_data_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParallelDataPropertiesList">> => list(parallel_data_properties())
+%% }
+-type list_parallel_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_terminologies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_terminologies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_terminologies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TerminologyPropertiesList">> => list(terminology_properties())
+%% }
+-type list_terminologies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_text_translation_jobs_request() :: #{
+%%   <<"Filter">> => text_translation_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_text_translation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_text_translation_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TextTranslationJobPropertiesList">> => list(text_translation_job_properties())
+%% }
+-type list_text_translation_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"EncryptionKey">> => encryption_key(),
+%%   <<"S3Uri">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% parallel_data_config() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type parallel_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% parallel_data_data_location() :: #{
+%%   <<"Location">> => string(),
+%%   <<"RepositoryType">> => string()
+%% }
+-type parallel_data_data_location() :: #{binary() => any()}.
 
 %% Example:
 %% parallel_data_properties() :: #{
@@ -115,61 +351,120 @@
 -type parallel_data_properties() :: #{binary() => any()}.
 
 %% Example:
-%% input_data_config() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"S3Uri">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type input_data_config() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
-%% translate_text_response() :: #{
-%%   <<"AppliedSettings">> => translation_settings(),
-%%   <<"AppliedTerminologies">> => list(applied_terminology()),
-%%   <<"SourceLanguageCode">> => string(),
-%%   <<"TargetLanguageCode">> => string(),
-%%   <<"TranslatedText">> => string()
+%% start_text_translation_job_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"ParallelDataNames">> => list(string()),
+%%   <<"Settings">> => translation_settings(),
+%%   <<"SourceLanguageCode">> := string(),
+%%   <<"TargetLanguageCodes">> := list(string()),
+%%   <<"TerminologyNames">> => list(string())
 %% }
--type translate_text_response() :: #{binary() => any()}.
+-type start_text_translation_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_text_translation_job_response() :: #{
-%%   <<"TextTranslationJobProperties">> => text_translation_job_properties()
+%% start_text_translation_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
 %% }
--type describe_text_translation_job_response() :: #{binary() => any()}.
+-type start_text_translation_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% translation_settings() :: #{
-%%   <<"Brevity">> => list(any()),
-%%   <<"Formality">> => list(any()),
-%%   <<"Profanity">> => list(any())
+%% stop_text_translation_job_request() :: #{
+%%   <<"JobId">> := string()
 %% }
--type translation_settings() :: #{binary() => any()}.
+-type stop_text_translation_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_terminologies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% stop_text_translation_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
 %% }
--type list_terminologies_request() :: #{binary() => any()}.
+-type stop_text_translation_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_parallel_data_request() :: #{
-%%   <<"Name">> := string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type get_parallel_data_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% delete_parallel_data_response() :: #{
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% terminology_data() :: #{
+%%   <<"Directionality">> => list(any()),
+%%   <<"File">> => binary(),
+%%   <<"Format">> => list(any())
+%% }
+-type terminology_data() :: #{binary() => any()}.
+
+%% Example:
+%% terminology_data_location() :: #{
+%%   <<"Location">> => string(),
+%%   <<"RepositoryType">> => string()
+%% }
+-type terminology_data_location() :: #{binary() => any()}.
+
+%% Example:
+%% terminology_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Directionality">> => list(any()),
+%%   <<"EncryptionKey">> => encryption_key(),
+%%   <<"Format">> => list(any()),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Message">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"SizeBytes">> => integer(),
+%%   <<"SkippedTermCount">> => integer(),
+%%   <<"SourceLanguageCode">> => string(),
+%%   <<"TargetLanguageCodes">> => list(string()),
+%%   <<"TermCount">> => integer()
 %% }
--type delete_parallel_data_response() :: #{binary() => any()}.
+-type terminology_properties() :: #{binary() => any()}.
+
+%% Example:
+%% text_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type text_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% text_translation_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmittedAfterTime">> => non_neg_integer(),
+%%   <<"SubmittedBeforeTime">> => non_neg_integer()
+%% }
+-type text_translation_job_filter() :: #{binary() => any()}.
 
 %% Example:
 %% text_translation_job_properties() :: #{
@@ -192,326 +487,17 @@
 -type text_translation_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% detected_language_low_confidence_exception() :: #{
-%%   <<"DetectedLanguageCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type detected_language_low_confidence_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_terminology_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => encryption_key(),
-%%   <<"MergeStrategy">> := list(any()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TerminologyData">> := terminology_data()
-%% }
--type import_terminology_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_terminology_response() :: #{
-%%   <<"AuxiliaryDataLocation">> => terminology_data_location(),
-%%   <<"TerminologyProperties">> => terminology_properties()
-%% }
--type import_terminology_response() :: #{binary() => any()}.
-
-%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type too_many_requests_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_parallel_data_response() :: #{
-%%   <<"AuxiliaryDataLocation">> => parallel_data_data_location(),
-%%   <<"DataLocation">> => parallel_data_data_location(),
-%%   <<"LatestUpdateAttemptAuxiliaryDataLocation">> => parallel_data_data_location(),
-%%   <<"ParallelDataProperties">> => parallel_data_properties()
+%% too_many_tags_exception() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"message">> => string()
 %% }
--type get_parallel_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_filter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parallel_data_config() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type parallel_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_text_translation_jobs_request() :: #{
-%%   <<"Filter">> => text_translation_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_text_translation_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_text_translation_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TextTranslationJobPropertiesList">> => list(text_translation_job_properties())
-%% }
--type list_text_translation_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_terminologies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TerminologyPropertiesList">> => list(terminology_properties())
-%% }
--type list_terminologies_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% text_translation_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmittedAfterTime">> => non_neg_integer(),
-%%   <<"SubmittedBeforeTime">> => non_neg_integer()
-%% }
--type text_translation_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% translated_document() :: #{
-%%   <<"Content">> => binary()
-%% }
--type translated_document() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_parallel_data_response() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_parallel_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_text_translation_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_text_translation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% language() :: #{
-%%   <<"LanguageCode">> => string(),
-%%   <<"LanguageName">> => string()
-%% }
--type language() :: #{binary() => any()}.
-
-%% Example:
-%% delete_terminology_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_terminology_request() :: #{binary() => any()}.
-
-%% Example:
-%% job_details() :: #{
-%%   <<"DocumentsWithErrorsCount">> => integer(),
-%%   <<"InputDocumentsCount">> => integer(),
-%%   <<"TranslatedDocumentsCount">> => integer()
-%% }
--type job_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_parallel_data_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ParallelDataConfig">> := parallel_data_config()
-%% }
--type update_parallel_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% translate_text_request() :: #{
-%%   <<"Settings">> => translation_settings(),
-%%   <<"SourceLanguageCode">> := string(),
-%%   <<"TargetLanguageCode">> := string(),
-%%   <<"TerminologyNames">> => list(string()),
-%%   <<"Text">> := string()
-%% }
--type translate_text_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_parallel_data_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => encryption_key(),
-%%   <<"Name">> := string(),
-%%   <<"ParallelDataConfig">> := parallel_data_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_parallel_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_parallel_data_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ParallelDataPropertiesList">> => list(parallel_data_properties())
-%% }
--type list_parallel_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_text_translation_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_text_translation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_languages_response() :: #{
-%%   <<"DisplayLanguageCode">> => list(any()),
-%%   <<"Languages">> => list(language()),
-%%   <<"NextToken">> => string()
-%% }
--type list_languages_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_parallel_data_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_parallel_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% translate_document_response() :: #{
-%%   <<"AppliedSettings">> => translation_settings(),
-%%   <<"AppliedTerminologies">> => list(applied_terminology()),
-%%   <<"SourceLanguageCode">> => string(),
-%%   <<"TargetLanguageCode">> => string(),
-%%   <<"TranslatedDocument">> => translated_document()
-%% }
--type translate_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type text_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_parallel_data_response() :: #{
-%%   <<"LatestUpdateAttemptAt">> => non_neg_integer(),
-%%   <<"LatestUpdateAttemptStatus">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_parallel_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_text_translation_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type stop_text_translation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_display_language_code_exception() :: #{
-%%   <<"DisplayLanguageCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type unsupported_display_language_code_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_text_translation_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_text_translation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% output_data_config() :: #{
-%%   <<"EncryptionKey">> => encryption_key(),
-%%   <<"S3Uri">> => string()
-%% }
--type output_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parallel_data_data_location() :: #{
-%%   <<"Location">> => string(),
-%%   <<"RepositoryType">> => string()
-%% }
--type parallel_data_data_location() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
 %% translate_document_request() :: #{
@@ -524,216 +510,230 @@
 -type translate_document_request() :: #{binary() => any()}.
 
 %% Example:
-%% terminology_data() :: #{
-%%   <<"Directionality">> => list(any()),
-%%   <<"File">> => binary(),
-%%   <<"Format">> => list(any())
-%% }
--type terminology_data() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parallel_data_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_parallel_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_key() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type encryption_key() :: #{binary() => any()}.
-
-%% Example:
-%% terminology_properties() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Directionality">> => list(any()),
-%%   <<"EncryptionKey">> => encryption_key(),
-%%   <<"Format">> => list(any()),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SizeBytes">> => integer(),
-%%   <<"SkippedTermCount">> => integer(),
+%% translate_document_response() :: #{
+%%   <<"AppliedSettings">> => translation_settings(),
+%%   <<"AppliedTerminologies">> => list(applied_terminology()),
 %%   <<"SourceLanguageCode">> => string(),
-%%   <<"TargetLanguageCodes">> => list(string()),
-%%   <<"TermCount">> => integer()
+%%   <<"TargetLanguageCode">> => string(),
+%%   <<"TranslatedDocument">> => translated_document()
 %% }
--type terminology_properties() :: #{binary() => any()}.
+-type translate_document_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_text_translation_job_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"ParallelDataNames">> => list(string()),
+%% translate_term() :: #{
+%%   <<"SourceText">> => string(),
+%%   <<"TargetText">> => string()
+%% }
+-type translate_term() :: #{binary() => any()}.
+
+%% Example:
+%% translate_text_request() :: #{
 %%   <<"Settings">> => translation_settings(),
 %%   <<"SourceLanguageCode">> := string(),
-%%   <<"TargetLanguageCodes">> := list(string()),
-%%   <<"TerminologyNames">> => list(string())
+%%   <<"TargetLanguageCode">> := string(),
+%%   <<"TerminologyNames">> => list(string()),
+%%   <<"Text">> := string()
 %% }
--type start_text_translation_job_request() :: #{binary() => any()}.
+-type translate_text_request() :: #{binary() => any()}.
 
 %% Example:
-%% document() :: #{
-%%   <<"Content">> => binary(),
-%%   <<"ContentType">> => string()
+%% translate_text_response() :: #{
+%%   <<"AppliedSettings">> => translation_settings(),
+%%   <<"AppliedTerminologies">> => list(applied_terminology()),
+%%   <<"SourceLanguageCode">> => string(),
+%%   <<"TargetLanguageCode">> => string(),
+%%   <<"TranslatedText">> => string()
 %% }
--type document() :: #{binary() => any()}.
+-type translate_text_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_terminology_request() :: #{
+%% translated_document() :: #{
+%%   <<"Content">> => binary()
+%% }
+-type translated_document() :: #{binary() => any()}.
+
+%% Example:
+%% translation_settings() :: #{
+%%   <<"Brevity">> => list(any()),
+%%   <<"Formality">> => list(any()),
+%%   <<"Profanity">> => list(any())
+%% }
+-type translation_settings() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_display_language_code_exception() :: #{
+%%   <<"DisplayLanguageCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unsupported_display_language_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_language_pair_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"SourceLanguageCode">> => string(),
+%%   <<"TargetLanguageCode">> => string()
+%% }
+-type unsupported_language_pair_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_parallel_data_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"TerminologyDataFormat">> => list(any())
+%%   <<"ParallelDataConfig">> := parallel_data_config()
 %% }
--type get_terminology_request() :: #{binary() => any()}.
+-type update_parallel_data_request() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% applied_terminology() :: #{
+%% update_parallel_data_response() :: #{
+%%   <<"LatestUpdateAttemptAt">> => non_neg_integer(),
+%%   <<"LatestUpdateAttemptStatus">> => list(any()),
 %%   <<"Name">> => string(),
-%%   <<"Terms">> => list(term())
+%%   <<"Status">> => list(any())
 %% }
--type applied_terminology() :: #{binary() => any()}.
+-type update_parallel_data_response() :: #{binary() => any()}.
 
 -type create_parallel_data_errors() ::
     too_many_tags_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception().
 
 -type delete_parallel_data_errors() ::
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type delete_terminology_errors() ::
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception().
 
 -type describe_text_translation_job_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type get_parallel_data_errors() ::
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception().
 
 -type get_terminology_errors() ::
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception().
 
 -type import_terminology_errors() ::
     too_many_tags_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
     invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type list_languages_errors() ::
     unsupported_display_language_code_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_parallel_data_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_terminologies_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_text_translation_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type start_text_translation_job_errors() ::
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
+    unsupported_language_pair_exception() | 
     too_many_requests_exception() | 
-    unsupported_language_pair_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception().
 
 -type stop_text_translation_job_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type translate_document_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
+    unsupported_language_pair_exception() | 
     too_many_requests_exception() | 
-    unsupported_language_pair_exception().
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type translate_text_errors() ::
-    text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
+    unsupported_language_pair_exception() | 
     too_many_requests_exception() | 
-    detected_language_low_confidence_exception() | 
-    unsupported_language_pair_exception().
+    text_size_limit_exceeded_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception() | 
+    detected_language_low_confidence_exception().
 
 -type untag_resource_errors() ::
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type update_parallel_data_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

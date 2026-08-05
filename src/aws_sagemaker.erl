@@ -823,71 +823,261 @@
 
 
 %% Example:
-%% docker_settings() :: #{
-%%   <<"EnableDockerAccess">> => list(any()),
-%%   <<"RootlessDocker">> => list(any()),
-%%   <<"VpcOnlyTrustedAccounts">> => list(string())
+%% a_i_adapter_model_package_entry() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"ModelPackageArn">> => string()
 %% }
--type docker_settings() :: #{binary() => any()}.
+-type a_i_adapter_model_package_entry() :: #{binary() => any()}.
 
 %% Example:
-%% extend_training_plan_request() :: #{
-%%   <<"TrainingPlanExtensionOfferingId">> := string()
+%% a_i_adapter_s3_entry() :: #{
+%%   <<"AdapterId">> => string(),
+%%   <<"S3Uri">> => string()
 %% }
--type extend_training_plan_request() :: #{binary() => any()}.
+-type a_i_adapter_s3_entry() :: #{binary() => any()}.
 
 %% Example:
-%% available_upgrade() :: #{
-%%   <<"ReleaseNotes">> => list(string()),
-%%   <<"Version">> => string()
+%% a_i_benchmark_endpoint() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"InferenceComponents">> => list(a_i_benchmark_inference_component()),
+%%   <<"TargetContainerHostname">> => string()
 %% }
--type available_upgrade() :: #{binary() => any()}.
+-type a_i_benchmark_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% visibility_conditions() :: #{
-%%   <<"Key">> => string(),
+%% a_i_benchmark_inference_component() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type a_i_benchmark_inference_component() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_job_summary() :: #{
+%%   <<"AIBenchmarkJobArn">> => string(),
+%%   <<"AIBenchmarkJobName">> => string(),
+%%   <<"AIBenchmarkJobStatus">> => list(any()),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer()
+%% }
+-type a_i_benchmark_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_network_config() :: #{
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type a_i_benchmark_network_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_output_config() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_benchmark_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_benchmark_output_result() :: #{
+%%   <<"CloudWatchLogs">> => list(a_i_cloud_watch_logs()),
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_benchmark_output_result() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_capacity_reservation_config() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"MlReservationArns">> => list(string())
+%% }
+-type a_i_capacity_reservation_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_cloud_watch_logs() :: #{
+%%   <<"LogGroupArn">> => string(),
+%%   <<"LogStreamName">> => string()
+%% }
+-type a_i_cloud_watch_logs() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_mlflow_config() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string(),
+%%   <<"MlflowRunName">> => string()
+%% }
+-type a_i_mlflow_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_model_source_s3() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type a_i_model_source_s3() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation() :: #{
+%%   <<"AIBenchmarkJobArn">> => string(),
+%%   <<"AdapterDetails">> => a_i_recommendation_adapter_details(),
+%%   <<"DeploymentConfiguration">> => a_i_recommendation_deployment_configuration(),
+%%   <<"ExpectedPerformance">> => list(a_i_recommendation_performance_metric()),
+%%   <<"ModelDetails">> => a_i_recommendation_model_details(),
+%%   <<"OptimizationDetails">> => list(a_i_recommendation_optimization_detail()),
+%%   <<"RecommendationDescription">> => string()
+%% }
+-type a_i_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_adapter_details() :: #{
+%%   <<"ModelPackageArns">> => list(a_i_adapter_model_package_entry()),
+%%   <<"S3Uris">> => list(a_i_adapter_s3_entry())
+%% }
+-type a_i_recommendation_adapter_details() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_compute_spec() :: #{
+%%   <<"CapacityReservationConfig">> => a_i_capacity_reservation_config(),
+%%   <<"InstanceTypes">> => list(list(any())())
+%% }
+-type a_i_recommendation_compute_spec() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_constraint() :: #{
+%%   <<"Metric">> => list(any())
+%% }
+-type a_i_recommendation_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_deployment_configuration() :: #{
+%%   <<"CopyCountPerInstance">> => integer(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"ImageUri">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"MinCpuMemoryRequiredInMb">> => integer(),
+%%   <<"S3">> => list(a_i_recommendation_deployment_s3_channel())
+%% }
+-type a_i_recommendation_deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_deployment_s3_channel() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type a_i_recommendation_deployment_s3_channel() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_inference_specification() :: #{
+%%   <<"Framework">> => list(any())
+%% }
+-type a_i_recommendation_inference_specification() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_instance_detail() :: #{
+%%   <<"CopyCountPerInstance">> => integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type a_i_recommendation_instance_detail() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_job_summary() :: #{
+%%   <<"AIRecommendationJobArn">> => string(),
+%%   <<"AIRecommendationJobName">> => string(),
+%%   <<"AIRecommendationJobStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer()
+%% }
+-type a_i_recommendation_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_model_details() :: #{
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"InstanceDetails">> => list(a_i_recommendation_instance_detail()),
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type a_i_recommendation_model_details() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_optimization_detail() :: #{
+%%   <<"OptimizationConfig">> => map(),
+%%   <<"OptimizationType">> => list(any())
+%% }
+-type a_i_recommendation_optimization_detail() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_output_config() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
+%%   <<"ModelPackageGroupIdentifier">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_recommendation_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_output_result() :: #{
+%%   <<"MlflowConfig">> => a_i_mlflow_config(),
+%%   <<"ModelPackageGroupIdentifier">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type a_i_recommendation_output_result() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_recommendation_performance_metric() :: #{
+%%   <<"Metric">> => string(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string(),
 %%   <<"Value">> => string()
 %% }
--type visibility_conditions() :: #{binary() => any()}.
+-type a_i_recommendation_performance_metric() :: #{binary() => any()}.
 
 %% Example:
-%% describe_hub_request() :: #{
-%%   <<"HubName">> := string()
+%% a_i_recommendation_performance_target() :: #{
+%%   <<"Constraints">> => list(a_i_recommendation_constraint())
 %% }
--type describe_hub_request() :: #{binary() => any()}.
+-type a_i_recommendation_performance_target() :: #{binary() => any()}.
 
 %% Example:
-%% auto_ml_output_data_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string()
+%% a_i_workload_config_summary() :: #{
+%%   <<"AIWorkloadConfigArn">> => string(),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer()
 %% }
--type auto_ml_output_data_config() :: #{binary() => any()}.
+-type a_i_workload_config_summary() :: #{binary() => any()}.
 
 %% Example:
-%% stop_a_i_recommendation_job_response() :: #{
-%%   <<"AIRecommendationJobArn">> => string()
+%% a_i_workload_configs() :: #{
+%%   <<"WorkloadSpec">> => list()
 %% }
--type stop_a_i_recommendation_job_response() :: #{binary() => any()}.
+-type a_i_workload_configs() :: #{binary() => any()}.
 
 %% Example:
-%% update_context_request() :: #{
-%%   <<"ContextName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Properties">> => map(),
-%%   <<"PropertiesToRemove">> => list(string())
+%% a_i_workload_data_source() :: #{
+%%   <<"S3DataSource">> => a_i_workload_s3_data_source()
 %% }
--type update_context_request() :: #{binary() => any()}.
+-type a_i_workload_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% instance_group_metadata() :: #{
-%%   <<"AmiOverride">> => [string()],
-%%   <<"AvailabilityZoneId">> => [string()],
-%%   <<"CapacityReservation">> => capacity_reservation(),
-%%   <<"FailureMessage">> => [string()],
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetId">> => [string()]
+%% a_i_workload_input_data_config() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"DataSource">> => a_i_workload_data_source()
 %% }
--type instance_group_metadata() :: #{binary() => any()}.
+-type a_i_workload_input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% a_i_workload_s3_data_source() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type a_i_workload_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_partition_config() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type accelerator_partition_config() :: #{binary() => any()}.
+
+%% Example:
+%% action_source() :: #{
+%%   <<"SourceId">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SourceUri">> => string()
+%% }
+-type action_source() :: #{binary() => any()}.
 
 %% Example:
 %% action_summary() :: #{
@@ -902,966 +1092,6 @@
 -type action_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_aliases_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SageMakerImageVersionAliases">> => list(string())
-%% }
--type list_aliases_response() :: #{binary() => any()}.
-
-%% Example:
-%% transform_data_source() :: #{
-%%   <<"S3DataSource">> => transform_s3_data_source()
-%% }
--type transform_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_edge_deployment_stage_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"Stages">> := list(deployment_stage())
-%% }
--type create_edge_deployment_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_experiments_response() :: #{
-%%   <<"ExperimentSummaries">> => list(experiment_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_experiments_response() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_serverless_update_config() :: #{
-%%   <<"MaxConcurrency">> => integer(),
-%%   <<"ProvisionedConcurrency">> => integer()
-%% }
--type production_variant_serverless_update_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_artifact_request() :: #{
-%%   <<"ArtifactArn">> := string(),
-%%   <<"ArtifactName">> => string(),
-%%   <<"Properties">> => map(),
-%%   <<"PropertiesToRemove">> => list(string())
-%% }
--type update_artifact_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_inference_experiment_response() :: #{
-%%   <<"InferenceExperimentArn">> => string()
-%% }
--type stop_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_capacity_reservation_summary() :: #{
-%%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"Ec2CapacityReservations">> => list(ec2_capacity_reservation()),
-%%   <<"MlReservationArn">> => string(),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UsedByCurrentEndpoint">> => integer()
-%% }
--type production_variant_capacity_reservation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% best_objective_not_improving() :: #{
-%%   <<"MaxNumberOfTrainingJobsNotImproving">> => integer()
-%% }
--type best_objective_not_improving() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_request() :: #{
-%%   <<"ClusterName">> := string()
-%% }
--type describe_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trial_request() :: #{
-%%   <<"TrialName">> := string()
-%% }
--type describe_trial_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_aliases_request() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"ImageName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type list_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_catalogs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_resource_catalogs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_quality_job_definition_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JobDefinitionArn">> => string(),
-%%   <<"JobDefinitionName">> => string(),
-%%   <<"JobResources">> => monitoring_resources(),
-%%   <<"ModelQualityAppSpecification">> => model_quality_app_specification(),
-%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
-%%   <<"ModelQualityJobInput">> => model_quality_job_input(),
-%%   <<"ModelQualityJobOutputConfig">> => monitoring_output_config(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition()
-%% }
--type describe_model_quality_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_scaling_configuration_recommendation_request() :: #{
-%%   <<"EndpointName">> => string(),
-%%   <<"InferenceRecommendationsJobName">> := string(),
-%%   <<"RecommendationId">> => string(),
-%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
-%%   <<"TargetCpuUtilizationPerCore">> => integer()
-%% }
--type get_scaling_configuration_recommendation_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_latency_threshold() :: #{
-%%   <<"Percentile">> => string(),
-%%   <<"ValueInMilliseconds">> => integer()
-%% }
--type model_latency_threshold() :: #{binary() => any()}.
-
-%% Example:
-%% delete_experiment_response() :: #{
-%%   <<"ExperimentArn">> => string()
-%% }
--type delete_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_generation_job_config() :: #{
-%%   <<"BaseModelName">> => string(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"ModelAccessConfig">> => model_access_config(),
-%%   <<"TextGenerationHyperParameters">> => map()
-%% }
--type text_generation_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_request() :: #{
-%%   <<"HubDescription">> => string(),
-%%   <<"HubDisplayName">> => string(),
-%%   <<"HubName">> := string(),
-%%   <<"HubSearchKeywords">> => list(string())
-%% }
--type update_hub_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_apps_response() :: #{
-%%   <<"Apps">> => list(app_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_apps_response() :: #{binary() => any()}.
-
-%% Example:
-%% inference_specification() :: #{
-%%   <<"Containers">> => list(model_package_container_definition()),
-%%   <<"SupportedContentTypes">> => list(string()),
-%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
-%%   <<"SupportedResponseMIMETypes">> => list(string()),
-%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
-%% }
--type inference_specification() :: #{binary() => any()}.
-
-%% Example:
-%% time_series_forecasting_job_config() :: #{
-%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"FeatureSpecificationS3Uri">> => string(),
-%%   <<"ForecastFrequency">> => string(),
-%%   <<"ForecastHorizon">> => integer(),
-%%   <<"ForecastQuantiles">> => list(string()),
-%%   <<"HolidayConfig">> => list(holiday_config_attributes()),
-%%   <<"TimeSeriesConfig">> => time_series_config(),
-%%   <<"Transformations">> => time_series_transformations()
-%% }
--type time_series_forecasting_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_search_suggestions_request() :: #{
-%%   <<"Resource">> := list(any()),
-%%   <<"SuggestionQuery">> => suggestion_query()
-%% }
--type get_search_suggestions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_component_input() :: #{
-%%   <<"EndpointName">> := string(),
-%%   <<"InferenceComponentName">> := string(),
-%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
-%%   <<"Specification">> => inference_component_specification(),
-%%   <<"Specifications">> => list(inference_component_specification()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VariantName">> => string()
-%% }
--type create_inference_component_input() :: #{binary() => any()}.
-
-%% Example:
-%% hyperband_strategy_config() :: #{
-%%   <<"MaxResource">> => integer(),
-%%   <<"MinResource">> => integer()
-%% }
--type hyperband_strategy_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_card_response() :: #{
-%%   <<"ModelCardArn">> => string()
-%% }
--type update_model_card_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_experiment_request() :: #{
-%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
-%%   <<"Description">> => string(),
-%%   <<"ModelVariants">> => list(model_variant_config()),
-%%   <<"Name">> := string(),
-%%   <<"Schedule">> => inference_experiment_schedule(),
-%%   <<"ShadowModeConfig">> => shadow_mode_config()
-%% }
--type update_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_speculative_decoding_config() :: #{
-%%   <<"Technique">> => list(any()),
-%%   <<"TrainingDataSource">> => model_speculative_decoding_training_data_source()
-%% }
--type model_speculative_decoding_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_content_request() :: #{
-%%   <<"HubContentDescription">> => string(),
-%%   <<"HubContentDisplayName">> => string(),
-%%   <<"HubContentMarkdown">> => string(),
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentSearchKeywords">> => list(string()),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubContentVersion">> := string(),
-%%   <<"HubName">> := string(),
-%%   <<"SupportStatus">> => list(any())
-%% }
--type update_hub_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% hub_content_dependency() :: #{
-%%   <<"DependencyCopyPath">> => string(),
-%%   <<"DependencyOriginPath">> => string()
-%% }
--type hub_content_dependency() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_runtime_config_summary() :: #{
-%%   <<"CurrentCopyCount">> => integer(),
-%%   <<"DesiredCopyCount">> => integer(),
-%%   <<"PlacementStatus">> => list(inference_component_placement_status())
-%% }
--type inference_component_runtime_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_space_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SpaceName">> := string()
-%% }
--type delete_space_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_consumed_resources() :: #{
-%%   <<"RuntimeInSeconds">> => integer()
-%% }
--type hyper_parameter_tuning_job_consumed_resources() :: #{binary() => any()}.
-
-%% Example:
-%% stop_transform_job_request() :: #{
-%%   <<"TransformJobName">> := string()
-%% }
--type stop_transform_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_human_task_ui_request() :: #{
-%%   <<"HumanTaskUiName">> := string()
-%% }
--type delete_human_task_ui_request() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_instance_summary() :: #{
-%%   <<"AdditionalCodeRepositories">> => list(string()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultCodeRepository">> => string(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NotebookInstanceArn">> => string(),
-%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
-%%   <<"NotebookInstanceName">> => string(),
-%%   <<"NotebookInstanceStatus">> => list(any()),
-%%   <<"Url">> => string()
-%% }
--type notebook_instance_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoints_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_endpoints_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_component_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InferenceComponentArn">> => string(),
-%%   <<"InferenceComponentName">> => string(),
-%%   <<"InferenceComponentStatus">> => list(any()),
-%%   <<"LastDeploymentConfig">> => inference_component_deployment_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RuntimeConfig">> => inference_component_runtime_config_summary(),
-%%   <<"Specification">> => inference_component_specification_summary(),
-%%   <<"Specifications">> => list(inference_component_specification_summary()),
-%%   <<"VariantName">> => string()
-%% }
--type describe_inference_component_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_experiment_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointMetadata">> => endpoint_metadata(),
-%%   <<"KmsKey">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelVariants">> => list(model_variant_config_summary()),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Schedule">> => inference_experiment_schedule(),
-%%   <<"ShadowModeConfig">> => shadow_mode_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_profile_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"UserProfileName">> := string(),
-%%   <<"UserSettings">> => user_settings()
-%% }
--type update_user_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_data_cache_config_summary() :: #{
-%%   <<"EnableCaching">> => boolean()
-%% }
--type inference_component_data_cache_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% metric_data() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Value">> => float()
-%% }
--type metric_data() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_benchmark_job_response() :: #{
-%%   <<"AIBenchmarkJobArn">> => string()
-%% }
--type delete_a_i_benchmark_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_devices_request() :: #{
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"LatestHeartbeatAfter">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_config_output() :: #{
-%%   <<"AsyncInferenceConfig">> => async_inference_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataCaptureConfig">> => data_capture_config(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"EndpointConfigArn">> => string(),
-%%   <<"EndpointConfigName">> => string(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"ExplainerConfig">> => explainer_config(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MetricsConfig">> => metrics_config(),
-%%   <<"ProductionVariants">> => list(production_variant()),
-%%   <<"ShadowProductionVariants">> => list(production_variant()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type describe_endpoint_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_request() :: #{
-%%   <<"AppNetworkAccessType">> => list(any()),
-%%   <<"AppSecurityGroupManagement">> => list(any()),
-%%   <<"DefaultSpaceSettings">> => default_space_settings(),
-%%   <<"DefaultUserSettings">> => user_settings(),
-%%   <<"DomainId">> := string(),
-%%   <<"DomainSettingsForUpdate">> => domain_settings_for_update(),
-%%   <<"HomeEfsFileSystemCreation">> => list(any()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"TagPropagation">> => list(any()),
-%%   <<"VpcId">> => string()
-%% }
--type update_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mlflow_app_response() :: #{
-%%   <<"AccountDefaultStatus">> => list(any()),
-%%   <<"Arn">> => string(),
-%%   <<"ArtifactStoreUri">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultDomainIdList">> => list(string()),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaintenanceStatus">> => list(any()),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"ModelRegistrationMode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
-%% }
--type describe_mlflow_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% resolved_attributes() :: #{
-%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"ProblemType">> => list(any())
-%% }
--type resolved_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% training_plan_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type training_plan_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserProfiles">> => list(user_profile_details())
-%% }
--type list_user_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Type">> => list(any())
-%% }
--type capacity_reservation() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limits() :: #{
-%%   <<"MaxNumberOfTrainingJobs">> => integer(),
-%%   <<"MaxParallelTrainingJobs">> => integer(),
-%%   <<"MaxRuntimeInSeconds">> => integer()
-%% }
--type resource_limits() :: #{binary() => any()}.
-
-%% Example:
-%% idle_settings() :: #{
-%%   <<"IdleTimeoutInMinutes">> => integer(),
-%%   <<"LifecycleManagement">> => list(any()),
-%%   <<"MaxIdleTimeoutInMinutes">> => integer(),
-%%   <<"MinIdleTimeoutInMinutes">> => integer()
-%% }
--type idle_settings() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% ui_config() :: #{
-%%   <<"HumanTaskUiArn">> => string(),
-%%   <<"UiTemplateS3Uri">> => string()
-%% }
--type ui_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_processing_job_response() :: #{
-%%   <<"AppSpecification">> => app_specification(),
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Environment">> => map(),
-%%   <<"ExitMessage">> => string(),
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MonitoringScheduleArn">> => string(),
-%%   <<"NetworkConfig">> => network_config(),
-%%   <<"ProcessingEndTime">> => non_neg_integer(),
-%%   <<"ProcessingInputs">> => list(processing_input()),
-%%   <<"ProcessingJobArn">> => string(),
-%%   <<"ProcessingJobName">> => string(),
-%%   <<"ProcessingJobStatus">> => list(any()),
-%%   <<"ProcessingOutputConfig">> => processing_output_config(),
-%%   <<"ProcessingResources">> => processing_resources(),
-%%   <<"ProcessingStartTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => processing_stopping_condition(),
-%%   <<"TrainingJobArn">> => string()
-%% }
--type describe_processing_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% hub_info() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HubArn">> => string(),
-%%   <<"HubDescription">> => string(),
-%%   <<"HubDisplayName">> => string(),
-%%   <<"HubName">> => string(),
-%%   <<"HubSearchKeywords">> => list(string()),
-%%   <<"HubStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type hub_info() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_stopping_condition() :: #{
-%%   <<"MaxRuntimeInSeconds">> => integer()
-%% }
--type monitoring_stopping_condition() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_mlflow_tracking_server_url_response() :: #{
-%%   <<"AuthorizedUrl">> => string()
-%% }
--type create_presigned_mlflow_tracking_server_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_recommendations_job_response() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointPerformances">> => list(endpoint_performance()),
-%%   <<"FailureReason">> => string(),
-%%   <<"InferenceRecommendations">> => list(inference_recommendation()),
-%%   <<"InputConfig">> => recommendation_job_input_config(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobDescription">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions()
-%% }
--type describe_inference_recommendations_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_cluster_config() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type monitoring_cluster_config() :: #{binary() => any()}.
-
-%% Example:
-%% integer_parameter_range() :: #{
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ScalingType">> => list(any())
-%% }
--type integer_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% instance_metadata() :: #{
-%%   <<"AdditionalEnis">> => additional_enis(),
-%%   <<"CapacityReservation">> => capacity_reservation(),
-%%   <<"CustomerEni">> => [string()],
-%%   <<"FailureMessage">> => [string()],
-%%   <<"InstanceRequirementsEniConfigurations">> => list(instance_requirements_eni_configuration()),
-%%   <<"LcsExecutionState">> => [string()],
-%%   <<"NodeLogicalId">> => string()
-%% }
--type instance_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_execution_request() :: #{
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineExecutionArn">> := string(),
-%%   <<"PipelineExecutionDescription">> => string(),
-%%   <<"PipelineExecutionDisplayName">> => string()
-%% }
--type update_pipeline_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% throughput_config_update() :: #{
-%%   <<"ProvisionedReadCapacityUnits">> => integer(),
-%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
-%%   <<"ThroughputMode">> => list(any())
-%% }
--type throughput_config_update() :: #{binary() => any()}.
-
-%% Example:
-%% update_app_image_config_response() :: #{
-%%   <<"AppImageConfigArn">> => string()
-%% }
--type update_app_image_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_mlflow_tracking_server_url_request() :: #{
-%%   <<"ExpiresInSeconds">> => integer(),
-%%   <<"SessionExpirationDurationInSeconds">> => integer(),
-%%   <<"TrackingServerName">> := string()
-%% }
--type create_presigned_mlflow_tracking_server_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_network_interface() :: #{
-%%   <<"InterfaceType">> => list(any())
-%% }
--type cluster_network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mlflow_app_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type delete_mlflow_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_data_quality() :: #{
-%%   <<"Constraints">> => metrics_source(),
-%%   <<"Statistics">> => metrics_source()
-%% }
--type model_data_quality() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_tiered_storage_config() :: #{
-%%   <<"InstanceMemoryAllocationPercentage">> => integer(),
-%%   <<"Mode">> => list(any())
-%% }
--type cluster_tiered_storage_config() :: #{binary() => any()}.
-
-%% Example:
-%% experiment_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentArn">> => string(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"ExperimentSource">> => experiment_source(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type experiment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipeline_definition_for_execution_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"PipelineDefinition">> => string()
-%% }
--type describe_pipeline_definition_for_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_output() :: #{
-%%   <<"FinalActiveLearningModelArn">> => string(),
-%%   <<"OutputDatasetS3Uri">> => string()
-%% }
--type labeling_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_export_artifacts() :: #{
-%%   <<"S3ExportArtifacts">> => string()
-%% }
--type model_card_export_artifacts() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_apps_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_partner_apps_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_explainability_job_definitions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_explainability_job_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_a_i_recommendation_job_request() :: #{
-%%   <<"AIRecommendationJobName">> := string()
-%% }
--type describe_a_i_recommendation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_image_config_response() :: #{
-%%   <<"AppImageConfigArn">> => string()
-%% }
--type create_app_image_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge_deployment_plan_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"EdgeDeploymentFailed">> => integer(),
-%%   <<"EdgeDeploymentPending">> => integer(),
-%%   <<"EdgeDeploymentPlanArn">> => string(),
-%%   <<"EdgeDeploymentPlanName">> => string(),
-%%   <<"EdgeDeploymentSuccess">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type edge_deployment_plan_summary() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_resolved_attributes() :: #{
-%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
-%%   <<"AutoMLProblemTypeResolvedAttributes">> => list(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
-%% }
--type auto_ml_resolved_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% model_variant_config() :: #{
-%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
-%%   <<"ModelName">> => string(),
-%%   <<"VariantName">> => string()
-%% }
--type model_variant_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_output() :: #{
-%%   <<"ModelArn">> => string()
-%% }
--type create_model_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobCategory">> => list(any()),
-%%   <<"JobConfigDocument">> => string(),
-%%   <<"JobConfigSchemaVersion">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecondaryStatus">> => list(any()),
-%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_source() :: #{
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type trial_component_source() :: #{binary() => any()}.
-
-%% Example:
-%% environment_parameter_ranges() :: #{
-%%   <<"CategoricalParameterRanges">> => list(categorical_parameter())
-%% }
--type environment_parameter_ranges() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipelines_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineSummaries">> => list(pipeline_summary())
-%% }
--type list_pipelines_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_security_config() :: #{
-%%   <<"KmsKeyId">> => string()
-%% }
--type model_card_security_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_workforces_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Workforces">> => list(workforce())
-%% }
--type list_workforces_response() :: #{binary() => any()}.
-
-%% Example:
-%% capture_option() :: #{
-%%   <<"CaptureMode">> => list(any())
-%% }
--type capture_option() :: #{binary() => any()}.
-
-%% Example:
-%% cfn_create_template_provider() :: #{
-%%   <<"Parameters">> => list(cfn_stack_create_parameter()),
-%%   <<"RoleARN">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateURL">> => string()
-%% }
--type cfn_create_template_provider() :: #{binary() => any()}.
-
-%% Example:
-%% detach_cluster_node_volume_response() :: #{
-%%   <<"AttachTime">> => non_neg_integer(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VolumeId">> => string()
-%% }
--type detach_cluster_node_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_component_output() :: #{
-%%   <<"InferenceComponentArn">> => string()
-%% }
--type update_inference_component_output() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation() :: #{
-%%   <<"AIBenchmarkJobArn">> => string(),
-%%   <<"DeploymentConfiguration">> => a_i_recommendation_deployment_configuration(),
-%%   <<"ExpectedPerformance">> => list(a_i_recommendation_performance_metric()),
-%%   <<"ModelDetails">> => a_i_recommendation_model_details(),
-%%   <<"OptimizationDetails">> => list(a_i_recommendation_optimization_detail()),
-%%   <<"RecommendationDescription">> => string()
-%% }
--type a_i_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_image_config_response() :: #{
-%%   <<"AppImageConfigArn">> => string(),
-%%   <<"AppImageConfigName">> => string(),
-%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
-%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type describe_app_image_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_request() :: #{
-%%   <<"AppName">> := string(),
-%%   <<"AppType">> := list(any()),
-%%   <<"DomainId">> := string(),
-%%   <<"RecoveryMode">> => boolean(),
-%%   <<"ResourceSpec">> => resource_spec(),
-%%   <<"SpaceName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserProfileName">> => string()
-%% }
--type create_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_alert_actions() :: #{
-%%   <<"ModelDashboardIndicator">> => model_dashboard_indicator_action()
-%% }
--type monitoring_alert_actions() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_response() :: #{
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineVersionId">> => float()
-%% }
--type update_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_hub_content_response() :: #{
-%%   <<"HubArn">> => string(),
-%%   <<"HubContentArn">> => string()
-%% }
--type import_hub_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% ui_template() :: #{
-%%   <<"Content">> => string()
-%% }
--type ui_template() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_nodes_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"IncludeNodeLogicalIds">> => boolean(),
-%%   <<"InstanceGroupNameContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_cluster_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_a_i_recommendation_job_response() :: #{
-%%   <<"AIRecommendationJobArn">> => string(),
-%%   <<"AIRecommendationJobName">> => string(),
-%%   <<"AIRecommendationJobStatus">> => list(any()),
-%%   <<"AIWorkloadConfigIdentifier">> => string(),
-%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
-%%   <<"ModelSource">> => list(),
-%%   <<"OptimizeModel">> => boolean(),
-%%   <<"OutputConfig">> => a_i_recommendation_output_result(),
-%%   <<"PerformanceTarget">> => a_i_recommendation_performance_target(),
-%%   <<"Recommendations">> => list(a_i_recommendation()),
-%%   <<"RoleArn">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_a_i_recommendation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% git_config_for_update() :: #{
-%%   <<"SecretArn">> => string()
-%% }
--type git_config_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% create_image_response() :: #{
-%%   <<"ImageArn">> => string()
-%% }
--type create_image_response() :: #{binary() => any()}.
-
-%% Example:
 %% add_association_request() :: #{
 %%   <<"AssociationType">> => list(any()),
 %%   <<"DestinationArn">> := string(),
@@ -1870,415 +1100,58 @@
 -type add_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_job_response() :: #{
-%%   <<"JobArn">> => string()
+%% add_association_response() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
 %% }
--type create_job_response() :: #{binary() => any()}.
+-type add_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% pipeline_execution_step_metadata() :: #{
-%%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
-%%   <<"BedrockCustomModel">> => bedrock_custom_model_metadata(),
-%%   <<"BedrockCustomModelDeployment">> => bedrock_custom_model_deployment_metadata(),
-%%   <<"BedrockModelImport">> => bedrock_model_import_metadata(),
-%%   <<"BedrockProvisionedModelThroughput">> => bedrock_provisioned_model_throughput_metadata(),
-%%   <<"Callback">> => callback_step_metadata(),
-%%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
-%%   <<"Condition">> => condition_step_metadata(),
-%%   <<"EMR">> => emr_step_metadata(),
-%%   <<"Endpoint">> => endpoint_step_metadata(),
-%%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
-%%   <<"Fail">> => fail_step_metadata(),
-%%   <<"InferenceComponent">> => inference_component_metadata(),
-%%   <<"Job">> => job_step_metadata(),
-%%   <<"Lambda">> => lambda_step_metadata(),
-%%   <<"Lineage">> => lineage_metadata(),
-%%   <<"Model">> => model_step_metadata(),
-%%   <<"ProcessingJob">> => processing_job_step_metadata(),
-%%   <<"QualityCheck">> => quality_check_step_metadata(),
-%%   <<"RegisterModel">> => register_model_step_metadata(),
-%%   <<"TrainingJob">> => training_job_step_metadata(),
-%%   <<"TransformJob">> => transform_job_step_metadata(),
-%%   <<"TuningJob">> => tuning_job_step_meta_data()
+%% add_cluster_node_specification() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"IncrementTargetCountBy">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())())
 %% }
--type pipeline_execution_step_metadata() :: #{binary() => any()}.
+-type add_cluster_node_specification() :: #{binary() => any()}.
 
 %% Example:
-%% bias() :: #{
-%%   <<"PostTrainingReport">> => metrics_source(),
-%%   <<"PreTrainingReport">> => metrics_source(),
-%%   <<"Report">> => metrics_source()
+%% add_tags_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type bias() :: #{binary() => any()}.
+-type add_tags_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_ultra_servers_by_reserved_capacity_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReservedCapacityArn">> := string()
-%% }
--type list_ultra_servers_by_reserved_capacity_request() :: #{binary() => any()}.
-
-%% Example:
-%% drift_check_model_data_quality() :: #{
-%%   <<"Constraints">> => metrics_source(),
-%%   <<"Statistics">> => metrics_source()
-%% }
--type drift_check_model_data_quality() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipelines_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineNamePrefix">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_pipelines_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_package_input() :: #{
-%%   <<"IncludedData">> => list(any()),
-%%   <<"ModelPackageName">> := string()
-%% }
--type describe_model_package_input() :: #{binary() => any()}.
-
-%% Example:
-%% categorical_parameter_range_specification() :: #{
-%%   <<"Values">> => list(string())
-%% }
--type categorical_parameter_range_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_recommendation_jobs_response() :: #{
-%%   <<"AIRecommendationJobs">> => list(a_i_recommendation_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_a_i_recommendation_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hub_content_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DocumentSchemaVersion">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HubArn">> => string(),
-%%   <<"HubContentArn">> => string(),
-%%   <<"HubContentDependencies">> => list(hub_content_dependency()),
-%%   <<"HubContentDescription">> => string(),
-%%   <<"HubContentDisplayName">> => string(),
-%%   <<"HubContentDocument">> => string(),
-%%   <<"HubContentMarkdown">> => string(),
-%%   <<"HubContentName">> => string(),
-%%   <<"HubContentSearchKeywords">> => list(string()),
-%%   <<"HubContentStatus">> => list(any()),
-%%   <<"HubContentType">> => list(any()),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"HubName">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ReferenceMinVersion">> => string(),
-%%   <<"SageMakerPublicHubContentArn">> => string(),
-%%   <<"SupportStatus">> => list(any())
-%% }
--type describe_hub_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% processing_resources() :: #{
-%%   <<"ClusterConfig">> => processing_cluster_config()
-%% }
--type processing_resources() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_recommendations_job_request() :: #{
-%%   <<"JobName">> := string()
-%% }
--type describe_inference_recommendations_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% metadata_properties() :: #{
-%%   <<"CommitId">> => string(),
-%%   <<"GeneratedBy">> => string(),
-%%   <<"ProjectId">> => string(),
-%%   <<"Repository">> => string()
-%% }
--type metadata_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_optimization_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"OptimizationContains">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_optimization_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_training_plan_response() :: #{
-%%   <<"TrainingPlanArn">> => string()
-%% }
--type create_training_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_training_plan_offerings_request() :: #{
-%%   <<"DurationHours">> => float(),
-%%   <<"EndTimeBefore">> => non_neg_integer(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"StartTimeAfter">> => non_neg_integer(),
-%%   <<"TargetResources">> => list(list(any())()),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"UltraServerCount">> => integer(),
-%%   <<"UltraServerType">> => string()
-%% }
--type search_training_plan_offerings_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_shared_environment_config() :: #{
-%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
-%%   <<"FSxLustreDeletionPolicy">> => list(any())
-%% }
--type cluster_shared_environment_config() :: #{binary() => any()}.
-
-%% Example:
-%% s3_storage_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ResolvedOutputS3Uri">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type s3_storage_config() :: #{binary() => any()}.
-
-%% Example:
-%% container_metrics_config() :: #{
-%%   <<"MetricsEndpoints">> => list(metrics_endpoint())
-%% }
--type container_metrics_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_human_task_ui_request() :: #{
-%%   <<"HumanTaskUiName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UiTemplate">> := ui_template()
-%% }
--type create_human_task_ui_request() :: #{binary() => any()}.
-
-%% Example:
-%% studio_lifecycle_config_details() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"StudioLifecycleConfigAppType">> => list(any()),
-%%   <<"StudioLifecycleConfigArn">> => string(),
-%%   <<"StudioLifecycleConfigName">> => string()
-%% }
--type studio_lifecycle_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_source() :: #{
-%%   <<"DatasetArn">> => string()
-%% }
--type dataset_source() :: #{binary() => any()}.
-
-%% Example:
-%% search_request() :: #{
-%%   <<"CrossAccountFilterOption">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Resource">> := list(any()),
-%%   <<"SearchExpression">> => search_expression(),
-%%   <<"SortBy">> => string(),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"VisibilityConditions">> => list(visibility_conditions())
-%% }
--type search_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_response() :: #{
-%%   <<"AutoScaling">> => cluster_auto_scaling_config_output(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"ClusterRole">> => string(),
-%%   <<"ClusterStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"InstanceGroups">> => list(cluster_instance_group_details()),
-%%   <<"NodeProvisioningMode">> => list(any()),
-%%   <<"NodeRecovery">> => list(any()),
-%%   <<"Orchestrator">> => cluster_orchestrator(),
-%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
-%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config_output(),
-%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type describe_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_action_request() :: #{
-%%   <<"ActionName">> := string()
-%% }
--type delete_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_package_group_output() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ManagedConfiguration">> => managed_configuration(),
-%%   <<"ModelPackageGroupArn">> => string(),
-%%   <<"ModelPackageGroupDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageGroupStatus">> => list(any())
-%% }
--type describe_model_package_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_processing_job_request() :: #{
-%%   <<"ProcessingJobName">> := string()
-%% }
--type describe_processing_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_update_policy() :: #{
-%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
-%%   <<"TerminationWaitInSeconds">> => integer(),
-%%   <<"TrafficRoutingConfiguration">> => traffic_routing_config()
-%% }
--type blue_green_update_policy() :: #{binary() => any()}.
-
-%% Example:
-%% compute_quota_target() :: #{
-%%   <<"FairShareWeight">> => integer(),
-%%   <<"TeamName">> => string()
-%% }
--type compute_quota_target() :: #{binary() => any()}.
-
-%% Example:
-%% unified_studio_settings() :: #{
-%%   <<"DomainAccountId">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"DomainRegion">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"ProjectId">> => string(),
-%%   <<"ProjectS3Path">> => string(),
-%%   <<"SingleSignOnApplicationArn">> => string(),
-%%   <<"StudioWebPortalAccess">> => list(any())
-%% }
--type unified_studio_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_request() :: #{
-%%   <<"ResourceIdentifier">> := string()
-%% }
--type start_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_studio_lifecycle_config_request() :: #{
-%%   <<"StudioLifecycleConfigAppType">> := list(any()),
-%%   <<"StudioLifecycleConfigContent">> := string(),
-%%   <<"StudioLifecycleConfigName">> := string(),
+%% add_tags_output() :: #{
 %%   <<"Tags">> => list(tag())
 %% }
--type create_studio_lifecycle_config_request() :: #{binary() => any()}.
+-type add_tags_output() :: #{binary() => any()}.
 
 %% Example:
-%% source_algorithm_specification() :: #{
-%%   <<"SourceAlgorithms">> => list(source_algorithm())
+%% additional_enis() :: #{
+%%   <<"EfaEnis">> => list([string()]())
 %% }
--type source_algorithm_specification() :: #{binary() => any()}.
+-type additional_enis() :: #{binary() => any()}.
 
 %% Example:
-%% network_config() :: #{
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"VpcConfig">> => vpc_config()
+%% additional_inference_specification_definition() :: #{
+%%   <<"Containers">> => list(model_package_container_definition()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SupportedContentTypes">> => list(string()),
+%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()),
+%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
 %% }
--type network_config() :: #{binary() => any()}.
+-type additional_inference_specification_definition() :: #{binary() => any()}.
 
 %% Example:
-%% describe_flow_definition_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"FlowDefinitionArn">> => string(),
-%%   <<"FlowDefinitionName">> => string(),
-%%   <<"FlowDefinitionStatus">> => list(any()),
-%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
-%%   <<"HumanLoopConfig">> => human_loop_config(),
-%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
-%%   <<"OutputConfig">> => flow_definition_output_config(),
-%%   <<"RoleArn">> => string()
+%% additional_model_data_source() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"S3DataSource">> => s3_model_data_source()
 %% }
--type describe_flow_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_studio_lifecycle_config_request() :: #{
-%%   <<"StudioLifecycleConfigName">> := string()
-%% }
--type delete_studio_lifecycle_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_feature_group_request() :: #{
-%%   <<"FeatureGroupName">> := string()
-%% }
--type delete_feature_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_software_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"DeploymentConfig">> => deployment_configuration(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceGroups">> => list(update_cluster_software_instance_group_specification())
-%% }
--type update_cluster_software_request() :: #{binary() => any()}.
-
-%% Example:
-%% online_store_config_update() :: #{
-%%   <<"TtlDuration">> => ttl_duration()
-%% }
--type online_store_config_update() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_definition_s3_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"ObjectKey">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type pipeline_definition_s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% phase() :: #{
-%%   <<"DurationInSeconds">> => integer(),
-%%   <<"InitialNumberOfUsers">> => integer(),
-%%   <<"SpawnRate">> => integer()
-%% }
--type phase() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_experiment_response() :: #{
-%%   <<"InferenceExperimentArn">> => string()
-%% }
--type create_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_input() :: #{
-%%   <<"ProjectDescription">> => string(),
-%%   <<"ProjectName">> := string(),
-%%   <<"ServiceCatalogProvisioningUpdateDetails">> => service_catalog_provisioning_update_details(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateProvidersToUpdate">> => list(update_template_provider())
-%% }
--type update_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_job_model_source() :: #{
-%%   <<"S3">> => optimization_job_model_source_s3(),
-%%   <<"SageMakerModel">> => optimization_sage_maker_model()
-%% }
--type optimization_job_model_source() :: #{binary() => any()}.
+-type additional_model_data_source() :: #{binary() => any()}.
 
 %% Example:
 %% additional_s3_data_source() :: #{
@@ -2290,696 +1163,11 @@
 -type additional_s3_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% model_digests() :: #{
-%%   <<"ArtifactDigest">> => string()
-%% }
--type model_digests() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_app_presigned_url_response() :: #{
-%%   <<"Url">> => string()
-%% }
--type create_partner_app_presigned_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_mlflow_tracking_server_request() :: #{
-%%   <<"TrackingServerName">> := string()
-%% }
--type start_mlflow_tracking_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_search_suggestions_response() :: #{
-%%   <<"PropertyNameSuggestions">> => list(property_name_suggestion())
-%% }
--type get_search_suggestions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_apps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(partner_app_summary())
-%% }
--type list_partner_apps_response() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_job_summary() :: #{
-%%   <<"AIRecommendationJobArn">> => string(),
-%%   <<"AIRecommendationJobName">> => string(),
-%%   <<"AIRecommendationJobStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer()
-%% }
--type a_i_recommendation_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_processing_job_request() :: #{
-%%   <<"ProcessingJobName">> := string()
-%% }
--type delete_processing_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% oidc_member_definition() :: #{
-%%   <<"Groups">> => list(string())
-%% }
--type oidc_member_definition() :: #{binary() => any()}.
-
-%% Example:
-%% time_series_config() :: #{
-%%   <<"GroupingAttributeNames">> => list(string()),
-%%   <<"ItemIdentifierAttributeName">> => string(),
-%%   <<"TargetAttributeName">> => string(),
-%%   <<"TimestampAttributeName">> => string()
-%% }
--type time_series_config() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_dataset_definition() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"ClusterRoleArn">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"DbUser">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OutputCompression">> => list(any()),
-%%   <<"OutputFormat">> => list(any()),
-%%   <<"OutputS3Uri">> => string(),
-%%   <<"QueryString">> => string()
-%% }
--type redshift_dataset_definition() :: #{binary() => any()}.
-
-%% Example:
-%% project_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ProjectArn">> => string(),
-%%   <<"ProjectDescription">> => string(),
-%%   <<"ProjectId">> => string(),
-%%   <<"ProjectName">> => string(),
-%%   <<"ProjectStatus">> => list(any())
-%% }
--type project_summary() :: #{binary() => any()}.
-
-%% Example:
-%% shadow_model_variant_config() :: #{
-%%   <<"SamplingPercentage">> => integer(),
-%%   <<"ShadowModelVariantName">> => string()
-%% }
--type shadow_model_variant_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_trial_component_request() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputArtifacts">> => map(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"OutputArtifacts">> => map(),
-%%   <<"Parameters">> => map(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => trial_component_status(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrialComponentName">> := string()
-%% }
--type create_trial_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_inference_experiment_request() :: #{
-%%   <<"DesiredModelVariants">> => list(model_variant_config()),
-%%   <<"DesiredState">> => list(any()),
-%%   <<"ModelVariantActions">> := map(),
-%%   <<"Name">> := string(),
-%%   <<"Reason">> => string()
-%% }
--type stop_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_experiments_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type list_inference_experiments_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_node_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"NodeId">> => string(),
-%%   <<"NodeLogicalId">> => string()
-%% }
--type describe_cluster_node_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_scheduler_configs_response() :: #{
-%%   <<"ClusterSchedulerConfigSummaries">> => list(cluster_scheduler_config_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_scheduler_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_file_system() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type s3_file_system() :: #{binary() => any()}.
-
-%% Example:
-%% clarify_shap_baseline_config() :: #{
-%%   <<"MimeType">> => string(),
-%%   <<"ShapBaseline">> => string(),
-%%   <<"ShapBaselineUri">> => string()
-%% }
--type clarify_shap_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% processing_feature_store_output() :: #{
-%%   <<"FeatureGroupName">> => string()
-%% }
--type processing_feature_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_placement_status() :: #{
-%%   <<"CurrentCopyCount">> => integer(),
-%%   <<"InstanceType">> => list(any())
-%% }
--type inference_component_placement_status() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_version_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastExecutionPipelineExecutionArn">> => string(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineVersionDescription">> => string(),
-%%   <<"PipelineVersionDisplayName">> => string(),
-%%   <<"PipelineVersionId">> => float()
-%% }
--type pipeline_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_lineage_group_policy_response() :: #{
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"ResourcePolicy">> => string()
-%% }
--type get_lineage_group_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_resource_config() :: #{
-%%   <<"AllocationStrategy">> => list(any()),
-%%   <<"InstanceConfigs">> => list(hyper_parameter_tuning_instance_config()),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type hyper_parameter_tuning_resource_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_hub_content_presigned_urls_request() :: #{
-%%   <<"AccessConfig">> => presigned_url_access_config(),
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"HubName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type create_hub_content_presigned_urls_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_presign() :: #{
-%%   <<"IamPolicyConstraints">> => iam_policy_constraints()
-%% }
--type s3_presign() :: #{binary() => any()}.
-
-%% Example:
-%% annotation_consolidation_config() :: #{
-%%   <<"AnnotationConsolidationLambdaArn">> => string()
-%% }
--type annotation_consolidation_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_studio_lifecycle_configs_request() :: #{
-%%   <<"AppTypeEquals">> => list(any()),
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_studio_lifecycle_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% kernel_gateway_app_settings() :: #{
-%%   <<"CustomImages">> => list(custom_image()),
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"LifecycleConfigArns">> => list(string())
-%% }
--type kernel_gateway_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_context_request() :: #{
-%%   <<"ContextName">> := string()
-%% }
--type delete_context_request() :: #{binary() => any()}.
-
-%% Example:
-%% kernel_spec() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"Name">> => string()
-%% }
--type kernel_spec() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_ml_job_response() :: #{
-%%   <<"AutoMLJobArn">> => string()
-%% }
--type create_auto_ml_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_a_i_benchmark_job_response() :: #{
-%%   <<"AIBenchmarkJobArn">> => string()
-%% }
--type stop_a_i_benchmark_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% derived_information() :: #{
-%%   <<"DerivedDataInputConfig">> => string()
-%% }
--type derived_information() :: #{binary() => any()}.
-
-%% Example:
-%% model_sharding_config() :: #{
-%%   <<"Image">> => string(),
-%%   <<"OverrideEnvironment">> => map()
-%% }
--type model_sharding_config() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_baseline_config() :: #{
-%%   <<"BaseliningJobName">> => string(),
-%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
-%%   <<"StatisticsResource">> => monitoring_statistics_resource()
-%% }
--type data_quality_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% shuffle_config() :: #{
-%%   <<"Seed">> => float()
-%% }
--type shuffle_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_instances_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotebookInstances">> => list(notebook_instance_summary())
-%% }
--type list_notebook_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% event_details() :: #{
-%%   <<"EventMetadata">> => list()
-%% }
--type event_details() :: #{binary() => any()}.
-
-%% Example:
-%% s3_file_system_config() :: #{
-%%   <<"MountPath">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type s3_file_system_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_card_export_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelCardExportJobNameContains">> => string(),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_model_card_export_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_benchmark_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_a_i_benchmark_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelCardArn">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardStatus">> => list(any())
-%% }
--type model_card_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_card_export_job_response() :: #{
-%%   <<"ModelCardExportJobArn">> => string()
-%% }
--type create_model_card_export_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% space_app_lifecycle_management() :: #{
-%%   <<"IdleSettings">> => space_idle_settings()
-%% }
--type space_app_lifecycle_management() :: #{binary() => any()}.
-
-%% Example:
-%% inference_recommendation() :: #{
-%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
-%%   <<"InvocationEndTime">> => non_neg_integer(),
-%%   <<"InvocationStartTime">> => non_neg_integer(),
-%%   <<"Metrics">> => recommendation_metrics(),
-%%   <<"ModelConfiguration">> => model_configuration(),
-%%   <<"RecommendationId">> => string()
-%% }
--type inference_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% create_pipeline_response() :: #{
-%%   <<"PipelineArn">> => string()
-%% }
--type create_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleName">> := string()
-%% }
--type start_monitoring_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% feature_definition() :: #{
-%%   <<"CollectionConfig">> => list(),
-%%   <<"CollectionType">> => list(any()),
-%%   <<"FeatureName">> => string(),
-%%   <<"FeatureType">> => list(any())
-%% }
--type feature_definition() :: #{binary() => any()}.
-
-%% Example:
-%% property_name_query() :: #{
-%%   <<"PropertyNameHint">> => string()
-%% }
--type property_name_query() :: #{binary() => any()}.
-
-%% Example:
-%% partner_app_maintenance_config() :: #{
-%%   <<"MaintenanceWindowStart">> => string()
-%% }
--type partner_app_maintenance_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_component_input() :: #{
-%%   <<"InferenceComponentName">> := string()
-%% }
--type describe_inference_component_input() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"PrimaryStatus">> => list(any())
-%% }
--type trial_component_status() :: #{binary() => any()}.
-
-%% Example:
-%% update_app_image_config_request() :: #{
-%%   <<"AppImageConfigName">> := string(),
-%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
-%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
-%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config()
-%% }
--type update_app_image_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type optimization_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% training_image_config() :: #{
-%%   <<"TrainingRepositoryAccessMode">> => list(any()),
-%%   <<"TrainingRepositoryAuthConfig">> => training_repository_auth_config()
-%% }
--type training_image_config() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_managed_instance_scaling_scale_in_policy() :: #{
-%%   <<"CooldownInMinutes">> => integer(),
-%%   <<"MaximumStepSize">> => integer(),
-%%   <<"Strategy">> => list(any())
-%% }
--type production_variant_managed_instance_scaling_scale_in_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mlflow_tracking_server_response() :: #{
-%%   <<"TrackingServerArn">> => string()
-%% }
--type delete_mlflow_tracking_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% priority_class() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Weight">> => integer()
-%% }
--type priority_class() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"JobCategory">> := list(any()),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% role_group_assignment() :: #{
-%%   <<"GroupPatterns">> => list(string()),
-%%   <<"RoleName">> => string()
-%% }
--type role_group_assignment() :: #{binary() => any()}.
-
-%% Example:
-%% model_speculative_decoding_training_data_source() :: #{
-%%   <<"S3DataType">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type model_speculative_decoding_training_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_mlflow_app_url_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ExpiresInSeconds">> => integer(),
-%%   <<"SessionExpirationDurationInSeconds">> => integer()
-%% }
--type create_presigned_mlflow_app_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_stage_devices_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"ExcludeDevicesDeployedInOtherStage">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StageName">> := string()
-%% }
--type list_stage_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% lineage_group_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"LineageGroupName">> => string()
-%% }
--type lineage_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inference_experiment_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type describe_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% experiment_source() :: #{
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type experiment_source() :: #{binary() => any()}.
-
-%% Example:
-%% f_sx_lustre_config() :: #{
-%%   <<"PerUnitStorageThroughput">> => integer(),
-%%   <<"SizeInGiB">> => integer()
-%% }
--type f_sx_lustre_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_version_response() :: #{
-%%   <<"ImageVersionArn">> => string()
-%% }
--type update_image_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_hub_contents_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MaxSchemaVersion">> => string(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_hub_contents_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_data_capture_config() :: #{
-%%   <<"DestinationS3Uri">> => string(),
-%%   <<"GenerateInferenceId">> => boolean(),
-%%   <<"KmsKeyId">> => string()
-%% }
--type batch_data_capture_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_schedules_response() :: #{
-%%   <<"MonitoringScheduleSummaries">> => list(monitoring_schedule_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitoring_schedules_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_algorithm_input() :: #{
-%%   <<"AlgorithmName">> := string()
-%% }
--type delete_algorithm_input() :: #{binary() => any()}.
-
-%% Example:
-%% hub_content_info() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DocumentSchemaVersion">> => string(),
-%%   <<"HubContentArn">> => string(),
-%%   <<"HubContentDescription">> => string(),
-%%   <<"HubContentDisplayName">> => string(),
-%%   <<"HubContentName">> => string(),
-%%   <<"HubContentSearchKeywords">> => list(string()),
-%%   <<"HubContentStatus">> => list(any()),
-%%   <<"HubContentType">> => list(any()),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"OriginalCreationTime">> => non_neg_integer(),
-%%   <<"SageMakerPublicHubContentArn">> => string(),
-%%   <<"SupportStatus">> => list(any())
-%% }
--type hub_content_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_metadata_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchExpression">> => model_metadata_search_expression()
-%% }
--type list_model_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_security_config() :: #{
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type auto_ml_security_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_metadata_summary() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"Framework">> => string(),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"Model">> => string(),
-%%   <<"Task">> => string()
-%% }
--type model_metadata_summary() :: #{binary() => any()}.
-
-%% Example:
-%% throughput_config() :: #{
-%%   <<"ProvisionedReadCapacityUnits">> => integer(),
-%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
-%%   <<"ThroughputMode">> => list(any())
-%% }
--type throughput_config() :: #{binary() => any()}.
-
-%% Example:
-%% source_ip_config() :: #{
-%%   <<"Cidrs">> => list(string())
-%% }
--type source_ip_config() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_summary() :: #{
-%%   <<"PipelineExecutionArn">> => string(),
-%%   <<"PipelineExecutionDescription">> => string(),
-%%   <<"PipelineExecutionDisplayName">> => string(),
-%%   <<"PipelineExecutionFailureReason">> => string(),
-%%   <<"PipelineExecutionStatus">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type pipeline_execution_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_transform_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_transform_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% candidate_generation_config() :: #{
-%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config())
-%% }
--type candidate_generation_config() :: #{binary() => any()}.
+%% agent_version() :: #{
+%%   <<"AgentCount">> => float(),
+%%   <<"Version">> => string()
+%% }
+-type agent_version() :: #{binary() => any()}.
 
 %% Example:
 %% alarm() :: #{
@@ -2988,1922 +1176,10 @@
 -type alarm() :: #{binary() => any()}.
 
 %% Example:
-%% algorithm_validation_specification() :: #{
-%%   <<"ValidationProfiles">> => list(algorithm_validation_profile()),
-%%   <<"ValidationRole">> => string()
+%% alarm_details() :: #{
+%%   <<"AlarmName">> => string()
 %% }
--type algorithm_validation_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_mlflow_apps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(mlflow_app_summary())
-%% }
--type list_mlflow_apps_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_container_definition() :: #{
-%%   <<"Environment">> => map(),
-%%   <<"Image">> => string(),
-%%   <<"ModelDataUrl">> => string()
-%% }
--type auto_ml_container_definition() :: #{binary() => any()}.
-
-%% Example:
-%% lineage_metadata() :: #{
-%%   <<"ActionArns">> => map(),
-%%   <<"ArtifactArns">> => map(),
-%%   <<"Associations">> => list(association_info()),
-%%   <<"ContextArns">> => map()
-%% }
--type lineage_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_scaling_policy_configuration() :: #{
-%%   <<"MetricSpecification">> => list(),
-%%   <<"TargetValue">> => float()
-%% }
--type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_response() :: #{
-%%   <<"DomainArn">> => string()
-%% }
--type update_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use() :: #{binary() => any()}.
-
-%% Example:
-%% stop_inference_recommendations_job_request() :: #{
-%%   <<"JobName">> := string()
-%% }
--type stop_inference_recommendations_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_action_response() :: #{
-%%   <<"ActionArn">> => string(),
-%%   <<"ActionName">> => string(),
-%%   <<"ActionType">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> => action_source(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_models_output() :: #{
-%%   <<"Models">> => list(model_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_models_output() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_policy_objective() :: #{
-%%   <<"MaxInvocationsPerMinute">> => integer(),
-%%   <<"MinInvocationsPerMinute">> => integer()
-%% }
--type scaling_policy_objective() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_workload_s3_data_source() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type a_i_workload_s3_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% model_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string()
-%% }
--type model_summary() :: #{binary() => any()}.
-
-%% Example:
-%% training_repository_auth_config() :: #{
-%%   <<"TrainingRepositoryCredentialsProviderArn">> => string()
-%% }
--type training_repository_auth_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_card_versions_response() :: #{
-%%   <<"ModelCardVersionSummaryList">> => list(model_card_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_card_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputArtifacts">> => map(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Metrics">> => list(trial_component_metric_summary()),
-%%   <<"OutputArtifacts">> => map(),
-%%   <<"Parameters">> => map(),
-%%   <<"Parents">> => list(parent()),
-%%   <<"RunName">> => string(),
-%%   <<"Source">> => trial_component_source(),
-%%   <<"SourceDetail">> => trial_component_source_detail(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => trial_component_status(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrialComponentArn">> => string(),
-%%   <<"TrialComponentName">> => string()
-%% }
--type trial_component() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_node_logical_ids_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"NodeLogicalId">> => string()
-%% }
--type batch_delete_cluster_node_logical_ids_error() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config() :: #{
-%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
-%%   <<"BlueGreenUpdatePolicy">> => blue_green_update_policy(),
-%%   <<"RollingUpdatePolicy">> => rolling_update_policy()
-%% }
--type deployment_config() :: #{binary() => any()}.
-
-%% Example:
-%% environment_config_details() :: #{
-%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type environment_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% processing_job_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ExitMessage">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ProcessingEndTime">> => non_neg_integer(),
-%%   <<"ProcessingJobArn">> => string(),
-%%   <<"ProcessingJobName">> => string(),
-%%   <<"ProcessingJobStatus">> => list(any())
-%% }
--type processing_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% kendra_settings() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type kendra_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_quality_job_definition_response() :: #{
-%%   <<"JobDefinitionArn">> => string()
-%% }
--type create_data_quality_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_data_attributes() :: #{
-%%   <<"ContentClassifiers">> => list(list(any())())
-%% }
--type labeling_job_data_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% update_trial_request() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"TrialName">> := string()
-%% }
--type update_trial_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_metadata_response() :: #{
-%%   <<"ModelMetadataSummaries">> => list(model_metadata_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_benchmark_job_request() :: #{
-%%   <<"AIBenchmarkJobName">> := string(),
-%%   <<"AIWorkloadConfigIdentifier">> := string(),
-%%   <<"BenchmarkTarget">> := list(),
-%%   <<"NetworkConfig">> => a_i_benchmark_network_config(),
-%%   <<"OutputConfig">> := a_i_benchmark_output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_a_i_benchmark_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_recommendations_job() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobDescription">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelPackageVersionArn">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SamplePayloadUrl">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type inference_recommendations_job() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_policy_metric() :: #{
-%%   <<"InvocationsPerInstance">> => integer(),
-%%   <<"ModelLatency">> => integer()
-%% }
--type scaling_policy_metric() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_image_config_request() :: #{
-%%   <<"AppImageConfigName">> := string()
-%% }
--type describe_app_image_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_edge_deployment_stage_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"StageName">> := string()
-%% }
--type delete_edge_deployment_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% bedrock_custom_model_deployment_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type bedrock_custom_model_deployment_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% batch_replace_cluster_nodes_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"NodeIds">> => list(string()),
-%%   <<"NodeLogicalIds">> => list(string())
-%% }
--type batch_replace_cluster_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineExecutionArn">> => string(),
-%%   <<"PipelineExecutionDescription">> => string(),
-%%   <<"PipelineExecutionDisplayName">> => string(),
-%%   <<"PipelineExecutionStatus">> => list(any()),
-%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
-%%   <<"PipelineParameters">> => list(parameter()),
-%%   <<"PipelineVersionDisplayName">> => string(),
-%%   <<"PipelineVersionId">> => float(),
-%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
-%% }
--type pipeline_execution() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_restricted_instance_groups_config_output() :: #{
-%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config_details()
-%% }
--type cluster_restricted_instance_groups_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% f_sx_lustre_file_system() :: #{
-%%   <<"FileSystemId">> => string()
-%% }
--type f_sx_lustre_file_system() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_alert_summary() :: #{
-%%   <<"Actions">> => monitoring_alert_actions(),
-%%   <<"AlertStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatapointsToAlert">> => integer(),
-%%   <<"EvaluationPeriod">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MonitoringAlertName">> => string()
-%% }
--type monitoring_alert_summary() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastRunTime">> => non_neg_integer(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineDescription">> => string(),
-%%   <<"PipelineDisplayName">> => string(),
-%%   <<"PipelineName">> => string(),
-%%   <<"PipelineStatus">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type pipeline() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_recommendations_job_steps_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StepType">> => list(any())
-%% }
--type list_inference_recommendations_job_steps_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type delete_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_ranges() :: #{
-%%   <<"AutoParameters">> => list(auto_parameter()),
-%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()),
-%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()),
-%%   <<"IntegerParameterRanges">> => list(integer_parameter_range())
-%% }
--type parameter_ranges() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_quality_job_definitions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_quality_job_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_recommendations_jobs_response() :: #{
-%%   <<"InferenceRecommendationsJobs">> => list(inference_recommendations_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_inference_recommendations_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_pattern() :: #{
-%%   <<"Phases">> => list(phase()),
-%%   <<"Stairs">> => stairs(),
-%%   <<"TrafficType">> => list(any())
-%% }
--type traffic_pattern() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_package_output() :: #{
-%%   <<"ModelPackageArn">> => string()
-%% }
--type update_model_package_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_add_cluster_nodes_error() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"FailedCount">> => integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceTypes">> => list(list(any())()),
-%%   <<"Message">> => string()
-%% }
--type batch_add_cluster_nodes_error() :: #{binary() => any()}.
-
-%% Example:
-%% human_task_config() :: #{
-%%   <<"AnnotationConsolidationConfig">> => annotation_consolidation_config(),
-%%   <<"MaxConcurrentTaskCount">> => integer(),
-%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
-%%   <<"PreHumanTaskLambdaArn">> => string(),
-%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
-%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
-%%   <<"TaskDescription">> => string(),
-%%   <<"TaskKeywords">> => list(string()),
-%%   <<"TaskTimeLimitInSeconds">> => integer(),
-%%   <<"TaskTitle">> => string(),
-%%   <<"UiConfig">> => ui_config(),
-%%   <<"WorkteamArn">> => string()
-%% }
--type human_task_config() :: #{binary() => any()}.
-
-%% Example:
-%% batch_reboot_cluster_node_logical_ids_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"NodeLogicalId">> => string()
-%% }
--type batch_reboot_cluster_node_logical_ids_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_quality_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type delete_data_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_candidates_for_auto_ml_job_request() :: #{
-%%   <<"AutoMLJobName">> := string(),
-%%   <<"CandidateNameEquals">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_candidates_for_auto_ml_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_notebook_instance_output() :: #{
-
-%% }
--type update_notebook_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_job_output_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputLocation">> => string(),
-%%   <<"SageMakerModel">> => optimization_sage_maker_model()
-%% }
--type optimization_job_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_execution_steps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineExecutionSteps">> => list(pipeline_execution_step())
-%% }
--type list_pipeline_execution_steps_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_input() :: #{
-%%   <<"EndpointName">> := string()
-%% }
--type describe_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trial_response() :: #{
-%%   <<"TrialArn">> => string()
-%% }
--type delete_trial_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_variant_config_summary() :: #{
-%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
-%%   <<"ModelName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VariantName">> => string()
-%% }
--type model_variant_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_input() :: #{
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"EndpointConfigName">> := string(),
-%%   <<"EndpointName">> := string(),
-%%   <<"ExcludeRetainedVariantProperties">> => list(variant_property()),
-%%   <<"RetainAllVariantProperties">> => boolean(),
-%%   <<"RetainDeploymentConfig">> => boolean()
-%% }
--type update_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% search_training_plan_offerings_response() :: #{
-%%   <<"TrainingPlanExtensionOfferings">> => list(training_plan_extension_offering()),
-%%   <<"TrainingPlanOfferings">> => list(training_plan_offering())
-%% }
--type search_training_plan_offerings_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_space_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SpaceName">> := string()
-%% }
--type describe_space_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_experiment_response() :: #{
-%%   <<"ExperimentArn">> => string()
-%% }
--type create_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_benchmark_job_response() :: #{
-%%   <<"AIBenchmarkJobArn">> => string()
-%% }
--type create_a_i_benchmark_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_config_input() :: #{
-%%   <<"EndpointConfigName">> := string()
-%% }
--type describe_endpoint_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% flow_definition_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"FlowDefinitionArn">> => string(),
-%%   <<"FlowDefinitionName">> => string(),
-%%   <<"FlowDefinitionStatus">> => list(any())
-%% }
--type flow_definition_summary() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_instance_detail() :: #{
-%%   <<"CopyCountPerInstance">> => integer(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any())
-%% }
--type a_i_recommendation_instance_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_code_repository_input() :: #{
-%%   <<"CodeRepositoryName">> := string(),
-%%   <<"GitConfig">> => git_config_for_update()
-%% }
--type update_code_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_range() :: #{
-%%   <<"CategoricalParameterRangeSpecification">> => categorical_parameter_range_specification(),
-%%   <<"ContinuousParameterRangeSpecification">> => continuous_parameter_range_specification(),
-%%   <<"IntegerParameterRangeSpecification">> => integer_parameter_range_specification()
-%% }
--type parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% custom_image() :: #{
-%%   <<"AppImageConfigName">> => string(),
-%%   <<"ImageName">> => string(),
-%%   <<"ImageVersionNumber">> => integer()
-%% }
--type custom_image() :: #{binary() => any()}.
-
-%% Example:
-%% update_notebook_instance_lifecycle_config_output() :: #{
-
-%% }
--type update_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_job_definitions_response() :: #{
-%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_quality_job_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% explainer_config() :: #{
-%%   <<"ClarifyExplainerConfig">> => clarify_explainer_config()
-%% }
--type explainer_config() :: #{binary() => any()}.
-
-%% Example:
-%% custom_posix_user_config() :: #{
-%%   <<"Gid">> => float(),
-%%   <<"Uid">> => float()
-%% }
--type custom_posix_user_config() :: #{binary() => any()}.
-
-%% Example:
-%% trusted_identity_propagation_settings() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type trusted_identity_propagation_settings() :: #{binary() => any()}.
-
-%% Example:
-%% training_specification() :: #{
-%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
-%%   <<"MetricDefinitions">> => list(metric_definition()),
-%%   <<"SupportedHyperParameters">> => list(hyper_parameter_specification()),
-%%   <<"SupportedTrainingInstanceTypes">> => list(list(any())()),
-%%   <<"SupportedTuningJobObjectiveMetrics">> => list(hyper_parameter_tuning_job_objective()),
-%%   <<"SupportsDistributedTraining">> => boolean(),
-%%   <<"TrainingChannels">> => list(channel_specification()),
-%%   <<"TrainingImage">> => string(),
-%%   <<"TrainingImageDigest">> => string()
-%% }
--type training_specification() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_profile_response() :: #{
-%%   <<"UserProfileArn">> => string()
-%% }
--type update_user_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_lineage_group_request() :: #{
-%%   <<"LineageGroupName">> := string()
-%% }
--type describe_lineage_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_warm_start_config() :: #{
-%%   <<"ParentHyperParameterTuningJobs">> => list(parent_hyper_parameter_tuning_job()),
-%%   <<"WarmStartType">> => list(any())
-%% }
--type hyper_parameter_tuning_job_warm_start_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_studio_lifecycle_config_request() :: #{
-%%   <<"StudioLifecycleConfigName">> := string()
-%% }
--type describe_studio_lifecycle_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% processing_s3_input() :: #{
-%%   <<"LocalPath">> => string(),
-%%   <<"S3CompressionType">> => list(any()),
-%%   <<"S3DataDistributionType">> => list(any()),
-%%   <<"S3DataType">> => list(any()),
-%%   <<"S3InputMode">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type processing_s3_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_trial_component_response() :: #{
-%%   <<"TrialComponentArn">> => string()
-%% }
--type create_trial_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_workload_config_request() :: #{
-%%   <<"AIWorkloadConfigName">> := string()
-%% }
--type delete_a_i_workload_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_compute_config() :: #{
-%%   <<"EmrServerlessComputeConfig">> => emr_serverless_compute_config()
-%% }
--type auto_ml_compute_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_input() :: #{
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"EndpointConfigName">> := string(),
-%%   <<"EndpointName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_execution_step() :: #{
-%%   <<"AttemptCount">> => integer(),
-%%   <<"CacheHitResult">> => cache_hit_result(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Metadata">> => pipeline_execution_step_metadata(),
-%%   <<"SelectiveExecutionResult">> => selective_execution_result(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"StepDescription">> => string(),
-%%   <<"StepDisplayName">> => string(),
-%%   <<"StepName">> => string(),
-%%   <<"StepStatus">> => list(any())
-%% }
--type pipeline_execution_step() :: #{binary() => any()}.
-
-%% Example:
-%% feature_metadata() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FeatureGroupArn">> => string(),
-%%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureName">> => string(),
-%%   <<"FeatureType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Parameters">> => list(feature_parameter())
-%% }
--type feature_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_node_response() :: #{
-%%   <<"NodeDetails">> => cluster_node_details()
-%% }
--type describe_cluster_node_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workforce_request() :: #{
-%%   <<"WorkforceName">> := string()
-%% }
--type delete_workforce_request() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_output_configuration() :: #{
-%%   <<"EndpointName">> => string(),
-%%   <<"InitialInstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"VariantName">> => string()
-%% }
--type endpoint_output_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_output() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type add_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_objective() :: #{
-%%   <<"MetricName">> => list(any())
-%% }
--type auto_ml_job_objective() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_model_package_input() :: #{
-%%   <<"ModelPackageArnList">> := list(string())
-%% }
--type batch_describe_model_package_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_trial_component_response() :: #{
-%%   <<"TrialComponentArn">> => string()
-%% }
--type update_trial_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_output() :: #{
-%%   <<"ProjectArn">> => string(),
-%%   <<"ProjectId">> => string()
-%% }
--type create_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_hub_contents_response() :: #{
-%%   <<"HubContentSummaries">> => list(hub_content_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hub_contents_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type endpoint_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_data_source() :: #{
-%%   <<"S3DataSource">> => labeling_job_s3_data_source(),
-%%   <<"SnsDataSource">> => labeling_job_sns_data_source()
-%% }
--type labeling_job_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% batch_add_cluster_nodes_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ClusterName">> := string(),
-%%   <<"NodesToAdd">> := list(add_cluster_node_specification())
-%% }
--type batch_add_cluster_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_trial_components_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrialComponentSummaries">> => list(trial_component_summary())
-%% }
--type list_trial_components_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_config() :: #{
-%%   <<"ModelPackageGroupArn">> => string(),
-%%   <<"SourceModelPackageArn">> => string()
-%% }
--type model_package_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_sagemaker_servicecatalog_portfolio_status_output() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type get_sagemaker_servicecatalog_portfolio_status_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_compute_quota_response() :: #{
-%%   <<"ComputeQuotaArn">> => string(),
-%%   <<"ComputeQuotaId">> => string()
-%% }
--type create_compute_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_components_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointNameEquals">> => string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any()),
-%%   <<"VariantNameEquals">> => string()
-%% }
--type list_inference_components_input() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_patch_schedule_details() :: #{
-%%   <<"NextPatchDate">> => non_neg_integer()
-%% }
--type cluster_patch_schedule_details() :: #{binary() => any()}.
-
-%% Example:
-%% capture_content_type_header() :: #{
-%%   <<"CsvContentTypes">> => list(string()),
-%%   <<"JsonContentTypes">> => list(string())
-%% }
--type capture_content_type_header() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_config_input() :: #{
-%%   <<"AsyncInferenceConfig">> => async_inference_config(),
-%%   <<"DataCaptureConfig">> => data_capture_config(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"EndpointConfigName">> := string(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"ExplainerConfig">> => explainer_config(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MetricsConfig">> => metrics_config(),
-%%   <<"ProductionVariants">> := list(production_variant()),
-%%   <<"ShadowProductionVariants">> => list(production_variant()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type create_endpoint_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_plan_response() :: #{
-%%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"AvailableSpareInstanceCount">> => integer(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"DurationHours">> => float(),
-%%   <<"DurationMinutes">> => float(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InUseInstanceCount">> => integer(),
-%%   <<"ReservedCapacitySummaries">> => list(reserved_capacity_summary()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"TargetResources">> => list(list(any())()),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"TotalUltraServerCount">> => integer(),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"TrainingPlanName">> => string(),
-%%   <<"UnhealthyInstanceCount">> => integer(),
-%%   <<"UpfrontFee">> => string()
-%% }
--type describe_training_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% kernel_gateway_image_config() :: #{
-%%   <<"FileSystemConfig">> => file_system_config(),
-%%   <<"KernelSpecs">> => list(kernel_spec())
-%% }
--type kernel_gateway_image_config() :: #{binary() => any()}.
-
-%% Example:
-%% emr_step_metadata() :: #{
-%%   <<"ClusterId">> => string(),
-%%   <<"LogFilePath">> => string(),
-%%   <<"StepId">> => string(),
-%%   <<"StepName">> => string()
-%% }
--type emr_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inference_experiment_response() :: #{
-%%   <<"InferenceExperimentArn">> => string()
-%% }
--type delete_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_config() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"UserPool">> => string()
-%% }
--type cognito_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_group() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ModelPackageGroupArn">> => string(),
-%%   <<"ModelPackageGroupDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageGroupStatus">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type model_package_group() :: #{binary() => any()}.
-
-%% Example:
-%% stop_job_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"JobName">> := string()
-%% }
--type stop_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_artifact_response() :: #{
-%%   <<"ArtifactArn">> => string()
-%% }
--type create_artifact_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge_model_stat() :: #{
-%%   <<"ActiveDeviceCount">> => float(),
-%%   <<"ConnectedDeviceCount">> => float(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelVersion">> => string(),
-%%   <<"OfflineDeviceCount">> => float(),
-%%   <<"SamplingDeviceCount">> => float()
-%% }
--type edge_model_stat() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_stopping_conditions() :: #{
-%%   <<"MaxHumanLabeledObjectCount">> => integer(),
-%%   <<"MaxPercentageOfInputDatasetLabeled">> => integer()
-%% }
--type labeling_job_stopping_conditions() :: #{binary() => any()}.
-
-%% Example:
-%% list_compute_quotas_request() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type list_compute_quotas_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"JobSummaries">> => list(job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_statistics_resource() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type monitoring_statistics_resource() :: #{binary() => any()}.
-
-%% Example:
-%% input_config() :: #{
-%%   <<"DataInputConfig">> => string(),
-%%   <<"Framework">> => list(any()),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type input_config() :: #{binary() => any()}.
-
-%% Example:
-%% space_settings() :: #{
-%%   <<"AppType">> => list(any()),
-%%   <<"CodeEditorAppSettings">> => space_code_editor_app_settings(),
-%%   <<"CustomFileSystems">> => list(list()),
-%%   <<"JupyterLabAppSettings">> => space_jupyter_lab_app_settings(),
-%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
-%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
-%%   <<"RemoteAccess">> => list(any()),
-%%   <<"SpaceManagedResources">> => list(any()),
-%%   <<"SpaceStorageSettings">> => space_storage_settings()
-%% }
--type space_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_job_request() :: #{
-%%   <<"TrainingJobName">> := string()
-%% }
--type describe_training_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"JobConfigDocument">> := string(),
-%%   <<"JobConfigSchemaVersion">> := string(),
-%%   <<"JobName">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_component_runtime_config_output() :: #{
-%%   <<"InferenceComponentArn">> => string()
-%% }
--type update_inference_component_runtime_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_labeling_job_response() :: #{
-%%   <<"LabelingJobArn">> => string()
-%% }
--type create_labeling_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_strategy_config() :: #{
-%%   <<"HyperbandStrategyConfig">> => hyperband_strategy_config()
-%% }
--type hyper_parameter_tuning_job_strategy_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_edge_packaging_job_response() :: #{
-%%   <<"CompilationJobName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EdgePackagingJobArn">> => string(),
-%%   <<"EdgePackagingJobName">> => string(),
-%%   <<"EdgePackagingJobStatus">> => list(any()),
-%%   <<"EdgePackagingJobStatusMessage">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelArtifact">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelSignature">> => string(),
-%%   <<"ModelVersion">> => string(),
-%%   <<"OutputConfig">> => edge_output_config(),
-%%   <<"PresetDeploymentOutput">> => edge_preset_deployment_output(),
-%%   <<"ResourceKey">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_edge_packaging_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_catalogs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceCatalogs">> => list(resource_catalog())
-%% }
--type list_resource_catalogs_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_compute_quota_response() :: #{
-%%   <<"ComputeQuotaArn">> => string(),
-%%   <<"ComputeQuotaVersion">> => integer()
-%% }
--type update_compute_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% metric_definition() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Regex">> => string()
-%% }
--type metric_definition() :: #{binary() => any()}.
-
-%% Example:
-%% code_editor_app_image_config() :: #{
-%%   <<"ContainerConfig">> => container_config(),
-%%   <<"FileSystemConfig">> => file_system_config()
-%% }
--type code_editor_app_image_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_edge_packaging_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelNameContains">> => string(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_edge_packaging_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_devices_request() :: #{
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"DeviceNames">> := list(string())
-%% }
--type deregister_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% training_job_definition() :: #{
-%%   <<"HyperParameters">> => map(),
-%%   <<"InputDataConfig">> => list(channel()),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"ResourceConfig">> => resource_config(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"TrainingInputMode">> => list(any())
-%% }
--type training_job_definition() :: #{binary() => any()}.
-
-%% Example:
-%% trial_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"TrialArn">> => string(),
-%%   <<"TrialName">> => string(),
-%%   <<"TrialSource">> => trial_source()
-%% }
--type trial_summary() :: #{binary() => any()}.
-
-%% Example:
-%% workforce_vpc_config_response() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type workforce_vpc_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% jupyter_lab_app_image_config() :: #{
-%%   <<"ContainerConfig">> => container_config(),
-%%   <<"FileSystemConfig">> => file_system_config()
-%% }
--type jupyter_lab_app_image_config() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_network_config() :: #{
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type monitoring_network_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_metadata_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FeatureGroupArn">> => string(),
-%%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureName">> => string(),
-%%   <<"FeatureType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Parameters">> => list(feature_parameter())
-%% }
--type describe_feature_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_quality_app_specification() :: #{
-%%   <<"ContainerArguments">> => list(string()),
-%%   <<"ContainerEntrypoint">> => list(string()),
-%%   <<"Environment">> => map(),
-%%   <<"ImageUri">> => string(),
-%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
-%%   <<"ProblemType">> => list(any()),
-%%   <<"RecordPreprocessorSourceUri">> => string()
-%% }
--type model_quality_app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any()),
-%%   <<"TrainingPlanArnEquals">> => string(),
-%%   <<"WarmPoolStatusEquals">> => list(any())
-%% }
--type list_training_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_startup_parameters() :: #{
-%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
-%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer()
-%% }
--type inference_component_startup_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% integer_parameter_range_specification() :: #{
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string()
-%% }
--type integer_parameter_range_specification() :: #{binary() => any()}.
-
-%% Example:
-%% create_mlflow_app_request() :: #{
-%%   <<"AccountDefaultStatus">> => list(any()),
-%%   <<"ArtifactStoreUri">> := string(),
-%%   <<"DefaultDomainIdList">> => list(string()),
-%%   <<"ModelRegistrationMode">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
-%% }
--type create_mlflow_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_data_source() :: #{
-%%   <<"S3DataSource">> => auto_ml_s3_data_source()
-%% }
--type auto_ml_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_partial_failure_reason() :: #{
-%%   <<"PartialFailureMessage">> => string()
-%% }
--type auto_ml_partial_failure_reason() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_response() :: #{
-%%   <<"AppArn">> => string(),
-%%   <<"AppName">> => string(),
-%%   <<"AppType">> => list(any()),
-%%   <<"BuiltInLifecycleConfigArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"EffectiveTrustedIdentityPropagationStatus">> => list(any()),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastHealthCheckTimestamp">> => non_neg_integer(),
-%%   <<"LastUserActivityTimestamp">> => non_neg_integer(),
-%%   <<"RecoveryMode">> => boolean(),
-%%   <<"ResourceSpec">> => resource_spec(),
-%%   <<"SpaceName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserProfileName">> => string()
-%% }
--type describe_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% algorithm_status_item() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type algorithm_status_item() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_device_fleet_request() :: #{
-%%   <<"DeviceFleetName">> := string()
-%% }
--type describe_device_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_sagemaker_servicecatalog_portfolio_output() :: #{
-
-%% }
--type disable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% profiler_config() :: #{
-%%   <<"DisableProfiler">> => boolean(),
-%%   <<"ProfilingIntervalInMilliseconds">> => float(),
-%%   <<"ProfilingParameters">> => map(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type profiler_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_hubs_response() :: #{
-%%   <<"HubSummaries">> => list(hub_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hubs_response() :: #{binary() => any()}.
-
-%% Example:
-%% r_studio_server_pro_domain_settings_for_update() :: #{
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"DomainExecutionRoleArn">> => string(),
-%%   <<"RStudioConnectUrl">> => string(),
-%%   <<"RStudioPackageManagerUrl">> => string()
-%% }
--type r_studio_server_pro_domain_settings_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_parquet_dataset_format() :: #{
-
-%% }
--type monitoring_parquet_dataset_format() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_metadata() :: #{
-%%   <<"EndpointConfigName">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"FailureReason">> => string()
-%% }
--type endpoint_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inference_experiment_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% error_info() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Reason">> => string()
-%% }
--type error_info() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_input() :: #{
-%%   <<"EndTimeOffset">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"ExcludeFeaturesAttribute">> => string(),
-%%   <<"FeaturesAttribute">> => string(),
-%%   <<"InferenceAttribute">> => string(),
-%%   <<"LocalPath">> => string(),
-%%   <<"ProbabilityAttribute">> => string(),
-%%   <<"ProbabilityThresholdAttribute">> => float(),
-%%   <<"S3DataDistributionType">> => list(any()),
-%%   <<"S3InputMode">> => list(any()),
-%%   <<"StartTimeOffset">> => string()
-%% }
--type endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_explainability_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type delete_model_explainability_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_catalog_config() :: #{
-%%   <<"Catalog">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type data_catalog_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_cluster_health_check_response() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type start_cluster_health_check_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_config() :: #{
-%%   <<"RepositoryAccessMode">> => list(any()),
-%%   <<"RepositoryAuthConfig">> => repository_auth_config()
-%% }
--type image_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_alert_history_response() :: #{
-%%   <<"MonitoringAlertHistory">> => list(monitoring_alert_history_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitoring_alert_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% space_details() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OwnershipSettingsSummary">> => ownership_settings_summary(),
-%%   <<"SpaceDisplayName">> => string(),
-%%   <<"SpaceName">> => string(),
-%%   <<"SpaceSettingsSummary">> => space_settings_summary(),
-%%   <<"SpaceSharingSettingsSummary">> => space_sharing_settings_summary(),
-%%   <<"Status">> => list(any())
-%% }
--type space_details() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_orchestrator() :: #{
-%%   <<"Eks">> => cluster_orchestrator_eks_config(),
-%%   <<"Slurm">> => cluster_orchestrator_slurm_config()
-%% }
--type cluster_orchestrator() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_metadata_request() :: #{
-%%   <<"FeatureGroupName">> := string(),
-%%   <<"FeatureName">> := string()
-%% }
--type describe_feature_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_artifact_response() :: #{
-%%   <<"ArtifactArn">> => string()
-%% }
--type delete_artifact_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_group_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTimeFeatureName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"FeatureDefinitions">> => list(feature_definition()),
-%%   <<"FeatureGroupArn">> => string(),
-%%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureGroupStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastUpdateStatus">> => last_update_status(),
-%%   <<"NextToken">> => string(),
-%%   <<"OfflineStoreConfig">> => offline_store_config(),
-%%   <<"OfflineStoreStatus">> => offline_store_status(),
-%%   <<"OnlineStoreConfig">> => online_store_config(),
-%%   <<"OnlineStoreTotalSizeBytes">> => float(),
-%%   <<"RecordIdentifierFeatureName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ThroughputConfig">> => throughput_config_description()
-%% }
--type describe_feature_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% drift_check_explainability() :: #{
-%%   <<"ConfigFile">> => file_source(),
-%%   <<"Constraints">> => metrics_source()
-%% }
--type drift_check_explainability() :: #{binary() => any()}.
-
-%% Example:
-%% data_capture_config() :: #{
-%%   <<"CaptureContentTypeHeader">> => capture_content_type_header(),
-%%   <<"CaptureOptions">> => list(capture_option()),
-%%   <<"DestinationS3Uri">> => string(),
-%%   <<"EnableCapture">> => boolean(),
-%%   <<"InitialSamplingPercentage">> => integer(),
-%%   <<"KmsKeyId">> => string()
-%% }
--type data_capture_config() :: #{binary() => any()}.
-
-%% Example:
-%% batch_reboot_cluster_nodes_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"NodeId">> => string()
-%% }
--type batch_reboot_cluster_nodes_error() :: #{binary() => any()}.
-
-%% Example:
-%% import_hub_content_request() :: #{
-%%   <<"DocumentSchemaVersion">> := string(),
-%%   <<"HubContentDescription">> => string(),
-%%   <<"HubContentDisplayName">> => string(),
-%%   <<"HubContentDocument">> := string(),
-%%   <<"HubContentMarkdown">> => string(),
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentSearchKeywords">> => list(string()),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"HubName">> := string(),
-%%   <<"SupportStatus">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_hub_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_data_cache_config() :: #{
-%%   <<"EnableCaching">> => boolean()
-%% }
--type inference_component_data_cache_config() :: #{binary() => any()}.
-
-%% Example:
-%% attach_cluster_node_volume_response() :: #{
-%%   <<"AttachTime">> => non_neg_integer(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VolumeId">> => string()
-%% }
--type attach_cluster_node_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_card_request() :: #{
-%%   <<"ModelCardName">> := string()
-%% }
--type delete_model_card_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_cards_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_cards_request() :: #{binary() => any()}.
-
-%% Example:
-%% edge_deployment_status() :: #{
-%%   <<"EdgeDeploymentFailedInStage">> => integer(),
-%%   <<"EdgeDeploymentPendingInStage">> => integer(),
-%%   <<"EdgeDeploymentStageStartTime">> => non_neg_integer(),
-%%   <<"EdgeDeploymentStatusMessage">> => string(),
-%%   <<"EdgeDeploymentSuccessInStage">> => integer(),
-%%   <<"StageStatus">> => list(any())
-%% }
--type edge_deployment_status() :: #{binary() => any()}.
-
-%% Example:
-%% tuning_job_completion_criteria() :: #{
-%%   <<"BestObjectiveNotImproving">> => best_objective_not_improving(),
-%%   <<"ConvergenceDetected">> => convergence_detected(),
-%%   <<"TargetObjectiveMetricValue">> => float()
-%% }
--type tuning_job_completion_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% register_model_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type register_model_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% e_f_s_file_system_config() :: #{
-%%   <<"FileSystemId">> => string(),
-%%   <<"FileSystemPath">> => string()
-%% }
--type e_f_s_file_system_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_scaling_configuration_recommendation_response() :: #{
-%%   <<"DynamicScalingConfiguration">> => dynamic_scaling_configuration(),
-%%   <<"EndpointName">> => string(),
-%%   <<"InferenceRecommendationsJobName">> => string(),
-%%   <<"Metric">> => scaling_policy_metric(),
-%%   <<"RecommendationId">> => string(),
-%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
-%%   <<"TargetCpuUtilizationPerCore">> => integer()
-%% }
--type get_scaling_configuration_recommendation_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_processing_job_request() :: #{
-%%   <<"ProcessingJobName">> := string()
-%% }
--type stop_processing_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_trial_response() :: #{
-%%   <<"TrialArn">> => string()
-%% }
--type create_trial_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_compiled_output_config() :: #{
-%%   <<"S3OutputUri">> => string()
-%% }
--type recommendation_job_compiled_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_output() :: #{
-%%   <<"EndpointArn">> => string()
-%% }
--type create_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% service_catalog_provisioning_update_details() :: #{
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningParameters">> => list(provisioning_parameter())
-%% }
--type service_catalog_provisioning_update_details() :: #{binary() => any()}.
-
-%% Example:
-%% repository_auth_config() :: #{
-%%   <<"RepositoryCredentialsProviderArn">> => string()
-%% }
--type repository_auth_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_output() :: #{
-%%   <<"AsyncInferenceConfig">> => async_inference_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointConfigName">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"ExplainerConfig">> => explainer_config(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastDeploymentConfig">> => deployment_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MetricsConfig">> => metrics_config(),
-%%   <<"PendingDeploymentSummary">> => pending_deployment_summary(),
-%%   <<"ProductionVariants">> => list(production_variant_summary()),
-%%   <<"ShadowProductionVariants">> => list(production_variant_summary())
-%% }
--type describe_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% final_auto_ml_job_objective_metric() :: #{
-%%   <<"MetricName">> => list(any()),
-%%   <<"StandardMetricName">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type final_auto_ml_job_objective_metric() :: #{binary() => any()}.
-
-%% Example:
-%% update_training_job_request() :: #{
-%%   <<"ProfilerConfig">> => profiler_config_for_update(),
-%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
-%%   <<"RemoteDebugConfig">> => remote_debug_config_for_update(),
-%%   <<"ResourceConfig">> => resource_config_for_update(),
-%%   <<"TrainingJobName">> := string()
-%% }
--type update_training_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_context_request() :: #{
-%%   <<"ContextName">> := string()
-%% }
--type describe_context_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_versions_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineName">> := string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_pipeline_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% human_task_ui_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HumanTaskUiArn">> => string(),
-%%   <<"HumanTaskUiName">> => string()
-%% }
--type human_task_ui_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_notebook_instance_url_output() :: #{
-%%   <<"AuthorizedUrl">> => string()
-%% }
--type create_presigned_notebook_instance_url_output() :: #{binary() => any()}.
-
-%% Example:
-%% additional_enis() :: #{
-%%   <<"EfaEnis">> => list([string()]())
-%% }
--type additional_enis() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_software_response() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type update_cluster_software_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_plans_request() :: #{
-%%   <<"Filters">> => list(training_plan_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StartTimeAfter">> => non_neg_integer(),
-%%   <<"StartTimeBefore">> => non_neg_integer()
-%% }
--type list_training_plans_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_restricted_instance_groups_config() :: #{
-%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config()
-%% }
--type cluster_restricted_instance_groups_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_workload_configs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_a_i_workload_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_metrics() :: #{
-%%   <<"Bias">> => bias(),
-%%   <<"Explainability">> => explainability(),
-%%   <<"ModelDataQuality">> => model_data_quality(),
-%%   <<"ModelQuality">> => model_quality()
-%% }
--type model_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_instance_lifecycle_configs_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotebookInstanceLifecycleConfigs">> => list(notebook_instance_lifecycle_config_summary())
-%% }
--type list_notebook_instance_lifecycle_configs_output() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_output_config() :: #{
-%%   <<"MlflowConfig">> => a_i_mlflow_config(),
-%%   <<"ModelPackageGroupIdentifier">> => string(),
-%%   <<"S3OutputLocation">> => string()
-%% }
--type a_i_recommendation_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_compilation_job_response() :: #{
-%%   <<"CompilationEndTime">> => non_neg_integer(),
-%%   <<"CompilationJobArn">> => string(),
-%%   <<"CompilationJobName">> => string(),
-%%   <<"CompilationJobStatus">> => list(any()),
-%%   <<"CompilationStartTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DerivedInformation">> => derived_information(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InferenceImage">> => string(),
-%%   <<"InputConfig">> => input_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelArtifacts">> => model_artifacts(),
-%%   <<"ModelDigests">> => model_digests(),
-%%   <<"ModelPackageVersionArn">> => string(),
-%%   <<"OutputConfig">> => output_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"VpcConfig">> => neo_vpc_config()
-%% }
--type describe_compilation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_hyper_parameter_tuning_job_request() :: #{
-%%   <<"HyperParameterTuningJobName">> := string()
-%% }
--type stop_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_a_i_benchmark_job_request() :: #{
-%%   <<"AIBenchmarkJobName">> := string()
-%% }
--type stop_a_i_benchmark_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_trial_component_response() :: #{
-%%   <<"TrialArn">> => string(),
-%%   <<"TrialComponentArn">> => string()
-%% }
--type associate_trial_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_instance_input() :: #{
-%%   <<"NotebookInstanceName">> := string()
-%% }
--type delete_notebook_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_inference_specification() :: #{
-%%   <<"Framework">> => list(any())
-%% }
--type a_i_recommendation_inference_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_labeling_jobs_for_workteam_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"JobReferenceCodeContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"WorkteamArn">> := string()
-%% }
--type list_labeling_jobs_for_workteam_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_instance_type_detail() :: #{
-%%   <<"CurrentCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ThreadsPerCore">> => integer()
-%% }
--type cluster_instance_type_detail() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type recommendation_job_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_workforce_response() :: #{
-%%   <<"WorkforceArn">> => string()
-%% }
--type create_workforce_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_definition_output_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type flow_definition_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
-%%   <<"ClusterName">> := string(),
-%%   <<"ClusterRole">> => string(),
-%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
-%%   <<"InstanceGroupsToDelete">> => list(string()),
-%%   <<"NodeProvisioningMode">> => list(any()),
-%%   <<"NodeRecovery">> => list(any()),
-%%   <<"Orchestrator">> => cluster_orchestrator(),
-%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
-%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
-%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()
-%% }
--type update_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_edge_deployment_plan_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string()
-%% }
--type delete_edge_deployment_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_code_repositories_output() :: #{
-%%   <<"CodeRepositorySummaryList">> => list(code_repository_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_code_repositories_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_edge_deployment_stage_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"StageName">> := string()
-%% }
--type stop_edge_deployment_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% hub_s3_storage_config() :: #{
-%%   <<"S3OutputPath">> => string()
-%% }
--type hub_s3_storage_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_action_response() :: #{
-%%   <<"ActionArn">> => string()
-%% }
--type create_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% oidc_config() :: #{
-%%   <<"AuthenticationRequestExtraParams">> => map(),
-%%   <<"AuthorizationEndpoint">> => string(),
-%%   <<"ClientId">> => string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"Issuer">> => string(),
-%%   <<"JwksUri">> => string(),
-%%   <<"LogoutEndpoint">> => string(),
-%%   <<"Scope">> => string(),
-%%   <<"TokenEndpoint">> => string(),
-%%   <<"UserInfoEndpoint">> => string()
-%% }
--type oidc_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_card_request() :: #{
-%%   <<"Content">> := string(),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardStatus">> := list(any()),
-%%   <<"SecurityConfig">> => model_card_security_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_model_card_request() :: #{binary() => any()}.
+-type alarm_details() :: #{binary() => any()}.
 
 %% Example:
 %% algorithm_specification() :: #{
@@ -4919,307 +1195,6 @@
 -type algorithm_specification() :: #{binary() => any()}.
 
 %% Example:
-%% create_image_version_request() :: #{
-%%   <<"Aliases">> => list(string()),
-%%   <<"BaseImage">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Horovod">> => boolean(),
-%%   <<"ImageName">> := string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"MLFramework">> => string(),
-%%   <<"Processor">> => list(any()),
-%%   <<"ProgrammingLang">> => string(),
-%%   <<"ReleaseNotes">> => string(),
-%%   <<"VendorGuidance">> => list(any())
-%% }
--type create_image_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_summary() :: #{
-%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_summary(),
-%%   <<"CurrentInstanceCount">> => integer(),
-%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"CurrentWeight">> => float(),
-%%   <<"DeployedImages">> => list(deployed_image()),
-%%   <<"DesiredInstanceCount">> => integer(),
-%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"DesiredWeight">> => float(),
-%%   <<"InstancePools">> => list(instance_pool_summary()),
-%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
-%%   <<"RoutingConfig">> => production_variant_routing_config(),
-%%   <<"VariantName">> => string(),
-%%   <<"VariantStatus">> => list(production_variant_status())
-%% }
--type production_variant_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_edge_packaging_job_request() :: #{
-%%   <<"EdgePackagingJobName">> := string()
-%% }
--type describe_edge_packaging_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_capacity_request() :: #{
-%%   <<"ReservedCapacityArn">> := string()
-%% }
--type describe_reserved_capacity_request() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_update_config() :: #{
-%%   <<"DeploymentConfig">> => deployment_configuration(),
-%%   <<"ScheduleExpression">> => string()
-%% }
--type scheduled_update_config() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_alert_history_summary() :: #{
-%%   <<"AlertStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"MonitoringAlertName">> => string(),
-%%   <<"MonitoringScheduleName">> => string()
-%% }
--type monitoring_alert_history_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_explainability_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string(),
-%%   <<"JobResources">> := monitoring_resources(),
-%%   <<"ModelExplainabilityAppSpecification">> := model_explainability_app_specification(),
-%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
-%%   <<"ModelExplainabilityJobInput">> := model_explainability_job_input(),
-%%   <<"ModelExplainabilityJobOutputConfig">> := monitoring_output_config(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_model_explainability_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_action_request() :: #{
-%%   <<"ActionName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Properties">> => map(),
-%%   <<"PropertiesToRemove">> => list(string()),
-%%   <<"Status">> => list(any())
-%% }
--type update_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_code_repository_output() :: #{
-%%   <<"CodeRepositoryArn">> => string()
-%% }
--type update_code_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_auto_scaling_config() :: #{
-%%   <<"AutoScalerType">> => list(any()),
-%%   <<"Mode">> => list(any())
-%% }
--type cluster_auto_scaling_config() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_capacity_size() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type inference_component_capacity_size() :: #{binary() => any()}.
-
-%% Example:
-%% image_version() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"ImageArn">> => string(),
-%%   <<"ImageVersionArn">> => string(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Version">> => integer()
-%% }
--type image_version() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_software_instance_group_specification() :: #{
-%%   <<"ImageReleaseVersion">> => string(),
-%%   <<"InstanceGroupName">> => string()
-%% }
--type update_cluster_software_instance_group_specification() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_metadata() :: #{
-%%   <<"EksRoleAccessEntries">> => list([string()]()),
-%%   <<"FailureMessage">> => [string()],
-%%   <<"SlrAccessEntry">> => [string()]
-%% }
--type cluster_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% service_catalog_provisioning_details() :: #{
-%%   <<"PathId">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningParameters">> => list(provisioning_parameter())
-%% }
--type service_catalog_provisioning_details() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_slurm_config_details() :: #{
-%%   <<"NodeType">> => list(any()),
-%%   <<"PartitionNames">> => list(string())
-%% }
--type cluster_slurm_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% iam_identity() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"SourceIdentity">> => string()
-%% }
--type iam_identity() :: #{binary() => any()}.
-
-%% Example:
-%% describe_action_request() :: #{
-%%   <<"ActionName">> := string()
-%% }
--type describe_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% customized_metric_specification() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"Statistic">> => list(any())
-%% }
--type customized_metric_specification() :: #{binary() => any()}.
-
-%% Example:
-%% delete_compute_quota_request() :: #{
-%%   <<"ComputeQuotaId">> := string()
-%% }
--type delete_compute_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_compute_spec() :: #{
-%%   <<"CapacityReservationConfig">> => a_i_capacity_reservation_config(),
-%%   <<"InstanceTypes">> => list(list(any())())
-%% }
--type a_i_recommendation_compute_spec() :: #{binary() => any()}.
-
-%% Example:
-%% delete_association_request() :: #{
-%%   <<"DestinationArn">> := string(),
-%%   <<"SourceArn">> := string()
-%% }
--type delete_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_version_response() :: #{
-
-%% }
--type delete_image_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% app_specification() :: #{
-%%   <<"ContainerArguments">> => list(string()),
-%%   <<"ContainerEntrypoint">> => list(string()),
-%%   <<"ImageUri">> => string()
-%% }
--type app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% edge_preset_deployment_output() :: #{
-%%   <<"Artifact">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type edge_preset_deployment_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_project_output() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ProjectArn">> => string(),
-%%   <<"ProjectDescription">> => string(),
-%%   <<"ProjectId">> => string(),
-%%   <<"ProjectName">> => string(),
-%%   <<"ProjectStatus">> => list(any()),
-%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
-%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
-%%   <<"TemplateProviderDetails">> => list(template_provider_detail())
-%% }
--type describe_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% user_profile_details() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserProfileName">> => string()
-%% }
--type user_profile_details() :: #{binary() => any()}.
-
-%% Example:
-%% instance_pool() :: #{
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ModelNameOverride">> => string(),
-%%   <<"Priority">> => integer()
-%% }
--type instance_pool() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_benchmark_job_request() :: #{
-%%   <<"AIBenchmarkJobName">> := string()
-%% }
--type delete_a_i_benchmark_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_quality_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type describe_data_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_lineage_request() :: #{
-%%   <<"Direction">> => list(any()),
-%%   <<"Filters">> => query_filters(),
-%%   <<"IncludeEdges">> => boolean(),
-%%   <<"MaxDepth">> => integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartArns">> => list(string())
-%% }
--type query_lineage_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_lineage_group_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"LineageGroupName">> => string()
-%% }
--type describe_lineage_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% authorized_url() :: #{
-%%   <<"LocalPath">> => string(),
-%%   <<"Url">> => string()
-%% }
--type authorized_url() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoint_configs_output() :: #{
-%%   <<"EndpointConfigs">> => list(endpoint_config_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoint_configs_output() :: #{binary() => any()}.
-
-%% Example:
 %% algorithm_status_details() :: #{
 %%   <<"ImageScanStatuses">> => list(algorithm_status_item()),
 %%   <<"ValidationStatuses">> => list(algorithm_status_item())
@@ -5227,344 +1202,50 @@
 -type algorithm_status_details() :: #{binary() => any()}.
 
 %% Example:
-%% query_lineage_response() :: #{
-%%   <<"Edges">> => list(edge()),
-%%   <<"NextToken">> => string(),
-%%   <<"Vertices">> => list(vertex())
-%% }
--type query_lineage_response() :: #{binary() => any()}.
-
-%% Example:
-%% async_inference_config() :: #{
-%%   <<"ClientConfig">> => async_inference_client_config(),
-%%   <<"OutputConfig">> => async_inference_output_config()
-%% }
--type async_inference_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_sagemaker_servicecatalog_portfolio_status_input() :: #{
-
-%% }
--type get_sagemaker_servicecatalog_portfolio_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% throughput_config_description() :: #{
-%%   <<"ProvisionedReadCapacityUnits">> => integer(),
-%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
-%%   <<"ThroughputMode">> => list(any())
-%% }
--type throughput_config_description() :: #{binary() => any()}.
-
-%% Example:
-%% instance_metadata_service_configuration() :: #{
-%%   <<"MinimumInstanceMetadataServiceVersion">> => string()
-%% }
--type instance_metadata_service_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_summary() :: #{
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"AutoMLJobName">> => string(),
-%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
-%%   <<"AutoMLJobStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
+%% algorithm_status_item() :: #{
 %%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason())
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type auto_ml_job_summary() :: #{binary() => any()}.
+-type algorithm_status_item() :: #{binary() => any()}.
 
 %% Example:
-%% batch_replace_cluster_node_logical_ids_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"NodeLogicalId">> => string()
+%% algorithm_summary() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> => string(),
+%%   <<"AlgorithmStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer()
 %% }
--type batch_replace_cluster_node_logical_ids_error() :: #{binary() => any()}.
+-type algorithm_summary() :: #{binary() => any()}.
 
 %% Example:
-%% member_definition() :: #{
-%%   <<"CognitoMemberDefinition">> => cognito_member_definition(),
-%%   <<"OidcMemberDefinition">> => oidc_member_definition()
+%% algorithm_validation_profile() :: #{
+%%   <<"ProfileName">> => string(),
+%%   <<"TrainingJobDefinition">> => training_job_definition(),
+%%   <<"TransformJobDefinition">> => transform_job_definition()
 %% }
--type member_definition() :: #{binary() => any()}.
+-type algorithm_validation_profile() :: #{binary() => any()}.
 
 %% Example:
-%% list_mlflow_tracking_servers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrackingServerSummaries">> => list(tracking_server_summary())
+%% algorithm_validation_specification() :: #{
+%%   <<"ValidationProfiles">> => list(algorithm_validation_profile()),
+%%   <<"ValidationRole">> => string()
 %% }
--type list_mlflow_tracking_servers_response() :: #{binary() => any()}.
+-type algorithm_validation_specification() :: #{binary() => any()}.
 
 %% Example:
-%% delete_image_version_request() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"ImageName">> := string(),
-%%   <<"Version">> => integer()
+%% amazon_q_settings() :: #{
+%%   <<"QProfileArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type delete_image_version_request() :: #{binary() => any()}.
+-type amazon_q_settings() :: #{binary() => any()}.
 
 %% Example:
-%% quality_check_step_metadata() :: #{
-%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
-%%   <<"BaselineUsedForDriftCheckStatistics">> => string(),
-%%   <<"CalculatedBaselineConstraints">> => string(),
-%%   <<"CalculatedBaselineStatistics">> => string(),
-%%   <<"CheckJobArn">> => string(),
-%%   <<"CheckType">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"RegisterNewBaseline">> => boolean(),
-%%   <<"SkipCheck">> => boolean(),
-%%   <<"ViolationReport">> => string()
+%% annotation_consolidation_config() :: #{
+%%   <<"AnnotationConsolidationLambdaArn">> => string()
 %% }
--type quality_check_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% list_labeling_jobs_response() :: #{
-%%   <<"LabelingJobSummaryList">> => list(labeling_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_labeling_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_package_input() :: #{
-%%   <<"ModelPackageName">> := string()
-%% }
--type delete_model_package_input() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_availability_zone_balance() :: #{
-%%   <<"EnforcementMode">> => list(any()),
-%%   <<"MaxImbalance">> => integer()
-%% }
--type inference_component_availability_zone_balance() :: #{binary() => any()}.
-
-%% Example:
-%% model_package() :: #{
-%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()),
-%%   <<"ApprovalDescription">> => string(),
-%%   <<"CertifyForMarketplace">> => boolean(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomerMetadataProperties">> => map(),
-%%   <<"Domain">> => string(),
-%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"ModelApprovalStatus">> => list(any()),
-%%   <<"ModelCard">> => model_package_model_card(),
-%%   <<"ModelLifeCycle">> => model_life_cycle(),
-%%   <<"ModelMetrics">> => model_metrics(),
-%%   <<"ModelPackageArn">> => string(),
-%%   <<"ModelPackageDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageName">> => string(),
-%%   <<"ModelPackageRegistrationType">> => list(any()),
-%%   <<"ModelPackageStatus">> => list(any()),
-%%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
-%%   <<"ModelPackageVersion">> => integer(),
-%%   <<"SamplePayloadUrl">> => string(),
-%%   <<"SecurityConfig">> => model_package_security_config(),
-%%   <<"SkipModelValidation">> => list(any()),
-%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
-%%   <<"SourceUri">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Task">> => string(),
-%%   <<"ValidationSpecification">> => model_package_validation_specification()
-%% }
--type model_package() :: #{binary() => any()}.
-
-%% Example:
-%% processing_stopping_condition() :: #{
-%%   <<"MaxRuntimeInSeconds">> => integer()
-%% }
--type processing_stopping_condition() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_serverless_config() :: #{
-%%   <<"MaxConcurrency">> => integer(),
-%%   <<"MemorySizeInMB">> => integer(),
-%%   <<"ProvisionedConcurrency">> => integer()
-%% }
--type production_variant_serverless_config() :: #{binary() => any()}.
-
-%% Example:
-%% training_job_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type training_job_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% neo_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type neo_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_human_task_ui_request() :: #{
-%%   <<"HumanTaskUiName">> := string()
-%% }
--type describe_human_task_ui_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_quality() :: #{
-%%   <<"Constraints">> => metrics_source(),
-%%   <<"Statistics">> => metrics_source()
-%% }
--type model_quality() :: #{binary() => any()}.
-
-%% Example:
-%% edge_packaging_job_summary() :: #{
-%%   <<"CompilationJobName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EdgePackagingJobArn">> => string(),
-%%   <<"EdgePackagingJobName">> => string(),
-%%   <<"EdgePackagingJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelVersion">> => string()
-%% }
--type edge_packaging_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type inference_component_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_transform_job_request() :: #{
-%%   <<"BatchStrategy">> => list(any()),
-%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
-%%   <<"DataProcessing">> => data_processing(),
-%%   <<"Environment">> => map(),
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"MaxConcurrentTransforms">> => integer(),
-%%   <<"MaxPayloadInMB">> => integer(),
-%%   <<"ModelClientConfig">> => model_client_config(),
-%%   <<"ModelName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransformInput">> := transform_input(),
-%%   <<"TransformJobName">> := string(),
-%%   <<"TransformOutput">> := transform_output(),
-%%   <<"TransformResources">> := transform_resources()
-%% }
--type create_transform_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% transform_job() :: #{
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"BatchStrategy">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
-%%   <<"DataProcessing">> => data_processing(),
-%%   <<"Environment">> => map(),
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"MaxConcurrentTransforms">> => integer(),
-%%   <<"MaxPayloadInMB">> => integer(),
-%%   <<"ModelClientConfig">> => model_client_config(),
-%%   <<"ModelName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransformEndTime">> => non_neg_integer(),
-%%   <<"TransformInput">> => transform_input(),
-%%   <<"TransformJobArn">> => string(),
-%%   <<"TransformJobName">> => string(),
-%%   <<"TransformJobStatus">> => list(any()),
-%%   <<"TransformOutput">> => transform_output(),
-%%   <<"TransformResources">> => transform_resources(),
-%%   <<"TransformStartTime">> => non_neg_integer()
-%% }
--type transform_job() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_details() :: #{
-%%   <<"AlarmName">> => string()
-%% }
--type alarm_details() :: #{binary() => any()}.
-
-%% Example:
-%% suggestion_query() :: #{
-%%   <<"PropertyNameQuery">> => property_name_query()
-%% }
--type suggestion_query() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_schema_version_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"JobConfigSchemaVersion">> => string()
-%% }
--type describe_job_schema_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_human_task_uis_response() :: #{
-%%   <<"HumanTaskUiSummaries">> => list(human_task_ui_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_human_task_uis_response() :: #{binary() => any()}.
-
-%% Example:
-%% selective_execution_result() :: #{
-%%   <<"SourcePipelineExecutionArn">> => string()
-%% }
--type selective_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workforce_request() :: #{
-%%   <<"WorkforceName">> := string()
-%% }
--type describe_workforce_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"RetentionPolicy">> => retention_policy()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_summary() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"ClusterStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"TrainingPlanArns">> => list(string())
-%% }
--type cluster_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trial_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Source">> => trial_source(),
-%%   <<"TrialArn">> => string(),
-%%   <<"TrialName">> => string()
-%% }
--type describe_trial_response() :: #{binary() => any()}.
-
-%% Example:
-%% renderable_task() :: #{
-%%   <<"Input">> => string()
-%% }
--type renderable_task() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_deployment_config() :: #{
-%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
-%%   <<"RollingUpdatePolicy">> => inference_component_rolling_update_policy()
-%% }
--type inference_component_deployment_config() :: #{binary() => any()}.
+-type annotation_consolidation_config() :: #{binary() => any()}.
 
 %% Example:
 %% app_details() :: #{
@@ -5580,541 +1261,30 @@
 -type app_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_model_bias_job_definitions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_bias_job_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_algorithms_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_algorithms_input() :: #{binary() => any()}.
-
-%% Example:
-%% generative_ai_settings() :: #{
-%%   <<"AmazonBedrockRoleArn">> => string()
-%% }
--type generative_ai_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_input() :: #{
-%%   <<"Containers">> => list(container_definition()),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
-%%   <<"ModelName">> := string(),
-%%   <<"PrimaryContainer">> => container_definition(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type create_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_profile_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"UserProfileName">> := string()
-%% }
--type describe_user_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_specification() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsRequired">> => boolean(),
-%%   <<"IsTunable">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Range">> => parameter_range(),
-%%   <<"Type">> => list(any())
-%% }
--type hyper_parameter_specification() :: #{binary() => any()}.
-
-%% Example:
-%% job_summary() :: #{
+%% app_image_config_details() :: #{
+%%   <<"AppImageConfigArn">> => string(),
+%%   <<"AppImageConfigName">> => string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobCategory">> => list(any()),
-%%   <<"JobName">> => string(),
-%%   <<"JobSecondaryStatus">> => list(any()),
-%%   <<"JobStatus">> => list(any()),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
--type job_summary() :: #{binary() => any()}.
+-type app_image_config_details() :: #{binary() => any()}.
 
 %% Example:
-%% inference_execution_config() :: #{
-%%   <<"Mode">> => list(any())
+%% app_lifecycle_management() :: #{
+%%   <<"IdleSettings">> => idle_settings()
 %% }
--type inference_execution_config() :: #{binary() => any()}.
+-type app_lifecycle_management() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_instance_requirement_details() :: #{
-%%   <<"CurrentInstanceTypes">> => list(list(any())()),
-%%   <<"DesiredInstanceTypes">> => list(list(any())())
+%% app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()),
+%%   <<"ContainerEntrypoint">> => list(string()),
+%%   <<"ImageUri">> => string()
 %% }
--type cluster_instance_requirement_details() :: #{binary() => any()}.
-
-%% Example:
-%% start_edge_deployment_stage_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"StageName">> := string()
-%% }
--type start_edge_deployment_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_dashboard_indicator_action() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type model_dashboard_indicator_action() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_bias_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type describe_model_bias_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_experiment_schedule() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type inference_experiment_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% auto_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ValueHint">> => string()
-%% }
--type auto_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% transform_s3_data_source() :: #{
-%%   <<"S3DataType">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type transform_s3_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_card_response() :: #{
-%%   <<"Content">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelCardArn">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardProcessingStatus">> => list(any()),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"SecurityConfig">> => model_card_security_config()
-%% }
--type describe_model_card_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_event_response() :: #{
-%%   <<"EventDetails">> => cluster_event_detail()
-%% }
--type describe_cluster_event_response() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_configuration() :: #{
-%%   <<"AutoRollbackConfiguration">> => list(alarm_details()),
-%%   <<"RollingUpdatePolicy">> => rolling_deployment_policy(),
-%%   <<"WaitIntervalInSeconds">> => integer()
-%% }
--type deployment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_device_fleet_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"EnableIotRoleAlias">> => boolean(),
-%%   <<"OutputConfig">> := edge_output_config(),
-%%   <<"RoleArn">> => string()
-%% }
--type update_device_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% output_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type output_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_workload_config_response() :: #{
-%%   <<"AIWorkloadConfigArn">> => string()
-%% }
--type delete_a_i_workload_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_hubs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_hubs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notebook_instance_output() :: #{
-%%   <<"AcceleratorTypes">> => list(list(any())()),
-%%   <<"AdditionalCodeRepositories">> => list(string()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultCodeRepository">> => string(),
-%%   <<"DirectInternetAccess">> => list(any()),
-%%   <<"FailureReason">> => string(),
-%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"NotebookInstanceArn">> => string(),
-%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
-%%   <<"NotebookInstanceName">> => string(),
-%%   <<"NotebookInstanceStatus">> => list(any()),
-%%   <<"PlatformIdentifier">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RootAccess">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"SubnetId">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type describe_notebook_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_payload_config() :: #{
-%%   <<"SamplePayloadUrl">> => string(),
-%%   <<"SupportedContentTypes">> => list(string())
-%% }
--type recommendation_job_payload_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_bias_job_input() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"EndpointInput">> => endpoint_input(),
-%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
-%% }
--type model_bias_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% environment_config() :: #{
-%%   <<"FSxLustreConfig">> => f_sx_lustre_config()
-%% }
--type environment_config() :: #{binary() => any()}.
-
-%% Example:
-%% compilation_job_summary() :: #{
-%%   <<"CompilationEndTime">> => non_neg_integer(),
-%%   <<"CompilationJobArn">> => string(),
-%%   <<"CompilationJobName">> => string(),
-%%   <<"CompilationJobStatus">> => list(any()),
-%%   <<"CompilationStartTime">> => non_neg_integer(),
-%%   <<"CompilationTargetDevice">> => list(any()),
-%%   <<"CompilationTargetPlatformAccelerator">> => list(any()),
-%%   <<"CompilationTargetPlatformArch">> => list(any()),
-%%   <<"CompilationTargetPlatformOs">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type compilation_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_a_i_workload_config_request() :: #{
-%%   <<"AIWorkloadConfigName">> := string()
-%% }
--type describe_a_i_workload_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_training_job_definition() :: #{
-%%   <<"AlgorithmSpecification">> => hyper_parameter_algorithm_specification(),
-%%   <<"CheckpointConfig">> => checkpoint_config(),
-%%   <<"DefinitionName">> => string(),
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"EnableManagedSpotTraining">> => boolean(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"Environment">> => map(),
-%%   <<"HyperParameterRanges">> => parameter_ranges(),
-%%   <<"HyperParameterTuningResourceConfig">> => hyper_parameter_tuning_resource_config(),
-%%   <<"InputDataConfig">> => list(channel()),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"ResourceConfig">> => resource_config(),
-%%   <<"RetryStrategy">> => retry_strategy(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StaticHyperParameters">> => map(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"TuningObjective">> => hyper_parameter_tuning_job_objective(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type hyper_parameter_training_job_definition() :: #{binary() => any()}.
-
-%% Example:
-%% add_association_response() :: #{
-%%   <<"DestinationArn">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type add_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% r_studio_server_pro_app_settings() :: #{
-%%   <<"AccessStatus">> => list(any()),
-%%   <<"UserGroup">> => list(any())
-%% }
--type r_studio_server_pro_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_resource_config() :: #{
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type labeling_job_resource_config() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_ground_truth_s3_input() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type monitoring_ground_truth_s3_input() :: #{binary() => any()}.
-
-%% Example:
-%% convergence_detected() :: #{
-%%   <<"CompleteOnConvergence">> => list(any())
-%% }
--type convergence_detected() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_card_request() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardStatus">> => list(any())
-%% }
--type update_model_card_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_package_group_policy_input() :: #{
-%%   <<"ModelPackageGroupName">> := string()
-%% }
--type delete_model_package_group_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_workload_config_request() :: #{
-%%   <<"AIWorkloadConfigName">> := string(),
-%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
-%%   <<"DatasetConfig">> => list(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_a_i_workload_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_recommendations_job_response() :: #{
-%%   <<"JobArn">> => string()
-%% }
--type create_inference_recommendations_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_context_response() :: #{
-%%   <<"ContextArn">> => string(),
-%%   <<"ContextName">> => string(),
-%%   <<"ContextType">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> => context_source()
-%% }
--type describe_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hyper_parameter_tuning_job_request() :: #{
-%%   <<"HyperParameterTuningJobName">> := string()
-%% }
--type delete_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_experiment_data_storage_config() :: #{
-%%   <<"ContentType">> => capture_content_type_header(),
-%%   <<"Destination">> => string(),
-%%   <<"KmsKey">> => string()
-%% }
--type inference_experiment_data_storage_config() :: #{binary() => any()}.
-
-%% Example:
-%% inference_hub_access_config() :: #{
-%%   <<"HubContentArn">> => string()
-%% }
--type inference_hub_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% session_chaining_config() :: #{
-%%   <<"EnableSessionTagChaining">> => boolean()
-%% }
--type session_chaining_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_quality_job_definition_request() :: #{
-%%   <<"DataQualityAppSpecification">> := data_quality_app_specification(),
-%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
-%%   <<"DataQualityJobInput">> := data_quality_job_input(),
-%%   <<"DataQualityJobOutputConfig">> := monitoring_output_config(),
-%%   <<"JobDefinitionName">> := string(),
-%%   <<"JobResources">> := monitoring_resources(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_data_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_executions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MonitoringJobDefinitionName">> => string(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringTypeEquals">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledTimeAfter">> => non_neg_integer(),
-%%   <<"ScheduledTimeBefore">> => non_neg_integer(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_monitoring_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_quality_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string(),
-%%   <<"JobResources">> := monitoring_resources(),
-%%   <<"ModelQualityAppSpecification">> := model_quality_app_specification(),
-%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
-%%   <<"ModelQualityJobInput">> := model_quality_job_input(),
-%%   <<"ModelQualityJobOutputConfig">> := monitoring_output_config(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_model_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_schedules_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MonitoringJobDefinitionName">> => string(),
-%%   <<"MonitoringTypeEquals">> => list(any()),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_monitoring_schedules_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_definition_request() :: #{
-%%   <<"FlowDefinitionName">> := string()
-%% }
--type delete_flow_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_size() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type capacity_size() :: #{binary() => any()}.
-
-%% Example:
-%% list_image_versions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"ImageName">> := string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_image_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
-%%   <<"ClusterName">> := string(),
-%%   <<"ClusterRole">> => string(),
-%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
-%%   <<"NodeProvisioningMode">> => list(any()),
-%%   <<"NodeRecovery">> => list(any()),
-%%   <<"Orchestrator">> => cluster_orchestrator(),
-%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
-%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_capacity_reservation() :: #{
-%%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"Ec2CapacityReservationId">> => string(),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UsedByCurrentEndpoint">> => integer()
-%% }
--type ec2_capacity_reservation() :: #{binary() => any()}.
-
-%% Example:
-%% create_notebook_instance_lifecycle_config_input() :: #{
-%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
-%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()),
-%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_studio_lifecycle_config_response() :: #{
-%%   <<"StudioLifecycleConfigArn">> => string()
-%% }
--type create_studio_lifecycle_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_candidate_generation_config() :: #{
-%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config()),
-%%   <<"FeatureSpecificationS3Uri">> => string()
-%% }
--type auto_ml_candidate_generation_config() :: #{binary() => any()}.
+-type app_specification() :: #{binary() => any()}.
 
 %% Example:
 %% artifact_source() :: #{
@@ -6124,243 +1294,132 @@
 -type artifact_source() :: #{binary() => any()}.
 
 %% Example:
-%% emr_serverless_compute_config() :: #{
-%%   <<"ExecutionRoleARN">> => string()
+%% artifact_source_type() :: #{
+%%   <<"SourceIdType">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type emr_serverless_compute_config() :: #{binary() => any()}.
+-type artifact_source_type() :: #{binary() => any()}.
 
 %% Example:
-%% metric_datum() :: #{
-%%   <<"MetricName">> => list(any()),
-%%   <<"Set">> => list(any()),
-%%   <<"StandardMetricName">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type metric_datum() :: #{binary() => any()}.
-
-%% Example:
-%% direct_deploy_settings() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type direct_deploy_settings() :: #{binary() => any()}.
-
-%% Example:
-%% bedrock_model_import_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type bedrock_model_import_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_version_summary() :: #{
+%% artifact_summary() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelCardArn">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"ModelCardVersion">> => integer()
+%%   <<"Source">> => artifact_source()
 %% }
--type model_card_version_summary() :: #{binary() => any()}.
+-type artifact_summary() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% associate_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string(),
+%%   <<"TrialName">> := string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type associate_trial_component_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_optimization_job_request() :: #{
-%%   <<"DeploymentInstanceType">> := list(any()),
-%%   <<"MaxInstanceCount">> => integer(),
-%%   <<"ModelSource">> := optimization_job_model_source(),
-%%   <<"OptimizationConfigs">> := list(list()),
-%%   <<"OptimizationEnvironment">> => map(),
-%%   <<"OptimizationJobName">> := string(),
-%%   <<"OutputConfig">> := optimization_job_output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> := stopping_condition(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfig">> => optimization_vpc_config()
+%% associate_trial_component_response() :: #{
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentArn">> => string()
 %% }
--type create_optimization_job_request() :: #{binary() => any()}.
+-type associate_trial_component_response() :: #{binary() => any()}.
 
 %% Example:
-%% pending_deployment_summary() :: #{
-%%   <<"EndpointConfigName">> => string(),
-%%   <<"ProductionVariants">> => list(pending_production_variant_summary()),
-%%   <<"ShadowProductionVariants">> => list(pending_production_variant_summary()),
-%%   <<"StartTime">> => non_neg_integer()
+%% association_info() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
 %% }
--type pending_deployment_summary() :: #{binary() => any()}.
+-type association_info() :: #{binary() => any()}.
 
 %% Example:
-%% training_plan_offering() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"DurationHours">> => float(),
-%%   <<"DurationMinutes">> => float(),
-%%   <<"RequestedEndTimeBefore">> => non_neg_integer(),
-%%   <<"RequestedStartTimeAfter">> => non_neg_integer(),
-%%   <<"ReservedCapacityOfferings">> => list(reserved_capacity_offering()),
-%%   <<"TargetResources">> => list(list(any())()),
-%%   <<"TrainingPlanOfferingId">> => string(),
-%%   <<"UpfrontFee">> => string()
+%% association_summary() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"DestinationName">> => string(),
+%%   <<"DestinationType">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => string()
 %% }
--type training_plan_offering() :: #{binary() => any()}.
+-type association_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_workteam_response() :: #{
-%%   <<"Success">> => boolean()
+%% async_inference_client_config() :: #{
+%%   <<"MaxConcurrentInvocationsPerInstance">> => integer()
 %% }
--type delete_workteam_response() :: #{binary() => any()}.
+-type async_inference_client_config() :: #{binary() => any()}.
 
 %% Example:
-%% processing_output() :: #{
-%%   <<"AppManaged">> => boolean(),
-%%   <<"FeatureStoreOutput">> => processing_feature_store_output(),
-%%   <<"OutputName">> => string(),
-%%   <<"S3Output">> => processing_s3_output()
+%% async_inference_config() :: #{
+%%   <<"ClientConfig">> => async_inference_client_config(),
+%%   <<"OutputConfig">> => async_inference_output_config()
 %% }
--type processing_output() :: #{binary() => any()}.
+-type async_inference_config() :: #{binary() => any()}.
 
 %% Example:
-%% clarify_check_step_metadata() :: #{
-%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
-%%   <<"CalculatedBaselineConstraints">> => string(),
-%%   <<"CheckJobArn">> => string(),
-%%   <<"CheckType">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"RegisterNewBaseline">> => boolean(),
-%%   <<"SkipCheck">> => boolean(),
-%%   <<"ViolationReport">> => string()
+%% async_inference_notification_config() :: #{
+%%   <<"ErrorTopic">> => string(),
+%%   <<"IncludeInferenceResponseIn">> => list(list(any())()),
+%%   <<"SuccessTopic">> => string()
 %% }
--type clarify_check_step_metadata() :: #{binary() => any()}.
+-type async_inference_notification_config() :: #{binary() => any()}.
 
 %% Example:
-%% create_compilation_job_response() :: #{
-%%   <<"CompilationJobArn">> => string()
+%% async_inference_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NotificationConfig">> => async_inference_notification_config(),
+%%   <<"S3FailurePath">> => string(),
+%%   <<"S3OutputPath">> => string()
 %% }
--type create_compilation_job_response() :: #{binary() => any()}.
+-type async_inference_output_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_pipeline_execution_request() :: #{
-%%   <<"PipelineExecutionArn">> := string()
+%% athena_dataset_definition() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputCompression">> => list(any()),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"OutputS3Uri">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"WorkGroup">> => string()
 %% }
--type describe_pipeline_execution_request() :: #{binary() => any()}.
+-type athena_dataset_definition() :: #{binary() => any()}.
 
 %% Example:
-%% list_workteams_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Workteams">> => list(workteam())
+%% attach_cluster_node_volume_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"NodeId">> := string(),
+%%   <<"VolumeId">> := string()
 %% }
--type list_workteams_response() :: #{binary() => any()}.
+-type attach_cluster_node_volume_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_inference_recommendations_job_steps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Steps">> => list(inference_recommendations_job_step())
-%% }
--type list_inference_recommendations_job_steps_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_pipeline_execution_step_failure_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type send_pipeline_execution_step_failure_response() :: #{binary() => any()}.
-
-%% Example:
-%% container_config() :: #{
-%%   <<"ContainerArguments">> => list(string()),
-%%   <<"ContainerEntrypoint">> => list(string()),
-%%   <<"ContainerEnvironmentVariables">> => map()
-%% }
--type container_config() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_candidate_step() :: #{
-%%   <<"CandidateStepArn">> => string(),
-%%   <<"CandidateStepName">> => string(),
-%%   <<"CandidateStepType">> => list(any())
-%% }
--type auto_ml_candidate_step() :: #{binary() => any()}.
-
-%% Example:
-%% retry_pipeline_execution_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineExecutionArn">> := string()
-%% }
--type retry_pipeline_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% online_store_security_config() :: #{
-%%   <<"KmsKeyId">> => string()
-%% }
--type online_store_security_config() :: #{binary() => any()}.
-
-%% Example:
-%% time_series_transformations() :: #{
-%%   <<"Aggregation">> => map(),
-%%   <<"Filling">> => map()
-%% }
--type time_series_transformations() :: #{binary() => any()}.
-
-%% Example:
-%% job_secondary_status_transition() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
+%% attach_cluster_node_volume_response() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"NodeId">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"VolumeId">> => string()
 %% }
--type job_secondary_status_transition() :: #{binary() => any()}.
+-type attach_cluster_node_volume_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_artifact_request() :: #{
-%%   <<"ArtifactArn">> := string()
+%% authorized_url() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"Url">> => string()
 %% }
--type describe_artifact_request() :: #{binary() => any()}.
+-type authorized_url() :: #{binary() => any()}.
 
 %% Example:
-%% update_notebook_instance_input() :: #{
-%%   <<"AcceleratorTypes">> => list(list(any())()),
-%%   <<"AdditionalCodeRepositories">> => list(string()),
-%%   <<"DefaultCodeRepository">> => string(),
-%%   <<"DisassociateAcceleratorTypes">> => boolean(),
-%%   <<"DisassociateAdditionalCodeRepositories">> => boolean(),
-%%   <<"DisassociateDefaultCodeRepository">> => boolean(),
-%%   <<"DisassociateLifecycleConfig">> => boolean(),
-%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"LifecycleConfigName">> => string(),
-%%   <<"NotebookInstanceName">> := string(),
-%%   <<"PlatformIdentifier">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RootAccess">> => list(any()),
-%%   <<"VolumeSizeInGB">> => integer()
+%% auto_ml_algorithm_config() :: #{
+%%   <<"AutoMLAlgorithms">> => list(list(any())())
 %% }
--type update_notebook_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% container_definition() :: #{
-%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
-%%   <<"ContainerHostname">> => string(),
-%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
-%%   <<"Environment">> => map(),
-%%   <<"Image">> => string(),
-%%   <<"ImageConfig">> => image_config(),
-%%   <<"InferenceSpecificationName">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"ModelDataSource">> => model_data_source(),
-%%   <<"ModelDataUrl">> => string(),
-%%   <<"ModelPackageName">> => string(),
-%%   <<"MultiModelConfig">> => multi_model_config()
-%% }
--type container_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_space_response() :: #{
-%%   <<"SpaceArn">> => string()
-%% }
--type create_space_response() :: #{binary() => any()}.
+-type auto_ml_algorithm_config() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_candidate() :: #{
@@ -6380,40 +1439,1636 @@
 -type auto_ml_candidate() :: #{binary() => any()}.
 
 %% Example:
-%% space_settings_summary() :: #{
-%%   <<"AppType">> => list(any()),
-%%   <<"RemoteAccess">> => list(any()),
-%%   <<"SpaceStorageSettings">> => space_storage_settings()
+%% auto_ml_candidate_generation_config() :: #{
+%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config()),
+%%   <<"FeatureSpecificationS3Uri">> => string()
 %% }
--type space_settings_summary() :: #{binary() => any()}.
+-type auto_ml_candidate_generation_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_model_explainability_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
+%% auto_ml_candidate_step() :: #{
+%%   <<"CandidateStepArn">> => string(),
+%%   <<"CandidateStepName">> => string(),
+%%   <<"CandidateStepType">> => list(any())
 %% }
--type describe_model_explainability_job_definition_request() :: #{binary() => any()}.
+-type auto_ml_candidate_step() :: #{binary() => any()}.
 
 %% Example:
-%% update_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
-%%   <<"MonitoringScheduleName">> := string()
+%% auto_ml_channel() :: #{
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => auto_ml_data_source(),
+%%   <<"SampleWeightAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string()
 %% }
--type update_monitoring_schedule_request() :: #{binary() => any()}.
+-type auto_ml_channel() :: #{binary() => any()}.
 
 %% Example:
-%% list_hyper_parameter_tuning_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
+%% auto_ml_compute_config() :: #{
+%%   <<"EmrServerlessComputeConfig">> => emr_serverless_compute_config()
 %% }
--type list_hyper_parameter_tuning_jobs_request() :: #{binary() => any()}.
+-type auto_ml_compute_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_container_definition() :: #{
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string(),
+%%   <<"ModelDataUrl">> => string()
+%% }
+-type auto_ml_container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_data_source() :: #{
+%%   <<"S3DataSource">> => auto_ml_s3_data_source()
+%% }
+-type auto_ml_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_data_split_config() :: #{
+%%   <<"ValidationFraction">> => float()
+%% }
+-type auto_ml_data_split_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_artifacts() :: #{
+%%   <<"CandidateDefinitionNotebookLocation">> => string(),
+%%   <<"DataExplorationNotebookLocation">> => string()
+%% }
+-type auto_ml_job_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_channel() :: #{
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => auto_ml_data_source()
+%% }
+-type auto_ml_job_channel() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_completion_criteria() :: #{
+%%   <<"MaxAutoMLJobRuntimeInSeconds">> => integer(),
+%%   <<"MaxCandidates">> => integer(),
+%%   <<"MaxRuntimePerTrainingJobInSeconds">> => integer()
+%% }
+-type auto_ml_job_completion_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => auto_ml_candidate_generation_config(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
+%%   <<"Mode">> => list(any()),
+%%   <<"SecurityConfig">> => auto_ml_security_config()
+%% }
+-type auto_ml_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_objective() :: #{
+%%   <<"MetricName">> => list(any())
+%% }
+-type auto_ml_job_objective() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type auto_ml_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_job_summary() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"AutoMLJobName">> => string(),
+%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
+%%   <<"AutoMLJobStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason())
+%% }
+-type auto_ml_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_output_data_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type auto_ml_output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_partial_failure_reason() :: #{
+%%   <<"PartialFailureMessage">> => string()
+%% }
+-type auto_ml_partial_failure_reason() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_resolved_attributes() :: #{
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLProblemTypeResolvedAttributes">> => list(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
+%% }
+-type auto_ml_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_s3_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type auto_ml_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_security_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type auto_ml_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ValueHint">> => string()
+%% }
+-type auto_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% auto_rollback_config() :: #{
+%%   <<"Alarms">> => list(alarm())
+%% }
+-type auto_rollback_config() :: #{binary() => any()}.
+
+%% Example:
+%% autotune() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type autotune() :: #{binary() => any()}.
+
+%% Example:
+%% available_upgrade() :: #{
+%%   <<"ReleaseNotes">> => list(string()),
+%%   <<"Version">> => string()
+%% }
+-type available_upgrade() :: #{binary() => any()}.
+
+%% Example:
+%% base_model() :: #{
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"RecipeName">> => string()
+%% }
+-type base_model() :: #{binary() => any()}.
+
+%% Example:
+%% batch_add_cluster_nodes_error() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"FailedCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())()),
+%%   <<"Message">> => string()
+%% }
+-type batch_add_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_add_cluster_nodes_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterName">> := string(),
+%%   <<"NodesToAdd">> := list(add_cluster_node_specification())
+%% }
+-type batch_add_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_add_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_add_cluster_nodes_error()),
+%%   <<"Successful">> => list(node_addition_result())
+%% }
+-type batch_add_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_data_capture_config() :: #{
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"GenerateInferenceId">> => boolean(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type batch_data_capture_config() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_cluster_node_logical_ids_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_delete_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_cluster_nodes_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => [string()],
+%%   <<"NodeId">> => string()
+%% }
+-type batch_delete_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
+%% }
+-type batch_delete_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_delete_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(batch_delete_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type batch_delete_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorResponse">> => string()
+%% }
+-type batch_describe_model_package_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_input() :: #{
+%%   <<"ModelPackageArnList">> := list(string())
+%% }
+-type batch_describe_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_output() :: #{
+%%   <<"BatchDescribeModelPackageErrorMap">> => map(),
+%%   <<"ModelPackageSummaries">> => map()
+%% }
+-type batch_describe_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_model_package_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageVersion">> => integer()
+%% }
+-type batch_describe_model_package_summary() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_node_logical_ids_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_reboot_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_nodes_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type batch_reboot_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
+%% }
+-type batch_reboot_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_reboot_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_reboot_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(batch_reboot_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type batch_reboot_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_replace_cluster_node_logical_ids_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_replace_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_replace_cluster_nodes_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type batch_replace_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_replace_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
+%% }
+-type batch_replace_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_replace_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_replace_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(batch_replace_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type batch_replace_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_transform_input() :: #{
+%%   <<"DataCapturedDestinationS3Uri">> => string(),
+%%   <<"DatasetFormat">> => monitoring_dataset_format(),
+%%   <<"EndTimeOffset">> => string(),
+%%   <<"ExcludeFeaturesAttribute">> => string(),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"InferenceAttribute">> => string(),
+%%   <<"LocalPath">> => string(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityThresholdAttribute">> => float(),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"StartTimeOffset">> => string()
+%% }
+-type batch_transform_input() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_custom_model_deployment_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_custom_model_deployment_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_custom_model_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_custom_model_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_model_import_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_model_import_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_provisioned_model_throughput_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type bedrock_provisioned_model_throughput_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% best_objective_not_improving() :: #{
+%%   <<"MaxNumberOfTrainingJobsNotImproving">> => integer()
+%% }
+-type best_objective_not_improving() :: #{binary() => any()}.
+
+%% Example:
+%% bias() :: #{
+%%   <<"PostTrainingReport">> => metrics_source(),
+%%   <<"PreTrainingReport">> => metrics_source(),
+%%   <<"Report">> => metrics_source()
+%% }
+-type bias() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_update_policy() :: #{
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"TerminationWaitInSeconds">> => integer(),
+%%   <<"TrafficRoutingConfiguration">> => traffic_routing_config()
+%% }
+-type blue_green_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% cache_hit_result() :: #{
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type cache_hit_result() :: #{binary() => any()}.
+
+%% Example:
+%% callback_step_metadata() :: #{
+%%   <<"CallbackToken">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter()),
+%%   <<"SqsQueueUrl">> => string()
+%% }
+-type callback_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_artifact_locations() :: #{
+%%   <<"BacktestResults">> => string(),
+%%   <<"Explainability">> => string(),
+%%   <<"ModelInsights">> => string()
+%% }
+-type candidate_artifact_locations() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_generation_config() :: #{
+%%   <<"AlgorithmsConfig">> => list(auto_ml_algorithm_config())
+%% }
+-type candidate_generation_config() :: #{binary() => any()}.
+
+%% Example:
+%% candidate_properties() :: #{
+%%   <<"CandidateArtifactLocations">> => candidate_artifact_locations(),
+%%   <<"CandidateMetrics">> => list(metric_datum())
+%% }
+-type candidate_properties() :: #{binary() => any()}.
+
+%% Example:
+%% canvas_app_settings() :: #{
+%%   <<"DirectDeploySettings">> => direct_deploy_settings(),
+%%   <<"EmrServerlessSettings">> => emr_serverless_settings(),
+%%   <<"GenerativeAiSettings">> => generative_ai_settings(),
+%%   <<"IdentityProviderOAuthSettings">> => list(identity_provider_o_auth_setting()),
+%%   <<"KendraSettings">> => kendra_settings(),
+%%   <<"ModelRegisterSettings">> => model_register_settings(),
+%%   <<"TimeSeriesForecastingSettings">> => time_series_forecasting_settings(),
+%%   <<"WorkspaceSettings">> => workspace_settings()
+%% }
+-type canvas_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_size() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type capacity_size() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_size_config() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type capacity_size_config() :: #{binary() => any()}.
+
+%% Example:
+%% capture_content_type_header() :: #{
+%%   <<"CsvContentTypes">> => list(string()),
+%%   <<"JsonContentTypes">> => list(string())
+%% }
+-type capture_content_type_header() :: #{binary() => any()}.
+
+%% Example:
+%% capture_option() :: #{
+%%   <<"CaptureMode">> => list(any())
+%% }
+-type capture_option() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => list(string())
+%% }
+-type categorical_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter_range() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type categorical_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter_range_specification() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type categorical_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_create_template_provider() :: #{
+%%   <<"Parameters">> => list(cfn_stack_create_parameter()),
+%%   <<"RoleARN">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_create_template_provider() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_create_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_create_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_detail() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type cfn_stack_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_stack_update_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cfn_stack_update_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_template_provider_detail() :: #{
+%%   <<"Parameters">> => list(cfn_stack_parameter()),
+%%   <<"RoleARN">> => string(),
+%%   <<"StackDetail">> => cfn_stack_detail(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_template_provider_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_update_template_provider() :: #{
+%%   <<"Parameters">> => list(cfn_stack_update_parameter()),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type cfn_update_template_provider() :: #{binary() => any()}.
+
+%% Example:
+%% channel() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"InputMode">> => list(any()),
+%%   <<"RecordWrapperType">> => list(any()),
+%%   <<"ShuffleConfig">> => shuffle_config()
+%% }
+-type channel() :: #{binary() => any()}.
+
+%% Example:
+%% channel_specification() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SupportedCompressionTypes">> => list(list(any())()),
+%%   <<"SupportedContentTypes">> => list(string()),
+%%   <<"SupportedInputModes">> => list(list(any())())
+%% }
+-type channel_specification() :: #{binary() => any()}.
+
+%% Example:
+%% checkpoint_config() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type checkpoint_config() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_check_step_metadata() :: #{
+%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
+%%   <<"CalculatedBaselineConstraints">> => string(),
+%%   <<"CheckJobArn">> => string(),
+%%   <<"CheckType">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RegisterNewBaseline">> => boolean(),
+%%   <<"SkipCheck">> => boolean(),
+%%   <<"ViolationReport">> => string()
+%% }
+-type clarify_check_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_explainer_config() :: #{
+%%   <<"EnableExplanations">> => string(),
+%%   <<"InferenceConfig">> => clarify_inference_config(),
+%%   <<"ShapConfig">> => clarify_shap_config()
+%% }
+-type clarify_explainer_config() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_inference_config() :: #{
+%%   <<"ContentTemplate">> => string(),
+%%   <<"FeatureHeaders">> => list(string()),
+%%   <<"FeatureTypes">> => list(list(any())()),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"LabelAttribute">> => string(),
+%%   <<"LabelHeaders">> => list(string()),
+%%   <<"LabelIndex">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"MaxRecordCount">> => integer(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityIndex">> => integer()
+%% }
+-type clarify_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_shap_baseline_config() :: #{
+%%   <<"MimeType">> => string(),
+%%   <<"ShapBaseline">> => string(),
+%%   <<"ShapBaselineUri">> => string()
+%% }
+-type clarify_shap_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_shap_config() :: #{
+%%   <<"NumberOfSamples">> => integer(),
+%%   <<"Seed">> => integer(),
+%%   <<"ShapBaselineConfig">> => clarify_shap_baseline_config(),
+%%   <<"TextConfig">> => clarify_text_config(),
+%%   <<"UseLogit">> => boolean()
+%% }
+-type clarify_shap_config() :: #{binary() => any()}.
+
+%% Example:
+%% clarify_text_config() :: #{
+%%   <<"Granularity">> => list(any()),
+%%   <<"Language">> => list(any())
+%% }
+-type clarify_text_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_patch_config() :: #{
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"PatchSchedule">> => cluster_patch_schedule(),
+%%   <<"PatchingStrategy">> => list(any())
+%% }
+-type cluster_auto_patch_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_patch_config_details() :: #{
+%%   <<"CurrentPatchSchedule">> => cluster_patch_schedule_details(),
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"DesiredPatchSchedule">> => cluster_patch_schedule_details(),
+%%   <<"PatchingStrategy">> => list(any())
+%% }
+-type cluster_auto_patch_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_scaling_config() :: #{
+%%   <<"AutoScalerType">> => list(any()),
+%%   <<"Mode">> => list(any())
+%% }
+-type cluster_auto_scaling_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_scaling_config_output() :: #{
+%%   <<"AutoScalerType">> => list(any()),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"Mode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_auto_scaling_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_capacity_requirements() :: #{
+%%   <<"OnDemand">> => cluster_on_demand_options(),
+%%   <<"Spot">> => cluster_spot_options()
+%% }
+-type cluster_capacity_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_ebs_volume_config() :: #{
+%%   <<"RootVolume">> => boolean(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type cluster_ebs_volume_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_event_detail() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"EventDetails">> => event_details(),
+%%   <<"EventId">> => string(),
+%%   <<"EventLevel">> => list(any()),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"ResourceType">> => list(any())
+%% }
+-type cluster_event_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_event_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"EventId">> => string(),
+%%   <<"EventLevel">> => list(any()),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"ResourceType">> => list(any())
+%% }
+-type cluster_event_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_fsx_lustre_config() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"MountName">> => string(),
+%%   <<"MountPath">> => string()
+%% }
+-type cluster_fsx_lustre_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_fsx_open_zfs_config() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"MountPath">> => string()
+%% }
+-type cluster_fsx_open_zfs_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_group_details() :: #{
+%%   <<"ActiveOperations">> => map(),
+%%   <<"ActiveSoftwareUpdateConfig">> => deployment_configuration(),
+%%   <<"AutoPatchConfig">> => cluster_auto_patch_config_details(),
+%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
+%%   <<"CurrentCount">> => integer(),
+%%   <<"CurrentImageId">> => string(),
+%%   <<"CurrentImageReleaseVersion">> => string(),
+%%   <<"DesiredImageId">> => string(),
+%%   <<"DesiredImageReleaseVersion">> => string(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceRequirements">> => cluster_instance_requirement_details(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"InstanceTypeDetails">> => list(cluster_instance_type_detail()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config_details(),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"MinCount">> => integer(),
+%%   <<"NetworkInterface">> => cluster_network_interface_details(),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"SlurmConfig">> => cluster_slurm_config_details(),
+%%   <<"SoftwareUpdateStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetCount">> => integer(),
+%%   <<"TargetStateCount">> => integer(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanStatus">> => string()
+%% }
+-type cluster_instance_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_group_specification() :: #{
+%%   <<"AutoPatchConfig">> => cluster_auto_patch_config(),
+%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ImageReleaseVersion">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceRequirements">> => cluster_instance_requirements(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config(),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"MinInstanceCount">> => integer(),
+%%   <<"NetworkInterface">> => cluster_network_interface(),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"SlurmConfig">> => cluster_slurm_config(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type cluster_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_placement() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string()
+%% }
+-type cluster_instance_placement() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_requirement_details() :: #{
+%%   <<"CurrentInstanceTypes">> => list(list(any())()),
+%%   <<"DesiredInstanceTypes">> => list(list(any())())
+%% }
+-type cluster_instance_requirement_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_requirements() :: #{
+%%   <<"InstanceTypes">> => list(list(any())())
+%% }
+-type cluster_instance_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_status_details() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_instance_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_instance_type_detail() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cluster_instance_type_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_config() :: #{
+%%   <<"Labels">> => map(),
+%%   <<"Taints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_config_details() :: #{
+%%   <<"CurrentLabels">> => map(),
+%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
+%%   <<"DesiredLabels">> => map(),
+%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_config_node_details() :: #{
+%%   <<"CurrentLabels">> => map(),
+%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
+%%   <<"DesiredLabels">> => map(),
+%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
+%% }
+-type cluster_kubernetes_config_node_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_kubernetes_taint() :: #{
+%%   <<"Effect">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cluster_kubernetes_taint() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_life_cycle_config() :: #{
+%%   <<"OnCreate">> => string(),
+%%   <<"OnInitComplete">> => string(),
+%%   <<"SourceS3Uri">> => string()
+%% }
+-type cluster_life_cycle_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_metadata() :: #{
+%%   <<"EksRoleAccessEntries">> => list([string()]()),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"SlrAccessEntry">> => [string()]
+%% }
+-type cluster_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_network_interface() :: #{
+%%   <<"InterfaceType">> => list(any())
+%% }
+-type cluster_network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_network_interface_details() :: #{
+%%   <<"InterfaceType">> => list(any())
+%% }
+-type cluster_network_interface_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_node_details() :: #{
+%%   <<"CapacityType">> => list(any()),
+%%   <<"CurrentImageId">> => string(),
+%%   <<"CurrentImageReleaseVersion">> => string(),
+%%   <<"DesiredImageId">> => string(),
+%%   <<"DesiredImageReleaseVersion">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"InstanceStatus">> => cluster_instance_status_details(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"KubernetesConfig">> => cluster_kubernetes_config_node_details(),
+%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"NetworkInterface">> => cluster_network_interface_details(),
+%%   <<"NodeLogicalId">> => string(),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"Placement">> => cluster_instance_placement(),
+%%   <<"PrivateDnsHostname">> => string(),
+%%   <<"PrivatePrimaryIp">> => string(),
+%%   <<"PrivatePrimaryIpv6">> => string(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"UltraServerInfo">> => ultra_server_info()
+%% }
+-type cluster_node_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_node_summary() :: #{
+%%   <<"CurrentImageReleaseVersion">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"InstanceStatus">> => cluster_instance_status_details(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"NodeLogicalId">> => [string()],
+%%   <<"PrivateDnsHostname">> => string(),
+%%   <<"UltraServerInfo">> => ultra_server_info()
+%% }
+-type cluster_node_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_on_demand_options() :: #{
+
+%% }
+-type cluster_on_demand_options() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_orchestrator() :: #{
+%%   <<"Eks">> => cluster_orchestrator_eks_config(),
+%%   <<"Slurm">> => cluster_orchestrator_slurm_config()
+%% }
+-type cluster_orchestrator() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_orchestrator_eks_config() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type cluster_orchestrator_eks_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_orchestrator_slurm_config() :: #{
+%%   <<"SlurmConfigStrategy">> => list(any())
+%% }
+-type cluster_orchestrator_slurm_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_patch_schedule() :: #{
+%%   <<"NextPatchDate">> => non_neg_integer()
+%% }
+-type cluster_patch_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_patch_schedule_details() :: #{
+%%   <<"NextPatchDate">> => non_neg_integer()
+%% }
+-type cluster_patch_schedule_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_group_details() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"EnvironmentConfig">> => environment_config_details(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetCount">> => integer(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanStatus">> => string()
+%% }
+-type cluster_restricted_instance_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_group_specification() :: #{
+%%   <<"EnvironmentConfig">> => environment_config(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type cluster_restricted_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_groups_config() :: #{
+%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config()
+%% }
+-type cluster_restricted_instance_groups_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_groups_config_output() :: #{
+%%   <<"SharedEnvironmentConfig">> => cluster_shared_environment_config_details()
+%% }
+-type cluster_restricted_instance_groups_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_scheduler_config_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_scheduler_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_shared_environment_config() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"FSxLustreDeletionPolicy">> => list(any())
+%% }
+-type cluster_shared_environment_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_shared_environment_config_details() :: #{
+%%   <<"CurrentFSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"CurrentFSxLustreDeletionPolicy">> => list(any()),
+%%   <<"DesiredFSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"DesiredFSxLustreDeletionPolicy">> => list(any())
+%% }
+-type cluster_shared_environment_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_slurm_config() :: #{
+%%   <<"NodeType">> => list(any()),
+%%   <<"PartitionNames">> => list(string())
+%% }
+-type cluster_slurm_config() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_slurm_config_details() :: #{
+%%   <<"NodeType">> => list(any()),
+%%   <<"PartitionNames">> => list(string())
+%% }
+-type cluster_slurm_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_spot_options() :: #{
+
+%% }
+-type cluster_spot_options() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"ClusterStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"TrainingPlanArns">> => list(string())
+%% }
+-type cluster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_tiered_storage_config() :: #{
+%%   <<"InstanceMemoryAllocationPercentage">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type cluster_tiered_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% code_editor_app_image_config() :: #{
+%%   <<"ContainerConfig">> => container_config(),
+%%   <<"FileSystemConfig">> => file_system_config()
+%% }
+-type code_editor_app_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% code_editor_app_settings() :: #{
+%%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
+%%   <<"CustomImages">> => list(custom_image()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string())
+%% }
+-type code_editor_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% code_repository() :: #{
+%%   <<"RepositoryUrl">> => string()
+%% }
+-type code_repository() :: #{binary() => any()}.
+
+%% Example:
+%% code_repository_summary() :: #{
+%%   <<"CodeRepositoryArn">> => string(),
+%%   <<"CodeRepositoryName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GitConfig">> => git_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type code_repository_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPool">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
+
+%% Example:
+%% cognito_member_definition() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserGroup">> => string(),
+%%   <<"UserPool">> => string()
+%% }
+-type cognito_member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% collection_configuration() :: #{
+%%   <<"CollectionName">> => string(),
+%%   <<"CollectionParameters">> => map()
+%% }
+-type collection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% compilation_job_summary() :: #{
+%%   <<"CompilationEndTime">> => non_neg_integer(),
+%%   <<"CompilationJobArn">> => string(),
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CompilationJobStatus">> => list(any()),
+%%   <<"CompilationStartTime">> => non_neg_integer(),
+%%   <<"CompilationTargetDevice">> => list(any()),
+%%   <<"CompilationTargetPlatformAccelerator">> => list(any()),
+%%   <<"CompilationTargetPlatformArch">> => list(any()),
+%%   <<"CompilationTargetPlatformOs">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type compilation_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_config() :: #{
+%%   <<"ComputeQuotaResources">> => list(compute_quota_resource_config()),
+%%   <<"PreemptTeamTasks">> => list(any()),
+%%   <<"ResourceSharingConfig">> => resource_sharing_config()
+%% }
+-type compute_quota_config() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_resource_config() :: #{
+%%   <<"AcceleratorPartition">> => accelerator_partition_config(),
+%%   <<"Accelerators">> => integer(),
+%%   <<"Count">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"MemoryInGiB">> => float(),
+%%   <<"VCpu">> => float()
+%% }
+-type compute_quota_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_summary() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> => string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"ComputeQuotaVersion">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type compute_quota_summary() :: #{binary() => any()}.
+
+%% Example:
+%% compute_quota_target() :: #{
+%%   <<"FairShareWeight">> => integer(),
+%%   <<"TeamName">> => string()
+%% }
+-type compute_quota_target() :: #{binary() => any()}.
+
+%% Example:
+%% condition_step_metadata() :: #{
+%%   <<"Outcome">> => list(any())
+%% }
+-type condition_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% container_config() :: #{
+%%   <<"ContainerArguments">> => list(string()),
+%%   <<"ContainerEntrypoint">> => list(string()),
+%%   <<"ContainerEnvironmentVariables">> => map()
+%% }
+-type container_config() :: #{binary() => any()}.
+
+%% Example:
+%% container_definition() :: #{
+%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
+%%   <<"ContainerHostname">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string(),
+%%   <<"ImageConfig">> => image_config(),
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"MultiModelConfig">> => multi_model_config()
+%% }
+-type container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% container_metrics_config() :: #{
+%%   <<"MetricsEndpoints">> => list(metrics_endpoint())
+%% }
+-type container_metrics_config() :: #{binary() => any()}.
+
+%% Example:
+%% context_source() :: #{
+%%   <<"SourceId">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SourceUri">> => string()
+%% }
+-type context_source() :: #{binary() => any()}.
+
+%% Example:
+%% context_summary() :: #{
+%%   <<"ContextArn">> => string(),
+%%   <<"ContextName">> => string(),
+%%   <<"ContextType">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => context_source()
+%% }
+-type context_summary() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_parameter_range() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type continuous_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_parameter_range_specification() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type continuous_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% convergence_detected() :: #{
+%%   <<"CompleteOnConvergence">> => list(any())
+%% }
+-type convergence_detected() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string(),
+%%   <<"AIWorkloadConfigIdentifier">> := string(),
+%%   <<"BenchmarkTarget">> := list(),
+%%   <<"NetworkConfig">> => a_i_benchmark_network_config(),
+%%   <<"OutputConfig">> := a_i_benchmark_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_benchmark_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
+%% }
+-type create_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string(),
+%%   <<"AIWorkloadConfigIdentifier">> := string(),
+%%   <<"AdapterSource">> => list(),
+%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
+%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
+%%   <<"ModelSource">> := list(),
+%%   <<"OptimizeModel">> => boolean(),
+%%   <<"OutputConfig">> := a_i_recommendation_output_config(),
+%%   <<"PerformanceTarget">> := a_i_recommendation_performance_target(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_recommendation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
+%% }
+-type create_a_i_recommendation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string(),
+%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
+%%   <<"DatasetConfig">> => list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_a_i_workload_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string()
+%% }
+-type create_a_i_workload_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"ActionType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := action_source(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type create_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_algorithm_input() :: #{
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> := string(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingSpecification">> := training_specification(),
+%%   <<"ValidationSpecification">> => algorithm_validation_specification()
+%% }
+-type create_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_algorithm_output() :: #{
+%%   <<"AlgorithmArn">> => string()
+%% }
+-type create_algorithm_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string()
+%% }
+-type create_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"AppName">> := string(),
+%%   <<"AppType">> := list(any()),
+%%   <<"DomainId">> := string(),
+%%   <<"RecoveryMode">> => boolean(),
+%%   <<"ResourceSpec">> => resource_spec(),
+%%   <<"SpaceName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_response() :: #{
+%%   <<"AppArn">> => string()
+%% }
+-type create_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_artifact_request() :: #{
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> := string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := artifact_source(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type create_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"InputDataConfig">> := list(auto_ml_channel()),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string()
+%% }
+-type create_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_v2_request() :: #{
+%%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
+%%   <<"AutoMLJobInputDataConfig">> := list(auto_ml_job_channel()),
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLProblemTypeConfig">> := list(),
+%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SecurityConfig">> => auto_ml_security_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_auto_ml_job_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_ml_job_v2_response() :: #{
+%%   <<"AutoMLJobArn">> => string()
+%% }
+-type create_auto_ml_job_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
+%%   <<"ClusterName">> := string(),
+%%   <<"ClusterRole">> => string(),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
+%%   <<"NodeProvisioningMode">> => list(any()),
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SchedulerConfig">> := scheduler_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cluster_scheduler_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string()
+%% }
+-type create_cluster_scheduler_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string(),
+%%   <<"GitConfig">> := git_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string()
+%% }
+-type create_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string(),
+%%   <<"InputConfig">> => input_config(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"OutputConfig">> := output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> := stopping_condition(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfig">> => neo_vpc_config()
+%% }
+-type create_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_compilation_job_response() :: #{
+%%   <<"CompilationJobArn">> => string()
+%% }
+-type create_compilation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_compute_quota_request() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> := string(),
+%%   <<"ComputeQuotaConfig">> := compute_quota_config(),
+%%   <<"ComputeQuotaTarget">> := compute_quota_target(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_compute_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_compute_quota_response() :: #{
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaId">> => string()
+%% }
+-type create_compute_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_context_request() :: #{
+%%   <<"ContextName">> := string(),
+%%   <<"ContextType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> := context_source(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type create_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_job_definition_request() :: #{
+%%   <<"DataQualityAppSpecification">> := data_quality_app_specification(),
+%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
+%%   <<"DataQualityJobInput">> := data_quality_job_input(),
+%%   <<"DataQualityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_data_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_data_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_device_fleet_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EnableIotRoleAlias">> => boolean(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_device_fleet_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_domain_request() :: #{
@@ -6435,222 +3090,101 @@
 -type create_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% auto_ml_algorithm_config() :: #{
-%%   <<"AutoMLAlgorithms">> => list(list(any())())
+%% create_domain_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"Url">> => string()
 %% }
--type auto_ml_algorithm_config() :: #{binary() => any()}.
+-type create_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_artifact_request() :: #{
-%%   <<"ArtifactArn">> => string(),
-%%   <<"Source">> => artifact_source()
+%% create_edge_deployment_plan_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"ModelConfigs">> := list(edge_deployment_model_config()),
+%%   <<"Stages">> => list(deployment_stage()),
+%%   <<"Tags">> => list(tag())
 %% }
--type delete_artifact_request() :: #{binary() => any()}.
+-type create_edge_deployment_plan_request() :: #{binary() => any()}.
 
 %% Example:
-%% categorical_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => list(string())
+%% create_edge_deployment_plan_response() :: #{
+%%   <<"EdgeDeploymentPlanArn">> => string()
 %% }
--type categorical_parameter() :: #{binary() => any()}.
+-type create_edge_deployment_plan_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_monitoring_alerts_response() :: #{
-%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()),
-%%   <<"NextToken">> => string()
+%% create_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"Stages">> := list(deployment_stage())
 %% }
--type list_monitoring_alerts_response() :: #{binary() => any()}.
+-type create_edge_deployment_stage_request() :: #{binary() => any()}.
 
 %% Example:
-%% model_deploy_config() :: #{
-%%   <<"AutoGenerateEndpointName">> => boolean(),
-%%   <<"EndpointName">> => string()
+%% create_edge_packaging_job_request() :: #{
+%%   <<"CompilationJobName">> := string(),
+%%   <<"EdgePackagingJobName">> := string(),
+%%   <<"ModelName">> := string(),
+%%   <<"ModelVersion">> := string(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"ResourceKey">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type model_deploy_config() :: #{binary() => any()}.
+-type create_edge_packaging_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_mlflow_tracking_server_request() :: #{
-%%   <<"TrackingServerName">> := string()
-%% }
--type stop_mlflow_tracking_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_explainability_job_definition_response() :: #{
-%%   <<"JobDefinitionArn">> => string()
-%% }
--type create_model_explainability_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_package_group_output() :: #{
-%%   <<"ModelPackageGroupArn">> => string()
-%% }
--type create_model_package_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_experiment_request() :: #{
-%%   <<"ExperimentName">> := string()
-%% }
--type delete_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_execution_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type update_pipeline_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_kubernetes_config() :: #{
-%%   <<"Labels">> => map(),
-%%   <<"Taints">> => list(cluster_kubernetes_taint())
-%% }
--type cluster_kubernetes_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_version_request() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"ImageName">> := string(),
-%%   <<"Version">> => integer()
-%% }
--type describe_image_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trial_component_request() :: #{
-%%   <<"TrialComponentName">> := string()
-%% }
--type describe_trial_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_feature_group_response() :: #{
-%%   <<"FeatureGroupArn">> => string()
-%% }
--type create_feature_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_size_config() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type capacity_size_config() :: #{binary() => any()}.
-
-%% Example:
-%% edge_output_config() :: #{
+%% create_endpoint_config_input() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"DataCaptureConfig">> => data_capture_config(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExplainerConfig">> => explainer_config(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"PresetDeploymentConfig">> => string(),
-%%   <<"PresetDeploymentType">> => list(any()),
-%%   <<"S3OutputLocation">> => string()
-%% }
--type edge_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_events_response() :: #{
-%%   <<"Events">> => list(cluster_event_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partner_app_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type delete_partner_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_auto_ml_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_auto_ml_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_version_response() :: #{
-%%   <<"BaseImage">> => string(),
-%%   <<"ContainerImage">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Horovod">> => boolean(),
-%%   <<"ImageArn">> => string(),
-%%   <<"ImageVersionArn">> => string(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"JobType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MLFramework">> => string(),
-%%   <<"Processor">> => list(any()),
-%%   <<"ProgrammingLang">> => string(),
-%%   <<"ReleaseNotes">> => string(),
-%%   <<"VendorGuidance">> => list(any()),
-%%   <<"Version">> => integer()
-%% }
--type describe_image_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hub_request() :: #{
-%%   <<"HubName">> := string()
-%% }
--type delete_hub_request() :: #{binary() => any()}.
-
-%% Example:
-%% last_update_status() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type last_update_status() :: #{binary() => any()}.
-
-%% Example:
-%% project() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ProjectArn">> => string(),
-%%   <<"ProjectDescription">> => string(),
-%%   <<"ProjectId">> => string(),
-%%   <<"ProjectName">> => string(),
-%%   <<"ProjectStatus">> => list(any()),
-%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
-%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"MetricsConfig">> => metrics_config(),
+%%   <<"ProductionVariants">> := list(production_variant()),
+%%   <<"ShadowProductionVariants">> => list(production_variant()),
 %%   <<"Tags">> => list(tag()),
-%%   <<"TemplateProviderDetails">> => list(template_provider_detail())
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type project() :: #{binary() => any()}.
+-type create_endpoint_config_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_algorithm_output() :: #{
-%%   <<"AlgorithmArn">> => string(),
-%%   <<"AlgorithmDescription">> => string(),
-%%   <<"AlgorithmName">> => string(),
-%%   <<"AlgorithmStatus">> => list(any()),
-%%   <<"AlgorithmStatusDetails">> => algorithm_status_details(),
-%%   <<"CertifyForMarketplace">> => boolean(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"ProductId">> => string(),
-%%   <<"TrainingSpecification">> => training_specification(),
-%%   <<"ValidationSpecification">> => algorithm_validation_specification()
+%% create_endpoint_config_output() :: #{
+%%   <<"EndpointConfigArn">> => string()
 %% }
--type describe_algorithm_output() :: #{binary() => any()}.
+-type create_endpoint_config_output() :: #{binary() => any()}.
 
 %% Example:
-%% processing_s3_output() :: #{
-%%   <<"LocalPath">> => string(),
-%%   <<"S3UploadMode">> => list(any()),
-%%   <<"S3Uri">> => string()
+%% create_endpoint_input() :: #{
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type processing_s3_output() :: #{binary() => any()}.
+-type create_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type create_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_experiment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type create_experiment_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_feature_group_request() :: #{
@@ -6668,105 +3202,113 @@
 -type create_feature_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_notebook_instance_input() :: #{
-%%   <<"NotebookInstanceName">> := string()
+%% create_feature_group_response() :: #{
+%%   <<"FeatureGroupArn">> => string()
 %% }
--type describe_notebook_instance_input() :: #{binary() => any()}.
+-type create_feature_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_definition() :: #{
-%%   <<"AthenaDatasetDefinition">> => athena_dataset_definition(),
-%%   <<"DataDistributionType">> => list(any()),
-%%   <<"InputMode">> => list(any()),
-%%   <<"LocalPath">> => string(),
-%%   <<"RedshiftDatasetDefinition">> => redshift_dataset_definition()
-%% }
--type dataset_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_explainability_job_definitions_response() :: #{
-%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_explainability_job_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_space_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"OwnershipSettings">> => ownership_settings(),
-%%   <<"SpaceDisplayName">> => string(),
-%%   <<"SpaceName">> := string(),
-%%   <<"SpaceSettings">> => space_settings(),
-%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
+%% create_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string(),
+%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
+%%   <<"OutputConfig">> := flow_definition_output_config(),
+%%   <<"RoleArn">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_space_request() :: #{binary() => any()}.
+-type create_flow_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% clarify_shap_config() :: #{
-%%   <<"NumberOfSamples">> => integer(),
-%%   <<"Seed">> => integer(),
-%%   <<"ShapBaselineConfig">> => clarify_shap_baseline_config(),
-%%   <<"TextConfig">> => clarify_text_config(),
-%%   <<"UseLogit">> => boolean()
+%% create_flow_definition_response() :: #{
+%%   <<"FlowDefinitionArn">> => string()
 %% }
--type clarify_shap_config() :: #{binary() => any()}.
+-type create_flow_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_trial_components_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"ExperimentName">> => string(),
+%% create_hub_content_presigned_urls_request() :: #{
+%%   <<"AccessConfig">> => presigned_url_access_config(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SourceArn">> => string(),
-%%   <<"TrialName">> => string()
+%%   <<"NextToken">> => string()
 %% }
--type list_trial_components_request() :: #{binary() => any()}.
+-type create_hub_content_presigned_urls_request() :: #{binary() => any()}.
 
 %% Example:
-%% hyper_parameter_tuning_job_search_entity() :: #{
-%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
-%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
-%%   <<"HyperParameterTuningJobArn">> => string(),
-%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
-%%   <<"HyperParameterTuningJobName">> => string(),
-%%   <<"HyperParameterTuningJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
-%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
+%% create_hub_content_presigned_urls_response() :: #{
+%%   <<"AuthorizedUrlConfigs">> => list(authorized_url()),
+%%   <<"NextToken">> => string()
+%% }
+-type create_hub_content_presigned_urls_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"MinVersion">> => string(),
+%%   <<"SageMakerPublicHubContentArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hub_content_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_content_reference_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type create_hub_content_reference_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_request() :: #{
+%%   <<"HubDescription">> := string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"HubSearchKeywords">> => list(string()),
+%%   <<"S3StorageConfig">> => hub_s3_storage_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hub_response() :: #{
+%%   <<"HubArn">> => string()
+%% }
+-type create_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UiTemplate">> := ui_template()
+%% }
+-type create_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_human_task_ui_response() :: #{
+%%   <<"HumanTaskUiArn">> => string()
+%% }
+-type create_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hyper_parameter_tuning_job_request() :: #{
+%%   <<"Autotune">> => autotune(),
+%%   <<"HyperParameterTuningJobConfig">> := hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> := string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
 %%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()),
-%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
-%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
 %%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
 %% }
--type hyper_parameter_tuning_job_search_entity() :: #{binary() => any()}.
+-type create_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_model_card_versions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% create_hyper_parameter_tuning_job_response() :: #{
+%%   <<"HyperParameterTuningJobArn">> => string()
 %% }
--type list_model_card_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_resources() :: #{
-%%   <<"ClusterConfig">> => monitoring_cluster_config()
-%% }
--type monitoring_resources() :: #{binary() => any()}.
+-type create_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_image_request() :: #{
@@ -6777,6 +3319,452 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_response() :: #{
+%%   <<"ImageArn">> => string()
+%% }
+-type create_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_version_request() :: #{
+%%   <<"Aliases">> => list(string()),
+%%   <<"BaseImage">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageName">> := string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any())
+%% }
+-type create_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_version_response() :: #{
+%%   <<"ImageVersionArn">> => string()
+%% }
+-type create_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_component_input() :: #{
+%%   <<"EndpointName">> := string(),
+%%   <<"InferenceComponentName">> := string(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
+%%   <<"Specification">> => inference_component_specification(),
+%%   <<"Specifications">> => list(inference_component_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VariantName">> => string()
+%% }
+-type create_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_component_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type create_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_experiment_request() :: #{
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"ModelVariants">> := list(model_variant_config()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> := shadow_mode_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type create_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_recommendations_job_request() :: #{
+%%   <<"InputConfig">> := recommendation_job_input_config(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> := string(),
+%%   <<"JobType">> := list(any()),
+%%   <<"OutputConfig">> => recommendation_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_recommendations_job_response() :: #{
+%%   <<"JobArn">> => string()
+%% }
+-type create_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobConfigDocument">> := string(),
+%%   <<"JobConfigSchemaVersion">> := string(),
+%%   <<"JobName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_job_response() :: #{
+%%   <<"JobArn">> => string()
+%% }
+-type create_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_labeling_job_request() :: #{
+%%   <<"HumanTaskConfig">> := human_task_config(),
+%%   <<"InputConfig">> := labeling_job_input_config(),
+%%   <<"LabelAttributeName">> := string(),
+%%   <<"LabelCategoryConfigS3Uri">> => string(),
+%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
+%%   <<"LabelingJobName">> := string(),
+%%   <<"OutputConfig">> := labeling_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_labeling_job_response() :: #{
+%%   <<"LabelingJobArn">> => string()
+%% }
+-type create_labeling_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_mlflow_app_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"ArtifactStoreUri">> := string(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type create_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_mlflow_tracking_server_request() :: #{
+%%   <<"ArtifactStoreUri">> := string(),
+%%   <<"AutomaticModelRegistration">> => boolean(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"S3BucketOwnerAccountId">> => string(),
+%%   <<"S3BucketOwnerVerification">> => boolean(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrackingServerName">> := string(),
+%%   <<"TrackingServerSize">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type create_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type create_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelBiasAppSpecification">> := model_bias_app_specification(),
+%%   <<"ModelBiasBaselineConfig">> => model_bias_baseline_config(),
+%%   <<"ModelBiasJobInput">> := model_bias_job_input(),
+%%   <<"ModelBiasJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_model_bias_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_bias_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_bias_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_export_job_request() :: #{
+%%   <<"ModelCardExportJobName">> := string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"OutputConfig">> := model_card_export_output_config()
+%% }
+-type create_model_card_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_export_job_response() :: #{
+%%   <<"ModelCardExportJobArn">> => string()
+%% }
+-type create_model_card_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> := list(any()),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_card_response() :: #{
+%%   <<"ModelCardArn">> => string()
+%% }
+-type create_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelExplainabilityAppSpecification">> := model_explainability_app_specification(),
+%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
+%%   <<"ModelExplainabilityJobInput">> := model_explainability_job_input(),
+%%   <<"ModelExplainabilityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_explainability_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_explainability_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_input() :: #{
+%%   <<"Containers">> => list(container_definition()),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
+%%   <<"ModelName">> := string(),
+%%   <<"PrimaryContainer">> => container_definition(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_output() :: #{
+%%   <<"ModelArn">> => string()
+%% }
+-type create_model_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_group_input() :: #{
+%%   <<"ManagedConfiguration">> => managed_configuration(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_group_output() :: #{
+%%   <<"ModelPackageGroupArn">> => string()
+%% }
+-type create_model_package_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_input() :: #{
+%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"Domain">> => string(),
+%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ManagedStorageType">> => list(any()),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
+%%   <<"ModelMetrics">> => model_metrics(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SecurityConfig">> => model_package_security_config(),
+%%   <<"SkipModelValidation">> => list(any()),
+%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
+%%   <<"SourceUri">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Task">> => string(),
+%%   <<"ValidationSpecification">> => model_package_validation_specification()
+%% }
+-type create_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_package_output() :: #{
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type create_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string(),
+%%   <<"JobResources">> := monitoring_resources(),
+%%   <<"ModelQualityAppSpecification">> := model_quality_app_specification(),
+%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
+%%   <<"ModelQualityJobInput">> := model_quality_job_input(),
+%%   <<"ModelQualityJobOutputConfig">> := monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_model_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_quality_job_definition_response() :: #{
+%%   <<"JobDefinitionArn">> => string()
+%% }
+-type create_model_quality_job_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitoring_schedule_response() :: #{
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type create_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_input() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DirectInternetAccess">> => list(any()),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> := list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"PlatformIdentifier">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"RootAccess">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type create_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
+%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()),
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_lifecycle_config_output() :: #{
+%%   <<"NotebookInstanceLifecycleConfigArn">> => string()
+%% }
+-type create_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_notebook_instance_output() :: #{
+%%   <<"NotebookInstanceArn">> => string()
+%% }
+-type create_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_optimization_job_request() :: #{
+%%   <<"DeploymentInstanceType">> := list(any()),
+%%   <<"MaxInstanceCount">> => integer(),
+%%   <<"ModelSource">> := optimization_job_model_source(),
+%%   <<"OptimizationConfigs">> := list(list()),
+%%   <<"OptimizationEnvironment">> => map(),
+%%   <<"OptimizationJobName">> := string(),
+%%   <<"OutputConfig">> := optimization_job_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"StoppingCondition">> := stopping_condition(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingPlanArns">> => list(string()),
+%%   <<"VpcConfig">> => optimization_vpc_config()
+%% }
+-type create_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_optimization_job_response() :: #{
+%%   <<"OptimizationJobArn">> => string()
+%% }
+-type create_optimization_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_app_presigned_url_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
+%% }
+-type create_partner_app_presigned_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_app_presigned_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type create_partner_app_presigned_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_app_request() :: #{
+%%   <<"ApplicationConfig">> => partner_app_config(),
+%%   <<"AuthType">> := list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
+%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Tier">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_partner_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_pipeline_request() :: #{
@@ -6793,412 +3781,21 @@
 -type create_pipeline_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_subscribed_workteam_request() :: #{
-%%   <<"WorkteamArn">> := string()
+%% create_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string()
 %% }
--type describe_subscribed_workteam_request() :: #{binary() => any()}.
+-type create_pipeline_response() :: #{binary() => any()}.
 
 %% Example:
-%% property_name_suggestion() :: #{
-%%   <<"PropertyName">> => string()
-%% }
--type property_name_suggestion() :: #{binary() => any()}.
-
-%% Example:
-%% source_algorithm() :: #{
-%%   <<"AlgorithmName">> => string(),
-%%   <<"ModelDataETag">> => string(),
-%%   <<"ModelDataSource">> => model_data_source(),
-%%   <<"ModelDataUrl">> => string()
-%% }
--type source_algorithm() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_scheduler_config_request() :: #{
-%%   <<"ClusterSchedulerConfigId">> := string()
-%% }
--type delete_cluster_scheduler_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_model_package_output() :: #{
-%%   <<"BatchDescribeModelPackageErrorMap">> => map(),
-%%   <<"ModelPackageSummaries">> => map()
-%% }
--type batch_describe_model_package_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_profile_request() :: #{
+%% create_presigned_domain_url_request() :: #{
 %%   <<"DomainId">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"LandingUri">> => string(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer(),
+%%   <<"SpaceName">> => string(),
 %%   <<"UserProfileName">> := string()
 %% }
--type delete_user_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_artifact_request() :: #{
-%%   <<"ArtifactName">> => string(),
-%%   <<"ArtifactType">> := string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> := artifact_source(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_artifact_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_quality_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type describe_model_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_request() :: #{
-%%   <<"DeleteProperties">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ImageName">> := string(),
-%%   <<"RoleArn">> => string()
-%% }
--type update_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_contexts_request() :: #{
-%%   <<"ContextType">> => string(),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SourceUri">> => string()
-%% }
--type list_contexts_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_labeling_job_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HumanTaskConfig">> => human_task_config(),
-%%   <<"InputConfig">> => labeling_job_input_config(),
-%%   <<"JobReferenceCode">> => string(),
-%%   <<"LabelAttributeName">> => string(),
-%%   <<"LabelCategoryConfigS3Uri">> => string(),
-%%   <<"LabelCounters">> => label_counters(),
-%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"LabelingJobName">> => string(),
-%%   <<"LabelingJobOutput">> => labeling_job_output(),
-%%   <<"LabelingJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OutputConfig">> => labeling_job_output_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_labeling_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% sharing_settings() :: #{
-%%   <<"NotebookOutputOption">> => list(any()),
-%%   <<"S3KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type sharing_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_device_request() :: #{
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"DeviceName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_kubernetes_taint() :: #{
-%%   <<"Effect">> => list(any()),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type cluster_kubernetes_taint() :: #{binary() => any()}.
-
-%% Example:
-%% list_projects_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectSummaryList">> => list(project_summary())
-%% }
--type list_projects_output() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_restricted_instance_group_specification() :: #{
-%%   <<"EnvironmentConfig">> => environment_config(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceStorageConfigs">> => list(list()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
-%%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
-%%   <<"ThreadsPerCore">> => integer(),
-%%   <<"TrainingPlanArn">> => string()
-%% }
--type cluster_restricted_instance_group_specification() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_request_source() :: #{
-%%   <<"AwsManagedHumanLoopRequestSource">> => list(any())
-%% }
--type human_loop_request_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_feature_groups_response() :: #{
-%%   <<"FeatureGroupSummaries">> => list(feature_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_feature_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_request() :: #{
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineDefinition">> => string(),
-%%   <<"PipelineDefinitionS3Location">> => pipeline_definition_s3_location(),
-%%   <<"PipelineDescription">> => string(),
-%%   <<"PipelineDisplayName">> => string(),
-%%   <<"PipelineName">> := string(),
-%%   <<"RoleArn">> => string()
-%% }
--type update_pipeline_request() :: #{binary() => any()}.
-
-%% Example:
-%% presigned_url_access_config() :: #{
-%%   <<"AcceptEula">> => boolean(),
-%%   <<"ExpectedS3Url">> => string()
-%% }
--type presigned_url_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_studio_lifecycle_config_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"StudioLifecycleConfigAppType">> => list(any()),
-%%   <<"StudioLifecycleConfigArn">> => string(),
-%%   <<"StudioLifecycleConfigContent">> => string(),
-%%   <<"StudioLifecycleConfigName">> => string()
-%% }
--type describe_studio_lifecycle_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_explainability_baseline_config() :: #{
-%%   <<"BaseliningJobName">> => string(),
-%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
-%% }
--type model_explainability_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_code_repositories_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_code_repositories_input() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_orchestrator_eks_config() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type cluster_orchestrator_eks_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_images_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_auto_ml_jobs_response() :: #{
-%%   <<"AutoMLJobSummaries">> => list(auto_ml_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_auto_ml_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_human_task_ui_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HumanTaskUiArn">> => string(),
-%%   <<"HumanTaskUiName">> => string(),
-%%   <<"HumanTaskUiStatus">> => list(any()),
-%%   <<"UiTemplate">> => ui_template_info()
-%% }
--type describe_human_task_ui_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_capacity_requirements() :: #{
-%%   <<"OnDemand">> => cluster_on_demand_options(),
-%%   <<"Spot">> => cluster_spot_options()
-%% }
--type cluster_capacity_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_status_item() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type model_package_status_item() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_workload_config_summary() :: #{
-%%   <<"AIWorkloadConfigArn">> => string(),
-%%   <<"AIWorkloadConfigName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer()
-%% }
--type a_i_workload_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_project_input() :: #{
-%%   <<"ProjectName">> := string()
-%% }
--type describe_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_trial_component_request() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputArtifacts">> => map(),
-%%   <<"InputArtifactsToRemove">> => list(string()),
-%%   <<"OutputArtifacts">> => map(),
-%%   <<"OutputArtifactsToRemove">> => list(string()),
-%%   <<"Parameters">> => map(),
-%%   <<"ParametersToRemove">> => list(string()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => trial_component_status(),
-%%   <<"TrialComponentName">> := string()
-%% }
--type update_trial_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_input_config() :: #{
-%%   <<"ContainerConfig">> => recommendation_job_container_config(),
-%%   <<"EndpointConfigurations">> => list(endpoint_input_configuration()),
-%%   <<"Endpoints">> => list(endpoint_info()),
-%%   <<"JobDurationInSeconds">> => integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelPackageVersionArn">> => string(),
-%%   <<"ResourceLimit">> => recommendation_job_resource_limit(),
-%%   <<"TrafficPattern">> => traffic_pattern(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => recommendation_job_vpc_config()
-%% }
--type recommendation_job_input_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_action_request() :: #{
-%%   <<"ActionName">> := string(),
-%%   <<"ActionType">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> := action_source(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_hyper_parameter_tuning_job_response() :: #{
-%%   <<"HyperParameterTuningJobArn">> => string()
-%% }
--type create_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_weights_and_capacities_output() :: #{
-%%   <<"EndpointArn">> => string()
-%% }
--type update_endpoint_weights_and_capacities_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% offline_store_config() :: #{
-%%   <<"DataCatalogConfig">> => data_catalog_config(),
-%%   <<"DisableGlueTableCreation">> => boolean(),
-%%   <<"S3StorageConfig">> => s3_storage_config(),
-%%   <<"TableFormat">> => list(any())
-%% }
--type offline_store_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_quality_baseline_config() :: #{
-%%   <<"BaseliningJobName">> => string(),
-%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
-%% }
--type model_quality_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"PipelineName">> := string()
-%% }
--type delete_pipeline_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_kubernetes_config_node_details() :: #{
-%%   <<"CurrentLabels">> => map(),
-%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
-%%   <<"DesiredLabels">> => map(),
-%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
-%% }
--type cluster_kubernetes_config_node_details() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type endpoint_summary() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_version() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastExecutedPipelineExecutionArn">> => string(),
-%%   <<"LastExecutedPipelineExecutionDisplayName">> => string(),
-%%   <<"LastExecutedPipelineExecutionStatus">> => list(any()),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineVersionDescription">> => string(),
-%%   <<"PipelineVersionDisplayName">> => string(),
-%%   <<"PipelineVersionId">> => float()
-%% }
--type pipeline_version() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_data_split_config() :: #{
-%%   <<"ValidationFraction">> => float()
-%% }
--type auto_ml_data_split_config() :: #{binary() => any()}.
+-type create_presigned_domain_url_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_presigned_domain_url_response() :: #{
@@ -7207,1076 +3804,123 @@
 -type create_presigned_domain_url_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_auto_ml_job_request() :: #{
-%%   <<"AutoMLJobName">> := string()
+%% create_presigned_mlflow_app_url_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
 %% }
--type describe_auto_ml_job_request() :: #{binary() => any()}.
+-type create_presigned_mlflow_app_url_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_optimization_job_request() :: #{
-%%   <<"OptimizationJobName">> := string()
+%% create_presigned_mlflow_app_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
 %% }
--type describe_optimization_job_request() :: #{binary() => any()}.
+-type create_presigned_mlflow_app_url_response() :: #{binary() => any()}.
 
 %% Example:
-%% trial_component_artifact() :: #{
-%%   <<"MediaType">> => string(),
-%%   <<"Value">> => string()
+%% create_presigned_mlflow_tracking_server_url_request() :: #{
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer(),
+%%   <<"TrackingServerName">> := string()
 %% }
--type trial_component_artifact() :: #{binary() => any()}.
+-type create_presigned_mlflow_tracking_server_url_request() :: #{binary() => any()}.
 
 %% Example:
-%% cfn_stack_create_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% create_presigned_mlflow_tracking_server_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string()
 %% }
--type cfn_stack_create_parameter() :: #{binary() => any()}.
+-type create_presigned_mlflow_tracking_server_url_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_workteam_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"MemberDefinitions">> => list(member_definition()),
-%%   <<"NotificationConfiguration">> => notification_configuration(),
-%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
-%%   <<"WorkteamName">> := string()
+%% create_presigned_notebook_instance_url_input() :: #{
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"SessionExpirationDurationInSeconds">> => integer()
 %% }
--type update_workteam_request() :: #{binary() => any()}.
+-type create_presigned_notebook_instance_url_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_devices_request() :: #{
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"Devices">> := list(device())
+%% create_presigned_notebook_instance_url_output() :: #{
+%%   <<"AuthorizedUrl">> => string()
 %% }
--type update_devices_request() :: #{binary() => any()}.
+-type create_presigned_notebook_instance_url_output() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_auto_patch_config_details() :: #{
-%%   <<"CurrentPatchSchedule">> => cluster_patch_schedule_details(),
-%%   <<"DeploymentConfig">> => deployment_configuration(),
-%%   <<"DesiredPatchSchedule">> => cluster_patch_schedule_details(),
-%%   <<"PatchingStrategy">> => list(any())
-%% }
--type cluster_auto_patch_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% profiler_rule_configuration() :: #{
-%%   <<"InstanceType">> => list(any()),
-%%   <<"LocalPath">> => string(),
-%%   <<"RuleConfigurationName">> => string(),
-%%   <<"RuleEvaluatorImage">> => string(),
-%%   <<"RuleParameters">> => map(),
-%%   <<"S3OutputPath">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type profiler_rule_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% jupyter_server_app_settings() :: #{
-%%   <<"CodeRepositories">> => list(code_repository()),
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"LifecycleConfigArns">> => list(string())
-%% }
--type jupyter_server_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_app_specification() :: #{
-%%   <<"ContainerArguments">> => list(string()),
-%%   <<"ContainerEntrypoint">> => list(string()),
+%% create_processing_job_request() :: #{
+%%   <<"AppSpecification">> := app_specification(),
 %%   <<"Environment">> => map(),
-%%   <<"ImageUri">> => string(),
-%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
-%%   <<"RecordPreprocessorSourceUri">> => string()
-%% }
--type data_quality_app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% describe_auto_ml_job_response() :: #{
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"AutoMLJobArtifacts">> => auto_ml_job_artifacts(),
-%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
-%%   <<"AutoMLJobName">> => string(),
-%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
-%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
-%%   <<"AutoMLJobStatus">> => list(any()),
-%%   <<"BestCandidate">> => auto_ml_candidate(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
-%%   <<"InputDataConfig">> => list(auto_ml_channel()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelDeployConfig">> => model_deploy_config(),
-%%   <<"ModelDeployResult">> => model_deploy_result(),
-%%   <<"OutputDataConfig">> => auto_ml_output_data_config(),
-%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason()),
-%%   <<"ProblemType">> => list(any()),
-%%   <<"ResolvedAttributes">> => resolved_attributes(),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_auto_ml_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_edge_deployment_plan_response() :: #{
-%%   <<"EdgeDeploymentPlanArn">> => string()
-%% }
--type create_edge_deployment_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% association_summary() :: #{
-%%   <<"AssociationType">> => list(any()),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"DestinationName">> => string(),
-%%   <<"DestinationType">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant() :: #{
-%%   <<"AcceleratorType">> => list(any()),
-%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_config(),
-%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
-%%   <<"CoreDumpConfig">> => production_variant_core_dump_config(),
-%%   <<"EnableSSMAccess">> => boolean(),
-%%   <<"InferenceAmiVersion">> => list(any()),
-%%   <<"InitialInstanceCount">> => integer(),
-%%   <<"InitialVariantWeight">> => float(),
-%%   <<"InstancePools">> => list(instance_pool()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
-%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"RoutingConfig">> => production_variant_routing_config(),
-%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"VariantInstanceProvisionTimeoutInSeconds">> => integer(),
-%%   <<"VariantName">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type production_variant() :: #{binary() => any()}.
-
-%% Example:
-%% identity_provider_o_auth_setting() :: #{
-%%   <<"DataSourceName">> => list(any()),
-%%   <<"SecretArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type identity_provider_o_auth_setting() :: #{binary() => any()}.
-
-%% Example:
-%% ui_template_info() :: #{
-%%   <<"ContentSha256">> => string(),
-%%   <<"Url">> => string()
-%% }
--type ui_template_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_associations_response() :: #{
-%%   <<"AssociationSummaries">> => list(association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% checkpoint_config() :: #{
-%%   <<"LocalPath">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type checkpoint_config() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_patch_schedule() :: #{
-%%   <<"NextPatchDate">> => non_neg_integer()
-%% }
--type cluster_patch_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% ultra_server_info() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type ultra_server_info() :: #{binary() => any()}.
-
-%% Example:
-%% stopping_condition() :: #{
-%%   <<"MaxPendingTimeInSeconds">> => integer(),
-%%   <<"MaxRuntimeInSeconds">> => integer(),
-%%   <<"MaxWaitTimeInSeconds">> => integer()
-%% }
--type stopping_condition() :: #{binary() => any()}.
-
-%% Example:
-%% device_deployment_summary() :: #{
-%%   <<"DeployedStageName">> => string(),
-%%   <<"DeploymentStartTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceArn">> => string(),
-%%   <<"DeviceDeploymentStatus">> => list(any()),
-%%   <<"DeviceDeploymentStatusMessage">> => string(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"EdgeDeploymentPlanArn">> => string(),
-%%   <<"EdgeDeploymentPlanName">> => string(),
-%%   <<"StageName">> => string()
-%% }
--type device_deployment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% detach_cluster_node_volume_request() :: #{
-%%   <<"ClusterArn">> := string(),
-%%   <<"NodeId">> := string(),
-%%   <<"VolumeId">> := string()
-%% }
--type detach_cluster_node_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_auto_patch_config() :: #{
-%%   <<"DeploymentConfig">> => deployment_configuration(),
-%%   <<"PatchSchedule">> => cluster_patch_schedule(),
-%%   <<"PatchingStrategy">> => list(any())
-%% }
--type cluster_auto_patch_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hub_content_request() :: #{
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"HubName">> := string()
-%% }
--type describe_hub_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_trial_component_request() :: #{
-%%   <<"TrialComponentName">> := string(),
-%%   <<"TrialName">> := string()
-%% }
--type disassociate_trial_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_pipeline_execution_step_success_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type send_pipeline_execution_step_success_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_mlflow_tracking_server_request() :: #{
-%%   <<"ArtifactStoreUri">> => string(),
-%%   <<"AutomaticModelRegistration">> => boolean(),
-%%   <<"S3BucketOwnerAccountId">> => string(),
-%%   <<"S3BucketOwnerVerification">> => boolean(),
-%%   <<"TrackingServerName">> := string(),
-%%   <<"TrackingServerSize">> => list(any()),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
-%% }
--type update_mlflow_tracking_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_processing_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_processing_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_add_cluster_nodes_response() :: #{
-%%   <<"Failed">> => list(batch_add_cluster_nodes_error()),
-%%   <<"Successful">> => list(node_addition_result())
-%% }
--type batch_add_cluster_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_constraint() :: #{
-%%   <<"Metric">> => list(any())
-%% }
--type a_i_recommendation_constraint() :: #{binary() => any()}.
-
-%% Example:
-%% code_repository() :: #{
-%%   <<"RepositoryUrl">> => string()
-%% }
--type code_repository() :: #{binary() => any()}.
-
-%% Example:
-%% batch_reboot_cluster_nodes_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"NodeIds">> => list(string()),
-%%   <<"NodeLogicalIds">> => list(string())
-%% }
--type batch_reboot_cluster_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_s3_data_source() :: #{
-%%   <<"S3DataType">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type auto_ml_s3_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoint_configs_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_endpoint_configs_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_edge_deployment_plan_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"EdgeDeploymentFailed">> => integer(),
-%%   <<"EdgeDeploymentPending">> => integer(),
-%%   <<"EdgeDeploymentPlanArn">> => string(),
-%%   <<"EdgeDeploymentPlanName">> => string(),
-%%   <<"EdgeDeploymentSuccess">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelConfigs">> => list(edge_deployment_model_config()),
-%%   <<"NextToken">> => string(),
-%%   <<"Stages">> => list(deployment_stage_status_summary())
-%% }
--type describe_edge_deployment_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_monitoring_schedule_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
-%%   <<"MonitoringScheduleArn">> => string(),
-%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringScheduleStatus">> => list(any()),
-%%   <<"MonitoringType">> => list(any())
-%% }
--type describe_monitoring_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_config_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointConfigArn">> => string(),
-%%   <<"EndpointConfigName">> => string()
-%% }
--type endpoint_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_performance_target() :: #{
-%%   <<"Constraints">> => list(a_i_recommendation_constraint())
-%% }
--type a_i_recommendation_performance_target() :: #{binary() => any()}.
-
-%% Example:
-%% training_job_status_counters() :: #{
-%%   <<"Completed">> => integer(),
-%%   <<"InProgress">> => integer(),
-%%   <<"NonRetryableError">> => integer(),
-%%   <<"RetryableError">> => integer(),
-%%   <<"Stopped">> => integer()
-%% }
--type training_job_status_counters() :: #{binary() => any()}.
-
-%% Example:
-%% update_training_job_response() :: #{
-%%   <<"TrainingJobArn">> => string()
-%% }
--type update_training_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% variant_property() :: #{
-%%   <<"VariantPropertyType">> => list(any())
-%% }
--type variant_property() :: #{binary() => any()}.
-
-%% Example:
-%% list_mlflow_tracking_servers_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"TrackingServerStatus">> => list(any())
-%% }
--type list_mlflow_tracking_servers_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_hub_content_reference_response() :: #{
-%%   <<"HubArn">> => string(),
-%%   <<"HubContentArn">> => string()
-%% }
--type create_hub_content_reference_response() :: #{binary() => any()}.
-
-%% Example:
-%% offline_store_status() :: #{
-%%   <<"BlockedReason">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type offline_store_status() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_output_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string(),
-%%   <<"SnsTopicArn">> => string()
-%% }
--type labeling_job_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_kubernetes_config_details() :: #{
-%%   <<"CurrentLabels">> => map(),
-%%   <<"CurrentTaints">> => list(cluster_kubernetes_taint()),
-%%   <<"DesiredLabels">> => map(),
-%%   <<"DesiredTaints">> => list(cluster_kubernetes_taint())
-%% }
--type cluster_kubernetes_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% stop_notebook_instance_input() :: #{
-%%   <<"NotebookInstanceName">> := string()
-%% }
--type stop_notebook_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_optimization_job_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentInstanceType">> => list(any()),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaxInstanceCount">> => integer(),
-%%   <<"ModelSource">> => optimization_job_model_source(),
-%%   <<"OptimizationConfigs">> => list(list()),
-%%   <<"OptimizationEndTime">> => non_neg_integer(),
-%%   <<"OptimizationEnvironment">> => map(),
-%%   <<"OptimizationJobArn">> => string(),
-%%   <<"OptimizationJobName">> => string(),
-%%   <<"OptimizationJobStatus">> => list(any()),
-%%   <<"OptimizationOutput">> => optimization_output(),
-%%   <<"OptimizationStartTime">> => non_neg_integer(),
-%%   <<"OutputConfig">> => optimization_job_output_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"VpcConfig">> => optimization_vpc_config()
-%% }
--type describe_optimization_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% cfn_stack_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type cfn_stack_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoints_output() :: #{
-%%   <<"Endpoints">> => list(endpoint_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoints_output() :: #{binary() => any()}.
-
-%% Example:
-%% text_generation_resolved_attributes() :: #{
-%%   <<"BaseModelName">> => string()
-%% }
--type text_generation_resolved_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type parameter() :: #{binary() => any()}.
-
-%% Example:
-%% r_studio_server_pro_domain_settings() :: #{
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"DomainExecutionRoleArn">> => string(),
-%%   <<"RStudioConnectUrl">> => string(),
-%%   <<"RStudioPackageManagerUrl">> => string()
-%% }
--type r_studio_server_pro_domain_settings() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pipeline_execution_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"PipelineExecutionArn">> := string()
-%% }
--type stop_pipeline_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_model_card() :: #{
-%%   <<"ModelCardContent">> => string(),
-%%   <<"ModelCardStatus">> => list(any())
-%% }
--type model_package_model_card() :: #{binary() => any()}.
-
-%% Example:
-%% remote_debug_config_for_update() :: #{
-%%   <<"EnableRemoteDebug">> => boolean()
-%% }
--type remote_debug_config_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% extend_training_plan_response() :: #{
-%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
-%% }
--type extend_training_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_profiles_request() :: #{
-%%   <<"DomainIdEquals">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"UserProfileNameContains">> => string()
-%% }
--type list_user_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_ml_job_v2_request() :: #{
-%%   <<"AutoMLComputeConfig">> => auto_ml_compute_config(),
-%%   <<"AutoMLJobInputDataConfig">> := list(auto_ml_job_channel()),
-%%   <<"AutoMLJobName">> := string(),
-%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
-%%   <<"AutoMLProblemTypeConfig">> := list(),
-%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
-%%   <<"ModelDeployConfig">> => model_deploy_config(),
-%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"ProcessingInputs">> => list(processing_input()),
+%%   <<"ProcessingJobName">> := string(),
+%%   <<"ProcessingOutputConfig">> => processing_output_config(),
+%%   <<"ProcessingResources">> := processing_resources(),
 %%   <<"RoleArn">> := string(),
-%%   <<"SecurityConfig">> => auto_ml_security_config(),
+%%   <<"StoppingCondition">> => processing_stopping_condition(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_auto_ml_job_v2_request() :: #{binary() => any()}.
+-type create_processing_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% algorithm_validation_profile() :: #{
-%%   <<"ProfileName">> => string(),
-%%   <<"TrainingJobDefinition">> => training_job_definition(),
-%%   <<"TransformJobDefinition">> => transform_job_definition()
+%% create_processing_job_response() :: #{
+%%   <<"ProcessingJobArn">> => string()
 %% }
--type algorithm_validation_profile() :: #{binary() => any()}.
+-type create_processing_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% resource_config_for_update() :: #{
-%%   <<"KeepAlivePeriodInSeconds">> => integer()
+%% create_project_input() :: #{
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> := string(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateProviders">> => list(create_template_provider())
 %% }
--type resource_config_for_update() :: #{binary() => any()}.
+-type create_project_input() :: #{binary() => any()}.
 
 %% Example:
-%% pipeline_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastExecutionTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineDescription">> => string(),
-%%   <<"PipelineDisplayName">> => string(),
-%%   <<"PipelineName">> => string(),
-%%   <<"RoleArn">> => string()
+%% create_project_output() :: #{
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectId">> => string()
 %% }
--type pipeline_summary() :: #{binary() => any()}.
+-type create_project_output() :: #{binary() => any()}.
 
 %% Example:
-%% mlflow_details() :: #{
-%%   <<"MlflowExperimentId">> => string(),
-%%   <<"MlflowRunId">> => string()
-%% }
--type mlflow_details() :: #{binary() => any()}.
-
-%% Example:
-%% clarify_explainer_config() :: #{
-%%   <<"EnableExplanations">> => string(),
-%%   <<"InferenceConfig">> => clarify_inference_config(),
-%%   <<"ShapConfig">> => clarify_shap_config()
-%% }
--type clarify_explainer_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_package_group_input() :: #{
-%%   <<"ModelPackageGroupName">> := string()
-%% }
--type describe_model_package_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% u_s_d() :: #{
-%%   <<"Cents">> => integer(),
-%%   <<"Dollars">> => integer(),
-%%   <<"TenthFractionsOfACent">> => integer()
-%% }
--type u_s_d() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_stage() :: #{
-%%   <<"DeploymentConfig">> => edge_deployment_config(),
-%%   <<"DeviceSelectionConfig">> => device_selection_config(),
-%%   <<"StageName">> => string()
-%% }
--type deployment_stage() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_container_specification_summary() :: #{
-%%   <<"ArtifactUrl">> => string(),
-%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
-%%   <<"DeployedImage">> => deployed_image(),
-%%   <<"Environment">> => map()
-%% }
--type inference_component_container_specification_summary() :: #{binary() => any()}.
-
-%% Example:
-%% domain_settings_for_update() :: #{
-%%   <<"AmazonQSettings">> => amazon_q_settings(),
-%%   <<"DockerSettings">> => docker_settings(),
-%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
-%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
-%% }
--type domain_settings_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipeline_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastRunTime">> => non_neg_integer(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineDefinition">> => string(),
-%%   <<"PipelineDescription">> => string(),
-%%   <<"PipelineDisplayName">> => string(),
-%%   <<"PipelineName">> => string(),
-%%   <<"PipelineStatus">> => list(any()),
-%%   <<"PipelineVersionDescription">> => string(),
-%%   <<"PipelineVersionDisplayName">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_action_response() :: #{
-%%   <<"ActionArn">> => string()
-%% }
--type update_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipeline_definition_for_execution_request() :: #{
-%%   <<"PipelineExecutionArn">> := string()
-%% }
--type describe_pipeline_definition_for_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrainingJobSummaries">> => list(training_job_summary())
-%% }
--type list_training_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% rolling_deployment_policy() :: #{
-%%   <<"MaximumBatchSize">> => capacity_size_config(),
-%%   <<"RollbackMaximumBatchSize">> => capacity_size_config()
-%% }
--type rolling_deployment_policy() :: #{binary() => any()}.
-
-%% Example:
-%% time_series_forecasting_settings() :: #{
-%%   <<"AmazonForecastRoleArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type time_series_forecasting_settings() :: #{binary() => any()}.
-
-%% Example:
-%% model_card() :: #{
-%%   <<"Content">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelCardArn">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"ModelId">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"RiskRating">> => string(),
-%%   <<"SecurityConfig">> => model_card_security_config(),
+%% create_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"OwnershipSettings">> => ownership_settings(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> := string(),
+%%   <<"SpaceSettings">> => space_settings(),
+%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
 %%   <<"Tags">> => list(tag())
 %% }
--type model_card() :: #{binary() => any()}.
+-type create_space_request() :: #{binary() => any()}.
 
 %% Example:
-%% monitoring_execution_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MonitoringExecutionStatus">> => list(any()),
-%%   <<"MonitoringJobDefinitionName">> => string(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringType">> => list(any()),
-%%   <<"ProcessingJobArn">> => string(),
-%%   <<"ScheduledTime">> => non_neg_integer()
+%% create_space_response() :: #{
+%%   <<"SpaceArn">> => string()
 %% }
--type monitoring_execution_summary() :: #{binary() => any()}.
+-type create_space_response() :: #{binary() => any()}.
 
 %% Example:
-%% job_config_schema_version_summary() :: #{
-%%   <<"JobConfigSchemaVersion">> => string()
+%% create_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigAppType">> := list(any()),
+%%   <<"StudioLifecycleConfigContent">> := string(),
+%%   <<"StudioLifecycleConfigName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type job_config_schema_version_summary() :: #{binary() => any()}.
+-type create_studio_lifecycle_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_job_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"JobName">> := string()
+%% create_studio_lifecycle_config_response() :: #{
+%%   <<"StudioLifecycleConfigArn">> => string()
 %% }
--type describe_job_request() :: #{binary() => any()}.
+-type create_studio_lifecycle_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% a_i_model_source_s3() :: #{
-%%   <<"S3Uri">> => string()
+%% create_template_provider() :: #{
+%%   <<"CfnTemplateProvider">> => cfn_create_template_provider()
 %% }
--type a_i_model_source_s3() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_parameter_range_specification() :: #{
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string()
-%% }
--type continuous_parameter_range_specification() :: #{binary() => any()}.
-
-%% Example:
-%% workteam() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"MemberDefinitions">> => list(member_definition()),
-%%   <<"NotificationConfiguration">> => notification_configuration(),
-%%   <<"ProductListingIds">> => list(string()),
-%%   <<"SubDomain">> => string(),
-%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
-%%   <<"WorkforceArn">> => string(),
-%%   <<"WorkteamArn">> => string(),
-%%   <<"WorkteamName">> => string()
-%% }
--type workteam() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_event_detail() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"Description">> => [string()],
-%%   <<"EventDetails">> => event_details(),
-%%   <<"EventId">> => string(),
-%%   <<"EventLevel">> => list(any()),
-%%   <<"EventTime">> => non_neg_integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => [string()],
-%%   <<"ResourceType">> => list(any())
-%% }
--type cluster_event_detail() :: #{binary() => any()}.
-
-%% Example:
-%% drift_check_bias() :: #{
-%%   <<"ConfigFile">> => file_source(),
-%%   <<"PostTrainingConstraints">> => metrics_source(),
-%%   <<"PreTrainingConstraints">> => metrics_source()
-%% }
--type drift_check_bias() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hyper_parameter_tuning_job_request() :: #{
-%%   <<"HyperParameterTuningJobName">> := string()
-%% }
--type describe_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_mlflow_config() :: #{
-%%   <<"MlflowExperimentName">> => string(),
-%%   <<"MlflowResourceArn">> => string(),
-%%   <<"MlflowRunName">> => string()
-%% }
--type a_i_mlflow_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_quality_job_input() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"EndpointInput">> => endpoint_input(),
-%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
-%% }
--type model_quality_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_response() :: #{
-%%   <<"AppNetworkAccessType">> => list(any()),
-%%   <<"AppSecurityGroupManagement">> => list(any()),
-%%   <<"AuthMode">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultSpaceSettings">> => default_space_settings(),
-%%   <<"DefaultUserSettings">> => user_settings(),
-%%   <<"DomainArn">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"DomainSettings">> => domain_settings(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HomeEfsFileSystemCreation">> => list(any()),
-%%   <<"HomeEfsFileSystemId">> => string(),
-%%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SecurityGroupIdForDomainBoundary">> => string(),
-%%   <<"SingleSignOnApplicationArn">> => string(),
-%%   <<"SingleSignOnManagedApplicationInstanceId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"TagPropagation">> => list(any()),
-%%   <<"Url">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type describe_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% rendering_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type rendering_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_devices_response() :: #{
-%%   <<"DeviceSummaries">> => list(device_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_experiment_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentArn">> => string(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Source">> => experiment_source()
-%% }
--type describe_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_compilation_jobs_response() :: #{
-%%   <<"CompilationJobSummaries">> => list(compilation_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_compilation_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_capacity_reservation_config() :: #{
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"MlReservationArns">> => list(string())
-%% }
--type a_i_capacity_reservation_config() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_experiment_config() :: #{
-%%   <<"ExperimentName">> => string(),
-%%   <<"TrialName">> => string()
-%% }
--type pipeline_experiment_config() :: #{binary() => any()}.
-
-%% Example:
-%% candidate_properties() :: #{
-%%   <<"CandidateArtifactLocations">> => candidate_artifact_locations(),
-%%   <<"CandidateMetrics">> => list(metric_datum())
-%% }
--type candidate_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_recommendation_job_request() :: #{
-%%   <<"AIRecommendationJobName">> := string()
-%% }
--type delete_a_i_recommendation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_algorithm_input() :: #{
-%%   <<"AlgorithmName">> := string()
-%% }
--type describe_algorithm_input() :: #{binary() => any()}.
-
-%% Example:
-%% async_inference_notification_config() :: #{
-%%   <<"ErrorTopic">> => string(),
-%%   <<"IncludeInferenceResponseIn">> => list(list(any())()),
-%%   <<"SuccessTopic">> => string()
-%% }
--type async_inference_notification_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_metadata_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type model_metadata_filter() :: #{binary() => any()}.
-
-%% Example:
-%% additional_model_data_source() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"S3DataSource">> => s3_model_data_source()
-%% }
--type additional_model_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% instance_requirements_eni_configuration() :: #{
-%%   <<"AdditionalEnis">> => additional_enis(),
-%%   <<"CustomerEni">> => [string()]
-%% }
--type instance_requirements_eni_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% start_inference_experiment_response() :: #{
-%%   <<"InferenceExperimentArn">> => string()
-%% }
--type start_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_resource_limit() :: #{
-%%   <<"MaxNumberOfTests">> => integer(),
-%%   <<"MaxParallelOfTests">> => integer()
-%% }
--type recommendation_job_resource_limit() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_deployment_s3_channel() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"Uri">> => string()
-%% }
--type a_i_recommendation_deployment_s3_channel() :: #{binary() => any()}.
-
-%% Example:
-%% selective_execution_config() :: #{
-%%   <<"SelectedSteps">> => list(selected_step()),
-%%   <<"SourcePipelineExecutionArn">> => string()
-%% }
--type selective_execution_config() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_summary() :: #{
-%%   <<"AnnotationConsolidationLambdaArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InputConfig">> => labeling_job_input_config(),
-%%   <<"LabelCounters">> => label_counters(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"LabelingJobName">> => string(),
-%%   <<"LabelingJobOutput">> => labeling_job_output(),
-%%   <<"LabelingJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PreHumanTaskLambdaArn">> => string(),
-%%   <<"WorkteamArn">> => string()
-%% }
--type labeling_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% enable_sagemaker_servicecatalog_portfolio_output() :: #{
-
-%% }
--type enable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_image_versions_response() :: #{
-%%   <<"ImageVersions">> => list(image_version()),
-%%   <<"NextToken">> => string()
-%% }
--type list_image_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% public_workforce_task_price() :: #{
-%%   <<"AmountInUsd">> => u_s_d()
-%% }
--type public_workforce_task_price() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_content_reference_request() :: #{
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubName">> := string(),
-%%   <<"MinVersion">> => string()
-%% }
--type update_hub_content_reference_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_csv_dataset_format() :: #{
-%%   <<"Header">> => boolean()
-%% }
--type monitoring_csv_dataset_format() :: #{binary() => any()}.
-
-%% Example:
-%% debug_rule_evaluation_status() :: #{
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RuleConfigurationName">> => string(),
-%%   <<"RuleEvaluationJobArn">> => string(),
-%%   <<"RuleEvaluationStatus">> => list(any()),
-%%   <<"StatusDetails">> => string()
-%% }
--type debug_rule_evaluation_status() :: #{binary() => any()}.
-
-%% Example:
-%% file_system_config() :: #{
-%%   <<"DefaultGid">> => integer(),
-%%   <<"DefaultUid">> => integer(),
-%%   <<"MountPath">> => string()
-%% }
--type file_system_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_actions_response() :: #{
-%%   <<"ActionSummaries">> => list(action_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_actions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_instances_input() :: #{
-%%   <<"AdditionalCodeRepositoryEquals">> => string(),
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"DefaultCodeRepositoryContains">> => string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"NotebookInstanceLifecycleConfigNameContains">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_notebook_instances_input() :: #{binary() => any()}.
+-type create_template_provider() :: #{binary() => any()}.
 
 %% Example:
 %% create_training_job_request() :: #{
@@ -8312,294 +3956,134 @@
 -type create_training_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_partner_app_response() :: #{
-%%   <<"Arn">> => string()
+%% create_training_job_response() :: #{
+%%   <<"TrainingJobArn">> => string()
 %% }
--type update_partner_app_response() :: #{binary() => any()}.
+-type create_training_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_reserved_capacity_response() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"DurationHours">> => float(),
-%%   <<"DurationMinutes">> => float(),
+%% create_training_plan_request() :: #{
+%%   <<"SpareInstanceCountPerUltraServer">> => integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingPlanName">> := string(),
+%%   <<"TrainingPlanOfferingId">> := string()
+%% }
+-type create_training_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_training_plan_response() :: #{
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type create_training_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_transform_job_request() :: #{
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransformInput">> := transform_input(),
+%%   <<"TransformJobName">> := string(),
+%%   <<"TransformOutput">> := transform_output(),
+%%   <<"TransformResources">> := transform_resources()
+%% }
+-type create_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_transform_job_response() :: #{
+%%   <<"TransformJobArn">> => string()
+%% }
+-type create_transform_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_trial_component_request() :: #{
+%%   <<"DisplayName">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InUseInstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ReservedCapacityArn">> => string(),
-%%   <<"ReservedCapacityType">> => list(any()),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UltraServerSummary">> => ultra_server_summary()
+%%   <<"Status">> => trial_component_status(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrialComponentName">> := string()
 %% }
--type describe_reserved_capacity_response() :: #{binary() => any()}.
+-type create_trial_component_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_hub_content_versions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MaxSchemaVersion">> => string(),
-%%   <<"MinVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% create_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
 %% }
--type list_hub_content_versions_request() :: #{binary() => any()}.
+-type create_trial_component_response() :: #{binary() => any()}.
 
 %% Example:
-%% monitoring_job_definition_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"MonitoringJobDefinitionArn">> => string(),
-%%   <<"MonitoringJobDefinitionName">> => string()
+%% create_trial_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrialName">> := string()
 %% }
--type monitoring_job_definition_summary() :: #{binary() => any()}.
+-type create_trial_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_image_version_response() :: #{
-%%   <<"ImageVersionArn">> => string()
+%% create_trial_response() :: #{
+%%   <<"TrialArn">> => string()
 %% }
--type create_image_version_response() :: #{binary() => any()}.
+-type create_trial_response() :: #{binary() => any()}.
 
 %% Example:
-%% space_storage_settings() :: #{
-%%   <<"EbsStorageSettings">> => ebs_storage_settings()
+%% create_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SingleSignOnUserIdentifier">> => string(),
+%%   <<"SingleSignOnUserValue">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserProfileName">> := string(),
+%%   <<"UserSettings">> => user_settings()
 %% }
--type space_storage_settings() :: #{binary() => any()}.
+-type create_user_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% monitoring_input() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"EndpointInput">> => endpoint_input()
+%% create_user_profile_response() :: #{
+%%   <<"UserProfileArn">> => string()
 %% }
--type monitoring_input() :: #{binary() => any()}.
+-type create_user_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_node_summary() :: #{
-%%   <<"CurrentImageReleaseVersion">> => string(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => [string()],
-%%   <<"InstanceStatus">> => cluster_instance_status_details(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"NodeLogicalId">> => [string()],
-%%   <<"PrivateDnsHostname">> => string(),
-%%   <<"UltraServerInfo">> => ultra_server_info()
+%% create_workforce_request() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"OidcConfig">> => oidc_config(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WorkforceName">> := string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
 %% }
--type cluster_node_summary() :: #{binary() => any()}.
+-type create_workforce_request() :: #{binary() => any()}.
 
 %% Example:
-%% ebs_storage_settings() :: #{
-%%   <<"EbsVolumeSizeInGb">> => integer()
+%% create_workforce_response() :: #{
+%%   <<"WorkforceArn">> => string()
 %% }
--type ebs_storage_settings() :: #{binary() => any()}.
+-type create_workforce_response() :: #{binary() => any()}.
 
 %% Example:
-%% file_system_data_source() :: #{
-%%   <<"DirectoryPath">> => string(),
-%%   <<"FileSystemAccessMode">> => list(any()),
-%%   <<"FileSystemId">> => string(),
-%%   <<"FileSystemType">> => list(any())
+%% create_workteam_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"MemberDefinitions">> := list(member_definition()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
+%%   <<"WorkforceName">> => string(),
+%%   <<"WorkteamName">> := string()
 %% }
--type file_system_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_actions_request() :: #{
-%%   <<"ActionType">> => string(),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SourceUri">> => string()
-%% }
--type list_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_scheduler_config_response() :: #{
-%%   <<"ClusterSchedulerConfigArn">> => string(),
-%%   <<"ClusterSchedulerConfigId">> => string()
-%% }
--type create_cluster_scheduler_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_spot_options() :: #{
-
-%% }
--type cluster_spot_options() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_benchmark_inference_component() :: #{
-%%   <<"Identifier">> => string()
-%% }
--type a_i_benchmark_inference_component() :: #{binary() => any()}.
-
-%% Example:
-%% partner_app_config() :: #{
-%%   <<"AdminUsers">> => list(string()),
-%%   <<"Arguments">> => map(),
-%%   <<"AssignedGroupPatterns">> => list(string()),
-%%   <<"RoleGroupAssignments">> => list(role_group_assignment())
-%% }
--type partner_app_config() :: #{binary() => any()}.
-
-%% Example:
-%% athena_dataset_definition() :: #{
-%%   <<"Catalog">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OutputCompression">> => list(any()),
-%%   <<"OutputFormat">> => list(any()),
-%%   <<"OutputS3Uri">> => string(),
-%%   <<"QueryString">> => string(),
-%%   <<"WorkGroup">> => string()
-%% }
--type athena_dataset_definition() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceType">> => list(any())
-%% }
--type instance_group() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_output() :: #{
-%%   <<"RecommendedInferenceImage">> => string()
-%% }
--type optimization_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_recommendation_job_response() :: #{
-%%   <<"AIRecommendationJobArn">> => string()
-%% }
--type create_a_i_recommendation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% profiler_rule_evaluation_status() :: #{
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RuleConfigurationName">> => string(),
-%%   <<"RuleEvaluationJobArn">> => string(),
-%%   <<"RuleEvaluationStatus">> => list(any()),
-%%   <<"StatusDetails">> => string()
-%% }
--type profiler_rule_evaluation_status() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_optimization_detail() :: #{
-%%   <<"OptimizationConfig">> => map(),
-%%   <<"OptimizationType">> => list(any())
-%% }
--type a_i_recommendation_optimization_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_space_response() :: #{
-%%   <<"SpaceArn">> => string()
-%% }
--type update_space_response() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_runtime_config() :: #{
-%%   <<"CopyCount">> => integer()
-%% }
--type inference_component_runtime_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_status_details() :: #{
-%%   <<"ImageScanStatuses">> => list(model_package_status_item()),
-%%   <<"ValidationStatuses">> => list(model_package_status_item())
-%% }
--type model_package_status_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"ClusterSummaries">> => list(cluster_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_job_schema_versions_response() :: #{
-%%   <<"JobConfigSchemas">> => list(job_config_schema_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_job_schema_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_activation_conditions_config() :: #{
-%%   <<"HumanLoopActivationConditions">> => string()
-%% }
--type human_loop_activation_conditions_config() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pipeline_execution_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type stop_pipeline_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% categorical_parameter_range() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type categorical_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_workload_configs() :: #{
-%%   <<"WorkloadSpec">> => list()
-%% }
--type a_i_workload_configs() :: #{binary() => any()}.
-
-%% Example:
-%% render_ui_template_request() :: #{
-%%   <<"HumanTaskUiArn">> => string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Task">> := renderable_task(),
-%%   <<"UiTemplate">> => ui_template()
-%% }
--type render_ui_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notebook_instance_lifecycle_config_input() :: #{
-%%   <<"NotebookInstanceLifecycleConfigName">> := string()
-%% }
--type describe_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_package_input() :: #{
-%%   <<"AdditionalInferenceSpecificationsToAdd">> => list(additional_inference_specification_definition()),
-%%   <<"ApprovalDescription">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CustomerMetadataProperties">> => map(),
-%%   <<"CustomerMetadataPropertiesToRemove">> => list(string()),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"ModelApprovalStatus">> => list(any()),
-%%   <<"ModelCard">> => model_package_model_card(),
-%%   <<"ModelLifeCycle">> => model_life_cycle(),
-%%   <<"ModelPackageArn">> := string(),
-%%   <<"ModelPackageRegistrationType">> => list(any()),
-%%   <<"SourceUri">> => string()
-%% }
--type update_model_package_input() :: #{binary() => any()}.
-
-%% Example:
-%% feature_group_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FeatureGroupArn">> => string(),
-%%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureGroupStatus">> => list(any()),
-%%   <<"OfflineStoreStatus">> => offline_store_status()
-%% }
--type feature_group_summary() :: #{binary() => any()}.
+-type create_workteam_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_workteam_response() :: #{
@@ -8608,1267 +4092,123 @@
 -type create_workteam_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_response() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_domain_url_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"ExpiresInSeconds">> => integer(),
-%%   <<"LandingUri">> => string(),
-%%   <<"SessionExpirationDurationInSeconds">> => integer(),
-%%   <<"SpaceName">> => string(),
-%%   <<"UserProfileName">> := string()
-%% }
--type create_presigned_domain_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_recommendation_job_request() :: #{
-%%   <<"AIRecommendationJobName">> := string(),
-%%   <<"AIWorkloadConfigIdentifier">> := string(),
-%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
-%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
-%%   <<"ModelSource">> := list(),
-%%   <<"OptimizeModel">> => boolean(),
-%%   <<"OutputConfig">> := a_i_recommendation_output_config(),
-%%   <<"PerformanceTarget">> := a_i_recommendation_performance_target(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_a_i_recommendation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_configuration() :: #{
-%%   <<"CompilationJobName">> => string(),
-%%   <<"EnvironmentParameters">> => list(environment_parameter()),
-%%   <<"InferenceSpecificationName">> => string()
-%% }
--type model_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% search_expression() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"NestedFilters">> => list(nested_filters()),
-%%   <<"Operator">> => list(any()),
-%%   <<"SubExpressions">> => list(search_expression())
-%% }
--type search_expression() :: #{binary() => any()}.
-
-%% Example:
-%% register_devices_request() :: #{
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"Devices">> := list(device()),
-%%   <<"Tags">> => list(tag())
-%% }
--type register_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_json_dataset_format() :: #{
-%%   <<"Line">> => boolean()
-%% }
--type monitoring_json_dataset_format() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_for_workteam_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JobReferenceCode">> => string(),
-%%   <<"LabelCounters">> => label_counters_for_workteam(),
-%%   <<"LabelingJobName">> => string(),
-%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
-%%   <<"WorkRequesterAccountId">> => string()
-%% }
--type labeling_job_for_workteam_summary() :: #{binary() => any()}.
-
-%% Example:
-%% vertex() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"LineageType">> => list(any()),
-%%   <<"Type">> => string()
-%% }
--type vertex() :: #{binary() => any()}.
-
-%% Example:
-%% feature_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type feature_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% list_device_fleets_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_device_fleets_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_step_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"OutputParameters">> => list(output_parameter())
-%% }
--type lambda_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_template_provider() :: #{
-%%   <<"CfnTemplateProvider">> => cfn_create_template_provider()
-%% }
--type create_template_provider() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_partition_config() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type accelerator_partition_config() :: #{binary() => any()}.
-
-%% Example:
-%% experiment_config() :: #{
-%%   <<"ExperimentName">> => string(),
-%%   <<"RunName">> => string(),
-%%   <<"TrialComponentDisplayName">> => string(),
-%%   <<"TrialName">> => string()
-%% }
--type experiment_config() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_event_summary() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"Description">> => [string()],
-%%   <<"EventId">> => string(),
-%%   <<"EventLevel">> => list(any()),
-%%   <<"EventTime">> => non_neg_integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => [string()],
-%%   <<"ResourceType">> => list(any())
-%% }
--type cluster_event_summary() :: #{binary() => any()}.
-
-%% Example:
-%% ttl_duration() :: #{
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => integer()
-%% }
--type ttl_duration() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% compute_quota_config() :: #{
-%%   <<"ComputeQuotaResources">> => list(compute_quota_resource_config()),
-%%   <<"PreemptTeamTasks">> => list(any()),
-%%   <<"ResourceSharingConfig">> => resource_sharing_config()
-%% }
--type compute_quota_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"ImageArn">> => string(),
+%% custom_image() :: #{
+%%   <<"AppImageConfigName">> => string(),
 %%   <<"ImageName">> => string(),
-%%   <<"ImageStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string()
+%%   <<"ImageVersionNumber">> => integer()
 %% }
--type describe_image_response() :: #{binary() => any()}.
+-type custom_image() :: #{binary() => any()}.
 
 %% Example:
-%% update_experiment_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentName">> := string()
+%% custom_posix_user_config() :: #{
+%%   <<"Gid">> => float(),
+%%   <<"Uid">> => float()
 %% }
--type update_experiment_request() :: #{binary() => any()}.
+-type custom_posix_user_config() :: #{binary() => any()}.
 
 %% Example:
-%% delete_hub_content_reference_request() :: #{
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubName">> := string()
+%% customized_metric_specification() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Statistic">> => list(any())
 %% }
--type delete_hub_content_reference_request() :: #{binary() => any()}.
+-type customized_metric_specification() :: #{binary() => any()}.
 
 %% Example:
-%% algorithm_summary() :: #{
-%%   <<"AlgorithmArn">> => string(),
-%%   <<"AlgorithmDescription">> => string(),
-%%   <<"AlgorithmName">> => string(),
-%%   <<"AlgorithmStatus">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer()
-%% }
--type algorithm_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_package_group_input() :: #{
-%%   <<"ManagedConfiguration">> => managed_configuration(),
-%%   <<"ModelPackageGroupDescription">> => string(),
-%%   <<"ModelPackageGroupName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_model_package_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_cluster_node_specification() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"IncrementTargetCountBy">> => integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceTypes">> => list(list(any())())
-%% }
--type add_cluster_node_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_quality_job_definitions_response() :: #{
-%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_quality_job_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_artifact_response() :: #{
-%%   <<"ArtifactArn">> => string(),
-%%   <<"ArtifactName">> => string(),
-%%   <<"ArtifactType">> => string(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> => artifact_source()
-%% }
--type describe_artifact_response() :: #{binary() => any()}.
-
-%% Example:
-%% inference_recommendations_job_step() :: #{
-%%   <<"InferenceBenchmark">> => recommendation_job_inference_benchmark(),
-%%   <<"JobName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StepType">> => list(any())
-%% }
--type inference_recommendations_job_step() :: #{binary() => any()}.
-
-%% Example:
-%% infra_check_config() :: #{
-%%   <<"EnableInfraCheck">> => boolean()
-%% }
--type infra_check_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_recommendation_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_a_i_recommendation_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% async_inference_client_config() :: #{
-%%   <<"MaxConcurrentInvocationsPerInstance">> => integer()
-%% }
--type async_inference_client_config() :: #{binary() => any()}.
-
-%% Example:
-%% canvas_app_settings() :: #{
-%%   <<"DirectDeploySettings">> => direct_deploy_settings(),
-%%   <<"EmrServerlessSettings">> => emr_serverless_settings(),
-%%   <<"GenerativeAiSettings">> => generative_ai_settings(),
-%%   <<"IdentityProviderOAuthSettings">> => list(identity_provider_o_auth_setting()),
-%%   <<"KendraSettings">> => kendra_settings(),
-%%   <<"ModelRegisterSettings">> => model_register_settings(),
-%%   <<"TimeSeriesForecastingSettings">> => time_series_forecasting_settings(),
-%%   <<"WorkspaceSettings">> => workspace_settings()
-%% }
--type canvas_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_images_response() :: #{
-%%   <<"Images">> => list(image()),
-%%   <<"NextToken">> => string()
-%% }
--type list_images_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_experiment_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_channel() :: #{
-%%   <<"ChannelType">> => list(any()),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"DataSource">> => auto_ml_data_source()
-%% }
--type auto_ml_job_channel() :: #{binary() => any()}.
-
-%% Example:
-%% agent_version() :: #{
-%%   <<"AgentCount">> => float(),
-%%   <<"Version">> => string()
-%% }
--type agent_version() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_package_groups_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"CrossAccountFilterOption">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_package_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_contexts_response() :: #{
-%%   <<"ContextSummaries">> => list(context_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contexts_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_app_image_configs_response() :: #{
-%%   <<"AppImageConfigs">> => list(app_image_config_details()),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_image_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_job_schema_versions_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_job_schema_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% warm_pool_status() :: #{
-%%   <<"ResourceRetainedBillableTimeInSeconds">> => integer(),
-%%   <<"ReusedByJob">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type warm_pool_status() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_package_input() :: #{
-%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()),
-%%   <<"CertifyForMarketplace">> => boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CustomerMetadataProperties">> => map(),
-%%   <<"Domain">> => string(),
-%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"ManagedStorageType">> => list(any()),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"ModelApprovalStatus">> => list(any()),
-%%   <<"ModelCard">> => model_package_model_card(),
-%%   <<"ModelLifeCycle">> => model_life_cycle(),
-%%   <<"ModelMetrics">> => model_metrics(),
-%%   <<"ModelPackageDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageName">> => string(),
-%%   <<"ModelPackageRegistrationType">> => list(any()),
-%%   <<"SamplePayloadUrl">> => string(),
-%%   <<"SecurityConfig">> => model_package_security_config(),
-%%   <<"SkipModelValidation">> => list(any()),
-%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
-%%   <<"SourceUri">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Task">> => string(),
-%%   <<"ValidationSpecification">> => model_package_validation_specification()
-%% }
--type create_model_package_input() :: #{binary() => any()}.
-
-%% Example:
-%% association_info() :: #{
-%%   <<"DestinationArn">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type association_info() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_container_config() :: #{
-%%   <<"DataInputConfig">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"Framework">> => string(),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"NearestModelName">> => string(),
-%%   <<"PayloadConfig">> => recommendation_job_payload_config(),
-%%   <<"SupportedEndpointType">> => list(any()),
-%%   <<"SupportedInstanceTypes">> => list(string()),
-%%   <<"SupportedResponseMIMETypes">> => list(string()),
-%%   <<"Task">> => string()
-%% }
--type recommendation_job_container_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_mlflow_app_url_response() :: #{
-%%   <<"AuthorizedUrl">> => string()
-%% }
--type create_presigned_mlflow_app_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrainingJobSummaries">> => list(hyper_parameter_training_job_summary())
-%% }
--type list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_scaling_metadata() :: #{
-%%   <<"FailureMessage">> => [string()],
-%%   <<"InstanceCount">> => integer(),
-%%   <<"MinCount">> => integer(),
-%%   <<"TargetCount">> => integer()
-%% }
--type instance_group_scaling_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% instance_placement_config() :: #{
-%%   <<"EnableMultipleJobs">> => boolean(),
-%%   <<"PlacementSpecifications">> => list(placement_specification())
-%% }
--type instance_placement_config() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type provisioning_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_instance_status_details() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type cluster_instance_status_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_processing_job_request() :: #{
-%%   <<"AppSpecification">> := app_specification(),
-%%   <<"Environment">> => map(),
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"NetworkConfig">> => network_config(),
-%%   <<"ProcessingInputs">> => list(processing_input()),
-%%   <<"ProcessingJobName">> := string(),
-%%   <<"ProcessingOutputConfig">> => processing_output_config(),
-%%   <<"ProcessingResources">> := processing_resources(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> => processing_stopping_condition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_processing_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% notification_configuration() :: #{
-%%   <<"NotificationTopicArn">> => string()
-%% }
--type notification_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_input() :: #{
-%%   <<"ProjectDescription">> => string(),
-%%   <<"ProjectName">> := string(),
-%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateProviders">> => list(create_template_provider())
-%% }
--type create_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_specification_summary() :: #{
-%%   <<"BaseInferenceComponentName">> => string(),
-%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
-%%   <<"Container">> => inference_component_container_specification_summary(),
-%%   <<"DataCacheConfig">> => inference_component_data_cache_config_summary(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ModelName">> => string(),
-%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
-%%   <<"StartupParameters">> => inference_component_startup_parameters()
-%% }
--type inference_component_specification_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workteam_response() :: #{
-%%   <<"Workteam">> => workteam()
-%% }
--type describe_workteam_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_orchestrator_slurm_config() :: #{
-%%   <<"SlurmConfigStrategy">> => list(any())
-%% }
--type cluster_orchestrator_slurm_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_mlflow_tracking_server_response() :: #{
-%%   <<"TrackingServerArn">> => string()
-%% }
--type start_mlflow_tracking_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointConfigName">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MonitoringSchedules">> => list(monitoring_schedule()),
-%%   <<"ProductionVariants">> => list(production_variant_summary()),
-%%   <<"ShadowProductionVariants">> => list(production_variant_summary()),
-%%   <<"Tags">> => list(tag())
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_output_config() :: #{
-%%   <<"CompiledOutputConfig">> => recommendation_job_compiled_output_config(),
+%% data_capture_config() :: #{
+%%   <<"CaptureContentTypeHeader">> => capture_content_type_header(),
+%%   <<"CaptureOptions">> => list(capture_option()),
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"EnableCapture">> => boolean(),
+%%   <<"InitialSamplingPercentage">> => integer(),
 %%   <<"KmsKeyId">> => string()
 %% }
--type recommendation_job_output_config() :: #{binary() => any()}.
+-type data_capture_config() :: #{binary() => any()}.
 
 %% Example:
-%% model_register_settings() :: #{
-%%   <<"CrossAccountModelRegisterRoleArn">> => string(),
-%%   <<"Status">> => list(any())
+%% data_capture_config_summary() :: #{
+%%   <<"CaptureStatus">> => list(any()),
+%%   <<"CurrentSamplingPercentage">> => integer(),
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"EnableCapture">> => boolean(),
+%%   <<"KmsKeyId">> => string()
 %% }
--type model_register_settings() :: #{binary() => any()}.
+-type data_capture_config_summary() :: #{binary() => any()}.
 
 %% Example:
-%% fail_step_metadata() :: #{
-%%   <<"ErrorMessage">> => string()
+%% data_catalog_config() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"TableName">> => string()
 %% }
--type fail_step_metadata() :: #{binary() => any()}.
+-type data_catalog_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_edge_deployment_plan_request() :: #{
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% data_processing() :: #{
+%%   <<"InputFilter">> => string(),
+%%   <<"JoinSource">> => list(any()),
+%%   <<"OutputFilter">> => string()
 %% }
--type describe_edge_deployment_plan_request() :: #{binary() => any()}.
+-type data_processing() :: #{binary() => any()}.
 
 %% Example:
-%% list_hub_content_versions_response() :: #{
-%%   <<"HubContentSummaries">> => list(hub_content_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hub_content_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_inference_benchmark() :: #{
-%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
-%%   <<"EndpointMetrics">> => inference_metrics(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InvocationEndTime">> => non_neg_integer(),
-%%   <<"InvocationStartTime">> => non_neg_integer(),
-%%   <<"Metrics">> => recommendation_metrics(),
-%%   <<"ModelConfiguration">> => model_configuration()
-%% }
--type recommendation_job_inference_benchmark() :: #{binary() => any()}.
-
-%% Example:
-%% model_infrastructure_config() :: #{
-%%   <<"InfrastructureType">> => list(any()),
-%%   <<"RealTimeInferenceConfig">> => real_time_inference_config()
-%% }
--type model_infrastructure_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_request() :: #{
-%%   <<"ImageName">> := string()
-%% }
--type delete_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workforce_response() :: #{
-
-%% }
--type delete_workforce_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_metadata_search_expression() :: #{
-%%   <<"Filters">> => list(model_metadata_filter())
-%% }
--type model_metadata_search_expression() :: #{binary() => any()}.
-
-%% Example:
-%% metrics_endpoint() :: #{
-%%   <<"MetricPublishFrequencyInSeconds">> => list(integer()),
-%%   <<"MetricsEndpointPath">> => string()
-%% }
--type metrics_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"TrainingPlanArn">> => string()
-%% }
--type list_clusters_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_hub_content_presigned_urls_response() :: #{
-%%   <<"AuthorizedUrlConfigs">> => list(authorized_url()),
-%%   <<"NextToken">> => string()
-%% }
--type create_hub_content_presigned_urls_response() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_config() :: #{
-%%   <<"DataAnalysisEndTime">> => string(),
-%%   <<"DataAnalysisStartTime">> => string(),
-%%   <<"ScheduleExpression">> => string()
-%% }
--type schedule_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_edge_deployment_plans_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"DeviceFleetNameContains">> => string(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_edge_deployment_plans_request() :: #{binary() => any()}.
-
-%% Example:
-%% tuning_job_step_meta_data() :: #{
-%%   <<"Arn">> => string()
-%% }
--type tuning_job_step_meta_data() :: #{binary() => any()}.
-
-%% Example:
-%% list_workforces_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_workforces_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_benchmark_jobs_response() :: #{
-%%   <<"AIBenchmarkJobs">> => list(a_i_benchmark_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_a_i_benchmark_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_experiment_response() :: #{
-%%   <<"InferenceExperimentArn">> => string()
-%% }
--type update_inference_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_simple_summary() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"TrialComponentArn">> => string(),
-%%   <<"TrialComponentName">> => string(),
-%%   <<"TrialComponentSource">> => trial_component_source()
-%% }
--type trial_component_simple_summary() :: #{binary() => any()}.
-
-%% Example:
-%% send_pipeline_execution_step_failure_request() :: #{
-%%   <<"CallbackToken">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FailureReason">> => string()
-%% }
--type send_pipeline_execution_step_failure_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_settings() :: #{
-%%   <<"AmazonQSettings">> => amazon_q_settings(),
-%%   <<"DockerSettings">> => docker_settings(),
-%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
-%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
-%% }
--type domain_settings() :: #{binary() => any()}.
-
-%% Example:
-%% device_summary() :: #{
-%%   <<"AgentVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceArn">> => string(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"IotThingName">> => string(),
-%%   <<"LatestHeartbeat">> => non_neg_integer(),
-%%   <<"Models">> => list(edge_model_summary()),
-%%   <<"RegistrationTime">> => non_neg_integer()
-%% }
--type device_summary() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_algorithms_config() :: #{
-%%   <<"InitialActiveLearningModelArn">> => string(),
-%%   <<"LabelingJobAlgorithmSpecificationArn">> => string(),
-%%   <<"LabelingJobResourceConfig">> => labeling_job_resource_config()
-%% }
--type labeling_job_algorithms_config() :: #{binary() => any()}.
-
-%% Example:
-%% mlflow_app_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type mlflow_app_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_response() :: #{
-%%   <<"ImageArn">> => string()
-%% }
--type update_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
-%%   <<"MonitoringScheduleName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_monitoring_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_flow_definition_response() :: #{
-%%   <<"FlowDefinitionArn">> => string()
-%% }
--type create_flow_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_metrics() :: #{
-%%   <<"CostPerHour">> => float(),
-%%   <<"CostPerInference">> => float(),
-%%   <<"CpuUtilization">> => float(),
-%%   <<"MaxInvocations">> => integer(),
-%%   <<"MemoryUtilization">> => float(),
-%%   <<"ModelLatency">> => integer(),
-%%   <<"ModelSetupTime">> => integer()
-%% }
--type recommendation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_package_group_policy_input() :: #{
-%%   <<"ModelPackageGroupName">> := string()
-%% }
--type get_model_package_group_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_space_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HomeEfsFileSystemUid">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OwnershipSettings">> => ownership_settings(),
-%%   <<"SpaceArn">> => string(),
-%%   <<"SpaceDisplayName">> => string(),
-%%   <<"SpaceName">> => string(),
-%%   <<"SpaceSettings">> => space_settings(),
-%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
-%%   <<"Status">> => list(any()),
-%%   <<"Url">> => string()
-%% }
--type describe_space_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_dataset_format() :: #{
-%%   <<"Csv">> => monitoring_csv_dataset_format(),
-%%   <<"Json">> => monitoring_json_dataset_format(),
-%%   <<"Parquet">> => monitoring_parquet_dataset_format()
-%% }
--type monitoring_dataset_format() :: #{binary() => any()}.
-
-%% Example:
-%% training_plan_extension_offering() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"DurationHours">> => integer(),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"TrainingPlanExtensionOfferingId">> => string(),
-%%   <<"UpfrontFee">> => string()
-%% }
--type training_plan_extension_offering() :: #{binary() => any()}.
-
-%% Example:
-%% training_job_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SecondaryStatus">> => list(any()),
-%%   <<"TrainingEndTime">> => non_neg_integer(),
-%%   <<"TrainingJobArn">> => string(),
-%%   <<"TrainingJobName">> => string(),
-%%   <<"TrainingJobStatus">> => list(any()),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"WarmPoolStatus">> => warm_pool_status()
-%% }
--type training_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_job_response() :: #{
-%%   <<"ExperimentConfig">> => experiment_config(),
+%% data_quality_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()),
+%%   <<"ContainerEntrypoint">> => list(string()),
 %%   <<"Environment">> => map(),
-%%   <<"TrainingTimeInSeconds">> => integer(),
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"FinalMetricDataList">> => list(metric_data()),
-%%   <<"MlflowDetails">> => mlflow_details(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CheckpointConfig">> => checkpoint_config(),
-%%   <<"TrainingJobArn">> => string(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"TuningJobArn">> => string(),
-%%   <<"DebugHookConfig">> => debug_hook_config(),
-%%   <<"TrainingJobStatus">> => list(any()),
-%%   <<"TrainingEndTime">> => non_neg_integer(),
-%%   <<"ResourceConfig">> => resource_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"VpcConfig">> => vpc_config(),
-%%   <<"ProgressInfo">> => training_progress_info(),
-%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
-%%   <<"WarmPoolStatus">> => warm_pool_status(),
-%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
-%%   <<"RetryStrategy">> => retry_strategy(),
-%%   <<"ModelArtifacts">> => model_artifacts(),
-%%   <<"FailureReason">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"InfraCheckConfig">> => infra_check_config(),
-%%   <<"BillableTimeInSeconds">> => integer(),
-%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()),
-%%   <<"MlflowConfig">> => mlflow_config(),
-%%   <<"ProfilingStatus">> => list(any()),
-%%   <<"SecondaryStatus">> => list(any()),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"ServerlessJobConfig">> => serverless_job_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OutputModelPackageArn">> => string(),
-%%   <<"BillableTokenCount">> => float(),
-%%   <<"TrainingJobName">> => string(),
-%%   <<"ProfilerConfig">> => profiler_config(),
-%%   <<"ModelPackageConfig">> => model_package_config(),
-%%   <<"ProfilerRuleEvaluationStatuses">> => list(profiler_rule_evaluation_status()),
-%%   <<"EnableManagedSpotTraining">> => boolean(),
-%%   <<"RemoteDebugConfig">> => remote_debug_config(),
-%%   <<"InputDataConfig">> => list(channel()),
-%%   <<"TrainingStartTime">> => non_neg_integer(),
-%%   <<"AlgorithmSpecification">> => algorithm_specification(),
-%%   <<"HyperParameters">> => map(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
-%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status())
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"RecordPreprocessorSourceUri">> => string()
 %% }
--type describe_training_job_response() :: #{binary() => any()}.
+-type data_quality_app_specification() :: #{binary() => any()}.
 
 %% Example:
-%% real_time_inference_recommendation() :: #{
-%%   <<"Environment">> => map(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"RecommendationId">> => string()
+%% data_quality_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
+%%   <<"StatisticsResource">> => monitoring_statistics_resource()
 %% }
--type real_time_inference_recommendation() :: #{binary() => any()}.
+-type data_quality_baseline_config() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_trial_component_response() :: #{
-%%   <<"TrialArn">> => string(),
-%%   <<"TrialComponentArn">> => string()
+%% data_quality_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
 %% }
--type disassociate_trial_component_response() :: #{binary() => any()}.
+-type data_quality_job_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_hyper_parameter_tuning_job_response() :: #{
-%%   <<"Autotune">> => autotune(),
-%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
-%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
-%%   <<"HyperParameterTuningJobArn">> => string(),
-%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
-%%   <<"HyperParameterTuningJobName">> => string(),
-%%   <<"HyperParameterTuningJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
-%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
-%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
-%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()),
-%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
-%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
-%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% data_source() :: #{
+%%   <<"DatasetSource">> => dataset_source(),
+%%   <<"FileSystemDataSource">> => file_system_data_source(),
+%%   <<"S3DataSource">> => s3_data_source()
 %% }
--type describe_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+-type data_source() :: #{binary() => any()}.
 
 %% Example:
-%% additional_inference_specification_definition() :: #{
-%%   <<"Containers">> => list(model_package_container_definition()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SupportedContentTypes">> => list(string()),
-%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
-%%   <<"SupportedResponseMIMETypes">> => list(string()),
-%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
-%% }
--type additional_inference_specification_definition() :: #{binary() => any()}.
-
-%% Example:
-%% list_a_i_workload_configs_response() :: #{
-%%   <<"AIWorkloadConfigs">> => list(a_i_workload_config_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_a_i_workload_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% parallelism_configuration() :: #{
-%%   <<"MaxParallelExecutionSteps">> => integer()
-%% }
--type parallelism_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_bias_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string(),
-%%   <<"JobResources">> := monitoring_resources(),
-%%   <<"ModelBiasAppSpecification">> := model_bias_app_specification(),
-%%   <<"ModelBiasBaselineConfig">> => model_bias_baseline_config(),
-%%   <<"ModelBiasJobInput">> := model_bias_job_input(),
-%%   <<"ModelBiasJobOutputConfig">> := monitoring_output_config(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_model_bias_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mlflow_apps_request() :: #{
-%%   <<"AccountDefaultStatus">> => list(any()),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"DefaultForDomainId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type list_mlflow_apps_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_response() :: #{
-%%   <<"HubArn">> => string()
-%% }
--type update_hub_response() :: #{binary() => any()}.
-
-%% Example:
-%% mlflow_config() :: #{
-%%   <<"MlflowExperimentName">> => string(),
-%%   <<"MlflowResourceArn">> => string(),
-%%   <<"MlflowRunName">> => string()
-%% }
--type mlflow_config() :: #{binary() => any()}.
-
-%% Example:
-%% context_source() :: #{
-%%   <<"SourceId">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"SourceUri">> => string()
-%% }
--type context_source() :: #{binary() => any()}.
-
-%% Example:
-%% batch_reboot_cluster_nodes_response() :: #{
-%%   <<"Failed">> => list(batch_reboot_cluster_nodes_error()),
-%%   <<"FailedNodeLogicalIds">> => list(batch_reboot_cluster_node_logical_ids_error()),
-%%   <<"Successful">> => list(string()),
-%%   <<"SuccessfulNodeLogicalIds">> => list(string())
-%% }
--type batch_reboot_cluster_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_component_output() :: #{
-%%   <<"InferenceComponentArn">> => string()
-%% }
--type create_inference_component_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_notebook_instance_input() :: #{
-%%   <<"AcceleratorTypes">> => list(list(any())()),
-%%   <<"AdditionalCodeRepositories">> => list(string()),
-%%   <<"DefaultCodeRepository">> => string(),
-%%   <<"DirectInternetAccess">> => list(any()),
-%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
-%%   <<"InstanceType">> := list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LifecycleConfigName">> => string(),
-%%   <<"NotebookInstanceName">> := string(),
-%%   <<"PlatformIdentifier">> => string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"RootAccess">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type create_notebook_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_s3_output() :: #{
+%% dataset_definition() :: #{
+%%   <<"AthenaDatasetDefinition">> => athena_dataset_definition(),
+%%   <<"DataDistributionType">> => list(any()),
+%%   <<"InputMode">> => list(any()),
 %%   <<"LocalPath">> => string(),
-%%   <<"S3UploadMode">> => list(any()),
-%%   <<"S3Uri">> => string()
+%%   <<"RedshiftDatasetDefinition">> => redshift_dataset_definition()
 %% }
--type monitoring_s3_output() :: #{binary() => any()}.
+-type dataset_definition() :: #{binary() => any()}.
 
 %% Example:
-%% clarify_inference_config() :: #{
-%%   <<"ContentTemplate">> => string(),
-%%   <<"FeatureHeaders">> => list(string()),
-%%   <<"FeatureTypes">> => list(list(any())()),
-%%   <<"FeaturesAttribute">> => string(),
-%%   <<"LabelAttribute">> => string(),
-%%   <<"LabelHeaders">> => list(string()),
-%%   <<"LabelIndex">> => integer(),
-%%   <<"MaxPayloadInMB">> => integer(),
-%%   <<"MaxRecordCount">> => integer(),
-%%   <<"ProbabilityAttribute">> => string(),
-%%   <<"ProbabilityIndex">> => integer()
+%% dataset_source() :: #{
+%%   <<"DatasetArn">> => string()
 %% }
--type clarify_inference_config() :: #{binary() => any()}.
+-type dataset_source() :: #{binary() => any()}.
 
 %% Example:
-%% pending_production_variant_summary() :: #{
-%%   <<"AcceleratorType">> => list(any()),
-%%   <<"CurrentInstanceCount">> => integer(),
-%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"CurrentWeight">> => float(),
-%%   <<"DeployedImages">> => list(deployed_image()),
-%%   <<"DesiredInstanceCount">> => integer(),
-%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
-%%   <<"DesiredWeight">> => float(),
-%%   <<"InstancePools">> => list(instance_pool_summary()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
-%%   <<"RoutingConfig">> => production_variant_routing_config(),
-%%   <<"VariantName">> => string(),
-%%   <<"VariantStatus">> => list(production_variant_status())
+%% debug_hook_config() :: #{
+%%   <<"CollectionConfigurations">> => list(collection_configuration()),
+%%   <<"HookParameters">> => map(),
+%%   <<"LocalPath">> => string(),
+%%   <<"S3OutputPath">> => string()
 %% }
--type pending_production_variant_summary() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_routing_config() :: #{
-%%   <<"RoutingStrategy">> => list(any())
-%% }
--type production_variant_routing_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_associations_request() :: #{
-%%   <<"AssociationType">> => list(any()),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"DestinationArn">> => string(),
-%%   <<"DestinationType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type list_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_executions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineExecutionSummaries">> => list(pipeline_execution_summary())
-%% }
--type list_pipeline_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_sharing_config() :: #{
-%%   <<"AbsoluteBorrowLimits">> => list(compute_quota_resource_config()),
-%%   <<"BorrowLimit">> => integer(),
-%%   <<"Strategy">> => list(any())
-%% }
--type resource_sharing_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_compute_quotas_response() :: #{
-%%   <<"ComputeQuotaSummaries">> => list(compute_quota_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_compute_quotas_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_labeling_job_request() :: #{
-%%   <<"HumanTaskConfig">> := human_task_config(),
-%%   <<"InputConfig">> := labeling_job_input_config(),
-%%   <<"LabelAttributeName">> := string(),
-%%   <<"LabelCategoryConfigS3Uri">> => string(),
-%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
-%%   <<"LabelingJobName">> := string(),
-%%   <<"OutputConfig">> := labeling_job_output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_labeling_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_i_recommendation_job_response() :: #{
-%%   <<"AIRecommendationJobArn">> => string()
-%% }
--type delete_a_i_recommendation_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_card_export_job_request() :: #{
-%%   <<"ModelCardExportJobArn">> := string()
-%% }
--type describe_model_card_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_code_repository_input() :: #{
-%%   <<"CodeRepositoryName">> := string()
-%% }
--type delete_code_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% trial_source() :: #{
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => string()
-%% }
--type trial_source() :: #{binary() => any()}.
-
-%% Example:
-%% workforce() :: #{
-%%   <<"CognitoConfig">> => cognito_config(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"OidcConfig">> => oidc_config_for_response(),
-%%   <<"SourceIpConfig">> => source_ip_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubDomain">> => string(),
-%%   <<"WorkforceArn">> => string(),
-%%   <<"WorkforceName">> => string(),
-%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_response()
-%% }
--type workforce() :: #{binary() => any()}.
-
-%% Example:
-%% cache_hit_result() :: #{
-%%   <<"SourcePipelineExecutionArn">> => string()
-%% }
--type cache_hit_result() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_training_job_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"FinalHyperParameterTuningJobObjectiveMetric">> => final_hyper_parameter_tuning_job_objective_metric(),
-%%   <<"ObjectiveStatus">> => list(any()),
-%%   <<"TrainingEndTime">> => non_neg_integer(),
-%%   <<"TrainingJobArn">> => string(),
-%%   <<"TrainingJobDefinitionName">> => string(),
-%%   <<"TrainingJobName">> => string(),
-%%   <<"TrainingJobStatus">> => list(any()),
-%%   <<"TrainingStartTime">> => non_neg_integer(),
-%%   <<"TunedHyperParameters">> => map(),
-%%   <<"TuningJobName">> => string()
-%% }
--type hyper_parameter_training_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mlflow_app_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type describe_mlflow_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% image_classification_job_config() :: #{
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
-%% }
--type image_classification_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_mlflow_app_request() :: #{
-%%   <<"AccountDefaultStatus">> => list(any()),
-%%   <<"Arn">> := string(),
-%%   <<"ArtifactStoreUri">> => string(),
-%%   <<"DefaultDomainIdList">> => list(string()),
-%%   <<"ModelRegistrationMode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
-%% }
--type update_mlflow_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workteam_request() :: #{
-%%   <<"WorkteamName">> := string()
-%% }
--type delete_workteam_request() :: #{binary() => any()}.
+-type debug_hook_config() :: #{binary() => any()}.
 
 %% Example:
 %% debug_rule_configuration() :: #{
@@ -9883,131 +4223,100 @@
 -type debug_rule_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_model_card_request() :: #{
-%%   <<"IncludedData">> => list(any()),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardVersion">> => integer()
-%% }
--type describe_model_card_request() :: #{binary() => any()}.
-
-%% Example:
-%% hub_access_config() :: #{
-%%   <<"HubContentArn">> => string()
-%% }
--type hub_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_packages_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelApprovalStatus">> => list(any()),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageType">> => list(any()),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_model_packages_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_human_task_ui_response() :: #{
-%%   <<"HumanTaskUiArn">> => string()
-%% }
--type create_human_task_ui_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_dashboard_model_card() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
+%% debug_rule_evaluation_status() :: #{
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelCardArn">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardStatus">> => list(any()),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"ModelId">> => string(),
-%%   <<"RiskRating">> => string(),
-%%   <<"SecurityConfig">> => model_card_security_config(),
-%%   <<"Tags">> => list(tag())
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluationJobArn">> => string(),
+%%   <<"RuleEvaluationStatus">> => list(any()),
+%%   <<"StatusDetails">> => string()
 %% }
--type model_dashboard_model_card() :: #{binary() => any()}.
+-type debug_rule_evaluation_status() :: #{binary() => any()}.
 
 %% Example:
-%% create_trial_request() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentName">> := string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrialName">> := string()
+%% default_ebs_storage_settings() :: #{
+%%   <<"DefaultEbsVolumeSizeInGb">> => integer(),
+%%   <<"MaximumEbsVolumeSizeInGb">> => integer()
 %% }
--type create_trial_request() :: #{binary() => any()}.
+-type default_ebs_storage_settings() :: #{binary() => any()}.
 
 %% Example:
-%% create_app_image_config_request() :: #{
-%%   <<"AppImageConfigName">> := string(),
-%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
-%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
-%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
-%%   <<"Tags">> => list(tag())
+%% default_space_settings() :: #{
+%%   <<"CustomFileSystemConfigs">> => list(list()),
+%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SpaceStorageSettings">> => default_space_storage_settings()
 %% }
--type create_app_image_config_request() :: #{binary() => any()}.
+-type default_space_settings() :: #{binary() => any()}.
 
 %% Example:
-%% list_cluster_events_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"EventTimeAfter">> => non_neg_integer(),
-%%   <<"EventTimeBefore">> => non_neg_integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"NodeId">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% default_space_storage_settings() :: #{
+%%   <<"DefaultEbsStorageSettings">> => default_ebs_storage_settings()
 %% }
--type list_cluster_events_request() :: #{binary() => any()}.
+-type default_space_storage_settings() :: #{binary() => any()}.
 
 %% Example:
-%% optimization_job_model_source_s3() :: #{
-%%   <<"ModelAccessConfig">> => optimization_model_access_config(),
-%%   <<"S3Uri">> => string()
+%% delete_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
 %% }
--type optimization_job_model_source_s3() :: #{binary() => any()}.
+-type delete_a_i_benchmark_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% deployed_image() :: #{
-%%   <<"ResolutionTime">> => non_neg_integer(),
-%%   <<"ResolvedImage">> => string(),
-%%   <<"SpecifiedImage">> => string()
+%% delete_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
 %% }
--type deployed_image() :: #{binary() => any()}.
+-type delete_a_i_benchmark_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% inference_component_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"InferenceComponentArn">> => string(),
-%%   <<"InferenceComponentName">> => string(),
-%%   <<"InferenceComponentStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VariantName">> => string()
+%% delete_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
 %% }
--type inference_component_summary() :: #{binary() => any()}.
+-type delete_a_i_recommendation_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_request() :: #{
-%%   <<"ClusterName">> := string()
+%% delete_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
 %% }
--type delete_cluster_request() :: #{binary() => any()}.
+-type delete_a_i_recommendation_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_transform_job_request() :: #{
-%%   <<"TransformJobName">> := string()
+%% delete_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string()
 %% }
--type describe_transform_job_request() :: #{binary() => any()}.
+-type delete_a_i_workload_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string()
+%% }
+-type delete_a_i_workload_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_action_request() :: #{
+%%   <<"ActionName">> := string()
+%% }
+-type delete_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type delete_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_algorithm_input() :: #{
+%%   <<"AlgorithmName">> := string()
+%% }
+-type delete_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string()
+%% }
+-type delete_app_image_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_app_request() :: #{
@@ -10020,12 +4329,539 @@
 -type delete_app_request() :: #{binary() => any()}.
 
 %% Example:
-%% objective_status_counters() :: #{
-%%   <<"Failed">> => integer(),
-%%   <<"Pending">> => integer(),
-%%   <<"Succeeded">> => integer()
+%% delete_artifact_request() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"Source">> => artifact_source()
 %% }
--type objective_status_counters() :: #{binary() => any()}.
+-type delete_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type delete_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_request() :: #{
+%%   <<"DestinationArn">> := string(),
+%%   <<"SourceArn">> := string()
+%% }
+-type delete_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_response() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type delete_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string()
+%% }
+-type delete_cluster_scheduler_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string()
+%% }
+-type delete_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type delete_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_quota_request() :: #{
+%%   <<"ComputeQuotaId">> := string()
+%% }
+-type delete_compute_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_context_request() :: #{
+%%   <<"ContextName">> := string()
+%% }
+-type delete_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type delete_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_data_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_device_fleet_request() :: #{
+%%   <<"DeviceFleetName">> := string()
+%% }
+-type delete_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"RetentionPolicy">> => retention_policy()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_edge_deployment_plan_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string()
+%% }
+-type delete_edge_deployment_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type delete_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_config_input() :: #{
+%%   <<"EndpointConfigName">> := string()
+%% }
+-type delete_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_input() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type delete_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experiment_request() :: #{
+%%   <<"ExperimentName">> := string()
+%% }
+-type delete_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type delete_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_feature_group_request() :: #{
+%%   <<"FeatureGroupName">> := string()
+%% }
+-type delete_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string()
+%% }
+-type delete_flow_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_definition_response() :: #{
+
+%% }
+-type delete_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_content_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_content_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> := string(),
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hub_request() :: #{
+%%   <<"HubName">> := string()
+%% }
+-type delete_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string()
+%% }
+-type delete_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_human_task_ui_response() :: #{
+
+%% }
+-type delete_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type delete_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_request() :: #{
+%%   <<"ImageName">> := string()
+%% }
+-type delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_response() :: #{
+
+%% }
+-type delete_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"Version">> => integer()
+%% }
+-type delete_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_version_response() :: #{
+
+%% }
+-type delete_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_component_input() :: #{
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type delete_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type delete_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_response() :: #{
+
+%% }
+-type delete_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_app_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type delete_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type delete_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_bias_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_card_request() :: #{
+%%   <<"ModelCardName">> := string()
+%% }
+-type delete_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_input() :: #{
+%%   <<"ModelName">> := string()
+%% }
+-type delete_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_group_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type delete_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type delete_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_package_input() :: #{
+%%   <<"ModelPackageName">> := string()
+%% }
+-type delete_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type delete_model_quality_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type delete_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type delete_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string()
+%% }
+-type delete_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
+%% }
+-type delete_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partner_app_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"PipelineName">> := string()
+%% }
+-type delete_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type delete_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
+%% }
+-type delete_processing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_input() :: #{
+%%   <<"ProjectName">> := string()
+%% }
+-type delete_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> := string()
+%% }
+-type delete_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigName">> := string()
+%% }
+-type delete_studio_lifecycle_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type delete_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_output() :: #{
+
+%% }
+-type delete_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type delete_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string()
+%% }
+-type delete_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type delete_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_request() :: #{
+%%   <<"TrialName">> := string()
+%% }
+-type delete_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trial_response() :: #{
+%%   <<"TrialArn">> => string()
+%% }
+-type delete_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string()
+%% }
+-type delete_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workforce_request() :: #{
+%%   <<"WorkforceName">> := string()
+%% }
+-type delete_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workforce_response() :: #{
+
+%% }
+-type delete_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workteam_request() :: #{
+%%   <<"WorkteamName">> := string()
+%% }
+-type delete_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workteam_response() :: #{
+%%   <<"Success">> => boolean()
+%% }
+-type delete_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployed_image() :: #{
+%%   <<"ResolutionTime">> => non_neg_integer(),
+%%   <<"ResolvedImage">> => string(),
+%%   <<"SpecifiedImage">> => string()
+%% }
+-type deployed_image() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config() :: #{
+%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
+%%   <<"BlueGreenUpdatePolicy">> => blue_green_update_policy(),
+%%   <<"RollingUpdatePolicy">> => rolling_update_policy()
+%% }
+-type deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_configuration() :: #{
+%%   <<"AutoRollbackConfiguration">> => list(alarm_details()),
+%%   <<"RollingUpdatePolicy">> => rolling_deployment_policy(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_recommendation() :: #{
+%%   <<"RealTimeInferenceRecommendations">> => list(real_time_inference_recommendation()),
+%%   <<"RecommendationStatus">> => list(any())
+%% }
+-type deployment_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_stage() :: #{
+%%   <<"DeploymentConfig">> => edge_deployment_config(),
+%%   <<"DeviceSelectionConfig">> => device_selection_config(),
+%%   <<"StageName">> => string()
+%% }
+-type deployment_stage() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_stage_status_summary() :: #{
+%%   <<"DeploymentConfig">> => edge_deployment_config(),
+%%   <<"DeploymentStatus">> => edge_deployment_status(),
+%%   <<"DeviceSelectionConfig">> => device_selection_config(),
+%%   <<"StageName">> => string()
+%% }
+-type deployment_stage_status_summary() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceNames">> := list(string())
+%% }
+-type deregister_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% derived_information() :: #{
+%%   <<"DerivedDataInputConfig">> => string()
+%% }
+-type derived_information() :: #{binary() => any()}.
+
+%% Example:
+%% describe_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
+%% }
+-type describe_a_i_benchmark_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_a_i_benchmark_job_response() :: #{
@@ -10046,40 +4882,204 @@
 -type describe_a_i_benchmark_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% cfn_update_template_provider() :: #{
-%%   <<"Parameters">> => list(cfn_stack_update_parameter()),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateURL">> => string()
+%% describe_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
 %% }
--type cfn_update_template_provider() :: #{binary() => any()}.
+-type describe_a_i_recommendation_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% parent_hyper_parameter_tuning_job() :: #{
-%%   <<"HyperParameterTuningJobName">> => string()
+%% describe_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string(),
+%%   <<"AIRecommendationJobName">> => string(),
+%%   <<"AIRecommendationJobStatus">> => list(any()),
+%%   <<"AIWorkloadConfigIdentifier">> => string(),
+%%   <<"AdapterSource">> => list(),
+%%   <<"ComputeSpec">> => a_i_recommendation_compute_spec(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceSpecification">> => a_i_recommendation_inference_specification(),
+%%   <<"ModelSource">> => list(),
+%%   <<"OptimizeModel">> => boolean(),
+%%   <<"OutputConfig">> => a_i_recommendation_output_result(),
+%%   <<"PerformanceTarget">> => a_i_recommendation_performance_target(),
+%%   <<"Recommendations">> => list(a_i_recommendation()),
+%%   <<"RoleArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
 %% }
--type parent_hyper_parameter_tuning_job() :: #{binary() => any()}.
+-type describe_a_i_recommendation_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% render_ui_template_response() :: #{
-%%   <<"Errors">> => list(rendering_error()),
-%%   <<"RenderedContent">> => string()
+%% describe_a_i_workload_config_request() :: #{
+%%   <<"AIWorkloadConfigName">> := string()
 %% }
--type render_ui_template_response() :: #{binary() => any()}.
+-type describe_a_i_workload_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_partner_app_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"IncludeAvailableUpgrade">> => boolean()
+%% describe_a_i_workload_config_response() :: #{
+%%   <<"AIWorkloadConfigArn">> => string(),
+%%   <<"AIWorkloadConfigName">> => string(),
+%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetConfig">> => list(),
+%%   <<"Tags">> => list(tag())
 %% }
--type describe_partner_app_request() :: #{binary() => any()}.
+-type describe_a_i_workload_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% base_model() :: #{
-%%   <<"HubContentName">> => string(),
-%%   <<"HubContentVersion">> => string(),
-%%   <<"RecipeName">> => string()
+%% describe_action_request() :: #{
+%%   <<"ActionName">> := string()
 %% }
--type base_model() :: #{binary() => any()}.
+-type describe_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_response() :: #{
+%%   <<"ActionArn">> => string(),
+%%   <<"ActionName">> => string(),
+%%   <<"ActionType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => action_source(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_input() :: #{
+%%   <<"AlgorithmName">> := string()
+%% }
+-type describe_algorithm_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_output() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AlgorithmDescription">> => string(),
+%%   <<"AlgorithmName">> => string(),
+%%   <<"AlgorithmStatus">> => list(any()),
+%%   <<"AlgorithmStatusDetails">> => algorithm_status_details(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ProductId">> => string(),
+%%   <<"TrainingSpecification">> => training_specification(),
+%%   <<"ValidationSpecification">> => algorithm_validation_specification()
+%% }
+-type describe_algorithm_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string()
+%% }
+-type describe_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string(),
+%%   <<"AppImageConfigName">> => string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type describe_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_request() :: #{
+%%   <<"AppName">> := string(),
+%%   <<"AppType">> := list(any()),
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"UserProfileName">> => string()
+%% }
+-type describe_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_response() :: #{
+%%   <<"AppArn">> => string(),
+%%   <<"AppName">> => string(),
+%%   <<"AppType">> => list(any()),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"EffectiveTrustedIdentityPropagationStatus">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastHealthCheckTimestamp">> => non_neg_integer(),
+%%   <<"LastUserActivityTimestamp">> => non_neg_integer(),
+%%   <<"RecoveryMode">> => boolean(),
+%%   <<"ResourceSpec">> => resource_spec(),
+%%   <<"SpaceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type describe_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_artifact_request() :: #{
+%%   <<"ArtifactArn">> := string()
+%% }
+-type describe_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"ArtifactType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => artifact_source()
+%% }
+-type describe_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type describe_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"AutoMLJobArtifacts">> => auto_ml_job_artifacts(),
+%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
+%%   <<"AutoMLJobName">> => string(),
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"AutoMLJobSecondaryStatus">> => list(any()),
+%%   <<"AutoMLJobStatus">> => list(any()),
+%%   <<"BestCandidate">> => auto_ml_candidate(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"InputDataConfig">> => list(auto_ml_channel()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelDeployConfig">> => model_deploy_config(),
+%%   <<"ModelDeployResult">> => model_deploy_result(),
+%%   <<"OutputDataConfig">> => auto_ml_output_data_config(),
+%%   <<"PartialFailureReasons">> => list(auto_ml_partial_failure_reason()),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"ResolvedAttributes">> => resolved_attributes(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_ml_job_v2_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type describe_auto_ml_job_v2_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_auto_ml_job_v2_response() :: #{
@@ -10110,123 +5110,377 @@
 -type describe_auto_ml_job_v2_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_trial_component_request() :: #{
-%%   <<"TrialComponentName">> := string()
+%% describe_cluster_event_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"EventId">> := string()
 %% }
--type delete_trial_component_request() :: #{binary() => any()}.
+-type describe_cluster_event_request() :: #{binary() => any()}.
 
 %% Example:
-%% model_package_group_summary() :: #{
+%% describe_cluster_event_response() :: #{
+%%   <<"EventDetails">> => cluster_event_detail()
+%% }
+-type describe_cluster_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_node_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeId">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type describe_cluster_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_node_response() :: #{
+%%   <<"NodeDetails">> => cluster_node_details()
+%% }
+-type describe_cluster_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type describe_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_response() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config_output(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"ClusterRole">> => string(),
+%%   <<"ClusterStatus">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ManagedConfiguration">> => managed_configuration(),
-%%   <<"ModelPackageGroupArn">> => string(),
-%%   <<"ModelPackageGroupDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageGroupStatus">> => list(any())
+%%   <<"FailureMessage">> => string(),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_details()),
+%%   <<"NodeProvisioningMode">> => list(any()),
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config_output(),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type model_package_group_summary() :: #{binary() => any()}.
+-type describe_cluster_response() :: #{binary() => any()}.
 
 %% Example:
-%% artifact_summary() :: #{
-%%   <<"ArtifactArn">> => string(),
-%%   <<"ArtifactName">> => string(),
-%%   <<"ArtifactType">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Source">> => artifact_source()
+%% describe_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer()
 %% }
--type artifact_summary() :: #{binary() => any()}.
+-type describe_cluster_scheduler_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% image() :: #{
+%% describe_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigId">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer(),
+%%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
 %%   <<"FailureReason">> => string(),
-%%   <<"ImageArn">> => string(),
-%%   <<"ImageName">> => string(),
-%%   <<"ImageStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer()
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SchedulerConfig">> => scheduler_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => map()
 %% }
--type image() :: #{binary() => any()}.
+-type describe_cluster_scheduler_config_response() :: #{binary() => any()}.
 
 %% Example:
-%% device_fleet_summary() :: #{
+%% describe_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string()
+%% }
+-type describe_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string(),
+%%   <<"CodeRepositoryName">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeviceFleetArn">> => string(),
-%%   <<"DeviceFleetName">> => string(),
+%%   <<"GitConfig">> => git_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
--type device_fleet_summary() :: #{binary() => any()}.
+-type describe_code_repository_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_compilation_job_request() :: #{
-%%   <<"CompilationJobName">> := string(),
+%% describe_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type describe_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_compilation_job_response() :: #{
+%%   <<"CompilationEndTime">> => non_neg_integer(),
+%%   <<"CompilationJobArn">> => string(),
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CompilationJobStatus">> => list(any()),
+%%   <<"CompilationStartTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DerivedInformation">> => derived_information(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceImage">> => string(),
 %%   <<"InputConfig">> => input_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"ModelDigests">> => model_digests(),
 %%   <<"ModelPackageVersionArn">> => string(),
-%%   <<"OutputConfig">> := output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingCondition">> := stopping_condition(),
-%%   <<"Tags">> => list(tag()),
+%%   <<"OutputConfig">> => output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
 %%   <<"VpcConfig">> => neo_vpc_config()
 %% }
--type create_compilation_job_request() :: #{binary() => any()}.
+-type describe_compilation_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% compute_quota_resource_config() :: #{
-%%   <<"AcceleratorPartition">> => accelerator_partition_config(),
-%%   <<"Accelerators">> => integer(),
-%%   <<"Count">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"MemoryInGiB">> => float(),
-%%   <<"VCpu">> => float()
+%% describe_compute_quota_request() :: #{
+%%   <<"ComputeQuotaId">> := string(),
+%%   <<"ComputeQuotaVersion">> => integer()
 %% }
--type compute_quota_resource_config() :: #{binary() => any()}.
+-type describe_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
-%% label_counters() :: #{
-%%   <<"FailedNonRetryableError">> => integer(),
-%%   <<"HumanLabeled">> => integer(),
-%%   <<"MachineLabeled">> => integer(),
-%%   <<"TotalLabeled">> => integer(),
-%%   <<"Unlabeled">> => integer()
+%% describe_compute_quota_response() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> => string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"ComputeQuotaVersion">> => integer(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type label_counters() :: #{binary() => any()}.
+-type describe_compute_quota_response() :: #{binary() => any()}.
 
 %% Example:
-%% a_i_benchmark_output_result() :: #{
-%%   <<"CloudWatchLogs">> => list(a_i_cloud_watch_logs()),
-%%   <<"MlflowConfig">> => a_i_mlflow_config(),
-%%   <<"S3OutputLocation">> => string()
+%% describe_context_request() :: #{
+%%   <<"ContextName">> := string()
 %% }
--type a_i_benchmark_output_result() :: #{binary() => any()}.
+-type describe_context_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_session_response() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"StreamUrl">> => string(),
-%%   <<"TokenValue">> => string()
+%% describe_context_response() :: #{
+%%   <<"ContextArn">> => string(),
+%%   <<"ContextName">> => string(),
+%%   <<"ContextType">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"Source">> => context_source()
 %% }
--type start_session_response() :: #{binary() => any()}.
+-type describe_context_response() :: #{binary() => any()}.
 
 %% Example:
-%% drift_check_model_quality() :: #{
-%%   <<"Constraints">> => metrics_source(),
-%%   <<"Statistics">> => metrics_source()
+%% describe_data_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
 %% }
--type drift_check_model_quality() :: #{binary() => any()}.
+-type describe_data_quality_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% explainability() :: #{
-%%   <<"Report">> => metrics_source()
+%% describe_data_quality_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataQualityAppSpecification">> => data_quality_app_specification(),
+%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
+%%   <<"DataQualityJobInput">> => data_quality_job_input(),
+%%   <<"DataQualityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
 %% }
--type explainability() :: #{binary() => any()}.
+-type describe_data_quality_job_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_monitoring_schedule_response() :: #{
-%%   <<"MonitoringScheduleArn">> => string()
+%% describe_device_fleet_request() :: #{
+%%   <<"DeviceFleetName">> := string()
 %% }
--type update_monitoring_schedule_response() :: #{binary() => any()}.
+-type describe_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_fleet_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"IotRoleAlias">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_device_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"DeviceName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_device_response() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string(),
+%%   <<"LatestHeartbeat">> => non_neg_integer(),
+%%   <<"MaxModels">> => integer(),
+%%   <<"Models">> => list(edge_model()),
+%%   <<"NextToken">> => string(),
+%%   <<"RegistrationTime">> => non_neg_integer()
+%% }
+-type describe_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_request() :: #{
+%%   <<"DomainId">> := string()
+%% }
+-type describe_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_response() :: #{
+%%   <<"AppNetworkAccessType">> => list(any()),
+%%   <<"AppSecurityGroupManagement">> => list(any()),
+%%   <<"AuthMode">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSpaceSettings">> => default_space_settings(),
+%%   <<"DefaultUserSettings">> => user_settings(),
+%%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainSettings">> => domain_settings(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemCreation">> => list(any()),
+%%   <<"HomeEfsFileSystemId">> => string(),
+%%   <<"HomeEfsFileSystemKmsKeyId">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SecurityGroupIdForDomainBoundary">> => string(),
+%%   <<"SingleSignOnApplicationArn">> => string(),
+%%   <<"SingleSignOnManagedApplicationInstanceId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"TagPropagation">> => list(any()),
+%%   <<"Url">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type describe_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_deployment_plan_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_edge_deployment_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_deployment_plan_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"EdgeDeploymentFailed">> => integer(),
+%%   <<"EdgeDeploymentPending">> => integer(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"EdgeDeploymentSuccess">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelConfigs">> => list(edge_deployment_model_config()),
+%%   <<"NextToken">> => string(),
+%%   <<"Stages">> => list(deployment_stage_status_summary())
+%% }
+-type describe_edge_deployment_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_packaging_job_request() :: #{
+%%   <<"EdgePackagingJobName">> := string()
+%% }
+-type describe_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_edge_packaging_job_response() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EdgePackagingJobArn">> => string(),
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"EdgePackagingJobStatus">> => list(any()),
+%%   <<"EdgePackagingJobStatusMessage">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelArtifact">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelSignature">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"PresetDeploymentOutput">> => edge_preset_deployment_output(),
+%%   <<"ResourceKey">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_edge_packaging_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_config_input() :: #{
+%%   <<"EndpointConfigName">> := string()
+%% }
+-type describe_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_config_output() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"EndpointConfigArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExplainerConfig">> => explainer_config(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MetricsConfig">> => metrics_config(),
+%%   <<"ProductionVariants">> => list(production_variant()),
+%%   <<"ShadowProductionVariants">> => list(production_variant()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type describe_endpoint_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_input() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type describe_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_output() :: #{
+%%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"ExplainerConfig">> => explainer_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastDeploymentConfig">> => deployment_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetricsConfig">> => metrics_config(),
+%%   <<"PendingDeploymentSummary">> => pending_deployment_summary(),
+%%   <<"ProductionVariants">> => list(production_variant_summary()),
+%%   <<"ShadowProductionVariants">> => list(production_variant_summary())
+%% }
+-type describe_endpoint_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_experiment_request() :: #{
@@ -10235,59 +5489,435 @@
 -type describe_experiment_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_model_bias_job_definition_response() :: #{
-%%   <<"JobDefinitionArn">> => string()
+%% describe_experiment_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => experiment_source()
 %% }
--type create_model_bias_job_definition_response() :: #{binary() => any()}.
+-type describe_experiment_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_action_response() :: #{
-%%   <<"ActionArn">> => string()
+%% describe_feature_group_request() :: #{
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"NextToken">> => string()
 %% }
--type delete_action_response() :: #{binary() => any()}.
+-type describe_feature_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_app_request() :: #{
-%%   <<"AppName">> := string(),
-%%   <<"AppType">> := list(any()),
-%%   <<"DomainId">> := string(),
-%%   <<"SpaceName">> => string(),
-%%   <<"UserProfileName">> => string()
+%% describe_feature_group_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTimeFeatureName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FeatureDefinitions">> => list(feature_definition()),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastUpdateStatus">> => last_update_status(),
+%%   <<"NextToken">> => string(),
+%%   <<"OfflineStoreConfig">> => offline_store_config(),
+%%   <<"OfflineStoreStatus">> => offline_store_status(),
+%%   <<"OnlineStoreConfig">> => online_store_config(),
+%%   <<"OnlineStoreTotalSizeBytes">> => float(),
+%%   <<"RecordIdentifierFeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ThroughputConfig">> => throughput_config_description()
 %% }
--type describe_app_request() :: #{binary() => any()}.
+-type describe_feature_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% collection_configuration() :: #{
-%%   <<"CollectionName">> => string(),
-%%   <<"CollectionParameters">> => map()
+%% describe_feature_metadata_request() :: #{
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"FeatureName">> := string()
 %% }
--type collection_configuration() :: #{binary() => any()}.
+-type describe_feature_metadata_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_config() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroups">> => list(instance_group()),
-%%   <<"InstancePlacementConfig">> => instance_placement_config(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"KeepAlivePeriodInSeconds">> => integer(),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
+%% describe_feature_metadata_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => list(feature_parameter())
 %% }
--type resource_config() :: #{binary() => any()}.
+-type describe_feature_metadata_response() :: #{binary() => any()}.
 
 %% Example:
-%% amazon_q_settings() :: #{
-%%   <<"QProfileArn">> => string(),
-%%   <<"Status">> => list(any())
+%% describe_flow_definition_request() :: #{
+%%   <<"FlowDefinitionName">> := string()
 %% }
--type amazon_q_settings() :: #{binary() => any()}.
+-type describe_flow_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_project_output() :: #{
-%%   <<"ProjectArn">> => string()
+%% describe_flow_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"FlowDefinitionName">> => string(),
+%%   <<"FlowDefinitionStatus">> => list(any()),
+%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
+%%   <<"OutputConfig">> => flow_definition_output_config(),
+%%   <<"RoleArn">> => string()
 %% }
--type update_project_output() :: #{binary() => any()}.
+-type describe_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_content_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string()
+%% }
+-type describe_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_content_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DocumentSchemaVersion">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string(),
+%%   <<"HubContentDependencies">> => list(hub_content_dependency()),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentDocument">> => string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentSearchKeywords">> => list(string()),
+%%   <<"HubContentStatus">> => list(any()),
+%%   <<"HubContentType">> => list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ReferenceMinVersion">> => string(),
+%%   <<"SageMakerPublicHubContentArn">> => string(),
+%%   <<"SupportStatus">> => list(any())
+%% }
+-type describe_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_request() :: #{
+%%   <<"HubName">> := string()
+%% }
+-type describe_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hub_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"HubSearchKeywords">> => list(string()),
+%%   <<"HubStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"S3StorageConfig">> => hub_s3_storage_config()
+%% }
+-type describe_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_human_task_ui_request() :: #{
+%%   <<"HumanTaskUiName">> := string()
+%% }
+-type describe_human_task_ui_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_human_task_ui_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"HumanTaskUiName">> => string(),
+%%   <<"HumanTaskUiStatus">> => list(any()),
+%%   <<"UiTemplate">> => ui_template_info()
+%% }
+-type describe_human_task_ui_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type describe_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hyper_parameter_tuning_job_response() :: #{
+%%   <<"Autotune">> => autotune(),
+%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
+%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
+%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
+%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% }
+-type describe_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_request() :: #{
+%%   <<"ImageName">> := string()
+%% }
+-type describe_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"ImageStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"Version">> => integer()
+%% }
+-type describe_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_version_response() :: #{
+%%   <<"BaseImage">> => string(),
+%%   <<"ContainerImage">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageVersionArn">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any()),
+%%   <<"Version">> => integer()
+%% }
+-type describe_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_component_input() :: #{
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type describe_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_component_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceComponentArn">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceComponentStatus">> => list(any()),
+%%   <<"LastDeploymentConfig">> => inference_component_deployment_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config_summary(),
+%%   <<"Specification">> => inference_component_specification_summary(),
+%%   <<"Specifications">> => list(inference_component_specification_summary()),
+%%   <<"VariantName">> => string()
+%% }
+-type describe_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_experiment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointMetadata">> => endpoint_metadata(),
+%%   <<"KmsKey">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelVariants">> => list(model_variant_config_summary()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> => shadow_mode_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_recommendations_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type describe_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_recommendations_job_response() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointPerformances">> => list(endpoint_performance()),
+%%   <<"FailureReason">> => string(),
+%%   <<"InferenceRecommendations">> => list(inference_recommendation()),
+%%   <<"InputConfig">> => recommendation_job_input_config(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions()
+%% }
+-type describe_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigDocument">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_schema_version_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type describe_job_schema_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_schema_version_response() :: #{
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigSchema">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type describe_job_schema_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_labeling_job_request() :: #{
+%%   <<"LabelingJobName">> := string()
+%% }
+-type describe_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_labeling_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HumanTaskConfig">> => human_task_config(),
+%%   <<"InputConfig">> => labeling_job_input_config(),
+%%   <<"JobReferenceCode">> => string(),
+%%   <<"LabelAttributeName">> => string(),
+%%   <<"LabelCategoryConfigS3Uri">> => string(),
+%%   <<"LabelCounters">> => label_counters(),
+%%   <<"LabelingJobAlgorithmsConfig">> => labeling_job_algorithms_config(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"LabelingJobOutput">> => labeling_job_output(),
+%%   <<"LabelingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => labeling_job_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingConditions">> => labeling_job_stopping_conditions(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_labeling_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lineage_group_request() :: #{
+%%   <<"LineageGroupName">> := string()
+%% }
+-type describe_lineage_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lineage_group_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"LineageGroupName">> => string()
+%% }
+-type describe_lineage_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mlflow_app_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type describe_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mlflow_app_response() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaintenanceStatus">> => list(any()),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type describe_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type describe_mlflow_tracking_server_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_mlflow_tracking_server_response() :: #{
@@ -10313,1244 +5943,10 @@
 -type describe_mlflow_tracking_server_response() :: #{binary() => any()}.
 
 %% Example:
-%% real_time_inference_config() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any())
+%% describe_model_bias_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
 %% }
--type real_time_inference_config() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_sage_maker_model() :: #{
-%%   <<"ModelName">> => string()
-%% }
--type optimization_sage_maker_model() :: #{binary() => any()}.
-
-%% Example:
-%% describe_transform_job_response() :: #{
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"BatchStrategy">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
-%%   <<"DataProcessing">> => data_processing(),
-%%   <<"Environment">> => map(),
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"MaxConcurrentTransforms">> => integer(),
-%%   <<"MaxPayloadInMB">> => integer(),
-%%   <<"ModelClientConfig">> => model_client_config(),
-%%   <<"ModelName">> => string(),
-%%   <<"TransformEndTime">> => non_neg_integer(),
-%%   <<"TransformInput">> => transform_input(),
-%%   <<"TransformJobArn">> => string(),
-%%   <<"TransformJobName">> => string(),
-%%   <<"TransformJobStatus">> => list(any()),
-%%   <<"TransformOutput">> => transform_output(),
-%%   <<"TransformResources">> => transform_resources(),
-%%   <<"TransformStartTime">> => non_neg_integer()
-%% }
--type describe_transform_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_model_access_config() :: #{
-%%   <<"AcceptEula">> => boolean()
-%% }
--type optimization_model_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_workteams_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_workteams_request() :: #{binary() => any()}.
-
-%% Example:
-%% online_store_config() :: #{
-%%   <<"EnableOnlineStore">> => boolean(),
-%%   <<"SecurityConfig">> => online_store_security_config(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"TtlDuration">> => ttl_duration()
-%% }
--type online_store_config() :: #{binary() => any()}.
-
-%% Example:
-%% processing_job_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type processing_job_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% label_counters_for_workteam() :: #{
-%%   <<"HumanLabeled">> => integer(),
-%%   <<"PendingHuman">> => integer(),
-%%   <<"Total">> => integer()
-%% }
--type label_counters_for_workteam() :: #{binary() => any()}.
-
-%% Example:
-%% list_artifacts_response() :: #{
-%%   <<"ArtifactSummaries">> => list(artifact_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_artifacts_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hub_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HubArn">> => string(),
-%%   <<"HubDescription">> => string(),
-%%   <<"HubDisplayName">> => string(),
-%%   <<"HubName">> => string(),
-%%   <<"HubSearchKeywords">> => list(string()),
-%%   <<"HubStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"S3StorageConfig">> => hub_s3_storage_config()
-%% }
--type describe_hub_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_image_config_request() :: #{
-%%   <<"AppImageConfigName">> := string()
-%% }
--type delete_app_image_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_group_request() :: #{
-%%   <<"FeatureGroupName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_feature_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_scheduler_config_response() :: #{
-%%   <<"ClusterSchedulerConfigArn">> => string(),
-%%   <<"ClusterSchedulerConfigVersion">> => integer()
-%% }
--type update_cluster_scheduler_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_compilation_job_request() :: #{
-%%   <<"CompilationJobName">> := string()
-%% }
--type delete_compilation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_capture_config_summary() :: #{
-%%   <<"CaptureStatus">> => list(any()),
-%%   <<"CurrentSamplingPercentage">> => integer(),
-%%   <<"DestinationS3Uri">> => string(),
-%%   <<"EnableCapture">> => boolean(),
-%%   <<"KmsKeyId">> => string()
-%% }
--type data_capture_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_compute_quota_request() :: #{
-%%   <<"ActivationState">> => list(any()),
-%%   <<"ClusterArn">> := string(),
-%%   <<"ComputeQuotaConfig">> := compute_quota_config(),
-%%   <<"ComputeQuotaTarget">> := compute_quota_target(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_compute_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_schedule_config() :: #{
-%%   <<"MonitoringJobDefinition">> => monitoring_job_definition(),
-%%   <<"MonitoringJobDefinitionName">> => string(),
-%%   <<"MonitoringType">> => list(any()),
-%%   <<"ScheduleConfig">> => schedule_config()
-%% }
--type monitoring_schedule_config() :: #{binary() => any()}.
-
-%% Example:
-%% profiler_config_for_update() :: #{
-%%   <<"DisableProfiler">> => boolean(),
-%%   <<"ProfilingIntervalInMilliseconds">> => float(),
-%%   <<"ProfilingParameters">> => map(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type profiler_config_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% rolling_update_policy() :: #{
-%%   <<"MaximumBatchSize">> => capacity_size(),
-%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
-%%   <<"RollbackMaximumBatchSize">> => capacity_size(),
-%%   <<"WaitIntervalInSeconds">> => integer()
-%% }
--type rolling_update_policy() :: #{binary() => any()}.
-
-%% Example:
-%% app_image_config_details() :: #{
-%%   <<"AppImageConfigArn">> => string(),
-%%   <<"AppImageConfigName">> => string(),
-%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
-%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type app_image_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_app_request() :: #{
-%%   <<"ApplicationConfig">> => partner_app_config(),
-%%   <<"AuthType">> := list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
-%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Tier">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type create_partner_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% cfn_stack_update_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type cfn_stack_update_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% model_compilation_config() :: #{
-%%   <<"Image">> => string(),
-%%   <<"OverrideEnvironment">> => map()
-%% }
--type model_compilation_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_feature_metadata_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FeatureGroupName">> := string(),
-%%   <<"FeatureName">> := string(),
-%%   <<"ParameterAdditions">> => list(feature_parameter()),
-%%   <<"ParameterRemovals">> => list(string())
-%% }
--type update_feature_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_plans_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrainingPlanSummaries">> => list(training_plan_summary())
-%% }
--type list_training_plans_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_labeling_job_request() :: #{
-%%   <<"LabelingJobName">> := string()
-%% }
--type describe_labeling_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_request() :: #{
-%%   <<"DomainId">> := string()
-%% }
--type describe_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_stage_devices_response() :: #{
-%%   <<"DeviceDeploymentSummaries">> => list(device_deployment_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_stage_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_presigned_notebook_instance_url_input() :: #{
-%%   <<"NotebookInstanceName">> := string(),
-%%   <<"SessionExpirationDurationInSeconds">> => integer()
-%% }
--type create_presigned_notebook_instance_url_input() :: #{binary() => any()}.
-
-%% Example:
-%% model_explainability_job_input() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"EndpointInput">> => endpoint_input()
-%% }
--type model_explainability_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_space_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SpaceDisplayName">> => string(),
-%%   <<"SpaceName">> := string(),
-%%   <<"SpaceSettings">> => space_settings()
-%% }
--type update_space_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_version_request() :: #{
-%%   <<"PipelineArn">> := string(),
-%%   <<"PipelineVersionDescription">> => string(),
-%%   <<"PipelineVersionDisplayName">> => string(),
-%%   <<"PipelineVersionId">> := float()
-%% }
--type update_pipeline_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_source_detail() :: #{
-%%   <<"ProcessingJob">> => processing_job(),
-%%   <<"SourceArn">> => string(),
-%%   <<"TrainingJob">> => training_job(),
-%%   <<"TransformJob">> => transform_job()
-%% }
--type trial_component_source_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_training_plan_request() :: #{
-%%   <<"SpareInstanceCountPerUltraServer">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrainingPlanName">> := string(),
-%%   <<"TrainingPlanOfferingId">> := string()
-%% }
--type create_training_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_candidates_for_auto_ml_job_response() :: #{
-%%   <<"Candidates">> => list(auto_ml_candidate()),
-%%   <<"NextToken">> => string()
-%% }
--type list_candidates_for_auto_ml_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% predefined_metric_specification() :: #{
-%%   <<"PredefinedMetricType">> => string()
-%% }
--type predefined_metric_specification() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_input_configuration() :: #{
-%%   <<"EnvironmentParameterRanges">> => environment_parameter_ranges(),
-%%   <<"InferenceSpecificationName">> => string(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ServerlessConfig">> => production_variant_serverless_config()
-%% }
--type endpoint_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_rolling_update_policy() :: #{
-%%   <<"MaximumBatchSize">> => inference_component_capacity_size(),
-%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
-%%   <<"RollbackMaximumBatchSize">> => inference_component_capacity_size(),
-%%   <<"WaitIntervalInSeconds">> => integer()
-%% }
--type inference_component_rolling_update_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_input() :: #{
-%%   <<"ModelName">> := string()
-%% }
--type delete_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleName">> := string()
-%% }
--type describe_monitoring_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% action_source() :: #{
-%%   <<"SourceId">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"SourceUri">> => string()
-%% }
--type action_source() :: #{binary() => any()}.
-
-%% Example:
-%% total_hits() :: #{
-%%   <<"Relation">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type total_hits() :: #{binary() => any()}.
-
-%% Example:
-%% f_sx_lustre_file_system_config() :: #{
-%%   <<"FileSystemId">> => string(),
-%%   <<"FileSystemPath">> => string()
-%% }
--type f_sx_lustre_file_system_config() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
-%%   <<"HyperParameterTuningJobArn">> => string(),
-%%   <<"HyperParameterTuningJobName">> => string(),
-%%   <<"HyperParameterTuningJobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
-%%   <<"ResourceLimits">> => resource_limits(),
-%%   <<"Strategy">> => list(any()),
-%%   <<"TrainingJobStatusCounters">> => training_job_status_counters()
-%% }
--type hyper_parameter_tuning_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_nodes_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => [string()],
-%%   <<"NodeId">> => string()
-%% }
--type batch_delete_cluster_nodes_error() :: #{binary() => any()}.
-
-%% Example:
-%% multi_model_config() :: #{
-%%   <<"ModelCacheSetting">> => list(any())
-%% }
--type multi_model_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_artifacts() :: #{
-%%   <<"S3ModelArtifacts">> => string()
-%% }
--type model_artifacts() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_profile_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SingleSignOnUserIdentifier">> => string(),
-%%   <<"SingleSignOnUserValue">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserProfileName">> := string(),
-%%   <<"UserSettings">> => user_settings()
-%% }
--type create_user_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_a_i_recommendation_job_request() :: #{
-%%   <<"AIRecommendationJobName">> := string()
-%% }
--type stop_a_i_recommendation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% processing_input() :: #{
-%%   <<"AppManaged">> => boolean(),
-%%   <<"DatasetDefinition">> => dataset_definition(),
-%%   <<"InputName">> => string(),
-%%   <<"S3Input">> => processing_s3_input()
-%% }
--type processing_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_feature_group_request() :: #{
-%%   <<"FeatureAdditions">> => list(feature_definition()),
-%%   <<"FeatureGroupName">> := string(),
-%%   <<"OnlineStoreConfig">> => online_store_config_update(),
-%%   <<"ThroughputConfig">> => throughput_config_update()
-%% }
--type update_feature_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_plan_request() :: #{
-%%   <<"TrainingPlanName">> := string()
-%% }
--type describe_training_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_edge_deployment_plans_response() :: #{
-%%   <<"EdgeDeploymentPlanSummaries">> => list(edge_deployment_plan_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_edge_deployment_plans_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_monitoring_alert_response() :: #{
-%%   <<"MonitoringAlertName">> => string(),
-%%   <<"MonitoringScheduleArn">> => string()
-%% }
--type update_monitoring_alert_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_mlflow_app_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_mlflow_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% tensor_board_output_config() :: #{
-%%   <<"LocalPath">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type tensor_board_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_app_specification() :: #{
-%%   <<"ContainerArguments">> => list(string()),
-%%   <<"ContainerEntrypoint">> => list(string()),
-%%   <<"ImageUri">> => string(),
-%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
-%%   <<"RecordPreprocessorSourceUri">> => string()
-%% }
--type monitoring_app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% model_input() :: #{
-%%   <<"DataInputConfig">> => string()
-%% }
--type model_input() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_security_config() :: #{
-%%   <<"KmsKeyId">> => string()
-%% }
--type model_package_security_config() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_job_input() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"EndpointInput">> => endpoint_input()
-%% }
--type data_quality_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscribed_workteams_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_subscribed_workteams_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_studio_lifecycle_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StudioLifecycleConfigs">> => list(studio_lifecycle_config_details())
-%% }
--type list_studio_lifecycle_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_processing() :: #{
-%%   <<"InputFilter">> => string(),
-%%   <<"JoinSource">> => list(any()),
-%%   <<"OutputFilter">> => string()
-%% }
--type data_processing() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_output() :: #{
-%%   <<"S3Output">> => monitoring_s3_output()
-%% }
--type monitoring_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_bias_job_definitions_response() :: #{
-%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_bias_job_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% tabular_job_config() :: #{
-%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"FeatureSpecificationS3Uri">> => string(),
-%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
-%%   <<"Mode">> => list(any()),
-%%   <<"ProblemType">> => list(any()),
-%%   <<"SampleWeightAttributeName">> => string(),
-%%   <<"TargetAttributeName">> => string()
-%% }
--type tabular_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscribed_workteam_response() :: #{
-%%   <<"SubscribedWorkteam">> => subscribed_workteam()
-%% }
--type describe_subscribed_workteam_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_projects_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_projects_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_transform_input() :: #{
-%%   <<"DataCapturedDestinationS3Uri">> => string(),
-%%   <<"DatasetFormat">> => monitoring_dataset_format(),
-%%   <<"EndTimeOffset">> => string(),
-%%   <<"ExcludeFeaturesAttribute">> => string(),
-%%   <<"FeaturesAttribute">> => string(),
-%%   <<"InferenceAttribute">> => string(),
-%%   <<"LocalPath">> => string(),
-%%   <<"ProbabilityAttribute">> => string(),
-%%   <<"ProbabilityThresholdAttribute">> => float(),
-%%   <<"S3DataDistributionType">> => list(any()),
-%%   <<"S3InputMode">> => list(any()),
-%%   <<"StartTimeOffset">> => string()
-%% }
--type batch_transform_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_recommendations_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModelNameEquals">> => string(),
-%%   <<"ModelPackageVersionArnEquals">> => string(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_inference_recommendations_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_info() :: #{
-%%   <<"EndpointName">> => string()
-%% }
--type endpoint_info() :: #{binary() => any()}.
-
-%% Example:
-%% enable_sagemaker_servicecatalog_portfolio_input() :: #{
-
-%% }
--type enable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% inference_experiment_summary() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Schedule">> => inference_experiment_schedule(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type inference_experiment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_models_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_models_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_pool_summary() :: #{
-%%   <<"CurrentInstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any())
-%% }
--type instance_pool_summary() :: #{binary() => any()}.
-
-%% Example:
-%% transform_job_definition() :: #{
-%%   <<"BatchStrategy">> => list(any()),
-%%   <<"Environment">> => map(),
-%%   <<"MaxConcurrentTransforms">> => integer(),
-%%   <<"MaxPayloadInMB">> => integer(),
-%%   <<"TransformInput">> => transform_input(),
-%%   <<"TransformOutput">> => transform_output(),
-%%   <<"TransformResources">> => transform_resources()
-%% }
--type transform_job_definition() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_export_job_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"LastModifiedAt">> => non_neg_integer(),
-%%   <<"ModelCardExportJobArn">> => string(),
-%%   <<"ModelCardExportJobName">> => string(),
-%%   <<"ModelCardName">> => string(),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type model_card_export_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% start_cluster_health_check_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"DeepHealthCheckConfigurations">> := list(instance_group_health_check_configuration())
-%% }
--type start_cluster_health_check_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_validation_profile() :: #{
-%%   <<"ProfileName">> => string(),
-%%   <<"TransformJobDefinition">> => transform_job_definition()
-%% }
--type model_package_validation_profile() :: #{binary() => any()}.
-
-%% Example:
-%% output_config() :: #{
-%%   <<"CompilerOptions">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputLocation">> => string(),
-%%   <<"TargetDevice">> => list(any()),
-%%   <<"TargetPlatform">> => target_platform()
-%% }
--type output_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trial_request() :: #{
-%%   <<"TrialName">> := string()
-%% }
--type delete_trial_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_app_presigned_url_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ExpiresInSeconds">> => integer(),
-%%   <<"SessionExpirationDurationInSeconds">> => integer()
-%% }
--type create_partner_app_presigned_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_objective() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type hyper_parameter_tuning_job_objective() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_request() :: #{
-%%   <<"JobCategory">> := list(any()),
-%%   <<"JobName">> := string()
-%% }
--type delete_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flow_definition_request() :: #{
-%%   <<"FlowDefinitionName">> := string()
-%% }
--type describe_flow_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_algorithm_specification() :: #{
-%%   <<"AlgorithmName">> => string(),
-%%   <<"MetricDefinitions">> => list(metric_definition()),
-%%   <<"TrainingImage">> => string(),
-%%   <<"TrainingInputMode">> => list(any())
-%% }
--type hyper_parameter_algorithm_specification() :: #{binary() => any()}.
-
-%% Example:
-%% s3_model_data_source() :: #{
-%%   <<"CompressionType">> => list(any()),
-%%   <<"ETag">> => string(),
-%%   <<"HubAccessConfig">> => inference_hub_access_config(),
-%%   <<"ManifestEtag">> => string(),
-%%   <<"ManifestS3Uri">> => string(),
-%%   <<"ModelAccessConfig">> => model_access_config(),
-%%   <<"S3DataType">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type s3_model_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_routing_config() :: #{
-%%   <<"CanarySize">> => capacity_size(),
-%%   <<"LinearStepSize">> => capacity_size(),
-%%   <<"Type">> => list(any()),
-%%   <<"WaitIntervalInSeconds">> => integer()
-%% }
--type traffic_routing_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_experiment_request() :: #{
-%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointName">> := string(),
-%%   <<"KmsKey">> => string(),
-%%   <<"ModelVariants">> := list(model_variant_config()),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Schedule">> => inference_experiment_schedule(),
-%%   <<"ShadowModeConfig">> := shadow_mode_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_job_stopping_conditions() :: #{
-%%   <<"FlatInvocations">> => list(any()),
-%%   <<"MaxInvocations">> => integer(),
-%%   <<"ModelLatencyThresholds">> => list(model_latency_threshold())
-%% }
--type recommendation_job_stopping_conditions() :: #{binary() => any()}.
-
-%% Example:
-%% vector_config() :: #{
-%%   <<"Dimension">> => integer()
-%% }
--type vector_config() :: #{binary() => any()}.
-
-%% Example:
-%% disable_sagemaker_servicecatalog_portfolio_input() :: #{
-
-%% }
--type disable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_mlflow_app_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type update_mlflow_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_fleet_report_request() :: #{
-%%   <<"DeviceFleetName">> := string()
-%% }
--type get_device_fleet_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_input() :: #{
-%%   <<"EndpointName">> := string()
-%% }
--type delete_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% transform_resources() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"TransformAmiVersion">> => string(),
-%%   <<"VolumeKmsKeyId">> => string()
-%% }
--type transform_resources() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_explainability_job_definition_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JobDefinitionArn">> => string(),
-%%   <<"JobDefinitionName">> => string(),
-%%   <<"JobResources">> => monitoring_resources(),
-%%   <<"ModelExplainabilityAppSpecification">> => model_explainability_app_specification(),
-%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
-%%   <<"ModelExplainabilityJobInput">> => model_explainability_job_input(),
-%%   <<"ModelExplainabilityJobOutputConfig">> => monitoring_output_config(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition()
-%% }
--type describe_model_explainability_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_quality_job_definition_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataQualityAppSpecification">> => data_quality_app_specification(),
-%%   <<"DataQualityBaselineConfig">> => data_quality_baseline_config(),
-%%   <<"DataQualityJobInput">> => data_quality_job_input(),
-%%   <<"DataQualityJobOutputConfig">> => monitoring_output_config(),
-%%   <<"JobDefinitionArn">> => string(),
-%%   <<"JobDefinitionName">> => string(),
-%%   <<"JobResources">> => monitoring_resources(),
-%%   <<"NetworkConfig">> => monitoring_network_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition()
-%% }
--type describe_data_quality_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge_model() :: #{
-%%   <<"LatestInference">> => non_neg_integer(),
-%%   <<"LatestSampleTime">> => non_neg_integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelVersion">> => string()
-%% }
--type edge_model() :: #{binary() => any()}.
-
-%% Example:
-%% stop_training_job_request() :: #{
-%%   <<"TrainingJobName">> := string()
-%% }
--type stop_training_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workforce_request() :: #{
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"OidcConfig">> => oidc_config(),
-%%   <<"SourceIpConfig">> => source_ip_config(),
-%%   <<"WorkforceName">> := string(),
-%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
-%% }
--type update_workforce_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_inference_components_output() :: #{
-%%   <<"InferenceComponents">> => list(inference_component_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_inference_components_output() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_input_config() :: #{
-%%   <<"DataAttributes">> => labeling_job_data_attributes(),
-%%   <<"DataSource">> => labeling_job_data_source()
-%% }
--type labeling_job_input_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_artifact_response() :: #{
-%%   <<"ArtifactArn">> => string()
-%% }
--type update_artifact_response() :: #{binary() => any()}.
-
-%% Example:
-%% iam_policy_constraints() :: #{
-%%   <<"SourceIp">> => list(any()),
-%%   <<"VpcSourceIp">> => list(any())
-%% }
--type iam_policy_constraints() :: #{binary() => any()}.
-
-%% Example:
-%% delete_association_response() :: #{
-%%   <<"DestinationArn">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type delete_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trial_component_response() :: #{
-%%   <<"TrialComponentArn">> => string()
-%% }
--type delete_trial_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_algorithm_output() :: #{
-%%   <<"AlgorithmArn">> => string()
-%% }
--type create_algorithm_output() :: #{binary() => any()}.
-
-%% Example:
-%% training_job() :: #{
-%%   <<"ExperimentConfig">> => experiment_config(),
-%%   <<"Environment">> => map(),
-%%   <<"TrainingTimeInSeconds">> => integer(),
-%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
-%%   <<"AutoMLJobArn">> => string(),
-%%   <<"FinalMetricDataList">> => list(metric_data()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CheckpointConfig">> => checkpoint_config(),
-%%   <<"TrainingJobArn">> => string(),
-%%   <<"StoppingCondition">> => stopping_condition(),
-%%   <<"TuningJobArn">> => string(),
-%%   <<"DebugHookConfig">> => debug_hook_config(),
-%%   <<"TrainingJobStatus">> => list(any()),
-%%   <<"TrainingEndTime">> => non_neg_integer(),
-%%   <<"ResourceConfig">> => resource_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"VpcConfig">> => vpc_config(),
-%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
-%%   <<"WarmPoolStatus">> => warm_pool_status(),
-%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
-%%   <<"RetryStrategy">> => retry_strategy(),
-%%   <<"ModelArtifacts">> => model_artifacts(),
-%%   <<"FailureReason">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"BillableTimeInSeconds">> => integer(),
-%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()),
-%%   <<"SecondaryStatus">> => list(any()),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OutputModelPackageArn">> => string(),
-%%   <<"TrainingJobName">> => string(),
-%%   <<"ProfilerConfig">> => profiler_config(),
-%%   <<"ModelPackageConfig">> => model_package_config(),
-%%   <<"EnableManagedSpotTraining">> => boolean(),
-%%   <<"InputDataConfig">> => list(channel()),
-%%   <<"TrainingStartTime">> => non_neg_integer(),
-%%   <<"AlgorithmSpecification">> => algorithm_specification(),
-%%   <<"HyperParameters">> => map(),
-%%   <<"LabelingJobArn">> => string(),
-%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status())
-%% }
--type training_job() :: #{binary() => any()}.
-
-%% Example:
-%% create_workteam_request() :: #{
-%%   <<"Description">> := string(),
-%%   <<"MemberDefinitions">> := list(member_definition()),
-%%   <<"NotificationConfiguration">> => notification_configuration(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
-%%   <<"WorkforceName">> => string(),
-%%   <<"WorkteamName">> := string()
-%% }
--type create_workteam_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_event_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"EventId">> := string()
-%% }
--type describe_cluster_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_lineage_groups_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_lineage_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_quota_summary() :: #{
-%%   <<"ActivationState">> => list(any()),
-%%   <<"ClusterArn">> => string(),
-%%   <<"ComputeQuotaArn">> => string(),
-%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
-%%   <<"ComputeQuotaId">> => string(),
-%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
-%%   <<"ComputeQuotaVersion">> => integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type compute_quota_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_a_i_workload_config_response() :: #{
-%%   <<"AIWorkloadConfigArn">> => string()
-%% }
--type create_a_i_workload_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_mlflow_tracking_server_request() :: #{
-%%   <<"ArtifactStoreUri">> := string(),
-%%   <<"AutomaticModelRegistration">> => boolean(),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"S3BucketOwnerAccountId">> => string(),
-%%   <<"S3BucketOwnerVerification">> => boolean(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrackingServerName">> := string(),
-%%   <<"TrackingServerSize">> => list(any()),
-%%   <<"WeeklyMaintenanceWindowStart">> => string()
-%% }
--type create_mlflow_tracking_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_pipeline_execution_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"MlflowExperimentName">> => string(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineExecutionDescription">> => string(),
-%%   <<"PipelineExecutionDisplayName">> => string(),
-%%   <<"PipelineName">> := string(),
-%%   <<"PipelineParameters">> => list(parameter()),
-%%   <<"PipelineVersionId">> => float(),
-%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
-%% }
--type start_pipeline_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_spaces_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Spaces">> => list(space_details())
-%% }
--type list_spaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_network_interface_details() :: #{
-%%   <<"InterfaceType">> => list(any())
-%% }
--type cluster_network_interface_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipeline_execution_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MLflowConfig">> => mlflow_configuration(),
-%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineExecutionArn">> => string(),
-%%   <<"PipelineExecutionDescription">> => string(),
-%%   <<"PipelineExecutionDisplayName">> => string(),
-%%   <<"PipelineExecutionStatus">> => list(any()),
-%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
-%%   <<"PipelineVersionId">> => float(),
-%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
-%% }
--type describe_pipeline_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% template_provider_detail() :: #{
-%%   <<"CfnTemplateProviderDetail">> => cfn_template_provider_detail()
-%% }
--type template_provider_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_hyper_parameter_tuning_job_request() :: #{
-%%   <<"Autotune">> => autotune(),
-%%   <<"HyperParameterTuningJobConfig">> := hyper_parameter_tuning_job_config(),
-%%   <<"HyperParameterTuningJobName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
-%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()),
-%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
-%% }
--type create_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_profile_response() :: #{
-%%   <<"UserProfileArn">> => string()
-%% }
--type create_user_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% job() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobCategory">> => list(any()),
-%%   <<"JobConfigDocument">> => string(),
-%%   <<"JobConfigSchemaVersion">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecondaryStatus">> => list(any()),
-%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
-%%   <<"Tags">> => list(tag())
-%% }
--type job() :: #{binary() => any()}.
-
-%% Example:
-%% attach_cluster_node_volume_request() :: #{
-%%   <<"ClusterArn">> := string(),
-%%   <<"NodeId">> := string(),
-%%   <<"VolumeId">> := string()
-%% }
--type attach_cluster_node_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_auto_ml_job_v2_request() :: #{
-%%   <<"AutoMLJobName">> := string()
-%% }
--type describe_auto_ml_job_v2_request() :: #{binary() => any()}.
-
-%% Example:
-%% target_platform() :: #{
-%%   <<"Accelerator">> => list(any()),
-%%   <<"Arch">> => list(any()),
-%%   <<"Os">> => list(any())
-%% }
--type target_platform() :: #{binary() => any()}.
-
-%% Example:
-%% describe_a_i_workload_config_response() :: #{
-%%   <<"AIWorkloadConfigArn">> => string(),
-%%   <<"AIWorkloadConfigName">> => string(),
-%%   <<"AIWorkloadConfigs">> => a_i_workload_configs(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatasetConfig">> => list(),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_a_i_workload_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_channel() :: #{
-%%   <<"ChannelType">> => list(any()),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"DataSource">> => auto_ml_data_source(),
-%%   <<"SampleWeightAttributeName">> => string(),
-%%   <<"TargetAttributeName">> => string()
-%% }
--type auto_ml_channel() :: #{binary() => any()}.
-
-%% Example:
-%% list_lineage_groups_response() :: #{
-%%   <<"LineageGroupSummaries">> => list(lineage_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_lineage_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_mlflow_tracking_server_response() :: #{
-%%   <<"TrackingServerArn">> => string()
-%% }
--type update_mlflow_tracking_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance_group_health_check_configuration() :: #{
-%%   <<"DeepHealthChecks">> => list(list(any())()),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceIds">> => list(string())
-%% }
--type instance_group_health_check_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_artifacts_request() :: #{
-%%   <<"ArtifactType">> => string(),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SourceUri">> => string()
-%% }
--type list_artifacts_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_compute_resource_requirements() :: #{
-%%   <<"MaxMemoryRequiredInMb">> => integer(),
-%%   <<"MinMemoryRequiredInMb">> => integer(),
-%%   <<"NumberOfAcceleratorDevicesRequired">> => float(),
-%%   <<"NumberOfCpuCoresRequired">> => float()
-%% }
--type inference_component_compute_resource_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% create_edge_deployment_plan_request() :: #{
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"EdgeDeploymentPlanName">> := string(),
-%%   <<"ModelConfigs">> := list(edge_deployment_model_config()),
-%%   <<"Stages">> => list(deployment_stage()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_edge_deployment_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% artifact_source_type() :: #{
-%%   <<"SourceIdType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type artifact_source_type() :: #{binary() => any()}.
-
-%% Example:
-%% model_card_export_output_config() :: #{
-%%   <<"S3OutputPath">> => string()
-%% }
--type model_card_export_output_config() :: #{binary() => any()}.
+-type describe_model_bias_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_bias_job_definition_response() :: #{
@@ -11569,483 +5965,10 @@
 -type describe_model_bias_job_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_mlflow_app_request() :: #{
-%%   <<"Arn">> := string()
+%% describe_model_card_export_job_request() :: #{
+%%   <<"ModelCardExportJobArn">> := string()
 %% }
--type delete_mlflow_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% r_session_app_settings() :: #{
-%%   <<"CustomImages">> => list(custom_image()),
-%%   <<"DefaultResourceSpec">> => resource_spec()
-%% }
--type r_session_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_feature_groups_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"FeatureGroupStatusEquals">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"OfflineStoreStatusEquals">> => list(any()),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_feature_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_parameter_range() :: #{
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ScalingType">> => list(any())
-%% }
--type continuous_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_shared_environment_config_details() :: #{
-%%   <<"CurrentFSxLustreConfig">> => f_sx_lustre_config(),
-%%   <<"CurrentFSxLustreDeletionPolicy">> => list(any()),
-%%   <<"DesiredFSxLustreConfig">> => f_sx_lustre_config(),
-%%   <<"DesiredFSxLustreDeletionPolicy">> => list(any())
-%% }
--type cluster_shared_environment_config_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_code_repository_output() :: #{
-%%   <<"CodeRepositoryArn">> => string(),
-%%   <<"CodeRepositoryName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"GitConfig">> => git_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type describe_code_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_config_output() :: #{
-%%   <<"EndpointConfigArn">> => string()
-%% }
--type create_endpoint_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% model_bias_app_specification() :: #{
-%%   <<"ConfigUri">> => string(),
-%%   <<"Environment">> => map(),
-%%   <<"ImageUri">> => string()
-%% }
--type model_bias_app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% secondary_status_transition() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type secondary_status_transition() :: #{binary() => any()}.
-
-%% Example:
-%% app_lifecycle_management() :: #{
-%%   <<"IdleSettings">> => idle_settings()
-%% }
--type app_lifecycle_management() :: #{binary() => any()}.
-
-%% Example:
-%% edge_deployment_model_config() :: #{
-%%   <<"EdgePackagingJobName">> => string(),
-%%   <<"ModelHandle">> => string()
-%% }
--type edge_deployment_model_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_experiments_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_experiments_request() :: #{binary() => any()}.
-
-%% Example:
-%% clarify_text_config() :: #{
-%%   <<"Granularity">> => list(any()),
-%%   <<"Language">> => list(any())
-%% }
--type clarify_text_config() :: #{binary() => any()}.
-
-%% Example:
-%% retry_pipeline_execution_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type retry_pipeline_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% shadow_mode_config() :: #{
-%%   <<"ShadowModelVariants">> => list(shadow_model_variant_config()),
-%%   <<"SourceModelVariantName">> => string()
-%% }
--type shadow_mode_config() :: #{binary() => any()}.
-
-%% Example:
-%% training_plan_extension() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"DurationHours">> => integer(),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"ExtendedAt">> => non_neg_integer(),
-%%   <<"PaymentStatus">> => string(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"TrainingPlanExtensionOfferingId">> => string(),
-%%   <<"UpfrontFee">> => string()
-%% }
--type training_plan_extension() :: #{binary() => any()}.
-
-%% Example:
-%% get_lineage_group_policy_request() :: #{
-%%   <<"LineageGroupName">> := string()
-%% }
--type get_lineage_group_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_ml_job_v2_response() :: #{
-%%   <<"AutoMLJobArn">> => string()
-%% }
--type create_auto_ml_job_v2_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_mlflow_tracking_server_response() :: #{
-%%   <<"TrackingServerArn">> => string()
-%% }
--type create_mlflow_tracking_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_workforce_request() :: #{
-%%   <<"CognitoConfig">> => cognito_config(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"OidcConfig">> => oidc_config(),
-%%   <<"SourceIpConfig">> => source_ip_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WorkforceName">> := string(),
-%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
-%% }
--type create_workforce_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_labeling_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_labeling_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% context_summary() :: #{
-%%   <<"ContextArn">> => string(),
-%%   <<"ContextName">> => string(),
-%%   <<"ContextType">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Source">> => context_source()
-%% }
--type context_summary() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_artifacts() :: #{
-%%   <<"CandidateDefinitionNotebookLocation">> => string(),
-%%   <<"DataExplorationNotebookLocation">> => string()
-%% }
--type auto_ml_job_artifacts() :: #{binary() => any()}.
-
-%% Example:
-%% put_model_package_group_policy_input() :: #{
-%%   <<"ModelPackageGroupName">> := string(),
-%%   <<"ResourcePolicy">> := string()
-%% }
--type put_model_package_group_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_response() :: #{
-%%   <<"DomainArn">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"Url">> => string()
-%% }
--type create_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{
-%%   <<"HyperParameterTuningJobName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_scheduling_config() :: #{
-%%   <<"AvailabilityZoneBalance">> => inference_component_availability_zone_balance(),
-%%   <<"PlacementStrategy">> => list(any())
-%% }
--type inference_component_scheduling_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_code_repository_input() :: #{
-%%   <<"CodeRepositoryName">> := string(),
-%%   <<"GitConfig">> := git_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_code_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_recommendation() :: #{
-%%   <<"RealTimeInferenceRecommendations">> => list(real_time_inference_recommendation()),
-%%   <<"RecommendationStatus">> => list(any())
-%% }
--type deployment_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_component_runtime_config_input() :: #{
-%%   <<"DesiredRuntimeConfig">> := inference_component_runtime_config(),
-%%   <<"InferenceComponentName">> := string()
-%% }
--type update_inference_component_runtime_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_weights_and_capacities_input() :: #{
-%%   <<"DesiredWeightsAndCapacities">> := list(desired_weight_and_capacity()),
-%%   <<"EndpointName">> := string()
-%% }
--type update_endpoint_weights_and_capacities_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_ultra_servers_by_reserved_capacity_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UltraServers">> => list(ultra_server())
-%% }
--type list_ultra_servers_by_reserved_capacity_response() :: #{binary() => any()}.
-
-%% Example:
-%% channel() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"DataSource">> => data_source(),
-%%   <<"InputMode">> => list(any()),
-%%   <<"RecordWrapperType">> => list(any()),
-%%   <<"ShuffleConfig">> => shuffle_config()
-%% }
--type channel() :: #{binary() => any()}.
-
-%% Example:
-%% send_pipeline_execution_step_success_request() :: #{
-%%   <<"CallbackToken">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"OutputParameters">> => list(output_parameter())
-%% }
--type send_pipeline_execution_step_success_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_response() :: #{
-
-%% }
--type delete_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_notebook_instance_lifecycle_config_input() :: #{
-%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
-%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()),
-%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook())
-%% }
--type update_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_notebook_instance_input() :: #{
-%%   <<"NotebookInstanceName">> := string()
-%% }
--type start_notebook_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_pipeline_version_response() :: #{
-%%   <<"PipelineArn">> => string(),
-%%   <<"PipelineVersionId">> => float()
-%% }
--type update_pipeline_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_output_result() :: #{
-%%   <<"MlflowConfig">> => a_i_mlflow_config(),
-%%   <<"ModelPackageGroupIdentifier">> => string(),
-%%   <<"S3OutputLocation">> => string()
-%% }
--type a_i_recommendation_output_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_workforce_response() :: #{
-%%   <<"Workforce">> => workforce()
-%% }
--type update_workforce_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_code_repository_input() :: #{
-%%   <<"CodeRepositoryName">> := string()
-%% }
--type describe_code_repository_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_nodes_response() :: #{
-%%   <<"Failed">> => list(batch_delete_cluster_nodes_error()),
-%%   <<"FailedNodeLogicalIds">> => list(batch_delete_cluster_node_logical_ids_error()),
-%%   <<"Successful">> => list(string()),
-%%   <<"SuccessfulNodeLogicalIds">> => list(string())
-%% }
--type batch_delete_cluster_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_model_package_group_policy_output() :: #{
-%%   <<"ModelPackageGroupArn">> => string()
-%% }
--type put_model_package_group_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% cognito_member_definition() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"UserGroup">> => string(),
-%%   <<"UserPool">> => string()
-%% }
--type cognito_member_definition() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_nodes_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"NodeIds">> => list(string()),
-%%   <<"NodeLogicalIds">> => list(string())
-%% }
--type batch_delete_cluster_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_life_cycle_config() :: #{
-%%   <<"OnCreate">> => string(),
-%%   <<"OnInitComplete">> => string(),
-%%   <<"SourceS3Uri">> => string()
-%% }
--type cluster_life_cycle_config() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_s3_data_source() :: #{
-%%   <<"ManifestS3Uri">> => string()
-%% }
--type labeling_job_s3_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% candidate_artifact_locations() :: #{
-%%   <<"BacktestResults">> => string(),
-%%   <<"Explainability">> => string(),
-%%   <<"ModelInsights">> => string()
-%% }
--type candidate_artifact_locations() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_package_group_policy_output() :: #{
-%%   <<"ResourcePolicy">> => string()
-%% }
--type get_model_package_group_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_training_job_request() :: #{
-%%   <<"TrainingJobName">> := string()
-%% }
--type delete_training_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mlflow_tracking_server_request() :: #{
-%%   <<"TrackingServerName">> := string()
-%% }
--type describe_mlflow_tracking_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_plan_extension_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TrainingPlanArn">> := string()
-%% }
--type describe_training_plan_extension_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_definition_response() :: #{
-
-%% }
--type delete_flow_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% subscribed_workteam() :: #{
-%%   <<"ListingId">> => string(),
-%%   <<"MarketplaceDescription">> => string(),
-%%   <<"MarketplaceTitle">> => string(),
-%%   <<"SellerName">> => string(),
-%%   <<"WorkteamArn">> => string()
-%% }
--type subscribed_workteam() :: #{binary() => any()}.
-
-%% Example:
-%% job_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type job_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_hub_request() :: #{
-%%   <<"HubDescription">> := string(),
-%%   <<"HubDisplayName">> => string(),
-%%   <<"HubName">> := string(),
-%%   <<"HubSearchKeywords">> => list(string()),
-%%   <<"S3StorageConfig">> => hub_s3_storage_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_hub_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_config() :: #{
-%%   <<"CandidateGenerationConfig">> => auto_ml_candidate_generation_config(),
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"DataSplitConfig">> => auto_ml_data_split_config(),
-%%   <<"Mode">> => list(any()),
-%%   <<"SecurityConfig">> => auto_ml_security_config()
-%% }
--type auto_ml_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_workload_data_source() :: #{
-%%   <<"S3DataSource">> => a_i_workload_s3_data_source()
-%% }
--type a_i_workload_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% e_f_s_file_system() :: #{
-%%   <<"FileSystemId">> => string()
-%% }
--type e_f_s_file_system() :: #{binary() => any()}.
+-type describe_model_card_export_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_card_export_job_response() :: #{
@@ -12063,269 +5986,56 @@
 -type describe_model_card_export_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% inference_metrics() :: #{
-%%   <<"MaxInvocations">> => integer(),
-%%   <<"ModelLatency">> => integer()
+%% describe_model_card_request() :: #{
+%%   <<"IncludedData">> => list(any()),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer()
 %% }
--type inference_metrics() :: #{binary() => any()}.
+-type describe_model_card_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_partner_app_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_partner_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_mlflow_tracking_server_response() :: #{
-%%   <<"TrackingServerArn">> => string()
-%% }
--type stop_mlflow_tracking_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_parameters_for_execution_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineExecutionArn">> := string()
-%% }
--type list_pipeline_parameters_for_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% callback_step_metadata() :: #{
-%%   <<"CallbackToken">> => string(),
-%%   <<"OutputParameters">> => list(output_parameter()),
-%%   <<"SqsQueueUrl">> => string()
-%% }
--type callback_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_slurm_config() :: #{
-%%   <<"NodeType">> => list(any()),
-%%   <<"PartitionNames">> => list(string())
-%% }
--type cluster_slurm_config() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_container_specification() :: #{
-%%   <<"ArtifactUrl">> => string(),
-%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
-%%   <<"Environment">> => map(),
-%%   <<"Image">> => string()
-%% }
--type inference_component_container_specification() :: #{binary() => any()}.
-
-%% Example:
-%% resource_spec() :: #{
-%%   <<"InstanceType">> => list(any()),
-%%   <<"LifecycleConfigArn">> => string(),
-%%   <<"SageMakerImageArn">> => string(),
-%%   <<"SageMakerImageVersionAlias">> => string(),
-%%   <<"SageMakerImageVersionArn">> => string(),
-%%   <<"TrainingPlanArn">> => string()
-%% }
--type resource_spec() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_input() :: #{
-%%   <<"ProjectName">> := string()
-%% }
--type delete_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_transform_job_response() :: #{
-%%   <<"TransformJobArn">> => string()
-%% }
--type create_transform_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% metrics_config() :: #{
-%%   <<"EnableDetailedObservability">> => boolean(),
-%%   <<"EnableEnhancedMetrics">> => boolean(),
-%%   <<"MetricPublishFrequencyInSeconds">> => list(integer())
-%% }
--type metrics_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_processing_job_response() :: #{
-%%   <<"ProcessingJobArn">> => string()
-%% }
--type create_processing_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_schema_version_response() :: #{
-%%   <<"JobCategory">> => list(any()),
-%%   <<"JobConfigSchema">> => string(),
-%%   <<"JobConfigSchemaVersion">> => string()
-%% }
--type describe_job_schema_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% transform_job_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type transform_job_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% model_deploy_result() :: #{
-%%   <<"EndpointName">> => string()
-%% }
--type model_deploy_result() :: #{binary() => any()}.
-
-%% Example:
-%% hidden_sage_maker_image() :: #{
-%%   <<"SageMakerImageName">> => list(any()),
-%%   <<"VersionAliases">> => list(string())
-%% }
--type hidden_sage_maker_image() :: #{binary() => any()}.
-
-%% Example:
-%% update_inference_component_input() :: #{
-%%   <<"DeploymentConfig">> => inference_component_deployment_config(),
-%%   <<"InferenceComponentName">> := string(),
-%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
-%%   <<"Specification">> => inference_component_specification(),
-%%   <<"Specifications">> => list(inference_component_specification())
-%% }
--type update_inference_component_input() :: #{binary() => any()}.
-
-%% Example:
-%% debug_hook_config() :: #{
-%%   <<"CollectionConfigurations">> => list(collection_configuration()),
-%%   <<"HookParameters">> => map(),
-%%   <<"LocalPath">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type debug_hook_config() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_benchmark_endpoint() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"InferenceComponents">> => list(a_i_benchmark_inference_component()),
-%%   <<"TargetContainerHostname">> => string()
-%% }
--type a_i_benchmark_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_performance() :: #{
-%%   <<"EndpointInfo">> => endpoint_info(),
-%%   <<"Metrics">> => inference_metrics()
-%% }
--type endpoint_performance() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_scheduler_config_request() :: #{
-%%   <<"ClusterSchedulerConfigId">> := string(),
-%%   <<"ClusterSchedulerConfigVersion">> => integer()
-%% }
--type describe_cluster_scheduler_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_filters() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"LineageTypes">> => list(list(any())()),
-%%   <<"ModifiedAfter">> => non_neg_integer(),
-%%   <<"ModifiedBefore">> => non_neg_integer(),
-%%   <<"Properties">> => map(),
-%%   <<"Types">> => list(string())
-%% }
--type query_filters() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_instance_requirements() :: #{
-%%   <<"InstanceTypes">> => list(list(any())())
-%% }
--type cluster_instance_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% delete_context_response() :: #{
-%%   <<"ContextArn">> => string()
-%% }
--type delete_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% retry_strategy() :: #{
-%%   <<"MaximumRetryAttempts">> => integer()
-%% }
--type retry_strategy() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_status() :: #{
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type production_variant_status() :: #{binary() => any()}.
-
-%% Example:
-%% oidc_config_for_response() :: #{
-%%   <<"AuthenticationRequestExtraParams">> => map(),
-%%   <<"AuthorizationEndpoint">> => string(),
-%%   <<"ClientId">> => string(),
-%%   <<"Issuer">> => string(),
-%%   <<"JwksUri">> => string(),
-%%   <<"LogoutEndpoint">> => string(),
-%%   <<"Scope">> => string(),
-%%   <<"TokenEndpoint">> => string(),
-%%   <<"UserInfoEndpoint">> => string()
-%% }
--type oidc_config_for_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_output_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MonitoringOutputs">> => list(monitoring_output())
-%% }
--type monitoring_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_alert_history_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MonitoringAlertName">> => string(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_monitoring_alert_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% feature_group() :: #{
+%% describe_model_card_response() :: #{
+%%   <<"Content">> => string(),
+%%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTimeFeatureName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"FeatureDefinitions">> => list(feature_definition()),
-%%   <<"FeatureGroupArn">> => string(),
-%%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastUpdateStatus">> => last_update_status(),
-%%   <<"OfflineStoreConfig">> => offline_store_config(),
-%%   <<"OfflineStoreStatus">> => offline_store_status(),
-%%   <<"OnlineStoreConfig">> => online_store_config(),
-%%   <<"RecordIdentifierFeatureName">> => string(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardProcessingStatus">> => list(any()),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"SecurityConfig">> => model_card_security_config()
+%% }
+-type describe_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_explainability_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
+%% }
+-type describe_model_explainability_job_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_explainability_job_definition_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"ModelExplainabilityAppSpecification">> => model_explainability_app_specification(),
+%%   <<"ModelExplainabilityBaselineConfig">> => model_explainability_baseline_config(),
+%%   <<"ModelExplainabilityJobInput">> => model_explainability_job_input(),
+%%   <<"ModelExplainabilityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
 %%   <<"RoleArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
 %% }
--type feature_group() :: #{binary() => any()}.
+-type describe_model_explainability_job_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% model_client_config() :: #{
-%%   <<"InvocationsMaxRetries">> => integer(),
-%%   <<"InvocationsTimeoutInSeconds">> => integer()
+%% describe_model_input() :: #{
+%%   <<"ModelName">> := string()
 %% }
--type model_client_config() :: #{binary() => any()}.
-
-%% Example:
-%% output_data_config() :: #{
-%%   <<"CompressionType">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type output_data_config() :: #{binary() => any()}.
+-type describe_model_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_output() :: #{
@@ -12343,1571 +6053,29 @@
 -type describe_model_output() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_instance_group_specification() :: #{
-%%   <<"AutoPatchConfig">> => cluster_auto_patch_config(),
-%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"ImageReleaseVersion">> => string(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceRequirements">> => cluster_instance_requirements(),
-%%   <<"InstanceStorageConfigs">> => list(list()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"KubernetesConfig">> => cluster_kubernetes_config(),
-%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
-%%   <<"MinInstanceCount">> => integer(),
-%%   <<"NetworkInterface">> => cluster_network_interface(),
-%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
-%%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
-%%   <<"SlurmConfig">> => cluster_slurm_config(),
-%%   <<"ThreadsPerCore">> => integer(),
-%%   <<"TrainingPlanArn">> => string()
-%% }
--type cluster_instance_group_specification() :: #{binary() => any()}.
-
-%% Example:
-%% node_addition_result() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceTypes">> => list(list(any())()),
-%%   <<"NodeLogicalId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type node_addition_result() :: #{binary() => any()}.
-
-%% Example:
-%% edge_model_summary() :: #{
-%%   <<"ModelName">> => string(),
-%%   <<"ModelVersion">> => string()
-%% }
--type edge_model_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_hub_content_reference_request() :: #{
-%%   <<"HubContentName">> => string(),
-%%   <<"HubName">> := string(),
-%%   <<"MinVersion">> => string(),
-%%   <<"SageMakerPublicHubContentArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_hub_content_reference_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_apps_request() :: #{
-%%   <<"DomainIdEquals">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SpaceNameEquals">> => string(),
-%%   <<"UserProfileNameEquals">> => string()
-%% }
--type list_apps_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_restricted_instance_group_details() :: #{
-%%   <<"CurrentCount">> => integer(),
-%%   <<"EnvironmentConfig">> => environment_config_details(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceStorageConfigs">> => list(list()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
-%%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetCount">> => integer(),
-%%   <<"ThreadsPerCore">> => integer(),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"TrainingPlanStatus">> => string()
-%% }
--type cluster_restricted_instance_group_details() :: #{binary() => any()}.
-
-%% Example:
-%% stop_optimization_job_request() :: #{
-%%   <<"OptimizationJobName">> := string()
-%% }
--type stop_optimization_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_stage_status_summary() :: #{
-%%   <<"DeploymentConfig">> => edge_deployment_config(),
-%%   <<"DeploymentStatus">> => edge_deployment_status(),
-%%   <<"DeviceSelectionConfig">> => device_selection_config(),
-%%   <<"StageName">> => string()
-%% }
--type deployment_stage_status_summary() :: #{binary() => any()}.
-
-%% Example:
-%% git_config() :: #{
-%%   <<"Branch">> => string(),
-%%   <<"RepositoryUrl">> => string(),
-%%   <<"SecretArn">> => string()
-%% }
--type git_config() :: #{binary() => any()}.
-
-%% Example:
-%% nested_filters() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"NestedPropertyName">> => string()
-%% }
--type nested_filters() :: #{binary() => any()}.
-
-%% Example:
-%% search_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(search_record()),
-%%   <<"TotalHits">> => total_hits()
-%% }
--type search_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge_deployment_config() :: #{
-%%   <<"FailureHandlingPolicy">> => list(any())
-%% }
--type edge_deployment_config() :: #{binary() => any()}.
-
-%% Example:
-%% device_selection_config() :: #{
-%%   <<"DeviceNameContains">> => string(),
-%%   <<"DeviceNames">> => list(string()),
-%%   <<"DeviceSubsetType">> => list(any()),
-%%   <<"Percentage">> => integer()
-%% }
--type device_selection_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_context_request() :: #{
-%%   <<"ContextName">> := string(),
-%%   <<"ContextType">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Properties">> => map(),
-%%   <<"Source">> := context_source(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_context_request() :: #{binary() => any()}.
-
-%% Example:
-%% worker_access_configuration() :: #{
-%%   <<"S3Presign">> => s3_presign()
-%% }
--type worker_access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_algorithm_input() :: #{
-%%   <<"AlgorithmDescription">> => string(),
-%%   <<"AlgorithmName">> := string(),
-%%   <<"CertifyForMarketplace">> => boolean(),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrainingSpecification">> := training_specification(),
-%%   <<"ValidationSpecification">> => algorithm_validation_specification()
-%% }
--type create_algorithm_input() :: #{binary() => any()}.
-
-%% Example:
-%% stairs() :: #{
-%%   <<"DurationInSeconds">> => integer(),
-%%   <<"NumberOfSteps">> => integer(),
-%%   <<"UsersPerStep">> => integer()
-%% }
--type stairs() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_model_package_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorResponse">> => string()
-%% }
--type batch_describe_model_package_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_job_definitions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_data_quality_job_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_card_response() :: #{
-%%   <<"ModelCardArn">> => string()
-%% }
--type create_model_card_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_ml_job_request() :: #{
-%%   <<"AutoMLJobConfig">> => auto_ml_job_config(),
-%%   <<"AutoMLJobName">> := string(),
-%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
-%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
-%%   <<"InputDataConfig">> := list(auto_ml_channel()),
-%%   <<"ModelDeployConfig">> => model_deploy_config(),
-%%   <<"OutputDataConfig">> := auto_ml_output_data_config(),
-%%   <<"ProblemType">> => list(any()),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_auto_ml_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% notebook_instance_lifecycle_config_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NotebookInstanceLifecycleConfigArn">> => string(),
-%%   <<"NotebookInstanceLifecycleConfigName">> => string()
-%% }
--type notebook_instance_lifecycle_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_card_export_jobs_response() :: #{
-%%   <<"ModelCardExportJobSummaries">> => list(model_card_export_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_card_export_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_alerts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MonitoringScheduleName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitoring_alerts_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_compute_quota_request() :: #{
-%%   <<"ComputeQuotaId">> := string(),
-%%   <<"ComputeQuotaVersion">> => integer()
-%% }
--type describe_compute_quota_request() :: #{binary() => any()}.
-
-%% Example:
-%% ultra_server() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"AvailableSpareInstanceCount">> => integer(),
-%%   <<"ConfiguredSpareInstanceCount">> => integer(),
-%%   <<"HealthStatus">> => list(any()),
-%%   <<"InUseInstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UltraServerId">> => string(),
-%%   <<"UltraServerType">> => string(),
-%%   <<"UnhealthyInstanceCount">> => integer()
-%% }
--type ultra_server() :: #{binary() => any()}.
-
-%% Example:
-%% tabular_resolved_attributes() :: #{
-%%   <<"ProblemType">> => list(any())
-%% }
--type tabular_resolved_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% space_sharing_settings() :: #{
-%%   <<"SharingType">> => list(any())
-%% }
--type space_sharing_settings() :: #{binary() => any()}.
-
-%% Example:
-%% ownership_settings_summary() :: #{
-%%   <<"OwnerUserProfileName">> => string()
-%% }
--type ownership_settings_summary() :: #{binary() => any()}.
-
-%% Example:
-%% default_ebs_storage_settings() :: #{
-%%   <<"DefaultEbsVolumeSizeInGb">> => integer(),
-%%   <<"MaximumEbsVolumeSizeInGb">> => integer()
-%% }
--type default_ebs_storage_settings() :: #{binary() => any()}.
-
-%% Example:
-%% emr_settings() :: #{
-%%   <<"AssumableRoleArns">> => list(string()),
-%%   <<"ExecutionRoleArns">> => list(string())
-%% }
--type emr_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_nodes_response() :: #{
-%%   <<"ClusterNodeSummaries">> => list(cluster_node_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_inference_experiment_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type start_inference_experiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_quality_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type delete_model_quality_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_benchmark_output_config() :: #{
-%%   <<"MlflowConfig">> => a_i_mlflow_config(),
-%%   <<"S3OutputLocation">> => string()
-%% }
--type a_i_benchmark_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% bedrock_provisioned_model_throughput_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type bedrock_provisioned_model_throughput_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% stop_labeling_job_request() :: #{
-%%   <<"LabelingJobName">> := string()
-%% }
--type stop_labeling_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_on_demand_options() :: #{
-
-%% }
--type cluster_on_demand_options() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_package_groups_output() :: #{
-%%   <<"ModelPackageGroupSummaryList">> => list(model_package_group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_package_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% model_bias_baseline_config() :: #{
-%%   <<"BaseliningJobName">> => string(),
-%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
-%% }
--type model_bias_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% user_context() :: #{
-%%   <<"DomainId">> => string(),
-%%   <<"IamIdentity">> => iam_identity(),
-%%   <<"UserProfileArn">> => string(),
-%%   <<"UserProfileName">> => string()
-%% }
--type user_context() :: #{binary() => any()}.
-
-%% Example:
-%% update_template_provider() :: #{
-%%   <<"CfnTemplateProvider">> => cfn_update_template_provider()
-%% }
--type update_template_provider() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_package_group_input() :: #{
+%% describe_model_package_group_input() :: #{
 %%   <<"ModelPackageGroupName">> := string()
 %% }
--type delete_model_package_group_input() :: #{binary() => any()}.
+-type describe_model_package_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% model_dashboard_monitoring_schedule() :: #{
-%%   <<"BatchTransformInput">> => batch_transform_input(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
-%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()),
-%%   <<"MonitoringScheduleArn">> => string(),
-%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringScheduleStatus">> => list(any()),
-%%   <<"MonitoringType">> => list(any())
-%% }
--type model_dashboard_monitoring_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% cfn_stack_detail() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type cfn_stack_detail() :: #{binary() => any()}.
-
-%% Example:
-%% stop_compilation_job_request() :: #{
-%%   <<"CompilationJobName">> := string()
-%% }
--type stop_compilation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_replace_cluster_nodes_response() :: #{
-%%   <<"Failed">> => list(batch_replace_cluster_nodes_error()),
-%%   <<"FailedNodeLogicalIds">> => list(batch_replace_cluster_node_logical_ids_error()),
-%%   <<"Successful">> => list(string()),
-%%   <<"SuccessfulNodeLogicalIds">> => list(string())
-%% }
--type batch_replace_cluster_nodes_response() :: #{binary() => any()}.
-
-%% Example:
-%% tracking_server_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"IsActive">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MlflowVersion">> => string(),
-%%   <<"TrackingServerArn">> => string(),
-%%   <<"TrackingServerName">> => string(),
-%%   <<"TrackingServerStatus">> => list(any())
-%% }
--type tracking_server_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_fleet_report_response() :: #{
-%%   <<"AgentVersions">> => list(agent_version()),
-%%   <<"Description">> => string(),
-%%   <<"DeviceFleetArn">> => string(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"DeviceStats">> => device_stats(),
-%%   <<"ModelStats">> => list(edge_model_stat()),
-%%   <<"OutputConfig">> => edge_output_config(),
-%%   <<"ReportGenerated">> => non_neg_integer()
-%% }
--type get_device_fleet_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% training_progress_info() :: #{
-%%   <<"CurrentEpoch">> => float(),
-%%   <<"CurrentStep">> => float(),
-%%   <<"MaxEpoch">> => float(),
-%%   <<"TotalStepCountPerEpoch">> => float()
-%% }
--type training_progress_info() :: #{binary() => any()}.
-
-%% Example:
-%% transform_job_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"TransformEndTime">> => non_neg_integer(),
-%%   <<"TransformJobArn">> => string(),
-%%   <<"TransformJobName">> => string(),
-%%   <<"TransformJobStatus">> => list(any())
-%% }
--type transform_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% model_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type model_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_execution_steps_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineExecutionArn">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_pipeline_execution_steps_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_job_definition() :: #{
-%%   <<"BaselineConfig">> => monitoring_baseline_config(),
-%%   <<"Environment">> => map(),
-%%   <<"MonitoringAppSpecification">> => monitoring_app_specification(),
-%%   <<"MonitoringInputs">> => list(monitoring_input()),
-%%   <<"MonitoringOutputConfig">> => monitoring_output_config(),
-%%   <<"MonitoringResources">> => monitoring_resources(),
-%%   <<"NetworkConfig">> => network_config(),
-%%   <<"RoleArn">> => string(),
-%%   <<"StoppingCondition">> => monitoring_stopping_condition()
-%% }
--type monitoring_job_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_package_output() :: #{
-%%   <<"ModelPackageArn">> => string()
-%% }
--type create_model_package_output() :: #{binary() => any()}.
-
-%% Example:
-%% user_settings() :: #{
-%%   <<"AutoMountHomeEFS">> => list(any()),
-%%   <<"CanvasAppSettings">> => canvas_app_settings(),
-%%   <<"CodeEditorAppSettings">> => code_editor_app_settings(),
-%%   <<"CustomFileSystemConfigs">> => list(list()),
-%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
-%%   <<"DefaultLandingUri">> => string(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
-%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
-%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
-%%   <<"RSessionAppSettings">> => r_session_app_settings(),
-%%   <<"RStudioServerProAppSettings">> => r_studio_server_pro_app_settings(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"SharingSettings">> => sharing_settings(),
-%%   <<"SpaceStorageSettings">> => default_space_storage_settings(),
-%%   <<"StudioWebPortal">> => list(any()),
-%%   <<"StudioWebPortalSettings">> => studio_web_portal_settings(),
-%%   <<"TensorBoardAppSettings">> => tensor_board_app_settings()
-%% }
--type user_settings() :: #{binary() => any()}.
-
-%% Example:
-%% studio_web_portal_settings() :: #{
-%%   <<"ExecutionRoleSessionNameMode">> => list(any()),
-%%   <<"HiddenAppTypes">> => list(list(any())()),
-%%   <<"HiddenInstanceTypes">> => list(list(any())()),
-%%   <<"HiddenMlTools">> => list(list(any())()),
-%%   <<"HiddenSageMakerImageVersionAliases">> => list(hidden_sage_maker_image())
-%% }
--type studio_web_portal_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workteam_request() :: #{
-%%   <<"WorkteamName">> := string()
-%% }
--type describe_workteam_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_validation_specification() :: #{
-%%   <<"ValidationProfiles">> => list(model_package_validation_profile()),
-%%   <<"ValidationRole">> => string()
-%% }
--type model_package_validation_specification() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_output() :: #{
-%%   <<"EndpointArn">> => string()
-%% }
--type update_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% channel_specification() :: #{
-%%   <<"Description">> => string(),
-%%   <<"IsRequired">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"SupportedCompressionTypes">> => list(list(any())()),
-%%   <<"SupportedContentTypes">> => list(string()),
-%%   <<"SupportedInputModes">> => list(list(any())())
-%% }
--type channel_specification() :: #{binary() => any()}.
-
-%% Example:
-%% metrics_source() :: #{
-%%   <<"ContentDigest">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type metrics_source() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_config_step_metadata() :: #{
-%%   <<"Arn">> => string()
-%% }
--type endpoint_config_step_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_summary() :: #{
+%% describe_model_package_group_output() :: #{
 %%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => trial_component_status(),
-%%   <<"TrialComponentArn">> => string(),
-%%   <<"TrialComponentName">> => string(),
-%%   <<"TrialComponentSource">> => trial_component_source()
+%%   <<"ManagedConfiguration">> => managed_configuration(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any())
 %% }
--type trial_component_summary() :: #{binary() => any()}.
+-type describe_model_package_group_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_replace_cluster_nodes_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"NodeId">> => string()
+%% describe_model_package_input() :: #{
+%%   <<"IncludedData">> => list(any()),
+%%   <<"ModelPackageName">> := string()
 %% }
--type batch_replace_cluster_nodes_error() :: #{binary() => any()}.
-
-%% Example:
-%% scheduler_config() :: #{
-%%   <<"FairShare">> => list(any()),
-%%   <<"IdleResourceSharing">> => list(any()),
-%%   <<"PriorityClasses">> => list(priority_class())
-%% }
--type scheduler_config() :: #{binary() => any()}.
-
-%% Example:
-%% domain_details() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainArn">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Url">> => string()
-%% }
--type domain_details() :: #{binary() => any()}.
-
-%% Example:
-%% model_explainability_app_specification() :: #{
-%%   <<"ConfigUri">> => string(),
-%%   <<"Environment">> => map(),
-%%   <<"ImageUri">> => string()
-%% }
--type model_explainability_app_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_edge_packaging_jobs_response() :: #{
-%%   <<"EdgePackagingJobSummaries">> => list(edge_packaging_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_edge_packaging_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_notebook_instance_lifecycle_configs_input() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_notebook_instance_lifecycle_configs_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_optimization_job_response() :: #{
-%%   <<"OptimizationJobArn">> => string()
-%% }
--type create_optimization_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_inference_recommendations_job_request() :: #{
-%%   <<"InputConfig">> := recommendation_job_input_config(),
-%%   <<"JobDescription">> => string(),
-%%   <<"JobName">> := string(),
-%%   <<"JobType">> := list(any()),
-%%   <<"OutputConfig">> => recommendation_job_output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"StoppingConditions">> => recommendation_job_stopping_conditions(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_inference_recommendations_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% holiday_config_attributes() :: #{
-%%   <<"CountryCode">> => string()
-%% }
--type holiday_config_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_quality_job_definition_response() :: #{
-%%   <<"JobDefinitionArn">> => string()
-%% }
--type create_model_quality_job_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_schedule() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
-%%   <<"MonitoringScheduleArn">> => string(),
-%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringScheduleStatus">> => list(any()),
-%%   <<"MonitoringType">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type monitoring_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleName">> := string()
-%% }
--type delete_monitoring_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_pipeline_execution_response() :: #{
-%%   <<"PipelineExecutionArn">> => string()
-%% }
--type start_pipeline_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% model_access_config() :: #{
-%%   <<"AcceptEula">> => boolean()
-%% }
--type model_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_profile_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"HomeEfsFileSystemUid">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SingleSignOnUserIdentifier">> => string(),
-%%   <<"SingleSignOnUserValue">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserProfileArn">> => string(),
-%%   <<"UserProfileName">> => string(),
-%%   <<"UserSettings">> => user_settings()
-%% }
--type describe_user_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_compute_quota_response() :: #{
-%%   <<"ActivationState">> => list(any()),
-%%   <<"ClusterArn">> => string(),
-%%   <<"ComputeQuotaArn">> => string(),
-%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
-%%   <<"ComputeQuotaId">> => string(),
-%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
-%%   <<"ComputeQuotaVersion">> => integer(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_compute_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_a_i_benchmark_job_request() :: #{
-%%   <<"AIBenchmarkJobName">> := string()
-%% }
--type describe_a_i_benchmark_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_benchmark_job_summary() :: #{
-%%   <<"AIBenchmarkJobArn">> => string(),
-%%   <<"AIBenchmarkJobName">> => string(),
-%%   <<"AIBenchmarkJobStatus">> => list(any()),
-%%   <<"AIWorkloadConfigName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer()
-%% }
--type a_i_benchmark_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% transform_input() :: #{
-%%   <<"CompressionType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"DataSource">> => transform_data_source(),
-%%   <<"SplitType">> => list(any())
-%% }
--type transform_input() :: #{binary() => any()}.
-
-%% Example:
-%% trial_component_metric_summary() :: #{
-%%   <<"Avg">> => float(),
-%%   <<"Count">> => integer(),
-%%   <<"Last">> => float(),
-%%   <<"Max">> => float(),
-%%   <<"MetricName">> => string(),
-%%   <<"Min">> => float(),
-%%   <<"SourceArn">> => string(),
-%%   <<"StdDev">> => float(),
-%%   <<"TimeStamp">> => non_neg_integer()
-%% }
--type trial_component_metric_summary() :: #{binary() => any()}.
-
-%% Example:
-%% device() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"IotThingName">> => string()
-%% }
--type device() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_scheduler_config_request() :: #{
-%%   <<"ClusterSchedulerConfigId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"SchedulerConfig">> => scheduler_config(),
-%%   <<"TargetVersion">> := integer()
-%% }
--type update_cluster_scheduler_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_fsx_lustre_config() :: #{
-%%   <<"DnsName">> => string(),
-%%   <<"MountName">> => string(),
-%%   <<"MountPath">> => string()
-%% }
--type cluster_fsx_lustre_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_workteam_response() :: #{
-%%   <<"Workteam">> => workteam()
-%% }
--type update_workteam_response() :: #{binary() => any()}.
-
-%% Example:
-%% desired_weight_and_capacity() :: #{
-%%   <<"DesiredInstanceCount">> => integer(),
-%%   <<"DesiredWeight">> => float(),
-%%   <<"ServerlessUpdateConfig">> => production_variant_serverless_update_config(),
-%%   <<"VariantName">> => string()
-%% }
--type desired_weight_and_capacity() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_capacity_summary() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"DurationHours">> => float(),
-%%   <<"DurationMinutes">> => float(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ReservedCapacityArn">> => string(),
-%%   <<"ReservedCapacityType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UltraServerCount">> => integer(),
-%%   <<"UltraServerType">> => string()
-%% }
--type reserved_capacity_summary() :: #{binary() => any()}.
-
-%% Example:
-%% parent() :: #{
-%%   <<"ExperimentName">> => string(),
-%%   <<"TrialName">> => string()
-%% }
--type parent() :: #{binary() => any()}.
-
-%% Example:
-%% text_classification_job_config() :: #{
-%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
-%%   <<"ContentColumn">> => string(),
-%%   <<"TargetLabelColumn">> => string()
-%% }
--type text_classification_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% stop_job_response() :: #{
-
-%% }
--type stop_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_content_response() :: #{
-%%   <<"HubArn">> => string(),
-%%   <<"HubContentArn">> => string()
-%% }
--type update_hub_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% final_hyper_parameter_tuning_job_objective_metric() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type final_hyper_parameter_tuning_job_objective_metric() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_scheduler_config_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterSchedulerConfigArn">> => string(),
-%%   <<"ClusterSchedulerConfigId">> => string(),
-%%   <<"ClusterSchedulerConfigVersion">> => integer(),
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SchedulerConfig">> => scheduler_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => map()
-%% }
--type describe_cluster_scheduler_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipeline_request() :: #{
-%%   <<"PipelineName">> := string(),
-%%   <<"PipelineVersionId">> => float()
-%% }
--type describe_pipeline_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_source() :: #{
-%%   <<"DatasetSource">> => dataset_source(),
-%%   <<"FileSystemDataSource">> => file_system_data_source(),
-%%   <<"S3DataSource">> => s3_data_source()
-%% }
--type data_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_training_job_response() :: #{
-%%   <<"TrainingJobArn">> => string()
-%% }
--type create_training_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_configuration() :: #{
-%%   <<"ManagedStorageType">> => list(any())
-%% }
--type managed_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_bias_job_definition_request() :: #{
-%%   <<"JobDefinitionName">> := string()
-%% }
--type delete_model_bias_job_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_cards_response() :: #{
-%%   <<"ModelCardSummaries">> => list(model_card_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_cards_response() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_model_details() :: #{
-%%   <<"InferenceSpecificationName">> => string(),
-%%   <<"InstanceDetails">> => list(a_i_recommendation_instance_detail()),
-%%   <<"ModelPackageArn">> => string()
-%% }
--type a_i_recommendation_model_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_context_response() :: #{
-%%   <<"ContextArn">> => string()
-%% }
--type update_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_device_fleet_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceFleetArn">> => string(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"IotRoleAlias">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OutputConfig">> => edge_output_config(),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_device_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_trials_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrialSummaries">> => list(trial_summary())
-%% }
--type list_trials_response() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_job_sns_data_source() :: #{
-%%   <<"SnsTopicArn">> => string()
-%% }
--type labeling_job_sns_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_workload_input_data_config() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"DataSource">> => a_i_workload_data_source()
-%% }
--type a_i_workload_input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_transform_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TransformJobSummaries">> => list(transform_job_summary())
-%% }
--type list_transform_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hub_content_request() :: #{
-%%   <<"HubContentName">> := string(),
-%%   <<"HubContentType">> := list(any()),
-%%   <<"HubContentVersion">> := string(),
-%%   <<"HubName">> := string()
-%% }
--type delete_hub_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% space_jupyter_lab_app_settings() :: #{
-%%   <<"AppLifecycleManagement">> => space_app_lifecycle_management(),
-%%   <<"CodeRepositories">> => list(code_repository()),
-%%   <<"DefaultResourceSpec">> => resource_spec()
-%% }
--type space_jupyter_lab_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_capacity_reservation_config() :: #{
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"MlReservationArn">> => string()
-%% }
--type production_variant_capacity_reservation_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_definitions_response() :: #{
-%%   <<"FlowDefinitionSummaries">> => list(flow_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_flow_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge() :: #{
-%%   <<"AssociationType">> => list(any()),
-%%   <<"DestinationArn">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type edge() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_benchmark_network_config() :: #{
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type a_i_benchmark_network_config() :: #{binary() => any()}.
-
-%% Example:
-%% model_package_container_definition() :: #{
-%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
-%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
-%%   <<"BaseModel">> => base_model(),
-%%   <<"ContainerHostname">> => string(),
-%%   <<"Environment">> => map(),
-%%   <<"Framework">> => string(),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"Image">> => string(),
-%%   <<"ImageDigest">> => string(),
-%%   <<"IsCheckpoint">> => boolean(),
-%%   <<"ModelDataETag">> => string(),
-%%   <<"ModelDataSource">> => model_data_source(),
-%%   <<"ModelDataUrl">> => string(),
-%%   <<"ModelInput">> => model_input(),
-%%   <<"NearestModelName">> => string(),
-%%   <<"ProductId">> => string()
-%% }
--type model_package_container_definition() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_constraints_resource() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type monitoring_constraints_resource() :: #{binary() => any()}.
-
-%% Example:
-%% experiment() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentArn">> => string(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Source">> => experiment_source(),
-%%   <<"Tags">> => list(tag())
-%% }
--type experiment() :: #{binary() => any()}.
-
-%% Example:
-%% space_idle_settings() :: #{
-%%   <<"IdleTimeoutInMinutes">> => integer()
-%% }
--type space_idle_settings() :: #{binary() => any()}.
-
-%% Example:
-%% ownership_settings() :: #{
-%%   <<"OwnerUserProfileName">> => string()
-%% }
--type ownership_settings() :: #{binary() => any()}.
-
-%% Example:
-%% default_space_settings() :: #{
-%%   <<"CustomFileSystemConfigs">> => list(list()),
-%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
-%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
-%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"SpaceStorageSettings">> => default_space_storage_settings()
-%% }
--type default_space_settings() :: #{binary() => any()}.
-
-%% Example:
-%% stop_monitoring_schedule_request() :: #{
-%%   <<"MonitoringScheduleName">> := string()
-%% }
--type stop_monitoring_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_response() :: #{
-%%   <<"AppArn">> => string()
-%% }
--type create_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_card_export_job_request() :: #{
-%%   <<"ModelCardExportJobName">> := string(),
-%%   <<"ModelCardName">> := string(),
-%%   <<"ModelCardVersion">> => integer(),
-%%   <<"OutputConfig">> := model_card_export_output_config()
-%% }
--type create_model_card_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% selected_step() :: #{
-%%   <<"StepName">> => string()
-%% }
--type selected_step() :: #{binary() => any()}.
-
-%% Example:
-%% update_trial_response() :: #{
-%%   <<"TrialArn">> => string()
-%% }
--type update_trial_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_app_image_configs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_app_image_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_monitoring_alert_request() :: #{
-%%   <<"DatapointsToAlert">> := integer(),
-%%   <<"EvaluationPeriod">> := integer(),
-%%   <<"MonitoringAlertName">> := string(),
-%%   <<"MonitoringScheduleName">> := string()
-%% }
--type update_monitoring_alert_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trial_component_response() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputArtifacts">> => map(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LineageGroupArn">> => string(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Metrics">> => list(trial_component_metric_summary()),
-%%   <<"OutputArtifacts">> => map(),
-%%   <<"Parameters">> => map(),
-%%   <<"Source">> => trial_component_source(),
-%%   <<"Sources">> => list(trial_component_source()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => trial_component_status(),
-%%   <<"TrialComponentArn">> => string(),
-%%   <<"TrialComponentName">> => string()
-%% }
--type describe_trial_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% list_monitoring_executions_response() :: #{
-%%   <<"MonitoringExecutionSummaries">> => list(monitoring_execution_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitoring_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% hyper_parameter_tuning_job_completion_details() :: #{
-%%   <<"ConvergenceDetectedTime">> => non_neg_integer(),
-%%   <<"NumberOfTrainingJobsObjectiveNotImproving">> => integer()
-%% }
--type hyper_parameter_tuning_job_completion_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_cluster_scheduler_configs_request() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type list_cluster_scheduler_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_data_source() :: #{
-%%   <<"S3DataSource">> => s3_model_data_source()
-%% }
--type model_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% inference_component_specification() :: #{
-%%   <<"BaseInferenceComponentName">> => string(),
-%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
-%%   <<"Container">> => inference_component_container_specification(),
-%%   <<"DataCacheConfig">> => inference_component_data_cache_config(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"ModelName">> => string(),
-%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
-%%   <<"StartupParameters">> => inference_component_startup_parameters()
-%% }
--type inference_component_specification() :: #{binary() => any()}.
-
-%% Example:
-%% auto_rollback_config() :: #{
-%%   <<"Alarms">> => list(alarm())
-%% }
--type auto_rollback_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_definitions_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_flow_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% partner_app_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type partner_app_summary() :: #{binary() => any()}.
-
-%% Example:
-%% drift_check_baselines() :: #{
-%%   <<"Bias">> => drift_check_bias(),
-%%   <<"Explainability">> => drift_check_explainability(),
-%%   <<"ModelDataQuality">> => drift_check_model_data_quality(),
-%%   <<"ModelQuality">> => drift_check_model_quality()
-%% }
--type drift_check_baselines() :: #{binary() => any()}.
-
-%% Example:
-%% create_notebook_instance_output() :: #{
-%%   <<"NotebookInstanceArn">> => string()
-%% }
--type create_notebook_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_response() :: #{
-
-%% }
--type delete_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_hyper_parameter_tuning_jobs_response() :: #{
-%%   <<"HyperParameterTuningJobSummaries">> => list(hyper_parameter_tuning_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hyper_parameter_tuning_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_schedule_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MonitoringJobDefinitionName">> => string(),
-%%   <<"MonitoringScheduleArn">> => string(),
-%%   <<"MonitoringScheduleName">> => string(),
-%%   <<"MonitoringScheduleStatus">> => list(any()),
-%%   <<"MonitoringType">> => list(any())
-%% }
--type monitoring_schedule_summary() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_instance_placement() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string()
-%% }
--type cluster_instance_placement() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_scheduler_config_summary() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterSchedulerConfigArn">> => string(),
-%%   <<"ClusterSchedulerConfigId">> => string(),
-%%   <<"ClusterSchedulerConfigVersion">> => integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type cluster_scheduler_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_model_packages_output() :: #{
-%%   <<"ModelPackageSummaryList">> => list(model_package_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_model_packages_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_catalog() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ResourceCatalogArn">> => string(),
-%%   <<"ResourceCatalogName">> => string()
-%% }
--type resource_catalog() :: #{binary() => any()}.
-
-%% Example:
-%% processing_output_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Outputs">> => list(processing_output())
-%% }
--type processing_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% production_variant_managed_instance_scaling() :: #{
-%%   <<"MaxInstanceCount">> => integer(),
-%%   <<"MinInstanceCount">> => integer(),
-%%   <<"ScaleInPolicy">> => production_variant_managed_instance_scaling_scale_in_policy(),
-%%   <<"Status">> => list(any())
-%% }
--type production_variant_managed_instance_scaling() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workforce_response() :: #{
-%%   <<"Workforce">> => workforce()
-%% }
--type describe_workforce_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_record() :: #{
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"Experiment">> => experiment(),
-%%   <<"FeatureGroup">> => feature_group(),
-%%   <<"FeatureMetadata">> => feature_metadata(),
-%%   <<"HyperParameterTuningJob">> => hyper_parameter_tuning_job_search_entity(),
-%%   <<"Job">> => job(),
-%%   <<"Model">> => model_dashboard_model(),
-%%   <<"ModelCard">> => model_card(),
-%%   <<"ModelPackage">> => model_package(),
-%%   <<"ModelPackageGroup">> => model_package_group(),
-%%   <<"Pipeline">> => pipeline(),
-%%   <<"PipelineExecution">> => pipeline_execution(),
-%%   <<"PipelineVersion">> => pipeline_version(),
-%%   <<"Project">> => project(),
-%%   <<"TrainingJob">> => training_job(),
-%%   <<"Trial">> => trial(),
-%%   <<"TrialComponent">> => trial_component()
-%% }
--type search_record() :: #{binary() => any()}.
-
-%% Example:
-%% trial() :: #{
-%%   <<"CreatedBy">> => user_context(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"LastModifiedBy">> => user_context(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MetadataProperties">> => metadata_properties(),
-%%   <<"Source">> => trial_source(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrialArn">> => string(),
-%%   <<"TrialComponentSummaries">> => list(trial_component_simple_summary()),
-%%   <<"TrialName">> => string()
-%% }
--type trial() :: #{binary() => any()}.
-
-%% Example:
-%% processing_cluster_config() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VolumeSizeInGB">> => integer()
-%% }
--type processing_cluster_config() :: #{binary() => any()}.
-
-%% Example:
-%% device_stats() :: #{
-%%   <<"ConnectedDeviceCount">> => float(),
-%%   <<"RegisteredDeviceCount">> => float()
-%% }
--type device_stats() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_input() :: #{
-%%   <<"ModelName">> := string()
-%% }
--type describe_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% environment_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string(),
-%%   <<"ValueType">> => string()
-%% }
--type environment_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% model_dashboard_endpoint() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointName">> => string(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type model_dashboard_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_scheduler_config_request() :: #{
-%%   <<"ClusterArn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"SchedulerConfig">> := scheduler_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_cluster_scheduler_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_fleet_request() :: #{
-%%   <<"DeviceFleetName">> := string()
-%% }
--type delete_device_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% jupyter_lab_app_settings() :: #{
-%%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
-%%   <<"BuiltInLifecycleConfigArn">> => string(),
-%%   <<"CodeRepositories">> => list(code_repository()),
-%%   <<"CustomImages">> => list(custom_image()),
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"EmrSettings">> => emr_settings(),
-%%   <<"LifecycleConfigArns">> => list(string())
-%% }
--type jupyter_lab_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% update_experiment_response() :: #{
-%%   <<"ExperimentArn">> => string()
-%% }
--type update_experiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% serverless_job_config() :: #{
-%%   <<"AcceptEula">> => boolean(),
-%%   <<"BaseModelArn">> => string(),
-%%   <<"CustomizationTechnique">> => list(any()),
-%%   <<"EvaluationType">> => list(any()),
-%%   <<"EvaluatorArn">> => string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"Peft">> => list(any())
-%% }
--type serverless_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineVersionSummaries">> => list(pipeline_version_summary())
-%% }
--type list_pipeline_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_algorithms_output() :: #{
-%%   <<"AlgorithmSummaryList">> => list(algorithm_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_algorithms_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_instance_lifecycle_config_input() :: #{
-%%   <<"NotebookInstanceLifecycleConfigName">> := string()
-%% }
--type delete_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_config() :: #{
-%%   <<"HumanTaskUiArn">> => string(),
-%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
-%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
-%%   <<"TaskCount">> => integer(),
-%%   <<"TaskDescription">> => string(),
-%%   <<"TaskKeywords">> => list(string()),
-%%   <<"TaskTimeLimitInSeconds">> => integer(),
-%%   <<"TaskTitle">> => string(),
-%%   <<"WorkteamArn">> => string()
-%% }
--type human_loop_config() :: #{binary() => any()}.
-
-%% Example:
-%% monitoring_baseline_config() :: #{
-%%   <<"BaseliningJobName">> => string(),
-%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
-%%   <<"StatisticsResource">> => monitoring_statistics_resource()
-%% }
--type monitoring_baseline_config() :: #{binary() => any()}.
-
-%% Example:
-%% model() :: #{
-%%   <<"Containers">> => list(container_definition()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentRecommendation">> => deployment_recommendation(),
-%%   <<"EnableNetworkIsolation">> => boolean(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
-%%   <<"ModelArn">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"PrimaryContainer">> => container_definition(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type model() :: #{binary() => any()}.
-
-%% Example:
-%% list_compilation_jobs_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
-%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_compilation_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% transform_output() :: #{
-%%   <<"Accept">> => string(),
-%%   <<"AssembleWith">> => list(any()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3OutputPath">> => string()
-%% }
--type transform_output() :: #{binary() => any()}.
+-type describe_model_package_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_model_package_output() :: #{
@@ -13947,100 +6115,59 @@
 -type describe_model_package_output() :: #{binary() => any()}.
 
 %% Example:
-%% a_i_recommendation_deployment_configuration() :: #{
-%%   <<"CopyCountPerInstance">> => integer(),
-%%   <<"EnvironmentVariables">> => map(),
-%%   <<"ImageUri">> => string(),
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"S3">> => list(a_i_recommendation_deployment_s3_channel())
+%% describe_model_quality_job_definition_request() :: #{
+%%   <<"JobDefinitionName">> := string()
 %% }
--type a_i_recommendation_deployment_configuration() :: #{binary() => any()}.
+-type describe_model_quality_job_definition_request() :: #{binary() => any()}.
 
 %% Example:
-%% mlflow_configuration() :: #{
-%%   <<"MlflowExperimentName">> => string(),
-%%   <<"MlflowResourceArn">> => string()
-%% }
--type mlflow_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_training_plan_extension_history_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
-%% }
--type describe_training_plan_extension_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_parameters_for_execution_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineParameters">> => list(parameter())
-%% }
--type list_pipeline_parameters_for_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_settings() :: #{
-%%   <<"S3ArtifactPath">> => string(),
-%%   <<"S3KmsKeyId">> => string()
-%% }
--type workspace_settings() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_recommendation_performance_metric() :: #{
-%%   <<"Metric">> => string(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => string(),
-%%   <<"Value">> => string()
-%% }
--type a_i_recommendation_performance_metric() :: #{binary() => any()}.
-
-%% Example:
-%% space_code_editor_app_settings() :: #{
-%%   <<"AppLifecycleManagement">> => space_app_lifecycle_management(),
-%%   <<"DefaultResourceSpec">> => resource_spec()
-%% }
--type space_code_editor_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% update_hub_content_reference_response() :: #{
-%%   <<"HubArn">> => string(),
-%%   <<"HubContentArn">> => string()
-%% }
--type update_hub_content_reference_response() :: #{binary() => any()}.
-
-%% Example:
-%% autotune() :: #{
-%%   <<"Mode">> => list(any())
-%% }
--type autotune() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_model_package_summary() :: #{
+%% describe_model_quality_job_definition_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"InferenceSpecification">> => inference_specification(),
-%%   <<"ModelApprovalStatus">> => list(any()),
-%%   <<"ModelPackageArn">> => string(),
-%%   <<"ModelPackageDescription">> => string(),
-%%   <<"ModelPackageGroupName">> => string(),
-%%   <<"ModelPackageRegistrationType">> => list(any()),
-%%   <<"ModelPackageStatus">> => list(any()),
-%%   <<"ModelPackageVersion">> => integer()
+%%   <<"JobDefinitionArn">> => string(),
+%%   <<"JobDefinitionName">> => string(),
+%%   <<"JobResources">> => monitoring_resources(),
+%%   <<"ModelQualityAppSpecification">> => model_quality_app_specification(),
+%%   <<"ModelQualityBaselineConfig">> => model_quality_baseline_config(),
+%%   <<"ModelQualityJobInput">> => model_quality_job_input(),
+%%   <<"ModelQualityJobOutputConfig">> => monitoring_output_config(),
+%%   <<"NetworkConfig">> => monitoring_network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
 %% }
--type batch_describe_model_package_summary() :: #{binary() => any()}.
+-type describe_model_quality_job_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_processing_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProcessingJobSummaries">> => list(processing_job_summary())
+%% describe_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
 %% }
--type list_processing_jobs_response() :: #{binary() => any()}.
+-type describe_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_monitoring_schedule_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type describe_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type describe_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string()
+%% }
+-type describe_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_notebook_instance_lifecycle_config_output() :: #{
@@ -14054,93 +6181,69 @@
 -type describe_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
 
 %% Example:
-%% hyper_parameter_tuning_job_config() :: #{
-%%   <<"HyperParameterTuningJobObjective">> => hyper_parameter_tuning_job_objective(),
-%%   <<"ParameterRanges">> => parameter_ranges(),
-%%   <<"RandomSeed">> => integer(),
-%%   <<"ResourceLimits">> => resource_limits(),
-%%   <<"Strategy">> => list(any()),
-%%   <<"StrategyConfig">> => hyper_parameter_tuning_job_strategy_config(),
-%%   <<"TrainingJobEarlyStoppingType">> => list(any()),
-%%   <<"TuningJobCompletionCriteria">> => tuning_job_completion_criteria()
-%% }
--type hyper_parameter_tuning_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% emr_serverless_settings() :: #{
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type emr_serverless_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_context_response() :: #{
-%%   <<"ContextArn">> => string()
-%% }
--type create_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_compilation_job_request() :: #{
-%%   <<"CompilationJobName">> := string()
-%% }
--type describe_compilation_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_completion_criteria() :: #{
-%%   <<"MaxAutoMLJobRuntimeInSeconds">> => integer(),
-%%   <<"MaxCandidates">> => integer(),
-%%   <<"MaxRuntimePerTrainingJobInSeconds">> => integer()
-%% }
--type auto_ml_job_completion_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% file_source() :: #{
-%%   <<"ContentDigest">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type file_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_device_fleet_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DeviceFleetName">> := string(),
-%%   <<"EnableIotRoleAlias">> => boolean(),
-%%   <<"OutputConfig">> := edge_output_config(),
+%% describe_notebook_instance_output() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DirectInternetAccess">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NotebookInstanceArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> => string(),
+%%   <<"NotebookInstanceStatus">> => list(any()),
+%%   <<"PlatformIdentifier">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%%   <<"RootAccess">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
 %% }
--type create_device_fleet_request() :: #{binary() => any()}.
+-type describe_notebook_instance_output() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_fsx_open_zfs_config() :: #{
-%%   <<"DnsName">> => string(),
-%%   <<"MountPath">> => string()
+%% describe_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
 %% }
--type cluster_fsx_open_zfs_config() :: #{binary() => any()}.
+-type describe_optimization_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_inference_component_input() :: #{
-%%   <<"InferenceComponentName">> := string()
+%% describe_optimization_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentInstanceType">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxInstanceCount">> => integer(),
+%%   <<"ModelSource">> => optimization_job_model_source(),
+%%   <<"OptimizationConfigs">> => list(list()),
+%%   <<"OptimizationEndTime">> => non_neg_integer(),
+%%   <<"OptimizationEnvironment">> => map(),
+%%   <<"OptimizationJobArn">> => string(),
+%%   <<"OptimizationJobName">> => string(),
+%%   <<"OptimizationJobStatus">> => list(any()),
+%%   <<"OptimizationOutput">> => optimization_output(),
+%%   <<"OptimizationStartTime">> => non_neg_integer(),
+%%   <<"OutputConfig">> => optimization_job_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TrainingPlanArns">> => list(string()),
+%%   <<"VpcConfig">> => optimization_vpc_config()
 %% }
--type delete_inference_component_input() :: #{binary() => any()}.
+-type describe_optimization_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_image_version_request() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"AliasesToAdd">> => list(string()),
-%%   <<"AliasesToDelete">> => list(string()),
-%%   <<"Horovod">> => boolean(),
-%%   <<"ImageName">> := string(),
-%%   <<"JobType">> => list(any()),
-%%   <<"MLFramework">> => string(),
-%%   <<"Processor">> => list(any()),
-%%   <<"ProgrammingLang">> => string(),
-%%   <<"ReleaseNotes">> => string(),
-%%   <<"VendorGuidance">> => list(any()),
-%%   <<"Version">> => integer()
+%% describe_partner_app_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"IncludeAvailableUpgrade">> => boolean()
 %% }
--type update_image_version_request() :: #{binary() => any()}.
+-type describe_partner_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_partner_app_response() :: #{
@@ -14167,237 +6270,290 @@
 -type describe_partner_app_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_trials_request() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"ExperimentName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"TrialComponentName">> => string()
+%% describe_pipeline_definition_for_execution_request() :: #{
+%%   <<"PipelineExecutionArn">> := string()
 %% }
--type list_trials_request() :: #{binary() => any()}.
+-type describe_pipeline_definition_for_execution_request() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_instance_group_details() :: #{
-%%   <<"ActiveOperations">> => map(),
-%%   <<"ActiveSoftwareUpdateConfig">> => deployment_configuration(),
-%%   <<"AutoPatchConfig">> => cluster_auto_patch_config_details(),
-%%   <<"CapacityRequirements">> => cluster_capacity_requirements(),
-%%   <<"CurrentCount">> => integer(),
-%%   <<"CurrentImageId">> => string(),
-%%   <<"CurrentImageReleaseVersion">> => string(),
-%%   <<"DesiredImageId">> => string(),
-%%   <<"DesiredImageReleaseVersion">> => string(),
-%%   <<"ExecutionRole">> => string(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceRequirements">> => cluster_instance_requirement_details(),
-%%   <<"InstanceStorageConfigs">> => list(list()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"InstanceTypeDetails">> => list(cluster_instance_type_detail()),
-%%   <<"KubernetesConfig">> => cluster_kubernetes_config_details(),
-%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
-%%   <<"MinCount">> => integer(),
-%%   <<"NetworkInterface">> => cluster_network_interface_details(),
-%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
-%%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
-%%   <<"SlurmConfig">> => cluster_slurm_config_details(),
-%%   <<"SoftwareUpdateStatus">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetCount">> => integer(),
-%%   <<"TargetStateCount">> => integer(),
-%%   <<"ThreadsPerCore">> => integer(),
-%%   <<"TrainingPlanArn">> => string(),
-%%   <<"TrainingPlanStatus">> => string()
+%% describe_pipeline_definition_for_execution_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"PipelineDefinition">> => string()
 %% }
--type cluster_instance_group_details() :: #{binary() => any()}.
+-type describe_pipeline_definition_for_execution_response() :: #{binary() => any()}.
 
 %% Example:
-%% notebook_instance_lifecycle_hook() :: #{
-%%   <<"Content">> => string()
+%% describe_pipeline_execution_request() :: #{
+%%   <<"PipelineExecutionArn">> := string()
 %% }
--type notebook_instance_lifecycle_hook() :: #{binary() => any()}.
+-type describe_pipeline_execution_request() :: #{binary() => any()}.
 
 %% Example:
-%% model_quantization_config() :: #{
-%%   <<"Image">> => string(),
-%%   <<"OverrideEnvironment">> => map()
+%% describe_pipeline_execution_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MLflowConfig">> => mlflow_configuration(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"PipelineVersionId">> => float(),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
--type model_quantization_config() :: #{binary() => any()}.
+-type describe_pipeline_execution_response() :: #{binary() => any()}.
 
 %% Example:
-%% condition_step_metadata() :: #{
-%%   <<"Outcome">> => list(any())
+%% describe_pipeline_request() :: #{
+%%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionId">> => float()
 %% }
--type condition_step_metadata() :: #{binary() => any()}.
+-type describe_pipeline_request() :: #{binary() => any()}.
 
 %% Example:
-%% code_editor_app_settings() :: #{
-%%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
-%%   <<"BuiltInLifecycleConfigArn">> => string(),
-%%   <<"CustomImages">> => list(custom_image()),
-%%   <<"DefaultResourceSpec">> => resource_spec(),
-%%   <<"LifecycleConfigArns">> => list(string())
+%% describe_pipeline_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastRunTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDefinition">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"PipelineStatus">> => list(any()),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"RoleArn">> => string()
 %% }
--type code_editor_app_settings() :: #{binary() => any()}.
+-type describe_pipeline_response() :: #{binary() => any()}.
 
 %% Example:
-%% hyper_parameter_tuning_instance_config() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"VolumeSizeInGB">> => integer()
+%% describe_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
 %% }
--type hyper_parameter_tuning_instance_config() :: #{binary() => any()}.
+-type describe_processing_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% model_dashboard_model() :: #{
-%%   <<"Endpoints">> => list(model_dashboard_endpoint()),
-%%   <<"LastBatchTransformJob">> => transform_job(),
-%%   <<"Model">> => model(),
-%%   <<"ModelCard">> => model_dashboard_model_card(),
-%%   <<"MonitoringSchedules">> => list(model_dashboard_monitoring_schedule())
+%% describe_processing_job_response() :: #{
+%%   <<"AppSpecification">> => app_specification(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Environment">> => map(),
+%%   <<"ExitMessage">> => string(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"ProcessingEndTime">> => non_neg_integer(),
+%%   <<"ProcessingInputs">> => list(processing_input()),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ProcessingJobName">> => string(),
+%%   <<"ProcessingJobStatus">> => list(any()),
+%%   <<"ProcessingOutputConfig">> => processing_output_config(),
+%%   <<"ProcessingResources">> => processing_resources(),
+%%   <<"ProcessingStartTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => processing_stopping_condition(),
+%%   <<"TrainingJobArn">> => string()
 %% }
--type model_dashboard_model() :: #{binary() => any()}.
+-type describe_processing_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% workforce_vpc_config_request() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"VpcId">> => string()
+%% describe_project_input() :: #{
+%%   <<"ProjectName">> := string()
 %% }
--type workforce_vpc_config_request() :: #{binary() => any()}.
+-type describe_project_input() :: #{binary() => any()}.
 
 %% Example:
-%% cfn_template_provider_detail() :: #{
-%%   <<"Parameters">> => list(cfn_stack_parameter()),
-%%   <<"RoleARN">> => string(),
-%%   <<"StackDetail">> => cfn_stack_detail(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateURL">> => string()
+%% describe_project_output() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any()),
+%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"TemplateProviderDetails">> => list(template_provider_detail())
 %% }
--type cfn_template_provider_detail() :: #{binary() => any()}.
+-type describe_project_output() :: #{binary() => any()}.
 
 %% Example:
-%% stop_auto_ml_job_request() :: #{
-%%   <<"AutoMLJobName">> := string()
+%% describe_reserved_capacity_request() :: #{
+%%   <<"ReservedCapacityArn">> := string()
 %% }
--type stop_auto_ml_job_request() :: #{binary() => any()}.
+-type describe_reserved_capacity_request() :: #{binary() => any()}.
 
 %% Example:
-%% tensor_board_app_settings() :: #{
-%%   <<"DefaultResourceSpec">> => resource_spec()
-%% }
--type tensor_board_app_settings() :: #{binary() => any()}.
-
-%% Example:
-%% associate_trial_component_request() :: #{
-%%   <<"TrialComponentName">> := string(),
-%%   <<"TrialName">> := string()
-%% }
--type associate_trial_component_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_life_cycle() :: #{
-%%   <<"Stage">> => string(),
-%%   <<"StageDescription">> => string(),
-%%   <<"StageStatus">> => string()
-%% }
--type model_life_cycle() :: #{binary() => any()}.
-
-%% Example:
-%% delete_human_task_ui_response() :: #{
-
-%% }
--type delete_human_task_ui_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_edge_packaging_job_request() :: #{
-%%   <<"EdgePackagingJobName">> := string()
-%% }
--type stop_edge_packaging_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_partner_app_request() :: #{
-%%   <<"AppVersion">> => string(),
-%%   <<"ApplicationConfig">> => partner_app_config(),
-%%   <<"Arn">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
-%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
-%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Tier">> => string()
-%% }
--type update_partner_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_i_cloud_watch_logs() :: #{
-%%   <<"LogGroupArn">> => string(),
-%%   <<"LogStreamName">> => string()
-%% }
--type a_i_cloud_watch_logs() :: #{binary() => any()}.
-
-%% Example:
-%% list_subscribed_workteams_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SubscribedWorkteams">> => list(subscribed_workteam())
-%% }
--type list_subscribed_workteams_response() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_capacity_offering() :: #{
+%% describe_reserved_capacity_response() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailableInstanceCount">> => integer(),
 %%   <<"DurationHours">> => float(),
 %%   <<"DurationMinutes">> => float(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ExtensionEndTime">> => non_neg_integer(),
-%%   <<"ExtensionStartTime">> => non_neg_integer(),
-%%   <<"InstanceCount">> => integer(),
+%%   <<"InUseInstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"ReservedCapacityArn">> => string(),
 %%   <<"ReservedCapacityType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"UltraServerCount">> => integer(),
-%%   <<"UltraServerType">> => string()
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerSummary">> => ultra_server_summary()
 %% }
--type reserved_capacity_offering() :: #{binary() => any()}.
+-type describe_reserved_capacity_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_endpoint_config_input() :: #{
-%%   <<"EndpointConfigName">> := string()
+%% describe_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceName">> := string()
 %% }
--type delete_endpoint_config_input() :: #{binary() => any()}.
+-type describe_space_request() :: #{binary() => any()}.
 
 %% Example:
-%% ultra_server_summary() :: #{
-%%   <<"AvailableSpareInstanceCount">> => integer(),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"UltraServerCount">> => integer(),
-%%   <<"UltraServerType">> => string(),
-%%   <<"UnhealthyInstanceCount">> => integer()
-%% }
--type ultra_server_summary() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_job_summary() :: #{
+%% describe_space_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentInstanceType">> => list(any()),
+%%   <<"DomainId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemUid">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaxInstanceCount">> => integer(),
-%%   <<"OptimizationEndTime">> => non_neg_integer(),
-%%   <<"OptimizationJobArn">> => string(),
-%%   <<"OptimizationJobName">> => string(),
-%%   <<"OptimizationJobStatus">> => list(any()),
-%%   <<"OptimizationStartTime">> => non_neg_integer(),
-%%   <<"OptimizationTypes">> => list(string())
+%%   <<"OwnershipSettings">> => ownership_settings(),
+%%   <<"SpaceArn">> => string(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"SpaceSettings">> => space_settings(),
+%%   <<"SpaceSharingSettings">> => space_sharing_settings(),
+%%   <<"Status">> => list(any()),
+%%   <<"Url">> => string()
 %% }
--type optimization_job_summary() :: #{binary() => any()}.
+-type describe_space_response() :: #{binary() => any()}.
 
 %% Example:
-%% training_plan_summary() :: #{
+%% describe_studio_lifecycle_config_request() :: #{
+%%   <<"StudioLifecycleConfigName">> := string()
+%% }
+-type describe_studio_lifecycle_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_studio_lifecycle_config_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StudioLifecycleConfigAppType">> => list(any()),
+%%   <<"StudioLifecycleConfigArn">> => string(),
+%%   <<"StudioLifecycleConfigContent">> => string(),
+%%   <<"StudioLifecycleConfigName">> => string()
+%% }
+-type describe_studio_lifecycle_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribed_workteam_request() :: #{
+%%   <<"WorkteamArn">> := string()
+%% }
+-type describe_subscribed_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribed_workteam_response() :: #{
+%%   <<"SubscribedWorkteam">> => subscribed_workteam()
+%% }
+-type describe_subscribed_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type describe_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_job_response() :: #{
+%%   <<"AlgorithmSpecification">> => algorithm_specification(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BillableTimeInSeconds">> => integer(),
+%%   <<"BillableTokenCount">> => float(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DebugHookConfig">> => debug_hook_config(),
+%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
+%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status()),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FinalMetricDataList">> => list(metric_data()),
+%%   <<"HyperParameters">> => map(),
+%%   <<"InfraCheckConfig">> => infra_check_config(),
+%%   <<"InputDataConfig">> => list(channel()),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowConfig">> => mlflow_config(),
+%%   <<"MlflowDetails">> => mlflow_details(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"ModelPackageConfig">> => model_package_config(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"OutputModelPackageArn">> => string(),
+%%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
+%%   <<"ProfilerRuleEvaluationStatuses">> => list(profiler_rule_evaluation_status()),
+%%   <<"ProfilingStatus">> => list(any()),
+%%   <<"ProgressInfo">> => training_progress_info(),
+%%   <<"RemoteDebugConfig">> => remote_debug_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()),
+%%   <<"ServerlessJobConfig">> => serverless_job_config(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"TrainingTimeInSeconds">> => integer(),
+%%   <<"TuningJobArn">> => string(),
+%%   <<"VpcConfig">> => vpc_config(),
+%%   <<"WarmPoolStatus">> => warm_pool_status()
+%% }
+-type describe_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_extension_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanArn">> := string()
+%% }
+-type describe_training_plan_extension_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_extension_history_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
+%% }
+-type describe_training_plan_extension_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_request() :: #{
+%%   <<"TrainingPlanName">> := string()
+%% }
+-type describe_training_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_plan_response() :: #{
 %%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"AvailableSpareInstanceCount">> => integer(),
 %%   <<"CurrencyCode">> => string(),
 %%   <<"DurationHours">> => float(),
 %%   <<"DurationMinutes">> => float(),
@@ -14412,47 +6568,1071 @@
 %%   <<"TotalUltraServerCount">> => integer(),
 %%   <<"TrainingPlanArn">> => string(),
 %%   <<"TrainingPlanName">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer(),
 %%   <<"UpfrontFee">> => string()
 %% }
--type training_plan_summary() :: #{binary() => any()}.
+-type describe_training_plan_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_edge_packaging_job_request() :: #{
-%%   <<"CompilationJobName">> := string(),
-%%   <<"EdgePackagingJobName">> := string(),
-%%   <<"ModelName">> := string(),
-%%   <<"ModelVersion">> := string(),
-%%   <<"OutputConfig">> := edge_output_config(),
-%%   <<"ResourceKey">> => string(),
-%%   <<"RoleArn">> := string(),
+%% describe_transform_job_request() :: #{
+%%   <<"TransformJobName">> := string()
+%% }
+-type describe_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transform_job_response() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any()),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources(),
+%%   <<"TransformStartTime">> => non_neg_integer()
+%% }
+-type describe_transform_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string()
+%% }
+-type describe_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_component_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Metrics">> => list(trial_component_metric_summary()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"Source">> => trial_component_source(),
+%%   <<"Sources">> => list(trial_component_source()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type describe_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_request() :: #{
+%%   <<"TrialName">> := string()
+%% }
+-type describe_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trial_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Source">> => trial_source(),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type describe_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string()
+%% }
+-type describe_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeEfsFileSystemUid">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SingleSignOnUserIdentifier">> => string(),
+%%   <<"SingleSignOnUserValue">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileArn">> => string(),
+%%   <<"UserProfileName">> => string(),
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type describe_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workforce_request() :: #{
+%%   <<"WorkforceName">> := string()
+%% }
+-type describe_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workforce_response() :: #{
+%%   <<"Workforce">> => workforce()
+%% }
+-type describe_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workteam_request() :: #{
+%%   <<"WorkteamName">> := string()
+%% }
+-type describe_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workteam_response() :: #{
+%%   <<"Workteam">> => workteam()
+%% }
+-type describe_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% desired_weight_and_capacity() :: #{
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"ServerlessUpdateConfig">> => production_variant_serverless_update_config(),
+%%   <<"VariantName">> => string()
+%% }
+-type desired_weight_and_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% detach_cluster_node_volume_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"NodeId">> := string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type detach_cluster_node_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_cluster_node_volume_response() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type detach_cluster_node_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% device() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string()
+%% }
+-type device() :: #{binary() => any()}.
+
+%% Example:
+%% device_deployment_summary() :: #{
+%%   <<"DeployedStageName">> => string(),
+%%   <<"DeploymentStartTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceDeploymentStatus">> => list(any()),
+%%   <<"DeviceDeploymentStatusMessage">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type device_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% device_fleet_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type device_fleet_summary() :: #{binary() => any()}.
+
+%% Example:
+%% device_selection_config() :: #{
+%%   <<"DeviceNameContains">> => string(),
+%%   <<"DeviceNames">> => list(string()),
+%%   <<"DeviceSubsetType">> => list(any()),
+%%   <<"Percentage">> => integer()
+%% }
+-type device_selection_config() :: #{binary() => any()}.
+
+%% Example:
+%% device_stats() :: #{
+%%   <<"ConnectedDeviceCount">> => float(),
+%%   <<"RegisteredDeviceCount">> => float()
+%% }
+-type device_stats() :: #{binary() => any()}.
+
+%% Example:
+%% device_summary() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IotThingName">> => string(),
+%%   <<"LatestHeartbeat">> => non_neg_integer(),
+%%   <<"Models">> => list(edge_model_summary()),
+%%   <<"RegistrationTime">> => non_neg_integer()
+%% }
+-type device_summary() :: #{binary() => any()}.
+
+%% Example:
+%% direct_deploy_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type direct_deploy_settings() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sagemaker_servicecatalog_portfolio_input() :: #{
+
+%% }
+-type disable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_sagemaker_servicecatalog_portfolio_output() :: #{
+
+%% }
+-type disable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_trial_component_request() :: #{
+%%   <<"TrialComponentName">> := string(),
+%%   <<"TrialName">> := string()
+%% }
+-type disassociate_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_trial_component_response() :: #{
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type disassociate_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% docker_settings() :: #{
+%%   <<"EnableDockerAccess">> => list(any()),
+%%   <<"RootlessDocker">> => list(any()),
+%%   <<"VpcOnlyTrustedAccounts">> => list(string())
+%% }
+-type docker_settings() :: #{binary() => any()}.
+
+%% Example:
+%% domain_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainArn">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type domain_details() :: #{binary() => any()}.
+
+%% Example:
+%% domain_settings() :: #{
+%%   <<"AmazonQSettings">> => amazon_q_settings(),
+%%   <<"DockerSettings">> => docker_settings(),
+%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
+%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
+%% }
+-type domain_settings() :: #{binary() => any()}.
+
+%% Example:
+%% domain_settings_for_update() :: #{
+%%   <<"AmazonQSettings">> => amazon_q_settings(),
+%%   <<"DockerSettings">> => docker_settings(),
+%%   <<"ExecutionRoleIdentityConfig">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
+%%   <<"UnifiedStudioSettings">> => unified_studio_settings()
+%% }
+-type domain_settings_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_baselines() :: #{
+%%   <<"Bias">> => drift_check_bias(),
+%%   <<"Explainability">> => drift_check_explainability(),
+%%   <<"ModelDataQuality">> => drift_check_model_data_quality(),
+%%   <<"ModelQuality">> => drift_check_model_quality()
+%% }
+-type drift_check_baselines() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_bias() :: #{
+%%   <<"ConfigFile">> => file_source(),
+%%   <<"PostTrainingConstraints">> => metrics_source(),
+%%   <<"PreTrainingConstraints">> => metrics_source()
+%% }
+-type drift_check_bias() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_explainability() :: #{
+%%   <<"ConfigFile">> => file_source(),
+%%   <<"Constraints">> => metrics_source()
+%% }
+-type drift_check_explainability() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_model_data_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type drift_check_model_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% drift_check_model_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type drift_check_model_quality() :: #{binary() => any()}.
+
+%% Example:
+%% dynamic_scaling_configuration() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"ScalingPolicies">> => list(list())
+%% }
+-type dynamic_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_file_system() :: #{
+%%   <<"FileSystemId">> => string()
+%% }
+-type e_f_s_file_system() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_file_system_config() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemPath">> => string()
+%% }
+-type e_f_s_file_system_config() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_storage_settings() :: #{
+%%   <<"EbsVolumeSizeInGb">> => integer()
+%% }
+-type ebs_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_capacity_reservation() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"Ec2CapacityReservationId">> => string(),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UsedByCurrentEndpoint">> => integer()
+%% }
+-type ec2_capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
+%% edge() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"DestinationArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type edge() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_config() :: #{
+%%   <<"FailureHandlingPolicy">> => list(any())
+%% }
+-type edge_deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_model_config() :: #{
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"ModelHandle">> => string()
+%% }
+-type edge_deployment_model_config() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_plan_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"EdgeDeploymentFailed">> => integer(),
+%%   <<"EdgeDeploymentPending">> => integer(),
+%%   <<"EdgeDeploymentPlanArn">> => string(),
+%%   <<"EdgeDeploymentPlanName">> => string(),
+%%   <<"EdgeDeploymentSuccess">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type edge_deployment_plan_summary() :: #{binary() => any()}.
+
+%% Example:
+%% edge_deployment_status() :: #{
+%%   <<"EdgeDeploymentFailedInStage">> => integer(),
+%%   <<"EdgeDeploymentPendingInStage">> => integer(),
+%%   <<"EdgeDeploymentStageStartTime">> => non_neg_integer(),
+%%   <<"EdgeDeploymentStatusMessage">> => string(),
+%%   <<"EdgeDeploymentSuccessInStage">> => integer(),
+%%   <<"StageStatus">> => list(any())
+%% }
+-type edge_deployment_status() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model() :: #{
+%%   <<"LatestInference">> => non_neg_integer(),
+%%   <<"LatestSampleTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_model() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model_stat() :: #{
+%%   <<"ActiveDeviceCount">> => float(),
+%%   <<"ConnectedDeviceCount">> => float(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"OfflineDeviceCount">> => float(),
+%%   <<"SamplingDeviceCount">> => float()
+%% }
+-type edge_model_stat() :: #{binary() => any()}.
+
+%% Example:
+%% edge_model_summary() :: #{
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% edge_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PresetDeploymentConfig">> => string(),
+%%   <<"PresetDeploymentType">> => list(any()),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type edge_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% edge_packaging_job_summary() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EdgePackagingJobArn">> => string(),
+%%   <<"EdgePackagingJobName">> => string(),
+%%   <<"EdgePackagingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelVersion">> => string()
+%% }
+-type edge_packaging_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% edge_preset_deployment_output() :: #{
+%%   <<"Artifact">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type edge_preset_deployment_output() :: #{binary() => any()}.
+
+%% Example:
+%% emr_serverless_compute_config() :: #{
+%%   <<"ExecutionRoleARN">> => string()
+%% }
+-type emr_serverless_compute_config() :: #{binary() => any()}.
+
+%% Example:
+%% emr_serverless_settings() :: #{
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type emr_serverless_settings() :: #{binary() => any()}.
+
+%% Example:
+%% emr_settings() :: #{
+%%   <<"AssumableRoleArns">> => list(string()),
+%%   <<"ExecutionRoleArns">> => list(string())
+%% }
+-type emr_settings() :: #{binary() => any()}.
+
+%% Example:
+%% emr_step_metadata() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"LogFilePath">> => string(),
+%%   <<"StepId">> => string(),
+%%   <<"StepName">> => string()
+%% }
+-type emr_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sagemaker_servicecatalog_portfolio_input() :: #{
+
+%% }
+-type enable_sagemaker_servicecatalog_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sagemaker_servicecatalog_portfolio_output() :: #{
+
+%% }
+-type enable_sagemaker_servicecatalog_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => data_capture_config_summary(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringSchedules">> => list(monitoring_schedule()),
+%%   <<"ProductionVariants">> => list(production_variant_summary()),
+%%   <<"ShadowProductionVariants">> => list(production_variant_summary()),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_edge_packaging_job_request() :: #{binary() => any()}.
+-type endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% create_monitoring_schedule_response() :: #{
-%%   <<"MonitoringScheduleArn">> => string()
-%% }
--type create_monitoring_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% placement_specification() :: #{
-%%   <<"InstanceCount">> => integer(),
-%%   <<"UltraServerId">> => string()
-%% }
--type placement_specification() :: #{binary() => any()}.
-
-%% Example:
-%% delete_optimization_job_request() :: #{
-%%   <<"OptimizationJobName">> := string()
-%% }
--type delete_optimization_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_job_step_metadata() :: #{
+%% endpoint_config_step_metadata() :: #{
 %%   <<"Arn">> => string()
 %% }
--type auto_ml_job_step_metadata() :: #{binary() => any()}.
+-type endpoint_config_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_config_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointConfigArn">> => string(),
+%%   <<"EndpointConfigName">> => string()
+%% }
+-type endpoint_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_info() :: #{
+%%   <<"EndpointName">> => string()
+%% }
+-type endpoint_info() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_input() :: #{
+%%   <<"EndTimeOffset">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"ExcludeFeaturesAttribute">> => string(),
+%%   <<"FeaturesAttribute">> => string(),
+%%   <<"InferenceAttribute">> => string(),
+%%   <<"LocalPath">> => string(),
+%%   <<"ProbabilityAttribute">> => string(),
+%%   <<"ProbabilityThresholdAttribute">> => float(),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"StartTimeOffset">> => string()
+%% }
+-type endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_input_configuration() :: #{
+%%   <<"EnvironmentParameterRanges">> => environment_parameter_ranges(),
+%%   <<"InferenceSpecificationName">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config()
+%% }
+-type endpoint_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_metadata() :: #{
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"FailureReason">> => string()
+%% }
+-type endpoint_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_output_configuration() :: #{
+%%   <<"EndpointName">> => string(),
+%%   <<"InitialInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"VariantName">> => string()
+%% }
+-type endpoint_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_performance() :: #{
+%%   <<"EndpointInfo">> => endpoint_info(),
+%%   <<"Metrics">> => inference_metrics()
+%% }
+-type endpoint_performance() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type endpoint_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type endpoint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% environment_config() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config()
+%% }
+-type environment_config() :: #{binary() => any()}.
+
+%% Example:
+%% environment_config_details() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type environment_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% environment_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string(),
+%%   <<"ValueType">> => string()
+%% }
+-type environment_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% environment_parameter_ranges() :: #{
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter())
+%% }
+-type environment_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% error_info() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
+
+%% Example:
+%% event_details() :: #{
+%%   <<"EventMetadata">> => list()
+%% }
+-type event_details() :: #{binary() => any()}.
+
+%% Example:
+%% experiment() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Source">> => experiment_source(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type experiment() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_config() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"RunName">> => string(),
+%%   <<"TrialComponentDisplayName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type experiment_config() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type experiment_source() :: #{binary() => any()}.
+
+%% Example:
+%% experiment_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentArn">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"ExperimentSource">> => experiment_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type experiment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% explainability() :: #{
+%%   <<"Report">> => metrics_source()
+%% }
+-type explainability() :: #{binary() => any()}.
+
+%% Example:
+%% explainer_config() :: #{
+%%   <<"ClarifyExplainerConfig">> => clarify_explainer_config()
+%% }
+-type explainer_config() :: #{binary() => any()}.
+
+%% Example:
+%% extend_training_plan_request() :: #{
+%%   <<"TrainingPlanExtensionOfferingId">> := string()
+%% }
+-type extend_training_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% extend_training_plan_response() :: #{
+%%   <<"TrainingPlanExtensions">> => list(training_plan_extension())
+%% }
+-type extend_training_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_lustre_config() :: #{
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"SizeInGiB">> => integer()
+%% }
+-type f_sx_lustre_config() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_lustre_file_system() :: #{
+%%   <<"FileSystemId">> => string()
+%% }
+-type f_sx_lustre_file_system() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_lustre_file_system_config() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemPath">> => string()
+%% }
+-type f_sx_lustre_file_system_config() :: #{binary() => any()}.
+
+%% Example:
+%% fail_step_metadata() :: #{
+%%   <<"ErrorMessage">> => string()
+%% }
+-type fail_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% feature_definition() :: #{
+%%   <<"CollectionConfig">> => list(),
+%%   <<"CollectionType">> => list(any()),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any())
+%% }
+-type feature_definition() :: #{binary() => any()}.
+
+%% Example:
+%% feature_group() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTimeFeatureName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FeatureDefinitions">> => list(feature_definition()),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastUpdateStatus">> => last_update_status(),
+%%   <<"OfflineStoreConfig">> => offline_store_config(),
+%%   <<"OfflineStoreStatus">> => offline_store_status(),
+%%   <<"OnlineStoreConfig">> => online_store_config(),
+%%   <<"RecordIdentifierFeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type feature_group() :: #{binary() => any()}.
+
+%% Example:
+%% feature_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureGroupStatus">> => list(any()),
+%%   <<"OfflineStoreStatus">> => offline_store_status()
+%% }
+-type feature_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% feature_metadata() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupArn">> => string(),
+%%   <<"FeatureGroupName">> => string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => list(feature_parameter())
+%% }
+-type feature_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% feature_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type feature_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% file_source() :: #{
+%%   <<"ContentDigest">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type file_source() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_config() :: #{
+%%   <<"DefaultGid">> => integer(),
+%%   <<"DefaultUid">> => integer(),
+%%   <<"MountPath">> => string()
+%% }
+-type file_system_config() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_data_source() :: #{
+%%   <<"DirectoryPath">> => string(),
+%%   <<"FileSystemAccessMode">> => list(any()),
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemType">> => list(any())
+%% }
+-type file_system_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% final_auto_ml_job_objective_metric() :: #{
+%%   <<"MetricName">> => list(any()),
+%%   <<"StandardMetricName">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type final_auto_ml_job_objective_metric() :: #{binary() => any()}.
+
+%% Example:
+%% final_hyper_parameter_tuning_job_objective_metric() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type final_hyper_parameter_tuning_job_objective_metric() :: #{binary() => any()}.
+
+%% Example:
+%% flow_definition_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type flow_definition_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% flow_definition_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"FlowDefinitionName">> => string(),
+%%   <<"FlowDefinitionStatus">> => list(any())
+%% }
+-type flow_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% generative_ai_settings() :: #{
+%%   <<"AmazonBedrockRoleArn">> => string()
+%% }
+-type generative_ai_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_fleet_report_request() :: #{
+%%   <<"DeviceFleetName">> := string()
+%% }
+-type get_device_fleet_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_fleet_report_response() :: #{
+%%   <<"AgentVersions">> => list(agent_version()),
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetArn">> => string(),
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"DeviceStats">> => device_stats(),
+%%   <<"ModelStats">> => list(edge_model_stat()),
+%%   <<"OutputConfig">> => edge_output_config(),
+%%   <<"ReportGenerated">> => non_neg_integer()
+%% }
+-type get_device_fleet_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lineage_group_policy_request() :: #{
+%%   <<"LineageGroupName">> := string()
+%% }
+-type get_lineage_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_lineage_group_policy_response() :: #{
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_lineage_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string()
+%% }
+-type get_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_package_group_policy_output() :: #{
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_model_package_group_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sagemaker_servicecatalog_portfolio_status_input() :: #{
+
+%% }
+-type get_sagemaker_servicecatalog_portfolio_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sagemaker_servicecatalog_portfolio_status_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type get_sagemaker_servicecatalog_portfolio_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_scaling_configuration_recommendation_request() :: #{
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceRecommendationsJobName">> := string(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
+%%   <<"TargetCpuUtilizationPerCore">> => integer()
+%% }
+-type get_scaling_configuration_recommendation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scaling_configuration_recommendation_response() :: #{
+%%   <<"DynamicScalingConfiguration">> => dynamic_scaling_configuration(),
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceRecommendationsJobName">> => string(),
+%%   <<"Metric">> => scaling_policy_metric(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"ScalingPolicyObjective">> => scaling_policy_objective(),
+%%   <<"TargetCpuUtilizationPerCore">> => integer()
+%% }
+-type get_scaling_configuration_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_suggestions_request() :: #{
+%%   <<"Resource">> := list(any()),
+%%   <<"SuggestionQuery">> => suggestion_query()
+%% }
+-type get_search_suggestions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_suggestions_response() :: #{
+%%   <<"PropertyNameSuggestions">> => list(property_name_suggestion())
+%% }
+-type get_search_suggestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% git_config() :: #{
+%%   <<"Branch">> => string(),
+%%   <<"RepositoryUrl">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type git_config() :: #{binary() => any()}.
+
+%% Example:
+%% git_config_for_update() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type git_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% hidden_sage_maker_image() :: #{
+%%   <<"SageMakerImageName">> => list(any()),
+%%   <<"VersionAliases">> => list(string())
+%% }
+-type hidden_sage_maker_image() :: #{binary() => any()}.
+
+%% Example:
+%% holiday_config_attributes() :: #{
+%%   <<"CountryCode">> => string()
+%% }
+-type holiday_config_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% hub_access_config() :: #{
+%%   <<"HubContentArn">> => string()
+%% }
+-type hub_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% hub_content_dependency() :: #{
+%%   <<"DependencyCopyPath">> => string(),
+%%   <<"DependencyOriginPath">> => string()
+%% }
+-type hub_content_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% hub_content_info() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DocumentSchemaVersion">> => string(),
+%%   <<"HubContentArn">> => string(),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentSearchKeywords">> => list(string()),
+%%   <<"HubContentStatus">> => list(any()),
+%%   <<"HubContentType">> => list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"OriginalCreationTime">> => non_neg_integer(),
+%%   <<"SageMakerPublicHubContentArn">> => string(),
+%%   <<"SupportStatus">> => list(any())
+%% }
+-type hub_content_info() :: #{binary() => any()}.
+
+%% Example:
+%% hub_info() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"HubSearchKeywords">> => list(string()),
+%%   <<"HubStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type hub_info() :: #{binary() => any()}.
+
+%% Example:
+%% hub_s3_storage_config() :: #{
+%%   <<"S3OutputPath">> => string()
+%% }
+-type hub_s3_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_activation_conditions_config() :: #{
+%%   <<"HumanLoopActivationConditions">> => string()
+%% }
+-type human_loop_activation_conditions_config() :: #{binary() => any()}.
 
 %% Example:
 %% human_loop_activation_config() :: #{
@@ -14461,27 +7641,2311 @@
 -type human_loop_activation_config() :: #{binary() => any()}.
 
 %% Example:
-%% update_compute_quota_request() :: #{
-%%   <<"ActivationState">> => list(any()),
-%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
-%%   <<"ComputeQuotaId">> := string(),
-%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%% human_loop_config() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
+%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDescription">> => string(),
+%%   <<"TaskKeywords">> => list(string()),
+%%   <<"TaskTimeLimitInSeconds">> => integer(),
+%%   <<"TaskTitle">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type human_loop_config() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_request_source() :: #{
+%%   <<"AwsManagedHumanLoopRequestSource">> => list(any())
+%% }
+-type human_loop_request_source() :: #{binary() => any()}.
+
+%% Example:
+%% human_task_config() :: #{
+%%   <<"AnnotationConsolidationConfig">> => annotation_consolidation_config(),
+%%   <<"MaxConcurrentTaskCount">> => integer(),
+%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
+%%   <<"PreHumanTaskLambdaArn">> => string(),
+%%   <<"PublicWorkforceTaskPrice">> => public_workforce_task_price(),
+%%   <<"TaskAvailabilityLifetimeInSeconds">> => integer(),
+%%   <<"TaskDescription">> => string(),
+%%   <<"TaskKeywords">> => list(string()),
+%%   <<"TaskTimeLimitInSeconds">> => integer(),
+%%   <<"TaskTitle">> => string(),
+%%   <<"UiConfig">> => ui_config(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type human_task_config() :: #{binary() => any()}.
+
+%% Example:
+%% human_task_ui_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"HumanTaskUiName">> => string()
+%% }
+-type human_task_ui_summary() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_algorithm_specification() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"MetricDefinitions">> => list(metric_definition()),
+%%   <<"TrainingImage">> => string(),
+%%   <<"TrainingInputMode">> => list(any())
+%% }
+-type hyper_parameter_algorithm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_specification() :: #{
+%%   <<"DefaultValue">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"TargetVersion">> := integer()
+%%   <<"IsRequired">> => boolean(),
+%%   <<"IsTunable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Range">> => parameter_range(),
+%%   <<"Type">> => list(any())
 %% }
--type update_compute_quota_request() :: #{binary() => any()}.
+-type hyper_parameter_specification() :: #{binary() => any()}.
 
 %% Example:
-%% describe_image_request() :: #{
-%%   <<"ImageName">> := string()
+%% hyper_parameter_training_job_definition() :: #{
+%%   <<"AlgorithmSpecification">> => hyper_parameter_algorithm_specification(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"DefinitionName">> => string(),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Environment">> => map(),
+%%   <<"HyperParameterRanges">> => parameter_ranges(),
+%%   <<"HyperParameterTuningResourceConfig">> => hyper_parameter_tuning_resource_config(),
+%%   <<"InputDataConfig">> => list(channel()),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StaticHyperParameters">> => map(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TuningObjective">> => hyper_parameter_tuning_job_objective(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type describe_image_request() :: #{binary() => any()}.
+-type hyper_parameter_training_job_definition() :: #{binary() => any()}.
 
 %% Example:
-%% delete_pipeline_response() :: #{
-%%   <<"PipelineArn">> => string()
+%% hyper_parameter_training_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FinalHyperParameterTuningJobObjectiveMetric">> => final_hyper_parameter_tuning_job_objective_metric(),
+%%   <<"ObjectiveStatus">> => list(any()),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobDefinitionName">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"TunedHyperParameters">> => map(),
+%%   <<"TuningJobName">> => string()
 %% }
--type delete_pipeline_response() :: #{binary() => any()}.
+-type hyper_parameter_training_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_instance_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type hyper_parameter_tuning_instance_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_completion_details() :: #{
+%%   <<"ConvergenceDetectedTime">> => non_neg_integer(),
+%%   <<"NumberOfTrainingJobsObjectiveNotImproving">> => integer()
+%% }
+-type hyper_parameter_tuning_job_completion_details() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_config() :: #{
+%%   <<"HyperParameterTuningJobObjective">> => hyper_parameter_tuning_job_objective(),
+%%   <<"ParameterRanges">> => parameter_ranges(),
+%%   <<"RandomSeed">> => integer(),
+%%   <<"ResourceLimits">> => resource_limits(),
+%%   <<"Strategy">> => list(any()),
+%%   <<"StrategyConfig">> => hyper_parameter_tuning_job_strategy_config(),
+%%   <<"TrainingJobEarlyStoppingType">> => list(any()),
+%%   <<"TuningJobCompletionCriteria">> => tuning_job_completion_criteria()
+%% }
+-type hyper_parameter_tuning_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_consumed_resources() :: #{
+%%   <<"RuntimeInSeconds">> => integer()
+%% }
+-type hyper_parameter_tuning_job_consumed_resources() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_objective() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type hyper_parameter_tuning_job_objective() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_search_entity() :: #{
+%%   <<"BestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"ConsumedResources">> => hyper_parameter_tuning_job_consumed_resources(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"OverallBestTrainingJob">> => hyper_parameter_training_job_summary(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingJobDefinition">> => hyper_parameter_training_job_definition(),
+%%   <<"TrainingJobDefinitions">> => list(hyper_parameter_training_job_definition()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters(),
+%%   <<"TuningJobCompletionDetails">> => hyper_parameter_tuning_job_completion_details(),
+%%   <<"WarmStartConfig">> => hyper_parameter_tuning_job_warm_start_config()
+%% }
+-type hyper_parameter_tuning_job_search_entity() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_strategy_config() :: #{
+%%   <<"HyperbandStrategyConfig">> => hyperband_strategy_config()
+%% }
+-type hyper_parameter_tuning_job_strategy_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningEndTime">> => non_neg_integer(),
+%%   <<"HyperParameterTuningJobArn">> => string(),
+%%   <<"HyperParameterTuningJobName">> => string(),
+%%   <<"HyperParameterTuningJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ObjectiveStatusCounters">> => objective_status_counters(),
+%%   <<"ResourceLimits">> => resource_limits(),
+%%   <<"Strategy">> => list(any()),
+%%   <<"TrainingJobStatusCounters">> => training_job_status_counters()
+%% }
+-type hyper_parameter_tuning_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_warm_start_config() :: #{
+%%   <<"ParentHyperParameterTuningJobs">> => list(parent_hyper_parameter_tuning_job()),
+%%   <<"WarmStartType">> => list(any())
+%% }
+-type hyper_parameter_tuning_job_warm_start_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_resource_config() :: #{
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"InstanceConfigs">> => list(hyper_parameter_tuning_instance_config()),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type hyper_parameter_tuning_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyperband_strategy_config() :: #{
+%%   <<"MaxResource">> => integer(),
+%%   <<"MinResource">> => integer()
+%% }
+-type hyperband_strategy_config() :: #{binary() => any()}.
+
+%% Example:
+%% iam_identity() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type iam_identity() :: #{binary() => any()}.
+
+%% Example:
+%% iam_policy_constraints() :: #{
+%%   <<"SourceIp">> => list(any()),
+%%   <<"VpcSourceIp">> => list(any())
+%% }
+-type iam_policy_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% identity_provider_o_auth_setting() :: #{
+%%   <<"DataSourceName">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type identity_provider_o_auth_setting() :: #{binary() => any()}.
+
+%% Example:
+%% idle_settings() :: #{
+%%   <<"IdleTimeoutInMinutes">> => integer(),
+%%   <<"LifecycleManagement">> => list(any()),
+%%   <<"MaxIdleTimeoutInMinutes">> => integer(),
+%%   <<"MinIdleTimeoutInMinutes">> => integer()
+%% }
+-type idle_settings() :: #{binary() => any()}.
+
+%% Example:
+%% image() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"ImageStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type image() :: #{binary() => any()}.
+
+%% Example:
+%% image_classification_job_config() :: #{
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria()
+%% }
+-type image_classification_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% image_config() :: #{
+%%   <<"RepositoryAccessMode">> => list(any()),
+%%   <<"RepositoryAuthConfig">> => repository_auth_config()
+%% }
+-type image_config() :: #{binary() => any()}.
+
+%% Example:
+%% image_version() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageVersionArn">> => string(),
+%%   <<"ImageVersionStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Version">> => integer()
+%% }
+-type image_version() :: #{binary() => any()}.
+
+%% Example:
+%% import_hub_content_request() :: #{
+%%   <<"DocumentSchemaVersion">> := string(),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentDocument">> := string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentSearchKeywords">> => list(string()),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"SupportStatus">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_hub_content_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type import_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_availability_zone_balance() :: #{
+%%   <<"EnforcementMode">> => list(any()),
+%%   <<"MaxImbalance">> => integer()
+%% }
+-type inference_component_availability_zone_balance() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_capacity_size() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type inference_component_capacity_size() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_compute_resource_requirements() :: #{
+%%   <<"MaxMemoryRequiredInMb">> => integer(),
+%%   <<"MinMemoryRequiredInMb">> => integer(),
+%%   <<"NumberOfAcceleratorDevicesRequired">> => float(),
+%%   <<"NumberOfCpuCoresRequired">> => float()
+%% }
+-type inference_component_compute_resource_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_container_specification() :: #{
+%%   <<"ArtifactUrl">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
+%%   <<"Environment">> => map(),
+%%   <<"Image">> => string()
+%% }
+-type inference_component_container_specification() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_container_specification_summary() :: #{
+%%   <<"ArtifactUrl">> => string(),
+%%   <<"ContainerMetricsConfig">> => container_metrics_config(),
+%%   <<"DeployedImage">> => deployed_image(),
+%%   <<"Environment">> => map()
+%% }
+-type inference_component_container_specification_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_data_cache_config() :: #{
+%%   <<"EnableCaching">> => boolean()
+%% }
+-type inference_component_data_cache_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_data_cache_config_summary() :: #{
+%%   <<"EnableCaching">> => boolean()
+%% }
+-type inference_component_data_cache_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_deployment_config() :: #{
+%%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
+%%   <<"RollingUpdatePolicy">> => inference_component_rolling_update_policy()
+%% }
+-type inference_component_deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type inference_component_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_placement_status() :: #{
+%%   <<"CurrentCopyCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type inference_component_placement_status() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_rolling_update_policy() :: #{
+%%   <<"MaximumBatchSize">> => inference_component_capacity_size(),
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"RollbackMaximumBatchSize">> => inference_component_capacity_size(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type inference_component_rolling_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_runtime_config() :: #{
+%%   <<"CopyCount">> => integer()
+%% }
+-type inference_component_runtime_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_runtime_config_summary() :: #{
+%%   <<"CurrentCopyCount">> => integer(),
+%%   <<"DesiredCopyCount">> => integer(),
+%%   <<"PlacementStatus">> => list(inference_component_placement_status())
+%% }
+-type inference_component_runtime_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_scheduling_config() :: #{
+%%   <<"AvailabilityZoneBalance">> => inference_component_availability_zone_balance(),
+%%   <<"PlacementStrategy">> => list(any())
+%% }
+-type inference_component_scheduling_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_specification() :: #{
+%%   <<"BaseInferenceComponentName">> => string(),
+%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
+%%   <<"Container">> => inference_component_container_specification(),
+%%   <<"DataCacheConfig">> => inference_component_data_cache_config(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ModelName">> => string(),
+%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
+%%   <<"StartupParameters">> => inference_component_startup_parameters()
+%% }
+-type inference_component_specification() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_specification_summary() :: #{
+%%   <<"BaseInferenceComponentName">> => string(),
+%%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
+%%   <<"Container">> => inference_component_container_specification_summary(),
+%%   <<"DataCacheConfig">> => inference_component_data_cache_config_summary(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ModelName">> => string(),
+%%   <<"SchedulingConfig">> => inference_component_scheduling_config(),
+%%   <<"StartupParameters">> => inference_component_startup_parameters()
+%% }
+-type inference_component_specification_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_startup_parameters() :: #{
+%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
+%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer()
+%% }
+-type inference_component_startup_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"InferenceComponentArn">> => string(),
+%%   <<"InferenceComponentName">> => string(),
+%%   <<"InferenceComponentStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VariantName">> => string()
+%% }
+-type inference_component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_execution_config() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type inference_execution_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_data_storage_config() :: #{
+%%   <<"ContentType">> => capture_content_type_header(),
+%%   <<"Destination">> => string(),
+%%   <<"KmsKey">> => string()
+%% }
+-type inference_experiment_data_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_schedule() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type inference_experiment_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% inference_experiment_summary() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type inference_experiment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inference_hub_access_config() :: #{
+%%   <<"HubContentArn">> => string()
+%% }
+-type inference_hub_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% inference_metrics() :: #{
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"ModelLatency">> => integer()
+%% }
+-type inference_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendation() :: #{
+%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
+%%   <<"InvocationEndTime">> => non_neg_integer(),
+%%   <<"InvocationStartTime">> => non_neg_integer(),
+%%   <<"Metrics">> => recommendation_metrics(),
+%%   <<"ModelConfiguration">> => model_configuration(),
+%%   <<"RecommendationId">> => string()
+%% }
+-type inference_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendations_job() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type inference_recommendations_job() :: #{binary() => any()}.
+
+%% Example:
+%% inference_recommendations_job_step() :: #{
+%%   <<"InferenceBenchmark">> => recommendation_job_inference_benchmark(),
+%%   <<"JobName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepType">> => list(any())
+%% }
+-type inference_recommendations_job_step() :: #{binary() => any()}.
+
+%% Example:
+%% inference_specification() :: #{
+%%   <<"Containers">> => list(model_package_container_definition()),
+%%   <<"SupportedContentTypes">> => list(string()),
+%%   <<"SupportedRealtimeInferenceInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()),
+%%   <<"SupportedTransformInstanceTypes">> => list(list(any())())
+%% }
+-type inference_specification() :: #{binary() => any()}.
+
+%% Example:
+%% infra_check_config() :: #{
+%%   <<"EnableInfraCheck">> => boolean()
+%% }
+-type infra_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% input_config() :: #{
+%%   <<"DataInputConfig">> => string(),
+%%   <<"Framework">> => list(any()),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type input_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type instance_group() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_health_check_configuration() :: #{
+%%   <<"DeepHealthChecks">> => list(list(any())()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type instance_group_health_check_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_metadata() :: #{
+%%   <<"AmiOverride">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"CapacityReservation">> => capacity_reservation(),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type instance_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_scaling_metadata() :: #{
+%%   <<"FailureMessage">> => [string()],
+%%   <<"InstanceCount">> => integer(),
+%%   <<"MinCount">> => integer(),
+%%   <<"TargetCount">> => integer()
+%% }
+-type instance_group_scaling_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata() :: #{
+%%   <<"AdditionalEnis">> => additional_enis(),
+%%   <<"CapacityReservation">> => capacity_reservation(),
+%%   <<"CustomerEni">> => [string()],
+%%   <<"FailureMessage">> => [string()],
+%%   <<"InstanceRequirementsEniConfigurations">> => list(instance_requirements_eni_configuration()),
+%%   <<"LcsExecutionState">> => [string()],
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type instance_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata_service_configuration() :: #{
+%%   <<"MinimumInstanceMetadataServiceVersion">> => string()
+%% }
+-type instance_metadata_service_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% instance_placement_config() :: #{
+%%   <<"EnableMultipleJobs">> => boolean(),
+%%   <<"PlacementSpecifications">> => list(placement_specification())
+%% }
+-type instance_placement_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_pool() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ModelNameOverride">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type instance_pool() :: #{binary() => any()}.
+
+%% Example:
+%% instance_pool_summary() :: #{
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type instance_pool_summary() :: #{binary() => any()}.
+
+%% Example:
+%% instance_requirements_eni_configuration() :: #{
+%%   <<"AdditionalEnis">> => additional_enis(),
+%%   <<"CustomerEni">> => [string()]
+%% }
+-type instance_requirements_eni_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% integer_parameter_range() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type integer_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% integer_parameter_range_specification() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type integer_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobConfigDocument">> => string(),
+%%   <<"JobConfigSchemaVersion">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(job_secondary_status_transition()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type job() :: #{binary() => any()}.
+
+%% Example:
+%% job_config_schema_version_summary() :: #{
+%%   <<"JobConfigSchemaVersion">> => string()
+%% }
+-type job_config_schema_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% job_secondary_status_transition() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type job_secondary_status_transition() :: #{binary() => any()}.
+
+%% Example:
+%% job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobCategory">> => list(any()),
+%%   <<"JobName">> => string(),
+%%   <<"JobSecondaryStatus">> => list(any()),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_lab_app_image_config() :: #{
+%%   <<"ContainerConfig">> => container_config(),
+%%   <<"FileSystemConfig">> => file_system_config()
+%% }
+-type jupyter_lab_app_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_lab_app_settings() :: #{
+%%   <<"AppLifecycleManagement">> => app_lifecycle_management(),
+%%   <<"BuiltInLifecycleConfigArn">> => string(),
+%%   <<"CodeRepositories">> => list(code_repository()),
+%%   <<"CustomImages">> => list(custom_image()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"EmrSettings">> => emr_settings(),
+%%   <<"LifecycleConfigArns">> => list(string())
+%% }
+-type jupyter_lab_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% jupyter_server_app_settings() :: #{
+%%   <<"CodeRepositories">> => list(code_repository()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string())
+%% }
+-type jupyter_server_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kendra_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type kendra_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_gateway_app_settings() :: #{
+%%   <<"CustomImages">> => list(custom_image()),
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"LifecycleConfigArns">> => list(string())
+%% }
+-type kernel_gateway_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_gateway_image_config() :: #{
+%%   <<"FileSystemConfig">> => file_system_config(),
+%%   <<"KernelSpecs">> => list(kernel_spec())
+%% }
+-type kernel_gateway_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_spec() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type kernel_spec() :: #{binary() => any()}.
+
+%% Example:
+%% label_counters() :: #{
+%%   <<"FailedNonRetryableError">> => integer(),
+%%   <<"HumanLabeled">> => integer(),
+%%   <<"MachineLabeled">> => integer(),
+%%   <<"TotalLabeled">> => integer(),
+%%   <<"Unlabeled">> => integer()
+%% }
+-type label_counters() :: #{binary() => any()}.
+
+%% Example:
+%% label_counters_for_workteam() :: #{
+%%   <<"HumanLabeled">> => integer(),
+%%   <<"PendingHuman">> => integer(),
+%%   <<"Total">> => integer()
+%% }
+-type label_counters_for_workteam() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_algorithms_config() :: #{
+%%   <<"InitialActiveLearningModelArn">> => string(),
+%%   <<"LabelingJobAlgorithmSpecificationArn">> => string(),
+%%   <<"LabelingJobResourceConfig">> => labeling_job_resource_config()
+%% }
+-type labeling_job_algorithms_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_data_attributes() :: #{
+%%   <<"ContentClassifiers">> => list(list(any())())
+%% }
+-type labeling_job_data_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_data_source() :: #{
+%%   <<"S3DataSource">> => labeling_job_s3_data_source(),
+%%   <<"SnsDataSource">> => labeling_job_sns_data_source()
+%% }
+-type labeling_job_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_for_workteam_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"JobReferenceCode">> => string(),
+%%   <<"LabelCounters">> => label_counters_for_workteam(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"NumberOfHumanWorkersPerDataObject">> => integer(),
+%%   <<"WorkRequesterAccountId">> => string()
+%% }
+-type labeling_job_for_workteam_summary() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_input_config() :: #{
+%%   <<"DataAttributes">> => labeling_job_data_attributes(),
+%%   <<"DataSource">> => labeling_job_data_source()
+%% }
+-type labeling_job_input_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_output() :: #{
+%%   <<"FinalActiveLearningModelArn">> => string(),
+%%   <<"OutputDatasetS3Uri">> => string()
+%% }
+-type labeling_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string(),
+%%   <<"SnsTopicArn">> => string()
+%% }
+-type labeling_job_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_resource_config() :: #{
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type labeling_job_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_s3_data_source() :: #{
+%%   <<"ManifestS3Uri">> => string()
+%% }
+-type labeling_job_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_sns_data_source() :: #{
+%%   <<"SnsTopicArn">> => string()
+%% }
+-type labeling_job_sns_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_stopping_conditions() :: #{
+%%   <<"MaxHumanLabeledObjectCount">> => integer(),
+%%   <<"MaxPercentageOfInputDatasetLabeled">> => integer()
+%% }
+-type labeling_job_stopping_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_job_summary() :: #{
+%%   <<"AnnotationConsolidationLambdaArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InputConfig">> => labeling_job_input_config(),
+%%   <<"LabelCounters">> => label_counters(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LabelingJobName">> => string(),
+%%   <<"LabelingJobOutput">> => labeling_job_output(),
+%%   <<"LabelingJobStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PreHumanTaskLambdaArn">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type labeling_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_step_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter())
+%% }
+-type lambda_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% last_update_status() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type last_update_status() :: #{binary() => any()}.
+
+%% Example:
+%% lineage_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"LineageGroupName">> => string()
+%% }
+-type lineage_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% lineage_metadata() :: #{
+%%   <<"ActionArns">> => map(),
+%%   <<"ArtifactArns">> => map(),
+%%   <<"Associations">> => list(association_info()),
+%%   <<"ContextArns">> => map()
+%% }
+-type lineage_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_benchmark_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_a_i_benchmark_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_benchmark_jobs_response() :: #{
+%%   <<"AIBenchmarkJobs">> => list(a_i_benchmark_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_benchmark_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_recommendation_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_a_i_recommendation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_recommendation_jobs_response() :: #{
+%%   <<"AIRecommendationJobs">> => list(a_i_recommendation_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_recommendation_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_workload_configs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_a_i_workload_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_a_i_workload_configs_response() :: #{
+%%   <<"AIWorkloadConfigs">> => list(a_i_workload_config_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_a_i_workload_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_actions_request() :: #{
+%%   <<"ActionType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_actions_response() :: #{
+%%   <<"ActionSummaries">> => list(action_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_algorithms_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_algorithms_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_algorithms_output() :: #{
+%%   <<"AlgorithmSummaryList">> => list(algorithm_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_algorithms_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SageMakerImageVersionAliases">> => list(string())
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_app_image_configs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_app_image_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_app_image_configs_response() :: #{
+%%   <<"AppImageConfigs">> => list(app_image_config_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_image_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SpaceNameEquals">> => string(),
+%%   <<"UserProfileNameEquals">> => string()
+%% }
+-type list_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_response() :: #{
+%%   <<"Apps">> => list(app_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_request() :: #{
+%%   <<"ArtifactType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_artifacts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_artifacts_response() :: #{
+%%   <<"ArtifactSummaries">> => list(artifact_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_artifacts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_request() :: #{
+%%   <<"AssociationType">> => list(any()),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"DestinationType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type list_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_response() :: #{
+%%   <<"AssociationSummaries">> => list(association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_ml_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_auto_ml_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_ml_jobs_response() :: #{
+%%   <<"AutoMLJobSummaries">> => list(auto_ml_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_auto_ml_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_candidates_for_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string(),
+%%   <<"CandidateNameEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_candidates_for_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_candidates_for_auto_ml_job_response() :: #{
+%%   <<"Candidates">> => list(auto_ml_candidate()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_candidates_for_auto_ml_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_events_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"EventTimeAfter">> => non_neg_integer(),
+%%   <<"EventTimeBefore">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_cluster_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_events_response() :: #{
+%%   <<"Events">> => list(cluster_event_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_nodes_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"IncludeNodeLogicalIds">> => boolean(),
+%%   <<"InstanceGroupNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_nodes_response() :: #{
+%%   <<"ClusterNodeSummaries">> => list(cluster_node_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_scheduler_configs_request() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_cluster_scheduler_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_scheduler_configs_response() :: #{
+%%   <<"ClusterSchedulerConfigSummaries">> => list(cluster_scheduler_config_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_scheduler_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"ClusterSummaries">> => list(cluster_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_code_repositories_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_code_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_code_repositories_output() :: #{
+%%   <<"CodeRepositorySummaryList">> => list(code_repository_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_code_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_compilation_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_compilation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compilation_jobs_response() :: #{
+%%   <<"CompilationJobSummaries">> => list(compilation_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compilation_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_quotas_request() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_compute_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_quotas_response() :: #{
+%%   <<"ComputeQuotaSummaries">> => list(compute_quota_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compute_quotas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_contexts_request() :: #{
+%%   <<"ContextType">> => string(),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type list_contexts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contexts_response() :: #{
+%%   <<"ContextSummaries">> => list(context_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contexts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_data_quality_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_fleets_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_device_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_device_fleets_response() :: #{
+%%   <<"DeviceFleetSummaries">> => list(device_fleet_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_fleets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"DeviceFleetName">> => string(),
+%%   <<"LatestHeartbeatAfter">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"DeviceSummaries">> => list(device_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_deployment_plans_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"DeviceFleetNameContains">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_edge_deployment_plans_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_deployment_plans_response() :: #{
+%%   <<"EdgeDeploymentPlanSummaries">> => list(edge_deployment_plan_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_edge_deployment_plans_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_packaging_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameContains">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_edge_packaging_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_edge_packaging_jobs_response() :: #{
+%%   <<"EdgePackagingJobSummaries">> => list(edge_packaging_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_edge_packaging_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_configs_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_endpoint_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_configs_output() :: #{
+%%   <<"EndpointConfigs">> => list(endpoint_config_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_endpoints_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_output() :: #{
+%%   <<"Endpoints">> => list(endpoint_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiments_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_experiments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiments_response() :: #{
+%%   <<"ExperimentSummaries">> => list(experiment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_feature_groups_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"FeatureGroupStatusEquals">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"OfflineStoreStatusEquals">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_feature_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_feature_groups_response() :: #{
+%%   <<"FeatureGroupSummaries">> => list(feature_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_feature_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_flow_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_definitions_response() :: #{
+%%   <<"FlowDefinitionSummaries">> => list(flow_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_content_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaxSchemaVersion">> => string(),
+%%   <<"MinVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hub_content_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_content_versions_response() :: #{
+%%   <<"HubContentSummaries">> => list(hub_content_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hub_content_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_contents_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MaxSchemaVersion">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hub_contents_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hub_contents_response() :: #{
+%%   <<"HubContentSummaries">> => list(hub_content_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hub_contents_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hubs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_hubs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hubs_response() :: #{
+%%   <<"HubSummaries">> => list(hub_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hubs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_human_task_uis_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_human_task_uis_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_human_task_uis_response() :: #{
+%%   <<"HumanTaskUiSummaries">> => list(human_task_ui_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_human_task_uis_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hyper_parameter_tuning_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_hyper_parameter_tuning_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hyper_parameter_tuning_jobs_response() :: #{
+%%   <<"HyperParameterTuningJobSummaries">> => list(hyper_parameter_tuning_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hyper_parameter_tuning_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"ImageName">> := string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_image_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_image_versions_response() :: #{
+%%   <<"ImageVersions">> => list(image_version()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_image_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_images_response() :: #{
+%%   <<"Images">> => list(image()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_images_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_components_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointNameEquals">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"VariantNameEquals">> => string()
+%% }
+-type list_inference_components_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_components_output() :: #{
+%%   <<"InferenceComponents">> => list(inference_component_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_components_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_experiments_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type list_inference_experiments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_experiments_response() :: #{
+%%   <<"InferenceExperiments">> => list(inference_experiment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_job_steps_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepType">> => list(any())
+%% }
+-type list_inference_recommendations_job_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_job_steps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Steps">> => list(inference_recommendations_job_step())
+%% }
+-type list_inference_recommendations_job_steps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelNameEquals">> => string(),
+%%   <<"ModelPackageVersionArnEquals">> => string(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_inference_recommendations_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_recommendations_jobs_response() :: #{
+%%   <<"InferenceRecommendationsJobs">> => list(inference_recommendations_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_recommendations_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_job_schema_versions_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_schema_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_job_schema_versions_response() :: #{
+%%   <<"JobConfigSchemas">> => list(job_config_schema_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_schema_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"JobCategory">> := list(any()),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"JobSummaries">> => list(job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_for_workteam_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"JobReferenceCodeContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"WorkteamArn">> := string()
+%% }
+-type list_labeling_jobs_for_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_for_workteam_response() :: #{
+%%   <<"LabelingJobSummaryList">> => list(labeling_job_for_workteam_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labeling_jobs_for_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_labeling_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_labeling_jobs_response() :: #{
+%%   <<"LabelingJobSummaryList">> => list(labeling_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_labeling_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_lineage_groups_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_lineage_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_lineage_groups_response() :: #{
+%%   <<"LineageGroupSummaries">> => list(lineage_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lineage_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mlflow_apps_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"DefaultForDomainId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_mlflow_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mlflow_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(mlflow_app_summary())
+%% }
+-type list_mlflow_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mlflow_tracking_servers_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrackingServerStatus">> => list(any())
+%% }
+-type list_mlflow_tracking_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mlflow_tracking_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrackingServerSummaries">> => list(tracking_server_summary())
+%% }
+-type list_mlflow_tracking_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_bias_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_bias_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_bias_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_bias_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_export_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardExportJobNameContains">> => string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_model_card_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_export_jobs_response() :: #{
+%%   <<"ModelCardExportJobSummaries">> => list(model_card_export_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_card_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_versions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_card_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_card_versions_response() :: #{
+%%   <<"ModelCardVersionSummaryList">> => list(model_card_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_card_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_cards_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_cards_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_cards_response() :: #{
+%%   <<"ModelCardSummaries">> => list(model_card_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_cards_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_explainability_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_explainability_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_explainability_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_explainability_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_metadata_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchExpression">> => model_metadata_search_expression()
+%% }
+-type list_model_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_metadata_response() :: #{
+%%   <<"ModelMetadataSummaries">> => list(model_metadata_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_package_groups_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"CrossAccountFilterOption">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_package_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_package_groups_output() :: #{
+%%   <<"ModelPackageGroupSummaryList">> => list(model_package_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_package_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_packages_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageType">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_packages_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_packages_output() :: #{
+%%   <<"ModelPackageSummaryList">> => list(model_package_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_packages_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_quality_job_definitions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_model_quality_job_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_model_quality_job_definitions_response() :: #{
+%%   <<"JobDefinitionSummaries">> => list(monitoring_job_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_model_quality_job_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_models_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_models_output() :: #{
+%%   <<"Models">> => list(model_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_models_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alert_history_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_alert_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alert_history_response() :: #{
+%%   <<"MonitoringAlertHistory">> => list(monitoring_alert_history_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alert_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringScheduleName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alerts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_alerts_response() :: #{
+%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_alerts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_executions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringTypeEquals">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledTimeAfter">> => non_neg_integer(),
+%%   <<"ScheduledTimeBefore">> => non_neg_integer(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_executions_response() :: #{
+%%   <<"MonitoringExecutionSummaries">> => list(monitoring_execution_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_schedules_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringTypeEquals">> => list(any()),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_monitoring_schedules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitoring_schedules_response() :: #{
+%%   <<"MonitoringScheduleSummaries">> => list(monitoring_schedule_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitoring_schedules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instance_lifecycle_configs_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_notebook_instance_lifecycle_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instance_lifecycle_configs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigs">> => list(notebook_instance_lifecycle_config_summary())
+%% }
+-type list_notebook_instance_lifecycle_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instances_input() :: #{
+%%   <<"AdditionalCodeRepositoryEquals">> => string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"DefaultCodeRepositoryContains">> => string(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigNameContains">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_notebook_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_notebook_instances_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotebookInstances">> => list(notebook_instance_summary())
+%% }
+-type list_notebook_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_optimization_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"OptimizationContains">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_optimization_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_optimization_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OptimizationJobSummaries">> => list(optimization_job_summary())
+%% }
+-type list_optimization_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_apps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(partner_app_summary())
+%% }
+-type list_partner_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_execution_steps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipeline_execution_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_execution_steps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionSteps">> => list(pipeline_execution_step())
+%% }
+-type list_pipeline_execution_steps_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_pipeline_executions_request() :: #{
@@ -14496,61 +9960,936 @@
 -type list_pipeline_executions_request() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_node_details() :: #{
-%%   <<"CapacityType">> => list(any()),
-%%   <<"CurrentImageId">> => string(),
-%%   <<"CurrentImageReleaseVersion">> => string(),
-%%   <<"DesiredImageId">> => string(),
-%%   <<"DesiredImageReleaseVersion">> => string(),
-%%   <<"ImageVersionStatus">> => list(any()),
-%%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => [string()],
-%%   <<"InstanceStatus">> => cluster_instance_status_details(),
-%%   <<"InstanceStorageConfigs">> => list(list()),
-%%   <<"InstanceType">> => list(any()),
-%%   <<"KubernetesConfig">> => cluster_kubernetes_config_node_details(),
-%%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
-%%   <<"NetworkInterface">> => cluster_network_interface_details(),
-%%   <<"NodeLogicalId">> => string(),
-%%   <<"OverrideVpcConfig">> => vpc_config(),
-%%   <<"Placement">> => cluster_instance_placement(),
-%%   <<"PrivateDnsHostname">> => string(),
-%%   <<"PrivatePrimaryIp">> => string(),
-%%   <<"PrivatePrimaryIpv6">> => string(),
-%%   <<"ThreadsPerCore">> => integer(),
-%%   <<"UltraServerInfo">> => ultra_server_info()
+%% list_pipeline_executions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionSummaries">> => list(pipeline_execution_summary())
 %% }
--type cluster_node_details() :: #{binary() => any()}.
+-type list_pipeline_executions_response() :: #{binary() => any()}.
 
 %% Example:
-%% service_catalog_provisioned_product_details() :: #{
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductStatusMessage">> => string()
+%% list_pipeline_parameters_for_execution_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineExecutionArn">> := string()
 %% }
--type service_catalog_provisioned_product_details() :: #{binary() => any()}.
+-type list_pipeline_parameters_for_execution_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_inference_experiments_response() :: #{
-%%   <<"InferenceExperiments">> => list(inference_experiment_summary()),
+%% list_pipeline_parameters_for_execution_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineParameters">> => list(parameter())
+%% }
+-type list_pipeline_parameters_for_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_versions_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipeline_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineVersionSummaries">> => list(pipeline_version_summary())
+%% }
+-type list_pipeline_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineNamePrefix">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineSummaries">> => list(pipeline_summary())
+%% }
+-type list_pipelines_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_processing_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_processing_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_processing_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcessingJobSummaries">> => list(processing_job_summary())
+%% }
+-type list_processing_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_input() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_projects_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectSummaryList">> => list(project_summary())
+%% }
+-type list_projects_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_catalogs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resource_catalogs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_catalogs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceCatalogs">> => list(resource_catalog())
+%% }
+-type list_resource_catalogs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_spaces_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SpaceNameContains">> => string()
+%% }
+-type list_spaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_spaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Spaces">> => list(space_details())
+%% }
+-type list_spaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_stage_devices_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"ExcludeDevicesDeployedInOtherStage">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StageName">> := string()
+%% }
+-type list_stage_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stage_devices_response() :: #{
+%%   <<"DeviceDeploymentSummaries">> => list(device_deployment_summary()),
 %%   <<"NextToken">> => string()
 %% }
--type list_inference_experiments_response() :: #{binary() => any()}.
+-type list_stage_devices_response() :: #{binary() => any()}.
 
 %% Example:
-%% production_variant_core_dump_config() :: #{
-%%   <<"DestinationS3Uri">> => string(),
+%% list_studio_lifecycle_configs_request() :: #{
+%%   <<"AppTypeEquals">> => list(any()),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"ModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_studio_lifecycle_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_studio_lifecycle_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StudioLifecycleConfigs">> => list(studio_lifecycle_config_details())
+%% }
+-type list_studio_lifecycle_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_workteams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_subscribed_workteams_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_subscribed_workteams_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubscribedWorkteams">> => list(subscribed_workteam())
+%% }
+-type list_subscribed_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_training_jobs_for_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingJobSummaries">> => list(hyper_parameter_training_job_summary())
+%% }
+-type list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any()),
+%%   <<"TrainingPlanArnEquals">> => string(),
+%%   <<"WarmPoolStatusEquals">> => list(any())
+%% }
+-type list_training_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingJobSummaries">> => list(training_job_summary())
+%% }
+-type list_training_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_plans_request() :: #{
+%%   <<"Filters">> => list(training_plan_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StartTimeAfter">> => non_neg_integer(),
+%%   <<"StartTimeBefore">> => non_neg_integer()
+%% }
+-type list_training_plans_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_plans_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingPlanSummaries">> => list(training_plan_summary())
+%% }
+-type list_training_plans_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_transform_jobs_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"LastModifiedTimeAfter">> => non_neg_integer(),
+%%   <<"LastModifiedTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_transform_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_transform_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransformJobSummaries">> => list(transform_job_summary())
+%% }
+-type list_transform_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_trial_components_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type list_trial_components_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_trial_components_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrialComponentSummaries">> => list(trial_component_summary())
+%% }
+-type list_trial_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_trials_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type list_trials_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_trials_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrialSummaries">> => list(trial_summary())
+%% }
+-type list_trials_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ultra_servers_by_reserved_capacity_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedCapacityArn">> := string()
+%% }
+-type list_ultra_servers_by_reserved_capacity_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ultra_servers_by_reserved_capacity_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UltraServers">> => list(ultra_server())
+%% }
+-type list_ultra_servers_by_reserved_capacity_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_request() :: #{
+%%   <<"DomainIdEquals">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"UserProfileNameContains">> => string()
+%% }
+-type list_user_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserProfiles">> => list(user_profile_details())
+%% }
+-type list_user_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workforces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_workforces_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workforces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workforces">> => list(workforce())
+%% }
+-type list_workforces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workteams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_workteams_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workteams_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workteams">> => list(workteam())
+%% }
+-type list_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_configuration() :: #{
+%%   <<"ManagedStorageType">> => list(any())
+%% }
+-type managed_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% member_definition() :: #{
+%%   <<"CognitoMemberDefinition">> => cognito_member_definition(),
+%%   <<"OidcMemberDefinition">> => oidc_member_definition()
+%% }
+-type member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_properties() :: #{
+%%   <<"CommitId">> => string(),
+%%   <<"GeneratedBy">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"Repository">> => string()
+%% }
+-type metadata_properties() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type metric_data() :: #{binary() => any()}.
+
+%% Example:
+%% metric_datum() :: #{
+%%   <<"MetricName">> => list(any()),
+%%   <<"Set">> => list(any()),
+%%   <<"StandardMetricName">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type metric_datum() :: #{binary() => any()}.
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Regex">> => string()
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_config() :: #{
+%%   <<"EnableDetailedObservability">> => boolean(),
+%%   <<"EnableEnhancedMetrics">> => boolean(),
+%%   <<"MetricPublishFrequencyInSeconds">> => list(integer())
+%% }
+-type metrics_config() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_endpoint() :: #{
+%%   <<"MetricPublishFrequencyInSeconds">> => list(integer()),
+%%   <<"MetricsEndpointPath">> => string()
+%% }
+-type metrics_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% metrics_source() :: #{
+%%   <<"ContentDigest">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type metrics_source() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_app_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type mlflow_app_summary() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_config() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string(),
+%%   <<"MlflowRunName">> => string()
+%% }
+-type mlflow_config() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_configuration() :: #{
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"MlflowResourceArn">> => string()
+%% }
+-type mlflow_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% mlflow_details() :: #{
+%%   <<"MlflowExperimentId">> => string(),
+%%   <<"MlflowRunId">> => string()
+%% }
+-type mlflow_details() :: #{binary() => any()}.
+
+%% Example:
+%% model() :: #{
+%%   <<"Containers">> => list(container_definition()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentRecommendation">> => deployment_recommendation(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InferenceExecutionConfig">> => inference_execution_config(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"PrimaryContainer">> => container_definition(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type model() :: #{binary() => any()}.
+
+%% Example:
+%% model_access_config() :: #{
+%%   <<"AcceptEula">> => boolean()
+%% }
+-type model_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_artifacts() :: #{
+%%   <<"S3ModelArtifacts">> => string()
+%% }
+-type model_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_app_specification() :: #{
+%%   <<"ConfigUri">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string()
+%% }
+-type model_bias_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_bias_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_bias_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input(),
+%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
+%% }
+-type model_bias_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_card() :: #{
+%%   <<"Content">> => string(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"ModelId">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RiskRating">> => string(),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type model_card() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_artifacts() :: #{
+%%   <<"S3ExportArtifacts">> => string()
+%% }
+-type model_card_export_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_job_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"ModelCardExportJobArn">> => string(),
+%%   <<"ModelCardExportJobName">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_card_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_export_output_config() :: #{
+%%   <<"S3OutputPath">> => string()
+%% }
+-type model_card_export_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_security_config() :: #{
 %%   <<"KmsKeyId">> => string()
 %% }
--type production_variant_core_dump_config() :: #{binary() => any()}.
+-type model_card_security_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_optimization_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OptimizationJobSummaries">> => list(optimization_job_summary())
+%% model_card_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any())
 %% }
--type list_optimization_jobs_response() :: #{binary() => any()}.
+-type model_card_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_card_version_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer()
+%% }
+-type model_card_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_client_config() :: #{
+%%   <<"InvocationsMaxRetries">> => integer(),
+%%   <<"InvocationsTimeoutInSeconds">> => integer()
+%% }
+-type model_client_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_compilation_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_compilation_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_configuration() :: #{
+%%   <<"CompilationJobName">> => string(),
+%%   <<"EnvironmentParameters">> => list(environment_parameter()),
+%%   <<"InferenceSpecificationName">> => string()
+%% }
+-type model_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_endpoint() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type model_dashboard_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_indicator_action() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type model_dashboard_indicator_action() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_model() :: #{
+%%   <<"Endpoints">> => list(model_dashboard_endpoint()),
+%%   <<"LastBatchTransformJob">> => transform_job(),
+%%   <<"Model">> => model(),
+%%   <<"ModelCard">> => model_dashboard_model_card(),
+%%   <<"MonitoringSchedules">> => list(model_dashboard_monitoring_schedule())
+%% }
+-type model_dashboard_model() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_model_card() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelCardArn">> => string(),
+%%   <<"ModelCardName">> => string(),
+%%   <<"ModelCardStatus">> => list(any()),
+%%   <<"ModelCardVersion">> => integer(),
+%%   <<"ModelId">> => string(),
+%%   <<"RiskRating">> => string(),
+%%   <<"SecurityConfig">> => model_card_security_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type model_dashboard_model_card() :: #{binary() => any()}.
+
+%% Example:
+%% model_dashboard_monitoring_schedule() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringAlertSummaries">> => list(monitoring_alert_summary()),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type model_dashboard_monitoring_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% model_data_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type model_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% model_data_source() :: #{
+%%   <<"S3DataSource">> => s3_model_data_source()
+%% }
+-type model_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% model_deploy_config() :: #{
+%%   <<"AutoGenerateEndpointName">> => boolean(),
+%%   <<"EndpointName">> => string()
+%% }
+-type model_deploy_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_deploy_result() :: #{
+%%   <<"EndpointName">> => string()
+%% }
+-type model_deploy_result() :: #{binary() => any()}.
+
+%% Example:
+%% model_digests() :: #{
+%%   <<"ArtifactDigest">> => string()
+%% }
+-type model_digests() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_app_specification() :: #{
+%%   <<"ConfigUri">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string()
+%% }
+-type model_explainability_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_explainability_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_explainability_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
+%% }
+-type model_explainability_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_infrastructure_config() :: #{
+%%   <<"InfrastructureType">> => list(any()),
+%%   <<"RealTimeInferenceConfig">> => real_time_inference_config()
+%% }
+-type model_infrastructure_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_input() :: #{
+%%   <<"DataInputConfig">> => string()
+%% }
+-type model_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_latency_threshold() :: #{
+%%   <<"Percentile">> => string(),
+%%   <<"ValueInMilliseconds">> => integer()
+%% }
+-type model_latency_threshold() :: #{binary() => any()}.
+
+%% Example:
+%% model_life_cycle() :: #{
+%%   <<"Stage">> => string(),
+%%   <<"StageDescription">> => string(),
+%%   <<"StageStatus">> => string()
+%% }
+-type model_life_cycle() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type model_metadata_filter() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_search_expression() :: #{
+%%   <<"Filters">> => list(model_metadata_filter())
+%% }
+-type model_metadata_search_expression() :: #{binary() => any()}.
+
+%% Example:
+%% model_metadata_summary() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Model">> => string(),
+%%   <<"Task">> => string()
+%% }
+-type model_metadata_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_metrics() :: #{
+%%   <<"Bias">> => bias(),
+%%   <<"Explainability">> => explainability(),
+%%   <<"ModelDataQuality">> => model_data_quality(),
+%%   <<"ModelQuality">> => model_quality()
+%% }
+-type model_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% model_package() :: #{
+%%   <<"AdditionalInferenceSpecifications">> => list(additional_inference_specification_definition()),
+%%   <<"ApprovalDescription">> => string(),
+%%   <<"CertifyForMarketplace">> => boolean(),
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"Domain">> => string(),
+%%   <<"DriftCheckBaselines">> => drift_check_baselines(),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
+%%   <<"ModelMetrics">> => model_metrics(),
+%%   <<"ModelPackageArn">> => string(),
+%%   <<"ModelPackageDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageName">> => string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
+%%   <<"ModelPackageStatus">> => list(any()),
+%%   <<"ModelPackageStatusDetails">> => model_package_status_details(),
+%%   <<"ModelPackageVersion">> => integer(),
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SecurityConfig">> => model_package_security_config(),
+%%   <<"SkipModelValidation">> => list(any()),
+%%   <<"SourceAlgorithmSpecification">> => source_algorithm_specification(),
+%%   <<"SourceUri">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Task">> => string(),
+%%   <<"ValidationSpecification">> => model_package_validation_specification()
+%% }
+-type model_package() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_config() :: #{
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"SourceModelPackageArn">> => string()
+%% }
+-type model_package_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_container_definition() :: #{
+%%   <<"AdditionalModelDataSources">> => list(additional_model_data_source()),
+%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
+%%   <<"BaseModel">> => base_model(),
+%%   <<"ContainerHostname">> => string(),
+%%   <<"Environment">> => map(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Image">> => string(),
+%%   <<"ImageDigest">> => string(),
+%%   <<"IsCheckpoint">> => boolean(),
+%%   <<"ModelDataETag">> => string(),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string(),
+%%   <<"ModelInput">> => model_input(),
+%%   <<"NearestModelName">> => string(),
+%%   <<"ProductId">> => string()
+%% }
+-type model_package_container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_group() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type model_package_group() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ManagedConfiguration">> => managed_configuration(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"ModelPackageGroupDescription">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"ModelPackageGroupStatus">> => list(any())
+%% }
+-type model_package_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_model_card() :: #{
+%%   <<"ModelCardContent">> => string(),
+%%   <<"ModelCardStatus">> => list(any())
+%% }
+-type model_package_model_card() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_security_config() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type model_package_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_status_details() :: #{
+%%   <<"ImageScanStatuses">> => list(model_package_status_item()),
+%%   <<"ValidationStatuses">> => list(model_package_status_item())
+%% }
+-type model_package_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% model_package_status_item() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_package_status_item() :: #{binary() => any()}.
 
 %% Example:
 %% model_package_summary() :: #{
@@ -14568,89 +10907,897 @@
 -type model_package_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tags_output() :: #{
-
+%% model_package_validation_profile() :: #{
+%%   <<"ProfileName">> => string(),
+%%   <<"TransformJobDefinition">> => transform_job_definition()
 %% }
--type delete_tags_output() :: #{binary() => any()}.
+-type model_package_validation_profile() :: #{binary() => any()}.
 
 %% Example:
-%% create_notebook_instance_lifecycle_config_output() :: #{
-%%   <<"NotebookInstanceLifecycleConfigArn">> => string()
+%% model_package_validation_specification() :: #{
+%%   <<"ValidationProfiles">> => list(model_package_validation_profile()),
+%%   <<"ValidationRole">> => string()
 %% }
--type create_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+-type model_package_validation_specification() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_ebs_volume_config() :: #{
-%%   <<"RootVolume">> => boolean(),
+%% model_quality() :: #{
+%%   <<"Constraints">> => metrics_source(),
+%%   <<"Statistics">> => metrics_source()
+%% }
+-type model_quality() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()),
+%%   <<"ContainerEntrypoint">> => list(string()),
+%%   <<"Environment">> => map(),
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"RecordPreprocessorSourceUri">> => string()
+%% }
+-type model_quality_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource()
+%% }
+-type model_quality_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_quality_job_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input(),
+%%   <<"GroundTruthS3Input">> => monitoring_ground_truth_s3_input()
+%% }
+-type model_quality_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% model_quantization_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_quantization_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_register_settings() :: #{
+%%   <<"CrossAccountModelRegisterRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type model_register_settings() :: #{binary() => any()}.
+
+%% Example:
+%% model_sharding_config() :: #{
+%%   <<"Image">> => string(),
+%%   <<"OverrideEnvironment">> => map()
+%% }
+-type model_sharding_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_speculative_decoding_config() :: #{
+%%   <<"Technique">> => list(any()),
+%%   <<"TrainingDataSource">> => model_speculative_decoding_training_data_source()
+%% }
+-type model_speculative_decoding_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_speculative_decoding_training_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type model_speculative_decoding_training_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% model_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type model_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% model_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ModelArn">> => string(),
+%%   <<"ModelName">> => string()
+%% }
+-type model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% model_variant_config() :: #{
+%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"VariantName">> => string()
+%% }
+-type model_variant_config() :: #{binary() => any()}.
+
+%% Example:
+%% model_variant_config_summary() :: #{
+%%   <<"InfrastructureConfig">> => model_infrastructure_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VariantName">> => string()
+%% }
+-type model_variant_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_actions() :: #{
+%%   <<"ModelDashboardIndicator">> => model_dashboard_indicator_action()
+%% }
+-type monitoring_alert_actions() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_history_summary() :: #{
+%%   <<"AlertStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleName">> => string()
+%% }
+-type monitoring_alert_history_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_alert_summary() :: #{
+%%   <<"Actions">> => monitoring_alert_actions(),
+%%   <<"AlertStatus">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatapointsToAlert">> => integer(),
+%%   <<"EvaluationPeriod">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringAlertName">> => string()
+%% }
+-type monitoring_alert_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_app_specification() :: #{
+%%   <<"ContainerArguments">> => list(string()),
+%%   <<"ContainerEntrypoint">> => list(string()),
+%%   <<"ImageUri">> => string(),
+%%   <<"PostAnalyticsProcessorSourceUri">> => string(),
+%%   <<"RecordPreprocessorSourceUri">> => string()
+%% }
+-type monitoring_app_specification() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_baseline_config() :: #{
+%%   <<"BaseliningJobName">> => string(),
+%%   <<"ConstraintsResource">> => monitoring_constraints_resource(),
+%%   <<"StatisticsResource">> => monitoring_statistics_resource()
+%% }
+-type monitoring_baseline_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_cluster_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
--type cluster_ebs_volume_config() :: #{binary() => any()}.
+-type monitoring_cluster_config() :: #{binary() => any()}.
 
 %% Example:
-%% update_feature_group_response() :: #{
-%%   <<"FeatureGroupArn">> => string()
+%% monitoring_constraints_resource() :: #{
+%%   <<"S3Uri">> => string()
 %% }
--type update_feature_group_response() :: #{binary() => any()}.
+-type monitoring_constraints_resource() :: #{binary() => any()}.
 
 %% Example:
-%% code_repository_summary() :: #{
-%%   <<"CodeRepositoryArn">> => string(),
-%%   <<"CodeRepositoryName">> => string(),
+%% monitoring_csv_dataset_format() :: #{
+%%   <<"Header">> => boolean()
+%% }
+-type monitoring_csv_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_dataset_format() :: #{
+%%   <<"Csv">> => monitoring_csv_dataset_format(),
+%%   <<"Json">> => monitoring_json_dataset_format(),
+%%   <<"Parquet">> => monitoring_parquet_dataset_format()
+%% }
+-type monitoring_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_execution_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"GitConfig">> => git_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringExecutionStatus">> => list(any()),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ScheduledTime">> => non_neg_integer()
 %% }
--type code_repository_summary() :: #{binary() => any()}.
+-type monitoring_execution_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_mlflow_tracking_server_request() :: #{
-%%   <<"TrackingServerName">> := string()
+%% monitoring_ground_truth_s3_input() :: #{
+%%   <<"S3Uri">> => string()
 %% }
--type delete_mlflow_tracking_server_request() :: #{binary() => any()}.
+-type monitoring_ground_truth_s3_input() :: #{binary() => any()}.
 
 %% Example:
-%% retention_policy() :: #{
-%%   <<"HomeEfsFileSystem">> => list(any())
+%% monitoring_input() :: #{
+%%   <<"BatchTransformInput">> => batch_transform_input(),
+%%   <<"EndpointInput">> => endpoint_input()
 %% }
--type retention_policy() :: #{binary() => any()}.
+-type monitoring_input() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_auto_scaling_config_output() :: #{
-%%   <<"AutoScalerType">> => list(any()),
-%%   <<"FailureMessage">> => [string()],
-%%   <<"Mode">> => list(any()),
+%% monitoring_job_definition() :: #{
+%%   <<"BaselineConfig">> => monitoring_baseline_config(),
+%%   <<"Environment">> => map(),
+%%   <<"MonitoringAppSpecification">> => monitoring_app_specification(),
+%%   <<"MonitoringInputs">> => list(monitoring_input()),
+%%   <<"MonitoringOutputConfig">> => monitoring_output_config(),
+%%   <<"MonitoringResources">> => monitoring_resources(),
+%%   <<"NetworkConfig">> => network_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"StoppingCondition">> => monitoring_stopping_condition()
+%% }
+-type monitoring_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_job_definition_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"MonitoringJobDefinitionArn">> => string(),
+%%   <<"MonitoringJobDefinitionName">> => string()
+%% }
+-type monitoring_job_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_json_dataset_format() :: #{
+%%   <<"Line">> => boolean()
+%% }
+-type monitoring_json_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_network_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type monitoring_network_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_output() :: #{
+%%   <<"S3Output">> => monitoring_s3_output()
+%% }
+-type monitoring_output() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MonitoringOutputs">> => list(monitoring_output())
+%% }
+-type monitoring_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_parquet_dataset_format() :: #{
+
+%% }
+-type monitoring_parquet_dataset_format() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_resources() :: #{
+%%   <<"ClusterConfig">> => monitoring_cluster_config()
+%% }
+-type monitoring_resources() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_s3_output() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3UploadMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_s3_output() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastMonitoringExecutionSummary">> => monitoring_execution_summary(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleConfig">> => monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type monitoring_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule_config() :: #{
+%%   <<"MonitoringJobDefinition">> => monitoring_job_definition(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringType">> => list(any()),
+%%   <<"ScheduleConfig">> => schedule_config()
+%% }
+-type monitoring_schedule_config() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_schedule_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MonitoringJobDefinitionName">> => string(),
+%%   <<"MonitoringScheduleArn">> => string(),
+%%   <<"MonitoringScheduleName">> => string(),
+%%   <<"MonitoringScheduleStatus">> => list(any()),
+%%   <<"MonitoringType">> => list(any())
+%% }
+-type monitoring_schedule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_statistics_resource() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type monitoring_statistics_resource() :: #{binary() => any()}.
+
+%% Example:
+%% monitoring_stopping_condition() :: #{
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type monitoring_stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% multi_model_config() :: #{
+%%   <<"ModelCacheSetting">> => list(any())
+%% }
+-type multi_model_config() :: #{binary() => any()}.
+
+%% Example:
+%% neo_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type neo_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% nested_filters() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"NestedPropertyName">> => string()
+%% }
+-type nested_filters() :: #{binary() => any()}.
+
+%% Example:
+%% network_config() :: #{
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type network_config() :: #{binary() => any()}.
+
+%% Example:
+%% node_addition_result() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceTypes">> => list(list(any())()),
+%%   <<"NodeLogicalId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
--type cluster_auto_scaling_config_output() :: #{binary() => any()}.
+-type node_addition_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_partner_app_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ClientToken">> => string()
+%% notebook_instance_lifecycle_config_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NotebookInstanceLifecycleConfigArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string()
 %% }
--type delete_partner_app_request() :: #{binary() => any()}.
+-type notebook_instance_lifecycle_config_summary() :: #{binary() => any()}.
 
 %% Example:
-%% dynamic_scaling_configuration() :: #{
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer(),
-%%   <<"ScaleInCooldown">> => integer(),
-%%   <<"ScaleOutCooldown">> => integer(),
-%%   <<"ScalingPolicies">> => list(list())
+%% notebook_instance_lifecycle_hook() :: #{
+%%   <<"Content">> => string()
 %% }
--type dynamic_scaling_configuration() :: #{binary() => any()}.
+-type notebook_instance_lifecycle_hook() :: #{binary() => any()}.
 
 %% Example:
-%% list_spaces_request() :: #{
-%%   <<"DomainIdEquals">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SpaceNameContains">> => string()
+%% notebook_instance_summary() :: #{
+%%   <<"AdditionalCodeRepositories">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NotebookInstanceArn">> => string(),
+%%   <<"NotebookInstanceLifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> => string(),
+%%   <<"NotebookInstanceStatus">> => list(any()),
+%%   <<"Url">> => string()
 %% }
--type list_spaces_request() :: #{binary() => any()}.
+-type notebook_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"NotificationTopicArn">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% objective_status_counters() :: #{
+%%   <<"Failed">> => integer(),
+%%   <<"Pending">> => integer(),
+%%   <<"Succeeded">> => integer()
+%% }
+-type objective_status_counters() :: #{binary() => any()}.
+
+%% Example:
+%% offline_store_config() :: #{
+%%   <<"DataCatalogConfig">> => data_catalog_config(),
+%%   <<"DisableGlueTableCreation">> => boolean(),
+%%   <<"S3StorageConfig">> => s3_storage_config(),
+%%   <<"TableFormat">> => list(any())
+%% }
+-type offline_store_config() :: #{binary() => any()}.
+
+%% Example:
+%% offline_store_status() :: #{
+%%   <<"BlockedReason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type offline_store_status() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_config() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksUri">> => string(),
+%%   <<"LogoutEndpoint">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type oidc_config() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_config_for_response() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksUri">> => string(),
+%%   <<"LogoutEndpoint">> => string(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type oidc_config_for_response() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_member_definition() :: #{
+%%   <<"Groups">> => list(string())
+%% }
+-type oidc_member_definition() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_config() :: #{
+%%   <<"EnableOnlineStore">> => boolean(),
+%%   <<"SecurityConfig">> => online_store_security_config(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type online_store_config() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_config_update() :: #{
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type online_store_config_update() :: #{binary() => any()}.
+
+%% Example:
+%% online_store_security_config() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type online_store_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_model_source() :: #{
+%%   <<"S3">> => optimization_job_model_source_s3(),
+%%   <<"SageMakerModel">> => optimization_sage_maker_model()
+%% }
+-type optimization_job_model_source() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_model_source_s3() :: #{
+%%   <<"ModelAccessConfig">> => optimization_model_access_config(),
+%%   <<"S3Uri">> => string()
+%% }
+-type optimization_job_model_source_s3() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputLocation">> => string(),
+%%   <<"SageMakerModel">> => optimization_sage_maker_model()
+%% }
+-type optimization_job_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentInstanceType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxInstanceCount">> => integer(),
+%%   <<"OptimizationEndTime">> => non_neg_integer(),
+%%   <<"OptimizationJobArn">> => string(),
+%%   <<"OptimizationJobName">> => string(),
+%%   <<"OptimizationJobStatus">> => list(any()),
+%%   <<"OptimizationStartTime">> => non_neg_integer(),
+%%   <<"OptimizationTypes">> => list(string())
+%% }
+-type optimization_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_model_access_config() :: #{
+%%   <<"AcceptEula">> => boolean()
+%% }
+-type optimization_model_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_output() :: #{
+%%   <<"RecommendedInferenceImage">> => string()
+%% }
+-type optimization_output() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_sage_maker_model() :: #{
+%%   <<"ModelName">> => string()
+%% }
+-type optimization_sage_maker_model() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type optimization_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% output_config() :: #{
+%%   <<"CompilerOptions">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputLocation">> => string(),
+%%   <<"TargetDevice">> => list(any()),
+%%   <<"TargetPlatform">> => target_platform()
+%% }
+-type output_config() :: #{binary() => any()}.
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% output_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type output_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% ownership_settings() :: #{
+%%   <<"OwnerUserProfileName">> => string()
+%% }
+-type ownership_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ownership_settings_summary() :: #{
+%%   <<"OwnerUserProfileName">> => string()
+%% }
+-type ownership_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% parallelism_configuration() :: #{
+%%   <<"MaxParallelExecutionSteps">> => integer()
+%% }
+-type parallelism_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_range() :: #{
+%%   <<"CategoricalParameterRangeSpecification">> => categorical_parameter_range_specification(),
+%%   <<"ContinuousParameterRangeSpecification">> => continuous_parameter_range_specification(),
+%%   <<"IntegerParameterRangeSpecification">> => integer_parameter_range_specification()
+%% }
+-type parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_ranges() :: #{
+%%   <<"AutoParameters">> => list(auto_parameter()),
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()),
+%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()),
+%%   <<"IntegerParameterRanges">> => list(integer_parameter_range())
+%% }
+-type parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% parent() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type parent() :: #{binary() => any()}.
+
+%% Example:
+%% parent_hyper_parameter_tuning_job() :: #{
+%%   <<"HyperParameterTuningJobName">> => string()
+%% }
+-type parent_hyper_parameter_tuning_job() :: #{binary() => any()}.
+
+%% Example:
+%% partner_app_config() :: #{
+%%   <<"AdminUsers">> => list(string()),
+%%   <<"Arguments">> => map(),
+%%   <<"AssignedGroupPatterns">> => list(string()),
+%%   <<"RoleGroupAssignments">> => list(role_group_assignment())
+%% }
+-type partner_app_config() :: #{binary() => any()}.
+
+%% Example:
+%% partner_app_maintenance_config() :: #{
+%%   <<"MaintenanceWindowStart">> => string()
+%% }
+-type partner_app_maintenance_config() :: #{binary() => any()}.
+
+%% Example:
+%% partner_app_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type partner_app_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pending_deployment_summary() :: #{
+%%   <<"EndpointConfigName">> => string(),
+%%   <<"ProductionVariants">> => list(pending_production_variant_summary()),
+%%   <<"ShadowProductionVariants">> => list(pending_production_variant_summary()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type pending_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pending_production_variant_summary() :: #{
+%%   <<"AcceleratorType">> => list(any()),
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"CurrentWeight">> => float(),
+%%   <<"DeployedImages">> => list(deployed_image()),
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool_summary()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"VariantName">> => string(),
+%%   <<"VariantStatus">> => list(production_variant_status())
+%% }
+-type pending_production_variant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% phase() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"InitialNumberOfUsers">> => integer(),
+%%   <<"SpawnRate">> => integer()
+%% }
+-type phase() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastRunTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"PipelineStatus">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type pipeline() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_definition_s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"ObjectKey">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type pipeline_definition_s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"PipelineParameters">> => list(parameter()),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float(),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
+%% }
+-type pipeline_execution() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_step() :: #{
+%%   <<"AttemptCount">> => integer(),
+%%   <<"CacheHitResult">> => cache_hit_result(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Metadata">> => pipeline_execution_step_metadata(),
+%%   <<"SelectiveExecutionResult">> => selective_execution_result(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StepDescription">> => string(),
+%%   <<"StepDisplayName">> => string(),
+%%   <<"StepName">> => string(),
+%%   <<"StepStatus">> => list(any())
+%% }
+-type pipeline_execution_step() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_step_metadata() :: #{
+%%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
+%%   <<"BedrockCustomModel">> => bedrock_custom_model_metadata(),
+%%   <<"BedrockCustomModelDeployment">> => bedrock_custom_model_deployment_metadata(),
+%%   <<"BedrockModelImport">> => bedrock_model_import_metadata(),
+%%   <<"BedrockProvisionedModelThroughput">> => bedrock_provisioned_model_throughput_metadata(),
+%%   <<"Callback">> => callback_step_metadata(),
+%%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
+%%   <<"Condition">> => condition_step_metadata(),
+%%   <<"EMR">> => emr_step_metadata(),
+%%   <<"Endpoint">> => endpoint_step_metadata(),
+%%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
+%%   <<"Fail">> => fail_step_metadata(),
+%%   <<"InferenceComponent">> => inference_component_metadata(),
+%%   <<"Job">> => job_step_metadata(),
+%%   <<"Lambda">> => lambda_step_metadata(),
+%%   <<"Lineage">> => lineage_metadata(),
+%%   <<"Model">> => model_step_metadata(),
+%%   <<"ProcessingJob">> => processing_job_step_metadata(),
+%%   <<"QualityCheck">> => quality_check_step_metadata(),
+%%   <<"RegisterModel">> => register_model_step_metadata(),
+%%   <<"TrainingJob">> => training_job_step_metadata(),
+%%   <<"TransformJob">> => transform_job_step_metadata(),
+%%   <<"TuningJob">> => tuning_job_step_meta_data()
+%% }
+-type pipeline_execution_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_execution_summary() :: #{
+%%   <<"PipelineExecutionArn">> => string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineExecutionFailureReason">> => string(),
+%%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type pipeline_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_experiment_config() :: #{
+%%   <<"ExperimentName">> => string(),
+%%   <<"TrialName">> => string()
+%% }
+-type pipeline_experiment_config() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutionTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type pipeline_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutedPipelineExecutionArn">> => string(),
+%%   <<"LastExecutedPipelineExecutionDisplayName">> => string(),
+%%   <<"LastExecutedPipelineExecutionStatus">> => list(any()),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type pipeline_version() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutionPipelineExecutionArn">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type pipeline_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% placement_specification() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"UltraServerId">> => string()
+%% }
+-type placement_specification() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% presigned_url_access_config() :: #{
+%%   <<"AcceptEula">> => boolean(),
+%%   <<"ExpectedS3Url">> => string()
+%% }
+-type presigned_url_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% priority_class() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type priority_class() :: #{binary() => any()}.
+
+%% Example:
+%% processing_cluster_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type processing_cluster_config() :: #{binary() => any()}.
+
+%% Example:
+%% processing_feature_store_output() :: #{
+%%   <<"FeatureGroupName">> => string()
+%% }
+-type processing_feature_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% processing_input() :: #{
+%%   <<"AppManaged">> => boolean(),
+%%   <<"DatasetDefinition">> => dataset_definition(),
+%%   <<"InputName">> => string(),
+%%   <<"S3Input">> => processing_s3_input()
+%% }
+-type processing_input() :: #{binary() => any()}.
 
 %% Example:
 %% processing_job() :: #{
@@ -14680,79 +11827,719 @@
 -type processing_job() :: #{binary() => any()}.
 
 %% Example:
-%% list_human_task_uis_request() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_human_task_uis_request() :: #{binary() => any()}.
-
-%% Example:
-%% space_sharing_settings_summary() :: #{
-%%   <<"SharingType">> => list(any())
-%% }
--type space_sharing_settings_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_response() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type update_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_flow_definition_request() :: #{
-%%   <<"FlowDefinitionName">> := string(),
-%%   <<"HumanLoopActivationConfig">> => human_loop_activation_config(),
-%%   <<"HumanLoopConfig">> => human_loop_config(),
-%%   <<"HumanLoopRequestSource">> => human_loop_request_source(),
-%%   <<"OutputConfig">> := flow_definition_output_config(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_flow_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_code_repository_output() :: #{
-%%   <<"CodeRepositoryArn">> => string()
-%% }
--type create_code_repository_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_device_fleets_response() :: #{
-%%   <<"DeviceFleetSummaries">> => list(device_fleet_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_fleets_response() :: #{binary() => any()}.
-
-%% Example:
-%% bedrock_custom_model_metadata() :: #{
+%% processing_job_step_metadata() :: #{
 %%   <<"Arn">> => string()
 %% }
--type bedrock_custom_model_metadata() :: #{binary() => any()}.
+-type processing_job_step_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% describe_device_response() :: #{
-%%   <<"AgentVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceArn">> => string(),
-%%   <<"DeviceFleetName">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"IotThingName">> => string(),
-%%   <<"LatestHeartbeat">> => non_neg_integer(),
-%%   <<"MaxModels">> => integer(),
-%%   <<"Models">> => list(edge_model()),
+%% processing_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExitMessage">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProcessingEndTime">> => non_neg_integer(),
+%%   <<"ProcessingJobArn">> => string(),
+%%   <<"ProcessingJobName">> => string(),
+%%   <<"ProcessingJobStatus">> => list(any())
+%% }
+-type processing_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% processing_output() :: #{
+%%   <<"AppManaged">> => boolean(),
+%%   <<"FeatureStoreOutput">> => processing_feature_store_output(),
+%%   <<"OutputName">> => string(),
+%%   <<"S3Output">> => processing_s3_output()
+%% }
+-type processing_output() :: #{binary() => any()}.
+
+%% Example:
+%% processing_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Outputs">> => list(processing_output())
+%% }
+-type processing_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% processing_resources() :: #{
+%%   <<"ClusterConfig">> => processing_cluster_config()
+%% }
+-type processing_resources() :: #{binary() => any()}.
+
+%% Example:
+%% processing_s3_input() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3CompressionType">> => list(any()),
+%%   <<"S3DataDistributionType">> => list(any()),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3InputMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type processing_s3_input() :: #{binary() => any()}.
+
+%% Example:
+%% processing_s3_output() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3UploadMode">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type processing_s3_output() :: #{binary() => any()}.
+
+%% Example:
+%% processing_stopping_condition() :: #{
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type processing_stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant() :: #{
+%%   <<"AcceleratorType">> => list(any()),
+%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_config(),
+%%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
+%%   <<"CoreDumpConfig">> => production_variant_core_dump_config(),
+%%   <<"EnableSSMAccess">> => boolean(),
+%%   <<"InferenceAmiVersion">> => list(any()),
+%%   <<"InitialInstanceCount">> => integer(),
+%%   <<"InitialVariantWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"ModelDataDownloadTimeoutInSeconds">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"ServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"VariantInstanceProvisionTimeoutInSeconds">> => integer(),
+%%   <<"VariantName">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type production_variant() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_capacity_reservation_config() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"MlReservationArn">> => string()
+%% }
+-type production_variant_capacity_reservation_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_capacity_reservation_summary() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"Ec2CapacityReservations">> => list(ec2_capacity_reservation()),
+%%   <<"MlReservationArn">> => string(),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UsedByCurrentEndpoint">> => integer()
+%% }
+-type production_variant_capacity_reservation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_core_dump_config() :: #{
+%%   <<"DestinationS3Uri">> => string(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type production_variant_core_dump_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_managed_instance_scaling() :: #{
+%%   <<"MaxInstanceCount">> => integer(),
+%%   <<"MinInstanceCount">> => integer(),
+%%   <<"ScaleInPolicy">> => production_variant_managed_instance_scaling_scale_in_policy(),
+%%   <<"Status">> => list(any())
+%% }
+-type production_variant_managed_instance_scaling() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_managed_instance_scaling_scale_in_policy() :: #{
+%%   <<"CooldownInMinutes">> => integer(),
+%%   <<"MaximumStepSize">> => integer(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type production_variant_managed_instance_scaling_scale_in_policy() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_routing_config() :: #{
+%%   <<"RoutingStrategy">> => list(any())
+%% }
+-type production_variant_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_serverless_config() :: #{
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"MemorySizeInMB">> => integer(),
+%%   <<"ProvisionedConcurrency">> => integer()
+%% }
+-type production_variant_serverless_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_serverless_update_config() :: #{
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"ProvisionedConcurrency">> => integer()
+%% }
+-type production_variant_serverless_update_config() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_status() :: #{
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type production_variant_status() :: #{binary() => any()}.
+
+%% Example:
+%% production_variant_summary() :: #{
+%%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_summary(),
+%%   <<"CurrentInstanceCount">> => integer(),
+%%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"CurrentWeight">> => float(),
+%%   <<"DeployedImages">> => list(deployed_image()),
+%%   <<"DesiredInstanceCount">> => integer(),
+%%   <<"DesiredServerlessConfig">> => production_variant_serverless_config(),
+%%   <<"DesiredWeight">> => float(),
+%%   <<"InstancePools">> => list(instance_pool_summary()),
+%%   <<"ManagedInstanceScaling">> => production_variant_managed_instance_scaling(),
+%%   <<"RoutingConfig">> => production_variant_routing_config(),
+%%   <<"VariantName">> => string(),
+%%   <<"VariantStatus">> => list(production_variant_status())
+%% }
+-type production_variant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_config() :: #{
+%%   <<"DisableProfiler">> => boolean(),
+%%   <<"ProfilingIntervalInMilliseconds">> => float(),
+%%   <<"ProfilingParameters">> => map(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type profiler_config() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_config_for_update() :: #{
+%%   <<"DisableProfiler">> => boolean(),
+%%   <<"ProfilingIntervalInMilliseconds">> => float(),
+%%   <<"ProfilingParameters">> => map(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type profiler_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_rule_configuration() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LocalPath">> => string(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluatorImage">> => string(),
+%%   <<"RuleParameters">> => map(),
+%%   <<"S3OutputPath">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type profiler_rule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% profiler_rule_evaluation_status() :: #{
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuleConfigurationName">> => string(),
+%%   <<"RuleEvaluationJobArn">> => string(),
+%%   <<"RuleEvaluationStatus">> => list(any()),
+%%   <<"StatusDetails">> => string()
+%% }
+-type profiler_rule_evaluation_status() :: #{binary() => any()}.
+
+%% Example:
+%% project() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any()),
+%%   <<"ServiceCatalogProvisionedProductDetails">> => service_catalog_provisioned_product_details(),
+%%   <<"ServiceCatalogProvisioningDetails">> => service_catalog_provisioning_details(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateProviderDetails">> => list(template_provider_detail())
+%% }
+-type project() :: #{binary() => any()}.
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectStatus">> => list(any())
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% property_name_query() :: #{
+%%   <<"PropertyNameHint">> => string()
+%% }
+-type property_name_query() :: #{binary() => any()}.
+
+%% Example:
+%% property_name_suggestion() :: #{
+%%   <<"PropertyName">> => string()
+%% }
+-type property_name_suggestion() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type provisioning_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% public_workforce_task_price() :: #{
+%%   <<"AmountInUsd">> => u_s_d()
+%% }
+-type public_workforce_task_price() :: #{binary() => any()}.
+
+%% Example:
+%% put_model_package_group_policy_input() :: #{
+%%   <<"ModelPackageGroupName">> := string(),
+%%   <<"ResourcePolicy">> := string()
+%% }
+-type put_model_package_group_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_model_package_group_policy_output() :: #{
+%%   <<"ModelPackageGroupArn">> => string()
+%% }
+-type put_model_package_group_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% quality_check_step_metadata() :: #{
+%%   <<"BaselineUsedForDriftCheckConstraints">> => string(),
+%%   <<"BaselineUsedForDriftCheckStatistics">> => string(),
+%%   <<"CalculatedBaselineConstraints">> => string(),
+%%   <<"CalculatedBaselineStatistics">> => string(),
+%%   <<"CheckJobArn">> => string(),
+%%   <<"CheckType">> => string(),
+%%   <<"ModelPackageGroupName">> => string(),
+%%   <<"RegisterNewBaseline">> => boolean(),
+%%   <<"SkipCheck">> => boolean(),
+%%   <<"ViolationReport">> => string()
+%% }
+-type quality_check_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% query_filters() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"LineageTypes">> => list(list(any())()),
+%%   <<"ModifiedAfter">> => non_neg_integer(),
+%%   <<"ModifiedBefore">> => non_neg_integer(),
+%%   <<"Properties">> => map(),
+%%   <<"Types">> => list(string())
+%% }
+-type query_filters() :: #{binary() => any()}.
+
+%% Example:
+%% query_lineage_request() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"Filters">> => query_filters(),
+%%   <<"IncludeEdges">> => boolean(),
+%%   <<"MaxDepth">> => integer(),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationTime">> => non_neg_integer()
+%%   <<"StartArns">> => list(string())
 %% }
--type describe_device_response() :: #{binary() => any()}.
+-type query_lineage_request() :: #{binary() => any()}.
 
 %% Example:
-%% default_space_storage_settings() :: #{
-%%   <<"DefaultEbsStorageSettings">> => default_ebs_storage_settings()
+%% query_lineage_response() :: #{
+%%   <<"Edges">> => list(edge()),
+%%   <<"NextToken">> => string(),
+%%   <<"Vertices">> => list(vertex())
 %% }
--type default_space_storage_settings() :: #{binary() => any()}.
+-type query_lineage_response() :: #{binary() => any()}.
+
+%% Example:
+%% r_session_app_settings() :: #{
+%%   <<"CustomImages">> => list(custom_image()),
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type r_session_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_app_settings() :: #{
+%%   <<"AccessStatus">> => list(any()),
+%%   <<"UserGroup">> => list(any())
+%% }
+-type r_studio_server_pro_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_domain_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"DomainExecutionRoleArn">> => string(),
+%%   <<"RStudioConnectUrl">> => string(),
+%%   <<"RStudioPackageManagerUrl">> => string()
+%% }
+-type r_studio_server_pro_domain_settings() :: #{binary() => any()}.
+
+%% Example:
+%% r_studio_server_pro_domain_settings_for_update() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec(),
+%%   <<"DomainExecutionRoleArn">> => string(),
+%%   <<"RStudioConnectUrl">> => string(),
+%%   <<"RStudioPackageManagerUrl">> => string()
+%% }
+-type r_studio_server_pro_domain_settings_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% real_time_inference_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type real_time_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% real_time_inference_recommendation() :: #{
+%%   <<"Environment">> => map(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"RecommendationId">> => string()
+%% }
+-type real_time_inference_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_compiled_output_config() :: #{
+%%   <<"S3OutputUri">> => string()
+%% }
+-type recommendation_job_compiled_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_container_config() :: #{
+%%   <<"DataInputConfig">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"Framework">> => string(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"NearestModelName">> => string(),
+%%   <<"PayloadConfig">> => recommendation_job_payload_config(),
+%%   <<"SupportedEndpointType">> => list(any()),
+%%   <<"SupportedInstanceTypes">> => list(string()),
+%%   <<"SupportedResponseMIMETypes">> => list(string()),
+%%   <<"Task">> => string()
+%% }
+-type recommendation_job_container_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_inference_benchmark() :: #{
+%%   <<"EndpointConfiguration">> => endpoint_output_configuration(),
+%%   <<"EndpointMetrics">> => inference_metrics(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InvocationEndTime">> => non_neg_integer(),
+%%   <<"InvocationStartTime">> => non_neg_integer(),
+%%   <<"Metrics">> => recommendation_metrics(),
+%%   <<"ModelConfiguration">> => model_configuration()
+%% }
+-type recommendation_job_inference_benchmark() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_input_config() :: #{
+%%   <<"ContainerConfig">> => recommendation_job_container_config(),
+%%   <<"EndpointConfigurations">> => list(endpoint_input_configuration()),
+%%   <<"Endpoints">> => list(endpoint_info()),
+%%   <<"JobDurationInSeconds">> => integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelPackageVersionArn">> => string(),
+%%   <<"ResourceLimit">> => recommendation_job_resource_limit(),
+%%   <<"TrafficPattern">> => traffic_pattern(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => recommendation_job_vpc_config()
+%% }
+-type recommendation_job_input_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_output_config() :: #{
+%%   <<"CompiledOutputConfig">> => recommendation_job_compiled_output_config(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type recommendation_job_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_payload_config() :: #{
+%%   <<"SamplePayloadUrl">> => string(),
+%%   <<"SupportedContentTypes">> => list(string())
+%% }
+-type recommendation_job_payload_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_resource_limit() :: #{
+%%   <<"MaxNumberOfTests">> => integer(),
+%%   <<"MaxParallelOfTests">> => integer()
+%% }
+-type recommendation_job_resource_limit() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_stopping_conditions() :: #{
+%%   <<"FlatInvocations">> => list(any()),
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"ModelLatencyThresholds">> => list(model_latency_threshold())
+%% }
+-type recommendation_job_stopping_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_job_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type recommendation_job_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_metrics() :: #{
+%%   <<"CostPerHour">> => float(),
+%%   <<"CostPerInference">> => float(),
+%%   <<"CpuUtilization">> => float(),
+%%   <<"MaxInvocations">> => integer(),
+%%   <<"MemoryUtilization">> => float(),
+%%   <<"ModelLatency">> => integer(),
+%%   <<"ModelSetupTime">> => integer()
+%% }
+-type recommendation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_dataset_definition() :: #{
+%%   <<"ClusterId">> => string(),
+%%   <<"ClusterRoleArn">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputCompression">> => list(any()),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"OutputS3Uri">> => string(),
+%%   <<"QueryString">> => string()
+%% }
+-type redshift_dataset_definition() :: #{binary() => any()}.
+
+%% Example:
+%% register_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"Devices">> := list(device()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type register_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_model_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type register_model_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% remote_debug_config() :: #{
+%%   <<"EnableRemoteDebug">> => boolean()
+%% }
+-type remote_debug_config() :: #{binary() => any()}.
+
+%% Example:
+%% remote_debug_config_for_update() :: #{
+%%   <<"EnableRemoteDebug">> => boolean()
+%% }
+-type remote_debug_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% render_ui_template_request() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Task">> := renderable_task(),
+%%   <<"UiTemplate">> => ui_template()
+%% }
+-type render_ui_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% render_ui_template_response() :: #{
+%%   <<"Errors">> => list(rendering_error()),
+%%   <<"RenderedContent">> => string()
+%% }
+-type render_ui_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% renderable_task() :: #{
+%%   <<"Input">> => string()
+%% }
+-type renderable_task() :: #{binary() => any()}.
+
+%% Example:
+%% rendering_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type rendering_error() :: #{binary() => any()}.
+
+%% Example:
+%% repository_auth_config() :: #{
+%%   <<"RepositoryCredentialsProviderArn">> => string()
+%% }
+-type repository_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_offering() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExtensionEndTime">> => non_neg_integer(),
+%%   <<"ExtensionStartTime">> => non_neg_integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ReservedCapacityType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
+%% }
+-type reserved_capacity_offering() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_summary() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ReservedCapacityArn">> => string(),
+%%   <<"ReservedCapacityType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
+%% }
+-type reserved_capacity_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_attributes() :: #{
+%%   <<"AutoMLJobObjective">> => auto_ml_job_objective(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ProblemType">> => list(any())
+%% }
+-type resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% resource_catalog() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ResourceCatalogArn">> => string(),
+%%   <<"ResourceCatalogName">> => string()
+%% }
+-type resource_catalog() :: #{binary() => any()}.
+
+%% Example:
+%% resource_config() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroups">> => list(instance_group()),
+%%   <<"InstancePlacementConfig">> => instance_placement_config(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"KeepAlivePeriodInSeconds">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% resource_config_for_update() :: #{
+%%   <<"KeepAlivePeriodInSeconds">> => integer()
+%% }
+-type resource_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limits() :: #{
+%%   <<"MaxNumberOfTrainingJobs">> => integer(),
+%%   <<"MaxParallelTrainingJobs">> => integer(),
+%%   <<"MaxRuntimeInSeconds">> => integer()
+%% }
+-type resource_limits() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% resource_sharing_config() :: #{
+%%   <<"AbsoluteBorrowLimits">> => list(compute_quota_resource_config()),
+%%   <<"BorrowLimit">> => integer(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type resource_sharing_config() :: #{binary() => any()}.
+
+%% Example:
+%% resource_spec() :: #{
+%%   <<"InstanceType">> => list(any()),
+%%   <<"LifecycleConfigArn">> => string(),
+%%   <<"SageMakerImageArn">> => string(),
+%%   <<"SageMakerImageVersionAlias">> => string(),
+%%   <<"SageMakerImageVersionArn">> => string(),
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type resource_spec() :: #{binary() => any()}.
+
+%% Example:
+%% retention_policy() :: #{
+%%   <<"HomeEfsFileSystem">> => list(any())
+%% }
+-type retention_policy() :: #{binary() => any()}.
+
+%% Example:
+%% retry_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type retry_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% retry_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type retry_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% retry_strategy() :: #{
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% role_group_assignment() :: #{
+%%   <<"GroupPatterns">> => list(string()),
+%%   <<"RoleName">> => string()
+%% }
+-type role_group_assignment() :: #{binary() => any()}.
+
+%% Example:
+%% rolling_deployment_policy() :: #{
+%%   <<"MaximumBatchSize">> => capacity_size_config(),
+%%   <<"RollbackMaximumBatchSize">> => capacity_size_config()
+%% }
+-type rolling_deployment_policy() :: #{binary() => any()}.
+
+%% Example:
+%% rolling_update_policy() :: #{
+%%   <<"MaximumBatchSize">> => capacity_size(),
+%%   <<"MaximumExecutionTimeoutInSeconds">> => integer(),
+%%   <<"RollbackMaximumBatchSize">> => capacity_size(),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type rolling_update_policy() :: #{binary() => any()}.
 
 %% Example:
 %% s3_data_source() :: #{
@@ -14767,47 +12554,2287 @@
 -type s3_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% list_labeling_jobs_for_workteam_response() :: #{
-%%   <<"LabelingJobSummaryList">> => list(labeling_job_for_workteam_summary()),
-%%   <<"NextToken">> => string()
+%% s3_file_system() :: #{
+%%   <<"S3Uri">> => string()
 %% }
--type list_labeling_jobs_for_workteam_response() :: #{binary() => any()}.
+-type s3_file_system() :: #{binary() => any()}.
 
 %% Example:
-%% remote_debug_config() :: #{
-%%   <<"EnableRemoteDebug">> => boolean()
+%% s3_file_system_config() :: #{
+%%   <<"MountPath">> => string(),
+%%   <<"S3Uri">> => string()
 %% }
--type remote_debug_config() :: #{binary() => any()}.
+-type s3_file_system_config() :: #{binary() => any()}.
 
 %% Example:
-%% create_hub_response() :: #{
-%%   <<"HubArn">> => string()
+%% s3_model_data_source() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ETag">> => string(),
+%%   <<"HubAccessConfig">> => inference_hub_access_config(),
+%%   <<"ManifestEtag">> => string(),
+%%   <<"ManifestS3Uri">> => string(),
+%%   <<"ModelAccessConfig">> => model_access_config(),
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
 %% }
--type create_hub_response() :: #{binary() => any()}.
+-type s3_model_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% async_inference_output_config() :: #{
+%% s3_presign() :: #{
+%%   <<"IamPolicyConstraints">> => iam_policy_constraints()
+%% }
+-type s3_presign() :: #{binary() => any()}.
+
+%% Example:
+%% s3_storage_config() :: #{
 %%   <<"KmsKeyId">> => string(),
-%%   <<"NotificationConfig">> => async_inference_notification_config(),
-%%   <<"S3FailurePath">> => string(),
+%%   <<"ResolvedOutputS3Uri">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_storage_config() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy_metric() :: #{
+%%   <<"InvocationsPerInstance">> => integer(),
+%%   <<"ModelLatency">> => integer()
+%% }
+-type scaling_policy_metric() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy_objective() :: #{
+%%   <<"MaxInvocationsPerMinute">> => integer(),
+%%   <<"MinInvocationsPerMinute">> => integer()
+%% }
+-type scaling_policy_objective() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_config() :: #{
+%%   <<"DataAnalysisEndTime">> => string(),
+%%   <<"DataAnalysisStartTime">> => string(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type schedule_config() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_update_config() :: #{
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type scheduled_update_config() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler_config() :: #{
+%%   <<"FairShare">> => list(any()),
+%%   <<"IdleResourceSharing">> => list(any()),
+%%   <<"PriorityClasses">> => list(priority_class())
+%% }
+-type scheduler_config() :: #{binary() => any()}.
+
+%% Example:
+%% search_expression() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"NestedFilters">> => list(nested_filters()),
+%%   <<"Operator">> => list(any()),
+%%   <<"SubExpressions">> => list(search_expression())
+%% }
+-type search_expression() :: #{binary() => any()}.
+
+%% Example:
+%% search_record() :: #{
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"Experiment">> => experiment(),
+%%   <<"FeatureGroup">> => feature_group(),
+%%   <<"FeatureMetadata">> => feature_metadata(),
+%%   <<"HyperParameterTuningJob">> => hyper_parameter_tuning_job_search_entity(),
+%%   <<"Job">> => job(),
+%%   <<"Model">> => model_dashboard_model(),
+%%   <<"ModelCard">> => model_card(),
+%%   <<"ModelPackage">> => model_package(),
+%%   <<"ModelPackageGroup">> => model_package_group(),
+%%   <<"Pipeline">> => pipeline(),
+%%   <<"PipelineExecution">> => pipeline_execution(),
+%%   <<"PipelineVersion">> => pipeline_version(),
+%%   <<"Project">> => project(),
+%%   <<"TrainingJob">> => training_job(),
+%%   <<"Trial">> => trial(),
+%%   <<"TrialComponent">> => trial_component()
+%% }
+-type search_record() :: #{binary() => any()}.
+
+%% Example:
+%% search_request() :: #{
+%%   <<"CrossAccountFilterOption">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Resource">> := list(any()),
+%%   <<"SearchExpression">> => search_expression(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"VisibilityConditions">> => list(visibility_conditions())
+%% }
+-type search_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(search_record()),
+%%   <<"TotalHits">> => total_hits()
+%% }
+-type search_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_training_plan_offerings_request() :: #{
+%%   <<"DurationHours">> => float(),
+%%   <<"EndTimeBefore">> => non_neg_integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"StartTimeAfter">> => non_neg_integer(),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
+%% }
+-type search_training_plan_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_training_plan_offerings_response() :: #{
+%%   <<"TrainingPlanExtensionOfferings">> => list(training_plan_extension_offering()),
+%%   <<"TrainingPlanOfferings">> => list(training_plan_offering())
+%% }
+-type search_training_plan_offerings_response() :: #{binary() => any()}.
+
+%% Example:
+%% secondary_status_transition() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type secondary_status_transition() :: #{binary() => any()}.
+
+%% Example:
+%% selected_step() :: #{
+%%   <<"StepName">> => string()
+%% }
+-type selected_step() :: #{binary() => any()}.
+
+%% Example:
+%% selective_execution_config() :: #{
+%%   <<"SelectedSteps">> => list(selected_step()),
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type selective_execution_config() :: #{binary() => any()}.
+
+%% Example:
+%% selective_execution_result() :: #{
+%%   <<"SourcePipelineExecutionArn">> => string()
+%% }
+-type selective_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_failure_request() :: #{
+%%   <<"CallbackToken">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FailureReason">> => string()
+%% }
+-type send_pipeline_execution_step_failure_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_failure_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type send_pipeline_execution_step_failure_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_success_request() :: #{
+%%   <<"CallbackToken">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"OutputParameters">> => list(output_parameter())
+%% }
+-type send_pipeline_execution_step_success_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_pipeline_execution_step_success_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type send_pipeline_execution_step_success_response() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_job_config() :: #{
+%%   <<"AcceptEula">> => boolean(),
+%%   <<"BaseModelArn">> => string(),
+%%   <<"CustomizationTechnique">> => list(any()),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"EvaluatorArn">> => string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"Peft">> => list(any())
+%% }
+-type serverless_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioned_product_details() :: #{
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductStatusMessage">> => string()
+%% }
+-type service_catalog_provisioned_product_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioning_details() :: #{
+%%   <<"PathId">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter())
+%% }
+-type service_catalog_provisioning_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_catalog_provisioning_update_details() :: #{
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter())
+%% }
+-type service_catalog_provisioning_update_details() :: #{binary() => any()}.
+
+%% Example:
+%% session_chaining_config() :: #{
+%%   <<"EnableSessionTagChaining">> => boolean()
+%% }
+-type session_chaining_config() :: #{binary() => any()}.
+
+%% Example:
+%% shadow_mode_config() :: #{
+%%   <<"ShadowModelVariants">> => list(shadow_model_variant_config()),
+%%   <<"SourceModelVariantName">> => string()
+%% }
+-type shadow_mode_config() :: #{binary() => any()}.
+
+%% Example:
+%% shadow_model_variant_config() :: #{
+%%   <<"SamplingPercentage">> => integer(),
+%%   <<"ShadowModelVariantName">> => string()
+%% }
+-type shadow_model_variant_config() :: #{binary() => any()}.
+
+%% Example:
+%% sharing_settings() :: #{
+%%   <<"NotebookOutputOption">> => list(any()),
+%%   <<"S3KmsKeyId">> => string(),
 %%   <<"S3OutputPath">> => string()
 %% }
--type async_inference_output_config() :: #{binary() => any()}.
+-type sharing_settings() :: #{binary() => any()}.
+
+%% Example:
+%% shuffle_config() :: #{
+%%   <<"Seed">> => float()
+%% }
+-type shuffle_config() :: #{binary() => any()}.
+
+%% Example:
+%% source_algorithm() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"ModelDataETag">> => string(),
+%%   <<"ModelDataSource">> => model_data_source(),
+%%   <<"ModelDataUrl">> => string()
+%% }
+-type source_algorithm() :: #{binary() => any()}.
+
+%% Example:
+%% source_algorithm_specification() :: #{
+%%   <<"SourceAlgorithms">> => list(source_algorithm())
+%% }
+-type source_algorithm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% source_ip_config() :: #{
+%%   <<"Cidrs">> => list(string())
+%% }
+-type source_ip_config() :: #{binary() => any()}.
+
+%% Example:
+%% space_app_lifecycle_management() :: #{
+%%   <<"IdleSettings">> => space_idle_settings()
+%% }
+-type space_app_lifecycle_management() :: #{binary() => any()}.
+
+%% Example:
+%% space_code_editor_app_settings() :: #{
+%%   <<"AppLifecycleManagement">> => space_app_lifecycle_management(),
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type space_code_editor_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OwnershipSettingsSummary">> => ownership_settings_summary(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> => string(),
+%%   <<"SpaceSettingsSummary">> => space_settings_summary(),
+%%   <<"SpaceSharingSettingsSummary">> => space_sharing_settings_summary(),
+%%   <<"Status">> => list(any())
+%% }
+-type space_details() :: #{binary() => any()}.
+
+%% Example:
+%% space_idle_settings() :: #{
+%%   <<"IdleTimeoutInMinutes">> => integer()
+%% }
+-type space_idle_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_jupyter_lab_app_settings() :: #{
+%%   <<"AppLifecycleManagement">> => space_app_lifecycle_management(),
+%%   <<"CodeRepositories">> => list(code_repository()),
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type space_jupyter_lab_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_settings() :: #{
+%%   <<"AppType">> => list(any()),
+%%   <<"CodeEditorAppSettings">> => space_code_editor_app_settings(),
+%%   <<"CustomFileSystems">> => list(list()),
+%%   <<"JupyterLabAppSettings">> => space_jupyter_lab_app_settings(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"RemoteAccess">> => list(any()),
+%%   <<"SpaceManagedResources">> => list(any()),
+%%   <<"SpaceStorageSettings">> => space_storage_settings()
+%% }
+-type space_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_settings_summary() :: #{
+%%   <<"AppType">> => list(any()),
+%%   <<"RemoteAccess">> => list(any()),
+%%   <<"SpaceStorageSettings">> => space_storage_settings()
+%% }
+-type space_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% space_sharing_settings() :: #{
+%%   <<"SharingType">> => list(any())
+%% }
+-type space_sharing_settings() :: #{binary() => any()}.
+
+%% Example:
+%% space_sharing_settings_summary() :: #{
+%%   <<"SharingType">> => list(any())
+%% }
+-type space_sharing_settings_summary() :: #{binary() => any()}.
+
+%% Example:
+%% space_storage_settings() :: #{
+%%   <<"EbsStorageSettings">> => ebs_storage_settings()
+%% }
+-type space_storage_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stairs() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"NumberOfSteps">> => integer(),
+%%   <<"UsersPerStep">> => integer()
+%% }
+-type stairs() :: #{binary() => any()}.
+
+%% Example:
+%% start_cluster_health_check_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"DeepHealthCheckConfigurations">> := list(instance_group_health_check_configuration())
+%% }
+-type start_cluster_health_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_cluster_health_check_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type start_cluster_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type start_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_experiment_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type start_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type start_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type start_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type start_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type start_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"MlflowExperimentName">> => string(),
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"PipelineParameters">> => list(parameter()),
+%%   <<"PipelineVersionId">> => float(),
+%%   <<"SelectiveExecutionConfig">> => selective_execution_config()
+%% }
+-type start_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type start_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_request() :: #{
+%%   <<"ResourceIdentifier">> := string()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type start_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_benchmark_job_request() :: #{
+%%   <<"AIBenchmarkJobName">> := string()
+%% }
+-type stop_a_i_benchmark_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_benchmark_job_response() :: #{
+%%   <<"AIBenchmarkJobArn">> => string()
+%% }
+-type stop_a_i_benchmark_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_recommendation_job_request() :: #{
+%%   <<"AIRecommendationJobName">> := string()
+%% }
+-type stop_a_i_recommendation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_a_i_recommendation_job_response() :: #{
+%%   <<"AIRecommendationJobArn">> => string()
+%% }
+-type stop_a_i_recommendation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_auto_ml_job_request() :: #{
+%%   <<"AutoMLJobName">> := string()
+%% }
+-type stop_auto_ml_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_compilation_job_request() :: #{
+%%   <<"CompilationJobName">> := string()
+%% }
+-type stop_compilation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_edge_deployment_stage_request() :: #{
+%%   <<"EdgeDeploymentPlanName">> := string(),
+%%   <<"StageName">> := string()
+%% }
+-type stop_edge_deployment_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_edge_packaging_job_request() :: #{
+%%   <<"EdgePackagingJobName">> := string()
+%% }
+-type stop_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_hyper_parameter_tuning_job_request() :: #{
+%%   <<"HyperParameterTuningJobName">> := string()
+%% }
+-type stop_hyper_parameter_tuning_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_experiment_request() :: #{
+%%   <<"DesiredModelVariants">> => list(model_variant_config()),
+%%   <<"DesiredState">> => list(any()),
+%%   <<"ModelVariantActions">> := map(),
+%%   <<"Name">> := string(),
+%%   <<"Reason">> => string()
+%% }
+-type stop_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type stop_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_inference_recommendations_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type stop_inference_recommendations_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_request() :: #{
+%%   <<"JobCategory">> := list(any()),
+%%   <<"JobName">> := string()
+%% }
+-type stop_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_response() :: #{
+
+%% }
+-type stop_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_labeling_job_request() :: #{
+%%   <<"LabelingJobName">> := string()
+%% }
+-type stop_labeling_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_mlflow_tracking_server_request() :: #{
+%%   <<"TrackingServerName">> := string()
+%% }
+-type stop_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type stop_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type stop_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_notebook_instance_input() :: #{
+%%   <<"NotebookInstanceName">> := string()
+%% }
+-type stop_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_optimization_job_request() :: #{
+%%   <<"OptimizationJobName">> := string()
+%% }
+-type stop_optimization_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"PipelineExecutionArn">> := string()
+%% }
+-type stop_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type stop_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
+%% }
+-type stop_processing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type stop_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_transform_job_request() :: #{
+%%   <<"TransformJobName">> := string()
+%% }
+-type stop_transform_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stopping_condition() :: #{
+%%   <<"MaxPendingTimeInSeconds">> => integer(),
+%%   <<"MaxRuntimeInSeconds">> => integer(),
+%%   <<"MaxWaitTimeInSeconds">> => integer()
+%% }
+-type stopping_condition() :: #{binary() => any()}.
+
+%% Example:
+%% studio_lifecycle_config_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StudioLifecycleConfigAppType">> => list(any()),
+%%   <<"StudioLifecycleConfigArn">> => string(),
+%%   <<"StudioLifecycleConfigName">> => string()
+%% }
+-type studio_lifecycle_config_details() :: #{binary() => any()}.
+
+%% Example:
+%% studio_web_portal_settings() :: #{
+%%   <<"ExecutionRoleSessionNameMode">> => list(any()),
+%%   <<"HiddenAppTypes">> => list(list(any())()),
+%%   <<"HiddenInstanceTypes">> => list(list(any())()),
+%%   <<"HiddenMlTools">> => list(list(any())()),
+%%   <<"HiddenSageMakerImageVersionAliases">> => list(hidden_sage_maker_image())
+%% }
+-type studio_web_portal_settings() :: #{binary() => any()}.
+
+%% Example:
+%% subscribed_workteam() :: #{
+%%   <<"ListingId">> => string(),
+%%   <<"MarketplaceDescription">> => string(),
+%%   <<"MarketplaceTitle">> => string(),
+%%   <<"SellerName">> => string(),
+%%   <<"WorkteamArn">> => string()
+%% }
+-type subscribed_workteam() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion_query() :: #{
+%%   <<"PropertyNameQuery">> => property_name_query()
+%% }
+-type suggestion_query() :: #{binary() => any()}.
+
+%% Example:
+%% tabular_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"FeatureSpecificationS3Uri">> => string(),
+%%   <<"GenerateCandidateDefinitionsOnly">> => boolean(),
+%%   <<"Mode">> => list(any()),
+%%   <<"ProblemType">> => list(any()),
+%%   <<"SampleWeightAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string()
+%% }
+-type tabular_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% tabular_resolved_attributes() :: #{
+%%   <<"ProblemType">> => list(any())
+%% }
+-type tabular_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% target_platform() :: #{
+%%   <<"Accelerator">> => list(any()),
+%%   <<"Arch">> => list(any()),
+%%   <<"Os">> => list(any())
+%% }
+-type target_platform() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_scaling_policy_configuration() :: #{
+%%   <<"MetricSpecification">> => list(),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% template_provider_detail() :: #{
+%%   <<"CfnTemplateProviderDetail">> => cfn_template_provider_detail()
+%% }
+-type template_provider_detail() :: #{binary() => any()}.
+
+%% Example:
+%% tensor_board_app_settings() :: #{
+%%   <<"DefaultResourceSpec">> => resource_spec()
+%% }
+-type tensor_board_app_settings() :: #{binary() => any()}.
+
+%% Example:
+%% tensor_board_output_config() :: #{
+%%   <<"LocalPath">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type tensor_board_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% text_classification_job_config() :: #{
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ContentColumn">> => string(),
+%%   <<"TargetLabelColumn">> => string()
+%% }
+-type text_classification_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% text_generation_job_config() :: #{
+%%   <<"BaseModelName">> => string(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"ModelAccessConfig">> => model_access_config(),
+%%   <<"TextGenerationHyperParameters">> => map()
+%% }
+-type text_generation_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% text_generation_resolved_attributes() :: #{
+%%   <<"BaseModelName">> => string()
+%% }
+-type text_generation_resolved_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config_description() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config_description() :: #{binary() => any()}.
+
+%% Example:
+%% throughput_config_update() :: #{
+%%   <<"ProvisionedReadCapacityUnits">> => integer(),
+%%   <<"ProvisionedWriteCapacityUnits">> => integer(),
+%%   <<"ThroughputMode">> => list(any())
+%% }
+-type throughput_config_update() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_config() :: #{
+%%   <<"GroupingAttributeNames">> => list(string()),
+%%   <<"ItemIdentifierAttributeName">> => string(),
+%%   <<"TargetAttributeName">> => string(),
+%%   <<"TimestampAttributeName">> => string()
+%% }
+-type time_series_config() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_forecasting_job_config() :: #{
+%%   <<"CandidateGenerationConfig">> => candidate_generation_config(),
+%%   <<"CompletionCriteria">> => auto_ml_job_completion_criteria(),
+%%   <<"FeatureSpecificationS3Uri">> => string(),
+%%   <<"ForecastFrequency">> => string(),
+%%   <<"ForecastHorizon">> => integer(),
+%%   <<"ForecastQuantiles">> => list(string()),
+%%   <<"HolidayConfig">> => list(holiday_config_attributes()),
+%%   <<"TimeSeriesConfig">> => time_series_config(),
+%%   <<"Transformations">> => time_series_transformations()
+%% }
+-type time_series_forecasting_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_forecasting_settings() :: #{
+%%   <<"AmazonForecastRoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type time_series_forecasting_settings() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_transformations() :: #{
+%%   <<"Aggregation">> => map(),
+%%   <<"Filling">> => map()
+%% }
+-type time_series_transformations() :: #{binary() => any()}.
+
+%% Example:
+%% total_hits() :: #{
+%%   <<"Relation">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type total_hits() :: #{binary() => any()}.
+
+%% Example:
+%% tracking_server_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IsActive">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MlflowVersion">> => string(),
+%%   <<"TrackingServerArn">> => string(),
+%%   <<"TrackingServerName">> => string(),
+%%   <<"TrackingServerStatus">> => list(any())
+%% }
+-type tracking_server_summary() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_pattern() :: #{
+%%   <<"Phases">> => list(phase()),
+%%   <<"Stairs">> => stairs(),
+%%   <<"TrafficType">> => list(any())
+%% }
+-type traffic_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_routing_config() :: #{
+%%   <<"CanarySize">> => capacity_size(),
+%%   <<"LinearStepSize">> => capacity_size(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitIntervalInSeconds">> => integer()
+%% }
+-type traffic_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_image_config() :: #{
+%%   <<"TrainingRepositoryAccessMode">> => list(any()),
+%%   <<"TrainingRepositoryAuthConfig">> => training_repository_auth_config()
+%% }
+-type training_image_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_job() :: #{
+%%   <<"AlgorithmSpecification">> => algorithm_specification(),
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BillableTimeInSeconds">> => integer(),
+%%   <<"CheckpointConfig">> => checkpoint_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DebugHookConfig">> => debug_hook_config(),
+%%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
+%%   <<"DebugRuleEvaluationStatuses">> => list(debug_rule_evaluation_status()),
+%%   <<"EnableInterContainerTrafficEncryption">> => boolean(),
+%%   <<"EnableManagedSpotTraining">> => boolean(),
+%%   <<"EnableNetworkIsolation">> => boolean(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"FinalMetricDataList">> => list(metric_data()),
+%%   <<"HyperParameters">> => map(),
+%%   <<"InputDataConfig">> => list(channel()),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelArtifacts">> => model_artifacts(),
+%%   <<"ModelPackageConfig">> => model_package_config(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"OutputModelPackageArn">> => string(),
+%%   <<"ProfilerConfig">> => profiler_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"RetryStrategy">> => retry_strategy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"SecondaryStatusTransitions">> => list(secondary_status_transition()),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TensorBoardOutputConfig">> => tensor_board_output_config(),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingStartTime">> => non_neg_integer(),
+%%   <<"TrainingTimeInSeconds">> => integer(),
+%%   <<"TuningJobArn">> => string(),
+%%   <<"VpcConfig">> => vpc_config(),
+%%   <<"WarmPoolStatus">> => warm_pool_status()
+%% }
+-type training_job() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_definition() :: #{
+%%   <<"HyperParameters">> => map(),
+%%   <<"InputDataConfig">> => list(channel()),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"StoppingCondition">> => stopping_condition(),
+%%   <<"TrainingInputMode">> => list(any())
+%% }
+-type training_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_status_counters() :: #{
+%%   <<"Completed">> => integer(),
+%%   <<"InProgress">> => integer(),
+%%   <<"NonRetryableError">> => integer(),
+%%   <<"RetryableError">> => integer(),
+%%   <<"Stopped">> => integer()
+%% }
+-type training_job_status_counters() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type training_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% training_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SecondaryStatus">> => list(any()),
+%%   <<"TrainingEndTime">> => non_neg_integer(),
+%%   <<"TrainingJobArn">> => string(),
+%%   <<"TrainingJobName">> => string(),
+%%   <<"TrainingJobStatus">> => list(any()),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"WarmPoolStatus">> => warm_pool_status()
+%% }
+-type training_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_extension() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"ExtendedAt">> => non_neg_integer(),
+%%   <<"PaymentStatus">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"TrainingPlanExtensionOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_extension() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_extension_offering() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"TrainingPlanExtensionOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_extension_offering() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type training_plan_filter() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"RequestedEndTimeBefore">> => non_neg_integer(),
+%%   <<"RequestedStartTimeAfter">> => non_neg_integer(),
+%%   <<"ReservedCapacityOfferings">> => list(reserved_capacity_offering()),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TrainingPlanOfferingId">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_offering() :: #{binary() => any()}.
+
+%% Example:
+%% training_plan_summary() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"ReservedCapacitySummaries">> => list(reserved_capacity_summary()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetResources">> => list(list(any())()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"TotalUltraServerCount">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanName">> => string(),
+%%   <<"UpfrontFee">> => string()
+%% }
+-type training_plan_summary() :: #{binary() => any()}.
+
+%% Example:
+%% training_progress_info() :: #{
+%%   <<"CurrentEpoch">> => float(),
+%%   <<"CurrentStep">> => float(),
+%%   <<"MaxEpoch">> => float(),
+%%   <<"TotalStepCountPerEpoch">> => float()
+%% }
+-type training_progress_info() :: #{binary() => any()}.
+
+%% Example:
+%% training_repository_auth_config() :: #{
+%%   <<"TrainingRepositoryCredentialsProviderArn">> => string()
+%% }
+-type training_repository_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_specification() :: #{
+%%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
+%%   <<"MetricDefinitions">> => list(metric_definition()),
+%%   <<"SupportedHyperParameters">> => list(hyper_parameter_specification()),
+%%   <<"SupportedTrainingInstanceTypes">> => list(list(any())()),
+%%   <<"SupportedTuningJobObjectiveMetrics">> => list(hyper_parameter_tuning_job_objective()),
+%%   <<"SupportsDistributedTraining">> => boolean(),
+%%   <<"TrainingChannels">> => list(channel_specification()),
+%%   <<"TrainingImage">> => string(),
+%%   <<"TrainingImageDigest">> => string()
+%% }
+-type training_specification() :: #{binary() => any()}.
+
+%% Example:
+%% transform_data_source() :: #{
+%%   <<"S3DataSource">> => transform_s3_data_source()
+%% }
+-type transform_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% transform_input() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ContentType">> => string(),
+%%   <<"DataSource">> => transform_data_source(),
+%%   <<"SplitType">> => list(any())
+%% }
+-type transform_input() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job() :: #{
+%%   <<"AutoMLJobArn">> => string(),
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataCaptureConfig">> => batch_data_capture_config(),
+%%   <<"DataProcessing">> => data_processing(),
+%%   <<"Environment">> => map(),
+%%   <<"ExperimentConfig">> => experiment_config(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LabelingJobArn">> => string(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"ModelClientConfig">> => model_client_config(),
+%%   <<"ModelName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any()),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources(),
+%%   <<"TransformStartTime">> => non_neg_integer()
+%% }
+-type transform_job() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_definition() :: #{
+%%   <<"BatchStrategy">> => list(any()),
+%%   <<"Environment">> => map(),
+%%   <<"MaxConcurrentTransforms">> => integer(),
+%%   <<"MaxPayloadInMB">> => integer(),
+%%   <<"TransformInput">> => transform_input(),
+%%   <<"TransformOutput">> => transform_output(),
+%%   <<"TransformResources">> => transform_resources()
+%% }
+-type transform_job_definition() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_step_metadata() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type transform_job_step_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% transform_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TransformEndTime">> => non_neg_integer(),
+%%   <<"TransformJobArn">> => string(),
+%%   <<"TransformJobName">> => string(),
+%%   <<"TransformJobStatus">> => list(any())
+%% }
+-type transform_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% transform_output() :: #{
+%%   <<"Accept">> => string(),
+%%   <<"AssembleWith">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type transform_output() :: #{binary() => any()}.
+
+%% Example:
+%% transform_resources() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"TransformAmiVersion">> => string(),
+%%   <<"VolumeKmsKeyId">> => string()
+%% }
+-type transform_resources() :: #{binary() => any()}.
+
+%% Example:
+%% transform_s3_data_source() :: #{
+%%   <<"S3DataType">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type transform_s3_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% trial() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Source">> => trial_source(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialComponentSummaries">> => list(trial_component_simple_summary()),
+%%   <<"TrialName">> => string()
+%% }
+-type trial() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LineageGroupArn">> => string(),
+%%   <<"MetadataProperties">> => metadata_properties(),
+%%   <<"Metrics">> => list(trial_component_metric_summary()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"Parents">> => list(parent()),
+%%   <<"RunName">> => string(),
+%%   <<"Source">> => trial_component_source(),
+%%   <<"SourceDetail">> => trial_component_source_detail(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string()
+%% }
+-type trial_component() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_artifact() :: #{
+%%   <<"MediaType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type trial_component_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_metric_summary() :: #{
+%%   <<"Avg">> => float(),
+%%   <<"Count">> => integer(),
+%%   <<"Last">> => float(),
+%%   <<"Max">> => float(),
+%%   <<"MetricName">> => string(),
+%%   <<"Min">> => float(),
+%%   <<"SourceArn">> => string(),
+%%   <<"StdDev">> => float(),
+%%   <<"TimeStamp">> => non_neg_integer()
+%% }
+-type trial_component_metric_summary() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_simple_summary() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string(),
+%%   <<"TrialComponentSource">> => trial_component_source()
+%% }
+-type trial_component_simple_summary() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type trial_component_source() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_source_detail() :: #{
+%%   <<"ProcessingJob">> => processing_job(),
+%%   <<"SourceArn">> => string(),
+%%   <<"TrainingJob">> => training_job(),
+%%   <<"TransformJob">> => transform_job()
+%% }
+-type trial_component_source_detail() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_status() :: #{
+%%   <<"Message">> => string(),
+%%   <<"PrimaryStatus">> => list(any())
+%% }
+-type trial_component_status() :: #{binary() => any()}.
+
+%% Example:
+%% trial_component_summary() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentArn">> => string(),
+%%   <<"TrialComponentName">> => string(),
+%%   <<"TrialComponentSource">> => trial_component_source()
+%% }
+-type trial_component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% trial_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => string()
+%% }
+-type trial_source() :: #{binary() => any()}.
+
+%% Example:
+%% trial_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrialArn">> => string(),
+%%   <<"TrialName">> => string(),
+%%   <<"TrialSource">> => trial_source()
+%% }
+-type trial_summary() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_identity_propagation_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type trusted_identity_propagation_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ttl_duration() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type ttl_duration() :: #{binary() => any()}.
+
+%% Example:
+%% tuning_job_completion_criteria() :: #{
+%%   <<"BestObjectiveNotImproving">> => best_objective_not_improving(),
+%%   <<"ConvergenceDetected">> => convergence_detected(),
+%%   <<"TargetObjectiveMetricValue">> => float()
+%% }
+-type tuning_job_completion_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% tuning_job_step_meta_data() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type tuning_job_step_meta_data() :: #{binary() => any()}.
+
+%% Example:
+%% u_s_d() :: #{
+%%   <<"Cents">> => integer(),
+%%   <<"Dollars">> => integer(),
+%%   <<"TenthFractionsOfACent">> => integer()
+%% }
+-type u_s_d() :: #{binary() => any()}.
+
+%% Example:
+%% ui_config() :: #{
+%%   <<"HumanTaskUiArn">> => string(),
+%%   <<"UiTemplateS3Uri">> => string()
+%% }
+-type ui_config() :: #{binary() => any()}.
+
+%% Example:
+%% ui_template() :: #{
+%%   <<"Content">> => string()
+%% }
+-type ui_template() :: #{binary() => any()}.
+
+%% Example:
+%% ui_template_info() :: #{
+%%   <<"ContentSha256">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type ui_template_info() :: #{binary() => any()}.
+
+%% Example:
+%% ultra_server() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"AvailableSpareInstanceCount">> => integer(),
+%%   <<"ConfiguredSpareInstanceCount">> => integer(),
+%%   <<"HealthStatus">> => list(any()),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerId">> => string(),
+%%   <<"UltraServerType">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer()
+%% }
+-type ultra_server() :: #{binary() => any()}.
+
+%% Example:
+%% ultra_server_info() :: #{
+%%   <<"Id">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type ultra_server_info() :: #{binary() => any()}.
+
+%% Example:
+%% ultra_server_summary() :: #{
+%%   <<"AvailableSpareInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer()
+%% }
+-type ultra_server_summary() :: #{binary() => any()}.
+
+%% Example:
+%% unified_studio_settings() :: #{
+%%   <<"DomainAccountId">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"DomainRegion">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"ProjectId">> => string(),
+%%   <<"ProjectS3Path">> => string(),
+%%   <<"SingleSignOnApplicationArn">> => string(),
+%%   <<"StudioWebPortalAccess">> => list(any())
+%% }
+-type unified_studio_settings() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_action_response() :: #{
+%%   <<"ActionArn">> => string()
+%% }
+-type update_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_image_config_request() :: #{
+%%   <<"AppImageConfigName">> := string(),
+%%   <<"CodeEditorAppImageConfig">> => code_editor_app_image_config(),
+%%   <<"JupyterLabAppImageConfig">> => jupyter_lab_app_image_config(),
+%%   <<"KernelGatewayImageConfig">> => kernel_gateway_image_config()
+%% }
+-type update_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_image_config_response() :: #{
+%%   <<"AppImageConfigArn">> => string()
+%% }
+-type update_app_image_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_artifact_request() :: #{
+%%   <<"ArtifactArn">> := string(),
+%%   <<"ArtifactName">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string())
+%% }
+-type update_artifact_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_artifact_response() :: #{
+%%   <<"ArtifactArn">> => string()
+%% }
+-type update_artifact_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
+%%   <<"ClusterName">> := string(),
+%%   <<"ClusterRole">> => string(),
+%%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
+%%   <<"InstanceGroupsToDelete">> => list(string()),
+%%   <<"NodeProvisioningMode">> => list(any()),
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"Orchestrator">> => cluster_orchestrator(),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
+%%   <<"RestrictedInstanceGroupsConfig">> => cluster_restricted_instance_groups_config(),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_scheduler_config_request() :: #{
+%%   <<"ClusterSchedulerConfigId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"SchedulerConfig">> => scheduler_config(),
+%%   <<"TargetVersion">> := integer()
+%% }
+-type update_cluster_scheduler_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_scheduler_config_response() :: #{
+%%   <<"ClusterSchedulerConfigArn">> => string(),
+%%   <<"ClusterSchedulerConfigVersion">> => integer()
+%% }
+-type update_cluster_scheduler_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_instance_group_specification() :: #{
+%%   <<"ImageReleaseVersion">> => string(),
+%%   <<"InstanceGroupName">> => string()
+%% }
+-type update_cluster_software_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceGroups">> => list(update_cluster_software_instance_group_specification())
+%% }
+-type update_cluster_software_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_software_response() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type update_cluster_software_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_code_repository_input() :: #{
+%%   <<"CodeRepositoryName">> := string(),
+%%   <<"GitConfig">> => git_config_for_update()
+%% }
+-type update_code_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_code_repository_output() :: #{
+%%   <<"CodeRepositoryArn">> => string()
+%% }
+-type update_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_quota_request() :: #{
+%%   <<"ActivationState">> => list(any()),
+%%   <<"ComputeQuotaConfig">> => compute_quota_config(),
+%%   <<"ComputeQuotaId">> := string(),
+%%   <<"ComputeQuotaTarget">> => compute_quota_target(),
+%%   <<"Description">> => string(),
+%%   <<"TargetVersion">> := integer()
+%% }
+-type update_compute_quota_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_quota_response() :: #{
+%%   <<"ComputeQuotaArn">> => string(),
+%%   <<"ComputeQuotaVersion">> => integer()
+%% }
+-type update_compute_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_context_request() :: #{
+%%   <<"ContextName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => map(),
+%%   <<"PropertiesToRemove">> => list(string())
+%% }
+-type update_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_context_response() :: #{
+%%   <<"ContextArn">> => string()
+%% }
+-type update_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_fleet_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"EnableIotRoleAlias">> => boolean(),
+%%   <<"OutputConfig">> := edge_output_config(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_device_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_devices_request() :: #{
+%%   <<"DeviceFleetName">> := string(),
+%%   <<"Devices">> := list(device())
+%% }
+-type update_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_request() :: #{
+%%   <<"AppNetworkAccessType">> => list(any()),
+%%   <<"AppSecurityGroupManagement">> => list(any()),
+%%   <<"DefaultSpaceSettings">> => default_space_settings(),
+%%   <<"DefaultUserSettings">> => user_settings(),
+%%   <<"DomainId">> := string(),
+%%   <<"DomainSettingsForUpdate">> => domain_settings_for_update(),
+%%   <<"HomeEfsFileSystemCreation">> => list(any()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"TagPropagation">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type update_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_response() :: #{
+%%   <<"DomainArn">> => string()
+%% }
+-type update_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_input() :: #{
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"EndpointConfigName">> := string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"ExcludeRetainedVariantProperties">> => list(variant_property()),
+%%   <<"RetainAllVariantProperties">> => boolean(),
+%%   <<"RetainDeploymentConfig">> => boolean()
+%% }
+-type update_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type update_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_weights_and_capacities_input() :: #{
+%%   <<"DesiredWeightsAndCapacities">> := list(desired_weight_and_capacity()),
+%%   <<"EndpointName">> := string()
+%% }
+-type update_endpoint_weights_and_capacities_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_weights_and_capacities_output() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type update_endpoint_weights_and_capacities_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_experiment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ExperimentName">> := string()
+%% }
+-type update_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_experiment_response() :: #{
+%%   <<"ExperimentArn">> => string()
+%% }
+-type update_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_group_request() :: #{
+%%   <<"FeatureAdditions">> => list(feature_definition()),
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"OnlineStoreConfig">> => online_store_config_update(),
+%%   <<"ThroughputConfig">> => throughput_config_update()
+%% }
+-type update_feature_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_group_response() :: #{
+%%   <<"FeatureGroupArn">> => string()
+%% }
+-type update_feature_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_feature_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FeatureGroupName">> := string(),
+%%   <<"FeatureName">> := string(),
+%%   <<"ParameterAdditions">> => list(feature_parameter()),
+%%   <<"ParameterRemovals">> => list(string())
+%% }
+-type update_feature_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_content_reference_request() :: #{
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubName">> := string(),
+%%   <<"MinVersion">> => string()
+%% }
+-type update_hub_content_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_content_reference_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type update_hub_content_reference_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_content_request() :: #{
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> := string(),
+%%   <<"HubContentSearchKeywords">> => list(string()),
+%%   <<"HubContentType">> := list(any()),
+%%   <<"HubContentVersion">> := string(),
+%%   <<"HubName">> := string(),
+%%   <<"SupportStatus">> => list(any())
+%% }
+-type update_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_content_response() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type update_hub_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_request() :: #{
+%%   <<"HubDescription">> => string(),
+%%   <<"HubDisplayName">> => string(),
+%%   <<"HubName">> := string(),
+%%   <<"HubSearchKeywords">> => list(string())
+%% }
+-type update_hub_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hub_response() :: #{
+%%   <<"HubArn">> => string()
+%% }
+-type update_hub_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_request() :: #{
+%%   <<"DeleteProperties">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"ImageName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_response() :: #{
+%%   <<"ImageArn">> => string()
+%% }
+-type update_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_version_request() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"AliasesToAdd">> => list(string()),
+%%   <<"AliasesToDelete">> => list(string()),
+%%   <<"Horovod">> => boolean(),
+%%   <<"ImageName">> := string(),
+%%   <<"JobType">> => list(any()),
+%%   <<"MLFramework">> => string(),
+%%   <<"Processor">> => list(any()),
+%%   <<"ProgrammingLang">> => string(),
+%%   <<"ReleaseNotes">> => string(),
+%%   <<"VendorGuidance">> => list(any()),
+%%   <<"Version">> => integer()
+%% }
+-type update_image_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_version_response() :: #{
+%%   <<"ImageVersionArn">> => string()
+%% }
+-type update_image_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_input() :: #{
+%%   <<"DeploymentConfig">> => inference_component_deployment_config(),
+%%   <<"InferenceComponentName">> := string(),
+%%   <<"RuntimeConfig">> => inference_component_runtime_config(),
+%%   <<"Specification">> => inference_component_specification(),
+%%   <<"Specifications">> => list(inference_component_specification())
+%% }
+-type update_inference_component_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type update_inference_component_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_runtime_config_input() :: #{
+%%   <<"DesiredRuntimeConfig">> := inference_component_runtime_config(),
+%%   <<"InferenceComponentName">> := string()
+%% }
+-type update_inference_component_runtime_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_component_runtime_config_output() :: #{
+%%   <<"InferenceComponentArn">> => string()
+%% }
+-type update_inference_component_runtime_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_experiment_request() :: #{
+%%   <<"DataStorageConfig">> => inference_experiment_data_storage_config(),
+%%   <<"Description">> => string(),
+%%   <<"ModelVariants">> => list(model_variant_config()),
+%%   <<"Name">> := string(),
+%%   <<"Schedule">> => inference_experiment_schedule(),
+%%   <<"ShadowModeConfig">> => shadow_mode_config()
+%% }
+-type update_inference_experiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_experiment_response() :: #{
+%%   <<"InferenceExperimentArn">> => string()
+%% }
+-type update_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_app_request() :: #{
+%%   <<"AccountDefaultStatus">> => list(any()),
+%%   <<"Arn">> := string(),
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"ModelRegistrationMode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type update_mlflow_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type update_mlflow_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_tracking_server_request() :: #{
+%%   <<"ArtifactStoreUri">> => string(),
+%%   <<"AutomaticModelRegistration">> => boolean(),
+%%   <<"S3BucketOwnerAccountId">> => string(),
+%%   <<"S3BucketOwnerVerification">> => boolean(),
+%%   <<"TrackingServerName">> := string(),
+%%   <<"TrackingServerSize">> => list(any()),
+%%   <<"WeeklyMaintenanceWindowStart">> => string()
+%% }
+-type update_mlflow_tracking_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_mlflow_tracking_server_response() :: #{
+%%   <<"TrackingServerArn">> => string()
+%% }
+-type update_mlflow_tracking_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_card_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ModelCardName">> := string(),
+%%   <<"ModelCardStatus">> => list(any())
+%% }
+-type update_model_card_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_card_response() :: #{
+%%   <<"ModelCardArn">> => string()
+%% }
+-type update_model_card_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_package_input() :: #{
+%%   <<"AdditionalInferenceSpecificationsToAdd">> => list(additional_inference_specification_definition()),
+%%   <<"ApprovalDescription">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CustomerMetadataProperties">> => map(),
+%%   <<"CustomerMetadataPropertiesToRemove">> => list(string()),
+%%   <<"InferenceSpecification">> => inference_specification(),
+%%   <<"ModelApprovalStatus">> => list(any()),
+%%   <<"ModelCard">> => model_package_model_card(),
+%%   <<"ModelLifeCycle">> => model_life_cycle(),
+%%   <<"ModelPackageArn">> := string(),
+%%   <<"ModelPackageRegistrationType">> => list(any()),
+%%   <<"SourceUri">> => string()
+%% }
+-type update_model_package_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_package_output() :: #{
+%%   <<"ModelPackageArn">> => string()
+%% }
+-type update_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_alert_request() :: #{
+%%   <<"DatapointsToAlert">> := integer(),
+%%   <<"EvaluationPeriod">> := integer(),
+%%   <<"MonitoringAlertName">> := string(),
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type update_monitoring_alert_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_alert_response() :: #{
+%%   <<"MonitoringAlertName">> => string(),
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type update_monitoring_alert_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_schedule_request() :: #{
+%%   <<"MonitoringScheduleConfig">> := monitoring_schedule_config(),
+%%   <<"MonitoringScheduleName">> := string()
+%% }
+-type update_monitoring_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitoring_schedule_response() :: #{
+%%   <<"MonitoringScheduleArn">> => string()
+%% }
+-type update_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_input() :: #{
+%%   <<"AcceleratorTypes">> => list(list(any())()),
+%%   <<"AdditionalCodeRepositories">> => list(string()),
+%%   <<"DefaultCodeRepository">> => string(),
+%%   <<"DisassociateAcceleratorTypes">> => boolean(),
+%%   <<"DisassociateAdditionalCodeRepositories">> => boolean(),
+%%   <<"DisassociateDefaultCodeRepository">> => boolean(),
+%%   <<"DisassociateLifecycleConfig">> => boolean(),
+%%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LifecycleConfigName">> => string(),
+%%   <<"NotebookInstanceName">> := string(),
+%%   <<"PlatformIdentifier">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RootAccess">> => list(any()),
+%%   <<"VolumeSizeInGB">> => integer()
+%% }
+-type update_notebook_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_lifecycle_config_input() :: #{
+%%   <<"NotebookInstanceLifecycleConfigName">> := string(),
+%%   <<"OnCreate">> => list(notebook_instance_lifecycle_hook()),
+%%   <<"OnStart">> => list(notebook_instance_lifecycle_hook())
+%% }
+-type update_notebook_instance_lifecycle_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_lifecycle_config_output() :: #{
+
+%% }
+-type update_notebook_instance_lifecycle_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_notebook_instance_output() :: #{
+
+%% }
+-type update_notebook_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_partner_app_request() :: #{
+%%   <<"AppVersion">> => string(),
+%%   <<"ApplicationConfig">> => partner_app_config(),
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
+%%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Tier">> => string()
+%% }
+-type update_partner_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_partner_app_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type update_partner_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_execution_request() :: #{
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineExecutionArn">> := string(),
+%%   <<"PipelineExecutionDescription">> => string(),
+%%   <<"PipelineExecutionDisplayName">> => string()
+%% }
+-type update_pipeline_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_execution_response() :: #{
+%%   <<"PipelineExecutionArn">> => string()
+%% }
+-type update_pipeline_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"ParallelismConfiguration">> => parallelism_configuration(),
+%%   <<"PipelineDefinition">> => string(),
+%%   <<"PipelineDefinitionS3Location">> => pipeline_definition_s3_location(),
+%%   <<"PipelineDescription">> => string(),
+%%   <<"PipelineDisplayName">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_version_request() :: #{
+%%   <<"PipelineArn">> := string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> := float()
+%% }
+-type update_pipeline_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pipeline_version_response() :: #{
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type update_pipeline_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_input() :: #{
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> := string(),
+%%   <<"ServiceCatalogProvisioningUpdateDetails">> => service_catalog_provisioning_update_details(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateProvidersToUpdate">> => list(update_template_provider())
+%% }
+-type update_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_output() :: #{
+%%   <<"ProjectArn">> => string()
+%% }
+-type update_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_space_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpaceDisplayName">> => string(),
+%%   <<"SpaceName">> := string(),
+%%   <<"SpaceSettings">> => space_settings()
+%% }
+-type update_space_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_space_response() :: #{
+%%   <<"SpaceArn">> => string()
+%% }
+-type update_space_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_template_provider() :: #{
+%%   <<"CfnTemplateProvider">> => cfn_update_template_provider()
+%% }
+-type update_template_provider() :: #{binary() => any()}.
+
+%% Example:
+%% update_training_job_request() :: #{
+%%   <<"ProfilerConfig">> => profiler_config_for_update(),
+%%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
+%%   <<"RemoteDebugConfig">> => remote_debug_config_for_update(),
+%%   <<"ResourceConfig">> => resource_config_for_update(),
+%%   <<"TrainingJobName">> := string()
+%% }
+-type update_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_training_job_response() :: #{
+%%   <<"TrainingJobArn">> => string()
+%% }
+-type update_training_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_component_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputArtifacts">> => map(),
+%%   <<"InputArtifactsToRemove">> => list(string()),
+%%   <<"OutputArtifacts">> => map(),
+%%   <<"OutputArtifactsToRemove">> => list(string()),
+%%   <<"Parameters">> => map(),
+%%   <<"ParametersToRemove">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => trial_component_status(),
+%%   <<"TrialComponentName">> := string()
+%% }
+-type update_trial_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_component_response() :: #{
+%%   <<"TrialComponentArn">> => string()
+%% }
+-type update_trial_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_request() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"TrialName">> := string()
+%% }
+-type update_trial_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trial_response() :: #{
+%%   <<"TrialArn">> => string()
+%% }
+-type update_trial_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"UserProfileName">> := string(),
+%%   <<"UserSettings">> => user_settings()
+%% }
+-type update_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_response() :: #{
+%%   <<"UserProfileArn">> => string()
+%% }
+-type update_user_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workforce_request() :: #{
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"OidcConfig">> => oidc_config(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"WorkforceName">> := string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_request()
+%% }
+-type update_workforce_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workforce_response() :: #{
+%%   <<"Workforce">> => workforce()
+%% }
+-type update_workforce_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workteam_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"MemberDefinitions">> => list(member_definition()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
+%%   <<"WorkteamName">> := string()
+%% }
+-type update_workteam_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workteam_response() :: #{
+%%   <<"Workteam">> => workteam()
+%% }
+-type update_workteam_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_context() :: #{
+%%   <<"DomainId">> => string(),
+%%   <<"IamIdentity">> => iam_identity(),
+%%   <<"UserProfileArn">> => string(),
+%%   <<"UserProfileName">> => string()
+%% }
+-type user_context() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile_details() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserProfileName">> => string()
+%% }
+-type user_profile_details() :: #{binary() => any()}.
+
+%% Example:
+%% user_settings() :: #{
+%%   <<"AutoMountHomeEFS">> => list(any()),
+%%   <<"CanvasAppSettings">> => canvas_app_settings(),
+%%   <<"CodeEditorAppSettings">> => code_editor_app_settings(),
+%%   <<"CustomFileSystemConfigs">> => list(list()),
+%%   <<"CustomPosixUserConfig">> => custom_posix_user_config(),
+%%   <<"DefaultLandingUri">> => string(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"JupyterLabAppSettings">> => jupyter_lab_app_settings(),
+%%   <<"JupyterServerAppSettings">> => jupyter_server_app_settings(),
+%%   <<"KernelGatewayAppSettings">> => kernel_gateway_app_settings(),
+%%   <<"RSessionAppSettings">> => r_session_app_settings(),
+%%   <<"RStudioServerProAppSettings">> => r_studio_server_pro_app_settings(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SharingSettings">> => sharing_settings(),
+%%   <<"SpaceStorageSettings">> => default_space_storage_settings(),
+%%   <<"StudioWebPortal">> => list(any()),
+%%   <<"StudioWebPortalSettings">> => studio_web_portal_settings(),
+%%   <<"TensorBoardAppSettings">> => tensor_board_app_settings()
+%% }
+-type user_settings() :: #{binary() => any()}.
+
+%% Example:
+%% variant_property() :: #{
+%%   <<"VariantPropertyType">> => list(any())
+%% }
+-type variant_property() :: #{binary() => any()}.
+
+%% Example:
+%% vector_config() :: #{
+%%   <<"Dimension">> => integer()
+%% }
+-type vector_config() :: #{binary() => any()}.
+
+%% Example:
+%% vertex() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LineageType">> => list(any()),
+%%   <<"Type">> => string()
+%% }
+-type vertex() :: #{binary() => any()}.
+
+%% Example:
+%% visibility_conditions() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type visibility_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% warm_pool_status() :: #{
+%%   <<"ResourceRetainedBillableTimeInSeconds">> => integer(),
+%%   <<"ReusedByJob">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type warm_pool_status() :: #{binary() => any()}.
+
+%% Example:
+%% worker_access_configuration() :: #{
+%%   <<"S3Presign">> => s3_presign()
+%% }
+-type worker_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% workforce() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"OidcConfig">> => oidc_config_for_response(),
+%%   <<"SourceIpConfig">> => source_ip_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubDomain">> => string(),
+%%   <<"WorkforceArn">> => string(),
+%%   <<"WorkforceName">> => string(),
+%%   <<"WorkforceVpcConfig">> => workforce_vpc_config_response()
+%% }
+-type workforce() :: #{binary() => any()}.
+
+%% Example:
+%% workforce_vpc_config_request() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type workforce_vpc_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% workforce_vpc_config_response() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type workforce_vpc_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_settings() :: #{
+%%   <<"S3ArtifactPath">> => string(),
+%%   <<"S3KmsKeyId">> => string()
+%% }
+-type workspace_settings() :: #{binary() => any()}.
+
+%% Example:
+%% workteam() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"MemberDefinitions">> => list(member_definition()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"ProductListingIds">> => list(string()),
+%%   <<"SubDomain">> => string(),
+%%   <<"WorkerAccessConfiguration">> => worker_access_configuration(),
+%%   <<"WorkforceArn">> => string(),
+%%   <<"WorkteamArn">> => string(),
+%%   <<"WorkteamName">> => string()
+%% }
+-type workteam() :: #{binary() => any()}.
 
 -type add_association_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type associate_trial_component_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type attach_cluster_node_volume_errors() ::
     resource_not_found().
 
 -type batch_add_cluster_nodes_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type batch_delete_cluster_nodes_errors() ::
     resource_not_found().
@@ -14819,14 +14846,14 @@
     resource_not_found().
 
 -type create_a_i_benchmark_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_a_i_recommendation_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_a_i_workload_config_errors() ::
     resource_limit_exceeded() | 
@@ -14915,9 +14942,9 @@
     resource_in_use().
 
 -type create_hub_content_reference_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_human_task_ui_errors() ::
     resource_limit_exceeded() | 
@@ -14932,9 +14959,9 @@
     resource_in_use().
 
 -type create_image_version_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_inference_component_errors() ::
     resource_limit_exceeded().
@@ -14948,9 +14975,9 @@
     resource_in_use().
 
 -type create_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_labeling_job_errors() ::
     resource_limit_exceeded() | 
@@ -14974,9 +15001,9 @@
     conflict_exception().
 
 -type create_model_card_export_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type create_model_explainability_job_definition_errors() ::
     resource_limit_exceeded() | 
@@ -15015,9 +15042,9 @@
     resource_not_found().
 
 -type create_pipeline_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type create_presigned_domain_url_errors() ::
     resource_not_found().
@@ -15029,9 +15056,9 @@
     resource_not_found().
 
 -type create_processing_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_project_errors() ::
     resource_limit_exceeded().
@@ -15044,23 +15071,23 @@
     resource_in_use().
 
 -type create_training_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_training_plan_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_transform_job_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type create_trial_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type create_trial_component_errors() ::
     resource_limit_exceeded().
@@ -15080,8 +15107,8 @@
     resource_not_found().
 
 -type delete_a_i_workload_config_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_action_errors() ::
     resource_not_found().
@@ -15090,8 +15117,8 @@
     conflict_exception().
 
 -type delete_app_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_app_image_config_errors() ::
     resource_not_found().
@@ -15103,8 +15130,8 @@
     resource_not_found().
 
 -type delete_cluster_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type delete_cluster_scheduler_config_errors() ::
     resource_not_found().
@@ -15125,8 +15152,8 @@
     resource_in_use().
 
 -type delete_domain_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_edge_deployment_plan_errors() ::
     resource_in_use().
@@ -15141,16 +15168,16 @@
     resource_not_found().
 
 -type delete_flow_definition_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_hub_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_hub_content_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_hub_content_reference_errors() ::
     resource_not_found().
@@ -15159,20 +15186,20 @@
     resource_not_found().
 
 -type delete_image_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_image_version_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_inference_experiment_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type delete_job_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_mlflow_app_errors() ::
     resource_not_found().
@@ -15184,8 +15211,8 @@
     resource_not_found().
 
 -type delete_model_card_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type delete_model_explainability_job_definition_errors() ::
     resource_not_found().
@@ -15206,31 +15233,31 @@
     resource_not_found().
 
 -type delete_partner_app_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type delete_pipeline_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type delete_processing_job_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_project_errors() ::
     conflict_exception().
 
 -type delete_space_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_studio_lifecycle_config_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_training_job_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_trial_errors() ::
     resource_not_found().
@@ -15239,8 +15266,8 @@
     resource_not_found().
 
 -type delete_user_profile_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type delete_workteam_errors() ::
     resource_limit_exceeded().
@@ -15429,8 +15456,8 @@
     resource_not_found().
 
 -type describe_user_profile_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type detach_cluster_node_volume_errors() ::
     resource_not_found().
@@ -15448,9 +15475,9 @@
     resource_not_found().
 
 -type import_hub_content_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type list_actions_errors() ::
     resource_not_found().
@@ -15543,33 +15570,33 @@
     resource_not_found().
 
 -type retry_pipeline_execution_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type search_training_plan_offerings_errors() ::
     resource_limit_exceeded().
 
 -type send_pipeline_execution_step_failure_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type send_pipeline_execution_step_success_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type start_cluster_health_check_errors() ::
     resource_not_found().
 
 -type start_inference_experiment_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type start_mlflow_tracking_server_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type start_monitoring_schedule_errors() ::
     resource_not_found().
@@ -15578,13 +15605,13 @@
     resource_limit_exceeded().
 
 -type start_pipeline_execution_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type start_session_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type stop_a_i_benchmark_job_errors() ::
     resource_not_found().
@@ -15602,8 +15629,8 @@
     resource_not_found().
 
 -type stop_inference_experiment_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type stop_inference_recommendations_job_errors() ::
     resource_not_found().
@@ -15615,8 +15642,8 @@
     resource_not_found().
 
 -type stop_mlflow_tracking_server_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type stop_monitoring_schedule_errors() ::
     resource_not_found().
@@ -15625,8 +15652,8 @@
     resource_not_found().
 
 -type stop_pipeline_execution_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type stop_processing_job_errors() ::
     resource_not_found().
@@ -15638,49 +15665,49 @@
     resource_not_found().
 
 -type update_action_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_app_image_config_errors() ::
     resource_not_found().
 
 -type update_artifact_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_cluster_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type update_cluster_scheduler_config_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type update_cluster_software_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_code_repository_errors() ::
     conflict_exception().
 
 -type update_compute_quota_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type update_context_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_device_fleet_errors() ::
     resource_in_use().
 
 -type update_domain_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type update_endpoint_errors() ::
     resource_limit_exceeded().
@@ -15689,12 +15716,12 @@
     resource_limit_exceeded().
 
 -type update_experiment_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_feature_group_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type update_feature_metadata_errors() ::
     resource_not_found().
@@ -15703,20 +15730,20 @@
     resource_not_found().
 
 -type update_hub_content_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type update_hub_content_reference_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type update_image_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type update_image_version_errors() ::
-    resource_in_use() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_in_use().
 
 -type update_inference_component_errors() ::
     resource_limit_exceeded().
@@ -15725,33 +15752,33 @@
     resource_limit_exceeded().
 
 -type update_inference_experiment_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_mlflow_app_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_mlflow_tracking_server_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type update_model_card_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    conflict_exception() | 
-    resource_not_found().
+    conflict_exception().
 
 -type update_model_package_errors() ::
     conflict_exception().
 
 -type update_monitoring_alert_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type update_monitoring_schedule_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type update_notebook_instance_errors() ::
     resource_limit_exceeded().
@@ -15760,45 +15787,45 @@
     resource_limit_exceeded().
 
 -type update_partner_app_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_pipeline_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_pipeline_execution_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_pipeline_version_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_project_errors() ::
     conflict_exception().
 
 -type update_space_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type update_training_job_errors() ::
-    resource_limit_exceeded() | 
-    resource_not_found().
+    resource_not_found() | 
+    resource_limit_exceeded().
 
 -type update_trial_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_trial_component_errors() ::
-    conflict_exception() | 
-    resource_not_found().
+    resource_not_found() | 
+    conflict_exception().
 
 -type update_user_profile_errors() ::
+    resource_not_found() | 
     resource_limit_exceeded() | 
-    resource_in_use() | 
-    resource_not_found().
+    resource_in_use().
 
 -type update_workforce_errors() ::
     conflict_exception().

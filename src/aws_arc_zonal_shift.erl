@@ -64,11 +64,117 @@
 
 
 %% Example:
-%% list_managed_resources_response() :: #{
-%%   <<"items">> => list(managed_resource_summary()),
-%%   <<"nextToken">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_managed_resources_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% autoshift_in_resource() :: #{
+%%   <<"appliedStatus">> => list(any()),
+%%   <<"awayFrom">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type autoshift_in_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% autoshift_summary() :: #{
+%%   <<"awayFrom">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type autoshift_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_practice_run_request() :: #{}
+-type cancel_practice_run_request() :: #{}.
+
+
+%% Example:
+%% cancel_practice_run_response() :: #{
+%%   <<"awayFrom">> => string(),
+%%   <<"comment">> => string(),
+%%   <<"expiryTime">> => non_neg_integer(),
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"zonalShiftId">> => string()
+%% }
+-type cancel_practice_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_zonal_shift_request() :: #{}
+-type cancel_zonal_shift_request() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any()),
+%%   <<"zonalShiftId">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_condition() :: #{
+%%   <<"alarmIdentifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type control_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_practice_run_configuration_request() :: #{
+%%   <<"allowedWindows">> => list(string()),
+%%   <<"blockedDates">> => list(string()),
+%%   <<"blockedWindows">> => list(string()),
+%%   <<"blockingAlarms">> => list(control_condition()),
+%%   <<"outcomeAlarms">> := list(control_condition()),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type create_practice_run_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type create_practice_run_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_practice_run_configuration_request() :: #{}
+-type delete_practice_run_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type delete_practice_run_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_autoshift_observer_notification_status_request() :: #{}
+-type get_autoshift_observer_notification_status_request() :: #{}.
+
+
+%% Example:
+%% get_autoshift_observer_notification_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_autoshift_observer_notification_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_resource_request() :: #{}
+-type get_managed_resource_request() :: #{}.
 
 
 %% Example:
@@ -85,38 +191,10 @@
 
 
 %% Example:
-%% list_zonal_shifts_response() :: #{
-%%   <<"items">> => list(zonal_shift_summary()),
-%%   <<"nextToken">> => [string()]
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_zonal_shifts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_zonal_shift_request() :: #{
-%%   <<"comment">> => string(),
-%%   <<"expiresIn">> => string()
-%% }
--type update_zonal_shift_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_practice_run_request() :: #{
-%%   <<"awayFrom">> := string(),
-%%   <<"comment">> := string(),
-%%   <<"resourceIdentifier">> := string()
-%% }
--type start_practice_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% autoshift_summary() :: #{
-%%   <<"awayFrom">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type autoshift_summary() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,25 +207,45 @@
 
 
 %% Example:
-%% zonal_shift() :: #{
-%%   <<"awayFrom">> := string(),
-%%   <<"comment">> := string(),
-%%   <<"expiryTime">> := non_neg_integer(),
-%%   <<"resourceIdentifier">> := string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"status">> := list(any()),
-%%   <<"zonalShiftId">> := string()
+%% list_autoshifts_response() :: #{
+%%   <<"items">> => list(autoshift_summary()),
+%%   <<"nextToken">> => [string()]
 %% }
--type zonal_shift() :: #{binary() => any()}.
+-type list_autoshifts_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% autoshift_in_resource() :: #{
-%%   <<"appliedStatus">> => list(any()),
-%%   <<"awayFrom">> => string(),
-%%   <<"startTime">> => non_neg_integer()
+%% list_managed_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
 %% }
--type autoshift_in_resource() :: #{binary() => any()}.
+-type list_managed_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_resources_response() :: #{
+%%   <<"items">> => list(managed_resource_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_managed_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_zonal_shifts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_zonal_shifts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_zonal_shifts_response() :: #{
+%%   <<"items">> => list(zonal_shift_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_zonal_shifts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -165,29 +263,74 @@
 
 
 %% Example:
-%% update_zonal_autoshift_configuration_request() :: #{
-%%   <<"zonalAutoshiftStatus">> := list(any())
+%% practice_run_configuration() :: #{
+%%   <<"allowedWindows">> => list(string()),
+%%   <<"blockedDates">> => list(string()),
+%%   <<"blockedWindows">> => list(string()),
+%%   <<"blockingAlarms">> => list(control_condition()),
+%%   <<"outcomeAlarms">> => list(control_condition())
 %% }
--type update_zonal_autoshift_configuration_request() :: #{binary() => any()}.
+-type practice_run_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% zonal_shift_summary() :: #{
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_practice_run_request() :: #{
+%%   <<"awayFrom">> := string(),
+%%   <<"comment">> := string(),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type start_practice_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_practice_run_response() :: #{
 %%   <<"awayFrom">> => string(),
 %%   <<"comment">> => string(),
 %%   <<"expiryTime">> => non_neg_integer(),
-%%   <<"practiceRunOutcome">> => list(any()),
 %%   <<"resourceIdentifier">> => string(),
-%%   <<"shiftType">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"zonalShiftId">> => string()
 %% }
--type zonal_shift_summary() :: #{binary() => any()}.
+-type start_practice_run_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% cancel_zonal_shift_request() :: #{}
--type cancel_zonal_shift_request() :: #{}.
+%% start_zonal_shift_request() :: #{
+%%   <<"awayFrom">> := string(),
+%%   <<"comment">> := string(),
+%%   <<"expiresIn">> := string(),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type start_zonal_shift_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_autoshift_observer_notification_status_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_autoshift_observer_notification_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_autoshift_observer_notification_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type update_autoshift_observer_notification_status_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -202,19 +345,57 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any()),
-%%   <<"zonalShiftId">> => [string()]
+%% update_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type update_practice_run_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_zonal_autoshift_configuration_request() :: #{
+%%   <<"zonalAutoshiftStatus">> := list(any())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type update_zonal_autoshift_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_zonal_autoshift_configuration_response() :: #{
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type update_zonal_autoshift_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_zonal_shift_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"expiresIn">> => string()
+%% }
+-type update_zonal_shift_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% zonal_shift() :: #{
+%%   <<"awayFrom">> := string(),
+%%   <<"comment">> := string(),
+%%   <<"expiryTime">> := non_neg_integer(),
+%%   <<"resourceIdentifier">> := string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"status">> := list(any()),
+%%   <<"zonalShiftId">> := string()
+%% }
+-type zonal_shift() :: #{binary() => any()}.
 
 
 %% Example:
@@ -233,307 +414,126 @@
 
 
 %% Example:
-%% list_zonal_shifts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()],
-%%   <<"resourceIdentifier">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_zonal_shifts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_resources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_managed_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_zonal_autoshift_configuration_response() :: #{
-%%   <<"resourceIdentifier">> => string(),
-%%   <<"zonalAutoshiftStatus">> => list(any())
-%% }
--type update_zonal_autoshift_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_condition() :: #{
-%%   <<"alarmIdentifier">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type control_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_autoshift_observer_notification_status_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type update_autoshift_observer_notification_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_practice_run_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
-%%   <<"zonalAutoshiftStatus">> => list(any())
-%% }
--type create_practice_run_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_autoshift_observer_notification_status_request() :: #{
-%%   <<"status">> := list(any())
-%% }
--type update_autoshift_observer_notification_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_practice_run_request() :: #{}
--type cancel_practice_run_request() :: #{}.
-
-
-%% Example:
-%% get_autoshift_observer_notification_status_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type get_autoshift_observer_notification_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_resource_request() :: #{}
--type get_managed_resource_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_zonal_shift_request() :: #{
-%%   <<"awayFrom">> := string(),
-%%   <<"comment">> := string(),
-%%   <<"expiresIn">> := string(),
-%%   <<"resourceIdentifier">> := string()
-%% }
--type start_zonal_shift_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_practice_run_configuration_request() :: #{}
--type delete_practice_run_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_autoshifts_response() :: #{
-%%   <<"items">> => list(autoshift_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_autoshifts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_practice_run_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
-%%   <<"zonalAutoshiftStatus">> => list(any())
-%% }
--type update_practice_run_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_practice_run_configuration_request() :: #{
-%%   <<"allowedWindows">> => list(string()),
-%%   <<"blockedDates">> => list(string()),
-%%   <<"blockedWindows">> => list(string()),
-%%   <<"blockingAlarms">> => list(control_condition()),
-%%   <<"outcomeAlarms">> := list(control_condition()),
-%%   <<"resourceIdentifier">> := string()
-%% }
--type create_practice_run_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_practice_run_response() :: #{
+%% zonal_shift_summary() :: #{
 %%   <<"awayFrom">> => string(),
 %%   <<"comment">> => string(),
 %%   <<"expiryTime">> => non_neg_integer(),
+%%   <<"practiceRunOutcome">> => list(any()),
 %%   <<"resourceIdentifier">> => string(),
+%%   <<"shiftType">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"zonalShiftId">> => string()
 %% }
--type start_practice_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_autoshift_observer_notification_status_request() :: #{}
--type get_autoshift_observer_notification_status_request() :: #{}.
-
-
-%% Example:
-%% practice_run_configuration() :: #{
-%%   <<"allowedWindows">> => list(string()),
-%%   <<"blockedDates">> => list(string()),
-%%   <<"blockedWindows">> => list(string()),
-%%   <<"blockingAlarms">> => list(control_condition()),
-%%   <<"outcomeAlarms">> => list(control_condition())
-%% }
--type practice_run_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_practice_run_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"zonalAutoshiftStatus">> => list(any())
-%% }
--type delete_practice_run_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_practice_run_response() :: #{
-%%   <<"awayFrom">> => string(),
-%%   <<"comment">> => string(),
-%%   <<"expiryTime">> => non_neg_integer(),
-%%   <<"resourceIdentifier">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"zonalShiftId">> => string()
-%% }
--type cancel_practice_run_response() :: #{binary() => any()}.
+-type zonal_shift_summary() :: #{binary() => any()}.
 
 -type cancel_practice_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_zonal_shift_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_practice_run_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_practice_run_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_autoshift_observer_notification_status_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_autoshifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_zonal_shifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_practice_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_zonal_shift_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_autoshift_observer_notification_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_practice_run_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_zonal_autoshift_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_zonal_shift_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

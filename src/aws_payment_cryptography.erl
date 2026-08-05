@@ -102,23 +102,30 @@
 
 
 %% Example:
-%% export_tr31_key_block() :: #{
-%%   <<"KeyBlockHeaders">> => key_block_headers(),
-%%   <<"WrappingKeyIdentifier">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type export_tr31_key_block() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_alias_output() :: #{
-%%   <<"Alias">> => alias()
+%% add_key_replication_regions_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"ReplicationRegions">> := list(string())
 %% }
--type get_alias_output() :: #{binary() => any()}.
+-type add_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_alias_input() :: #{
-%%   <<"AliasName">> := string()
+%% add_key_replication_regions_output() :: #{
+%%   <<"Key">> => key()
 %% }
--type get_alias_input() :: #{binary() => any()}.
+-type add_key_replication_regions_output() :: #{binary() => any()}.
+
+%% Example:
+%% alias() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type alias() :: #{binary() => any()}.
 
 %% Example:
 %% associate_mpa_team_input() :: #{
@@ -129,66 +136,139 @@
 -type associate_mpa_team_input() :: #{binary() => any()}.
 
 %% Example:
+%% associate_mpa_team_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% }
+-type associate_mpa_team_output() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_subject_type() :: #{
+%%   <<"City">> => [string()],
+%%   <<"CommonName">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"EmailAddress">> => [string()],
+%%   <<"Organization">> => [string()],
+%%   <<"OrganizationUnit">> => [string()],
+%%   <<"StateOrProvince">> => [string()]
+%% }
+-type certificate_subject_type() :: #{binary() => any()}.
+
+%% Example:
+%% cfn_key_item() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type cfn_key_item() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_input() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type create_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type create_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_input() :: #{
+%%   <<"DeriveKeyUsage">> => string(),
+%%   <<"Enabled">> => [boolean()],
+%%   <<"Exportable">> := [boolean()],
+%%   <<"KeyAttributes">> := key_attributes(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"ReplicationRegions">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type create_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_input() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type delete_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_output() :: #{
+
+%% }
+-type delete_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_input() :: #{
+%%   <<"DeleteKeyInDays">> => [integer()],
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type delete_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type delete_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_output() :: #{
+
+%% }
+-type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
 %% disable_default_key_replication_regions_input() :: #{
 %%   <<"ReplicationRegions">> := list(string())
 %% }
 -type disable_default_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
-%% key_modes_of_use() :: #{
-%%   <<"Decrypt">> => [boolean()],
-%%   <<"DeriveKey">> => [boolean()],
-%%   <<"Encrypt">> => [boolean()],
-%%   <<"Generate">> => [boolean()],
-%%   <<"NoRestrictions">> => [boolean()],
-%%   <<"Sign">> => [boolean()],
-%%   <<"Unwrap">> => [boolean()],
-%%   <<"Verify">> => [boolean()],
-%%   <<"Wrap">> => [boolean()]
+%% disable_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
 %% }
--type key_modes_of_use() :: #{binary() => any()}.
+-type disable_default_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_parameters_for_export_input() :: #{
-%%   <<"KeyMaterialType">> := string(),
-%%   <<"ReuseLastGeneratedToken">> => [boolean()],
-%%   <<"SigningKeyAlgorithm">> := string()
+%% disassociate_mpa_team_input() :: #{
+%%   <<"Action">> := string(),
+%%   <<"RequesterComment">> => string()
 %% }
--type get_parameters_for_export_input() :: #{binary() => any()}.
+-type disassociate_mpa_team_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_keys_input() :: #{
-%%   <<"KeyState">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% disassociate_mpa_team_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
 %% }
--type list_keys_input() :: #{binary() => any()}.
+-type disassociate_mpa_team_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_output() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
+%% enable_default_key_replication_regions_input() :: #{
+%%   <<"ReplicationRegions">> := list(string())
 %% }
--type get_resource_policy_output() :: #{binary() => any()}.
+-type enable_default_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
-%% key_summary() :: #{
-%%   <<"Enabled">> => [boolean()],
-%%   <<"Exportable">> => [boolean()],
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyAttributes">> => key_attributes(),
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"KeyState">> => string(),
-%%   <<"MultiRegionKeyType">> => string(),
-%%   <<"PrimaryRegion">> => string()
+%% enable_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
 %% }
--type key_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_key_usage_input() :: #{
-%%   <<"KeyIdentifier">> := string()
-%% }
--type stop_key_usage_input() :: #{binary() => any()}.
+-type enable_default_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
 %% export_as2805_key_cryptogram() :: #{
@@ -198,90 +278,11 @@
 -type export_as2805_key_cryptogram() :: #{binary() => any()}.
 
 %% Example:
-%% import_tr34_key_block() :: #{
-%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
-%%   <<"ImportToken">> => string(),
-%%   <<"KeyBlockFormat">> => string(),
-%%   <<"RandomNonce">> => string(),
-%%   <<"SigningKeyCertificate">> => string(),
-%%   <<"WrappedKeyBlock">> => string(),
-%%   <<"WrappingKeyCertificate">> => string(),
-%%   <<"WrappingKeyIdentifier">> => string()
+%% export_attributes() :: #{
+%%   <<"ExportDukptInitialKey">> => export_dukpt_initial_key(),
+%%   <<"KeyCheckValueAlgorithm">> => string()
 %% }
--type import_tr34_key_block() :: #{binary() => any()}.
-
-%% Example:
-%% import_key_input() :: #{
-%%   <<"Enabled">> => [boolean()],
-%%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"KeyMaterial">> := list(),
-%%   <<"ReplicationRegions">> => list(string()),
-%%   <<"RequesterComment">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% import_key_cryptogram() :: #{
-%%   <<"Exportable">> => [boolean()],
-%%   <<"ImportToken">> => string(),
-%%   <<"KeyAttributes">> => key_attributes(),
-%%   <<"WrappedKeyCryptogram">> => string(),
-%%   <<"WrappingSpec">> => string()
-%% }
--type import_key_cryptogram() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_for_export_output() :: #{
-%%   <<"ExportToken">> => string(),
-%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
-%%   <<"SigningKeyAlgorithm">> => string(),
-%%   <<"SigningKeyCertificate">> => string(),
-%%   <<"SigningKeyCertificateChain">> => string()
-%% }
--type get_parameters_for_export_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_output() :: #{
-%%   <<"Key">> => key()
-%% }
--type delete_key_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_key_usage_output() :: #{
-%%   <<"Key">> => key()
-%% }
--type stop_key_usage_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_aliases_output() :: #{
-%%   <<"Aliases">> => list(alias()),
-%%   <<"NextToken">> => string()
-%% }
--type list_aliases_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_output() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type put_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% restore_key_input() :: #{
-%%   <<"KeyIdentifier">> := string()
-%% }
--type restore_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_for_import_output() :: #{
-%%   <<"ImportToken">> => string(),
-%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
-%%   <<"WrappingKeyAlgorithm">> => string(),
-%%   <<"WrappingKeyCertificate">> => string(),
-%%   <<"WrappingKeyCertificateChain">> => string()
-%% }
--type get_parameters_for_import_output() :: #{binary() => any()}.
+-type export_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% export_diffie_hellman_tr31_key_block() :: #{
@@ -297,35 +298,10 @@
 -type export_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
 
 %% Example:
-%% start_key_usage_output() :: #{
-%%   <<"Key">> => key()
+%% export_dukpt_initial_key() :: #{
+%%   <<"KeySerialNumber">> => string()
 %% }
--type start_key_usage_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_mpa_team_association_input() :: #{
-%%   <<"Action">> := string()
-%% }
--type get_mpa_team_association_input() :: #{binary() => any()}.
-
-%% Example:
-%% enable_default_key_replication_regions_output() :: #{
-%%   <<"EnabledReplicationRegions">> => list(string())
-%% }
--type enable_default_key_replication_regions_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type export_dukpt_initial_key() :: #{binary() => any()}.
 
 %% Example:
 %% export_key_cryptogram() :: #{
@@ -336,231 +312,6 @@
 -type export_key_cryptogram() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_subject_type() :: #{
-%%   <<"City">> => [string()],
-%%   <<"CommonName">> => [string()],
-%%   <<"Country">> => [string()],
-%%   <<"EmailAddress">> => [string()],
-%%   <<"Organization">> => [string()],
-%%   <<"OrganizationUnit">> => [string()],
-%%   <<"StateOrProvince">> => [string()]
-%% }
--type certificate_subject_type() :: #{binary() => any()}.
-
-%% Example:
-%% wrapped_key() :: #{
-%%   <<"KeyCheckValue">> => string(),
-%%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"KeyMaterial">> => string(),
-%%   <<"WrappedKeyMaterialFormat">> => string(),
-%%   <<"WrappingKeyArn">> => string()
-%% }
--type wrapped_key() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alias_input() :: #{
-%%   <<"AliasName">> := string()
-%% }
--type delete_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% export_attributes() :: #{
-%%   <<"ExportDukptInitialKey">> => export_dukpt_initial_key(),
-%%   <<"KeyCheckValueAlgorithm">> => string()
-%% }
--type export_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_input() :: #{
-%%   <<"KeyIdentifier">> := string()
-%% }
--type get_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"ResourceId">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_key_input() :: #{
-%%   <<"DeriveKeyUsage">> => string(),
-%%   <<"Enabled">> => [boolean()],
-%%   <<"Exportable">> := [boolean()],
-%%   <<"KeyAttributes">> := key_attributes(),
-%%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"ReplicationRegions">> => list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_key_replication_regions_output() :: #{
-%%   <<"Key">> => key()
-%% }
--type add_key_replication_regions_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_input() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_key_replication_regions_input() :: #{
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"ReplicationRegions">> := list(string())
-%% }
--type add_key_replication_regions_input() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_output() :: #{
-%%   <<"Alias">> => alias()
-%% }
--type create_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% cfn_key_item() :: #{
-%%   <<"Policy">> => string()
-%% }
--type cfn_key_item() :: #{binary() => any()}.
-
-%% Example:
-%% import_tr31_key_block() :: #{
-%%   <<"WrappedKeyBlock">> => string(),
-%%   <<"WrappingKeyIdentifier">> => string()
-%% }
--type import_tr31_key_block() :: #{binary() => any()}.
-
-%% Example:
-%% update_alias_output() :: #{
-%%   <<"Alias">> => alias()
-%% }
--type update_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_certificate_signing_request_input() :: #{
-%%   <<"CertificateSubject">> := certificate_subject_type(),
-%%   <<"KeyIdentifier">> := string(),
-%%   <<"SigningAlgorithm">> := string()
-%% }
--type get_certificate_signing_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_mpa_team_input() :: #{
-%%   <<"Action">> := string(),
-%%   <<"RequesterComment">> => string()
-%% }
--type disassociate_mpa_team_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_alias_input() :: #{
-%%   <<"AliasName">> := string(),
-%%   <<"KeyArn">> => string()
-%% }
--type update_alias_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_key_replication_regions_output() :: #{
-%%   <<"EnabledReplicationRegions">> => list(string())
-%% }
--type get_default_key_replication_regions_output() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_mpa_team_association_output() :: #{
-%%   <<"MpaTeamAssociation">> => mpa_team_association()
-%% }
--type get_mpa_team_association_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_key_usage_input() :: #{
-%%   <<"KeyIdentifier">> := string()
-%% }
--type start_key_usage_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_aliases_input() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_aliases_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% key_attributes() :: #{
-%%   <<"KeyAlgorithm">> => string(),
-%%   <<"KeyClass">> => string(),
-%%   <<"KeyModesOfUse">> => key_modes_of_use(),
-%%   <<"KeyUsage">> => string()
-%% }
--type key_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_key_replication_regions_input() :: #{
-
-%% }
--type get_default_key_replication_regions_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_input() :: #{
-%%   <<"DeleteKeyInDays">> => [integer()],
-%%   <<"KeyIdentifier">> := string()
-%% }
--type delete_key_input() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% replication_status_type() :: #{
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => [string()]
-%% }
--type replication_status_type() :: #{binary() => any()}.
-
-%% Example:
 %% export_key_input() :: #{
 %%   <<"ExportAttributes">> => export_attributes(),
 %%   <<"ExportKeyIdentifier">> := string(),
@@ -569,91 +320,17 @@
 -type export_key_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_output() :: #{
-
+%% export_key_output() :: #{
+%%   <<"WrappedKey">> => wrapped_key()
 %% }
--type delete_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% mpa_status() :: #{
-%%   <<"InitiationDate">> => non_neg_integer(),
-%%   <<"MpaSessionArn">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type mpa_status() :: #{binary() => any()}.
+-type export_key_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_certificate_signing_request_output() :: #{
-%%   <<"CertificateSigningRequest">> => string()
+%% export_tr31_key_block() :: #{
+%%   <<"KeyBlockHeaders">> => key_block_headers(),
+%%   <<"WrappingKeyIdentifier">> => string()
 %% }
--type get_certificate_signing_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% import_diffie_hellman_tr31_key_block() :: #{
-%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
-%%   <<"DerivationData">> => list(),
-%%   <<"DeriveKeyAlgorithm">> => list(any()),
-%%   <<"KeyDerivationFunction">> => list(any()),
-%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
-%%   <<"PrivateKeyIdentifier">> => string(),
-%%   <<"PublicKeyCertificate">> => string(),
-%%   <<"WrappedKeyBlock">> => string()
-%% }
--type import_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
-
-%% Example:
-%% get_public_key_certificate_input() :: #{
-%%   <<"KeyIdentifier">> := string()
-%% }
--type get_public_key_certificate_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_default_key_replication_regions_output() :: #{
-%%   <<"EnabledReplicationRegions">> => list(string())
-%% }
--type disable_default_key_replication_regions_output() :: #{binary() => any()}.
-
-%% Example:
-%% alias() :: #{
-%%   <<"AliasName">> => string(),
-%%   <<"KeyArn">> => string()
-%% }
--type alias() :: #{binary() => any()}.
-
-%% Example:
-%% import_key_output() :: #{
-%%   <<"Key">> => key()
-%% }
--type import_key_output() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% mpa_team_association() :: #{
-%%   <<"Action">> => string(),
-%%   <<"AssociationState">> => string(),
-%%   <<"MpaStatus">> => mpa_status(),
-%%   <<"MpaTeamArn">> => string()
-%% }
--type mpa_team_association() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policy_input() :: #{binary() => any()}.
+-type export_tr31_key_block() :: #{binary() => any()}.
 
 %% Example:
 %% export_tr34_key_block() :: #{
@@ -669,18 +346,84 @@
 -type export_tr34_key_block() :: #{binary() => any()}.
 
 %% Example:
-%% trusted_certificate_public_key() :: #{
-%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
-%%   <<"KeyAttributes">> => key_attributes(),
-%%   <<"PublicKeyCertificate">> => string()
+%% get_alias_input() :: #{
+%%   <<"AliasName">> := string()
 %% }
--type trusted_certificate_public_key() :: #{binary() => any()}.
+-type get_alias_input() :: #{binary() => any()}.
 
 %% Example:
-%% remove_key_replication_regions_output() :: #{
+%% get_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type get_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_signing_request_input() :: #{
+%%   <<"CertificateSubject">> := certificate_subject_type(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"SigningAlgorithm">> := string()
+%% }
+-type get_certificate_signing_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_signing_request_output() :: #{
+%%   <<"CertificateSigningRequest">> => string()
+%% }
+-type get_certificate_signing_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_key_replication_regions_input() :: #{
+
+%% }
+-type get_default_key_replication_regions_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
+%% }
+-type get_default_key_replication_regions_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type get_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_output() :: #{
 %%   <<"Key">> => key()
 %% }
--type remove_key_replication_regions_output() :: #{binary() => any()}.
+-type get_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_mpa_team_association_input() :: #{
+%%   <<"Action">> := string()
+%% }
+-type get_mpa_team_association_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_mpa_team_association_output() :: #{
+%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% }
+-type get_mpa_team_association_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_export_input() :: #{
+%%   <<"KeyMaterialType">> := string(),
+%%   <<"ReuseLastGeneratedToken">> => [boolean()],
+%%   <<"SigningKeyAlgorithm">> := string()
+%% }
+-type get_parameters_for_export_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_export_output() :: #{
+%%   <<"ExportToken">> => string(),
+%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
+%%   <<"SigningKeyAlgorithm">> => string(),
+%%   <<"SigningKeyCertificate">> => string(),
+%%   <<"SigningKeyCertificateChain">> => string()
+%% }
+-type get_parameters_for_export_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_parameters_for_import_input() :: #{
@@ -691,30 +434,117 @@
 -type get_parameters_for_import_input() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
+%% get_parameters_for_import_output() :: #{
+%%   <<"ImportToken">> => string(),
+%%   <<"ParametersValidUntilTimestamp">> => non_neg_integer(),
+%%   <<"WrappingKeyAlgorithm">> => string(),
+%%   <<"WrappingKeyCertificate">> => string(),
+%%   <<"WrappingKeyCertificateChain">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type get_parameters_for_import_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% get_public_key_certificate_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type get_public_key_certificate_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_certificate_output() :: #{
+%%   <<"KeyCertificate">> => string(),
+%%   <<"KeyCertificateChain">> => string()
+%% }
+-type get_public_key_certificate_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
+-type get_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_output() :: #{
-
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
 %% }
--type untag_resource_output() :: #{binary() => any()}.
+-type get_resource_policy_output() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
+%% import_as2805_key_cryptogram() :: #{
+%%   <<"As2805KeyVariant">> => list(any()),
+%%   <<"Exportable">> => [boolean()],
+%%   <<"KeyAlgorithm">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"WrappedKeyCryptogram">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type import_as2805_key_cryptogram() :: #{binary() => any()}.
+
+%% Example:
+%% import_diffie_hellman_tr31_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"DerivationData">> => list(),
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyIdentifier">> => string(),
+%%   <<"PublicKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string()
+%% }
+-type import_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_cryptogram() :: #{
+%%   <<"Exportable">> => [boolean()],
+%%   <<"ImportToken">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"WrappedKeyCryptogram">> => string(),
+%%   <<"WrappingSpec">> => string()
+%% }
+-type import_key_cryptogram() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_input() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"KeyMaterial">> := list(),
+%%   <<"ReplicationRegions">> => list(string()),
+%%   <<"RequesterComment">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type import_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% import_tr31_key_block() :: #{
+%%   <<"WrappedKeyBlock">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type import_tr31_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% import_tr34_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"ImportToken">> => string(),
+%%   <<"KeyBlockFormat">> => string(),
+%%   <<"RandomNonce">> => string(),
+%%   <<"SigningKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string(),
+%%   <<"WrappingKeyCertificate">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type import_tr34_key_block() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% key() :: #{
@@ -741,10 +571,72 @@
 -type key() :: #{binary() => any()}.
 
 %% Example:
-%% associate_mpa_team_output() :: #{
-%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% key_attributes() :: #{
+%%   <<"KeyAlgorithm">> => string(),
+%%   <<"KeyClass">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"KeyUsage">> => string()
 %% }
--type associate_mpa_team_output() :: #{binary() => any()}.
+-type key_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% key_block_headers() :: #{
+%%   <<"KeyExportability">> => string(),
+%%   <<"KeyModesOfUse">> => key_modes_of_use(),
+%%   <<"KeyVersion">> => string(),
+%%   <<"OptionalBlocks">> => map()
+%% }
+-type key_block_headers() :: #{binary() => any()}.
+
+%% Example:
+%% key_modes_of_use() :: #{
+%%   <<"Decrypt">> => [boolean()],
+%%   <<"DeriveKey">> => [boolean()],
+%%   <<"Encrypt">> => [boolean()],
+%%   <<"Generate">> => [boolean()],
+%%   <<"NoRestrictions">> => [boolean()],
+%%   <<"Sign">> => [boolean()],
+%%   <<"Unwrap">> => [boolean()],
+%%   <<"Verify">> => [boolean()],
+%%   <<"Wrap">> => [boolean()]
+%% }
+-type key_modes_of_use() :: #{binary() => any()}.
+
+%% Example:
+%% key_summary() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"Exportable">> => [boolean()],
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"KeyState">> => string(),
+%%   <<"MultiRegionKeyType">> => string(),
+%%   <<"PrimaryRegion">> => string()
+%% }
+-type key_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_input() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_output() :: #{
+%%   <<"Aliases">> => list(alias()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_input() :: #{
+%%   <<"KeyState">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_keys_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_keys_output() :: #{
@@ -754,11 +646,57 @@
 -type list_keys_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_alias_input() :: #{
-%%   <<"AliasName">> := string(),
-%%   <<"KeyArn">> => string()
+%% list_tags_for_resource_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
 %% }
--type create_alias_input() :: #{binary() => any()}.
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% mpa_status() :: #{
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type mpa_status() :: #{binary() => any()}.
+
+%% Example:
+%% mpa_team_association() :: #{
+%%   <<"Action">> => string(),
+%%   <<"AssociationState">> => string(),
+%%   <<"MpaStatus">> => mpa_status(),
+%%   <<"MpaTeamArn">> => string()
+%% }
+-type mpa_team_association() :: #{binary() => any()}.
+
+%% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% remove_key_replication_regions_input() :: #{
@@ -768,45 +706,29 @@
 -type remove_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
-%% enable_default_key_replication_regions_input() :: #{
-%%   <<"ReplicationRegions">> := list(string())
+%% remove_key_replication_regions_output() :: #{
+%%   <<"Key">> => key()
 %% }
--type enable_default_key_replication_regions_input() :: #{binary() => any()}.
+-type remove_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
-%% public_policy_exception() :: #{
-%%   <<"Message">> => [string()]
+%% replication_status_type() :: #{
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => [string()]
 %% }
--type public_policy_exception() :: #{binary() => any()}.
+-type replication_status_type() :: #{binary() => any()}.
 
 %% Example:
-%% delete_alias_output() :: #{
-
+%% resource_not_found_exception() :: #{
+%%   <<"ResourceId">> => [string()]
 %% }
--type delete_alias_output() :: #{binary() => any()}.
-
-%% Example:
-%% export_key_output() :: #{
-%%   <<"WrappedKey">> => wrapped_key()
-%% }
--type export_key_output() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% export_dukpt_initial_key() :: #{
-%%   <<"KeySerialNumber">> => string()
+%% restore_key_input() :: #{
+%%   <<"KeyIdentifier">> := string()
 %% }
--type export_dukpt_initial_key() :: #{binary() => any()}.
-
-%% Example:
-%% import_as2805_key_cryptogram() :: #{
-%%   <<"As2805KeyVariant">> => list(any()),
-%%   <<"Exportable">> => [boolean()],
-%%   <<"KeyAlgorithm">> => string(),
-%%   <<"KeyModesOfUse">> => key_modes_of_use(),
-%%   <<"WrappedKeyCryptogram">> => string(),
-%%   <<"WrappingKeyIdentifier">> => string()
-%% }
--type import_as2805_key_cryptogram() :: #{binary() => any()}.
+-type restore_key_input() :: #{binary() => any()}.
 
 %% Example:
 %% restore_key_output() :: #{
@@ -822,332 +744,410 @@
 -type root_certificate_public_key() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_mpa_team_output() :: #{
-%%   <<"MpaTeamAssociation">> => mpa_team_association()
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type disassociate_mpa_team_output() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_key_output() :: #{
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_key_usage_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type start_key_usage_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_key_usage_output() :: #{
 %%   <<"Key">> => key()
 %% }
--type get_key_output() :: #{binary() => any()}.
+-type start_key_usage_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_key_output() :: #{
+%% stop_key_usage_input() :: #{
+%%   <<"KeyIdentifier">> := string()
+%% }
+-type stop_key_usage_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_key_usage_output() :: #{
 %%   <<"Key">> => key()
 %% }
--type create_key_output() :: #{binary() => any()}.
+-type stop_key_usage_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_public_key_certificate_output() :: #{
-%%   <<"KeyCertificate">> => string(),
-%%   <<"KeyCertificateChain">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type get_public_key_certificate_output() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% key_block_headers() :: #{
-%%   <<"KeyExportability">> => string(),
-%%   <<"KeyModesOfUse">> => key_modes_of_use(),
-%%   <<"KeyVersion">> => string(),
-%%   <<"OptionalBlocks">> => map()
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type key_block_headers() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_certificate_public_key() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"KeyAttributes">> => key_attributes(),
+%%   <<"PublicKeyCertificate">> => string()
+%% }
+-type trusted_certificate_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_input() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"KeyArn">> => string()
+%% }
+-type update_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_output() :: #{
+%%   <<"Alias">> => alias()
+%% }
+-type update_alias_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% wrapped_key() :: #{
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"KeyMaterial">> => string(),
+%%   <<"WrappedKeyMaterialFormat">> => string(),
+%%   <<"WrappingKeyArn">> => string()
+%% }
+-type wrapped_key() :: #{binary() => any()}.
 
 -type add_key_replication_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_mpa_team_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_default_key_replication_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_mpa_team_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_default_key_replication_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_certificate_signing_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_default_key_replication_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_mpa_team_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_parameters_for_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_parameters_for_import_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_public_key_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type import_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_aliases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_keys_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    public_policy_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    public_policy_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_key_replication_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type restore_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_key_usage_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_key_usage_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

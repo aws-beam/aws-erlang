@@ -240,203 +240,14 @@
 
 
 %% Example:
-%% invalid_grant_id_exception() :: #{
-%%   <<"message">> => string()
+%% alias_list_entry() :: #{
+%%   <<"AliasArn">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"TargetKeyId">> => string()
 %% }
--type invalid_grant_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias_list_entry()),
-%%   <<"NextMarker">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type list_aliases_response() :: #{binary() => any()}.
-
-%% Example:
-%% incorrect_key_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type incorrect_key_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_aliases_request() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_aliases_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_grant_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_grant_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_vpc_endpoint_service_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_vpc_endpoint_service_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% grant_constraints() :: #{
-%%   <<"EncryptionContextEquals">> => map(),
-%%   <<"EncryptionContextSubset">> => map(),
-%%   <<"SourceArn">> => string()
-%% }
--type grant_constraints() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_vpc_endpoint_service_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_vpc_endpoint_service_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_retirable_grants_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string(),
-%%   <<"RetiringPrincipal">> => string(),
-%%   <<"RetiringServicePrincipal">> => string()
-%% }
--type list_retirable_grants_request() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% dry_run_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type dry_run_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% custom_key_store_name_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_key_store_name_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% xks_key_configuration_type() :: #{
-%%   <<"Id">> => string()
-%% }
--type xks_key_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_alias_request() :: #{
-%%   <<"AliasName">> := string(),
-%%   <<"TargetKeyId">> := string()
-%% }
--type update_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_key_request() :: #{
-%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
-%%   <<"CustomKeyStoreId">> => string(),
-%%   <<"CustomerMasterKeySpec">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"KeyUsage">> => list(any()),
-%%   <<"MultiRegion">> => boolean(),
-%%   <<"Origin">> => list(any()),
-%%   <<"Policy">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"XksKeyId">> => string()
-%% }
--type create_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_key_stores_response() :: #{
-%%   <<"CustomKeyStores">> => list(custom_key_stores_list_entry()),
-%%   <<"NextMarker">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type describe_custom_key_stores_response() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_uri_endpoint_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_uri_endpoint_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rotate_key_on_demand_response() :: #{
-%%   <<"KeyId">> => string()
-%% }
--type rotate_key_on_demand_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_alias_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_alias_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_without_plaintext_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"NumberOfBytes">> => integer()
-%% }
--type generate_data_key_without_plaintext_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_request() :: #{
-%%   <<"AliasName">> := string(),
-%%   <<"TargetKeyId">> := string()
-%% }
--type create_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_key_deletion_response() :: #{
-%%   <<"DeletionDate">> => non_neg_integer(),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyState">> => list(any()),
-%%   <<"PendingWindowInDays">> => integer()
-%% }
--type schedule_key_deletion_response() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_key_deletion_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"PendingWindowInDays">> => integer()
-%% }
--type schedule_key_deletion_request() :: #{binary() => any()}.
-
-%% Example:
-%% encrypt_response() :: #{
-%%   <<"CiphertextBlob">> => binary(),
-%%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"KeyId">> => string()
-%% }
--type encrypt_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_keys_response() :: #{
-%%   <<"Keys">> => list(key_list_entry()),
-%%   <<"NextMarker">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type list_keys_response() :: #{binary() => any()}.
+-type alias_list_entry() :: #{binary() => any()}.
 
 %% Example:
 %% already_exists_exception() :: #{
@@ -445,198 +256,71 @@
 -type already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% xks_key_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_key_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% decrypt_request() :: #{
-%%   <<"CiphertextBlob">> => binary(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"DryRunModifiers">> => list(list(any())()),
-%%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> => string(),
-%%   <<"Recipient">> => recipient_info()
-%% }
--type decrypt_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_grant_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantId">> := string(),
-%%   <<"KeyId">> := string()
-%% }
--type revoke_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_imported_key_material_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string()
-%% }
--type delete_imported_key_material_response() :: #{binary() => any()}.
-
-%% Example:
-%% encrypt_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"Plaintext">> := binary()
-%% }
--type encrypt_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_grants_request() :: #{
-%%   <<"GrantId">> => string(),
-%%   <<"GranteePrincipal">> => string(),
-%%   <<"GranteeServicePrincipal">> => string(),
-%%   <<"KeyId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_grants_request() :: #{binary() => any()}.
-
-%% Example:
-%% derive_shared_secret_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyAgreementAlgorithm">> := list(any()),
-%%   <<"KeyId">> := string(),
-%%   <<"PublicKey">> := binary(),
-%%   <<"Recipient">> => recipient_info()
-%% }
--type derive_shared_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% disconnect_custom_key_store_request() :: #{
-%%   <<"CustomKeyStoreId">> := string()
-%% }
--type disconnect_custom_key_store_request() :: #{binary() => any()}.
-
-%% Example:
 %% cancel_key_deletion_request() :: #{
 %%   <<"KeyId">> := string()
 %% }
 -type cancel_key_deletion_request() :: #{binary() => any()}.
 
 %% Example:
-%% generate_random_response() :: #{
-%%   <<"CiphertextForRecipient">> => binary(),
-%%   <<"Plaintext">> => binary()
+%% cancel_key_deletion_response() :: #{
+%%   <<"KeyId">> => string()
 %% }
--type generate_random_response() :: #{binary() => any()}.
+-type cancel_key_deletion_response() :: #{binary() => any()}.
 
 %% Example:
-%% enable_key_request() :: #{
-%%   <<"KeyId">> := string()
-%% }
--type enable_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_pair_without_plaintext_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"KeyPairSpec">> := list(any())
-%% }
--type generate_data_key_pair_without_plaintext_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_key_policies_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"PolicyNames">> => list(string()),
-%%   <<"Truncated">> => boolean()
-%% }
--type list_key_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_tags_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Truncated">> => boolean()
-%% }
--type list_resource_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_key_description_request() :: #{
-%%   <<"Description">> := string(),
-%%   <<"KeyId">> := string()
-%% }
--type update_key_description_request() :: #{binary() => any()}.
-
-%% Example:
-%% dependency_timeout_exception() :: #{
+%% cloud_hsm_cluster_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type dependency_timeout_exception() :: #{binary() => any()}.
+-type cloud_hsm_cluster_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% custom_key_store_has_cm_ks_exception() :: #{
+%% cloud_hsm_cluster_invalid_configuration_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type custom_key_store_has_cm_ks_exception() :: #{binary() => any()}.
+-type cloud_hsm_cluster_invalid_configuration_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_arn_exception() :: #{
+%% cloud_hsm_cluster_not_active_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_arn_exception() :: #{binary() => any()}.
+-type cloud_hsm_cluster_not_active_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_custom_key_store_response() :: #{
-%%   <<"CustomKeyStoreId">> => string()
+%% cloud_hsm_cluster_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_custom_key_store_response() :: #{binary() => any()}.
+-type cloud_hsm_cluster_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% custom_key_stores_list_entry() :: #{
-%%   <<"CloudHsmClusterId">> => string(),
-%%   <<"ConnectionErrorCode">> => list(any()),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"CustomKeyStoreId">> => string(),
-%%   <<"CustomKeyStoreName">> => string(),
-%%   <<"CustomKeyStoreType">> => list(any()),
-%%   <<"TrustAnchorCertificate">> => string(),
-%%   <<"XksProxyConfiguration">> => xks_proxy_configuration_type()
+%% cloud_hsm_cluster_not_related_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type custom_key_stores_list_entry() :: #{binary() => any()}.
+-type cloud_hsm_cluster_not_related_exception() :: #{binary() => any()}.
 
 %% Example:
-%% key_last_usage_data() :: #{
-%%   <<"CloudTrailEventId">> => string(),
-%%   <<"KmsRequestId">> => string(),
-%%   <<"Operation">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type key_last_usage_data() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% multi_region_configuration() :: #{
-%%   <<"MultiRegionKeyType">> => list(any()),
-%%   <<"PrimaryKey">> => multi_region_key(),
-%%   <<"ReplicaKeys">> => list(multi_region_key())
+%% connect_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
 %% }
--type multi_region_configuration() :: #{binary() => any()}.
+-type connect_custom_key_store_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_key_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"PolicyName">> => string()
+%% connect_custom_key_store_response() :: #{
+
 %% }
--type get_key_policy_response() :: #{binary() => any()}.
+-type connect_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"TargetKeyId">> := string()
+%% }
+-type create_alias_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_custom_key_store_request() :: #{
@@ -655,162 +339,10 @@
 -type create_custom_key_store_request() :: #{binary() => any()}.
 
 %% Example:
-%% expired_import_token_exception() :: #{
-%%   <<"message">> => string()
+%% create_custom_key_store_response() :: #{
+%%   <<"CustomKeyStoreId">> => string()
 %% }
--type expired_import_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% retire_grant_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantId">> => string(),
-%%   <<"GrantToken">> => string(),
-%%   <<"KeyId">> => string()
-%% }
--type retire_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_key_stores_request() :: #{
-%%   <<"CustomKeyStoreId">> => string(),
-%%   <<"CustomKeyStoreName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type describe_custom_key_stores_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_keys_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_for_import_response() :: #{
-%%   <<"ImportToken">> => binary(),
-%%   <<"KeyId">> => string(),
-%%   <<"ParametersValidTo">> => non_neg_integer(),
-%%   <<"PublicKey">> => binary()
-%% }
--type get_parameters_for_import_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_pair_response() :: #{
-%%   <<"CiphertextForRecipient">> => binary(),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string(),
-%%   <<"KeyPairSpec">> => list(any()),
-%%   <<"PrivateKeyCiphertextBlob">> => binary(),
-%%   <<"PrivateKeyPlaintext">> => binary(),
-%%   <<"PublicKey">> => binary()
-%% }
--type generate_data_key_pair_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_key_request() :: #{
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string()
-%% }
--type describe_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ciphertext_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_ciphertext_exception() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_uri_unreachable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_uri_unreachable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_last_usage_response() :: #{
-%%   <<"KeyCreationDate">> => non_neg_integer(),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyLastUsage">> => key_last_usage_data(),
-%%   <<"TrackingStartDate">> => non_neg_integer()
-%% }
--type get_key_last_usage_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_grants_response() :: #{
-%%   <<"Grants">> => list(grant_list_entry()),
-%%   <<"NextMarker">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type list_grants_response() :: #{binary() => any()}.
-
-%% Example:
-%% verify_mac_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"Mac">> := binary(),
-%%   <<"MacAlgorithm">> := list(any()),
-%%   <<"Message">> := binary()
-%% }
--type verify_mac_request() :: #{binary() => any()}.
-
-%% Example:
-%% re_encrypt_request() :: #{
-%%   <<"CiphertextBlob">> => binary(),
-%%   <<"DestinationEncryptionAlgorithm">> => list(any()),
-%%   <<"DestinationEncryptionContext">> => map(),
-%%   <<"DestinationKeyId">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"DryRunModifiers">> => list(list(any())()),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"SourceEncryptionAlgorithm">> => list(any()),
-%%   <<"SourceEncryptionContext">> => map(),
-%%   <<"SourceKeyId">> => string()
-%% }
--type re_encrypt_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_uri_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_uri_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_key_store_request() :: #{
-%%   <<"CustomKeyStoreId">> := string()
-%% }
--type delete_custom_key_store_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_policy_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"PolicyName">> => string()
-%% }
--type get_key_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_rotation_status_request() :: #{
-%%   <<"KeyId">> := string()
-%% }
--type get_key_rotation_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_last_usage_request() :: #{
-%%   <<"KeyId">> := string()
-%% }
--type get_key_last_usage_request() :: #{binary() => any()}.
+-type create_custom_key_store_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_grant_request() :: #{
@@ -828,6 +360,482 @@
 -type create_grant_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_grant_response() :: #{
+%%   <<"GrantId">> => string(),
+%%   <<"GrantToken">> => string()
+%% }
+-type create_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_request() :: #{
+%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomerMasterKeySpec">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsage">> => list(any()),
+%%   <<"MultiRegion">> => boolean(),
+%%   <<"Origin">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"XksKeyId">> => string()
+%% }
+-type create_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_response() :: #{
+%%   <<"KeyMetadata">> => key_metadata()
+%% }
+-type create_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_has_cm_ks_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_has_cm_ks_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_name_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_name_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_store_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_key_store_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_key_stores_list_entry() :: #{
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"ConnectionErrorCode">> => list(any()),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomKeyStoreName">> => string(),
+%%   <<"CustomKeyStoreType">> => list(any()),
+%%   <<"TrustAnchorCertificate">> => string(),
+%%   <<"XksProxyConfiguration">> => xks_proxy_configuration_type()
+%% }
+-type custom_key_stores_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% decrypt_request() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"DryRunModifiers">> => list(list(any())()),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> => string(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type decrypt_request() :: #{binary() => any()}.
+
+%% Example:
+%% decrypt_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type decrypt_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_request() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type delete_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
+%% }
+-type delete_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_key_store_response() :: #{
+
+%% }
+-type delete_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_imported_key_material_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"KeyMaterialId">> => string()
+%% }
+-type delete_imported_key_material_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_imported_key_material_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
+%% }
+-type delete_imported_key_material_response() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% derive_shared_secret_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyAgreementAlgorithm">> := list(any()),
+%%   <<"KeyId">> := string(),
+%%   <<"PublicKey">> := binary(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type derive_shared_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% derive_shared_secret_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"KeyAgreementAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyOrigin">> => list(any()),
+%%   <<"SharedSecret">> => binary()
+%% }
+-type derive_shared_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_key_stores_request() :: #{
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"CustomKeyStoreName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_custom_key_stores_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_key_stores_response() :: #{
+%%   <<"CustomKeyStores">> => list(custom_key_stores_list_entry()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type describe_custom_key_stores_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_request() :: #{
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string()
+%% }
+-type describe_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_response() :: #{
+%%   <<"KeyMetadata">> => key_metadata()
+%% }
+-type describe_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_key_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type disable_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_key_rotation_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type disable_key_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_custom_key_store_request() :: #{
+%%   <<"CustomKeyStoreId">> := string()
+%% }
+-type disconnect_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_custom_key_store_response() :: #{
+
+%% }
+-type disconnect_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_key_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type enable_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_key_rotation_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"RotationPeriodInDays">> => integer()
+%% }
+-type enable_key_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% encrypt_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"Plaintext">> := binary()
+%% }
+-type encrypt_request() :: #{binary() => any()}.
+
+%% Example:
+%% encrypt_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"KeyId">> => string()
+%% }
+-type encrypt_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_import_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_import_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeyPairSpec">> := list(any()),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_data_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
+%%   <<"KeyPairSpec">> => list(any()),
+%%   <<"PrivateKeyCiphertextBlob">> => binary(),
+%%   <<"PrivateKeyPlaintext">> => binary(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type generate_data_key_pair_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_without_plaintext_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeyPairSpec">> := list(any())
+%% }
+-type generate_data_key_pair_without_plaintext_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_pair_without_plaintext_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
+%%   <<"KeyPairSpec">> => list(any()),
+%%   <<"PrivateKeyCiphertextBlob">> => binary(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type generate_data_key_pair_without_plaintext_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"NumberOfBytes">> => integer(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_data_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type generate_data_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_without_plaintext_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionContext">> => map(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"NumberOfBytes">> => integer()
+%% }
+-type generate_data_key_without_plaintext_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_data_key_without_plaintext_response() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyMaterialId">> => string()
+%% }
+-type generate_data_key_without_plaintext_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mac_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"MacAlgorithm">> := list(any()),
+%%   <<"Message">> := binary()
+%% }
+-type generate_mac_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_mac_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Mac">> => binary(),
+%%   <<"MacAlgorithm">> => list(any())
+%% }
+-type generate_mac_response() :: #{binary() => any()}.
+
+%% Example:
+%% generate_random_request() :: #{
+%%   <<"CustomKeyStoreId">> => string(),
+%%   <<"NumberOfBytes">> => integer(),
+%%   <<"Recipient">> => recipient_info()
+%% }
+-type generate_random_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_random_response() :: #{
+%%   <<"CiphertextForRecipient">> => binary(),
+%%   <<"Plaintext">> => binary()
+%% }
+-type generate_random_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_last_usage_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type get_key_last_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_last_usage_response() :: #{
+%%   <<"KeyCreationDate">> => non_neg_integer(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyLastUsage">> => key_last_usage_data(),
+%%   <<"TrackingStartDate">> => non_neg_integer()
+%% }
+-type get_key_last_usage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_policy_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_key_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_key_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_rotation_status_request() :: #{
+%%   <<"KeyId">> := string()
+%% }
+-type get_key_rotation_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_rotation_status_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyRotationEnabled">> => boolean(),
+%%   <<"NextRotationDate">> => non_neg_integer(),
+%%   <<"OnDemandRotationStartDate">> => non_neg_integer(),
+%%   <<"RotationPeriodInDays">> => integer()
+%% }
+-type get_key_rotation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"WrappingAlgorithm">> := list(any()),
+%%   <<"WrappingKeySpec">> := list(any())
+%% }
+-type get_parameters_for_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_for_import_response() :: #{
+%%   <<"ImportToken">> => binary(),
+%%   <<"KeyId">> => string(),
+%%   <<"ParametersValidTo">> => non_neg_integer(),
+%%   <<"PublicKey">> => binary()
+%% }
+-type get_parameters_for_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_request() :: #{
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string()
+%% }
+-type get_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_response() :: #{
+%%   <<"CustomerMasterKeySpec">> => list(any()),
+%%   <<"EncryptionAlgorithms">> => list(list(any())()),
+%%   <<"KeyAgreementAlgorithms">> => list(list(any())()),
+%%   <<"KeyId">> => string(),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsage">> => list(any()),
+%%   <<"PublicKey">> => binary(),
+%%   <<"SigningAlgorithms">> => list(list(any())())
+%% }
+-type get_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% grant_constraints() :: #{
+%%   <<"EncryptionContextEquals">> => map(),
+%%   <<"EncryptionContextSubset">> => map(),
+%%   <<"SourceArn">> => string()
+%% }
+-type grant_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% grant_list_entry() :: #{
+%%   <<"Constraints">> => grant_constraints(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"GrantId">> => string(),
+%%   <<"GranteePrincipal">> => string(),
+%%   <<"GranteeServicePrincipal">> => string(),
+%%   <<"IssuingAccount">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Operations">> => list(list(any())()),
+%%   <<"RetiringPrincipal">> => string(),
+%%   <<"RetiringServicePrincipal">> => string()
+%% }
+-type grant_list_entry() :: #{binary() => any()}.
+
+%% Example:
 %% import_key_material_request() :: #{
 %%   <<"EncryptedKeyMaterial">> := binary(),
 %%   <<"ExpirationModel">> => list(any()),
@@ -841,115 +849,59 @@
 -type import_key_material_request() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_hsm_cluster_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cloud_hsm_cluster_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_without_plaintext_response() :: #{
-%%   <<"CiphertextBlob">> => binary(),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string()
-%% }
--type generate_data_key_without_plaintext_response() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disconnect_custom_key_store_response() :: #{
-
-%% }
--type disconnect_custom_key_store_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_key_store_request() :: #{
-%%   <<"CloudHsmClusterId">> => string(),
-%%   <<"CustomKeyStoreId">> := string(),
-%%   <<"KeyStorePassword">> => string(),
-%%   <<"NewCustomKeyStoreName">> => string(),
-%%   <<"XksProxyAuthenticationCredential">> => xks_proxy_authentication_credential_type(),
-%%   <<"XksProxyConnectivity">> => list(any()),
-%%   <<"XksProxyUriEndpoint">> => string(),
-%%   <<"XksProxyUriPath">> => string(),
-%%   <<"XksProxyVpcEndpointServiceName">> => string(),
-%%   <<"XksProxyVpcEndpointServiceOwner">> => string()
-%% }
--type update_custom_key_store_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_pair_without_plaintext_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string(),
-%%   <<"KeyPairSpec">> => list(any()),
-%%   <<"PrivateKeyCiphertextBlob">> => binary(),
-%%   <<"PublicKey">> => binary()
-%% }
--type generate_data_key_pair_without_plaintext_response() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_cluster_not_related_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cloud_hsm_cluster_not_related_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_key_rotations_request() :: #{
-%%   <<"IncludeKeyMaterial">> => list(any()),
-%%   <<"KeyId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_key_rotations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_rotation_status_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"KeyRotationEnabled">> => boolean(),
-%%   <<"NextRotationDate">> => non_neg_integer(),
-%%   <<"OnDemandRotationStartDate">> => non_neg_integer(),
-%%   <<"RotationPeriodInDays">> => integer()
-%% }
--type get_key_rotation_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% xks_key_already_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_key_already_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_cluster_invalid_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cloud_hsm_cluster_invalid_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_response() :: #{
-%%   <<"CiphertextBlob">> => binary(),
-%%   <<"CiphertextForRecipient">> => binary(),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string(),
-%%   <<"Plaintext">> => binary()
-%% }
--type generate_data_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_invalid_response_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_invalid_response_exception() :: #{binary() => any()}.
-
-%% Example:
 %% import_key_material_response() :: #{
 %%   <<"KeyId">> => string(),
 %%   <<"KeyMaterialId">> => string()
 %% }
 -type import_key_material_response() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_key_material_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_key_material_exception() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_trust_anchor_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incorrect_trust_anchor_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_alias_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_alias_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ciphertext_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ciphertext_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_grant_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_grant_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_grant_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_grant_token_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_import_token_exception() :: #{
@@ -958,52 +910,10 @@
 -type invalid_import_token_exception() :: #{binary() => any()}.
 
 %% Example:
-%% verify_mac_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"MacAlgorithm">> => list(any()),
-%%   <<"MacValid">> => boolean()
-%% }
--type verify_mac_response() :: #{binary() => any()}.
-
-%% Example:
-%% key_list_entry() :: #{
-%%   <<"KeyArn">> => string(),
-%%   <<"KeyId">> => string()
-%% }
--type key_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% recipient_info() :: #{
-%%   <<"AttestationDocument">> => binary(),
-%%   <<"KeyEncryptionAlgorithm">> => list(any())
-%% }
--type recipient_info() :: #{binary() => any()}.
-
-%% Example:
-%% key_unavailable_exception() :: #{
+%% invalid_key_usage_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type key_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% xks_key_invalid_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_key_invalid_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_cluster_not_active_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cloud_hsm_cluster_not_active_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_for_import_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"WrappingAlgorithm">> := list(any()),
-%%   <<"WrappingKeySpec">> := list(any())
-%% }
--type get_parameters_for_import_request() :: #{binary() => any()}.
+-type invalid_key_usage_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_marker_exception() :: #{
@@ -1012,16 +922,20 @@
 -type invalid_marker_exception() :: #{binary() => any()}.
 
 %% Example:
-%% verify_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"Message">> := binary(),
-%%   <<"MessageType">> => list(any()),
-%%   <<"Signature">> := binary(),
-%%   <<"SigningAlgorithm">> := list(any())
+%% key_last_usage_data() :: #{
+%%   <<"CloudTrailEventId">> => string(),
+%%   <<"KmsRequestId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type verify_request() :: #{binary() => any()}.
+-type key_last_usage_data() :: #{binary() => any()}.
+
+%% Example:
+%% key_list_entry() :: #{
+%%   <<"KeyArn">> => string(),
+%%   <<"KeyId">> => string()
+%% }
+-type key_list_entry() :: #{binary() => any()}.
 
 %% Example:
 %% key_metadata() :: #{
@@ -1055,33 +969,10 @@
 -type key_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% connect_custom_key_store_response() :: #{
-
+%% key_unavailable_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type connect_custom_key_store_response() :: #{binary() => any()}.
-
-%% Example:
-%% replicate_key_request() :: #{
-%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"KeyId">> := string(),
-%%   <<"Policy">> => string(),
-%%   <<"ReplicaRegion">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type replicate_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_key_rotation_request() :: #{
-%%   <<"KeyId">> := string()
-%% }
--type disable_key_rotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_key_store_response() :: #{
-
-%% }
--type delete_custom_key_store_response() :: #{binary() => any()}.
+-type key_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
 %% kms_internal_exception() :: #{
@@ -1090,121 +981,163 @@
 -type kms_internal_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_public_key_request() :: #{
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string()
+%% kms_invalid_mac_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_public_key_request() :: #{binary() => any()}.
+-type kms_invalid_mac_exception() :: #{binary() => any()}.
 
 %% Example:
-%% grant_list_entry() :: #{
-%%   <<"Constraints">> => grant_constraints(),
-%%   <<"CreationDate">> => non_neg_integer(),
+%% kms_invalid_signature_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_signature_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias_list_entry()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_grants_request() :: #{
 %%   <<"GrantId">> => string(),
 %%   <<"GranteePrincipal">> => string(),
 %%   <<"GranteeServicePrincipal">> => string(),
-%%   <<"IssuingAccount">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Operations">> => list(list(any())()),
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_grants_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_grants_response() :: #{
+%%   <<"Grants">> => list(grant_list_entry()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_grants_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_policies_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_key_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_policies_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"PolicyNames">> => list(string()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_key_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_rotations_request() :: #{
+%%   <<"IncludeKeyMaterial">> => list(any()),
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_key_rotations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_rotations_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Rotations">> => list(rotations_list_entry()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_key_rotations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_keys_response() :: #{
+%%   <<"Keys">> => list(key_list_entry()),
+%%   <<"NextMarker">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_tags_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type list_resource_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_tags_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type list_resource_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_retirable_grants_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
 %%   <<"RetiringPrincipal">> => string(),
 %%   <<"RetiringServicePrincipal">> => string()
 %% }
--type grant_list_entry() :: #{binary() => any()}.
+-type list_retirable_grants_request() :: #{binary() => any()}.
 
 %% Example:
-%% generate_mac_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"MacAlgorithm">> := list(any()),
-%%   <<"Message">> := binary()
-%% }
--type generate_mac_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_public_key_response() :: #{
-%%   <<"CustomerMasterKeySpec">> => list(any()),
-%%   <<"EncryptionAlgorithms">> => list(list(any())()),
-%%   <<"KeyAgreementAlgorithms">> => list(list(any())()),
-%%   <<"KeyId">> => string(),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"KeyUsage">> => list(any()),
-%%   <<"PublicKey">> => binary(),
-%%   <<"SigningAlgorithms">> => list(list(any())())
-%% }
--type get_public_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_key_usage_exception() :: #{
+%% malformed_policy_document_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_key_usage_exception() :: #{binary() => any()}.
+-type malformed_policy_document_exception() :: #{binary() => any()}.
 
 %% Example:
-%% sign_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Signature">> => binary(),
-%%   <<"SigningAlgorithm">> => list(any())
+%% multi_region_configuration() :: #{
+%%   <<"MultiRegionKeyType">> => list(any()),
+%%   <<"PrimaryKey">> => multi_region_key(),
+%%   <<"ReplicaKeys">> => list(multi_region_key())
 %% }
--type sign_response() :: #{binary() => any()}.
+-type multi_region_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% custom_key_store_invalid_state_exception() :: #{
+%% multi_region_key() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type multi_region_key() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type custom_key_store_invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_key_deletion_response() :: #{
-%%   <<"KeyId">> => string()
-%% }
--type cancel_key_deletion_response() :: #{binary() => any()}.
-
-%% Example:
-%% derive_shared_secret_response() :: #{
-%%   <<"CiphertextForRecipient">> => binary(),
-%%   <<"KeyAgreementAlgorithm">> => list(any()),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyOrigin">> => list(any()),
-%%   <<"SharedSecret">> => binary()
-%% }
--type derive_shared_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_authentication_credential_type() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"RawSecretAccessKey">> => string()
-%% }
--type xks_proxy_authentication_credential_type() :: #{binary() => any()}.
-
-%% Example:
-%% alias_list_entry() :: #{
-%%   <<"AliasArn">> => string(),
-%%   <<"AliasName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"TargetKeyId">> => string()
-%% }
--type alias_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% connect_custom_key_store_request() :: #{
-%%   <<"CustomKeyStoreId">> := string()
-%% }
--type connect_custom_key_store_request() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_hsm_cluster_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type cloud_hsm_cluster_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_key_store_response() :: #{
-
-%% }
--type update_custom_key_store_response() :: #{binary() => any()}.
+-type not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% put_key_policy_request() :: #{
@@ -1216,12 +1149,19 @@
 -type put_key_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% replicate_key_response() :: #{
-%%   <<"ReplicaKeyMetadata">> => key_metadata(),
-%%   <<"ReplicaPolicy">> => string(),
-%%   <<"ReplicaTags">> => list(tag())
+%% re_encrypt_request() :: #{
+%%   <<"CiphertextBlob">> => binary(),
+%%   <<"DestinationEncryptionAlgorithm">> => list(any()),
+%%   <<"DestinationEncryptionContext">> => map(),
+%%   <<"DestinationKeyId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"DryRunModifiers">> => list(list(any())()),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"SourceEncryptionAlgorithm">> => list(any()),
+%%   <<"SourceEncryptionContext">> => map(),
+%%   <<"SourceKeyId">> => string()
 %% }
--type replicate_key_response() :: #{binary() => any()}.
+-type re_encrypt_request() :: #{binary() => any()}.
 
 %% Example:
 %% re_encrypt_response() :: #{
@@ -1236,146 +1176,59 @@
 -type re_encrypt_response() :: #{binary() => any()}.
 
 %% Example:
-%% disable_key_request() :: #{
+%% recipient_info() :: #{
+%%   <<"AttestationDocument">> => binary(),
+%%   <<"KeyEncryptionAlgorithm">> => list(any())
+%% }
+-type recipient_info() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_key_request() :: #{
+%%   <<"BypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"KeyId">> := string(),
+%%   <<"Policy">> => string(),
+%%   <<"ReplicaRegion">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type replicate_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_key_response() :: #{
+%%   <<"ReplicaKeyMetadata">> => key_metadata(),
+%%   <<"ReplicaPolicy">> => string(),
+%%   <<"ReplicaTags">> => list(tag())
+%% }
+-type replicate_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% retire_grant_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantId">> => string(),
+%%   <<"GrantToken">> => string(),
+%%   <<"KeyId">> => string()
+%% }
+-type retire_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_grant_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantId">> := string(),
 %%   <<"KeyId">> := string()
 %% }
--type disable_key_request() :: #{binary() => any()}.
+-type revoke_grant_request() :: #{binary() => any()}.
 
 %% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"message">> => string()
+%% rotate_key_on_demand_request() :: #{
+%%   <<"KeyId">> := string()
 %% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
+-type rotate_key_on_demand_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_key_response() :: #{
-%%   <<"KeyMetadata">> => key_metadata()
+%% rotate_key_on_demand_response() :: #{
+%%   <<"KeyId">> => string()
 %% }
--type describe_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_key_rotation_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"RotationPeriodInDays">> => integer()
-%% }
--type enable_key_rotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% multi_region_key() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Region">> => string()
-%% }
--type multi_region_key() :: #{binary() => any()}.
-
-%% Example:
-%% list_key_policies_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_key_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_imported_key_material_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"KeyMaterialId">> => string()
-%% }
--type delete_imported_key_material_request() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% kms_invalid_mac_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_invalid_mac_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_primary_region_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"PrimaryRegion">> := string()
-%% }
--type update_primary_region_request() :: #{binary() => any()}.
-
-%% Example:
-%% sign_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"Message">> := binary(),
-%%   <<"MessageType">> => list(any()),
-%%   <<"SigningAlgorithm">> := list(any())
-%% }
--type sign_request() :: #{binary() => any()}.
-
-%% Example:
-%% verify_response() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"SignatureValid">> => boolean(),
-%%   <<"SigningAlgorithm">> => list(any())
-%% }
--type verify_response() :: #{binary() => any()}.
-
-%% Example:
-%% generate_data_key_pair_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()),
-%%   <<"KeyId">> := string(),
-%%   <<"KeyPairSpec">> := list(any()),
-%%   <<"Recipient">> => recipient_info()
-%% }
--type generate_data_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% kms_invalid_signature_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_invalid_signature_exception() :: #{binary() => any()}.
-
-%% Example:
-%% decrypt_response() :: #{
-%%   <<"CiphertextForRecipient">> => binary(),
-%%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"KeyId">> => string(),
-%%   <<"KeyMaterialId">> => string(),
-%%   <<"Plaintext">> => binary()
-%% }
--type decrypt_response() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_invalid_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_invalid_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% xks_proxy_incorrect_authentication_credential_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type xks_proxy_incorrect_authentication_credential_exception() :: #{binary() => any()}.
-
-%% Example:
-%% kms_invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
+-type rotate_key_on_demand_response() :: #{binary() => any()}.
 
 %% Example:
 %% rotations_list_entry() :: #{
@@ -1392,91 +1245,184 @@
 -type rotations_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% generate_data_key_request() :: #{
+%% schedule_key_deletion_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PendingWindowInDays">> => integer()
+%% }
+-type schedule_key_deletion_request() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_key_deletion_response() :: #{
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"KeyId">> => string(),
+%%   <<"KeyState">> => list(any()),
+%%   <<"PendingWindowInDays">> => integer()
+%% }
+-type schedule_key_deletion_response() :: #{binary() => any()}.
+
+%% Example:
+%% sign_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionContext">> => map(),
 %%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"NumberOfBytes">> => integer(),
-%%   <<"Recipient">> => recipient_info()
+%%   <<"Message">> := binary(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"SigningAlgorithm">> := list(any())
 %% }
--type generate_data_key_request() :: #{binary() => any()}.
+-type sign_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_tags_request() :: #{
-%%   <<"KeyId">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"Marker">> => string()
-%% }
--type list_resource_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% incorrect_trust_anchor_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type incorrect_trust_anchor_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_grant_response() :: #{
-%%   <<"GrantId">> => string(),
-%%   <<"GrantToken">> => string()
-%% }
--type create_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% incorrect_key_material_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type incorrect_key_material_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_key_response() :: #{
-%%   <<"KeyMetadata">> => key_metadata()
-%% }
--type create_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alias_request() :: #{
-%%   <<"AliasName">> := string()
-%% }
--type delete_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% generate_mac_response() :: #{
+%% sign_response() :: #{
 %%   <<"KeyId">> => string(),
-%%   <<"Mac">> => binary(),
-%%   <<"MacAlgorithm">> => list(any())
+%%   <<"Signature">> => binary(),
+%%   <<"SigningAlgorithm">> => list(any())
 %% }
--type generate_mac_response() :: #{binary() => any()}.
+-type sign_response() :: #{binary() => any()}.
 
 %% Example:
-%% custom_key_store_not_found_exception() :: #{
+%% tag() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type custom_key_store_not_found_exception() :: #{binary() => any()}.
+-type tag_exception() :: #{binary() => any()}.
 
 %% Example:
-%% generate_random_request() :: #{
-%%   <<"CustomKeyStoreId">> => string(),
-%%   <<"NumberOfBytes">> => integer(),
-%%   <<"Recipient">> => recipient_info()
+%% tag_resource_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type generate_random_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_key_rotations_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Rotations">> => list(rotations_list_entry()),
-%%   <<"Truncated">> => boolean()
+%% unsupported_operation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_key_rotations_response() :: #{binary() => any()}.
+-type unsupported_operation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% rotate_key_on_demand_request() :: #{
+%% untag_resource_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"TargetKeyId">> := string()
+%% }
+-type update_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_key_store_request() :: #{
+%%   <<"CloudHsmClusterId">> => string(),
+%%   <<"CustomKeyStoreId">> := string(),
+%%   <<"KeyStorePassword">> => string(),
+%%   <<"NewCustomKeyStoreName">> => string(),
+%%   <<"XksProxyAuthenticationCredential">> => xks_proxy_authentication_credential_type(),
+%%   <<"XksProxyConnectivity">> => list(any()),
+%%   <<"XksProxyUriEndpoint">> => string(),
+%%   <<"XksProxyUriPath">> => string(),
+%%   <<"XksProxyVpcEndpointServiceName">> => string(),
+%%   <<"XksProxyVpcEndpointServiceOwner">> => string()
+%% }
+-type update_custom_key_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_key_store_response() :: #{
+
+%% }
+-type update_custom_key_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_key_description_request() :: #{
+%%   <<"Description">> := string(),
 %%   <<"KeyId">> := string()
 %% }
--type rotate_key_on_demand_request() :: #{binary() => any()}.
+-type update_key_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_primary_region_request() :: #{
+%%   <<"KeyId">> := string(),
+%%   <<"PrimaryRegion">> := string()
+%% }
+-type update_primary_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_mac_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"Mac">> := binary(),
+%%   <<"MacAlgorithm">> := list(any()),
+%%   <<"Message">> := binary()
+%% }
+-type verify_mac_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_mac_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"MacAlgorithm">> => list(any()),
+%%   <<"MacValid">> => boolean()
+%% }
+-type verify_mac_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"GrantTokens">> => list(string()),
+%%   <<"KeyId">> := string(),
+%%   <<"Message">> := binary(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"Signature">> := binary(),
+%%   <<"SigningAlgorithm">> := list(any())
+%% }
+-type verify_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_response() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"SignatureValid">> => boolean(),
+%%   <<"SigningAlgorithm">> => list(any())
+%% }
+-type verify_response() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_already_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_already_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_configuration_type() :: #{
+%%   <<"Id">> => string()
+%% }
+-type xks_key_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_key_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_authentication_credential_type() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"RawSecretAccessKey">> => string()
+%% }
+-type xks_proxy_authentication_credential_type() :: #{binary() => any()}.
 
 %% Example:
 %% xks_proxy_configuration_type() :: #{
@@ -1489,324 +1435,378 @@
 %% }
 -type xks_proxy_configuration_type() :: #{binary() => any()}.
 
+%% Example:
+%% xks_proxy_incorrect_authentication_credential_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_incorrect_authentication_credential_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_invalid_response_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_invalid_response_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_endpoint_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_endpoint_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_uri_unreachable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_uri_unreachable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% xks_proxy_vpc_endpoint_service_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type xks_proxy_vpc_endpoint_service_not_found_exception() :: #{binary() => any()}.
+
 -type cancel_key_deletion_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type connect_custom_key_store_errors() ::
+    kms_internal_exception() | 
     custom_key_store_not_found_exception() | 
     custom_key_store_invalid_state_exception() | 
-    kms_internal_exception() | 
     cloud_hsm_cluster_not_active_exception() | 
     cloud_hsm_cluster_invalid_configuration_exception().
 
 -type create_alias_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    kms_internal_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_alias_name_exception() | 
     dependency_timeout_exception() | 
-    already_exists_exception() | 
-    invalid_alias_name_exception().
+    already_exists_exception().
 
 -type create_custom_key_store_errors() ::
-    incorrect_trust_anchor_exception() | 
-    xks_proxy_incorrect_authentication_credential_exception() | 
-    xks_proxy_invalid_configuration_exception() | 
-    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
-    limit_exceeded_exception() | 
-    cloud_hsm_cluster_in_use_exception() | 
-    kms_internal_exception() | 
-    cloud_hsm_cluster_not_active_exception() | 
-    xks_proxy_invalid_response_exception() | 
-    cloud_hsm_cluster_invalid_configuration_exception() | 
-    cloud_hsm_cluster_not_found_exception() | 
-    xks_proxy_uri_in_use_exception() | 
-    xks_proxy_uri_unreachable_exception() | 
-    xks_proxy_uri_endpoint_in_use_exception() | 
-    custom_key_store_name_in_use_exception() | 
     xks_proxy_vpc_endpoint_service_not_found_exception() | 
-    xks_proxy_vpc_endpoint_service_in_use_exception().
+    xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
+    xks_proxy_invalid_response_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
+    incorrect_trust_anchor_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    cloud_hsm_cluster_not_found_exception() | 
+    cloud_hsm_cluster_not_active_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception() | 
+    cloud_hsm_cluster_in_use_exception().
 
 -type create_grant_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    disabled_exception() | 
-    kms_internal_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_grant_token_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type create_key_errors() ::
-    custom_key_store_not_found_exception() | 
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    custom_key_store_invalid_state_exception() | 
-    kms_internal_exception() | 
+    xks_key_not_found_exception() | 
     xks_key_invalid_configuration_exception() | 
-    cloud_hsm_cluster_invalid_configuration_exception() | 
     xks_key_already_in_use_exception() | 
+    unsupported_operation_exception() | 
+    tag_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception() | 
-    xks_key_not_found_exception() | 
-    unsupported_operation_exception() | 
-    tag_exception().
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception().
 
 -type decrypt_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    invalid_ciphertext_exception() | 
-    dependency_timeout_exception() | 
-    dry_run_operation_exception() | 
+    invalid_key_usage_exception() | 
     invalid_grant_token_exception() | 
-    incorrect_key_exception().
+    invalid_ciphertext_exception() | 
+    incorrect_key_exception() | 
+    dry_run_operation_exception() | 
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type delete_alias_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     dependency_timeout_exception().
 
 -type delete_custom_key_store_errors() ::
+    kms_internal_exception() | 
     custom_key_store_not_found_exception() | 
     custom_key_store_invalid_state_exception() | 
-    kms_internal_exception() | 
     custom_key_store_has_cm_ks_exception().
 
 -type delete_imported_key_material_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    dependency_timeout_exception().
 
 -type derive_shared_secret_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type describe_custom_key_stores_errors() ::
-    custom_key_store_not_found_exception() | 
     kms_internal_exception() | 
-    invalid_marker_exception().
+    invalid_marker_exception() | 
+    custom_key_store_not_found_exception().
 
 -type describe_key_errors() ::
-    kms_internal_exception() | 
     not_found_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type disable_key_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type disable_key_rotation_errors() ::
-    kms_invalid_state_exception() | 
-    disabled_exception() | 
-    kms_internal_exception() | 
+    unsupported_operation_exception() | 
     not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type disconnect_custom_key_store_errors() ::
+    kms_internal_exception() | 
     custom_key_store_not_found_exception() | 
-    custom_key_store_invalid_state_exception() | 
-    kms_internal_exception().
+    custom_key_store_invalid_state_exception().
 
 -type enable_key_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    kms_internal_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type enable_key_rotation_errors() ::
-    kms_invalid_state_exception() | 
-    disabled_exception() | 
-    kms_internal_exception() | 
+    unsupported_operation_exception() | 
     not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type encrypt_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type generate_data_key_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type generate_data_key_pair_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    unsupported_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type generate_data_key_pair_without_plaintext_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    unsupported_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type generate_data_key_without_plaintext_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type generate_mac_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception().
 
 -type generate_random_errors() ::
-    custom_key_store_not_found_exception() | 
-    custom_key_store_invalid_state_exception() | 
+    unsupported_operation_exception() | 
     kms_internal_exception() | 
     dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    custom_key_store_not_found_exception() | 
+    custom_key_store_invalid_state_exception().
 
 -type get_key_last_usage_errors() ::
-    kms_internal_exception() | 
     not_found_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type get_key_policy_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type get_key_rotation_status_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    dependency_timeout_exception().
 
 -type get_parameters_for_import_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    dependency_timeout_exception().
 
 -type get_public_key_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type import_key_material_errors() ::
-    incorrect_key_material_exception() | 
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
     invalid_import_token_exception() | 
-    not_found_exception() | 
     invalid_ciphertext_exception() | 
-    expired_import_token_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    incorrect_key_material_exception() | 
+    expired_import_token_exception() | 
+    dependency_timeout_exception().
 
 -type list_aliases_errors() ::
+    not_found_exception() | 
     kms_internal_exception() | 
     invalid_marker_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type list_grants_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
     invalid_marker_exception() | 
-    not_found_exception() | 
+    invalid_grant_id_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    invalid_grant_id_exception().
+    dependency_timeout_exception().
 
 -type list_key_policies_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type list_key_rotations_errors() ::
+    unsupported_operation_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
     invalid_marker_exception() | 
-    not_found_exception() | 
-    invalid_arn_exception() | 
-    unsupported_operation_exception().
+    invalid_arn_exception().
 
 -type list_keys_errors() ::
     kms_internal_exception() | 
@@ -1814,179 +1814,179 @@
     dependency_timeout_exception().
 
 -type list_resource_tags_errors() ::
+    not_found_exception() | 
     kms_internal_exception() | 
     invalid_marker_exception() | 
-    not_found_exception() | 
     invalid_arn_exception().
 
 -type list_retirable_grants_errors() ::
+    not_found_exception() | 
     kms_internal_exception() | 
     invalid_marker_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type put_key_policy_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    kms_internal_exception() | 
+    unsupported_operation_exception() | 
     not_found_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    dependency_timeout_exception().
 
 -type re_encrypt_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    invalid_ciphertext_exception() | 
-    dependency_timeout_exception() | 
-    dry_run_operation_exception() | 
+    invalid_key_usage_exception() | 
     invalid_grant_token_exception() | 
-    incorrect_key_exception().
+    invalid_ciphertext_exception() | 
+    incorrect_key_exception() | 
+    dry_run_operation_exception() | 
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type replicate_key_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    disabled_exception() | 
-    malformed_policy_document_exception() | 
-    kms_internal_exception() | 
-    not_found_exception() | 
-    invalid_arn_exception() | 
-    already_exists_exception() | 
     unsupported_operation_exception() | 
-    tag_exception().
+    tag_exception() | 
+    not_found_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_arn_exception() | 
+    disabled_exception() | 
+    already_exists_exception().
 
 -type retire_grant_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
-    invalid_arn_exception() | 
-    dependency_timeout_exception() | 
-    dry_run_operation_exception() | 
     invalid_grant_token_exception() | 
-    invalid_grant_id_exception().
+    invalid_grant_id_exception() | 
+    invalid_arn_exception() | 
+    dry_run_operation_exception() | 
+    dependency_timeout_exception().
 
 -type revoke_grant_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
+    invalid_grant_id_exception() | 
     invalid_arn_exception() | 
-    dependency_timeout_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_id_exception().
+    dependency_timeout_exception().
 
 -type rotate_key_on_demand_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    disabled_exception() | 
-    kms_internal_exception() | 
+    unsupported_operation_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
+    disabled_exception() | 
     dependency_timeout_exception() | 
-    unsupported_operation_exception().
+    conflict_exception().
 
 -type schedule_key_deletion_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type sign_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type tag_resource_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    kms_internal_exception() | 
+    tag_exception() | 
     not_found_exception() | 
-    invalid_arn_exception() | 
-    tag_exception().
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
+    invalid_arn_exception().
 
 -type untag_resource_errors() ::
+    tag_exception() | 
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
-    invalid_arn_exception() | 
-    tag_exception().
+    invalid_arn_exception().
 
 -type update_alias_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    kms_internal_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     dependency_timeout_exception().
 
 -type update_custom_key_store_errors() ::
-    custom_key_store_not_found_exception() | 
-    xks_proxy_incorrect_authentication_credential_exception() | 
-    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_vpc_endpoint_service_not_found_exception() | 
     xks_proxy_vpc_endpoint_service_invalid_configuration_exception() | 
-    custom_key_store_invalid_state_exception() | 
-    kms_internal_exception() | 
-    cloud_hsm_cluster_not_active_exception() | 
+    xks_proxy_vpc_endpoint_service_in_use_exception() | 
+    xks_proxy_uri_unreachable_exception() | 
+    xks_proxy_uri_in_use_exception() | 
+    xks_proxy_uri_endpoint_in_use_exception() | 
     xks_proxy_invalid_response_exception() | 
-    cloud_hsm_cluster_invalid_configuration_exception() | 
+    xks_proxy_invalid_configuration_exception() | 
+    xks_proxy_incorrect_authentication_credential_exception() | 
+    kms_internal_exception() | 
+    custom_key_store_not_found_exception() | 
+    custom_key_store_name_in_use_exception() | 
+    custom_key_store_invalid_state_exception() | 
     cloud_hsm_cluster_not_related_exception() | 
     cloud_hsm_cluster_not_found_exception() | 
-    xks_proxy_uri_in_use_exception() | 
-    xks_proxy_uri_unreachable_exception() | 
-    xks_proxy_uri_endpoint_in_use_exception() | 
-    custom_key_store_name_in_use_exception() | 
-    xks_proxy_vpc_endpoint_service_not_found_exception() | 
-    xks_proxy_vpc_endpoint_service_in_use_exception().
+    cloud_hsm_cluster_not_active_exception() | 
+    cloud_hsm_cluster_invalid_configuration_exception().
 
 -type update_key_description_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_internal_exception() | 
-    not_found_exception() | 
     invalid_arn_exception() | 
     dependency_timeout_exception().
 
 -type update_primary_region_errors() ::
-    kms_invalid_state_exception() | 
-    disabled_exception() | 
-    kms_internal_exception() | 
+    unsupported_operation_exception() | 
     not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_internal_exception() | 
     invalid_arn_exception() | 
-    unsupported_operation_exception().
+    disabled_exception().
 
 -type verify_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_invalid_signature_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
-    dependency_timeout_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception() | 
+    dependency_timeout_exception().
 
 -type verify_mac_errors() ::
+    not_found_exception() | 
     kms_invalid_state_exception() | 
     kms_invalid_mac_exception() | 
-    disabled_exception() | 
-    invalid_key_usage_exception() | 
     kms_internal_exception() | 
     key_unavailable_exception() | 
-    not_found_exception() | 
+    invalid_key_usage_exception() | 
+    invalid_grant_token_exception() | 
     dry_run_operation_exception() | 
-    invalid_grant_token_exception().
+    disabled_exception().
 
 %%====================================================================
 %% API

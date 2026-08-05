@@ -51,10 +51,10 @@
 %% rules that are compatible
 %% with Suricata, a free, open source network analysis and threat detection
 %% engine.
-%% Network Firewall supports Suricata version 7.0.3. For information about
+%% Network Firewall supports Suricata version 7.0.8. For information about
 %% Suricata,
 %% see the Suricata website: https://suricata.io/ and the
-%% Suricata User Guide: https://suricata.readthedocs.io/en/suricata-7.0.3/.
+%% Suricata User Guide: https://suricata.readthedocs.io/en/suricata-7.0.8/.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways.
@@ -279,6 +279,8 @@
          update_proxy_rule_group_priorities/3,
          update_proxy_rule_priorities/2,
          update_proxy_rule_priorities/3,
+         update_proxy_settings/2,
+         update_proxy_settings/3,
          update_rule_group/2,
          update_rule_group/3,
          update_subnet_change_protection/2,
@@ -290,42 +292,44 @@
 
 
 %% Example:
-%% update_firewall_description_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_description_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_t_l_s_inspection_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_t_l_s_inspection_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% server_certificate_configuration() :: #{
-%%   <<"CertificateAuthorityArn">> => string(),
-%%   <<"CheckCertificateRevocationStatus">> => check_certificate_revocation_status_actions(),
-%%   <<"Scopes">> => list(server_certificate_scope()),
-%%   <<"ServerCertificates">> => list(server_certificate())
-%% }
--type server_certificate_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% t_c_p_flag_field() :: #{
-%%   <<"Flags">> => list(list(any())()),
-%%   <<"Masks">> => list(list(any())())
-%% }
--type t_c_p_flag_field() :: #{binary() => any()}.
-
-%% Example:
 %% a_z_sync_state() :: #{
 %%   <<"Attachment">> => attachment()
 %% }
 -type a_z_sync_state() :: #{binary() => any()}.
+
+%% Example:
+%% accept_network_firewall_transit_gateway_attachment_request() :: #{
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type accept_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type accept_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% action_definition() :: #{
+%%   <<"PublishMetricAction">> => publish_metric_action()
+%% }
+-type action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% address() :: #{
+%%   <<"AddressDefinition">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+%% Example:
+%% analysis_report() :: #{
+%%   <<"AnalysisReportId">> => string(),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"ReportTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type analysis_report() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_result() :: #{
@@ -336,37 +340,159 @@
 -type analysis_result() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"KeyId">> => string(),
-%%   <<"Type">> => list(any())
+%% analysis_type_report_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"FirstAccessed">> => non_neg_integer(),
+%%   <<"Hits">> => hits(),
+%%   <<"LastAccessed">> => non_neg_integer(),
+%%   <<"Protocol">> => string(),
+%%   <<"UniqueSources">> => unique_sources()
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type analysis_type_report_result() :: #{binary() => any()}.
 
 %% Example:
-%% rules_source() :: #{
-%%   <<"RulesSourceList">> => rules_source_list(),
-%%   <<"RulesString">> => string(),
-%%   <<"StatefulRules">> => list(stateful_rule()),
-%%   <<"StatelessRulesAndCustomActions">> => stateless_rules_and_custom_actions()
-%% }
--type rules_source() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_group_response() :: #{
-%%   <<"RuleGroupResponse">> => rule_group_response(),
+%% associate_availability_zones_request() :: #{
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
 %%   <<"UpdateToken">> => string()
 %% }
--type update_rule_group_response() :: #{binary() => any()}.
+-type associate_availability_zones_request() :: #{binary() => any()}.
 
 %% Example:
-%% flow_filter() :: #{
-%%   <<"DestinationAddress">> => address(),
-%%   <<"DestinationPort">> => string(),
-%%   <<"Protocols">> => list(string()),
-%%   <<"SourceAddress">> => address(),
-%%   <<"SourcePort">> => string()
+%% associate_availability_zones_response() :: #{
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
 %% }
--type flow_filter() :: #{binary() => any()}.
+-type associate_availability_zones_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_policy_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> := string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_policy_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_subnets_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> := list(subnet_mapping()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_subnets_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_subnets_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_subnets_response() :: #{binary() => any()}.
+
+%% Example:
+%% attach_rule_groups_to_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> := list(proxy_rule_group_attachment()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type attach_rule_groups_to_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_rule_groups_to_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type attach_rule_groups_to_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_mapping() :: #{
+%%   <<"AvailabilityZone">> => string()
+%% }
+-type availability_zone_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_metadata() :: #{
+%%   <<"IPAddressType">> => list(any())
+%% }
+-type availability_zone_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% c_id_r_summary() :: #{
+%%   <<"AvailableCIDRCount">> => integer(),
+%%   <<"IPSetReferences">> => map(),
+%%   <<"UtilizedCIDRCount">> => integer()
+%% }
+-type c_id_r_summary() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_usage_summary() :: #{
+%%   <<"CIDRs">> => c_id_r_summary()
+%% }
+-type capacity_usage_summary() :: #{binary() => any()}.
+
+%% Example:
+%% check_certificate_revocation_status_actions() :: #{
+%%   <<"RevokedStatusAction">> => list(any()),
+%%   <<"UnknownStatusAction">> => list(any())
+%% }
+-type check_certificate_revocation_status_actions() :: #{binary() => any()}.
+
+%% Example:
+%% container_association_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type container_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% container_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type container_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% container_monitoring_configuration() :: #{
+%%   <<"AttributeFilters">> => list(container_attribute()),
+%%   <<"ClusterArn">> => string()
+%% }
+-type container_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_association_request() :: #{
+%%   <<"ContainerAssociationName">> := string(),
+%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_container_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_container_association_response() :: #{
@@ -382,286 +508,89 @@
 -type create_container_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% proxy() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DeleteTime">> => non_neg_integer(),
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"ListenerProperties">> => list(listener_property()),
-%%   <<"NatGatewayId">> => string(),
-%%   <<"ProxyArn">> => string(),
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"ProxyModifyState">> => list(any()),
-%%   <<"ProxyName">> => string(),
-%%   <<"ProxyState">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TlsInterceptProperties">> => tls_intercept_properties(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type proxy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_rule_group_response() :: #{
-%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_proxy_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_group_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type proxy_rule_group_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_rules_response() :: #{
-%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
-%%   <<"UpdateToken">> => string()
-%% }
--type create_proxy_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% stateful_rule_group_override() :: #{
-%%   <<"Action">> => list(any())
-%% }
--type stateful_rule_group_override() :: #{binary() => any()}.
-
-%% Example:
-%% rule_group_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VendorName">> => string()
-%% }
--type rule_group_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleGroups">> => list(rule_group_metadata())
-%% }
--type list_rule_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_flow_capture_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> := string(),
-%%   <<"FlowFilters">> := list(flow_filter()),
-%%   <<"MinimumFlowAgeInSeconds">> => integer(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type start_flow_capture_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_container_association_request() :: #{
-%%   <<"ContainerAssociationArn">> => string(),
-%%   <<"ContainerAssociationName">> => string()
-%% }
--type describe_container_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_configuration() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DefaultRulePhaseActions">> => proxy_config_default_rule_phase_actions_request(),
-%%   <<"DeleteTime">> => non_neg_integer(),
+%% create_firewall_policy_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"RuleGroups">> => list(proxy_config_rule_group()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicy">> := firewall_policy(),
+%%   <<"FirewallPolicyName">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type proxy_configuration() :: #{binary() => any()}.
+-type create_firewall_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_flow_operation_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> := string(),
-%%   <<"FlowOperationId">> := string(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
+%% create_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
+%%   <<"UpdateToken">> => string()
 %% }
--type describe_flow_operation_request() :: #{binary() => any()}.
+-type create_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_availability_zone_change_protection_response() :: #{
+%% create_firewall_request() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> => boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_availability_zone_change_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flow_operation_response() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FlowOperation">> => flow_operation(),
-%%   <<"FlowOperationId">> => string(),
-%%   <<"FlowOperationStatus">> => list(any()),
-%%   <<"FlowOperationType">> => list(any()),
-%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type describe_flow_operation_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_subnets_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"UpdateToken">> => string()
-%% }
--type associate_subnets_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_availability_zones_response() :: #{
 %%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallName">> := string(),
+%%   <<"FirewallPolicyArn">> := string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"NatGatewayMappings">> => list(nat_gateway_mapping()),
+%%   <<"NoSourcePreservation">> => boolean(),
+%%   <<"ProxySettings">> => proxy_settings(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"VpcEndpoint">> => vpc_endpoint(),
+%%   <<"VpcId">> => string()
 %% }
--type associate_availability_zones_response() :: #{binary() => any()}.
+-type create_firewall_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_proxy_configuration_response() :: #{
+%% create_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status()
+%% }
+-type create_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_configuration_request() :: #{
+%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyConfigurationName">> := string(),
+%%   <<"RuleGroupArns">> => list(string()),
+%%   <<"RuleGroupNames">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_configuration_response() :: #{
 %%   <<"ProxyConfiguration">> => proxy_configuration(),
 %%   <<"UpdateToken">> => string()
 %% }
--type describe_proxy_configuration_response() :: #{binary() => any()}.
+-type create_proxy_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_proxy_request() :: #{
-%%   <<"ProxyArn">> => string(),
-%%   <<"ProxyName">> => string()
-%% }
--type describe_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_policy_change_protection_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"FirewallPolicyChangeProtection">> := boolean(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_policy_change_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% stateful_engine_options() :: #{
-%%   <<"FlowTimeouts">> => flow_timeouts(),
-%%   <<"RuleOrder">> => list(any()),
-%%   <<"StreamExceptionPolicy">> => list(any())
-%% }
--type stateful_engine_options() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% rule_definition() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"MatchAttributes">> => match_attributes()
-%% }
--type rule_definition() :: #{binary() => any()}.
-
-%% Example:
-%% resource_owner_check_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_owner_check_exception() :: #{binary() => any()}.
-
-%% Example:
-%% t_l_s_inspection_configuration_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type t_l_s_inspection_configuration_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% describe_t_l_s_inspection_configuration_request() :: #{
-%%   <<"TLSInspectionConfigurationArn">> => string(),
-%%   <<"TLSInspectionConfigurationName">> => string()
-%% }
--type describe_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_group_metadata_request() :: #{
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_rule_group_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_association_response() :: #{
-%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
-%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
-%% }
--type delete_vpc_endpoint_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_analysis_report_results_response() :: #{
-%%   <<"AnalysisReportResults">> => list(analysis_type_report_result()),
-%%   <<"AnalysisType">> => list(any()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReportTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => string()
-%% }
--type get_analysis_report_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_association_response() :: #{
-%%   <<"ContainerAssociationArn">> => string(),
-%%   <<"ContainerAssociationName">> => string(),
-%%   <<"ContainerMonitoringConfigurations">> => list(container_monitoring_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"Status">> => list(any()),
+%% create_proxy_request() :: #{
+%%   <<"ListenerProperties">> => list(listener_property_request()),
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"ProxyName">> := string(),
 %%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any()),
+%%   <<"TlsInterceptProperties">> := tls_intercept_properties_request()
+%% }
+-type create_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_response() :: #{
+%%   <<"Proxy">> => proxy(),
 %%   <<"UpdateToken">> => string()
 %% }
--type update_container_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_container_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_container_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_proxy_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProxyConfigurations">> => list(proxy_configuration_metadata())
-%% }
--type list_proxy_configurations_response() :: #{binary() => any()}.
+-type create_proxy_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_proxy_rule() :: #{
@@ -674,325 +603,43 @@
 -type create_proxy_rule() :: #{binary() => any()}.
 
 %% Example:
-%% describe_rule_group_request() :: #{
-%%   <<"AnalyzeRuleGroup">> => boolean(),
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_container_association_request() :: #{
-%%   <<"ContainerAssociationName">> := string(),
-%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
+%% create_proxy_rule_group_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_container_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_association_response() :: #{
-%%   <<"ContainerAssociationArn">> => string(),
-%%   <<"ContainerAssociationName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type delete_container_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_condition() :: #{
-%%   <<"ConditionKey">> => string(),
-%%   <<"ConditionOperator">> => string(),
-%%   <<"ConditionValues">> => list(string())
-%% }
--type proxy_rule_condition() :: #{binary() => any()}.
-
-%% Example:
-%% container_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type container_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% rule_group() :: #{
-%%   <<"ReferenceSets">> => reference_sets(),
-%%   <<"RuleVariables">> => rule_variables(),
-%%   <<"RulesSource">> => rules_source(),
-%%   <<"StatefulRuleOptions">> => stateful_rule_options()
-%% }
--type rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_association_request() :: #{
-%%   <<"ContainerAssociationArn">> => string(),
-%%   <<"ContainerAssociationName">> => string()
-%% }
--type delete_container_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% attachment() :: #{
-%%   <<"EndpointId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type attachment() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_analysis_settings_request() :: #{
-%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_analysis_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% t_l_s_inspection_configuration() :: #{
-%%   <<"ServerCertificateConfigurations">> => list(server_certificate_configuration())
-%% }
--type t_l_s_inspection_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_configuration_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type proxy_configuration_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_logging_configuration_request() :: #{
-%%   <<"EnableMonitoringDashboard">> => boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type update_logging_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_mapping() :: #{
-%%   <<"IPAddressType">> => list(any()),
-%%   <<"SubnetId">> => string()
-%% }
--type subnet_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_encryption_configuration_response() :: #{
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_encryption_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_proxies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_proxies_request() :: #{binary() => any()}.
-
-%% Example:
-%% publish_metric_action() :: #{
-%%   <<"Dimensions">> => list(dimension())
-%% }
--type publish_metric_action() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_group_priority() :: #{
-%%   <<"NewPosition">> => integer(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type proxy_rule_group_priority() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% header() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"DestinationPort">> => string(),
-%%   <<"Direction">> => list(any()),
-%%   <<"Protocol">> => list(any()),
-%%   <<"Source">> => string(),
-%%   <<"SourcePort">> => string()
-%% }
--type header() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_group_priorities_request() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"RuleGroups">> := list(proxy_rule_group_priority()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_proxy_rule_group_priorities_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_firewall_metadata_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"SupportedAvailabilityZones">> => map(),
-%%   <<"TransitGatewayAttachmentId">> => string()
-%% }
--type describe_firewall_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_firewall_transit_gateway_attachment_response() :: #{
-%%   <<"TransitGatewayAttachmentId">> => string(),
-%%   <<"TransitGatewayAttachmentStatus">> => list(any())
-%% }
--type delete_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_policy_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallPolicy">> := firewall_policy(),
-%%   <<"FirewallPolicyName">> := string(),
+%%   <<"ProxyRuleGroupName">> := string(),
+%%   <<"Rules">> => proxy_rules_by_request_phase(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_firewall_policy_request() :: #{binary() => any()}.
+-type create_proxy_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_firewall_policy_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"FirewallPolicyArn">> := string(),
+%% create_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
 %%   <<"UpdateToken">> => string()
 %% }
--type associate_firewall_policy_request() :: #{binary() => any()}.
+-type create_proxy_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_proxy_configuration_response() :: #{
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%% create_proxy_rules_by_request_phase() :: #{
+%%   <<"PostRESPONSE">> => list(create_proxy_rule()),
+%%   <<"PreDNS">> => list(create_proxy_rule()),
+%%   <<"PreREQUEST">> => list(create_proxy_rule())
+%% }
+-type create_proxy_rules_by_request_phase() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rules_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> := create_proxy_rules_by_request_phase()
+%% }
+-type create_proxy_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_proxy_rules_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
 %%   <<"UpdateToken">> => string()
 %% }
--type update_proxy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_endpoint_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata())
-%% }
--type list_vpc_endpoint_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% logging_configuration() :: #{
-%%   <<"LogDestinationConfigs">> => list(log_destination_config())
-%% }
--type logging_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_configuration_response() :: #{
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"UpdateToken">> => string()
-%% }
--type create_proxy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_response() :: #{
-%%   <<"ProxyRule">> => proxy_rule(),
-%%   <<"RemovedConditions">> => list(proxy_rule_condition()),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_proxy_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% tls_certificate_data() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateSerial">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type tls_certificate_data() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_policy() :: #{
-%%   <<"EnableTLSSessionHolding">> => boolean(),
-%%   <<"PolicyVariables">> => policy_variables(),
-%%   <<"StatefulDefaultActions">> => list(string()),
-%%   <<"StatefulEngineOptions">> => stateful_engine_options(),
-%%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()),
-%%   <<"StatelessCustomActions">> => list(custom_action()),
-%%   <<"StatelessDefaultActions">> => list(string()),
-%%   <<"StatelessFragmentDefaultActions">> => list(string()),
-%%   <<"StatelessRuleGroupReferences">> => list(stateless_rule_group_reference()),
-%%   <<"TLSInspectionConfigurationArn">> => string()
-%% }
--type firewall_policy() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vpc_endpoint_association_response() :: #{
-%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
-%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
-%% }
--type describe_vpc_endpoint_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_configuration_response() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string()
-%% }
--type delete_proxy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_analysis_report_results_request() :: #{
-%%   <<"AnalysisReportId">> := string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_analysis_report_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_rule_groups_from_proxy_configuration_response() :: #{
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"UpdateToken">> => string()
-%% }
--type detach_rule_groups_from_proxy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_network_firewall_transit_gateway_attachment_response() :: #{
-%%   <<"TransitGatewayAttachmentId">> => string(),
-%%   <<"TransitGatewayAttachmentStatus">> => list(any())
-%% }
--type reject_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_policy_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallPolicy">> := firewall_policy(),
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"FirewallPolicyName">> => string(),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_firewall_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_group_response() :: #{
-%%   <<"RuleGroupResponse">> => rule_group_response(),
-%%   <<"UpdateToken">> => string()
-%% }
--type create_rule_group_response() :: #{binary() => any()}.
+-type create_proxy_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_rule_group_request() :: #{
@@ -1012,448 +659,11 @@
 -type create_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% ip_set_metadata() :: #{
-%%   <<"ResolvedCIDRCount">> => integer()
-%% }
--type ip_set_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_response() :: #{
-%%   <<"Proxy">> => proxy(),
+%% create_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response(),
 %%   <<"UpdateToken">> => string()
 %% }
--type create_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_capacity_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type insufficient_capacity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rules_by_request_phase() :: #{
-%%   <<"PostRESPONSE">> => list(proxy_rule()),
-%%   <<"PreDNS">> => list(proxy_rule()),
-%%   <<"PreREQUEST">> => list(proxy_rule())
-%% }
--type proxy_rules_by_request_phase() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type proxy_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% list_analysis_reports_response() :: #{
-%%   <<"AnalysisReports">> => list(analysis_report()),
-%%   <<"NextToken">> => string()
-%% }
--type list_analysis_reports_response() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_status() :: #{
-%%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
-%%   <<"ConfigurationSyncStateSummary">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"SyncStates">> => map(),
-%%   <<"TransitGatewayAttachmentSyncState">> => transit_gateway_attachment_sync_state()
-%% }
--type firewall_status() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_association_status() :: #{
-%%   <<"AssociationSyncState">> => map(),
-%%   <<"Status">> => list(any())
-%% }
--type vpc_endpoint_association_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_response() :: #{
-%%   <<"Firewall">> => firewall(),
-%%   <<"FirewallStatus">> => firewall_status()
-%% }
--type delete_firewall_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_operations_response() :: #{
-%%   <<"FlowOperations">> => list(flow_operation_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_flow_operations_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_network_firewall_transit_gateway_attachment_response() :: #{
-%%   <<"TransitGatewayAttachmentId">> => string(),
-%%   <<"TransitGatewayAttachmentStatus">> => list(any())
-%% }
--type accept_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_request() :: #{
-%%   <<"ListenerProperties">> => list(listener_property_request()),
-%%   <<"NatGatewayId">> := string(),
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"ProxyName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TlsInterceptProperties">> := tls_intercept_properties_request()
-%% }
--type create_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_group_summary_request() :: #{
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_rule_group_summary_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_rule_group_response() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type delete_proxy_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vpc_endpoint_association_request() :: #{
-%%   <<"VpcEndpointAssociationArn">> := string()
-%% }
--type describe_vpc_endpoint_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_rules_response() :: #{
-%%   <<"ProxyRuleGroup">> => proxy_rule_group()
-%% }
--type delete_proxy_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_policy_response() :: #{
-%%   <<"FirewallPolicyResponse">> => firewall_policy_response()
-%% }
--type delete_firewall_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_association_metadata() :: #{
-%%   <<"VpcEndpointAssociationArn">> => string()
-%% }
--type vpc_endpoint_association_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_group_summary_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Summary">> => summary()
-%% }
--type describe_rule_group_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_policy_response() :: #{
-%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
-%%   <<"UpdateToken">> => string()
-%% }
--type create_firewall_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% server_certificate_scope() :: #{
-%%   <<"DestinationPorts">> => list(port_range()),
-%%   <<"Destinations">> => list(address()),
-%%   <<"Protocols">> => list(integer()),
-%%   <<"SourcePorts">> => list(port_range()),
-%%   <<"Sources">> => list(address())
-%% }
--type server_certificate_scope() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_response() :: #{
-%%   <<"Proxy">> => describe_proxy_resource(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_priorities_response() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"RuleGroupRequestPhase">> => list(any()),
-%%   <<"Rules">> => list(proxy_rule_priority()),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_proxy_rule_priorities_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_operation_metadata() :: #{
-%%   <<"FlowOperationId">> => string(),
-%%   <<"FlowOperationStatus">> => list(any()),
-%%   <<"FlowOperationType">> => list(any()),
-%%   <<"FlowRequestTimestamp">> => non_neg_integer()
-%% }
--type flow_operation_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone_mapping() :: #{
-%%   <<"AvailabilityZone">> => string()
-%% }
--type availability_zone_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% describe_logging_configuration_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
-%% }
--type describe_logging_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_subnets_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"UpdateToken">> => string()
-%% }
--type disassociate_subnets_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_proxy_rule_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_metadata())
-%% }
--type list_proxy_rule_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"AddConditions">> => list(proxy_rule_condition()),
-%%   <<"Description">> => string(),
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"ProxyRuleName">> := string(),
-%%   <<"RemoveConditions">> => list(proxy_rule_condition()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_proxy_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_rule_groups_from_proxy_configuration_request() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"RuleGroupArns">> => list(string()),
-%%   <<"RuleGroupNames">> => list(string()),
-%%   <<"UpdateToken">> := string()
-%% }
--type detach_rule_groups_from_proxy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_configuration_request() :: #{
-%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_proxy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% sync_state() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"Config">> => map()
-%% }
--type sync_state() :: #{binary() => any()}.
-
-%% Example:
-%% hits() :: #{
-%%   <<"Count">> => integer()
-%% }
--type hits() :: #{binary() => any()}.
-
-%% Example:
-%% tls_intercept_properties_request() :: #{
-%%   <<"PcaArn">> => string(),
-%%   <<"TlsInterceptMode">> => list(any())
-%% }
--type tls_intercept_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_response() :: #{
-%%   <<"Firewall">> => firewall(),
-%%   <<"FirewallStatus">> => firewall_status()
-%% }
--type create_firewall_response() :: #{binary() => any()}.
-
-%% Example:
-%% per_object_status() :: #{
-%%   <<"SyncStatus">> => list(any()),
-%%   <<"UpdateToken">> => string()
-%% }
--type per_object_status() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_association() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"SubnetMapping">> => subnet_mapping(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointAssociationId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type vpc_endpoint_association() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_rule_response() :: #{
-%%   <<"ProxyRule">> => proxy_rule(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_proxy_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_firewall_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
-%% }
--type describe_firewall_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_t_l_s_inspection_configuration_request() :: #{
-%%   <<"TLSInspectionConfigurationArn">> => string(),
-%%   <<"TLSInspectionConfigurationName">> => string()
-%% }
--type delete_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_group_response() :: #{
-%%   <<"AnalysisResults">> => list(analysis_result()),
-%%   <<"Capacity">> => integer(),
-%%   <<"ConsumedCapacity">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NumberOfAssociations">> => integer(),
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupId">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"RuleGroupStatus">> => list(any()),
-%%   <<"SnsTopic">> => string(),
-%%   <<"SourceMetadata">> => source_metadata(),
-%%   <<"SummaryConfiguration">> => summary_configuration(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any())
-%% }
--type rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_priorities_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"RuleGroupRequestPhase">> := list(any()),
-%%   <<"Rules">> := list(proxy_rule_priority()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_proxy_rule_priorities_request() :: #{binary() => any()}.
-
-%% Example:
-%% analysis_report() :: #{
-%%   <<"AnalysisReportId">> => string(),
-%%   <<"AnalysisType">> => list(any()),
-%%   <<"ReportTime">> => non_neg_integer(),
-%%   <<"Status">> => string()
-%% }
--type analysis_report() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set() :: #{
-%%   <<"Definition">> => list(string())
-%% }
--type ip_set() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_operation_results_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> := string(),
-%%   <<"FlowOperationId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type list_flow_operation_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_network_firewall_transit_gateway_attachment_request() :: #{
-%%   <<"TransitGatewayAttachmentId">> := string()
-%% }
--type accept_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% stateful_rule() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Header">> => header(),
-%%   <<"RuleOptions">> => list(rule_option())
-%% }
--type stateful_rule() :: #{binary() => any()}.
-
-%% Example:
-%% listener_property() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type listener_property() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_endpoint_association_response() :: #{
-%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
-%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
-%% }
--type create_vpc_endpoint_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% stateful_rule_group_reference() :: #{
-%%   <<"DeepThreatInspection">> => boolean(),
-%%   <<"Override">> => stateful_rule_group_override(),
-%%   <<"Priority">> => integer(),
-%%   <<"ResourceArn">> => string()
-%% }
--type stateful_rule_group_reference() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_configuration_request() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string()
-%% }
--type describe_proxy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewalls_response() :: #{
-%%   <<"Firewalls">> => list(firewall_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewalls_response() :: #{binary() => any()}.
+-type create_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_t_l_s_inspection_configuration_request() :: #{
@@ -1466,633 +676,11 @@
 -type create_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_analysis_reports_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_analysis_reports_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_request() :: #{
-%%   <<"NatGatewayId">> := string(),
-%%   <<"ProxyArn">> => string(),
-%%   <<"ProxyName">> => string()
-%% }
--type delete_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_policy_response() :: #{
-%%   <<"ConsumedStatefulDomainCapacity">> => integer(),
-%%   <<"ConsumedStatefulRuleCapacity">> => integer(),
-%%   <<"ConsumedStatelessRuleCapacity">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"FirewallPolicyId">> => string(),
-%%   <<"FirewallPolicyName">> => string(),
-%%   <<"FirewallPolicyStatus">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NumberOfAssociations">> => integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type firewall_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_operation() :: #{
-%%   <<"FlowFilters">> => list(flow_filter()),
-%%   <<"MinimumFlowAgeInSeconds">> => integer()
-%% }
--type flow_operation() :: #{binary() => any()}.
-
-%% Example:
-%% start_flow_capture_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FlowOperationId">> => string(),
-%%   <<"FlowOperationStatus">> => list(any())
-%% }
--type start_flow_capture_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_policy_change_protection_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"FirewallPolicyChangeProtection">> => boolean(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_policy_change_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_rule_group_priorities_response() :: #{
-%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_priority_result()),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_proxy_rule_group_priorities_response() :: #{binary() => any()}.
-
-%% Example:
-%% reference_sets() :: #{
-%%   <<"IPSetReferences">> => map()
-%% }
--type reference_sets() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_rule_group_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type delete_proxy_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_subnet_change_protection_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetChangeProtection">> := boolean(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_subnet_change_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_firewall_transit_gateway_attachment_request() :: #{
-%%   <<"TransitGatewayAttachmentId">> := string()
-%% }
--type delete_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_operations_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> := string(),
-%%   <<"FlowOperationType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type list_flow_operations_request() :: #{binary() => any()}.
-
-%% Example:
-%% firewall() :: #{
-%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
-%%   <<"DeleteProtection">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallId">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"FirewallPolicyChangeProtection">> => boolean(),
-%%   <<"NumberOfAssociations">> => integer(),
-%%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransitGatewayId">> => string(),
-%%   <<"TransitGatewayOwnerAccountId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type firewall() :: #{binary() => any()}.
-
-%% Example:
-%% policy_variables() :: #{
-%%   <<"RuleVariables">> => map()
-%% }
--type policy_variables() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_rule_group_response() :: #{
-%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
-%%   <<"UpdateToken">> => string()
-%% }
--type create_proxy_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_firewall_request() :: #{
-%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
-%%   <<"DeleteProtection">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallName">> := string(),
-%%   <<"FirewallPolicyArn">> := string(),
-%%   <<"FirewallPolicyChangeProtection">> => boolean(),
-%%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransitGatewayId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type create_firewall_request() :: #{binary() => any()}.
-
-%% Example:
-%% analysis_type_report_result() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"FirstAccessed">> => non_neg_integer(),
-%%   <<"Hits">> => hits(),
-%%   <<"LastAccessed">> => non_neg_integer(),
-%%   <<"Protocol">> => string(),
-%%   <<"UniqueSources">> => unique_sources()
-%% }
--type analysis_type_report_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
-%% }
--type delete_firewall_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_summary() :: #{
-%%   <<"Metadata">> => string(),
-%%   <<"Msg">> => string(),
-%%   <<"SID">> => string()
-%% }
--type rule_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_t_l_s_inspection_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata())
-%% }
--type list_t_l_s_inspection_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_flow_flush_request() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> := string(),
-%%   <<"FlowFilters">> := list(flow_filter()),
-%%   <<"MinimumFlowAgeInSeconds">> => integer(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type start_flow_flush_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_flow_flush_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FlowOperationId">> => string(),
-%%   <<"FlowOperationStatus">> => list(any())
-%% }
--type start_flow_flush_response() :: #{binary() => any()}.
-
-%% Example:
-%% t_l_s_inspection_configuration_response() :: #{
-%%   <<"CertificateAuthority">> => tls_certificate_data(),
-%%   <<"Certificates">> => list(tls_certificate_data()),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NumberOfAssociations">> => integer(),
-%%   <<"TLSInspectionConfigurationArn">> => string(),
-%%   <<"TLSInspectionConfigurationId">> => string(),
-%%   <<"TLSInspectionConfigurationName">> => string(),
-%%   <<"TLSInspectionConfigurationStatus">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type t_l_s_inspection_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_t_l_s_inspection_configuration_response() :: #{
-%%   <<"TLSInspectionConfiguration">> => t_l_s_inspection_configuration(),
-%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_timeouts() :: #{
-%%   <<"TcpIdleTimeoutSeconds">> => integer()
-%% }
--type flow_timeouts() :: #{binary() => any()}.
-
-%% Example:
-%% custom_action() :: #{
-%%   <<"ActionDefinition">> => action_definition(),
-%%   <<"ActionName">> => string()
-%% }
--type custom_action() :: #{binary() => any()}.
-
-%% Example:
-%% port_range() :: #{
-%%   <<"FromPort">> => integer(),
-%%   <<"ToPort">> => integer()
-%% }
--type port_range() :: #{binary() => any()}.
-
-%% Example:
-%% list_proxies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Proxies">> => list(proxy_metadata())
-%% }
--type list_proxies_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_rules_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"Rules">> := list(string())
-%% }
--type delete_proxy_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% rules_source_list() :: #{
-%%   <<"GeneratedRulesType">> => list(any()),
-%%   <<"TargetTypes">> => list(list(any())()),
-%%   <<"Targets">> => list(string())
-%% }
--type rules_source_list() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_availability_zones_request() :: #{
-%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type disassociate_availability_zones_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewall_policies_response() :: #{
-%%   <<"FirewallPolicies">> => list(firewall_policy_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_firewall_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_association_request() :: #{
-%%   <<"ContainerAssociationArn">> => string(),
-%%   <<"ContainerAssociationName">> => string(),
-%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_container_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_delete_protection_response() :: #{
-%%   <<"DeleteProtection">> => boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_delete_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_config_rule_group() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"Type">> => string()
-%% }
--type proxy_config_rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% port_set() :: #{
-%%   <<"Definition">> => list(string())
-%% }
--type port_set() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_priority() :: #{
-%%   <<"NewPosition">> => integer(),
-%%   <<"ProxyRuleName">> => string()
-%% }
--type proxy_rule_priority() :: #{binary() => any()}.
-
-%% Example:
-%% transit_gateway_attachment_sync_state() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"TransitGatewayAttachmentStatus">> => list(any())
-%% }
--type transit_gateway_attachment_sync_state() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_usage_summary() :: #{
-%%   <<"CIDRs">> => c_id_r_summary()
-%% }
--type capacity_usage_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_encryption_configuration_request() :: #{
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_encryption_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_t_l_s_inspection_configuration_response() :: #{
-%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response()
-%% }
--type delete_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_group_request() :: #{
-%%   <<"AnalyzeRuleGroup">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"RuleGroup">> => rule_group(),
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Rules">> => string(),
-%%   <<"SourceMetadata">> => source_metadata(),
-%%   <<"SummaryConfiguration">> => summary_configuration(),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_group_response() :: #{
-%%   <<"RuleGroupResponse">> => rule_group_response()
-%% }
--type delete_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
 %% create_t_l_s_inspection_configuration_response() :: #{
 %%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
 %%   <<"UpdateToken">> => string()
 %% }
 -type create_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% attach_rule_groups_to_proxy_configuration_response() :: #{
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"UpdateToken">> => string()
-%% }
--type attach_rule_groups_to_proxy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_proxy_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_proxy_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_group_attachment() :: #{
-%%   <<"InsertPosition">> => integer(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type proxy_rule_group_attachment() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_rule_group_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type describe_proxy_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_policy_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type firewall_policy_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_response() :: #{
-%%   <<"Proxy">> => proxy(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% stateful_rule_options() :: #{
-%%   <<"RuleOrder">> => list(any())
-%% }
--type stateful_rule_options() :: #{binary() => any()}.
-
-%% Example:
-%% list_firewalls_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VpcIds">> => list(string())
-%% }
--type list_firewalls_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_firewall_policy_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type associate_firewall_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% log_destination_config() :: #{
-%%   <<"LogDestination">> => map(),
-%%   <<"LogDestinationType">> => list(any()),
-%%   <<"LogType">> => list(any())
-%% }
--type log_destination_config() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_policy_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_resource_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_configuration_request() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string()
-%% }
--type delete_proxy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_firewall_response() :: #{
-%%   <<"Firewall">> => firewall(),
-%%   <<"FirewallStatus">> => firewall_status(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_firewall_response() :: #{binary() => any()}.
-
-%% Example:
-%% unique_sources() :: #{
-%%   <<"Count">> => integer()
-%% }
--type unique_sources() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_t_l_s_inspection_configuration_response() :: #{
-%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% rule_variables() :: #{
-%%   <<"IPSets">> => map(),
-%%   <<"PortSets">> => map()
-%% }
--type rule_variables() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_analysis_settings_response() :: #{
-%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_analysis_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_logging_configuration_response() :: #{
-%%   <<"EnableMonitoringDashboard">> => boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type describe_logging_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% listener_property_request() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type listener_property_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policy_response() :: #{
-%%   <<"Policy">> => string()
-%% }
--type describe_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_subnets_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"UpdateToken">> => string()
-%% }
--type disassociate_subnets_request() :: #{binary() => any()}.
-
-%% Example:
-%% log_destination_permission_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type log_destination_permission_exception() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone_metadata() :: #{
-%%   <<"IPAddressType">> => list(any())
-%% }
--type availability_zone_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% delete_firewall_policy_request() :: #{
-%%   <<"FirewallPolicyArn">> => string(),
-%%   <<"FirewallPolicyName">> => string()
-%% }
--type delete_firewall_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_response() :: #{
-%%   <<"NatGatewayId">> => string(),
-%%   <<"ProxyArn">> => string(),
-%%   <<"ProxyName">> => string()
-%% }
--type delete_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_vpc_endpoint_association_request() :: #{
@@ -2105,31 +693,131 @@
 -type create_vpc_endpoint_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_analysis_report_request() :: #{
-%%   <<"AnalysisType">> := list(any()),
+%% create_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
+%% }
+-type create_vpc_endpoint_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_action() :: #{
+%%   <<"ActionDefinition">> => action_definition(),
+%%   <<"ActionName">> => string()
+%% }
+-type custom_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string()
+%% }
+-type delete_container_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_container_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_request() :: #{
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyName">> => string()
+%% }
+-type delete_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response()
+%% }
+-type delete_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string()
 %% }
--type start_analysis_report_request() :: #{binary() => any()}.
+-type delete_firewall_request() :: #{binary() => any()}.
 
 %% Example:
-%% reject_network_firewall_transit_gateway_attachment_request() :: #{
+%% delete_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status()
+%% }
+-type delete_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_firewall_transit_gateway_attachment_request() :: #{
 %%   <<"TransitGatewayAttachmentId">> := string()
 %% }
--type reject_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+-type delete_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
 
 %% Example:
-%% dimension() :: #{
-%%   <<"Value">> => string()
+%% delete_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
 %% }
--type dimension() :: #{binary() => any()}.
+-type delete_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_proxy_rule_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% delete_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
 %% }
--type list_proxy_rule_groups_request() :: #{binary() => any()}.
+-type delete_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_configuration_response() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
+%% }
+-type delete_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_request() :: #{
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type delete_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_response() :: #{
+%%   <<"NatGatewayId">> => string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type delete_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rule_group_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type delete_proxy_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type delete_proxy_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rules_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> := list(string())
+%% }
+-type delete_proxy_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_proxy_rules_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group()
+%% }
+-type delete_proxy_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_request() :: #{
@@ -2138,106 +826,57 @@
 -type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_proxy_configuration_request() :: #{
-%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
-%%   <<"Description">> => string(),
-%%   <<"ProxyConfigurationName">> := string(),
-%%   <<"RuleGroupArns">> => list(string()),
-%%   <<"RuleGroupNames">> => list(string()),
-%%   <<"Tags">> => list(tag())
+%% delete_resource_policy_response() :: #{
+
 %% }
--type create_proxy_configuration_request() :: #{binary() => any()}.
+-type delete_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% summary_configuration() :: #{
-%%   <<"RuleOptions">> => list(list(any())())
+%% delete_rule_group_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type summary_configuration() :: #{binary() => any()}.
+-type delete_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_availability_zones_request() :: #{
-%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
+%% delete_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response()
 %% }
--type associate_availability_zones_request() :: #{binary() => any()}.
+-type delete_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_t_l_s_inspection_configuration_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"TLSInspectionConfiguration">> := t_l_s_inspection_configuration(),
+%% delete_t_l_s_inspection_configuration_request() :: #{
 %%   <<"TLSInspectionConfigurationArn">> => string(),
-%%   <<"TLSInspectionConfigurationName">> => string(),
-%%   <<"UpdateToken">> := string()
+%%   <<"TLSInspectionConfigurationName">> => string()
 %% }
--type update_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+-type delete_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_flow_operation_results_response() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FlowOperationId">> => string(),
-%%   <<"FlowOperationStatus">> => list(any()),
-%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
-%%   <<"Flows">> => list(flow()),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VpcEndpointAssociationArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
+%% delete_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response()
 %% }
--type list_flow_operation_results_response() :: #{binary() => any()}.
+-type delete_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_delete_protection_request() :: #{
-%%   <<"DeleteProtection">> := boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
+%% delete_vpc_endpoint_association_request() :: #{
+%%   <<"VpcEndpointAssociationArn">> := string()
 %% }
--type update_firewall_delete_protection_request() :: #{binary() => any()}.
+-type delete_vpc_endpoint_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% source_metadata() :: #{
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceUpdateToken">> => string()
+%% delete_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
 %% }
--type source_metadata() :: #{binary() => any()}.
+-type delete_vpc_endpoint_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_firewall_policy_response() :: #{
-%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
-%%   <<"UpdateToken">> => string()
+%% describe_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string()
 %% }
--type update_firewall_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_group_priority_result() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"ProxyRuleGroupName">> => string()
-%% }
--type proxy_rule_group_priority_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_firewall_description_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_firewall_description_response() :: #{binary() => any()}.
-
-%% Example:
-%% match_attributes() :: #{
-%%   <<"DestinationPorts">> => list(port_range()),
-%%   <<"Destinations">> => list(address()),
-%%   <<"Protocols">> => list(integer()),
-%%   <<"SourcePorts">> => list(port_range()),
-%%   <<"Sources">> => list(address()),
-%%   <<"TCPFlags">> => list(t_c_p_flag_field())
-%% }
--type match_attributes() :: #{binary() => any()}.
+-type describe_container_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_container_association_response() :: #{
@@ -2255,282 +894,21 @@
 -type describe_container_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% container_association_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type container_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_group_metadata_response() :: #{
-%%   <<"Capacity">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ListingName">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"StatefulRuleOptions">> => stateful_rule_options(),
-%%   <<"Type">> => list(any()),
-%%   <<"VendorName">> => string()
-%% }
--type describe_rule_group_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_rules_by_request_phase() :: #{
-%%   <<"PostRESPONSE">> => list(create_proxy_rule()),
-%%   <<"PreDNS">> => list(create_proxy_rule()),
-%%   <<"PreREQUEST">> => list(create_proxy_rule())
-%% }
--type create_proxy_rules_by_request_phase() :: #{binary() => any()}.
-
-%% Example:
-%% associate_subnets_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> := list(subnet_mapping()),
-%%   <<"UpdateToken">> => string()
-%% }
--type associate_subnets_request() :: #{binary() => any()}.
-
-%% Example:
-%% address() :: #{
-%%   <<"AddressDefinition">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-%% Example:
-%% describe_proxy_rule_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"ProxyRuleName">> := string()
-%% }
--type describe_proxy_rule_request() :: #{binary() => any()}.
-
-%% Example:
 %% describe_firewall_metadata_request() :: #{
 %%   <<"FirewallArn">> => string()
 %% }
 -type describe_firewall_metadata_request() :: #{binary() => any()}.
 
 %% Example:
-%% flow() :: #{
-%%   <<"Age">> => integer(),
-%%   <<"ByteCount">> => float(),
-%%   <<"DestinationAddress">> => address(),
-%%   <<"DestinationPort">> => string(),
-%%   <<"PacketCount">> => integer(),
-%%   <<"Protocol">> => string(),
-%%   <<"SourceAddress">> => address(),
-%%   <<"SourcePort">> => string()
-%% }
--type flow() :: #{binary() => any()}.
-
-%% Example:
-%% update_logging_configuration_response() :: #{
-%%   <<"EnableMonitoringDashboard">> => boolean(),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type update_logging_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_group_response() :: #{
-%%   <<"RuleGroup">> => rule_group(),
-%%   <<"RuleGroupResponse">> => rule_group_response(),
-%%   <<"UpdateToken">> => string()
-%% }
--type describe_rule_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule_group() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DeleteTime">> => non_neg_integer(),
+%% describe_firewall_metadata_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"Rules">> => proxy_rules_by_request_phase(),
-%%   <<"Tags">> => list(tag())
-%% }
--type proxy_rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% stateless_rule() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"RuleDefinition">> => rule_definition()
-%% }
--type stateless_rule() :: #{binary() => any()}.
-
-%% Example:
-%% attach_rule_groups_to_proxy_configuration_request() :: #{
-%%   <<"ProxyConfigurationArn">> => string(),
-%%   <<"ProxyConfigurationName">> => string(),
-%%   <<"RuleGroups">> := list(proxy_rule_group_attachment()),
-%%   <<"UpdateToken">> := string()
-%% }
--type attach_rule_groups_to_proxy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_proxy_request() :: #{
-%%   <<"ListenerPropertiesToAdd">> => list(listener_property_request()),
-%%   <<"ListenerPropertiesToRemove">> => list(listener_property_request()),
-%%   <<"NatGatewayId">> := string(),
-%%   <<"ProxyArn">> => string(),
-%%   <<"ProxyName">> => string(),
-%%   <<"TlsInterceptProperties">> => tls_intercept_properties_request(),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_group_request() :: #{
-%%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleGroupName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type delete_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% stateless_rule_group_reference() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"ResourceArn">> => string()
-%% }
--type stateless_rule_group_reference() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_metadata() :: #{
 %%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SupportedAvailabilityZones">> => map(),
 %%   <<"TransitGatewayAttachmentId">> => string()
 %% }
--type firewall_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% tls_intercept_properties() :: #{
-%%   <<"PcaArn">> => string(),
-%%   <<"TlsInterceptMode">> => list(any())
-%% }
--type tls_intercept_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_association_request() :: #{
-%%   <<"VpcEndpointAssociationArn">> := string()
-%% }
--type delete_vpc_endpoint_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% summary() :: #{
-%%   <<"RuleSummaries">> => list(rule_summary())
-%% }
--type summary() :: #{binary() => any()}.
-
-%% Example:
-%% c_id_r_summary() :: #{
-%%   <<"AvailableCIDRCount">> => integer(),
-%%   <<"IPSetReferences">> => map(),
-%%   <<"UtilizedCIDRCount">> => integer()
-%% }
--type c_id_r_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_subnet_change_protection_response() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"UpdateToken">> => string()
-%% }
--type update_subnet_change_protection_response() :: #{binary() => any()}.
-
-%% Example:
-%% stateless_rules_and_custom_actions() :: #{
-%%   <<"CustomActions">> => list(custom_action()),
-%%   <<"StatelessRules">> => list(stateless_rule())
-%% }
--type stateless_rules_and_custom_actions() :: #{binary() => any()}.
-
-%% Example:
-%% rule_option() :: #{
-%%   <<"Keyword">> => string(),
-%%   <<"Settings">> => list(string())
-%% }
--type rule_option() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_availability_zones_response() :: #{
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
-%%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string(),
-%%   <<"UpdateToken">> => string()
-%% }
--type disassociate_availability_zones_response() :: #{binary() => any()}.
-
-%% Example:
-%% check_certificate_revocation_status_actions() :: #{
-%%   <<"RevokedStatusAction">> => list(any()),
-%%   <<"UnknownStatusAction">> => list(any())
-%% }
--type check_certificate_revocation_status_actions() :: #{binary() => any()}.
-
-%% Example:
-%% start_analysis_report_response() :: #{
-%%   <<"AnalysisReportId">> => string()
-%% }
--type start_analysis_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set_reference() :: #{
-%%   <<"ReferenceArn">> => string()
-%% }
--type ip_set_reference() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_rule_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ProxyRuleGroupName">> := string(),
-%%   <<"Rules">> => proxy_rules_by_request_phase(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_proxy_rule_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_monitoring_configuration() :: #{
-%%   <<"AttributeFilters">> => list(container_attribute()),
-%%   <<"ClusterArn">> => string()
-%% }
--type container_monitoring_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_rule() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Conditions">> => list(proxy_rule_condition()),
-%%   <<"Description">> => string(),
-%%   <<"ProxyRuleName">> => string()
-%% }
--type proxy_rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_groups_request() :: #{
-%%   <<"ManagedType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"SubscriptionStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type list_rule_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% action_definition() :: #{
-%%   <<"PublishMetricAction">> => publish_metric_action()
-%% }
--type action_definition() :: #{binary() => any()}.
+-type describe_firewall_metadata_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_policy_request() :: #{
@@ -2538,34 +916,6 @@
 %%   <<"FirewallPolicyName">> => string()
 %% }
 -type describe_firewall_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% server_certificate() :: #{
-%%   <<"ResourceArn">> => string()
-%% }
--type server_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type describe_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_proxy_rules_request() :: #{
-%%   <<"ProxyRuleGroupArn">> => string(),
-%%   <<"ProxyRuleGroupName">> => string(),
-%%   <<"Rules">> := create_proxy_rules_by_request_phase()
-%% }
--type create_proxy_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_endpoint_associations_request() :: #{
-%%   <<"FirewallArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_endpoint_associations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_firewall_policy_response() :: #{
@@ -2576,19 +926,80 @@
 -type describe_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_container_associations_response() :: #{
-%%   <<"ContainerAssociations">> => list(container_association_summary()),
-%%   <<"NextToken">> => string()
+%% describe_firewall_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
 %% }
--type list_container_associations_response() :: #{binary() => any()}.
+-type describe_firewall_request() :: #{binary() => any()}.
 
 %% Example:
-%% proxy_config_default_rule_phase_actions_request() :: #{
-%%   <<"PostRESPONSE">> => list(any()),
-%%   <<"PreDNS">> => list(any()),
-%%   <<"PreREQUEST">> => list(any())
+%% describe_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status(),
+%%   <<"UpdateToken">> => string()
 %% }
--type proxy_config_default_rule_phase_actions_request() :: #{binary() => any()}.
+-type describe_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_operation_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationId">> := string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type describe_flow_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flow_operation_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperation">> => flow_operation(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type describe_flow_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_configuration_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type describe_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_configuration_response() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type describe_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string()
+%% }
+-type describe_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_request() :: #{
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string()
+%% }
+-type describe_proxy_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_proxy_resource() :: #{
@@ -2613,6 +1024,1290 @@
 -type describe_proxy_resource() :: #{binary() => any()}.
 
 %% Example:
+%% describe_proxy_response() :: #{
+%%   <<"Proxy">> => describe_proxy_resource(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_group_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type describe_proxy_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_group_response() :: #{
+%%   <<"ProxyRuleGroup">> => proxy_rule_group(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"ProxyRuleName">> := string()
+%% }
+-type describe_proxy_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_proxy_rule_response() :: #{
+%%   <<"ProxyRule">> => proxy_rule(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_proxy_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type describe_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_metadata_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_metadata_response() :: #{
+%%   <<"Capacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ListingName">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"StatefulRuleOptions">> => stateful_rule_options(),
+%%   <<"Type">> => list(any()),
+%%   <<"VendorName">> => string()
+%% }
+-type describe_rule_group_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_request() :: #{
+%%   <<"AnalyzeRuleGroup">> => boolean(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_response() :: #{
+%%   <<"RuleGroup">> => rule_group(),
+%%   <<"RuleGroupResponse">> => rule_group_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_summary_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_summary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Summary">> => summary()
+%% }
+-type describe_rule_group_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_t_l_s_inspection_configuration_request() :: #{
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string()
+%% }
+-type describe_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfiguration">> => t_l_s_inspection_configuration(),
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_endpoint_association_request() :: #{
+%%   <<"VpcEndpointAssociationArn">> := string()
+%% }
+-type describe_vpc_endpoint_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_endpoint_association_response() :: #{
+%%   <<"VpcEndpointAssociation">> => vpc_endpoint_association(),
+%%   <<"VpcEndpointAssociationStatus">> => vpc_endpoint_association_status()
+%% }
+-type describe_vpc_endpoint_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% detach_rule_groups_from_proxy_configuration_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroupArns">> => list(string()),
+%%   <<"RuleGroupNames">> => list(string()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type detach_rule_groups_from_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_rule_groups_from_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type detach_rule_groups_from_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_availability_zones_request() :: #{
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_availability_zones_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_availability_zones_response() :: #{
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_availability_zones_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_subnets_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_subnets_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_subnets_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_subnets_response() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% firewall() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallId">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"NatGatewayMappings">> => list(nat_gateway_mapping()),
+%%   <<"NoSourcePreservation">> => boolean(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"ProxySettings">> => proxy_settings(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"TransitGatewayOwnerAccountId">> => string(),
+%%   <<"VpcEndpoint">> => vpc_endpoint(),
+%%   <<"VpcId">> => string()
+%% }
+-type firewall() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_metadata() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"TransitGatewayAttachmentId">> => string()
+%% }
+-type firewall_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy() :: #{
+%%   <<"EnableTLSSessionHolding">> => boolean(),
+%%   <<"PolicyVariables">> => policy_variables(),
+%%   <<"StatefulDefaultActions">> => list(string()),
+%%   <<"StatefulEngineOptions">> => stateful_engine_options(),
+%%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()),
+%%   <<"StatelessCustomActions">> => list(custom_action()),
+%%   <<"StatelessDefaultActions">> => list(string()),
+%%   <<"StatelessFragmentDefaultActions">> => list(string()),
+%%   <<"StatelessRuleGroupReferences">> => list(stateless_rule_group_reference()),
+%%   <<"TLSInspectionConfigurationArn">> => string()
+%% }
+-type firewall_policy() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type firewall_policy_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_response() :: #{
+%%   <<"ConsumedStatefulDomainCapacity">> => integer(),
+%%   <<"ConsumedStatefulRuleCapacity">> => integer(),
+%%   <<"ConsumedStatelessRuleCapacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyId">> => string(),
+%%   <<"FirewallPolicyName">> => string(),
+%%   <<"FirewallPolicyStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_status() :: #{
+%%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
+%%   <<"ConfigurationSyncStateSummary">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"SyncStates">> => map(),
+%%   <<"TransitGatewayAttachmentSyncState">> => transit_gateway_attachment_sync_state()
+%% }
+-type firewall_status() :: #{binary() => any()}.
+
+%% Example:
+%% flow() :: #{
+%%   <<"Age">> => integer(),
+%%   <<"ByteCount">> => float(),
+%%   <<"DestinationAddress">> => address(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"PacketCount">> => integer(),
+%%   <<"Protocol">> => string(),
+%%   <<"SourceAddress">> => address(),
+%%   <<"SourcePort">> => string()
+%% }
+-type flow() :: #{binary() => any()}.
+
+%% Example:
+%% flow_filter() :: #{
+%%   <<"DestinationAddress">> => address(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"Protocols">> => list(string()),
+%%   <<"SourceAddress">> => address(),
+%%   <<"SourcePort">> => string()
+%% }
+-type flow_filter() :: #{binary() => any()}.
+
+%% Example:
+%% flow_operation() :: #{
+%%   <<"FlowFilters">> => list(flow_filter()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer()
+%% }
+-type flow_operation() :: #{binary() => any()}.
+
+%% Example:
+%% flow_operation_metadata() :: #{
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer()
+%% }
+-type flow_operation_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% flow_timeouts() :: #{
+%%   <<"TcpIdleTimeoutSeconds">> => integer()
+%% }
+-type flow_timeouts() :: #{binary() => any()}.
+
+%% Example:
+%% get_analysis_report_results_request() :: #{
+%%   <<"AnalysisReportId">> := string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_analysis_report_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_analysis_report_results_response() :: #{
+%%   <<"AnalysisReportResults">> => list(analysis_type_report_result()),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type get_analysis_report_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% header() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"Direction">> => list(any()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"SourcePort">> => string()
+%% }
+-type header() :: #{binary() => any()}.
+
+%% Example:
+%% hits() :: #{
+%%   <<"Count">> => integer()
+%% }
+-type hits() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"Definition">> => list(string())
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_metadata() :: #{
+%%   <<"ResolvedCIDRCount">> => integer()
+%% }
+-type ip_set_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_reference() :: #{
+%%   <<"ReferenceArn">> => string()
+%% }
+-type ip_set_reference() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_analysis_reports_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analysis_reports_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_analysis_reports_response() :: #{
+%%   <<"AnalysisReports">> => list(analysis_report()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analysis_reports_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_associations_response() :: #{
+%%   <<"ContainerAssociations">> => list(container_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_container_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_response() :: #{
+%%   <<"FirewallPolicies">> => list(firewall_policy_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewalls_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcIds">> => list(string())
+%% }
+-type list_firewalls_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewalls_response() :: #{
+%%   <<"Firewalls">> => list(firewall_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewalls_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_operation_results_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type list_flow_operation_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_operation_results_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any()),
+%%   <<"FlowRequestTimestamp">> => non_neg_integer(),
+%%   <<"Flows">> => list(flow()),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type list_flow_operation_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_operations_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowOperationType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type list_flow_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flow_operations_response() :: #{
+%%   <<"FlowOperations">> => list(flow_operation_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Proxies">> => list(proxy_metadata())
+%% }
+-type list_proxies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxy_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxy_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxy_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxyConfigurations">> => list(proxy_configuration_metadata())
+%% }
+-type list_proxy_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxy_rule_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proxy_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_proxy_rule_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_metadata())
+%% }
+-type list_proxy_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_request() :: #{
+%%   <<"ManagedType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"SubscriptionStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type list_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleGroups">> => list(rule_group_metadata())
+%% }
+-type list_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_t_l_s_inspection_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_t_l_s_inspection_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_t_l_s_inspection_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata())
+%% }
+-type list_t_l_s_inspection_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_endpoint_associations_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_endpoint_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_endpoint_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata())
+%% }
+-type list_vpc_endpoint_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% listener_property() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type listener_property() :: #{binary() => any()}.
+
+%% Example:
+%% listener_property_request() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type listener_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination_config() :: #{
+%%   <<"LogDestination">> => map(),
+%%   <<"LogDestinationType">> => list(any()),
+%%   <<"LogType">> => list(any())
+%% }
+-type log_destination_config() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination_permission_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type log_destination_permission_exception() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogDestinationConfigs">> => list(log_destination_config())
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% match_attributes() :: #{
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(address()),
+%%   <<"Protocols">> => list(integer()),
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(address()),
+%%   <<"TCPFlags">> => list(t_c_p_flag_field())
+%% }
+-type match_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% nat_gateway_attachment() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"NatGatewayId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type nat_gateway_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% nat_gateway_mapping() :: #{
+%%   <<"NatGatewayId">> => string()
+%% }
+-type nat_gateway_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% per_object_status() :: #{
+%%   <<"SyncStatus">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type per_object_status() :: #{binary() => any()}.
+
+%% Example:
+%% policy_variables() :: #{
+%%   <<"RuleVariables">> => map()
+%% }
+-type policy_variables() :: #{binary() => any()}.
+
+%% Example:
+%% port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+%% Example:
+%% port_set() :: #{
+%%   <<"Definition">> => list(string())
+%% }
+-type port_set() :: #{binary() => any()}.
+
+%% Example:
+%% proxy() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"ListenerProperties">> => list(listener_property()),
+%%   <<"NatGatewayId">> => string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"ProxyModifyState">> => list(any()),
+%%   <<"ProxyName">> => string(),
+%%   <<"ProxyState">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TlsInterceptProperties">> => tls_intercept_properties(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type proxy() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_config_default_rule_phase_actions_request() :: #{
+%%   <<"PostRESPONSE">> => list(any()),
+%%   <<"PreDNS">> => list(any()),
+%%   <<"PreREQUEST">> => list(any())
+%% }
+-type proxy_config_default_rule_phase_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_config_rule_group() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type proxy_config_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DefaultRulePhaseActions">> => proxy_config_default_rule_phase_actions_request(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> => list(proxy_config_rule_group()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_configuration_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Conditions">> => list(proxy_rule_condition()),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleName">> => string()
+%% }
+-type proxy_rule() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_condition() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionOperator">> => string(),
+%%   <<"ConditionValues">> => list(string())
+%% }
+-type proxy_rule_condition() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"Rules">> => proxy_rules_by_request_phase(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proxy_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_attachment() :: #{
+%%   <<"InsertPosition">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type proxy_rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_priority() :: #{
+%%   <<"NewPosition">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_priority() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_group_priority_result() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ProxyRuleGroupName">> => string()
+%% }
+-type proxy_rule_group_priority_result() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rule_priority() :: #{
+%%   <<"NewPosition">> => integer(),
+%%   <<"ProxyRuleName">> => string()
+%% }
+-type proxy_rule_priority() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_rules_by_request_phase() :: #{
+%%   <<"PostRESPONSE">> => list(proxy_rule()),
+%%   <<"PreDNS">> => list(proxy_rule()),
+%%   <<"PreREQUEST">> => list(proxy_rule())
+%% }
+-type proxy_rules_by_request_phase() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_settings() :: #{
+%%   <<"ListenerProperties">> => list(listener_property())
+%% }
+-type proxy_settings() :: #{binary() => any()}.
+
+%% Example:
+%% publish_metric_action() :: #{
+%%   <<"Dimensions">> => list(dimension())
+%% }
+-type publish_metric_action() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% reference_sets() :: #{
+%%   <<"IPSetReferences">> => map()
+%% }
+-type reference_sets() :: #{binary() => any()}.
+
+%% Example:
+%% reject_network_firewall_transit_gateway_attachment_request() :: #{
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type reject_network_firewall_transit_gateway_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_network_firewall_transit_gateway_attachment_response() :: #{
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type reject_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_owner_check_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_owner_check_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_definition() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"MatchAttributes">> => match_attributes()
+%% }
+-type rule_definition() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group() :: #{
+%%   <<"ReferenceSets">> => reference_sets(),
+%%   <<"RuleVariables">> => rule_variables(),
+%%   <<"RulesSource">> => rules_source(),
+%%   <<"StatefulRuleOptions">> => stateful_rule_options()
+%% }
+-type rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VendorName">> => string()
+%% }
+-type rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_response() :: #{
+%%   <<"AnalysisResults">> => list(analysis_result()),
+%%   <<"Capacity">> => integer(),
+%%   <<"ConsumedCapacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupId">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"RuleGroupStatus">> => list(any()),
+%%   <<"SnsTopic">> => string(),
+%%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"SummaryConfiguration">> => summary_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any())
+%% }
+-type rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_option() :: #{
+%%   <<"Keyword">> => string(),
+%%   <<"Settings">> => list(string())
+%% }
+-type rule_option() :: #{binary() => any()}.
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"Metadata">> => string(),
+%%   <<"Msg">> => string(),
+%%   <<"SID">> => string()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% rule_variables() :: #{
+%%   <<"IPSets">> => map(),
+%%   <<"PortSets">> => map()
+%% }
+-type rule_variables() :: #{binary() => any()}.
+
+%% Example:
+%% rules_source() :: #{
+%%   <<"RulesSourceList">> => rules_source_list(),
+%%   <<"RulesString">> => string(),
+%%   <<"StatefulRules">> => list(stateful_rule()),
+%%   <<"StatelessRulesAndCustomActions">> => stateless_rules_and_custom_actions()
+%% }
+-type rules_source() :: #{binary() => any()}.
+
+%% Example:
+%% rules_source_list() :: #{
+%%   <<"GeneratedRulesType">> => list(any()),
+%%   <<"TargetTypes">> => list(list(any())()),
+%%   <<"Targets">> => list(string())
+%% }
+-type rules_source_list() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type server_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_configuration() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CheckCertificateRevocationStatus">> => check_certificate_revocation_status_actions(),
+%%   <<"Scopes">> => list(server_certificate_scope()),
+%%   <<"ServerCertificates">> => list(server_certificate())
+%% }
+-type server_certificate_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_scope() :: #{
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(address()),
+%%   <<"Protocols">> => list(integer()),
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(address())
+%% }
+-type server_certificate_scope() :: #{binary() => any()}.
+
+%% Example:
+%% source_metadata() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceUpdateToken">> => string()
+%% }
+-type source_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% start_analysis_report_request() :: #{
+%%   <<"AnalysisType">> := list(any()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type start_analysis_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_analysis_report_response() :: #{
+%%   <<"AnalysisReportId">> => string()
+%% }
+-type start_analysis_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_capture_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowFilters">> := list(flow_filter()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type start_flow_capture_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_capture_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any())
+%% }
+-type start_flow_capture_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_flush_request() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"FirewallArn">> := string(),
+%%   <<"FlowFilters">> := list(flow_filter()),
+%%   <<"MinimumFlowAgeInSeconds">> => integer(),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type start_flow_flush_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_flow_flush_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FlowOperationId">> => string(),
+%%   <<"FlowOperationStatus">> => list(any())
+%% }
+-type start_flow_flush_response() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_engine_options() :: #{
+%%   <<"FlowTimeouts">> => flow_timeouts(),
+%%   <<"RuleOrder">> => list(any()),
+%%   <<"StreamExceptionPolicy">> => list(any())
+%% }
+-type stateful_engine_options() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Header">> => header(),
+%%   <<"RuleOptions">> => list(rule_option())
+%% }
+-type stateful_rule() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_group_override() :: #{
+%%   <<"Action">> => list(any())
+%% }
+-type stateful_rule_group_override() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_group_reference() :: #{
+%%   <<"DeepThreatInspection">> => boolean(),
+%%   <<"Override">> => stateful_rule_group_override(),
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type stateful_rule_group_reference() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_options() :: #{
+%%   <<"RuleOrder">> => list(any())
+%% }
+-type stateful_rule_options() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rule() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"RuleDefinition">> => rule_definition()
+%% }
+-type stateless_rule() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rule_group_reference() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type stateless_rule_group_reference() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rules_and_custom_actions() :: #{
+%%   <<"CustomActions">> => list(custom_action()),
+%%   <<"StatelessRules">> => list(stateless_rule())
+%% }
+-type stateless_rules_and_custom_actions() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_mapping() :: #{
+%%   <<"IPAddressType">> => list(any()),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% summary() :: #{
+%%   <<"RuleSummaries">> => list(rule_summary())
+%% }
+-type summary() :: #{binary() => any()}.
+
+%% Example:
+%% summary_configuration() :: #{
+%%   <<"RuleOptions">> => list(list(any())())
+%% }
+-type summary_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% sync_state() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"Config">> => map(),
+%%   <<"NatGatewayAttachments">> => list(nat_gateway_attachment())
+%% }
+-type sync_state() :: #{binary() => any()}.
+
+%% Example:
+%% t_c_p_flag_field() :: #{
+%%   <<"Flags">> => list(list(any())()),
+%%   <<"Masks">> => list(list(any())())
+%% }
+-type t_c_p_flag_field() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration() :: #{
+%%   <<"ServerCertificateConfigurations">> => list(server_certificate_configuration())
+%% }
+-type t_l_s_inspection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type t_l_s_inspection_configuration_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration_response() :: #{
+%%   <<"CertificateAuthority">> => tls_certificate_data(),
+%%   <<"Certificates">> => list(tls_certificate_data()),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationId">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string(),
+%%   <<"TLSInspectionConfigurationStatus">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tls_certificate_data() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateSerial">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type tls_certificate_data() :: #{binary() => any()}.
+
+%% Example:
+%% tls_intercept_properties() :: #{
+%%   <<"PcaArn">> => string(),
+%%   <<"TlsInterceptMode">> => list(any())
+%% }
+-type tls_intercept_properties() :: #{binary() => any()}.
+
+%% Example:
+%% tls_intercept_properties_request() :: #{
+%%   <<"PcaArn">> => string(),
+%%   <<"TlsInterceptMode">> => list(any())
+%% }
+-type tls_intercept_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_attachment_sync_state() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TransitGatewayAttachmentStatus">> => list(any())
+%% }
+-type transit_gateway_attachment_sync_state() :: #{binary() => any()}.
+
+%% Example:
+%% unique_sources() :: #{
+%%   <<"Count">> => integer()
+%% }
+-type unique_sources() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_availability_zone_change_protection_request() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> := boolean(),
 %%   <<"FirewallArn">> => string(),
@@ -2621,556 +2316,928 @@
 %% }
 -type update_availability_zone_change_protection_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_availability_zone_change_protection_response() :: #{
+%%   <<"AvailabilityZoneChangeProtection">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_availability_zone_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_association_request() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> := list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_container_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_association_response() :: #{
+%%   <<"ContainerAssociationArn">> => string(),
+%%   <<"ContainerAssociationName">> => string(),
+%%   <<"ContainerMonitoringConfigurations">> => list(container_monitoring_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_container_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_analysis_settings_request() :: #{
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_analysis_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_analysis_settings_response() :: #{
+%%   <<"EnabledAnalysisTypes">> => list(list(any())()),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_analysis_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_delete_protection_request() :: #{
+%%   <<"DeleteProtection">> := boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_delete_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_delete_protection_response() :: #{
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_delete_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_description_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_description_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_description_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_encryption_configuration_request() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_encryption_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_encryption_configuration_response() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_change_protection_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> := boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_change_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_change_protection_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicy">> := firewall_policy(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_request() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type update_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_response() :: #{
+%%   <<"EnableMonitoringDashboard">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type update_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_configuration_request() :: #{
+%%   <<"DefaultRulePhaseActions">> := proxy_config_default_rule_phase_actions_request(),
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_configuration_response() :: #{
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_request() :: #{
+%%   <<"ListenerPropertiesToAdd">> => list(listener_property_request()),
+%%   <<"ListenerPropertiesToRemove">> => list(listener_property_request()),
+%%   <<"NatGatewayId">> := string(),
+%%   <<"ProxyArn">> => string(),
+%%   <<"ProxyName">> => string(),
+%%   <<"TlsInterceptProperties">> => tls_intercept_properties_request(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_response() :: #{
+%%   <<"Proxy">> => proxy(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_group_priorities_request() :: #{
+%%   <<"ProxyConfigurationArn">> => string(),
+%%   <<"ProxyConfigurationName">> => string(),
+%%   <<"RuleGroups">> := list(proxy_rule_group_priority()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_group_priorities_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_group_priorities_response() :: #{
+%%   <<"ProxyRuleGroups">> => list(proxy_rule_group_priority_result()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_group_priorities_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_priorities_request() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"RuleGroupRequestPhase">> := list(any()),
+%%   <<"Rules">> := list(proxy_rule_priority()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_priorities_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_priorities_response() :: #{
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"RuleGroupRequestPhase">> => list(any()),
+%%   <<"Rules">> => list(proxy_rule_priority()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_priorities_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"AddConditions">> => list(proxy_rule_condition()),
+%%   <<"Description">> => string(),
+%%   <<"ProxyRuleGroupArn">> => string(),
+%%   <<"ProxyRuleGroupName">> => string(),
+%%   <<"ProxyRuleName">> := string(),
+%%   <<"RemoveConditions">> => list(proxy_rule_condition()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_proxy_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_rule_response() :: #{
+%%   <<"ProxyRule">> => proxy_rule(),
+%%   <<"RemovedConditions">> => list(proxy_rule_condition()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_settings_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"ProxySettings">> => proxy_settings(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_proxy_settings_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"ProxySettings">> => proxy_settings(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_proxy_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_request() :: #{
+%%   <<"AnalyzeRuleGroup">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"RuleGroup">> => rule_group(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Rules">> => string(),
+%%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"SummaryConfiguration">> => summary_configuration(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_change_protection_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetChangeProtection">> := boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_subnet_change_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_change_protection_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_subnet_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_t_l_s_inspection_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"TLSInspectionConfiguration">> := t_l_s_inspection_configuration(),
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_association() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"SubnetMapping">> => subnet_mapping(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcEndpointAssociationArn">> => string(),
+%%   <<"VpcEndpointAssociationId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_endpoint_association() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_association_metadata() :: #{
+%%   <<"VpcEndpointAssociationArn">> => string()
+%% }
+-type vpc_endpoint_association_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_association_status() :: #{
+%%   <<"AssociationSyncState">> => map(),
+%%   <<"Status">> => list(any())
+%% }
+-type vpc_endpoint_association_status() :: #{binary() => any()}.
+
 -type accept_network_firewall_transit_gateway_attachment_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type associate_availability_zones_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    insufficient_capacity_exception() | 
-    invalid_operation_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error() | 
+    insufficient_capacity_exception().
 
 -type associate_firewall_policy_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type associate_subnets_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    insufficient_capacity_exception() | 
-    invalid_operation_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error() | 
+    insufficient_capacity_exception().
 
 -type attach_rule_groups_to_proxy_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type create_container_association_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
+    internal_server_error() | 
     insufficient_capacity_exception().
 
 -type create_firewall_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    insufficient_capacity_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_server_error() | 
+    insufficient_capacity_exception().
 
 -type create_firewall_policy_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
+    internal_server_error() | 
     insufficient_capacity_exception().
 
 -type create_proxy_errors() ::
-    limit_exceeded_exception() | 
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type create_proxy_configuration_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type create_proxy_rule_group_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type create_proxy_rules_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type create_rule_group_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
+    internal_server_error() | 
     insufficient_capacity_exception().
 
 -type create_t_l_s_inspection_configuration_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
+    internal_server_error() | 
     insufficient_capacity_exception().
 
 -type create_vpc_endpoint_association_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    insufficient_capacity_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error() | 
+    insufficient_capacity_exception().
 
 -type delete_container_association_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type delete_firewall_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_operation_exception() | 
-    unsupported_operation_exception().
+    internal_server_error().
 
 -type delete_firewall_policy_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_operation_exception() | 
-    unsupported_operation_exception().
+    internal_server_error().
 
 -type delete_network_firewall_transit_gateway_attachment_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type delete_proxy_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type delete_proxy_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type delete_proxy_rule_group_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type delete_proxy_rules_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type delete_resource_policy_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_policy_exception() | 
-    internal_server_error() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type delete_rule_group_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_operation_exception() | 
-    unsupported_operation_exception().
+    internal_server_error().
 
 -type delete_t_l_s_inspection_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type delete_vpc_endpoint_association_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type describe_container_association_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_firewall_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_firewall_metadata_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_firewall_policy_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_flow_operation_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_logging_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_proxy_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_proxy_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_proxy_rule_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_proxy_rule_group_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_resource_policy_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_rule_group_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_rule_group_metadata_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_rule_group_summary_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_t_l_s_inspection_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type describe_vpc_endpoint_association_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type detach_rule_groups_from_proxy_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type disassociate_availability_zones_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type disassociate_subnets_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type get_analysis_report_results_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_analysis_reports_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_container_associations_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_firewall_policies_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_firewalls_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_flow_operation_results_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_flow_operations_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_proxies_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_proxy_configurations_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_proxy_rule_groups_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_rule_groups_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_t_l_s_inspection_configurations_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type list_vpc_endpoint_associations_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type put_resource_policy_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_policy_exception() | 
-    internal_server_error() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type reject_network_firewall_transit_gateway_attachment_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type start_analysis_report_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type start_flow_capture_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type start_flow_flush_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_availability_zone_change_protection_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
+    resource_owner_check_exception() | 
     resource_not_found_exception() | 
-    resource_owner_check_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_container_association_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_firewall_analysis_settings_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_firewall_delete_protection_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
+    resource_owner_check_exception() | 
     resource_not_found_exception() | 
-    resource_owner_check_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_firewall_description_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_firewall_encryption_configuration_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
+    resource_owner_check_exception() | 
     resource_not_found_exception() | 
-    resource_owner_check_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_firewall_policy_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_firewall_policy_change_protection_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
+    resource_owner_check_exception() | 
     resource_not_found_exception() | 
-    resource_owner_check_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_logging_configuration_errors() ::
-    invalid_token_exception() | 
-    log_destination_permission_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    log_destination_permission_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_proxy_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_proxy_configuration_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_proxy_rule_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_proxy_rule_group_priorities_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_proxy_rule_priorities_errors() ::
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
+
+-type update_proxy_settings_errors() ::
+    throttling_exception() | 
+    resource_owner_check_exception() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
 
 -type update_rule_group_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 -type update_subnet_change_protection_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
-    invalid_request_exception() | 
+    resource_owner_check_exception() | 
     resource_not_found_exception() | 
-    resource_owner_check_exception().
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
 
 -type update_t_l_s_inspection_configuration_errors() ::
-    invalid_token_exception() | 
     throttling_exception() | 
-    internal_server_error() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_error().
 
 %%====================================================================
 %% API
@@ -3310,18 +3377,11 @@ attach_rule_groups_to_proxy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachRuleGroupsToProxyConfiguration">>, Input, Options).
 
-%% @doc Creates a container association for Network Firewall.
+%% @doc Creates a Network Firewall container association.
 %%
-%% A container association links container clusters (ECS or EKS) to Network
-%% Firewall, enabling dynamic IP resolution for firewall rules based on
-%% container attributes.
-%%
-%% To manage a container association's tags, use the standard Amazon Web
-%% Services resource tagging operations, `ListTagsForResource',
-%% `TagResource', and `UntagResource'.
-%%
-%% To retrieve information about container associations, use
-%% `ListContainerAssociations' and `DescribeContainerAssociation'.
+%% The association monitors container lifecycle events in your
+%% Amazon ECS or Amazon EKS clusters and resolves running container addresses
+%% for use in firewall rules.
 -spec create_container_association(aws_client:aws_client(), create_container_association_request()) ->
     {ok, create_container_association_response(), tuple()} |
     {error, any()} |
@@ -3603,11 +3663,12 @@ create_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcEndpointAssociation">>, Input, Options).
 
-%% @doc Deletes the specified container association.
+%% @doc Deletes a container association.
 %%
-%% When you delete a container association, Network Firewall stops monitoring
-%% the associated container clusters and removes the resolved IP addresses
-%% from firewall rules.
+%% The resource transitions to a `DELETING' state. Deletion is
+%% asynchronous - Network Firewall returns immediately while cleanup proceeds
+%% in the background. You can't delete a
+%% container association while a rule group references it.
 -spec delete_container_association(aws_client:aws_client(), delete_container_association_request()) ->
     {ok, delete_container_association_response(), tuple()} |
     {error, any()} |
@@ -3855,7 +3916,7 @@ delete_vpc_endpoint_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcEndpointAssociation">>, Input, Options).
 
-%% @doc Returns the properties of a container association.
+%% @doc Retrieves the configuration and status of a container association.
 -spec describe_container_association(aws_client:aws_client(), describe_container_association_request()) ->
     {ok, describe_container_association_response(), tuple()} |
     {error, any()} |
@@ -4260,10 +4321,10 @@ list_analysis_reports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAnalysisReports">>, Input, Options).
 
-%% @doc Retrieves the metadata for the container associations that you have
-%% defined.
+%% @doc Lists the container associations in your account and Region.
 %%
-%% You can optionally page through results.
+%% Use the `NextToken'
+%% parameter in subsequent requests to retrieve additional results.
 -spec list_container_associations(aws_client:aws_client(), list_container_associations_request()) ->
     {ok, list_container_associations_response(), tuple()} |
     {error, any()} |
@@ -4796,9 +4857,12 @@ update_availability_zone_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAvailabilityZoneChangeProtection">>, Input, Options).
 
-%% @doc Updates the properties of an existing container association.
+%% @doc Updates the monitoring configurations and description of a container
+%% association.
 %%
-%% Use this to modify the container monitoring configurations or description.
+%% You can't change the container
+%% type after creation. Provide an update token to enable optimistic
+%% concurrency control.
 -spec update_container_association(aws_client:aws_client(), update_container_association_request()) ->
     {ok, update_container_association_response(), tuple()} |
     {error, any()} |
@@ -5063,6 +5127,27 @@ update_proxy_rule_priorities(Client, Input)
 update_proxy_rule_priorities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProxyRulePriorities">>, Input, Options).
+
+%% @doc Modifies the proxy listener configuration of a proxy mode firewall.
+%%
+%% Proxy mode firewalls are created with `NoSourcePreservation' set to
+%% `TRUE'. Use this operation to change the ports and protocols on which
+%% the firewall's proxy listens for traffic.
+-spec update_proxy_settings(aws_client:aws_client(), update_proxy_settings_request()) ->
+    {ok, update_proxy_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_settings_errors(), tuple()}.
+update_proxy_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_proxy_settings(Client, Input, []).
+
+-spec update_proxy_settings(aws_client:aws_client(), update_proxy_settings_request(), proplists:proplist()) ->
+    {ok, update_proxy_settings_response(), tuple()} |
+    {error, any()} |
+    {error, update_proxy_settings_errors(), tuple()}.
+update_proxy_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProxySettings">>, Input, Options).
 
 %% @doc Updates the rule settings for the specified rule group.
 %%

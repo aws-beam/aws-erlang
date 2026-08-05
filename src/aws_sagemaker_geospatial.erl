@@ -55,46 +55,190 @@
 
 
 %% Example:
-%% view_off_nadir_input() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_value() :: #{
+%%   <<"Href">> => [string()]
+%% }
+-type asset_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% band_math_config_input() :: #{
+%%   <<"CustomIndices">> => custom_indices_input(),
+%%   <<"PredefinedIndices">> => list([string()]())
+%% }
+-type band_math_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_masking_config_input() :: #{}
+-type cloud_masking_config_input() :: #{}.
+
+
+%% Example:
+%% cloud_removal_config_input() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"InterpolationValue">> => [string()],
+%%   <<"TargetBands">> => list([string()]())
+%% }
+-type cloud_removal_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_indices_input() :: #{
+%%   <<"Operations">> => list(operation())
+%% }
+-type custom_indices_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_earth_observation_job_input() :: #{}
+-type delete_earth_observation_job_input() :: #{}.
+
+%% Example:
+%% delete_earth_observation_job_output() :: #{}
+-type delete_earth_observation_job_output() :: #{}.
+
+%% Example:
+%% delete_vector_enrichment_job_input() :: #{}
+-type delete_vector_enrichment_job_input() :: #{}.
+
+%% Example:
+%% delete_vector_enrichment_job_output() :: #{}
+-type delete_vector_enrichment_job_output() :: #{}.
+
+
+%% Example:
+%% earth_observation_job_error_details() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type earth_observation_job_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% eo_cloud_cover_input() :: #{
 %%   <<"LowerBound">> => [float()],
 %%   <<"UpperBound">> => [float()]
 %% }
--type view_off_nadir_input() :: #{binary() => any()}.
+-type eo_cloud_cover_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% zonal_statistics_config_input() :: #{
-%%   <<"Statistics">> => list(string()),
-%%   <<"TargetBands">> => list([string()]()),
-%%   <<"ZoneS3Path">> => string(),
-%%   <<"ZoneS3PathKmsKeyId">> => string()
+%% export_earth_observation_job_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => [string()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"ExportSourceImages">> => [boolean()],
+%%   <<"OutputConfig">> := output_config_input()
 %% }
--type zonal_statistics_config_input() :: #{binary() => any()}.
+-type export_earth_observation_job_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% operation() :: #{
-%%   <<"Equation">> => [string()],
+%% export_earth_observation_job_output() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"CreationTime">> := [non_neg_integer()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"ExportSourceImages">> => [boolean()],
+%%   <<"ExportStatus">> := string(),
+%%   <<"OutputConfig">> := output_config_input()
+%% }
+-type export_earth_observation_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_error_details() :: #{
+%%   <<"ExportResults">> => export_error_details_output(),
+%%   <<"ExportSourceImages">> => export_error_details_output()
+%% }
+-type export_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_error_details_output() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type export_error_details_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_s3_data_input() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type export_s3_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_vector_enrichment_job_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientToken">> => [string()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"OutputConfig">> := export_vector_enrichment_job_output_config()
+%% }
+-type export_vector_enrichment_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_vector_enrichment_job_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExportStatus">> => string(),
+%%   <<"OutputConfig">> => export_vector_enrichment_job_output_config()
+%% }
+-type export_vector_enrichment_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_vector_enrichment_job_output_config() :: #{
+%%   <<"S3Data">> => vector_enrichment_job_s3_data()
+%% }
+-type export_vector_enrichment_job_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Maximum">> => [float()],
+%%   <<"Minimum">> => [float()],
 %%   <<"Name">> => [string()],
-%%   <<"OutputType">> => string()
+%%   <<"Type">> => [string()]
 %% }
--type operation() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% output_band() :: #{
-%%   <<"BandName">> => [string()],
-%%   <<"OutputDataType">> => string()
+%% geo_mosaic_config_input() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"TargetBands">> => list([string()]())
 %% }
--type output_band() :: #{binary() => any()}.
+-type geo_mosaic_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% view_sun_elevation_input() :: #{
-%%   <<"LowerBound">> => [float()],
-%%   <<"UpperBound">> => [float()]
+%% geometry() :: #{
+%%   <<"Coordinates">> => list(list(list([float()]())())()),
+%%   <<"Type">> => [string()]
 %% }
--type view_sun_elevation_input() :: #{binary() => any()}.
+-type geometry() :: #{binary() => any()}.
+
+%% Example:
+%% get_earth_observation_job_input() :: #{}
+-type get_earth_observation_job_input() :: #{}.
 
 
 %% Example:
@@ -116,279 +260,23 @@
 %% }
 -type get_earth_observation_job_output() :: #{binary() => any()}.
 
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reverse_geocoding_config() :: #{
-%%   <<"XAttributeName">> => [string()],
-%%   <<"YAttributeName">> => [string()]
-%% }
--type reverse_geocoding_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_defined() :: #{
-%%   <<"Unit">> => string(),
-%%   <<"Value">> => [float()]
-%% }
--type user_defined() :: #{binary() => any()}.
-
-
-%% Example:
-%% stack_config_input() :: #{
-%%   <<"OutputResolution">> => output_resolution_stack_input(),
-%%   <<"TargetBands">> => list([string()]())
-%% }
--type stack_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_filters() :: #{
-%%   <<"LogicalOperator">> => string(),
-%%   <<"Properties">> => list(property_filter())
-%% }
--type property_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% polygon_geometry_input() :: #{
-%%   <<"Coordinates">> => list(list(list([float()]())())())
-%% }
--type polygon_geometry_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_raster_data_collections_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RasterDataCollectionSummaries">> := list(raster_data_collection_metadata())
-%% }
--type list_raster_data_collections_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% geometry() :: #{
-%%   <<"Coordinates">> => list(list(list([float()]())())()),
-%%   <<"Type">> => [string()]
-%% }
--type geometry() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_earth_observation_job_output() :: #{
-%%   <<"EarthObservationJobSummaries">> := list(list_earth_observation_job_output_config()),
-%%   <<"NextToken">> => string()
-%% }
--type list_earth_observation_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_s3_data_input() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type export_s3_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_earth_observation_job_output() :: #{
-%%   <<"Arn">> := [string()],
-%%   <<"CreationTime">> := [non_neg_integer()],
-%%   <<"DurationInSeconds">> := [integer()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputConfig">> => input_config_output(),
-%%   <<"JobConfig">> := list(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := [string()],
-%%   <<"Status">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type start_earth_observation_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% properties() :: #{
-%%   <<"EoCloudCover">> => [float()],
-%%   <<"LandsatCloudCoverLand">> => [float()],
-%%   <<"Platform">> => [string()],
-%%   <<"ViewOffNadir">> => [float()],
-%%   <<"ViewSunAzimuth">> => [float()],
-%%   <<"ViewSunElevation">> => [float()]
-%% }
--type properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_vector_enrichment_job_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ClientToken">> => [string()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"OutputConfig">> := export_vector_enrichment_job_output_config()
-%% }
--type export_vector_enrichment_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_vector_enrichment_job_input() :: #{
-%%   <<"ClientToken">> => [string()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputConfig">> := vector_enrichment_job_input_config(),
-%%   <<"JobConfig">> := list(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := [string()],
-%%   <<"Tags">> => map()
-%% }
--type start_vector_enrichment_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vector_enrichment_job_input() :: #{}
--type delete_vector_enrichment_job_input() :: #{}.
-
-
-%% Example:
-%% cloud_removal_config_input() :: #{
-%%   <<"AlgorithmName">> => string(),
-%%   <<"InterpolationValue">> => [string()],
-%%   <<"TargetBands">> => list([string()]())
-%% }
--type cloud_removal_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% raster_data_collection_query_output() :: #{
-%%   <<"AreaOfInterest">> => list(),
-%%   <<"PropertyFilters">> => property_filters(),
-%%   <<"RasterDataCollectionArn">> => string(),
-%%   <<"RasterDataCollectionName">> => [string()],
-%%   <<"TimeRangeFilter">> => time_range_filter_output()
-%% }
--type raster_data_collection_query_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_range_filter_input() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type time_range_filter_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_indices_input() :: #{
-%%   <<"Operations">> => list(operation())
-%% }
--type custom_indices_input() :: #{binary() => any()}.
-
 %% Example:
 %% get_raster_data_collection_input() :: #{}
 -type get_raster_data_collection_input() :: #{}.
 
 
 %% Example:
-%% list_earth_observation_job_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => [string()],
-%%   <<"SortOrder">> => string(),
-%%   <<"StatusEquals">> => string()
-%% }
--type list_earth_observation_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_earth_observation_job_output() :: #{
+%% get_raster_data_collection_output() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"CreationTime">> := [non_neg_integer()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"ExportSourceImages">> => [boolean()],
-%%   <<"ExportStatus">> := string(),
-%%   <<"OutputConfig">> := output_config_input()
+%%   <<"Description">> := [string()],
+%%   <<"DescriptionPageUrl">> := [string()],
+%%   <<"ImageSourceBands">> := list([string()]()),
+%%   <<"Name">> := [string()],
+%%   <<"SupportedFilters">> := list(filter()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> := string()
 %% }
--type export_earth_observation_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_earth_observation_job_input() :: #{}
--type delete_earth_observation_job_input() :: #{}.
-
-
-%% Example:
-%% asset_value() :: #{
-%%   <<"Href">> => [string()]
-%% }
--type asset_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% landsat_cloud_cover_land_input() :: #{
-%%   <<"LowerBound">> => [float()],
-%%   <<"UpperBound">> => [float()]
-%% }
--type landsat_cloud_cover_land_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vector_enrichment_job_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VectorEnrichmentJobSummaries">> := list(list_vector_enrichment_job_output_config())
-%% }
--type list_vector_enrichment_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_range_filter_output() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"StartTime">> => [non_neg_integer()]
-%% }
--type time_range_filter_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% temporal_statistics_config_input() :: #{
-%%   <<"GroupBy">> => string(),
-%%   <<"Statistics">> => list(string()),
-%%   <<"TargetBands">> => list([string()]())
-%% }
--type temporal_statistics_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type get_raster_data_collection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,129 +295,6 @@
 
 
 %% Example:
-%% vector_enrichment_job_input_config() :: #{
-%%   <<"DataSourceConfig">> => list(),
-%%   <<"DocumentType">> => string()
-%% }
--type vector_enrichment_job_input_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% earth_observation_job_error_details() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Type">> => string()
-%% }
--type earth_observation_job_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_earth_observation_job_input() :: #{
-%%   <<"ClientToken">> => [string()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputConfig">> := input_config_input(),
-%%   <<"JobConfig">> := list(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := [string()],
-%%   <<"Tags">> => map()
-%% }
--type start_earth_observation_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_earth_observation_job_output_config() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"DurationInSeconds">> => [integer()],
-%%   <<"Name">> => [string()],
-%%   <<"OperationType">> => [string()],
-%%   <<"Status">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_earth_observation_job_output_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_raster_data_collection_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"RasterDataCollectionQuery">> := raster_data_collection_query_with_band_filter_input()
-%% }
--type search_raster_data_collection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% item_source() :: #{
-%%   <<"Assets">> => map(),
-%%   <<"DateTime">> => [non_neg_integer()],
-%%   <<"Geometry">> => geometry(),
-%%   <<"Id">> => [string()],
-%%   <<"Properties">> => properties()
-%% }
--type item_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_config_input() :: #{
-%%   <<"PreviousEarthObservationJobArn">> => string(),
-%%   <<"RasterDataCollectionQuery">> => raster_data_collection_query_input()
-%% }
--type input_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% eo_cloud_cover_input() :: #{
-%%   <<"LowerBound">> => [float()],
-%%   <<"UpperBound">> => [float()]
-%% }
--type eo_cloud_cover_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_vector_enrichment_job_output_config() :: #{
-%%   <<"S3Data">> => vector_enrichment_job_s3_data()
-%% }
--type export_vector_enrichment_job_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_earth_observation_job_output() :: #{}
--type delete_earth_observation_job_output() :: #{}.
-
-
-%% Example:
-%% vector_enrichment_job_error_details() :: #{
-%%   <<"ErrorMessage">> => [string()],
-%%   <<"ErrorType">> => string()
-%% }
--type vector_enrichment_job_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Maximum">> => [float()],
-%%   <<"Minimum">> => [float()],
-%%   <<"Name">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% resampling_config_input() :: #{
-%%   <<"AlgorithmName">> => string(),
-%%   <<"OutputResolution">> => output_resolution_resampling_input(),
-%%   <<"TargetBands">> => list([string()]())
-%% }
--type resampling_config_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_tile_output() :: #{
 %%   <<"BinaryFile">> => binary()
 %% }
@@ -538,238 +303,6 @@
 %% Example:
 %% get_vector_enrichment_job_input() :: #{}
 -type get_vector_enrichment_job_input() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% platform_input() :: #{
-%%   <<"ComparisonOperator">> => string(),
-%%   <<"Value">> => [string()]
-%% }
--type platform_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_earth_observation_job_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ClientToken">> => [string()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"ExportSourceImages">> => [boolean()],
-%%   <<"OutputConfig">> := output_config_input()
-%% }
--type export_earth_observation_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_filter() :: #{
-%%   <<"Property">> => list()
-%% }
--type property_filter() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_raster_data_collections_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_raster_data_collections_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vector_enrichment_job_output() :: #{}
--type delete_vector_enrichment_job_output() :: #{}.
-
-%% Example:
-%% land_cover_segmentation_config_input() :: #{}
--type land_cover_segmentation_config_input() :: #{}.
-
-
-%% Example:
-%% geo_mosaic_config_input() :: #{
-%%   <<"AlgorithmName">> => string(),
-%%   <<"TargetBands">> => list([string()]())
-%% }
--type geo_mosaic_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_vector_enrichment_job_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => [string()],
-%%   <<"SortOrder">> => string(),
-%%   <<"StatusEquals">> => [string()]
-%% }
--type list_vector_enrichment_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_vector_enrichment_job_input() :: #{
-%%   <<"Arn">> := string()
-%% }
--type stop_vector_enrichment_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_resolution_resampling_input() :: #{
-%%   <<"UserDefined">> => user_defined()
-%% }
--type output_resolution_resampling_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_enrichment_job_s3_data() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type vector_enrichment_job_s3_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_config_output() :: #{
-%%   <<"PreviousEarthObservationJobArn">> => string(),
-%%   <<"RasterDataCollectionQuery">> => raster_data_collection_query_output()
-%% }
--type input_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% raster_data_collection_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => [string()],
-%%   <<"DescriptionPageUrl">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"SupportedFilters">> => list(filter()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string()
-%% }
--type raster_data_collection_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% raster_data_collection_query_with_band_filter_input() :: #{
-%%   <<"AreaOfInterest">> => list(),
-%%   <<"BandFilter">> => list([string()]()),
-%%   <<"PropertyFilters">> => property_filters(),
-%%   <<"TimeRangeFilter">> => time_range_filter_input()
-%% }
--type raster_data_collection_query_with_band_filter_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_vector_enrichment_job_output() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"CreationTime">> := [non_neg_integer()],
-%%   <<"DurationInSeconds">> := [integer()],
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputConfig">> := vector_enrichment_job_input_config(),
-%%   <<"JobConfig">> := list(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := [string()],
-%%   <<"Status">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> := string()
-%% }
--type start_vector_enrichment_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_error_details() :: #{
-%%   <<"ExportResults">> => export_error_details_output(),
-%%   <<"ExportSourceImages">> => export_error_details_output()
-%% }
--type export_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_raster_data_collection_output() :: #{
-%%   <<"ApproximateResultCount">> => [integer()],
-%%   <<"Items">> => list(item_source()),
-%%   <<"NextToken">> => string()
-%% }
--type search_raster_data_collection_output() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_masking_config_input() :: #{}
--type cloud_masking_config_input() :: #{}.
-
-%% Example:
-%% stop_vector_enrichment_job_output() :: #{}
--type stop_vector_enrichment_job_output() :: #{}.
-
-
-%% Example:
-%% map_matching_config() :: #{
-%%   <<"IdAttributeName">> => [string()],
-%%   <<"TimestampAttributeName">> => [string()],
-%%   <<"XAttributeName">> => [string()],
-%%   <<"YAttributeName">> => [string()]
-%% }
--type map_matching_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vector_enrichment_job_output_config() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"DurationInSeconds">> => [integer()],
-%%   <<"Name">> => [string()],
-%%   <<"Status">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string()
-%% }
--type list_vector_enrichment_job_output_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_raster_data_collection_output() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Description">> := [string()],
-%%   <<"DescriptionPageUrl">> := [string()],
-%%   <<"ImageSourceBands">> := list([string()]()),
-%%   <<"Name">> := [string()],
-%%   <<"SupportedFilters">> := list(filter()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> := string()
-%% }
--type get_raster_data_collection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -793,6 +326,154 @@
 
 
 %% Example:
+%% input_config_input() :: #{
+%%   <<"PreviousEarthObservationJobArn">> => string(),
+%%   <<"RasterDataCollectionQuery">> => raster_data_collection_query_input()
+%% }
+-type input_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_config_output() :: #{
+%%   <<"PreviousEarthObservationJobArn">> => string(),
+%%   <<"RasterDataCollectionQuery">> => raster_data_collection_query_output()
+%% }
+-type input_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_source() :: #{
+%%   <<"Assets">> => map(),
+%%   <<"DateTime">> => [non_neg_integer()],
+%%   <<"Geometry">> => geometry(),
+%%   <<"Id">> => [string()],
+%%   <<"Properties">> => properties()
+%% }
+-type item_source() :: #{binary() => any()}.
+
+%% Example:
+%% land_cover_segmentation_config_input() :: #{}
+-type land_cover_segmentation_config_input() :: #{}.
+
+
+%% Example:
+%% landsat_cloud_cover_land_input() :: #{
+%%   <<"LowerBound">> => [float()],
+%%   <<"UpperBound">> => [float()]
+%% }
+-type landsat_cloud_cover_land_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_earth_observation_job_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => [string()],
+%%   <<"SortOrder">> => string(),
+%%   <<"StatusEquals">> => string()
+%% }
+-type list_earth_observation_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_earth_observation_job_output() :: #{
+%%   <<"EarthObservationJobSummaries">> := list(list_earth_observation_job_output_config()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_earth_observation_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_earth_observation_job_output_config() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"DurationInSeconds">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"OperationType">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_earth_observation_job_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_raster_data_collections_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_raster_data_collections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_raster_data_collections_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RasterDataCollectionSummaries">> := list(raster_data_collection_metadata())
+%% }
+-type list_raster_data_collections_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vector_enrichment_job_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => [string()],
+%%   <<"SortOrder">> => string(),
+%%   <<"StatusEquals">> => [string()]
+%% }
+-type list_vector_enrichment_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vector_enrichment_job_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VectorEnrichmentJobSummaries">> := list(list_vector_enrichment_job_output_config())
+%% }
+-type list_vector_enrichment_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vector_enrichment_job_output_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"DurationInSeconds">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string()
+%% }
+-type list_vector_enrichment_job_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% map_matching_config() :: #{
+%%   <<"IdAttributeName">> => [string()],
+%%   <<"TimestampAttributeName">> => [string()],
+%%   <<"XAttributeName">> => [string()],
+%%   <<"YAttributeName">> => [string()]
+%% }
+-type map_matching_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% multi_polygon_geometry_input() :: #{
 %%   <<"Coordinates">> => list(list(list(list([float()]())())())())
 %% }
@@ -800,11 +481,34 @@
 
 
 %% Example:
-%% export_error_details_output() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Type">> => string()
+%% operation() :: #{
+%%   <<"Equation">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"OutputType">> => string()
 %% }
--type export_error_details_output() :: #{binary() => any()}.
+-type operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_band() :: #{
+%%   <<"BandName">> => [string()],
+%%   <<"OutputDataType">> => string()
+%% }
+-type output_band() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_config_input() :: #{
+%%   <<"S3Data">> => export_s3_data_input()
+%% }
+-type output_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_resolution_resampling_input() :: #{
+%%   <<"UserDefined">> => user_defined()
+%% }
+-type output_resolution_resampling_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -813,6 +517,61 @@
 %%   <<"UserDefined">> => user_defined()
 %% }
 -type output_resolution_stack_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% platform_input() :: #{
+%%   <<"ComparisonOperator">> => string(),
+%%   <<"Value">> => [string()]
+%% }
+-type platform_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% polygon_geometry_input() :: #{
+%%   <<"Coordinates">> => list(list(list([float()]())())())
+%% }
+-type polygon_geometry_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% properties() :: #{
+%%   <<"EoCloudCover">> => [float()],
+%%   <<"LandsatCloudCoverLand">> => [float()],
+%%   <<"Platform">> => [string()],
+%%   <<"ViewOffNadir">> => [float()],
+%%   <<"ViewSunAzimuth">> => [float()],
+%%   <<"ViewSunElevation">> => [float()]
+%% }
+-type properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_filter() :: #{
+%%   <<"Property">> => list()
+%% }
+-type property_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_filters() :: #{
+%%   <<"LogicalOperator">> => string(),
+%%   <<"Properties">> => list(property_filter())
+%% }
+-type property_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% raster_data_collection_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"DescriptionPageUrl">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"SupportedFilters">> => list(filter()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string()
+%% }
+-type raster_data_collection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -826,29 +585,275 @@
 
 
 %% Example:
-%% export_vector_enrichment_job_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"ExportStatus">> => string(),
-%%   <<"OutputConfig">> => export_vector_enrichment_job_output_config()
+%% raster_data_collection_query_output() :: #{
+%%   <<"AreaOfInterest">> => list(),
+%%   <<"PropertyFilters">> => property_filters(),
+%%   <<"RasterDataCollectionArn">> => string(),
+%%   <<"RasterDataCollectionName">> => [string()],
+%%   <<"TimeRangeFilter">> => time_range_filter_output()
 %% }
--type export_vector_enrichment_job_output() :: #{binary() => any()}.
+-type raster_data_collection_query_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% output_config_input() :: #{
-%%   <<"S3Data">> => export_s3_data_input()
+%% raster_data_collection_query_with_band_filter_input() :: #{
+%%   <<"AreaOfInterest">> => list(),
+%%   <<"BandFilter">> => list([string()]()),
+%%   <<"PropertyFilters">> => property_filters(),
+%%   <<"TimeRangeFilter">> => time_range_filter_input()
 %% }
--type output_config_input() :: #{binary() => any()}.
+-type raster_data_collection_query_with_band_filter_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_earth_observation_job_input() :: #{}
--type get_earth_observation_job_input() :: #{}.
+%% resampling_config_input() :: #{
+%%   <<"AlgorithmName">> => string(),
+%%   <<"OutputResolution">> => output_resolution_resampling_input(),
+%%   <<"TargetBands">> => list([string()]())
+%% }
+-type resampling_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% reverse_geocoding_config() :: #{
+%%   <<"XAttributeName">> => [string()],
+%%   <<"YAttributeName">> => [string()]
+%% }
+-type reverse_geocoding_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_raster_data_collection_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RasterDataCollectionQuery">> := raster_data_collection_query_with_band_filter_input()
+%% }
+-type search_raster_data_collection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_raster_data_collection_output() :: #{
+%%   <<"ApproximateResultCount">> => [integer()],
+%%   <<"Items">> => list(item_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_raster_data_collection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stack_config_input() :: #{
+%%   <<"OutputResolution">> => output_resolution_stack_input(),
+%%   <<"TargetBands">> => list([string()]())
+%% }
+-type stack_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_earth_observation_job_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputConfig">> := input_config_input(),
+%%   <<"JobConfig">> := list(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := [string()],
+%%   <<"Tags">> => map()
+%% }
+-type start_earth_observation_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_earth_observation_job_output() :: #{
+%%   <<"Arn">> := [string()],
+%%   <<"CreationTime">> := [non_neg_integer()],
+%%   <<"DurationInSeconds">> := [integer()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputConfig">> => input_config_output(),
+%%   <<"JobConfig">> := list(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := [string()],
+%%   <<"Status">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type start_earth_observation_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_vector_enrichment_job_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputConfig">> := vector_enrichment_job_input_config(),
+%%   <<"JobConfig">> := list(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := [string()],
+%%   <<"Tags">> => map()
+%% }
+-type start_vector_enrichment_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_vector_enrichment_job_output() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"CreationTime">> := [non_neg_integer()],
+%%   <<"DurationInSeconds">> := [integer()],
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputConfig">> := vector_enrichment_job_input_config(),
+%%   <<"JobConfig">> := list(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := [string()],
+%%   <<"Status">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> := string()
+%% }
+-type start_vector_enrichment_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_earth_observation_job_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type stop_earth_observation_job_input() :: #{binary() => any()}.
 
 %% Example:
 %% stop_earth_observation_job_output() :: #{}
 -type stop_earth_observation_job_output() :: #{}.
+
+
+%% Example:
+%% stop_vector_enrichment_job_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type stop_vector_enrichment_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_vector_enrichment_job_output() :: #{}
+-type stop_vector_enrichment_job_output() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% temporal_statistics_config_input() :: #{
+%%   <<"GroupBy">> => string(),
+%%   <<"Statistics">> => list(string()),
+%%   <<"TargetBands">> => list([string()]())
+%% }
+-type temporal_statistics_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_range_filter_input() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type time_range_filter_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_range_filter_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type time_range_filter_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% user_defined() :: #{
+%%   <<"Unit">> => string(),
+%%   <<"Value">> => [float()]
+%% }
+-type user_defined() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_enrichment_job_error_details() :: #{
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"ErrorType">> => string()
+%% }
+-type vector_enrichment_job_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_enrichment_job_export_error_details() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type vector_enrichment_job_export_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_enrichment_job_input_config() :: #{
+%%   <<"DataSourceConfig">> => list(),
+%%   <<"DocumentType">> => string()
+%% }
+-type vector_enrichment_job_input_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_enrichment_job_s3_data() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type vector_enrichment_job_s3_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_off_nadir_input() :: #{
+%%   <<"LowerBound">> => [float()],
+%%   <<"UpperBound">> => [float()]
+%% }
+-type view_off_nadir_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -860,171 +865,166 @@
 
 
 %% Example:
-%% stop_earth_observation_job_input() :: #{
-%%   <<"Arn">> := string()
+%% view_sun_elevation_input() :: #{
+%%   <<"LowerBound">> => [float()],
+%%   <<"UpperBound">> => [float()]
 %% }
--type stop_earth_observation_job_input() :: #{binary() => any()}.
+-type view_sun_elevation_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% band_math_config_input() :: #{
-%%   <<"CustomIndices">> => custom_indices_input(),
-%%   <<"PredefinedIndices">> => list([string()]())
+%% zonal_statistics_config_input() :: #{
+%%   <<"Statistics">> => list(string()),
+%%   <<"TargetBands">> => list([string()]()),
+%%   <<"ZoneS3Path">> => string(),
+%%   <<"ZoneS3PathKmsKeyId">> => string()
 %% }
--type band_math_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_enrichment_job_export_error_details() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Type">> => string()
-%% }
--type vector_enrichment_job_export_error_details() :: #{binary() => any()}.
+-type zonal_statistics_config_input() :: #{binary() => any()}.
 
 -type delete_earth_observation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_vector_enrichment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_earth_observation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_vector_enrichment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_earth_observation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_raster_data_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_tile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_vector_enrichment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_earth_observation_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_raster_data_collections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_vector_enrichment_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_raster_data_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_earth_observation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_vector_enrichment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_earth_observation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_vector_enrichment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -102,29 +102,146 @@
 
 
 %% Example:
-%% stop_engagement_result() :: #{
-
+%% accept_page_request() :: #{
+%%   <<"AcceptCode">> := string(),
+%%   <<"AcceptCodeValidation">> => list(any()),
+%%   <<"AcceptType">> := list(any()),
+%%   <<"ContactChannelId">> => string(),
+%%   <<"Note">> => string(),
+%%   <<"PageId">> := string()
 %% }
--type stop_engagement_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_pages_by_engagement_request() :: #{
-%%   <<"EngagementId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pages_by_engagement_request() :: #{binary() => any()}.
+-type accept_page_request() :: #{binary() => any()}.
 
 %% Example:
-%% recurrence_settings() :: #{
-%%   <<"DailySettings">> => list(hand_off_time()),
-%%   <<"MonthlySettings">> => list(monthly_setting()),
-%%   <<"NumberOfOnCalls">> => integer(),
-%%   <<"RecurrenceMultiplier">> => integer(),
-%%   <<"ShiftCoverages">> => map(),
-%%   <<"WeeklySettings">> => list(weekly_setting())
+%% accept_page_result() :: #{
+
 %% }
--type recurrence_settings() :: #{binary() => any()}.
+-type accept_page_result() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% activate_contact_channel_request() :: #{
+%%   <<"ActivationCode">> := string(),
+%%   <<"ContactChannelId">> := string()
+%% }
+-type activate_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% activate_contact_channel_result() :: #{
+
+%% }
+-type activate_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% channel_target_info() :: #{
+%%   <<"ContactChannelId">> => string(),
+%%   <<"RetryIntervalInMinutes">> => integer()
+%% }
+-type channel_target_info() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"DependentEntities">> => list(dependent_entity()),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contact() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ContactArn">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type contact() :: #{binary() => any()}.
+
+%% Example:
+%% contact_channel() :: #{
+%%   <<"ActivationStatus">> => list(any()),
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactChannelArn">> => string(),
+%%   <<"DeliveryAddress">> => contact_channel_address(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type contact_channel() :: #{binary() => any()}.
+
+%% Example:
+%% contact_channel_address() :: #{
+%%   <<"SimpleAddress">> => string()
+%% }
+-type contact_channel_address() :: #{binary() => any()}.
+
+%% Example:
+%% contact_target_info() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"IsEssential">> => boolean()
+%% }
+-type contact_target_info() :: #{binary() => any()}.
+
+%% Example:
+%% coverage_time() :: #{
+%%   <<"End">> => hand_off_time(),
+%%   <<"Start">> => hand_off_time()
+%% }
+-type coverage_time() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_channel_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"DeferActivation">> => boolean(),
+%%   <<"DeliveryAddress">> := contact_channel_address(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_channel_result() :: #{
+%%   <<"ContactChannelArn">> => string()
+%% }
+-type create_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_request() :: #{
+%%   <<"Alias">> := string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Plan">> := plan(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_result() :: #{
+%%   <<"ContactArn">> => string()
+%% }
+-type create_contact_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_rotation_override_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"NewContactIds">> := list(string()),
+%%   <<"RotationId">> := string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type create_rotation_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rotation_override_result() :: #{
+%%   <<"RotationOverrideId">> => string()
+%% }
+-type create_rotation_override_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_rotation_request() :: #{
@@ -137,6 +254,92 @@
 %%   <<"TimeZoneId">> := string()
 %% }
 -type create_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rotation_result() :: #{
+%%   <<"RotationArn">> => string()
+%% }
+-type create_rotation_result() :: #{binary() => any()}.
+
+%% Example:
+%% data_encryption_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type data_encryption_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_contact_channel_request() :: #{
+%%   <<"ContactChannelId">> := string()
+%% }
+-type deactivate_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_contact_channel_result() :: #{
+
+%% }
+-type deactivate_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_channel_request() :: #{
+%%   <<"ContactChannelId">> := string()
+%% }
+-type delete_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_channel_result() :: #{
+
+%% }
+-type delete_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_request() :: #{
+%%   <<"ContactId">> := string()
+%% }
+-type delete_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_result() :: #{
+
+%% }
+-type delete_contact_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rotation_override_request() :: #{
+%%   <<"RotationId">> := string(),
+%%   <<"RotationOverrideId">> := string()
+%% }
+-type delete_rotation_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rotation_override_result() :: #{
+
+%% }
+-type delete_rotation_override_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rotation_request() :: #{
+%%   <<"RotationId">> := string()
+%% }
+-type delete_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rotation_result() :: #{
+
+%% }
+-type delete_rotation_result() :: #{binary() => any()}.
+
+%% Example:
+%% dependent_entity() :: #{
+%%   <<"DependentResourceIds">> => list(string()),
+%%   <<"RelationType">> => string()
+%% }
+-type dependent_entity() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engagement_request() :: #{
+%%   <<"EngagementId">> := string()
+%% }
+-type describe_engagement_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_engagement_result() :: #{
@@ -154,519 +357,10 @@
 -type describe_engagement_result() :: #{binary() => any()}.
 
 %% Example:
-%% stage() :: #{
-%%   <<"DurationInMinutes">> => integer(),
-%%   <<"Targets">> => list(target())
-%% }
--type stage() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_channel_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"DeferActivation">> => boolean(),
-%%   <<"DeliveryAddress">> := contact_channel_address(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type create_contact_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pages_by_contact_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pages_by_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_rotation_override_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"NewContactIds">> := list(string()),
-%%   <<"RotationId">> := string(),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type create_rotation_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_request() :: #{
-%%   <<"ContactId">> := string()
-%% }
--type delete_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% contact_target_info() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"IsEssential">> => boolean()
-%% }
--type contact_target_info() :: #{binary() => any()}.
-
-%% Example:
-%% engagement() :: #{
-%%   <<"ContactArn">> => string(),
-%%   <<"EngagementArn">> => string(),
-%%   <<"IncidentId">> => string(),
-%%   <<"Sender">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"StopTime">> => non_neg_integer()
-%% }
--type engagement() :: #{binary() => any()}.
-
-%% Example:
-%% create_rotation_override_result() :: #{
-%%   <<"RotationOverrideId">> => string()
-%% }
--type create_rotation_override_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_result() :: #{
-
-%% }
--type untag_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% data_encryption_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type data_encryption_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_engagement_request() :: #{
-%%   <<"EngagementId">> := string(),
-%%   <<"Reason">> => string()
-%% }
--type stop_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_channel_request() :: #{
-%%   <<"ContactChannelId">> := string()
-%% }
--type delete_contact_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% weekly_setting() :: #{
-%%   <<"DayOfWeek">> => list(any()),
-%%   <<"HandOffTime">> => hand_off_time()
-%% }
--type weekly_setting() :: #{binary() => any()}.
-
-%% Example:
-%% shift_details() :: #{
-%%   <<"OverriddenContactIds">> => list(string())
-%% }
--type shift_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rotation_override_request() :: #{
-%%   <<"RotationId">> := string(),
-%%   <<"RotationOverrideId">> := string()
-%% }
--type delete_rotation_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% receipt() :: #{
-%%   <<"ContactChannelArn">> => string(),
-%%   <<"ReceiptInfo">> => string(),
-%%   <<"ReceiptTime">> => non_neg_integer(),
-%%   <<"ReceiptType">> => list(any())
-%% }
--type receipt() :: #{binary() => any()}.
-
-%% Example:
-%% update_rotation_request() :: #{
-%%   <<"ContactIds">> => list(string()),
-%%   <<"Recurrence">> := recurrence_settings(),
-%%   <<"RotationId">> := string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TimeZoneId">> => string()
-%% }
--type update_rotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_page_resolutions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageResolutions">> => list(resolution_contact())
-%% }
--type list_page_resolutions_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_channel_result() :: #{
-%%   <<"ContactChannelArn">> => string()
-%% }
--type create_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% rotation() :: #{
-%%   <<"ContactIds">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Recurrence">> => recurrence_settings(),
-%%   <<"RotationArn">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TimeZoneId">> => string()
-%% }
--type rotation() :: #{binary() => any()}.
-
-%% Example:
-%% start_engagement_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"Content">> := string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"IncidentId">> => string(),
-%%   <<"PublicContent">> => string(),
-%%   <<"PublicSubject">> => string(),
-%%   <<"Sender">> := string(),
-%%   <<"Subject">> := string()
-%% }
--type start_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% contact_channel() :: #{
-%%   <<"ActivationStatus">> => list(any()),
-%%   <<"ContactArn">> => string(),
-%%   <<"ContactChannelArn">> => string(),
-%%   <<"DeliveryAddress">> => contact_channel_address(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type contact_channel() :: #{binary() => any()}.
-
-%% Example:
-%% rotation_override() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewContactIds">> => list(string()),
-%%   <<"RotationOverrideId">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type rotation_override() :: #{binary() => any()}.
-
-%% Example:
-%% put_contact_policy_result() :: #{
-
-%% }
--type put_contact_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% coverage_time() :: #{
-%%   <<"End">> => hand_off_time(),
-%%   <<"Start">> => hand_off_time()
-%% }
--type coverage_time() :: #{binary() => any()}.
-
-%% Example:
-%% monthly_setting() :: #{
-%%   <<"DayOfMonth">> => integer(),
-%%   <<"HandOffTime">> => hand_off_time()
-%% }
--type monthly_setting() :: #{binary() => any()}.
-
-%% Example:
-%% list_page_resolutions_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageId">> := string()
-%% }
--type list_page_resolutions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagements_result() :: #{
-%%   <<"Engagements">> => list(engagement()),
-%%   <<"NextToken">> => string()
-%% }
--type list_engagements_result() :: #{binary() => any()}.
-
-%% Example:
-%% target() :: #{
-%%   <<"ChannelTargetInfo">> => channel_target_info(),
-%%   <<"ContactTargetInfo">> => contact_target_info()
-%% }
--type target() :: #{binary() => any()}.
-
-%% Example:
-%% contact_channel_address() :: #{
-%%   <<"SimpleAddress">> => string()
-%% }
--type contact_channel_address() :: #{binary() => any()}.
-
-%% Example:
-%% list_pages_by_engagement_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Pages">> => list(page())
-%% }
--type list_pages_by_engagement_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_rotations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RotationNamePrefix">> => string()
-%% }
--type list_rotations_request() :: #{binary() => any()}.
-
-%% Example:
 %% describe_page_request() :: #{
 %%   <<"PageId">> := string()
 %% }
 -type describe_page_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_page_receipts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageId">> := string()
-%% }
--type list_page_receipts_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"DependentEntities">> => list(dependent_entity()),
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_contacts_result() :: #{
-%%   <<"Contacts">> => list(contact()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contacts_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_rotation_result() :: #{
-
-%% }
--type update_rotation_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_page_receipts_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Receipts">> => list(receipt())
-%% }
--type list_page_receipts_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_channel_request() :: #{
-%%   <<"ContactChannelId">> := string(),
-%%   <<"DeliveryAddress">> => contact_channel_address(),
-%%   <<"Name">> => string()
-%% }
--type update_contact_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pages_by_contact_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Pages">> => list(page())
-%% }
--type list_pages_by_contact_result() :: #{binary() => any()}.
-
-%% Example:
-%% activate_contact_channel_request() :: #{
-%%   <<"ActivationCode">> := string(),
-%%   <<"ContactChannelId">> := string()
-%% }
--type activate_contact_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_channel_result() :: #{
-%%   <<"ActivationStatus">> => list(any()),
-%%   <<"ContactArn">> => string(),
-%%   <<"ContactChannelArn">> => string(),
-%%   <<"DeliveryAddress">> => contact_channel_address(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type get_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_rotation_override_result() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewContactIds">> => list(string()),
-%%   <<"RotationArn">> => string(),
-%%   <<"RotationOverrideId">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type get_rotation_override_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_rotation_overrides_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RotationId">> := string(),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type list_rotation_overrides_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_preview_rotation_shifts_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RotationShifts">> => list(rotation_shift())
-%% }
--type list_preview_rotation_shifts_result() :: #{binary() => any()}.
-
-%% Example:
-%% accept_page_result() :: #{
-
-%% }
--type accept_page_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_rotation_request() :: #{
-%%   <<"RotationId">> := string()
-%% }
--type get_rotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_contact_channels_result() :: #{
-%%   <<"ContactChannels">> => list(contact_channel()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_channels_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_rotation_shifts_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RotationId">> := string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type list_rotation_shifts_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_rotation_result() :: #{
-%%   <<"ContactIds">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Recurrence">> => recurrence_settings(),
-%%   <<"RotationArn">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TimeZoneId">> => string()
-%% }
--type get_rotation_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_result() :: #{
-
-%% }
--type update_contact_result() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% send_activation_code_request() :: #{
-%%   <<"ContactChannelId">> := string()
-%% }
--type send_activation_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_page_request() :: #{
-%%   <<"AcceptCode">> := string(),
-%%   <<"AcceptCodeValidation">> => list(any()),
-%%   <<"AcceptType">> := list(any()),
-%%   <<"ContactChannelId">> => string(),
-%%   <<"Note">> => string(),
-%%   <<"PageId">> := string()
-%% }
--type accept_page_request() :: #{binary() => any()}.
-
-%% Example:
-%% dependent_entity() :: #{
-%%   <<"DependentResourceIds">> => list(string()),
-%%   <<"RelationType">> => string()
-%% }
--type dependent_entity() :: #{binary() => any()}.
-
-%% Example:
-%% contact() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"ContactArn">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type contact() :: #{binary() => any()}.
-
-%% Example:
-%% start_engagement_result() :: #{
-%%   <<"EngagementArn">> => string()
-%% }
--type start_engagement_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_result() :: #{
-%%   <<"ContactArn">> => string()
-%% }
--type create_contact_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_rotation_shifts_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RotationShifts">> => list(rotation_shift())
-%% }
--type list_rotation_shifts_result() :: #{binary() => any()}.
-
-%% Example:
-%% rotation_shift() :: #{
-%%   <<"ContactIds">> => list(string()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ShiftDetails">> => shift_details(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
-%% }
--type rotation_shift() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% describe_page_result() :: #{
@@ -686,40 +380,51 @@
 -type describe_page_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"Tags">> => list(tag())
+%% engagement() :: #{
+%%   <<"ContactArn">> => string(),
+%%   <<"EngagementArn">> => string(),
+%%   <<"IncidentId">> => string(),
+%%   <<"Sender">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StopTime">> => non_neg_integer()
 %% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
+-type engagement() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_channel_request() :: #{
+%%   <<"ContactChannelId">> := string()
+%% }
+-type get_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_channel_result() :: #{
+%%   <<"ActivationStatus">> => list(any()),
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactChannelArn">> => string(),
+%%   <<"DeliveryAddress">> => contact_channel_address(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type get_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_policy_request() :: #{
+%%   <<"ContactArn">> := string()
+%% }
+-type get_contact_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_policy_result() :: #{
+%%   <<"ContactArn">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_contact_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_contact_request() :: #{
 %%   <<"ContactId">> := string()
 %% }
 -type get_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_contacts_request() :: #{
-%%   <<"AliasPrefix">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type list_contacts_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_rotations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Rotations">> => list(rotation())
-%% }
--type list_rotations_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_contact_channels_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_channels_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_contact_result() :: #{
@@ -732,97 +437,39 @@
 -type get_contact_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_contact_policy_request() :: #{
-%%   <<"ContactArn">> := string()
+%% get_rotation_override_request() :: #{
+%%   <<"RotationId">> := string(),
+%%   <<"RotationOverrideId">> := string()
 %% }
--type get_contact_policy_request() :: #{binary() => any()}.
+-type get_rotation_override_request() :: #{binary() => any()}.
 
 %% Example:
-%% time_range() :: #{
+%% get_rotation_override_result() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NewContactIds">> => list(string()),
+%%   <<"RotationArn">> => string(),
+%%   <<"RotationOverrideId">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
--type time_range() :: #{binary() => any()}.
+-type get_rotation_override_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_rotation_overrides_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RotationOverrides">> => list(rotation_override())
+%% get_rotation_request() :: #{
+%%   <<"RotationId">> := string()
 %% }
--type list_rotation_overrides_result() :: #{binary() => any()}.
+-type get_rotation_request() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% get_rotation_result() :: #{
+%%   <<"ContactIds">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Recurrence">> => recurrence_settings(),
+%%   <<"RotationArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TimeZoneId">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_contact_policy_request() :: #{
-%%   <<"ContactArn">> := string(),
-%%   <<"Policy">> := string()
-%% }
--type put_contact_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_engagement_request() :: #{
-%%   <<"EngagementId">> := string()
-%% }
--type describe_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_channel_result() :: #{
-
-%% }
--type delete_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Plan">> => plan()
-%% }
--type update_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_result() :: #{
-
-%% }
--type delete_contact_result() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"RetryAfterSeconds">> => integer(),
-%%   <<"ServiceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"Plan">> := plan(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_contact_request() :: #{binary() => any()}.
+-type get_rotation_result() :: #{binary() => any()}.
 
 %% Example:
 %% hand_off_time() :: #{
@@ -832,10 +479,117 @@
 -type hand_off_time() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_result() :: #{
-
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
 %% }
--type tag_resource_result() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_contact_channels_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_channels_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contact_channels_result() :: #{
+%%   <<"ContactChannels">> => list(contact_channel()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_channels_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_contacts_request() :: #{
+%%   <<"AliasPrefix">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_contacts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contacts_result() :: #{
+%%   <<"Contacts">> => list(contact()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contacts_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagements_request() :: #{
+%%   <<"IncidentId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimeRangeValue">> => time_range()
+%% }
+-type list_engagements_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagements_result() :: #{
+%%   <<"Engagements">> => list(engagement()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_engagements_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_page_receipts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageId">> := string()
+%% }
+-type list_page_receipts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_page_receipts_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Receipts">> => list(receipt())
+%% }
+-type list_page_receipts_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_page_resolutions_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageId">> := string()
+%% }
+-type list_page_resolutions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_page_resolutions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageResolutions">> => list(resolution_contact())
+%% }
+-type list_page_resolutions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_pages_by_contact_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pages_by_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pages_by_contact_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Pages">> => list(page())
+%% }
+-type list_pages_by_contact_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_pages_by_engagement_request() :: #{
+%%   <<"EngagementId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pages_by_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pages_by_engagement_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Pages">> => list(page())
+%% }
+-type list_pages_by_engagement_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_preview_rotation_shifts_request() :: #{
@@ -852,78 +606,79 @@
 -type list_preview_rotation_shifts_request() :: #{binary() => any()}.
 
 %% Example:
-%% deactivate_contact_channel_request() :: #{
-%%   <<"ContactChannelId">> := string()
+%% list_preview_rotation_shifts_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RotationShifts">> => list(rotation_shift())
 %% }
--type deactivate_contact_channel_request() :: #{binary() => any()}.
+-type list_preview_rotation_shifts_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_rotation_override_request() :: #{
-%%   <<"RotationId">> := string(),
-%%   <<"RotationOverrideId">> := string()
-%% }
--type get_rotation_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% preview_override() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewMembers">> => list(string()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type preview_override() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_channel_result() :: #{
-
-%% }
--type update_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_contact_channel_result() :: #{
-
-%% }
--type deactivate_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_channel_request() :: #{
-%%   <<"ContactChannelId">> := string()
-%% }
--type get_contact_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% activate_contact_channel_result() :: #{
-
-%% }
--type activate_contact_channel_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_policy_result() :: #{
-%%   <<"ContactArn">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type get_contact_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% send_activation_code_result() :: #{
-
-%% }
--type send_activation_code_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagements_request() :: #{
-%%   <<"IncidentId">> => string(),
+%% list_rotation_overrides_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TimeRangeValue">> => time_range()
+%%   <<"RotationId">> := string(),
+%%   <<"StartTime">> := non_neg_integer()
 %% }
--type list_engagements_request() :: #{binary() => any()}.
+-type list_rotation_overrides_request() :: #{binary() => any()}.
 
 %% Example:
-%% channel_target_info() :: #{
-%%   <<"ContactChannelId">> => string(),
-%%   <<"RetryIntervalInMinutes">> => integer()
+%% list_rotation_overrides_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RotationOverrides">> => list(rotation_override())
 %% }
--type channel_target_info() :: #{binary() => any()}.
+-type list_rotation_overrides_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_rotation_shifts_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RotationId">> := string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type list_rotation_shifts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rotation_shifts_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RotationShifts">> => list(rotation_shift())
+%% }
+-type list_rotation_shifts_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_rotations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RotationNamePrefix">> => string()
+%% }
+-type list_rotations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rotations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rotations">> => list(rotation())
+%% }
+-type list_rotations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% monthly_setting() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"HandOffTime">> => hand_off_time()
+%% }
+-type monthly_setting() :: #{binary() => any()}.
 
 %% Example:
 %% page() :: #{
@@ -939,10 +694,52 @@
 -type page() :: #{binary() => any()}.
 
 %% Example:
-%% create_rotation_result() :: #{
-%%   <<"RotationArn">> => string()
+%% plan() :: #{
+%%   <<"RotationIds">> => list(string()),
+%%   <<"Stages">> => list(stage())
 %% }
--type create_rotation_result() :: #{binary() => any()}.
+-type plan() :: #{binary() => any()}.
+
+%% Example:
+%% preview_override() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NewMembers">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type preview_override() :: #{binary() => any()}.
+
+%% Example:
+%% put_contact_policy_request() :: #{
+%%   <<"ContactArn">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_contact_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_contact_policy_result() :: #{
+
+%% }
+-type put_contact_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% receipt() :: #{
+%%   <<"ContactChannelArn">> => string(),
+%%   <<"ReceiptInfo">> => string(),
+%%   <<"ReceiptTime">> => non_neg_integer(),
+%%   <<"ReceiptType">> => list(any())
+%% }
+-type receipt() :: #{binary() => any()}.
+
+%% Example:
+%% recurrence_settings() :: #{
+%%   <<"DailySettings">> => list(hand_off_time()),
+%%   <<"MonthlySettings">> => list(monthly_setting()),
+%%   <<"NumberOfOnCalls">> => integer(),
+%%   <<"RecurrenceMultiplier">> => integer(),
+%%   <<"ShiftCoverages">> => map(),
+%%   <<"WeeklySettings">> => list(weekly_setting())
+%% }
+-type recurrence_settings() :: #{binary() => any()}.
 
 %% Example:
 %% resolution_contact() :: #{
@@ -953,322 +750,525 @@
 -type resolution_contact() :: #{binary() => any()}.
 
 %% Example:
-%% delete_rotation_result() :: #{
-
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type delete_rotation_result() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_rotation_request() :: #{
-%%   <<"RotationId">> := string()
+%% rotation() :: #{
+%%   <<"ContactIds">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Recurrence">> => recurrence_settings(),
+%%   <<"RotationArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TimeZoneId">> => string()
 %% }
--type delete_rotation_request() :: #{binary() => any()}.
+-type rotation() :: #{binary() => any()}.
 
 %% Example:
-%% delete_rotation_override_result() :: #{
-
+%% rotation_override() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NewContactIds">> => list(string()),
+%%   <<"RotationOverrideId">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type delete_rotation_override_result() :: #{binary() => any()}.
+-type rotation_override() :: #{binary() => any()}.
 
 %% Example:
-%% plan() :: #{
-%%   <<"RotationIds">> => list(string()),
-%%   <<"Stages">> => list(stage())
+%% rotation_shift() :: #{
+%%   <<"ContactIds">> => list(string()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ShiftDetails">> => shift_details(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
 %% }
--type plan() :: #{binary() => any()}.
+-type rotation_shift() :: #{binary() => any()}.
+
+%% Example:
+%% send_activation_code_request() :: #{
+%%   <<"ContactChannelId">> := string()
+%% }
+-type send_activation_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_activation_code_result() :: #{
+
+%% }
+-type send_activation_code_result() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% shift_details() :: #{
+%%   <<"OverriddenContactIds">> => list(string())
+%% }
+-type shift_details() :: #{binary() => any()}.
+
+%% Example:
+%% stage() :: #{
+%%   <<"DurationInMinutes">> => integer(),
+%%   <<"Targets">> => list(target())
+%% }
+-type stage() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"Content">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"IncidentId">> => string(),
+%%   <<"PublicContent">> => string(),
+%%   <<"PublicSubject">> => string(),
+%%   <<"Sender">> := string(),
+%%   <<"Subject">> := string()
+%% }
+-type start_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_result() :: #{
+%%   <<"EngagementArn">> => string()
+%% }
+-type start_engagement_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_engagement_request() :: #{
+%%   <<"EngagementId">> := string(),
+%%   <<"Reason">> => string()
+%% }
+-type stop_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_engagement_result() :: #{
+
+%% }
+-type stop_engagement_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{
+
+%% }
+-type tag_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"ChannelTargetInfo">> => channel_target_info(),
+%%   <<"ContactTargetInfo">> => contact_target_info()
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"RetryAfterSeconds">> => integer(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type time_range() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{
+
+%% }
+-type untag_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_channel_request() :: #{
+%%   <<"ContactChannelId">> := string(),
+%%   <<"DeliveryAddress">> => contact_channel_address(),
+%%   <<"Name">> => string()
+%% }
+-type update_contact_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_channel_result() :: #{
+
+%% }
+-type update_contact_channel_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Plan">> => plan()
+%% }
+-type update_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_result() :: #{
+
+%% }
+-type update_contact_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_rotation_request() :: #{
+%%   <<"ContactIds">> => list(string()),
+%%   <<"Recurrence">> := recurrence_settings(),
+%%   <<"RotationId">> := string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TimeZoneId">> => string()
+%% }
+-type update_rotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rotation_result() :: #{
+
+%% }
+-type update_rotation_result() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% weekly_setting() :: #{
+%%   <<"DayOfWeek">> => list(any()),
+%%   <<"HandOffTime">> => hand_off_time()
+%% }
+-type weekly_setting() :: #{binary() => any()}.
 
 -type accept_page_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type activate_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    data_encryption_exception() | 
     conflict_exception() | 
-    data_encryption_exception().
+    access_denied_exception().
 
 -type create_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    data_encryption_exception() | 
     conflict_exception() | 
-    data_encryption_exception().
+    access_denied_exception().
 
 -type create_rotation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_rotation_override_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type deactivate_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_rotation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_rotation_override_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type describe_page_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type get_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type get_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type get_contact_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_rotation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_rotation_override_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_contact_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type list_contacts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_engagements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_page_receipts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_page_resolutions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_pages_by_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_pages_by_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_preview_rotation_shifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_rotation_overrides_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_rotation_shifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_rotations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_contact_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_activation_code_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type start_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type stop_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    data_encryption_exception().
+    internal_server_exception() | 
+    data_encryption_exception() | 
+    access_denied_exception().
 
 -type update_contact_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    data_encryption_exception() | 
     conflict_exception() | 
-    data_encryption_exception().
+    access_denied_exception().
 
 -type update_rotation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

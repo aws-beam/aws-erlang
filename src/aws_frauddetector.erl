@@ -180,66 +180,19 @@
 
 
 %% Example:
-%% cancel_batch_import_job_request() :: #{
-%%   <<"jobId">> := string()
+%% a_t_i_metric_data_point() :: #{
+%%   <<"adr">> => float(),
+%%   <<"atodr">> => float(),
+%%   <<"cr">> => float(),
+%%   <<"threshold">> => float()
 %% }
--type cancel_batch_import_job_request() :: #{binary() => any()}.
+-type a_t_i_metric_data_point() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_variable_request() :: #{
-%%   <<"names">> := list(string())
+%% a_t_i_model_performance() :: #{
+%%   <<"asi">> => float()
 %% }
--type batch_get_variable_request() :: #{binary() => any()}.
-
-%% Example:
-%% external_model() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"inputConfiguration">> => model_input_configuration(),
-%%   <<"invokeModelEndpointRoleArn">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"modelEndpoint">> => string(),
-%%   <<"modelEndpointStatus">> => list(any()),
-%%   <<"modelSource">> => list(any()),
-%%   <<"outputConfiguration">> => model_output_configuration()
-%% }
--type external_model() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"detectorId">> := string(),
-%%   <<"expression">> := string(),
-%%   <<"language">> := list(any()),
-%%   <<"outcomes">> := list(string()),
-%%   <<"ruleId">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_list_result() :: #{
-
-%% }
--type update_list_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_variable_error() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type batch_create_variable_error() :: #{binary() => any()}.
-
-%% Example:
-%% field_validation_message() :: #{
-%%   <<"content">> => string(),
-%%   <<"fieldName">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => string()
-%% }
--type field_validation_message() :: #{binary() => any()}.
+-type a_t_i_model_performance() :: #{binary() => any()}.
 
 %% Example:
 %% a_t_i_training_metrics_value() :: #{
@@ -249,259 +202,31 @@
 -type a_t_i_training_metrics_value() :: #{binary() => any()}.
 
 %% Example:
-%% create_model_version_result() :: #{
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string(),
-%%   <<"status">> => string()
-%% }
--type create_model_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_variable_result() :: #{
-
-%% }
--type update_variable_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_result() :: #{
-
-%% }
--type create_model_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_list_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"elements">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"variableType">> => string()
-%% }
--type create_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_version_request() :: #{
-%%   <<"externalEventsDetail">> => external_events_detail(),
-%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
-%%   <<"majorVersionNumber">> := string(),
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type update_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entity_type_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_entity_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_data_point() :: #{
-%%   <<"fpr">> => float(),
-%%   <<"precision">> => float(),
-%%   <<"threshold">> => float(),
-%%   <<"tpr">> => float()
-%% }
--type metric_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% get_list_elements_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_list_elements_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter_condition() :: #{
-%%   <<"value">> => string()
-%% }
--type filter_condition() :: #{binary() => any()}.
-
-%% Example:
-%% model_version_evaluation() :: #{
-%%   <<"evaluationScore">> => string(),
-%%   <<"outputVariableName">> => string(),
-%%   <<"predictionExplanations">> => prediction_explanations()
-%% }
--type model_version_evaluation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_outcome_result() :: #{
-
-%% }
--type delete_outcome_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_version_result() :: #{
-
-%% }
--type delete_model_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_kms_encryption_key_result() :: #{
-%%   <<"kmsKey">> => kms_key()
-%% }
--type get_kms_encryption_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% t_f_i_metric_data_point() :: #{
-%%   <<"fpr">> => float(),
-%%   <<"precision">> => float(),
-%%   <<"threshold">> => float(),
-%%   <<"tpr">> => float()
-%% }
--type t_f_i_metric_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_prediction_job_request() :: #{
-%%   <<"detectorName">> := string(),
-%%   <<"detectorVersion">> => string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"iamRoleArn">> := string(),
-%%   <<"inputPath">> := string(),
-%%   <<"jobId">> := string(),
-%%   <<"outputPath">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_batch_prediction_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_lists_metadata_result() :: #{
-%%   <<"lists">> => list(allow_deny_list()),
-%%   <<"nextToken">> => string()
-%% }
--type get_lists_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_result() :: #{
-
-%% }
--type untag_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_result() :: #{
-%%   <<"event">> => event()
-%% }
--type get_event_result() :: #{binary() => any()}.
-
-%% Example:
-%% model_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string()
-%% }
--type model_version() :: #{binary() => any()}.
-
-%% Example:
-%% put_label_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type put_label_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"entityId">> => string(),
-%%   <<"entityType">> => string()
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_version_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"expression">> := string(),
-%%   <<"language">> := list(any()),
-%%   <<"outcomes">> := list(string()),
-%%   <<"rule">> := rule(),
-%%   <<"tags">> => list(tag())
-%% }
--type update_rule_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% ingested_event_statistics() :: #{
-%%   <<"eventDataSizeInBytes">> => float(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"leastRecentEvent">> => string(),
-%%   <<"mostRecentEvent">> => string(),
-%%   <<"numberOfEvents">> => float()
-%% }
--type ingested_event_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% model_input_configuration() :: #{
-%%   <<"csvInputTemplate">> => string(),
-%%   <<"eventTypeName">> => string(),
-%%   <<"format">> => list(any()),
-%%   <<"jsonInputTemplate">> => string(),
-%%   <<"useEventVariables">> => boolean()
-%% }
--type model_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_variable_request() :: #{
-%%   <<"dataSource">> := list(any()),
-%%   <<"dataType">> := list(any()),
-%%   <<"defaultValue">> := string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"variableType">> => string()
-%% }
--type create_variable_request() :: #{binary() => any()}.
-
-%% Example:
-%% o_f_i_training_metrics_value() :: #{
-%%   <<"metricDataPoints">> => list(o_f_i_metric_data_point()),
-%%   <<"modelPerformance">> => o_f_i_model_performance()
-%% }
--type o_f_i_training_metrics_value() :: #{binary() => any()}.
-
-%% Example:
-%% model_version_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"externalEventsDetail">> => external_events_detail(),
-%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string(),
-%%   <<"status">> => string(),
-%%   <<"trainingDataSchema">> => training_data_schema(),
-%%   <<"trainingDataSource">> => list(any()),
-%%   <<"trainingResult">> => training_result(),
-%%   <<"trainingResultV2">> => training_result_v2()
-%% }
--type model_version_detail() :: #{binary() => any()}.
-
-%% Example:
-%% resource_unavailable_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_unavailable_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_event_label_result() :: #{
-
+%% aggregated_log_odds_metric() :: #{
+%%   <<"aggregatedVariablesImportance">> => float(),
+%%   <<"variableNames">> => list(string())
 %% }
--type update_event_label_result() :: #{binary() => any()}.
+-type aggregated_log_odds_metric() :: #{binary() => any()}.
 
 %% Example:
-%% create_list_result() :: #{
-
+%% aggregated_variables_impact_explanation() :: #{
+%%   <<"eventVariableNames">> => list(string()),
+%%   <<"logOddsImpact">> => float(),
+%%   <<"relativeImpact">> => string()
 %% }
--type create_list_result() :: #{binary() => any()}.
+-type aggregated_variables_impact_explanation() :: #{binary() => any()}.
+
+%% Example:
+%% aggregated_variables_importance_metrics() :: #{
+%%   <<"logOddsMetrics">> => list(aggregated_log_odds_metric())
+%% }
+-type aggregated_variables_importance_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% allow_deny_list() :: #{
@@ -515,98 +240,46 @@
 -type allow_deny_list() :: #{binary() => any()}.
 
 %% Example:
-%% variable_impact_explanation() :: #{
-%%   <<"eventVariableName">> => string(),
-%%   <<"logOddsImpact">> => float(),
-%%   <<"relativeImpact">> => string()
+%% batch_create_variable_error() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
 %% }
--type variable_impact_explanation() :: #{binary() => any()}.
+-type batch_create_variable_error() :: #{binary() => any()}.
 
 %% Example:
-%% create_batch_import_job_result() :: #{
-
+%% batch_create_variable_request() :: #{
+%%   <<"tags">> => list(tag()),
+%%   <<"variableEntries">> := list(variable_entry())
 %% }
--type create_batch_import_job_result() :: #{binary() => any()}.
+-type batch_create_variable_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_model_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag())
+%% batch_create_variable_result() :: #{
+%%   <<"errors">> => list(batch_create_variable_error())
 %% }
--type create_model_request() :: #{binary() => any()}.
+-type batch_create_variable_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_model_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any())
+%% batch_get_variable_error() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
 %% }
--type update_model_request() :: #{binary() => any()}.
+-type batch_get_variable_error() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_batch_import_job_result() :: #{
-
+%% batch_get_variable_request() :: #{
+%%   <<"names">> := list(string())
 %% }
--type cancel_batch_import_job_result() :: #{binary() => any()}.
+-type batch_get_variable_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_detector_result() :: #{
-%%   <<"arn">> => string(),
-%%   <<"detectorId">> => string(),
-%%   <<"detectorVersionSummaries">> => list(detector_version_summary()),
-%%   <<"nextToken">> => string()
+%% batch_get_variable_result() :: #{
+%%   <<"errors">> => list(batch_get_variable_error()),
+%%   <<"variables">> => list(variable())
 %% }
--type describe_detector_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_outcomes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_outcomes_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entity_type_result() :: #{
-
-%% }
--type delete_entity_type_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_variable_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_variable_request() :: #{binary() => any()}.
-
-%% Example:
-%% training_result_v2() :: #{
-%%   <<"aggregatedVariablesImportanceMetrics">> => aggregated_variables_importance_metrics(),
-%%   <<"dataValidationMetrics">> => data_validation_metrics(),
-%%   <<"trainingMetricsV2">> => training_metrics_v2(),
-%%   <<"variableImportanceMetrics">> => variable_importance_metrics()
-%% }
--type training_result_v2() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_import_job_request() :: #{
-%%   <<"jobId">> := string()
-%% }
--type delete_batch_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_import_job_result() :: #{
-
-%% }
--type delete_batch_import_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_delete_events_by_event_type_status_request() :: #{
-%%   <<"eventTypeName">> := string()
-%% }
--type get_delete_events_by_event_type_status_request() :: #{binary() => any()}.
+-type batch_get_variable_result() :: #{binary() => any()}.
 
 %% Example:
 %% batch_import() :: #{
@@ -625,135 +298,6 @@
 %%   <<"totalRecordsCount">> => integer()
 %% }
 -type batch_import() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% a_t_i_metric_data_point() :: #{
-%%   <<"adr">> => float(),
-%%   <<"atodr">> => float(),
-%%   <<"cr">> => float(),
-%%   <<"threshold">> => float()
-%% }
--type a_t_i_metric_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% evaluated_external_model() :: #{
-%%   <<"inputVariables">> => map(),
-%%   <<"modelEndpoint">> => string(),
-%%   <<"outputVariables">> => map(),
-%%   <<"useEventVariables">> => boolean()
-%% }
--type evaluated_external_model() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_version_request() :: #{
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"modelVersionNumber">> := string()
-%% }
--type get_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_variables_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_variables_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"detectorId">> => string(),
-%%   <<"expression">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"outcomes">> => list(string()),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleVersion">> => string()
-%% }
--type rule_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_list_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_detector_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% event_variable_summary() :: #{
-%%   <<"name">> => string(),
-%%   <<"source">> => string(),
-%%   <<"value">> => string()
-%% }
--type event_variable_summary() :: #{binary() => any()}.
-
-%% Example:
-%% training_data_schema() :: #{
-%%   <<"labelSchema">> => label_schema(),
-%%   <<"modelVariables">> => list(string())
-%% }
--type training_data_schema() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_model_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_request() :: #{
-%%   <<"rule">> := rule()
-%% }
--type delete_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_detector_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"detectorId">> := string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type put_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_types_result() :: #{
-%%   <<"eventTypes">> => list(event_type()),
-%%   <<"nextToken">> => string()
-%% }
--type get_event_types_result() :: #{binary() => any()}.
-
-%% Example:
-%% send_event_request() :: #{
-%%   <<"assignedLabel">> => string(),
-%%   <<"entities">> := list(entity()),
-%%   <<"eventId">> := string(),
-%%   <<"eventTimestamp">> := string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"eventVariables">> := map(),
-%%   <<"labelTimestamp">> => string()
-%% }
--type send_event_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_prediction() :: #{
@@ -776,86 +320,34 @@
 -type batch_prediction() :: #{binary() => any()}.
 
 %% Example:
-%% delete_variable_result() :: #{
-
+%% cancel_batch_import_job_request() :: #{
+%%   <<"jobId">> := string()
 %% }
--type delete_variable_result() :: #{binary() => any()}.
+-type cancel_batch_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% entity_type() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"name">> => string()
+%% cancel_batch_import_job_result() :: #{
+
 %% }
--type entity_type() :: #{binary() => any()}.
+-type cancel_batch_import_job_result() :: #{binary() => any()}.
 
 %% Example:
-%% model_output_configuration() :: #{
-%%   <<"csvIndexToVariableMap">> => map(),
-%%   <<"format">> => list(any()),
-%%   <<"jsonKeyToVariableMap">> => map()
+%% cancel_batch_prediction_job_request() :: #{
+%%   <<"jobId">> := string()
 %% }
--type model_output_configuration() :: #{binary() => any()}.
+-type cancel_batch_prediction_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_detector_version_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string(),
-%%   <<"externalModelEndpoints">> := list(string()),
-%%   <<"modelVersions">> => list(model_version()),
-%%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> := list(rule())
+%% cancel_batch_prediction_job_result() :: #{
+
 %% }
--type update_detector_version_request() :: #{binary() => any()}.
+-type cancel_batch_prediction_job_result() :: #{binary() => any()}.
 
 %% Example:
-%% o_f_i_metric_data_point() :: #{
-%%   <<"fpr">> => float(),
-%%   <<"precision">> => float(),
-%%   <<"threshold">> => float(),
-%%   <<"tpr">> => float()
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type o_f_i_metric_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% update_detector_version_result() :: #{
-
-%% }
--type update_detector_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% t_f_i_model_performance() :: #{
-%%   <<"auc">> => float(),
-%%   <<"uncertaintyRange">> => uncertainty_range()
-%% }
--type t_f_i_model_performance() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_version_result() :: #{
-%%   <<"rule">> => rule()
-%% }
--type update_rule_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_model_version_request() :: #{
-%%   <<"externalEventsDetail">> => external_events_detail(),
-%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"trainingDataSchema">> := training_data_schema(),
-%%   <<"trainingDataSource">> := list(any())
-%% }
--type create_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_prediction_job_result() :: #{
-
-%% }
--type create_batch_prediction_job_result() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_batch_import_job_request() :: #{
@@ -869,530 +361,29 @@
 -type create_batch_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_variable_result() :: #{
-%%   <<"errors">> => list(batch_get_variable_error()),
-%%   <<"variables">> => list(variable())
-%% }
--type batch_get_variable_result() :: #{binary() => any()}.
-
-%% Example:
-%% prediction_explanations() :: #{
-%%   <<"aggregatedVariablesImpactExplanations">> => list(aggregated_variables_impact_explanation()),
-%%   <<"variableImpactExplanations">> => list(variable_impact_explanation())
-%% }
--type prediction_explanations() :: #{binary() => any()}.
-
-%% Example:
-%% outcome() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"name">> => string()
-%% }
--type outcome() :: #{binary() => any()}.
-
-%% Example:
-%% put_detector_result() :: #{
+%% create_batch_import_job_result() :: #{
 
 %% }
--type put_detector_result() :: #{binary() => any()}.
+-type create_batch_import_job_result() :: #{binary() => any()}.
 
 %% Example:
-%% detector_version_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"detectorVersionId">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type detector_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_metadata_request() :: #{
-%%   <<"description">> := string(),
-%%   <<"rule">> := rule()
-%% }
--type update_rule_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% prediction_time_range() :: #{
-%%   <<"endTime">> => string(),
-%%   <<"startTime">> => string()
-%% }
--type prediction_time_range() :: #{binary() => any()}.
-
-%% Example:
-%% get_detectors_request() :: #{
-%%   <<"detectorId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_detectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% variable_importance_metrics() :: #{
-%%   <<"logOddsMetrics">> => list(log_odds_metric())
-%% }
--type variable_importance_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% delete_label_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_label_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_kms_encryption_key_result() :: #{
-
-%% }
--type put_kms_encryption_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_external_model_result() :: #{
-
-%% }
--type put_external_model_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_request() :: #{
-%%   <<"eventId">> := string(),
-%%   <<"eventTypeName">> := string()
-%% }
--type get_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% ingested_events_time_window() :: #{
-%%   <<"endTime">> => string(),
-%%   <<"startTime">> => string()
-%% }
--type ingested_events_time_window() :: #{binary() => any()}.
-
-%% Example:
-%% get_labels_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_labels_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_scores() :: #{
-%%   <<"modelVersion">> => model_version(),
-%%   <<"scores">> => map()
-%% }
--type model_scores() :: #{binary() => any()}.
-
-%% Example:
-%% create_variable_result() :: #{
-
-%% }
--type create_variable_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_orchestration() :: #{
-%%   <<"eventBridgeEnabled">> => boolean()
-%% }
--type event_orchestration() :: #{binary() => any()}.
-
-%% Example:
-%% data_validation_metrics() :: #{
-%%   <<"fieldLevelMessages">> => list(field_validation_message()),
-%%   <<"fileLevelMessages">> => list(file_validation_message())
-%% }
--type data_validation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_import_jobs_request() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_batch_import_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% t_f_i_training_metrics_value() :: #{
-%%   <<"metricDataPoints">> => list(t_f_i_metric_data_point()),
-%%   <<"modelPerformance">> => t_f_i_model_performance()
-%% }
--type t_f_i_training_metrics_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_label_result() :: #{
-
-%% }
--type delete_label_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_variable_request() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"variableType">> => string()
-%% }
--type update_variable_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_detectors_result() :: #{
-%%   <<"detectors">> => list(detector()),
-%%   <<"nextToken">> => string()
-%% }
--type get_detectors_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_list_elements_result() :: #{
-%%   <<"elements">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type get_list_elements_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_external_model_result() :: #{
-
-%% }
--type delete_external_model_result() :: #{binary() => any()}.
-
-%% Example:
-%% variable_entry() :: #{
-%%   <<"dataSource">> => string(),
-%%   <<"dataType">> => string(),
-%%   <<"defaultValue">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"variableType">> => string()
-%% }
--type variable_entry() :: #{binary() => any()}.
-
-%% Example:
-%% put_entity_type_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
+%% create_batch_prediction_job_request() :: #{
+%%   <<"detectorName">> := string(),
+%%   <<"detectorVersion">> => string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"iamRoleArn">> := string(),
+%%   <<"inputPath">> := string(),
+%%   <<"jobId">> := string(),
+%%   <<"outputPath">> := string(),
 %%   <<"tags">> => list(tag())
 %% }
--type put_entity_type_request() :: #{binary() => any()}.
+-type create_batch_prediction_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% training_metrics() :: #{
-%%   <<"auc">> => float(),
-%%   <<"metricDataPoints">> => list(metric_data_point())
-%% }
--type training_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_variable_result() :: #{
-%%   <<"errors">> => list(batch_create_variable_error())
-%% }
--type batch_create_variable_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_version_status_request() :: #{
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"modelVersionNumber">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type update_model_version_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_detector_version_metadata_request() :: #{
-%%   <<"description">> := string(),
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string()
-%% }
--type update_detector_version_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_prediction_result() :: #{
-%%   <<"externalModelOutputs">> => list(external_model_outputs()),
-%%   <<"modelScores">> => list(model_scores()),
-%%   <<"ruleResults">> => list(rule_result())
-%% }
--type get_event_prediction_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_labels_result() :: #{
-%%   <<"labels">> => list(label()),
-%%   <<"nextToken">> => string()
-%% }
--type get_labels_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_detector_version_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string()
-%% }
--type delete_detector_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_entity_types_result() :: #{
-%%   <<"entityTypes">> => list(entity_type()),
-%%   <<"nextToken">> => string()
-%% }
--type get_entity_types_result() :: #{binary() => any()}.
-
-%% Example:
-%% file_validation_message() :: #{
-%%   <<"content">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => string()
-%% }
--type file_validation_message() :: #{binary() => any()}.
-
-%% Example:
-%% external_events_detail() :: #{
-%%   <<"dataAccessRoleArn">> => string(),
-%%   <<"dataLocation">> => string()
-%% }
--type external_events_detail() :: #{binary() => any()}.
-
-%% Example:
-%% variable() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"dataSource">> => list(any()),
-%%   <<"dataType">> => list(any()),
-%%   <<"defaultValue">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"name">> => string(),
-%%   <<"variableType">> => string()
-%% }
--type variable() :: #{binary() => any()}.
-
-%% Example:
-%% log_odds_metric() :: #{
-%%   <<"variableImportance">> => float(),
-%%   <<"variableName">> => string(),
-%%   <<"variableType">> => string()
-%% }
--type log_odds_metric() :: #{binary() => any()}.
-
-%% Example:
-%% put_outcome_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type put_outcome_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_type_result() :: #{
+%% create_batch_prediction_job_result() :: #{
 
 %% }
--type delete_event_type_result() :: #{binary() => any()}.
-
-%% Example:
-%% o_f_i_model_performance() :: #{
-%%   <<"auc">> => float(),
-%%   <<"uncertaintyRange">> => uncertainty_range()
-%% }
--type o_f_i_model_performance() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_version_result() :: #{
-%%   <<"arn">> => string(),
-%%   <<"externalEventsDetail">> => external_events_detail(),
-%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string(),
-%%   <<"status">> => string(),
-%%   <<"trainingDataSchema">> => training_data_schema(),
-%%   <<"trainingDataSource">> => list(any())
-%% }
--type get_model_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_version_status_result() :: #{
-
-%% }
--type update_model_version_status_result() :: #{binary() => any()}.
-
-%% Example:
-%% rule() :: #{
-%%   <<"detectorId">> => string(),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleVersion">> => string()
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_request() :: #{
-%%   <<"deleteAuditHistory">> => boolean(),
-%%   <<"eventId">> := string(),
-%%   <<"eventTypeName">> := string()
-%% }
--type delete_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_detector_version_result() :: #{
-
-%% }
--type delete_detector_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_batch_prediction_job_result() :: #{
-
-%% }
--type cancel_batch_prediction_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_outcome_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_outcome_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_external_models_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"modelEndpoint">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_external_models_request() :: #{binary() => any()}.
-
-%% Example:
-%% aggregated_variables_importance_metrics() :: #{
-%%   <<"logOddsMetrics">> => list(aggregated_log_odds_metric())
-%% }
--type aggregated_variables_importance_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_models_result() :: #{
-%%   <<"models">> => list(model()),
-%%   <<"nextToken">> => string()
-%% }
--type get_models_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_rules_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleVersion">> => string()
-%% }
--type get_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_variable_request() :: #{
-%%   <<"tags">> => list(tag()),
-%%   <<"variableEntries">> := list(variable_entry())
-%% }
--type batch_create_variable_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_external_model_request() :: #{
-%%   <<"modelEndpoint">> := string()
-%% }
--type delete_external_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_prediction_jobs_request() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_batch_prediction_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% external_model_summary() :: #{
-%%   <<"modelEndpoint">> => string(),
-%%   <<"modelSource">> => list(any())
-%% }
--type external_model_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_event_type_result() :: #{
-
-%% }
--type put_event_type_result() :: #{binary() => any()}.
-
-%% Example:
-%% evaluated_model_version() :: #{
-%%   <<"evaluations">> => list(model_version_evaluation()),
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => string(),
-%%   <<"modelVersion">> => string()
-%% }
--type evaluated_model_version() :: #{binary() => any()}.
-
-%% Example:
-%% put_entity_type_result() :: #{
-
-%% }
--type put_entity_type_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_model_versions_result() :: #{
-%%   <<"modelVersionDetails">> => list(model_version_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_model_versions_result() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
-%%   <<"currentLabel">> => string(),
-%%   <<"entities">> => list(entity()),
-%%   <<"eventId">> => string(),
-%%   <<"eventTimestamp">> => string(),
-%%   <<"eventTypeName">> => string(),
-%%   <<"eventVariables">> => map(),
-%%   <<"labelTimestamp">> => string()
-%% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_version_request() :: #{
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any()),
-%%   <<"modelVersionNumber">> := string()
-%% }
--type delete_model_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% model_endpoint_data_blob() :: #{
-%%   <<"byteBuffer">> => binary(),
-%%   <<"contentType">> => string()
-%% }
--type model_endpoint_data_blob() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_request() :: #{
-%%   <<"modelId">> := string(),
-%%   <<"modelType">> := list(any())
-%% }
--type delete_model_request() :: #{binary() => any()}.
+-type create_batch_prediction_job_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_detector_version_request() :: #{
@@ -1407,36 +398,626 @@
 -type create_detector_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_variable_error() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% create_detector_version_result() :: #{
+%%   <<"detectorId">> => string(),
+%%   <<"detectorVersionId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type batch_get_variable_error() :: #{binary() => any()}.
+-type create_detector_version_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_external_models_result() :: #{
-%%   <<"externalModels">> => list(external_model()),
+%% create_list_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"elements">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"variableType">> => string()
+%% }
+-type create_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_list_result() :: #{
+
+%% }
+-type create_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_result() :: #{
+
+%% }
+-type create_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_version_request() :: #{
+%%   <<"externalEventsDetail">> => external_events_detail(),
+%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"trainingDataSchema">> := training_data_schema(),
+%%   <<"trainingDataSource">> := list(any())
+%% }
+-type create_model_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_version_result() :: #{
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_model_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"detectorId">> := string(),
+%%   <<"expression">> := string(),
+%%   <<"language">> := list(any()),
+%%   <<"outcomes">> := list(string()),
+%%   <<"ruleId">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_result() :: #{
+%%   <<"rule">> => rule()
+%% }
+-type create_rule_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_variable_request() :: #{
+%%   <<"dataSource">> := list(any()),
+%%   <<"dataType">> := list(any()),
+%%   <<"defaultValue">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"variableType">> => string()
+%% }
+-type create_variable_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_variable_result() :: #{
+
+%% }
+-type create_variable_result() :: #{binary() => any()}.
+
+%% Example:
+%% data_validation_metrics() :: #{
+%%   <<"fieldLevelMessages">> => list(field_validation_message()),
+%%   <<"fileLevelMessages">> => list(file_validation_message())
+%% }
+-type data_validation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_import_job_request() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type delete_batch_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_import_job_result() :: #{
+
+%% }
+-type delete_batch_import_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_prediction_job_request() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type delete_batch_prediction_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_prediction_job_result() :: #{
+
+%% }
+-type delete_batch_prediction_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_detector_request() :: #{
+%%   <<"detectorId">> := string()
+%% }
+-type delete_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_detector_result() :: #{
+
+%% }
+-type delete_detector_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_detector_version_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string()
+%% }
+-type delete_detector_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_detector_version_result() :: #{
+
+%% }
+-type delete_detector_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entity_type_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entity_type_result() :: #{
+
+%% }
+-type delete_entity_type_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_request() :: #{
+%%   <<"deleteAuditHistory">> => boolean(),
+%%   <<"eventId">> := string(),
+%%   <<"eventTypeName">> := string()
+%% }
+-type delete_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_result() :: #{
+
+%% }
+-type delete_event_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_type_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_event_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_type_result() :: #{
+
+%% }
+-type delete_event_type_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_events_by_event_type_request() :: #{
+%%   <<"eventTypeName">> := string()
+%% }
+-type delete_events_by_event_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_events_by_event_type_result() :: #{
+%%   <<"eventTypeName">> => string(),
+%%   <<"eventsDeletionStatus">> => string()
+%% }
+-type delete_events_by_event_type_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_external_model_request() :: #{
+%%   <<"modelEndpoint">> := string()
+%% }
+-type delete_external_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_external_model_result() :: #{
+
+%% }
+-type delete_external_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_label_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_label_result() :: #{
+
+%% }
+-type delete_label_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_list_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_list_result() :: #{
+
+%% }
+-type delete_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any())
+%% }
+-type delete_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_result() :: #{
+
+%% }
+-type delete_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_version_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"modelVersionNumber">> := string()
+%% }
+-type delete_model_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_model_version_result() :: #{
+
+%% }
+-type delete_model_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outcome_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_outcome_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outcome_result() :: #{
+
+%% }
+-type delete_outcome_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_request() :: #{
+%%   <<"rule">> := rule()
+%% }
+-type delete_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_result() :: #{
+
+%% }
+-type delete_rule_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_variable_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_variable_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_variable_result() :: #{
+
+%% }
+-type delete_variable_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_detector_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type get_external_models_result() :: #{binary() => any()}.
+-type describe_detector_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_detector_version_status_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string(),
-%%   <<"status">> := list(any())
+%% describe_detector_result() :: #{
+%%   <<"arn">> => string(),
+%%   <<"detectorId">> => string(),
+%%   <<"detectorVersionSummaries">> => list(detector_version_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type update_detector_version_status_request() :: #{binary() => any()}.
+-type describe_detector_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_models_request() :: #{
+%% describe_model_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"modelId">> => string(),
 %%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string(),
 %%   <<"nextToken">> => string()
 %% }
--type get_models_request() :: #{binary() => any()}.
+-type describe_model_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_model_versions_result() :: #{
+%%   <<"modelVersionDetails">> => list(model_version_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_model_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% detector() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detectorId">> => string(),
+%%   <<"eventTypeName">> => string(),
+%%   <<"lastUpdatedTime">> => string()
+%% }
+-type detector() :: #{binary() => any()}.
+
+%% Example:
+%% detector_version_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"detectorVersionId">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type detector_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% entity_type() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"name">> => string()
+%% }
+-type entity_type() :: #{binary() => any()}.
+
+%% Example:
+%% evaluated_external_model() :: #{
+%%   <<"inputVariables">> => map(),
+%%   <<"modelEndpoint">> => string(),
+%%   <<"outputVariables">> => map(),
+%%   <<"useEventVariables">> => boolean()
+%% }
+-type evaluated_external_model() :: #{binary() => any()}.
+
+%% Example:
+%% evaluated_model_version() :: #{
+%%   <<"evaluations">> => list(model_version_evaluation()),
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => string(),
+%%   <<"modelVersion">> => string()
+%% }
+-type evaluated_model_version() :: #{binary() => any()}.
+
+%% Example:
+%% evaluated_rule() :: #{
+%%   <<"evaluated">> => boolean(),
+%%   <<"expression">> => string(),
+%%   <<"expressionWithValues">> => string(),
+%%   <<"matched">> => boolean(),
+%%   <<"outcomes">> => list(string()),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleVersion">> => string()
+%% }
+-type evaluated_rule() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"currentLabel">> => string(),
+%%   <<"entities">> => list(entity()),
+%%   <<"eventId">> => string(),
+%%   <<"eventTimestamp">> => string(),
+%%   <<"eventTypeName">> => string(),
+%%   <<"eventVariables">> => map(),
+%%   <<"labelTimestamp">> => string()
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% event_orchestration() :: #{
+%%   <<"eventBridgeEnabled">> => boolean()
+%% }
+-type event_orchestration() :: #{binary() => any()}.
+
+%% Example:
+%% event_prediction_summary() :: #{
+%%   <<"detectorId">> => string(),
+%%   <<"detectorVersionId">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventTimestamp">> => string(),
+%%   <<"eventTypeName">> => string(),
+%%   <<"predictionTimestamp">> => string()
+%% }
+-type event_prediction_summary() :: #{binary() => any()}.
+
+%% Example:
+%% event_type() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"entityTypes">> => list(string()),
+%%   <<"eventIngestion">> => list(any()),
+%%   <<"eventOrchestration">> => event_orchestration(),
+%%   <<"eventVariables">> => list(string()),
+%%   <<"ingestedEventStatistics">> => ingested_event_statistics(),
+%%   <<"labels">> => list(string()),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"name">> => string()
+%% }
+-type event_type() :: #{binary() => any()}.
+
+%% Example:
+%% event_variable_summary() :: #{
+%%   <<"name">> => string(),
+%%   <<"source">> => string(),
+%%   <<"value">> => string()
+%% }
+-type event_variable_summary() :: #{binary() => any()}.
+
+%% Example:
+%% external_events_detail() :: #{
+%%   <<"dataAccessRoleArn">> => string(),
+%%   <<"dataLocation">> => string()
+%% }
+-type external_events_detail() :: #{binary() => any()}.
+
+%% Example:
+%% external_model() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"inputConfiguration">> => model_input_configuration(),
+%%   <<"invokeModelEndpointRoleArn">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"modelEndpoint">> => string(),
+%%   <<"modelEndpointStatus">> => list(any()),
+%%   <<"modelSource">> => list(any()),
+%%   <<"outputConfiguration">> => model_output_configuration()
+%% }
+-type external_model() :: #{binary() => any()}.
+
+%% Example:
+%% external_model_outputs() :: #{
+%%   <<"externalModel">> => external_model_summary(),
+%%   <<"outputs">> => map()
+%% }
+-type external_model_outputs() :: #{binary() => any()}.
+
+%% Example:
+%% external_model_summary() :: #{
+%%   <<"modelEndpoint">> => string(),
+%%   <<"modelSource">> => list(any())
+%% }
+-type external_model_summary() :: #{binary() => any()}.
+
+%% Example:
+%% field_validation_message() :: #{
+%%   <<"content">> => string(),
+%%   <<"fieldName">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => string()
+%% }
+-type field_validation_message() :: #{binary() => any()}.
+
+%% Example:
+%% file_validation_message() :: #{
+%%   <<"content">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => string()
+%% }
+-type file_validation_message() :: #{binary() => any()}.
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"value">> => string()
+%% }
+-type filter_condition() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_import_jobs_request() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_batch_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_import_jobs_result() :: #{
+%%   <<"batchImports">> => list(batch_import()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_batch_import_jobs_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_prediction_jobs_request() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_batch_prediction_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_prediction_jobs_result() :: #{
+%%   <<"batchPredictions">> => list(batch_prediction()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_batch_prediction_jobs_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_delete_events_by_event_type_status_request() :: #{
+%%   <<"eventTypeName">> := string()
+%% }
+-type get_delete_events_by_event_type_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delete_events_by_event_type_status_result() :: #{
+%%   <<"eventTypeName">> => string(),
+%%   <<"eventsDeletionStatus">> => list(any())
+%% }
+-type get_delete_events_by_event_type_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_detector_version_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string()
+%% }
+-type get_detector_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_detector_version_result() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detectorId">> => string(),
+%%   <<"detectorVersionId">> => string(),
+%%   <<"externalModelEndpoints">> => list(string()),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"modelVersions">> => list(model_version()),
+%%   <<"ruleExecutionMode">> => list(any()),
+%%   <<"rules">> => list(rule()),
+%%   <<"status">> => list(any())
+%% }
+-type get_detector_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_detectors_request() :: #{
+%%   <<"detectorId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_detectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_detectors_result() :: #{
+%%   <<"detectors">> => list(detector()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_detectors_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_entity_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_types_result() :: #{
+%%   <<"entityTypes">> => list(entity_type()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_entity_types_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_prediction_metadata_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string(),
+%%   <<"eventId">> := string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"predictionTimestamp">> := string()
+%% }
+-type get_event_prediction_metadata_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_prediction_metadata_result() :: #{
@@ -1459,96 +1040,38 @@
 -type get_event_prediction_metadata_result() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% aggregated_log_odds_metric() :: #{
-%%   <<"aggregatedVariablesImportance">> => float(),
-%%   <<"variableNames">> => list(string())
-%% }
--type aggregated_log_odds_metric() :: #{binary() => any()}.
-
-%% Example:
-%% get_detector_version_request() :: #{
+%% get_event_prediction_request() :: #{
 %%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string()
+%%   <<"detectorVersionId">> => string(),
+%%   <<"entities">> := list(entity()),
+%%   <<"eventId">> := string(),
+%%   <<"eventTimestamp">> := string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"eventVariables">> := map(),
+%%   <<"externalModelEndpointDataBlobs">> => map()
 %% }
--type get_detector_version_request() :: #{binary() => any()}.
+-type get_event_prediction_request() :: #{binary() => any()}.
 
 %% Example:
-%% rule_result() :: #{
-%%   <<"outcomes">> => list(string()),
-%%   <<"ruleId">> => string()
+%% get_event_prediction_result() :: #{
+%%   <<"externalModelOutputs">> => list(external_model_outputs()),
+%%   <<"modelScores">> => list(model_scores()),
+%%   <<"ruleResults">> => list(rule_result())
 %% }
--type rule_result() :: #{binary() => any()}.
+-type get_event_prediction_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_delete_events_by_event_type_status_result() :: #{
-%%   <<"eventTypeName">> => string(),
-%%   <<"eventsDeletionStatus">> => list(any())
+%% get_event_request() :: #{
+%%   <<"eventId">> := string(),
+%%   <<"eventTypeName">> := string()
 %% }
--type get_delete_events_by_event_type_status_result() :: #{binary() => any()}.
+-type get_event_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_events_by_event_type_result() :: #{
-%%   <<"eventTypeName">> => string(),
-%%   <<"eventsDeletionStatus">> => string()
+%% get_event_result() :: #{
+%%   <<"event">> => event()
 %% }
--type delete_events_by_event_type_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_version_result() :: #{
-%%   <<"modelId">> => string(),
-%%   <<"modelType">> => list(any()),
-%%   <<"modelVersionNumber">> => string(),
-%%   <<"status">> => string()
-%% }
--type update_model_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_result() :: #{
-%%   <<"rule">> => rule()
-%% }
--type create_rule_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_list_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"elements">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"updateMode">> => list(any()),
-%%   <<"variableType">> => string()
-%% }
--type update_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_list_result() :: #{
-
-%% }
--type delete_list_result() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_result() :: #{
-
-%% }
--type delete_model_result() :: #{binary() => any()}.
+-type get_event_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_types_request() :: #{
@@ -1559,122 +1082,62 @@
 -type get_event_types_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_event_prediction_metadata_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> := string(),
-%%   <<"eventId">> := string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"predictionTimestamp">> := string()
-%% }
--type get_event_prediction_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_prediction_job_result() :: #{
-
-%% }
--type delete_batch_prediction_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_kms_encryption_key_request() :: #{
-%%   <<"kmsEncryptionKeyArn">> := string()
-%% }
--type put_kms_encryption_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_result() :: #{
-
-%% }
--type delete_event_result() :: #{binary() => any()}.
-
-%% Example:
-%% evaluated_rule() :: #{
-%%   <<"evaluated">> => boolean(),
-%%   <<"expression">> => string(),
-%%   <<"expressionWithValues">> => string(),
-%%   <<"matched">> => boolean(),
-%%   <<"outcomes">> => list(string()),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleVersion">> => string()
-%% }
--type evaluated_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_prediction_jobs_result() :: #{
-%%   <<"batchPredictions">> => list(batch_prediction()),
+%% get_event_types_result() :: #{
+%%   <<"eventTypes">> => list(event_type()),
 %%   <<"nextToken">> => string()
 %% }
--type get_batch_prediction_jobs_result() :: #{binary() => any()}.
+-type get_event_types_result() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_result() :: #{
-
+%% get_external_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"modelEndpoint">> => string(),
+%%   <<"nextToken">> => string()
 %% }
--type tag_resource_result() :: #{binary() => any()}.
+-type get_external_models_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_event_label_request() :: #{
-%%   <<"assignedLabel">> := string(),
-%%   <<"eventId">> := string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"labelTimestamp">> := string()
+%% get_external_models_result() :: #{
+%%   <<"externalModels">> => list(external_model()),
+%%   <<"nextToken">> => string()
 %% }
--type update_event_label_request() :: #{binary() => any()}.
+-type get_external_models_result() :: #{binary() => any()}.
 
 %% Example:
-%% event_type() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"entityTypes">> => list(string()),
-%%   <<"eventIngestion">> => list(any()),
-%%   <<"eventOrchestration">> => event_orchestration(),
-%%   <<"eventVariables">> => list(string()),
-%%   <<"ingestedEventStatistics">> => ingested_event_statistics(),
-%%   <<"labels">> => list(string()),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"name">> => string()
+%% get_kms_encryption_key_result() :: #{
+%%   <<"kmsKey">> => kms_key()
 %% }
--type event_type() :: #{binary() => any()}.
+-type get_kms_encryption_key_result() :: #{binary() => any()}.
 
 %% Example:
-%% put_outcome_result() :: #{
-
+%% get_labels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
 %% }
--type put_outcome_result() :: #{binary() => any()}.
-
-%% Example:
-%% training_result() :: #{
-%%   <<"dataValidationMetrics">> => data_validation_metrics(),
-%%   <<"trainingMetrics">> => training_metrics(),
-%%   <<"variableImportanceMetrics">> => variable_importance_metrics()
-%% }
--type training_result() :: #{binary() => any()}.
+-type get_labels_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_variables_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"variables">> => list(variable())
+%% get_labels_result() :: #{
+%%   <<"labels">> => list(label()),
+%%   <<"nextToken">> => string()
 %% }
--type get_variables_result() :: #{binary() => any()}.
+-type get_labels_result() :: #{binary() => any()}.
 
 %% Example:
-%% a_t_i_model_performance() :: #{
-%%   <<"asi">> => float()
+%% get_list_elements_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"nextToken">> => string()
 %% }
--type a_t_i_model_performance() :: #{binary() => any()}.
+-type get_list_elements_request() :: #{binary() => any()}.
 
 %% Example:
-%% external_model_outputs() :: #{
-%%   <<"externalModel">> => external_model_summary(),
-%%   <<"outputs">> => map()
+%% get_list_elements_result() :: #{
+%%   <<"elements">> => list(string()),
+%%   <<"nextToken">> => string()
 %% }
--type external_model_outputs() :: #{binary() => any()}.
+-type get_list_elements_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_lists_metadata_request() :: #{
@@ -1685,10 +1148,125 @@
 -type get_lists_metadata_request() :: #{binary() => any()}.
 
 %% Example:
-%% send_event_result() :: #{
-
+%% get_lists_metadata_result() :: #{
+%%   <<"lists">> => list(allow_deny_list()),
+%%   <<"nextToken">> => string()
 %% }
--type send_event_result() :: #{binary() => any()}.
+-type get_lists_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_version_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"modelVersionNumber">> := string()
+%% }
+-type get_model_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_version_result() :: #{
+%%   <<"arn">> => string(),
+%%   <<"externalEventsDetail">> => external_events_detail(),
+%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trainingDataSchema">> => training_data_schema(),
+%%   <<"trainingDataSource">> => list(any())
+%% }
+-type get_model_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_models_result() :: #{
+%%   <<"models">> => list(model()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_models_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_outcomes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_outcomes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_outcomes_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"outcomes">> => list(outcome())
+%% }
+-type get_outcomes_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_rules_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleVersion">> => string()
+%% }
+-type get_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_rules_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"ruleDetails">> => list(rule_detail())
+%% }
+-type get_rules_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_variables_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_variables_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_variables_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"variables">> => list(variable())
+%% }
+-type get_variables_result() :: #{binary() => any()}.
+
+%% Example:
+%% ingested_event_statistics() :: #{
+%%   <<"eventDataSizeInBytes">> => float(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"leastRecentEvent">> => string(),
+%%   <<"mostRecentEvent">> => string(),
+%%   <<"numberOfEvents">> => float()
+%% }
+-type ingested_event_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% ingested_events_detail() :: #{
+%%   <<"ingestedEventsTimeWindow">> => ingested_events_time_window()
+%% }
+-type ingested_events_detail() :: #{binary() => any()}.
+
+%% Example:
+%% ingested_events_time_window() :: #{
+%%   <<"endTime">> => string(),
+%%   <<"startTime">> => string()
+%% }
+-type ingested_events_time_window() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
 %% kms_key() :: #{
@@ -1697,66 +1275,21 @@
 -type kms_key() :: #{binary() => any()}.
 
 %% Example:
-%% update_detector_version_status_result() :: #{
-
+%% label() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"name">> => string()
 %% }
--type update_detector_version_status_result() :: #{binary() => any()}.
+-type label() :: #{binary() => any()}.
 
 %% Example:
-%% put_external_model_request() :: #{
-%%   <<"inputConfiguration">> := model_input_configuration(),
-%%   <<"invokeModelEndpointRoleArn">> := string(),
-%%   <<"modelEndpoint">> := string(),
-%%   <<"modelEndpointStatus">> := list(any()),
-%%   <<"modelSource">> := list(any()),
-%%   <<"outputConfiguration">> := model_output_configuration(),
-%%   <<"tags">> => list(tag())
+%% label_schema() :: #{
+%%   <<"labelMapper">> => map(),
+%%   <<"unlabeledEventsTreatment">> => list(any())
 %% }
--type put_external_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% aggregated_variables_impact_explanation() :: #{
-%%   <<"eventVariableNames">> => list(string()),
-%%   <<"logOddsImpact">> => float(),
-%%   <<"relativeImpact">> => string()
-%% }
--type aggregated_variables_impact_explanation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_events_by_event_type_request() :: #{
-%%   <<"eventTypeName">> := string()
-%% }
--type delete_events_by_event_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_model_result() :: #{
-
-%% }
--type update_model_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_prediction_summary() :: #{
-%%   <<"detectorId">> => string(),
-%%   <<"detectorVersionId">> => string(),
-%%   <<"eventId">> => string(),
-%%   <<"eventTimestamp">> => string(),
-%%   <<"eventTypeName">> => string(),
-%%   <<"predictionTimestamp">> => string()
-%% }
--type event_prediction_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_predictions_result() :: #{
-%%   <<"eventPredictionSummaries">> => list(event_prediction_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_event_predictions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_type_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_event_type_request() :: #{binary() => any()}.
+-type label_schema() :: #{binary() => any()}.
 
 %% Example:
 %% list_event_predictions_request() :: #{
@@ -1771,44 +1304,43 @@
 -type list_event_predictions_request() :: #{binary() => any()}.
 
 %% Example:
-%% uncertainty_range() :: #{
-%%   <<"lowerBoundValue">> => float(),
-%%   <<"upperBoundValue">> => float()
+%% list_event_predictions_result() :: #{
+%%   <<"eventPredictionSummaries">> => list(event_prediction_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type uncertainty_range() :: #{binary() => any()}.
+-type list_event_predictions_result() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_batch_prediction_job_request() :: #{
-%%   <<"jobId">> := string()
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceARN">> := string()
 %% }
--type cancel_batch_prediction_job_request() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_event_prediction_request() :: #{
-%%   <<"detectorId">> := string(),
-%%   <<"detectorVersionId">> => string(),
-%%   <<"entities">> := list(entity()),
-%%   <<"eventId">> := string(),
-%%   <<"eventTimestamp">> := string(),
-%%   <<"eventTypeName">> := string(),
-%%   <<"eventVariables">> := map(),
-%%   <<"externalModelEndpointDataBlobs">> => map()
+%% list_tags_for_resource_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type get_event_prediction_request() :: #{binary() => any()}.
+-type list_tags_for_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_detector_version_result() :: #{
-%%   <<"detectorId">> => string(),
-%%   <<"detectorVersionId">> => string(),
-%%   <<"status">> => list(any())
+%% log_odds_metric() :: #{
+%%   <<"variableImportance">> => float(),
+%%   <<"variableName">> => string(),
+%%   <<"variableType">> => string()
 %% }
--type create_detector_version_result() :: #{binary() => any()}.
+-type log_odds_metric() :: #{binary() => any()}.
 
 %% Example:
-%% update_detector_version_metadata_result() :: #{
-
+%% metric_data_point() :: #{
+%%   <<"fpr">> => float(),
+%%   <<"precision">> => float(),
+%%   <<"threshold">> => float(),
+%%   <<"tpr">> => float()
 %% }
--type update_detector_version_metadata_result() :: #{binary() => any()}.
+-type metric_data_point() :: #{binary() => any()}.
 
 %% Example:
 %% model() :: #{
@@ -1823,45 +1355,147 @@
 -type model() :: #{binary() => any()}.
 
 %% Example:
-%% get_entity_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
+%% model_endpoint_data_blob() :: #{
+%%   <<"byteBuffer">> => binary(),
+%%   <<"contentType">> => string()
 %% }
--type get_entity_types_request() :: #{binary() => any()}.
+-type model_endpoint_data_blob() :: #{binary() => any()}.
 
 %% Example:
-%% put_label_result() :: #{
-
+%% model_input_configuration() :: #{
+%%   <<"csvInputTemplate">> => string(),
+%%   <<"eventTypeName">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"jsonInputTemplate">> => string(),
+%%   <<"useEventVariables">> => boolean()
 %% }
--type put_label_result() :: #{binary() => any()}.
-
-%% Example:
-%% label_schema() :: #{
-%%   <<"labelMapper">> => map(),
-%%   <<"unlabeledEventsTreatment">> => list(any())
-%% }
--type label_schema() :: #{binary() => any()}.
+-type model_input_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_outcomes_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"outcomes">> => list(outcome())
+%% model_output_configuration() :: #{
+%%   <<"csvIndexToVariableMap">> => map(),
+%%   <<"format">> => list(any()),
+%%   <<"jsonKeyToVariableMap">> => map()
 %% }
--type get_outcomes_result() :: #{binary() => any()}.
+-type model_output_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% ingested_events_detail() :: #{
-%%   <<"ingestedEventsTimeWindow">> => ingested_events_time_window()
+%% model_scores() :: #{
+%%   <<"modelVersion">> => model_version(),
+%%   <<"scores">> => map()
 %% }
--type ingested_events_detail() :: #{binary() => any()}.
+-type model_scores() :: #{binary() => any()}.
 
 %% Example:
-%% get_batch_import_jobs_result() :: #{
-%%   <<"batchImports">> => list(batch_import()),
-%%   <<"nextToken">> => string()
+%% model_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string()
 %% }
--type get_batch_import_jobs_result() :: #{binary() => any()}.
+-type model_version() :: #{binary() => any()}.
+
+%% Example:
+%% model_version_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"externalEventsDetail">> => external_events_detail(),
+%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trainingDataSchema">> => training_data_schema(),
+%%   <<"trainingDataSource">> => list(any()),
+%%   <<"trainingResult">> => training_result(),
+%%   <<"trainingResultV2">> => training_result_v2()
+%% }
+-type model_version_detail() :: #{binary() => any()}.
+
+%% Example:
+%% model_version_evaluation() :: #{
+%%   <<"evaluationScore">> => string(),
+%%   <<"outputVariableName">> => string(),
+%%   <<"predictionExplanations">> => prediction_explanations()
+%% }
+-type model_version_evaluation() :: #{binary() => any()}.
+
+%% Example:
+%% o_f_i_metric_data_point() :: #{
+%%   <<"fpr">> => float(),
+%%   <<"precision">> => float(),
+%%   <<"threshold">> => float(),
+%%   <<"tpr">> => float()
+%% }
+-type o_f_i_metric_data_point() :: #{binary() => any()}.
+
+%% Example:
+%% o_f_i_model_performance() :: #{
+%%   <<"auc">> => float(),
+%%   <<"uncertaintyRange">> => uncertainty_range()
+%% }
+-type o_f_i_model_performance() :: #{binary() => any()}.
+
+%% Example:
+%% o_f_i_training_metrics_value() :: #{
+%%   <<"metricDataPoints">> => list(o_f_i_metric_data_point()),
+%%   <<"modelPerformance">> => o_f_i_model_performance()
+%% }
+-type o_f_i_training_metrics_value() :: #{binary() => any()}.
+
+%% Example:
+%% outcome() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"name">> => string()
+%% }
+-type outcome() :: #{binary() => any()}.
+
+%% Example:
+%% prediction_explanations() :: #{
+%%   <<"aggregatedVariablesImpactExplanations">> => list(aggregated_variables_impact_explanation()),
+%%   <<"variableImpactExplanations">> => list(variable_impact_explanation())
+%% }
+-type prediction_explanations() :: #{binary() => any()}.
+
+%% Example:
+%% prediction_time_range() :: #{
+%%   <<"endTime">> => string(),
+%%   <<"startTime">> => string()
+%% }
+-type prediction_time_range() :: #{binary() => any()}.
+
+%% Example:
+%% put_detector_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"detectorId">> := string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type put_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_detector_result() :: #{
+
+%% }
+-type put_detector_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_entity_type_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type put_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_entity_type_result() :: #{
+
+%% }
+-type put_entity_type_result() :: #{binary() => any()}.
 
 %% Example:
 %% put_event_type_request() :: #{
@@ -1877,33 +1511,191 @@
 -type put_event_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_detector_result() :: #{
+%% put_event_type_result() :: #{
 
 %% }
--type delete_detector_result() :: #{binary() => any()}.
+-type put_event_type_result() :: #{binary() => any()}.
 
 %% Example:
-%% detector() :: #{
+%% put_external_model_request() :: #{
+%%   <<"inputConfiguration">> := model_input_configuration(),
+%%   <<"invokeModelEndpointRoleArn">> := string(),
+%%   <<"modelEndpoint">> := string(),
+%%   <<"modelEndpointStatus">> := list(any()),
+%%   <<"modelSource">> := list(any()),
+%%   <<"outputConfiguration">> := model_output_configuration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type put_external_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_external_model_result() :: #{
+
+%% }
+-type put_external_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_kms_encryption_key_request() :: #{
+%%   <<"kmsEncryptionKeyArn">> := string()
+%% }
+-type put_kms_encryption_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_kms_encryption_key_result() :: #{
+
+%% }
+-type put_kms_encryption_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_label_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type put_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_label_result() :: #{
+
+%% }
+-type put_label_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_outcome_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type put_outcome_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_outcome_result() :: #{
+
+%% }
+-type put_outcome_result() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"detectorId">> => string(),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleVersion">> => string()
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% rule_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdTime">> => string(),
 %%   <<"description">> => string(),
 %%   <<"detectorId">> => string(),
-%%   <<"eventTypeName">> => string(),
-%%   <<"lastUpdatedTime">> => string()
+%%   <<"expression">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"outcomes">> => list(string()),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleVersion">> => string()
 %% }
--type detector() :: #{binary() => any()}.
+-type rule_detail() :: #{binary() => any()}.
 
 %% Example:
-%% update_rule_metadata_result() :: #{
-
+%% rule_result() :: #{
+%%   <<"outcomes">> => list(string()),
+%%   <<"ruleId">> => string()
 %% }
--type update_rule_metadata_result() :: #{binary() => any()}.
+-type rule_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_rule_result() :: #{
+%% send_event_request() :: #{
+%%   <<"assignedLabel">> => string(),
+%%   <<"entities">> := list(entity()),
+%%   <<"eventId">> := string(),
+%%   <<"eventTimestamp">> := string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"eventVariables">> := map(),
+%%   <<"labelTimestamp">> => string()
+%% }
+-type send_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_event_result() :: #{
 
 %% }
--type delete_rule_result() :: #{binary() => any()}.
+-type send_event_result() :: #{binary() => any()}.
+
+%% Example:
+%% t_f_i_metric_data_point() :: #{
+%%   <<"fpr">> => float(),
+%%   <<"precision">> => float(),
+%%   <<"threshold">> => float(),
+%%   <<"tpr">> => float()
+%% }
+-type t_f_i_metric_data_point() :: #{binary() => any()}.
+
+%% Example:
+%% t_f_i_model_performance() :: #{
+%%   <<"auc">> => float(),
+%%   <<"uncertaintyRange">> => uncertainty_range()
+%% }
+-type t_f_i_model_performance() :: #{binary() => any()}.
+
+%% Example:
+%% t_f_i_training_metrics_value() :: #{
+%%   <<"metricDataPoints">> => list(t_f_i_metric_data_point()),
+%%   <<"modelPerformance">> => t_f_i_model_performance()
+%% }
+-type t_f_i_training_metrics_value() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{
+
+%% }
+-type tag_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% training_data_schema() :: #{
+%%   <<"labelSchema">> => label_schema(),
+%%   <<"modelVariables">> => list(string())
+%% }
+-type training_data_schema() :: #{binary() => any()}.
+
+%% Example:
+%% training_metrics() :: #{
+%%   <<"auc">> => float(),
+%%   <<"metricDataPoints">> => list(metric_data_point())
+%% }
+-type training_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% training_metrics_v2() :: #{
@@ -1914,561 +1706,769 @@
 -type training_metrics_v2() :: #{binary() => any()}.
 
 %% Example:
-%% label() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
+%% training_result() :: #{
+%%   <<"dataValidationMetrics">> => data_validation_metrics(),
+%%   <<"trainingMetrics">> => training_metrics(),
+%%   <<"variableImportanceMetrics">> => variable_importance_metrics()
+%% }
+-type training_result() :: #{binary() => any()}.
+
+%% Example:
+%% training_result_v2() :: #{
+%%   <<"aggregatedVariablesImportanceMetrics">> => aggregated_variables_importance_metrics(),
+%%   <<"dataValidationMetrics">> => data_validation_metrics(),
+%%   <<"trainingMetricsV2">> => training_metrics_v2(),
+%%   <<"variableImportanceMetrics">> => variable_importance_metrics()
+%% }
+-type training_result_v2() :: #{binary() => any()}.
+
+%% Example:
+%% uncertainty_range() :: #{
+%%   <<"lowerBoundValue">> => float(),
+%%   <<"upperBoundValue">> => float()
+%% }
+-type uncertainty_range() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{
+
+%% }
+-type untag_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_metadata_request() :: #{
+%%   <<"description">> := string(),
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string()
+%% }
+-type update_detector_version_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_metadata_result() :: #{
+
+%% }
+-type update_detector_version_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"lastUpdatedTime">> => string(),
-%%   <<"name">> => string()
-%% }
--type label() :: #{binary() => any()}.
-
-%% Example:
-%% get_rules_result() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"ruleDetails">> => list(rule_detail())
-%% }
--type get_rules_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_detector_request() :: #{
-%%   <<"detectorId">> := string()
-%% }
--type delete_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_prediction_job_request() :: #{
-%%   <<"jobId">> := string()
-%% }
--type delete_batch_prediction_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_detector_version_result() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => string(),
-%%   <<"description">> => string(),
-%%   <<"detectorId">> => string(),
-%%   <<"detectorVersionId">> => string(),
-%%   <<"externalModelEndpoints">> => list(string()),
-%%   <<"lastUpdatedTime">> => string(),
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string(),
+%%   <<"externalModelEndpoints">> := list(string()),
 %%   <<"modelVersions">> => list(model_version()),
 %%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> => list(rule()),
-%%   <<"status">> => list(any())
+%%   <<"rules">> := list(rule())
 %% }
--type get_detector_version_result() :: #{binary() => any()}.
+-type update_detector_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_result() :: #{
+
+%% }
+-type update_detector_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_status_request() :: #{
+%%   <<"detectorId">> := string(),
+%%   <<"detectorVersionId">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type update_detector_version_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_detector_version_status_result() :: #{
+
+%% }
+-type update_detector_version_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_label_request() :: #{
+%%   <<"assignedLabel">> := string(),
+%%   <<"eventId">> := string(),
+%%   <<"eventTypeName">> := string(),
+%%   <<"labelTimestamp">> := string()
+%% }
+-type update_event_label_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_label_result() :: #{
+
+%% }
+-type update_event_label_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_list_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"elements">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"updateMode">> => list(any()),
+%%   <<"variableType">> => string()
+%% }
+-type update_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_list_result() :: #{
+
+%% }
+-type update_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any())
+%% }
+-type update_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_result() :: #{
+
+%% }
+-type update_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_version_request() :: #{
+%%   <<"externalEventsDetail">> => external_events_detail(),
+%%   <<"ingestedEventsDetail">> => ingested_events_detail(),
+%%   <<"majorVersionNumber">> := string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type update_model_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_version_result() :: #{
+%%   <<"modelId">> => string(),
+%%   <<"modelType">> => list(any()),
+%%   <<"modelVersionNumber">> => string(),
+%%   <<"status">> => string()
+%% }
+-type update_model_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_version_status_request() :: #{
+%%   <<"modelId">> := string(),
+%%   <<"modelType">> := list(any()),
+%%   <<"modelVersionNumber">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type update_model_version_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_version_status_result() :: #{
+
+%% }
+-type update_model_version_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_metadata_request() :: #{
+%%   <<"description">> := string(),
+%%   <<"rule">> := rule()
+%% }
+-type update_rule_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_metadata_result() :: #{
+
+%% }
+-type update_rule_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_version_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"expression">> := string(),
+%%   <<"language">> := list(any()),
+%%   <<"outcomes">> := list(string()),
+%%   <<"rule">> := rule(),
+%%   <<"tags">> => list(tag())
+%% }
+-type update_rule_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_version_result() :: #{
+%%   <<"rule">> => rule()
+%% }
+-type update_rule_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_variable_request() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"variableType">> => string()
+%% }
+-type update_variable_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_variable_result() :: #{
+
+%% }
+-type update_variable_result() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% variable() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => string(),
+%%   <<"dataSource">> => list(any()),
+%%   <<"dataType">> => list(any()),
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedTime">> => string(),
+%%   <<"name">> => string(),
+%%   <<"variableType">> => string()
+%% }
+-type variable() :: #{binary() => any()}.
+
+%% Example:
+%% variable_entry() :: #{
+%%   <<"dataSource">> => string(),
+%%   <<"dataType">> => string(),
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"variableType">> => string()
+%% }
+-type variable_entry() :: #{binary() => any()}.
+
+%% Example:
+%% variable_impact_explanation() :: #{
+%%   <<"eventVariableName">> => string(),
+%%   <<"logOddsImpact">> => float(),
+%%   <<"relativeImpact">> => string()
+%% }
+-type variable_impact_explanation() :: #{binary() => any()}.
+
+%% Example:
+%% variable_importance_metrics() :: #{
+%%   <<"logOddsMetrics">> => list(log_odds_metric())
+%% }
+-type variable_importance_metrics() :: #{binary() => any()}.
 
 -type batch_create_variable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_get_variable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type cancel_batch_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_batch_prediction_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_batch_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_batch_prediction_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_detector_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_variable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_batch_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_batch_prediction_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_detector_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_entity_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_event_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_events_by_event_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_external_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
 -type delete_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_outcome_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_variable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_model_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_batch_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_batch_prediction_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_delete_events_by_event_type_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_detector_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_detectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_entity_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_event_prediction_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 -type get_event_prediction_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_event_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_external_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_kms_encryption_key_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_labels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_list_elements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lists_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_outcomes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_variables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_event_predictions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type put_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_entity_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_event_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_external_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_kms_encryption_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_outcome_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_detector_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_detector_version_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_detector_version_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_event_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_model_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_model_version_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_rule_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_rule_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_variable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

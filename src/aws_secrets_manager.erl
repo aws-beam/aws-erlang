@@ -102,6 +102,110 @@
 
 
 %% Example:
+%% api_error_type() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SecretId">> => string()
+%% }
+-type api_error_type() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_secret_value_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretIdList">> => list(string())
+%% }
+-type batch_get_secret_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_secret_value_response() :: #{
+%%   <<"Errors">> => list(api_error_type()),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretValues">> => list(secret_value_entry())
+%% }
+-type batch_get_secret_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_rotate_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type cancel_rotate_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_rotate_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type cancel_rotate_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_secret_request() :: #{
+%%   <<"AddReplicaRegions">> => list(replica_region_type()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretString">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => string()
+%% }
+-type create_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type()),
+%%   <<"VersionId">> => string()
+%% }
+-type create_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% decryption_failure() :: #{
+%%   <<"Message">> => string()
+%% }
+-type decryption_failure() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secret_request() :: #{
+%%   <<"ForceDeleteWithoutRecovery">> => boolean(),
+%%   <<"RecoveryWindowInDays">> => float(),
+%%   <<"SecretId">> := string()
+%% }
+-type delete_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type delete_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type describe_secret_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_secret_response() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"CreatedDate">> => non_neg_integer(),
@@ -128,25 +232,10 @@
 -type describe_secret_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_errors_entry() :: #{
-%%   <<"CheckName">> => string(),
-%%   <<"ErrorMessage">> => string()
+%% encryption_failure() :: #{
+%%   <<"Message">> => string()
 %% }
--type validation_errors_entry() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"SecretId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
+-type encryption_failure() :: #{binary() => any()}.
 
 %% Example:
 %% external_secret_rotation_metadata_item() :: #{
@@ -156,308 +245,11 @@
 -type external_secret_rotation_metadata_item() :: #{binary() => any()}.
 
 %% Example:
-%% remove_regions_from_replication_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type())
-%% }
--type remove_regions_from_replication_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_secret_version_stage_request() :: #{
-%%   <<"MoveToVersionId">> => string(),
-%%   <<"RemoveFromVersionId">> => string(),
-%%   <<"SecretId">> := string(),
-%%   <<"VersionStage">> := string()
-%% }
--type update_secret_version_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_secret_request() :: #{
-%%   <<"ForceDeleteWithoutRecovery">> => boolean(),
-%%   <<"RecoveryWindowInDays">> => float(),
-%%   <<"SecretId">> := string()
-%% }
--type delete_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% decryption_failure() :: #{
-%%   <<"Message">> => string()
-%% }
--type decryption_failure() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_rotate_secret_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type cancel_rotate_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_failure() :: #{
-%%   <<"Message">> => string()
-%% }
--type encryption_failure() :: #{binary() => any()}.
-
-%% Example:
-%% list_secrets_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludePlannedDeletion">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_secrets_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResourcePolicy">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_secret_version_stage_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_secret_version_stage_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_secrets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecretList">> => list(secret_list_entry())
-%% }
--type list_secrets_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_random_password_response() :: #{
-%%   <<"RandomPassword">> => string()
-%% }
--type get_random_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"SecretId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% validate_resource_policy_request() :: #{
-%%   <<"ResourcePolicy">> := string(),
-%%   <<"SecretId">> => string()
-%% }
--type validate_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_secret_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"DeletionDate">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type delete_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_secret_value_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SecretIdList">> => list(string())
-%% }
--type batch_get_secret_value_request() :: #{binary() => any()}.
-
-%% Example:
-%% validate_resource_policy_response() :: #{
-%%   <<"PolicyValidationPassed">> => boolean(),
-%%   <<"ValidationErrors">> => list(validation_errors_entry())
-%% }
--type validate_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_secret_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type restore_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_rotate_secret_request() :: #{
-%%   <<"SecretId">> := string()
-%% }
--type cancel_rotate_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rotate_secret_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ExternalSecretRotationMetadata">> => list(external_secret_rotation_metadata_item()),
-%%   <<"ExternalSecretRotationRoleArn">> => string(),
-%%   <<"RotateImmediately">> => boolean(),
-%%   <<"RotationLambdaARN">> => string(),
-%%   <<"RotationRules">> => rotation_rules_type(),
-%%   <<"SecretId">> := string()
-%% }
--type rotate_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_secret_value_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string())
-%% }
--type put_secret_value_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_regions_from_replication_request() :: #{
-%%   <<"RemoveReplicaRegions">> := list(string()),
-%%   <<"SecretId">> := string()
-%% }
--type remove_regions_from_replication_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_to_replica_request() :: #{
-%%   <<"SecretId">> := string()
-%% }
--type stop_replication_to_replica_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_secret_request() :: #{
-%%   <<"SecretId">> := string()
-%% }
--type describe_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_secret_version_ids_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(secret_versions_list_entry())
-%% }
--type list_secret_version_ids_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_secret_value_response() :: #{
-%%   <<"Errors">> => list(api_error_type()),
-%%   <<"NextToken">> => string(),
-%%   <<"SecretValues">> => list(secret_value_entry())
-%% }
--type batch_get_secret_value_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_secret_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type update_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"SecretId">> := string()
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_secret_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SecretBinary">> => binary(),
-%%   <<"SecretId">> := string(),
-%%   <<"SecretString">> => string(),
-%%   <<"Type">> => string()
-%% }
--type update_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% replicate_secret_to_regions_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type())
-%% }
--type replicate_secret_to_regions_response() :: #{binary() => any()}.
-
-%% Example:
 %% filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
-
-%% Example:
-%% replication_status_type() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"LastAccessedDate">> => non_neg_integer(),
-%%   <<"Region">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type replication_status_type() :: #{binary() => any()}.
-
-%% Example:
-%% put_secret_value_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"RotationToken">> => string(),
-%%   <<"SecretBinary">> => binary(),
-%%   <<"SecretId">> := string(),
-%%   <<"SecretString">> => string(),
-%%   <<"VersionStages">> => list(string())
-%% }
--type put_secret_value_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_to_replica_response() :: #{
-%%   <<"ARN">> => string()
-%% }
--type stop_replication_to_replica_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"BlockPublicPolicy">> => boolean(),
-%%   <<"ResourcePolicy">> := string(),
-%%   <<"SecretId">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% replica_region_type() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Region">> => string()
-%% }
--type replica_region_type() :: #{binary() => any()}.
 
 %% Example:
 %% get_random_password_request() :: #{
@@ -473,10 +265,24 @@
 -type get_random_password_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Message">> => string()
+%% get_random_password_response() :: #{
+%%   <<"RandomPassword">> => string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type get_random_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_secret_value_request() :: #{
@@ -499,45 +305,34 @@
 -type get_secret_value_response() :: #{binary() => any()}.
 
 %% Example:
-%% api_error_type() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"SecretId">> => string()
-%% }
--type api_error_type() :: #{binary() => any()}.
-
-%% Example:
 %% internal_service_error() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_service_error() :: #{binary() => any()}.
 
 %% Example:
-%% secret_value_entry() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecretBinary">> => binary(),
-%%   <<"SecretString">> => string(),
-%%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string())
-%% }
--type secret_value_entry() :: #{binary() => any()}.
-
-%% Example:
-%% create_secret_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type()),
-%%   <<"VersionId">> => string()
-%% }
--type create_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
+%% invalid_next_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_secret_version_ids_request() :: #{
@@ -547,6 +342,185 @@
 %%   <<"SecretId">> := string()
 %% }
 -type list_secret_version_ids_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_secret_version_ids_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(secret_versions_list_entry())
+%% }
+-type list_secret_version_ids_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_secrets_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludePlannedDeletion">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_secrets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_secrets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecretList">> => list(secret_list_entry())
+%% }
+-type list_secrets_response() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% precondition_not_met_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type precondition_not_met_exception() :: #{binary() => any()}.
+
+%% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"ResourcePolicy">> := string(),
+%%   <<"SecretId">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_secret_value_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"RotationToken">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretId">> := string(),
+%%   <<"SecretString">> => string(),
+%%   <<"VersionStages">> => list(string())
+%% }
+-type put_secret_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_secret_value_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string())
+%% }
+-type put_secret_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_regions_from_replication_request() :: #{
+%%   <<"RemoveReplicaRegions">> := list(string()),
+%%   <<"SecretId">> := string()
+%% }
+-type remove_regions_from_replication_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_regions_from_replication_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type())
+%% }
+-type remove_regions_from_replication_response() :: #{binary() => any()}.
+
+%% Example:
+%% replica_region_type() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type replica_region_type() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_secret_to_regions_request() :: #{
+%%   <<"AddReplicaRegions">> := list(replica_region_type()),
+%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
+%%   <<"SecretId">> := string()
+%% }
+-type replicate_secret_to_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% replicate_secret_to_regions_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ReplicationStatus">> => list(replication_status_type())
+%% }
+-type replicate_secret_to_regions_response() :: #{binary() => any()}.
+
+%% Example:
+%% replication_status_type() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastAccessedDate">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type replication_status_type() :: #{binary() => any()}.
+
+%% Example:
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_secret_request() :: #{
+%%   <<"SecretId">> := string()
+%% }
+-type restore_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type restore_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_secret_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ExternalSecretRotationMetadata">> => list(external_secret_rotation_metadata_item()),
+%%   <<"ExternalSecretRotationRoleArn">> => string(),
+%%   <<"RotateImmediately">> => boolean(),
+%%   <<"RotationLambdaARN">> => string(),
+%%   <<"RotationRules">> => rotation_rules_type(),
+%%   <<"SecretId">> := string()
+%% }
+-type rotate_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_secret_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type rotate_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% rotation_rules_type() :: #{
+%%   <<"AutomaticallyAfterDays">> => float(),
+%%   <<"Duration">> => string(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type rotation_rules_type() :: #{binary() => any()}.
 
 %% Example:
 %% secret_list_entry() :: #{
@@ -574,6 +548,18 @@
 -type secret_list_entry() :: #{binary() => any()}.
 
 %% Example:
+%% secret_value_entry() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretString">> => string(),
+%%   <<"VersionId">> => string(),
+%%   <<"VersionStages">> => list(string())
+%% }
+-type secret_value_entry() :: #{binary() => any()}.
+
+%% Example:
 %% secret_versions_list_entry() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"KmsKeyIds">> => list(string()),
@@ -584,239 +570,253 @@
 -type secret_versions_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rotation_rules_type() :: #{
-%%   <<"AutomaticallyAfterDays">> => float(),
-%%   <<"Duration">> => string(),
-%%   <<"ScheduleExpression">> => string()
-%% }
--type rotation_rules_type() :: #{binary() => any()}.
-
-%% Example:
-%% public_policy_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type public_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
+%% stop_replication_to_replica_request() :: #{
 %%   <<"SecretId">> := string()
 %% }
--type delete_resource_policy_request() :: #{binary() => any()}.
+-type stop_replication_to_replica_request() :: #{binary() => any()}.
 
 %% Example:
-%% restore_secret_request() :: #{
-%%   <<"SecretId">> := string()
+%% stop_replication_to_replica_response() :: #{
+%%   <<"ARN">> => string()
 %% }
--type restore_secret_request() :: #{binary() => any()}.
+-type stop_replication_to_replica_response() :: #{binary() => any()}.
 
 %% Example:
-%% precondition_not_met_exception() :: #{
-%%   <<"Message">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type precondition_not_met_exception() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% rotate_secret_response() :: #{
+%% tag_resource_request() :: #{
+%%   <<"SecretId">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"SecretId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SecretBinary">> => binary(),
+%%   <<"SecretId">> := string(),
+%%   <<"SecretString">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type update_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_secret_response() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"VersionId">> => string()
 %% }
--type rotate_secret_response() :: #{binary() => any()}.
+-type update_secret_response() :: #{binary() => any()}.
 
 %% Example:
-%% replicate_secret_to_regions_request() :: #{
-%%   <<"AddReplicaRegions">> := list(replica_region_type()),
-%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
-%%   <<"SecretId">> := string()
+%% update_secret_version_stage_request() :: #{
+%%   <<"MoveToVersionId">> => string(),
+%%   <<"RemoveFromVersionId">> => string(),
+%%   <<"SecretId">> := string(),
+%%   <<"VersionStage">> := string()
 %% }
--type replicate_secret_to_regions_request() :: #{binary() => any()}.
+-type update_secret_version_stage_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_secret_request() :: #{
-%%   <<"AddReplicaRegions">> => list(replica_region_type()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ForceOverwriteReplicaSecret">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"SecretBinary">> => binary(),
-%%   <<"SecretString">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => string()
+%% update_secret_version_stage_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
 %% }
--type create_secret_request() :: #{binary() => any()}.
+-type update_secret_version_stage_response() :: #{binary() => any()}.
+
+%% Example:
+%% validate_resource_policy_request() :: #{
+%%   <<"ResourcePolicy">> := string(),
+%%   <<"SecretId">> => string()
+%% }
+-type validate_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_resource_policy_response() :: #{
+%%   <<"PolicyValidationPassed">> => boolean(),
+%%   <<"ValidationErrors">> => list(validation_errors_entry())
+%% }
+-type validate_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_errors_entry() :: #{
+%%   <<"CheckName">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type validation_errors_entry() :: #{binary() => any()}.
 
 -type batch_get_secret_value_errors() ::
-    internal_service_error() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
+    internal_service_error() | 
     decryption_failure().
 
 -type cancel_rotate_secret_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type create_secret_errors() ::
-    precondition_not_met_exception() | 
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_exists_exception() | 
+    precondition_not_met_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error() | 
     encryption_failure() | 
     decryption_failure().
 
 -type delete_resource_policy_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type delete_secret_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type describe_secret_errors() ::
-    internal_service_error() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type get_random_password_errors() ::
-    internal_service_error() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type get_resource_policy_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type get_secret_value_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error() | 
     decryption_failure().
 
 -type list_secret_version_ids_errors() ::
-    internal_service_error() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type list_secrets_errors() ::
-    internal_service_error() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type put_resource_policy_errors() ::
+    resource_not_found_exception() | 
     public_policy_exception() | 
     malformed_policy_document_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type put_secret_value_errors() ::
-    limit_exceeded_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error() | 
     encryption_failure() | 
     decryption_failure().
 
 -type remove_regions_from_replication_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type replicate_secret_to_regions_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type restore_secret_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type rotate_secret_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type stop_replication_to_replica_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type tag_resource_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type untag_resource_errors() ::
-    internal_service_error() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type update_secret_errors() ::
-    precondition_not_met_exception() | 
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
-    resource_exists_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_exists_exception() | 
+    precondition_not_met_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error() | 
     encryption_failure() | 
     decryption_failure().
 
 -type update_secret_version_stage_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 -type validate_resource_policy_errors() ::
+    resource_not_found_exception() | 
     malformed_policy_document_exception() | 
-    internal_service_error() | 
-    invalid_parameter_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_service_error().
 
 %%====================================================================
 %% API

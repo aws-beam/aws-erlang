@@ -125,28 +125,140 @@
 
 
 %% Example:
-%% environment_descriptions_message() :: #{
-%%   <<"Environments">> => list(environment_description()),
+%% abort_environment_update_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string()
+%% }
+-type abort_environment_update_message() :: #{binary() => any()}.
+
+%% Example:
+%% application_description() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"ApplicationName">> => string(),
+%%   <<"ConfigurationTemplates">> => list(string()),
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateUpdated">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
+%%   <<"Versions">> => list(string())
+%% }
+-type application_description() :: #{binary() => any()}.
+
+%% Example:
+%% application_description_message() :: #{
+%%   <<"Application">> => application_description()
+%% }
+-type application_description_message() :: #{binary() => any()}.
+
+%% Example:
+%% application_descriptions_message() :: #{
+%%   <<"Applications">> => list(application_description())
+%% }
+-type application_descriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% application_metrics() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"Latency">> => latency(),
+%%   <<"RequestCount">> => integer(),
+%%   <<"StatusCodes">> => status_codes()
+%% }
+-type application_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% application_resource_lifecycle_config() :: #{
+%%   <<"ServiceRole">> => string(),
+%%   <<"VersionLifecycleConfig">> => application_version_lifecycle_config()
+%% }
+-type application_resource_lifecycle_config() :: #{binary() => any()}.
+
+%% Example:
+%% application_resource_lifecycle_description_message() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config()
+%% }
+-type application_resource_lifecycle_description_message() :: #{binary() => any()}.
+
+%% Example:
+%% application_version_description() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"ApplicationVersionArn">> => string(),
+%%   <<"BuildArn">> => string(),
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateUpdated">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"SourceBuildInformation">> => source_build_information(),
+%%   <<"SourceBundle">> => s3_location(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionLabel">> => string()
+%% }
+-type application_version_description() :: #{binary() => any()}.
+
+%% Example:
+%% application_version_description_message() :: #{
+%%   <<"ApplicationVersion">> => application_version_description()
+%% }
+-type application_version_description_message() :: #{binary() => any()}.
+
+%% Example:
+%% application_version_descriptions_message() :: #{
+%%   <<"ApplicationVersions">> => list(application_version_description()),
 %%   <<"NextToken">> => string()
 %% }
--type environment_descriptions_message() :: #{binary() => any()}.
+-type application_version_descriptions_message() :: #{binary() => any()}.
 
 %% Example:
-%% create_platform_version_request() :: #{
-%%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()),
-%%   <<"PlatformDefinitionBundle">> := s3_location(),
-%%   <<"PlatformName">> := string(),
-%%   <<"PlatformVersion">> := string(),
-%%   <<"Tags">> => list(tag())
+%% application_version_lifecycle_config() :: #{
+%%   <<"MaxAgeRule">> => max_age_rule(),
+%%   <<"MaxCountRule">> => max_count_rule()
 %% }
--type create_platform_version_request() :: #{binary() => any()}.
+-type application_version_lifecycle_config() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_environment_operations_role_message() :: #{
-%%   <<"EnvironmentName">> := string()
+%% apply_environment_managed_action_request() :: #{
+%%   <<"ActionId">> := string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string()
 %% }
--type disassociate_environment_operations_role_message() :: #{binary() => any()}.
+-type apply_environment_managed_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% apply_environment_managed_action_result() :: #{
+%%   <<"ActionDescription">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"Status">> => string()
+%% }
+-type apply_environment_managed_action_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_environment_operations_role_message() :: #{
+%%   <<"EnvironmentName">> := string(),
+%%   <<"OperationsRole">> := string()
+%% }
+-type associate_environment_operations_role_message() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group() :: #{
+%%   <<"Name">> => string()
+%% }
+-type auto_scaling_group() :: #{binary() => any()}.
+
+%% Example:
+%% build_configuration() :: #{
+%%   <<"ArtifactName">> => string(),
+%%   <<"CodeBuildServiceRole">> => string(),
+%%   <<"ComputeType">> => list(any()),
+%%   <<"Image">> => string(),
+%%   <<"TimeoutInMinutes">> => integer()
+%% }
+-type build_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% builder() :: #{
+%%   <<"ARN">> => string()
+%% }
+-type builder() :: #{binary() => any()}.
 
 %% Example:
 %% c_p_u_utilization() :: #{
@@ -162,148 +274,10 @@
 -type c_p_u_utilization() :: #{binary() => any()}.
 
 %% Example:
-%% apply_environment_managed_action_request() :: #{
-%%   <<"ActionId">> := string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string()
+%% check_dns_availability_message() :: #{
+%%   <<"CNAMEPrefix">> := string()
 %% }
--type apply_environment_managed_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_template_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()),
-%%   <<"OptionsToRemove">> => list(option_specification()),
-%%   <<"TemplateName">> := string()
-%% }
--type update_configuration_template_message() :: #{binary() => any()}.
-
-%% Example:
-%% compose_environments_message() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"VersionLabels">> => list(string())
-%% }
--type compose_environments_message() :: #{binary() => any()}.
-
-%% Example:
-%% rebuild_environment_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string()
-%% }
--type rebuild_environment_message() :: #{binary() => any()}.
-
-%% Example:
-%% environment_link() :: #{
-%%   <<"EnvironmentName">> => string(),
-%%   <<"LinkName">> => string()
-%% }
--type environment_link() :: #{binary() => any()}.
-
-%% Example:
-%% status_codes() :: #{
-%%   <<"Status2xx">> => integer(),
-%%   <<"Status3xx">> => integer(),
-%%   <<"Status4xx">> => integer(),
-%%   <<"Status5xx">> => integer()
-%% }
--type status_codes() :: #{binary() => any()}.
-
-%% Example:
-%% max_age_rule() :: #{
-%%   <<"DeleteSourceFromS3">> => boolean(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"MaxAgeInDays">> => integer()
-%% }
--type max_age_rule() :: #{binary() => any()}.
-
-%% Example:
-%% resource_type_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_type_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% solution_stack_description() :: #{
-%%   <<"PermittedFileTypes">> => list(string()),
-%%   <<"SolutionStackName">> => string()
-%% }
--type solution_stack_description() :: #{binary() => any()}.
-
-%% Example:
-%% delete_platform_version_request() :: #{
-%%   <<"PlatformArn">> => string()
-%% }
--type delete_platform_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_environment_operations_role_message() :: #{
-%%   <<"EnvironmentName">> := string(),
-%%   <<"OperationsRole">> := string()
-%% }
--type associate_environment_operations_role_message() :: #{binary() => any()}.
-
-%% Example:
-%% single_instance_health() :: #{
-%%   <<"ApplicationMetrics">> => application_metrics(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Causes">> => list(string()),
-%%   <<"Color">> => string(),
-%%   <<"Deployment">> => deployment(),
-%%   <<"HealthStatus">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LaunchedAt">> => non_neg_integer(),
-%%   <<"System">> => system_status()
-%% }
--type single_instance_health() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environments_message() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"EnvironmentIds">> => list(string()),
-%%   <<"EnvironmentNames">> => list(string()),
-%%   <<"IncludeDeleted">> => boolean(),
-%%   <<"IncludedDeletedBackTo">> => non_neg_integer(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VersionLabel">> => string()
-%% }
--type describe_environments_message() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_buckets_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_buckets_exception() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_environments_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_environments_exception() :: #{binary() => any()}.
-
-%% Example:
-%% trigger() :: #{
-%%   <<"Name">> => string()
-%% }
--type trigger() :: #{binary() => any()}.
-
-%% Example:
-%% option_restriction_regex() :: #{
-%%   <<"Label">> => string(),
-%%   <<"Pattern">> => string()
-%% }
--type option_restriction_regex() :: #{binary() => any()}.
-
-%% Example:
-%% list_platform_versions_request() :: #{
-%%   <<"Filters">> => list(platform_filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_platform_versions_request() :: #{binary() => any()}.
+-type check_dns_availability_message() :: #{binary() => any()}.
 
 %% Example:
 %% check_dns_availability_result_message() :: #{
@@ -313,128 +287,18 @@
 -type check_dns_availability_result_message() :: #{binary() => any()}.
 
 %% Example:
-%% deployment() :: #{
-%%   <<"DeploymentId">> => float(),
-%%   <<"DeploymentTime">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"VersionLabel">> => string()
-%% }
--type deployment() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_platforms_exception() :: #{
+%% code_build_not_in_service_region_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_platforms_exception() :: #{binary() => any()}.
+-type code_build_not_in_service_region_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"TerminateEnvByForce">> => boolean()
-%% }
--type delete_application_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_managed_action_history_result() :: #{
-%%   <<"ManagedActionHistoryItems">> => list(managed_action_history_item()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_environment_managed_action_history_result() :: #{binary() => any()}.
-
-%% Example:
-%% listener() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"Protocol">> => string()
-%% }
--type listener() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instances_health_result() :: #{
-%%   <<"InstanceHealthList">> => list(single_instance_health()),
-%%   <<"NextToken">> => string(),
-%%   <<"RefreshedAt">> => non_neg_integer()
-%% }
--type describe_instances_health_result() :: #{binary() => any()}.
-
-%% Example:
-%% managed_action() :: #{
-%%   <<"ActionDescription">> => string(),
-%%   <<"ActionId">> => string(),
-%%   <<"ActionType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"WindowStartTime">> => non_neg_integer()
-%% }
--type managed_action() :: #{binary() => any()}.
-
-%% Example:
-%% build_configuration() :: #{
-%%   <<"ArtifactName">> => string(),
-%%   <<"CodeBuildServiceRole">> => string(),
-%%   <<"ComputeType">> => list(any()),
-%%   <<"Image">> => string(),
-%%   <<"TimeoutInMinutes">> => integer()
-%% }
--type build_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instances_health_request() :: #{
-%%   <<"AttributeNames">> => list(list(any())()),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instances_health_request() :: #{binary() => any()}.
-
-%% Example:
-%% apply_environment_managed_action_result() :: #{
-%%   <<"ActionDescription">> => string(),
-%%   <<"ActionId">> => string(),
-%%   <<"ActionType">> => list(any()),
-%%   <<"Status">> => string()
-%% }
--type apply_environment_managed_action_result() :: #{binary() => any()}.
-
-%% Example:
-%% custom_ami() :: #{
-%%   <<"ImageId">> => string(),
-%%   <<"VirtualizationType">> => string()
-%% }
--type custom_ami() :: #{binary() => any()}.
-
-%% Example:
-%% event_descriptions_message() :: #{
-%%   <<"Events">> => list(event_description()),
-%%   <<"NextToken">> => string()
-%% }
--type event_descriptions_message() :: #{binary() => any()}.
-
-%% Example:
-%% event_description() :: #{
+%% compose_environments_message() :: #{
 %%   <<"ApplicationName">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"EventDate">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"PlatformArn">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Severity">> => list(any()),
-%%   <<"TemplateName">> => string(),
-%%   <<"VersionLabel">> => string()
+%%   <<"GroupName">> => string(),
+%%   <<"VersionLabels">> => list(string())
 %% }
--type event_description() :: #{binary() => any()}.
-
-%% Example:
-%% request_environment_info_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"InfoType">> := list(any())
-%% }
--type request_environment_info_message() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_message() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_message() :: #{binary() => any()}.
+-type compose_environments_message() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_option_description() :: #{
@@ -453,175 +317,21 @@
 -type configuration_option_description() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer_description() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"Listeners">> => list(listener()),
-%%   <<"LoadBalancerName">> => string()
+%% configuration_option_setting() :: #{
+%%   <<"Namespace">> => string(),
+%%   <<"OptionName">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"Value">> => string()
 %% }
--type load_balancer_description() :: #{binary() => any()}.
+-type configuration_option_setting() :: #{binary() => any()}.
 
 %% Example:
-%% queue() :: #{
-%%   <<"Name">> => string(),
-%%   <<"URL">> => string()
-%% }
--type queue() :: #{binary() => any()}.
-
-%% Example:
-%% managed_action_invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type managed_action_invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% environment_tier() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Version">> => string()
-%% }
--type environment_tier() :: #{binary() => any()}.
-
-%% Example:
-%% list_platform_branches_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PlatformBranchSummaryList">> => list(platform_branch_summary())
-%% }
--type list_platform_branches_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_managed_actions_request() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_environment_managed_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% platform_version_still_referenced_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type platform_version_still_referenced_exception() :: #{binary() => any()}.
-
-%% Example:
-%% environment_info_description() :: #{
-%%   <<"Ec2InstanceId">> => string(),
-%%   <<"InfoType">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"SampleTimestamp">> => non_neg_integer()
-%% }
--type environment_info_description() :: #{binary() => any()}.
-
-%% Example:
-%% platform_framework() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type platform_framework() :: #{binary() => any()}.
-
-%% Example:
-%% elastic_beanstalk_service_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type elastic_beanstalk_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_configuration_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"EnvironmentName">> := string()
-%% }
--type delete_environment_configuration_message() :: #{binary() => any()}.
-
-%% Example:
-%% platform_description() :: #{
-%%   <<"CustomAmiList">> => list(custom_ami()),
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateUpdated">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Frameworks">> => list(platform_framework()),
-%%   <<"Maintainer">> => string(),
-%%   <<"OperatingSystemName">> => string(),
-%%   <<"OperatingSystemVersion">> => string(),
+%% configuration_options_description() :: #{
+%%   <<"Options">> => list(configuration_option_description()),
 %%   <<"PlatformArn">> => string(),
-%%   <<"PlatformBranchLifecycleState">> => string(),
-%%   <<"PlatformBranchName">> => string(),
-%%   <<"PlatformCategory">> => string(),
-%%   <<"PlatformLifecycleState">> => string(),
-%%   <<"PlatformName">> => string(),
-%%   <<"PlatformOwner">> => string(),
-%%   <<"PlatformStatus">> => list(any()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"ProgrammingLanguages">> => list(platform_programming_language()),
-%%   <<"SolutionStackName">> => string(),
-%%   <<"SupportedAddonList">> => list(string()),
-%%   <<"SupportedTierList">> => list(string())
+%%   <<"SolutionStackName">> => string()
 %% }
--type platform_description() :: #{binary() => any()}.
-
-%% Example:
-%% retrieve_environment_info_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"InfoType">> := list(any())
-%% }
--type retrieve_environment_info_message() :: #{binary() => any()}.
-
-%% Example:
-%% builder() :: #{
-%%   <<"ARN">> => string()
-%% }
--type builder() :: #{binary() => any()}.
-
-%% Example:
-%% resource_quota() :: #{
-%%   <<"Maximum">> => integer()
-%% }
--type resource_quota() :: #{binary() => any()}.
-
-%% Example:
-%% environment_resource_description() :: #{
-%%   <<"AutoScalingGroups">> => list(auto_scaling_group()),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"Instances">> => list(instance()),
-%%   <<"LaunchConfigurations">> => list(launch_configuration()),
-%%   <<"LaunchTemplates">> => list(launch_template()),
-%%   <<"LoadBalancers">> => list(load_balancer()),
-%%   <<"Queues">> => list(queue()),
-%%   <<"Triggers">> => list(trigger())
-%% }
--type environment_resource_description() :: #{binary() => any()}.
-
-%% Example:
-%% managed_action_history_item() :: #{
-%%   <<"ActionDescription">> => string(),
-%%   <<"ActionId">> => string(),
-%%   <<"ActionType">> => list(any()),
-%%   <<"ExecutedTime">> => non_neg_integer(),
-%%   <<"FailureDescription">> => string(),
-%%   <<"FailureType">> => list(any()),
-%%   <<"FinishedTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type managed_action_history_item() :: #{binary() => any()}.
-
-%% Example:
-%% abort_environment_update_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string()
-%% }
--type abort_environment_update_message() :: #{binary() => any()}.
-
-%% Example:
-%% instance_health_summary() :: #{
-%%   <<"Degraded">> => integer(),
-%%   <<"Info">> => integer(),
-%%   <<"NoData">> => integer(),
-%%   <<"Ok">> => integer(),
-%%   <<"Pending">> => integer(),
-%%   <<"Severe">> => integer(),
-%%   <<"Unknown">> => integer(),
-%%   <<"Warning">> => integer()
-%% }
--type instance_health_summary() :: #{binary() => any()}.
+-type configuration_options_description() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_settings_description() :: #{
@@ -639,10 +349,10 @@
 -type configuration_settings_description() :: #{binary() => any()}.
 
 %% Example:
-%% check_dns_availability_message() :: #{
-%%   <<"CNAMEPrefix">> := string()
+%% configuration_settings_descriptions() :: #{
+%%   <<"ConfigurationSettings">> => list(configuration_settings_description())
 %% }
--type check_dns_availability_message() :: #{binary() => any()}.
+-type configuration_settings_descriptions() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_settings_validation_messages() :: #{
@@ -651,130 +361,13 @@
 -type configuration_settings_validation_messages() :: #{binary() => any()}.
 
 %% Example:
-%% search_filter() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"Operator">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type search_filter() :: #{binary() => any()}.
-
-%% Example:
-%% platform_filter() :: #{
-%%   <<"Operator">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type platform_filter() :: #{binary() => any()}.
-
-%% Example:
-%% configuration_option_setting() :: #{
-%%   <<"Namespace">> => string(),
-%%   <<"OptionName">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"Value">> => string()
-%% }
--type configuration_option_setting() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_options_message() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"Options">> => list(option_specification()),
-%%   <<"PlatformArn">> => string(),
-%%   <<"SolutionStackName">> => string(),
-%%   <<"TemplateName">> => string()
-%% }
--type describe_configuration_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% option_specification() :: #{
-%%   <<"Namespace">> => string(),
-%%   <<"OptionName">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type option_specification() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% platform_programming_language() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type platform_programming_language() :: #{binary() => any()}.
-
-%% Example:
-%% update_environment_message() :: #{
-%%   <<"ApplicationName">> => string(),
+%% create_application_message() :: #{
+%%   <<"ApplicationName">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()),
-%%   <<"OptionsToRemove">> => list(option_specification()),
-%%   <<"PlatformArn">> => string(),
-%%   <<"SolutionStackName">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"Tier">> => environment_tier(),
-%%   <<"VersionLabel">> => string()
+%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
+%%   <<"Tags">> => list(tag())
 %% }
--type update_environment_message() :: #{binary() => any()}.
-
-%% Example:
-%% application_resource_lifecycle_description_message() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config()
-%% }
--type application_resource_lifecycle_description_message() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_applications_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_applications_exception() :: #{binary() => any()}.
-
-%% Example:
-%% operation_in_progress_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_health_result() :: #{
-%%   <<"ApplicationMetrics">> => application_metrics(),
-%%   <<"Causes">> => list(string()),
-%%   <<"Color">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"HealthStatus">> => string(),
-%%   <<"InstancesHealth">> => instance_health_summary(),
-%%   <<"RefreshedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_environment_health_result() :: #{binary() => any()}.
-
-%% Example:
-%% application_version_lifecycle_config() :: #{
-%%   <<"MaxAgeRule">> => max_age_rule(),
-%%   <<"MaxCountRule">> => max_count_rule()
-%% }
--type application_version_lifecycle_config() :: #{binary() => any()}.
+-type create_application_message() :: #{binary() => any()}.
 
 %% Example:
 %% create_application_version_message() :: #{
@@ -791,43 +384,75 @@
 -type create_application_version_message() :: #{binary() => any()}.
 
 %% Example:
-%% application_metrics() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"Latency">> => latency(),
-%%   <<"RequestCount">> => integer(),
-%%   <<"StatusCodes">> => status_codes()
+%% create_configuration_template_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"PlatformArn">> => string(),
+%%   <<"SolutionStackName">> => string(),
+%%   <<"SourceConfiguration">> => source_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateName">> := string()
 %% }
--type application_metrics() :: #{binary() => any()}.
+-type create_configuration_template_message() :: #{binary() => any()}.
 
 %% Example:
-%% s3_subscription_required_exception() :: #{
-%%   <<"message">> => string()
+%% create_environment_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"CNAMEPrefix">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"OperationsRole">> => string(),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
+%%   <<"PlatformArn">> => string(),
+%%   <<"SolutionStackName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateName">> => string(),
+%%   <<"Tier">> => environment_tier(),
+%%   <<"VersionLabel">> => string()
 %% }
--type s3_subscription_required_exception() :: #{binary() => any()}.
+-type create_environment_message() :: #{binary() => any()}.
 
 %% Example:
-%% platform_branch_summary() :: #{
-%%   <<"BranchName">> => string(),
-%%   <<"BranchOrder">> => integer(),
-%%   <<"LifecycleState">> => string(),
-%%   <<"PlatformName">> => string(),
-%%   <<"SupportedTierList">> => list(string())
+%% create_platform_version_request() :: #{
+%%   <<"EnvironmentName">> => string(),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"PlatformDefinitionBundle">> := s3_location(),
+%%   <<"PlatformName">> := string(),
+%%   <<"PlatformVersion">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type platform_branch_summary() :: #{binary() => any()}.
+-type create_platform_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_available_solution_stacks_result_message() :: #{
-%%   <<"SolutionStackDetails">> => list(solution_stack_description()),
-%%   <<"SolutionStacks">> => list(string())
+%% create_platform_version_result() :: #{
+%%   <<"Builder">> => builder(),
+%%   <<"PlatformSummary">> => platform_summary()
 %% }
--type list_available_solution_stacks_result_message() :: #{binary() => any()}.
+-type create_platform_version_result() :: #{binary() => any()}.
 
 %% Example:
-%% source_configuration() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"TemplateName">> => string()
+%% create_storage_location_result_message() :: #{
+%%   <<"S3Bucket">> => string()
 %% }
--type source_configuration() :: #{binary() => any()}.
+-type create_storage_location_result_message() :: #{binary() => any()}.
+
+%% Example:
+%% custom_ami() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"VirtualizationType">> => string()
+%% }
+-type custom_ami() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"TerminateEnvByForce">> => boolean()
+%% }
+-type delete_application_message() :: #{binary() => any()}.
 
 %% Example:
 %% delete_application_version_message() :: #{
@@ -838,31 +463,45 @@
 -type delete_application_version_message() :: #{binary() => any()}.
 
 %% Example:
-%% s3_location() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string()
+%% delete_configuration_template_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"TemplateName">> := string()
 %% }
--type s3_location() :: #{binary() => any()}.
+-type delete_configuration_template_message() :: #{binary() => any()}.
 
 %% Example:
-%% system_status() :: #{
-%%   <<"CPUUtilization">> => c_p_u_utilization(),
-%%   <<"LoadAverage">> => list(float())
+%% delete_environment_configuration_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"EnvironmentName">> := string()
 %% }
--type system_status() :: #{binary() => any()}.
+-type delete_environment_configuration_message() :: #{binary() => any()}.
 
 %% Example:
-%% latency() :: #{
-%%   <<"P10">> => float(),
-%%   <<"P50">> => float(),
-%%   <<"P75">> => float(),
-%%   <<"P85">> => float(),
-%%   <<"P90">> => float(),
-%%   <<"P95">> => float(),
-%%   <<"P99">> => float(),
-%%   <<"P999">> => float()
+%% delete_platform_version_request() :: #{
+%%   <<"PlatformArn">> => string()
 %% }
--type latency() :: #{binary() => any()}.
+-type delete_platform_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_platform_version_result() :: #{
+%%   <<"PlatformSummary">> => platform_summary()
+%% }
+-type delete_platform_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% deployment() :: #{
+%%   <<"DeploymentId">> => float(),
+%%   <<"DeploymentTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_result() :: #{
+%%   <<"ResourceQuotas">> => resource_quotas()
+%% }
+-type describe_account_attributes_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_versions_message() :: #{
@@ -874,21 +513,29 @@
 -type describe_application_versions_message() :: #{binary() => any()}.
 
 %% Example:
-%% platform_summary() :: #{
-%%   <<"OperatingSystemName">> => string(),
-%%   <<"OperatingSystemVersion">> => string(),
-%%   <<"PlatformArn">> => string(),
-%%   <<"PlatformBranchLifecycleState">> => string(),
-%%   <<"PlatformBranchName">> => string(),
-%%   <<"PlatformCategory">> => string(),
-%%   <<"PlatformLifecycleState">> => string(),
-%%   <<"PlatformOwner">> => string(),
-%%   <<"PlatformStatus">> => list(any()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"SupportedAddonList">> => list(string()),
-%%   <<"SupportedTierList">> => list(string())
+%% describe_applications_message() :: #{
+%%   <<"ApplicationNames">> => list(string())
 %% }
--type platform_summary() :: #{binary() => any()}.
+-type describe_applications_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_options_message() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"Options">> => list(option_specification()),
+%%   <<"PlatformArn">> => string(),
+%%   <<"SolutionStackName">> => string(),
+%%   <<"TemplateName">> => string()
+%% }
+-type describe_configuration_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_settings_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"TemplateName">> => string()
+%% }
+-type describe_configuration_settings_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_environment_health_request() :: #{
@@ -899,16 +546,125 @@
 -type describe_environment_health_request() :: #{binary() => any()}.
 
 %% Example:
-%% retrieve_environment_info_result_message() :: #{
-%%   <<"EnvironmentInfo">> => list(environment_info_description())
+%% describe_environment_health_result() :: #{
+%%   <<"ApplicationMetrics">> => application_metrics(),
+%%   <<"Causes">> => list(string()),
+%%   <<"Color">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"HealthStatus">> => string(),
+%%   <<"InstancesHealth">> => instance_health_summary(),
+%%   <<"RefreshedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type retrieve_environment_info_result_message() :: #{binary() => any()}.
+-type describe_environment_health_result() :: #{binary() => any()}.
 
 %% Example:
-%% s3_location_not_in_service_region_exception() :: #{
+%% describe_environment_managed_action_history_request() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_environment_managed_action_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_managed_action_history_result() :: #{
+%%   <<"ManagedActionHistoryItems">> => list(managed_action_history_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_environment_managed_action_history_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_managed_actions_request() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_environment_managed_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_managed_actions_result() :: #{
+%%   <<"ManagedActions">> => list(managed_action())
+%% }
+-type describe_environment_managed_actions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environment_resources_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string()
+%% }
+-type describe_environment_resources_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_environments_message() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"EnvironmentIds">> => list(string()),
+%%   <<"EnvironmentNames">> => list(string()),
+%%   <<"IncludeDeleted">> => boolean(),
+%%   <<"IncludedDeletedBackTo">> => non_neg_integer(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type describe_environments_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_message() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TemplateName">> => string(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type describe_events_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_health_request() :: #{
+%%   <<"AttributeNames">> => list(list(any())()),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instances_health_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_health_result() :: #{
+%%   <<"InstanceHealthList">> => list(single_instance_health()),
+%%   <<"NextToken">> => string(),
+%%   <<"RefreshedAt">> => non_neg_integer()
+%% }
+-type describe_instances_health_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_platform_version_request() :: #{
+%%   <<"PlatformArn">> => string()
+%% }
+-type describe_platform_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_platform_version_result() :: #{
+%%   <<"PlatformDescription">> => platform_description()
+%% }
+-type describe_platform_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_environment_operations_role_message() :: #{
+%%   <<"EnvironmentName">> := string()
+%% }
+-type disassociate_environment_operations_role_message() :: #{binary() => any()}.
+
+%% Example:
+%% elastic_beanstalk_service_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type s3_location_not_in_service_region_exception() :: #{binary() => any()}.
+-type elastic_beanstalk_service_exception() :: #{binary() => any()}.
 
 %% Example:
 %% environment_description() :: #{
@@ -937,70 +693,40 @@
 -type environment_description() :: #{binary() => any()}.
 
 %% Example:
-%% application_version_description_message() :: #{
-%%   <<"ApplicationVersion">> => application_version_description()
+%% environment_descriptions_message() :: #{
+%%   <<"Environments">> => list(environment_description()),
+%%   <<"NextToken">> => string()
 %% }
--type application_version_description_message() :: #{binary() => any()}.
+-type environment_descriptions_message() :: #{binary() => any()}.
 
 %% Example:
-%% swap_environment_cnames_message() :: #{
-%%   <<"DestinationEnvironmentId">> => string(),
-%%   <<"DestinationEnvironmentName">> => string(),
-%%   <<"SourceEnvironmentId">> => string(),
-%%   <<"SourceEnvironmentName">> => string()
-%% }
--type swap_environment_cnames_message() :: #{binary() => any()}.
-
-%% Example:
-%% max_count_rule() :: #{
-%%   <<"DeleteSourceFromS3">> => boolean(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"MaxCount">> => integer()
-%% }
--type max_count_rule() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_application_versions_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_application_versions_exception() :: #{binary() => any()}.
-
-%% Example:
-%% application_description_message() :: #{
-%%   <<"Application">> => application_description()
-%% }
--type application_description_message() :: #{binary() => any()}.
-
-%% Example:
-%% validation_message() :: #{
+%% environment_info_description() :: #{
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"InfoType">> => list(any()),
 %%   <<"Message">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"OptionName">> => string(),
-%%   <<"Severity">> => list(any())
+%%   <<"SampleTimestamp">> => non_neg_integer()
 %% }
--type validation_message() :: #{binary() => any()}.
+-type environment_info_description() :: #{binary() => any()}.
 
 %% Example:
-%% validate_configuration_settings_message() :: #{
-%%   <<"ApplicationName">> := string(),
+%% environment_link() :: #{
 %%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> := list(configuration_option_setting()),
-%%   <<"TemplateName">> => string()
+%%   <<"LinkName">> => string()
 %% }
--type validate_configuration_settings_message() :: #{binary() => any()}.
+-type environment_link() :: #{binary() => any()}.
 
 %% Example:
-%% instance() :: #{
-%%   <<"Id">> => string()
+%% environment_resource_description() :: #{
+%%   <<"AutoScalingGroups">> => list(auto_scaling_group()),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"Instances">> => list(instance()),
+%%   <<"LaunchConfigurations">> => list(launch_configuration()),
+%%   <<"LaunchTemplates">> => list(launch_template()),
+%%   <<"LoadBalancers">> => list(load_balancer()),
+%%   <<"Queues">> => list(queue()),
+%%   <<"Triggers">> => list(trigger())
 %% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_resource_lifecycle_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"ResourceLifecycleConfig">> := application_resource_lifecycle_config()
-%% }
--type update_application_resource_lifecycle_message() :: #{binary() => any()}.
+-type environment_resource_description() :: #{binary() => any()}.
 
 %% Example:
 %% environment_resource_descriptions_message() :: #{
@@ -1009,90 +735,58 @@
 -type environment_resource_descriptions_message() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_options_description() :: #{
-%%   <<"Options">> => list(configuration_option_description()),
-%%   <<"PlatformArn">> => string(),
-%%   <<"SolutionStackName">> => string()
+%% environment_resources_description() :: #{
+%%   <<"LoadBalancer">> => load_balancer_description()
 %% }
--type configuration_options_description() :: #{binary() => any()}.
+-type environment_resources_description() :: #{binary() => any()}.
 
 %% Example:
-%% application_descriptions_message() :: #{
-%%   <<"Applications">> => list(application_description())
+%% environment_tier() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Version">> => string()
 %% }
--type application_descriptions_message() :: #{binary() => any()}.
+-type environment_tier() :: #{binary() => any()}.
 
 %% Example:
-%% describe_account_attributes_result() :: #{
-%%   <<"ResourceQuotas">> => resource_quotas()
-%% }
--type describe_account_attributes_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_settings_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"TemplateName">> => string()
-%% }
--type describe_configuration_settings_message() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_environment_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string(),
-%%   <<"ForceTerminate">> => boolean(),
-%%   <<"TerminateResources">> => boolean()
-%% }
--type terminate_environment_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_environment_resources_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string()
-%% }
--type describe_environment_resources_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_message() :: #{
+%% event_description() :: #{
 %%   <<"ApplicationName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
+%%   <<"EventDate">> => non_neg_integer(),
+%%   <<"Message">> => string(),
 %%   <<"PlatformArn">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Severity">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
 %%   <<"TemplateName">> => string(),
 %%   <<"VersionLabel">> => string()
 %% }
--type describe_events_message() :: #{binary() => any()}.
+-type event_description() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer() :: #{
-%%   <<"Name">> => string()
+%% event_descriptions_message() :: #{
+%%   <<"Events">> => list(event_description()),
+%%   <<"NextToken">> => string()
 %% }
--type load_balancer() :: #{binary() => any()}.
+-type event_descriptions_message() :: #{binary() => any()}.
 
 %% Example:
-%% auto_scaling_group() :: #{
-%%   <<"Name">> => string()
+%% instance() :: #{
+%%   <<"Id">> => string()
 %% }
--type auto_scaling_group() :: #{binary() => any()}.
+-type instance() :: #{binary() => any()}.
 
 %% Example:
-%% describe_environment_managed_actions_result() :: #{
-%%   <<"ManagedActions">> => list(managed_action())
+%% instance_health_summary() :: #{
+%%   <<"Degraded">> => integer(),
+%%   <<"Info">> => integer(),
+%%   <<"NoData">> => integer(),
+%%   <<"Ok">> => integer(),
+%%   <<"Pending">> => integer(),
+%%   <<"Severe">> => integer(),
+%%   <<"Unknown">> => integer(),
+%%   <<"Warning">> => integer()
 %% }
--type describe_environment_managed_actions_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tags_description_message() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceTags">> => list(tag())
-%% }
--type resource_tags_description_message() :: #{binary() => any()}.
+-type instance_health_summary() :: #{binary() => any()}.
 
 %% Example:
 %% insufficient_privileges_exception() :: #{
@@ -1101,36 +795,42 @@
 -type insufficient_privileges_exception() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_settings_descriptions() :: #{
-%%   <<"ConfigurationSettings">> => list(configuration_settings_description())
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type configuration_settings_descriptions() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_platform_version_result() :: #{
-%%   <<"Builder">> => builder(),
-%%   <<"PlatformSummary">> => platform_summary()
+%% latency() :: #{
+%%   <<"P10">> => float(),
+%%   <<"P50">> => float(),
+%%   <<"P75">> => float(),
+%%   <<"P85">> => float(),
+%%   <<"P90">> => float(),
+%%   <<"P95">> => float(),
+%%   <<"P99">> => float(),
+%%   <<"P999">> => float()
 %% }
--type create_platform_version_result() :: #{binary() => any()}.
+-type latency() :: #{binary() => any()}.
 
 %% Example:
-%% environment_resources_description() :: #{
-%%   <<"LoadBalancer">> => load_balancer_description()
+%% launch_configuration() :: #{
+%%   <<"Name">> => string()
 %% }
--type environment_resources_description() :: #{binary() => any()}.
+-type launch_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% application_description() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"ApplicationName">> => string(),
-%%   <<"ConfigurationTemplates">> => list(string()),
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateUpdated">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
-%%   <<"Versions">> => list(string())
+%% launch_template() :: #{
+%%   <<"Id">> => string()
 %% }
--type application_description() :: #{binary() => any()}.
+-type launch_template() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_solution_stacks_result_message() :: #{
+%%   <<"SolutionStackDetails">> => list(solution_stack_description()),
+%%   <<"SolutionStacks">> => list(string())
+%% }
+-type list_available_solution_stacks_result_message() :: #{binary() => any()}.
 
 %% Example:
 %% list_platform_branches_request() :: #{
@@ -1141,105 +841,234 @@
 -type list_platform_branches_request() :: #{binary() => any()}.
 
 %% Example:
-%% launch_template() :: #{
-%%   <<"Id">> => string()
+%% list_platform_branches_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformBranchSummaryList">> => list(platform_branch_summary())
 %% }
--type launch_template() :: #{binary() => any()}.
+-type list_platform_branches_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_applications_message() :: #{
-%%   <<"ApplicationNames">> => list(string())
-%% }
--type describe_applications_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_platform_version_result() :: #{
-%%   <<"PlatformDescription">> => platform_description()
-%% }
--type describe_platform_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% application_version_descriptions_message() :: #{
-%%   <<"ApplicationVersions">> => list(application_version_description()),
+%% list_platform_versions_request() :: #{
+%%   <<"Filters">> => list(platform_filter()),
+%%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type application_version_descriptions_message() :: #{binary() => any()}.
+-type list_platform_versions_request() :: #{binary() => any()}.
 
 %% Example:
-%% source_build_information() :: #{
-%%   <<"SourceLocation">> => string(),
-%%   <<"SourceRepository">> => list(any()),
-%%   <<"SourceType">> => list(any())
+%% list_platform_versions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PlatformSummaryList">> => list(platform_summary())
 %% }
--type source_build_information() :: #{binary() => any()}.
+-type list_platform_versions_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_storage_location_result_message() :: #{
-%%   <<"S3Bucket">> => string()
+%% list_tags_for_resource_message() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type create_storage_location_result_message() :: #{binary() => any()}.
+-type list_tags_for_resource_message() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_configuration_templates_exception() :: #{
-%%   <<"message">> => string()
+%% listener() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => string()
 %% }
--type too_many_configuration_templates_exception() :: #{binary() => any()}.
+-type listener() :: #{binary() => any()}.
 
 %% Example:
-%% launch_configuration() :: #{
+%% load_balancer() :: #{
 %%   <<"Name">> => string()
 %% }
--type launch_configuration() :: #{binary() => any()}.
+-type load_balancer() :: #{binary() => any()}.
 
 %% Example:
-%% create_configuration_template_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()),
-%%   <<"PlatformArn">> => string(),
-%%   <<"SolutionStackName">> => string(),
-%%   <<"SourceConfiguration">> => source_configuration(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateName">> := string()
+%% load_balancer_description() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Listeners">> => list(listener()),
+%%   <<"LoadBalancerName">> => string()
 %% }
--type create_configuration_template_message() :: #{binary() => any()}.
+-type load_balancer_description() :: #{binary() => any()}.
 
 %% Example:
-%% delete_platform_version_result() :: #{
-%%   <<"PlatformSummary">> => platform_summary()
+%% managed_action() :: #{
+%%   <<"ActionDescription">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"WindowStartTime">> => non_neg_integer()
 %% }
--type delete_platform_version_result() :: #{binary() => any()}.
+-type managed_action() :: #{binary() => any()}.
 
 %% Example:
-%% describe_platform_version_request() :: #{
-%%   <<"PlatformArn">> => string()
+%% managed_action_history_item() :: #{
+%%   <<"ActionDescription">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"ExecutedTime">> => non_neg_integer(),
+%%   <<"FailureDescription">> => string(),
+%%   <<"FailureType">> => list(any()),
+%%   <<"FinishedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type describe_platform_version_request() :: #{binary() => any()}.
+-type managed_action_history_item() :: #{binary() => any()}.
 
 %% Example:
-%% application_version_description() :: #{
-%%   <<"ApplicationName">> => string(),
-%%   <<"ApplicationVersionArn">> => string(),
-%%   <<"BuildArn">> => string(),
+%% managed_action_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type managed_action_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% max_age_rule() :: #{
+%%   <<"DeleteSourceFromS3">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MaxAgeInDays">> => integer()
+%% }
+-type max_age_rule() :: #{binary() => any()}.
+
+%% Example:
+%% max_count_rule() :: #{
+%%   <<"DeleteSourceFromS3">> => boolean(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MaxCount">> => integer()
+%% }
+-type max_count_rule() :: #{binary() => any()}.
+
+%% Example:
+%% operation_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% option_restriction_regex() :: #{
+%%   <<"Label">> => string(),
+%%   <<"Pattern">> => string()
+%% }
+-type option_restriction_regex() :: #{binary() => any()}.
+
+%% Example:
+%% option_specification() :: #{
+%%   <<"Namespace">> => string(),
+%%   <<"OptionName">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type option_specification() :: #{binary() => any()}.
+
+%% Example:
+%% platform_branch_summary() :: #{
+%%   <<"BranchName">> => string(),
+%%   <<"BranchOrder">> => integer(),
+%%   <<"LifecycleState">> => string(),
+%%   <<"PlatformName">> => string(),
+%%   <<"SupportedTierList">> => list(string())
+%% }
+-type platform_branch_summary() :: #{binary() => any()}.
+
+%% Example:
+%% platform_description() :: #{
+%%   <<"CustomAmiList">> => list(custom_ami()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateUpdated">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"SourceBuildInformation">> => source_build_information(),
-%%   <<"SourceBundle">> => s3_location(),
-%%   <<"Status">> => list(any()),
-%%   <<"VersionLabel">> => string()
+%%   <<"Frameworks">> => list(platform_framework()),
+%%   <<"Maintainer">> => string(),
+%%   <<"OperatingSystemName">> => string(),
+%%   <<"OperatingSystemVersion">> => string(),
+%%   <<"PlatformArn">> => string(),
+%%   <<"PlatformBranchLifecycleState">> => string(),
+%%   <<"PlatformBranchName">> => string(),
+%%   <<"PlatformCategory">> => string(),
+%%   <<"PlatformLifecycleState">> => string(),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformOwner">> => string(),
+%%   <<"PlatformStatus">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"ProgrammingLanguages">> => list(platform_programming_language()),
+%%   <<"SolutionStackName">> => string(),
+%%   <<"SupportedAddonList">> => list(string()),
+%%   <<"SupportedTierList">> => list(string())
 %% }
--type application_version_description() :: #{binary() => any()}.
+-type platform_description() :: #{binary() => any()}.
 
 %% Example:
-%% describe_environment_managed_action_history_request() :: #{
+%% platform_filter() :: #{
+%%   <<"Operator">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type platform_filter() :: #{binary() => any()}.
+
+%% Example:
+%% platform_framework() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type platform_framework() :: #{binary() => any()}.
+
+%% Example:
+%% platform_programming_language() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type platform_programming_language() :: #{binary() => any()}.
+
+%% Example:
+%% platform_summary() :: #{
+%%   <<"OperatingSystemName">> => string(),
+%%   <<"OperatingSystemVersion">> => string(),
+%%   <<"PlatformArn">> => string(),
+%%   <<"PlatformBranchLifecycleState">> => string(),
+%%   <<"PlatformBranchName">> => string(),
+%%   <<"PlatformCategory">> => string(),
+%%   <<"PlatformLifecycleState">> => string(),
+%%   <<"PlatformOwner">> => string(),
+%%   <<"PlatformStatus">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"SupportedAddonList">> => list(string()),
+%%   <<"SupportedTierList">> => list(string())
+%% }
+-type platform_summary() :: #{binary() => any()}.
+
+%% Example:
+%% platform_version_still_referenced_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_version_still_referenced_exception() :: #{binary() => any()}.
+
+%% Example:
+%% queue() :: #{
+%%   <<"Name">> => string(),
+%%   <<"URL">> => string()
+%% }
+-type queue() :: #{binary() => any()}.
+
+%% Example:
+%% rebuild_environment_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string()
+%% }
+-type rebuild_environment_message() :: #{binary() => any()}.
+
+%% Example:
+%% request_environment_info_message() :: #{
 %%   <<"EnvironmentId">> => string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"InfoType">> := list(any())
 %% }
--type describe_environment_managed_action_history_request() :: #{binary() => any()}.
+-type request_environment_info_message() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_quota() :: #{
+%%   <<"Maximum">> => integer()
+%% }
+-type resource_quota() :: #{binary() => any()}.
 
 %% Example:
 %% resource_quotas() :: #{
@@ -1252,11 +1081,211 @@
 -type resource_quotas() :: #{binary() => any()}.
 
 %% Example:
+%% resource_tags_description_message() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceTags">> => list(tag())
+%% }
+-type resource_tags_description_message() :: #{binary() => any()}.
+
+%% Example:
+%% resource_type_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_type_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restart_app_server_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string()
+%% }
+-type restart_app_server_message() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_environment_info_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"InfoType">> := list(any())
+%% }
+-type retrieve_environment_info_message() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_environment_info_result_message() :: #{
+%%   <<"EnvironmentInfo">> => list(environment_info_description())
+%% }
+-type retrieve_environment_info_result_message() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location_not_in_service_region_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type s3_location_not_in_service_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_subscription_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type s3_subscription_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% search_filter() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Operator">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+%% Example:
+%% single_instance_health() :: #{
+%%   <<"ApplicationMetrics">> => application_metrics(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Causes">> => list(string()),
+%%   <<"Color">> => string(),
+%%   <<"Deployment">> => deployment(),
+%%   <<"HealthStatus">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchedAt">> => non_neg_integer(),
+%%   <<"System">> => system_status()
+%% }
+-type single_instance_health() :: #{binary() => any()}.
+
+%% Example:
+%% solution_stack_description() :: #{
+%%   <<"PermittedFileTypes">> => list(string()),
+%%   <<"SolutionStackName">> => string()
+%% }
+-type solution_stack_description() :: #{binary() => any()}.
+
+%% Example:
+%% source_build_information() :: #{
+%%   <<"SourceLocation">> => string(),
+%%   <<"SourceRepository">> => list(any()),
+%%   <<"SourceType">> => list(any())
+%% }
+-type source_build_information() :: #{binary() => any()}.
+
+%% Example:
+%% source_bundle_deletion_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_bundle_deletion_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"TemplateName">> => string()
+%% }
+-type source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% status_codes() :: #{
+%%   <<"Status2xx">> => integer(),
+%%   <<"Status3xx">> => integer(),
+%%   <<"Status4xx">> => integer(),
+%%   <<"Status5xx">> => integer()
+%% }
+-type status_codes() :: #{binary() => any()}.
+
+%% Example:
+%% swap_environment_cnames_message() :: #{
+%%   <<"DestinationEnvironmentId">> => string(),
+%%   <<"DestinationEnvironmentName">> => string(),
+%%   <<"SourceEnvironmentId">> => string(),
+%%   <<"SourceEnvironmentName">> => string()
+%% }
+-type swap_environment_cnames_message() :: #{binary() => any()}.
+
+%% Example:
+%% system_status() :: #{
+%%   <<"CPUUtilization">> => c_p_u_utilization(),
+%%   <<"LoadAverage">> => list(float())
+%% }
+-type system_status() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_environment_message() :: #{
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"ForceTerminate">> => boolean(),
+%%   <<"TerminateResources">> => boolean()
+%% }
+-type terminate_environment_message() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_application_versions_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_application_versions_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_applications_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_applications_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_buckets_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_buckets_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_configuration_templates_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_configuration_templates_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_environments_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_environments_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_platforms_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_platforms_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trigger() :: #{
+%%   <<"Name">> => string()
+%% }
+-type trigger() :: #{binary() => any()}.
+
+%% Example:
 %% update_application_message() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"Description">> => string()
 %% }
 -type update_application_message() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_resource_lifecycle_message() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"ResourceLifecycleConfig">> := application_resource_lifecycle_config()
+%% }
+-type update_application_resource_lifecycle_message() :: #{binary() => any()}.
 
 %% Example:
 %% update_application_version_message() :: #{
@@ -1267,30 +1296,31 @@
 -type update_application_version_message() :: #{binary() => any()}.
 
 %% Example:
-%% list_platform_versions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PlatformSummaryList">> => list(platform_summary())
-%% }
--type list_platform_versions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_template_message() :: #{
+%% update_configuration_template_message() :: #{
 %%   <<"ApplicationName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
 %%   <<"TemplateName">> := string()
 %% }
--type delete_configuration_template_message() :: #{binary() => any()}.
+-type update_configuration_template_message() :: #{binary() => any()}.
 
 %% Example:
-%% source_bundle_deletion_exception() :: #{
-%%   <<"message">> => string()
+%% update_environment_message() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"EnvironmentName">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
+%%   <<"PlatformArn">> => string(),
+%%   <<"SolutionStackName">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"Tier">> => environment_tier(),
+%%   <<"VersionLabel">> => string()
 %% }
--type source_bundle_deletion_exception() :: #{binary() => any()}.
-
-%% Example:
-%% code_build_not_in_service_region_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type code_build_not_in_service_region_exception() :: #{binary() => any()}.
+-type update_environment_message() :: #{binary() => any()}.
 
 %% Example:
 %% update_tags_for_resource_message() :: #{
@@ -1301,113 +1331,83 @@
 -type update_tags_for_resource_message() :: #{binary() => any()}.
 
 %% Example:
-%% restart_app_server_message() :: #{
-%%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentName">> => string()
-%% }
--type restart_app_server_message() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_message() :: #{
+%% validate_configuration_settings_message() :: #{
 %%   <<"ApplicationName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_application_message() :: #{binary() => any()}.
-
-%% Example:
-%% application_resource_lifecycle_config() :: #{
-%%   <<"ServiceRole">> => string(),
-%%   <<"VersionLifecycleConfig">> => application_version_lifecycle_config()
-%% }
--type application_resource_lifecycle_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_message() :: #{
-%%   <<"ApplicationName">> := string(),
-%%   <<"CNAMEPrefix">> => string(),
-%%   <<"Description">> => string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"OperationsRole">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()),
-%%   <<"OptionsToRemove">> => list(option_specification()),
-%%   <<"PlatformArn">> => string(),
-%%   <<"SolutionStackName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateName">> => string(),
-%%   <<"Tier">> => environment_tier(),
-%%   <<"VersionLabel">> => string()
+%%   <<"OptionSettings">> := list(configuration_option_setting()),
+%%   <<"TemplateName">> => string()
 %% }
--type create_environment_message() :: #{binary() => any()}.
+-type validate_configuration_settings_message() :: #{binary() => any()}.
+
+%% Example:
+%% validation_message() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"OptionName">> => string(),
+%%   <<"Severity">> => list(any())
+%% }
+-type validation_message() :: #{binary() => any()}.
 
 -type abort_environment_update_errors() ::
     insufficient_privileges_exception().
 
 -type apply_environment_managed_action_errors() ::
-    elastic_beanstalk_service_exception() | 
-    managed_action_invalid_state_exception().
+    managed_action_invalid_state_exception() | 
+    elastic_beanstalk_service_exception().
 
 -type associate_environment_operations_role_errors() ::
     insufficient_privileges_exception().
 
 -type compose_environments_errors() ::
-    insufficient_privileges_exception() | 
-    too_many_environments_exception().
+    too_many_environments_exception() | 
+    insufficient_privileges_exception().
 
 -type create_application_errors() ::
     too_many_applications_exception().
 
 -type create_application_version_errors() ::
-    code_build_not_in_service_region_exception() | 
-    insufficient_privileges_exception() | 
+    too_many_applications_exception() | 
     too_many_application_versions_exception() | 
     s3_location_not_in_service_region_exception() | 
-    too_many_applications_exception().
+    insufficient_privileges_exception() | 
+    code_build_not_in_service_region_exception().
 
 -type create_configuration_template_errors() ::
     too_many_configuration_templates_exception() | 
-    insufficient_privileges_exception() | 
-    too_many_buckets_exception().
+    too_many_buckets_exception() | 
+    insufficient_privileges_exception().
 
 -type create_environment_errors() ::
-    insufficient_privileges_exception() | 
-    too_many_environments_exception().
+    too_many_environments_exception() | 
+    insufficient_privileges_exception().
 
 -type create_platform_version_errors() ::
+    too_many_platforms_exception() | 
     insufficient_privileges_exception() | 
-    elastic_beanstalk_service_exception() | 
-    too_many_platforms_exception().
+    elastic_beanstalk_service_exception().
 
 -type create_storage_location_errors() ::
-    insufficient_privileges_exception() | 
+    too_many_buckets_exception() | 
     s3_subscription_required_exception() | 
-    too_many_buckets_exception().
+    insufficient_privileges_exception().
 
 -type delete_application_errors() ::
     operation_in_progress_exception().
 
 -type delete_application_version_errors() ::
     source_bundle_deletion_exception() | 
-    insufficient_privileges_exception() | 
     s3_location_not_in_service_region_exception() | 
-    operation_in_progress_exception().
+    operation_in_progress_exception() | 
+    insufficient_privileges_exception().
 
 -type delete_configuration_template_errors() ::
     operation_in_progress_exception().
 
 -type delete_platform_version_errors() ::
-    insufficient_privileges_exception() | 
+    platform_version_still_referenced_exception() | 
     operation_in_progress_exception() | 
-    elastic_beanstalk_service_exception() | 
-    platform_version_still_referenced_exception().
+    insufficient_privileges_exception() | 
+    elastic_beanstalk_service_exception().
 
 -type describe_account_attributes_errors() ::
     insufficient_privileges_exception().
@@ -1447,9 +1447,9 @@
     elastic_beanstalk_service_exception().
 
 -type list_tags_for_resource_errors() ::
-    insufficient_privileges_exception() | 
+    resource_type_not_supported_exception() | 
     resource_not_found_exception() | 
-    resource_type_not_supported_exception().
+    insufficient_privileges_exception().
 
 -type rebuild_environment_errors() ::
     insufficient_privileges_exception().
@@ -1461,23 +1461,23 @@
     insufficient_privileges_exception().
 
 -type update_configuration_template_errors() ::
-    insufficient_privileges_exception() | 
-    too_many_buckets_exception().
+    too_many_buckets_exception() | 
+    insufficient_privileges_exception().
 
 -type update_environment_errors() ::
-    insufficient_privileges_exception() | 
-    too_many_buckets_exception().
+    too_many_buckets_exception() | 
+    insufficient_privileges_exception().
 
 -type update_tags_for_resource_errors() ::
     too_many_tags_exception() | 
-    insufficient_privileges_exception() | 
-    operation_in_progress_exception() | 
+    resource_type_not_supported_exception() | 
     resource_not_found_exception() | 
-    resource_type_not_supported_exception().
+    operation_in_progress_exception() | 
+    insufficient_privileges_exception().
 
 -type validate_configuration_settings_errors() ::
-    insufficient_privileges_exception() | 
-    too_many_buckets_exception().
+    too_many_buckets_exception() | 
+    insufficient_privileges_exception().
 
 %%====================================================================
 %% API

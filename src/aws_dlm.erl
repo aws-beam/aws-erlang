@@ -43,290 +43,6 @@
 
 
 %% Example:
-%% archive_retain_rule() :: #{
-%%   <<"RetentionArchiveTier">> => retention_archive_tier()
-%% }
--type archive_retain_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"CmkArn">> => string(),
-%%   <<"Encrypted">> => boolean()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_lifecycle_policy_request() :: #{
-%%   <<"CopyTags">> => boolean(),
-%%   <<"CreateInterval">> => integer(),
-%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()),
-%%   <<"Description">> => string(),
-%%   <<"Exclusions">> => exclusions(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"ExtendDeletion">> => boolean(),
-%%   <<"PolicyDetails">> => policy_details(),
-%%   <<"RetainInterval">> => integer(),
-%%   <<"State">> => list(any())
-%% }
--type update_lifecycle_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_region_copy_action() :: #{
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"RetainRule">> => cross_region_copy_retain_rule(),
-%%   <<"Target">> => string()
-%% }
--type cross_region_copy_action() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% update_lifecycle_policy_response() :: #{}
--type update_lifecycle_policy_response() :: #{}.
-
-
-%% Example:
-%% retain_rule() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
-%% }
--type retain_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% deprecate_rule() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
-%% }
--type deprecate_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lifecycle_policies_request() :: #{
-%%   <<"DefaultPolicyType">> => list(any()),
-%%   <<"PolicyIds">> => list(string()),
-%%   <<"ResourceTypes">> => list(list(any())()),
-%%   <<"State">> => list(any()),
-%%   <<"TagsToAdd">> => list(string()),
-%%   <<"TargetTags">> => list(string())
-%% }
--type get_lifecycle_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_parameters() :: #{
-%%   <<"DescriptionRegex">> => string(),
-%%   <<"EventType">> => list(any()),
-%%   <<"SnapshotOwner">> => list(string())
-%% }
--type event_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% fast_restore_rule() :: #{
-%%   <<"AvailabilityZoneIds">> => list(string()),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"Count">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
-%% }
--type fast_restore_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameters() :: #{
-%%   <<"ExcludeBootVolume">> => boolean(),
-%%   <<"ExcludeDataVolumeTags">> => list(tag()),
-%%   <<"NoReboot">> => boolean()
-%% }
--type parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_source() :: #{
-%%   <<"Parameters">> => event_parameters(),
-%%   <<"Type">> => list(any())
-%% }
--type event_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_response() :: #{}
--type delete_lifecycle_policy_response() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceIds">> => list(string()),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_summary() :: #{
-%%   <<"DefaultPolicy">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyType">> => list(any()),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type lifecycle_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_region_copy_deprecate_rule() :: #{
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
-%% }
--type cross_region_copy_deprecate_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"MutuallyExclusiveParameters">> => list(string()),
-%%   <<"RequiredParameters">> => list(string())
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% exclusions() :: #{
-%%   <<"ExcludeBootVolumes">> => boolean(),
-%%   <<"ExcludeTags">> => list(tag()),
-%%   <<"ExcludeVolumeTypes">> => list(string())
-%% }
--type exclusions() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_lifecycle_policy_response() :: #{
-%%   <<"PolicyId">> => string()
-%% }
--type create_lifecycle_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lifecycle_policies_response() :: #{
-%%   <<"Policies">> => list(lifecycle_policy_summary())
-%% }
--type get_lifecycle_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_region_copy_rule() :: #{
-%%   <<"CmkArn">> => string(),
-%%   <<"CopyTags">> => boolean(),
-%%   <<"DeprecateRule">> => cross_region_copy_deprecate_rule(),
-%%   <<"Encrypted">> => boolean(),
-%%   <<"RetainRule">> => cross_region_copy_retain_rule(),
-%%   <<"Target">> => string(),
-%%   <<"TargetRegion">> => string()
-%% }
--type cross_region_copy_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_region_copy_target() :: #{
-%%   <<"TargetRegion">> => string()
-%% }
--type cross_region_copy_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"DefaultPolicy">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyDetails">> => policy_details(),
-%%   <<"PolicyId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type lifecycle_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_rule() :: #{
-%%   <<"RetainRule">> => archive_retain_rule()
-%% }
--type archive_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule() :: #{
-%%   <<"ArchiveRule">> => archive_rule(),
-%%   <<"CopyTags">> => boolean(),
-%%   <<"CreateRule">> => create_rule(),
-%%   <<"CrossRegionCopyRules">> => list(cross_region_copy_rule()),
-%%   <<"DeprecateRule">> => deprecate_rule(),
-%%   <<"FastRestoreRule">> => fast_restore_rule(),
-%%   <<"Name">> => string(),
-%%   <<"RetainRule">> => retain_rule(),
-%%   <<"ShareRules">> => list(share_rule()),
-%%   <<"TagsToAdd">> => list(tag()),
-%%   <<"VariableTags">> => list(tag())
-%% }
--type schedule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_request() :: #{}
--type delete_lifecycle_policy_request() :: #{}.
-
-
-%% Example:
 %% action() :: #{
 %%   <<"CrossRegionCopy">> => list(cross_region_copy_action()),
 %%   <<"Name">> => string()
@@ -335,44 +51,17 @@
 
 
 %% Example:
-%% create_rule() :: #{
-%%   <<"CronExpression">> => string(),
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any()),
-%%   <<"Location">> => list(any()),
-%%   <<"Scripts">> => list(script()),
-%%   <<"Times">> => list(string())
+%% archive_retain_rule() :: #{
+%%   <<"RetentionArchiveTier">> => retention_archive_tier()
 %% }
--type create_rule() :: #{binary() => any()}.
+-type archive_retain_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% retention_archive_tier() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
+%% archive_rule() :: #{
+%%   <<"RetainRule">> => archive_retain_rule()
 %% }
--type retention_archive_tier() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% get_lifecycle_policy_request() :: #{}
--type get_lifecycle_policy_request() :: #{}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% cross_region_copy_retain_rule() :: #{
-%%   <<"Interval">> => integer(),
-%%   <<"IntervalUnit">> => list(any())
-%% }
--type cross_region_copy_retain_rule() :: #{binary() => any()}.
+-type archive_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,15 +83,206 @@
 
 
 %% Example:
-%% script() :: #{
-%%   <<"ExecuteOperationOnScriptFailure">> => boolean(),
-%%   <<"ExecutionHandler">> => string(),
-%%   <<"ExecutionHandlerService">> => list(any()),
-%%   <<"ExecutionTimeout">> => integer(),
-%%   <<"MaximumRetryCount">> => integer(),
-%%   <<"Stages">> => list(list(any())())
+%% create_lifecycle_policy_response() :: #{
+%%   <<"PolicyId">> => string()
 %% }
--type script() :: #{binary() => any()}.
+-type create_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule() :: #{
+%%   <<"CronExpression">> => string(),
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any()),
+%%   <<"Location">> => list(any()),
+%%   <<"Scripts">> => list(script()),
+%%   <<"Times">> => list(string())
+%% }
+-type create_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_region_copy_action() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"RetainRule">> => cross_region_copy_retain_rule(),
+%%   <<"Target">> => string()
+%% }
+-type cross_region_copy_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_region_copy_deprecate_rule() :: #{
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type cross_region_copy_deprecate_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_region_copy_retain_rule() :: #{
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type cross_region_copy_retain_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_region_copy_rule() :: #{
+%%   <<"CmkArn">> => string(),
+%%   <<"CopyTags">> => boolean(),
+%%   <<"DeprecateRule">> => cross_region_copy_deprecate_rule(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"RetainRule">> => cross_region_copy_retain_rule(),
+%%   <<"Target">> => string(),
+%%   <<"TargetRegion">> => string()
+%% }
+-type cross_region_copy_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_region_copy_target() :: #{
+%%   <<"TargetRegion">> => string()
+%% }
+-type cross_region_copy_target() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_request() :: #{}
+-type delete_lifecycle_policy_request() :: #{}.
+
+%% Example:
+%% delete_lifecycle_policy_response() :: #{}
+-type delete_lifecycle_policy_response() :: #{}.
+
+
+%% Example:
+%% deprecate_rule() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type deprecate_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"CmkArn">> => string(),
+%%   <<"Encrypted">> => boolean()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_parameters() :: #{
+%%   <<"DescriptionRegex">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"SnapshotOwner">> => list(string())
+%% }
+-type event_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_source() :: #{
+%%   <<"Parameters">> => event_parameters(),
+%%   <<"Type">> => list(any())
+%% }
+-type event_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% exclusions() :: #{
+%%   <<"ExcludeBootVolumes">> => boolean(),
+%%   <<"ExcludeTags">> => list(tag()),
+%%   <<"ExcludeVolumeTypes">> => list(string())
+%% }
+-type exclusions() :: #{binary() => any()}.
+
+
+%% Example:
+%% fast_restore_rule() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Count">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type fast_restore_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_policies_request() :: #{
+%%   <<"DefaultPolicyType">> => list(any()),
+%%   <<"PolicyIds">> => list(string()),
+%%   <<"ResourceTypes">> => list(list(any())()),
+%%   <<"State">> => list(any()),
+%%   <<"TagsToAdd">> => list(string()),
+%%   <<"TargetTags">> => list(string())
+%% }
+-type get_lifecycle_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_policies_response() :: #{
+%%   <<"Policies">> => list(lifecycle_policy_summary())
+%% }
+-type get_lifecycle_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_request() :: #{}
+-type get_lifecycle_policy_request() :: #{}.
+
+
+%% Example:
+%% get_lifecycle_policy_response() :: #{
+%%   <<"Policy">> => lifecycle_policy()
+%% }
+-type get_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"MutuallyExclusiveParameters">> => list(string()),
+%%   <<"RequiredParameters">> => list(string())
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"DefaultPolicy">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyDetails">> => policy_details(),
+%%   <<"PolicyId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type lifecycle_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_summary() :: #{
+%%   <<"DefaultPolicy">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type lifecycle_policy_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,6 +292,26 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameters() :: #{
+%%   <<"ExcludeBootVolume">> => boolean(),
+%%   <<"ExcludeDataVolumeTags">> => list(tag()),
+%%   <<"NoReboot">> => boolean()
+%% }
+-type parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -437,6 +337,63 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceIds">> => list(string()),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retain_rule() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type retain_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% retention_archive_tier() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"IntervalUnit">> => list(any())
+%% }
+-type retention_archive_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule() :: #{
+%%   <<"ArchiveRule">> => archive_rule(),
+%%   <<"CopyTags">> => boolean(),
+%%   <<"CreateRule">> => create_rule(),
+%%   <<"CrossRegionCopyRules">> => list(cross_region_copy_rule()),
+%%   <<"DeprecateRule">> => deprecate_rule(),
+%%   <<"FastRestoreRule">> => fast_restore_rule(),
+%%   <<"Name">> => string(),
+%%   <<"RetainRule">> => retain_rule(),
+%%   <<"ShareRules">> => list(share_rule()),
+%%   <<"TagsToAdd">> => list(tag()),
+%%   <<"VariableTags">> => list(tag())
+%% }
+-type schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% script() :: #{
+%%   <<"ExecuteOperationOnScriptFailure">> => boolean(),
+%%   <<"ExecutionHandler">> => string(),
+%%   <<"ExecutionHandlerService">> => list(any()),
+%%   <<"ExecutionTimeout">> => integer(),
+%%   <<"MaximumRetryCount">> => integer(),
+%%   <<"Stages">> => list(list(any())())
+%% }
+-type script() :: #{binary() => any()}.
+
+
+%% Example:
 %% share_rule() :: #{
 %%   <<"TargetAccounts">> => list(string()),
 %%   <<"UnshareInterval">> => integer(),
@@ -446,52 +403,95 @@
 
 
 %% Example:
-%% get_lifecycle_policy_response() :: #{
-%%   <<"Policy">> => lifecycle_policy()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type get_lifecycle_policy_response() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_lifecycle_policy_request() :: #{
+%%   <<"CopyTags">> => boolean(),
+%%   <<"CreateInterval">> => integer(),
+%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()),
+%%   <<"Description">> => string(),
+%%   <<"Exclusions">> => exclusions(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"ExtendDeletion">> => boolean(),
+%%   <<"PolicyDetails">> => policy_details(),
+%%   <<"RetainInterval">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type update_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_lifecycle_policy_response() :: #{}
+-type update_lifecycle_policy_response() :: #{}.
 
 -type create_lifecycle_policy_errors() ::
     limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_lifecycle_policy_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_lifecycle_policies_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_lifecycle_policy_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type tag_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_lifecycle_policy_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 %%====================================================================
 %% API

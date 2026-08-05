@@ -91,22 +91,12 @@
 
 
 %% Example:
-%% get_telemetry_metadata_request() :: #{
-%%   <<"assessmentRunArn">> := string()
+%% access_denied_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"message">> => string()
 %% }
--type get_telemetry_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_attributes_from_findings_response() :: #{
-%%   <<"failedItems">> => map()
-%% }
--type remove_attributes_from_findings_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_assessment_templates_request() :: #{
-%%   <<"assessmentTemplateArns">> := list(string())
-%% }
--type describe_assessment_templates_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% add_attributes_to_findings_request() :: #{
@@ -116,42 +106,155 @@
 -type add_attributes_to_findings_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_assessment_template_request() :: #{
-%%   <<"assessmentTemplateArn">> := string()
+%% add_attributes_to_findings_response() :: #{
+%%   <<"failedItems">> => map()
 %% }
--type delete_assessment_template_request() :: #{binary() => any()}.
+-type add_attributes_to_findings_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_event_subscriptions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(subscription())
+%% agent_already_running_assessment() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"assessmentRunArn">> => string()
 %% }
--type list_event_subscriptions_response() :: #{binary() => any()}.
+-type agent_already_running_assessment() :: #{binary() => any()}.
 
 %% Example:
-%% create_assessment_template_request() :: #{
-%%   <<"assessmentTargetArn">> := string(),
-%%   <<"assessmentTemplateName">> := string(),
-%%   <<"durationInSeconds">> := integer(),
-%%   <<"rulesPackageArns">> := list(string()),
+%% agent_filter() :: #{
+%%   <<"agentHealthCodes">> => list(list(any())()),
+%%   <<"agentHealths">> => list(list(any())())
+%% }
+-type agent_filter() :: #{binary() => any()}.
+
+%% Example:
+%% agent_preview() :: #{
+%%   <<"agentHealth">> => list(any()),
+%%   <<"agentId">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"autoScalingGroup">> => string(),
+%%   <<"hostname">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"kernelVersion">> => string(),
+%%   <<"operatingSystem">> => string()
+%% }
+-type agent_preview() :: #{binary() => any()}.
+
+%% Example:
+%% agents_already_running_assessment_exception() :: #{
+%%   <<"agents">> => list(agent_already_running_assessment()),
+%%   <<"agentsTruncated">> => boolean(),
+%%   <<"canRetry">> => boolean(),
+%%   <<"message">> => string()
+%% }
+-type agents_already_running_assessment_exception() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_run() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assessmentTemplateArn">> => string(),
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataCollected">> => boolean(),
+%%   <<"durationInSeconds">> => integer(),
+%%   <<"findingCounts">> => map(),
+%%   <<"name">> => string(),
+%%   <<"notifications">> => list(assessment_run_notification()),
+%%   <<"rulesPackageArns">> => list(string()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"state">> => list(any()),
+%%   <<"stateChangedAt">> => non_neg_integer(),
+%%   <<"stateChanges">> => list(assessment_run_state_change()),
 %%   <<"userAttributesForFindings">> => list(attribute())
 %% }
--type create_assessment_template_request() :: #{binary() => any()}.
+-type assessment_run() :: #{binary() => any()}.
 
 %% Example:
-%% list_event_subscriptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> => string()
+%% assessment_run_agent() :: #{
+%%   <<"agentHealth">> => list(any()),
+%%   <<"agentHealthCode">> => list(any()),
+%%   <<"agentHealthDetails">> => string(),
+%%   <<"agentId">> => string(),
+%%   <<"assessmentRunArn">> => string(),
+%%   <<"autoScalingGroup">> => string(),
+%%   <<"telemetryMetadata">> => list(telemetry_metadata())
 %% }
--type list_event_subscriptions_request() :: #{binary() => any()}.
+-type assessment_run_agent() :: #{binary() => any()}.
 
 %% Example:
-%% list_exclusions_response() :: #{
-%%   <<"exclusionArns">> => list(string()),
-%%   <<"nextToken">> => string()
+%% assessment_run_filter() :: #{
+%%   <<"completionTimeRange">> => timestamp_range(),
+%%   <<"durationRange">> => duration_range(),
+%%   <<"namePattern">> => string(),
+%%   <<"rulesPackageArns">> => list(string()),
+%%   <<"startTimeRange">> => timestamp_range(),
+%%   <<"stateChangeTimeRange">> => timestamp_range(),
+%%   <<"states">> => list(list(any())())
 %% }
--type list_exclusions_response() :: #{binary() => any()}.
+-type assessment_run_filter() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_run_in_progress_exception() :: #{
+%%   <<"assessmentRunArns">> => list(string()),
+%%   <<"assessmentRunArnsTruncated">> => boolean(),
+%%   <<"canRetry">> => boolean(),
+%%   <<"message">> => string()
+%% }
+-type assessment_run_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_run_notification() :: #{
+%%   <<"date">> => non_neg_integer(),
+%%   <<"error">> => boolean(),
+%%   <<"event">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"snsPublishStatusCode">> => list(any()),
+%%   <<"snsTopicArn">> => string()
+%% }
+-type assessment_run_notification() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_run_state_change() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"stateChangedAt">> => non_neg_integer()
+%% }
+-type assessment_run_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_target() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceGroupArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type assessment_target() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_target_filter() :: #{
+%%   <<"assessmentTargetNamePattern">> => string()
+%% }
+-type assessment_target_filter() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assessmentRunCount">> => integer(),
+%%   <<"assessmentTargetArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"durationInSeconds">> => integer(),
+%%   <<"lastAssessmentRunArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"rulesPackageArns">> => list(string()),
+%%   <<"userAttributesForFindings">> => list(attribute())
+%% }
+-type assessment_template() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_template_filter() :: #{
+%%   <<"durationRange">> => duration_range(),
+%%   <<"namePattern">> => string(),
+%%   <<"rulesPackageArns">> => list(string())
+%% }
+-type assessment_template_filter() :: #{binary() => any()}.
 
 %% Example:
 %% asset_attributes() :: #{
@@ -167,11 +270,101 @@
 -type asset_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% stop_assessment_run_request() :: #{
-%%   <<"assessmentRunArn">> := string(),
-%%   <<"stopAction">> => list(any())
+%% attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type stop_assessment_run_request() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
+
+%% Example:
+%% create_assessment_target_request() :: #{
+%%   <<"assessmentTargetName">> := string(),
+%%   <<"resourceGroupArn">> => string()
+%% }
+-type create_assessment_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_assessment_target_response() :: #{
+%%   <<"assessmentTargetArn">> => string()
+%% }
+-type create_assessment_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_assessment_template_request() :: #{
+%%   <<"assessmentTargetArn">> := string(),
+%%   <<"assessmentTemplateName">> := string(),
+%%   <<"durationInSeconds">> := integer(),
+%%   <<"rulesPackageArns">> := list(string()),
+%%   <<"userAttributesForFindings">> => list(attribute())
+%% }
+-type create_assessment_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_assessment_template_response() :: #{
+%%   <<"assessmentTemplateArn">> => string()
+%% }
+-type create_assessment_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_exclusions_preview_request() :: #{
+%%   <<"assessmentTemplateArn">> := string()
+%% }
+-type create_exclusions_preview_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_exclusions_preview_response() :: #{
+%%   <<"previewToken">> => string()
+%% }
+-type create_exclusions_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_group_request() :: #{
+%%   <<"resourceGroupTags">> := list(resource_group_tag())
+%% }
+-type create_resource_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_group_response() :: #{
+%%   <<"resourceGroupArn">> => string()
+%% }
+-type create_resource_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assessment_run_request() :: #{
+%%   <<"assessmentRunArn">> := string()
+%% }
+-type delete_assessment_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assessment_target_request() :: #{
+%%   <<"assessmentTargetArn">> := string()
+%% }
+-type delete_assessment_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assessment_template_request() :: #{
+%%   <<"assessmentTemplateArn">> := string()
+%% }
+-type delete_assessment_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_assessment_runs_request() :: #{
+%%   <<"assessmentRunArns">> := list(string())
+%% }
+-type describe_assessment_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_assessment_runs_response() :: #{
+%%   <<"assessmentRuns">> => list(assessment_run()),
+%%   <<"failedItems">> => map()
+%% }
+-type describe_assessment_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_assessment_targets_request() :: #{
+%%   <<"assessmentTargetArns">> := list(string())
+%% }
+-type describe_assessment_targets_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_assessment_targets_response() :: #{
@@ -181,71 +374,10 @@
 -type describe_assessment_targets_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_resource_group_response() :: #{
-%%   <<"resourceGroupArn">> => string()
+%% describe_assessment_templates_request() :: #{
+%%   <<"assessmentTemplateArns">> := list(string())
 %% }
--type create_resource_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_entity_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type no_such_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_target_request() :: #{
-%%   <<"assessmentTargetArn">> := string()
-%% }
--type delete_assessment_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_run_filter() :: #{
-%%   <<"completionTimeRange">> => timestamp_range(),
-%%   <<"durationRange">> => duration_range(),
-%%   <<"namePattern">> => string(),
-%%   <<"rulesPackageArns">> => list(string()),
-%%   <<"startTimeRange">> => timestamp_range(),
-%%   <<"stateChangeTimeRange">> => timestamp_range(),
-%%   <<"states">> => list(list(any())())
-%% }
--type assessment_run_filter() :: #{binary() => any()}.
-
-%% Example:
-%% event_subscription() :: #{
-%%   <<"event">> => list(any()),
-%%   <<"subscribedAt">> => non_neg_integer()
-%% }
--type event_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% remove_attributes_from_findings_request() :: #{
-%%   <<"attributeKeys">> := list(string()),
-%%   <<"findingArns">> := list(string())
-%% }
--type remove_attributes_from_findings_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_exclusions_preview_response() :: #{
-%%   <<"previewToken">> => string()
-%% }
--type create_exclusions_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"networkInterfaceId">> => string(),
-%%   <<"privateDnsName">> => string(),
-%%   <<"privateIpAddress">> => string(),
-%%   <<"privateIpAddresses">> => list(private_ip()),
-%%   <<"publicDnsName">> => string(),
-%%   <<"publicIp">> => string(),
-%%   <<"securityGroups">> => list(security_group()),
-%%   <<"subnetId">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
+-type describe_assessment_templates_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_assessment_templates_response() :: #{
@@ -255,67 +387,81 @@
 -type describe_assessment_templates_response() :: #{binary() => any()}.
 
 %% Example:
-%% assessment_run_notification() :: #{
-%%   <<"date">> => non_neg_integer(),
-%%   <<"error">> => boolean(),
+%% describe_cross_account_access_role_response() :: #{
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"valid">> => boolean()
+%% }
+-type describe_cross_account_access_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_exclusions_request() :: #{
+%%   <<"exclusionArns">> := list(string()),
+%%   <<"locale">> => list(any())
+%% }
+-type describe_exclusions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_exclusions_response() :: #{
+%%   <<"exclusions">> => map(),
+%%   <<"failedItems">> => map()
+%% }
+-type describe_exclusions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_findings_request() :: #{
+%%   <<"findingArns">> := list(string()),
+%%   <<"locale">> => list(any())
+%% }
+-type describe_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_findings_response() :: #{
+%%   <<"failedItems">> => map(),
+%%   <<"findings">> => list(finding())
+%% }
+-type describe_findings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_groups_request() :: #{
+%%   <<"resourceGroupArns">> := list(string())
+%% }
+-type describe_resource_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_groups_response() :: #{
+%%   <<"failedItems">> => map(),
+%%   <<"resourceGroups">> => list(resource_group())
+%% }
+-type describe_resource_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rules_packages_request() :: #{
+%%   <<"locale">> => list(any()),
+%%   <<"rulesPackageArns">> := list(string())
+%% }
+-type describe_rules_packages_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rules_packages_response() :: #{
+%%   <<"failedItems">> => map(),
+%%   <<"rulesPackages">> => list(rules_package())
+%% }
+-type describe_rules_packages_response() :: #{binary() => any()}.
+
+%% Example:
+%% duration_range() :: #{
+%%   <<"maxSeconds">> => integer(),
+%%   <<"minSeconds">> => integer()
+%% }
+-type duration_range() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription() :: #{
 %%   <<"event">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"snsPublishStatusCode">> => list(any()),
-%%   <<"snsTopicArn">> => string()
+%%   <<"subscribedAt">> => non_neg_integer()
 %% }
--type assessment_run_notification() :: #{binary() => any()}.
-
-%% Example:
-%% list_findings_response() :: #{
-%%   <<"findingArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_cross_account_access_role_request() :: #{
-%%   <<"roleArn">> := string()
-%% }
--type register_cross_account_access_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_run_agent() :: #{
-%%   <<"agentHealth">> => list(any()),
-%%   <<"agentHealthCode">> => list(any()),
-%%   <<"agentHealthDetails">> => string(),
-%%   <<"agentId">> => string(),
-%%   <<"assessmentRunArn">> => string(),
-%%   <<"autoScalingGroup">> => string(),
-%%   <<"telemetryMetadata">> => list(telemetry_metadata())
-%% }
--type assessment_run_agent() :: #{binary() => any()}.
-
-%% Example:
-%% create_assessment_template_response() :: #{
-%%   <<"assessmentTemplateArn">> => string()
-%% }
--type create_assessment_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% preview_generation_in_progress_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type preview_generation_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_rules_packages_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_rules_packages_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_exclusions_preview_response() :: #{
-%%   <<"exclusionPreviews">> => list(exclusion_preview()),
-%%   <<"nextToken">> => string(),
-%%   <<"previewStatus">> => list(any())
-%% }
--type get_exclusions_preview_response() :: #{binary() => any()}.
+-type event_subscription() :: #{binary() => any()}.
 
 %% Example:
 %% exclusion() :: #{
@@ -329,87 +475,6 @@
 -type exclusion() :: #{binary() => any()}.
 
 %% Example:
-%% add_attributes_to_findings_response() :: #{
-%%   <<"failedItems">> => map()
-%% }
--type add_attributes_to_findings_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_rules_packages_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"rulesPackageArns">> => list(string())
-%% }
--type list_rules_packages_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cross_account_role_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type invalid_cross_account_role_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_exclusions_preview_request() :: #{
-%%   <<"assessmentTemplateArn">> := string()
-%% }
--type create_exclusions_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_group_tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_group_tag() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_feature_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"message">> => string()
-%% }
--type unsupported_feature_exception() :: #{binary() => any()}.
-
-%% Example:
-%% agent_filter() :: #{
-%%   <<"agentHealthCodes">> => list(list(any())()),
-%%   <<"agentHealths">> => list(list(any())())
-%% }
--type agent_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_run_agents_request() :: #{
-%%   <<"assessmentRunArn">> := string(),
-%%   <<"filter">> => agent_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_run_agents_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_targets_response() :: #{
-%%   <<"assessmentTargetArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_templates_request() :: #{
-%%   <<"assessmentTargetArns">> => list(string()),
-%%   <<"filter">> => assessment_template_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_exclusions_request() :: #{
-%%   <<"assessmentRunArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_exclusions_request() :: #{binary() => any()}.
-
-%% Example:
 %% exclusion_preview() :: #{
 %%   <<"attributes">> => list(attribute()),
 %%   <<"description">> => string(),
@@ -420,53 +485,11 @@
 -type exclusion_preview() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% failed_item_details() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"retryable">> => boolean()
 %% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% agents_already_running_assessment_exception() :: #{
-%%   <<"agents">> => list(agent_already_running_assessment()),
-%%   <<"agentsTruncated">> => boolean(),
-%%   <<"canRetry">> => boolean(),
-%%   <<"message">> => string()
-%% }
--type agents_already_running_assessment_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_assessment_targets_request() :: #{
-%%   <<"assessmentTargetArns">> := list(string())
-%% }
--type describe_assessment_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% rules_package() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provider">> => string(),
-%%   <<"version">> => string()
-%% }
--type rules_package() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_run_in_progress_exception() :: #{
-%%   <<"assessmentRunArns">> => list(string()),
-%%   <<"assessmentRunArnsTruncated">> => boolean(),
-%%   <<"canRetry">> => boolean(),
-%%   <<"message">> => string()
-%% }
--type assessment_run_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_targets_request() :: #{
-%%   <<"filter">> => assessment_target_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_targets_request() :: #{binary() => any()}.
+-type failed_item_details() :: #{binary() => any()}.
 
 %% Example:
 %% finding() :: #{
@@ -492,236 +515,6 @@
 -type finding() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_input_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_exclusions_response() :: #{
-%%   <<"exclusions">> => map(),
-%%   <<"failedItems">> => map()
-%% }
--type describe_exclusions_response() :: #{binary() => any()}.
-
-%% Example:
-%% agent_preview() :: #{
-%%   <<"agentHealth">> => list(any()),
-%%   <<"agentId">> => string(),
-%%   <<"agentVersion">> => string(),
-%%   <<"autoScalingGroup">> => string(),
-%%   <<"hostname">> => string(),
-%%   <<"ipv4Address">> => string(),
-%%   <<"kernelVersion">> => string(),
-%%   <<"operatingSystem">> => string()
-%% }
--type agent_preview() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_assessment_runs_response() :: #{
-%%   <<"assessmentRuns">> => list(assessment_run()),
-%%   <<"failedItems">> => map()
-%% }
--type describe_assessment_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_findings_request() :: #{
-%%   <<"assessmentRunArns">> => list(string()),
-%%   <<"filter">> => finding_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_run_agents_response() :: #{
-%%   <<"assessmentRunAgents">> => list(assessment_run_agent()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_run_agents_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type set_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_assessment_report_response() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"url">> => string()
-%% }
--type get_assessment_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% security_group() :: #{
-%%   <<"groupId">> => string(),
-%%   <<"groupName">> => string()
-%% }
--type security_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_runs_request() :: #{
-%%   <<"assessmentTemplateArns">> => list(string()),
-%%   <<"filter">> => assessment_run_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"tags">> => list(resource_group_tag())
-%% }
--type resource_group() :: #{binary() => any()}.
-
-%% Example:
-%% unsubscribe_from_event_request() :: #{
-%%   <<"event">> := list(any()),
-%%   <<"resourceArn">> := string(),
-%%   <<"topicArn">> := string()
-%% }
--type unsubscribe_from_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_assessment_run_request() :: #{
-%%   <<"assessmentRunName">> => string(),
-%%   <<"assessmentTemplateArn">> := string()
-%% }
--type start_assessment_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_template_filter() :: #{
-%%   <<"durationRange">> => duration_range(),
-%%   <<"namePattern">> => string(),
-%%   <<"rulesPackageArns">> => list(string())
-%% }
--type assessment_template_filter() :: #{binary() => any()}.
-
-%% Example:
-%% scope() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type scope() :: #{binary() => any()}.
-
-%% Example:
-%% preview_agents_response() :: #{
-%%   <<"agentPreviews">> => list(agent_preview()),
-%%   <<"nextToken">> => string()
-%% }
--type preview_agents_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_assessment_target_response() :: #{
-%%   <<"assessmentTargetArn">> => string()
-%% }
--type create_assessment_target_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_temporarily_unavailable_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"message">> => string()
-%% }
--type service_temporarily_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_run_request() :: #{
-%%   <<"assessmentRunArn">> := string()
-%% }
--type delete_assessment_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rules_packages_request() :: #{
-%%   <<"locale">> => list(any()),
-%%   <<"rulesPackageArns">> := list(string())
-%% }
--type describe_rules_packages_request() :: #{binary() => any()}.
-
-%% Example:
-%% duration_range() :: #{
-%%   <<"maxSeconds">> => integer(),
-%%   <<"minSeconds">> => integer()
-%% }
--type duration_range() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_runs_response() :: #{
-%%   <<"assessmentRunArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% inspector_service_attributes() :: #{
-%%   <<"assessmentRunArn">> => string(),
-%%   <<"rulesPackageArn">> => string(),
-%%   <<"schemaVersion">> => integer()
-%% }
--type inspector_service_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% timestamp_range() :: #{
-%%   <<"beginDate">> => non_neg_integer(),
-%%   <<"endDate">> => non_neg_integer()
-%% }
--type timestamp_range() :: #{binary() => any()}.
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% telemetry_metadata() :: #{
-%%   <<"count">> => float(),
-%%   <<"dataSize">> => float(),
-%%   <<"messageType">> => string()
-%% }
--type telemetry_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_group_request() :: #{
-%%   <<"resourceGroupTags">> := list(resource_group_tag())
-%% }
--type create_resource_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_exclusions_request() :: #{
-%%   <<"exclusionArns">> := list(string()),
-%%   <<"locale">> => list(any())
-%% }
--type describe_exclusions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_findings_response() :: #{
-%%   <<"failedItems">> => map(),
-%%   <<"findings">> => list(finding())
-%% }
--type describe_findings_response() :: #{binary() => any()}.
-
-%% Example:
 %% finding_filter() :: #{
 %%   <<"agentIds">> => list(string()),
 %%   <<"attributes">> => list(attribute()),
@@ -735,134 +528,6 @@
 -type finding_filter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_cross_account_access_role_response() :: #{
-%%   <<"registeredAt">> => non_neg_integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"valid">> => boolean()
-%% }
--type describe_cross_account_access_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"assessmentRunCount">> => integer(),
-%%   <<"assessmentTargetArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"durationInSeconds">> => integer(),
-%%   <<"lastAssessmentRunArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"rulesPackageArns">> => list(string()),
-%%   <<"userAttributesForFindings">> => list(attribute())
-%% }
--type assessment_template() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% preview_agents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"previewAgentsArn">> := string()
-%% }
--type preview_agents_request() :: #{binary() => any()}.
-
-%% Example:
-%% private_ip() :: #{
-%%   <<"privateDnsName">> => string(),
-%%   <<"privateIpAddress">> => string()
-%% }
--type private_ip() :: #{binary() => any()}.
-
-%% Example:
-%% subscription() :: #{
-%%   <<"eventSubscriptions">> => list(event_subscription()),
-%%   <<"resourceArn">> => string(),
-%%   <<"topicArn">> => string()
-%% }
--type subscription() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rules_packages_response() :: #{
-%%   <<"failedItems">> => map(),
-%%   <<"rulesPackages">> => list(rules_package())
-%% }
--type describe_rules_packages_response() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_target_filter() :: #{
-%%   <<"assessmentTargetNamePattern">> => string()
-%% }
--type assessment_target_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_groups_response() :: #{
-%%   <<"failedItems">> => map(),
-%%   <<"resourceGroups">> => list(resource_group())
-%% }
--type describe_resource_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_assessment_target_request() :: #{
-%%   <<"assessmentTargetName">> := string(),
-%%   <<"resourceGroupArn">> => string()
-%% }
--type create_assessment_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_run() :: #{
-%%   <<"arn">> => string(),
-%%   <<"assessmentTemplateArn">> => string(),
-%%   <<"completedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataCollected">> => boolean(),
-%%   <<"durationInSeconds">> => integer(),
-%%   <<"findingCounts">> => map(),
-%%   <<"name">> => string(),
-%%   <<"notifications">> => list(assessment_run_notification()),
-%%   <<"rulesPackageArns">> => list(string()),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"state">> => list(any()),
-%%   <<"stateChangedAt">> => non_neg_integer(),
-%%   <<"stateChanges">> => list(assessment_run_state_change()),
-%%   <<"userAttributesForFindings">> => list(attribute())
-%% }
--type assessment_run() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"canRetry">> => boolean(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_to_event_request() :: #{
-%%   <<"event">> := list(any()),
-%%   <<"resourceArn">> := string(),
-%%   <<"topicArn">> := string()
-%% }
--type subscribe_to_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_assessment_templates_response() :: #{
-%%   <<"assessmentTemplateArns">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_templates_response() :: #{binary() => any()}.
-
-%% Example:
 %% get_assessment_report_request() :: #{
 %%   <<"assessmentRunArn">> := string(),
 %%   <<"reportFileFormat">> := list(any()),
@@ -871,60 +536,11 @@
 -type get_assessment_report_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_assessment_run_response() :: #{
-%%   <<"assessmentRunArn">> => string()
+%% get_assessment_report_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"url">> => string()
 %% }
--type start_assessment_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_findings_request() :: #{
-%%   <<"findingArns">> := list(string()),
-%%   <<"locale">> => list(any())
-%% }
--type describe_findings_request() :: #{binary() => any()}.
-
-%% Example:
-%% agent_already_running_assessment() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"assessmentRunArn">> => string()
-%% }
--type agent_already_running_assessment() :: #{binary() => any()}.
-
-%% Example:
-%% get_telemetry_metadata_response() :: #{
-%%   <<"telemetryMetadata">> => list(telemetry_metadata())
-%% }
--type get_telemetry_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_groups_request() :: #{
-%%   <<"resourceGroupArns">> := list(string())
-%% }
--type describe_resource_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% failed_item_details() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"retryable">> => boolean()
-%% }
--type failed_item_details() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_run_state_change() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"stateChangedAt">> => non_neg_integer()
-%% }
--type assessment_run_state_change() :: #{binary() => any()}.
-
-%% Example:
-%% assessment_target() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"resourceGroupArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type assessment_target() :: #{binary() => any()}.
+-type get_assessment_report_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_exclusions_preview_request() :: #{
@@ -937,10 +553,394 @@
 -type get_exclusions_preview_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_assessment_runs_request() :: #{
-%%   <<"assessmentRunArns">> := list(string())
+%% get_exclusions_preview_response() :: #{
+%%   <<"exclusionPreviews">> => list(exclusion_preview()),
+%%   <<"nextToken">> => string(),
+%%   <<"previewStatus">> => list(any())
 %% }
--type describe_assessment_runs_request() :: #{binary() => any()}.
+-type get_exclusions_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_telemetry_metadata_request() :: #{
+%%   <<"assessmentRunArn">> := string()
+%% }
+-type get_telemetry_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_telemetry_metadata_response() :: #{
+%%   <<"telemetryMetadata">> => list(telemetry_metadata())
+%% }
+-type get_telemetry_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% inspector_service_attributes() :: #{
+%%   <<"assessmentRunArn">> => string(),
+%%   <<"rulesPackageArn">> => string(),
+%%   <<"schemaVersion">> => integer()
+%% }
+-type inspector_service_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cross_account_role_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type invalid_cross_account_role_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_run_agents_request() :: #{
+%%   <<"assessmentRunArn">> := string(),
+%%   <<"filter">> => agent_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_run_agents_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_run_agents_response() :: #{
+%%   <<"assessmentRunAgents">> => list(assessment_run_agent()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_run_agents_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_runs_request() :: #{
+%%   <<"assessmentTemplateArns">> => list(string()),
+%%   <<"filter">> => assessment_run_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_runs_response() :: #{
+%%   <<"assessmentRunArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_targets_request() :: #{
+%%   <<"filter">> => assessment_target_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_targets_response() :: #{
+%%   <<"assessmentTargetArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_templates_request() :: #{
+%%   <<"assessmentTargetArns">> => list(string()),
+%%   <<"filter">> => assessment_template_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assessment_templates_response() :: #{
+%%   <<"assessmentTemplateArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type list_event_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(subscription())
+%% }
+-type list_event_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_exclusions_request() :: #{
+%%   <<"assessmentRunArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_exclusions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_exclusions_response() :: #{
+%%   <<"exclusionArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_exclusions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"assessmentRunArns">> => list(string()),
+%%   <<"filter">> => finding_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"findingArns">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_packages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rules_packages_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_packages_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rulesPackageArns">> => list(string())
+%% }
+-type list_rules_packages_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"networkInterfaceId">> => string(),
+%%   <<"privateDnsName">> => string(),
+%%   <<"privateIpAddress">> => string(),
+%%   <<"privateIpAddresses">> => list(private_ip()),
+%%   <<"publicDnsName">> => string(),
+%%   <<"publicIp">> => string(),
+%%   <<"securityGroups">> => list(security_group()),
+%%   <<"subnetId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_entity_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type no_such_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% preview_agents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"previewAgentsArn">> := string()
+%% }
+-type preview_agents_request() :: #{binary() => any()}.
+
+%% Example:
+%% preview_agents_response() :: #{
+%%   <<"agentPreviews">> => list(agent_preview()),
+%%   <<"nextToken">> => string()
+%% }
+-type preview_agents_response() :: #{binary() => any()}.
+
+%% Example:
+%% preview_generation_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type preview_generation_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% private_ip() :: #{
+%%   <<"privateDnsName">> => string(),
+%%   <<"privateIpAddress">> => string()
+%% }
+-type private_ip() :: #{binary() => any()}.
+
+%% Example:
+%% register_cross_account_access_role_request() :: #{
+%%   <<"roleArn">> := string()
+%% }
+-type register_cross_account_access_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_attributes_from_findings_request() :: #{
+%%   <<"attributeKeys">> := list(string()),
+%%   <<"findingArns">> := list(string())
+%% }
+-type remove_attributes_from_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_attributes_from_findings_response() :: #{
+%%   <<"failedItems">> => map()
+%% }
+-type remove_attributes_from_findings_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"tags">> => list(resource_group_tag())
+%% }
+-type resource_group() :: #{binary() => any()}.
+
+%% Example:
+%% resource_group_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_group_tag() :: #{binary() => any()}.
+
+%% Example:
+%% rules_package() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => string(),
+%%   <<"version">> => string()
+%% }
+-type rules_package() :: #{binary() => any()}.
+
+%% Example:
+%% scope() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type scope() :: #{binary() => any()}.
+
+%% Example:
+%% security_group() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"groupName">> => string()
+%% }
+-type security_group() :: #{binary() => any()}.
+
+%% Example:
+%% service_temporarily_unavailable_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"message">> => string()
+%% }
+-type service_temporarily_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type set_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_assessment_run_request() :: #{
+%%   <<"assessmentRunName">> => string(),
+%%   <<"assessmentTemplateArn">> := string()
+%% }
+-type start_assessment_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_assessment_run_response() :: #{
+%%   <<"assessmentRunArn">> => string()
+%% }
+-type start_assessment_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_assessment_run_request() :: #{
+%%   <<"assessmentRunArn">> := string(),
+%%   <<"stopAction">> => list(any())
+%% }
+-type stop_assessment_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% subscribe_to_event_request() :: #{
+%%   <<"event">> := list(any()),
+%%   <<"resourceArn">> := string(),
+%%   <<"topicArn">> := string()
+%% }
+-type subscribe_to_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% subscription() :: #{
+%%   <<"eventSubscriptions">> => list(event_subscription()),
+%%   <<"resourceArn">> => string(),
+%%   <<"topicArn">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% telemetry_metadata() :: #{
+%%   <<"count">> => float(),
+%%   <<"dataSize">> => float(),
+%%   <<"messageType">> => string()
+%% }
+-type telemetry_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_range() :: #{
+%%   <<"beginDate">> => non_neg_integer(),
+%%   <<"endDate">> => non_neg_integer()
+%% }
+-type timestamp_range() :: #{binary() => any()}.
+
+%% Example:
+%% unsubscribe_from_event_request() :: #{
+%%   <<"event">> := list(any()),
+%%   <<"resourceArn">> := string(),
+%%   <<"topicArn">> := string()
+%% }
+-type unsubscribe_from_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_feature_exception() :: #{
+%%   <<"canRetry">> => boolean(),
+%%   <<"message">> => string()
+%% }
+-type unsupported_feature_exception() :: #{binary() => any()}.
 
 %% Example:
 %% update_assessment_target_request() :: #{
@@ -951,238 +951,238 @@
 -type update_assessment_target_request() :: #{binary() => any()}.
 
 -type add_attributes_to_findings_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type create_assessment_target_errors() ::
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     invalid_input_exception() | 
     invalid_cross_account_role_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type create_assessment_template_errors() ::
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type create_exclusions_preview_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
-    invalid_input_exception() | 
     preview_generation_in_progress_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    internal_exception() | 
+    access_denied_exception().
 
 -type create_resource_group_errors() ::
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
-    invalid_input_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    internal_exception() | 
+    access_denied_exception().
 
 -type delete_assessment_run_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
+    internal_exception() | 
     assessment_run_in_progress_exception() | 
-    no_such_entity_exception().
+    access_denied_exception().
 
 -type delete_assessment_target_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
+    internal_exception() | 
     assessment_run_in_progress_exception() | 
-    no_such_entity_exception().
+    access_denied_exception().
 
 -type delete_assessment_template_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
+    internal_exception() | 
     assessment_run_in_progress_exception() | 
-    no_such_entity_exception().
+    access_denied_exception().
 
 -type describe_assessment_runs_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_assessment_targets_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_assessment_templates_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_cross_account_access_role_errors() ::
     internal_exception().
 
 -type describe_exclusions_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_findings_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_resource_groups_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type describe_rules_packages_errors() ::
-    internal_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_exception().
 
 -type get_assessment_report_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
-    service_temporarily_unavailable_exception() | 
-    invalid_input_exception() | 
-    assessment_run_in_progress_exception() | 
     unsupported_feature_exception() | 
-    no_such_entity_exception().
+    service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception() | 
+    internal_exception() | 
+    assessment_run_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_exclusions_preview_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type get_telemetry_metadata_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_assessment_run_agents_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_assessment_runs_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_assessment_targets_errors() ::
-    access_denied_exception() | 
+    invalid_input_exception() | 
     internal_exception() | 
-    invalid_input_exception().
+    access_denied_exception().
 
 -type list_assessment_templates_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_event_subscriptions_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_exclusions_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_findings_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type list_rules_packages_errors() ::
-    access_denied_exception() | 
+    invalid_input_exception() | 
     internal_exception() | 
-    invalid_input_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type preview_agents_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
     invalid_cross_account_role_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type register_cross_account_access_role_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
     invalid_input_exception() | 
-    invalid_cross_account_role_exception().
+    invalid_cross_account_role_exception() | 
+    internal_exception() | 
+    access_denied_exception().
 
 -type remove_attributes_from_findings_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type set_tags_for_resource_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type start_assessment_run_errors() ::
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     invalid_input_exception() | 
-    agents_already_running_assessment_exception() | 
     invalid_cross_account_role_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    agents_already_running_assessment_exception() | 
+    access_denied_exception().
 
 -type stop_assessment_run_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type subscribe_to_event_errors() ::
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
+    limit_exceeded_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type unsubscribe_from_event_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 -type update_assessment_target_errors() ::
-    access_denied_exception() | 
-    internal_exception() | 
     service_temporarily_unavailable_exception() | 
+    no_such_entity_exception() | 
     invalid_input_exception() | 
-    no_such_entity_exception().
+    internal_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

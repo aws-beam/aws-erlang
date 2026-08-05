@@ -99,110 +99,71 @@
 
 
 %% Example:
-%% set_default_permission_version_request() :: #{
+%% accept_resource_share_invitation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareInvitationArn">> := string()
+%% }
+-type accept_resource_share_invitation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_resource_share_invitation_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareInvitation">> => resource_share_invitation()
+%% }
+-type accept_resource_share_invitation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_share_permission_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permissionArn">> := string(),
-%%   <<"permissionVersion">> := integer()
-%% }
--type set_default_permission_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_share_invitation_expired_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_share_invitation_expired_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permissions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary())
-%% }
--type list_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_share_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShare">> => resource_share()
-%% }
--type create_resource_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_permission_response() :: #{
-%%   <<"permission">> => resource_share_permission_detail()
-%% }
--type get_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_max_results_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_max_results_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceShareArn">> => string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"permissionArn">> := string()
-%% }
--type list_permission_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_replace_permission_associations_work_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workIds">> => list(string())
-%% }
--type list_replace_permission_associations_work_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_share_request() :: #{
-%%   <<"allowExternalPrincipals">> => boolean(),
-%%   <<"clientToken">> => string(),
-%%   <<"name">> => string(),
+%%   <<"permissionVersion">> => integer(),
+%%   <<"replace">> => boolean(),
 %%   <<"resourceShareArn">> := string()
 %% }
--type update_resource_share_request() :: #{binary() => any()}.
+-type associate_resource_share_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource())
+%% associate_resource_share_permission_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"returnValue">> => boolean()
 %% }
--type list_resources_response() :: #{binary() => any()}.
+-type associate_resource_share_permission_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_share_association() :: #{
-%%   <<"associatedEntity">> => string(),
-%%   <<"associationType">> => list(any()),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"external">> => boolean(),
+%% associate_resource_share_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceShareArn">> := string(),
+%%   <<"sources">> => list(string())
+%% }
+-type associate_resource_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_share_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
+%% }
+-type associate_resource_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_permission() :: #{
+%%   <<"arn">> => string(),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"featureSet">> => list(any()),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"permissionVersion">> => string(),
 %%   <<"resourceShareArn">> => string(),
-%%   <<"resourceShareName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string()
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string()
 %% }
--type resource_share_association() :: #{binary() => any()}.
+-type associated_permission() :: #{binary() => any()}.
 
 
 %% Example:
@@ -219,25 +180,39 @@
 
 
 %% Example:
-%% resource_arn_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_arn_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_policy_template_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_policy_template_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_share_permission_response() :: #{
+%% create_permission_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"returnValue">> => boolean()
+%%   <<"name">> := string(),
+%%   <<"policyTemplate">> := string(),
+%%   <<"resourceType">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type associate_resource_share_permission_response() :: #{binary() => any()}.
+-type create_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permission">> => resource_share_permission_summary()
+%% }
+-type create_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionArn">> := string(),
+%%   <<"policyTemplate">> := string()
+%% }
+-type create_permission_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_version_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permission">> => resource_share_permission_detail()
+%% }
+-type create_permission_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -254,17 +229,111 @@
 %% }
 -type create_resource_share_request() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
 
 %% Example:
-%% accept_resource_share_invitation_request() :: #{
+%% create_resource_share_response() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"resourceShareInvitationArn">> := string()
+%%   <<"resourceShare">> => resource_share()
 %% }
--type accept_resource_share_invitation_request() :: #{binary() => any()}.
+-type create_resource_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionArn">> := string()
+%% }
+-type delete_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionStatus">> => list(any()),
+%%   <<"returnValue">> => boolean()
+%% }
+-type delete_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionArn">> := string(),
+%%   <<"permissionVersion">> := integer()
+%% }
+-type delete_permission_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_version_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionStatus">> => list(any()),
+%%   <<"returnValue">> => boolean()
+%% }
+-type delete_permission_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_share_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareArn">> := string()
+%% }
+-type delete_resource_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_share_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"returnValue">> => boolean()
+%% }
+-type delete_resource_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_share_permission_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionArn">> := string(),
+%%   <<"resourceShareArn">> := string()
+%% }
+-type disassociate_resource_share_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_share_permission_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"returnValue">> => boolean()
+%% }
+-type disassociate_resource_share_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_share_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceShareArn">> := string(),
+%%   <<"sources">> => list(string())
+%% }
+-type disassociate_resource_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_share_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
+%% }
+-type disassociate_resource_share_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_sharing_with_aws_organization_request() :: #{}
+-type enable_sharing_with_aws_organization_request() :: #{}.
+
+
+%% Example:
+%% enable_sharing_with_aws_organization_response() :: #{
+%%   <<"returnValue">> => boolean()
+%% }
+-type enable_sharing_with_aws_organization_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -273,6 +342,464 @@
 %%   <<"permissionVersion">> => integer()
 %% }
 -type get_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_permission_response() :: #{
+%%   <<"permission">> => resource_share_permission_detail()
+%% }
+-type get_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"resourceArns">> := list(string())
+%% }
+-type get_resource_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(string())
+%% }
+-type get_resource_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_share_associations_request() :: #{
+%%   <<"associationStatus">> => list(any()),
+%%   <<"associationType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceShareArns">> => list(string())
+%% }
+-type get_resource_share_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_share_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
+%% }
+-type get_resource_share_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_share_invitations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"resourceShareInvitationArns">> => list(string())
+%% }
+-type get_resource_share_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_share_invitations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareInvitations">> => list(resource_share_invitation())
+%% }
+-type get_resource_share_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_shares_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissionArn">> => string(),
+%%   <<"permissionVersion">> => integer(),
+%%   <<"resourceOwner">> := list(any()),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"resourceShareStatus">> => list(any()),
+%%   <<"tagFilters">> => list(tag_filter())
+%% }
+-type get_resource_shares_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_shares_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShares">> => list(resource_share())
+%% }
+-type get_resource_shares_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_client_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_max_results_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_max_results_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_transition_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_transition_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_invitation_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceRegionScope">> => list(any()),
+%%   <<"resourceShareInvitationArn">> := string()
+%% }
+-type list_pending_invitation_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pending_invitation_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource())
+%% }
+-type list_pending_invitation_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_associations_request() :: #{
+%%   <<"associationStatus">> => list(any()),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"featureSet">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissionArn">> => string(),
+%%   <<"permissionVersion">> => integer(),
+%%   <<"resourceType">> => string()
+%% }
+-type list_permission_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(associated_permission())
+%% }
+-type list_permission_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissionArn">> := string()
+%% }
+-type list_permission_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(resource_share_permission_summary())
+%% }
+-type list_permission_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"permissionType">> => list(any()),
+%%   <<"resourceType">> => string()
+%% }
+-type list_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(resource_share_permission_summary())
+%% }
+-type list_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwner">> := list(any()),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"resourceType">> => string()
+%% }
+-type list_principals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"principals">> => list(principal())
+%% }
+-type list_principals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replace_permission_associations_work_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workIds">> => list(string())
+%% }
+-type list_replace_permission_associations_work_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replace_permission_associations_work_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"replacePermissionAssociationsWorks">> => list(replace_permission_associations_work())
+%% }
+-type list_replace_permission_associations_work_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_share_permissions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareArn">> := string()
+%% }
+-type list_resource_share_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_share_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(resource_share_permission_summary())
+%% }
+-type list_resource_share_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceRegionScope">> => list(any())
+%% }
+-type list_resource_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceTypes">> => list(service_name_and_resource_type())
+%% }
+-type list_resource_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"resourceOwner">> := list(any()),
+%%   <<"resourceRegionScope">> => list(any()),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"resourceType">> => string()
+%% }
+-type list_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource())
+%% }
+-type list_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_associations_request() :: #{
+%%   <<"associationStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceType">> => string()
+%% }
+-type list_source_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sourceAssociations">> => list(associated_source())
+%% }
+-type list_source_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_arn_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_policy_template_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_template_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_required_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_required_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type permission_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type permission_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_versions_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type permission_versions_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"external">> => boolean(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"resourceShareArn">> => string()
+%% }
+-type principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_permission_created_from_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"permissionArn">> := string()
+%% }
+-type promote_permission_created_from_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_permission_created_from_policy_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permission">> => resource_share_permission_summary()
+%% }
+-type promote_permission_created_from_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_resource_share_created_from_policy_request() :: #{
+%%   <<"resourceShareArn">> := string()
+%% }
+-type promote_resource_share_created_from_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_resource_share_created_from_policy_response() :: #{
+%%   <<"returnValue">> => boolean()
+%% }
+-type promote_resource_share_created_from_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_resource_share_invitation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareInvitationArn">> := string()
+%% }
+-type reject_resource_share_invitation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_resource_share_invitation_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShareInvitation">> => resource_share_invitation()
+%% }
+-type reject_resource_share_invitation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% replace_permission_associations_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"fromPermissionArn">> := string(),
+%%   <<"fromPermissionVersion">> => integer(),
+%%   <<"toPermissionArn">> := string()
+%% }
+-type replace_permission_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replace_permission_associations_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"replacePermissionAssociationsWork">> => replace_permission_associations_work()
+%% }
+-type replace_permission_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -291,121 +818,57 @@
 
 
 %% Example:
-%% update_resource_share_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShare">> => resource_share()
-%% }
--type update_resource_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_share_permission_summary() :: #{
+%% resource() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"defaultVersion">> => boolean(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"resourceGroupArn">> => string(),
+%%   <<"resourceRegionScope">> => list(any()),
+%%   <<"resourceShareArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"type">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_arn_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_arn_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_share() :: #{
+%%   <<"allowExternalPrincipals">> => boolean(),
+%%   <<"creationTime">> => non_neg_integer(),
 %%   <<"featureSet">> => list(any()),
-%%   <<"isResourceTypeDefault">> => boolean(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"permissionType">> => list(any()),
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"version">> => string()
+%%   <<"owningAccountId">> => string(),
+%%   <<"resourceShareArn">> => string(),
+%%   <<"resourceShareConfiguration">> => resource_share_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type resource_share_permission_summary() :: #{binary() => any()}.
+-type resource_share() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_share_invitation_arn_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_share_invitation_arn_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_share_invitations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShareInvitations">> => list(resource_share_invitation())
-%% }
--type get_resource_share_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_required_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type missing_required_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_share_permissions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShareArn">> := string()
-%% }
--type list_resource_share_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unmatched_policy_permission_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unmatched_policy_permission_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_resource_share_invitation_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShareInvitationArn">> := string()
-%% }
--type reject_resource_share_invitation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_permission_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionArn">> := string(),
-%%   <<"policyTemplate">> := string()
-%% }
--type create_permission_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pending_invitation_resources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceRegionScope">> => list(any()),
-%%   <<"resourceShareInvitationArn">> := string()
-%% }
--type list_pending_invitation_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_permission_version_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionStatus">> => list(any()),
-%%   <<"returnValue">> => boolean()
-%% }
--type delete_permission_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal() :: #{
+%% resource_share_association() :: #{
+%%   <<"associatedEntity">> => string(),
+%%   <<"associationType">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"external">> => boolean(),
-%%   <<"id">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
-%%   <<"resourceShareArn">> => string()
+%%   <<"resourceShareArn">> => string(),
+%%   <<"resourceShareName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string()
 %% }
--type principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type permission_already_exists_exception() :: #{binary() => any()}.
+-type resource_share_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -413,38 +876,6 @@
 %%   <<"retainSharingOnAccountLeaveOrganization">> => boolean()
 %% }
 -type resource_share_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceShareArn">> => string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_share_permission_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"returnValue">> => boolean()
-%% }
--type disassociate_resource_share_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sourceAssociations">> => list(associated_source())
-%% }
--type list_source_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_share_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_share_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -463,57 +894,10 @@
 
 
 %% Example:
-%% list_permission_associations_request() :: #{
-%%   <<"associationStatus">> => list(any()),
-%%   <<"defaultVersion">> => boolean(),
-%%   <<"featureSet">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"permissionArn">> => string(),
-%%   <<"permissionVersion">> => integer(),
-%%   <<"resourceType">> => string()
-%% }
--type list_permission_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_permission_created_from_policy_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permission">> => resource_share_permission_summary()
-%% }
--type promote_permission_created_from_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_share_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association())
-%% }
--type disassociate_resource_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_permission_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionArn">> := string()
-%% }
--type delete_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_share_permission_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionArn">> := string(),
-%%   <<"resourceShareArn">> := string()
-%% }
--type disassociate_resource_share_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_policy_exception() :: #{
+%% resource_share_invitation_already_accepted_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_policy_exception() :: #{binary() => any()}.
+-type resource_share_invitation_already_accepted_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,24 +908,24 @@
 
 
 %% Example:
-%% get_resource_share_associations_request() :: #{
-%%   <<"associationStatus">> => list(any()),
-%%   <<"associationType">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principal">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceShareArns">> => list(string())
+%% resource_share_invitation_arn_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_resource_share_associations_request() :: #{binary() => any()}.
+-type resource_share_invitation_arn_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% resource_share_invitation_expired_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type resource_share_invitation_expired_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_share_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_share_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,12 +948,28 @@
 
 
 %% Example:
-%% delete_permission_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionStatus">> => list(any()),
-%%   <<"returnValue">> => boolean()
+%% resource_share_permission_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"defaultVersion">> => boolean(),
+%%   <<"featureSet">> => list(any()),
+%%   <<"isResourceTypeDefault">> => boolean(),
+%%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"permissionType">> => list(any()),
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"version">> => string()
 %% }
--type delete_permission_response() :: #{binary() => any()}.
+-type resource_share_permission_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_internal_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -582,115 +982,6 @@
 
 
 %% Example:
-%% list_replace_permission_associations_work_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"replacePermissionAssociationsWorks">> => list(replace_permission_associations_work())
-%% }
--type list_replace_permission_associations_work_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_resource_share_created_from_policy_response() :: #{
-%%   <<"returnValue">> => boolean()
-%% }
--type promote_resource_share_created_from_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_versions_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type permission_versions_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_share_permission_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionArn">> := string(),
-%%   <<"permissionVersion">> => integer(),
-%%   <<"replace">> => boolean(),
-%%   <<"resourceShareArn">> := string()
-%% }
--type associate_resource_share_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_shares_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"permissionArn">> => string(),
-%%   <<"permissionVersion">> => integer(),
-%%   <<"resourceOwner">> := list(any()),
-%%   <<"resourceShareArns">> => list(string()),
-%%   <<"resourceShareStatus">> => list(any()),
-%%   <<"tagFilters">> => list(tag_filter())
-%% }
--type get_resource_shares_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary())
-%% }
--type list_permission_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_state_transition_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_state_transition_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_share() :: #{
-%%   <<"allowExternalPrincipals">> => boolean(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"featureSet">> => list(any()),
-%%   <<"lastUpdatedTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"owningAccountId">> => string(),
-%%   <<"resourceShareArn">> => string(),
-%%   <<"resourceShareConfiguration">> => resource_share_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type resource_share() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_resource_share_invitation_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShareInvitation">> => resource_share_invitation()
-%% }
--type reject_resource_share_invitation_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -698,177 +989,12 @@
 
 
 %% Example:
-%% list_principals_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"principals">> => list(principal())
-%% }
--type list_principals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% operation_not_permitted_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_not_permitted_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_share_request() :: #{
+%% set_default_permission_version_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"resourceShareArn">> := string()
+%%   <<"permissionArn">> := string(),
+%%   <<"permissionVersion">> := integer()
 %% }
--type delete_resource_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principal">> => string(),
-%%   <<"resourceArns">> := list(string())
-%% }
--type get_resource_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(string())
-%% }
--type get_resource_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_share_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"principals">> => list(string()),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceShareArn">> := string(),
-%%   <<"sources">> => list(string())
-%% }
--type disassociate_resource_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_permission_created_from_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"permissionArn">> := string()
-%% }
--type promote_permission_created_from_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_permission_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policyTemplate">> := string(),
-%%   <<"resourceType">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_share_invitations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShareArns">> => list(string()),
-%%   <<"resourceShareInvitationArns">> => list(string())
-%% }
--type get_resource_share_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_permission() :: #{
-%%   <<"arn">> => string(),
-%%   <<"defaultVersion">> => boolean(),
-%%   <<"featureSet">> => list(any()),
-%%   <<"lastUpdatedTime">> => non_neg_integer(),
-%%   <<"permissionVersion">> => string(),
-%%   <<"resourceShareArn">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => string()
-%% }
--type associated_permission() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permissions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"permissionType">> => list(any()),
-%%   <<"resourceType">> => string()
-%% }
--type list_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pending_invitation_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource())
-%% }
--type list_pending_invitation_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_share_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"principals">> => list(string()),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceShareArn">> := string(),
-%%   <<"sources">> => list(string())
-%% }
--type associate_resource_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_share_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association())
-%% }
--type get_resource_share_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unknown_resource_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unknown_resource_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_resource_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceRegionScope">> => list(any())
-%% }
--type list_resource_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_internal_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type server_internal_exception() :: #{binary() => any()}.
+-type set_default_permission_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -880,81 +1006,11 @@
 
 
 %% Example:
-%% enable_sharing_with_aws_organization_response() :: #{
-%%   <<"returnValue">> => boolean()
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type enable_sharing_with_aws_organization_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_share_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"returnValue">> => boolean()
-%% }
--type delete_resource_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_share_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association())
-%% }
--type associate_resource_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_client_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_client_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% enable_sharing_with_aws_organization_request() :: #{}
--type enable_sharing_with_aws_organization_request() :: #{}.
-
-
-%% Example:
-%% list_resource_share_permissions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary())
-%% }
--type list_resource_share_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principal">> => string(),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"resourceOwner">> := list(any()),
-%%   <<"resourceRegionScope">> => list(any()),
-%%   <<"resourceShareArns">> => list(string()),
-%%   <<"resourceType">> => string()
-%% }
--type list_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(associated_permission())
-%% }
--type list_permission_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_resource_share_created_from_policy_request() :: #{
-%%   <<"resourceShareArn">> := string()
-%% }
--type promote_resource_share_created_from_policy_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
@@ -966,109 +1022,10 @@
 
 
 %% Example:
-%% resource_share_invitation_already_accepted_exception() :: #{
+%% tag_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_share_invitation_already_accepted_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_principals_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principals">> => list(string()),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceOwner">> := list(any()),
-%%   <<"resourceShareArns">> => list(string()),
-%%   <<"resourceType">> => string()
-%% }
--type list_principals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceTypes">> => list(service_name_and_resource_type())
-%% }
--type list_resource_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_permission_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permissionArn">> := string(),
-%%   <<"permissionVersion">> := integer()
-%% }
--type delete_permission_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_shares_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShares">> => list(resource_share())
-%% }
--type get_resource_shares_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_resource_share_invitation_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceShareInvitation">> => resource_share_invitation()
-%% }
--type accept_resource_share_invitation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_permission_version_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permission">> => resource_share_permission_detail()
-%% }
--type create_permission_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_associations_request() :: #{
-%%   <<"associationStatus">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceShareArns">> => list(string()),
-%%   <<"sourceId">> => string(),
-%%   <<"sourceType">> => string()
-%% }
--type list_source_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replace_permission_associations_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"fromPermissionArn">> := string(),
-%%   <<"fromPermissionVersion">> => integer(),
-%%   <<"toPermissionArn">> := string()
-%% }
--type replace_permission_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_resource_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_resource_type_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% replace_permission_associations_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"replacePermissionAssociationsWork">> => replace_permission_associations_work()
-%% }
--type replace_permission_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_permission_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"permission">> => resource_share_permission_summary()
-%% }
--type create_permission_response() :: #{binary() => any()}.
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1079,361 +1036,404 @@
 
 
 %% Example:
-%% resource() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastUpdatedTime">> => non_neg_integer(),
-%%   <<"resourceGroupArn">> => string(),
-%%   <<"resourceRegionScope">> => list(any()),
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> => string(),
 %%   <<"resourceShareArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"type">> => string()
+%%   <<"tags">> := list(tag())
 %% }
--type resource() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% permission_limit_exceeded_exception() :: #{
+%% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type permission_limit_exceeded_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_resource_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unknown_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unmatched_policy_permission_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unmatched_policy_permission_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceShareArn">> => string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_resource_share_request() :: #{
+%%   <<"allowExternalPrincipals">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceShareArn">> := string()
+%% }
+-type update_resource_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_share_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceShare">> => resource_share()
+%% }
+-type update_resource_share_response() :: #{binary() => any()}.
 
 -type accept_resource_share_invitation_errors() ::
-    resource_share_invitation_already_accepted_exception() | 
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_share_invitation_already_rejected_exception() | 
+    server_internal_exception() | 
+    resource_share_invitation_expired_exception() | 
     resource_share_invitation_arn_not_found_exception() | 
-    resource_share_invitation_expired_exception().
+    resource_share_invitation_already_rejected_exception() | 
+    resource_share_invitation_already_accepted_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type associate_resource_share_errors() ::
-    invalid_client_token_exception() | 
-    throttling_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    resource_share_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
     invalid_state_transition_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_share_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type associate_resource_share_permission_errors() ::
-    invalid_client_token_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception().
+    invalid_client_token_exception().
 
 -type create_permission_errors() ::
-    permission_limit_exceeded_exception() | 
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    invalid_policy_exception() | 
+    server_internal_exception() | 
+    permission_limit_exceeded_exception() | 
     permission_already_exists_exception() | 
-    malformed_policy_template_exception().
+    operation_not_permitted_exception() | 
+    malformed_policy_template_exception() | 
+    invalid_policy_exception() | 
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type create_permission_version_errors() ::
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
     service_unavailable_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    server_internal_exception() | 
     permission_versions_limit_exceeded_exception() | 
+    malformed_policy_template_exception() | 
+    malformed_arn_exception() | 
     invalid_policy_exception() | 
-    malformed_policy_template_exception().
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type create_resource_share_errors() ::
-    tag_policy_violation_exception() | 
-    invalid_client_token_exception() | 
-    throttling_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
-    invalid_state_transition_exception() | 
+    throttling_exception() | 
+    tag_policy_violation_exception() | 
     tag_limit_exceeded_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_share_limit_exceeded_exception().
+    service_unavailable_exception() | 
+    server_internal_exception() | 
+    resource_share_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type delete_permission_errors() ::
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_client_token_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type delete_permission_version_errors() ::
-    invalid_client_token_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
+    invalid_client_token_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type delete_resource_share_errors() ::
-    invalid_client_token_exception() | 
-    throttling_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
     invalid_state_transition_exception() | 
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type disassociate_resource_share_errors() ::
-    invalid_client_token_exception() | 
-    throttling_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    resource_share_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
     invalid_state_transition_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_share_limit_exceeded_exception().
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type disassociate_resource_share_permission_errors() ::
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
-    invalid_state_transition_exception().
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_parameter_exception() | 
+    invalid_client_token_exception().
 
 -type enable_sharing_with_aws_organization_errors() ::
+    service_unavailable_exception() | 
     server_internal_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception().
+    operation_not_permitted_exception().
 
 -type get_permission_errors() ::
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    server_internal_exception() | 
     operation_not_permitted_exception() | 
-    service_unavailable_exception().
+    malformed_arn_exception() | 
+    invalid_parameter_exception().
 
 -type get_resource_policies_errors() ::
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    resource_arn_not_found_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    invalid_next_token_exception() | 
-    resource_arn_not_found_exception().
+    invalid_next_token_exception().
 
 -type get_resource_share_associations_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type get_resource_share_invitations_errors() ::
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    server_internal_exception() | 
     resource_share_invitation_arn_not_found_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
     invalid_max_results_exception().
 
 -type get_resource_shares_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_pending_invitation_resources_errors() ::
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    server_internal_exception() | 
+    resource_share_invitation_expired_exception() | 
+    resource_share_invitation_arn_not_found_exception() | 
     resource_share_invitation_already_rejected_exception() | 
     missing_required_parameter_exception() | 
-    resource_share_invitation_arn_not_found_exception() | 
-    resource_share_invitation_expired_exception().
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception().
 
 -type list_permission_associations_errors() ::
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_permission_versions_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_permissions_errors() ::
-    server_internal_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception().
 
 -type list_principals_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_replace_permission_associations_work_errors() ::
+    service_unavailable_exception() | 
     server_internal_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_resource_share_permissions_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_resource_types_errors() ::
+    service_unavailable_exception() | 
     server_internal_exception() | 
     invalid_parameter_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type list_resources_errors() ::
-    invalid_resource_type_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    malformed_arn_exception() | 
+    invalid_resource_type_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception().
 
 -type list_source_associations_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    service_unavailable_exception() | 
     invalid_next_token_exception().
 
 -type promote_permission_created_from_policy_errors() ::
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
+    server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    malformed_arn_exception() | 
     invalid_policy_exception() | 
-    missing_required_parameter_exception().
+    invalid_parameter_exception().
 
 -type promote_resource_share_created_from_policy_errors() ::
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
-    invalid_state_transition_exception() | 
-    resource_share_limit_exceeded_exception() | 
     unmatched_policy_permission_exception() | 
-    missing_required_parameter_exception().
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    server_internal_exception() | 
+    resource_share_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
+    malformed_arn_exception() | 
+    invalid_state_transition_exception() | 
+    invalid_parameter_exception().
 
 -type reject_resource_share_invitation_errors() ::
-    resource_share_invitation_already_accepted_exception() | 
-    invalid_client_token_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    operation_not_permitted_exception() | 
     service_unavailable_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_share_invitation_already_rejected_exception() | 
+    server_internal_exception() | 
+    resource_share_invitation_expired_exception() | 
     resource_share_invitation_arn_not_found_exception() | 
-    resource_share_invitation_expired_exception().
+    resource_share_invitation_already_rejected_exception() | 
+    resource_share_invitation_already_accepted_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type replace_permission_associations_errors() ::
-    invalid_client_token_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
+    invalid_client_token_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type set_default_permission_version_errors() ::
-    invalid_client_token_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    service_unavailable_exception() | 
+    invalid_client_token_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type tag_resource_errors() ::
-    tag_policy_violation_exception() | 
-    server_internal_exception() | 
-    malformed_arn_exception() | 
-    invalid_parameter_exception() | 
     unknown_resource_exception() | 
-    service_unavailable_exception() | 
+    tag_policy_violation_exception() | 
     tag_limit_exceeded_exception() | 
-    resource_arn_not_found_exception().
+    service_unavailable_exception() | 
+    server_internal_exception() | 
+    resource_arn_not_found_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception().
 
 -type untag_resource_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
     malformed_arn_exception() | 
-    invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    service_unavailable_exception().
+    invalid_parameter_exception().
 
 -type update_resource_share_errors() ::
-    invalid_client_token_exception() | 
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
     server_internal_exception() | 
+    operation_not_permitted_exception() | 
+    missing_required_parameter_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception() | 
-    unknown_resource_exception() | 
-    operation_not_permitted_exception() | 
-    service_unavailable_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    missing_required_parameter_exception().
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 %%====================================================================
 %% API

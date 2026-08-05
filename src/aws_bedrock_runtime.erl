@@ -35,101 +35,34 @@
 
 
 %% Example:
-%% count_tokens_response() :: #{
-%%   <<"inputTokens">> => [integer()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type count_tokens_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% any_tool_choice() :: #{}
+-type any_tool_choice() :: #{}.
 
 
 %% Example:
-%% guardrail_automated_reasoning_rule() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"policyVersionArn">> => string()
+%% applied_guardrail_details() :: #{
+%%   <<"guardrailArn">> => string(),
+%%   <<"guardrailId">> => string(),
+%%   <<"guardrailOrigin">> => list(list(any())()),
+%%   <<"guardrailOwnership">> => list(any()),
+%%   <<"guardrailVersion">> => string()
 %% }
--type guardrail_automated_reasoning_rule() :: #{binary() => any()}.
+-type applied_guardrail_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% invoke_model_with_bidirectional_stream_response() :: #{
-%%   <<"body">> => list()
+%% apply_guardrail_request() :: #{
+%%   <<"content">> := list(list()),
+%%   <<"outputScope">> => list(any()),
+%%   <<"source">> := list(any())
 %% }
--type invoke_model_with_bidirectional_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_async_invokes_response() :: #{
-%%   <<"asyncInvokeSummaries">> => list(async_invoke_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_async_invokes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% specific_tool_choice() :: #{
-%%   <<"name">> => string()
-%% }
--type specific_tool_choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_char_location() :: #{
-%%   <<"documentIndex">> => [integer()],
-%%   <<"end">> => [integer()],
-%%   <<"start">> => [integer()]
-%% }
--type document_char_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_policy_assessment() :: #{
-%%   <<"filters">> => list(guardrail_content_filter())
-%% }
--type guardrail_content_policy_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_impossible_finding() :: #{
-%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
-%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
-%%   <<"translation">> => guardrail_automated_reasoning_translation()
-%% }
--type guardrail_automated_reasoning_impossible_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_policy_assessment() :: #{
-%%   <<"findings">> => list(list())
-%% }
--type guardrail_automated_reasoning_policy_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_sensitive_information_entity_config() :: #{
-%%   <<"type">> => list(any())
-%% }
--type guardrail_checks_sensitive_information_entity_config() :: #{binary() => any()}.
-
-%% Example:
-%% guardrail_automated_reasoning_no_translations_finding() :: #{}
--type guardrail_automated_reasoning_no_translations_finding() :: #{}.
-
-
-%% Example:
-%% guardrail_checks_prompt_attack_result() :: #{
-%%   <<"results">> => list(guardrail_checks_prompt_attack_result_entry())
-%% }
--type guardrail_checks_prompt_attack_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_block() :: #{
-%%   <<"citations">> => citations_config(),
-%%   <<"context">> => [string()],
-%%   <<"format">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"source">> => list()
-%% }
--type document_block() :: #{binary() => any()}.
+-type apply_guardrail_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -145,17 +78,135 @@
 
 
 %% Example:
-%% model_not_ready_exception() :: #{
-%%   <<"message">> => string()
+%% async_invoke_s3_output_data_config() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"s3Uri">> => string()
 %% }
--type model_not_ready_exception() :: #{binary() => any()}.
+-type async_invoke_s3_output_data_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% image_block_start() :: #{
-%%   <<"format">> => list(any())
+%% async_invoke_summary() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"invocationArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"outputDataConfig">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"submitTime">> => non_neg_integer()
 %% }
--type image_block_start() :: #{binary() => any()}.
+-type async_invoke_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_block() :: #{
+%%   <<"error">> => error_block(),
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type audio_block() :: #{binary() => any()}.
+
+%% Example:
+%% auto_tool_choice() :: #{}
+-type auto_tool_choice() :: #{}.
+
+
+%% Example:
+%% bidirectional_input_payload_part() :: #{
+%%   <<"bytes">> => binary()
+%% }
+-type bidirectional_input_payload_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% bidirectional_output_payload_part() :: #{
+%%   <<"bytes">> => binary()
+%% }
+-type bidirectional_output_payload_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_detail() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"ttl">> => list(any())
+%% }
+-type cache_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_point_block() :: #{
+%%   <<"ttl">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type cache_point_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation() :: #{
+%%   <<"location">> => list(),
+%%   <<"source">> => [string()],
+%%   <<"sourceContent">> => list(list()),
+%%   <<"title">> => [string()]
+%% }
+-type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% citation_source_content_delta() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type citation_source_content_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_config() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type citations_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_content_block() :: #{
+%%   <<"citations">> => list(citation()),
+%%   <<"content">> => list(list())
+%% }
+-type citations_content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% citations_delta() :: #{
+%%   <<"location">> => list(),
+%%   <<"source">> => [string()],
+%%   <<"sourceContent">> => list(citation_source_content_delta()),
+%%   <<"title">> => [string()]
+%% }
+-type citations_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block_delta_event() :: #{
+%%   <<"contentBlockIndex">> => integer(),
+%%   <<"delta">> => list()
+%% }
+-type content_block_delta_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block_start_event() :: #{
+%%   <<"contentBlockIndex">> => integer(),
+%%   <<"start">> => list()
+%% }
+-type content_block_start_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -164,46 +215,12 @@
 %% }
 -type content_block_stop_event() :: #{binary() => any()}.
 
-%% Example:
-%% get_async_invoke_request() :: #{}
--type get_async_invoke_request() :: #{}.
-
 
 %% Example:
-%% converse_tokens_request() :: #{
-%%   <<"additionalModelRequestFields">> => [any()],
-%%   <<"messages">> => list(message()),
-%%   <<"system">> => list(list()),
-%%   <<"toolConfig">> => tool_configuration()
+%% converse_metrics() :: #{
+%%   <<"latencyMs">> => [float()]
 %% }
--type converse_tokens_request() :: #{binary() => any()}.
-
-%% Example:
-%% any_tool_choice() :: #{}
--type any_tool_choice() :: #{}.
-
-
-%% Example:
-%% inference_configuration() :: #{
-%%   <<"maxTokens">> => [integer()],
-%%   <<"stopSequences">> => list(string()),
-%%   <<"temperature">> => [float()],
-%%   <<"topP">> => [float()]
-%% }
--type inference_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% auto_tool_choice() :: #{}
--type auto_tool_choice() :: #{}.
-
-
-%% Example:
-%% apply_guardrail_request() :: #{
-%%   <<"content">> := list(list()),
-%%   <<"outputScope">> => list(any()),
-%%   <<"source">> := list(any())
-%% }
--type apply_guardrail_request() :: #{binary() => any()}.
+-type converse_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -225,636 +242,17 @@
 
 
 %% Example:
-%% search_result_location() :: #{
-%%   <<"end">> => [integer()],
-%%   <<"searchResultIndex">> => [integer()],
-%%   <<"start">> => [integer()]
-%% }
--type search_result_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_translation() :: #{
-%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
-%%   <<"confidence">> => float(),
-%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
-%%   <<"untranslatedClaims">> => list(guardrail_automated_reasoning_input_text_reference()),
-%%   <<"untranslatedPremises">> => list(guardrail_automated_reasoning_input_text_reference())
-%% }
--type guardrail_automated_reasoning_translation() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_tier() :: #{
-%%   <<"type">> => list(any())
-%% }
--type service_tier() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_trace_assessment() :: #{
-%%   <<"actionReason">> => [string()],
-%%   <<"inputAssessment">> => map(),
-%%   <<"modelOutput">> => list(string()),
-%%   <<"outputAssessments">> => map()
-%% }
--type guardrail_trace_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_sensitive_information_usage() :: #{
-%%   <<"textUnits">> => [integer()]
-%% }
--type guardrail_checks_sensitive_information_usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% citation() :: #{
-%%   <<"location">> => list(),
-%%   <<"source">> => [string()],
-%%   <<"sourceContent">> => list(list()),
-%%   <<"title">> => [string()]
-%% }
--type citation() :: #{binary() => any()}.
-
-
-%% Example:
-%% count_tokens_request() :: #{
-%%   <<"input">> := list()
-%% }
--type count_tokens_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% citations_content_block() :: #{
-%%   <<"citations">> => list(citation()),
-%%   <<"content">> => list(list())
-%% }
--type citations_content_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% payload_part() :: #{
-%%   <<"bytes">> => binary()
-%% }
--type payload_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_stop_event() :: #{
+%% converse_response() :: #{
 %%   <<"additionalModelResponseFields">> => [any()],
-%%   <<"stopReason">> => list(any())
-%% }
--type message_stop_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_managed_word() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"match">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_managed_word() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_block_delta() :: #{
-%%   <<"error">> => error_block(),
-%%   <<"source">> => list()
-%% }
--type image_block_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_with_response_stream_response() :: #{
-%%   <<"body">> => list(),
-%%   <<"contentType">> => string(),
-%%   <<"performanceConfigLatency">> => list(any()),
-%%   <<"serviceTier">> => list(any())
-%% }
--type invoke_model_with_response_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_text_block() :: #{
-%%   <<"qualifiers">> => list(list(any())()),
-%%   <<"text">> => [string()]
-%% }
--type guardrail_text_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_block() :: #{
-%%   <<"error">> => error_block(),
-%%   <<"format">> => list(any()),
-%%   <<"source">> => list()
-%% }
--type image_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_converse_image_block() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"source">> => list()
-%% }
--type guardrail_converse_image_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_invalid_finding() :: #{
-%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
-%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
-%%   <<"translation">> => guardrail_automated_reasoning_translation()
-%% }
--type guardrail_automated_reasoning_invalid_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% async_invoke_s3_output_data_config() :: #{
-%%   <<"bucketOwner">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type async_invoke_s3_output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_text_characters_coverage() :: #{
-%%   <<"guarded">> => integer(),
-%%   <<"total">> => integer()
-%% }
--type guardrail_text_characters_coverage() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_block_start_event() :: #{
-%%   <<"contentBlockIndex">> => integer(),
-%%   <<"start">> => list()
-%% }
--type content_block_start_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_router_trace() :: #{
-%%   <<"invokedModelId">> => string()
-%% }
--type prompt_router_trace() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_image_coverage() :: #{
-%%   <<"guarded">> => integer(),
-%%   <<"total">> => integer()
-%% }
--type guardrail_image_coverage() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_block_delta_event() :: #{
-%%   <<"contentBlockIndex">> => integer(),
-%%   <<"delta">> => list()
-%% }
--type content_block_delta_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_custom_word() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"match">> => [string()]
-%% }
--type guardrail_custom_word() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_location() :: #{
-%%   <<"domain">> => [string()],
-%%   <<"url">> => [string()]
-%% }
--type web_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% bidirectional_input_payload_part() :: #{
-%%   <<"bytes">> => binary()
-%% }
--type bidirectional_input_payload_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_start_event() :: #{
-%%   <<"role">> => list(any())
-%% }
--type message_start_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_usage_results() :: #{
-%%   <<"contentFilter">> => guardrail_checks_content_filter_usage(),
-%%   <<"promptAttack">> => guardrail_checks_prompt_attack_usage(),
-%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_usage()
-%% }
--type guardrail_checks_usage_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% applied_guardrail_details() :: #{
-%%   <<"guardrailArn">> => string(),
-%%   <<"guardrailId">> => string(),
-%%   <<"guardrailOrigin">> => list(list(any())()),
-%%   <<"guardrailOwnership">> => list(any()),
-%%   <<"guardrailVersion">> => string()
-%% }
--type applied_guardrail_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_with_bidirectional_stream_request() :: #{
-%%   <<"body">> := list()
-%% }
--type invoke_model_with_bidirectional_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_result_block() :: #{
-%%   <<"citations">> => citations_config(),
-%%   <<"content">> => list(search_result_content_block()),
-%%   <<"source">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type search_result_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_word_policy_assessment() :: #{
-%%   <<"customWords">> => list(guardrail_custom_word()),
-%%   <<"managedWordLists">> => list(guardrail_managed_word())
-%% }
--type guardrail_word_policy_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_async_invoke_request() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"modelId">> := string(),
-%%   <<"modelInput">> := any(),
-%%   <<"outputDataConfig">> := list(),
-%%   <<"tags">> => list(tag())
-%% }
--type start_async_invoke_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_translation_ambiguous_finding() :: #{
-%%   <<"differenceScenarios">> => list(guardrail_automated_reasoning_scenario()),
-%%   <<"options">> => list(guardrail_automated_reasoning_translation_option())
-%% }
--type guardrail_automated_reasoning_translation_ambiguous_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_result_block_start() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => [string()]
-%% }
--type tool_result_block_start() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_async_invokes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"statusEquals">> => list(any()),
-%%   <<"submitTimeAfter">> => non_neg_integer(),
-%%   <<"submitTimeBefore">> => non_neg_integer()
-%% }
--type list_async_invokes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_coverage() :: #{
-%%   <<"images">> => guardrail_image_coverage(),
-%%   <<"textCharacters">> => guardrail_text_characters_coverage()
-%% }
--type guardrail_coverage() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_request() :: #{
-%%   <<"accept">> => string(),
-%%   <<"body">> => binary(),
-%%   <<"contentType">> => string(),
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"performanceConfigLatency">> => list(any()),
-%%   <<"requestMetadata">> => string(),
-%%   <<"serviceTier">> => list(any()),
-%%   <<"trace">> => list(any())
-%% }
--type invoke_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reasoning_text_block() :: #{
-%%   <<"signature">> => [string()],
-%%   <<"text">> => [string()]
-%% }
--type reasoning_text_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_content_filter_usage() :: #{
-%%   <<"textUnits">> => [integer()]
-%% }
--type guardrail_checks_content_filter_usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_with_response_stream_request() :: #{
-%%   <<"accept">> => string(),
-%%   <<"body">> => binary(),
-%%   <<"contentType">> => string(),
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"performanceConfigLatency">> => list(any()),
-%%   <<"requestMetadata">> => string(),
-%%   <<"serviceTier">> => list(any()),
-%%   <<"trace">> => list(any())
-%% }
--type invoke_model_with_response_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_sensitive_information_result_entry() :: #{
-%%   <<"beginOffset">> => [integer()],
-%%   <<"confidenceScore">> => [float()],
-%%   <<"contentIndex">> => [integer()],
-%%   <<"endOffset">> => [integer()],
-%%   <<"messageIndex">> => [integer()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_checks_sensitive_information_result_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_sensitive_information_policy_assessment() :: #{
-%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()),
-%%   <<"regexes">> => list(guardrail_regex_filter())
-%% }
--type guardrail_sensitive_information_policy_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% converse_stream_metrics() :: #{
-%%   <<"latencyMs">> => [float()]
-%% }
--type converse_stream_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_use_block_start() :: #{
-%%   <<"name">> => string(),
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type tool_use_block_start() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_response() :: #{
-%%   <<"body">> => binary(),
-%%   <<"contentType">> => string(),
-%%   <<"performanceConfigLatency">> => list(any()),
-%%   <<"serviceTier">> => list(any())
-%% }
--type invoke_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_content_filter() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"confidence">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"filterStrength">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type guardrail_content_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_sensitive_information_result() :: #{
-%%   <<"results">> => list(guardrail_checks_sensitive_information_result_entry()),
-%%   <<"truncated">> => [boolean()]
-%% }
--type guardrail_checks_sensitive_information_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% converse_trace() :: #{
-%%   <<"guardrail">> => guardrail_trace_assessment(),
-%%   <<"promptRouter">> => prompt_router_trace()
-%% }
--type converse_trace() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_filter() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"score">> => [float()],
-%%   <<"threshold">> => [float()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_guardrail_checks_request() :: #{
-%%   <<"checks">> := guardrail_checks_config(),
-%%   <<"messages">> := list(guardrail_checks_message())
-%% }
--type invoke_guardrail_checks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_content_filter_config() :: #{
-%%   <<"categories">> => list(guardrail_checks_content_filter_category_config())
-%% }
--type guardrail_checks_content_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_statement() :: #{
-%%   <<"logic">> => string(),
-%%   <<"naturalLanguage">> => string()
-%% }
--type guardrail_automated_reasoning_statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_specification() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => list(),
-%%   <<"name">> => string(),
-%%   <<"strict">> => [boolean()]
-%% }
--type tool_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_image_block() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"source">> => list()
-%% }
--type guardrail_image_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_prompt_attack_config() :: #{
-%%   <<"categories">> => list(guardrail_checks_prompt_attack_category_config())
-%% }
--type guardrail_checks_prompt_attack_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_block() :: #{
-%%   <<"message">> => [string()]
-%% }
--type error_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_result_content_block() :: #{
-%%   <<"text">> => [string()]
-%% }
--type search_result_content_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_translation_option() :: #{
-%%   <<"translations">> => list(guardrail_automated_reasoning_translation())
-%% }
--type guardrail_automated_reasoning_translation_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% converse_stream_response() :: #{
-%%   <<"stream">> => list()
-%% }
--type converse_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_point_block() :: #{
-%%   <<"ttl">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type cache_point_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_page_location() :: #{
-%%   <<"documentIndex">> => [integer()],
-%%   <<"end">> => [integer()],
-%%   <<"start">> => [integer()]
-%% }
--type document_page_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_logic_warning() :: #{
-%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
-%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
-%%   <<"type">> => list(any())
-%% }
--type guardrail_automated_reasoning_logic_warning() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_async_invoke_response() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"invocationArn">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"outputDataConfig">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"submitTime">> => non_neg_integer()
-%% }
--type get_async_invoke_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_chunk_location() :: #{
-%%   <<"documentIndex">> => [integer()],
-%%   <<"end">> => [integer()],
-%%   <<"start">> => [integer()]
-%% }
--type document_chunk_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_detail() :: #{
-%%   <<"inputTokens">> => [integer()],
-%%   <<"ttl">> => list(any())
-%% }
--type cache_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_contextual_grounding_policy_assessment() :: #{
-%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
-%% }
--type guardrail_contextual_grounding_policy_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucketOwner">> => string(),
-%%   <<"uri">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
+%%   <<"metrics">> => converse_metrics(),
+%%   <<"output">> => list(),
+%%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"serviceTier">> => service_tier(),
+%%   <<"stopReason">> => list(any()),
+%%   <<"trace">> => converse_trace(),
+%%   <<"usage">> => token_usage()
+%% }
+-type converse_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -869,125 +267,10 @@
 
 
 %% Example:
-%% audio_block() :: #{
-%%   <<"error">> => error_block(),
-%%   <<"format">> => list(any()),
-%%   <<"source">> => list()
-%% }
--type audio_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_prompt_attack_result_entry() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"severityScore">> => [float()]
-%% }
--type guardrail_checks_prompt_attack_result_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_valid_finding() :: #{
-%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
-%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
-%%   <<"supportingRules">> => list(guardrail_automated_reasoning_rule()),
-%%   <<"translation">> => guardrail_automated_reasoning_translation()
-%% }
--type guardrail_automated_reasoning_valid_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_stream_configuration() :: #{
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"streamProcessingMode">> => list(any()),
-%%   <<"trace">> => list(any())
-%% }
--type guardrail_stream_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_guardrail_checks_response() :: #{
-%%   <<"results">> => guardrail_checks_results(),
-%%   <<"usage">> => guardrail_checks_usage_results()
-%% }
--type invoke_guardrail_checks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_assessment() :: #{
-%%   <<"appliedGuardrailDetails">> => applied_guardrail_details(),
-%%   <<"automatedReasoningPolicy">> => guardrail_automated_reasoning_policy_assessment(),
-%%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
-%%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy_assessment(),
-%%   <<"invocationMetrics">> => guardrail_invocation_metrics(),
-%%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy_assessment(),
-%%   <<"topicPolicy">> => guardrail_topic_policy_assessment(),
-%%   <<"wordPolicy">> => guardrail_word_policy_assessment()
-%% }
--type guardrail_assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_message() :: #{
-%%   <<"content">> => list(list()),
-%%   <<"role">> => list(any())
-%% }
--type guardrail_checks_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_content_filter_result_entry() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"severityScore">> => [float()]
-%% }
--type guardrail_checks_content_filter_result_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% converse_metrics() :: #{
+%% converse_stream_metrics() :: #{
 %%   <<"latencyMs">> => [float()]
 %% }
--type converse_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_error_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"originalStatusCode">> => integer(),
-%%   <<"resourceName">> => string()
-%% }
--type model_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_tool() :: #{
-%%   <<"name">> => string()
-%% }
--type system_tool() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_invocation_metrics() :: #{
-%%   <<"guardrailCoverage">> => guardrail_coverage(),
-%%   <<"guardrailProcessingLatency">> => float(),
-%%   <<"usage">> => guardrail_usage()
-%% }
--type guardrail_invocation_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_configuration() :: #{
-%%   <<"toolChoice">> => list(),
-%%   <<"tools">> => list(list())
-%% }
--type tool_configuration() :: #{binary() => any()}.
+-type converse_stream_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1009,42 +292,579 @@
 
 
 %% Example:
-%% tool_result_block() :: #{
-%%   <<"content">> => list(list()),
+%% converse_stream_response() :: #{
+%%   <<"stream">> => list()
+%% }
+-type converse_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_stream_trace() :: #{
+%%   <<"guardrail">> => guardrail_trace_assessment(),
+%%   <<"promptRouter">> => prompt_router_trace()
+%% }
+-type converse_stream_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_tokens_request() :: #{
+%%   <<"additionalModelRequestFields">> => [any()],
+%%   <<"messages">> => list(message()),
+%%   <<"system">> => list(list()),
+%%   <<"toolConfig">> => tool_configuration()
+%% }
+-type converse_tokens_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% converse_trace() :: #{
+%%   <<"guardrail">> => guardrail_trace_assessment(),
+%%   <<"promptRouter">> => prompt_router_trace()
+%% }
+-type converse_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% count_tokens_request() :: #{
+%%   <<"input">> := list()
+%% }
+-type count_tokens_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% count_tokens_response() :: #{
+%%   <<"inputTokens">> => [integer()]
+%% }
+-type count_tokens_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_block() :: #{
+%%   <<"citations">> => citations_config(),
+%%   <<"context">> => [string()],
+%%   <<"format">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"source">> => list()
+%% }
+-type document_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_char_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_char_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_chunk_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_chunk_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_page_location() :: #{
+%%   <<"documentIndex">> => [integer()],
+%%   <<"end">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type document_page_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_block() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type error_block() :: #{binary() => any()}.
+
+%% Example:
+%% get_async_invoke_request() :: #{}
+-type get_async_invoke_request() :: #{}.
+
+
+%% Example:
+%% get_async_invoke_response() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failureMessage">> => string(),
+%%   <<"invocationArn">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"outputDataConfig">> => list(),
 %%   <<"status">> => list(any()),
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => [string()]
+%%   <<"submitTime">> => non_neg_integer()
 %% }
--type tool_result_block() :: #{binary() => any()}.
+-type get_async_invoke_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% guardrail_assessment() :: #{
+%%   <<"appliedGuardrailDetails">> => applied_guardrail_details(),
+%%   <<"automatedReasoningPolicy">> => guardrail_automated_reasoning_policy_assessment(),
+%%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
+%%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy_assessment(),
+%%   <<"invocationMetrics">> => guardrail_invocation_metrics(),
+%%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy_assessment(),
+%%   <<"topicPolicy">> => guardrail_topic_policy_assessment(),
+%%   <<"wordPolicy">> => guardrail_word_policy_assessment()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type guardrail_assessment() :: #{binary() => any()}.
 
 
 %% Example:
-%% tool_use_block() :: #{
-%%   <<"input">> => [any()],
-%%   <<"name">> => string(),
-%%   <<"toolUseId">> => string(),
+%% guardrail_automated_reasoning_impossible_finding() :: #{
+%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_impossible_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_input_text_reference() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_automated_reasoning_input_text_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_invalid_finding() :: #{
+%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_invalid_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_logic_warning() :: #{
+%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
 %%   <<"type">> => list(any())
 %% }
--type tool_use_block() :: #{binary() => any()}.
+-type guardrail_automated_reasoning_logic_warning() :: #{binary() => any()}.
+
+%% Example:
+%% guardrail_automated_reasoning_no_translations_finding() :: #{}
+-type guardrail_automated_reasoning_no_translations_finding() :: #{}.
 
 
 %% Example:
-%% token_usage() :: #{
-%%   <<"cacheDetails">> => list(cache_detail()),
-%%   <<"cacheReadInputTokens">> => [integer()],
-%%   <<"cacheWriteInputTokens">> => [integer()],
-%%   <<"inputTokens">> => [integer()],
-%%   <<"outputTokens">> => [integer()],
-%%   <<"totalTokens">> => [integer()]
+%% guardrail_automated_reasoning_policy_assessment() :: #{
+%%   <<"findings">> => list(list())
 %% }
--type token_usage() :: #{binary() => any()}.
+-type guardrail_automated_reasoning_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_rule() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"policyVersionArn">> => string()
+%% }
+-type guardrail_automated_reasoning_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_satisfiable_finding() :: #{
+%%   <<"claimsFalseScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_satisfiable_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_scenario() :: #{
+%%   <<"statements">> => list(guardrail_automated_reasoning_statement())
+%% }
+-type guardrail_automated_reasoning_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_statement() :: #{
+%%   <<"logic">> => string(),
+%%   <<"naturalLanguage">> => string()
+%% }
+-type guardrail_automated_reasoning_statement() :: #{binary() => any()}.
+
+%% Example:
+%% guardrail_automated_reasoning_too_complex_finding() :: #{}
+-type guardrail_automated_reasoning_too_complex_finding() :: #{}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_translation() :: #{
+%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"confidence">> => float(),
+%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"untranslatedClaims">> => list(guardrail_automated_reasoning_input_text_reference()),
+%%   <<"untranslatedPremises">> => list(guardrail_automated_reasoning_input_text_reference())
+%% }
+-type guardrail_automated_reasoning_translation() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_translation_ambiguous_finding() :: #{
+%%   <<"differenceScenarios">> => list(guardrail_automated_reasoning_scenario()),
+%%   <<"options">> => list(guardrail_automated_reasoning_translation_option())
+%% }
+-type guardrail_automated_reasoning_translation_ambiguous_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_translation_option() :: #{
+%%   <<"translations">> => list(guardrail_automated_reasoning_translation())
+%% }
+-type guardrail_automated_reasoning_translation_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_valid_finding() :: #{
+%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"supportingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_valid_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_config() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_config(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_config(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_config()
+%% }
+-type guardrail_checks_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_category_config() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type guardrail_checks_content_filter_category_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_config() :: #{
+%%   <<"categories">> => list(guardrail_checks_content_filter_category_config())
+%% }
+-type guardrail_checks_content_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_result() :: #{
+%%   <<"results">> => list(guardrail_checks_content_filter_result_entry())
+%% }
+-type guardrail_checks_content_filter_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_result_entry() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"severityScore">> => [float()]
+%% }
+-type guardrail_checks_content_filter_result_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_content_filter_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_content_filter_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
+%% }
+-type guardrail_checks_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_category_config() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type guardrail_checks_prompt_attack_category_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_config() :: #{
+%%   <<"categories">> => list(guardrail_checks_prompt_attack_category_config())
+%% }
+-type guardrail_checks_prompt_attack_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_result() :: #{
+%%   <<"results">> => list(guardrail_checks_prompt_attack_result_entry())
+%% }
+-type guardrail_checks_prompt_attack_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_result_entry() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"severityScore">> => [float()]
+%% }
+-type guardrail_checks_prompt_attack_result_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_prompt_attack_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_prompt_attack_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_results() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_result(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_result(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_result()
+%% }
+-type guardrail_checks_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_config() :: #{
+%%   <<"entities">> => list(guardrail_checks_sensitive_information_entity_config())
+%% }
+-type guardrail_checks_sensitive_information_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_entity_config() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_checks_sensitive_information_entity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_result() :: #{
+%%   <<"results">> => list(guardrail_checks_sensitive_information_result_entry()),
+%%   <<"truncated">> => [boolean()]
+%% }
+-type guardrail_checks_sensitive_information_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_result_entry() :: #{
+%%   <<"beginOffset">> => [integer()],
+%%   <<"confidenceScore">> => [float()],
+%%   <<"contentIndex">> => [integer()],
+%%   <<"endOffset">> => [integer()],
+%%   <<"messageIndex">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_checks_sensitive_information_result_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_sensitive_information_usage() :: #{
+%%   <<"textUnits">> => [integer()]
+%% }
+-type guardrail_checks_sensitive_information_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_checks_usage_results() :: #{
+%%   <<"contentFilter">> => guardrail_checks_content_filter_usage(),
+%%   <<"promptAttack">> => guardrail_checks_prompt_attack_usage(),
+%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_usage()
+%% }
+-type guardrail_checks_usage_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"trace">> => list(any())
+%% }
+-type guardrail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"confidence">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"filterStrength">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_content_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_content_policy_assessment() :: #{
+%%   <<"filters">> => list(guardrail_content_filter())
+%% }
+-type guardrail_content_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"score">> => [float()],
+%%   <<"threshold">> => [float()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_contextual_grounding_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_policy_assessment() :: #{
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
+%% }
+-type guardrail_contextual_grounding_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_converse_image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type guardrail_converse_image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_converse_text_block() :: #{
+%%   <<"qualifiers">> => list(list(any())()),
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_converse_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_coverage() :: #{
+%%   <<"images">> => guardrail_image_coverage(),
+%%   <<"textCharacters">> => guardrail_text_characters_coverage()
+%% }
+-type guardrail_coverage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_custom_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"match">> => [string()]
+%% }
+-type guardrail_custom_word() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_image_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type guardrail_image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_image_coverage() :: #{
+%%   <<"guarded">> => integer(),
+%%   <<"total">> => integer()
+%% }
+-type guardrail_image_coverage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_invocation_metrics() :: #{
+%%   <<"guardrailCoverage">> => guardrail_coverage(),
+%%   <<"guardrailProcessingLatency">> => float(),
+%%   <<"usage">> => guardrail_usage()
+%% }
+-type guardrail_invocation_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_managed_word() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_managed_word() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_output_content() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_output_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_pii_entity_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"match">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_pii_entity_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_regex_filter() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"match">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"regex">> => [string()]
+%% }
+-type guardrail_regex_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_sensitive_information_policy_assessment() :: #{
+%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()),
+%%   <<"regexes">> => list(guardrail_regex_filter())
+%% }
+-type guardrail_sensitive_information_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_stream_configuration() :: #{
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"streamProcessingMode">> => list(any()),
+%%   <<"trace">> => list(any())
+%% }
+-type guardrail_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_text_block() :: #{
+%%   <<"qualifiers">> => list(list(any())()),
+%%   <<"text">> => [string()]
+%% }
+-type guardrail_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_text_characters_coverage() :: #{
+%%   <<"guarded">> => integer(),
+%%   <<"total">> => integer()
+%% }
+-type guardrail_text_characters_coverage() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_topic() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"detected">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_topic() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1052,6 +872,16 @@
 %%   <<"topics">> => list(guardrail_topic())
 %% }
 -type guardrail_topic_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_trace_assessment() :: #{
+%%   <<"actionReason">> => [string()],
+%%   <<"inputAssessment">> => map(),
+%%   <<"modelOutput">> => list(string()),
+%%   <<"outputAssessments">> => map()
+%% }
+-type guardrail_trace_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1070,25 +900,208 @@
 
 
 %% Example:
-%% async_invoke_summary() :: #{
-%%   <<"clientRequestToken">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"failureMessage">> => string(),
-%%   <<"invocationArn">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"modelArn">> => string(),
-%%   <<"outputDataConfig">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"submitTime">> => non_neg_integer()
+%% guardrail_word_policy_assessment() :: #{
+%%   <<"customWords">> => list(guardrail_custom_word()),
+%%   <<"managedWordLists">> => list(guardrail_managed_word())
 %% }
--type async_invoke_summary() :: #{binary() => any()}.
+-type guardrail_word_policy_assessment() :: #{binary() => any()}.
 
 
 %% Example:
-%% output_config() :: #{
-%%   <<"textFormat">> => output_format()
+%% image_block() :: #{
+%%   <<"error">> => error_block(),
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
 %% }
--type output_config() :: #{binary() => any()}.
+-type image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_block_delta() :: #{
+%%   <<"error">> => error_block(),
+%%   <<"source">> => list()
+%% }
+-type image_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_block_start() :: #{
+%%   <<"format">> => list(any())
+%% }
+-type image_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list(string()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_guardrail_checks_request() :: #{
+%%   <<"checks">> := guardrail_checks_config(),
+%%   <<"messages">> := list(guardrail_checks_message())
+%% }
+-type invoke_guardrail_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_guardrail_checks_response() :: #{
+%%   <<"results">> => guardrail_checks_results(),
+%%   <<"usage">> => guardrail_checks_usage_results()
+%% }
+-type invoke_guardrail_checks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"requestMetadata">> => string(),
+%%   <<"serviceTier">> => list(any()),
+%%   <<"trace">> => list(any())
+%% }
+-type invoke_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_response() :: #{
+%%   <<"body">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any())
+%% }
+-type invoke_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_tokens_request() :: #{
+%%   <<"body">> => binary()
+%% }
+-type invoke_model_tokens_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_bidirectional_stream_request() :: #{
+%%   <<"body">> := list()
+%% }
+-type invoke_model_with_bidirectional_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_bidirectional_stream_response() :: #{
+%%   <<"body">> => list()
+%% }
+-type invoke_model_with_bidirectional_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_response_stream_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"guardrailIdentifier">> => string(),
+%%   <<"guardrailVersion">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"requestMetadata">> => string(),
+%%   <<"serviceTier">> => list(any()),
+%%   <<"trace">> => list(any())
+%% }
+-type invoke_model_with_response_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_model_with_response_stream_response() :: #{
+%%   <<"body">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"serviceTier">> => list(any())
+%% }
+-type invoke_model_with_response_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_schema_definition() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"schema">> => [string()]
+%% }
+-type json_schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_async_invokes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any()),
+%%   <<"submitTimeAfter">> => non_neg_integer(),
+%%   <<"submitTimeBefore">> => non_neg_integer()
+%% }
+-type list_async_invokes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_async_invokes_response() :: #{
+%%   <<"asyncInvokeSummaries">> => list(async_invoke_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_async_invokes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_start_event() :: #{
+%%   <<"role">> => list(any())
+%% }
+-type message_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_stop_event() :: #{
+%%   <<"additionalModelResponseFields">> => [any()],
+%%   <<"stopReason">> => list(any())
+%% }
+-type message_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_error_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"originalStatusCode">> => integer(),
+%%   <<"resourceName">> => string()
+%% }
+-type model_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_not_ready_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type model_not_ready_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1108,220 +1121,11 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
+%% output_config() :: #{
+%%   <<"effort">> => [string()],
+%%   <<"textFormat">> => output_format()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_content_filter_result() :: #{
-%%   <<"results">> => list(guardrail_checks_content_filter_result_entry())
-%% }
--type guardrail_checks_content_filter_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_sensitive_information_config() :: #{
-%%   <<"entities">> => list(guardrail_checks_sensitive_information_entity_config())
-%% }
--type guardrail_checks_sensitive_information_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% citation_source_content_delta() :: #{
-%%   <<"text">> => [string()]
-%% }
--type citation_source_content_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_prompt_attack_category_config() :: #{
-%%   <<"category">> => list(any())
-%% }
--type guardrail_checks_prompt_attack_category_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_results() :: #{
-%%   <<"contentFilter">> => guardrail_checks_content_filter_result(),
-%%   <<"promptAttack">> => guardrail_checks_prompt_attack_result(),
-%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_result()
-%% }
--type guardrail_checks_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_scenario() :: #{
-%%   <<"statements">> => list(guardrail_automated_reasoning_statement())
-%% }
--type guardrail_automated_reasoning_scenario() :: #{binary() => any()}.
-
-
-%% Example:
-%% bidirectional_output_payload_part() :: #{
-%%   <<"bytes">> => binary()
-%% }
--type bidirectional_output_payload_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_configuration() :: #{
-%%   <<"guardrailIdentifier">> => string(),
-%%   <<"guardrailVersion">> => string(),
-%%   <<"trace">> => list(any())
-%% }
--type guardrail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_regex_filter() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"match">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"regex">> => [string()]
-%% }
--type guardrail_regex_filter() :: #{binary() => any()}.
-
-%% Example:
-%% guardrail_automated_reasoning_too_complex_finding() :: #{}
--type guardrail_automated_reasoning_too_complex_finding() :: #{}.
-
-
-%% Example:
-%% video_block() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"source">> => list()
-%% }
--type video_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_output_content() :: #{
-%%   <<"text">> => string()
-%% }
--type guardrail_output_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_config() :: #{
-%%   <<"contentFilter">> => guardrail_checks_content_filter_config(),
-%%   <<"promptAttack">> => guardrail_checks_prompt_attack_config(),
-%%   <<"sensitiveInformation">> => guardrail_checks_sensitive_information_config()
-%% }
--type guardrail_checks_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% citations_config() :: #{
-%%   <<"enabled">> => [boolean()]
-%% }
--type citations_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_automated_reasoning_satisfiable_finding() :: #{
-%%   <<"claimsFalseScenario">> => guardrail_automated_reasoning_scenario(),
-%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
-%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
-%%   <<"translation">> => guardrail_automated_reasoning_translation()
-%% }
--type guardrail_automated_reasoning_satisfiable_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_model_tokens_request() :: #{
-%%   <<"body">> => binary()
-%% }
--type invoke_model_tokens_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_pii_entity_filter() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"match">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_pii_entity_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_converse_text_block() :: #{
-%%   <<"qualifiers">> => list(list(any())()),
-%%   <<"text">> => [string()]
-%% }
--type guardrail_converse_text_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_prompt_attack_usage() :: #{
-%%   <<"textUnits">> => [integer()]
-%% }
--type guardrail_checks_prompt_attack_usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% converse_stream_trace() :: #{
-%%   <<"guardrail">> => guardrail_trace_assessment(),
-%%   <<"promptRouter">> => prompt_router_trace()
-%% }
--type converse_stream_trace() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_checks_content_filter_category_config() :: #{
-%%   <<"category">> => list(any())
-%% }
--type guardrail_checks_content_filter_category_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_use_block_delta() :: #{
-%%   <<"input">> => [string()]
-%% }
--type tool_use_block_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_async_invoke_response() :: #{
-%%   <<"invocationArn">> => string()
-%% }
--type start_async_invoke_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guardrail_topic() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"detected">> => [boolean()],
-%%   <<"name">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type guardrail_topic() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_configuration() :: #{
-%%   <<"latency">> => list(any())
-%% }
--type performance_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% json_schema_definition() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"schema">> => [string()]
-%% }
--type json_schema_definition() :: #{binary() => any()}.
+-type output_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1333,148 +1137,368 @@
 
 
 %% Example:
-%% guardrail_automated_reasoning_input_text_reference() :: #{
-%%   <<"text">> => string()
+%% payload_part() :: #{
+%%   <<"bytes">> => binary()
 %% }
--type guardrail_automated_reasoning_input_text_reference() :: #{binary() => any()}.
+-type payload_part() :: #{binary() => any()}.
 
 
 %% Example:
-%% citations_delta() :: #{
-%%   <<"location">> => list(),
+%% performance_configuration() :: #{
+%%   <<"latency">> => list(any())
+%% }
+-type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_router_trace() :: #{
+%%   <<"invokedModelId">> => string()
+%% }
+-type prompt_router_trace() :: #{binary() => any()}.
+
+
+%% Example:
+%% reasoning_text_block() :: #{
+%%   <<"signature">> => [string()],
+%%   <<"text">> => [string()]
+%% }
+-type reasoning_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucketOwner">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result_block() :: #{
+%%   <<"citations">> => citations_config(),
+%%   <<"content">> => list(search_result_content_block()),
 %%   <<"source">> => [string()],
-%%   <<"sourceContent">> => list(citation_source_content_delta()),
 %%   <<"title">> => [string()]
 %% }
--type citations_delta() :: #{binary() => any()}.
+-type search_result_block() :: #{binary() => any()}.
 
 
 %% Example:
-%% message() :: #{
+%% search_result_content_block() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type search_result_content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_result_location() :: #{
+%%   <<"end">> => [integer()],
+%%   <<"searchResultIndex">> => [integer()],
+%%   <<"start">> => [integer()]
+%% }
+-type search_result_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_tier() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type service_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% specific_tool_choice() :: #{
+%%   <<"name">> => string()
+%% }
+-type specific_tool_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_async_invoke_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"modelId">> := string(),
+%%   <<"modelInput">> := any(),
+%%   <<"outputDataConfig">> := list(),
+%%   <<"tags">> => list(tag())
+%% }
+-type start_async_invoke_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_async_invoke_response() :: #{
+%%   <<"invocationArn">> => string()
+%% }
+-type start_async_invoke_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_tool() :: #{
+%%   <<"name">> => string()
+%% }
+-type system_tool() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_usage() :: #{
+%%   <<"cacheDetails">> => list(cache_detail()),
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"cacheWriteInputTokens">> => [integer()],
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type token_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_addition_block() :: #{
+%%   <<"tool">> => tool_reference()
+%% }
+-type tool_addition_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_configuration() :: #{
+%%   <<"toolChoice">> => list(),
+%%   <<"tools">> => list(list())
+%% }
+-type tool_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_reference() :: #{
+%%   <<"name">> => [string()],
+%%   <<"serverName">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type tool_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_removal_block() :: #{
+%%   <<"tool">> => tool_reference()
+%% }
+-type tool_removal_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_result_block() :: #{
 %%   <<"content">> => list(list()),
-%%   <<"role">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => [string()]
 %% }
--type message() :: #{binary() => any()}.
+-type tool_result_block() :: #{binary() => any()}.
 
 
 %% Example:
-%% converse_response() :: #{
-%%   <<"additionalModelResponseFields">> => [any()],
-%%   <<"metrics">> => converse_metrics(),
-%%   <<"output">> => list(),
-%%   <<"performanceConfig">> => performance_configuration(),
-%%   <<"serviceTier">> => service_tier(),
-%%   <<"stopReason">> => list(any()),
-%%   <<"trace">> => converse_trace(),
-%%   <<"usage">> => token_usage()
+%% tool_result_block_start() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => [string()]
 %% }
--type converse_response() :: #{binary() => any()}.
+-type tool_result_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_specification() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => list(),
+%%   <<"name">> => string(),
+%%   <<"strict">> => [boolean()]
+%% }
+-type tool_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_block() :: #{
+%%   <<"input">> => [any()],
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type tool_use_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_block_delta() :: #{
+%%   <<"input">> => [string()]
+%% }
+-type tool_use_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_use_block_start() :: #{
+%%   <<"name">> => string(),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type tool_use_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_block() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"source">> => list()
+%% }
+-type video_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_location() :: #{
+%%   <<"domain">> => [string()],
+%%   <<"url">> => [string()]
+%% }
+-type web_location() :: #{binary() => any()}.
 
 -type apply_guardrail_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type converse_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    model_timeout_exception() | 
-    access_denied_exception() | 
-    model_error_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    model_not_ready_exception().
+    model_timeout_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type converse_stream_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    model_timeout_exception() | 
-    access_denied_exception() | 
-    model_error_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    model_not_ready_exception().
+    model_timeout_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type count_tokens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_async_invoke_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_guardrail_checks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
     internal_server_exception() | 
-    service_unavailable_exception().
+    access_denied_exception().
 
 -type invoke_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    model_timeout_exception() | 
-    access_denied_exception() | 
-    model_error_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    model_not_ready_exception().
+    model_timeout_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_model_with_bidirectional_stream_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    model_timeout_exception() | 
-    model_stream_error_exception() | 
-    access_denied_exception() | 
-    model_error_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    model_not_ready_exception().
+    model_timeout_exception() | 
+    model_stream_error_exception() | 
+    model_not_ready_exception() | 
+    model_error_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_model_with_response_stream_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     model_timeout_exception() | 
     model_stream_error_exception() | 
-    access_denied_exception() | 
+    model_not_ready_exception() | 
     model_error_exception() | 
     internal_server_exception() | 
-    service_unavailable_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    model_not_ready_exception().
+    access_denied_exception().
 
 -type list_async_invokes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_async_invoke_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

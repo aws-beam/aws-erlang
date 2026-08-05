@@ -699,3734 +699,10 @@
 
 
 %% Example:
-%% get_buckets_aggregation_response() :: #{
-%%   <<"buckets">> => list(bucket()),
-%%   <<"totalCount">> => integer()
-%% }
--type get_buckets_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_url_destination_configuration() :: #{
-%%   <<"confirmationUrl">> => string()
-%% }
--type http_url_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_audit_suppression_request() :: #{
-%%   <<"checkName">> := string(),
-%%   <<"resourceIdentifier">> := resource_identifier()
-%% }
--type describe_audit_suppression_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sbom_validation_results_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"validationResultSummaries">> => list(sbom_validation_result_summary())
-%% }
--type list_sbom_validation_results_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_billing_group_response() :: #{
-%%   <<"billingGroupArn">> => string(),
-%%   <<"billingGroupId">> => string(),
-%%   <<"billingGroupMetadata">> => billing_group_metadata(),
-%%   <<"billingGroupName">> => string(),
-%%   <<"billingGroupProperties">> => billing_group_properties(),
-%%   <<"version">> => float()
-%% }
--type describe_billing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_command_response() :: #{
-%%   <<"statusCode">> => integer()
-%% }
--type delete_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_request() :: #{
-%%   <<"comment">> => string(),
-%%   <<"force">> => boolean(),
-%%   <<"reasonCode">> => string()
-%% }
--type cancel_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_thing_response() :: #{
-%%   <<"thingArn">> => string(),
-%%   <<"thingId">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type create_thing_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_registration_task_reports_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reportType">> => list(any()),
-%%   <<"resourceLinks">> => list(string())
-%% }
--type list_thing_registration_task_reports_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_provider_request() :: #{}
--type describe_certificate_provider_request() :: #{}.
-
-
-%% Example:
-%% get_command_response() :: #{
-%%   <<"commandArn">> => string(),
-%%   <<"commandId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deprecated">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"mandatoryParameters">> => list(command_parameter()),
-%%   <<"namespace">> => list(any()),
-%%   <<"payload">> => command_payload(),
-%%   <<"payloadTemplate">> => string(),
-%%   <<"pendingDeletion">> => boolean(),
-%%   <<"preprocessor">> => command_preprocessor(),
-%%   <<"roleArn">> => string()
-%% }
--type get_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_criteria() :: #{
-%%   <<"failureType">> => list(any()),
-%%   <<"numberOfRetries">> => integer()
-%% }
--type retry_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_billing_group_response() :: #{
-%%   <<"billingGroupArn">> => string(),
-%%   <<"billingGroupId">> => string(),
-%%   <<"billingGroupName">> => string()
-%% }
--type create_billing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dimension_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type create_dimension_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mitigation_action_request() :: #{}
--type delete_mitigation_action_request() :: #{}.
-
-
-%% Example:
-%% list_provisioning_template_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"versions">> => list(provisioning_template_version_summary())
-%% }
--type list_provisioning_template_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_mitigation_action_execution_metadata() :: #{
-%%   <<"actionId">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"errorCode">> => string(),
-%%   <<"findingId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type audit_mitigation_action_execution_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% geo_location_target() :: #{
-%%   <<"name">> => string(),
-%%   <<"order">> => list(any())
-%% }
--type geo_location_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_certificate_request() :: #{
-%%   <<"newStatus">> := list(any())
-%% }
--type update_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_property() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type user_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_rule() :: #{
-%%   <<"actions">> => list(action()),
-%%   <<"awsIotSqlVersion">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"errorAction">> => action(),
-%%   <<"ruleDisabled">> => boolean(),
-%%   <<"ruleName">> => string(),
-%%   <<"sql">> => string()
-%% }
--type topic_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% timestream_dimension() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type timestream_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% terms_aggregation() :: #{
-%%   <<"maxBuckets">> => integer()
-%% }
--type terms_aggregation() :: #{binary() => any()}.
-
-%% Example:
-%% create_provisioning_claim_request() :: #{}
--type create_provisioning_claim_request() :: #{}.
-
-
-%% Example:
-%% command_payload() :: #{
-%%   <<"content">> => binary(),
-%%   <<"contentType">> => string()
-%% }
--type command_payload() :: #{binary() => any()}.
-
-%% Example:
-%% get_topic_rule_destination_request() :: #{}
--type get_topic_rule_destination_request() :: #{}.
-
-
-%% Example:
-%% update_package_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"versionUpdateByJobsConfig">> => version_update_by_jobs_config()
-%% }
--type update_package_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_update_file() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"codeSigning">> => code_signing(),
-%%   <<"fileLocation">> => file_location(),
-%%   <<"fileName">> => string(),
-%%   <<"fileType">> => integer(),
-%%   <<"fileVersion">> => string()
-%% }
--type ota_update_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_statistics_response() :: #{
-%%   <<"statistics">> => statistics()
-%% }
--type get_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% violation_event_additional_info() :: #{
-%%   <<"confidenceLevel">> => list(any())
-%% }
--type violation_event_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_billing_group_request() :: #{
-%%   <<"expectedVersion">> => float()
-%% }
--type delete_billing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_versions_response() :: #{
-%%   <<"policyVersions">> => list(policy_version())
-%% }
--type list_policy_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_indexing_configuration_response() :: #{
-%%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
-%%   <<"thingIndexingConfiguration">> => thing_indexing_configuration()
-%% }
--type get_indexing_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_thing_request() :: #{
-%%   <<"attributePayload">> => attribute_payload(),
-%%   <<"expectedVersion">> => float(),
-%%   <<"removeThingType">> => boolean(),
-%%   <<"thingTypeName">> => string()
-%% }
--type update_thing_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ca_certificate_request() :: #{}
--type delete_ca_certificate_request() :: #{}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_template_response() :: #{
-%%   <<"jobTemplateArn">> => string(),
-%%   <<"jobTemplateId">> => string()
-%% }
--type create_job_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_default_policy_version_request() :: #{}
--type set_default_policy_version_request() :: #{}.
-
-
-%% Example:
-%% thing_group_indexing_configuration() :: #{
-%%   <<"customFields">> => list(field()),
-%%   <<"managedFields">> => list(field()),
-%%   <<"thingGroupIndexingMode">> => list(any())
-%% }
--type thing_group_indexing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_version_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"generationId">> => string(),
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"policyVersionId">> => string()
-%% }
--type get_policy_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose_action() :: #{
-%%   <<"batchMode">> => boolean(),
-%%   <<"deliveryStreamName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"separator">> => string()
-%% }
--type firehose_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_audit_mitigation_actions_task_response() :: #{
-%%   <<"taskId">> => string()
-%% }
--type start_audit_mitigation_actions_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_in_thing_group_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recursive">> => boolean()
-%% }
--type list_things_in_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_authorization() :: #{
-%%   <<"sigv4">> => sig_v4_authorization()
-%% }
--type http_authorization() :: #{binary() => any()}.
-
-
-%% Example:
-%% detect_mitigation_actions_task_target() :: #{
-%%   <<"behaviorName">> => string(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"violationIds">> => list(string())
-%% }
--type detect_mitigation_actions_task_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% registration_config() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"templateBody">> => string(),
-%%   <<"templateName">> => string()
-%% }
--type registration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioning_template_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_provisioning_template_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% malformed_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_policy_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_principal_things_v2_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"principalThingObjects">> => list(principal_thing_object())
-%% }
--type list_principal_things_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namePrefixFilter">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"parentGroup">> => string(),
-%%   <<"recursive">> => boolean()
-%% }
--type list_thing_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_domain_configuration_response() :: #{
-%%   <<"applicationProtocol">> => list(any()),
-%%   <<"authenticationType">> => list(any()),
-%%   <<"authorizerConfig">> => authorizer_config(),
-%%   <<"clientCertificateConfig">> => client_certificate_config(),
-%%   <<"domainConfigurationArn">> => string(),
-%%   <<"domainConfigurationName">> => string(),
-%%   <<"domainConfigurationStatus">> => list(any()),
-%%   <<"domainName">> => string(),
-%%   <<"domainType">> => list(any()),
-%%   <<"lastStatusChangeDate">> => non_neg_integer(),
-%%   <<"serverCertificateConfig">> => server_certificate_config(),
-%%   <<"serverCertificates">> => list(server_certificate_summary()),
-%%   <<"serviceType">> => list(any()),
-%%   <<"tlsConfig">> => tls_config()
-%% }
--type describe_domain_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_thing_principal_request() :: #{
-%%   <<"principal">> := string(),
-%%   <<"thingPrincipalType">> => list(any())
-%% }
--type attach_thing_principal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_package_version_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_package_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_response() :: #{
-%%   <<"documentSource">> => string(),
-%%   <<"job">> => job()
-%% }
--type describe_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type version_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_execution_request() :: #{
-%%   <<"executionNumber">> => float()
-%% }
--type describe_job_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_profile_response() :: #{}
--type delete_security_profile_response() :: #{}.
-
-
-%% Example:
-%% cancel_job_execution_request() :: #{
-%%   <<"expectedVersion">> => float(),
-%%   <<"force">> => boolean(),
-%%   <<"statusDetails">> => map()
-%% }
--type cancel_job_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_topic_rules_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"rules">> => list(topic_rule_list_item())
-%% }
--type list_topic_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string()
-%% }
--type create_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_finding() :: #{
-%%   <<"checkName">> => string(),
-%%   <<"findingId">> => string(),
-%%   <<"findingTime">> => non_neg_integer(),
-%%   <<"isSuppressed">> => boolean(),
-%%   <<"nonCompliantResource">> => non_compliant_resource(),
-%%   <<"reasonForNonCompliance">> => string(),
-%%   <<"reasonForNonComplianceCode">> => string(),
-%%   <<"relatedResources">> => list(related_resource()),
-%%   <<"severity">> => list(any()),
-%%   <<"taskId">> => string(),
-%%   <<"taskStartTime">> => non_neg_integer()
-%% }
--type audit_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_indexing_configuration_request() :: #{}
--type get_indexing_configuration_request() :: #{}.
-
-
-%% Example:
-%% describe_provisioning_template_version_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"templateBody">> => string(),
-%%   <<"versionId">> => integer()
-%% }
--type describe_provisioning_template_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_context() :: #{
-%%   <<"serverName">> => string()
-%% }
--type tls_context() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_version_request() :: #{}
--type get_policy_version_request() :: #{}.
-
-
-%% Example:
-%% status_reason() :: #{
-%%   <<"reasonCode">> => string(),
-%%   <<"reasonDescription">> => string()
-%% }
--type status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_configuration_request() :: #{
-%%   <<"applicationProtocol">> => list(any()),
-%%   <<"authenticationType">> => list(any()),
-%%   <<"authorizerConfig">> => authorizer_config(),
-%%   <<"clientCertificateConfig">> => client_certificate_config(),
-%%   <<"domainConfigurationStatus">> => list(any()),
-%%   <<"removeAuthorizerConfig">> => boolean(),
-%%   <<"serverCertificateConfig">> => server_certificate_config(),
-%%   <<"tlsConfig">> => tls_config()
-%% }
--type update_domain_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% attach_security_profile_response() :: #{}
--type attach_security_profile_response() :: #{}.
-
-
-%% Example:
-%% billing_group_metadata() :: #{
-%%   <<"creationDate">> => non_neg_integer()
-%% }
--type billing_group_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% buckets_aggregation_type() :: #{
-%%   <<"termsAggregation">> => terms_aggregation()
-%% }
--type buckets_aggregation_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_authorizer_response() :: #{
-%%   <<"authorizerDescription">> => authorizer_description()
-%% }
--type describe_authorizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_metric_request() :: #{}
--type delete_custom_metric_request() :: #{}.
-
-
-%% Example:
-%% test_authorization_response() :: #{
-%%   <<"authResults">> => list(auth_result())
-%% }
--type test_authorization_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_job_executions_rollout_config() :: #{
-%%   <<"exponentialRate">> => aws_job_exponential_rollout_rate(),
-%%   <<"maximumPerMinute">> => integer()
-%% }
--type aws_job_executions_rollout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_topic_rule_response() :: #{
-%%   <<"rule">> => topic_rule(),
-%%   <<"ruleArn">> => string()
-%% }
--type get_topic_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% violation_event_occurrence_range() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type violation_event_occurrence_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_commands_response() :: #{
-%%   <<"commands">> => list(command_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_commands_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profiles_for_target_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recursive">> => boolean(),
-%%   <<"securityProfileTargetArn">> := string()
-%% }
--type list_security_profiles_for_target_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_connectivity_data_response() :: #{
-%%   <<"cleanSession">> => boolean(),
-%%   <<"clientId">> => string(),
-%%   <<"connected">> => boolean(),
-%%   <<"disconnectReason">> => list(any()),
-%%   <<"keepAliveDuration">> => integer(),
-%%   <<"sessionExpiry">> => float(),
-%%   <<"sourceIp">> => string(),
-%%   <<"sourcePort">> => integer(),
-%%   <<"targetIp">> => string(),
-%%   <<"targetPort">> => integer(),
-%%   <<"thingName">> => string(),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"vpcEndpointId">> => string()
-%% }
--type get_thing_connectivity_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ca_certificate_description() :: #{
-%%   <<"autoRegistrationStatus">> => list(any()),
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"certificateMode">> => list(any()),
-%%   <<"certificatePem">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"customerVersion">> => integer(),
-%%   <<"generationId">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"ownedBy">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"validity">> => certificate_validity()
-%% }
--type ca_certificate_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_certificate_transfer_request() :: #{}
--type cancel_certificate_transfer_request() :: #{}.
-
-%% Example:
-%% delete_scheduled_audit_response() :: #{}
--type delete_scheduled_audit_response() :: #{}.
-
-%% Example:
-%% delete_command_execution_response() :: #{}
--type delete_command_execution_response() :: #{}.
-
-
-%% Example:
-%% get_percentiles_response() :: #{
-%%   <<"percentiles">> => list(percent_pair())
-%% }
--type get_percentiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_topic_rules_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"ruleDisabled">> => boolean(),
-%%   <<"topic">> => string()
-%% }
--type list_topic_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_job_timeout_config() :: #{
-%%   <<"inProgressTimeoutInMinutes">> => float()
-%% }
--type aws_job_timeout_config() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% confirm_topic_rule_destination_response() :: #{}
--type confirm_topic_rule_destination_response() :: #{}.
-
-
-%% Example:
-%% create_package_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_mitigation_actions_executions_request() :: #{
-%%   <<"actionStatus">> => list(any()),
-%%   <<"findingId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"taskId">> := string()
-%% }
--type list_audit_mitigation_actions_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_thing_principal_response() :: #{}
--type detach_thing_principal_response() :: #{}.
-
-
-%% Example:
-%% update_thing_type_request() :: #{
-%%   <<"thingTypeProperties">> => thing_type_properties()
-%% }
--type update_thing_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_thing_type_request() :: #{}
--type delete_thing_type_request() :: #{}.
-
-
-%% Example:
-%% list_topic_rule_destinations_response() :: #{
-%%   <<"destinationSummaries">> => list(topic_rule_destination_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_topic_rule_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_detect_mitigation_actions_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(detect_mitigation_actions_task_summary())
-%% }
--type list_detect_mitigation_actions_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_invoke_authorizer_request() :: #{
-%%   <<"httpContext">> => http_context(),
-%%   <<"mqttContext">> => mqtt_context(),
-%%   <<"tlsContext">> => tls_context(),
-%%   <<"token">> => string(),
-%%   <<"tokenSignature">> => string()
-%% }
--type test_invoke_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_job_abort_criteria() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"failureType">> => list(any()),
-%%   <<"minNumberOfExecutedThings">> => integer(),
-%%   <<"thresholdPercentage">> => float()
-%% }
--type aws_job_abort_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% update_audit_suppression_response() :: #{}
--type update_audit_suppression_response() :: #{}.
-
-
-%% Example:
-%% provisioning_hook() :: #{
-%%   <<"payloadVersion">> => string(),
-%%   <<"targetArn">> => string()
-%% }
--type provisioning_hook() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamo_dbv2_action() :: #{
-%%   <<"putItem">> => put_item_input(),
-%%   <<"roleArn">> => string()
-%% }
--type dynamo_dbv2_action() :: #{binary() => any()}.
-
-%% Example:
-%% enable_topic_rule_request() :: #{}
--type enable_topic_rule_request() :: #{}.
-
-
-%% Example:
-%% audit_mitigation_actions_task_metadata() :: #{
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"taskId">> => string(),
-%%   <<"taskStatus">> => list(any())
-%% }
--type audit_mitigation_actions_task_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ota_update_response() :: #{
-%%   <<"otaUpdateInfo">> => ota_update_info()
-%% }
--type get_ota_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_property_value() :: #{
-%%   <<"quality">> => string(),
-%%   <<"timestamp">> => asset_property_timestamp(),
-%%   <<"value">> => list()
-%% }
--type asset_property_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namespaceId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetSelection">> => list(any()),
-%%   <<"thingGroupId">> => string(),
-%%   <<"thingGroupName">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policies_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mqtt5_configuration() :: #{
-%%   <<"propagatingAttributes">> => list(propagating_attribute())
-%% }
--type mqtt5_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namePrefixFilter">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_billing_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_action() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"cannedAcl">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type s3_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_parameter() :: #{
-%%   <<"description">> => string(),
-%%   <<"example">> => string(),
-%%   <<"key">> => string(),
-%%   <<"optional">> => boolean(),
-%%   <<"regex">> => string()
-%% }
--type document_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{}
--type get_policy_request() :: #{}.
-
-
-%% Example:
-%% update_billing_group_response() :: #{
-%%   <<"version">> => float()
-%% }
--type update_billing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_certificate_transfer_request() :: #{
-%%   <<"rejectReason">> => string()
-%% }
--type reject_certificate_transfer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_principals_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_thing_principals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% billing_group_properties() :: #{
-%%   <<"billingGroupDescription">> => string()
-%% }
--type billing_group_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_security_profile_response() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
-%%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"metricsExportConfig">> => metrics_export_config(),
-%%   <<"securityProfileArn">> => string(),
-%%   <<"securityProfileDescription">> => string(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"version">> => float()
-%% }
--type describe_security_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_aggregation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_aggregation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_profile_response() :: #{
-%%   <<"securityProfileArn">> => string(),
-%%   <<"securityProfileName">> => string()
-%% }
--type create_security_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_url_destination_properties() :: #{
-%%   <<"confirmationUrl">> => string()
-%% }
--type http_url_destination_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_certificate_without_ca_response() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string()
-%% }
--type register_certificate_without_ca_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_certificate_provider_request() :: #{
-%%   <<"accountDefaultForOperations">> := list(list(any())()),
-%%   <<"clientToken">> => string(),
-%%   <<"lambdaFunctionArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_certificate_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type delete_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_certificate_from_csr_request() :: #{
-%%   <<"certificateSigningRequest">> := string(),
-%%   <<"setAsActive">> => boolean()
-%% }
--type create_certificate_from_csr_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_findings_response() :: #{
-%%   <<"findings">> => list(audit_finding()),
-%%   <<"nextToken">> => string()
-%% }
--type list_audit_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_policies_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy())
-%% }
--type list_attached_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_indexing_configuration() :: #{
-%%   <<"customFields">> => list(field()),
-%%   <<"deviceDefenderIndexingMode">> => list(any()),
-%%   <<"filter">> => indexing_filter(),
-%%   <<"managedFields">> => list(field()),
-%%   <<"namedShadowIndexingMode">> => list(any()),
-%%   <<"thingConnectivityIndexingMode">> => list(any()),
-%%   <<"thingIndexingMode">> => list(any())
-%% }
--type thing_indexing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_security_profile_request() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
-%%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()),
-%%   <<"deleteAdditionalMetricsToRetain">> => boolean(),
-%%   <<"deleteAlertTargets">> => boolean(),
-%%   <<"deleteBehaviors">> => boolean(),
-%%   <<"deleteMetricsExportConfig">> => boolean(),
-%%   <<"expectedVersion">> => float(),
-%%   <<"metricsExportConfig">> => metrics_export_config(),
-%%   <<"securityProfileDescription">> => string()
-%% }
--type update_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_fleet_metric_request() :: #{
-%%   <<"aggregationField">> := string(),
-%%   <<"aggregationType">> := aggregation_type(),
-%%   <<"description">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"period">> := integer(),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"unit">> => list(any())
-%% }
--type create_fleet_metric_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_thing_registration_task_request() :: #{}
--type stop_thing_registration_task_request() :: #{}.
-
-%% Example:
-%% describe_custom_metric_request() :: #{}
--type describe_custom_metric_request() :: #{}.
-
-
-%% Example:
-%% list_role_aliases_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_role_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_metric_request() :: #{
-%%   <<"displayName">> := string()
-%% }
--type update_custom_metric_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_document_request() :: #{
-%%   <<"beforeSubstitution">> => boolean()
-%% }
--type get_job_document_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamo_db_action() :: #{
-%%   <<"hashKeyField">> => string(),
-%%   <<"hashKeyType">> => list(any()),
-%%   <<"hashKeyValue">> => string(),
-%%   <<"operation">> => string(),
-%%   <<"payloadField">> => string(),
-%%   <<"rangeKeyField">> => string(),
-%%   <<"rangeKeyType">> => list(any()),
-%%   <<"rangeKeyValue">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tableName">> => string()
-%% }
--type dynamo_db_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_description() :: #{
-%%   <<"caCertificateId">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"certificateMode">> => list(any()),
-%%   <<"certificatePem">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"customerVersion">> => integer(),
-%%   <<"generationId">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"ownedBy">> => string(),
-%%   <<"previousOwnedBy">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"transferData">> => transfer_data(),
-%%   <<"validity">> => certificate_validity()
-%% }
--type certificate_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_asset_property_value_entry() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"entryId">> => string(),
-%%   <<"propertyAlias">> => string(),
-%%   <<"propertyId">> => string(),
-%%   <<"propertyValues">> => list(asset_property_value())
-%% }
--type put_asset_property_value_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_effective_policies_response() :: #{
-%%   <<"effectivePolicies">> => list(effective_policy())
-%% }
--type get_effective_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_mitigation_actions_request() :: #{
-%%   <<"actionType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_mitigation_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_principals_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"principals">> => list(string())
-%% }
--type list_policy_principals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type certificate_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_configurations_response() :: #{
-%%   <<"domainConfigurations">> => list(domain_configuration_summary()),
-%%   <<"nextMarker">> => string()
-%% }
--type list_domain_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_request() :: #{
-%%   <<"policyDocument">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_packages_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_packages_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ota_update_request() :: #{}
--type get_ota_update_request() :: #{}.
-
-
-%% Example:
-%% replace_topic_rule_request() :: #{
-%%   <<"topicRulePayload">> := topic_rule_payload()
-%% }
--type replace_topic_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_thing_registration_task_request() :: #{
-%%   <<"inputFileBucket">> := string(),
-%%   <<"inputFileKey">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"templateBody">> := string()
-%% }
--type start_thing_registration_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_security_profile_request() :: #{
-%%   <<"securityProfileTargetArn">> := string()
-%% }
--type detach_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_command_execution_request() :: #{
-%%   <<"targetArn">> := string()
-%% }
--type delete_command_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_authorizer_request() :: #{}
--type describe_authorizer_request() :: #{}.
-
-
-%% Example:
-%% list_fleet_metrics_response() :: #{
-%%   <<"fleetMetrics">> => list(fleet_metric_name_and_arn()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleet_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_thing_type_response() :: #{}
--type update_thing_type_response() :: #{}.
-
-
-%% Example:
-%% metric_to_retain() :: #{
-%%   <<"exportMetric">> => boolean(),
-%%   <<"metric">> => string(),
-%%   <<"metricDimension">> => metric_dimension()
-%% }
--type metric_to_retain() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_event_configuration() :: #{
-%%   <<"eventType">> => string(),
-%%   <<"logDestination">> => string(),
-%%   <<"logLevel">> => list(any())
-%% }
--type log_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_topic_rule_destination_response() :: #{
-%%   <<"topicRuleDestination">> => topic_rule_destination()
-%% }
--type create_topic_rule_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ca_certificates_response() :: #{
-%%   <<"certificates">> => list(ca_certificate()),
-%%   <<"nextMarker">> => string()
-%% }
--type list_ca_certificates_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_package_version_response() :: #{}
--type update_package_version_response() :: #{}.
-
-%% Example:
-%% update_event_configurations_response() :: #{}
--type update_event_configurations_response() :: #{}.
-
-
-%% Example:
-%% versions_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type versions_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_mitigation_action_request() :: #{
-%%   <<"actionParams">> => mitigation_action_params(),
-%%   <<"roleArn">> => string()
-%% }
--type update_mitigation_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_violation_events_request() :: #{
-%%   <<"behaviorCriteriaType">> => list(any()),
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"listSuppressedAlerts">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"thingName">> => string(),
-%%   <<"verificationState">> => list(any())
-%% }
--type list_violation_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_version_response() :: #{
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyVersionId">> => string()
-%% }
--type create_policy_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_things_to_thing_group_params() :: #{
-%%   <<"overrideDynamicGroups">> => boolean(),
-%%   <<"thingGroupNames">> => list(string())
-%% }
--type add_things_to_thing_group_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_certificate_without_ca_request() :: #{
-%%   <<"certificatePem">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type register_certificate_without_ca_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_in_thing_group_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string())
-%% }
--type list_things_in_thing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_audit_mitigation_actions_task_request() :: #{
-%%   <<"auditCheckToActionsMapping">> := map(),
-%%   <<"clientRequestToken">> := string(),
-%%   <<"target">> := audit_mitigation_actions_task_target()
-%% }
--type start_audit_mitigation_actions_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stream_response() :: #{}
--type delete_stream_response() :: #{}.
-
-%% Example:
-%% update_indexing_configuration_response() :: #{}
--type update_indexing_configuration_response() :: #{}.
-
-
-%% Example:
-%% http_action_header() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type http_action_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% exponential_rollout_rate() :: #{
-%%   <<"baseRatePerMinute">> => integer(),
-%%   <<"incrementFactor">> => float(),
-%%   <<"rateIncreaseCriteria">> => rate_increase_criteria()
-%% }
--type exponential_rollout_rate() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_ca_certificate_response() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string()
-%% }
--type register_ca_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"jobs">> => list(job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_json_substitution_command_preprocessor_config() :: #{
-%%   <<"outputFormat">> => list(any())
-%% }
--type aws_json_substitution_command_preprocessor_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profiles_for_target_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityProfileTargetMappings">> => list(security_profile_target_mapping())
-%% }
--type list_security_profiles_for_target_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"abortConfig">> => abort_config(),
-%%   <<"description">> => string(),
-%%   <<"destinationPackageVersions">> => list(string()),
-%%   <<"document">> => string(),
-%%   <<"documentParameters">> => map(),
-%%   <<"documentSource">> => string(),
-%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
-%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
-%%   <<"jobTemplateArn">> => string(),
-%%   <<"namespaceId">> => string(),
-%%   <<"presignedUrlConfig">> => presigned_url_config(),
-%%   <<"schedulingConfig">> => scheduling_config(),
-%%   <<"tags">> => list(tag()),
-%%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> := list(string()),
-%%   <<"timeoutConfig">> => timeout_config()
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_policy_request() :: #{
-%%   <<"target">> := string()
-%% }
--type detach_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_account_audit_configuration_response() :: #{
-%%   <<"auditCheckConfigurations">> => map(),
-%%   <<"auditNotificationTargetConfigurations">> => map(),
-%%   <<"roleArn">> => string()
-%% }
--type describe_account_audit_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_configuration_request() :: #{}
--type describe_domain_configuration_request() :: #{}.
-
-
-%% Example:
-%% mqtt_headers() :: #{
-%%   <<"contentType">> => string(),
-%%   <<"correlationData">> => string(),
-%%   <<"messageExpiry">> => string(),
-%%   <<"payloadFormatIndicator">> => string(),
-%%   <<"responseTopic">> => string(),
-%%   <<"userProperties">> => list(user_property())
-%% }
--type mqtt_headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_sbom_with_package_version_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sbom">> := sbom()
-%% }
--type associate_sbom_with_package_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_thing_from_billing_group_request() :: #{
-%%   <<"billingGroupArn">> => string(),
-%%   <<"billingGroupName">> => string(),
-%%   <<"thingArn">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type remove_thing_from_billing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioning_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templates">> => list(provisioning_template_summary())
-%% }
--type list_provisioning_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_audit_configuration_request() :: #{}
--type describe_account_audit_configuration_request() :: #{}.
-
-
-%% Example:
-%% update_ca_certificate_params() :: #{
-%%   <<"action">> => list(any())
-%% }
--type update_ca_certificate_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ca_certificates_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"templateName">> => string()
-%% }
--type list_ca_certificates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_topic_rule_request() :: #{
-%%   <<"tags">> => string(),
-%%   <<"topicRulePayload">> := topic_rule_payload()
-%% }
--type create_topic_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_targets_with_job_request() :: #{
-%%   <<"comment">> => string(),
-%%   <<"namespaceId">> => string(),
-%%   <<"targets">> := list(string())
-%% }
--type associate_targets_with_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_package_response() :: #{}
--type update_package_response() :: #{}.
-
-%% Example:
-%% remove_thing_from_billing_group_response() :: #{}
--type remove_thing_from_billing_group_response() :: #{}.
-
-
-%% Example:
-%% update_certificate_provider_response() :: #{
-%%   <<"certificateProviderArn">> => string(),
-%%   <<"certificateProviderName">> => string()
-%% }
--type update_certificate_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_audit_request() :: #{}
--type describe_scheduled_audit_request() :: #{}.
-
-
-%% Example:
-%% list_policy_principals_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"policyName">> := string()
-%% }
--type list_policy_principals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dynamic_thing_group_response() :: #{
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> => string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"thingGroupArn">> => string(),
-%%   <<"thingGroupId">> => string(),
-%%   <<"thingGroupName">> => string()
-%% }
--type create_dynamic_thing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_info() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% statistical_threshold() :: #{
-%%   <<"statistic">> => string()
-%% }
--type statistical_threshold() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scheduled_audit_request() :: #{
-%%   <<"dayOfMonth">> => string(),
-%%   <<"dayOfWeek">> => list(any()),
-%%   <<"frequency">> => list(any()),
-%%   <<"targetCheckNames">> => list(string())
-%% }
--type update_scheduled_audit_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_request() :: #{}
--type describe_index_request() :: #{}.
-
-
-%% Example:
-%% thing_connectivity() :: #{
-%%   <<"cleanSession">> => boolean(),
-%%   <<"clientId">> => string(),
-%%   <<"connected">> => boolean(),
-%%   <<"disconnectReason">> => string(),
-%%   <<"keepAliveDuration">> => integer(),
-%%   <<"sessionExpiry">> => float(),
-%%   <<"timestamp">> => float()
-%% }
--type thing_connectivity() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_keys_and_certificate_request() :: #{
-%%   <<"setAsActive">> => boolean()
-%% }
--type create_keys_and_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificates_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_audit_task_response() :: #{}
--type cancel_audit_task_response() :: #{}.
-
-%% Example:
-%% delete_authorizer_request() :: #{}
--type delete_authorizer_request() :: #{}.
-
-
-%% Example:
-%% timestream_action() :: #{
-%%   <<"databaseName">> => string(),
-%%   <<"dimensions">> => list(timestream_dimension()),
-%%   <<"roleArn">> => string(),
-%%   <<"tableName">> => string(),
-%%   <<"timestamp">> => timestream_timestamp()
-%% }
--type timestream_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing_signature() :: #{
-%%   <<"inlineDocument">> => binary()
-%% }
--type code_signing_signature() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_keys_and_certificate_response() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"certificatePem">> => string(),
-%%   <<"keyPair">> => key_pair()
-%% }
--type create_keys_and_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_streams_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_authorizer_request() :: #{
-%%   <<"authorizerFunctionArn">> := string(),
-%%   <<"enableCachingForHttp">> => boolean(),
-%%   <<"signingDisabled">> => boolean(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"tokenKeyName">> => string(),
-%%   <<"tokenSigningPublicKeys">> => map()
-%% }
--type create_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_provisioning_template_version_response() :: #{
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"templateArn">> => string(),
-%%   <<"templateName">> => string(),
-%%   <<"versionId">> => integer()
-%% }
--type create_provisioning_template_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_tasks_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"taskStatus">> => list(any()),
-%%   <<"taskType">> => list(any())
-%% }
--type list_audit_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_index_response() :: #{
-%%   <<"indexName">> => string(),
-%%   <<"indexStatus">> => list(any()),
-%%   <<"schema">> => string()
-%% }
--type describe_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_mitigation_actions_tasks_request() :: #{
-%%   <<"auditTaskId">> => string(),
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"findingId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"taskStatus">> => list(any())
-%% }
--type list_audit_mitigation_actions_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ota_update_request() :: #{
-%%   <<"additionalParameters">> => map(),
-%%   <<"awsJobAbortConfig">> => aws_job_abort_config(),
-%%   <<"awsJobExecutionsRolloutConfig">> => aws_job_executions_rollout_config(),
-%%   <<"awsJobPresignedUrlConfig">> => aws_job_presigned_url_config(),
-%%   <<"awsJobTimeoutConfig">> => aws_job_timeout_config(),
-%%   <<"description">> => string(),
-%%   <<"files">> := list(ota_update_file()),
-%%   <<"protocols">> => list(list(any())()),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> := list(string())
-%% }
--type create_ota_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fleet_metrics_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleet_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_role_alias_request() :: #{
-%%   <<"credentialDurationSeconds">> => integer(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_role_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_certificate_provider_response() :: #{
-%%   <<"certificateProviderArn">> => string(),
-%%   <<"certificateProviderName">> => string()
-%% }
--type create_certificate_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_preprocessor() :: #{
-%%   <<"awsJsonSubstitution">> => aws_json_substitution_command_preprocessor_config()
-%% }
--type command_preprocessor() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_target() :: #{
-%%   <<"targetName">> => string(),
-%%   <<"targetType">> => list(any())
-%% }
--type log_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% mitigation_action() :: #{
-%%   <<"actionParams">> => mitigation_action_params(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type mitigation_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ota_update_response() :: #{
-%%   <<"awsIotJobArn">> => string(),
-%%   <<"awsIotJobId">> => string(),
-%%   <<"otaUpdateArn">> => string(),
-%%   <<"otaUpdateId">> => string(),
-%%   <<"otaUpdateStatus">> => list(any())
-%% }
--type create_ota_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics_export_config() :: #{
-%%   <<"mqttTopic">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type metrics_export_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% mitigation_action_identifier() :: #{
-%%   <<"actionArn">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"creationDate">> => non_neg_integer()
-%% }
--type mitigation_action_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_commands_request() :: #{
-%%   <<"commandParameterName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_commands_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_authorizer_response() :: #{}
--type delete_authorizer_response() :: #{}.
-
-
-%% Example:
-%% aws_job_presigned_url_config() :: #{
-%%   <<"expiresInSec">> => float()
-%% }
--type aws_job_presigned_url_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_command_response() :: #{
-%%   <<"commandId">> => string(),
-%%   <<"deprecated">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer()
-%% }
--type update_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% percent_pair() :: #{
-%%   <<"percent">> => float(),
-%%   <<"value">> => float()
-%% }
--type percent_pair() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_in_billing_group_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_things_in_billing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_billing_group_request() :: #{
-%%   <<"billingGroupProperties">> => billing_group_properties(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_billing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_profile_identifier() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string()
-%% }
--type security_profile_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_on_demand_audit_task_response() :: #{
-%%   <<"taskId">> => string()
-%% }
--type start_on_demand_audit_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indices_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_indices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% location_timestamp() :: #{
-%%   <<"unit">> => string(),
-%%   <<"value">> => string()
-%% }
--type location_timestamp() :: #{binary() => any()}.
-
-
-%% Example:
-%% elasticsearch_action() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"id">> => string(),
-%%   <<"index">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"type">> => string()
-%% }
--type elasticsearch_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_version_identifier() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"policyVersionId">> => string()
-%% }
--type policy_version_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_executions_for_thing_request() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespaceId">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_job_executions_for_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_targets_with_job_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string()
-%% }
--type associate_targets_with_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_detect_mitigation_actions_task_request() :: #{
-%%   <<"actions">> := list(string()),
-%%   <<"clientRequestToken">> := string(),
-%%   <<"includeOnlyActiveViolations">> => boolean(),
-%%   <<"includeSuppressedAlerts">> => boolean(),
-%%   <<"target">> := detect_mitigation_actions_task_target(),
-%%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
-%% }
--type start_detect_mitigation_actions_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_audit_request() :: #{}
--type delete_scheduled_audit_request() :: #{}.
-
-
-%% Example:
-%% policy_version() :: #{
-%%   <<"createDate">> => non_neg_integer(),
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"versionId">> => string()
-%% }
--type policy_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_provisioning_claim_response() :: #{
-%%   <<"certificateId">> => string(),
-%%   <<"certificatePem">> => string(),
-%%   <<"expiration">> => non_neg_integer(),
-%%   <<"keyPair">> => key_pair()
-%% }
--type create_provisioning_claim_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_thing_registration_task_response() :: #{
-%%   <<"taskId">> => string()
-%% }
--type start_thing_registration_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_percentiles_request() :: #{
-%%   <<"aggregationField">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"percents">> => list(float()),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string()
-%% }
--type get_percentiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_authorizer_response() :: #{
-%%   <<"authorizerArn">> => string(),
-%%   <<"authorizerName">> => string()
-%% }
--type create_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_thing_request() :: #{
-%%   <<"attributePayload">> => attribute_payload(),
-%%   <<"billingGroupName">> => string(),
-%%   <<"thingTypeName">> => string()
-%% }
--type create_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_version_request() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"artifact">> => package_version_artifact(),
-%%   <<"attributes">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"recipe">> => string()
-%% }
--type update_package_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioning_template_version_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"isDefaultVersion">> => boolean(),
-%%   <<"versionId">> => integer()
-%% }
--type provisioning_template_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ca_certificate_request() :: #{}
--type describe_ca_certificate_request() :: #{}.
-
-%% Example:
-%% delete_job_template_request() :: #{}
--type delete_job_template_request() :: #{}.
-
-
-%% Example:
-%% job_process_details() :: #{
-%%   <<"numberOfCanceledThings">> => integer(),
-%%   <<"numberOfFailedThings">> => integer(),
-%%   <<"numberOfInProgressThings">> => integer(),
-%%   <<"numberOfQueuedThings">> => integer(),
-%%   <<"numberOfRejectedThings">> => integer(),
-%%   <<"numberOfRemovedThings">> => integer(),
-%%   <<"numberOfSucceededThings">> => integer(),
-%%   <<"numberOfTimedOutThings">> => integer(),
-%%   <<"processingTargets">> => list(string())
-%% }
--type job_process_details() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_detect_mitigation_actions_task_request() :: #{}
--type cancel_detect_mitigation_actions_task_request() :: #{}.
-
-
-%% Example:
-%% get_command_execution_request() :: #{
-%%   <<"includeResult">> => boolean(),
-%%   <<"targetArn">> := string()
-%% }
--type get_command_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_audit_mitigation_actions_task_request() :: #{}
--type describe_audit_mitigation_actions_task_request() :: #{}.
-
-
-%% Example:
-%% sns_action() :: #{
-%%   <<"messageFormat">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"targetArn">> => string()
-%% }
--type sns_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% indexing_filter() :: #{
-%%   <<"connectivity">> => connectivity_filter(),
-%%   <<"geoLocations">> => list(geo_location_target()),
-%%   <<"namedShadowNames">> => list(string())
-%% }
--type indexing_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_logging_options_request() :: #{
-%%   <<"loggingOptionsPayload">> := logging_options_payload()
-%% }
--type set_logging_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_thing_type_response() :: #{}
--type deprecate_thing_type_response() :: #{}.
-
-
-%% Example:
-%% describe_audit_finding_response() :: #{
-%%   <<"finding">> => audit_finding()
-%% }
--type describe_audit_finding_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_policies_request() :: #{
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"recursive">> => boolean()
-%% }
--type list_attached_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sig_v4_authorization() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"serviceName">> => string(),
-%%   <<"signingRegion">> => string()
-%% }
--type sig_v4_authorization() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stream_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"files">> := list(stream_file()),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_provisioning_template_request() :: #{
-%%   <<"defaultVersionId">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"preProvisioningHook">> => provisioning_hook(),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"removePreProvisioningHook">> => boolean()
-%% }
--type update_provisioning_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_v2_logging_levels_response() :: #{
-%%   <<"logTargetConfigurations">> => list(log_target_configuration()),
-%%   <<"nextToken">> => string()
-%% }
--type list_v2_logging_levels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_audit_suppression_request() :: #{
-%%   <<"checkName">> := string(),
-%%   <<"resourceIdentifier">> := resource_identifier()
-%% }
--type delete_audit_suppression_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_configurations_request() :: #{}
--type describe_event_configurations_request() :: #{}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"completedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"isConcurrent">> => boolean(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"targetSelection">> => list(any()),
-%%   <<"thingGroupId">> => string()
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scheduled_audit_request() :: #{
-%%   <<"dayOfMonth">> => string(),
-%%   <<"dayOfWeek">> => list(any()),
-%%   <<"frequency">> := list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"targetCheckNames">> := list(string())
-%% }
--type create_scheduled_audit_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sbom() :: #{
-%%   <<"s3Location">> => s3_location()
-%% }
--type sbom() :: #{binary() => any()}.
-
-%% Example:
-%% describe_audit_finding_request() :: #{}
--type describe_audit_finding_request() :: #{}.
-
-
-%% Example:
-%% get_statistics_request() :: #{
-%%   <<"aggregationField">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string()
-%% }
--type get_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_attribute() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"thingArn">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"thingTypeName">> => string(),
-%%   <<"version">> => float()
-%% }
--type thing_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_active_violations_response() :: #{
-%%   <<"activeViolations">> => list(active_violation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_active_violations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_custom_metric_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"metricArn">> => string(),
-%%   <<"metricName">> => string(),
-%%   <<"metricType">> => list(any())
-%% }
--type describe_custom_metric_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_command_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"mandatoryParameters">> => list(command_parameter()),
-%%   <<"namespace">> => list(any()),
-%%   <<"payload">> => command_payload(),
-%%   <<"payloadTemplate">> => string(),
-%%   <<"preprocessor">> => command_preprocessor(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_command_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_command_request() :: #{}
--type delete_command_request() :: #{}.
-
-%% Example:
-%% cancel_detect_mitigation_actions_task_response() :: #{}
--type cancel_detect_mitigation_actions_task_response() :: #{}.
-
-
-%% Example:
-%% describe_managed_job_template_request() :: #{
-%%   <<"templateVersion">> => string()
-%% }
--type describe_managed_job_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_targets_for_policy_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"targets">> => list(string())
-%% }
--type list_targets_for_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_audit_suppression_request() :: #{
-%%   <<"checkName">> := string(),
-%%   <<"clientRequestToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"resourceIdentifier">> := resource_identifier(),
-%%   <<"suppressIndefinitely">> => boolean()
-%% }
--type create_audit_suppression_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_configuration_request() :: #{}
--type delete_domain_configuration_request() :: #{}.
-
-
-%% Example:
-%% aws_job_rate_increase_criteria() :: #{
-%%   <<"numberOfNotifiedThings">> => integer(),
-%%   <<"numberOfSucceededThings">> => integer()
-%% }
--type aws_job_rate_increase_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloudwatch_metric_action() :: #{
-%%   <<"metricName">> => string(),
-%%   <<"metricNamespace">> => string(),
-%%   <<"metricTimestamp">> => string(),
-%%   <<"metricUnit">> => string(),
-%%   <<"metricValue">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type cloudwatch_metric_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificate_providers_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"nextToken">> => string()
-%% }
--type list_certificate_providers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_execution_response() :: #{
-%%   <<"execution">> => job_execution()
-%% }
--type describe_job_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_version_request() :: #{}
--type delete_policy_version_request() :: #{}.
-
-
-%% Example:
-%% http_context() :: #{
-%%   <<"headers">> => map(),
-%%   <<"queryString">> => string()
-%% }
--type http_context() :: #{binary() => any()}.
-
-%% Example:
-%% detach_security_profile_response() :: #{}
--type detach_security_profile_response() :: #{}.
-
-
-%% Example:
-%% iot_analytics_action() :: #{
-%%   <<"batchMode">> => boolean(),
-%%   <<"channelArn">> => string(),
-%%   <<"channelName">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type iot_analytics_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_datum() :: #{
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"value">> => metric_value()
-%% }
--type metric_datum() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_package_response() :: #{}
--type delete_package_response() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_options_payload() :: #{
-%%   <<"logLevel">> => list(any()),
-%%   <<"roleArn">> => string()
-%% }
--type logging_options_payload() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_profile_request() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
-%%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()),
-%%   <<"metricsExportConfig">> => metrics_export_config(),
-%%   <<"securityProfileDescription">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connectivity_filter() :: #{
-%%   <<"includeSocketInformation">> => list(list(any())())
-%% }
--type connectivity_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_mitigation_action_response() :: #{
-%%   <<"actionArn">> => string(),
-%%   <<"actionId">> => string()
-%% }
--type create_mitigation_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ota_updates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"otaUpdateStatus">> => list(any())
-%% }
--type list_ota_updates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_indexing_configuration_request() :: #{
-%%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
-%%   <<"thingIndexingConfiguration">> => thing_indexing_configuration()
-%% }
--type update_indexing_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_in_billing_group_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string())
-%% }
--type list_things_in_billing_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_command_request() :: #{}
--type get_command_request() :: #{}.
-
-
-%% Example:
-%% list_managed_job_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"templateName">> => string()
-%% }
--type list_managed_job_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioning_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_provisioning_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_action() :: #{
-%%   <<"functionArn">> => string()
-%% }
--type lambda_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_security_profile_request() :: #{
-%%   <<"securityProfileTargetArn">> := string()
-%% }
--type attach_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_command_request() :: #{
-%%   <<"deprecated">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string()
-%% }
--type update_command_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_parameter() :: #{
-%%   <<"defaultValue">> => command_parameter_value(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => command_parameter_value(),
-%%   <<"valueConditions">> => list(command_parameter_value_condition())
-%% }
--type command_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_role_alias_request() :: #{
-%%   <<"credentialDurationSeconds">> => integer(),
-%%   <<"roleArn">> => string()
-%% }
--type update_role_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_action() :: #{
-%%   <<"partitionKey">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"streamName">> => string()
-%% }
--type kinesis_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% timestream_timestamp() :: #{
-%%   <<"unit">> => string(),
-%%   <<"value">> => string()
-%% }
--type timestream_timestamp() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_identifier() :: #{
-%%   <<"account">> => string(),
-%%   <<"caCertificateId">> => string(),
-%%   <<"clientId">> => string(),
-%%   <<"cognitoIdentityPoolId">> => string(),
-%%   <<"deviceCertificateArn">> => string(),
-%%   <<"deviceCertificateId">> => string(),
-%%   <<"iamRoleArn">> => string(),
-%%   <<"issuerCertificateIdentifier">> => issuer_certificate_identifier(),
-%%   <<"policyVersionIdentifier">> => policy_version_identifier(),
-%%   <<"roleAliasArn">> => string()
-%% }
--type resource_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_profile_parameter() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificatePathOnDevice">> => string(),
-%%   <<"platform">> => string()
-%% }
--type signing_profile_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_metrics_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_package_version_request() :: #{
-%%   <<"artifact">> => package_version_artifact(),
-%%   <<"attributes">> => map(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"recipe">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_package_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_version_request() :: #{
-%%   <<"policyDocument">> := string(),
-%%   <<"setAsDefault">> => boolean()
-%% }
--type create_policy_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_response_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_response_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_request() :: #{
-%%   <<"abortConfig">> => abort_config(),
-%%   <<"description">> => string(),
-%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
-%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
-%%   <<"namespaceId">> => string(),
-%%   <<"presignedUrlConfig">> => presigned_url_config(),
-%%   <<"timeoutConfig">> => timeout_config()
-%% }
--type update_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_thing_group_request() :: #{}
--type describe_thing_group_request() :: #{}.
-
-
-%% Example:
-%% describe_audit_suppression_response() :: #{
-%%   <<"checkName">> => string(),
-%%   <<"description">> => string(),
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"resourceIdentifier">> => resource_identifier(),
-%%   <<"suppressIndefinitely">> => boolean()
-%% }
--type describe_audit_suppression_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_audit_suppression_request() :: #{
-%%   <<"checkName">> := string(),
-%%   <<"description">> => string(),
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"resourceIdentifier">> := resource_identifier(),
-%%   <<"suppressIndefinitely">> => boolean()
-%% }
--type update_audit_suppression_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_thing_group_request() :: #{
-%%   <<"expectedVersion">> => float(),
-%%   <<"thingGroupProperties">> := thing_group_properties()
-%% }
--type update_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type certificate_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mitigation_action_request() :: #{}
--type describe_mitigation_action_request() :: #{}.
-
-
-%% Example:
-%% create_thing_group_request() :: #{
-%%   <<"parentGroupName">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"thingGroupProperties">> => thing_group_properties()
-%% }
--type create_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scheduled_audits_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scheduledAudits">> => list(scheduled_audit_metadata())
-%% }
--type list_scheduled_audits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_io_t_logging_params() :: #{
-%%   <<"logLevel">> => list(any()),
-%%   <<"roleArnForLogging">> => string()
-%% }
--type enable_io_t_logging_params() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_template_request() :: #{}
--type describe_job_template_request() :: #{}.
-
-
-%% Example:
-%% list_thing_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"thingTypes">> => list(thing_type_definition())
-%% }
--type list_thing_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profiles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityProfileIdentifiers">> => list(security_profile_identifier())
-%% }
--type list_security_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"streams">> => list(stream_summary())
-%% }
--type list_streams_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_ca_certificate_request() :: #{
-%%   <<"allowAutoRegistration">> => boolean(),
-%%   <<"caCertificate">> := string(),
-%%   <<"certificateMode">> => list(any()),
-%%   <<"registrationConfig">> => registration_config(),
-%%   <<"setAsActive">> => boolean(),
-%%   <<"tags">> => list(tag()),
-%%   <<"verificationCertificate">> => string()
-%% }
--type register_ca_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_provider_request() :: #{}
--type delete_certificate_provider_request() :: #{}.
-
-%% Example:
-%% describe_dimension_request() :: #{}
--type describe_dimension_request() :: #{}.
-
-
-%% Example:
-%% cloudwatch_alarm_action() :: #{
-%%   <<"alarmName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"stateReason">> => string(),
-%%   <<"stateValue">> => string()
-%% }
--type cloudwatch_alarm_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_filter() :: #{
-%%   <<"after">> => string(),
-%%   <<"before">> => string()
-%% }
--type time_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_billing_group_response() :: #{}
--type delete_billing_group_response() :: #{}.
-
-
-%% Example:
-%% effective_policy() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string()
-%% }
--type effective_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_logging_options_response() :: #{
-%%   <<"logLevel">> => list(any()),
-%%   <<"roleArn">> => string()
-%% }
--type get_logging_options_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_role_alias_response() :: #{
-%%   <<"roleAliasDescription">> => role_alias_description()
-%% }
--type describe_role_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_policy_request() :: #{
-%%   <<"target">> := string()
-%% }
--type attach_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_registration_code_request() :: #{}
--type get_registration_code_request() :: #{}.
-
-
-%% Example:
-%% describe_thing_registration_task_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"failureCount">> => integer(),
-%%   <<"inputFileBucket">> => string(),
-%%   <<"inputFileKey">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"percentageProgress">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"successCount">> => integer(),
-%%   <<"taskId">> => string(),
-%%   <<"templateBody">> => string()
-%% }
--type describe_thing_registration_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_principal_things_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string())
-%% }
--type list_principal_things_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_topic_rule_request() :: #{}
--type delete_topic_rule_request() :: #{}.
-
-
-%% Example:
-%% create_certificate_from_csr_response() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"certificatePem">> => string()
-%% }
--type create_certificate_from_csr_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_thing_request() :: #{
-%%   <<"parameters">> => map(),
-%%   <<"templateBody">> := string()
-%% }
--type register_thing_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_request() :: #{}
--type describe_certificate_request() :: #{}.
-
-
-%% Example:
-%% list_principal_policies_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"principal">> := string()
-%% }
--type list_principal_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_principal_object() :: #{
-%%   <<"principal">> => string(),
-%%   <<"thingPrincipalType">> => list(any())
-%% }
--type thing_principal_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_account_audit_configuration_request() :: #{
-%%   <<"deleteScheduledAudits">> => boolean()
-%% }
--type delete_account_audit_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% abort_config() :: #{
 %%   <<"criteriaList">> => list(abort_criteria())
 %% }
 -type abort_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_ota_update_request() :: #{
-%%   <<"deleteStream">> => boolean(),
-%%   <<"forceDeleteAWSJob">> => boolean()
-%% }
--type delete_ota_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metric_values_response() :: #{
-%%   <<"metricDatumList">> => list(metric_datum()),
-%%   <<"nextToken">> => string()
-%% }
--type list_metric_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_certificate_config() :: #{
-%%   <<"clientCertificateCallbackArn">> => string()
-%% }
--type client_certificate_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_certificate_provider_request() :: #{
-%%   <<"accountDefaultForOperations">> => list(list(any())()),
-%%   <<"lambdaFunctionArn">> => string()
-%% }
--type update_certificate_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_configurations_request() :: #{
-%%   <<"eventConfigurations">> => map()
-%% }
--type update_event_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% allowed() :: #{
-%%   <<"policies">> => list(policy())
-%% }
--type allowed() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dimension_request() :: #{
-%%   <<"stringValues">> := list(string())
-%% }
--type update_dimension_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deprecate_thing_type_request() :: #{
-%%   <<"undoDeprecate">> => boolean()
-%% }
--type deprecate_thing_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_detect_mitigation_actions_task_request() :: #{}
--type describe_detect_mitigation_actions_task_request() :: #{}.
-
-
-%% Example:
-%% security_profile_target() :: #{
-%%   <<"arn">> => string()
-%% }
--type security_profile_target() :: #{binary() => any()}.
-
-%% Example:
-%% delete_thing_type_response() :: #{}
--type delete_thing_type_response() :: #{}.
-
-
-%% Example:
-%% issuer_certificate_identifier() :: #{
-%%   <<"issuerCertificateSerialNumber">> => string(),
-%%   <<"issuerCertificateSubject">> => string(),
-%%   <<"issuerId">> => string()
-%% }
--type issuer_certificate_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_rule_destination_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"httpUrlSummary">> => http_url_destination_summary(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"vpcDestinationSummary">> => vpc_destination_summary()
-%% }
--type topic_rule_destination_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% alert_target() :: #{
-%%   <<"alertTargetArn">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type alert_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_statistics_for_audit_check() :: #{
-%%   <<"canceledFindingsCount">> => float(),
-%%   <<"failedFindingsCount">> => float(),
-%%   <<"skippedFindingsCount">> => float(),
-%%   <<"succeededFindingsCount">> => float(),
-%%   <<"totalFindingsCount">> => float()
-%% }
--type task_statistics_for_audit_check() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_configurations_request() :: #{
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"serviceType">> => list(any())
-%% }
--type list_domain_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_executions_for_job_response() :: #{
-%%   <<"executionSummaries">> => list(job_execution_summary_for_job()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_executions_for_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% field() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type field() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_functions_action() :: #{
-%%   <<"executionNamePrefix">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"stateMachineName">> => string()
-%% }
--type step_functions_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_groups_for_thing_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_thing_groups_for_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificate_providers_response() :: #{
-%%   <<"certificateProviders">> => list(certificate_provider_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_certificate_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_thing_object() :: #{
-%%   <<"thingName">> => string(),
-%%   <<"thingPrincipalType">> => list(any())
-%% }
--type principal_thing_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_payload() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"merge">> => boolean()
-%% }
--type attribute_payload() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dynamic_thing_group_request() :: #{
-%%   <<"expectedVersion">> => float(),
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> => string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"thingGroupProperties">> := thing_group_properties()
-%% }
--type update_dynamic_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_role_alias_response() :: #{
-%%   <<"roleAlias">> => string(),
-%%   <<"roleAliasArn">> => string()
-%% }
--type update_role_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_state_transition_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_state_transition_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% presigned_url_config() :: #{
-%%   <<"expiresInSec">> => float(),
-%%   <<"roleArn">> => string()
-%% }
--type presigned_url_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_principals_v2_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"thingPrincipalType">> => list(any())
-%% }
--type list_thing_principals_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_job_abort_config() :: #{
-%%   <<"abortCriteriaList">> => list(aws_job_abort_criteria())
-%% }
--type aws_job_abort_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_request() :: #{
-%%   <<"beforeSubstitution">> => boolean()
-%% }
--type describe_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_job_template_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"environments">> => list(string()),
-%%   <<"templateArn">> => string(),
-%%   <<"templateName">> => string(),
-%%   <<"templateVersion">> => string()
-%% }
--type managed_job_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% transfer_already_completed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type transfer_already_completed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_configuration_response() :: #{
-%%   <<"domainConfigurationArn">> => string(),
-%%   <<"domainConfigurationName">> => string()
-%% }
--type create_domain_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_endpoint_request() :: #{
-%%   <<"endpointType">> => string()
-%% }
--type describe_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_registration_tasks_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_thing_registration_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_v2_logging_options_request() :: #{
-%%   <<"verbose">> => boolean()
-%% }
--type get_v2_logging_options_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_details() :: #{
-%%   <<"configurationStatus">> => list(any()),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type configuration_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dynamic_thing_group_request() :: #{
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"thingGroupProperties">> => thing_group_properties()
-%% }
--type create_dynamic_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_error() :: #{
-%%   <<"errorMessage">> => string()
-%% }
--type validation_error() :: #{binary() => any()}.
-
-%% Example:
-%% attach_thing_principal_response() :: #{}
--type attach_thing_principal_response() :: #{}.
-
-
-%% Example:
-%% update_ca_certificate_request() :: #{
-%%   <<"newAutoRegistrationStatus">> => list(any()),
-%%   <<"newStatus">> => list(any()),
-%%   <<"registrationConfig">> => registration_config(),
-%%   <<"removeAutoRegistration">> => boolean()
-%% }
--type update_ca_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_encryption_configuration_request() :: #{
-%%   <<"encryptionType">> := list(any()),
-%%   <<"kmsAccessRoleArn">> => string(),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type update_encryption_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ota_update_response() :: #{}
--type delete_ota_update_response() :: #{}.
-
-%% Example:
-%% clear_default_authorizer_response() :: #{}
--type clear_default_authorizer_response() :: #{}.
-
-
-%% Example:
-%% auth_info() :: #{
-%%   <<"actionType">> => list(any()),
-%%   <<"resources">> => list(string())
-%% }
--type auth_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dimension_request() :: #{}
--type delete_dimension_request() :: #{}.
-
-
-%% Example:
-%% describe_job_template_response() :: #{
-%%   <<"abortConfig">> => abort_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"destinationPackageVersions">> => list(string()),
-%%   <<"document">> => string(),
-%%   <<"documentSource">> => string(),
-%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
-%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
-%%   <<"jobTemplateArn">> => string(),
-%%   <<"jobTemplateId">> => string(),
-%%   <<"maintenanceWindows">> => list(maintenance_window()),
-%%   <<"presignedUrlConfig">> => presigned_url_config(),
-%%   <<"timeoutConfig">> => timeout_config()
-%% }
--type describe_job_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_thing_request() :: #{
-%%   <<"expectedVersion">> => float()
-%% }
--type delete_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_certificate_request() :: #{
-%%   <<"caCertificatePem">> => string(),
-%%   <<"certificatePem">> := string(),
-%%   <<"setAsActive">> => boolean(),
-%%   <<"status">> => list(any())
-%% }
--type register_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_active_violations_request() :: #{
-%%   <<"behaviorCriteriaType">> => list(any()),
-%%   <<"listSuppressedAlerts">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"verificationState">> => list(any())
-%% }
--type list_active_violations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_certificate_provider_response() :: #{
-%%   <<"accountDefaultForOperations">> => list(list(any())()),
-%%   <<"certificateProviderArn">> => string(),
-%%   <<"certificateProviderName">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lambdaFunctionArn">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer()
-%% }
--type describe_certificate_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_default_authorizer_response() :: #{
-%%   <<"authorizerArn">> => string(),
-%%   <<"authorizerName">> => string()
-%% }
--type set_default_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_thing_response() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"billingGroupName">> => string(),
-%%   <<"defaultClientId">> => string(),
-%%   <<"thingArn">> => string(),
-%%   <<"thingId">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"thingTypeName">> => string(),
-%%   <<"version">> => float()
-%% }
--type describe_thing_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_verification_state_on_violation_response() :: #{}
--type put_verification_state_on_violation_response() :: #{}.
-
-%% Example:
-%% delete_topic_rule_destination_request() :: #{}
--type delete_topic_rule_destination_request() :: #{}.
-
-%% Example:
-%% remove_thing_from_thing_group_response() :: #{}
--type remove_thing_from_thing_group_response() :: #{}.
-
-
-%% Example:
-%% security_profile_target_mapping() :: #{
-%%   <<"securityProfileIdentifier">> => security_profile_identifier(),
-%%   <<"target">> => security_profile_target()
-%% }
--type security_profile_target_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_outgoing_certificates_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_outgoing_certificates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(audit_task_metadata())
-%% }
--type list_audit_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string(),
-%%   <<"version">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_item_input() :: #{
-%%   <<"tableName">> => string()
-%% }
--type put_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_mitigation_action_response() :: #{
-%%   <<"actionArn">> => string(),
-%%   <<"actionId">> => string()
-%% }
--type update_mitigation_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_package_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"defaultVersionName">> => string(),
-%%   <<"description">> => string(),
-%%   <<"unsetDefaultVersion">> => boolean()
-%% }
--type update_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_encryption_configuration_response() :: #{
-%%   <<"configurationDetails">> => configuration_details(),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsAccessRoleArn">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer()
-%% }
--type describe_encryption_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detect_mitigation_action_execution() :: #{
-%%   <<"actionName">> => string(),
-%%   <<"errorCode">> => string(),
-%%   <<"executionEndDate">> => non_neg_integer(),
-%%   <<"executionStartDate">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"taskId">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"violationId">> => string()
-%% }
--type detect_mitigation_action_execution() :: #{binary() => any()}.
-
-%% Example:
-%% create_audit_suppression_response() :: #{}
--type create_audit_suppression_response() :: #{}.
-
-%% Example:
-%% add_thing_to_thing_group_response() :: #{}
--type add_thing_to_thing_group_response() :: #{}.
-
-
-%% Example:
-%% violation_event() :: #{
-%%   <<"behavior">> => behavior(),
-%%   <<"metricValue">> => metric_value(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"verificationState">> => list(any()),
-%%   <<"verificationStateDescription">> => string(),
-%%   <<"violationEventAdditionalInfo">> => violation_event_additional_info(),
-%%   <<"violationEventTime">> => non_neg_integer(),
-%%   <<"violationEventType">> => list(any()),
-%%   <<"violationId">> => string()
-%% }
--type violation_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indices_response() :: #{
-%%   <<"indexNames">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_indices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_command_executions_request() :: #{
-%%   <<"commandArn">> => string(),
-%%   <<"completedTimeFilter">> => time_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"startedTimeFilter">> => time_filter(),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string()
-%% }
--type list_command_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_pair() :: #{
-%%   <<"PrivateKey">> => string(),
-%%   <<"PublicKey">> => string()
-%% }
--type key_pair() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scheduled_audit_response() :: #{
-%%   <<"scheduledAuditArn">> => string()
-%% }
--type update_scheduled_audit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_executions_retry_config() :: #{
-%%   <<"criteriaList">> => list(retry_criteria())
-%% }
--type job_executions_retry_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_action() :: #{
-%%   <<"clientProperties">> => map(),
-%%   <<"destinationArn">> => string(),
-%%   <<"headers">> => list(kafka_action_header()),
-%%   <<"key">> => string(),
-%%   <<"partition">> => string(),
-%%   <<"topic">> => string()
-%% }
--type kafka_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type s3_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_dimension() :: #{
-%%   <<"dimensionName">> => string(),
-%%   <<"operator">> => list(any())
-%% }
--type metric_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_response() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"policyVersionId">> => string()
-%% }
--type create_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_version_response() :: #{
-%%   <<"artifact">> => package_version_artifact(),
-%%   <<"attributes">> => map(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"errorReason">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"packageName">> => string(),
-%%   <<"packageVersionArn">> => string(),
-%%   <<"recipe">> => string(),
-%%   <<"sbom">> => sbom(),
-%%   <<"sbomValidationStatus">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"versionName">> => string()
-%% }
--type get_package_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_execution() :: #{
-%%   <<"approximateSecondsBeforeTimedOut">> => float(),
-%%   <<"executionNumber">> => float(),
-%%   <<"forceCanceled">> => boolean(),
-%%   <<"jobId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"queuedAt">> => non_neg_integer(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => job_execution_status_details(),
-%%   <<"thingArn">> => string(),
-%%   <<"versionNumber">> => float()
-%% }
--type job_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_audit_metadata() :: #{
-%%   <<"dayOfMonth">> => string(),
-%%   <<"dayOfWeek">> => list(any()),
-%%   <<"frequency">> => list(any()),
-%%   <<"scheduledAuditArn">> => string(),
-%%   <<"scheduledAuditName">> => string()
-%% }
--type scheduled_audit_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_sbom_from_package_version_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type disassociate_sbom_from_package_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_parameter_value_comparison_operand() :: #{
-%%   <<"number">> => string(),
-%%   <<"numberRange">> => command_parameter_value_number_range(),
-%%   <<"numbers">> => list(string()),
-%%   <<"string">> => string(),
-%%   <<"strings">> => list(string())
-%% }
--type command_parameter_value_comparison_operand() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_configuration_summary() :: #{
-%%   <<"domainConfigurationArn">> => string(),
-%%   <<"domainConfigurationName">> => string(),
-%%   <<"serviceType">> => list(any())
-%% }
--type domain_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioning_template_request() :: #{}
--type describe_provisioning_template_request() :: #{}.
-
-%% Example:
-%% cancel_audit_mitigation_actions_task_response() :: #{}
--type cancel_audit_mitigation_actions_task_response() :: #{}.
-
-%% Example:
-%% list_policy_versions_request() :: #{}
--type list_policy_versions_request() :: #{}.
-
-
-%% Example:
-%% invalid_query_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_query_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_stream_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"files">> => list(stream_file()),
-%%   <<"roleArn">> => string()
-%% }
--type update_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_command_execution_response() :: #{
-%%   <<"commandArn">> => string(),
-%%   <<"completedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"executionId">> => string(),
-%%   <<"executionTimeoutSeconds">> => float(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"parameters">> => map(),
-%%   <<"result">> => map(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => status_reason(),
-%%   <<"targetArn">> => string(),
-%%   <<"timeToLive">> => non_neg_integer()
-%% }
--type get_command_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4440,481 +716,10 @@
 
 
 %% Example:
-%% topic_rule_list_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"ruleArn">> => string(),
-%%   <<"ruleDisabled">> => boolean(),
-%%   <<"ruleName">> => string(),
-%%   <<"topicPattern">> => string()
+%% accept_certificate_transfer_request() :: #{
+%%   <<"setAsActive">> => boolean()
 %% }
--type topic_rule_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_thing_group_response() :: #{}
--type delete_thing_group_response() :: #{}.
-
-
-%% Example:
-%% propagating_attribute() :: #{
-%%   <<"connectionAttribute">> => string(),
-%%   <<"thingAttribute">> => string(),
-%%   <<"userPropertyKey">> => string()
-%% }
--type propagating_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"defaultVersionId">> => string(),
-%%   <<"generationId">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_ca_certificate_response() :: #{
-%%   <<"certificateDescription">> => ca_certificate_description(),
-%%   <<"registrationConfig">> => registration_config()
-%% }
--type describe_ca_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_role_alias_response() :: #{}
--type delete_role_alias_response() :: #{}.
-
-
-%% Example:
-%% create_mitigation_action_request() :: #{
-%%   <<"actionParams">> := mitigation_action_params(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_mitigation_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ca_certificate() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type ca_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_topic_rule_destination_request() :: #{}
--type confirm_topic_rule_destination_request() :: #{}.
-
-%% Example:
-%% disable_topic_rule_request() :: #{}
--type disable_topic_rule_request() :: #{}.
-
-%% Example:
-%% describe_stream_request() :: #{}
--type describe_stream_request() :: #{}.
-
-
-%% Example:
-%% update_stream_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"streamArn">> => string(),
-%%   <<"streamId">> => string(),
-%%   <<"streamVersion">> => integer()
-%% }
--type update_stream_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_metric_response() :: #{}
--type delete_custom_metric_response() :: #{}.
-
-
-%% Example:
-%% search_index_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(thing_group_document()),
-%%   <<"things">> => list(thing_document())
-%% }
--type search_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_statistics() :: #{
-%%   <<"canceledChecks">> => integer(),
-%%   <<"compliantChecks">> => integer(),
-%%   <<"failedChecks">> => integer(),
-%%   <<"inProgressChecks">> => integer(),
-%%   <<"nonCompliantChecks">> => integer(),
-%%   <<"totalChecks">> => integer(),
-%%   <<"waitingForDataCollectionChecks">> => integer()
-%% }
--type task_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_configured_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_configured_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_location() :: #{
-%%   <<"s3Location">> => s3_location(),
-%%   <<"stream">> => stream()
-%% }
--type file_location() :: #{binary() => any()}.
-
-%% Example:
-%% describe_thing_registration_task_request() :: #{}
--type describe_thing_registration_task_request() :: #{}.
-
-
-%% Example:
-%% job_execution_status_details() :: #{
-%%   <<"detailsMap">> => map()
-%% }
--type job_execution_status_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dimension_response() :: #{}
--type delete_dimension_response() :: #{}.
-
-
-%% Example:
-%% rate_increase_criteria() :: #{
-%%   <<"numberOfNotifiedThings">> => integer(),
-%%   <<"numberOfSucceededThings">> => integer()
-%% }
--type rate_increase_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_registration_code_response() :: #{
-%%   <<"registrationCode">> => string()
-%% }
--type get_registration_code_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_group_metadata() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"parentGroupName">> => string(),
-%%   <<"rootToParentThingGroups">> => list(group_name_and_arn())
-%% }
--type thing_group_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_code_signing() :: #{
-%%   <<"certificateChain">> => code_signing_certificate_chain(),
-%%   <<"hashAlgorithm">> => string(),
-%%   <<"signature">> => code_signing_signature(),
-%%   <<"signatureAlgorithm">> => string()
-%% }
--type custom_code_signing() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_name_and_arn() :: #{
-%%   <<"groupArn">> => string(),
-%%   <<"groupName">> => string()
-%% }
--type group_name_and_arn() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"defaultVersionName">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"packageName">> => string()
-%% }
--type package_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_thing_group_response() :: #{
-%%   <<"thingGroupArn">> => string(),
-%%   <<"thingGroupId">> => string(),
-%%   <<"thingGroupName">> => string()
-%% }
--type create_thing_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ca_certificate_response() :: #{}
--type delete_ca_certificate_response() :: #{}.
-
-
-%% Example:
-%% list_ota_updates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"otaUpdates">> => list(ota_update_summary())
-%% }
--type list_ota_updates_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_thing_response() :: #{}
--type update_thing_response() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_v2_logging_levels_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetType">> => list(any())
-%% }
--type list_v2_logging_levels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_default_authorizer_response() :: #{
-%%   <<"authorizerDescription">> => authorizer_description()
-%% }
--type describe_default_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_execution_result() :: #{
-%%   <<"B">> => boolean(),
-%%   <<"BIN">> => binary(),
-%%   <<"S">> => string()
-%% }
--type command_execution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_configuration_response() :: #{
-%%   <<"versionUpdateByJobsConfig">> => version_update_by_jobs_config()
-%% }
--type get_package_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_billing_group_request() :: #{
-%%   <<"billingGroupProperties">> := billing_group_properties(),
-%%   <<"expectedVersion">> => float()
-%% }
--type update_billing_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{}
--type delete_policy_request() :: #{}.
-
-
-%% Example:
-%% delete_security_profile_request() :: #{
-%%   <<"expectedVersion">> => float()
-%% }
--type delete_security_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_thing_groups_for_thing_response() :: #{}
--type update_thing_groups_for_thing_response() :: #{}.
-
-
-%% Example:
-%% delete_job_execution_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"namespaceId">> => string()
-%% }
--type delete_job_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_group_properties() :: #{
-%%   <<"attributePayload">> => attribute_payload(),
-%%   <<"thingGroupDescription">> => string()
-%% }
--type thing_group_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mitigation_action_response() :: #{}
--type delete_mitigation_action_response() :: #{}.
-
-
-%% Example:
-%% get_buckets_aggregation_request() :: #{
-%%   <<"aggregationField">> := string(),
-%%   <<"bucketsAggregationType">> := buckets_aggregation_type(),
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string()
-%% }
--type get_buckets_aggregation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"certificateMode">> => list(any()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_update_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"otaUpdateArn">> => string(),
-%%   <<"otaUpdateId">> => string()
-%% }
--type ota_update_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_default_authorizer_request() :: #{
-%%   <<"authorizerName">> := string()
-%% }
--type set_default_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% denied() :: #{
-%%   <<"explicitDeny">> => explicit_deny(),
-%%   <<"implicitDeny">> => implicit_deny()
-%% }
--type denied() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_fleet_metric_request() :: #{
-%%   <<"expectedVersion">> => float()
-%% }
--type delete_fleet_metric_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_provisioning_template_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"defaultVersionId">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"preProvisioningHook">> => provisioning_hook(),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"templateArn">> => string(),
-%%   <<"templateBody">> => string(),
-%%   <<"templateName">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type describe_provisioning_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"things">> => list(thing_attribute())
-%% }
--type list_things_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioning_template_version_response() :: #{}
--type delete_provisioning_template_version_response() :: #{}.
-
-
-%% Example:
-%% asset_property_timestamp() :: #{
-%%   <<"offsetInNanos">> => string(),
-%%   <<"timeInSeconds">> => string()
-%% }
--type asset_property_timestamp() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_metric_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"metricArn">> => string(),
-%%   <<"metricName">> => string(),
-%%   <<"metricType">> => list(any())
-%% }
--type update_custom_metric_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing_certificate_chain() :: #{
-%%   <<"certificateName">> => string(),
-%%   <<"inlineDocument">> => string()
-%% }
--type code_signing_certificate_chain() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scheduled_audit_response() :: #{
-%%   <<"scheduledAuditArn">> => string()
-%% }
--type create_scheduled_audit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_metric_request() :: #{
-%%   <<"clientRequestToken">> := string(),
-%%   <<"displayName">> => string(),
-%%   <<"metricType">> := list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_custom_metric_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type task_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_groups_for_thing_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(group_name_and_arn())
-%% }
--type list_thing_groups_for_thing_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_certificate_response() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string()
-%% }
--type register_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorizer_description() :: #{
-%%   <<"authorizerArn">> => string(),
-%%   <<"authorizerFunctionArn">> => string(),
-%%   <<"authorizerName">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"enableCachingForHttp">> => boolean(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"signingDisabled">> => boolean(),
-%%   <<"status">> => list(any()),
-%%   <<"tokenKeyName">> => string(),
-%%   <<"tokenSigningPublicKeys">> => map()
-%% }
--type authorizer_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_url_destination_summary() :: #{
-%%   <<"confirmationUrl">> => string()
-%% }
--type http_url_destination_summary() :: #{binary() => any()}.
+-type accept_certificate_transfer_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4947,84 +752,391 @@
 
 
 %% Example:
-%% list_violation_events_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"violationEvents">> => list(violation_event())
+%% active_violation() :: #{
+%%   <<"behavior">> => behavior(),
+%%   <<"lastViolationTime">> => non_neg_integer(),
+%%   <<"lastViolationValue">> => metric_value(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"verificationState">> => list(any()),
+%%   <<"verificationStateDescription">> => string(),
+%%   <<"violationEventAdditionalInfo">> => violation_event_additional_info(),
+%%   <<"violationId">> => string(),
+%%   <<"violationStartTime">> => non_neg_integer()
 %% }
--type list_violation_events_response() :: #{binary() => any()}.
+-type active_violation() :: #{binary() => any()}.
 
 
 %% Example:
-%% tls_config() :: #{
-%%   <<"securityPolicy">> => string()
+%% add_thing_to_billing_group_request() :: #{
+%%   <<"billingGroupArn">> => string(),
+%%   <<"billingGroupName">> => string(),
+%%   <<"thingArn">> => string(),
+%%   <<"thingName">> => string()
 %% }
--type tls_config() :: #{binary() => any()}.
+-type add_thing_to_billing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_thing_to_billing_group_response() :: #{}
+-type add_thing_to_billing_group_response() :: #{}.
 
 
 %% Example:
-%% republish_action() :: #{
-%%   <<"headers">> => mqtt_headers(),
-%%   <<"qos">> => integer(),
+%% add_thing_to_thing_group_request() :: #{
+%%   <<"overrideDynamicGroups">> => boolean(),
+%%   <<"thingArn">> => string(),
+%%   <<"thingGroupArn">> => string(),
+%%   <<"thingGroupName">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type add_thing_to_thing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_thing_to_thing_group_response() :: #{}
+-type add_thing_to_thing_group_response() :: #{}.
+
+
+%% Example:
+%% add_things_to_thing_group_params() :: #{
+%%   <<"overrideDynamicGroups">> => boolean(),
+%%   <<"thingGroupNames">> => list(string())
+%% }
+-type add_things_to_thing_group_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_type() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type aggregation_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% alert_target() :: #{
+%%   <<"alertTargetArn">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type alert_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed() :: #{
+%%   <<"policies">> => list(policy())
+%% }
+-type allowed() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_timestamp() :: #{
+%%   <<"offsetInNanos">> => string(),
+%%   <<"timeInSeconds">> => string()
+%% }
+-type asset_property_timestamp() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_value() :: #{
+%%   <<"quality">> => string(),
+%%   <<"timestamp">> => asset_property_timestamp(),
+%%   <<"value">> => list()
+%% }
+-type asset_property_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_sbom_with_package_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sbom">> := sbom()
+%% }
+-type associate_sbom_with_package_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_sbom_with_package_version_response() :: #{
+%%   <<"packageName">> => string(),
+%%   <<"sbom">> => sbom(),
+%%   <<"sbomValidationStatus">> => list(any()),
+%%   <<"versionName">> => string()
+%% }
+-type associate_sbom_with_package_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_targets_with_job_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"namespaceId">> => string(),
+%%   <<"targets">> := list(string())
+%% }
+-type associate_targets_with_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_targets_with_job_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type associate_targets_with_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_policy_request() :: #{
+%%   <<"target">> := string()
+%% }
+-type attach_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_principal_policy_request() :: #{
+%%   <<"principal">> := string()
+%% }
+-type attach_principal_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_security_profile_request() :: #{
+%%   <<"securityProfileTargetArn">> := string()
+%% }
+-type attach_security_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_security_profile_response() :: #{}
+-type attach_security_profile_response() :: #{}.
+
+
+%% Example:
+%% attach_thing_principal_request() :: #{
+%%   <<"principal">> := string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type attach_thing_principal_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_thing_principal_response() :: #{}
+-type attach_thing_principal_response() :: #{}.
+
+
+%% Example:
+%% attribute_payload() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"merge">> => boolean()
+%% }
+-type attribute_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_check_configuration() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"enabled">> => boolean()
+%% }
+-type audit_check_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_check_details() :: #{
+%%   <<"checkCompliant">> => boolean(),
+%%   <<"checkRunStatus">> => list(any()),
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nonCompliantResourcesCount">> => float(),
+%%   <<"suppressedNonCompliantResourcesCount">> => float(),
+%%   <<"totalResourcesCount">> => float()
+%% }
+-type audit_check_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_finding() :: #{
+%%   <<"checkName">> => string(),
+%%   <<"findingId">> => string(),
+%%   <<"findingTime">> => non_neg_integer(),
+%%   <<"isSuppressed">> => boolean(),
+%%   <<"nonCompliantResource">> => non_compliant_resource(),
+%%   <<"reasonForNonCompliance">> => string(),
+%%   <<"reasonForNonComplianceCode">> => string(),
+%%   <<"relatedResources">> => list(related_resource()),
+%%   <<"severity">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"taskStartTime">> => non_neg_integer()
+%% }
+-type audit_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_mitigation_action_execution_metadata() :: #{
+%%   <<"actionId">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorCode">> => string(),
+%%   <<"findingId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type audit_mitigation_action_execution_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_mitigation_actions_task_metadata() :: #{
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"taskId">> => string(),
+%%   <<"taskStatus">> => list(any())
+%% }
+-type audit_mitigation_actions_task_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_mitigation_actions_task_target() :: #{
+%%   <<"auditCheckToReasonCodeFilter">> => map(),
+%%   <<"auditTaskId">> => string(),
+%%   <<"findingIds">> => list(string())
+%% }
+-type audit_mitigation_actions_task_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_notification_target() :: #{
+%%   <<"enabled">> => boolean(),
 %%   <<"roleArn">> => string(),
-%%   <<"topic">> => string()
+%%   <<"targetArn">> => string()
 %% }
--type republish_action() :: #{binary() => any()}.
-
-%% Example:
-%% update_package_configuration_response() :: #{}
--type update_package_configuration_response() :: #{}.
+-type audit_notification_target() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_verification_state_on_violation_request() :: #{
-%%   <<"verificationState">> := list(any()),
-%%   <<"verificationStateDescription">> => string()
+%% audit_suppression() :: #{
+%%   <<"checkName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"resourceIdentifier">> => resource_identifier(),
+%%   <<"suppressIndefinitely">> => boolean()
 %% }
--type put_verification_state_on_violation_request() :: #{binary() => any()}.
+-type audit_suppression() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_authorizers_response() :: #{
-%%   <<"authorizers">> => list(authorizer_summary()),
-%%   <<"nextMarker">> => string()
+%% audit_task_metadata() :: #{
+%%   <<"taskId">> => string(),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"taskType">> => list(any())
 %% }
--type list_authorizers_response() :: #{binary() => any()}.
+-type audit_task_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% server_certificate_config() :: #{
-%%   <<"enableOCSPCheck">> => boolean(),
-%%   <<"ocspAuthorizedResponderArn">> => string(),
-%%   <<"ocspLambdaArn">> => string()
+%% auth_info() :: #{
+%%   <<"actionType">> => list(any()),
+%%   <<"resources">> => list(string())
 %% }
--type server_certificate_config() :: #{binary() => any()}.
+-type auth_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_job_executions_for_thing_response() :: #{
-%%   <<"executionSummaries">> => list(job_execution_summary_for_thing()),
-%%   <<"nextToken">> => string()
+%% auth_result() :: #{
+%%   <<"allowed">> => allowed(),
+%%   <<"authDecision">> => list(any()),
+%%   <<"authInfo">> => auth_info(),
+%%   <<"denied">> => denied(),
+%%   <<"missingContextValues">> => list(string())
 %% }
--type list_job_executions_for_thing_response() :: #{binary() => any()}.
+-type auth_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% topic_rule_destination_configuration() :: #{
-%%   <<"httpUrlConfiguration">> => http_url_destination_configuration(),
-%%   <<"vpcConfiguration">> => vpc_destination_configuration()
+%% authorizer_config() :: #{
+%%   <<"allowAuthorizerOverride">> => boolean(),
+%%   <<"defaultAuthorizerName">> => string()
 %% }
--type topic_rule_destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_encryption_configuration_request() :: #{}
--type describe_encryption_configuration_request() :: #{}.
+-type authorizer_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% index_not_ready_exception() :: #{
-%%   <<"message">> => string()
+%% authorizer_description() :: #{
+%%   <<"authorizerArn">> => string(),
+%%   <<"authorizerFunctionArn">> => string(),
+%%   <<"authorizerName">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"enableCachingForHttp">> => boolean(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"signingDisabled">> => boolean(),
+%%   <<"status">> => list(any()),
+%%   <<"tokenKeyName">> => string(),
+%%   <<"tokenSigningPublicKeys">> => map()
 %% }
--type index_not_ready_exception() :: #{binary() => any()}.
+-type authorizer_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorizer_summary() :: #{
+%%   <<"authorizerArn">> => string(),
+%%   <<"authorizerName">> => string()
+%% }
+-type authorizer_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_abort_config() :: #{
+%%   <<"abortCriteriaList">> => list(aws_job_abort_criteria())
+%% }
+-type aws_job_abort_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_abort_criteria() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"failureType">> => list(any()),
+%%   <<"minNumberOfExecutedThings">> => integer(),
+%%   <<"thresholdPercentage">> => float()
+%% }
+-type aws_job_abort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_executions_rollout_config() :: #{
+%%   <<"exponentialRate">> => aws_job_exponential_rollout_rate(),
+%%   <<"maximumPerMinute">> => integer()
+%% }
+-type aws_job_executions_rollout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_exponential_rollout_rate() :: #{
+%%   <<"baseRatePerMinute">> => integer(),
+%%   <<"incrementFactor">> => float(),
+%%   <<"rateIncreaseCriteria">> => aws_job_rate_increase_criteria()
+%% }
+-type aws_job_exponential_rollout_rate() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_presigned_url_config() :: #{
+%%   <<"expiresInSec">> => float()
+%% }
+-type aws_job_presigned_url_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_rate_increase_criteria() :: #{
+%%   <<"numberOfNotifiedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer()
+%% }
+-type aws_job_rate_increase_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_job_timeout_config() :: #{
+%%   <<"inProgressTimeoutInMinutes">> => float()
+%% }
+-type aws_job_timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_json_substitution_command_preprocessor_config() :: #{
+%%   <<"outputFormat">> => list(any())
+%% }
+-type aws_json_substitution_command_preprocessor_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5038,35 +1150,299 @@
 
 
 %% Example:
-%% list_job_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% behavior() :: #{
+%%   <<"criteria">> => behavior_criteria(),
+%%   <<"exportMetric">> => boolean(),
+%%   <<"metric">> => string(),
+%%   <<"metricDimension">> => metric_dimension(),
+%%   <<"name">> => string(),
+%%   <<"suppressAlerts">> => boolean()
 %% }
--type list_job_templates_request() :: #{binary() => any()}.
+-type behavior() :: #{binary() => any()}.
 
 
 %% Example:
-%% policy() :: #{
-%%   <<"policyArn">> => string(),
-%%   <<"policyName">> => string()
+%% behavior_criteria() :: #{
+%%   <<"comparisonOperator">> => list(any()),
+%%   <<"consecutiveDatapointsToAlarm">> => integer(),
+%%   <<"consecutiveDatapointsToClear">> => integer(),
+%%   <<"durationSeconds">> => integer(),
+%%   <<"mlDetectionConfig">> => machine_learning_detection_config(),
+%%   <<"statisticalThreshold">> => statistical_threshold(),
+%%   <<"value">> => metric_value()
 %% }
--type policy() :: #{binary() => any()}.
+-type behavior_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% detect_mitigation_actions_task_summary() :: #{
-%%   <<"actionsDefinition">> => list(mitigation_action()),
-%%   <<"onlyActiveViolationsIncluded">> => boolean(),
-%%   <<"suppressedAlertsIncluded">> => boolean(),
-%%   <<"target">> => detect_mitigation_actions_task_target(),
-%%   <<"taskEndTime">> => non_neg_integer(),
-%%   <<"taskId">> => string(),
-%%   <<"taskStartTime">> => non_neg_integer(),
-%%   <<"taskStatistics">> => detect_mitigation_actions_task_statistics(),
-%%   <<"taskStatus">> => list(any()),
-%%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
+%% behavior_model_training_summary() :: #{
+%%   <<"behaviorName">> => string(),
+%%   <<"datapointsCollectionPercentage">> => float(),
+%%   <<"lastModelRefreshDate">> => non_neg_integer(),
+%%   <<"modelStatus">> => list(any()),
+%%   <<"securityProfileName">> => string(),
+%%   <<"trainingDataCollectionStartDate">> => non_neg_integer()
 %% }
--type detect_mitigation_actions_task_summary() :: #{binary() => any()}.
+-type behavior_model_training_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_group_metadata() :: #{
+%%   <<"creationDate">> => non_neg_integer()
+%% }
+-type billing_group_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_group_properties() :: #{
+%%   <<"billingGroupDescription">> => string()
+%% }
+-type billing_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket() :: #{
+%%   <<"count">> => integer(),
+%%   <<"keyValue">> => string()
+%% }
+-type bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% buckets_aggregation_type() :: #{
+%%   <<"termsAggregation">> => terms_aggregation()
+%% }
+-type buckets_aggregation_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% ca_certificate() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type ca_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% ca_certificate_description() :: #{
+%%   <<"autoRegistrationStatus">> => list(any()),
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"certificateMode">> => list(any()),
+%%   <<"certificatePem">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerVersion">> => integer(),
+%%   <<"generationId">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"ownedBy">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"validity">> => certificate_validity()
+%% }
+-type ca_certificate_description() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_audit_mitigation_actions_task_request() :: #{}
+-type cancel_audit_mitigation_actions_task_request() :: #{}.
+
+%% Example:
+%% cancel_audit_mitigation_actions_task_response() :: #{}
+-type cancel_audit_mitigation_actions_task_response() :: #{}.
+
+%% Example:
+%% cancel_audit_task_request() :: #{}
+-type cancel_audit_task_request() :: #{}.
+
+%% Example:
+%% cancel_audit_task_response() :: #{}
+-type cancel_audit_task_response() :: #{}.
+
+%% Example:
+%% cancel_certificate_transfer_request() :: #{}
+-type cancel_certificate_transfer_request() :: #{}.
+
+%% Example:
+%% cancel_detect_mitigation_actions_task_request() :: #{}
+-type cancel_detect_mitigation_actions_task_request() :: #{}.
+
+%% Example:
+%% cancel_detect_mitigation_actions_task_response() :: #{}
+-type cancel_detect_mitigation_actions_task_response() :: #{}.
+
+
+%% Example:
+%% cancel_job_execution_request() :: #{
+%%   <<"expectedVersion">> => float(),
+%%   <<"force">> => boolean(),
+%%   <<"statusDetails">> => map()
+%% }
+-type cancel_job_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"force">> => boolean(),
+%%   <<"reasonCode">> => string()
+%% }
+-type cancel_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type cancel_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"certificateMode">> => list(any()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_description() :: #{
+%%   <<"caCertificateId">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"certificateMode">> => list(any()),
+%%   <<"certificatePem">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerVersion">> => integer(),
+%%   <<"generationId">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"ownedBy">> => string(),
+%%   <<"previousOwnedBy">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"transferData">> => transfer_data(),
+%%   <<"validity">> => certificate_validity()
+%% }
+-type certificate_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_provider_summary() :: #{
+%%   <<"certificateProviderArn">> => string(),
+%%   <<"certificateProviderName">> => string()
+%% }
+-type certificate_provider_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_validity() :: #{
+%%   <<"notAfter">> => non_neg_integer(),
+%%   <<"notBefore">> => non_neg_integer()
+%% }
+-type certificate_validity() :: #{binary() => any()}.
+
+%% Example:
+%% clear_default_authorizer_request() :: #{}
+-type clear_default_authorizer_request() :: #{}.
+
+%% Example:
+%% clear_default_authorizer_response() :: #{}
+-type clear_default_authorizer_response() :: #{}.
+
+
+%% Example:
+%% client_certificate_config() :: #{
+%%   <<"clientCertificateCallbackArn">> => string()
+%% }
+-type client_certificate_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudwatch_alarm_action() :: #{
+%%   <<"alarmName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateReason">> => string(),
+%%   <<"stateValue">> => string()
+%% }
+-type cloudwatch_alarm_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudwatch_logs_action() :: #{
+%%   <<"batchMode">> => boolean(),
+%%   <<"logGroupName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type cloudwatch_logs_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloudwatch_metric_action() :: #{
+%%   <<"metricName">> => string(),
+%%   <<"metricNamespace">> => string(),
+%%   <<"metricTimestamp">> => string(),
+%%   <<"metricUnit">> => string(),
+%%   <<"metricValue">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type cloudwatch_metric_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing() :: #{
+%%   <<"awsSignerJobId">> => string(),
+%%   <<"customCodeSigning">> => custom_code_signing(),
+%%   <<"startSigningJobParameter">> => start_signing_job_parameter()
+%% }
+-type code_signing() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_certificate_chain() :: #{
+%%   <<"certificateName">> => string(),
+%%   <<"inlineDocument">> => string()
+%% }
+-type code_signing_certificate_chain() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_signature() :: #{
+%%   <<"inlineDocument">> => binary()
+%% }
+-type code_signing_signature() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_execution_result() :: #{
+%%   <<"B">> => boolean(),
+%%   <<"BIN">> => binary(),
+%%   <<"S">> => string()
+%% }
+-type command_execution_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5083,37 +1459,379 @@
 
 
 %% Example:
-%% bucket() :: #{
-%%   <<"count">> => integer(),
-%%   <<"keyValue">> => string()
+%% command_parameter() :: #{
+%%   <<"defaultValue">> => command_parameter_value(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => command_parameter_value(),
+%%   <<"valueConditions">> => list(command_parameter_value_condition())
 %% }
--type bucket() :: #{binary() => any()}.
+-type command_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_thing_registration_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taskIds">> => list(string())
+%% command_parameter_value() :: #{
+%%   <<"B">> => boolean(),
+%%   <<"BIN">> => binary(),
+%%   <<"D">> => float(),
+%%   <<"I">> => integer(),
+%%   <<"L">> => float(),
+%%   <<"S">> => string(),
+%%   <<"UL">> => string()
 %% }
--type list_thing_registration_tasks_response() :: #{binary() => any()}.
+-type command_parameter_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% attach_principal_policy_request() :: #{
-%%   <<"principal">> := string()
+%% command_parameter_value_comparison_operand() :: #{
+%%   <<"number">> => string(),
+%%   <<"numberRange">> => command_parameter_value_number_range(),
+%%   <<"numbers">> => list(string()),
+%%   <<"string">> => string(),
+%%   <<"strings">> => list(string())
 %% }
--type attach_principal_policy_request() :: #{binary() => any()}.
+-type command_parameter_value_comparison_operand() :: #{binary() => any()}.
 
 
 %% Example:
-%% thing_group_document() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"parentGroupNames">> => list(string()),
-%%   <<"thingGroupDescription">> => string(),
+%% command_parameter_value_condition() :: #{
+%%   <<"comparisonOperator">> => list(any()),
+%%   <<"operand">> => command_parameter_value_comparison_operand()
+%% }
+-type command_parameter_value_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_parameter_value_number_range() :: #{
+%%   <<"max">> => string(),
+%%   <<"min">> => string()
+%% }
+-type command_parameter_value_number_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_payload() :: #{
+%%   <<"content">> => binary(),
+%%   <<"contentType">> => string()
+%% }
+-type command_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_preprocessor() :: #{
+%%   <<"awsJsonSubstitution">> => aws_json_substitution_command_preprocessor_config()
+%% }
+-type command_preprocessor() :: #{binary() => any()}.
+
+
+%% Example:
+%% command_summary() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"pendingDeletion">> => boolean()
+%% }
+-type command_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_details() :: #{
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type configuration_details() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_topic_rule_destination_request() :: #{}
+-type confirm_topic_rule_destination_request() :: #{}.
+
+%% Example:
+%% confirm_topic_rule_destination_response() :: #{}
+-type confirm_topic_rule_destination_response() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_resource_update_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflicting_resource_update_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connectivity_filter() :: #{
+%%   <<"includeSocketInformation">> => list(list(any())())
+%% }
+-type connectivity_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_audit_suppression_request() :: #{
+%%   <<"checkName">> := string(),
+%%   <<"clientRequestToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"resourceIdentifier">> := resource_identifier(),
+%%   <<"suppressIndefinitely">> => boolean()
+%% }
+-type create_audit_suppression_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_audit_suppression_response() :: #{}
+-type create_audit_suppression_response() :: #{}.
+
+
+%% Example:
+%% create_authorizer_request() :: #{
+%%   <<"authorizerFunctionArn">> := string(),
+%%   <<"enableCachingForHttp">> => boolean(),
+%%   <<"signingDisabled">> => boolean(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"tokenKeyName">> => string(),
+%%   <<"tokenSigningPublicKeys">> => map()
+%% }
+-type create_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_authorizer_response() :: #{
+%%   <<"authorizerArn">> => string(),
+%%   <<"authorizerName">> => string()
+%% }
+-type create_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_billing_group_request() :: #{
+%%   <<"billingGroupProperties">> => billing_group_properties(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_billing_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_billing_group_response() :: #{
+%%   <<"billingGroupArn">> => string(),
+%%   <<"billingGroupId">> => string(),
+%%   <<"billingGroupName">> => string()
+%% }
+-type create_billing_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_certificate_from_csr_request() :: #{
+%%   <<"certificateSigningRequest">> := string(),
+%%   <<"setAsActive">> => boolean()
+%% }
+-type create_certificate_from_csr_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_certificate_from_csr_response() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"certificatePem">> => string()
+%% }
+-type create_certificate_from_csr_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_certificate_provider_request() :: #{
+%%   <<"accountDefaultForOperations">> := list(list(any())()),
+%%   <<"clientToken">> => string(),
+%%   <<"lambdaFunctionArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_certificate_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_certificate_provider_response() :: #{
+%%   <<"certificateProviderArn">> => string(),
+%%   <<"certificateProviderName">> => string()
+%% }
+-type create_certificate_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_command_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"mandatoryParameters">> => list(command_parameter()),
+%%   <<"namespace">> => list(any()),
+%%   <<"payload">> => command_payload(),
+%%   <<"payloadTemplate">> => string(),
+%%   <<"preprocessor">> => command_preprocessor(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_command_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_command_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string()
+%% }
+-type create_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_metric_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"displayName">> => string(),
+%%   <<"metricType">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_custom_metric_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_metric_response() :: #{
+%%   <<"metricArn">> => string(),
+%%   <<"metricName">> => string()
+%% }
+-type create_custom_metric_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dimension_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"stringValues">> := list(string()),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> := list(any())
+%% }
+-type create_dimension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dimension_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_dimension_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_configuration_request() :: #{
+%%   <<"applicationProtocol">> => list(any()),
+%%   <<"authenticationType">> => list(any()),
+%%   <<"authorizerConfig">> => authorizer_config(),
+%%   <<"clientCertificateConfig">> => client_certificate_config(),
+%%   <<"domainName">> => string(),
+%%   <<"serverCertificateArns">> => list(string()),
+%%   <<"serverCertificateConfig">> => server_certificate_config(),
+%%   <<"serviceType">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"tlsConfig">> => tls_config(),
+%%   <<"validationCertificateArn">> => string()
+%% }
+-type create_domain_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_configuration_response() :: #{
+%%   <<"domainConfigurationArn">> => string(),
+%%   <<"domainConfigurationName">> => string()
+%% }
+-type create_domain_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dynamic_thing_group_request() :: #{
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"thingGroupProperties">> => thing_group_properties()
+%% }
+-type create_dynamic_thing_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dynamic_thing_group_response() :: #{
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> => string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"thingGroupArn">> => string(),
 %%   <<"thingGroupId">> => string(),
 %%   <<"thingGroupName">> => string()
 %% }
--type thing_group_document() :: #{binary() => any()}.
+-type create_dynamic_thing_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_fleet_metric_request() :: #{
+%%   <<"aggregationField">> := string(),
+%%   <<"aggregationType">> := aggregation_type(),
+%%   <<"description">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"period">> := integer(),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"unit">> => list(any())
+%% }
+-type create_fleet_metric_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_fleet_metric_response() :: #{
+%%   <<"metricArn">> => string(),
+%%   <<"metricName">> => string()
+%% }
+-type create_fleet_metric_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"abortConfig">> => abort_config(),
+%%   <<"description">> => string(),
+%%   <<"destinationPackageVersions">> => list(string()),
+%%   <<"document">> => string(),
+%%   <<"documentParameters">> => map(),
+%%   <<"documentSource">> => string(),
+%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
+%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
+%%   <<"jobTemplateArn">> => string(),
+%%   <<"namespaceId">> => string(),
+%%   <<"presignedUrlConfig">> => presigned_url_config(),
+%%   <<"schedulingConfig">> => scheduling_config(),
+%%   <<"tags">> => list(tag()),
+%%   <<"targetSelection">> => list(any()),
+%%   <<"targets">> := list(string()),
+%%   <<"timeoutConfig">> => timeout_config()
+%% }
+-type create_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type create_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5135,289 +1853,181 @@
 
 
 %% Example:
-%% create_stream_response() :: #{
+%% create_job_template_response() :: #{
+%%   <<"jobTemplateArn">> => string(),
+%%   <<"jobTemplateId">> => string()
+%% }
+-type create_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_keys_and_certificate_request() :: #{
+%%   <<"setAsActive">> => boolean()
+%% }
+-type create_keys_and_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_keys_and_certificate_response() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"certificatePem">> => string(),
+%%   <<"keyPair">> => key_pair()
+%% }
+-type create_keys_and_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_mitigation_action_request() :: #{
+%%   <<"actionParams">> := mitigation_action_params(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_mitigation_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_mitigation_action_response() :: #{
+%%   <<"actionArn">> => string(),
+%%   <<"actionId">> => string()
+%% }
+-type create_mitigation_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ota_update_request() :: #{
+%%   <<"additionalParameters">> => map(),
+%%   <<"awsJobAbortConfig">> => aws_job_abort_config(),
+%%   <<"awsJobExecutionsRolloutConfig">> => aws_job_executions_rollout_config(),
+%%   <<"awsJobPresignedUrlConfig">> => aws_job_presigned_url_config(),
+%%   <<"awsJobTimeoutConfig">> => aws_job_timeout_config(),
 %%   <<"description">> => string(),
-%%   <<"streamArn">> => string(),
-%%   <<"streamId">> => string(),
-%%   <<"streamVersion">> => integer()
+%%   <<"files">> := list(ota_update_file()),
+%%   <<"protocols">> => list(list(any())()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"targetSelection">> => list(any()),
+%%   <<"targets">> := list(string())
 %% }
--type create_stream_response() :: #{binary() => any()}.
+-type create_ota_update_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% publish_finding_to_sns_params() :: #{
-%%   <<"topicArn">> => string()
+%% create_ota_update_response() :: #{
+%%   <<"awsIotJobArn">> => string(),
+%%   <<"awsIotJobId">> => string(),
+%%   <<"otaUpdateArn">> => string(),
+%%   <<"otaUpdateId">> => string(),
+%%   <<"otaUpdateStatus">> => list(any())
 %% }
--type publish_finding_to_sns_params() :: #{binary() => any()}.
+-type create_ota_update_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_thing_type_response() :: #{
-%%   <<"thingTypeArn">> => string(),
-%%   <<"thingTypeId">> => string(),
-%%   <<"thingTypeName">> => string()
+%% create_package_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"tags">> => map()
 %% }
--type create_thing_type_response() :: #{binary() => any()}.
+-type create_package_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_executions_rollout_config() :: #{
-%%   <<"exponentialRate">> => exponential_rollout_rate(),
-%%   <<"maximumPerMinute">> => integer()
+%% create_package_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"packageArn">> => string(),
+%%   <<"packageName">> => string()
 %% }
--type job_executions_rollout_config() :: #{binary() => any()}.
+-type create_package_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_package_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_package_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% timeout_config() :: #{
-%%   <<"inProgressTimeoutInMinutes">> => float()
-%% }
--type timeout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_document() :: #{
+%% create_package_version_request() :: #{
+%%   <<"artifact">> => package_version_artifact(),
 %%   <<"attributes">> => map(),
-%%   <<"connectivity">> => thing_connectivity(),
-%%   <<"deviceDefender">> => string(),
-%%   <<"shadow">> => string(),
-%%   <<"thingGroupNames">> => list(string()),
-%%   <<"thingId">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"thingTypeName">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"recipe">> => string(),
+%%   <<"tags">> => map()
 %% }
--type thing_document() :: #{binary() => any()}.
+-type create_package_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% replace_default_policy_version_params() :: #{
-%%   <<"templateName">> => list(any())
+%% create_package_version_response() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"description">> => string(),
+%%   <<"errorReason">> => string(),
+%%   <<"packageName">> => string(),
+%%   <<"packageVersionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"versionName">> => string()
 %% }
--type replace_default_policy_version_params() :: #{binary() => any()}.
+-type create_package_version_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_exception() :: #{
-%%   <<"message">> => string()
+%% create_policy_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_audit_task_request() :: #{}
--type cancel_audit_task_request() :: #{}.
+-type create_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_related_resources_for_audit_finding_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"relatedResources">> => list(related_resource())
+%% create_policy_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"policyVersionId">> => string()
 %% }
--type list_related_resources_for_audit_finding_response() :: #{binary() => any()}.
+-type create_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_job_document_response() :: #{
-%%   <<"document">> => string()
+%% create_policy_version_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"setAsDefault">> => boolean()
 %% }
--type get_job_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_default_authorizer_request() :: #{}
--type describe_default_authorizer_request() :: #{}.
+-type create_policy_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_provisioning_template_version_request() :: #{
-%%   <<"setAsDefault">> => boolean(),
-%%   <<"templateBody">> := string()
+%% create_policy_version_response() :: #{
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyVersionId">> => string()
 %% }
--type create_provisioning_template_version_request() :: #{binary() => any()}.
+-type create_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_provisioning_claim_request() :: #{}
+-type create_provisioning_claim_request() :: #{}.
 
 
 %% Example:
-%% transfer_certificate_request() :: #{
-%%   <<"targetAwsAccount">> := string(),
-%%   <<"transferMessage">> => string()
+%% create_provisioning_claim_response() :: #{
+%%   <<"certificateId">> => string(),
+%%   <<"certificatePem">> => string(),
+%%   <<"expiration">> => non_neg_integer(),
+%%   <<"keyPair">> => key_pair()
 %% }
--type transfer_certificate_request() :: #{binary() => any()}.
+-type create_provisioning_claim_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_related_resources_for_audit_finding_request() :: #{
-%%   <<"findingId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_related_resources_for_audit_finding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_certificate_request() :: #{
-%%   <<"forceDelete">> => boolean()
-%% }
--type delete_certificate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_detect_mitigation_actions_task_response() :: #{
-%%   <<"taskSummary">> => detect_mitigation_actions_task_summary()
-%% }
--type describe_detect_mitigation_actions_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% behavior() :: #{
-%%   <<"criteria">> => behavior_criteria(),
-%%   <<"exportMetric">> => boolean(),
-%%   <<"metric">> => string(),
-%%   <<"metricDimension">> => metric_dimension(),
-%%   <<"name">> => string(),
-%%   <<"suppressAlerts">> => boolean()
-%% }
--type behavior() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_certificate_response() :: #{
-%%   <<"certificateDescription">> => certificate_description()
-%% }
--type describe_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dimensions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_dimensions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_endpoint_response() :: #{
-%%   <<"endpointAddress">> => string()
-%% }
--type describe_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_provider_response() :: #{}
--type delete_certificate_provider_response() :: #{}.
-
-
-%% Example:
-%% server_certificate_summary() :: #{
-%%   <<"serverCertificateArn">> => string(),
-%%   <<"serverCertificateStatus">> => list(any()),
-%%   <<"serverCertificateStatusDetail">> => string()
-%% }
--type server_certificate_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing() :: #{
-%%   <<"awsSignerJobId">> => string(),
-%%   <<"customCodeSigning">> => custom_code_signing(),
-%%   <<"startSigningJobParameter">> => start_signing_job_parameter()
-%% }
--type code_signing() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_registration_task_reports_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportType">> := list(any())
-%% }
--type list_thing_registration_task_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorizer_summary() :: #{
-%%   <<"authorizerArn">> => string(),
-%%   <<"authorizerName">> => string()
-%% }
--type authorizer_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% authorizer_config() :: #{
-%%   <<"allowAuthorizerOverride">> => boolean(),
-%%   <<"defaultAuthorizerName">> => string()
-%% }
--type authorizer_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dimension_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"stringValues">> => list(string()),
+%% create_provisioning_template_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"preProvisioningHook">> => provisioning_hook(),
+%%   <<"provisioningRoleArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"templateBody">> := string(),
+%%   <<"templateName">> := string(),
 %%   <<"type">> => list(any())
 %% }
--type update_dimension_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_mitigation_actions_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(audit_mitigation_actions_task_metadata())
-%% }
--type list_audit_mitigation_actions_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_search_action() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"id">> => string(),
-%%   <<"index">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"type">> => string()
-%% }
--type open_search_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% machine_learning_detection_config() :: #{
-%%   <<"confidenceLevel">> => list(any())
-%% }
--type machine_learning_detection_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflicting_resource_update_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflicting_resource_update_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_thing_groups_for_thing_request() :: #{
-%%   <<"overrideDynamicGroups">> => boolean(),
-%%   <<"thingGroupsToAdd">> => list(string()),
-%%   <<"thingGroupsToRemove">> => list(string()),
-%%   <<"thingName">> => string()
-%% }
--type update_thing_groups_for_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(group_name_and_arn())
-%% }
--type list_thing_groups_response() :: #{binary() => any()}.
+-type create_provisioning_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5430,102 +2040,326 @@
 
 
 %% Example:
-%% behavior_criteria() :: #{
-%%   <<"comparisonOperator">> => list(any()),
-%%   <<"consecutiveDatapointsToAlarm">> => integer(),
-%%   <<"consecutiveDatapointsToClear">> => integer(),
-%%   <<"durationSeconds">> => integer(),
-%%   <<"mlDetectionConfig">> => machine_learning_detection_config(),
-%%   <<"statisticalThreshold">> => statistical_threshold(),
-%%   <<"value">> => metric_value()
+%% create_provisioning_template_version_request() :: #{
+%%   <<"setAsDefault">> => boolean(),
+%%   <<"templateBody">> := string()
 %% }
--type behavior_criteria() :: #{binary() => any()}.
+-type create_provisioning_template_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_principal_policies_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy())
+%% create_provisioning_template_version_response() :: #{
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"templateArn">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"versionId">> => integer()
 %% }
--type list_principal_policies_response() :: #{binary() => any()}.
+-type create_provisioning_template_version_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_detect_mitigation_actions_tasks_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> := non_neg_integer()
+%% create_role_alias_request() :: #{
+%%   <<"credentialDurationSeconds">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type list_detect_mitigation_actions_tasks_request() :: #{binary() => any()}.
+-type create_role_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% command_parameter_value_number_range() :: #{
-%%   <<"max">> => string(),
-%%   <<"min">> => string()
+%% create_role_alias_response() :: #{
+%%   <<"roleAlias">> => string(),
+%%   <<"roleAliasArn">> => string()
 %% }
--type command_parameter_value_number_range() :: #{binary() => any()}.
+-type create_role_alias_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_fleet_metric_request() :: #{
-%%   <<"aggregationField">> => string(),
-%%   <<"aggregationType">> => aggregation_type(),
+%% create_scheduled_audit_request() :: #{
+%%   <<"dayOfMonth">> => string(),
+%%   <<"dayOfWeek">> => list(any()),
+%%   <<"frequency">> := list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"targetCheckNames">> := list(string())
+%% }
+-type create_scheduled_audit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scheduled_audit_response() :: #{
+%%   <<"scheduledAuditArn">> => string()
+%% }
+-type create_scheduled_audit_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_profile_request() :: #{
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
+%%   <<"alertTargets">> => map(),
+%%   <<"behaviors">> => list(behavior()),
+%%   <<"metricsExportConfig">> => metrics_export_config(),
+%%   <<"securityProfileDescription">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_profile_response() :: #{
+%%   <<"securityProfileArn">> => string(),
+%%   <<"securityProfileName">> => string()
+%% }
+-type create_security_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"expectedVersion">> => float(),
-%%   <<"indexName">> := string(),
-%%   <<"period">> => integer(),
-%%   <<"queryString">> => string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"unit">> => list(any())
+%%   <<"files">> := list(stream_file()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type update_fleet_metric_request() :: #{binary() => any()}.
+-type create_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_thing_group_request() :: #{
+%% create_stream_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"streamArn">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"streamVersion">> => integer()
+%% }
+-type create_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_group_request() :: #{
+%%   <<"parentGroupName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"thingGroupProperties">> => thing_group_properties()
+%% }
+-type create_thing_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_group_response() :: #{
+%%   <<"thingGroupArn">> => string(),
+%%   <<"thingGroupId">> => string(),
+%%   <<"thingGroupName">> => string()
+%% }
+-type create_thing_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_request() :: #{
+%%   <<"attributePayload">> => attribute_payload(),
+%%   <<"billingGroupName">> => string(),
+%%   <<"thingTypeName">> => string()
+%% }
+-type create_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_response() :: #{
+%%   <<"thingArn">> => string(),
+%%   <<"thingId">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type create_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_type_request() :: #{
+%%   <<"tags">> => list(tag()),
+%%   <<"thingTypeProperties">> => thing_type_properties()
+%% }
+-type create_thing_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_thing_type_response() :: #{
+%%   <<"thingTypeArn">> => string(),
+%%   <<"thingTypeId">> => string(),
+%%   <<"thingTypeName">> => string()
+%% }
+-type create_thing_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_rule_destination_request() :: #{
+%%   <<"destinationConfiguration">> := topic_rule_destination_configuration()
+%% }
+-type create_topic_rule_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_rule_destination_response() :: #{
+%%   <<"topicRuleDestination">> => topic_rule_destination()
+%% }
+-type create_topic_rule_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_topic_rule_request() :: #{
+%%   <<"tags">> => string(),
+%%   <<"topicRulePayload">> := topic_rule_payload()
+%% }
+-type create_topic_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_code_signing() :: #{
+%%   <<"certificateChain">> => code_signing_certificate_chain(),
+%%   <<"hashAlgorithm">> => string(),
+%%   <<"signature">> => code_signing_signature(),
+%%   <<"signatureAlgorithm">> => string()
+%% }
+-type custom_code_signing() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_account_audit_configuration_request() :: #{
+%%   <<"deleteScheduledAudits">> => boolean()
+%% }
+-type delete_account_audit_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_audit_configuration_response() :: #{}
+-type delete_account_audit_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_audit_suppression_request() :: #{
+%%   <<"checkName">> := string(),
+%%   <<"resourceIdentifier">> := resource_identifier()
+%% }
+-type delete_audit_suppression_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_audit_suppression_response() :: #{}
+-type delete_audit_suppression_response() :: #{}.
+
+%% Example:
+%% delete_authorizer_request() :: #{}
+-type delete_authorizer_request() :: #{}.
+
+%% Example:
+%% delete_authorizer_response() :: #{}
+-type delete_authorizer_response() :: #{}.
+
+
+%% Example:
+%% delete_billing_group_request() :: #{
 %%   <<"expectedVersion">> => float()
 %% }
--type delete_thing_group_request() :: #{binary() => any()}.
+-type delete_billing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_billing_group_response() :: #{}
+-type delete_billing_group_response() :: #{}.
+
+%% Example:
+%% delete_ca_certificate_request() :: #{}
+-type delete_ca_certificate_request() :: #{}.
+
+%% Example:
+%% delete_ca_certificate_response() :: #{}
+-type delete_ca_certificate_response() :: #{}.
+
+%% Example:
+%% delete_certificate_provider_request() :: #{}
+-type delete_certificate_provider_request() :: #{}.
+
+%% Example:
+%% delete_certificate_provider_response() :: #{}
+-type delete_certificate_provider_response() :: #{}.
 
 
 %% Example:
-%% start_detect_mitigation_actions_task_response() :: #{
-%%   <<"taskId">> => string()
+%% delete_certificate_request() :: #{
+%%   <<"forceDelete">> => boolean()
 %% }
--type start_detect_mitigation_actions_task_response() :: #{binary() => any()}.
+-type delete_certificate_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% registration_code_validation_exception() :: #{
+%% delete_command_execution_request() :: #{
+%%   <<"targetArn">> := string()
+%% }
+-type delete_command_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_command_execution_response() :: #{}
+-type delete_command_execution_response() :: #{}.
+
+%% Example:
+%% delete_command_request() :: #{}
+-type delete_command_request() :: #{}.
+
+
+%% Example:
+%% delete_command_response() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type delete_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type registration_code_validation_exception() :: #{binary() => any()}.
+-type delete_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_metric_request() :: #{}
+-type delete_custom_metric_request() :: #{}.
+
+%% Example:
+%% delete_custom_metric_response() :: #{}
+-type delete_custom_metric_response() :: #{}.
+
+%% Example:
+%% delete_dimension_request() :: #{}
+-type delete_dimension_request() :: #{}.
+
+%% Example:
+%% delete_dimension_response() :: #{}
+-type delete_dimension_response() :: #{}.
+
+%% Example:
+%% delete_domain_configuration_request() :: #{}
+-type delete_domain_configuration_request() :: #{}.
+
+%% Example:
+%% delete_domain_configuration_response() :: #{}
+-type delete_domain_configuration_response() :: #{}.
 
 
 %% Example:
-%% mitigation_action_params() :: #{
-%%   <<"addThingsToThingGroupParams">> => add_things_to_thing_group_params(),
-%%   <<"enableIoTLoggingParams">> => enable_io_t_logging_params(),
-%%   <<"publishFindingToSnsParams">> => publish_finding_to_sns_params(),
-%%   <<"replaceDefaultPolicyVersionParams">> => replace_default_policy_version_params(),
-%%   <<"updateCACertificateParams">> => update_ca_certificate_params(),
-%%   <<"updateDeviceCertificateParams">> => update_device_certificate_params()
+%% delete_dynamic_thing_group_request() :: #{
+%%   <<"expectedVersion">> => float()
 %% }
--type mitigation_action_params() :: #{binary() => any()}.
+-type delete_dynamic_thing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dynamic_thing_group_response() :: #{}
+-type delete_dynamic_thing_group_response() :: #{}.
 
 
 %% Example:
-%% list_dimensions_response() :: #{
-%%   <<"dimensionNames">> => list(string()),
-%%   <<"nextToken">> => string()
+%% delete_fleet_metric_request() :: #{
+%%   <<"expectedVersion">> => float()
 %% }
--type list_dimensions_response() :: #{binary() => any()}.
+-type delete_fleet_metric_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_security_profile_request() :: #{}
--type describe_security_profile_request() :: #{}.
+%% delete_job_execution_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"namespaceId">> => string()
+%% }
+-type delete_job_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5535,29 +2369,215 @@
 %% }
 -type delete_job_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_job_template_request() :: #{}
+-type delete_job_template_request() :: #{}.
 
 %% Example:
-%% sbom_validation_result_summary() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"fileName">> => string(),
-%%   <<"validationResult">> => list(any())
-%% }
--type sbom_validation_result_summary() :: #{binary() => any()}.
+%% delete_mitigation_action_request() :: #{}
+-type delete_mitigation_action_request() :: #{}.
+
+%% Example:
+%% delete_mitigation_action_response() :: #{}
+-type delete_mitigation_action_response() :: #{}.
 
 
 %% Example:
-%% statistics() :: #{
-%%   <<"average">> => float(),
-%%   <<"count">> => integer(),
-%%   <<"maximum">> => float(),
-%%   <<"minimum">> => float(),
-%%   <<"stdDeviation">> => float(),
-%%   <<"sum">> => float(),
-%%   <<"sumOfSquares">> => float(),
-%%   <<"variance">> => float()
+%% delete_ota_update_request() :: #{
+%%   <<"deleteStream">> => boolean(),
+%%   <<"forceDeleteAWSJob">> => boolean()
 %% }
--type statistics() :: #{binary() => any()}.
+-type delete_ota_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ota_update_response() :: #{}
+-type delete_ota_update_response() :: #{}.
+
+
+%% Example:
+%% delete_package_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_package_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_response() :: #{}
+-type delete_package_response() :: #{}.
+
+
+%% Example:
+%% delete_package_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_package_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_version_response() :: #{}
+-type delete_package_version_response() :: #{}.
+
+%% Example:
+%% delete_policy_request() :: #{}
+-type delete_policy_request() :: #{}.
+
+%% Example:
+%% delete_policy_version_request() :: #{}
+-type delete_policy_version_request() :: #{}.
+
+%% Example:
+%% delete_provisioning_template_request() :: #{}
+-type delete_provisioning_template_request() :: #{}.
+
+%% Example:
+%% delete_provisioning_template_response() :: #{}
+-type delete_provisioning_template_response() :: #{}.
+
+%% Example:
+%% delete_provisioning_template_version_request() :: #{}
+-type delete_provisioning_template_version_request() :: #{}.
+
+%% Example:
+%% delete_provisioning_template_version_response() :: #{}
+-type delete_provisioning_template_version_response() :: #{}.
+
+%% Example:
+%% delete_registration_code_request() :: #{}
+-type delete_registration_code_request() :: #{}.
+
+%% Example:
+%% delete_registration_code_response() :: #{}
+-type delete_registration_code_response() :: #{}.
+
+%% Example:
+%% delete_role_alias_request() :: #{}
+-type delete_role_alias_request() :: #{}.
+
+%% Example:
+%% delete_role_alias_response() :: #{}
+-type delete_role_alias_response() :: #{}.
+
+%% Example:
+%% delete_scheduled_audit_request() :: #{}
+-type delete_scheduled_audit_request() :: #{}.
+
+%% Example:
+%% delete_scheduled_audit_response() :: #{}
+-type delete_scheduled_audit_response() :: #{}.
+
+
+%% Example:
+%% delete_security_profile_request() :: #{
+%%   <<"expectedVersion">> => float()
+%% }
+-type delete_security_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_profile_response() :: #{}
+-type delete_security_profile_response() :: #{}.
+
+%% Example:
+%% delete_stream_request() :: #{}
+-type delete_stream_request() :: #{}.
+
+%% Example:
+%% delete_stream_response() :: #{}
+-type delete_stream_response() :: #{}.
+
+
+%% Example:
+%% delete_thing_group_request() :: #{
+%%   <<"expectedVersion">> => float()
+%% }
+-type delete_thing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_thing_group_response() :: #{}
+-type delete_thing_group_response() :: #{}.
+
+
+%% Example:
+%% delete_thing_request() :: #{
+%%   <<"expectedVersion">> => float()
+%% }
+-type delete_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_thing_response() :: #{}
+-type delete_thing_response() :: #{}.
+
+%% Example:
+%% delete_thing_type_request() :: #{}
+-type delete_thing_type_request() :: #{}.
+
+%% Example:
+%% delete_thing_type_response() :: #{}
+-type delete_thing_type_response() :: #{}.
+
+%% Example:
+%% delete_topic_rule_destination_request() :: #{}
+-type delete_topic_rule_destination_request() :: #{}.
+
+%% Example:
+%% delete_topic_rule_destination_response() :: #{}
+-type delete_topic_rule_destination_response() :: #{}.
+
+%% Example:
+%% delete_topic_rule_request() :: #{}
+-type delete_topic_rule_request() :: #{}.
+
+
+%% Example:
+%% delete_v2_logging_level_request() :: #{
+%%   <<"targetName">> := string(),
+%%   <<"targetType">> := list(any())
+%% }
+-type delete_v2_logging_level_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% denied() :: #{
+%%   <<"explicitDeny">> => explicit_deny(),
+%%   <<"implicitDeny">> => implicit_deny()
+%% }
+-type denied() :: #{binary() => any()}.
+
+
+%% Example:
+%% deprecate_thing_type_request() :: #{
+%%   <<"undoDeprecate">> => boolean()
+%% }
+-type deprecate_thing_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_thing_type_response() :: #{}
+-type deprecate_thing_type_response() :: #{}.
+
+%% Example:
+%% describe_account_audit_configuration_request() :: #{}
+-type describe_account_audit_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_account_audit_configuration_response() :: #{
+%%   <<"auditCheckConfigurations">> => map(),
+%%   <<"auditNotificationTargetConfigurations">> => map(),
+%%   <<"roleArn">> => string()
+%% }
+-type describe_account_audit_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_audit_finding_request() :: #{}
+-type describe_audit_finding_request() :: #{}.
+
+
+%% Example:
+%% describe_audit_finding_response() :: #{
+%%   <<"finding">> => audit_finding()
+%% }
+-type describe_audit_finding_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_audit_mitigation_actions_task_request() :: #{}
+-type describe_audit_mitigation_actions_task_request() :: #{}.
 
 
 %% Example:
@@ -5574,59 +2594,228 @@
 
 
 %% Example:
-%% detach_principal_policy_request() :: #{
-%%   <<"principal">> := string()
+%% describe_audit_suppression_request() :: #{
+%%   <<"checkName">> := string(),
+%%   <<"resourceIdentifier">> := resource_identifier()
 %% }
--type detach_principal_policy_request() :: #{binary() => any()}.
+-type describe_audit_suppression_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% behavior_model_training_summary() :: #{
-%%   <<"behaviorName">> => string(),
-%%   <<"datapointsCollectionPercentage">> => float(),
-%%   <<"lastModelRefreshDate">> => non_neg_integer(),
-%%   <<"modelStatus">> => list(any()),
-%%   <<"securityProfileName">> => string(),
-%%   <<"trainingDataCollectionStartDate">> => non_neg_integer()
+%% describe_audit_suppression_response() :: #{
+%%   <<"checkName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"resourceIdentifier">> => resource_identifier(),
+%%   <<"suppressIndefinitely">> => boolean()
 %% }
--type behavior_model_training_summary() :: #{binary() => any()}.
+-type describe_audit_suppression_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_audit_task_request() :: #{}
+-type describe_audit_task_request() :: #{}.
 
 
 %% Example:
-%% role_alias_description() :: #{
+%% describe_audit_task_response() :: #{
+%%   <<"auditDetails">> => map(),
+%%   <<"scheduledAuditName">> => string(),
+%%   <<"taskStartTime">> => non_neg_integer(),
+%%   <<"taskStatistics">> => task_statistics(),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"taskType">> => list(any())
+%% }
+-type describe_audit_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_authorizer_request() :: #{}
+-type describe_authorizer_request() :: #{}.
+
+
+%% Example:
+%% describe_authorizer_response() :: #{
+%%   <<"authorizerDescription">> => authorizer_description()
+%% }
+-type describe_authorizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_billing_group_request() :: #{}
+-type describe_billing_group_request() :: #{}.
+
+
+%% Example:
+%% describe_billing_group_response() :: #{
+%%   <<"billingGroupArn">> => string(),
+%%   <<"billingGroupId">> => string(),
+%%   <<"billingGroupMetadata">> => billing_group_metadata(),
+%%   <<"billingGroupName">> => string(),
+%%   <<"billingGroupProperties">> => billing_group_properties(),
+%%   <<"version">> => float()
+%% }
+-type describe_billing_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ca_certificate_request() :: #{}
+-type describe_ca_certificate_request() :: #{}.
+
+
+%% Example:
+%% describe_ca_certificate_response() :: #{
+%%   <<"certificateDescription">> => ca_certificate_description(),
+%%   <<"registrationConfig">> => registration_config()
+%% }
+-type describe_ca_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_provider_request() :: #{}
+-type describe_certificate_provider_request() :: #{}.
+
+
+%% Example:
+%% describe_certificate_provider_response() :: #{
+%%   <<"accountDefaultForOperations">> => list(list(any())()),
+%%   <<"certificateProviderArn">> => string(),
+%%   <<"certificateProviderName">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
-%%   <<"credentialDurationSeconds">> => integer(),
+%%   <<"lambdaFunctionArn">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer()
+%% }
+-type describe_certificate_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_request() :: #{}
+-type describe_certificate_request() :: #{}.
+
+
+%% Example:
+%% describe_certificate_response() :: #{
+%%   <<"certificateDescription">> => certificate_description()
+%% }
+-type describe_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_metric_request() :: #{}
+-type describe_custom_metric_request() :: #{}.
+
+
+%% Example:
+%% describe_custom_metric_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"owner">> => string(),
-%%   <<"roleAlias">> => string(),
-%%   <<"roleAliasArn">> => string(),
-%%   <<"roleArn">> => string()
+%%   <<"metricArn">> => string(),
+%%   <<"metricName">> => string(),
+%%   <<"metricType">> => list(any())
 %% }
--type role_alias_description() :: #{binary() => any()}.
+-type describe_custom_metric_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_authorizer_request() :: #{}
+-type describe_default_authorizer_request() :: #{}.
 
 
 %% Example:
-%% metric_value() :: #{
-%%   <<"cidrs">> => list(string()),
-%%   <<"count">> => float(),
-%%   <<"number">> => float(),
-%%   <<"numbers">> => list(float()),
-%%   <<"ports">> => list(integer()),
-%%   <<"strings">> => list(string())
+%% describe_default_authorizer_response() :: #{
+%%   <<"authorizerDescription">> => authorizer_description()
 %% }
--type metric_value() :: #{binary() => any()}.
+-type describe_default_authorizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_detect_mitigation_actions_task_request() :: #{}
+-type describe_detect_mitigation_actions_task_request() :: #{}.
 
 
 %% Example:
-%% http_action() :: #{
-%%   <<"auth">> => http_authorization(),
-%%   <<"batchConfig">> => batch_config(),
-%%   <<"confirmationUrl">> => string(),
-%%   <<"enableBatching">> => boolean(),
-%%   <<"headers">> => list(http_action_header()),
-%%   <<"url">> => string()
+%% describe_detect_mitigation_actions_task_response() :: #{
+%%   <<"taskSummary">> => detect_mitigation_actions_task_summary()
 %% }
--type http_action() :: #{binary() => any()}.
+-type describe_detect_mitigation_actions_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dimension_request() :: #{}
+-type describe_dimension_request() :: #{}.
+
+
+%% Example:
+%% describe_dimension_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"stringValues">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type describe_dimension_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_configuration_request() :: #{}
+-type describe_domain_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_configuration_response() :: #{
+%%   <<"applicationProtocol">> => list(any()),
+%%   <<"authenticationType">> => list(any()),
+%%   <<"authorizerConfig">> => authorizer_config(),
+%%   <<"clientCertificateConfig">> => client_certificate_config(),
+%%   <<"domainConfigurationArn">> => string(),
+%%   <<"domainConfigurationName">> => string(),
+%%   <<"domainConfigurationStatus">> => list(any()),
+%%   <<"domainName">> => string(),
+%%   <<"domainType">> => list(any()),
+%%   <<"lastStatusChangeDate">> => non_neg_integer(),
+%%   <<"serverCertificateConfig">> => server_certificate_config(),
+%%   <<"serverCertificates">> => list(server_certificate_summary()),
+%%   <<"serviceType">> => list(any()),
+%%   <<"tlsConfig">> => tls_config()
+%% }
+-type describe_domain_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_encryption_configuration_request() :: #{}
+-type describe_encryption_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_encryption_configuration_response() :: #{
+%%   <<"configurationDetails">> => configuration_details(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsAccessRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer()
+%% }
+-type describe_encryption_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_endpoint_request() :: #{
+%%   <<"endpointType">> => string()
+%% }
+-type describe_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_endpoint_response() :: #{
+%%   <<"endpointAddress">> => string()
+%% }
+-type describe_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_configurations_request() :: #{}
+-type describe_event_configurations_request() :: #{}.
+
+
+%% Example:
+%% describe_event_configurations_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"eventConfigurations">> => map(),
+%%   <<"lastModifiedDate">> => non_neg_integer()
+%% }
+-type describe_event_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_metric_request() :: #{}
+-type describe_fleet_metric_request() :: #{}.
 
 
 %% Example:
@@ -5647,103 +2836,1072 @@
 %% }
 -type describe_fleet_metric_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_index_request() :: #{}
+-type describe_index_request() :: #{}.
+
 
 %% Example:
-%% validate_security_profile_behaviors_response() :: #{
-%%   <<"valid">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error())
+%% describe_index_response() :: #{
+%%   <<"indexName">> => string(),
+%%   <<"indexStatus">> => list(any()),
+%%   <<"schema">> => string()
 %% }
--type validate_security_profile_behaviors_response() :: #{binary() => any()}.
+-type describe_index_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_signing_job_parameter() :: #{
-%%   <<"destination">> => destination(),
-%%   <<"signingProfileName">> => string(),
-%%   <<"signingProfileParameter">> => signing_profile_parameter()
+%% describe_job_execution_request() :: #{
+%%   <<"executionNumber">> => float()
 %% }
--type start_signing_job_parameter() :: #{binary() => any()}.
+-type describe_job_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% set_v2_logging_options_request() :: #{
-%%   <<"defaultLogLevel">> => list(any()),
-%%   <<"disableAllLogs">> => boolean(),
-%%   <<"eventConfigurations">> => list(log_event_configuration()),
+%% describe_job_execution_response() :: #{
+%%   <<"execution">> => job_execution()
+%% }
+-type describe_job_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"beforeSubstitution">> => boolean()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_response() :: #{
+%%   <<"documentSource">> => string(),
+%%   <<"job">> => job()
+%% }
+-type describe_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_template_request() :: #{}
+-type describe_job_template_request() :: #{}.
+
+
+%% Example:
+%% describe_job_template_response() :: #{
+%%   <<"abortConfig">> => abort_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"destinationPackageVersions">> => list(string()),
+%%   <<"document">> => string(),
+%%   <<"documentSource">> => string(),
+%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
+%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
+%%   <<"jobTemplateArn">> => string(),
+%%   <<"jobTemplateId">> => string(),
+%%   <<"maintenanceWindows">> => list(maintenance_window()),
+%%   <<"presignedUrlConfig">> => presigned_url_config(),
+%%   <<"timeoutConfig">> => timeout_config()
+%% }
+-type describe_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_managed_job_template_request() :: #{
+%%   <<"templateVersion">> => string()
+%% }
+-type describe_managed_job_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_managed_job_template_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"document">> => string(),
+%%   <<"documentParameters">> => list(document_parameter()),
+%%   <<"environments">> => list(string()),
+%%   <<"templateArn">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"templateVersion">> => string()
+%% }
+-type describe_managed_job_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mitigation_action_request() :: #{}
+-type describe_mitigation_action_request() :: #{}.
+
+
+%% Example:
+%% describe_mitigation_action_response() :: #{
+%%   <<"actionArn">> => string(),
+%%   <<"actionId">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"actionParams">> => mitigation_action_params(),
+%%   <<"actionType">> => list(any()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"roleArn">> => string()
 %% }
--type set_v2_logging_options_request() :: #{binary() => any()}.
+-type describe_mitigation_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioning_template_request() :: #{}
+-type describe_provisioning_template_request() :: #{}.
 
 
 %% Example:
-%% set_v2_logging_level_request() :: #{
-%%   <<"logLevel">> := list(any()),
-%%   <<"logTarget">> := log_target()
+%% describe_provisioning_template_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"defaultVersionId">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"preProvisioningHook">> => provisioning_hook(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"templateArn">> => string(),
+%%   <<"templateBody">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type set_v2_logging_level_request() :: #{binary() => any()}.
+-type describe_provisioning_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioning_template_version_request() :: #{}
+-type describe_provisioning_template_version_request() :: #{}.
+
+
+%% Example:
+%% describe_provisioning_template_version_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"templateBody">> => string(),
+%%   <<"versionId">> => integer()
+%% }
+-type describe_provisioning_template_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_role_alias_request() :: #{}
+-type describe_role_alias_request() :: #{}.
+
+
+%% Example:
+%% describe_role_alias_response() :: #{
+%%   <<"roleAliasDescription">> => role_alias_description()
+%% }
+-type describe_role_alias_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_audit_request() :: #{}
+-type describe_scheduled_audit_request() :: #{}.
+
+
+%% Example:
+%% describe_scheduled_audit_response() :: #{
+%%   <<"dayOfMonth">> => string(),
+%%   <<"dayOfWeek">> => list(any()),
+%%   <<"frequency">> => list(any()),
+%%   <<"scheduledAuditArn">> => string(),
+%%   <<"scheduledAuditName">> => string(),
+%%   <<"targetCheckNames">> => list(string())
+%% }
+-type describe_scheduled_audit_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_profile_request() :: #{}
+-type describe_security_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_security_profile_response() :: #{
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
+%%   <<"alertTargets">> => map(),
+%%   <<"behaviors">> => list(behavior()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"metricsExportConfig">> => metrics_export_config(),
+%%   <<"securityProfileArn">> => string(),
+%%   <<"securityProfileDescription">> => string(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"version">> => float()
+%% }
+-type describe_security_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_request() :: #{}
+-type describe_stream_request() :: #{}.
+
+
+%% Example:
+%% describe_stream_response() :: #{
+%%   <<"streamInfo">> => stream_info()
+%% }
+-type describe_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thing_group_request() :: #{}
+-type describe_thing_group_request() :: #{}.
+
+
+%% Example:
+%% describe_thing_group_response() :: #{
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> => string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"thingGroupArn">> => string(),
+%%   <<"thingGroupId">> => string(),
+%%   <<"thingGroupMetadata">> => thing_group_metadata(),
+%%   <<"thingGroupName">> => string(),
+%%   <<"thingGroupProperties">> => thing_group_properties(),
+%%   <<"version">> => float()
+%% }
+-type describe_thing_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thing_registration_task_request() :: #{}
+-type describe_thing_registration_task_request() :: #{}.
+
+
+%% Example:
+%% describe_thing_registration_task_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"failureCount">> => integer(),
+%%   <<"inputFileBucket">> => string(),
+%%   <<"inputFileKey">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"percentageProgress">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"successCount">> => integer(),
+%%   <<"taskId">> => string(),
+%%   <<"templateBody">> => string()
+%% }
+-type describe_thing_registration_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thing_request() :: #{}
+-type describe_thing_request() :: #{}.
+
+
+%% Example:
+%% describe_thing_response() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"billingGroupName">> => string(),
+%%   <<"defaultClientId">> => string(),
+%%   <<"thingArn">> => string(),
+%%   <<"thingId">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"thingTypeName">> => string(),
+%%   <<"version">> => float()
+%% }
+-type describe_thing_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thing_type_request() :: #{}
+-type describe_thing_type_request() :: #{}.
+
+
+%% Example:
+%% describe_thing_type_response() :: #{
+%%   <<"thingTypeArn">> => string(),
+%%   <<"thingTypeId">> => string(),
+%%   <<"thingTypeMetadata">> => thing_type_metadata(),
+%%   <<"thingTypeName">> => string(),
+%%   <<"thingTypeProperties">> => thing_type_properties()
+%% }
+-type describe_thing_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"s3Destination">> => s3_destination()
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_policy_request() :: #{
+%%   <<"target">> := string()
+%% }
+-type detach_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_principal_policy_request() :: #{
+%%   <<"principal">> := string()
+%% }
+-type detach_principal_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_security_profile_request() :: #{
+%%   <<"securityProfileTargetArn">> := string()
+%% }
+-type detach_security_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_security_profile_response() :: #{}
+-type detach_security_profile_response() :: #{}.
+
+
+%% Example:
+%% detach_thing_principal_request() :: #{
+%%   <<"principal">> := string()
+%% }
+-type detach_thing_principal_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_thing_principal_response() :: #{}
+-type detach_thing_principal_response() :: #{}.
+
+
+%% Example:
+%% detect_mitigation_action_execution() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"executionEndDate">> => non_neg_integer(),
+%%   <<"executionStartDate">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"violationId">> => string()
+%% }
+-type detect_mitigation_action_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_mitigation_actions_task_statistics() :: #{
+%%   <<"actionsExecuted">> => float(),
+%%   <<"actionsFailed">> => float(),
+%%   <<"actionsSkipped">> => float()
+%% }
+-type detect_mitigation_actions_task_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_mitigation_actions_task_summary() :: #{
+%%   <<"actionsDefinition">> => list(mitigation_action()),
+%%   <<"onlyActiveViolationsIncluded">> => boolean(),
+%%   <<"suppressedAlertsIncluded">> => boolean(),
+%%   <<"target">> => detect_mitigation_actions_task_target(),
+%%   <<"taskEndTime">> => non_neg_integer(),
+%%   <<"taskId">> => string(),
+%%   <<"taskStartTime">> => non_neg_integer(),
+%%   <<"taskStatistics">> => detect_mitigation_actions_task_statistics(),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
+%% }
+-type detect_mitigation_actions_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_mitigation_actions_task_target() :: #{
+%%   <<"behaviorName">> => string(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"violationIds">> => list(string())
+%% }
+-type detect_mitigation_actions_task_target() :: #{binary() => any()}.
+
+%% Example:
+%% disable_topic_rule_request() :: #{}
+-type disable_topic_rule_request() :: #{}.
+
+
+%% Example:
+%% disassociate_sbom_from_package_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type disassociate_sbom_from_package_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_sbom_from_package_version_response() :: #{}
+-type disassociate_sbom_from_package_version_response() :: #{}.
+
+
+%% Example:
+%% document_parameter() :: #{
+%%   <<"description">> => string(),
+%%   <<"example">> => string(),
+%%   <<"key">> => string(),
+%%   <<"optional">> => boolean(),
+%%   <<"regex">> => string()
+%% }
+-type document_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_configuration_summary() :: #{
+%%   <<"domainConfigurationArn">> => string(),
+%%   <<"domainConfigurationName">> => string(),
+%%   <<"serviceType">> => list(any())
+%% }
+-type domain_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamo_db_action() :: #{
+%%   <<"hashKeyField">> => string(),
+%%   <<"hashKeyType">> => list(any()),
+%%   <<"hashKeyValue">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"payloadField">> => string(),
+%%   <<"rangeKeyField">> => string(),
+%%   <<"rangeKeyType">> => list(any()),
+%%   <<"rangeKeyValue">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tableName">> => string()
+%% }
+-type dynamo_db_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamo_dbv2_action() :: #{
+%%   <<"putItem">> => put_item_input(),
+%%   <<"roleArn">> => string()
+%% }
+-type dynamo_dbv2_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_policy() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type effective_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% elasticsearch_action() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"id">> => string(),
+%%   <<"index">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"type">> => string()
+%% }
+-type elasticsearch_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_io_t_logging_params() :: #{
+%%   <<"logLevel">> => list(any()),
+%%   <<"roleArnForLogging">> => string()
+%% }
+-type enable_io_t_logging_params() :: #{binary() => any()}.
+
+%% Example:
+%% enable_topic_rule_request() :: #{}
+-type enable_topic_rule_request() :: #{}.
+
+
+%% Example:
+%% error_info() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% explicit_deny() :: #{
+%%   <<"policies">> => list(policy())
+%% }
+-type explicit_deny() :: #{binary() => any()}.
+
+
+%% Example:
+%% exponential_rollout_rate() :: #{
+%%   <<"baseRatePerMinute">> => integer(),
+%%   <<"incrementFactor">> => float(),
+%%   <<"rateIncreaseCriteria">> => rate_increase_criteria()
+%% }
+-type exponential_rollout_rate() :: #{binary() => any()}.
+
+
+%% Example:
+%% field() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type field() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_location() :: #{
+%%   <<"s3Location">> => s3_location(),
+%%   <<"stream">> => stream()
+%% }
+-type file_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose_action() :: #{
+%%   <<"batchMode">> => boolean(),
+%%   <<"deliveryStreamName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"separator">> => string()
+%% }
+-type firehose_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% fleet_metric_name_and_arn() :: #{
+%%   <<"metricArn">> => string(),
+%%   <<"metricName">> => string()
+%% }
+-type fleet_metric_name_and_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_location_target() :: #{
+%%   <<"name">> => string(),
+%%   <<"order">> => list(any())
+%% }
+-type geo_location_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_behavior_model_training_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileName">> => string()
+%% }
+-type get_behavior_model_training_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_behavior_model_training_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(behavior_model_training_summary())
+%% }
+-type get_behavior_model_training_summaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_buckets_aggregation_request() :: #{
+%%   <<"aggregationField">> := string(),
+%%   <<"bucketsAggregationType">> := buckets_aggregation_type(),
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string()
+%% }
+-type get_buckets_aggregation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_buckets_aggregation_response() :: #{
+%%   <<"buckets">> => list(bucket()),
+%%   <<"totalCount">> => integer()
+%% }
+-type get_buckets_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cardinality_request() :: #{
+%%   <<"aggregationField">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string()
+%% }
+-type get_cardinality_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cardinality_response() :: #{
+%%   <<"cardinality">> => integer()
+%% }
+-type get_cardinality_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_command_execution_request() :: #{
+%%   <<"includeResult">> => boolean(),
+%%   <<"targetArn">> := string()
+%% }
+-type get_command_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_command_execution_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"executionId">> => string(),
+%%   <<"executionTimeoutSeconds">> => float(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"parameters">> => map(),
+%%   <<"result">> => map(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"targetArn">> => string(),
+%%   <<"timeToLive">> => non_neg_integer()
+%% }
+-type get_command_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_command_request() :: #{}
+-type get_command_request() :: #{}.
+
+
+%% Example:
+%% get_command_response() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"commandId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"mandatoryParameters">> => list(command_parameter()),
+%%   <<"namespace">> => list(any()),
+%%   <<"payload">> => command_payload(),
+%%   <<"payloadTemplate">> => string(),
+%%   <<"pendingDeletion">> => boolean(),
+%%   <<"preprocessor">> => command_preprocessor(),
+%%   <<"roleArn">> => string()
+%% }
+-type get_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_policies_request() :: #{
+%%   <<"cognitoIdentityPoolId">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type get_effective_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_policies_response() :: #{
+%%   <<"effectivePolicies">> => list(effective_policy())
+%% }
+-type get_effective_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_indexing_configuration_request() :: #{}
+-type get_indexing_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_indexing_configuration_response() :: #{
+%%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
+%%   <<"thingIndexingConfiguration">> => thing_indexing_configuration()
+%% }
+-type get_indexing_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_document_request() :: #{
+%%   <<"beforeSubstitution">> => boolean()
+%% }
+-type get_job_document_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_document_response() :: #{
+%%   <<"document">> => string()
+%% }
+-type get_job_document_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_options_request() :: #{}
+-type get_logging_options_request() :: #{}.
+
+
+%% Example:
+%% get_logging_options_response() :: #{
+%%   <<"logLevel">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type get_logging_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ota_update_request() :: #{}
+-type get_ota_update_request() :: #{}.
+
+
+%% Example:
+%% get_ota_update_response() :: #{
+%%   <<"otaUpdateInfo">> => ota_update_info()
+%% }
+-type get_ota_update_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_package_configuration_request() :: #{}
 -type get_package_configuration_request() :: #{}.
 
-%% Example:
-%% cancel_audit_mitigation_actions_task_request() :: #{}
--type cancel_audit_mitigation_actions_task_request() :: #{}.
-
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
+%% get_package_configuration_response() :: #{
+%%   <<"versionUpdateByJobsConfig">> => version_update_by_jobs_config()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type get_package_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_request() :: #{}
+-type get_package_request() :: #{}.
 
 
 %% Example:
-%% list_detect_mitigation_actions_executions_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"taskId">> => string(),
+%% get_package_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"defaultVersionName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"packageArn">> => string(),
+%%   <<"packageName">> => string()
+%% }
+-type get_package_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_version_request() :: #{}
+-type get_package_version_request() :: #{}.
+
+
+%% Example:
+%% get_package_version_response() :: #{
+%%   <<"artifact">> => package_version_artifact(),
+%%   <<"attributes">> => map(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"errorReason">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"packageName">> => string(),
+%%   <<"packageVersionArn">> => string(),
+%%   <<"recipe">> => string(),
+%%   <<"sbom">> => sbom(),
+%%   <<"sbomValidationStatus">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"versionName">> => string()
+%% }
+-type get_package_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_percentiles_request() :: #{
+%%   <<"aggregationField">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"percents">> => list(float()),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string()
+%% }
+-type get_percentiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_percentiles_response() :: #{
+%%   <<"percentiles">> => list(percent_pair())
+%% }
+-type get_percentiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"defaultVersionId">> => string(),
+%%   <<"generationId">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_request() :: #{}
+-type get_policy_version_request() :: #{}.
+
+
+%% Example:
+%% get_policy_version_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"generationId">> => string(),
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"policyVersionId">> => string()
+%% }
+-type get_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_registration_code_request() :: #{}
+-type get_registration_code_request() :: #{}.
+
+
+%% Example:
+%% get_registration_code_response() :: #{
+%%   <<"registrationCode">> => string()
+%% }
+-type get_registration_code_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_statistics_request() :: #{
+%%   <<"aggregationField">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> := string(),
+%%   <<"queryVersion">> => string()
+%% }
+-type get_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_statistics_response() :: #{
+%%   <<"statistics">> => statistics()
+%% }
+-type get_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_connectivity_data_request() :: #{
+%%   <<"includeSocketInformation">> => boolean()
+%% }
+-type get_thing_connectivity_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_connectivity_data_response() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"clientId">> => string(),
+%%   <<"connected">> => boolean(),
+%%   <<"disconnectReason">> => list(any()),
+%%   <<"keepAliveDuration">> => integer(),
+%%   <<"sessionExpiry">> => float(),
+%%   <<"sourceIp">> => string(),
+%%   <<"sourcePort">> => integer(),
+%%   <<"targetIp">> => string(),
+%%   <<"targetPort">> => integer(),
 %%   <<"thingName">> => string(),
-%%   <<"violationId">> => string()
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"vpcEndpointId">> => string()
 %% }
--type list_detect_mitigation_actions_executions_request() :: #{binary() => any()}.
+-type get_thing_connectivity_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_rule_destination_request() :: #{}
+-type get_topic_rule_destination_request() :: #{}.
 
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
+%% get_topic_rule_destination_response() :: #{
+%%   <<"topicRuleDestination">> => topic_rule_destination()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type get_topic_rule_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_topic_rule_request() :: #{}
+-type get_topic_rule_request() :: #{}.
 
 
 %% Example:
-%% certificate_validation_exception() :: #{
+%% get_topic_rule_response() :: #{
+%%   <<"rule">> => topic_rule(),
+%%   <<"ruleArn">> => string()
+%% }
+-type get_topic_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_v2_logging_options_request() :: #{
+%%   <<"verbose">> => boolean()
+%% }
+-type get_v2_logging_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_v2_logging_options_response() :: #{
+%%   <<"defaultLogLevel">> => list(any()),
+%%   <<"disableAllLogs">> => boolean(),
+%%   <<"eventConfigurations">> => list(log_event_configuration()),
+%%   <<"roleArn">> => string()
+%% }
+-type get_v2_logging_options_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_name_and_arn() :: #{
+%%   <<"groupArn">> => string(),
+%%   <<"groupName">> => string()
+%% }
+-type group_name_and_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_action() :: #{
+%%   <<"auth">> => http_authorization(),
+%%   <<"batchConfig">> => batch_config(),
+%%   <<"confirmationUrl">> => string(),
+%%   <<"enableBatching">> => boolean(),
+%%   <<"headers">> => list(http_action_header()),
+%%   <<"url">> => string()
+%% }
+-type http_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_action_header() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type http_action_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_authorization() :: #{
+%%   <<"sigv4">> => sig_v4_authorization()
+%% }
+-type http_authorization() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_context() :: #{
+%%   <<"headers">> => map(),
+%%   <<"queryString">> => string()
+%% }
+-type http_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_url_destination_configuration() :: #{
+%%   <<"confirmationUrl">> => string()
+%% }
+-type http_url_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_url_destination_properties() :: #{
+%%   <<"confirmationUrl">> => string()
+%% }
+-type http_url_destination_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_url_destination_summary() :: #{
+%%   <<"confirmationUrl">> => string()
+%% }
+-type http_url_destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% implicit_deny() :: #{
+%%   <<"policies">> => list(policy())
+%% }
+-type implicit_deny() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_not_ready_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type certificate_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioning_template_version_request() :: #{}
--type delete_provisioning_template_version_request() :: #{}.
+-type index_not_ready_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_thing_principals_v2_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"thingPrincipalObjects">> => list(thing_principal_object())
+%% indexing_filter() :: #{
+%%   <<"connectivity">> => connectivity_filter(),
+%%   <<"geoLocations">> => list(geo_location_target()),
+%%   <<"namedShadowNames">> => list(string())
 %% }
--type list_thing_principals_v2_response() :: #{binary() => any()}.
+-type indexing_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_audit_mitigation_actions_executions_response() :: #{
-%%   <<"actionsExecutions">> => list(audit_mitigation_action_execution_metadata()),
-%%   <<"nextToken">> => string()
+%% internal_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_audit_mitigation_actions_executions_response() :: #{binary() => any()}.
+-type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_aggregation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_aggregation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_query_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_query_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_response_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_response_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_transition_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_transition_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_analytics_action() :: #{
+%%   <<"batchMode">> => boolean(),
+%%   <<"channelArn">> => string(),
+%%   <<"channelName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type iot_analytics_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_events_action() :: #{
+%%   <<"batchMode">> => boolean(),
+%%   <<"inputName">> => string(),
+%%   <<"messageId">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type iot_events_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_site_wise_action() :: #{
+%%   <<"putAssetPropertyValueEntries">> => list(put_asset_property_value_entry()),
+%%   <<"roleArn">> => string()
+%% }
+-type iot_site_wise_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% issuer_certificate_identifier() :: #{
+%%   <<"issuerCertificateSerialNumber">> => string(),
+%%   <<"issuerCertificateSubject">> => string(),
+%%   <<"issuerId">> => string()
+%% }
+-type issuer_certificate_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5776,9 +3934,730 @@
 %% }
 -type job() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_provisioning_template_request() :: #{}
--type delete_provisioning_template_request() :: #{}.
+%% job_execution() :: #{
+%%   <<"approximateSecondsBeforeTimedOut">> => float(),
+%%   <<"executionNumber">> => float(),
+%%   <<"forceCanceled">> => boolean(),
+%%   <<"jobId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"queuedAt">> => non_neg_integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => job_execution_status_details(),
+%%   <<"thingArn">> => string(),
+%%   <<"versionNumber">> => float()
+%% }
+-type job_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_execution_status_details() :: #{
+%%   <<"detailsMap">> => map()
+%% }
+-type job_execution_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_execution_summary() :: #{
+%%   <<"executionNumber">> => float(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"queuedAt">> => non_neg_integer(),
+%%   <<"retryAttempt">> => integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type job_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_execution_summary_for_job() :: #{
+%%   <<"jobExecutionSummary">> => job_execution_summary(),
+%%   <<"thingArn">> => string()
+%% }
+-type job_execution_summary_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_execution_summary_for_thing() :: #{
+%%   <<"jobExecutionSummary">> => job_execution_summary(),
+%%   <<"jobId">> => string()
+%% }
+-type job_execution_summary_for_thing() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_executions_retry_config() :: #{
+%%   <<"criteriaList">> => list(retry_criteria())
+%% }
+-type job_executions_retry_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_executions_rollout_config() :: #{
+%%   <<"exponentialRate">> => exponential_rollout_rate(),
+%%   <<"maximumPerMinute">> => integer()
+%% }
+-type job_executions_rollout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_process_details() :: #{
+%%   <<"numberOfCanceledThings">> => integer(),
+%%   <<"numberOfFailedThings">> => integer(),
+%%   <<"numberOfInProgressThings">> => integer(),
+%%   <<"numberOfQueuedThings">> => integer(),
+%%   <<"numberOfRejectedThings">> => integer(),
+%%   <<"numberOfRemovedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer(),
+%%   <<"numberOfTimedOutThings">> => integer(),
+%%   <<"processingTargets">> => list(string())
+%% }
+-type job_process_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"isConcurrent">> => boolean(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"targetSelection">> => list(any()),
+%%   <<"thingGroupId">> => string()
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_template_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"jobTemplateArn">> => string(),
+%%   <<"jobTemplateId">> => string()
+%% }
+-type job_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_action() :: #{
+%%   <<"clientProperties">> => map(),
+%%   <<"destinationArn">> => string(),
+%%   <<"headers">> => list(kafka_action_header()),
+%%   <<"key">> => string(),
+%%   <<"partition">> => string(),
+%%   <<"topic">> => string()
+%% }
+-type kafka_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_action_header() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type kafka_action_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_pair() :: #{
+%%   <<"PrivateKey">> => string(),
+%%   <<"PublicKey">> => string()
+%% }
+-type key_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_action() :: #{
+%%   <<"partitionKey">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"streamName">> => string()
+%% }
+-type kinesis_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_action() :: #{
+%%   <<"functionArn">> => string()
+%% }
+-type lambda_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_active_violations_request() :: #{
+%%   <<"behaviorCriteriaType">> => list(any()),
+%%   <<"listSuppressedAlerts">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"verificationState">> => list(any())
+%% }
+-type list_active_violations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_active_violations_response() :: #{
+%%   <<"activeViolations">> => list(active_violation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_active_violations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_policies_request() :: #{
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"recursive">> => boolean()
+%% }
+-type list_attached_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_policies_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"policies">> => list(policy())
+%% }
+-type list_attached_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_findings_request() :: #{
+%%   <<"checkName">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"listSuppressedFindings">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceIdentifier">> => resource_identifier(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"taskId">> => string()
+%% }
+-type list_audit_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_findings_response() :: #{
+%%   <<"findings">> => list(audit_finding()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_audit_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_mitigation_actions_executions_request() :: #{
+%%   <<"actionStatus">> => list(any()),
+%%   <<"findingId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"taskId">> := string()
+%% }
+-type list_audit_mitigation_actions_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_mitigation_actions_executions_response() :: #{
+%%   <<"actionsExecutions">> => list(audit_mitigation_action_execution_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_audit_mitigation_actions_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_mitigation_actions_tasks_request() :: #{
+%%   <<"auditTaskId">> => string(),
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"findingId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"taskStatus">> => list(any())
+%% }
+-type list_audit_mitigation_actions_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_mitigation_actions_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(audit_mitigation_actions_task_metadata())
+%% }
+-type list_audit_mitigation_actions_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_suppressions_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"checkName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceIdentifier">> => resource_identifier()
+%% }
+-type list_audit_suppressions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_suppressions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suppressions">> => list(audit_suppression())
+%% }
+-type list_audit_suppressions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_tasks_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"taskType">> => list(any())
+%% }
+-type list_audit_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audit_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(audit_task_metadata())
+%% }
+-type list_audit_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authorizers_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type list_authorizers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authorizers_response() :: #{
+%%   <<"authorizers">> => list(authorizer_summary()),
+%%   <<"nextMarker">> => string()
+%% }
+-type list_authorizers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namePrefixFilter">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_billing_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_groups_response() :: #{
+%%   <<"billingGroups">> => list(group_name_and_arn()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_billing_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ca_certificates_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"templateName">> => string()
+%% }
+-type list_ca_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ca_certificates_response() :: #{
+%%   <<"certificates">> => list(ca_certificate()),
+%%   <<"nextMarker">> => string()
+%% }
+-type list_ca_certificates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificate_providers_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_certificate_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificate_providers_response() :: #{
+%%   <<"certificateProviders">> => list(certificate_provider_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_certificate_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificates_by_ca_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_certificates_by_ca_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificates_by_ca_response() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"nextMarker">> => string()
+%% }
+-type list_certificates_by_ca_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificates_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_certificates_response() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"nextMarker">> => string()
+%% }
+-type list_certificates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_command_executions_request() :: #{
+%%   <<"commandArn">> => string(),
+%%   <<"completedTimeFilter">> => time_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"startedTimeFilter">> => time_filter(),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string()
+%% }
+-type list_command_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_command_executions_response() :: #{
+%%   <<"commandExecutions">> => list(command_execution_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_command_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_commands_request() :: #{
+%%   <<"commandParameterName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_commands_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_commands_response() :: #{
+%%   <<"commands">> => list(command_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_commands_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_metrics_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_metrics_response() :: #{
+%%   <<"metricNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detect_mitigation_actions_executions_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"taskId">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"violationId">> => string()
+%% }
+-type list_detect_mitigation_actions_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detect_mitigation_actions_executions_response() :: #{
+%%   <<"actionsExecutions">> => list(detect_mitigation_action_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_detect_mitigation_actions_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detect_mitigation_actions_tasks_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := non_neg_integer()
+%% }
+-type list_detect_mitigation_actions_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detect_mitigation_actions_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(detect_mitigation_actions_task_summary())
+%% }
+-type list_detect_mitigation_actions_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dimensions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dimensions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dimensions_response() :: #{
+%%   <<"dimensionNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dimensions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_configurations_request() :: #{
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"serviceType">> => list(any())
+%% }
+-type list_domain_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_configurations_response() :: #{
+%%   <<"domainConfigurations">> => list(domain_configuration_summary()),
+%%   <<"nextMarker">> => string()
+%% }
+-type list_domain_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleet_metrics_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleet_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleet_metrics_response() :: #{
+%%   <<"fleetMetrics">> => list(fleet_metric_name_and_arn()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleet_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_response() :: #{
+%%   <<"indexNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_executions_for_job_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_job_executions_for_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_executions_for_job_response() :: #{
+%%   <<"executionSummaries">> => list(job_execution_summary_for_job()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_executions_for_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_executions_for_thing_request() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespaceId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_job_executions_for_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_executions_for_thing_response() :: #{
+%%   <<"executionSummaries">> => list(job_execution_summary_for_thing()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_executions_for_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_templates_response() :: #{
+%%   <<"jobTemplates">> => list(job_template_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namespaceId">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetSelection">> => list(any()),
+%%   <<"thingGroupId">> => string(),
+%%   <<"thingGroupName">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"jobs">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_job_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"templateName">> => string()
+%% }
+-type list_managed_job_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_job_templates_response() :: #{
+%%   <<"managedJobTemplates">> => list(managed_job_template_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_job_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metric_values_request() :: #{
+%%   <<"dimensionName">> => string(),
+%%   <<"dimensionValueOperator">> => list(any()),
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"metricName">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"thingName">> := string()
+%% }
+-type list_metric_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metric_values_response() :: #{
+%%   <<"metricDatumList">> => list(metric_datum()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mitigation_actions_request() :: #{
+%%   <<"actionType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_mitigation_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mitigation_actions_response() :: #{
+%%   <<"actionIdentifiers">> => list(mitigation_action_identifier()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_mitigation_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_updates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"otaUpdateStatus">> => list(any())
+%% }
+-type list_ota_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_updates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"otaUpdates">> => list(ota_update_summary())
+%% }
+-type list_ota_updates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outgoing_certificates_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_outgoing_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outgoing_certificates_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"outgoingCertificates">> => list(outgoing_certificate())
+%% }
+-type list_outgoing_certificates_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5791,47 +4670,369 @@
 
 
 %% Example:
-%% command_parameter_value_condition() :: #{
-%%   <<"comparisonOperator">> => list(any()),
-%%   <<"operand">> => command_parameter_value_comparison_operand()
+%% list_package_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packageVersionSummaries">> => list(package_version_summary())
 %% }
--type command_parameter_value_condition() :: #{binary() => any()}.
+-type list_package_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% destination() :: #{
-%%   <<"s3Destination">> => s3_destination()
+%% list_packages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type destination() :: #{binary() => any()}.
+-type list_packages_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% stream_file() :: #{
-%%   <<"fileId">> => integer(),
-%%   <<"s3Location">> => s3_location()
+%% list_packages_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packageSummaries">> => list(package_summary())
 %% }
--type stream_file() :: #{binary() => any()}.
+-type list_packages_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% mqtt_context() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"password">> => binary(),
-%%   <<"username">> => string()
+%% list_policies_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
 %% }
--type mqtt_context() :: #{binary() => any()}.
-
-%% Example:
-%% update_topic_rule_destination_response() :: #{}
--type update_topic_rule_destination_response() :: #{}.
+-type list_policies_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_execution_summary_for_thing() :: #{
-%%   <<"jobExecutionSummary">> => job_execution_summary(),
-%%   <<"jobId">> => string()
+%% list_policies_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"policies">> => list(policy())
 %% }
--type job_execution_summary_for_thing() :: #{binary() => any()}.
+-type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_principals_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"policyName">> := string()
+%% }
+-type list_policy_principals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_principals_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"principals">> => list(string())
+%% }
+-type list_policy_principals_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_versions_request() :: #{}
+-type list_policy_versions_request() :: #{}.
+
+
+%% Example:
+%% list_policy_versions_response() :: #{
+%%   <<"policyVersions">> => list(policy_version())
+%% }
+-type list_policy_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_policies_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"principal">> := string()
+%% }
+-type list_principal_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_policies_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"policies">> => list(policy())
+%% }
+-type list_principal_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_things_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> := string()
+%% }
+-type list_principal_things_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_things_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"things">> => list(string())
+%% }
+-type list_principal_things_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_things_v2_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principal">> := string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type list_principal_things_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principal_things_v2_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"principalThingObjects">> => list(principal_thing_object())
+%% }
+-type list_principal_things_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_template_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_provisioning_template_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_template_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"versions">> => list(provisioning_template_version_summary())
+%% }
+-type list_provisioning_template_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_provisioning_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> => list(provisioning_template_summary())
+%% }
+-type list_provisioning_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_related_resources_for_audit_finding_request() :: #{
+%%   <<"findingId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_related_resources_for_audit_finding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_related_resources_for_audit_finding_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relatedResources">> => list(related_resource())
+%% }
+-type list_related_resources_for_audit_finding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_role_aliases_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_role_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_role_aliases_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"roleAliases">> => list(string())
+%% }
+-type list_role_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sbom_validation_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"validationResult">> => list(any())
+%% }
+-type list_sbom_validation_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sbom_validation_results_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"validationResultSummaries">> => list(sbom_validation_result_summary())
+%% }
+-type list_sbom_validation_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduled_audits_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduled_audits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scheduled_audits_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledAudits">> => list(scheduled_audit_metadata())
+%% }
+-type list_scheduled_audits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_for_target_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recursive">> => boolean(),
+%%   <<"securityProfileTargetArn">> := string()
+%% }
+-type list_security_profiles_for_target_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_for_target_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileTargetMappings">> => list(security_profile_target_mapping())
+%% }
+-type list_security_profiles_for_target_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_request() :: #{
+%%   <<"dimensionName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"metricName">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileIdentifiers">> => list(security_profile_identifier())
+%% }
+-type list_security_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_request() :: #{
+%%   <<"ascendingOrder">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_streams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streams">> => list(stream_summary())
+%% }
+-type list_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_for_policy_request() :: #{
+%%   <<"marker">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_targets_for_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_for_policy_response() :: #{
+%%   <<"nextMarker">> => string(),
+%%   <<"targets">> => list(string())
+%% }
+-type list_targets_for_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_for_security_profile_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_targets_for_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_for_security_profile_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileTargets">> => list(security_profile_target())
+%% }
+-type list_targets_for_security_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_groups_for_thing_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_thing_groups_for_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_groups_for_thing_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingGroups">> => list(group_name_and_arn())
+%% }
+-type list_thing_groups_for_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namePrefixFilter">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentGroup">> => string(),
+%%   <<"recursive">> => boolean()
+%% }
+-type list_thing_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingGroups">> => list(group_name_and_arn())
+%% }
+-type list_thing_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_principals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_thing_principals_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5843,102 +5044,428 @@
 
 
 %% Example:
-%% audit_task_metadata() :: #{
-%%   <<"taskId">> => string(),
-%%   <<"taskStatus">> => list(any()),
-%%   <<"taskType">> => list(any())
+%% list_thing_principals_v2_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
 %% }
--type audit_task_metadata() :: #{binary() => any()}.
+-type list_thing_principals_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_authorizer_response() :: #{
-%%   <<"authorizerArn">> => string(),
-%%   <<"authorizerName">> => string()
+%% list_thing_principals_v2_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingPrincipalObjects">> => list(thing_principal_object())
 %% }
--type update_authorizer_response() :: #{binary() => any()}.
+-type list_thing_principals_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% certificate_provider_summary() :: #{
-%%   <<"certificateProviderArn">> => string(),
-%%   <<"certificateProviderName">> => string()
+%% list_thing_registration_task_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportType">> := list(any())
 %% }
--type certificate_provider_summary() :: #{binary() => any()}.
+-type list_thing_registration_task_reports_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scheduled_audits_request() :: #{
+%% list_thing_registration_task_reports_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportType">> => list(any()),
+%%   <<"resourceLinks">> => list(string())
+%% }
+-type list_thing_registration_task_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_registration_tasks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_thing_registration_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_registration_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskIds">> => list(string())
+%% }
+-type list_thing_registration_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"thingTypeName">> => string()
+%% }
+-type list_thing_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_thing_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingTypes">> => list(thing_type_definition())
+%% }
+-type list_thing_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_things_in_billing_group_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_scheduled_audits_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_topic_rule_request() :: #{}
--type get_topic_rule_request() :: #{}.
+-type list_things_in_billing_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
+%% list_things_in_billing_group_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"things">> => list(string())
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_things_in_billing_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% sql_parse_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type sql_parse_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_audit_task_response() :: #{
-%%   <<"auditDetails">> => map(),
-%%   <<"scheduledAuditName">> => string(),
-%%   <<"taskStartTime">> => non_neg_integer(),
-%%   <<"taskStatistics">> => task_statistics(),
-%%   <<"taskStatus">> => list(any()),
-%%   <<"taskType">> => list(any())
-%% }
--type describe_audit_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_action_header() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type kafka_action_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_behavior_model_training_summaries_request() :: #{
+%% list_things_in_thing_group_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"securityProfileName">> => string()
+%%   <<"recursive">> => boolean()
 %% }
--type get_behavior_model_training_summaries_request() :: #{binary() => any()}.
+-type list_things_in_thing_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_thing_connectivity_data_request() :: #{
-%%   <<"includeSocketInformation">> => boolean()
+%% list_things_in_thing_group_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"things">> => list(string())
 %% }
--type get_thing_connectivity_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioning_template_version_request() :: #{}
--type describe_provisioning_template_version_request() :: #{}.
+-type list_things_in_thing_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_targets_for_policy_request() :: #{
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
+%% list_things_request() :: #{
+%%   <<"attributeName">> => string(),
+%%   <<"attributeValue">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"thingTypeName">> => string(),
+%%   <<"usePrefixAttributeValue">> => boolean()
 %% }
--type list_targets_for_policy_request() :: #{binary() => any()}.
+-type list_things_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_things_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"things">> => list(thing_attribute())
+%% }
+-type list_things_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_rule_destinations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_topic_rule_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_rule_destinations_response() :: #{
+%%   <<"destinationSummaries">> => list(topic_rule_destination_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_topic_rule_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"ruleDisabled">> => boolean(),
+%%   <<"topic">> => string()
+%% }
+-type list_topic_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_rules_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rules">> => list(topic_rule_list_item())
+%% }
+-type list_topic_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_v2_logging_levels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetType">> => list(any())
+%% }
+-type list_v2_logging_levels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_v2_logging_levels_response() :: #{
+%%   <<"logTargetConfigurations">> => list(log_target_configuration()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_v2_logging_levels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_violation_events_request() :: #{
+%%   <<"behaviorCriteriaType">> => list(any()),
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"listSuppressedAlerts">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"thingName">> => string(),
+%%   <<"verificationState">> => list(any())
+%% }
+-type list_violation_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_violation_events_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"violationEvents">> => list(violation_event())
+%% }
+-type list_violation_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% location_action() :: #{
+%%   <<"deviceId">> => string(),
+%%   <<"latitude">> => string(),
+%%   <<"longitude">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"timestamp">> => location_timestamp(),
+%%   <<"trackerName">> => string()
+%% }
+-type location_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% location_timestamp() :: #{
+%%   <<"unit">> => string(),
+%%   <<"value">> => string()
+%% }
+-type location_timestamp() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_event_configuration() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"logDestination">> => string(),
+%%   <<"logLevel">> => list(any())
+%% }
+-type log_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_target() :: #{
+%%   <<"targetName">> => string(),
+%%   <<"targetType">> => list(any())
+%% }
+-type log_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_target_configuration() :: #{
+%%   <<"logLevel">> => list(any()),
+%%   <<"logTarget">> => log_target()
+%% }
+-type log_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_options_payload() :: #{
+%%   <<"logLevel">> => list(any()),
+%%   <<"roleArn">> => string()
+%% }
+-type logging_options_payload() :: #{binary() => any()}.
+
+
+%% Example:
+%% machine_learning_detection_config() :: #{
+%%   <<"confidenceLevel">> => list(any())
+%% }
+-type machine_learning_detection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_window() :: #{
+%%   <<"durationInMinutes">> => integer(),
+%%   <<"startTime">> => string()
+%% }
+-type maintenance_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% malformed_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_job_template_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"environments">> => list(string()),
+%%   <<"templateArn">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"templateVersion">> => string()
+%% }
+-type managed_job_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_datum() :: #{
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => metric_value()
+%% }
+-type metric_datum() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"dimensionName">> => string(),
+%%   <<"operator">> => list(any())
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_to_retain() :: #{
+%%   <<"exportMetric">> => boolean(),
+%%   <<"metric">> => string(),
+%%   <<"metricDimension">> => metric_dimension()
+%% }
+-type metric_to_retain() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_value() :: #{
+%%   <<"cidrs">> => list(string()),
+%%   <<"count">> => float(),
+%%   <<"number">> => float(),
+%%   <<"numbers">> => list(float()),
+%%   <<"ports">> => list(integer()),
+%%   <<"strings">> => list(string())
+%% }
+-type metric_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_export_config() :: #{
+%%   <<"mqttTopic">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type metrics_export_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% mitigation_action() :: #{
+%%   <<"actionParams">> => mitigation_action_params(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type mitigation_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% mitigation_action_identifier() :: #{
+%%   <<"actionArn">> => string(),
+%%   <<"actionName">> => string(),
+%%   <<"creationDate">> => non_neg_integer()
+%% }
+-type mitigation_action_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% mitigation_action_params() :: #{
+%%   <<"addThingsToThingGroupParams">> => add_things_to_thing_group_params(),
+%%   <<"enableIoTLoggingParams">> => enable_io_t_logging_params(),
+%%   <<"publishFindingToSnsParams">> => publish_finding_to_sns_params(),
+%%   <<"replaceDefaultPolicyVersionParams">> => replace_default_policy_version_params(),
+%%   <<"updateCACertificateParams">> => update_ca_certificate_params(),
+%%   <<"updateDeviceCertificateParams">> => update_device_certificate_params()
+%% }
+-type mitigation_action_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% mqtt5_configuration() :: #{
+%%   <<"propagatingAttributes">> => list(propagating_attribute())
+%% }
+-type mqtt5_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mqtt_context() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"password">> => binary(),
+%%   <<"username">> => string()
+%% }
+-type mqtt_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% mqtt_headers() :: #{
+%%   <<"contentType">> => string(),
+%%   <<"correlationData">> => string(),
+%%   <<"messageExpiry">> => string(),
+%%   <<"payloadFormatIndicator">> => string(),
+%%   <<"responseTopic">> => string(),
+%%   <<"userProperties">> => list(user_property())
+%% }
+-type mqtt_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% non_compliant_resource() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"resourceIdentifier">> => resource_identifier(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type non_compliant_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_configured_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_configured_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_action() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"id">> => string(),
+%%   <<"index">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"type">> => string()
+%% }
+-type open_search_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_update_file() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"codeSigning">> => code_signing(),
+%%   <<"fileLocation">> => file_location(),
+%%   <<"fileName">> => string(),
+%%   <<"fileType">> => integer(),
+%%   <<"fileVersion">> => string()
+%% }
+-type ota_update_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5964,52 +5491,118 @@
 
 
 %% Example:
-%% get_behavior_model_training_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(behavior_model_training_summary())
+%% ota_update_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"otaUpdateArn">> => string(),
+%%   <<"otaUpdateId">> => string()
 %% }
--type get_behavior_model_training_summaries_response() :: #{binary() => any()}.
+-type ota_update_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_sbom_with_package_version_response() :: #{
-%%   <<"packageName">> => string(),
-%%   <<"sbom">> => sbom(),
-%%   <<"sbomValidationStatus">> => list(any()),
-%%   <<"versionName">> => string()
+%% outgoing_certificate() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"transferDate">> => non_neg_integer(),
+%%   <<"transferMessage">> => string(),
+%%   <<"transferredTo">> => string()
 %% }
--type associate_sbom_with_package_version_response() :: #{binary() => any()}.
+-type outgoing_certificate() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_package_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"packageArn">> => string(),
+%% package_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"defaultVersionName">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"packageName">> => string()
 %% }
--type create_package_response() :: #{binary() => any()}.
+-type package_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% audit_check_configuration() :: #{
-%%   <<"configuration">> => map(),
-%%   <<"enabled">> => boolean()
+%% package_version_artifact() :: #{
+%%   <<"s3Location">> => s3_location()
 %% }
--type audit_check_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stream_request() :: #{}
--type delete_stream_request() :: #{}.
+-type package_version_artifact() :: #{binary() => any()}.
 
 
 %% Example:
-%% scheduling_config() :: #{
-%%   <<"endBehavior">> => list(any()),
-%%   <<"endTime">> => string(),
-%%   <<"maintenanceWindows">> => list(maintenance_window()),
-%%   <<"startTime">> => string()
+%% package_version_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"packageName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"versionName">> => string()
 %% }
--type scheduling_config() :: #{binary() => any()}.
+-type package_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% percent_pair() :: #{
+%%   <<"percent">> => float(),
+%%   <<"value">> => float()
+%% }
+-type percent_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_version() :: #{
+%%   <<"createDate">> => non_neg_integer(),
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"versionId">> => string()
+%% }
+-type policy_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_version_identifier() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"policyVersionId">> => string()
+%% }
+-type policy_version_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% presigned_url_config() :: #{
+%%   <<"expiresInSec">> => float(),
+%%   <<"roleArn">> => string()
+%% }
+-type presigned_url_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_thing_object() :: #{
+%%   <<"thingName">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type principal_thing_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% propagating_attribute() :: #{
+%%   <<"connectionAttribute">> => string(),
+%%   <<"thingAttribute">> => string(),
+%%   <<"userPropertyKey">> => string()
+%% }
+-type propagating_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioning_hook() :: #{
+%%   <<"payloadVersion">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type provisioning_hook() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6026,90 +5619,120 @@
 
 
 %% Example:
-%% list_sbom_validation_results_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"validationResult">> => list(any())
-%% }
--type list_sbom_validation_results_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_event_configurations_response() :: #{
+%% provisioning_template_version_summary() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
-%%   <<"eventConfigurations">> => map(),
-%%   <<"lastModifiedDate">> => non_neg_integer()
+%%   <<"isDefaultVersion">> => boolean(),
+%%   <<"versionId">> => integer()
 %% }
--type describe_event_configurations_response() :: #{binary() => any()}.
+-type provisioning_template_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_provisioning_template_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"preProvisioningHook">> => provisioning_hook(),
-%%   <<"provisioningRoleArn">> := string(),
+%% publish_finding_to_sns_params() :: #{
+%%   <<"topicArn">> => string()
+%% }
+-type publish_finding_to_sns_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_property_value_entry() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"propertyAlias">> => string(),
+%%   <<"propertyId">> => string(),
+%%   <<"propertyValues">> => list(asset_property_value())
+%% }
+-type put_asset_property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_item_input() :: #{
+%%   <<"tableName">> => string()
+%% }
+-type put_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_verification_state_on_violation_request() :: #{
+%%   <<"verificationState">> := list(any()),
+%%   <<"verificationStateDescription">> => string()
+%% }
+-type put_verification_state_on_violation_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_verification_state_on_violation_response() :: #{}
+-type put_verification_state_on_violation_response() :: #{}.
+
+
+%% Example:
+%% rate_increase_criteria() :: #{
+%%   <<"numberOfNotifiedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer()
+%% }
+-type rate_increase_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_ca_certificate_request() :: #{
+%%   <<"allowAutoRegistration">> => boolean(),
+%%   <<"caCertificate">> := string(),
+%%   <<"certificateMode">> => list(any()),
+%%   <<"registrationConfig">> => registration_config(),
+%%   <<"setAsActive">> => boolean(),
 %%   <<"tags">> => list(tag()),
-%%   <<"templateBody">> := string(),
-%%   <<"templateName">> := string(),
-%%   <<"type">> => list(any())
+%%   <<"verificationCertificate">> => string()
 %% }
--type create_provisioning_template_request() :: #{binary() => any()}.
+-type register_ca_certificate_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% stream_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"streamArn">> => string(),
-%%   <<"streamId">> => string(),
-%%   <<"streamVersion">> => integer()
+%% register_ca_certificate_response() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string()
 %% }
--type stream_summary() :: #{binary() => any()}.
+-type register_ca_certificate_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_thing_group_response() :: #{
-%%   <<"indexName">> => string(),
-%%   <<"queryString">> => string(),
-%%   <<"queryVersion">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"thingGroupArn">> => string(),
-%%   <<"thingGroupId">> => string(),
-%%   <<"thingGroupMetadata">> => thing_group_metadata(),
-%%   <<"thingGroupName">> => string(),
-%%   <<"thingGroupProperties">> => thing_group_properties(),
-%%   <<"version">> => float()
-%% }
--type describe_thing_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_thing_response() :: #{}
--type delete_thing_response() :: #{}.
-
-
-%% Example:
-%% validate_security_profile_behaviors_request() :: #{
-%%   <<"behaviors">> := list(behavior())
-%% }
--type validate_security_profile_behaviors_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_audit_task_request() :: #{}
--type describe_audit_task_request() :: #{}.
-
-
-%% Example:
-%% list_authorizers_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer(),
+%% register_certificate_request() :: #{
+%%   <<"caCertificatePem">> => string(),
+%%   <<"certificatePem">> := string(),
+%%   <<"setAsActive">> => boolean(),
 %%   <<"status">> => list(any())
 %% }
--type list_authorizers_request() :: #{binary() => any()}.
+-type register_certificate_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_account_audit_configuration_response() :: #{}
--type delete_account_audit_configuration_response() :: #{}.
+%% register_certificate_response() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string()
+%% }
+-type register_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_certificate_without_ca_request() :: #{
+%%   <<"certificatePem">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type register_certificate_without_ca_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_certificate_without_ca_response() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateId">> => string()
+%% }
+-type register_certificate_without_ca_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_thing_request() :: #{
+%%   <<"parameters">> => map(),
+%%   <<"templateBody">> := string()
+%% }
+-type register_thing_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6121,11 +5744,49 @@
 
 
 %% Example:
-%% list_role_aliases_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"roleAliases">> => list(string())
+%% registration_code_validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_role_aliases_response() :: #{binary() => any()}.
+-type registration_code_validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% registration_config() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"templateBody">> => string(),
+%%   <<"templateName">> => string()
+%% }
+-type registration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_certificate_transfer_request() :: #{
+%%   <<"rejectReason">> => string()
+%% }
+-type reject_certificate_transfer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_resource() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"resourceIdentifier">> => resource_identifier(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type related_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_thing_from_billing_group_request() :: #{
+%%   <<"billingGroupArn">> => string(),
+%%   <<"billingGroupName">> => string(),
+%%   <<"thingArn">> => string(),
+%%   <<"thingName">> => string()
+%% }
+-type remove_thing_from_billing_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_thing_from_billing_group_response() :: #{}
+-type remove_thing_from_billing_group_response() :: #{}.
 
 
 %% Example:
@@ -6137,67 +5798,65 @@
 %% }
 -type remove_thing_from_thing_group_request() :: #{binary() => any()}.
 
+%% Example:
+%% remove_thing_from_thing_group_response() :: #{}
+-type remove_thing_from_thing_group_response() :: #{}.
+
 
 %% Example:
-%% list_audit_suppressions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"suppressions">> => list(audit_suppression())
+%% replace_default_policy_version_params() :: #{
+%%   <<"templateName">> => list(any())
 %% }
--type list_audit_suppressions_response() :: #{binary() => any()}.
+-type replace_default_policy_version_params() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_fleet_metric_response() :: #{
-%%   <<"metricArn">> => string(),
-%%   <<"metricName">> => string()
+%% replace_topic_rule_request() :: #{
+%%   <<"topicRulePayload">> := topic_rule_payload()
 %% }
--type create_fleet_metric_response() :: #{binary() => any()}.
+-type replace_topic_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% related_resource() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"resourceIdentifier">> => resource_identifier(),
-%%   <<"resourceType">> => list(any())
-%% }
--type related_resource() :: #{binary() => any()}.
-
-%% Example:
-%% delete_audit_suppression_response() :: #{}
--type delete_audit_suppression_response() :: #{}.
-
-
-%% Example:
-%% fleet_metric_name_and_arn() :: #{
-%%   <<"metricArn">> => string(),
-%%   <<"metricName">> => string()
-%% }
--type fleet_metric_name_and_arn() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_sbom_from_package_version_response() :: #{}
--type disassociate_sbom_from_package_version_response() :: #{}.
-
-
-%% Example:
-%% implicit_deny() :: #{
-%%   <<"policies">> => list(policy())
-%% }
--type implicit_deny() :: #{binary() => any()}.
-
-%% Example:
-%% delete_topic_rule_destination_response() :: #{}
--type delete_topic_rule_destination_response() :: #{}.
-
-
-%% Example:
-%% vpc_destination_summary() :: #{
+%% republish_action() :: #{
+%%   <<"headers">> => mqtt_headers(),
+%%   <<"qos">> => integer(),
 %%   <<"roleArn">> => string(),
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
+%%   <<"topic">> => string()
 %% }
--type vpc_destination_summary() :: #{binary() => any()}.
+-type republish_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_identifier() :: #{
+%%   <<"account">> => string(),
+%%   <<"caCertificateId">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"cognitoIdentityPoolId">> => string(),
+%%   <<"deviceCertificateArn">> => string(),
+%%   <<"deviceCertificateId">> => string(),
+%%   <<"iamRoleArn">> => string(),
+%%   <<"issuerCertificateIdentifier">> => issuer_certificate_identifier(),
+%%   <<"policyVersionIdentifier">> => policy_version_identifier(),
+%%   <<"roleAliasArn">> => string()
+%% }
+-type resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6208,256 +5867,387 @@
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% retry_criteria() :: #{
+%%   <<"failureType">> => list(any()),
+%%   <<"numberOfRetries">> => integer()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type retry_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_certificate_transfer_request() :: #{
-%%   <<"setAsActive">> => boolean()
-%% }
--type accept_certificate_transfer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% iot_site_wise_action() :: #{
-%%   <<"putAssetPropertyValueEntries">> => list(put_asset_property_value_entry()),
+%% role_alias_description() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"credentialDurationSeconds">> => integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"owner">> => string(),
+%%   <<"roleAlias">> => string(),
+%%   <<"roleAliasArn">> => string(),
 %%   <<"roleArn">> => string()
 %% }
--type iot_site_wise_action() :: #{binary() => any()}.
+-type role_alias_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_thing_group_response() :: #{
-%%   <<"version">> => float()
+%% s3_action() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"cannedAcl">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"roleArn">> => string()
 %% }
--type update_thing_group_response() :: #{binary() => any()}.
+-type s3_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_scheduled_audit_response() :: #{
+%% s3_destination() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_action() :: #{
+%%   <<"token">> => string(),
+%%   <<"url">> => string()
+%% }
+-type salesforce_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% sbom() :: #{
+%%   <<"s3Location">> => s3_location()
+%% }
+-type sbom() :: #{binary() => any()}.
+
+
+%% Example:
+%% sbom_validation_result_summary() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"fileName">> => string(),
+%%   <<"validationResult">> => list(any())
+%% }
+-type sbom_validation_result_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_audit_metadata() :: #{
 %%   <<"dayOfMonth">> => string(),
 %%   <<"dayOfWeek">> => list(any()),
 %%   <<"frequency">> => list(any()),
 %%   <<"scheduledAuditArn">> => string(),
-%%   <<"scheduledAuditName">> => string(),
-%%   <<"targetCheckNames">> => list(string())
+%%   <<"scheduledAuditName">> => string()
 %% }
--type describe_scheduled_audit_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_package_version_request() :: #{}
--type get_package_version_request() :: #{}.
+-type scheduled_audit_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_billing_groups_response() :: #{
-%%   <<"billingGroups">> => list(group_name_and_arn()),
-%%   <<"nextToken">> => string()
+%% scheduled_job_rollout() :: #{
+%%   <<"startTime">> => string()
 %% }
--type list_billing_groups_response() :: #{binary() => any()}.
+-type scheduled_job_rollout() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_topic_rule_destination_request() :: #{
-%%   <<"destinationConfiguration">> := topic_rule_destination_configuration()
+%% scheduling_config() :: #{
+%%   <<"endBehavior">> => list(any()),
+%%   <<"endTime">> => string(),
+%%   <<"maintenanceWindows">> => list(maintenance_window()),
+%%   <<"startTime">> => string()
 %% }
--type create_topic_rule_destination_request() :: #{binary() => any()}.
+-type scheduling_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% active_violation() :: #{
-%%   <<"behavior">> => behavior(),
-%%   <<"lastViolationTime">> => non_neg_integer(),
-%%   <<"lastViolationValue">> => metric_value(),
-%%   <<"securityProfileName">> => string(),
-%%   <<"thingName">> => string(),
-%%   <<"verificationState">> => list(any()),
-%%   <<"verificationStateDescription">> => string(),
-%%   <<"violationEventAdditionalInfo">> => violation_event_additional_info(),
-%%   <<"violationId">> => string(),
-%%   <<"violationStartTime">> => non_neg_integer()
-%% }
--type active_violation() :: #{binary() => any()}.
-
-
-%% Example:
-%% detect_mitigation_actions_task_statistics() :: #{
-%%   <<"actionsExecuted">> => float(),
-%%   <<"actionsFailed">> => float(),
-%%   <<"actionsSkipped">> => float()
-%% }
--type detect_mitigation_actions_task_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_things_request() :: #{
-%%   <<"attributeName">> => string(),
-%%   <<"attributeValue">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"thingTypeName">> => string(),
-%%   <<"usePrefixAttributeValue">> => boolean()
-%% }
--type list_things_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_command_executions_response() :: #{
-%%   <<"commandExecutions">> => list(command_execution_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_command_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_logging_options_request() :: #{}
--type get_logging_options_request() :: #{}.
-
-
-%% Example:
-%% test_invoke_authorizer_response() :: #{
-%%   <<"disconnectAfterInSeconds">> => integer(),
-%%   <<"isAuthenticated">> => boolean(),
-%%   <<"policyDocuments">> => list(string()),
-%%   <<"principalId">> => string(),
-%%   <<"refreshAfterInSeconds">> => integer()
-%% }
--type test_invoke_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_findings_request() :: #{
-%%   <<"checkName">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"listSuppressedFindings">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceIdentifier">> => resource_identifier(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"taskId">> => string()
-%% }
--type list_audit_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% location_action() :: #{
-%%   <<"deviceId">> => string(),
-%%   <<"latitude">> => string(),
-%%   <<"longitude">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"timestamp">> => location_timestamp(),
-%%   <<"trackerName">> => string()
-%% }
--type location_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_thing_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"thingTypeName">> => string()
-%% }
--type list_thing_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_role_alias_request() :: #{}
--type describe_role_alias_request() :: #{}.
-
-
-%% Example:
-%% thing_type_metadata() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"deprecated">> => boolean(),
-%%   <<"deprecationDate">> => non_neg_integer()
-%% }
--type thing_type_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_effective_policies_request() :: #{
-%%   <<"cognitoIdentityPoolId">> => string(),
-%%   <<"principal">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type get_effective_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_topic_rule_destinations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_topic_rule_destinations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_topic_rule_destination_response() :: #{
-%%   <<"topicRuleDestination">> => topic_rule_destination()
-%% }
--type get_topic_rule_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_summary() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"packageName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"versionName">> => string()
-%% }
--type package_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dynamic_thing_group_response() :: #{
-%%   <<"version">> => float()
-%% }
--type update_dynamic_thing_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dimension_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"stringValues">> => list(string()),
-%%   <<"type">> => list(any())
-%% }
--type describe_dimension_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audit_suppressions_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"checkName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceIdentifier">> => resource_identifier()
-%% }
--type list_audit_suppressions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_thing_to_billing_group_request() :: #{
-%%   <<"billingGroupArn">> => string(),
-%%   <<"billingGroupName">> => string(),
-%%   <<"thingArn">> => string(),
-%%   <<"thingName">> => string()
-%% }
--type add_thing_to_billing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cardinality_request() :: #{
-%%   <<"aggregationField">> => string(),
+%% search_index_request() :: #{
 %%   <<"indexName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"queryString">> := string(),
 %%   <<"queryVersion">> => string()
 %% }
--type get_cardinality_request() :: #{binary() => any()}.
+-type search_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_index_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"thingGroups">> => list(thing_group_document()),
+%%   <<"things">> => list(thing_document())
+%% }
+-type search_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile_identifier() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string()
+%% }
+-type security_profile_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile_target() :: #{
+%%   <<"arn">> => string()
+%% }
+-type security_profile_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile_target_mapping() :: #{
+%%   <<"securityProfileIdentifier">> => security_profile_identifier(),
+%%   <<"target">> => security_profile_target()
+%% }
+-type security_profile_target_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_certificate_config() :: #{
+%%   <<"enableOCSPCheck">> => boolean(),
+%%   <<"ocspAuthorizedResponderArn">> => string(),
+%%   <<"ocspLambdaArn">> => string()
+%% }
+-type server_certificate_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_certificate_summary() :: #{
+%%   <<"serverCertificateArn">> => string(),
+%%   <<"serverCertificateStatus">> => list(any()),
+%%   <<"serverCertificateStatusDetail">> => string()
+%% }
+-type server_certificate_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_default_authorizer_request() :: #{
+%%   <<"authorizerName">> := string()
+%% }
+-type set_default_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_default_authorizer_response() :: #{
+%%   <<"authorizerArn">> => string(),
+%%   <<"authorizerName">> => string()
+%% }
+-type set_default_authorizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_default_policy_version_request() :: #{}
+-type set_default_policy_version_request() :: #{}.
+
+
+%% Example:
+%% set_logging_options_request() :: #{
+%%   <<"loggingOptionsPayload">> := logging_options_payload()
+%% }
+-type set_logging_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_v2_logging_level_request() :: #{
+%%   <<"logLevel">> := list(any()),
+%%   <<"logTarget">> := log_target()
+%% }
+-type set_v2_logging_level_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_v2_logging_options_request() :: #{
+%%   <<"defaultLogLevel">> => list(any()),
+%%   <<"disableAllLogs">> => boolean(),
+%%   <<"eventConfigurations">> => list(log_event_configuration()),
+%%   <<"roleArn">> => string()
+%% }
+-type set_v2_logging_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sig_v4_authorization() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"signingRegion">> => string()
+%% }
+-type sig_v4_authorization() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_profile_parameter() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificatePathOnDevice">> => string(),
+%%   <<"platform">> => string()
+%% }
+-type signing_profile_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_action() :: #{
+%%   <<"messageFormat">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type sns_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% sql_parse_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type sql_parse_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_action() :: #{
+%%   <<"queueUrl">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"useBase64">> => boolean()
+%% }
+-type sqs_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_audit_mitigation_actions_task_request() :: #{
+%%   <<"auditCheckToActionsMapping">> := map(),
+%%   <<"clientRequestToken">> := string(),
+%%   <<"target">> := audit_mitigation_actions_task_target()
+%% }
+-type start_audit_mitigation_actions_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_audit_mitigation_actions_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type start_audit_mitigation_actions_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_detect_mitigation_actions_task_request() :: #{
+%%   <<"actions">> := list(string()),
+%%   <<"clientRequestToken">> := string(),
+%%   <<"includeOnlyActiveViolations">> => boolean(),
+%%   <<"includeSuppressedAlerts">> => boolean(),
+%%   <<"target">> := detect_mitigation_actions_task_target(),
+%%   <<"violationEventOccurrenceRange">> => violation_event_occurrence_range()
+%% }
+-type start_detect_mitigation_actions_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_detect_mitigation_actions_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type start_detect_mitigation_actions_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_on_demand_audit_task_request() :: #{
+%%   <<"targetCheckNames">> := list(string())
+%% }
+-type start_on_demand_audit_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_on_demand_audit_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type start_on_demand_audit_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_signing_job_parameter() :: #{
+%%   <<"destination">> => destination(),
+%%   <<"signingProfileName">> => string(),
+%%   <<"signingProfileParameter">> => signing_profile_parameter()
+%% }
+-type start_signing_job_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_thing_registration_task_request() :: #{
+%%   <<"inputFileBucket">> := string(),
+%%   <<"inputFileKey">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"templateBody">> := string()
+%% }
+-type start_thing_registration_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_thing_registration_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type start_thing_registration_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistical_threshold() :: #{
+%%   <<"statistic">> => string()
+%% }
+-type statistical_threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistics() :: #{
+%%   <<"average">> => float(),
+%%   <<"count">> => integer(),
+%%   <<"maximum">> => float(),
+%%   <<"minimum">> => float(),
+%%   <<"stdDeviation">> => float(),
+%%   <<"sum">> => float(),
+%%   <<"sumOfSquares">> => float(),
+%%   <<"variance">> => float()
+%% }
+-type statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_reason() :: #{
+%%   <<"reasonCode">> => string(),
+%%   <<"reasonDescription">> => string()
+%% }
+-type status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_functions_action() :: #{
+%%   <<"executionNamePrefix">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"stateMachineName">> => string()
+%% }
+-type step_functions_action() :: #{binary() => any()}.
+
+%% Example:
+%% stop_thing_registration_task_request() :: #{}
+-type stop_thing_registration_task_request() :: #{}.
+
+%% Example:
+%% stop_thing_registration_task_response() :: #{}
+-type stop_thing_registration_task_response() :: #{}.
 
 
 %% Example:
@@ -6467,48 +6257,13 @@
 %% }
 -type stream() :: #{binary() => any()}.
 
-%% Example:
-%% delete_dynamic_thing_group_response() :: #{}
--type delete_dynamic_thing_group_response() :: #{}.
-
 
 %% Example:
-%% list_detect_mitigation_actions_executions_response() :: #{
-%%   <<"actionsExecutions">> => list(detect_mitigation_action_execution()),
-%%   <<"nextToken">> => string()
+%% stream_file() :: #{
+%%   <<"fileId">> => integer(),
+%%   <<"s3Location">> => s3_location()
 %% }
--type list_detect_mitigation_actions_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_templates_response() :: #{
-%%   <<"jobTemplates">> => list(job_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% non_compliant_resource() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"resourceIdentifier">> => resource_identifier(),
-%%   <<"resourceType">> => list(any())
-%% }
--type non_compliant_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_mitigation_action_response() :: #{
-%%   <<"actionArn">> => string(),
-%%   <<"actionId">> => string(),
-%%   <<"actionName">> => string(),
-%%   <<"actionParams">> => mitigation_action_params(),
-%%   <<"actionType">> => list(any()),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"roleArn">> => string()
-%% }
--type describe_mitigation_action_response() :: #{binary() => any()}.
+-type stream_file() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6526,180 +6281,313 @@
 
 
 %% Example:
-%% topic_rule_payload() :: #{
+%% stream_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"streamArn">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"streamVersion">> => integer()
+%% }
+-type stream_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% task_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_statistics() :: #{
+%%   <<"canceledChecks">> => integer(),
+%%   <<"compliantChecks">> => integer(),
+%%   <<"failedChecks">> => integer(),
+%%   <<"inProgressChecks">> => integer(),
+%%   <<"nonCompliantChecks">> => integer(),
+%%   <<"totalChecks">> => integer(),
+%%   <<"waitingForDataCollectionChecks">> => integer()
+%% }
+-type task_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_statistics_for_audit_check() :: #{
+%%   <<"canceledFindingsCount">> => float(),
+%%   <<"failedFindingsCount">> => float(),
+%%   <<"skippedFindingsCount">> => float(),
+%%   <<"succeededFindingsCount">> => float(),
+%%   <<"totalFindingsCount">> => float()
+%% }
+-type task_statistics_for_audit_check() :: #{binary() => any()}.
+
+
+%% Example:
+%% terms_aggregation() :: #{
+%%   <<"maxBuckets">> => integer()
+%% }
+-type terms_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_authorization_request() :: #{
+%%   <<"authInfos">> := list(auth_info()),
+%%   <<"clientId">> => string(),
+%%   <<"cognitoIdentityPoolId">> => string(),
+%%   <<"policyNamesToAdd">> => list(string()),
+%%   <<"policyNamesToSkip">> => list(string()),
+%%   <<"principal">> => string()
+%% }
+-type test_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_authorization_response() :: #{
+%%   <<"authResults">> => list(auth_result())
+%% }
+-type test_authorization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_authorizer_request() :: #{
+%%   <<"httpContext">> => http_context(),
+%%   <<"mqttContext">> => mqtt_context(),
+%%   <<"tlsContext">> => tls_context(),
+%%   <<"token">> => string(),
+%%   <<"tokenSignature">> => string()
+%% }
+-type test_invoke_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_invoke_authorizer_response() :: #{
+%%   <<"disconnectAfterInSeconds">> => integer(),
+%%   <<"isAuthenticated">> => boolean(),
+%%   <<"policyDocuments">> => list(string()),
+%%   <<"principalId">> => string(),
+%%   <<"refreshAfterInSeconds">> => integer()
+%% }
+-type test_invoke_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_attribute() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"thingArn">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"thingTypeName">> => string(),
+%%   <<"version">> => float()
+%% }
+-type thing_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_connectivity() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"clientId">> => string(),
+%%   <<"connected">> => boolean(),
+%%   <<"disconnectReason">> => string(),
+%%   <<"keepAliveDuration">> => integer(),
+%%   <<"sessionExpiry">> => float(),
+%%   <<"timestamp">> => float()
+%% }
+-type thing_connectivity() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_document() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"connectivity">> => thing_connectivity(),
+%%   <<"deviceDefender">> => string(),
+%%   <<"shadow">> => string(),
+%%   <<"thingGroupNames">> => list(string()),
+%%   <<"thingId">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"thingTypeName">> => string()
+%% }
+-type thing_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_group_document() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"parentGroupNames">> => list(string()),
+%%   <<"thingGroupDescription">> => string(),
+%%   <<"thingGroupId">> => string(),
+%%   <<"thingGroupName">> => string()
+%% }
+-type thing_group_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_group_indexing_configuration() :: #{
+%%   <<"customFields">> => list(field()),
+%%   <<"managedFields">> => list(field()),
+%%   <<"thingGroupIndexingMode">> => list(any())
+%% }
+-type thing_group_indexing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_group_metadata() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"parentGroupName">> => string(),
+%%   <<"rootToParentThingGroups">> => list(group_name_and_arn())
+%% }
+-type thing_group_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_group_properties() :: #{
+%%   <<"attributePayload">> => attribute_payload(),
+%%   <<"thingGroupDescription">> => string()
+%% }
+-type thing_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_indexing_configuration() :: #{
+%%   <<"customFields">> => list(field()),
+%%   <<"deviceDefenderIndexingMode">> => list(any()),
+%%   <<"filter">> => indexing_filter(),
+%%   <<"managedFields">> => list(field()),
+%%   <<"namedShadowIndexingMode">> => list(any()),
+%%   <<"thingConnectivityIndexingMode">> => list(any()),
+%%   <<"thingIndexingMode">> => list(any())
+%% }
+-type thing_indexing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_principal_object() :: #{
+%%   <<"principal">> => string(),
+%%   <<"thingPrincipalType">> => list(any())
+%% }
+-type thing_principal_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_type_definition() :: #{
+%%   <<"thingTypeArn">> => string(),
+%%   <<"thingTypeMetadata">> => thing_type_metadata(),
+%%   <<"thingTypeName">> => string(),
+%%   <<"thingTypeProperties">> => thing_type_properties()
+%% }
+-type thing_type_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_type_metadata() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"deprecationDate">> => non_neg_integer()
+%% }
+-type thing_type_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% thing_type_properties() :: #{
+%%   <<"mqtt5Configuration">> => mqtt5_configuration(),
+%%   <<"searchableAttributes">> => list(string()),
+%%   <<"thingTypeDescription">> => string()
+%% }
+-type thing_type_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_filter() :: #{
+%%   <<"after">> => string(),
+%%   <<"before">> => string()
+%% }
+-type time_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% timeout_config() :: #{
+%%   <<"inProgressTimeoutInMinutes">> => float()
+%% }
+-type timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestream_action() :: #{
+%%   <<"databaseName">> => string(),
+%%   <<"dimensions">> => list(timestream_dimension()),
+%%   <<"roleArn">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"timestamp">> => timestream_timestamp()
+%% }
+-type timestream_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestream_dimension() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type timestream_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestream_timestamp() :: #{
+%%   <<"unit">> => string(),
+%%   <<"value">> => string()
+%% }
+-type timestream_timestamp() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_config() :: #{
+%%   <<"securityPolicy">> => string()
+%% }
+-type tls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_context() :: #{
+%%   <<"serverName">> => string()
+%% }
+-type tls_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_rule() :: #{
 %%   <<"actions">> => list(action()),
 %%   <<"awsIotSqlVersion">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"errorAction">> => action(),
 %%   <<"ruleDisabled">> => boolean(),
+%%   <<"ruleName">> => string(),
 %%   <<"sql">> => string()
 %% }
--type topic_rule_payload() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_audit_configuration_response() :: #{}
--type update_account_audit_configuration_response() :: #{}.
-
-
-%% Example:
-%% explicit_deny() :: #{
-%%   <<"policies">> => list(policy())
-%% }
--type explicit_deny() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dynamic_thing_group_request() :: #{
-%%   <<"expectedVersion">> => float()
-%% }
--type delete_dynamic_thing_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_v2_logging_level_request() :: #{
-%%   <<"targetName">> := string(),
-%%   <<"targetType">> := list(any())
-%% }
--type delete_v2_logging_level_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_billing_group_request() :: #{}
--type describe_billing_group_request() :: #{}.
-
-
-%% Example:
-%% list_mitigation_actions_response() :: #{
-%%   <<"actionIdentifiers">> => list(mitigation_action_identifier()),
-%%   <<"nextToken">> => string()
-%% }
--type list_mitigation_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_validity() :: #{
-%%   <<"notAfter">> => non_neg_integer(),
-%%   <<"notBefore">> => non_neg_integer()
-%% }
--type certificate_validity() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_job_rollout() :: #{
-%%   <<"startTime">> => string()
-%% }
--type scheduled_job_rollout() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_job_exponential_rollout_rate() :: #{
-%%   <<"baseRatePerMinute">> => integer(),
-%%   <<"incrementFactor">> => float(),
-%%   <<"rateIncreaseCriteria">> => aws_job_rate_increase_criteria()
-%% }
--type aws_job_exponential_rollout_rate() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_outgoing_certificates_response() :: #{
-%%   <<"nextMarker">> => string(),
-%%   <<"outgoingCertificates">> => list(outgoing_certificate())
-%% }
--type list_outgoing_certificates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_metrics_response() :: #{
-%%   <<"metricNames">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dimension_request() :: #{
-%%   <<"clientRequestToken">> := string(),
-%%   <<"stringValues">> := list(string()),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> := list(any())
-%% }
--type create_dimension_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificates_by_ca_request() :: #{
-%%   <<"ascendingOrder">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_certificates_by_ca_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_package_version_response() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"description">> => string(),
-%%   <<"errorReason">> => string(),
-%%   <<"packageName">> => string(),
-%%   <<"packageVersionArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"versionName">> => string()
-%% }
--type create_package_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_update_by_jobs_config() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"roleArn">> => string()
-%% }
--type version_update_by_jobs_config() :: #{binary() => any()}.
-
-%% Example:
-%% add_thing_to_billing_group_response() :: #{}
--type add_thing_to_billing_group_response() :: #{}.
-
-
-%% Example:
-%% create_command_response() :: #{
-%%   <<"commandArn">> => string(),
-%%   <<"commandId">> => string()
-%% }
--type create_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_mitigation_actions_task_target() :: #{
-%%   <<"auditCheckToReasonCodeFilter">> => map(),
-%%   <<"auditTaskId">> => string(),
-%%   <<"findingIds">> => list(string())
-%% }
--type audit_mitigation_actions_task_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_version_artifact() :: #{
-%%   <<"s3Location">> => s3_location()
-%% }
--type package_version_artifact() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_v2_logging_options_response() :: #{
-%%   <<"defaultLogLevel">> => list(any()),
-%%   <<"disableAllLogs">> => boolean(),
-%%   <<"eventConfigurations">> => list(log_event_configuration()),
-%%   <<"roleArn">> => string()
-%% }
--type get_v2_logging_options_response() :: #{binary() => any()}.
+-type topic_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6716,97 +6604,501 @@
 
 
 %% Example:
-%% vpc_destination_configuration() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
+%% topic_rule_destination_configuration() :: #{
+%%   <<"httpUrlConfiguration">> => http_url_destination_configuration(),
+%%   <<"vpcConfiguration">> => vpc_destination_configuration()
 %% }
--type vpc_destination_configuration() :: #{binary() => any()}.
+-type topic_rule_destination_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% command_summary() :: #{
-%%   <<"commandArn">> => string(),
-%%   <<"commandId">> => string(),
+%% topic_rule_destination_summary() :: #{
+%%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deprecated">> => boolean(),
-%%   <<"displayName">> => string(),
+%%   <<"httpUrlSummary">> => http_url_destination_summary(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"pendingDeletion">> => boolean()
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"vpcDestinationSummary">> => vpc_destination_summary()
 %% }
--type command_summary() :: #{binary() => any()}.
+-type topic_rule_destination_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% audit_notification_target() :: #{
-%%   <<"enabled">> => boolean(),
-%%   <<"roleArn">> => string(),
-%%   <<"targetArn">> => string()
+%% topic_rule_list_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"ruleArn">> => string(),
+%%   <<"ruleDisabled">> => boolean(),
+%%   <<"ruleName">> => string(),
+%%   <<"topicPattern">> => string()
 %% }
--type audit_notification_target() :: #{binary() => any()}.
+-type topic_rule_list_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_security_profiles_request() :: #{
-%%   <<"dimensionName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"metricName">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_security_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metric_values_request() :: #{
-%%   <<"dimensionName">> => string(),
-%%   <<"dimensionValueOperator">> => list(any()),
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"metricName">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"thingName">> := string()
-%% }
--type list_metric_values_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_response() :: #{
+%% topic_rule_payload() :: #{
+%%   <<"actions">> => list(action()),
+%%   <<"awsIotSqlVersion">> => string(),
 %%   <<"description">> => string(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string()
+%%   <<"errorAction">> => action(),
+%%   <<"ruleDisabled">> => boolean(),
+%%   <<"sql">> => string()
 %% }
--type cancel_job_response() :: #{binary() => any()}.
+-type topic_rule_payload() :: #{binary() => any()}.
 
 
 %% Example:
-%% maintenance_window() :: #{
-%%   <<"durationInMinutes">> => integer(),
-%%   <<"startTime">> => string()
+%% transfer_already_completed_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type maintenance_window() :: #{binary() => any()}.
+-type transfer_already_completed_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_domain_configuration_request() :: #{
+%% transfer_certificate_request() :: #{
+%%   <<"targetAwsAccount">> := string(),
+%%   <<"transferMessage">> => string()
+%% }
+-type transfer_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% transfer_certificate_response() :: #{
+%%   <<"transferredCertificateArn">> => string()
+%% }
+-type transfer_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% transfer_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type transfer_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transfer_data() :: #{
+%%   <<"acceptDate">> => non_neg_integer(),
+%%   <<"rejectDate">> => non_neg_integer(),
+%%   <<"rejectReason">> => string(),
+%%   <<"transferDate">> => non_neg_integer(),
+%%   <<"transferMessage">> => string()
+%% }
+-type transfer_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_account_audit_configuration_request() :: #{
+%%   <<"auditCheckConfigurations">> => map(),
+%%   <<"auditNotificationTargetConfigurations">> => map(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_account_audit_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_audit_configuration_response() :: #{}
+-type update_account_audit_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_audit_suppression_request() :: #{
+%%   <<"checkName">> := string(),
+%%   <<"description">> => string(),
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"resourceIdentifier">> := resource_identifier(),
+%%   <<"suppressIndefinitely">> => boolean()
+%% }
+-type update_audit_suppression_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_audit_suppression_response() :: #{}
+-type update_audit_suppression_response() :: #{}.
+
+
+%% Example:
+%% update_authorizer_request() :: #{
+%%   <<"authorizerFunctionArn">> => string(),
+%%   <<"enableCachingForHttp">> => boolean(),
+%%   <<"status">> => list(any()),
+%%   <<"tokenKeyName">> => string(),
+%%   <<"tokenSigningPublicKeys">> => map()
+%% }
+-type update_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_authorizer_response() :: #{
+%%   <<"authorizerArn">> => string(),
+%%   <<"authorizerName">> => string()
+%% }
+-type update_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_billing_group_request() :: #{
+%%   <<"billingGroupProperties">> := billing_group_properties(),
+%%   <<"expectedVersion">> => float()
+%% }
+-type update_billing_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_billing_group_response() :: #{
+%%   <<"version">> => float()
+%% }
+-type update_billing_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ca_certificate_params() :: #{
+%%   <<"action">> => list(any())
+%% }
+-type update_ca_certificate_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ca_certificate_request() :: #{
+%%   <<"newAutoRegistrationStatus">> => list(any()),
+%%   <<"newStatus">> => list(any()),
+%%   <<"registrationConfig">> => registration_config(),
+%%   <<"removeAutoRegistration">> => boolean()
+%% }
+-type update_ca_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_certificate_provider_request() :: #{
+%%   <<"accountDefaultForOperations">> => list(list(any())()),
+%%   <<"lambdaFunctionArn">> => string()
+%% }
+-type update_certificate_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_certificate_provider_response() :: #{
+%%   <<"certificateProviderArn">> => string(),
+%%   <<"certificateProviderName">> => string()
+%% }
+-type update_certificate_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_certificate_request() :: #{
+%%   <<"newStatus">> := list(any())
+%% }
+-type update_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_command_request() :: #{
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type update_command_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_command_response() :: #{
+%%   <<"commandId">> => string(),
+%%   <<"deprecated">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer()
+%% }
+-type update_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_metric_request() :: #{
+%%   <<"displayName">> := string()
+%% }
+-type update_custom_metric_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_metric_response() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"metricArn">> => string(),
+%%   <<"metricName">> => string(),
+%%   <<"metricType">> => list(any())
+%% }
+-type update_custom_metric_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_device_certificate_params() :: #{
+%%   <<"action">> => list(any())
+%% }
+-type update_device_certificate_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dimension_request() :: #{
+%%   <<"stringValues">> := list(string())
+%% }
+-type update_dimension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dimension_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"stringValues">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type update_dimension_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_configuration_request() :: #{
 %%   <<"applicationProtocol">> => list(any()),
 %%   <<"authenticationType">> => list(any()),
 %%   <<"authorizerConfig">> => authorizer_config(),
 %%   <<"clientCertificateConfig">> => client_certificate_config(),
-%%   <<"domainName">> => string(),
-%%   <<"serverCertificateArns">> => list(string()),
+%%   <<"domainConfigurationStatus">> => list(any()),
+%%   <<"removeAuthorizerConfig">> => boolean(),
 %%   <<"serverCertificateConfig">> => server_certificate_config(),
-%%   <<"serviceType">> => list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"tlsConfig">> => tls_config(),
-%%   <<"validationCertificateArn">> => string()
+%%   <<"tlsConfig">> => tls_config()
 %% }
--type create_domain_configuration_request() :: #{binary() => any()}.
+-type update_domain_configuration_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_provisioning_template_response() :: #{}
--type delete_provisioning_template_response() :: #{}.
+%% update_domain_configuration_response() :: #{
+%%   <<"domainConfigurationArn">> => string(),
+%%   <<"domainConfigurationName">> => string()
+%% }
+-type update_domain_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dynamic_thing_group_request() :: #{
+%%   <<"expectedVersion">> => float(),
+%%   <<"indexName">> => string(),
+%%   <<"queryString">> => string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"thingGroupProperties">> := thing_group_properties()
+%% }
+-type update_dynamic_thing_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dynamic_thing_group_response() :: #{
+%%   <<"version">> => float()
+%% }
+-type update_dynamic_thing_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsAccessRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type update_encryption_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_encryption_configuration_response() :: #{}
+-type update_encryption_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_event_configurations_request() :: #{
+%%   <<"eventConfigurations">> => map()
+%% }
+-type update_event_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_configurations_response() :: #{}
+-type update_event_configurations_response() :: #{}.
+
+
+%% Example:
+%% update_fleet_metric_request() :: #{
+%%   <<"aggregationField">> => string(),
+%%   <<"aggregationType">> => aggregation_type(),
+%%   <<"description">> => string(),
+%%   <<"expectedVersion">> => float(),
+%%   <<"indexName">> := string(),
+%%   <<"period">> => integer(),
+%%   <<"queryString">> => string(),
+%%   <<"queryVersion">> => string(),
+%%   <<"unit">> => list(any())
+%% }
+-type update_fleet_metric_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_indexing_configuration_request() :: #{
+%%   <<"thingGroupIndexingConfiguration">> => thing_group_indexing_configuration(),
+%%   <<"thingIndexingConfiguration">> => thing_indexing_configuration()
+%% }
+-type update_indexing_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_indexing_configuration_response() :: #{}
+-type update_indexing_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_job_request() :: #{
+%%   <<"abortConfig">> => abort_config(),
+%%   <<"description">> => string(),
+%%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
+%%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
+%%   <<"namespaceId">> => string(),
+%%   <<"presignedUrlConfig">> => presigned_url_config(),
+%%   <<"timeoutConfig">> => timeout_config()
+%% }
+-type update_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_mitigation_action_request() :: #{
+%%   <<"actionParams">> => mitigation_action_params(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_mitigation_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_mitigation_action_response() :: #{
+%%   <<"actionArn">> => string(),
+%%   <<"actionId">> => string()
+%% }
+-type update_mitigation_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_package_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"versionUpdateByJobsConfig">> => version_update_by_jobs_config()
+%% }
+-type update_package_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_package_configuration_response() :: #{}
+-type update_package_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_package_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"defaultVersionName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"unsetDefaultVersion">> => boolean()
+%% }
+-type update_package_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_package_response() :: #{}
+-type update_package_response() :: #{}.
+
+
+%% Example:
+%% update_package_version_request() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"artifact">> => package_version_artifact(),
+%%   <<"attributes">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"recipe">> => string()
+%% }
+-type update_package_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_package_version_response() :: #{}
+-type update_package_version_response() :: #{}.
+
+
+%% Example:
+%% update_provisioning_template_request() :: #{
+%%   <<"defaultVersionId">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"preProvisioningHook">> => provisioning_hook(),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"removePreProvisioningHook">> => boolean()
+%% }
+-type update_provisioning_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioning_template_response() :: #{}
+-type update_provisioning_template_response() :: #{}.
+
+
+%% Example:
+%% update_role_alias_request() :: #{
+%%   <<"credentialDurationSeconds">> => integer(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_role_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_role_alias_response() :: #{
+%%   <<"roleAlias">> => string(),
+%%   <<"roleAliasArn">> => string()
+%% }
+-type update_role_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scheduled_audit_request() :: #{
+%%   <<"dayOfMonth">> => string(),
+%%   <<"dayOfWeek">> => list(any()),
+%%   <<"frequency">> => list(any()),
+%%   <<"targetCheckNames">> => list(string())
+%% }
+-type update_scheduled_audit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scheduled_audit_response() :: #{
+%%   <<"scheduledAuditArn">> => string()
+%% }
+-type update_scheduled_audit_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_profile_request() :: #{
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
+%%   <<"alertTargets">> => map(),
+%%   <<"behaviors">> => list(behavior()),
+%%   <<"deleteAdditionalMetricsToRetain">> => boolean(),
+%%   <<"deleteAlertTargets">> => boolean(),
+%%   <<"deleteBehaviors">> => boolean(),
+%%   <<"deleteMetricsExportConfig">> => boolean(),
+%%   <<"expectedVersion">> => float(),
+%%   <<"metricsExportConfig">> => metrics_export_config(),
+%%   <<"securityProfileDescription">> => string()
+%% }
+-type update_security_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6827,427 +7119,76 @@
 
 
 %% Example:
-%% list_targets_for_security_profile_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_targets_for_security_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registration_code_request() :: #{}
--type delete_registration_code_request() :: #{}.
-
-%% Example:
-%% describe_thing_type_request() :: #{}
--type describe_thing_type_request() :: #{}.
-
-
-%% Example:
-%% job_execution_summary() :: #{
-%%   <<"executionNumber">> => float(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"queuedAt">> => non_neg_integer(),
-%%   <<"retryAttempt">> => integer(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type job_execution_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_device_certificate_params() :: #{
-%%   <<"action">> => list(any())
-%% }
--type update_device_certificate_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_job_templates_response() :: #{
-%%   <<"managedJobTemplates">> => list(managed_job_template_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_job_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_audit_configuration_request() :: #{
-%%   <<"auditCheckConfigurations">> => map(),
-%%   <<"auditNotificationTargetConfigurations">> => map(),
+%% update_stream_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"files">> => list(stream_file()),
 %%   <<"roleArn">> => string()
 %% }
--type update_account_audit_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_package_request() :: #{}
--type get_package_request() :: #{}.
+-type update_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_principal_things_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principal">> := string()
-%% }
--type list_principal_things_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cardinality_response() :: #{
-%%   <<"cardinality">> => integer()
-%% }
--type get_cardinality_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_thing_principal_request() :: #{
-%%   <<"principal">> := string()
-%% }
--type detach_thing_principal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_suppression() :: #{
-%%   <<"checkName">> => string(),
+%% update_stream_response() :: #{
 %%   <<"description">> => string(),
-%%   <<"expirationDate">> => non_neg_integer(),
-%%   <<"resourceIdentifier">> => resource_identifier(),
-%%   <<"suppressIndefinitely">> => boolean()
+%%   <<"streamArn">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"streamVersion">> => integer()
 %% }
--type audit_suppression() :: #{binary() => any()}.
+-type update_stream_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_on_demand_audit_task_request() :: #{
-%%   <<"targetCheckNames">> := list(string())
+%% update_thing_group_request() :: #{
+%%   <<"expectedVersion">> => float(),
+%%   <<"thingGroupProperties">> := thing_group_properties()
 %% }
--type start_on_demand_audit_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% clear_default_authorizer_request() :: #{}
--type clear_default_authorizer_request() :: #{}.
-
-%% Example:
-%% describe_thing_request() :: #{}
--type describe_thing_request() :: #{}.
+-type update_thing_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% transfer_data() :: #{
-%%   <<"acceptDate">> => non_neg_integer(),
-%%   <<"rejectDate">> => non_neg_integer(),
-%%   <<"rejectReason">> => string(),
-%%   <<"transferDate">> => non_neg_integer(),
-%%   <<"transferMessage">> => string()
+%% update_thing_group_response() :: #{
+%%   <<"version">> => float()
 %% }
--type transfer_data() :: #{binary() => any()}.
+-type update_thing_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_packages_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packageSummaries">> => list(package_summary())
-%% }
--type list_packages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_index_request() :: #{
-%%   <<"indexName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryString">> := string(),
-%%   <<"queryVersion">> => string()
-%% }
--type search_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_parameter_value() :: #{
-%%   <<"B">> => boolean(),
-%%   <<"BIN">> => binary(),
-%%   <<"D">> => float(),
-%%   <<"I">> => integer(),
-%%   <<"L">> => float(),
-%%   <<"S">> => string(),
-%%   <<"UL">> => string()
-%% }
--type command_parameter_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% transfer_certificate_response() :: #{
-%%   <<"transferredCertificateArn">> => string()
-%% }
--type transfer_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_package_response() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"defaultVersionName">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => non_neg_integer(),
-%%   <<"packageArn">> => string(),
-%%   <<"packageName">> => string()
-%% }
--type get_package_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transfer_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type transfer_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_targets_for_security_profile_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityProfileTargets">> => list(security_profile_target())
-%% }
--type list_targets_for_security_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_stream_response() :: #{
-%%   <<"streamInfo">> => stream_info()
-%% }
--type describe_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_metric_response() :: #{
-%%   <<"metricArn">> => string(),
-%%   <<"metricName">> => string()
-%% }
--type create_custom_metric_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioning_template_response() :: #{}
--type update_provisioning_template_response() :: #{}.
-
-%% Example:
-%% delete_domain_configuration_response() :: #{}
--type delete_domain_configuration_response() :: #{}.
-
-%% Example:
-%% update_encryption_configuration_response() :: #{}
--type update_encryption_configuration_response() :: #{}.
-
-
-%% Example:
-%% audit_check_details() :: #{
-%%   <<"checkCompliant">> => boolean(),
-%%   <<"checkRunStatus">> => list(any()),
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nonCompliantResourcesCount">> => float(),
-%%   <<"suppressedNonCompliantResourcesCount">> => float(),
-%%   <<"totalResourcesCount">> => float()
-%% }
--type audit_check_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificates_by_ca_response() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"nextMarker">> => string()
-%% }
--type list_certificates_by_ca_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% thing_type_properties() :: #{
-%%   <<"mqtt5Configuration">> => mqtt5_configuration(),
-%%   <<"searchableAttributes">> => list(string()),
-%%   <<"thingTypeDescription">> => string()
-%% }
--type thing_type_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_executions_for_job_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_job_executions_for_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_authorizer_request() :: #{
-%%   <<"authorizerFunctionArn">> => string(),
-%%   <<"enableCachingForHttp">> => boolean(),
-%%   <<"status">> => list(any()),
-%%   <<"tokenKeyName">> => string(),
-%%   <<"tokenSigningPublicKeys">> => map()
-%% }
--type update_authorizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_result() :: #{
-%%   <<"allowed">> => allowed(),
-%%   <<"authDecision">> => list(any()),
-%%   <<"authInfo">> => auth_info(),
-%%   <<"denied">> => denied(),
-%%   <<"missingContextValues">> => list(string())
-%% }
--type auth_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_role_alias_request() :: #{}
--type delete_role_alias_request() :: #{}.
-
-
-%% Example:
-%% update_domain_configuration_response() :: #{
-%%   <<"domainConfigurationArn">> => string(),
-%%   <<"domainConfigurationName">> => string()
-%% }
--type update_domain_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_certificates_response() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"nextMarker">> => string()
-%% }
--type list_certificates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_principal_things_v2_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principal">> := string(),
-%%   <<"thingPrincipalType">> => list(any())
-%% }
--type list_principal_things_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_authorization_request() :: #{
-%%   <<"authInfos">> := list(auth_info()),
-%%   <<"clientId">> => string(),
-%%   <<"cognitoIdentityPoolId">> => string(),
-%%   <<"policyNamesToAdd">> => list(string()),
-%%   <<"policyNamesToSkip">> => list(string()),
-%%   <<"principal">> => string()
-%% }
--type test_authorization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_thing_type_response() :: #{
-%%   <<"thingTypeArn">> => string(),
-%%   <<"thingTypeId">> => string(),
-%%   <<"thingTypeMetadata">> => thing_type_metadata(),
-%%   <<"thingTypeName">> => string(),
-%%   <<"thingTypeProperties">> => thing_type_properties()
-%% }
--type describe_thing_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_target_configuration() :: #{
-%%   <<"logLevel">> => list(any()),
-%%   <<"logTarget">> => log_target()
-%% }
--type log_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% aggregation_type() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type aggregation_type() :: #{binary() => any()}.
-
-%% Example:
-%% stop_thing_registration_task_response() :: #{}
--type stop_thing_registration_task_response() :: #{}.
-
-
-%% Example:
-%% salesforce_action() :: #{
-%%   <<"token">> => string(),
-%%   <<"url">> => string()
-%% }
--type salesforce_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_managed_job_template_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"document">> => string(),
-%%   <<"documentParameters">> => list(document_parameter()),
-%%   <<"environments">> => list(string()),
-%%   <<"templateArn">> => string(),
-%%   <<"templateName">> => string(),
-%%   <<"templateVersion">> => string()
-%% }
--type describe_managed_job_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_thing_type_request() :: #{
-%%   <<"tags">> => list(tag()),
-%%   <<"thingTypeProperties">> => thing_type_properties()
-%% }
--type create_thing_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registration_code_response() :: #{}
--type delete_registration_code_response() :: #{}.
-
-
-%% Example:
-%% add_thing_to_thing_group_request() :: #{
+%% update_thing_groups_for_thing_request() :: #{
 %%   <<"overrideDynamicGroups">> => boolean(),
-%%   <<"thingArn">> => string(),
-%%   <<"thingGroupArn">> => string(),
-%%   <<"thingGroupName">> => string(),
+%%   <<"thingGroupsToAdd">> => list(string()),
+%%   <<"thingGroupsToRemove">> => list(string()),
 %%   <<"thingName">> => string()
 %% }
--type add_thing_to_thing_group_request() :: #{binary() => any()}.
+-type update_thing_groups_for_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_thing_groups_for_thing_response() :: #{}
+-type update_thing_groups_for_thing_response() :: #{}.
 
 
 %% Example:
-%% job_execution_summary_for_job() :: #{
-%%   <<"jobExecutionSummary">> => job_execution_summary(),
-%%   <<"thingArn">> => string()
+%% update_thing_request() :: #{
+%%   <<"attributePayload">> => attribute_payload(),
+%%   <<"expectedVersion">> => float(),
+%%   <<"removeThingType">> => boolean(),
+%%   <<"thingTypeName">> => string()
 %% }
--type job_execution_summary_for_job() :: #{binary() => any()}.
+-type update_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_thing_response() :: #{}
+-type update_thing_response() :: #{}.
 
 
 %% Example:
-%% list_package_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"packageVersionSummaries">> => list(package_version_summary())
+%% update_thing_type_request() :: #{
+%%   <<"thingTypeProperties">> => thing_type_properties()
 %% }
--type list_package_versions_response() :: #{binary() => any()}.
-
+-type update_thing_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% outgoing_certificate() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateId">> => string(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"transferDate">> => non_neg_integer(),
-%%   <<"transferMessage">> => string(),
-%%   <<"transferredTo">> => string()
-%% }
--type outgoing_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% sqs_action() :: #{
-%%   <<"queueUrl">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"useBase64">> => boolean()
-%% }
--type sqs_action() :: #{binary() => any()}.
+%% update_thing_type_response() :: #{}
+-type update_thing_type_response() :: #{}.
 
 
 %% Example:
@@ -7257,48 +7198,109 @@
 %% }
 -type update_topic_rule_destination_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_topic_rule_destination_response() :: #{}
+-type update_topic_rule_destination_response() :: #{}.
+
 
 %% Example:
-%% thing_type_definition() :: #{
-%%   <<"thingTypeArn">> => string(),
-%%   <<"thingTypeMetadata">> => thing_type_metadata(),
-%%   <<"thingTypeName">> => string(),
-%%   <<"thingTypeProperties">> => thing_type_properties()
+%% user_property() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type thing_type_definition() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_metric_request() :: #{}
--type describe_fleet_metric_request() :: #{}.
+-type user_property() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloudwatch_logs_action() :: #{
-%%   <<"batchMode">> => boolean(),
-%%   <<"logGroupName">> => string(),
+%% validate_security_profile_behaviors_request() :: #{
+%%   <<"behaviors">> := list(behavior())
+%% }
+-type validate_security_profile_behaviors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_security_profile_behaviors_response() :: #{
+%%   <<"valid">> => boolean(),
+%%   <<"validationErrors">> => list(validation_error())
+%% }
+-type validate_security_profile_behaviors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"errorMessage">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type version_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_update_by_jobs_config() :: #{
+%%   <<"enabled">> => boolean(),
 %%   <<"roleArn">> => string()
 %% }
--type cloudwatch_logs_action() :: #{binary() => any()}.
+-type version_update_by_jobs_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_template_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"jobTemplateArn">> => string(),
-%%   <<"jobTemplateId">> => string()
+%% versions_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type job_template_summary() :: #{binary() => any()}.
+-type versions_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% iot_events_action() :: #{
-%%   <<"batchMode">> => boolean(),
-%%   <<"inputName">> => string(),
-%%   <<"messageId">> => string(),
-%%   <<"roleArn">> => string()
+%% violation_event() :: #{
+%%   <<"behavior">> => behavior(),
+%%   <<"metricValue">> => metric_value(),
+%%   <<"securityProfileName">> => string(),
+%%   <<"thingName">> => string(),
+%%   <<"verificationState">> => list(any()),
+%%   <<"verificationStateDescription">> => string(),
+%%   <<"violationEventAdditionalInfo">> => violation_event_additional_info(),
+%%   <<"violationEventTime">> => non_neg_integer(),
+%%   <<"violationEventType">> => list(any()),
+%%   <<"violationId">> => string()
 %% }
--type iot_events_action() :: #{binary() => any()}.
+-type violation_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% violation_event_additional_info() :: #{
+%%   <<"confidenceLevel">> => list(any())
+%% }
+-type violation_event_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% violation_event_occurrence_range() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type violation_event_occurrence_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_destination_configuration() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_destination_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7312,408 +7314,406 @@
 
 
 %% Example:
-%% create_role_alias_response() :: #{
-%%   <<"roleAlias">> => string(),
-%%   <<"roleAliasArn">> => string()
+%% vpc_destination_summary() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type create_role_alias_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_package_version_response() :: #{}
--type delete_package_version_response() :: #{}.
+-type vpc_destination_summary() :: #{binary() => any()}.
 
 -type accept_certificate_transfer_errors() ::
+    unauthorized_exception() | 
+    transfer_already_completed_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    transfer_already_completed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type add_thing_to_billing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type add_thing_to_thing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type associate_sbom_with_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type associate_targets_with_job_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception().
 
 -type attach_policy_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type attach_principal_policy_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type attach_security_profile_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     version_conflict_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type attach_thing_principal_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type cancel_audit_mitigation_actions_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type cancel_audit_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type cancel_certificate_transfer_errors() ::
+    unauthorized_exception() | 
+    transfer_already_completed_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    transfer_already_completed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type cancel_detect_mitigation_actions_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type cancel_job_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception().
 
 -type cancel_job_execution_errors() ::
+    version_conflict_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_state_transition_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    version_conflict_exception().
+    invalid_state_transition_exception() | 
+    invalid_request_exception().
 
 -type clear_default_authorizer_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type confirm_topic_rule_destination_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type create_audit_suppression_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_authorizer_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_billing_group_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_certificate_from_csr_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_certificate_provider_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_command_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_custom_metric_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_dimension_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_domain_configuration_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    certificate_validation_exception() | 
-    service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    certificate_validation_exception().
 
 -type create_dynamic_thing_group_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_query_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
+    invalid_query_exception() | 
     internal_failure_exception().
 
 -type create_fleet_metric_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
+    invalid_query_exception() | 
     invalid_aggregation_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type create_job_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_request_exception().
 
 -type create_job_template_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflict_exception().
 
 -type create_keys_and_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_mitigation_action_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_ota_update_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_policy_errors() ::
-    resource_already_exists_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    unauthorized_exception() | 
+    resource_already_exists_exception() | 
     malformed_policy_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_policy_version_errors() ::
-    throttling_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     versions_limit_exceeded_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
     malformed_policy_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_provisioning_claim_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_provisioning_template_errors() ::
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_provisioning_template_version_errors() ::
-    throttling_exception() | 
-    conflicting_resource_update_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     versions_limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_resource_update_exception().
 
 -type create_role_alias_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_scheduled_audit_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_security_profile_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_stream_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_thing_errors() ::
-    resource_already_exists_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_thing_group_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_thing_type_errors() ::
-    resource_already_exists_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type create_topic_rule_errors() ::
-    resource_already_exists_exception() | 
+    unauthorized_exception() | 
     sql_parse_exception() | 
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type create_topic_rule_destination_errors() ::
-    resource_already_exists_exception() | 
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type delete_account_audit_configuration_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_audit_suppression_errors() ::
@@ -7722,57 +7722,57 @@
     internal_failure_exception().
 
 -type delete_authorizer_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_billing_group_errors() ::
+    version_conflict_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    version_conflict_exception() | 
     internal_failure_exception().
 
 -type delete_ca_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    certificate_state_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_state_exception().
 
 -type delete_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    certificate_state_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    certificate_state_exception().
 
 -type delete_certificate_provider_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_command_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
 -type delete_command_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
@@ -7787,46 +7787,46 @@
     internal_failure_exception().
 
 -type delete_domain_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_dynamic_thing_group_errors() ::
+    version_conflict_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    version_conflict_exception() | 
     internal_failure_exception().
 
 -type delete_fleet_metric_errors() ::
+    version_conflict_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
-    version_conflict_exception() | 
     internal_failure_exception().
 
 -type delete_job_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_state_transition_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_request_exception().
 
 -type delete_job_execution_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_state_transition_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_request_exception().
 
 -type delete_job_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_mitigation_action_errors() ::
@@ -7835,145 +7835,145 @@
     internal_failure_exception().
 
 -type delete_ota_update_errors() ::
+    version_conflict_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    version_conflict_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type delete_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type delete_policy_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_policy_version_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_provisioning_template_errors() ::
-    throttling_exception() | 
-    conflicting_resource_update_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    delete_conflict_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception() | 
+    conflicting_resource_update_exception().
 
 -type delete_provisioning_template_version_errors() ::
-    throttling_exception() | 
-    conflicting_resource_update_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    delete_conflict_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception() | 
+    conflicting_resource_update_exception().
 
 -type delete_registration_code_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type delete_role_alias_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_scheduled_audit_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_security_profile_errors() ::
+    version_conflict_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    version_conflict_exception() | 
     internal_failure_exception().
 
 -type delete_stream_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    delete_conflict_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    delete_conflict_exception().
 
 -type delete_thing_errors() ::
+    version_conflict_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    version_conflict_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_thing_group_errors() ::
+    version_conflict_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    version_conflict_exception() | 
     internal_failure_exception().
 
 -type delete_thing_type_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_topic_rule_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type delete_topic_rule_destination_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type delete_v2_logging_level_errors() ::
-    internal_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception().
-
--type deprecate_thing_type_errors() ::
-    throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
+    internal_exception().
+
+-type deprecate_thing_type_errors() ::
     unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_account_audit_configuration_errors() ::
@@ -7982,111 +7982,111 @@
 
 -type describe_audit_finding_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_audit_mitigation_actions_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_audit_suppression_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_audit_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_authorizer_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_billing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_ca_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_certificate_provider_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_custom_metric_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_default_authorizer_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_detect_mitigation_actions_task_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_dimension_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_domain_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_encryption_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type describe_endpoint_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type describe_event_configurations_errors() ::
@@ -8094,348 +8094,348 @@
     internal_failure_exception().
 
 -type describe_fleet_metric_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_index_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_job_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type describe_job_execution_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type describe_job_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_managed_job_template_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type describe_mitigation_action_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_provisioning_template_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_provisioning_template_version_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_role_alias_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_scheduled_audit_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_security_profile_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_stream_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_thing_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_thing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_thing_registration_task_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_thing_type_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type detach_policy_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type detach_principal_policy_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type detach_security_profile_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type detach_thing_principal_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type disable_topic_rule_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type disassociate_sbom_from_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type enable_topic_rule_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type get_behavior_model_training_summaries_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_buckets_aggregation_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    invalid_aggregation_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    invalid_aggregation_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type get_cardinality_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    invalid_aggregation_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    invalid_aggregation_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type get_command_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_command_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_effective_policies_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_indexing_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type get_job_document_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
-
--type get_logging_options_errors() ::
-    internal_exception() | 
-    service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception().
 
--type get_ota_update_errors() ::
-    throttling_exception() | 
+-type get_logging_options_errors() ::
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
+    internal_exception().
+
+-type get_ota_update_errors() ::
     unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_package_configuration_errors() ::
     throttling_exception() | 
     internal_server_exception().
 
 -type get_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_percentiles_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    invalid_aggregation_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    invalid_aggregation_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type get_policy_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_policy_version_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_registration_code_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type get_statistics_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    invalid_aggregation_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    invalid_aggregation_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type get_thing_connectivity_data_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type get_topic_rule_errors() ::
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception().
 
 -type get_topic_rule_destination_errors() ::
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception().
 
 -type get_v2_logging_options_errors() ::
-    internal_exception() | 
+    service_unavailable_exception() | 
     not_configured_exception() | 
-    service_unavailable_exception().
+    internal_exception().
 
 -type list_active_violations_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_attached_policies_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_audit_findings_errors() ::
@@ -8464,55 +8464,55 @@
     internal_failure_exception().
 
 -type list_authorizers_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_billing_groups_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_ca_certificates_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_certificate_providers_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_certificates_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_certificates_by_ca_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_command_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_commands_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_custom_metrics_errors() ::
@@ -8536,37 +8536,37 @@
     internal_failure_exception().
 
 -type list_domain_configurations_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_fleet_metrics_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_indices_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_job_executions_for_job_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type list_job_executions_for_thing_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type list_job_templates_errors() ::
     throttling_exception() | 
@@ -8576,19 +8576,19 @@
 -type list_jobs_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type list_managed_job_templates_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_metric_values_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_mitigation_actions_errors() ::
@@ -8597,107 +8597,107 @@
     internal_failure_exception().
 
 -type list_ota_updates_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_outgoing_certificates_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_package_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_packages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_policies_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_policy_principals_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_policy_versions_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_principal_policies_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_principal_things_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_principal_things_v2_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_provisioning_template_versions_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_provisioning_templates_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_related_resources_for_audit_finding_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_role_aliases_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_sbom_validation_results_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_scheduled_audits_errors() ::
     throttling_exception() | 
@@ -8706,127 +8706,127 @@
 
 -type list_security_profiles_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_security_profiles_for_target_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_streams_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_targets_for_policy_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_targets_for_security_profile_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_thing_groups_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_thing_groups_for_thing_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_thing_principals_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_thing_principals_v2_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_thing_registration_task_reports_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_thing_registration_tasks_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_thing_types_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_things_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type list_things_in_billing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_things_in_thing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_topic_rule_destinations_errors() ::
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception().
 
 -type list_topic_rules_errors() ::
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception().
 
 -type list_v2_logging_levels_errors() ::
-    internal_exception() | 
-    not_configured_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    not_configured_exception() | 
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_violation_events_errors() ::
     throttling_exception() | 
@@ -8839,192 +8839,192 @@
     internal_failure_exception().
 
 -type register_ca_certificate_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    certificate_validation_exception() | 
-    registration_code_validation_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    registration_code_validation_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_validation_exception().
 
 -type register_certificate_errors() ::
-    resource_already_exists_exception() | 
-    throttling_exception() | 
-    certificate_validation_exception() | 
-    service_unavailable_exception() | 
-    certificate_conflict_exception() | 
-    invalid_request_exception() | 
-    certificate_state_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_validation_exception() | 
+    certificate_state_exception() | 
+    certificate_conflict_exception().
 
 -type register_certificate_without_ca_errors() ::
-    resource_already_exists_exception() | 
-    throttling_exception() | 
-    certificate_validation_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    certificate_state_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_validation_exception() | 
+    certificate_state_exception().
 
 -type register_thing_errors() ::
-    resource_registration_failure_exception() | 
-    throttling_exception() | 
-    conflicting_resource_update_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_registration_failure_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_resource_update_exception().
 
 -type reject_certificate_transfer_errors() ::
+    unauthorized_exception() | 
+    transfer_already_completed_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    transfer_already_completed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type remove_thing_from_billing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type remove_thing_from_thing_group_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type replace_topic_rule_errors() ::
+    unauthorized_exception() | 
     sql_parse_exception() | 
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type search_index_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type set_default_authorizer_errors() ::
-    resource_already_exists_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type set_default_policy_version_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type set_logging_options_errors() ::
-    internal_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type set_v2_logging_level_errors() ::
-    limit_exceeded_exception() | 
-    internal_exception() | 
-    not_configured_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    not_configured_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_exception().
 
 -type set_v2_logging_options_errors() ::
-    internal_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type start_audit_mitigation_actions_task_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     task_already_exists_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type start_detect_mitigation_actions_task_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
     task_already_exists_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type start_on_demand_audit_task_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type start_thing_registration_task_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type stop_thing_registration_task_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type test_authorization_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type test_invoke_authorizer_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    invalid_response_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_response_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type transfer_certificate_errors() ::
+    unauthorized_exception() | 
     transfer_conflict_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    certificate_state_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_state_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_account_audit_configuration_errors() ::
@@ -9034,92 +9034,92 @@
 
 -type update_audit_suppression_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_authorizer_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_billing_group_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     version_conflict_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_ca_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_certificate_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    certificate_state_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_state_exception().
 
 -type update_certificate_provider_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_command_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_custom_metric_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_dimension_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_domain_configuration_errors() ::
-    throttling_exception() | 
-    certificate_validation_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    certificate_validation_exception().
 
 -type update_dynamic_thing_group_errors() ::
-    throttling_exception() | 
-    invalid_query_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     version_conflict_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
     internal_failure_exception().
 
 -type update_encryption_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type update_event_configurations_errors() ::
@@ -9128,129 +9128,129 @@
     internal_failure_exception().
 
 -type update_fleet_metric_errors() ::
-    throttling_exception() | 
-    index_not_ready_exception() | 
-    invalid_query_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    invalid_aggregation_exception() | 
-    unauthorized_exception() | 
     version_conflict_exception() | 
-    internal_failure_exception().
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_query_exception() | 
+    invalid_aggregation_exception() | 
+    internal_failure_exception() | 
+    index_not_ready_exception().
 
 -type update_indexing_configuration_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception() | 
     internal_failure_exception().
 
 -type update_job_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception().
 
 -type update_mitigation_action_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_package_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
 -type update_package_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_provisioning_template_errors() ::
-    conflicting_resource_update_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflicting_resource_update_exception().
 
 -type update_role_alias_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_scheduled_audit_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_security_profile_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     version_conflict_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_stream_errors() ::
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_thing_errors() ::
+    version_conflict_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    version_conflict_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_thing_group_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     version_conflict_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_thing_groups_for_thing_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_thing_type_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_topic_rule_destination_errors() ::
-    conflicting_resource_update_exception() | 
-    internal_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_exception() | 
+    conflicting_resource_update_exception().
 
 -type validate_security_profile_behaviors_errors() ::
     throttling_exception() | 

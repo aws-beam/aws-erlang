@@ -120,557 +120,9 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-
-%% Example:
-%% redshift_data_share_details() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"Function">> => string(),
-%%   <<"Schema">> => string(),
-%%   <<"Table">> => string(),
-%%   <<"View">> => string()
-%% }
--type redshift_data_share_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_asset_from_api_gateway_api_response_details() :: #{
-%%   <<"ApiDescription">> => string(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKey">> => string(),
-%%   <<"ApiName">> => string(),
-%%   <<"ApiSpecificationMd5Hash">> => string(),
-%%   <<"ApiSpecificationUploadUrl">> => string(),
-%%   <<"ApiSpecificationUploadUrlExpiresAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"ProtocolType">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type import_asset_from_api_gateway_api_response_details() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_job_request() :: #{}
--type cancel_job_request() :: #{}.
-
-
-%% Example:
-%% event_action_entry() :: #{
-%%   <<"Action">> => action(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Event">> => event(),
-%%   <<"Id">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type event_action_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% scope_details() :: #{
-%%   <<"LakeFormationTagPolicies">> => list(lake_formation_tag_policy_details()),
-%%   <<"RedshiftDataShares">> => list(redshift_data_share_details()),
-%%   <<"S3DataAccesses">> => list(s3_data_access_details())
-%% }
--type scope_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_set_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Origin">> => string(),
-%%   <<"OriginDetails">> => origin_details(),
-%%   <<"SourceId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_data_set_response() :: #{binary() => any()}.
-
 %% Example:
 %% accept_data_grant_request() :: #{}
 -type accept_data_grant_request() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_revision_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Finalized">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"RevocationComment">> => string(),
-%%   <<"Revoked">> => boolean(),
-%%   <<"RevokedAt">> => non_neg_integer(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type update_revision_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_revision_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Finalized">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"RevocationComment">> => string(),
-%%   <<"Revoked">> => boolean(),
-%%   <<"RevokedAt">> => non_neg_integer(),
-%%   <<"SourceId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_revision_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_received_data_grants_request() :: #{
-%%   <<"AcceptanceState">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_data_grants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sets_response() :: #{
-%%   <<"DataSets">> => list(data_set_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_revisions_to_s3_response_details() :: #{
-%%   <<"DataSetId">> => string(),
-%%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"EventActionArn">> => string(),
-%%   <<"RevisionDestinations">> => list(revision_destination_entry())
-%% }
--type export_revisions_to_s3_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetConfiguration">> => asset_configuration(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Details">> => response_details(),
-%%   <<"Errors">> => list(job_error()),
-%%   <<"Id">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type create_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_received_data_grant_response() :: #{
-%%   <<"AcceptanceState">> => string(),
-%%   <<"AcceptedAt">> => non_neg_integer(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndsAt">> => non_neg_integer(),
-%%   <<"GrantDistributionScope">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ReceiverPrincipal">> => string(),
-%%   <<"SenderPrincipal">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_received_data_grant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag() :: #{
-%%   <<"TagKey">> => [string()],
-%%   <<"TagValues">> => list([string()]())
-%% }
--type l_f_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_received_data_grants_response() :: #{
-%%   <<"DataGrantSummaries">> => list(received_data_grant_summaries_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_received_data_grants_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_data_share_asset_source_entry() :: #{
-%%   <<"DataShareArn">> => string()
-%% }
--type redshift_data_share_asset_source_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_action_request() :: #{
-%%   <<"Action">> := action(),
-%%   <<"Event">> := event(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_set_notification_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"Details">> => notification_details(),
-%%   <<"Scope">> => scope_details(),
-%%   <<"Type">> := string()
-%% }
--type send_data_set_notification_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_revision_request() :: #{}
--type get_revision_request() :: #{}.
-
-
-%% Example:
-%% import_asset_from_signed_url_job_error_details() :: #{
-%%   <<"AssetName">> => string()
-%% }
--type import_asset_from_signed_url_job_error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"DataSetId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_grant_response() :: #{
-%%   <<"AcceptanceState">> => string(),
-%%   <<"AcceptedAt">> => non_neg_integer(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndsAt">> => non_neg_integer(),
-%%   <<"GrantDistributionScope">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ReceiverPrincipal">> => string(),
-%%   <<"SenderPrincipal">> => string(),
-%%   <<"SourceDataSetId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type create_data_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_job_response() :: #{}
--type start_job_response() :: #{}.
-
-
-%% Example:
-%% redshift_data_share_asset() :: #{
-%%   <<"Arn">> => string()
-%% }
--type redshift_data_share_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Origin">> => string()
-%% }
--type list_data_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_details() :: #{
-%%   <<"DataUpdate">> => data_update_request_details(),
-%%   <<"Deprecation">> => deprecation_request_details(),
-%%   <<"SchemaChange">> => schema_change_request_details()
-%% }
--type notification_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_set_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Origin">> => string(),
-%%   <<"OriginDetails">> => origin_details(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type data_set_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"AssetConfiguration">> => asset_configuration(),
-%%   <<"Details">> := request_details(),
-%%   <<"Type">> := string()
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_l_f_tag_policy_and_permissions() :: #{
-%%   <<"Expression">> => list(l_f_tag()),
-%%   <<"Permissions">> => list(string())
-%% }
--type database_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_asset_from_api_gateway_api_request_details() :: #{
-%%   <<"ApiDescription">> => string(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKey">> => string(),
-%%   <<"ApiName">> => string(),
-%%   <<"ApiSpecificationMd5Hash">> => string(),
-%%   <<"DataSetId">> => string(),
-%%   <<"ProtocolType">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type import_asset_from_api_gateway_api_request_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_key_to_grant() :: #{
-%%   <<"KmsKeyArn">> => string()
-%% }
--type kms_key_to_grant() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_api_asset_response() :: #{
-%%   <<"Body">> => string(),
-%%   <<"ResponseHeaders">> => map()
-%% }
--type send_api_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_server_side_encryption() :: #{
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"Type">> => string()
-%% }
--type export_server_side_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% lake_formation_tag_policy_details() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Table">> => string()
-%% }
--type lake_formation_tag_policy_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_configuration() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type asset_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_set_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Origin">> => string(),
-%%   <<"OriginDetails">> => origin_details(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type update_data_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% revision_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Finalized">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"RevocationComment">> => string(),
-%%   <<"Revoked">> => boolean(),
-%%   <<"RevokedAt">> => non_neg_integer(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type revision_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetDetails">> => asset_details(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type update_asset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_change_details() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type schema_change_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_grant_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndsAt">> => non_neg_integer(),
-%%   <<"GrantDistributionScope">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ReceiverPrincipal">> := string(),
-%%   <<"SourceDataSetId">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_data_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_received_data_grant_request() :: #{}
--type get_received_data_grant_request() :: #{}.
-
-
-%% Example:
-%% list_data_set_revisions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(revision_entry())
-%% }
--type list_data_set_revisions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_asset_to_signed_url_response_details() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"SignedUrl">> => string(),
-%%   <<"SignedUrlExpiresAt">> => non_neg_integer()
-%% }
--type export_asset_to_signed_url_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_asset_to_signed_url_request_details() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type export_asset_to_signed_url_request_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_revision_assets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_revision_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_assets_from_lake_formation_tag_policy_response_details() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Database">> => database_l_f_tag_policy_and_permissions(),
-%%   <<"RevisionId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Table">> => table_l_f_tag_policy_and_permissions()
-%% }
--type import_assets_from_lake_formation_tag_policy_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_l_f_tag_policy_and_permissions() :: #{
-%%   <<"Expression">> => list(l_f_tag()),
-%%   <<"Permissions">> => list(string())
-%% }
--type table_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_assets_to_s3_request_details() :: #{
-%%   <<"AssetDestinations">> => list(asset_destination_entry()),
-%%   <<"DataSetId">> => string(),
-%%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"RevisionId">> => string()
-%% }
--type export_assets_to_s3_request_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -693,11 +145,146 @@
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% action() :: #{
+%%   <<"ExportRevisionToS3">> => auto_export_revision_to_s3_request_details()
+%% }
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_api_asset() :: #{
+%%   <<"ApiDescription">> => string(),
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKey">> => string(),
+%%   <<"ApiName">> => string(),
+%%   <<"ApiSpecificationDownloadUrl">> => string(),
+%%   <<"ApiSpecificationDownloadUrlExpiresAt">> => non_neg_integer(),
+%%   <<"ProtocolType">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type api_gateway_api_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_configuration() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type asset_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_destination_entry() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type asset_destination_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_details() :: #{
+%%   <<"ApiGatewayApiAsset">> => api_gateway_api_asset(),
+%%   <<"LakeFormationDataPermissionAsset">> => lake_formation_data_permission_asset(),
+%%   <<"RedshiftDataShareAsset">> => redshift_data_share_asset(),
+%%   <<"S3DataAccessAsset">> => s3_data_access_asset(),
+%%   <<"S3SnapshotAsset">> => s3_snapshot_asset()
+%% }
+-type asset_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_entry() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetDetails">> => asset_details(),
+%%   <<"AssetType">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type asset_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_source_entry() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type asset_source_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_export_revision_destination_entry() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPattern">> => string()
+%% }
+-type auto_export_revision_destination_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_export_revision_to_s3_request_details() :: #{
+%%   <<"Encryption">> => export_server_side_encryption(),
+%%   <<"RevisionDestination">> => auto_export_revision_destination_entry()
+%% }
+-type auto_export_revision_to_s3_request_details() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_job_request() :: #{}
+-type cancel_job_request() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_grant_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ReceiverPrincipal">> := string(),
+%%   <<"SourceDataSetId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_data_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"SourceDataSetId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type create_data_grant_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -708,70 +295,6 @@
 %%   <<"Tags">> => map()
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_assets_to_s3_response_details() :: #{
-%%   <<"AssetDestinations">> => list(asset_destination_entry()),
-%%   <<"DataSetId">> => string(),
-%%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"RevisionId">> => string()
-%% }
--type export_assets_to_s3_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_revision_assets_response() :: #{
-%%   <<"Assets">> => list(asset_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_revision_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% details() :: #{
-%%   <<"ImportAssetFromSignedUrlJobErrorDetails">> => import_asset_from_signed_url_job_error_details(),
-%%   <<"ImportAssetsFromS3JobErrorDetails">> => list(asset_source_entry())
-%% }
--type details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_action_response() :: #{
-%%   <<"Action">> => action(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Event">> => event(),
-%%   <<"Id">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_event_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_action_request() :: #{}
--type get_event_action_request() :: #{}.
-
-
-%% Example:
-%% create_s3_data_access_from_s3_bucket_request_details() :: #{
-%%   <<"AssetSource">> => s3_data_access_asset_source_entry(),
-%%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type create_s3_data_access_from_s3_bucket_request_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_action_request() :: #{}
--type delete_event_action_request() :: #{}.
-
-
-%% Example:
-%% schema_change_request_details() :: #{
-%%   <<"Changes">> => list(schema_change_details()),
-%%   <<"SchemaChangeAt">> => non_neg_integer()
-%% }
--type schema_change_request_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -792,166 +315,57 @@
 
 
 %% Example:
-%% database_l_f_tag_policy() :: #{
-%%   <<"Expression">> => list(l_f_tag())
-%% }
--type database_l_f_tag_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_data_access_asset() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPrefixes">> => list(string()),
-%%   <<"Keys">> => list(string()),
-%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant()),
-%%   <<"S3AccessPointAlias">> => string(),
-%%   <<"S3AccessPointArn">> => string()
-%% }
--type s3_data_access_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
+%% create_event_action_request() :: #{
+%%   <<"Action">> := action(),
+%%   <<"Event">> := event(),
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type create_event_action_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% revoke_revision_request() :: #{
-%%   <<"RevocationComment">> := string()
-%% }
--type revoke_revision_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_l_f_tag_policy() :: #{
-%%   <<"Expression">> => list(l_f_tag())
-%% }
--type table_l_f_tag_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_action_request() :: #{
-%%   <<"Action">> => action()
-%% }
--type update_event_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_revision_request() :: #{}
--type delete_revision_request() :: #{}.
-
-
-%% Example:
-%% lake_formation_data_permission_details() :: #{
-%%   <<"LFTagPolicy">> => l_f_tag_policy_details()
-%% }
--type lake_formation_data_permission_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetDetails">> => asset_details(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"SourceId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_asset_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_job_request() :: #{}
--type start_job_request() :: #{}.
-
-
-%% Example:
-%% update_event_action_response() :: #{
+%% create_event_action_response() :: #{
 %%   <<"Action">> => action(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Event">> => event(),
 %%   <<"Id">> => string(),
+%%   <<"Tags">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type update_event_action_response() :: #{binary() => any()}.
+-type create_event_action_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_data_access_asset_source_entry() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPrefixes">> => list(string()),
-%%   <<"Keys">> => list(string()),
-%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant())
+%% create_job_request() :: #{
+%%   <<"AssetConfiguration">> => asset_configuration(),
+%%   <<"Details">> := request_details(),
+%%   <<"Type">> := string()
 %% }
--type s3_data_access_asset_source_entry() :: #{binary() => any()}.
+-type create_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_s3_data_access_from_s3_bucket_response_details() :: #{
-%%   <<"AssetSource">> => s3_data_access_asset_source_entry(),
-%%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string()
+%% create_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetConfiguration">> => asset_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Details">> => response_details(),
+%%   <<"Errors">> => list(job_error()),
+%%   <<"Id">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type create_s3_data_access_from_s3_bucket_response_details() :: #{binary() => any()}.
+-type create_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_update_request_details() :: #{
-%%   <<"DataUpdatedAt">> => non_neg_integer()
+%% create_revision_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type data_update_request_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_gateway_api_asset() :: #{
-%%   <<"ApiDescription">> => string(),
-%%   <<"ApiEndpoint">> => string(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKey">> => string(),
-%%   <<"ApiName">> => string(),
-%%   <<"ApiSpecificationDownloadUrl">> => string(),
-%%   <<"ApiSpecificationDownloadUrlExpiresAt">> => non_neg_integer(),
-%%   <<"ProtocolType">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type api_gateway_api_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_details() :: #{
-%%   <<"DataGrantId">> => string(),
-%%   <<"ProductId">> => string()
-%% }
--type origin_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% send_data_set_notification_response() :: #{}
--type send_data_set_notification_response() :: #{}.
-
-%% Example:
-%% delete_data_set_request() :: #{}
--type delete_data_set_request() :: #{}.
-
-
-%% Example:
-%% l_f_resource_details() :: #{
-%%   <<"Database">> => database_l_f_tag_policy(),
-%%   <<"Table">> => table_l_f_tag_policy()
-%% }
--type l_f_resource_details() :: #{binary() => any()}.
+-type create_revision_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -973,120 +387,21 @@
 
 
 %% Example:
-%% asset_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssetDetails">> => asset_details(),
-%%   <<"AssetType">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataSetId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"SourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type asset_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_data_access_details() :: #{
-%%   <<"KeyPrefixes">> => list(string()),
-%%   <<"Keys">> => list(string())
-%% }
--type s3_data_access_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_details() :: #{
-%%   <<"ApiGatewayApiAsset">> => api_gateway_api_asset(),
-%%   <<"LakeFormationDataPermissionAsset">> => lake_formation_data_permission_asset(),
-%%   <<"RedshiftDataShareAsset">> => redshift_data_share_asset(),
-%%   <<"S3DataAccessAsset">> => s3_data_access_asset(),
-%%   <<"S3SnapshotAsset">> => s3_snapshot_asset()
-%% }
--type asset_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% event() :: #{
-%%   <<"RevisionPublished">> => revision_published()
-%% }
--type event() :: #{binary() => any()}.
-
-
-%% Example:
-%% action() :: #{
-%%   <<"ExportRevisionToS3">> => auto_export_revision_to_s3_request_details()
-%% }
--type action() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_assets_from_s3_response_details() :: #{
-%%   <<"AssetSources">> => list(asset_source_entry()),
+%% create_s3_data_access_from_s3_bucket_request_details() :: #{
+%%   <<"AssetSource">> => s3_data_access_asset_source_entry(),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
--type import_assets_from_s3_response_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_request() :: #{}
--type delete_asset_request() :: #{}.
+-type create_s3_data_access_from_s3_bucket_request_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_assets_from_redshift_data_shares_request_details() :: #{
-%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
+%% create_s3_data_access_from_s3_bucket_response_details() :: #{
+%%   <<"AssetSource">> => s3_data_access_asset_source_entry(),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
--type import_assets_from_redshift_data_shares_request_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% revision_published() :: #{
-%%   <<"DataSetId">> => string()
-%% }
--type revision_published() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type update_asset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_assets_from_redshift_data_shares_response_details() :: #{
-%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
-%%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type import_assets_from_redshift_data_shares_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_export_revision_destination_entry() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPattern">> => string()
-%% }
--type auto_export_revision_destination_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_source_entry() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type asset_source_entry() :: #{binary() => any()}.
+-type create_s3_data_access_from_s3_bucket_response_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1108,51 +423,61 @@
 
 
 %% Example:
-%% get_job_response() :: #{
+%% data_set_entry() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssetConfiguration">> => asset_configuration(),
+%%   <<"AssetType">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Details">> => response_details(),
-%%   <<"Errors">> => list(job_error()),
+%%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Type">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Origin">> => string(),
+%%   <<"OriginDetails">> => origin_details(),
+%%   <<"SourceId">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type get_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_grant_request() :: #{}
--type get_data_grant_request() :: #{}.
+-type data_set_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"ExceptionCause">> => string(),
-%%   <<"Message">> => string()
+%% data_update_request_details() :: #{
+%%   <<"DataUpdatedAt">> => non_neg_integer()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type data_update_request_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_export_revision_to_s3_request_details() :: #{
-%%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"RevisionDestination">> => auto_export_revision_destination_entry()
+%% database_l_f_tag_policy() :: #{
+%%   <<"Expression">> => list(l_f_tag())
 %% }
--type auto_export_revision_to_s3_request_details() :: #{binary() => any()}.
+-type database_l_f_tag_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% l_f_tag_policy_details() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ResourceDetails">> => l_f_resource_details(),
-%%   <<"ResourceType">> => string()
+%% database_l_f_tag_policy_and_permissions() :: #{
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Permissions">> => list(string())
 %% }
--type l_f_tag_policy_details() :: #{binary() => any()}.
+-type database_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_request() :: #{}
+-type delete_asset_request() :: #{}.
+
+%% Example:
+%% delete_data_grant_request() :: #{}
+-type delete_data_grant_request() :: #{}.
+
+%% Example:
+%% delete_data_set_request() :: #{}
+-type delete_data_set_request() :: #{}.
+
+%% Example:
+%% delete_event_action_request() :: #{}
+-type delete_event_action_request() :: #{}.
+
+%% Example:
+%% delete_revision_request() :: #{}
+-type delete_revision_request() :: #{}.
 
 
 %% Example:
@@ -1163,12 +488,97 @@
 
 
 %% Example:
-%% service_limit_exceeded_exception() :: #{
-%%   <<"LimitName">> => string(),
-%%   <<"LimitValue">> => float(),
-%%   <<"Message">> => string()
+%% details() :: #{
+%%   <<"ImportAssetFromSignedUrlJobErrorDetails">> => import_asset_from_signed_url_job_error_details(),
+%%   <<"ImportAssetsFromS3JobErrorDetails">> => list(asset_source_entry())
 %% }
--type service_limit_exceeded_exception() :: #{binary() => any()}.
+-type details() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"RevisionPublished">> => revision_published()
+%% }
+-type event() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_action_entry() :: #{
+%%   <<"Action">> => action(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Event">> => event(),
+%%   <<"Id">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type event_action_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_asset_to_signed_url_request_details() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type export_asset_to_signed_url_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_asset_to_signed_url_response_details() :: #{
+%%   <<"AssetId">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"SignedUrl">> => string(),
+%%   <<"SignedUrlExpiresAt">> => non_neg_integer()
+%% }
+-type export_asset_to_signed_url_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_assets_to_s3_request_details() :: #{
+%%   <<"AssetDestinations">> => list(asset_destination_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"Encryption">> => export_server_side_encryption(),
+%%   <<"RevisionId">> => string()
+%% }
+-type export_assets_to_s3_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_assets_to_s3_response_details() :: #{
+%%   <<"AssetDestinations">> => list(asset_destination_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"Encryption">> => export_server_side_encryption(),
+%%   <<"RevisionId">> => string()
+%% }
+-type export_assets_to_s3_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_revisions_to_s3_request_details() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"Encryption">> => export_server_side_encryption(),
+%%   <<"RevisionDestinations">> => list(revision_destination_entry())
+%% }
+-type export_revisions_to_s3_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_revisions_to_s3_response_details() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"Encryption">> => export_server_side_encryption(),
+%%   <<"EventActionArn">> => string(),
+%%   <<"RevisionDestinations">> => list(revision_destination_entry())
+%% }
+-type export_revisions_to_s3_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_server_side_encryption() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type export_server_side_encryption() :: #{binary() => any()}.
 
 %% Example:
 %% get_asset_request() :: #{}
@@ -1176,105 +586,24 @@
 
 
 %% Example:
-%% list_data_grants_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_grants_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_request() :: #{}
--type get_job_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_grant_request() :: #{}
--type delete_data_grant_request() :: #{}.
-
-
-%% Example:
-%% send_api_asset_request() :: #{
-%%   <<"AssetId">> := string(),
-%%   <<"Body">> => string(),
-%%   <<"DataSetId">> := string(),
-%%   <<"Method">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"QueryStringParameters">> => map(),
-%%   <<"RequestHeaders">> => map(),
-%%   <<"RevisionId">> := string()
-%% }
--type send_api_asset_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_set_request() :: #{}
--type get_data_set_request() :: #{}.
-
-
-%% Example:
-%% create_revision_request() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_revision_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_assets_from_s3_request_details() :: #{
-%%   <<"AssetSources">> => list(asset_source_entry()),
+%% get_asset_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetDetails">> => asset_details(),
+%%   <<"AssetType">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DataSetId">> => string(),
-%%   <<"RevisionId">> => string()
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type import_assets_from_s3_request_details() :: #{binary() => any()}.
-
+-type get_asset_response() :: #{binary() => any()}.
 
 %% Example:
-%% lake_formation_data_permission_asset() :: #{
-%%   <<"LakeFormationDataPermissionDetails">> => lake_formation_data_permission_details(),
-%%   <<"LakeFormationDataPermissionType">> => string(),
-%%   <<"Permissions">> => list(string()),
-%%   <<"RoleArn">> => string()
-%% }
--type lake_formation_data_permission_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_actions_request() :: #{
-%%   <<"EventSourceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_grants_response() :: #{
-%%   <<"DataGrantSummaries">> => list(data_grant_summary_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_grants_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_set_revisions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_set_revisions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_destination_entry() :: #{
-%%   <<"AssetId">> => string(),
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type asset_destination_entry() :: #{binary() => any()}.
+%% get_data_grant_request() :: #{}
+-type get_data_grant_request() :: #{}.
 
 
 %% Example:
@@ -1297,32 +626,51 @@
 %% }
 -type get_data_grant_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_set_request() :: #{}
+-type get_data_set_request() :: #{}.
+
 
 %% Example:
-%% list_event_actions_response() :: #{
-%%   <<"EventActions">> => list(event_action_entry()),
-%%   <<"NextToken">> => string()
+%% get_data_set_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetType">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Origin">> => string(),
+%%   <<"OriginDetails">> => origin_details(),
+%%   <<"SourceId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type list_event_actions_response() :: #{binary() => any()}.
+-type get_data_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_action_request() :: #{}
+-type get_event_action_request() :: #{}.
 
 
 %% Example:
-%% request_details() :: #{
-%%   <<"CreateS3DataAccessFromS3Bucket">> => create_s3_data_access_from_s3_bucket_request_details(),
-%%   <<"ExportAssetToSignedUrl">> => export_asset_to_signed_url_request_details(),
-%%   <<"ExportAssetsToS3">> => export_assets_to_s3_request_details(),
-%%   <<"ExportRevisionsToS3">> => export_revisions_to_s3_request_details(),
-%%   <<"ImportAssetFromApiGatewayApi">> => import_asset_from_api_gateway_api_request_details(),
-%%   <<"ImportAssetFromSignedUrl">> => import_asset_from_signed_url_request_details(),
-%%   <<"ImportAssetsFromLakeFormationTagPolicy">> => import_assets_from_lake_formation_tag_policy_request_details(),
-%%   <<"ImportAssetsFromRedshiftDataShares">> => import_assets_from_redshift_data_shares_request_details(),
-%%   <<"ImportAssetsFromS3">> => import_assets_from_s3_request_details()
+%% get_event_action_response() :: #{
+%%   <<"Action">> => action(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Event">> => event(),
+%%   <<"Id">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type request_details() :: #{binary() => any()}.
+-type get_event_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
 
 
 %% Example:
-%% job_entry() :: #{
+%% get_job_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AssetConfiguration">> => asset_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -1333,7 +681,91 @@
 %%   <<"Type">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type job_entry() :: #{binary() => any()}.
+-type get_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_received_data_grant_request() :: #{}
+-type get_received_data_grant_request() :: #{}.
+
+
+%% Example:
+%% get_received_data_grant_response() :: #{
+%%   <<"AcceptanceState">> => string(),
+%%   <<"AcceptedAt">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndsAt">> => non_neg_integer(),
+%%   <<"GrantDistributionScope">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReceiverPrincipal">> => string(),
+%%   <<"SenderPrincipal">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_received_data_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revision_request() :: #{}
+-type get_revision_request() :: #{}.
+
+
+%% Example:
+%% get_revision_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Finalized">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"RevocationComment">> => string(),
+%%   <<"Revoked">> => boolean(),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"SourceId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_revision_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_asset_from_api_gateway_api_request_details() :: #{
+%%   <<"ApiDescription">> => string(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKey">> => string(),
+%%   <<"ApiName">> => string(),
+%%   <<"ApiSpecificationMd5Hash">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"ProtocolType">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type import_asset_from_api_gateway_api_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_asset_from_api_gateway_api_response_details() :: #{
+%%   <<"ApiDescription">> => string(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKey">> => string(),
+%%   <<"ApiName">> => string(),
+%%   <<"ApiSpecificationMd5Hash">> => string(),
+%%   <<"ApiSpecificationUploadUrl">> => string(),
+%%   <<"ApiSpecificationUploadUrlExpiresAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"ProtocolType">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type import_asset_from_api_gateway_api_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_asset_from_signed_url_job_error_details() :: #{
+%%   <<"AssetName">> => string()
+%% }
+-type import_asset_from_signed_url_job_error_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1359,21 +791,6 @@
 
 
 %% Example:
-%% response_details() :: #{
-%%   <<"CreateS3DataAccessFromS3Bucket">> => create_s3_data_access_from_s3_bucket_response_details(),
-%%   <<"ExportAssetToSignedUrl">> => export_asset_to_signed_url_response_details(),
-%%   <<"ExportAssetsToS3">> => export_assets_to_s3_response_details(),
-%%   <<"ExportRevisionsToS3">> => export_revisions_to_s3_response_details(),
-%%   <<"ImportAssetFromApiGatewayApi">> => import_asset_from_api_gateway_api_response_details(),
-%%   <<"ImportAssetFromSignedUrl">> => import_asset_from_signed_url_response_details(),
-%%   <<"ImportAssetsFromLakeFormationTagPolicy">> => import_assets_from_lake_formation_tag_policy_response_details(),
-%%   <<"ImportAssetsFromRedshiftDataShares">> => import_assets_from_redshift_data_shares_response_details(),
-%%   <<"ImportAssetsFromS3">> => import_assets_from_s3_response_details()
-%% }
--type response_details() :: #{binary() => any()}.
-
-
-%% Example:
 %% import_assets_from_lake_formation_tag_policy_request_details() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DataSetId">> => string(),
@@ -1383,6 +800,291 @@
 %%   <<"Table">> => table_l_f_tag_policy_and_permissions()
 %% }
 -type import_assets_from_lake_formation_tag_policy_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_assets_from_lake_formation_tag_policy_response_details() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Database">> => database_l_f_tag_policy_and_permissions(),
+%%   <<"RevisionId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Table">> => table_l_f_tag_policy_and_permissions()
+%% }
+-type import_assets_from_lake_formation_tag_policy_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_assets_from_redshift_data_shares_request_details() :: #{
+%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type import_assets_from_redshift_data_shares_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_assets_from_redshift_data_shares_response_details() :: #{
+%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type import_assets_from_redshift_data_shares_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_assets_from_s3_request_details() :: #{
+%%   <<"AssetSources">> => list(asset_source_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type import_assets_from_s3_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_assets_from_s3_response_details() :: #{
+%%   <<"AssetSources">> => list(asset_source_entry()),
+%%   <<"DataSetId">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type import_assets_from_s3_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_entry() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetConfiguration">> => asset_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Details">> => response_details(),
+%%   <<"Errors">> => list(job_error()),
+%%   <<"Id">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type job_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Details">> => details(),
+%%   <<"LimitName">> => string(),
+%%   <<"LimitValue">> => float(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_to_grant() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type kms_key_to_grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_resource_details() :: #{
+%%   <<"Database">> => database_l_f_tag_policy(),
+%%   <<"Table">> => table_l_f_tag_policy()
+%% }
+-type l_f_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag() :: #{
+%%   <<"TagKey">> => [string()],
+%%   <<"TagValues">> => list([string()]())
+%% }
+-type l_f_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_policy_details() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ResourceDetails">> => l_f_resource_details(),
+%%   <<"ResourceType">> => string()
+%% }
+-type l_f_tag_policy_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lake_formation_data_permission_asset() :: #{
+%%   <<"LakeFormationDataPermissionDetails">> => lake_formation_data_permission_details(),
+%%   <<"LakeFormationDataPermissionType">> => string(),
+%%   <<"Permissions">> => list(string()),
+%%   <<"RoleArn">> => string()
+%% }
+-type lake_formation_data_permission_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% lake_formation_data_permission_details() :: #{
+%%   <<"LFTagPolicy">> => l_f_tag_policy_details()
+%% }
+-type lake_formation_data_permission_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lake_formation_tag_policy_details() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type lake_formation_tag_policy_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_grants_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_grants_response() :: #{
+%%   <<"DataGrantSummaries">> => list(data_grant_summary_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_grants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_set_revisions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_set_revisions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_set_revisions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Revisions">> => list(revision_entry())
+%% }
+-type list_data_set_revisions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Origin">> => string()
+%% }
+-type list_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sets_response() :: #{
+%%   <<"DataSets">> => list(data_set_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_actions_request() :: #{
+%%   <<"EventSourceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_actions_response() :: #{
+%%   <<"EventActions">> => list(event_action_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"Jobs">> => list(job_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_received_data_grants_request() :: #{
+%%   <<"AcceptanceState">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_data_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_received_data_grants_response() :: #{
+%%   <<"DataGrantSummaries">> => list(received_data_grant_summaries_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_received_data_grants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_revision_assets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_revision_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_revision_assets_response() :: #{
+%%   <<"Assets">> => list(asset_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_revision_assets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_details() :: #{
+%%   <<"DataUpdate">> => data_update_request_details(),
+%%   <<"Deprecation">> => deprecation_request_details(),
+%%   <<"SchemaChange">> => schema_change_request_details()
+%% }
+-type notification_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_details() :: #{
+%%   <<"DataGrantId">> => string(),
+%%   <<"ProductId">> => string()
+%% }
+-type origin_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1403,27 +1105,108 @@
 
 
 %% Example:
-%% update_revision_request() :: #{
+%% redshift_data_share_asset() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type redshift_data_share_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_data_share_asset_source_entry() :: #{
+%%   <<"DataShareArn">> => string()
+%% }
+-type redshift_data_share_asset_source_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_data_share_details() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"Function">> => string(),
+%%   <<"Schema">> => string(),
+%%   <<"Table">> => string(),
+%%   <<"View">> => string()
+%% }
+-type redshift_data_share_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_details() :: #{
+%%   <<"CreateS3DataAccessFromS3Bucket">> => create_s3_data_access_from_s3_bucket_request_details(),
+%%   <<"ExportAssetToSignedUrl">> => export_asset_to_signed_url_request_details(),
+%%   <<"ExportAssetsToS3">> => export_assets_to_s3_request_details(),
+%%   <<"ExportRevisionsToS3">> => export_revisions_to_s3_request_details(),
+%%   <<"ImportAssetFromApiGatewayApi">> => import_asset_from_api_gateway_api_request_details(),
+%%   <<"ImportAssetFromSignedUrl">> => import_asset_from_signed_url_request_details(),
+%%   <<"ImportAssetsFromLakeFormationTagPolicy">> => import_assets_from_lake_formation_tag_policy_request_details(),
+%%   <<"ImportAssetsFromRedshiftDataShares">> => import_assets_from_redshift_data_shares_request_details(),
+%%   <<"ImportAssetsFromS3">> => import_assets_from_s3_request_details()
+%% }
+-type request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_details() :: #{
+%%   <<"CreateS3DataAccessFromS3Bucket">> => create_s3_data_access_from_s3_bucket_response_details(),
+%%   <<"ExportAssetToSignedUrl">> => export_asset_to_signed_url_response_details(),
+%%   <<"ExportAssetsToS3">> => export_assets_to_s3_response_details(),
+%%   <<"ExportRevisionsToS3">> => export_revisions_to_s3_response_details(),
+%%   <<"ImportAssetFromApiGatewayApi">> => import_asset_from_api_gateway_api_response_details(),
+%%   <<"ImportAssetFromSignedUrl">> => import_asset_from_signed_url_response_details(),
+%%   <<"ImportAssetsFromLakeFormationTagPolicy">> => import_assets_from_lake_formation_tag_policy_response_details(),
+%%   <<"ImportAssetsFromRedshiftDataShares">> => import_assets_from_redshift_data_shares_response_details(),
+%%   <<"ImportAssetsFromS3">> => import_assets_from_s3_response_details()
+%% }
+-type response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% revision_destination_entry() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPattern">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type revision_destination_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% revision_entry() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Comment">> => string(),
-%%   <<"Finalized">> => boolean()
-%% }
--type update_revision_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_snapshot_asset() :: #{
-%%   <<"Size">> => float()
-%% }
--type s3_snapshot_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_revisions_to_s3_request_details() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DataSetId">> => string(),
-%%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"RevisionDestinations">> => list(revision_destination_entry())
+%%   <<"Finalized">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"RevocationComment">> => string(),
+%%   <<"Revoked">> => boolean(),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"SourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type export_revisions_to_s3_request_details() :: #{binary() => any()}.
+-type revision_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% revision_published() :: #{
+%%   <<"DataSetId">> => string()
+%% }
+-type revision_published() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_revision_request() :: #{
+%%   <<"RevocationComment">> := string()
+%% }
+-type revoke_revision_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1444,16 +1227,187 @@
 
 
 %% Example:
-%% job_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Details">> => details(),
+%% s3_data_access_asset() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string()),
+%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant()),
+%%   <<"S3AccessPointAlias">> => string(),
+%%   <<"S3AccessPointArn">> => string()
+%% }
+-type s3_data_access_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_data_access_asset_source_entry() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string()),
+%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant())
+%% }
+-type s3_data_access_asset_source_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_data_access_details() :: #{
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string())
+%% }
+-type s3_data_access_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_snapshot_asset() :: #{
+%%   <<"Size">> => float()
+%% }
+-type s3_snapshot_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_change_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type schema_change_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_change_request_details() :: #{
+%%   <<"Changes">> => list(schema_change_details()),
+%%   <<"SchemaChangeAt">> => non_neg_integer()
+%% }
+-type schema_change_request_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_details() :: #{
+%%   <<"LakeFormationTagPolicies">> => list(lake_formation_tag_policy_details()),
+%%   <<"RedshiftDataShares">> => list(redshift_data_share_details()),
+%%   <<"S3DataAccesses">> => list(s3_data_access_details())
+%% }
+-type scope_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_api_asset_request() :: #{
+%%   <<"AssetId">> := string(),
+%%   <<"Body">> => string(),
+%%   <<"DataSetId">> := string(),
+%%   <<"Method">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"QueryStringParameters">> => map(),
+%%   <<"RequestHeaders">> => map(),
+%%   <<"RevisionId">> := string()
+%% }
+-type send_api_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_api_asset_response() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ResponseHeaders">> => map()
+%% }
+-type send_api_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_set_notification_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"Details">> => notification_details(),
+%%   <<"Scope">> => scope_details(),
+%%   <<"Type">> := string()
+%% }
+-type send_data_set_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_data_set_notification_response() :: #{}
+-type send_data_set_notification_response() :: #{}.
+
+
+%% Example:
+%% service_limit_exceeded_exception() :: #{
 %%   <<"LimitName">> => string(),
 %%   <<"LimitValue">> => float(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
+%%   <<"Message">> => string()
 %% }
--type job_error() :: #{binary() => any()}.
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_job_request() :: #{}
+-type start_job_request() :: #{}.
+
+%% Example:
+%% start_job_response() :: #{}
+-type start_job_response() :: #{}.
+
+
+%% Example:
+%% table_l_f_tag_policy() :: #{
+%%   <<"Expression">> => list(l_f_tag())
+%% }
+-type table_l_f_tag_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_l_f_tag_policy_and_permissions() :: #{
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Permissions">> => list(string())
+%% }
+-type table_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetDetails">> => asset_details(),
+%%   <<"AssetType">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1465,263 +1419,309 @@
 
 
 %% Example:
-%% revision_destination_entry() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPattern">> => string(),
-%%   <<"RevisionId">> => string()
+%% update_data_set_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssetType">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Origin">> => string(),
+%%   <<"OriginDetails">> => origin_details(),
+%%   <<"SourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type revision_destination_entry() :: #{binary() => any()}.
+-type update_data_set_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_event_action_response() :: #{
+%% update_event_action_request() :: #{
+%%   <<"Action">> => action()
+%% }
+-type update_event_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_action_response() :: #{
 %%   <<"Action">> => action(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Event">> => event(),
 %%   <<"Id">> => string(),
-%%   <<"Tags">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type create_event_action_response() :: #{binary() => any()}.
+-type update_event_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_revision_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Finalized">> => boolean()
+%% }
+-type update_revision_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_revision_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSetId">> => string(),
+%%   <<"Finalized">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"RevocationComment">> => string(),
+%%   <<"Revoked">> => boolean(),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"SourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_revision_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ExceptionCause">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type accept_data_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_data_grant_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_data_set_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_event_action_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_data_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_event_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_data_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_event_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_received_data_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_data_grants_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_set_revisions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_data_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_event_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_received_data_grants_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_revision_assets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type revoke_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_api_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type send_data_set_notification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_event_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

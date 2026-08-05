@@ -36,47 +36,6 @@
 
 
 %% Example:
-%% get_connection_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_request() :: #{
-%%   <<"bandwidth">> => string(),
-%%   <<"clientToken">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"identifier">> := string()
-%% }
--type update_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% interconnect_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type interconnect_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_proposal_request() :: #{
-%%   <<"activationKey">> := string()
-%% }
--type describe_connection_proposal_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attach_points_response() :: #{
-%%   <<"attachPoints">> => list(attach_point_descriptor()),
-%%   <<"nextToken">> => string()
-%% }
--type list_attach_points_response() :: #{binary() => any()}.
-
-%% Example:
 %% accept_connection_proposal_request() :: #{
 %%   <<"activationKey">> := string(),
 %%   <<"attachPoint">> := list(),
@@ -87,50 +46,24 @@
 -type accept_connection_proposal_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_attach_points_request() :: #{
-%%   <<"environmentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_attach_points_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_response() :: #{
+%% accept_connection_proposal_response() :: #{
 %%   <<"connection">> => connection()
 %% }
--type get_connection_response() :: #{binary() => any()}.
+-type accept_connection_proposal_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_connections_response() :: #{
-%%   <<"connections">> => list(connection_summary()),
-%%   <<"nextToken">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_connections_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_environment_request() :: #{
-%%   <<"id">> := string()
+%% attach_point_descriptor() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
 %% }
--type get_environment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_response() :: #{
-%%   <<"environment">> => environment()
-%% }
--type get_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type attach_point_descriptor() :: #{binary() => any()}.
 
 %% Example:
 %% bandwidths() :: #{
@@ -138,42 +71,6 @@
 %%   <<"supported">> => list(string())
 %% }
 -type bandwidths() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_request() :: #{
-%%   <<"attachPoint">> => list(),
-%%   <<"environmentId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"provider">> => list(),
-%%   <<"state">> => list(any())
-%% }
--type list_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% interconnect_validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type interconnect_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% environment() :: #{
-%%   <<"activationPageUrl">> => [string()],
-%%   <<"bandwidths">> => bandwidths(),
-%%   <<"environmentId">> => string(),
-%%   <<"location">> => string(),
-%%   <<"provider">> => list(),
-%%   <<"remoteIdentifierType">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"type">> => string()
-%% }
--type environment() :: #{binary() => any()}.
 
 %% Example:
 %% connection() :: #{
@@ -196,68 +93,6 @@
 -type connection() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_proposal_response() :: #{
-%%   <<"bandwidth">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"location">> => string(),
-%%   <<"provider">> => list()
-%% }
--type describe_connection_proposal_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_environments_request() :: #{
-%%   <<"location">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"provider">> => list()
-%% }
--type list_environments_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_response() :: #{
-%%   <<"connection">> => connection()
-%% }
--type update_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_connection_proposal_response() :: #{
-%%   <<"connection">> => connection()
-%% }
--type accept_connection_proposal_response() :: #{binary() => any()}.
-
-%% Example:
-%% attach_point_descriptor() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type attach_point_descriptor() :: #{binary() => any()}.
-
-%% Example:
 %% connection_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"attachPoint">> => list(),
@@ -275,35 +110,16 @@
 -type connection_summary() :: #{binary() => any()}.
 
 %% Example:
-%% interconnect_client_exception() :: #{
-%%   <<"message">> => [string()]
+%% create_connection_request() :: #{
+%%   <<"attachPoint">> := list(),
+%%   <<"bandwidth">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"remoteAccount">> => list(),
+%%   <<"tags">> => map()
 %% }
--type interconnect_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_response() :: #{
-%%   <<"connection">> => connection()
-%% }
--type delete_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_environments_response() :: #{
-%%   <<"environments">> => list(environment()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_environments_response() :: #{binary() => any()}.
+-type create_connection_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_connection_response() :: #{
@@ -319,16 +135,200 @@
 -type delete_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_request() :: #{
-%%   <<"attachPoint">> := list(),
-%%   <<"bandwidth">> := string(),
-%%   <<"clientToken">> => [string()],
-%%   <<"description">> => string(),
+%% delete_connection_response() :: #{
+%%   <<"connection">> => connection()
+%% }
+-type delete_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_proposal_request() :: #{
+%%   <<"activationKey">> := string()
+%% }
+-type describe_connection_proposal_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_proposal_response() :: #{
+%%   <<"bandwidth">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"location">> => string(),
+%%   <<"provider">> => list()
+%% }
+-type describe_connection_proposal_response() :: #{binary() => any()}.
+
+%% Example:
+%% environment() :: #{
+%%   <<"activationPageUrl">> => [string()],
+%%   <<"bandwidths">> => bandwidths(),
+%%   <<"environmentId">> => string(),
+%%   <<"location">> => string(),
+%%   <<"provider">> => list(),
+%%   <<"remoteIdentifierType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"type">> => string()
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_response() :: #{
+%%   <<"connection">> => connection()
+%% }
+-type get_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"environment">> => environment()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% interconnect_client_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type interconnect_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% interconnect_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type interconnect_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% interconnect_validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type interconnect_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_attach_points_request() :: #{
 %%   <<"environmentId">> := string(),
-%%   <<"remoteAccount">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attach_points_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attach_points_response() :: #{
+%%   <<"attachPoints">> => list(attach_point_descriptor()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attach_points_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_request() :: #{
+%%   <<"attachPoint">> => list(),
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"provider">> => list(),
+%%   <<"state">> => list(any())
+%% }
+-type list_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_response() :: #{
+%%   <<"connections">> => list(connection_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"location">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"provider">> => list()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_environments_response() :: #{
+%%   <<"environments">> => list(environment()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_environments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
 %%   <<"tags">> => map()
 %% }
--type create_connection_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_request() :: #{
+%%   <<"bandwidth">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"identifier">> := string()
+%% }
+-type update_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_response() :: #{
+%%   <<"connection">> => connection()
+%% }
+-type update_connection_response() :: #{binary() => any()}.
 
 
 

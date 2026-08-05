@@ -93,175 +93,10 @@
 
 
 %% Example:
-%% monitor_local_resource() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"type">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type monitor_local_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitors_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"monitorStatus">> => list(any()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_monitors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scopes_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_scopes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_workload_insights_top_contributors_data_output() :: #{
-%%   <<"queryId">> => [string()]
-%% }
--type start_query_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_status_monitor_top_contributors_input() :: #{}
--type get_query_status_monitor_top_contributors_input() :: #{}.
-
-%% Example:
-%% stop_query_workload_insights_top_contributors_output() :: #{}
--type stop_query_workload_insights_top_contributors_output() :: #{}.
-
-
-%% Example:
-%% get_monitor_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"localResources">> => list(monitor_local_resource()),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"monitorArn">> => string(),
-%%   <<"monitorName">> => string(),
-%%   <<"monitorStatus">> => list(any()),
-%%   <<"remoteResources">> => list(monitor_remote_resource()),
-%%   <<"tags">> => map()
-%% }
--type get_monitor_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitors_output() :: #{
-%%   <<"monitors">> => list(monitor_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_monitors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_results_workload_insights_top_contributors_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type get_query_results_workload_insights_top_contributors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_workload_insights_top_contributors_input() :: #{
-%%   <<"destinationCategory">> := list(any()),
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"limit">> => integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"startTime">> := [non_neg_integer()]
-%% }
--type start_query_workload_insights_top_contributors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_insights_top_contributors_row() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"localAz">> => string(),
-%%   <<"localRegion">> => string(),
-%%   <<"localSubnetArn">> => string(),
-%%   <<"localSubnetId">> => string(),
-%%   <<"localVpcArn">> => string(),
-%%   <<"localVpcId">> => string(),
-%%   <<"remoteIdentifier">> => [string()],
-%%   <<"value">> => [float()]
-%% }
--type workload_insights_top_contributors_row() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitor_remote_resource() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type monitor_remote_resource() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_monitor_top_contributors_input() :: #{}
--type stop_query_monitor_top_contributors_input() :: #{}.
-
-
-%% Example:
-%% get_query_results_workload_insights_top_contributors_data_output() :: #{
-%%   <<"datapoints">> => list(workload_insights_top_contributors_data_point()),
-%%   <<"nextToken">> => [string()],
-%%   <<"unit">> => list(any())
-%% }
--type get_query_results_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitor_output() :: #{}
--type delete_monitor_output() :: #{}.
-
-
-%% Example:
-%% start_query_monitor_top_contributors_output() :: #{
-%%   <<"queryId">> => [string()]
-%% }
--type start_query_monitor_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_identifier() :: #{
-%%   <<"targetId">> => list(),
-%%   <<"targetType">> => list(any())
-%% }
--type target_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource() :: #{
-%%   <<"region">> => string(),
-%%   <<"targetIdentifier">> => target_identifier()
-%% }
--type target_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_results_workload_insights_top_contributors_data_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type get_query_results_workload_insights_top_contributors_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_insights_top_contributors_data_point() :: #{
-%%   <<"label">> => [string()],
-%%   <<"timestamps">> => list([non_neg_integer()]()),
-%%   <<"values">> => list([float()]())
-%% }
--type workload_insights_top_contributors_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitor_input() :: #{}
--type delete_monitor_input() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,242 +107,15 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_workload_insights_top_contributors_input() :: #{}
--type stop_query_workload_insights_top_contributors_input() :: #{}.
-
-
-%% Example:
-%% update_scope_input() :: #{
-%%   <<"resourcesToAdd">> => list(target_resource()),
-%%   <<"resourcesToDelete">> => list(target_resource())
-%% }
--type update_scope_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scope_output() :: #{
-%%   <<"scopeArn">> => string(),
-%%   <<"scopeId">> => string(),
-%%   <<"status">> => list(any()),
+%% create_monitor_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"localResources">> := list(monitor_local_resource()),
+%%   <<"monitorName">> := string(),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
+%%   <<"scopeArn">> := string(),
 %%   <<"tags">> => map()
 %% }
--type create_scope_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% traversed_component() :: #{
-%%   <<"componentArn">> => string(),
-%%   <<"componentId">> => string(),
-%%   <<"componentType">> => string(),
-%%   <<"serviceName">> => [string()]
-%% }
--type traversed_component() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_status_workload_insights_top_contributors_data_input() :: #{}
--type get_query_status_workload_insights_top_contributors_data_input() :: #{}.
-
-%% Example:
-%% get_monitor_input() :: #{}
--type get_monitor_input() :: #{}.
-
-
-%% Example:
-%% start_query_workload_insights_top_contributors_output() :: #{
-%%   <<"queryId">> => [string()]
-%% }
--type start_query_workload_insights_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% get_query_status_monitor_top_contributors_output() :: #{
-%%   <<"status">> => list(any())
-%% }
--type get_query_status_monitor_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_status_workload_insights_top_contributors_input() :: #{}
--type get_query_status_workload_insights_top_contributors_input() :: #{}.
-
-
-%% Example:
-%% get_query_status_workload_insights_top_contributors_output() :: #{
-%%   <<"status">> => list(any())
-%% }
--type get_query_status_workload_insights_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_status_workload_insights_top_contributors_data_output() :: #{
-%%   <<"status">> => list(any())
-%% }
--type get_query_status_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_results_workload_insights_top_contributors_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"topContributors">> => list(workload_insights_top_contributors_row())
-%% }
--type get_query_results_workload_insights_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_results_monitor_top_contributors_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"topContributors">> => list(monitor_top_contributors_row()),
-%%   <<"unit">> => list(any())
-%% }
--type get_query_results_monitor_top_contributors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_monitor_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"localResourcesToAdd">> => list(monitor_local_resource()),
-%%   <<"localResourcesToRemove">> => list(monitor_local_resource()),
-%%   <<"remoteResourcesToAdd">> => list(monitor_remote_resource()),
-%%   <<"remoteResourcesToRemove">> => list(monitor_remote_resource())
-%% }
--type update_monitor_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_monitor_top_contributors_input() :: #{
-%%   <<"destinationCategory">> := list(any()),
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"limit">> => integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"startTime">> := [non_neg_integer()]
-%% }
--type start_query_monitor_top_contributors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scope_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targets">> := list(target_resource())
-%% }
--type create_scope_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_scope_output() :: #{
-%%   <<"scopeArn">> => string(),
-%%   <<"scopeId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"targets">> => list(target_resource())
-%% }
--type get_scope_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scope_output() :: #{}
--type delete_scope_output() :: #{}.
-
-%% Example:
-%% stop_query_workload_insights_top_contributors_data_output() :: #{}
--type stop_query_workload_insights_top_contributors_data_output() :: #{}.
-
-
-%% Example:
-%% kubernetes_metadata() :: #{
-%%   <<"localPodName">> => [string()],
-%%   <<"localPodNamespace">> => [string()],
-%%   <<"localServiceName">> => [string()],
-%%   <<"remotePodName">> => [string()],
-%%   <<"remotePodNamespace">> => [string()],
-%%   <<"remoteServiceName">> => [string()]
-%% }
--type kubernetes_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_workload_insights_top_contributors_data_input() :: #{
-%%   <<"destinationCategory">> := list(any()),
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"metricName">> := list(any()),
-%%   <<"startTime">> := [non_neg_integer()]
-%% }
--type start_query_workload_insights_top_contributors_data_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scope_output() :: #{
-%%   <<"scopeArn">> => string(),
-%%   <<"scopeId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type update_scope_output() :: #{binary() => any()}.
+-type create_monitor_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -525,15 +133,198 @@
 
 
 %% Example:
+%% create_scope_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> := list(target_resource())
+%% }
+-type create_scope_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scope_output() :: #{
+%%   <<"scopeArn">> => string(),
+%%   <<"scopeId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_scope_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitor_input() :: #{}
+-type delete_monitor_input() :: #{}.
+
+%% Example:
+%% delete_monitor_output() :: #{}
+-type delete_monitor_output() :: #{}.
+
+%% Example:
+%% delete_scope_input() :: #{}
+-type delete_scope_input() :: #{}.
+
+%% Example:
+%% delete_scope_output() :: #{}
+-type delete_scope_output() :: #{}.
+
+%% Example:
+%% get_monitor_input() :: #{}
+-type get_monitor_input() :: #{}.
+
+
+%% Example:
+%% get_monitor_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"localResources">> => list(monitor_local_resource()),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
+%%   <<"tags">> => map()
+%% }
+-type get_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_query_results_monitor_top_contributors_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
 -type get_query_results_monitor_top_contributors_input() :: #{binary() => any()}.
 
+
 %% Example:
-%% stop_query_monitor_top_contributors_output() :: #{}
--type stop_query_monitor_top_contributors_output() :: #{}.
+%% get_query_results_monitor_top_contributors_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"topContributors">> => list(monitor_top_contributors_row()),
+%%   <<"unit">> => list(any())
+%% }
+-type get_query_results_monitor_top_contributors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_workload_insights_top_contributors_data_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type get_query_results_workload_insights_top_contributors_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_workload_insights_top_contributors_data_output() :: #{
+%%   <<"datapoints">> => list(workload_insights_top_contributors_data_point()),
+%%   <<"nextToken">> => [string()],
+%%   <<"unit">> => list(any())
+%% }
+-type get_query_results_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_workload_insights_top_contributors_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type get_query_results_workload_insights_top_contributors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_workload_insights_top_contributors_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"topContributors">> => list(workload_insights_top_contributors_row())
+%% }
+-type get_query_results_workload_insights_top_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_status_monitor_top_contributors_input() :: #{}
+-type get_query_status_monitor_top_contributors_input() :: #{}.
+
+
+%% Example:
+%% get_query_status_monitor_top_contributors_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_query_status_monitor_top_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_status_workload_insights_top_contributors_data_input() :: #{}
+-type get_query_status_workload_insights_top_contributors_data_input() :: #{}.
+
+
+%% Example:
+%% get_query_status_workload_insights_top_contributors_data_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_query_status_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_status_workload_insights_top_contributors_input() :: #{}
+-type get_query_status_workload_insights_top_contributors_input() :: #{}.
+
+
+%% Example:
+%% get_query_status_workload_insights_top_contributors_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_query_status_workload_insights_top_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_scope_input() :: #{}
+-type get_scope_input() :: #{}.
+
+
+%% Example:
+%% get_scope_output() :: #{
+%%   <<"scopeArn">> => string(),
+%%   <<"scopeId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list(target_resource())
+%% }
+-type get_scope_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_metadata() :: #{
+%%   <<"localPodName">> => [string()],
+%%   <<"localPodNamespace">> => [string()],
+%%   <<"localServiceName">> => [string()],
+%%   <<"remotePodName">> => [string()],
+%%   <<"remotePodNamespace">> => [string()],
+%%   <<"remoteServiceName">> => [string()]
+%% }
+-type kubernetes_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_monitors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_output() :: #{
+%%   <<"monitors">> => list(monitor_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_monitors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scopes_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_scopes_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -544,8 +335,40 @@
 -type list_scopes_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_scope_input() :: #{}
--type get_scope_input() :: #{}.
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_local_resource() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type monitor_local_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_remote_resource() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type monitor_remote_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_summary() :: #{
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any())
+%% }
+-type monitor_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -580,6 +403,13 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% scope_summary() :: #{
 %%   <<"scopeArn">> => string(),
 %%   <<"scopeId">> => string(),
@@ -589,16 +419,153 @@
 
 
 %% Example:
-%% monitor_summary() :: #{
-%%   <<"monitorArn">> => string(),
-%%   <<"monitorName">> => string(),
-%%   <<"monitorStatus">> => list(any())
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type monitor_summary() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_monitor_top_contributors_input() :: #{
+%%   <<"destinationCategory">> := list(any()),
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"limit">> => integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type start_query_monitor_top_contributors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_monitor_top_contributors_output() :: #{
+%%   <<"queryId">> => [string()]
+%% }
+-type start_query_monitor_top_contributors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_workload_insights_top_contributors_data_input() :: #{
+%%   <<"destinationCategory">> := list(any()),
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"metricName">> := list(any()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type start_query_workload_insights_top_contributors_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_workload_insights_top_contributors_data_output() :: #{
+%%   <<"queryId">> => [string()]
+%% }
+-type start_query_workload_insights_top_contributors_data_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_workload_insights_top_contributors_input() :: #{
+%%   <<"destinationCategory">> := list(any()),
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"limit">> => integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type start_query_workload_insights_top_contributors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_workload_insights_top_contributors_output() :: #{
+%%   <<"queryId">> => [string()]
+%% }
+-type start_query_workload_insights_top_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_monitor_top_contributors_input() :: #{}
+-type stop_query_monitor_top_contributors_input() :: #{}.
+
+%% Example:
+%% stop_query_monitor_top_contributors_output() :: #{}
+-type stop_query_monitor_top_contributors_output() :: #{}.
 
 %% Example:
 %% stop_query_workload_insights_top_contributors_data_input() :: #{}
 -type stop_query_workload_insights_top_contributors_data_input() :: #{}.
+
+%% Example:
+%% stop_query_workload_insights_top_contributors_data_output() :: #{}
+-type stop_query_workload_insights_top_contributors_data_output() :: #{}.
+
+%% Example:
+%% stop_query_workload_insights_top_contributors_input() :: #{}
+-type stop_query_workload_insights_top_contributors_input() :: #{}.
+
+%% Example:
+%% stop_query_workload_insights_top_contributors_output() :: #{}
+-type stop_query_workload_insights_top_contributors_output() :: #{}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% target_identifier() :: #{
+%%   <<"targetId">> => list(),
+%%   <<"targetType">> => list(any())
+%% }
+-type target_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_resource() :: #{
+%%   <<"region">> => string(),
+%%   <<"targetIdentifier">> => target_identifier()
+%% }
+-type target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% traversed_component() :: #{
+%%   <<"componentArn">> => string(),
+%%   <<"componentId">> => string(),
+%%   <<"componentType">> => string(),
+%%   <<"serviceName">> => [string()]
+%% }
+-type traversed_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_monitor_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"localResourcesToAdd">> => list(monitor_local_resource()),
+%%   <<"localResourcesToRemove">> => list(monitor_local_resource()),
+%%   <<"remoteResourcesToAdd">> => list(monitor_remote_resource()),
+%%   <<"remoteResourcesToRemove">> => list(monitor_remote_resource())
+%% }
+-type update_monitor_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -616,207 +583,240 @@
 
 
 %% Example:
-%% create_monitor_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"localResources">> := list(monitor_local_resource()),
-%%   <<"monitorName">> := string(),
-%%   <<"remoteResources">> => list(monitor_remote_resource()),
-%%   <<"scopeArn">> := string(),
-%%   <<"tags">> => map()
+%% update_scope_input() :: #{
+%%   <<"resourcesToAdd">> => list(target_resource()),
+%%   <<"resourcesToDelete">> => list(target_resource())
 %% }
--type create_monitor_input() :: #{binary() => any()}.
+-type update_scope_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_scope_input() :: #{}
--type delete_scope_input() :: #{}.
+%% update_scope_output() :: #{
+%%   <<"scopeArn">> => string(),
+%%   <<"scopeId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type update_scope_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_insights_top_contributors_data_point() :: #{
+%%   <<"label">> => [string()],
+%%   <<"timestamps">> => list([non_neg_integer()]()),
+%%   <<"values">> => list([float()]())
+%% }
+-type workload_insights_top_contributors_data_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_insights_top_contributors_row() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"localAz">> => string(),
+%%   <<"localRegion">> => string(),
+%%   <<"localSubnetArn">> => string(),
+%%   <<"localSubnetId">> => string(),
+%%   <<"localVpcArn">> => string(),
+%%   <<"localVpcId">> => string(),
+%%   <<"remoteIdentifier">> => [string()],
+%%   <<"value">> => [float()]
+%% }
+-type workload_insights_top_contributors_row() :: #{binary() => any()}.
 
 -type create_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_query_results_monitor_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_query_results_workload_insights_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_query_results_workload_insights_top_contributors_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_query_status_monitor_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type get_query_status_workload_insights_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type get_query_status_workload_insights_top_contributors_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type get_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_monitors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_scopes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_query_monitor_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type start_query_workload_insights_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type start_query_workload_insights_top_contributors_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type stop_query_monitor_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type stop_query_workload_insights_top_contributors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type stop_query_workload_insights_top_contributors_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

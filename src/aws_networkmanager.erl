@@ -236,75 +236,56 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
+%% Example:
+%% accept_attachment_request() :: #{}
+-type accept_attachment_request() :: #{}.
+
 
 %% Example:
-%% get_core_network_policy_request() :: #{
-%%   <<"Alias">> => list(any()),
-%%   <<"PolicyVersionId">> => integer()
+%% accept_attachment_response() :: #{
+%%   <<"Attachment">> => attachment()
 %% }
--type get_core_network_policy_request() :: #{binary() => any()}.
+-type accept_attachment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% core_network_policy_version() :: #{
-%%   <<"Alias">> => list(any()),
-%%   <<"ChangeSetState">> => list(any()),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"PolicyVersionId">> => integer()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type core_network_policy_version() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_network_telemetry_request() :: #{
+%% account_status() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"AwsRegion">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegisteredGatewayArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceType">> => string()
+%%   <<"SLRDeploymentStatus">> => string()
 %% }
--type get_network_telemetry_request() :: #{binary() => any()}.
+-type account_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% deregister_transit_gateway_response() :: #{
-%%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
-%% }
--type deregister_transit_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_link_response() :: #{
-%%   <<"Link">> => link()
-%% }
--type delete_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_request() :: #{
-%%   <<"ConnectedLinkId">> => string(),
-%%   <<"Description">> => string(),
+%% associate_connect_peer_request() :: #{
+%%   <<"ConnectPeerId">> := string(),
+%%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> => string()
 %% }
--type update_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_peering_request() :: #{}
--type delete_peering_request() :: #{}.
+-type associate_connect_peer_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_network_resource_counts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string()
+%% associate_connect_peer_response() :: #{
+%%   <<"ConnectPeerAssociation">> => connect_peer_association()
 %% }
--type get_network_resource_counts_request() :: #{binary() => any()}.
+-type associate_connect_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_customer_gateway_request() :: #{
+%%   <<"CustomerGatewayArn">> := string(),
+%%   <<"DeviceId">> := string(),
+%%   <<"LinkId">> => string()
+%% }
+-type associate_customer_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -315,435 +296,34 @@
 
 
 %% Example:
-%% transit_gateway_peering() :: #{
-%%   <<"Peering">> => peering(),
-%%   <<"TransitGatewayArn">> => string(),
-%%   <<"TransitGatewayPeeringAttachmentId">> => string()
-%% }
--type transit_gateway_peering() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_transit_gateway_peering_response() :: #{
-%%   <<"TransitGatewayPeering">> => transit_gateway_peering()
-%% }
--type create_transit_gateway_peering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% edge_override() :: #{
-%%   <<"EdgeSets">> => list(list(string())()),
-%%   <<"UseEdge">> => string()
-%% }
--type edge_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_device_response() :: #{
-%%   <<"Device">> => device()
-%% }
--type update_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_devices_request() :: #{
-%%   <<"DeviceIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SiteId">> => string()
-%% }
--type get_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% list_core_network_policy_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_network_policy_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_attachment_routing_policy_label_request() :: #{
-%%   <<"AttachmentId">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"RoutingPolicyLabel">> := string()
-%% }
--type put_attachment_routing_policy_label_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transit_gateway_connect_peer_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeerAssociations">> => list(transit_gateway_connect_peer_association())
-%% }
--type get_transit_gateway_connect_peer_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transit_gateway_connect_peer_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeerArns">> => list(string())
-%% }
--type get_transit_gateway_connect_peer_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_core_network_policy_response() :: #{
-%%   <<"CoreNetworkPolicy">> => core_network_policy()
-%% }
--type get_core_network_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% path_component() :: #{
-%%   <<"DestinationCidrBlock">> => string(),
-%%   <<"Resource">> => network_resource_summary(),
-%%   <<"Sequence">> => integer()
-%% }
--type path_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_resource_counts_response() :: #{
-%%   <<"NetworkResourceCounts">> => list(network_resource_count()),
-%%   <<"NextToken">> => string()
-%% }
--type get_network_resource_counts_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% associate_link_request() :: #{
 %%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> := string()
 %% }
 -type associate_link_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_transit_gateway_peering_request() :: #{}
--type get_transit_gateway_peering_request() :: #{}.
-
 
 %% Example:
-%% service_insertion_segments() :: #{
-%%   <<"SendTo">> => list(string()),
-%%   <<"SendVia">> => list(string())
+%% associate_link_response() :: #{
+%%   <<"LinkAssociation">> => link_association()
 %% }
--type service_insertion_segments() :: #{binary() => any()}.
+-type associate_link_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_core_network_response() :: #{
-%%   <<"CoreNetwork">> => core_network()
-%% }
--type delete_core_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_attachment_options() :: #{
-%%   <<"Protocol">> => list(any())
-%% }
--type connect_attachment_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_response() :: #{
-%%   <<"Device">> => device()
-%% }
--type create_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_transit_gateway_connect_peer_request() :: #{}
--type disassociate_transit_gateway_connect_peer_request() :: #{}.
-
-
-%% Example:
-%% route_analysis() :: #{
-%%   <<"Destination">> => route_analysis_endpoint_options(),
-%%   <<"ForwardPath">> => route_analysis_path(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"IncludeReturnPath">> => boolean(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ReturnPath">> => route_analysis_path(),
-%%   <<"RouteAnalysisId">> => string(),
-%%   <<"Source">> => route_analysis_endpoint_options(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"UseMiddleboxes">> => boolean()
-%% }
--type route_analysis() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_resources_response() :: #{
-%%   <<"NetworkResources">> => list(network_resource()),
-%%   <<"NextToken">> => string()
-%% }
--type get_network_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_network_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type update_global_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connect_peer_associations_request() :: #{
-%%   <<"ConnectPeerIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_connect_peer_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_global_network_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_global_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_site_to_site_vpn_attachment_response() :: #{
-%%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
-%% }
--type create_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_attachment() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"Options">> => vpc_options(),
-%%   <<"SubnetArns">> => list(string())
-%% }
--type vpc_attachment() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_device_request() :: #{
-%%   <<"AWSLocation">> => aws_location(),
-%%   <<"Description">> => string(),
-%%   <<"Location">> => location(),
-%%   <<"Model">> => string(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Vendor">> => string()
-%% }
--type update_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_core_network_change_events_response() :: #{
-%%   <<"CoreNetworkChangeEvents">> => list(core_network_change_event()),
-%%   <<"NextToken">> => string()
-%% }
--type get_core_network_change_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_core_network_change_set_response() :: #{
-%%   <<"CoreNetworkChanges">> => list(core_network_change()),
-%%   <<"NextToken">> => string()
-%% }
--type get_core_network_change_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_resource_relationships_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Relationships">> => list(relationship())
-%% }
--type get_network_resource_relationships_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_network_prefix_list_association_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"PrefixListAlias">> := string(),
-%%   <<"PrefixListArn">> := string()
-%% }
--type create_core_network_prefix_list_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% site_to_site_vpn_attachment() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"VpnConnectionArn">> => string()
-%% }
--type site_to_site_vpn_attachment() :: #{binary() => any()}.
-
-%% Example:
-%% accept_attachment_request() :: #{}
--type accept_attachment_request() :: #{}.
-
-
-%% Example:
-%% relationship() :: #{
-%%   <<"From">> => string(),
-%%   <<"To">> => string()
-%% }
--type relationship() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_global_networks_response() :: #{
-%%   <<"GlobalNetworks">> => list(global_network()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_global_networks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_telemetry_response() :: #{
-%%   <<"NetworkTelemetry">> => list(network_telemetry()),
-%%   <<"NextToken">> => string()
-%% }
--type get_network_telemetry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transit_gateway_connect_peer_association() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
+%% associate_transit_gateway_connect_peer_request() :: #{
+%%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"TransitGatewayConnectPeerArn">> => string()
+%%   <<"TransitGatewayConnectPeerArn">> := string()
 %% }
--type transit_gateway_connect_peer_association() :: #{binary() => any()}.
+-type associate_transit_gateway_connect_peer_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% remove_attachment_routing_policy_label_response() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"RoutingPolicyLabel">> => string()
+%% associate_transit_gateway_connect_peer_response() :: #{
+%%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
 %% }
--type remove_attachment_routing_policy_label_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_peer_configuration() :: #{
-%%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()),
-%%   <<"CoreNetworkAddress">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string()),
-%%   <<"PeerAddress">> => string(),
-%%   <<"Protocol">> => list(any())
-%% }
--type connect_peer_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_transit_gateway_route_table_attachment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"PeeringId">> := string(),
-%%   <<"RoutingPolicyLabel">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransitGatewayRouteTableArn">> := string()
-%% }
--type create_transit_gateway_route_table_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connections_request() :: #{
-%%   <<"ConnectionIds">> => list(string()),
-%%   <<"DeviceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_site_to_site_vpn_attachment_response() :: #{
-%%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
-%% }
--type get_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_insertion_action() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Mode">> => list(any()),
-%%   <<"Via">> => via(),
-%%   <<"WhenSentTo">> => when_sent_to()
-%% }
--type service_insertion_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_site_to_site_vpn_attachment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"RoutingPolicyLabel">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpnConnectionArn">> := string()
-%% }
--type create_site_to_site_vpn_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_network_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalNetworkId">> := string(),
-%%   <<"PolicyDocument">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_core_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% proposed_network_function_group_change() :: #{
-%%   <<"AttachmentPolicyRuleNumber">> => integer(),
-%%   <<"NetworkFunctionGroupName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type proposed_network_function_group_change() :: #{binary() => any()}.
-
-
-%% Example:
-%% peering_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"MissingPermissionsContext">> => permissions_error_context(),
-%%   <<"RequestId">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type peering_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_information_next_hop() :: #{
-%%   <<"CoreNetworkAttachmentId">> => string(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SegmentName">> => string()
-%% }
--type routing_information_next_hop() :: #{binary() => any()}.
+-type associate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -771,251 +351,87 @@
 
 
 %% Example:
-%% delete_site_response() :: #{
-%%   <<"Site">> => site()
+%% attachment_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArn">> => string()
 %% }
--type delete_site_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_direct_connect_gateway_attachment_request() :: #{}
--type get_direct_connect_gateway_attachment_request() :: #{}.
+-type attachment_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% core_network_network_function_group_identifier() :: #{
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"NetworkFunctionGroupName">> => string()
+%% attachment_routing_policy_association_summary() :: #{
+%%   <<"AssociatedRoutingPolicies">> => list(string()),
+%%   <<"AttachmentId">> => string(),
+%%   <<"PendingRoutingPolicies">> => list(string()),
+%%   <<"RoutingPolicyLabel">> => string()
 %% }
--type core_network_network_function_group_identifier() :: #{binary() => any()}.
+-type attachment_routing_policy_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"PolicyDocument">> => string()
+%% aws_location() :: #{
+%%   <<"SubnetArn">> => string(),
+%%   <<"Zone">> => string()
 %% }
--type get_resource_policy_response() :: #{binary() => any()}.
+-type aws_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% link() :: #{
-%%   <<"Bandwidth">> => bandwidth(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"LinkArn">> => string(),
-%%   <<"LinkId">> => string(),
-%%   <<"Provider">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => string()
+%% bandwidth() :: #{
+%%   <<"DownloadSpeed">> => integer(),
+%%   <<"UploadSpeed">> => integer()
 %% }
--type link() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_request() :: #{}
--type delete_device_request() :: #{}.
+-type bandwidth() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_core_network_policy_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LatestVersionId">> => integer(),
-%%   <<"PolicyDocument">> := string()
+%% bgp_options() :: #{
+%%   <<"PeerAsn">> => float()
 %% }
--type put_core_network_policy_request() :: #{binary() => any()}.
+-type bgp_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% network_route_destination() :: #{
-%%   <<"CoreNetworkAttachmentId">> => string(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"NetworkFunctionGroupName">> => string(),
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
 %%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SegmentName">> => string(),
-%%   <<"TransitGatewayAttachmentId">> => string()
+%%   <<"ResourceType">> => string()
 %% }
--type network_route_destination() :: #{binary() => any()}.
-
-%% Example:
-%% delete_link_request() :: #{}
--type delete_link_request() :: #{}.
-
-%% Example:
-%% get_connect_peer_request() :: #{}
--type get_connect_peer_request() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_vpc_attachment_request() :: #{
-%%   <<"AddSubnetArns">> => list(string()),
-%%   <<"Options">> => vpc_options(),
-%%   <<"RemoveSubnetArns">> => list(string())
+%% connect_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"Options">> => connect_attachment_options(),
+%%   <<"TransportAttachmentId">> => string()
 %% }
--type update_vpc_attachment_request() :: #{binary() => any()}.
+-type connect_attachment() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_connect_peer_response() :: #{
-%%   <<"ConnectPeer">> => connect_peer()
+%% connect_attachment_options() :: #{
+%%   <<"Protocol">> => list(any())
 %% }
--type delete_connect_peer_response() :: #{binary() => any()}.
+-type connect_attachment_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_global_networks_request() :: #{
-%%   <<"GlobalNetworkIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_global_networks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_analysis_path() :: #{
-%%   <<"CompletionStatus">> => route_analysis_completion(),
-%%   <<"Path">> => list(path_component())
-%% }
--type route_analysis_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connections_response() :: #{
-%%   <<"Connections">> => list(connection()),
-%%   <<"NextToken">> => string()
-%% }
--type get_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_routes_request() :: #{
-%%   <<"DestinationFilters">> => map(),
-%%   <<"ExactCidrMatches">> => list(string()),
-%%   <<"LongestPrefixMatches">> => list(string()),
-%%   <<"PrefixListIds">> => list(string()),
-%%   <<"RouteTableIdentifier">> := route_table_identifier(),
-%%   <<"States">> => list(list(any())()),
-%%   <<"SubnetOfMatches">> => list(string()),
-%%   <<"SupernetOfMatches">> => list(string()),
-%%   <<"Types">> => list(list(any())())
-%% }
--type get_network_routes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_link_response() :: #{
-%%   <<"Link">> => link()
-%% }
--type create_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% permissions_error_context() :: #{
-%%   <<"MissingPermission">> => string()
-%% }
--type permissions_error_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_routes_response() :: #{
-%%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
-%%   <<"NetworkRoutes">> => list(network_route()),
-%%   <<"RouteTableArn">> => string(),
-%%   <<"RouteTableTimestamp">> => non_neg_integer(),
-%%   <<"RouteTableType">> => list(any())
-%% }
--type get_network_routes_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_core_network_request() :: #{}
--type get_core_network_request() :: #{}.
-
-
-%% Example:
-%% account_status() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"SLRDeploymentStatus">> => string()
-%% }
--type account_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_transit_gateway_response() :: #{
-%%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
-%% }
--type register_transit_gateway_response() :: #{binary() => any()}.
-
-%% Example:
-%% execute_core_network_change_set_request() :: #{}
--type execute_core_network_change_set_request() :: #{}.
-
-
-%% Example:
-%% create_site_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Location">> => location(),
+%% connect_peer() :: #{
+%%   <<"Configuration">> => connect_peer_configuration(),
+%%   <<"ConnectAttachmentId">> => string(),
+%%   <<"ConnectPeerId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"LastModificationErrors">> => list(connect_peer_error()),
+%%   <<"State">> => list(any()),
+%%   <<"SubnetArn">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_site_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_direct_connect_gateway_attachment_response() :: #{
-%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
-%% }
--type get_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_route_analysis_response() :: #{
-%%   <<"RouteAnalysis">> => route_analysis()
-%% }
--type start_route_analysis_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_direct_connect_gateway_attachment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"DirectConnectGatewayArn">> := string(),
-%%   <<"EdgeLocations">> := list(string()),
-%%   <<"RoutingPolicyLabel">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_organization_service_access_update_response() :: #{
-%%   <<"OrganizationStatus">> => organization_status()
-%% }
--type start_organization_service_access_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transit_gateway_registrations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayArns">> => list(string())
-%% }
--type get_transit_gateway_registrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_organization_service_access_update_request() :: #{
-%%   <<"Action">> := string()
-%% }
--type start_organization_service_access_update_request() :: #{binary() => any()}.
+-type connect_peer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1028,84 +444,26 @@
 %% }
 -type connect_peer_association() :: #{binary() => any()}.
 
-%% Example:
-%% get_site_to_site_vpn_attachment_request() :: #{}
--type get_site_to_site_vpn_attachment_request() :: #{}.
-
 
 %% Example:
-%% core_network_edge() :: #{
-%%   <<"Asn">> => float(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string())
+%% connect_peer_bgp_configuration() :: #{
+%%   <<"CoreNetworkAddress">> => string(),
+%%   <<"CoreNetworkAsn">> => float(),
+%%   <<"PeerAddress">> => string(),
+%%   <<"PeerAsn">> => float()
 %% }
--type core_network_edge() :: #{binary() => any()}.
-
-%% Example:
-%% get_route_analysis_request() :: #{}
--type get_route_analysis_request() :: #{}.
+-type connect_peer_bgp_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% link_association() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"LinkAssociationState">> => list(any()),
-%%   <<"LinkId">> => string()
+%% connect_peer_configuration() :: #{
+%%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()),
+%%   <<"CoreNetworkAddress">> => string(),
+%%   <<"InsideCidrBlocks">> => list(string()),
+%%   <<"PeerAddress">> => string(),
+%%   <<"Protocol">> => list(any())
 %% }
--type link_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_analysis_endpoint_options() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"TransitGatewayArn">> => string(),
-%%   <<"TransitGatewayAttachmentArn">> => string()
-%% }
--type route_analysis_endpoint_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connect_peer_response() :: #{
-%%   <<"ConnectPeer">> => connect_peer()
-%% }
--type create_connect_peer_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connect_attachment_request() :: #{}
--type get_connect_attachment_request() :: #{}.
-
-%% Example:
-%% delete_core_network_prefix_list_association_request() :: #{}
--type delete_core_network_prefix_list_association_request() :: #{}.
-
-
-%% Example:
-%% create_connect_attachment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"EdgeLocation">> := string(),
-%%   <<"Options">> := connect_attachment_options(),
-%%   <<"RoutingPolicyLabel">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransportAttachmentId">> := string()
-%% }
--type create_connect_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_network_routing_information_request() :: #{
-%%   <<"CommunityMatches">> => list(string()),
-%%   <<"EdgeLocation">> := string(),
-%%   <<"ExactAsPathMatches">> => list(string()),
-%%   <<"LocalPreferenceMatches">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MedMatches">> => list(string()),
-%%   <<"NextHopFilters">> => map(),
-%%   <<"NextToken">> => string(),
-%%   <<"SegmentName">> := string()
-%% }
--type list_core_network_routing_information_request() :: #{binary() => any()}.
+-type connect_peer_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1117,69 +475,99 @@
 %% }
 -type connect_peer_error() :: #{binary() => any()}.
 
-%% Example:
-%% disassociate_connect_peer_request() :: #{}
--type disassociate_connect_peer_request() :: #{}.
-
 
 %% Example:
-%% list_peerings_request() :: #{
+%% connect_peer_summary() :: #{
+%%   <<"ConnectAttachmentId">> => string(),
+%%   <<"ConnectPeerId">> => string(),
+%%   <<"ConnectPeerState">> => list(any()),
 %%   <<"CoreNetworkId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PeeringType">> => list(any()),
-%%   <<"State">> => list(any())
+%%   <<"SubnetArn">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_peerings_request() :: #{binary() => any()}.
+-type connect_peer_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_link_request() :: #{
-%%   <<"DeviceId">> := string(),
-%%   <<"LinkId">> := string()
+%% connection() :: #{
+%%   <<"ConnectedDeviceId">> => string(),
+%%   <<"ConnectedLinkId">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"LinkId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type disassociate_link_request() :: #{binary() => any()}.
+-type connection() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_site_response() :: #{
-%%   <<"Site">> => site()
+%% connection_health() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
 %% }
--type update_site_response() :: #{binary() => any()}.
+-type connection_health() :: #{binary() => any()}.
 
 
 %% Example:
-%% when_sent_to() :: #{
-%%   <<"WhenSentToSegmentsList">> => list(string())
+%% core_network() :: #{
+%%   <<"CoreNetworkArn">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Edges">> => list(core_network_edge()),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"NetworkFunctionGroups">> => list(core_network_network_function_group()),
+%%   <<"Segments">> => list(core_network_segment()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type when_sent_to() :: #{binary() => any()}.
+-type core_network() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_transit_gateway_peering_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TransitGatewayArn">> := string()
+%% core_network_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Identifier">> => string(),
+%%   <<"IdentifierPath">> => string(),
+%%   <<"NewValues">> => core_network_change_values(),
+%%   <<"PreviousValues">> => core_network_change_values(),
+%%   <<"Type">> => list(any())
 %% }
--type create_transit_gateway_peering_request() :: #{binary() => any()}.
+-type core_network_change() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_customer_gateway_request() :: #{
-%%   <<"CustomerGatewayArn">> := string(),
-%%   <<"DeviceId">> := string(),
-%%   <<"LinkId">> => string()
+%% core_network_change_event() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"IdentifierPath">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => core_network_change_event_values()
 %% }
--type associate_customer_gateway_request() :: #{binary() => any()}.
+-type core_network_change_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_transit_gateway_route_table_attachment_response() :: #{
-%%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
+%% core_network_change_event_values() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"PeerEdgeLocation">> => string(),
+%%   <<"RoutingPolicyAssociationDetails">> => list(routing_policy_association_detail()),
+%%   <<"RoutingPolicyDirection">> => list(any()),
+%%   <<"SegmentName">> => string()
 %% }
--type create_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+-type core_network_change_event_values() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1206,592 +594,30 @@
 
 
 %% Example:
-%% disassociate_connect_peer_response() :: #{
-%%   <<"ConnectPeerAssociation">> => connect_peer_association()
-%% }
--type disassociate_connect_peer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_network_prefix_list_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PrefixListArn">> => string()
-%% }
--type list_core_network_prefix_list_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_resources_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AwsRegion">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegisteredGatewayArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type get_network_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attachment_routing_policy_associations_request() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_attachment_routing_policy_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_link_associations_request() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"LinkId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_link_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_network_response() :: #{
-%%   <<"CoreNetwork">> => core_network()
-%% }
--type create_core_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_core_network_policy_response() :: #{
-%%   <<"CoreNetworkPolicy">> => core_network_policy()
-%% }
--type put_core_network_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_link_request() :: #{
-%%   <<"Bandwidth">> := bandwidth(),
-%%   <<"Description">> => string(),
-%%   <<"Provider">> => string(),
-%%   <<"SiteId">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => string()
-%% }
--type create_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_connect_peer_response() :: #{
-%%   <<"ConnectPeerAssociation">> => connect_peer_association()
-%% }
--type associate_connect_peer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_route() :: #{
-%%   <<"DestinationCidrBlock">> => string(),
-%%   <<"Destinations">> => list(network_route_destination()),
-%%   <<"PrefixListId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type network_route() :: #{binary() => any()}.
-
-%% Example:
-%% execute_core_network_change_set_response() :: #{}
--type execute_core_network_change_set_response() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Context">> => map(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% bgp_options() :: #{
-%%   <<"PeerAsn">> => float()
-%% }
--type bgp_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_attachment_response() :: #{
-%%   <<"Attachment">> => attachment()
-%% }
--type reject_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_analysis_completion() :: #{
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ReasonContext">> => map(),
-%%   <<"ResultCode">> => list(any())
-%% }
--type route_analysis_completion() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_routing_information() :: #{
-%%   <<"AsPath">> => list(string()),
-%%   <<"Communities">> => list(string()),
-%%   <<"LocalPreference">> => string(),
-%%   <<"Med">> => string(),
-%%   <<"NextHop">> => routing_information_next_hop(),
-%%   <<"Prefix">> => string()
-%% }
--type core_network_routing_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection() :: #{
-%%   <<"ConnectedDeviceId">> => string(),
-%%   <<"ConnectedLinkId">> => string(),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceId">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"LinkId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_resource_metadata_request() :: #{
-%%   <<"Metadata">> := map()
-%% }
--type update_network_resource_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_core_network_policy_version_response() :: #{
-%%   <<"CoreNetworkPolicy">> => core_network_policy()
-%% }
--type restore_core_network_policy_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attachment_request() :: #{}
--type delete_attachment_request() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"LimitCode">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sites_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SiteIds">> => list(string())
-%% }
--type get_sites_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connect_attachment_response() :: #{
-%%   <<"ConnectAttachment">> => connect_attachment()
-%% }
--type get_connect_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_routing_policy_association_summary() :: #{
-%%   <<"AssociatedRoutingPolicies">> => list(string()),
-%%   <<"AttachmentId">> => string(),
-%%   <<"PendingRoutingPolicies">> => list(string()),
-%%   <<"RoutingPolicyLabel">> => string()
-%% }
--type attachment_routing_policy_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_peer_bgp_configuration() :: #{
-%%   <<"CoreNetworkAddress">> => string(),
-%%   <<"CoreNetworkAsn">> => float(),
-%%   <<"PeerAddress">> => string(),
-%%   <<"PeerAsn">> => float()
-%% }
--type connect_peer_bgp_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connect_peer_associations_response() :: #{
-%%   <<"ConnectPeerAssociations">> => list(connect_peer_association()),
-%%   <<"NextToken">> => string()
-%% }
--type get_connect_peer_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_attachment_routing_policy_label_request() :: #{}
--type remove_attachment_routing_policy_label_request() :: #{}.
-
-
-%% Example:
-%% peering() :: #{
-%%   <<"CoreNetworkArn">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
+%% core_network_edge() :: #{
+%%   <<"Asn">> => float(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"LastModificationErrors">> => list(peering_error()),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"PeeringId">> => string(),
-%%   <<"PeeringType">> => list(any()),
-%%   <<"ResourceArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
+%%   <<"InsideCidrBlocks">> => list(string())
 %% }
--type peering() :: #{binary() => any()}.
+-type core_network_edge() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_organization_service_access_status_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationStatus">> => organization_status()
+%% core_network_network_function_group() :: #{
+%%   <<"EdgeLocations">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Segments">> => service_insertion_segments()
 %% }
--type list_organization_service_access_status_response() :: #{binary() => any()}.
+-type core_network_network_function_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_vpc_attachment_response() :: #{
-%%   <<"VpcAttachment">> => vpc_attachment()
-%% }
--type update_vpc_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_gateway_association() :: #{
-%%   <<"CustomerGatewayArn">> => string(),
-%%   <<"DeviceId">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"LinkId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type customer_gateway_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type attachment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_network_prefix_list_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PrefixListAssociations">> => list(prefix_list_association())
-%% }
--type list_core_network_prefix_list_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_site_request() :: #{}
--type delete_site_request() :: #{}.
-
-
-%% Example:
-%% site() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"Location">> => location(),
-%%   <<"SiteArn">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type site() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network() :: #{
-%%   <<"CoreNetworkArn">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Edges">> => list(core_network_edge()),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"NetworkFunctionGroups">> => list(core_network_network_function_group()),
-%%   <<"Segments">> => list(core_network_segment()),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type core_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_resource_summary() :: #{
-%%   <<"Definition">> => string(),
-%%   <<"IsMiddlebox">> => boolean(),
-%%   <<"NameTag">> => string(),
-%%   <<"RegisteredGatewayArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type network_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attachment_routing_policy_associations_response() :: #{
-%%   <<"AttachmentRoutingPolicyAssociations">> => list(attachment_routing_policy_association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_attachment_routing_policy_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transit_gateway_registration() :: #{
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"State">> => transit_gateway_registration_state_reason(),
-%%   <<"TransitGatewayArn">> => string()
-%% }
--type transit_gateway_registration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connect_peers_request() :: #{
-%%   <<"ConnectAttachmentId">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connect_peers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_core_network_policy_version_response() :: #{
-%%   <<"CoreNetworkPolicy">> => core_network_policy()
-%% }
--type delete_core_network_policy_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type update_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_change() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Identifier">> => string(),
-%%   <<"IdentifierPath">> => string(),
-%%   <<"NewValues">> => core_network_change_values(),
-%%   <<"PreviousValues">> => core_network_change_values(),
-%%   <<"Type">> => list(any())
-%% }
--type core_network_change() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_transit_gateway_request() :: #{}
--type deregister_transit_gateway_request() :: #{}.
-
-
-%% Example:
-%% update_direct_connect_gateway_attachment_response() :: #{
-%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
-%% }
--type update_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_link_response() :: #{
-%%   <<"Link">> => link()
-%% }
--type update_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% location() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Latitude">> => string(),
-%%   <<"Longitude">> => string()
-%% }
--type location() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connect_peer_response() :: #{
-%%   <<"ConnectPeer">> => connect_peer()
-%% }
--type get_connect_peer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_networks_response() :: #{
-%%   <<"CoreNetworks">> => list(core_network_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_networks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_peer_summary() :: #{
-%%   <<"ConnectAttachmentId">> => string(),
-%%   <<"ConnectPeerId">> => string(),
-%%   <<"ConnectPeerState">> => list(any()),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type connect_peer_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% delete_global_network_response() :: #{
-%%   <<"GlobalNetwork">> => global_network()
-%% }
--type delete_global_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attachments_request() :: #{
-%%   <<"AttachmentType">> => list(any()),
+%% core_network_network_function_group_identifier() :: #{
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"NetworkFunctionGroupName">> => string()
 %% }
--type list_attachments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_policy_exception() :: #{
-%%   <<"Errors">> => list(core_network_policy_error()),
-%%   <<"Message">> => string()
-%% }
--type core_network_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% restore_core_network_policy_version_request() :: #{}
--type restore_core_network_policy_version_request() :: #{}.
-
-
-%% Example:
-%% global_network() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalNetworkArn">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type global_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_device_response() :: #{
-%%   <<"Device">> => device()
-%% }
--type delete_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_links_response() :: #{
-%%   <<"Links">> => list(link()),
-%%   <<"NextToken">> => string()
-%% }
--type get_links_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_direct_connect_gateway_attachment_response() :: #{
-%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
-%% }
--type create_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_attachment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"CoreNetworkId">> := string(),
-%%   <<"Options">> => vpc_options(),
-%%   <<"RoutingPolicyLabel">> => string(),
-%%   <<"SubnetArns">> := list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcArn">> := string()
-%% }
--type create_vpc_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_function_group() :: #{
-%%   <<"Name">> => string()
-%% }
--type network_function_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_core_network_prefix_list_association_response() :: #{
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"PrefixListArn">> => string()
-%% }
--type delete_core_network_prefix_list_association_response() :: #{binary() => any()}.
+-type core_network_network_function_group_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1809,48 +635,172 @@
 
 
 %% Example:
-%% register_transit_gateway_request() :: #{
-%%   <<"TransitGatewayArn">> := string()
+%% core_network_policy_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Path">> => string()
 %% }
--type register_transit_gateway_request() :: #{binary() => any()}.
+-type core_network_policy_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_site_request() :: #{
+%% core_network_policy_exception() :: #{
+%%   <<"Errors">> => list(core_network_policy_error()),
+%%   <<"Message">> => string()
+%% }
+-type core_network_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_policy_version() :: #{
+%%   <<"Alias">> => list(any()),
+%%   <<"ChangeSetState">> => list(any()),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Location">> => location()
+%%   <<"PolicyVersionId">> => integer()
 %% }
--type update_site_request() :: #{binary() => any()}.
+-type core_network_policy_version() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_connect_peer_request() :: #{
-%%   <<"ConnectPeerId">> := string(),
+%% core_network_routing_information() :: #{
+%%   <<"AsPath">> => list(string()),
+%%   <<"Communities">> => list(string()),
+%%   <<"LocalPreference">> => string(),
+%%   <<"Med">> => string(),
+%%   <<"NextHop">> => routing_information_next_hop(),
+%%   <<"Prefix">> => string()
+%% }
+-type core_network_routing_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_segment() :: #{
+%%   <<"EdgeLocations">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"SharedSegments">> => list(string())
+%% }
+-type core_network_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_segment_edge_identifier() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"SegmentName">> => string()
+%% }
+-type core_network_segment_edge_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_summary() :: #{
+%%   <<"CoreNetworkArn">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type core_network_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connect_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"EdgeLocation">> := string(),
+%%   <<"Options">> := connect_attachment_options(),
+%%   <<"RoutingPolicyLabel">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransportAttachmentId">> := string()
+%% }
+-type create_connect_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connect_attachment_response() :: #{
+%%   <<"ConnectAttachment">> => connect_attachment()
+%% }
+-type create_connect_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connect_peer_request() :: #{
+%%   <<"BgpOptions">> => bgp_options(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectAttachmentId">> := string(),
+%%   <<"CoreNetworkAddress">> => string(),
+%%   <<"InsideCidrBlocks">> => list(string()),
+%%   <<"PeerAddress">> := string(),
+%%   <<"SubnetArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_connect_peer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connect_peer_response() :: #{
+%%   <<"ConnectPeer">> => connect_peer()
+%% }
+-type create_connect_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"ConnectedDeviceId">> := string(),
+%%   <<"ConnectedLinkId">> => string(),
+%%   <<"Description">> => string(),
 %%   <<"DeviceId">> := string(),
-%%   <<"LinkId">> => string()
+%%   <<"LinkId">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type associate_connect_peer_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connect_peer_request() :: #{}
--type delete_connect_peer_request() :: #{}.
+-type create_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_link_associations_response() :: #{
-%%   <<"LinkAssociations">> => list(link_association()),
-%%   <<"NextToken">> => string()
+%% create_connection_response() :: #{
+%%   <<"Connection">> => connection()
 %% }
--type get_link_associations_response() :: #{binary() => any()}.
+-type create_connection_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% transit_gateway_route_table_attachment() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"PeeringId">> => string(),
-%%   <<"TransitGatewayRouteTableArn">> => string()
+%% create_core_network_prefix_list_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"PrefixListAlias">> := string(),
+%%   <<"PrefixListArn">> := string()
 %% }
--type transit_gateway_route_table_attachment() :: #{binary() => any()}.
+-type create_core_network_prefix_list_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_network_prefix_list_association_response() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"PrefixListAlias">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type create_core_network_prefix_list_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_network_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalNetworkId">> := string(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_core_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_network_response() :: #{
+%%   <<"CoreNetwork">> => core_network()
+%% }
+-type create_core_network_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1869,110 +819,37 @@
 
 
 %% Example:
-%% disassociate_customer_gateway_response() :: #{
-%%   <<"CustomerGatewayAssociation">> => customer_gateway_association()
+%% create_device_response() :: #{
+%%   <<"Device">> => device()
 %% }
--type disassociate_customer_gateway_response() :: #{binary() => any()}.
+-type create_device_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_direct_connect_gateway_attachment_request() :: #{
-%%   <<"EdgeLocations">> => list(string())
+%% create_direct_connect_gateway_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"DirectConnectGatewayArn">> := string(),
+%%   <<"EdgeLocations">> := list(string()),
+%%   <<"RoutingPolicyLabel">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type update_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
+-type create_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_peering_response() :: #{
-%%   <<"Peering">> => peering()
+%% create_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
 %% }
--type delete_peering_response() :: #{binary() => any()}.
+-type create_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_vpc_attachment_response() :: #{
-%%   <<"VpcAttachment">> => vpc_attachment()
+%% create_global_network_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type create_vpc_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"PolicyDocument">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% direct_connect_gateway_attachment() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"DirectConnectGatewayArn">> => string()
-%% }
--type direct_connect_gateway_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transit_gateway_peering_response() :: #{
-%%   <<"TransitGatewayPeering">> => transit_gateway_peering()
-%% }
--type get_transit_gateway_peering_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_change_event_values() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"Cidr">> => string(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"NetworkFunctionGroupName">> => string(),
-%%   <<"PeerEdgeLocation">> => string(),
-%%   <<"RoutingPolicyAssociationDetails">> => list(routing_policy_association_detail()),
-%%   <<"RoutingPolicyDirection">> => list(any()),
-%%   <<"SegmentName">> => string()
-%% }
--type core_network_change_event_values() :: #{binary() => any()}.
-
-%% Example:
-%% get_transit_gateway_route_table_attachment_request() :: #{}
--type get_transit_gateway_route_table_attachment_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_core_network_request() :: #{}
--type delete_core_network_request() :: #{}.
-
-%% Example:
-%% delete_global_network_request() :: #{}
--type delete_global_network_request() :: #{}.
-
-
-%% Example:
-%% list_core_networks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_networks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_devices_response() :: #{
-%%   <<"Devices">> => list(device()),
-%%   <<"NextToken">> => string()
-%% }
--type get_devices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_resource_count() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"ResourceType">> => string()
-%% }
--type network_resource_count() :: #{binary() => any()}.
+-type create_global_network_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1983,76 +860,148 @@
 
 
 %% Example:
-%% disassociate_link_response() :: #{
-%%   <<"LinkAssociation">> => link_association()
+%% create_link_request() :: #{
+%%   <<"Bandwidth">> := bandwidth(),
+%%   <<"Description">> => string(),
+%%   <<"Provider">> => string(),
+%%   <<"SiteId">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => string()
 %% }
--type disassociate_link_response() :: #{binary() => any()}.
+-type create_link_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bandwidth() :: #{
-%%   <<"DownloadSpeed">> => integer(),
-%%   <<"UploadSpeed">> => integer()
+%% create_link_response() :: #{
+%%   <<"Link">> => link()
 %% }
--type bandwidth() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type create_link_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_connect_attachment_response() :: #{
-%%   <<"ConnectAttachment">> => connect_attachment()
+%% create_site_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Location">> => location(),
+%%   <<"Tags">> => list(tag())
 %% }
--type create_connect_attachment_response() :: #{binary() => any()}.
+-type create_site_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_transit_gateway_connect_peer_response() :: #{
-%%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
+%% create_site_response() :: #{
+%%   <<"Site">> => site()
 %% }
--type associate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
+-type create_site_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% connect_attachment() :: #{
-%%   <<"Attachment">> => attachment(),
-%%   <<"Options">> => connect_attachment_options(),
-%%   <<"TransportAttachmentId">> => string()
+%% create_site_to_site_vpn_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"RoutingPolicyLabel">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpnConnectionArn">> := string()
 %% }
--type connect_attachment() :: #{binary() => any()}.
+-type create_site_to_site_vpn_attachment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_transit_gateway_connect_peer_response() :: #{
-%%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
+%% create_site_to_site_vpn_attachment_response() :: #{
+%%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
 %% }
--type disassociate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
+-type create_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_attachment_response() :: #{
+%% create_transit_gateway_peering_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayArn">> := string()
+%% }
+-type create_transit_gateway_peering_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_transit_gateway_peering_response() :: #{
+%%   <<"TransitGatewayPeering">> => transit_gateway_peering()
+%% }
+-type create_transit_gateway_peering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_transit_gateway_route_table_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"PeeringId">> := string(),
+%%   <<"RoutingPolicyLabel">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayRouteTableArn">> := string()
+%% }
+-type create_transit_gateway_route_table_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_transit_gateway_route_table_attachment_response() :: #{
+%%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
+%% }
+-type create_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_attachment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"Options">> => vpc_options(),
+%%   <<"RoutingPolicyLabel">> => string(),
+%%   <<"SubnetArns">> := list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcArn">> := string()
+%% }
+-type create_vpc_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_attachment_response() :: #{
+%%   <<"VpcAttachment">> => vpc_attachment()
+%% }
+-type create_vpc_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_gateway_association() :: #{
+%%   <<"CustomerGatewayArn">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"LinkId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type customer_gateway_association() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_request() :: #{}
+-type delete_attachment_request() :: #{}.
+
+
+%% Example:
+%% delete_attachment_response() :: #{
 %%   <<"Attachment">> => attachment()
 %% }
--type accept_attachment_response() :: #{binary() => any()}.
+-type delete_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connect_peer_request() :: #{}
+-type delete_connect_peer_request() :: #{}.
 
 
 %% Example:
-%% routing_policy_association_detail() :: #{
-%%   <<"RoutingPolicyNames">> => list(string()),
-%%   <<"SharedSegments">> => list(string())
+%% delete_connect_peer_response() :: #{
+%%   <<"ConnectPeer">> => connect_peer()
 %% }
--type routing_policy_association_detail() :: #{binary() => any()}.
-
+-type delete_connect_peer_response() :: #{binary() => any()}.
 
 %% Example:
-%% core_network_policy_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Path">> => string()
-%% }
--type core_network_policy_error() :: #{binary() => any()}.
+%% delete_connection_request() :: #{}
+-type delete_connection_request() :: #{}.
 
 
 %% Example:
@@ -2061,302 +1010,130 @@
 %% }
 -type delete_connection_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_core_network_policy_version_request() :: #{}
+-type delete_core_network_policy_version_request() :: #{}.
+
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
+%% delete_core_network_policy_version_response() :: #{
+%%   <<"CoreNetworkPolicy">> => core_network_policy()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type delete_core_network_policy_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% get_transit_gateway_route_table_attachment_response() :: #{
-%%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
-%% }
--type get_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+%% delete_core_network_prefix_list_association_request() :: #{}
+-type delete_core_network_prefix_list_association_request() :: #{}.
 
 
 %% Example:
-%% core_network_segment() :: #{
-%%   <<"EdgeLocations">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SharedSegments">> => list(string())
-%% }
--type core_network_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_core_network_change_events_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_core_network_change_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% proposed_segment_change() :: #{
-%%   <<"AttachmentPolicyRuleNumber">> => integer(),
-%%   <<"SegmentName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type proposed_segment_change() :: #{binary() => any()}.
-
-%% Example:
-%% reject_attachment_request() :: #{}
--type reject_attachment_request() :: #{}.
-
-
-%% Example:
-%% transit_gateway_registration_state_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type transit_gateway_registration_state_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_network_function_group() :: #{
-%%   <<"EdgeLocations">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Segments">> => service_insertion_segments()
-%% }
--type core_network_network_function_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_customer_gateway_associations_request() :: #{
-%%   <<"CustomerGatewayArns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_customer_gateway_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_core_network_routing_information_response() :: #{
-%%   <<"CoreNetworkRoutingInformation">> => list(core_network_routing_information()),
-%%   <<"NextToken">> => string()
-%% }
--type list_core_network_routing_information_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_network_response() :: #{
-%%   <<"GlobalNetwork">> => global_network()
-%% }
--type update_global_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_customer_gateway_associations_response() :: #{
-%%   <<"CustomerGatewayAssociations">> => list(customer_gateway_association()),
-%%   <<"NextToken">> => string()
-%% }
--type get_customer_gateway_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_options() :: #{
-%%   <<"ApplianceModeSupport">> => boolean(),
-%%   <<"DnsSupport">> => boolean(),
-%%   <<"Ipv6Support">> => boolean(),
-%%   <<"SecurityGroupReferencingSupport">> => boolean()
-%% }
--type vpc_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_resource() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AwsRegion">> => string(),
+%% delete_core_network_prefix_list_association_response() :: #{
 %%   <<"CoreNetworkId">> => string(),
-%%   <<"Definition">> => string(),
-%%   <<"DefinitionTimestamp">> => non_neg_integer(),
-%%   <<"Metadata">> => map(),
-%%   <<"RegisteredGatewayArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type network_resource() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{}
--type put_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% route_table_identifier() :: #{
-%%   <<"CoreNetworkNetworkFunctionGroup">> => core_network_network_function_group_identifier(),
-%%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
-%%   <<"TransitGatewayRouteTableArn">> => string()
-%% }
--type route_table_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_telemetry() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Address">> => string(),
-%%   <<"AwsRegion">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"Health">> => connection_health(),
-%%   <<"RegisteredGatewayArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type network_telemetry() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_route_analysis_request() :: #{
-%%   <<"Destination">> := route_analysis_endpoint_options_specification(),
-%%   <<"IncludeReturnPath">> => boolean(),
-%%   <<"Source">> := route_analysis_endpoint_options_specification(),
-%%   <<"UseMiddleboxes">> => boolean()
-%% }
--type start_route_analysis_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type create_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_attachment_routing_policy_label_response() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"RoutingPolicyLabel">> => string()
-%% }
--type put_attachment_routing_policy_label_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_transit_gateway_connect_peer_request() :: #{
-%%   <<"DeviceId">> := string(),
-%%   <<"LinkId">> => string(),
-%%   <<"TransitGatewayConnectPeerArn">> := string()
-%% }
--type associate_transit_gateway_connect_peer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_segment_edge_identifier() :: #{
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"SegmentName">> => string()
-%% }
--type core_network_segment_edge_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_core_network_prefix_list_association_response() :: #{
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"PrefixListAlias">> => string(),
 %%   <<"PrefixListArn">> => string()
 %% }
--type create_core_network_prefix_list_association_response() :: #{binary() => any()}.
+-type delete_core_network_prefix_list_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_core_network_request() :: #{}
+-type delete_core_network_request() :: #{}.
+
+
+%% Example:
+%% delete_core_network_response() :: #{
+%%   <<"CoreNetwork">> => core_network()
+%% }
+-type delete_core_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_device_request() :: #{}
+-type delete_device_request() :: #{}.
+
+
+%% Example:
+%% delete_device_response() :: #{
+%%   <<"Device">> => device()
+%% }
+-type delete_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_network_request() :: #{}
+-type delete_global_network_request() :: #{}.
+
+
+%% Example:
+%% delete_global_network_response() :: #{
+%%   <<"GlobalNetwork">> => global_network()
+%% }
+-type delete_global_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_link_request() :: #{}
+-type delete_link_request() :: #{}.
+
+
+%% Example:
+%% delete_link_response() :: #{
+%%   <<"Link">> => link()
+%% }
+-type delete_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_peering_request() :: #{}
+-type delete_peering_request() :: #{}.
+
+
+%% Example:
+%% delete_peering_response() :: #{
+%%   <<"Peering">> => peering()
+%% }
+-type delete_peering_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_request() :: #{}
 -type delete_resource_policy_request() :: #{}.
 
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
 
 %% Example:
-%% get_core_network_change_set_request() :: #{
+%% delete_site_request() :: #{}
+-type delete_site_request() :: #{}.
+
+
+%% Example:
+%% delete_site_response() :: #{
+%%   <<"Site">> => site()
+%% }
+-type delete_site_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_transit_gateway_request() :: #{}
+-type deregister_transit_gateway_request() :: #{}.
+
+
+%% Example:
+%% deregister_transit_gateway_response() :: #{
+%%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
+%% }
+-type deregister_transit_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_global_networks_request() :: #{
+%%   <<"GlobalNetworkIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type get_core_network_change_set_request() :: #{binary() => any()}.
+-type describe_global_networks_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% prefix_list_association() :: #{
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"PrefixListAlias">> => string(),
-%%   <<"PrefixListArn">> => string()
-%% }
--type prefix_list_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_peer() :: #{
-%%   <<"Configuration">> => connect_peer_configuration(),
-%%   <<"ConnectAttachmentId">> => string(),
-%%   <<"ConnectPeerId">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EdgeLocation">> => string(),
-%%   <<"LastModificationErrors">> => list(connect_peer_error()),
-%%   <<"State">> => list(any()),
-%%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type connect_peer() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_health() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
-%% }
--type connection_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_links_request() :: #{
-%%   <<"LinkIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Provider">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"Type">> => string()
-%% }
--type get_links_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_resource_metadata_response() :: #{
-%%   <<"Metadata">> => map(),
-%%   <<"ResourceArn">> => string()
-%% }
--type update_network_resource_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_location() :: #{
-%%   <<"SubnetArn">> => string(),
-%%   <<"Zone">> => string()
-%% }
--type aws_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_service_access_status_request() :: #{
-%%   <<"MaxResults">> => integer(),
+%% describe_global_networks_response() :: #{
+%%   <<"GlobalNetworks">> => list(global_network()),
 %%   <<"NextToken">> => string()
 %% }
--type list_organization_service_access_status_request() :: #{binary() => any()}.
+-type describe_global_networks_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2380,19 +1157,183 @@
 
 
 %% Example:
-%% core_network_change_event() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"EventTime">> => non_neg_integer(),
-%%   <<"IdentifierPath">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => core_network_change_event_values()
+%% direct_connect_gateway_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"DirectConnectGatewayArn">> => string()
 %% }
--type core_network_change_event() :: #{binary() => any()}.
+-type direct_connect_gateway_attachment() :: #{binary() => any()}.
 
 %% Example:
-%% get_vpc_attachment_request() :: #{}
--type get_vpc_attachment_request() :: #{}.
+%% disassociate_connect_peer_request() :: #{}
+-type disassociate_connect_peer_request() :: #{}.
+
+
+%% Example:
+%% disassociate_connect_peer_response() :: #{
+%%   <<"ConnectPeerAssociation">> => connect_peer_association()
+%% }
+-type disassociate_connect_peer_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_customer_gateway_request() :: #{}
+-type disassociate_customer_gateway_request() :: #{}.
+
+
+%% Example:
+%% disassociate_customer_gateway_response() :: #{
+%%   <<"CustomerGatewayAssociation">> => customer_gateway_association()
+%% }
+-type disassociate_customer_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_link_request() :: #{
+%%   <<"DeviceId">> := string(),
+%%   <<"LinkId">> := string()
+%% }
+-type disassociate_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_link_response() :: #{
+%%   <<"LinkAssociation">> => link_association()
+%% }
+-type disassociate_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_transit_gateway_connect_peer_request() :: #{}
+-type disassociate_transit_gateway_connect_peer_request() :: #{}.
+
+
+%% Example:
+%% disassociate_transit_gateway_connect_peer_response() :: #{
+%%   <<"TransitGatewayConnectPeerAssociation">> => transit_gateway_connect_peer_association()
+%% }
+-type disassociate_transit_gateway_connect_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_override() :: #{
+%%   <<"EdgeSets">> => list(list(string())()),
+%%   <<"UseEdge">> => string()
+%% }
+-type edge_override() :: #{binary() => any()}.
+
+%% Example:
+%% execute_core_network_change_set_request() :: #{}
+-type execute_core_network_change_set_request() :: #{}.
+
+%% Example:
+%% execute_core_network_change_set_response() :: #{}
+-type execute_core_network_change_set_response() :: #{}.
+
+%% Example:
+%% get_connect_attachment_request() :: #{}
+-type get_connect_attachment_request() :: #{}.
+
+
+%% Example:
+%% get_connect_attachment_response() :: #{
+%%   <<"ConnectAttachment">> => connect_attachment()
+%% }
+-type get_connect_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connect_peer_associations_request() :: #{
+%%   <<"ConnectPeerIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connect_peer_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connect_peer_associations_response() :: #{
+%%   <<"ConnectPeerAssociations">> => list(connect_peer_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connect_peer_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connect_peer_request() :: #{}
+-type get_connect_peer_request() :: #{}.
+
+
+%% Example:
+%% get_connect_peer_response() :: #{
+%%   <<"ConnectPeer">> => connect_peer()
+%% }
+-type get_connect_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connections_request() :: #{
+%%   <<"ConnectionIds">> => list(string()),
+%%   <<"DeviceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connections_response() :: #{
+%%   <<"Connections">> => list(connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_change_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_core_network_change_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_change_events_response() :: #{
+%%   <<"CoreNetworkChangeEvents">> => list(core_network_change_event()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_core_network_change_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_change_set_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_core_network_change_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_change_set_response() :: #{
+%%   <<"CoreNetworkChanges">> => list(core_network_change()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_core_network_change_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_policy_request() :: #{
+%%   <<"Alias">> => list(any()),
+%%   <<"PolicyVersionId">> => integer()
+%% }
+-type get_core_network_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_core_network_policy_response() :: #{
+%%   <<"CoreNetworkPolicy">> => core_network_policy()
+%% }
+-type get_core_network_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_core_network_request() :: #{}
+-type get_core_network_request() :: #{}.
 
 
 %% Example:
@@ -2403,51 +1344,104 @@
 
 
 %% Example:
-%% create_site_response() :: #{
-%%   <<"Site">> => site()
-%% }
--type create_site_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% core_network_summary() :: #{
-%%   <<"CoreNetworkArn">> => string(),
-%%   <<"CoreNetworkId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalNetworkId">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type core_network_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_request() :: #{}
--type delete_connection_request() :: #{}.
-
-
-%% Example:
-%% list_core_network_policy_versions_response() :: #{
-%%   <<"CoreNetworkPolicyVersions">> => list(core_network_policy_version()),
+%% get_customer_gateway_associations_request() :: #{
+%%   <<"CustomerGatewayArns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_core_network_policy_versions_response() :: #{binary() => any()}.
+-type get_customer_gateway_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_connect_peers_response() :: #{
-%%   <<"ConnectPeers">> => list(connect_peer_summary()),
+%% get_customer_gateway_associations_response() :: #{
+%%   <<"CustomerGatewayAssociations">> => list(customer_gateway_association()),
 %%   <<"NextToken">> => string()
 %% }
--type list_connect_peers_response() :: #{binary() => any()}.
+-type get_customer_gateway_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_peerings_response() :: #{
+%% get_devices_request() :: #{
+%%   <<"DeviceIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Peerings">> => list(peering())
+%%   <<"SiteId">> => string()
 %% }
--type list_peerings_response() :: #{binary() => any()}.
+-type get_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_devices_response() :: #{
+%%   <<"Devices">> => list(device()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_direct_connect_gateway_attachment_request() :: #{}
+-type get_direct_connect_gateway_attachment_request() :: #{}.
+
+
+%% Example:
+%% get_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
+%% }
+-type get_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_link_associations_request() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"LinkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_link_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_link_associations_response() :: #{
+%%   <<"LinkAssociations">> => list(link_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_link_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_links_request() :: #{
+%%   <<"LinkIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Provider">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type get_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_links_response() :: #{
+%%   <<"Links">> => list(link()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_resource_counts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type get_network_resource_counts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_resource_counts_response() :: #{
+%%   <<"NetworkResourceCounts">> => list(network_resource_count()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_network_resource_counts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2465,17 +1459,123 @@
 
 
 %% Example:
+%% get_network_resource_relationships_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Relationships">> => list(relationship())
+%% }
+-type get_network_resource_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_resources_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AwsRegion">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegisteredGatewayArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type get_network_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_resources_response() :: #{
+%%   <<"NetworkResources">> => list(network_resource()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_network_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_routes_request() :: #{
+%%   <<"DestinationFilters">> => map(),
+%%   <<"ExactCidrMatches">> => list(string()),
+%%   <<"LongestPrefixMatches">> => list(string()),
+%%   <<"PrefixListIds">> => list(string()),
+%%   <<"RouteTableIdentifier">> := route_table_identifier(),
+%%   <<"States">> => list(list(any())()),
+%%   <<"SubnetOfMatches">> => list(string()),
+%%   <<"SupernetOfMatches">> => list(string()),
+%%   <<"Types">> => list(list(any())())
+%% }
+-type get_network_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_routes_response() :: #{
+%%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
+%%   <<"NetworkRoutes">> => list(network_route()),
+%%   <<"RouteTableArn">> => string(),
+%%   <<"RouteTableTimestamp">> => non_neg_integer(),
+%%   <<"RouteTableType">> => list(any())
+%% }
+-type get_network_routes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_telemetry_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AwsRegion">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegisteredGatewayArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type get_network_telemetry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_network_telemetry_response() :: #{
+%%   <<"NetworkTelemetry">> => list(network_telemetry()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_network_telemetry_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_analysis_request() :: #{}
+-type get_route_analysis_request() :: #{}.
+
+
+%% Example:
 %% get_route_analysis_response() :: #{
 %%   <<"RouteAnalysis">> => route_analysis()
 %% }
 -type get_route_analysis_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_site_to_site_vpn_attachment_request() :: #{}
+-type get_site_to_site_vpn_attachment_request() :: #{}.
+
 
 %% Example:
-%% update_core_network_response() :: #{
-%%   <<"CoreNetwork">> => core_network()
+%% get_site_to_site_vpn_attachment_response() :: #{
+%%   <<"SiteToSiteVpnAttachment">> => site_to_site_vpn_attachment()
 %% }
--type update_core_network_response() :: #{binary() => any()}.
+-type get_site_to_site_vpn_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sites_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SiteIds">> => list(string())
+%% }
+-type get_sites_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2485,16 +1585,42 @@
 %% }
 -type get_sites_response() :: #{binary() => any()}.
 
-%% Example:
-%% disassociate_customer_gateway_request() :: #{}
--type disassociate_customer_gateway_request() :: #{}.
-
 
 %% Example:
-%% update_core_network_request() :: #{
-%%   <<"Description">> => string()
+%% get_transit_gateway_connect_peer_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayConnectPeerArns">> => list(string())
 %% }
--type update_core_network_request() :: #{binary() => any()}.
+-type get_transit_gateway_connect_peer_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transit_gateway_connect_peer_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayConnectPeerAssociations">> => list(transit_gateway_connect_peer_association())
+%% }
+-type get_transit_gateway_connect_peer_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_transit_gateway_peering_request() :: #{}
+-type get_transit_gateway_peering_request() :: #{}.
+
+
+%% Example:
+%% get_transit_gateway_peering_response() :: #{
+%%   <<"TransitGatewayPeering">> => transit_gateway_peering()
+%% }
+-type get_transit_gateway_peering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transit_gateway_registrations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayArns">> => list(string())
+%% }
+-type get_transit_gateway_registrations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2504,31 +1630,103 @@
 %% }
 -type get_transit_gateway_registrations_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_transit_gateway_route_table_attachment_request() :: #{}
+-type get_transit_gateway_route_table_attachment_request() :: #{}.
+
 
 %% Example:
-%% delete_attachment_response() :: #{
-%%   <<"Attachment">> => attachment()
+%% get_transit_gateway_route_table_attachment_response() :: #{
+%%   <<"TransitGatewayRouteTableAttachment">> => transit_gateway_route_table_attachment()
 %% }
--type delete_attachment_response() :: #{binary() => any()}.
+-type get_transit_gateway_route_table_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_attachment_request() :: #{}
+-type get_vpc_attachment_request() :: #{}.
 
 
 %% Example:
-%% associate_link_response() :: #{
-%%   <<"LinkAssociation">> => link_association()
+%% get_vpc_attachment_response() :: #{
+%%   <<"VpcAttachment">> => vpc_attachment()
 %% }
--type associate_link_response() :: #{binary() => any()}.
+-type get_vpc_attachment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_connection_request() :: #{
-%%   <<"ConnectedDeviceId">> := string(),
-%%   <<"ConnectedLinkId">> => string(),
+%% global_network() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DeviceId">> := string(),
-%%   <<"LinkId">> => string(),
+%%   <<"GlobalNetworkArn">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_connection_request() :: #{binary() => any()}.
+-type global_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% link() :: #{
+%%   <<"Bandwidth">> => bandwidth(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"LinkArn">> => string(),
+%%   <<"LinkId">> => string(),
+%%   <<"Provider">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => string()
+%% }
+-type link() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_association() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"LinkAssociationState">> => list(any()),
+%%   <<"LinkId">> => string()
+%% }
+-type link_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachment_routing_policy_associations_request() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_routing_policy_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachment_routing_policy_associations_response() :: #{
+%%   <<"AttachmentRoutingPolicyAssociations">> => list(attachment_routing_policy_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_routing_policy_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachments_request() :: #{
+%%   <<"AttachmentType">> => list(any()),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_attachments_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2540,28 +1738,232 @@
 
 
 %% Example:
-%% route_analysis_endpoint_options_specification() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"TransitGatewayAttachmentArn">> => string()
+%% list_connect_peers_request() :: #{
+%%   <<"ConnectAttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type route_analysis_endpoint_options_specification() :: #{binary() => any()}.
+-type list_connect_peers_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_vpc_attachment_response() :: #{
-%%   <<"VpcAttachment">> => vpc_attachment()
+%% list_connect_peers_response() :: #{
+%%   <<"ConnectPeers">> => list(connect_peer_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type get_vpc_attachment_response() :: #{binary() => any()}.
+-type list_connect_peers_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_link_request() :: #{
-%%   <<"Bandwidth">> => bandwidth(),
-%%   <<"Description">> => string(),
-%%   <<"Provider">> => string(),
-%%   <<"Type">> => string()
+%% list_core_network_policy_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type update_link_request() :: #{binary() => any()}.
+-type list_core_network_policy_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_policy_versions_response() :: #{
+%%   <<"CoreNetworkPolicyVersions">> => list(core_network_policy_version()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_network_policy_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_prefix_list_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type list_core_network_prefix_list_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_prefix_list_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PrefixListAssociations">> => list(prefix_list_association())
+%% }
+-type list_core_network_prefix_list_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_routing_information_request() :: #{
+%%   <<"CommunityMatches">> => list(string()),
+%%   <<"EdgeLocation">> := string(),
+%%   <<"ExactAsPathMatches">> => list(string()),
+%%   <<"LocalPreferenceMatches">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MedMatches">> => list(string()),
+%%   <<"NextHopFilters">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"SegmentName">> := string()
+%% }
+-type list_core_network_routing_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_routing_information_response() :: #{
+%%   <<"CoreNetworkRoutingInformation">> => list(core_network_routing_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_network_routing_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_networks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_networks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_networks_response() :: #{
+%%   <<"CoreNetworks">> => list(core_network_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_core_networks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_service_access_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_service_access_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_service_access_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationStatus">> => organization_status()
+%% }
+-type list_organization_service_access_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_peerings_request() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PeeringType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type list_peerings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_peerings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Peerings">> => list(peering())
+%% }
+-type list_peerings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% location() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Latitude">> => string(),
+%%   <<"Longitude">> => string()
+%% }
+-type location() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_function_group() :: #{
+%%   <<"Name">> => string()
+%% }
+-type network_function_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_resource() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AwsRegion">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"Definition">> => string(),
+%%   <<"DefinitionTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => map(),
+%%   <<"RegisteredGatewayArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type network_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_resource_count() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"ResourceType">> => string()
+%% }
+-type network_resource_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_resource_summary() :: #{
+%%   <<"Definition">> => string(),
+%%   <<"IsMiddlebox">> => boolean(),
+%%   <<"NameTag">> => string(),
+%%   <<"RegisteredGatewayArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type network_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_route() :: #{
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"Destinations">> => list(network_route_destination()),
+%%   <<"PrefixListId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type network_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_route_destination() :: #{
+%%   <<"CoreNetworkAttachmentId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SegmentName">> => string(),
+%%   <<"TransitGatewayAttachmentId">> => string()
+%% }
+-type network_route_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_telemetry() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Address">> => string(),
+%%   <<"AwsRegion">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"Health">> => connection_health(),
+%%   <<"RegisteredGatewayArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type network_telemetry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2575,6 +1977,596 @@
 
 
 %% Example:
+%% path_component() :: #{
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"Resource">> => network_resource_summary(),
+%%   <<"Sequence">> => integer()
+%% }
+-type path_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% peering() :: #{
+%%   <<"CoreNetworkArn">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"LastModificationErrors">> => list(peering_error()),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PeeringId">> => string(),
+%%   <<"PeeringType">> => list(any()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type peering() :: #{binary() => any()}.
+
+
+%% Example:
+%% peering_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"MissingPermissionsContext">> => permissions_error_context(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type peering_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% permissions_error_context() :: #{
+%%   <<"MissingPermission">> => string()
+%% }
+-type permissions_error_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_list_association() :: #{
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"PrefixListAlias">> => string(),
+%%   <<"PrefixListArn">> => string()
+%% }
+-type prefix_list_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% proposed_network_function_group_change() :: #{
+%%   <<"AttachmentPolicyRuleNumber">> => integer(),
+%%   <<"NetworkFunctionGroupName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proposed_network_function_group_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% proposed_segment_change() :: #{
+%%   <<"AttachmentPolicyRuleNumber">> => integer(),
+%%   <<"SegmentName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type proposed_segment_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_attachment_routing_policy_label_request() :: #{
+%%   <<"AttachmentId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CoreNetworkId">> := string(),
+%%   <<"RoutingPolicyLabel">> := string()
+%% }
+-type put_attachment_routing_policy_label_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_attachment_routing_policy_label_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"RoutingPolicyLabel">> => string()
+%% }
+-type put_attachment_routing_policy_label_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_core_network_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LatestVersionId">> => integer(),
+%%   <<"PolicyDocument">> := string()
+%% }
+-type put_core_network_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_core_network_policy_response() :: #{
+%%   <<"CoreNetworkPolicy">> => core_network_policy()
+%% }
+-type put_core_network_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"PolicyDocument">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{}
+-type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% register_transit_gateway_request() :: #{
+%%   <<"TransitGatewayArn">> := string()
+%% }
+-type register_transit_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_transit_gateway_response() :: #{
+%%   <<"TransitGatewayRegistration">> => transit_gateway_registration()
+%% }
+-type register_transit_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_attachment_request() :: #{}
+-type reject_attachment_request() :: #{}.
+
+
+%% Example:
+%% reject_attachment_response() :: #{
+%%   <<"Attachment">> => attachment()
+%% }
+-type reject_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% relationship() :: #{
+%%   <<"From">> => string(),
+%%   <<"To">> => string()
+%% }
+-type relationship() :: #{binary() => any()}.
+
+%% Example:
+%% remove_attachment_routing_policy_label_request() :: #{}
+-type remove_attachment_routing_policy_label_request() :: #{}.
+
+
+%% Example:
+%% remove_attachment_routing_policy_label_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"RoutingPolicyLabel">> => string()
+%% }
+-type remove_attachment_routing_policy_label_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Context">> => map(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_core_network_policy_version_request() :: #{}
+-type restore_core_network_policy_version_request() :: #{}.
+
+
+%% Example:
+%% restore_core_network_policy_version_response() :: #{
+%%   <<"CoreNetworkPolicy">> => core_network_policy()
+%% }
+-type restore_core_network_policy_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_analysis() :: #{
+%%   <<"Destination">> => route_analysis_endpoint_options(),
+%%   <<"ForwardPath">> => route_analysis_path(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"IncludeReturnPath">> => boolean(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ReturnPath">> => route_analysis_path(),
+%%   <<"RouteAnalysisId">> => string(),
+%%   <<"Source">> => route_analysis_endpoint_options(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UseMiddleboxes">> => boolean()
+%% }
+-type route_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_analysis_completion() :: #{
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ReasonContext">> => map(),
+%%   <<"ResultCode">> => list(any())
+%% }
+-type route_analysis_completion() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_analysis_endpoint_options() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"TransitGatewayArn">> => string(),
+%%   <<"TransitGatewayAttachmentArn">> => string()
+%% }
+-type route_analysis_endpoint_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_analysis_endpoint_options_specification() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"TransitGatewayAttachmentArn">> => string()
+%% }
+-type route_analysis_endpoint_options_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_analysis_path() :: #{
+%%   <<"CompletionStatus">> => route_analysis_completion(),
+%%   <<"Path">> => list(path_component())
+%% }
+-type route_analysis_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_table_identifier() :: #{
+%%   <<"CoreNetworkNetworkFunctionGroup">> => core_network_network_function_group_identifier(),
+%%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
+%%   <<"TransitGatewayRouteTableArn">> => string()
+%% }
+-type route_table_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_information_next_hop() :: #{
+%%   <<"CoreNetworkAttachmentId">> => string(),
+%%   <<"EdgeLocation">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SegmentName">> => string()
+%% }
+-type routing_information_next_hop() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_policy_association_detail() :: #{
+%%   <<"RoutingPolicyNames">> => list(string()),
+%%   <<"SharedSegments">> => list(string())
+%% }
+-type routing_policy_association_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_insertion_action() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Via">> => via(),
+%%   <<"WhenSentTo">> => when_sent_to()
+%% }
+-type service_insertion_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_insertion_segments() :: #{
+%%   <<"SendTo">> => list(string()),
+%%   <<"SendVia">> => list(string())
+%% }
+-type service_insertion_segments() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"LimitCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% site() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"Location">> => location(),
+%%   <<"SiteArn">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type site() :: #{binary() => any()}.
+
+
+%% Example:
+%% site_to_site_vpn_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"VpnConnectionArn">> => string()
+%% }
+-type site_to_site_vpn_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_organization_service_access_update_request() :: #{
+%%   <<"Action">> := string()
+%% }
+-type start_organization_service_access_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_organization_service_access_update_response() :: #{
+%%   <<"OrganizationStatus">> => organization_status()
+%% }
+-type start_organization_service_access_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_route_analysis_request() :: #{
+%%   <<"Destination">> := route_analysis_endpoint_options_specification(),
+%%   <<"IncludeReturnPath">> => boolean(),
+%%   <<"Source">> := route_analysis_endpoint_options_specification(),
+%%   <<"UseMiddleboxes">> => boolean()
+%% }
+-type start_route_analysis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_route_analysis_response() :: #{
+%%   <<"RouteAnalysis">> => route_analysis()
+%% }
+-type start_route_analysis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transit_gateway_connect_peer_association() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"LinkId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"TransitGatewayConnectPeerArn">> => string()
+%% }
+-type transit_gateway_connect_peer_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% transit_gateway_peering() :: #{
+%%   <<"Peering">> => peering(),
+%%   <<"TransitGatewayArn">> => string(),
+%%   <<"TransitGatewayPeeringAttachmentId">> => string()
+%% }
+-type transit_gateway_peering() :: #{binary() => any()}.
+
+
+%% Example:
+%% transit_gateway_registration() :: #{
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"State">> => transit_gateway_registration_state_reason(),
+%%   <<"TransitGatewayArn">> => string()
+%% }
+-type transit_gateway_registration() :: #{binary() => any()}.
+
+
+%% Example:
+%% transit_gateway_registration_state_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type transit_gateway_registration_state_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% transit_gateway_route_table_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"PeeringId">> => string(),
+%%   <<"TransitGatewayRouteTableArn">> => string()
+%% }
+-type transit_gateway_route_table_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_connection_request() :: #{
+%%   <<"ConnectedLinkId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LinkId">> => string()
+%% }
+-type update_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_response() :: #{
+%%   <<"Connection">> => connection()
+%% }
+-type update_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_core_network_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_core_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_core_network_response() :: #{
+%%   <<"CoreNetwork">> => core_network()
+%% }
+-type update_core_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_device_request() :: #{
+%%   <<"AWSLocation">> => aws_location(),
+%%   <<"Description">> => string(),
+%%   <<"Location">> => location(),
+%%   <<"Model">> => string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Vendor">> => string()
+%% }
+-type update_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_device_response() :: #{
+%%   <<"Device">> => device()
+%% }
+-type update_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_connect_gateway_attachment_request() :: #{
+%%   <<"EdgeLocations">> => list(string())
+%% }
+-type update_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_direct_connect_gateway_attachment_response() :: #{
+%%   <<"DirectConnectGatewayAttachment">> => direct_connect_gateway_attachment()
+%% }
+-type update_direct_connect_gateway_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_network_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_global_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_network_response() :: #{
+%%   <<"GlobalNetwork">> => global_network()
+%% }
+-type update_global_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_link_request() :: #{
+%%   <<"Bandwidth">> => bandwidth(),
+%%   <<"Description">> => string(),
+%%   <<"Provider">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type update_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_link_response() :: #{
+%%   <<"Link">> => link()
+%% }
+-type update_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_resource_metadata_request() :: #{
+%%   <<"Metadata">> := map()
+%% }
+-type update_network_resource_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_resource_metadata_response() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type update_network_resource_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Location">> => location()
+%% }
+-type update_site_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_site_response() :: #{
+%%   <<"Site">> => site()
+%% }
+-type update_site_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_attachment_request() :: #{
+%%   <<"AddSubnetArns">> => list(string()),
+%%   <<"Options">> => vpc_options(),
+%%   <<"RemoveSubnetArns">> => list(string())
+%% }
+-type update_vpc_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_attachment_response() :: #{
+%%   <<"VpcAttachment">> => vpc_attachment()
+%% }
+-type update_vpc_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% via() :: #{
 %%   <<"NetworkFunctionGroups">> => list(network_function_group()),
 %%   <<"WithEdgeOverrides">> => list(edge_override())
@@ -2583,747 +2575,755 @@
 
 
 %% Example:
-%% create_connect_peer_request() :: #{
-%%   <<"BgpOptions">> => bgp_options(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectAttachmentId">> := string(),
-%%   <<"CoreNetworkAddress">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string()),
-%%   <<"PeerAddress">> := string(),
-%%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%% vpc_attachment() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"Options">> => vpc_options(),
+%%   <<"SubnetArns">> => list(string())
 %% }
--type create_connect_peer_request() :: #{binary() => any()}.
+-type vpc_attachment() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_core_network_policy_version_request() :: #{}
--type delete_core_network_policy_version_request() :: #{}.
+%% vpc_options() :: #{
+%%   <<"ApplianceModeSupport">> => boolean(),
+%%   <<"DnsSupport">> => boolean(),
+%%   <<"Ipv6Support">> => boolean(),
+%%   <<"SecurityGroupReferencingSupport">> => boolean()
+%% }
+-type vpc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% when_sent_to() :: #{
+%%   <<"WhenSentToSegmentsList">> => list(string())
+%% }
+-type when_sent_to() :: #{binary() => any()}.
 
 -type accept_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_customer_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_transit_gateway_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connect_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_core_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
     core_network_policy_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_core_network_prefix_list_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_direct_connect_gateway_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_global_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_site_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_site_to_site_vpn_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_transit_gateway_peering_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_transit_gateway_route_table_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_vpc_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_core_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_core_network_policy_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_core_network_prefix_list_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_global_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_peering_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_site_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deregister_transit_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_global_networks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_customer_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_transit_gateway_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type execute_core_network_change_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_connect_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connect_peer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connect_peer_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_connections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_core_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_core_network_change_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_core_network_change_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_core_network_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_customer_gateway_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_direct_connect_gateway_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_link_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_links_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_resource_counts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_network_resource_relationships_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_routes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_telemetry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_route_analysis_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_site_to_site_vpn_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sites_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_transit_gateway_connect_peer_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_transit_gateway_peering_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_transit_gateway_registrations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_transit_gateway_route_table_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_vpc_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_attachment_routing_policy_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_attachments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_connect_peers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_core_network_policy_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_core_network_prefix_list_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_core_network_routing_information_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_core_networks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_peerings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_attachment_routing_policy_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_core_network_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     core_network_policy_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type register_transit_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reject_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_attachment_routing_policy_label_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type restore_core_network_policy_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_organization_service_access_update_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_route_analysis_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_core_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_direct_connect_gateway_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_global_network_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_link_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_network_resource_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_site_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_vpc_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

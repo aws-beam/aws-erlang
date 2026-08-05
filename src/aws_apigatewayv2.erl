@@ -254,147 +254,71 @@
 
 
 %% Example:
-%% update_stage_request() :: #{
-%%   <<"AccessLogSettings">> => access_log_settings(),
-%%   <<"AutoDeploy">> => boolean(),
-%%   <<"ClientCertificateId">> => string(),
-%%   <<"DefaultRouteSettings">> => route_settings(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"RouteSettings">> => map(),
-%%   <<"StageVariables">> => map()
+%% a_cm_managed() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DomainName">> => string()
 %% }
--type update_stage_request() :: #{binary() => any()}.
+-type a_cm_managed() :: #{binary() => any()}.
 
 
 %% Example:
-%% display_content() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Title">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type display_content() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_integration_response_response() :: #{
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"IntegrationResponseId">> => string(),
-%%   <<"IntegrationResponseKey">> => string(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"ResponseTemplates">> => map(),
-%%   <<"TemplateSelectionExpression">> => string()
+%% access_log_settings() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"Format">> => string()
 %% }
--type update_integration_response_response() :: #{binary() => any()}.
+-type access_log_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_product_page_response() :: #{
-%%   <<"DisplayContent">> => display_content(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductPageArn">> => string(),
-%%   <<"ProductPageId">> => string()
-%% }
--type update_product_page_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stages_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_stages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_response_response() :: #{
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"IntegrationResponseId">> => string(),
-%%   <<"IntegrationResponseKey">> => string(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"ResponseTemplates">> => map(),
-%%   <<"TemplateSelectionExpression">> => string()
-%% }
--type create_integration_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_api_request() :: #{
-%%   <<"ExportVersion">> => string(),
-%%   <<"IncludeExtensions">> => boolean(),
-%%   <<"OutputType">> := string(),
-%%   <<"StageName">> => string()
-%% }
--type export_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage() :: #{
-%%   <<"AccessLogSettings">> => access_log_settings(),
+%% api() :: #{
+%%   <<"ApiEndpoint">> => string(),
 %%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"AutoDeploy">> => boolean(),
-%%   <<"ClientCertificateId">> => string(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
 %%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DefaultRouteSettings">> => route_settings(),
-%%   <<"DeploymentId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"LastDeploymentStatusMessage">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"RouteSettings">> => map(),
-%%   <<"StageName">> => string(),
-%%   <<"StageVariables">> => map(),
-%%   <<"Tags">> => map()
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string())
 %% }
--type stage() :: #{binary() => any()}.
+-type api() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_deployments_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
+%% api_mapping() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
 %% }
--type get_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type api_mapping() :: #{binary() => any()}.
 
 %% Example:
 %% apigatewayv2_none() :: #{}
 -type apigatewayv2_none() :: #{}.
 
-%% Example:
-%% get_portal_request() :: #{}
--type get_portal_request() :: #{}.
-
 
 %% Example:
-%% tls_config_input() :: #{
-%%   <<"ServerNameToVerify">> => string()
+%% authorization() :: #{
+%%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"None">> => apigatewayv2_none()
 %% }
--type tls_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_product_rest_endpoint_pages_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceOwnerAccountId">> => string()
-%% }
--type list_product_rest_endpoint_pages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_routing_rule_request() :: #{
-%%   <<"DomainNameId">> => string()
-%% }
--type delete_routing_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_link_response() :: #{}
--type delete_vpc_link_response() :: #{}.
+-type authorization() :: #{binary() => any()}.
 
 
 %% Example:
@@ -415,7 +339,120 @@
 
 
 %% Example:
-%% get_authorizer_response() :: #{
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"AppClientId">> => string(),
+%%   <<"UserPoolArn">> => string(),
+%%   <<"UserPoolDomain">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cors() :: #{
+%%   <<"AllowCredentials">> => boolean(),
+%%   <<"AllowHeaders">> => list(string()),
+%%   <<"AllowMethods">> => list(string()),
+%%   <<"AllowOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
+%%   <<"MaxAge">> => integer()
+%% }
+-type cors() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_mapping_request() :: #{
+%%   <<"ApiId">> := string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> := string()
+%% }
+-type create_api_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type create_api_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_request() :: #{
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"ProtocolType">> := list(any()),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Target">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string())
+%% }
+-type create_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_authorizer_request() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> := list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> := list(string()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> := string()
+%% }
+-type create_authorizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_authorizer_response() :: #{
 %%   <<"AuthorizerCredentialsArn">> => string(),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"AuthorizerPayloadFormatVersion">> => string(),
@@ -428,7 +465,332 @@
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
 %% }
--type get_authorizer_response() :: #{binary() => any()}.
+-type create_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type create_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_name_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
+%%   <<"RoutingMode">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_name_response() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_name_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_request() :: #{
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> := list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config_input()
+%% }
+-type create_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_response_request() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseKey">> := string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type create_integration_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_response_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type create_integration_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationId">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationResponseSelectionExpression">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config()
+%% }
+-type create_integration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_request() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schema">> := string()
+%% }
+-type create_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type create_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_product_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_product_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_product_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_request() :: #{
+%%   <<"Authorization">> := authorization(),
+%%   <<"EndpointConfiguration">> := endpoint_configuration_request(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LogoUri">> => string(),
+%%   <<"PortalContent">> := portal_content(),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type create_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_product_page_request() :: #{
+%%   <<"DisplayContent">> := display_content()
+%% }
+-type create_product_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type create_product_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_product_rest_endpoint_page_request() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content(),
+%%   <<"RestEndpointIdentifier">> := rest_endpoint_identifier(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type create_product_rest_endpoint_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type create_product_rest_endpoint_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_request() :: #{
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteKey">> := string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type create_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_response_request() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseKey">> := string()
+%% }
+-type create_route_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_response_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type create_route_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type create_route_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_routing_rule_request() :: #{
+%%   <<"Actions">> := list(routing_rule_action()),
+%%   <<"Conditions">> := list(routing_rule_condition()),
+%%   <<"DomainNameId">> => string(),
+%%   <<"Priority">> := integer()
+%% }
+-type create_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type create_routing_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stage_request() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> := string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_stage_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,62 +814,135 @@
 
 
 %% Example:
-%% get_vpc_links_response() :: #{
-%%   <<"Items">> => list(vpc_link()),
-%%   <<"NextToken">> => string()
+%% create_vpc_link_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => map()
 %% }
--type get_vpc_links_response() :: #{binary() => any()}.
+-type create_vpc_link_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% routing_rule_action() :: #{
-%%   <<"InvokeApi">> => routing_rule_action_invoke_api()
-%% }
--type routing_rule_action() :: #{binary() => any()}.
-
-%% Example:
-%% get_tags_request() :: #{}
--type get_tags_request() :: #{}.
-
-
-%% Example:
-%% get_stage_response() :: #{
-%%   <<"AccessLogSettings">> => access_log_settings(),
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"AutoDeploy">> => boolean(),
-%%   <<"ClientCertificateId">> => string(),
+%% create_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DefaultRouteSettings">> => route_settings(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastDeploymentStatusMessage">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"RouteSettings">> => map(),
-%%   <<"StageName">> => string(),
-%%   <<"StageVariables">> => map(),
-%%   <<"Tags">> => map()
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
 %% }
--type get_stage_response() :: #{binary() => any()}.
+-type create_vpc_link_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_portal_product_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DisplayOrder">> => display_order(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PortalProductArn">> => string(),
-%%   <<"PortalProductId">> => string(),
-%%   <<"Tags">> => map()
+%% custom_colors() :: #{
+%%   <<"AccentColor">> => string(),
+%%   <<"BackgroundColor">> => string(),
+%%   <<"ErrorValidationColor">> => string(),
+%%   <<"HeaderColor">> => string(),
+%%   <<"NavigationColor">> => string(),
+%%   <<"TextColor">> => string()
 %% }
--type get_portal_product_response() :: #{binary() => any()}.
+-type custom_colors() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_log_settings_request() :: #{}
+-type delete_access_log_settings_request() :: #{}.
+
+%% Example:
+%% delete_api_mapping_request() :: #{}
+-type delete_api_mapping_request() :: #{}.
+
+%% Example:
+%% delete_api_request() :: #{}
+-type delete_api_request() :: #{}.
+
+%% Example:
+%% delete_authorizer_request() :: #{}
+-type delete_authorizer_request() :: #{}.
+
+%% Example:
+%% delete_cors_configuration_request() :: #{}
+-type delete_cors_configuration_request() :: #{}.
+
+%% Example:
+%% delete_deployment_request() :: #{}
+-type delete_deployment_request() :: #{}.
+
+%% Example:
+%% delete_domain_name_request() :: #{}
+-type delete_domain_name_request() :: #{}.
+
+%% Example:
+%% delete_integration_request() :: #{}
+-type delete_integration_request() :: #{}.
+
+%% Example:
+%% delete_integration_response_request() :: #{}
+-type delete_integration_response_request() :: #{}.
+
+%% Example:
+%% delete_model_request() :: #{}
+-type delete_model_request() :: #{}.
+
+%% Example:
+%% delete_portal_product_request() :: #{}
+-type delete_portal_product_request() :: #{}.
+
+%% Example:
+%% delete_portal_product_sharing_policy_request() :: #{}
+-type delete_portal_product_sharing_policy_request() :: #{}.
+
+%% Example:
+%% delete_portal_request() :: #{}
+-type delete_portal_request() :: #{}.
+
+%% Example:
+%% delete_product_page_request() :: #{}
+-type delete_product_page_request() :: #{}.
+
+%% Example:
+%% delete_product_rest_endpoint_page_request() :: #{}
+-type delete_product_rest_endpoint_page_request() :: #{}.
+
+%% Example:
+%% delete_route_request() :: #{}
+-type delete_route_request() :: #{}.
+
+%% Example:
+%% delete_route_request_parameter_request() :: #{}
+-type delete_route_request_parameter_request() :: #{}.
+
+%% Example:
+%% delete_route_response_request() :: #{}
+-type delete_route_response_request() :: #{}.
+
+%% Example:
+%% delete_route_settings_request() :: #{}
+-type delete_route_settings_request() :: #{}.
 
 
 %% Example:
-%% parameter_constraints() :: #{
-%%   <<"Required">> => boolean()
+%% delete_routing_rule_request() :: #{
+%%   <<"DomainNameId">> => string()
 %% }
--type parameter_constraints() :: #{binary() => any()}.
+-type delete_routing_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stage_request() :: #{}
+-type delete_stage_request() :: #{}.
+
+%% Example:
+%% delete_vpc_link_request() :: #{}
+-type delete_vpc_link_request() :: #{}.
+
+%% Example:
+%% delete_vpc_link_response() :: #{}
+-type delete_vpc_link_response() :: #{}.
 
 
 %% Example:
@@ -522,43 +957,327 @@
 -type deployment() :: #{binary() => any()}.
 
 %% Example:
-%% delete_api_mapping_request() :: #{}
--type delete_api_mapping_request() :: #{}.
+%% disable_portal_request() :: #{}
+-type disable_portal_request() :: #{}.
 
 
 %% Example:
-%% integration() :: #{
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"CredentialsArn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationId">> => string(),
-%%   <<"IntegrationMethod">> => string(),
-%%   <<"IntegrationResponseSelectionExpression">> => string(),
-%%   <<"IntegrationSubtype">> => string(),
-%%   <<"IntegrationType">> => list(any()),
-%%   <<"IntegrationUri">> => string(),
-%%   <<"PassthroughBehavior">> => list(any()),
-%%   <<"PayloadFormatVersion">> => string(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RequestTemplates">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"TemplateSelectionExpression">> => string(),
-%%   <<"TimeoutInMillis">> => integer(),
-%%   <<"TlsConfig">> => tls_config()
+%% display_content() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Title">> => string()
 %% }
--type integration() :: #{binary() => any()}.
+-type display_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_api_mapping_request() :: #{
-%%   <<"ApiId">> := string(),
+%% display_content_overrides() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"OperationName">> => string()
+%% }
+-type display_content_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% display_order() :: #{
+%%   <<"Contents">> => list(section()),
+%%   <<"OverviewPageArn">> => string(),
+%%   <<"ProductPageArns">> => list(string())
+%% }
+-type display_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_name() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type domain_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_name_configuration() :: #{
+%%   <<"ApiGatewayDomainName">> => string(),
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateName">> => string(),
+%%   <<"CertificateUploadDate">> => non_neg_integer(),
+%%   <<"DomainNameStatus">> => list(any()),
+%%   <<"DomainNameStatusMessage">> => string(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"OwnershipVerificationCertificateArn">> => string(),
+%%   <<"SecurityPolicy">> => list(any())
+%% }
+-type domain_name_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_configuration_request() :: #{
+%%   <<"AcmManaged">> => a_cm_managed(),
+%%   <<"None">> => apigatewayv2_none()
+%% }
+-type endpoint_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_configuration_response() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"PortalDefaultDomainName">> => string(),
+%%   <<"PortalDomainHostedZoneId">> => string()
+%% }
+-type endpoint_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_display_content() :: #{
+%%   <<"None">> => apigatewayv2_none(),
+%%   <<"Overrides">> => display_content_overrides()
+%% }
+-type endpoint_display_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_display_content_response() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"OperationName">> => string()
+%% }
+-type endpoint_display_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_api_request() :: #{
+%%   <<"ExportVersion">> => string(),
+%%   <<"IncludeExtensions">> => boolean(),
+%%   <<"OutputType">> := string(),
+%%   <<"StageName">> => string()
+%% }
+-type export_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_api_response() :: #{
+%%   <<"body">> => binary()
+%% }
+-type export_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_mapping_request() :: #{}
+-type get_api_mapping_request() :: #{}.
+
+
+%% Example:
+%% get_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
 %%   <<"ApiMappingKey">> => string(),
 %%   <<"Stage">> => string()
 %% }
--type update_api_mapping_request() :: #{binary() => any()}.
+-type get_api_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_api_mappings_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_api_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_api_mappings_response() :: #{
+%%   <<"Items">> => list(api_mapping()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_api_mappings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_request() :: #{}
+-type get_api_request() :: #{}.
+
+
+%% Example:
+%% get_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string())
+%% }
+-type get_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_apis_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_apis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_apis_response() :: #{
+%%   <<"Items">> => list(api()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_apis_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorizer_request() :: #{}
+-type get_authorizer_request() :: #{}.
+
+
+%% Example:
+%% get_authorizer_response() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type get_authorizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authorizers_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_authorizers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authorizers_response() :: #{
+%%   <<"Items">> => list(authorizer()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_authorizers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+
+%% Example:
+%% get_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type get_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployments_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployments_response() :: #{
+%%   <<"Items">> => list(deployment()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_name_request() :: #{}
+-type get_domain_name_request() :: #{}.
+
+
+%% Example:
+%% get_domain_name_response() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameArn">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"RoutingMode">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_name_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_names_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_domain_names_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_names_response() :: #{
+%%   <<"Items">> => list(domain_name()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_domain_names_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_request() :: #{}
+-type get_integration_request() :: #{}.
+
+%% Example:
+%% get_integration_response_request() :: #{}
+-type get_integration_response_request() :: #{}.
+
+
+%% Example:
+%% get_integration_response_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type get_integration_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_responses_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integration_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_responses_response() :: #{
+%%   <<"Items">> => list(integration_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integration_responses_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -588,84 +1307,165 @@
 
 
 %% Example:
-%% get_authorizers_response() :: #{
-%%   <<"Items">> => list(authorizer()),
+%% get_integrations_request() :: #{
+%%   <<"MaxResults">> => string(),
 %%   <<"NextToken">> => string()
 %% }
--type get_authorizers_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_response_request() :: #{}
--type delete_integration_response_request() :: #{}.
+-type get_integrations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% route_settings() :: #{
-%%   <<"DataTraceEnabled">> => boolean(),
-%%   <<"DetailedMetricsEnabled">> => boolean(),
-%%   <<"LoggingLevel">> => list(any()),
-%%   <<"ThrottlingBurstLimit">> => integer(),
-%%   <<"ThrottlingRateLimit">> => float()
-%% }
--type route_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routing_rules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RoutingRules">> => list(routing_rule())
-%% }
--type list_routing_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_route_responses_response() :: #{
-%%   <<"Items">> => list(route_response()),
+%% get_integrations_response() :: #{
+%%   <<"Items">> => list(integration()),
 %%   <<"NextToken">> => string()
 %% }
--type get_route_responses_response() :: #{binary() => any()}.
+-type get_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_request() :: #{}
+-type get_model_request() :: #{}.
 
 
 %% Example:
-%% create_product_rest_endpoint_page_request() :: #{
-%%   <<"DisplayContent">> => endpoint_display_content(),
-%%   <<"RestEndpointIdentifier">> := rest_endpoint_identifier(),
+%% get_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type get_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_template_request() :: #{}
+-type get_model_template_request() :: #{}.
+
+
+%% Example:
+%% get_model_template_response() :: #{
+%%   <<"Value">> => string()
+%% }
+-type get_model_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_models_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_models_response() :: #{
+%%   <<"Items">> => list(model()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_portal_product_request() :: #{
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_portal_product_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_portal_product_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portal_product_sharing_policy_request() :: #{}
+-type get_portal_product_sharing_policy_request() :: #{}.
+
+
+%% Example:
+%% get_portal_product_sharing_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PortalProductId">> => string()
+%% }
+-type get_portal_product_sharing_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portal_request() :: #{}
+-type get_portal_request() :: #{}.
+
+
+%% Example:
+%% get_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type get_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_page_request() :: #{
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_product_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type get_product_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_rest_endpoint_page_request() :: #{
+%%   <<"IncludeRawDisplayContent">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type get_product_rest_endpoint_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RawDisplayContent">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
 %%   <<"TryItState">> => list(any())
 %% }
--type create_product_rest_endpoint_page_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mutual_tls_authentication() :: #{
-%%   <<"TruststoreUri">> => string(),
-%%   <<"TruststoreVersion">> => string(),
-%%   <<"TruststoreWarnings">> => list(string())
-%% }
--type mutual_tls_authentication() :: #{binary() => any()}.
+-type get_product_rest_endpoint_page_response() :: #{binary() => any()}.
 
 %% Example:
-%% preview_portal_response() :: #{}
--type preview_portal_response() :: #{}.
-
-
-%% Example:
-%% create_route_response_request() :: #{
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"ResponseModels">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"RouteResponseKey">> := string()
-%% }
--type create_route_response_request() :: #{binary() => any()}.
-
+%% get_route_request() :: #{}
+-type get_route_request() :: #{}.
 
 %% Example:
-%% update_api_mapping_response() :: #{
-%%   <<"ApiId">> => string(),
-%%   <<"ApiMappingId">> => string(),
-%%   <<"ApiMappingKey">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type update_api_mapping_response() :: #{binary() => any()}.
+%% get_route_response_request() :: #{}
+-type get_route_response_request() :: #{}.
 
 
 %% Example:
@@ -680,34 +1480,181 @@
 
 
 %% Example:
-%% create_deployment_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"StageName">> => string()
+%% get_route_responses_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
 %% }
--type create_deployment_request() :: #{binary() => any()}.
+-type get_route_responses_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_portal_response() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastPublished">> => non_neg_integer(),
-%%   <<"LastPublishedDescription">> => string(),
-%%   <<"PortalArn">> => string(),
-%%   <<"PortalContent">> => portal_content(),
-%%   <<"PortalId">> => string(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RumAppMonitorName">> => string(),
-%%   <<"StatusException">> => status_exception(),
+%% get_route_responses_response() :: #{
+%%   <<"Items">> => list(route_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_route_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type get_route_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_routes_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_routes_response() :: #{
+%%   <<"Items">> => list(route()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_routes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_routing_rule_request() :: #{
+%%   <<"DomainNameId">> => string()
+%% }
+-type get_routing_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type get_routing_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_stage_request() :: #{}
+-type get_stage_request() :: #{}.
+
+
+%% Example:
+%% get_stage_response() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
 %%   <<"Tags">> => map()
 %% }
--type create_portal_response() :: #{binary() => any()}.
+-type get_stage_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_api_response() :: #{
+%% get_stages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_stages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stages_response() :: #{
+%%   <<"Items">> => list(stage()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_stages_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_tags_request() :: #{}
+-type get_tags_request() :: #{}.
+
+
+%% Example:
+%% get_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type get_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_link_request() :: #{}
+-type get_vpc_link_request() :: #{}.
+
+
+%% Example:
+%% get_vpc_link_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type get_vpc_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vpc_links_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_vpc_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vpc_links_response() :: #{
+%%   <<"Items">> => list(vpc_link()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_vpc_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identifier_parts() :: #{
+%%   <<"Method">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"RestApiId">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type identifier_parts() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_api_request() :: #{
+%%   <<"Basepath">> => string(),
+%%   <<"Body">> := string(),
+%%   <<"FailOnWarnings">> => boolean()
+%% }
+-type import_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_api_response() :: #{
 %%   <<"ApiEndpoint">> => string(),
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiId">> => string(),
@@ -726,340 +1673,11 @@
 %%   <<"Version">> => string(),
 %%   <<"Warnings">> => list(string())
 %% }
--type create_api_response() :: #{binary() => any()}.
+-type import_api_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_model_request() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Schema">> := string()
-%% }
--type create_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_result() :: #{
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
-%% }
--type update_route_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_cm_managed() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DomainName">> => string()
-%% }
--type a_cm_managed() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()),
-%%   <<"Conditions">> => list(routing_rule_condition()),
-%%   <<"Priority">> => integer(),
-%%   <<"RoutingRuleArn">> => string(),
-%%   <<"RoutingRuleId">> => string()
-%% }
--type put_routing_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_model_request() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type update_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reimport_api_request() :: #{
-%%   <<"Basepath">> => string(),
-%%   <<"Body">> := string(),
-%%   <<"FailOnWarnings">> => boolean()
-%% }
--type reimport_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_config() :: #{
-%%   <<"AppClientId">> => string(),
-%%   <<"UserPoolArn">> => string(),
-%%   <<"UserPoolDomain">> => string()
-%% }
--type cognito_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_route_response_request() :: #{}
--type get_route_response_request() :: #{}.
-
-
-%% Example:
-%% section() :: #{
-%%   <<"ProductRestEndpointPageArns">> => list(string()),
-%%   <<"SectionName">> => string()
-%% }
--type section() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_portal_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type publish_portal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_name_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
-%%   <<"RoutingMode">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_domain_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_stage_response() :: #{
-%%   <<"AccessLogSettings">> => access_log_settings(),
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"AutoDeploy">> => boolean(),
-%%   <<"ClientCertificateId">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DefaultRouteSettings">> => route_settings(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastDeploymentStatusMessage">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"RouteSettings">> => map(),
-%%   <<"StageName">> => string(),
-%%   <<"StageVariables">> => map(),
-%%   <<"Tags">> => map()
-%% }
--type update_stage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_product_page_request() :: #{
-%%   <<"ResourceOwnerAccountId">> => string()
-%% }
--type get_product_page_request() :: #{binary() => any()}.
-
-%% Example:
-%% preview_portal_request() :: #{}
--type preview_portal_request() :: #{}.
-
-
-%% Example:
-%% vpc_link() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcLinkId">> => string(),
-%%   <<"VpcLinkStatus">> => list(any()),
-%%   <<"VpcLinkStatusMessage">> => string(),
-%%   <<"VpcLinkVersion">> => list(any())
-%% }
--type vpc_link() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_response() :: #{
-%%   <<"AutoDeployed">> => boolean(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"DeploymentStatus">> => list(any()),
-%%   <<"DeploymentStatusMessage">> => string(),
-%%   <<"Description">> => string()
-%% }
--type create_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_rule_condition() :: #{
-%%   <<"MatchBasePaths">> => routing_rule_match_base_paths(),
-%%   <<"MatchHeaders">> => routing_rule_match_headers()
-%% }
--type routing_rule_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_product_page_response() :: #{
-%%   <<"DisplayContent">> => display_content(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductPageArn">> => string(),
-%%   <<"ProductPageId">> => string()
-%% }
--type get_product_page_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_model_template_request() :: #{}
--type get_model_template_request() :: #{}.
-
-
-%% Example:
-%% identifier_parts() :: #{
-%%   <<"Method">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"RestApiId">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type identifier_parts() :: #{binary() => any()}.
-
-%% Example:
-%% delete_authorizer_request() :: #{}
--type delete_authorizer_request() :: #{}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"LimitType">> => string(),
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_authorizer_request() :: #{
-%%   <<"AuthorizerCredentialsArn">> => string(),
-%%   <<"AuthorizerPayloadFormatVersion">> => string(),
-%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
-%%   <<"AuthorizerType">> := list(any()),
-%%   <<"AuthorizerUri">> => string(),
-%%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> := list(string()),
-%%   <<"IdentityValidationExpression">> => string(),
-%%   <<"JwtConfiguration">> => j_w_t_configuration(),
-%%   <<"Name">> := string()
-%% }
--type create_authorizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_stage_request() :: #{}
--type get_stage_request() :: #{}.
-
-%% Example:
-%% delete_product_rest_endpoint_page_request() :: #{}
--type delete_product_rest_endpoint_page_request() :: #{}.
-
-%% Example:
-%% get_authorizer_request() :: #{}
--type get_authorizer_request() :: #{}.
-
-%% Example:
-%% delete_portal_product_sharing_policy_request() :: #{}
--type delete_portal_product_sharing_policy_request() :: #{}.
-
-
-%% Example:
-%% product_rest_endpoint_page_summary_no_body() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"OperationName">> => string(),
-%%   <<"ProductRestEndpointPageArn">> => string(),
-%%   <<"ProductRestEndpointPageId">> => string(),
-%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"TryItState">> => list(any())
-%% }
--type product_rest_endpoint_page_summary_no_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_responses_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_integration_responses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_response_response() :: #{
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"ResponseModels">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"RouteResponseId">> => string(),
-%%   <<"RouteResponseKey">> => string()
-%% }
--type update_route_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_product_page_response() :: #{
-%%   <<"DisplayContent">> => display_content(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductPageArn">> => string(),
-%%   <<"ProductPageId">> => string()
-%% }
--type create_product_page_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_mapping_request() :: #{
-%%   <<"ApiId">> := string(),
-%%   <<"ApiMappingKey">> => string(),
-%%   <<"Stage">> := string()
-%% }
--type create_api_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorization() :: #{
-%%   <<"CognitoConfig">> => cognito_config(),
-%%   <<"None">> => apigatewayv2_none()
-%% }
--type authorization() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_authorizer_response() :: #{
-%%   <<"AuthorizerCredentialsArn">> => string(),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"AuthorizerPayloadFormatVersion">> => string(),
-%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
-%%   <<"AuthorizerType">> => list(any()),
-%%   <<"AuthorizerUri">> => string(),
-%%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()),
-%%   <<"IdentityValidationExpression">> => string(),
-%%   <<"JwtConfiguration">> => j_w_t_configuration(),
-%%   <<"Name">> => string()
-%% }
--type create_authorizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_route_request_parameter_request() :: #{}
--type delete_route_request_parameter_request() :: #{}.
-
-
-%% Example:
-%% create_integration_result() :: #{
+%% integration() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ConnectionId">> => string(),
 %%   <<"ConnectionType">> => list(any()),
@@ -1081,15 +1699,267 @@
 %%   <<"TimeoutInMillis">> => integer(),
 %%   <<"TlsConfig">> => tls_config()
 %% }
--type create_integration_result() :: #{binary() => any()}.
+-type integration() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_portal_product_sharing_policy_request() :: #{}
--type get_portal_product_sharing_policy_request() :: #{}.
+%% integration_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type integration_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_stage_request() :: #{}
--type delete_stage_request() :: #{}.
+%% j_w_t_configuration() :: #{
+%%   <<"Audience">> => list(string()),
+%%   <<"Issuer">> => string()
+%% }
+-type j_w_t_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portal_products_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwner">> => string()
+%% }
+-type list_portal_products_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portal_products_response() :: #{
+%%   <<"Items">> => list(portal_product_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portal_products_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_portals_response() :: #{
+%%   <<"Items">> => list(portal_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_portals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_pages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type list_product_pages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_pages_response() :: #{
+%%   <<"Items">> => list(product_page_summary_no_body()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_product_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_rest_endpoint_pages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string()
+%% }
+-type list_product_rest_endpoint_pages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_product_rest_endpoint_pages_response() :: #{
+%%   <<"Items">> => list(product_rest_endpoint_page_summary_no_body()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_product_rest_endpoint_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_rules_request() :: #{
+%%   <<"DomainNameId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingRules">> => list(routing_rule())
+%% }
+-type list_routing_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% model() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type model() :: #{binary() => any()}.
+
+
+%% Example:
+%% mutual_tls_authentication() :: #{
+%%   <<"TruststoreUri">> => string(),
+%%   <<"TruststoreVersion">> => string(),
+%%   <<"TruststoreWarnings">> => list(string())
+%% }
+-type mutual_tls_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% mutual_tls_authentication_input() :: #{
+%%   <<"TruststoreUri">> => string(),
+%%   <<"TruststoreVersion">> => string()
+%% }
+-type mutual_tls_authentication_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_constraints() :: #{
+%%   <<"Required">> => boolean()
+%% }
+-type parameter_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_content() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Theme">> => portal_theme()
+%% }
+-type portal_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_product_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type portal_product_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_summary() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% portal_theme() :: #{
+%%   <<"CustomColors">> => custom_colors(),
+%%   <<"LogoLastUploaded">> => non_neg_integer()
+%% }
+-type portal_theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% preview() :: #{
+%%   <<"PreviewStatus">> => list(any()),
+%%   <<"PreviewUrl">> => string(),
+%%   <<"StatusException">> => status_exception()
+%% }
+-type preview() :: #{binary() => any()}.
+
+%% Example:
+%% preview_portal_request() :: #{}
+-type preview_portal_request() :: #{}.
+
+%% Example:
+%% preview_portal_response() :: #{}
+-type preview_portal_response() :: #{}.
+
+
+%% Example:
+%% product_page_summary_no_body() :: #{
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PageTitle">> => string(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type product_page_summary_no_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_rest_endpoint_page_summary_no_body() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"OperationName">> => string(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type product_rest_endpoint_page_summary_no_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_portal_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type publish_portal_request() :: #{binary() => any()}.
+
+%% Example:
+%% publish_portal_response() :: #{}
+-type publish_portal_response() :: #{}.
+
+
+%% Example:
+%% put_portal_product_sharing_policy_request() :: #{
+%%   <<"PolicyDocument">> := string()
+%% }
+-type put_portal_product_sharing_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_portal_product_sharing_policy_response() :: #{}
+-type put_portal_product_sharing_policy_response() :: #{}.
 
 
 %% Example:
@@ -1101,56 +1971,29 @@
 %% }
 -type put_routing_rule_request() :: #{binary() => any()}.
 
-%% Example:
-%% put_portal_product_sharing_policy_response() :: #{}
--type put_portal_product_sharing_policy_response() :: #{}.
-
 
 %% Example:
-%% get_authorizers_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
+%% put_routing_rule_response() :: #{
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
 %% }
--type get_authorizers_request() :: #{binary() => any()}.
+-type put_routing_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_portals_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
+%% reimport_api_request() :: #{
+%%   <<"Basepath">> => string(),
+%%   <<"Body">> := string(),
+%%   <<"FailOnWarnings">> => boolean()
 %% }
--type list_portals_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_portal_request() :: #{}
--type delete_portal_request() :: #{}.
+-type reimport_api_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_request() :: #{}
--type delete_integration_request() :: #{}.
-
-
-%% Example:
-%% custom_colors() :: #{
-%%   <<"AccentColor">> => string(),
-%%   <<"BackgroundColor">> => string(),
-%%   <<"ErrorValidationColor">> => string(),
-%%   <<"HeaderColor">> => string(),
-%%   <<"NavigationColor">> => string(),
-%%   <<"TextColor">> => string()
-%% }
--type custom_colors() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_response() :: #{
+%% reimport_api_response() :: #{
 %%   <<"ApiEndpoint">> => string(),
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiId">> => string(),
@@ -1169,18 +2012,229 @@
 %%   <<"Version">> => string(),
 %%   <<"Warnings">> => list(string())
 %% }
--type get_api_response() :: #{binary() => any()}.
+-type reimport_api_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cors_configuration_request() :: #{}
--type delete_cors_configuration_request() :: #{}.
+%% reset_authorizers_cache_request() :: #{}
+-type reset_authorizers_cache_request() :: #{}.
 
 
 %% Example:
-%% create_product_page_request() :: #{
-%%   <<"DisplayContent">> := display_content()
+%% rest_endpoint_identifier() :: #{
+%%   <<"IdentifierParts">> => identifier_parts()
 %% }
--type create_product_page_request() :: #{binary() => any()}.
+-type rest_endpoint_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% route() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type route() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_settings() :: #{
+%%   <<"DataTraceEnabled">> => boolean(),
+%%   <<"DetailedMetricsEnabled">> => boolean(),
+%%   <<"LoggingLevel">> => list(any()),
+%%   <<"ThrottlingBurstLimit">> => integer(),
+%%   <<"ThrottlingRateLimit">> => float()
+%% }
+-type route_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule() :: #{
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
+%%   <<"Priority">> => integer(),
+%%   <<"RoutingRuleArn">> => string(),
+%%   <<"RoutingRuleId">> => string()
+%% }
+-type routing_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_action() :: #{
+%%   <<"InvokeApi">> => routing_rule_action_invoke_api()
+%% }
+-type routing_rule_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_action_invoke_api() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"Stage">> => string(),
+%%   <<"StripBasePath">> => boolean()
+%% }
+-type routing_rule_action_invoke_api() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_condition() :: #{
+%%   <<"MatchBasePaths">> => routing_rule_match_base_paths(),
+%%   <<"MatchHeaders">> => routing_rule_match_headers()
+%% }
+-type routing_rule_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_match_base_paths() :: #{
+%%   <<"AnyOf">> => list(string())
+%% }
+-type routing_rule_match_base_paths() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_match_header_value() :: #{
+%%   <<"Header">> => string(),
+%%   <<"ValueGlob">> => string()
+%% }
+-type routing_rule_match_header_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_match_headers() :: #{
+%%   <<"AnyOf">> => list(routing_rule_match_header_value())
+%% }
+-type routing_rule_match_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% section() :: #{
+%%   <<"ProductRestEndpointPageArns">> => list(string()),
+%%   <<"SectionName">> => string()
+%% }
+-type section() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_exception() :: #{
+%%   <<"Exception">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type status_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% tls_config() :: #{
+%%   <<"ServerNameToVerify">> => string()
+%% }
+-type tls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_config_input() :: #{
+%%   <<"ServerNameToVerify">> => string()
+%% }
+-type tls_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"LimitType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_mapping_request() :: #{
+%%   <<"ApiId">> := string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type update_api_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type update_api_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_request() :: #{
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Target">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type update_api_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1207,190 +2261,64 @@
 
 
 %% Example:
-%% list_portal_products_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceOwner">> => string()
+%% update_authorizer_request() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
 %% }
--type list_portal_products_request() :: #{binary() => any()}.
+-type update_authorizer_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_portal_request() :: #{
-%%   <<"Authorization">> := authorization(),
-%%   <<"EndpointConfiguration">> := endpoint_configuration_request(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LogoUri">> => string(),
-%%   <<"PortalContent">> := portal_content(),
-%%   <<"RumAppMonitorName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_portal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_portal_response() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastPublished">> => non_neg_integer(),
-%%   <<"LastPublishedDescription">> => string(),
-%%   <<"PortalArn">> => string(),
-%%   <<"PortalContent">> => portal_content(),
-%%   <<"PortalId">> => string(),
-%%   <<"Preview">> => preview(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RumAppMonitorName">> => string(),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"Tags">> => map()
-%% }
--type update_portal_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_request() :: #{}
--type get_deployment_request() :: #{}.
-
-
-%% Example:
-%% j_w_t_configuration() :: #{
-%%   <<"Audience">> => list(string()),
-%%   <<"Issuer">> => string()
-%% }
--type j_w_t_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_link_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_vpc_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_api_request() :: #{
-%%   <<"Basepath">> => string(),
-%%   <<"Body">> := string(),
-%%   <<"FailOnWarnings">> => boolean()
-%% }
--type import_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_rule_match_headers() :: #{
-%%   <<"AnyOf">> => list(routing_rule_match_header_value())
-%% }
--type routing_rule_match_headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_link_response() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcLinkId">> => string(),
-%%   <<"VpcLinkStatus">> => list(any()),
-%%   <<"VpcLinkStatusMessage">> => string(),
-%%   <<"VpcLinkVersion">> => list(any())
-%% }
--type create_vpc_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_display_content_response() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"OperationName">> => string()
-%% }
--type endpoint_display_content_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_model_template_response() :: #{
-%%   <<"Value">> => string()
-%% }
--type get_model_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_responses_response() :: #{
-%%   <<"Items">> => list(integration_response()),
-%%   <<"NextToken">> => string()
-%% }
--type get_integration_responses_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% route() :: #{
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
+%% update_authorizer_response() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
 %%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
 %% }
--type route() :: #{binary() => any()}.
+-type update_authorizer_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_product_rest_endpoint_page_request() :: #{
-%%   <<"DisplayContent">> => endpoint_display_content(),
-%%   <<"TryItState">> => list(any())
+%% update_deployment_request() :: #{
+%%   <<"Description">> => string()
 %% }
--type update_product_rest_endpoint_page_request() :: #{binary() => any()}.
+-type update_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% endpoint_display_content() :: #{
-%%   <<"None">> => apigatewayv2_none(),
-%%   <<"Overrides">> => display_content_overrides()
+%% update_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
 %% }
--type endpoint_display_content() :: #{binary() => any()}.
+-type update_deployment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% api_mapping() :: #{
-%%   <<"ApiId">> => string(),
-%%   <<"ApiMappingId">> => string(),
-%%   <<"ApiMappingKey">> => string(),
-%%   <<"Stage">> => string()
+%% update_domain_name_request() :: #{
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
+%%   <<"RoutingMode">> => list(any())
 %% }
--type api_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tags_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type get_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_api_mapping_request() :: #{}
--type get_api_mapping_request() :: #{}.
-
-%% Example:
-%% delete_route_response_request() :: #{}
--type delete_route_response_request() :: #{}.
+-type update_domain_name_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1404,88 +2332,6 @@
 %%   <<"Tags">> => map()
 %% }
 -type update_domain_name_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_names_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_domain_names_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_log_settings_request() :: #{}
--type delete_access_log_settings_request() :: #{}.
-
-
-%% Example:
-%% get_integrations_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_request() :: #{}
--type get_integration_request() :: #{}.
-
-
-%% Example:
-%% put_portal_product_sharing_policy_request() :: #{
-%%   <<"PolicyDocument">> := string()
-%% }
--type put_portal_product_sharing_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_routes_response() :: #{
-%%   <<"Items">> => list(route()),
-%%   <<"NextToken">> => string()
-%% }
--type get_routes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_integration_response_request() :: #{
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"IntegrationResponseKey">> => string(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"ResponseTemplates">> => map(),
-%%   <<"TemplateSelectionExpression">> => string()
-%% }
--type update_integration_response_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% display_order() :: #{
-%%   <<"Contents">> => list(section()),
-%%   <<"OverviewPageArn">> => string(),
-%%   <<"ProductPageArns">> => list(string())
-%% }
--type display_order() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_response_request() :: #{
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"ResponseModels">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"RouteResponseKey">> => string()
-%% }
--type update_route_response_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_portal_product_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DisplayOrder">> => display_order(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PortalProductArn">> => string(),
-%%   <<"PortalProductId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_portal_product_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1512,940 +2358,18 @@
 
 
 %% Example:
-%% update_product_rest_endpoint_page_response() :: #{
-%%   <<"DisplayContent">> => endpoint_display_content_response(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductRestEndpointPageArn">> => string(),
-%%   <<"ProductRestEndpointPageId">> => string(),
-%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"TryItState">> => list(any())
-%% }
--type update_product_rest_endpoint_page_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_portal_product_sharing_policy_response() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PortalProductId">> => string()
-%% }
--type get_portal_product_sharing_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_route_settings_request() :: #{}
--type delete_route_settings_request() :: #{}.
-
-
-%% Example:
-%% update_model_response() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ModelId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type update_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_model_response() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ModelId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type create_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reimport_api_response() :: #{
-%%   <<"ApiEndpoint">> => string(),
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKeySelectionExpression">> => string(),
-%%   <<"CorsConfiguration">> => cors(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisableExecuteApiEndpoint">> => boolean(),
-%%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ProtocolType">> => list(any()),
-%%   <<"RouteSelectionExpression">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string())
-%% }
--type reimport_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_request() :: #{
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
-%% }
--type update_route_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_product_page_request() :: #{}
--type delete_product_page_request() :: #{}.
-
-
-%% Example:
-%% update_domain_name_request() :: #{
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
-%%   <<"RoutingMode">> => list(any())
-%% }
--type update_domain_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_route_responses_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_route_responses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_name() :: #{
-%%   <<"ApiMappingSelectionExpression">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
-%%   <<"RoutingMode">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type domain_name() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stage_request() :: #{
-%%   <<"AccessLogSettings">> => access_log_settings(),
-%%   <<"AutoDeploy">> => boolean(),
-%%   <<"ClientCertificateId">> => string(),
-%%   <<"DefaultRouteSettings">> => route_settings(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"RouteSettings">> => map(),
-%%   <<"StageName">> := string(),
-%%   <<"StageVariables">> => map(),
-%%   <<"Tags">> => map()
-%% }
--type create_stage_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_request() :: #{}
--type delete_deployment_request() :: #{}.
-
-
-%% Example:
-%% preview() :: #{
-%%   <<"PreviewStatus">> => list(any()),
-%%   <<"PreviewUrl">> => string(),
-%%   <<"StatusException">> => status_exception()
-%% }
--type preview() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portals_response() :: #{
-%%   <<"Items">> => list(portal_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_portals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_names_response() :: #{
-%%   <<"Items">> => list(domain_name()),
-%%   <<"NextToken">> => string()
-%% }
--type get_domain_names_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_request() :: #{
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionType">> => list(any()),
+%% update_integration_response_request() :: #{
 %%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"CredentialsArn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationMethod">> => string(),
-%%   <<"IntegrationSubtype">> => string(),
-%%   <<"IntegrationType">> := list(any()),
-%%   <<"IntegrationUri">> => string(),
-%%   <<"PassthroughBehavior">> => list(any()),
-%%   <<"PayloadFormatVersion">> => string(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RequestTemplates">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"TemplateSelectionExpression">> => string(),
-%%   <<"TimeoutInMillis">> => integer(),
-%%   <<"TlsConfig">> => tls_config_input()
-%% }
--type create_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_portal_product_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DisplayOrder">> => display_order(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PortalProductArn">> => string(),
-%%   <<"PortalProductId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_portal_product_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_product_page_request() :: #{
-%%   <<"DisplayContent">> => display_content()
-%% }
--type update_product_page_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_mapping_response() :: #{
-%%   <<"ApiId">> => string(),
-%%   <<"ApiMappingId">> => string(),
-%%   <<"ApiMappingKey">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type get_api_mapping_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% mutual_tls_authentication_input() :: #{
-%%   <<"TruststoreUri">> => string(),
-%%   <<"TruststoreVersion">> => string()
-%% }
--type mutual_tls_authentication_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_name_configuration() :: #{
-%%   <<"ApiGatewayDomainName">> => string(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateName">> => string(),
-%%   <<"CertificateUploadDate">> => non_neg_integer(),
-%%   <<"DomainNameStatus">> => list(any()),
-%%   <<"DomainNameStatusMessage">> => string(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"OwnershipVerificationCertificateArn">> => string(),
-%%   <<"SecurityPolicy">> => list(any())
-%% }
--type domain_name_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_api_response() :: #{
-%%   <<"body">> => binary()
-%% }
--type export_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_mappings_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_api_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_portal_product_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_portal_product_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_model_request() :: #{}
--type delete_model_request() :: #{}.
-
-
-%% Example:
-%% get_portal_product_request() :: #{
-%%   <<"ResourceOwnerAccountId">> => string()
-%% }
--type get_portal_product_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls_config() :: #{
-%%   <<"ServerNameToVerify">> => string()
-%% }
--type tls_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_configuration_response() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"PortalDefaultDomainName">> => string(),
-%%   <<"PortalDomainHostedZoneId">> => string()
-%% }
--type endpoint_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integrations_response() :: #{
-%%   <<"Items">> => list(integration()),
-%%   <<"NextToken">> => string()
-%% }
--type get_integrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_log_settings() :: #{
-%%   <<"DestinationArn">> => string(),
-%%   <<"Format">> => string()
-%% }
--type access_log_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_models_response() :: #{
-%%   <<"Items">> => list(model()),
-%%   <<"NextToken">> => string()
-%% }
--type get_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_exception() :: #{
-%%   <<"Exception">> => string(),
-%%   <<"Message">> => string()
-%% }
--type status_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_route_result() :: #{
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
-%% }
--type get_route_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_response_request() :: #{}
--type get_integration_response_request() :: #{}.
-
-
-%% Example:
-%% portal_product_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PortalProductArn">> => string(),
-%%   <<"PortalProductId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type portal_product_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stages_response() :: #{
-%%   <<"Items">> => list(stage()),
-%%   <<"NextToken">> => string()
-%% }
--type get_stages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_product_pages_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceOwnerAccountId">> => string()
-%% }
--type list_product_pages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_models_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_result() :: #{
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
-%% }
--type create_route_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_routes_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_routes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_link_request() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_vpc_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()),
-%%   <<"Conditions">> => list(routing_rule_condition()),
-%%   <<"Priority">> => integer(),
-%%   <<"RoutingRuleArn">> => string(),
-%%   <<"RoutingRuleId">> => string()
-%% }
--type create_routing_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_routing_rule_request() :: #{
-%%   <<"DomainNameId">> => string()
-%% }
--type get_routing_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_name_request() :: #{}
--type get_domain_name_request() :: #{}.
-
-%% Example:
-%% get_model_request() :: #{}
--type get_model_request() :: #{}.
-
-
-%% Example:
-%% list_product_pages_response() :: #{
-%%   <<"Items">> => list(product_page_summary_no_body()),
-%%   <<"NextToken">> => string()
-%% }
--type list_product_pages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_api_request() :: #{
-%%   <<"ApiKeySelectionExpression">> => string(),
-%%   <<"CorsConfiguration">> => cors(),
-%%   <<"CredentialsArn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisableExecuteApiEndpoint">> => boolean(),
-%%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteSelectionExpression">> => string(),
-%%   <<"Target">> => string(),
-%%   <<"Version">> => string()
-%% }
--type update_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_portal_product_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DisplayOrder">> => display_order()
-%% }
--type update_portal_product_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_response_request() :: #{
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"IntegrationResponseKey">> := string(),
+%%   <<"IntegrationResponseKey">> => string(),
 %%   <<"ResponseParameters">> => map(),
 %%   <<"ResponseTemplates">> => map(),
 %%   <<"TemplateSelectionExpression">> => string()
 %% }
--type create_integration_response_request() :: #{binary() => any()}.
+-type update_integration_response_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_portal_request() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"EndpointConfiguration">> => endpoint_configuration_request(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LogoUri">> => string(),
-%%   <<"PortalContent">> => portal_content(),
-%%   <<"RumAppMonitorName">> => string()
-%% }
--type update_portal_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_deployment_response() :: #{
-%%   <<"AutoDeployed">> => boolean(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"DeploymentStatus">> => list(any()),
-%%   <<"DeploymentStatusMessage">> => string(),
-%%   <<"Description">> => string()
-%% }
--type update_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% display_content_overrides() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"OperationName">> => string()
-%% }
--type display_content_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_theme() :: #{
-%%   <<"CustomColors">> => custom_colors(),
-%%   <<"LogoLastUploaded">> => non_neg_integer()
-%% }
--type portal_theme() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_product_rest_endpoint_page_response() :: #{
-%%   <<"DisplayContent">> => endpoint_display_content_response(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductRestEndpointPageArn">> => string(),
-%%   <<"ProductRestEndpointPageId">> => string(),
-%%   <<"RawDisplayContent">> => string(),
-%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"TryItState">> => list(any())
-%% }
--type get_product_rest_endpoint_page_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_route_request() :: #{}
--type delete_route_request() :: #{}.
-
-
-%% Example:
-%% get_deployment_response() :: #{
-%%   <<"AutoDeployed">> => boolean(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DeploymentId">> => string(),
-%%   <<"DeploymentStatus">> => list(any()),
-%%   <<"DeploymentStatusMessage">> => string(),
-%%   <<"Description">> => string()
-%% }
--type get_deployment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_authorizer_response() :: #{
-%%   <<"AuthorizerCredentialsArn">> => string(),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"AuthorizerPayloadFormatVersion">> => string(),
-%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
-%%   <<"AuthorizerType">> => list(any()),
-%%   <<"AuthorizerUri">> => string(),
-%%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()),
-%%   <<"IdentityValidationExpression">> => string(),
-%%   <<"JwtConfiguration">> => j_w_t_configuration(),
-%%   <<"Name">> => string()
-%% }
--type update_authorizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_request() :: #{
-%%   <<"ApiKeySelectionExpression">> => string(),
-%%   <<"CorsConfiguration">> => cors(),
-%%   <<"CredentialsArn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisableExecuteApiEndpoint">> => boolean(),
-%%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"ProtocolType">> := list(any()),
-%%   <<"RouteKey">> => string(),
-%%   <<"RouteSelectionExpression">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Target">> => string(),
-%%   <<"Version">> => string()
-%% }
--type create_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_product_rest_endpoint_pages_response() :: #{
-%%   <<"Items">> => list(product_rest_endpoint_page_summary_no_body()),
-%%   <<"NextToken">> => string()
-%% }
--type list_product_rest_endpoint_pages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vpc_link_response() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcLinkId">> => string(),
-%%   <<"VpcLinkStatus">> => list(any()),
-%%   <<"VpcLinkStatusMessage">> => string(),
-%%   <<"VpcLinkVersion">> => list(any())
-%% }
--type get_vpc_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cors() :: #{
-%%   <<"AllowCredentials">> => boolean(),
-%%   <<"AllowHeaders">> => list(string()),
-%%   <<"AllowMethods">> => list(string()),
-%%   <<"AllowOrigins">> => list(string()),
-%%   <<"ExposeHeaders">> => list(string()),
-%%   <<"MaxAge">> => integer()
-%% }
--type cors() :: #{binary() => any()}.
-
-
-%% Example:
-%% api() :: #{
-%%   <<"ApiEndpoint">> => string(),
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKeySelectionExpression">> => string(),
-%%   <<"CorsConfiguration">> => cors(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisableExecuteApiEndpoint">> => boolean(),
-%%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ProtocolType">> => list(any()),
-%%   <<"RouteSelectionExpression">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string())
-%% }
--type api() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_summary() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastPublished">> => non_neg_integer(),
-%%   <<"LastPublishedDescription">> => string(),
-%%   <<"PortalArn">> => string(),
-%%   <<"PortalContent">> => portal_content(),
-%%   <<"PortalId">> => string(),
-%%   <<"Preview">> => preview(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RumAppMonitorName">> => string(),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"Tags">> => map()
-%% }
--type portal_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_response_response() :: #{
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"ResponseModels">> => map(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"RouteResponseId">> => string(),
-%%   <<"RouteResponseKey">> => string()
-%% }
--type create_route_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_rule_match_header_value() :: #{
-%%   <<"Header">> => string(),
-%%   <<"ValueGlob">> => string()
-%% }
--type routing_rule_match_header_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_model_response() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ModelId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type get_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% portal_content() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Theme">> => portal_theme()
-%% }
--type portal_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_rule_action_invoke_api() :: #{
-%%   <<"ApiId">> => string(),
-%%   <<"Stage">> => string(),
-%%   <<"StripBasePath">> => boolean()
-%% }
--type routing_rule_action_invoke_api() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_mapping_response() :: #{
-%%   <<"ApiId">> => string(),
-%%   <<"ApiMappingId">> => string(),
-%%   <<"ApiMappingKey">> => string(),
-%%   <<"Stage">> => string()
-%% }
--type create_api_mapping_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_name_request() :: #{}
--type delete_domain_name_request() :: #{}.
-
-
-%% Example:
-%% update_vpc_link_response() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcLinkId">> => string(),
-%%   <<"VpcLinkStatus">> => list(any()),
-%%   <<"VpcLinkStatusMessage">> => string(),
-%%   <<"VpcLinkVersion">> => list(any())
-%% }
--type update_vpc_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_portal_products_response() :: #{
-%%   <<"Items">> => list(portal_product_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_portal_products_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_name_response() :: #{
-%%   <<"ApiMappingSelectionExpression">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
-%%   <<"RoutingMode">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_domain_name_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_vpc_link_request() :: #{}
--type get_vpc_link_request() :: #{}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployments_response() :: #{
-%%   <<"Items">> => list(deployment()),
-%%   <<"NextToken">> => string()
-%% }
--type get_deployments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_api_response() :: #{
-%%   <<"ApiEndpoint">> => string(),
-%%   <<"ApiGatewayManaged">> => boolean(),
-%%   <<"ApiId">> => string(),
-%%   <<"ApiKeySelectionExpression">> => string(),
-%%   <<"CorsConfiguration">> => cors(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisableExecuteApiEndpoint">> => boolean(),
-%%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ProtocolType">> => list(any()),
-%%   <<"RouteSelectionExpression">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string())
-%% }
--type import_api_response() :: #{binary() => any()}.
-
-%% Example:
-%% reset_authorizers_cache_request() :: #{}
--type reset_authorizers_cache_request() :: #{}.
-
-
-%% Example:
-%% get_api_mappings_response() :: #{
-%%   <<"Items">> => list(api_mapping()),
-%%   <<"NextToken">> => string()
-%% }
--type get_api_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_portal_response() :: #{
-%%   <<"Authorization">> => authorization(),
-%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
-%%   <<"IncludedPortalProductArns">> => list(string()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastPublished">> => non_neg_integer(),
-%%   <<"LastPublishedDescription">> => string(),
-%%   <<"PortalArn">> => string(),
-%%   <<"PortalContent">> => portal_content(),
-%%   <<"PortalId">> => string(),
-%%   <<"Preview">> => preview(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RumAppMonitorName">> => string(),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"Tags">> => map()
-%% }
--type get_portal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_request() :: #{
-%%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"AuthorizerId">> => string(),
-%%   <<"ModelSelectionExpression">> => string(),
-%%   <<"OperationName">> => string(),
-%%   <<"RequestModels">> => map(),
-%%   <<"RequestParameters">> => map(),
-%%   <<"RouteKey">> := string(),
-%%   <<"RouteResponseSelectionExpression">> => string(),
-%%   <<"Target">> => string()
-%% }
--type create_route_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_product_rest_endpoint_page_response() :: #{
-%%   <<"DisplayContent">> => endpoint_display_content_response(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ProductRestEndpointPageArn">> => string(),
-%%   <<"ProductRestEndpointPageId">> => string(),
-%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusException">> => status_exception(),
-%%   <<"TryItState">> => list(any())
-%% }
--type create_product_rest_endpoint_page_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vpc_links_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_vpc_links_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_portal_product_request() :: #{}
--type delete_portal_product_request() :: #{}.
-
-
-%% Example:
-%% rest_endpoint_identifier() :: #{
-%%   <<"IdentifierParts">> => identifier_parts()
-%% }
--type rest_endpoint_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_routing_rule_request() :: #{
-%%   <<"Actions">> := list(routing_rule_action()),
-%%   <<"Conditions">> := list(routing_rule_condition()),
-%%   <<"DomainNameId">> => string(),
-%%   <<"Priority">> := integer()
-%% }
--type create_routing_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_apis_response() :: #{
-%%   <<"Items">> => list(api()),
-%%   <<"NextToken">> => string()
-%% }
--type get_apis_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% integration_response() :: #{
+%% update_integration_response_response() :: #{
 %%   <<"ContentHandlingStrategy">> => list(any()),
 %%   <<"IntegrationResponseId">> => string(),
 %%   <<"IntegrationResponseKey">> => string(),
@@ -2453,107 +2377,7 @@
 %%   <<"ResponseTemplates">> => map(),
 %%   <<"TemplateSelectionExpression">> => string()
 %% }
--type integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ModelId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type model() :: #{binary() => any()}.
-
-
-%% Example:
-%% product_page_summary_no_body() :: #{
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PageTitle">> => string(),
-%%   <<"ProductPageArn">> => string(),
-%%   <<"ProductPageId">> => string()
-%% }
--type product_page_summary_no_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routing_rules_request() :: #{
-%%   <<"DomainNameId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_routing_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_rule() :: #{
-%%   <<"Actions">> => list(routing_rule_action()),
-%%   <<"Conditions">> => list(routing_rule_condition()),
-%%   <<"Priority">> => integer(),
-%%   <<"RoutingRuleArn">> => string(),
-%%   <<"RoutingRuleId">> => string()
-%% }
--type routing_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()),
-%%   <<"Conditions">> => list(routing_rule_condition()),
-%%   <<"Priority">> => integer(),
-%%   <<"RoutingRuleArn">> => string(),
-%%   <<"RoutingRuleId">> => string()
-%% }
--type get_routing_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_apis_request() :: #{
-%%   <<"MaxResults">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_apis_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_deployment_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type update_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_response_response() :: #{
-%%   <<"ContentHandlingStrategy">> => list(any()),
-%%   <<"IntegrationResponseId">> => string(),
-%%   <<"IntegrationResponseKey">> => string(),
-%%   <<"ResponseParameters">> => map(),
-%%   <<"ResponseTemplates">> => map(),
-%%   <<"TemplateSelectionExpression">> => string()
-%% }
--type get_integration_response_response() :: #{binary() => any()}.
-
-%% Example:
-%% disable_portal_request() :: #{}
--type disable_portal_request() :: #{}.
-
-%% Example:
-%% get_api_request() :: #{}
--type get_api_request() :: #{}.
-
-
-%% Example:
-%% get_domain_name_response() :: #{
-%%   <<"ApiMappingSelectionExpression">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
-%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
-%%   <<"RoutingMode">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_domain_name_response() :: #{binary() => any()}.
+-type update_integration_response_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2581,611 +2405,787 @@
 %% }
 -type update_integration_result() :: #{binary() => any()}.
 
-%% Example:
-%% delete_vpc_link_request() :: #{}
--type delete_vpc_link_request() :: #{}.
-
 
 %% Example:
-%% update_authorizer_request() :: #{
-%%   <<"AuthorizerCredentialsArn">> => string(),
-%%   <<"AuthorizerPayloadFormatVersion">> => string(),
-%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
-%%   <<"AuthorizerType">> => list(any()),
-%%   <<"AuthorizerUri">> => string(),
-%%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()),
-%%   <<"IdentityValidationExpression">> => string(),
-%%   <<"JwtConfiguration">> => j_w_t_configuration(),
-%%   <<"Name">> => string()
+%% update_model_request() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
 %% }
--type update_authorizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_request() :: #{}
--type delete_api_request() :: #{}.
+-type update_model_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% endpoint_configuration_request() :: #{
-%%   <<"AcmManaged">> => a_cm_managed(),
-%%   <<"None">> => apigatewayv2_none()
+%% update_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
 %% }
--type endpoint_configuration_request() :: #{binary() => any()}.
+-type update_model_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% routing_rule_match_base_paths() :: #{
-%%   <<"AnyOf">> => list(string())
+%% update_portal_product_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order()
 %% }
--type routing_rule_match_base_paths() :: #{binary() => any()}.
-
-%% Example:
-%% publish_portal_response() :: #{}
--type publish_portal_response() :: #{}.
-
-%% Example:
-%% get_route_request() :: #{}
--type get_route_request() :: #{}.
+-type update_portal_product_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_product_rest_endpoint_page_request() :: #{
-%%   <<"IncludeRawDisplayContent">> => string(),
-%%   <<"ResourceOwnerAccountId">> => string()
+%% update_portal_product_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DisplayOrder">> => display_order(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PortalProductArn">> => string(),
+%%   <<"PortalProductId">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type get_product_rest_endpoint_page_request() :: #{binary() => any()}.
+-type update_portal_product_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% route_response() :: #{
+%% update_portal_request() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_request(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LogoUri">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"RumAppMonitorName">> => string()
+%% }
+-type update_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_portal_response() :: #{
+%%   <<"Authorization">> => authorization(),
+%%   <<"EndpointConfiguration">> => endpoint_configuration_response(),
+%%   <<"IncludedPortalProductArns">> => list(string()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastPublished">> => non_neg_integer(),
+%%   <<"LastPublishedDescription">> => string(),
+%%   <<"PortalArn">> => string(),
+%%   <<"PortalContent">> => portal_content(),
+%%   <<"PortalId">> => string(),
+%%   <<"Preview">> => preview(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RumAppMonitorName">> => string(),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"Tags">> => map()
+%% }
+-type update_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_page_request() :: #{
+%%   <<"DisplayContent">> => display_content()
+%% }
+-type update_product_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_page_response() :: #{
+%%   <<"DisplayContent">> => display_content(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductPageArn">> => string(),
+%%   <<"ProductPageId">> => string()
+%% }
+-type update_product_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_rest_endpoint_page_request() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type update_product_rest_endpoint_page_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_product_rest_endpoint_page_response() :: #{
+%%   <<"DisplayContent">> => endpoint_display_content_response(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ProductRestEndpointPageArn">> => string(),
+%%   <<"ProductRestEndpointPageId">> => string(),
+%%   <<"RestEndpointIdentifier">> => rest_endpoint_identifier(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusException">> => status_exception(),
+%%   <<"TryItState">> => list(any())
+%% }
+-type update_product_rest_endpoint_page_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_request() :: #{
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type update_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_response_request() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type update_route_response_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_response_response() :: #{
 %%   <<"ModelSelectionExpression">> => string(),
 %%   <<"ResponseModels">> => map(),
 %%   <<"ResponseParameters">> => map(),
 %%   <<"RouteResponseId">> => string(),
 %%   <<"RouteResponseKey">> => string()
 %% }
--type route_response() :: #{binary() => any()}.
+-type update_route_response_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type update_route_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stage_request() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageVariables">> => map()
+%% }
+-type update_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stage_response() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type update_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_link_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_vpc_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_link_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type update_vpc_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_link() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type vpc_link() :: #{binary() => any()}.
 
 -type create_api_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_api_mapping_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_authorizer_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_deployment_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_domain_name_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_integration_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_integration_response_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_model_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_portal_errors() ::
+    too_many_requests_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_portal_product_errors() ::
+    too_many_requests_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_product_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_product_rest_endpoint_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_route_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_route_response_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_routing_rule_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_stage_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type create_vpc_link_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type delete_access_log_settings_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_api_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_api_mapping_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type delete_authorizer_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_cors_configuration_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_deployment_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_domain_name_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_integration_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_integration_response_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_model_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_portal_errors() ::
+    too_many_requests_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type delete_portal_product_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_portal_product_sharing_policy_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_product_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_product_rest_endpoint_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_route_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_route_request_parameter_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_route_response_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_route_settings_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_routing_rule_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type delete_stage_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type delete_vpc_link_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type disable_portal_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type export_api_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_api_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_api_mapping_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_api_mappings_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_apis_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_authorizer_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_authorizers_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_deployment_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_deployments_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_domain_name_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_domain_names_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_integration_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_integration_response_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_integration_responses_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_integrations_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_model_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_model_template_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_models_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_portal_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_portal_product_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_portal_product_sharing_policy_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_product_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_product_rest_endpoint_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_route_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_route_response_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_route_responses_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_routes_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_routing_rule_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_stage_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_stages_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_tags_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_vpc_link_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type get_vpc_links_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type import_api_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_portal_products_errors() ::
+    too_many_requests_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_portals_errors() ::
+    too_many_requests_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_product_pages_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_product_rest_endpoint_pages_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_routing_rules_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type preview_portal_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type publish_portal_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_portal_product_sharing_policy_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_routing_rule_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type reimport_api_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type reset_authorizers_cache_errors() ::
-    not_found_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    not_found_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_api_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_api_mapping_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_authorizer_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_deployment_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_domain_name_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_integration_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_integration_response_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_model_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_portal_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_portal_product_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_product_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_product_rest_endpoint_page_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_route_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_route_response_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_stage_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type update_vpc_link_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

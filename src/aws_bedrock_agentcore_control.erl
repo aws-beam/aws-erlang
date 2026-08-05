@@ -365,90 +365,99 @@
 
 
 %% Example:
-%% custom_claim_validation_type() :: #{
-%%   <<"authorizingClaimMatchValue">> => authorizing_claim_match_value_type(),
-%%   <<"inboundTokenClaimName">> => string(),
-%%   <<"inboundTokenClaimValueType">> => list(any())
+%% a2a_descriptor() :: #{
+%%   <<"agentCard">> => agent_card_definition()
 %% }
--type custom_claim_validation_type() :: #{binary() => any()}.
+-type a2a_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% browser_enterprise_policy() :: #{
-%%   <<"location">> => list(),
-%%   <<"type">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type browser_enterprise_policy() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_remote_mcp_config() :: #{
-%%   <<"headers">> => map(),
-%%   <<"url">> => string()
-%% }
--type harness_remote_mcp_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_request() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> := list(any()),
-%%   <<"customTransformConfiguration">> => custom_transform_configuration(),
-%%   <<"description">> => string(),
-%%   <<"exceptionLevel">> => list(any()),
-%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
-%%   <<"protocolConfiguration">> => list(),
-%%   <<"protocolType">> => list(any()),
-%%   <<"roleArn">> := string(),
-%%   <<"wafConfiguration">> => waf_configuration()
-%% }
--type update_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_payment_manager_request() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
+%% add_dataset_examples_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"source">> := list()
+%% }
+-type add_dataset_examples_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_dataset_examples_response() :: #{
+%%   <<"addedCount">> => [float()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"exampleIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type add_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_card_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_runtime() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"agentRuntimeName">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
 %%   <<"description">> => string(),
-%%   <<"roleArn">> => string()
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
 %% }
--type update_payment_manager_request() :: #{binary() => any()}.
+-type agent_runtime() :: #{binary() => any()}.
 
 
 %% Example:
-%% streaming_configuration() :: #{
-%%   <<"enableResponseStreaming">> => [boolean()]
+%% agent_runtime_endpoint() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"liveVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetVersion">> => string()
 %% }
--type streaming_configuration() :: #{binary() => any()}.
+-type agent_runtime_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% lambda_interceptor_configuration() :: #{
-%%   <<"arn">> => string()
+%% agent_skills_descriptor() :: #{
+%%   <<"skillDefinition">> => skill_definition(),
+%%   <<"skillMd">> => skill_md_definition()
 %% }
--type lambda_interceptor_configuration() :: #{binary() => any()}.
+-type agent_skills_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% iam_principal() :: #{
-%%   <<"arn">> => string(),
-%%   <<"operator">> => list(any())
+%% allowed_workload_configuration() :: #{
+%%   <<"hostingEnvironments">> => list(hosting_environment()),
+%%   <<"workloadIdentities">> => list(string())
 %% }
--type iam_principal() :: #{binary() => any()}.
+-type allowed_workload_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% modify_strategy_configuration() :: #{
-%%   <<"consolidation">> => list(),
-%%   <<"extraction">> => list(),
-%%   <<"reflection">> => list(),
-%%   <<"selfManagedConfiguration">> => modify_self_managed_configuration()
+%% api_gateway_target_configuration() :: #{
+%%   <<"apiGatewayToolConfiguration">> => api_gateway_tool_configuration(),
+%%   <<"restApiId">> => [string()],
+%%   <<"stage">> => [string()]
 %% }
--type modify_strategy_configuration() :: #{binary() => any()}.
+-type api_gateway_target_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,282 +469,119 @@
 
 
 %% Example:
-%% list_gateway_targets_response() :: #{
-%%   <<"items">> => list(target_summary()),
-%%   <<"nextToken">> => string()
+%% api_gateway_tool_filter() :: #{
+%%   <<"filterPath">> => [string()],
+%%   <<"methods">> => list(list(any())())
 %% }
--type list_gateway_targets_response() :: #{binary() => any()}.
+-type api_gateway_tool_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_payment_manager_request() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> := list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
+%% api_gateway_tool_override() :: #{
+%%   <<"description">> => [string()],
+%%   <<"method">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"path">> => [string()]
 %% }
--type create_payment_manager_request() :: #{binary() => any()}.
+-type api_gateway_tool_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_agent_runtime_endpoint_request() :: #{
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_agent_runtime_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_target_request() :: #{}
--type delete_gateway_target_request() :: #{}.
-
-
-%% Example:
-%% create_registry_record_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"descriptorType">> := list(any()),
-%%   <<"descriptors">> => descriptors(),
-%%   <<"name">> := string(),
-%%   <<"recordVersion">> => string(),
-%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
-%%   <<"synchronizationType">> => list(any())
-%% }
--type create_registry_record_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_based_trigger_input() :: #{
-%%   <<"idleSessionTimeout">> => [integer()]
-%% }
--type time_based_trigger_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_harness_endpoint_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"targetVersion">> => string()
-%% }
--type update_harness_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_credential_provider_item() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string()
-%% }
--type payment_credential_provider_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_registry_records_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"registryRecords">> => list(registry_record_summary())
-%% }
--type list_registry_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_mcp_descriptor() :: #{
-%%   <<"optionalValue">> => updated_mcp_descriptor_fields()
-%% }
--type updated_mcp_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% stripe_privy_configuration_input() :: #{
-%%   <<"appId">> => string(),
-%%   <<"appSecret">> => string(),
-%%   <<"appSecretConfig">> => secret_reference(),
-%%   <<"appSecretSource">> => list(any()),
-%%   <<"authorizationId">> => string(),
-%%   <<"authorizationPrivateKey">> => string(),
-%%   <<"authorizationPrivateKeyConfig">> => secret_reference(),
-%%   <<"authorizationPrivateKeySource">> => list(any())
-%% }
--type stripe_privy_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_memory_configuration() :: #{
-%%   <<"actorId">> => [string()],
-%%   <<"arn">> => string(),
-%%   <<"messagesCount">> => [integer()],
-%%   <<"retrievalConfig">> => map()
-%% }
--type harness_agent_core_memory_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generation_summaries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_generation_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_bundle_request() :: #{}
--type delete_configuration_bundle_request() :: #{}.
-
-
-%% Example:
-%% list_payment_connectors_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_payment_connectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_oauth2_credential_provider_response() :: #{
-%%   <<"callbackUrl">> => [string()],
-%%   <<"clientSecretArn">> => secret(),
-%%   <<"clientSecretJsonKey">> => string(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type create_oauth2_credential_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_strategy() :: #{
-%%   <<"configuration">> => strategy_configuration(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"name">> => string(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"strategyId">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type memory_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% a2a_descriptor() :: #{
-%%   <<"agentCard">> => agent_card_definition()
-%% }
--type a2a_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_payment_manager_response() :: #{
-%%   <<"authorizerType">> => list(any()),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"paymentManagerId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadIdentityDetails">> => workload_identity_details()
-%% }
--type update_payment_manager_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_harness_request() :: #{
-%%   <<"harnessVersion">> => string()
-%% }
--type get_harness_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_sliding_window_configuration() :: #{
-%%   <<"messagesCount">> => [integer()]
-%% }
--type harness_sliding_window_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_key_credential_provider_response() :: #{
-%%   <<"apiKeySecretArn">> => secret(),
-%%   <<"apiKeySecretJsonKey">> => string(),
-%%   <<"apiKeySecretSource">> => list(any()),
+%% api_key_credential_provider_item() :: #{
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string()
 %% }
--type get_api_key_credential_provider_response() :: #{binary() => any()}.
+-type api_key_credential_provider_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% included_oauth2_provider_config_input() :: #{
-%%   <<"authorizationEndpoint">> => string(),
+%% approval_configuration() :: #{
+%%   <<"autoApproval">> => [boolean()]
+%% }
+-type approval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% atlassian_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
 %%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"issuer">> => string(),
-%%   <<"tokenEndpoint">> => string()
+%%   <<"clientSecretSource">> => list(any())
 %% }
--type included_oauth2_provider_config_input() :: #{binary() => any()}.
+-type atlassian_oauth2_provider_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_registry_record_response() :: #{
+%% atlassian_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type atlassian_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorizing_claim_match_value_type() :: #{
+%%   <<"claimMatchOperator">> => list(any()),
+%%   <<"claimMatchValue">> => list()
+%% }
+-type authorizing_claim_match_value_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_evaluator_model_config() :: #{
+%%   <<"additionalModelRequestFields">> => any(),
+%%   <<"inferenceConfig">> => inference_configuration(),
+%%   <<"modelId">> => string()
+%% }
+-type bedrock_evaluator_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_enterprise_policy() :: #{
+%%   <<"location">> => list(),
+%%   <<"type">> => list(any())
+%% }
+-type browser_enterprise_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_network_configuration() :: #{
+%%   <<"networkMode">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type browser_network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_profile_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"descriptorType">> => list(any()),
-%%   <<"descriptors">> => descriptors(),
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastSavedBrowserId">> => string(),
+%%   <<"lastSavedBrowserSessionId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"recordVersion">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
-%%   <<"synchronizationType">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type get_registry_record_response() :: #{binary() => any()}.
-
-%% Example:
-%% submit_registry_record_for_approval_request() :: #{}
--type submit_registry_record_for_approval_request() :: #{}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
+-type browser_profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% o_auth2_authorization_data() :: #{
-%%   <<"authorizationUrl">> => [string()],
-%%   <<"userId">> => [string()]
+%% browser_signing_config_input() :: #{
+%%   <<"enabled">> => [boolean()]
 %% }
--type o_auth2_authorization_data() :: #{binary() => any()}.
+-type browser_signing_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% configuration_bundle_reference() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleVersion">> => [string()]
+%% browser_signing_config_output() :: #{
+%%   <<"enabled">> => [boolean()]
 %% }
--type configuration_bundle_reference() :: #{binary() => any()}.
+-type browser_signing_config_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -752,53 +598,47 @@
 
 
 %% Example:
-%% summary_override_consolidation_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
+%% categorical_scale_definition() :: #{
+%%   <<"definition">> => [string()],
+%%   <<"label">> => [string()]
 %% }
--type summary_override_consolidation_configuration_input() :: #{binary() => any()}.
+-type categorical_scale_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_source() :: #{
-%%   <<"s3Uri">> => string()
+%% cedar_policy() :: #{
+%%   <<"statement">> => string()
 %% }
--type s3_source() :: #{binary() => any()}.
+-type cedar_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% memory_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"managedByResourceArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% certificate() :: #{
+%%   <<"location">> => list()
 %% }
--type memory_summary() :: #{binary() => any()}.
+-type certificate() :: #{binary() => any()}.
 
 
 %% Example:
-%% model_mapping() :: #{
-%%   <<"providerPrefix">> => provider_prefix()
+%% cloud_watch_logs_input_config() :: #{
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"serviceNames">> => list(string())
 %% }
--type model_mapping() :: #{binary() => any()}.
+-type cloud_watch_logs_input_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_rule_detail() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"conditions">> => list(list()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"system">> => system_managed_block(),
-%%   <<"updatedAt">> => non_neg_integer()
+%% cloud_watch_output_config() :: #{
+%%   <<"logGroupName">> => string()
 %% }
--type gateway_rule_detail() :: #{binary() => any()}.
+-type cloud_watch_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% clustering_config() :: #{
+%%   <<"frequencies">> => list(list(any())())
+%% }
+-type clustering_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -811,225 +651,408 @@
 
 
 %% Example:
-%% get_harness_response() :: #{
-%%   <<"harness">> => harness()
+%% code_interpreter_network_configuration() :: #{
+%%   <<"networkMode">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
--type get_harness_response() :: #{binary() => any()}.
+-type code_interpreter_network_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_dataset_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetVersion">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% numerical_scale_definition() :: #{
-%%   <<"definition">> => [string()],
-%%   <<"label">> => [string()],
-%%   <<"value">> => [float()]
-%% }
--type numerical_scale_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_policy_engine_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_policy_engine_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% secret_reference() :: #{
-%%   <<"jsonKey">> => string(),
-%%   <<"secretId">> => string()
-%% }
--type secret_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_interpreters_response() :: #{
-%%   <<"codeInterpreterSummaries">> => list(code_interpreter_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_interpreters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_memory_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"eventExpiryDuration">> := [integer()],
-%%   <<"indexedKeys">> => list(indexed_key()),
-%%   <<"memoryExecutionRoleArn">> => string(),
-%%   <<"memoryStrategies">> => list(list()),
-%%   <<"name">> := string(),
-%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
-%%   <<"tags">> => map()
-%% }
--type create_memory_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_summary_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_policy_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% summary_memory_strategy_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"name">> => string(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
-%% }
--type summary_memory_strategy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_payment_credential_provider_request() :: #{
-%%   <<"credentialProviderVendor">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"providerConfigurationInput">> := list()
-%% }
--type update_payment_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_configuration() :: #{
-%%   <<"keyType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type kms_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evaluator_request() :: #{
-%%   <<"includedData">> => list(any())
-%% }
--type get_evaluator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(policy())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_descriptors() :: #{
-%%   <<"optionalValue">> => updated_descriptors_union()
-%% }
--type updated_descriptors() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_descriptor() :: #{
-%%   <<"inlineContent">> => string()
-%% }
--type custom_descriptor() :: #{binary() => any()}.
-
-%% Example:
-%% delete_payment_credential_provider_response() :: #{}
--type delete_payment_credential_provider_response() :: #{}.
-
-
-%% Example:
-%% list_browser_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_browser_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_manager_response() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
+%% code_interpreter_summary() :: #{
+%%   <<"codeInterpreterArn">> => string(),
+%%   <<"codeInterpreterId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"paymentManagerId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%%   <<"status">> => list(any())
 %% }
--type get_payment_manager_response() :: #{binary() => any()}.
+-type code_interpreter_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% schema_definition() :: #{
+%% coinbase_cdp_configuration_input() :: #{
+%%   <<"apiKeyId">> => string(),
+%%   <<"apiKeySecret">> => string(),
+%%   <<"apiKeySecretConfig">> => secret_reference(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"walletSecret">> => string(),
+%%   <<"walletSecretConfig">> => secret_reference(),
+%%   <<"walletSecretSource">> => list(any())
+%% }
+-type coinbase_cdp_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_configuration_output() :: #{
+%%   <<"apiKeyId">> => string(),
+%%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"walletSecretArn">> => secret(),
+%%   <<"walletSecretJsonKey">> => string(),
+%%   <<"walletSecretSource">> => list(any())
+%% }
+-type coinbase_cdp_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_configuration() :: #{
+%%   <<"configuration">> => [any()]
+%% }
+-type component_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_reference() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => [string()]
+%% }
+-type configuration_bundle_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_summary() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string()
+%% }
+-type configuration_bundle_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_version_summary() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"versionCreatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type configuration_bundle_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_configuration() :: #{
 %%   <<"description">> => [string()],
-%%   <<"items">> => schema_definition(),
-%%   <<"properties">> => map(),
-%%   <<"required">> => list([string()]()),
+%%   <<"name">> => [string()],
+%%   <<"parameterOverrides">> => list(connector_parameter_override()),
+%%   <<"parameterValues">> => [any()]
+%% }
+-type connector_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_parameter_override() :: #{
+%%   <<"description">> => [string()],
+%%   <<"path">> => [string()],
+%%   <<"visible">> => [boolean()]
+%% }
+-type connector_parameter_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_source() :: #{
+%%   <<"connectorId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type connector_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_target_configuration() :: #{
+%%   <<"configurations">> => list(connector_configuration()),
+%%   <<"enabled">> => list([string()]()),
+%%   <<"source">> => connector_source()
+%% }
+-type connector_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_configuration() :: #{
+%%   <<"containerUri">> => string()
+%% }
+-type container_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_configuration() :: #{
+%%   <<"level">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
--type schema_definition() :: #{binary() => any()}.
+-type content_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% match_paths() :: #{
-%%   <<"anyOf">> => list(string())
+%% create_agent_runtime_endpoint_request() :: #{
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
--type match_paths() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type create_agent_runtime_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_agent_runtime_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_agent_runtime_endpoint_response() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetVersion">> => string()
 %% }
--type list_agent_runtime_versions_request() :: #{binary() => any()}.
+-type create_agent_runtime_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_runtime_request() :: #{
+%%   <<"agentRuntimeArtifact">> := list(),
+%%   <<"agentRuntimeName">> := string(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"networkConfiguration">> := network_configuration(),
+%%   <<"protocolConfiguration">> => protocol_configuration(),
+%%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_runtime_response() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type create_agent_runtime_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_key_credential_provider_request() :: #{
+%%   <<"apiKey">> => string(),
+%%   <<"apiKeySecretConfig">> => secret_reference(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_api_key_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_key_credential_provider_response() :: #{
+%%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_api_key_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_browser_profile_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_browser_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_browser_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_browser_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_browser_request() :: #{
+%%   <<"browserSigning">> => browser_signing_config_input(),
+%%   <<"certificates">> => list(certificate()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"name">> := string(),
+%%   <<"networkConfiguration">> := browser_network_configuration(),
+%%   <<"recording">> => recording_config(),
+%%   <<"tags">> => map()
+%% }
+-type create_browser_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_browser_response() :: #{
+%%   <<"browserArn">> => string(),
+%%   <<"browserId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type create_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_interpreter_request() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"name">> := string(),
+%%   <<"networkConfiguration">> := code_interpreter_network_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_code_interpreter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_interpreter_response() :: #{
+%%   <<"codeInterpreterArn">> => string(),
+%%   <<"codeInterpreterId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type create_code_interpreter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"bundleName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"components">> := map(),
+%%   <<"createdBy">> => version_created_by_source(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_configuration_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type create_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetName">> := string(),
+%%   <<"description">> => [string()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"schemaType">> := list(any()),
+%%   <<"source">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type create_dataset_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_version_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_dataset_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluator_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluatorConfig">> := list(),
+%%   <<"evaluatorName">> := string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"level">> := list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_evaluator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluator_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_request() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"exceptionLevel">> => list(any()),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
+%%   <<"protocolConfiguration">> => list(),
+%%   <<"protocolType">> => list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1061,271 +1084,75 @@
 
 
 %% Example:
-%% registry_record_iam_credential_provider() :: #{
-%%   <<"region">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"service">> => string()
-%% }
--type registry_record_iam_credential_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_delivery_resources() :: #{
-%%   <<"resources">> => list(list())
-%% }
--type stream_delivery_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_gateway_tool_override() :: #{
-%%   <<"description">> => [string()],
-%%   <<"method">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type api_gateway_tool_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% salesforce_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
-%% }
--type salesforce_oauth2_provider_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_configuration() :: #{
-%%   <<"maxTokens">> => [integer()],
-%%   <<"stopSequences">> => list(string()),
-%%   <<"temperature">> => [float()],
-%%   <<"topP">> => [float()]
-%% }
--type inference_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateways_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_gateways_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_output_config() :: #{
-%%   <<"logGroupName">> => string()
-%% }
--type cloud_watch_output_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_oauth2_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_oauth2_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% indexed_key() :: #{
-%%   <<"key">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type indexed_key() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_request() :: #{}
--type delete_registry_request() :: #{}.
-
-
-%% Example:
-%% update_online_evaluation_config_response() :: #{
-%%   <<"executionStatus">> => list(any()),
-%%   <<"failureReason">> => [string()],
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"onlineEvaluationConfigId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_online_evaluation_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_evaluators_response() :: #{
-%%   <<"evaluators">> => list(evaluator_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_evaluators_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_identity_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_workload_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_list_validation() :: #{
-%%   <<"allowedValues">> => list(string()),
-%%   <<"maxItems">> => [integer()]
-%% }
--type string_list_validation() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_record_request() :: #{}
--type get_registry_record_request() :: #{}.
-
-
-%% Example:
-%% allowed_workload_configuration() :: #{
-%%   <<"hostingEnvironments">> => list(hosting_environment()),
-%%   <<"workloadIdentities">> => list(string())
-%% }
--type allowed_workload_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_evaluator_request() :: #{
+%% create_gateway_rule_request() :: #{
+%%   <<"actions">> := list(list()),
 %%   <<"clientToken">> => string(),
+%%   <<"conditions">> => list(list()),
 %%   <<"description">> => string(),
-%%   <<"evaluatorConfig">> => list(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"level">> => list(any())
+%%   <<"priority">> := integer()
 %% }
--type update_evaluator_request() :: #{binary() => any()}.
+-type create_gateway_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetResourceScope">> => string()
-%% }
--type list_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_based_trigger_input() :: #{
-%%   <<"messageCount">> => [integer()]
-%% }
--type message_based_trigger_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{}
--type get_policy_request() :: #{}.
-
-
-%% Example:
-%% api_gateway_target_configuration() :: #{
-%%   <<"apiGatewayToolConfiguration">> => api_gateway_tool_configuration(),
-%%   <<"restApiId">> => [string()],
-%%   <<"stage">> => [string()]
-%% }
--type api_gateway_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_validation() :: #{
-%%   <<"allowedValues">> => list(string())
-%% }
--type string_validation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generation_assets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_generation_assets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_target_response() :: #{
+%% create_gateway_rule_response() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block()
+%% }
+-type create_gateway_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_target_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
+%%   <<"description">> => string(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"targetConfiguration">> := list()
+%% }
+-type create_gateway_target_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_target_response() :: #{
+%%   <<"authorizationData">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
-%%   <<"targetId">> => string()
-%% }
--type delete_gateway_target_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dataset_examples_request() :: #{
-%%   <<"datasetVersion">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dataset_examples_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_gateway_tool_filter() :: #{
-%%   <<"filterPath">> => [string()],
-%%   <<"methods">> => list(list(any())())
-%% }
--type api_gateway_tool_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_harness_response() :: #{
-%%   <<"harness">> => harness()
-%% }
--type create_harness_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_payment_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% weighted_route() :: #{
-%%   <<"trafficSplit">> => list(target_traffic_split_entry())
-%% }
--type weighted_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_configuration() :: #{
-%%   <<"idleRuntimeSessionTimeout">> => [integer()],
-%%   <<"maxLifetime">> => [integer()]
-%% }
--type lifecycle_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_definition() :: #{
-%%   <<"description">> => [string()],
-%%   <<"inputSchema">> => schema_definition(),
-%%   <<"name">> => [string()],
-%%   <<"outputSchema">> => schema_definition()
-%% }
--type tool_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_record_status_response() :: #{
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
+%%   <<"targetConfiguration">> => list(),
+%%   <<"targetId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type update_registry_record_status_response() :: #{binary() => any()}.
+-type create_gateway_target_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% iam_credential_provider() :: #{
-%%   <<"region">> => [string()],
-%%   <<"service">> => [string()]
+%% create_harness_endpoint_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"endpointName">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetVersion">> => string()
 %% }
--type iam_credential_provider() :: #{binary() => any()}.
+-type create_harness_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1336,106 +1163,111 @@
 
 
 %% Example:
-%% create_registry_response() :: #{
-%%   <<"registryArn">> => string()
+%% create_harness_request() :: #{
+%%   <<"allowedTools">> => list(string()),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"clientToken">> => string(),
+%%   <<"environment">> => list(),
+%%   <<"environmentArtifact">> => list(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"harnessName">> := string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"memory">> => list(),
+%%   <<"model">> => list(),
+%%   <<"skills">> => list(list()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool()),
+%%   <<"truncation">> => harness_truncation_configuration()
 %% }
--type create_registry_response() :: #{binary() => any()}.
+-type create_harness_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_harness_endpoint_response() :: #{
-%%   <<"endpoint">> => harness_endpoint()
+%% create_harness_response() :: #{
+%%   <<"harness">> => harness()
 %% }
--type get_harness_endpoint_response() :: #{binary() => any()}.
+-type create_harness_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% decryption_failure() :: #{
-%%   <<"message">> => [string()]
-%% }
--type decryption_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_interpreter_summary() :: #{
-%%   <<"codeInterpreterArn">> => string(),
-%%   <<"codeInterpreterId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type code_interpreter_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_request() :: #{}
--type get_registry_request() :: #{}.
-
-
-%% Example:
-%% update_gateway_rule_request() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"conditions">> => list(list()),
-%%   <<"description">> => string(),
-%%   <<"priority">> => integer()
-%% }
--type update_gateway_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_engine_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
+%% create_memory_input() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"eventExpiryDuration">> := [integer()],
+%%   <<"indexedKeys">> => list(indexed_key()),
+%%   <<"memoryExecutionRoleArn">> => string(),
+%%   <<"memoryStrategies">> => list(list()),
+%%   <<"name">> := string(),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
+%%   <<"tags">> => map()
 %% }
--type get_policy_engine_response() :: #{binary() => any()}.
+-type create_memory_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_browser_response() :: #{
-%%   <<"browserArn">> => string(),
-%%   <<"browserId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
+%% create_memory_output() :: #{
+%%   <<"memory">> => memory()
+%% }
+-type create_memory_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_oauth2_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"oauth2ProviderConfigInput">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
+%%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"oauth2ProviderConfigOutput">> => list(),
 %%   <<"status">> => list(any())
 %% }
--type create_browser_response() :: #{binary() => any()}.
+-type create_oauth2_credential_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_skill_aws_skills_source() :: #{
-%%   <<"paths">> => list(string())
+%% create_online_evaluation_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusteringConfig">> => clustering_config(),
+%%   <<"dataSourceConfig">> := list(),
+%%   <<"description">> => string(),
+%%   <<"enableOnCreate">> := [boolean()],
+%%   <<"evaluationExecutionRoleArn">> := string(),
+%%   <<"evaluators">> => list(list()),
+%%   <<"insights">> => list(insight()),
+%%   <<"onlineEvaluationConfigName">> := string(),
+%%   <<"rule">> := rule(),
+%%   <<"tags">> => map()
 %% }
--type harness_skill_aws_skills_source() :: #{binary() => any()}.
+-type create_online_evaluation_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% modify_self_managed_configuration() :: #{
-%%   <<"historicalContextWindowSize">> => [integer()],
-%%   <<"invocationConfiguration">> => modify_invocation_configuration_input(),
-%%   <<"triggerConditions">> => list(list())
+%% create_online_evaluation_config_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"outputConfig">> => output_config(),
+%%   <<"status">> => list(any())
 %% }
--type modify_self_managed_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_s3_source() :: #{
-%%   <<"uri">> => string()
-%% }
--type harness_skill_s3_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_failure() :: #{
-%%   <<"message">> => [string()]
-%% }
--type encryption_failure() :: #{binary() => any()}.
+-type create_online_evaluation_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1450,33 +1282,91 @@
 
 
 %% Example:
-%% policy_generation_asset() :: #{
-%%   <<"definition">> => list(),
-%%   <<"findings">> => list(finding()),
-%%   <<"policyGenerationAssetId">> => string(),
-%%   <<"rawTextFragment">> => string()
+%% create_payment_connector_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type policy_generation_asset() :: #{binary() => any()}.
+-type create_payment_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_browser_response() :: #{
-%%   <<"browserId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%% create_payment_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"providerConfigurationInput">> := list(),
+%%   <<"tags">> => map()
 %% }
--type delete_browser_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_online_evaluation_config_request() :: #{}
--type get_online_evaluation_config_request() :: #{}.
+-type create_payment_credential_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% updated_tools_definition() :: #{
-%%   <<"optionalValue">> => tools_definition()
+%% create_payment_credential_provider_response() :: #{
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"providerConfigurationOutput">> => list()
 %% }
--type updated_tools_definition() :: #{binary() => any()}.
+-type create_payment_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_manager_request() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_payment_manager_response() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type create_payment_manager_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_policy_engine_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_policy_engine_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_policy_engine_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1492,108 +1382,118 @@
 
 
 %% Example:
-%% get_agent_runtime_request() :: #{
-%%   <<"agentRuntimeVersion">> => string()
-%% }
--type get_agent_runtime_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_harness_endpoint_request() :: #{
-%%   <<"clientToken">> => string(),
+%% create_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
 %%   <<"description">> => string(),
-%%   <<"endpointName">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"targetVersion">> => string()
-%% }
--type create_harness_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_memory_input() :: #{
-%%   <<"view">> => list(any())
-%% }
--type get_memory_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% semantic_memory_strategy_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"enforcementMode">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
-%% }
--type semantic_memory_strategy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_truncation_configuration() :: #{
-%%   <<"config">> => list(),
-%%   <<"strategy">> => list(any())
-%% }
--type harness_truncation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_memory_input() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_memory_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_response() :: #{
-%%   <<"gatewayId">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string())
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type delete_gateway_response() :: #{binary() => any()}.
+-type create_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_dataset_examples_request() :: #{
+%% create_registry_record_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"source">> := list()
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> := list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> := string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any())
 %% }
--type add_dataset_examples_request() :: #{binary() => any()}.
+-type create_registry_record_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% registry_record_o_auth_credential_provider() :: #{
-%%   <<"customParameters">> => map(),
-%%   <<"grantType">> => list(any()),
-%%   <<"providerArn">> => string(),
-%%   <<"scopes">> => list([string()]())
+%% create_registry_record_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type registry_record_o_auth_credential_provider() :: #{binary() => any()}.
+-type create_registry_record_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% summary_consolidation_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
+%% create_registry_request() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
 %% }
--type summary_consolidation_override() :: #{binary() => any()}.
+-type create_registry_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_api_key_credential_provider_response() :: #{
-%%   <<"apiKeySecretArn">> => secret(),
-%%   <<"apiKeySecretJsonKey">> => string(),
-%%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"name">> => string()
+%% create_registry_response() :: #{
+%%   <<"registryArn">> => string()
 %% }
--type create_api_key_credential_provider_response() :: #{binary() => any()}.
+-type create_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_identity_request() :: #{
+%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_workload_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_identity_response() :: #{
+%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"workloadIdentityArn">> => string()
+%% }
+-type create_workload_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% credential_provider_configuration() :: #{
+%%   <<"credentialProvider">> => list(),
+%%   <<"credentialProviderType">> => list(any())
+%% }
+-type credential_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_claim_validation_type() :: #{
+%%   <<"authorizingClaimMatchValue">> => authorizing_claim_match_value_type(),
+%%   <<"inboundTokenClaimName">> => string(),
+%%   <<"inboundTokenClaimValueType">> => list(any())
+%% }
+-type custom_claim_validation_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_descriptor() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type custom_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_j_w_t_authorizer_configuration() :: #{
+%%   <<"advertisedScopeMapping">> => map(),
+%%   <<"allowedAudience">> => list(string()),
+%%   <<"allowedClients">> => list(string()),
+%%   <<"allowedScopes">> => list(string()),
+%%   <<"allowedWorkloadConfiguration">> => allowed_workload_configuration(),
+%%   <<"customClaims">> => list(custom_claim_validation_type()),
+%%   <<"discoveryUrl">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
+%% }
+-type custom_j_w_t_authorizer_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1609,10 +1509,545 @@
 
 
 %% Example:
-%% updated_skill_md_definition() :: #{
-%%   <<"optionalValue">> => skill_md_definition()
+%% custom_oauth2_provider_config_input() :: #{
+%%   <<"clientAuthenticationMethod">> => list(any()),
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"oauthDiscovery">> => list(),
+%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override()),
+%%   <<"privateKeyJwtConfig">> => private_key_jwt_config()
 %% }
--type updated_skill_md_definition() :: #{binary() => any()}.
+-type custom_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_oauth2_provider_config_output() :: #{
+%%   <<"clientAuthenticationMethod">> => list(any()),
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list(),
+%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointOverrides">> => list(private_endpoint_override()),
+%%   <<"privateKeyJwtConfig">> => private_key_jwt_config()
+%% }
+-type custom_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_transform_configuration() :: #{
+%%   <<"lambda">> => lambda_transform_configuration()
+%% }
+-type custom_transform_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"draftStatus">> => list(any()),
+%%   <<"exampleCount">> => [float()],
+%%   <<"schemaType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_version_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetVersion">> => string(),
+%%   <<"exampleCount">> => [float()]
+%% }
+-type dataset_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% decryption_failure() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type decryption_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_runtime_endpoint_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_agent_runtime_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_runtime_endpoint_response() :: #{
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"endpointName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_agent_runtime_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_runtime_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_agent_runtime_response() :: #{
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_agent_runtime_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_api_key_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_api_key_credential_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_key_credential_provider_response() :: #{}
+-type delete_api_key_credential_provider_response() :: #{}.
+
+
+%% Example:
+%% delete_browser_profile_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_browser_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_browser_profile_response() :: #{
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_browser_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_browser_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_browser_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_browser_response() :: #{
+%%   <<"browserId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_interpreter_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_code_interpreter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_interpreter_response() :: #{
+%%   <<"codeInterpreterId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_code_interpreter_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_bundle_request() :: #{}
+-type delete_configuration_bundle_request() :: #{}.
+
+
+%% Example:
+%% delete_configuration_bundle_response() :: #{
+%%   <<"bundleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_examples_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"exampleIds">> := list(string())
+%% }
+-type delete_dataset_examples_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"deletedCount">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type delete_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"datasetVersion">> => string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_evaluator_request() :: #{}
+-type delete_evaluator_request() :: #{}.
+
+
+%% Example:
+%% delete_evaluator_response() :: #{
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_evaluator_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_request() :: #{}
+-type delete_gateway_request() :: #{}.
+
+
+%% Example:
+%% delete_gateway_response() :: #{
+%%   <<"gatewayId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string())
+%% }
+-type delete_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_rule_request() :: #{}
+-type delete_gateway_rule_request() :: #{}.
+
+
+%% Example:
+%% delete_gateway_rule_response() :: #{
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_gateway_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_target_request() :: #{}
+-type delete_gateway_target_request() :: #{}.
+
+
+%% Example:
+%% delete_gateway_target_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"targetId">> => string()
+%% }
+-type delete_gateway_target_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_endpoint_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_harness_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_endpoint_response() :: #{
+%%   <<"endpoint">> => harness_endpoint()
+%% }
+-type delete_harness_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deleteManagedMemory">> => [boolean()]
+%% }
+-type delete_harness_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type delete_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_memory_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_memory_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_memory_output() :: #{
+%%   <<"memoryId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_memory_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_memory_strategy_input() :: #{
+%%   <<"memoryStrategyId">> => [string()]
+%% }
+-type delete_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_oauth2_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_oauth2_credential_provider_response() :: #{}
+-type delete_oauth2_credential_provider_response() :: #{}.
+
+%% Example:
+%% delete_online_evaluation_config_request() :: #{}
+-type delete_online_evaluation_config_request() :: #{}.
+
+
+%% Example:
+%% delete_online_evaluation_config_response() :: #{
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_online_evaluation_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_connector_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_payment_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_connector_response() :: #{
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_payment_credential_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_payment_credential_provider_response() :: #{}
+-type delete_payment_credential_provider_response() :: #{}.
+
+
+%% Example:
+%% delete_payment_manager_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_manager_response() :: #{
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_manager_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_engine_request() :: #{}
+-type delete_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% delete_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_policy_engine_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{}
+-type delete_policy_request() :: #{}.
+
+
+%% Example:
+%% delete_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_record_request() :: #{}
+-type delete_registry_record_request() :: #{}.
+
+%% Example:
+%% delete_registry_record_response() :: #{}
+-type delete_registry_record_response() :: #{}.
+
+%% Example:
+%% delete_registry_request() :: #{}
+-type delete_registry_request() :: #{}.
+
+
+%% Example:
+%% delete_registry_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% delete_workload_identity_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_workload_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workload_identity_response() :: #{}
+-type delete_workload_identity_response() :: #{}.
+
+
+%% Example:
+%% descriptors() :: #{
+%%   <<"a2a">> => a2a_descriptor(),
+%%   <<"agentSkills">> => agent_skills_descriptor(),
+%%   <<"custom">> => custom_descriptor(),
+%%   <<"mcp">> => mcp_descriptor()
+%% }
+-type descriptors() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_access_point_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type efs_access_point_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type efs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_failure() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type encryption_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_consolidation_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_consolidation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_extraction_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_extraction_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_memory_strategy_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string()),
+%%   <<"reflectionConfiguration">> => episodic_reflection_configuration_input()
+%% }
+-type episodic_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_override_configuration_input() :: #{
+%%   <<"consolidation">> => episodic_override_consolidation_configuration_input(),
+%%   <<"extraction">> => episodic_override_extraction_configuration_input(),
+%%   <<"reflection">> => episodic_override_reflection_configuration_input()
+%% }
+-type episodic_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_override_consolidation_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_override_extraction_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type episodic_override_extraction_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1627,59 +2062,446 @@
 
 
 %% Example:
-%% lambda_evaluator_config() :: #{
-%%   <<"lambdaArn">> => string(),
-%%   <<"lambdaTimeoutInSeconds">> => [integer()]
-%% }
--type lambda_evaluator_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_a2a_descriptor() :: #{
-%%   <<"optionalValue">> => a2a_descriptor()
-%% }
--type updated_a2a_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"policy">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_override_configuration_input() :: #{
-%%   <<"consolidation">> => user_preference_override_consolidation_configuration_input(),
-%%   <<"extraction">> => user_preference_override_extraction_configuration_input()
-%% }
--type user_preference_override_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_gateway_config() :: #{
-%%   <<"gatewayArn">> => string(),
-%%   <<"outboundAuth">> => list()
-%% }
--type harness_agent_core_gateway_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_git_source() :: #{
-%%   <<"auth">> => harness_skill_git_auth(),
-%%   <<"path">> => [string()],
-%%   <<"url">> => string()
-%% }
--type harness_skill_git_source() :: #{binary() => any()}.
-
-
-%% Example:
 %% episodic_reflection_configuration() :: #{
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string())
 %% }
 -type episodic_reflection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_reflection_configuration_input() :: #{
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_reflection_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% episodic_reflection_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"modelId">> => [string()],
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
+%% }
+-type episodic_reflection_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluator_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"evaluatorName">> => string(),
+%%   <<"evaluatorType">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"level">> => list(any()),
+%%   <<"lockedForModification">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type evaluator_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding() :: #{
+%%   <<"description">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% from_url_synchronization_configuration() :: #{
+%%   <<"credentialProviderConfigurations">> => list(registry_record_credential_provider_configuration()),
+%%   <<"url">> => string()
+%% }
+-type from_url_synchronization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_api_key_credential_provider() :: #{
+%%   <<"credentialLocation">> => list(any()),
+%%   <<"credentialParameterName">> => string(),
+%%   <<"credentialPrefix">> => string(),
+%%   <<"providerArn">> => string()
+%% }
+-type gateway_api_key_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_interceptor_configuration() :: #{
+%%   <<"inputConfiguration">> => interceptor_input_configuration(),
+%%   <<"interceptionPoints">> => list(list(any())()),
+%%   <<"interceptor">> => list()
+%% }
+-type gateway_interceptor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_policy_engine_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"mode">> => list(any())
+%% }
+-type gateway_policy_engine_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_rule_detail() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_rule_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_summary() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"protocolType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_target() :: #{
+%%   <<"authorizationData">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"targetConfiguration">> => list(),
+%%   <<"targetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_target() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_runtime_endpoint_request() :: #{}
+-type get_agent_runtime_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_agent_runtime_endpoint_response() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"liveVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetVersion">> => string()
+%% }
+-type get_agent_runtime_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_runtime_request() :: #{
+%%   <<"agentRuntimeVersion">> => string()
+%% }
+-type get_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_runtime_response() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeArtifact">> => list(),
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"agentRuntimeName">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"failureReason">> => [string()],
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"protocolConfiguration">> => protocol_configuration(),
+%%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type get_agent_runtime_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_api_key_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_api_key_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_api_key_credential_provider_response() :: #{
+%%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type get_api_key_credential_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_browser_profile_request() :: #{}
+-type get_browser_profile_request() :: #{}.
+
+
+%% Example:
+%% get_browser_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastSavedAt">> => non_neg_integer(),
+%%   <<"lastSavedBrowserId">> => string(),
+%%   <<"lastSavedBrowserSessionId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_browser_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_browser_request() :: #{}
+-type get_browser_request() :: #{}.
+
+
+%% Example:
+%% get_browser_response() :: #{
+%%   <<"browserArn">> => string(),
+%%   <<"browserId">> => string(),
+%%   <<"browserSigning">> => browser_signing_config_output(),
+%%   <<"certificates">> => list(certificate()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => browser_network_configuration(),
+%%   <<"recording">> => recording_config(),
+%%   <<"status">> => list(any())
+%% }
+-type get_browser_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_code_interpreter_request() :: #{}
+-type get_code_interpreter_request() :: #{}.
+
+
+%% Example:
+%% get_code_interpreter_response() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"codeInterpreterArn">> => string(),
+%%   <<"codeInterpreterId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => [string()],
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"networkConfiguration">> => code_interpreter_network_configuration(),
+%%   <<"status">> => list(any())
+%% }
+-type get_code_interpreter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string()
+%% }
+-type get_configuration_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"components">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type get_configuration_bundle_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_bundle_version_request() :: #{}
+-type get_configuration_bundle_version_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_bundle_version_response() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"bundleName">> => string(),
+%%   <<"components">> => map(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lineageMetadata">> => version_lineage_metadata(),
+%%   <<"versionCreatedAt">> => [non_neg_integer()],
+%%   <<"versionId">> => string()
+%% }
+-type get_configuration_bundle_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dataset_request() :: #{
+%%   <<"datasetVersion">> => string()
+%% }
+-type get_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dataset_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetName">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"downloadUrl">> => string(),
+%%   <<"downloadUrlExpiresAt">> => [non_neg_integer()],
+%%   <<"draftStatus">> => list(any()),
+%%   <<"exampleCount">> => [float()],
+%%   <<"failureReason">> => [string()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"schemaType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluator_request() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_evaluator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluator_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorConfig">> => list(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"evaluatorName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"level">> => list(any()),
+%%   <<"lockedForModification">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_evaluator_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_request() :: #{}
+-type get_gateway_request() :: #{}.
+
+
+%% Example:
+%% get_gateway_response() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customTransformConfiguration">> => custom_transform_configuration(),
+%%   <<"description">> => string(),
+%%   <<"exceptionLevel">> => list(any()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"gatewayUrl">> => string(),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
+%%   <<"protocolConfiguration">> => list(),
+%%   <<"protocolType">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"wafConfiguration">> => waf_configuration(),
+%%   <<"webAclArn">> => string(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type get_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_rule_request() :: #{}
+-type get_gateway_rule_request() :: #{}.
+
+
+%% Example:
+%% get_gateway_rule_response() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"system">> => system_managed_block(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_gateway_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_target_request() :: #{}
+-type get_gateway_target_request() :: #{}.
 
 
 %% Example:
@@ -1703,54 +2525,211 @@
 %% }
 -type get_gateway_target_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_harness_endpoint_request() :: #{}
+-type get_harness_endpoint_request() :: #{}.
+
 
 %% Example:
-%% submit_registry_record_for_approval_response() :: #{
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%% get_harness_endpoint_response() :: #{
+%%   <<"endpoint">> => harness_endpoint()
 %% }
--type submit_registry_record_for_approval_response() :: #{binary() => any()}.
+-type get_harness_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% episodic_override_configuration_input() :: #{
-%%   <<"consolidation">> => episodic_override_consolidation_configuration_input(),
-%%   <<"extraction">> => episodic_override_extraction_configuration_input(),
-%%   <<"reflection">> => episodic_override_reflection_configuration_input()
+%% get_harness_request() :: #{
+%%   <<"harnessVersion">> => string()
 %% }
--type episodic_override_configuration_input() :: #{binary() => any()}.
+-type get_harness_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% stripe_privy_configuration_output() :: #{
-%%   <<"appId">> => string(),
-%%   <<"appSecretArn">> => secret(),
-%%   <<"appSecretJsonKey">> => string(),
-%%   <<"appSecretSource">> => list(any()),
-%%   <<"authorizationId">> => string(),
-%%   <<"authorizationPrivateKeyArn">> => secret(),
-%%   <<"authorizationPrivateKeyJsonKey">> => string(),
-%%   <<"authorizationPrivateKeySource">> => list(any())
+%% get_harness_response() :: #{
+%%   <<"harness">> => harness()
 %% }
--type stripe_privy_configuration_output() :: #{binary() => any()}.
+-type get_harness_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_online_evaluation_config_request() :: #{
-%%   <<"clientToken">> => string(),
+%% get_memory_input() :: #{
+%%   <<"view">> => list(any())
+%% }
+-type get_memory_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_memory_output() :: #{
+%%   <<"memory">> => memory()
+%% }
+-type get_memory_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_oauth2_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
+%%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"oauth2ProviderConfigOutput">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type get_oauth2_credential_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_online_evaluation_config_request() :: #{}
+-type get_online_evaluation_config_request() :: #{}.
+
+
+%% Example:
+%% get_online_evaluation_config_response() :: #{
 %%   <<"clusteringConfig">> => clustering_config(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dataSourceConfig">> => list(),
 %%   <<"description">> => string(),
 %%   <<"evaluationExecutionRoleArn">> => string(),
 %%   <<"evaluators">> => list(list()),
 %%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
 %%   <<"insights">> => list(insight()),
-%%   <<"rule">> => rule()
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"onlineEvaluationConfigName">> => string(),
+%%   <<"outputConfig">> => output_config(),
+%%   <<"rule">> => rule(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type update_online_evaluation_config_request() :: #{binary() => any()}.
+-type get_online_evaluation_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_payment_connector_request() :: #{}
+-type get_payment_connector_request() :: #{}.
+
+
+%% Example:
+%% get_payment_connector_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type get_payment_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_credential_provider_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_payment_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_credential_provider_response() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"providerConfigurationOutput">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type get_payment_credential_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_payment_manager_request() :: #{}
+-type get_payment_manager_request() :: #{}.
+
+
+%% Example:
+%% get_payment_manager_response() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type get_payment_manager_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_engine_request() :: #{}
+-type get_policy_engine_request() :: #{}.
+
+
+%% Example:
+%% get_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_engine_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_engine_summary_request() :: #{}
+-type get_policy_engine_summary_request() :: #{}.
+
+
+%% Example:
+%% get_policy_engine_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_engine_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_generation_request() :: #{}
+-type get_policy_generation_request() :: #{}.
+
+
+%% Example:
+%% get_policy_generation_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_generation_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_generation_summary_request() :: #{}
@@ -1758,214 +2737,183 @@
 
 
 %% Example:
-%% delete_evaluator_response() :: #{
-%%   <<"evaluatorArn">> => string(),
-%%   <<"evaluatorId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_evaluator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% online_evaluation_config_summary() :: #{
-%%   <<"clusteringConfig">> => clustering_config(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"failureReason">> => [string()],
-%%   <<"insights">> => list(insight()),
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"onlineEvaluationConfigId">> => string(),
-%%   <<"onlineEvaluationConfigName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type online_evaluation_config_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_request() :: #{
-%%   <<"approvalConfiguration">> => updated_approval_configuration(),
-%%   <<"authorizerConfiguration">> => updated_authorizer_configuration(),
-%%   <<"description">> => updated_description(),
-%%   <<"name">> => string()
-%% }
--type update_registry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_statement() :: #{
-%%   <<"statement">> => string()
-%% }
--type policy_statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_memory_retrieval_config() :: #{
-%%   <<"relevanceScore">> => [float()],
-%%   <<"strategyId">> => [string()],
-%%   <<"topK">> => [integer()]
-%% }
--type harness_agent_core_memory_retrieval_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_record_request() :: #{
-%%   <<"description">> => updated_description(),
-%%   <<"descriptorType">> => list(any()),
-%%   <<"descriptors">> => updated_descriptors(),
+%% get_policy_generation_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
 %%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_generation_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_summary_request() :: #{}
+-type get_policy_summary_request() :: #{}.
+
+
+%% Example:
+%% get_policy_summary_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_policy_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_record_request() :: #{}
+-type get_registry_record_request() :: #{}.
+
+
+%% Example:
+%% get_registry_record_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
 %%   <<"recordVersion">> => string(),
-%%   <<"synchronizationConfiguration">> => updated_synchronization_configuration(),
-%%   <<"synchronizationType">> => updated_synchronization_type(),
-%%   <<"triggerSynchronization">> => [boolean()]
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type update_registry_record_request() :: #{binary() => any()}.
+-type get_registry_record_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_workload_identity_response() :: #{}
--type delete_workload_identity_response() :: #{}.
+%% get_registry_request() :: #{}
+-type get_registry_request() :: #{}.
 
 
 %% Example:
-%% semantic_extraction_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
+%% get_registry_response() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type semantic_extraction_override() :: #{binary() => any()}.
+-type get_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
 
 
 %% Example:
-%% linkedin_oauth2_provider_config_output() :: #{
+%% get_resource_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_vault_request() :: #{
+%%   <<"tokenVaultId">> => string()
+%% }
+-type get_token_vault_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_token_vault_response() :: #{
+%%   <<"kmsConfiguration">> => kms_configuration(),
+%%   <<"lastModifiedDate">> => [non_neg_integer()],
+%%   <<"tokenVaultId">> => string()
+%% }
+-type get_token_vault_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_identity_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_workload_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_identity_response() :: #{
+%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"workloadIdentityArn">> => string()
+%% }
+-type get_workload_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% github_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
+%% }
+-type github_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% github_oauth2_provider_config_output() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
--type linkedin_oauth2_provider_config_output() :: #{binary() => any()}.
+-type github_oauth2_provider_config_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% passthrough_target_configuration() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"protocolType">> => list(any()),
-%%   <<"schema">> => http_api_schema_configuration(),
-%%   <<"stickinessConfiguration">> => stickiness_configuration()
+%% google_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
 %% }
--type passthrough_target_configuration() :: #{binary() => any()}.
+-type google_oauth2_provider_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_policy_engine_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"mode">> => list(any())
+%% google_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
 %% }
--type gateway_policy_engine_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_prefix() :: #{
-%%   <<"separator">> => [string()],
-%%   <<"strip">> => [boolean()]
-%% }
--type provider_prefix() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_resource() :: #{
-%%   <<"contentConfigurations">> => list(content_configuration()),
-%%   <<"dataStreamArn">> => string()
-%% }
--type kinesis_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% semantic_override_consolidation_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type semantic_override_consolidation_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_summaries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetResourceScope">> => string()
-%% }
--type list_policy_summaries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definition">> => list(),
-%%   <<"description">> => string(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type delete_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_rule_request() :: #{
-%%   <<"actions">> := list(list()),
-%%   <<"clientToken">> => string(),
-%%   <<"conditions">> => list(list()),
-%%   <<"description">> => string(),
-%%   <<"priority">> := integer()
-%% }
--type create_gateway_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_runtime_endpoint_response() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeEndpointArn">> => string(),
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endpointName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetVersion">> => string()
-%% }
--type create_agent_runtime_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_managed_configuration_input() :: #{
-%%   <<"historicalContextWindowSize">> => [integer()],
-%%   <<"invocationConfiguration">> => invocation_configuration_input(),
-%%   <<"triggerConditions">> => list(list())
-%% }
--type self_managed_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_source() :: #{
-%%   <<"connectorId">> => string()
-%% }
--type connector_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definition">> => list(),
-%%   <<"description">> => string(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_policy_response() :: #{binary() => any()}.
+-type google_oauth2_provider_config_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1998,408 +2946,81 @@
 
 
 %% Example:
-%% create_api_key_credential_provider_request() :: #{
-%%   <<"apiKey">> => string(),
-%%   <<"apiKeySecretConfig">> => secret_reference(),
-%%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%% harness_agent_core_browser_config() :: #{
+%%   <<"browserArn">> => string()
 %% }
--type create_api_key_credential_provider_request() :: #{binary() => any()}.
+-type harness_agent_core_browser_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_browser_response() :: #{
-%%   <<"browserArn">> => string(),
-%%   <<"browserId">> => string(),
-%%   <<"browserSigning">> => browser_signing_config_output(),
-%%   <<"certificates">> => list(certificate()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"failureReason">> => [string()],
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"networkConfiguration">> => browser_network_configuration(),
-%%   <<"recording">> => recording_config(),
-%%   <<"status">> => list(any())
+%% harness_agent_core_code_interpreter_config() :: #{
+%%   <<"codeInterpreterArn">> => string()
 %% }
--type get_browser_response() :: #{binary() => any()}.
+-type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% workload_identity_details() :: #{
-%%   <<"workloadIdentityArn">> => string()
-%% }
--type workload_identity_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% synchronize_gateway_targets_request() :: #{
-%%   <<"targetIdList">> := list(string())
-%% }
--type synchronize_gateway_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_target_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
-%%   <<"description">> => string(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
-%%   <<"name">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"targetConfiguration">> := list()
-%% }
--type create_gateway_target_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% semantic_consolidation_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type semantic_consolidation_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_harness_request() :: #{
-%%   <<"allowedTools">> => list(string()),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"clientToken">> => string(),
-%%   <<"environment">> => list(),
-%%   <<"environmentArtifact">> => list(),
-%%   <<"environmentVariables">> => map(),
-%%   <<"executionRoleArn">> := string(),
-%%   <<"harnessName">> := string(),
-%%   <<"maxIterations">> => [integer()],
-%%   <<"maxTokens">> => [integer()],
-%%   <<"memory">> => list(),
-%%   <<"model">> => list(),
-%%   <<"skills">> => list(list()),
-%%   <<"systemPrompt">> => list(list()),
-%%   <<"tags">> => map(),
-%%   <<"timeoutSeconds">> => [integer()],
-%%   <<"tools">> => list(harness_tool()),
-%%   <<"truncation">> => harness_truncation_configuration()
-%% }
--type create_harness_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_payment_manager_request() :: #{}
--type get_payment_manager_request() :: #{}.
-
-
-%% Example:
-%% update_memory_input() :: #{
-%%   <<"addIndexedKeys">> => list(indexed_key()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"eventExpiryDuration">> => [integer()],
-%%   <<"memoryExecutionRoleArn">> => string(),
-%%   <<"memoryStrategies">> => modify_memory_strategies(),
-%%   <<"streamDeliveryResources">> => stream_delivery_resources()
-%% }
--type update_memory_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_oauth2_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_oauth2_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_connector_summary() :: #{
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type payment_connector_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_configuration() :: #{
-%%   <<"sessionTimeoutInSeconds">> => [integer()]
-%% }
--type session_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_generation_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findings">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyGenerationArn">> => string(),
-%%   <<"policyGenerationId">> => string(),
-%%   <<"resource">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type policy_generation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_harness_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"deleteManagedMemory">> => [boolean()]
-%% }
--type delete_harness_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% approval_configuration() :: #{
-%%   <<"autoApproval">> => [boolean()]
-%% }
--type approval_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_target_response() :: #{
-%%   <<"authorizationData">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
-%%   <<"description">> => string(),
+%% harness_agent_core_gateway_config() :: #{
 %%   <<"gatewayArn">> => string(),
-%%   <<"lastSynchronizedAt">> => non_neg_integer(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
-%%   <<"name">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
-%%   <<"protocolType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"targetConfiguration">> => list(),
-%%   <<"targetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"outboundAuth">> => list()
 %% }
--type create_gateway_target_response() :: #{binary() => any()}.
+-type harness_agent_core_gateway_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% github_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
+%% harness_agent_core_memory_configuration() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"arn">> => string(),
+%%   <<"messagesCount">> => [integer()],
+%%   <<"retrievalConfig">> => map()
 %% }
--type github_oauth2_provider_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_browser_profile_request() :: #{}
--type get_browser_profile_request() :: #{}.
+-type harness_agent_core_memory_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_policy_engines_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyEngines">> => list(policy_engine())
+%% harness_agent_core_memory_retrieval_config() :: #{
+%%   <<"relevanceScore">> => [float()],
+%%   <<"strategyId">> => [string()],
+%%   <<"topK">> => [integer()]
 %% }
--type list_policy_engines_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_engine_request() :: #{}
--type get_policy_engine_request() :: #{}.
+-type harness_agent_core_memory_retrieval_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_api_schema_configuration() :: #{
-%%   <<"source">> => list()
-%% }
--type http_api_schema_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_bundle_response() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"bundleName">> => string(),
-%%   <<"components">> => map(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lineageMetadata">> => version_lineage_metadata(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"versionId">> => string()
-%% }
--type get_configuration_bundle_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_agent_skills_descriptor_fields() :: #{
-%%   <<"skillDefinition">> => updated_skill_definition(),
-%%   <<"skillMd">> => updated_skill_md_definition()
-%% }
--type updated_agent_skills_descriptor_fields() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_credential_provider_request() :: #{
-%%   <<"credentialProviderVendor">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"providerConfigurationInput">> := list(),
-%%   <<"tags">> => map()
-%% }
--type create_payment_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_online_evaluation_configs_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"onlineEvaluationConfigs">> => list(online_evaluation_config_summary())
-%% }
--type list_online_evaluation_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% oauth2_authorization_server_metadata() :: #{
-%%   <<"authorizationEndpoint">> => string(),
-%%   <<"issuer">> => string(),
-%%   <<"responseTypes">> => list(string()),
-%%   <<"tokenEndpoint">> => string(),
-%%   <<"tokenEndpointAuthMethods">> => list(string())
-%% }
--type oauth2_authorization_server_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_target_request() :: #{}
--type get_gateway_target_request() :: #{}.
-
-
-%% Example:
-%% delete_payment_connector_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_payment_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% github_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type github_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_browser_profile_response() :: #{
-%%   <<"lastSavedAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_browser_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_evaluator_request() :: #{}
--type delete_evaluator_request() :: #{}.
-
-
-%% Example:
-%% update_configuration_bundle_request() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"bundleName">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"commitMessage">> => [string()],
-%%   <<"components">> => map(),
-%%   <<"createdBy">> => version_created_by_source(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"parentVersionIds">> => list(string())
-%% }
--type update_configuration_bundle_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_created_by_source() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type version_created_by_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_harness_memory_configuration() :: #{
-%%   <<"optionalValue">> => list()
-%% }
--type updated_harness_memory_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_api_key_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_api_key_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_runtime_request() :: #{
-%%   <<"agentRuntimeArtifact">> := list(),
-%%   <<"agentRuntimeName">> := string(),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"environmentVariables">> => map(),
+%% harness_agent_core_runtime_environment() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeId">> => [string()],
+%%   <<"agentRuntimeName">> => [string()],
 %%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
-%%   <<"networkConfiguration">> := network_configuration(),
-%%   <<"protocolConfiguration">> => protocol_configuration(),
-%%   <<"requestHeaderConfiguration">> => list(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
+%%   <<"networkConfiguration">> => network_configuration()
 %% }
--type create_agent_runtime_request() :: #{binary() => any()}.
+-type harness_agent_core_runtime_environment() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_payment_connector_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialProviderConfigurations">> => list(list()),
-%%   <<"name">> => string(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"paymentManagerId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
+%% harness_agent_core_runtime_environment_request() :: #{
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
+%%   <<"networkConfiguration">> => network_configuration()
 %% }
--type create_payment_connector_response() :: #{binary() => any()}.
+-type harness_agent_core_runtime_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_summary() :: #{
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"protocolType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%% harness_bedrock_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
 %% }
--type gateway_summary() :: #{binary() => any()}.
-
+-type harness_bedrock_model_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_dataset_examples_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetVersion">> => string(),
-%%   <<"examples">> => list(any()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dataset_examples_response() :: #{binary() => any()}.
+%% harness_disabled_memory_configuration() :: #{}
+-type harness_disabled_memory_configuration() :: #{}.
 
 
 %% Example:
@@ -2420,22 +3041,115 @@
 
 
 %% Example:
-%% create_dataset_version_request() :: #{
-%%   <<"clientToken">> => string()
+%% harness_gemini_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
 %% }
--type create_dataset_version_request() :: #{binary() => any()}.
+-type harness_gemini_model_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% episodic_memory_strategy_input() :: #{
+%% harness_inline_function_config() :: #{
 %%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"name">> => string(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string()),
-%%   <<"reflectionConfiguration">> => episodic_reflection_configuration_input()
+%%   <<"inputSchema">> => any()
 %% }
--type episodic_memory_strategy_input() :: #{binary() => any()}.
+-type harness_inline_function_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_lite_llm_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_lite_llm_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_managed_memory_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"eventExpiryDuration">> => [integer()],
+%%   <<"strategies">> => list(list(any())())
+%% }
+-type harness_managed_memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_open_ai_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_open_ai_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_remote_mcp_config() :: #{
+%%   <<"headers">> => map(),
+%%   <<"url">> => string()
+%% }
+-type harness_remote_mcp_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_aws_skills_source() :: #{
+%%   <<"paths">> => list(string())
+%% }
+-type harness_skill_aws_skills_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_auth() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"username">> => [string()]
+%% }
+-type harness_skill_git_auth() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_source() :: #{
+%%   <<"auth">> => harness_skill_git_auth(),
+%%   <<"path">> => [string()],
+%%   <<"url">> => string()
+%% }
+-type harness_skill_git_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_s3_source() :: #{
+%%   <<"uri">> => string()
+%% }
+-type harness_skill_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_sliding_window_configuration() :: #{
+%%   <<"messagesCount">> => [integer()]
+%% }
+-type harness_sliding_window_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_summarization_configuration() :: #{
+%%   <<"preserveRecentMessages">> => [integer()],
+%%   <<"summarizationSystemPrompt">> => [string()],
+%%   <<"summaryRatio">> => [float()]
+%% }
+-type harness_summarization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2452,28 +3166,1541 @@
 
 
 %% Example:
-%% create_dataset_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"status">> => list(any())
+%% harness_tool() :: #{
+%%   <<"config">> => list(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type create_dataset_response() :: #{binary() => any()}.
+-type harness_tool() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_gateway_rule_response() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"conditions">> => list(list()),
+%% harness_truncation_configuration() :: #{
+%%   <<"config">> => list(),
+%%   <<"strategy">> => list(any())
+%% }
+-type harness_truncation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_version_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureReason">> => [string()],
+%%   <<"harnessId">> => string(),
+%%   <<"harnessName">> => string(),
+%%   <<"harnessVersion">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type harness_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosting_environment() :: #{
+%%   <<"arn">> => string()
+%% }
+-type hosting_environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_api_schema_configuration() :: #{
+%%   <<"source">> => list()
+%% }
+-type http_api_schema_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_connector_source() :: #{
+%%   <<"connectorId">> => string()
+%% }
+-type http_connector_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_connector_target_configuration() :: #{
+%%   <<"parameters">> => map(),
+%%   <<"source">> => http_connector_source()
+%% }
+-type http_connector_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_credential_provider() :: #{
+%%   <<"region">> => [string()],
+%%   <<"service">> => [string()]
+%% }
+-type iam_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_principal() :: #{
+%%   <<"arn">> => string(),
+%%   <<"operator">> => list(any())
+%% }
+-type iam_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% included_oauth2_provider_config_input() :: #{
+%%   <<"authorizationEndpoint">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"issuer">> => string(),
+%%   <<"tokenEndpoint">> => string()
+%% }
+-type included_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% included_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type included_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% indexed_key() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type indexed_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_configuration() :: #{
+%%   <<"maxTokens">> => [integer()],
+%%   <<"stopSequences">> => list(string()),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type inference_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_connector_source() :: #{
+%%   <<"connectorId">> => string()
+%% }
+-type inference_connector_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_connector_target_configuration() :: #{
+%%   <<"source">> => inference_connector_source()
+%% }
+-type inference_connector_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_operation_configuration() :: #{
+%%   <<"models">> => list(model_entry()),
+%%   <<"path">> => string(),
+%%   <<"providerPath">> => string()
+%% }
+-type inference_operation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_provider_target_configuration() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"modelMapping">> => model_mapping(),
+%%   <<"operations">> => list(inference_operation_configuration())
+%% }
+-type inference_provider_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_examples_source() :: #{
+%%   <<"examples">> => list(any())
+%% }
+-type inline_examples_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight() :: #{
+%%   <<"insightId">> => string()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% interceptor_input_configuration() :: #{
+%%   <<"passRequestHeaders">> => [boolean()],
+%%   <<"payloadFilter">> => interceptor_payload_filter()
+%% }
+-type interceptor_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% interceptor_payload_filter() :: #{
+%%   <<"exclude">> => list(list())
+%% }
+-type interceptor_payload_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_configuration() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type invocation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_configuration_input() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type invocation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_resource() :: #{
+%%   <<"contentConfigurations">> => list(content_configuration()),
+%%   <<"dataStreamArn">> => string()
+%% }
+-type kinesis_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_configuration() :: #{
+%%   <<"keyType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type kms_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_source_type() :: #{
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type kms_key_source_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_evaluator_config() :: #{
+%%   <<"lambdaArn">> => string(),
+%%   <<"lambdaTimeoutInSeconds">> => [integer()]
+%% }
+-type lambda_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_interceptor_configuration() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_interceptor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_transform_configuration() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_transform_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_configuration() :: #{
+%%   <<"idleRuntimeSessionTimeout">> => [integer()],
+%%   <<"maxLifetime">> => [integer()]
+%% }
+-type lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% linkedin_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
+%% }
+-type linkedin_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% linkedin_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type linkedin_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_endpoints_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtime_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_endpoints_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
+%% }
+-type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtime_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_versions_response() :: #{
+%%   <<"agentRuntimes">> => list(agent_runtime()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtime_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtimes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtimes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtimes_response() :: #{
+%%   <<"agentRuntimes">> => list(agent_runtime()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtimes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_api_key_credential_providers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_api_key_credential_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_api_key_credential_providers_response() :: #{
+%%   <<"credentialProviders">> => list(api_key_credential_provider_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_api_key_credential_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browser_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profileSummaries">> => list(browser_profile_summary())
+%% }
+-type list_browser_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browsers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_browsers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browsers_response() :: #{
+%%   <<"browserSummaries">> => list(browser_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browsers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_interpreters_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_code_interpreters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_interpreters_response() :: #{
+%%   <<"codeInterpreterSummaries">> => list(code_interpreter_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_interpreters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundle_versions_request() :: #{
+%%   <<"filter">> => version_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundle_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundle_versions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(configuration_bundle_version_summary())
+%% }
+-type list_configuration_bundle_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundles_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_bundles_response() :: #{
+%%   <<"bundles">> => list(configuration_bundle_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_configuration_bundles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_examples_request() :: #{
+%%   <<"datasetVersion">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_examples_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string(),
+%%   <<"examples">> => list(any()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_versions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(dataset_version_summary())
+%% }
+-type list_dataset_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluators_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_evaluators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluators_response() :: #{
+%%   <<"evaluators">> => list(evaluator_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_evaluators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_rules_response() :: #{
+%%   <<"gatewayRules">> => list(gateway_rule_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_targets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_targets_response() :: #{
+%%   <<"items">> => list(target_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateways_response() :: #{
+%%   <<"items">> => list(gateway_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harness_endpoints_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harness_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harness_endpoints_response() :: #{
+%%   <<"endpoints">> => list(harness_endpoint()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harness_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harness_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harness_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harness_versions_response() :: #{
+%%   <<"harnessVersions">> => list(harness_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harness_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harnesses_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harnesses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harnesses_response() :: #{
+%%   <<"harnesses">> => list(harness_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_harnesses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memories_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_memories_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memories_output() :: #{
+%%   <<"memories">> => list(memory_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_memories_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_oauth2_credential_providers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_oauth2_credential_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_oauth2_credential_providers_response() :: #{
+%%   <<"credentialProviders">> => list(oauth2_credential_provider_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_oauth2_credential_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_online_evaluation_configs_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_online_evaluation_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_online_evaluation_configs_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"onlineEvaluationConfigs">> => list(online_evaluation_config_summary())
+%% }
+-type list_online_evaluation_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_connectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_payment_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_connectors_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentConnectors">> => list(payment_connector_summary())
+%% }
+-type list_payment_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_credential_providers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_payment_credential_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_credential_providers_response() :: #{
+%%   <<"credentialProviders">> => list(payment_credential_provider_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_payment_credential_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_managers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_payment_managers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_managers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentManagers">> => list(payment_manager_summary())
+%% }
+-type list_payment_managers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceScope">> => string()
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engine_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_engine_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engine_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyEngines">> => list(policy_engine_summary())
+%% }
+-type list_policy_engine_summaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engines_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_engines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_engines_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyEngines">> => list(policy_engine())
+%% }
+-type list_policy_engines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_assets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generation_assets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_assets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerationAssets">> => list(policy_generation_asset())
+%% }
+-type list_policy_generation_assets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generation_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generation_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> => list(policy_generation_summary())
+%% }
+-type list_policy_generation_summaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> => list(policy_generation())
+%% }
+-type list_policy_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_summaries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceScope">> => string()
+%% }
+-type list_policy_summaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policies">> => list(policy_summary())
+%% }
+-type list_policy_summaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registries_request() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_registries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registries">> => list(registry_summary())
+%% }
+-type list_registries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registry_records_request() :: #{
+%%   <<"descriptorType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_registry_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registry_records_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registryRecords">> => list(registry_record_summary())
+%% }
+-type list_registry_records_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_identities_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_workload_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_identities_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"workloadIdentities">> => list(workload_identity_type())
+%% }
+-type list_workload_identities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% llm_as_a_judge_evaluator_config() :: #{
+%%   <<"instructions">> => string(),
+%%   <<"modelConfig">> => list(),
+%%   <<"ratingScale">> => list()
+%% }
+-type llm_as_a_judge_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% llm_extraction_config() :: #{
+%%   <<"definition">> => string(),
+%%   <<"llmExtractionInstruction">> => string(),
+%%   <<"validation">> => list()
+%% }
+-type llm_extraction_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_c_p_gateway_configuration() :: #{
+%%   <<"instructions">> => string(),
+%%   <<"searchType">> => list(any()),
+%%   <<"sessionConfiguration">> => session_configuration(),
+%%   <<"streamingConfiguration">> => streaming_configuration(),
+%%   <<"supportedVersions">> => list(string())
+%% }
+-type m_c_p_gateway_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_resource_details() :: #{
+%%   <<"domain">> => string(),
+%%   <<"resourceAssociationArn">> => string(),
+%%   <<"resourceGatewayArn">> => string()
+%% }
+-type managed_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_vpc_resource() :: #{
+%%   <<"endpointIpAddressType">> => list(any()),
+%%   <<"routingDomain">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcIdentifier">> => string()
+%% }
+-type managed_vpc_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_paths() :: #{
+%%   <<"anyOf">> => list(string())
+%% }
+-type match_paths() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_principals() :: #{
+%%   <<"anyOf">> => list(list())
+%% }
+-type match_principals() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_descriptor() :: #{
+%%   <<"server">> => server_definition(),
+%%   <<"tools">> => tools_definition()
+%% }
+-type mcp_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_lambda_target_configuration() :: #{
+%%   <<"lambdaArn">> => string(),
+%%   <<"toolSchema">> => list()
+%% }
+-type mcp_lambda_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_server_target_configuration() :: #{
+%%   <<"endpoint">> => [string()],
+%%   <<"listingMode">> => list(any()),
+%%   <<"mcpToolSchema">> => list(),
+%%   <<"resourcePriority">> => integer()
+%% }
+-type mcp_server_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"eventExpiryDuration">> => [integer()],
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"indexedKeys">> => list(indexed_key()),
+%%   <<"managedByResourceArn">> => string(),
+%%   <<"memoryExecutionRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"strategies">> => list(memory_strategy()),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type memory() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_schema() :: #{
+%%   <<"metadataSchema">> => list(metadata_schema_entry())
+%% }
+-type memory_record_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_strategy() :: #{
+%%   <<"configuration">> => strategy_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"strategyId">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type memory_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"managedByResourceArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type memory_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_based_trigger() :: #{
+%%   <<"messageCount">> => [integer()]
+%% }
+-type message_based_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_based_trigger_input() :: #{
+%%   <<"messageCount">> => [integer()]
+%% }
+-type message_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration() :: #{
+%%   <<"allowedQueryParameters">> => list(string()),
+%%   <<"allowedRequestHeaders">> => list(string()),
+%%   <<"allowedResponseHeaders">> => list(string())
+%% }
+-type metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_schema_entry() :: #{
+%%   <<"extractionConfig">> => list(),
+%%   <<"extractionType">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_schema_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% microsoft_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"tenantId">> => string()
+%% }
+-type microsoft_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% microsoft_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type microsoft_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_entry() :: #{
+%%   <<"model">> => string()
+%% }
+-type model_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_mapping() :: #{
+%%   <<"providerPrefix">> => provider_prefix()
+%% }
+-type model_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_invocation_configuration_input() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type modify_invocation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_memory_strategies() :: #{
+%%   <<"addMemoryStrategies">> => list(list()),
+%%   <<"deleteMemoryStrategies">> => list(delete_memory_strategy_input()),
+%%   <<"modifyMemoryStrategies">> => list(modify_memory_strategy_input())
+%% }
+-type modify_memory_strategies() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_memory_strategy_input() :: #{
+%%   <<"configuration">> => modify_strategy_configuration(),
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"memoryStrategyId">> => [string()],
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
+%% }
+-type modify_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_self_managed_configuration() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => modify_invocation_configuration_input(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type modify_self_managed_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_strategy_configuration() :: #{
+%%   <<"consolidation">> => list(),
+%%   <<"extraction">> => list(),
+%%   <<"reflection">> => list(),
+%%   <<"selfManagedConfiguration">> => modify_self_managed_configuration()
+%% }
+-type modify_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"networkMode">> => list(any()),
+%%   <<"networkModeConfig">> => vpc_config()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_validation() :: #{
+%%   <<"maxValue">> => [float()],
+%%   <<"minValue">> => [float()]
+%% }
+-type number_validation() :: #{binary() => any()}.
+
+
+%% Example:
+%% numerical_scale_definition() :: #{
+%%   <<"definition">> => [string()],
+%%   <<"label">> => [string()],
+%%   <<"value">> => [float()]
+%% }
+-type numerical_scale_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_authorization_data() :: #{
+%%   <<"authorizationUrl">> => [string()],
+%%   <<"userId">> => [string()]
+%% }
+-type o_auth2_authorization_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_credential_provider() :: #{
+%%   <<"customParameters">> => map(),
+%%   <<"defaultReturnUrl">> => string(),
+%%   <<"grantType">> => list(any()),
+%%   <<"providerArn">> => string(),
+%%   <<"scopes">> => list(string())
+%% }
+-type o_auth_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% oauth2_authorization_server_metadata() :: #{
+%%   <<"authorizationEndpoint">> => string(),
+%%   <<"issuer">> => string(),
+%%   <<"responseTypes">> => list(string()),
+%%   <<"tokenEndpoint">> => string(),
+%%   <<"tokenEndpointAuthMethods">> => list(string())
+%% }
+-type oauth2_authorization_server_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% oauth2_credential_provider_item() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type oauth2_credential_provider_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% on_behalf_of_token_exchange_config_type() :: #{
+%%   <<"grantType">> => list(any()),
+%%   <<"tokenExchangeGrantTypeConfig">> => token_exchange_grant_type_config_type()
+%% }
+-type on_behalf_of_token_exchange_config_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% online_evaluation_config_summary() :: #{
+%%   <<"clusteringConfig">> => clustering_config(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"insights">> => list(insight()),
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"onlineEvaluationConfigName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type online_evaluation_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_responses_evaluator_model_config() :: #{
+%%   <<"maxOutputTokens">> => [integer()],
+%%   <<"modelId">> => string(),
+%%   <<"reasoning">> => reasoning_configuration(),
+%%   <<"temperature">> => [float()],
+%%   <<"topP">> => [float()]
+%% }
+-type open_responses_evaluator_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_config() :: #{
+%%   <<"cloudWatchConfig">> => cloud_watch_output_config()
+%% }
+-type output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% passthrough_target_configuration() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"protocolType">> => list(any()),
+%%   <<"schema">> => http_api_schema_configuration(),
+%%   <<"stickinessConfiguration">> => stickiness_configuration()
+%% }
+-type passthrough_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_connector_summary() :: #{
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type payment_connector_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_credential_provider_configuration() :: #{
+%%   <<"credentialProviderArn">> => string()
+%% }
+-type payment_credential_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_credential_provider_item() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type payment_credential_provider_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_manager_summary() :: #{
+%%   <<"authorizerType">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"system">> => system_managed_block()
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type create_gateway_rule_response() :: #{binary() => any()}.
+-type payment_manager_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definition">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_engine() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_engine() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_engine_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_engine_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_generation() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_asset() :: #{
+%%   <<"definition">> => list(),
+%%   <<"findings">> => list(finding()),
+%%   <<"policyGenerationAssetId">> => string(),
+%%   <<"rawTextFragment">> => string()
+%% }
+-type policy_generation_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_details() :: #{
+%%   <<"policyGenerationAssetId">> => string(),
+%%   <<"policyGenerationId">> => string()
+%% }
+-type policy_generation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_generation_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_generation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_statement() :: #{
+%%   <<"statement">> => string()
+%% }
+-type policy_statement() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_endpoint_override() :: #{
+%%   <<"domain">> => string(),
+%%   <<"privateEndpoint">> => list()
+%% }
+-type private_endpoint_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_jwt_config() :: #{
+%%   <<"additionalHeaderClaims">> => map(),
+%%   <<"additionalPayloadClaims">> => map(),
+%%   <<"privateKeySource">> => list(),
+%%   <<"signingAlgorithm">> => list(any())
+%% }
+-type private_key_jwt_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% protocol_configuration() :: #{
+%%   <<"serverProtocol">> => list(any())
+%% }
+-type protocol_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_prefix() :: #{
+%%   <<"separator">> => [string()],
+%%   <<"strip">> => [boolean()]
+%% }
+-type provider_prefix() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reasoning_configuration() :: #{
+%%   <<"effort">> => [string()]
+%% }
+-type reasoning_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_config() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"s3Location">> => s3_location()
+%% }
+-type recording_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_credential_provider_configuration() :: #{
+%%   <<"credentialProvider">> => list(),
+%%   <<"credentialProviderType">> => list(any())
+%% }
+-type registry_record_credential_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_iam_credential_provider() :: #{
+%%   <<"region">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"service">> => string()
+%% }
+-type registry_record_iam_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_o_auth_credential_provider() :: #{
+%%   <<"customParameters">> => map(),
+%%   <<"grantType">> => list(any()),
+%%   <<"providerArn">> => string(),
+%%   <<"scopes">> => list([string()]())
+%% }
+-type registry_record_o_auth_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_summary() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type registry_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"samplingConfig">> => sampling_config(),
+%%   <<"sessionConfig">> => session_config()
+%% }
+-type rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2484,27 +4711,625 @@
 
 
 %% Example:
-%% delete_agent_runtime_endpoint_request() :: #{
-%%   <<"clientToken">> => string()
+%% runtime_target_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"qualifier">> => string(),
+%%   <<"schema">> => http_api_schema_configuration()
 %% }
--type delete_agent_runtime_endpoint_request() :: #{binary() => any()}.
+-type runtime_target_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_agent_runtime_endpoint_response() :: #{
+%% s3_configuration() :: #{
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_access_point_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type s3_files_access_point_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type s3_files_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"prefix">> => [string()],
+%%   <<"versionId">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
+%% }
+-type salesforce_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type salesforce_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sampling_config() :: #{
+%%   <<"samplingPercentage">> => float()
+%% }
+-type sampling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_definition() :: #{
+%%   <<"description">> => [string()],
+%%   <<"items">> => schema_definition(),
+%%   <<"properties">> => map(),
+%%   <<"required">> => list([string()]()),
+%%   <<"type">> => list(any())
+%% }
+-type schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% secret() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% secret_reference() :: #{
+%%   <<"jsonKey">> => string(),
+%%   <<"secretId">> => string()
+%% }
+-type secret_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_location() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secrets_manager_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_configuration() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => invocation_configuration(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type self_managed_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_configuration_input() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => invocation_configuration_input(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type self_managed_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_consolidation_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type semantic_consolidation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_extraction_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type semantic_extraction_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_memory_strategy_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
+%% }
+-type semantic_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_override_configuration_input() :: #{
+%%   <<"consolidation">> => semantic_override_consolidation_configuration_input(),
+%%   <<"extraction">> => semantic_override_extraction_configuration_input()
+%% }
+-type semantic_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_override_consolidation_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type semantic_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_override_extraction_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type semantic_override_extraction_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type server_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_config() :: #{
+%%   <<"sessionTimeoutMinutes">> => [integer()]
+%% }
+-type session_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_configuration() :: #{
+%%   <<"sessionTimeoutInSeconds">> => [integer()]
+%% }
+-type session_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_storage_configuration() :: #{
+%%   <<"mountPath">> => string()
+%% }
+-type session_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_token_vault_cm_k_request() :: #{
+%%   <<"kmsConfiguration">> := kms_configuration(),
+%%   <<"tokenVaultId">> => string()
+%% }
+-type set_token_vault_cm_k_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_token_vault_cm_k_response() :: #{
+%%   <<"kmsConfiguration">> => kms_configuration(),
+%%   <<"lastModifiedDate">> => [non_neg_integer()],
+%%   <<"tokenVaultId">> => string()
+%% }
+-type set_token_vault_cm_k_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type skill_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_md_definition() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"clientSecretConfig">> => secret_reference(),
+%%   <<"clientSecretSource">> => list(any())
+%% }
+-type slack_oauth2_provider_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% slack_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type slack_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"content">> := list(),
+%%   <<"name">> := string(),
+%%   <<"resource">> := list()
+%% }
+-type start_policy_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_policy_generation_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findings">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"policyGenerationArn">> => string(),
+%%   <<"policyGenerationId">> => string(),
+%%   <<"resource">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type start_policy_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_override() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => [string()]
+%% }
+-type static_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% static_route() :: #{
+%%   <<"targetName">> => string()
+%% }
+-type static_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% stickiness_configuration() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"timeout">> => integer()
+%% }
+-type stickiness_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% strategy_configuration() :: #{
+%%   <<"consolidation">> => list(),
+%%   <<"extraction">> => list(),
+%%   <<"reflection">> => list(),
+%%   <<"selfManagedConfiguration">> => self_managed_configuration(),
+%%   <<"type">> => list(any())
+%% }
+-type strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_delivery_resources() :: #{
+%%   <<"resources">> => list(list())
+%% }
+-type stream_delivery_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_configuration() :: #{
+%%   <<"enableResponseStreaming">> => [boolean()]
+%% }
+-type streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_list_validation() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"maxItems">> => [integer()]
+%% }
+-type string_list_validation() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_validation() :: #{
+%%   <<"allowedValues">> => list(string())
+%% }
+-type string_validation() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_configuration_input() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appSecret">> => string(),
+%%   <<"appSecretConfig">> => secret_reference(),
+%%   <<"appSecretSource">> => list(any()),
+%%   <<"authorizationId">> => string(),
+%%   <<"authorizationPrivateKey">> => string(),
+%%   <<"authorizationPrivateKeyConfig">> => secret_reference(),
+%%   <<"authorizationPrivateKeySource">> => list(any())
+%% }
+-type stripe_privy_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_configuration_output() :: #{
+%%   <<"appId">> => string(),
+%%   <<"appSecretArn">> => secret(),
+%%   <<"appSecretJsonKey">> => string(),
+%%   <<"appSecretSource">> => list(any()),
+%%   <<"authorizationId">> => string(),
+%%   <<"authorizationPrivateKeyArn">> => secret(),
+%%   <<"authorizationPrivateKeyJsonKey">> => string(),
+%%   <<"authorizationPrivateKeySource">> => list(any())
+%% }
+-type stripe_privy_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% submit_registry_record_for_approval_request() :: #{}
+-type submit_registry_record_for_approval_request() :: #{}.
+
+
+%% Example:
+%% submit_registry_record_for_approval_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type submit_registry_record_for_approval_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_consolidation_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type summary_consolidation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_memory_strategy_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
+%% }
+-type summary_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_override_configuration_input() :: #{
+%%   <<"consolidation">> => summary_override_consolidation_configuration_input()
+%% }
+-type summary_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_override_consolidation_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type summary_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% synchronization_configuration() :: #{
+%%   <<"fromUrl">> => from_url_synchronization_configuration()
+%% }
+-type synchronization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% synchronize_gateway_targets_request() :: #{
+%%   <<"targetIdList">> := list(string())
+%% }
+-type synchronize_gateway_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% synchronize_gateway_targets_response() :: #{
+%%   <<"targets">> => list(gateway_target())
+%% }
+-type synchronize_gateway_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_managed_block() :: #{
+%%   <<"managedBy">> => [string()]
+%% }
+-type system_managed_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_summary() :: #{
+%%   <<"authorizationData">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"listingMode">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"resourcePriority">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_traffic_split_entry() :: #{
+%%   <<"description">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"targetName">> => string(),
+%%   <<"weight">> => [integer()]
+%% }
+-type target_traffic_split_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_based_trigger() :: #{
+%%   <<"idleSessionTimeout">> => [integer()]
+%% }
+-type time_based_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_based_trigger_input() :: #{
+%%   <<"idleSessionTimeout">> => [integer()]
+%% }
+-type time_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_based_trigger() :: #{
+%%   <<"tokenCount">> => [integer()]
+%% }
+-type token_based_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_based_trigger_input() :: #{
+%%   <<"tokenCount">> => [integer()]
+%% }
+-type token_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_exchange_grant_type_config_type() :: #{
+%%   <<"actorTokenContent">> => list(any()),
+%%   <<"actorTokenScopes">> => list(string())
+%% }
+-type token_exchange_grant_type_config_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_definition() :: #{
+%%   <<"description">> => [string()],
+%%   <<"inputSchema">> => schema_definition(),
+%%   <<"name">> => [string()],
+%%   <<"outputSchema">> => schema_definition()
+%% }
+-type tool_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tools_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"protocolVersion">> => string()
+%% }
+-type tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_split_entry() :: #{
+%%   <<"configurationBundle">> => configuration_bundle_reference(),
+%%   <<"description">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"weight">> => [integer()]
+%% }
+-type traffic_split_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_agent_runtime_endpoint_request() :: #{
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type update_agent_runtime_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_runtime_endpoint_response() :: #{
 %%   <<"agentRuntimeArn">> => string(),
 %%   <<"agentRuntimeEndpointArn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReason">> => [string()],
-%%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"liveVersion">> => string(),
-%%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"targetVersion">> => string()
 %% }
--type get_agent_runtime_endpoint_response() :: #{binary() => any()}.
+-type update_agent_runtime_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2526,14 +5351,6 @@
 
 
 %% Example:
-%% harness_inline_function_config() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => any()
-%% }
--type harness_inline_function_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_agent_runtime_response() :: #{
 %%   <<"agentRuntimeArn">> => string(),
 %%   <<"agentRuntimeId">> => string(),
@@ -2547,1024 +5364,41 @@
 
 
 %% Example:
-%% delete_api_key_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_api_key_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_lineage_metadata() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"commitMessage">> => [string()],
-%%   <<"createdBy">> => version_created_by_source(),
-%%   <<"parentVersionIds">> => list(string())
-%% }
--type version_lineage_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_registry_record_response() :: #{
-%%   <<"recordArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_registry_record_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% llm_extraction_config() :: #{
-%%   <<"definition">> => string(),
-%%   <<"llmExtractionInstruction">> => string(),
-%%   <<"validation">> => list()
-%% }
--type llm_extraction_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_gateway_rule_response() :: #{
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_gateway_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_online_evaluation_config_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusteringConfig">> => clustering_config(),
-%%   <<"dataSourceConfig">> := list(),
-%%   <<"description">> => string(),
-%%   <<"enableOnCreate">> := [boolean()],
-%%   <<"evaluationExecutionRoleArn">> := string(),
-%%   <<"evaluators">> => list(list()),
-%%   <<"insights">> => list(insight()),
-%%   <<"onlineEvaluationConfigName">> := string(),
-%%   <<"rule">> := rule(),
-%%   <<"tags">> => map()
-%% }
--type create_online_evaluation_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_browser_request() :: #{
-%%   <<"browserSigning">> => browser_signing_config_input(),
-%%   <<"certificates">> => list(certificate()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"networkConfiguration">> := browser_network_configuration(),
-%%   <<"recording">> => recording_config(),
-%%   <<"tags">> => map()
-%% }
--type create_browser_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workload_identity_request() :: #{
-%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
-%%   <<"name">> := string()
-%% }
--type update_workload_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gateway_target_response() :: #{
-%%   <<"authorizationData">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
-%%   <<"description">> => string(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"lastSynchronizedAt">> => non_neg_integer(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
-%%   <<"name">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
-%%   <<"protocolType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"targetConfiguration">> => list(),
-%%   <<"targetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_gateway_target_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browser_profiles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"profileSummaries">> => list(browser_profile_summary())
-%% }
--type list_browser_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harness_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_harness_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_engine_summary_request() :: #{}
--type get_policy_engine_summary_request() :: #{}.
-
-
-%% Example:
-%% create_online_evaluation_config_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"failureReason">> => [string()],
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"onlineEvaluationConfigId">> => string(),
-%%   <<"outputConfig">> => output_config(),
-%%   <<"status">> => list(any())
-%% }
--type create_online_evaluation_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_entry() :: #{
-%%   <<"model">> => string()
-%% }
--type model_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_payment_connector_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"credentialProviderConfigurations">> => list(list()),
-%%   <<"description">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type update_payment_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% on_behalf_of_token_exchange_config_type() :: #{
-%%   <<"grantType">> => list(any()),
-%%   <<"tokenExchangeGrantTypeConfig">> => token_exchange_grant_type_config_type()
-%% }
--type on_behalf_of_token_exchange_config_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workload_identity_request() :: #{
-%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_workload_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_generation_details() :: #{
-%%   <<"policyGenerationAssetId">> => string(),
-%%   <<"policyGenerationId">> => string()
-%% }
--type policy_generation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% coinbase_cdp_configuration_input() :: #{
-%%   <<"apiKeyId">> => string(),
-%%   <<"apiKeySecret">> => string(),
+%% update_api_key_credential_provider_request() :: #{
+%%   <<"apiKey">> => string(),
 %%   <<"apiKeySecretConfig">> => secret_reference(),
 %%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"walletSecret">> => string(),
-%%   <<"walletSecretConfig">> => secret_reference(),
-%%   <<"walletSecretSource">> => list(any())
+%%   <<"name">> := string()
 %% }
--type coinbase_cdp_configuration_input() :: #{binary() => any()}.
+-type update_api_key_credential_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_harness_versions_response() :: #{
-%%   <<"harnessVersions">> => list(harness_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_harness_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gateway_response() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customTransformConfiguration">> => custom_transform_configuration(),
-%%   <<"description">> => string(),
-%%   <<"exceptionLevel">> => list(any()),
-%%   <<"gatewayArn">> => string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"gatewayUrl">> => string(),
-%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
-%%   <<"protocolConfiguration">> => list(),
-%%   <<"protocolType">> => list(any()),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"wafConfiguration">> => waf_configuration(),
-%%   <<"webAclArn">> => string(),
-%%   <<"workloadIdentityDetails">> => workload_identity_details()
-%% }
--type get_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_reflection_configuration_input() :: #{
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
-%% }
--type episodic_reflection_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetName">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"draftStatus">> => list(any()),
-%%   <<"exampleCount">> => [float()],
-%%   <<"schemaType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type dataset_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_browser_profile_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_browser_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_traffic_split_entry() :: #{
-%%   <<"description">> => [string()],
-%%   <<"metadata">> => map(),
-%%   <<"name">> => [string()],
-%%   <<"targetName">> => string(),
-%%   <<"weight">> => [integer()]
-%% }
--type target_traffic_split_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% registry_record_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"descriptorType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"recordVersion">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type registry_record_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_connector_source() :: #{
-%%   <<"connectorId">> => string()
-%% }
--type inference_connector_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% included_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type included_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% llm_as_a_judge_evaluator_config() :: #{
-%%   <<"instructions">> => string(),
-%%   <<"modelConfig">> => list(),
-%%   <<"ratingScale">> => list()
-%% }
--type llm_as_a_judge_evaluator_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_memory_output() :: #{
-%%   <<"memory">> => memory()
-%% }
--type create_memory_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorizing_claim_match_value_type() :: #{
-%%   <<"claimMatchOperator">> => list(any()),
-%%   <<"claimMatchValue">> => list()
-%% }
--type authorizing_claim_match_value_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_reflection_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"modelId">> => [string()],
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
-%% }
--type episodic_reflection_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_target_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"qualifier">> => string(),
-%%   <<"schema">> => http_api_schema_configuration()
-%% }
--type runtime_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_override_consolidation_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type episodic_override_consolidation_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_code_interpreter_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_code_interpreter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_registry_records_request() :: #{
-%%   <<"descriptorType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_registry_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_summary() :: #{
-%%   <<"authorizationData">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastSynchronizedAt">> => non_neg_integer(),
-%%   <<"listingMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"resourcePriority">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"targetId">> => string(),
-%%   <<"targetType">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type target_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_harness_response() :: #{
-%%   <<"harness">> => harness()
-%% }
--type update_harness_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_configuration() :: #{
-%%   <<"level">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type content_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_token_vault_cm_k_response() :: #{
-%%   <<"kmsConfiguration">> => kms_configuration(),
-%%   <<"lastModifiedDate">> => [non_neg_integer()],
-%%   <<"tokenVaultId">> => string()
-%% }
--type set_token_vault_cm_k_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bedrock_evaluator_model_config() :: #{
-%%   <<"additionalModelRequestFields">> => any(),
-%%   <<"inferenceConfig">> => inference_configuration(),
-%%   <<"modelId">> => string()
-%% }
--type bedrock_evaluator_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_manager_response() :: #{
-%%   <<"paymentManagerId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_payment_manager_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% oauth2_credential_provider_item() :: #{
+%% update_api_key_credential_provider_response() :: #{
+%%   <<"apiKeySecretArn">> => secret(),
+%%   <<"apiKeySecretJsonKey">> => string(),
+%%   <<"apiKeySecretSource">> => list(any()),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string()
 %% }
--type oauth2_credential_provider_item() :: #{binary() => any()}.
+-type update_api_key_credential_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_credential_provider_configuration() :: #{
-%%   <<"credentialProviderArn">> => string()
-%% }
--type payment_credential_provider_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_browser_config() :: #{
-%%   <<"browserArn">> => string()
-%% }
--type harness_agent_core_browser_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_split_entry() :: #{
-%%   <<"configurationBundle">> => configuration_bundle_reference(),
-%%   <<"description">> => [string()],
-%%   <<"metadata">> => map(),
-%%   <<"name">> => [string()],
-%%   <<"weight">> => [integer()]
-%% }
--type traffic_split_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_identity_type() :: #{
-%%   <<"name">> => string(),
-%%   <<"workloadIdentityArn">> => string()
-%% }
--type workload_identity_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_oauth2_provider_config_input() :: #{
-%%   <<"clientAuthenticationMethod">> => list(any()),
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"oauthDiscovery">> => list(),
-%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
-%% }
--type custom_oauth2_provider_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_oauth2_credential_provider_request() :: #{
-%%   <<"credentialProviderVendor">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"oauth2ProviderConfigInput">> := list(),
-%%   <<"tags">> => map()
-%% }
--type create_oauth2_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_api_key_credential_provider() :: #{
-%%   <<"credentialLocation">> => list(any()),
-%%   <<"credentialParameterName">> => string(),
-%%   <<"credentialPrefix">> => string(),
-%%   <<"providerArn">> => string()
-%% }
--type gateway_api_key_credential_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_identity_response() :: #{
-%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"workloadIdentityArn">> => string()
-%% }
--type get_workload_identity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_credential_provider_response() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"providerConfigurationOutput">> => list(),
-%%   <<"tags">> => map()
-%% }
--type get_payment_credential_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_runtime_endpoint_request() :: #{}
--type get_agent_runtime_endpoint_request() :: #{}.
-
-
-%% Example:
-%% s3_files_access_point_configuration() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"mountPath">> => string()
-%% }
--type s3_files_access_point_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_bundle_summary() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleId">> => string(),
+%% update_configuration_bundle_request() :: #{
+%%   <<"branchName">> => string(),
 %%   <<"bundleName">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string()
-%% }
--type configuration_bundle_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_oauth2_provider_config_output() :: #{
-%%   <<"clientAuthenticationMethod">> => list(any()),
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list(),
-%%   <<"onBehalfOfTokenExchangeConfig">> => on_behalf_of_token_exchange_config_type(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
-%% }
--type custom_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_examples_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"exampleIds">> := list(string())
-%% }
--type delete_dataset_examples_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_interpreter_response() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"codeInterpreterArn">> => string(),
-%%   <<"codeInterpreterId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"components">> => map(),
+%%   <<"createdBy">> => version_created_by_source(),
 %%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"failureReason">> => [string()],
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"networkConfiguration">> => code_interpreter_network_configuration(),
-%%   <<"status">> => list(any())
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"parentVersionIds">> => list(string())
 %% }
--type get_code_interpreter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_online_evaluation_config_response() :: #{
-%%   <<"clusteringConfig">> => clustering_config(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"dataSourceConfig">> => list(),
-%%   <<"description">> => string(),
-%%   <<"evaluationExecutionRoleArn">> => string(),
-%%   <<"evaluators">> => list(list()),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"failureReason">> => [string()],
-%%   <<"insights">> => list(insight()),
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"onlineEvaluationConfigId">> => string(),
-%%   <<"onlineEvaluationConfigName">> => string(),
-%%   <<"outputConfig">> => output_config(),
-%%   <<"rule">> => rule(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_online_evaluation_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_manager_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_payment_manager_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"requireServiceS3Endpoint">> => [boolean()],
-%%   <<"securityGroups">> => list(string()),
-%%   <<"subnets">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_credential_providers_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_payment_credential_providers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% modify_memory_strategies() :: #{
-%%   <<"addMemoryStrategies">> => list(list()),
-%%   <<"deleteMemoryStrategies">> => list(delete_memory_strategy_input()),
-%%   <<"modifyMemoryStrategies">> => list(modify_memory_strategy_input())
-%% }
--type modify_memory_strategies() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding() :: #{
-%%   <<"description">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_managed_configuration() :: #{
-%%   <<"historicalContextWindowSize">> => [integer()],
-%%   <<"invocationConfiguration">> => invocation_configuration(),
-%%   <<"triggerConditions">> => list(list())
-%% }
--type self_managed_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% invocation_configuration_input() :: #{
-%%   <<"payloadDeliveryBucketName">> => [string()],
-%%   <<"topicArn">> => string()
-%% }
--type invocation_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harnesses_response() :: #{
-%%   <<"harnesses">> => list(harness_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_harnesses_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% clustering_config() :: #{
-%%   <<"frequencies">> => list(list(any())())
-%% }
--type clustering_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% secret() :: #{
-%%   <<"secretArn">> => string()
-%% }
--type secret() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_override_extraction_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type episodic_override_extraction_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_resource_details() :: #{
-%%   <<"domain">> => string(),
-%%   <<"resourceAssociationArn">> => string(),
-%%   <<"resourceGatewayArn">> => string()
-%% }
--type managed_resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_oauth2_credential_provider_request() :: #{
-%%   <<"credentialProviderVendor">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"oauth2ProviderConfigInput">> := list()
-%% }
--type update_oauth2_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_config() :: #{
-%%   <<"sessionTimeoutMinutes">> => [integer()]
-%% }
--type session_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_runtimes_response() :: #{
-%%   <<"agentRuntimes">> => list(agent_runtime()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_runtimes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_operation_configuration() :: #{
-%%   <<"models">> => list(model_entry()),
-%%   <<"path">> => string(),
-%%   <<"providerPath">> => string()
-%% }
--type inference_operation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_policy_request() :: #{
-%%   <<"definition">> => list(),
-%%   <<"description">> => updated_description(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"validationMode">> => list(any())
-%% }
--type update_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_server_definition() :: #{
-%%   <<"optionalValue">> => server_definition()
-%% }
--type updated_server_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_generations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workload_identities_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"workloadIdentities">> => list(workload_identity_type())
-%% }
--type list_workload_identities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% waf_configuration() :: #{
-%%   <<"failureMode">> => list(any())
-%% }
--type waf_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_code_interpreter_request() :: #{}
--type get_code_interpreter_request() :: #{}.
-
-
-%% Example:
-%% create_evaluator_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"evaluatorArn">> => string(),
-%%   <<"evaluatorId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_evaluator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_extraction_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type user_preference_extraction_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateway_rules_response() :: #{
-%%   <<"gatewayRules">> => list(gateway_rule_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type list_gateway_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% token_based_trigger() :: #{
-%%   <<"tokenCount">> => [integer()]
-%% }
--type token_based_trigger() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_transform_configuration() :: #{
-%%   <<"arn">> => string()
-%% }
--type lambda_transform_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_record_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"descriptorType">> => list(any()),
-%%   <<"descriptors">> => descriptors(),
-%%   <<"name">> => string(),
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"recordVersion">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
-%%   <<"synchronizationType">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_registry_record_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_rule_request() :: #{}
--type get_gateway_rule_request() :: #{}.
-
-
-%% Example:
-%% harness_gemini_model_config() :: #{
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topK">> => integer(),
-%%   <<"topP">> => float()
-%% }
--type harness_gemini_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_online_evaluation_config_response() :: #{
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"onlineEvaluationConfigId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_online_evaluation_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cedar_policy() :: #{
-%%   <<"statement">> => string()
-%% }
--type cedar_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosting_environment() :: #{
-%%   <<"arn">> => string()
-%% }
--type hosting_environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_endpoint_override() :: #{
-%%   <<"domain">> => string(),
-%%   <<"privateEndpoint">> => list()
-%% }
--type private_endpoint_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generation_assets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyGenerationAssets">> => list(policy_generation_asset())
-%% }
--type list_policy_generation_assets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_generation() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findings">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyGenerationArn">> => string(),
-%%   <<"policyGenerationId">> => string(),
-%%   <<"resource">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type policy_generation() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_git_auth() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"username">> => [string()]
-%% }
--type harness_skill_git_auth() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"prefix">> => [string()],
-%%   <<"versionId">> => [string()]
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => [string()]
-%% }
--type update_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_configuration() :: #{
-%%   <<"containerUri">> => string()
-%% }
--type container_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyGenerations">> => list(policy_generation())
-%% }
--type list_policy_generations_response() :: #{binary() => any()}.
+-type update_configuration_bundle_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3578,21 +5412,79 @@
 
 
 %% Example:
-%% create_dataset_version_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetVersion">> => string(),
-%%   <<"status">> => list(any())
+%% update_dataset_examples_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"examples">> := list(any())
 %% }
--type create_dataset_version_response() :: #{binary() => any()}.
+-type update_dataset_examples_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_memory_strategy_input() :: #{
-%%   <<"memoryStrategyId">> => [string()]
+%% update_dataset_examples_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"updatedCount">> => [float()]
 %% }
--type delete_memory_strategy_input() :: #{binary() => any()}.
+-type update_dataset_examples_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()]
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_evaluator_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluatorConfig">> => list(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"level">> => list(any())
+%% }
+-type update_evaluator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_evaluator_response() :: #{
+%%   <<"evaluatorArn">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_request() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> := list(any()),
+%%   <<"customTransformConfiguration">> => custom_transform_configuration(),
+%%   <<"description">> => string(),
+%%   <<"exceptionLevel">> => list(any()),
+%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
+%%   <<"protocolConfiguration">> => list(),
+%%   <<"protocolType">> => list(any()),
+%%   <<"roleArn">> := string(),
+%%   <<"wafConfiguration">> => waf_configuration()
+%% }
+-type update_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3624,176 +5516,13 @@
 
 
 %% Example:
-%% delete_workload_identity_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_workload_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% updated_synchronization_type() :: #{
-%%   <<"optionalValue">> => list(any())
-%% }
--type updated_synchronization_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% salesforce_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type salesforce_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_oauth2_credential_provider_response() :: #{
-%%   <<"callbackUrl">> => [string()],
-%%   <<"clientSecretArn">> => secret(),
-%%   <<"clientSecretJsonKey">> => string(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type update_oauth2_credential_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_harness_response() :: #{
-%%   <<"harness">> => harness()
-%% }
--type delete_harness_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_generation_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findings">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyGenerationArn">> => string(),
-%%   <<"policyGenerationId">> => string(),
-%%   <<"resource">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_policy_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"key">> => [string()],
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => list()
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"samplingConfig">> => sampling_config(),
-%%   <<"sessionConfig">> => session_config()
-%% }
--type rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definition">> => list(),
+%% update_gateway_rule_request() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"conditions">> => list(list()),
 %%   <<"description">> => string(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"priority">> => integer()
 %% }
--type create_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_input_config() :: #{
-%%   <<"logGroupNames">> => list(string()),
-%%   <<"serviceNames">> => list(string())
-%% }
--type cloud_watch_logs_input_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_override_extraction_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type user_preference_override_extraction_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% microsoft_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type microsoft_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tools_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"protocolVersion">> => string()
-%% }
--type tools_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_transform_configuration() :: #{
-%%   <<"lambda">> => lambda_transform_configuration()
-%% }
--type custom_transform_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_auth_credential_provider() :: #{
-%%   <<"customParameters">> => map(),
-%%   <<"defaultReturnUrl">> => string(),
-%%   <<"grantType">> => list(any()),
-%%   <<"providerArn">> => string(),
-%%   <<"scopes">> => list(string())
-%% }
--type o_auth_credential_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_payment_credential_provider_response() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"providerConfigurationOutput">> => list()
-%% }
--type update_payment_credential_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
-%% }
--type slack_oauth2_provider_config_input() :: #{binary() => any()}.
+-type update_gateway_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3813,105 +5542,53 @@
 
 
 %% Example:
-%% update_memory_output() :: #{
-%%   <<"memory">> => memory()
-%% }
--type update_memory_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_bundle_version_summary() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"lineageMetadata">> => version_lineage_metadata(),
-%%   <<"versionCreatedAt">> => [non_neg_integer()],
-%%   <<"versionId">> => string()
-%% }
--type configuration_bundle_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_interpreter_response() :: #{
-%%   <<"codeInterpreterArn">> => string(),
-%%   <<"codeInterpreterId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type create_code_interpreter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_runtime_versions_response() :: #{
-%%   <<"agentRuntimes">> => list(agent_runtime()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_runtime_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"definition">> => list(),
+%% update_gateway_target_request() :: #{
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
-%%   <<"enforcementMode">> => list(any()),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"targetConfiguration">> := list()
+%% }
+-type update_gateway_target_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_target_response() :: #{
+%%   <<"authorizationData">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"name">> => string(),
+%%   <<"privateEndpoint">> => list(),
+%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
+%%   <<"protocolType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
+%%   <<"targetConfiguration">> => list(),
+%%   <<"targetId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_policy_response() :: #{binary() => any()}.
+-type update_gateway_target_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_version_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"failureReason">> => [string()],
-%%   <<"harnessId">> => string(),
-%%   <<"harnessName">> => string(),
-%%   <<"harnessVersion">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type harness_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type server_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_response() :: #{
-%%   <<"approvalConfiguration">> => approval_configuration(),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
+%% update_harness_endpoint_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"targetVersion">> => string()
 %% }
--type update_registry_response() :: #{binary() => any()}.
+-type update_harness_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_browser_profile_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"status">> => list(any())
+%% update_harness_endpoint_response() :: #{
+%%   <<"endpoint">> => harness_endpoint()
 %% }
--type create_browser_profile_response() :: #{binary() => any()}.
+-type update_harness_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3937,80 +5614,93 @@
 
 
 %% Example:
-%% get_memory_output() :: #{
+%% update_harness_response() :: #{
+%%   <<"harness">> => harness()
+%% }
+-type update_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_memory_input() :: #{
+%%   <<"addIndexedKeys">> => list(indexed_key()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"eventExpiryDuration">> => [integer()],
+%%   <<"memoryExecutionRoleArn">> => string(),
+%%   <<"memoryStrategies">> => modify_memory_strategies(),
+%%   <<"streamDeliveryResources">> => stream_delivery_resources()
+%% }
+-type update_memory_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_memory_output() :: #{
 %%   <<"memory">> => memory()
 %% }
--type get_memory_output() :: #{binary() => any()}.
+-type update_memory_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_memory_output() :: #{
-%%   <<"memoryId">> => string(),
+%% update_oauth2_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"oauth2ProviderConfigInput">> := list()
+%% }
+-type update_oauth2_credential_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
+%%   <<"clientSecretArn">> => secret(),
+%%   <<"clientSecretJsonKey">> => string(),
+%%   <<"clientSecretSource">> => list(any()),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"oauth2ProviderConfigOutput">> => list(),
 %%   <<"status">> => list(any())
 %% }
--type delete_memory_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_online_evaluation_config_request() :: #{}
--type delete_online_evaluation_config_request() :: #{}.
+-type update_oauth2_credential_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_api_key_credential_providers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_api_key_credential_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% harness_disabled_memory_configuration() :: #{}
--type harness_disabled_memory_configuration() :: #{}.
-
-
-%% Example:
-%% mcp_descriptor() :: #{
-%%   <<"server">> => server_definition(),
-%%   <<"tools">> => tools_definition()
-%% }
--type mcp_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_memory_strategy_input() :: #{
+%% update_online_evaluation_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusteringConfig">> => clustering_config(),
+%%   <<"dataSourceConfig">> => list(),
 %%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"name">> => string(),
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"evaluationExecutionRoleArn">> => string(),
+%%   <<"evaluators">> => list(list()),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"insights">> => list(insight()),
+%%   <<"rule">> => rule()
 %% }
--type user_preference_memory_strategy_input() :: #{binary() => any()}.
+-type update_online_evaluation_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% memory_record_schema() :: #{
-%%   <<"metadataSchema">> => list(metadata_schema_entry())
+%% update_online_evaluation_config_response() :: #{
+%%   <<"executionStatus">> => list(any()),
+%%   <<"failureReason">> => [string()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"onlineEvaluationConfigId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type memory_record_schema() :: #{binary() => any()}.
+-type update_online_evaluation_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_tool() :: #{
-%%   <<"config">> => list(),
-%%   <<"name">> => string(),
+%% update_payment_connector_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"description">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type harness_tool() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_summary_request() :: #{}
--type get_policy_summary_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type update_payment_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4027,355 +5717,85 @@
 
 
 %% Example:
-%% microsoft_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"tenantId">> => string()
-%% }
--type microsoft_oauth2_provider_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browsers_response() :: #{
-%%   <<"browserSummaries">> => list(browser_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_browsers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_bundle_version_response() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"bundleName">> => string(),
-%%   <<"components">> => map(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lineageMetadata">> => version_lineage_metadata(),
-%%   <<"versionCreatedAt">> => [non_neg_integer()],
-%%   <<"versionId">> => string()
-%% }
--type get_configuration_bundle_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_managed_memory_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"eventExpiryDuration">> => [integer()],
-%%   <<"strategies">> => list(list(any())())
-%% }
--type harness_managed_memory_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_examples_source() :: #{
-%%   <<"examples">> => list(any())
-%% }
--type inline_examples_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dataset_versions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dataset_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{}
--type delete_policy_request() :: #{}.
-
-
-%% Example:
-%% list_policy_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(policy_summary())
-%% }
--type list_policy_summaries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_synchronization_configuration() :: #{
-%%   <<"optionalValue">> => synchronization_configuration()
-%% }
--type updated_synchronization_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_generation_request() :: #{}
--type get_policy_generation_request() :: #{}.
-
-
-%% Example:
-%% delete_browser_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_browser_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"location">> => list()
-%% }
--type certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_credential_providers_response() :: #{
-%%   <<"credentialProviders">> => list(payment_credential_provider_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_payment_credential_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sampling_config() :: #{
-%%   <<"samplingPercentage">> => float()
-%% }
--type sampling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_runtime_environment_request() :: #{
-%%   <<"filesystemConfigurations">> => list(list()),
-%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
-%%   <<"networkConfiguration">> => network_configuration()
-%% }
--type harness_agent_core_runtime_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_interpreter_request() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"executionRoleArn">> => string(),
+%% update_payment_credential_provider_request() :: #{
+%%   <<"credentialProviderVendor">> := list(any()),
 %%   <<"name">> := string(),
-%%   <<"networkConfiguration">> := code_interpreter_network_configuration(),
-%%   <<"tags">> => map()
+%%   <<"providerConfigurationInput">> := list()
 %% }
--type create_code_interpreter_request() :: #{binary() => any()}.
+-type update_payment_credential_provider_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_memories_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_memories_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_configuration() :: #{
-%%   <<"allowedQueryParameters">> => list(string()),
-%%   <<"allowedRequestHeaders">> => list(string()),
-%%   <<"allowedResponseHeaders">> => list(string())
-%% }
--type metadata_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% modify_memory_strategy_input() :: #{
-%%   <<"configuration">> => modify_strategy_configuration(),
-%%   <<"description">> => string(),
-%%   <<"memoryRecordSchema">> => memory_record_schema(),
-%%   <<"memoryStrategyId">> => [string()],
-%%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
-%% }
--type modify_memory_strategy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_gateway_request() :: #{
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> := list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"exceptionLevel">> => list(any()),
-%%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policyEngineConfiguration">> => gateway_policy_engine_configuration(),
-%%   <<"protocolConfiguration">> => list(),
-%%   <<"protocolType">> => list(any()),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% atlassian_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type atlassian_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_target() :: #{
-%%   <<"authorizationData">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
-%%   <<"description">> => string(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"lastSynchronizedAt">> => non_neg_integer(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
+%% update_payment_credential_provider_response() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"credentialProviderVendor">> => list(any()),
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointManagedResources">> => list(managed_resource_details()),
-%%   <<"protocolType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"targetConfiguration">> => list(),
-%%   <<"targetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"providerConfigurationOutput">> => list()
 %% }
--type gateway_target() :: #{binary() => any()}.
+-type update_payment_credential_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_agent_runtime_response() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeArtifact">> => list(),
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"agentRuntimeName">> => string(),
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"environmentVariables">> => map(),
-%%   <<"failureReason">> => [string()],
-%%   <<"filesystemConfigurations">> => list(list()),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
-%%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
-%%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"protocolConfiguration">> => protocol_configuration(),
-%%   <<"requestHeaderConfiguration">> => list(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadIdentityDetails">> => workload_identity_details()
-%% }
--type get_agent_runtime_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_custom_descriptor() :: #{
-%%   <<"optionalValue">> => custom_descriptor()
-%% }
--type updated_custom_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_api_key_credential_provider_request() :: #{
-%%   <<"apiKey">> => string(),
-%%   <<"apiKeySecretConfig">> => secret_reference(),
-%%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"name">> := string()
-%% }
--type update_api_key_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_manager_response() :: #{
+%% update_payment_manager_request() :: #{
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_payment_manager_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_payment_manager_response() :: #{
+%%   <<"authorizerType">> => list(any()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentManagerArn">> => string(),
 %%   <<"paymentManagerId">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
 %% }
--type create_payment_manager_response() :: #{binary() => any()}.
+-type update_payment_manager_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% updated_agent_skills_descriptor() :: #{
-%%   <<"optionalValue">> => updated_agent_skills_descriptor_fields()
+%% update_policy_engine_request() :: #{
+%%   <<"description">> => updated_description()
 %% }
--type updated_agent_skills_descriptor() :: #{binary() => any()}.
+-type update_policy_engine_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workload_identities_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%% update_policy_engine_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyEngineArn">> => string(),
+%%   <<"policyEngineId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_workload_identities_request() :: #{binary() => any()}.
+-type update_policy_engine_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_harness_endpoints_response() :: #{
-%%   <<"endpoints">> => list(harness_endpoint()),
-%%   <<"nextToken">> => string()
+%% update_policy_request() :: #{
+%%   <<"definition">> => list(),
+%%   <<"description">> => updated_description(),
+%%   <<"enforcementMode">> => list(any()),
+%%   <<"validationMode">> => list(any())
 %% }
--type list_harness_endpoints_response() :: #{binary() => any()}.
+-type update_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_configuration_bundles_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_configuration_bundles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_browser_profile_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_browser_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"networkMode">> => list(any()),
-%%   <<"networkModeConfig">> => vpc_config()
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% skill_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type skill_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_based_trigger() :: #{
-%%   <<"messageCount">> => [integer()]
-%% }
--type message_based_trigger() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_bundle_versions_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"versions">> => list(configuration_bundle_version_summary())
-%% }
--type list_configuration_bundle_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type slack_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy() :: #{
+%% update_policy_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"definition">> => list(),
 %%   <<"description">> => string(),
@@ -4388,129 +5808,41 @@
 %%   <<"statusReasons">> => list(string()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type policy() :: #{binary() => any()}.
+-type update_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_registries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"registries">> => list(registry_summary())
-%% }
--type list_registries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_consolidation_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type episodic_consolidation_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"policy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_policy_generation_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"content">> := list(),
-%%   <<"name">> := string(),
-%%   <<"resource">> := list()
-%% }
--type start_policy_generation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_token_vault_cm_k_request() :: #{
-%%   <<"kmsConfiguration">> := kms_configuration(),
-%%   <<"tokenVaultId">> => string()
-%% }
--type set_token_vault_cm_k_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_runtime_endpoint_response() :: #{
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"endpointName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_agent_runtime_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_oauth2_credential_provider_response() :: #{
-%%   <<"callbackUrl">> => [string()],
-%%   <<"clientSecretArn">> => secret(),
-%%   <<"clientSecretJsonKey">> => string(),
-%%   <<"clientSecretSource">> => list(any()),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"failureReason">> => [string()],
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%% update_registry_record_request() :: #{
+%%   <<"description">> => updated_description(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => updated_descriptors(),
 %%   <<"name">> => string(),
-%%   <<"oauth2ProviderConfigOutput">> => list(),
-%%   <<"status">> => list(any())
+%%   <<"recordVersion">> => string(),
+%%   <<"synchronizationConfiguration">> => updated_synchronization_configuration(),
+%%   <<"synchronizationType">> => updated_synchronization_type(),
+%%   <<"triggerSynchronization">> => [boolean()]
 %% }
--type get_oauth2_credential_provider_response() :: #{binary() => any()}.
+-type update_registry_record_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_policy_engine_response() :: #{
+%% update_registry_record_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
 %%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"recordVersion">> => string(),
+%%   <<"registryArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
+%%   <<"statusReason">> => [string()],
+%%   <<"synchronizationConfiguration">> => synchronization_configuration(),
+%%   <<"synchronizationType">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type create_policy_engine_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_token_vault_response() :: #{
-%%   <<"kmsConfiguration">> => kms_configuration(),
-%%   <<"lastModifiedDate">> => [non_neg_integer()],
-%%   <<"tokenVaultId">> => string()
-%% }
--type get_token_vault_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% categorical_scale_definition() :: #{
-%%   <<"definition">> => [string()],
-%%   <<"label">> => [string()]
-%% }
--type categorical_scale_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% summary_override_configuration_input() :: #{
-%%   <<"consolidation">> => summary_override_consolidation_configuration_input()
-%% }
--type summary_override_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_generation_summary_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findings">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyGenerationArn">> => string(),
-%%   <<"policyGenerationId">> => string(),
-%%   <<"resource">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_policy_generation_summary_response() :: #{binary() => any()}.
+-type update_registry_record_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4522,532 +5854,50 @@
 
 
 %% Example:
-%% get_evaluator_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"evaluatorArn">> => string(),
-%%   <<"evaluatorConfig">> => list(),
-%%   <<"evaluatorId">> => string(),
-%%   <<"evaluatorName">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"level">> => list(any()),
-%%   <<"lockedForModification">> => [boolean()],
+%% update_registry_record_status_response() :: #{
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_evaluator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_runtime_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_agent_runtime_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% strategy_configuration() :: #{
-%%   <<"consolidation">> => list(),
-%%   <<"extraction">> => list(),
-%%   <<"reflection">> => list(),
-%%   <<"selfManagedConfiguration">> => self_managed_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type strategy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_engine_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type policy_engine_summary() :: #{binary() => any()}.
+-type update_registry_record_status_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% browser_signing_config_output() :: #{
-%%   <<"enabled">> => [boolean()]
+%% update_registry_request() :: #{
+%%   <<"approvalConfiguration">> => updated_approval_configuration(),
+%%   <<"authorizerConfiguration">> => updated_authorizer_configuration(),
+%%   <<"description">> => updated_description(),
+%%   <<"name">> => string()
 %% }
--type browser_signing_config_output() :: #{binary() => any()}.
+-type update_registry_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% semantic_override_extraction_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type semantic_override_extraction_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_policy_engine_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_policy_engine_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_registries_request() :: #{
+%% update_registry_response() :: #{
+%%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_registries_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% delete_payment_connector_response() :: #{
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_payment_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_harness_endpoint_response() :: #{
-%%   <<"endpoint">> => harness_endpoint()
-%% }
--type delete_harness_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_j_w_t_authorizer_configuration() :: #{
-%%   <<"allowedAudience">> => list(string()),
-%%   <<"allowedClients">> => list(string()),
-%%   <<"allowedScopes">> => list(string()),
-%%   <<"allowedWorkloadConfiguration">> => allowed_workload_configuration(),
-%%   <<"customClaims">> => list(custom_claim_validation_type()),
-%%   <<"discoveryUrl">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
-%% }
--type custom_j_w_t_authorizer_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_engines_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_engines_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_network_configuration() :: #{
-%%   <<"networkMode">> => list(any()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type browser_network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_key_credential_provider_response() :: #{}
--type delete_api_key_credential_provider_response() :: #{}.
-
-
-%% Example:
-%% list_agent_runtime_endpoints_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
-%% }
--type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_record_request() :: #{}
--type delete_registry_record_request() :: #{}.
-
-
-%% Example:
-%% secrets_manager_location() :: #{
-%%   <<"secretArn">> => string()
-%% }
--type secrets_manager_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_skill_definition() :: #{
-%%   <<"optionalValue">> => skill_definition()
-%% }
--type updated_skill_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dataset_request() :: #{
-%%   <<"datasetVersion">> => string()
-%% }
--type get_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_config() :: #{
-%%   <<"cloudWatchConfig">> => cloud_watch_output_config()
-%% }
--type output_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_mcp_descriptor_fields() :: #{
-%%   <<"server">> => updated_server_definition(),
-%%   <<"tools">> => updated_tools_definition()
-%% }
--type updated_mcp_descriptor_fields() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_runtime_endpoint() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeEndpointArn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"liveVersion">> => string(),
 %%   <<"name">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"targetVersion">> => string()
-%% }
--type agent_runtime_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% interceptor_payload_filter() :: #{
-%%   <<"exclude">> => list(list())
-%% }
--type interceptor_payload_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% registry_record_credential_provider_configuration() :: #{
-%%   <<"credentialProvider">> => list(),
-%%   <<"credentialProviderType">> => list(any())
-%% }
--type registry_record_credential_provider_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_browser_profile_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastSavedAt">> => non_neg_integer(),
-%%   <<"lastSavedBrowserId">> => string(),
-%%   <<"lastSavedBrowserSessionId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_browser_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_harness_endpoint_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_harness_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_request() :: #{}
--type delete_gateway_request() :: #{}.
-
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_code_interpreter_response() :: #{
-%%   <<"codeInterpreterId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type delete_code_interpreter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_online_evaluation_configs_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_online_evaluation_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% efs_access_point_configuration() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"mountPath">> => string()
-%% }
--type efs_access_point_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_configuration() :: #{
-%%   <<"configuration">> => [any()]
-%% }
--type component_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_evaluator_response() :: #{
-%%   <<"evaluatorArn">> => string(),
-%%   <<"evaluatorId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_evaluator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_credential_provider_response() :: #{
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"credentialProviderVendor">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"providerConfigurationOutput">> => list()
-%% }
--type create_payment_credential_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% coinbase_cdp_configuration_output() :: #{
-%%   <<"apiKeyId">> => string(),
-%%   <<"apiKeySecretArn">> => secret(),
-%%   <<"apiKeySecretJsonKey">> => string(),
-%%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"walletSecretArn">> => secret(),
-%%   <<"walletSecretJsonKey">> => string(),
-%%   <<"walletSecretSource">> => list(any())
-%% }
--type coinbase_cdp_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_agent_runtime_response() :: #{
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_agent_runtime_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_evaluators_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_evaluators_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_registry_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type delete_registry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_based_trigger() :: #{
-%%   <<"idleSessionTimeout">> => [integer()]
-%% }
--type time_based_trigger() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dataset_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetName">> => string(),
-%%   <<"datasetVersion">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"downloadUrl">> => string(),
-%%   <<"downloadUrlExpiresAt">> => [non_neg_integer()],
-%%   <<"draftStatus">> => list(any()),
-%%   <<"exampleCount">> => [float()],
-%%   <<"failureReason">> => [string()],
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"schemaType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_harness_endpoint_request() :: #{}
--type get_harness_endpoint_request() :: #{}.
-
-
-%% Example:
-%% delete_policy_engine_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
+%%   <<"statusReason">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type delete_policy_engine_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_oauth2_credential_provider_response() :: #{}
--type delete_oauth2_credential_provider_response() :: #{}.
+-type update_registry_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_lite_llm_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiBase">> => string(),
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
+%% update_workload_identity_request() :: #{
+%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
+%%   <<"name">> := string()
 %% }
--type harness_lite_llm_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_policy_engine_summaries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_engine_summaries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataset_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"datasetName">> := string(),
-%%   <<"description">> => [string()],
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"schemaType">> := list(any()),
-%%   <<"source">> := list(),
-%%   <<"tags">> => map()
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_examples_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"examples">> := list(any())
-%% }
--type update_dataset_examples_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gateway_rule_response() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"conditions">> => list(list()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"gatewayArn">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"system">> => system_managed_block(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_gateway_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% episodic_extraction_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type episodic_extraction_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_bedrock_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiFormat">> => list(any()),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type harness_bedrock_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% atlassian_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
-%% }
--type atlassian_oauth2_provider_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% m_c_p_gateway_configuration() :: #{
-%%   <<"instructions">> => string(),
-%%   <<"searchType">> => list(any()),
-%%   <<"sessionConfiguration">> => session_configuration(),
-%%   <<"streamingConfiguration">> => streaming_configuration(),
-%%   <<"supportedVersions">> => list(string())
-%% }
--type m_c_p_gateway_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_open_ai_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiFormat">> => list(any()),
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type harness_open_ai_model_config() :: #{binary() => any()}.
+-type update_workload_identity_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5062,609 +5912,25 @@
 
 
 %% Example:
-%% api_key_credential_provider_item() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string()
+%% updated_a2a_descriptor() :: #{
+%%   <<"optionalValue">> => a2a_descriptor()
 %% }
--type api_key_credential_provider_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_rule_request() :: #{}
--type delete_gateway_rule_request() :: #{}.
+-type updated_a2a_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_oauth2_credential_providers_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%% updated_agent_skills_descriptor() :: #{
+%%   <<"optionalValue">> => updated_agent_skills_descriptor_fields()
 %% }
--type list_oauth2_credential_providers_request() :: #{binary() => any()}.
+-type updated_agent_skills_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% weighted_override() :: #{
-%%   <<"trafficSplit">> => list(traffic_split_entry())
+%% updated_agent_skills_descriptor_fields() :: #{
+%%   <<"skillDefinition">> => updated_skill_definition(),
+%%   <<"skillMd">> => updated_skill_md_definition()
 %% }
--type weighted_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"enforcementMode">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_configuration_bundle_response() :: #{
-%%   <<"bundleId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_configuration_bundle_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% interceptor_input_configuration() :: #{
-%%   <<"passRequestHeaders">> => [boolean()],
-%%   <<"payloadFilter">> => interceptor_payload_filter()
-%% }
--type interceptor_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_configuration() :: #{
-%%   <<"bucketOwnerAccountId">> => string(),
-%%   <<"uri">> => string()
-%% }
--type s3_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset_version_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"datasetVersion">> => string(),
-%%   <<"exampleCount">> => [float()]
-%% }
--type dataset_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_configuration_bundle_version_request() :: #{}
--type get_configuration_bundle_version_request() :: #{}.
-
-
-%% Example:
-%% harness_summarization_configuration() :: #{
-%%   <<"preserveRecentMessages">> => [integer()],
-%%   <<"summarizationSystemPrompt">> => [string()],
-%%   <<"summaryRatio">> => [float()]
-%% }
--type harness_summarization_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_bundle_versions_request() :: #{
-%%   <<"filter">> => version_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_configuration_bundle_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_interpreters_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type list_code_interpreters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_credential_provider_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_payment_credential_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_registry_request() :: #{
-%%   <<"approvalConfiguration">> => approval_configuration(),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type create_registry_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_record_response() :: #{}
--type delete_registry_record_response() :: #{}.
-
-
-%% Example:
-%% get_registry_response() :: #{
-%%   <<"approvalConfiguration">> => approval_configuration(),
-%%   <<"authorizerConfiguration">> => list(),
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_registry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"policy">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_principals() :: #{
-%%   <<"anyOf">> => list(list())
-%% }
--type match_principals() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_provider_target_configuration() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"modelMapping">> => model_mapping(),
-%%   <<"operations">> => list(inference_operation_configuration())
-%% }
--type inference_provider_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_runtime() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"agentRuntimeName">> => string(),
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type agent_runtime() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_engine_summary_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_policy_engine_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_connector_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"credentialProviderConfigurations">> => list(list()),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type get_payment_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invocation_configuration() :: #{
-%%   <<"payloadDeliveryBucketName">> => [string()],
-%%   <<"topicArn">> => string()
-%% }
--type invocation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateway_rules_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_gateway_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% protocol_configuration() :: #{
-%%   <<"serverProtocol">> => list(any())
-%% }
--type protocol_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_card_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type agent_card_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_filter() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"createdByName">> => [string()],
-%%   <<"latestPerBranch">> => [boolean()]
-%% }
--type version_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% mcp_server_target_configuration() :: #{
-%%   <<"endpoint">> => [string()],
-%%   <<"listingMode">> => list(any()),
-%%   <<"mcpToolSchema">> => list(),
-%%   <<"resourcePriority">> => integer()
-%% }
--type mcp_server_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_target_configuration() :: #{
-%%   <<"configurations">> => list(connector_configuration()),
-%%   <<"enabled">> => list([string()]()),
-%%   <<"source">> => connector_source()
-%% }
--type connector_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% google_oauth2_provider_config_output() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"oauthDiscovery">> => list()
-%% }
--type google_oauth2_provider_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_connectors_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"paymentConnectors">> => list(payment_connector_summary())
-%% }
--type list_payment_connectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{}
--type delete_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% semantic_override_configuration_input() :: #{
-%%   <<"consolidation">> => semantic_override_consolidation_configuration_input(),
-%%   <<"extraction">> => semantic_override_extraction_configuration_input()
-%% }
--type semantic_override_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_schema_entry() :: #{
-%%   <<"extractionConfig">> => list(),
-%%   <<"extractionType">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type metadata_schema_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% token_exchange_grant_type_config_type() :: #{
-%%   <<"actorTokenContent">> => list(any()),
-%%   <<"actorTokenScopes">> => list(string())
-%% }
--type token_exchange_grant_type_config_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_consolidation_override() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type user_preference_consolidation_override() :: #{binary() => any()}.
-
-
-%% Example:
-%% synchronize_gateway_targets_response() :: #{
-%%   <<"targets">> => list(gateway_target())
-%% }
--type synchronize_gateway_targets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_harness_endpoint_response() :: #{
-%%   <<"endpoint">> => harness_endpoint()
-%% }
--type update_harness_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_interpreter_network_configuration() :: #{
-%%   <<"networkMode">> => list(any()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type code_interpreter_network_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_connector_target_configuration() :: #{
-%%   <<"source">> => inference_connector_source()
-%% }
--type inference_connector_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_storage_configuration() :: #{
-%%   <<"mountPath">> => string()
-%% }
--type session_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_request() :: #{
-%%   <<"datasetVersion">> => string()
-%% }
--type delete_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_response() :: #{
-%%   <<"datasets">> => list(dataset_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_authorizer_configuration() :: #{
-%%   <<"optionalValue">> => list()
-%% }
--type updated_authorizer_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_browser_request() :: #{}
--type get_browser_request() :: #{}.
-
-
-%% Example:
-%% browser_signing_config_input() :: #{
-%%   <<"enabled">> => [boolean()]
-%% }
--type browser_signing_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_managed_block() :: #{
-%%   <<"managedBy">> => [string()]
-%% }
--type system_managed_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_engine() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineArn">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type policy_engine() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_generation_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyGenerations">> => list(policy_generation_summary())
-%% }
--type list_policy_generation_summaries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% skill_md_definition() :: #{
-%%   <<"inlineContent">> => string()
-%% }
--type skill_md_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% static_route() :: #{
-%%   <<"targetName">> => string()
-%% }
--type static_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% mcp_lambda_target_configuration() :: #{
-%%   <<"lambdaArn">> => string(),
-%%   <<"toolSchema">> => list()
-%% }
--type mcp_lambda_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight() :: #{
-%%   <<"insightId">> => string()
-%% }
--type insight() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"eventExpiryDuration">> => [integer()],
-%%   <<"failureReason">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"indexedKeys">> => list(indexed_key()),
-%%   <<"managedByResourceArn">> => string(),
-%%   <<"memoryExecutionRoleArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"strategies">> => list(memory_strategy()),
-%%   <<"streamDeliveryResources">> => stream_delivery_resources(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type memory() :: #{binary() => any()}.
-
-
-%% Example:
-%% number_validation() :: #{
-%%   <<"maxValue">> => [float()],
-%%   <<"minValue">> => [float()]
-%% }
--type number_validation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harness_endpoints_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_harness_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_runtime_response() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadIdentityDetails">> => workload_identity_details()
-%% }
--type create_agent_runtime_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% credential_provider_configuration() :: #{
-%%   <<"credentialProvider">> => list(),
-%%   <<"credentialProviderType">> => list(any())
-%% }
--type credential_provider_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_runtime_endpoint_response() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeEndpointArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"liveVersion">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetVersion">> => string()
-%% }
--type update_agent_runtime_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_bundle_response() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"versionId">> => string()
-%% }
--type create_configuration_bundle_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_runtime_endpoints_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_runtime_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_payment_connector_request() :: #{}
--type get_payment_connector_request() :: #{}.
-
-
-%% Example:
-%% list_agent_runtimes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agent_runtimes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% descriptors() :: #{
-%%   <<"a2a">> => a2a_descriptor(),
-%%   <<"agentSkills">> => agent_skills_descriptor(),
-%%   <<"custom">> => custom_descriptor(),
-%%   <<"mcp">> => mcp_descriptor()
-%% }
--type descriptors() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_token_vault_request() :: #{
-%%   <<"tokenVaultId">> => string()
-%% }
--type get_token_vault_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_profile_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastSavedAt">> => non_neg_integer(),
-%%   <<"lastSavedBrowserId">> => string(),
-%%   <<"lastSavedBrowserSessionId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"profileArn">> => string(),
-%%   <<"profileId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type browser_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_evaluator_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"evaluatorConfig">> := list(),
-%%   <<"evaluatorName">> := string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"level">> := list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_evaluator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_runtime_endpoint_request() :: #{
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string()
-%% }
--type update_agent_runtime_endpoint_request() :: #{binary() => any()}.
+-type updated_agent_skills_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5675,319 +5941,31 @@
 
 
 %% Example:
-%% update_gateway_target_request() :: #{
-%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
-%%   <<"description">> => string(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
-%%   <<"name">> => string(),
-%%   <<"privateEndpoint">> => list(),
-%%   <<"targetConfiguration">> := list()
-%% }
--type update_gateway_target_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workload_identity_response() :: #{
-%%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"workloadIdentityArn">> => string()
-%% }
--type create_workload_identity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_policy_generation_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findings">> => string(),
-%%   <<"name">> => string(),
-%%   <<"policyEngineId">> => string(),
-%%   <<"policyGenerationArn">> => string(),
-%%   <<"policyGenerationId">> => string(),
-%%   <<"resource">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type start_policy_generation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_oauth2_credential_providers_response() :: #{
-%%   <<"credentialProviders">> => list(oauth2_credential_provider_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_oauth2_credential_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% from_url_synchronization_configuration() :: #{
-%%   <<"credentialProviderConfigurations">> => list(registry_record_credential_provider_configuration()),
-%%   <<"url">> => string()
-%% }
--type from_url_synchronization_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harnesses_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_harnesses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_vpc_resource() :: #{
-%%   <<"endpointIpAddressType">> => list(any()),
-%%   <<"routingDomain">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"vpcIdentifier">> => string()
-%% }
--type managed_vpc_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_gateways_response() :: #{
-%%   <<"items">> => list(gateway_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_gateways_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_runtime_environment() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeId">> => [string()],
-%%   <<"agentRuntimeName">> => [string()],
-%%   <<"filesystemConfigurations">> => list(list()),
-%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
-%%   <<"networkConfiguration">> => network_configuration()
-%% }
--type harness_agent_core_runtime_environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% recording_config() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"s3Location">> => s3_location()
-%% }
--type recording_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_engine_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyEngines">> => list(policy_engine_summary())
-%% }
--type list_policy_engine_summaries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_skills_descriptor() :: #{
-%%   <<"skillDefinition">> => skill_definition(),
-%%   <<"skillMd">> => skill_md_definition()
-%% }
--type agent_skills_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% registry_summary() :: #{
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type registry_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_api_key_credential_provider_response() :: #{
-%%   <<"apiKeySecretArn">> => secret(),
-%%   <<"apiKeySecretJsonKey">> => string(),
-%%   <<"apiKeySecretSource">> => list(any()),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"credentialProviderArn">> => string(),
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"name">> => string()
-%% }
--type update_api_key_credential_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_harness_environment_artifact() :: #{
+%% updated_authorizer_configuration() :: #{
 %%   <<"optionalValue">> => list()
 %% }
--type updated_harness_environment_artifact() :: #{binary() => any()}.
+-type updated_authorizer_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_configuration_bundle_request() :: #{
-%%   <<"branchName">> => string()
+%% updated_custom_descriptor() :: #{
+%%   <<"optionalValue">> => custom_descriptor()
 %% }
--type get_configuration_bundle_request() :: #{binary() => any()}.
+-type updated_custom_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_dataset_versions_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"versions">> => list(dataset_version_summary())
+%% updated_description() :: #{
+%%   <<"optionalValue">> => string()
 %% }
--type list_dataset_versions_response() :: #{binary() => any()}.
+-type updated_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_configuration_bundle_request() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"bundleName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"commitMessage">> => [string()],
-%%   <<"components">> := map(),
-%%   <<"createdBy">> => version_created_by_source(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"tags">> => map()
+%% updated_descriptors() :: #{
+%%   <<"optionalValue">> => updated_descriptors_union()
 %% }
--type create_configuration_bundle_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_code_interpreter_config() :: #{
-%%   <<"codeInterpreterArn">> => string()
-%% }
--type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_manager_summary() :: #{
-%%   <<"authorizerType">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"paymentManagerId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type payment_manager_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluator_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"evaluatorArn">> => string(),
-%%   <<"evaluatorId">> => string(),
-%%   <<"evaluatorName">> => string(),
-%%   <<"evaluatorType">> => list(any()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"level">> => list(any()),
-%%   <<"lockedForModification">> => [boolean()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type evaluator_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_examples_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"deletedCount">> => [float()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type delete_dataset_examples_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_preference_override_consolidation_configuration_input() :: #{
-%%   <<"appendToPrompt">> => string(),
-%%   <<"modelId">> => [string()]
-%% }
--type user_preference_override_consolidation_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_api_key_credential_providers_response() :: #{
-%%   <<"credentialProviders">> => list(api_key_credential_provider_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_api_key_credential_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_bundles_response() :: #{
-%%   <<"bundles">> => list(configuration_bundle_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_configuration_bundles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_managers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"paymentManagers">> => list(payment_manager_summary())
-%% }
--type list_payment_managers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_dataset_examples_response() :: #{
-%%   <<"addedCount">> => [float()],
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"exampleIds">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type add_dataset_examples_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_managers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_payment_managers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% token_based_trigger_input() :: #{
-%%   <<"tokenCount">> => [integer()]
-%% }
--type token_based_trigger_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% google_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
-%% }
--type google_oauth2_provider_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_engine_request() :: #{}
--type delete_policy_engine_request() :: #{}.
-
-
-%% Example:
-%% update_dataset_examples_response() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"updatedCount">> => [float()]
-%% }
--type update_dataset_examples_response() :: #{binary() => any()}.
+-type updated_descriptors() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6001,1319 +5979,1419 @@
 
 
 %% Example:
-%% stickiness_configuration() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"timeout">> => integer()
+%% updated_harness_environment_artifact() :: #{
+%%   <<"optionalValue">> => list()
 %% }
--type stickiness_configuration() :: #{binary() => any()}.
+-type updated_harness_environment_artifact() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_gateway_targets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% updated_harness_memory_configuration() :: #{
+%%   <<"optionalValue">> => list()
 %% }
--type list_gateway_targets_request() :: #{binary() => any()}.
+-type updated_harness_memory_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% connector_parameter_override() :: #{
-%%   <<"description">> => [string()],
-%%   <<"path">> => [string()],
-%%   <<"visible">> => [boolean()]
+%% updated_mcp_descriptor() :: #{
+%%   <<"optionalValue">> => updated_mcp_descriptor_fields()
 %% }
--type connector_parameter_override() :: #{binary() => any()}.
+-type updated_mcp_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% modify_invocation_configuration_input() :: #{
-%%   <<"payloadDeliveryBucketName">> => [string()],
-%%   <<"topicArn">> => string()
+%% updated_mcp_descriptor_fields() :: #{
+%%   <<"server">> => updated_server_definition(),
+%%   <<"tools">> => updated_tools_definition()
 %% }
--type modify_invocation_configuration_input() :: #{binary() => any()}.
+-type updated_mcp_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
-%% linkedin_oauth2_provider_config_input() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"clientSecretConfig">> => secret_reference(),
-%%   <<"clientSecretSource">> => list(any())
+%% updated_server_definition() :: #{
+%%   <<"optionalValue">> => server_definition()
 %% }
--type linkedin_oauth2_provider_config_input() :: #{binary() => any()}.
+-type updated_server_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_policy_engine_request() :: #{
-%%   <<"description">> => updated_description()
+%% updated_skill_definition() :: #{
+%%   <<"optionalValue">> => skill_definition()
 %% }
--type update_policy_engine_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_request() :: #{}
--type get_gateway_request() :: #{}.
+-type updated_skill_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% updated_description() :: #{
-%%   <<"optionalValue">> => string()
+%% updated_skill_md_definition() :: #{
+%%   <<"optionalValue">> => skill_md_definition()
 %% }
--type updated_description() :: #{binary() => any()}.
+-type updated_skill_md_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% static_override() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleVersion">> => [string()]
+%% updated_synchronization_configuration() :: #{
+%%   <<"optionalValue">> => synchronization_configuration()
 %% }
--type static_override() :: #{binary() => any()}.
+-type updated_synchronization_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% gateway_interceptor_configuration() :: #{
-%%   <<"inputConfiguration">> => interceptor_input_configuration(),
-%%   <<"interceptionPoints">> => list(list(any())()),
-%%   <<"interceptor">> => list()
+%% updated_synchronization_type() :: #{
+%%   <<"optionalValue">> => list(any())
 %% }
--type gateway_interceptor_configuration() :: #{binary() => any()}.
+-type updated_synchronization_type() :: #{binary() => any()}.
 
 
 %% Example:
-%% connector_configuration() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"parameterOverrides">> => list(connector_parameter_override()),
-%%   <<"parameterValues">> => [any()]
+%% updated_tools_definition() :: #{
+%%   <<"optionalValue">> => tools_definition()
 %% }
--type connector_configuration() :: #{binary() => any()}.
+-type updated_tools_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_memories_output() :: #{
-%%   <<"memories">> => list(memory_summary()),
-%%   <<"nextToken">> => [string()]
+%% user_preference_consolidation_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
 %% }
--type list_memories_output() :: #{binary() => any()}.
+-type user_preference_consolidation_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% synchronization_configuration() :: #{
-%%   <<"fromUrl">> => from_url_synchronization_configuration()
+%% user_preference_extraction_override() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
 %% }
--type synchronization_configuration() :: #{binary() => any()}.
+-type user_preference_extraction_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_browsers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"type">> => list(any())
+%% user_preference_memory_strategy_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"memoryRecordSchema">> => memory_record_schema(),
+%%   <<"name">> => string(),
+%%   <<"namespaceTemplates">> => list(string()),
+%%   <<"namespaces">> => list(string())
 %% }
--type list_browsers_request() :: #{binary() => any()}.
+-type user_preference_memory_strategy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_preference_override_configuration_input() :: #{
+%%   <<"consolidation">> => user_preference_override_consolidation_configuration_input(),
+%%   <<"extraction">> => user_preference_override_extraction_configuration_input()
+%% }
+-type user_preference_override_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_preference_override_consolidation_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type user_preference_override_consolidation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_preference_override_extraction_configuration_input() :: #{
+%%   <<"appendToPrompt">> => string(),
+%%   <<"modelId">> => [string()]
+%% }
+-type user_preference_override_extraction_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_created_by_source() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type version_created_by_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_filter() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"createdByName">> => [string()],
+%%   <<"latestPerBranch">> => [boolean()]
+%% }
+-type version_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_lineage_metadata() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"commitMessage">> => [string()],
+%%   <<"createdBy">> => version_created_by_source(),
+%%   <<"parentVersionIds">> => list(string())
+%% }
+-type version_lineage_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"requireServiceS3Endpoint">> => [boolean()],
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% waf_configuration() :: #{
+%%   <<"failureMode">> => list(any())
+%% }
+-type waf_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_override() :: #{
+%%   <<"trafficSplit">> => list(traffic_split_entry())
+%% }
+-type weighted_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% weighted_route() :: #{
+%%   <<"trafficSplit">> => list(target_traffic_split_entry())
+%% }
+-type weighted_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_identity_details() :: #{
+%%   <<"workloadIdentityArn">> => string()
+%% }
+-type workload_identity_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_identity_type() :: #{
+%%   <<"name">> => string(),
+%%   <<"workloadIdentityArn">> => string()
+%% }
+-type workload_identity_type() :: #{binary() => any()}.
 
 -type add_dataset_examples_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agent_runtime_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agent_runtime_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_api_key_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    resource_limit_exceeded_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_browser_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_browser_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_code_interpreter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configuration_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_dataset_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_evaluator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_gateway_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_gateway_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_harness_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_harness_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_memory_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type create_oauth2_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    resource_limit_exceeded_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_online_evaluation_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_payment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_payment_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    resource_limit_exceeded_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_payment_manager_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_policy_engine_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_registry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_registry_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workload_identity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_agent_runtime_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_agent_runtime_endpoint_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_api_key_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_browser_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_browser_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_code_interpreter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configuration_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dataset_examples_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_evaluator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_gateway_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_gateway_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_harness_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_harness_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_memory_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttled_exception() | 
     service_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type delete_oauth2_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_online_evaluation_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_payment_connector_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_payment_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_payment_manager_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_policy_engine_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_registry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_registry_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_workload_identity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_agent_runtime_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agent_runtime_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_api_key_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     decryption_failure() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_browser_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_browser_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_code_interpreter_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_configuration_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configuration_bundle_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_evaluator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_gateway_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_gateway_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_harness_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_harness_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_memory_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttled_exception() | 
     service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type get_oauth2_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     decryption_failure() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_online_evaluation_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_payment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_payment_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     decryption_failure() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type get_payment_manager_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_engine_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_engine_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_generation_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_registry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_registry_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_token_vault_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workload_identity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_agent_runtime_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_agent_runtime_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agent_runtimes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_api_key_credential_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_browser_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_browsers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_code_interpreters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_configuration_bundle_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_configuration_bundles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_dataset_examples_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_dataset_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_datasets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_evaluators_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_gateway_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_gateway_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_gateways_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_harness_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_harness_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_harnesses_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_memories_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttled_exception() | 
     service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type list_oauth2_credential_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_online_evaluation_configs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_payment_connectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_payment_credential_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_payment_managers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_engine_summaries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_policy_engines_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_policy_generation_assets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_generation_summaries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_generations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_summaries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_registries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_registry_records_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workload_identities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type set_token_vault_cm_k_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type start_policy_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type submit_registry_record_for_approval_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type synchronize_gateway_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_agent_runtime_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_agent_runtime_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_api_key_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configuration_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dataset_examples_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_evaluator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_gateway_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_gateway_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_harness_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_harness_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_memory_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type update_oauth2_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_online_evaluation_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_payment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_payment_credential_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     encryption_failure() | 
     decryption_failure() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_payment_manager_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type update_policy_engine_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type update_registry_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_policy_engine_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_registry_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_registry_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_registry_record_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workload_identity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

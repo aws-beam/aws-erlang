@@ -83,10 +83,260 @@
 
 
 %% Example:
-%% register_device_response() :: #{
-%%   <<"DeviceId">> => string()
+%% already_streamed_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type register_device_response() :: #{binary() => any()}.
+-type already_streamed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_publish_request() :: #{}
+-type bulk_publish_request() :: #{}.
+
+
+%% Example:
+%% bulk_publish_response() :: #{
+%%   <<"IdentityPoolId">> => string()
+%% }
+-type bulk_publish_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_streams() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"StreamingStatus">> => list(any())
+%% }
+-type cognito_streams() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_sync_record() :: #{
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
+%%   <<"Key">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"SyncCount">> => float(),
+%%   <<"Value">> => string()
+%% }
+-type cognito_sync_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DataStorage">> => float(),
+%%   <<"DatasetName">> => string(),
+%%   <<"IdentityId">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"NumRecords">> => float()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{}
+-type delete_dataset_request() :: #{}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"Dataset">> => dataset()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{}
+-type describe_dataset_request() :: #{}.
+
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"Dataset">> => dataset()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_pool_usage_request() :: #{}
+-type describe_identity_pool_usage_request() :: #{}.
+
+
+%% Example:
+%% describe_identity_pool_usage_response() :: #{
+%%   <<"IdentityPoolUsage">> => identity_pool_usage()
+%% }
+-type describe_identity_pool_usage_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_usage_request() :: #{}
+-type describe_identity_usage_request() :: #{}.
+
+
+%% Example:
+%% describe_identity_usage_response() :: #{
+%%   <<"IdentityUsage">> => identity_usage()
+%% }
+-type describe_identity_usage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_bulk_publish_details_request() :: #{}
+-type get_bulk_publish_details_request() :: #{}.
+
+
+%% Example:
+%% get_bulk_publish_details_response() :: #{
+%%   <<"BulkPublishCompleteTime">> => non_neg_integer(),
+%%   <<"BulkPublishStartTime">> => non_neg_integer(),
+%%   <<"BulkPublishStatus">> => list(any()),
+%%   <<"FailureMessage">> => string(),
+%%   <<"IdentityPoolId">> => string()
+%% }
+-type get_bulk_publish_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cognito_events_request() :: #{}
+-type get_cognito_events_request() :: #{}.
+
+
+%% Example:
+%% get_cognito_events_response() :: #{
+%%   <<"Events">> => map()
+%% }
+-type get_cognito_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_pool_configuration_request() :: #{}
+-type get_identity_pool_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_identity_pool_configuration_response() :: #{
+%%   <<"CognitoStreams">> => cognito_streams(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"PushSync">> => push_sync()
+%% }
+-type get_identity_pool_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_pool_usage() :: #{
+%%   <<"DataStorage">> => float(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"SyncSessionsCount">> => float()
+%% }
+-type identity_pool_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_usage() :: #{
+%%   <<"DataStorage">> => float(),
+%%   <<"DatasetCount">> => integer(),
+%%   <<"IdentityId">> => string(),
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer()
+%% }
+-type identity_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_lambda_function_output_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lambda_function_output_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_throttled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lambda_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Datasets">> => list(dataset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_pool_usage_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pool_usage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_pool_usage_response() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"IdentityPoolUsages">> => list(identity_pool_usage()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_pool_usage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_records_request() :: #{
+%%   <<"LastSyncCount">> => float(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncSessionToken">> => string()
+%% }
+-type list_records_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -103,199 +353,6 @@
 %% }
 -type list_records_response() :: #{binary() => any()}.
 
-%% Example:
-%% describe_identity_pool_usage_request() :: #{}
--type describe_identity_pool_usage_request() :: #{}.
-
-
-%% Example:
-%% delete_dataset_response() :: #{
-%%   <<"Dataset">> => dataset()
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_pool_usage_response() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"IdentityPoolUsages">> => list(identity_pool_usage()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_pool_usage_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_bulk_publish_details_request() :: #{}
--type get_bulk_publish_details_request() :: #{}.
-
-
-%% Example:
-%% push_sync() :: #{
-%%   <<"ApplicationArns">> => list(string()),
-%%   <<"RoleArn">> => string()
-%% }
--type push_sync() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_identity_usage_response() :: #{
-%%   <<"IdentityUsage">> => identity_usage()
-%% }
--type describe_identity_usage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bulk_publish_response() :: #{
-%%   <<"IdentityPoolId">> => string()
-%% }
--type bulk_publish_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_pool_usage_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_pool_usage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_identity_pool_configuration_response() :: #{
-%%   <<"CognitoStreams">> => cognito_streams(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"PushSync">> => push_sync()
-%% }
--type set_identity_pool_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_records_request() :: #{
-%%   <<"ClientContext">> => string(),
-%%   <<"DeviceId">> => string(),
-%%   <<"RecordPatches">> => list(record_patch()),
-%%   <<"SyncSessionToken">> := string()
-%% }
--type update_records_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_cognito_events_request() :: #{}
--type get_cognito_events_request() :: #{}.
-
-
-%% Example:
-%% cognito_streams() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"StreamingStatus">> => list(any())
-%% }
--type cognito_streams() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"DataStorage">> => float(),
-%%   <<"DatasetName">> => string(),
-%%   <<"IdentityId">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"NumRecords">> => float()
-%% }
--type dataset() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_lambda_function_output_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_lambda_function_output_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% already_streamed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type already_streamed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% bulk_publish_request() :: #{}
--type bulk_publish_request() :: #{}.
-
-
-%% Example:
-%% list_records_request() :: #{
-%%   <<"LastSyncCount">> => float(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SyncSessionToken">> => string()
-%% }
--type list_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_pool_usage() :: #{
-%%   <<"DataStorage">> => float(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"SyncSessionsCount">> => float()
-%% }
--type identity_pool_usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% duplicate_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bulk_publish_details_response() :: #{
-%%   <<"BulkPublishCompleteTime">> => non_neg_integer(),
-%%   <<"BulkPublishStartTime">> => non_neg_integer(),
-%%   <<"BulkPublishStatus">> => list(any()),
-%%   <<"FailureMessage">> => string(),
-%%   <<"IdentityPoolId">> => string()
-%% }
--type get_bulk_publish_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsubscribe_from_dataset_request() :: #{}
--type unsubscribe_from_dataset_request() :: #{}.
-
-%% Example:
-%% describe_identity_usage_request() :: #{}
--type describe_identity_usage_request() :: #{}.
-
-
-%% Example:
-%% lambda_throttled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type lambda_throttled_exception() :: #{binary() => any()}.
-
 
 %% Example:
 %% not_authorized_exception() :: #{
@@ -305,74 +362,11 @@
 
 
 %% Example:
-%% set_cognito_events_request() :: #{
-%%   <<"Events">> := map()
+%% push_sync() :: #{
+%%   <<"ApplicationArns">> => list(string()),
+%%   <<"RoleArn">> => string()
 %% }
--type set_cognito_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_identity_pool_configuration_response() :: #{
-%%   <<"CognitoStreams">> => cognito_streams(),
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"PushSync">> => push_sync()
-%% }
--type get_identity_pool_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dataset_response() :: #{
-%%   <<"Dataset">> => dataset()
-%% }
--type describe_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_records_response() :: #{
-%%   <<"Records">> => list(record())
-%% }
--type update_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_sync_record() :: #{
-%%   <<"DeviceLastModifiedDate">> => non_neg_integer(),
-%%   <<"Key">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"SyncCount">> => float(),
-%%   <<"Value">> => string()
-%% }
--type cognito_sync_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_device_request() :: #{
-%%   <<"Platform">> := list(any()),
-%%   <<"Token">> := string()
-%% }
--type register_device_request() :: #{binary() => any()}.
+-type push_sync() :: #{binary() => any()}.
 
 
 %% Example:
@@ -387,10 +381,39 @@
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
+%% register_device_request() :: #{
+%%   <<"Platform">> := list(any()),
+%%   <<"Token">> := string()
+%% }
+-type register_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_device_response() :: #{
+%%   <<"DeviceId">> => string()
+%% }
+-type register_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% set_cognito_events_request() :: #{
+%%   <<"Events">> := map()
+%% }
+-type set_cognito_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,64 +425,16 @@
 
 
 %% Example:
-%% get_cognito_events_response() :: #{
-%%   <<"Events">> => map()
-%% }
--type get_cognito_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_request() :: #{}
--type describe_dataset_request() :: #{}.
-
-%% Example:
-%% delete_dataset_request() :: #{}
--type delete_dataset_request() :: #{}.
-
-
-%% Example:
-%% list_datasets_response() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Datasets">> => list(dataset()),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_usage() :: #{
-%%   <<"DataStorage">> => float(),
-%%   <<"DatasetCount">> => integer(),
-%%   <<"IdentityId">> => string(),
+%% set_identity_pool_configuration_response() :: #{
+%%   <<"CognitoStreams">> => cognito_streams(),
 %%   <<"IdentityPoolId">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer()
+%%   <<"PushSync">> => push_sync()
 %% }
--type identity_usage() :: #{binary() => any()}.
+-type set_identity_pool_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% subscribe_to_dataset_request() :: #{}
 -type subscribe_to_dataset_request() :: #{}.
-
-%% Example:
-%% unsubscribe_from_dataset_response() :: #{}
--type unsubscribe_from_dataset_response() :: #{}.
-
-
-%% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_pool_configuration_request() :: #{}
--type get_identity_pool_configuration_request() :: #{}.
-
-
-%% Example:
-%% internal_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_error_exception() :: #{binary() => any()}.
 
 %% Example:
 %% subscribe_to_dataset_response() :: #{}
@@ -467,135 +442,160 @@
 
 
 %% Example:
-%% describe_identity_pool_usage_response() :: #{
-%%   <<"IdentityPoolUsage">> => identity_pool_usage()
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_identity_pool_usage_response() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsubscribe_from_dataset_request() :: #{}
+-type unsubscribe_from_dataset_request() :: #{}.
+
+%% Example:
+%% unsubscribe_from_dataset_response() :: #{}
+-type unsubscribe_from_dataset_response() :: #{}.
+
+
+%% Example:
+%% update_records_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"RecordPatches">> => list(record_patch()),
+%%   <<"SyncSessionToken">> := string()
+%% }
+-type update_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_records_response() :: #{
+%%   <<"Records">> => list(record())
+%% }
+-type update_records_response() :: #{binary() => any()}.
 
 -type bulk_publish_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     duplicate_request_exception() | 
-    already_streamed_exception() | 
-    resource_not_found_exception().
+    already_streamed_exception().
 
 -type delete_dataset_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_dataset_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_identity_pool_usage_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_identity_usage_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_bulk_publish_details_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_cognito_events_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_identity_pool_configuration_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_datasets_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
     not_authorized_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_identity_pool_usage_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
     not_authorized_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_records_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
     not_authorized_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type register_device_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_parameter_exception() | 
     invalid_configuration_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_error_exception().
 
 -type set_cognito_events_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type set_identity_pool_configuration_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type subscribe_to_dataset_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_parameter_exception() | 
     invalid_configuration_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_error_exception().
 
 -type unsubscribe_from_dataset_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_parameter_exception() | 
     invalid_configuration_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_error_exception().
 
 -type update_records_errors() ::
-    internal_error_exception() | 
-    resource_conflict_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    lambda_throttled_exception() | 
-    invalid_lambda_function_output_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    lambda_throttled_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_function_output_exception() | 
+    internal_error_exception().
 
 %%====================================================================
 %% API

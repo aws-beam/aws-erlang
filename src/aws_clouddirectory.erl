@@ -156,74 +156,142 @@
 
 
 %% Example:
-%% incompatible_schema_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type incompatible_schema_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_facet_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
+%% add_facet_to_object_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
+%%   <<"ObjectReference">> := object_reference(),
+%%   <<"SchemaFacet">> := schema_facet()
 %% }
--type get_facet_request() :: #{binary() => any()}.
+-type add_facet_to_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_facet_to_object_response() :: #{}
+-type add_facet_to_object_response() :: #{}.
 
 
 %% Example:
-%% object_attribute_range() :: #{
-%%   <<"AttributeKey">> => attribute_key(),
-%%   <<"Range">> => typed_attribute_value_range()
+%% apply_schema_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"PublishedSchemaArn">> := string()
 %% }
--type object_attribute_range() :: #{binary() => any()}.
+-type apply_schema_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_link_attributes() :: #{
-%%   <<"AttributeNames">> => list(string()),
+%% apply_schema_response() :: #{
+%%   <<"AppliedSchemaArn">> => string(),
+%%   <<"DirectoryArn">> => string()
+%% }
+-type apply_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_object_request() :: #{
+%%   <<"ChildReference">> := object_reference(),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"LinkName">> := string(),
+%%   <<"ParentReference">> := object_reference()
+%% }
+-type attach_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_object_response() :: #{
+%%   <<"AttachedObjectIdentifier">> => string()
+%% }
+-type attach_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_policy_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference(),
+%%   <<"PolicyReference">> := object_reference()
+%% }
+-type attach_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_policy_response() :: #{}
+-type attach_policy_response() :: #{}.
+
+
+%% Example:
+%% attach_to_index_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"IndexReference">> := object_reference(),
+%%   <<"TargetReference">> := object_reference()
+%% }
+-type attach_to_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_to_index_response() :: #{
+%%   <<"AttachedObjectIdentifier">> => string()
+%% }
+-type attach_to_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_typed_link_request() :: #{
+%%   <<"Attributes">> := list(attribute_name_and_value()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"SourceObjectReference">> := object_reference(),
+%%   <<"TargetObjectReference">> := object_reference(),
+%%   <<"TypedLinkFacet">> := typed_link_schema_and_facet_name()
+%% }
+-type attach_typed_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% attach_typed_link_response() :: #{
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
--type batch_get_link_attributes() :: #{binary() => any()}.
+-type attach_typed_link_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_list_policy_attachments() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyReference">> => object_reference()
+%% attribute_key() :: #{
+%%   <<"FacetName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SchemaArn">> => string()
 %% }
--type batch_list_policy_attachments() :: #{binary() => any()}.
+-type attribute_key() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_object_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference()
+%% attribute_key_and_value() :: #{
+%%   <<"Key">> => attribute_key(),
+%%   <<"Value">> => list()
 %% }
--type delete_object_request() :: #{binary() => any()}.
+-type attribute_key_and_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% policy_to_path() :: #{
-%%   <<"Path">> => string(),
-%%   <<"Policies">> => list(policy_attachment())
+%% attribute_name_and_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Value">> => list()
 %% }
--type policy_to_path() :: #{binary() => any()}.
+-type attribute_name_and_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_incoming_typed_links_response() :: #{
-%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
-%%   <<"NextToken">> => string()
+%% batch_add_facet_to_object() :: #{
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
+%%   <<"ObjectReference">> => object_reference(),
+%%   <<"SchemaFacet">> => schema_facet()
 %% }
--type list_incoming_typed_links_response() :: #{binary() => any()}.
-
+-type batch_add_facet_to_object() :: #{binary() => any()}.
 
 %% Example:
-%% get_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value())
-%% }
--type get_object_attributes_response() :: #{binary() => any()}.
+%% batch_add_facet_to_object_response() :: #{}
+-type batch_add_facet_to_object_response() :: #{}.
 
 
 %% Example:
@@ -236,61 +304,30 @@
 
 
 %% Example:
-%% batch_list_index() :: #{
+%% batch_attach_object_response() :: #{
+%%   <<"attachedObjectIdentifier">> => string()
+%% }
+-type batch_attach_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_attach_policy() :: #{
+%%   <<"ObjectReference">> => object_reference(),
+%%   <<"PolicyReference">> => object_reference()
+%% }
+-type batch_attach_policy() :: #{binary() => any()}.
+
+%% Example:
+%% batch_attach_policy_response() :: #{}
+-type batch_attach_policy_response() :: #{}.
+
+
+%% Example:
+%% batch_attach_to_index() :: #{
 %%   <<"IndexReference">> => object_reference(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
+%%   <<"TargetReference">> => object_reference()
 %% }
--type batch_list_index() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_object_response() :: #{
-%%   <<"detachedObjectIdentifier">> => string()
-%% }
--type batch_detach_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_directory_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type create_directory_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_lookup_policy() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_lookup_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_policies_response() :: #{
-%%   <<"AttachedPolicyIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_published_schema_arns_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string())
-%% }
--type list_published_schema_arns_response() :: #{binary() => any()}.
+-type batch_attach_to_index() :: #{binary() => any()}.
 
 
 %% Example:
@@ -301,10 +338,136 @@
 
 
 %% Example:
-%% create_schema_request() :: #{
-%%   <<"Name">> := string()
+%% batch_attach_typed_link() :: #{
+%%   <<"Attributes">> => list(attribute_name_and_value()),
+%%   <<"SourceObjectReference">> => object_reference(),
+%%   <<"TargetObjectReference">> => object_reference(),
+%%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
 %% }
--type create_schema_request() :: #{binary() => any()}.
+-type batch_attach_typed_link() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_attach_typed_link_response() :: #{
+%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
+%% }
+-type batch_attach_typed_link_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_index() :: #{
+%%   <<"BatchReferenceName">> => string(),
+%%   <<"IsUnique">> => boolean(),
+%%   <<"LinkName">> => string(),
+%%   <<"OrderedIndexedAttributeList">> => list(attribute_key()),
+%%   <<"ParentReference">> => object_reference()
+%% }
+-type batch_create_index() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_index_response() :: #{
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type batch_create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_object() :: #{
+%%   <<"BatchReferenceName">> => string(),
+%%   <<"LinkName">> => string(),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
+%%   <<"ParentReference">> => object_reference(),
+%%   <<"SchemaFacet">> => list(schema_facet())
+%% }
+-type batch_create_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_object_response() :: #{
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type batch_create_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_object() :: #{
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_delete_object() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_object_response() :: #{}
+-type batch_delete_object_response() :: #{}.
+
+
+%% Example:
+%% batch_detach_from_index() :: #{
+%%   <<"IndexReference">> => object_reference(),
+%%   <<"TargetReference">> => object_reference()
+%% }
+-type batch_detach_from_index() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_detach_from_index_response() :: #{
+%%   <<"DetachedObjectIdentifier">> => string()
+%% }
+-type batch_detach_from_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_detach_object() :: #{
+%%   <<"BatchReferenceName">> => string(),
+%%   <<"LinkName">> => string(),
+%%   <<"ParentReference">> => object_reference()
+%% }
+-type batch_detach_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_detach_object_response() :: #{
+%%   <<"detachedObjectIdentifier">> => string()
+%% }
+-type batch_detach_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_detach_policy() :: #{
+%%   <<"ObjectReference">> => object_reference(),
+%%   <<"PolicyReference">> => object_reference()
+%% }
+-type batch_detach_policy() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detach_policy_response() :: #{}
+-type batch_detach_policy_response() :: #{}.
+
+
+%% Example:
+%% batch_detach_typed_link() :: #{
+%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
+%% }
+-type batch_detach_typed_link() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detach_typed_link_response() :: #{}
+-type batch_detach_typed_link_response() :: #{}.
+
+
+%% Example:
+%% batch_get_link_attributes() :: #{
+%%   <<"AttributeNames">> => list(string()),
+%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
+%% }
+-type batch_get_link_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_link_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute_key_and_value())
+%% }
+-type batch_get_link_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -317,13 +480,42 @@
 
 
 %% Example:
-%% typed_link_specifier() :: #{
-%%   <<"IdentityAttributeValues">> => list(attribute_name_and_value()),
-%%   <<"SourceObjectReference">> => object_reference(),
-%%   <<"TargetObjectReference">> => object_reference(),
-%%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
+%% batch_get_object_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
--type typed_link_specifier() :: #{binary() => any()}.
+-type batch_get_object_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_object_information() :: #{
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_get_object_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_object_information_response() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"SchemaFacets">> => list(schema_facet())
+%% }
+-type batch_get_object_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_attached_indices() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetReference">> => object_reference()
+%% }
+-type batch_list_attached_indices() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_attached_indices_response() :: #{
+%%   <<"IndexAttachments">> => list(index_attachment()),
+%%   <<"NextToken">> => string()
+%% }
+-type batch_list_attached_indices_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -338,96 +530,29 @@
 
 
 %% Example:
-%% batch_remove_facet_from_object() :: #{
-%%   <<"ObjectReference">> => object_reference(),
-%%   <<"SchemaFacet">> => schema_facet()
+%% batch_list_incoming_typed_links_response() :: #{
+%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
+%%   <<"NextToken">> => string()
 %% }
--type batch_remove_facet_from_object() :: #{binary() => any()}.
+-type batch_list_incoming_typed_links_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_applied_schema_version_response() :: #{
-%%   <<"AppliedSchemaArn">> => string()
-%% }
--type get_applied_schema_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_index_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_index_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_typed_link_facet_response() :: #{}
--type create_typed_link_facet_response() :: #{}.
-
-
-%% Example:
-%% batch_list_attached_indices() :: #{
+%% batch_list_index() :: #{
+%%   <<"IndexReference">> => object_reference(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TargetReference">> => object_reference()
+%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
 %% }
--type batch_list_attached_indices() :: #{binary() => any()}.
+-type batch_list_index() :: #{binary() => any()}.
 
 
 %% Example:
-%% disable_directory_response() :: #{
-%%   <<"DirectoryArn">> => string()
+%% batch_list_index_response() :: #{
+%%   <<"IndexAttachments">> => list(index_attachment()),
+%%   <<"NextToken">> => string()
 %% }
--type disable_directory_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_schema_as_json_response() :: #{
-%%   <<"Document">> => string(),
-%%   <<"Name">> => string()
-%% }
--type get_schema_as_json_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% retryable_conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type retryable_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_directory_response() :: #{
-%%   <<"AppliedSchemaArn">> => string(),
-%%   <<"DirectoryArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type create_directory_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_applied_schema_version_request() :: #{
-%%   <<"SchemaArn">> := string()
-%% }
--type get_applied_schema_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% delete_schema_request() :: #{
-%%   <<"SchemaArn">> := string()
-%% }
--type delete_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_facet() :: #{
-%%   <<"FacetName">> => string(),
-%%   <<"SchemaArn">> => string()
-%% }
--type schema_facet() :: #{binary() => any()}.
+-type batch_list_index_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -439,16 +564,275 @@
 %% }
 -type batch_list_object_attributes() :: #{binary() => any()}.
 
-%% Example:
-%% delete_object_response() :: #{}
--type delete_object_response() :: #{}.
-
 
 %% Example:
-%% object_reference() :: #{
-%%   <<"Selector">> => string()
+%% batch_list_object_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute_key_and_value()),
+%%   <<"NextToken">> => string()
 %% }
--type object_reference() :: #{binary() => any()}.
+-type batch_list_object_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_children() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_list_object_children() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_children_response() :: #{
+%%   <<"Children">> => map(),
+%%   <<"NextToken">> => string()
+%% }
+-type batch_list_object_children_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_parent_paths() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_list_object_parent_paths() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_parent_paths_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
+%% }
+-type batch_list_object_parent_paths_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_parents() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_list_object_parents() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_parents_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple())
+%% }
+-type batch_list_object_parents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_policies() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_list_object_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_object_policies_response() :: #{
+%%   <<"AttachedPolicyIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type batch_list_object_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_outgoing_typed_links() :: #{
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
+%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_list_outgoing_typed_links() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_outgoing_typed_links_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
+%% }
+-type batch_list_outgoing_typed_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_policy_attachments() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyReference">> => object_reference()
+%% }
+-type batch_list_policy_attachments() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_policy_attachments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectIdentifiers">> => list(string())
+%% }
+-type batch_list_policy_attachments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_lookup_policy() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_lookup_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_lookup_policy_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyToPathList">> => list(policy_to_path())
+%% }
+-type batch_lookup_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type batch_read_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_operation() :: #{
+%%   <<"GetLinkAttributes">> => batch_get_link_attributes(),
+%%   <<"GetObjectAttributes">> => batch_get_object_attributes(),
+%%   <<"GetObjectInformation">> => batch_get_object_information(),
+%%   <<"ListAttachedIndices">> => batch_list_attached_indices(),
+%%   <<"ListIncomingTypedLinks">> => batch_list_incoming_typed_links(),
+%%   <<"ListIndex">> => batch_list_index(),
+%%   <<"ListObjectAttributes">> => batch_list_object_attributes(),
+%%   <<"ListObjectChildren">> => batch_list_object_children(),
+%%   <<"ListObjectParentPaths">> => batch_list_object_parent_paths(),
+%%   <<"ListObjectParents">> => batch_list_object_parents(),
+%%   <<"ListObjectPolicies">> => batch_list_object_policies(),
+%%   <<"ListOutgoingTypedLinks">> => batch_list_outgoing_typed_links(),
+%%   <<"ListPolicyAttachments">> => batch_list_policy_attachments(),
+%%   <<"LookupPolicy">> => batch_lookup_policy()
+%% }
+-type batch_read_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_operation_response() :: #{
+%%   <<"ExceptionResponse">> => batch_read_exception(),
+%%   <<"SuccessfulResponse">> => batch_read_successful_response()
+%% }
+-type batch_read_operation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"Operations">> := list(batch_read_operation())
+%% }
+-type batch_read_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_response() :: #{
+%%   <<"Responses">> => list(batch_read_operation_response())
+%% }
+-type batch_read_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_read_successful_response() :: #{
+%%   <<"GetLinkAttributes">> => batch_get_link_attributes_response(),
+%%   <<"GetObjectAttributes">> => batch_get_object_attributes_response(),
+%%   <<"GetObjectInformation">> => batch_get_object_information_response(),
+%%   <<"ListAttachedIndices">> => batch_list_attached_indices_response(),
+%%   <<"ListIncomingTypedLinks">> => batch_list_incoming_typed_links_response(),
+%%   <<"ListIndex">> => batch_list_index_response(),
+%%   <<"ListObjectAttributes">> => batch_list_object_attributes_response(),
+%%   <<"ListObjectChildren">> => batch_list_object_children_response(),
+%%   <<"ListObjectParentPaths">> => batch_list_object_parent_paths_response(),
+%%   <<"ListObjectParents">> => batch_list_object_parents_response(),
+%%   <<"ListObjectPolicies">> => batch_list_object_policies_response(),
+%%   <<"ListOutgoingTypedLinks">> => batch_list_outgoing_typed_links_response(),
+%%   <<"ListPolicyAttachments">> => batch_list_policy_attachments_response(),
+%%   <<"LookupPolicy">> => batch_lookup_policy_response()
+%% }
+-type batch_read_successful_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_facet_from_object() :: #{
+%%   <<"ObjectReference">> => object_reference(),
+%%   <<"SchemaFacet">> => schema_facet()
+%% }
+-type batch_remove_facet_from_object() :: #{binary() => any()}.
+
+%% Example:
+%% batch_remove_facet_from_object_response() :: #{}
+-type batch_remove_facet_from_object_response() :: #{}.
+
+
+%% Example:
+%% batch_update_link_attributes() :: #{
+%%   <<"AttributeUpdates">> => list(link_attribute_update()),
+%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
+%% }
+-type batch_update_link_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_link_attributes_response() :: #{}
+-type batch_update_link_attributes_response() :: #{}.
+
+
+%% Example:
+%% batch_update_object_attributes() :: #{
+%%   <<"AttributeUpdates">> => list(object_attribute_update()),
+%%   <<"ObjectReference">> => object_reference()
+%% }
+-type batch_update_object_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_object_attributes_response() :: #{
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type batch_update_object_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_write_exception() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type batch_write_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_write_operation() :: #{
+%%   <<"AddFacetToObject">> => batch_add_facet_to_object(),
+%%   <<"AttachObject">> => batch_attach_object(),
+%%   <<"AttachPolicy">> => batch_attach_policy(),
+%%   <<"AttachToIndex">> => batch_attach_to_index(),
+%%   <<"AttachTypedLink">> => batch_attach_typed_link(),
+%%   <<"CreateIndex">> => batch_create_index(),
+%%   <<"CreateObject">> => batch_create_object(),
+%%   <<"DeleteObject">> => batch_delete_object(),
+%%   <<"DetachFromIndex">> => batch_detach_from_index(),
+%%   <<"DetachObject">> => batch_detach_object(),
+%%   <<"DetachPolicy">> => batch_detach_policy(),
+%%   <<"DetachTypedLink">> => batch_detach_typed_link(),
+%%   <<"RemoveFacetFromObject">> => batch_remove_facet_from_object(),
+%%   <<"UpdateLinkAttributes">> => batch_update_link_attributes(),
+%%   <<"UpdateObjectAttributes">> => batch_update_object_attributes()
+%% }
+-type batch_write_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,433 +865,6 @@
 
 
 %% Example:
-%% enable_directory_request() :: #{
-%%   <<"DirectoryArn">> := string()
-%% }
--type enable_directory_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_policy_attachments_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectIdentifiers">> => list(string())
-%% }
--type batch_list_policy_attachments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_facet_update_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_facet_update_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_incoming_typed_links_response() :: #{
-%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_incoming_typed_links_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type facet_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_indices_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TargetReference">> := object_reference()
-%% }
--type list_attached_indices_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_object_response() :: #{}
--type batch_delete_object_response() :: #{}.
-
-
-%% Example:
-%% directory_deleted_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_deleted_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lookup_policy_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type lookup_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_read_operation_response() :: #{
-%%   <<"ExceptionResponse">> => batch_read_exception(),
-%%   <<"SuccessfulResponse">> => batch_read_successful_response()
-%% }
--type batch_read_operation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_typed_link_facet_names_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type list_typed_link_facet_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_children_response() :: #{
-%%   <<"Children">> => map(),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_children_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_read_successful_response() :: #{
-%%   <<"GetLinkAttributes">> => batch_get_link_attributes_response(),
-%%   <<"GetObjectAttributes">> => batch_get_object_attributes_response(),
-%%   <<"GetObjectInformation">> => batch_get_object_information_response(),
-%%   <<"ListAttachedIndices">> => batch_list_attached_indices_response(),
-%%   <<"ListIncomingTypedLinks">> => batch_list_incoming_typed_links_response(),
-%%   <<"ListIndex">> => batch_list_index_response(),
-%%   <<"ListObjectAttributes">> => batch_list_object_attributes_response(),
-%%   <<"ListObjectChildren">> => batch_list_object_children_response(),
-%%   <<"ListObjectParentPaths">> => batch_list_object_parent_paths_response(),
-%%   <<"ListObjectParents">> => batch_list_object_parents_response(),
-%%   <<"ListObjectPolicies">> => batch_list_object_policies_response(),
-%%   <<"ListOutgoingTypedLinks">> => batch_list_outgoing_typed_links_response(),
-%%   <<"ListPolicyAttachments">> => batch_list_policy_attachments_response(),
-%%   <<"LookupPolicy">> => batch_lookup_policy_response()
-%% }
--type batch_read_successful_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% typed_link_schema_and_facet_name() :: #{
-%%   <<"SchemaArn">> => string(),
-%%   <<"TypedLinkName">> => string()
-%% }
--type typed_link_schema_and_facet_name() :: #{binary() => any()}.
-
-
-%% Example:
-%% typed_attribute_value_range() :: #{
-%%   <<"EndMode">> => list(any()),
-%%   <<"EndValue">> => list(),
-%%   <<"StartMode">> => list(any()),
-%%   <<"StartValue">> => list()
-%% }
--type typed_attribute_value_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_attributes_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"FacetFilter">> => schema_facet(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_object_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_link_attributes_response() :: #{}
--type batch_update_link_attributes_response() :: #{}.
-
-
-%% Example:
-%% detach_policy_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference(),
-%%   <<"PolicyReference">> := object_reference()
-%% }
--type detach_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_schema_response() :: #{
-%%   <<"PublishedSchemaArn">> => string()
-%% }
--type publish_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% directory() :: #{
-%%   <<"CreationDateTime">> => non_neg_integer(),
-%%   <<"DirectoryArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type directory() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_attribute_action() :: #{
-%%   <<"AttributeActionType">> => list(any()),
-%%   <<"AttributeUpdateValue">> => list()
-%% }
--type link_attribute_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_schema_response() :: #{
-%%   <<"SchemaArn">> => string()
-%% }
--type update_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_directory_response() :: #{
-%%   <<"DirectoryArn">> => string()
-%% }
--type enable_directory_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_policies_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_object_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detach_policy_response() :: #{}
--type batch_detach_policy_response() :: #{}.
-
-
-%% Example:
-%% facet_attribute() :: #{
-%%   <<"AttributeDefinition">> => facet_attribute_definition(),
-%%   <<"AttributeReference">> => facet_attribute_reference(),
-%%   <<"Name">> => string(),
-%%   <<"RequiredBehavior">> => list(any())
-%% }
--type facet_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_typed_link_facet_attributes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type list_typed_link_facet_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_link_attributes_request() :: #{
-%%   <<"AttributeNames">> := list(string()),
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
-%% }
--type get_link_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_development_schema_arns_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_development_schema_arns_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schema_response() :: #{
-%%   <<"SchemaArn">> => string()
-%% }
--type create_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_directory_request() :: #{
-%%   <<"DirectoryArn">> := string()
-%% }
--type disable_directory_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% apply_schema_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"PublishedSchemaArn">> := string()
-%% }
--type apply_schema_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_attach_policy_response() :: #{}
--type batch_attach_policy_response() :: #{}.
-
-
-%% Example:
-%% schema_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type schema_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% apply_schema_response() :: #{
-%%   <<"AppliedSchemaArn">> => string(),
-%%   <<"DirectoryArn">> => string()
-%% }
--type apply_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_already_published_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type schema_already_published_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_index_response() :: #{
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type batch_create_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_facet_attributes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type list_facet_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_add_facet_to_object_response() :: #{}
--type batch_add_facet_to_object_response() :: #{}.
-
-%% Example:
-%% batch_remove_facet_from_object_response() :: #{}
--type batch_remove_facet_from_object_response() :: #{}.
-
-
-%% Example:
-%% batch_get_object_information() :: #{
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_get_object_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_arn_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_arn_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_policies_response() :: #{
-%%   <<"AttachedPolicyIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_object_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_published_schema_request() :: #{
-%%   <<"DevelopmentSchemaArn">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"MinorVersion">> := string(),
-%%   <<"PublishedSchemaArn">> := string()
-%% }
--type upgrade_published_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_object_attributes_request() :: #{
-%%   <<"AttributeUpdates">> := list(object_attribute_update()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type update_object_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_parent_paths_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_object_parent_paths_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_typed_link_facet_attributes_response() :: #{
-%%   <<"Attributes">> => list(typed_link_attribute_definition()),
-%%   <<"NextToken">> => string()
-%% }
--type list_typed_link_facet_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_node_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_node_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_parent_paths_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
-%% }
--type batch_list_object_parent_paths_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% index_attachment() :: #{
-%%   <<"IndexedAttributes">> => list(attribute_key_and_value()),
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type index_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_parents_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple())
-%% }
--type batch_list_object_parents_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% batch_write_response() :: #{
 %%   <<"Responses">> => list(batch_write_operation_response())
 %% }
@@ -915,688 +872,28 @@
 
 
 %% Example:
-%% batch_list_object_parent_paths() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
+%% cannot_list_parent_of_root_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type batch_list_object_parent_paths() :: #{binary() => any()}.
-
-%% Example:
-%% create_facet_response() :: #{}
--type create_facet_response() :: #{}.
+-type cannot_list_parent_of_root_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_schema_from_json_response() :: #{
-%%   <<"Arn">> => string()
+%% create_directory_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
 %% }
--type put_schema_from_json_response() :: #{binary() => any()}.
+-type create_directory_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_object_parents_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple()),
-%%   <<"Parents">> => map()
-%% }
--type list_object_parents_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_directory_response() :: #{
-%%   <<"Directory">> => directory()
-%% }
--type get_directory_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_name_and_value() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Value">> => list()
-%% }
--type attribute_name_and_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_object_request() :: #{
-%%   <<"ChildReference">> := object_reference(),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"LinkName">> := string(),
-%%   <<"ParentReference">> := object_reference()
-%% }
--type attach_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_read_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type batch_read_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_children_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_object_children_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% typed_link_attribute_definition() :: #{
-%%   <<"DefaultValue">> => list(),
-%%   <<"IsImmutable">> => boolean(),
+%% create_directory_response() :: #{
+%%   <<"AppliedSchemaArn">> => string(),
+%%   <<"DirectoryArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RequiredBehavior">> => list(any()),
-%%   <<"Rules">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type typed_link_attribute_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_facet_names_response() :: #{
-%%   <<"FacetNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_facet_names_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet_attribute_update() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Attribute">> => facet_attribute()
-%% }
--type facet_attribute_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applied_schema_arns_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> => string()
-%% }
--type list_applied_schema_arns_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_object_response() :: #{
-%%   <<"DetachedObjectIdentifier">> => string()
-%% }
--type detach_object_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_link_attributes_response() :: #{}
--type update_link_attributes_response() :: #{}.
-
-%% Example:
-%% add_facet_to_object_response() :: #{}
--type add_facet_to_object_response() :: #{}.
-
-
-%% Example:
-%% batch_lookup_policy_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyToPathList">> => list(policy_to_path())
-%% }
--type batch_lookup_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_policy() :: #{
-%%   <<"ObjectReference">> => object_reference(),
-%%   <<"PolicyReference">> => object_reference()
-%% }
--type batch_detach_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% directory_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% attach_policy_response() :: #{}
--type attach_policy_response() :: #{}.
-
-
-%% Example:
-%% batch_update_link_attributes() :: #{
-%%   <<"AttributeUpdates">> => list(link_attribute_update()),
-%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
-%% }
--type batch_update_link_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_object_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
--type batch_create_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_policy_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference(),
-%%   <<"PolicyReference">> := object_reference()
-%% }
--type attach_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet_attribute_reference() :: #{
-%%   <<"TargetAttributeName">> => string(),
-%%   <<"TargetFacetName">> => string()
-%% }
--type facet_attribute_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_schema_doc_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_schema_doc_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_directory_response() :: #{
-%%   <<"DirectoryArn">> => string()
-%% }
--type delete_directory_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_typed_link_facet_information_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type get_typed_link_facet_information_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_to_index_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"IndexReference">> := object_reference(),
-%%   <<"TargetReference">> := object_reference()
-%% }
--type attach_to_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_object_information_response() :: #{
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"SchemaFacets">> => list(schema_facet())
-%% }
--type batch_get_object_information_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_from_index_response() :: #{
-%%   <<"DetachedObjectIdentifier">> => string()
-%% }
--type detach_from_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_from_index_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"IndexReference">> := object_reference(),
-%%   <<"TargetReference">> := object_reference()
-%% }
--type detach_from_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type facet_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_schema_response() :: #{
-%%   <<"SchemaArn">> => string()
-%% }
--type delete_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_object() :: #{
-%%   <<"BatchReferenceName">> => string(),
-%%   <<"LinkName">> => string(),
-%%   <<"ParentReference">> => object_reference()
-%% }
--type batch_detach_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_facet_names_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type list_facet_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_attached_indices_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_attached_indices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_facet_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type delete_facet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_attachments_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyReference">> := object_reference()
-%% }
--type list_policy_attachments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_object() :: #{
-%%   <<"BatchReferenceName">> => string(),
-%%   <<"LinkName">> => string(),
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
-%%   <<"ParentReference">> => object_reference(),
-%%   <<"SchemaFacet">> => list(schema_facet())
-%% }
--type batch_create_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_read_operation() :: #{
-%%   <<"GetLinkAttributes">> => batch_get_link_attributes(),
-%%   <<"GetObjectAttributes">> => batch_get_object_attributes(),
-%%   <<"GetObjectInformation">> => batch_get_object_information(),
-%%   <<"ListAttachedIndices">> => batch_list_attached_indices(),
-%%   <<"ListIncomingTypedLinks">> => batch_list_incoming_typed_links(),
-%%   <<"ListIndex">> => batch_list_index(),
-%%   <<"ListObjectAttributes">> => batch_list_object_attributes(),
-%%   <<"ListObjectChildren">> => batch_list_object_children(),
-%%   <<"ListObjectParentPaths">> => batch_list_object_parent_paths(),
-%%   <<"ListObjectParents">> => batch_list_object_parents(),
-%%   <<"ListObjectPolicies">> => batch_list_object_policies(),
-%%   <<"ListOutgoingTypedLinks">> => batch_list_outgoing_typed_links(),
-%%   <<"ListPolicyAttachments">> => batch_list_policy_attachments(),
-%%   <<"LookupPolicy">> => batch_lookup_policy()
-%% }
--type batch_read_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_incoming_typed_links_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
-%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_incoming_typed_links_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_facet_attributes_response() :: #{
-%%   <<"Attributes">> => list(facet_attribute()),
-%%   <<"NextToken">> => string()
-%% }
--type list_facet_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_attribute_update() :: #{
-%%   <<"ObjectAttributeAction">> => object_attribute_action(),
-%%   <<"ObjectAttributeKey">> => attribute_key()
-%% }
--type object_attribute_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_published_schema_response() :: #{
-%%   <<"UpgradedSchemaArn">> => string()
-%% }
--type upgrade_published_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_facet_response() :: #{}
--type update_facet_response() :: #{}.
-
-
-%% Example:
-%% list_outgoing_typed_links_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
-%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_outgoing_typed_links_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_object_attributes_response() :: #{
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type batch_update_object_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_index_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_outgoing_typed_links_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
-%% }
--type list_outgoing_typed_links_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_to_index_response() :: #{
-%%   <<"AttachedObjectIdentifier">> => string()
-%% }
--type attach_to_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% indexed_attribute_missing_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type indexed_attribute_missing_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_link_attributes_request() :: #{
-%%   <<"AttributeUpdates">> := list(link_attribute_update()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
-%% }
--type update_link_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_attribute_action() :: #{
-%%   <<"ObjectAttributeActionType">> => list(any()),
-%%   <<"ObjectAttributeUpdateValue">> => list()
-%% }
--type object_attribute_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule() :: #{
-%%   <<"Parameters">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_typed_link_request() :: #{
-%%   <<"Attributes">> := list(attribute_name_and_value()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"SourceObjectReference">> := object_reference(),
-%%   <<"TargetObjectReference">> := object_reference(),
-%%   <<"TypedLinkFacet">> := typed_link_schema_and_facet_name()
-%% }
--type attach_typed_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applied_schema_arns_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string())
-%% }
--type list_applied_schema_arns_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_write_operation() :: #{
-%%   <<"AddFacetToObject">> => batch_add_facet_to_object(),
-%%   <<"AttachObject">> => batch_attach_object(),
-%%   <<"AttachPolicy">> => batch_attach_policy(),
-%%   <<"AttachToIndex">> => batch_attach_to_index(),
-%%   <<"AttachTypedLink">> => batch_attach_typed_link(),
-%%   <<"CreateIndex">> => batch_create_index(),
-%%   <<"CreateObject">> => batch_create_object(),
-%%   <<"DeleteObject">> => batch_delete_object(),
-%%   <<"DetachFromIndex">> => batch_detach_from_index(),
-%%   <<"DetachObject">> => batch_detach_object(),
-%%   <<"DetachPolicy">> => batch_detach_policy(),
-%%   <<"DetachTypedLink">> => batch_detach_typed_link(),
-%%   <<"RemoveFacetFromObject">> => batch_remove_facet_from_object(),
-%%   <<"UpdateLinkAttributes">> => batch_update_link_attributes(),
-%%   <<"UpdateObjectAttributes">> => batch_update_object_attributes()
-%% }
--type batch_write_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_attach_typed_link() :: #{
-%%   <<"Attributes">> => list(attribute_name_and_value()),
-%%   <<"SourceObjectReference">> => object_reference(),
-%%   <<"TargetObjectReference">> => object_reference(),
-%%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
-%% }
--type batch_attach_typed_link() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_index_type_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_index_type_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_index_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"IndexReference">> := object_reference(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
-%% }
--type list_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_attribute_update() :: #{
-%%   <<"AttributeAction">> => link_attribute_action(),
-%%   <<"AttributeKey">> => attribute_key()
-%% }
--type link_attribute_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_name_already_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type link_name_already_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_attachment() :: #{
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyType">> => string()
-%% }
--type policy_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_typed_link_response() :: #{
-%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
-%% }
--type attach_typed_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_object_attributes() :: #{
-%%   <<"AttributeUpdates">> => list(object_attribute_update()),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_update_object_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_typed_link_facet_response() :: #{}
--type update_typed_link_facet_response() :: #{}.
-
-
-%% Example:
-%% batch_list_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_object_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_schema_request() :: #{
-%%   <<"DevelopmentSchemaArn">> := string(),
-%%   <<"MinorVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> := string()
-%% }
--type publish_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_information_response() :: #{
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"SchemaFacets">> => list(schema_facet())
-%% }
--type get_object_information_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_read_response() :: #{
-%%   <<"Responses">> => list(batch_read_operation_response())
-%% }
--type batch_read_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% path_to_object_identifiers() :: #{
-%%   <<"ObjectIdentifiers">> => list(string()),
-%%   <<"Path">> => string()
-%% }
--type path_to_object_identifiers() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_attach_policy() :: #{
-%%   <<"ObjectReference">> => object_reference(),
-%%   <<"PolicyReference">> => object_reference()
-%% }
--type batch_attach_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_parent_paths_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
-%% }
--type list_object_parent_paths_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_parents() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_list_object_parents() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_schema_from_json_request() :: #{
-%%   <<"Document">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type put_schema_from_json_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_attach_to_index() :: #{
-%%   <<"IndexReference">> => object_reference(),
-%%   <<"TargetReference">> => object_reference()
-%% }
--type batch_attach_to_index() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_typed_link_facet_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type delete_typed_link_facet_request() :: #{binary() => any()}.
+-type create_directory_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1609,30 +906,9 @@
 %% }
 -type create_facet_request() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_directories_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type list_directories_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cannot_list_parent_of_root_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cannot_list_parent_of_root_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_applied_schema_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"PublishedSchemaArn">> := string()
-%% }
--type upgrade_applied_schema_request() :: #{binary() => any()}.
+%% create_facet_response() :: #{}
+-type create_facet_response() :: #{}.
 
 
 %% Example:
@@ -1647,405 +923,10 @@
 
 
 %% Example:
-%% update_typed_link_facet_request() :: #{
-%%   <<"AttributeUpdates">> := list(typed_link_facet_attribute_update()),
-%%   <<"IdentityAttributeOrder">> := list(string()),
-%%   <<"Name">> := string(),
-%%   <<"SchemaArn">> := string()
-%% }
--type update_typed_link_facet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_attach_typed_link_response() :: #{
-%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
-%% }
--type batch_attach_typed_link_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_information_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type get_object_information_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_identifier_and_link_name_tuple() :: #{
-%%   <<"LinkName">> => string(),
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type object_identifier_and_link_name_tuple() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_object_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"LinkName">> := string(),
-%%   <<"ParentReference">> := object_reference()
-%% }
--type detach_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_object_attributes_response() :: #{
-%%   <<"ObjectIdentifier">> => string()
-%% }
--type update_object_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_typed_link_facet_names_response() :: #{
-%%   <<"FacetNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_typed_link_facet_names_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% still_contains_links_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type still_contains_links_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_directory_request() :: #{
-%%   <<"DirectoryArn">> := string()
-%% }
--type delete_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% facet_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type facet_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% detach_policy_response() :: #{}
--type detach_policy_response() :: #{}.
-
-
-%% Example:
-%% list_development_schema_arns_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string())
-%% }
--type list_development_schema_arns_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_schema_arns_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string())
-%% }
--type list_managed_schema_arns_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_facet_response() :: #{}
--type delete_facet_response() :: #{}.
-
-
-%% Example:
-%% get_link_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value())
-%% }
--type get_link_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_children() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_list_object_children() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_indices_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_attached_indices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_key_and_value() :: #{
-%%   <<"Key">> => attribute_key(),
-%%   <<"Value">> => list()
-%% }
--type attribute_key_and_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_typed_link() :: #{
-%%   <<"TypedLinkSpecifier">> => typed_link_specifier()
-%% }
--type batch_detach_typed_link() :: #{binary() => any()}.
-
-
-%% Example:
-%% directory_not_disabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_not_disabled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_index() :: #{
-%%   <<"BatchReferenceName">> => string(),
-%%   <<"IsUnique">> => boolean(),
-%%   <<"LinkName">> => string(),
-%%   <<"OrderedIndexedAttributeList">> => list(attribute_key()),
-%%   <<"ParentReference">> => object_reference()
-%% }
--type batch_create_index() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_facet_request() :: #{
-%%   <<"AttributeUpdates">> => list(facet_attribute_update()),
-%%   <<"Name">> := string(),
-%%   <<"ObjectType">> => list(any()),
-%%   <<"SchemaArn">> := string()
-%% }
--type update_facet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet() :: #{
-%%   <<"FacetStyle">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ObjectType">> => list(any())
-%% }
--type facet() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detach_typed_link_response() :: #{}
--type batch_detach_typed_link_response() :: #{}.
-
-
-%% Example:
-%% create_typed_link_facet_request() :: #{
-%%   <<"Facet">> := typed_link_facet(),
-%%   <<"SchemaArn">> := string()
-%% }
--type create_typed_link_facet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% facet_validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type facet_validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_policies() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_list_object_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% typed_link_facet() :: #{
-%%   <<"Attributes">> => list(typed_link_attribute_definition()),
-%%   <<"IdentityAttributeOrder">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type typed_link_facet() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_rule_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_rule_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_attach_object_response() :: #{
-%%   <<"attachedObjectIdentifier">> => string()
-%% }
--type batch_attach_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_object_children_response() :: #{
-%%   <<"Children">> => map(),
-%%   <<"NextToken">> => string()
-%% }
--type batch_list_object_children_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_from_index_response() :: #{
-%%   <<"DetachedObjectIdentifier">> => string()
-%% }
--type batch_detach_from_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_published_schema_arns_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> => string()
-%% }
--type list_published_schema_arns_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_attachments_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectIdentifiers">> => list(string())
-%% }
--type list_policy_attachments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value())
-%% }
--type batch_get_object_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_not_detached_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type object_not_detached_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_outgoing_typed_links_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
-%% }
--type batch_list_outgoing_typed_links_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attach_object_response() :: #{
-%%   <<"AttachedObjectIdentifier">> => string()
-%% }
--type attach_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_policy_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_policy_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_detach_from_index() :: #{
-%%   <<"IndexReference">> => object_reference(),
-%%   <<"TargetReference">> => object_reference()
-%% }
--type batch_detach_from_index() :: #{binary() => any()}.
-
-%% Example:
-%% remove_facet_from_object_response() :: #{}
--type remove_facet_from_object_response() :: #{}.
-
-
-%% Example:
-%% directory_not_enabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_not_enabled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_index_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_parents_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"IncludeAllLinksToEachParent">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> := object_reference()
-%% }
--type list_object_parents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detach_typed_link_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
-%% }
--type detach_typed_link_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_directories_response() :: #{
-%%   <<"Directories">> => list(directory()),
-%%   <<"NextToken">> => string()
-%% }
--type list_directories_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_index_response() :: #{
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type create_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_applied_schema_response() :: #{
-%%   <<"DirectoryArn">> => string(),
-%%   <<"UpgradedSchemaArn">> => string()
-%% }
--type upgrade_applied_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2067,63 +948,238 @@
 
 
 %% Example:
-%% add_facet_to_object_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
-%%   <<"ObjectReference">> := object_reference(),
-%%   <<"SchemaFacet">> := schema_facet()
+%% create_schema_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type add_facet_to_object_request() :: #{binary() => any()}.
+-type create_schema_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_list_outgoing_typed_links() :: #{
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
-%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_list_outgoing_typed_links() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_object() :: #{
-%%   <<"ObjectReference">> => object_reference()
-%% }
--type batch_delete_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_key() :: #{
-%%   <<"FacetName">> => string(),
-%%   <<"Name">> => string(),
+%% create_schema_response() :: #{
 %%   <<"SchemaArn">> => string()
 %% }
--type attribute_key() :: #{binary() => any()}.
+-type create_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% typed_link_facet_attribute_update() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Attribute">> => typed_link_attribute_definition()
+%% create_typed_link_facet_request() :: #{
+%%   <<"Facet">> := typed_link_facet(),
+%%   <<"SchemaArn">> := string()
 %% }
--type typed_link_facet_attribute_update() :: #{binary() => any()}.
+-type create_typed_link_facet_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_typed_link_facet_response() :: #{}
+-type create_typed_link_facet_response() :: #{}.
 
 
 %% Example:
-%% lookup_policy_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyToPathList">> => list(policy_to_path())
+%% delete_directory_request() :: #{
+%%   <<"DirectoryArn">> := string()
 %% }
--type lookup_policy_response() :: #{binary() => any()}.
+-type delete_directory_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_attachment_exception() :: #{
+%% delete_directory_response() :: #{
+%%   <<"DirectoryArn">> => string()
+%% }
+-type delete_directory_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_facet_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type delete_facet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_facet_response() :: #{}
+-type delete_facet_response() :: #{}.
+
+
+%% Example:
+%% delete_object_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type delete_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_object_response() :: #{}
+-type delete_object_response() :: #{}.
+
+
+%% Example:
+%% delete_schema_request() :: #{
+%%   <<"SchemaArn">> := string()
+%% }
+-type delete_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schema_response() :: #{
+%%   <<"SchemaArn">> => string()
+%% }
+-type delete_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_typed_link_facet_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type delete_typed_link_facet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_typed_link_facet_response() :: #{}
+-type delete_typed_link_facet_response() :: #{}.
+
+
+%% Example:
+%% detach_from_index_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"IndexReference">> := object_reference(),
+%%   <<"TargetReference">> := object_reference()
+%% }
+-type detach_from_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_from_index_response() :: #{
+%%   <<"DetachedObjectIdentifier">> => string()
+%% }
+-type detach_from_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_object_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"LinkName">> := string(),
+%%   <<"ParentReference">> := object_reference()
+%% }
+-type detach_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_object_response() :: #{
+%%   <<"DetachedObjectIdentifier">> => string()
+%% }
+-type detach_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_policy_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference(),
+%%   <<"PolicyReference">> := object_reference()
+%% }
+-type detach_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_policy_response() :: #{}
+-type detach_policy_response() :: #{}.
+
+
+%% Example:
+%% detach_typed_link_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
+%% }
+-type detach_typed_link_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% directory() :: #{
+%%   <<"CreationDateTime">> => non_neg_integer(),
+%%   <<"DirectoryArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type directory() :: #{binary() => any()}.
+
+
+%% Example:
+%% directory_already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_attachment_exception() :: #{binary() => any()}.
+-type directory_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% directory_deleted_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_deleted_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% directory_not_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_not_disabled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% directory_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_not_enabled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_directory_request() :: #{
+%%   <<"DirectoryArn">> := string()
+%% }
+-type disable_directory_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_directory_response() :: #{
+%%   <<"DirectoryArn">> => string()
+%% }
+-type disable_directory_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_directory_request() :: #{
+%%   <<"DirectoryArn">> := string()
+%% }
+-type enable_directory_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_directory_response() :: #{
+%%   <<"DirectoryArn">> => string()
+%% }
+-type enable_directory_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% facet() :: #{
+%%   <<"FacetStyle">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ObjectType">> => list(any())
+%% }
+-type facet() :: #{binary() => any()}.
+
+
+%% Example:
+%% facet_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type facet_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% facet_attribute() :: #{
+%%   <<"AttributeDefinition">> => facet_attribute_definition(),
+%%   <<"AttributeReference">> => facet_attribute_reference(),
+%%   <<"Name">> => string(),
+%%   <<"RequiredBehavior">> => list(any())
+%% }
+-type facet_attribute() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2137,47 +1193,54 @@
 
 
 %% Example:
-%% remove_facet_from_object_request() :: #{
-%%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectReference">> := object_reference(),
-%%   <<"SchemaFacet">> := schema_facet()
+%% facet_attribute_reference() :: #{
+%%   <<"TargetAttributeName">> => string(),
+%%   <<"TargetFacetName">> => string()
 %% }
--type remove_facet_from_object_request() :: #{binary() => any()}.
+-type facet_attribute_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_read_request() :: #{
-%%   <<"ConsistencyLevel">> => list(any()),
-%%   <<"DirectoryArn">> := string(),
-%%   <<"Operations">> := list(batch_read_operation())
+%% facet_attribute_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Attribute">> => facet_attribute()
 %% }
--type batch_read_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_typed_link_facet_response() :: #{}
--type delete_typed_link_facet_response() :: #{}.
+-type facet_attribute_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% object_already_detached_exception() :: #{
+%% facet_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type object_already_detached_exception() :: #{binary() => any()}.
+-type facet_in_use_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_schema_as_json_request() :: #{
+%% facet_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type facet_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% facet_validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type facet_validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_applied_schema_version_request() :: #{
 %%   <<"SchemaArn">> := string()
 %% }
--type get_schema_as_json_request() :: #{binary() => any()}.
+-type get_applied_schema_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% typed_link_attribute_range() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Range">> => typed_attribute_value_range()
+%% get_applied_schema_version_response() :: #{
+%%   <<"AppliedSchemaArn">> => string()
 %% }
--type typed_link_attribute_range() :: #{binary() => any()}.
+-type get_applied_schema_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2188,6 +1251,21 @@
 
 
 %% Example:
+%% get_directory_response() :: #{
+%%   <<"Directory">> => directory()
+%% }
+-type get_directory_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_facet_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type get_facet_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_facet_response() :: #{
 %%   <<"Facet">> => facet()
 %% }
@@ -2195,21 +1273,20 @@
 
 
 %% Example:
-%% list_managed_schema_arns_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaArn">> => string()
+%% get_link_attributes_request() :: #{
+%%   <<"AttributeNames">> := list(string()),
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
 %% }
--type list_managed_schema_arns_request() :: #{binary() => any()}.
+-type get_link_attributes_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_write_exception() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => list(any())
+%% get_link_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
--type batch_write_exception() :: #{binary() => any()}.
+-type get_link_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2224,10 +1301,50 @@
 
 
 %% Example:
-%% batch_get_link_attributes_response() :: #{
+%% get_object_attributes_response() :: #{
 %%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
--type batch_get_link_attributes_response() :: #{binary() => any()}.
+-type get_object_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_information_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type get_object_information_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_information_response() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"SchemaFacets">> => list(schema_facet())
+%% }
+-type get_object_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schema_as_json_request() :: #{
+%%   <<"SchemaArn">> := string()
+%% }
+-type get_schema_as_json_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schema_as_json_response() :: #{
+%%   <<"Document">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_schema_as_json_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_typed_link_facet_information_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type get_typed_link_facet_information_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2235,6 +1352,843 @@
 %%   <<"IdentityAttributeOrder">> => list(string())
 %% }
 -type get_typed_link_facet_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% incompatible_schema_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incompatible_schema_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_attachment() :: #{
+%%   <<"IndexedAttributes">> => list(attribute_key_and_value()),
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type index_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% indexed_attribute_missing_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type indexed_attribute_missing_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_attachment_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_attachment_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_facet_update_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_facet_update_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_rule_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_rule_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_schema_doc_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_schema_doc_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_tagging_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tagging_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_attribute_action() :: #{
+%%   <<"AttributeActionType">> => list(any()),
+%%   <<"AttributeUpdateValue">> => list()
+%% }
+-type link_attribute_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_attribute_update() :: #{
+%%   <<"AttributeAction">> => link_attribute_action(),
+%%   <<"AttributeKey">> => attribute_key()
+%% }
+-type link_attribute_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_name_already_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type link_name_already_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applied_schema_arns_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> => string()
+%% }
+-type list_applied_schema_arns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applied_schema_arns_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArns">> => list(string())
+%% }
+-type list_applied_schema_arns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_indices_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetReference">> := object_reference()
+%% }
+-type list_attached_indices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_indices_response() :: #{
+%%   <<"IndexAttachments">> => list(index_attachment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attached_indices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_development_schema_arns_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_development_schema_arns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_development_schema_arns_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArns">> => list(string())
+%% }
+-type list_development_schema_arns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directories_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type list_directories_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directories_response() :: #{
+%%   <<"Directories">> => list(directory()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_directories_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_facet_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type list_facet_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_facet_attributes_response() :: #{
+%%   <<"Attributes">> => list(facet_attribute()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_facet_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_facet_names_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type list_facet_names_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_facet_names_response() :: #{
+%%   <<"FacetNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_facet_names_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incoming_typed_links_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
+%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_incoming_typed_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incoming_typed_links_response() :: #{
+%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_incoming_typed_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_index_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"IndexReference">> := object_reference(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
+%% }
+-type list_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_index_response() :: #{
+%%   <<"IndexAttachments">> => list(index_attachment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_schema_arns_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> => string()
+%% }
+-type list_managed_schema_arns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_schema_arns_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArns">> => list(string())
+%% }
+-type list_managed_schema_arns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_attributes_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"FacetFilter">> => schema_facet(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_object_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute_key_and_value()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_children_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_object_children_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_children_response() :: #{
+%%   <<"Children">> => map(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_children_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_parent_paths_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_object_parent_paths_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_parent_paths_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
+%% }
+-type list_object_parent_paths_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_parents_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"IncludeAllLinksToEachParent">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_object_parents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_parents_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple()),
+%%   <<"Parents">> => map()
+%% }
+-type list_object_parents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_policies_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_object_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_policies_response() :: #{
+%%   <<"AttachedPolicyIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outgoing_typed_links_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
+%%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type list_outgoing_typed_links_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_outgoing_typed_links_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
+%% }
+-type list_outgoing_typed_links_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_attachments_request() :: #{
+%%   <<"ConsistencyLevel">> => list(any()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyReference">> := object_reference()
+%% }
+-type list_policy_attachments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_attachments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectIdentifiers">> => list(string())
+%% }
+-type list_policy_attachments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_published_schema_arns_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> => string()
+%% }
+-type list_published_schema_arns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_published_schema_arns_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArns">> => list(string())
+%% }
+-type list_published_schema_arns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_typed_link_facet_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type list_typed_link_facet_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_typed_link_facet_attributes_response() :: #{
+%%   <<"Attributes">> => list(typed_link_attribute_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_typed_link_facet_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_typed_link_facet_names_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type list_typed_link_facet_names_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_typed_link_facet_names_response() :: #{
+%%   <<"FacetNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_typed_link_facet_names_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lookup_policy_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type lookup_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% lookup_policy_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyToPathList">> => list(policy_to_path())
+%% }
+-type lookup_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_index_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_index_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_node_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_node_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_already_detached_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type object_already_detached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_attribute_action() :: #{
+%%   <<"ObjectAttributeActionType">> => list(any()),
+%%   <<"ObjectAttributeUpdateValue">> => list()
+%% }
+-type object_attribute_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_attribute_range() :: #{
+%%   <<"AttributeKey">> => attribute_key(),
+%%   <<"Range">> => typed_attribute_value_range()
+%% }
+-type object_attribute_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_attribute_update() :: #{
+%%   <<"ObjectAttributeAction">> => object_attribute_action(),
+%%   <<"ObjectAttributeKey">> => attribute_key()
+%% }
+-type object_attribute_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_identifier_and_link_name_tuple() :: #{
+%%   <<"LinkName">> => string(),
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type object_identifier_and_link_name_tuple() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_not_detached_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type object_not_detached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_reference() :: #{
+%%   <<"Selector">> => string()
+%% }
+-type object_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% path_to_object_identifiers() :: #{
+%%   <<"ObjectIdentifiers">> => list(string()),
+%%   <<"Path">> => string()
+%% }
+-type path_to_object_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_attachment() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyType">> => string()
+%% }
+-type policy_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_to_path() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Policies">> => list(policy_attachment())
+%% }
+-type policy_to_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_schema_request() :: #{
+%%   <<"DevelopmentSchemaArn">> := string(),
+%%   <<"MinorVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> := string()
+%% }
+-type publish_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_schema_response() :: #{
+%%   <<"PublishedSchemaArn">> => string()
+%% }
+-type publish_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_schema_from_json_request() :: #{
+%%   <<"Document">> := string(),
+%%   <<"SchemaArn">> := string()
+%% }
+-type put_schema_from_json_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_schema_from_json_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type put_schema_from_json_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_facet_from_object_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference(),
+%%   <<"SchemaFacet">> := schema_facet()
+%% }
+-type remove_facet_from_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_facet_from_object_response() :: #{}
+-type remove_facet_from_object_response() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retryable_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type retryable_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"Parameters">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type schema_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_already_published_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type schema_already_published_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_facet() :: #{
+%%   <<"FacetName">> => string(),
+%%   <<"SchemaArn">> => string()
+%% }
+-type schema_facet() :: #{binary() => any()}.
+
+
+%% Example:
+%% still_contains_links_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type still_contains_links_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% typed_attribute_value_range() :: #{
+%%   <<"EndMode">> => list(any()),
+%%   <<"EndValue">> => list(),
+%%   <<"StartMode">> => list(any()),
+%%   <<"StartValue">> => list()
+%% }
+-type typed_attribute_value_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_attribute_definition() :: #{
+%%   <<"DefaultValue">> => list(),
+%%   <<"IsImmutable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"RequiredBehavior">> => list(any()),
+%%   <<"Rules">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type typed_link_attribute_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_attribute_range() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Range">> => typed_attribute_value_range()
+%% }
+-type typed_link_attribute_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_facet() :: #{
+%%   <<"Attributes">> => list(typed_link_attribute_definition()),
+%%   <<"IdentityAttributeOrder">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type typed_link_facet() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_facet_attribute_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Attribute">> => typed_link_attribute_definition()
+%% }
+-type typed_link_facet_attribute_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_schema_and_facet_name() :: #{
+%%   <<"SchemaArn">> => string(),
+%%   <<"TypedLinkName">> => string()
+%% }
+-type typed_link_schema_and_facet_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% typed_link_specifier() :: #{
+%%   <<"IdentityAttributeValues">> => list(attribute_name_and_value()),
+%%   <<"SourceObjectReference">> => object_reference(),
+%%   <<"TargetObjectReference">> => object_reference(),
+%%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
+%% }
+-type typed_link_specifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_index_type_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_index_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_facet_request() :: #{
+%%   <<"AttributeUpdates">> => list(facet_attribute_update()),
+%%   <<"Name">> := string(),
+%%   <<"ObjectType">> => list(any()),
+%%   <<"SchemaArn">> := string()
+%% }
+-type update_facet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_facet_response() :: #{}
+-type update_facet_response() :: #{}.
+
+
+%% Example:
+%% update_link_attributes_request() :: #{
+%%   <<"AttributeUpdates">> := list(link_attribute_update()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"TypedLinkSpecifier">> := typed_link_specifier()
+%% }
+-type update_link_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_link_attributes_response() :: #{}
+-type update_link_attributes_response() :: #{}.
+
+
+%% Example:
+%% update_object_attributes_request() :: #{
+%%   <<"AttributeUpdates">> := list(object_attribute_update()),
+%%   <<"DirectoryArn">> := string(),
+%%   <<"ObjectReference">> := object_reference()
+%% }
+-type update_object_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_object_attributes_response() :: #{
+%%   <<"ObjectIdentifier">> => string()
+%% }
+-type update_object_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2246,734 +2200,780 @@
 
 
 %% Example:
-%% invalid_tagging_request_exception() :: #{
-%%   <<"Message">> => string()
+%% update_schema_response() :: #{
+%%   <<"SchemaArn">> => string()
 %% }
--type invalid_tagging_request_exception() :: #{binary() => any()}.
+-type update_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_add_facet_to_object() :: #{
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
-%%   <<"ObjectReference">> => object_reference(),
-%%   <<"SchemaFacet">> => schema_facet()
+%% update_typed_link_facet_request() :: #{
+%%   <<"AttributeUpdates">> := list(typed_link_facet_attribute_update()),
+%%   <<"IdentityAttributeOrder">> := list(string()),
+%%   <<"Name">> := string(),
+%%   <<"SchemaArn">> := string()
 %% }
--type batch_add_facet_to_object() :: #{binary() => any()}.
+-type update_typed_link_facet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_typed_link_facet_response() :: #{}
+-type update_typed_link_facet_response() :: #{}.
+
+
+%% Example:
+%% upgrade_applied_schema_request() :: #{
+%%   <<"DirectoryArn">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"PublishedSchemaArn">> := string()
+%% }
+-type upgrade_applied_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_applied_schema_response() :: #{
+%%   <<"DirectoryArn">> => string(),
+%%   <<"UpgradedSchemaArn">> => string()
+%% }
+-type upgrade_applied_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_published_schema_request() :: #{
+%%   <<"DevelopmentSchemaArn">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"MinorVersion">> := string(),
+%%   <<"PublishedSchemaArn">> := string()
+%% }
+-type upgrade_published_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upgrade_published_schema_response() :: #{
+%%   <<"UpgradedSchemaArn">> => string()
+%% }
+-type upgrade_published_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type add_facet_to_object_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type apply_schema_errors() ::
-    invalid_attachment_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    invalid_arn_exception() | 
     schema_already_exists_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_attachment_exception() | 
+    invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type attach_object_errors() ::
-    invalid_attachment_exception() | 
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    link_name_already_in_use_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    link_name_already_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_attachment_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type attach_policy_errors() ::
-    directory_not_enabled_exception() | 
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     not_policy_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type attach_to_index_errors() ::
-    invalid_attachment_exception() | 
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    link_name_already_in_use_exception() | 
-    indexed_attribute_missing_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    not_index_exception() | 
+    link_name_already_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_attachment_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception() | 
-    not_index_exception().
+    indexed_attribute_missing_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type attach_typed_link_errors() ::
-    invalid_attachment_exception() | 
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_attachment_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type batch_read_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type batch_write_errors() ::
-    batch_write_exception() | 
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    batch_write_exception() | 
+    access_denied_exception().
 
 -type create_directory_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    directory_already_exists_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_already_exists_exception() | 
+    access_denied_exception().
 
 -type create_facet_errors() ::
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_rule_exception() | 
-    facet_validation_exception() | 
-    validation_exception() | 
-    facet_already_exists_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    facet_already_exists_exception() | 
+    access_denied_exception().
 
 -type create_index_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    link_name_already_in_use_exception() | 
     unsupported_index_type_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    link_name_already_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type create_object_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    link_name_already_in_use_exception() | 
     unsupported_index_type_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    link_name_already_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type create_schema_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_arn_exception() | 
     schema_already_exists_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type create_typed_link_facet_errors() ::
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_rule_exception() | 
-    facet_validation_exception() | 
-    validation_exception() | 
-    facet_already_exists_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    facet_already_exists_exception() | 
+    access_denied_exception().
 
 -type delete_directory_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    directory_not_disabled_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
+    directory_not_disabled_exception() | 
     directory_deleted_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type delete_facet_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    facet_in_use_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    facet_in_use_exception() | 
+    access_denied_exception().
 
 -type delete_object_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    object_not_detached_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    object_not_detached_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type delete_schema_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
     still_contains_links_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type delete_typed_link_facet_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type detach_from_index_errors() ::
-    object_already_detached_exception() | 
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    object_already_detached_exception() | 
+    not_index_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception() | 
-    not_index_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type detach_object_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
     not_node_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type detach_policy_errors() ::
-    directory_not_enabled_exception() | 
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     not_policy_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type detach_typed_link_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type disable_directory_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     directory_deleted_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type enable_directory_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     directory_deleted_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type get_applied_schema_version_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type get_directory_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type get_facet_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type get_link_attributes_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type get_object_attributes_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type get_object_information_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type get_schema_as_json_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type get_typed_link_facet_information_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_applied_schema_arns_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_attached_indices_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_development_schema_arns_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_directories_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
     invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_facet_attributes_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_facet_names_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_incoming_typed_links_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_index_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    not_index_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception() | 
-    not_index_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_managed_schema_arns_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
     resource_not_found_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_object_attributes_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_object_children_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
     not_node_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_object_parent_paths_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_object_parents_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    cannot_list_parent_of_root_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    cannot_list_parent_of_root_exception() | 
+    access_denied_exception().
 
 -type list_object_policies_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_outgoing_typed_links_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_policy_attachments_errors() ::
-    directory_not_enabled_exception() | 
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     not_policy_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     invalid_next_token_exception() | 
-    resource_not_found_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type list_published_schema_arns_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_tagging_request_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tagging_request_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_typed_link_facet_attributes_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
     facet_not_found_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type list_typed_link_facet_names_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type lookup_policy_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_next_token_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type publish_schema_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    invalid_arn_exception() | 
     schema_already_published_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type put_schema_from_json_errors() ::
-    limit_exceeded_exception() | 
-    invalid_rule_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
+    limit_exceeded_exception() | 
     invalid_schema_doc_exception() | 
+    invalid_rule_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type remove_facet_from_object_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    invalid_tagging_request_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tagging_request_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    invalid_tagging_request_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tagging_request_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type update_facet_errors() ::
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_rule_exception() | 
-    facet_validation_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
+    invalid_facet_update_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
+    facet_validation_exception() | 
     facet_not_found_exception() | 
-    invalid_facet_update_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type update_link_attributes_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type update_object_attributes_errors() ::
-    directory_not_enabled_exception() | 
-    limit_exceeded_exception() | 
-    facet_validation_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    link_name_already_in_use_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    link_name_already_in_use_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    facet_validation_exception() | 
+    directory_not_enabled_exception() | 
+    access_denied_exception().
 
 -type update_schema_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type update_typed_link_facet_errors() ::
+    validation_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_rule_exception() | 
-    facet_validation_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
+    invalid_facet_update_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
+    facet_validation_exception() | 
     facet_not_found_exception() | 
-    invalid_facet_update_exception() | 
-    retryable_conflict_exception().
+    access_denied_exception().
 
 -type upgrade_applied_schema_errors() ::
-    invalid_attachment_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    invalid_arn_exception() | 
     schema_already_exists_exception() | 
-    internal_service_exception() | 
     retryable_conflict_exception() | 
-    incompatible_schema_exception().
+    resource_not_found_exception() | 
+    invalid_attachment_exception() | 
+    invalid_arn_exception() | 
+    internal_service_exception() | 
+    incompatible_schema_exception() | 
+    access_denied_exception().
 
 -type upgrade_published_schema_errors() ::
-    invalid_attachment_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_attachment_exception() | 
     invalid_arn_exception() | 
     internal_service_exception() | 
-    retryable_conflict_exception() | 
-    incompatible_schema_exception().
+    incompatible_schema_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

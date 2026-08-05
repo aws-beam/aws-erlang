@@ -60,98 +60,49 @@
 
 
 %% Example:
-%% list_scans_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(scan_summary())
+%% access_denied_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type list_scans_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scans_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% account_findings_metric() :: #{
+%%   <<"closedFindings">> => finding_metrics_value_per_severity(),
+%%   <<"date">> => [non_neg_integer()],
+%%   <<"meanTimeToClose">> => finding_metrics_value_per_severity(),
+%%   <<"newFindings">> => finding_metrics_value_per_severity(),
+%%   <<"openFindings">> => finding_metrics_value_per_severity()
 %% }
--type list_scans_request() :: #{binary() => any()}.
+-type account_findings_metric() :: #{binary() => any()}.
 
 
 %% Example:
-%% finding_identifier() :: #{
+%% batch_get_findings_error() :: #{
+%%   <<"errorCode">> => list(any()),
 %%   <<"findingId">> => [string()],
-%%   <<"scanName">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"scanName">> => string()
 %% }
--type finding_identifier() :: #{binary() => any()}.
+-type batch_get_findings_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% batch_get_findings_request() :: #{
+%%   <<"findingIdentifiers">> := list(finding_identifier())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type batch_get_findings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_config() :: #{
-%%   <<"kmsKeyArn">> => string()
+%% batch_get_findings_response() :: #{
+%%   <<"failedFindings">> => list(batch_get_findings_error()),
+%%   <<"findings">> => list(finding())
 %% }
--type encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggested_fix() :: #{
-%%   <<"code">> => [string()],
-%%   <<"description">> => [string()]
-%% }
--type suggested_fix() :: #{binary() => any()}.
-
-
-%% Example:
-%% vulnerability() :: #{
-%%   <<"filePath">> => file_path(),
-%%   <<"id">> => [string()],
-%%   <<"itemCount">> => [integer()],
-%%   <<"referenceUrls">> => list([string()]()),
-%%   <<"relatedVulnerabilities">> => list([string()]())
-%% }
--type vulnerability() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_metrics_value_per_severity() :: #{
-%%   <<"critical">> => [float()],
-%%   <<"high">> => [float()],
-%%   <<"info">> => [float()],
-%%   <<"low">> => [float()],
-%%   <<"medium">> => [float()]
-%% }
--type finding_metrics_value_per_severity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_scan_response() :: #{
-%%   <<"analysisType">> => list(any()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"errorMessage">> => string(),
-%%   <<"numberOfRevisions">> => [float()],
-%%   <<"runId">> => string(),
-%%   <<"scanName">> => string(),
-%%   <<"scanNameArn">> => string(),
-%%   <<"scanState">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_scan_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remediation() :: #{
-%%   <<"recommendation">> => recommendation(),
-%%   <<"suggestedFixes">> => list(suggested_fix())
-%% }
--type remediation() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type batch_get_findings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -160,6 +111,36 @@
 %%   <<"findingNumber">> => [integer()]
 %% }
 -type category_with_finding_num() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_line() :: #{
+%%   <<"content">> => [string()],
+%%   <<"number">> => [integer()]
+%% }
+-type code_line() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scan_request() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"resourceId">> := list(),
+%%   <<"scanName">> := string(),
+%%   <<"scanType">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_scan_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -174,6 +155,13 @@
 
 
 %% Example:
+%% create_upload_url_request() :: #{
+%%   <<"scanName">> := string()
+%% }
+-type create_upload_url_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_upload_url_response() :: #{
 %%   <<"codeArtifactId">> => string(),
 %%   <<"requestHeaders">> => map(),
@@ -183,146 +171,21 @@
 
 
 %% Example:
-%% get_scan_request() :: #{
-%%   <<"runId">> => string()
+%% encryption_config() :: #{
+%%   <<"kmsKeyArn">> => string()
 %% }
--type get_scan_request() :: #{binary() => any()}.
+-type encryption_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_findings_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
+%% file_path() :: #{
+%%   <<"codeSnippet">> => list(code_line()),
+%%   <<"endLine">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"path">> => [string()],
+%%   <<"startLine">> => [integer()]
 %% }
--type get_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics_summary() :: #{
-%%   <<"categoriesWithMostFindings">> => list(category_with_finding_num()),
-%%   <<"date">> => [non_neg_integer()],
-%%   <<"openFindings">> => finding_metrics_value_per_severity(),
-%%   <<"scansWithMostOpenCriticalFindings">> => list(scan_name_with_finding_num()),
-%%   <<"scansWithMostOpenFindings">> => list(scan_name_with_finding_num())
-%% }
--type metrics_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metrics_summary_response() :: #{
-%%   <<"metricsSummary">> => metrics_summary()
-%% }
--type get_metrics_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_name_with_finding_num() :: #{
-%%   <<"findingNumber">> => [integer()],
-%%   <<"scanName">> => [string()]
-%% }
--type scan_name_with_finding_num() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_metrics_response() :: #{
-%%   <<"findingsMetrics">> => list(account_findings_metric()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_findings_response() :: #{
-%%   <<"failedFindings">> => list(batch_get_findings_error()),
-%%   <<"findings">> => list(finding())
-%% }
--type batch_get_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_findings_error() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"findingId">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"scanName">> => string()
-%% }
--type batch_get_findings_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_response() :: #{
-%%   <<"findings">> => list(finding()),
-%%   <<"nextToken">> => string()
-%% }
--type get_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_metrics_request() :: #{
-%%   <<"endDate">> := [non_neg_integer()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"startDate">> := [non_neg_integer()]
-%% }
--type list_findings_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_line() :: #{
-%%   <<"content">> => [string()],
-%%   <<"number">> => [integer()]
-%% }
--type code_line() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"text">> => [string()],
-%%   <<"url">> => [string()]
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metrics_summary_request() :: #{
-%%   <<"date">> := [non_neg_integer()]
-%% }
--type get_metrics_summary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_configuration_response() :: #{
-%%   <<"encryptionConfig">> => encryption_config()
-%% }
--type get_account_configuration_response() :: #{binary() => any()}.
+-type file_path() :: #{binary() => any()}.
 
 
 %% Example:
@@ -348,32 +211,86 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% finding_identifier() :: #{
+%%   <<"findingId">> => [string()],
+%%   <<"scanName">> => [string()]
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type finding_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_upload_url_request() :: #{
-%%   <<"scanName">> := string()
+%% finding_metrics_value_per_severity() :: #{
+%%   <<"critical">> => [float()],
+%%   <<"high">> => [float()],
+%%   <<"info">> => [float()],
+%%   <<"low">> => [float()],
+%%   <<"medium">> => [float()]
 %% }
--type create_upload_url_request() :: #{binary() => any()}.
+-type finding_metrics_value_per_severity() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_configuration_request() :: #{}
+-type get_account_configuration_request() :: #{}.
 
 
 %% Example:
-%% batch_get_findings_request() :: #{
-%%   <<"findingIdentifiers">> := list(finding_identifier())
+%% get_account_configuration_response() :: #{
+%%   <<"encryptionConfig">> => encryption_config()
 %% }
--type batch_get_findings_request() :: #{binary() => any()}.
+-type get_account_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%% get_findings_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type get_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_response() :: #{
+%%   <<"findings">> => list(finding()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_summary_request() :: #{
+%%   <<"date">> := [non_neg_integer()]
+%% }
+-type get_metrics_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_summary_response() :: #{
+%%   <<"metricsSummary">> => metrics_summary()
+%% }
+-type get_metrics_summary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_scan_request() :: #{
+%%   <<"runId">> => string()
+%% }
+-type get_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_scan_response() :: #{
+%%   <<"analysisType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorMessage">> => string(),
+%%   <<"numberOfRevisions">> => [float()],
+%%   <<"runId">> => string(),
+%%   <<"scanName">> => string(),
+%%   <<"scanNameArn">> => string(),
+%%   <<"scanState">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_scan_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -385,39 +302,37 @@
 
 
 %% Example:
-%% create_scan_request() :: #{
-%%   <<"analysisType">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"resourceId">> := list(),
-%%   <<"scanName">> := string(),
-%%   <<"scanType">> => list(any()),
-%%   <<"tags">> => map()
+%% list_findings_metrics_request() :: #{
+%%   <<"endDate">> := [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"startDate">> := [non_neg_integer()]
 %% }
--type create_scan_request() :: #{binary() => any()}.
+-type list_findings_metrics_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% list_findings_metrics_response() :: #{
+%%   <<"findingsMetrics">> => list(account_findings_metric()),
+%%   <<"nextToken">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type list_findings_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
+%% list_scans_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type list_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(scan_summary())
+%% }
+-type list_scans_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -425,24 +340,63 @@
 
 
 %% Example:
-%% file_path() :: #{
-%%   <<"codeSnippet">> => list(code_line()),
-%%   <<"endLine">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"path">> => [string()],
-%%   <<"startLine">> => [integer()]
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type file_path() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
+%% metrics_summary() :: #{
+%%   <<"categoriesWithMostFindings">> => list(category_with_finding_num()),
+%%   <<"date">> => [non_neg_integer()],
+%%   <<"openFindings">> => finding_metrics_value_per_severity(),
+%%   <<"scansWithMostOpenCriticalFindings">> => list(scan_name_with_finding_num()),
+%%   <<"scansWithMostOpenFindings">> => list(scan_name_with_finding_num())
+%% }
+-type metrics_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"text">> => [string()],
+%%   <<"url">> => [string()]
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation() :: #{
+%%   <<"recommendation">> => recommendation(),
+%%   <<"suggestedFixes">> => list(suggested_fix())
+%% }
+-type remediation() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"id">> => [string()],
+%%   <<"subResourceId">> => [string()]
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"errorCode">> => [string()],
 %%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"serviceCode">> => [string()]
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_name_with_finding_num() :: #{
+%%   <<"findingNumber">> => [integer()],
+%%   <<"scanName">> => [string()]
+%% }
+-type scan_name_with_finding_num() :: #{binary() => any()}.
 
 
 %% Example:
@@ -458,21 +412,43 @@
 
 
 %% Example:
-%% update_account_configuration_response() :: #{
-%%   <<"encryptionConfig">> => encryption_config()
+%% suggested_fix() :: #{
+%%   <<"code">> => [string()],
+%%   <<"description">> => [string()]
 %% }
--type update_account_configuration_response() :: #{binary() => any()}.
+-type suggested_fix() :: #{binary() => any()}.
 
 
 %% Example:
-%% account_findings_metric() :: #{
-%%   <<"closedFindings">> => finding_metrics_value_per_severity(),
-%%   <<"date">> => [non_neg_integer()],
-%%   <<"meanTimeToClose">> => finding_metrics_value_per_severity(),
-%%   <<"newFindings">> => finding_metrics_value_per_severity(),
-%%   <<"openFindings">> => finding_metrics_value_per_severity()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type account_findings_metric() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -481,107 +457,131 @@
 %% }
 -type update_account_configuration_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_account_configuration_request() :: #{}
--type get_account_configuration_request() :: #{}.
-
 
 %% Example:
-%% resource() :: #{
-%%   <<"id">> => [string()],
-%%   <<"subResourceId">> => [string()]
+%% update_account_configuration_response() :: #{
+%%   <<"encryptionConfig">> => encryption_config()
 %% }
--type resource() :: #{binary() => any()}.
+-type update_account_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vulnerability() :: #{
+%%   <<"filePath">> => file_path(),
+%%   <<"id">> => [string()],
+%%   <<"itemCount">> => [integer()],
+%%   <<"referenceUrls">> => list([string()]()),
+%%   <<"relatedVulnerabilities">> => list([string()]())
+%% }
+-type vulnerability() :: #{binary() => any()}.
 
 -type batch_get_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_scan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_upload_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_account_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_metrics_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_scan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_findings_metrics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_scans_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_account_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -1,9 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Partner Central API for Selling
-%%
-%% AWS Partner Central API for Selling Reference Guide
+%% @doc Partner Central
 %%
 %% This Amazon Web Services (AWS) Partner Central API reference is designed
 %% to help AWS Partners: http://aws.amazon.com/partners/programs/ integrate
@@ -144,94 +142,66 @@
 
 
 %% Example:
-%% list_opportunity_from_engagement_task_summary() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"EngagementId">> => string(),
+%% accept_engagement_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type accept_engagement_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
 %%   <<"Message">> => [string()],
-%%   <<"OpportunityId">> => string(),
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ResourceSnapshotJobId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
+%%   <<"Reason">> => list(any())
 %% }
--type list_opportunity_from_engagement_task_summary() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% aws_products_spend_insights_by_source() :: #{
-%%   <<"AWS">> => aws_product_insights(),
-%%   <<"Partner">> => aws_product_insights()
+%% account() :: #{
+%%   <<"Address">> => address(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"Duns">> => string(),
+%%   <<"Industry">> => list(any()),
+%%   <<"OtherIndustry">> => [string()],
+%%   <<"WebsiteUrl">> => string()
 %% }
--type aws_products_spend_insights_by_source() :: #{binary() => any()}.
+-type account() :: #{binary() => any()}.
 
 %% Example:
-%% list_engagement_members_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
+%% account_receiver() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"AwsAccountId">> => string()
 %% }
--type list_engagement_members_request() :: #{binary() => any()}.
+-type account_receiver() :: #{binary() => any()}.
 
 %% Example:
-%% prospecting_task_summary() :: #{
-%%   <<"CompletedEngagementCount">> => [integer()],
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FailedEngagementCount">> => [integer()],
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskName">> => string(),
-%%   <<"TotalEngagementCount">> => [integer()]
+%% account_summary() :: #{
+%%   <<"Address">> => address_summary(),
+%%   <<"CompanyName">> => string(),
+%%   <<"Industry">> => list(any()),
+%%   <<"OtherIndustry">> => [string()],
+%%   <<"WebsiteUrl">> => string()
 %% }
--type prospecting_task_summary() :: #{binary() => any()}.
+-type account_summary() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% address() :: #{
+%%   <<"City">> => string(),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"PostalCode">> => string(),
+%%   <<"StateOrRegion">> => string(),
+%%   <<"StreetAddress">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type address() :: #{binary() => any()}.
 
 %% Example:
-%% list_engagement_resource_associations_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"EngagementIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceType">> => list(any())
+%% address_summary() :: #{
+%%   <<"City">> => string(),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"PostalCode">> => string(),
+%%   <<"StateOrRegion">> => string()
 %% }
--type list_engagement_resource_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_members_response() :: #{
-%%   <<"EngagementMemberList">> => list(engagement_member()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_engagement_members_response() :: #{binary() => any()}.
-
-%% Example:
-%% opportunity_sort() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type opportunity_sort() :: #{binary() => any()}.
-
-%% Example:
-%% life_cycle() :: #{
-%%   <<"ClosedLostReason">> => list(any()),
-%%   <<"NextSteps">> => string(),
-%%   <<"NextStepsHistory">> => list(next_steps_history()),
-%%   <<"ReviewComments">> => [string()],
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"ReviewStatusReason">> => [string()],
-%%   <<"Stage">> => list(any()),
-%%   <<"TargetCloseDate">> => string()
-%% }
--type life_cycle() :: #{binary() => any()}.
+-type address_summary() :: #{binary() => any()}.
 
 %% Example:
 %% assign_opportunity_request() :: #{
@@ -242,13 +212,127 @@
 -type assign_opportunity_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_engagement_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"Invitation">> := invitation()
+%% assignee_contact() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Phone">> => string()
 %% }
--type create_engagement_invitation_request() :: #{binary() => any()}.
+-type assignee_contact() :: #{binary() => any()}.
+
+%% Example:
+%% associate_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"OpportunityIdentifier">> := string(),
+%%   <<"RelatedEntityIdentifier">> := [string()],
+%%   <<"RelatedEntityType">> := list(any())
+%% }
+-type associate_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_customer() :: #{
+%%   <<"Contacts">> => list(contact())
+%% }
+-type aws_opportunity_customer() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_insights() :: #{
+%%   <<"AwsProductsSpendInsightsBySource">> => aws_products_spend_insights_by_source(),
+%%   <<"EngagementScore">> => list(any()),
+%%   <<"NextBestActions">> => [string()],
+%%   <<"OpportunityQuality">> => opportunity_quality(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type aws_opportunity_insights() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_life_cycle() :: #{
+%%   <<"ClosedLostReason">> => list(any()),
+%%   <<"NextSteps">> => string(),
+%%   <<"NextStepsHistory">> => list(profile_next_steps_history()),
+%%   <<"Stage">> => list(any()),
+%%   <<"TargetCloseDate">> => string()
+%% }
+-type aws_opportunity_life_cycle() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_project() :: #{
+%%   <<"AwsPartition">> => list(any()),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
+%% }
+-type aws_opportunity_project() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_related_entities() :: #{
+%%   <<"AwsMarketplaceProducts">> => list(string()),
+%%   <<"AwsMarketplaceSolutions">> => list(string()),
+%%   <<"AwsProducts">> => list(string()),
+%%   <<"Solutions">> => list(string())
+%% }
+-type aws_opportunity_related_entities() :: #{binary() => any()}.
+
+%% Example:
+%% aws_opportunity_summary_full_view() :: #{
+%%   <<"CosellMotion">> => [string()],
+%%   <<"Customer">> => aws_opportunity_customer(),
+%%   <<"Insights">> => aws_opportunity_insights(),
+%%   <<"InvolvementType">> => list(any()),
+%%   <<"InvolvementTypeChangeReason">> => list(any()),
+%%   <<"LifeCycle">> => aws_opportunity_life_cycle(),
+%%   <<"OpportunityTeam">> => list(aws_team_member()),
+%%   <<"Origin">> => list(any()),
+%%   <<"Project">> => aws_opportunity_project(),
+%%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
+%%   <<"RelatedOpportunityId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type aws_opportunity_summary_full_view() :: #{binary() => any()}.
+
+%% Example:
+%% aws_product_details() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Categories">> => list([string()]()),
+%%   <<"Optimizations">> => list(aws_product_optimization()),
+%%   <<"OptimizedAmount">> => string(),
+%%   <<"PotentialSavingsAmount">> => string(),
+%%   <<"ProductCode">> => [string()],
+%%   <<"ServiceCode">> => [string()]
+%% }
+-type aws_product_details() :: #{binary() => any()}.
+
+%% Example:
+%% aws_product_insights() :: #{
+%%   <<"AwsProducts">> => list(aws_product_details()),
+%%   <<"CurrencyCode">> => list(any()),
+%%   <<"Frequency">> => list(any()),
+%%   <<"TotalAmount">> => string(),
+%%   <<"TotalAmountByCategory">> => map(),
+%%   <<"TotalOptimizedAmount">> => string(),
+%%   <<"TotalPotentialSavingsAmount">> => string()
+%% }
+-type aws_product_insights() :: #{binary() => any()}.
+
+%% Example:
+%% aws_product_optimization() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"SavingsAmount">> => string()
+%% }
+-type aws_product_optimization() :: #{binary() => any()}.
+
+%% Example:
+%% aws_products_spend_insights_by_source() :: #{
+%%   <<"AWS">> => aws_product_insights(),
+%%   <<"Partner">> => aws_product_insights()
+%% }
+-type aws_products_spend_insights_by_source() :: #{binary() => any()}.
+
+%% Example:
+%% aws_submission() :: #{
+%%   <<"InvolvementType">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type aws_submission() :: #{binary() => any()}.
 
 %% Example:
 %% aws_team_member() :: #{
@@ -260,52 +344,205 @@
 -type aws_team_member() :: #{binary() => any()}.
 
 %% Example:
-%% lead_customer() :: #{
-%%   <<"Address">> => address_summary(),
-%%   <<"AwsMaturity">> => string(),
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contact() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Phone">> => string()
+%% }
+-type contact() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_context_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"Payload">> := list(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_engagement_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_context_response() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"EngagementArn">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"EngagementLastModifiedAt">> => non_neg_integer()
+%% }
+-type create_engagement_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"Invitation">> := invitation()
+%% }
+-type create_engagement_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_invitation_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_engagement_invitation_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Contexts">> => list(engagement_context_details()),
+%%   <<"Description">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type create_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_engagement_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedAt">> => non_neg_integer()
+%% }
+-type create_engagement_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Customer">> => customer(),
+%%   <<"LifeCycle">> => life_cycle(),
+%%   <<"Marketing">> => marketing(),
+%%   <<"NationalSecurity">> => list(any()),
+%%   <<"OpportunityTeam">> => list(contact()),
+%%   <<"OpportunityType">> => list(any()),
+%%   <<"Origin">> => list(any()),
+%%   <<"PartnerOpportunityIdentifier">> => [string()],
+%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
+%%   <<"Project">> => project(),
+%%   <<"SoftwareRevenue">> => software_revenue(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_opportunity_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"PartnerOpportunityIdentifier">> => [string()]
+%% }
+-type create_opportunity_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_snapshot_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"ResourceIdentifier">> := string(),
+%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_resource_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_snapshot_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_resource_snapshot_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_snapshot_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"ResourceIdentifier">> := string(),
+%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type create_resource_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_snapshot_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Revision">> => integer()
+%% }
+-type create_resource_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% created_date_filter() :: #{
+%%   <<"AfterCreatedDate">> => non_neg_integer(),
+%%   <<"BeforeCreatedDate">> => non_neg_integer()
+%% }
+-type created_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% customer() :: #{
+%%   <<"Account">> => account(),
+%%   <<"Contacts">> => list(contact())
+%% }
+-type customer() :: #{binary() => any()}.
+
+%% Example:
+%% customer_projects_context() :: #{
+%%   <<"Customer">> => engagement_customer(),
+%%   <<"Project">> => engagement_customer_project_details()
+%% }
+-type customer_projects_context() :: #{binary() => any()}.
+
+%% Example:
+%% customer_summary() :: #{
+%%   <<"Account">> => account_summary()
+%% }
+-type customer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_snapshot_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceSnapshotJobIdentifier">> := string()
+%% }
+-type delete_resource_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"OpportunityIdentifier">> := string(),
+%%   <<"RelatedEntityIdentifier">> := [string()],
+%%   <<"RelatedEntityType">> := list(any())
+%% }
+-type disassociate_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_context_details() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Payload">> => list(),
+%%   <<"Type">> => list(any())
+%% }
+-type engagement_context_details() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_customer() :: #{
 %%   <<"CompanyName">> => string(),
+%%   <<"CountryCode">> => list(any()),
 %%   <<"Industry">> => list(any()),
-%%   <<"MarketSegment">> => list(any()),
 %%   <<"WebsiteUrl">> => string()
 %% }
--type lead_customer() :: #{binary() => any()}.
+-type engagement_customer() :: #{binary() => any()}.
 
 %% Example:
-%% engagement_prospecting_result() :: #{
-%%   <<"EngagementContextId">> => [string()],
-%%   <<"EngagementIdentifier">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"ReasonCode">> => [string()],
-%%   <<"Status">> => list(any())
+%% engagement_customer_project_details() :: #{
+%%   <<"BusinessProblem">> => string(),
+%%   <<"TargetCompletionDate">> => [string()],
+%%   <<"Title">> => string()
 %% }
--type engagement_prospecting_result() :: #{binary() => any()}.
-
-%% Example:
-%% aws_product_optimization() :: #{
-%%   <<"Description">> => [string()],
-%%   <<"SavingsAmount">> => string()
-%% }
--type aws_product_optimization() :: #{binary() => any()}.
-
-%% Example:
-%% prospecting_result() :: #{
-%%   <<"Aws">> => prospecting_result_aws()
-%% }
--type prospecting_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_engagement_by_accepting_invitation_task_response() :: #{
-%%   <<"EngagementInvitationId">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"OpportunityId">> => string(),
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ResourceSnapshotJobId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
-%% }
--type start_engagement_by_accepting_invitation_task_response() :: #{binary() => any()}.
+-type engagement_customer_project_details() :: #{binary() => any()}.
 
 %% Example:
 %% engagement_invitation_summary() :: #{
@@ -326,94 +563,91 @@
 -type engagement_invitation_summary() :: #{binary() => any()}.
 
 %% Example:
-%% project_summary() :: #{
-%%   <<"DeliveryModels">> => list(list(any())()),
-%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
+%% engagement_member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"WebsiteUrl">> => [string()]
 %% }
--type project_summary() :: #{binary() => any()}.
+-type engagement_member() :: #{binary() => any()}.
 
 %% Example:
-%% last_modified_date() :: #{
-%%   <<"AfterLastModifiedDate">> => non_neg_integer(),
-%%   <<"BeforeLastModifiedDate">> => non_neg_integer()
+%% engagement_member_summary() :: #{
+%%   <<"CompanyName">> => string(),
+%%   <<"WebsiteUrl">> => [string()]
 %% }
--type last_modified_date() :: #{binary() => any()}.
+-type engagement_member_summary() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_opportunity_from_engagement_tasks_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(list_opportunity_from_engagement_task_summary())
-%% }
--type list_opportunity_from_engagement_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_snapshot_job_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"Id">> => string(),
+%% engagement_prospecting_result() :: #{
+%%   <<"EngagementContextId">> => [string()],
+%%   <<"EngagementIdentifier">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"ReasonCode">> => [string()],
 %%   <<"Status">> => list(any())
 %% }
--type resource_snapshot_job_summary() :: #{binary() => any()}.
+-type engagement_prospecting_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_engagement_by_accepting_invitation_tasks_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(list_engagement_by_accepting_invitation_task_summary())
+%% engagement_resource_association_summary() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
 %% }
--type list_engagement_by_accepting_invitation_tasks_response() :: #{binary() => any()}.
+-type engagement_resource_association_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_prospecting_from_engagement_task_response() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Engagements">> => list(engagement_prospecting_result()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskName">> => string()
+%% engagement_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
 %% }
--type get_prospecting_from_engagement_task_response() :: #{binary() => any()}.
+-type engagement_sort() :: #{binary() => any()}.
 
 %% Example:
-%% aws_opportunity_related_entities() :: #{
-%%   <<"AwsMarketplaceProducts">> => list(string()),
-%%   <<"AwsMarketplaceSolutions">> => list(string()),
-%%   <<"AwsProducts">> => list(string()),
-%%   <<"Solutions">> => list(string())
+%% engagement_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ContextTypes">> => list(list(any())()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MemberCount">> => [integer()],
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"ModifiedBy">> => string(),
+%%   <<"Title">> => string()
 %% }
--type aws_opportunity_related_entities() :: #{binary() => any()}.
+-type engagement_summary() :: #{binary() => any()}.
 
 %% Example:
-%% engagement_customer() :: #{
-%%   <<"CompanyName">> => string(),
-%%   <<"CountryCode">> => list(any()),
-%%   <<"Industry">> => list(any()),
-%%   <<"WebsiteUrl">> => string()
+%% enrichment_context() :: #{
+%%   <<"LeadInsights">> => lead_insights(),
+%%   <<"ProspectingResultAws">> => invitation_prospecting_result_aws()
 %% }
--type engagement_customer() :: #{binary() => any()}.
+-type enrichment_context() :: #{binary() => any()}.
 
 %% Example:
-%% stop_resource_snapshot_job_request() :: #{
+%% expected_contract_duration() :: #{
+%%   <<"Term">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type expected_contract_duration() :: #{binary() => any()}.
+
+%% Example:
+%% expected_customer_spend() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"CurrencyCode">> => list(any()),
+%%   <<"EstimationUrl">> => string(),
+%%   <<"Frequency">> => list(any()),
+%%   <<"TargetCompany">> => [string()]
+%% }
+-type expected_customer_spend() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_opportunity_summary_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"ResourceSnapshotJobIdentifier">> := string()
+%%   <<"RelatedOpportunityIdentifier">> := string()
 %% }
--type stop_resource_snapshot_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_engagement_context_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"Payload">> := list(),
-%%   <<"Type">> := list(any())
-%% }
--type create_engagement_context_request() :: #{binary() => any()}.
+-type get_aws_opportunity_summary_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_aws_opportunity_summary_response() :: #{
@@ -434,22 +668,63 @@
 -type get_aws_opportunity_summary_response() :: #{binary() => any()}.
 
 %% Example:
-%% aws_opportunity_insights() :: #{
-%%   <<"AwsProductsSpendInsightsBySource">> => aws_products_spend_insights_by_source(),
-%%   <<"EngagementScore">> => list(any()),
-%%   <<"NextBestActions">> => [string()],
-%%   <<"OpportunityQuality">> => opportunity_quality(),
-%%   <<"Recommendations">> => list(recommendation())
+%% get_engagement_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
 %% }
--type aws_opportunity_insights() :: #{binary() => any()}.
+-type get_engagement_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% invitation() :: #{
-%%   <<"Message">> => string(),
+%% get_engagement_invitation_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Catalog">> => string(),
+%%   <<"EngagementDescription">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"EngagementTitle">> => string(),
+%%   <<"EnrichmentContext">> => enrichment_context(),
+%%   <<"ExistingMembers">> => list(engagement_member_summary()),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InvitationDate">> => non_neg_integer(),
+%%   <<"InvitationMessage">> => string(),
 %%   <<"Payload">> => list(),
-%%   <<"Receiver">> => list()
+%%   <<"PayloadType">> => list(any()),
+%%   <<"Receiver">> => list(),
+%%   <<"RejectionReason">> => string(),
+%%   <<"SenderAwsAccountId">> => string(),
+%%   <<"SenderCompanyName">> => [string()],
+%%   <<"Status">> => list(any())
 %% }
--type invitation() :: #{binary() => any()}.
+-type get_engagement_invitation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_engagement_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_engagement_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Contexts">> => list(engagement_context_details()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MemberCount">> => [integer()],
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"ModifiedBy">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type get_engagement_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_opportunity_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_opportunity_response() :: #{
@@ -473,192 +748,248 @@
 -type get_opportunity_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_lead_context() :: #{
-%%   <<"Customer">> => lead_customer(),
-%%   <<"Insights">> => lead_insights(),
-%%   <<"Interaction">> => lead_interaction(),
-%%   <<"QualificationStatus">> => string()
+%% get_prospecting_from_engagement_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"TaskIdentifier">> := string()
 %% }
--type update_lead_context() :: #{binary() => any()}.
+-type get_prospecting_from_engagement_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_selling_system_settings_response() :: #{
+%% get_prospecting_from_engagement_task_response() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Engagements">> => list(engagement_prospecting_result()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string()
+%% }
+-type get_prospecting_from_engagement_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_snapshot_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceSnapshotJobIdentifier">> := string()
+%% }
+-type get_resource_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_snapshot_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EngagementId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastFailure">> => [string()],
+%%   <<"LastSuccessfulExecutionDate">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceSnapshotTemplateName">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_resource_snapshot_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_snapshot_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"ResourceIdentifier">> := string(),
+%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Revision">> => integer()
+%% }
+-type get_resource_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_snapshot_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"Payload">> => list(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceSnapshotTemplateName">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Revision">> => integer(),
+%%   <<"TargetMemberAccounts">> => list(string())
+%% }
+-type get_resource_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_selling_system_settings_request() :: #{
+%%   <<"Catalog">> := string()
+%% }
+-type get_selling_system_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_selling_system_settings_response() :: #{
 %%   <<"Catalog">> => string(),
 %%   <<"ResourceSnapshotJobRoleArn">> => string()
 %% }
--type put_selling_system_settings_response() :: #{binary() => any()}.
+-type get_selling_system_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% project_view() :: #{
-%%   <<"CustomerUseCase">> => [string()],
-%%   <<"DeliveryModels">> => list(list(any())()),
-%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
-%%   <<"OtherSolutionDescription">> => string(),
-%%   <<"SalesActivities">> => list(list(any())())
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type project_view() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% start_prospecting_from_engagement_task_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Identifiers">> := list(string()),
-%%   <<"TaskName">> := string()
+%% invitation() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Payload">> => list(),
+%%   <<"Receiver">> => list()
 %% }
--type start_prospecting_from_engagement_task_request() :: #{binary() => any()}.
+-type invitation() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_snapshots_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceSnapshotTemplateIdentifier">> => string(),
-%%   <<"ResourceType">> => list(any())
+%% invitation_prospecting_result_aws() :: #{
+%%   <<"Customer">> => prospecting_result_customer(),
+%%   <<"Insights">> => prospecting_insights()
 %% }
--type list_resource_snapshots_request() :: #{binary() => any()}.
+-type invitation_prospecting_result_aws() :: #{binary() => any()}.
 
 %% Example:
-%% solution_sort() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% last_modified_date() :: #{
+%%   <<"AfterLastModifiedDate">> => non_neg_integer(),
+%%   <<"BeforeLastModifiedDate">> => non_neg_integer()
 %% }
--type solution_sort() :: #{binary() => any()}.
+-type last_modified_date() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_snapshots_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ResourceSnapshotSummaries">> => list(resource_snapshot_summary())
+%% lead_address() :: #{
+%%   <<"City">> => [string()],
+%%   <<"CountryCode">> => string(),
+%%   <<"PostalCode">> => [string()],
+%%   <<"StateOrRegion">> => [string()]
 %% }
--type list_resource_snapshots_response() :: #{binary() => any()}.
+-type lead_address() :: #{binary() => any()}.
 
 %% Example:
-%% get_aws_opportunity_summary_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"RelatedOpportunityIdentifier">> := string()
+%% lead_contact() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Phone">> => string()
 %% }
--type get_aws_opportunity_summary_request() :: #{binary() => any()}.
+-type lead_contact() :: #{binary() => any()}.
 
 %% Example:
-%% put_selling_system_settings_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ResourceSnapshotJobRoleIdentifier">> => string()
+%% lead_context() :: #{
+%%   <<"Customer">> => lead_customer(),
+%%   <<"Insights">> => lead_insights(),
+%%   <<"Interactions">> => list(lead_interaction()),
+%%   <<"QualificationStatus">> => string()
 %% }
--type put_selling_system_settings_request() :: #{binary() => any()}.
+-type lead_context() :: #{binary() => any()}.
 
 %% Example:
-%% list_solutions_request() :: #{
-%%   <<"AwsMarketplaceSolutionArn">> => list(string()),
-%%   <<"Catalog">> := string(),
-%%   <<"Category">> => list([string()]()),
-%%   <<"Identifier">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => solution_sort(),
-%%   <<"Status">> => list(list(any())())
-%% }
--type list_solutions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_from_opportunity_tasks_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> => list(string()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"OpportunityIdentifier">> => list(string()),
-%%   <<"Sort">> => list_tasks_sort_base(),
-%%   <<"TaskIdentifier">> => list(string()),
-%%   <<"TaskStatus">> => list(list(any())())
-%% }
--type list_engagement_from_opportunity_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% aws_opportunity_summary_full_view() :: #{
-%%   <<"CosellMotion">> => [string()],
-%%   <<"Customer">> => aws_opportunity_customer(),
-%%   <<"Insights">> => aws_opportunity_insights(),
-%%   <<"InvolvementType">> => list(any()),
-%%   <<"InvolvementTypeChangeReason">> => list(any()),
-%%   <<"LifeCycle">> => aws_opportunity_life_cycle(),
-%%   <<"OpportunityTeam">> => list(aws_team_member()),
-%%   <<"Origin">> => list(any()),
-%%   <<"Project">> => aws_opportunity_project(),
-%%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
-%%   <<"RelatedOpportunityId">> => string(),
-%%   <<"Visibility">> => list(any())
-%% }
--type aws_opportunity_summary_full_view() :: #{binary() => any()}.
-
-%% Example:
-%% aws_opportunity_project() :: #{
-%%   <<"AwsPartition">> => list(any()),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
-%% }
--type aws_opportunity_project() :: #{binary() => any()}.
-
-%% Example:
-%% update_opportunity_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Customer">> => customer(),
-%%   <<"Identifier">> := string(),
-%%   <<"LastModifiedDate">> := non_neg_integer(),
-%%   <<"LifeCycle">> => life_cycle(),
-%%   <<"Marketing">> => marketing(),
-%%   <<"NationalSecurity">> => list(any()),
-%%   <<"OpportunityType">> => list(any()),
-%%   <<"PartnerOpportunityIdentifier">> => [string()],
-%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
-%%   <<"Project">> => project(),
-%%   <<"SoftwareRevenue">> => software_revenue()
-%% }
--type update_opportunity_request() :: #{binary() => any()}.
-
-%% Example:
-%% opportunity_quality() :: #{
-%%   <<"Score">> => [integer()],
-%%   <<"Trend">> => [string()]
-%% }
--type opportunity_quality() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_opportunity_response() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"PartnerOpportunityIdentifier">> => [string()]
-%% }
--type create_opportunity_response() :: #{binary() => any()}.
-
-%% Example:
-%% engagement_member() :: #{
-%%   <<"AccountId">> => string(),
+%% lead_customer() :: #{
+%%   <<"Address">> => lead_address(),
+%%   <<"AwsMaturity">> => string(),
 %%   <<"CompanyName">> => string(),
-%%   <<"WebsiteUrl">> => [string()]
+%%   <<"Industry">> => string(),
+%%   <<"MarketSegment">> => string(),
+%%   <<"WebsiteUrl">> => string()
 %% }
--type engagement_member() :: #{binary() => any()}.
+-type lead_customer() :: #{binary() => any()}.
 
 %% Example:
-%% list_prospecting_from_engagement_tasks_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(prospecting_task_summary())
+%% lead_insights() :: #{
+%%   <<"LeadReadinessScore">> => [string()]
 %% }
--type list_prospecting_from_engagement_tasks_response() :: #{binary() => any()}.
+-type lead_insights() :: #{binary() => any()}.
 
 %% Example:
-%% engagement_sort() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% lead_interaction() :: #{
+%%   <<"BusinessProblem">> => string(),
+%%   <<"Contact">> => lead_contact(),
+%%   <<"CustomerAction">> => string(),
+%%   <<"InteractionDate">> => non_neg_integer(),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"Usecase">> => string()
 %% }
--type engagement_sort() :: #{binary() => any()}.
+-type lead_interaction() :: #{binary() => any()}.
+
+%% Example:
+%% lead_invitation_customer() :: #{
+%%   <<"AwsMaturity">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"Industry">> => string(),
+%%   <<"MarketSegment">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type lead_invitation_customer() :: #{binary() => any()}.
+
+%% Example:
+%% lead_invitation_interaction() :: #{
+%%   <<"ContactBusinessTitle">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"Usecase">> => string()
+%% }
+-type lead_invitation_interaction() :: #{binary() => any()}.
+
+%% Example:
+%% lead_invitation_payload() :: #{
+%%   <<"Customer">> => lead_invitation_customer(),
+%%   <<"Interaction">> => lead_invitation_interaction()
+%% }
+-type lead_invitation_payload() :: #{binary() => any()}.
+
+%% Example:
+%% life_cycle() :: #{
+%%   <<"ClosedLostReason">> => list(any()),
+%%   <<"NextSteps">> => string(),
+%%   <<"NextStepsHistory">> => list(next_steps_history()),
+%%   <<"ReviewComments">> => [string()],
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"ReviewStatusReason">> => [string()],
+%%   <<"Stage">> => list(any()),
+%%   <<"TargetCloseDate">> => string()
+%% }
+-type life_cycle() :: #{binary() => any()}.
+
+%% Example:
+%% life_cycle_for_view() :: #{
+%%   <<"NextSteps">> => string(),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"Stage">> => list(any()),
+%%   <<"TargetCloseDate">> => string()
+%% }
+-type life_cycle_for_view() :: #{binary() => any()}.
+
+%% Example:
+%% life_cycle_summary() :: #{
+%%   <<"ClosedLostReason">> => list(any()),
+%%   <<"NextSteps">> => string(),
+%%   <<"ReviewComments">> => [string()],
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"ReviewStatusReason">> => [string()],
+%%   <<"Stage">> => list(any()),
+%%   <<"TargetCloseDate">> => string()
+%% }
+-type life_cycle_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_by_accepting_invitation_task_summary() :: #{
+%%   <<"EngagementInvitationId">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"OpportunityId">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ResourceSnapshotJobId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type list_engagement_by_accepting_invitation_task_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagement_by_accepting_invitation_tasks_request() :: #{
@@ -674,12 +1005,116 @@
 -type list_engagement_by_accepting_invitation_tasks_request() :: #{binary() => any()}.
 
 %% Example:
-%% engagement_context_details() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Payload">> => list(),
-%%   <<"Type">> => list(any())
+%% list_engagement_by_accepting_invitation_tasks_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskSummaries">> => list(list_engagement_by_accepting_invitation_task_summary())
 %% }
--type engagement_context_details() :: #{binary() => any()}.
+-type list_engagement_by_accepting_invitation_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_from_opportunity_task_summary() :: #{
+%%   <<"EngagementId">> => string(),
+%%   <<"EngagementInvitationId">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"OpportunityId">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ResourceSnapshotJobId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type list_engagement_from_opportunity_task_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_from_opportunity_tasks_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EngagementIdentifier">> => list(string()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"OpportunityIdentifier">> => list(string()),
+%%   <<"Sort">> => list_tasks_sort_base(),
+%%   <<"TaskIdentifier">> => list(string()),
+%%   <<"TaskStatus">> => list(list(any())())
+%% }
+-type list_engagement_from_opportunity_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_from_opportunity_tasks_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskSummaries">> => list(list_engagement_from_opportunity_task_summary())
+%% }
+-type list_engagement_from_opportunity_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_invitations_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EngagementIdentifier">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"ParticipantType">> := list(any()),
+%%   <<"PayloadType">> => list(list(any())()),
+%%   <<"SenderAwsAccountId">> => list(string()),
+%%   <<"Sort">> => opportunity_engagement_invitation_sort(),
+%%   <<"Status">> => list(list(any())())
+%% }
+-type list_engagement_invitations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_invitations_response() :: #{
+%%   <<"EngagementInvitationSummaries">> => list(engagement_invitation_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_engagement_invitations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_members_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_engagement_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_members_response() :: #{
+%%   <<"EngagementMemberList">> => list(engagement_member()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_engagement_members_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_resource_associations_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"EngagementIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type list_engagement_resource_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_resource_associations_response() :: #{
+%%   <<"EngagementResourceAssociationSummaries">> => list(engagement_resource_association_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_engagement_resource_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagements_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ContextTypes">> => list(list(any())()),
+%%   <<"CreatedBy">> => list(string()),
+%%   <<"EngagementIdentifier">> => list(string()),
+%%   <<"ExcludeContextTypes">> => list(list(any())()),
+%%   <<"ExcludeCreatedBy">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => engagement_sort()
+%% }
+-type list_engagements_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagements_response() :: #{
@@ -689,58 +1124,42 @@
 -type list_engagements_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_opportunity_request() :: #{
+%% list_opportunities_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"OpportunityIdentifier">> := string(),
-%%   <<"RelatedEntityIdentifier">> := [string()],
-%%   <<"RelatedEntityType">> := list(any())
+%%   <<"CreatedDate">> => created_date_filter(),
+%%   <<"CustomerCompanyName">> => list([string()]()),
+%%   <<"Identifier">> => list(string()),
+%%   <<"LastModifiedDate">> => last_modified_date(),
+%%   <<"LifeCycleReviewStatus">> => list(list(any())()),
+%%   <<"LifeCycleStage">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => opportunity_sort(),
+%%   <<"TargetCloseDate">> => target_close_date_filter()
 %% }
--type associate_opportunity_request() :: #{binary() => any()}.
+-type list_opportunities_request() :: #{binary() => any()}.
 
 %% Example:
-%% related_entity_identifiers() :: #{
-%%   <<"AwsMarketplaceOfferSets">> => list(string()),
-%%   <<"AwsMarketplaceOffers">> => list(string()),
-%%   <<"AwsMarketplaceProducts">> => list(string()),
-%%   <<"AwsMarketplaceSolutions">> => list(string()),
-%%   <<"AwsProducts">> => list(string()),
-%%   <<"Solutions">> => list(string())
+%% list_opportunities_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"OpportunitySummaries">> => list(opportunity_summary())
 %% }
--type related_entity_identifiers() :: #{binary() => any()}.
+-type list_opportunities_response() :: #{binary() => any()}.
 
 %% Example:
-%% lead_invitation_customer() :: #{
-%%   <<"AwsMaturity">> => string(),
-%%   <<"CompanyName">> => string(),
-%%   <<"CountryCode">> => list(any()),
-%%   <<"Industry">> => list(any()),
-%%   <<"MarketSegment">> => list(any()),
-%%   <<"WebsiteUrl">> => string()
+%% list_opportunity_from_engagement_task_summary() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"OpportunityId">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ResourceSnapshotJobId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
 %% }
--type lead_invitation_customer() :: #{binary() => any()}.
-
-%% Example:
-%% customer() :: #{
-%%   <<"Account">> => account(),
-%%   <<"Contacts">> => list(contact())
-%% }
--type customer() :: #{binary() => any()}.
-
-%% Example:
-%% life_cycle_for_view() :: #{
-%%   <<"NextSteps">> => string(),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"Stage">> => list(any()),
-%%   <<"TargetCloseDate">> => string()
-%% }
--type life_cycle_for_view() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_invitations_response() :: #{
-%%   <<"EngagementInvitationSummaries">> => list(engagement_invitation_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_engagement_invitations_response() :: #{binary() => any()}.
+-type list_opportunity_from_engagement_task_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_opportunity_from_engagement_tasks_request() :: #{
@@ -757,26 +1176,132 @@
 -type list_opportunity_from_engagement_tasks_request() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
+%% list_opportunity_from_engagement_tasks_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskSummaries">> => list(list_opportunity_from_engagement_task_summary())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type list_opportunity_from_engagement_tasks_response() :: #{binary() => any()}.
 
 %% Example:
-%% lead_invitation_interaction() :: #{
-%%   <<"ContactBusinessTitle">> => string(),
-%%   <<"SourceId">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"Usecase">> => string()
+%% list_prospecting_from_engagement_tasks_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => prospecting_from_engagement_task_sort(),
+%%   <<"StartAfter">> => non_neg_integer(),
+%%   <<"StartBefore">> => non_neg_integer(),
+%%   <<"TaskIdentifier">> => list(string()),
+%%   <<"TaskName">> => list(string())
 %% }
--type lead_invitation_interaction() :: #{binary() => any()}.
+-type list_prospecting_from_engagement_tasks_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
+%% list_prospecting_from_engagement_tasks_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskSummaries">> => list(prospecting_task_summary())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type list_prospecting_from_engagement_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_snapshot_jobs_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EngagementIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => sort_object(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_resource_snapshot_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_snapshot_jobs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceSnapshotJobSummaries">> => list(resource_snapshot_job_summary())
+%% }
+-type list_resource_snapshot_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_snapshots_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceSnapshotTemplateIdentifier">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type list_resource_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_snapshots_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceSnapshotSummaries">> => list(resource_snapshot_summary())
+%% }
+-type list_resource_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_request() :: #{
+%%   <<"AwsMarketplaceSolutionArn">> => list(string()),
+%%   <<"Catalog">> := string(),
+%%   <<"Category">> => list([string()]()),
+%%   <<"Identifier">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => solution_sort(),
+%%   <<"Status">> => list(list(any())())
+%% }
+-type list_solutions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"SolutionSummaries">> => list(solution_base())
+%% }
+-type list_solutions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tasks_sort_base() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_tasks_sort_base() :: #{binary() => any()}.
+
+%% Example:
+%% marketing() :: #{
+%%   <<"AwsFundingUsed">> => list(any()),
+%%   <<"CampaignName">> => [string()],
+%%   <<"Channels">> => list(list(any())()),
+%%   <<"Source">> => list(any()),
+%%   <<"UseCases">> => list([string()]())
+%% }
+-type marketing() :: #{binary() => any()}.
+
+%% Example:
+%% monetary_value() :: #{
+%%   <<"Amount">> => [string()],
+%%   <<"CurrencyCode">> => list(any())
+%% }
+-type monetary_value() :: #{binary() => any()}.
+
+%% Example:
+%% next_steps_history() :: #{
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"Value">> => [string()]
+%% }
+-type next_steps_history() :: #{binary() => any()}.
 
 %% Example:
 %% opportunity_engagement_invitation_sort() :: #{
@@ -786,33 +1311,61 @@
 -type opportunity_engagement_invitation_sort() :: #{binary() => any()}.
 
 %% Example:
-%% create_resource_snapshot_response() :: #{
+%% opportunity_invitation_payload() :: #{
+%%   <<"Customer">> => engagement_customer(),
+%%   <<"Project">> => project_details(),
+%%   <<"ReceiverResponsibilities">> => list(list(any())()),
+%%   <<"SenderContacts">> => list(sender_contact())
+%% }
+-type opportunity_invitation_payload() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_quality() :: #{
+%%   <<"Score">> => [integer()],
+%%   <<"Trend">> => [string()]
+%% }
+-type opportunity_quality() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type opportunity_sort() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Revision">> => integer()
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Customer">> => customer_summary(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LifeCycle">> => life_cycle_summary(),
+%%   <<"OpportunityType">> => list(any()),
+%%   <<"PartnerOpportunityIdentifier">> => [string()],
+%%   <<"Project">> => project_summary()
 %% }
--type create_resource_snapshot_response() :: #{binary() => any()}.
+-type opportunity_summary() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% opportunity_summary_view() :: #{
+%%   <<"Customer">> => customer(),
+%%   <<"Lifecycle">> => life_cycle_for_view(),
+%%   <<"OpportunityTeam">> => list(contact()),
+%%   <<"OpportunityType">> => list(any()),
+%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
+%%   <<"Project">> => project_view(),
+%%   <<"RelatedEntityIdentifiers">> => related_entity_identifiers()
 %% }
--type tag() :: #{binary() => any()}.
+-type opportunity_summary_view() :: #{binary() => any()}.
 
 %% Example:
-%% start_engagement_from_opportunity_task_response() :: #{
-%%   <<"EngagementId">> => string(),
-%%   <<"EngagementInvitationId">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"OpportunityId">> => string(),
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ResourceSnapshotJobId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
+%% profile_next_steps_history() :: #{
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"Value">> => [string()]
 %% }
--type start_engagement_from_opportunity_task_response() :: #{binary() => any()}.
+-type profile_next_steps_history() :: #{binary() => any()}.
 
 %% Example:
 %% project() :: #{
@@ -834,165 +1387,54 @@
 -type project() :: #{binary() => any()}.
 
 %% Example:
-%% get_prospecting_from_engagement_task_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"TaskIdentifier">> := string()
+%% project_details() :: #{
+%%   <<"BusinessProblem">> => string(),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
+%%   <<"TargetCompletionDate">> => string(),
+%%   <<"Title">> => [string()]
 %% }
--type get_prospecting_from_engagement_task_request() :: #{binary() => any()}.
+-type project_details() :: #{binary() => any()}.
 
 %% Example:
-%% lead_context() :: #{
-%%   <<"Customer">> => lead_customer(),
-%%   <<"Insights">> => lead_insights(),
-%%   <<"Interactions">> => list(lead_interaction()),
-%%   <<"QualificationStatus">> => string()
+%% project_summary() :: #{
+%%   <<"DeliveryModels">> => list(list(any())()),
+%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
 %% }
--type lead_context() :: #{binary() => any()}.
+-type project_summary() :: #{binary() => any()}.
 
 %% Example:
-%% target_close_date_filter() :: #{
-%%   <<"AfterTargetCloseDate">> => string(),
-%%   <<"BeforeTargetCloseDate">> => string()
+%% project_view() :: #{
+%%   <<"CustomerUseCase">> => [string()],
+%%   <<"DeliveryModels">> => list(list(any())()),
+%%   <<"ExpectedContractDuration">> => expected_contract_duration(),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
+%%   <<"OtherSolutionDescription">> => string(),
+%%   <<"SalesActivities">> => list(list(any())())
 %% }
--type target_close_date_filter() :: #{binary() => any()}.
+-type project_view() :: #{binary() => any()}.
 
 %% Example:
-%% aws_product_insights() :: #{
-%%   <<"AwsProducts">> => list(aws_product_details()),
-%%   <<"CurrencyCode">> => list(any()),
-%%   <<"Frequency">> => list(any()),
-%%   <<"TotalAmount">> => string(),
-%%   <<"TotalAmountByCategory">> => map(),
-%%   <<"TotalOptimizedAmount">> => string(),
-%%   <<"TotalPotentialSavingsAmount">> => string()
+%% prospecting_from_engagement_task_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
 %% }
--type aws_product_insights() :: #{binary() => any()}.
+-type prospecting_from_engagement_task_sort() :: #{binary() => any()}.
 
 %% Example:
-%% list_engagement_by_accepting_invitation_task_summary() :: #{
-%%   <<"EngagementInvitationId">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"OpportunityId">> => string(),
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ResourceSnapshotJobId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
+%% prospecting_insights() :: #{
+%%   <<"MarketplaceEngagementScore">> => string(),
+%%   <<"SolutionCategory">> => [string()],
+%%   <<"SolutionScore">> => [string()],
+%%   <<"SolutionSubCategory">> => [string()]
 %% }
--type list_engagement_by_accepting_invitation_task_summary() :: #{binary() => any()}.
+-type prospecting_insights() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
+%% prospecting_result() :: #{
+%%   <<"Aws">> => prospecting_result_aws()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_engagement_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Contexts">> => list(engagement_context_details()),
-%%   <<"Description">> := string(),
-%%   <<"Title">> := string()
-%% }
--type create_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Details">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% list_opportunities_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"CreatedDate">> => created_date_filter(),
-%%   <<"CustomerCompanyName">> => list([string()]()),
-%%   <<"Identifier">> => list(string()),
-%%   <<"LastModifiedDate">> => last_modified_date(),
-%%   <<"LifeCycleReviewStatus">> => list(list(any())()),
-%%   <<"LifeCycleStage">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => opportunity_sort(),
-%%   <<"TargetCloseDate">> => target_close_date_filter()
-%% }
--type list_opportunities_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_selling_system_settings_response() :: #{
-%%   <<"Catalog">> => string(),
-%%   <<"ResourceSnapshotJobRoleArn">> => string()
-%% }
--type get_selling_system_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_snapshot_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"ResourceIdentifier">> := string(),
-%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Revision">> => integer()
-%% }
--type get_resource_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% profile_next_steps_history() :: #{
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"Value">> => [string()]
-%% }
--type profile_next_steps_history() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_snapshot_job_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_resource_snapshot_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% sender_contact() :: #{
-%%   <<"BusinessTitle">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Phone">> => string()
-%% }
--type sender_contact() :: #{binary() => any()}.
-
-%% Example:
-%% account() :: #{
-%%   <<"Address">> => address(),
-%%   <<"AwsAccountId">> => string(),
-%%   <<"CompanyName">> => string(),
-%%   <<"Duns">> => string(),
-%%   <<"Industry">> => list(any()),
-%%   <<"OtherIndustry">> => [string()],
-%%   <<"WebsiteUrl">> => string()
-%% }
--type account() :: #{binary() => any()}.
-
-%% Example:
-%% opportunity_invitation_payload() :: #{
-%%   <<"Customer">> => engagement_customer(),
-%%   <<"Project">> => project_details(),
-%%   <<"ReceiverResponsibilities">> => list(list(any())()),
-%%   <<"SenderContacts">> => list(sender_contact())
-%% }
--type opportunity_invitation_payload() :: #{binary() => any()}.
-
-%% Example:
-%% submit_opportunity_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"InvolvementType">> := list(any()),
-%%   <<"Visibility">> => list(any())
-%% }
--type submit_opportunity_request() :: #{binary() => any()}.
+-type prospecting_result() :: #{binary() => any()}.
 
 %% Example:
 %% prospecting_result_aws() :: #{
@@ -1005,730 +1447,6 @@
 %%   <<"TaskName">> => string()
 %% }
 -type prospecting_result_aws() :: #{binary() => any()}.
-
-%% Example:
-%% expected_customer_spend() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"CurrencyCode">> => list(any()),
-%%   <<"EstimationUrl">> => string(),
-%%   <<"Frequency">> => list(any()),
-%%   <<"TargetCompany">> => [string()]
-%% }
--type expected_customer_spend() :: #{binary() => any()}.
-
-%% Example:
-%% life_cycle_summary() :: #{
-%%   <<"ClosedLostReason">> => list(any()),
-%%   <<"NextSteps">> => string(),
-%%   <<"ReviewComments">> => [string()],
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"ReviewStatusReason">> => [string()],
-%%   <<"Stage">> => list(any()),
-%%   <<"TargetCloseDate">> => string()
-%% }
--type life_cycle_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_engagement_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_engagement_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_invitations_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"ParticipantType">> := list(any()),
-%%   <<"PayloadType">> => list(list(any())()),
-%%   <<"SenderAwsAccountId">> => list(string()),
-%%   <<"Sort">> => opportunity_engagement_invitation_sort(),
-%%   <<"Status">> => list(list(any())())
-%% }
--type list_engagement_invitations_request() :: #{binary() => any()}.
-
-%% Example:
-%% lead_invitation_payload() :: #{
-%%   <<"Customer">> => lead_invitation_customer(),
-%%   <<"Interaction">> => lead_invitation_interaction()
-%% }
--type lead_invitation_payload() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_snapshot_job_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ResourceSnapshotJobIdentifier">> := string()
-%% }
--type delete_resource_snapshot_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_summary() :: #{
-%%   <<"Address">> => address_summary(),
-%%   <<"CompanyName">> => string(),
-%%   <<"Industry">> => list(any()),
-%%   <<"OtherIndustry">> => [string()],
-%%   <<"WebsiteUrl">> => string()
-%% }
--type account_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_opportunity_response() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer()
-%% }
--type update_opportunity_response() :: #{binary() => any()}.
-
-%% Example:
-%% marketing() :: #{
-%%   <<"AwsFundingUsed">> => list(any()),
-%%   <<"CampaignName">> => [string()],
-%%   <<"Channels">> => list(list(any())()),
-%%   <<"Source">> => list(any()),
-%%   <<"UseCases">> => list([string()]())
-%% }
--type marketing() :: #{binary() => any()}.
-
-%% Example:
-%% list_solutions_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"SolutionSummaries">> => list(solution_base())
-%% }
--type list_solutions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_selling_system_settings_request() :: #{
-%%   <<"Catalog">> := string()
-%% }
--type get_selling_system_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% project_details() :: #{
-%%   <<"BusinessProblem">> => string(),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
-%%   <<"TargetCompletionDate">> => string(),
-%%   <<"Title">> => [string()]
-%% }
--type project_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_opportunity_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Customer">> => customer(),
-%%   <<"LifeCycle">> => life_cycle(),
-%%   <<"Marketing">> => marketing(),
-%%   <<"NationalSecurity">> => list(any()),
-%%   <<"OpportunityTeam">> => list(contact()),
-%%   <<"OpportunityType">> => list(any()),
-%%   <<"Origin">> => list(any()),
-%%   <<"PartnerOpportunityIdentifier">> => [string()],
-%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
-%%   <<"Project">> => project(),
-%%   <<"SoftwareRevenue">> => software_revenue(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_opportunity_request() :: #{binary() => any()}.
-
-%% Example:
-%% contact() :: #{
-%%   <<"BusinessTitle">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Phone">> => string()
-%% }
--type contact() :: #{binary() => any()}.
-
-%% Example:
-%% sort_object() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type sort_object() :: #{binary() => any()}.
-
-%% Example:
-%% software_revenue() :: #{
-%%   <<"DeliveryModel">> => list(any()),
-%%   <<"EffectiveDate">> => string(),
-%%   <<"ExpirationDate">> => string(),
-%%   <<"Value">> => monetary_value()
-%% }
--type software_revenue() :: #{binary() => any()}.
-
-%% Example:
-%% opportunity_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Customer">> => customer_summary(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LifeCycle">> => life_cycle_summary(),
-%%   <<"OpportunityType">> => list(any()),
-%%   <<"PartnerOpportunityIdentifier">> => [string()],
-%%   <<"Project">> => project_summary()
-%% }
--type opportunity_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_opportunities_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"OpportunitySummaries">> => list(opportunity_summary())
-%% }
--type list_opportunities_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_opportunity_from_engagement_task_response() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"Message">> => [string()],
-%%   <<"OpportunityId">> => string(),
-%%   <<"ReasonCode">> => list(any()),
-%%   <<"ResourceSnapshotJobId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskStatus">> => list(any())
-%% }
--type start_opportunity_from_engagement_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% engagement_member_summary() :: #{
-%%   <<"CompanyName">> => string(),
-%%   <<"WebsiteUrl">> => [string()]
-%% }
--type engagement_member_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_tasks_sort_base() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_tasks_sort_base() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% customer_summary() :: #{
-%%   <<"Account">> => account_summary()
-%% }
--type customer_summary() :: #{binary() => any()}.
-
-%% Example:
-%% lead_insights() :: #{
-%%   <<"LeadReadinessScore">> => [string()]
-%% }
--type lead_insights() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_snapshot_jobs_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ResourceSnapshotJobSummaries">> => list(resource_snapshot_job_summary())
-%% }
--type list_resource_snapshot_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% address_summary() :: #{
-%%   <<"City">> => string(),
-%%   <<"CountryCode">> => list(any()),
-%%   <<"PostalCode">> => string(),
-%%   <<"StateOrRegion">> => string()
-%% }
--type address_summary() :: #{binary() => any()}.
-
-%% Example:
-%% expected_contract_duration() :: #{
-%%   <<"Term">> => list(any()),
-%%   <<"Value">> => [string()]
-%% }
--type expected_contract_duration() :: #{binary() => any()}.
-
-%% Example:
-%% reject_engagement_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"RejectionReason">> => string()
-%% }
--type reject_engagement_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% lead_contact() :: #{
-%%   <<"BusinessTitle">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Phone">> => string()
-%% }
--type lead_contact() :: #{binary() => any()}.
-
-%% Example:
-%% create_engagement_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ModifiedAt">> => non_neg_integer()
-%% }
--type create_engagement_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_resource_associations_response() :: #{
-%%   <<"EngagementResourceAssociationSummaries">> => list(engagement_resource_association_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_engagement_resource_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_engagement_from_opportunity_task_request() :: #{
-%%   <<"AwsSubmission">> := aws_submission(),
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_engagement_from_opportunity_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_snapshot_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceSnapshotTemplateName">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Revision">> => integer()
-%% }
--type resource_snapshot_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_engagement_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% prospecting_insights() :: #{
-%%   <<"MarketplaceEngagementScore">> => string(),
-%%   <<"SolutionCategory">> => [string()],
-%%   <<"SolutionScore">> => [string()],
-%%   <<"SolutionSubCategory">> => [string()]
-%% }
--type prospecting_insights() :: #{binary() => any()}.
-
-%% Example:
-%% aws_opportunity_life_cycle() :: #{
-%%   <<"ClosedLostReason">> => list(any()),
-%%   <<"NextSteps">> => string(),
-%%   <<"NextStepsHistory">> => list(profile_next_steps_history()),
-%%   <<"Stage">> => list(any()),
-%%   <<"TargetCloseDate">> => string()
-%% }
--type aws_opportunity_life_cycle() :: #{binary() => any()}.
-
-%% Example:
-%% engagement_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ContextTypes">> => list(list(any())()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MemberCount">> => [integer()],
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"ModifiedBy">> => string(),
-%%   <<"Title">> => string()
-%% }
--type engagement_summary() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"FieldName">> => [string()],
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception_error() :: #{binary() => any()}.
-
-%% Example:
-%% start_resource_snapshot_job_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ResourceSnapshotJobIdentifier">> := string()
-%% }
--type start_resource_snapshot_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_snapshot_jobs_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => sort_object(),
-%%   <<"Status">> => list(any())
-%% }
--type list_resource_snapshot_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagement_from_opportunity_tasks_response() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(list_engagement_from_opportunity_task_summary())
-%% }
--type list_engagement_from_opportunity_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_snapshot_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"ResourceIdentifier">> := string(),
-%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type create_resource_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"ErrorList">> => list(validation_exception_error()),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% customer_projects_context() :: #{
-%%   <<"Customer">> => engagement_customer(),
-%%   <<"Project">> => engagement_customer_project_details()
-%% }
--type customer_projects_context() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_snapshot_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"Payload">> => list(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceSnapshotTemplateName">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Revision">> => integer(),
-%%   <<"TargetMemberAccounts">> => list(string())
-%% }
--type get_resource_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_engagement_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type accept_engagement_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_engagement_context_response() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"EngagementArn">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"EngagementLastModifiedAt">> => non_neg_integer()
-%% }
--type update_engagement_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_opportunity_from_engagement_task_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"ContextIdentifier">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_opportunity_from_engagement_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_engagement_context_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ContextIdentifier">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"EngagementLastModifiedAt">> := non_neg_integer(),
-%%   <<"Payload">> := list(),
-%%   <<"Type">> := list(any())
-%% }
--type update_engagement_context_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_engagement_context_response() :: #{
-%%   <<"ContextId">> => string(),
-%%   <<"EngagementArn">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"EngagementLastModifiedAt">> => non_neg_integer()
-%% }
--type create_engagement_context_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_snapshot_job_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"EngagementIdentifier">> := string(),
-%%   <<"ResourceIdentifier">> := string(),
-%%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_resource_snapshot_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% next_steps_history() :: #{
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"Value">> => [string()]
-%% }
--type next_steps_history() :: #{binary() => any()}.
-
-%% Example:
-%% aws_opportunity_customer() :: #{
-%%   <<"Contacts">> => list(contact())
-%% }
--type aws_opportunity_customer() :: #{binary() => any()}.
-
-%% Example:
-%% create_engagement_invitation_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_engagement_invitation_response() :: #{binary() => any()}.
-
-%% Example:
-%% account_receiver() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"AwsAccountId">> => string()
-%% }
--type account_receiver() :: #{binary() => any()}.
-
-%% Example:
-%% assignee_contact() :: #{
-%%   <<"BusinessTitle">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Phone">> => string()
-%% }
--type assignee_contact() :: #{binary() => any()}.
-
-%% Example:
-%% start_prospecting_from_engagement_task_response() :: #{
-%%   <<"Identifiers">> => list(string()),
-%%   <<"Message">> => [string()],
-%%   <<"ReasonCode">> => [string()],
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskName">> => string(),
-%%   <<"TaskStatus">> => list(any())
-%% }
--type start_prospecting_from_engagement_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_opportunity_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"OpportunityIdentifier">> := string(),
-%%   <<"RelatedEntityIdentifier">> := [string()],
-%%   <<"RelatedEntityType">> := list(any())
-%% }
--type disassociate_opportunity_request() :: #{binary() => any()}.
-
-%% Example:
-%% engagement_customer_project_details() :: #{
-%%   <<"BusinessProblem">> => string(),
-%%   <<"TargetCompletionDate">> => [string()],
-%%   <<"Title">> => string()
-%% }
--type engagement_customer_project_details() :: #{binary() => any()}.
-
-%% Example:
-%% monetary_value() :: #{
-%%   <<"Amount">> => [string()],
-%%   <<"CurrencyCode">> => list(any())
-%% }
--type monetary_value() :: #{binary() => any()}.
-
-%% Example:
-%% address() :: #{
-%%   <<"City">> => string(),
-%%   <<"CountryCode">> => list(any()),
-%%   <<"PostalCode">> => string(),
-%%   <<"StateOrRegion">> => string(),
-%%   <<"StreetAddress">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-%% Example:
-%% created_date_filter() :: #{
-%%   <<"AfterCreatedDate">> => non_neg_integer(),
-%%   <<"BeforeCreatedDate">> => non_neg_integer()
-%% }
--type created_date_filter() :: #{binary() => any()}.
-
-%% Example:
-%% solution_base() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AwsMarketplaceSolutionArn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"Category">> => [string()],
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type solution_base() :: #{binary() => any()}.
-
-%% Example:
-%% aws_product_details() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Categories">> => list([string()]()),
-%%   <<"Optimizations">> => list(aws_product_optimization()),
-%%   <<"OptimizedAmount">> => string(),
-%%   <<"PotentialSavingsAmount">> => string(),
-%%   <<"ProductCode">> => [string()],
-%%   <<"ServiceCode">> => [string()]
-%% }
--type aws_product_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_snapshot_job_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ResourceSnapshotJobIdentifier">> := string()
-%% }
--type get_resource_snapshot_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% engagement_resource_association_summary() :: #{
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type engagement_resource_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_engagement_invitation_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Catalog">> => string(),
-%%   <<"EngagementDescription">> => string(),
-%%   <<"EngagementId">> => string(),
-%%   <<"EngagementTitle">> => string(),
-%%   <<"ExistingMembers">> => list(engagement_member_summary()),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InvitationDate">> => non_neg_integer(),
-%%   <<"InvitationMessage">> => string(),
-%%   <<"Payload">> => list(),
-%%   <<"PayloadType">> => list(any()),
-%%   <<"Receiver">> => list(),
-%%   <<"RejectionReason">> => string(),
-%%   <<"SenderAwsAccountId">> => string(),
-%%   <<"SenderCompanyName">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type get_engagement_invitation_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_prospecting_from_engagement_tasks_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => prospecting_from_engagement_task_sort(),
-%%   <<"StartAfter">> => non_neg_integer(),
-%%   <<"StartBefore">> => non_neg_integer(),
-%%   <<"TaskIdentifier">> => list(string()),
-%%   <<"TaskName">> => list(string())
-%% }
--type list_prospecting_from_engagement_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% opportunity_summary_view() :: #{
-%%   <<"Customer">> => customer(),
-%%   <<"Lifecycle">> => life_cycle_for_view(),
-%%   <<"OpportunityTeam">> => list(contact()),
-%%   <<"OpportunityType">> => list(any()),
-%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
-%%   <<"Project">> => project_view(),
-%%   <<"RelatedEntityIdentifiers">> => related_entity_identifiers()
-%% }
--type opportunity_summary_view() :: #{binary() => any()}.
-
-%% Example:
-%% list_engagements_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ContextTypes">> => list(list(any())()),
-%%   <<"CreatedBy">> => list(string()),
-%%   <<"EngagementIdentifier">> => list(string()),
-%%   <<"ExcludeContextTypes">> => list(list(any())()),
-%%   <<"ExcludeCreatedBy">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"Sort">> => engagement_sort()
-%% }
--type list_engagements_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_engagement_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Contexts">> => list(engagement_context_details()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MemberCount">> => [integer()],
-%%   <<"ModifiedAt">> => non_neg_integer(),
-%%   <<"ModifiedBy">> => string(),
-%%   <<"Title">> => string()
-%% }
--type get_engagement_response() :: #{binary() => any()}.
-
-%% Example:
-%% prospecting_from_engagement_task_sort() :: #{
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type prospecting_from_engagement_task_sort() :: #{binary() => any()}.
-
-%% Example:
-%% get_opportunity_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_opportunity_request() :: #{binary() => any()}.
 
 %% Example:
 %% prospecting_result_customer() :: #{
@@ -1747,20 +1465,172 @@
 -type prospecting_result_customer() :: #{binary() => any()}.
 
 %% Example:
-%% lead_interaction() :: #{
-%%   <<"BusinessProblem">> => string(),
-%%   <<"Contact">> => lead_contact(),
-%%   <<"CustomerAction">> => string(),
-%%   <<"InteractionDate">> => non_neg_integer(),
-%%   <<"SourceId">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"Usecase">> => string()
+%% prospecting_task_summary() :: #{
+%%   <<"CompletedEngagementCount">> => [integer()],
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailedEngagementCount">> => [integer()],
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string(),
+%%   <<"TotalEngagementCount">> => [integer()]
 %% }
--type lead_interaction() :: #{binary() => any()}.
+-type prospecting_task_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_engagement_from_opportunity_task_summary() :: #{
+%% put_selling_system_settings_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceSnapshotJobRoleIdentifier">> => string()
+%% }
+-type put_selling_system_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_selling_system_settings_response() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"ResourceSnapshotJobRoleArn">> => string()
+%% }
+-type put_selling_system_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Details">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% reject_engagement_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"RejectionReason">> => string()
+%% }
+-type reject_engagement_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% related_entity_identifiers() :: #{
+%%   <<"AwsMarketplaceOfferSets">> => list(string()),
+%%   <<"AwsMarketplaceOffers">> => list(string()),
+%%   <<"AwsMarketplaceProducts">> => list(string()),
+%%   <<"AwsMarketplaceSolutions">> => list(string()),
+%%   <<"AwsProducts">> => list(string()),
+%%   <<"Solutions">> => list(string())
+%% }
+-type related_entity_identifiers() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_snapshot_job_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type resource_snapshot_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_snapshot_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceSnapshotTemplateName">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Revision">> => integer()
+%% }
+-type resource_snapshot_summary() :: #{binary() => any()}.
+
+%% Example:
+%% sender_contact() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Phone">> => string()
+%% }
+-type sender_contact() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% software_revenue() :: #{
+%%   <<"DeliveryModel">> => list(any()),
+%%   <<"EffectiveDate">> => string(),
+%%   <<"ExpirationDate">> => string(),
+%%   <<"Value">> => monetary_value()
+%% }
+-type software_revenue() :: #{binary() => any()}.
+
+%% Example:
+%% solution_base() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsMarketplaceSolutionArn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"Category">> => [string()],
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type solution_base() :: #{binary() => any()}.
+
+%% Example:
+%% solution_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type solution_sort() :: #{binary() => any()}.
+
+%% Example:
+%% sort_object() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort_object() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_by_accepting_invitation_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_engagement_by_accepting_invitation_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_by_accepting_invitation_task_response() :: #{
+%%   <<"EngagementInvitationId">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"OpportunityId">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ResourceSnapshotJobId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type start_engagement_by_accepting_invitation_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_from_opportunity_task_request() :: #{
+%%   <<"AwsSubmission">> := aws_submission(),
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_engagement_from_opportunity_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_engagement_from_opportunity_task_response() :: #{
 %%   <<"EngagementId">> => string(),
 %%   <<"EngagementInvitationId">> => string(),
 %%   <<"Message">> => [string()],
@@ -1772,380 +1642,532 @@
 %%   <<"TaskId">> => string(),
 %%   <<"TaskStatus">> => list(any())
 %% }
--type list_engagement_from_opportunity_task_summary() :: #{binary() => any()}.
+-type start_engagement_from_opportunity_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% aws_submission() :: #{
-%%   <<"InvolvementType">> => list(any()),
-%%   <<"Visibility">> => list(any())
-%% }
--type aws_submission() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_snapshot_job_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EngagementId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastFailure">> => [string()],
-%%   <<"LastSuccessfulExecutionDate">> => non_neg_integer(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceSnapshotTemplateName">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type get_resource_snapshot_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_engagement_by_accepting_invitation_task_request() :: #{
+%% start_opportunity_from_engagement_task_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
+%%   <<"ContextIdentifier">> := string(),
 %%   <<"Identifier">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type start_engagement_by_accepting_invitation_task_request() :: #{binary() => any()}.
+-type start_opportunity_from_engagement_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_opportunity_from_engagement_task_response() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"OpportunityId">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"ResourceSnapshotJobId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type start_opportunity_from_engagement_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_prospecting_from_engagement_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Identifiers">> := list(string()),
+%%   <<"TaskName">> := string()
+%% }
+-type start_prospecting_from_engagement_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_prospecting_from_engagement_task_response() :: #{
+%%   <<"Identifiers">> => list(string()),
+%%   <<"Message">> => [string()],
+%%   <<"ReasonCode">> => [string()],
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskName">> => string(),
+%%   <<"TaskStatus">> => list(any())
+%% }
+-type start_prospecting_from_engagement_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_resource_snapshot_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceSnapshotJobIdentifier">> := string()
+%% }
+-type start_resource_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_resource_snapshot_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ResourceSnapshotJobIdentifier">> := string()
+%% }
+-type stop_resource_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"InvolvementType">> := list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type submit_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_close_date_filter() :: #{
+%%   <<"AfterTargetCloseDate">> => string(),
+%%   <<"BeforeTargetCloseDate">> => string()
+%% }
+-type target_close_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_engagement_context_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ContextIdentifier">> := string(),
+%%   <<"EngagementIdentifier">> := string(),
+%%   <<"EngagementLastModifiedAt">> := non_neg_integer(),
+%%   <<"Payload">> := list(),
+%%   <<"Type">> := list(any())
+%% }
+-type update_engagement_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_engagement_context_response() :: #{
+%%   <<"ContextId">> => string(),
+%%   <<"EngagementArn">> => string(),
+%%   <<"EngagementId">> => string(),
+%%   <<"EngagementLastModifiedAt">> => non_neg_integer()
+%% }
+-type update_engagement_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_lead_context() :: #{
+%%   <<"Customer">> => lead_customer(),
+%%   <<"Insights">> => lead_insights(),
+%%   <<"Interaction">> => lead_interaction(),
+%%   <<"QualificationStatus">> => string()
+%% }
+-type update_lead_context() :: #{binary() => any()}.
+
+%% Example:
+%% update_opportunity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Customer">> => customer(),
+%%   <<"Identifier">> := string(),
+%%   <<"LastModifiedDate">> := non_neg_integer(),
+%%   <<"LifeCycle">> => life_cycle(),
+%%   <<"Marketing">> => marketing(),
+%%   <<"NationalSecurity">> => list(any()),
+%%   <<"OpportunityType">> => list(any()),
+%%   <<"PartnerOpportunityIdentifier">> => [string()],
+%%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
+%%   <<"Project">> => project(),
+%%   <<"SoftwareRevenue">> => software_revenue()
+%% }
+-type update_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_opportunity_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer()
+%% }
+-type update_opportunity_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ErrorList">> => list(validation_exception_error()),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"FieldName">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception_error() :: #{binary() => any()}.
 
 -type accept_engagement_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type assign_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type associate_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_engagement_context_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_engagement_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_snapshot_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_snapshot_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_aws_opportunity_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_engagement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_engagement_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_prospecting_from_engagement_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_snapshot_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_selling_system_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagement_by_accepting_invitation_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagement_from_opportunity_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagement_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagement_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagement_resource_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_engagements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_opportunities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_opportunity_from_engagement_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_prospecting_from_engagement_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resource_snapshot_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resource_snapshots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_solutions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_selling_system_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reject_engagement_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_engagement_by_accepting_invitation_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_engagement_from_opportunity_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_opportunity_from_engagement_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_prospecting_from_engagement_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_resource_snapshot_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type stop_resource_snapshot_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type submit_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_engagement_context_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_opportunity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

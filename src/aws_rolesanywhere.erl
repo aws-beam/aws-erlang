@@ -99,154 +99,18 @@
 
 
 %% Example:
-%% subject_detail() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"credentials">> => list(credential_summary()),
-%%   <<"enabled">> => [boolean()],
-%%   <<"instanceProperties">> => list(instance_property()),
-%%   <<"lastSeenAt">> => [non_neg_integer()],
-%%   <<"subjectArn">> => [string()],
-%%   <<"subjectId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"x509Subject">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type subject_detail() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% credential_summary() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"failed">> => [boolean()],
-%%   <<"issuer">> => [string()],
-%%   <<"seenAt">> => [non_neg_integer()],
-%%   <<"serialNumber">> => [string()],
-%%   <<"x509CertificateData">> => [string()]
+%% attribute_mapping() :: #{
+%%   <<"certificateField">> => string(),
+%%   <<"mappingRules">> => list(mapping_rule())
 %% }
--type credential_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_detail_response() :: #{
-%%   <<"profile">> => profile_detail()
-%% }
--type profile_detail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_notification_settings_request() :: #{
-%%   <<"notificationSettings">> := list(notification_setting()),
-%%   <<"trustAnchorId">> := string()
-%% }
--type put_notification_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% scalar_profile_request() :: #{}
--type scalar_profile_request() :: #{}.
-
-%% Example:
-%% scalar_crl_request() :: #{}
--type scalar_crl_request() :: #{}.
-
-
-%% Example:
-%% notification_setting_key() :: #{
-%%   <<"channel">> => string(),
-%%   <<"event">> => string()
-%% }
--type notification_setting_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% subject_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"enabled">> => [boolean()],
-%%   <<"lastSeenAt">> => [non_neg_integer()],
-%%   <<"subjectArn">> => [string()],
-%%   <<"subjectId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"x509Subject">> => [string()]
-%% }
--type subject_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% subject_detail_response() :: #{
-%%   <<"subject">> => subject_detail()
-%% }
--type subject_detail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_crl_request() :: #{
-%%   <<"crlData">> => [binary()],
-%%   <<"name">> => string()
-%% }
--type update_crl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subjects_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"subjects">> => list(subject_summary())
-%% }
--type list_subjects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_crls_response() :: #{
-%%   <<"crls">> => list(crl_detail()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_crls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% crl_detail() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"crlArn">> => [string()],
-%%   <<"crlData">> => [binary()],
-%%   <<"crlId">> => string(),
-%%   <<"enabled">> => [boolean()],
-%%   <<"name">> => [string()],
-%%   <<"trustAnchorArn">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type crl_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trust_anchor_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"source">> => source()
-%% }
--type update_trust_anchor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_attribute_mapping_response() :: #{
-%%   <<"profile">> => profile_detail()
-%% }
--type delete_attribute_mapping_response() :: #{binary() => any()}.
+-type attribute_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -265,10 +129,136 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
+%% create_trust_anchor_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"notificationSettings">> => list(notification_setting()),
+%%   <<"source">> := source(),
+%%   <<"tags">> => list(tag())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_trust_anchor_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% credential_summary() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"failed">> => [boolean()],
+%%   <<"issuer">> => [string()],
+%%   <<"seenAt">> => [non_neg_integer()],
+%%   <<"serialNumber">> => [string()],
+%%   <<"x509CertificateData">> => [string()]
+%% }
+-type credential_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% crl_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"crlArn">> => [string()],
+%%   <<"crlData">> => [binary()],
+%%   <<"crlId">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"trustAnchorArn">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type crl_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% crl_detail_response() :: #{
+%%   <<"crl">> := crl_detail()
+%% }
+-type crl_detail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_attribute_mapping_request() :: #{
+%%   <<"certificateField">> := string(),
+%%   <<"specifiers">> => list([string()]())
+%% }
+-type delete_attribute_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_attribute_mapping_response() :: #{
+%%   <<"profile">> => profile_detail()
+%% }
+-type delete_attribute_mapping_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_crl_request() :: #{
+%%   <<"crlData">> := [binary()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"trustAnchorArn">> := string()
+%% }
+-type import_crl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_property() :: #{
+%%   <<"failed">> => [boolean()],
+%%   <<"properties">> => map(),
+%%   <<"seenAt">> => [non_neg_integer()]
+%% }
+-type instance_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_crls_response() :: #{
+%%   <<"crls">> => list(crl_detail()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_crls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profiles_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"profiles">> => list(profile_detail())
+%% }
+-type list_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_request() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"pageSize">> => [integer()]
+%% }
+-type list_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subjects_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"subjects">> => list(subject_summary())
+%% }
+-type list_subjects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_anchors_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"trustAnchors">> => list(trust_anchor_detail())
+%% }
+-type list_trust_anchors_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,52 +269,32 @@
 
 
 %% Example:
-%% trust_anchor_detail() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
+%% notification_setting() :: #{
+%%   <<"channel">> => string(),
 %%   <<"enabled">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"notificationSettings">> => list(notification_setting_detail()),
-%%   <<"source">> => source(),
-%%   <<"trustAnchorArn">> => [string()],
-%%   <<"trustAnchorId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"event">> => string(),
+%%   <<"threshold">> => [integer()]
 %% }
--type trust_anchor_detail() :: #{binary() => any()}.
+-type notification_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_profile_request() :: #{
-%%   <<"acceptRoleSessionName">> => [boolean()],
-%%   <<"durationSeconds">> => [integer()],
-%%   <<"managedPolicyArns">> => list([string()]()),
-%%   <<"name">> => string(),
-%%   <<"roleArns">> => list(string()),
-%%   <<"sessionPolicy">> => [string()]
+%% notification_setting_detail() :: #{
+%%   <<"channel">> => string(),
+%%   <<"configuredBy">> => [string()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"event">> => string(),
+%%   <<"threshold">> => [integer()]
 %% }
--type update_profile_request() :: #{binary() => any()}.
+-type notification_setting_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% notification_setting_key() :: #{
+%%   <<"channel">> => string(),
+%%   <<"event">> => string()
 %% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_mapping() :: #{
-%%   <<"certificateField">> => string(),
-%%   <<"mappingRules">> => list(mapping_rule())
-%% }
--type attribute_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type notification_setting_key() :: #{binary() => any()}.
 
 
 %% Example:
@@ -348,23 +318,18 @@
 
 
 %% Example:
-%% delete_attribute_mapping_request() :: #{
+%% profile_detail_response() :: #{
+%%   <<"profile">> => profile_detail()
+%% }
+-type profile_detail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_attribute_mapping_request() :: #{
 %%   <<"certificateField">> := string(),
-%%   <<"specifiers">> => list([string()]())
+%%   <<"mappingRules">> := list(mapping_rule())
 %% }
--type delete_attribute_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% scalar_subject_request() :: #{}
--type scalar_subject_request() :: #{}.
-
-
-%% Example:
-%% source() :: #{
-%%   <<"sourceData">> => list(),
-%%   <<"sourceType">> => string()
-%% }
--type source() :: #{binary() => any()}.
+-type put_attribute_mapping_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,31 +340,11 @@
 
 
 %% Example:
-%% instance_property() :: #{
-%%   <<"failed">> => [boolean()],
-%%   <<"properties">> => map(),
-%%   <<"seenAt">> => [non_neg_integer()]
+%% put_notification_settings_request() :: #{
+%%   <<"notificationSettings">> := list(notification_setting()),
+%%   <<"trustAnchorId">> := string()
 %% }
--type instance_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_profiles_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"profiles">> => list(profile_detail())
-%% }
--type list_profiles_response() :: #{binary() => any()}.
+-type put_notification_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,75 +352,6 @@
 %%   <<"trustAnchor">> => trust_anchor_detail()
 %% }
 -type put_notification_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_notification_settings_response() :: #{
-%%   <<"trustAnchor">> => trust_anchor_detail()
-%% }
--type reset_notification_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% trust_anchor_detail_response() :: #{
-%%   <<"trustAnchor">> := trust_anchor_detail()
-%% }
--type trust_anchor_detail_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_crl_request() :: #{
-%%   <<"crlData">> := [binary()],
-%%   <<"enabled">> => [boolean()],
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"trustAnchorArn">> := string()
-%% }
--type import_crl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_request() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"pageSize">> => [integer()]
-%% }
--type list_request() :: #{binary() => any()}.
-
-%% Example:
-%% scalar_trust_anchor_request() :: #{}
--type scalar_trust_anchor_request() :: #{}.
-
-
-%% Example:
-%% list_trust_anchors_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"trustAnchors">> => list(trust_anchor_detail())
-%% }
--type list_trust_anchors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_setting() :: #{
-%%   <<"channel">> => string(),
-%%   <<"enabled">> => [boolean()],
-%%   <<"event">> => string(),
-%%   <<"threshold">> => [integer()]
-%% }
--type notification_setting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -487,21 +363,96 @@
 
 
 %% Example:
-%% create_trust_anchor_request() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"name">> := string(),
-%%   <<"notificationSettings">> => list(notification_setting()),
-%%   <<"source">> := source(),
-%%   <<"tags">> => list(tag())
+%% reset_notification_settings_response() :: #{
+%%   <<"trustAnchor">> => trust_anchor_detail()
 %% }
--type create_trust_anchor_request() :: #{binary() => any()}.
+-type reset_notification_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% crl_detail_response() :: #{
-%%   <<"crl">> := crl_detail()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type crl_detail_response() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scalar_crl_request() :: #{}
+-type scalar_crl_request() :: #{}.
+
+%% Example:
+%% scalar_profile_request() :: #{}
+-type scalar_profile_request() :: #{}.
+
+%% Example:
+%% scalar_subject_request() :: #{}
+-type scalar_subject_request() :: #{}.
+
+%% Example:
+%% scalar_trust_anchor_request() :: #{}
+-type scalar_trust_anchor_request() :: #{}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"sourceData">> => list(),
+%%   <<"sourceType">> => string()
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% subject_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"credentials">> => list(credential_summary()),
+%%   <<"enabled">> => [boolean()],
+%%   <<"instanceProperties">> => list(instance_property()),
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"subjectArn">> => [string()],
+%%   <<"subjectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"x509Subject">> => [string()]
+%% }
+-type subject_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% subject_detail_response() :: #{
+%%   <<"subject">> => subject_detail()
+%% }
+-type subject_detail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% subject_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"subjectArn">> => [string()],
+%%   <<"subjectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"x509Subject">> => [string()]
+%% }
+-type subject_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -512,22 +463,71 @@
 
 
 %% Example:
-%% notification_setting_detail() :: #{
-%%   <<"channel">> => string(),
-%%   <<"configuredBy">> => [string()],
+%% trust_anchor_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
-%%   <<"event">> => string(),
-%%   <<"threshold">> => [integer()]
+%%   <<"name">> => string(),
+%%   <<"notificationSettings">> => list(notification_setting_detail()),
+%%   <<"source">> => source(),
+%%   <<"trustAnchorArn">> => [string()],
+%%   <<"trustAnchorId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type notification_setting_detail() :: #{binary() => any()}.
+-type trust_anchor_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_attribute_mapping_request() :: #{
-%%   <<"certificateField">> := string(),
-%%   <<"mappingRules">> := list(mapping_rule())
+%% trust_anchor_detail_response() :: #{
+%%   <<"trustAnchor">> := trust_anchor_detail()
 %% }
--type put_attribute_mapping_request() :: #{binary() => any()}.
+-type trust_anchor_detail_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_crl_request() :: #{
+%%   <<"crlData">> => [binary()],
+%%   <<"name">> => string()
+%% }
+-type update_crl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_request() :: #{
+%%   <<"acceptRoleSessionName">> => [boolean()],
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"managedPolicyArns">> => list([string()]()),
+%%   <<"name">> => string(),
+%%   <<"roleArns">> => list(string()),
+%%   <<"sessionPolicy">> => [string()]
+%% }
+-type update_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_anchor_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"source">> => source()
+%% }
+-type update_trust_anchor_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_profile_errors() ::
     validation_exception() | 
@@ -539,60 +539,60 @@
 
 -type delete_attribute_mapping_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_crl_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_trust_anchor_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type disable_crl_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type disable_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type disable_trust_anchor_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type enable_crl_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type enable_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type enable_trust_anchor_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_crl_errors() ::
     resource_not_found_exception().
 
 -type get_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_subject_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_trust_anchor_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type import_crl_errors() ::
     validation_exception() | 
@@ -612,8 +612,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_trust_anchors_errors() ::
     validation_exception() | 
@@ -621,44 +621,44 @@
 
 -type put_attribute_mapping_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type put_notification_settings_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type reset_notification_settings_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_crl_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_trust_anchor_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

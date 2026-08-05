@@ -28,41 +28,40 @@
 
 
 %% Example:
-%% list_resource_requests_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceRequestStatusSummaries">> => list(progress_event())
-%% }
--type list_resource_requests_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_output() :: #{
-%%   <<"ProgressEvent">> => progress_event()
-%% }
--type delete_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_request_status_input() :: #{
-%%   <<"RequestToken">> := string()
-%% }
--type get_resource_request_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% handler_internal_failure_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type handler_internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% general_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type general_service_exception() :: #{binary() => any()}.
-
-%% Example:
 %% already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_resource_request_input() :: #{
+%%   <<"RequestToken">> := string()
+%% }
+-type cancel_resource_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_resource_request_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type cancel_resource_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% client_token_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_token_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_operation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_resource_input() :: #{
@@ -75,39 +74,41 @@
 -type create_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% network_failure_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type network_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_output() :: #{
+%% create_resource_output() :: #{
 %%   <<"ProgressEvent">> => progress_event()
 %% }
--type update_resource_output() :: #{binary() => any()}.
+-type create_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% private_type_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type private_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_input() :: #{
+%% delete_resource_input() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Identifier">> := string(),
-%%   <<"PatchDocument">> := string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"TypeName">> := string(),
 %%   <<"TypeVersionId">> => string()
 %% }
--type update_resource_input() :: #{binary() => any()}.
+-type delete_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_action_exception() :: #{
+%% delete_resource_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type delete_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% general_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unsupported_action_exception() :: #{binary() => any()}.
+-type general_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TypeName">> := string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type get_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_resource_output() :: #{
@@ -115,6 +116,71 @@
 %%   <<"TypeName">> => string()
 %% }
 -type get_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_request_status_input() :: #{
+%%   <<"RequestToken">> := string()
+%% }
+-type get_resource_request_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_request_status_output() :: #{
+%%   <<"HooksProgressEvent">> => list(hook_progress_event()),
+%%   <<"ProgressEvent">> => progress_event()
+%% }
+-type get_resource_request_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% handler_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handler_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% handler_internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handler_internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% hook_progress_event() :: #{
+%%   <<"FailureMode">> => string(),
+%%   <<"HookEventTime">> => non_neg_integer(),
+%%   <<"HookStatus">> => string(),
+%%   <<"HookStatusMessage">> => string(),
+%%   <<"HookTypeArn">> => string(),
+%%   <<"HookTypeName">> => string(),
+%%   <<"HookTypeVersionId">> => string(),
+%%   <<"InvocationPoint">> => string()
+%% }
+-type hook_progress_event() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_credentials_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_credentials_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_requests_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRequestStatusFilter">> => resource_request_status_filter()
+%% }
+-type list_resource_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_requests_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRequestStatusSummaries">> => list(progress_event())
+%% }
+-type list_resource_requests_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_resources_input() :: #{
@@ -128,34 +194,36 @@
 -type list_resources_input() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% list_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceDescriptions">> => list(resource_description()),
+%%   <<"TypeName">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type list_resources_output() :: #{binary() => any()}.
 
 %% Example:
-%% concurrent_operation_exception() :: #{
+%% network_failure_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type concurrent_operation_exception() :: #{binary() => any()}.
+-type network_failure_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_request_exception() :: #{
+%% not_stabilized_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type not_stabilized_exception() :: #{binary() => any()}.
 
 %% Example:
-%% type_not_found_exception() :: #{
+%% not_updatable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type type_not_found_exception() :: #{binary() => any()}.
+-type not_updatable_exception() :: #{binary() => any()}.
 
 %% Example:
-%% client_token_conflict_exception() :: #{
+%% private_type_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type client_token_conflict_exception() :: #{binary() => any()}.
+-type private_type_exception() :: #{binary() => any()}.
 
 %% Example:
 %% progress_event() :: #{
@@ -174,31 +242,16 @@
 -type progress_event() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_resource_request_output() :: #{
-%%   <<"ProgressEvent">> => progress_event()
+%% request_token_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type cancel_resource_request_output() :: #{binary() => any()}.
+-type request_token_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_requests_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceRequestStatusFilter">> => resource_request_status_filter()
+%% resource_conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_resource_requests_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_resource_request_input() :: #{
-%%   <<"RequestToken">> := string()
-%% }
--type cancel_resource_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_request_status_output() :: #{
-%%   <<"HooksProgressEvent">> => list(hook_progress_event()),
-%%   <<"ProgressEvent">> => progress_event()
-%% }
--type get_resource_request_status_output() :: #{binary() => any()}.
+-type resource_conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% resource_description() :: #{
@@ -208,45 +261,23 @@
 -type resource_description() :: #{binary() => any()}.
 
 %% Example:
-%% hook_progress_event() :: #{
-%%   <<"FailureMode">> => string(),
-%%   <<"HookEventTime">> => non_neg_integer(),
-%%   <<"HookStatus">> => string(),
-%%   <<"HookStatusMessage">> => string(),
-%%   <<"HookTypeArn">> => string(),
-%%   <<"HookTypeName">> => string(),
-%%   <<"HookTypeVersionId">> => string(),
-%%   <<"InvocationPoint">> => string()
-%% }
--type hook_progress_event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Identifier">> := string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"TypeName">> := string(),
-%%   <<"TypeVersionId">> => string()
-%% }
--type delete_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% not_updatable_exception() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type not_updatable_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% not_stabilized_exception() :: #{
-%%   <<"Message">> => string()
+%% resource_request_status_filter() :: #{
+%%   <<"OperationStatuses">> => list(string()),
+%%   <<"Operations">> => list(string())
 %% }
--type not_stabilized_exception() :: #{binary() => any()}.
+-type resource_request_status_filter() :: #{binary() => any()}.
 
 %% Example:
-%% concurrent_modification_exception() :: #{
+%% service_internal_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type concurrent_modification_exception() :: #{binary() => any()}.
+-type service_internal_error_exception() :: #{binary() => any()}.
 
 %% Example:
 %% service_limit_exceeded_exception() :: #{
@@ -261,172 +292,141 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% request_token_not_found_exception() :: #{
+%% type_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type request_token_not_found_exception() :: #{binary() => any()}.
+-type type_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% handler_failure_exception() :: #{
+%% unsupported_action_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type handler_failure_exception() :: #{binary() => any()}.
+-type unsupported_action_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_resource_output() :: #{
-%%   <<"ProgressEvent">> => progress_event()
-%% }
--type create_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_credentials_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_credentials_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_input() :: #{
+%% update_resource_input() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Identifier">> := string(),
+%%   <<"PatchDocument">> := string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"TypeName">> := string(),
 %%   <<"TypeVersionId">> => string()
 %% }
--type get_resource_input() :: #{binary() => any()}.
+-type update_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceDescriptions">> => list(resource_description()),
-%%   <<"TypeName">> => string()
+%% update_resource_output() :: #{
+%%   <<"ProgressEvent">> => progress_event()
 %% }
--type list_resources_output() :: #{binary() => any()}.
-
-%% Example:
-%% service_internal_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_request_status_filter() :: #{
-%%   <<"OperationStatuses">> => list(string()),
-%%   <<"Operations">> => list(string())
-%% }
--type resource_request_status_filter() :: #{binary() => any()}.
+-type update_resource_output() :: #{binary() => any()}.
 
 -type cancel_resource_request_errors() ::
     request_token_not_found_exception() | 
     concurrent_modification_exception().
 
 -type create_resource_errors() ::
-    service_internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_credentials_exception() | 
-    handler_failure_exception() | 
+    unsupported_action_exception() | 
+    type_not_found_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    not_stabilized_exception() | 
-    not_updatable_exception() | 
-    client_token_conflict_exception() | 
-    type_not_found_exception() | 
-    invalid_request_exception() | 
-    concurrent_operation_exception() | 
+    service_internal_error_exception() | 
     resource_not_found_exception() | 
-    unsupported_action_exception() | 
+    resource_conflict_exception() | 
     private_type_exception() | 
+    not_updatable_exception() | 
+    not_stabilized_exception() | 
     network_failure_exception() | 
-    already_exists_exception() | 
+    invalid_request_exception() | 
+    invalid_credentials_exception() | 
+    handler_internal_failure_exception() | 
+    handler_failure_exception() | 
     general_service_exception() | 
-    handler_internal_failure_exception().
+    concurrent_operation_exception() | 
+    client_token_conflict_exception() | 
+    already_exists_exception().
 
 -type delete_resource_errors() ::
-    service_internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_credentials_exception() | 
-    handler_failure_exception() | 
+    unsupported_action_exception() | 
+    type_not_found_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    not_stabilized_exception() | 
-    not_updatable_exception() | 
-    client_token_conflict_exception() | 
-    type_not_found_exception() | 
-    invalid_request_exception() | 
-    concurrent_operation_exception() | 
+    service_internal_error_exception() | 
     resource_not_found_exception() | 
-    unsupported_action_exception() | 
+    resource_conflict_exception() | 
     private_type_exception() | 
+    not_updatable_exception() | 
+    not_stabilized_exception() | 
     network_failure_exception() | 
-    already_exists_exception() | 
+    invalid_request_exception() | 
+    invalid_credentials_exception() | 
+    handler_internal_failure_exception() | 
+    handler_failure_exception() | 
     general_service_exception() | 
-    handler_internal_failure_exception().
+    concurrent_operation_exception() | 
+    client_token_conflict_exception() | 
+    already_exists_exception().
 
 -type get_resource_errors() ::
-    service_internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_credentials_exception() | 
-    handler_failure_exception() | 
+    unsupported_action_exception() | 
+    type_not_found_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    not_stabilized_exception() | 
-    not_updatable_exception() | 
-    type_not_found_exception() | 
-    invalid_request_exception() | 
+    service_internal_error_exception() | 
     resource_not_found_exception() | 
-    unsupported_action_exception() | 
+    resource_conflict_exception() | 
     private_type_exception() | 
+    not_updatable_exception() | 
+    not_stabilized_exception() | 
     network_failure_exception() | 
-    already_exists_exception() | 
+    invalid_request_exception() | 
+    invalid_credentials_exception() | 
+    handler_internal_failure_exception() | 
+    handler_failure_exception() | 
     general_service_exception() | 
-    handler_internal_failure_exception().
+    already_exists_exception().
 
 -type get_resource_request_status_errors() ::
     request_token_not_found_exception().
 
 -type list_resources_errors() ::
-    service_internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_credentials_exception() | 
-    handler_failure_exception() | 
+    unsupported_action_exception() | 
+    type_not_found_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    not_stabilized_exception() | 
-    not_updatable_exception() | 
-    type_not_found_exception() | 
-    invalid_request_exception() | 
+    service_internal_error_exception() | 
     resource_not_found_exception() | 
-    unsupported_action_exception() | 
+    resource_conflict_exception() | 
     private_type_exception() | 
+    not_updatable_exception() | 
+    not_stabilized_exception() | 
     network_failure_exception() | 
-    already_exists_exception() | 
+    invalid_request_exception() | 
+    invalid_credentials_exception() | 
+    handler_internal_failure_exception() | 
+    handler_failure_exception() | 
     general_service_exception() | 
-    handler_internal_failure_exception().
+    already_exists_exception().
 
 -type update_resource_errors() ::
-    service_internal_error_exception() | 
-    resource_conflict_exception() | 
-    invalid_credentials_exception() | 
-    handler_failure_exception() | 
+    unsupported_action_exception() | 
+    type_not_found_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    not_stabilized_exception() | 
-    not_updatable_exception() | 
-    client_token_conflict_exception() | 
-    type_not_found_exception() | 
-    invalid_request_exception() | 
-    concurrent_operation_exception() | 
+    service_internal_error_exception() | 
     resource_not_found_exception() | 
-    unsupported_action_exception() | 
+    resource_conflict_exception() | 
     private_type_exception() | 
+    not_updatable_exception() | 
+    not_stabilized_exception() | 
     network_failure_exception() | 
-    already_exists_exception() | 
+    invalid_request_exception() | 
+    invalid_credentials_exception() | 
+    handler_internal_failure_exception() | 
+    handler_failure_exception() | 
     general_service_exception() | 
-    handler_internal_failure_exception().
+    concurrent_operation_exception() | 
+    client_token_conflict_exception() | 
+    already_exists_exception().
 
 %%====================================================================
 %% API

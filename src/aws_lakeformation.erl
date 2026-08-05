@@ -134,251 +134,40 @@
 
 
 %% Example:
-%% delete_object_input() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"PartitionValues">> => list(string()),
-%%   <<"Uri">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_object_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% grant_permissions_request() :: #{
+%% add_l_f_tags_to_resource_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Condition">> => condition(),
-%%   <<"Permissions">> := list(list(any())()),
-%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
-%%   <<"Principal">> := data_lake_principal(),
+%%   <<"LFTags">> := list(l_f_tag_pair()),
 %%   <<"Resource">> := resource()
 %% }
--type grant_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_lake_principal_request() :: #{}
--type get_data_lake_principal_request() :: #{}.
+-type add_l_f_tags_to_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_permissions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PrincipalResourcePermissions">> => list(principal_resource_permissions())
+%% add_l_f_tags_to_resource_response() :: #{
+%%   <<"Failures">> => list(l_f_tag_error())
 %% }
--type list_permissions_response() :: #{binary() => any()}.
+-type add_l_f_tags_to_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_databases_by_l_f_tags_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Expression">> := list(l_f_tag()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% add_object_input() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PartitionValues">> => list(string()),
+%%   <<"Size">> => float(),
+%%   <<"Uri">> => string()
 %% }
--type search_databases_by_l_f_tags_request() :: #{binary() => any()}.
-
+-type add_object_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_lake_formation_identity_center_configuration_response() :: #{
-%%   <<"ApplicationArn">> => string()
-%% }
--type create_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_key_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type l_f_tag_key_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_permissions() :: #{
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"Principal">> => data_lake_principal()
-%% }
--type principal_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% operation_timeout_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceInfoList">> => list(resource_info())
-%% }
--type list_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_expression() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> => list(l_f_tag()),
-%%   <<"Name">> => string()
-%% }
--type l_f_tag_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_response() :: #{
-%%   <<"ResourceInfo">> => resource_info()
-%% }
--type describe_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_condition() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Field">> => list(any()),
-%%   <<"StringValueList">> => list(string())
-%% }
--type filter_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_l_f_tag_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> := string(),
-%%   <<"TagValuesToAdd">> => list(string()),
-%%   <<"TagValuesToDelete">> => list(string())
-%% }
--type update_l_f_tag_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_session_context() :: #{
-%%   <<"AdditionalContext">> => map(),
-%%   <<"ClusterId">> => string(),
-%%   <<"QueryAuthorizationId">> => string(),
-%%   <<"QueryId">> => string(),
-%%   <<"QueryStartTime">> => non_neg_integer()
-%% }
--type query_session_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag() :: #{
-%%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type l_f_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% expired_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type expired_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_request() :: #{
-%%   <<"ExpectedResourceOwnerAccount">> => string(),
-%%   <<"HybridAccessEnabled">> => boolean(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"WithFederation">> => boolean()
-%% }
--type update_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_table_storage_optimizer_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"StorageOptimizerConfig">> := map(),
-%%   <<"TableName">> := string()
-%% }
--type update_table_storage_optimizer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% commit_transaction_request() :: #{
-%%   <<"TransactionId">> := string()
-%% }
--type commit_transaction_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_l_f_tag_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> := string()
-%% }
--type get_l_f_tag_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_l_f_tags_response() :: #{
-%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
-%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
-%%   <<"LFTagsOnTable">> => list(l_f_tag_pair())
-%% }
--type get_resource_l_f_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_transaction_request() :: #{
-%%   <<"TransactionId">> := string()
-%% }
--type cancel_transaction_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_transaction_response() :: #{
-%%   <<"TransactionDescription">> => transaction_description()
-%% }
--type describe_transaction_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_policy_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Expression">> => list(l_f_tag()),
-%%   <<"ExpressionName">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type l_f_tag_policy_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% table_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TableWildcard">> => table_wildcard()
-%% }
--type table_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_error() :: #{
-%%   <<"Error">> => error_detail(),
-%%   <<"LFTag">> => l_f_tag_pair()
-%% }
--type l_f_tag_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% planning_statistics() :: #{
-%%   <<"EstimatedDataToScanBytes">> => float(),
-%%   <<"PlanningTimeMillis">> => float(),
-%%   <<"QueueTimeMillis">> => float(),
-%%   <<"WorkUnitsGeneratedCount">> => float()
-%% }
--type planning_statistics() :: #{binary() => any()}.
+%% all_rows_wildcard() :: #{}
+-type all_rows_wildcard() :: #{}.
 
 
 %% Example:
@@ -389,27 +178,186 @@
 
 
 %% Example:
-%% update_lake_formation_identity_center_configuration_request() :: #{
-%%   <<"ApplicationStatus">> => list(any()),
-%%   <<"CatalogId">> => string(),
-%%   <<"ExternalFiltering">> => external_filtering_configuration(),
-%%   <<"ServiceIntegrations">> => list(list()),
-%%   <<"ShareRecipients">> => list(data_lake_principal())
+%% assume_decorated_role_with_saml_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SAMLAssertion">> := string()
 %% }
--type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% all_rows_wildcard() :: #{}
--type all_rows_wildcard() :: #{}.
+-type assume_decorated_role_with_saml_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_l_f_tag_expressions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% assume_decorated_role_with_saml_response() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
 %% }
--type list_l_f_tag_expressions_request() :: #{binary() => any()}.
+-type assume_decorated_role_with_saml_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_context() :: #{
+%%   <<"AdditionalAuditContext">> => string()
+%% }
+-type audit_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_grant_permissions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Entries">> := list(batch_permissions_request_entry())
+%% }
+-type batch_grant_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_grant_permissions_response() :: #{
+%%   <<"Failures">> => list(batch_permissions_failure_entry())
+%% }
+-type batch_grant_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_permissions_failure_entry() :: #{
+%%   <<"Error">> => error_detail(),
+%%   <<"RequestEntry">> => batch_permissions_request_entry()
+%% }
+-type batch_permissions_failure_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_permissions_request_entry() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Id">> => string(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type batch_permissions_request_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_revoke_permissions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Entries">> := list(batch_permissions_request_entry())
+%% }
+-type batch_revoke_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_revoke_permissions_response() :: #{
+%%   <<"Failures">> => list(batch_permissions_failure_entry())
+%% }
+-type batch_revoke_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_transaction_request() :: #{
+%%   <<"TransactionId">> := string()
+%% }
+-type cancel_transaction_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_transaction_response() :: #{}
+-type cancel_transaction_response() :: #{}.
+
+
+%% Example:
+%% catalog_resource() :: #{
+%%   <<"Id">> => string()
+%% }
+-type catalog_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_l_f_tag() :: #{
+%%   <<"LFTags">> => list(l_f_tag_pair()),
+%%   <<"Name">> => string()
+%% }
+-type column_l_f_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_wildcard() :: #{
+%%   <<"ExcludedColumnNames">> => list(string())
+%% }
+-type column_wildcard() :: #{binary() => any()}.
+
+
+%% Example:
+%% commit_transaction_request() :: #{
+%%   <<"TransactionId">> := string()
+%% }
+-type commit_transaction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% commit_transaction_response() :: #{
+%%   <<"TransactionStatus">> => list(any())
+%% }
+-type commit_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"Expression">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_cells_filter_request() :: #{
+%%   <<"TableData">> := data_cells_filter()
+%% }
+-type create_data_cells_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_cells_filter_response() :: #{}
+-type create_data_cells_filter_response() :: #{}.
+
+
+%% Example:
+%% create_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> := list(l_f_tag()),
+%%   <<"Name">> := string()
+%% }
+-type create_l_f_tag_expression_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_l_f_tag_expression_response() :: #{}
+-type create_l_f_tag_expression_response() :: #{}.
+
+
+%% Example:
+%% create_l_f_tag_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"TagKey">> := string(),
+%%   <<"TagValues">> := list(string())
+%% }
+-type create_l_f_tag_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_l_f_tag_response() :: #{}
+-type create_l_f_tag_response() :: #{}.
 
 
 %% Example:
@@ -424,243 +372,10 @@
 
 
 %% Example:
-%% list_transactions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Transactions">> => list(transaction_description())
+%% create_lake_formation_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string()
 %% }
--type list_transactions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_glue_partition_credentials_response() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type get_temporary_glue_partition_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type database_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lake_formation_opt_in_request() :: #{
-%%   <<"Condition">> => condition(),
-%%   <<"Principal">> := data_lake_principal(),
-%%   <<"Resource">> := resource()
-%% }
--type delete_lake_formation_opt_in_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_l_f_tag_response() :: #{}
--type delete_l_f_tag_response() :: #{}.
-
-
-%% Example:
-%% create_l_f_tag_expression_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> := list(l_f_tag()),
-%%   <<"Name">> := string()
-%% }
--type create_l_f_tag_expression_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tagged_table() :: #{
-%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
-%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
-%%   <<"LFTagsOnTable">> => list(l_f_tag_pair()),
-%%   <<"Table">> => table_resource()
-%% }
--type tagged_table() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_resource_permissions() :: #{
-%%   <<"AdditionalDetails">> => details_map(),
-%%   <<"Condition">> => condition(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"LastUpdatedBy">> => string(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
-%%   <<"Principal">> => data_lake_principal(),
-%%   <<"Resource">> => resource()
-%% }
--type principal_resource_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_table_storage_optimizers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageOptimizerList">> => list(storage_optimizer())
-%% }
--type list_table_storage_optimizers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_tables_by_l_f_tags_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Expression">> := list(l_f_tag()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type search_tables_by_l_f_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_l_f_tag_expression_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> := list(l_f_tag()),
-%%   <<"Name">> := string()
-%% }
--type update_l_f_tag_expression_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% transaction_canceled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type transaction_canceled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% partition_objects() :: #{
-%%   <<"Objects">> => list(table_object()),
-%%   <<"PartitionValues">> => list(string())
-%% }
--type partition_objects() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_state_request() :: #{
-%%   <<"QueryId">> := string()
-%% }
--type get_query_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_data_location_credentials_response() :: #{
-%%   <<"AccessibleDataLocations">> => list(string()),
-%%   <<"Credentials">> => temporary_credentials(),
-%%   <<"CredentialsScope">> => list(any())
-%% }
--type get_temporary_data_location_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_l_f_tag_response() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type get_l_f_tag_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_resource_response() :: #{}
--type deregister_resource_response() :: #{}.
-
-
-%% Example:
-%% create_l_f_tag_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> := string(),
-%%   <<"TagValues">> := list(string())
-%% }
--type create_l_f_tag_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lake_formation_opt_ins_response() :: #{
-%%   <<"LakeFormationOptInsInfoList">> => list(lake_formation_opt_ins_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_lake_formation_opt_ins_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_cells_filter_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Table">> => table_resource()
-%% }
--type list_data_cells_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_number_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_number_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% virtual_object() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Uri">> => string()
-%% }
--type virtual_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_transaction_request() :: #{
-%%   <<"TransactionType">> => list(any())
-%% }
--type start_transaction_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% transaction_commit_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type transaction_commit_in_progress_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_l_f_tag_expressions_response() :: #{
-%%   <<"LFTagExpressions">> => list(l_f_tag_expression()),
-%%   <<"NextToken">> => string()
-%% }
--type list_l_f_tag_expressions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_transactions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusFilter">> => list(any())
-%% }
--type list_transactions_request() :: #{binary() => any()}.
-
-%% Example:
-%% extend_transaction_response() :: #{}
--type extend_transaction_response() :: #{}.
-
-
-%% Example:
-%% query_planning_context() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"QueryAsOfTime">> => non_neg_integer(),
-%%   <<"QueryParameters">> => map(),
-%%   <<"TransactionId">> => string()
-%% }
--type query_planning_context() :: #{binary() => any()}.
+-type create_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -671,41 +386,9 @@
 %% }
 -type create_lake_formation_opt_in_request() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_table_objects_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PartitionPredicate">> => string(),
-%%   <<"QueryAsOfTime">> => non_neg_integer(),
-%%   <<"TableName">> := string(),
-%%   <<"TransactionId">> => string()
-%% }
--type get_table_objects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_planning_request() :: #{
-%%   <<"QueryPlanningContext">> := query_planning_context(),
-%%   <<"QueryString">> := string()
-%% }
--type start_query_planning_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_principal() :: #{
-%%   <<"DataLakePrincipalIdentifier">> => string()
-%% }
--type data_lake_principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_l_f_tags_to_resource_response() :: #{
-%%   <<"Failures">> => list(l_f_tag_error())
-%% }
--type add_l_f_tags_to_resource_response() :: #{binary() => any()}.
+%% create_lake_formation_opt_in_response() :: #{}
+-type create_lake_formation_opt_in_response() :: #{}.
 
 
 %% Example:
@@ -723,537 +406,20 @@
 
 
 %% Example:
-%% delete_l_f_tag_expression_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Name">> := string()
+%% data_cells_filter_resource() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TableCatalogId">> => string(),
+%%   <<"TableName">> => string()
 %% }
--type delete_l_f_tag_expression_request() :: #{binary() => any()}.
+-type data_cells_filter_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttled_exception() :: #{
-%%   <<"Message">> => string()
+%% data_lake_principal() :: #{
+%%   <<"DataLakePrincipalIdentifier">> => string()
 %% }
--type throttled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_optimizer() :: #{
-%%   <<"Config">> => map(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LastRunDetails">> => string(),
-%%   <<"StorageOptimizerType">> => list(any()),
-%%   <<"Warnings">> => string()
-%% }
--type storage_optimizer() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_location_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type data_location_resource() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_cells_filter_response() :: #{}
--type delete_data_cells_filter_response() :: #{}.
-
-%% Example:
-%% register_resource_response() :: #{}
--type register_resource_response() :: #{}.
-
-%% Example:
-%% put_data_lake_settings_response() :: #{}
--type put_data_lake_settings_response() :: #{}.
-
-
-%% Example:
-%% partition_value_list() :: #{
-%%   <<"Values">> => list(string())
-%% }
--type partition_value_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_work_unit_results_request() :: #{
-%%   <<"QueryId">> := string(),
-%%   <<"WorkUnitId">> := float(),
-%%   <<"WorkUnitToken">> := string()
-%% }
--type get_work_unit_results_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_databases_by_l_f_tags_response() :: #{
-%%   <<"DatabaseList">> => list(tagged_database()),
-%%   <<"NextToken">> => string()
-%% }
--type search_databases_by_l_f_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_l_f_tag_response() :: #{}
--type update_l_f_tag_response() :: #{}.
-
-
-%% Example:
-%% get_data_lake_settings_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type get_data_lake_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_glue_partition_credentials_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Partition">> := partition_value_list(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"SupportedPermissionTypes">> => list(list(any())()),
-%%   <<"TableArn">> := string()
-%% }
--type get_temporary_glue_partition_credentials_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_cells_filter_response() :: #{}
--type update_data_cells_filter_response() :: #{}.
-
-
-%% Example:
-%% transaction_committed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type transaction_committed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_wildcard() :: #{
-%%   <<"ExcludedColumnNames">> => list(string())
-%% }
--type column_wildcard() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_permissions_request_entry() :: #{
-%%   <<"Condition">> => condition(),
-%%   <<"Id">> => string(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
-%%   <<"Principal">> => data_lake_principal(),
-%%   <<"Resource">> => resource()
-%% }
--type batch_permissions_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_objects_response() :: #{}
--type update_table_objects_response() :: #{}.
-
-
-%% Example:
-%% commit_transaction_response() :: #{
-%%   <<"TransactionStatus">> => list(any())
-%% }
--type commit_transaction_response() :: #{binary() => any()}.
-
-%% Example:
-%% table_wildcard() :: #{}
--type table_wildcard() :: #{}.
-
-
-%% Example:
-%% catalog_resource() :: #{
-%%   <<"Id">> => string()
-%% }
--type catalog_resource() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_response() :: #{}
--type update_resource_response() :: #{}.
-
-
-%% Example:
-%% table_object() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Size">> => float(),
-%%   <<"Uri">> => string()
-%% }
--type table_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_transaction_request() :: #{
-%%   <<"TransactionId">> := string()
-%% }
--type describe_transaction_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lake_formation_opt_ins_info() :: #{
-%%   <<"Condition">> => condition(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastUpdatedBy">> => string(),
-%%   <<"Principal">> => data_lake_principal(),
-%%   <<"Resource">> => resource()
-%% }
--type lake_formation_opt_ins_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_l_f_tags_from_resource_response() :: #{
-%%   <<"Failures">> => list(l_f_tag_error())
-%% }
--type remove_l_f_tags_from_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% details_map() :: #{
-%%   <<"ResourceShare">> => list(string())
-%% }
--type details_map() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_work_units_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => [integer()],
-%%   <<"QueryId">> := string()
-%% }
--type get_work_units_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_tables_by_l_f_tags_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(tagged_table())
-%% }
--type search_tables_by_l_f_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_object_input() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"PartitionValues">> => list(string()),
-%%   <<"Size">> => float(),
-%%   <<"Uri">> => string()
-%% }
--type add_object_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_expression_resource() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type l_f_tag_expression_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% transaction_description() :: #{
-%%   <<"TransactionEndTime">> => non_neg_integer(),
-%%   <<"TransactionId">> => string(),
-%%   <<"TransactionStartTime">> => non_neg_integer(),
-%%   <<"TransactionStatus">> => list(any())
-%% }
--type transaction_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_l_f_tags_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Resource">> := resource(),
-%%   <<"ShowAssignedLFTags">> => boolean()
-%% }
--type get_resource_l_f_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_l_f_tag_expression_response() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> => list(l_f_tag()),
-%%   <<"Name">> => string()
-%% }
--type get_l_f_tag_expression_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% row_filter() :: #{
-%%   <<"AllRowsWildcard">> => all_rows_wildcard(),
-%%   <<"FilterExpression">> => string()
-%% }
--type row_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_objects_on_cancel_response() :: #{}
--type delete_objects_on_cancel_response() :: #{}.
-
-
-%% Example:
-%% get_data_lake_settings_response() :: #{
-%%   <<"DataLakeSettings">> => data_lake_settings()
-%% }
--type get_data_lake_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_cells_filter_request() :: #{
-%%   <<"TableData">> := data_cells_filter()
-%% }
--type update_data_cells_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% write_operation() :: #{
-%%   <<"AddObject">> => add_object_input(),
-%%   <<"DeleteObject">> => delete_object_input()
-%% }
--type write_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_glue_table_credentials_response() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string(),
-%%   <<"VendedS3Path">> => list(string())
-%% }
--type get_temporary_glue_table_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_lake_formation_identity_center_configuration_response() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"CatalogId">> => string(),
-%%   <<"ExternalFiltering">> => external_filtering_configuration(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"ResourceShare">> => string(),
-%%   <<"ServiceIntegrations">> => list(list()),
-%%   <<"ShareRecipients">> => list(data_lake_principal())
-%% }
--type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_state_response() :: #{
-%%   <<"Error">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type get_query_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% temporary_credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type temporary_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"Expression">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% l_f_tag_pair() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type l_f_tag_pair() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_l_f_tag_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"TagKey">> := string()
-%% }
--type delete_l_f_tag_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lake_formation_opt_ins_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Principal">> => data_lake_principal(),
-%%   <<"Resource">> => resource()
-%% }
--type list_lake_formation_opt_ins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_lake_formation_identity_center_configuration_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type describe_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_l_f_tag_response() :: #{}
--type create_l_f_tag_response() :: #{}.
-
-%% Example:
-%% delete_lake_formation_identity_center_configuration_response() :: #{}
--type delete_lake_formation_identity_center_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_permissions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"IncludeRelated">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Principal">> => data_lake_principal(),
-%%   <<"Resource">> => resource(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type list_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_revoke_permissions_response() :: #{
-%%   <<"Failures">> => list(batch_permissions_failure_entry())
-%% }
--type batch_revoke_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_table_objects_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"TransactionId">> => string(),
-%%   <<"WriteOperations">> := list(write_operation())
-%% }
--type update_table_objects_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_lake_formation_identity_center_configuration_response() :: #{}
--type update_lake_formation_identity_center_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_data_cells_filter_response() :: #{
-%%   <<"DataCellsFilters">> => list(data_cells_filter()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_cells_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_data_location_credentials_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CredentialsScope">> => list(any()),
-%%   <<"DataLocations">> => list(string()),
-%%   <<"DurationSeconds">> => integer()
-%% }
--type get_temporary_data_location_credentials_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_permissions_failure_entry() :: #{
-%%   <<"Error">> => error_detail(),
-%%   <<"RequestEntry">> => batch_permissions_request_entry()
-%% }
--type batch_permissions_failure_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_effective_permissions_for_path_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(principal_resource_permissions())
-%% }
--type get_effective_permissions_for_path_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_grant_permissions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Entries">> := list(batch_permissions_request_entry())
-%% }
--type batch_grant_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_table_storage_optimizer_response() :: #{
-%%   <<"Result">> => string()
-%% }
--type update_table_storage_optimizer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_l_f_tags_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceShareType">> => list(any())
-%% }
--type list_l_f_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_permissions_response() :: #{}
--type revoke_permissions_response() :: #{}.
-
-
-%% Example:
-%% get_work_unit_results_response() :: #{
-%%   <<"ResultStream">> => binary()
-%% }
--type get_work_unit_results_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_resource_request() :: #{
-%%   <<"ExpectedResourceOwnerAccount">> => string(),
-%%   <<"HybridAccessEnabled">> => boolean(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UseServiceLinkedRole">> => boolean(),
-%%   <<"WithFederation">> => boolean(),
-%%   <<"WithPrivilegedAccess">> => boolean()
-%% }
--type register_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_objects_on_cancel_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Objects">> := list(virtual_object()),
-%%   <<"TableName">> := string(),
-%%   <<"TransactionId">> := string()
-%% }
--type delete_objects_on_cancel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_lake_formation_opt_in_response() :: #{}
--type create_lake_formation_opt_in_response() :: #{}.
+-type data_lake_principal() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1273,135 +439,186 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% data_location_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ResourceArn">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type data_location_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% statistics_not_ready_yet_exception() :: #{
-%%   <<"Message">> => string()
+%% database_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> => string()
 %% }
--type statistics_not_ready_yet_exception() :: #{binary() => any()}.
+-type database_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% assume_decorated_role_with_saml_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"PrincipalArn">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SAMLAssertion">> := string()
-%% }
--type assume_decorated_role_with_saml_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_grant_permissions_response() :: #{
-%%   <<"Failures">> => list(batch_permissions_failure_entry())
-%% }
--type batch_grant_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_filtering_configuration() :: #{
-%%   <<"AuthorizedTargets">> => list(string()),
-%%   <<"Status">> => list(any())
-%% }
--type external_filtering_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_cells_filter_response() :: #{}
--type create_data_cells_filter_response() :: #{}.
-
-
-%% Example:
-%% data_cells_filter_resource() :: #{
+%% delete_data_cells_filter_request() :: #{
 %%   <<"DatabaseName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"TableCatalogId">> => string(),
 %%   <<"TableName">> => string()
 %% }
--type data_cells_filter_resource() :: #{binary() => any()}.
+-type delete_data_cells_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_cells_filter_response() :: #{}
+-type delete_data_cells_filter_response() :: #{}.
 
 
 %% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_query_statistics_request() :: #{
-%%   <<"QueryId">> := string()
-%% }
--type get_query_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% work_units_not_ready_yet_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type work_units_not_ready_yet_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_context() :: #{
-%%   <<"AdditionalAuditContext">> => string()
-%% }
--type audit_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_work_units_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueryId">> => string(),
-%%   <<"WorkUnitRanges">> => list(work_unit_range())
-%% }
--type get_work_units_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tagged_database() :: #{
-%%   <<"Database">> => database_resource(),
-%%   <<"LFTags">> => list(l_f_tag_pair())
-%% }
--type tagged_database() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_data_lake_settings_request() :: #{
+%% delete_l_f_tag_expression_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"DataLakeSettings">> := data_lake_settings()
+%%   <<"Name">> := string()
 %% }
--type put_data_lake_settings_request() :: #{binary() => any()}.
+-type delete_l_f_tag_expression_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_l_f_tag_expression_response() :: #{}
--type create_l_f_tag_expression_response() :: #{}.
+%% delete_l_f_tag_expression_response() :: #{}
+-type delete_l_f_tag_expression_response() :: #{}.
 
 
 %% Example:
-%% batch_revoke_permissions_request() :: #{
+%% delete_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Entries">> := list(batch_permissions_request_entry())
+%%   <<"TagKey">> := string()
 %% }
--type batch_revoke_permissions_request() :: #{binary() => any()}.
+-type delete_l_f_tag_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_l_f_tag_response() :: #{}
+-type delete_l_f_tag_response() :: #{}.
 
 
 %% Example:
-%% create_data_cells_filter_request() :: #{
-%%   <<"TableData">> := data_cells_filter()
+%% delete_lake_formation_identity_center_configuration_request() :: #{
+%%   <<"CatalogId">> => string()
 %% }
--type create_data_cells_filter_request() :: #{binary() => any()}.
+-type delete_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lake_formation_identity_center_configuration_response() :: #{}
+-type delete_lake_formation_identity_center_configuration_response() :: #{}.
 
 
 %% Example:
-%% permission_type_mismatch_exception() :: #{
+%% delete_lake_formation_opt_in_request() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Principal">> := data_lake_principal(),
+%%   <<"Resource">> := resource()
+%% }
+-type delete_lake_formation_opt_in_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lake_formation_opt_in_response() :: #{}
+-type delete_lake_formation_opt_in_response() :: #{}.
+
+
+%% Example:
+%% delete_object_input() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PartitionValues">> => list(string()),
+%%   <<"Uri">> => string()
+%% }
+-type delete_object_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_objects_on_cancel_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Objects">> := list(virtual_object()),
+%%   <<"TableName">> := string(),
+%%   <<"TransactionId">> := string()
+%% }
+-type delete_objects_on_cancel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_objects_on_cancel_response() :: #{}
+-type delete_objects_on_cancel_response() :: #{}.
+
+
+%% Example:
+%% deregister_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type deregister_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_resource_response() :: #{}
+-type deregister_resource_response() :: #{}.
+
+
+%% Example:
+%% describe_lake_formation_identity_center_configuration_request() :: #{
+%%   <<"CatalogId">> => string()
+%% }
+-type describe_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_lake_formation_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"CatalogId">> => string(),
+%%   <<"ExternalFiltering">> => external_filtering_configuration(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"ResourceShare">> => string(),
+%%   <<"ServiceIntegrations">> => list(list()),
+%%   <<"ShareRecipients">> => list(data_lake_principal())
+%% }
+-type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type describe_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_response() :: #{
+%%   <<"ResourceInfo">> => resource_info()
+%% }
+-type describe_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_transaction_request() :: #{
+%%   <<"TransactionId">> := string()
+%% }
+-type describe_transaction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_transaction_response() :: #{
+%%   <<"TransactionDescription">> => transaction_description()
+%% }
+-type describe_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% details_map() :: #{
+%%   <<"ResourceShare">> => list(string())
+%% }
+-type details_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type permission_type_mismatch_exception() :: #{binary() => any()}.
+-type entity_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1414,12 +631,709 @@
 
 
 %% Example:
+%% expired_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type expired_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% extend_transaction_request() :: #{
+%%   <<"TransactionId">> => string()
+%% }
+-type extend_transaction_request() :: #{binary() => any()}.
+
+%% Example:
+%% extend_transaction_response() :: #{}
+-type extend_transaction_response() :: #{}.
+
+
+%% Example:
+%% external_filtering_configuration() :: #{
+%%   <<"AuthorizedTargets">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type external_filtering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Field">> => list(any()),
+%%   <<"StringValueList">> => list(string())
+%% }
+-type filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_cells_filter_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"TableCatalogId">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_data_cells_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_cells_filter_response() :: #{
+%%   <<"DataCellsFilter">> => data_cells_filter()
+%% }
+-type get_data_cells_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_principal_request() :: #{}
+-type get_data_lake_principal_request() :: #{}.
+
+
+%% Example:
+%% get_data_lake_principal_response() :: #{
+%%   <<"Identity">> => string()
+%% }
+-type get_data_lake_principal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_settings_request() :: #{
+%%   <<"CatalogId">> => string()
+%% }
+-type get_data_lake_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_lake_settings_response() :: #{
+%%   <<"DataLakeSettings">> => data_lake_settings()
+%% }
+-type get_data_lake_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_permissions_for_path_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_effective_permissions_for_path_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_effective_permissions_for_path_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(principal_resource_permissions())
+%% }
+-type get_effective_permissions_for_path_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_l_f_tag_expression_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type get_l_f_tag_expression_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_l_f_tag_expression_response() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Name">> => string()
+%% }
+-type get_l_f_tag_expression_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_l_f_tag_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"TagKey">> := string()
+%% }
+-type get_l_f_tag_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_l_f_tag_response() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type get_l_f_tag_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_state_request() :: #{
+%%   <<"QueryId">> := string()
+%% }
+-type get_query_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_state_response() :: #{
+%%   <<"Error">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type get_query_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_statistics_request() :: #{
+%%   <<"QueryId">> := string()
+%% }
+-type get_query_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_query_statistics_response() :: #{
 %%   <<"ExecutionStatistics">> => execution_statistics(),
 %%   <<"PlanningStatistics">> => planning_statistics(),
 %%   <<"QuerySubmissionTime">> => non_neg_integer()
 %% }
 -type get_query_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_l_f_tags_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Resource">> := resource(),
+%%   <<"ShowAssignedLFTags">> => boolean()
+%% }
+-type get_resource_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_l_f_tags_response() :: #{
+%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
+%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
+%%   <<"LFTagsOnTable">> => list(l_f_tag_pair())
+%% }
+-type get_resource_l_f_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_objects_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PartitionPredicate">> => string(),
+%%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"TableName">> := string(),
+%%   <<"TransactionId">> => string()
+%% }
+-type get_table_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_table_objects_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Objects">> => list(partition_objects())
+%% }
+-type get_table_objects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_data_location_credentials_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CredentialsScope">> => list(any()),
+%%   <<"DataLocations">> => list(string()),
+%%   <<"DurationSeconds">> => integer()
+%% }
+-type get_temporary_data_location_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_data_location_credentials_response() :: #{
+%%   <<"AccessibleDataLocations">> => list(string()),
+%%   <<"Credentials">> => temporary_credentials(),
+%%   <<"CredentialsScope">> => list(any())
+%% }
+-type get_temporary_data_location_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_partition_credentials_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Partition">> := partition_value_list(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"SupportedPermissionTypes">> => list(list(any())()),
+%%   <<"TableArn">> := string()
+%% }
+-type get_temporary_glue_partition_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_partition_credentials_response() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type get_temporary_glue_partition_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_table_credentials_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"QuerySessionContext">> => query_session_context(),
+%%   <<"S3Path">> => string(),
+%%   <<"SupportedPermissionTypes">> => list(list(any())()),
+%%   <<"TableArn">> := string()
+%% }
+-type get_temporary_glue_table_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_table_credentials_response() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string(),
+%%   <<"VendedS3Path">> => list(string())
+%% }
+-type get_temporary_glue_table_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_work_unit_results_request() :: #{
+%%   <<"QueryId">> := string(),
+%%   <<"WorkUnitId">> := float(),
+%%   <<"WorkUnitToken">> := string()
+%% }
+-type get_work_unit_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_work_unit_results_response() :: #{
+%%   <<"ResultStream">> => binary()
+%% }
+-type get_work_unit_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_work_units_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => [integer()],
+%%   <<"QueryId">> := string()
+%% }
+-type get_work_units_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_work_units_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"WorkUnitRanges">> => list(work_unit_range())
+%% }
+-type get_work_units_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_encryption_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type glue_encryption_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant_permissions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Condition">> => condition(),
+%%   <<"Permissions">> := list(list(any())()),
+%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
+%%   <<"Principal">> := data_lake_principal(),
+%%   <<"Resource">> := resource()
+%% }
+-type grant_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% grant_permissions_response() :: #{}
+-type grant_permissions_response() :: #{}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type l_f_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_error() :: #{
+%%   <<"Error">> => error_detail(),
+%%   <<"LFTag">> => l_f_tag_pair()
+%% }
+-type l_f_tag_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_expression() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Name">> => string()
+%% }
+-type l_f_tag_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_expression_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type l_f_tag_expression_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_key_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type l_f_tag_key_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_pair() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type l_f_tag_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% l_f_tag_policy_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"ExpressionName">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type l_f_tag_policy_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% lake_formation_opt_ins_info() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type lake_formation_opt_ins_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_cells_filter_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Table">> => table_resource()
+%% }
+-type list_data_cells_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_cells_filter_response() :: #{
+%%   <<"DataCellsFilters">> => list(data_cells_filter()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_cells_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_l_f_tag_expressions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_l_f_tag_expressions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_l_f_tag_expressions_response() :: #{
+%%   <<"LFTagExpressions">> => list(l_f_tag_expression()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_l_f_tag_expressions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_l_f_tags_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceShareType">> => list(any())
+%% }
+-type list_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_l_f_tags_response() :: #{
+%%   <<"LFTags">> => list(l_f_tag_pair()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_l_f_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lake_formation_opt_ins_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type list_lake_formation_opt_ins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lake_formation_opt_ins_response() :: #{
+%%   <<"LakeFormationOptInsInfoList">> => list(lake_formation_opt_ins_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lake_formation_opt_ins_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"IncludeRelated">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type list_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permissions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PrincipalResourcePermissions">> => list(principal_resource_permissions())
+%% }
+-type list_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_request() :: #{
+%%   <<"FilterConditionList">> => list(filter_condition()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceInfoList">> => list(resource_info())
+%% }
+-type list_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_storage_optimizers_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StorageOptimizerType">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type list_table_storage_optimizers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_table_storage_optimizers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageOptimizerList">> => list(storage_optimizer())
+%% }
+-type list_table_storage_optimizers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => list(any())
+%% }
+-type list_transactions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_transactions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Transactions">> => list(transaction_description())
+%% }
+-type list_transactions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% partition_objects() :: #{
+%%   <<"Objects">> => list(table_object()),
+%%   <<"PartitionValues">> => list(string())
+%% }
+-type partition_objects() :: #{binary() => any()}.
+
+
+%% Example:
+%% partition_value_list() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type partition_value_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_type_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type permission_type_mismatch_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% planning_statistics() :: #{
+%%   <<"EstimatedDataToScanBytes">> => float(),
+%%   <<"PlanningTimeMillis">> => float(),
+%%   <<"QueueTimeMillis">> => float(),
+%%   <<"WorkUnitsGeneratedCount">> => float()
+%% }
+-type planning_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_permissions() :: #{
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"Principal">> => data_lake_principal()
+%% }
+-type principal_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_resource_permissions() :: #{
+%%   <<"AdditionalDetails">> => details_map(),
+%%   <<"Condition">> => condition(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type principal_resource_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_data_lake_settings_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DataLakeSettings">> := data_lake_settings()
+%% }
+-type put_data_lake_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_lake_settings_response() :: #{}
+-type put_data_lake_settings_response() :: #{}.
+
+
+%% Example:
+%% query_planning_context() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"QueryParameters">> => map(),
+%%   <<"TransactionId">> => string()
+%% }
+-type query_planning_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_session_context() :: #{
+%%   <<"AdditionalContext">> => map(),
+%%   <<"ClusterId">> => string(),
+%%   <<"QueryAuthorizationId">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStartTime">> => non_neg_integer()
+%% }
+-type query_session_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_connect() :: #{
+%%   <<"Authorization">> => list(any())
+%% }
+-type redshift_connect() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_resource_request() :: #{
+%%   <<"ExpectedResourceOwnerAccount">> => string(),
+%%   <<"HybridAccessEnabled">> => boolean(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UseServiceLinkedRole">> => boolean(),
+%%   <<"WithFederation">> => boolean(),
+%%   <<"WithPrivilegedAccess">> => boolean()
+%% }
+-type register_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_resource_response() :: #{}
+-type register_resource_response() :: #{}.
+
+
+%% Example:
+%% remove_l_f_tags_from_resource_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"LFTags">> := list(l_f_tag_pair()),
+%%   <<"Resource">> := resource()
+%% }
+-type remove_l_f_tags_from_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_l_f_tags_from_resource_response() :: #{
+%%   <<"Failures">> => list(l_f_tag_error())
+%% }
+-type remove_l_f_tags_from_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"Catalog">> => catalog_resource(),
+%%   <<"DataCellsFilter">> => data_cells_filter_resource(),
+%%   <<"DataLocation">> => data_location_resource(),
+%%   <<"Database">> => database_resource(),
+%%   <<"LFTag">> => l_f_tag_key_resource(),
+%%   <<"LFTagExpression">> => l_f_tag_expression_resource(),
+%%   <<"LFTagPolicy">> => l_f_tag_policy_resource(),
+%%   <<"Table">> => table_resource(),
+%%   <<"TableWithColumns">> => table_with_columns_resource()
+%% }
+-type resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1437,25 +1351,147 @@
 
 
 %% Example:
-%% describe_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% resource_not_ready_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type describe_resource_request() :: #{binary() => any()}.
+-type resource_not_ready_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_table_objects_response() :: #{
+%% resource_number_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_number_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_permissions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Condition">> => condition(),
+%%   <<"Permissions">> := list(list(any())()),
+%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
+%%   <<"Principal">> := data_lake_principal(),
+%%   <<"Resource">> := resource()
+%% }
+-type revoke_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_permissions_response() :: #{}
+-type revoke_permissions_response() :: #{}.
+
+
+%% Example:
+%% row_filter() :: #{
+%%   <<"AllRowsWildcard">> => all_rows_wildcard(),
+%%   <<"FilterExpression">> => string()
+%% }
+-type row_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_databases_by_l_f_tags_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Expression">> := list(l_f_tag()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_databases_by_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_databases_by_l_f_tags_response() :: #{
+%%   <<"DatabaseList">> => list(tagged_database()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_databases_by_l_f_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_tables_by_l_f_tags_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Expression">> := list(l_f_tag()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_tables_by_l_f_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_tables_by_l_f_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Objects">> => list(partition_objects())
+%%   <<"TableList">> => list(tagged_table())
 %% }
--type get_table_objects_response() :: #{binary() => any()}.
+-type search_tables_by_l_f_tags_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% extend_transaction_request() :: #{
+%% start_query_planning_request() :: #{
+%%   <<"QueryPlanningContext">> := query_planning_context(),
+%%   <<"QueryString">> := string()
+%% }
+-type start_query_planning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_planning_response() :: #{
+%%   <<"QueryId">> => string()
+%% }
+-type start_query_planning_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_transaction_request() :: #{
+%%   <<"TransactionType">> => list(any())
+%% }
+-type start_transaction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_transaction_response() :: #{
 %%   <<"TransactionId">> => string()
 %% }
--type extend_transaction_request() :: #{binary() => any()}.
+-type start_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistics_not_ready_yet_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type statistics_not_ready_yet_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_optimizer() :: #{
+%%   <<"Config">> => map(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastRunDetails">> => string(),
+%%   <<"StorageOptimizerType">> => list(any()),
+%%   <<"Warnings">> => string()
+%% }
+-type storage_optimizer() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_object() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"Uri">> => string()
+%% }
+-type table_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TableWildcard">> => table_wildcard()
+%% }
+-type table_resource() :: #{binary() => any()}.
+
+%% Example:
+%% table_wildcard() :: #{}
+-type table_wildcard() :: #{}.
 
 
 %% Example:
@@ -1470,117 +1506,178 @@
 
 
 %% Example:
-%% list_resources_request() :: #{
-%%   <<"FilterConditionList">> => list(filter_condition()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% tagged_database() :: #{
+%%   <<"Database">> => database_resource(),
+%%   <<"LFTags">> => list(l_f_tag_pair())
 %% }
--type list_resources_request() :: #{binary() => any()}.
+-type tagged_database() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_l_f_tags_response() :: #{
-%%   <<"LFTags">> => list(l_f_tag_pair()),
-%%   <<"NextToken">> => string()
+%% tagged_table() :: #{
+%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
+%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
+%%   <<"LFTagsOnTable">> => list(l_f_tag_pair()),
+%%   <<"Table">> => table_resource()
 %% }
--type list_l_f_tags_response() :: #{binary() => any()}.
+-type tagged_table() :: #{binary() => any()}.
 
 
 %% Example:
-%% revoke_permissions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Condition">> => condition(),
-%%   <<"Permissions">> := list(list(any())()),
-%%   <<"PermissionsWithGrantOption">> => list(list(any())()),
-%%   <<"Principal">> := data_lake_principal(),
-%%   <<"Resource">> := resource()
+%% temporary_credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
 %% }
--type revoke_permissions_request() :: #{binary() => any()}.
+-type temporary_credentials() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_data_cells_filter_request() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TableCatalogId">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type delete_data_cells_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lake_formation_identity_center_configuration_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type delete_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_connect() :: #{
-%%   <<"Authorization">> => list(any())
-%% }
--type redshift_connect() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_transaction_response() :: #{}
--type cancel_transaction_response() :: #{}.
-
-
-%% Example:
-%% get_data_cells_filter_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"TableCatalogId">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type get_data_cells_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_temporary_glue_table_credentials_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"QuerySessionContext">> => query_session_context(),
-%%   <<"S3Path">> => string(),
-%%   <<"SupportedPermissionTypes">> => list(list(any())()),
-%%   <<"TableArn">> := string()
-%% }
--type get_temporary_glue_table_credentials_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_encryption_exception() :: #{
+%% throttled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type glue_encryption_exception() :: #{binary() => any()}.
+-type throttled_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_l_f_tag_expression_request() :: #{
+%% transaction_canceled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_canceled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction_commit_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_commit_in_progress_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction_committed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_committed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transaction_description() :: #{
+%%   <<"TransactionEndTime">> => non_neg_integer(),
+%%   <<"TransactionId">> => string(),
+%%   <<"TransactionStartTime">> => non_neg_integer(),
+%%   <<"TransactionStatus">> => list(any())
+%% }
+-type transaction_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_cells_filter_request() :: #{
+%%   <<"TableData">> := data_cells_filter()
+%% }
+-type update_data_cells_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_cells_filter_response() :: #{}
+-type update_data_cells_filter_response() :: #{}.
+
+
+%% Example:
+%% update_l_f_tag_expression_request() :: #{
 %%   <<"CatalogId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> := list(l_f_tag()),
 %%   <<"Name">> := string()
 %% }
--type get_l_f_tag_expression_request() :: #{binary() => any()}.
+-type update_l_f_tag_expression_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_l_f_tag_expression_response() :: #{}
+-type update_l_f_tag_expression_response() :: #{}.
 
 
 %% Example:
-%% remove_l_f_tags_from_resource_request() :: #{
+%% update_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"LFTags">> := list(l_f_tag_pair()),
-%%   <<"Resource">> := resource()
+%%   <<"TagKey">> := string(),
+%%   <<"TagValuesToAdd">> => list(string()),
+%%   <<"TagValuesToDelete">> => list(string())
 %% }
--type remove_l_f_tags_from_resource_request() :: #{binary() => any()}.
+-type update_l_f_tag_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_l_f_tag_response() :: #{}
+-type update_l_f_tag_response() :: #{}.
 
 
 %% Example:
-%% get_effective_permissions_for_path_request() :: #{
+%% update_lake_formation_identity_center_configuration_request() :: #{
+%%   <<"ApplicationStatus">> => list(any()),
 %%   <<"CatalogId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
+%%   <<"ExternalFiltering">> => external_filtering_configuration(),
+%%   <<"ServiceIntegrations">> => list(list()),
+%%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
--type get_effective_permissions_for_path_request() :: #{binary() => any()}.
+-type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_lake_formation_identity_center_configuration_response() :: #{}
+-type update_lake_formation_identity_center_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_resource_request() :: #{
+%%   <<"ExpectedResourceOwnerAccount">> => string(),
+%%   <<"HybridAccessEnabled">> => boolean(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"WithFederation">> => boolean()
+%% }
+-type update_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_response() :: #{}
+-type update_resource_response() :: #{}.
+
+
+%% Example:
+%% update_table_objects_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"TransactionId">> => string(),
+%%   <<"WriteOperations">> := list(write_operation())
+%% }
+-type update_table_objects_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_objects_response() :: #{}
+-type update_table_objects_response() :: #{}.
+
+
+%% Example:
+%% update_table_storage_optimizer_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"StorageOptimizerConfig">> := map(),
+%%   <<"TableName">> := string()
+%% }
+-type update_table_storage_optimizer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_table_storage_optimizer_response() :: #{
+%%   <<"Result">> => string()
+%% }
+-type update_table_storage_optimizer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% virtual_object() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type virtual_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1593,290 +1690,193 @@
 
 
 %% Example:
-%% get_data_lake_principal_response() :: #{
-%%   <<"Identity">> => string()
-%% }
--type get_data_lake_principal_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_cells_filter_response() :: #{
-%%   <<"DataCellsFilter">> => data_cells_filter()
-%% }
--type get_data_cells_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_ready_exception() :: #{
+%% work_units_not_ready_yet_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_not_ready_exception() :: #{binary() => any()}.
+-type work_units_not_ready_yet_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% assume_decorated_role_with_saml_response() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
+%% write_operation() :: #{
+%%   <<"AddObject">> => add_object_input(),
+%%   <<"DeleteObject">> => delete_object_input()
 %% }
--type assume_decorated_role_with_saml_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type deregister_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_l_f_tag_expression_response() :: #{}
--type update_l_f_tag_expression_response() :: #{}.
-
-
-%% Example:
-%% list_table_storage_optimizers_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StorageOptimizerType">> => list(any()),
-%%   <<"TableName">> := string()
-%% }
--type list_table_storage_optimizers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_transaction_response() :: #{
-%%   <<"TransactionId">> => string()
-%% }
--type start_transaction_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lake_formation_opt_in_response() :: #{}
--type delete_lake_formation_opt_in_response() :: #{}.
-
-%% Example:
-%% grant_permissions_response() :: #{}
--type grant_permissions_response() :: #{}.
-
-%% Example:
-%% delete_l_f_tag_expression_response() :: #{}
--type delete_l_f_tag_expression_response() :: #{}.
-
-
-%% Example:
-%% add_l_f_tags_to_resource_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"LFTags">> := list(l_f_tag_pair()),
-%%   <<"Resource">> := resource()
-%% }
--type add_l_f_tags_to_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_query_planning_response() :: #{
-%%   <<"QueryId">> => string()
-%% }
--type start_query_planning_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_l_f_tag() :: #{
-%%   <<"LFTags">> => list(l_f_tag_pair()),
-%%   <<"Name">> => string()
-%% }
--type column_l_f_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"Catalog">> => catalog_resource(),
-%%   <<"DataCellsFilter">> => data_cells_filter_resource(),
-%%   <<"DataLocation">> => data_location_resource(),
-%%   <<"Database">> => database_resource(),
-%%   <<"LFTag">> => l_f_tag_key_resource(),
-%%   <<"LFTagExpression">> => l_f_tag_expression_resource(),
-%%   <<"LFTagPolicy">> => l_f_tag_policy_resource(),
-%%   <<"Table">> => table_resource(),
-%%   <<"TableWithColumns">> => table_with_columns_resource()
-%% }
--type resource() :: #{binary() => any()}.
+-type write_operation() :: #{binary() => any()}.
 
 -type add_l_f_tags_to_resource_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type assume_decorated_role_with_saml_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type batch_grant_permissions_errors() ::
-    invalid_input_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    invalid_input_exception().
 
 -type batch_revoke_permissions_errors() ::
-    invalid_input_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    invalid_input_exception().
 
 -type cancel_transaction_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     transaction_committed_exception() | 
     transaction_commit_in_progress_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type commit_transaction_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
     transaction_canceled_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type create_data_cells_filter_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
 
 -type create_l_f_tag_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type create_l_f_tag_expression_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type create_lake_formation_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    concurrent_modification_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_lake_formation_opt_in_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_data_cells_filter_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_l_f_tag_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_l_f_tag_expression_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_lake_formation_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_lake_formation_opt_in_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_objects_on_cancel_errors() ::
-    resource_not_ready_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     transaction_committed_exception() | 
-    internal_service_exception() | 
     transaction_canceled_exception() | 
+    resource_not_ready_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type deregister_resource_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type describe_lake_formation_identity_center_configuration_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_resource_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type describe_transaction_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type extend_transaction_errors() ::
-    invalid_input_exception() | 
     transaction_committed_exception() | 
     transaction_commit_in_progress_exception() | 
-    internal_service_exception() | 
     transaction_canceled_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type get_data_cells_filter_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_data_lake_principal_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type get_data_lake_settings_errors() ::
     invalid_input_exception() | 
@@ -1884,253 +1884,253 @@
     entity_not_found_exception().
 
 -type get_effective_permissions_for_path_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_l_f_tag_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_l_f_tag_expression_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_query_state_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_query_statistics_errors() ::
-    statistics_not_ready_yet_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     throttled_exception() | 
+    statistics_not_ready_yet_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    expired_exception().
+    expired_exception() | 
+    access_denied_exception().
 
 -type get_resource_l_f_tags_errors() ::
-    glue_encryption_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_table_objects_errors() ::
-    resource_not_ready_exception() | 
-    invalid_input_exception() | 
     transaction_committed_exception() | 
-    internal_service_exception() | 
     transaction_canceled_exception() | 
+    resource_not_ready_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type get_temporary_data_location_credentials_errors() ::
-    glue_encryption_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    conflict_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_temporary_glue_partition_credentials_errors() ::
     permission_type_mismatch_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_temporary_glue_table_credentials_errors() ::
     permission_type_mismatch_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_work_unit_results_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     throttled_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    expired_exception().
+    expired_exception() | 
+    access_denied_exception().
 
 -type get_work_units_errors() ::
     work_units_not_ready_yet_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    expired_exception().
+    expired_exception() | 
+    access_denied_exception().
 
 -type grant_permissions_errors() ::
-    concurrent_modification_exception() | 
     invalid_input_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type list_data_cells_filter_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_l_f_tag_expressions_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_l_f_tags_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_lake_formation_opt_ins_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_permissions_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_resources_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_table_storage_optimizers_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_transactions_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type put_data_lake_settings_errors() ::
     invalid_input_exception() | 
     internal_service_exception().
 
 -type register_resource_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
 
 -type remove_l_f_tags_from_resource_errors() ::
-    glue_encryption_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type revoke_permissions_errors() ::
-    concurrent_modification_exception() | 
     invalid_input_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type search_databases_by_l_f_tags_errors() ::
-    glue_encryption_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type search_tables_by_l_f_tags_errors() ::
-    glue_encryption_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type start_query_planning_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     throttled_exception() | 
-    internal_service_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_transaction_errors() ::
-    internal_service_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_service_exception().
 
 -type update_data_cells_filter_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_l_f_tag_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_l_f_tag_expression_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type update_lake_formation_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_resource_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type update_table_objects_errors() ::
-    resource_not_ready_exception() | 
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     transaction_committed_exception() | 
     transaction_commit_in_progress_exception() | 
-    internal_service_exception() | 
     transaction_canceled_exception() | 
+    resource_not_ready_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type update_table_storage_optimizer_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
+
+-type update_table_storage_optimizer_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

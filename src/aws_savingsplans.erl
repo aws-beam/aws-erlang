@@ -39,11 +39,33 @@
 
 
 %% Example:
-%% describe_savings_plans_offerings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"searchResults">> => list(savings_plan_offering())
+%% create_savings_plan_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"commitment">> := string(),
+%%   <<"purchaseTime">> => non_neg_integer(),
+%%   <<"savingsPlanOfferingId">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"upfrontPaymentAmount">> => string()
 %% }
--type describe_savings_plans_offerings_response() :: #{binary() => any()}.
+-type create_savings_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_savings_plan_response() :: #{
+%%   <<"savingsPlanId">> => string()
+%% }
+-type create_savings_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_queued_savings_plan_request() :: #{
+%%   <<"savingsPlanId">> := string()
+%% }
+-type delete_queued_savings_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queued_savings_plan_response() :: #{}
+-type delete_queued_savings_plan_response() :: #{}.
 
 
 %% Example:
@@ -57,81 +79,12 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% savings_plan_rate_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type savings_plan_rate_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_savings_plans_request() :: #{
-%%   <<"filters">> => list(savings_plan_filter()),
-%%   <<"maxResults">> => integer(),
+%% describe_savings_plan_rates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"savingsPlanArns">> => list(string()),
-%%   <<"savingsPlanIds">> => list(string()),
-%%   <<"states">> => list(list(any())())
+%%   <<"savingsPlanId">> => string(),
+%%   <<"searchResults">> => list(savings_plan_rate())
 %% }
--type describe_savings_plans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_savings_plan_response() :: #{
-%%   <<"savingsPlanId">> => string()
-%% }
--type create_savings_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% savings_plan_offering_rate() :: #{
-%%   <<"operation">> => string(),
-%%   <<"productType">> => list(any()),
-%%   <<"properties">> => list(savings_plan_offering_rate_property()),
-%%   <<"rate">> => string(),
-%%   <<"savingsPlanOffering">> => parent_savings_plan_offering(),
-%%   <<"serviceCode">> => list(any()),
-%%   <<"unit">> => list(any()),
-%%   <<"usageType">> => string()
-%% }
--type savings_plan_offering_rate() :: #{binary() => any()}.
-
-
-%% Example:
-%% savings_plan_offering_rate_property() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type savings_plan_offering_rate_property() :: #{binary() => any()}.
-
-
-%% Example:
-%% savings_plan_offering() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"durationSeconds">> => float(),
-%%   <<"offeringId">> => string(),
-%%   <<"operation">> => string(),
-%%   <<"paymentOption">> => list(any()),
-%%   <<"planType">> => list(any()),
-%%   <<"productTypes">> => list(list(any())()),
-%%   <<"properties">> => list(savings_plan_offering_property()),
-%%   <<"serviceCode">> => string(),
-%%   <<"usageType">> => string()
-%% }
--type savings_plan_offering() :: #{binary() => any()}.
+-type describe_savings_plan_rates_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -151,52 +104,79 @@
 
 
 %% Example:
-%% savings_plan_rate() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"operation">> => string(),
+%% describe_savings_plans_offering_rates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchResults">> => list(savings_plan_offering_rate())
+%% }
+-type describe_savings_plans_offering_rates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_savings_plans_offerings_request() :: #{
+%%   <<"currencies">> => list(list(any())()),
+%%   <<"descriptions">> => list(string()),
+%%   <<"durations">> => list(float()),
+%%   <<"filters">> => list(savings_plan_offering_filter_element()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"offeringIds">> => list(string()),
+%%   <<"operations">> => list(string()),
+%%   <<"paymentOptions">> => list(list(any())()),
+%%   <<"planTypes">> => list(list(any())()),
 %%   <<"productType">> => list(any()),
-%%   <<"properties">> => list(savings_plan_rate_property()),
-%%   <<"rate">> => string(),
-%%   <<"serviceCode">> => list(any()),
-%%   <<"unit">> => list(any()),
-%%   <<"usageType">> => string()
+%%   <<"serviceCodes">> => list(string()),
+%%   <<"usageTypes">> => list(string())
 %% }
--type savings_plan_rate() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queued_savings_plan_response() :: #{}
--type delete_queued_savings_plan_response() :: #{}.
+-type describe_savings_plans_offerings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% savings_plan_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
+%% describe_savings_plans_offerings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchResults">> => list(savings_plan_offering())
 %% }
--type savings_plan_filter() :: #{binary() => any()}.
+-type describe_savings_plans_offerings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
+%% describe_savings_plans_request() :: #{
+%%   <<"filters">> => list(savings_plan_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlanArns">> => list(string()),
+%%   <<"savingsPlanIds">> => list(string()),
+%%   <<"states">> => list(list(any())())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type describe_savings_plans_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% savings_plan_offering_property() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
+%% describe_savings_plans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlans">> => list(savings_plan())
 %% }
--type savings_plan_offering_property() :: #{binary() => any()}.
+-type describe_savings_plans_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -212,10 +192,10 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -227,10 +207,10 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% return_savings_plan_response() :: #{
+%%   <<"savingsPlanId">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type return_savings_plan_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -259,87 +239,28 @@
 
 
 %% Example:
-%% create_savings_plan_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"commitment">> := string(),
-%%   <<"purchaseTime">> => non_neg_integer(),
-%%   <<"savingsPlanOfferingId">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"upfrontPaymentAmount">> => string()
-%% }
--type create_savings_plan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_savings_plans_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"savingsPlans">> => list(savings_plan())
-%% }
--type describe_savings_plans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_savings_plans_offering_rates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"searchResults">> => list(savings_plan_offering_rate())
-%% }
--type describe_savings_plans_offering_rates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_savings_plan_rates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"savingsPlanId">> => string(),
-%%   <<"searchResults">> => list(savings_plan_rate())
-%% }
--type describe_savings_plan_rates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_queued_savings_plan_request() :: #{
-%%   <<"savingsPlanId">> := string()
-%% }
--type delete_queued_savings_plan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% savings_plan_rate_property() :: #{
+%% savings_plan_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"value">> => string()
+%%   <<"values">> => list(string())
 %% }
--type savings_plan_rate_property() :: #{binary() => any()}.
+-type savings_plan_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% return_savings_plan_response() :: #{
-%%   <<"savingsPlanId">> => string()
+%% savings_plan_offering() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"durationSeconds">> => float(),
+%%   <<"offeringId">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"paymentOption">> => list(any()),
+%%   <<"planType">> => list(any()),
+%%   <<"productTypes">> => list(list(any())()),
+%%   <<"properties">> => list(savings_plan_offering_property()),
+%%   <<"serviceCode">> => string(),
+%%   <<"usageType">> => string()
 %% }
--type return_savings_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type savings_plan_offering() :: #{binary() => any()}.
 
 
 %% Example:
@@ -351,22 +272,25 @@
 
 
 %% Example:
-%% describe_savings_plans_offerings_request() :: #{
-%%   <<"currencies">> => list(list(any())()),
-%%   <<"descriptions">> => list(string()),
-%%   <<"durations">> => list(float()),
-%%   <<"filters">> => list(savings_plan_offering_filter_element()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"offeringIds">> => list(string()),
-%%   <<"operations">> => list(string()),
-%%   <<"paymentOptions">> => list(list(any())()),
-%%   <<"planTypes">> => list(list(any())()),
-%%   <<"productType">> => list(any()),
-%%   <<"serviceCodes">> => list(string()),
-%%   <<"usageTypes">> => list(string())
+%% savings_plan_offering_property() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
 %% }
--type describe_savings_plans_offerings_request() :: #{binary() => any()}.
+-type savings_plan_offering_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% savings_plan_offering_rate() :: #{
+%%   <<"operation">> => string(),
+%%   <<"productType">> => list(any()),
+%%   <<"properties">> => list(savings_plan_offering_rate_property()),
+%%   <<"rate">> => string(),
+%%   <<"savingsPlanOffering">> => parent_savings_plan_offering(),
+%%   <<"serviceCode">> => list(any()),
+%%   <<"unit">> => list(any()),
+%%   <<"usageType">> => string()
+%% }
+-type savings_plan_offering_rate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,22 +300,98 @@
 %% }
 -type savings_plan_offering_rate_filter_element() :: #{binary() => any()}.
 
+
+%% Example:
+%% savings_plan_offering_rate_property() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type savings_plan_offering_rate_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% savings_plan_rate() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"operation">> => string(),
+%%   <<"productType">> => list(any()),
+%%   <<"properties">> => list(savings_plan_rate_property()),
+%%   <<"rate">> => string(),
+%%   <<"serviceCode">> => list(any()),
+%%   <<"unit">> => list(any()),
+%%   <<"usageType">> => string()
+%% }
+-type savings_plan_rate() :: #{binary() => any()}.
+
+
+%% Example:
+%% savings_plan_rate_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type savings_plan_rate_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% savings_plan_rate_property() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type savings_plan_rate_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type create_savings_plan_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_queued_savings_plan_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_savings_plan_rates_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_savings_plans_errors() ::
     validation_exception() | 
@@ -407,25 +407,25 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type return_savings_plan_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -137,88 +137,204 @@
 
 
 %% Example:
-%% put_channel_policy_request() :: #{
-%%   <<"Policy">> := string()
+%% access_configuration() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"SecretsManagerAccessTokenConfiguration">> => secrets_manager_access_token_configuration()
 %% }
--type put_channel_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_program_response() :: #{}
--type delete_program_response() :: #{}.
+-type access_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% live_pre_roll_configuration() :: #{
-%%   <<"AdDecisionServerUrl">> => string(),
-%%   <<"MaxDurationSeconds">> => integer()
+%% ad_break() :: #{
+%%   <<"AdBreakMetadata">> => list(key_value_pair()),
+%%   <<"MessageType">> => list(any()),
+%%   <<"OffsetMillis">> => float(),
+%%   <<"Slate">> => slate_source(),
+%%   <<"SpliceInsertMessage">> => splice_insert_message(),
+%%   <<"TimeSignalMessage">> => time_signal_message()
 %% }
--type live_pre_roll_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_request() :: #{}
--type delete_channel_request() :: #{}.
+-type ad_break() :: #{binary() => any()}.
 
 
 %% Example:
-%% response_output_item() :: #{
-%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
-%%   <<"DualStackPlaybackUrl">> => string(),
-%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
-%%   <<"ManifestName">> => string(),
-%%   <<"PlaybackUrl">> => string(),
-%%   <<"SourceGroup">> => string()
+%% ad_break_opportunity() :: #{
+%%   <<"OffsetMillis">> => float()
 %% }
--type response_output_item() :: #{binary() => any()}.
+-type ad_break_opportunity() :: #{binary() => any()}.
 
 
 %% Example:
-%% sequential_executor_configuration() :: #{
-%%   <<"FunctionList">> => list(function_ref()),
-%%   <<"Output">> => map(),
-%%   <<"Runtime">> => list(any()),
-%%   <<"TimeoutMilliseconds">> => integer()
+%% ad_conditioning_configuration() :: #{
+%%   <<"StreamingMediaFileConditioning">> => list(any())
 %% }
--type sequential_executor_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% put_channel_policy_response() :: #{}
--type put_channel_policy_response() :: #{}.
+-type ad_conditioning_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% vod_source() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%% ad_decision_server_configuration() :: #{
+%%   <<"HttpRequest">> => http_request()
+%% }
+-type ad_decision_server_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_marker_passthrough() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type ad_marker_passthrough() :: #{binary() => any()}.
+
+
+%% Example:
+%% ads_interaction_log() :: #{
+%%   <<"ExcludeEventTypes">> => list(list(any())()),
+%%   <<"PublishOptInEventTypes">> => list(list(any())())
+%% }
+-type ads_interaction_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% ads_personalization_concurrency() :: #{
+%%   <<"EnableVodVastParallelization">> => boolean(),
+%%   <<"MaxConcurrentAdsRequests">> => integer()
+%% }
+-type ads_personalization_concurrency() :: #{binary() => any()}.
+
+
+%% Example:
+%% ads_personalization_timeouts() :: #{
+%%   <<"AdsRequestTimeoutMilliseconds">> => integer(),
+%%   <<"LiveMaximumAdsPersonalizationTimeMilliseconds">> => integer(),
+%%   <<"PrefetchAdsRequestTimeoutMilliseconds">> => integer(),
+%%   <<"PrefetchMaximumAdsPersonalizationTimeMilliseconds">> => integer(),
+%%   <<"VodMaximumAdsPersonalizationTimeMilliseconds">> => integer()
+%% }
+-type ads_personalization_timeouts() :: #{binary() => any()}.
+
+
+%% Example:
+%% alert() :: #{
+%%   <<"AlertCode">> => string(),
+%%   <<"AlertMessage">> => string(),
+%%   <<"Category">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RelatedResourceArns">> => list(string()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type alert() :: #{binary() => any()}.
+
+
+%% Example:
+%% alternate_media() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ScheduledStartTimeMillis">> => float(),
 %%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
 %%   <<"VodSourceName">> => string()
 %% }
--type vod_source() :: #{binary() => any()}.
+-type alternate_media() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_function_request() :: #{
-%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"FunctionType">> := list(any()),
-%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
-%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
+%% audience_media() :: #{
+%%   <<"AlternateMedia">> => list(alternate_media()),
+%%   <<"Audience">> => string()
 %% }
--type put_function_request() :: #{binary() => any()}.
+-type audience_media() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% avail_matching_criteria() :: #{
+%%   <<"DynamicVariable">> => string(),
+%%   <<"Operator">> => list(any())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type avail_matching_criteria() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_vod_source_request() :: #{}
--type describe_vod_source_request() :: #{}.
+%% avail_suppression() :: #{
+%%   <<"FillPolicy">> => list(any()),
+%%   <<"Mode">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type avail_suppression() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bumper() :: #{
+%%   <<"EndUrl">> => string(),
+%%   <<"StartUrl">> => string()
+%% }
+-type bumper() :: #{binary() => any()}.
+
+
+%% Example:
+%% cdn_configuration() :: #{
+%%   <<"AdSegmentUrlPrefix">> => string(),
+%%   <<"ContentSegmentUrlPrefix">> => string()
+%% }
+-type cdn_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfiguration">> => log_configuration_for_channel(),
+%%   <<"Outputs">> => list(response_output_item()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string()
+%% }
+-type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% clip_range() :: #{
+%%   <<"EndOffsetMillis">> => float(),
+%%   <<"StartOffsetMillis">> => float()
+%% }
+-type clip_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_channel_request() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"LogTypes">> := list(list(any())())
+%% }
+-type configure_logs_for_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_channel_response() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type configure_logs_for_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% configure_logs_for_playback_configuration_request() :: #{
+%%   <<"AdsInteractionLog">> => ads_interaction_log(),
+%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
+%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
+%%   <<"PercentEnabled">> => integer(),
+%%   <<"PlaybackConfigurationName">> => string()
+%% }
+-type configure_logs_for_playback_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -233,34 +349,16 @@
 
 
 %% Example:
-%% update_vod_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
+%% create_channel_request() :: #{
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"Outputs">> := list(request_output_item()),
+%%   <<"PlaybackMode">> := list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
+%%   <<"Tier">> => list(any()),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
 %% }
--type update_vod_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vod_source_request() :: #{}
--type delete_vod_source_request() :: #{}.
-
-
-%% Example:
-%% describe_vod_source_response() :: #{
-%%   <<"AdBreakOpportunities">> => list(ad_break_opportunity()),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type describe_vod_source_response() :: #{binary() => any()}.
+-type create_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -282,11 +380,560 @@
 
 
 %% Example:
-%% configure_logs_for_channel_request() :: #{
-%%   <<"ChannelName">> := string(),
-%%   <<"LogTypes">> := list(list(any())())
+%% create_live_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
+%%   <<"Tags">> => map()
 %% }
--type configure_logs_for_channel_request() :: #{binary() => any()}.
+-type create_live_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_live_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prefetch_schedule_request() :: #{
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_prefetch_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prefetch_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_prefetch_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_program_request() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"AudienceMedia">> => list(audience_media()),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ScheduleConfiguration">> := schedule_configuration(),
+%%   <<"SourceLocationName">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_source_location_request() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> := http_configuration(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
+%%   <<"Tags">> => map()
+%% }
+-type create_source_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_source_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vod_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
+%%   <<"Tags">> => map()
+%% }
+-type create_vod_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vod_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type create_vod_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_output_configuration() :: #{
+%%   <<"Output">> => map(),
+%%   <<"Runtime">> => list(any())
+%% }
+-type custom_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_configuration() :: #{
+%%   <<"DualStackManifestEndpointPrefix">> => string(),
+%%   <<"ManifestEndpointPrefix">> => string(),
+%%   <<"MpdLocation">> => string(),
+%%   <<"OriginManifestType">> => list(any())
+%% }
+-type dash_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_configuration_for_put() :: #{
+%%   <<"MpdLocation">> => string(),
+%%   <<"OriginManifestType">> => list(any())
+%% }
+-type dash_configuration_for_put() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_playlist_settings() :: #{
+%%   <<"ManifestWindowSeconds">> => integer(),
+%%   <<"MinBufferTimeSeconds">> => integer(),
+%%   <<"MinUpdatePeriodSeconds">> => integer(),
+%%   <<"SuggestedPresentationDelaySeconds">> => integer()
+%% }
+-type dash_playlist_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_segment_delivery_configuration() :: #{
+%%   <<"BaseUrl">> => string()
+%% }
+-type default_segment_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_policy_request() :: #{}
+-type delete_channel_policy_request() :: #{}.
+
+%% Example:
+%% delete_channel_policy_response() :: #{}
+-type delete_channel_policy_response() :: #{}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+%% Example:
+%% delete_channel_response() :: #{}
+-type delete_channel_response() :: #{}.
+
+%% Example:
+%% delete_function_request() :: #{}
+-type delete_function_request() :: #{}.
+
+%% Example:
+%% delete_function_response() :: #{}
+-type delete_function_response() :: #{}.
+
+%% Example:
+%% delete_live_source_request() :: #{}
+-type delete_live_source_request() :: #{}.
+
+%% Example:
+%% delete_live_source_response() :: #{}
+-type delete_live_source_response() :: #{}.
+
+%% Example:
+%% delete_playback_configuration_request() :: #{}
+-type delete_playback_configuration_request() :: #{}.
+
+%% Example:
+%% delete_playback_configuration_response() :: #{}
+-type delete_playback_configuration_response() :: #{}.
+
+%% Example:
+%% delete_prefetch_schedule_request() :: #{}
+-type delete_prefetch_schedule_request() :: #{}.
+
+%% Example:
+%% delete_prefetch_schedule_response() :: #{}
+-type delete_prefetch_schedule_response() :: #{}.
+
+%% Example:
+%% delete_program_request() :: #{}
+-type delete_program_request() :: #{}.
+
+%% Example:
+%% delete_program_response() :: #{}
+-type delete_program_response() :: #{}.
+
+%% Example:
+%% delete_source_location_request() :: #{}
+-type delete_source_location_request() :: #{}.
+
+%% Example:
+%% delete_source_location_response() :: #{}
+-type delete_source_location_response() :: #{}.
+
+%% Example:
+%% delete_vod_source_request() :: #{}
+-type delete_vod_source_request() :: #{}.
+
+%% Example:
+%% delete_vod_source_response() :: #{}
+-type delete_vod_source_response() :: #{}.
+
+%% Example:
+%% describe_channel_request() :: #{}
+-type describe_channel_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfiguration">> := log_configuration_for_channel(),
+%%   <<"Outputs">> => list(response_output_item()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string(),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_live_source_request() :: #{}
+-type describe_live_source_request() :: #{}.
+
+
+%% Example:
+%% describe_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_live_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_program_request() :: #{}
+-type describe_program_request() :: #{}.
+
+
+%% Example:
+%% describe_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => [float()],
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type describe_program_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_source_location_request() :: #{}
+-type describe_source_location_request() :: #{}.
+
+
+%% Example:
+%% describe_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_source_location_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vod_source_request() :: #{}
+-type describe_vod_source_request() :: #{}.
+
+
+%% Example:
+%% describe_vod_source_response() :: #{
+%%   <<"AdBreakOpportunities">> => list(ad_break_opportunity()),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type describe_vod_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_ref() :: #{
+%%   <<"FunctionId">> => string(),
+%%   <<"RunCondition">> => string()
+%% }
+-type function_ref() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_policy_request() :: #{}
+-type get_channel_policy_request() :: #{}.
+
+
+%% Example:
+%% get_channel_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_channel_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_schedule_request() :: #{
+%%   <<"Audience">> => string(),
+%%   <<"DurationMinutes">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_channel_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_schedule_response() :: #{
+%%   <<"Items">> => list(schedule_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_channel_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_request() :: #{}
+-type get_function_request() :: #{}.
+
+
+%% Example:
+%% get_function_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionId">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type get_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_playback_configuration_request() :: #{}
+-type get_playback_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_playback_configuration_response() :: #{
+%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
+%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
+%%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
+%%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"Bumper">> => bumper(),
+%%   <<"CdnConfiguration">> => cdn_configuration(),
+%%   <<"ConfigurationAliases">> => map(),
+%%   <<"DashConfiguration">> => dash_configuration(),
+%%   <<"DualStackPlaybackEndpointPrefix">> => string(),
+%%   <<"DualStackSessionInitializationEndpointPrefix">> => string(),
+%%   <<"FunctionMapping">> => map(),
+%%   <<"HlsConfiguration">> => hls_configuration(),
+%%   <<"InsertionMode">> => list(any()),
+%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
+%%   <<"LogConfiguration">> => log_configuration(),
+%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalizationThresholdSeconds">> => integer(),
+%%   <<"PlaybackConfigurationArn">> => string(),
+%%   <<"PlaybackEndpointPrefix">> => string(),
+%%   <<"SessionInitializationEndpointPrefix">> => string(),
+%%   <<"SlateAdUrl">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TranscodeProfileName">> => string(),
+%%   <<"VideoContentSourceUrl">> => string()
+%% }
+-type get_playback_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_prefetch_schedule_request() :: #{}
+-type get_prefetch_schedule_request() :: #{}.
+
+
+%% Example:
+%% get_prefetch_schedule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_prefetch_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_configuration() :: #{
+%%   <<"DualStackManifestEndpointPrefix">> => string(),
+%%   <<"ManifestEndpointPrefix">> => string()
+%% }
+-type hls_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_playlist_settings() :: #{
+%%   <<"AdMarkupType">> => list(list(any())()),
+%%   <<"ManifestWindowSeconds">> => integer()
+%% }
+-type hls_playlist_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_configuration() :: #{
+%%   <<"BaseUrl">> => string()
+%% }
+-type http_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_package_configuration() :: #{
+%%   <<"Path">> => string(),
+%%   <<"SourceGroup">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type http_package_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_request() :: #{
+%%   <<"Body">> => string(),
+%%   <<"CompressRequest">> => list(any()),
+%%   <<"Headers">> => map(),
+%%   <<"Method">> => list(any())
+%% }
+-type http_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_request_configuration() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"MethodType">> => list(any()),
+%%   <<"Output">> => map(),
+%%   <<"RequestTimeoutMilliseconds">> => integer(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type http_request_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_alerts_response() :: #{
+%%   <<"Items">> => list(alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Items">> => list(channel()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_functions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,17 +943,165 @@
 %% }
 -type list_functions_response() :: #{binary() => any()}.
 
-%% Example:
-%% delete_playback_configuration_request() :: #{}
--type delete_playback_configuration_request() :: #{}.
 
 %% Example:
-%% delete_vod_source_response() :: #{}
--type delete_vod_source_response() :: #{}.
+%% list_live_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_live_sources_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_channel_response() :: #{}
--type delete_channel_response() :: #{}.
+%% list_live_sources_response() :: #{
+%%   <<"Items">> => list(live_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_live_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_playback_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_configurations_response() :: #{
+%%   <<"Items">> => list(playback_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_playback_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prefetch_schedules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"StreamId">> => string()
+%% }
+-type list_prefetch_schedules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prefetch_schedules_response() :: #{
+%%   <<"Items">> => list(prefetch_schedule()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_prefetch_schedules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_locations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_source_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_locations_response() :: #{
+%%   <<"Items">> => list(source_location()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_source_locations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vod_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vod_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vod_sources_response() :: #{
+%%   <<"Items">> => list(vod_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vod_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_pre_roll_configuration() :: #{
+%%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"MaxDurationSeconds">> => integer()
+%% }
+-type live_pre_roll_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type live_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"AdsInteractionLog">> => ads_interaction_log(),
+%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
+%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
+%%   <<"PercentEnabled">> => integer()
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration_for_channel() :: #{
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type log_configuration_for_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% manifest_processing_rules() :: #{
+%%   <<"AdMarkerPassthrough">> => ad_marker_passthrough()
+%% }
+-type manifest_processing_rules() :: #{binary() => any()}.
+
+
+%% Example:
+%% manifest_service_interaction_log() :: #{
+%%   <<"ExcludeEventTypes">> => list(list(any())()),
+%%   <<"PublishOptInEventTypes">> => list(list(any())())
+%% }
+-type manifest_service_interaction_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% mediatailor_function() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionId">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type mediatailor_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -314,6 +1109,8 @@
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
+%%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
@@ -341,518 +1138,12 @@
 
 
 %% Example:
-%% get_channel_schedule_request() :: #{
-%%   <<"Audience">> => string(),
-%%   <<"DurationMinutes">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_channel_schedule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_alerts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_alerts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prefetch_schedules_response() :: #{
-%%   <<"Items">> => list(prefetch_schedule()),
-%%   <<"NextToken">> => string()
-%% }
--type list_prefetch_schedules_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% prefetch_consumption() :: #{
 %%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type prefetch_consumption() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_policy_request() :: #{}
--type delete_channel_policy_request() :: #{}.
-
-
-%% Example:
-%% ad_conditioning_configuration() :: #{
-%%   <<"StreamingMediaFileConditioning">> => list(any())
-%% }
--type ad_conditioning_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vod_sources_response() :: #{
-%%   <<"Items">> => list(vod_source()),
-%%   <<"NextToken">> => string()
-%% }
--type list_vod_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_request() :: #{
-%%   <<"Body">> => string(),
-%%   <<"CompressRequest">> => list(any()),
-%%   <<"Headers">> => map(),
-%%   <<"Method">> => list(any())
-%% }
--type http_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configure_logs_for_playback_configuration_request() :: #{
-%%   <<"AdsInteractionLog">> => ads_interaction_log(),
-%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
-%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
-%%   <<"PercentEnabled">> => integer(),
-%%   <<"PlaybackConfigurationName">> => string()
-%% }
--type configure_logs_for_playback_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_shaping_retrieval_window() :: #{
-%%   <<"RetrievalWindowDurationSeconds">> => integer()
-%% }
--type traffic_shaping_retrieval_window() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_source_location_response() :: #{
-%%   <<"AccessConfiguration">> => access_configuration(),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> => http_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_source_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_segment_delivery_configuration() :: #{
-%%   <<"BaseUrl">> => string()
-%% }
--type default_segment_delivery_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_retrieval() :: #{
-%%   <<"DelayAfterAvailEndSeconds">> => integer(),
-%%   <<"DynamicVariables">> => map(),
-%%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
-%%   <<"TrafficShapingTpsConfiguration">> => traffic_shaping_tps_configuration(),
-%%   <<"TrafficShapingType">> => list(any())
-%% }
--type recurring_retrieval() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"FunctionId">> => string(),
-%%   <<"FunctionType">> => list(any()),
-%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
-%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
-%% }
--type get_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_schedule_response() :: #{
-%%   <<"Items">> => list(schedule_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type get_channel_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_break_opportunity() :: #{
-%%   <<"OffsetMillis">> => float()
-%% }
--type ad_break_opportunity() :: #{binary() => any()}.
-
-%% Example:
-%% get_prefetch_schedule_request() :: #{}
--type get_prefetch_schedule_request() :: #{}.
-
-
-%% Example:
-%% manifest_processing_rules() :: #{
-%%   <<"AdMarkerPassthrough">> => ad_marker_passthrough()
-%% }
--type manifest_processing_rules() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_playlist_settings() :: #{
-%%   <<"ManifestWindowSeconds">> => integer(),
-%%   <<"MinBufferTimeSeconds">> => integer(),
-%%   <<"MinUpdatePeriodSeconds">> => integer(),
-%%   <<"SuggestedPresentationDelaySeconds">> => integer()
-%% }
--type dash_playlist_settings() :: #{binary() => any()}.
-
-%% Example:
-%% stop_channel_request() :: #{}
--type stop_channel_request() :: #{}.
-
-
-%% Example:
-%% audience_media() :: #{
-%%   <<"AlternateMedia">> => list(alternate_media()),
-%%   <<"Audience">> => string()
-%% }
--type audience_media() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_source_location_response() :: #{
-%%   <<"AccessConfiguration">> => access_configuration(),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> => http_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type describe_source_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_playback_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_playback_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_prefetch_schedule_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Consumption">> => prefetch_consumption(),
-%%   <<"Name">> => string(),
-%%   <<"PlaybackConfigurationName">> => string(),
-%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
-%%   <<"Retrieval">> => prefetch_retrieval(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_prefetch_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% clip_range() :: #{
-%%   <<"EndOffsetMillis">> => float(),
-%%   <<"StartOffsetMillis">> => float()
-%% }
--type clip_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_shaping_tps_configuration() :: #{
-%%   <<"PeakConcurrentUsers">> => integer(),
-%%   <<"PeakTps">> => integer()
-%% }
--type traffic_shaping_tps_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DurationMillis">> => float(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ProgramName">> => string(),
-%%   <<"ScheduledStartTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type create_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_live_sources_response() :: #{
-%%   <<"Items">> => list(live_source()),
-%%   <<"NextToken">> => string()
-%% }
--type list_live_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_source_location_response() :: #{
-%%   <<"AccessConfiguration">> => access_configuration(),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> => http_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_source_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_live_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
-%% }
--type update_live_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_manager_access_token_configuration() :: #{
-%%   <<"HeaderName">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"SecretStringKey">> => string()
-%% }
--type secrets_manager_access_token_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_channel_response() :: #{}
--type stop_channel_response() :: #{}.
-
-%% Example:
-%% start_channel_request() :: #{}
--type start_channel_request() :: #{}.
-
-%% Example:
-%% get_function_request() :: #{}
--type get_function_request() :: #{}.
-
-%% Example:
-%% get_playback_configuration_request() :: #{}
--type get_playback_configuration_request() :: #{}.
-
-
-%% Example:
-%% http_configuration() :: #{
-%%   <<"BaseUrl">> => string()
-%% }
--type http_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdn_configuration() :: #{
-%%   <<"AdSegmentUrlPrefix">> => string(),
-%%   <<"ContentSegmentUrlPrefix">> => string()
-%% }
--type cdn_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% avail_suppression() :: #{
-%%   <<"FillPolicy">> => list(any()),
-%%   <<"Mode">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type avail_suppression() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_program_schedule_configuration() :: #{
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"Transition">> => update_program_transition()
-%% }
--type update_program_schedule_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_package_configuration() :: #{
-%%   <<"Path">> => string(),
-%%   <<"SourceGroup">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type http_package_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_live_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
-%%   <<"Tags">> => map()
-%% }
--type create_live_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prefetch_schedule_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Consumption">> => prefetch_consumption(),
-%%   <<"Name">> => string(),
-%%   <<"PlaybackConfigurationName">> => string(),
-%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
-%%   <<"Retrieval">> => prefetch_retrieval(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_prefetch_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_request() :: #{}
--type delete_function_request() :: #{}.
-
-%% Example:
-%% delete_channel_policy_response() :: #{}
--type delete_channel_policy_response() :: #{}.
-
-
-%% Example:
-%% describe_channel_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ChannelState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FillerSlate">> => slate_source(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LogConfiguration">> := log_configuration_for_channel(),
-%%   <<"Outputs">> => list(response_output_item()),
-%%   <<"PlaybackMode">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Tier">> => string(),
-%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
-%% }
--type describe_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_configuration_for_channel() :: #{
-%%   <<"LogTypes">> => list(list(any())())
-%% }
--type log_configuration_for_channel() :: #{binary() => any()}.
-
-%% Example:
-%% describe_channel_request() :: #{}
--type describe_channel_request() :: #{}.
-
-
-%% Example:
-%% alternate_media() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"DurationMillis">> => float(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ScheduledStartTimeMillis">> => float(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"VodSourceName">> => string()
-%% }
--type alternate_media() :: #{binary() => any()}.
-
-
-%% Example:
-%% live_source() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type live_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_response() :: #{}
--type delete_function_response() :: #{}.
-
-
-%% Example:
-%% schedule_entry() :: #{
-%%   <<"ApproximateDurationSeconds">> => float(),
-%%   <<"ApproximateStartTime">> => non_neg_integer(),
-%%   <<"Arn">> => string(),
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"ChannelName">> => string(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ProgramName">> => string(),
-%%   <<"ScheduleAdBreaks">> => list(schedule_ad_break()),
-%%   <<"ScheduleEntryType">> => list(any()),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"VodSourceName">> => string()
-%% }
--type schedule_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_request() :: #{
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"FillerSlate">> => slate_source(),
-%%   <<"Outputs">> := list(request_output_item()),
-%%   <<"PlaybackMode">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Tier">> => list(any()),
-%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
-%% }
--type create_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mediatailor_function() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"FunctionId">> => string(),
-%%   <<"FunctionType">> => list(any()),
-%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
-%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
-%% }
--type mediatailor_function() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_ref() :: #{
-%%   <<"FunctionId">> => string(),
-%%   <<"RunCondition">> => string()
-%% }
--type function_ref() :: #{binary() => any()}.
-
-%% Example:
-%% describe_source_location_request() :: #{}
--type describe_source_location_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_policy_response() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_channel_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -868,11 +1159,41 @@
 
 
 %% Example:
-%% configure_logs_for_channel_response() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"LogTypes">> => list(list(any())())
+%% prefetch_schedule() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Consumption">> => prefetch_consumption(),
+%%   <<"Name">> => string(),
+%%   <<"PlaybackConfigurationName">> => string(),
+%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
+%%   <<"Retrieval">> => prefetch_retrieval(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type configure_logs_for_channel_response() :: #{binary() => any()}.
+-type prefetch_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_channel_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_channel_policy_response() :: #{}
+-type put_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% put_function_request() :: #{
+%%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"FunctionType">> := list(any()),
+%%   <<"HttpRequestConfiguration">> => http_request_configuration(),
+%%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type put_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -890,385 +1211,12 @@
 
 
 %% Example:
-%% list_channels_response() :: #{
-%%   <<"Items">> => list(channel()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prefetch_schedule_request() :: #{
-%%   <<"Consumption">> => prefetch_consumption(),
-%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
-%%   <<"Retrieval">> => prefetch_retrieval(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_prefetch_schedule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ads_interaction_log() :: #{
-%%   <<"ExcludeEventTypes">> => list(list(any())()),
-%%   <<"PublishOptInEventTypes">> => list(list(any())())
-%% }
--type ads_interaction_log() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prefetch_schedule_response() :: #{}
--type delete_prefetch_schedule_response() :: #{}.
-
-
-%% Example:
-%% manifest_service_interaction_log() :: #{
-%%   <<"ExcludeEventTypes">> => list(list(any())()),
-%%   <<"PublishOptInEventTypes">> => list(list(any())())
-%% }
--type manifest_service_interaction_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_request() :: #{
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"FillerSlate">> => slate_source(),
-%%   <<"Outputs">> := list(request_output_item()),
-%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
-%% }
--type update_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_configuration() :: #{
-%%   <<"DualStackManifestEndpointPrefix">> => string(),
-%%   <<"ManifestEndpointPrefix">> => string(),
-%%   <<"MpdLocation">> => string(),
-%%   <<"OriginManifestType">> => list(any())
-%% }
--type dash_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_location_request() :: #{}
--type delete_source_location_request() :: #{}.
-
-
-%% Example:
-%% update_source_location_request() :: #{
-%%   <<"AccessConfiguration">> => access_configuration(),
-%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> := http_configuration(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration())
-%% }
--type update_source_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_locations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_source_locations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_shift_configuration() :: #{
-%%   <<"MaxTimeDelaySeconds">> => integer()
-%% }
--type time_shift_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DurationMillis">> => [float()],
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ProgramName">> => string(),
-%%   <<"ScheduledStartTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type describe_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_break() :: #{
-%%   <<"AdBreakMetadata">> => list(key_value_pair()),
-%%   <<"MessageType">> => list(any()),
-%%   <<"OffsetMillis">> => float(),
-%%   <<"Slate">> => slate_source(),
-%%   <<"SpliceInsertMessage">> => splice_insert_message(),
-%%   <<"TimeSignalMessage">> => time_signal_message()
-%% }
--type ad_break() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% slate_source() :: #{
-%%   <<"SourceLocationName">> => string(),
-%%   <<"VodSourceName">> => string()
-%% }
--type slate_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_marker_passthrough() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type ad_marker_passthrough() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vod_sources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vod_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_program_request() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"AudienceMedia">> => list(audience_media()),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ScheduleConfiguration">> := schedule_configuration(),
-%%   <<"SourceLocationName">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type create_program_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prefetch_schedule_request() :: #{}
--type delete_prefetch_schedule_request() :: #{}.
-
-
-%% Example:
-%% segmentation_descriptor() :: #{
-%%   <<"SegmentNum">> => [integer()],
-%%   <<"SegmentationEventId">> => [integer()],
-%%   <<"SegmentationTypeId">> => [integer()],
-%%   <<"SegmentationUpid">> => [string()],
-%%   <<"SegmentationUpidType">> => [integer()],
-%%   <<"SegmentsExpected">> => [integer()],
-%%   <<"SubSegmentNum">> => [integer()],
-%%   <<"SubSegmentsExpected">> => [integer()]
-%% }
--type segmentation_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_decision_server_configuration() :: #{
-%%   <<"HttpRequest">> => http_request()
-%% }
--type ad_decision_server_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% transition() :: #{
-%%   <<"DurationMillis">> => float(),
-%%   <<"RelativePosition">> => list(any()),
-%%   <<"RelativeProgram">> => string(),
-%%   <<"ScheduledStartTimeMillis">> => float(),
-%%   <<"Type">> => string()
-%% }
--type transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_program_request() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"AudienceMedia">> => list(audience_media()),
-%%   <<"ScheduleConfiguration">> := update_program_schedule_configuration()
-%% }
--type update_program_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_playback_configuration_response() :: #{
-%%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
-%%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
-%%   <<"AdDecisionServerUrl">> => string(),
-%%   <<"AvailSuppression">> => avail_suppression(),
-%%   <<"Bumper">> => bumper(),
-%%   <<"CdnConfiguration">> => cdn_configuration(),
-%%   <<"ConfigurationAliases">> => map(),
-%%   <<"DashConfiguration">> => dash_configuration(),
-%%   <<"DualStackPlaybackEndpointPrefix">> => string(),
-%%   <<"DualStackSessionInitializationEndpointPrefix">> => string(),
-%%   <<"FunctionMapping">> => map(),
-%%   <<"HlsConfiguration">> => hls_configuration(),
-%%   <<"InsertionMode">> => list(any()),
-%%   <<"LivePreRollConfiguration">> => live_pre_roll_configuration(),
-%%   <<"LogConfiguration">> => log_configuration(),
-%%   <<"ManifestProcessingRules">> => manifest_processing_rules(),
-%%   <<"Name">> => string(),
-%%   <<"PersonalizationThresholdSeconds">> => integer(),
-%%   <<"PlaybackConfigurationArn">> => string(),
-%%   <<"PlaybackEndpointPrefix">> => string(),
-%%   <<"SessionInitializationEndpointPrefix">> => string(),
-%%   <<"SlateAdUrl">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TranscodeProfileName">> => string(),
-%%   <<"VideoContentSourceUrl">> => string()
-%% }
--type get_playback_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_program_request() :: #{}
--type describe_program_request() :: #{}.
-
-%% Example:
-%% delete_live_source_response() :: #{}
--type delete_live_source_response() :: #{}.
-
-
-%% Example:
-%% source_location() :: #{
-%%   <<"AccessConfiguration">> => access_configuration(),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> => http_configuration(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type source_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_signal_message() :: #{
-%%   <<"SegmentationDescriptors">> => list(segmentation_descriptor())
-%% }
--type time_signal_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value_pair() :: #{
-%%   <<"Key">> => [string()],
-%%   <<"Value">> => [string()]
-%% }
--type key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% update_live_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_live_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_live_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_live_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_output_item() :: #{
-%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
-%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
-%%   <<"ManifestName">> => string(),
-%%   <<"SourceGroup">> => string()
-%% }
--type request_output_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_configuration() :: #{
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"Transition">> => transition()
-%% }
--type schedule_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% alert() :: #{
-%%   <<"AlertCode">> => string(),
-%%   <<"AlertMessage">> => string(),
-%%   <<"Category">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RelatedResourceArns">> => list(string()),
-%%   <<"ResourceArn">> => string()
-%% }
--type alert() :: #{binary() => any()}.
-
-%% Example:
-%% delete_program_request() :: #{}
--type delete_program_request() :: #{}.
-
-%% Example:
-%% delete_playback_configuration_response() :: #{}
--type delete_playback_configuration_response() :: #{}.
-
-
-%% Example:
-%% channel() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ChannelState">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FillerSlate">> => slate_source(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LogConfiguration">> => log_configuration_for_channel(),
-%%   <<"Outputs">> => list(response_output_item()),
-%%   <<"PlaybackMode">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Tier">> => string()
-%% }
--type channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vod_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
-%% }
--type update_vod_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_channel_response() :: #{}
--type start_channel_response() :: #{}.
-
-
-%% Example:
 %% put_playback_configuration_request() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
+%%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
@@ -1289,137 +1237,12 @@
 
 
 %% Example:
-%% update_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()),
-%%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ClipRange">> => clip_range(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DurationMillis">> => float(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"ProgramName">> => string(),
-%%   <<"ScheduledStartTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type update_program_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_prefetch_configuration() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"RecurringConsumption">> => recurring_consumption(),
-%%   <<"RecurringRetrieval">> => recurring_retrieval(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type recurring_prefetch_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_alerts_response() :: #{
-%%   <<"Items">> => list(alert()),
-%%   <<"NextToken">> => string()
-%% }
--type list_alerts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_ad_break() :: #{
-%%   <<"ApproximateDurationSeconds">> => float(),
-%%   <<"ApproximateStartTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"VodSourceName">> => string()
-%% }
--type schedule_ad_break() :: #{binary() => any()}.
-
-
-%% Example:
-%% hls_configuration() :: #{
-%%   <<"DualStackManifestEndpointPrefix">> => string(),
-%%   <<"ManifestEndpointPrefix">> => string()
-%% }
--type hls_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vod_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VodSourceName">> => string()
-%% }
--type create_vod_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prefetch_schedules_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string()
-%% }
--type list_prefetch_schedules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% avail_matching_criteria() :: #{
-%%   <<"DynamicVariable">> => string(),
-%%   <<"Operator">> => list(any())
-%% }
--type avail_matching_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_consumption() :: #{
-%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()),
-%%   <<"RetrievedAdExpirationSeconds">> => integer()
-%% }
--type recurring_consumption() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vod_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
-%%   <<"Tags">> => map()
-%% }
--type create_vod_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Audiences">> => list([string()]()),
-%%   <<"ChannelName">> => string(),
-%%   <<"ChannelState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FillerSlate">> => slate_source(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Outputs">> => list(response_output_item()),
-%%   <<"PlaybackMode">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Tier">> => string(),
-%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
-%% }
--type update_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% put_playback_configuration_response() :: #{
 %%   <<"AdConditioningConfiguration">> => ad_conditioning_configuration(),
 %%   <<"AdDecisionServerConfiguration">> => ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
+%%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
+%%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
@@ -1445,22 +1268,100 @@
 %% }
 -type put_playback_configuration_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_channel_policy_request() :: #{}
--type get_channel_policy_request() :: #{}.
-
 
 %% Example:
-%% describe_live_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LiveSourceName">> => string(),
-%%   <<"SourceLocationName">> => string(),
-%%   <<"Tags">> => map()
+%% recurring_consumption() :: #{
+%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()),
+%%   <<"RetrievedAdExpirationSeconds">> => integer()
 %% }
--type describe_live_source_response() :: #{binary() => any()}.
+-type recurring_consumption() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_prefetch_configuration() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"RecurringConsumption">> => recurring_consumption(),
+%%   <<"RecurringRetrieval">> => recurring_retrieval(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type recurring_prefetch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_retrieval() :: #{
+%%   <<"DelayAfterAvailEndSeconds">> => integer(),
+%%   <<"DynamicVariables">> => map(),
+%%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
+%%   <<"TrafficShapingTpsConfiguration">> => traffic_shaping_tps_configuration(),
+%%   <<"TrafficShapingType">> => list(any())
+%% }
+-type recurring_retrieval() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_output_item() :: #{
+%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
+%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
+%%   <<"ManifestName">> => string(),
+%%   <<"SourceGroup">> => string()
+%% }
+-type request_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_output_item() :: #{
+%%   <<"DashPlaylistSettings">> => dash_playlist_settings(),
+%%   <<"DualStackPlaybackUrl">> => string(),
+%%   <<"HlsPlaylistSettings">> => hls_playlist_settings(),
+%%   <<"ManifestName">> => string(),
+%%   <<"PlaybackUrl">> => string(),
+%%   <<"SourceGroup">> => string()
+%% }
+-type response_output_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_ad_break() :: #{
+%%   <<"ApproximateDurationSeconds">> => float(),
+%%   <<"ApproximateStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type schedule_ad_break() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"Transition">> => transition()
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_entry() :: #{
+%%   <<"ApproximateDurationSeconds">> => float(),
+%%   <<"ApproximateStartTime">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduleAdBreaks">> => list(schedule_ad_break()),
+%%   <<"ScheduleEntryType">> => list(any()),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type schedule_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_access_token_configuration() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SecretStringKey">> => string()
+%% }
+-type secrets_manager_access_token_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1472,52 +1373,214 @@
 
 
 %% Example:
-%% access_configuration() :: #{
-%%   <<"AccessType">> => list(any()),
-%%   <<"SecretsManagerAccessTokenConfiguration">> => secrets_manager_access_token_configuration()
+%% segmentation_descriptor() :: #{
+%%   <<"SegmentNum">> => [integer()],
+%%   <<"SegmentationEventId">> => [integer()],
+%%   <<"SegmentationTypeId">> => [integer()],
+%%   <<"SegmentationUpid">> => [string()],
+%%   <<"SegmentationUpidType">> => [integer()],
+%%   <<"SegmentsExpected">> => [integer()],
+%%   <<"SubSegmentNum">> => [integer()],
+%%   <<"SubSegmentsExpected">> => [integer()]
 %% }
--type access_configuration() :: #{binary() => any()}.
+-type segmentation_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% custom_output_configuration() :: #{
+%% sequential_executor_configuration() :: #{
+%%   <<"FunctionList">> => list(function_ref()),
 %%   <<"Output">> => map(),
-%%   <<"Runtime">> => list(any())
+%%   <<"Runtime">> => list(any()),
+%%   <<"TimeoutMilliseconds">> => integer()
 %% }
--type custom_output_configuration() :: #{binary() => any()}.
+-type sequential_executor_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_source_location_request() :: #{
+%% slate_source() :: #{
+%%   <<"SourceLocationName">> => string(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type slate_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_location() :: #{
 %%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
-%%   <<"HttpConfiguration">> := http_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
+%%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type create_source_location_request() :: #{binary() => any()}.
+-type source_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% log_configuration() :: #{
-%%   <<"AdsInteractionLog">> => ads_interaction_log(),
-%%   <<"EnabledLoggingStrategies">> => list(list(any())()),
-%%   <<"ManifestServiceInteractionLog">> => manifest_service_interaction_log(),
-%%   <<"PercentEnabled">> => integer()
+%% splice_insert_message() :: #{
+%%   <<"AvailNum">> => integer(),
+%%   <<"AvailsExpected">> => integer(),
+%%   <<"SpliceEventId">> => integer(),
+%%   <<"UniqueProgramId">> => integer()
 %% }
--type log_configuration() :: #{binary() => any()}.
+-type splice_insert_message() :: #{binary() => any()}.
 
 %% Example:
-%% delete_source_location_response() :: #{}
--type delete_source_location_response() :: #{}.
+%% start_channel_request() :: #{}
+-type start_channel_request() :: #{}.
+
+%% Example:
+%% start_channel_response() :: #{}
+-type start_channel_response() :: #{}.
+
+%% Example:
+%% stop_channel_request() :: #{}
+-type stop_channel_request() :: #{}.
+
+%% Example:
+%% stop_channel_response() :: #{}
+-type stop_channel_response() :: #{}.
 
 
 %% Example:
-%% list_live_sources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type list_live_sources_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_shift_configuration() :: #{
+%%   <<"MaxTimeDelaySeconds">> => integer()
+%% }
+-type time_shift_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_signal_message() :: #{
+%%   <<"SegmentationDescriptors">> => list(segmentation_descriptor())
+%% }
+-type time_signal_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_shaping_retrieval_window() :: #{
+%%   <<"RetrievalWindowDurationSeconds">> => integer()
+%% }
+-type traffic_shaping_retrieval_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_shaping_tps_configuration() :: #{
+%%   <<"PeakConcurrentUsers">> => integer(),
+%%   <<"PeakTps">> => integer()
+%% }
+-type traffic_shaping_tps_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"DurationMillis">> => float(),
+%%   <<"RelativePosition">> => list(any()),
+%%   <<"RelativeProgram">> => string(),
+%%   <<"ScheduledStartTimeMillis">> => float(),
+%%   <<"Type">> => string()
+%% }
+-type transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"Outputs">> := list(request_output_item()),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Audiences">> => list([string()]()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FillerSlate">> => slate_source(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Outputs">> => list(response_output_item()),
+%%   <<"PlaybackMode">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Tier">> => string(),
+%%   <<"TimeShiftConfiguration">> => time_shift_configuration()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_live_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
+%% }
+-type update_live_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_live_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_live_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_request() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"AudienceMedia">> => list(audience_media()),
+%%   <<"ScheduleConfiguration">> := update_program_schedule_configuration()
+%% }
+-type update_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_response() :: #{
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"Arn">> => string(),
+%%   <<"AudienceMedia">> => list(audience_media()),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"LiveSourceName">> => string(),
+%%   <<"ProgramName">> => string(),
+%%   <<"ScheduledStartTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
+%% }
+-type update_program_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_program_schedule_configuration() :: #{
+%%   <<"ClipRange">> => clip_range(),
+%%   <<"Transition">> => update_program_transition()
+%% }
+-type update_program_schedule_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1529,97 +1592,61 @@
 
 
 %% Example:
-%% list_channels_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_source_location_request() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> := http_configuration(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration())
 %% }
--type list_channels_request() :: #{binary() => any()}.
+-type update_source_location_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_source_locations_response() :: #{
-%%   <<"Items">> => list(source_location()),
-%%   <<"NextToken">> => string()
-%% }
--type list_source_locations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bumper() :: #{
-%%   <<"EndUrl">> => string(),
-%%   <<"StartUrl">> => string()
-%% }
--type bumper() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_configuration_for_put() :: #{
-%%   <<"MpdLocation">> => string(),
-%%   <<"OriginManifestType">> => list(any())
-%% }
--type dash_configuration_for_put() :: #{binary() => any()}.
-
-%% Example:
-%% delete_live_source_request() :: #{}
--type delete_live_source_request() :: #{}.
-
-
-%% Example:
-%% prefetch_schedule() :: #{
+%% update_source_location_response() :: #{
+%%   <<"AccessConfiguration">> => access_configuration(),
 %%   <<"Arn">> => string(),
-%%   <<"Consumption">> => prefetch_consumption(),
-%%   <<"Name">> => string(),
-%%   <<"PlaybackConfigurationName">> => string(),
-%%   <<"RecurringPrefetchConfiguration">> => recurring_prefetch_configuration(),
-%%   <<"Retrieval">> => prefetch_retrieval(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"StreamId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
+%%   <<"HttpConfiguration">> => http_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
+%%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type prefetch_schedule() :: #{binary() => any()}.
+-type update_source_location_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_playback_configurations_response() :: #{
-%%   <<"Items">> => list(playback_configuration()),
-%%   <<"NextToken">> => string()
+%% update_vod_source_request() :: #{
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
 %% }
--type list_playback_configurations_response() :: #{binary() => any()}.
+-type update_vod_source_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% hls_playlist_settings() :: #{
-%%   <<"AdMarkupType">> => list(list(any())()),
-%%   <<"ManifestWindowSeconds">> => integer()
+%% update_vod_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
 %% }
--type hls_playlist_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_live_source_request() :: #{}
--type describe_live_source_request() :: #{}.
+-type update_vod_source_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% http_request_configuration() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Headers">> => map(),
-%%   <<"MethodType">> => list(any()),
-%%   <<"Output">> => map(),
-%%   <<"RequestTimeoutMilliseconds">> => integer(),
-%%   <<"Runtime">> => list(any()),
-%%   <<"Url">> => string()
+%% vod_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"SourceLocationName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VodSourceName">> => string()
 %% }
--type http_request_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% splice_insert_message() :: #{
-%%   <<"AvailNum">> => integer(),
-%%   <<"AvailsExpected">> => integer(),
-%%   <<"SpliceEventId">> => integer(),
-%%   <<"UniqueProgramId">> => integer()
-%% }
--type splice_insert_message() :: #{binary() => any()}.
+-type vod_source() :: #{binary() => any()}.
 
 -type list_tags_for_resource_errors() ::
     bad_request_exception().

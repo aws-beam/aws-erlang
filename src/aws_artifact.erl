@@ -44,6 +44,8 @@
          list_tags_for_resource/5,
          put_account_settings/2,
          put_account_settings/3,
+         put_compliance_inquiry_feedback/2,
+         put_compliance_inquiry_feedback/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -54,77 +56,17 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_compliance_inquiry_metadata_response() :: #{
-%%   <<"complianceInquiryDetail">> => inquiry_detail(),
-%%   <<"tags">> => map()
+%% account_settings() :: #{
+%%   <<"notificationSubscriptionStatus">> => list(any())
 %% }
--type get_compliance_inquiry_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_compliance_inquiry_response() :: #{
-%%   <<"documentPresignedUrl">> => string(),
-%%   <<"tags">> => map()
-%% }
--type export_compliance_inquiry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportId">> := string()
-%% }
--type list_report_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_report_metadata_request() :: #{
-%%   <<"reportId">> := string(),
-%%   <<"reportVersion">> => float()
-%% }
--type get_report_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_customer_agreements_response() :: #{
-%%   <<"customerAgreements">> => list(customer_agreement_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_customer_agreements_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% get_account_settings_request() :: #{}
--type get_account_settings_request() :: #{}.
-
-
-%% Example:
-%% get_account_settings_response() :: #{
-%%   <<"accountSettings">> => account_settings()
-%% }
--type get_account_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_compliance_inquiry_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"inquiryContent">> := list(),
-%%   <<"name">> := [string()],
-%%   <<"supportMode">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_compliance_inquiry_request() :: #{binary() => any()}.
+-type account_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -137,42 +79,31 @@
 
 
 %% Example:
-%% list_compliance_inquiry_queries_request() :: #{
-%%   <<"complianceInquiryId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type list_compliance_inquiry_queries_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_compliance_inquiry_metadata_request() :: #{
-%%   <<"complianceInquiryId">> := string()
+%% create_compliance_inquiry_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"inquiryContent">> := list(),
+%%   <<"name">> := string(),
+%%   <<"supportMode">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type get_compliance_inquiry_metadata_request() :: #{binary() => any()}.
+-type create_compliance_inquiry_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_term_for_report_request() :: #{
-%%   <<"reportId">> := string(),
-%%   <<"reportVersion">> => float()
+%% create_compliance_inquiry_response() :: #{
+%%   <<"complianceInquirySummary">> => inquiry_summary(),
+%%   <<"tags">> => map()
 %% }
--type get_term_for_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_compliance_inquiries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_compliance_inquiries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_compliance_inquiry_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -195,19 +126,54 @@
 
 
 %% Example:
-%% list_customer_agreements_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% export_compliance_inquiry_request() :: #{
+%%   <<"complianceInquiryId">> := string(),
+%%   <<"includeCitations">> => [boolean()],
+%%   <<"queryIdentifiers">> => list([integer()]())
 %% }
--type list_customer_agreements_request() :: #{binary() => any()}.
+-type export_compliance_inquiry_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_reports_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(report_summary())
+%% export_compliance_inquiry_response() :: #{
+%%   <<"documentPresignedUrl">> => string(),
+%%   <<"tags">> => map()
 %% }
--type list_reports_response() :: #{binary() => any()}.
+-type export_compliance_inquiry_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_request() :: #{}
+-type get_account_settings_request() :: #{}.
+
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"accountSettings">> => account_settings()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compliance_inquiry_metadata_request() :: #{
+%%   <<"complianceInquiryId">> := string()
+%% }
+-type get_compliance_inquiry_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compliance_inquiry_metadata_response() :: #{
+%%   <<"complianceInquiryDetail">> => inquiry_detail(),
+%%   <<"tags">> => map()
+%% }
+-type get_compliance_inquiry_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_report_metadata_request() :: #{
+%%   <<"reportId">> := string(),
+%%   <<"reportVersion">> => float()
+%% }
+-type get_report_metadata_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -215,154 +181,6 @@
 %%   <<"reportDetails">> => report_detail()
 %% }
 -type get_report_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_compliance_inquiries_response() :: #{
-%%   <<"complianceInquiries">> => list(inquiry_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_compliance_inquiries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_report_response() :: #{
-%%   <<"documentPresignedUrl">> => [string()]
-%% }
--type get_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_version() :: #{
-%%   <<"responseText">> => string(),
-%%   <<"timestamp">> => non_neg_integer()
-%% }
--type response_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_compliance_inquiry_queries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queries">> => list(query_summary())
-%% }
--type list_compliance_inquiry_queries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(report_summary())
-%% }
--type list_report_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% inquiry_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"inputSource">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => list(any())
-%% }
--type inquiry_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_summary() :: #{
-%%   <<"acceptanceType">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"category">> => string(),
-%%   <<"companyName">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"periodEnd">> => non_neg_integer(),
-%%   <<"periodStart">> => non_neg_integer(),
-%%   <<"productName">> => string(),
-%%   <<"series">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"uploadState">> => list(any()),
-%%   <<"version">> => float()
-%% }
--type report_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% inquiry_file_content() :: #{
-%%   <<"content">> => [binary()],
-%%   <<"fileSections">> => list(string())
-%% }
--type inquiry_file_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_summary() :: #{
-%%   <<"citations">> => list(citation()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"query">> => string(),
-%%   <<"queryIdentifier">> => [integer()],
-%%   <<"response">> => string(),
-%%   <<"reviewType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => list(any()),
-%%   <<"updatedResponseVersions">> => list(response_version())
-%% }
--type query_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,22 +193,26 @@
 
 
 %% Example:
+%% get_report_response() :: #{
+%%   <<"documentPresignedUrl">> => [string()]
+%% }
+-type get_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_term_for_report_request() :: #{
+%%   <<"reportId">> := string(),
+%%   <<"reportVersion">> => float()
+%% }
+-type get_term_for_report_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_term_for_report_response() :: #{
 %%   <<"documentPresignedUrl">> => [string()],
 %%   <<"termToken">> => [string()]
 %% }
 -type get_term_for_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -409,23 +231,174 @@
 
 
 %% Example:
-%% account_settings() :: #{
-%%   <<"notificationSubscriptionStatus">> => list(any())
+%% inquiry_file_content() :: #{
+%%   <<"content">> => [binary()],
+%%   <<"fileSections">> => list(string())
 %% }
--type account_settings() :: #{binary() => any()}.
+-type inquiry_file_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
+%% inquiry_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"inputSource">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => list(any())
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type inquiry_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compliance_inquiries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_compliance_inquiries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compliance_inquiries_response() :: #{
+%%   <<"complianceInquiries">> => list(inquiry_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_compliance_inquiries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compliance_inquiry_queries_request() :: #{
+%%   <<"complianceInquiryId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_compliance_inquiry_queries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compliance_inquiry_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queries">> => list(query_summary())
+%% }
+-type list_compliance_inquiry_queries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_customer_agreements_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_customer_agreements_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_customer_agreements_response() :: #{
+%%   <<"customerAgreements">> => list(customer_agreement_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_customer_agreements_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportId">> := string()
+%% }
+-type list_report_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reports">> => list(report_summary())
+%% }
+-type list_report_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reports_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reports">> => list(report_summary())
+%% }
+-type list_reports_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_settings_request() :: #{
+%%   <<"notificationSubscriptionStatus">> => list(any())
+%% }
+-type put_account_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_settings_response() :: #{
+%%   <<"accountSettings">> => account_settings()
+%% }
+-type put_account_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_compliance_inquiry_feedback_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"comment">> => string(),
+%%   <<"complianceInquiryId">> := string(),
+%%   <<"queryIdentifier">> => [integer()],
+%%   <<"rating">> := list(any()),
+%%   <<"reasonCodes">> => list(list(any())()),
+%%   <<"responseRevisionId">> => [integer()]
+%% }
+-type put_compliance_inquiry_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_compliance_inquiry_feedback_response() :: #{
+%%   <<"submittedAt">> => non_neg_integer()
+%% }
+-type put_compliance_inquiry_feedback_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_summary() :: #{
+%%   <<"citations">> => list(citation()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"query">> => string(),
+%%   <<"queryIdentifier">> => [integer()],
+%%   <<"response">> => string(),
+%%   <<"reviewType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => list(any()),
+%%   <<"updatedResponseVersions">> => list(response_version())
+%% }
+-type query_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -455,6 +428,66 @@
 
 
 %% Example:
+%% report_summary() :: #{
+%%   <<"acceptanceType">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"category">> => string(),
+%%   <<"companyName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"periodEnd">> => non_neg_integer(),
+%%   <<"periodStart">> => non_neg_integer(),
+%%   <<"productName">> => string(),
+%%   <<"series">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"uploadState">> => list(any()),
+%%   <<"version">> => float()
+%% }
+-type report_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_version() :: #{
+%%   <<"responseText">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type response_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
@@ -465,164 +498,161 @@
 
 
 %% Example:
-%% list_reports_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_reports_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% put_account_settings_response() :: #{
-%%   <<"accountSettings">> => account_settings()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
 %% }
--type put_account_settings_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_compliance_inquiry_response() :: #{
-%%   <<"complianceInquirySummary">> => inquiry_summary(),
-%%   <<"tags">> => map()
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
 %% }
--type create_compliance_inquiry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_compliance_inquiry_request() :: #{
-%%   <<"complianceInquiryId">> := string(),
-%%   <<"includeCitations">> => [boolean()],
-%%   <<"queryIdentifiers">> => list([integer()]())
-%% }
--type export_compliance_inquiry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_account_settings_request() :: #{
-%%   <<"notificationSubscriptionStatus">> => list(any())
-%% }
--type put_account_settings_request() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_compliance_inquiry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_compliance_inquiry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_account_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_compliance_inquiry_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_report_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_term_for_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_compliance_inquiries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_compliance_inquiry_queries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_customer_agreements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_report_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type list_reports_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type list_tags_for_resource_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type put_account_settings_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_reports_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_account_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_compliance_inquiry_feedback_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1165,6 +1195,40 @@ put_account_settings(Client, Input) ->
 put_account_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/account-settings/put"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits feedback on a compliance inquiry response.
+-spec put_compliance_inquiry_feedback(aws_client:aws_client(), put_compliance_inquiry_feedback_request()) ->
+    {ok, put_compliance_inquiry_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_compliance_inquiry_feedback_errors(), tuple()}.
+put_compliance_inquiry_feedback(Client, Input) ->
+    put_compliance_inquiry_feedback(Client, Input, []).
+
+-spec put_compliance_inquiry_feedback(aws_client:aws_client(), put_compliance_inquiry_feedback_request(), proplists:proplist()) ->
+    {ok, put_compliance_inquiry_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_compliance_inquiry_feedback_errors(), tuple()}.
+put_compliance_inquiry_feedback(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/compliance-inquiry/putFeedback"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

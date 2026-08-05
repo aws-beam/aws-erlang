@@ -186,17 +186,271 @@
 
 
 %% Example:
-%% flywheel_iteration_filter() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer()
+%% augmented_manifests_list_item() :: #{
+%%   <<"AnnotationDataS3Uri">> => string(),
+%%   <<"AttributeNames">> => list(string()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"S3Uri">> => string(),
+%%   <<"SourceDocumentsS3Uri">> => string(),
+%%   <<"Split">> => list(any())
 %% }
--type flywheel_iteration_filter() :: #{binary() => any()}.
+-type augmented_manifests_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_request_detail() :: #{
-%%   <<"Reason">> => list(any())
+%% batch_detect_dominant_language_item_result() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Languages">> => list(dominant_language())
 %% }
--type invalid_request_detail() :: #{binary() => any()}.
+-type batch_detect_dominant_language_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_dominant_language_request() :: #{
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_dominant_language_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_dominant_language_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_dominant_language_item_result())
+%% }
+-type batch_detect_dominant_language_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_entities_item_result() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"Index">> => integer()
+%% }
+-type batch_detect_entities_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_entities_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_entities_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_entities_item_result())
+%% }
+-type batch_detect_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_key_phrases_item_result() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"KeyPhrases">> => list(key_phrase())
+%% }
+-type batch_detect_key_phrases_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_key_phrases_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_key_phrases_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_key_phrases_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_key_phrases_item_result())
+%% }
+-type batch_detect_key_phrases_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_sentiment_item_result() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Sentiment">> => list(any()),
+%%   <<"SentimentScore">> => sentiment_score()
+%% }
+-type batch_detect_sentiment_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_sentiment_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_sentiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_sentiment_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_sentiment_item_result())
+%% }
+-type batch_detect_sentiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_syntax_item_result() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"SyntaxTokens">> => list(syntax_token())
+%% }
+-type batch_detect_syntax_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_syntax_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_syntax_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_syntax_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_syntax_item_result())
+%% }
+-type batch_detect_syntax_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_targeted_sentiment_item_result() :: #{
+%%   <<"Entities">> => list(targeted_sentiment_entity()),
+%%   <<"Index">> => integer()
+%% }
+-type batch_detect_targeted_sentiment_item_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_targeted_sentiment_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextList">> := list(string())
+%% }
+-type batch_detect_targeted_sentiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_detect_targeted_sentiment_response() :: #{
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_targeted_sentiment_item_result())
+%% }
+-type batch_detect_targeted_sentiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_item_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Index">> => integer()
+%% }
+-type batch_item_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type batch_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% block() :: #{
+%%   <<"BlockType">> => list(any()),
+%%   <<"Geometry">> => geometry(),
+%%   <<"Id">> => string(),
+%%   <<"Page">> => integer(),
+%%   <<"Relationships">> => list(relationships_list_item()),
+%%   <<"Text">> => string()
+%% }
+-type block() :: #{binary() => any()}.
+
+%% Example:
+%% block_reference() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"BlockId">> => string(),
+%%   <<"ChildBlocks">> => list(child_block()),
+%%   <<"EndOffset">> => integer()
+%% }
+-type block_reference() :: #{binary() => any()}.
+
+%% Example:
+%% bounding_box() :: #{
+%%   <<"Height">> => float(),
+%%   <<"Left">> => float(),
+%%   <<"Top">> => float(),
+%%   <<"Width">> => float()
+%% }
+-type bounding_box() :: #{binary() => any()}.
+
+%% Example:
+%% child_block() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"ChildBlockId">> => string(),
+%%   <<"EndOffset">> => integer()
+%% }
+-type child_block() :: #{binary() => any()}.
+
+%% Example:
+%% classifier_evaluation_metrics() :: #{
+%%   <<"Accuracy">> => float(),
+%%   <<"F1Score">> => float(),
+%%   <<"HammingLoss">> => float(),
+%%   <<"MicroF1Score">> => float(),
+%%   <<"MicroPrecision">> => float(),
+%%   <<"MicroRecall">> => float(),
+%%   <<"Precision">> => float(),
+%%   <<"Recall">> => float()
+%% }
+-type classifier_evaluation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% classifier_metadata() :: #{
+%%   <<"EvaluationMetrics">> => classifier_evaluation_metrics(),
+%%   <<"NumberOfLabels">> => integer(),
+%%   <<"NumberOfTestDocuments">> => integer(),
+%%   <<"NumberOfTrainedDocuments">> => integer()
+%% }
+-type classifier_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% classify_document_request() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"DocumentReaderConfig">> => document_reader_config(),
+%%   <<"EndpointArn">> := string(),
+%%   <<"Text">> => string()
+%% }
+-type classify_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% classify_document_response() :: #{
+%%   <<"Classes">> => list(document_class()),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"DocumentType">> => list(document_type_list_item()),
+%%   <<"Errors">> => list(errors_list_item()),
+%%   <<"Labels">> => list(document_label()),
+%%   <<"Warnings">> => list(warnings_list_item())
+%% }
+-type classify_document_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contains_pii_entities_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type contains_pii_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% contains_pii_entities_response() :: #{
+%%   <<"Labels">> => list(entity_label())
+%% }
+-type contains_pii_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DatasetName">> := string(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"FlywheelArn">> := string(),
+%%   <<"InputDataConfig">> := dataset_input_data_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"DatasetArn">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_document_classifier_request() :: #{
@@ -217,75 +471,213 @@
 -type create_document_classifier_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_detection_job_response() :: #{
-%%   <<"EventsDetectionJobProperties">> => events_detection_job_properties()
+%% create_document_classifier_response() :: #{
+%%   <<"DocumentClassifierArn">> => string()
 %% }
--type describe_events_detection_job_response() :: #{binary() => any()}.
+-type create_document_classifier_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_flywheel_request() :: #{
-%%   <<"ActiveModelArn">> => string(),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"DataSecurityConfig">> => update_data_security_config(),
-%%   <<"FlywheelArn">> := string()
-%% }
--type update_flywheel_request() :: #{binary() => any()}.
-
-%% Example:
-%% contains_pii_entities_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
-%% }
--type contains_pii_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_entity_recognizers_response() :: #{
-%%   <<"EntityRecognizerPropertiesList">> => list(entity_recognizer_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_entity_recognizers_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_flywheel_iteration_request() :: #{
+%% create_endpoint_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"FlywheelArn">> := string()
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"DesiredInferenceUnits">> := integer(),
+%%   <<"EndpointName">> := string(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type start_flywheel_iteration_request() :: #{binary() => any()}.
+-type create_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_pii_entities_detection_jobs_request() :: #{
-%%   <<"Filter">> => pii_entities_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_endpoint_response() :: #{
+%%   <<"EndpointArn">> => string(),
+%%   <<"ModelArn">> => string()
 %% }
--type list_pii_entities_detection_jobs_request() :: #{binary() => any()}.
+-type create_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% document_classifier_output_data_config() :: #{
-%%   <<"FlywheelStatsS3Prefix">> => string(),
-%%   <<"KmsKeyId">> => string(),
+%% create_entity_recognizer_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := entity_recognizer_input_data_config(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"ModelKmsKeyId">> => string(),
+%%   <<"ModelPolicy">> => string(),
+%%   <<"RecognizerName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VersionName">> => string(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_entity_recognizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_entity_recognizer_response() :: #{
+%%   <<"EntityRecognizerArn">> => string()
+%% }
+-type create_entity_recognizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_flywheel_request() :: #{
+%%   <<"ActiveModelArn">> => string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"DataLakeS3Uri">> := string(),
+%%   <<"DataSecurityConfig">> => data_security_config(),
+%%   <<"FlywheelName">> := string(),
+%%   <<"ModelType">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TaskConfig">> => task_config()
+%% }
+-type create_flywheel_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_flywheel_response() :: #{
+%%   <<"ActiveModelArn">> => string(),
+%%   <<"FlywheelArn">> => string()
+%% }
+-type create_flywheel_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_security_config() :: #{
+%%   <<"DataLakeKmsKeyId">> => string(),
+%%   <<"ModelKmsKeyId">> => string(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type data_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_augmented_manifests_list_item() :: #{
+%%   <<"AnnotationDataS3Uri">> => string(),
+%%   <<"AttributeNames">> => list(string()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"S3Uri">> => string(),
+%%   <<"SourceDocumentsS3Uri">> => string()
+%% }
+-type dataset_augmented_manifests_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_document_classifier_input_data_config() :: #{
+%%   <<"LabelDelimiter">> => string(),
 %%   <<"S3Uri">> => string()
 %% }
--type document_classifier_output_data_config() :: #{binary() => any()}.
+-type dataset_document_classifier_input_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% stop_training_document_classifier_request() :: #{
+%% dataset_entity_recognizer_annotations() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type dataset_entity_recognizer_annotations() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_entity_recognizer_documents() :: #{
+%%   <<"InputFormat">> => list(any()),
+%%   <<"S3Uri">> => string()
+%% }
+-type dataset_entity_recognizer_documents() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_entity_recognizer_entity_list() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type dataset_entity_recognizer_entity_list() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_entity_recognizer_input_data_config() :: #{
+%%   <<"Annotations">> => dataset_entity_recognizer_annotations(),
+%%   <<"Documents">> => dataset_entity_recognizer_documents(),
+%%   <<"EntityList">> => dataset_entity_recognizer_entity_list()
+%% }
+-type dataset_entity_recognizer_input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_filter() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type dataset_filter() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_input_data_config() :: #{
+%%   <<"AugmentedManifests">> => list(dataset_augmented_manifests_list_item()),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DocumentClassifierInputDataConfig">> => dataset_document_classifier_input_data_config(),
+%%   <<"EntityRecognizerInputDataConfig">> => dataset_entity_recognizer_input_data_config()
+%% }
+-type dataset_input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_properties() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"DatasetS3Uri">> => string(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"NumberOfDocuments">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type dataset_properties() :: #{binary() => any()}.
+
+%% Example:
+%% delete_document_classifier_request() :: #{
 %%   <<"DocumentClassifierArn">> := string()
 %% }
--type stop_training_document_classifier_request() :: #{binary() => any()}.
+-type delete_document_classifier_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% delete_document_classifier_response() :: #{
+
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type delete_document_classifier_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dominant_language_detection_job_response() :: #{
-%%   <<"DominantLanguageDetectionJobProperties">> => dominant_language_detection_job_properties()
+%% delete_endpoint_request() :: #{
+%%   <<"EndpointArn">> := string()
 %% }
--type describe_dominant_language_detection_job_response() :: #{binary() => any()}.
+-type delete_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_response() :: #{
+
+%% }
+-type delete_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entity_recognizer_request() :: #{
+%%   <<"EntityRecognizerArn">> := string()
+%% }
+-type delete_entity_recognizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entity_recognizer_response() :: #{
+
+%% }
+-type delete_entity_recognizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flywheel_request() :: #{
+%%   <<"FlywheelArn">> := string()
+%% }
+-type delete_flywheel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flywheel_response() :: #{
+
+%% }
+-type delete_flywheel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_response() :: #{
@@ -294,10 +686,370 @@
 -type delete_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_dataset_request() :: #{
+%%   <<"DatasetArn">> := string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"DatasetProperties">> => dataset_properties()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_classification_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_document_classification_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_classification_job_response() :: #{
+%%   <<"DocumentClassificationJobProperties">> => document_classification_job_properties()
+%% }
+-type describe_document_classification_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_classifier_request() :: #{
+%%   <<"DocumentClassifierArn">> := string()
+%% }
+-type describe_document_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_classifier_response() :: #{
+%%   <<"DocumentClassifierProperties">> => document_classifier_properties()
+%% }
+-type describe_document_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dominant_language_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_dominant_language_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dominant_language_detection_job_response() :: #{
+%%   <<"DominantLanguageDetectionJobProperties">> => dominant_language_detection_job_properties()
+%% }
+-type describe_dominant_language_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_request() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type describe_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_response() :: #{
+%%   <<"EndpointProperties">> => endpoint_properties()
+%% }
+-type describe_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entities_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entities_detection_job_response() :: #{
+%%   <<"EntitiesDetectionJobProperties">> => entities_detection_job_properties()
+%% }
+-type describe_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_recognizer_request() :: #{
+%%   <<"EntityRecognizerArn">> := string()
+%% }
+-type describe_entity_recognizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_recognizer_response() :: #{
+%%   <<"EntityRecognizerProperties">> => entity_recognizer_properties()
+%% }
+-type describe_entity_recognizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_events_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_detection_job_response() :: #{
+%%   <<"EventsDetectionJobProperties">> => events_detection_job_properties()
+%% }
+-type describe_events_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flywheel_iteration_request() :: #{
+%%   <<"FlywheelArn">> := string(),
+%%   <<"FlywheelIterationId">> := string()
+%% }
+-type describe_flywheel_iteration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flywheel_iteration_response() :: #{
+%%   <<"FlywheelIterationProperties">> => flywheel_iteration_properties()
+%% }
+-type describe_flywheel_iteration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flywheel_request() :: #{
+%%   <<"FlywheelArn">> := string()
+%% }
+-type describe_flywheel_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_flywheel_response() :: #{
+%%   <<"FlywheelProperties">> => flywheel_properties()
+%% }
+-type describe_flywheel_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_phrases_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_key_phrases_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_phrases_detection_job_response() :: #{
+%%   <<"KeyPhrasesDetectionJobProperties">> => key_phrases_detection_job_properties()
+%% }
+-type describe_key_phrases_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pii_entities_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_pii_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pii_entities_detection_job_response() :: #{
+%%   <<"PiiEntitiesDetectionJobProperties">> => pii_entities_detection_job_properties()
+%% }
+-type describe_pii_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type describe_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sentiment_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sentiment_detection_job_response() :: #{
+%%   <<"SentimentDetectionJobProperties">> => sentiment_detection_job_properties()
+%% }
+-type describe_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_targeted_sentiment_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_targeted_sentiment_detection_job_response() :: #{
 %%   <<"TargetedSentimentDetectionJobProperties">> => targeted_sentiment_detection_job_properties()
 %% }
 -type describe_targeted_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topics_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_topics_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topics_detection_job_response() :: #{
+%%   <<"TopicsDetectionJobProperties">> => topics_detection_job_properties()
+%% }
+-type describe_topics_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_dominant_language_request() :: #{
+%%   <<"Text">> := string()
+%% }
+-type detect_dominant_language_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_dominant_language_response() :: #{
+%%   <<"Languages">> => list(dominant_language())
+%% }
+-type detect_dominant_language_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_request() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"DocumentReaderConfig">> => document_reader_config(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Text">> => string()
+%% }
+-type detect_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_response() :: #{
+%%   <<"Blocks">> => list(block()),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"DocumentType">> => list(document_type_list_item()),
+%%   <<"Entities">> => list(entity()),
+%%   <<"Errors">> => list(errors_list_item())
+%% }
+-type detect_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_key_phrases_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type detect_key_phrases_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_key_phrases_response() :: #{
+%%   <<"KeyPhrases">> => list(key_phrase())
+%% }
+-type detect_key_phrases_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_pii_entities_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type detect_pii_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_pii_entities_response() :: #{
+%%   <<"Entities">> => list(pii_entity())
+%% }
+-type detect_pii_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_sentiment_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type detect_sentiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_sentiment_response() :: #{
+%%   <<"Sentiment">> => list(any()),
+%%   <<"SentimentScore">> => sentiment_score()
+%% }
+-type detect_sentiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_syntax_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type detect_syntax_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_syntax_response() :: #{
+%%   <<"SyntaxTokens">> => list(syntax_token())
+%% }
+-type detect_syntax_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_targeted_sentiment_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Text">> := string()
+%% }
+-type detect_targeted_sentiment_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_targeted_sentiment_response() :: #{
+%%   <<"Entities">> => list(targeted_sentiment_entity())
+%% }
+-type detect_targeted_sentiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_toxic_content_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TextSegments">> := list(text_segment())
+%% }
+-type detect_toxic_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_toxic_content_response() :: #{
+%%   <<"ResultList">> => list(toxic_labels())
+%% }
+-type detect_toxic_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% document_class() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Page">> => integer(),
+%%   <<"Score">> => float()
+%% }
+-type document_class() :: #{binary() => any()}.
+
+%% Example:
+%% document_classification_config() :: #{
+%%   <<"Labels">> => list(string()),
+%%   <<"Mode">> => list(any())
+%% }
+-type document_classification_config() :: #{binary() => any()}.
+
+%% Example:
+%% document_classification_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type document_classification_job_filter() :: #{binary() => any()}.
+
+%% Example:
+%% document_classification_job_properties() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"DocumentClassifierArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type document_classification_job_properties() :: #{binary() => any()}.
+
+%% Example:
+%% document_classifier_documents() :: #{
+%%   <<"S3Uri">> => string(),
+%%   <<"TestS3Uri">> => string()
+%% }
+-type document_classifier_documents() :: #{binary() => any()}.
+
+%% Example:
+%% document_classifier_filter() :: #{
+%%   <<"DocumentClassifierName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type document_classifier_filter() :: #{binary() => any()}.
 
 %% Example:
 %% document_classifier_input_data_config() :: #{
@@ -313,185 +1065,12 @@
 -type document_classifier_input_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% batch_detect_dominant_language_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_dominant_language_item_result())
-%% }
--type batch_detect_dominant_language_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_events_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetEventTypes">> := list(string())
-%% }
--type start_events_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_document_classifier_input_data_config() :: #{
-%%   <<"LabelDelimiter">> => string(),
+%% document_classifier_output_data_config() :: #{
+%%   <<"FlywheelStatsS3Prefix">> => string(),
+%%   <<"KmsKeyId">> => string(),
 %%   <<"S3Uri">> => string()
 %% }
--type dataset_document_classifier_input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_response() :: #{
-%%   <<"DesiredModelArn">> => string()
-%% }
--type update_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% classifier_metadata() :: #{
-%%   <<"EvaluationMetrics">> => classifier_evaluation_metrics(),
-%%   <<"NumberOfLabels">> => integer(),
-%%   <<"NumberOfTestDocuments">> => integer(),
-%%   <<"NumberOfTrainedDocuments">> => integer()
-%% }
--type classifier_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_summary() :: #{
-%%   <<"LatestVersionCreatedAt">> => non_neg_integer(),
-%%   <<"LatestVersionName">> => string(),
-%%   <<"LatestVersionStatus">> => list(any()),
-%%   <<"NumberOfVersions">> => integer(),
-%%   <<"RecognizerName">> => string()
-%% }
--type entity_recognizer_summary() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_dominant_language_item_result() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"Languages">> => list(dominant_language())
-%% }
--type batch_detect_dominant_language_item_result() :: #{binary() => any()}.
-
-%% Example:
-%% events_detection_job_properties() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"TargetEventTypes">> => list(string())
-%% }
--type events_detection_job_properties() :: #{binary() => any()}.
-
-%% Example:
-%% input_data_config() :: #{
-%%   <<"DocumentReaderConfig">> => document_reader_config(),
-%%   <<"InputFormat">> => list(any()),
-%%   <<"S3Uri">> => string()
-%% }
--type input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_topics_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_topics_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% geometry() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point())
-%% }
--type geometry() :: #{binary() => any()}.
-
-%% Example:
-%% start_document_classification_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"DocumentClassifierArn">> => string(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type start_document_classification_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_flywheel_iteration_history_response() :: #{
-%%   <<"FlywheelIterationPropertiesList">> => list(flywheel_iteration_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_flywheel_iteration_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"BlockReferences">> => list(block_reference()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% key_phrases_detection_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type key_phrases_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% sentiment_detection_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type sentiment_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% import_model_response() :: #{
-%%   <<"ModelArn">> => string()
-%% }
--type import_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entity_recognizer_request() :: #{
-%%   <<"EntityRecognizerArn">> := string()
-%% }
--type delete_entity_recognizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_security_config() :: #{
-%%   <<"DataLakeKmsKeyId">> => string(),
-%%   <<"ModelKmsKeyId">> => string(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type data_security_config() :: #{binary() => any()}.
+-type document_classifier_output_data_config() :: #{binary() => any()}.
 
 %% Example:
 %% document_classifier_properties() :: #{
@@ -518,43 +1097,29 @@
 -type document_classifier_properties() :: #{binary() => any()}.
 
 %% Example:
-%% list_flywheels_response() :: #{
-%%   <<"FlywheelSummaryList">> => list(flywheel_summary()),
-%%   <<"NextToken">> => string()
+%% document_classifier_summary() :: #{
+%%   <<"DocumentClassifierName">> => string(),
+%%   <<"LatestVersionCreatedAt">> => non_neg_integer(),
+%%   <<"LatestVersionName">> => string(),
+%%   <<"LatestVersionStatus">> => list(any()),
+%%   <<"NumberOfVersions">> => integer()
 %% }
--type list_flywheels_response() :: #{binary() => any()}.
+-type document_classifier_summary() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_augmented_manifests_list_item() :: #{
-%%   <<"AnnotationDataS3Uri">> => string(),
-%%   <<"AttributeNames">> => list(string()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"S3Uri">> => string(),
-%%   <<"SourceDocumentsS3Uri">> => string()
+%% document_label() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Page">> => integer(),
+%%   <<"Score">> => float()
 %% }
--type dataset_augmented_manifests_list_item() :: #{binary() => any()}.
+-type document_label() :: #{binary() => any()}.
 
 %% Example:
-%% classify_document_request() :: #{
-%%   <<"Bytes">> => binary(),
-%%   <<"DocumentReaderConfig">> => document_reader_config(),
-%%   <<"EndpointArn">> := string(),
-%%   <<"Text">> => string()
+%% document_metadata() :: #{
+%%   <<"ExtractedCharacters">> => list(extracted_characters_list_item()),
+%%   <<"Pages">> => integer()
 %% }
--type classify_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_syntax_item_result() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"SyntaxTokens">> => list(syntax_token())
-%% }
--type batch_detect_syntax_item_result() :: #{binary() => any()}.
+-type document_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% document_reader_config() :: #{
@@ -565,171 +1130,195 @@
 -type document_reader_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_document_classifier_summaries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% document_type_list_item() :: #{
+%%   <<"Page">> => integer(),
+%%   <<"Type">> => list(any())
 %% }
--type list_document_classifier_summaries_request() :: #{binary() => any()}.
+-type document_type_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% create_endpoint_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
+%% dominant_language() :: #{
+%%   <<"LanguageCode">> => string(),
+%%   <<"Score">> => float()
+%% }
+-type dominant_language() :: #{binary() => any()}.
+
+%% Example:
+%% dominant_language_detection_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type dominant_language_detection_job_filter() :: #{binary() => any()}.
+
+%% Example:
+%% dominant_language_detection_job_properties() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
-%%   <<"DesiredInferenceUnits">> := integer(),
-%%   <<"EndpointName">> := string(),
-%%   <<"FlywheelArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type dominant_language_detection_job_properties() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_filter() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
 %%   <<"ModelArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%%   <<"Status">> => list(any())
 %% }
--type create_endpoint_request() :: #{binary() => any()}.
+-type endpoint_filter() :: #{binary() => any()}.
 
 %% Example:
-%% list_datasets_request() :: #{
-%%   <<"Filter">> => dataset_filter(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_key_phrases_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
-%% }
--type detect_key_phrases_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entities_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_entities_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_flywheels_request() :: #{
-%%   <<"Filter">> => flywheel_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_flywheels_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_recognizer_response() :: #{
-%%   <<"EntityRecognizerProperties">> => entity_recognizer_properties()
-%% }
--type describe_entity_recognizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% contains_pii_entities_response() :: #{
-%%   <<"Labels">> => list(entity_label())
-%% }
--type contains_pii_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_training_entity_recognizer_response() :: #{
-
-%% }
--type stop_training_entity_recognizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% augmented_manifests_list_item() :: #{
-%%   <<"AnnotationDataS3Uri">> => string(),
-%%   <<"AttributeNames">> => list(string()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"S3Uri">> => string(),
-%%   <<"SourceDocumentsS3Uri">> => string(),
-%%   <<"Split">> => list(any())
-%% }
--type augmented_manifests_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% part_of_speech_tag() :: #{
-%%   <<"Score">> => float(),
-%%   <<"Tag">> => list(any())
-%% }
--type part_of_speech_tag() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_request() :: #{
+%% endpoint_properties() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentInferenceUnits">> => integer(),
+%%   <<"DataAccessRoleArn">> => string(),
 %%   <<"DesiredDataAccessRoleArn">> => string(),
 %%   <<"DesiredInferenceUnits">> => integer(),
 %%   <<"DesiredModelArn">> => string(),
-%%   <<"EndpointArn">> := string(),
-%%   <<"FlywheelArn">> => string()
+%%   <<"EndpointArn">> => string(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"ModelArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type update_endpoint_request() :: #{binary() => any()}.
+-type endpoint_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_sentiment_detection_job_response() :: #{
+%% entities_detection_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type entities_detection_job_filter() :: #{binary() => any()}.
+
+%% Example:
+%% entities_detection_job_properties() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EntityRecognizerArn">> => string(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"JobArn">> => string(),
 %%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type stop_sentiment_detection_job_response() :: #{binary() => any()}.
+-type entities_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% detect_pii_entities_response() :: #{
-%%   <<"Entities">> => list(pii_entity())
+%% entity() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"BlockReferences">> => list(block_reference()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type detect_pii_entities_response() :: #{binary() => any()}.
+-type entity() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_detection_job_request() :: #{
-%%   <<"JobId">> := string()
+%% entity_label() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Score">> => float()
 %% }
--type describe_events_detection_job_request() :: #{binary() => any()}.
+-type entity_label() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% entity_recognition_config() :: #{
+%%   <<"EntityTypes">> => list(entity_types_list_item())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type entity_recognition_config() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
+%% entity_recognizer_annotations() :: #{
+%%   <<"S3Uri">> => string(),
+%%   <<"TestS3Uri">> => string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type entity_recognizer_annotations() :: #{binary() => any()}.
 
 %% Example:
-%% describe_sentiment_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_sentiment_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_topics_detection_job_response() :: #{
-%%   <<"TopicsDetectionJobProperties">> => topics_detection_job_properties()
-%% }
--type describe_topics_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entity_recognizers_request() :: #{
-%%   <<"Filter">> => entity_recognizer_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entity_recognizers_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_syntax_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string())
-%% }
--type batch_detect_syntax_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_filter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_entity_recognizer_documents() :: #{
+%% entity_recognizer_documents() :: #{
 %%   <<"InputFormat">> => list(any()),
+%%   <<"S3Uri">> => string(),
+%%   <<"TestS3Uri">> => string()
+%% }
+-type entity_recognizer_documents() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_entity_list() :: #{
 %%   <<"S3Uri">> => string()
 %% }
--type dataset_entity_recognizer_documents() :: #{binary() => any()}.
+-type entity_recognizer_entity_list() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_evaluation_metrics() :: #{
+%%   <<"F1Score">> => float(),
+%%   <<"Precision">> => float(),
+%%   <<"Recall">> => float()
+%% }
+-type entity_recognizer_evaluation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_filter() :: #{
+%%   <<"RecognizerName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type entity_recognizer_filter() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_input_data_config() :: #{
+%%   <<"Annotations">> => entity_recognizer_annotations(),
+%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"Documents">> => entity_recognizer_documents(),
+%%   <<"EntityList">> => entity_recognizer_entity_list(),
+%%   <<"EntityTypes">> => list(entity_types_list_item())
+%% }
+-type entity_recognizer_input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_metadata() :: #{
+%%   <<"EntityTypes">> => list(entity_recognizer_metadata_entity_types_list_item()),
+%%   <<"EvaluationMetrics">> => entity_recognizer_evaluation_metrics(),
+%%   <<"NumberOfTestDocuments">> => integer(),
+%%   <<"NumberOfTrainedDocuments">> => integer()
+%% }
+-type entity_recognizer_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_metadata_entity_types_list_item() :: #{
+%%   <<"EvaluationMetrics">> => entity_types_evaluation_metrics(),
+%%   <<"NumberOfTrainMentions">> => integer(),
+%%   <<"Type">> => string()
+%% }
+-type entity_recognizer_metadata_entity_types_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% entity_recognizer_output_data_config() :: #{
+%%   <<"FlywheelStatsS3Prefix">> => string()
+%% }
+-type entity_recognizer_output_data_config() :: #{binary() => any()}.
 
 %% Example:
 %% entity_recognizer_properties() :: #{
@@ -755,93 +1344,48 @@
 -type entity_recognizer_properties() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tag_keys_exception() :: #{
-%%   <<"Message">> => string()
+%% entity_recognizer_summary() :: #{
+%%   <<"LatestVersionCreatedAt">> => non_neg_integer(),
+%%   <<"LatestVersionName">> => string(),
+%%   <<"LatestVersionStatus">> => list(any()),
+%%   <<"NumberOfVersions">> => integer(),
+%%   <<"RecognizerName">> => string()
 %% }
--type too_many_tag_keys_exception() :: #{binary() => any()}.
+-type entity_recognizer_summary() :: #{binary() => any()}.
 
 %% Example:
-%% task_config() :: #{
-%%   <<"DocumentClassificationConfig">> => document_classification_config(),
-%%   <<"EntityRecognitionConfig">> => entity_recognition_config(),
-%%   <<"LanguageCode">> => list(any())
-%% }
--type task_config() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_evaluation_metrics() :: #{
+%% entity_types_evaluation_metrics() :: #{
 %%   <<"F1Score">> => float(),
 %%   <<"Precision">> => float(),
 %%   <<"Recall">> => float()
 %% }
--type entity_recognizer_evaluation_metrics() :: #{binary() => any()}.
+-type entity_types_evaluation_metrics() :: #{binary() => any()}.
 
 %% Example:
-%% create_entity_recognizer_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := entity_recognizer_input_data_config(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"ModelKmsKeyId">> => string(),
-%%   <<"ModelPolicy">> => string(),
-%%   <<"RecognizerName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VersionName">> => string(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
+%% entity_types_list_item() :: #{
+%%   <<"Type">> => string()
 %% }
--type create_entity_recognizer_request() :: #{binary() => any()}.
+-type entity_types_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% batch_detect_targeted_sentiment_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string())
+%% errors_list_item() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Page">> => integer()
 %% }
--type batch_detect_targeted_sentiment_request() :: #{binary() => any()}.
+-type errors_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% start_entities_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"EntityRecognizerArn">> => string(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"InputDataConfig">> := input_data_config(),
+%% events_detection_job_filter() :: #{
 %%   <<"JobName">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
 %% }
--type start_entities_detection_job_request() :: #{binary() => any()}.
+-type events_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
-%% describe_document_classification_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_document_classification_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entity_recognizer_response() :: #{
-
-%% }
--type delete_entity_recognizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% classifier_evaluation_metrics() :: #{
-%%   <<"Accuracy">> => float(),
-%%   <<"F1Score">> => float(),
-%%   <<"HammingLoss">> => float(),
-%%   <<"MicroF1Score">> => float(),
-%%   <<"MicroPrecision">> => float(),
-%%   <<"MicroRecall">> => float(),
-%%   <<"Precision">> => float(),
-%%   <<"Recall">> => float()
-%% }
--type classifier_evaluation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% topics_detection_job_properties() :: #{
+%% events_detection_job_properties() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"InputDataConfig">> => input_data_config(),
@@ -849,55 +1393,77 @@
 %%   <<"JobId">> => string(),
 %%   <<"JobName">> => string(),
 %%   <<"JobStatus">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
 %%   <<"Message">> => string(),
-%%   <<"NumberOfTopics">> => integer(),
 %%   <<"OutputDataConfig">> => output_data_config(),
 %%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
+%%   <<"TargetEventTypes">> => list(string())
 %% }
--type topics_detection_job_properties() :: #{binary() => any()}.
+-type events_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_sentiment_detection_job_request() :: #{
-%%   <<"JobId">> := string()
+%% extracted_characters_list_item() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Page">> => integer()
 %% }
--type stop_sentiment_detection_job_request() :: #{binary() => any()}.
+-type extracted_characters_list_item() :: #{binary() => any()}.
 
 %% Example:
-%% entity_recognizer_input_data_config() :: #{
-%%   <<"Annotations">> => entity_recognizer_annotations(),
-%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"Documents">> => entity_recognizer_documents(),
-%%   <<"EntityList">> => entity_recognizer_entity_list(),
-%%   <<"EntityTypes">> => list(entity_types_list_item())
+%% flywheel_filter() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type entity_recognizer_input_data_config() :: #{binary() => any()}.
+-type flywheel_filter() :: #{binary() => any()}.
 
 %% Example:
-%% detect_syntax_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
+%% flywheel_iteration_filter() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer()
 %% }
--type detect_syntax_request() :: #{binary() => any()}.
+-type flywheel_iteration_filter() :: #{binary() => any()}.
 
 %% Example:
-%% syntax_token() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"PartOfSpeech">> => part_of_speech_tag(),
-%%   <<"Text">> => string(),
-%%   <<"TokenId">> => integer()
+%% flywheel_iteration_properties() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EvaluatedModelArn">> => string(),
+%%   <<"EvaluatedModelMetrics">> => flywheel_model_evaluation_metrics(),
+%%   <<"EvaluationManifestS3Prefix">> => string(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"FlywheelIterationId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TrainedModelArn">> => string(),
+%%   <<"TrainedModelMetrics">> => flywheel_model_evaluation_metrics()
 %% }
--type syntax_token() :: #{binary() => any()}.
+-type flywheel_iteration_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_pii_entities_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
+%% flywheel_model_evaluation_metrics() :: #{
+%%   <<"AverageAccuracy">> => float(),
+%%   <<"AverageF1Score">> => float(),
+%%   <<"AveragePrecision">> => float(),
+%%   <<"AverageRecall">> => float()
 %% }
--type stop_pii_entities_detection_job_response() :: #{binary() => any()}.
+-type flywheel_model_evaluation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% flywheel_properties() :: #{
+%%   <<"ActiveModelArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"DataLakeS3Uri">> => string(),
+%%   <<"DataSecurityConfig">> => data_security_config(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LatestFlywheelIteration">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ModelType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskConfig">> => task_config()
+%% }
+-type flywheel_properties() :: #{binary() => any()}.
 
 %% Example:
 %% flywheel_summary() :: #{
@@ -914,63 +1480,68 @@
 -type flywheel_summary() :: #{binary() => any()}.
 
 %% Example:
-%% detect_entities_response() :: #{
-%%   <<"Blocks">> => list(block()),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"DocumentType">> => list(document_type_list_item()),
-%%   <<"Entities">> => list(entity()),
-%%   <<"Errors">> => list(errors_list_item())
+%% geometry() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Polygon">> => list(point())
 %% }
--type detect_entities_response() :: #{binary() => any()}.
+-type geometry() :: #{binary() => any()}.
 
 %% Example:
-%% entity_label() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Score">> => float()
+%% import_model_request() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"ModelKmsKeyId">> => string(),
+%%   <<"ModelName">> => string(),
+%%   <<"SourceModelArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VersionName">> => string()
 %% }
--type entity_label() :: #{binary() => any()}.
+-type import_model_request() :: #{binary() => any()}.
 
 %% Example:
-%% point() :: #{
-%%   <<"X">> => float(),
-%%   <<"Y">> => float()
+%% import_model_response() :: #{
+%%   <<"ModelArn">> => string()
 %% }
--type point() :: #{binary() => any()}.
+-type import_model_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_document_classifier_summaries_response() :: #{
-%%   <<"DocumentClassifierSummariesList">> => list(document_classifier_summary()),
-%%   <<"NextToken">> => string()
+%% input_data_config() :: #{
+%%   <<"DocumentReaderConfig">> => document_reader_config(),
+%%   <<"InputFormat">> => list(any()),
+%%   <<"S3Uri">> => string()
 %% }
--type list_document_classifier_summaries_response() :: #{binary() => any()}.
+-type input_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% detect_sentiment_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type detect_sentiment_request() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% start_sentiment_detection_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
+%% invalid_filter_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type start_sentiment_detection_job_response() :: #{binary() => any()}.
+-type invalid_filter_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_dataset_response() :: #{
-%%   <<"DatasetArn">> => string()
+%% invalid_request_detail() :: #{
+%%   <<"Reason">> => list(any())
 %% }
--type create_dataset_response() :: #{binary() => any()}.
+-type invalid_request_detail() :: #{binary() => any()}.
 
 %% Example:
-%% list_document_classification_jobs_response() :: #{
-%%   <<"DocumentClassificationJobPropertiesList">> => list(document_classification_job_properties()),
-%%   <<"NextToken">> => string()
+%% invalid_request_exception() :: #{
+%%   <<"Detail">> => invalid_request_detail(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type list_document_classification_jobs_response() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type job_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% key_phrase() :: #{
@@ -982,849 +1553,13 @@
 -type key_phrase() :: #{binary() => any()}.
 
 %% Example:
-%% list_entities_detection_jobs_request() :: #{
-%%   <<"Filter">> => entities_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entities_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% pii_entities_detection_job_filter() :: #{
+%% key_phrases_detection_job_filter() :: #{
 %%   <<"JobName">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"SubmitTimeAfter">> => non_neg_integer(),
 %%   <<"SubmitTimeBefore">> => non_neg_integer()
 %% }
--type pii_entities_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_topics_detection_jobs_request() :: #{
-%%   <<"Filter">> => topics_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_topics_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_entities_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_entities_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_entity_list() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type entity_recognizer_entity_list() :: #{binary() => any()}.
-
-%% Example:
-%% start_targeted_sentiment_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type start_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_document_classifier_request() :: #{
-%%   <<"DocumentClassifierArn">> := string()
-%% }
--type delete_document_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% sentiment_score() :: #{
-%%   <<"Mixed">> => float(),
-%%   <<"Negative">> => float(),
-%%   <<"Neutral">> => float(),
-%%   <<"Positive">> => float()
-%% }
--type sentiment_score() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flywheel_iteration_request() :: #{
-%%   <<"FlywheelArn">> := string(),
-%%   <<"FlywheelIterationId">> := string()
-%% }
--type describe_flywheel_iteration_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_entity_recognizer_annotations() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type dataset_entity_recognizer_annotations() :: #{binary() => any()}.
-
-%% Example:
-%% detect_entities_request() :: #{
-%%   <<"Bytes">> => binary(),
-%%   <<"DocumentReaderConfig">> => document_reader_config(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Text">> => string()
-%% }
--type detect_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% block_reference() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"BlockId">> => string(),
-%%   <<"ChildBlocks">> => list(child_block()),
-%%   <<"EndOffset">> => integer()
-%% }
--type block_reference() :: #{binary() => any()}.
-
-%% Example:
-%% start_sentiment_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type start_sentiment_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_flywheel_iteration_history_request() :: #{
-%%   <<"Filter">> => flywheel_iteration_filter(),
-%%   <<"FlywheelArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_flywheel_iteration_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% relationships_list_item() :: #{
-%%   <<"Ids">> => list(string()),
-%%   <<"Type">> => list(any())
-%% }
--type relationships_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% document_classifier_filter() :: #{
-%%   <<"DocumentClassifierName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type document_classifier_filter() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Detail">> => invalid_request_detail(),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flywheel_iteration_response() :: #{
-%%   <<"FlywheelIterationProperties">> => flywheel_iteration_properties()
-%% }
--type describe_flywheel_iteration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_response() :: #{
-
-%% }
--type delete_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_key_phrases_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_key_phrases_item_result())
-%% }
--type batch_detect_key_phrases_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pii_entities_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_pii_entities_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% sentiment_detection_job_properties() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type sentiment_detection_job_properties() :: #{binary() => any()}.
-
-%% Example:
-%% mention_sentiment() :: #{
-%%   <<"Sentiment">> => list(any()),
-%%   <<"SentimentScore">> => sentiment_score()
-%% }
--type mention_sentiment() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoints_response() :: #{
-%%   <<"EndpointPropertiesList">> => list(endpoint_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_entities_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string())
-%% }
--type batch_detect_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_input_data_config() :: #{
-%%   <<"AugmentedManifests">> => list(dataset_augmented_manifests_list_item()),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"DocumentClassifierInputDataConfig">> => dataset_document_classifier_input_data_config(),
-%%   <<"EntityRecognizerInputDataConfig">> => dataset_entity_recognizer_input_data_config()
-%% }
--type dataset_input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_classifier_response() :: #{
-%%   <<"DocumentClassifierProperties">> => document_classifier_properties()
-%% }
--type describe_document_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% dominant_language() :: #{
-%%   <<"LanguageCode">> => string(),
-%%   <<"Score">> => float()
-%% }
--type dominant_language() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_filter() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"ModelArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type endpoint_filter() :: #{binary() => any()}.
-
-%% Example:
-%% stop_dominant_language_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_dominant_language_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_events_detection_jobs_response() :: #{
-%%   <<"EventsDetectionJobPropertiesList">> => list(events_detection_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_events_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_sentiment_detection_jobs_request() :: #{
-%%   <<"Filter">> => sentiment_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sentiment_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type batch_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_document_classifier_response() :: #{
-%%   <<"DocumentClassifierArn">> => string()
-%% }
--type create_document_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% pii_output_data_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type pii_output_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% document_label() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Page">> => integer(),
-%%   <<"Score">> => float()
-%% }
--type document_label() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_sentiment_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_sentiment_item_result())
-%% }
--type batch_detect_sentiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_classifiers_response() :: #{
-%%   <<"DocumentClassifierPropertiesList">> => list(document_classifier_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_classifiers_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pii_entities_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_pii_entities_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% targeted_sentiment_mention() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"GroupScore">> => float(),
-%%   <<"MentionSentiment">> => mention_sentiment(),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type targeted_sentiment_mention() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_security_config() :: #{
-%%   <<"ModelKmsKeyId">> => string(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type update_data_security_config() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_dominant_language_request() :: #{
-%%   <<"TextList">> := list(string())
-%% }
--type batch_detect_dominant_language_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_targeted_sentiment_detection_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_targeted_sentiment_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_request() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type describe_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% errors_list_item() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Page">> => integer()
-%% }
--type errors_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% create_entity_recognizer_response() :: #{
-%%   <<"EntityRecognizerArn">> => string()
-%% }
--type create_entity_recognizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_segment() :: #{
-%%   <<"Text">> => string()
-%% }
--type text_segment() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_classification_job_response() :: #{
-%%   <<"DocumentClassificationJobProperties">> => document_classification_job_properties()
-%% }
--type describe_document_classification_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_syntax_response() :: #{
-%%   <<"SyntaxTokens">> => list(syntax_token())
-%% }
--type detect_syntax_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_key_phrases_response() :: #{
-%%   <<"KeyPhrases">> => list(key_phrase())
-%% }
--type detect_key_phrases_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_key_phrases_detection_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_key_phrases_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_dominant_language_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type start_dominant_language_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_properties() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"DatasetS3Uri">> => string(),
-%%   <<"DatasetType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"NumberOfDocuments">> => float(),
-%%   <<"Status">> => list(any())
-%% }
--type dataset_properties() :: #{binary() => any()}.
-
-%% Example:
-%% create_flywheel_request() :: #{
-%%   <<"ActiveModelArn">> => string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"DataLakeS3Uri">> := string(),
-%%   <<"DataSecurityConfig">> => data_security_config(),
-%%   <<"FlywheelName">> := string(),
-%%   <<"ModelType">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TaskConfig">> => task_config()
-%% }
--type create_flywheel_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_documents() :: #{
-%%   <<"InputFormat">> => list(any()),
-%%   <<"S3Uri">> => string(),
-%%   <<"TestS3Uri">> => string()
-%% }
--type entity_recognizer_documents() :: #{binary() => any()}.
-
-%% Example:
-%% stop_training_document_classifier_response() :: #{
-
-%% }
--type stop_training_document_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_dominant_language_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type stop_dominant_language_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_toxic_content_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextSegments">> := list(text_segment())
-%% }
--type detect_toxic_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_targeted_sentiment_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
-%% }
--type detect_targeted_sentiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_filter() :: #{
-%%   <<"RecognizerName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type entity_recognizer_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flywheel_response() :: #{
-
-%% }
--type delete_flywheel_response() :: #{binary() => any()}.
-
-%% Example:
-%% dominant_language_detection_job_properties() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type dominant_language_detection_job_properties() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_recognizer_request() :: #{
-%%   <<"EntityRecognizerArn">> := string()
-%% }
--type describe_entity_recognizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dominant_language_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_dominant_language_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_classifier_summary() :: #{
-%%   <<"DocumentClassifierName">> => string(),
-%%   <<"LatestVersionCreatedAt">> => non_neg_integer(),
-%%   <<"LatestVersionName">> => string(),
-%%   <<"LatestVersionStatus">> => list(any()),
-%%   <<"NumberOfVersions">> => integer()
-%% }
--type document_classifier_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_sentiment_detection_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SentimentDetectionJobPropertiesList">> => list(sentiment_detection_job_properties())
-%% }
--type list_sentiment_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_item_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Index">> => integer()
-%% }
--type batch_item_error() :: #{binary() => any()}.
-
-%% Example:
-%% start_topics_detection_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_topics_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flywheel_response() :: #{
-%%   <<"FlywheelProperties">> => flywheel_properties()
-%% }
--type describe_flywheel_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_detection_jobs_response() :: #{
-%%   <<"EntitiesDetectionJobPropertiesList">> => list(entities_detection_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_entities_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% redaction_config() :: #{
-%%   <<"MaskCharacter">> => string(),
-%%   <<"MaskMode">> => list(any()),
-%%   <<"PiiEntityTypes">> => list(list(any())())
-%% }
--type redaction_config() :: #{binary() => any()}.
-
-%% Example:
-%% targeted_sentiment_entity() :: #{
-%%   <<"DescriptiveMentionIndex">> => list(integer()),
-%%   <<"Mentions">> => list(targeted_sentiment_mention())
-%% }
--type targeted_sentiment_entity() :: #{binary() => any()}.
-
-%% Example:
-%% entities_detection_job_properties() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EntityRecognizerArn">> => string(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type entities_detection_job_properties() :: #{binary() => any()}.
-
-%% Example:
-%% stop_training_entity_recognizer_request() :: #{
-%%   <<"EntityRecognizerArn">> := string()
-%% }
--type stop_training_entity_recognizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% pii_entity() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Score">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type pii_entity() :: #{binary() => any()}.
-
-%% Example:
-%% list_entity_recognizer_summaries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entity_recognizer_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% warnings_list_item() :: #{
-%%   <<"Page">> => integer(),
-%%   <<"WarnCode">> => list(any()),
-%%   <<"WarnMessage">> => string()
-%% }
--type warnings_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_sentiment_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string())
-%% }
--type batch_detect_sentiment_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_classifier_documents() :: #{
-%%   <<"S3Uri">> => string(),
-%%   <<"TestS3Uri">> => string()
-%% }
--type document_classifier_documents() :: #{binary() => any()}.
-
-%% Example:
-%% stop_targeted_sentiment_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_targeted_sentiment_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_type_list_item() :: #{
-%%   <<"Page">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type document_type_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% bounding_box() :: #{
-%%   <<"Height">> => float(),
-%%   <<"Left">> => float(),
-%%   <<"Top">> => float(),
-%%   <<"Width">> => float()
-%% }
--type bounding_box() :: #{binary() => any()}.
-
-%% Example:
-%% detect_dominant_language_response() :: #{
-%%   <<"Languages">> => list(dominant_language())
-%% }
--type detect_dominant_language_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoints_request() :: #{
-%%   <<"Filter">> => endpoint_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% targeted_sentiment_detection_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type targeted_sentiment_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_properties() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CurrentInferenceUnits">> => integer(),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"DesiredDataAccessRoleArn">> => string(),
-%%   <<"DesiredInferenceUnits">> => integer(),
-%%   <<"DesiredModelArn">> => string(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"ModelArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type endpoint_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_request() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type delete_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_sentiment_item_result() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"Sentiment">> => list(any()),
-%%   <<"SentimentScore">> => sentiment_score()
-%% }
--type batch_detect_sentiment_item_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourcePolicy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_classification_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type document_classification_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_classifier_request() :: #{
-%%   <<"DocumentClassifierArn">> := string()
-%% }
--type describe_document_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognition_config() :: #{
-%%   <<"EntityTypes">> => list(entity_types_list_item())
-%% }
--type entity_recognition_config() :: #{binary() => any()}.
-
-%% Example:
-%% text_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type text_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_key_phrases_detection_job_response() :: #{
-%%   <<"KeyPhrasesDetectionJobProperties">> => key_phrases_detection_job_properties()
-%% }
--type describe_key_phrases_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_key_phrases_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type stop_key_phrases_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_response() :: #{
-%%   <<"EndpointProperties">> => endpoint_properties()
-%% }
--type describe_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_entities_detection_job_response() :: #{
-%%   <<"EntityRecognizerArn">> => string(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_entities_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_metadata_entity_types_list_item() :: #{
-%%   <<"EvaluationMetrics">> => entity_types_evaluation_metrics(),
-%%   <<"NumberOfTrainMentions">> => integer(),
-%%   <<"Type">> => string()
-%% }
--type entity_recognizer_metadata_entity_types_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_annotations() :: #{
-%%   <<"S3Uri">> => string(),
-%%   <<"TestS3Uri">> => string()
-%% }
--type entity_recognizer_annotations() :: #{binary() => any()}.
+-type key_phrases_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
 %% key_phrases_detection_job_properties() :: #{
@@ -1845,17 +1580,308 @@
 -type key_phrases_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% create_flywheel_response() :: #{
-%%   <<"ActiveModelArn">> => string(),
-%%   <<"FlywheelArn">> => string()
-%% }
--type create_flywheel_response() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
+%% kms_key_validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type concurrent_modification_exception() :: #{binary() => any()}.
+-type kms_key_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"Filter">> => dataset_filter(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"DatasetPropertiesList">> => list(dataset_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classification_jobs_request() :: #{
+%%   <<"Filter">> => document_classification_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classification_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classification_jobs_response() :: #{
+%%   <<"DocumentClassificationJobPropertiesList">> => list(document_classification_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classification_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classifier_summaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classifier_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classifier_summaries_response() :: #{
+%%   <<"DocumentClassifierSummariesList">> => list(document_classifier_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classifier_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classifiers_request() :: #{
+%%   <<"Filter">> => document_classifier_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classifiers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_classifiers_response() :: #{
+%%   <<"DocumentClassifierPropertiesList">> => list(document_classifier_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_classifiers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dominant_language_detection_jobs_request() :: #{
+%%   <<"Filter">> => dominant_language_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dominant_language_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dominant_language_detection_jobs_response() :: #{
+%%   <<"DominantLanguageDetectionJobPropertiesList">> => list(dominant_language_detection_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dominant_language_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_request() :: #{
+%%   <<"Filter">> => endpoint_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoints_response() :: #{
+%%   <<"EndpointPropertiesList">> => list(endpoint_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_detection_jobs_request() :: #{
+%%   <<"Filter">> => entities_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_detection_jobs_response() :: #{
+%%   <<"EntitiesDetectionJobPropertiesList">> => list(entities_detection_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entity_recognizer_summaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_recognizer_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entity_recognizer_summaries_response() :: #{
+%%   <<"EntityRecognizerSummariesList">> => list(entity_recognizer_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_recognizer_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entity_recognizers_request() :: #{
+%%   <<"Filter">> => entity_recognizer_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_recognizers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entity_recognizers_response() :: #{
+%%   <<"EntityRecognizerPropertiesList">> => list(entity_recognizer_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_recognizers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_detection_jobs_request() :: #{
+%%   <<"Filter">> => events_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_events_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_detection_jobs_response() :: #{
+%%   <<"EventsDetectionJobPropertiesList">> => list(events_detection_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_events_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_flywheel_iteration_history_request() :: #{
+%%   <<"Filter">> => flywheel_iteration_filter(),
+%%   <<"FlywheelArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flywheel_iteration_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flywheel_iteration_history_response() :: #{
+%%   <<"FlywheelIterationPropertiesList">> => list(flywheel_iteration_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flywheel_iteration_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_flywheels_request() :: #{
+%%   <<"Filter">> => flywheel_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flywheels_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_flywheels_response() :: #{
+%%   <<"FlywheelSummaryList">> => list(flywheel_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flywheels_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_phrases_detection_jobs_request() :: #{
+%%   <<"Filter">> => key_phrases_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_key_phrases_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_key_phrases_detection_jobs_response() :: #{
+%%   <<"KeyPhrasesDetectionJobPropertiesList">> => list(key_phrases_detection_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_key_phrases_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pii_entities_detection_jobs_request() :: #{
+%%   <<"Filter">> => pii_entities_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pii_entities_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_pii_entities_detection_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PiiEntitiesDetectionJobPropertiesList">> => list(pii_entities_detection_job_properties())
+%% }
+-type list_pii_entities_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sentiment_detection_jobs_request() :: #{
+%%   <<"Filter">> => sentiment_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sentiment_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sentiment_detection_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SentimentDetectionJobPropertiesList">> => list(sentiment_detection_job_properties())
+%% }
+-type list_sentiment_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_targeted_sentiment_detection_jobs_request() :: #{
+%%   <<"Filter">> => targeted_sentiment_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_targeted_sentiment_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_targeted_sentiment_detection_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TargetedSentimentDetectionJobPropertiesList">> => list(targeted_sentiment_detection_job_properties())
+%% }
+-type list_targeted_sentiment_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_detection_jobs_request() :: #{
+%%   <<"Filter">> => topics_detection_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_topics_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_topics_detection_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TopicsDetectionJobPropertiesList">> => list(topics_detection_job_properties())
+%% }
+-type list_topics_detection_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% mention_sentiment() :: #{
+%%   <<"Sentiment">> => list(any()),
+%%   <<"SentimentScore">> => sentiment_score()
+%% }
+-type mention_sentiment() :: #{binary() => any()}.
+
+%% Example:
+%% output_data_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% part_of_speech_tag() :: #{
+%%   <<"Score">> => float(),
+%%   <<"Tag">> => list(any())
+%% }
+-type part_of_speech_tag() :: #{binary() => any()}.
+
+%% Example:
+%% pii_entities_detection_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type pii_entities_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
 %% pii_entities_detection_job_properties() :: #{
@@ -1876,229 +1902,35 @@
 -type pii_entities_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_key_phrases_detection_job_request() :: #{
-%%   <<"JobId">> := string()
+%% pii_entity() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Score">> => float(),
+%%   <<"Type">> => list(any())
 %% }
--type stop_key_phrases_detection_job_request() :: #{binary() => any()}.
+-type pii_entity() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_language_exception() :: #{
-%%   <<"Message">> => string()
+%% pii_output_data_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Uri">> => string()
 %% }
--type unsupported_language_exception() :: #{binary() => any()}.
+-type pii_output_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_response() :: #{
-%%   <<"DatasetProperties">> => dataset_properties()
+%% point() :: #{
+%%   <<"X">> => float(),
+%%   <<"Y">> => float()
 %% }
--type describe_dataset_response() :: #{binary() => any()}.
+-type point() :: #{binary() => any()}.
 
 %% Example:
-%% entity_recognizer_metadata() :: #{
-%%   <<"EntityTypes">> => list(entity_recognizer_metadata_entity_types_list_item()),
-%%   <<"EvaluationMetrics">> => entity_recognizer_evaluation_metrics(),
-%%   <<"NumberOfTestDocuments">> => integer(),
-%%   <<"NumberOfTrainedDocuments">> => integer()
-%% }
--type entity_recognizer_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% delete_document_classifier_response() :: #{
-
-%% }
--type delete_document_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% flywheel_iteration_properties() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EvaluatedModelArn">> => string(),
-%%   <<"EvaluatedModelMetrics">> => flywheel_model_evaluation_metrics(),
-%%   <<"EvaluationManifestS3Prefix">> => string(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"FlywheelIterationId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TrainedModelArn">> => string(),
-%%   <<"TrainedModelMetrics">> => flywheel_model_evaluation_metrics()
-%% }
--type flywheel_iteration_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_key_phrases_detection_jobs_request() :: #{
-%%   <<"Filter">> => key_phrases_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_key_phrases_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_key_phrases_item_result() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"KeyPhrases">> => list(key_phrase())
-%% }
--type batch_detect_key_phrases_item_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DatasetName">> := string(),
-%%   <<"DatasetType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"FlywheelArn">> := string(),
-%%   <<"InputDataConfig">> := dataset_input_data_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_dominant_language_request() :: #{
-%%   <<"Text">> := string()
-%% }
--type detect_dominant_language_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_metadata() :: #{
-%%   <<"ExtractedCharacters">> => list(extracted_characters_list_item()),
-%%   <<"Pages">> => integer()
-%% }
--type document_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% update_flywheel_response() :: #{
-%%   <<"FlywheelProperties">> => flywheel_properties()
-%% }
--type update_flywheel_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_classification_jobs_request() :: #{
-%%   <<"Filter">> => document_classification_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_classification_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_key_phrases_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_key_phrases_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_pii_entities_detection_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type start_pii_entities_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_targeted_sentiment_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
-%% }
--type stop_targeted_sentiment_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_pii_entities_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Mode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"RedactionConfig">> => redaction_config(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_pii_entities_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_pii_entities_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Text">> := string()
-%% }
--type detect_pii_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_events_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_events_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% topics_detection_job_filter() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
-%% }
--type topics_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policy_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
+%% put_resource_policy_request() :: #{
 %%   <<"PolicyRevisionId">> => string(),
-%%   <<"ResourcePolicy">> => string()
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourcePolicy">> := string()
 %% }
--type describe_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entities_detection_job_response() :: #{
-%%   <<"EntitiesDetectionJobProperties">> => entities_detection_job_properties()
-%% }
--type describe_entities_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_topics_detection_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TopicsDetectionJobPropertiesList">> => list(topics_detection_job_properties())
-%% }
--type list_topics_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_targeted_sentiment_item_result() :: #{
-%%   <<"Entities">> => list(targeted_sentiment_entity()),
-%%   <<"Index">> => integer()
-%% }
--type batch_detect_targeted_sentiment_item_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_targeted_sentiment_detection_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TargetedSentimentDetectionJobPropertiesList">> => list(targeted_sentiment_detection_job_properties())
-%% }
--type list_targeted_sentiment_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% toxic_content() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type toxic_content() :: #{binary() => any()}.
-
-%% Example:
-%% list_events_detection_jobs_request() :: #{
-%%   <<"Filter">> => events_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_events_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_targeted_sentiment_detection_jobs_request() :: #{
-%%   <<"Filter">> => targeted_sentiment_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_targeted_sentiment_detection_jobs_request() :: #{binary() => any()}.
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_resource_policy_response() :: #{
@@ -2107,115 +1939,94 @@
 -type put_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% output_data_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Uri">> => string()
+%% redaction_config() :: #{
+%%   <<"MaskCharacter">> => string(),
+%%   <<"MaskMode">> => list(any()),
+%%   <<"PiiEntityTypes">> => list(list(any())())
 %% }
--type output_data_config() :: #{binary() => any()}.
+-type redaction_config() :: #{binary() => any()}.
 
 %% Example:
-%% dominant_language_detection_job_filter() :: #{
+%% relationships_list_item() :: #{
+%%   <<"Ids">> => list(string()),
+%%   <<"Type">> => list(any())
+%% }
+-type relationships_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sentiment_detection_job_filter() :: #{
 %%   <<"JobName">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"SubmitTimeAfter">> => non_neg_integer(),
 %%   <<"SubmitTimeBefore">> => non_neg_integer()
 %% }
--type dominant_language_detection_job_filter() :: #{binary() => any()}.
+-type sentiment_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
-%% detect_sentiment_response() :: #{
-%%   <<"Sentiment">> => list(any()),
-%%   <<"SentimentScore">> => sentiment_score()
+%% sentiment_detection_job_properties() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"OutputDataConfig">> => output_data_config(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type detect_sentiment_response() :: #{binary() => any()}.
+-type sentiment_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% batch_detect_key_phrases_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string())
+%% sentiment_score() :: #{
+%%   <<"Mixed">> => float(),
+%%   <<"Negative">> => float(),
+%%   <<"Neutral">> => float(),
+%%   <<"Positive">> => float()
 %% }
--type batch_detect_key_phrases_request() :: #{binary() => any()}.
+-type sentiment_score() :: #{binary() => any()}.
 
 %% Example:
-%% describe_pii_entities_detection_job_response() :: #{
-%%   <<"PiiEntitiesDetectionJobProperties">> => pii_entities_detection_job_properties()
-%% }
--type describe_pii_entities_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_entities_item_result() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"Index">> => integer()
-%% }
--type batch_detect_entities_item_result() :: #{binary() => any()}.
-
-%% Example:
-%% toxic_labels() :: #{
-%%   <<"Labels">> => list(toxic_content()),
-%%   <<"Toxicity">> => float()
-%% }
--type toxic_labels() :: #{binary() => any()}.
-
-%% Example:
-%% detect_targeted_sentiment_response() :: #{
-%%   <<"Entities">> => list(targeted_sentiment_entity())
-%% }
--type detect_targeted_sentiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_types_list_item() :: #{
-%%   <<"Type">> => string()
-%% }
--type entity_types_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% job_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type job_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_key_phrases_detection_jobs_response() :: #{
-%%   <<"KeyPhrasesDetectionJobPropertiesList">> => list(key_phrases_detection_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_key_phrases_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% flywheel_model_evaluation_metrics() :: #{
-%%   <<"AverageAccuracy">> => float(),
-%%   <<"AverageF1Score">> => float(),
-%%   <<"AveragePrecision">> => float(),
-%%   <<"AverageRecall">> => float()
-%% }
--type flywheel_model_evaluation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% start_flywheel_iteration_response() :: #{
+%% start_document_classification_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"DocumentClassifierArn">> => string(),
 %%   <<"FlywheelArn">> => string(),
-%%   <<"FlywheelIterationId">> => string()
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type start_flywheel_iteration_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_targeted_sentiment_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_targeted_sentiment_item_result())
-%% }
--type batch_detect_targeted_sentiment_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_request() :: #{
-%%   <<"DatasetArn">> := string()
-%% }
--type describe_dataset_request() :: #{binary() => any()}.
+-type start_document_classification_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_document_classification_job_response() :: #{
@@ -2227,50 +2038,17 @@
 -type start_document_classification_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_datasets_response() :: #{
-%%   <<"DatasetPropertiesList">> => list(dataset_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_response() :: #{
-%%   <<"EndpointArn">> => string(),
-%%   <<"ModelArn">> => string()
-%% }
--type create_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% events_detection_job_filter() :: #{
+%% start_dominant_language_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"JobName">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"SubmitTimeAfter">> => non_neg_integer(),
-%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type events_detection_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% flywheel_properties() :: #{
-%%   <<"ActiveModelArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"DataLakeS3Uri">> => string(),
-%%   <<"DataSecurityConfig">> => data_security_config(),
-%%   <<"FlywheelArn">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LatestFlywheelIteration">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ModelType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskConfig">> => task_config()
-%% }
--type flywheel_properties() :: #{binary() => any()}.
-
-%% Example:
-%% detect_toxic_content_response() :: #{
-%%   <<"ResultList">> => list(toxic_labels())
-%% }
--type detect_toxic_content_response() :: #{binary() => any()}.
+-type start_dominant_language_detection_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_dominant_language_detection_job_response() :: #{
@@ -2279,6 +2057,66 @@
 %%   <<"JobStatus">> => list(any())
 %% }
 -type start_dominant_language_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_entities_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"EntityRecognizerArn">> => string(),
+%%   <<"FlywheelArn">> => string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type start_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_entities_detection_job_response() :: #{
+%%   <<"EntityRecognizerArn">> => string(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_events_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetEventTypes">> := list(string())
+%% }
+-type start_events_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_events_detection_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_events_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_flywheel_iteration_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FlywheelArn">> := string()
+%% }
+-type start_flywheel_iteration_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_flywheel_iteration_response() :: #{
+%%   <<"FlywheelArn">> => string(),
+%%   <<"FlywheelIterationId">> => string()
+%% }
+-type start_flywheel_iteration_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_key_phrases_detection_job_request() :: #{
@@ -2295,53 +2133,254 @@
 -type start_key_phrases_detection_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_sentiment_detection_job_response() :: #{
-%%   <<"SentimentDetectionJobProperties">> => sentiment_detection_job_properties()
-%% }
--type describe_sentiment_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% block() :: #{
-%%   <<"BlockType">> => list(any()),
-%%   <<"Geometry">> => geometry(),
-%%   <<"Id">> => string(),
-%%   <<"Page">> => integer(),
-%%   <<"Relationships">> => list(relationships_list_item()),
-%%   <<"Text">> => string()
-%% }
--type block() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_filter() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"DatasetType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type dataset_filter() :: #{binary() => any()}.
-
-%% Example:
-%% child_block() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"ChildBlockId">> => string(),
-%%   <<"EndOffset">> => integer()
-%% }
--type child_block() :: #{binary() => any()}.
-
-%% Example:
-%% start_events_detection_job_response() :: #{
+%% start_key_phrases_detection_job_response() :: #{
 %%   <<"JobArn">> => string(),
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any())
 %% }
--type start_events_detection_job_response() :: #{binary() => any()}.
+-type start_key_phrases_detection_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_entity_recognizer_summaries_response() :: #{
-%%   <<"EntityRecognizerSummariesList">> => list(entity_recognizer_summary()),
-%%   <<"NextToken">> => string()
+%% start_pii_entities_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Mode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"RedactionConfig">> => redaction_config(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_entity_recognizer_summaries_response() :: #{binary() => any()}.
+-type start_pii_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_pii_entities_detection_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_pii_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_sentiment_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type start_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_sentiment_detection_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_targeted_sentiment_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type start_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_targeted_sentiment_detection_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_targeted_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_topics_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"NumberOfTopics">> => integer(),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type start_topics_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_topics_detection_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type start_topics_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_dominant_language_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_dominant_language_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_dominant_language_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_dominant_language_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_entities_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_entities_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_events_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_events_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_events_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_events_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_key_phrases_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_key_phrases_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_key_phrases_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_key_phrases_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pii_entities_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_pii_entities_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pii_entities_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_pii_entities_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_sentiment_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_sentiment_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_targeted_sentiment_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_targeted_sentiment_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_targeted_sentiment_detection_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any())
+%% }
+-type stop_targeted_sentiment_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_document_classifier_request() :: #{
+%%   <<"DocumentClassifierArn">> := string()
+%% }
+-type stop_training_document_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_document_classifier_response() :: #{
+
+%% }
+-type stop_training_document_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_entity_recognizer_request() :: #{
+%%   <<"EntityRecognizerArn">> := string()
+%% }
+-type stop_training_entity_recognizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_entity_recognizer_response() :: #{
+
+%% }
+-type stop_training_entity_recognizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% syntax_token() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"PartOfSpeech">> => part_of_speech_tag(),
+%%   <<"Text">> => string(),
+%%   <<"TokenId">> => integer()
+%% }
+-type syntax_token() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% targeted_sentiment_detection_job_filter() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"SubmitTimeAfter">> => non_neg_integer(),
+%%   <<"SubmitTimeBefore">> => non_neg_integer()
+%% }
+-type targeted_sentiment_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
 %% targeted_sentiment_detection_job_properties() :: #{
@@ -2362,120 +2401,55 @@
 -type targeted_sentiment_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% batch_detect_entities_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_entities_item_result())
+%% targeted_sentiment_entity() :: #{
+%%   <<"DescriptiveMentionIndex">> => list(integer()),
+%%   <<"Mentions">> => list(targeted_sentiment_mention())
 %% }
--type batch_detect_entities_response() :: #{binary() => any()}.
+-type targeted_sentiment_entity() :: #{binary() => any()}.
 
 %% Example:
-%% import_model_request() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"ModelKmsKeyId">> => string(),
-%%   <<"ModelName">> => string(),
-%%   <<"SourceModelArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VersionName">> => string()
+%% targeted_sentiment_mention() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"GroupScore">> => float(),
+%%   <<"MentionSentiment">> => mention_sentiment(),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type import_model_request() :: #{binary() => any()}.
+-type targeted_sentiment_mention() :: #{binary() => any()}.
 
 %% Example:
-%% stop_events_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
+%% task_config() :: #{
+%%   <<"DocumentClassificationConfig">> => document_classification_config(),
+%%   <<"EntityRecognitionConfig">> => entity_recognition_config(),
+%%   <<"LanguageCode">> => list(any())
 %% }
--type stop_events_detection_job_response() :: #{binary() => any()}.
+-type task_config() :: #{binary() => any()}.
 
 %% Example:
-%% kms_key_validation_exception() :: #{
+%% text_segment() :: #{
+%%   <<"Text">> => string()
+%% }
+-type text_segment() :: #{binary() => any()}.
+
+%% Example:
+%% text_size_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type kms_key_validation_exception() :: #{binary() => any()}.
+-type text_size_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% stop_entities_detection_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any())
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type stop_entities_detection_job_response() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_dominant_language_detection_jobs_request() :: #{
-%%   <<"Filter">> => dominant_language_detection_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% too_many_tag_keys_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_dominant_language_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_pii_entities_detection_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PiiEntitiesDetectionJobPropertiesList">> => list(pii_entities_detection_job_properties())
-%% }
--type list_pii_entities_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_flywheel_request() :: #{
-%%   <<"FlywheelArn">> := string()
-%% }
--type describe_flywheel_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_entity_recognizer_input_data_config() :: #{
-%%   <<"Annotations">> => dataset_entity_recognizer_annotations(),
-%%   <<"Documents">> => dataset_entity_recognizer_documents(),
-%%   <<"EntityList">> => dataset_entity_recognizer_entity_list()
-%% }
--type dataset_entity_recognizer_input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_entity_recognizer_entity_list() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type dataset_entity_recognizer_entity_list() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_classifiers_request() :: #{
-%%   <<"Filter">> => document_classifier_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_classifiers_request() :: #{binary() => any()}.
-
-%% Example:
-%% flywheel_filter() :: #{
-%%   <<"CreationTimeAfter">> => non_neg_integer(),
-%%   <<"CreationTimeBefore">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type flywheel_filter() :: #{binary() => any()}.
-
-%% Example:
-%% batch_detect_syntax_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()),
-%%   <<"ResultList">> => list(batch_detect_syntax_item_result())
-%% }
--type batch_detect_syntax_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_recognizer_output_data_config() :: #{
-%%   <<"FlywheelStatsS3Prefix">> => string()
-%% }
--type entity_recognizer_output_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% extracted_characters_list_item() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Page">> => integer()
-%% }
--type extracted_characters_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% document_classification_config() :: #{
-%%   <<"Labels">> => list(string()),
-%%   <<"Mode">> => list(any())
-%% }
--type document_classification_config() :: #{binary() => any()}.
+-type too_many_tag_keys_exception() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -2484,657 +2458,683 @@
 -type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% classify_document_response() :: #{
-%%   <<"Classes">> => list(document_class()),
-%%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"DocumentType">> => list(document_type_list_item()),
-%%   <<"Errors">> => list(errors_list_item()),
-%%   <<"Labels">> => list(document_label()),
-%%   <<"Warnings">> => list(warnings_list_item())
-%% }
--type classify_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flywheel_request() :: #{
-%%   <<"FlywheelArn">> := string()
-%% }
--type delete_flywheel_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_topics_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"NumberOfTopics">> => integer(),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeKmsKeyId">> => string(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type start_topics_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type describe_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_class() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Page">> => integer(),
-%%   <<"Score">> => float()
-%% }
--type document_class() :: #{binary() => any()}.
-
-%% Example:
-%% entity_types_evaluation_metrics() :: #{
-%%   <<"F1Score">> => float(),
-%%   <<"Precision">> => float(),
-%%   <<"Recall">> => float()
-%% }
--type entity_types_evaluation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% entities_detection_job_filter() :: #{
+%% topics_detection_job_filter() :: #{
 %%   <<"JobName">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"SubmitTimeAfter">> => non_neg_integer(),
 %%   <<"SubmitTimeBefore">> => non_neg_integer()
 %% }
--type entities_detection_job_filter() :: #{binary() => any()}.
+-type topics_detection_job_filter() :: #{binary() => any()}.
 
 %% Example:
-%% document_classification_job_properties() :: #{
+%% topics_detection_job_properties() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
-%%   <<"DocumentClassifierArn">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FlywheelArn">> => string(),
 %%   <<"InputDataConfig">> => input_data_config(),
 %%   <<"JobArn">> => string(),
 %%   <<"JobId">> => string(),
 %%   <<"JobName">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"Message">> => string(),
+%%   <<"NumberOfTopics">> => integer(),
 %%   <<"OutputDataConfig">> => output_data_config(),
 %%   <<"SubmitTime">> => non_neg_integer(),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
--type document_classification_job_properties() :: #{binary() => any()}.
+-type topics_detection_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% list_dominant_language_detection_jobs_response() :: #{
-%%   <<"DominantLanguageDetectionJobPropertiesList">> => list(dominant_language_detection_job_properties()),
-%%   <<"NextToken">> => string()
+%% toxic_content() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Score">> => float()
 %% }
--type list_dominant_language_detection_jobs_response() :: #{binary() => any()}.
+-type toxic_content() :: #{binary() => any()}.
+
+%% Example:
+%% toxic_labels() :: #{
+%%   <<"Labels">> => list(toxic_content()),
+%%   <<"Toxicity">> => float()
+%% }
+-type toxic_labels() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_language_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_language_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_security_config() :: #{
+%%   <<"ModelKmsKeyId">> => string(),
+%%   <<"VolumeKmsKeyId">> => string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type update_data_security_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_request() :: #{
+%%   <<"DesiredDataAccessRoleArn">> => string(),
+%%   <<"DesiredInferenceUnits">> => integer(),
+%%   <<"DesiredModelArn">> => string(),
+%%   <<"EndpointArn">> := string(),
+%%   <<"FlywheelArn">> => string()
+%% }
+-type update_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_response() :: #{
+%%   <<"DesiredModelArn">> => string()
+%% }
+-type update_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_flywheel_request() :: #{
+%%   <<"ActiveModelArn">> => string(),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"DataSecurityConfig">> => update_data_security_config(),
+%%   <<"FlywheelArn">> := string()
+%% }
+-type update_flywheel_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_flywheel_response() :: #{
+%%   <<"FlywheelProperties">> => flywheel_properties()
+%% }
+-type update_flywheel_response() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% warnings_list_item() :: #{
+%%   <<"Page">> => integer(),
+%%   <<"WarnCode">> => list(any()),
+%%   <<"WarnMessage">> => string()
+%% }
+-type warnings_list_item() :: #{binary() => any()}.
 
 -type batch_detect_dominant_language_errors() ::
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type batch_detect_entities_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type batch_detect_key_phrases_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type batch_detect_sentiment_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type batch_detect_syntax_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type batch_detect_targeted_sentiment_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_server_exception() | 
-    batch_size_limit_exceeded_exception() | 
-    invalid_request_exception().
+    batch_size_limit_exceeded_exception().
 
 -type classify_document_errors() ::
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
+    resource_unavailable_exception() | 
     invalid_request_exception() | 
-    resource_unavailable_exception().
+    internal_server_exception().
 
 -type contains_pii_entities_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_dataset_errors() ::
     too_many_tags_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_document_classifier_errors() ::
-    too_many_tags_exception() | 
-    kms_key_validation_exception() | 
     unsupported_language_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
+    too_many_tags_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_endpoint_errors() ::
     too_many_tags_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_entity_recognizer_errors() ::
-    too_many_tags_exception() | 
-    kms_key_validation_exception() | 
     unsupported_language_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
+    too_many_tags_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type create_flywheel_errors() ::
-    too_many_tags_exception() | 
-    kms_key_validation_exception() | 
     unsupported_language_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
+    too_many_tags_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_document_classifier_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_endpoint_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_entity_recognizer_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_flywheel_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type delete_resource_policy_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type describe_dataset_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_document_classification_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_document_classifier_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_dominant_language_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_endpoint_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_entities_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_entity_recognizer_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_events_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_flywheel_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_flywheel_iteration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_key_phrases_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_pii_entities_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_resource_policy_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type describe_sentiment_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_targeted_sentiment_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type describe_topics_detection_job_errors() ::
+    too_many_requests_exception() | 
     job_not_found_exception() | 
-    internal_server_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type detect_dominant_language_errors() ::
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_entities_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
+    resource_unavailable_exception() | 
     invalid_request_exception() | 
-    resource_unavailable_exception().
+    internal_server_exception().
 
 -type detect_key_phrases_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_pii_entities_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_sentiment_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_syntax_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_targeted_sentiment_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_toxic_content_errors() ::
     unsupported_language_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type import_model_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type list_datasets_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_document_classification_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_document_classifier_summaries_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_document_classifiers_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_dominant_language_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_endpoints_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_entities_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_entity_recognizer_summaries_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_entity_recognizers_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_events_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_flywheel_iteration_history_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_flywheels_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_key_phrases_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_pii_entities_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_sentiment_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type list_targeted_sentiment_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_topics_detection_jobs_errors() ::
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     invalid_filter_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type put_resource_policy_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type start_document_classification_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_dominant_language_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_entities_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_events_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_flywheel_iteration_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_key_phrases_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_pii_entities_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_sentiment_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_targeted_sentiment_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_topics_detection_job_errors() ::
     too_many_tags_exception() | 
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_dominant_language_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_entities_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_events_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_key_phrases_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_pii_entities_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_sentiment_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_targeted_sentiment_detection_job_errors() ::
     job_not_found_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_training_document_classifier_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_training_entity_recognizer_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type untag_resource_errors() ::
-    concurrent_modification_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_tag_keys_exception() | 
     resource_not_found_exception() | 
-    too_many_tag_keys_exception().
+    invalid_request_exception() | 
+    internal_server_exception() | 
+    concurrent_modification_exception().
 
 -type update_endpoint_errors() ::
-    internal_server_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
     resource_unavailable_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type update_flywheel_errors() ::
-    kms_key_validation_exception() | 
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    kms_key_validation_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

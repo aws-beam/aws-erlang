@@ -7,9 +7,81 @@
 %% your
 %% accounts and their resources.
 %%
-%% This guide provides descriptions of the Organizations operations. For more
+%% This guide provides descriptions of the Organizations API. For more
 %% information about using this service, see the Organizations User Guide:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html.
+%%
+%% API version
+%%
+%% This version of the Organizations API Reference documents the
+%% Organizations API version
+%% 2016-11-28.
+%%
+%% As an alternative to using the API directly, you can use one of the Amazon
+%% Web Services SDKs,
+%% which consist of libraries and sample code for various programming
+%% languages and
+%% platforms (Java, Ruby, .NET, iOS, Android, and more). The SDKs provide a
+%% convenient
+%% way to create programmatic access to Organizations. For example, the SDKs
+%% take care of
+%% cryptographically signing requests, managing errors, and retrying requests
+%% automatically. For more information about the Amazon Web Services SDKs,
+%% including how to download
+%% and install them, see Tools for Amazon Web
+%% Services: http://aws.amazon.com/tools/.
+%%
+%% We recommend that you use the Amazon Web Services SDKs to make
+%% programmatic API calls to Organizations.
+%% However, you also can use the Organizations Query API to make direct calls
+%% to the Organizations web
+%% service. To learn more about the Organizations Query API, see Calling the
+%% API by making HTTP Query
+%% requests:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html
+%% in the Organizations User Guide. Organizations supports GET and
+%% POST requests for all actions. That is, the API doesn't require you to
+%% use GET for some
+%% actions and POST for others. However, GET requests are subject to the
+%% limitation size of
+%% a URL. Therefore, for operations that require larger sizes, use a POST
+%% request.
+%%
+%% Signing requests
+%%
+%% When you send HTTP requests to Amazon Web Services, sign the requests so
+%% that Amazon Web Services can identify
+%% who sent them. You sign requests with your Amazon Web Services access key,
+%% which consists of an access
+%% key ID and a secret access key. We strongly recommend that you don't
+%% create an access
+%% key for your root account. Anyone who has the access key for your root
+%% account has
+%% unrestricted access to all the resources in your account. Instead, create
+%% an access key
+%% for an IAM user that has administrative permissions. As another option,
+%% use Amazon Web Services
+%% Security Token Service (Amazon Web Services STS) to generate temporary
+%% security credentials, and use
+%% those credentials to sign requests.
+%%
+%% To sign requests, we recommend that you use Signature Version 4:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html. If
+%% you
+%% have an existing application that uses Signature Version 2, you don't
+%% have to update it
+%% to use Signature Version 4. However, some operations now require Signature
+%% Version 4.
+%% The documentation for operations that require version 4 indicate this
+%% requirement.
+%%
+%% When you use the Command Line Interface (CLI) or one of the Amazon Web
+%% Services SDKs to make requests to
+%% Amazon Web Services, these tools automatically sign the requests for you
+%% with the access key that you
+%% specify when you configure the tools.
+%%
+%% In this release, each organization can have only one root.
 %%
 %% Support and feedback for Organizations
 %%
@@ -66,6 +138,20 @@
 %% `--region cn-northwest-1'
 %% (from Amazon Web Services Regions in China)
 %%
+%% How examples are presented
+%%
+%% The JSON returned by the Organizations service as response to your
+%% requests arrives as a
+%% single long string without line breaks or formatting whitespace. The
+%% examples in this
+%% guide include both line breaks and whitespace to improve readability. When
+%% example input
+%% parameters also would result in long strings that would extend beyond the
+%% screen, we
+%% insert line breaks to enhance readability. Always submit the input as a
+%% single JSON text
+%% string.
+%%
 %% Recording API Requests
 %%
 %% Organizations supports CloudTrail, a service that records Amazon Web
@@ -78,7 +164,7 @@
 %% for CloudTrail, see
 %% Logging
 %% Organizations API calls with CloudTrail:
-%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_incident-response.html#orgs_cloudtrail-integration
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration
 %% in the
 %% Organizations User Guide. To learn more about CloudTrail, including how to
 %% turn it
@@ -217,181 +303,86 @@
 
 
 %% Example:
-%% organization() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailablePolicyTypes">> => list(policy_type_summary()),
-%%   <<"FeatureSet">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"MasterAccountArn">> => string(),
-%%   <<"MasterAccountEmail">> => string(),
-%%   <<"MasterAccountId">> => string()
+%% accept_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
 %% }
--type organization() :: #{binary() => any()}.
+-type accept_handshake_request() :: #{binary() => any()}.
 
 %% Example:
-%% policy_target_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TargetId">> => string(),
-%%   <<"Type">> => list(any())
+%% accept_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
 %% }
--type policy_target_summary() :: #{binary() => any()}.
+-type accept_handshake_response() :: #{binary() => any()}.
 
 %% Example:
-%% handshake_constraint_violation_exception() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_for_dependency_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
--type handshake_constraint_violation_exception() :: #{binary() => any()}.
+-type access_denied_for_dependency_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_gov_cloud_account_response() :: #{
-%%   <<"CreateAccountStatus">> => create_account_status()
-%% }
--type create_gov_cloud_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_accounts_with_invalid_effective_policy_response() :: #{
-%%   <<"Accounts">> => list(account()),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyType">> => list(any())
-%% }
--type list_accounts_with_invalid_effective_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_account_from_organization_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type remove_account_from_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% organizational_unit_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organizational_unit_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_aws_service_access_for_organization_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_aws_service_access_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_create_account_status_response() :: #{
-%%   <<"CreateAccountStatuses">> => list(create_account_status()),
-%%   <<"NextToken">> => string()
-%% }
--type list_create_account_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_account_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_account_exception() :: #{binary() => any()}.
-
-%% Example:
-%% move_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"DestinationParentId">> := string(),
-%%   <<"SourceParentId">> := string()
-%% }
--type move_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_handshake_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_handshake_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type describe_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_outbound_responsibility_transfers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
-%% }
--type list_outbound_responsibility_transfers_response() :: #{binary() => any()}.
-
-%% Example:
-%% finalizing_organization_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type finalizing_organization_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_organizational_unit_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"OrganizationalUnitId">> := string()
-%% }
--type update_organizational_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% enabled_service_principal() :: #{
-%%   <<"DateEnabled">> => non_neg_integer(),
-%%   <<"ServicePrincipal">> => string()
-%% }
--type enabled_service_principal() :: #{binary() => any()}.
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy_summary())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% decline_handshake_request() :: #{
-%%   <<"HandshakeId">> := string()
-%% }
--type decline_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% effective_policy_validation_error() :: #{
-%%   <<"ContributingPolicies">> => list(string()),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"PathToError">> => string()
-%% }
--type effective_policy_validation_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_effective_policy_validation_errors_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"EffectivePolicyValidationErrors">> => list(effective_policy_validation_error()),
-%%   <<"EvaluationTimestamp">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"PolicyType">> => list(any())
-%% }
--type list_effective_policy_validation_errors_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_roots_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Roots">> => list(root())
-%% }
--type list_roots_response() :: #{binary() => any()}.
-
-%% Example:
-%% root() :: #{
+%% account() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Email">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"JoinedMethod">> => list(any()),
+%%   <<"JoinedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"PolicyTypes">> => list(policy_type_summary())
+%%   <<"Paths">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type root() :: #{binary() => any()}.
+-type account() :: #{binary() => any()}.
+
+%% Example:
+%% account_already_closed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_already_closed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_already_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_owner_not_verified_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_owner_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% already_in_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type already_in_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attach_policy_request() :: #{
+%%   <<"PolicyId">> := string(),
+%%   <<"TargetId">> := string()
+%% }
+-type attach_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% aws_organizations_not_in_use_exception() :: #{
@@ -400,41 +391,131 @@
 -type aws_organizations_not_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_policies_request() :: #{
-%%   <<"Filter">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% cancel_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
 %% }
--type list_policies_request() :: #{binary() => any()}.
+-type cancel_handshake_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_policies_for_target_request() :: #{
-%%   <<"Filter">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TargetId">> := string()
+%% cancel_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
 %% }
--type list_policies_for_target_request() :: #{binary() => any()}.
+-type cancel_handshake_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_accounts_for_parent_response() :: #{
-%%   <<"Accounts">> => list(account()),
-%%   <<"NextToken">> => string()
+%% child() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type list_accounts_for_parent_response() :: #{binary() => any()}.
+-type child() :: #{binary() => any()}.
 
 %% Example:
-%% list_organizational_units_for_parent_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationalUnits">> => list(organizational_unit())
-%% }
--type list_organizational_units_for_parent_response() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_organizational_unit_exception() :: #{
+%% child_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_organizational_unit_exception() :: #{binary() => any()}.
+-type child_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% close_account_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type close_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% constraint_violation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type constraint_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_request() :: #{
+%%   <<"AccountName">> := string(),
+%%   <<"Email">> := string(),
+%%   <<"IamUserAccessToBilling">> => list(any()),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
+%% }
+-type create_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_status() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> => string(),
+%%   <<"CompletedTimestamp">> => non_neg_integer(),
+%%   <<"FailureReason">> => list(any()),
+%%   <<"GovCloudAccountId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"RequestedTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type create_account_status() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_status_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_account_status_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_gov_cloud_account_request() :: #{
+%%   <<"AccountName">> := string(),
+%%   <<"Email">> := string(),
+%%   <<"IamUserAccessToBilling">> => list(any()),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_gov_cloud_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_gov_cloud_account_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
+%% }
+-type create_gov_cloud_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_organization_request() :: #{
+%%   <<"FeatureSet">> => list(any())
+%% }
+-type create_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_organization_response() :: #{
+%%   <<"Organization">> => organization()
+%% }
+-type create_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_organizational_unit_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ParentId">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
+%% }
+-type create_organizational_unit_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_policy_request() :: #{
@@ -447,170 +528,16 @@
 -type create_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_create_account_status_request() :: #{
-%%   <<"CreateAccountRequestId">> := string()
-%% }
--type describe_create_account_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_status_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type create_account_status_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_handshake_request() :: #{
-%%   <<"HandshakeId">> := string()
-%% }
--type cancel_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_parents_request() :: #{
-%%   <<"ChildId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_parents_request() :: #{binary() => any()}.
-
-%% Example:
-%% responsibility_transfer() :: #{
-%%   <<"ActiveHandshakeId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Source">> => transfer_participant(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Target">> => transfer_participant(),
-%%   <<"Type">> => list(any())
-%% }
--type responsibility_transfer() :: #{binary() => any()}.
-
-%% Example:
-%% handshake_party() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type handshake_party() :: #{binary() => any()}.
-
-%% Example:
-%% policy_type_not_available_for_organization_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_type_not_available_for_organization_exception() :: #{binary() => any()}.
-
-%% Example:
-%% detach_policy_request() :: #{
-%%   <<"PolicyId">> := string(),
-%%   <<"TargetId">> := string()
-%% }
--type detach_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_response() :: #{
+%% create_policy_response() :: #{
 %%   <<"Policy">> => policy()
 %% }
--type update_policy_response() :: #{binary() => any()}.
+-type create_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_roots_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_roots_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_delegated_administrator_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ServicePrincipal">> := string()
-%% }
--type register_delegated_administrator_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_organizational_unit_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ParentId">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_organizational_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_response() :: #{
-%%   <<"Account">> => account()
-%% }
--type describe_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% handshake_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type handshake_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% accept_handshake_request() :: #{
+%% decline_handshake_request() :: #{
 %%   <<"HandshakeId">> := string()
 %% }
--type accept_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_organizational_units_for_parent_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParentId">> := string()
-%% }
--type list_organizational_units_for_parent_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_policy_attachment_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_policy_attachment_exception() :: #{binary() => any()}.
-
-%% Example:
-%% enable_policy_type_request() :: #{
-%%   <<"PolicyType">> := list(any()),
-%%   <<"RootId">> := string()
-%% }
--type enable_policy_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_handshake_response() :: #{
-%%   <<"Handshake">> => handshake()
-%% }
--type cancel_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_create_account_status_response() :: #{
-%%   <<"CreateAccountStatus">> => create_account_status()
-%% }
--type describe_create_account_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_responsibility_transfer_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type describe_responsibility_transfer_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_organizational_unit_response() :: #{
-%%   <<"OrganizationalUnit">> => organizational_unit()
-%% }
--type create_organizational_unit_response() :: #{binary() => any()}.
+-type decline_handshake_request() :: #{binary() => any()}.
 
 %% Example:
 %% decline_handshake_response() :: #{
@@ -619,58 +546,68 @@
 -type decline_handshake_response() :: #{binary() => any()}.
 
 %% Example:
-%% policy_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% delegated_administrator() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DelegationEnabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"JoinedMethod">> => list(any()),
+%%   <<"JoinedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type policy_not_found_exception() :: #{binary() => any()}.
+-type delegated_administrator() :: #{binary() => any()}.
 
 %% Example:
-%% list_effective_policy_validation_errors_request() :: #{
+%% delegated_service() :: #{
+%%   <<"DelegationEnabledDate">> => non_neg_integer(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type delegated_service() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organizational_unit_request() :: #{
+%%   <<"OrganizationalUnitId">> := string()
+%% }
+-type delete_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"PolicyId">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_delegated_administrator_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyType">> := list(any())
+%%   <<"ServicePrincipal">> := string()
 %% }
--type list_effective_policy_validation_errors_request() :: #{binary() => any()}.
+-type deregister_delegated_administrator_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_handshakes_for_organization_request() :: #{
-%%   <<"Filter">> => handshake_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% describe_account_request() :: #{
+%%   <<"AccountId">> := string()
 %% }
--type list_handshakes_for_organization_request() :: #{binary() => any()}.
+-type describe_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_responsibility_transfer_response() :: #{
-%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% describe_account_response() :: #{
+%%   <<"Account">> => account()
 %% }
--type update_responsibility_transfer_response() :: #{binary() => any()}.
+-type describe_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% organization_not_empty_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_create_account_status_request() :: #{
+%%   <<"CreateAccountRequestId">> := string()
 %% }
--type organization_not_empty_exception() :: #{binary() => any()}.
+-type describe_create_account_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_targets_for_policy_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(policy_target_summary())
+%% describe_create_account_status_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
 %% }
--type list_targets_for_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% invite_organization_to_transfer_responsibility_response() :: #{
-%%   <<"Handshake">> => handshake()
-%% }
--type invite_organization_to_transfer_responsibility_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
+-type describe_create_account_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_effective_policy_request() :: #{
@@ -680,45 +617,96 @@
 -type describe_effective_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% child_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_effective_policy_response() :: #{
+%%   <<"EffectivePolicy">> => effective_policy()
 %% }
--type child_not_found_exception() :: #{binary() => any()}.
+-type describe_effective_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_accounts_response() :: #{
-%%   <<"Accounts">> => list(account()),
-%%   <<"NextToken">> => string()
+%% describe_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
 %% }
--type list_accounts_response() :: #{binary() => any()}.
+-type describe_handshake_request() :: #{binary() => any()}.
 
 %% Example:
-%% enable_all_features_response() :: #{
+%% describe_handshake_response() :: #{
 %%   <<"Handshake">> => handshake()
 %% }
--type enable_all_features_response() :: #{binary() => any()}.
+-type describe_handshake_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% describe_organization_response() :: #{
+%%   <<"Organization">> => organization()
 %% }
--type tag() :: #{binary() => any()}.
+-type describe_organization_response() :: #{binary() => any()}.
 
 %% Example:
-%% child() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
+%% describe_organizational_unit_request() :: #{
+%%   <<"OrganizationalUnitId">> := string()
 %% }
--type child() :: #{binary() => any()}.
+-type describe_organizational_unit_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_delegated_administrators_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServicePrincipal">> => string()
+%% describe_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
 %% }
--type list_delegated_administrators_request() :: #{binary() => any()}.
+-type describe_organizational_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_policy_request() :: #{
+%%   <<"PolicyId">> := string()
+%% }
+-type describe_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type describe_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_responsibility_transfer_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type describe_responsibility_transfer_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type describe_responsibility_transfer_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type destination_parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% detach_policy_request() :: #{
+%%   <<"PolicyId">> := string(),
+%%   <<"TargetId">> := string()
+%% }
+-type detach_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_aws_service_access_request() :: #{
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type disable_aws_service_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_policy_type_request() :: #{
+%%   <<"PolicyType">> := list(any()),
+%%   <<"RootId">> := string()
+%% }
+-type disable_policy_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_policy_type_response() :: #{
@@ -727,17 +715,28 @@
 -type disable_policy_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% handshake_already_in_state_exception() :: #{
+%% duplicate_account_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type handshake_already_in_state_exception() :: #{binary() => any()}.
+-type duplicate_account_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_inbound_responsibility_transfers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
+%% duplicate_handshake_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_inbound_responsibility_transfers_response() :: #{binary() => any()}.
+-type duplicate_handshake_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_organizational_unit_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_organizational_unit_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_policy_attachment_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_policy_attachment_exception() :: #{binary() => any()}.
 
 %% Example:
 %% duplicate_policy_exception() :: #{
@@ -755,283 +754,63 @@
 -type effective_policy() :: #{binary() => any()}.
 
 %% Example:
-%% attach_policy_request() :: #{
-%%   <<"PolicyId">> := string(),
-%%   <<"TargetId">> := string()
-%% }
--type attach_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_already_closed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_already_closed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% account_not_registered_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_not_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_status() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AccountName">> => string(),
-%%   <<"CompletedTimestamp">> => non_neg_integer(),
-%%   <<"FailureReason">> => list(any()),
-%%   <<"GovCloudAccountId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"RequestedTimestamp">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type create_account_status() :: #{binary() => any()}.
-
-%% Example:
-%% update_responsibility_transfer_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_responsibility_transfer_request() :: #{binary() => any()}.
-
-%% Example:
-%% account() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"JoinedMethod">> => list(any()),
-%%   <<"JoinedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Paths">> => list(string()),
-%%   <<"State">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type account() :: #{binary() => any()}.
-
-%% Example:
-%% describe_responsibility_transfer_response() :: #{
-%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
-%% }
--type describe_responsibility_transfer_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_organizational_unit_response() :: #{
-%%   <<"OrganizationalUnit">> => organizational_unit()
-%% }
--type update_organizational_unit_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_handshakes_for_organization_response() :: #{
-%%   <<"Handshakes">> => list(handshake()),
-%%   <<"NextToken">> => string()
-%% }
--type list_handshakes_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_responsibility_transfer_request() :: #{
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"Id">> := string()
-%% }
--type terminate_responsibility_transfer_request() :: #{binary() => any()}.
-
-%% Example:
-%% delegated_service() :: #{
-%%   <<"DelegationEnabledDate">> => non_neg_integer(),
-%%   <<"ServicePrincipal">> => string()
-%% }
--type delegated_service() :: #{binary() => any()}.
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_policy_request() :: #{
-%%   <<"PolicyId">> := string()
-%% }
--type describe_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% invite_account_to_organization_request() :: #{
-%%   <<"Notes">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Target">> := handshake_party()
-%% }
--type invite_account_to_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_policy_request() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PolicyId">> := string()
-%% }
--type update_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% responsibility_transfer_already_in_status_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type responsibility_transfer_already_in_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_effective_policy_response() :: #{
-%%   <<"EffectivePolicy">> => effective_policy()
-%% }
--type describe_effective_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% account_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parent_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type parent_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_inbound_responsibility_transfers_request() :: #{
-%%   <<"Id">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> := list(any())
-%% }
--type list_inbound_responsibility_transfers_request() :: #{binary() => any()}.
-
-%% Example:
-%% root_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type root_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
 %% effective_policy_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type effective_policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_policy_response() :: #{
-%%   <<"Policy">> => policy()
+%% effective_policy_validation_error() :: #{
+%%   <<"ContributingPolicies">> => list(string()),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PathToError">> => string()
 %% }
--type create_policy_response() :: #{binary() => any()}.
+-type effective_policy_validation_error() :: #{binary() => any()}.
 
 %% Example:
-%% describe_organizational_unit_response() :: #{
-%%   <<"OrganizationalUnit">> => organizational_unit()
+%% enable_all_features_request() :: #{
+
 %% }
--type describe_organizational_unit_response() :: #{binary() => any()}.
+-type enable_all_features_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_organization_response() :: #{
-%%   <<"Organization">> => organization()
+%% enable_all_features_response() :: #{
+%%   <<"Handshake">> => handshake()
 %% }
--type describe_organization_response() :: #{binary() => any()}.
+-type enable_all_features_response() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_api_endpoint_exception() :: #{
-%%   <<"Message">> => string()
+%% enable_aws_service_access_request() :: #{
+%%   <<"ServicePrincipal">> := string()
 %% }
--type unsupported_api_endpoint_exception() :: #{binary() => any()}.
+-type enable_aws_service_access_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_accounts_with_invalid_effective_policy_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyType">> := list(any())
-%% }
--type list_accounts_with_invalid_effective_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% master_cannot_leave_organization_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type master_cannot_leave_organization_exception() :: #{binary() => any()}.
-
-%% Example:
-%% handshake_filter() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"ParentHandshakeId">> => string()
-%% }
--type handshake_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_request() :: #{
-%%   <<"AccountName">> := string(),
-%%   <<"Email">> := string(),
-%%   <<"IamUserAccessToBilling">> => list(any()),
-%%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% organizational_unit_not_empty_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organizational_unit_not_empty_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ResourcePolicySummary">> => resource_policy_summary()
-%% }
--type resource_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{
-%%   <<"PolicyId">> := string()
-%% }
--type delete_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_aws_service_access_for_organization_response() :: #{
-%%   <<"EnabledServicePrincipals">> => list(enabled_service_principal()),
-%%   <<"NextToken">> => string()
-%% }
--type list_aws_service_access_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% disable_policy_type_request() :: #{
+%% enable_policy_type_request() :: #{
 %%   <<"PolicyType">> := list(any()),
 %%   <<"RootId">> := string()
 %% }
--type disable_policy_type_request() :: #{binary() => any()}.
+-type enable_policy_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% responsibility_transfer_not_found_exception() :: #{
+%% enable_policy_type_response() :: #{
+%%   <<"Root">> => root()
+%% }
+-type enable_policy_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% enabled_service_principal() :: #{
+%%   <<"DateEnabled">> => non_neg_integer(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type enabled_service_principal() :: #{binary() => any()}.
+
+%% Example:
+%% finalizing_organization_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type responsibility_transfer_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invite_organization_to_transfer_responsibility_request() :: #{
-%%   <<"Notes">> => string(),
-%%   <<"SourceName">> := string(),
-%%   <<"StartTimestamp">> := non_neg_integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Target">> := handshake_party(),
-%%   <<"Type">> := list(any())
-%% }
--type invite_organization_to_transfer_responsibility_request() :: #{binary() => any()}.
+-type finalizing_organization_exception() :: #{binary() => any()}.
 
 %% Example:
 %% handshake() :: #{
@@ -1047,50 +826,154 @@
 -type handshake() :: #{binary() => any()}.
 
 %% Example:
-%% policy() :: #{
-%%   <<"Content">> => string(),
-%%   <<"PolicySummary">> => policy_summary()
+%% handshake_already_in_state_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type policy() :: #{binary() => any()}.
+-type handshake_already_in_state_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Content">> := string(),
-%%   <<"Tags">> => list(tag())
+%% handshake_constraint_violation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type put_resource_policy_request() :: #{binary() => any()}.
+-type handshake_constraint_violation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_policies_for_target_response() :: #{
+%% handshake_filter() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"ParentHandshakeId">> => string()
+%% }
+-type handshake_filter() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handshake_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_party() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type handshake_party() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_resource() :: #{
+%%   <<"Resources">> => list(handshake_resource()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type handshake_resource() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_handshake_transition_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_handshake_transition_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_responsibility_transfer_transition_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_responsibility_transfer_transition_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invite_account_to_organization_request() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Target">> := handshake_party()
+%% }
+-type invite_account_to_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% invite_account_to_organization_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type invite_account_to_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% invite_organization_to_transfer_responsibility_request() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"SourceName">> := string(),
+%%   <<"StartTimestamp">> := non_neg_integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Target">> := handshake_party(),
+%%   <<"Type">> := list(any())
+%% }
+-type invite_organization_to_transfer_responsibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% invite_organization_to_transfer_responsibility_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type invite_organization_to_transfer_responsibility_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_for_parent_request() :: #{
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy_summary())
+%%   <<"ParentId">> := string()
 %% }
--type list_policies_for_target_response() :: #{binary() => any()}.
+-type list_accounts_for_parent_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_organizational_unit_request() :: #{
-%%   <<"OrganizationalUnitId">> := string()
+%% list_accounts_for_parent_response() :: #{
+%%   <<"Accounts">> => list(account()),
+%%   <<"NextToken">> => string()
 %% }
--type delete_organizational_unit_request() :: #{binary() => any()}.
+-type list_accounts_for_parent_response() :: #{binary() => any()}.
 
 %% Example:
-%% already_in_organization_exception() :: #{
-%%   <<"Message">> => string()
+%% list_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type already_in_organization_exception() :: #{binary() => any()}.
+-type list_accounts_request() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% list_accounts_response() :: #{
+%%   <<"Accounts">> => list(account()),
+%%   <<"NextToken">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type list_accounts_response() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_delegated_administrator_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ServicePrincipal">> := string()
+%% list_accounts_with_invalid_effective_policy_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> := list(any())
 %% }
--type deregister_delegated_administrator_request() :: #{binary() => any()}.
+-type list_accounts_with_invalid_effective_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_with_invalid_effective_policy_response() :: #{
+%%   <<"Accounts">> => list(account()),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type list_accounts_with_invalid_effective_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_service_access_for_organization_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aws_service_access_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_service_access_for_organization_response() :: #{
+%%   <<"EnabledServicePrincipals">> => list(enabled_service_principal()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aws_service_access_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_children_request() :: #{
@@ -1102,55 +985,6 @@
 -type list_children_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_handshake_transition_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_handshake_transition_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invite_account_to_organization_response() :: #{
-%%   <<"Handshake">> => handshake()
-%% }
--type invite_account_to_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_type_not_enabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_type_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% accept_handshake_response() :: #{
-%%   <<"Handshake">> => handshake()
-%% }
--type accept_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% close_account_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type close_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% transfer_participant() :: #{
-%%   <<"ManagementAccountEmail">> => string(),
-%%   <<"ManagementAccountId">> => string()
-%% }
--type transfer_participant() :: #{binary() => any()}.
-
-%% Example:
-%% policy_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
 %% list_children_response() :: #{
 %%   <<"Children">> => list(child()),
 %%   <<"NextToken">> => string()
@@ -1158,44 +992,153 @@
 -type list_children_response() :: #{binary() => any()}.
 
 %% Example:
-%% constraint_violation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type constraint_violation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% account_already_registered_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_already_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% account_owner_not_verified_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_owner_not_verified_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
+%% list_create_account_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> := string()
+%%   <<"States">> => list(list(any())())
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type list_create_account_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% handshake_resource() :: #{
-%%   <<"Resources">> => list(handshake_resource()),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
+%% list_create_account_status_response() :: #{
+%%   <<"CreateAccountStatuses">> => list(create_account_status()),
+%%   <<"NextToken">> => string()
 %% }
--type handshake_resource() :: #{binary() => any()}.
+-type list_create_account_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% target_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% list_delegated_administrators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServicePrincipal">> => string()
 %% }
--type target_not_found_exception() :: #{binary() => any()}.
+-type list_delegated_administrators_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_administrators_response() :: #{
+%%   <<"DelegatedAdministrators">> => list(delegated_administrator()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_administrators_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_services_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_services_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_services_for_account_response() :: #{
+%%   <<"DelegatedServices">> => list(delegated_service()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_services_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_effective_policy_validation_errors_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> := list(any())
+%% }
+-type list_effective_policy_validation_errors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_effective_policy_validation_errors_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EffectivePolicyValidationErrors">> => list(effective_policy_validation_error()),
+%%   <<"EvaluationTimestamp">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type list_effective_policy_validation_errors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_account_request() :: #{
+%%   <<"Filter">> => handshake_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_account_response() :: #{
+%%   <<"Handshakes">> => list(handshake()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_organization_request() :: #{
+%%   <<"Filter">> => handshake_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_organization_response() :: #{
+%%   <<"Handshakes">> => list(handshake()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inbound_responsibility_transfers_request() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type list_inbound_responsibility_transfers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inbound_responsibility_transfers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
+%% }
+-type list_inbound_responsibility_transfers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_for_parent_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentId">> := string()
+%% }
+-type list_organizational_units_for_parent_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_for_parent_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationalUnits">> => list(organizational_unit())
+%% }
+-type list_organizational_units_for_parent_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_outbound_responsibility_transfers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type list_outbound_responsibility_transfers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_outbound_responsibility_transfers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResponsibilityTransfers">> => list(responsibility_transfer())
+%% }
+-type list_outbound_responsibility_transfers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_parents_request() :: #{
+%%   <<"ChildId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_parents_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_parents_response() :: #{
@@ -1205,16 +1148,63 @@
 -type list_parents_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_organization_response() :: #{
-%%   <<"Organization">> => organization()
+%% list_policies_for_target_request() :: #{
+%%   <<"Filter">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetId">> := string()
 %% }
--type create_organization_response() :: #{binary() => any()}.
+-type list_policies_for_target_request() :: #{binary() => any()}.
 
 %% Example:
-%% policy_not_attached_exception() :: #{
-%%   <<"Message">> => string()
+%% list_policies_for_target_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(policy_summary())
 %% }
--type policy_not_attached_exception() :: #{binary() => any()}.
+-type list_policies_for_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"Filter">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(policy_summary())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_roots_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_roots_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Roots">> => list(root())
+%% }
+-type list_roots_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_targets_for_policy_request() :: #{
@@ -1225,10 +1215,114 @@
 -type list_targets_for_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_targets_for_policy_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(policy_target_summary())
+%% }
+-type list_targets_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% malformed_policy_document_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% master_cannot_leave_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type master_cannot_leave_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% move_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DestinationParentId">> := string(),
+%%   <<"SourceParentId">> := string()
+%% }
+-type move_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% organization() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailablePolicyTypes">> => list(policy_type_summary()),
+%%   <<"FeatureSet">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"MasterAccountArn">> => string(),
+%%   <<"MasterAccountEmail">> => string(),
+%%   <<"MasterAccountId">> => string()
+%% }
+-type organization() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_empty_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type organizational_unit() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit_not_empty_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organizational_unit_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organizational_unit_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type parent() :: #{binary() => any()}.
+
+%% Example:
+%% parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"Content">> => string(),
+%%   <<"PolicySummary">> => policy_summary()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% policy_changes_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_changes_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_attached_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_not_attached_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% policy_summary() :: #{
@@ -1242,216 +1336,31 @@
 -type policy_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_resource_policy_response() :: #{
-%%   <<"ResourcePolicy">> => resource_policy()
-%% }
--type describe_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% organizational_unit() :: #{
+%% policy_target_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Path">> => string()
-%% }
--type organizational_unit() :: #{binary() => any()}.
-
-%% Example:
-%% list_delegated_services_for_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_delegated_services_for_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_organizational_unit_request() :: #{
-%%   <<"OrganizationalUnitId">> := string()
-%% }
--type describe_organizational_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_handshakes_for_account_response() :: #{
-%%   <<"Handshakes">> => list(handshake()),
-%%   <<"NextToken">> => string()
-%% }
--type list_handshakes_for_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_delegated_administrators_response() :: #{
-%%   <<"DelegatedAdministrators">> => list(delegated_administrator()),
-%%   <<"NextToken">> => string()
-%% }
--type list_delegated_administrators_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_policy_type_response() :: #{
-%%   <<"Root">> => root()
-%% }
--type enable_policy_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_all_features_request() :: #{
-
-%% }
--type enable_all_features_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"ResourcePolicy">> => resource_policy()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% destination_parent_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type destination_parent_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% source_parent_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type source_parent_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_outbound_responsibility_transfers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> := list(any())
-%% }
--type list_outbound_responsibility_transfers_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_for_dependency_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type access_denied_for_dependency_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_delegated_services_for_account_response() :: #{
-%%   <<"DelegatedServices">> => list(delegated_service()),
-%%   <<"NextToken">> => string()
-%% }
--type list_delegated_services_for_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_response() :: #{
-%%   <<"CreateAccountStatus">> => create_account_status()
-%% }
--type create_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_responsibility_transfer_transition_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_responsibility_transfer_transition_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_changes_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type policy_changes_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_aws_service_access_request() :: #{
-%%   <<"ServicePrincipal">> := string()
-%% }
--type disable_aws_service_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% parent() :: #{
-%%   <<"Id">> => string(),
+%%   <<"TargetId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
--type parent() :: #{binary() => any()}.
+-type policy_target_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_accounts_for_parent_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParentId">> := string()
-%% }
--type list_accounts_for_parent_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type resource_policy_summary() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_not_found_exception() :: #{
+%% policy_type_already_enabled_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_policy_not_found_exception() :: #{binary() => any()}.
+-type policy_type_already_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
-%% enable_aws_service_access_request() :: #{
-%%   <<"ServicePrincipal">> := string()
+%% policy_type_not_available_for_organization_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type enable_aws_service_access_request() :: #{binary() => any()}.
+-type policy_type_not_available_for_organization_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_gov_cloud_account_request() :: #{
-%%   <<"AccountName">> := string(),
-%%   <<"Email">> := string(),
-%%   <<"IamUserAccessToBilling">> => list(any()),
-%%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag())
+%% policy_type_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_gov_cloud_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_handshake_response() :: #{
-%%   <<"Handshake">> => handshake()
-%% }
--type describe_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_responsibility_transfer_response() :: #{
-%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
-%% }
--type terminate_responsibility_transfer_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_handshakes_for_account_request() :: #{
-%%   <<"Filter">> => handshake_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_handshakes_for_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_create_account_status_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"States">> => list(list(any())())
-%% }
--type list_create_account_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% delegated_administrator() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DelegationEnabledDate">> => non_neg_integer(),
-%%   <<"Email">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"JoinedMethod">> => list(any()),
-%%   <<"JoinedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type delegated_administrator() :: #{binary() => any()}.
+-type policy_type_not_enabled_exception() :: #{binary() => any()}.
 
 %% Example:
 %% policy_type_summary() :: #{
@@ -1461,669 +1370,846 @@
 -type policy_type_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_handshake_request() :: #{
-%%   <<"HandshakeId">> := string()
+%% put_resource_policy_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type describe_handshake_request() :: #{binary() => any()}.
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_policy_response() :: #{
-%%   <<"Policy">> => policy()
+%% put_resource_policy_response() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
 %% }
--type describe_policy_response() :: #{binary() => any()}.
+-type put_resource_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% policy_type_already_enabled_exception() :: #{
+%% register_delegated_administrator_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type register_delegated_administrator_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_account_from_organization_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type remove_account_from_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ResourcePolicySummary">> => resource_policy_summary()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type policy_type_already_enabled_exception() :: #{binary() => any()}.
+-type resource_policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_organization_request() :: #{
-%%   <<"FeatureSet">> => list(any())
+%% resource_policy_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
 %% }
--type create_organization_request() :: #{binary() => any()}.
+-type resource_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% responsibility_transfer() :: #{
+%%   <<"ActiveHandshakeId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => transfer_participant(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => transfer_participant(),
+%%   <<"Type">> => list(any())
+%% }
+-type responsibility_transfer() :: #{binary() => any()}.
+
+%% Example:
+%% responsibility_transfer_already_in_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type responsibility_transfer_already_in_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% responsibility_transfer_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type responsibility_transfer_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% root() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyTypes">> => list(policy_type_summary())
+%% }
+-type root() :: #{binary() => any()}.
+
+%% Example:
+%% root_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type root_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type source_parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_responsibility_transfer_request() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Id">> := string()
+%% }
+-type terminate_responsibility_transfer_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type terminate_responsibility_transfer_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_participant() :: #{
+%%   <<"ManagementAccountEmail">> => string(),
+%%   <<"ManagementAccountId">> => string()
+%% }
+-type transfer_participant() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_api_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_api_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_organizational_unit_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"OrganizationalUnitId">> := string()
+%% }
+-type update_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
+%% }
+-type update_organizational_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type update_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type update_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_responsibility_transfer_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_responsibility_transfer_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_responsibility_transfer_response() :: #{
+%%   <<"ResponsibilityTransfer">> => responsibility_transfer()
+%% }
+-type update_responsibility_transfer_response() :: #{binary() => any()}.
 
 -type accept_handshake_errors() ::
-    access_denied_for_dependency_exception() | 
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    invalid_handshake_transition_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     master_cannot_leave_organization_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    handshake_already_in_state_exception() | 
+    invalid_handshake_transition_exception() | 
     handshake_not_found_exception() | 
-    too_many_requests_exception() | 
+    handshake_constraint_violation_exception() | 
+    handshake_already_in_state_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
     aws_organizations_not_in_use_exception() | 
-    handshake_constraint_violation_exception().
+    access_denied_for_dependency_exception() | 
+    access_denied_exception().
 
 -type attach_policy_errors() ::
-    policy_changes_in_progress_exception() | 
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
     target_not_found_exception() | 
+    service_exception() | 
+    policy_type_not_enabled_exception() | 
+    policy_not_found_exception() | 
+    policy_changes_in_progress_exception() | 
+    invalid_input_exception() | 
+    duplicate_policy_attachment_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    policy_type_not_enabled_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    policy_not_found_exception() | 
-    duplicate_policy_attachment_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type cancel_handshake_errors() ::
-    concurrent_modification_exception() | 
-    invalid_handshake_transition_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    handshake_already_in_state_exception() | 
+    invalid_input_exception() | 
+    invalid_handshake_transition_exception() | 
     handshake_not_found_exception() | 
-    too_many_requests_exception().
+    handshake_already_in_state_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type close_account_errors() ::
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    account_already_closed_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    conflict_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    account_not_found_exception() | 
+    account_already_closed_exception() | 
+    access_denied_exception().
 
 -type create_account_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    finalizing_organization_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
-    finalizing_organization_exception().
+    access_denied_exception().
 
 -type create_gov_cloud_account_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    finalizing_organization_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
-    finalizing_organization_exception().
+    access_denied_exception().
 
 -type create_organization_errors() ::
-    access_denied_for_dependency_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
     already_in_organization_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception().
+    access_denied_for_dependency_exception() | 
+    access_denied_exception().
 
 -type create_organizational_unit_errors() ::
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     parent_not_found_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     duplicate_organizational_unit_exception() | 
-    aws_organizations_not_in_use_exception().
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type create_policy_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    policy_type_not_available_for_organization_exception() | 
     malformed_policy_document_exception() | 
+    invalid_input_exception() | 
+    duplicate_policy_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    duplicate_policy_exception() | 
-    too_many_requests_exception() | 
-    policy_type_not_available_for_organization_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type decline_handshake_errors() ::
-    concurrent_modification_exception() | 
-    invalid_handshake_transition_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    handshake_already_in_state_exception() | 
+    invalid_input_exception() | 
+    invalid_handshake_transition_exception() | 
     handshake_not_found_exception() | 
-    too_many_requests_exception().
+    handshake_already_in_state_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_organization_errors() ::
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
     organization_not_empty_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type delete_organizational_unit_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    organizational_unit_not_found_exception() | 
     organizational_unit_not_empty_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
+    concurrent_modification_exception() | 
     aws_organizations_not_in_use_exception() | 
-    organizational_unit_not_found_exception().
+    access_denied_exception().
 
 -type delete_policy_errors() ::
-    policy_in_use_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
     policy_not_found_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    policy_in_use_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     resource_policy_not_found_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type deregister_delegated_administrator_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    aws_organizations_not_in_use_exception() | 
     account_not_registered_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    account_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_account_errors() ::
-    access_denied_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    account_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_create_account_status_errors() ::
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     create_account_status_not_found_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type describe_effective_policy_errors() ::
-    target_not_found_exception() | 
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    effective_policy_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    target_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    effective_policy_not_found_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type describe_handshake_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
+    invalid_input_exception() | 
     handshake_not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type describe_organization_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type describe_organizational_unit_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    service_exception() | 
+    organizational_unit_not_found_exception() | 
+    invalid_input_exception() | 
     aws_organizations_not_in_use_exception() | 
-    organizational_unit_not_found_exception().
+    access_denied_exception().
 
 -type describe_policy_errors() ::
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
     policy_not_found_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type describe_resource_policy_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     resource_policy_not_found_exception() | 
     constraint_violation_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type describe_responsibility_transfer_errors() ::
-    access_denied_exception() | 
-    responsibility_transfer_not_found_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type detach_policy_errors() ::
-    policy_changes_in_progress_exception() | 
-    policy_not_attached_exception() | 
-    target_not_found_exception() | 
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
+    target_not_found_exception() | 
     service_exception() | 
     policy_not_found_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    policy_not_attached_exception() | 
+    policy_changes_in_progress_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type disable_aws_service_access_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type disable_policy_type_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    root_not_found_exception() | 
+    policy_type_not_enabled_exception() | 
     policy_changes_in_progress_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    policy_type_not_enabled_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    root_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type enable_all_features_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    handshake_constraint_violation_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
-    handshake_constraint_violation_exception().
+    access_denied_exception().
 
 -type enable_aws_service_access_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type enable_policy_type_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    root_not_found_exception() | 
+    policy_type_not_available_for_organization_exception() | 
     policy_type_already_enabled_exception() | 
     policy_changes_in_progress_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    root_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    policy_type_not_available_for_organization_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type invite_account_to_organization_errors() ::
-    account_owner_not_verified_exception() | 
-    constraint_violation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    handshake_constraint_violation_exception() | 
     finalizing_organization_exception() | 
     duplicate_handshake_exception() | 
-    handshake_constraint_violation_exception().
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    account_owner_not_verified_exception() | 
+    access_denied_exception().
 
 -type invite_organization_to_transfer_responsibility_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    handshake_constraint_violation_exception() | 
+    duplicate_handshake_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
-    duplicate_handshake_exception() | 
-    handshake_constraint_violation_exception().
+    access_denied_exception().
 
 -type leave_organization_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    master_cannot_leave_organization_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    master_cannot_leave_organization_exception() | 
+    aws_organizations_not_in_use_exception() | 
     account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    access_denied_exception().
 
 -type list_accounts_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_accounts_for_parent_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     parent_not_found_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_accounts_with_invalid_effective_policy_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    effective_policy_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    effective_policy_not_found_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_aws_service_access_for_organization_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_children_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     parent_not_found_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_create_account_status_errors() ::
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_delegated_administrators_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_delegated_services_for_account_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    account_not_registered_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    account_not_registered_exception() | 
+    account_not_found_exception() | 
+    access_denied_exception().
 
 -type list_effective_policy_validation_errors_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    effective_policy_not_found_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    effective_policy_not_found_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    account_not_found_exception() | 
+    access_denied_exception().
 
 -type list_handshakes_for_account_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    too_many_requests_exception().
+    invalid_input_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type list_handshakes_for_organization_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_inbound_responsibility_transfers_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
-    responsibility_transfer_not_found_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_organizational_units_for_parent_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
     parent_not_found_exception() | 
     invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_outbound_responsibility_transfers_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_parents_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    child_not_found_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    child_not_found_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_policies_errors() ::
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_policies_for_target_errors() ::
-    target_not_found_exception() | 
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    target_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_roots_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    target_not_found_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    target_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type list_targets_for_policy_errors() ::
-    access_denied_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
     policy_not_found_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    invalid_input_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type move_account_errors() ::
+    too_many_requests_exception() | 
     source_parent_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
+    duplicate_account_exception() | 
     destination_parent_not_found_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
     aws_organizations_not_in_use_exception() | 
-    duplicate_account_exception().
+    account_not_found_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type register_delegated_administrator_errors() ::
-    account_already_registered_exception() | 
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
+    aws_organizations_not_in_use_exception() | 
     account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    account_already_registered_exception() | 
+    access_denied_exception().
 
 -type remove_account_from_organization_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    master_cannot_leave_organization_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    master_cannot_leave_organization_exception() | 
+    aws_organizations_not_in_use_exception() | 
     account_not_found_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    too_many_requests_exception() | 
     target_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type terminate_responsibility_transfer_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    responsibility_transfer_already_in_status_exception() | 
     invalid_responsibility_transfer_transition_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    responsibility_transfer_not_found_exception() | 
-    unsupported_api_endpoint_exception() | 
-    responsibility_transfer_already_in_status_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
+    too_many_requests_exception() | 
     target_not_found_exception() | 
+    service_exception() | 
+    invalid_input_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type update_organizational_unit_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
+    service_exception() | 
+    organizational_unit_not_found_exception() | 
+    invalid_input_exception() | 
     duplicate_organizational_unit_exception() | 
+    concurrent_modification_exception() | 
     aws_organizations_not_in_use_exception() | 
-    organizational_unit_not_found_exception().
+    access_denied_exception().
 
 -type update_policy_errors() ::
+    unsupported_api_endpoint_exception() | 
+    too_many_requests_exception() | 
+    service_exception() | 
+    policy_not_found_exception() | 
     policy_changes_in_progress_exception() | 
     malformed_policy_document_exception() | 
+    invalid_input_exception() | 
+    duplicate_policy_exception() | 
     constraint_violation_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    duplicate_policy_exception() | 
-    policy_not_found_exception() | 
-    too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 -type update_responsibility_transfer_errors() ::
-    constraint_violation_exception() | 
-    access_denied_exception() | 
-    responsibility_transfer_not_found_exception() | 
     unsupported_api_endpoint_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     too_many_requests_exception() | 
-    aws_organizations_not_in_use_exception().
+    service_exception() | 
+    responsibility_transfer_not_found_exception() | 
+    invalid_input_exception() | 
+    constraint_violation_exception() | 
+    aws_organizations_not_in_use_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -2170,11 +2256,11 @@
 %% standalone and joined
 %% a new organization, an `AccountJoinedOrganization' event is logged
 %% with
-%% `joinedMethod:Invited' and `joinedTime' fields. If the account
+%% `joinedMethod:INVITED' and `joinedTime' fields. If the account
 %% departed one organization and joined another, both an
-%% `AccountDepartedOrganization' event with `departedMethod:Left'
-%% and `departedTime' and an `AccountJoinedOrganization' event with
-%% `joinedMethod:Invited' and `joinedTime' are logged in their
+%% `AccountDepartedOrganization' event with `departureMethod:LEFT'
+%% and `departureTime' and an `AccountJoinedOrganization' event with
+%% `joinedMethod:INVITED' and `joinedTime' are logged in their
 %% respective management accounts.
 -spec accept_handshake(aws_client:aws_client(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
@@ -2353,7 +2439,7 @@ cancel_handshake(Client, Input, Options)
 %% period,
 %% Organizations logs a membership event in CloudTrail. The event is an
 %% `AccountDepartedOrganization' event with
-%% `departedMethod:Cleaned' and `departedTime'. This event is
+%% `departureMethod:CLEANED' and `departureTime'. This event is
 %% available only in the management account's event history.
 -spec close_account(aws_client:aws_client(), close_account_request()) ->
     {ok, undefined, tuple()} |
@@ -2707,7 +2793,7 @@ create_gov_cloud_account(Client, Input, Options)
 %% The `AccountJoinedOrganization' event is logged in CloudTrail and
 %% is available only in the management account's event history. This
 %% event includes
-%% `joinedMethod:Invited' and `joinedTime' fields to provide
+%% `joinedMethod:INVITED' and `joinedTime' fields to provide
 %% context on how and when the account joined the organization.
 -spec create_organization(aws_client:aws_client(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
@@ -2824,7 +2910,8 @@ decline_handshake(Client, Input, Options)
 %% When an organization is deleted, Organizations logs a membership event in
 %% CloudTrail. The
 %% event is an `AccountDepartedOrganization' event with
-%% `departedMethod:Left' and `departedTime'. This event is available
+%% `departureMethod:LEFT' and `departureTime'. This event is
+%% available
 %% only in the management account's event history.
 -spec delete_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
@@ -3571,7 +3658,8 @@ invite_organization_to_transfer_responsibility(Client, Input, Options)
 %% When an account leaves an organization, Organizations logs a membership
 %% event in
 %% CloudTrail. The event is an `AccountDepartedOrganization' event with
-%% `departedMethod:Left' and `departedTime'. This event is available
+%% `departureMethod:LEFT' and `departureTime'. This event is
+%% available
 %% only in the management account's event history.
 %%
 %% The management account in an organization with all features enabled can
@@ -4343,7 +4431,7 @@ register_delegated_administrator(Client, Input, Options)
 %% membership
 %% event in CloudTrail. The event is an
 %% `AccountDepartedOrganization' event with
-%% `departedMethod:Removed' and `departedTime'. This event is
+%% `departureMethod:REMOVED' and `departureTime'. This event is
 %% available only in the management account's event history.
 %%
 %% You can remove an account from your organization only if the account is

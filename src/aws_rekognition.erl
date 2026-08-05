@@ -387,56 +387,171 @@
 
 
 %% Example:
-%% create_face_liveness_session_request_settings() :: #{
-%%   <<"AuditImagesLimit">> => integer(),
-%%   <<"ChallengePreferences">> => list(challenge_preference()),
-%%   <<"OutputConfig">> => liveness_output_config()
+%% access_denied_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
 %% }
--type create_face_liveness_session_request_settings() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% video() :: #{
+%% age_range() :: #{
+%%   <<"High">> => integer(),
+%%   <<"Low">> => integer()
+%% }
+-type age_range() :: #{binary() => any()}.
+
+%% Example:
+%% asset() :: #{
+%%   <<"GroundTruthManifest">> => ground_truth_manifest()
+%% }
+-type asset() :: #{binary() => any()}.
+
+%% Example:
+%% associate_faces_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CollectionId">> := string(),
+%%   <<"FaceIds">> := list(string()),
+%%   <<"UserId">> := string(),
+%%   <<"UserMatchThreshold">> => float()
+%% }
+-type associate_faces_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_faces_response() :: #{
+%%   <<"AssociatedFaces">> => list(associated_face()),
+%%   <<"UnsuccessfulFaceAssociations">> => list(unsuccessful_face_association()),
+%%   <<"UserStatus">> => list(any())
+%% }
+-type associate_faces_response() :: #{binary() => any()}.
+
+%% Example:
+%% associated_face() :: #{
+%%   <<"FaceId">> => string()
+%% }
+-type associated_face() :: #{binary() => any()}.
+
+%% Example:
+%% audio_metadata() :: #{
+%%   <<"Codec">> => string(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"NumberOfChannels">> => float(),
+%%   <<"SampleRate">> => float()
+%% }
+-type audio_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% audit_image() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Bytes">> => binary(),
 %%   <<"S3Object">> => s3_object()
 %% }
--type video() :: #{binary() => any()}.
+-type audit_image() :: #{binary() => any()}.
 
 %% Example:
-%% searched_user() :: #{
-%%   <<"UserId">> => string()
+%% beard() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
 %% }
--type searched_user() :: #{binary() => any()}.
+-type beard() :: #{binary() => any()}.
 
 %% Example:
-%% update_dataset_entries_request() :: #{
-%%   <<"Changes">> := dataset_changes(),
-%%   <<"DatasetArn">> := string()
+%% black_frame() :: #{
+%%   <<"MaxPixelThreshold">> => float(),
+%%   <<"MinCoveragePercentage">> => float()
 %% }
--type update_dataset_entries_request() :: #{binary() => any()}.
+-type black_frame() :: #{binary() => any()}.
 
 %% Example:
-%% list_dataset_labels_request() :: #{
-%%   <<"DatasetArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% bounding_box() :: #{
+%%   <<"Height">> => float(),
+%%   <<"Left">> => float(),
+%%   <<"Top">> => float(),
+%%   <<"Width">> => float()
 %% }
--type list_dataset_labels_request() :: #{binary() => any()}.
+-type bounding_box() :: #{binary() => any()}.
 
 %% Example:
-%% get_media_analysis_job_response() :: #{
-%%   <<"CompletionTimestamp">> => non_neg_integer(),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"FailureDetails">> => media_analysis_job_failure_details(),
-%%   <<"Input">> => media_analysis_input(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManifestSummary">> => media_analysis_manifest_summary(),
-%%   <<"OperationsConfig">> => media_analysis_operations_config(),
-%%   <<"OutputConfig">> => media_analysis_output_config(),
-%%   <<"Results">> => media_analysis_results(),
-%%   <<"Status">> => list(any())
+%% celebrity() :: #{
+%%   <<"Face">> => compared_face(),
+%%   <<"Id">> => string(),
+%%   <<"KnownGender">> => known_gender(),
+%%   <<"MatchConfidence">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Urls">> => list(string())
 %% }
--type get_media_analysis_job_response() :: #{binary() => any()}.
+-type celebrity() :: #{binary() => any()}.
+
+%% Example:
+%% celebrity_detail() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"Face">> => face_detail(),
+%%   <<"Id">> => string(),
+%%   <<"KnownGender">> => known_gender(),
+%%   <<"Name">> => string(),
+%%   <<"Urls">> => list(string())
+%% }
+-type celebrity_detail() :: #{binary() => any()}.
+
+%% Example:
+%% celebrity_recognition() :: #{
+%%   <<"Celebrity">> => celebrity_detail(),
+%%   <<"Timestamp">> => float()
+%% }
+-type celebrity_recognition() :: #{binary() => any()}.
+
+%% Example:
+%% challenge() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type challenge() :: #{binary() => any()}.
+
+%% Example:
+%% challenge_preference() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Versions">> => versions()
+%% }
+-type challenge_preference() :: #{binary() => any()}.
+
+%% Example:
+%% compare_faces_match() :: #{
+%%   <<"Face">> => compared_face(),
+%%   <<"Similarity">> => float()
+%% }
+-type compare_faces_match() :: #{binary() => any()}.
+
+%% Example:
+%% compare_faces_request() :: #{
+%%   <<"QualityFilter">> => list(any()),
+%%   <<"SimilarityThreshold">> => float(),
+%%   <<"SourceImage">> := image(),
+%%   <<"TargetImage">> := image()
+%% }
+-type compare_faces_request() :: #{binary() => any()}.
+
+%% Example:
+%% compare_faces_response() :: #{
+%%   <<"FaceMatches">> => list(compare_faces_match()),
+%%   <<"SourceImageFace">> => compared_source_image_face(),
+%%   <<"SourceImageOrientationCorrection">> => list(any()),
+%%   <<"TargetImageOrientationCorrection">> => list(any()),
+%%   <<"UnmatchedFaces">> => list(compared_face())
+%% }
+-type compare_faces_response() :: #{binary() => any()}.
+
+%% Example:
+%% compared_face() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"Emotions">> => list(emotion()),
+%%   <<"Landmarks">> => list(landmark()),
+%%   <<"Pose">> => pose(),
+%%   <<"Quality">> => image_quality(),
+%%   <<"Smile">> => smile()
+%% }
+-type compared_face() :: #{binary() => any()}.
 
 %% Example:
 %% compared_source_image_face() :: #{
@@ -446,76 +561,171 @@
 -type compared_source_image_face() :: #{binary() => any()}.
 
 %% Example:
-%% segment_type_info() :: #{
-%%   <<"ModelVersion">> => string(),
-%%   <<"Type">> => list(any())
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
 %% }
--type segment_type_info() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% recognize_celebrities_request() :: #{
-%%   <<"Image">> := image()
+%% connected_home_settings() :: #{
+%%   <<"Labels">> => list(string()),
+%%   <<"MinConfidence">> => float()
 %% }
--type recognize_celebrities_request() :: #{binary() => any()}.
+-type connected_home_settings() :: #{binary() => any()}.
 
 %% Example:
-%% get_label_detection_request_metadata() :: #{
-%%   <<"AggregateBy">> => list(any()),
-%%   <<"SortBy">> => list(any())
+%% connected_home_settings_for_update() :: #{
+%%   <<"Labels">> => list(string()),
+%%   <<"MinConfidence">> => float()
 %% }
--type get_label_detection_request_metadata() :: #{binary() => any()}.
+-type connected_home_settings_for_update() :: #{binary() => any()}.
 
 %% Example:
-%% detect_text_response() :: #{
-%%   <<"TextDetections">> => list(text_detection()),
-%%   <<"TextModelVersion">> => string()
+%% content_moderation_detection() :: #{
+%%   <<"ContentTypes">> => list(content_type()),
+%%   <<"DurationMillis">> => float(),
+%%   <<"EndTimestampMillis">> => float(),
+%%   <<"ModerationLabel">> => moderation_label(),
+%%   <<"StartTimestampMillis">> => float(),
+%%   <<"Timestamp">> => float()
 %% }
--type detect_text_response() :: #{binary() => any()}.
+-type content_moderation_detection() :: #{binary() => any()}.
 
 %% Example:
-%% detect_protective_equipment_response() :: #{
-%%   <<"Persons">> => list(protective_equipment_person()),
-%%   <<"ProtectiveEquipmentModelVersion">> => string(),
-%%   <<"Summary">> => protective_equipment_summary()
+%% content_type() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Name">> => string()
 %% }
--type detect_protective_equipment_response() :: #{binary() => any()}.
+-type content_type() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := map()
+%% copy_project_version_request() :: #{
+%%   <<"DestinationProjectArn">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputConfig">> := output_config(),
+%%   <<"SourceProjectArn">> := string(),
+%%   <<"SourceProjectVersionArn">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"VersionName">> := string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type copy_project_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% project_description() :: #{
-%%   <<"AutoUpdate">> => list(any()),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"Datasets">> => list(dataset_metadata()),
-%%   <<"Feature">> => list(any()),
-%%   <<"ProjectArn">> => string(),
-%%   <<"Status">> => list(any())
+%% copy_project_version_response() :: #{
+%%   <<"ProjectVersionArn">> => string()
 %% }
--type project_description() :: #{binary() => any()}.
+-type copy_project_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_dataset_entries_response() :: #{
-
+%% covers_body_part() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
 %% }
--type update_dataset_entries_response() :: #{binary() => any()}.
+-type covers_body_part() :: #{binary() => any()}.
 
 %% Example:
-%% start_shot_detection_filter() :: #{
-%%   <<"MinSegmentConfidence">> => float()
-%% }
--type start_shot_detection_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_faces_request() :: #{
+%% create_collection_request() :: #{
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string())
+%%   <<"Tags">> => map()
 %% }
--type delete_faces_request() :: #{binary() => any()}.
+-type create_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_response() :: #{
+%%   <<"CollectionArn">> => string(),
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type create_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"DatasetSource">> => dataset_source(),
+%%   <<"DatasetType">> := list(any()),
+%%   <<"ProjectArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"DatasetArn">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_face_liveness_session_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Settings">> => create_face_liveness_session_request_settings()
+%% }
+-type create_face_liveness_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_face_liveness_session_request_settings() :: #{
+%%   <<"AuditImagesLimit">> => integer(),
+%%   <<"ChallengePreferences">> => list(challenge_preference()),
+%%   <<"OutputConfig">> => liveness_output_config()
+%% }
+-type create_face_liveness_session_request_settings() :: #{binary() => any()}.
+
+%% Example:
+%% create_face_liveness_session_response() :: #{
+%%   <<"SessionId">> => string()
+%% }
+-type create_face_liveness_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"AutoUpdate">> => list(any()),
+%%   <<"Feature">> => list(any()),
+%%   <<"ProjectName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"ProjectArn">> => string()
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_version_request() :: #{
+%%   <<"FeatureConfig">> => customization_feature_config(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OutputConfig">> := output_config(),
+%%   <<"ProjectArn">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"TestingData">> => testing_data(),
+%%   <<"TrainingData">> => training_data(),
+%%   <<"VersionDescription">> => string(),
+%%   <<"VersionName">> := string()
+%% }
+-type create_project_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_version_response() :: #{
+%%   <<"ProjectVersionArn">> => string()
+%% }
+-type create_project_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_stream_processor_request() :: #{
+%%   <<"DataSharingPreference">> => stream_processor_data_sharing_preference(),
+%%   <<"Input">> := stream_processor_input(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NotificationChannel">> => stream_processor_notification_channel(),
+%%   <<"Output">> := stream_processor_output(),
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
+%%   <<"RoleArn">> := string(),
+%%   <<"Settings">> := stream_processor_settings(),
+%%   <<"Tags">> => map()
+%% }
+-type create_stream_processor_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_stream_processor_response() :: #{
@@ -524,16 +734,32 @@
 -type create_stream_processor_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_face_search_response() :: #{
-%%   <<"JobId">> => string()
+%% create_user_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CollectionId">> := string(),
+%%   <<"UserId">> := string()
 %% }
--type start_face_search_response() :: #{binary() => any()}.
+-type create_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% detect_labels_image_properties_settings() :: #{
-%%   <<"MaxDominantColors">> => integer()
+%% create_user_response() :: #{
+
 %% }
--type detect_labels_image_properties_settings() :: #{binary() => any()}.
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_label() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Geometry">> => geometry(),
+%%   <<"Name">> => string()
+%% }
+-type custom_label() :: #{binary() => any()}.
+
+%% Example:
+%% customization_feature_config() :: #{
+%%   <<"ContentModeration">> => customization_feature_content_moderation_config()
+%% }
+-type customization_feature_config() :: #{binary() => any()}.
 
 %% Example:
 %% customization_feature_content_moderation_config() :: #{
@@ -542,82 +768,10 @@
 -type customization_feature_content_moderation_config() :: #{binary() => any()}.
 
 %% Example:
-%% search_users_response() :: #{
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"SearchedFace">> => searched_face(),
-%%   <<"SearchedUser">> => searched_user(),
-%%   <<"UserMatches">> => list(user_match())
+%% dataset_changes() :: #{
+%%   <<"GroundTruth">> => binary()
 %% }
--type search_users_response() :: #{binary() => any()}.
-
-%% Example:
-%% matched_user() :: #{
-%%   <<"UserId">> => string(),
-%%   <<"UserStatus">> => list(any())
-%% }
--type matched_user() :: #{binary() => any()}.
-
-%% Example:
-%% search_faces_response() :: #{
-%%   <<"FaceMatches">> => list(face_match()),
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"SearchedFaceId">> => string()
-%% }
--type search_faces_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_label_detection_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Features">> => list(list(any())()),
-%%   <<"JobTag">> => string(),
-%%   <<"MinConfidence">> => float(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"Settings">> => label_detection_settings(),
-%%   <<"Video">> := video()
-%% }
--type start_label_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dataset_response() :: #{
-
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_labels_response() :: #{
-%%   <<"DatasetLabelDescriptions">> => list(dataset_label_description()),
-%%   <<"NextToken">> => string()
-%% }
--type list_dataset_labels_response() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_source() :: #{
-%%   <<"DatasetArn">> => string(),
-%%   <<"GroundTruthManifest">> => ground_truth_manifest()
-%% }
--type dataset_source() :: #{binary() => any()}.
-
-%% Example:
-%% training_data_result() :: #{
-%%   <<"Input">> => training_data(),
-%%   <<"Output">> => training_data(),
-%%   <<"Validation">> => validation_data()
-%% }
--type training_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% unindexed_face() :: #{
-%%   <<"FaceDetail">> => face_detail(),
-%%   <<"Reasons">> => list(list(any())())
-%% }
--type unindexed_face() :: #{binary() => any()}.
-
-%% Example:
-%% geometry() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point())
-%% }
--type geometry() :: #{binary() => any()}.
+-type dataset_changes() :: #{binary() => any()}.
 
 %% Example:
 %% dataset_description() :: #{
@@ -631,75 +785,76 @@
 -type dataset_description() :: #{binary() => any()}.
 
 %% Example:
-%% media_analysis_job_failure_details() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% dataset_label_description() :: #{
+%%   <<"LabelName">> => string(),
+%%   <<"LabelStats">> => dataset_label_stats()
 %% }
--type media_analysis_job_failure_details() :: #{binary() => any()}.
+-type dataset_label_description() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% dataset_label_stats() :: #{
+%%   <<"BoundingBoxCount">> => integer(),
+%%   <<"EntryCount">> => integer()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type dataset_label_stats() :: #{binary() => any()}.
 
 %% Example:
-%% stream_processor() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
+%% dataset_metadata() :: #{
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"StatusMessageCode">> => list(any())
 %% }
--type stream_processor() :: #{binary() => any()}.
+-type dataset_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% media_analysis_operations_config() :: #{
-%%   <<"DetectModerationLabels">> => media_analysis_detect_moderation_labels_config()
+%% dataset_source() :: #{
+%%   <<"DatasetArn">> => string(),
+%%   <<"GroundTruthManifest">> => ground_truth_manifest()
 %% }
--type media_analysis_operations_config() :: #{binary() => any()}.
+-type dataset_source() :: #{binary() => any()}.
 
 %% Example:
-%% start_media_analysis_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Input">> := media_analysis_input(),
-%%   <<"JobName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OperationsConfig">> := media_analysis_operations_config(),
-%%   <<"OutputConfig">> := media_analysis_output_config()
+%% dataset_stats() :: #{
+%%   <<"ErrorEntries">> => integer(),
+%%   <<"LabeledEntries">> => integer(),
+%%   <<"TotalEntries">> => integer(),
+%%   <<"TotalLabels">> => integer()
 %% }
--type start_media_analysis_job_request() :: #{binary() => any()}.
+-type dataset_stats() :: #{binary() => any()}.
 
 %% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
+%% delete_collection_request() :: #{
+%%   <<"CollectionId">> := string()
 %% }
--type resource_in_use_exception() :: #{binary() => any()}.
+-type delete_collection_request() :: #{binary() => any()}.
 
 %% Example:
-%% index_faces_request() :: #{
+%% delete_collection_response() :: #{
+%%   <<"StatusCode">> => integer()
+%% }
+-type delete_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"DatasetArn">> := string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_response() :: #{
+
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_faces_request() :: #{
 %%   <<"CollectionId">> := string(),
-%%   <<"DetectionAttributes">> => list(list(any())()),
-%%   <<"ExternalImageId">> => string(),
-%%   <<"Image">> := image(),
-%%   <<"MaxFaces">> => integer(),
-%%   <<"QualityFilter">> => list(any())
+%%   <<"FaceIds">> := list(string())
 %% }
--type index_faces_request() :: #{binary() => any()}.
-
-%% Example:
-%% person_match() :: #{
-%%   <<"FaceMatches">> => list(face_match()),
-%%   <<"Person">> => person_detail(),
-%%   <<"Timestamp">> => float()
-%% }
--type person_match() :: #{binary() => any()}.
-
-%% Example:
-%% describe_projects_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectDescriptions">> => list(project_description())
-%% }
--type describe_projects_response() :: #{binary() => any()}.
+-type delete_faces_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_faces_response() :: #{
@@ -709,11 +864,134 @@
 -type delete_faces_response() :: #{binary() => any()}.
 
 %% Example:
-%% detect_faces_response() :: #{
-%%   <<"FaceDetails">> => list(face_detail()),
-%%   <<"OrientationCorrection">> => list(any())
+%% delete_project_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ProjectArn">> := string()
 %% }
--type detect_faces_response() :: #{binary() => any()}.
+-type delete_project_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_policy_response() :: #{
+
+%% }
+-type delete_project_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_request() :: #{
+%%   <<"ProjectArn">> := string()
+%% }
+-type delete_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_version_request() :: #{
+%%   <<"ProjectVersionArn">> := string()
+%% }
+-type delete_project_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_version_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_project_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stream_processor_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_stream_processor_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stream_processor_response() :: #{
+
+%% }
+-type delete_stream_processor_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CollectionId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_response() :: #{
+
+%% }
+-type delete_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_collection_request() :: #{
+%%   <<"CollectionId">> := string()
+%% }
+-type describe_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_collection_response() :: #{
+%%   <<"CollectionARN">> => string(),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"FaceCount">> => float(),
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"UserCount">> => float()
+%% }
+-type describe_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{
+%%   <<"DatasetArn">> := string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"DatasetDescription">> => dataset_description()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectArn">> := string(),
+%%   <<"VersionNames">> => list(string())
+%% }
+-type describe_project_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectVersionDescriptions">> => list(project_version_description())
+%% }
+-type describe_project_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_projects_request() :: #{
+%%   <<"Features">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectNames">> => list(string())
+%% }
+-type describe_projects_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_projects_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectDescriptions">> => list(project_description())
+%% }
+-type describe_projects_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_processor_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_stream_processor_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stream_processor_response() :: #{
@@ -735,162 +1013,105 @@
 -type describe_stream_processor_response() :: #{binary() => any()}.
 
 %% Example:
-%% stream_processing_start_selector() :: #{
-%%   <<"KVSStreamStartSelector">> => kinesis_video_stream_start_selector()
-%% }
--type stream_processing_start_selector() :: #{binary() => any()}.
-
-%% Example:
-%% versions() :: #{
-%%   <<"Maximum">> => string(),
-%%   <<"Minimum">> => string()
-%% }
--type versions() :: #{binary() => any()}.
-
-%% Example:
-%% smile() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type smile() :: #{binary() => any()}.
-
-%% Example:
-%% connected_home_settings() :: #{
-%%   <<"Labels">> => list(string()),
-%%   <<"MinConfidence">> => float()
-%% }
--type connected_home_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_celebrity_info_response() :: #{
-%%   <<"KnownGender">> => known_gender(),
-%%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string())
-%% }
--type get_celebrity_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_project_version_request() :: #{
+%% detect_custom_labels_request() :: #{
+%%   <<"Image">> := image(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MinConfidence">> => float(),
 %%   <<"ProjectVersionArn">> := string()
 %% }
--type stop_project_version_request() :: #{binary() => any()}.
+-type detect_custom_labels_request() :: #{binary() => any()}.
 
 %% Example:
-%% media_analysis_output_config() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3KeyPrefix">> => string()
+%% detect_custom_labels_response() :: #{
+%%   <<"CustomLabels">> => list(custom_label())
 %% }
--type media_analysis_output_config() :: #{binary() => any()}.
+-type detect_custom_labels_response() :: #{binary() => any()}.
 
 %% Example:
-%% person_detail() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Face">> => face_detail(),
-%%   <<"Index">> => float()
+%% detect_faces_request() :: #{
+%%   <<"Attributes">> => list(list(any())()),
+%%   <<"Image">> := image()
 %% }
--type person_detail() :: #{binary() => any()}.
+-type detect_faces_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_content_moderation_request_metadata() :: #{
-%%   <<"AggregateBy">> => list(any()),
-%%   <<"SortBy">> => list(any())
+%% detect_faces_response() :: #{
+%%   <<"FaceDetails">> => list(face_detail()),
+%%   <<"OrientationCorrection">> => list(any())
 %% }
--type get_content_moderation_request_metadata() :: #{binary() => any()}.
+-type detect_faces_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_face_search_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any())
+%% detect_labels_image_background() :: #{
+%%   <<"DominantColors">> => list(dominant_color()),
+%%   <<"Quality">> => detect_labels_image_quality()
 %% }
--type get_face_search_request() :: #{binary() => any()}.
+-type detect_labels_image_background() :: #{binary() => any()}.
 
 %% Example:
-%% start_stream_processor_response() :: #{
-%%   <<"SessionId">> => string()
+%% detect_labels_image_foreground() :: #{
+%%   <<"DominantColors">> => list(dominant_color()),
+%%   <<"Quality">> => detect_labels_image_quality()
 %% }
--type start_stream_processor_response() :: #{binary() => any()}.
+-type detect_labels_image_foreground() :: #{binary() => any()}.
 
 %% Example:
-%% associate_faces_response() :: #{
-%%   <<"AssociatedFaces">> => list(associated_face()),
-%%   <<"UnsuccessfulFaceAssociations">> => list(unsuccessful_face_association()),
-%%   <<"UserStatus">> => list(any())
+%% detect_labels_image_properties() :: #{
+%%   <<"Background">> => detect_labels_image_background(),
+%%   <<"DominantColors">> => list(dominant_color()),
+%%   <<"Foreground">> => detect_labels_image_foreground(),
+%%   <<"Quality">> => detect_labels_image_quality()
 %% }
--type associate_faces_response() :: #{binary() => any()}.
+-type detect_labels_image_properties() :: #{binary() => any()}.
 
 %% Example:
-%% unsuccessful_face_deletion() :: #{
-%%   <<"FaceId">> => string(),
-%%   <<"Reasons">> => list(list(any())()),
-%%   <<"UserId">> => string()
+%% detect_labels_image_properties_settings() :: #{
+%%   <<"MaxDominantColors">> => integer()
 %% }
--type unsuccessful_face_deletion() :: #{binary() => any()}.
+-type detect_labels_image_properties_settings() :: #{binary() => any()}.
 
 %% Example:
-%% start_face_detection_response() :: #{
-%%   <<"JobId">> => string()
+%% detect_labels_image_quality() :: #{
+%%   <<"Brightness">> => float(),
+%%   <<"Contrast">> => float(),
+%%   <<"Sharpness">> => float()
 %% }
--type start_face_detection_response() :: #{binary() => any()}.
+-type detect_labels_image_quality() :: #{binary() => any()}.
 
 %% Example:
-%% protective_equipment_person() :: #{
-%%   <<"BodyParts">> => list(protective_equipment_body_part()),
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"Id">> => integer()
+%% detect_labels_request() :: #{
+%%   <<"Features">> => list(list(any())()),
+%%   <<"Image">> := image(),
+%%   <<"MaxLabels">> => integer(),
+%%   <<"MinConfidence">> => float(),
+%%   <<"Settings">> => detect_labels_settings()
 %% }
--type protective_equipment_person() :: #{binary() => any()}.
+-type detect_labels_request() :: #{binary() => any()}.
 
 %% Example:
-%% eye_direction() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Pitch">> => float(),
-%%   <<"Yaw">> => float()
+%% detect_labels_response() :: #{
+%%   <<"ImageProperties">> => detect_labels_image_properties(),
+%%   <<"LabelModelVersion">> => string(),
+%%   <<"Labels">> => list(label()),
+%%   <<"OrientationCorrection">> => list(any())
 %% }
--type eye_direction() :: #{binary() => any()}.
+-type detect_labels_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_text_detection_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Filters">> => start_text_detection_filters(),
-%%   <<"JobTag">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"Video">> := video()
+%% detect_labels_settings() :: #{
+%%   <<"GeneralLabels">> => general_labels_settings(),
+%%   <<"ImageProperties">> => detect_labels_image_properties_settings()
 %% }
--type start_text_detection_request() :: #{binary() => any()}.
+-type detect_labels_settings() :: #{binary() => any()}.
 
 %% Example:
-%% get_content_moderation_request() :: #{
-%%   <<"AggregateBy">> => list(any()),
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any())
+%% detect_moderation_labels_request() :: #{
+%%   <<"HumanLoopConfig">> => human_loop_config(),
+%%   <<"Image">> := image(),
+%%   <<"MinConfidence">> => float(),
+%%   <<"ProjectVersion">> => string()
 %% }
--type get_content_moderation_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-%% Example:
-%% connected_home_settings_for_update() :: #{
-%%   <<"Labels">> => list(string()),
-%%   <<"MinConfidence">> => float()
-%% }
--type connected_home_settings_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% media_analysis_manifest_summary() :: #{
-%%   <<"S3Object">> => s3_object()
-%% }
--type media_analysis_manifest_summary() :: #{binary() => any()}.
+-type detect_moderation_labels_request() :: #{binary() => any()}.
 
 %% Example:
 %% detect_moderation_labels_response() :: #{
@@ -903,54 +1124,40 @@
 -type detect_moderation_labels_response() :: #{binary() => any()}.
 
 %% Example:
-%% image_too_large_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
+%% detect_protective_equipment_request() :: #{
+%%   <<"Image">> := image(),
+%%   <<"SummarizationAttributes">> => protective_equipment_summarization_attributes()
 %% }
--type image_too_large_exception() :: #{binary() => any()}.
+-type detect_protective_equipment_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_faces_request() :: #{
-%%   <<"CollectionId">> := string(),
-%%   <<"FaceId">> := string(),
-%%   <<"FaceMatchThreshold">> => float(),
-%%   <<"MaxFaces">> => integer()
+%% detect_protective_equipment_response() :: #{
+%%   <<"Persons">> => list(protective_equipment_person()),
+%%   <<"ProtectiveEquipmentModelVersion">> => string(),
+%%   <<"Summary">> => protective_equipment_summary()
 %% }
--type search_faces_request() :: #{binary() => any()}.
+-type detect_protective_equipment_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_project_version_response() :: #{
-%%   <<"Status">> => list(any())
+%% detect_text_filters() :: #{
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
+%%   <<"WordFilter">> => detection_filter()
 %% }
--type start_project_version_response() :: #{binary() => any()}.
+-type detect_text_filters() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_faces_response() :: #{
-%%   <<"DisassociatedFaces">> => list(disassociated_face()),
-%%   <<"UnsuccessfulFaceDisassociations">> => list(unsuccessful_face_disassociation()),
-%%   <<"UserStatus">> => list(any())
+%% detect_text_request() :: #{
+%%   <<"Filters">> => detect_text_filters(),
+%%   <<"Image">> := image()
 %% }
--type disassociate_faces_response() :: #{binary() => any()}.
+-type detect_text_request() :: #{binary() => any()}.
 
 %% Example:
-%% stream_processor_output() :: #{
-%%   <<"KinesisDataStream">> => kinesis_data_stream(),
-%%   <<"S3Destination">> => s3_destination()
+%% detect_text_response() :: #{
+%%   <<"TextDetections">> => list(text_detection()),
+%%   <<"TextModelVersion">> => string()
 %% }
--type stream_processor_output() :: #{binary() => any()}.
-
-%% Example:
-%% training_data() :: #{
-%%   <<"Assets">> => list(asset())
-%% }
--type training_data() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_version_response() :: #{
-%%   <<"ProjectVersionArn">> => string()
-%% }
--type create_project_version_response() :: #{binary() => any()}.
+-type detect_text_response() :: #{binary() => any()}.
 
 %% Example:
 %% detection_filter() :: #{
@@ -961,64 +1168,339 @@
 -type detection_filter() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% disassociate_faces_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CollectionId">> := string(),
+%%   <<"FaceIds">> := list(string()),
+%%   <<"UserId">> := string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type disassociate_faces_request() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_label_description() :: #{
-%%   <<"LabelName">> => string(),
-%%   <<"LabelStats">> => dataset_label_stats()
+%% disassociate_faces_response() :: #{
+%%   <<"DisassociatedFaces">> => list(disassociated_face()),
+%%   <<"UnsuccessfulFaceDisassociations">> => list(unsuccessful_face_disassociation()),
+%%   <<"UserStatus">> => list(any())
 %% }
--type dataset_label_description() :: #{binary() => any()}.
+-type disassociate_faces_response() :: #{binary() => any()}.
 
 %% Example:
-%% known_gender() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type known_gender() :: #{binary() => any()}.
-
-%% Example:
-%% segment_detection() :: #{
-%%   <<"DurationFrames">> => float(),
-%%   <<"DurationMillis">> => float(),
-%%   <<"DurationSMPTE">> => string(),
-%%   <<"EndFrameNumber">> => float(),
-%%   <<"EndTimecodeSMPTE">> => string(),
-%%   <<"EndTimestampMillis">> => float(),
-%%   <<"ShotSegment">> => shot_segment(),
-%%   <<"StartFrameNumber">> => float(),
-%%   <<"StartTimecodeSMPTE">> => string(),
-%%   <<"StartTimestampMillis">> => float(),
-%%   <<"TechnicalCueSegment">> => technical_cue_segment(),
-%%   <<"Type">> => list(any())
-%% }
--type segment_detection() :: #{binary() => any()}.
-
-%% Example:
-%% searched_face() :: #{
+%% disassociated_face() :: #{
 %%   <<"FaceId">> => string()
 %% }
--type searched_face() :: #{binary() => any()}.
+-type disassociated_face() :: #{binary() => any()}.
 
 %% Example:
-%% list_faces_request() :: #{
-%%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% distribute_dataset() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type distribute_dataset() :: #{binary() => any()}.
+
+%% Example:
+%% distribute_dataset_entries_request() :: #{
+%%   <<"Datasets">> := list(distribute_dataset())
+%% }
+-type distribute_dataset_entries_request() :: #{binary() => any()}.
+
+%% Example:
+%% distribute_dataset_entries_response() :: #{
+
+%% }
+-type distribute_dataset_entries_response() :: #{binary() => any()}.
+
+%% Example:
+%% dominant_color() :: #{
+%%   <<"Blue">> => integer(),
+%%   <<"CSSColor">> => string(),
+%%   <<"Green">> => integer(),
+%%   <<"HexCode">> => string(),
+%%   <<"PixelPercent">> => float(),
+%%   <<"Red">> => integer(),
+%%   <<"SimplifiedColor">> => string()
+%% }
+-type dominant_color() :: #{binary() => any()}.
+
+%% Example:
+%% emotion() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type emotion() :: #{binary() => any()}.
+
+%% Example:
+%% equipment_detection() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"CoversBodyPart">> => covers_body_part(),
+%%   <<"Type">> => list(any())
+%% }
+-type equipment_detection() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_result() :: #{
+%%   <<"F1Score">> => float(),
+%%   <<"Summary">> => summary()
+%% }
+-type evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% eye_direction() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Pitch">> => float(),
+%%   <<"Yaw">> => float()
+%% }
+-type eye_direction() :: #{binary() => any()}.
+
+%% Example:
+%% eye_open() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type eye_open() :: #{binary() => any()}.
+
+%% Example:
+%% eyeglasses() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type eyeglasses() :: #{binary() => any()}.
+
+%% Example:
+%% face() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"ExternalImageId">> => string(),
+%%   <<"FaceId">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"IndexFacesModelVersion">> => string(),
 %%   <<"UserId">> => string()
 %% }
--type list_faces_request() :: #{binary() => any()}.
+-type face() :: #{binary() => any()}.
 
 %% Example:
-%% detect_text_request() :: #{
-%%   <<"Filters">> => detect_text_filters(),
-%%   <<"Image">> := image()
+%% face_detail() :: #{
+%%   <<"AgeRange">> => age_range(),
+%%   <<"Beard">> => beard(),
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"Emotions">> => list(emotion()),
+%%   <<"EyeDirection">> => eye_direction(),
+%%   <<"Eyeglasses">> => eyeglasses(),
+%%   <<"EyesOpen">> => eye_open(),
+%%   <<"FaceOccluded">> => face_occluded(),
+%%   <<"Gender">> => gender(),
+%%   <<"Landmarks">> => list(landmark()),
+%%   <<"MouthOpen">> => mouth_open(),
+%%   <<"Mustache">> => mustache(),
+%%   <<"Pose">> => pose(),
+%%   <<"Quality">> => image_quality(),
+%%   <<"Smile">> => smile(),
+%%   <<"Sunglasses">> => sunglasses()
 %% }
--type detect_text_request() :: #{binary() => any()}.
+-type face_detail() :: #{binary() => any()}.
+
+%% Example:
+%% face_detection() :: #{
+%%   <<"Face">> => face_detail(),
+%%   <<"Timestamp">> => float()
+%% }
+-type face_detection() :: #{binary() => any()}.
+
+%% Example:
+%% face_match() :: #{
+%%   <<"Face">> => face(),
+%%   <<"Similarity">> => float()
+%% }
+-type face_match() :: #{binary() => any()}.
+
+%% Example:
+%% face_occluded() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type face_occluded() :: #{binary() => any()}.
+
+%% Example:
+%% face_record() :: #{
+%%   <<"Face">> => face(),
+%%   <<"FaceDetail">> => face_detail()
+%% }
+-type face_record() :: #{binary() => any()}.
+
+%% Example:
+%% face_search_settings() :: #{
+%%   <<"CollectionId">> => string(),
+%%   <<"FaceMatchThreshold">> => float()
+%% }
+-type face_search_settings() :: #{binary() => any()}.
+
+%% Example:
+%% gender() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => list(any())
+%% }
+-type gender() :: #{binary() => any()}.
+
+%% Example:
+%% general_labels_settings() :: #{
+%%   <<"LabelCategoryExclusionFilters">> => list(string()),
+%%   <<"LabelCategoryInclusionFilters">> => list(string()),
+%%   <<"LabelExclusionFilters">> => list(string()),
+%%   <<"LabelInclusionFilters">> => list(string())
+%% }
+-type general_labels_settings() :: #{binary() => any()}.
+
+%% Example:
+%% geometry() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Polygon">> => list(point())
+%% }
+-type geometry() :: #{binary() => any()}.
+
+%% Example:
+%% get_celebrity_info_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_celebrity_info_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_celebrity_info_response() :: #{
+%%   <<"KnownGender">> => known_gender(),
+%%   <<"Name">> => string(),
+%%   <<"Urls">> => list(string())
+%% }
+-type get_celebrity_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_celebrity_recognition_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_celebrity_recognition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_celebrity_recognition_response() :: #{
+%%   <<"Celebrities">> => list(celebrity_recognition()),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => video_metadata()
+%% }
+-type get_celebrity_recognition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_moderation_request() :: #{
+%%   <<"AggregateBy">> => list(any()),
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_content_moderation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_moderation_request_metadata() :: #{
+%%   <<"AggregateBy">> => list(any()),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_content_moderation_request_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_moderation_response() :: #{
+%%   <<"GetRequestMetadata">> => get_content_moderation_request_metadata(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"ModerationLabels">> => list(content_moderation_detection()),
+%%   <<"ModerationModelVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => video_metadata()
+%% }
+-type get_content_moderation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_detection_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_face_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_detection_response() :: #{
+%%   <<"Faces">> => list(face_detection()),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => video_metadata()
+%% }
+-type get_face_detection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_liveness_session_results_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_face_liveness_session_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_liveness_session_results_response() :: #{
+%%   <<"AuditImages">> => list(audit_image()),
+%%   <<"Challenge">> => challenge(),
+%%   <<"Confidence">> => float(),
+%%   <<"ReferenceImage">> => audit_image(),
+%%   <<"SessionId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_face_liveness_session_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_search_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_face_search_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_face_search_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Persons">> => list(person_match()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => video_metadata()
+%% }
+-type get_face_search_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_label_detection_request() :: #{
+%%   <<"AggregateBy">> => list(any()),
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_label_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_label_detection_request_metadata() :: #{
+%%   <<"AggregateBy">> => list(any()),
+%%   <<"SortBy">> => list(any())
+%% }
+-type get_label_detection_request_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% get_label_detection_response() :: #{
@@ -1036,301 +1518,72 @@
 -type get_label_detection_response() :: #{binary() => any()}.
 
 %% Example:
-%% moderation_label() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"ParentName">> => string(),
-%%   <<"TaxonomyLevel">> => integer()
+%% get_media_analysis_job_request() :: #{
+%%   <<"JobId">> := string()
 %% }
--type moderation_label() :: #{binary() => any()}.
+-type get_media_analysis_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_collections_response() :: #{
-%%   <<"CollectionIds">> => list(string()),
-%%   <<"FaceModelVersions">> => list(string()),
-%%   <<"NextToken">> => string()
+%% get_media_analysis_job_response() :: #{
+%%   <<"CompletionTimestamp">> => non_neg_integer(),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"FailureDetails">> => media_analysis_job_failure_details(),
+%%   <<"Input">> => media_analysis_input(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ManifestSummary">> => media_analysis_manifest_summary(),
+%%   <<"OperationsConfig">> => media_analysis_operations_config(),
+%%   <<"OutputConfig">> => media_analysis_output_config(),
+%%   <<"Results">> => media_analysis_results(),
+%%   <<"Status">> => list(any())
 %% }
--type list_collections_response() :: #{binary() => any()}.
+-type get_media_analysis_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% associated_face() :: #{
-%%   <<"FaceId">> => string()
-%% }
--type associated_face() :: #{binary() => any()}.
-
-%% Example:
-%% put_project_policy_response() :: #{
-%%   <<"PolicyRevisionId">> => string()
-%% }
--type put_project_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% compare_faces_request() :: #{
-%%   <<"QualityFilter">> => list(any()),
-%%   <<"SimilarityThreshold">> => float(),
-%%   <<"SourceImage">> := image(),
-%%   <<"TargetImage">> := image()
-%% }
--type compare_faces_request() :: #{binary() => any()}.
-
-%% Example:
-%% region_of_interest() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point())
-%% }
--type region_of_interest() :: #{binary() => any()}.
-
-%% Example:
-%% distribute_dataset_entries_request() :: #{
-%%   <<"Datasets">> := list(distribute_dataset())
-%% }
--type distribute_dataset_entries_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_projects_request() :: #{
-%%   <<"Features">> => list(list(any())()),
+%% get_person_tracking_request() :: #{
+%%   <<"JobId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectNames">> => list(string())
+%%   <<"SortBy">> => list(any())
 %% }
--type describe_projects_request() :: #{binary() => any()}.
+-type get_person_tracking_request() :: #{binary() => any()}.
 
 %% Example:
-%% content_type() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Name">> => string()
-%% }
--type content_type() :: #{binary() => any()}.
-
-%% Example:
-%% emotion() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type emotion() :: #{binary() => any()}.
-
-%% Example:
-%% testing_data() :: #{
-%%   <<"Assets">> => list(asset()),
-%%   <<"AutoCreate">> => boolean()
-%% }
--type testing_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_face_liveness_session_results_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type get_face_liveness_session_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% notification_channel() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"SNSTopicArn">> => string()
-%% }
--type notification_channel() :: #{binary() => any()}.
-
-%% Example:
-%% get_celebrity_recognition_response() :: #{
-%%   <<"Celebrities">> => list(celebrity_recognition()),
+%% get_person_tracking_response() :: #{
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
+%%   <<"Persons">> => list(person_detection()),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Video">> => video(),
 %%   <<"VideoMetadata">> => video_metadata()
 %% }
--type get_celebrity_recognition_response() :: #{binary() => any()}.
+-type get_person_tracking_response() :: #{binary() => any()}.
 
 %% Example:
-%% point() :: #{
-%%   <<"X">> => float(),
-%%   <<"Y">> => float()
-%% }
--type point() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"DatasetArn">> => string()
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_stream_processor_response() :: #{
-
-%% }
--type update_stream_processor_response() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_activation_output() :: #{
-%%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
-%%   <<"HumanLoopActivationReasons">> => list(string()),
-%%   <<"HumanLoopArn">> => string()
-%% }
--type human_loop_activation_output() :: #{binary() => any()}.
-
-%% Example:
-%% eye_open() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type eye_open() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_throughput_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_policy_revision_id_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_policy_revision_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_face_detection_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"FaceAttributes">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"Video">> := video()
-%% }
--type start_face_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_response() :: #{
-%%   <<"ProjectArn">> => string()
-%% }
--type create_project_response() :: #{binary() => any()}.
-
-%% Example:
-%% landmark() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"X">> => float(),
-%%   <<"Y">> => float()
-%% }
--type landmark() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stream_processor_response() :: #{
-
-%% }
--type stop_stream_processor_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% dominant_color() :: #{
-%%   <<"Blue">> => integer(),
-%%   <<"CSSColor">> => string(),
-%%   <<"Green">> => integer(),
-%%   <<"HexCode">> => string(),
-%%   <<"PixelPercent">> => float(),
-%%   <<"Red">> => integer(),
-%%   <<"SimplifiedColor">> => string()
-%% }
--type dominant_color() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% asset() :: #{
-%%   <<"GroundTruthManifest">> => ground_truth_manifest()
-%% }
--type asset() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_changes() :: #{
-%%   <<"GroundTruth">> => binary()
-%% }
--type dataset_changes() :: #{binary() => any()}.
-
-%% Example:
-%% associate_faces_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string()),
-%%   <<"UserId">> := string(),
-%%   <<"UserMatchThreshold">> => float()
-%% }
--type associate_faces_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_collections_request() :: #{
+%% get_segment_detection_request() :: #{
+%%   <<"JobId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_collections_request() :: #{binary() => any()}.
+-type get_segment_detection_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_collection_request() :: #{
-%%   <<"CollectionId">> := string()
+%% get_segment_detection_response() :: #{
+%%   <<"AudioMetadata">> => list(audio_metadata()),
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Segments">> => list(segment_detection()),
+%%   <<"SelectedSegmentTypes">> => list(segment_type_info()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => list(video_metadata())
 %% }
--type delete_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_media_analysis_jobs_response() :: #{
-%%   <<"MediaAnalysisJobs">> => list(media_analysis_job_description()),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_analysis_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% face_occluded() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type face_occluded() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processor_settings_for_update() :: #{
-%%   <<"ConnectedHomeForUpdate">> => connected_home_settings_for_update()
-%% }
--type stream_processor_settings_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% detect_labels_image_properties() :: #{
-%%   <<"Background">> => detect_labels_image_background(),
-%%   <<"DominantColors">> => list(dominant_color()),
-%%   <<"Foreground">> => detect_labels_image_foreground(),
-%%   <<"Quality">> => detect_labels_image_quality()
-%% }
--type detect_labels_image_properties() :: #{binary() => any()}.
-
-%% Example:
-%% searched_face_details() :: #{
-%%   <<"FaceDetail">> => face_detail()
-%% }
--type searched_face_details() :: #{binary() => any()}.
-
-%% Example:
-%% ground_truth_manifest() :: #{
-%%   <<"S3Object">> => s3_object()
-%% }
--type ground_truth_manifest() :: #{binary() => any()}.
-
-%% Example:
-%% label_category() :: #{
-%%   <<"Name">> => string()
-%% }
--type label_category() :: #{binary() => any()}.
+-type get_segment_detection_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_text_detection_request() :: #{
@@ -1341,58 +1594,57 @@
 -type get_text_detection_request() :: #{binary() => any()}.
 
 %% Example:
-%% detect_labels_request() :: #{
-%%   <<"Features">> => list(list(any())()),
-%%   <<"Image">> := image(),
-%%   <<"MaxLabels">> => integer(),
-%%   <<"MinConfidence">> => float(),
-%%   <<"Settings">> => detect_labels_settings()
-%% }
--type detect_labels_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_project_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
+%% get_text_detection_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectArn">> := string()
+%%   <<"StatusMessage">> => string(),
+%%   <<"TextDetections">> => list(text_detection_result()),
+%%   <<"TextModelVersion">> => string(),
+%%   <<"Video">> => video(),
+%%   <<"VideoMetadata">> => video_metadata()
 %% }
--type list_project_policies_request() :: #{binary() => any()}.
+-type get_text_detection_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_stream_processors_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StreamProcessors">> => list(stream_processor())
+%% ground_truth_manifest() :: #{
+%%   <<"S3Object">> => s3_object()
 %% }
--type list_stream_processors_response() :: #{binary() => any()}.
+-type ground_truth_manifest() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% human_loop_activation_output() :: #{
+%%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
+%%   <<"HumanLoopActivationReasons">> => list(string()),
+%%   <<"HumanLoopArn">> => string()
+%% }
+-type human_loop_activation_output() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_config() :: #{
+%%   <<"DataAttributes">> => human_loop_data_attributes(),
+%%   <<"FlowDefinitionArn">> => string(),
+%%   <<"HumanLoopName">> => string()
+%% }
+-type human_loop_config() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_data_attributes() :: #{
+%%   <<"ContentClassifiers">> => list(list(any())())
+%% }
+-type human_loop_data_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% human_loop_quota_exceeded_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_stream_processors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_stream_processors_request() :: #{binary() => any()}.
-
-%% Example:
-%% mouth_open() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type mouth_open() :: #{binary() => any()}.
-
-%% Example:
-%% start_technical_cue_detection_filter() :: #{
-%%   <<"BlackFrame">> => black_frame(),
-%%   <<"MinSegmentConfidence">> => float()
-%% }
--type start_technical_cue_detection_filter() :: #{binary() => any()}.
+-type human_loop_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% idempotent_parameter_mismatch_exception() :: #{
@@ -1403,61 +1655,158 @@
 -type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_project_policy_response() :: #{
-
+%% image() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"S3Object">> => s3_object()
 %% }
--type delete_project_policy_response() :: #{binary() => any()}.
+-type image() :: #{binary() => any()}.
 
 %% Example:
-%% start_segment_detection_filters() :: #{
-%%   <<"ShotFilter">> => start_shot_detection_filter(),
-%%   <<"TechnicalCueFilter">> => start_technical_cue_detection_filter()
+%% image_quality() :: #{
+%%   <<"Brightness">> => float(),
+%%   <<"Sharpness">> => float()
 %% }
--type start_segment_detection_filters() :: #{binary() => any()}.
+-type image_quality() :: #{binary() => any()}.
 
 %% Example:
-%% detect_custom_labels_request() :: #{
+%% image_too_large_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type image_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% index_faces_request() :: #{
+%%   <<"CollectionId">> := string(),
+%%   <<"DetectionAttributes">> => list(list(any())()),
+%%   <<"ExternalImageId">> => string(),
 %%   <<"Image">> := image(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MinConfidence">> => float(),
-%%   <<"ProjectVersionArn">> := string()
+%%   <<"MaxFaces">> => integer(),
+%%   <<"QualityFilter">> => list(any())
 %% }
--type detect_custom_labels_request() :: #{binary() => any()}.
+-type index_faces_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user())
+%% index_faces_response() :: #{
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"FaceRecords">> => list(face_record()),
+%%   <<"OrientationCorrection">> => list(any()),
+%%   <<"UnindexedFaces">> => list(unindexed_face())
 %% }
--type list_users_response() :: #{binary() => any()}.
+-type index_faces_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_collection_request() :: #{
-%%   <<"CollectionId">> := string()
+%% instance() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"DominantColors">> => list(dominant_color())
 %% }
--type describe_collection_request() :: #{binary() => any()}.
+-type instance() :: #{binary() => any()}.
 
 %% Example:
-%% get_face_detection_response() :: #{
-%%   <<"Faces">> => list(face_detection()),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => video_metadata()
+%% internal_server_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
 %% }
--type get_face_detection_response() :: #{binary() => any()}.
+-type internal_server_error() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_stats() :: #{
-%%   <<"ErrorEntries">> => integer(),
-%%   <<"LabeledEntries">> => integer(),
-%%   <<"TotalEntries">> => integer(),
-%%   <<"TotalLabels">> => integer()
+%% invalid_image_format_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
 %% }
--type dataset_stats() :: #{binary() => any()}.
+-type invalid_image_format_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_manifest_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_manifest_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_revision_id_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_policy_revision_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_object_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_s3_object_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_data_stream() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type kinesis_data_stream() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_video_stream() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type kinesis_video_stream() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_video_stream_start_selector() :: #{
+%%   <<"FragmentNumber">> => string(),
+%%   <<"ProducerTimestamp">> => float()
+%% }
+-type kinesis_video_stream_start_selector() :: #{binary() => any()}.
+
+%% Example:
+%% known_gender() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type known_gender() :: #{binary() => any()}.
+
+%% Example:
+%% label() :: #{
+%%   <<"Aliases">> => list(label_alias()),
+%%   <<"Categories">> => list(label_category()),
+%%   <<"Confidence">> => float(),
+%%   <<"Instances">> => list(instance()),
+%%   <<"Name">> => string(),
+%%   <<"Parents">> => list(parent())
+%% }
+-type label() :: #{binary() => any()}.
+
+%% Example:
+%% label_alias() :: #{
+%%   <<"Name">> => string()
+%% }
+-type label_alias() :: #{binary() => any()}.
+
+%% Example:
+%% label_category() :: #{
+%%   <<"Name">> => string()
+%% }
+-type label_category() :: #{binary() => any()}.
 
 %% Example:
 %% label_detection() :: #{
@@ -1470,11 +1819,41 @@
 -type label_detection() :: #{binary() => any()}.
 
 %% Example:
-%% detect_text_filters() :: #{
-%%   <<"RegionsOfInterest">> => list(region_of_interest()),
-%%   <<"WordFilter">> => detection_filter()
+%% label_detection_settings() :: #{
+%%   <<"GeneralLabels">> => general_labels_settings()
 %% }
--type detect_text_filters() :: #{binary() => any()}.
+-type label_detection_settings() :: #{binary() => any()}.
+
+%% Example:
+%% landmark() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"X">> => float(),
+%%   <<"Y">> => float()
+%% }
+-type landmark() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_collections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_collections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_collections_response() :: #{
+%%   <<"CollectionIds">> => list(string()),
+%%   <<"FaceModelVersions">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_collections_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_dataset_entries_request() :: #{
@@ -1489,60 +1868,308 @@
 -type list_dataset_entries_request() :: #{binary() => any()}.
 
 %% Example:
-%% detect_custom_labels_response() :: #{
-%%   <<"CustomLabels">> => list(custom_label())
+%% list_dataset_entries_response() :: #{
+%%   <<"DatasetEntries">> => list(string()),
+%%   <<"NextToken">> => string()
 %% }
--type detect_custom_labels_response() :: #{binary() => any()}.
+-type list_dataset_entries_response() :: #{binary() => any()}.
 
 %% Example:
-%% search_faces_by_image_request() :: #{
+%% list_dataset_labels_request() :: #{
+%%   <<"DatasetArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_labels_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_labels_response() :: #{
+%%   <<"DatasetLabelDescriptions">> => list(dataset_label_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_labels_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_faces_request() :: #{
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceMatchThreshold">> => float(),
-%%   <<"Image">> := image(),
-%%   <<"MaxFaces">> => integer(),
-%%   <<"QualityFilter">> => list(any())
+%%   <<"FaceIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserId">> => string()
 %% }
--type search_faces_by_image_request() :: #{binary() => any()}.
+-type list_faces_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_users_by_image_request() :: #{
-%%   <<"CollectionId">> := string(),
-%%   <<"Image">> := image(),
-%%   <<"MaxUsers">> => integer(),
-%%   <<"QualityFilter">> => list(any()),
-%%   <<"UserMatchThreshold">> => float()
+%% list_faces_response() :: #{
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"Faces">> => list(face()),
+%%   <<"NextToken">> => string()
 %% }
--type search_users_by_image_request() :: #{binary() => any()}.
+-type list_faces_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_celebrity_recognition_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"JobTag">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"Video">> := video()
+%% list_media_analysis_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type start_celebrity_recognition_request() :: #{binary() => any()}.
+-type list_media_analysis_jobs_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_collection_request() :: #{
-%%   <<"CollectionId">> := string(),
+%% list_media_analysis_jobs_response() :: #{
+%%   <<"MediaAnalysisJobs">> => list(media_analysis_job_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_analysis_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_project_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectArn">> := string()
+%% }
+-type list_project_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_project_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectPolicies">> => list(project_policy())
+%% }
+-type list_project_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_processors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stream_processors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_processors_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StreamProcessors">> => list(stream_processor())
+%% }
+-type list_stream_processors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
 %%   <<"Tags">> => map()
 %% }
--type create_collection_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% compare_faces_match() :: #{
-%%   <<"Face">> => compared_face(),
-%%   <<"Similarity">> => float()
+%% list_users_request() :: #{
+%%   <<"CollectionId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type compare_faces_match() :: #{binary() => any()}.
+-type list_users_request() :: #{binary() => any()}.
 
 %% Example:
-%% kinesis_video_stream_start_selector() :: #{
-%%   <<"FragmentNumber">> => string(),
-%%   <<"ProducerTimestamp">> => float()
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user())
 %% }
--type kinesis_video_stream_start_selector() :: #{binary() => any()}.
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% liveness_output_config() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type liveness_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% matched_user() :: #{
+%%   <<"UserId">> => string(),
+%%   <<"UserStatus">> => list(any())
+%% }
+-type matched_user() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_detect_moderation_labels_config() :: #{
+%%   <<"MinConfidence">> => float(),
+%%   <<"ProjectVersion">> => string()
+%% }
+-type media_analysis_detect_moderation_labels_config() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_input() :: #{
+%%   <<"S3Object">> => s3_object()
+%% }
+-type media_analysis_input() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_job_description() :: #{
+%%   <<"CompletionTimestamp">> => non_neg_integer(),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"FailureDetails">> => media_analysis_job_failure_details(),
+%%   <<"Input">> => media_analysis_input(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ManifestSummary">> => media_analysis_manifest_summary(),
+%%   <<"OperationsConfig">> => media_analysis_operations_config(),
+%%   <<"OutputConfig">> => media_analysis_output_config(),
+%%   <<"Results">> => media_analysis_results(),
+%%   <<"Status">> => list(any())
+%% }
+-type media_analysis_job_description() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_job_failure_details() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type media_analysis_job_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_manifest_summary() :: #{
+%%   <<"S3Object">> => s3_object()
+%% }
+-type media_analysis_manifest_summary() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_model_versions() :: #{
+%%   <<"Moderation">> => string()
+%% }
+-type media_analysis_model_versions() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_operations_config() :: #{
+%%   <<"DetectModerationLabels">> => media_analysis_detect_moderation_labels_config()
+%% }
+-type media_analysis_operations_config() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_output_config() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type media_analysis_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% media_analysis_results() :: #{
+%%   <<"ModelVersions">> => media_analysis_model_versions(),
+%%   <<"S3Object">> => s3_object()
+%% }
+-type media_analysis_results() :: #{binary() => any()}.
+
+%% Example:
+%% moderation_label() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ParentName">> => string(),
+%%   <<"TaxonomyLevel">> => integer()
+%% }
+-type moderation_label() :: #{binary() => any()}.
+
+%% Example:
+%% mouth_open() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type mouth_open() :: #{binary() => any()}.
+
+%% Example:
+%% mustache() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type mustache() :: #{binary() => any()}.
+
+%% Example:
+%% notification_channel() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SNSTopicArn">> => string()
+%% }
+-type notification_channel() :: #{binary() => any()}.
+
+%% Example:
+%% output_config() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type output_config() :: #{binary() => any()}.
+
+%% Example:
+%% parent() :: #{
+%%   <<"Name">> => string()
+%% }
+-type parent() :: #{binary() => any()}.
+
+%% Example:
+%% person_detail() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Face">> => face_detail(),
+%%   <<"Index">> => float()
+%% }
+-type person_detail() :: #{binary() => any()}.
+
+%% Example:
+%% person_detection() :: #{
+%%   <<"Person">> => person_detail(),
+%%   <<"Timestamp">> => float()
+%% }
+-type person_detection() :: #{binary() => any()}.
+
+%% Example:
+%% person_match() :: #{
+%%   <<"FaceMatches">> => list(face_match()),
+%%   <<"Person">> => person_detail(),
+%%   <<"Timestamp">> => float()
+%% }
+-type person_match() :: #{binary() => any()}.
+
+%% Example:
+%% point() :: #{
+%%   <<"X">> => float(),
+%%   <<"Y">> => float()
+%% }
+-type point() :: #{binary() => any()}.
+
+%% Example:
+%% pose() :: #{
+%%   <<"Pitch">> => float(),
+%%   <<"Roll">> => float(),
+%%   <<"Yaw">> => float()
+%% }
+-type pose() :: #{binary() => any()}.
+
+%% Example:
+%% project_description() :: #{
+%%   <<"AutoUpdate">> => list(any()),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"Datasets">> => list(dataset_metadata()),
+%%   <<"Feature">> => list(any()),
+%%   <<"ProjectArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type project_description() :: #{binary() => any()}.
+
+%% Example:
+%% project_policy() :: #{
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ProjectArn">> => string()
+%% }
+-type project_policy() :: #{binary() => any()}.
 
 %% Example:
 %% project_version_description() :: #{
@@ -1569,58 +2196,182 @@
 -type project_version_description() :: #{binary() => any()}.
 
 %% Example:
-%% start_person_tracking_response() :: #{
-%%   <<"JobId">> => string()
+%% protective_equipment_body_part() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"EquipmentDetections">> => list(equipment_detection()),
+%%   <<"Name">> => list(any())
 %% }
--type start_person_tracking_response() :: #{binary() => any()}.
+-type protective_equipment_body_part() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
+%% protective_equipment_person() :: #{
+%%   <<"BodyParts">> => list(protective_equipment_body_part()),
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Confidence">> => float(),
+%%   <<"Id">> => integer()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type protective_equipment_person() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_label_stats() :: #{
-%%   <<"BoundingBoxCount">> => integer(),
-%%   <<"EntryCount">> => integer()
+%% protective_equipment_summarization_attributes() :: #{
+%%   <<"MinConfidence">> => float(),
+%%   <<"RequiredEquipmentTypes">> => list(list(any())())
 %% }
--type dataset_label_stats() :: #{binary() => any()}.
+-type protective_equipment_summarization_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% content_moderation_detection() :: #{
-%%   <<"ContentTypes">> => list(content_type()),
-%%   <<"DurationMillis">> => float(),
-%%   <<"EndTimestampMillis">> => float(),
-%%   <<"ModerationLabel">> => moderation_label(),
-%%   <<"StartTimestampMillis">> => float(),
-%%   <<"Timestamp">> => float()
+%% protective_equipment_summary() :: #{
+%%   <<"PersonsIndeterminate">> => list(integer()),
+%%   <<"PersonsWithRequiredEquipment">> => list(integer()),
+%%   <<"PersonsWithoutRequiredEquipment">> => list(integer())
 %% }
--type content_moderation_detection() :: #{binary() => any()}.
+-type protective_equipment_summary() :: #{binary() => any()}.
 
 %% Example:
-%% media_analysis_results() :: #{
-%%   <<"ModelVersions">> => media_analysis_model_versions(),
-%%   <<"S3Object">> => s3_object()
+%% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
 %% }
--type media_analysis_results() :: #{binary() => any()}.
+-type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_label_detection_request() :: #{
-%%   <<"AggregateBy">> => list(any()),
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any())
+%% put_project_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyRevisionId">> => string(),
+%%   <<"ProjectArn">> := string()
 %% }
--type get_label_detection_request() :: #{binary() => any()}.
+-type put_project_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% detect_protective_equipment_request() :: #{
+%% put_project_policy_response() :: #{
+%%   <<"PolicyRevisionId">> => string()
+%% }
+-type put_project_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% recognize_celebrities_request() :: #{
+%%   <<"Image">> := image()
+%% }
+-type recognize_celebrities_request() :: #{binary() => any()}.
+
+%% Example:
+%% recognize_celebrities_response() :: #{
+%%   <<"CelebrityFaces">> => list(celebrity()),
+%%   <<"OrientationCorrection">> => list(any()),
+%%   <<"UnrecognizedFaces">> => list(compared_face())
+%% }
+-type recognize_celebrities_response() :: #{binary() => any()}.
+
+%% Example:
+%% region_of_interest() :: #{
+%%   <<"BoundingBox">> => bounding_box(),
+%%   <<"Polygon">> => list(point())
+%% }
+-type region_of_interest() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_ready_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"KeyPrefix">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+%% Example:
+%% search_faces_by_image_request() :: #{
+%%   <<"CollectionId">> := string(),
+%%   <<"FaceMatchThreshold">> => float(),
 %%   <<"Image">> := image(),
-%%   <<"SummarizationAttributes">> => protective_equipment_summarization_attributes()
+%%   <<"MaxFaces">> => integer(),
+%%   <<"QualityFilter">> => list(any())
 %% }
--type detect_protective_equipment_request() :: #{binary() => any()}.
+-type search_faces_by_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_faces_by_image_response() :: #{
+%%   <<"FaceMatches">> => list(face_match()),
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"SearchedFaceBoundingBox">> => bounding_box(),
+%%   <<"SearchedFaceConfidence">> => float()
+%% }
+-type search_faces_by_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_faces_request() :: #{
+%%   <<"CollectionId">> := string(),
+%%   <<"FaceId">> := string(),
+%%   <<"FaceMatchThreshold">> => float(),
+%%   <<"MaxFaces">> => integer()
+%% }
+-type search_faces_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_faces_response() :: #{
+%%   <<"FaceMatches">> => list(face_match()),
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"SearchedFaceId">> => string()
+%% }
+-type search_faces_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_users_by_image_request() :: #{
+%%   <<"CollectionId">> := string(),
+%%   <<"Image">> := image(),
+%%   <<"MaxUsers">> => integer(),
+%%   <<"QualityFilter">> => list(any()),
+%%   <<"UserMatchThreshold">> => float()
+%% }
+-type search_users_by_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_users_by_image_response() :: #{
+%%   <<"FaceModelVersion">> => string(),
+%%   <<"SearchedFace">> => searched_face_details(),
+%%   <<"UnsearchedFaces">> => list(unsearched_face()),
+%%   <<"UserMatches">> => list(user_match())
+%% }
+-type search_users_by_image_response() :: #{binary() => any()}.
 
 %% Example:
 %% search_users_request() :: #{
@@ -1633,396 +2384,100 @@
 -type search_users_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_users_by_image_response() :: #{
+%% search_users_response() :: #{
 %%   <<"FaceModelVersion">> => string(),
-%%   <<"SearchedFace">> => searched_face_details(),
-%%   <<"UnsearchedFaces">> => list(unsearched_face()),
+%%   <<"SearchedFace">> => searched_face(),
+%%   <<"SearchedUser">> => searched_user(),
 %%   <<"UserMatches">> => list(user_match())
 %% }
--type search_users_by_image_response() :: #{binary() => any()}.
+-type search_users_response() :: #{binary() => any()}.
 
 %% Example:
-%% face_detail() :: #{
-%%   <<"AgeRange">> => age_range(),
-%%   <<"Beard">> => beard(),
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"Emotions">> => list(emotion()),
-%%   <<"EyeDirection">> => eye_direction(),
-%%   <<"Eyeglasses">> => eyeglasses(),
-%%   <<"EyesOpen">> => eye_open(),
-%%   <<"FaceOccluded">> => face_occluded(),
-%%   <<"Gender">> => gender(),
-%%   <<"Landmarks">> => list(landmark()),
-%%   <<"MouthOpen">> => mouth_open(),
-%%   <<"Mustache">> => mustache(),
-%%   <<"Pose">> => pose(),
-%%   <<"Quality">> => image_quality(),
-%%   <<"Smile">> => smile(),
-%%   <<"Sunglasses">> => sunglasses()
+%% searched_face() :: #{
+%%   <<"FaceId">> => string()
 %% }
--type face_detail() :: #{binary() => any()}.
+-type searched_face() :: #{binary() => any()}.
 
 %% Example:
-%% black_frame() :: #{
-%%   <<"MaxPixelThreshold">> => float(),
-%%   <<"MinCoveragePercentage">> => float()
+%% searched_face_details() :: #{
+%%   <<"FaceDetail">> => face_detail()
 %% }
--type black_frame() :: #{binary() => any()}.
+-type searched_face_details() :: #{binary() => any()}.
 
 %% Example:
-%% detect_labels_response() :: #{
-%%   <<"ImageProperties">> => detect_labels_image_properties(),
-%%   <<"LabelModelVersion">> => string(),
-%%   <<"Labels">> => list(label()),
-%%   <<"OrientationCorrection">> => list(any())
-%% }
--type detect_labels_response() :: #{binary() => any()}.
-
-%% Example:
-%% testing_data_result() :: #{
-%%   <<"Input">> => testing_data(),
-%%   <<"Output">> => testing_data(),
-%%   <<"Validation">> => validation_data()
-%% }
--type testing_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% unsearched_face() :: #{
-%%   <<"FaceDetails">> => face_detail(),
-%%   <<"Reasons">> => list(list(any())())
-%% }
--type unsearched_face() :: #{binary() => any()}.
-
-%% Example:
-%% face() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"ExternalImageId">> => string(),
-%%   <<"FaceId">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"IndexFacesModelVersion">> => string(),
+%% searched_user() :: #{
 %%   <<"UserId">> => string()
 %% }
--type face() :: #{binary() => any()}.
+-type searched_user() :: #{binary() => any()}.
 
 %% Example:
-%% list_project_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectPolicies">> => list(project_policy())
+%% segment_detection() :: #{
+%%   <<"DurationFrames">> => float(),
+%%   <<"DurationMillis">> => float(),
+%%   <<"DurationSMPTE">> => string(),
+%%   <<"EndFrameNumber">> => float(),
+%%   <<"EndTimecodeSMPTE">> => string(),
+%%   <<"EndTimestampMillis">> => float(),
+%%   <<"ShotSegment">> => shot_segment(),
+%%   <<"StartFrameNumber">> => float(),
+%%   <<"StartTimecodeSMPTE">> => string(),
+%%   <<"StartTimestampMillis">> => float(),
+%%   <<"TechnicalCueSegment">> => technical_cue_segment(),
+%%   <<"Type">> => list(any())
 %% }
--type list_project_policies_response() :: #{binary() => any()}.
+-type segment_detection() :: #{binary() => any()}.
 
 %% Example:
-%% create_project_version_request() :: #{
-%%   <<"FeatureConfig">> => customization_feature_config(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OutputConfig">> := output_config(),
-%%   <<"ProjectArn">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"TestingData">> => testing_data(),
-%%   <<"TrainingData">> => training_data(),
-%%   <<"VersionDescription">> => string(),
-%%   <<"VersionName">> := string()
+%% segment_type_info() :: #{
+%%   <<"ModelVersion">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type create_project_version_request() :: #{binary() => any()}.
+-type segment_type_info() :: #{binary() => any()}.
 
 %% Example:
-%% beard() :: #{
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Logref">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type session_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% shot_segment() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Index">> => float()
+%% }
+-type shot_segment() :: #{binary() => any()}.
+
+%% Example:
+%% smile() :: #{
 %%   <<"Confidence">> => float(),
 %%   <<"Value">> => boolean()
 %% }
--type beard() :: #{binary() => any()}.
+-type smile() :: #{binary() => any()}.
 
 %% Example:
-%% distribute_dataset_entries_response() :: #{
-
-%% }
--type distribute_dataset_entries_response() :: #{binary() => any()}.
-
-%% Example:
-%% protective_equipment_summarization_attributes() :: #{
-%%   <<"MinConfidence">> => float(),
-%%   <<"RequiredEquipmentTypes">> => list(list(any())())
-%% }
--type protective_equipment_summarization_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
+%% start_celebrity_recognition_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"CollectionId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_destination() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"KeyPrefix">> => string()
-%% }
--type s3_destination() :: #{binary() => any()}.
-
-%% Example:
-%% get_segment_detection_response() :: #{
-%%   <<"AudioMetadata">> => list(audio_metadata()),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Segments">> => list(segment_detection()),
-%%   <<"SelectedSegmentTypes">> => list(segment_type_info()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => list(video_metadata())
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"Video">> := video()
 %% }
--type get_segment_detection_response() :: #{binary() => any()}.
+-type start_celebrity_recognition_request() :: #{binary() => any()}.
 
 %% Example:
-%% custom_label() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Geometry">> => geometry(),
-%%   <<"Name">> => string()
-%% }
--type custom_label() :: #{binary() => any()}.
-
-%% Example:
-%% celebrity() :: #{
-%%   <<"Face">> => compared_face(),
-%%   <<"Id">> => string(),
-%%   <<"KnownGender">> => known_gender(),
-%%   <<"MatchConfidence">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string())
-%% }
--type celebrity() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_response() :: #{
-
-%% }
--type delete_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_celebrity_recognition_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any())
-%% }
--type get_celebrity_recognition_request() :: #{binary() => any()}.
-
-%% Example:
-%% challenge_preference() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Versions">> => versions()
-%% }
--type challenge_preference() :: #{binary() => any()}.
-
-%% Example:
-%% celebrity_recognition() :: #{
-%%   <<"Celebrity">> => celebrity_detail(),
-%%   <<"Timestamp">> => float()
-%% }
--type celebrity_recognition() :: #{binary() => any()}.
-
-%% Example:
-%% recognize_celebrities_response() :: #{
-%%   <<"CelebrityFaces">> => list(celebrity()),
-%%   <<"OrientationCorrection">> => list(any()),
-%%   <<"UnrecognizedFaces">> => list(compared_face())
-%% }
--type recognize_celebrities_response() :: #{binary() => any()}.
-
-%% Example:
-%% challenge() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type challenge() :: #{binary() => any()}.
-
-%% Example:
-%% face_search_settings() :: #{
-%%   <<"CollectionId">> => string(),
-%%   <<"FaceMatchThreshold">> => float()
-%% }
--type face_search_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_face_liveness_session_response() :: #{
-%%   <<"SessionId">> => string()
-%% }
--type create_face_liveness_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processor_data_sharing_preference() :: #{
-%%   <<"OptIn">> => boolean()
-%% }
--type stream_processor_data_sharing_preference() :: #{binary() => any()}.
-
-%% Example:
-%% describe_collection_response() :: #{
-%%   <<"CollectionARN">> => string(),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"FaceCount">> => float(),
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"UserCount">> => float()
-%% }
--type describe_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processor_settings() :: #{
-%%   <<"ConnectedHome">> => connected_home_settings(),
-%%   <<"FaceSearch">> => face_search_settings()
-%% }
--type stream_processor_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_response() :: #{
-%%   <<"CollectionArn">> => string(),
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type create_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% age_range() :: #{
-%%   <<"High">> => integer(),
-%%   <<"Low">> => integer()
-%% }
--type age_range() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_data_attributes() :: #{
-%%   <<"ContentClassifiers">> => list(list(any())())
-%% }
--type human_loop_data_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% protective_equipment_body_part() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"EquipmentDetections">> => list(equipment_detection()),
-%%   <<"Name">> => list(any())
-%% }
--type protective_equipment_body_part() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_project_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_project_policy_request() :: #{
-%%   <<"PolicyDocument">> := string(),
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ProjectArn">> := string()
-%% }
--type put_project_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% bounding_box() :: #{
-%%   <<"Height">> => float(),
-%%   <<"Left">> => float(),
-%%   <<"Top">> => float(),
-%%   <<"Width">> => float()
-%% }
--type bounding_box() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stream_processor_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_stream_processor_request() :: #{binary() => any()}.
-
-%% Example:
-%% unsuccessful_face_disassociation() :: #{
-%%   <<"FaceId">> => string(),
-%%   <<"Reasons">> => list(list(any())()),
-%%   <<"UserId">> => string()
-%% }
--type unsuccessful_face_disassociation() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stream_processor_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_stream_processor_request() :: #{binary() => any()}.
-
-%% Example:
-%% face_match() :: #{
-%%   <<"Face">> => face(),
-%%   <<"Similarity">> => float()
-%% }
--type face_match() :: #{binary() => any()}.
-
-%% Example:
-%% media_analysis_job_description() :: #{
-%%   <<"CompletionTimestamp">> => non_neg_integer(),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"FailureDetails">> => media_analysis_job_failure_details(),
-%%   <<"Input">> => media_analysis_input(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManifestSummary">> => media_analysis_manifest_summary(),
-%%   <<"OperationsConfig">> => media_analysis_operations_config(),
-%%   <<"OutputConfig">> => media_analysis_output_config(),
-%%   <<"Results">> => media_analysis_results(),
-%%   <<"Status">> => list(any())
-%% }
--type media_analysis_job_description() :: #{binary() => any()}.
-
-%% Example:
-%% start_text_detection_response() :: #{
+%% start_celebrity_recognition_response() :: #{
 %%   <<"JobId">> => string()
 %% }
--type start_text_detection_response() :: #{binary() => any()}.
-
-%% Example:
-%% label_detection_settings() :: #{
-%%   <<"GeneralLabels">> => general_labels_settings()
-%% }
--type label_detection_settings() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processor_input() :: #{
-%%   <<"KinesisVideoStream">> => kinesis_video_stream()
-%% }
--type stream_processor_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_person_tracking_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Persons">> => list(person_detection()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => video_metadata()
-%% }
--type get_person_tracking_response() :: #{binary() => any()}.
-
-%% Example:
-%% copy_project_version_response() :: #{
-%%   <<"ProjectVersionArn">> => string()
-%% }
--type copy_project_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% image() :: #{
-%%   <<"Bytes">> => binary(),
-%%   <<"S3Object">> => s3_object()
-%% }
--type image() :: #{binary() => any()}.
-
-%% Example:
-%% list_media_analysis_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_analysis_jobs_request() :: #{binary() => any()}.
+-type start_celebrity_recognition_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_content_moderation_request() :: #{
@@ -2035,185 +2490,78 @@
 -type start_content_moderation_request() :: #{binary() => any()}.
 
 %% Example:
-%% covers_body_part() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type covers_body_part() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% instance() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"DominantColors">> => list(dominant_color())
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% image_quality() :: #{
-%%   <<"Brightness">> => float(),
-%%   <<"Sharpness">> => float()
-%% }
--type image_quality() :: #{binary() => any()}.
-
-%% Example:
-%% list_faces_response() :: #{
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"Faces">> => list(face()),
-%%   <<"NextToken">> => string()
-%% }
--type list_faces_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ProjectArn">> := string()
-%% }
--type delete_project_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_stream_processor_request() :: #{
-%%   <<"DataSharingPreference">> => stream_processor_data_sharing_preference(),
-%%   <<"Input">> := stream_processor_input(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NotificationChannel">> => stream_processor_notification_channel(),
-%%   <<"Output">> := stream_processor_output(),
-%%   <<"RegionsOfInterest">> => list(region_of_interest()),
-%%   <<"RoleArn">> := string(),
-%%   <<"Settings">> := stream_processor_settings(),
-%%   <<"Tags">> => map()
-%% }
--type create_stream_processor_request() :: #{binary() => any()}.
-
-%% Example:
-%% index_faces_response() :: #{
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"FaceRecords">> => list(face_record()),
-%%   <<"OrientationCorrection">> => list(any()),
-%%   <<"UnindexedFaces">> => list(unindexed_face())
-%% }
--type index_faces_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_media_analysis_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_media_analysis_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% technical_cue_segment() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type technical_cue_segment() :: #{binary() => any()}.
-
-%% Example:
-%% output_config() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type output_config() :: #{binary() => any()}.
-
-%% Example:
-%% video_metadata() :: #{
-%%   <<"Codec">> => string(),
-%%   <<"ColorRange">> => list(any()),
-%%   <<"DurationMillis">> => float(),
-%%   <<"Format">> => string(),
-%%   <<"FrameHeight">> => float(),
-%%   <<"FrameRate">> => float(),
-%%   <<"FrameWidth">> => float()
-%% }
--type video_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% detect_moderation_labels_request() :: #{
-%%   <<"HumanLoopConfig">> => human_loop_config(),
-%%   <<"Image">> := image(),
-%%   <<"MinConfidence">> => float(),
-%%   <<"ProjectVersion">> => string()
-%% }
--type detect_moderation_labels_request() :: #{binary() => any()}.
-
-%% Example:
-%% eyeglasses() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type eyeglasses() :: #{binary() => any()}.
-
-%% Example:
 %% start_content_moderation_response() :: #{
 %%   <<"JobId">> => string()
 %% }
 -type start_content_moderation_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_segment_detection_response() :: #{
+%% start_face_detection_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FaceAttributes">> => list(any()),
+%%   <<"JobTag">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"Video">> := video()
+%% }
+-type start_face_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_face_detection_response() :: #{
 %%   <<"JobId">> => string()
 %% }
--type start_segment_detection_response() :: #{binary() => any()}.
+-type start_face_detection_response() :: #{binary() => any()}.
 
 %% Example:
-%% unsuccessful_face_association() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"FaceId">> => string(),
-%%   <<"Reasons">> => list(list(any())()),
-%%   <<"UserId">> => string()
+%% start_face_search_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CollectionId">> := string(),
+%%   <<"FaceMatchThreshold">> => float(),
+%%   <<"JobTag">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"Video">> := video()
 %% }
--type unsuccessful_face_association() :: #{binary() => any()}.
+-type start_face_search_request() :: #{binary() => any()}.
 
 %% Example:
-%% detect_faces_request() :: #{
-%%   <<"Attributes">> => list(list(any())()),
-%%   <<"Image">> := image()
+%% start_face_search_response() :: #{
+%%   <<"JobId">> => string()
 %% }
--type detect_faces_request() :: #{binary() => any()}.
+-type start_face_search_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_response() :: #{
-%%   <<"DatasetDescription">> => dataset_description()
+%% start_label_detection_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Features">> => list(list(any())()),
+%%   <<"JobTag">> => string(),
+%%   <<"MinConfidence">> => float(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"Settings">> => label_detection_settings(),
+%%   <<"Video">> := video()
 %% }
--type describe_dataset_response() :: #{binary() => any()}.
+-type start_label_detection_request() :: #{binary() => any()}.
 
 %% Example:
-%% person_detection() :: #{
-%%   <<"Person">> => person_detail(),
-%%   <<"Timestamp">> => float()
+%% start_label_detection_response() :: #{
+%%   <<"JobId">> => string()
 %% }
--type person_detection() :: #{binary() => any()}.
+-type start_label_detection_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_media_analysis_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Input">> := media_analysis_input(),
+%%   <<"JobName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OperationsConfig">> := media_analysis_operations_config(),
+%%   <<"OutputConfig">> := media_analysis_output_config()
+%% }
+-type start_media_analysis_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_media_analysis_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_media_analysis_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_person_tracking_request() :: #{
@@ -2225,107 +2573,227 @@
 -type start_person_tracking_request() :: #{binary() => any()}.
 
 %% Example:
-%% distribute_dataset() :: #{
-%%   <<"Arn">> => string()
-%% }
--type distribute_dataset() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_image_format_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_image_format_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_request() :: #{
-%%   <<"DatasetSource">> => dataset_source(),
-%%   <<"DatasetType">> := list(any()),
-%%   <<"ProjectArn">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% face_detection() :: #{
-%%   <<"Face">> => face_detail(),
-%%   <<"Timestamp">> => float()
-%% }
--type face_detection() :: #{binary() => any()}.
-
-%% Example:
-%% audit_image() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Bytes">> => binary(),
-%%   <<"S3Object">> => s3_object()
-%% }
--type audit_image() :: #{binary() => any()}.
-
-%% Example:
-%% start_celebrity_recognition_response() :: #{
+%% start_person_tracking_response() :: #{
 %%   <<"JobId">> => string()
 %% }
--type start_celebrity_recognition_response() :: #{binary() => any()}.
+-type start_person_tracking_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_segment_detection_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% start_project_version_request() :: #{
+%%   <<"MaxInferenceUnits">> => integer(),
+%%   <<"MinInferenceUnits">> := integer(),
+%%   <<"ProjectVersionArn">> := string()
 %% }
--type get_segment_detection_request() :: #{binary() => any()}.
+-type start_project_version_request() :: #{binary() => any()}.
 
 %% Example:
-%% shot_segment() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Index">> => float()
-%% }
--type shot_segment() :: #{binary() => any()}.
-
-%% Example:
-%% get_face_liveness_session_results_response() :: #{
-%%   <<"AuditImages">> => list(audit_image()),
-%%   <<"Challenge">> => challenge(),
-%%   <<"Confidence">> => float(),
-%%   <<"ReferenceImage">> => audit_image(),
-%%   <<"SessionId">> => string(),
+%% start_project_version_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
--type get_face_liveness_session_results_response() :: #{binary() => any()}.
+-type start_project_version_response() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
+%% start_segment_detection_filters() :: #{
+%%   <<"ShotFilter">> => start_shot_detection_filter(),
+%%   <<"TechnicalCueFilter">> => start_technical_cue_detection_filter()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type start_segment_detection_filters() :: #{binary() => any()}.
 
 %% Example:
-%% delete_stream_processor_response() :: #{
-
+%% start_segment_detection_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Filters">> => start_segment_detection_filters(),
+%%   <<"JobTag">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"SegmentTypes">> := list(list(any())()),
+%%   <<"Video">> := video()
 %% }
--type delete_stream_processor_response() :: #{binary() => any()}.
+-type start_segment_detection_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociated_face() :: #{
-%%   <<"FaceId">> => string()
+%% start_segment_detection_response() :: #{
+%%   <<"JobId">> => string()
 %% }
--type disassociated_face() :: #{binary() => any()}.
+-type start_segment_detection_response() :: #{binary() => any()}.
 
 %% Example:
-%% user() :: #{
-%%   <<"UserId">> => string(),
-%%   <<"UserStatus">> => list(any())
+%% start_shot_detection_filter() :: #{
+%%   <<"MinSegmentConfidence">> => float()
 %% }
--type user() :: #{binary() => any()}.
+-type start_shot_detection_filter() :: #{binary() => any()}.
+
+%% Example:
+%% start_stream_processor_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"StartSelector">> => stream_processing_start_selector(),
+%%   <<"StopSelector">> => stream_processing_stop_selector()
+%% }
+-type start_stream_processor_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_stream_processor_response() :: #{
+%%   <<"SessionId">> => string()
+%% }
+-type start_stream_processor_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_technical_cue_detection_filter() :: #{
+%%   <<"BlackFrame">> => black_frame(),
+%%   <<"MinSegmentConfidence">> => float()
+%% }
+-type start_technical_cue_detection_filter() :: #{binary() => any()}.
+
+%% Example:
+%% start_text_detection_filters() :: #{
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
+%%   <<"WordFilter">> => detection_filter()
+%% }
+-type start_text_detection_filters() :: #{binary() => any()}.
+
+%% Example:
+%% start_text_detection_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Filters">> => start_text_detection_filters(),
+%%   <<"JobTag">> => string(),
+%%   <<"NotificationChannel">> => notification_channel(),
+%%   <<"Video">> := video()
+%% }
+-type start_text_detection_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_text_detection_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_text_detection_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_project_version_request() :: #{
+%%   <<"ProjectVersionArn">> := string()
+%% }
+-type stop_project_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_project_version_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type stop_project_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stream_processor_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type stop_stream_processor_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stream_processor_response() :: #{
+
+%% }
+-type stop_stream_processor_response() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processing_start_selector() :: #{
+%%   <<"KVSStreamStartSelector">> => kinesis_video_stream_start_selector()
+%% }
+-type stream_processing_start_selector() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processing_stop_selector() :: #{
+%%   <<"MaxDurationInSeconds">> => float()
+%% }
+-type stream_processing_stop_selector() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stream_processor() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_data_sharing_preference() :: #{
+%%   <<"OptIn">> => boolean()
+%% }
+-type stream_processor_data_sharing_preference() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_input() :: #{
+%%   <<"KinesisVideoStream">> => kinesis_video_stream()
+%% }
+-type stream_processor_input() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_notification_channel() :: #{
+%%   <<"SNSTopicArn">> => string()
+%% }
+-type stream_processor_notification_channel() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_output() :: #{
+%%   <<"KinesisDataStream">> => kinesis_data_stream(),
+%%   <<"S3Destination">> => s3_destination()
+%% }
+-type stream_processor_output() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_settings() :: #{
+%%   <<"ConnectedHome">> => connected_home_settings(),
+%%   <<"FaceSearch">> => face_search_settings()
+%% }
+-type stream_processor_settings() :: #{binary() => any()}.
+
+%% Example:
+%% stream_processor_settings_for_update() :: #{
+%%   <<"ConnectedHomeForUpdate">> => connected_home_settings_for_update()
+%% }
+-type stream_processor_settings_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% summary() :: #{
+%%   <<"S3Object">> => s3_object()
+%% }
+-type summary() :: #{binary() => any()}.
+
+%% Example:
+%% sunglasses() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Value">> => boolean()
+%% }
+-type sunglasses() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% technical_cue_segment() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type technical_cue_segment() :: #{binary() => any()}.
+
+%% Example:
+%% testing_data() :: #{
+%%   <<"Assets">> => list(asset()),
+%%   <<"AutoCreate">> => boolean()
+%% }
+-type testing_data() :: #{binary() => any()}.
+
+%% Example:
+%% testing_data_result() :: #{
+%%   <<"Input">> => testing_data(),
+%%   <<"Output">> => testing_data(),
+%%   <<"Validation">> => validation_data()
+%% }
+-type testing_data_result() :: #{binary() => any()}.
 
 %% Example:
 %% text_detection() :: #{
@@ -2346,49 +2814,91 @@
 -type text_detection_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_project_request() :: #{
-%%   <<"AutoUpdate">> => list(any()),
-%%   <<"Feature">> => list(any()),
-%%   <<"ProjectName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
+%% throttling_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Logref">> => string(),
 %%   <<"Message">> => string()
 %% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% session_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
+%% training_data() :: #{
+%%   <<"Assets">> => list(asset())
 %% }
--type session_not_found_exception() :: #{binary() => any()}.
+-type training_data() :: #{binary() => any()}.
 
 %% Example:
-%% customization_feature_config() :: #{
-%%   <<"ContentModeration">> => customization_feature_content_moderation_config()
+%% training_data_result() :: #{
+%%   <<"Input">> => training_data(),
+%%   <<"Output">> => training_data(),
+%%   <<"Validation">> => validation_data()
 %% }
--type customization_feature_config() :: #{binary() => any()}.
+-type training_data_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stream_processor_request() :: #{
-%%   <<"Name">> := string()
+%% unindexed_face() :: #{
+%%   <<"FaceDetail">> => face_detail(),
+%%   <<"Reasons">> => list(list(any())())
 %% }
--type describe_stream_processor_request() :: #{binary() => any()}.
+-type unindexed_face() :: #{binary() => any()}.
 
 %% Example:
-%% pose() :: #{
-%%   <<"Pitch">> => float(),
-%%   <<"Roll">> => float(),
-%%   <<"Yaw">> => float()
+%% unsearched_face() :: #{
+%%   <<"FaceDetails">> => face_detail(),
+%%   <<"Reasons">> => list(list(any())())
 %% }
--type pose() :: #{binary() => any()}.
+-type unsearched_face() :: #{binary() => any()}.
+
+%% Example:
+%% unsuccessful_face_association() :: #{
+%%   <<"Confidence">> => float(),
+%%   <<"FaceId">> => string(),
+%%   <<"Reasons">> => list(list(any())()),
+%%   <<"UserId">> => string()
+%% }
+-type unsuccessful_face_association() :: #{binary() => any()}.
+
+%% Example:
+%% unsuccessful_face_deletion() :: #{
+%%   <<"FaceId">> => string(),
+%%   <<"Reasons">> => list(list(any())()),
+%%   <<"UserId">> => string()
+%% }
+-type unsuccessful_face_deletion() :: #{binary() => any()}.
+
+%% Example:
+%% unsuccessful_face_disassociation() :: #{
+%%   <<"FaceId">> => string(),
+%%   <<"Reasons">> => list(list(any())()),
+%%   <<"UserId">> => string()
+%% }
+-type unsuccessful_face_disassociation() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_entries_request() :: #{
+%%   <<"Changes">> := dataset_changes(),
+%%   <<"DatasetArn">> := string()
+%% }
+-type update_dataset_entries_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_entries_response() :: #{
+
+%% }
+-type update_dataset_entries_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_stream_processor_request() :: #{
@@ -2401,172 +2911,17 @@
 -type update_stream_processor_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_stream_processor_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"StartSelector">> => stream_processing_start_selector(),
-%%   <<"StopSelector">> => stream_processing_stop_selector()
+%% update_stream_processor_response() :: #{
+
 %% }
--type start_stream_processor_request() :: #{binary() => any()}.
+-type update_stream_processor_response() :: #{binary() => any()}.
 
 %% Example:
-%% copy_project_version_request() :: #{
-%%   <<"DestinationProjectArn">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OutputConfig">> := output_config(),
-%%   <<"SourceProjectArn">> := string(),
-%%   <<"SourceProjectVersionArn">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"VersionName">> := string()
+%% user() :: #{
+%%   <<"UserId">> => string(),
+%%   <<"UserStatus">> => list(any())
 %% }
--type copy_project_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% equipment_detection() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"CoversBodyPart">> => covers_body_part(),
-%%   <<"Type">> => list(any())
-%% }
--type equipment_detection() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"CollectionId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% general_labels_settings() :: #{
-%%   <<"LabelCategoryExclusionFilters">> => list(string()),
-%%   <<"LabelCategoryInclusionFilters">> => list(string()),
-%%   <<"LabelExclusionFilters">> => list(string()),
-%%   <<"LabelInclusionFilters">> => list(string())
-%% }
--type general_labels_settings() :: #{binary() => any()}.
-
-%% Example:
-%% media_analysis_input() :: #{
-%%   <<"S3Object">> => s3_object()
-%% }
--type media_analysis_input() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processor_notification_channel() :: #{
-%%   <<"SNSTopicArn">> => string()
-%% }
--type stream_processor_notification_channel() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_media_analysis_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_media_analysis_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% media_analysis_detect_moderation_labels_config() :: #{
-%%   <<"MinConfidence">> => float(),
-%%   <<"ProjectVersion">> => string()
-%% }
--type media_analysis_detect_moderation_labels_config() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_manifest_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_manifest_exception() :: #{binary() => any()}.
-
-%% Example:
-%% video_too_large_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type video_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_quota_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type human_loop_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_faces_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string()),
-%%   <<"UserId">> := string()
-%% }
--type disassociate_faces_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_text_detection_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"TextDetections">> => list(text_detection_result()),
-%%   <<"TextModelVersion">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => video_metadata()
-%% }
--type get_text_detection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_celebrity_info_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type get_celebrity_info_request() :: #{binary() => any()}.
-
-%% Example:
-%% protective_equipment_summary() :: #{
-%%   <<"PersonsIndeterminate">> => list(integer()),
-%%   <<"PersonsWithRequiredEquipment">> => list(integer()),
-%%   <<"PersonsWithoutRequiredEquipment">> => list(integer())
-%% }
--type protective_equipment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% start_text_detection_filters() :: #{
-%%   <<"RegionsOfInterest">> => list(region_of_interest()),
-%%   <<"WordFilter">> => detection_filter()
-%% }
--type start_text_detection_filters() :: #{binary() => any()}.
-
-%% Example:
-%% start_segment_detection_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Filters">> => start_segment_detection_filters(),
-%%   <<"JobTag">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"SegmentTypes">> := list(list(any())()),
-%%   <<"Video">> := video()
-%% }
--type start_segment_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_result() :: #{
-%%   <<"F1Score">> => float(),
-%%   <<"Summary">> => summary()
-%% }
--type evaluation_result() :: #{binary() => any()}.
+-type user() :: #{binary() => any()}.
 
 %% Example:
 %% user_match() :: #{
@@ -2576,1122 +2931,767 @@
 -type user_match() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_request() :: #{
-%%   <<"DatasetArn">> := string()
-%% }
--type describe_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dataset_request() :: #{
-%%   <<"DatasetArn">> := string()
-%% }
--type delete_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_labels_image_quality() :: #{
-%%   <<"Brightness">> => float(),
-%%   <<"Contrast">> => float(),
-%%   <<"Sharpness">> => float()
-%% }
--type detect_labels_image_quality() :: #{binary() => any()}.
-
-%% Example:
-%% describe_project_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectVersionDescriptions">> => list(project_version_description())
-%% }
--type describe_project_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_labels_settings() :: #{
-%%   <<"GeneralLabels">> => general_labels_settings(),
-%%   <<"ImageProperties">> => detect_labels_image_properties_settings()
-%% }
--type detect_labels_settings() :: #{binary() => any()}.
-
-%% Example:
-%% liveness_output_config() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type liveness_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% face_record() :: #{
-%%   <<"Face">> => face(),
-%%   <<"FaceDetail">> => face_detail()
-%% }
--type face_record() :: #{binary() => any()}.
-
-%% Example:
-%% start_label_detection_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_label_detection_response() :: #{binary() => any()}.
-
-%% Example:
-%% parent() :: #{
-%%   <<"Name">> => string()
-%% }
--type parent() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
 %% validation_data() :: #{
 %%   <<"Assets">> => list(asset())
 %% }
 -type validation_data() :: #{binary() => any()}.
 
 %% Example:
-%% describe_project_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectArn">> := string(),
-%%   <<"VersionNames">> => list(string())
+%% versions() :: #{
+%%   <<"Maximum">> => string(),
+%%   <<"Minimum">> => string()
 %% }
--type describe_project_versions_request() :: #{binary() => any()}.
+-type versions() :: #{binary() => any()}.
 
 %% Example:
-%% detect_labels_image_foreground() :: #{
-%%   <<"DominantColors">> => list(dominant_color()),
-%%   <<"Quality">> => detect_labels_image_quality()
-%% }
--type detect_labels_image_foreground() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_s3_object_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_s3_object_exception() :: #{binary() => any()}.
-
-%% Example:
-%% media_analysis_model_versions() :: #{
-%%   <<"Moderation">> => string()
-%% }
--type media_analysis_model_versions() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_request() :: #{
-%%   <<"ProjectArn">> := string()
-%% }
--type delete_project_request() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_data_stream() :: #{
-%%   <<"Arn">> => string()
-%% }
--type kinesis_data_stream() :: #{binary() => any()}.
-
-%% Example:
-%% label_alias() :: #{
-%%   <<"Name">> => string()
-%% }
--type label_alias() :: #{binary() => any()}.
-
-%% Example:
-%% mustache() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type mustache() :: #{binary() => any()}.
-
-%% Example:
-%% sunglasses() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => boolean()
-%% }
--type sunglasses() :: #{binary() => any()}.
-
-%% Example:
-%% human_loop_config() :: #{
-%%   <<"DataAttributes">> => human_loop_data_attributes(),
-%%   <<"FlowDefinitionArn">> => string(),
-%%   <<"HumanLoopName">> => string()
-%% }
--type human_loop_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_face_search_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CollectionId">> := string(),
-%%   <<"FaceMatchThreshold">> => float(),
-%%   <<"JobTag">> => string(),
-%%   <<"NotificationChannel">> => notification_channel(),
-%%   <<"Video">> := video()
-%% }
--type start_face_search_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_ready_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Logref">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_not_ready_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collection_response() :: #{
-%%   <<"StatusCode">> => integer()
-%% }
--type delete_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_content_moderation_response() :: #{
-%%   <<"GetRequestMetadata">> => get_content_moderation_request_metadata(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"ModerationLabels">> => list(content_moderation_detection()),
-%%   <<"ModerationModelVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => video_metadata()
-%% }
--type get_content_moderation_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{
-
-%% }
--type create_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% compare_faces_response() :: #{
-%%   <<"FaceMatches">> => list(compare_faces_match()),
-%%   <<"SourceImageFace">> => compared_source_image_face(),
-%%   <<"SourceImageOrientationCorrection">> => list(any()),
-%%   <<"TargetImageOrientationCorrection">> => list(any()),
-%%   <<"UnmatchedFaces">> => list(compared_face())
-%% }
--type compare_faces_response() :: #{binary() => any()}.
-
-%% Example:
-%% project_policy() :: #{
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyRevisionId">> => string(),
-%%   <<"ProjectArn">> => string()
-%% }
--type project_policy() :: #{binary() => any()}.
-
-%% Example:
-%% search_faces_by_image_response() :: #{
-%%   <<"FaceMatches">> => list(face_match()),
-%%   <<"FaceModelVersion">> => string(),
-%%   <<"SearchedFaceBoundingBox">> => bounding_box(),
-%%   <<"SearchedFaceConfidence">> => float()
-%% }
--type search_faces_by_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_entries_response() :: #{
-%%   <<"DatasetEntries">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_dataset_entries_response() :: #{binary() => any()}.
-
-%% Example:
-%% summary() :: #{
+%% video() :: #{
 %%   <<"S3Object">> => s3_object()
 %% }
--type summary() :: #{binary() => any()}.
+-type video() :: #{binary() => any()}.
 
 %% Example:
-%% kinesis_video_stream() :: #{
-%%   <<"Arn">> => string()
-%% }
--type kinesis_video_stream() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_metadata() :: #{
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"DatasetArn">> => string(),
-%%   <<"DatasetType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"StatusMessageCode">> => list(any())
-%% }
--type dataset_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% detect_labels_image_background() :: #{
-%%   <<"DominantColors">> => list(dominant_color()),
-%%   <<"Quality">> => detect_labels_image_quality()
-%% }
--type detect_labels_image_background() :: #{binary() => any()}.
-
-%% Example:
-%% celebrity_detail() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"Face">> => face_detail(),
-%%   <<"Id">> => string(),
-%%   <<"KnownGender">> => known_gender(),
-%%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string())
-%% }
--type celebrity_detail() :: #{binary() => any()}.
-
-%% Example:
-%% stream_processing_stop_selector() :: #{
-%%   <<"MaxDurationInSeconds">> => float()
-%% }
--type stream_processing_stop_selector() :: #{binary() => any()}.
-
-%% Example:
-%% audio_metadata() :: #{
+%% video_metadata() :: #{
 %%   <<"Codec">> => string(),
+%%   <<"ColorRange">> => list(any()),
 %%   <<"DurationMillis">> => float(),
-%%   <<"NumberOfChannels">> => float(),
-%%   <<"SampleRate">> => float()
+%%   <<"Format">> => string(),
+%%   <<"FrameHeight">> => float(),
+%%   <<"FrameRate">> => float(),
+%%   <<"FrameWidth">> => float()
 %% }
--type audio_metadata() :: #{binary() => any()}.
+-type video_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% gender() :: #{
-%%   <<"Confidence">> => float(),
-%%   <<"Value">> => list(any())
-%% }
--type gender() :: #{binary() => any()}.
-
-%% Example:
-%% label() :: #{
-%%   <<"Aliases">> => list(label_alias()),
-%%   <<"Categories">> => list(label_category()),
-%%   <<"Confidence">> => float(),
-%%   <<"Instances">> => list(instance()),
-%%   <<"Name">> => string(),
-%%   <<"Parents">> => list(parent())
-%% }
--type label() :: #{binary() => any()}.
-
-%% Example:
-%% get_face_search_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"JobTag">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Persons">> => list(person_match()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => video_metadata()
-%% }
--type get_face_search_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_project_version_request() :: #{
-%%   <<"MaxInferenceUnits">> => integer(),
-%%   <<"MinInferenceUnits">> := integer(),
-%%   <<"ProjectVersionArn">> := string()
-%% }
--type start_project_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% compared_face() :: #{
-%%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Confidence">> => float(),
-%%   <<"Emotions">> => list(emotion()),
-%%   <<"Landmarks">> => list(landmark()),
-%%   <<"Pose">> => pose(),
-%%   <<"Quality">> => image_quality(),
-%%   <<"Smile">> => smile()
-%% }
--type compared_face() :: #{binary() => any()}.
-
-%% Example:
-%% get_face_detection_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_face_detection_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_version_request() :: #{
-%%   <<"ProjectVersionArn">> := string()
-%% }
--type delete_project_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_project_version_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type stop_project_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"CollectionId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_face_liveness_session_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Settings">> => create_face_liveness_session_request_settings()
-%% }
--type create_face_liveness_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
+%% video_too_large_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Logref">> => string(),
 %%   <<"Message">> => string()
 %% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_version_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_project_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_person_tracking_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any())
-%% }
--type get_person_tracking_request() :: #{binary() => any()}.
+-type video_too_large_exception() :: #{binary() => any()}.
 
 -type associate_faces_errors() ::
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type compare_faces_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type copy_project_version_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_collection_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
-    provisioned_throughput_exceeded_exception().
+    resource_already_exists_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_dataset_errors() ::
-    invalid_s3_object_exception() | 
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    resource_already_exists_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_face_liveness_session_errors() ::
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type create_project_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_project_version_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_stream_processor_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type create_user_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type delete_collection_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type delete_dataset_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type delete_dataset_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_faces_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_project_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_project_policy_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_policy_revision_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_project_version_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_stream_processor_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type delete_user_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    resource_not_found_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type describe_collection_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type describe_dataset_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type describe_project_versions_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type describe_projects_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    invalid_pagination_token_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type describe_stream_processor_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type detect_custom_labels_errors() ::
-    resource_not_ready_exception() | 
-    invalid_s3_object_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type detect_faces_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type detect_labels_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type detect_moderation_labels_errors() ::
-    resource_not_ready_exception() | 
-    invalid_s3_object_exception() | 
-    human_loop_quota_exceeded_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    human_loop_quota_exceeded_exception() | 
+    access_denied_exception().
 
 -type detect_protective_equipment_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type detect_text_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type disassociate_faces_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    resource_not_found_exception() | 
     conflict_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type distribute_dataset_entries_errors() ::
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_celebrity_info_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_celebrity_recognition_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_content_moderation_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_face_detection_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_face_liveness_session_results_errors() ::
-    session_not_found_exception() | 
     throttling_exception() | 
+    session_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type get_face_search_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_label_detection_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_media_analysis_job_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_person_tracking_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_segment_detection_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type get_text_detection_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type index_faces_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type list_collections_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_dataset_entries_errors() ::
-    invalid_pagination_token_exception() | 
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_dataset_labels_errors() ::
-    invalid_pagination_token_exception() | 
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_faces_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_media_analysis_jobs_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    invalid_pagination_token_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type list_project_policies_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_stream_processors_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
+    invalid_pagination_token_exception() | 
     internal_server_error() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_users_errors() ::
-    invalid_pagination_token_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_pagination_token_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type put_project_policy_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    malformed_policy_document_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
     invalid_policy_revision_id_exception() | 
-    provisioned_throughput_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type recognize_celebrities_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type search_faces_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type search_faces_by_image_errors() ::
-    invalid_s3_object_exception() | 
-    throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type search_faces_by_image_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type search_users_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type search_users_by_image_errors() ::
-    invalid_s3_object_exception() | 
     throttling_exception() | 
-    invalid_image_format_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    image_too_large_exception().
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_image_format_exception() | 
+    internal_server_error() | 
+    image_too_large_exception() | 
+    access_denied_exception().
 
 -type start_celebrity_recognition_errors() ::
-    invalid_s3_object_exception() | 
     video_too_large_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type start_content_moderation_errors() ::
-    invalid_s3_object_exception() | 
     video_too_large_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type start_face_detection_errors() ::
-    invalid_s3_object_exception() | 
     video_too_large_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type start_face_search_errors() ::
-    invalid_s3_object_exception() | 
     video_too_large_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type start_label_detection_errors() ::
-    invalid_s3_object_exception() | 
-    video_too_large_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type start_media_analysis_job_errors() ::
-    resource_not_ready_exception() | 
-    invalid_s3_object_exception() | 
-    invalid_manifest_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type start_person_tracking_errors() ::
-    invalid_s3_object_exception() | 
-    video_too_large_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type start_project_version_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
-
--type start_segment_detection_errors() ::
-    invalid_s3_object_exception() | 
-    video_too_large_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
+
+-type start_label_detection_errors() ::
+    video_too_large_exception() | 
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    access_denied_exception().
+
+-type start_media_analysis_job_errors() ::
+    throttling_exception() | 
+    resource_not_ready_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    invalid_manifest_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    access_denied_exception().
+
+-type start_person_tracking_errors() ::
+    video_too_large_exception() | 
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    access_denied_exception().
+
+-type start_project_version_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type start_segment_detection_errors() ::
+    video_too_large_exception() | 
+    throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch_exception() | 
+    access_denied_exception().
 
 -type start_stream_processor_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type start_text_detection_errors() ::
-    invalid_s3_object_exception() | 
     video_too_large_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
-    provisioned_throughput_exceeded_exception().
+    access_denied_exception().
 
 -type stop_project_version_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type stop_stream_processor_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception().
-
--type update_dataset_entries_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type update_dataset_entries_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type update_stream_processor_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    resource_in_use_exception().
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

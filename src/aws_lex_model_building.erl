@@ -122,371 +122,17 @@
 
 
 %% Example:
-%% builtin_slot_type_metadata() :: #{
-%%   <<"signature">> => string(),
-%%   <<"supportedLocales">> => list(list(any())())
-%% }
--type builtin_slot_type_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_slot_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(slot_type_metadata())
-%% }
--type get_slot_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bot_request() :: #{
-%%   <<"abortStatement">> => statement(),
-%%   <<"checksum">> => string(),
-%%   <<"childDirected">> := boolean(),
-%%   <<"clarificationPrompt">> => prompt(),
-%%   <<"createVersion">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"detectSentiment">> => boolean(),
-%%   <<"enableModelImprovements">> => boolean(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()),
-%%   <<"locale">> := list(any()),
-%%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"processBehavior">> => list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"voiceId">> => string()
-%% }
--type put_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bot_channel_associations_response() :: #{
-%%   <<"botChannelAssociations">> => list(bot_channel_association()),
-%%   <<"nextToken">> => string()
-%% }
--type get_bot_channel_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_builtin_intents_request() :: #{
-%%   <<"locale">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"signatureContains">> => string()
-%% }
--type get_builtin_intents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% fulfillment_activity() :: #{
-%%   <<"codeHook">> => code_hook(),
-%%   <<"type">> => list(any())
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type fulfillment_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_summary() :: #{
-%%   <<"migrationId">> => string(),
-%%   <<"migrationStatus">> => list(any()),
-%%   <<"migrationStrategy">> => list(any()),
-%%   <<"migrationTimestamp">> => non_neg_integer(),
-%%   <<"v1BotLocale">> => list(any()),
-%%   <<"v1BotName">> => string(),
-%%   <<"v1BotVersion">> => string(),
-%%   <<"v2BotId">> => string(),
-%%   <<"v2BotRole">> => string()
-%% }
--type migration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_migration_response() :: #{
-%%   <<"alerts">> => list(migration_alert()),
-%%   <<"migrationId">> => string(),
-%%   <<"migrationStatus">> => list(any()),
-%%   <<"migrationStrategy">> => list(any()),
-%%   <<"migrationTimestamp">> => non_neg_integer(),
-%%   <<"v1BotLocale">> => list(any()),
-%%   <<"v1BotName">> => string(),
-%%   <<"v1BotVersion">> => string(),
-%%   <<"v2BotId">> => string(),
-%%   <<"v2BotRole">> => string()
-%% }
--type get_migration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_reference() :: #{
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type resource_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_builtin_slot_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(builtin_slot_type_metadata())
-%% }
--type get_builtin_slot_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% put_slot_type_response() :: #{
-%%   <<"checksum">> => string(),
-%%   <<"createVersion">> => boolean(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
-%%   <<"valueSelectionStrategy">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type put_slot_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_response() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"failureReason">> => list(string()),
-%%   <<"importId">> => string(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"mergeStrategy">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type get_import_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_bot_request() :: #{}
--type get_bot_request() :: #{}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"exampleReference">> => resource_reference(),
-%%   <<"referenceType">> => list(any())
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_migration_request() :: #{
-%%   <<"migrationStrategy">> := list(any()),
-%%   <<"v1BotName">> := string(),
-%%   <<"v1BotVersion">> := string(),
-%%   <<"v2BotName">> := string(),
-%%   <<"v2BotRole">> := string()
-%% }
--type start_migration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slot_type_version_response() :: #{
-%%   <<"checksum">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
-%%   <<"valueSelectionStrategy">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type create_slot_type_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_settings_request() :: #{
-%%   <<"destination">> => list(any()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"logType">> => list(any()),
-%%   <<"resourceArn">> => string()
-%% }
--type log_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bot_request() :: #{}
--type delete_bot_request() :: #{}.
-
-
-%% Example:
-%% get_bot_response() :: #{
-%%   <<"abortStatement">> => statement(),
-%%   <<"checksum">> => string(),
-%%   <<"childDirected">> => boolean(),
-%%   <<"clarificationPrompt">> => prompt(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"detectSentiment">> => boolean(),
-%%   <<"enableModelImprovements">> => boolean(),
-%%   <<"failureReason">> => string(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"locale">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string(),
-%%   <<"voiceId">> => string()
-%% }
--type get_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% follow_up_prompt() :: #{
-%%   <<"prompt">> => prompt(),
-%%   <<"rejectionStatement">> => statement()
-%% }
--type follow_up_prompt() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_context() :: #{
-%%   <<"name">> => string(),
-%%   <<"timeToLiveInSeconds">> => integer(),
-%%   <<"turnsToLive">> => integer()
-%% }
--type output_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot() :: #{
-%%   <<"defaultValueSpec">> => slot_default_value_spec(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"obfuscationSetting">> => list(any()),
-%%   <<"priority">> => integer(),
-%%   <<"responseCard">> => string(),
-%%   <<"sampleUtterances">> => list(string()),
-%%   <<"slotConstraint">> => list(any()),
-%%   <<"slotType">> => string(),
-%%   <<"slotTypeVersion">> => string(),
-%%   <<"valueElicitationPrompt">> => prompt()
-%% }
--type slot() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_builtin_slot_types_request() :: #{
-%%   <<"locale">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"signatureContains">> => string()
-%% }
--type get_builtin_slot_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_version_request() :: #{
-%%   <<"checksum">> => string()
-%% }
--type create_bot_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bot_channel_association_response() :: #{
-%%   <<"botAlias">> => string(),
-%%   <<"botConfiguration">> => map(),
-%%   <<"botName">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type get_bot_channel_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_builtin_intent_response() :: #{
-%%   <<"signature">> => string(),
-%%   <<"slots">> => list(builtin_intent_slot()),
-%%   <<"supportedLocales">> => list(list(any())())
-%% }
--type get_builtin_intent_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slot_type_version_request() :: #{
-%%   <<"checksum">> => string()
-%% }
--type create_slot_type_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_slot_type_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(slot_type_metadata())
-%% }
--type get_slot_type_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slot_type_version_request() :: #{}
--type delete_slot_type_version_request() :: #{}.
-
-
-%% Example:
-%% statement() :: #{
-%%   <<"messages">> => list(message()),
-%%   <<"responseCard">> => string()
-%% }
--type statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bots_response() :: #{
-%%   <<"bots">> => list(bot_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type get_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% builtin_intent_metadata() :: #{
-%%   <<"signature">> => string(),
-%%   <<"supportedLocales">> => list(list(any())())
-%% }
--type builtin_intent_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_migrations_response() :: #{
-%%   <<"migrationSummaries">> => list(migration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type get_migrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -519,59 +165,438 @@
 
 
 %% Example:
-%% get_migrations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"migrationStatusEquals">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"sortByAttribute">> => list(any()),
-%%   <<"sortByOrder">> => list(any()),
-%%   <<"v1BotNameContains">> => string()
+%% bot_metadata() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
 %% }
--type get_migrations_request() :: #{binary() => any()}.
+-type bot_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% intent() :: #{
-%%   <<"intentName">> => string(),
-%%   <<"intentVersion">> => string()
+%% builtin_intent_metadata() :: #{
+%%   <<"signature">> => string(),
+%%   <<"supportedLocales">> => list(list(any())())
 %% }
--type intent() :: #{binary() => any()}.
+-type builtin_intent_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_intents_response() :: #{
-%%   <<"intents">> => list(intent_metadata()),
-%%   <<"nextToken">> => string()
+%% builtin_intent_slot() :: #{
+%%   <<"name">> => string()
 %% }
--type get_intents_response() :: #{binary() => any()}.
+-type builtin_intent_slot() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_intent_versions_response() :: #{
-%%   <<"intents">> => list(intent_metadata()),
-%%   <<"nextToken">> => string()
+%% builtin_slot_type_metadata() :: #{
+%%   <<"signature">> => string(),
+%%   <<"supportedLocales">> => list(list(any())())
 %% }
--type get_intent_versions_response() :: #{binary() => any()}.
+-type builtin_slot_type_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% kendra_configuration() :: #{
-%%   <<"kendraIndex">> => string(),
-%%   <<"queryFilterString">> => string(),
-%%   <<"role">> => string()
+%% code_hook() :: #{
+%%   <<"messageVersion">> => string(),
+%%   <<"uri">> => string()
 %% }
--type kendra_configuration() :: #{binary() => any()}.
+-type code_hook() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_logs_request() :: #{
+%%   <<"iamRoleArn">> => string(),
+%%   <<"logSettings">> => list(log_settings_request())
+%% }
+-type conversation_logs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversation_logs_response() :: #{
+%%   <<"iamRoleArn">> => string(),
+%%   <<"logSettings">> => list(log_settings_response())
+%% }
+-type conversation_logs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_version_request() :: #{
+%%   <<"checksum">> => string()
+%% }
+-type create_bot_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_version_response() :: #{
+%%   <<"abortStatement">> => statement(),
+%%   <<"checksum">> => string(),
+%%   <<"childDirected">> => boolean(),
+%%   <<"clarificationPrompt">> => prompt(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"detectSentiment">> => boolean(),
+%%   <<"enableModelImprovements">> => boolean(),
+%%   <<"failureReason">> => string(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"intents">> => list(intent()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"locale">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"voiceId">> => string()
+%% }
+-type create_bot_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intent_version_request() :: #{
+%%   <<"checksum">> => string()
+%% }
+-type create_intent_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_intent_version_response() :: #{
+%%   <<"checksum">> => string(),
+%%   <<"conclusionStatement">> => statement(),
+%%   <<"confirmationPrompt">> => prompt(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dialogCodeHook">> => code_hook(),
+%%   <<"followUpPrompt">> => follow_up_prompt(),
+%%   <<"fulfillmentActivity">> => fulfillment_activity(),
+%%   <<"inputContexts">> => list(input_context()),
+%%   <<"kendraConfiguration">> => kendra_configuration(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"outputContexts">> => list(output_context()),
+%%   <<"parentIntentSignature">> => string(),
+%%   <<"rejectionStatement">> => statement(),
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slots">> => list(slot()),
+%%   <<"version">> => string()
+%% }
+-type create_intent_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_type_version_request() :: #{
+%%   <<"checksum">> => string()
+%% }
+-type create_slot_type_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slot_type_version_response() :: #{
+%%   <<"checksum">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"enumerationValues">> => list(enumeration_value()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
+%%   <<"valueSelectionStrategy">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type create_slot_type_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bot_alias_request() :: #{}
+-type delete_bot_alias_request() :: #{}.
+
+%% Example:
+%% delete_bot_channel_association_request() :: #{}
+-type delete_bot_channel_association_request() :: #{}.
+
+%% Example:
+%% delete_bot_request() :: #{}
+-type delete_bot_request() :: #{}.
+
+%% Example:
+%% delete_bot_version_request() :: #{}
+-type delete_bot_version_request() :: #{}.
+
+%% Example:
+%% delete_intent_request() :: #{}
+-type delete_intent_request() :: #{}.
 
 %% Example:
 %% delete_intent_version_request() :: #{}
 -type delete_intent_version_request() :: #{}.
 
+%% Example:
+%% delete_slot_type_request() :: #{}
+-type delete_slot_type_request() :: #{}.
 
 %% Example:
-%% slot_type_regex_configuration() :: #{
-%%   <<"pattern">> => string()
+%% delete_slot_type_version_request() :: #{}
+-type delete_slot_type_version_request() :: #{}.
+
+%% Example:
+%% delete_utterances_request() :: #{}
+-type delete_utterances_request() :: #{}.
+
+
+%% Example:
+%% enumeration_value() :: #{
+%%   <<"synonyms">> => list(string()),
+%%   <<"value">> => string()
 %% }
--type slot_type_regex_configuration() :: #{binary() => any()}.
+-type enumeration_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% follow_up_prompt() :: #{
+%%   <<"prompt">> => prompt(),
+%%   <<"rejectionStatement">> => statement()
+%% }
+-type follow_up_prompt() :: #{binary() => any()}.
+
+
+%% Example:
+%% fulfillment_activity() :: #{
+%%   <<"codeHook">> => code_hook(),
+%%   <<"type">> => list(any())
+%% }
+-type fulfillment_activity() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_alias_request() :: #{}
+-type get_bot_alias_request() :: #{}.
+
+
+%% Example:
+%% get_bot_alias_response() :: #{
+%%   <<"botName">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"checksum">> => string(),
+%%   <<"conversationLogs">> => conversation_logs_response(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type get_bot_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_aliases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_aliases_response() :: #{
+%%   <<"BotAliases">> => list(bot_alias_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_channel_association_request() :: #{}
+-type get_bot_channel_association_request() :: #{}.
+
+
+%% Example:
+%% get_bot_channel_association_response() :: #{
+%%   <<"botAlias">> => string(),
+%%   <<"botConfiguration">> => map(),
+%%   <<"botName">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type get_bot_channel_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_channel_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_channel_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_channel_associations_response() :: #{
+%%   <<"botChannelAssociations">> => list(bot_channel_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_channel_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_request() :: #{}
+-type get_bot_request() :: #{}.
+
+
+%% Example:
+%% get_bot_response() :: #{
+%%   <<"abortStatement">> => statement(),
+%%   <<"checksum">> => string(),
+%%   <<"childDirected">> => boolean(),
+%%   <<"clarificationPrompt">> => prompt(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"detectSentiment">> => boolean(),
+%%   <<"enableModelImprovements">> => boolean(),
+%%   <<"failureReason">> => string(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"intents">> => list(intent()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"locale">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"voiceId">> => string()
+%% }
+-type get_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bot_versions_response() :: #{
+%%   <<"bots">> => list(bot_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bot_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bots_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bots_response() :: #{
+%%   <<"bots">> => list(bot_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_bots_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_builtin_intent_request() :: #{}
+-type get_builtin_intent_request() :: #{}.
+
+
+%% Example:
+%% get_builtin_intent_response() :: #{
+%%   <<"signature">> => string(),
+%%   <<"slots">> => list(builtin_intent_slot()),
+%%   <<"supportedLocales">> => list(list(any())())
+%% }
+-type get_builtin_intent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_builtin_intents_request() :: #{
+%%   <<"locale">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"signatureContains">> => string()
+%% }
+-type get_builtin_intents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_builtin_intents_response() :: #{
+%%   <<"intents">> => list(builtin_intent_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_builtin_intents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_builtin_slot_types_request() :: #{
+%%   <<"locale">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"signatureContains">> => string()
+%% }
+-type get_builtin_slot_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_builtin_slot_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"slotTypes">> => list(builtin_slot_type_metadata())
+%% }
+-type get_builtin_slot_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_export_request() :: #{
+%%   <<"exportType">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"version">> := string()
+%% }
+-type get_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_export_response() :: #{
+%%   <<"exportStatus">> => list(any()),
+%%   <<"exportType">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"url">> => string(),
+%%   <<"version">> => string()
+%% }
+-type get_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_request() :: #{}
+-type get_import_request() :: #{}.
+
+
+%% Example:
+%% get_import_response() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"failureReason">> => list(string()),
+%%   <<"importId">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"mergeStrategy">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type get_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_intent_request() :: #{}
+-type get_intent_request() :: #{}.
 
 
 %% Example:
@@ -599,59 +624,293 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% get_intent_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type get_intent_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bots_request() :: #{
+%% get_intent_versions_response() :: #{
+%%   <<"intents">> => list(intent_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_intent_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_intents_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nameContains">> => string(),
 %%   <<"nextToken">> => string()
 %% }
--type get_bots_request() :: #{binary() => any()}.
+-type get_intents_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% code_hook() :: #{
-%%   <<"messageVersion">> => string(),
-%%   <<"uri">> => string()
+%% get_intents_response() :: #{
+%%   <<"intents">> => list(intent_metadata()),
+%%   <<"nextToken">> => string()
 %% }
--type code_hook() :: #{binary() => any()}.
+-type get_intents_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_migration_request() :: #{}
+-type get_migration_request() :: #{}.
 
 
 %% Example:
-%% bot_metadata() :: #{
+%% get_migration_response() :: #{
+%%   <<"alerts">> => list(migration_alert()),
+%%   <<"migrationId">> => string(),
+%%   <<"migrationStatus">> => list(any()),
+%%   <<"migrationStrategy">> => list(any()),
+%%   <<"migrationTimestamp">> => non_neg_integer(),
+%%   <<"v1BotLocale">> => list(any()),
+%%   <<"v1BotName">> => string(),
+%%   <<"v1BotVersion">> => string(),
+%%   <<"v2BotId">> => string(),
+%%   <<"v2BotRole">> => string()
+%% }
+-type get_migration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_migrations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"migrationStatusEquals">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"sortByAttribute">> => list(any()),
+%%   <<"sortByOrder">> => list(any()),
+%%   <<"v1BotNameContains">> => string()
+%% }
+-type get_migrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_migrations_response() :: #{
+%%   <<"migrationSummaries">> => list(migration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_migrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_slot_type_request() :: #{}
+-type get_slot_type_request() :: #{}.
+
+
+%% Example:
+%% get_slot_type_response() :: #{
+%%   <<"checksum">> => string(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"enumerationValues">> => list(enumeration_value()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
+%%   <<"valueSelectionStrategy">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type get_slot_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_slot_type_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_slot_type_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_slot_type_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"slotTypes">> => list(slot_type_metadata())
+%% }
+-type get_slot_type_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_slot_types_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_slot_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_slot_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"slotTypes">> => list(slot_type_metadata())
+%% }
+-type get_slot_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_utterances_view_request() :: #{
+%%   <<"botVersions">> := list(string()),
+%%   <<"statusType">> := list(any())
+%% }
+-type get_utterances_view_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_utterances_view_response() :: #{
+%%   <<"botName">> => string(),
+%%   <<"utterances">> => list(utterance_list())
+%% }
+-type get_utterances_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_context() :: #{
+%%   <<"name">> => string()
+%% }
+-type input_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"intentVersion">> => string()
+%% }
+-type intent() :: #{binary() => any()}.
+
+
+%% Example:
+%% intent_metadata() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
 %%   <<"version">> => string()
 %% }
--type bot_metadata() :: #{binary() => any()}.
+-type intent_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% conversation_logs_response() :: #{
-%%   <<"iamRoleArn">> => string(),
-%%   <<"logSettings">> => list(log_settings_response())
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type conversation_logs_response() :: #{binary() => any()}.
+-type internal_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% kendra_configuration() :: #{
+%%   <<"kendraIndex">> => string(),
+%%   <<"queryFilterString">> => string(),
+%%   <<"role">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type kendra_configuration() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_bot_version_request() :: #{}
--type delete_bot_version_request() :: #{}.
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_settings_request() :: #{
+%%   <<"destination">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logType">> => list(any()),
+%%   <<"resourceArn">> => string()
+%% }
+-type log_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_settings_response() :: #{
+%%   <<"destination">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logType">> => list(any()),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourcePrefix">> => string()
+%% }
+-type log_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"content">> => string(),
+%%   <<"contentType">> => list(any()),
+%%   <<"groupNumber">> => integer()
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_alert() :: #{
+%%   <<"details">> => list(string()),
+%%   <<"message">> => string(),
+%%   <<"referenceURLs">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type migration_alert() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_summary() :: #{
+%%   <<"migrationId">> => string(),
+%%   <<"migrationStatus">> => list(any()),
+%%   <<"migrationStrategy">> => list(any()),
+%%   <<"migrationTimestamp">> => non_neg_integer(),
+%%   <<"v1BotLocale">> => list(any()),
+%%   <<"v1BotName">> => string(),
+%%   <<"v1BotVersion">> => string(),
+%%   <<"v2BotId">> => string(),
+%%   <<"v2BotRole">> => string()
+%% }
+-type migration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_context() :: #{
+%%   <<"name">> => string(),
+%%   <<"timeToLiveInSeconds">> => integer(),
+%%   <<"turnsToLive">> => integer()
+%% }
+-type output_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt() :: #{
+%%   <<"maxAttempts">> => integer(),
+%%   <<"messages">> => list(message()),
+%%   <<"responseCard">> => string()
+%% }
+-type prompt() :: #{binary() => any()}.
 
 
 %% Example:
@@ -666,36 +925,39 @@
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_default_value_spec() :: #{
-%%   <<"defaultValueList">> => list(slot_default_value())
-%% }
--type slot_default_value_spec() :: #{binary() => any()}.
-
-%% Example:
-%% get_import_request() :: #{}
--type get_import_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
+%% put_bot_alias_response() :: #{
+%%   <<"botName">> => string(),
+%%   <<"botVersion">> => string(),
+%%   <<"checksum">> => string(),
+%%   <<"conversationLogs">> => conversation_logs_response(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
 %%   <<"tags">> => list(tag())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type put_bot_alias_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_utterances_view_response() :: #{
-%%   <<"botName">> => string(),
-%%   <<"utterances">> => list(utterance_list())
+%% put_bot_request() :: #{
+%%   <<"abortStatement">> => statement(),
+%%   <<"checksum">> => string(),
+%%   <<"childDirected">> := boolean(),
+%%   <<"clarificationPrompt">> => prompt(),
+%%   <<"createVersion">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"detectSentiment">> => boolean(),
+%%   <<"enableModelImprovements">> => boolean(),
+%%   <<"idleSessionTTLInSeconds">> => integer(),
+%%   <<"intents">> => list(intent()),
+%%   <<"locale">> := list(any()),
+%%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"processBehavior">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"voiceId">> => string()
 %% }
--type get_utterances_view_response() :: #{binary() => any()}.
+-type put_bot_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -725,90 +987,6 @@
 
 
 %% Example:
-%% get_intent_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_intent_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bot_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_bot_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_slot_type_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_slot_type_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_bot_alias_request() :: #{}
--type get_bot_alias_request() :: #{}.
-
-%% Example:
-%% get_intent_request() :: #{}
--type get_intent_request() :: #{}.
-
-
-%% Example:
-%% get_bot_aliases_response() :: #{
-%%   <<"BotAliases">> => list(bot_alias_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type get_bot_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_slot_type_response() :: #{
-%%   <<"checksum">> => string(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
-%%   <<"valueSelectionStrategy">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type get_slot_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_list() :: #{
-%%   <<"botVersion">> => string(),
-%%   <<"utterances">> => list(utterance_data())
-%% }
--type utterance_list() :: #{binary() => any()}.
-
-%% Example:
-%% get_builtin_intent_request() :: #{}
--type get_builtin_intent_request() :: #{}.
-
-%% Example:
-%% delete_bot_alias_request() :: #{}
--type delete_bot_alias_request() :: #{}.
-
-%% Example:
-%% delete_bot_channel_association_request() :: #{}
--type delete_bot_channel_association_request() :: #{}.
-
-
-%% Example:
-%% get_bot_versions_response() :: #{
-%%   <<"bots">> => list(bot_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type get_bot_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% put_intent_request() :: #{
 %%   <<"checksum">> => string(),
 %%   <<"conclusionStatement">> => statement(),
@@ -827,75 +1005,6 @@
 %%   <<"slots">> => list(slot())
 %% }
 -type put_intent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_intents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_intents_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_export_request() :: #{
-%%   <<"exportType">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"resourceType">> := list(any()),
-%%   <<"version">> := string()
-%% }
--type get_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_slot_type_request() :: #{
-%%   <<"checksum">> => string(),
-%%   <<"createVersion">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()),
-%%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
-%%   <<"valueSelectionStrategy">> => list(any())
-%% }
--type put_slot_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_migration_response() :: #{
-%%   <<"migrationId">> => string(),
-%%   <<"migrationStrategy">> => list(any()),
-%%   <<"migrationTimestamp">> => non_neg_integer(),
-%%   <<"v1BotLocale">> => list(any()),
-%%   <<"v1BotName">> => string(),
-%%   <<"v1BotVersion">> => string(),
-%%   <<"v2BotId">> => string(),
-%%   <<"v2BotRole">> => string()
-%% }
--type start_migration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_logs_request() :: #{
-%%   <<"iamRoleArn">> => string(),
-%%   <<"logSettings">> => list(log_settings_request())
-%% }
--type conversation_logs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot_type_configuration() :: #{
-%%   <<"regexConfiguration">> => slot_type_regex_configuration()
-%% }
--type slot_type_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_builtin_intents_response() :: #{
-%%   <<"intents">> => list(builtin_intent_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type get_builtin_intents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -924,99 +1033,66 @@
 
 
 %% Example:
-%% create_intent_version_request() :: #{
-%%   <<"checksum">> => string()
+%% put_slot_type_request() :: #{
+%%   <<"checksum">> => string(),
+%%   <<"createVersion">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"enumerationValues">> => list(enumeration_value()),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
+%%   <<"valueSelectionStrategy">> => list(any())
 %% }
--type create_intent_version_request() :: #{binary() => any()}.
+-type put_slot_type_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% get_bot_channel_association_request() :: #{}
--type get_bot_channel_association_request() :: #{}.
-
-
-%% Example:
-%% builtin_intent_slot() :: #{
-%%   <<"name">> => string()
-%% }
--type builtin_intent_slot() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_slot_types_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_slot_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_context() :: #{
-%%   <<"name">> => string()
-%% }
--type input_context() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slot_type_request() :: #{}
--type delete_slot_type_request() :: #{}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% log_settings_response() :: #{
-%%   <<"destination">> => list(any()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"logType">> => list(any()),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourcePrefix">> => string()
-%% }
--type log_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_migration_request() :: #{}
--type get_migration_request() :: #{}.
-
-
-%% Example:
-%% get_export_response() :: #{
-%%   <<"exportStatus">> => list(any()),
-%%   <<"exportType">> => list(any()),
-%%   <<"failureReason">> => string(),
+%% put_slot_type_response() :: #{
+%%   <<"checksum">> => string(),
+%%   <<"createVersion">> => boolean(),
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"enumerationValues">> => list(enumeration_value()),
+%%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"url">> => string(),
+%%   <<"parentSlotTypeSignature">> => string(),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
+%%   <<"valueSelectionStrategy">> => list(any()),
 %%   <<"version">> => string()
 %% }
--type get_export_response() :: #{binary() => any()}.
+-type put_slot_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => string()
+%% resource_in_use_exception() :: #{
+%%   <<"exampleReference">> => resource_reference(),
+%%   <<"referenceType">> => list(any())
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type resource_in_use_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
+%% resource_reference() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type resource_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot() :: #{
+%%   <<"defaultValueSpec">> => slot_default_value_spec(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"obfuscationSetting">> => list(any()),
+%%   <<"priority">> => integer(),
+%%   <<"responseCard">> => string(),
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slotConstraint">> => list(any()),
+%%   <<"slotType">> => string(),
+%%   <<"slotTypeVersion">> => string(),
+%%   <<"valueElicitationPrompt">> => prompt()
+%% }
+-type slot() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1027,142 +1103,17 @@
 
 
 %% Example:
-%% create_intent_version_response() :: #{
-%%   <<"checksum">> => string(),
-%%   <<"conclusionStatement">> => statement(),
-%%   <<"confirmationPrompt">> => prompt(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"dialogCodeHook">> => code_hook(),
-%%   <<"followUpPrompt">> => follow_up_prompt(),
-%%   <<"fulfillmentActivity">> => fulfillment_activity(),
-%%   <<"inputContexts">> => list(input_context()),
-%%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"outputContexts">> => list(output_context()),
-%%   <<"parentIntentSignature">> => string(),
-%%   <<"rejectionStatement">> => statement(),
-%%   <<"sampleUtterances">> => list(string()),
-%%   <<"slots">> => list(slot()),
-%%   <<"version">> => string()
+%% slot_default_value_spec() :: #{
+%%   <<"defaultValueList">> => list(slot_default_value())
 %% }
--type create_intent_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_slot_type_request() :: #{}
--type get_slot_type_request() :: #{}.
+-type slot_default_value_spec() :: #{binary() => any()}.
 
 
 %% Example:
-%% intent_metadata() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
+%% slot_type_configuration() :: #{
+%%   <<"regexConfiguration">> => slot_type_regex_configuration()
 %% }
--type intent_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% utterance_data() :: #{
-%%   <<"count">> => integer(),
-%%   <<"distinctUsers">> => integer(),
-%%   <<"firstUtteredDate">> => non_neg_integer(),
-%%   <<"lastUtteredDate">> => non_neg_integer(),
-%%   <<"utteranceString">> => string()
-%% }
--type utterance_data() :: #{binary() => any()}.
-
-%% Example:
-%% delete_utterances_request() :: #{}
--type delete_utterances_request() :: #{}.
-
-
-%% Example:
-%% enumeration_value() :: #{
-%%   <<"synonyms">> => list(string()),
-%%   <<"value">> => string()
-%% }
--type enumeration_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_utterances_view_request() :: #{
-%%   <<"botVersions">> := list(string()),
-%%   <<"statusType">> := list(any())
-%% }
--type get_utterances_view_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bot_alias_response() :: #{
-%%   <<"botName">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"checksum">> => string(),
-%%   <<"conversationLogs">> => conversation_logs_response(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type put_bot_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type precondition_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_alert() :: #{
-%%   <<"details">> => list(string()),
-%%   <<"message">> => string(),
-%%   <<"referenceURLs">> => list(string()),
-%%   <<"type">> => list(any())
-%% }
--type migration_alert() :: #{binary() => any()}.
-
-%% Example:
-%% delete_intent_request() :: #{}
--type delete_intent_request() :: #{}.
-
-
-%% Example:
-%% get_bot_aliases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type get_bot_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bot_alias_response() :: #{
-%%   <<"botName">> => string(),
-%%   <<"botVersion">> => string(),
-%%   <<"checksum">> => string(),
-%%   <<"conversationLogs">> => conversation_logs_response(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type get_bot_alias_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_request() :: #{
-%%   <<"mergeStrategy">> := list(any()),
-%%   <<"payload">> := binary(),
-%%   <<"resourceType">> := list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type start_import_request() :: #{binary() => any()}.
+-type slot_type_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1174,6 +1125,23 @@
 %%   <<"version">> => string()
 %% }
 -type slot_type_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot_type_regex_configuration() :: #{
+%%   <<"pattern">> => string()
+%% }
+-type slot_type_regex_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_request() :: #{
+%%   <<"mergeStrategy">> := list(any()),
+%%   <<"payload">> := binary(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type start_import_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1190,326 +1158,358 @@
 
 
 %% Example:
-%% prompt() :: #{
-%%   <<"maxAttempts">> => integer(),
+%% start_migration_request() :: #{
+%%   <<"migrationStrategy">> := list(any()),
+%%   <<"v1BotName">> := string(),
+%%   <<"v1BotVersion">> := string(),
+%%   <<"v2BotName">> := string(),
+%%   <<"v2BotRole">> := string()
+%% }
+-type start_migration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_migration_response() :: #{
+%%   <<"migrationId">> => string(),
+%%   <<"migrationStrategy">> => list(any()),
+%%   <<"migrationTimestamp">> => non_neg_integer(),
+%%   <<"v1BotLocale">> => list(any()),
+%%   <<"v1BotName">> => string(),
+%%   <<"v1BotVersion">> => string(),
+%%   <<"v2BotId">> => string(),
+%%   <<"v2BotRole">> => string()
+%% }
+-type start_migration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% statement() :: #{
 %%   <<"messages">> => list(message()),
 %%   <<"responseCard">> => string()
 %% }
--type prompt() :: #{binary() => any()}.
+-type statement() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_bot_version_response() :: #{
-%%   <<"abortStatement">> => statement(),
-%%   <<"checksum">> => string(),
-%%   <<"childDirected">> => boolean(),
-%%   <<"clarificationPrompt">> => prompt(),
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"detectSentiment">> => boolean(),
-%%   <<"enableModelImprovements">> => boolean(),
-%%   <<"failureReason">> => string(),
-%%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()),
-%%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"locale">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string(),
-%%   <<"voiceId">> => string()
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type create_bot_version_response() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% message() :: #{
-%%   <<"content">> => string(),
-%%   <<"contentType">> => list(any()),
-%%   <<"groupNumber">> => integer()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag())
 %% }
--type message() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% get_bot_channel_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nameContains">> => string(),
-%%   <<"nextToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type get_bot_channel_associations_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% utterance_data() :: #{
+%%   <<"count">> => integer(),
+%%   <<"distinctUsers">> => integer(),
+%%   <<"firstUtteredDate">> => non_neg_integer(),
+%%   <<"lastUtteredDate">> => non_neg_integer(),
+%%   <<"utteranceString">> => string()
+%% }
+-type utterance_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% utterance_list() :: #{
+%%   <<"botVersion">> => string(),
+%%   <<"utterances">> => list(utterance_data())
+%% }
+-type utterance_list() :: #{binary() => any()}.
 
 -type create_bot_version_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_intent_version_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_slot_type_version_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type delete_bot_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_bot_alias_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_bot_channel_association_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type delete_bot_version_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_intent_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_intent_version_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_slot_type_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_slot_type_version_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     resource_in_use_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_utterances_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_alias_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_aliases_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_channel_association_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_channel_associations_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bot_versions_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_bots_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_builtin_intent_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_builtin_intents_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_builtin_slot_types_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_export_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_import_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_intent_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_intent_versions_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_intents_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_migration_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_migrations_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_slot_type_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_slot_type_versions_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_slot_types_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_utterances_view_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type put_bot_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type put_bot_alias_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type put_intent_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type put_slot_type_errors() ::
     precondition_failed_exception() | 
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_import_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_migration_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

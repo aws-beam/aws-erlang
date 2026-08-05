@@ -2,39 +2,41 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The AWS Sustainability service provides programmatic access to
-%% estimated carbon emissions data for your Amazon Web Services usage.
+%% estimated environmental impact data for your Amazon Web Services usage.
 %%
 %% Use the AWS Sustainability service to retrieve, analyze, and track the
-%% carbon footprint of your cloud infrastructure over time.
+%% environmental impact of your cloud infrastructure over time.
 %%
 %% With the AWS Sustainability service, you can:
 %%
-%% Retrieve estimated carbon emissions for your Amazon Web Services usage
-%% across different time periods
+%% Retrieve estimated carbon emissions and water allocation for your Amazon
+%% Web Services usage across different time periods
 %%
-%% Group emissions data by dimensions such as account, region, and service
+%% Group environmental impact data by dimensions such as account, region, and
+%% service
 %%
-%% Filter emissions data to focus on specific accounts, regions, or services
+%% Filter environmental impact data to focus on specific accounts, regions,
+%% or services
 %%
-%% Access multiple emissions calculation methodologies including
+%% Access multiple carbon emissions calculation methodologies including
 %% Location-based Method (LBM) and Market-based Method (MBM)
 %%
-%% Aggregate emissions data at various time granularities including monthly,
-%% quarterly, and yearly periods
+%% Aggregate environmental impact data at various time granularities
+%% including monthly, quarterly, and yearly periods
 %%
 %% The API supports pagination for efficient data retrieval and provides
 %% dimension values to help you understand the available grouping and
 %% filtering options for your account.
-%%
-%% All emissions values are calculated using methodologies aligned with the
-%% Greenhouse Gas (GHG) Protocol and are provided in metric tons of carbon
-%% dioxide-equivalent (MTCO2e).
 -module(aws_sustainability).
 
 -export([get_estimated_carbon_emissions/2,
          get_estimated_carbon_emissions/3,
          get_estimated_carbon_emissions_dimension_values/2,
-         get_estimated_carbon_emissions_dimension_values/3]).
+         get_estimated_carbon_emissions_dimension_values/3,
+         get_estimated_water_allocation/2,
+         get_estimated_water_allocation/3,
+         get_estimated_water_allocation_dimension_values/2,
+         get_estimated_water_allocation_dimension_values/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -50,7 +52,7 @@
 %% Example:
 %% dimension_entry() :: #{
 %%   <<"Dimension">> => list(any()),
-%%   <<"Value">> => [string()]
+%%   <<"Value">> => string()
 %% }
 -type dimension_entry() :: #{binary() => any()}.
 
@@ -71,6 +73,16 @@
 %%   <<"TimePeriod">> => time_period()
 %% }
 -type estimated_carbon_emissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% estimated_water_allocation() :: #{
+%%   <<"AllocationValues">> => map(),
+%%   <<"DimensionsValues">> => map(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type estimated_water_allocation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -121,6 +133,45 @@
 
 
 %% Example:
+%% get_estimated_water_allocation_dimension_values_request() :: #{
+%%   <<"Dimensions">> := list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimePeriod">> := time_period()
+%% }
+-type get_estimated_water_allocation_dimension_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_estimated_water_allocation_dimension_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(dimension_entry())
+%% }
+-type get_estimated_water_allocation_dimension_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_estimated_water_allocation_request() :: #{
+%%   <<"AllocationTypes">> => list(list(any())()),
+%%   <<"FilterBy">> => filter_expression(),
+%%   <<"Granularity">> => list(any()),
+%%   <<"GroupBy">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimePeriod">> := time_period()
+%% }
+-type get_estimated_water_allocation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_estimated_water_allocation_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(estimated_water_allocation())
+%% }
+-type get_estimated_water_allocation_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% granularity_configuration() :: #{
 %%   <<"FiscalYearStartMonth">> => integer()
 %% }
@@ -155,6 +206,14 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% water_allocation() :: #{
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => [float()]
+%% }
+-type water_allocation() :: #{binary() => any()}.
+
 -type get_estimated_carbon_emissions_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -162,6 +221,18 @@
     access_denied_exception().
 
 -type get_estimated_carbon_emissions_dimension_values_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_estimated_water_allocation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_estimated_water_allocation_dimension_values_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
@@ -228,6 +299,82 @@ get_estimated_carbon_emissions_dimension_values(Client, Input) ->
 get_estimated_carbon_emissions_dimension_values(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/estimated-carbon-emissions-dimension-values"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns estimated water allocation values based on customer grouping
+%% and filtering parameters.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_estimated_water_allocation(aws_client:aws_client(), get_estimated_water_allocation_request()) ->
+    {ok, get_estimated_water_allocation_response(), tuple()} |
+    {error, any()} |
+    {error, get_estimated_water_allocation_errors(), tuple()}.
+get_estimated_water_allocation(Client, Input) ->
+    get_estimated_water_allocation(Client, Input, []).
+
+-spec get_estimated_water_allocation(aws_client:aws_client(), get_estimated_water_allocation_request(), proplists:proplist()) ->
+    {ok, get_estimated_water_allocation_response(), tuple()} |
+    {error, any()} |
+    {error, get_estimated_water_allocation_errors(), tuple()}.
+get_estimated_water_allocation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/estimated-water-allocation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the possible dimension values available for a customer's
+%% account.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_estimated_water_allocation_dimension_values(aws_client:aws_client(), get_estimated_water_allocation_dimension_values_request()) ->
+    {ok, get_estimated_water_allocation_dimension_values_response(), tuple()} |
+    {error, any()} |
+    {error, get_estimated_water_allocation_dimension_values_errors(), tuple()}.
+get_estimated_water_allocation_dimension_values(Client, Input) ->
+    get_estimated_water_allocation_dimension_values(Client, Input, []).
+
+-spec get_estimated_water_allocation_dimension_values(aws_client:aws_client(), get_estimated_water_allocation_dimension_values_request(), proplists:proplist()) ->
+    {ok, get_estimated_water_allocation_dimension_values_response(), tuple()} |
+    {error, any()} |
+    {error, get_estimated_water_allocation_dimension_values_errors(), tuple()}.
+get_estimated_water_allocation_dimension_values(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/estimated-water-allocation-dimension-values"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

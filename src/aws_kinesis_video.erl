@@ -72,20 +72,54 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% update_signaling_channel_output() :: #{}
--type update_signaling_channel_output() :: #{}.
-
 
 %% Example:
-%% update_stream_input() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"MediaType">> => string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_stream_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_channel_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_channel_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_stream_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_stream_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_info() :: #{
+%%   <<"ChannelARN">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelStatus">> => list(any()),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"SingleMasterConfiguration">> => single_master_configuration(),
+%%   <<"Version">> => string()
+%% }
+-type channel_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_name_condition() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"ComparisonValue">> => string()
+%% }
+-type channel_name_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -99,55 +133,42 @@
 
 
 %% Example:
-%% media_source_config() :: #{
-%%   <<"MediaUriSecretArn">> => string(),
-%%   <<"MediaUriType">> => list(any())
-%% }
--type media_source_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_stream_output() :: #{}
--type update_stream_output() :: #{}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_image_generation_configuration_output() :: #{
-%%   <<"ImageGenerationConfiguration">> => image_generation_configuration()
-%% }
--type describe_image_generation_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_signaling_channel_output() :: #{
 %%   <<"ChannelARN">> => string()
 %% }
 -type create_signaling_channel_output() :: #{binary() => any()}.
 
-%% Example:
-%% update_stream_storage_configuration_output() :: #{}
--type update_stream_storage_configuration_output() :: #{}.
-
 
 %% Example:
-%% list_tags_for_stream_output() :: #{
-%%   <<"NextToken">> => string(),
+%% create_stream_input() :: #{
+%%   <<"DataRetentionInHours">> => integer(),
+%%   <<"DeviceName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MediaType">> => string(),
+%%   <<"StreamName">> := string(),
+%%   <<"StreamStorageConfiguration">> => stream_storage_configuration(),
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_stream_output() :: #{binary() => any()}.
+-type create_stream_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% version_mismatch_exception() :: #{
-%%   <<"Message">> => string()
+%% create_stream_output() :: #{
+%%   <<"StreamARN">> => string()
 %% }
--type version_mismatch_exception() :: #{binary() => any()}.
+-type create_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_edge_configuration_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type delete_edge_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_edge_configuration_output() :: #{}
+-type delete_edge_configuration_output() :: #{}.
 
 
 %% Example:
@@ -157,37 +178,9 @@
 %% }
 -type delete_signaling_channel_input() :: #{binary() => any()}.
 
-
 %% Example:
-%% no_data_retention_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_data_retention_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_edge_configuration_update_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EdgeConfig">> => edge_config(),
-%%   <<"FailedStatusDetails">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"SyncStatus">> => list(any())
-%% }
--type start_edge_configuration_update_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_edge_configuration_output() :: #{}
--type delete_edge_configuration_output() :: #{}.
-
-
-%% Example:
-%% list_signaling_channels_output() :: #{
-%%   <<"ChannelInfoList">> => list(channel_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_signaling_channels_output() :: #{binary() => any()}.
+%% delete_signaling_channel_output() :: #{}
+-type delete_signaling_channel_output() :: #{}.
 
 
 %% Example:
@@ -198,98 +191,25 @@
 -type delete_stream_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_data_retention_output() :: #{}
--type update_data_retention_output() :: #{}.
+%% delete_stream_output() :: #{}
+-type delete_stream_output() :: #{}.
 
 
 %% Example:
-%% channel_name_condition() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"ComparisonValue">> => string()
+%% deletion_config() :: #{
+%%   <<"DeleteAfterUpload">> => boolean(),
+%%   <<"EdgeRetentionInHours">> => integer(),
+%%   <<"LocalSizeConfig">> => local_size_config()
 %% }
--type channel_name_condition() :: #{binary() => any()}.
+-type deletion_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% last_uploader_status() :: #{
-%%   <<"JobStatusDetails">> => string(),
-%%   <<"LastCollectedTime">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"UploaderStatus">> => list(any())
-%% }
--type last_uploader_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_stream_storage_configuration_output() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"StreamStorageConfiguration">> => stream_storage_configuration()
-%% }
--type describe_stream_storage_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_signaling_channel_endpoint_output() :: #{
-%%   <<"ResourceEndpointList">> => list(resource_endpoint_list_item())
-%% }
--type get_signaling_channel_endpoint_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_media_storage_configuration_output() :: #{
-%%   <<"MediaStorageConfiguration">> => media_storage_configuration()
-%% }
--type describe_media_storage_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% local_size_config() :: #{
-%%   <<"MaxLocalMediaSizeInMB">> => integer(),
-%%   <<"StrategyOnFullSize">> => list(any())
-%% }
--type local_size_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_stream_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_stream_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_edge_configuration_update_input() :: #{
-%%   <<"EdgeConfig">> := edge_config(),
+%% describe_edge_configuration_input() :: #{
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
--type start_edge_configuration_update_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StreamInfoList">> => list(stream_info())
-%% }
--type list_streams_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_destination_config() :: #{
-%%   <<"Uri">> => string()
-%% }
--type notification_destination_config() :: #{binary() => any()}.
+-type describe_edge_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -307,39 +227,28 @@
 
 
 %% Example:
-%% stream_name_condition() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"ComparisonValue">> => string()
+%% describe_image_generation_configuration_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
 %% }
--type stream_name_condition() :: #{binary() => any()}.
+-type describe_image_generation_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_media_storage_configuration_input() :: #{
-%%   <<"ChannelARN">> => string(),
-%%   <<"ChannelName">> => string()
+%% describe_image_generation_configuration_output() :: #{
+%%   <<"ImageGenerationConfiguration">> => image_generation_configuration()
 %% }
--type describe_media_storage_configuration_input() :: #{binary() => any()}.
+-type describe_image_generation_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_device_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_mapped_resource_configuration_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
 %% }
--type invalid_device_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_info() :: #{
-%%   <<"ChannelARN">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ChannelStatus">> => list(any()),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SingleMasterConfiguration">> => single_master_configuration(),
-%%   <<"Version">> => string()
-%% }
--type channel_info() :: #{binary() => any()}.
+-type describe_mapped_resource_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -351,109 +260,18 @@
 
 
 %% Example:
-%% update_stream_storage_configuration_input() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"StreamStorageConfiguration">> := stream_storage_configuration()
+%% describe_media_storage_configuration_input() :: #{
+%%   <<"ChannelARN">> => string(),
+%%   <<"ChannelName">> => string()
 %% }
--type update_stream_storage_configuration_input() :: #{binary() => any()}.
+-type describe_media_storage_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_media_storage_configuration_output() :: #{
+%%   <<"MediaStorageConfiguration">> => media_storage_configuration()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_media_storage_configuration_input() :: #{
-%%   <<"ChannelARN">> := string(),
-%%   <<"MediaStorageConfiguration">> := media_storage_configuration()
-%% }
--type update_media_storage_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_generation_configuration_output() :: #{}
--type update_image_generation_configuration_output() :: #{}.
-
-
-%% Example:
-%% tags_per_resource_exceeded_limit_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type tags_per_resource_exceeded_limit_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_stream_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type account_stream_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_notification_configuration_output() :: #{
-%%   <<"NotificationConfiguration">> => notification_configuration()
-%% }
--type describe_notification_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% mapped_resource_configuration_list_item() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Type">> => string()
-%% }
--type mapped_resource_configuration_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_stream_storage_configuration_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type describe_stream_storage_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_storage_configuration() :: #{
-%%   <<"DefaultStorageTier">> => list(any())
-%% }
--type stream_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_image_generation_configuration_input() :: #{
-%%   <<"ImageGenerationConfiguration">> => image_generation_configuration(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type update_image_generation_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% single_master_channel_endpoint_configuration() :: #{
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"Role">> => list(any())
-%% }
--type single_master_channel_endpoint_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_edge_configuration_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type describe_edge_configuration_input() :: #{binary() => any()}.
+-type describe_media_storage_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -465,25 +283,18 @@
 
 
 %% Example:
-%% client_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_notification_configuration_output() :: #{
+%%   <<"NotificationConfiguration">> => notification_configuration()
 %% }
--type client_limit_exceeded_exception() :: #{binary() => any()}.
+-type describe_notification_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% uploader_config() :: #{
-%%   <<"ScheduleConfig">> => schedule_config()
+%% describe_signaling_channel_input() :: #{
+%%   <<"ChannelARN">> => string(),
+%%   <<"ChannelName">> => string()
 %% }
--type uploader_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
+-type describe_signaling_channel_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -494,59 +305,35 @@
 
 
 %% Example:
-%% stream_edge_configuration_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_stream_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
 %% }
--type stream_edge_configuration_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_stream_output() :: #{}
--type untag_stream_output() :: #{}.
+-type describe_stream_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_configuration() :: #{
-%%   <<"DestinationConfig">> => notification_destination_config(),
-%%   <<"Status">> => list(any())
+%% describe_stream_output() :: #{
+%%   <<"StreamInfo">> => stream_info()
 %% }
--type notification_configuration() :: #{binary() => any()}.
+-type describe_stream_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_edge_agent_configurations_output() :: #{
-%%   <<"EdgeConfigs">> => list(list_edge_agent_configurations_edge_config()),
-%%   <<"NextToken">> => string()
+%% describe_stream_storage_configuration_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
 %% }
--type list_edge_agent_configurations_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
+-type describe_stream_storage_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_signaling_channel_input() :: #{
-%%   <<"ChannelARN">> := string(),
-%%   <<"CurrentVersion">> := string(),
-%%   <<"SingleMasterConfiguration">> => single_master_configuration()
+%% describe_stream_storage_configuration_output() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"StreamStorageConfiguration">> => stream_storage_configuration()
 %% }
--type update_signaling_channel_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_config() :: #{
-%%   <<"DurationInSeconds">> => integer(),
-%%   <<"ScheduleExpression">> => string()
-%% }
--type schedule_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_media_storage_configuration_output() :: #{}
--type update_media_storage_configuration_output() :: #{}.
-
-%% Example:
-%% tag_stream_output() :: #{}
--type tag_stream_output() :: #{}.
+-type describe_stream_storage_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -557,10 +344,37 @@
 
 
 %% Example:
-%% account_channel_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% edge_agent_status() :: #{
+%%   <<"LastRecorderStatus">> => last_recorder_status(),
+%%   <<"LastUploaderStatus">> => last_uploader_status()
 %% }
--type account_channel_limit_exceeded_exception() :: #{binary() => any()}.
+-type edge_agent_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge_config() :: #{
+%%   <<"DeletionConfig">> => deletion_config(),
+%%   <<"HubDeviceArn">> => string(),
+%%   <<"RecorderConfig">> => recorder_config(),
+%%   <<"UploaderConfig">> => uploader_config()
+%% }
+-type edge_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_endpoint_input() :: #{
+%%   <<"APIName">> := list(any()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_data_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_endpoint_output() :: #{
+%%   <<"DataEndpoint">> => string()
+%% }
+-type get_data_endpoint_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -572,50 +386,10 @@
 
 
 %% Example:
-%% single_master_configuration() :: #{
-%%   <<"MessageTtlSeconds">> => integer()
+%% get_signaling_channel_endpoint_output() :: #{
+%%   <<"ResourceEndpointList">> => list(resource_endpoint_list_item())
 %% }
--type single_master_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StreamNameCondition">> => stream_name_condition()
-%% }
--type list_streams_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_authorized_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_authorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% deletion_config() :: #{
-%%   <<"DeleteAfterUpload">> => boolean(),
-%%   <<"EdgeRetentionInHours">> => integer(),
-%%   <<"LocalSizeConfig">> => local_size_config()
-%% }
--type deletion_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_edge_configuration_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type delete_edge_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_stream_output() :: #{
-%%   <<"StreamInfo">> => stream_info()
-%% }
--type describe_stream_output() :: #{binary() => any()}.
+-type get_signaling_channel_endpoint_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -633,27 +407,52 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% image_generation_destination_config() :: #{
+%%   <<"DestinationRegion">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type image_generation_destination_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type invalid_argument_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeyList">> := list(string())
+%% invalid_device_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type untag_resource_input() :: #{binary() => any()}.
+-type invalid_device_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_stream_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
+%% invalid_resource_format_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_tags_for_stream_input() :: #{binary() => any()}.
+-type invalid_resource_format_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_recorder_status() :: #{
+%%   <<"JobStatusDetails">> => string(),
+%%   <<"LastCollectedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RecorderStatus">> => list(any())
+%% }
+-type last_recorder_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_uploader_status() :: #{
+%%   <<"JobStatusDetails">> => string(),
+%%   <<"LastCollectedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"UploaderStatus">> => list(any())
+%% }
+-type last_uploader_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -670,24 +469,6 @@
 
 
 %% Example:
-%% invalid_argument_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_argument_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_endpoint_output() :: #{
-%%   <<"DataEndpoint">> => string()
-%% }
--type get_data_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_signaling_channel_output() :: #{}
--type delete_signaling_channel_output() :: #{}.
-
-
-%% Example:
 %% list_edge_agent_configurations_input() :: #{
 %%   <<"HubDeviceArn">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -697,15 +478,11 @@
 
 
 %% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
+%% list_edge_agent_configurations_output() :: #{
+%%   <<"EdgeConfigs">> => list(list_edge_agent_configurations_edge_config()),
+%%   <<"NextToken">> => string()
 %% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
+-type list_edge_agent_configurations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -718,53 +495,130 @@
 
 
 %% Example:
-%% invalid_resource_format_exception() :: #{
-%%   <<"Message">> => string()
+%% list_signaling_channels_output() :: #{
+%%   <<"ChannelInfoList">> => list(channel_info()),
+%%   <<"NextToken">> => string()
 %% }
--type invalid_resource_format_exception() :: #{binary() => any()}.
+-type list_signaling_channels_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_signaling_channel_input() :: #{
-%%   <<"ChannelARN">> => string(),
-%%   <<"ChannelName">> => string()
+%% list_streams_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamNameCondition">> => stream_name_condition()
 %% }
--type describe_signaling_channel_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_configuration_output() :: #{}
--type update_notification_configuration_output() :: #{}.
+-type list_streams_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% edge_config() :: #{
-%%   <<"DeletionConfig">> => deletion_config(),
-%%   <<"HubDeviceArn">> => string(),
-%%   <<"RecorderConfig">> => recorder_config(),
-%%   <<"UploaderConfig">> => uploader_config()
+%% list_streams_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StreamInfoList">> => list(stream_info())
 %% }
--type edge_config() :: #{binary() => any()}.
+-type list_streams_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_stream_input() :: #{
-%%   <<"DataRetentionInHours">> => integer(),
-%%   <<"DeviceName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MediaType">> => string(),
-%%   <<"StreamName">> := string(),
-%%   <<"StreamStorageConfiguration">> => stream_storage_configuration(),
+%% list_tags_for_resource_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"NextToken">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type create_stream_input() :: #{binary() => any()}.
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% edge_agent_status() :: #{
-%%   <<"LastRecorderStatus">> => last_recorder_status(),
-%%   <<"LastUploaderStatus">> => last_uploader_status()
+%% list_tags_for_stream_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
 %% }
--type edge_agent_status() :: #{binary() => any()}.
+-type list_tags_for_stream_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_stream_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_stream_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_size_config() :: #{
+%%   <<"MaxLocalMediaSizeInMB">> => integer(),
+%%   <<"StrategyOnFullSize">> => list(any())
+%% }
+-type local_size_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% mapped_resource_configuration_list_item() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type mapped_resource_configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_source_config() :: #{
+%%   <<"MediaUriSecretArn">> => string(),
+%%   <<"MediaUriType">> => list(any())
+%% }
+-type media_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_storage_configuration() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"StreamARN">> => string()
+%% }
+-type media_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_data_retention_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_data_retention_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"DestinationConfig">> => notification_destination_config(),
+%%   <<"Status">> => list(any())
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_destination_config() :: #{
+%%   <<"Uri">> => string()
+%% }
+-type notification_destination_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% recorder_config() :: #{
+%%   <<"MediaSourceConfig">> => media_source_config(),
+%%   <<"ScheduleConfig">> => schedule_config()
+%% }
+-type recorder_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -776,12 +630,69 @@
 
 
 %% Example:
-%% update_notification_configuration_input() :: #{
-%%   <<"NotificationConfiguration">> => notification_configuration(),
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_config() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type schedule_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_master_channel_endpoint_configuration() :: #{
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"Role">> => list(any())
+%% }
+-type single_master_channel_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_master_configuration() :: #{
+%%   <<"MessageTtlSeconds">> => integer()
+%% }
+-type single_master_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_edge_configuration_update_input() :: #{
+%%   <<"EdgeConfig">> := edge_config(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
--type update_notification_configuration_input() :: #{binary() => any()}.
+-type start_edge_configuration_update_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_edge_configuration_update_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EdgeConfig">> => edge_config(),
+%%   <<"FailedStatusDetails">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"SyncStatus">> => list(any())
+%% }
+-type start_edge_configuration_update_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_edge_configuration_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stream_edge_configuration_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -800,53 +711,83 @@
 
 
 %% Example:
-%% get_data_endpoint_input() :: #{
-%%   <<"APIName">> := list(any()),
+%% stream_name_condition() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"ComparisonValue">> => string()
+%% }
+-type stream_name_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_storage_configuration() :: #{
+%%   <<"DefaultStorageTier">> => list(any())
+%% }
+-type stream_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% tag_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
+%%   <<"StreamName">> => string(),
+%%   <<"Tags">> := map()
 %% }
--type get_data_endpoint_input() :: #{binary() => any()}.
+-type tag_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_stream_output() :: #{}
+-type tag_stream_output() :: #{}.
 
 
 %% Example:
-%% last_recorder_status() :: #{
-%%   <<"JobStatusDetails">> => string(),
-%%   <<"LastCollectedTime">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"RecorderStatus">> => list(any())
+%% tags_per_resource_exceeded_limit_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type last_recorder_status() :: #{binary() => any()}.
+-type tags_per_resource_exceeded_limit_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_stream_input() :: #{
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeyList">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% untag_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
+%%   <<"StreamName">> => string(),
+%%   <<"TagKeyList">> := list(string())
 %% }
--type describe_stream_input() :: #{binary() => any()}.
-
+-type untag_stream_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_stream_output() :: #{
-%%   <<"StreamARN">> => string()
-%% }
--type create_stream_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% recorder_config() :: #{
-%%   <<"MediaSourceConfig">> => media_source_config(),
-%%   <<"ScheduleConfig">> => schedule_config()
-%% }
--type recorder_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_generation_destination_config() :: #{
-%%   <<"DestinationRegion">> => string(),
-%%   <<"Uri">> => string()
-%% }
--type image_generation_destination_config() :: #{binary() => any()}.
+%% untag_stream_output() :: #{}
+-type untag_stream_output() :: #{}.
 
 
 %% Example:
@@ -859,265 +800,324 @@
 %% }
 -type update_data_retention_input() :: #{binary() => any()}.
 
+%% Example:
+%% update_data_retention_output() :: #{}
+-type update_data_retention_output() :: #{}.
+
 
 %% Example:
-%% describe_image_generation_configuration_input() :: #{
+%% update_image_generation_configuration_input() :: #{
+%%   <<"ImageGenerationConfiguration">> => image_generation_configuration(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
--type describe_image_generation_configuration_input() :: #{binary() => any()}.
+-type update_image_generation_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_generation_configuration_output() :: #{}
+-type update_image_generation_configuration_output() :: #{}.
 
 
 %% Example:
-%% describe_mapped_resource_configuration_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% update_media_storage_configuration_input() :: #{
+%%   <<"ChannelARN">> := string(),
+%%   <<"MediaStorageConfiguration">> := media_storage_configuration()
+%% }
+-type update_media_storage_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_media_storage_configuration_output() :: #{}
+-type update_media_storage_configuration_output() :: #{}.
+
+
+%% Example:
+%% update_notification_configuration_input() :: #{
+%%   <<"NotificationConfiguration">> => notification_configuration(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
--type describe_mapped_resource_configuration_input() :: #{binary() => any()}.
+-type update_notification_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_configuration_output() :: #{}
+-type update_notification_configuration_output() :: #{}.
 
 
 %% Example:
-%% untag_stream_input() :: #{
+%% update_signaling_channel_input() :: #{
+%%   <<"ChannelARN">> := string(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"SingleMasterConfiguration">> => single_master_configuration()
+%% }
+-type update_signaling_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_signaling_channel_output() :: #{}
+-type update_signaling_channel_output() :: #{}.
+
+
+%% Example:
+%% update_stream_input() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"MediaType">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type update_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_stream_output() :: #{}
+-type update_stream_output() :: #{}.
+
+
+%% Example:
+%% update_stream_storage_configuration_input() :: #{
+%%   <<"CurrentVersion">> := string(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string(),
-%%   <<"TagKeyList">> := list(string())
+%%   <<"StreamStorageConfiguration">> := stream_storage_configuration()
 %% }
--type untag_stream_input() :: #{binary() => any()}.
+-type update_stream_storage_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_stream_output() :: #{}
--type delete_stream_output() :: #{}.
+%% update_stream_storage_configuration_output() :: #{}
+-type update_stream_storage_configuration_output() :: #{}.
 
 
 %% Example:
-%% media_storage_configuration() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"StreamARN">> => string()
+%% uploader_config() :: #{
+%%   <<"ScheduleConfig">> => schedule_config()
 %% }
--type media_storage_configuration() :: #{binary() => any()}.
+-type uploader_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% version_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type version_mismatch_exception() :: #{binary() => any()}.
 
 -type create_signaling_channel_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    account_channel_limit_exceeded_exception() | 
-    client_limit_exceeded_exception() | 
     tags_per_resource_exceeded_limit_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    account_channel_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type create_stream_errors() ::
+    tags_per_resource_exceeded_limit_exception() | 
+    resource_in_use_exception() | 
+    invalid_device_exception() | 
     invalid_argument_exception() | 
     device_stream_limit_exceeded_exception() | 
     client_limit_exceeded_exception() | 
-    account_stream_limit_exceeded_exception() | 
-    tags_per_resource_exceeded_limit_exception() | 
-    invalid_device_exception() | 
-    resource_in_use_exception().
+    account_stream_limit_exceeded_exception().
 
 -type delete_edge_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     stream_edge_configuration_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_signaling_channel_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type delete_stream_errors() ::
-    invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 -type describe_edge_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     stream_edge_configuration_not_found_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_image_generation_configuration_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_mapped_resource_configuration_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_media_storage_configuration_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_notification_configuration_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_signaling_channel_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_stream_errors() ::
-    invalid_argument_exception() | 
+    resource_not_found_exception() | 
     not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 -type describe_stream_storage_configuration_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_endpoint_errors() ::
-    invalid_argument_exception() | 
+    resource_not_found_exception() | 
     not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 -type get_signaling_channel_endpoint_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type list_edge_agent_configurations_errors() ::
-    invalid_argument_exception() | 
     not_authorized_exception() | 
+    invalid_argument_exception() | 
     client_limit_exceeded_exception().
 
 -type list_signaling_channels_errors() ::
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception().
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type list_streams_errors() ::
     invalid_argument_exception() | 
     client_limit_exceeded_exception().
 
 -type list_tags_for_resource_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_stream_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_resource_format_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    client_limit_exceeded_exception().
 
 -type start_edge_configuration_update_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     no_data_retention_exception() | 
-    resource_in_use_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     tags_per_resource_exceeded_limit_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type tag_stream_errors() ::
+    tags_per_resource_exceeded_limit_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_resource_format_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    tags_per_resource_exceeded_limit_exception() | 
-    resource_not_found_exception().
+    client_limit_exceeded_exception().
 
 -type untag_resource_errors() ::
+    resource_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_stream_errors() ::
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
     invalid_resource_format_exception() | 
     invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    client_limit_exceeded_exception().
 
 -type update_data_retention_errors() ::
-    invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 -type update_image_generation_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     no_data_retention_exception() | 
-    resource_in_use_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type update_media_storage_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     no_data_retention_exception() | 
-    resource_in_use_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type update_notification_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     no_data_retention_exception() | 
-    resource_in_use_exception().
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type update_signaling_channel_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type update_stream_errors() ::
-    invalid_argument_exception() | 
-    not_authorized_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    not_authorized_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception().
 
 -type update_stream_storage_configuration_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    client_limit_exceeded_exception() | 
-    resource_not_found_exception() | 
     version_mismatch_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    client_limit_exceeded_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

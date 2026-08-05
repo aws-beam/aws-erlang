@@ -95,26 +95,92 @@
 
 
 %% Example:
-%% list_workflow_steps_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowStepsSummary">> := list(workflow_step_summary())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_workflow_steps_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workflow_steps_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_workflow_steps_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% create_migration_workflow_request() :: #{
+%%   <<"applicationConfigurationId">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"inputParameters">> := map(),
+%%   <<"name">> := [string()],
+%%   <<"stepTargets">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"templateId">> := [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_migration_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_migration_workflow_response() :: #{
+%%   <<"adsApplicationConfigurationId">> => [string()],
+%%   <<"arn">> => [string()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"status">> => string(),
+%%   <<"stepTargets">> => list(string()),
+%%   <<"tags">> => map(),
+%%   <<"templateId">> => [string()],
+%%   <<"workflowInputs">> => map()
+%% }
+-type create_migration_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateDescription">> => [string()],
+%%   <<"templateName">> := [string()],
+%%   <<"templateSource">> := list()
+%% }
+-type create_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_response() :: #{
+%%   <<"tags">> => map(),
+%%   <<"templateArn">> => [string()],
+%%   <<"templateId">> => [string()]
+%% }
+-type create_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_step_group_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
+%%   <<"workflowId">> := string()
+%% }
+-type create_workflow_step_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_step_group_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
+%%   <<"tools">> => list(tool()),
+%%   <<"workflowId">> => [string()]
+%% }
+-type create_workflow_step_group_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -134,126 +200,154 @@
 
 
 %% Example:
-%% stop_migration_workflow_response() :: #{
+%% create_workflow_step_response() :: #{
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"stepGroupId">> => [string()],
+%%   <<"workflowId">> => [string()]
+%% }
+-type create_workflow_step_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_migration_workflow_request() :: #{}
+-type delete_migration_workflow_request() :: #{}.
+
+
+%% Example:
+%% delete_migration_workflow_response() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"id">> => string(),
-%%   <<"lastStopTime">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => [string()]
+%%   <<"status">> => string()
 %% }
--type stop_migration_workflow_response() :: #{binary() => any()}.
+-type delete_migration_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_request() :: #{}
+-type delete_template_request() :: #{}.
+
+%% Example:
+%% delete_template_response() :: #{}
+-type delete_template_response() :: #{}.
 
 
 %% Example:
-%% create_migration_workflow_request() :: #{
-%%   <<"applicationConfigurationId">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"inputParameters">> := map(),
-%%   <<"name">> := [string()],
-%%   <<"stepTargets">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"templateId">> := [string()]
-%% }
--type create_migration_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_migration_workflow_request() :: #{}
--type start_migration_workflow_request() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_workflow_step_group_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"next">> => list(string()),
-%%   <<"previous">> => list(string()),
+%% delete_workflow_step_group_request() :: #{
 %%   <<"workflowId">> := string()
 %% }
--type update_workflow_step_group_request() :: #{binary() => any()}.
+-type delete_workflow_step_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_step_group_response() :: #{}
+-type delete_workflow_step_group_response() :: #{}.
 
 
 %% Example:
-%% create_template_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"templateDescription">> => [string()],
-%%   <<"templateName">> := [string()],
-%%   <<"templateSource">> := list()
+%% delete_workflow_step_request() :: #{
+%%   <<"stepGroupId">> := string(),
+%%   <<"workflowId">> := string()
 %% }
--type create_template_request() :: #{binary() => any()}.
+-type delete_workflow_step_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_step_response() :: #{}
+-type delete_workflow_step_response() :: #{}.
+
+%% Example:
+%% get_migration_workflow_request() :: #{}
+-type get_migration_workflow_request() :: #{}.
 
 
 %% Example:
-%% step_output() :: #{
-%%   <<"dataType">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"required">> => [boolean()]
-%% }
--type step_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% migration_workflow_summary() :: #{
-%%   <<"adsApplicationConfigurationName">> => [string()],
+%% get_migration_workflow_response() :: #{
+%%   <<"adsApplicationConfigurationId">> => [string()],
+%%   <<"adsApplicationName">> => [string()],
+%%   <<"arn">> => [string()],
 %%   <<"completedSteps">> => [integer()],
 %%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"lastStartTime">> => [non_neg_integer()],
+%%   <<"lastStopTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => [string()],
+%%   <<"tags">> => map(),
 %%   <<"templateId">> => [string()],
-%%   <<"totalSteps">> => [integer()]
+%%   <<"tools">> => list(tool()),
+%%   <<"totalSteps">> => [integer()],
+%%   <<"workflowBucket">> => [string()],
+%%   <<"workflowInputs">> => map()
 %% }
--type migration_workflow_summary() :: #{binary() => any()}.
+-type get_migration_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_migration_workflow_template_request() :: #{}
+-type get_migration_workflow_template_request() :: #{}.
 
 
 %% Example:
-%% update_workflow_step_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
+%% get_migration_workflow_template_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"inputs">> => list(template_input()),
+%%   <<"name">> => [string()],
+%%   <<"owner">> => [string()],
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"templateArn">> => [string()],
+%%   <<"templateClass">> => [string()],
+%%   <<"tools">> => list(tool())
+%% }
+-type get_migration_workflow_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_step_group_request() :: #{}
+-type get_template_step_group_request() :: #{}.
+
+
+%% Example:
+%% get_template_step_group_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => [string()],
 %%   <<"next">> => list(string()),
-%%   <<"outputs">> => list(workflow_step_output()),
 %%   <<"previous">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"stepActionType">> => string(),
+%%   <<"templateId">> => [string()],
+%%   <<"tools">> => list(tool())
+%% }
+-type get_template_step_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_template_step_request() :: #{
 %%   <<"stepGroupId">> := string(),
-%%   <<"stepTarget">> => list(string()),
-%%   <<"workflowId">> := string(),
-%%   <<"workflowStepAutomationConfiguration">> => workflow_step_automation_configuration()
+%%   <<"templateId">> := string()
 %% }
--type update_workflow_step_request() :: #{binary() => any()}.
+-type get_template_step_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_migration_workflow_request() :: #{
+%% get_template_step_response() :: #{
+%%   <<"creationTime">> => [string()],
 %%   <<"description">> => [string()],
-%%   <<"inputParameters">> => map(),
+%%   <<"id">> => string(),
 %%   <<"name">> => [string()],
-%%   <<"stepTargets">> => list(string())
+%%   <<"next">> => list(string()),
+%%   <<"outputs">> => list(step_output()),
+%%   <<"previous">> => list(string()),
+%%   <<"stepActionType">> => string(),
+%%   <<"stepAutomationConfiguration">> => step_automation_configuration(),
+%%   <<"stepGroupId">> => string(),
+%%   <<"templateId">> => string()
 %% }
--type update_migration_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_migration_workflows_response() :: #{
-%%   <<"migrationWorkflowSummary">> := list(migration_workflow_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_migration_workflows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_template_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"templateDescription">> => [string()],
-%%   <<"templateName">> => [string()]
-%% }
--type update_template_request() :: #{binary() => any()}.
+-type get_template_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,30 +358,29 @@
 
 
 %% Example:
-%% plugin_summary() :: #{
-%%   <<"hostname">> => [string()],
-%%   <<"ipAddress">> => string(),
-%%   <<"pluginId">> => string(),
-%%   <<"registeredTime">> => [string()],
+%% get_workflow_step_group_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => [string()],
+%%   <<"next">> => list(string()),
+%%   <<"owner">> => string(),
+%%   <<"previous">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"version">> => string()
+%%   <<"tools">> => list(tool()),
+%%   <<"workflowId">> => [string()]
 %% }
--type plugin_summary() :: #{binary() => any()}.
+-type get_workflow_step_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% get_workflow_step_request() :: #{
+%%   <<"stepGroupId">> := string(),
+%%   <<"workflowId">> := string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% platform_command() :: #{
-%%   <<"linux">> => [string()],
-%%   <<"windows">> => [string()]
-%% }
--type platform_command() :: #{binary() => any()}.
+-type get_workflow_step_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -318,57 +411,185 @@
 
 
 %% Example:
-%% get_workflow_step_request() :: #{
-%%   <<"stepGroupId">> := string(),
-%%   <<"workflowId">> := string()
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_workflow_step_request() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_template_step_request() :: #{
+%% list_migration_workflow_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_migration_workflow_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migration_workflow_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templateSummary">> := list(template_summary())
+%% }
+-type list_migration_workflow_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migration_workflows_request() :: #{
+%%   <<"adsApplicationConfigurationName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string(),
+%%   <<"templateId">> => string()
+%% }
+-type list_migration_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_migration_workflows_response() :: #{
+%%   <<"migrationWorkflowSummary">> := list(migration_workflow_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_migration_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"plugins">> => list(plugin_summary())
+%% }
+-type list_plugins_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_step_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_template_step_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_step_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templateStepGroupSummary">> := list(template_step_group_summary())
+%% }
+-type list_template_step_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_steps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"stepGroupId">> := string(),
 %%   <<"templateId">> := string()
 %% }
--type get_template_step_request() :: #{binary() => any()}.
+-type list_template_steps_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_migration_workflow_template_response() :: #{
+%% list_template_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templateStepSummaryList">> => list(template_step_summary())
+%% }
+-type list_template_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_step_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workflowId">> := string()
+%% }
+-type list_workflow_step_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_step_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowStepGroupsSummary">> := list(workflow_step_group_summary())
+%% }
+-type list_workflow_step_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_steps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workflow_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowStepsSummary">> := list(workflow_step_summary())
+%% }
+-type list_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% migration_workflow_summary() :: #{
+%%   <<"adsApplicationConfigurationName">> => [string()],
+%%   <<"completedSteps">> => [integer()],
 %%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"inputs">> => list(template_input()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
 %%   <<"name">> => [string()],
-%%   <<"owner">> => [string()],
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"templateArn">> => [string()],
-%%   <<"templateClass">> => [string()],
-%%   <<"tools">> => list(tool())
+%%   <<"templateId">> => [string()],
+%%   <<"totalSteps">> => [integer()]
 %% }
--type get_migration_workflow_template_response() :: #{binary() => any()}.
+-type migration_workflow_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_migration_workflow_response() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"status">> => string()
+%% platform_command() :: #{
+%%   <<"linux">> => [string()],
+%%   <<"windows">> => [string()]
 %% }
--type delete_migration_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_request() :: #{}
--type delete_template_request() :: #{}.
+-type platform_command() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
+%% platform_script_key() :: #{
+%%   <<"linux">> => string(),
+%%   <<"windows">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type platform_script_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_summary() :: #{
+%%   <<"hostname">> => [string()],
+%%   <<"ipAddress">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"registeredTime">> => [string()],
+%%   <<"status">> => string(),
+%%   <<"version">> => string()
+%% }
+-type plugin_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,6 +597,28 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_workflow_step_request() :: #{
+%%   <<"stepGroupId">> := string(),
+%%   <<"workflowId">> := string()
+%% }
+-type retry_workflow_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_workflow_step_response() :: #{
+%%   <<"id">> => [string()],
+%%   <<"status">> => string(),
+%%   <<"stepGroupId">> => [string()],
+%%   <<"workflowId">> => [string()]
+%% }
+-type retry_workflow_step_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_migration_workflow_request() :: #{}
+-type start_migration_workflow_request() :: #{}.
 
 
 %% Example:
@@ -390,20 +633,58 @@
 
 
 %% Example:
-%% create_migration_workflow_response() :: #{
-%%   <<"adsApplicationConfigurationId">> => [string()],
-%%   <<"arn">> => [string()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"status">> => string(),
-%%   <<"stepTargets">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"templateId">> => [string()],
-%%   <<"workflowInputs">> => map()
+%% step_automation_configuration() :: #{
+%%   <<"command">> => platform_command(),
+%%   <<"runEnvironment">> => string(),
+%%   <<"scriptLocationS3Bucket">> => [string()],
+%%   <<"scriptLocationS3Key">> => platform_script_key(),
+%%   <<"targetType">> => string()
 %% }
--type create_migration_workflow_response() :: #{binary() => any()}.
+-type step_automation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_output() :: #{
+%%   <<"dataType">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"required">> => [boolean()]
+%% }
+-type step_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_migration_workflow_request() :: #{}
+-type stop_migration_workflow_request() :: #{}.
+
+
+%% Example:
+%% stop_migration_workflow_response() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastStopTime">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => [string()]
+%% }
+-type stop_migration_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% template_input() :: #{
+%%   <<"dataType">> => string(),
+%%   <<"inputName">> => string(),
+%%   <<"required">> => [boolean()]
+%% }
+-type template_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -417,6 +698,21 @@
 
 
 %% Example:
+%% template_step_summary() :: #{
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"next">> => list(string()),
+%%   <<"owner">> => string(),
+%%   <<"previous">> => list(string()),
+%%   <<"stepActionType">> => string(),
+%%   <<"stepGroupId">> => [string()],
+%%   <<"targetType">> => string(),
+%%   <<"templateId">> => [string()]
+%% }
+-type template_step_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% template_summary() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"description">> => [string()],
@@ -427,194 +723,39 @@
 
 
 %% Example:
-%% create_workflow_step_group_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"next">> => list(string()),
-%%   <<"previous">> => list(string()),
-%%   <<"workflowId">> := string()
-%% }
--type create_workflow_step_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_automation_configuration() :: #{
-%%   <<"command">> => platform_command(),
-%%   <<"runEnvironment">> => string(),
-%%   <<"scriptLocationS3Bucket">> => [string()],
-%%   <<"scriptLocationS3Key">> => platform_script_key(),
-%%   <<"targetType">> => string()
-%% }
--type step_automation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_template_step_group_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"previous">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"templateId">> => [string()],
-%%   <<"tools">> => list(tool())
-%% }
--type get_template_step_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_migration_workflow_response() :: #{
-%%   <<"adsApplicationConfigurationId">> => [string()],
-%%   <<"adsApplicationName">> => [string()],
-%%   <<"arn">> => [string()],
-%%   <<"completedSteps">> => [integer()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"lastStartTime">> => [non_neg_integer()],
-%%   <<"lastStopTime">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"templateId">> => [string()],
-%%   <<"tools">> => list(tool()),
-%%   <<"totalSteps">> => [integer()],
-%%   <<"workflowBucket">> => [string()],
-%%   <<"workflowInputs">> => map()
-%% }
--type get_migration_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_migration_workflow_request() :: #{}
--type stop_migration_workflow_request() :: #{}.
-
-
-%% Example:
-%% platform_script_key() :: #{
-%%   <<"linux">> => string(),
-%%   <<"windows">> => string()
-%% }
--type platform_script_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_plugins_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"plugins">> => list(plugin_summary())
-%% }
--type list_plugins_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_step_summary() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"noOfSrvCompleted">> => [integer()],
-%%   <<"noOfSrvFailed">> => [integer()],
-%%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()),
-%%   <<"scriptLocation">> => [string()],
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => [string()],
-%%   <<"stepActionType">> => string(),
-%%   <<"stepId">> => [string()],
-%%   <<"totalNoOfSrv">> => [integer()]
-%% }
--type workflow_step_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_step_group_summary() :: #{
-%%   <<"id">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()),
-%%   <<"status">> => string()
-%% }
--type workflow_step_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_migration_workflow_request() :: #{}
--type delete_migration_workflow_request() :: #{}.
-
-
-%% Example:
-%% list_plugins_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_plugins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_workflow_step_response() :: #{
-%%   <<"id">> => [string()],
-%%   <<"status">> => string(),
-%%   <<"stepGroupId">> => [string()],
-%%   <<"workflowId">> => [string()]
-%% }
--type retry_workflow_step_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_template_response() :: #{
-%%   <<"tags">> => map(),
-%%   <<"templateArn">> => [string()],
-%%   <<"templateId">> => [string()]
-%% }
--type update_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
+%% throttling_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% template_input() :: #{
-%%   <<"dataType">> => string(),
-%%   <<"inputName">> => string(),
-%%   <<"required">> => [boolean()]
-%% }
--type template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workflow_step_request() :: #{
-%%   <<"stepGroupId">> := string(),
-%%   <<"workflowId">> := string()
-%% }
--type delete_workflow_step_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_step_group_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => [string()],
+%% tool() :: #{
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"previous">> => list(string()),
-%%   <<"tools">> => list(tool()),
-%%   <<"workflowId">> => [string()]
+%%   <<"url">> => [string()]
 %% }
--type create_workflow_step_group_response() :: #{binary() => any()}.
+-type tool() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_migration_workflow_request() :: #{
+%%   <<"description">> => [string()],
+%%   <<"inputParameters">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"stepTargets">> => list(string())
+%% }
+-type update_migration_workflow_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -636,58 +777,32 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_template_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"templateDescription">> => [string()],
+%%   <<"templateName">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type update_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% workflow_step_output() :: #{
-%%   <<"dataType">> => string(),
+%% update_template_response() :: #{
+%%   <<"tags">> => map(),
+%%   <<"templateArn">> => [string()],
+%%   <<"templateId">> => [string()]
+%% }
+-type update_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workflow_step_group_request() :: #{
+%%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"required">> => [boolean()],
-%%   <<"value">> => list()
-%% }
--type workflow_step_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_workflow_step_request() :: #{
-%%   <<"stepGroupId">> := string(),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
 %%   <<"workflowId">> := string()
 %% }
--type retry_workflow_step_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% get_migration_workflow_template_request() :: #{}
--type get_migration_workflow_template_request() :: #{}.
-
-%% Example:
-%% delete_workflow_step_response() :: #{}
--type delete_workflow_step_response() :: #{}.
-
-
-%% Example:
-%% list_workflow_step_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowStepGroupsSummary">> := list(workflow_step_group_summary())
-%% }
--type list_workflow_step_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_step_response() :: #{
-%%   <<"id">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"stepGroupId">> => [string()],
-%%   <<"workflowId">> => [string()]
-%% }
--type create_workflow_step_response() :: #{binary() => any()}.
+-type update_workflow_step_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -705,67 +820,20 @@
 
 
 %% Example:
-%% list_template_step_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_template_step_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_migration_workflow_request() :: #{}
--type get_migration_workflow_request() :: #{}.
-
-
-%% Example:
-%% template_step_summary() :: #{
-%%   <<"id">> => [string()],
-%%   <<"name">> => [string()],
+%% update_workflow_step_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
 %%   <<"next">> => list(string()),
-%%   <<"owner">> => string(),
+%%   <<"outputs">> => list(workflow_step_output()),
 %%   <<"previous">> => list(string()),
+%%   <<"status">> => string(),
 %%   <<"stepActionType">> => string(),
-%%   <<"stepGroupId">> => [string()],
-%%   <<"targetType">> => string(),
-%%   <<"templateId">> => [string()]
-%% }
--type template_step_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_step_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workflowId">> := string()
-%% }
--type list_workflow_step_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_steps_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
 %%   <<"stepGroupId">> := string(),
-%%   <<"templateId">> := string()
+%%   <<"stepTarget">> => list(string()),
+%%   <<"workflowId">> := string(),
+%%   <<"workflowStepAutomationConfiguration">> => workflow_step_automation_configuration()
 %% }
--type list_template_steps_request() :: #{binary() => any()}.
+-type update_workflow_step_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -779,64 +847,10 @@
 
 
 %% Example:
-%% create_template_response() :: #{
-%%   <<"tags">> => map(),
-%%   <<"templateArn">> => [string()],
-%%   <<"templateId">> => [string()]
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type create_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_step_group_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"tools">> => list(tool()),
-%%   <<"workflowId">> => [string()]
-%% }
--type get_workflow_step_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_response() :: #{}
--type delete_template_response() :: #{}.
-
-
-%% Example:
-%% get_template_step_response() :: #{
-%%   <<"creationTime">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"next">> => list(string()),
-%%   <<"outputs">> => list(step_output()),
-%%   <<"previous">> => list(string()),
-%%   <<"stepActionType">> => string(),
-%%   <<"stepAutomationConfiguration">> => step_automation_configuration(),
-%%   <<"stepGroupId">> => string(),
-%%   <<"templateId">> => string()
-%% }
--type get_template_step_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_migration_workflow_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_migration_workflow_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_step_group_request() :: #{}
--type get_template_step_group_request() :: #{}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -851,156 +865,142 @@
 
 
 %% Example:
-%% list_migration_workflow_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templateSummary">> := list(template_summary())
-%% }
--type list_migration_workflow_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_steps_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templateStepSummaryList">> => list(template_step_summary())
-%% }
--type list_template_steps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool() :: #{
+%% workflow_step_group_summary() :: #{
+%%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"url">> => [string()]
+%%   <<"next">> => list(string()),
+%%   <<"owner">> => string(),
+%%   <<"previous">> => list(string()),
+%%   <<"status">> => string()
 %% }
--type tool() :: #{binary() => any()}.
+-type workflow_step_group_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_template_step_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templateStepGroupSummary">> := list(template_step_group_summary())
+%% workflow_step_output() :: #{
+%%   <<"dataType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"required">> => [boolean()],
+%%   <<"value">> => list()
 %% }
--type list_template_step_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_step_group_response() :: #{}
--type delete_workflow_step_group_response() :: #{}.
+-type workflow_step_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_workflow_step_group_request() :: #{
-%%   <<"workflowId">> := string()
-%% }
--type delete_workflow_step_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_migration_workflows_request() :: #{
-%%   <<"adsApplicationConfigurationName">> => string(),
-%%   <<"maxResults">> => integer(),
+%% workflow_step_summary() :: #{
+%%   <<"description">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"nextToken">> => string(),
+%%   <<"next">> => list(string()),
+%%   <<"noOfSrvCompleted">> => [integer()],
+%%   <<"noOfSrvFailed">> => [integer()],
+%%   <<"owner">> => string(),
+%%   <<"previous">> => list(string()),
+%%   <<"scriptLocation">> => [string()],
 %%   <<"status">> => string(),
-%%   <<"templateId">> => string()
+%%   <<"statusMessage">> => [string()],
+%%   <<"stepActionType">> => string(),
+%%   <<"stepId">> => [string()],
+%%   <<"totalNoOfSrv">> => [integer()]
 %% }
--type list_migration_workflows_request() :: #{binary() => any()}.
+-type workflow_step_summary() :: #{binary() => any()}.
 
 -type create_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_workflow_step_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_workflow_step_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_workflow_step_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_workflow_step_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_step_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_step_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workflow_step_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workflow_step_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_plugins_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
@@ -1008,61 +1008,61 @@
 
 -type list_template_step_groups_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_template_steps_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_templates_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_workflow_step_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workflow_steps_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type retry_workflow_step_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type stop_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -1073,31 +1073,31 @@
     resource_not_found_exception().
 
 -type update_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_workflow_step_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_workflow_step_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

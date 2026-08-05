@@ -113,18 +113,60 @@
 
 
 %% Example:
-%% list_vocabularies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Vocabularies">> => list(vocabulary_info())
+%% absolute_time_range() :: #{
+%%   <<"EndTime">> => float(),
+%%   <<"First">> => float(),
+%%   <<"Last">> => float(),
+%%   <<"StartTime">> => float()
 %% }
--type list_vocabularies_response() :: #{binary() => any()}.
+-type absolute_time_range() :: #{binary() => any()}.
 
 %% Example:
-%% get_transcription_job_response() :: #{
-%%   <<"TranscriptionJob">> => transcription_job()
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_transcription_job_response() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_job() :: #{
+%%   <<"CallAnalyticsJobDetails">> => call_analytics_job_details(),
+%%   <<"CallAnalyticsJobName">> => string(),
+%%   <<"CallAnalyticsJobStatus">> => list(any()),
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"IdentifiedLanguageScore">> => float(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Media">> => media(),
+%%   <<"MediaFormat">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"Settings">> => call_analytics_job_settings(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Transcript">> => transcript()
+%% }
+-type call_analytics_job() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_job_details() :: #{
+%%   <<"Skipped">> => list(call_analytics_skipped_feature())
+%% }
+-type call_analytics_job_details() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_job_settings() :: #{
+%%   <<"ContentRedaction">> => content_redaction(),
+%%   <<"LanguageIdSettings">> => map(),
+%%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => list(list(any())()),
+%%   <<"Summarization">> => summarization(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type call_analytics_job_settings() :: #{binary() => any()}.
 
 %% Example:
 %% call_analytics_job_summary() :: #{
@@ -138,6 +180,893 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type call_analytics_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% call_analytics_skipped_feature() :: #{
+%%   <<"Feature">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"ReasonCode">> => list(any())
+%% }
+-type call_analytics_skipped_feature() :: #{binary() => any()}.
+
+%% Example:
+%% category_properties() :: #{
+%%   <<"CategoryName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"InputType">> => list(any()),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"Rules">> => list(list()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type category_properties() :: #{binary() => any()}.
+
+%% Example:
+%% channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type channel_definition() :: #{binary() => any()}.
+
+%% Example:
+%% clinical_note_generation_settings() :: #{
+%%   <<"NoteTemplate">> => list(any())
+%% }
+-type clinical_note_generation_settings() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% content_redaction() :: #{
+%%   <<"PiiEntityTypes">> => list(list(any())()),
+%%   <<"RedactionOutput">> => list(any()),
+%%   <<"RedactionType">> => list(any())
+%% }
+-type content_redaction() :: #{binary() => any()}.
+
+%% Example:
+%% create_call_analytics_category_request() :: #{
+%%   <<"InputType">> => list(any()),
+%%   <<"Rules">> := list(list()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_call_analytics_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_call_analytics_category_response() :: #{
+%%   <<"CategoryProperties">> => category_properties()
+%% }
+-type create_call_analytics_category_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_language_model_request() :: #{
+%%   <<"BaseModelName">> := list(any()),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_language_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_language_model_response() :: #{
+%%   <<"BaseModelName">> => list(any()),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelStatus">> => list(any())
+%% }
+-type create_language_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_medical_vocabulary_request() :: #{
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VocabularyFileUri">> := string()
+%% }
+-type create_medical_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_medical_vocabulary_response() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyState">> => list(any())
+%% }
+-type create_medical_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_vocabulary_filter_request() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VocabularyFilterFileUri">> => string(),
+%%   <<"Words">> => list(string())
+%% }
+-type create_vocabulary_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_vocabulary_filter_response() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyFilterName">> => string()
+%% }
+-type create_vocabulary_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_vocabulary_request() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Phrases">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VocabularyFileUri">> => string()
+%% }
+-type create_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_vocabulary_response() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyState">> => list(any())
+%% }
+-type create_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_call_analytics_category_request() :: #{
+
+%% }
+-type delete_call_analytics_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_call_analytics_category_response() :: #{
+
+%% }
+-type delete_call_analytics_category_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_call_analytics_job_request() :: #{
+
+%% }
+-type delete_call_analytics_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_call_analytics_job_response() :: #{
+
+%% }
+-type delete_call_analytics_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_language_model_request() :: #{
+
+%% }
+-type delete_language_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_medical_scribe_job_request() :: #{
+
+%% }
+-type delete_medical_scribe_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_medical_transcription_job_request() :: #{
+
+%% }
+-type delete_medical_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_medical_vocabulary_request() :: #{
+
+%% }
+-type delete_medical_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transcription_job_request() :: #{
+
+%% }
+-type delete_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vocabulary_filter_request() :: #{
+
+%% }
+-type delete_vocabulary_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vocabulary_request() :: #{
+
+%% }
+-type delete_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_language_model_request() :: #{
+
+%% }
+-type describe_language_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_language_model_response() :: #{
+%%   <<"LanguageModel">> => language_model()
+%% }
+-type describe_language_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_call_analytics_category_request() :: #{
+
+%% }
+-type get_call_analytics_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_call_analytics_category_response() :: #{
+%%   <<"CategoryProperties">> => category_properties()
+%% }
+-type get_call_analytics_category_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_call_analytics_job_request() :: #{
+
+%% }
+-type get_call_analytics_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_call_analytics_job_response() :: #{
+%%   <<"CallAnalyticsJob">> => call_analytics_job()
+%% }
+-type get_call_analytics_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_scribe_job_request() :: #{
+
+%% }
+-type get_medical_scribe_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_scribe_job_response() :: #{
+%%   <<"MedicalScribeJob">> => medical_scribe_job()
+%% }
+-type get_medical_scribe_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_transcription_job_request() :: #{
+
+%% }
+-type get_medical_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_transcription_job_response() :: #{
+%%   <<"MedicalTranscriptionJob">> => medical_transcription_job()
+%% }
+-type get_medical_transcription_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_vocabulary_request() :: #{
+
+%% }
+-type get_medical_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_vocabulary_response() :: #{
+%%   <<"DownloadUri">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyState">> => list(any())
+%% }
+-type get_medical_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_transcription_job_request() :: #{
+
+%% }
+-type get_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_transcription_job_response() :: #{
+%%   <<"TranscriptionJob">> => transcription_job()
+%% }
+-type get_transcription_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vocabulary_filter_request() :: #{
+
+%% }
+-type get_vocabulary_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vocabulary_filter_response() :: #{
+%%   <<"DownloadUri">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyFilterName">> => string()
+%% }
+-type get_vocabulary_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vocabulary_request() :: #{
+
+%% }
+-type get_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vocabulary_response() :: #{
+%%   <<"DownloadUri">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyState">> => list(any())
+%% }
+-type get_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"S3Uri">> => string(),
+%%   <<"TuningDataS3Uri">> => string()
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% interruption_filter() :: #{
+%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
+%%   <<"Negate">> => boolean(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"RelativeTimeRange">> => relative_time_range(),
+%%   <<"Threshold">> => float()
+%% }
+-type interruption_filter() :: #{binary() => any()}.
+
+%% Example:
+%% job_execution_settings() :: #{
+%%   <<"AllowDeferredExecution">> => boolean(),
+%%   <<"DataAccessRoleArn">> => string()
+%% }
+-type job_execution_settings() :: #{binary() => any()}.
+
+%% Example:
+%% language_code_item() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"LanguageCode">> => list(any())
+%% }
+-type language_code_item() :: #{binary() => any()}.
+
+%% Example:
+%% language_id_settings() :: #{
+%%   <<"LanguageModelName">> => string(),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type language_id_settings() :: #{binary() => any()}.
+
+%% Example:
+%% language_model() :: #{
+%%   <<"BaseModelName">> => list(any()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelStatus">> => list(any()),
+%%   <<"UpgradeAvailability">> => boolean()
+%% }
+-type language_model() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_call_analytics_categories_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_call_analytics_categories_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_call_analytics_categories_response() :: #{
+%%   <<"Categories">> => list(category_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_call_analytics_categories_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_call_analytics_jobs_request() :: #{
+%%   <<"JobNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_call_analytics_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_call_analytics_jobs_response() :: #{
+%%   <<"CallAnalyticsJobSummaries">> => list(call_analytics_job_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_call_analytics_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_language_models_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_language_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_language_models_response() :: #{
+%%   <<"Models">> => list(language_model()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_language_models_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_scribe_jobs_request() :: #{
+%%   <<"JobNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_medical_scribe_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_scribe_jobs_response() :: #{
+%%   <<"MedicalScribeJobSummaries">> => list(medical_scribe_job_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_medical_scribe_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_transcription_jobs_request() :: #{
+%%   <<"JobNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_medical_transcription_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_transcription_jobs_response() :: #{
+%%   <<"MedicalTranscriptionJobSummaries">> => list(medical_transcription_job_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_medical_transcription_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_vocabularies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateEquals">> => list(any())
+%% }
+-type list_medical_vocabularies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_medical_vocabularies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Vocabularies">> => list(vocabulary_info())
+%% }
+-type list_medical_vocabularies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_transcription_jobs_request() :: #{
+%%   <<"JobNameContains">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_transcription_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_transcription_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TranscriptionJobSummaries">> => list(transcription_job_summary())
+%% }
+-type list_transcription_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vocabularies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateEquals">> => list(any())
+%% }
+-type list_vocabularies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vocabularies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Vocabularies">> => list(vocabulary_info())
+%% }
+-type list_vocabularies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vocabulary_filters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vocabulary_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vocabulary_filters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VocabularyFilters">> => list(vocabulary_filter_info())
+%% }
+-type list_vocabulary_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% media() :: #{
+%%   <<"MediaFileUri">> => string(),
+%%   <<"RedactedMediaFileUri">> => string()
+%% }
+-type media() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type medical_scribe_channel_definition() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_context() :: #{
+%%   <<"PatientContext">> => medical_scribe_patient_context()
+%% }
+-type medical_scribe_context() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_job() :: #{
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Media">> => media(),
+%%   <<"MedicalScribeContextProvided">> => boolean(),
+%%   <<"MedicalScribeJobName">> => string(),
+%%   <<"MedicalScribeJobStatus">> => list(any()),
+%%   <<"MedicalScribeOutput">> => medical_scribe_output(),
+%%   <<"Settings">> => medical_scribe_settings(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type medical_scribe_job() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_job_summary() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MedicalScribeJobName">> => string(),
+%%   <<"MedicalScribeJobStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type medical_scribe_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_output() :: #{
+%%   <<"ClinicalDocumentUri">> => string(),
+%%   <<"TranscriptFileUri">> => string()
+%% }
+-type medical_scribe_output() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_patient_context() :: #{
+%%   <<"Pronouns">> => list(any())
+%% }
+-type medical_scribe_patient_context() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_settings() :: #{
+%%   <<"ChannelIdentification">> => boolean(),
+%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
+%%   <<"MaxSpeakerLabels">> => integer(),
+%%   <<"ShowSpeakerLabels">> => boolean(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type medical_scribe_settings() :: #{binary() => any()}.
+
+%% Example:
+%% medical_transcript() :: #{
+%%   <<"TranscriptFileUri">> => string()
+%% }
+-type medical_transcript() :: #{binary() => any()}.
+
+%% Example:
+%% medical_transcription_job() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Media">> => media(),
+%%   <<"MediaFormat">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"MedicalTranscriptionJobName">> => string(),
+%%   <<"Settings">> => medical_transcription_setting(),
+%%   <<"Specialty">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Transcript">> => medical_transcript(),
+%%   <<"TranscriptionJobStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type medical_transcription_job() :: #{binary() => any()}.
+
+%% Example:
+%% medical_transcription_job_summary() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MedicalTranscriptionJobName">> => string(),
+%%   <<"OutputLocationType">> => list(any()),
+%%   <<"Specialty">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TranscriptionJobStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type medical_transcription_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% medical_transcription_setting() :: #{
+%%   <<"ChannelIdentification">> => boolean(),
+%%   <<"MaxAlternatives">> => integer(),
+%%   <<"MaxSpeakerLabels">> => integer(),
+%%   <<"ShowAlternatives">> => boolean(),
+%%   <<"ShowSpeakerLabels">> => boolean(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type medical_transcription_setting() :: #{binary() => any()}.
+
+%% Example:
+%% model_settings() :: #{
+%%   <<"LanguageModelName">> => string()
+%% }
+-type model_settings() :: #{binary() => any()}.
+
+%% Example:
+%% non_talk_time_filter() :: #{
+%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
+%%   <<"Negate">> => boolean(),
+%%   <<"RelativeTimeRange">> => relative_time_range(),
+%%   <<"Threshold">> => float()
+%% }
+-type non_talk_time_filter() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% relative_time_range() :: #{
+%%   <<"EndPercentage">> => integer(),
+%%   <<"First">> => integer(),
+%%   <<"Last">> => integer(),
+%%   <<"StartPercentage">> => integer()
+%% }
+-type relative_time_range() :: #{binary() => any()}.
+
+%% Example:
+%% sentiment_filter() :: #{
+%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
+%%   <<"Negate">> => boolean(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"RelativeTimeRange">> => relative_time_range(),
+%%   <<"Sentiments">> => list(list(any())())
+%% }
+-type sentiment_filter() :: #{binary() => any()}.
+
+%% Example:
+%% settings() :: #{
+%%   <<"ChannelIdentification">> => boolean(),
+%%   <<"MaxAlternatives">> => integer(),
+%%   <<"MaxSpeakerLabels">> => integer(),
+%%   <<"ShowAlternatives">> => boolean(),
+%%   <<"ShowSpeakerLabels">> => boolean(),
+%%   <<"VocabularyFilterMethod">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type settings() :: #{binary() => any()}.
+
+%% Example:
+%% start_call_analytics_job_request() :: #{
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"Media">> := media(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"OutputLocation">> => string(),
+%%   <<"Settings">> => call_analytics_job_settings(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_call_analytics_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_call_analytics_job_response() :: #{
+%%   <<"CallAnalyticsJob">> => call_analytics_job()
+%% }
+-type start_call_analytics_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_medical_scribe_job_request() :: #{
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"KMSEncryptionContext">> => map(),
+%%   <<"Media">> := media(),
+%%   <<"MedicalScribeContext">> => medical_scribe_context(),
+%%   <<"OutputBucketName">> := string(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"Settings">> := medical_scribe_settings(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_medical_scribe_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_medical_scribe_job_response() :: #{
+%%   <<"MedicalScribeJob">> => medical_scribe_job()
+%% }
+-type start_medical_scribe_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_medical_transcription_job_request() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"KMSEncryptionContext">> => map(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Media">> := media(),
+%%   <<"MediaFormat">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"OutputBucketName">> := string(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"OutputKey">> => string(),
+%%   <<"Settings">> => medical_transcription_setting(),
+%%   <<"Specialty">> := list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type start_medical_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_medical_transcription_job_response() :: #{
+%%   <<"MedicalTranscriptionJob">> => medical_transcription_job()
+%% }
+-type start_medical_transcription_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_transcription_job_request() :: #{
+%%   <<"ContentRedaction">> => content_redaction(),
+%%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"IdentifyMultipleLanguages">> => boolean(),
+%%   <<"JobExecutionSettings">> => job_execution_settings(),
+%%   <<"KMSEncryptionContext">> => map(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageIdSettings">> => map(),
+%%   <<"LanguageOptions">> => list(list(any())()),
+%%   <<"Media">> := media(),
+%%   <<"MediaFormat">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"ModelSettings">> => model_settings(),
+%%   <<"OutputBucketName">> => string(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"OutputKey">> => string(),
+%%   <<"Settings">> => settings(),
+%%   <<"Subtitles">> => subtitles(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ToxicityDetection">> => list(toxicity_detection_settings())
+%% }
+-type start_transcription_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_transcription_job_response() :: #{
+%%   <<"TranscriptionJob">> => transcription_job()
+%% }
+-type start_transcription_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% subtitles() :: #{
+%%   <<"Formats">> => list(list(any())()),
+%%   <<"OutputStartIndex">> => integer()
+%% }
+-type subtitles() :: #{binary() => any()}.
+
+%% Example:
+%% subtitles_output() :: #{
+%%   <<"Formats">> => list(list(any())()),
+%%   <<"OutputStartIndex">> => integer(),
+%%   <<"SubtitleFileUris">> => list(string())
+%% }
+-type subtitles_output() :: #{binary() => any()}.
+
+%% Example:
+%% summarization() :: #{
+%%   <<"GenerateAbstractiveSummary">> => boolean()
+%% }
+-type summarization() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% toxicity_detection_settings() :: #{
+%%   <<"ToxicityCategories">> => list(list(any())())
+%% }
+-type toxicity_detection_settings() :: #{binary() => any()}.
+
+%% Example:
+%% transcript() :: #{
+%%   <<"RedactedTranscriptFileUri">> => string(),
+%%   <<"TranscriptFileUri">> => string()
+%% }
+-type transcript() :: #{binary() => any()}.
+
+%% Example:
+%% transcript_filter() :: #{
+%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
+%%   <<"Negate">> => boolean(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"RelativeTimeRange">> => relative_time_range(),
+%%   <<"Targets">> => list(string()),
+%%   <<"TranscriptFilterType">> => list(any())
+%% }
+-type transcript_filter() :: #{binary() => any()}.
 
 %% Example:
 %% transcription_job() :: #{
@@ -169,205 +1098,6 @@
 -type transcription_job() :: #{binary() => any()}.
 
 %% Example:
-%% medical_transcription_job_summary() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"MedicalTranscriptionJobName">> => string(),
-%%   <<"OutputLocationType">> => list(any()),
-%%   <<"Specialty">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TranscriptionJobStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type medical_transcription_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_call_analytics_job_response() :: #{
-
-%% }
--type delete_call_analytics_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_call_analytics_category_response() :: #{
-
-%% }
--type delete_call_analytics_category_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_language_model_response() :: #{
-%%   <<"BaseModelName">> => list(any()),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelStatus">> => list(any())
-%% }
--type create_language_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_vocabulary_filter_request() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VocabularyFilterFileUri">> => string(),
-%%   <<"Words">> => list(string())
-%% }
--type create_vocabulary_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_failure_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_medical_transcription_job_request() :: #{
-
-%% }
--type delete_medical_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_medical_transcription_jobs_response() :: #{
-%%   <<"MedicalTranscriptionJobSummaries">> => list(medical_transcription_job_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_medical_transcription_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% job_execution_settings() :: #{
-%%   <<"AllowDeferredExecution">> => boolean(),
-%%   <<"DataAccessRoleArn">> => string()
-%% }
--type job_execution_settings() :: #{binary() => any()}.
-
-%% Example:
-%% absolute_time_range() :: #{
-%%   <<"EndTime">> => float(),
-%%   <<"First">> => float(),
-%%   <<"Last">> => float(),
-%%   <<"StartTime">> => float()
-%% }
--type absolute_time_range() :: #{binary() => any()}.
-
-%% Example:
-%% list_language_models_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusEquals">> => list(any())
-%% }
--type list_language_models_request() :: #{binary() => any()}.
-
-%% Example:
-%% summarization() :: #{
-%%   <<"GenerateAbstractiveSummary">> => boolean()
-%% }
--type summarization() :: #{binary() => any()}.
-
-%% Example:
-%% input_data_config() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"S3Uri">> => string(),
-%%   <<"TuningDataS3Uri">> => string()
-%% }
--type input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% non_talk_time_filter() :: #{
-%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
-%%   <<"Negate">> => boolean(),
-%%   <<"RelativeTimeRange">> => relative_time_range(),
-%%   <<"Threshold">> => float()
-%% }
--type non_talk_time_filter() :: #{binary() => any()}.
-
-%% Example:
-%% clinical_note_generation_settings() :: #{
-%%   <<"NoteTemplate">> => list(any())
-%% }
--type clinical_note_generation_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_medical_transcription_job_response() :: #{
-%%   <<"MedicalTranscriptionJob">> => medical_transcription_job()
-%% }
--type start_medical_transcription_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% toxicity_detection_settings() :: #{
-%%   <<"ToxicityCategories">> => list(list(any())())
-%% }
--type toxicity_detection_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_language_model_request() :: #{
-
-%% }
--type delete_language_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vocabulary_filter_response() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyFilterName">> => string()
-%% }
--type create_vocabulary_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_transcription_jobs_request() :: #{
-%%   <<"JobNameContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_transcription_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vocabulary_response() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyState">> => list(any())
-%% }
--type create_vocabulary_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_vocabulary_filter_request() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"VocabularyFilterFileUri">> => string(),
-%%   <<"Words">> => list(string())
-%% }
--type update_vocabulary_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_job_summary() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"MedicalScribeJobName">> => string(),
-%%   <<"MedicalScribeJobStatus">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type medical_scribe_job_summary() :: #{binary() => any()}.
-
-%% Example:
 %% transcription_job_summary() :: #{
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"ContentRedaction">> => content_redaction(),
@@ -388,142 +1118,36 @@
 -type transcription_job_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_medical_vocabularies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateEquals">> => list(any())
-%% }
--type list_medical_vocabularies_request() :: #{binary() => any()}.
-
-%% Example:
-%% call_analytics_job() :: #{
-%%   <<"CallAnalyticsJobDetails">> => call_analytics_job_details(),
-%%   <<"CallAnalyticsJobName">> => string(),
-%%   <<"CallAnalyticsJobStatus">> => list(any()),
-%%   <<"ChannelDefinitions">> => list(channel_definition()),
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"IdentifiedLanguageScore">> => float(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Media">> => media(),
-%%   <<"MediaFormat">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"Settings">> => call_analytics_job_settings(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Transcript">> => transcript()
-%% }
--type call_analytics_job() :: #{binary() => any()}.
-
-%% Example:
-%% language_code_item() :: #{
-%%   <<"DurationInSeconds">> => float(),
-%%   <<"LanguageCode">> => list(any())
-%% }
--type language_code_item() :: #{binary() => any()}.
-
-%% Example:
-%% list_vocabularies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"StateEquals">> => list(any())
-%% }
--type list_vocabularies_request() :: #{binary() => any()}.
-
-%% Example:
-%% transcript() :: #{
-%%   <<"RedactedTranscriptFileUri">> => string(),
-%%   <<"TranscriptFileUri">> => string()
-%% }
--type transcript() :: #{binary() => any()}.
-
-%% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% call_analytics_job_details() :: #{
-%%   <<"Skipped">> => list(call_analytics_skipped_feature())
-%% }
--type call_analytics_job_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_medical_scribe_jobs_response() :: #{
-%%   <<"MedicalScribeJobSummaries">> => list(medical_scribe_job_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_medical_scribe_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_call_analytics_job_request() :: #{
+%% untag_resource_response() :: #{
 
 %% }
--type get_call_analytics_job_request() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_vocabulary_request() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
+%% update_call_analytics_category_request() :: #{
+%%   <<"InputType">> => list(any()),
+%%   <<"Rules">> := list(list())
+%% }
+-type update_call_analytics_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_call_analytics_category_response() :: #{
+%%   <<"CategoryProperties">> => category_properties()
+%% }
+-type update_call_analytics_category_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_medical_vocabulary_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Phrases">> => list(string()),
-%%   <<"VocabularyFileUri">> => string()
+%%   <<"VocabularyFileUri">> := string()
 %% }
--type update_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% transcript_filter() :: #{
-%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
-%%   <<"Negate">> => boolean(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"RelativeTimeRange">> => relative_time_range(),
-%%   <<"Targets">> => list(string()),
-%%   <<"TranscriptFilterType">> => list(any())
-%% }
--type transcript_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_vocabulary_request() :: #{
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Phrases">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VocabularyFileUri">> => string()
-%% }
--type create_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_vocabulary_request() :: #{
-
-%% }
--type get_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_language_model_request() :: #{
-%%   <<"BaseModelName">> := list(any()),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_language_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_call_analytics_categories_response() :: #{
-%%   <<"Categories">> => list(category_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_call_analytics_categories_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_call_analytics_job_response() :: #{
-%%   <<"CallAnalyticsJob">> => call_analytics_job()
-%% }
--type start_call_analytics_job_response() :: #{binary() => any()}.
+-type update_medical_vocabulary_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_medical_vocabulary_response() :: #{
@@ -535,257 +1159,12 @@
 -type update_medical_vocabulary_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_call_analytics_job_request() :: #{
-%%   <<"ChannelDefinitions">> => list(channel_definition()),
+%% update_vocabulary_filter_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
-%%   <<"Media">> := media(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"OutputLocation">> => string(),
-%%   <<"Settings">> => call_analytics_job_settings(),
-%%   <<"Tags">> => list(tag())
+%%   <<"VocabularyFilterFileUri">> => string(),
+%%   <<"Words">> => list(string())
 %% }
--type start_call_analytics_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% content_redaction() :: #{
-%%   <<"PiiEntityTypes">> => list(list(any())()),
-%%   <<"RedactionOutput">> => list(any()),
-%%   <<"RedactionType">> => list(any())
-%% }
--type content_redaction() :: #{binary() => any()}.
-
-%% Example:
-%% medical_transcript() :: #{
-%%   <<"TranscriptFileUri">> => string()
-%% }
--type medical_transcript() :: #{binary() => any()}.
-
-%% Example:
-%% medical_transcription_job() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Media">> => media(),
-%%   <<"MediaFormat">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"MedicalTranscriptionJobName">> => string(),
-%%   <<"Settings">> => medical_transcription_setting(),
-%%   <<"Specialty">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Transcript">> => medical_transcript(),
-%%   <<"TranscriptionJobStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type medical_transcription_job() :: #{binary() => any()}.
-
-%% Example:
-%% category_properties() :: #{
-%%   <<"CategoryName">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"InputType">> => list(any()),
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Rules">> => list(list()),
-%%   <<"Tags">> => list(tag())
-%% }
--type category_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_transcription_job_request() :: #{
-
-%% }
--type get_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_medical_scribe_job_request() :: #{
-
-%% }
--type delete_medical_scribe_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% vocabulary_filter_info() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyFilterName">> => string()
-%% }
--type vocabulary_filter_info() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_settings() :: #{
-%%   <<"ChannelIdentification">> => boolean(),
-%%   <<"ClinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
-%%   <<"MaxSpeakerLabels">> => integer(),
-%%   <<"ShowSpeakerLabels">> => boolean(),
-%%   <<"VocabularyFilterMethod">> => list(any()),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type medical_scribe_settings() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% delete_transcription_job_request() :: #{
-
-%% }
--type delete_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_call_analytics_job_request() :: #{
-
-%% }
--type delete_call_analytics_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% sentiment_filter() :: #{
-%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
-%%   <<"Negate">> => boolean(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"RelativeTimeRange">> => relative_time_range(),
-%%   <<"Sentiments">> => list(list(any())())
-%% }
--type sentiment_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_vocabulary_filters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameContains">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vocabulary_filters_request() :: #{binary() => any()}.
-
-%% Example:
-%% channel_definition() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type channel_definition() :: #{binary() => any()}.
-
-%% Example:
-%% medical_transcription_setting() :: #{
-%%   <<"ChannelIdentification">> => boolean(),
-%%   <<"MaxAlternatives">> => integer(),
-%%   <<"MaxSpeakerLabels">> => integer(),
-%%   <<"ShowAlternatives">> => boolean(),
-%%   <<"ShowSpeakerLabels">> => boolean(),
-%%   <<"VocabularyName">> => string()
-%% }
--type medical_transcription_setting() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% call_analytics_skipped_feature() :: #{
-%%   <<"Feature">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"ReasonCode">> => list(any())
-%% }
--type call_analytics_skipped_feature() :: #{binary() => any()}.
-
-%% Example:
-%% list_medical_vocabularies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Vocabularies">> => list(vocabulary_info())
-%% }
--type list_medical_vocabularies_response() :: #{binary() => any()}.
-
-%% Example:
-%% settings() :: #{
-%%   <<"ChannelIdentification">> => boolean(),
-%%   <<"MaxAlternatives">> => integer(),
-%%   <<"MaxSpeakerLabels">> => integer(),
-%%   <<"ShowAlternatives">> => boolean(),
-%%   <<"ShowSpeakerLabels">> => boolean(),
-%%   <<"VocabularyFilterMethod">> => list(any()),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type settings() :: #{binary() => any()}.
-
-%% Example:
-%% model_settings() :: #{
-%%   <<"LanguageModelName">> => string()
-%% }
--type model_settings() :: #{binary() => any()}.
-
-%% Example:
-%% list_transcription_jobs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TranscriptionJobSummaries">> => list(transcription_job_summary())
-%% }
--type list_transcription_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_job() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Media">> => media(),
-%%   <<"MedicalScribeContextProvided">> => boolean(),
-%%   <<"MedicalScribeJobName">> => string(),
-%%   <<"MedicalScribeJobStatus">> => list(any()),
-%%   <<"MedicalScribeOutput">> => medical_scribe_output(),
-%%   <<"Settings">> => medical_scribe_settings(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type medical_scribe_job() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_patient_context() :: #{
-%%   <<"Pronouns">> => list(any())
-%% }
--type medical_scribe_patient_context() :: #{binary() => any()}.
-
-%% Example:
-%% language_id_settings() :: #{
-%%   <<"LanguageModelName">> => string(),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type language_id_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_call_analytics_job_response() :: #{
-%%   <<"CallAnalyticsJob">> => call_analytics_job()
-%% }
--type get_call_analytics_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% media() :: #{
-%%   <<"MediaFileUri">> => string(),
-%%   <<"RedactedMediaFileUri">> => string()
-%% }
--type media() :: #{binary() => any()}.
+-type update_vocabulary_filter_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_vocabulary_filter_response() :: #{
@@ -796,200 +1175,13 @@
 -type update_vocabulary_filter_response() :: #{binary() => any()}.
 
 %% Example:
-%% language_model() :: #{
-%%   <<"BaseModelName">> => list(any()),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"InputDataConfig">> => input_data_config(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ModelName">> => string(),
-%%   <<"ModelStatus">> => list(any()),
-%%   <<"UpgradeAvailability">> => boolean()
-%% }
--type language_model() :: #{binary() => any()}.
-
-%% Example:
-%% update_medical_vocabulary_request() :: #{
+%% update_vocabulary_request() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"VocabularyFileUri">> := string()
+%%   <<"Phrases">> => list(string()),
+%%   <<"VocabularyFileUri">> => string()
 %% }
--type update_medical_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_call_analytics_category_request() :: #{
-%%   <<"InputType">> => list(any()),
-%%   <<"Rules">> := list(list())
-%% }
--type update_call_analytics_category_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_medical_transcription_job_request() :: #{
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"KMSEncryptionContext">> => map(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Media">> := media(),
-%%   <<"MediaFormat">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"OutputBucketName">> := string(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"OutputKey">> => string(),
-%%   <<"Settings">> => medical_transcription_setting(),
-%%   <<"Specialty">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type start_medical_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_scribe_job_request() :: #{
-
-%% }
--type get_medical_scribe_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_call_analytics_jobs_response() :: #{
-%%   <<"CallAnalyticsJobSummaries">> => list(call_analytics_job_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_call_analytics_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_transcription_job_response() :: #{
-%%   <<"TranscriptionJob">> => transcription_job()
-%% }
--type start_transcription_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% subtitles() :: #{
-%%   <<"Formats">> => list(list(any())()),
-%%   <<"OutputStartIndex">> => integer()
-%% }
--type subtitles() :: #{binary() => any()}.
-
-%% Example:
-%% list_language_models_response() :: #{
-%%   <<"Models">> => list(language_model()),
-%%   <<"NextToken">> => string()
-%% }
--type list_language_models_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_call_analytics_category_response() :: #{
-%%   <<"CategoryProperties">> => category_properties()
-%% }
--type update_call_analytics_category_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_language_model_response() :: #{
-%%   <<"LanguageModel">> => language_model()
-%% }
--type describe_language_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_output() :: #{
-%%   <<"ClinicalDocumentUri">> => string(),
-%%   <<"TranscriptFileUri">> => string()
-%% }
--type medical_scribe_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_transcription_job_request() :: #{
-
-%% }
--type get_medical_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vocabulary_filter_request() :: #{
-
-%% }
--type delete_vocabulary_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_language_model_request() :: #{
-
-%% }
--type describe_language_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_call_analytics_jobs_request() :: #{
-%%   <<"JobNameContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_call_analytics_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_medical_vocabulary_request() :: #{
-
-%% }
--type delete_medical_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% vocabulary_info() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyState">> => list(any())
-%% }
--type vocabulary_info() :: #{binary() => any()}.
-
-%% Example:
-%% call_analytics_job_settings() :: #{
-%%   <<"ContentRedaction">> => content_redaction(),
-%%   <<"LanguageIdSettings">> => map(),
-%%   <<"LanguageModelName">> => string(),
-%%   <<"LanguageOptions">> => list(list(any())()),
-%%   <<"Summarization">> => summarization(),
-%%   <<"VocabularyFilterMethod">> => list(any()),
-%%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type call_analytics_job_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vocabulary_request() :: #{
-
-%% }
--type delete_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_medical_vocabulary_response() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyState">> => list(any())
-%% }
--type create_medical_vocabulary_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_medical_scribe_job_request() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"KMSEncryptionContext">> => map(),
-%%   <<"Media">> := media(),
-%%   <<"MedicalScribeContext">> => medical_scribe_context(),
-%%   <<"OutputBucketName">> := string(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"Settings">> := medical_scribe_settings(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_medical_scribe_job_request() :: #{binary() => any()}.
+-type update_vocabulary_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_vocabulary_response() :: #{
@@ -1001,462 +1193,270 @@
 -type update_vocabulary_response() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_vocabulary_response() :: #{
-%%   <<"DownloadUri">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyState">> => list(any())
-%% }
--type get_medical_vocabulary_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_call_analytics_category_request() :: #{
-
-%% }
--type get_call_analytics_category_request() :: #{binary() => any()}.
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_medical_transcription_jobs_request() :: #{
-%%   <<"JobNameContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_medical_transcription_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_vocabulary_request() :: #{
-
-%% }
--type get_medical_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_vocabulary_filters_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VocabularyFilters">> => list(vocabulary_filter_info())
-%% }
--type list_vocabulary_filters_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_vocabulary_filter_request() :: #{
-
-%% }
--type get_vocabulary_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_context() :: #{
-%%   <<"PatientContext">> => medical_scribe_patient_context()
-%% }
--type medical_scribe_context() :: #{binary() => any()}.
-
-%% Example:
-%% interruption_filter() :: #{
-%%   <<"AbsoluteTimeRange">> => absolute_time_range(),
-%%   <<"Negate">> => boolean(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"RelativeTimeRange">> => relative_time_range(),
-%%   <<"Threshold">> => float()
-%% }
--type interruption_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_transcription_job_response() :: #{
-%%   <<"MedicalTranscriptionJob">> => medical_transcription_job()
-%% }
--type get_medical_transcription_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_vocabulary_response() :: #{
-%%   <<"DownloadUri">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"VocabularyName">> => string(),
-%%   <<"VocabularyState">> => list(any())
-%% }
--type get_vocabulary_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_call_analytics_category_request() :: #{
-
-%% }
--type delete_call_analytics_category_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_vocabulary_filter_response() :: #{
-%%   <<"DownloadUri">> => string(),
+%% vocabulary_filter_info() :: #{
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"VocabularyFilterName">> => string()
 %% }
--type get_vocabulary_filter_response() :: #{binary() => any()}.
+-type vocabulary_filter_info() :: #{binary() => any()}.
 
 %% Example:
-%% create_medical_vocabulary_request() :: #{
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VocabularyFileUri">> := string()
-%% }
--type create_medical_vocabulary_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_medical_scribe_jobs_request() :: #{
-%%   <<"JobNameContains">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_medical_scribe_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% relative_time_range() :: #{
-%%   <<"EndPercentage">> => integer(),
-%%   <<"First">> => integer(),
-%%   <<"Last">> => integer(),
-%%   <<"StartPercentage">> => integer()
-%% }
--type relative_time_range() :: #{binary() => any()}.
-
-%% Example:
-%% medical_scribe_channel_definition() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type medical_scribe_channel_definition() :: #{binary() => any()}.
-
-%% Example:
-%% start_transcription_job_request() :: #{
-%%   <<"ContentRedaction">> => content_redaction(),
-%%   <<"IdentifyLanguage">> => boolean(),
-%%   <<"IdentifyMultipleLanguages">> => boolean(),
-%%   <<"JobExecutionSettings">> => job_execution_settings(),
-%%   <<"KMSEncryptionContext">> => map(),
+%% vocabulary_info() :: #{
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageIdSettings">> => map(),
-%%   <<"LanguageOptions">> => list(list(any())()),
-%%   <<"Media">> := media(),
-%%   <<"MediaFormat">> => list(any()),
-%%   <<"MediaSampleRateHertz">> => integer(),
-%%   <<"ModelSettings">> => model_settings(),
-%%   <<"OutputBucketName">> => string(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"OutputKey">> => string(),
-%%   <<"Settings">> => settings(),
-%%   <<"Subtitles">> => subtitles(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ToxicityDetection">> => list(toxicity_detection_settings())
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyState">> => list(any())
 %% }
--type start_transcription_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_call_analytics_category_response() :: #{
-%%   <<"CategoryProperties">> => category_properties()
-%% }
--type get_call_analytics_category_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_call_analytics_category_request() :: #{
-%%   <<"InputType">> => list(any()),
-%%   <<"Rules">> := list(list()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_call_analytics_category_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_medical_scribe_job_response() :: #{
-%%   <<"MedicalScribeJob">> => medical_scribe_job()
-%% }
--type start_medical_scribe_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_call_analytics_categories_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_call_analytics_categories_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_call_analytics_category_response() :: #{
-%%   <<"CategoryProperties">> => category_properties()
-%% }
--type create_call_analytics_category_response() :: #{binary() => any()}.
-
-%% Example:
-%% subtitles_output() :: #{
-%%   <<"Formats">> => list(list(any())()),
-%%   <<"OutputStartIndex">> => integer(),
-%%   <<"SubtitleFileUris">> => list(string())
-%% }
--type subtitles_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_medical_scribe_job_response() :: #{
-%%   <<"MedicalScribeJob">> => medical_scribe_job()
-%% }
--type get_medical_scribe_job_response() :: #{binary() => any()}.
+-type vocabulary_info() :: #{binary() => any()}.
 
 -type create_call_analytics_category_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_language_model_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_medical_vocabulary_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_vocabulary_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type create_vocabulary_filter_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type delete_call_analytics_category_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_call_analytics_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_language_model_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_medical_scribe_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_medical_transcription_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_medical_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_transcription_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_vocabulary_filter_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type describe_language_model_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_call_analytics_category_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_call_analytics_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_medical_scribe_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_medical_transcription_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_medical_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_transcription_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_vocabulary_filter_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_call_analytics_categories_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_call_analytics_jobs_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_language_models_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_medical_scribe_jobs_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_medical_transcription_jobs_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_medical_vocabularies_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_transcription_jobs_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_vocabularies_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_vocabulary_filters_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_call_analytics_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_medical_scribe_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_medical_transcription_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type start_transcription_job_errors() ::
-    bad_request_exception() | 
     limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type update_call_analytics_category_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type update_medical_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type update_vocabulary_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
-    internal_failure_exception().
+    bad_request_exception().
 
 -type update_vocabulary_filter_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

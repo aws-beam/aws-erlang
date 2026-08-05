@@ -98,174 +98,43 @@
 
 
 %% Example:
-%% data_integration_flow_source() :: #{
-%%   <<"datasetSource">> => data_integration_flow_dataset_source_configuration(),
-%%   <<"s3Source">> => data_integration_flow_s3_source_configuration(),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceType">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type data_integration_flow_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_dataset_request() :: #{}
--type delete_data_lake_dataset_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_lake_namespace_response() :: #{
+%% bill_of_materials_import_job() :: #{
 %%   <<"instanceId">> => string(),
-%%   <<"name">> => string()
+%%   <<"jobId">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"s3uri">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type delete_data_lake_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_integration_flow_execution_request() :: #{}
--type get_data_integration_flow_execution_request() :: #{}.
+-type bill_of_materials_import_job() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_lake_namespaces_response() :: #{
-%%   <<"namespaces">> => list(data_lake_namespace()),
-%%   <<"nextToken">> => string()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_data_lake_namespaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_namespace_request() :: #{}
--type delete_data_lake_namespace_request() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_integration_event_dataset_target_configuration() :: #{
-%%   <<"datasetIdentifier">> => string(),
-%%   <<"operationType">> => list(any())
+%% create_bill_of_materials_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"s3uri">> := string()
 %% }
--type data_integration_event_dataset_target_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type create_bill_of_materials_import_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_integration_flow_s3_target_configuration() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"options">> => data_integration_flow_s3_options(),
-%%   <<"prefix">> => string()
+%% create_bill_of_materials_import_job_response() :: #{
+%%   <<"jobId">> => string()
 %% }
--type data_integration_flow_s3_target_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_execution_source_info() :: #{
-%%   <<"datasetSource">> => data_integration_flow_dataset_source(),
-%%   <<"s3Source">> => data_integration_flow_s3_source(),
-%%   <<"sourceType">> => list(any())
-%% }
--type data_integration_flow_execution_source_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_s3_options() :: #{
-%%   <<"fileType">> => list(any())
-%% }
--type data_integration_flow_s3_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integration_flow_executions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_flow_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_lake_dataset_response() :: #{
-%%   <<"dataset">> => data_lake_dataset()
-%% }
--type get_data_lake_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_lake_datasets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_lake_datasets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_dataset_partition_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"transform">> => data_lake_dataset_partition_field_transform()
-%% }
--type data_lake_dataset_partition_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_integration_flow_request() :: #{}
--type delete_data_integration_flow_request() :: #{}.
-
-
-%% Example:
-%% update_data_lake_dataset_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_data_lake_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_lake_dataset_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"partitionSpec">> => data_lake_dataset_partition_spec(),
-%%   <<"schema">> => data_lake_dataset_schema(),
-%%   <<"tags">> => map()
-%% }
--type create_data_lake_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_instance_response() :: #{
-%%   <<"instance">> => instance()
-%% }
--type create_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_integration_flow_response() :: #{
-%%   <<"instanceId">> => string(),
-%%   <<"name">> => string()
-%% }
--type delete_data_integration_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_dedupe_strategy() :: #{
-%%   <<"fieldPriority">> => data_integration_flow_field_priority_dedupe_strategy_configuration(),
-%%   <<"type">> => list(any())
-%% }
--type data_integration_flow_dedupe_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_dataset_primary_key_field() :: #{
-%%   <<"name">> => string()
-%% }
--type data_lake_dataset_primary_key_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_bill_of_materials_import_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,6 +148,31 @@
 
 
 %% Example:
+%% create_data_integration_flow_response() :: #{
+%%   <<"instanceId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type create_data_integration_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_dataset_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"partitionSpec">> => data_lake_dataset_partition_spec(),
+%%   <<"schema">> => data_lake_dataset_schema(),
+%%   <<"tags">> => map()
+%% }
+-type create_data_lake_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_dataset_response() :: #{
+%%   <<"dataset">> => data_lake_dataset()
+%% }
+-type create_data_lake_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_lake_namespace_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"tags">> => map()
@@ -287,11 +181,66 @@
 
 
 %% Example:
-%% data_integration_flow_field_priority_dedupe_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"sortOrder">> => list(any())
+%% create_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
 %% }
--type data_integration_flow_field_priority_dedupe_field() :: #{binary() => any()}.
+-type create_data_lake_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_instance_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"webAppDnsDomain">> => string()
+%% }
+-type create_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type create_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event() :: #{
+%%   <<"datasetTargetDetails">> => data_integration_event_dataset_target_details(),
+%%   <<"eventGroupId">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"eventType">> => list(any()),
+%%   <<"instanceId">> => string()
+%% }
+-type data_integration_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event_dataset_load_execution_details() :: #{
+%%   <<"message">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_integration_event_dataset_load_execution_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event_dataset_target_configuration() :: #{
+%%   <<"datasetIdentifier">> => string(),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_integration_event_dataset_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_event_dataset_target_details() :: #{
+%%   <<"datasetIdentifier">> => string(),
+%%   <<"datasetLoadExecution">> => data_integration_event_dataset_load_execution_details(),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_integration_event_dataset_target_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -308,102 +257,6 @@
 
 
 %% Example:
-%% update_data_integration_flow_response() :: #{
-%%   <<"flow">> => data_integration_flow()
-%% }
--type update_data_integration_flow_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_request() :: #{}
--type get_instance_request() :: #{}.
-
-
-%% Example:
-%% create_bill_of_materials_import_job_response() :: #{
-%%   <<"jobId">> => string()
-%% }
--type create_bill_of_materials_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_lake_namespace_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_data_lake_namespace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_dataset_schema_field() :: #{
-%%   <<"isRequired">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type data_lake_dataset_schema_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bill_of_materials_import_job_response() :: #{
-%%   <<"job">> => bill_of_materials_import_job()
-%% }
--type get_bill_of_materials_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_s_q_l_transformation_configuration() :: #{
-%%   <<"query">> => string()
-%% }
--type data_integration_flow_s_q_l_transformation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_integration_flow_response() :: #{
-%%   <<"instanceId">> => string(),
-%%   <<"name">> => string()
-%% }
--type create_data_integration_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_lake_datasets_response() :: #{
-%%   <<"datasets">> => list(data_lake_dataset()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_lake_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_lake_namespace_response() :: #{
-%%   <<"namespace">> => data_lake_namespace()
-%% }
--type update_data_lake_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_bill_of_materials_import_job_request() :: #{}
--type get_bill_of_materials_import_job_request() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% data_integration_flow_dataset_options() :: #{
 %%   <<"dedupeRecords">> => [boolean()],
 %%   <<"dedupeStrategy">> => data_integration_flow_dedupe_strategy(),
@@ -411,81 +264,20 @@
 %% }
 -type data_integration_flow_dataset_options() :: #{binary() => any()}.
 
-%% Example:
-%% get_data_integration_flow_request() :: #{}
--type get_data_integration_flow_request() :: #{}.
-
 
 %% Example:
-%% data_integration_event_dataset_load_execution_details() :: #{
-%%   <<"message">> => [string()],
-%%   <<"status">> => list(any())
+%% data_integration_flow_dataset_source() :: #{
+%%   <<"datasetIdentifier">> => string()
 %% }
--type data_integration_event_dataset_load_execution_details() :: #{binary() => any()}.
+-type data_integration_flow_dataset_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_instance_request() :: #{
-%%   <<"instanceDescription">> => string(),
-%%   <<"instanceName">> => string()
-%% }
--type update_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integration_flow_executions_response() :: #{
-%%   <<"flowExecutions">> => list(data_integration_flow_execution()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_flow_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_event_dataset_target_details() :: #{
+%% data_integration_flow_dataset_source_configuration() :: #{
 %%   <<"datasetIdentifier">> => string(),
-%%   <<"datasetLoadExecution">> => data_integration_event_dataset_load_execution_details(),
-%%   <<"operationType">> => list(any())
+%%   <<"options">> => data_integration_flow_dataset_options()
 %% }
--type data_integration_event_dataset_target_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_instance_response() :: #{
-%%   <<"instance">> => instance()
-%% }
--type get_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_dataset_schema() :: #{
-%%   <<"fields">> => list(data_lake_dataset_schema_field()),
-%%   <<"name">> => string(),
-%%   <<"primaryKeys">> => list(data_lake_dataset_primary_key_field())
-%% }
--type data_lake_dataset_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integration_events_request() :: #{
-%%   <<"eventType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_dataset_partition_field_transform() :: #{
-%%   <<"type">> => list(any())
-%% }
--type data_lake_dataset_partition_field_transform() :: #{binary() => any()}.
+-type data_integration_flow_dataset_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -497,228 +289,11 @@
 
 
 %% Example:
-%% create_bill_of_materials_import_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"s3uri">> := string()
+%% data_integration_flow_dedupe_strategy() :: #{
+%%   <<"fieldPriority">> => data_integration_flow_field_priority_dedupe_strategy_configuration(),
+%%   <<"type">> => list(any())
 %% }
--type create_bill_of_materials_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instances_request() :: #{
-%%   <<"instanceNameFilter">> => list(string()),
-%%   <<"instanceStateFilter">> => list(list(any())()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_lake_dataset_response() :: #{
-%%   <<"dataset">> => data_lake_dataset()
-%% }
--type create_data_lake_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instances_response() :: #{
-%%   <<"instances">> => list(instance()),
-%%   <<"nextToken">> => string()
-%% }
--type list_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_transformation() :: #{
-%%   <<"sqlTransformation">> => data_integration_flow_s_q_l_transformation_configuration(),
-%%   <<"transformationType">> => list(any())
-%% }
--type data_integration_flow_transformation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_integration_flow_execution_response() :: #{
-%%   <<"flowExecution">> => data_integration_flow_execution()
-%% }
--type get_data_integration_flow_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_dataset_source() :: #{
-%%   <<"datasetIdentifier">> => string()
-%% }
--type data_integration_flow_dataset_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_execution_output_metadata() :: #{
-%%   <<"diagnosticReportsRootS3URI">> => string()
-%% }
--type data_integration_flow_execution_output_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_integration_event_response() :: #{
-%%   <<"event">> => data_integration_event()
-%% }
--type get_data_integration_event_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_integration_flow_response() :: #{
-%%   <<"flow">> => data_integration_flow()
-%% }
--type get_data_integration_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_instance_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"instanceDescription">> => string(),
-%%   <<"instanceName">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"webAppDnsDomain">> => string()
-%% }
--type create_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"instanceDescription">> => string(),
-%%   <<"instanceId">> => string(),
-%%   <<"instanceName">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"state">> => list(any()),
-%%   <<"versionNumber">> => [float()],
-%%   <<"webAppDnsDomain">> => string()
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_lake_namespace_request() :: #{}
--type get_data_lake_namespace_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_data_integration_events_response() :: #{
-%%   <<"events">> => list(data_integration_event()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_lake_namespace_response() :: #{
-%%   <<"namespace">> => data_lake_namespace()
-%% }
--type get_data_lake_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_instance_response() :: #{
-%%   <<"instance">> => instance()
-%% }
--type delete_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_integration_event_response() :: #{
-%%   <<"eventId">> => string()
-%% }
--type send_data_integration_event_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_request() :: #{}
--type delete_instance_request() :: #{}.
-
-%% Example:
-%% get_data_integration_event_request() :: #{}
--type get_data_integration_event_request() :: #{}.
-
-
-%% Example:
-%% list_data_integration_flows_response() :: #{
-%%   <<"flows">> => list(data_integration_flow()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_flows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_lake_namespaces_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_lake_namespaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{
-%%   <<"fields">> => list(data_integration_flow_field_priority_dedupe_field())
-%% }
--type data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_s3_source() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"key">> => string()
-%% }
--type data_integration_flow_s3_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_integration_event_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"data">> := string(),
-%%   <<"datasetTarget">> => data_integration_event_dataset_target_configuration(),
-%%   <<"eventGroupId">> := string(),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"eventType">> := list(any())
-%% }
--type send_data_integration_event_request() :: #{binary() => any()}.
+-type data_integration_flow_dedupe_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -737,6 +312,52 @@
 
 
 %% Example:
+%% data_integration_flow_execution_output_metadata() :: #{
+%%   <<"diagnosticReportsRootS3URI">> => string()
+%% }
+-type data_integration_flow_execution_output_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_execution_source_info() :: #{
+%%   <<"datasetSource">> => data_integration_flow_dataset_source(),
+%%   <<"s3Source">> => data_integration_flow_s3_source(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type data_integration_flow_execution_source_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_field_priority_dedupe_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type data_integration_flow_field_priority_dedupe_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{
+%%   <<"fields">> => list(data_integration_flow_field_priority_dedupe_field())
+%% }
+-type data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_s3_options() :: #{
+%%   <<"fileType">> => list(any())
+%% }
+-type data_integration_flow_s3_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_s3_source() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
+%% }
+-type data_integration_flow_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_integration_flow_s3_source_configuration() :: #{
 %%   <<"bucketName">> => string(),
 %%   <<"options">> => data_integration_flow_s3_options(),
@@ -744,9 +365,31 @@
 %% }
 -type data_integration_flow_s3_source_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_data_lake_dataset_request() :: #{}
--type get_data_lake_dataset_request() :: #{}.
+%% data_integration_flow_s3_target_configuration() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"options">> => data_integration_flow_s3_options(),
+%%   <<"prefix">> => string()
+%% }
+-type data_integration_flow_s3_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_s_q_l_transformation_configuration() :: #{
+%%   <<"query">> => string()
+%% }
+-type data_integration_flow_s_q_l_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_flow_source() :: #{
+%%   <<"datasetSource">> => data_integration_flow_dataset_source_configuration(),
+%%   <<"s3Source">> => data_integration_flow_s3_source_configuration(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type data_integration_flow_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -759,84 +402,11 @@
 
 
 %% Example:
-%% data_lake_dataset_partition_spec() :: #{
-%%   <<"fields">> => list(data_lake_dataset_partition_field())
+%% data_integration_flow_transformation() :: #{
+%%   <<"sqlTransformation">> => data_integration_flow_s_q_l_transformation_configuration(),
+%%   <<"transformationType">> => list(any())
 %% }
--type data_lake_dataset_partition_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_namespace() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"instanceId">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"name">> => string()
-%% }
--type data_lake_namespace() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integration_flows_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_integration_flows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_event() :: #{
-%%   <<"datasetTargetDetails">> => data_integration_event_dataset_target_details(),
-%%   <<"eventGroupId">> => string(),
-%%   <<"eventId">> => string(),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"eventType">> => list(any()),
-%%   <<"instanceId">> => string()
-%% }
--type data_integration_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_instance_response() :: #{
-%%   <<"instance">> => instance()
-%% }
--type update_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_integration_flow_request() :: #{
-%%   <<"sources">> => list(data_integration_flow_source()),
-%%   <<"target">> => data_integration_flow_target(),
-%%   <<"transformation">> => data_integration_flow_transformation()
-%% }
--type update_data_integration_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_flow_dataset_source_configuration() :: #{
-%%   <<"datasetIdentifier">> => string(),
-%%   <<"options">> => data_integration_flow_dataset_options()
-%% }
--type data_integration_flow_dataset_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% bill_of_materials_import_job() :: #{
-%%   <<"instanceId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => [string()],
-%%   <<"s3uri">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type bill_of_materials_import_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_lake_namespace_response() :: #{
-%%   <<"namespace">> => data_lake_namespace()
-%% }
--type create_data_lake_namespace_response() :: #{binary() => any()}.
+-type data_integration_flow_transformation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -855,12 +425,406 @@
 
 
 %% Example:
+%% data_lake_dataset_partition_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"transform">> => data_lake_dataset_partition_field_transform()
+%% }
+-type data_lake_dataset_partition_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_partition_field_transform() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type data_lake_dataset_partition_field_transform() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_partition_spec() :: #{
+%%   <<"fields">> => list(data_lake_dataset_partition_field())
+%% }
+-type data_lake_dataset_partition_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_primary_key_field() :: #{
+%%   <<"name">> => string()
+%% }
+-type data_lake_dataset_primary_key_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_schema() :: #{
+%%   <<"fields">> => list(data_lake_dataset_schema_field()),
+%%   <<"name">> => string(),
+%%   <<"primaryKeys">> => list(data_lake_dataset_primary_key_field())
+%% }
+-type data_lake_dataset_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_dataset_schema_field() :: #{
+%%   <<"isRequired">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type data_lake_dataset_schema_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_namespace() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"name">> => string()
+%% }
+-type data_lake_namespace() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_integration_flow_request() :: #{}
+-type delete_data_integration_flow_request() :: #{}.
+
+
+%% Example:
+%% delete_data_integration_flow_response() :: #{
+%%   <<"instanceId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type delete_data_integration_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_dataset_request() :: #{}
+-type delete_data_lake_dataset_request() :: #{}.
+
+
+%% Example:
 %% delete_data_lake_dataset_response() :: #{
 %%   <<"instanceId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string()
 %% }
 -type delete_data_lake_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_namespace_request() :: #{}
+-type delete_data_lake_namespace_request() :: #{}.
+
+
+%% Example:
+%% delete_data_lake_namespace_response() :: #{
+%%   <<"instanceId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type delete_data_lake_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_request() :: #{}
+-type delete_instance_request() :: #{}.
+
+
+%% Example:
+%% delete_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type delete_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_bill_of_materials_import_job_request() :: #{}
+-type get_bill_of_materials_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_bill_of_materials_import_job_response() :: #{
+%%   <<"job">> => bill_of_materials_import_job()
+%% }
+-type get_bill_of_materials_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_integration_event_request() :: #{}
+-type get_data_integration_event_request() :: #{}.
+
+
+%% Example:
+%% get_data_integration_event_response() :: #{
+%%   <<"event">> => data_integration_event()
+%% }
+-type get_data_integration_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_integration_flow_execution_request() :: #{}
+-type get_data_integration_flow_execution_request() :: #{}.
+
+
+%% Example:
+%% get_data_integration_flow_execution_response() :: #{
+%%   <<"flowExecution">> => data_integration_flow_execution()
+%% }
+-type get_data_integration_flow_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_integration_flow_request() :: #{}
+-type get_data_integration_flow_request() :: #{}.
+
+
+%% Example:
+%% get_data_integration_flow_response() :: #{
+%%   <<"flow">> => data_integration_flow()
+%% }
+-type get_data_integration_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_dataset_request() :: #{}
+-type get_data_lake_dataset_request() :: #{}.
+
+
+%% Example:
+%% get_data_lake_dataset_response() :: #{
+%%   <<"dataset">> => data_lake_dataset()
+%% }
+-type get_data_lake_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_lake_namespace_request() :: #{}
+-type get_data_lake_namespace_request() :: #{}.
+
+
+%% Example:
+%% get_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
+%% }
+-type get_data_lake_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_request() :: #{}
+-type get_instance_request() :: #{}.
+
+
+%% Example:
+%% get_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type get_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"state">> => list(any()),
+%%   <<"versionNumber">> => [float()],
+%%   <<"webAppDnsDomain">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_events_request() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_events_response() :: #{
+%%   <<"events">> => list(data_integration_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flow_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flow_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flow_executions_response() :: #{
+%%   <<"flowExecutions">> => list(data_integration_flow_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flow_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_integration_flows_response() :: #{
+%%   <<"flows">> => list(data_integration_flow()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_integration_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_datasets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_datasets_response() :: #{
+%%   <<"datasets">> => list(data_lake_dataset()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_namespaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_namespaces_response() :: #{
+%%   <<"namespaces">> => list(data_lake_namespace()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_namespaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"instanceNameFilter">> => list(string()),
+%%   <<"instanceStateFilter">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"instances">> => list(instance()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_integration_event_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> := string(),
+%%   <<"datasetTarget">> => data_integration_event_dataset_target_configuration(),
+%%   <<"eventGroupId">> := string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"eventType">> := list(any())
+%% }
+-type send_data_integration_event_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_integration_event_response() :: #{
+%%   <<"eventId">> => string()
+%% }
+-type send_data_integration_event_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_data_integration_flow_request() :: #{
+%%   <<"sources">> => list(data_integration_flow_source()),
+%%   <<"target">> => data_integration_flow_target(),
+%%   <<"transformation">> => data_integration_flow_transformation()
+%% }
+-type update_data_integration_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_integration_flow_response() :: #{
+%%   <<"flow">> => data_integration_flow()
+%% }
+-type update_data_integration_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_lake_dataset_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_data_lake_dataset_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -869,218 +833,254 @@
 %% }
 -type update_data_lake_dataset_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_data_lake_namespace_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_data_lake_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_lake_namespace_response() :: #{
+%%   <<"namespace">> => data_lake_namespace()
+%% }
+-type update_data_lake_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instance_request() :: #{
+%%   <<"instanceDescription">> => string(),
+%%   <<"instanceName">> => string()
+%% }
+-type update_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instance_response() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type update_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type create_bill_of_materials_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_integration_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_lake_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_lake_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_integration_flow_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_data_lake_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_data_lake_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_bill_of_materials_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_integration_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_integration_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_integration_flow_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_lake_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_lake_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_integration_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_integration_flow_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_integration_flows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_lake_datasets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_lake_namespaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type send_data_integration_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_data_integration_flow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_data_lake_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_data_lake_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

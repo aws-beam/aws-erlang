@@ -80,108 +80,15 @@
 
 
 %% Example:
-%% connector() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CertificateAuthorityArn">> => string(),
-%%   <<"CertificateEnrollmentPolicyServerEndpoint">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DirectoryId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()],
-%%   <<"VpcInformation">> => vpc_information()
-%% }
--type connector() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_key_attributes_v4() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"CryptoProviders">> => list([string()]()),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"KeyUsageProperty">> => list(),
-%%   <<"MinimalKeyLength">> => [integer()]
-%% }
--type private_key_attributes_v4() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_template_group_access_control_entry_request() :: #{
+%% access_control_entry() :: #{
 %%   <<"AccessRights">> => access_rights(),
-%%   <<"GroupDisplayName">> => string()
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"GroupDisplayName">> => string(),
+%%   <<"GroupSecurityIdentifier">> => string(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type update_template_group_access_control_entry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(connector_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_directory_registration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_directory_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_request() :: #{
-%%   <<"ConnectorArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_group_access_control_entry_request() :: #{}
--type delete_template_group_access_control_entry_request() :: #{}.
-
-
-%% Example:
-%% enrollment_flags_v3() :: #{
-%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
-%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
-%%   <<"NoSecurityExtension">> => [boolean()],
-%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
-%%   <<"UserInteractionRequired">> => [boolean()]
-%% }
--type enrollment_flags_v3() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_v3() :: #{
-%%   <<"CertificateValidity">> => certificate_validity(),
-%%   <<"EnrollmentFlags">> => enrollment_flags_v3(),
-%%   <<"Extensions">> => extensions_v3(),
-%%   <<"GeneralFlags">> => general_flags_v3(),
-%%   <<"HashAlgorithm">> => list(any()),
-%%   <<"PrivateKeyAttributes">> => private_key_attributes_v3(),
-%%   <<"PrivateKeyFlags">> => private_key_flags_v3(),
-%%   <<"SubjectNameFlags">> => subject_name_flags_v3(),
-%%   <<"SupersededTemplates">> => list(string())
-%% }
--type template_v3() :: #{binary() => any()}.
-
-
-%% Example:
-%% general_flags_v2() :: #{
-%%   <<"AutoEnrollment">> => [boolean()],
-%%   <<"MachineType">> => [boolean()]
-%% }
--type general_flags_v2() :: #{binary() => any()}.
+-type access_control_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -197,35 +104,124 @@
 
 
 %% Example:
-%% enrollment_flags_v4() :: #{
-%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
-%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
-%%   <<"NoSecurityExtension">> => [boolean()],
-%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
-%%   <<"UserInteractionRequired">> => [boolean()]
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type enrollment_flags_v4() :: #{binary() => any()}.
-
-%% Example:
-%% get_directory_registration_request() :: #{}
--type get_directory_registration_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% template_revision() :: #{
-%%   <<"MajorRevision">> => [integer()],
-%%   <<"MinorRevision">> => [integer()]
+%% access_rights() :: #{
+%%   <<"AutoEnroll">> => list(any()),
+%%   <<"Enroll">> => list(any())
 %% }
--type template_revision() :: #{binary() => any()}.
+-type access_rights() :: #{binary() => any()}.
 
 
 %% Example:
-%% private_key_flags_v2() :: #{
-%%   <<"ClientVersion">> => list(any()),
-%%   <<"ExportableKey">> => [boolean()],
-%%   <<"StrongKeyProtectionRequired">> => [boolean()]
+%% application_policies() :: #{
+%%   <<"Critical">> => [boolean()],
+%%   <<"Policies">> => list(list())
 %% }
--type private_key_flags_v2() :: #{binary() => any()}.
+-type application_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate_validity() :: #{
+%%   <<"RenewalPeriod">> => validity_period(),
+%%   <<"ValidityPeriod">> => validity_period()
+%% }
+-type certificate_validity() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CertificateEnrollmentPolicyServerEndpoint">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DirectoryId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"VpcInformation">> => vpc_information()
+%% }
+-type connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CertificateEnrollmentPolicyServerEndpoint">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DirectoryId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
+%%   <<"VpcInformation">> => vpc_information()
+%% }
+-type connector_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcInformation">> := vpc_information()
+%% }
+-type create_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_response() :: #{
+%%   <<"ConnectorArn">> => string()
+%% }
+-type create_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_directory_registration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_directory_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_directory_registration_response() :: #{
+%%   <<"DirectoryRegistrationArn">> => string()
+%% }
+-type create_directory_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_principal_name_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type create_service_principal_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_group_access_control_entry_request() :: #{
+%%   <<"AccessRights">> := access_rights(),
+%%   <<"ClientToken">> => string(),
+%%   <<"GroupDisplayName">> := string(),
+%%   <<"GroupSecurityIdentifier">> := string()
+%% }
+-type create_template_group_access_control_entry_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,10 +236,42 @@
 
 
 %% Example:
-%% get_template_response() :: #{
-%%   <<"Template">> => template()
+%% create_template_response() :: #{
+%%   <<"TemplateArn">> => string()
 %% }
--type get_template_response() :: #{binary() => any()}.
+-type create_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connector_request() :: #{}
+-type delete_connector_request() :: #{}.
+
+%% Example:
+%% delete_directory_registration_request() :: #{}
+-type delete_directory_registration_request() :: #{}.
+
+%% Example:
+%% delete_service_principal_name_request() :: #{}
+-type delete_service_principal_name_request() :: #{}.
+
+%% Example:
+%% delete_template_group_access_control_entry_request() :: #{}
+-type delete_template_group_access_control_entry_request() :: #{}.
+
+%% Example:
+%% delete_template_request() :: #{}
+-type delete_template_request() :: #{}.
+
+
+%% Example:
+%% directory_registration() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DirectoryId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type directory_registration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -259,29 +287,154 @@
 
 
 %% Example:
-%% create_template_group_access_control_entry_request() :: #{
-%%   <<"AccessRights">> := access_rights(),
-%%   <<"ClientToken">> => string(),
-%%   <<"GroupDisplayName">> := string(),
-%%   <<"GroupSecurityIdentifier">> := string()
+%% enrollment_flags_v2() :: #{
+%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
+%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
+%%   <<"NoSecurityExtension">> => [boolean()],
+%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
+%%   <<"UserInteractionRequired">> => [boolean()]
 %% }
--type create_template_group_access_control_entry_request() :: #{binary() => any()}.
+-type enrollment_flags_v2() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_connectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% enrollment_flags_v3() :: #{
+%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
+%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
+%%   <<"NoSecurityExtension">> => [boolean()],
+%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
+%%   <<"UserInteractionRequired">> => [boolean()]
 %% }
--type list_connectors_request() :: #{binary() => any()}.
+-type enrollment_flags_v3() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_template_request() :: #{
-%%   <<"Definition">> => list(),
-%%   <<"ReenrollAllCertificateHolders">> => [boolean()]
+%% enrollment_flags_v4() :: #{
+%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
+%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
+%%   <<"NoSecurityExtension">> => [boolean()],
+%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
+%%   <<"UserInteractionRequired">> => [boolean()]
 %% }
--type update_template_request() :: #{binary() => any()}.
+-type enrollment_flags_v4() :: #{binary() => any()}.
+
+
+%% Example:
+%% extensions_v2() :: #{
+%%   <<"ApplicationPolicies">> => application_policies(),
+%%   <<"KeyUsage">> => key_usage()
+%% }
+-type extensions_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% extensions_v3() :: #{
+%%   <<"ApplicationPolicies">> => application_policies(),
+%%   <<"KeyUsage">> => key_usage()
+%% }
+-type extensions_v3() :: #{binary() => any()}.
+
+
+%% Example:
+%% extensions_v4() :: #{
+%%   <<"ApplicationPolicies">> => application_policies(),
+%%   <<"KeyUsage">> => key_usage()
+%% }
+-type extensions_v4() :: #{binary() => any()}.
+
+
+%% Example:
+%% general_flags_v2() :: #{
+%%   <<"AutoEnrollment">> => [boolean()],
+%%   <<"MachineType">> => [boolean()]
+%% }
+-type general_flags_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% general_flags_v3() :: #{
+%%   <<"AutoEnrollment">> => [boolean()],
+%%   <<"MachineType">> => [boolean()]
+%% }
+-type general_flags_v3() :: #{binary() => any()}.
+
+
+%% Example:
+%% general_flags_v4() :: #{
+%%   <<"AutoEnrollment">> => [boolean()],
+%%   <<"MachineType">> => [boolean()]
+%% }
+-type general_flags_v4() :: #{binary() => any()}.
+
+%% Example:
+%% get_connector_request() :: #{}
+-type get_connector_request() :: #{}.
+
+
+%% Example:
+%% get_connector_response() :: #{
+%%   <<"Connector">> => connector()
+%% }
+-type get_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_directory_registration_request() :: #{}
+-type get_directory_registration_request() :: #{}.
+
+
+%% Example:
+%% get_directory_registration_response() :: #{
+%%   <<"DirectoryRegistration">> => directory_registration()
+%% }
+-type get_directory_registration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_principal_name_request() :: #{}
+-type get_service_principal_name_request() :: #{}.
+
+
+%% Example:
+%% get_service_principal_name_response() :: #{
+%%   <<"ServicePrincipalName">> => service_principal_name()
+%% }
+-type get_service_principal_name_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_group_access_control_entry_request() :: #{}
+-type get_template_group_access_control_entry_request() :: #{}.
+
+
+%% Example:
+%% get_template_group_access_control_entry_response() :: #{
+%%   <<"AccessControlEntry">> => access_control_entry()
+%% }
+-type get_template_group_access_control_entry_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_request() :: #{}
+-type get_template_request() :: #{}.
+
+
+%% Example:
+%% get_template_response() :: #{
+%%   <<"Template">> => template()
+%% }
+-type get_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_usage() :: #{
+%%   <<"Critical">> => [boolean()],
+%%   <<"UsageFlags">> => key_usage_flags()
+%% }
+-type key_usage() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,26 +449,52 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
+%% key_usage_property_flags() :: #{
+%%   <<"Decrypt">> => [boolean()],
+%%   <<"KeyAgreement">> => [boolean()],
+%%   <<"Sign">> => [boolean()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type key_usage_property_flags() :: #{binary() => any()}.
 
 
 %% Example:
-%% subject_name_flags_v4() :: #{
-%%   <<"RequireCommonName">> => [boolean()],
-%%   <<"RequireDirectoryPath">> => [boolean()],
-%%   <<"RequireDnsAsCn">> => [boolean()],
-%%   <<"RequireEmail">> => [boolean()],
-%%   <<"SanRequireDirectoryGuid">> => [boolean()],
-%%   <<"SanRequireDns">> => [boolean()],
-%%   <<"SanRequireDomainDns">> => [boolean()],
-%%   <<"SanRequireEmail">> => [boolean()],
-%%   <<"SanRequireSpn">> => [boolean()],
-%%   <<"SanRequireUpn">> => [boolean()]
+%% list_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type subject_name_flags_v4() :: #{binary() => any()}.
+-type list_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"Connectors">> => list(connector_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_registrations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_directory_registrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_registrations_response() :: #{
+%%   <<"DirectoryRegistrations">> => list(directory_registration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_directory_registrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_principal_names_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_principal_names_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -325,37 +504,111 @@
 %% }
 -type list_service_principal_names_response() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
-%% enrollment_flags_v2() :: #{
-%%   <<"EnableKeyReuseOnNtTokenKeysetStorageFull">> => [boolean()],
-%%   <<"IncludeSymmetricAlgorithms">> => [boolean()],
-%%   <<"NoSecurityExtension">> => [boolean()],
-%%   <<"RemoveInvalidCertificateFromPersonalStore">> => [boolean()],
-%%   <<"UserInteractionRequired">> => [boolean()]
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type enrollment_flags_v2() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% extensions_v3() :: #{
-%%   <<"ApplicationPolicies">> => application_policies(),
-%%   <<"KeyUsage">> => key_usage()
+%% list_template_group_access_control_entries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type extensions_v3() :: #{binary() => any()}.
-
-%% Example:
-%% delete_template_request() :: #{}
--type delete_template_request() :: #{}.
+-type list_template_group_access_control_entries_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
+%% list_template_group_access_control_entries_response() :: #{
+%%   <<"AccessControlEntries">> => list(access_control_entry_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type list_template_group_access_control_entries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_request() :: #{
+%%   <<"ConnectorArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Templates">> => list(template_summary())
+%% }
+-type list_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_attributes_v2() :: #{
+%%   <<"CryptoProviders">> => list([string()]()),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"MinimalKeyLength">> => [integer()]
+%% }
+-type private_key_attributes_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_attributes_v3() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"CryptoProviders">> => list([string()]()),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsageProperty">> => list(),
+%%   <<"MinimalKeyLength">> => [integer()]
+%% }
+-type private_key_attributes_v3() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_attributes_v4() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"CryptoProviders">> => list([string()]()),
+%%   <<"KeySpec">> => list(any()),
+%%   <<"KeyUsageProperty">> => list(),
+%%   <<"MinimalKeyLength">> => [integer()]
+%% }
+-type private_key_attributes_v4() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_flags_v2() :: #{
+%%   <<"ClientVersion">> => list(any()),
+%%   <<"ExportableKey">> => [boolean()],
+%%   <<"StrongKeyProtectionRequired">> => [boolean()]
+%% }
+-type private_key_flags_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_flags_v3() :: #{
+%%   <<"ClientVersion">> => list(any()),
+%%   <<"ExportableKey">> => [boolean()],
+%%   <<"RequireAlternateSignatureAlgorithm">> => [boolean()],
+%%   <<"StrongKeyProtectionRequired">> => [boolean()]
+%% }
+-type private_key_flags_v3() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_key_flags_v4() :: #{
+%%   <<"ClientVersion">> => list(any()),
+%%   <<"ExportableKey">> => [boolean()],
+%%   <<"RequireAlternateSignatureAlgorithm">> => [boolean()],
+%%   <<"RequireSameKeyRenewal">> => [boolean()],
+%%   <<"StrongKeyProtectionRequired">> => [boolean()],
+%%   <<"UseLegacyProvider">> => [boolean()]
+%% }
+-type private_key_flags_v4() :: #{binary() => any()}.
 
 
 %% Example:
@@ -365,6 +618,18 @@
 %%   <<"ResourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_principal_name() :: #{
+%%   <<"ConnectorArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DirectoryRegistrationArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type service_principal_name() :: #{binary() => any()}.
 
 
 %% Example:
@@ -380,21 +645,6 @@
 
 
 %% Example:
-%% extensions_v2() :: #{
-%%   <<"ApplicationPolicies">> => application_policies(),
-%%   <<"KeyUsage">> => key_usage()
-%% }
--type extensions_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_template_group_access_control_entry_response() :: #{
-%%   <<"AccessControlEntry">> => access_control_entry()
-%% }
--type get_template_group_access_control_entry_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"QuotaCode">> => [string()],
@@ -406,184 +656,19 @@
 
 
 %% Example:
-%% key_usage_property_flags() :: #{
-%%   <<"Decrypt">> => [boolean()],
-%%   <<"KeyAgreement">> => [boolean()],
-%%   <<"Sign">> => [boolean()]
+%% subject_name_flags_v2() :: #{
+%%   <<"RequireCommonName">> => [boolean()],
+%%   <<"RequireDirectoryPath">> => [boolean()],
+%%   <<"RequireDnsAsCn">> => [boolean()],
+%%   <<"RequireEmail">> => [boolean()],
+%%   <<"SanRequireDirectoryGuid">> => [boolean()],
+%%   <<"SanRequireDns">> => [boolean()],
+%%   <<"SanRequireDomainDns">> => [boolean()],
+%%   <<"SanRequireEmail">> => [boolean()],
+%%   <<"SanRequireSpn">> => [boolean()],
+%%   <<"SanRequireUpn">> => [boolean()]
 %% }
--type key_usage_property_flags() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_v4() :: #{
-%%   <<"CertificateValidity">> => certificate_validity(),
-%%   <<"EnrollmentFlags">> => enrollment_flags_v4(),
-%%   <<"Extensions">> => extensions_v4(),
-%%   <<"GeneralFlags">> => general_flags_v4(),
-%%   <<"HashAlgorithm">> => list(any()),
-%%   <<"PrivateKeyAttributes">> => private_key_attributes_v4(),
-%%   <<"PrivateKeyFlags">> => private_key_flags_v4(),
-%%   <<"SubjectNameFlags">> => subject_name_flags_v4(),
-%%   <<"SupersededTemplates">> => list(string())
-%% }
--type template_v4() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ConnectorArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Definition">> => list(),
-%%   <<"Name">> => string(),
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"PolicySchema">> => [integer()],
-%%   <<"Revision">> => template_revision(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_key_attributes_v2() :: #{
-%%   <<"CryptoProviders">> => list([string()]()),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"MinimalKeyLength">> => [integer()]
-%% }
--type private_key_attributes_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% directory_registration() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DirectoryId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type directory_registration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_directory_registration_request() :: #{}
--type delete_directory_registration_request() :: #{}.
-
-
-%% Example:
-%% service_principal_name() :: #{
-%%   <<"ConnectorArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DirectoryRegistrationArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type service_principal_name() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_principal_name_request() :: #{}
--type get_service_principal_name_request() :: #{}.
-
-
-%% Example:
-%% get_service_principal_name_response() :: #{
-%%   <<"ServicePrincipalName">> => service_principal_name()
-%% }
--type get_service_principal_name_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_control_entry() :: #{
-%%   <<"AccessRights">> => access_rights(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"GroupDisplayName">> => string(),
-%%   <<"GroupSecurityIdentifier">> => string(),
-%%   <<"TemplateArn">> => string(),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type access_control_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_response() :: #{
-%%   <<"ConnectorArn">> => string()
-%% }
--type create_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_directory_registrations_response() :: #{
-%%   <<"DirectoryRegistrations">> => list(directory_registration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_directory_registrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_directory_registration_response() :: #{
-%%   <<"DirectoryRegistrationArn">> => string()
-%% }
--type create_directory_registration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connector_request() :: #{}
--type get_connector_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_directory_registration_response() :: #{
-%%   <<"DirectoryRegistration">> => directory_registration()
-%% }
--type get_directory_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_principal_name_request() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type create_service_principal_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_key_attributes_v3() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"CryptoProviders">> => list([string()]()),
-%%   <<"KeySpec">> => list(any()),
-%%   <<"KeyUsageProperty">> => list(),
-%%   <<"MinimalKeyLength">> => [integer()]
-%% }
--type private_key_attributes_v3() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_principal_name_request() :: #{}
--type delete_service_principal_name_request() :: #{}.
-
-%% Example:
-%% get_template_group_access_control_entry_request() :: #{}
--type get_template_group_access_control_entry_request() :: #{}.
-
-
-%% Example:
-%% list_template_group_access_control_entries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_template_group_access_control_entries_request() :: #{binary() => any()}.
+-type subject_name_flags_v2() :: #{binary() => any()}.
 
 
 %% Example:
@@ -603,170 +688,7 @@
 
 
 %% Example:
-%% validity_period() :: #{
-%%   <<"Period">> => [float()],
-%%   <<"PeriodType">> => list(any())
-%% }
--type validity_period() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_directory_registrations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_directory_registrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_policies() :: #{
-%%   <<"Critical">> => [boolean()],
-%%   <<"Policies">> => list(list())
-%% }
--type application_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_request() :: #{
-%%   <<"CertificateAuthorityArn">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcInformation">> := vpc_information()
-%% }
--type create_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Templates">> => list(template_summary())
-%% }
--type list_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CertificateAuthorityArn">> => string(),
-%%   <<"CertificateEnrollmentPolicyServerEndpoint">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DirectoryId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()],
-%%   <<"VpcInformation">> => vpc_information()
-%% }
--type connector_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_request() :: #{}
--type get_template_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_template_group_access_control_entries_response() :: #{
-%%   <<"AccessControlEntries">> => list(access_control_entry_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_template_group_access_control_entries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_rights() :: #{
-%%   <<"AutoEnroll">> => list(any()),
-%%   <<"Enroll">> => list(any())
-%% }
--type access_rights() :: #{binary() => any()}.
-
-
-%% Example:
-%% extensions_v4() :: #{
-%%   <<"ApplicationPolicies">> => application_policies(),
-%%   <<"KeyUsage">> => key_usage()
-%% }
--type extensions_v4() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ServiceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% general_flags_v4() :: #{
-%%   <<"AutoEnrollment">> => [boolean()],
-%%   <<"MachineType">> => [boolean()]
-%% }
--type general_flags_v4() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connector_response() :: #{
-%%   <<"Connector">> => connector()
-%% }
--type get_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_v2() :: #{
-%%   <<"CertificateValidity">> => certificate_validity(),
-%%   <<"EnrollmentFlags">> => enrollment_flags_v2(),
-%%   <<"Extensions">> => extensions_v2(),
-%%   <<"GeneralFlags">> => general_flags_v2(),
-%%   <<"PrivateKeyAttributes">> => private_key_attributes_v2(),
-%%   <<"PrivateKeyFlags">> => private_key_flags_v2(),
-%%   <<"SubjectNameFlags">> => subject_name_flags_v2(),
-%%   <<"SupersededTemplates">> => list(string())
-%% }
--type template_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% private_key_flags_v4() :: #{
-%%   <<"ClientVersion">> => list(any()),
-%%   <<"ExportableKey">> => [boolean()],
-%%   <<"RequireAlternateSignatureAlgorithm">> => [boolean()],
-%%   <<"RequireSameKeyRenewal">> => [boolean()],
-%%   <<"StrongKeyProtectionRequired">> => [boolean()],
-%%   <<"UseLegacyProvider">> => [boolean()]
-%% }
--type private_key_flags_v4() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_principal_names_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_service_principal_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% subject_name_flags_v2() :: #{
+%% subject_name_flags_v4() :: #{
 %%   <<"RequireCommonName">> => [boolean()],
 %%   <<"RequireDirectoryPath">> => [boolean()],
 %%   <<"RequireDnsAsCn">> => [boolean()],
@@ -778,18 +700,14 @@
 %%   <<"SanRequireSpn">> => [boolean()],
 %%   <<"SanRequireUpn">> => [boolean()]
 %% }
--type subject_name_flags_v2() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connector_request() :: #{}
--type delete_connector_request() :: #{}.
+-type subject_name_flags_v4() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_template_response() :: #{
-%%   <<"TemplateArn">> => string()
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type create_template_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,231 +727,313 @@
 
 
 %% Example:
+%% template_revision() :: #{
+%%   <<"MajorRevision">> => [integer()],
+%%   <<"MinorRevision">> => [integer()]
+%% }
+-type template_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectorArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Definition">> => list(),
+%%   <<"Name">> => string(),
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"PolicySchema">> => [integer()],
+%%   <<"Revision">> => template_revision(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_v2() :: #{
+%%   <<"CertificateValidity">> => certificate_validity(),
+%%   <<"EnrollmentFlags">> => enrollment_flags_v2(),
+%%   <<"Extensions">> => extensions_v2(),
+%%   <<"GeneralFlags">> => general_flags_v2(),
+%%   <<"PrivateKeyAttributes">> => private_key_attributes_v2(),
+%%   <<"PrivateKeyFlags">> => private_key_flags_v2(),
+%%   <<"SubjectNameFlags">> => subject_name_flags_v2(),
+%%   <<"SupersededTemplates">> => list(string())
+%% }
+-type template_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_v3() :: #{
+%%   <<"CertificateValidity">> => certificate_validity(),
+%%   <<"EnrollmentFlags">> => enrollment_flags_v3(),
+%%   <<"Extensions">> => extensions_v3(),
+%%   <<"GeneralFlags">> => general_flags_v3(),
+%%   <<"HashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyAttributes">> => private_key_attributes_v3(),
+%%   <<"PrivateKeyFlags">> => private_key_flags_v3(),
+%%   <<"SubjectNameFlags">> => subject_name_flags_v3(),
+%%   <<"SupersededTemplates">> => list(string())
+%% }
+-type template_v3() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_v4() :: #{
+%%   <<"CertificateValidity">> => certificate_validity(),
+%%   <<"EnrollmentFlags">> => enrollment_flags_v4(),
+%%   <<"Extensions">> => extensions_v4(),
+%%   <<"GeneralFlags">> => general_flags_v4(),
+%%   <<"HashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyAttributes">> => private_key_attributes_v4(),
+%%   <<"PrivateKeyFlags">> => private_key_flags_v4(),
+%%   <<"SubjectNameFlags">> => subject_name_flags_v4(),
+%%   <<"SupersededTemplates">> => list(string())
+%% }
+-type template_v4() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ServiceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_group_access_control_entry_request() :: #{
+%%   <<"AccessRights">> => access_rights(),
+%%   <<"GroupDisplayName">> => string()
+%% }
+-type update_template_group_access_control_entry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_template_request() :: #{
+%%   <<"Definition">> => list(),
+%%   <<"ReenrollAllCertificateHolders">> => [boolean()]
+%% }
+-type update_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validity_period() :: #{
+%%   <<"Period">> => [float()],
+%%   <<"PeriodType">> => list(any())
+%% }
+-type validity_period() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_information() :: #{
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type vpc_information() :: #{binary() => any()}.
 
-
-%% Example:
-%% private_key_flags_v3() :: #{
-%%   <<"ClientVersion">> => list(any()),
-%%   <<"ExportableKey">> => [boolean()],
-%%   <<"RequireAlternateSignatureAlgorithm">> => [boolean()],
-%%   <<"StrongKeyProtectionRequired">> => [boolean()]
-%% }
--type private_key_flags_v3() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_validity() :: #{
-%%   <<"RenewalPeriod">> => validity_period(),
-%%   <<"ValidityPeriod">> => validity_period()
-%% }
--type certificate_validity() :: #{binary() => any()}.
-
-
-%% Example:
-%% general_flags_v3() :: #{
-%%   <<"AutoEnrollment">> => [boolean()],
-%%   <<"MachineType">> => [boolean()]
-%% }
--type general_flags_v3() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_usage() :: #{
-%%   <<"Critical">> => [boolean()],
-%%   <<"UsageFlags">> => key_usage_flags()
-%% }
--type key_usage() :: #{binary() => any()}.
-
 -type create_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_directory_registration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_principal_name_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_template_group_access_control_entry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_directory_registration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_principal_name_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_template_group_access_control_entry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_directory_registration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_principal_name_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_group_access_control_entry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_connectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_directory_registrations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_principal_names_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_template_group_access_control_entries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_template_group_access_control_entry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

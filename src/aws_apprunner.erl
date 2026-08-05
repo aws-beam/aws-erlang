@@ -115,53 +115,143 @@
 
 
 %% Example:
-%% custom_domain() :: #{
-%%   <<"CertificateValidationRecords">> => list(certificate_validation_record()),
-%%   <<"DomainName">> => string(),
+%% associate_custom_domain_request() :: #{
+%%   <<"DomainName">> := string(),
 %%   <<"EnableWWWSubdomain">> => boolean(),
+%%   <<"ServiceArn">> := string()
+%% }
+-type associate_custom_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_custom_domain_response() :: #{
+%%   <<"CustomDomain">> => custom_domain(),
+%%   <<"DNSTarget">> => string(),
+%%   <<"ServiceArn">> => string(),
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
+%% }
+-type associate_custom_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"AccessRoleArn">> => string(),
+%%   <<"ConnectionArn">> => string()
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_configuration() :: #{
+%%   <<"AutoScalingConfigurationArn">> => string(),
+%%   <<"AutoScalingConfigurationName">> => string(),
+%%   <<"AutoScalingConfigurationRevision">> => integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedAt">> => non_neg_integer(),
+%%   <<"HasAssociatedService">> => boolean(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Latest">> => boolean(),
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
 %%   <<"Status">> => list(any())
 %% }
--type custom_domain() :: #{binary() => any()}.
+-type auto_scaling_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"KmsKey">> => string()
+%% auto_scaling_configuration_summary() :: #{
+%%   <<"AutoScalingConfigurationArn">> => string(),
+%%   <<"AutoScalingConfigurationName">> => string(),
+%%   <<"AutoScalingConfigurationRevision">> => integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"HasAssociatedService">> => boolean(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Status">> => list(any())
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type auto_scaling_configuration_summary() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% certificate_validation_record() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type certificate_validation_record() :: #{binary() => any()}.
 
 %% Example:
-%% delete_observability_configuration_request() :: #{
-%%   <<"ObservabilityConfigurationArn">> := string()
+%% code_configuration() :: #{
+%%   <<"CodeConfigurationValues">> => code_configuration_values(),
+%%   <<"ConfigurationSource">> => list(any())
 %% }
--type delete_observability_configuration_request() :: #{binary() => any()}.
+-type code_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_observability_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ObservabilityConfigurationSummaryList">> => list(observability_configuration_summary())
+%% code_configuration_values() :: #{
+%%   <<"BuildCommand">> => string(),
+%%   <<"Port">> => string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"RuntimeEnvironmentSecrets">> => map(),
+%%   <<"RuntimeEnvironmentVariables">> => map(),
+%%   <<"StartCommand">> => string()
 %% }
--type list_observability_configurations_response() :: #{binary() => any()}.
+-type code_configuration_values() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_vpc_configuration() :: #{
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcId">> => string()
+%% code_repository() :: #{
+%%   <<"CodeConfiguration">> => code_configuration(),
+%%   <<"RepositoryUrl">> => string(),
+%%   <<"SourceCodeVersion">> => source_code_version(),
+%%   <<"SourceDirectory">> => string()
 %% }
--type ingress_vpc_configuration() :: #{binary() => any()}.
+-type code_repository() :: #{binary() => any()}.
 
 %% Example:
-%% vpc_ingress_connection_summary() :: #{
-%%   <<"ServiceArn">> => string(),
-%%   <<"VpcIngressConnectionArn">> => string()
+%% connection() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type vpc_ingress_connection_summary() :: #{binary() => any()}.
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% connection_summary() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type connection_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_scaling_configuration_request() :: #{
+%%   <<"AutoScalingConfigurationName">> := string(),
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_auto_scaling_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_scaling_configuration_response() :: #{
+%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
+%% }
+-type create_auto_scaling_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"ConnectionName">> := string(),
+%%   <<"ProviderType">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_response() :: #{
+%%   <<"Connection">> => connection()
+%% }
+-type create_connection_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_observability_configuration_request() :: #{
@@ -172,10 +262,40 @@
 -type create_observability_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_auto_scaling_configuration_request() :: #{
-%%   <<"AutoScalingConfigurationArn">> := string()
+%% create_observability_configuration_response() :: #{
+%%   <<"ObservabilityConfiguration">> => observability_configuration()
 %% }
--type describe_auto_scaling_configuration_request() :: #{binary() => any()}.
+-type create_observability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"AutoScalingConfigurationArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"HealthCheckConfiguration">> => health_check_configuration(),
+%%   <<"InstanceConfiguration">> => instance_configuration(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"ObservabilityConfiguration">> => service_observability_configuration(),
+%%   <<"ServiceName">> := string(),
+%%   <<"SourceConfiguration">> := source_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Service">> => service()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_connector_request() :: #{
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> := list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConnectorName">> := string()
+%% }
+-type create_vpc_connector_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_vpc_connector_response() :: #{
@@ -184,89 +304,114 @@
 -type create_vpc_connector_response() :: #{binary() => any()}.
 
 %% Example:
-%% code_configuration() :: #{
-%%   <<"CodeConfigurationValues">> => code_configuration_values(),
-%%   <<"ConfigurationSource">> => list(any())
+%% create_vpc_ingress_connection_request() :: #{
+%%   <<"IngressVpcConfiguration">> := ingress_vpc_configuration(),
+%%   <<"ServiceArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcIngressConnectionName">> := string()
 %% }
--type code_configuration() :: #{binary() => any()}.
+-type create_vpc_ingress_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_observability_configuration_request() :: #{
-%%   <<"ObservabilityConfigurationArn">> := string()
-%% }
--type describe_observability_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_default_auto_scaling_configuration_response() :: #{
-%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
-%% }
--type update_default_auto_scaling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_dns_target() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"VpcId">> => string(),
-%%   <<"VpcIngressConnectionArn">> => string()
-%% }
--type vpc_dns_target() :: #{binary() => any()}.
-
-%% Example:
-%% describe_observability_configuration_response() :: #{
-%%   <<"ObservabilityConfiguration">> => observability_configuration()
-%% }
--type describe_observability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpc_ingress_connection_response() :: #{
+%% create_vpc_ingress_connection_response() :: #{
 %%   <<"VpcIngressConnection">> => vpc_ingress_connection()
 %% }
--type update_vpc_ingress_connection_response() :: #{binary() => any()}.
+-type create_vpc_ingress_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% custom_domain() :: #{
+%%   <<"CertificateValidationRecords">> => list(certificate_validation_record()),
+%%   <<"DomainName">> => string(),
+%%   <<"EnableWWWSubdomain">> => boolean(),
+%%   <<"Status">> => list(any())
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type custom_domain() :: #{binary() => any()}.
 
 %% Example:
-%% describe_service_request() :: #{
-%%   <<"ServiceArn">> := string()
+%% delete_auto_scaling_configuration_request() :: #{
+%%   <<"AutoScalingConfigurationArn">> := string(),
+%%   <<"DeleteAllRevisions">> => boolean()
 %% }
--type describe_service_request() :: #{binary() => any()}.
+-type delete_auto_scaling_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% image_repository() :: #{
-%%   <<"ImageConfiguration">> => image_configuration(),
-%%   <<"ImageIdentifier">> => string(),
-%%   <<"ImageRepositoryType">> => list(any())
+%% delete_auto_scaling_configuration_response() :: #{
+%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
 %% }
--type image_repository() :: #{binary() => any()}.
+-type delete_auto_scaling_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_connections_response() :: #{
-%%   <<"ConnectionSummaryList">> => list(connection_summary()),
-%%   <<"NextToken">> => string()
+%% delete_connection_request() :: #{
+%%   <<"ConnectionArn">> := string()
 %% }
--type list_connections_response() :: #{binary() => any()}.
+-type delete_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% source_code_version() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
+%% delete_connection_response() :: #{
+%%   <<"Connection">> => connection()
 %% }
--type source_code_version() :: #{binary() => any()}.
+-type delete_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_observability_configuration_response() :: #{
+%% delete_observability_configuration_request() :: #{
+%%   <<"ObservabilityConfigurationArn">> := string()
+%% }
+-type delete_observability_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_observability_configuration_response() :: #{
 %%   <<"ObservabilityConfiguration">> => observability_configuration()
 %% }
--type create_observability_configuration_response() :: #{binary() => any()}.
+-type delete_observability_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% pause_service_request() :: #{
+%% delete_service_request() :: #{
 %%   <<"ServiceArn">> := string()
 %% }
--type pause_service_request() :: #{binary() => any()}.
+-type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Service">> => service()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_connector_request() :: #{
+%%   <<"VpcConnectorArn">> := string()
+%% }
+-type delete_vpc_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_connector_response() :: #{
+%%   <<"VpcConnector">> => vpc_connector()
+%% }
+-type delete_vpc_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_ingress_connection_request() :: #{
+%%   <<"VpcIngressConnectionArn">> := string()
+%% }
+-type delete_vpc_ingress_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_ingress_connection_response() :: #{
+%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
+%% }
+-type delete_vpc_ingress_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_scaling_configuration_request() :: #{
+%%   <<"AutoScalingConfigurationArn">> := string()
+%% }
+-type describe_auto_scaling_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_scaling_configuration_response() :: #{
+%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
+%% }
+-type describe_auto_scaling_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_custom_domains_request() :: #{
@@ -277,23 +422,370 @@
 -type describe_custom_domains_request() :: #{binary() => any()}.
 
 %% Example:
-%% vpc_connector() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DeletedAt">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Status">> => list(any()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"VpcConnectorArn">> => string(),
-%%   <<"VpcConnectorName">> => string(),
-%%   <<"VpcConnectorRevision">> => integer()
+%% describe_custom_domains_response() :: #{
+%%   <<"CustomDomains">> => list(custom_domain()),
+%%   <<"DNSTarget">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceArn">> => string(),
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
 %% }
--type vpc_connector() :: #{binary() => any()}.
+-type describe_custom_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observability_configuration_request() :: #{
+%%   <<"ObservabilityConfigurationArn">> := string()
+%% }
+-type describe_observability_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observability_configuration_response() :: #{
+%%   <<"ObservabilityConfiguration">> => observability_configuration()
+%% }
+-type describe_observability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_request() :: #{
+%%   <<"ServiceArn">> := string()
+%% }
+-type describe_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_response() :: #{
+%%   <<"Service">> => service()
+%% }
+-type describe_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_connector_request() :: #{
+%%   <<"VpcConnectorArn">> := string()
+%% }
+-type describe_vpc_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_connector_response() :: #{
+%%   <<"VpcConnector">> => vpc_connector()
+%% }
+-type describe_vpc_connector_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_ingress_connection_request() :: #{
 %%   <<"VpcIngressConnectionArn">> := string()
 %% }
 -type describe_vpc_ingress_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_ingress_connection_response() :: #{
+%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
+%% }
+-type describe_vpc_ingress_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_custom_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"ServiceArn">> := string()
+%% }
+-type disassociate_custom_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_custom_domain_response() :: #{
+%%   <<"CustomDomain">> => custom_domain(),
+%%   <<"DNSTarget">> => string(),
+%%   <<"ServiceArn">> => string(),
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
+%% }
+-type disassociate_custom_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% egress_configuration() :: #{
+%%   <<"EgressType">> => list(any()),
+%%   <<"VpcConnectorArn">> => string()
+%% }
+-type egress_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KmsKey">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_configuration() :: #{
+%%   <<"HealthyThreshold">> => integer(),
+%%   <<"Interval">> => integer(),
+%%   <<"Path">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"Timeout">> => integer(),
+%%   <<"UnhealthyThreshold">> => integer()
+%% }
+-type health_check_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% image_configuration() :: #{
+%%   <<"Port">> => string(),
+%%   <<"RuntimeEnvironmentSecrets">> => map(),
+%%   <<"RuntimeEnvironmentVariables">> => map(),
+%%   <<"StartCommand">> => string()
+%% }
+-type image_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% image_repository() :: #{
+%%   <<"ImageConfiguration">> => image_configuration(),
+%%   <<"ImageIdentifier">> => string(),
+%%   <<"ImageRepositoryType">> => list(any())
+%% }
+-type image_repository() :: #{binary() => any()}.
+
+%% Example:
+%% ingress_configuration() :: #{
+%%   <<"IsPubliclyAccessible">> => boolean()
+%% }
+-type ingress_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ingress_vpc_configuration() :: #{
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type ingress_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% instance_configuration() :: #{
+%%   <<"Cpu">> => string(),
+%%   <<"InstanceRoleArn">> => string(),
+%%   <<"Memory">> => string()
+%% }
+-type instance_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_scaling_configurations_request() :: #{
+%%   <<"AutoScalingConfigurationName">> => string(),
+%%   <<"LatestOnly">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_auto_scaling_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_auto_scaling_configurations_response() :: #{
+%%   <<"AutoScalingConfigurationSummaryList">> => list(auto_scaling_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_auto_scaling_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_request() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_response() :: #{
+%%   <<"ConnectionSummaryList">> => list(connection_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_observability_configurations_request() :: #{
+%%   <<"LatestOnly">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObservabilityConfigurationName">> => string()
+%% }
+-type list_observability_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_observability_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObservabilityConfigurationSummaryList">> => list(observability_configuration_summary())
+%% }
+-type list_observability_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceArn">> := string()
+%% }
+-type list_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OperationSummaryList">> => list(operation_summary())
+%% }
+-type list_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_for_auto_scaling_configuration_request() :: #{
+%%   <<"AutoScalingConfigurationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_for_auto_scaling_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_for_auto_scaling_configuration_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceArnList">> => list(string())
+%% }
+-type list_services_for_auto_scaling_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceSummaryList">> => list(service_summary())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_connectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_connectors_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcConnectors">> => list(vpc_connector())
+%% }
+-type list_vpc_connectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_ingress_connections_filter() :: #{
+%%   <<"ServiceArn">> => string(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type list_vpc_ingress_connections_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_ingress_connections_request() :: #{
+%%   <<"Filter">> => list_vpc_ingress_connections_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_ingress_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_ingress_connections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcIngressConnectionSummaryList">> => list(vpc_ingress_connection_summary())
+%% }
+-type list_vpc_ingress_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"EgressConfiguration">> => egress_configuration(),
+%%   <<"IngressConfiguration">> => ingress_configuration(),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% observability_configuration() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedAt">> => non_neg_integer(),
+%%   <<"Latest">> => boolean(),
+%%   <<"ObservabilityConfigurationArn">> => string(),
+%%   <<"ObservabilityConfigurationName">> => string(),
+%%   <<"ObservabilityConfigurationRevision">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TraceConfiguration">> => trace_configuration()
+%% }
+-type observability_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% observability_configuration_summary() :: #{
+%%   <<"ObservabilityConfigurationArn">> => string(),
+%%   <<"ObservabilityConfigurationName">> => string(),
+%%   <<"ObservabilityConfigurationRevision">> => integer()
+%% }
+-type observability_configuration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% operation_summary() :: #{
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetArn">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pause_service_request() :: #{
+%%   <<"ServiceArn">> := string()
+%% }
+-type pause_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% pause_service_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Service">> => service()
+%% }
+-type pause_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resume_service_request() :: #{
+%%   <<"ServiceArn">> := string()
+%% }
+-type resume_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_service_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Service">> => service()
+%% }
+-type resume_service_response() :: #{binary() => any()}.
 
 %% Example:
 %% service() :: #{
@@ -316,241 +808,11 @@
 -type service() :: #{binary() => any()}.
 
 %% Example:
-%% list_vpc_connectors_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcConnectors">> => list(vpc_connector())
+%% service_observability_configuration() :: #{
+%%   <<"ObservabilityConfigurationArn">> => string(),
+%%   <<"ObservabilityEnabled">> => boolean()
 %% }
--type list_vpc_connectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_deployment_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type start_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% operation_summary() :: #{
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetArn">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type operation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_connector_response() :: #{
-%%   <<"VpcConnector">> => vpc_connector()
-%% }
--type delete_vpc_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_ingress_connection_response() :: #{
-%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
-%% }
--type create_vpc_ingress_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_auto_scaling_configurations_request() :: #{
-%%   <<"AutoScalingConfigurationName">> => string(),
-%%   <<"LatestOnly">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_auto_scaling_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_custom_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"EnableWWWSubdomain">> => boolean(),
-%%   <<"ServiceArn">> := string()
-%% }
--type associate_custom_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_ingress_connection_request() :: #{
-%%   <<"IngressVpcConfiguration">> := ingress_vpc_configuration(),
-%%   <<"ServiceArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcIngressConnectionName">> := string()
-%% }
--type create_vpc_ingress_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% trace_configuration() :: #{
-%%   <<"Vendor">> => list(any())
-%% }
--type trace_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_custom_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"ServiceArn">> := string()
-%% }
--type disassociate_custom_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_request() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_for_auto_scaling_configuration_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceArnList">> => list(string())
-%% }
--type list_services_for_auto_scaling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_ingress_connection_response() :: #{
-%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
-%% }
--type delete_vpc_ingress_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_ingress_connection() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DeletedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"IngressVpcConfiguration">> => ingress_vpc_configuration(),
-%%   <<"ServiceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcIngressConnectionArn">> => string(),
-%%   <<"VpcIngressConnectionName">> => string()
-%% }
--type vpc_ingress_connection() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceArn">> := string()
-%% }
--type list_operations_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_configuration() :: #{
-%%   <<"AutoScalingConfigurationArn">> => string(),
-%%   <<"AutoScalingConfigurationName">> => string(),
-%%   <<"AutoScalingConfigurationRevision">> => integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DeletedAt">> => non_neg_integer(),
-%%   <<"HasAssociatedService">> => boolean(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Latest">> => boolean(),
-%%   <<"MaxConcurrency">> => integer(),
-%%   <<"MaxSize">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type auto_scaling_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_validation_record() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type certificate_validation_record() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_connectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_connectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_connector_request() :: #{
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Subnets">> := list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConnectorName">> := string()
-%% }
--type create_vpc_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auto_scaling_configuration_request() :: #{
-%%   <<"AutoScalingConfigurationArn">> := string(),
-%%   <<"DeleteAllRevisions">> => boolean()
-%% }
--type delete_auto_scaling_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpc_ingress_connection_request() :: #{
-%%   <<"IngressVpcConfiguration">> := ingress_vpc_configuration(),
-%%   <<"VpcIngressConnectionArn">> := string()
-%% }
--type update_vpc_ingress_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% connection() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type connection() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaryList">> => list(service_summary())
-%% }
--type list_services_response() :: #{binary() => any()}.
+-type service_observability_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -571,72 +833,11 @@
 -type service_summary() :: #{binary() => any()}.
 
 %% Example:
-%% resume_service_request() :: #{
-%%   <<"ServiceArn">> := string()
+%% source_code_version() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type resume_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_request() :: #{
-%%   <<"AutoScalingConfigurationArn">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"HealthCheckConfiguration">> => health_check_configuration(),
-%%   <<"InstanceConfiguration">> => instance_configuration(),
-%%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"ObservabilityConfiguration">> => service_observability_configuration(),
-%%   <<"ServiceName">> := string(),
-%%   <<"SourceConfiguration">> := source_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% code_repository() :: #{
-%%   <<"CodeConfiguration">> => code_configuration(),
-%%   <<"RepositoryUrl">> => string(),
-%%   <<"SourceCodeVersion">> => source_code_version(),
-%%   <<"SourceDirectory">> => string()
-%% }
--type code_repository() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_configuration_summary() :: #{
-%%   <<"AutoScalingConfigurationArn">> => string(),
-%%   <<"AutoScalingConfigurationName">> => string(),
-%%   <<"AutoScalingConfigurationRevision">> => integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"HasAssociatedService">> => boolean(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Status">> => list(any())
-%% }
--type auto_scaling_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_observability_configurations_request() :: #{
-%%   <<"LatestOnly">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObservabilityConfigurationName">> => string()
-%% }
--type list_observability_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_observability_configuration_response() :: #{
-%%   <<"ObservabilityConfiguration">> => observability_configuration()
-%% }
--type delete_observability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% ingress_configuration() :: #{
-%%   <<"IsPubliclyAccessible">> => boolean()
-%% }
--type ingress_configuration() :: #{binary() => any()}.
+-type source_code_version() :: #{binary() => any()}.
 
 %% Example:
 %% source_configuration() :: #{
@@ -648,28 +849,67 @@
 -type source_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_vpc_connector_request() :: #{
-%%   <<"VpcConnectorArn">> := string()
+%% start_deployment_request() :: #{
+%%   <<"ServiceArn">> := string()
 %% }
--type describe_vpc_connector_request() :: #{binary() => any()}.
+-type start_deployment_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_service_response() :: #{
-%%   <<"Service">> => service()
+%% start_deployment_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type describe_service_response() :: #{binary() => any()}.
+-type start_deployment_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_vpc_connector_request() :: #{
-%%   <<"VpcConnectorArn">> := string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type delete_vpc_connector_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% trace_configuration() :: #{
+%%   <<"Vendor">> => list(any())
+%% }
+-type trace_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_default_auto_scaling_configuration_request() :: #{
 %%   <<"AutoScalingConfigurationArn">> := string()
 %% }
 -type update_default_auto_scaling_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_default_auto_scaling_configuration_response() :: #{
+%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
+%% }
+-type update_default_auto_scaling_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_request() :: #{
@@ -684,177 +924,6 @@
 -type update_service_request() :: #{binary() => any()}.
 
 %% Example:
-%% code_configuration_values() :: #{
-%%   <<"BuildCommand">> => string(),
-%%   <<"Port">> => string(),
-%%   <<"Runtime">> => list(any()),
-%%   <<"RuntimeEnvironmentSecrets">> => map(),
-%%   <<"RuntimeEnvironmentVariables">> => map(),
-%%   <<"StartCommand">> => string()
-%% }
--type code_configuration_values() :: #{binary() => any()}.
-
-%% Example:
-%% describe_auto_scaling_configuration_response() :: #{
-%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
-%% }
--type describe_auto_scaling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_for_auto_scaling_configuration_request() :: #{
-%%   <<"AutoScalingConfigurationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_services_for_auto_scaling_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% observability_configuration() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DeletedAt">> => non_neg_integer(),
-%%   <<"Latest">> => boolean(),
-%%   <<"ObservabilityConfigurationArn">> => string(),
-%%   <<"ObservabilityConfigurationName">> => string(),
-%%   <<"ObservabilityConfigurationRevision">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TraceConfiguration">> => trace_configuration()
-%% }
--type observability_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_auto_scaling_configurations_response() :: #{
-%%   <<"AutoScalingConfigurationSummaryList">> => list(auto_scaling_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_auto_scaling_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"EgressConfiguration">> => egress_configuration(),
-%%   <<"IngressConfiguration">> => ingress_configuration(),
-%%   <<"IpAddressType">> => list(any())
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OperationSummaryList">> => list(operation_summary())
-%% }
--type list_operations_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_ingress_connections_filter() :: #{
-%%   <<"ServiceArn">> => string(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type list_vpc_ingress_connections_filter() :: #{binary() => any()}.
-
-%% Example:
-%% connection_summary() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type connection_summary() :: #{binary() => any()}.
-
-%% Example:
-%% instance_configuration() :: #{
-%%   <<"Cpu">> => string(),
-%%   <<"InstanceRoleArn">> => string(),
-%%   <<"Memory">> => string()
-%% }
--type instance_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type delete_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% observability_configuration_summary() :: #{
-%%   <<"ObservabilityConfigurationArn">> => string(),
-%%   <<"ObservabilityConfigurationName">> => string(),
-%%   <<"ObservabilityConfigurationRevision">> => integer()
-%% }
--type observability_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% egress_configuration() :: #{
-%%   <<"EgressType">> => list(any()),
-%%   <<"VpcConnectorArn">> => string()
-%% }
--type egress_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_request() :: #{
-%%   <<"ServiceArn">> := string()
-%% }
--type delete_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_ingress_connection_request() :: #{
-%%   <<"VpcIngressConnectionArn">> := string()
-%% }
--type delete_vpc_ingress_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_scaling_configuration_request() :: #{
-%%   <<"AutoScalingConfigurationName">> := string(),
-%%   <<"MaxConcurrency">> => integer(),
-%%   <<"MaxSize">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_auto_scaling_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type create_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vpc_ingress_connection_response() :: #{
-%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
-%% }
--type describe_vpc_ingress_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auto_scaling_configuration_response() :: #{
-%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
-%% }
--type delete_auto_scaling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_observability_configuration() :: #{
-%%   <<"ObservabilityConfigurationArn">> => string(),
-%%   <<"ObservabilityEnabled">> => boolean()
-%% }
--type service_observability_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vpc_connector_response() :: #{
-%%   <<"VpcConnector">> => vpc_connector()
-%% }
--type describe_vpc_connector_response() :: #{binary() => any()}.
-
-%% Example:
 %% update_service_response() :: #{
 %%   <<"OperationId">> => string(),
 %%   <<"Service">> => service()
@@ -862,132 +931,63 @@
 -type update_service_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_service_response() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"Service">> => service()
+%% update_vpc_ingress_connection_request() :: #{
+%%   <<"IngressVpcConfiguration">> := ingress_vpc_configuration(),
+%%   <<"VpcIngressConnectionArn">> := string()
 %% }
--type delete_service_response() :: #{binary() => any()}.
+-type update_vpc_ingress_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% authentication_configuration() :: #{
-%%   <<"AccessRoleArn">> => string(),
-%%   <<"ConnectionArn">> => string()
+%% update_vpc_ingress_connection_response() :: #{
+%%   <<"VpcIngressConnection">> => vpc_ingress_connection()
 %% }
--type authentication_configuration() :: #{binary() => any()}.
+-type update_vpc_ingress_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_connection_request() :: #{
-%%   <<"ConnectionArn">> := string()
+%% vpc_connector() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedAt">> => non_neg_integer(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Status">> => list(any()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"VpcConnectorArn">> => string(),
+%%   <<"VpcConnectorName">> => string(),
+%%   <<"VpcConnectorRevision">> => integer()
 %% }
--type delete_connection_request() :: #{binary() => any()}.
+-type vpc_connector() :: #{binary() => any()}.
 
 %% Example:
-%% create_service_response() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"Service">> => service()
+%% vpc_dns_target() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcIngressConnectionArn">> => string()
 %% }
--type create_service_response() :: #{binary() => any()}.
+-type vpc_dns_target() :: #{binary() => any()}.
 
 %% Example:
-%% image_configuration() :: #{
-%%   <<"Port">> => string(),
-%%   <<"RuntimeEnvironmentSecrets">> => map(),
-%%   <<"RuntimeEnvironmentVariables">> => map(),
-%%   <<"StartCommand">> => string()
-%% }
--type image_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_ingress_connections_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcIngressConnectionSummaryList">> => list(vpc_ingress_connection_summary())
-%% }
--type list_vpc_ingress_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_request() :: #{
-%%   <<"ConnectionName">> := string(),
-%%   <<"ProviderType">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_custom_domain_response() :: #{
-%%   <<"CustomDomain">> => custom_domain(),
-%%   <<"DNSTarget">> => string(),
+%% vpc_ingress_connection() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"IngressVpcConfiguration">> => ingress_vpc_configuration(),
 %%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
+%%   <<"Status">> => list(any()),
+%%   <<"VpcIngressConnectionArn">> => string(),
+%%   <<"VpcIngressConnectionName">> => string()
 %% }
--type associate_custom_domain_response() :: #{binary() => any()}.
+-type vpc_ingress_connection() :: #{binary() => any()}.
 
 %% Example:
-%% start_deployment_request() :: #{
-%%   <<"ServiceArn">> := string()
-%% }
--type start_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_ingress_connections_request() :: #{
-%%   <<"Filter">> => list_vpc_ingress_connections_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_ingress_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_scaling_configuration_response() :: #{
-%%   <<"AutoScalingConfiguration">> => auto_scaling_configuration()
-%% }
--type create_auto_scaling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% resume_service_response() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"Service">> => service()
-%% }
--type resume_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_custom_domain_response() :: #{
-%%   <<"CustomDomain">> => custom_domain(),
-%%   <<"DNSTarget">> => string(),
+%% vpc_ingress_connection_summary() :: #{
 %%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
+%%   <<"VpcIngressConnectionArn">> => string()
 %% }
--type disassociate_custom_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% pause_service_response() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"Service">> => service()
-%% }
--type pause_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% health_check_configuration() :: #{
-%%   <<"HealthyThreshold">> => integer(),
-%%   <<"Interval">> => integer(),
-%%   <<"Path">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"Timeout">> => integer(),
-%%   <<"UnhealthyThreshold">> => integer()
-%% }
--type health_check_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_domains_response() :: #{
-%%   <<"CustomDomains">> => list(custom_domain()),
-%%   <<"DNSTarget">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
-%% }
--type describe_custom_domains_response() :: #{binary() => any()}.
+-type vpc_ingress_connection_summary() :: #{binary() => any()}.
 
 -type associate_custom_domain_errors() ::
-    invalid_request_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type create_auto_scaling_configuration_errors() ::
@@ -1017,76 +1017,76 @@
 
 -type create_vpc_ingress_connection_errors() ::
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_auto_scaling_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_connection_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_observability_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_service_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_vpc_connector_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type delete_vpc_ingress_connection_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_auto_scaling_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_custom_domains_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_observability_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_service_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_vpc_connector_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type describe_vpc_ingress_connection_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type disassociate_custom_domain_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_auto_scaling_configurations_errors() ::
@@ -1102,8 +1102,8 @@
     internal_service_error_exception().
 
 -type list_operations_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_services_errors() ::
@@ -1111,14 +1111,14 @@
     internal_service_error_exception().
 
 -type list_services_for_auto_scaling_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type list_vpc_connectors_errors() ::
@@ -1130,49 +1130,49 @@
     internal_service_error_exception().
 
 -type pause_service_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type resume_service_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type start_deployment_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type tag_resource_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type untag_resource_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type update_default_auto_scaling_configuration_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type update_service_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type update_vpc_ingress_connection_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     invalid_state_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 %%====================================================================

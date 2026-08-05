@@ -113,77 +113,25 @@
 
 
 %% Example:
-%% collection_filters() :: #{
-%%   <<"collectionGroupName">> => string(),
+%% access_policy_detail() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
 %%   <<"name">> => string(),
-%%   <<"status">> => string()
+%%   <<"policy">> => [any()],
+%%   <<"policyVersion">> => string(),
+%%   <<"type">> => string()
 %% }
--type collection_filters() :: #{binary() => any()}.
+-type access_policy_detail() :: #{binary() => any()}.
 
 %% Example:
-%% list_access_policies_response() :: #{
-%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
-%%   <<"nextToken">> => [string()]
+%% access_policy_stats() :: #{
+%%   <<"DataPolicyCount">> => [float()]
 %% }
--type list_access_policies_response() :: #{binary() => any()}.
+-type access_policy_stats() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_lifecycle_policy_request() :: #{
-%%   <<"identifiers">> := list(lifecycle_policy_identifier())
-%% }
--type batch_get_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_collection_groups_response() :: #{
-%%   <<"collectionGroupSummaries">> => list(collection_group_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_collection_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_detail() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_vpc_endpoint_detail() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% iam_identity_center_config_options() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"applicationDescription">> => [string()],
-%%   <<"applicationName">> => [string()],
-%%   <<"groupAttribute">> => string(),
-%%   <<"instanceArn">> => string(),
-%%   <<"userAttribute">> => string()
-%% }
--type iam_identity_center_config_options() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_config() :: #{
-%%   <<"aWSOwnedKey">> => [boolean()],
-%%   <<"kmsKeyArn">> => [string()]
-%% }
--type encryption_config() :: #{binary() => any()}.
-
-%% Example:
-%% collection_error_detail() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type collection_error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% security_policy_summary() :: #{
+%% access_policy_summary() :: #{
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => string(),
 %%   <<"lastModifiedDate">> => [float()],
@@ -191,32 +139,34 @@
 %%   <<"policyVersion">> => string(),
 %%   <<"type">> => string()
 %% }
--type security_policy_summary() :: #{binary() => any()}.
+-type access_policy_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_security_config_response() :: #{
-
+%% account_settings_detail() :: #{
+%%   <<"capacityLimits">> => capacity_limits()
 %% }
--type delete_security_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_configs_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"type">> := string()
-%% }
--type list_security_configs_request() :: #{binary() => any()}.
+-type account_settings_detail() :: #{binary() => any()}.
 
 %% Example:
-%% update_lifecycle_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policy">> => string(),
-%%   <<"policyVersion">> := string(),
-%%   <<"type">> := string()
+%% batch_get_collection_group_request() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"names">> => list(string())
 %% }
--type update_lifecycle_policy_request() :: #{binary() => any()}.
+-type batch_get_collection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_collection_group_response() :: #{
+%%   <<"collectionGroupDetails">> => list(collection_group_detail()),
+%%   <<"collectionGroupErrorDetails">> => list(collection_group_error_detail())
+%% }
+-type batch_get_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_collection_request() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"names">> => list(string())
+%% }
+-type batch_get_collection_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_collection_response() :: #{
@@ -226,10 +176,23 @@
 -type batch_get_collection_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% batch_get_effective_lifecycle_policy_request() :: #{
+%%   <<"resourceIdentifiers">> := list(lifecycle_policy_resource_identifier())
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type batch_get_effective_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_effective_lifecycle_policy_response() :: #{
+%%   <<"effectiveLifecyclePolicyDetails">> => list(effective_lifecycle_policy_detail()),
+%%   <<"effectiveLifecyclePolicyErrorDetails">> => list(effective_lifecycle_policy_error_detail())
+%% }
+-type batch_get_effective_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_lifecycle_policy_request() :: #{
+%%   <<"identifiers">> := list(lifecycle_policy_identifier())
+%% }
+-type batch_get_lifecycle_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_lifecycle_policy_response() :: #{
@@ -239,89 +202,31 @@
 -type batch_get_lifecycle_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_account_settings_request() :: #{
-
+%% batch_get_vpc_endpoint_request() :: #{
+%%   <<"ids">> := list(string())
 %% }
--type get_account_settings_request() :: #{binary() => any()}.
+-type batch_get_vpc_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
-%% security_config_stats() :: #{
-%%   <<"SamlConfigCount">> => [float()]
+%% batch_get_vpc_endpoint_response() :: #{
+%%   <<"vpcEndpointDetails">> => list(vpc_endpoint_detail()),
+%%   <<"vpcEndpointErrorDetails">> => list(vpc_endpoint_error_detail())
 %% }
--type security_config_stats() :: #{binary() => any()}.
+-type batch_get_vpc_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_access_policy_response() :: #{
-
+%% capacity_details() :: #{
+%%   <<"autoscalingStatus">> => string(),
+%%   <<"capacityInOcu">> => [float()]
 %% }
--type delete_access_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% fips_endpoints() :: #{
-%%   <<"collectionEndpoint">> => [string()],
-%%   <<"dashboardEndpoint">> => [string()]
-%% }
--type fips_endpoints() :: #{binary() => any()}.
+-type capacity_details() :: #{binary() => any()}.
 
 %% Example:
-%% collection_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"collectionGroupName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"kmsKeyArn">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
+%% capacity_limits() :: #{
+%%   <<"maxIndexingCapacityInOCU">> => integer(),
+%%   <<"maxSearchCapacityInOCU">> => integer()
 %% }
--type collection_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"indexName">> := string()
-%% }
--type delete_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_settings_response() :: #{
-%%   <<"accountSettingsDetail">> => account_settings_detail()
-%% }
--type get_account_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_endpoints_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"vpcEndpointFilters">> => vpc_endpoint_filters()
-%% }
--type list_vpc_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyDetail">> => lifecycle_policy_detail()
-%% }
--type update_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type vpc_endpoint_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_vpc_endpoints_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"vpcEndpointSummaries">> => list(vpc_endpoint_summary())
-%% }
--type list_vpc_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_policy_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type get_security_policy_request() :: #{binary() => any()}.
+-type capacity_limits() :: #{binary() => any()}.
 
 %% Example:
 %% collection_detail() :: #{
@@ -347,306 +252,30 @@
 -type collection_detail() :: #{binary() => any()}.
 
 %% Example:
-%% update_account_settings_response() :: #{
-%%   <<"accountSettingsDetail">> => account_settings_detail()
-%% }
--type update_account_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type delete_access_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collection_group_response() :: #{
-
-%% }
--type delete_collection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% current_capacity() :: #{
-%%   <<"indexing">> => capacity_details(),
-%%   <<"search">> => capacity_details()
-%% }
--type current_capacity() :: #{binary() => any()}.
-
-%% Example:
-%% list_lifecycle_policies_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"resources">> => list(string()),
-%%   <<"type">> := string()
-%% }
--type list_lifecycle_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_policies_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"resource">> => list(string()),
-%%   <<"type">> := string()
-%% }
--type list_access_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_policy_response() :: #{
-%%   <<"accessPolicyDetail">> => access_policy_detail()
-%% }
--type create_access_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_policy_summary() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"policyVersion">> => string(),
-%%   <<"type">> => string()
-%% }
--type access_policy_summary() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_filters() :: #{
-%%   <<"status">> => string()
-%% }
--type vpc_endpoint_filters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_response() :: #{
-%%   <<"deleteVpcEndpointDetail">> => delete_vpc_endpoint_detail()
-%% }
--type delete_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_group_detail() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"capacityLimits">> => collection_group_capacity_limits(),
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => [string()],
-%%   <<"generation">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"standbyReplicas">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_collection_group_detail() :: #{binary() => any()}.
-
-%% Example:
-%% collection_group_error_detail() :: #{
+%% collection_error_detail() :: #{
 %%   <<"errorCode">> => [string()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
--type collection_group_error_detail() :: #{binary() => any()}.
+-type collection_error_detail() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_group_request() :: #{
-%%   <<"capacityLimits">> => collection_group_capacity_limits(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"generation">> => string(),
-%%   <<"name">> := string(),
-%%   <<"standbyReplicas">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_collection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_vpc_endpoint_request() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_get_vpc_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_collections_response() :: #{
-%%   <<"collectionSummaries">> => list(collection_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_collections_response() :: #{binary() => any()}.
-
-%% Example:
-%% collection_group_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"capacityLimits">> => collection_group_capacity_limits(),
-%%   <<"createdDate">> => [float()],
-%%   <<"generation">> => string(),
-%%   <<"id">> => string(),
+%% collection_filters() :: #{
+%%   <<"collectionGroupName">> => string(),
 %%   <<"name">> => string(),
-%%   <<"numberOfCollections">> => [integer()]
+%%   <<"status">> => string()
 %% }
--type collection_group_summary() :: #{binary() => any()}.
+-type collection_filters() :: #{binary() => any()}.
 
 %% Example:
-%% get_security_policy_response() :: #{
-%%   <<"securityPolicyDetail">> => security_policy_detail()
+%% collection_group_capacity_limits() :: #{
+%%   <<"maxIndexingCapacityInOCU">> => float(),
+%%   <<"maxSearchCapacityInOCU">> => float(),
+%%   <<"minIndexingCapacityInOCU">> => float(),
+%%   <<"minSearchCapacityInOCU">> => float()
 %% }
--type get_security_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_response() :: #{
-
-%% }
--type delete_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_error_detail() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"id">> => string()
-%% }
--type vpc_endpoint_error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% vector_options() :: #{
-%%   <<"ServerlessVectorAcceleration">> => string()
-%% }
--type vector_options() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_resource_identifier() :: #{
-%%   <<"resource">> => string(),
-%%   <<"type">> => string()
-%% }
--type lifecycle_policy_resource_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_policy_response() :: #{
-%%   <<"accessPolicyDetail">> => access_policy_detail()
-%% }
--type update_access_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% iam_federation_config_options() :: #{
-%%   <<"groupAttribute">> => string(),
-%%   <<"userAttribute">> => string()
-%% }
--type iam_federation_config_options() :: #{binary() => any()}.
-
-%% Example:
-%% update_security_config_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configVersion">> := string(),
-%%   <<"description">> => string(),
-%%   <<"iamFederationOptions">> => iam_federation_config_options(),
-%%   <<"iamIdentityCenterOptionsUpdates">> => update_iam_identity_center_config_options(),
-%%   <<"id">> := string(),
-%%   <<"samlOptions">> => saml_config_options()
-%% }
--type update_security_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_error_detail() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type lifecycle_policy_error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_response() :: #{
-
-%% }
--type delete_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint_detail() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"failureCode">> => [string()],
-%%   <<"failureMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_endpoint_detail() :: #{binary() => any()}.
-
-%% Example:
-%% security_policy_detail() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"policy">> => [any()],
-%%   <<"policyVersion">> => string(),
-%%   <<"type">> => string()
-%% }
--type security_policy_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_policy_response() :: #{
-%%   <<"securityPolicyDetail">> => security_policy_detail()
-%% }
--type create_security_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_detail() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"policy">> => [any()],
-%%   <<"policyVersion">> => string(),
-%%   <<"type">> => string()
-%% }
--type lifecycle_policy_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_policy_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type get_access_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_effective_lifecycle_policy_request() :: #{
-%%   <<"resourceIdentifiers">> := list(lifecycle_policy_resource_identifier())
-%% }
--type batch_get_effective_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_summary() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"policyVersion">> => string(),
-%%   <<"type">> => string()
-%% }
--type lifecycle_policy_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_collections_request() :: #{
-%%   <<"collectionFilters">> => collection_filters(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_collections_request() :: #{binary() => any()}.
+-type collection_group_capacity_limits() :: #{binary() => any()}.
 
 %% Example:
 %% collection_group_detail() :: #{
@@ -665,571 +294,42 @@
 -type collection_group_detail() :: #{binary() => any()}.
 
 %% Example:
-%% delete_collection_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string()
-%% }
--type delete_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_policy_response() :: #{
-%%   <<"accessPolicyDetail">> => access_policy_detail()
-%% }
--type get_access_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% security_config_summary() :: #{
-%%   <<"configVersion">> => string(),
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"type">> => string()
-%% }
--type security_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_config_response() :: #{
-%%   <<"securityConfigDetail">> => security_config_detail()
-%% }
--type create_security_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_lifecycle_policies_response() :: #{
-%%   <<"lifecyclePolicySummaries">> => list(lifecycle_policy_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_lifecycle_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_config_response() :: #{
-%%   <<"securityConfigDetail">> => security_config_detail()
-%% }
--type get_security_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type delete_security_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_iam_identity_center_config_options() :: #{
-%%   <<"groupAttribute">> => string(),
-%%   <<"userAttribute">> => string()
-%% }
--type update_iam_identity_center_config_options() :: #{binary() => any()}.
-
-%% Example:
-%% security_policy_stats() :: #{
-%%   <<"EncryptionPolicyCount">> => [float()],
-%%   <<"NetworkPolicyCount">> => [float()]
-%% }
--type security_policy_stats() :: #{binary() => any()}.
-
-%% Example:
-%% account_settings_detail() :: #{
-%%   <<"capacityLimits">> => capacity_limits()
-%% }
--type account_settings_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collection_detail() :: #{
-%%   <<"deletionProtection">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type delete_collection_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"collectionGroupName">> => string(),
-%%   <<"deletionProtection">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"encryptionConfig">> => encryption_config(),
-%%   <<"name">> := string(),
-%%   <<"standbyReplicas">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> => string(),
-%%   <<"vectorOptions">> => vector_options()
-%% }
--type create_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpc_endpoint_response() :: #{
-%%   <<"UpdateVpcEndpointDetail">> => update_vpc_endpoint_detail()
-%% }
--type update_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_collection_group_request() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"names">> => list(string())
-%% }
--type batch_get_collection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_settings_request() :: #{
-%%   <<"capacityLimits">> => capacity_limits()
-%% }
--type update_account_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_response() :: #{
-%%   <<"updateCollectionDetail">> => update_collection_detail()
-%% }
--type update_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyDetail">> => lifecycle_policy_detail()
-%% }
--type create_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% collection_group_capacity_limits() :: #{
-%%   <<"maxIndexingCapacityInOCU">> => float(),
-%%   <<"maxSearchCapacityInOCU">> => float(),
-%%   <<"minIndexingCapacityInOCU">> => float(),
-%%   <<"minSearchCapacityInOCU">> => float()
-%% }
--type collection_group_capacity_limits() :: #{binary() => any()}.
-
-%% Example:
-%% security_config_detail() :: #{
-%%   <<"configVersion">> => string(),
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"iamFederationOptions">> => iam_federation_config_options(),
-%%   <<"iamIdentityCenterOptions">> => iam_identity_center_config_options(),
-%%   <<"id">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"samlOptions">> => saml_config_options(),
-%%   <<"type">> => string()
-%% }
--type security_config_detail() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_response() :: #{
-%%   <<"createCollectionDetail">> => create_collection_detail()
-%% }
--type create_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_security_config_response() :: #{
-%%   <<"securityConfigDetail">> => security_config_detail()
-%% }
--type update_security_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_collection_request() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"names">> => list(string())
-%% }
--type batch_get_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_endpoint_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"vpcId">> := string()
-%% }
--type create_vpc_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type delete_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policies_stats_response() :: #{
-%%   <<"AccessPolicyStats">> => access_policy_stats(),
-%%   <<"LifecyclePolicyStats">> => lifecycle_policy_stats(),
-%%   <<"SecurityConfigStats">> => security_config_stats(),
-%%   <<"SecurityPolicyStats">> => security_policy_stats(),
-%%   <<"TotalPolicyCount">> => [float()]
-%% }
--type get_policies_stats_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_configs_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"securityConfigSummaries">> => list(security_config_summary())
-%% }
--type list_security_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_index_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"indexName">> := string(),
-%%   <<"indexSchema">> => any()
-%% }
--type create_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_index_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"indexName">> := string(),
-%%   <<"indexSchema">> => any()
-%% }
--type update_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_collection_groups_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_collection_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_policy_detail() :: #{
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"policy">> => [any()],
-%%   <<"policyVersion">> => string(),
-%%   <<"type">> => string()
-%% }
--type access_policy_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_policies_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"resource">> => list(string()),
-%%   <<"type">> := string()
-%% }
--type list_security_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_policies_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"securityPolicySummaries">> => list(security_policy_summary())
-%% }
--type list_security_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policy">> => string(),
-%%   <<"policyVersion">> := string(),
-%%   <<"type">> := string()
-%% }
--type update_access_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collection_group_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string()
-%% }
--type delete_collection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_policy_stats() :: #{
-%%   <<"RetentionPolicyCount">> => [float()]
-%% }
--type lifecycle_policy_stats() :: #{binary() => any()}.
-
-%% Example:
-%% update_security_policy_response() :: #{
-%%   <<"securityPolicyDetail">> => security_policy_detail()
-%% }
--type update_security_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_config_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string()
-%% }
--type delete_security_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_lifecycle_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policy">> := string(),
-%%   <<"type">> := string()
-%% }
--type create_lifecycle_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_limits() :: #{
-%%   <<"maxIndexingCapacityInOCU">> => integer(),
-%%   <<"maxSearchCapacityInOCU">> => integer()
-%% }
--type capacity_limits() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_collection_group_response() :: #{
-%%   <<"collectionGroupDetails">> => list(collection_group_detail()),
-%%   <<"collectionGroupErrorDetails">> => list(collection_group_error_detail())
-%% }
--type batch_get_collection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_effective_lifecycle_policy_response() :: #{
-%%   <<"effectiveLifecyclePolicyDetails">> => list(effective_lifecycle_policy_detail()),
-%%   <<"effectiveLifecyclePolicyErrorDetails">> => list(effective_lifecycle_policy_error_detail())
-%% }
--type batch_get_effective_lifecycle_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_vpc_endpoint_detail() :: #{
-%%   <<"id">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string())
-%% }
--type update_vpc_endpoint_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_endpoint_detail() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type create_vpc_endpoint_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_endpoint_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string()
-%% }
--type delete_vpc_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policies_stats_request() :: #{
-
-%% }
--type get_policies_stats_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_policy_stats() :: #{
-%%   <<"DataPolicyCount">> => [float()]
-%% }
--type access_policy_stats() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_group_detail() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"capacityLimits">> => collection_group_capacity_limits(),
-%%   <<"createdDate">> => [float()],
-%%   <<"description">> => [string()],
-%%   <<"generation">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string()
-%% }
--type update_collection_group_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_group_response() :: #{
-%%   <<"updateCollectionGroupDetail">> => update_collection_group_detail()
-%% }
--type update_collection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% ocu_limit_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type ocu_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtection">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"id">> := string(),
-%%   <<"vectorOptions">> => vector_options()
-%% }
--type update_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_group_request() :: #{
-%%   <<"capacityLimits">> => collection_group_capacity_limits(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"id">> := string()
-%% }
--type update_collection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_vpc_endpoint_response() :: #{
-%%   <<"createVpcEndpointDetail">> => create_vpc_endpoint_detail()
-%% }
--type create_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_details() :: #{
-%%   <<"autoscalingStatus">> => string(),
-%%   <<"capacityInOcu">> => [float()]
-%% }
--type capacity_details() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_vpc_endpoint_response() :: #{
-%%   <<"vpcEndpointDetails">> => list(vpc_endpoint_detail()),
-%%   <<"vpcEndpointErrorDetails">> => list(vpc_endpoint_error_detail())
-%% }
--type batch_get_vpc_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_index_response() :: #{
-
-%% }
--type create_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_security_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"policy">> => string(),
-%%   <<"policyVersion">> := string(),
-%%   <<"type">> := string()
-%% }
--type update_security_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_collection_group_response() :: #{
-%%   <<"createCollectionGroupDetail">> => create_collection_group_detail()
-%% }
--type create_collection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_collection_detail() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"createdDate">> => [float()],
-%%   <<"deletionProtection">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"lastModifiedDate">> => [float()],
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => string(),
-%%   <<"vectorOptions">> => vector_options()
-%% }
--type update_collection_detail() :: #{binary() => any()}.
-
-%% Example:
-%% effective_lifecycle_policy_error_detail() :: #{
+%% collection_group_error_detail() :: #{
 %%   <<"errorCode">> => [string()],
 %%   <<"errorMessage">> => [string()],
-%%   <<"resource">> => string(),
-%%   <<"type">> => string()
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
 %% }
--type effective_lifecycle_policy_error_detail() :: #{binary() => any()}.
+-type collection_group_error_detail() :: #{binary() => any()}.
 
 %% Example:
-%% update_vpc_endpoint_request() :: #{
-%%   <<"addSecurityGroupIds">> => list(string()),
-%%   <<"addSubnetIds">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string(),
-%%   <<"removeSecurityGroupIds">> => list(string()),
-%%   <<"removeSubnetIds">> => list(string())
+%% collection_group_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"generation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"numberOfCollections">> => [integer()]
 %% }
--type update_vpc_endpoint_request() :: #{binary() => any()}.
+-type collection_group_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_iam_identity_center_config_options() :: #{
-%%   <<"groupAttribute">> => string(),
-%%   <<"instanceArn">> => string(),
-%%   <<"userAttribute">> => string()
+%% collection_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"collectionGroupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
 %% }
--type create_iam_identity_center_config_options() :: #{binary() => any()}.
+-type collection_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_index_response() :: #{
-
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_config_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"iamFederationOptions">> => iam_federation_config_options(),
-%%   <<"iamIdentityCenterOptions">> => create_iam_identity_center_config_options(),
-%%   <<"name">> := string(),
-%%   <<"samlOptions">> => saml_config_options(),
-%%   <<"type">> := string()
-%% }
--type create_security_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_config_request() :: #{
-%%   <<"id">> := string()
-%% }
--type get_security_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collection_response() :: #{
-%%   <<"deleteCollectionDetail">> => delete_collection_detail()
-%% }
--type delete_collection_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_access_policy_request() :: #{
@@ -1242,27 +342,10 @@
 -type create_access_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_index_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"indexName">> := string()
+%% create_access_policy_response() :: #{
+%%   <<"accessPolicyDetail">> => access_policy_detail()
 %% }
--type get_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_policy_response() :: #{
-
-%% }
--type delete_security_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% saml_config_options() :: #{
-%%   <<"groupAttribute">> => string(),
-%%   <<"metadata">> => string(),
-%%   <<"openSearchServerlessEntityId">> => string(),
-%%   <<"sessionTimeout">> => [integer()],
-%%   <<"userAttribute">> => string()
-%% }
--type saml_config_options() :: #{binary() => any()}.
+-type create_access_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_collection_detail() :: #{
@@ -1283,22 +366,113 @@
 -type create_collection_detail() :: #{binary() => any()}.
 
 %% Example:
-%% effective_lifecycle_policy_detail() :: #{
-%%   <<"noMinRetentionPeriod">> => [boolean()],
-%%   <<"policyName">> => string(),
-%%   <<"resource">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"retentionPeriod">> => [string()],
-%%   <<"type">> => string()
+%% create_collection_group_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"standbyReplicas">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type effective_lifecycle_policy_detail() :: #{binary() => any()}.
+-type create_collection_group_detail() :: #{binary() => any()}.
 
 %% Example:
-%% lifecycle_policy_identifier() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
+%% create_collection_group_request() :: #{
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
+%%   <<"name">> := string(),
+%%   <<"standbyReplicas">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type lifecycle_policy_identifier() :: #{binary() => any()}.
+-type create_collection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_group_response() :: #{
+%%   <<"createCollectionGroupDetail">> => create_collection_group_detail()
+%% }
+-type create_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"collectionGroupName">> => string(),
+%%   <<"deletionProtection">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"encryptionConfig">> => encryption_config(),
+%%   <<"name">> := string(),
+%%   <<"standbyReplicas">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
+%% }
+-type create_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_collection_response() :: #{
+%%   <<"createCollectionDetail">> => create_collection_detail()
+%% }
+-type create_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_iam_identity_center_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type create_iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% create_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string(),
+%%   <<"indexSchema">> => any()
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_index_response() :: #{
+
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_lifecycle_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policy">> := string(),
+%%   <<"type">> := string()
+%% }
+-type create_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicyDetail">> => lifecycle_policy_detail()
+%% }
+-type create_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_security_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"iamFederationOptions">> => iam_federation_config_options(),
+%%   <<"iamIdentityCenterOptions">> => create_iam_identity_center_config_options(),
+%%   <<"name">> := string(),
+%%   <<"samlOptions">> => saml_config_options(),
+%%   <<"type">> := string()
+%% }
+-type create_security_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_security_config_response() :: #{
+%%   <<"securityConfigDetail">> => security_config_detail()
+%% }
+-type create_security_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_security_policy_request() :: #{
@@ -1311,10 +485,836 @@
 -type create_security_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_security_policy_response() :: #{
+%%   <<"securityPolicyDetail">> => security_policy_detail()
+%% }
+-type create_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_endpoint_detail() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_vpc_endpoint_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_endpoint_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"vpcId">> := string()
+%% }
+-type create_vpc_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_endpoint_response() :: #{
+%%   <<"createVpcEndpointDetail">> => create_vpc_endpoint_detail()
+%% }
+-type create_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% current_capacity() :: #{
+%%   <<"indexing">> => capacity_details(),
+%%   <<"search">> => capacity_details()
+%% }
+-type current_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type delete_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_policy_response() :: #{
+
+%% }
+-type delete_access_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_detail() :: #{
+%%   <<"deletionProtection">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_collection_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_collection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_group_response() :: #{
+
+%% }
+-type delete_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collection_response() :: #{
+%%   <<"deleteCollectionDetail">> => delete_collection_detail()
+%% }
+-type delete_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string()
+%% }
+-type delete_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_response() :: #{
+
+%% }
+-type delete_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type delete_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_response() :: #{
+
+%% }
+-type delete_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_security_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_config_response() :: #{
+
+%% }
+-type delete_security_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type delete_security_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_policy_response() :: #{
+
+%% }
+-type delete_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_detail() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_vpc_endpoint_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_vpc_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_endpoint_response() :: #{
+%%   <<"deleteVpcEndpointDetail">> => delete_vpc_endpoint_detail()
+%% }
+-type delete_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% effective_lifecycle_policy_detail() :: #{
+%%   <<"noMinRetentionPeriod">> => [boolean()],
+%%   <<"policyName">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"retentionPeriod">> => [string()],
+%%   <<"type">> => string()
+%% }
+-type effective_lifecycle_policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% effective_lifecycle_policy_error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"resource">> => string(),
+%%   <<"type">> => string()
+%% }
+-type effective_lifecycle_policy_error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_config() :: #{
+%%   <<"aWSOwnedKey">> => [boolean()],
+%%   <<"kmsKeyArn">> => [string()]
+%% }
+-type encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% fips_endpoints() :: #{
+%%   <<"collectionEndpoint">> => [string()],
+%%   <<"dashboardEndpoint">> => [string()]
+%% }
+-type fips_endpoints() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_policy_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type get_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_policy_response() :: #{
+%%   <<"accessPolicyDetail">> => access_policy_detail()
+%% }
+-type get_access_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_request() :: #{
+
+%% }
+-type get_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"accountSettingsDetail">> => account_settings_detail()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string()
+%% }
+-type get_index_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_index_response() :: #{
 %%   <<"indexSchema">> => any()
 %% }
 -type get_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policies_stats_request() :: #{
+
+%% }
+-type get_policies_stats_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policies_stats_response() :: #{
+%%   <<"AccessPolicyStats">> => access_policy_stats(),
+%%   <<"LifecyclePolicyStats">> => lifecycle_policy_stats(),
+%%   <<"SecurityConfigStats">> => security_config_stats(),
+%%   <<"SecurityPolicyStats">> => security_policy_stats(),
+%%   <<"TotalPolicyCount">> => [float()]
+%% }
+-type get_policies_stats_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_config_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_security_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_config_response() :: #{
+%%   <<"securityConfigDetail">> => security_config_detail()
+%% }
+-type get_security_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_policy_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type get_security_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_policy_response() :: #{
+%%   <<"securityPolicyDetail">> => security_policy_detail()
+%% }
+-type get_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% iam_federation_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type iam_federation_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% iam_identity_center_config_options() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationDescription">> => [string()],
+%%   <<"applicationName">> => [string()],
+%%   <<"groupAttribute">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_detail() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"policy">> => [any()],
+%%   <<"policyVersion">> => string(),
+%%   <<"type">> => string()
+%% }
+-type lifecycle_policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type lifecycle_policy_error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_identifier() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type lifecycle_policy_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_resource_identifier() :: #{
+%%   <<"resource">> => string(),
+%%   <<"type">> => string()
+%% }
+-type lifecycle_policy_resource_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_stats() :: #{
+%%   <<"RetentionPolicyCount">> => [float()]
+%% }
+-type lifecycle_policy_stats() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_policy_summary() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"policyVersion">> => string(),
+%%   <<"type">> => string()
+%% }
+-type lifecycle_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_policies_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"resource">> => list(string()),
+%%   <<"type">> := string()
+%% }
+-type list_access_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_policies_response() :: #{
+%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_collection_groups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collection_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_collection_groups_response() :: #{
+%%   <<"collectionGroupSummaries">> => list(collection_group_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collection_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_collections_request() :: #{
+%%   <<"collectionFilters">> => collection_filters(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_collections_response() :: #{
+%%   <<"collectionSummaries">> => list(collection_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_collections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_lifecycle_policies_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"resources">> => list(string()),
+%%   <<"type">> := string()
+%% }
+-type list_lifecycle_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_lifecycle_policies_response() :: #{
+%%   <<"lifecyclePolicySummaries">> => list(lifecycle_policy_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_lifecycle_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_configs_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"type">> := string()
+%% }
+-type list_security_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_configs_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"securityConfigSummaries">> => list(security_config_summary())
+%% }
+-type list_security_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_policies_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"resource">> => list(string()),
+%%   <<"type">> := string()
+%% }
+-type list_security_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_security_policies_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"securityPolicySummaries">> => list(security_policy_summary())
+%% }
+-type list_security_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_endpoints_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"vpcEndpointFilters">> => vpc_endpoint_filters()
+%% }
+-type list_vpc_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_endpoints_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"vpcEndpointSummaries">> => list(vpc_endpoint_summary())
+%% }
+-type list_vpc_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% ocu_limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type ocu_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% saml_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"metadata">> => string(),
+%%   <<"openSearchServerlessEntityId">> => string(),
+%%   <<"sessionTimeout">> => [integer()],
+%%   <<"userAttribute">> => string()
+%% }
+-type saml_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% security_config_detail() :: #{
+%%   <<"configVersion">> => string(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"iamFederationOptions">> => iam_federation_config_options(),
+%%   <<"iamIdentityCenterOptions">> => iam_identity_center_config_options(),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"samlOptions">> => saml_config_options(),
+%%   <<"type">> => string()
+%% }
+-type security_config_detail() :: #{binary() => any()}.
+
+%% Example:
+%% security_config_stats() :: #{
+%%   <<"SamlConfigCount">> => [float()]
+%% }
+-type security_config_stats() :: #{binary() => any()}.
+
+%% Example:
+%% security_config_summary() :: #{
+%%   <<"configVersion">> => string(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"type">> => string()
+%% }
+-type security_config_summary() :: #{binary() => any()}.
+
+%% Example:
+%% security_policy_detail() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"policy">> => [any()],
+%%   <<"policyVersion">> => string(),
+%%   <<"type">> => string()
+%% }
+-type security_policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% security_policy_stats() :: #{
+%%   <<"EncryptionPolicyCount">> => [float()],
+%%   <<"NetworkPolicyCount">> => [float()]
+%% }
+-type security_policy_stats() :: #{binary() => any()}.
+
+%% Example:
+%% security_policy_summary() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"policyVersion">> => string(),
+%%   <<"type">> => string()
+%% }
+-type security_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policy">> => string(),
+%%   <<"policyVersion">> := string(),
+%%   <<"type">> := string()
+%% }
+-type update_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_policy_response() :: #{
+%%   <<"accessPolicyDetail">> => access_policy_detail()
+%% }
+-type update_access_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_request() :: #{
+%%   <<"capacityLimits">> => capacity_limits()
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_response() :: #{
+%%   <<"accountSettingsDetail">> => account_settings_detail()
+%% }
+-type update_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdDate">> => [float()],
+%%   <<"deletionProtection">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string(),
+%%   <<"vectorOptions">> => vector_options()
+%% }
+-type update_collection_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_group_detail() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"createdDate">> => [float()],
+%%   <<"description">> => [string()],
+%%   <<"generation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string()
+%% }
+-type update_collection_group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_group_request() :: #{
+%%   <<"capacityLimits">> => collection_group_capacity_limits(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> := string()
+%% }
+-type update_collection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_group_response() :: #{
+%%   <<"updateCollectionGroupDetail">> => update_collection_group_detail()
+%% }
+-type update_collection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtection">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"id">> := string(),
+%%   <<"vectorOptions">> => vector_options()
+%% }
+-type update_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_collection_response() :: #{
+%%   <<"updateCollectionDetail">> => update_collection_detail()
+%% }
+-type update_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_iam_identity_center_config_options() :: #{
+%%   <<"groupAttribute">> => string(),
+%%   <<"userAttribute">> => string()
+%% }
+-type update_iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string(),
+%%   <<"indexSchema">> => any()
+%% }
+-type update_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_response() :: #{
+
+%% }
+-type update_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_lifecycle_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policy">> => string(),
+%%   <<"policyVersion">> := string(),
+%%   <<"type">> := string()
+%% }
+-type update_lifecycle_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicyDetail">> => lifecycle_policy_detail()
+%% }
+-type update_lifecycle_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_security_config_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configVersion">> := string(),
+%%   <<"description">> => string(),
+%%   <<"iamFederationOptions">> => iam_federation_config_options(),
+%%   <<"iamIdentityCenterOptionsUpdates">> => update_iam_identity_center_config_options(),
+%%   <<"id">> := string(),
+%%   <<"samlOptions">> => saml_config_options()
+%% }
+-type update_security_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_security_config_response() :: #{
+%%   <<"securityConfigDetail">> => security_config_detail()
+%% }
+-type update_security_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_security_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policy">> => string(),
+%%   <<"policyVersion">> := string(),
+%%   <<"type">> := string()
+%% }
+-type update_security_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_security_policy_response() :: #{
+%%   <<"securityPolicyDetail">> => security_policy_detail()
+%% }
+-type update_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpc_endpoint_detail() :: #{
+%%   <<"id">> => string(),
+%%   <<"lastModifiedDate">> => [float()],
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type update_vpc_endpoint_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpc_endpoint_request() :: #{
+%%   <<"addSecurityGroupIds">> => list(string()),
+%%   <<"addSubnetIds">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string(),
+%%   <<"removeSecurityGroupIds">> => list(string()),
+%%   <<"removeSubnetIds">> => list(string())
+%% }
+-type update_vpc_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpc_endpoint_response() :: #{
+%%   <<"UpdateVpcEndpointDetail">> => update_vpc_endpoint_detail()
+%% }
+-type update_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% vector_options() :: #{
+%%   <<"ServerlessVectorAcceleration">> => string()
+%% }
+-type vector_options() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_detail() :: #{
+%%   <<"createdDate">> => [float()],
+%%   <<"failureCode">> => [string()],
+%%   <<"failureMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_endpoint_detail() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string()
+%% }
+-type vpc_endpoint_error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_filters() :: #{
+%%   <<"status">> => string()
+%% }
+-type vpc_endpoint_filters() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type vpc_endpoint_summary() :: #{binary() => any()}.
 
 -type batch_get_collection_errors() ::
     validation_exception() | 
@@ -1338,104 +1338,104 @@
 
 -type create_access_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_collection_errors() ::
-    ocu_limit_exceeded_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    ocu_limit_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_collection_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_index_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_lifecycle_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_security_config_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_security_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_vpc_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_access_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_collection_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_collection_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_index_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_lifecycle_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_security_config_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_security_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_vpc_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_access_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_account_settings_errors() ::
     validation_exception() | 
@@ -1443,21 +1443,21 @@
 
 -type get_index_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_policies_stats_errors() ::
     internal_server_exception().
 
 -type get_security_config_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_security_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_access_policies_errors() ::
     validation_exception() | 
@@ -1485,8 +1485,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_vpc_endpoints_errors() ::
     validation_exception() | 
@@ -1494,27 +1494,27 @@
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_access_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_account_settings_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type update_collection_errors() ::
     validation_exception() | 
@@ -1523,33 +1523,33 @@
 
 -type update_collection_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_index_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_lifecycle_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_security_config_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_security_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_vpc_endpoint_errors() ::

@@ -232,36 +232,83 @@
 
 
 %% Example:
-%% mobile_device_access_rule() :: #{
+%% access_control_rule() :: #{
+%%   <<"Actions">> => list(string()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateModified">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DeviceModels">> => list(string()),
-%%   <<"DeviceOperatingSystems">> => list(string()),
-%%   <<"DeviceTypes">> => list(string()),
-%%   <<"DeviceUserAgents">> => list(string()),
 %%   <<"Effect">> => list(any()),
-%%   <<"MobileDeviceAccessRuleId">> => string(),
+%%   <<"ImpersonationRoleIds">> => list(string()),
+%%   <<"IpRanges">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"NotDeviceModels">> => list(string()),
-%%   <<"NotDeviceOperatingSystems">> => list(string()),
-%%   <<"NotDeviceTypes">> => list(string()),
-%%   <<"NotDeviceUserAgents">> => list(string())
+%%   <<"NotActions">> => list(string()),
+%%   <<"NotImpersonationRoleIds">> => list(string()),
+%%   <<"NotIpRanges">> => list(string()),
+%%   <<"NotUserIds">> => list(string()),
+%%   <<"UserIds">> => list(string())
 %% }
--type mobile_device_access_rule() :: #{binary() => any()}.
+-type access_control_rule() :: #{binary() => any()}.
 
 %% Example:
-%% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(string()),
-%%   <<"NextToken">> => string()
+%% associate_delegate_to_resource_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string()
 %% }
--type list_aliases_response() :: #{binary() => any()}.
+-type associate_delegate_to_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_mobile_device_access_rule_response() :: #{
+%% associate_delegate_to_resource_response() :: #{
 
 %% }
--type update_mobile_device_access_rule_response() :: #{binary() => any()}.
+-type associate_delegate_to_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_member_to_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"MemberId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type associate_member_to_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_member_to_group_response() :: #{
+
+%% }
+-type associate_member_to_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_impersonation_role_request() :: #{
+%%   <<"ImpersonationRoleId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type assume_impersonation_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_impersonation_role_response() :: #{
+%%   <<"ExpiresIn">> => float(),
+%%   <<"Token">> => string()
+%% }
+-type assume_impersonation_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% availability_configuration() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"EwsProvider">> => redacted_ews_availability_provider(),
+%%   <<"LambdaProvider">> => lambda_availability_provider(),
+%%   <<"ProviderType">> => list(any())
+%% }
+-type availability_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% booking_options() :: #{
+%%   <<"AutoAcceptRequests">> => boolean(),
+%%   <<"AutoDeclineConflictingRequests">> => boolean(),
+%%   <<"AutoDeclineRecurringRequests">> => boolean()
+%% }
+-type booking_options() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_mailbox_export_job_request() :: #{
@@ -272,168 +319,85 @@
 -type cancel_mailbox_export_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_access_control_effect_response() :: #{
-%%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(string())
+%% cancel_mailbox_export_job_response() :: #{
+
 %% }
--type get_access_control_effect_response() :: #{binary() => any()}.
+-type cancel_mailbox_export_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_aliases_request() :: #{
+%% create_alias_request() :: #{
+%%   <<"Alias">> := string(),
 %%   <<"EntityId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
 %%   <<"OrganizationId">> := string()
 %% }
--type list_aliases_request() :: #{binary() => any()}.
+-type create_alias_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_mobile_device_access_override_response() :: #{
+%% create_alias_response() :: #{
 
 %% }
--type put_mobile_device_access_override_response() :: #{binary() => any()}.
+-type create_alias_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_email_monitoring_configuration_request() :: #{
-%%   <<"LogGroupArn">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"RoleArn">> => string()
-%% }
--type put_email_monitoring_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mobile_device_access_overrides_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Overrides">> => list(mobile_device_access_override())
-%% }
--type list_mobile_device_access_overrides_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_mailbox_details_response() :: #{
-%%   <<"MailboxQuota">> => integer(),
-%%   <<"MailboxSize">> => float()
-%% }
--type get_mailbox_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_organizations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationSummaries">> => list(organization_summary())
-%% }
--type list_organizations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_mobile_device_access_effect_request() :: #{
-%%   <<"DeviceModel">> => string(),
-%%   <<"DeviceOperatingSystem">> => string(),
-%%   <<"DeviceType">> => string(),
-%%   <<"DeviceUserAgent">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type get_mobile_device_access_effect_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_delegate_from_resource_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type disassociate_delegate_from_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_members_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_group_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_member_to_group_response() :: #{
-
-%% }
--type associate_member_to_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(resource())
-%% }
--type list_resources_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_response() :: #{
-%%   <<"BookingOptions">> => booking_options(),
-%%   <<"Description">> => string(),
-%%   <<"DisabledDate">> => non_neg_integer(),
-%%   <<"Email">> => string(),
-%%   <<"EnabledDate">> => non_neg_integer(),
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type describe_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_for_entity_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"Filters">> => list_groups_for_entity_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_groups_for_entity_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_mail_domain_response() :: #{
-
-%% }
--type deregister_mail_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% test_availability_configuration_request() :: #{
-%%   <<"DomainName">> => string(),
+%% create_availability_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DomainName">> := string(),
 %%   <<"EwsProvider">> => ews_availability_provider(),
 %%   <<"LambdaProvider">> => lambda_availability_provider(),
 %%   <<"OrganizationId">> := string()
 %% }
--type test_availability_configuration_request() :: #{binary() => any()}.
+-type create_availability_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_delegate_to_resource_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string()
+%% create_availability_configuration_response() :: #{
+
 %% }
--type associate_delegate_to_resource_request() :: #{binary() => any()}.
+-type create_availability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"GroupId">> => string()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_center_application_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_identity_center_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_center_application_response() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type create_identity_center_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_impersonation_role_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"Rules">> := list(impersonation_rule()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_impersonation_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_impersonation_role_response() :: #{
+%%   <<"ImpersonationRoleId">> => string()
+%% }
+-type create_impersonation_role_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_mobile_device_access_rule_request() :: #{
@@ -454,773 +418,27 @@
 -type create_mobile_device_access_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type delete_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_availability_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_availability_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_response() :: #{
-
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_request() :: #{
-%%   <<"BookingOptions">> => booking_options(),
-%%   <<"Description">> => string(),
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"Type">> => list(any())
-%% }
--type update_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_control_effect_request() :: #{
-%%   <<"Action">> := string(),
-%%   <<"ImpersonationRoleId">> => string(),
-%%   <<"IpAddress">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type get_access_control_effect_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_center_application_request() :: #{
-%%   <<"ApplicationArn">> := string()
-%% }
--type delete_identity_center_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_impersonation_roles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_impersonation_roles_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type create_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_from_work_mail_response() :: #{
-
-%% }
--type deregister_from_work_mail_response() :: #{binary() => any()}.
-
-%% Example:
-%% personal_access_token_summary() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateLastUsed">> => non_neg_integer(),
-%%   <<"ExpiresTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PersonalAccessTokenId">> => string(),
-%%   <<"Scopes">> => list(string()),
-%%   <<"UserId">> => string()
-%% }
--type personal_access_token_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_primary_email_address_request() :: #{
-%%   <<"Email">> := string(),
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type update_primary_email_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_personal_access_tokens_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type list_personal_access_tokens_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_mobile_device_access_overrides_request() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type list_mobile_device_access_overrides_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_retention_policy_response() :: #{
-
-%% }
--type put_retention_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mobile_device_access_override_request() :: #{
-%%   <<"DeviceId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type delete_mobile_device_access_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mobile_device_access_override_request() :: #{
-%%   <<"DeviceId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type get_mobile_device_access_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mail_domain_response() :: #{
-%%   <<"DkimVerificationStatus">> => list(any()),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"IsTestDomain">> => boolean(),
-%%   <<"OwnershipVerificationStatus">> => list(any()),
-%%   <<"Records">> => list(dns_record())
-%% }
--type get_mail_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_mailbox_export_jobs_response() :: #{
-%%   <<"Jobs">> => list(mailbox_export_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_mailbox_export_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_control_rules_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type list_access_control_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% organization_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organization_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_filters() :: #{
-%%   <<"DisplayNamePrefix">> => string(),
-%%   <<"IdentityProviderUserIdPrefix">> => string(),
-%%   <<"PrimaryEmailPrefix">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"UsernamePrefix">> => string()
-%% }
--type list_users_filters() :: #{binary() => any()}.
-
-%% Example:
-%% access_control_rule() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Effect">> => list(any()),
-%%   <<"ImpersonationRoleIds">> => list(string()),
-%%   <<"IpRanges">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NotActions">> => list(string()),
-%%   <<"NotImpersonationRoleIds">> => list(string()),
-%%   <<"NotIpRanges">> => list(string()),
-%%   <<"NotUserIds">> => list(string()),
-%%   <<"UserIds">> => list(string())
-%% }
--type access_control_rule() :: #{binary() => any()}.
-
-%% Example:
-%% domain() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"HostedZoneId">> => string()
-%% }
--type domain() :: #{binary() => any()}.
-
-%% Example:
-%% describe_identity_provider_configuration_response() :: #{
-%%   <<"AuthenticationMode">> => list(any()),
-%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
-%%   <<"PersonalAccessTokenConfiguration">> => personal_access_token_configuration()
-%% }
--type describe_identity_provider_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_primary_email_address_response() :: #{
-
-%% }
--type update_primary_email_address_response() :: #{binary() => any()}.
-
-%% Example:
 %% create_mobile_device_access_rule_response() :: #{
 %%   <<"MobileDeviceAccessRuleId">> => string()
 %% }
 -type create_mobile_device_access_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_email_monitoring_configuration_response() :: #{
-
-%% }
--type delete_email_monitoring_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_default_mail_domain_response() :: #{
-
-%% }
--type update_default_mail_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_impersonation_role_response() :: #{
-%%   <<"ExpiresIn">> => float(),
-%%   <<"Token">> => string()
-%% }
--type assume_impersonation_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_retention_policy_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FolderConfigurations">> := list(folder_configuration()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type put_retention_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% mail_domain_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type mail_domain_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_mail_domains_response() :: #{
-%%   <<"MailDomains">> => list(mail_domain_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_mail_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_mobile_device_access_rules_response() :: #{
-%%   <<"Rules">> => list(mobile_device_access_rule())
-%% }
--type list_mobile_device_access_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_personal_access_token_metadata_response() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateLastUsed">> => non_neg_integer(),
-%%   <<"ExpiresTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PersonalAccessTokenId">> => string(),
-%%   <<"Scopes">> => list(string()),
-%%   <<"UserId">> => string()
-%% }
--type get_personal_access_token_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_delegates_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type list_resource_delegates_request() :: #{binary() => any()}.
-
-%% Example:
-%% ews_availability_provider() :: #{
-%%   <<"EwsEndpoint">> => string(),
-%%   <<"EwsPassword">> => string(),
-%%   <<"EwsUsername">> => string()
-%% }
--type ews_availability_provider() :: #{binary() => any()}.
-
-%% Example:
-%% delete_personal_access_token_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"PersonalAccessTokenId">> := string()
-%% }
--type delete_personal_access_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_alias_response() :: #{
-
-%% }
--type create_alias_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_response() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_entity_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_filters() :: #{
-%%   <<"NamePrefix">> => string(),
-%%   <<"PrimaryEmailPrefix">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_groups_filters() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_delegates_response() :: #{
-%%   <<"Delegates">> => list(delegate()),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_delegates_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_retention_policy_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type get_default_retention_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_from_work_mail_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type deregister_from_work_mail_request() :: #{binary() => any()}.
-
-%% Example:
-%% group_identifier() :: #{
-%%   <<"GroupId">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type group_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% create_availability_configuration_request() :: #{
+%% create_organization_request() :: #{
+%%   <<"Alias">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"DomainName">> := string(),
-%%   <<"EwsProvider">> => ews_availability_provider(),
-%%   <<"LambdaProvider">> => lambda_availability_provider(),
-%%   <<"OrganizationId">> := string()
+%%   <<"DirectoryId">> => string(),
+%%   <<"Domains">> => list(domain()),
+%%   <<"EnableInteroperability">> => boolean(),
+%%   <<"KmsKeyArn">> => string()
 %% }
--type create_availability_configuration_request() :: #{binary() => any()}.
+-type create_organization_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_delegate_from_resource_response() :: #{
-
+%% create_organization_response() :: #{
+%%   <<"OrganizationId">> => string()
 %% }
--type disassociate_delegate_from_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_impersonation_role_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"Rules">> := list(impersonation_rule()),
-%%   <<"Type">> := list(any())
-%% }
--type create_impersonation_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"OrganizationId">> := string()
-%% }
--type update_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_response() :: #{
-
-%% }
--type delete_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_to_work_mail_response() :: #{
-
-%% }
--type register_to_work_mail_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_delegate_to_resource_response() :: #{
-
-%% }
--type associate_delegate_to_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% booking_options() :: #{
-%%   <<"AutoAcceptRequests">> => boolean(),
-%%   <<"AutoDeclineConflictingRequests">> => boolean(),
-%%   <<"AutoDeclineRecurringRequests">> => boolean()
-%% }
--type booking_options() :: #{binary() => any()}.
-
-%% Example:
-%% get_impersonation_role_effect_request() :: #{
-%%   <<"ImpersonationRoleId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"TargetUser">> := string()
-%% }
--type get_impersonation_role_effect_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_impersonation_role_response() :: #{
-
-%% }
--type delete_impersonation_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_center_application_response() :: #{
-%%   <<"ApplicationArn">> => string()
-%% }
--type create_identity_center_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_mailbox_details_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type get_mailbox_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% personal_access_token_configuration() :: #{
-%%   <<"LifetimeInDays">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type personal_access_token_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_retention_policy_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_retention_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% name_availability_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type name_availability_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_availability_configuration_response() :: #{
-
-%% }
--type create_availability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_inbound_dmarc_settings_request() :: #{
-%%   <<"Enforced">> := boolean(),
-%%   <<"OrganizationId">> := string()
-%% }
--type put_inbound_dmarc_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_availability_provider() :: #{
-%%   <<"LambdaArn">> => string()
-%% }
--type lambda_availability_provider() :: #{binary() => any()}.
-
-%% Example:
-%% test_availability_configuration_response() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"TestPassed">> => boolean()
-%% }
--type test_availability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% mail_domain_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type mail_domain_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inbound_dmarc_settings_response() :: #{
-%%   <<"Enforced">> => boolean()
-%% }
--type describe_inbound_dmarc_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_provider_configuration_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_identity_provider_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_mailbox_export_job_response() :: #{
-
-%% }
--type cancel_mailbox_export_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_availability_configuration_response() :: #{
-
-%% }
--type delete_availability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_for_entity_filters() :: #{
-%%   <<"GroupNamePrefix">> => string()
-%% }
--type list_groups_for_entity_filters() :: #{binary() => any()}.
-
-%% Example:
-%% get_mail_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type get_mail_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_personal_access_token_response() :: #{
-
-%% }
--type delete_personal_access_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% reset_password_response() :: #{
-
-%% }
--type reset_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% organization_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type organization_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_response() :: #{
-
-%% }
--type update_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_control_rule_response() :: #{
-
-%% }
--type delete_access_control_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_mailbox_permissions_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_mailbox_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_mailbox_permissions_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"GranteeId">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"PermissionValues">> := list(list(any())())
-%% }
--type put_mailbox_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mobile_device_access_override_response() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Effect">> => list(any()),
-%%   <<"UserId">> => string()
-%% }
--type get_mobile_device_access_override_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mobile_device_access_rule_response() :: #{
-
-%% }
--type delete_mobile_device_access_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_group_response() :: #{
-
-%% }
--type disassociate_member_from_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_impersonation_roles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Roles">> => list(impersonation_role())
-%% }
--type list_impersonation_roles_response() :: #{binary() => any()}.
-
-%% Example:
-%% mail_domain_summary() :: #{
-%%   <<"DefaultDomain">> => boolean(),
-%%   <<"DomainName">> => string()
-%% }
--type mail_domain_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_impersonation_role_effect_response() :: #{
-%%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(impersonation_matched_rule()),
-%%   <<"Type">> => list(any())
-%% }
--type get_impersonation_role_effect_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_identity_provider_configuration_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type describe_identity_provider_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_organization_response() :: #{
-%%   <<"OrganizationId">> => string(),
-%%   <<"State">> => string()
-%% }
--type delete_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mailbox_export_job_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type describe_mailbox_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"MemberId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type disassociate_member_from_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% availability_configuration() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"EwsProvider">> => redacted_ews_availability_provider(),
-%%   <<"LambdaProvider">> => lambda_availability_provider(),
-%%   <<"ProviderType">> => list(any())
-%% }
--type availability_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_availability_configuration_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"EwsProvider">> => ews_availability_provider(),
-%%   <<"LambdaProvider">> => lambda_availability_provider(),
-%%   <<"OrganizationId">> := string()
-%% }
--type update_availability_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_availability_configuration_response() :: #{
-
-%% }
--type update_availability_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_identity_provider_configuration_response() :: #{
-
-%% }
--type put_identity_provider_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% mail_domain_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type mail_domain_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_default_mail_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type update_default_mail_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_impersonation_role_response() :: #{
-
-%% }
--type update_impersonation_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_impersonation_role_request() :: #{
-%%   <<"ImpersonationRoleId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_impersonation_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_mail_domain_response() :: #{
-
-%% }
--type register_mail_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% mobile_device_access_override() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Effect">> => list(any()),
-%%   <<"UserId">> => string()
-%% }
--type mobile_device_access_override() :: #{binary() => any()}.
+-type create_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_resource_request() :: #{
@@ -1233,21 +451,236 @@
 -type create_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_groups_for_entity_response() :: #{
-%%   <<"Groups">> => list(group_identifier()),
-%%   <<"NextToken">> => string()
+%% create_resource_response() :: #{
+%%   <<"ResourceId">> => string()
 %% }
--type list_groups_for_entity_response() :: #{binary() => any()}.
+-type create_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% organization_summary() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"DefaultMailDomain">> => string(),
-%%   <<"ErrorMessage">> => string(),
+%% create_user_request() :: #{
+%%   <<"DisplayName">> := string(),
+%%   <<"FirstName">> => string(),
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"IdentityProviderUserId">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"Role">> => list(any())
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"UserId">> => string()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% delegate() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type delegate() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_control_rule_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_access_control_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_control_rule_response() :: #{
+
+%% }
+-type delete_access_control_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_request() :: #{
+%%   <<"Alias">> := string(),
+%%   <<"EntityId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_response() :: #{
+
+%% }
+-type delete_alias_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_availability_configuration_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_availability_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_availability_configuration_response() :: #{
+
+%% }
+-type delete_availability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_email_monitoring_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_email_monitoring_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_email_monitoring_configuration_response() :: #{
+
+%% }
+-type delete_email_monitoring_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_response() :: #{
+
+%% }
+-type delete_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_center_application_request() :: #{
+%%   <<"ApplicationArn">> := string()
+%% }
+-type delete_identity_center_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_center_application_response() :: #{
+
+%% }
+-type delete_identity_center_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_provider_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_identity_provider_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_provider_configuration_response() :: #{
+
+%% }
+-type delete_identity_provider_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_impersonation_role_request() :: #{
+%%   <<"ImpersonationRoleId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_impersonation_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_impersonation_role_response() :: #{
+
+%% }
+-type delete_impersonation_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mailbox_permissions_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"GranteeId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_mailbox_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mailbox_permissions_response() :: #{
+
+%% }
+-type delete_mailbox_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mobile_device_access_override_request() :: #{
+%%   <<"DeviceId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type delete_mobile_device_access_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mobile_device_access_override_response() :: #{
+
+%% }
+-type delete_mobile_device_access_override_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mobile_device_access_rule_request() :: #{
+%%   <<"MobileDeviceAccessRuleId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_mobile_device_access_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mobile_device_access_rule_response() :: #{
+
+%% }
+-type delete_mobile_device_access_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organization_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DeleteDirectory">> := boolean(),
+%%   <<"DeleteIdentityCenterApplication">> => boolean(),
+%%   <<"ForceDelete">> => boolean(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organization_response() :: #{
 %%   <<"OrganizationId">> => string(),
 %%   <<"State">> => string()
 %% }
--type organization_summary() :: #{binary() => any()}.
+-type delete_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_personal_access_token_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenId">> := string()
+%% }
+-type delete_personal_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_personal_access_token_response() :: #{
+
+%% }
+-type delete_personal_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type delete_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_response() :: #{
+
+%% }
+-type delete_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_retention_policy_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type delete_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_retention_policy_response() :: #{
+
+%% }
+-type delete_retention_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_user_request() :: #{
@@ -1257,12 +690,139 @@
 -type delete_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_mailbox_export_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% delete_user_response() :: #{
+
+%% }
+-type delete_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_from_work_mail_request() :: #{
+%%   <<"EntityId">> := string(),
 %%   <<"OrganizationId">> := string()
 %% }
--type list_mailbox_export_jobs_request() :: #{binary() => any()}.
+-type deregister_from_work_mail_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_from_work_mail_response() :: #{
+
+%% }
+-type deregister_from_work_mail_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_mail_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type deregister_mail_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_mail_domain_response() :: #{
+
+%% }
+-type deregister_mail_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_email_monitoring_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_email_monitoring_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_email_monitoring_configuration_response() :: #{
+%%   <<"LogGroupArn">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_email_monitoring_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_request() :: #{
+%%   <<"Email">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_response() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_group_response() :: #{
+%%   <<"DisabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"EnabledDate">> => non_neg_integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_configuration_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_identity_provider_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_configuration_response() :: #{
+%%   <<"AuthenticationMode">> => list(any()),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
+%%   <<"PersonalAccessTokenConfiguration">> => personal_access_token_configuration()
+%% }
+-type describe_identity_provider_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_dmarc_settings_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_inbound_dmarc_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_dmarc_settings_response() :: #{
+%%   <<"Enforced">> => boolean()
+%% }
+-type describe_inbound_dmarc_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mailbox_export_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_mailbox_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_mailbox_export_job_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EntityId">> => string(),
+%%   <<"ErrorInfo">> => string(),
+%%   <<"EstimatedProgress">> => integer(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_mailbox_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organization_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type describe_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_organization_response() :: #{
@@ -1281,58 +841,33 @@
 -type describe_organization_response() :: #{binary() => any()}.
 
 %% Example:
-%% register_to_work_mail_request() :: #{
-%%   <<"Email">> := string(),
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string()
+%% describe_resource_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string()
 %% }
--type register_to_work_mail_request() :: #{binary() => any()}.
+-type describe_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_user_response() :: #{
-
-%% }
--type delete_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mailbox_permissions_response() :: #{
-
-%% }
--type delete_mailbox_permissions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_impersonation_role_request() :: #{
-%%   <<"ImpersonationRoleId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type get_impersonation_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_mobile_device_access_override_request() :: #{
+%% describe_resource_response() :: #{
+%%   <<"BookingOptions">> => booking_options(),
 %%   <<"Description">> => string(),
-%%   <<"DeviceId">> := string(),
-%%   <<"Effect">> := list(any()),
+%%   <<"DisabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"EnabledDate">> => non_neg_integer(),
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{
 %%   <<"OrganizationId">> := string(),
 %%   <<"UserId">> := string()
 %% }
--type put_mobile_device_access_override_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_mailbox_export_job_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EntityId">> => string(),
-%%   <<"ErrorInfo">> => string(),
-%%   <<"EstimatedProgress">> => integer(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type describe_mailbox_export_job_response() :: #{binary() => any()}.
+-type describe_user_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_user_response() :: #{
@@ -1365,10 +900,290 @@
 -type describe_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_access_control_rule_response() :: #{
+%% directory_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_service_authentication_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_service_authentication_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% directory_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type directory_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegate_from_resource_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type disassociate_delegate_from_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegate_from_resource_response() :: #{
 
 %% }
--type put_access_control_rule_response() :: #{binary() => any()}.
+-type disassociate_delegate_from_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_member_from_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"MemberId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type disassociate_member_from_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_member_from_group_response() :: #{
+
+%% }
+-type disassociate_member_from_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_record() :: #{
+%%   <<"Hostname">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dns_record() :: #{binary() => any()}.
+
+%% Example:
+%% domain() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type domain() :: #{binary() => any()}.
+
+%% Example:
+%% email_address_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type email_address_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entity_already_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entity_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entity_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ews_availability_provider() :: #{
+%%   <<"EwsEndpoint">> => string(),
+%%   <<"EwsPassword">> => string(),
+%%   <<"EwsUsername">> => string()
+%% }
+-type ews_availability_provider() :: #{binary() => any()}.
+
+%% Example:
+%% folder_configuration() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Period">> => integer()
+%% }
+-type folder_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_control_effect_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"ImpersonationRoleId">> => string(),
+%%   <<"IpAddress">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_access_control_effect_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_control_effect_response() :: #{
+%%   <<"Effect">> => list(any()),
+%%   <<"MatchedRules">> => list(string())
+%% }
+-type get_access_control_effect_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_retention_policy_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type get_default_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_retention_policy_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FolderConfigurations">> => list(folder_configuration()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_default_retention_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_impersonation_role_effect_request() :: #{
+%%   <<"ImpersonationRoleId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"TargetUser">> := string()
+%% }
+-type get_impersonation_role_effect_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_impersonation_role_effect_response() :: #{
+%%   <<"Effect">> => list(any()),
+%%   <<"MatchedRules">> => list(impersonation_matched_rule()),
+%%   <<"Type">> => list(any())
+%% }
+-type get_impersonation_role_effect_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_impersonation_role_request() :: #{
+%%   <<"ImpersonationRoleId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type get_impersonation_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_impersonation_role_response() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ImpersonationRoleId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rules">> => list(impersonation_rule()),
+%%   <<"Type">> => list(any())
+%% }
+-type get_impersonation_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mail_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type get_mail_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mail_domain_response() :: #{
+%%   <<"DkimVerificationStatus">> => list(any()),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"IsTestDomain">> => boolean(),
+%%   <<"OwnershipVerificationStatus">> => list(any()),
+%%   <<"Records">> => list(dns_record())
+%% }
+-type get_mail_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mailbox_details_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type get_mailbox_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mailbox_details_response() :: #{
+%%   <<"MailboxQuota">> => integer(),
+%%   <<"MailboxSize">> => float()
+%% }
+-type get_mailbox_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_device_access_effect_request() :: #{
+%%   <<"DeviceModel">> => string(),
+%%   <<"DeviceOperatingSystem">> => string(),
+%%   <<"DeviceType">> => string(),
+%%   <<"DeviceUserAgent">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type get_mobile_device_access_effect_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_device_access_effect_response() :: #{
+%%   <<"Effect">> => list(any()),
+%%   <<"MatchedRules">> => list(mobile_device_access_matched_rule())
+%% }
+-type get_mobile_device_access_effect_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_device_access_override_request() :: #{
+%%   <<"DeviceId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type get_mobile_device_access_override_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mobile_device_access_override_response() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Effect">> => list(any()),
+%%   <<"UserId">> => string()
+%% }
+-type get_mobile_device_access_override_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_personal_access_token_metadata_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenId">> := string()
+%% }
+-type get_personal_access_token_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_personal_access_token_metadata_response() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateLastUsed">> => non_neg_integer(),
+%%   <<"ExpiresTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalAccessTokenId">> => string(),
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserId">> => string()
+%% }
+-type get_personal_access_token_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% group() :: #{
+%%   <<"DisabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"EnabledDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type group() :: #{binary() => any()}.
+
+%% Example:
+%% group_identifier() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type group_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% impersonation_matched_rule() :: #{
+%%   <<"ImpersonationRuleId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type impersonation_matched_rule() :: #{binary() => any()}.
 
 %% Example:
 %% impersonation_role() :: #{
@@ -1381,19 +1196,497 @@
 -type impersonation_role() :: #{binary() => any()}.
 
 %% Example:
-%% describe_entity_request() :: #{
-%%   <<"Email">> := string(),
-%%   <<"OrganizationId">> := string()
+%% impersonation_rule() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Effect">> => list(any()),
+%%   <<"ImpersonationRuleId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NotTargetUsers">> => list(string()),
+%%   <<"TargetUsers">> => list(string())
 %% }
--type describe_entity_request() :: #{binary() => any()}.
+-type impersonation_rule() :: #{binary() => any()}.
 
 %% Example:
-%% reset_password_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"Password">> := string(),
-%%   <<"UserId">> := string()
+%% invalid_configuration_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type reset_password_request() :: #{binary() => any()}.
+-type invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_custom_ses_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_custom_ses_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_password_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_availability_provider() :: #{
+%%   <<"LambdaArn">> => string()
+%% }
+-type lambda_availability_provider() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_control_rules_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_access_control_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_control_rules_response() :: #{
+%%   <<"Rules">> => list(access_control_rule())
+%% }
+-type list_access_control_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"Aliases">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_availability_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_availability_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_availability_configurations_response() :: #{
+%%   <<"AvailabilityConfigurations">> => list(availability_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_availability_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_members_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_group_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_members_response() :: #{
+%%   <<"Members">> => list(member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_members_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_filters() :: #{
+%%   <<"NamePrefix">> => string(),
+%%   <<"PrimaryEmailPrefix">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_groups_filters() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_entity_filters() :: #{
+%%   <<"GroupNamePrefix">> => string()
+%% }
+-type list_groups_for_entity_filters() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_entity_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"Filters">> => list_groups_for_entity_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_groups_for_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_entity_response() :: #{
+%%   <<"Groups">> => list(group_identifier()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_for_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Filters">> => list_groups_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_impersonation_roles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_impersonation_roles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_impersonation_roles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Roles">> => list(impersonation_role())
+%% }
+-type list_impersonation_roles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mail_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_mail_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mail_domains_response() :: #{
+%%   <<"MailDomains">> => list(mail_domain_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_mail_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mailbox_export_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_mailbox_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mailbox_export_jobs_response() :: #{
+%%   <<"Jobs">> => list(mailbox_export_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_mailbox_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mailbox_permissions_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_mailbox_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mailbox_permissions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(permission())
+%% }
+-type list_mailbox_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_device_access_overrides_request() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type list_mobile_device_access_overrides_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_device_access_overrides_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Overrides">> => list(mobile_device_access_override())
+%% }
+-type list_mobile_device_access_overrides_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_device_access_rules_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_mobile_device_access_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mobile_device_access_rules_response() :: #{
+%%   <<"Rules">> => list(mobile_device_access_rule())
+%% }
+-type list_mobile_device_access_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organizations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationSummaries">> => list(organization_summary())
+%% }
+-type list_organizations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_personal_access_tokens_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type list_personal_access_tokens_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_personal_access_tokens_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PersonalAccessTokenSummaries">> => list(personal_access_token_summary())
+%% }
+-type list_personal_access_tokens_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_delegates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type list_resource_delegates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_delegates_response() :: #{
+%%   <<"Delegates">> => list(delegate()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_delegates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_filters() :: #{
+%%   <<"NamePrefix">> => string(),
+%%   <<"PrimaryEmailPrefix">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_resources_filters() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_request() :: #{
+%%   <<"Filters">> => list_resources_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Resources">> => list(resource())
+%% }
+-type list_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_filters() :: #{
+%%   <<"DisplayNamePrefix">> => string(),
+%%   <<"IdentityProviderUserIdPrefix">> => string(),
+%%   <<"PrimaryEmailPrefix">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UsernamePrefix">> => string()
+%% }
+-type list_users_filters() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"Filters">> => list_users_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% mail_domain_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type mail_domain_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mail_domain_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type mail_domain_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mail_domain_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type mail_domain_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mail_domain_summary() :: #{
+%%   <<"DefaultDomain">> => boolean(),
+%%   <<"DomainName">> => string()
+%% }
+-type mail_domain_summary() :: #{binary() => any()}.
+
+%% Example:
+%% mailbox_export_job() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EntityId">> => string(),
+%%   <<"EstimatedProgress">> => integer(),
+%%   <<"JobId">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type mailbox_export_job() :: #{binary() => any()}.
+
+%% Example:
+%% member() :: #{
+%%   <<"DisabledDate">> => non_neg_integer(),
+%%   <<"EnabledDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type member() :: #{binary() => any()}.
+
+%% Example:
+%% mobile_device_access_matched_rule() :: #{
+%%   <<"MobileDeviceAccessRuleId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type mobile_device_access_matched_rule() :: #{binary() => any()}.
+
+%% Example:
+%% mobile_device_access_override() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Effect">> => list(any()),
+%%   <<"UserId">> => string()
+%% }
+-type mobile_device_access_override() :: #{binary() => any()}.
+
+%% Example:
+%% mobile_device_access_rule() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateModified">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceModels">> => list(string()),
+%%   <<"DeviceOperatingSystems">> => list(string()),
+%%   <<"DeviceTypes">> => list(string()),
+%%   <<"DeviceUserAgents">> => list(string()),
+%%   <<"Effect">> => list(any()),
+%%   <<"MobileDeviceAccessRuleId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NotDeviceModels">> => list(string()),
+%%   <<"NotDeviceOperatingSystems">> => list(string()),
+%%   <<"NotDeviceTypes">> => list(string()),
+%%   <<"NotDeviceUserAgents">> => list(string())
+%% }
+-type mobile_device_access_rule() :: #{binary() => any()}.
+
+%% Example:
+%% name_availability_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type name_availability_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_summary() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"DefaultMailDomain">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type organization_summary() :: #{binary() => any()}.
+
+%% Example:
+%% permission() :: #{
+%%   <<"GranteeId">> => string(),
+%%   <<"GranteeType">> => list(any()),
+%%   <<"PermissionValues">> => list(list(any())())
+%% }
+-type permission() :: #{binary() => any()}.
+
+%% Example:
+%% personal_access_token_configuration() :: #{
+%%   <<"LifetimeInDays">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type personal_access_token_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% personal_access_token_summary() :: #{
+%%   <<"DateCreated">> => non_neg_integer(),
+%%   <<"DateLastUsed">> => non_neg_integer(),
+%%   <<"ExpiresTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PersonalAccessTokenId">> => string(),
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserId">> => string()
+%% }
+-type personal_access_token_summary() :: #{binary() => any()}.
 
 %% Example:
 %% put_access_control_rule_request() :: #{
@@ -1413,76 +1706,106 @@
 -type put_access_control_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% impersonation_matched_rule() :: #{
-%%   <<"ImpersonationRuleId">> => string(),
-%%   <<"Name">> => string()
+%% put_access_control_rule_response() :: #{
+
 %% }
--type impersonation_matched_rule() :: #{binary() => any()}.
+-type put_access_control_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% mobile_device_access_matched_rule() :: #{
-%%   <<"MobileDeviceAccessRuleId">> => string(),
-%%   <<"Name">> => string()
+%% put_email_monitoring_configuration_request() :: #{
+%%   <<"LogGroupArn">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"RoleArn">> => string()
 %% }
--type mobile_device_access_matched_rule() :: #{binary() => any()}.
+-type put_email_monitoring_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% impersonation_rule() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Effect">> => list(any()),
-%%   <<"ImpersonationRuleId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NotTargetUsers">> => list(string()),
-%%   <<"TargetUsers">> => list(string())
+%% put_email_monitoring_configuration_response() :: #{
+
 %% }
--type impersonation_rule() :: #{binary() => any()}.
+-type put_email_monitoring_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% dns_record() :: #{
-%%   <<"Hostname">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
+%% put_identity_provider_configuration_request() :: #{
+%%   <<"AuthenticationMode">> := list(any()),
+%%   <<"IdentityCenterConfiguration">> := identity_center_configuration(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"PersonalAccessTokenConfiguration">> := personal_access_token_configuration()
 %% }
--type dns_record() :: #{binary() => any()}.
+-type put_identity_provider_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_organization_request() :: #{
+%% put_identity_provider_configuration_response() :: #{
+
+%% }
+-type put_identity_provider_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_inbound_dmarc_settings_request() :: #{
+%%   <<"Enforced">> := boolean(),
 %%   <<"OrganizationId">> := string()
 %% }
--type describe_organization_request() :: #{binary() => any()}.
+-type put_inbound_dmarc_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_mailbox_quota_request() :: #{
-%%   <<"MailboxQuota">> := integer(),
+%% put_inbound_dmarc_settings_response() :: #{
+
+%% }
+-type put_inbound_dmarc_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_mailbox_permissions_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"GranteeId">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"PermissionValues">> := list(list(any())())
+%% }
+-type put_mailbox_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_mailbox_permissions_response() :: #{
+
+%% }
+-type put_mailbox_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_mobile_device_access_override_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceId">> := string(),
+%%   <<"Effect">> := list(any()),
 %%   <<"OrganizationId">> := string(),
 %%   <<"UserId">> := string()
 %% }
--type update_mailbox_quota_request() :: #{binary() => any()}.
+-type put_mobile_device_access_override_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_personal_access_token_metadata_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"PersonalAccessTokenId">> := string()
+%% put_mobile_device_access_override_response() :: #{
+
 %% }
--type get_personal_access_token_metadata_request() :: #{binary() => any()}.
+-type put_mobile_device_access_override_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_mobile_device_access_rules_request() :: #{
+%% put_retention_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FolderConfigurations">> := list(folder_configuration()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> := string(),
 %%   <<"OrganizationId">> := string()
 %% }
--type list_mobile_device_access_rules_request() :: #{binary() => any()}.
+-type put_retention_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_email_monitoring_configuration_request() :: #{
-%%   <<"OrganizationId">> := string()
+%% put_retention_policy_response() :: #{
+
 %% }
--type delete_email_monitoring_configuration_request() :: #{binary() => any()}.
+-type put_retention_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_configuration_exception() :: #{
-%%   <<"Message">> => string()
+%% redacted_ews_availability_provider() :: #{
+%%   <<"EwsEndpoint">> => string(),
+%%   <<"EwsUsername">> => string()
 %% }
--type invalid_configuration_exception() :: #{binary() => any()}.
+-type redacted_ews_availability_provider() :: #{binary() => any()}.
 
 %% Example:
 %% register_mail_domain_request() :: #{
@@ -1493,47 +1816,185 @@
 -type register_mail_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_retention_policy_response() :: #{
+%% register_mail_domain_response() :: #{
 
 %% }
--type delete_retention_policy_response() :: #{binary() => any()}.
+-type register_mail_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_availability_configurations_response() :: #{
-%%   <<"AvailabilityConfigurations">> => list(availability_configuration()),
-%%   <<"NextToken">> => string()
-%% }
--type list_availability_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_response() :: #{
-
-%% }
--type delete_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_response() :: #{
-%%   <<"ResourceId">> => string()
-%% }
--type create_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_email_monitoring_configuration_request() :: #{
+%% register_to_work_mail_request() :: #{
+%%   <<"Email">> := string(),
+%%   <<"EntityId">> := string(),
 %%   <<"OrganizationId">> := string()
 %% }
--type describe_email_monitoring_configuration_request() :: #{binary() => any()}.
+-type register_to_work_mail_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_to_work_mail_response() :: #{
+
+%% }
+-type register_to_work_mail_response() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type reserved_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reset_password_request() :: #{
+%%   <<"OrganizationId">> := string(),
+%%   <<"Password">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type reset_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_password_response() :: #{
+
+%% }
+-type reset_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"EnabledDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_mailbox_export_job_request() :: #{
+%%   <<"ClientToken">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EntityId">> := string(),
+%%   <<"KmsKeyArn">> := string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3Prefix">> := string()
+%% }
+-type start_mailbox_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_mailbox_export_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_mailbox_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_availability_configuration_request() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EwsProvider">> => ews_availability_provider(),
+%%   <<"LambdaProvider">> => lambda_availability_provider(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type test_availability_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_availability_configuration_response() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"TestPassed">> => boolean()
+%% }
+-type test_availability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_availability_configuration_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"EwsProvider">> => ews_availability_provider(),
+%%   <<"LambdaProvider">> => lambda_availability_provider(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type update_availability_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_availability_configuration_response() :: #{
+
+%% }
+-type update_availability_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_default_mail_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type update_default_mail_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_default_mail_domain_response() :: #{
+
+%% }
+-type update_default_mail_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_response() :: #{
+
+%% }
+-type update_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_impersonation_role_request() :: #{
@@ -1547,23 +2008,80 @@
 -type update_impersonation_role_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_user_request() :: #{
+%% update_impersonation_role_response() :: #{
+
+%% }
+-type update_impersonation_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_mailbox_quota_request() :: #{
+%%   <<"MailboxQuota">> := integer(),
 %%   <<"OrganizationId">> := string(),
 %%   <<"UserId">> := string()
 %% }
--type describe_user_request() :: #{binary() => any()}.
+-type update_mailbox_quota_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_access_control_rules_response() :: #{
-%%   <<"Rules">> => list(access_control_rule())
+%% update_mailbox_quota_response() :: #{
+
 %% }
--type list_access_control_rules_response() :: #{binary() => any()}.
+-type update_mailbox_quota_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_inbound_dmarc_settings_response() :: #{
+%% update_mobile_device_access_rule_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DeviceModels">> => list(string()),
+%%   <<"DeviceOperatingSystems">> => list(string()),
+%%   <<"DeviceTypes">> => list(string()),
+%%   <<"DeviceUserAgents">> => list(string()),
+%%   <<"Effect">> := list(any()),
+%%   <<"MobileDeviceAccessRuleId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"NotDeviceModels">> => list(string()),
+%%   <<"NotDeviceOperatingSystems">> => list(string()),
+%%   <<"NotDeviceTypes">> => list(string()),
+%%   <<"NotDeviceUserAgents">> => list(string()),
+%%   <<"OrganizationId">> := string()
+%% }
+-type update_mobile_device_access_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_mobile_device_access_rule_response() :: #{
 
 %% }
--type put_inbound_dmarc_settings_response() :: #{binary() => any()}.
+-type update_mobile_device_access_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_primary_email_address_request() :: #{
+%%   <<"Email">> := string(),
+%%   <<"EntityId">> := string(),
+%%   <<"OrganizationId">> := string()
+%% }
+-type update_primary_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_primary_email_address_response() :: #{
+
+%% }
+-type update_primary_email_address_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_request() :: #{
+%%   <<"BookingOptions">> => booking_options(),
+%%   <<"Description">> => string(),
+%%   <<"HiddenFromGlobalAddressList">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationId">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"Type">> => list(any())
+%% }
+-type update_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_response() :: #{
+
+%% }
+-type update_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_request() :: #{
@@ -1589,112 +2107,10 @@
 -type update_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% redacted_ews_availability_provider() :: #{
-%%   <<"EwsEndpoint">> => string(),
-%%   <<"EwsUsername">> => string()
-%% }
--type redacted_ews_availability_provider() :: #{binary() => any()}.
-
-%% Example:
-%% directory_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_availability_configuration_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_availability_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_email_monitoring_configuration_response() :: #{
-%%   <<"LogGroupArn">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_email_monitoring_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_mailbox_permissions_response() :: #{
+%% update_user_response() :: #{
 
 %% }
--type put_mailbox_permissions_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_already_registered_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_already_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% email_address_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type email_address_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_organization_response() :: #{
-%%   <<"OrganizationId">> => string()
-%% }
--type create_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% identity_center_configuration() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"InstanceArn">> => string()
-%% }
--type identity_center_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mailbox_permissions_request() :: #{
-%%   <<"EntityId">> := string(),
-%%   <<"GranteeId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_mailbox_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% directory_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_mailbox_permissions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(permission())
-%% }
--type list_mailbox_permissions_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_mailbox_quota_response() :: #{
-
-%% }
--type update_mailbox_quota_response() :: #{binary() => any()}.
-
-%% Example:
-%% group() :: #{
-%%   <<"DisabledDate">> => non_neg_integer(),
-%%   <<"Email">> => string(),
-%%   <<"EnabledDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type group() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_custom_ses_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_custom_ses_configuration_exception() :: #{binary() => any()}.
+-type update_user_response() :: #{binary() => any()}.
 
 %% Example:
 %% user() :: #{
@@ -1711,1036 +2127,620 @@
 %% }
 -type user() :: #{binary() => any()}.
 
-%% Example:
-%% describe_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type describe_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_organizations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_organizations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_request() :: #{
-%%   <<"OrganizationId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type describe_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mobile_device_access_override_response() :: #{
-
-%% }
--type delete_mobile_device_access_override_response() :: #{binary() => any()}.
-
-%% Example:
-%% member() :: #{
-%%   <<"DisabledDate">> => non_neg_integer(),
-%%   <<"EnabledDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type member() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"Filters">> => list_users_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% delegate() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type delegate() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_request() :: #{
-%%   <<"Filters">> => list_resources_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_resources_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_mailbox_export_job_request() :: #{
-%%   <<"ClientToken">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EntityId">> := string(),
-%%   <<"KmsKeyArn">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"S3BucketName">> := string(),
-%%   <<"S3Prefix">> := string()
-%% }
--type start_mailbox_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_mobile_device_access_rule_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DeviceModels">> => list(string()),
-%%   <<"DeviceOperatingSystems">> => list(string()),
-%%   <<"DeviceTypes">> => list(string()),
-%%   <<"DeviceUserAgents">> => list(string()),
-%%   <<"Effect">> := list(any()),
-%%   <<"MobileDeviceAccessRuleId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"NotDeviceModels">> => list(string()),
-%%   <<"NotDeviceOperatingSystems">> => list(string()),
-%%   <<"NotDeviceTypes">> => list(string()),
-%%   <<"NotDeviceUserAgents">> => list(string()),
-%%   <<"OrganizationId">> := string()
-%% }
--type update_mobile_device_access_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_organization_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DeleteDirectory">> := boolean(),
-%%   <<"DeleteIdentityCenterApplication">> => boolean(),
-%%   <<"ForceDelete">> => boolean(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mobile_device_access_effect_response() :: #{
-%%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(mobile_device_access_matched_rule())
-%% }
--type get_mobile_device_access_effect_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_group_response() :: #{
-%%   <<"DisabledDate">> => non_neg_integer(),
-%%   <<"Email">> => string(),
-%%   <<"EnabledDate">> => non_neg_integer(),
-%%   <<"GroupId">> => string(),
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type describe_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_impersonation_role_request() :: #{
-%%   <<"ImpersonationRoleId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type assume_impersonation_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_control_rule_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_access_control_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_personal_access_tokens_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PersonalAccessTokenSummaries">> => list(personal_access_token_summary())
-%% }
--type list_personal_access_tokens_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_member_to_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"MemberId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type associate_member_to_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_retention_policy_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FolderConfigurations">> => list(folder_configuration()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type get_default_retention_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% mailbox_export_job() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EntityId">> => string(),
-%%   <<"EstimatedProgress">> => integer(),
-%%   <<"JobId">> => string(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type mailbox_export_job() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> => list(group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_provider_configuration_response() :: #{
-
-%% }
--type delete_identity_provider_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_mail_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_mail_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inbound_dmarc_settings_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type describe_inbound_dmarc_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alias_response() :: #{
-
-%% }
--type delete_alias_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_mail_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type deregister_mail_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_name_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type reserved_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_identity_provider_configuration_request() :: #{
-%%   <<"AuthenticationMode">> := list(any()),
-%%   <<"IdentityCenterConfiguration">> := identity_center_configuration(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"PersonalAccessTokenConfiguration">> := personal_access_token_configuration()
-%% }
--type put_identity_provider_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"Filters">> => list_groups_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% directory_service_authentication_failed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type directory_service_authentication_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_mailbox_export_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_mailbox_export_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_filters() :: #{
-%%   <<"NamePrefix">> => string(),
-%%   <<"PrimaryEmailPrefix">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_resources_filters() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{
-%%   <<"UserId">> => string()
-%% }
--type create_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_password_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_password_exception() :: #{binary() => any()}.
-
-%% Example:
-%% folder_configuration() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Name">> => list(any()),
-%%   <<"Period">> => integer()
-%% }
--type folder_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_response() :: #{
-
-%% }
--type update_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_center_application_response() :: #{
-
-%% }
--type delete_identity_center_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mobile_device_access_rule_request() :: #{
-%%   <<"MobileDeviceAccessRuleId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_mobile_device_access_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_impersonation_role_response() :: #{
-%%   <<"ImpersonationRoleId">> => string()
-%% }
--type create_impersonation_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% permission() :: #{
-%%   <<"GranteeId">> => string(),
-%%   <<"GranteeType">> => list(any()),
-%%   <<"PermissionValues">> => list(list(any())())
-%% }
--type permission() :: #{binary() => any()}.
-
-%% Example:
-%% get_impersonation_role_response() :: #{
-%%   <<"DateCreated">> => non_neg_integer(),
-%%   <<"DateModified">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ImpersonationRoleId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Rules">> => list(impersonation_rule()),
-%%   <<"Type">> => list(any())
-%% }
--type get_impersonation_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_response() :: #{
-%%   <<"GroupId">> => string()
-%% }
--type create_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alias_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"EntityId">> := string(),
-%%   <<"OrganizationId">> := string()
-%% }
--type delete_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_group_members_response() :: #{
-%%   <<"Members">> => list(member()),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_members_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_email_monitoring_configuration_response() :: #{
-
-%% }
--type put_email_monitoring_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"DisplayName">> := string(),
-%%   <<"FirstName">> => string(),
-%%   <<"HiddenFromGlobalAddressList">> => boolean(),
-%%   <<"IdentityProviderUserId">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OrganizationId">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"Role">> => list(any())
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_organization_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"Domains">> => list(domain()),
-%%   <<"EnableInteroperability">> => boolean(),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type create_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisabledDate">> => non_neg_integer(),
-%%   <<"Email">> => string(),
-%%   <<"EnabledDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type resource() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_center_application_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_identity_center_application_request() :: #{binary() => any()}.
-
 -type associate_delegate_to_resource_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
     entity_not_found_exception().
 
 -type associate_member_to_group_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
-    entity_not_found_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type assume_impersonation_role_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type cancel_mailbox_export_job_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type create_alias_errors() ::
-    limit_exceeded_exception() | 
-    email_address_in_use_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     mail_domain_state_exception() | 
     mail_domain_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
-    entity_not_found_exception().
-
--type create_availability_configuration_errors() ::
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception() | 
+    email_address_in_use_exception().
+
+-type create_availability_configuration_errors() ::
+    organization_state_exception() | 
     organization_not_found_exception() | 
     name_availability_exception() | 
-    organization_state_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type create_group_errors() ::
-    directory_service_authentication_failed_exception() | 
+    unsupported_operation_exception() | 
     reserved_name_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     name_availability_exception() | 
-    organization_state_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type create_identity_center_application_errors() ::
     invalid_parameter_exception().
 
 -type create_impersonation_role_errors() ::
+    organization_state_exception() | 
+    organization_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type create_mobile_device_access_rule_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type create_organization_errors() ::
+    name_availability_exception() | 
     limit_exceeded_exception() | 
-    directory_in_use_exception() | 
-    directory_unavailable_exception() | 
     invalid_parameter_exception() | 
-    name_availability_exception().
+    directory_unavailable_exception() | 
+    directory_in_use_exception().
 
 -type create_resource_errors() ::
-    directory_service_authentication_failed_exception() | 
+    unsupported_operation_exception() | 
     reserved_name_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     name_availability_exception() | 
-    organization_state_exception() | 
-    unsupported_operation_exception().
+    invalid_parameter_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type create_user_errors() ::
-    invalid_password_exception() | 
-    directory_service_authentication_failed_exception() | 
+    unsupported_operation_exception() | 
     reserved_name_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     name_availability_exception() | 
-    organization_state_exception() | 
-    unsupported_operation_exception().
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type delete_access_control_rule_errors() ::
-    organization_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception().
 
 -type delete_alias_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type delete_availability_configuration_errors() ::
-    organization_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception().
 
 -type delete_email_monitoring_configuration_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_group_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
+    unsupported_operation_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
-    unsupported_operation_exception().
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type delete_identity_center_application_errors() ::
-    invalid_parameter_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    invalid_parameter_exception().
 
 -type delete_identity_provider_configuration_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_impersonation_role_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_mailbox_permissions_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type delete_mobile_device_access_override_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type delete_mobile_device_access_rule_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_organization_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_personal_access_token_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_resource_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
+    unsupported_operation_exception() | 
     organization_state_exception() | 
-    entity_state_exception() | 
-    unsupported_operation_exception().
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception().
 
 -type delete_retention_policy_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type delete_user_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
+    unsupported_operation_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
-    unsupported_operation_exception().
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type deregister_from_work_mail_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type deregister_mail_domain_errors() ::
-    invalid_custom_ses_configuration_exception() | 
-    invalid_parameter_exception() | 
-    mail_domain_in_use_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    mail_domain_in_use_exception() | 
+    invalid_parameter_exception() | 
+    invalid_custom_ses_configuration_exception().
 
 -type describe_email_monitoring_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_entity_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type describe_group_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type describe_identity_provider_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_inbound_dmarc_settings_errors() ::
-    organization_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception().
 
 -type describe_mailbox_export_job_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type describe_organization_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception().
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_resource_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
     unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type describe_user_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
-    entity_not_found_exception().
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_not_found_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type disassociate_delegate_from_resource_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
     entity_not_found_exception().
 
 -type disassociate_member_from_group_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
-    entity_not_found_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type get_access_control_effect_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type get_default_retention_policy_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type get_impersonation_role_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    resource_not_found_exception() | 
-    organization_state_exception().
-
--type get_impersonation_role_effect_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
+
+-type get_impersonation_role_effect_errors() ::
+    resource_not_found_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type get_mail_domain_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     mail_domain_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type get_mailbox_details_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type get_mobile_device_access_effect_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type get_mobile_device_access_override_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type get_personal_access_token_metadata_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_access_control_rules_errors() ::
-    organization_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception().
 
 -type list_aliases_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type list_availability_configurations_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type list_group_members_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type list_groups_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type list_groups_for_entity_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type list_impersonation_roles_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type list_mail_domains_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type list_mailbox_export_jobs_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type list_mailbox_permissions_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type list_mobile_device_access_overrides_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type list_mobile_device_access_rules_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type list_organizations_errors() ::
     invalid_parameter_exception().
 
 -type list_personal_access_tokens_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type list_resource_delegates_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
     entity_not_found_exception().
 
 -type list_resources_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
+    unsupported_operation_exception() | 
     organization_state_exception() | 
-    unsupported_operation_exception().
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type list_users_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type put_access_control_rule_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type put_email_monitoring_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type put_identity_provider_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type put_inbound_dmarc_settings_errors() ::
-    organization_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception().
 
 -type put_mailbox_permissions_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type put_mobile_device_access_override_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type put_retention_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type register_mail_domain_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    mail_domain_in_use_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
-    organization_state_exception().
+    mail_domain_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type register_to_work_mail_errors() ::
-    directory_service_authentication_failed_exception() | 
-    email_address_in_use_exception() | 
-    entity_already_registered_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     mail_domain_state_exception() | 
     mail_domain_not_found_exception() | 
-    organization_state_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
-    unsupported_operation_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    entity_already_registered_exception() | 
+    email_address_in_use_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type reset_password_errors() ::
-    invalid_password_exception() | 
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
-    entity_not_found_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type start_mailbox_export_job_errors() ::
+    organization_state_exception() | 
+    organization_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
     entity_not_found_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    invalid_parameter_exception().
 
 -type test_availability_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type untag_resource_errors() ::
     resource_not_found_exception().
 
 -type update_availability_configuration_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
-    organization_state_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type update_default_mail_domain_errors() ::
-    invalid_parameter_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     mail_domain_state_exception() | 
     mail_domain_not_found_exception() | 
-    organization_state_exception().
+    invalid_parameter_exception().
 
 -type update_group_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
     entity_not_found_exception().
 
 -type update_impersonation_role_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     resource_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type update_mailbox_quota_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
     entity_not_found_exception().
 
 -type update_mobile_device_access_rule_errors() ::
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
     organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
     entity_not_found_exception().
 
 -type update_primary_email_address_errors() ::
-    directory_service_authentication_failed_exception() | 
-    email_address_in_use_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
+    unsupported_operation_exception() | 
+    organization_state_exception() | 
     organization_not_found_exception() | 
     mail_domain_state_exception() | 
     mail_domain_not_found_exception() | 
-    organization_state_exception() | 
+    invalid_parameter_exception() | 
     entity_state_exception() | 
-    unsupported_operation_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    email_address_in_use_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 -type update_resource_errors() ::
-    email_address_in_use_exception() | 
-    directory_unavailable_exception() | 
+    unsupported_operation_exception() | 
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    name_availability_exception() | 
+    mail_domain_state_exception() | 
+    mail_domain_not_found_exception() | 
     invalid_parameter_exception() | 
     invalid_configuration_exception() | 
-    organization_not_found_exception() | 
-    mail_domain_state_exception() | 
-    name_availability_exception() | 
-    mail_domain_not_found_exception() | 
-    organization_state_exception() | 
     entity_state_exception() | 
-    unsupported_operation_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    email_address_in_use_exception() | 
+    directory_unavailable_exception().
 
 -type update_user_errors() ::
-    directory_service_authentication_failed_exception() | 
-    directory_unavailable_exception() | 
-    invalid_parameter_exception() | 
-    organization_not_found_exception() | 
-    organization_state_exception() | 
-    entity_state_exception() | 
     unsupported_operation_exception() | 
-    entity_not_found_exception().
+    organization_state_exception() | 
+    organization_not_found_exception() | 
+    invalid_parameter_exception() | 
+    entity_state_exception() | 
+    entity_not_found_exception() | 
+    directory_unavailable_exception() | 
+    directory_service_authentication_failed_exception().
 
 %%====================================================================
 %% API

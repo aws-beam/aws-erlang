@@ -10,6 +10,8 @@
 
 -export([create_o_auth2_token/2,
          create_o_auth2_token/3,
+         create_o_auth2_token_with_iam/2,
+         create_o_auth2_token_with_iam/3,
          delete_console_authorization_configuration/2,
          delete_console_authorization_configuration/3,
          delete_resource_permission_statement/2,
@@ -18,12 +20,16 @@
          get_console_authorization_configuration/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         introspect_o_auth2_token_with_iam/2,
+         introspect_o_auth2_token_with_iam/3,
          list_resource_permission_statements/2,
          list_resource_permission_statements/3,
          put_console_authorization_configuration/2,
          put_console_authorization_configuration/3,
          put_resource_permission_statement/2,
-         put_resource_permission_statement/3]).
+         put_resource_permission_statement/3,
+         revoke_o_auth2_token_with_iam/2,
+         revoke_o_auth2_token_with_iam/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -92,6 +98,23 @@
 
 
 %% Example:
+%% create_o_auth2_token_with_iam_request() :: #{
+%%   <<"grantType">> := string(),
+%%   <<"resource">> := [string()]
+%% }
+-type create_o_auth2_token_with_iam_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_o_auth2_token_with_iam_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"tokenType">> => string()
+%% }
+-type create_o_auth2_token_with_iam_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_console_authorization_configuration_input() :: #{
 %%   <<"targetId">> => string()
 %% }
@@ -152,6 +175,34 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% introspect_o_auth2_token_with_iam_request() :: #{
+%%   <<"token">> := string(),
+%%   <<"tokenTypeHint">> => string()
+%% }
+-type introspect_o_auth2_token_with_iam_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% introspect_o_auth2_token_with_iam_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"active">> => [boolean()],
+%%   <<"aud">> => [string()],
+%%   <<"clientId">> => [string()],
+%%   <<"exp">> => [float()],
+%%   <<"iat">> => [float()],
+%%   <<"iss">> => [string()],
+%%   <<"jti">> => [string()],
+%%   <<"nbf">> => [float()],
+%%   <<"resource">> => [string()],
+%%   <<"signinSession">> => [string()],
+%%   <<"sub">> => [string()],
+%%   <<"tokenType">> => string(),
+%%   <<"userId">> => [string()]
+%% }
+-type introspect_o_auth2_token_with_iam_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -235,6 +286,17 @@
 
 
 %% Example:
+%% revoke_o_auth2_token_with_iam_request() :: #{
+%%   <<"token">> := string()
+%% }
+-type revoke_o_auth2_token_with_iam_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_o_auth2_token_with_iam_response() :: #{}
+-type revoke_o_auth2_token_with_iam_response() :: #{}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"error">> => list(any()),
 %%   <<"message">> => [string()]
@@ -271,6 +333,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type create_o_auth2_token_with_iam_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_console_authorization_configuration_errors() ::
     validation_exception() | 
     too_many_requests_error() | 
@@ -298,6 +366,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type introspect_o_auth2_token_with_iam_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_resource_permission_statements_errors() ::
     validation_exception() | 
     too_many_requests_error() | 
@@ -319,6 +393,12 @@
     service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type revoke_o_auth2_token_with_iam_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 %%====================================================================
@@ -383,6 +463,43 @@ create_o_auth2_token(Client, Input) ->
 create_o_auth2_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/token"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Grants permission to exchange client credentials for an OAuth 2.0
+%% access token
+%% scoped to a resource that can be used to access AWS services from
+%% applications
+-spec create_o_auth2_token_with_iam(aws_client:aws_client(), create_o_auth2_token_with_iam_request()) ->
+    {ok, create_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth2_token_with_iam_errors(), tuple()}.
+create_o_auth2_token_with_iam(Client, Input) ->
+    create_o_auth2_token_with_iam(Client, Input, []).
+
+-spec create_o_auth2_token_with_iam(aws_client:aws_client(), create_o_auth2_token_with_iam_request(), proplists:proplist()) ->
+    {ok, create_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth2_token_with_iam_errors(), tuple()}.
+create_o_auth2_token_with_iam(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/token?x-amz-client-auth-method=iam"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -541,6 +658,54 @@ get_resource_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Grants permission to inspect the metadata and state of an OAuth 2.0
+%% access token or refresh token
+%%
+%% Implements RFC 7662 OAuth 2.0 Token Introspection over a
+%% SigV4-authenticated
+%% endpoint.
+%%
+%% Inspects the metadata of an access_token or refresh_token issued
+%% by AWS Sign-In and returns the claims associated with it.
+%%
+%% Inactive token semantics (RFC 7662 §2.2): when the supplied token is
+%% unknown, expired, revoked, malformed, or owned by a different account,
+%% the response body is exactly { &quot;active&quot;: false } with all other
+%% claims
+%% omitted.
+-spec introspect_o_auth2_token_with_iam(aws_client:aws_client(), introspect_o_auth2_token_with_iam_request()) ->
+    {ok, introspect_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, introspect_o_auth2_token_with_iam_errors(), tuple()}.
+introspect_o_auth2_token_with_iam(Client, Input) ->
+    introspect_o_auth2_token_with_iam(Client, Input, []).
+
+-spec introspect_o_auth2_token_with_iam(aws_client:aws_client(), introspect_o_auth2_token_with_iam_request(), proplists:proplist()) ->
+    {ok, introspect_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, introspect_o_auth2_token_with_iam_errors(), tuple()}.
+introspect_o_auth2_token_with_iam(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/introspect?x-amz-client-auth-method=iam"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieve all permission statements in the account's SignIn
 %% resource-based policy
 -spec list_resource_permission_statements(aws_client:aws_client(), list_resource_permission_statements_input()) ->
@@ -627,6 +792,51 @@ put_resource_permission_statement(Client, Input) ->
 put_resource_permission_statement(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-resource-permission-statement"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Grants permission to revoke an OAuth 2.0 refresh token and its
+%% associated refresh tokens
+%%
+%% Revokes a refresh_token issued by AWS Sign-In, invalidating the entire
+%% token
+%% chain so that the refresh_token can no longer be used to mint new
+%% access_tokens.
+%%
+%% Idempotency: revoking an already-revoked, expired, or otherwise invalid
+%% token
+%% still returns 200 OK with an empty body. Only the refresh_token type is
+%% accepted.
+-spec revoke_o_auth2_token_with_iam(aws_client:aws_client(), revoke_o_auth2_token_with_iam_request()) ->
+    {ok, revoke_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_o_auth2_token_with_iam_errors(), tuple()}.
+revoke_o_auth2_token_with_iam(Client, Input) ->
+    revoke_o_auth2_token_with_iam(Client, Input, []).
+
+-spec revoke_o_auth2_token_with_iam(aws_client:aws_client(), revoke_o_auth2_token_with_iam_request(), proplists:proplist()) ->
+    {ok, revoke_o_auth2_token_with_iam_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_o_auth2_token_with_iam_errors(), tuple()}.
+revoke_o_auth2_token_with_iam(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/revoke?x-amz-client-auth-method=iam"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

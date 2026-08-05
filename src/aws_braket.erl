@@ -96,100 +96,56 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_metadata() :: #{
+%%   <<"actionType">> => [string()],
+%%   <<"executableCount">> => [float()],
+%%   <<"programCount">> => [float()]
+%% }
+-type action_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% algorithm_specification() :: #{
+%%   <<"containerImage">> => container_image(),
+%%   <<"scriptModeConfig">> => script_mode_config()
+%% }
+-type algorithm_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% association() :: #{
+%%   <<"arn">> => string(),
+%%   <<"type">> => string()
+%% }
+-type association() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_job_request() :: #{}
 -type cancel_job_request() :: #{}.
 
 
 %% Example:
-%% search_quantum_tasks_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"quantumTasks">> := list(quantum_task_summary())
-%% }
--type search_quantum_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% quantum_task_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deviceArn">> => string(),
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"outputS3Bucket">> => [string()],
-%%   <<"outputS3Directory">> => [string()],
-%%   <<"quantumTaskArn">> => string(),
-%%   <<"shots">> => [float()],
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
-%% }
--type quantum_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_spending_limits_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"spendingLimits">> => list(spending_limit_summary())
-%% }
--type search_spending_limits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_quantum_task_request() :: #{
-%%   <<"additionalAttributeNames">> => list(string())
-%% }
--type get_quantum_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_response() :: #{
+%% cancel_job_response() :: #{
+%%   <<"cancellationStatus">> := string(),
 %%   <<"jobArn">> := string()
 %% }
--type create_job_response() :: #{binary() => any()}.
+-type cancel_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% device_queue_info() :: #{
-%%   <<"queue">> => string(),
-%%   <<"queuePriority">> => string(),
-%%   <<"queueSize">> => [string()]
+%% cancel_quantum_task_request() :: #{
+%%   <<"clientToken">> := string()
 %% }
--type device_queue_info() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% job_checkpoint_config() :: #{
-%%   <<"localPath">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type job_checkpoint_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_spending_limits_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type search_spending_limits_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_spending_limits_request() :: #{
-%%   <<"filters">> => list(search_spending_limits_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type search_spending_limits_request() :: #{binary() => any()}.
+-type cancel_quantum_task_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -201,47 +157,17 @@
 
 
 %% Example:
-%% spending_limit_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deviceArn">> => string(),
-%%   <<"queuedSpend">> => [string()],
-%%   <<"spendingLimit">> => [string()],
-%%   <<"spendingLimitArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"timePeriod">> => time_period(),
-%%   <<"totalSpend">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type spending_limit_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_offline_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type device_offline_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_stopping_condition() :: #{
-%%   <<"maxRuntimeInSeconds">> => [integer()]
+%% container_image() :: #{
+%%   <<"uri">> => string()
 %% }
--type job_stopping_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_devices_filter() :: #{
-%%   <<"name">> => [string()],
-%%   <<"values">> => list(string())
-%% }
--type search_devices_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_retired_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type device_retired_exception() :: #{binary() => any()}.
+-type container_image() :: #{binary() => any()}.
 
 
 %% Example:
@@ -264,278 +190,10 @@
 
 
 %% Example:
-%% get_quantum_task_response() :: #{
-%%   <<"actionMetadata">> => action_metadata(),
-%%   <<"associations">> => list(association()),
-%%   <<"createdAt">> := [non_neg_integer()],
-%%   <<"deviceArn">> := string(),
-%%   <<"deviceParameters">> := string(),
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"experimentalCapabilities">> => list(),
-%%   <<"failureReason">> => [string()],
-%%   <<"jobArn">> => string(),
-%%   <<"numSuccessfulShots">> => [float()],
-%%   <<"outputS3Bucket">> := [string()],
-%%   <<"outputS3Directory">> := [string()],
-%%   <<"quantumTaskArn">> := string(),
-%%   <<"queueInfo">> => quantum_task_queue_info(),
-%%   <<"shots">> := [float()],
-%%   <<"status">> := string(),
-%%   <<"tags">> => map()
+%% create_job_response() :: #{
+%%   <<"jobArn">> := string()
 %% }
--type get_quantum_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quantum_tasks_request() :: #{
-%%   <<"filters">> := list(search_quantum_tasks_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type search_quantum_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_quantum_task_request() :: #{
-%%   <<"clientToken">> := string()
-%% }
--type cancel_quantum_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_period() :: #{
-%%   <<"endAt">> => [non_neg_integer()],
-%%   <<"startAt">> => [non_neg_integer()]
-%% }
--type time_period() :: #{binary() => any()}.
-
-%% Example:
-%% delete_spending_limit_request() :: #{}
--type delete_spending_limit_request() :: #{}.
-
-
-%% Example:
-%% algorithm_specification() :: #{
-%%   <<"containerImage">> => container_image(),
-%%   <<"scriptModeConfig">> => script_mode_config()
-%% }
--type algorithm_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_output_data_config() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"s3Path">> => string()
-%% }
--type job_output_data_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_config() :: #{
-%%   <<"device">> => string()
-%% }
--type device_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"device">> => string(),
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"jobArn">> => string(),
-%%   <<"jobName">> => [string()],
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% script_mode_config() :: #{
-%%   <<"compressionType">> => string(),
-%%   <<"entryPoint">> => [string()],
-%%   <<"s3Uri">> => string()
-%% }
--type script_mode_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_request() :: #{
-%%   <<"filters">> := list(search_jobs_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type search_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_spending_limit_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"spendingLimit">> => [string()],
-%%   <<"timePeriod">> => time_period()
-%% }
--type update_spending_limit_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_spending_limit_response() :: #{}
--type update_spending_limit_response() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% program_set_validation_failure() :: #{
-%%   <<"errors">> => list([string()]()),
-%%   <<"inputsIndex">> => [float()],
-%%   <<"programIndex">> => [float()]
-%% }
--type program_set_validation_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_spending_limit_response() :: #{
-%%   <<"spendingLimitArn">> => string()
-%% }
--type create_spending_limit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_image() :: #{
-%%   <<"uri">> => string()
-%% }
--type container_image() :: #{binary() => any()}.
-
-
-%% Example:
-%% association() :: #{
-%%   <<"arn">> => string(),
-%%   <<"type">> => string()
-%% }
--type association() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_response() :: #{
-%%   <<"jobs">> := list(job_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type search_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quantum_tasks_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type search_quantum_tasks_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type search_jobs_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% hybrid_job_queue_info() :: #{
-%%   <<"message">> => [string()],
-%%   <<"position">> => [string()],
-%%   <<"queue">> => string()
-%% }
--type hybrid_job_queue_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_devices_response() :: #{
-%%   <<"devices">> := list(device_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type search_devices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_event_details() :: #{
-%%   <<"eventType">> => string(),
-%%   <<"message">> => [string()],
-%%   <<"timeOfEvent">> => [non_neg_integer()]
-%% }
--type job_event_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_request() :: #{}
--type get_device_request() :: #{}.
-
-
-%% Example:
-%% create_quantum_task_response() :: #{
-%%   <<"quantumTaskArn">> := string()
-%% }
--type create_quantum_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_metadata() :: #{
-%%   <<"actionType">> => [string()],
-%%   <<"executableCount">> => [float()],
-%%   <<"programCount">> => [float()]
-%% }
--type action_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_summary() :: #{
-%%   <<"deviceArn">> => string(),
-%%   <<"deviceName">> => [string()],
-%%   <<"deviceStatus">> => string(),
-%%   <<"deviceType">> => string(),
-%%   <<"providerName">> => [string()]
-%% }
--type device_summary() :: #{binary() => any()}.
+-type create_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -556,24 +214,108 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% create_quantum_task_response() :: #{
+%%   <<"quantumTaskArn">> := string()
+%% }
+-type create_quantum_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_spending_limit_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"deviceArn">> := string(),
+%%   <<"spendingLimit">> := [string()],
+%%   <<"tags">> => map(),
+%%   <<"timePeriod">> => time_period()
+%% }
+-type create_spending_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_spending_limit_response() :: #{
+%%   <<"spendingLimitArn">> => string()
+%% }
+-type create_spending_limit_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"s3DataSource">> => s3_data_source()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_spending_limit_request() :: #{}
+-type delete_spending_limit_request() :: #{}.
+
+%% Example:
+%% delete_spending_limit_response() :: #{}
+-type delete_spending_limit_response() :: #{}.
+
+
+%% Example:
+%% device_config() :: #{
+%%   <<"device">> => string()
+%% }
+-type device_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_offline_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type device_offline_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% quantum_task_queue_info() :: #{
-%%   <<"message">> => [string()],
-%%   <<"position">> => [string()],
+%% device_queue_info() :: #{
 %%   <<"queue">> => string(),
-%%   <<"queuePriority">> => string()
+%%   <<"queuePriority">> => string(),
+%%   <<"queueSize">> => [string()]
 %% }
--type quantum_task_queue_info() :: #{binary() => any()}.
+-type device_queue_info() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% device_retired_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type device_retired_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_summary() :: #{
+%%   <<"deviceArn">> => string(),
+%%   <<"deviceName">> => [string()],
+%%   <<"deviceStatus">> => string(),
+%%   <<"deviceType">> => string(),
+%%   <<"providerName">> => [string()]
+%% }
+-type device_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_request() :: #{}
+-type get_device_request() :: #{}.
+
+
+%% Example:
+%% get_device_response() :: #{
+%%   <<"deviceArn">> := string(),
+%%   <<"deviceCapabilities">> := string(),
+%%   <<"deviceName">> := [string()],
+%%   <<"deviceQueueInfo">> => list(device_queue_info()),
+%%   <<"deviceStatus">> := string(),
+%%   <<"deviceType">> := string(),
+%%   <<"providerName">> := [string()]
+%% }
+-type get_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_request() :: #{
+%%   <<"additionalAttributeNames">> => list(string())
+%% }
+-type get_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -604,50 +346,42 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"programSetValidationFailures">> => list(program_set_validation_failure()),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% instance_config() :: #{
-%%   <<"instanceCount">> => [integer()],
-%%   <<"instanceType">> => string(),
-%%   <<"volumeSizeInGb">> => [integer()]
-%% }
--type instance_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_spending_limit_response() :: #{}
--type delete_spending_limit_response() :: #{}.
-
-
-%% Example:
-%% get_job_request() :: #{
+%% get_quantum_task_request() :: #{
 %%   <<"additionalAttributeNames">> => list(string())
 %% }
--type get_job_request() :: #{binary() => any()}.
+-type get_quantum_task_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
+%% get_quantum_task_response() :: #{
+%%   <<"actionMetadata">> => action_metadata(),
+%%   <<"associations">> => list(association()),
+%%   <<"createdAt">> := [non_neg_integer()],
+%%   <<"deviceArn">> := string(),
+%%   <<"deviceParameters">> := string(),
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"experimentalCapabilities">> => list(),
+%%   <<"failureReason">> => [string()],
+%%   <<"jobArn">> => string(),
+%%   <<"numSuccessfulShots">> => [float()],
+%%   <<"outputS3Bucket">> := [string()],
+%%   <<"outputS3Directory">> := [string()],
+%%   <<"quantumTaskArn">> := string(),
+%%   <<"queueInfo">> => quantum_task_queue_info(),
+%%   <<"shots">> := [float()],
+%%   <<"status">> := string(),
+%%   <<"tags">> => map()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type get_quantum_task_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_source() :: #{
-%%   <<"s3DataSource">> => s3_data_source()
+%% hybrid_job_queue_info() :: #{
+%%   <<"message">> => [string()],
+%%   <<"position">> => [string()],
+%%   <<"queue">> => string()
 %% }
--type data_source() :: #{binary() => any()}.
+-type hybrid_job_queue_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -660,22 +394,141 @@
 
 
 %% Example:
-%% cancel_job_response() :: #{
-%%   <<"cancellationStatus">> := string(),
-%%   <<"jobArn">> := string()
+%% instance_config() :: #{
+%%   <<"instanceCount">> => [integer()],
+%%   <<"instanceType">> => string(),
+%%   <<"volumeSizeInGb">> => [integer()]
 %% }
--type cancel_job_response() :: #{binary() => any()}.
+-type instance_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_spending_limit_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"deviceArn">> := string(),
-%%   <<"spendingLimit">> := [string()],
-%%   <<"tags">> => map(),
-%%   <<"timePeriod">> => time_period()
+%% internal_service_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type create_spending_limit_request() :: #{binary() => any()}.
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_checkpoint_config() :: #{
+%%   <<"localPath">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type job_checkpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_event_details() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"timeOfEvent">> => [non_neg_integer()]
+%% }
+-type job_event_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_output_data_config() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"s3Path">> => string()
+%% }
+-type job_output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_stopping_condition() :: #{
+%%   <<"maxRuntimeInSeconds">> => [integer()]
+%% }
+-type job_stopping_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"device">> => string(),
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"jobArn">> => string(),
+%%   <<"jobName">> => [string()],
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% program_set_validation_failure() :: #{
+%%   <<"errors">> => list([string()]()),
+%%   <<"inputsIndex">> => [float()],
+%%   <<"programIndex">> => [float()]
+%% }
+-type program_set_validation_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% quantum_task_queue_info() :: #{
+%%   <<"message">> => [string()],
+%%   <<"position">> => [string()],
+%%   <<"queue">> => string(),
+%%   <<"queuePriority">> => string()
+%% }
+-type quantum_task_queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% quantum_task_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deviceArn">> => string(),
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"outputS3Bucket">> => [string()],
+%%   <<"outputS3Directory">> => [string()],
+%%   <<"quantumTaskArn">> => string(),
+%%   <<"shots">> => [float()],
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type quantum_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_data_source() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% script_mode_config() :: #{
+%%   <<"compressionType">> => string(),
+%%   <<"entryPoint">> => [string()],
+%%   <<"s3Uri">> => string()
+%% }
+-type script_mode_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_devices_filter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"values">> => list(string())
+%% }
+-type search_devices_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -688,93 +541,240 @@
 
 
 %% Example:
-%% get_device_response() :: #{
-%%   <<"deviceArn">> := string(),
-%%   <<"deviceCapabilities">> := string(),
-%%   <<"deviceName">> := [string()],
-%%   <<"deviceQueueInfo">> => list(device_queue_info()),
-%%   <<"deviceStatus">> := string(),
-%%   <<"deviceType">> := string(),
-%%   <<"providerName">> := [string()]
+%% search_devices_response() :: #{
+%%   <<"devices">> := list(device_summary()),
+%%   <<"nextToken">> => [string()]
 %% }
--type get_device_response() :: #{binary() => any()}.
+-type search_devices_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_data_source() :: #{
-%%   <<"s3Uri">> => string()
+%% search_jobs_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type s3_data_source() :: #{binary() => any()}.
+-type search_jobs_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_request() :: #{
+%%   <<"filters">> := list(search_jobs_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_response() :: #{
+%%   <<"jobs">> := list(job_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quantum_tasks_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type search_quantum_tasks_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quantum_tasks_request() :: #{
+%%   <<"filters">> := list(search_quantum_tasks_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_quantum_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quantum_tasks_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"quantumTasks">> := list(quantum_task_summary())
+%% }
+-type search_quantum_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spending_limits_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type search_spending_limits_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spending_limits_request() :: #{
+%%   <<"filters">> => list(search_spending_limits_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_spending_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_spending_limits_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"spendingLimits">> => list(spending_limit_summary())
+%% }
+-type search_spending_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% spending_limit_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deviceArn">> => string(),
+%%   <<"queuedSpend">> => [string()],
+%%   <<"spendingLimit">> => [string()],
+%%   <<"spendingLimitArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timePeriod">> => time_period(),
+%%   <<"totalSpend">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type spending_limit_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_period() :: #{
+%%   <<"endAt">> => [non_neg_integer()],
+%%   <<"startAt">> => [non_neg_integer()]
+%% }
+-type time_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_spending_limit_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"spendingLimit">> => [string()],
+%%   <<"timePeriod">> => time_period()
+%% }
+-type update_spending_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_spending_limit_response() :: #{}
+-type update_spending_limit_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"programSetValidationFailures">> => list(program_set_validation_failure()),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type cancel_quantum_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type create_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception() | 
     internal_service_exception() | 
     device_retired_exception() | 
-    device_offline_exception().
+    device_offline_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_quantum_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     internal_service_exception() | 
     device_retired_exception() | 
-    device_offline_exception().
+    device_offline_exception() | 
+    access_denied_exception().
 
 -type create_spending_limit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_service_exception() | 
-    device_retired_exception().
+    device_retired_exception() | 
+    access_denied_exception().
 
 -type delete_spending_limit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_quantum_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
@@ -782,28 +782,28 @@
     internal_service_exception().
 
 -type search_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_exception().
+    throttling_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_exception().
+    throttling_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_quantum_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_exception().
+    throttling_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_spending_limits_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_service_exception().
+    throttling_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -816,11 +816,11 @@
     internal_service_exception().
 
 -type update_spending_limit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

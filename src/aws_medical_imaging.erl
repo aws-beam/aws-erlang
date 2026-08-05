@@ -55,71 +55,53 @@
 
 
 %% Example:
-%% get_image_set_metadata_request() :: #{
-%%   <<"versionId">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_image_set_metadata_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% metadata_copies() :: #{
-%%   <<"copiableAttributes">> => string()
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type metadata_copies() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_d_i_c_o_m_import_job_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"dataAccessRoleArn">> := string(),
-%%   <<"importConfiguration">> => list(),
-%%   <<"inputOwnerAccountId">> => string(),
-%%   <<"inputS3Uri">> := string(),
-%%   <<"jobName">> => string(),
-%%   <<"outputS3Uri">> := string()
-%% }
--type start_d_i_c_o_m_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_image_sets_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"searchCriteria">> => search_criteria()
-%% }
--type search_image_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% overrides() :: #{
-%%   <<"forced">> => [boolean()]
-%% }
--type overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_sets_metadata_summary() :: #{
-%%   <<"DICOMTags">> => d_i_c_o_m_tags(),
-%%   <<"createdAt">> => non_neg_integer(),
+%% copy_destination_image_set() :: #{
 %%   <<"imageSetId">> => string(),
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"lastAccessedAt">> => non_neg_integer(),
-%%   <<"storageTier">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => [integer()]
+%%   <<"latestVersionId">> => string()
 %% }
--type image_sets_metadata_summary() :: #{binary() => any()}.
+-type copy_destination_image_set() :: #{binary() => any()}.
+
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% copy_destination_image_set_properties() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"imageSetArn">> => string(),
+%%   <<"imageSetId">> => string(),
+%%   <<"imageSetState">> => list(any()),
+%%   <<"imageSetWorkflowStatus">> => list(any()),
+%%   <<"latestVersionId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type copy_destination_image_set_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_image_set_information() :: #{
+%%   <<"destinationImageSet">> => copy_destination_image_set(),
+%%   <<"sourceImageSet">> => copy_source_image_set_information()
+%% }
+-type copy_image_set_information() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,6 +111,15 @@
 %%   <<"promoteToPrimary">> => [boolean()]
 %% }
 -type copy_image_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_image_set_response() :: #{
+%%   <<"datastoreId">> => string(),
+%%   <<"destinationImageSetProperties">> => copy_destination_image_set_properties(),
+%%   <<"sourceImageSetProperties">> => copy_source_image_set_properties()
+%% }
+-type copy_image_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -151,212 +142,25 @@
 %% }
 -type copy_source_image_set_properties() :: #{binary() => any()}.
 
-%% Example:
-%% get_datastore_request() :: #{}
--type get_datastore_request() :: #{}.
-
 
 %% Example:
-%% not_acceptable_exception() :: #{
-%%   <<"message">> => [string()]
+%% create_datastore_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"datastoreName">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lambdaAuthorizerArn">> => string(),
+%%   <<"losslessStorageFormat">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type not_acceptable_exception() :: #{binary() => any()}.
+-type create_datastore_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% dicom_metadata_mapping() :: #{
-%%   <<"metadataFilePath">> => string(),
-%%   <<"seriesInstanceUID">> => string(),
-%%   <<"studyInstanceUID">> => string()
-%% }
--type dicom_metadata_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_set_versions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_image_set_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% d_i_c_o_m_import_job_summary() :: #{
-%%   <<"dataAccessRoleArn">> => string(),
-%%   <<"datastoreId">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"submittedAt">> => non_neg_integer()
-%% }
--type d_i_c_o_m_import_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_set_properties() :: #{
-%%   <<"ImageSetWorkflowStatus">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deletedAt">> => non_neg_integer(),
-%%   <<"imageSetId">> => string(),
-%%   <<"imageSetState">> => list(any()),
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"message">> => string(),
-%%   <<"overrides">> => overrides(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"versionId">> => string()
-%% }
--type image_set_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_frame_information() :: #{
-%%   <<"imageFrameId">> => string()
-%% }
--type image_frame_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% dicom_json_metadata_import_configuration() :: #{
-%%   <<"dicomMetadataMappings">> => list(dicom_metadata_mapping())
-%% }
--type dicom_json_metadata_import_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_filter() :: #{
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(list())
-%% }
--type search_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_d_i_c_o_m_import_job_request() :: #{}
--type get_d_i_c_o_m_import_job_request() :: #{}.
-
-
-%% Example:
-%% get_image_set_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"datastoreId">> => string(),
-%%   <<"deletedAt">> => non_neg_integer(),
-%%   <<"imageSetArn">> => string(),
-%%   <<"imageSetId">> => string(),
-%%   <<"imageSetState">> => list(any()),
-%%   <<"imageSetWorkflowStatus">> => list(any()),
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"lastAccessedAt">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"overrides">> => overrides(),
-%%   <<"storageTier">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"versionId">> => string()
-%% }
--type get_image_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_datastore_response() :: #{
+%% create_datastore_response() :: #{
 %%   <<"datastoreId">> => string(),
 %%   <<"datastoreStatus">> => list(any())
 %% }
--type delete_datastore_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_set_request() :: #{
-%%   <<"versionId">> => string()
-%% }
--type get_image_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_image_sets_response() :: #{
-%%   <<"imageSetsMetadataSummaries">> => list(image_sets_metadata_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => sort()
-%% }
--type search_image_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_image_set_metadata_request() :: #{
-%%   <<"force">> => [boolean()],
-%%   <<"includeStudyImageSets">> => [boolean()],
-%%   <<"latestVersionId">> := string(),
-%%   <<"updateImageSetMetadataUpdates">> := list()
-%% }
--type update_image_set_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_image_set_response() :: #{
-%%   <<"datastoreId">> => string(),
-%%   <<"destinationImageSetProperties">> => copy_destination_image_set_properties(),
-%%   <<"sourceImageSetProperties">> => copy_source_image_set_properties()
-%% }
--type copy_image_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_datastore_response() :: #{
-%%   <<"datastoreProperties">> => datastore_properties()
-%% }
--type get_datastore_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datastores_response() :: #{
-%%   <<"datastoreSummaries">> => list(datastore_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_datastores_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_d_i_c_o_m_import_job_response() :: #{
-%%   <<"datastoreId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"submittedAt">> => non_neg_integer()
-%% }
--type start_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_frame_request() :: #{
-%%   <<"imageFrameInformation">> := image_frame_information()
-%% }
--type get_image_frame_request() :: #{binary() => any()}.
+-type create_datastore_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -377,42 +181,25 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datastores_request() :: #{
-%%   <<"datastoreStatus">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_datastores_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% datastore_properties() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"datastoreArn">> => string(),
+%% d_i_c_o_m_import_job_summary() :: #{
+%%   <<"dataAccessRoleArn">> => string(),
 %%   <<"datastoreId">> => string(),
-%%   <<"datastoreName">> => string(),
-%%   <<"datastoreStatus">> => list(any()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lambdaAuthorizerArn">> => string(),
-%%   <<"losslessStorageFormat">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"submittedAt">> => non_neg_integer()
 %% }
--type datastore_properties() :: #{binary() => any()}.
+-type d_i_c_o_m_import_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% sort() :: #{
-%%   <<"sortField">> => list(any()),
-%%   <<"sortOrder">> => list(any())
+%% d_i_c_o_m_study_date_and_time() :: #{
+%%   <<"DICOMStudyDate">> => string(),
+%%   <<"DICOMStudyTime">> => string()
 %% }
--type sort() :: #{binary() => any()}.
+-type d_i_c_o_m_study_date_and_time() :: #{binary() => any()}.
 
 
 %% Example:
@@ -438,23 +225,26 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
+%% d_i_c_o_m_updates() :: #{
+%%   <<"removableAttributes">> => binary(),
+%%   <<"updatableAttributes">> => binary()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type d_i_c_o_m_updates() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_destination_image_set_properties() :: #{
+%% datastore_properties() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"imageSetArn">> => string(),
-%%   <<"imageSetId">> => string(),
-%%   <<"imageSetState">> => list(any()),
-%%   <<"imageSetWorkflowStatus">> => list(any()),
-%%   <<"latestVersionId">> => string(),
+%%   <<"datastoreArn">> => string(),
+%%   <<"datastoreId">> => string(),
+%%   <<"datastoreName">> => string(),
+%%   <<"datastoreStatus">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lambdaAuthorizerArn">> => string(),
+%%   <<"losslessStorageFormat">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type copy_destination_image_set_properties() :: #{binary() => any()}.
+-type datastore_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -468,49 +258,17 @@
 %% }
 -type datastore_summary() :: #{binary() => any()}.
 
+%% Example:
+%% delete_datastore_request() :: #{}
+-type delete_datastore_request() :: #{}.
+
 
 %% Example:
-%% d_i_c_o_m_updates() :: #{
-%%   <<"removableAttributes">> => binary(),
-%%   <<"updatableAttributes">> => binary()
+%% delete_datastore_response() :: #{
+%%   <<"datastoreId">> => string(),
+%%   <<"datastoreStatus">> => list(any())
 %% }
--type d_i_c_o_m_updates() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_set_versions_response() :: #{
-%%   <<"imageSetPropertiesList">> => list(image_set_properties()),
-%%   <<"nextToken">> => string()
-%% }
--type list_image_set_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% copy_destination_image_set() :: #{
-%%   <<"imageSetId">> => string(),
-%%   <<"latestVersionId">> => string()
-%% }
--type copy_destination_image_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_d_i_c_o_m_import_jobs_request() :: #{
-%%   <<"jobStatus">> => list(any()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_d_i_c_o_m_import_jobs_request() :: #{binary() => any()}.
+-type delete_datastore_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_image_set_request() :: #{}
@@ -518,33 +276,73 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
+%% delete_image_set_response() :: #{
+%%   <<"datastoreId">> => string(),
+%%   <<"imageSetId">> => string(),
+%%   <<"imageSetState">> => list(any()),
+%%   <<"imageSetWorkflowStatus">> => list(any())
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
+-type delete_image_set_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_datastore_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"datastoreName">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lambdaAuthorizerArn">> => string(),
-%%   <<"losslessStorageFormat">> => list(any()),
-%%   <<"tags">> => map()
+%% dicom_json_metadata_import_configuration() :: #{
+%%   <<"dicomMetadataMappings">> => list(dicom_metadata_mapping())
 %% }
--type create_datastore_request() :: #{binary() => any()}.
+-type dicom_json_metadata_import_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dicom_metadata_mapping() :: #{
+%%   <<"metadataFilePath">> => string(),
+%%   <<"seriesInstanceUID">> => string(),
+%%   <<"studyInstanceUID">> => string()
+%% }
+-type dicom_metadata_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% get_d_i_c_o_m_import_job_request() :: #{}
+-type get_d_i_c_o_m_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_d_i_c_o_m_import_job_response() :: #{
+%%   <<"jobProperties">> => d_i_c_o_m_import_job_properties()
+%% }
+-type get_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_datastore_request() :: #{}
+-type get_datastore_request() :: #{}.
+
+
+%% Example:
+%% get_datastore_response() :: #{
+%%   <<"datastoreProperties">> => datastore_properties()
+%% }
+-type get_datastore_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_frame_request() :: #{
+%%   <<"imageFrameInformation">> := image_frame_information()
+%% }
+-type get_image_frame_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_frame_response() :: #{
+%%   <<"contentType">> => [string()],
+%%   <<"imageFrameBlob">> => binary()
+%% }
+-type get_image_frame_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_set_metadata_request() :: #{
+%%   <<"versionId">> => string()
+%% }
+-type get_image_set_metadata_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -557,10 +355,274 @@
 
 
 %% Example:
-%% bad_request_exception() :: #{
+%% get_image_set_request() :: #{
+%%   <<"versionId">> => string()
+%% }
+-type get_image_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_set_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"datastoreId">> => string(),
+%%   <<"deletedAt">> => non_neg_integer(),
+%%   <<"imageSetArn">> => string(),
+%%   <<"imageSetId">> => string(),
+%%   <<"imageSetState">> => list(any()),
+%%   <<"imageSetWorkflowStatus">> => list(any()),
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"lastAccessedAt">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"overrides">> => overrides(),
+%%   <<"storageTier">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"versionId">> => string()
+%% }
+-type get_image_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_frame_information() :: #{
+%%   <<"imageFrameId">> => string()
+%% }
+-type image_frame_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_set_properties() :: #{
+%%   <<"ImageSetWorkflowStatus">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deletedAt">> => non_neg_integer(),
+%%   <<"imageSetId">> => string(),
+%%   <<"imageSetState">> => list(any()),
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"message">> => string(),
+%%   <<"overrides">> => overrides(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"versionId">> => string()
+%% }
+-type image_set_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_sets_metadata_summary() :: #{
+%%   <<"DICOMTags">> => d_i_c_o_m_tags(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"imageSetId">> => string(),
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"lastAccessedAt">> => non_neg_integer(),
+%%   <<"storageTier">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => [integer()]
+%% }
+-type image_sets_metadata_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_d_i_c_o_m_import_jobs_request() :: #{
+%%   <<"jobStatus">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_d_i_c_o_m_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_d_i_c_o_m_import_jobs_response() :: #{
+%%   <<"jobSummaries">> => list(d_i_c_o_m_import_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_d_i_c_o_m_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datastores_request() :: #{
+%%   <<"datastoreStatus">> => list(any()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_datastores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datastores_response() :: #{
+%%   <<"datastoreSummaries">> => list(datastore_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datastores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_set_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_set_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_set_versions_response() :: #{
+%%   <<"imageSetPropertiesList">> => list(image_set_properties()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_set_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_copies() :: #{
+%%   <<"copiableAttributes">> => string()
+%% }
+-type metadata_copies() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_acceptable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type not_acceptable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% overrides() :: #{
+%%   <<"forced">> => [boolean()]
+%% }
+-type overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_criteria() :: #{
+%%   <<"filters">> => list(search_filter()),
+%%   <<"sort">> => sort()
+%% }
+-type search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_filter() :: #{
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(list())
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_image_sets_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"searchCriteria">> => search_criteria()
+%% }
+-type search_image_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_image_sets_response() :: #{
+%%   <<"imageSetsMetadataSummaries">> => list(image_sets_metadata_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort()
+%% }
+-type search_image_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort() :: #{
+%%   <<"sortField">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_d_i_c_o_m_import_job_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"dataAccessRoleArn">> := string(),
+%%   <<"importConfiguration">> => list(),
+%%   <<"inputOwnerAccountId">> => string(),
+%%   <<"inputS3Uri">> := string(),
+%%   <<"jobName">> => string(),
+%%   <<"outputS3Uri">> := string()
+%% }
+-type start_d_i_c_o_m_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_d_i_c_o_m_import_job_response() :: #{
+%%   <<"datastoreId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"submittedAt">> => non_neg_integer()
+%% }
+-type start_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_image_set_metadata_request() :: #{
+%%   <<"force">> => [boolean()],
+%%   <<"includeStudyImageSets">> => [boolean()],
+%%   <<"latestVersionId">> := string(),
+%%   <<"updateImageSetMetadataUpdates">> := list()
+%% }
+-type update_image_set_metadata_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -578,216 +640,154 @@
 
 
 %% Example:
-%% d_i_c_o_m_study_date_and_time() :: #{
-%%   <<"DICOMStudyDate">> => string(),
-%%   <<"DICOMStudyTime">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type d_i_c_o_m_study_date_and_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_datastore_response() :: #{
-%%   <<"datastoreId">> => string(),
-%%   <<"datastoreStatus">> => list(any())
-%% }
--type create_datastore_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_image_set_information() :: #{
-%%   <<"destinationImageSet">> => copy_destination_image_set(),
-%%   <<"sourceImageSet">> => copy_source_image_set_information()
-%% }
--type copy_image_set_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_image_set_response() :: #{
-%%   <<"datastoreId">> => string(),
-%%   <<"imageSetId">> => string(),
-%%   <<"imageSetState">> => list(any()),
-%%   <<"imageSetWorkflowStatus">> => list(any())
-%% }
--type delete_image_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_criteria() :: #{
-%%   <<"filters">> => list(search_filter()),
-%%   <<"sort">> => sort()
-%% }
--type search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_frame_response() :: #{
-%%   <<"contentType">> => [string()],
-%%   <<"imageFrameBlob">> => binary()
-%% }
--type get_image_frame_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_d_i_c_o_m_import_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(d_i_c_o_m_import_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_d_i_c_o_m_import_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_datastore_request() :: #{}
--type delete_datastore_request() :: #{}.
-
-
-%% Example:
-%% get_d_i_c_o_m_import_job_response() :: #{
-%%   <<"jobProperties">> => d_i_c_o_m_import_job_properties()
-%% }
--type get_d_i_c_o_m_import_job_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type copy_image_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_datastore_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_datastore_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_image_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_d_i_c_o_m_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_datastore_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_image_frame_errors() ::
-    bad_request_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    not_acceptable_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    not_acceptable_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_image_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_image_set_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_d_i_c_o_m_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_datastores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_image_set_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_image_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_d_i_c_o_m_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_image_set_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

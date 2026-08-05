@@ -361,6 +361,128 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_key() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUsed">> => access_key_last_used(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type access_key() :: #{binary() => any()}.
+
+%% Example:
+%% access_key_last_used() :: #{
+%%   <<"lastUsedDate">> => non_neg_integer(),
+%%   <<"region">> => string(),
+%%   <<"serviceName">> => string()
+%% }
+-type access_key_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% access_rules() :: #{
+%%   <<"allowPublicOverrides">> => boolean(),
+%%   <<"getObject">> => list(any())
+%% }
+-type access_rules() :: #{binary() => any()}.
+
+%% Example:
+%% account_level_bpa_sync() :: #{
+%%   <<"bpaImpactsLightsail">> => boolean(),
+%%   <<"lastSyncedAt">> => non_neg_integer(),
+%%   <<"message">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type account_level_bpa_sync() :: #{binary() => any()}.
+
+%% Example:
+%% account_setup_in_progress_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type account_setup_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_on() :: #{
+%%   <<"duration">> => string(),
+%%   <<"name">> => string(),
+%%   <<"nextSnapshotTimeOfDay">> => string(),
+%%   <<"snapshotTimeOfDay">> => string(),
+%%   <<"status">> => string(),
+%%   <<"threshold">> => string()
+%% }
+-type add_on() :: #{binary() => any()}.
+
+%% Example:
+%% add_on_request() :: #{
+%%   <<"addOnType">> => list(any()),
+%%   <<"autoSnapshotAddOnRequest">> => auto_snapshot_add_on_request(),
+%%   <<"stopInstanceOnIdleRequest">> => stop_instance_on_idle_request()
+%% }
+-type add_on_request() :: #{binary() => any()}.
+
+%% Example:
+%% alarm() :: #{
+%%   <<"arn">> => string(),
+%%   <<"comparisonOperator">> => list(any()),
+%%   <<"contactProtocols">> => list(list(any())()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"datapointsToAlarm">> => integer(),
+%%   <<"evaluationPeriods">> => integer(),
+%%   <<"location">> => resource_location(),
+%%   <<"metricName">> => list(any()),
+%%   <<"monitoredResourceInfo">> => monitored_resource_info(),
+%%   <<"name">> => string(),
+%%   <<"notificationEnabled">> => boolean(),
+%%   <<"notificationTriggers">> => list(list(any())()),
+%%   <<"period">> => integer(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"statistic">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"threshold">> => float(),
+%%   <<"treatMissingData">> => list(any()),
+%%   <<"unit">> => list(any())
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_static_ip_request() :: #{
+%%   <<"staticIpName">> := string()
+%% }
+-type allocate_static_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_static_ip_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type allocate_static_ip_result() :: #{binary() => any()}.
+
+%% Example:
+%% attach_certificate_to_distribution_request() :: #{
+%%   <<"certificateName">> := string(),
+%%   <<"distributionName">> := string()
+%% }
+-type attach_certificate_to_distribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_certificate_to_distribution_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type attach_certificate_to_distribution_result() :: #{binary() => any()}.
+
+%% Example:
 %% attach_disk_request() :: #{
 %%   <<"autoMounting">> => boolean(),
 %%   <<"diskName">> := string(),
@@ -368,6 +490,696 @@
 %%   <<"instanceName">> := string()
 %% }
 -type attach_disk_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_disk_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type attach_disk_result() :: #{binary() => any()}.
+
+%% Example:
+%% attach_instances_to_load_balancer_request() :: #{
+%%   <<"instanceNames">> := list(string()),
+%%   <<"loadBalancerName">> := string()
+%% }
+-type attach_instances_to_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_instances_to_load_balancer_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type attach_instances_to_load_balancer_result() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_tls_certificate_request() :: #{
+%%   <<"certificateName">> := string(),
+%%   <<"loadBalancerName">> := string()
+%% }
+-type attach_load_balancer_tls_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_tls_certificate_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type attach_load_balancer_tls_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% attach_static_ip_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"staticIpName">> := string()
+%% }
+-type attach_static_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_static_ip_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type attach_static_ip_result() :: #{binary() => any()}.
+
+%% Example:
+%% attached_disk() :: #{
+%%   <<"path">> => string(),
+%%   <<"sizeInGb">> => integer()
+%% }
+-type attached_disk() :: #{binary() => any()}.
+
+%% Example:
+%% auto_snapshot_add_on_request() :: #{
+%%   <<"snapshotTimeOfDay">> => string()
+%% }
+-type auto_snapshot_add_on_request() :: #{binary() => any()}.
+
+%% Example:
+%% auto_snapshot_details() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"date">> => string(),
+%%   <<"fromAttachedDisks">> => list(attached_disk()),
+%%   <<"status">> => list(any())
+%% }
+-type auto_snapshot_details() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"state">> => string(),
+%%   <<"zoneName">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint() :: #{
+%%   <<"appCategory">> => list(any()),
+%%   <<"blueprintId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"group">> => string(),
+%%   <<"isActive">> => boolean(),
+%%   <<"licenseUrl">> => string(),
+%%   <<"minPower">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"productUrl">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"versionCode">> => string()
+%% }
+-type blueprint() :: #{binary() => any()}.
+
+%% Example:
+%% bucket() :: #{
+%%   <<"ableToUpdateBundle">> => boolean(),
+%%   <<"accessLogConfig">> => bucket_access_log_config(),
+%%   <<"accessRules">> => access_rules(),
+%%   <<"arn">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"cors">> => bucket_cors_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"objectVersioning">> => string(),
+%%   <<"readonlyAccessAccounts">> => list(string()),
+%%   <<"resourceType">> => string(),
+%%   <<"resourcesReceivingAccess">> => list(resource_receiving_access()),
+%%   <<"state">> => bucket_state(),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"url">> => string()
+%% }
+-type bucket() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_access_log_config() :: #{
+%%   <<"destination">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"prefix">> => string()
+%% }
+-type bucket_access_log_config() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_bundle() :: #{
+%%   <<"bundleId">> => string(),
+%%   <<"isActive">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"price">> => float(),
+%%   <<"storagePerMonthInGb">> => integer(),
+%%   <<"transferPerMonthInGb">> => integer()
+%% }
+-type bucket_bundle() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_cors_config() :: #{
+%%   <<"rules">> => list(bucket_cors_rule())
+%% }
+-type bucket_cors_config() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_cors_rule() :: #{
+%%   <<"allowedHeaders">> => list(string()),
+%%   <<"allowedMethods">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"exposeHeaders">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"maxAgeSeconds">> => integer()
+%% }
+-type bucket_cors_rule() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_state() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type bucket_state() :: #{binary() => any()}.
+
+%% Example:
+%% bundle() :: #{
+%%   <<"bundleId">> => string(),
+%%   <<"cpuCount">> => integer(),
+%%   <<"diskSizeInGb">> => integer(),
+%%   <<"instanceType">> => string(),
+%%   <<"isActive">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"power">> => integer(),
+%%   <<"price">> => float(),
+%%   <<"publicIpv4AddressCount">> => integer(),
+%%   <<"ramSizeInGb">> => float(),
+%%   <<"supportedAppCategories">> => list(list(any())()),
+%%   <<"supportedPlatforms">> => list(list(any())()),
+%%   <<"transferPerMonthInGb">> => integer()
+%% }
+-type bundle() :: #{binary() => any()}.
+
+%% Example:
+%% cache_behavior() :: #{
+%%   <<"behavior">> => list(any())
+%% }
+-type cache_behavior() :: #{binary() => any()}.
+
+%% Example:
+%% cache_behavior_per_path() :: #{
+%%   <<"behavior">> => list(any()),
+%%   <<"path">> => string()
+%% }
+-type cache_behavior_per_path() :: #{binary() => any()}.
+
+%% Example:
+%% cache_settings() :: #{
+%%   <<"allowedHTTPMethods">> => string(),
+%%   <<"cachedHTTPMethods">> => string(),
+%%   <<"defaultTTL">> => float(),
+%%   <<"forwardedCookies">> => cookie_object(),
+%%   <<"forwardedHeaders">> => header_object(),
+%%   <<"forwardedQueryStrings">> => query_string_object(),
+%%   <<"maximumTTL">> => float(),
+%%   <<"minimumTTL">> => float()
+%% }
+-type cache_settings() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainName">> => string(),
+%%   <<"domainValidationRecords">> => list(domain_validation_record()),
+%%   <<"eligibleToRenew">> => string(),
+%%   <<"inUseResourceCount">> => integer(),
+%%   <<"issuedAt">> => non_neg_integer(),
+%%   <<"issuerCA">> => string(),
+%%   <<"keyAlgorithm">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notAfter">> => non_neg_integer(),
+%%   <<"notBefore">> => non_neg_integer(),
+%%   <<"renewalSummary">> => renewal_summary(),
+%%   <<"requestFailureReason">> => string(),
+%%   <<"revocationReason">> => string(),
+%%   <<"revokedAt">> => non_neg_integer(),
+%%   <<"serialNumber">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subjectAlternativeNames">> => list(string()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_summary() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"certificateDetail">> => certificate(),
+%%   <<"certificateName">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type certificate_summary() :: #{binary() => any()}.
+
+%% Example:
+%% close_instance_public_ports_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"portInfo">> := port_info()
+%% }
+-type close_instance_public_ports_request() :: #{binary() => any()}.
+
+%% Example:
+%% close_instance_public_ports_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type close_instance_public_ports_result() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_formation_stack_record() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationInfo">> => destination_info(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"sourceInfo">> => list(cloud_formation_stack_record_source_info()),
+%%   <<"state">> => list(any())
+%% }
+-type cloud_formation_stack_record() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_formation_stack_record_source_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type cloud_formation_stack_record_source_info() :: #{binary() => any()}.
+
+%% Example:
+%% contact_method() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contactEndpoint">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type contact_method() :: #{binary() => any()}.
+
+%% Example:
+%% container() :: #{
+%%   <<"command">> => list(string()),
+%%   <<"environment">> => map(),
+%%   <<"image">> => string(),
+%%   <<"ports">> => map()
+%% }
+-type container() :: #{binary() => any()}.
+
+%% Example:
+%% container_image() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"digest">> => string(),
+%%   <<"image">> => string()
+%% }
+-type container_image() :: #{binary() => any()}.
+
+%% Example:
+%% container_service() :: #{
+%%   <<"arn">> => string(),
+%%   <<"containerServiceName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currentDeployment">> => container_service_deployment(),
+%%   <<"isDisabled">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"nextDeployment">> => container_service_deployment(),
+%%   <<"power">> => list(any()),
+%%   <<"powerId">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"privateDomainName">> => string(),
+%%   <<"privateRegistryAccess">> => private_registry_access(),
+%%   <<"publicDomainNames">> => map(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"scale">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"stateDetail">> => container_service_state_detail(),
+%%   <<"tags">> => list(tag()),
+%%   <<"url">> => string()
+%% }
+-type container_service() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_deployment() :: #{
+%%   <<"containers">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"publicEndpoint">> => container_service_endpoint(),
+%%   <<"state">> => list(any()),
+%%   <<"version">> => integer()
+%% }
+-type container_service_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_deployment_request() :: #{
+%%   <<"containers">> => map(),
+%%   <<"publicEndpoint">> => endpoint_request()
+%% }
+-type container_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_e_c_r_image_puller_role() :: #{
+%%   <<"isActive">> => boolean(),
+%%   <<"principalArn">> => string()
+%% }
+-type container_service_e_c_r_image_puller_role() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_e_c_r_image_puller_role_request() :: #{
+%%   <<"isActive">> => boolean()
+%% }
+-type container_service_e_c_r_image_puller_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_endpoint() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"healthCheck">> => container_service_health_check_config()
+%% }
+-type container_service_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_health_check_config() :: #{
+%%   <<"healthyThreshold">> => integer(),
+%%   <<"intervalSeconds">> => integer(),
+%%   <<"path">> => string(),
+%%   <<"successCodes">> => string(),
+%%   <<"timeoutSeconds">> => integer(),
+%%   <<"unhealthyThreshold">> => integer()
+%% }
+-type container_service_health_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_log_event() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"message">> => string()
+%% }
+-type container_service_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_power() :: #{
+%%   <<"cpuCount">> => float(),
+%%   <<"isActive">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"powerId">> => string(),
+%%   <<"price">> => float(),
+%%   <<"ramSizeInGb">> => float()
+%% }
+-type container_service_power() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_registry_login() :: #{
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"password">> => string(),
+%%   <<"registry">> => string(),
+%%   <<"username">> => string()
+%% }
+-type container_service_registry_login() :: #{binary() => any()}.
+
+%% Example:
+%% container_service_state_detail() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type container_service_state_detail() :: #{binary() => any()}.
+
+%% Example:
+%% container_services_list_result() :: #{
+%%   <<"containerServices">> => list(container_service())
+%% }
+-type container_services_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% cookie_object() :: #{
+%%   <<"cookiesAllowList">> => list(string()),
+%%   <<"option">> => list(any())
+%% }
+-type cookie_object() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_request() :: #{
+%%   <<"restoreDate">> => string(),
+%%   <<"sourceRegion">> := list(any()),
+%%   <<"sourceResourceName">> => string(),
+%%   <<"sourceSnapshotName">> => string(),
+%%   <<"targetSnapshotName">> := string(),
+%%   <<"useLatestRestorableAutoSnapshot">> => boolean()
+%% }
+-type copy_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type copy_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% cost_estimate() :: #{
+%%   <<"resultsByTime">> => list(estimate_by_time()),
+%%   <<"usageType">> => string()
+%% }
+-type cost_estimate() :: #{binary() => any()}.
+
+%% Example:
+%% create_bucket_access_key_request() :: #{
+%%   <<"bucketName">> := string()
+%% }
+-type create_bucket_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_bucket_access_key_result() :: #{
+%%   <<"accessKey">> => access_key(),
+%%   <<"operations">> => list(operation())
+%% }
+-type create_bucket_access_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_bucket_request() :: #{
+%%   <<"bucketName">> := string(),
+%%   <<"bundleId">> := string(),
+%%   <<"enableObjectVersioning">> => boolean(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_bucket_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_bucket_result() :: #{
+%%   <<"bucket">> => bucket(),
+%%   <<"operations">> => list(operation())
+%% }
+-type create_bucket_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_request() :: #{
+%%   <<"certificateName">> := string(),
+%%   <<"domainName">> := string(),
+%%   <<"subjectAlternativeNames">> => list(string()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_certificate_result() :: #{
+%%   <<"certificate">> => certificate_summary(),
+%%   <<"operations">> => list(operation())
+%% }
+-type create_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_cloud_formation_stack_request() :: #{
+%%   <<"instances">> := list(instance_entry())
+%% }
+-type create_cloud_formation_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cloud_formation_stack_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_cloud_formation_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_method_request() :: #{
+%%   <<"contactEndpoint">> := string(),
+%%   <<"protocol">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_contact_method_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_contact_method_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_contact_method_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_deployment_request() :: #{
+%%   <<"containers">> => map(),
+%%   <<"publicEndpoint">> => endpoint_request()
+%% }
+-type create_container_service_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_deployment_result() :: #{
+%%   <<"containerService">> => container_service()
+%% }
+-type create_container_service_deployment_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_registry_login_request() :: #{
+
+%% }
+-type create_container_service_registry_login_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_registry_login_result() :: #{
+%%   <<"registryLogin">> => container_service_registry_login()
+%% }
+-type create_container_service_registry_login_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_request() :: #{
+%%   <<"deployment">> => container_service_deployment_request(),
+%%   <<"power">> := list(any()),
+%%   <<"privateRegistryAccess">> => private_registry_access_request(),
+%%   <<"publicDomainNames">> => map(),
+%%   <<"scale">> := integer(),
+%%   <<"serviceName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_container_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_service_result() :: #{
+%%   <<"containerService">> => container_service()
+%% }
+-type create_container_service_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_from_snapshot_request() :: #{
+%%   <<"addOns">> => list(add_on_request()),
+%%   <<"availabilityZone">> := string(),
+%%   <<"diskName">> := string(),
+%%   <<"diskSnapshotName">> => string(),
+%%   <<"restoreDate">> => string(),
+%%   <<"sizeInGb">> := integer(),
+%%   <<"sourceDiskName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"useLatestRestorableAutoSnapshot">> => boolean()
+%% }
+-type create_disk_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_from_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_disk_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_request() :: #{
+%%   <<"addOns">> => list(add_on_request()),
+%%   <<"availabilityZone">> := string(),
+%%   <<"diskName">> := string(),
+%%   <<"sizeInGb">> := integer(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_disk_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_disk_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_snapshot_request() :: #{
+%%   <<"diskName">> => string(),
+%%   <<"diskSnapshotName">> := string(),
+%%   <<"instanceName">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_disk_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_disk_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_disk_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_distribution_request() :: #{
+%%   <<"bundleId">> := string(),
+%%   <<"cacheBehaviorSettings">> => cache_settings(),
+%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
+%%   <<"certificateName">> => string(),
+%%   <<"defaultCacheBehavior">> := cache_behavior(),
+%%   <<"distributionName">> := string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"origin">> := input_origin(),
+%%   <<"tags">> => list(tag()),
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
+%% }
+-type create_distribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_distribution_result() :: #{
+%%   <<"distribution">> => lightsail_distribution(),
+%%   <<"operation">> => operation()
+%% }
+-type create_distribution_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_entry_request() :: #{
+%%   <<"domainEntry">> := domain_entry(),
+%%   <<"domainName">> := string()
+%% }
+-type create_domain_entry_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_entry_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type create_domain_entry_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"domainName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type create_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_g_ui_session_access_details_request() :: #{
+%%   <<"resourceName">> := string()
+%% }
+-type create_g_ui_session_access_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_g_ui_session_access_details_result() :: #{
+%%   <<"failureReason">> => string(),
+%%   <<"percentageComplete">> => integer(),
+%%   <<"resourceName">> => string(),
+%%   <<"sessions">> => list(session()),
+%%   <<"status">> => list(any())
+%% }
+-type create_g_ui_session_access_details_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_snapshot_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"instanceSnapshotName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_instance_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_instance_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_instances_from_snapshot_request() :: #{
@@ -388,11 +1200,226 @@
 -type create_instances_from_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_bucket_bundle_request() :: #{
-%%   <<"bucketName">> := string(),
-%%   <<"bundleId">> := string()
+%% create_instances_from_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type update_bucket_bundle_request() :: #{binary() => any()}.
+-type create_instances_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_instances_request() :: #{
+%%   <<"addOns">> => list(add_on_request()),
+%%   <<"availabilityZone">> := string(),
+%%   <<"blueprintId">> := string(),
+%%   <<"bundleId">> := string(),
+%%   <<"customImageName">> => string(),
+%%   <<"instanceNames">> := list(string()),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"keyPairName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"userData">> => string()
+%% }
+-type create_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instances_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_pair_request() :: #{
+%%   <<"keyPairName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_pair_result() :: #{
+%%   <<"keyPair">> => key_pair(),
+%%   <<"operation">> => operation(),
+%%   <<"privateKeyBase64">> => string(),
+%%   <<"publicKeyBase64">> => string()
+%% }
+-type create_key_pair_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_request() :: #{
+%%   <<"certificateAlternativeNames">> => list(string()),
+%%   <<"certificateDomainName">> => string(),
+%%   <<"certificateName">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"instancePort">> := integer(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"loadBalancerName">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"tlsPolicyName">> => string()
+%% }
+-type create_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_load_balancer_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_tls_certificate_request() :: #{
+%%   <<"certificateAlternativeNames">> => list(string()),
+%%   <<"certificateDomainName">> := string(),
+%%   <<"certificateName">> := string(),
+%%   <<"loadBalancerName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_load_balancer_tls_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_tls_certificate_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_load_balancer_tls_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_from_snapshot_request() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"publiclyAccessible">> => boolean(),
+%%   <<"relationalDatabaseBundleId">> => string(),
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"relationalDatabaseSnapshotName">> => string(),
+%%   <<"restoreTime">> => non_neg_integer(),
+%%   <<"sourceRelationalDatabaseName">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"useLatestRestorableTime">> => boolean()
+%% }
+-type create_relational_database_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_from_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_relational_database_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_request() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"masterDatabaseName">> := string(),
+%%   <<"masterUserPassword">> => string(),
+%%   <<"masterUsername">> := string(),
+%%   <<"preferredBackupWindow">> => string(),
+%%   <<"preferredMaintenanceWindow">> => string(),
+%%   <<"publiclyAccessible">> => boolean(),
+%%   <<"relationalDatabaseBlueprintId">> := string(),
+%%   <<"relationalDatabaseBundleId">> := string(),
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_relational_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_relational_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_snapshot_request() :: #{
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"relationalDatabaseSnapshotName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_relational_database_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_relational_database_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type create_relational_database_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alarm_request() :: #{
+
+%% }
+-type delete_alarm_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alarm_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_alarm_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_auto_snapshot_request() :: #{
+%%   <<"date">> := string(),
+%%   <<"resourceName">> := string()
+%% }
+-type delete_auto_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_auto_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_auto_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bucket_access_key_request() :: #{
+%%   <<"accessKeyId">> := string(),
+%%   <<"bucketName">> := string()
+%% }
+-type delete_bucket_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bucket_access_key_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_bucket_access_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bucket_request() :: #{
+%%   <<"bucketName">> := string(),
+%%   <<"forceDelete">> => boolean()
+%% }
+-type delete_bucket_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bucket_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_bucket_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_request() :: #{
+%%   <<"certificateName">> := string()
+%% }
+-type delete_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_method_request() :: #{
+%%   <<"protocol">> := list(any())
+%% }
+-type delete_contact_method_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_method_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_contact_method_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_image_request() :: #{
+
+%% }
+-type delete_container_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_image_result() :: #{
+
+%% }
+-type delete_container_image_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_container_service_request() :: #{
@@ -401,34 +1428,237 @@
 -type delete_container_service_request() :: #{binary() => any()}.
 
 %% Example:
-%% operation() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorDetails">> => string(),
-%%   <<"id">> => string(),
-%%   <<"isTerminal">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"operationDetails">> => string(),
-%%   <<"operationType">> => list(any()),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusChangedAt">> => non_neg_integer()
+%% delete_container_service_result() :: #{
+
 %% }
--type operation() :: #{binary() => any()}.
+-type delete_container_service_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_container_service_deployment_request() :: #{
-%%   <<"containers">> => map(),
-%%   <<"publicEndpoint">> => endpoint_request()
+%% delete_disk_request() :: #{
+%%   <<"diskName">> := string(),
+%%   <<"forceDeleteAddOns">> => boolean()
 %% }
--type create_container_service_deployment_request() :: #{binary() => any()}.
+-type delete_disk_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_distribution_latest_cache_reset_request() :: #{
+%% delete_disk_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_disk_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_disk_snapshot_request() :: #{
+%%   <<"diskSnapshotName">> := string()
+%% }
+-type delete_disk_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_disk_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_disk_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_distribution_request() :: #{
 %%   <<"distributionName">> => string()
 %% }
--type get_distribution_latest_cache_reset_request() :: #{binary() => any()}.
+-type delete_distribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_distribution_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type delete_distribution_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_entry_request() :: #{
+%%   <<"domainEntry">> := domain_entry(),
+%%   <<"domainName">> := string()
+%% }
+-type delete_domain_entry_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_entry_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type delete_domain_entry_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"domainName">> := string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type delete_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_request() :: #{
+%%   <<"forceDeleteAddOns">> => boolean(),
+%%   <<"instanceName">> := string()
+%% }
+-type delete_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_snapshot_request() :: #{
+%%   <<"instanceSnapshotName">> := string()
+%% }
+-type delete_instance_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_instance_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_pair_request() :: #{
+%%   <<"expectedFingerprint">> => string(),
+%%   <<"keyPairName">> := string()
+%% }
+-type delete_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_pair_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type delete_key_pair_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_known_host_keys_request() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type delete_known_host_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_known_host_keys_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_known_host_keys_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_request() :: #{
+%%   <<"loadBalancerName">> := string()
+%% }
+-type delete_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_load_balancer_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_tls_certificate_request() :: #{
+%%   <<"certificateName">> := string(),
+%%   <<"force">> => boolean(),
+%%   <<"loadBalancerName">> := string()
+%% }
+-type delete_load_balancer_tls_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_tls_certificate_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_load_balancer_tls_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relational_database_request() :: #{
+%%   <<"finalRelationalDatabaseSnapshotName">> => string(),
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"skipFinalSnapshot">> => boolean()
+%% }
+-type delete_relational_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relational_database_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_relational_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relational_database_snapshot_request() :: #{
+%%   <<"relationalDatabaseSnapshotName">> := string()
+%% }
+-type delete_relational_database_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relational_database_snapshot_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type delete_relational_database_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% destination_info() :: #{
+%%   <<"id">> => string(),
+%%   <<"service">> => string()
+%% }
+-type destination_info() :: #{binary() => any()}.
+
+%% Example:
+%% detach_certificate_from_distribution_request() :: #{
+%%   <<"distributionName">> := string()
+%% }
+-type detach_certificate_from_distribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_certificate_from_distribution_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type detach_certificate_from_distribution_result() :: #{binary() => any()}.
+
+%% Example:
+%% detach_disk_request() :: #{
+%%   <<"diskName">> := string()
+%% }
+-type detach_disk_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_disk_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type detach_disk_result() :: #{binary() => any()}.
+
+%% Example:
+%% detach_instances_from_load_balancer_request() :: #{
+%%   <<"instanceNames">> := list(string()),
+%%   <<"loadBalancerName">> := string()
+%% }
+-type detach_instances_from_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_instances_from_load_balancer_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type detach_instances_from_load_balancer_result() :: #{binary() => any()}.
+
+%% Example:
+%% detach_static_ip_request() :: #{
+%%   <<"staticIpName">> := string()
+%% }
+-type detach_static_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_static_ip_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type detach_static_ip_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_add_on_request() :: #{
+%%   <<"addOnType">> := list(any()),
+%%   <<"resourceName">> := string()
+%% }
+-type disable_add_on_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_add_on_result() :: #{
@@ -437,13 +1667,69 @@
 -type disable_add_on_result() :: #{binary() => any()}.
 
 %% Example:
-%% container_service_registry_login() :: #{
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"password">> => string(),
-%%   <<"registry">> => string(),
-%%   <<"username">> => string()
+%% disk() :: #{
+%%   <<"addOns">> => list(add_on()),
+%%   <<"arn">> => string(),
+%%   <<"attachedTo">> => string(),
+%%   <<"attachmentState">> => string(),
+%%   <<"autoMountStatus">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"gbInUse">> => integer(),
+%%   <<"iops">> => integer(),
+%%   <<"isAttached">> => boolean(),
+%%   <<"isSystemDisk">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"path">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"sizeInGb">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type container_service_registry_login() :: #{binary() => any()}.
+-type disk() :: #{binary() => any()}.
+
+%% Example:
+%% disk_info() :: #{
+%%   <<"isSystemDisk">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"path">> => string(),
+%%   <<"sizeInGb">> => integer()
+%% }
+-type disk_info() :: #{binary() => any()}.
+
+%% Example:
+%% disk_map() :: #{
+%%   <<"newDiskName">> => string(),
+%%   <<"originalDiskPath">> => string()
+%% }
+-type disk_map() :: #{binary() => any()}.
+
+%% Example:
+%% disk_snapshot() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fromDiskArn">> => string(),
+%%   <<"fromDiskName">> => string(),
+%%   <<"fromInstanceArn">> => string(),
+%%   <<"fromInstanceName">> => string(),
+%%   <<"isFromAutoSnapshot">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"progress">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"sizeInGb">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type disk_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% disk_snapshot_info() :: #{
+%%   <<"sizeInGb">> => integer()
+%% }
+-type disk_snapshot_info() :: #{binary() => any()}.
 
 %% Example:
 %% distribution_bundle() :: #{
@@ -456,87 +1742,6 @@
 -type distribution_bundle() :: #{binary() => any()}.
 
 %% Example:
-%% delete_disk_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_disk_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% register_container_image_request() :: #{
-%%   <<"digest">> := string(),
-%%   <<"label">> := string()
-%% }
--type register_container_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% pending_maintenance_action() :: #{
-%%   <<"action">> => string(),
-%%   <<"currentApplyDate">> => non_neg_integer(),
-%%   <<"description">> => string()
-%% }
--type pending_maintenance_action() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_request() :: #{
-%%   <<"domainName">> := string()
-%% }
--type get_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_resource_access_for_bucket_request() :: #{
-%%   <<"access">> := list(any()),
-%%   <<"bucketName">> := string(),
-%%   <<"resourceName">> := string()
-%% }
--type set_resource_access_for_bucket_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_method_request() :: #{
-%%   <<"protocol">> := list(any())
-%% }
--type delete_contact_method_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_regions_result() :: #{
-%%   <<"regions">> => list(region())
-%% }
--type get_regions_result() :: #{binary() => any()}.
-
-%% Example:
-%% test_alarm_request() :: #{
-%%   <<"state">> := list(any())
-%% }
--type test_alarm_request() :: #{binary() => any()}.
-
-%% Example:
-%% contact_method() :: #{
-%%   <<"arn">> => string(),
-%%   <<"contactEndpoint">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"resourceType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type contact_method() :: #{binary() => any()}.
-
-%% Example:
-%% enable_add_on_request() :: #{
-%%   <<"addOnRequest">> := add_on_request(),
-%%   <<"resourceName">> := string()
-%% }
--type enable_add_on_request() :: #{binary() => any()}.
-
-%% Example:
-%% disk_snapshot_info() :: #{
-%%   <<"sizeInGb">> => integer()
-%% }
--type disk_snapshot_info() :: #{binary() => any()}.
-
-%% Example:
 %% dns_record_creation_state() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string()
@@ -544,64 +1749,29 @@
 -type dns_record_creation_state() :: #{binary() => any()}.
 
 %% Example:
-%% get_load_balancer_result() :: #{
-%%   <<"loadBalancer">> => load_balancer()
-%% }
--type get_load_balancer_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceName">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_static_ip_result() :: #{
-%%   <<"staticIp">> => static_ip()
-%% }
--type get_static_ip_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_instance_public_ports_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"portInfos">> := list(port_info())
-%% }
--type put_instance_public_ports_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_snapshot_records_result() :: #{
-%%   <<"exportSnapshotRecords">> => list(export_snapshot_record()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_export_snapshot_records_result() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_tls_policy() :: #{
-%%   <<"ciphers">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"isDefault">> => boolean(),
+%% domain() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainEntries">> => list(domain_entry()),
+%%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
-%%   <<"protocols">> => list(string())
+%%   <<"registeredDomainDelegationInfo">> => registered_domain_delegation_info(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
 %% }
--type load_balancer_tls_policy() :: #{binary() => any()}.
+-type domain() :: #{binary() => any()}.
 
 %% Example:
-%% access_rules() :: #{
-%%   <<"allowPublicOverrides">> => boolean(),
-%%   <<"getObject">> => list(any())
+%% domain_entry() :: #{
+%%   <<"id">> => string(),
+%%   <<"isAlias">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"options">> => map(),
+%%   <<"target">> => string(),
+%%   <<"type">> => string()
 %% }
--type access_rules() :: #{binary() => any()}.
-
-%% Example:
-%% container() :: #{
-%%   <<"command">> => list(string()),
-%%   <<"environment">> => map(),
-%%   <<"image">> => string(),
-%%   <<"ports">> => map()
-%% }
--type container() :: #{binary() => any()}.
+-type domain_entry() :: #{binary() => any()}.
 
 %% Example:
 %% domain_validation_record() :: #{
@@ -613,83 +1783,748 @@
 -type domain_validation_record() :: #{binary() => any()}.
 
 %% Example:
-%% create_container_service_registry_login_result() :: #{
-%%   <<"registryLogin">> => container_service_registry_login()
+%% download_default_key_pair_request() :: #{
+
 %% }
--type create_container_service_registry_login_result() :: #{binary() => any()}.
+-type download_default_key_pair_request() :: #{binary() => any()}.
 
 %% Example:
-%% attach_instances_to_load_balancer_result() :: #{
+%% download_default_key_pair_result() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"privateKeyBase64">> => string(),
+%%   <<"publicKeyBase64">> => string()
+%% }
+-type download_default_key_pair_result() :: #{binary() => any()}.
+
+%% Example:
+%% enable_add_on_request() :: #{
+%%   <<"addOnRequest">> := add_on_request(),
+%%   <<"resourceName">> := string()
+%% }
+-type enable_add_on_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_add_on_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type attach_instances_to_load_balancer_result() :: #{binary() => any()}.
+-type enable_add_on_result() :: #{binary() => any()}.
 
 %% Example:
-%% start_instance_result() :: #{
-%%   <<"operations">> => list(operation())
+%% endpoint_request() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"healthCheck">> => container_service_health_check_config()
 %% }
--type start_instance_result() :: #{binary() => any()}.
+-type endpoint_request() :: #{binary() => any()}.
 
 %% Example:
-%% send_contact_method_verification_request() :: #{
-%%   <<"protocol">> := list(any())
+%% estimate_by_time() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"pricingUnit">> => list(any()),
+%%   <<"timePeriod">> => time_period(),
+%%   <<"unit">> => float(),
+%%   <<"usageCost">> => float()
 %% }
--type send_contact_method_verification_request() :: #{binary() => any()}.
+-type estimate_by_time() :: #{binary() => any()}.
 
 %% Example:
-%% availability_zone() :: #{
-%%   <<"state">> => string(),
-%%   <<"zoneName">> => string()
-%% }
--type availability_zone() :: #{binary() => any()}.
-
-%% Example:
-%% put_alarm_request() :: #{
-%%   <<"alarmName">> := string(),
-%%   <<"comparisonOperator">> := list(any()),
-%%   <<"contactProtocols">> => list(list(any())()),
-%%   <<"datapointsToAlarm">> => integer(),
-%%   <<"evaluationPeriods">> := integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"monitoredResourceName">> := string(),
-%%   <<"notificationEnabled">> => boolean(),
-%%   <<"notificationTriggers">> => list(list(any())()),
-%%   <<"tags">> => list(tag()),
-%%   <<"threshold">> := float(),
-%%   <<"treatMissingData">> => list(any())
-%% }
--type put_alarm_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_on() :: #{
-%%   <<"duration">> => string(),
+%% export_snapshot_record() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationInfo">> => destination_info(),
+%%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
-%%   <<"nextSnapshotTimeOfDay">> => string(),
-%%   <<"snapshotTimeOfDay">> => string(),
-%%   <<"status">> => string(),
-%%   <<"threshold">> => string()
+%%   <<"resourceType">> => list(any()),
+%%   <<"sourceInfo">> => export_snapshot_record_source_info(),
+%%   <<"state">> => list(any())
 %% }
--type add_on() :: #{binary() => any()}.
+-type export_snapshot_record() :: #{binary() => any()}.
 
 %% Example:
-%% delete_load_balancer_tls_certificate_request() :: #{
-%%   <<"certificateName">> := string(),
-%%   <<"force">> => boolean(),
-%%   <<"loadBalancerName">> := string()
+%% export_snapshot_record_source_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"diskSnapshotInfo">> => disk_snapshot_info(),
+%%   <<"fromResourceArn">> => string(),
+%%   <<"fromResourceName">> => string(),
+%%   <<"instanceSnapshotInfo">> => instance_snapshot_info(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any())
 %% }
--type delete_load_balancer_tls_certificate_request() :: #{binary() => any()}.
+-type export_snapshot_record_source_info() :: #{binary() => any()}.
 
 %% Example:
-%% create_instances_from_snapshot_result() :: #{
+%% export_snapshot_request() :: #{
+%%   <<"sourceSnapshotName">> := string()
+%% }
+-type export_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_snapshot_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type create_instances_from_snapshot_result() :: #{binary() => any()}.
+-type export_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_active_names_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_active_names_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_active_names_result() :: #{
+%%   <<"activeNames">> => list(string()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_active_names_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_alarms_request() :: #{
+%%   <<"alarmName">> => string(),
+%%   <<"monitoredResourceName">> => string(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_alarms_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_alarms_result() :: #{
+%%   <<"alarms">> => list(alarm()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_alarms_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_snapshots_request() :: #{
+%%   <<"resourceName">> := string()
+%% }
+-type get_auto_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_snapshots_result() :: #{
+%%   <<"autoSnapshots">> => list(auto_snapshot_details()),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type get_auto_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprints_request() :: #{
+%%   <<"appCategory">> => list(any()),
+%%   <<"includeInactive">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_blueprints_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprints_result() :: #{
+%%   <<"blueprints">> => list(blueprint()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_blueprints_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_access_keys_request() :: #{
+%%   <<"bucketName">> := string()
+%% }
+-type get_bucket_access_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_access_keys_result() :: #{
+%%   <<"accessKeys">> => list(access_key())
+%% }
+-type get_bucket_access_keys_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_bundles_request() :: #{
+%%   <<"includeInactive">> => boolean()
+%% }
+-type get_bucket_bundles_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_bundles_result() :: #{
+%%   <<"bundles">> => list(bucket_bundle())
+%% }
+-type get_bucket_bundles_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_metric_data_request() :: #{
+%%   <<"bucketName">> := string(),
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"unit">> := list(any())
+%% }
+-type get_bucket_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_bucket_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
+%% }
+-type get_bucket_metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_buckets_request() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"includeConnectedResources">> => boolean(),
+%%   <<"includeCors">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_buckets_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_buckets_result() :: #{
+%%   <<"accountLevelBpaSync">> => account_level_bpa_sync(),
+%%   <<"buckets">> => list(bucket()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_buckets_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_bundles_request() :: #{
+%%   <<"appCategory">> => list(any()),
+%%   <<"includeInactive">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_bundles_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_bundles_result() :: #{
+%%   <<"bundles">> => list(bundle()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_bundles_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificates_request() :: #{
+%%   <<"certificateName">> => string(),
+%%   <<"certificateStatuses">> => list(list(any())()),
+%%   <<"includeCertificateDetails">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificates_result() :: #{
+%%   <<"certificates">> => list(certificate_summary()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_certificates_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_formation_stack_records_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_cloud_formation_stack_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_formation_stack_records_result() :: #{
+%%   <<"cloudFormationStackRecords">> => list(cloud_formation_stack_record()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_cloud_formation_stack_records_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_methods_request() :: #{
+%%   <<"protocols">> => list(list(any())())
+%% }
+-type get_contact_methods_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_methods_result() :: #{
+%%   <<"contactMethods">> => list(contact_method())
+%% }
+-type get_contact_methods_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_api_metadata_request() :: #{
+
+%% }
+-type get_container_api_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_api_metadata_result() :: #{
+%%   <<"metadata">> => list(map())
+%% }
+-type get_container_api_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_images_request() :: #{
+
+%% }
+-type get_container_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_images_result() :: #{
+%%   <<"containerImages">> => list(container_image())
+%% }
+-type get_container_images_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_log_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"filterPattern">> => string(),
+%%   <<"pageToken">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_container_log_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_log_result() :: #{
+%%   <<"logEvents">> => list(container_service_log_event()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_container_log_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_deployments_request() :: #{
+
+%% }
+-type get_container_service_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_deployments_result() :: #{
+%%   <<"deployments">> => list(container_service_deployment())
+%% }
+-type get_container_service_deployments_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_metric_data_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())())
+%% }
+-type get_container_service_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
+%% }
+-type get_container_service_metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_powers_request() :: #{
+
+%% }
+-type get_container_service_powers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_service_powers_result() :: #{
+%%   <<"powers">> => list(container_service_power())
+%% }
+-type get_container_service_powers_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_services_request() :: #{
+%%   <<"serviceName">> => string()
+%% }
+-type get_container_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cost_estimate_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"resourceName">> := string(),
+%%   <<"startTime">> := non_neg_integer()
+%% }
+-type get_cost_estimate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cost_estimate_result() :: #{
+%%   <<"resourcesBudgetEstimate">> => list(resource_budget_estimate())
+%% }
+-type get_cost_estimate_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_request() :: #{
+%%   <<"diskName">> := string()
+%% }
+-type get_disk_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_result() :: #{
+%%   <<"disk">> => disk()
+%% }
+-type get_disk_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_snapshot_request() :: #{
+%%   <<"diskSnapshotName">> := string()
+%% }
+-type get_disk_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_snapshot_result() :: #{
+%%   <<"diskSnapshot">> => disk_snapshot()
+%% }
+-type get_disk_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_snapshots_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_disk_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_disk_snapshots_result() :: #{
+%%   <<"diskSnapshots">> => list(disk_snapshot()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_disk_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_disks_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_disks_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_disks_result() :: #{
+%%   <<"disks">> => list(disk()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_disks_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_bundles_request() :: #{
+
+%% }
+-type get_distribution_bundles_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_bundles_result() :: #{
+%%   <<"bundles">> => list(distribution_bundle())
+%% }
+-type get_distribution_bundles_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_latest_cache_reset_request() :: #{
+%%   <<"distributionName">> => string()
+%% }
+-type get_distribution_latest_cache_reset_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_latest_cache_reset_result() :: #{
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type get_distribution_latest_cache_reset_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_metric_data_request() :: #{
+%%   <<"distributionName">> := string(),
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"unit">> := list(any())
+%% }
+-type get_distribution_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
+%% }
+-type get_distribution_metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distributions_request() :: #{
+%%   <<"distributionName">> => string(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_distributions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_distributions_result() :: #{
+%%   <<"distributions">> => list(lightsail_distribution()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_distributions_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_request() :: #{
+%%   <<"domainName">> := string()
+%% }
+-type get_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_result() :: #{
+%%   <<"domain">> => domain()
+%% }
+-type get_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_domains_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_domains_result() :: #{
+%%   <<"domains">> => list(domain()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_domains_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_snapshot_records_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_export_snapshot_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_snapshot_records_result() :: #{
+%%   <<"exportSnapshotRecords">> => list(export_snapshot_record()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_export_snapshot_records_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_access_details_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type get_instance_access_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_access_details_result() :: #{
+%%   <<"accessDetails">> => instance_access_details()
+%% }
+-type get_instance_access_details_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_metric_data_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"instanceName">> := string(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"unit">> := list(any())
+%% }
+-type get_instance_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
+%% }
+-type get_instance_metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_port_states_request() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type get_instance_port_states_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_port_states_result() :: #{
+%%   <<"portStates">> => list(instance_port_state())
+%% }
+-type get_instance_port_states_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_request() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type get_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_result() :: #{
+%%   <<"instance">> => instance()
+%% }
+-type get_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_snapshot_request() :: #{
+%%   <<"instanceSnapshotName">> := string()
+%% }
+-type get_instance_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_snapshot_result() :: #{
+%%   <<"instanceSnapshot">> => instance_snapshot()
+%% }
+-type get_instance_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_snapshots_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_instance_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_snapshots_result() :: #{
+%%   <<"instanceSnapshots">> => list(instance_snapshot()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_instance_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_state_request() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type get_instance_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_state_result() :: #{
+%%   <<"state">> => instance_state()
+%% }
+-type get_instance_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_result() :: #{
+%%   <<"instances">> => list(instance()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_pair_request() :: #{
+%%   <<"keyPairName">> := string()
+%% }
+-type get_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_pair_result() :: #{
+%%   <<"keyPair">> => key_pair()
+%% }
+-type get_key_pair_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_pairs_request() :: #{
+%%   <<"includeDefaultKeyPair">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_key_pairs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_pairs_result() :: #{
+%%   <<"keyPairs">> => list(key_pair()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_key_pairs_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_metric_data_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"loadBalancerName">> := string(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"unit">> := list(any())
+%% }
+-type get_load_balancer_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
+%% }
+-type get_load_balancer_metric_data_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_load_balancer_request() :: #{
 %%   <<"loadBalancerName">> := string()
 %% }
 -type get_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_result() :: #{
+%%   <<"loadBalancer">> => load_balancer()
+%% }
+-type get_load_balancer_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_tls_certificates_request() :: #{
+%%   <<"loadBalancerName">> := string()
+%% }
+-type get_load_balancer_tls_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_tls_certificates_result() :: #{
+%%   <<"tlsCertificates">> => list(load_balancer_tls_certificate())
+%% }
+-type get_load_balancer_tls_certificates_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_tls_policies_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_load_balancer_tls_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancer_tls_policies_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"tlsPolicies">> => list(load_balancer_tls_policy())
+%% }
+-type get_load_balancer_tls_policies_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancers_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_load_balancers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_load_balancers_result() :: #{
+%%   <<"loadBalancers">> => list(load_balancer()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_load_balancers_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_request() :: #{
+%%   <<"operationId">> := string()
+%% }
+-type get_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type get_operation_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_operations_for_resource_request() :: #{
+%%   <<"pageToken">> => string(),
+%%   <<"resourceName">> := string()
+%% }
+-type get_operations_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_operations_for_resource_result() :: #{
+%%   <<"nextPageCount">> => string(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"operations">> => list(operation())
+%% }
+-type get_operations_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_operations_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_operations_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"operations">> => list(operation())
+%% }
+-type get_operations_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_regions_request() :: #{
@@ -699,25 +2534,90 @@
 -type get_regions_request() :: #{binary() => any()}.
 
 %% Example:
-%% region_setup_in_progress_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
+%% get_regions_result() :: #{
+%%   <<"regions">> => list(region())
 %% }
--type region_setup_in_progress_exception() :: #{binary() => any()}.
+-type get_regions_result() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_result() :: #{
-%%   <<"operations">> => list(operation())
+%% get_relational_database_blueprints_request() :: #{
+%%   <<"pageToken">> => string()
 %% }
--type untag_resource_result() :: #{binary() => any()}.
+-type get_relational_database_blueprints_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_instance_port_states_result() :: #{
-%%   <<"portStates">> => list(instance_port_state())
+%% get_relational_database_blueprints_result() :: #{
+%%   <<"blueprints">> => list(relational_database_blueprint()),
+%%   <<"nextPageToken">> => string()
 %% }
--type get_instance_port_states_result() :: #{binary() => any()}.
+-type get_relational_database_blueprints_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_bundles_request() :: #{
+%%   <<"includeInactive">> => boolean(),
+%%   <<"pageToken">> => string()
+%% }
+-type get_relational_database_bundles_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_bundles_result() :: #{
+%%   <<"bundles">> => list(relational_database_bundle()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type get_relational_database_bundles_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_events_request() :: #{
+%%   <<"durationInMinutes">> => integer(),
+%%   <<"pageToken">> => string(),
+%%   <<"relationalDatabaseName">> := string()
+%% }
+-type get_relational_database_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_events_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"relationalDatabaseEvents">> => list(relational_database_event())
+%% }
+-type get_relational_database_events_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_log_events_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"logStreamName">> := string(),
+%%   <<"pageToken">> => string(),
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"startFromHead">> => boolean(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_relational_database_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_log_events_result() :: #{
+%%   <<"nextBackwardToken">> => string(),
+%%   <<"nextForwardToken">> => string(),
+%%   <<"resourceLogEvents">> => list(log_event())
+%% }
+-type get_relational_database_log_events_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_log_streams_request() :: #{
+%%   <<"relationalDatabaseName">> := string()
+%% }
+-type get_relational_database_log_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_log_streams_result() :: #{
+%%   <<"logStreams">> => list(string())
+%% }
+-type get_relational_database_log_streams_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_master_user_password_request() :: #{
+%%   <<"passwordVersion">> => list(any()),
+%%   <<"relationalDatabaseName">> := string()
+%% }
+-type get_relational_database_master_user_password_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_relational_database_master_user_password_result() :: #{
@@ -727,69 +2627,351 @@
 -type get_relational_database_master_user_password_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_relational_database_request() :: #{
-%%   <<"applyImmediately">> => boolean(),
-%%   <<"caCertificateIdentifier">> => string(),
-%%   <<"disableBackupRetention">> => boolean(),
-%%   <<"enableBackupRetention">> => boolean(),
-%%   <<"masterUserPassword">> => string(),
-%%   <<"preferredBackupWindow">> => string(),
-%%   <<"preferredMaintenanceWindow">> => string(),
-%%   <<"publiclyAccessible">> => boolean(),
-%%   <<"relationalDatabaseBlueprintId">> => string(),
+%% get_relational_database_metric_data_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"period">> := integer(),
 %%   <<"relationalDatabaseName">> := string(),
-%%   <<"rotateMasterUserPassword">> => boolean()
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"unit">> := list(any())
 %% }
--type update_relational_database_request() :: #{binary() => any()}.
+-type get_relational_database_metric_data_request() :: #{binary() => any()}.
 
 %% Example:
-%% container_service_health_check_config() :: #{
-%%   <<"healthyThreshold">> => integer(),
-%%   <<"intervalSeconds">> => integer(),
-%%   <<"path">> => string(),
-%%   <<"successCodes">> => string(),
-%%   <<"timeoutSeconds">> => integer(),
-%%   <<"unhealthyThreshold">> => integer()
+%% get_relational_database_metric_data_result() :: #{
+%%   <<"metricData">> => list(metric_datapoint()),
+%%   <<"metricName">> => list(any())
 %% }
--type container_service_health_check_config() :: #{binary() => any()}.
+-type get_relational_database_metric_data_result() :: #{binary() => any()}.
 
 %% Example:
-%% detach_instances_from_load_balancer_result() :: #{
-%%   <<"operations">> => list(operation())
+%% get_relational_database_parameters_request() :: #{
+%%   <<"pageToken">> => string(),
+%%   <<"relationalDatabaseName">> := string()
 %% }
--type detach_instances_from_load_balancer_result() :: #{binary() => any()}.
+-type get_relational_database_parameters_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_bucket_bundles_result() :: #{
-%%   <<"bundles">> => list(bucket_bundle())
+%% get_relational_database_parameters_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"parameters">> => list(relational_database_parameter())
 %% }
--type get_bucket_bundles_result() :: #{binary() => any()}.
+-type get_relational_database_parameters_result() :: #{binary() => any()}.
 
 %% Example:
-%% update_load_balancer_attribute_request() :: #{
-%%   <<"attributeName">> := list(any()),
-%%   <<"attributeValue">> := string(),
-%%   <<"loadBalancerName">> := string()
+%% get_relational_database_request() :: #{
+%%   <<"relationalDatabaseName">> := string()
 %% }
--type update_load_balancer_attribute_request() :: #{binary() => any()}.
+-type get_relational_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_certificate_result() :: #{
-%%   <<"certificate">> => certificate_summary(),
-%%   <<"operations">> => list(operation())
+%% get_relational_database_result() :: #{
+%%   <<"relationalDatabase">> => relational_database()
 %% }
--type create_certificate_result() :: #{binary() => any()}.
+-type get_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer_tls_certificate_domain_validation_record() :: #{
-%%   <<"dnsRecordCreationState">> => load_balancer_tls_certificate_dns_record_creation_state(),
-%%   <<"domainName">> => string(),
+%% get_relational_database_snapshot_request() :: #{
+%%   <<"relationalDatabaseSnapshotName">> := string()
+%% }
+-type get_relational_database_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_snapshot_result() :: #{
+%%   <<"relationalDatabaseSnapshot">> => relational_database_snapshot()
+%% }
+-type get_relational_database_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_snapshots_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_relational_database_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_database_snapshots_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"relationalDatabaseSnapshots">> => list(relational_database_snapshot())
+%% }
+-type get_relational_database_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_databases_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_relational_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relational_databases_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"relationalDatabases">> => list(relational_database())
+%% }
+-type get_relational_databases_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_setup_history_request() :: #{
+%%   <<"pageToken">> => string(),
+%%   <<"resourceName">> := string()
+%% }
+-type get_setup_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_setup_history_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"setupHistory">> => list(setup_history())
+%% }
+-type get_setup_history_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_static_ip_request() :: #{
+%%   <<"staticIpName">> := string()
+%% }
+-type get_static_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_static_ip_result() :: #{
+%%   <<"staticIp">> => static_ip()
+%% }
+-type get_static_ip_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_static_ips_request() :: #{
+%%   <<"pageToken">> => string()
+%% }
+-type get_static_ips_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_static_ips_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"staticIps">> => list(static_ip())
+%% }
+-type get_static_ips_result() :: #{binary() => any()}.
+
+%% Example:
+%% header_object() :: #{
+%%   <<"headersAllowList">> => list(list(any())()),
+%%   <<"option">> => list(any())
+%% }
+-type header_object() :: #{binary() => any()}.
+
+%% Example:
+%% host_key_attributes() :: #{
+%%   <<"algorithm">> => string(),
+%%   <<"fingerprintSHA1">> => string(),
+%%   <<"fingerprintSHA256">> => string(),
+%%   <<"notValidAfter">> => non_neg_integer(),
+%%   <<"notValidBefore">> => non_neg_integer(),
+%%   <<"publicKey">> => string(),
+%%   <<"witnessedAt">> => non_neg_integer()
+%% }
+-type host_key_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_pair_request() :: #{
+%%   <<"keyPairName">> := string(),
+%%   <<"publicKeyBase64">> := string()
+%% }
+-type import_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_key_pair_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type import_key_pair_result() :: #{binary() => any()}.
+
+%% Example:
+%% input_origin() :: #{
+%%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"type">> => string(),
-%%   <<"validationStatus">> => list(any()),
-%%   <<"value">> => string()
+%%   <<"protocolPolicy">> => list(any()),
+%%   <<"regionName">> => list(any()),
+%%   <<"responseTimeout">> => integer()
 %% }
--type load_balancer_tls_certificate_domain_validation_record() :: #{binary() => any()}.
+-type input_origin() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"addOns">> => list(add_on()),
+%%   <<"arn">> => string(),
+%%   <<"blueprintId">> => string(),
+%%   <<"blueprintName">> => string(),
+%%   <<"bundleId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"hardware">> => instance_hardware(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"isStaticIp">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"metadataOptions">> => instance_metadata_options(),
+%%   <<"name">> => string(),
+%%   <<"networking">> => instance_networking(),
+%%   <<"privateIpAddress">> => string(),
+%%   <<"publicIpAddress">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"sshKeyName">> => string(),
+%%   <<"state">> => instance_state(),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"username">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% instance_access_details() :: #{
+%%   <<"certKey">> => string(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"hostKeys">> => list(host_key_attributes()),
+%%   <<"instanceName">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"ipv6Addresses">> => list(string()),
+%%   <<"password">> => string(),
+%%   <<"passwordData">> => password_data(),
+%%   <<"privateKey">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"username">> => string()
+%% }
+-type instance_access_details() :: #{binary() => any()}.
+
+%% Example:
+%% instance_entry() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"portInfoSource">> => list(any()),
+%%   <<"sourceName">> => string(),
+%%   <<"userData">> => string()
+%% }
+-type instance_entry() :: #{binary() => any()}.
+
+%% Example:
+%% instance_hardware() :: #{
+%%   <<"cpuCount">> => integer(),
+%%   <<"disks">> => list(disk()),
+%%   <<"ramSizeInGb">> => float()
+%% }
+-type instance_hardware() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_summary() :: #{
+%%   <<"instanceHealth">> => list(any()),
+%%   <<"instanceHealthReason">> => list(any()),
+%%   <<"instanceName">> => string()
+%% }
+-type instance_health_summary() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata_options() :: #{
+%%   <<"httpEndpoint">> => list(any()),
+%%   <<"httpProtocolIpv6">> => list(any()),
+%%   <<"httpPutResponseHopLimit">> => integer(),
+%%   <<"httpTokens">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type instance_metadata_options() :: #{binary() => any()}.
+
+%% Example:
+%% instance_networking() :: #{
+%%   <<"monthlyTransfer">> => monthly_transfer(),
+%%   <<"ports">> => list(instance_port_info())
+%% }
+-type instance_networking() :: #{binary() => any()}.
+
+%% Example:
+%% instance_port_info() :: #{
+%%   <<"accessDirection">> => list(any()),
+%%   <<"accessFrom">> => string(),
+%%   <<"accessType">> => list(any()),
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
+%%   <<"commonName">> => string(),
+%%   <<"fromPort">> => integer(),
+%%   <<"ipv6Cidrs">> => list(string()),
+%%   <<"protocol">> => list(any()),
+%%   <<"toPort">> => integer()
+%% }
+-type instance_port_info() :: #{binary() => any()}.
+
+%% Example:
+%% instance_port_state() :: #{
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
+%%   <<"fromPort">> => integer(),
+%%   <<"ipv6Cidrs">> => list(string()),
+%%   <<"protocol">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"toPort">> => integer()
+%% }
+-type instance_port_state() :: #{binary() => any()}.
+
+%% Example:
+%% instance_snapshot() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fromAttachedDisks">> => list(disk()),
+%%   <<"fromBlueprintId">> => string(),
+%%   <<"fromBundleId">> => string(),
+%%   <<"fromInstanceArn">> => string(),
+%%   <<"fromInstanceName">> => string(),
+%%   <<"isFromAutoSnapshot">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"progress">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"sizeInGb">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type instance_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% instance_snapshot_info() :: #{
+%%   <<"fromBlueprintId">> => string(),
+%%   <<"fromBundleId">> => string(),
+%%   <<"fromDiskInfo">> => list(disk_info())
+%% }
+-type instance_snapshot_info() :: #{binary() => any()}.
+
+%% Example:
+%% instance_state() :: #{
+%%   <<"code">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type instance_state() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% is_vpc_peered_request() :: #{
+
+%% }
+-type is_vpc_peered_request() :: #{binary() => any()}.
+
+%% Example:
+%% is_vpc_peered_result() :: #{
+%%   <<"isPeered">> => boolean()
+%% }
+-type is_vpc_peered_result() :: #{binary() => any()}.
+
+%% Example:
+%% key_pair() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fingerprint">> => string(),
+%%   <<"location">> => resource_location(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type key_pair() :: #{binary() => any()}.
 
 %% Example:
 %% lightsail_distribution() :: #{
@@ -818,24 +3000,28 @@
 -type lightsail_distribution() :: #{binary() => any()}.
 
 %% Example:
-%% container_service_e_c_r_image_puller_role_request() :: #{
-%%   <<"isActive">> => boolean()
-%% }
--type container_service_e_c_r_image_puller_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_services_request() :: #{
-%%   <<"serviceName">> => string()
-%% }
--type get_container_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_formation_stack_record_source_info() :: #{
+%% load_balancer() :: #{
 %%   <<"arn">> => string(),
+%%   <<"configurationOptions">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dnsName">> => string(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"httpsRedirectionEnabled">> => boolean(),
+%%   <<"instanceHealthSummary">> => list(instance_health_summary()),
+%%   <<"instancePort">> => integer(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any())
+%%   <<"protocol">> => list(any()),
+%%   <<"publicPorts">> => list(integer()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"supportCode">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"tlsCertificateSummaries">> => list(load_balancer_tls_certificate_summary()),
+%%   <<"tlsPolicyName">> => string()
 %% }
--type cloud_formation_stack_record_source_info() :: #{binary() => any()}.
+-type load_balancer() :: #{binary() => any()}.
 
 %% Example:
 %% load_balancer_tls_certificate() :: #{
@@ -868,70 +3054,324 @@
 -type load_balancer_tls_certificate() :: #{binary() => any()}.
 
 %% Example:
-%% stop_instance_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"instanceName">> := string()
+%% load_balancer_tls_certificate_dns_record_creation_state() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
 %% }
--type stop_instance_request() :: #{binary() => any()}.
+-type load_balancer_tls_certificate_dns_record_creation_state() :: #{binary() => any()}.
 
 %% Example:
-%% get_bucket_bundles_request() :: #{
-%%   <<"includeInactive">> => boolean()
+%% load_balancer_tls_certificate_domain_validation_option() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"validationStatus">> => list(any())
 %% }
--type get_bucket_bundles_request() :: #{binary() => any()}.
+-type load_balancer_tls_certificate_domain_validation_option() :: #{binary() => any()}.
 
 %% Example:
-%% delete_distribution_result() :: #{
+%% load_balancer_tls_certificate_domain_validation_record() :: #{
+%%   <<"dnsRecordCreationState">> => load_balancer_tls_certificate_dns_record_creation_state(),
+%%   <<"domainName">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string(),
+%%   <<"validationStatus">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type load_balancer_tls_certificate_domain_validation_record() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_tls_certificate_renewal_summary() :: #{
+%%   <<"domainValidationOptions">> => list(load_balancer_tls_certificate_domain_validation_option()),
+%%   <<"renewalStatus">> => list(any())
+%% }
+-type load_balancer_tls_certificate_renewal_summary() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_tls_certificate_summary() :: #{
+%%   <<"isAttached">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type load_balancer_tls_certificate_summary() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_tls_policy() :: #{
+%%   <<"ciphers">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"isDefault">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"protocols">> => list(string())
+%% }
+-type load_balancer_tls_policy() :: #{binary() => any()}.
+
+%% Example:
+%% log_event() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"message">> => string()
+%% }
+-type log_event() :: #{binary() => any()}.
+
+%% Example:
+%% metric_datapoint() :: #{
+%%   <<"average">> => float(),
+%%   <<"maximum">> => float(),
+%%   <<"minimum">> => float(),
+%%   <<"sampleCount">> => float(),
+%%   <<"sum">> => float(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"unit">> => list(any())
+%% }
+-type metric_datapoint() :: #{binary() => any()}.
+
+%% Example:
+%% monitored_resource_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type monitored_resource_info() :: #{binary() => any()}.
+
+%% Example:
+%% monthly_transfer() :: #{
+%%   <<"gbPerMonthAllocated">> => integer()
+%% }
+-type monthly_transfer() :: #{binary() => any()}.
+
+%% Example:
+%% name_servers_update_state() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type name_servers_update_state() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% open_instance_public_ports_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"portInfo">> := port_info()
+%% }
+-type open_instance_public_ports_request() :: #{binary() => any()}.
+
+%% Example:
+%% open_instance_public_ports_result() :: #{
 %%   <<"operation">> => operation()
 %% }
--type delete_distribution_result() :: #{binary() => any()}.
+-type open_instance_public_ports_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_load_balancer_result() :: #{
+%% operation() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorDetails">> => string(),
+%%   <<"id">> => string(),
+%%   <<"isTerminal">> => boolean(),
+%%   <<"location">> => resource_location(),
+%%   <<"operationDetails">> => string(),
+%%   <<"operationType">> => list(any()),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusChangedAt">> => non_neg_integer()
+%% }
+-type operation() :: #{binary() => any()}.
+
+%% Example:
+%% operation_failure_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type operation_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% origin() :: #{
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"protocolPolicy">> => list(any()),
+%%   <<"regionName">> => list(any()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"responseTimeout">> => integer()
+%% }
+-type origin() :: #{binary() => any()}.
+
+%% Example:
+%% password_data() :: #{
+%%   <<"ciphertext">> => string(),
+%%   <<"keyPairName">> => string()
+%% }
+-type password_data() :: #{binary() => any()}.
+
+%% Example:
+%% peer_vpc_request() :: #{
+
+%% }
+-type peer_vpc_request() :: #{binary() => any()}.
+
+%% Example:
+%% peer_vpc_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type peer_vpc_result() :: #{binary() => any()}.
+
+%% Example:
+%% pending_maintenance_action() :: #{
+%%   <<"action">> => string(),
+%%   <<"currentApplyDate">> => non_neg_integer(),
+%%   <<"description">> => string()
+%% }
+-type pending_maintenance_action() :: #{binary() => any()}.
+
+%% Example:
+%% pending_modified_relational_database_values() :: #{
+%%   <<"backupRetentionEnabled">> => boolean(),
+%%   <<"engineVersion">> => string(),
+%%   <<"masterUserPassword">> => string()
+%% }
+-type pending_modified_relational_database_values() :: #{binary() => any()}.
+
+%% Example:
+%% port_info() :: #{
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
+%%   <<"fromPort">> => integer(),
+%%   <<"ipv6Cidrs">> => list(string()),
+%%   <<"protocol">> => list(any()),
+%%   <<"toPort">> => integer()
+%% }
+-type port_info() :: #{binary() => any()}.
+
+%% Example:
+%% private_registry_access() :: #{
+%%   <<"ecrImagePullerRole">> => container_service_e_c_r_image_puller_role()
+%% }
+-type private_registry_access() :: #{binary() => any()}.
+
+%% Example:
+%% private_registry_access_request() :: #{
+%%   <<"ecrImagePullerRole">> => container_service_e_c_r_image_puller_role_request()
+%% }
+-type private_registry_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_alarm_request() :: #{
+%%   <<"alarmName">> := string(),
+%%   <<"comparisonOperator">> := list(any()),
+%%   <<"contactProtocols">> => list(list(any())()),
+%%   <<"datapointsToAlarm">> => integer(),
+%%   <<"evaluationPeriods">> := integer(),
+%%   <<"metricName">> := list(any()),
+%%   <<"monitoredResourceName">> := string(),
+%%   <<"notificationEnabled">> => boolean(),
+%%   <<"notificationTriggers">> => list(list(any())()),
+%%   <<"tags">> => list(tag()),
+%%   <<"threshold">> := float(),
+%%   <<"treatMissingData">> => list(any())
+%% }
+-type put_alarm_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_alarm_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type create_load_balancer_result() :: #{binary() => any()}.
+-type put_alarm_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_instance_snapshot_result() :: #{
+%% put_instance_public_ports_request() :: #{
+%%   <<"instanceName">> := string(),
+%%   <<"portInfos">> := list(port_info())
+%% }
+-type put_instance_public_ports_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_instance_public_ports_result() :: #{
+%%   <<"operation">> => operation()
+%% }
+-type put_instance_public_ports_result() :: #{binary() => any()}.
+
+%% Example:
+%% query_string_object() :: #{
+%%   <<"option">> => boolean(),
+%%   <<"queryStringsAllowList">> => list(string())
+%% }
+-type query_string_object() :: #{binary() => any()}.
+
+%% Example:
+%% r53_hosted_zone_deletion_state() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type r53_hosted_zone_deletion_state() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_instance_request() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type reboot_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_instance_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type delete_instance_snapshot_result() :: #{binary() => any()}.
+-type reboot_instance_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_alarm_request() :: #{
-
-%% }
--type delete_alarm_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_events_request() :: #{
-%%   <<"durationInMinutes">> => integer(),
-%%   <<"pageToken">> => string(),
+%% reboot_relational_database_request() :: #{
 %%   <<"relationalDatabaseName">> := string()
 %% }
--type get_relational_database_events_request() :: #{binary() => any()}.
+-type reboot_relational_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_instance_result() :: #{
+%% reboot_relational_database_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type stop_instance_result() :: #{binary() => any()}.
+-type reboot_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation())
+%% region() :: #{
+%%   <<"availabilityZones">> => list(availability_zone()),
+%%   <<"continentCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"name">> => list(any()),
+%%   <<"relationalDatabaseAvailabilityZones">> => list(availability_zone())
 %% }
--type create_load_balancer_tls_certificate_result() :: #{binary() => any()}.
+-type region() :: #{binary() => any()}.
 
 %% Example:
-%% create_disk_snapshot_request() :: #{
-%%   <<"diskName">> => string(),
-%%   <<"diskSnapshotName">> := string(),
-%%   <<"instanceName">> => string(),
-%%   <<"tags">> => list(tag())
+%% region_setup_in_progress_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
 %% }
--type create_disk_snapshot_request() :: #{binary() => any()}.
+-type region_setup_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_image_request() :: #{
+%%   <<"digest">> := string(),
+%%   <<"label">> := string()
+%% }
+-type register_container_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_image_result() :: #{
+%%   <<"containerImage">> => container_image()
+%% }
+-type register_container_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% registered_domain_delegation_info() :: #{
+%%   <<"nameServersUpdateState">> => name_servers_update_state(),
+%%   <<"r53HostedZoneDeletionState">> => r53_hosted_zone_deletion_state()
+%% }
+-type registered_domain_delegation_info() :: #{binary() => any()}.
 
 %% Example:
 %% relational_database() :: #{
@@ -965,442 +3405,45 @@
 -type relational_database() :: #{binary() => any()}.
 
 %% Example:
-%% stop_g_ui_session_result() :: #{
-%%   <<"operations">> => list(operation())
+%% relational_database_blueprint() :: #{
+%%   <<"blueprintId">> => string(),
+%%   <<"engine">> => list(any()),
+%%   <<"engineDescription">> => string(),
+%%   <<"engineVersion">> => string(),
+%%   <<"engineVersionDescription">> => string(),
+%%   <<"isEngineDefault">> => boolean()
 %% }
--type stop_g_ui_session_result() :: #{binary() => any()}.
+-type relational_database_blueprint() :: #{binary() => any()}.
 
 %% Example:
-%% get_instance_snapshots_result() :: #{
-%%   <<"instanceSnapshots">> => list(instance_snapshot()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_instance_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_bucket_access_key_request() :: #{
-%%   <<"bucketName">> := string()
-%% }
--type create_bucket_access_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_disk_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_disk_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_distributions_request() :: #{
-%%   <<"distributionName">> => string(),
-%%   <<"pageToken">> => string()
-%% }
--type get_distributions_request() :: #{binary() => any()}.
-
-%% Example:
-%% alarm() :: #{
-%%   <<"arn">> => string(),
-%%   <<"comparisonOperator">> => list(any()),
-%%   <<"contactProtocols">> => list(list(any())()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"datapointsToAlarm">> => integer(),
-%%   <<"evaluationPeriods">> => integer(),
-%%   <<"location">> => resource_location(),
-%%   <<"metricName">> => list(any()),
-%%   <<"monitoredResourceInfo">> => monitored_resource_info(),
-%%   <<"name">> => string(),
-%%   <<"notificationEnabled">> => boolean(),
-%%   <<"notificationTriggers">> => list(list(any())()),
-%%   <<"period">> => integer(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"statistic">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"threshold">> => float(),
-%%   <<"treatMissingData">> => list(any()),
-%%   <<"unit">> => list(any())
-%% }
--type alarm() :: #{binary() => any()}.
-
-%% Example:
-%% get_operations_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"operations">> => list(operation())
-%% }
--type get_operations_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_cost_estimate_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"resourceName">> := string(),
-%%   <<"startTime">> := non_neg_integer()
-%% }
--type get_cost_estimate_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relational_database_request() :: #{
-%%   <<"finalRelationalDatabaseSnapshotName">> => string(),
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"skipFinalSnapshot">> => boolean()
-%% }
--type delete_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_static_ip_request() :: #{
-%%   <<"staticIpName">> := string()
-%% }
--type get_static_ip_request() :: #{binary() => any()}.
-
-%% Example:
-%% unauthenticated_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type unauthenticated_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_container_service_request() :: #{
-%%   <<"deployment">> => container_service_deployment_request(),
-%%   <<"power">> := list(any()),
-%%   <<"privateRegistryAccess">> => private_registry_access_request(),
-%%   <<"publicDomainNames">> => map(),
-%%   <<"scale">> := integer(),
-%%   <<"serviceName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_container_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type stop_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_port_state() :: #{
-%%   <<"cidrListAliases">> => list(string()),
-%%   <<"cidrs">> => list(string()),
-%%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()),
-%%   <<"protocol">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"toPort">> => integer()
-%% }
--type instance_port_state() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_result() :: #{
-%%   <<"domain">> => domain()
-%% }
--type get_domain_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_snapshots_result() :: #{
-%%   <<"autoSnapshots">> => list(auto_snapshot_details()),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type get_auto_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_snapshot_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"instanceSnapshotName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_instance_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_pair_result() :: #{
-%%   <<"keyPair">> => key_pair()
-%% }
--type get_key_pair_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_pair_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type delete_key_pair_result() :: #{binary() => any()}.
-
-%% Example:
-%% setup_history() :: #{
-%%   <<"executionDetails">> => list(setup_execution_details()),
-%%   <<"operationId">> => string(),
-%%   <<"request">> => setup_request(),
-%%   <<"resource">> => setup_history_resource(),
-%%   <<"status">> => list(any())
-%% }
--type setup_history() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_deployment_request() :: #{
-%%   <<"containers">> => map(),
-%%   <<"publicEndpoint">> => endpoint_request()
-%% }
--type container_service_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_auto_snapshots_request() :: #{
-%%   <<"resourceName">> := string()
-%% }
--type get_auto_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relational_database_snapshot_request() :: #{
-%%   <<"relationalDatabaseSnapshotName">> := string()
-%% }
--type delete_relational_database_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
-%% }
--type get_container_service_metric_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% send_contact_method_verification_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type send_contact_method_verification_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_api_metadata_result() :: #{
-%%   <<"metadata">> => list(map())
-%% }
--type get_container_api_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% set_ip_address_type_request() :: #{
-%%   <<"acceptBundleUpdate">> => boolean(),
-%%   <<"ipAddressType">> := list(any()),
-%%   <<"resourceName">> := string(),
-%%   <<"resourceType">> := list(any())
-%% }
--type set_ip_address_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_g_ui_session_request() :: #{
-%%   <<"resourceName">> := string()
-%% }
--type stop_g_ui_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"domainEntries">> => list(domain_entry()),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"registeredDomainDelegationInfo">> => registered_domain_delegation_info(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type domain() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_request() :: #{
-%%   <<"loadBalancerName">> := string()
-%% }
--type delete_load_balancer_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_buckets_request() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"includeConnectedResources">> => boolean(),
-%%   <<"includeCors">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_buckets_request() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_state() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type bucket_state() :: #{binary() => any()}.
-
-%% Example:
-%% attach_disk_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type attach_disk_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_relational_database_request() :: #{
-%%   <<"relationalDatabaseName">> := string()
-%% }
--type start_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_bucket_bundle_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type update_bucket_bundle_result() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_instance_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type reboot_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_snapshots_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_disk_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% reset_distribution_cache_request() :: #{
-%%   <<"distributionName">> => string()
-%% }
--type reset_distribution_cache_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_power() :: #{
-%%   <<"cpuCount">> => float(),
+%% relational_database_bundle() :: #{
+%%   <<"bundleId">> => string(),
+%%   <<"cpuCount">> => integer(),
+%%   <<"diskSizeInGb">> => integer(),
 %%   <<"isActive">> => boolean(),
+%%   <<"isEncrypted">> => boolean(),
 %%   <<"name">> => string(),
-%%   <<"powerId">> => string(),
 %%   <<"price">> => float(),
-%%   <<"ramSizeInGb">> => float()
+%%   <<"ramSizeInGb">> => float(),
+%%   <<"transferPerMonthInGb">> => integer()
 %% }
--type container_service_power() :: #{binary() => any()}.
+-type relational_database_bundle() :: #{binary() => any()}.
 
 %% Example:
-%% cache_behavior_per_path() :: #{
-%%   <<"behavior">> => list(any()),
-%%   <<"path">> => string()
+%% relational_database_endpoint() :: #{
+%%   <<"address">> => string(),
+%%   <<"port">> => integer()
 %% }
--type cache_behavior_per_path() :: #{binary() => any()}.
+-type relational_database_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% get_buckets_result() :: #{
-%%   <<"accountLevelBpaSync">> => account_level_bpa_sync(),
-%%   <<"buckets">> => list(bucket()),
-%%   <<"nextPageToken">> => string()
+%% relational_database_event() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"eventCategories">> => list(string()),
+%%   <<"message">> => string(),
+%%   <<"resource">> => string()
 %% }
--type get_buckets_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type create_domain_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type attach_load_balancer_tls_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_disk_request() :: #{
-%%   <<"diskName">> := string(),
-%%   <<"forceDeleteAddOns">> => boolean()
-%% }
--type delete_disk_request() :: #{binary() => any()}.
-
-%% Example:
-%% reset_distribution_cache_result() :: #{
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"operation">> => operation(),
-%%   <<"status">> => string()
-%% }
--type reset_distribution_cache_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_tls_certificates_result() :: #{
-%%   <<"tlsCertificates">> => list(load_balancer_tls_certificate())
-%% }
--type get_load_balancer_tls_certificates_result() :: #{binary() => any()}.
-
-%% Example:
-%% account_level_bpa_sync() :: #{
-%%   <<"bpaImpactsLightsail">> => boolean(),
-%%   <<"lastSyncedAt">> => non_neg_integer(),
-%%   <<"message">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type account_level_bpa_sync() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_method_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_contact_method_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_relational_database_request() :: #{
-%%   <<"availabilityZone">> => string(),
-%%   <<"masterDatabaseName">> := string(),
-%%   <<"masterUserPassword">> => string(),
-%%   <<"masterUsername">> := string(),
-%%   <<"preferredBackupWindow">> => string(),
-%%   <<"preferredMaintenanceWindow">> => string(),
-%%   <<"publiclyAccessible">> => boolean(),
-%%   <<"relationalDatabaseBlueprintId">> := string(),
-%%   <<"relationalDatabaseBundleId">> := string(),
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_log_events_result() :: #{
-%%   <<"nextBackwardToken">> => string(),
-%%   <<"nextForwardToken">> => string(),
-%%   <<"resourceLogEvents">> => list(log_event())
-%% }
--type get_relational_database_log_events_result() :: #{binary() => any()}.
-
-%% Example:
-%% renewal_summary() :: #{
-%%   <<"domainValidationRecords">> => list(domain_validation_record()),
-%%   <<"renewalStatus">> => list(any()),
-%%   <<"renewalStatusReason">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type renewal_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_distribution_request() :: #{
-%%   <<"bundleId">> := string(),
-%%   <<"cacheBehaviorSettings">> => cache_settings(),
-%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
-%%   <<"certificateName">> => string(),
-%%   <<"defaultCacheBehavior">> := cache_behavior(),
-%%   <<"distributionName">> := string(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"origin">> := input_origin(),
-%%   <<"tags">> => list(tag()),
-%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
-%% }
--type create_distribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_instances_request() :: #{
-%%   <<"addOns">> => list(add_on_request()),
-%%   <<"availabilityZone">> := string(),
-%%   <<"blueprintId">> := string(),
-%%   <<"bundleId">> := string(),
-%%   <<"customImageName">> => string(),
-%%   <<"instanceNames">> := list(string()),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"keyPairName">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"userData">> => string()
-%% }
--type create_instances_request() :: #{binary() => any()}.
+-type relational_database_event() :: #{binary() => any()}.
 
 %% Example:
 %% relational_database_hardware() :: #{
@@ -1411,257 +3454,17 @@
 -type relational_database_hardware() :: #{binary() => any()}.
 
 %% Example:
-%% delete_instance_snapshot_request() :: #{
-%%   <<"instanceSnapshotName">> := string()
+%% relational_database_parameter() :: #{
+%%   <<"allowedValues">> => string(),
+%%   <<"applyMethod">> => string(),
+%%   <<"applyType">> => string(),
+%%   <<"dataType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"isModifiable">> => boolean(),
+%%   <<"parameterName">> => string(),
+%%   <<"parameterValue">> => string()
 %% }
--type delete_instance_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_certificate_request() :: #{
-%%   <<"certificateName">> := string(),
-%%   <<"domainName">> := string(),
-%%   <<"subjectAlternativeNames">> => list(string()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_powers_result() :: #{
-%%   <<"powers">> => list(container_service_power())
-%% }
--type get_container_service_powers_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_request() :: #{
-%%   <<"relationalDatabaseName">> := string()
-%% }
--type get_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceName">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_metric_data_request() :: #{
-%%   <<"distributionName">> := string(),
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"unit">> := list(any())
-%% }
--type get_distribution_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_hardware() :: #{
-%%   <<"cpuCount">> => integer(),
-%%   <<"disks">> => list(disk()),
-%%   <<"ramSizeInGb">> => float()
-%% }
--type instance_hardware() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_snapshot_result() :: #{
-%%   <<"relationalDatabaseSnapshot">> => relational_database_snapshot()
-%% }
--type get_relational_database_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_snapshots_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_instance_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_bundles_result() :: #{
-%%   <<"bundles">> => list(bundle()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_bundles_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_tls_policies_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_load_balancer_tls_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% time_period() :: #{
-%%   <<"end">> => non_neg_integer(),
-%%   <<"start">> => non_neg_integer()
-%% }
--type time_period() :: #{binary() => any()}.
-
-%% Example:
-%% delete_known_host_keys_request() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type delete_known_host_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_snapshot_result() :: #{
-%%   <<"diskSnapshot">> => disk_snapshot()
-%% }
--type get_disk_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_relational_database_from_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_relational_database_from_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_pair_request() :: #{
-%%   <<"expectedFingerprint">> => string(),
-%%   <<"keyPairName">> := string()
-%% }
--type delete_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_tls_certificate_domain_validation_option() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"validationStatus">> => list(any())
-%% }
--type load_balancer_tls_certificate_domain_validation_option() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_request() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type get_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_disk_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_disk_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% bundle() :: #{
-%%   <<"bundleId">> => string(),
-%%   <<"cpuCount">> => integer(),
-%%   <<"diskSizeInGb">> => integer(),
-%%   <<"instanceType">> => string(),
-%%   <<"isActive">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"power">> => integer(),
-%%   <<"price">> => float(),
-%%   <<"publicIpv4AddressCount">> => integer(),
-%%   <<"ramSizeInGb">> => float(),
-%%   <<"supportedAppCategories">> => list(list(any())()),
-%%   <<"supportedPlatforms">> => list(list(any())()),
-%%   <<"transferPerMonthInGb">> => integer()
-%% }
--type bundle() :: #{binary() => any()}.
-
-%% Example:
-%% instance_snapshot() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"fromAttachedDisks">> => list(disk()),
-%%   <<"fromBlueprintId">> => string(),
-%%   <<"fromBundleId">> => string(),
-%%   <<"fromInstanceArn">> => string(),
-%%   <<"fromInstanceName">> => string(),
-%%   <<"isFromAutoSnapshot">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"progress">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sizeInGb">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type instance_snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% create_g_ui_session_access_details_request() :: #{
-%%   <<"resourceName">> := string()
-%% }
--type create_g_ui_session_access_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_location() :: #{
-%%   <<"availabilityZone">> => string(),
-%%   <<"regionName">> => list(any())
-%% }
--type resource_location() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_metric_data_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"unit">> := list(any())
-%% }
--type get_relational_database_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_method_request() :: #{
-%%   <<"contactEndpoint">> := string(),
-%%   <<"protocol">> := list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_contact_method_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_snapshot_details() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"date">> => string(),
-%%   <<"fromAttachedDisks">> => list(attached_disk()),
-%%   <<"status">> => list(any())
-%% }
--type auto_snapshot_details() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_summary() :: #{
-%%   <<"certificateArn">> => string(),
-%%   <<"certificateDetail">> => certificate(),
-%%   <<"certificateName">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type certificate_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_snapshot_records_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_export_snapshot_records_request() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_bundle() :: #{
-%%   <<"bundleId">> => string(),
-%%   <<"isActive">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"price">> => float(),
-%%   <<"storagePerMonthInGb">> => integer(),
-%%   <<"transferPerMonthInGb">> => integer()
-%% }
--type bucket_bundle() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_request() :: #{
-%%   <<"certificateAlternativeNames">> => list(string()),
-%%   <<"certificateDomainName">> => string(),
-%%   <<"certificateName">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"instancePort">> := integer(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"loadBalancerName">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"tlsPolicyName">> => string()
-%% }
--type create_load_balancer_request() :: #{binary() => any()}.
+-type relational_database_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% relational_database_snapshot() :: #{
@@ -1684,193 +3487,39 @@
 -type relational_database_snapshot() :: #{binary() => any()}.
 
 %% Example:
-%% delete_bucket_request() :: #{
-%%   <<"bucketName">> := string(),
-%%   <<"forceDelete">> => boolean()
+%% release_static_ip_request() :: #{
+%%   <<"staticIpName">> := string()
 %% }
--type delete_bucket_request() :: #{binary() => any()}.
+-type release_static_ip_request() :: #{binary() => any()}.
 
 %% Example:
-%% set_ip_address_type_result() :: #{
+%% release_static_ip_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type set_ip_address_type_result() :: #{binary() => any()}.
+-type release_static_ip_result() :: #{binary() => any()}.
 
 %% Example:
-%% name_servers_update_state() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
+%% renewal_summary() :: #{
+%%   <<"domainValidationRecords">> => list(domain_validation_record()),
+%%   <<"renewalStatus">> => list(any()),
+%%   <<"renewalStatusReason">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type name_servers_update_state() :: #{binary() => any()}.
+-type renewal_summary() :: #{binary() => any()}.
 
 %% Example:
-%% reboot_instance_request() :: #{
-%%   <<"instanceName">> := string()
+%% reset_distribution_cache_request() :: #{
+%%   <<"distributionName">> => string()
 %% }
--type reboot_instance_request() :: #{binary() => any()}.
+-type reset_distribution_cache_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_networking() :: #{
-%%   <<"monthlyTransfer">> => monthly_transfer(),
-%%   <<"ports">> => list(instance_port_info())
+%% reset_distribution_cache_result() :: #{
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"operation">> => operation(),
+%%   <<"status">> => string()
 %% }
--type instance_networking() :: #{binary() => any()}.
-
-%% Example:
-%% get_active_names_result() :: #{
-%%   <<"activeNames">> => list(string()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_active_names_result() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type reboot_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% setup_instance_https_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type setup_instance_https_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_bucket_metric_data_request() :: #{
-%%   <<"bucketName">> := string(),
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"unit">> := list(any())
-%% }
--type get_bucket_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{
-%%   <<"domainName">> := string()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_snapshot_request() :: #{
-%%   <<"instanceSnapshotName">> := string()
-%% }
--type get_instance_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_cors_config() :: #{
-%%   <<"rules">> => list(bucket_cors_rule())
-%% }
--type bucket_cors_config() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_deployment() :: #{
-%%   <<"containers">> => map(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"publicEndpoint">> => container_service_endpoint(),
-%%   <<"state">> => list(any()),
-%%   <<"version">> => integer()
-%% }
--type container_service_deployment() :: #{binary() => any()}.
-
-%% Example:
-%% instance_health_summary() :: #{
-%%   <<"instanceHealth">> => list(any()),
-%%   <<"instanceHealthReason">> => list(any()),
-%%   <<"instanceName">> => string()
-%% }
--type instance_health_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% region() :: #{
-%%   <<"availabilityZones">> => list(availability_zone()),
-%%   <<"continentCode">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"name">> => list(any()),
-%%   <<"relationalDatabaseAvailabilityZones">> => list(availability_zone())
-%% }
--type region() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_parameters_request() :: #{
-%%   <<"pageToken">> => string(),
-%%   <<"relationalDatabaseName">> := string()
-%% }
--type get_relational_database_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type export_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_pairs_request() :: #{
-%%   <<"includeDefaultKeyPair">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_key_pairs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_static_ips_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_static_ips_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_metadata_options_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type update_instance_metadata_options_result() :: #{binary() => any()}.
-
-%% Example:
-%% detach_static_ip_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type detach_static_ip_result() :: #{binary() => any()}.
-
-%% Example:
-%% destination_info() :: #{
-%%   <<"id">> => string(),
-%%   <<"service">> => string()
-%% }
--type destination_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
-%% }
--type get_distribution_metric_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_operations_for_resource_request() :: #{
-%%   <<"pageToken">> => string(),
-%%   <<"resourceName">> := string()
-%% }
--type get_operations_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% monthly_transfer() :: #{
-%%   <<"gbPerMonthAllocated">> => integer()
-%% }
--type monthly_transfer() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_tls_policies_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"tlsPolicies">> => list(load_balancer_tls_policy())
-%% }
--type get_load_balancer_tls_policies_result() :: #{binary() => any()}.
+-type reset_distribution_cache_result() :: #{binary() => any()}.
 
 %% Example:
 %% resource_budget_estimate() :: #{
@@ -1883,145 +3532,106 @@
 -type resource_budget_estimate() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
+%% resource_location() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"regionName">> => list(any())
 %% }
--type get_relational_database_metric_data_result() :: #{binary() => any()}.
+-type resource_location() :: #{binary() => any()}.
 
 %% Example:
-%% update_distribution_bundle_result() :: #{
-%%   <<"operation">> => operation()
+%% resource_receiving_access() :: #{
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type update_distribution_bundle_result() :: #{binary() => any()}.
+-type resource_receiving_access() :: #{binary() => any()}.
 
 %% Example:
-%% create_disk_from_snapshot_request() :: #{
-%%   <<"addOns">> => list(add_on_request()),
-%%   <<"availabilityZone">> := string(),
-%%   <<"diskName">> := string(),
-%%   <<"diskSnapshotName">> => string(),
-%%   <<"restoreDate">> => string(),
-%%   <<"sizeInGb">> := integer(),
-%%   <<"sourceDiskName">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"useLatestRestorableAutoSnapshot">> => boolean()
-%% }
--type create_disk_from_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% attach_certificate_to_distribution_request() :: #{
-%%   <<"certificateName">> := string(),
-%%   <<"distributionName">> := string()
-%% }
--type attach_certificate_to_distribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_request() :: #{
-%%   <<"domainName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_alarm_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type test_alarm_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_access_details_result() :: #{
-%%   <<"accessDetails">> => instance_access_details()
-%% }
--type get_instance_access_details_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_cloud_formation_stack_request() :: #{
-%%   <<"instances">> := list(instance_entry())
-%% }
--type create_cloud_formation_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_known_host_keys_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_known_host_keys_result() :: #{binary() => any()}.
-
-%% Example:
-%% setup_request() :: #{
-%%   <<"certificateProvider">> => list(any()),
-%%   <<"domainNames">> => list(string()),
-%%   <<"instanceName">> => string()
-%% }
--type setup_request() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_relational_database_request() :: #{
-%%   <<"relationalDatabaseName">> := string()
-%% }
--type reboot_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_static_ip_request() :: #{
-%%   <<"staticIpName">> := string()
-%% }
--type allocate_static_ip_request() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_cors_rule() :: #{
-%%   <<"allowedHeaders">> => list(string()),
-%%   <<"allowedMethods">> => list(string()),
-%%   <<"allowedOrigins">> => list(string()),
-%%   <<"exposeHeaders">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"maxAgeSeconds">> => integer()
-%% }
--type bucket_cors_rule() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
+%% resource_record() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string(),
 %%   <<"value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type resource_record() :: #{binary() => any()}.
 
 %% Example:
-%% put_alarm_result() :: #{
+%% send_contact_method_verification_request() :: #{
+%%   <<"protocol">> := list(any())
+%% }
+-type send_contact_method_verification_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_contact_method_verification_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type put_alarm_result() :: #{binary() => any()}.
+-type send_contact_method_verification_result() :: #{binary() => any()}.
 
 %% Example:
-%% close_instance_public_ports_result() :: #{
-%%   <<"operation">> => operation()
+%% service_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
 %% }
--type close_instance_public_ports_result() :: #{binary() => any()}.
+-type service_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_container_service_deployment_result() :: #{
-%%   <<"containerService">> => container_service()
+%% session() :: #{
+%%   <<"isPrimary">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"url">> => string()
 %% }
--type create_container_service_deployment_result() :: #{binary() => any()}.
+-type session() :: #{binary() => any()}.
 
 %% Example:
-%% update_distribution_request() :: #{
-%%   <<"cacheBehaviorSettings">> => cache_settings(),
-%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
-%%   <<"certificateName">> => string(),
-%%   <<"defaultCacheBehavior">> => cache_behavior(),
-%%   <<"distributionName">> := string(),
-%%   <<"isEnabled">> => boolean(),
-%%   <<"origin">> => input_origin(),
-%%   <<"useDefaultCertificate">> => boolean(),
-%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
+%% set_ip_address_type_request() :: #{
+%%   <<"acceptBundleUpdate">> => boolean(),
+%%   <<"ipAddressType">> := list(any()),
+%%   <<"resourceName">> := string(),
+%%   <<"resourceType">> := list(any())
 %% }
--type update_distribution_request() :: #{binary() => any()}.
+-type set_ip_address_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_domain_entry_result() :: #{
-%%   <<"operation">> => operation()
+%% set_ip_address_type_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type delete_domain_entry_result() :: #{binary() => any()}.
+-type set_ip_address_type_result() :: #{binary() => any()}.
+
+%% Example:
+%% set_resource_access_for_bucket_request() :: #{
+%%   <<"access">> := list(any()),
+%%   <<"bucketName">> := string(),
+%%   <<"resourceName">> := string()
+%% }
+-type set_resource_access_for_bucket_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_resource_access_for_bucket_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type set_resource_access_for_bucket_result() :: #{binary() => any()}.
+
+%% Example:
+%% setup_execution_details() :: #{
+%%   <<"command">> => string(),
+%%   <<"dateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"standardError">> => string(),
+%%   <<"standardOutput">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type setup_execution_details() :: #{binary() => any()}.
+
+%% Example:
+%% setup_history() :: #{
+%%   <<"executionDetails">> => list(setup_execution_details()),
+%%   <<"operationId">> => string(),
+%%   <<"request">> => setup_request(),
+%%   <<"resource">> => setup_history_resource(),
+%%   <<"status">> => list(any())
+%% }
+-type setup_history() :: #{binary() => any()}.
 
 %% Example:
 %% setup_history_resource() :: #{
@@ -2034,397 +3644,63 @@
 -type setup_history_resource() :: #{binary() => any()}.
 
 %% Example:
-%% attached_disk() :: #{
-%%   <<"path">> => string(),
-%%   <<"sizeInGb">> => integer()
-%% }
--type attached_disk() :: #{binary() => any()}.
-
-%% Example:
-%% get_operation_request() :: #{
-%%   <<"operationId">> := string()
-%% }
--type get_operation_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_service() :: #{
-%%   <<"arn">> => string(),
-%%   <<"containerServiceName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currentDeployment">> => container_service_deployment(),
-%%   <<"isDisabled">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"nextDeployment">> => container_service_deployment(),
-%%   <<"power">> => list(any()),
-%%   <<"powerId">> => string(),
-%%   <<"principalArn">> => string(),
-%%   <<"privateDomainName">> => string(),
-%%   <<"privateRegistryAccess">> => private_registry_access(),
-%%   <<"publicDomainNames">> => map(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"scale">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"stateDetail">> => container_service_state_detail(),
-%%   <<"tags">> => list(tag()),
-%%   <<"url">> => string()
-%% }
--type container_service() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_bundles_result() :: #{
-%%   <<"bundles">> => list(relational_database_bundle()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_relational_database_bundles_result() :: #{binary() => any()}.
-
-%% Example:
-%% access_key() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUsed">> => access_key_last_used(),
-%%   <<"secretAccessKey">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type access_key() :: #{binary() => any()}.
-
-%% Example:
-%% update_bucket_request() :: #{
-%%   <<"accessLogConfig">> => bucket_access_log_config(),
-%%   <<"accessRules">> => access_rules(),
-%%   <<"bucketName">> := string(),
-%%   <<"cors">> => bucket_cors_config(),
-%%   <<"readonlyAccessAccounts">> => list(string()),
-%%   <<"versioning">> => string()
-%% }
--type update_bucket_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type delete_domain_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_instance_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% attach_instances_to_load_balancer_request() :: #{
-%%   <<"instanceNames">> := list(string()),
-%%   <<"loadBalancerName">> := string()
-%% }
--type attach_instances_to_load_balancer_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_disk_request() :: #{
-%%   <<"addOns">> => list(add_on_request()),
-%%   <<"availabilityZone">> := string(),
-%%   <<"diskName">> := string(),
-%%   <<"sizeInGb">> := integer(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_disk_request() :: #{binary() => any()}.
-
-%% Example:
-%% release_static_ip_request() :: #{
-%%   <<"staticIpName">> := string()
-%% }
--type release_static_ip_request() :: #{binary() => any()}.
-
-%% Example:
-%% is_vpc_peered_result() :: #{
-%%   <<"isPeered">> => boolean()
-%% }
--type is_vpc_peered_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_port_states_request() :: #{
+%% setup_instance_https_request() :: #{
+%%   <<"certificateProvider">> := list(any()),
+%%   <<"domainNames">> := list(string()),
+%%   <<"emailAddress">> := string(),
 %%   <<"instanceName">> := string()
 %% }
--type get_instance_port_states_request() :: #{binary() => any()}.
+-type setup_instance_https_request() :: #{binary() => any()}.
 
 %% Example:
-%% disable_add_on_request() :: #{
-%%   <<"addOnType">> := list(any()),
+%% setup_instance_https_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type setup_instance_https_result() :: #{binary() => any()}.
+
+%% Example:
+%% setup_request() :: #{
+%%   <<"certificateProvider">> => list(any()),
+%%   <<"domainNames">> => list(string()),
+%%   <<"instanceName">> => string()
+%% }
+-type setup_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_g_ui_session_request() :: #{
 %%   <<"resourceName">> := string()
 %% }
--type disable_add_on_request() :: #{binary() => any()}.
+-type start_g_ui_session_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_relational_database_snapshot_request() :: #{
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"relationalDatabaseSnapshotName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_relational_database_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% monitored_resource_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type monitored_resource_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_methods_request() :: #{
-%%   <<"protocols">> => list(list(any())())
-%% }
--type get_contact_methods_request() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_tls_certificate_renewal_summary() :: #{
-%%   <<"domainValidationOptions">> => list(load_balancer_tls_certificate_domain_validation_option()),
-%%   <<"renewalStatus">> => list(any())
-%% }
--type load_balancer_tls_certificate_renewal_summary() :: #{binary() => any()}.
-
-%% Example:
-%% instance_snapshot_info() :: #{
-%%   <<"fromBlueprintId">> => string(),
-%%   <<"fromBundleId">> => string(),
-%%   <<"fromDiskInfo">> => list(disk_info())
-%% }
--type instance_snapshot_info() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_cost_estimate_result() :: #{
-%%   <<"resourcesBudgetEstimate">> => list(resource_budget_estimate())
-%% }
--type get_cost_estimate_result() :: #{binary() => any()}.
-
-%% Example:
-%% r53_hosted_zone_deletion_state() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type r53_hosted_zone_deletion_state() :: #{binary() => any()}.
-
-%% Example:
-%% container_image() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"digest">> => string(),
-%%   <<"image">> => string()
-%% }
--type container_image() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_entry_request() :: #{
-%%   <<"domainEntry">> := domain_entry(),
-%%   <<"domainName">> := string()
-%% }
--type create_domain_entry_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_receiving_access() :: #{
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_receiving_access() :: #{binary() => any()}.
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% peer_vpc_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type peer_vpc_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_bundles_request() :: #{
-
-%% }
--type get_distribution_bundles_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_disk_from_snapshot_result() :: #{
+%% start_g_ui_session_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type create_disk_from_snapshot_result() :: #{binary() => any()}.
+-type start_g_ui_session_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_operation_result() :: #{
-%%   <<"operation">> => operation()
+%% start_instance_request() :: #{
+%%   <<"instanceName">> := string()
 %% }
--type get_operation_result() :: #{binary() => any()}.
+-type start_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_log_streams_request() :: #{
+%% start_instance_result() :: #{
+%%   <<"operations">> => list(operation())
+%% }
+-type start_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_relational_database_request() :: #{
 %%   <<"relationalDatabaseName">> := string()
 %% }
--type get_relational_database_log_streams_request() :: #{binary() => any()}.
+-type start_relational_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_domains_result() :: #{
-%%   <<"domains">> => list(domain()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_domains_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_bucket_access_keys_result() :: #{
-%%   <<"accessKeys">> => list(access_key())
-%% }
--type get_bucket_access_keys_result() :: #{binary() => any()}.
-
-%% Example:
-%% disk_snapshot() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"fromDiskArn">> => string(),
-%%   <<"fromDiskName">> => string(),
-%%   <<"fromInstanceArn">> => string(),
-%%   <<"fromInstanceName">> => string(),
-%%   <<"isFromAutoSnapshot">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"progress">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sizeInGb">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type disk_snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bucket_result() :: #{
+%% start_relational_database_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type delete_bucket_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_access_details() :: #{
-%%   <<"certKey">> => string(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"hostKeys">> => list(host_key_attributes()),
-%%   <<"instanceName">> => string(),
-%%   <<"ipAddress">> => string(),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"password">> => string(),
-%%   <<"passwordData">> => password_data(),
-%%   <<"privateKey">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"username">> => string()
-%% }
--type instance_access_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_pairs_result() :: #{
-%%   <<"keyPairs">> => list(key_pair()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_key_pairs_result() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_log_event() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"message">> => string()
-%% }
--type container_service_log_event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_image_request() :: #{
-
-%% }
--type delete_container_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% blueprint() :: #{
-%%   <<"appCategory">> => list(any()),
-%%   <<"blueprintId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"group">> => string(),
-%%   <<"isActive">> => boolean(),
-%%   <<"licenseUrl">> => string(),
-%%   <<"minPower">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"productUrl">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string(),
-%%   <<"versionCode">> => string()
-%% }
--type blueprint() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_metric_data_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"instanceName">> := string(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"unit">> := list(any())
-%% }
--type get_instance_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_load_balancer_attribute_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type update_load_balancer_attribute_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bucket_access_key_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_bucket_access_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprints_request() :: #{
-%%   <<"appCategory">> => list(any()),
-%%   <<"includeInactive">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_blueprints_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
-%% }
--type get_instance_metric_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% password_data() :: #{
-%%   <<"ciphertext">> => string(),
-%%   <<"keyPairName">> => string()
-%% }
--type password_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_request() :: #{
-%%   <<"diskName">> := string()
-%% }
--type get_disk_request() :: #{binary() => any()}.
+-type start_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% static_ip() :: #{
@@ -2441,83 +3717,16 @@
 -type static_ip() :: #{binary() => any()}.
 
 %% Example:
-%% delete_load_balancer_result() :: #{
+%% stop_g_ui_session_request() :: #{
+%%   <<"resourceName">> := string()
+%% }
+-type stop_g_ui_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_g_ui_session_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type delete_load_balancer_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instances_result() :: #{
-%%   <<"instances">> => list(instance()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_instances_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_bucket_result() :: #{
-%%   <<"bucket">> => bucket(),
-%%   <<"operations">> => list(operation())
-%% }
--type update_bucket_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_instance_public_ports_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type put_instance_public_ports_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_entry_request() :: #{
-%%   <<"domainEntry">> := domain_entry(),
-%%   <<"domainName">> := string()
-%% }
--type delete_domain_entry_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_static_ip_request() :: #{
-%%   <<"staticIpName">> := string()
-%% }
--type detach_static_ip_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_disk_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type detach_disk_result() :: #{binary() => any()}.
-
-%% Example:
-%% session() :: #{
-%%   <<"isPrimary">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"url">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-%% Example:
-%% get_distributions_result() :: #{
-%%   <<"distributions">> => list(lightsail_distribution()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_distributions_result() :: #{binary() => any()}.
-
-%% Example:
-%% key_pair() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"fingerprint">> => string(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type key_pair() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_databases_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_relational_databases_request() :: #{binary() => any()}.
+-type stop_g_ui_session_result() :: #{binary() => any()}.
 
 %% Example:
 %% stop_instance_on_idle_request() :: #{
@@ -2527,660 +3736,85 @@
 -type stop_instance_on_idle_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_state() :: #{
-%%   <<"code">> => integer(),
-%%   <<"name">> => string()
-%% }
--type instance_state() :: #{binary() => any()}.
-
-%% Example:
-%% export_snapshot_request() :: #{
-%%   <<"sourceSnapshotName">> := string()
-%% }
--type export_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_bucket_result() :: #{
-%%   <<"bucket">> => bucket(),
-%%   <<"operations">> => list(operation())
-%% }
--type create_bucket_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_disk_snapshot_request() :: #{
-%%   <<"diskSnapshotName">> := string()
-%% }
--type delete_disk_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_deployments_request() :: #{
-
-%% }
--type get_container_service_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_static_ip_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type allocate_static_ip_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_snapshot_result() :: #{
-%%   <<"instanceSnapshot">> => instance_snapshot()
-%% }
--type get_instance_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_tls_certificate_dns_record_creation_state() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type load_balancer_tls_certificate_dns_record_creation_state() :: #{binary() => any()}.
-
-%% Example:
-%% download_default_key_pair_request() :: #{
-
-%% }
--type download_default_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% pending_modified_relational_database_values() :: #{
-%%   <<"backupRetentionEnabled">> => boolean(),
-%%   <<"engineVersion">> => string(),
-%%   <<"masterUserPassword">> => string()
-%% }
--type pending_modified_relational_database_values() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_tls_certificates_request() :: #{
-%%   <<"loadBalancerName">> := string()
-%% }
--type get_load_balancer_tls_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_tls_certificate_summary() :: #{
-%%   <<"isAttached">> => boolean(),
-%%   <<"name">> => string()
-%% }
--type load_balancer_tls_certificate_summary() :: #{binary() => any()}.
-
-%% Example:
-%% copy_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type copy_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_log_events_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"logStreamName">> := string(),
-%%   <<"pageToken">> => string(),
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"startFromHead">> => boolean(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type get_relational_database_log_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_state_detail() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type container_service_state_detail() :: #{binary() => any()}.
-
-%% Example:
-%% setup_instance_https_request() :: #{
-%%   <<"certificateProvider">> := list(any()),
-%%   <<"domainNames">> := list(string()),
-%%   <<"emailAddress">> := string(),
+%% stop_instance_request() :: #{
+%%   <<"force">> => boolean(),
 %%   <<"instanceName">> := string()
 %% }
--type setup_instance_https_request() :: #{binary() => any()}.
+-type stop_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% container_service_e_c_r_image_puller_role() :: #{
-%%   <<"isActive">> => boolean(),
-%%   <<"principalArn">> => string()
-%% }
--type container_service_e_c_r_image_puller_role() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_log_streams_result() :: #{
-%%   <<"logStreams">> => list(string())
-%% }
--type get_relational_database_log_streams_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_bundles_result() :: #{
-%%   <<"bundles">> => list(distribution_bundle())
-%% }
--type get_distribution_bundles_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auto_snapshot_request() :: #{
-%%   <<"date">> := string(),
-%%   <<"resourceName">> := string()
-%% }
--type delete_auto_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_snapshots_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabaseSnapshots">> => list(relational_database_snapshot())
-%% }
--type get_relational_database_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% container_services_list_result() :: #{
-%%   <<"containerServices">> => list(container_service())
-%% }
--type container_services_list_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_image_result() :: #{
-
-%% }
--type delete_container_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% certificate() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"domainName">> => string(),
-%%   <<"domainValidationRecords">> => list(domain_validation_record()),
-%%   <<"eligibleToRenew">> => string(),
-%%   <<"inUseResourceCount">> => integer(),
-%%   <<"issuedAt">> => non_neg_integer(),
-%%   <<"issuerCA">> => string(),
-%%   <<"keyAlgorithm">> => string(),
-%%   <<"name">> => string(),
-%%   <<"notAfter">> => non_neg_integer(),
-%%   <<"notBefore">> => non_neg_integer(),
-%%   <<"renewalSummary">> => renewal_summary(),
-%%   <<"requestFailureReason">> => string(),
-%%   <<"revocationReason">> => string(),
-%%   <<"revokedAt">> => non_neg_integer(),
-%%   <<"serialNumber">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subjectAlternativeNames">> => list(string()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_entry_request() :: #{
-%%   <<"domainEntry">> := domain_entry(),
-%%   <<"domainName">> := string()
-%% }
--type update_domain_entry_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_add_on_result() :: #{
+%% stop_instance_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type enable_add_on_result() :: #{binary() => any()}.
+-type stop_instance_result() :: #{binary() => any()}.
 
 %% Example:
-%% import_key_pair_result() :: #{
-%%   <<"operation">> => operation()
+%% stop_relational_database_request() :: #{
+%%   <<"relationalDatabaseName">> := string(),
+%%   <<"relationalDatabaseSnapshotName">> => string()
 %% }
--type import_key_pair_result() :: #{binary() => any()}.
+-type stop_relational_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_domains_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_entry_result() :: #{
+%% stop_relational_database_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type update_domain_entry_result() :: #{binary() => any()}.
+-type stop_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_bucket_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type get_bucket_metric_data_result() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% delete_container_service_result() :: #{
-
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceName">> := string(),
+%%   <<"tags">> := list(tag())
 %% }
--type delete_container_service_result() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% bucket() :: #{
-%%   <<"ableToUpdateBundle">> => boolean(),
-%%   <<"accessLogConfig">> => bucket_access_log_config(),
-%%   <<"accessRules">> => access_rules(),
-%%   <<"arn">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"cors">> => bucket_cors_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"objectVersioning">> => string(),
-%%   <<"readonlyAccessAccounts">> => list(string()),
-%%   <<"resourceType">> => string(),
-%%   <<"resourcesReceivingAccess">> => list(resource_receiving_access()),
-%%   <<"state">> => bucket_state(),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"url">> => string()
+%% tag_resource_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type bucket() :: #{binary() => any()}.
+-type tag_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_container_images_request() :: #{
-
+%% test_alarm_request() :: #{
+%%   <<"state">> := list(any())
 %% }
--type get_container_images_request() :: #{binary() => any()}.
+-type test_alarm_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_bucket_request() :: #{
-%%   <<"bucketName">> := string(),
-%%   <<"bundleId">> := string(),
-%%   <<"enableObjectVersioning">> => boolean(),
-%%   <<"tags">> => list(tag())
+%% test_alarm_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type create_bucket_request() :: #{binary() => any()}.
+-type test_alarm_result() :: #{binary() => any()}.
 
 %% Example:
-%% input_origin() :: #{
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocolPolicy">> => list(any()),
-%%   <<"regionName">> => list(any()),
-%%   <<"responseTimeout">> => integer()
+%% time_period() :: #{
+%%   <<"end">> => non_neg_integer(),
+%%   <<"start">> => non_neg_integer()
 %% }
--type input_origin() :: #{binary() => any()}.
+-type time_period() :: #{binary() => any()}.
 
 %% Example:
-%% disk_map() :: #{
-%%   <<"newDiskName">> => string(),
-%%   <<"originalDiskPath">> => string()
-%% }
--type disk_map() :: #{binary() => any()}.
-
-%% Example:
-%% create_distribution_result() :: #{
-%%   <<"distribution">> => lightsail_distribution(),
-%%   <<"operation">> => operation()
-%% }
--type create_distribution_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_bundles_request() :: #{
-%%   <<"appCategory">> => list(any()),
-%%   <<"includeInactive">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_bundles_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance() :: #{
-%%   <<"addOns">> => list(add_on()),
-%%   <<"arn">> => string(),
-%%   <<"blueprintId">> => string(),
-%%   <<"blueprintName">> => string(),
-%%   <<"bundleId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"hardware">> => instance_hardware(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv6Addresses">> => list(string()),
-%%   <<"isStaticIp">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"metadataOptions">> => instance_metadata_options(),
-%%   <<"name">> => string(),
-%%   <<"networking">> => instance_networking(),
-%%   <<"privateIpAddress">> => string(),
-%%   <<"publicIpAddress">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sshKeyName">> => string(),
-%%   <<"state">> => instance_state(),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"username">> => string()
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% instance_metadata_options() :: #{
-%%   <<"httpEndpoint">> => list(any()),
-%%   <<"httpProtocolIpv6">> => list(any()),
-%%   <<"httpPutResponseHopLimit">> => integer(),
-%%   <<"httpTokens">> => list(any()),
-%%   <<"state">> => list(any())
-%% }
--type instance_metadata_options() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
+%% unauthenticated_exception() :: #{
 %%   <<"code">> => string(),
 %%   <<"docs">> => string(),
 %%   <<"message">> => string(),
 %%   <<"tip">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type unauthenticated_exception() :: #{binary() => any()}.
 
 %% Example:
-%% import_key_pair_request() :: #{
-%%   <<"keyPairName">> := string(),
-%%   <<"publicKeyBase64">> := string()
-%% }
--type import_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_instances_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_instances_result() :: #{binary() => any()}.
-
-%% Example:
-%% add_on_request() :: #{
-%%   <<"addOnType">> => list(any()),
-%%   <<"autoSnapshotAddOnRequest">> => auto_snapshot_add_on_request(),
-%%   <<"stopInstanceOnIdleRequest">> => stop_instance_on_idle_request()
-%% }
--type add_on_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_request() :: #{
-%%   <<"certificateName">> := string()
-%% }
--type delete_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_active_names_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_active_names_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_key_pair_request() :: #{
-%%   <<"keyPairName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancer_tls_certificate_request() :: #{
-%%   <<"certificateName">> := string(),
-%%   <<"loadBalancerName">> := string()
-%% }
--type attach_load_balancer_tls_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_log_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"filterPattern">> => string(),
-%%   <<"pageToken">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type get_container_log_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_setup_history_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"setupHistory">> => list(setup_history())
-%% }
--type get_setup_history_result() :: #{binary() => any()}.
-
-%% Example:
-%% origin() :: #{
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"protocolPolicy">> => list(any()),
-%%   <<"regionName">> => list(any()),
-%%   <<"resourceType">> => list(any()),
-%%   <<"responseTimeout">> => integer()
-%% }
--type origin() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_snapshot_request() :: #{
-%%   <<"diskSnapshotName">> := string()
-%% }
--type get_disk_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_relational_database_parameters_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type update_relational_database_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_bucket_access_keys_request() :: #{
-%%   <<"bucketName">> := string()
-%% }
--type get_bucket_access_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% port_info() :: #{
-%%   <<"cidrListAliases">> => list(string()),
-%%   <<"cidrs">> => list(string()),
-%%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()),
-%%   <<"protocol">> => list(any()),
-%%   <<"toPort">> => integer()
-%% }
--type port_info() :: #{binary() => any()}.
-
-%% Example:
-%% download_default_key_pair_result() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"privateKeyBase64">> => string(),
-%%   <<"publicKeyBase64">> => string()
-%% }
--type download_default_key_pair_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type update_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_metric_data_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"loadBalancerName">> := string(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"unit">> := list(any())
-%% }
--type get_load_balancer_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_snapshot_request() :: #{
-%%   <<"relationalDatabaseSnapshotName">> := string()
-%% }
--type get_relational_database_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_metadata_options_request() :: #{
-%%   <<"httpEndpoint">> => list(any()),
-%%   <<"httpProtocolIpv6">> => list(any()),
-%%   <<"httpPutResponseHopLimit">> => integer(),
-%%   <<"httpTokens">> => list(any()),
-%%   <<"instanceName">> := string()
-%% }
--type update_instance_metadata_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% copy_snapshot_request() :: #{
-%%   <<"restoreDate">> => string(),
-%%   <<"sourceRegion">> := list(any()),
-%%   <<"sourceResourceName">> => string(),
-%%   <<"sourceSnapshotName">> => string(),
-%%   <<"targetSnapshotName">> := string(),
-%%   <<"useLatestRestorableAutoSnapshot">> => boolean()
-%% }
--type copy_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_disk_request() :: #{
-%%   <<"diskName">> := string()
-%% }
--type detach_disk_request() :: #{binary() => any()}.
-
-%% Example:
-%% peer_vpc_request() :: #{
+%% unpeer_vpc_request() :: #{
 
 %% }
--type peer_vpc_request() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer() :: #{
-%%   <<"arn">> => string(),
-%%   <<"configurationOptions">> => map(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dnsName">> => string(),
-%%   <<"healthCheckPath">> => string(),
-%%   <<"httpsRedirectionEnabled">> => boolean(),
-%%   <<"instanceHealthSummary">> => list(instance_health_summary()),
-%%   <<"instancePort">> => integer(),
-%%   <<"ipAddressType">> => list(any()),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"publicPorts">> => list(integer()),
-%%   <<"resourceType">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"tlsCertificateSummaries">> => list(load_balancer_tls_certificate_summary()),
-%%   <<"tlsPolicyName">> => string()
-%% }
--type load_balancer() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_bundles_request() :: #{
-%%   <<"includeInactive">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_relational_database_bundles_request() :: #{binary() => any()}.
-
-%% Example:
-%% disk() :: #{
-%%   <<"addOns">> => list(add_on()),
-%%   <<"arn">> => string(),
-%%   <<"attachedTo">> => string(),
-%%   <<"attachmentState">> => string(),
-%%   <<"autoMountStatus">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"gbInUse">> => integer(),
-%%   <<"iops">> => integer(),
-%%   <<"isAttached">> => boolean(),
-%%   <<"isSystemDisk">> => boolean(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"path">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sizeInGb">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type disk() :: #{binary() => any()}.
-
-%% Example:
-%% create_cloud_formation_stack_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_cloud_formation_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_formation_stack_record() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destinationInfo">> => destination_info(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sourceInfo">> => list(cloud_formation_stack_record_source_info()),
-%%   <<"state">> => list(any())
-%% }
--type cloud_formation_stack_record() :: #{binary() => any()}.
-
-%% Example:
-%% create_relational_database_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_relational_database_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_tls_certificate_request() :: #{
-%%   <<"certificateAlternativeNames">> => list(string()),
-%%   <<"certificateDomainName">> := string(),
-%%   <<"certificateName">> := string(),
-%%   <<"loadBalancerName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_load_balancer_tls_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_parameters_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"parameters">> => list(relational_database_parameter())
-%% }
--type get_relational_database_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_pair_request() :: #{
-%%   <<"keyPairName">> := string()
-%% }
--type get_key_pair_request() :: #{binary() => any()}.
-
-%% Example:
-%% cache_settings() :: #{
-%%   <<"allowedHTTPMethods">> => string(),
-%%   <<"cachedHTTPMethods">> => string(),
-%%   <<"defaultTTL">> => float(),
-%%   <<"forwardedCookies">> => cookie_object(),
-%%   <<"forwardedHeaders">> => header_object(),
-%%   <<"forwardedQueryStrings">> => query_string_object(),
-%%   <<"maximumTTL">> => float(),
-%%   <<"minimumTTL">> => float()
-%% }
--type cache_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_access_details_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"protocol">> => list(any())
-%% }
--type get_instance_access_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% attach_static_ip_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"staticIpName">> := string()
-%% }
--type attach_static_ip_request() :: #{binary() => any()}.
-
-%% Example:
-%% private_registry_access_request() :: #{
-%%   <<"ecrImagePullerRole">> => container_service_e_c_r_image_puller_role_request()
-%% }
--type private_registry_access_request() :: #{binary() => any()}.
+-type unpeer_vpc_request() :: #{binary() => any()}.
 
 %% Example:
 %% unpeer_vpc_result() :: #{
@@ -3189,113 +3823,49 @@
 -type unpeer_vpc_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_instances_request() :: #{
-%%   <<"pageToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceName">> := string(),
+%%   <<"tagKeys">> := list(string())
 %% }
--type get_instances_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_alarms_result() :: #{
-%%   <<"alarms">> => list(alarm()),
-%%   <<"nextPageToken">> => string()
+%% untag_resource_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type get_alarms_result() :: #{binary() => any()}.
+-type untag_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% endpoint_request() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"containerPort">> => integer(),
-%%   <<"healthCheck">> => container_service_health_check_config()
+%% update_bucket_bundle_request() :: #{
+%%   <<"bucketName">> := string(),
+%%   <<"bundleId">> := string()
 %% }
--type endpoint_request() :: #{binary() => any()}.
+-type update_bucket_bundle_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_port_info() :: #{
-%%   <<"accessDirection">> => list(any()),
-%%   <<"accessFrom">> => string(),
-%%   <<"accessType">> => list(any()),
-%%   <<"cidrListAliases">> => list(string()),
-%%   <<"cidrs">> => list(string()),
-%%   <<"commonName">> => string(),
-%%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()),
-%%   <<"protocol">> => list(any()),
-%%   <<"toPort">> => integer()
+%% update_bucket_bundle_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type instance_port_info() :: #{binary() => any()}.
+-type update_bucket_bundle_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_events_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabaseEvents">> => list(relational_database_event())
+%% update_bucket_request() :: #{
+%%   <<"accessLogConfig">> => bucket_access_log_config(),
+%%   <<"accessRules">> => access_rules(),
+%%   <<"bucketName">> := string(),
+%%   <<"cors">> => bucket_cors_config(),
+%%   <<"readonlyAccessAccounts">> => list(string()),
+%%   <<"versioning">> => string()
 %% }
--type get_relational_database_events_result() :: #{binary() => any()}.
+-type update_bucket_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_container_log_result() :: #{
-%%   <<"logEvents">> => list(container_service_log_event()),
-%%   <<"nextPageToken">> => string()
+%% update_bucket_result() :: #{
+%%   <<"bucket">> => bucket(),
+%%   <<"operations">> => list(operation())
 %% }
--type get_container_log_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancers_result() :: #{
-%%   <<"loadBalancers">> => list(load_balancer()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_load_balancers_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_request() :: #{
-%%   <<"forceDeleteAddOns">> => boolean(),
-%%   <<"instanceName">> := string()
-%% }
--type delete_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_certificates_result() :: #{
-%%   <<"certificates">> => list(certificate_summary()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_certificates_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_relational_database_parameters_request() :: #{
-%%   <<"parameters">> := list(relational_database_parameter()),
-%%   <<"relationalDatabaseName">> := string()
-%% }
--type update_relational_database_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_metric_data_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"metricName">> := list(any()),
-%%   <<"period">> := integer(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())())
-%% }
--type get_container_service_metric_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_alarms_request() :: #{
-%%   <<"alarmName">> => string(),
-%%   <<"monitoredResourceName">> => string(),
-%%   <<"pageToken">> => string()
-%% }
--type get_alarms_request() :: #{binary() => any()}.
-
-%% Example:
-%% open_instance_public_ports_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type open_instance_public_ports_result() :: #{binary() => any()}.
-
-%% Example:
-%% detach_instances_from_load_balancer_request() :: #{
-%%   <<"instanceNames">> := list(string()),
-%%   <<"loadBalancerName">> := string()
-%% }
--type detach_instances_from_load_balancer_request() :: #{binary() => any()}.
+-type update_bucket_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_container_service_request() :: #{
@@ -3308,109 +3878,10 @@
 -type update_container_service_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_g_ui_session_request() :: #{
-%%   <<"resourceName">> := string()
+%% update_container_service_result() :: #{
+%%   <<"containerService">> => container_service()
 %% }
--type start_g_ui_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_distribution_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type update_distribution_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_images_result() :: #{
-%%   <<"containerImages">> => list(container_image())
-%% }
--type get_container_images_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_container_service_registry_login_request() :: #{
-
-%% }
--type create_container_service_registry_login_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_g_ui_session_access_details_result() :: #{
-%%   <<"failureReason">> => string(),
-%%   <<"percentageComplete">> => integer(),
-%%   <<"resourceName">> => string(),
-%%   <<"sessions">> => list(session()),
-%%   <<"status">> => list(any())
-%% }
--type create_g_ui_session_access_details_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancers_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_load_balancers_request() :: #{binary() => any()}.
-
-%% Example:
-%% is_vpc_peered_request() :: #{
-
-%% }
--type is_vpc_peered_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_disks_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_disks_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_operations_for_resource_result() :: #{
-%%   <<"nextPageCount">> => string(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"operations">> => list(operation())
-%% }
--type get_operations_for_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_latest_cache_reset_result() :: #{
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type get_distribution_latest_cache_reset_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_bucket_access_key_result() :: #{
-%%   <<"accessKey">> => access_key(),
-%%   <<"operations">> => list(operation())
-%% }
--type create_bucket_access_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type tag_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_state_result() :: #{
-%%   <<"state">> => instance_state()
-%% }
--type get_instance_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% unpeer_vpc_request() :: #{
-
-%% }
--type unpeer_vpc_request() :: #{binary() => any()}.
-
-%% Example:
-%% open_instance_public_ports_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"portInfo">> := port_info()
-%% }
--type open_instance_public_ports_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_cloud_formation_stack_records_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_cloud_formation_stack_records_request() :: #{binary() => any()}.
+-type update_container_service_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_distribution_bundle_request() :: #{
@@ -3420,2081 +3891,1610 @@
 -type update_distribution_bundle_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_operations_request() :: #{
-%%   <<"pageToken">> => string()
+%% update_distribution_bundle_result() :: #{
+%%   <<"operation">> => operation()
 %% }
--type get_operations_request() :: #{binary() => any()}.
+-type update_distribution_bundle_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_databases_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabases">> => list(relational_database())
+%% update_distribution_request() :: #{
+%%   <<"cacheBehaviorSettings">> => cache_settings(),
+%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
+%%   <<"certificateName">> => string(),
+%%   <<"defaultCacheBehavior">> => cache_behavior(),
+%%   <<"distributionName">> := string(),
+%%   <<"isEnabled">> => boolean(),
+%%   <<"origin">> => input_origin(),
+%%   <<"useDefaultCertificate">> => boolean(),
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
 %% }
--type get_relational_databases_result() :: #{binary() => any()}.
+-type update_distribution_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_distribution_request() :: #{
-%%   <<"distributionName">> => string()
+%% update_distribution_result() :: #{
+%%   <<"operation">> => operation()
 %% }
--type delete_distribution_request() :: #{binary() => any()}.
+-type update_distribution_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_blueprints_result() :: #{
-%%   <<"blueprints">> => list(relational_database_blueprint()),
-%%   <<"nextPageToken">> => string()
+%% update_domain_entry_request() :: #{
+%%   <<"domainEntry">> := domain_entry(),
+%%   <<"domainName">> := string()
 %% }
--type get_relational_database_blueprints_result() :: #{binary() => any()}.
+-type update_domain_entry_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_key_pair_result() :: #{
-%%   <<"keyPair">> => key_pair(),
-%%   <<"operation">> => operation(),
-%%   <<"privateKeyBase64">> => string(),
-%%   <<"publicKeyBase64">> => string()
-%% }
--type create_key_pair_result() :: #{binary() => any()}.
-
-%% Example:
-%% attach_static_ip_result() :: #{
+%% update_domain_entry_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type attach_static_ip_result() :: #{binary() => any()}.
+-type update_domain_entry_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_result() :: #{
-%%   <<"relationalDatabase">> => relational_database()
+%% update_instance_metadata_options_request() :: #{
+%%   <<"httpEndpoint">> => list(any()),
+%%   <<"httpProtocolIpv6">> => list(any()),
+%%   <<"httpPutResponseHopLimit">> => integer(),
+%%   <<"httpTokens">> => list(any()),
+%%   <<"instanceName">> := string()
 %% }
--type get_relational_database_result() :: #{binary() => any()}.
+-type update_instance_metadata_options_request() :: #{binary() => any()}.
 
 %% Example:
-%% metric_datapoint() :: #{
-%%   <<"average">> => float(),
-%%   <<"maximum">> => float(),
-%%   <<"minimum">> => float(),
-%%   <<"sampleCount">> => float(),
-%%   <<"sum">> => float(),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"unit">> => list(any())
+%% update_instance_metadata_options_result() :: #{
+%%   <<"operation">> => operation()
 %% }
--type metric_datapoint() :: #{binary() => any()}.
+-type update_instance_metadata_options_result() :: #{binary() => any()}.
 
 %% Example:
-%% start_g_ui_session_result() :: #{
+%% update_load_balancer_attribute_request() :: #{
+%%   <<"attributeName">> := list(any()),
+%%   <<"attributeValue">> := string(),
+%%   <<"loadBalancerName">> := string()
+%% }
+-type update_load_balancer_attribute_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_load_balancer_attribute_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type start_g_ui_session_result() :: #{binary() => any()}.
+-type update_load_balancer_attribute_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_load_balancer_tls_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% relational_database_parameter() :: #{
-%%   <<"allowedValues">> => string(),
-%%   <<"applyMethod">> => string(),
-%%   <<"applyType">> => string(),
-%%   <<"dataType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"isModifiable">> => boolean(),
-%%   <<"parameterName">> => string(),
-%%   <<"parameterValue">> => string()
-%% }
--type relational_database_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% get_setup_history_request() :: #{
-%%   <<"pageToken">> => string(),
-%%   <<"resourceName">> := string()
-%% }
--type get_setup_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_static_ips_result() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"staticIps">> => list(static_ip())
-%% }
--type get_static_ips_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_cloud_formation_stack_records_result() :: #{
-%%   <<"cloudFormationStackRecords">> => list(cloud_formation_stack_record()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_cloud_formation_stack_records_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_relational_database_master_user_password_request() :: #{
-%%   <<"passwordVersion">> => list(any()),
+%% update_relational_database_parameters_request() :: #{
+%%   <<"parameters">> := list(relational_database_parameter()),
 %%   <<"relationalDatabaseName">> := string()
 %% }
--type get_relational_database_master_user_password_request() :: #{binary() => any()}.
+-type update_relational_database_parameters_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_snapshots_request() :: #{
-%%   <<"pageToken">> => string()
+%% update_relational_database_parameters_result() :: #{
+%%   <<"operations">> => list(operation())
 %% }
--type get_relational_database_snapshots_request() :: #{binary() => any()}.
+-type update_relational_database_parameters_result() :: #{binary() => any()}.
 
 %% Example:
-%% export_snapshot_record_source_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"diskSnapshotInfo">> => disk_snapshot_info(),
-%%   <<"fromResourceArn">> => string(),
-%%   <<"fromResourceName">> => string(),
-%%   <<"instanceSnapshotInfo">> => instance_snapshot_info(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type export_snapshot_record_source_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_disks_result() :: #{
-%%   <<"disks">> => list(disk()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_disks_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_result() :: #{
-%%   <<"instance">> => instance()
-%% }
--type get_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_state_request() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type get_instance_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_load_balancer_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()),
-%%   <<"metricName">> => list(any())
-%% }
--type get_load_balancer_metric_data_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bucket_access_key_request() :: #{
-%%   <<"accessKeyId">> := string(),
-%%   <<"bucketName">> := string()
-%% }
--type delete_bucket_access_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprints_result() :: #{
-%%   <<"blueprints">> => list(blueprint()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_blueprints_result() :: #{binary() => any()}.
-
-%% Example:
-%% query_string_object() :: #{
-%%   <<"option">> => boolean(),
-%%   <<"queryStringsAllowList">> => list(string())
-%% }
--type query_string_object() :: #{binary() => any()}.
-
-%% Example:
-%% detach_certificate_from_distribution_request() :: #{
-%%   <<"distributionName">> := string()
-%% }
--type detach_certificate_from_distribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_instance_request() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type start_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_result() :: #{
-%%   <<"disk">> => disk()
-%% }
--type get_disk_result() :: #{binary() => any()}.
-
-%% Example:
-%% domain_entry() :: #{
-%%   <<"id">> => string(),
-%%   <<"isAlias">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"options">> => map(),
-%%   <<"target">> => string(),
-%%   <<"type">> => string()
-%% }
--type domain_entry() :: #{binary() => any()}.
-
-%% Example:
-%% disk_info() :: #{
-%%   <<"isSystemDisk">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"path">> => string(),
-%%   <<"sizeInGb">> => integer()
-%% }
--type disk_info() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_entry_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type create_domain_entry_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_record() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_record() :: #{binary() => any()}.
-
-%% Example:
-%% registered_domain_delegation_info() :: #{
-%%   <<"nameServersUpdateState">> => name_servers_update_state(),
-%%   <<"r53HostedZoneDeletionState">> => r53_hosted_zone_deletion_state()
-%% }
--type registered_domain_delegation_info() :: #{binary() => any()}.
-
-%% Example:
-%% header_object() :: #{
-%%   <<"headersAllowList">> => list(list(any())()),
-%%   <<"option">> => list(any())
-%% }
--type header_object() :: #{binary() => any()}.
-
-%% Example:
-%% get_certificates_request() :: #{
-%%   <<"certificateName">> => string(),
-%%   <<"certificateStatuses">> => list(list(any())()),
-%%   <<"includeCertificateDetails">> => boolean(),
-%%   <<"pageToken">> => string()
-%% }
--type get_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% host_key_attributes() :: #{
-%%   <<"algorithm">> => string(),
-%%   <<"fingerprintSHA1">> => string(),
-%%   <<"fingerprintSHA256">> => string(),
-%%   <<"notValidAfter">> => non_neg_integer(),
-%%   <<"notValidBefore">> => non_neg_integer(),
-%%   <<"publicKey">> => string(),
-%%   <<"witnessedAt">> => non_neg_integer()
-%% }
--type host_key_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% cache_behavior() :: #{
-%%   <<"behavior">> => list(any())
-%% }
--type cache_behavior() :: #{binary() => any()}.
-
-%% Example:
-%% access_key_last_used() :: #{
-%%   <<"lastUsedDate">> => non_neg_integer(),
-%%   <<"region">> => string(),
-%%   <<"serviceName">> => string()
-%% }
--type access_key_last_used() :: #{binary() => any()}.
-
-%% Example:
-%% relational_database_endpoint() :: #{
-%%   <<"address">> => string(),
-%%   <<"port">> => integer()
-%% }
--type relational_database_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_api_metadata_request() :: #{
-
-%% }
--type get_container_api_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_relational_database_request() :: #{
-%%   <<"relationalDatabaseName">> := string(),
-%%   <<"relationalDatabaseSnapshotName">> => string()
-%% }
--type stop_relational_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_container_service_result() :: #{
-%%   <<"containerService">> => container_service()
-%% }
--type create_container_service_result() :: #{binary() => any()}.
-
-%% Example:
-%% container_service_endpoint() :: #{
-%%   <<"containerName">> => string(),
-%%   <<"containerPort">> => integer(),
-%%   <<"healthCheck">> => container_service_health_check_config()
-%% }
--type container_service_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% estimate_by_time() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"pricingUnit">> => list(any()),
-%%   <<"timePeriod">> => time_period(),
-%%   <<"unit">> => float(),
-%%   <<"usageCost">> => float()
-%% }
--type estimate_by_time() :: #{binary() => any()}.
-
-%% Example:
-%% cost_estimate() :: #{
-%%   <<"resultsByTime">> => list(estimate_by_time()),
-%%   <<"usageType">> => string()
-%% }
--type cost_estimate() :: #{binary() => any()}.
-
-%% Example:
-%% relational_database_bundle() :: #{
-%%   <<"bundleId">> => string(),
-%%   <<"cpuCount">> => integer(),
-%%   <<"diskSizeInGb">> => integer(),
-%%   <<"isActive">> => boolean(),
-%%   <<"isEncrypted">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"price">> => float(),
-%%   <<"ramSizeInGb">> => float(),
-%%   <<"transferPerMonthInGb">> => integer()
-%% }
--type relational_database_bundle() :: #{binary() => any()}.
-
-%% Example:
-%% get_disk_snapshots_result() :: #{
-%%   <<"diskSnapshots">> => list(disk_snapshot()),
-%%   <<"nextPageToken">> => string()
-%% }
--type get_disk_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_powers_request() :: #{
-
-%% }
--type get_container_service_powers_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_certificate_from_distribution_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type detach_certificate_from_distribution_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_relational_database_from_snapshot_request() :: #{
-%%   <<"availabilityZone">> => string(),
+%% update_relational_database_request() :: #{
+%%   <<"applyImmediately">> => boolean(),
+%%   <<"caCertificateIdentifier">> => string(),
+%%   <<"disableBackupRetention">> => boolean(),
+%%   <<"enableBackupRetention">> => boolean(),
+%%   <<"masterUserPassword">> => string(),
+%%   <<"preferredBackupWindow">> => string(),
+%%   <<"preferredMaintenanceWindow">> => string(),
 %%   <<"publiclyAccessible">> => boolean(),
-%%   <<"relationalDatabaseBundleId">> => string(),
+%%   <<"relationalDatabaseBlueprintId">> => string(),
 %%   <<"relationalDatabaseName">> := string(),
-%%   <<"relationalDatabaseSnapshotName">> => string(),
-%%   <<"restoreTime">> => non_neg_integer(),
-%%   <<"sourceRelationalDatabaseName">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"useLatestRestorableTime">> => boolean()
+%%   <<"rotateMasterUserPassword">> => boolean()
 %% }
--type create_relational_database_from_snapshot_request() :: #{binary() => any()}.
+-type update_relational_database_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_relational_database_blueprints_request() :: #{
-%%   <<"pageToken">> => string()
-%% }
--type get_relational_database_blueprints_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_entry() :: #{
-%%   <<"availabilityZone">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"portInfoSource">> => list(any()),
-%%   <<"sourceName">> => string(),
-%%   <<"userData">> => string()
-%% }
--type instance_entry() :: #{binary() => any()}.
-
-%% Example:
-%% set_resource_access_for_bucket_result() :: #{
+%% update_relational_database_result() :: #{
 %%   <<"operations">> => list(operation())
 %% }
--type set_resource_access_for_bucket_result() :: #{binary() => any()}.
-
-%% Example:
-%% cookie_object() :: #{
-%%   <<"cookiesAllowList">> => list(string()),
-%%   <<"option">> => list(any())
-%% }
--type cookie_object() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auto_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_auto_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% relational_database_blueprint() :: #{
-%%   <<"blueprintId">> => string(),
-%%   <<"engine">> => list(any()),
-%%   <<"engineDescription">> => string(),
-%%   <<"engineVersion">> => string(),
-%%   <<"engineVersionDescription">> => string(),
-%%   <<"isEngineDefault">> => boolean()
-%% }
--type relational_database_blueprint() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alarm_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_alarm_result() :: #{binary() => any()}.
-
-%% Example:
-%% attach_certificate_to_distribution_result() :: #{
-%%   <<"operation">> => operation()
-%% }
--type attach_certificate_to_distribution_result() :: #{binary() => any()}.
-
-%% Example:
-%% auto_snapshot_add_on_request() :: #{
-%%   <<"snapshotTimeOfDay">> => string()
-%% }
--type auto_snapshot_add_on_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_container_service_result() :: #{
-%%   <<"containerService">> => container_service()
-%% }
--type update_container_service_result() :: #{binary() => any()}.
-
-%% Example:
-%% export_snapshot_record() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destinationInfo">> => destination_info(),
-%%   <<"location">> => resource_location(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"sourceInfo">> => export_snapshot_record_source_info(),
-%%   <<"state">> => list(any())
-%% }
--type export_snapshot_record() :: #{binary() => any()}.
-
-%% Example:
-%% private_registry_access() :: #{
-%%   <<"ecrImagePullerRole">> => container_service_e_c_r_image_puller_role()
-%% }
--type private_registry_access() :: #{binary() => any()}.
-
-%% Example:
-%% close_instance_public_ports_request() :: #{
-%%   <<"instanceName">> := string(),
-%%   <<"portInfo">> := port_info()
-%% }
--type close_instance_public_ports_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_contact_method_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_contact_method_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_relational_database_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type start_relational_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relational_database_snapshot_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type delete_relational_database_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% account_setup_in_progress_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type account_setup_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_access_log_config() :: #{
-%%   <<"destination">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"prefix">> => string()
-%% }
--type bucket_access_log_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_disk_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type create_disk_result() :: #{binary() => any()}.
-
-%% Example:
-%% relational_database_event() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"eventCategories">> => list(string()),
-%%   <<"message">> => string(),
-%%   <<"resource">> => string()
-%% }
--type relational_database_event() :: #{binary() => any()}.
-
-%% Example:
-%% release_static_ip_result() :: #{
-%%   <<"operations">> => list(operation())
-%% }
--type release_static_ip_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_service_deployments_result() :: #{
-%%   <<"deployments">> => list(container_service_deployment())
-%% }
--type get_container_service_deployments_result() :: #{binary() => any()}.
-
-%% Example:
-%% operation_failure_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"docs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"tip">> => string()
-%% }
--type operation_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% log_event() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"message">> => string()
-%% }
--type log_event() :: #{binary() => any()}.
-
-%% Example:
-%% setup_execution_details() :: #{
-%%   <<"command">> => string(),
-%%   <<"dateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"standardError">> => string(),
-%%   <<"standardOutput">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type setup_execution_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_methods_result() :: #{
-%%   <<"contactMethods">> => list(contact_method())
-%% }
--type get_contact_methods_result() :: #{binary() => any()}.
-
-%% Example:
-%% register_container_image_result() :: #{
-%%   <<"containerImage">> => container_image()
-%% }
--type register_container_image_result() :: #{binary() => any()}.
+-type update_relational_database_result() :: #{binary() => any()}.
 
 -type allocate_static_ip_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type attach_certificate_to_distribution_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type attach_disk_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type attach_instances_to_load_balancer_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type attach_load_balancer_tls_certificate_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type attach_static_ip_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type close_instance_public_ports_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type copy_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_bucket_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_bucket_access_key_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_certificate_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_cloud_formation_stack_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_contact_method_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_container_service_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_container_service_deployment_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_container_service_registry_login_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_disk_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_disk_from_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_disk_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_distribution_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_domain_entry_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_g_ui_session_access_details_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_instance_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_instances_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_instances_from_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_key_pair_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_load_balancer_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_load_balancer_tls_certificate_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_relational_database_from_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type create_relational_database_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_alarm_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_auto_snapshot_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_bucket_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_bucket_access_key_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_certificate_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_contact_method_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_container_image_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_container_service_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_disk_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_disk_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_distribution_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_domain_entry_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_instance_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_instance_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_key_pair_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_known_host_keys_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_load_balancer_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_load_balancer_tls_certificate_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type delete_relational_database_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type detach_certificate_from_distribution_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type detach_disk_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type detach_instances_from_load_balancer_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type detach_static_ip_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type disable_add_on_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type download_default_key_pair_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type enable_add_on_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type export_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_active_names_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_alarms_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_auto_snapshots_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_blueprints_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_bucket_access_keys_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_bucket_bundles_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_bucket_metric_data_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_buckets_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_bundles_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_certificates_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_cloud_formation_stack_records_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_contact_methods_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_api_metadata_errors() ::
-    access_denied_exception() | 
-    service_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_container_images_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_log_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_service_deployments_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_service_metric_data_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_service_powers_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_container_services_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_cost_estimate_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_disk_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_disk_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_disk_snapshots_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_disks_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_distribution_bundles_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_distribution_latest_cache_reset_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_distribution_metric_data_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_distributions_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_domain_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_domains_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_export_snapshot_records_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_access_details_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_metric_data_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_port_states_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_snapshots_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instance_state_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_instances_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_key_pair_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_key_pairs_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_load_balancer_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_load_balancer_metric_data_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_load_balancer_tls_certificates_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_load_balancer_tls_policies_errors() ::
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_load_balancers_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_operation_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_operations_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_operations_for_resource_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_regions_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_blueprints_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_bundles_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_events_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_log_events_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_log_streams_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_master_user_password_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_metric_data_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_parameters_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_snapshot_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_database_snapshots_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_relational_databases_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_setup_history_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_static_ip_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type get_static_ips_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type import_key_pair_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type is_vpc_peered_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type open_instance_public_ports_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type peer_vpc_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type put_alarm_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type put_instance_public_ports_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type reboot_instance_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type reboot_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type register_container_image_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type release_static_ip_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type reset_distribution_cache_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type send_contact_method_verification_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type set_ip_address_type_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type set_resource_access_for_bucket_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type setup_instance_https_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type start_g_ui_session_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type start_instance_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type start_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type stop_g_ui_session_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type stop_instance_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type stop_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type test_alarm_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type unpeer_vpc_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type update_bucket_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type update_bucket_bundle_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type update_container_service_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type update_distribution_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type update_distribution_bundle_errors() ::
-    operation_failure_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
+    unauthenticated_exception() | 
     service_exception() | 
+    operation_failure_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type update_domain_entry_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type update_instance_metadata_options_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type update_load_balancer_attribute_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type update_relational_database_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 -type update_relational_database_parameters_errors() ::
-    operation_failure_exception() | 
-    account_setup_in_progress_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    not_found_exception() | 
     unauthenticated_exception() | 
-    region_setup_in_progress_exception().
+    service_exception() | 
+    region_setup_in_progress_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

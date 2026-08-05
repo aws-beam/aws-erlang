@@ -249,241 +249,6 @@
 
 
 %% Example:
-%% region_report() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketAccountId">> => string(),
-%%   <<"Region">> => string()
-%% }
--type region_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_policy_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
-%%   <<"Policy">> := string()
-%% }
--type put_bucket_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_multi_region_access_point_policy_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Details">> := put_multi_region_access_point_policy_input()
-%% }
--type put_multi_region_access_point_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_group_level_selection_criteria() :: #{
-%%   <<"Exclude">> => list(string()),
-%%   <<"Include">> => list(string())
-%% }
--type storage_lens_group_level_selection_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_manifest() :: #{
-%%   <<"Location">> => job_manifest_location(),
-%%   <<"Spec">> => job_manifest_spec()
-%% }
--type job_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_lens_configuration_tagging_result() :: #{
-%%   <<"Tags">> => list(storage_lens_tag())
-%% }
--type get_storage_lens_configuration_tagging_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_update_object_encryption_sse_kms() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"KMSKeyArn">> => string()
-%% }
--type s3_update_object_encryption_sse_kms() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multi_region_access_point_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Details">> := delete_multi_region_access_point_input()
-%% }
--type delete_multi_region_access_point_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"ReplicaKmsKeyID">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_public_access_block_configuration() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_public_access_block_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_versioning_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MFA">> => string(),
-%%   <<"VersioningConfiguration">> := versioning_configuration()
-%% }
--type put_bucket_versioning_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_access_point_regional_response() :: #{
-%%   <<"Name">> => string(),
-%%   <<"RequestStatus">> => string()
-%% }
--type multi_region_access_point_regional_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_lens_configuration_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_storage_lens_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_configuration_for_object_lambda_result() :: #{
-%%   <<"Configuration">> => object_lambda_configuration()
-%% }
--type get_access_point_configuration_for_object_lambda_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_access_block_configuration() :: #{
-%%   <<"BlockPublicAcls">> => boolean(),
-%%   <<"BlockPublicPolicy">> => boolean(),
-%%   <<"IgnorePublicAcls">> => boolean(),
-%%   <<"RestrictPublicBuckets">> => boolean()
-%% }
--type public_access_block_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_data_export() :: #{
-%%   <<"CloudWatchMetrics">> => cloud_watch_metrics(),
-%%   <<"S3BucketDestination">> => s3_bucket_destination(),
-%%   <<"StorageLensTableDestination">> => storage_lens_table_destination()
-%% }
--type storage_lens_data_export() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_group_level() :: #{
-%%   <<"SelectionCriteria">> => storage_lens_group_level_selection_criteria()
-%% }
--type storage_lens_group_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% prefix_level_storage_metrics() :: #{
-%%   <<"IsEnabled">> => boolean(),
-%%   <<"SelectionCriteria">> => selection_criteria()
-%% }
--type prefix_level_storage_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_grants_instance_result() :: #{
-%%   <<"AccessGrantsInstanceArn">> => string(),
-%%   <<"AccessGrantsInstanceId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterApplicationArn">> => string(),
-%%   <<"IdentityCenterArn">> => string(),
-%%   <<"IdentityCenterInstanceArn">> => string()
-%% }
--type create_access_grants_instance_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% generated_manifest_encryption() :: #{
-%%   <<"SSEKMS">> => sse_kms_encryption(),
-%%   <<"SSES3">> => sse_s3_encryption()
-%% }
--type generated_manifest_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_result() :: #{
-%%   <<"Job">> => job_descriptor()
-%% }
--type describe_job_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_object_age() :: #{
-%%   <<"DaysGreaterThan">> => integer(),
-%%   <<"DaysLessThan">> => integer()
-%% }
--type match_object_age() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_result() :: #{
-%%   <<"Jobs">> => list(job_list_descriptor()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_public_access_block_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
-%% }
--type put_public_access_block_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grant_result() :: #{
-%%   <<"AccessGrantArn">> => string(),
-%%   <<"AccessGrantId">> => string(),
-%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
-%%   <<"AccessGrantsLocationId">> => string(),
-%%   <<"ApplicationArn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"GrantScope">> => string(),
-%%   <<"Grantee">> => grantee(),
-%%   <<"Permission">> => list(any())
-%% }
--type get_access_grant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"VpcId">> => string()
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_access_control_list() :: #{
-%%   <<"Grants">> => list(s3_grant()),
-%%   <<"Owner">> => s3_object_owner()
-%% }
--type s3_access_control_list() :: #{binary() => any()}.
-
-
-%% Example:
 %% abort_incomplete_multipart_upload() :: #{
 %%   <<"DaysAfterInitiation">> => integer()
 %% }
@@ -491,186 +256,66 @@
 
 
 %% Example:
-%% lifecycle_rule() :: #{
-%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
-%%   <<"Expiration">> => lifecycle_expiration(),
-%%   <<"Filter">> => lifecycle_rule_filter(),
-%%   <<"ID">> => string(),
-%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
-%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()),
-%%   <<"Status">> => list(any()),
-%%   <<"Transitions">> => list(transition())
+%% access_control_translation() :: #{
+%%   <<"Owner">> => list(any())
 %% }
--type lifecycle_rule() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_result() :: #{}
--type untag_resource_result() :: #{}.
+-type access_control_translation() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_public_access_block_request() :: #{
-%%   <<"AccountId">> := string()
+%% access_grants_location_configuration() :: #{
+%%   <<"S3SubPrefix">> => string()
 %% }
--type delete_public_access_block_request() :: #{binary() => any()}.
+-type access_grants_location_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_access_grants_instance_resource_policy_result() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Organization">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type put_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_lambda_configuration() :: #{
-%%   <<"AllowedFeatures">> => list(list(any())()),
-%%   <<"CloudWatchMetricsEnabled">> => boolean(),
-%%   <<"SupportingAccessPoint">> => string(),
-%%   <<"TransformationConfigurations">> => list(object_lambda_transformation_configuration())
-%% }
--type object_lambda_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_multi_region_access_point_policy_result() :: #{
-%%   <<"Policy">> => multi_region_access_point_policy_document()
-%% }
--type get_multi_region_access_point_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% versioning_configuration() :: #{
-%%   <<"MFADelete">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type versioning_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_report() :: #{
+%% access_point() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string(),
 %%   <<"Bucket">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"Prefix">> => string(),
-%%   <<"ReportScope">> => list(any())
-%% }
--type job_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_storage_lens_group_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"StorageLensGroup">> := storage_lens_group(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_storage_lens_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_grants_result() :: #{
-%%   <<"AccessGrantsList">> => list(list_access_grant_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_grants_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_access_grants_instance_resource_policy_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Organization">> => string(),
-%%   <<"Policy">> := string()
-%% }
--type put_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% d_sse_kms_filter() :: #{
-%%   <<"KmsKeyArn">> => string()
-%% }
--type d_sse_kms_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_job_tagging_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_job_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"JobStatuses">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_grants_instance_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"IdentityCenterArn">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_access_grants_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_selection_criteria() :: #{
-%%   <<"ReplicaModifications">> => replica_modifications(),
-%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
-%% }
--type source_selection_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_job_tagging_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Tags">> := list(s3_tag())
-%% }
--type put_job_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_configuration() :: #{
-%%   <<"Rules">> => list(lifecycle_rule())
-%% }
--type lifecycle_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_lens_group_entry() :: #{
-%%   <<"HomeRegion">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"StorageLensGroupArn">> => string()
+%%   <<"NetworkOrigin">> => list(any()),
+%%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
--type list_storage_lens_group_entry() :: #{binary() => any()}.
+-type access_point() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_bucket_tagging_request() :: #{
-%%   <<"AccountId">> := string()
+%% account_level() :: #{
+%%   <<"ActivityMetrics">> => activity_metrics(),
+%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
+%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
+%%   <<"AdvancedPerformanceMetrics">> => advanced_performance_metrics(),
+%%   <<"BucketLevel">> => bucket_level(),
+%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
+%%   <<"StorageLensGroupLevel">> => storage_lens_group_level()
 %% }
--type delete_bucket_tagging_request() :: #{binary() => any()}.
+-type account_level() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_storage_lens_group_request() :: #{
-%%   <<"AccountId">> := string()
+%% activity_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
 %% }
--type get_storage_lens_group_request() :: #{binary() => any()}.
+-type activity_metrics() :: #{binary() => any()}.
 
 
 %% Example:
-%% prefix_level() :: #{
-%%   <<"StorageMetrics">> => prefix_level_storage_metrics()
+%% advanced_cost_optimization_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
 %% }
--type prefix_level() :: #{binary() => any()}.
+-type advanced_cost_optimization_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% advanced_data_protection_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type advanced_data_protection_metrics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -678,6 +323,109 @@
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type advanced_performance_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_access_grants_identity_center_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IdentityCenterArn">> := string()
+%% }
+-type associate_access_grants_identity_center_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_error_details() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Resource">> => string()
+%% }
+-type async_error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_operation() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Operation">> => list(any()),
+%%   <<"RequestParameters">> => async_request_parameters(),
+%%   <<"RequestStatus">> => string(),
+%%   <<"RequestTokenARN">> => string(),
+%%   <<"ResponseDetails">> => async_response_details()
+%% }
+-type async_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_request_parameters() :: #{
+%%   <<"CreateMultiRegionAccessPointRequest">> => create_multi_region_access_point_input(),
+%%   <<"DeleteMultiRegionAccessPointRequest">> => delete_multi_region_access_point_input(),
+%%   <<"PutMultiRegionAccessPointPolicyRequest">> => put_multi_region_access_point_policy_input()
+%% }
+-type async_request_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% async_response_details() :: #{
+%%   <<"ErrorDetails">> => async_error_details(),
+%%   <<"MultiRegionAccessPointDetails">> => multi_region_access_points_async_response()
+%% }
+-type async_response_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_lambda_transformation() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionPayload">> => string()
+%% }
+-type aws_lambda_transformation() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_exists() :: #{}
+-type bucket_already_exists() :: #{}.
+
+%% Example:
+%% bucket_already_owned_by_you() :: #{}
+-type bucket_already_owned_by_you() :: #{}.
+
+
+%% Example:
+%% bucket_level() :: #{
+%%   <<"ActivityMetrics">> => activity_metrics(),
+%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
+%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
+%%   <<"AdvancedPerformanceMetrics">> => advanced_performance_metrics(),
+%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
+%%   <<"PrefixLevel">> => prefix_level()
+%% }
+-type bucket_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type cloud_watch_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_grant_request() :: #{
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> := string(),
+%%   <<"AccountId">> := string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"Grantee">> := grantee(),
+%%   <<"Permission">> := list(any()),
+%%   <<"S3PrefixType">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_access_grant_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -696,114 +444,24 @@
 
 
 %% Example:
-%% credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_replication_request() :: #{
+%% create_access_grants_instance_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"ReplicationConfiguration">> := replication_configuration()
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type put_bucket_replication_request() :: #{binary() => any()}.
+-type create_access_grants_instance_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_access_point_for_object_lambda_result() :: #{
-%%   <<"Alias">> => object_lambda_access_point_alias(),
-%%   <<"ObjectLambdaAccessPointArn">> => string()
-%% }
--type create_access_point_for_object_lambda_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_status_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type job_status_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_instance_for_prefix_result() :: #{
+%% create_access_grants_instance_result() :: #{
 %%   <<"AccessGrantsInstanceArn">> => string(),
-%%   <<"AccessGrantsInstanceId">> => string()
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
 %% }
--type get_access_grants_instance_for_prefix_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_access_grants_identity_center_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"IdentityCenterArn">> := string()
-%% }
--type associate_access_grants_identity_center_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_for_directory_buckets_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"DirectoryBucket">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_points_for_directory_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_lens_configurations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageLensConfigurationList">> => list(list_storage_lens_configuration_entry())
-%% }
--type list_storage_lens_configurations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multi_region_access_point_input() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_multi_region_access_point_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_multi_region_access_point_operation_result() :: #{
-%%   <<"AsyncOperation">> => async_operation()
-%% }
--type describe_multi_region_access_point_operation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_points_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_tagging_result() :: #{
-%%   <<"Tags">> => list(s3_tag())
-%% }
--type get_job_tagging_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_update_object_encryption_operation() :: #{
-%%   <<"ObjectEncryption">> => object_encryption()
-%% }
--type s3_update_object_encryption_operation() :: #{binary() => any()}.
+-type create_access_grants_instance_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -817,92 +475,81 @@
 
 
 %% Example:
-%% async_operation() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Operation">> => list(any()),
-%%   <<"RequestParameters">> => async_request_parameters(),
-%%   <<"RequestStatus">> => string(),
-%%   <<"RequestTokenARN">> => string(),
-%%   <<"ResponseDetails">> => async_response_details()
+%% create_access_grants_location_result() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
 %% }
--type async_operation() :: #{binary() => any()}.
+-type create_access_grants_location_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_access_point_policy_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
+%% create_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Configuration">> := object_lambda_configuration()
 %% }
--type delete_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+-type create_access_point_for_object_lambda_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_bucket_destination() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Encryption">> => storage_lens_data_export_encryption(),
-%%   <<"Format">> => list(any()),
-%%   <<"OutputSchemaVersion">> => list(any()),
-%%   <<"Prefix">> => string()
+%% create_access_point_for_object_lambda_result() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"ObjectLambdaAccessPointArn">> => string()
 %% }
--type s3_bucket_destination() :: #{binary() => any()}.
+-type create_access_point_for_object_lambda_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_storage_lens_group_result() :: #{
-%%   <<"StorageLensGroup">> => storage_lens_group()
+%% create_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Bucket">> := string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
+%%   <<"Scope">> => scope(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
--type get_storage_lens_group_result() :: #{binary() => any()}.
+-type create_access_point_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_caller_access_grants_result() :: #{
-%%   <<"CallerAccessGrantsList">> => list(list_caller_access_grants_entry()),
-%%   <<"NextToken">> => string()
+%% create_access_point_result() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string()
 %% }
--type list_caller_access_grants_result() :: #{binary() => any()}.
+-type create_access_point_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_access_grants_instance_resource_policy_request() :: #{
-%%   <<"AccountId">> := string()
+%% create_bucket_configuration() :: #{
+%%   <<"LocationConstraint">> => list(any())
 %% }
--type get_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+-type create_bucket_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% grantee() :: #{
-%%   <<"GranteeIdentifier">> => string(),
-%%   <<"GranteeType">> => list(any())
+%% create_bucket_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"ObjectLockEnabledForBucket">> => boolean(),
+%%   <<"OutpostId">> => string()
 %% }
--type grantee() :: #{binary() => any()}.
+-type create_bucket_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bucket_level() :: #{
-%%   <<"ActivityMetrics">> => activity_metrics(),
-%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
-%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
-%%   <<"AdvancedPerformanceMetrics">> => advanced_performance_metrics(),
-%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
-%%   <<"PrefixLevel">> => prefix_level()
+%% create_bucket_result() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"Location">> => string()
 %% }
--type bucket_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_status_result() :: #{
-%%   <<"PolicyStatus">> => policy_status()
-%% }
--type get_access_point_policy_status_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_grantee() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"Identifier">> => string(),
-%%   <<"TypeIdentifier">> => list(any())
-%% }
--type s3_grantee() :: #{binary() => any()}.
+-type create_bucket_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -923,22 +570,335 @@
 
 
 %% Example:
-%% get_access_point_policy_for_object_lambda_result() :: #{
+%% create_job_result() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type create_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multi_region_access_point_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
+%%   <<"Regions">> => list(region())
+%% }
+-type create_multi_region_access_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := create_multi_region_access_point_input()
+%% }
+-type create_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multi_region_access_point_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type create_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"StorageLensGroup">> := storage_lens_group(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% d_sse_kms_filter() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type d_sse_kms_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grant_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_instance_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_access_point_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_job_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_job_tagging_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_tagging_result() :: #{}
+-type delete_job_tagging_result() :: #{}.
+
+
+%% Example:
+%% delete_marker_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_marker_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_input() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_multi_region_access_point_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := delete_multi_region_access_point_input()
+%% }
+-type delete_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_multi_region_access_point_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type delete_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_public_access_block_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_lens_configuration_tagging_result() :: #{}
+-type delete_storage_lens_configuration_tagging_result() :: #{}.
+
+
+%% Example:
+%% delete_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type delete_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type describe_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_job_result() :: #{
+%%   <<"Job">> => job_descriptor()
+%% }
+-type describe_job_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_multi_region_access_point_operation_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type describe_multi_region_access_point_operation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_multi_region_access_point_operation_result() :: #{
+%%   <<"AsyncOperation">> => async_operation()
+%% }
+-type describe_multi_region_access_point_operation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"AccessControlTranslation">> => access_control_translation(),
+%%   <<"Account">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Metrics">> => metrics(),
+%%   <<"ReplicationTime">> => replication_time(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% detailed_status_codes_metrics() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type detailed_status_codes_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% dissociate_access_grants_identity_center_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type dissociate_access_grants_identity_center_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"ReplicaKmsKeyID">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% established_multi_region_access_point_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
--type get_access_point_policy_for_object_lambda_result() :: #{binary() => any()}.
+-type established_multi_region_access_point_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% storage_lens_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% exclude() :: #{
+%%   <<"Buckets">> => list(string()),
+%%   <<"Regions">> => list(string())
 %% }
--type storage_lens_tag() :: #{binary() => any()}.
+-type exclude() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_grant_entry() :: #{
+%% existing_object_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type existing_object_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_manifest_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms_encryption(),
+%%   <<"SSES3">> => sse_s3_encryption()
+%% }
+-type generated_manifest_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grant_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grant_result() :: #{
 %%   <<"AccessGrantArn">> => string(),
 %%   <<"AccessGrantId">> => string(),
 %%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
@@ -949,46 +909,453 @@
 %%   <<"Grantee">> => grantee(),
 %%   <<"Permission">> => list(any())
 %% }
--type list_access_grant_entry() :: #{binary() => any()}.
+-type get_access_grant_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% storage_lens_group_filter() :: #{
-%%   <<"And">> => storage_lens_group_and_operator(),
-%%   <<"MatchAnyPrefix">> => list(string()),
-%%   <<"MatchAnySuffix">> => list(string()),
-%%   <<"MatchAnyTag">> => list(s3_tag()),
-%%   <<"MatchObjectAge">> => match_object_age(),
-%%   <<"MatchObjectSize">> => match_object_size(),
-%%   <<"Or">> => storage_lens_group_or_operator()
+%% get_access_grants_instance_for_prefix_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"S3Prefix">> := string()
 %% }
--type storage_lens_group_filter() :: #{binary() => any()}.
+-type get_access_grants_instance_for_prefix_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% storage_lens_group_or_operator() :: #{
-%%   <<"MatchAnyPrefix">> => list(string()),
-%%   <<"MatchAnySuffix">> => list(string()),
-%%   <<"MatchAnyTag">> => list(s3_tag()),
-%%   <<"MatchObjectAge">> => match_object_age(),
-%%   <<"MatchObjectSize">> => match_object_size()
+%% get_access_grants_instance_for_prefix_result() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string()
 %% }
--type storage_lens_group_or_operator() :: #{binary() => any()}.
+-type get_access_grants_instance_for_prefix_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_compute_object_checksum_operation() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ChecksumType">> => list(any())
+%% get_access_grants_instance_request() :: #{
+%%   <<"AccountId">> := string()
 %% }
--type s3_compute_object_checksum_operation() :: #{binary() => any()}.
+-type get_access_grants_instance_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% proposed_multi_region_access_point_policy() :: #{
+%% get_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_resource_policy_result() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Organization">> => string(),
 %%   <<"Policy">> => string()
 %% }
--type proposed_multi_region_access_point_policy() :: #{binary() => any()}.
+-type get_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_instance_result() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
+%% }
+-type get_access_grants_instance_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_grants_location_result() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type get_access_grants_location_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_configuration_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_configuration_for_object_lambda_result() :: #{
+%%   <<"Configuration">> => object_lambda_configuration()
+%% }
+-type get_access_point_configuration_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_for_object_lambda_result() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_access_point_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_for_object_lambda_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_access_point_policy_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_status_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_for_object_lambda_result() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_access_point_policy_status_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_policy_status_result() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_access_point_policy_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_result() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Alias">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
+%%   <<"Endpoints">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkOrigin">> => list(any()),
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
+%%   <<"VpcConfiguration">> => vpc_configuration()
+%% }
+-type get_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_access_point_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_point_scope_result() :: #{
+%%   <<"Scope">> => scope()
+%% }
+-type get_access_point_scope_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_result() :: #{
+%%   <<"Rules">> => list(lifecycle_rule())
+%% }
+-type get_bucket_lifecycle_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_result() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_bucket_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_result() :: #{
+%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% }
+-type get_bucket_replication_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_result() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"PublicAccessBlockEnabled">> => boolean()
+%% }
+-type get_bucket_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_result() :: #{
+%%   <<"TagSet">> => list(s3_tag())
+%% }
+-type get_bucket_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_result() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_bucket_versioning_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_access_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"AuditContext">> => string(),
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Permission">> := list(any()),
+%%   <<"Privilege">> => list(any()),
+%%   <<"Target">> := string(),
+%%   <<"TargetType">> => list(any())
+%% }
+-type get_data_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_access_result() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"Grantee">> => grantee(),
+%%   <<"MatchedGrantTarget">> => string()
+%% }
+-type get_data_access_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_job_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_job_tagging_result() :: #{
+%%   <<"Tags">> => list(s3_tag())
+%% }
+-type get_job_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_result() :: #{
+%%   <<"Policy">> => multi_region_access_point_policy_document()
+%% }
+-type get_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_status_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_policy_status_result() :: #{
+%%   <<"Established">> => policy_status()
+%% }
+-type get_multi_region_access_point_policy_status_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_result() :: #{
+%%   <<"AccessPoint">> => multi_region_access_point_report()
+%% }
+-type get_multi_region_access_point_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_routes_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_multi_region_access_point_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_multi_region_access_point_routes_result() :: #{
+%%   <<"Mrap">> => string(),
+%%   <<"Routes">> => list(multi_region_access_point_route())
+%% }
+-type get_multi_region_access_point_routes_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_output() :: #{
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_public_access_block_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_result() :: #{
+%%   <<"StorageLensConfiguration">> => storage_lens_configuration()
+%% }
+-type get_storage_lens_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_configuration_tagging_result() :: #{
+%%   <<"Tags">> => list(storage_lens_tag())
+%% }
+-type get_storage_lens_configuration_tagging_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_group_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type get_storage_lens_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_lens_group_result() :: #{
+%%   <<"StorageLensGroup">> => storage_lens_group()
+%% }
+-type get_storage_lens_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% grantee() :: #{
+%%   <<"GranteeIdentifier">> => string(),
+%%   <<"GranteeType">> => list(any())
+%% }
+-type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% idempotency_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotency_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1007,559 +1374,6 @@
 
 
 %% Example:
-%% put_multi_region_access_point_policy_input() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type put_multi_region_access_point_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_instance_result() :: #{
-%%   <<"AccessGrantsInstanceArn">> => string(),
-%%   <<"AccessGrantsInstanceId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterApplicationArn">> => string(),
-%%   <<"IdentityCenterArn">> => string(),
-%%   <<"IdentityCenterInstanceArn">> => string()
-%% }
--type get_access_grants_instance_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms_encryption() :: #{
-%%   <<"KeyId">> => string()
-%% }
--type sse_kms_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_versioning_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_bucket_versioning_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_data_protection_metrics() :: #{
-%%   <<"IsEnabled">> => boolean()
-%% }
--type advanced_data_protection_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_point_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Configuration">> := object_lambda_configuration()
-%% }
--type create_access_point_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms_encrypted_objects() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type sse_kms_encrypted_objects() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_manifest_location() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"ObjectArn">> => string(),
-%%   <<"ObjectVersionId">> => string()
-%% }
--type job_manifest_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_for_object_lambda_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectLambdaAccessPointList">> => list(object_lambda_access_point())
-%% }
--type list_access_points_for_object_lambda_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_storage_lens_configuration_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"StorageLensConfiguration">> := storage_lens_configuration(),
-%%   <<"Tags">> => list(storage_lens_tag())
-%% }
--type put_storage_lens_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_lens_configuration_result() :: #{
-%%   <<"StorageLensConfiguration">> => storage_lens_configuration()
-%% }
--type get_storage_lens_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% sse_s3_filter() :: #{}
--type sse_s3_filter() :: #{}.
-
-
-%% Example:
-%% s3_job_manifest_generator() :: #{
-%%   <<"EnableManifestOutput">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Filter">> => job_manifest_generator_filter(),
-%%   <<"ManifestOutputLocation">> => s3_manifest_output_location(),
-%%   <<"SourceBucket">> => string()
-%% }
--type s3_job_manifest_generator() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_expanded_prefixes_data_export() :: #{
-%%   <<"S3BucketDestination">> => s3_bucket_destination(),
-%%   <<"StorageLensTableDestination">> => storage_lens_table_destination()
-%% }
--type storage_lens_expanded_prefixes_data_export() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_regional_buckets_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RegionalBucketList">> => list(regional_bucket())
-%% }
--type list_regional_buckets_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_lifecycle_configuration_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_lambda_access_point() :: #{
-%%   <<"Alias">> => object_lambda_access_point_alias(),
-%%   <<"Name">> => string(),
-%%   <<"ObjectLambdaAccessPointArn">> => string()
-%% }
--type object_lambda_access_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_rule_filter() :: #{
-%%   <<"And">> => replication_rule_and_operator(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tag">> => s3_tag()
-%% }
--type replication_rule_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_storage_lens_configuration_tagging_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multi_region_access_point_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Details">> := create_multi_region_access_point_input()
-%% }
--type create_multi_region_access_point_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_access_point_scope_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Scope">> := scope()
-%% }
--type put_access_point_scope_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_operation() :: #{
-%%   <<"LambdaInvoke">> => lambda_invoke_operation(),
-%%   <<"S3ComputeObjectChecksum">> => s3_compute_object_checksum_operation(),
-%%   <<"S3DeleteObjectTagging">> => s3_delete_object_tagging_operation(),
-%%   <<"S3InitiateRestoreObject">> => s3_initiate_restore_object_operation(),
-%%   <<"S3PutObjectAcl">> => s3_set_object_acl_operation(),
-%%   <<"S3PutObjectCopy">> => s3_copy_object_operation(),
-%%   <<"S3PutObjectLegalHold">> => s3_set_object_legal_hold_operation(),
-%%   <<"S3PutObjectRetention">> => s3_set_object_retention_operation(),
-%%   <<"S3PutObjectTagging">> => s3_set_object_tagging_operation(),
-%%   <<"S3ReplicateObject">> => s3_replicate_object_operation(),
-%%   <<"S3UpdateObjectEncryption">> => s3_update_object_encryption_operation()
-%% }
--type job_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_lens_groups_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_storage_lens_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms_filter() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type sse_kms_filter() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_already_owned_by_you() :: #{}
--type bucket_already_owned_by_you() :: #{}.
-
-
-%% Example:
-%% delete_bucket_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_bucket_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_multi_region_access_point_policy_result() :: #{
-%%   <<"RequestTokenARN">> => string()
-%% }
--type put_multi_region_access_point_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_storage_lens_configuration_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_storage_lens_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dissociate_access_grants_identity_center_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type dissociate_access_grants_identity_center_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_table_destination() :: #{
-%%   <<"Encryption">> => storage_lens_data_export_encryption(),
-%%   <<"IsEnabled">> => boolean()
-%% }
--type storage_lens_table_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% noncurrent_version_expiration() :: #{
-%%   <<"NewerNoncurrentVersions">> => integer(),
-%%   <<"NoncurrentDays">> => integer()
-%% }
--type noncurrent_version_expiration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_storage_lens_configuration_tagging_result() :: #{}
--type delete_storage_lens_configuration_tagging_result() :: #{}.
-
-%% Example:
-%% submit_multi_region_access_point_routes_result() :: #{}
--type submit_multi_region_access_point_routes_result() :: #{}.
-
-
-%% Example:
-%% list_access_grants_instances_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_grants_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_access_points_async_response() :: #{
-%%   <<"Regions">> => list(multi_region_access_point_regional_response())
-%% }
--type multi_region_access_points_async_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multi_region_access_points_result() :: #{
-%%   <<"AccessPoints">> => list(multi_region_access_point_report()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multi_region_access_points_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_for_directory_buckets_result() :: #{
-%%   <<"AccessPointList">> => list(access_point()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_points_for_directory_buckets_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_bucket_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_multi_region_access_point_policy_status_result() :: #{
-%%   <<"Established">> => policy_status()
-%% }
--type get_multi_region_access_point_policy_status_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_point_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Bucket">> := string(),
-%%   <<"BucketAccountId">> => string(),
-%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
-%%   <<"Scope">> => scope(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfiguration">> => vpc_configuration()
-%% }
--type create_access_point_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_access_grants_instance_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_access_grants_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% submit_multi_region_access_point_routes_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"RouteUpdates">> := list(multi_region_access_point_route())
-%% }
--type submit_multi_region_access_point_routes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics() :: #{
-%%   <<"EventThreshold">> => replication_time_value(),
-%%   <<"Status">> => list(any())
-%% }
--type metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multi_region_access_point_result() :: #{
-%%   <<"RequestTokenARN">> => string()
-%% }
--type create_multi_region_access_point_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% region() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketAccountId">> => string()
-%% }
--type region() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_lens_configuration_tagging_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replica_modifications() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type replica_modifications() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_time_value() :: #{
-%%   <<"Minutes">> => integer()
-%% }
--type replication_time_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_grants_location_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"IAMRoleArn">> := string()
-%% }
--type update_access_grants_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% exclude() :: #{
-%%   <<"Buckets">> => list(string()),
-%%   <<"Regions">> => list(string())
-%% }
--type exclude() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_status() :: #{
-%%   <<"IsPublic">> => boolean()
-%% }
--type policy_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_replication_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_initiate_restore_object_operation() :: #{
-%%   <<"ExpirationInDays">> => integer(),
-%%   <<"GlacierJobTier">> => list(any())
-%% }
--type s3_initiate_restore_object_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration() :: #{
-%%   <<"Role">> => string(),
-%%   <<"Rules">> => list(replication_rule())
-%% }
--type replication_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_access_control_policy() :: #{
-%%   <<"AccessControlList">> => s3_access_control_list(),
-%%   <<"CannedAccessControlList">> => list(any())
-%% }
--type s3_access_control_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_configuration_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grant_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_grant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_grant() :: #{
-%%   <<"Grantee">> => s3_grantee(),
-%%   <<"Permission">> => list(any())
-%% }
--type s3_grant() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_access_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"AuditContext">> => string(),
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Permission">> := list(any()),
-%%   <<"Privilege">> => list(any()),
-%%   <<"Target">> := string(),
-%%   <<"TargetType">> => list(any())
-%% }
--type get_data_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_policy_result() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_bucket_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% noncurrent_version_transition() :: #{
-%%   <<"NoncurrentDays">> => integer(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type noncurrent_version_transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_location_result() :: #{
-%%   <<"AccessGrantsLocationArn">> => string(),
-%%   <<"AccessGrantsLocationId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IAMRoleArn">> => string(),
-%%   <<"LocationScope">> => string()
-%% }
--type get_access_grants_location_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_rule_filter() :: #{
-%%   <<"And">> => lifecycle_rule_and_operator(),
-%%   <<"ObjectSizeGreaterThan">> => float(),
-%%   <<"ObjectSizeLessThan">> => float(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tag">> => s3_tag()
-%% }
--type lifecycle_rule_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_storage_lens_group_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_storage_lens_group_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1567,184 +1381,10 @@
 
 
 %% Example:
-%% update_job_status_result() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusUpdateReason">> => string()
-%% }
--type update_job_status_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multi_region_access_points_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_multi_region_access_points_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_access_point_policy_document() :: #{
-%%   <<"Established">> => established_multi_region_access_point_policy(),
-%%   <<"Proposed">> => proposed_multi_region_access_point_policy()
-%% }
--type multi_region_access_point_policy_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_grants_instance_entry() :: #{
-%%   <<"AccessGrantsInstanceArn">> => string(),
-%%   <<"AccessGrantsInstanceId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IdentityCenterApplicationArn">> => string(),
-%%   <<"IdentityCenterArn">> => string(),
-%%   <<"IdentityCenterInstanceArn">> => string()
-%% }
--type list_access_grants_instance_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_instance_resource_policy_result() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Organization">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type get_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_failure() :: #{
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureReason">> => string()
-%% }
--type job_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_configuration() :: #{
-%%   <<"LocationConstraint">> => list(any())
-%% }
--type create_bucket_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
+%% invalid_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_already_exists() :: #{}
--type bucket_already_exists() :: #{}.
-
-
-%% Example:
-%% get_bucket_replication_result() :: #{
-%%   <<"ReplicationConfiguration">> => replication_configuration()
-%% }
--type get_bucket_replication_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% regional_bucket() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketArn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"OutpostId">> => string(),
-%%   <<"PublicAccessBlockEnabled">> => boolean()
-%% }
--type regional_bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% async_response_details() :: #{
-%%   <<"ErrorDetails">> => async_error_details(),
-%%   <<"MultiRegionAccessPointDetails">> => multi_region_access_points_async_response()
-%% }
--type async_response_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_set_object_acl_operation() :: #{
-%%   <<"AccessControlPolicy">> => s3_access_control_policy()
-%% }
--type s3_set_object_acl_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% async_request_parameters() :: #{
-%%   <<"CreateMultiRegionAccessPointRequest">> => create_multi_region_access_point_input(),
-%%   <<"DeleteMultiRegionAccessPointRequest">> => delete_multi_region_access_point_input(),
-%%   <<"PutMultiRegionAccessPointPolicyRequest">> => put_multi_region_access_point_policy_input()
-%% }
--type async_request_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% tagging() :: #{
-%%   <<"TagSet">> => list(s3_tag())
-%% }
--type tagging() :: #{binary() => any()}.
-
-
-%% Example:
-%% activity_metrics() :: #{
-%%   <<"IsEnabled">> => boolean()
-%% }
--type activity_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_control_translation() :: #{
-%%   <<"Owner">> => list(any())
-%% }
--type access_control_translation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_grants_location_result() :: #{
-%%   <<"AccessGrantsLocationArn">> => string(),
-%%   <<"AccessGrantsLocationId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IAMRoleArn">> => string(),
-%%   <<"LocationScope">> => string()
-%% }
--type create_access_grants_location_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type describe_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_data_export_encryption() :: #{
-%%   <<"SSEKMS">> => sse_kms(),
-%%   <<"SSES3">> => sse_s3()
-%% }
--type storage_lens_data_export_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_group_and_operator() :: #{
-%%   <<"MatchAnyPrefix">> => list(string()),
-%%   <<"MatchAnySuffix">> => list(string()),
-%%   <<"MatchAnyTag">> => list(s3_tag()),
-%%   <<"MatchObjectAge">> => match_object_age(),
-%%   <<"MatchObjectSize">> => match_object_size()
-%% }
--type storage_lens_group_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_lambda_transformation_configuration() :: #{
-%%   <<"Actions">> => list(list(any())()),
-%%   <<"ContentTransformation">> => list()
-%% }
--type object_lambda_transformation_configuration() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1773,209 +1413,11 @@
 
 
 %% Example:
-%% detailed_status_codes_metrics() :: #{
-%%   <<"IsEnabled">> => boolean()
+%% job_failure() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string()
 %% }
--type detailed_status_codes_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_status_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_policy_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_manifest_spec() :: #{
-%%   <<"Fields">> => list(list(any())()),
-%%   <<"Format">> => list(any())
-%% }
--type job_manifest_spec() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object_metadata() :: #{
-%%   <<"CacheControl">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"ContentLength">> => float(),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"HttpExpiresDate">> => non_neg_integer(),
-%%   <<"RequesterCharged">> => boolean(),
-%%   <<"SSEAlgorithm">> => list(any()),
-%%   <<"UserMetadata">> => map()
-%% }
--type s3_object_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_grants_instances_result() :: #{
-%%   <<"AccessGrantsInstancesList">> => list(list_access_grants_instance_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_grants_instances_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_multi_region_access_point_result() :: #{
-%%   <<"RequestTokenARN">> => string()
-%% }
--type delete_multi_region_access_point_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% established_multi_region_access_point_policy() :: #{
-%%   <<"Policy">> => string()
-%% }
--type established_multi_region_access_point_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_access_grants_location_result() :: #{
-%%   <<"AccessGrantsLocationArn">> => string(),
-%%   <<"AccessGrantsLocationId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"IAMRoleArn">> => string(),
-%%   <<"LocationScope">> => string()
-%% }
--type update_access_grants_location_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_tagging_result() :: #{}
--type delete_job_tagging_result() :: #{}.
-
-
-%% Example:
-%% create_multi_region_access_point_input() :: #{
-%%   <<"Name">> => string(),
-%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
-%%   <<"Regions">> => list(region())
-%% }
--type create_multi_region_access_point_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_group() :: #{
-%%   <<"Filter">> => storage_lens_group_filter(),
-%%   <<"Name">> => string(),
-%%   <<"StorageLensGroupArn">> => string()
-%% }
--type storage_lens_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_for_object_lambda_result() :: #{
-%%   <<"Alias">> => object_lambda_access_point_alias(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
-%% }
--type get_access_point_for_object_lambda_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_result() :: #{
-%%   <<"BucketArn">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_bucket_result() :: #{binary() => any()}.
-
-%% Example:
-%% s3_replicate_object_operation() :: #{}
--type s3_replicate_object_operation() :: #{}.
-
-
-%% Example:
-%% list_regional_buckets_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutpostId">> => string()
-%% }
--type list_regional_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_manifest_output_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"ExpectedManifestBucketOwner">> => string(),
-%%   <<"ManifestEncryption">> => generated_manifest_encryption(),
-%%   <<"ManifestFormat">> => list(any()),
-%%   <<"ManifestPrefix">> => string()
-%% }
--type s3_manifest_output_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_access_point_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_access_point_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_invoke_operation() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"InvocationSchemaVersion">> => string(),
-%%   <<"UserArguments">> => map()
-%% }
--type lambda_invoke_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_lifecycle_configuration_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_access_grants_instance_resource_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_scope_result() :: #{
-%%   <<"Scope">> => scope()
-%% }
--type get_access_point_scope_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% scope() :: #{
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"Prefixes">> => list(string())
-%% }
--type scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_lens_aws_org() :: #{
-%%   <<"Arn">> => string()
-%% }
--type storage_lens_aws_org() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% async_error_details() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Resource">> => string()
-%% }
--type async_error_details() :: #{binary() => any()}.
+-type job_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1993,17 +1435,928 @@
 
 
 %% Example:
-%% delete_access_point_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
+%% job_manifest() :: #{
+%%   <<"Location">> => job_manifest_location(),
+%%   <<"Spec">> => job_manifest_spec()
 %% }
--type delete_access_point_for_object_lambda_request() :: #{binary() => any()}.
+-type job_manifest() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_request() :: #{
+%% job_manifest_generator_filter() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"EligibleForReplication">> => boolean(),
+%%   <<"KeyNameConstraint">> => key_name_constraint(),
+%%   <<"MatchAnyObjectEncryption">> => list(list()),
+%%   <<"MatchAnyStorageClass">> => list(list(any())()),
+%%   <<"ObjectReplicationStatuses">> => list(list(any())()),
+%%   <<"ObjectSizeGreaterThanBytes">> => float(),
+%%   <<"ObjectSizeLessThanBytes">> => float()
+%% }
+-type job_manifest_generator_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest_location() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ObjectArn">> => string(),
+%%   <<"ObjectVersionId">> => string()
+%% }
+-type job_manifest_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_manifest_spec() :: #{
+%%   <<"Fields">> => list(list(any())()),
+%%   <<"Format">> => list(any())
+%% }
+-type job_manifest_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_operation() :: #{
+%%   <<"LambdaInvoke">> => lambda_invoke_operation(),
+%%   <<"S3ComputeObjectChecksum">> => s3_compute_object_checksum_operation(),
+%%   <<"S3DeleteObjectTagging">> => s3_delete_object_tagging_operation(),
+%%   <<"S3InitiateRestoreObject">> => s3_initiate_restore_object_operation(),
+%%   <<"S3PutObjectAcl">> => s3_set_object_acl_operation(),
+%%   <<"S3PutObjectCopy">> => s3_copy_object_operation(),
+%%   <<"S3PutObjectLegalHold">> => s3_set_object_legal_hold_operation(),
+%%   <<"S3PutObjectRetention">> => s3_set_object_retention_operation(),
+%%   <<"S3PutObjectTagging">> => s3_set_object_tagging_operation(),
+%%   <<"S3ReplicateObject">> => s3_replicate_object_operation(),
+%%   <<"S3UpdateObjectEncryption">> => s3_update_object_encryption_operation()
+%% }
+-type job_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_progress_summary() :: #{
+%%   <<"NumberOfTasksFailed">> => float(),
+%%   <<"NumberOfTasksSucceeded">> => float(),
+%%   <<"Timers">> => job_timers(),
+%%   <<"TotalNumberOfTasks">> => float()
+%% }
+-type job_progress_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_report() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Prefix">> => string(),
+%%   <<"ReportScope">> => list(any())
+%% }
+-type job_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type job_status_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_timers() :: #{
+%%   <<"ElapsedTimeInActiveSeconds">> => float()
+%% }
+-type job_timers() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_name_constraint() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()),
+%%   <<"MatchAnySubstring">> => list(string()),
+%%   <<"MatchAnySuffix">> => list(string())
+%% }
+-type key_name_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_invoke_operation() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationSchemaVersion">> => string(),
+%%   <<"UserArguments">> => map()
+%% }
+-type lambda_invoke_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_configuration() :: #{
+%%   <<"Rules">> => list(lifecycle_rule())
+%% }
+-type lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_expiration() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"ExpiredObjectDeleteMarker">> => boolean()
+%% }
+-type lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule() :: #{
+%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
+%%   <<"Expiration">> => lifecycle_expiration(),
+%%   <<"Filter">> => lifecycle_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
+%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()),
+%%   <<"Status">> => list(any()),
+%%   <<"Transitions">> => list(transition())
+%% }
+-type lifecycle_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_and_operator() :: #{
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(s3_tag())
+%% }
+-type lifecycle_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_filter() :: #{
+%%   <<"And">> => lifecycle_rule_and_operator(),
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => s3_tag()
+%% }
+-type lifecycle_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grant_entry() :: #{
+%%   <<"AccessGrantArn">> => string(),
+%%   <<"AccessGrantId">> => string(),
+%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_access_grant_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_instance_entry() :: #{
+%%   <<"AccessGrantsInstanceArn">> => string(),
+%%   <<"AccessGrantsInstanceId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IdentityCenterApplicationArn">> => string(),
+%%   <<"IdentityCenterArn">> => string(),
+%%   <<"IdentityCenterInstanceArn">> => string()
+%% }
+-type list_access_grants_instance_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_instances_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_instances_result() :: #{
+%%   <<"AccessGrantsInstancesList">> => list(list_access_grants_instance_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_instances_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_locations_entry() :: #{
+%%   <<"AccessGrantsLocationArn">> => string(),
+%%   <<"AccessGrantsLocationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"IAMRoleArn">> => string(),
+%%   <<"LocationScope">> => string()
+%% }
+-type list_access_grants_locations_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_locations_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"LocationScope">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_locations_result() :: #{
+%%   <<"AccessGrantsLocationsList">> => list(list_access_grants_locations_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_locations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ApplicationArn">> => string(),
+%%   <<"GrantScope">> => string(),
+%%   <<"GranteeIdentifier">> => string(),
+%%   <<"GranteeType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_access_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_grants_result() :: #{
+%%   <<"AccessGrantsList">> => list(list_access_grant_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_grants_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_directory_buckets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DirectoryBucket">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_directory_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_directory_buckets_result() :: #{
+%%   <<"AccessPointList">> => list(access_point()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_directory_buckets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_for_object_lambda_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectLambdaAccessPointList">> => list(object_lambda_access_point())
+%% }
+-type list_access_points_for_object_lambda_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Bucket">> => string(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_result() :: #{
+%%   <<"AccessPointList">> => list(access_point()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_access_points_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_caller_access_grants_entry() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"GrantScope">> => string(),
+%%   <<"Permission">> => list(any())
+%% }
+-type list_caller_access_grants_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_caller_access_grants_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"AllowedByApplication">> => boolean(),
+%%   <<"GrantScope">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_caller_access_grants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_caller_access_grants_result() :: #{
+%%   <<"CallerAccessGrantsList">> => list(list_caller_access_grants_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_caller_access_grants_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"JobStatuses">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_result() :: #{
+%%   <<"Jobs">> => list(job_list_descriptor()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multi_region_access_points_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multi_region_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multi_region_access_points_result() :: #{
+%%   <<"AccessPoints">> => list(multi_region_access_point_report()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multi_region_access_points_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_regional_buckets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostId">> => string()
+%% }
+-type list_regional_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_regional_buckets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RegionalBucketList">> => list(regional_bucket())
+%% }
+-type list_regional_buckets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_configuration_entry() :: #{
+%%   <<"HomeRegion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"StorageLensArn">> => string()
+%% }
+-type list_storage_lens_configuration_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_configurations_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_storage_lens_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageLensConfigurationList">> => list(list_storage_lens_configuration_entry())
+%% }
+-type list_storage_lens_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_group_entry() :: #{
+%%   <<"HomeRegion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StorageLensGroupArn">> => string()
+%% }
+-type list_storage_lens_group_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_groups_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_storage_lens_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_lens_groups_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageLensGroupList">> => list(list_storage_lens_group_entry())
+%% }
+-type list_storage_lens_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
--type get_bucket_request() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_object_age() :: #{
+%%   <<"DaysGreaterThan">> => integer(),
+%%   <<"DaysLessThan">> => integer()
+%% }
+-type match_object_age() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_object_size() :: #{
+%%   <<"BytesGreaterThan">> => float(),
+%%   <<"BytesLessThan">> => float()
+%% }
+-type match_object_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"EventThreshold">> => replication_time_value(),
+%%   <<"Status">> => list(any())
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_policy_document() :: #{
+%%   <<"Established">> => established_multi_region_access_point_policy(),
+%%   <<"Proposed">> => proposed_multi_region_access_point_policy()
+%% }
+-type multi_region_access_point_policy_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_regional_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RequestStatus">> => string()
+%% }
+-type multi_region_access_point_regional_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_report() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
+%%   <<"Regions">> => list(region_report()),
+%%   <<"Status">> => list(any())
+%% }
+-type multi_region_access_point_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_point_route() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"TrafficDialPercentage">> => integer()
+%% }
+-type multi_region_access_point_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_access_points_async_response() :: #{
+%%   <<"Regions">> => list(multi_region_access_point_regional_response())
+%% }
+-type multi_region_access_points_async_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_public_access_block_configuration() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_expiration() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer()
+%% }
+-type noncurrent_version_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% noncurrent_version_transition() :: #{
+%%   <<"NoncurrentDays">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type noncurrent_version_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_sse_filter() :: #{}
+-type not_sse_filter() :: #{}.
+
+
+%% Example:
+%% object_encryption() :: #{
+%%   <<"SSEKMS">> => s3_update_object_encryption_sse_kms()
+%% }
+-type object_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_access_point() :: #{
+%%   <<"Alias">> => object_lambda_access_point_alias(),
+%%   <<"Name">> => string(),
+%%   <<"ObjectLambdaAccessPointArn">> => string()
+%% }
+-type object_lambda_access_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_access_point_alias() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type object_lambda_access_point_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_configuration() :: #{
+%%   <<"AllowedFeatures">> => list(list(any())()),
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"SupportingAccessPoint">> => string(),
+%%   <<"TransformationConfigurations">> => list(object_lambda_transformation_configuration())
+%% }
+-type object_lambda_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lambda_transformation_configuration() :: #{
+%%   <<"Actions">> => list(list(any())()),
+%%   <<"ContentTransformation">> => list()
+%% }
+-type object_lambda_transformation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_status() :: #{
+%%   <<"IsPublic">> => boolean()
+%% }
+-type policy_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_level() :: #{
+%%   <<"StorageMetrics">> => prefix_level_storage_metrics()
+%% }
+-type prefix_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% prefix_level_storage_metrics() :: #{
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"SelectionCriteria">> => selection_criteria()
+%% }
+-type prefix_level_storage_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% proposed_multi_region_access_point_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type proposed_multi_region_access_point_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access_block_configuration() :: #{
+%%   <<"BlockPublicAcls">> => boolean(),
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"IgnorePublicAcls">> => boolean(),
+%%   <<"RestrictPublicBuckets">> => boolean()
+%% }
+-type public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_grants_instance_resource_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Organization">> => string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_grants_instance_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_grants_instance_resource_policy_result() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Organization">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type put_access_grants_instance_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_configuration_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Configuration">> := object_lambda_configuration()
+%% }
+-type put_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_policy_for_object_lambda_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_access_point_scope_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Scope">> := scope()
+%% }
+-type put_access_point_scope_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"LifecycleConfiguration">> => lifecycle_configuration()
+%% }
+-type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
+%%   <<"Policy">> := string()
+%% }
+-type put_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_replication_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ReplicationConfiguration">> := replication_configuration()
+%% }
+-type put_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tagging">> := tagging()
+%% }
+-type put_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_versioning_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MFA">> => string(),
+%%   <<"VersioningConfiguration">> := versioning_configuration()
+%% }
+-type put_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_job_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tags">> := list(s3_tag())
+%% }
+-type put_job_tagging_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_job_tagging_result() :: #{}
+-type put_job_tagging_result() :: #{}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_input() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type put_multi_region_access_point_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Details">> := put_multi_region_access_point_policy_input()
+%% }
+-type put_multi_region_access_point_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_multi_region_access_point_policy_result() :: #{
+%%   <<"RequestTokenARN">> => string()
+%% }
+-type put_multi_region_access_point_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_public_access_block_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
+%% }
+-type put_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_lens_configuration_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"StorageLensConfiguration">> := storage_lens_configuration(),
+%%   <<"Tags">> => list(storage_lens_tag())
+%% }
+-type put_storage_lens_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_storage_lens_configuration_tagging_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Tags">> := list(storage_lens_tag())
+%% }
+-type put_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_storage_lens_configuration_tagging_result() :: #{}
+-type put_storage_lens_configuration_tagging_result() :: #{}.
+
+
+%% Example:
+%% region() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_report() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketAccountId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type region_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% regional_bucket() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"OutpostId">> => string(),
+%%   <<"PublicAccessBlockEnabled">> => boolean()
+%% }
+-type regional_bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica_modifications() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type replica_modifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"Role">> => string(),
+%%   <<"Rules">> => list(replication_rule())
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
+%%   <<"Destination">> => destination(),
+%%   <<"ExistingObjectReplication">> => existing_object_replication(),
+%%   <<"Filter">> => replication_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
+%%   <<"Status">> => list(any())
+%% }
+-type replication_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(s3_tag())
+%% }
+-type replication_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_filter() :: #{
+%%   <<"And">> => replication_rule_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => s3_tag()
+%% }
+-type replication_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => replication_time_value()
+%% }
+-type replication_time() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time_value() :: #{
+%%   <<"Minutes">> => integer()
+%% }
+-type replication_time_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_control_list() :: #{
+%%   <<"Grants">> => list(s3_grant()),
+%%   <<"Owner">> => s3_object_owner()
+%% }
+-type s3_access_control_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_access_control_policy() :: #{
+%%   <<"AccessControlList">> => s3_access_control_list(),
+%%   <<"CannedAccessControlList">> => list(any())
+%% }
+-type s3_access_control_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_destination() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Encryption">> => storage_lens_data_export_encryption(),
+%%   <<"Format">> => list(any()),
+%%   <<"OutputSchemaVersion">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type s3_bucket_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_compute_object_checksum_operation() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any())
+%% }
+-type s3_compute_object_checksum_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2029,267 +2382,100 @@
 %% }
 -type s3_copy_object_operation() :: #{binary() => any()}.
 
-
-%% Example:
-%% get_bucket_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_bucket_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_access_block_output() :: #{
-%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
-%% }
--type get_public_access_block_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_access_point_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type delete_access_point_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_lambda_transformation() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionPayload">> => string()
-%% }
--type aws_lambda_transformation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_tagging_result() :: #{
-%%   <<"TagSet">> => list(s3_tag())
-%% }
--type get_bucket_tagging_result() :: #{binary() => any()}.
-
-%% Example:
-%% not_sse_filter() :: #{}
--type not_sse_filter() :: #{}.
-
-
-%% Example:
-%% delete_marker_replication() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_marker_replication() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_request() :: #{
-%%   <<"ACL">> => list(any()),
-%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"GrantRead">> => string(),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"GrantWrite">> => string(),
-%%   <<"GrantWriteACP">> => string(),
-%%   <<"ObjectLockEnabledForBucket">> => boolean(),
-%%   <<"OutpostId">> => string()
-%% }
--type create_bucket_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_name_constraint() :: #{
-%%   <<"MatchAnyPrefix">> => list(string()),
-%%   <<"MatchAnySubstring">> => list(string()),
-%%   <<"MatchAnySuffix">> => list(string())
-%% }
--type key_name_constraint() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_result() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"PublicAccessBlockEnabled">> => boolean()
-%% }
--type get_bucket_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_tagging_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_job_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_access_result() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"Grantee">> => grantee(),
-%%   <<"MatchedGrantTarget">> => string()
-%% }
--type get_data_access_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_timers() :: #{
-%%   <<"ElapsedTimeInActiveSeconds">> => float()
-%% }
--type job_timers() :: #{binary() => any()}.
-
-
-%% Example:
-%% existing_object_replication() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type existing_object_replication() :: #{binary() => any()}.
-
-
-%% Example:
-%% transition() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Days">> => integer(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_access_point_route() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"TrafficDialPercentage">> => integer()
-%% }
--type multi_region_access_point_route() :: #{binary() => any()}.
-
 %% Example:
 %% s3_delete_object_tagging_operation() :: #{}
 -type s3_delete_object_tagging_operation() :: #{}.
 
 
 %% Example:
-%% get_multi_region_access_point_request() :: #{
-%%   <<"AccountId">> := string()
+%% s3_generated_manifest_descriptor() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => job_manifest_location()
 %% }
--type get_multi_region_access_point_request() :: #{binary() => any()}.
+-type s3_generated_manifest_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_manifest_generator_filter() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"EligibleForReplication">> => boolean(),
-%%   <<"KeyNameConstraint">> => key_name_constraint(),
-%%   <<"MatchAnyObjectEncryption">> => list(list()),
-%%   <<"MatchAnyStorageClass">> => list(list(any())()),
-%%   <<"ObjectReplicationStatuses">> => list(list(any())()),
-%%   <<"ObjectSizeGreaterThanBytes">> => float(),
-%%   <<"ObjectSizeLessThanBytes">> => float()
-%% }
--type job_manifest_generator_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_access_point_report() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PublicAccessBlock">> => public_access_block_configuration(),
-%%   <<"Regions">> => list(region_report()),
-%%   <<"Status">> => list(any())
-%% }
--type multi_region_access_point_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_tagging_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_bucket_tagging_request() :: #{binary() => any()}.
-
-%% Example:
-%% sse_s3_encryption() :: #{}
--type sse_s3_encryption() :: #{}.
-
-
-%% Example:
-%% list_access_grants_locations_result() :: #{
-%%   <<"AccessGrantsLocationsList">> => list(list_access_grants_locations_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_grants_locations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_status_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_policy_status_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_grants_location_configuration() :: #{
-%%   <<"S3SubPrefix">> => string()
-%% }
--type access_grants_location_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% sse_s3() :: #{}
--type sse_s3() :: #{}.
-
-
-%% Example:
-%% put_access_point_policy_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Policy">> := string()
-%% }
--type put_access_point_policy_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_grants_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ApplicationArn">> => string(),
-%%   <<"GrantScope">> => string(),
-%%   <<"GranteeIdentifier">> => string(),
-%%   <<"GranteeType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% s3_grant() :: #{
+%%   <<"Grantee">> => s3_grantee(),
 %%   <<"Permission">> => list(any())
 %% }
--type list_access_grants_request() :: #{binary() => any()}.
+-type s3_grant() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_access_grants_location_request() :: #{
-%%   <<"AccountId">> := string()
+%% s3_grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"Identifier">> => string(),
+%%   <<"TypeIdentifier">> => list(any())
 %% }
--type delete_access_grants_location_request() :: #{binary() => any()}.
+-type s3_grantee() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_multi_region_access_point_routes_request() :: #{
-%%   <<"AccountId">> := string()
+%% s3_initiate_restore_object_operation() :: #{
+%%   <<"ExpirationInDays">> => integer(),
+%%   <<"GlacierJobTier">> => list(any())
 %% }
--type get_multi_region_access_point_routes_request() :: #{binary() => any()}.
+-type s3_initiate_restore_object_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% replication_rule() :: #{
+%% s3_job_manifest_generator() :: #{
+%%   <<"EnableManifestOutput">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Filter">> => job_manifest_generator_filter(),
+%%   <<"ManifestOutputLocation">> => s3_manifest_output_location(),
+%%   <<"SourceBucket">> => string()
+%% }
+-type s3_job_manifest_generator() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_manifest_output_location() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
-%%   <<"Destination">> => destination(),
-%%   <<"ExistingObjectReplication">> => existing_object_replication(),
-%%   <<"Filter">> => replication_rule_filter(),
-%%   <<"ID">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
+%%   <<"ExpectedManifestBucketOwner">> => string(),
+%%   <<"ManifestEncryption">> => generated_manifest_encryption(),
+%%   <<"ManifestFormat">> => list(any()),
+%%   <<"ManifestPrefix">> => string()
+%% }
+-type s3_manifest_output_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_lock_legal_hold() :: #{
 %%   <<"Status">> => list(any())
 %% }
--type replication_rule() :: #{binary() => any()}.
+-type s3_object_lock_legal_hold() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_metadata() :: #{
+%%   <<"CacheControl">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"HttpExpiresDate">> => non_neg_integer(),
+%%   <<"RequesterCharged">> => boolean(),
+%%   <<"SSEAlgorithm">> => list(any()),
+%%   <<"UserMetadata">> => map()
+%% }
+-type s3_object_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_owner() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type s3_object_owner() :: #{binary() => any()}.
+
+%% Example:
+%% s3_replicate_object_operation() :: #{}
+-type s3_replicate_object_operation() :: #{}.
 
 
 %% Example:
@@ -2301,94 +2487,10 @@
 
 
 %% Example:
-%% match_object_size() :: #{
-%%   <<"BytesGreaterThan">> => float(),
-%%   <<"BytesLessThan">> => float()
+%% s3_set_object_acl_operation() :: #{
+%%   <<"AccessControlPolicy">> => s3_access_control_policy()
 %% }
--type match_object_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_priority_result() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"Priority">> => integer()
-%% }
--type update_job_priority_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_point() :: #{
-%%   <<"AccessPointArn">> => string(),
-%%   <<"Alias">> => string(),
-%%   <<"Bucket">> => string(),
-%%   <<"BucketAccountId">> => string(),
-%%   <<"DataSourceId">> => string(),
-%%   <<"DataSourceType">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkOrigin">> => list(any()),
-%%   <<"VpcConfiguration">> => vpc_configuration()
-%% }
--type access_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_metrics() :: #{
-%%   <<"IsEnabled">> => boolean()
-%% }
--type cloud_watch_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_versioning_result() :: #{
-%%   <<"MFADelete">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type get_bucket_versioning_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% idempotency_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotency_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"AccessControlTranslation">> => access_control_translation(),
-%%   <<"Account">> => string(),
-%%   <<"Bucket">> => string(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"Metrics">> => metrics(),
-%%   <<"ReplicationTime">> => replication_time(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_status_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"RequestedJobStatus">> := list(any()),
-%%   <<"StatusUpdateReason">> => string()
-%% }
--type update_job_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_expiration() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Days">> => integer(),
-%%   <<"ExpiredObjectDeleteMarker">> => boolean()
-%% }
--type lifecycle_expiration() :: #{binary() => any()}.
+-type s3_set_object_acl_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2399,153 +2501,49 @@
 
 
 %% Example:
-%% create_job_result() :: #{
-%%   <<"JobId">> => string()
+%% s3_set_object_retention_operation() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
+%%   <<"Retention">> => s3_retention()
 %% }
--type create_job_result() :: #{binary() => any()}.
+-type s3_set_object_retention_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_tagging_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Tagging">> := tagging()
+%% s3_set_object_tagging_operation() :: #{
+%%   <<"TagSet">> => list(s3_tag())
 %% }
--type put_bucket_tagging_request() :: #{binary() => any()}.
+-type s3_set_object_tagging_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_access_grants_instance_for_prefix_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"S3Prefix">> := string()
-%% }
--type get_access_grants_instance_for_prefix_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms() :: #{
-%%   <<"KeyId">> => string()
-%% }
--type sse_kms() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_caller_access_grants_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"AllowedByApplication">> => boolean(),
-%%   <<"GrantScope">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_caller_access_grants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_priority_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Priority">> := integer()
-%% }
--type update_job_priority_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_result() :: #{
-%%   <<"AccessPointArn">> => string(),
-%%   <<"Alias">> => string(),
-%%   <<"Bucket">> => string(),
-%%   <<"BucketAccountId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"DataSourceId">> => string(),
-%%   <<"DataSourceType">> => string(),
-%%   <<"Endpoints">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkOrigin">> => list(any()),
-%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
-%%   <<"VpcConfiguration">> => vpc_configuration()
-%% }
--type get_access_point_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_storage_lens_configuration_tagging_result() :: #{}
--type put_storage_lens_configuration_tagging_result() :: #{}.
-
-
-%% Example:
-%% list_access_points_result() :: #{
-%%   <<"AccessPointList">> => list(access_point()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_points_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_result() :: #{}
--type tag_resource_result() :: #{}.
-
-
-%% Example:
-%% get_multi_region_access_point_policy_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_multi_region_access_point_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_rule_and_operator() :: #{
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(s3_tag())
-%% }
--type replication_rule_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_status_for_object_lambda_result() :: #{
-%%   <<"PolicyStatus">> => policy_status()
-%% }
--type get_access_point_policy_status_for_object_lambda_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_multi_region_access_point_routes_result() :: #{
-%%   <<"Mrap">> => string(),
-%%   <<"Routes">> => list(multi_region_access_point_route())
-%% }
--type get_multi_region_access_point_routes_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_lambda_access_point_alias() :: #{
-%%   <<"Status">> => list(any()),
+%% s3_tag() :: #{
+%%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
--type object_lambda_access_point_alias() :: #{binary() => any()}.
+-type s3_tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_public_access_block_request() :: #{
-%%   <<"AccountId">> := string()
+%% s3_update_object_encryption_operation() :: #{
+%%   <<"ObjectEncryption">> => object_encryption()
 %% }
--type get_public_access_block_request() :: #{binary() => any()}.
+-type s3_update_object_encryption_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_access_point_scope_request() :: #{
-%%   <<"AccountId">> := string()
+%% s3_update_object_encryption_sse_kms() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"KMSKeyArn">> => string()
 %% }
--type delete_access_point_scope_request() :: #{binary() => any()}.
+-type s3_update_object_encryption_sse_kms() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_access_point_policy_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Policy">> := string()
+%% scope() :: #{
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"Prefixes">> => list(string())
 %% }
--type put_access_point_policy_request() :: #{binary() => any()}.
+-type scope() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2558,71 +2556,63 @@
 
 
 %% Example:
-%% create_access_point_result() :: #{
-%%   <<"AccessPointArn">> => string(),
-%%   <<"Alias">> => string()
+%% source_selection_criteria() :: #{
+%%   <<"ReplicaModifications">> => replica_modifications(),
+%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
 %% }
--type create_access_point_result() :: #{binary() => any()}.
+-type source_selection_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% sse_c_filter() :: #{}
+-type sse_c_filter() :: #{}.
 
 
 %% Example:
-%% list_storage_lens_configuration_entry() :: #{
-%%   <<"HomeRegion">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IsEnabled">> => boolean(),
-%%   <<"StorageLensArn">> => string()
+%% sse_kms() :: #{
+%%   <<"KeyId">> => string()
 %% }
--type list_storage_lens_configuration_entry() :: #{binary() => any()}.
+-type sse_kms() :: #{binary() => any()}.
 
 
 %% Example:
-%% replication_time() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"Time">> => replication_time_value()
+%% sse_kms_encrypted_objects() :: #{
+%%   <<"Status">> => list(any())
 %% }
--type replication_time() :: #{binary() => any()}.
+-type sse_kms_encrypted_objects() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_object_owner() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"ID">> => string()
+%% sse_kms_encryption() :: #{
+%%   <<"KeyId">> => string()
 %% }
--type s3_object_owner() :: #{binary() => any()}.
+-type sse_kms_encryption() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_points_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Bucket">> => string(),
-%%   <<"DataSourceId">> => string(),
-%%   <<"DataSourceType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% sse_kms_filter() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"KmsKeyArn">> => string()
 %% }
--type list_access_points_request() :: #{binary() => any()}.
+-type sse_kms_filter() :: #{binary() => any()}.
+
+%% Example:
+%% sse_s3() :: #{}
+-type sse_s3() :: #{}.
+
+%% Example:
+%% sse_s3_encryption() :: #{}
+-type sse_s3_encryption() :: #{}.
+
+%% Example:
+%% sse_s3_filter() :: #{}
+-type sse_s3_filter() :: #{}.
 
 
 %% Example:
-%% put_storage_lens_configuration_tagging_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Tags">> := list(storage_lens_tag())
+%% storage_lens_aws_org() :: #{
+%%   <<"Arn">> => string()
 %% }
--type put_storage_lens_configuration_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_policy_result() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_access_point_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_multi_region_access_point_policy_status_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_multi_region_access_point_policy_status_request() :: #{binary() => any()}.
+-type storage_lens_aws_org() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2642,105 +2632,230 @@
 
 
 %% Example:
-%% s3_set_object_tagging_operation() :: #{
-%%   <<"TagSet">> => list(s3_tag())
+%% storage_lens_data_export() :: #{
+%%   <<"CloudWatchMetrics">> => cloud_watch_metrics(),
+%%   <<"S3BucketDestination">> => s3_bucket_destination(),
+%%   <<"StorageLensTableDestination">> => storage_lens_table_destination()
 %% }
--type s3_set_object_tagging_operation() :: #{binary() => any()}.
+-type storage_lens_data_export() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_lifecycle_configuration_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"LifecycleConfiguration">> => lifecycle_configuration()
+%% storage_lens_data_export_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms(),
+%%   <<"SSES3">> => sse_s3()
 %% }
--type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+-type storage_lens_data_export_encryption() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_access_grant_request() :: #{
-%%   <<"AccountId">> := string()
+%% storage_lens_expanded_prefixes_data_export() :: #{
+%%   <<"S3BucketDestination">> => s3_bucket_destination(),
+%%   <<"StorageLensTableDestination">> => storage_lens_table_destination()
 %% }
--type delete_access_grant_request() :: #{binary() => any()}.
+-type storage_lens_expanded_prefixes_data_export() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_tag() :: #{
+%% storage_lens_group() :: #{
+%%   <<"Filter">> => storage_lens_group_filter(),
+%%   <<"Name">> => string(),
+%%   <<"StorageLensGroupArn">> => string()
+%% }
+-type storage_lens_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_and_operator() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()),
+%%   <<"MatchAnySuffix">> => list(string()),
+%%   <<"MatchAnyTag">> => list(s3_tag()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size()
+%% }
+-type storage_lens_group_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_filter() :: #{
+%%   <<"And">> => storage_lens_group_and_operator(),
+%%   <<"MatchAnyPrefix">> => list(string()),
+%%   <<"MatchAnySuffix">> => list(string()),
+%%   <<"MatchAnyTag">> => list(s3_tag()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size(),
+%%   <<"Or">> => storage_lens_group_or_operator()
+%% }
+-type storage_lens_group_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_level() :: #{
+%%   <<"SelectionCriteria">> => storage_lens_group_level_selection_criteria()
+%% }
+-type storage_lens_group_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_level_selection_criteria() :: #{
+%%   <<"Exclude">> => list(string()),
+%%   <<"Include">> => list(string())
+%% }
+-type storage_lens_group_level_selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_group_or_operator() :: #{
+%%   <<"MatchAnyPrefix">> => list(string()),
+%%   <<"MatchAnySuffix">> => list(string()),
+%%   <<"MatchAnyTag">> => list(s3_tag()),
+%%   <<"MatchObjectAge">> => match_object_age(),
+%%   <<"MatchObjectSize">> => match_object_size()
+%% }
+-type storage_lens_group_or_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_table_destination() :: #{
+%%   <<"Encryption">> => storage_lens_data_export_encryption(),
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type storage_lens_table_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
--type s3_tag() :: #{binary() => any()}.
+-type storage_lens_tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_generated_manifest_descriptor() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"Location">> => job_manifest_location()
-%% }
--type s3_generated_manifest_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_cost_optimization_metrics() :: #{
-%%   <<"IsEnabled">> => boolean()
-%% }
--type advanced_cost_optimization_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_access_grant_request() :: #{
-%%   <<"AccessGrantsLocationConfiguration">> => access_grants_location_configuration(),
-%%   <<"AccessGrantsLocationId">> := string(),
+%% submit_multi_region_access_point_routes_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"ApplicationArn">> => string(),
-%%   <<"Grantee">> := grantee(),
-%%   <<"Permission">> := list(any()),
-%%   <<"S3PrefixType">> => list(any()),
-%%   <<"Tags">> => list(tag())
+%%   <<"RouteUpdates">> := list(multi_region_access_point_route())
 %% }
--type create_access_grant_request() :: #{binary() => any()}.
+-type submit_multi_region_access_point_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_multi_region_access_point_routes_result() :: #{}
+-type submit_multi_region_access_point_routes_result() :: #{}.
 
 
 %% Example:
-%% get_bucket_lifecycle_configuration_result() :: #{
-%%   <<"Rules">> => list(lifecycle_rule())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type get_bucket_lifecycle_configuration_result() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_grants_locations_request() :: #{
+%% tag_resource_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"LocationScope">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"Tags">> := list(tag())
 %% }
--type list_access_grants_locations_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_result() :: #{}
+-type tag_resource_result() :: #{}.
 
 
 %% Example:
-%% describe_multi_region_access_point_operation_request() :: #{
-%%   <<"AccountId">> := string()
+%% tagging() :: #{
+%%   <<"TagSet">> => list(s3_tag())
 %% }
--type describe_multi_region_access_point_operation_request() :: #{binary() => any()}.
+-type tagging() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_set_object_retention_operation() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"Retention">> => s3_retention()
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type s3_set_object_retention_operation() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_grants_locations_entry() :: #{
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% update_access_grants_location_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"IAMRoleArn">> := string()
+%% }
+-type update_access_grants_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_grants_location_result() :: #{
 %%   <<"AccessGrantsLocationArn">> => string(),
 %%   <<"AccessGrantsLocationId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"IAMRoleArn">> => string(),
 %%   <<"LocationScope">> => string()
 %% }
--type list_access_grants_locations_entry() :: #{binary() => any()}.
+-type update_access_grants_location_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_priority_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Priority">> := integer()
+%% }
+-type update_job_priority_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_priority_result() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type update_job_priority_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_status_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"RequestedJobStatus">> := list(any()),
+%%   <<"StatusUpdateReason">> => string()
+%% }
+-type update_job_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_job_status_result() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusUpdateReason">> => string()
+%% }
+-type update_job_status_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2752,186 +2867,71 @@
 
 
 %% Example:
-%% account_level() :: #{
-%%   <<"ActivityMetrics">> => activity_metrics(),
-%%   <<"AdvancedCostOptimizationMetrics">> => advanced_cost_optimization_metrics(),
-%%   <<"AdvancedDataProtectionMetrics">> => advanced_data_protection_metrics(),
-%%   <<"AdvancedPerformanceMetrics">> => advanced_performance_metrics(),
-%%   <<"BucketLevel">> => bucket_level(),
-%%   <<"DetailedStatusCodesMetrics">> => detailed_status_codes_metrics(),
-%%   <<"StorageLensGroupLevel">> => storage_lens_group_level()
-%% }
--type account_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_lens_groups_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageLensGroupList">> => list(list_storage_lens_group_entry())
-%% }
--type list_storage_lens_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_location_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_grants_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object_lock_legal_hold() :: #{
+%% versioning_configuration() :: #{
+%%   <<"MFADelete">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
--type s3_object_lock_legal_hold() :: #{binary() => any()}.
+-type versioning_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_bucket_replication_request() :: #{
-%%   <<"AccountId">> := string()
+%% vpc_configuration() :: #{
+%%   <<"VpcId">> => string()
 %% }
--type delete_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_point_scope_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_point_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_job_tagging_result() :: #{}
--type put_job_tagging_result() :: #{}.
-
-
-%% Example:
-%% list_storage_lens_configurations_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_storage_lens_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_progress_summary() :: #{
-%%   <<"NumberOfTasksFailed">> => float(),
-%%   <<"NumberOfTasksSucceeded">> => float(),
-%%   <<"Timers">> => job_timers(),
-%%   <<"TotalNumberOfTasks">> => float()
-%% }
--type job_progress_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_caller_access_grants_entry() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"GrantScope">> => string(),
-%%   <<"Permission">> => list(any())
-%% }
--type list_caller_access_grants_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_access_point_configuration_for_object_lambda_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Configuration">> := object_lambda_configuration()
-%% }
--type put_access_point_configuration_for_object_lambda_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_multi_region_access_point_result() :: #{
-%%   <<"AccessPoint">> => multi_region_access_point_report()
-%% }
--type get_multi_region_access_point_result() :: #{binary() => any()}.
-
-%% Example:
-%% sse_c_filter() :: #{}
--type sse_c_filter() :: #{}.
-
-
-%% Example:
-%% lifecycle_rule_and_operator() :: #{
-%%   <<"ObjectSizeGreaterThan">> => float(),
-%%   <<"ObjectSizeLessThan">> => float(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(s3_tag())
-%% }
--type lifecycle_rule_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_encryption() :: #{
-%%   <<"SSEKMS">> => s3_update_object_encryption_sse_kms()
-%% }
--type object_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_grants_instance_request() :: #{
-%%   <<"AccountId">> := string()
-%% }
--type get_access_grants_instance_request() :: #{binary() => any()}.
+-type vpc_configuration() :: #{binary() => any()}.
 
 -type create_bucket_errors() ::
-    bucket_already_exists() | 
-    bucket_already_owned_by_you().
+    bucket_already_owned_by_you() | 
+    bucket_already_exists().
 
 -type create_job_errors() ::
-    bad_request_exception() | 
-    idempotency_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    idempotency_exception() | 
+    bad_request_exception().
 
 -type delete_job_tagging_errors() ::
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     internal_service_exception().
 
 -type describe_job_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    not_found_exception() | 
+    internal_service_exception() | 
+    bad_request_exception().
 
 -type get_job_tagging_errors() ::
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     internal_service_exception().
 
 -type get_public_access_block_errors() ::
     no_such_public_access_block_configuration().
 
 -type list_jobs_errors() ::
-    invalid_next_token_exception() | 
     invalid_request_exception() | 
+    invalid_next_token_exception() | 
     internal_service_exception().
 
 -type put_job_tagging_errors() ::
     too_many_tags_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     internal_service_exception().
 
 -type update_job_priority_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    not_found_exception() | 
+    internal_service_exception() | 
+    bad_request_exception().
 
 -type update_job_status_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    job_status_exception() | 
     internal_service_exception() | 
-    job_status_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

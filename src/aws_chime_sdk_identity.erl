@@ -90,11 +90,42 @@
 
 
 %% Example:
-%% list_app_instances_response() :: #{
-%%   <<"AppInstances">> => list(app_instance_summary()),
-%%   <<"NextToken">> => string()
+%% app_instance() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
 %% }
--type list_app_instances_response() :: #{binary() => any()}.
+-type app_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_admin() :: #{
+%%   <<"Admin">> => identity(),
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer()
+%% }
+-type app_instance_admin() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_admin_summary() :: #{
+%%   <<"Admin">> => identity()
+%% }
+-type app_instance_admin_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_instance_bot() :: #{
+%%   <<"AppInstanceBotArn">> => string(),
+%%   <<"Configuration">> => configuration(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type app_instance_bot() :: #{binary() => any()}.
 
 
 %% Example:
@@ -107,289 +138,10 @@
 
 
 %% Example:
-%% put_app_instance_user_expiration_settings_request() :: #{
-%%   <<"ExpirationSettings">> => expiration_settings()
+%% app_instance_retention_settings() :: #{
+%%   <<"ChannelRetentionSettings">> => channel_retention_settings()
 %% }
--type put_app_instance_user_expiration_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_instance_admin_request() :: #{}
--type delete_app_instance_admin_request() :: #{}.
-
-%% Example:
-%% delete_app_instance_user_request() :: #{}
--type delete_app_instance_user_request() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_admins_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_admins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_state() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any())
-%% }
--type endpoint_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_bots_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_bots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_instance_response() :: #{
-%%   <<"AppInstanceArn">> => string()
-%% }
--type create_app_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_response() :: #{
-%%   <<"AppInstanceArn">> => string()
-%% }
--type update_app_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lex_configuration() :: #{
-%%   <<"InvokedBy">> => invoked_by(),
-%%   <<"LexBotAliasArn">> => string(),
-%%   <<"LocaleId">> => string(),
-%%   <<"RespondsTo">> => list(any()),
-%%   <<"WelcomeIntent">> => string()
-%% }
--type lex_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_admins_response() :: #{
-%%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()),
-%%   <<"AppInstanceArn">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_admins_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type service_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type unauthorized_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_instance_request() :: #{}
--type describe_app_instance_request() :: #{}.
-
-
-%% Example:
-%% list_app_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"Lex">> => lex_configuration()
-%% }
--type configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_request() :: #{
-%%   <<"Metadata">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_app_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type throttled_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_attributes() :: #{
-%%   <<"DeviceToken">> => string(),
-%%   <<"VoipDeviceToken">> => string()
-%% }
--type endpoint_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_users_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% expiration_settings() :: #{
-%%   <<"ExpirationCriterion">> => list(any()),
-%%   <<"ExpirationDays">> => integer()
-%% }
--type expiration_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_app_instance_retention_settings_request() :: #{
-%%   <<"AppInstanceRetentionSettings">> := app_instance_retention_settings()
-%% }
--type put_app_instance_retention_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_app_instance_user_endpoint_request() :: #{
-%%   <<"AllowMessages">> => list(any()),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"EndpointAttributes">> := endpoint_attributes(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type register_app_instance_user_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_app_instance_retention_settings_request() :: #{}
--type get_app_instance_retention_settings_request() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_instance_bot_request() :: #{}
--type delete_app_instance_bot_request() :: #{}.
-
-
-%% Example:
-%% put_app_instance_user_expiration_settings_response() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
-%%   <<"ExpirationSettings">> => expiration_settings()
-%% }
--type put_app_instance_user_expiration_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_user_endpoint_response() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
-%%   <<"EndpointId">> => string()
-%% }
--type update_app_instance_user_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_instance_user_response() :: #{
-%%   <<"AppInstanceUser">> => app_instance_user()
-%% }
--type describe_app_instance_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_instance_bot_response() :: #{
-%%   <<"AppInstanceBot">> => app_instance_bot()
-%% }
--type describe_app_instance_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_instance_response() :: #{
-%%   <<"AppInstance">> => app_instance()
-%% }
--type describe_app_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_user_response() :: #{
-%%   <<"AppInstanceUserArn">> => string()
-%% }
--type update_app_instance_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_users_response() :: #{
-%%   <<"AppInstanceArn">> => string(),
-%%   <<"AppInstanceUsers">> => list(app_instance_user_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
+-type app_instance_retention_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,14 +154,6 @@
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% app_instance_user() :: #{
 %%   <<"AppInstanceUserArn">> => string(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
@@ -419,35 +163,6 @@
 %%   <<"Name">> => string()
 %% }
 -type app_instance_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_user_endpoints_response() :: #{
-%%   <<"AppInstanceUserEndpoints">> => list(app_instance_user_endpoint_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_user_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_bot_response() :: #{
-%%   <<"AppInstanceBotArn">> => string()
-%% }
--type update_app_instance_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_retention_settings() :: #{
-%%   <<"RetentionDays">> => integer()
-%% }
--type channel_retention_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,14 +182,6 @@
 
 
 %% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% app_instance_user_endpoint_summary() :: #{
 %%   <<"AllowMessages">> => list(any()),
 %%   <<"AppInstanceUserArn">> => string(),
@@ -487,83 +194,57 @@
 
 
 %% Example:
-%% get_app_instance_retention_settings_response() :: #{
-%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
-%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
-%% }
--type get_app_instance_retention_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_instance_admin() :: #{
-%%   <<"Admin">> => identity(),
-%%   <<"AppInstanceArn">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer()
-%% }
--type app_instance_admin() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_bots_response() :: #{
-%%   <<"AppInstanceArn">> => string(),
-%%   <<"AppInstanceBots">> => list(app_instance_bot_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_user_request() :: #{
-%%   <<"Metadata">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_app_instance_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_instance_admin_response() :: #{
-%%   <<"AppInstanceAdmin">> => app_instance_admin()
-%% }
--type describe_app_instance_admin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_instance_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
+%% app_instance_user_summary() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
 %%   <<"Metadata">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
+%%   <<"Name">> => string()
 %% }
--type create_app_instance_request() :: #{binary() => any()}.
+-type app_instance_user_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_app_instance_bot_response() :: #{
-%%   <<"AppInstanceBotArn">> => string()
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type create_app_instance_bot_response() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% app_instance_admin_summary() :: #{
-%%   <<"Admin">> => identity()
+%% channel_retention_settings() :: #{
+%%   <<"RetentionDays">> => integer()
 %% }
--type app_instance_admin_summary() :: #{binary() => any()}.
+-type channel_retention_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
+%% configuration() :: #{
+%%   <<"Lex">> => lex_configuration()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% invoked_by() :: #{
-%%   <<"StandardMessages">> => list(any()),
-%%   <<"TargetedMessages">> => list(any())
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type invoked_by() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_admin_request() :: #{
+%%   <<"AppInstanceAdminArn">> := string()
+%% }
+-type create_app_instance_admin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_admin_response() :: #{
+%%   <<"AppInstanceAdmin">> => identity(),
+%%   <<"AppInstanceArn">> => string()
+%% }
+-type create_app_instance_admin_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -579,114 +260,27 @@
 
 
 %% Example:
-%% create_app_instance_admin_response() :: #{
-%%   <<"AppInstanceAdmin">> => identity(),
+%% create_app_instance_bot_response() :: #{
+%%   <<"AppInstanceBotArn">> => string()
+%% }
+-type create_app_instance_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_app_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_instance_response() :: #{
 %%   <<"AppInstanceArn">> => string()
 %% }
--type create_app_instance_admin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_app_instance_retention_settings_response() :: #{
-%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
-%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
-%% }
--type put_app_instance_retention_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_instance_retention_settings() :: #{
-%%   <<"ChannelRetentionSettings">> => channel_retention_settings()
-%% }
--type app_instance_retention_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_instance_admin_request() :: #{
-%%   <<"AppInstanceAdminArn">> := string()
-%% }
--type create_app_instance_admin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_instance_admin_request() :: #{}
--type describe_app_instance_admin_request() :: #{}.
-
-%% Example:
-%% describe_app_instance_user_endpoint_request() :: #{}
--type describe_app_instance_user_endpoint_request() :: #{}.
-
-%% Example:
-%% deregister_app_instance_user_endpoint_request() :: #{}
--type deregister_app_instance_user_endpoint_request() :: #{}.
-
-%% Example:
-%% delete_app_instance_request() :: #{}
--type delete_app_instance_request() :: #{}.
-
-
-%% Example:
-%% app_instance_user_summary() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"Name">> => string()
-%% }
--type app_instance_user_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_app_instance_user_endpoint_response() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
-%%   <<"EndpointId">> => string()
-%% }
--type register_app_instance_user_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_instance_user_endpoint_request() :: #{
-%%   <<"AllowMessages">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type update_app_instance_user_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_instance_user_endpoint_response() :: #{
-%%   <<"AppInstanceUserEndpoint">> => app_instance_user_endpoint()
-%% }
--type describe_app_instance_user_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_instance_user_request() :: #{}
--type describe_app_instance_user_request() :: #{}.
-
-
-%% Example:
-%% update_app_instance_bot_request() :: #{
-%%   <<"Configuration">> => configuration(),
-%%   <<"Metadata">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_app_instance_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_instance_user_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_app_instance_user_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_instance_bot_request() :: #{}
--type describe_app_instance_bot_request() :: #{}.
+-type create_app_instance_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -703,301 +297,707 @@
 
 
 %% Example:
-%% app_instance() :: #{
-%%   <<"AppInstanceArn">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Metadata">> => string(),
-%%   <<"Name">> => string()
-%% }
--type app_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_instance_bot() :: #{
-%%   <<"AppInstanceBotArn">> => string(),
-%%   <<"Configuration">> => configuration(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Metadata">> => string(),
-%%   <<"Name">> => string()
-%% }
--type app_instance_bot() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_app_instance_user_response() :: #{
 %%   <<"AppInstanceUserArn">> => string()
 %% }
 -type create_app_instance_user_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_app_instance_admin_request() :: #{}
+-type delete_app_instance_admin_request() :: #{}.
+
+%% Example:
+%% delete_app_instance_bot_request() :: #{}
+-type delete_app_instance_bot_request() :: #{}.
+
+%% Example:
+%% delete_app_instance_request() :: #{}
+-type delete_app_instance_request() :: #{}.
+
+%% Example:
+%% delete_app_instance_user_request() :: #{}
+-type delete_app_instance_user_request() :: #{}.
+
+%% Example:
+%% deregister_app_instance_user_endpoint_request() :: #{}
+-type deregister_app_instance_user_endpoint_request() :: #{}.
+
+%% Example:
+%% describe_app_instance_admin_request() :: #{}
+-type describe_app_instance_admin_request() :: #{}.
+
+
+%% Example:
+%% describe_app_instance_admin_response() :: #{
+%%   <<"AppInstanceAdmin">> => app_instance_admin()
+%% }
+-type describe_app_instance_admin_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_bot_request() :: #{}
+-type describe_app_instance_bot_request() :: #{}.
+
+
+%% Example:
+%% describe_app_instance_bot_response() :: #{
+%%   <<"AppInstanceBot">> => app_instance_bot()
+%% }
+-type describe_app_instance_bot_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_request() :: #{}
+-type describe_app_instance_request() :: #{}.
+
+
+%% Example:
+%% describe_app_instance_response() :: #{
+%%   <<"AppInstance">> => app_instance()
+%% }
+-type describe_app_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_user_endpoint_request() :: #{}
+-type describe_app_instance_user_endpoint_request() :: #{}.
+
+
+%% Example:
+%% describe_app_instance_user_endpoint_response() :: #{
+%%   <<"AppInstanceUserEndpoint">> => app_instance_user_endpoint()
+%% }
+-type describe_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_instance_user_request() :: #{}
+-type describe_app_instance_user_request() :: #{}.
+
+
+%% Example:
+%% describe_app_instance_user_response() :: #{
+%%   <<"AppInstanceUser">> => app_instance_user()
+%% }
+-type describe_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_attributes() :: #{
+%%   <<"DeviceToken">> => string(),
+%%   <<"VoipDeviceToken">> => string()
+%% }
+-type endpoint_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_state() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type endpoint_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% expiration_settings() :: #{
+%%   <<"ExpirationCriterion">> => list(any()),
+%%   <<"ExpirationDays">> => integer()
+%% }
+-type expiration_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_instance_retention_settings_request() :: #{}
+-type get_app_instance_retention_settings_request() :: #{}.
+
+
+%% Example:
+%% get_app_instance_retention_settings_response() :: #{
+%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
+%% }
+-type get_app_instance_retention_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoked_by() :: #{
+%%   <<"StandardMessages">> => list(any()),
+%%   <<"TargetedMessages">> => list(any())
+%% }
+-type invoked_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% lex_configuration() :: #{
+%%   <<"InvokedBy">> => invoked_by(),
+%%   <<"LexBotAliasArn">> => string(),
+%%   <<"LocaleId">> => string(),
+%%   <<"RespondsTo">> => list(any()),
+%%   <<"WelcomeIntent">> => string()
+%% }
+-type lex_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_admins_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_admins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_admins_response() :: #{
+%%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()),
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_admins_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_bots_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_bots_response() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"AppInstanceBots">> => list(app_instance_bot_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_user_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_user_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_user_endpoints_response() :: #{
+%%   <<"AppInstanceUserEndpoints">> => list(app_instance_user_endpoint_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_user_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_users_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instance_users_response() :: #{
+%%   <<"AppInstanceArn">> => string(),
+%%   <<"AppInstanceUsers">> => list(app_instance_user_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instance_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_instances_response() :: #{
+%%   <<"AppInstances">> => list(app_instance_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_app_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_retention_settings_request() :: #{
+%%   <<"AppInstanceRetentionSettings">> := app_instance_retention_settings()
+%% }
+-type put_app_instance_retention_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_retention_settings_response() :: #{
+%%   <<"AppInstanceRetentionSettings">> => app_instance_retention_settings(),
+%%   <<"InitiateDeletionTimestamp">> => non_neg_integer()
+%% }
+-type put_app_instance_retention_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_user_expiration_settings_request() :: #{
+%%   <<"ExpirationSettings">> => expiration_settings()
+%% }
+-type put_app_instance_user_expiration_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_app_instance_user_expiration_settings_response() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"ExpirationSettings">> => expiration_settings()
+%% }
+-type put_app_instance_user_expiration_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_app_instance_user_endpoint_request() :: #{
+%%   <<"AllowMessages">> => list(any()),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"EndpointAttributes">> := endpoint_attributes(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type register_app_instance_user_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_app_instance_user_endpoint_response() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type register_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type throttled_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_bot_request() :: #{
+%%   <<"Configuration">> => configuration(),
+%%   <<"Metadata">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_app_instance_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_bot_response() :: #{
+%%   <<"AppInstanceBotArn">> => string()
+%% }
+-type update_app_instance_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_request() :: #{
+%%   <<"Metadata">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_app_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_response() :: #{
+%%   <<"AppInstanceArn">> => string()
+%% }
+-type update_app_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_endpoint_request() :: #{
+%%   <<"AllowMessages">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_app_instance_user_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_endpoint_response() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type update_app_instance_user_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_request() :: #{
+%%   <<"Metadata">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_instance_user_response() :: #{
+%%   <<"AppInstanceUserArn">> => string()
+%% }
+-type update_app_instance_user_response() :: #{binary() => any()}.
+
 -type create_app_instance_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_app_instance_admin_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_app_instance_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_app_instance_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_app_instance_admin_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_app_instance_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type deregister_app_instance_user_endpoint_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_app_instance_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_app_instance_admin_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_app_instance_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_app_instance_user_endpoint_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_app_instance_retention_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_app_instance_admins_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_app_instance_bots_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_app_instance_user_endpoints_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_app_instance_users_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_app_instances_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_app_instance_retention_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_app_instance_user_expiration_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type register_app_instance_user_endpoint_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_app_instance_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_app_instance_bot_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_app_instance_user_endpoint_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

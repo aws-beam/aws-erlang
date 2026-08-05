@@ -389,178 +389,10 @@
 
 
 %% Example:
-%% restore_db_cluster_from_snapshot_message() :: #{
-%%   <<"EnableVPCNetworking">> => boolean(),
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"DBClusterInstanceClass">> => string(),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"ScalingConfiguration">> => scaling_configuration(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"EngineMode">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"Engine">> := string(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"SnapshotIdentifier">> := string(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"NetworkType">> => string(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"EnableInternetAccessGateway">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
+%% account_attributes_message() :: #{
+%%   <<"AccountQuotas">> => list(account_quota())
 %% }
--type restore_db_cluster_from_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type reboot_db_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% start_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string()
-%% }
--type start_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_details() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type db_parameter_group_details() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% event_subscriptions_message() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()),
-%%   <<"Marker">> => string()
-%% }
--type event_subscriptions_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_target_already_registered_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_target_already_registered_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_attribute() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(string())
-%% }
--type db_snapshot_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_snapshot_message() :: #{
-%%   <<"DBSnapshotIdentifier">> := string()
-%% }
--type delete_db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_major_engine_version() :: #{
-%%   <<"Engine">> => string(),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"SupportedEngineLifecycles">> => list(supported_engine_lifecycle())
-%% }
--type db_major_engine_version() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_snapshot_result() :: #{
-%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
-%% }
--type delete_db_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_action() :: #{
-%%   <<"ActionId">> => string(),
-%%   <<"ApplyModes">> => list(string()),
-%%   <<"ContextAttributes">> => list(context_attribute()),
-%%   <<"Description">> => string(),
-%%   <<"IssueDetails">> => issue_details(),
-%%   <<"Operation">> => string(),
-%%   <<"Parameters">> => list(recommended_action_parameter()),
-%%   <<"Status">> => string(),
-%%   <<"Title">> => string()
-%% }
--type recommended_action() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_resource_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_membership() :: #{
-%%   <<"OptionGroupName">> => string(),
-%%   <<"Status">> => string()
-%% }
--type option_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% pending_maintenance_action() :: #{
-%%   <<"Action">> => string(),
-%%   <<"AutoAppliedAfterDate">> => non_neg_integer(),
-%%   <<"CurrentApplyDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ForcedApplyDate">> => non_neg_integer(),
-%%   <<"OptInStatus">> => string()
-%% }
--type pending_maintenance_action() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_parameter_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% target_health() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type target_health() :: #{binary() => any()}.
+-type account_attributes_message() :: #{binary() => any()}.
 
 %% Example:
 %% account_quota() :: #{
@@ -571,6 +403,67 @@
 -type account_quota() :: #{binary() => any()}.
 
 %% Example:
+%% add_role_to_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type add_role_to_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_role_to_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FeatureName">> := string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type add_role_to_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_source_identifier_to_subscription_message() :: #{
+%%   <<"SourceIdentifier">> := string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type add_source_identifier_to_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_source_identifier_to_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type add_source_identifier_to_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_message() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_to_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% additional_storage_volume() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"IOPS">> => integer(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"VolumeName">> => string()
+%% }
+-type additional_storage_volume() :: #{binary() => any()}.
+
+%% Example:
+%% additional_storage_volume_output() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"IOPS">> => integer(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"StorageOperationPercentProgress">> => integer(),
+%%   <<"StorageOperationStatus">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"StorageVolumeStatus">> => string(),
+%%   <<"VolumeName">> => string()
+%% }
+-type additional_storage_volume_output() :: #{binary() => any()}.
+
+%% Example:
 %% apply_pending_maintenance_action_message() :: #{
 %%   <<"ApplyAction">> := string(),
 %%   <<"OptInType">> := string(),
@@ -579,16 +472,1159 @@
 -type apply_pending_maintenance_action_message() :: #{binary() => any()}.
 
 %% Example:
-%% subnet_already_in_use() :: #{
-%%   <<"message">> => string()
+%% apply_pending_maintenance_action_result() :: #{
+%%   <<"ResourcePendingMaintenanceActions">> => resource_pending_maintenance_actions()
 %% }
--type subnet_already_in_use() :: #{binary() => any()}.
+-type apply_pending_maintenance_action_result() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_db_proxy_endpoint_state_fault() :: #{
+%% authorization_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_db_proxy_endpoint_state_fault() :: #{binary() => any()}.
+-type authorization_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% authorize_db_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
+%% }
+-type authorize_db_security_group_ingress_message() :: #{binary() => any()}.
+
+%% Example:
+%% authorize_db_security_group_ingress_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
+%% }
+-type authorize_db_security_group_ingress_result() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% available_additional_storage_volumes_option() :: #{
+%%   <<"MaxIops">> => integer(),
+%%   <<"MaxIopsPerGib">> => float(),
+%%   <<"MaxStorageSize">> => integer(),
+%%   <<"MaxStorageThroughput">> => integer(),
+%%   <<"MinIops">> => integer(),
+%%   <<"MinIopsPerGib">> => float(),
+%%   <<"MinStorageSize">> => integer(),
+%%   <<"MinStorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"SupportsIops">> => boolean(),
+%%   <<"SupportsStorageAutoscaling">> => boolean(),
+%%   <<"SupportsStorageThroughput">> => boolean()
+%% }
+-type available_additional_storage_volumes_option() :: #{binary() => any()}.
+
+%% Example:
+%% available_processor_feature() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type available_processor_feature() :: #{binary() => any()}.
+
+%% Example:
+%% backtrack_db_cluster_message() :: #{
+%%   <<"BacktrackTo">> := non_neg_integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"Force">> => boolean(),
+%%   <<"UseEarliestTimeOnPointInTimeUnavailable">> => boolean()
+%% }
+-type backtrack_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% backup_policy_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_policy_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> => string(),
+%%   <<"BlueGreenDeploymentName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusDetails">> => string(),
+%%   <<"SwitchoverDetails">> => list(switchover_detail()),
+%%   <<"TagList">> => list(tag()),
+%%   <<"Target">> => string(),
+%%   <<"Tasks">> => list(blue_green_deployment_task())
+%% }
+-type blue_green_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type blue_green_deployment_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type blue_green_deployment_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_task() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type blue_green_deployment_task() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_export_task_message() :: #{
+%%   <<"ExportTaskIdentifier">> := string()
+%% }
+-type cancel_export_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"CertificateType">> => string(),
+%%   <<"CustomerOverride">> => boolean(),
+%%   <<"CustomerOverrideValidTill">> => non_neg_integer(),
+%%   <<"Thumbprint">> => string(),
+%%   <<"ValidFrom">> => non_neg_integer(),
+%%   <<"ValidTill">> => non_neg_integer()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_details() :: #{
+%%   <<"CAIdentifier">> => string(),
+%%   <<"ValidTill">> => non_neg_integer()
+%% }
+-type certificate_details() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_message() :: #{
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultCertificateForNewLaunches">> => string(),
+%%   <<"Marker">> => string()
+%% }
+-type certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% character_set() :: #{
+%%   <<"CharacterSetDescription">> => string(),
+%%   <<"CharacterSetName">> => string()
+%% }
+-type character_set() :: #{binary() => any()}.
+
+%% Example:
+%% cloudwatch_logs_export_configuration() :: #{
+%%   <<"DisableLogTypes">> => list(string()),
+%%   <<"EnableLogTypes">> => list(string())
+%% }
+-type cloudwatch_logs_export_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_pending_modified_values() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"StorageType">> => string()
+%% }
+-type cluster_pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% connection_pool_configuration() :: #{
+%%   <<"ConnectionBorrowTimeout">> => integer(),
+%%   <<"InitQuery">> => string(),
+%%   <<"MaxConnectionsPercent">> => integer(),
+%%   <<"MaxIdleConnectionsPercent">> => integer(),
+%%   <<"SessionPinningFilters">> => list(string())
+%% }
+-type connection_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% connection_pool_configuration_info() :: #{
+%%   <<"ConnectionBorrowTimeout">> => integer(),
+%%   <<"InitQuery">> => string(),
+%%   <<"MaxConnectionsPercent">> => integer(),
+%%   <<"MaxIdleConnectionsPercent">> => integer(),
+%%   <<"SessionPinningFilters">> => list(string())
+%% }
+-type connection_pool_configuration_info() :: #{binary() => any()}.
+
+%% Example:
+%% context_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type context_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_parameter_group_message() :: #{
+%%   <<"SourceDBClusterParameterGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDBClusterParameterGroupDescription">> := string(),
+%%   <<"TargetDBClusterParameterGroupIdentifier">> := string()
+%% }
+-type copy_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_parameter_group_result() :: #{
+%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
+%% }
+-type copy_db_cluster_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_snapshot_message() :: #{
+%%   <<"CopyTags">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SourceDBClusterSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDBClusterSnapshotIdentifier">> := string()
+%% }
+-type copy_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type copy_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_parameter_group_message() :: #{
+%%   <<"SourceDBParameterGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDBParameterGroupDescription">> := string(),
+%%   <<"TargetDBParameterGroupIdentifier">> := string()
+%% }
+-type copy_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_parameter_group_result() :: #{
+%%   <<"DBParameterGroup">> => db_parameter_group()
+%% }
+-type copy_db_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_snapshot_message() :: #{
+%%   <<"CopyOptionGroup">> => boolean(),
+%%   <<"CopyTags">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SnapshotAvailabilityZone">> => string(),
+%%   <<"SnapshotTarget">> => string(),
+%%   <<"SourceDBSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetCustomAvailabilityZone">> => string(),
+%%   <<"TargetDBSnapshotIdentifier">> := string()
+%% }
+-type copy_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type copy_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_option_group_message() :: #{
+%%   <<"SourceOptionGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetOptionGroupDescription">> := string(),
+%%   <<"TargetOptionGroupIdentifier">> := string()
+%% }
+-type copy_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type copy_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentName">> := string(),
+%%   <<"Source">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetAllocatedStorage">> => integer(),
+%%   <<"TargetDBClusterParameterGroupName">> => string(),
+%%   <<"TargetDBInstanceClass">> => string(),
+%%   <<"TargetDBParameterGroupName">> => string(),
+%%   <<"TargetEngineVersion">> => string(),
+%%   <<"TargetIops">> => integer(),
+%%   <<"TargetStorageThroughput">> => integer(),
+%%   <<"TargetStorageType">> => string(),
+%%   <<"UpgradeTargetStorageConfig">> => boolean()
+%% }
+-type create_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type create_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_db_engine_version_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type create_custom_db_engine_version_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_db_engine_version_message() :: #{
+%%   <<"DatabaseInstallationFiles">> => list(string()),
+%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
+%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string(),
+%%   <<"ImageId">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"Manifest">> => string(),
+%%   <<"SourceCustomDbEngineVersionIdentifier">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UseAwsProvidedLatestImage">> => boolean()
+%% }
+-type create_custom_db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"EndpointType">> := string(),
+%%   <<"ExcludedMembers">> => list(string()),
+%%   <<"StaticMembers">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_message() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AssociatedRoles">> => list(db_cluster_associated_role()),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"ClusterScalabilityType">> => list(any()),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableGlobalWriteForwarding">> => boolean(),
+%%   <<"EnableHttpEndpoint">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableLimitlessDatabase">> => boolean(),
+%%   <<"EnableLocalWriteForwarding">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserAuthenticationType">> => list(any()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
+%%   <<"WithExpressConfiguration">> => boolean()
+%% }
+-type create_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_parameter_group_result() :: #{
+%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
+%% }
+-type create_db_cluster_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type create_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type create_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBInstanceClass">> := string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBName">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBSecurityGroups">> => list(string()),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DomainDnsIps">> => list(string()),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserAuthenticationType">> => list(any()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type create_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_read_replica_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DomainDnsIps">> => list(string()),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"SourceDBInstanceIdentifier">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpgradeStorageConfig">> => boolean(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type create_db_instance_read_replica_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_read_replica_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type create_db_instance_read_replica_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type create_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_result() :: #{
+%%   <<"DBParameterGroup">> => db_parameter_group()
+%% }
+-type create_db_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string(),
+%%   <<"DBProxyName">> := string(),
+%%   <<"EndpointNetworkType">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetRole">> => list(any()),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
+%%   <<"VpcSubnetIds">> := list(string())
+%% }
+-type create_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type create_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_request() :: #{
+%%   <<"Auth">> => list(user_auth_config()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => list(any()),
+%%   <<"EndpointNetworkType">> => list(any()),
+%%   <<"EngineFamily">> := list(any()),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetConnectionNetworkType">> => list(any()),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
+%%   <<"VpcSubnetIds">> := list(string())
+%% }
+-type create_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type create_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_security_group_message() :: #{
+%%   <<"DBSecurityGroupDescription">> := string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_security_group_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
+%% }
+-type create_db_security_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_shard_group_message() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBShardGroupIdentifier">> := string(),
+%%   <<"MaxACU">> := float(),
+%%   <<"MinACU">> => float(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_snapshot_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type create_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupDescription">> := string(),
+%%   <<"DBSubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_subnet_group_result() :: #{
+%%   <<"DBSubnetGroup">> => db_subnet_group()
+%% }
+-type create_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SnsTopicArn">> := string(),
+%%   <<"SourceIds">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type create_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_cluster_message() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type create_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_message() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_option_group_message() :: #{
+%%   <<"EngineName">> := string(),
+%%   <<"MajorEngineVersion">> := string(),
+%%   <<"OptionGroupDescription">> := string(),
+%%   <<"OptionGroupName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type create_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_tenant_database_message() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> := string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantDBName">> := string()
+%% }
+-type create_tenant_database_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
+%% }
+-type create_tenant_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% custom_availability_zone_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_availability_zone_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_a_m_i() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type custom_db_engine_version_a_m_i() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster() :: #{
+%%   <<"ActivityStreamKinesisStreamName">> => string(),
+%%   <<"ActivityStreamKmsKeyId">> => string(),
+%%   <<"ActivityStreamMode">> => list(any()),
+%%   <<"ActivityStreamStatus">> => list(any()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AssociatedRoles">> => list(db_cluster_role()),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AutomaticRestartTime">> => non_neg_integer(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BacktrackConsumedChangeRecords">> => float(),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"Capacity">> => integer(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"CloneGroupId">> => string(),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"ClusterScalabilityType">> => list(any()),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CrossAccountClone">> => boolean(),
+%%   <<"CustomEndpoints">> => list(string()),
+%%   <<"DBClusterArn">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterMembers">> => list(db_cluster_member()),
+%%   <<"DBClusterOptionGroupMemberships">> => list(db_cluster_option_group_status()),
+%%   <<"DBClusterParameterGroup">> => string(),
+%%   <<"DBSubnetGroup">> => string(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"DomainMemberships">> => list(domain_membership()),
+%%   <<"EarliestBacktrackTime">> => non_neg_integer(),
+%%   <<"EarliestRestorableTime">> => non_neg_integer(),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
+%%   <<"Endpoint">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"GlobalWriteForwardingRequested">> => boolean(),
+%%   <<"GlobalWriteForwardingStatus">> => list(any()),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
+%%   <<"InternetAccessGatewayEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LatestRestorableTime">> => non_neg_integer(),
+%%   <<"LimitlessDatabase">> => limitless_database(),
+%%   <<"LocalWriteForwardingStatus">> => list(any()),
+%%   <<"MasterUserSecret">> => master_user_secret(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PendingModifiedValues">> => cluster_pending_modified_values(),
+%%   <<"PercentProgress">> => string(),
+%%   <<"PerformanceInsightsEnabled">> => boolean(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"ReadReplicaIdentifiers">> => list(string()),
+%%   <<"ReaderEndpoint">> => string(),
+%%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"ScalingConfigurationInfo">> => scaling_configuration_info(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
+%%   <<"Status">> => string(),
+%%   <<"StatusInfos">> => list(db_cluster_status_info()),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"UpgradeRolloutOrder">> => list(any()),
+%%   <<"VPCNetworkingEnabled">> => boolean(),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
+%% }
+-type db_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_associated_role() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type db_cluster_associated_role() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"DBClusterArn">> => string(),
+%%   <<"DBClusterAutomatedBackupsArn">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"RestoreWindow">> => restore_window(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"VpcId">> => string()
+%% }
+-type db_cluster_automated_backup() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_message() :: #{
+%%   <<"DBClusterAutomatedBackups">> => list(db_cluster_automated_backup()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_automated_backup_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack() :: #{
+%%   <<"BacktrackIdentifier">> => string(),
+%%   <<"BacktrackRequestCreationTime">> => non_neg_integer(),
+%%   <<"BacktrackTo">> => non_neg_integer(),
+%%   <<"BacktrackedFrom">> => non_neg_integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_backtrack() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack_message() :: #{
+%%   <<"DBClusterBacktracks">> => list(db_cluster_backtrack()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_backtrack_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_backtrack_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_capacity_info() :: #{
+%%   <<"CurrentCapacity">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"PendingCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type db_cluster_capacity_info() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint() :: #{
+%%   <<"CustomEndpointType">> => string(),
+%%   <<"DBClusterEndpointArn">> => string(),
+%%   <<"DBClusterEndpointIdentifier">> => string(),
+%%   <<"DBClusterEndpointResourceIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"ExcludedMembers">> => list(string()),
+%%   <<"StaticMembers">> => list(string()),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpoints">> => list(db_cluster_endpoint()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_member() :: #{
+%%   <<"DBClusterParameterGroupStatus">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"IsClusterWriter">> => boolean(),
+%%   <<"PromotionTier">> => integer()
+%% }
+-type db_cluster_member() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_message() :: #{
+%%   <<"DBClusters">> => list(db_cluster()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_option_group_status() :: #{
+%%   <<"DBClusterOptionGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_option_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group() :: #{
+%%   <<"DBClusterParameterGroupArn">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type db_cluster_parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_details() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type db_cluster_parameter_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_name_message() :: #{
+%%   <<"DBClusterParameterGroupName">> => string()
+%% }
+-type db_cluster_parameter_group_name_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_groups_message() :: #{
+%%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_role() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
 %% db_cluster_snapshot() :: #{
@@ -625,53 +1661,415 @@
 -type db_cluster_snapshot() :: #{binary() => any()}.
 
 %% Example:
-%% delete_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type delete_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_serverless_v2_platform_versions_message() :: #{
-%%   <<"DefaultOnly">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludeAll">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ServerlessV2PlatformVersion">> => string()
-%% }
--type describe_serverless_v2_platform_versions_message() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_quota_exceeded_fault() :: #{
+%% db_cluster_snapshot_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type snapshot_quota_exceeded_fault() :: #{binary() => any()}.
+-type db_cluster_snapshot_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% db_cluster_capacity_info() :: #{
-%%   <<"CurrentCapacity">> => integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"PendingCapacity">> => integer(),
-%%   <<"SecondsBeforeTimeout">> => integer(),
-%%   <<"TimeoutAction">> => string()
+%% db_cluster_snapshot_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValues">> => list(string())
 %% }
--type db_cluster_capacity_info() :: #{binary() => any()}.
+-type db_cluster_snapshot_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% modify_db_subnet_group_message() :: #{
-%%   <<"DBSubnetGroupDescription">> => string(),
-%%   <<"DBSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string())
+%% db_cluster_snapshot_attributes_result() :: #{
+%%   <<"DBClusterSnapshotAttributes">> => list(db_cluster_snapshot_attribute()),
+%%   <<"DBClusterSnapshotIdentifier">> => string()
 %% }
--type modify_db_subnet_group_message() :: #{binary() => any()}.
+-type db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
 
 %% Example:
-%% db_subnet_group_message() :: #{
-%%   <<"DBSubnetGroups">> => list(db_subnet_group()),
+%% db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterSnapshots">> => list(db_cluster_snapshot()),
 %%   <<"Marker">> => string()
 %% }
--type db_subnet_group_message() :: #{binary() => any()}.
+-type db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_snapshot_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_status_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Normal">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"StatusType">> => string()
+%% }
+-type db_cluster_status_info() :: #{binary() => any()}.
+
+%% Example:
+%% db_engine_version() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"CustomDBEngineVersionManifest">> => string(),
+%%   <<"DBEngineDescription">> => string(),
+%%   <<"DBEngineMediaType">> => string(),
+%%   <<"DBEngineVersionArn">> => string(),
+%%   <<"DBEngineVersionDescription">> => string(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"DatabaseInstallationFiles">> => list(string()),
+%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
+%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
+%%   <<"DefaultCharacterSet">> => character_set(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"ExportableLogTypes">> => list(string()),
+%%   <<"FailureReason">> => string(),
+%%   <<"Image">> => custom_db_engine_version_a_m_i(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
+%%   <<"Status">> => string(),
+%%   <<"SupportedCACertificateIdentifiers">> => list(string()),
+%%   <<"SupportedCharacterSets">> => list(character_set()),
+%%   <<"SupportedEngineModes">> => list(string()),
+%%   <<"SupportedFeatureNames">> => list(string()),
+%%   <<"SupportedNcharCharacterSets">> => list(character_set()),
+%%   <<"SupportedTimezones">> => list(timezone()),
+%%   <<"SupportsBabelfish">> => boolean(),
+%%   <<"SupportsCertificateRotationWithoutRestart">> => boolean(),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"SupportsIntegrations">> => boolean(),
+%%   <<"SupportsLimitlessDatabase">> => boolean(),
+%%   <<"SupportsLocalWriteForwarding">> => boolean(),
+%%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
+%%   <<"SupportsParallelQuery">> => boolean(),
+%%   <<"SupportsReadReplica">> => boolean(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"ValidUpgradeTarget">> => list(upgrade_target())
+%% }
+-type db_engine_version() :: #{binary() => any()}.
+
+%% Example:
+%% db_engine_version_message() :: #{
+%%   <<"DBEngineVersions">> => list(db_engine_version()),
+%%   <<"Marker">> => string()
+%% }
+-type db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance() :: #{
+%%   <<"ActivityStreamEngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"ActivityStreamKinesisStreamName">> => string(),
+%%   <<"ActivityStreamKmsKeyId">> => string(),
+%%   <<"ActivityStreamMode">> => list(any()),
+%%   <<"ActivityStreamPolicyStatus">> => list(any()),
+%%   <<"ActivityStreamStatus">> => list(any()),
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume_output()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AssociatedRoles">> => list(db_instance_role()),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AutomaticRestartTime">> => non_neg_integer(),
+%%   <<"AutomationMode">> => list(any()),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"CustomerOwnedIpEnabled">> => boolean(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBInstanceArn">> => string(),
+%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBInstanceStatus">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"DBParameterGroups">> => list(db_parameter_group_status()),
+%%   <<"DBSecurityGroups">> => list(db_security_group_membership()),
+%%   <<"DBSubnetGroup">> => db_subnet_group(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DbInstancePort">> => integer(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"DomainMemberships">> => list(domain_membership()),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"EnhancedMonitoringResourceArn">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"IsStorageConfigUpgradeAvailable">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LatestRestorableTime">> => non_neg_integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"ListenerEndpoint">> => endpoint(),
+%%   <<"MasterUserSecret">> => master_user_secret(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupMemberships">> => list(option_group_membership()),
+%%   <<"PendingModifiedValues">> => pending_modified_values(),
+%%   <<"PercentProgress">> => string(),
+%%   <<"PerformanceInsightsEnabled">> => boolean(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ReadReplicaDBClusterIdentifiers">> => list(string()),
+%%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()),
+%%   <<"ReadReplicaSourceDBClusterIdentifier">> => string(),
+%%   <<"ReadReplicaSourceDBInstanceIdentifier">> => string(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"ResumeFullAutomationModeTime">> => non_neg_integer(),
+%%   <<"SecondaryAvailabilityZone">> => string(),
+%%   <<"StatusInfos">> => list(db_instance_status_info()),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"StorageOperationPercentProgress">> => integer(),
+%%   <<"StorageOperationStatus">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"StorageVolumeStatus">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"UpgradeRolloutOrder">> => list(any()),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
+%% }
+-type db_instance() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"DBInstanceArn">> => string(),
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"RestoreWindow">> => restore_window(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_instance_automated_backup() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_message() :: #{
+%%   <<"DBInstanceAutomatedBackups">> => list(db_instance_automated_backup()),
+%%   <<"Marker">> => string()
+%% }
+-type db_instance_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_automated_backup_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backups_replication() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string()
+%% }
+-type db_instance_automated_backups_replication() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_message() :: #{
+%%   <<"DBInstances">> => list(db_instance()),
+%%   <<"Marker">> => string()
+%% }
+-type db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_not_ready_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_not_ready_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_instance_role() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_status_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Normal">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"StatusType">> => string()
+%% }
+-type db_instance_status_info() :: #{binary() => any()}.
+
+%% Example:
+%% db_log_file_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_log_file_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_major_engine_version() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"SupportedEngineLifecycles">> => list(supported_engine_lifecycle())
+%% }
+-type db_major_engine_version() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group() :: #{
+%%   <<"DBParameterGroupArn">> => string(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type db_parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_details() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type db_parameter_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_name_message() :: #{
+%%   <<"DBParameterGroupName">> => string()
+%% }
+-type db_parameter_group_name_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_status() :: #{
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"ParameterApplyStatus">> => string()
+%% }
+-type db_parameter_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_groups_message() :: #{
+%%   <<"DBParameterGroups">> => list(db_parameter_group()),
+%%   <<"Marker">> => string()
+%% }
+-type db_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy() :: #{
+%%   <<"Auth">> => list(user_auth_config_info()),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DBProxyArn">> => string(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointNetworkType">> => list(any()),
+%%   <<"EngineFamily">> => string(),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetConnectionNetworkType">> => list(any()),
+%%   <<"UpdatedDate">> => non_neg_integer(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
+%%   <<"VpcSubnetIds">> => list(string())
+%% }
+-type db_proxy() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
 %% db_proxy_endpoint() :: #{
@@ -691,6 +2089,662 @@
 -type db_proxy_endpoint() :: #{binary() => any()}.
 
 %% Example:
+%% db_proxy_endpoint_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"RdsResourceId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"TargetArn">> => string(),
+%%   <<"TargetHealth">> => target_health(),
+%%   <<"TrackedClusterId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type db_proxy_target() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_already_registered_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_already_registered_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_group() :: #{
+%%   <<"ConnectionPoolConfig">> => connection_pool_configuration_info(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"TargetGroupName">> => string(),
+%%   <<"UpdatedDate">> => non_neg_integer()
+%% }
+-type db_proxy_target_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendation() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Detection">> => string(),
+%%   <<"Impact">> => string(),
+%%   <<"IssueDetails">> => issue_details(),
+%%   <<"Links">> => list(doc_link()),
+%%   <<"Reason">> => string(),
+%%   <<"Recommendation">> => string(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"RecommendedActions">> => list(recommended_action()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Severity">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TypeDetection">> => string(),
+%%   <<"TypeId">> => string(),
+%%   <<"TypeRecommendation">> => string(),
+%%   <<"UpdatedTime">> => non_neg_integer()
+%% }
+-type db_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendation_message() :: #{
+%%   <<"DBRecommendation">> => db_recommendation()
+%% }
+-type db_recommendation_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendations_message() :: #{
+%%   <<"DBRecommendations">> => list(db_recommendation()),
+%%   <<"Marker">> => string()
+%% }
+-type db_recommendations_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group() :: #{
+%%   <<"DBSecurityGroupArn">> => string(),
+%%   <<"DBSecurityGroupDescription">> => string(),
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
+%%   <<"IPRanges">> => list(ip_range()),
+%%   <<"OwnerId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_membership() :: #{
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_message() :: #{
+%%   <<"DBSecurityGroups">> => list(db_security_group()),
+%%   <<"Marker">> => string()
+%% }
+-type db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBShardGroupArn">> => string(),
+%%   <<"DBShardGroupIdentifier">> => string(),
+%%   <<"DBShardGroupResourceId">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"MaxACU">> => float(),
+%%   <<"MinACU">> => float(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"TagList">> => list(tag())
+%% }
+-type db_shard_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_shard_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_shard_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotArn">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"OriginalSnapshotCreateTime">> => non_neg_integer(),
+%%   <<"PercentProgress">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"SnapshotAvailabilityZone">> => string(),
+%%   <<"SnapshotCreateTime">> => non_neg_integer(),
+%%   <<"SnapshotDatabaseTime">> => non_neg_integer(),
+%%   <<"SnapshotTarget">> => string(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"SourceDBSnapshotIdentifier">> => string(),
+%%   <<"SourceRegion">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValues">> => list(string())
+%% }
+-type db_snapshot_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_attributes_result() :: #{
+%%   <<"DBSnapshotAttributes">> => list(db_snapshot_attribute()),
+%%   <<"DBSnapshotIdentifier">> => string()
+%% }
+-type db_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_message() :: #{
+%%   <<"DBSnapshots">> => list(db_snapshot()),
+%%   <<"Marker">> => string()
+%% }
+-type db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_database() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DBSnapshotTenantDatabaseARN">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TenantDBName">> => string(),
+%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
+%%   <<"TenantDatabaseResourceId">> => string()
+%% }
+-type db_snapshot_tenant_database() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_database_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_tenant_database_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_databases_message() :: #{
+%%   <<"DBSnapshotTenantDatabases">> => list(db_snapshot_tenant_database()),
+%%   <<"Marker">> => string()
+%% }
+-type db_snapshot_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group() :: #{
+%%   <<"DBSubnetGroupArn">> => string(),
+%%   <<"DBSubnetGroupDescription">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"SubnetGroupStatus">> => string(),
+%%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type db_subnet_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_does_not_cover_enough_a_zs() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_does_not_cover_enough_a_zs() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroups">> => list(db_subnet_group()),
+%%   <<"Marker">> => string()
+%% }
+-type db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_not_allowed_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_not_allowed_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_upgrade_dependency_failure_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_upgrade_dependency_failure_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> := string(),
+%%   <<"DeleteTarget">> => boolean()
+%% }
+-type delete_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type delete_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_db_engine_version_message() :: #{
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string()
+%% }
+-type delete_custom_db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_automated_backup_message() :: #{
+%%   <<"DbClusterResourceId">> := string()
+%% }
+-type delete_db_cluster_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_automated_backup_result() :: #{
+%%   <<"DBClusterAutomatedBackup">> => db_cluster_automated_backup()
+%% }
+-type delete_db_cluster_automated_backup_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string()
+%% }
+-type delete_db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DeleteAutomatedBackups">> => boolean(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean()
+%% }
+-type delete_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string()
+%% }
+-type delete_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type delete_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterSnapshotIdentifier">> := string()
+%% }
+-type delete_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type delete_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_automated_backup_message() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DbiResourceId">> => string()
+%% }
+-type delete_db_instance_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_automated_backup_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type delete_db_instance_automated_backup_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DeleteAutomatedBackups">> => boolean(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean()
+%% }
+-type delete_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type delete_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string()
+%% }
+-type delete_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string()
+%% }
+-type delete_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type delete_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_request() :: #{
+%%   <<"DBProxyName">> := string()
+%% }
+-type delete_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type delete_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_security_group_message() :: #{
+%%   <<"DBSecurityGroupName">> := string()
+%% }
+-type delete_db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_shard_group_message() :: #{
+%%   <<"DBShardGroupIdentifier">> := string()
+%% }
+-type delete_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_snapshot_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string()
+%% }
+-type delete_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type delete_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupName">> := string()
+%% }
+-type delete_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_message() :: #{
+%%   <<"SubscriptionName">> := string()
+%% }
+-type delete_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type delete_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string()
+%% }
+-type delete_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type delete_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_message() :: #{
+%%   <<"IntegrationIdentifier">> := string()
+%% }
+-type delete_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_option_group_message() :: #{
+%%   <<"OptionGroupName">> := string()
+%% }
+-type delete_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tenant_database_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean(),
+%%   <<"TenantDBName">> := string()
+%% }
+-type delete_tenant_database_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
+%% }
+-type delete_tenant_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_db_proxy_targets_request() :: #{
+%%   <<"DBClusterIdentifiers">> => list(string()),
+%%   <<"DBInstanceIdentifiers">> => list(string()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type deregister_db_proxy_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_db_proxy_targets_response() :: #{
+
+%% }
+-type deregister_db_proxy_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_message() :: #{
+
+%% }
+-type describe_account_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_blue_green_deployments_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_blue_green_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_blue_green_deployments_response() :: #{
+%%   <<"BlueGreenDeployments">> => list(blue_green_deployment()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_blue_green_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificates_message() :: #{
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_certificates_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_automated_backups_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_automated_backups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_backtracks_message() :: #{
+%%   <<"BacktrackIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_backtracks_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_endpoints_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_endpoints_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_parameter_groups_message() :: #{
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
 %% describe_db_cluster_parameters_message() :: #{
 %%   <<"DBClusterParameterGroupName">> := string(),
 %%   <<"Filters">> => list(filter()),
@@ -701,219 +2755,66 @@
 -type describe_db_cluster_parameters_message() :: #{binary() => any()}.
 
 %% Example:
-%% resource_pending_maintenance_actions() :: #{
-%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
-%%   <<"ResourceIdentifier">> => string()
+%% describe_db_cluster_snapshot_attributes_message() :: #{
+%%   <<"DBClusterSnapshotIdentifier">> := string()
 %% }
--type resource_pending_maintenance_actions() :: #{binary() => any()}.
+-type describe_db_cluster_snapshot_attributes_message() :: #{binary() => any()}.
 
 %% Example:
-%% stop_activity_stream_request() :: #{
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"ResourceArn">> := string()
+%% describe_db_cluster_snapshot_attributes_result() :: #{
+%%   <<"DBClusterSnapshotAttributesResult">> => db_cluster_snapshot_attributes_result()
 %% }
--type stop_activity_stream_request() :: #{binary() => any()}.
+-type describe_db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
 
 %% Example:
-%% event_categories_map() :: #{
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SourceType">> => string()
-%% }
--type event_categories_map() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_proxy_request() :: #{
-%%   <<"Auth">> => list(user_auth_config()),
-%%   <<"DBProxyName">> := string(),
-%%   <<"DebugLogging">> => boolean(),
-%%   <<"DefaultAuthScheme">> => list(any()),
-%%   <<"EndpointNetworkType">> => list(any()),
-%%   <<"EngineFamily">> := list(any()),
-%%   <<"IdleClientTimeout">> => integer(),
-%%   <<"RequireTLS">> => boolean(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetConnectionNetworkType">> => list(any()),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"VpcSubnetIds">> := list(string())
-%% }
--type create_db_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_target_group_request() :: #{
-%%   <<"ConnectionPoolConfig">> => connection_pool_configuration(),
-%%   <<"DBProxyName">> := string(),
-%%   <<"NewName">> => string(),
-%%   <<"TargetGroupName">> := string()
-%% }
--type modify_db_proxy_target_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% range() :: #{
-%%   <<"From">> => integer(),
-%%   <<"Step">> => integer(),
-%%   <<"To">> => integer()
-%% }
--type range() :: #{binary() => any()}.
-
-%% Example:
-%% connection_pool_configuration_info() :: #{
-%%   <<"ConnectionBorrowTimeout">> => integer(),
-%%   <<"InitQuery">> => string(),
-%%   <<"MaxConnectionsPercent">> => integer(),
-%%   <<"MaxIdleConnectionsPercent">> => integer(),
-%%   <<"SessionPinningFilters">> => list(string())
-%% }
--type connection_pool_configuration_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
-%% }
--type delete_global_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% iam_role_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_role_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_tenant_database_message() :: #{
-%%   <<"CharacterSetName">> => string(),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"MasterUsername">> := string(),
-%%   <<"NcharCharacterSetName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TenantDBName">> := string()
-%% }
--type create_tenant_database_message() :: #{binary() => any()}.
-
-%% Example:
-%% performance_insights_metric_dimension_group() :: #{
-%%   <<"Dimensions">> => list(string()),
-%%   <<"Group">> => string(),
-%%   <<"Limit">> => integer()
-%% }
--type performance_insights_metric_dimension_group() :: #{binary() => any()}.
-
-%% Example:
-%% max_db_shard_group_limit_reached() :: #{
-%%   <<"message">> => string()
-%% }
--type max_db_shard_group_limit_reached() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_parameter_group_name_message() :: #{
-%%   <<"DBClusterParameterGroupName">> => string()
-%% }
--type db_cluster_parameter_group_name_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_automated_backup_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% integration_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_snapshot_attributes_result() :: #{
-%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
-%% }
--type describe_db_snapshot_attributes_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type stop_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone() :: #{
-%%   <<"Name">> => string()
-%% }
--type availability_zone() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instance_message() :: #{
+%% describe_db_cluster_snapshots_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBClusterSnapshotIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludePublic">> => boolean(),
+%%   <<"IncludeShared">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"ReservedDBInstances">> => list(reserved_db_instance())
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
 %% }
--type reserved_db_instance_message() :: #{binary() => any()}.
+-type describe_db_cluster_snapshots_message() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_instance_read_replica_message() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DomainOu">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"EnableCustomerOwnedIp">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"UpgradeStorageConfig">> => boolean(),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"SourceDBInstanceIdentifier">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"SourceDBClusterIdentifier">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"UseDefaultProcessorFeatures">> => boolean(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DomainAuthSecretArn">> => string(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"DomainDnsIps">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ReplicaMode">> => list(any()),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"DomainFqdn">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"CustomIamInstanceProfile">> => string(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
+%% describe_db_clusters_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type create_db_instance_read_replica_message() :: #{binary() => any()}.
+-type describe_db_clusters_message() :: #{binary() => any()}.
 
 %% Example:
-%% start_db_instance_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string()
+%% describe_db_engine_versions_message() :: #{
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"ListSupportedCharacterSets">> => boolean(),
+%%   <<"ListSupportedTimezones">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type start_db_instance_message() :: #{binary() => any()}.
+-type describe_db_engine_versions_message() :: #{binary() => any()}.
 
 %% Example:
-%% db_snapshot_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% describe_db_instance_automated_backups_message() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type db_snapshot_already_exists_fault() :: #{binary() => any()}.
+-type describe_db_instance_automated_backups_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_db_instances_message() :: #{
@@ -925,90 +2826,31 @@
 -type describe_db_instances_message() :: #{binary() => any()}.
 
 %% Example:
-%% shared_snapshot_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% describe_db_log_files_details() :: #{
+%%   <<"LastWritten">> => float(),
+%%   <<"LogFileName">> => string(),
+%%   <<"Size">> => float()
 %% }
--type shared_snapshot_quota_exceeded_fault() :: #{binary() => any()}.
+-type describe_db_log_files_details() :: #{binary() => any()}.
 
 %% Example:
-%% db_recommendation_message() :: #{
-%%   <<"DBRecommendation">> => db_recommendation()
+%% describe_db_log_files_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FileLastWritten">> => float(),
+%%   <<"FileSize">> => float(),
+%%   <<"FilenameContains">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type db_recommendation_message() :: #{binary() => any()}.
+-type describe_db_log_files_message() :: #{binary() => any()}.
 
 %% Example:
-%% vpc_encryption_control_violation_exception() :: #{
-%%   <<"message">> => string()
+%% describe_db_log_files_response() :: #{
+%%   <<"DescribeDBLogFiles">> => list(describe_db_log_files_details()),
+%%   <<"Marker">> => string()
 %% }
--type vpc_encryption_control_violation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_request() :: #{
-%%   <<"Auth">> => list(user_auth_config()),
-%%   <<"DBProxyName">> := string(),
-%%   <<"DebugLogging">> => boolean(),
-%%   <<"DefaultAuthScheme">> => list(any()),
-%%   <<"IdleClientTimeout">> => integer(),
-%%   <<"NewDBProxyName">> => string(),
-%%   <<"RequireTLS">> => boolean(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecurityGroups">> => list(string())
-%% }
--type modify_db_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_not_supported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_security_group_not_supported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_parameter_group_message() :: #{
-%%   <<"DBParameterGroupFamily">> := string(),
-%%   <<"DBParameterGroupName">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_deployment() :: #{
-%%   <<"BlueGreenDeploymentIdentifier">> => string(),
-%%   <<"BlueGreenDeploymentName">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DeleteTime">> => non_neg_integer(),
-%%   <<"Source">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StatusDetails">> => string(),
-%%   <<"SwitchoverDetails">> => list(switchover_detail()),
-%%   <<"TagList">> => list(tag()),
-%%   <<"Target">> => string(),
-%%   <<"Tasks">> => list(blue_green_deployment_task())
-%% }
--type blue_green_deployment() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_deployment_task() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type blue_green_deployment_task() :: #{binary() => any()}.
-
-%% Example:
-%% performance_issue_details() :: #{
-%%   <<"Analysis">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Metrics">> => list(metric()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type performance_issue_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_instance_automated_backup_message() :: #{
-%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
-%%   <<"DbiResourceId">> => string()
-%% }
--type delete_db_instance_automated_backup_message() :: #{binary() => any()}.
+-type describe_db_log_files_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_db_major_engine_versions_request() :: #{
@@ -1018,6 +2860,741 @@
 %%   <<"MaxRecords">> => integer()
 %% }
 -type describe_db_major_engine_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_major_engine_versions_response() :: #{
+%%   <<"DBMajorEngineVersions">> => list(db_major_engine_version()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_major_engine_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_parameter_groups_message() :: #{
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_parameters_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Source">> => string()
+%% }
+-type describe_db_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxies_request() :: #{
+%%   <<"DBProxyName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_proxies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxies_response() :: #{
+%%   <<"DBProxies">> => list(db_proxy()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_proxies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_endpoints_request() :: #{
+%%   <<"DBProxyEndpointName">> => string(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_proxy_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_endpoints_response() :: #{
+%%   <<"DBProxyEndpoints">> => list(db_proxy_endpoint()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_proxy_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_target_groups_request() :: #{
+%%   <<"DBProxyName">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type describe_db_proxy_target_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_target_groups_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TargetGroups">> => list(db_proxy_target_group())
+%% }
+-type describe_db_proxy_target_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_targets_request() :: #{
+%%   <<"DBProxyName">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type describe_db_proxy_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_targets_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Targets">> => list(db_proxy_target())
+%% }
+-type describe_db_proxy_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_recommendations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"LastUpdatedAfter">> => non_neg_integer(),
+%%   <<"LastUpdatedBefore">> => non_neg_integer(),
+%%   <<"Locale">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_recommendations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_security_groups_message() :: #{
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_security_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_shard_groups_message() :: #{
+%%   <<"DBShardGroupIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_shard_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_shard_groups_response() :: #{
+%%   <<"DBShardGroups">> => list(db_shard_group()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_shard_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_attributes_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string()
+%% }
+-type describe_db_snapshot_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_attributes_result() :: #{
+%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
+%% }
+-type describe_db_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_tenant_databases_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
+%% }
+-type describe_db_snapshot_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshots_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludePublic">> => boolean(),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
+%% }
+-type describe_db_snapshots_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_subnet_groups_message() :: #{
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_subnet_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_cluster_parameters_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_engine_default_cluster_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_cluster_parameters_result() :: #{
+%%   <<"EngineDefaults">> => engine_defaults()
+%% }
+-type describe_engine_default_cluster_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_parameters_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_engine_default_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_parameters_result() :: #{
+%%   <<"EngineDefaults">> => engine_defaults()
+%% }
+-type describe_engine_default_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_categories_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"SourceType">> => string()
+%% }
+-type describe_event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_subscriptions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SubscriptionName">> => string()
+%% }
+-type describe_event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_message() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_message() :: #{
+%%   <<"ExportTaskIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type describe_export_tasks_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_clusters_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_global_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"IntegrationIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_integrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_response() :: #{
+%%   <<"Integrations">> => list(integration()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_option_group_options_message() :: #{
+%%   <<"EngineName">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_option_group_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_option_groups_message() :: #{
+%%   <<"EngineName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"OptionGroupName">> => string()
+%% }
+-type describe_option_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_orderable_db_instance_options_message() :: #{
+%%   <<"AvailabilityZoneGroup">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Vpc">> => boolean()
+%% }
+-type describe_orderable_db_instance_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pending_maintenance_actions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_db_instances_message() :: #{
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LeaseId">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"ReservedDBInstanceId">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> => string()
+%% }
+-type describe_reserved_db_instances_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_db_instances_offerings_message() :: #{
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> => string()
+%% }
+-type describe_reserved_db_instances_offerings_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_serverless_v2_platform_versions_message() :: #{
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ServerlessV2PlatformVersion">> => string()
+%% }
+-type describe_serverless_v2_platform_versions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_source_regions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"RegionName">> => string()
+%% }
+-type describe_source_regions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tenant_databases_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TenantDBName">> => string()
+%% }
+-type describe_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_valid_db_instance_modifications_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type describe_valid_db_instance_modifications_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_valid_db_instance_modifications_result() :: #{
+%%   <<"ValidDBInstanceModificationsMessage">> => valid_db_instance_modifications_message()
+%% }
+-type describe_valid_db_instance_modifications_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_http_endpoint_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disable_http_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_http_endpoint_response() :: #{
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type disable_http_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% doc_link() :: #{
+%%   <<"Text">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type doc_link() :: #{binary() => any()}.
+
+%% Example:
+%% domain_membership() :: #{
+%%   <<"AuthSecretArn">> => string(),
+%%   <<"DnsIps">> => list(string()),
+%%   <<"Domain">> => string(),
+%%   <<"FQDN">> => string(),
+%%   <<"IAMRoleName">> => string(),
+%%   <<"OU">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type domain_membership() :: #{binary() => any()}.
+
+%% Example:
+%% domain_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% double_range() :: #{
+%%   <<"From">> => float(),
+%%   <<"To">> => float()
+%% }
+-type double_range() :: #{binary() => any()}.
+
+%% Example:
+%% download_db_log_file_portion_details() :: #{
+%%   <<"AdditionalDataPending">> => boolean(),
+%%   <<"LogFileData">> => string(),
+%%   <<"Marker">> => string()
+%% }
+-type download_db_log_file_portion_details() :: #{binary() => any()}.
+
+%% Example:
+%% download_db_log_file_portion_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"LogFileName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"NumberOfLines">> => integer()
+%% }
+-type download_db_log_file_portion_message() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_image_properties_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type ec2_image_properties_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_security_group() :: #{
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type ec2_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% enable_http_endpoint_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type enable_http_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_http_endpoint_response() :: #{
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type enable_http_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% engine_defaults() :: #{
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type engine_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Message">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_map() :: #{
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SourceType">> => string()
+%% }
+-type event_categories_map() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_message() :: #{
+%%   <<"EventCategoriesMapList">> => list(event_categories_map())
+%% }
+-type event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"CustSubscriptionId">> => string(),
+%%   <<"CustomerAwsId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategoriesList">> => list(string()),
+%%   <<"EventSubscriptionArn">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceIdsList">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubscriptionCreationTime">> => string()
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type event_subscription_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscriptions_message() :: #{
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
+%%   <<"Marker">> => string()
+%% }
+-type event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% events_message() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"Marker">> => string()
+%% }
+-type events_message() :: #{binary() => any()}.
+
+%% Example:
+%% export_task() :: #{
+%%   <<"ExportOnly">> => list(string()),
+%%   <<"ExportTaskIdentifier">> => string(),
+%%   <<"FailureCause">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PercentProgress">> => integer(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"SnapshotTime">> => non_neg_integer(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => string(),
+%%   <<"TaskEndTime">> => non_neg_integer(),
+%%   <<"TaskStartTime">> => non_neg_integer(),
+%%   <<"TotalExtractedDataInGB">> => integer(),
+%%   <<"WarningMessage">> => string()
+%% }
+-type export_task() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_task_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_task_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% export_tasks_message() :: #{
+%%   <<"ExportTasks">> => list(export_task()),
+%%   <<"Marker">> => string()
+%% }
+-type export_tasks_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"TargetDBInstanceIdentifier">> => string()
+%% }
+-type failover_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type failover_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% failover_global_cluster_message() :: #{
+%%   <<"AllowDataLoss">> => boolean(),
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"Switchover">> => boolean(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type failover_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type failover_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% failover_state() :: #{
+%%   <<"FromDbClusterArn">> => string(),
+%%   <<"IsDataLossAllowed">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"ToDbClusterArn">> => string()
+%% }
+-type failover_state() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"FailoverState">> => failover_state(),
+%%   <<"GlobalClusterArn">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"GlobalClusterMembers">> => list(global_cluster_member()),
+%%   <<"GlobalClusterResourceId">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageEncryptionType">> => list(any()),
+%%   <<"TagList">> => list(tag())
+%% }
+-type global_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_member() :: #{
+%%   <<"DBClusterArn">> => string(),
+%%   <<"GlobalWriteForwardingStatus">> => list(any()),
+%%   <<"IsWriter">> => boolean(),
+%%   <<"Readers">> => list(string()),
+%%   <<"SynchronizationStatus">> => list(any())
+%% }
+-type global_cluster_member() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_clusters_message() :: #{
+%%   <<"GlobalClusters">> => list(global_cluster()),
+%%   <<"Marker">> => string()
+%% }
+-type global_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% iam_role_missing_permissions_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_role_missing_permissions_fault() :: #{binary() => any()}.
+
+%% Example:
+%% iam_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% instance_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_available_ips_in_subnet_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_available_ips_in_subnet_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_db_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_db_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_db_instance_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_db_instance_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_storage_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_storage_cluster_capacity_fault() :: #{binary() => any()}.
 
 %% Example:
 %% integration() :: #{
@@ -1037,117 +3614,298 @@
 -type integration() :: #{binary() => any()}.
 
 %% Example:
-%% tenant_database() :: #{
-%%   <<"CharacterSetName">> => string(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"MasterUserSecret">> => master_user_secret(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"NcharCharacterSetName">> => string(),
-%%   <<"PendingModifiedValues">> => tenant_database_pending_modified_values(),
-%%   <<"Status">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"TenantDBName">> => string(),
-%%   <<"TenantDatabaseARN">> => string(),
-%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
-%%   <<"TenantDatabaseResourceId">> => string()
+%% integration_already_exists_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type tenant_database() :: #{binary() => any()}.
+-type integration_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% reboot_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string()
+%% integration_conflict_operation_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type reboot_db_cluster_message() :: #{binary() => any()}.
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
 
 %% Example:
-%% serverless_v2_platform_versions_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ServerlessV2PlatformVersions">> => list(serverless_v2_platform_version_info())
+%% integration_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
 %% }
--type serverless_v2_platform_versions_message() :: #{binary() => any()}.
+-type integration_error() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_cluster_parameter_group_message() :: #{
-%%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"DBParameterGroupFamily">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag())
+%% integration_not_found_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type create_db_cluster_parameter_group_message() :: #{binary() => any()}.
+-type integration_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% connection_pool_configuration() :: #{
-%%   <<"ConnectionBorrowTimeout">> => integer(),
-%%   <<"InitQuery">> => string(),
-%%   <<"MaxConnectionsPercent">> => integer(),
-%%   <<"MaxIdleConnectionsPercent">> => integer(),
-%%   <<"SessionPinningFilters">> => list(string())
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type connection_pool_configuration() :: #{binary() => any()}.
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% copy_db_cluster_parameter_group_result() :: #{
-%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
+%% invalid_blue_green_deployment_state_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type copy_db_cluster_parameter_group_result() :: #{binary() => any()}.
+-type invalid_blue_green_deployment_state_fault() :: #{binary() => any()}.
 
 %% Example:
-%% stop_db_instance_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"DBSnapshotIdentifier">> => string()
+%% invalid_custom_db_engine_version_state_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type stop_db_instance_message() :: #{binary() => any()}.
+-type invalid_custom_db_engine_version_state_fault() :: #{binary() => any()}.
 
 %% Example:
-%% modify_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string()
+%% invalid_db_cluster_automated_backup_state_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type modify_event_subscription_message() :: #{binary() => any()}.
+-type invalid_db_cluster_automated_backup_state_fault() :: #{binary() => any()}.
 
 %% Example:
-%% copy_db_cluster_parameter_group_message() :: #{
-%%   <<"SourceDBClusterParameterGroupIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDBClusterParameterGroupDescription">> := string(),
-%%   <<"TargetDBClusterParameterGroupIdentifier">> := string()
+%% invalid_db_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type copy_db_cluster_parameter_group_message() :: #{binary() => any()}.
+-type invalid_db_cluster_capacity_fault() :: #{binary() => any()}.
 
 %% Example:
-%% processor_feature() :: #{
+%% invalid_db_cluster_endpoint_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_endpoint_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_instance_automated_backup_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_instance_automated_backup_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_instance_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_instance_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_proxy_endpoint_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_proxy_endpoint_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_proxy_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_proxy_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_security_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_security_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_shard_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_shard_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_group_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_group_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_subscription_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_event_subscription_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_only_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_only_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_source_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_source_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_task_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_task_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_global_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_global_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_integration_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_integration_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_option_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_option_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_restore_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_restore_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_bucket_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_bucket_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% ip_range() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type ip_range() :: #{binary() => any()}.
+
+%% Example:
+%% issue_details() :: #{
+%%   <<"PerformanceIssueDetails">> => performance_issue_details()
+%% }
+-type issue_details() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_accessible_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_key_not_accessible_fault() :: #{binary() => any()}.
+
+%% Example:
+%% limitless_database() :: #{
+%%   <<"MinRequiredACU">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type limitless_database() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"ResourceName">> := string()
+%% }
+-type list_tags_for_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% master_user_secret() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SecretStatus">> => string()
+%% }
+-type master_user_secret() :: #{binary() => any()}.
+
+%% Example:
+%% max_db_shard_group_limit_reached() :: #{
+%%   <<"message">> => string()
+%% }
+-type max_db_shard_group_limit_reached() :: #{binary() => any()}.
+
+%% Example:
+%% metric() :: #{
+%%   <<"MetricQuery">> => metric_query(),
 %%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%%   <<"References">> => list(metric_reference()),
+%%   <<"StatisticsDetails">> => string()
 %% }
--type processor_feature() :: #{binary() => any()}.
+-type metric() :: #{binary() => any()}.
 
 %% Example:
-%% describe_pending_maintenance_actions_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ResourceIdentifier">> => string()
+%% metric_query() :: #{
+%%   <<"PerformanceInsightsMetricQuery">> => performance_insights_metric_query()
 %% }
--type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+-type metric_query() :: #{binary() => any()}.
 
 %% Example:
-%% describe_orderable_db_instance_options_message() :: #{
-%%   <<"AvailabilityZoneGroup">> => string(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"Engine">> := string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"LicenseModel">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"Vpc">> => boolean()
+%% metric_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ReferenceDetails">> => reference_details()
 %% }
--type describe_orderable_db_instance_options_message() :: #{binary() => any()}.
+-type metric_reference() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_engine_version_per_allowed_value() :: #{
+%%   <<"AllowedValue">> => string(),
+%%   <<"MinimumEngineVersion">> => string()
+%% }
+-type minimum_engine_version_per_allowed_value() :: #{binary() => any()}.
+
+%% Example:
+%% modify_activity_stream_request() :: #{
+%%   <<"AuditPolicyState">> => list(any()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type modify_activity_stream_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_activity_stream_response() :: #{
@@ -1161,299 +3919,122 @@
 -type modify_activity_stream_response() :: #{binary() => any()}.
 
 %% Example:
-%% pending_cloudwatch_logs_exports() :: #{
-%%   <<"LogTypesToDisable">> => list(string()),
-%%   <<"LogTypesToEnable">> => list(string())
-%% }
--type pending_cloudwatch_logs_exports() :: #{binary() => any()}.
-
-%% Example:
-%% metric() :: #{
-%%   <<"MetricQuery">> => metric_query(),
-%%   <<"Name">> => string(),
-%%   <<"References">> => list(metric_reference()),
-%%   <<"StatisticsDetails">> => string()
-%% }
--type metric() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_from_s3_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"S3IngestionRoleArn">> := string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"SourceEngineVersion">> := string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"DBSecurityGroups">> => list(string()),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"UseDefaultProcessorFeatures">> => boolean(),
-%%   <<"S3BucketName">> := string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"Engine">> := string(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"LicenseModel">> => string(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"DBInstanceClass">> := string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"SourceEngine">> := string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type restore_db_instance_from_s3_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_export_task_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_export_task_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_targets_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Targets">> => list(db_proxy_target())
-%% }
--type describe_db_proxy_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% double_range() :: #{
-%%   <<"From">> => float(),
-%%   <<"To">> => float()
-%% }
--type double_range() :: #{binary() => any()}.
-
-%% Example:
-%% engine_defaults() :: #{
-%%   <<"DBParameterGroupFamily">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type engine_defaults() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_reserved_db_instances_offering_message() :: #{
-%%   <<"DBInstanceCount">> => integer(),
-%%   <<"ReservedDBInstanceId">> => string(),
-%%   <<"ReservedDBInstancesOfferingId">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type purchase_reserved_db_instances_offering_message() :: #{binary() => any()}.
-
-%% Example:
-%% backtrack_db_cluster_message() :: #{
-%%   <<"BacktrackTo">> := non_neg_integer(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"Force">> => boolean(),
-%%   <<"UseEarliestTimeOnPointInTimeUnavailable">> => boolean()
-%% }
--type backtrack_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_backtrack_message() :: #{
-%%   <<"DBClusterBacktracks">> => list(db_cluster_backtrack()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_backtrack_message() :: #{binary() => any()}.
-
-%% Example:
-%% additional_storage_volume() :: #{
+%% modify_additional_storage_volume() :: #{
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"IOPS">> => integer(),
 %%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"SetForDelete">> => boolean(),
 %%   <<"StorageThroughput">> => integer(),
 %%   <<"StorageType">> => string(),
 %%   <<"VolumeName">> => string()
 %% }
--type additional_storage_volume() :: #{binary() => any()}.
+-type modify_additional_storage_volume() :: #{binary() => any()}.
 
 %% Example:
-%% db_snapshot_attributes_result() :: #{
-%%   <<"DBSnapshotAttributes">> => list(db_snapshot_attribute()),
-%%   <<"DBSnapshotIdentifier">> => string()
+%% modify_certificates_message() :: #{
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"RemoveCustomerOverride">> => boolean()
 %% }
--type db_snapshot_attributes_result() :: #{binary() => any()}.
+-type modify_certificates_message() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_subnet_group_result() :: #{
-%%   <<"DBSubnetGroup">> => db_subnet_group()
+%% modify_certificates_result() :: #{
+%%   <<"Certificate">> => certificate()
 %% }
--type create_db_subnet_group_result() :: #{binary() => any()}.
+-type modify_certificates_result() :: #{binary() => any()}.
 
 %% Example:
-%% reference_details() :: #{
-%%   <<"ScalarReferenceDetails">> => scalar_reference_details()
+%% modify_current_db_cluster_capacity_message() :: #{
+%%   <<"Capacity">> => integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"TimeoutAction">> => string()
 %% }
--type reference_details() :: #{binary() => any()}.
+-type modify_current_db_cluster_capacity_message() :: #{binary() => any()}.
 
 %% Example:
-%% switchover_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
+%% modify_custom_db_engine_version_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string(),
+%%   <<"Status">> => list(any())
 %% }
--type switchover_global_cluster_result() :: #{binary() => any()}.
+-type modify_custom_db_engine_version_message() :: #{binary() => any()}.
 
 %% Example:
-%% cloudwatch_logs_export_configuration() :: #{
-%%   <<"DisableLogTypes">> => list(string()),
-%%   <<"EnableLogTypes">> => list(string())
+%% modify_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"ExcludedMembers">> => list(string()),
+%%   <<"StaticMembers">> => list(string())
 %% }
--type cloudwatch_logs_export_configuration() :: #{binary() => any()}.
+-type modify_db_cluster_endpoint_message() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tenant_database_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"FinalDBSnapshotIdentifier">> => string(),
-%%   <<"SkipFinalSnapshot">> => boolean(),
-%%   <<"TenantDBName">> := string()
+%% modify_db_cluster_message() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AllowEngineModeChange">> => boolean(),
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBInstanceParameterGroupName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableGlobalWriteForwarding">> => boolean(),
+%%   <<"EnableHttpEndpoint">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableLimitlessDatabase">> => boolean(),
+%%   <<"EnableLocalWriteForwarding">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserAuthenticationType">> => list(any()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"NewDBClusterIdentifier">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"StorageType">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type delete_tenant_database_message() :: #{binary() => any()}.
+-type modify_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% disable_http_endpoint_response() :: #{
-%%   <<"HttpEndpointEnabled">> => boolean(),
-%%   <<"ResourceArn">> => string()
+%% modify_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"Parameters">> := list(parameter())
 %% }
--type disable_http_endpoint_response() :: #{binary() => any()}.
+-type modify_db_cluster_parameter_group_message() :: #{binary() => any()}.
 
 %% Example:
-%% db_instance_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% modify_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
 %% }
--type db_instance_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_db_instance_capacity_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_db_instance_capacity_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_role() :: #{
-%%   <<"FeatureName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type db_cluster_role() :: #{binary() => any()}.
-
-%% Example:
-%% promote_read_replica_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type promote_read_replica_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_snapshots_message() :: #{
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DBSnapshotIdentifier">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludePublic">> => boolean(),
-%%   <<"IncludeShared">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SnapshotType">> => string()
-%% }
--type describe_db_snapshots_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_target_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_target_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type modify_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_subscription() :: #{
-%%   <<"CustSubscriptionId">> => string(),
-%%   <<"CustomerAwsId">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()),
-%%   <<"EventSubscriptionArn">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"SubscriptionCreationTime">> => string()
-%% }
--type event_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% describe_blue_green_deployments_request() :: #{
-%%   <<"BlueGreenDeploymentIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_blue_green_deployments_request() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_security_group() :: #{
-%%   <<"EC2SecurityGroupId">> => string(),
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type ec2_security_group() :: #{binary() => any()}.
-
-%% Example:
-%% global_cluster_member() :: #{
-%%   <<"DBClusterArn">> => string(),
-%%   <<"GlobalWriteForwardingStatus">> => list(any()),
-%%   <<"IsWriter">> => boolean(),
-%%   <<"Readers">> => list(string()),
-%%   <<"SynchronizationStatus">> => list(any())
-%% }
--type global_cluster_member() :: #{binary() => any()}.
-
-%% Example:
-%% recurring_charge() :: #{
-%%   <<"RecurringChargeAmount">> => float(),
-%%   <<"RecurringChargeFrequency">> => string()
-%% }
--type recurring_charge() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_shard_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_shard_group_state_fault() :: #{binary() => any()}.
+-type modify_db_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_db_cluster_snapshot_attribute_message() :: #{
@@ -1465,843 +4046,385 @@
 -type modify_db_cluster_snapshot_attribute_message() :: #{binary() => any()}.
 
 %% Example:
-%% add_source_identifier_to_subscription_message() :: #{
-%%   <<"SourceIdentifier">> := string(),
-%%   <<"SubscriptionName">> := string()
-%% }
--type add_source_identifier_to_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_restore_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_restore_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_subnet_group_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_subnet_group_fault() :: #{binary() => any()}.
-
-%% Example:
-%% custom_db_engine_version_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_db_engine_version_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_blue_green_deployments_response() :: #{
-%%   <<"BlueGreenDeployments">> => list(blue_green_deployment()),
-%%   <<"Marker">> => string()
-%% }
--type describe_blue_green_deployments_response() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_backtrack_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_backtrack_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificates_message() :: #{
-%%   <<"CertificateIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_certificates_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_activity_stream_request() :: #{
-%%   <<"AuditPolicyState">> => list(any()),
-%%   <<"ResourceArn">> => string()
-%% }
--type modify_activity_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_cluster_to_point_in_time_message() :: #{
-%%   <<"EnableVPCNetworking">> => boolean(),
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"DBClusterInstanceClass">> => string(),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"SourceDbClusterResourceId">> => string(),
-%%   <<"ScalingConfiguration">> => scaling_configuration(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"SourceDBClusterIdentifier">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"EngineMode">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"RestoreToTime">> => non_neg_integer(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"UseLatestRestorableTime">> => boolean(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"NetworkType">> => string(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"EnableInternetAccessGateway">> => boolean(),
-%%   <<"RestoreType">> => string(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type restore_db_cluster_to_point_in_time_message() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_configuration_info() :: #{
-%%   <<"AutoPause">> => boolean(),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer(),
-%%   <<"SecondsBeforeTimeout">> => integer(),
-%%   <<"SecondsUntilAutoPause">> => integer(),
-%%   <<"TimeoutAction">> => string()
-%% }
--type scaling_configuration_info() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_subnet_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_subnet_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% integration_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type integration_error() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_security_group_message() :: #{
-%%   <<"DBSecurityGroupDescription">> := string(),
-%%   <<"DBSecurityGroupName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_security_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% subnet() :: #{
-%%   <<"SubnetAvailabilityZone">> => availability_zone(),
-%%   <<"SubnetIdentifier">> => string(),
-%%   <<"SubnetOutpost">> => outpost(),
-%%   <<"SubnetStatus">> => string()
-%% }
--type subnet() :: #{binary() => any()}.
-
-%% Example:
-%% remove_source_identifier_from_subscription_message() :: #{
-%%   <<"SourceIdentifier">> := string(),
-%%   <<"SubscriptionName">> := string()
-%% }
--type remove_source_identifier_from_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_snapshot_message() :: #{
-%%   <<"DBClusterSnapshots">> => list(db_cluster_snapshot()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_subnet() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"ResourceName">> := string()
-%% }
--type list_tags_for_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_snapshots_message() :: #{
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"DBClusterSnapshotIdentifier">> => string(),
-%%   <<"DbClusterResourceId">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludePublic">> => boolean(),
-%%   <<"IncludeShared">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SnapshotType">> => string()
-%% }
--type describe_db_cluster_snapshots_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_shard_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_shard_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_db_engine_version_message() :: #{
-%%   <<"DatabaseInstallationFiles">> => list(string()),
-%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
-%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Engine">> := string(),
-%%   <<"EngineVersion">> := string(),
-%%   <<"ImageId">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"Manifest">> => string(),
-%%   <<"SourceCustomDbEngineVersionIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UseAwsProvidedLatestImage">> => boolean()
-%% }
--type create_custom_db_engine_version_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_security_group_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_instance_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Timezone">> => string(),
-%%   <<"NcharCharacterSetName">> => string(),
-%%   <<"MasterUserAuthenticationType">> => list(any()),
-%%   <<"PromotionTier">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DomainOu">> => string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"EnableCustomerOwnedIp">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"MultiTenant">> => boolean(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"CharacterSetName">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"DBSecurityGroups">> => list(string()),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DomainAuthSecretArn">> => string(),
-%%   <<"Engine">> := string(),
-%%   <<"TdeCredentialPassword">> => string(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"DomainDnsIps">> => list(string()),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"LicenseModel">> => string(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"DBInstanceClass">> := string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"DomainFqdn">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"CustomIamInstanceProfile">> => string(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"DBSystemId">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type create_db_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type create_db_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_cluster_to_point_in_time_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type restore_db_cluster_to_point_in_time_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_proxy_response() :: #{
-%%   <<"DBProxy">> => db_proxy()
-%% }
--type delete_db_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% metric_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"ReferenceDetails">> => reference_details()
-%% }
--type metric_reference() :: #{binary() => any()}.
-
-%% Example:
-%% describe_option_group_options_message() :: #{
-%%   <<"EngineName">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_option_group_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% custom_db_engine_version_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_db_engine_version_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% storage_type_not_supported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type storage_type_not_supported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_snapshot_attributes_result() :: #{
+%% modify_db_cluster_snapshot_attribute_result() :: #{
 %%   <<"DBClusterSnapshotAttributesResult">> => db_cluster_snapshot_attributes_result()
 %% }
--type describe_db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
+-type modify_db_cluster_snapshot_attribute_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_db_security_group_message() :: #{
-%%   <<"DBSecurityGroupName">> := string()
-%% }
--type delete_db_security_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Timezone">> => string(),
-%%   <<"ResumeFullAutomationModeTime">> => non_neg_integer(),
-%%   <<"NcharCharacterSetName">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"PromotionTier">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"ActivityStreamMode">> => list(any()),
-%%   <<"MasterUserSecret">> => master_user_secret(),
-%%   <<"ActivityStreamPolicyStatus">> => list(any()),
-%%   <<"DBParameterGroups">> => list(db_parameter_group_status()),
-%%   <<"AutomaticRestartTime">> => non_neg_integer(),
-%%   <<"ListenerEndpoint">> => endpoint(),
-%%   <<"Iops">> => integer(),
-%%   <<"ActivityStreamKmsKeyId">> => string(),
-%%   <<"StatusInfos">> => list(db_instance_status_info()),
-%%   <<"MultiTenant">> => boolean(),
-%%   <<"DBInstanceArn">> => string(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"DomainMemberships">> => list(domain_membership()),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"CharacterSetName">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"PendingModifiedValues">> => pending_modified_values(),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume_output()),
-%%   <<"UpgradeRolloutOrder">> => list(any()),
-%%   <<"StorageVolumeStatus">> => string(),
-%%   <<"ActivityStreamStatus">> => list(any()),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"SecondaryAvailabilityZone">> => string(),
-%%   <<"CustomerOwnedIpEnabled">> => boolean(),
-%%   <<"DBSubnetGroup">> => db_subnet_group(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"PerformanceInsightsEnabled">> => boolean(),
-%%   <<"DBSecurityGroups">> => list(db_security_group_membership()),
-%%   <<"ActivityStreamKinesisStreamName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"IsStorageConfigUpgradeAvailable">> => boolean(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"LatestRestorableTime">> => non_neg_integer(),
-%%   <<"EnhancedMonitoringResourceArn">> => string(),
-%%   <<"AutomationMode">> => list(any()),
-%%   <<"DBInstanceStatus">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"LicenseModel">> => string(),
-%%   <<"OptionGroupMemberships">> => list(option_group_membership()),
-%%   <<"AssociatedRoles">> => list(db_instance_role()),
-%%   <<"TagList">> => list(tag()),
-%%   <<"DbInstancePort">> => integer(),
-%%   <<"ReadReplicaSourceDBInstanceIdentifier">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ReplicaMode">> => list(any()),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"PercentProgress">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ReadReplicaDBClusterIdentifiers">> => list(string()),
-%%   <<"InstanceCreateTime">> => non_neg_integer(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
+%% modify_db_instance_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(modify_additional_storage_volume()),
 %%   <<"AllocatedStorage">> => integer(),
-%%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()),
-%%   <<"MonitoringInterval">> => integer(),
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AutomationMode">> => list(any()),
 %%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
 %%   <<"CACertificateIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"CustomIamInstanceProfile">> => string(),
-%%   <<"CertificateDetails">> => certificate_details(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"ReadReplicaSourceDBClusterIdentifier">> => string(),
-%%   <<"ActivityStreamEngineNativeAuditFieldsIncluded">> => boolean(),
-%%   <<"StorageEncryptionType">> => list(any()),
-%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()),
-%%   <<"DBSystemId">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type db_instance() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_endpoint_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_endpoint_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% add_role_to_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"FeatureName">> => string(),
-%%   <<"RoleArn">> := string()
-%% }
--type add_role_to_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_automated_backup_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_automated_backup_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_engine_default_cluster_parameters_result() :: #{
-%%   <<"EngineDefaults">> => engine_defaults()
-%% }
--type describe_engine_default_cluster_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_target() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"RdsResourceId">> => string(),
-%%   <<"Role">> => list(any()),
-%%   <<"TargetArn">> => string(),
-%%   <<"TargetHealth">> => target_health(),
-%%   <<"TrackedClusterId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type db_proxy_target() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_cluster_snapshot_result() :: #{
-%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
-%% }
--type copy_db_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_already_exist_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subscription_already_exist_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_action_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type recommended_action_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_blue_green_deployment_response() :: #{
-%%   <<"BlueGreenDeployment">> => blue_green_deployment()
-%% }
--type delete_blue_green_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_message() :: #{
-%%   <<"DBClusters">> => list(db_cluster()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_snapshot_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"DBSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% minimum_engine_version_per_allowed_value() :: #{
-%%   <<"AllowedValue">> => string(),
-%%   <<"MinimumEngineVersion">> => string()
-%% }
--type minimum_engine_version_per_allowed_value() :: #{binary() => any()}.
-
-%% Example:
-%% describe_valid_db_instance_modifications_result() :: #{
-%%   <<"ValidDBInstanceModificationsMessage">> => valid_db_instance_modifications_message()
-%% }
--type describe_valid_db_instance_modifications_result() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_image_properties_not_supported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type ec2_image_properties_not_supported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% copy_option_group_message() :: #{
-%%   <<"SourceOptionGroupIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetOptionGroupDescription">> := string(),
-%%   <<"TargetOptionGroupIdentifier">> := string()
-%% }
--type copy_option_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_engine_default_parameters_message() :: #{
-%%   <<"DBParameterGroupFamily">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_engine_default_parameters_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_valid_db_instance_modifications_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string()
-%% }
--type describe_valid_db_instance_modifications_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tenant_database_result() :: #{
-%%   <<"TenantDatabase">> => tenant_database()
-%% }
--type delete_tenant_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% failover_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
-%% }
--type failover_global_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_global_cluster_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_global_cluster_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_instance_automated_backup_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_instance_automated_backup_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_cluster_endpoint_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_cluster_endpoint_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_engine_versions_message() :: #{
-%%   <<"DBParameterGroupFamily">> => string(),
-%%   <<"DefaultOnly">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludeAll">> => boolean(),
-%%   <<"ListSupportedCharacterSets">> => boolean(),
-%%   <<"ListSupportedTimezones">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_engine_versions_message() :: #{binary() => any()}.
-
-%% Example:
-%% promote_read_replica_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string()
-%% }
--type promote_read_replica_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_blue_green_deployment_request() :: #{
-%%   <<"BlueGreenDeploymentName">> := string(),
-%%   <<"Source">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetAllocatedStorage">> => integer(),
-%%   <<"TargetDBClusterParameterGroupName">> => string(),
-%%   <<"TargetDBInstanceClass">> => string(),
-%%   <<"TargetDBParameterGroupName">> => string(),
-%%   <<"TargetEngineVersion">> => string(),
-%%   <<"TargetIops">> => integer(),
-%%   <<"TargetStorageThroughput">> => integer(),
-%%   <<"TargetStorageType">> => string(),
-%%   <<"UpgradeTargetStorageConfig">> => boolean()
-%% }
--type create_blue_green_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type domain_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_instance_read_replica_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type create_db_instance_read_replica_result() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_cluster_from_s3_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type restore_db_cluster_from_s3_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_endpoint_message() :: #{
-%%   <<"DBClusterEndpoints">> => list(db_cluster_endpoint()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% download_db_log_file_portion_details() :: #{
-%%   <<"AdditionalDataPending">> => boolean(),
-%%   <<"LogFileData">> => string(),
-%%   <<"Marker">> => string()
-%% }
--type download_db_log_file_portion_details() :: #{binary() => any()}.
-
-%% Example:
-%% modify_certificates_message() :: #{
-%%   <<"CertificateIdentifier">> => string(),
-%%   <<"RemoveCustomerOverride">> => boolean()
-%% }
--type modify_certificates_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_security_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% character_set() :: #{
-%%   <<"CharacterSetDescription">> => string(),
-%%   <<"CharacterSetName">> => string()
-%% }
--type character_set() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"DeleteAutomatedBackups">> => boolean(),
-%%   <<"FinalDBSnapshotIdentifier">> => string(),
-%%   <<"SkipFinalSnapshot">> => boolean()
-%% }
--type delete_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type reboot_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% switchover_blue_green_deployment_request() :: #{
-%%   <<"BlueGreenDeploymentIdentifier">> := string(),
-%%   <<"SwitchoverTimeout">> => integer()
-%% }
--type switchover_blue_green_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_automated_backup_message() :: #{
-%%   <<"DBInstanceAutomatedBackups">> => list(db_instance_automated_backup()),
-%%   <<"Marker">> => string()
-%% }
--type db_instance_automated_backup_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group() :: #{
-%%   <<"DBSecurityGroupArn">> => string(),
-%%   <<"DBSecurityGroupDescription">> => string(),
-%%   <<"DBSecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
-%%   <<"IPRanges">> => list(ip_range()),
-%%   <<"OwnerId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type db_security_group() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_endpoints_response() :: #{
-%%   <<"DBProxyEndpoints">> => list(db_proxy_endpoint()),
-%%   <<"Marker">> => string()
-%% }
--type describe_db_proxy_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_export_source_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_export_source_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% export_task_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type export_task_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% add_source_identifier_to_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type add_source_identifier_to_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_shard_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_shard_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_attributes_message() :: #{
-
-%% }
--type describe_account_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group() :: #{
-%%   <<"DBParameterGroupArn">> => string(),
-%%   <<"DBParameterGroupFamily">> => string(),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"Description">> => string()
-%% }
--type db_parameter_group() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_db_instances_offerings_message() :: #{
+%%   <<"CertificateRotationRestart">> => boolean(),
+%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBInstanceClass">> => string(),
-%%   <<"Duration">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBPortNumber">> => integer(),
+%%   <<"DBSecurityGroups">> => list(string()),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"DisableDomain">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DomainDnsIps">> => list(string()),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserAuthenticationType">> => list(any()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
 %%   <<"MultiAZ">> => boolean(),
-%%   <<"OfferingType">> => string(),
-%%   <<"ProductDescription">> => string(),
-%%   <<"ReservedDBInstancesOfferingId">> => string()
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"NewDBInstanceIdentifier">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"ResumeFullAutomationModeMinutes">> => integer(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type describe_reserved_db_instances_offerings_message() :: #{binary() => any()}.
+-type modify_db_instance_message() :: #{binary() => any()}.
 
 %% Example:
-%% custom_db_engine_version_a_m_i() :: #{
-%%   <<"ImageId">> => string(),
+%% modify_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type modify_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Parameters">> := list(parameter())
+%% }
+-type modify_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string(),
+%%   <<"NewDBProxyEndpointName">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type modify_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type modify_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_request() :: #{
+%%   <<"Auth">> => list(user_auth_config()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => list(any()),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"NewDBProxyName">> => string(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityGroups">> => list(string())
+%% }
+-type modify_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type modify_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_target_group_request() :: #{
+%%   <<"ConnectionPoolConfig">> => connection_pool_configuration(),
+%%   <<"DBProxyName">> := string(),
+%%   <<"NewName">> => string(),
+%%   <<"TargetGroupName">> := string()
+%% }
+-type modify_db_proxy_target_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_target_group_response() :: #{
+%%   <<"DBProxyTargetGroup">> => db_proxy_target_group()
+%% }
+-type modify_db_proxy_target_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_recommendation_message() :: #{
+%%   <<"Locale">> => string(),
+%%   <<"RecommendationId">> := string(),
+%%   <<"RecommendedActionUpdates">> => list(recommended_action_update()),
 %%   <<"Status">> => string()
 %% }
--type custom_db_engine_version_a_m_i() :: #{binary() => any()}.
+-type modify_db_recommendation_message() :: #{binary() => any()}.
 
 %% Example:
-%% db_parameter_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% modify_db_shard_group_message() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
+%%   <<"DBShardGroupIdentifier">> := string(),
+%%   <<"MaxACU">> => float(),
+%%   <<"MinACU">> => float()
 %% }
--type db_parameter_group_already_exists_fault() :: #{binary() => any()}.
+-type modify_db_shard_group_message() :: #{binary() => any()}.
 
 %% Example:
-%% delete_db_instance_message() :: #{
+%% modify_db_snapshot_attribute_message() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"ValuesToAdd">> => list(string()),
+%%   <<"ValuesToRemove">> => list(string())
+%% }
+-type modify_db_snapshot_attribute_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_attribute_result() :: #{
+%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
+%% }
+-type modify_db_snapshot_attribute_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"OptionGroupName">> => string()
+%% }
+-type modify_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type modify_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupDescription">> => string(),
+%%   <<"DBSubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string())
+%% }
+-type modify_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_subnet_group_result() :: #{
+%%   <<"DBSubnetGroup">> => db_subnet_group()
+%% }
+-type modify_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type modify_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type modify_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_global_cluster_message() :: #{
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"NewGlobalClusterIdentifier">> => string()
+%% }
+-type modify_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type modify_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_integration_message() :: #{
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationIdentifier">> := string(),
+%%   <<"IntegrationName">> => string()
+%% }
+-type modify_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_option_group_message() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"OptionGroupName">> := string(),
+%%   <<"OptionsToInclude">> => list(option_configuration()),
+%%   <<"OptionsToRemove">> => list(string())
+%% }
+-type modify_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type modify_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_tenant_database_message() :: #{
 %%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"DeleteAutomatedBackups">> => boolean(),
-%%   <<"FinalDBSnapshotIdentifier">> => string(),
-%%   <<"SkipFinalSnapshot">> => boolean()
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"NewTenantDBName">> => string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"TenantDBName">> := string()
 %% }
--type delete_db_instance_message() :: #{binary() => any()}.
+-type modify_tenant_database_message() :: #{binary() => any()}.
 
 %% Example:
-%% stop_db_instance_automated_backups_replication_result() :: #{
-%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% modify_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
 %% }
--type stop_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
+-type modify_tenant_database_result() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_vpc_network_state_fault() :: #{
+%% network_type_not_supported() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+-type network_type_not_supported() :: #{binary() => any()}.
+
+%% Example:
+%% option() :: #{
+%%   <<"DBSecurityGroupMemberships">> => list(db_security_group_membership()),
+%%   <<"OptionDescription">> => string(),
+%%   <<"OptionName">> => string(),
+%%   <<"OptionSettings">> => list(option_setting()),
+%%   <<"OptionVersion">> => string(),
+%%   <<"Permanent">> => boolean(),
+%%   <<"Persistent">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"VpcSecurityGroupMemberships">> => list(vpc_security_group_membership())
+%% }
+-type option() :: #{binary() => any()}.
+
+%% Example:
+%% option_configuration() :: #{
+%%   <<"DBSecurityGroupMemberships">> => list(string()),
+%%   <<"OptionName">> => string(),
+%%   <<"OptionSettings">> => list(option_setting()),
+%%   <<"OptionVersion">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"VpcSecurityGroupMemberships">> => list(string())
+%% }
+-type option_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% option_group() :: #{
+%%   <<"AllowsVpcAndNonVpcInstanceMemberships">> => boolean(),
+%%   <<"CopyTimestamp">> => non_neg_integer(),
+%%   <<"EngineName">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"OptionGroupArn">> => string(),
+%%   <<"OptionGroupDescription">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Options">> => list(option()),
+%%   <<"SourceAccountId">> => string(),
+%%   <<"SourceOptionGroup">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type option_group() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type option_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_membership() :: #{
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type option_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type option_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_option() :: #{
+%%   <<"CopyableCrossAccount">> => boolean(),
+%%   <<"DefaultPort">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"MinimumRequiredMinorEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OptionGroupOptionSettings">> => list(option_group_option_setting()),
+%%   <<"OptionGroupOptionVersions">> => list(option_version()),
+%%   <<"OptionsConflictsWith">> => list(string()),
+%%   <<"OptionsDependedOn">> => list(string()),
+%%   <<"Permanent">> => boolean(),
+%%   <<"Persistent">> => boolean(),
+%%   <<"PortRequired">> => boolean(),
+%%   <<"RequiresAutoMinorEngineVersionUpgrade">> => boolean(),
+%%   <<"SupportsOptionVersionDowngrade">> => boolean(),
+%%   <<"VpcOnly">> => boolean()
+%% }
+-type option_group_option() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_option_setting() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyType">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"MinimumEngineVersionPerAllowedValue">> => list(minimum_engine_version_per_allowed_value()),
+%%   <<"SettingDescription">> => string(),
+%%   <<"SettingName">> => string()
+%% }
+-type option_group_option_setting() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_options_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OptionGroupOptions">> => list(option_group_option())
+%% }
+-type option_group_options_message() :: #{binary() => any()}.
 
 %% Example:
 %% option_group_quota_exceeded_fault() :: #{
@@ -2310,82 +4433,76 @@
 -type option_group_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% source_region() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"RegionName">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"SupportsDBInstanceAutomatedBackupsReplication">> => boolean()
-%% }
--type source_region() :: #{binary() => any()}.
-
-%% Example:
-%% iam_role_missing_permissions_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_role_missing_permissions_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reset_db_parameter_group_message() :: #{
-%%   <<"DBParameterGroupName">> := string(),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"ResetAllParameters">> => boolean()
-%% }
--type reset_db_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% switchover_read_replica_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string()
-%% }
--type switchover_read_replica_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_security_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxies_request() :: #{
-%%   <<"DBProxyName">> => string(),
-%%   <<"Filters">> => list(filter()),
+%% option_groups() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%%   <<"OptionGroupsList">> => list(option_group())
 %% }
--type describe_db_proxies_request() :: #{binary() => any()}.
+-type option_groups() :: #{binary() => any()}.
 
 %% Example:
-%% describe_db_cluster_endpoints_message() :: #{
-%%   <<"DBClusterEndpointIdentifier">> => string(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% option_setting() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyType">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsCollection">> => boolean(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
 %% }
--type describe_db_cluster_endpoints_message() :: #{binary() => any()}.
+-type option_setting() :: #{binary() => any()}.
 
 %% Example:
-%% tenant_database_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% option_version() :: #{
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Version">> => string()
 %% }
--type tenant_database_quota_exceeded_fault() :: #{binary() => any()}.
+-type option_version() :: #{binary() => any()}.
 
 %% Example:
-%% modify_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
+%% orderable_db_instance_option() :: #{
+%%   <<"AvailabilityZoneGroup">> => string(),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
+%%   <<"AvailableAdditionalStorageVolumesOptions">> => list(available_additional_storage_volumes_option()),
+%%   <<"AvailableProcessorFeatures">> => list(available_processor_feature()),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MaxIopsPerDbInstance">> => integer(),
+%%   <<"MaxIopsPerGib">> => float(),
+%%   <<"MaxStorageSize">> => integer(),
+%%   <<"MaxStorageThroughputPerDbInstance">> => integer(),
+%%   <<"MaxStorageThroughputPerIops">> => float(),
+%%   <<"MinIopsPerDbInstance">> => integer(),
+%%   <<"MinIopsPerGib">> => float(),
+%%   <<"MinStorageSize">> => integer(),
+%%   <<"MinStorageThroughputPerDbInstance">> => integer(),
+%%   <<"MinStorageThroughputPerIops">> => float(),
+%%   <<"MultiAZCapable">> => boolean(),
+%%   <<"OutpostCapable">> => boolean(),
+%%   <<"ReadReplicaCapable">> => boolean(),
+%%   <<"StorageType">> => string(),
+%%   <<"SupportedActivityStreamModes">> => list(string()),
+%%   <<"SupportedEngineModes">> => list(string()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
+%%   <<"SupportsAdditionalStorageVolumes">> => boolean(),
+%%   <<"SupportsClusters">> => boolean(),
+%%   <<"SupportsDedicatedLogVolume">> => boolean(),
+%%   <<"SupportsEnhancedMonitoring">> => boolean(),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"SupportsHttpEndpoint">> => boolean(),
+%%   <<"SupportsIAMDatabaseAuthentication">> => boolean(),
+%%   <<"SupportsIops">> => boolean(),
+%%   <<"SupportsKerberosAuthentication">> => boolean(),
+%%   <<"SupportsPerformanceInsights">> => boolean(),
+%%   <<"SupportsStorageAutoscaling">> => boolean(),
+%%   <<"SupportsStorageEncryption">> => boolean(),
+%%   <<"SupportsStorageThroughput">> => boolean(),
+%%   <<"Vpc">> => boolean()
 %% }
--type modify_db_cluster_result() :: #{binary() => any()}.
+-type orderable_db_instance_option() :: #{binary() => any()}.
 
 %% Example:
 %% orderable_db_instance_options_message() :: #{
@@ -2395,140 +4512,51 @@
 -type orderable_db_instance_options_message() :: #{binary() => any()}.
 
 %% Example:
-%% promote_read_replica_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
+%% outpost() :: #{
+%%   <<"Arn">> => string()
 %% }
--type promote_read_replica_db_cluster_result() :: #{binary() => any()}.
+-type outpost() :: #{binary() => any()}.
 
 %% Example:
-%% authorize_db_security_group_ingress_message() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"DBSecurityGroupName">> := string(),
-%%   <<"EC2SecurityGroupId">> => string(),
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string()
+%% parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyMethod">> => list(any()),
+%%   <<"ApplyType">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SupportedEngineModes">> => list(string())
 %% }
--type authorize_db_security_group_ingress_message() :: #{binary() => any()}.
+-type parameter() :: #{binary() => any()}.
 
 %% Example:
-%% switchover_detail() :: #{
-%%   <<"SourceMember">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"TargetMember">> => string()
+%% pending_cloudwatch_logs_exports() :: #{
+%%   <<"LogTypesToDisable">> => list(string()),
+%%   <<"LogTypesToEnable">> => list(string())
 %% }
--type switchover_detail() :: #{binary() => any()}.
+-type pending_cloudwatch_logs_exports() :: #{binary() => any()}.
 
 %% Example:
-%% integration_conflict_operation_fault() :: #{
-%%   <<"message">> => string()
+%% pending_maintenance_action() :: #{
+%%   <<"Action">> => string(),
+%%   <<"AutoAppliedAfterDate">> => non_neg_integer(),
+%%   <<"CurrentApplyDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ForcedApplyDate">> => non_neg_integer(),
+%%   <<"OptInStatus">> => string()
 %% }
--type integration_conflict_operation_fault() :: #{binary() => any()}.
+-type pending_maintenance_action() :: #{binary() => any()}.
 
 %% Example:
-%% db_recommendations_message() :: #{
-%%   <<"DBRecommendations">> => list(db_recommendation()),
-%%   <<"Marker">> => string()
-%% }
--type db_recommendations_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_subscriptions_message() :: #{
-%%   <<"Filters">> => list(filter()),
+%% pending_maintenance_actions_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SubscriptionName">> => string()
+%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
 %% }
--type describe_event_subscriptions_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_shard_group_message() :: #{
-%%   <<"ComputeRedundancy">> => integer(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"DBShardGroupIdentifier">> := string(),
-%%   <<"MaxACU">> := float(),
-%%   <<"MinACU">> => float(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_shard_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_instance_automated_backups_message() :: #{
-%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_instance_automated_backups_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_custom_db_engine_version_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_custom_db_engine_version_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_snapshot_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_snapshot_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_endpoint_message() :: #{
-%%   <<"DBClusterEndpointIdentifier">> := string(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"EndpointType">> := string(),
-%%   <<"ExcludedMembers">> => list(string()),
-%%   <<"StaticMembers">> => list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_cluster_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_cluster_snapshot_attribute_result() :: #{
-%%   <<"DBClusterSnapshotAttributesResult">> => db_cluster_snapshot_attributes_result()
-%% }
--type modify_db_cluster_snapshot_attribute_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_message() :: #{
-%%   <<"IntegrationIdentifier">> := string()
-%% }
--type delete_integration_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_snapshot_attribute() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(string())
-%% }
--type db_cluster_snapshot_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% start_activity_stream_request() :: #{
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"EngineNativeAuditFieldsIncluded">> => boolean(),
-%%   <<"KmsKeyId">> := string(),
-%%   <<"Mode">> := list(any()),
-%%   <<"ResourceArn">> := string()
-%% }
--type start_activity_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group_does_not_cover_enough_a_zs() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_group_does_not_cover_enough_a_zs() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_security_groups_message() :: #{
-%%   <<"DBSecurityGroupName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_security_groups_message() :: #{binary() => any()}.
+-type pending_maintenance_actions_message() :: #{binary() => any()}.
 
 %% Example:
 %% pending_modified_values() :: #{
@@ -2559,523 +4587,53 @@
 -type pending_modified_values() :: #{binary() => any()}.
 
 %% Example:
-%% network_type_not_supported() :: #{
+%% performance_insights_metric_dimension_group() :: #{
+%%   <<"Dimensions">> => list(string()),
+%%   <<"Group">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type performance_insights_metric_dimension_group() :: #{binary() => any()}.
+
+%% Example:
+%% performance_insights_metric_query() :: #{
+%%   <<"GroupBy">> => performance_insights_metric_dimension_group(),
+%%   <<"Metric">> => string()
+%% }
+-type performance_insights_metric_query() :: #{binary() => any()}.
+
+%% Example:
+%% performance_issue_details() :: #{
+%%   <<"Analysis">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Metrics">> => list(metric()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type performance_issue_details() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_restore_not_enabled_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type network_type_not_supported() :: #{binary() => any()}.
+-type point_in_time_restore_not_enabled_fault() :: #{binary() => any()}.
 
 %% Example:
-%% orderable_db_instance_option() :: #{
-%%   <<"SupportedEngineModes">> => list(string()),
-%%   <<"AvailabilityZoneGroup">> => string(),
-%%   <<"SupportsIAMDatabaseAuthentication">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"SupportedActivityStreamModes">> => list(string()),
-%%   <<"SupportsStorageEncryption">> => boolean(),
-%%   <<"SupportsStorageThroughput">> => boolean(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"MaxStorageThroughputPerIops">> => float(),
-%%   <<"ReadReplicaCapable">> => boolean(),
-%%   <<"SupportsClusters">> => boolean(),
-%%   <<"StorageType">> => string(),
-%%   <<"MaxIopsPerGib">> => float(),
-%%   <<"SupportsHttpEndpoint">> => boolean(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"MinIopsPerGib">> => float(),
-%%   <<"MinStorageThroughputPerDbInstance">> => integer(),
-%%   <<"SupportsDedicatedLogVolume">> => boolean(),
-%%   <<"SupportsStorageAutoscaling">> => boolean(),
-%%   <<"MinStorageThroughputPerIops">> => float(),
-%%   <<"MinIopsPerDbInstance">> => integer(),
-%%   <<"MinStorageSize">> => integer(),
-%%   <<"AvailableProcessorFeatures">> => list(available_processor_feature()),
-%%   <<"AvailabilityZones">> => list(availability_zone()),
-%%   <<"MaxStorageThroughputPerDbInstance">> => integer(),
-%%   <<"SupportsEnhancedMonitoring">> => boolean(),
-%%   <<"LicenseModel">> => string(),
-%%   <<"MaxIopsPerDbInstance">> => integer(),
-%%   <<"SupportsKerberosAuthentication">> => boolean(),
-%%   <<"SupportedNetworkTypes">> => list(string()),
-%%   <<"SupportsGlobalDatabases">> => boolean(),
-%%   <<"MultiAZCapable">> => boolean(),
-%%   <<"AvailableAdditionalStorageVolumesOptions">> => list(available_additional_storage_volumes_option()),
-%%   <<"SupportsPerformanceInsights">> => boolean(),
-%%   <<"Vpc">> => boolean(),
-%%   <<"OutpostCapable">> => boolean(),
-%%   <<"MaxStorageSize">> => integer(),
-%%   <<"SupportsIops">> => boolean(),
-%%   <<"SupportsAdditionalStorageVolumes">> => boolean()
-%% }
--type orderable_db_instance_option() :: #{binary() => any()}.
-
-%% Example:
-%% backup_policy_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type backup_policy_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_parameter_group_message() :: #{
-%%   <<"DBParameterGroupName">> := string()
-%% }
--type delete_db_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_option_setting() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"ApplyType">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"IsModifiable">> => boolean(),
-%%   <<"IsRequired">> => boolean(),
-%%   <<"MinimumEngineVersionPerAllowedValue">> => list(minimum_engine_version_per_allowed_value()),
-%%   <<"SettingDescription">> => string(),
-%%   <<"SettingName">> => string()
-%% }
--type option_group_option_setting() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_not_ready_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_not_ready_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_parameter_groups_message() :: #{
-%%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_automated_backup_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_automated_backup_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_from_db_snapshot_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type restore_db_instance_from_db_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_parameter_groups_message() :: #{
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_cluster_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_message() :: #{
-%%   <<"DBSecurityGroups">> => list(db_security_group()),
-%%   <<"Marker">> => string()
-%% }
--type db_security_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% integration_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% available_processor_feature() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"Name">> => string()
-%% }
--type available_processor_feature() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_recommendations_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"LastUpdatedAfter">> => non_neg_integer(),
-%%   <<"LastUpdatedBefore">> => non_neg_integer(),
-%%   <<"Locale">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_recommendations_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_role_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_role_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_cluster_snapshot_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_cluster_snapshot_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_cluster_snapshot_message() :: #{
-%%   <<"CopyTags">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"SourceDBClusterSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDBClusterSnapshotIdentifier">> := string()
-%% }
--type copy_db_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_role_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_role_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_db_security_group_ingress_result() :: #{
-%%   <<"DBSecurityGroup">> => db_security_group()
-%% }
--type revoke_db_security_group_ingress_result() :: #{binary() => any()}.
-
-%% Example:
-%% global_cluster() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"Endpoint">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"FailoverState">> => failover_state(),
-%%   <<"GlobalClusterArn">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string(),
-%%   <<"GlobalClusterMembers">> => list(global_cluster_member()),
-%%   <<"GlobalClusterResourceId">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"StorageEncryptionType">> => list(any()),
-%%   <<"TagList">> => list(tag())
-%% }
--type global_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% enable_http_endpoint_response() :: #{
-%%   <<"HttpEndpointEnabled">> => boolean(),
-%%   <<"ResourceArn">> => string()
-%% }
--type enable_http_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_automated_backups_replication() :: #{
-%%   <<"DBInstanceAutomatedBackupsArn">> => string()
-%% }
--type db_instance_automated_backups_replication() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxies_response() :: #{
-%%   <<"DBProxies">> => list(db_proxy()),
-%%   <<"Marker">> => string()
-%% }
--type describe_db_proxies_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
+%% processor_feature() :: #{
+%%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type processor_feature() :: #{binary() => any()}.
 
 %% Example:
-%% master_user_secret() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SecretArn">> => string(),
-%%   <<"SecretStatus">> => string()
+%% promote_read_replica_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
 %% }
--type master_user_secret() :: #{binary() => any()}.
+-type promote_read_replica_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% authorization_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% promote_read_replica_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
 %% }
--type authorization_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_role_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_instance_role_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
-%% }
--type create_global_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_message() :: #{
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"DefaultCertificateForNewLaunches">> => string(),
-%%   <<"Marker">> => string()
-%% }
--type certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% serverless_v2_features_support() :: #{
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MinCapacity">> => float()
-%% }
--type serverless_v2_features_support() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_db_proxy_targets_request() :: #{
-%%   <<"DBClusterIdentifiers">> => list(string()),
-%%   <<"DBInstanceIdentifiers">> => list(string()),
-%%   <<"DBProxyName">> := string(),
-%%   <<"TargetGroupName">> => string()
-%% }
--type deregister_db_proxy_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% db_upgrade_dependency_failure_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_upgrade_dependency_failure_fault() :: #{binary() => any()}.
-
-%% Example:
-%% global_clusters_message() :: #{
-%%   <<"GlobalClusters">> => list(global_cluster()),
-%%   <<"Marker">> => string()
-%% }
--type global_clusters_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_major_engine_versions_response() :: #{
-%%   <<"DBMajorEngineVersions">> => list(db_major_engine_version()),
-%%   <<"Marker">> => string()
-%% }
--type describe_db_major_engine_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_db_proxy_targets_response() :: #{
-
-%% }
--type deregister_db_proxy_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type certificate_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_db_security_group_ingress_result() :: #{
-%%   <<"DBSecurityGroup">> => db_security_group()
-%% }
--type authorize_db_security_group_ingress_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
-%% }
--type modify_global_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% remove_from_global_cluster_message() :: #{
-%%   <<"DbClusterIdentifier">> := string(),
-%%   <<"GlobalClusterIdentifier">> := string()
-%% }
--type remove_from_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% ip_range() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"Status">> => string()
-%% }
--type ip_range() :: #{binary() => any()}.
-
-%% Example:
-%% failover_state() :: #{
-%%   <<"FromDbClusterArn">> => string(),
-%%   <<"IsDataLossAllowed">> => boolean(),
-%%   <<"Status">> => list(any()),
-%%   <<"ToDbClusterArn">> => string()
-%% }
--type failover_state() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_role() :: #{
-%%   <<"FeatureName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type db_instance_role() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_tenant_databases_message() :: #{
-%%   <<"DBSnapshotTenantDatabases">> => list(db_snapshot_tenant_database()),
-%%   <<"Marker">> => string()
-%% }
--type db_snapshot_tenant_databases_message() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_instance_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ForceFailover">> => boolean()
-%% }
--type reboot_db_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_parameters_message() :: #{
-%%   <<"DBParameterGroupName">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"Source">> => string()
-%% }
--type describe_db_parameters_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_target_groups_request() :: #{
-%%   <<"DBProxyName">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TargetGroupName">> => string()
-%% }
--type describe_db_proxy_target_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_role_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_role_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% source_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type source_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_engine_version_message() :: #{
-%%   <<"DBEngineVersions">> => list(db_engine_version()),
-%%   <<"Marker">> => string()
-%% }
--type db_engine_version_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_endpoint_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% switchover_read_replica_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type switchover_read_replica_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_global_cluster_message() :: #{
-%%   <<"AllowMajorVersionUpgrade">> => boolean(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"GlobalClusterIdentifier">> := string(),
-%%   <<"NewGlobalClusterIdentifier">> => string()
-%% }
--type modify_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_engine_version() :: #{
-%%   <<"SupportedEngineModes">> => list(string()),
-%%   <<"SupportsBabelfish">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"SupportedCACertificateIdentifiers">> => list(string()),
-%%   <<"SupportsLimitlessDatabase">> => boolean(),
-%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
-%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
-%%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DefaultCharacterSet">> => character_set(),
-%%   <<"SupportsCertificateRotationWithoutRestart">> => boolean(),
-%%   <<"Image">> => custom_db_engine_version_a_m_i(),
-%%   <<"DBEngineMediaType">> => string(),
-%%   <<"DBEngineVersionDescription">> => string(),
-%%   <<"ValidUpgradeTarget">> => list(upgrade_target()),
-%%   <<"SupportsLocalWriteForwarding">> => boolean(),
-%%   <<"DBEngineVersionArn">> => string(),
-%%   <<"SupportsReadReplica">> => boolean(),
-%%   <<"SupportedFeatureNames">> => list(string()),
-%%   <<"EngineVersion">> => string(),
-%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
-%%   <<"SupportedTimezones">> => list(timezone()),
-%%   <<"FailureReason">> => string(),
-%%   <<"CustomDBEngineVersionManifest">> => string(),
-%%   <<"SupportedNcharCharacterSets">> => list(character_set()),
-%%   <<"SupportedCharacterSets">> => list(character_set()),
-%%   <<"TagList">> => list(tag()),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"SupportsGlobalDatabases">> => boolean(),
-%%   <<"DatabaseInstallationFiles">> => list(string()),
-%%   <<"DBParameterGroupFamily">> => string(),
-%%   <<"SupportsIntegrations">> => boolean(),
-%%   <<"Status">> => string(),
-%%   <<"ExportableLogTypes">> => list(string()),
-%%   <<"DBEngineDescription">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"SupportsParallelQuery">> => boolean()
-%% }
--type db_engine_version() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_endpoint_request() :: #{
-%%   <<"DBProxyEndpointName">> := string(),
-%%   <<"NewDBProxyEndpointName">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type modify_db_proxy_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_tenant_database_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"NewTenantDBName">> => string(),
-%%   <<"RotateMasterUserPassword">> => boolean(),
-%%   <<"TenantDBName">> := string()
-%% }
--type modify_tenant_database_message() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_export_task_message() :: #{
-%%   <<"ExportTaskIdentifier">> := string()
-%% }
--type cancel_export_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% parameter() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"ApplyMethod">> => list(any()),
-%%   <<"ApplyType">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsModifiable">> => boolean(),
-%%   <<"MinimumEngineVersion">> => string(),
-%%   <<"ParameterName">> => string(),
-%%   <<"ParameterValue">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"SupportedEngineModes">> => list(string())
-%% }
--type parameter() :: #{binary() => any()}.
+-type promote_read_replica_db_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% promote_read_replica_message() :: #{
@@ -3087,835 +4645,119 @@
 -type promote_read_replica_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_db_shard_groups_message() :: #{
-%%   <<"DBShardGroupIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_shard_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% add_role_to_db_instance_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"FeatureName">> := string(),
-%%   <<"RoleArn">> := string()
-%% }
--type add_role_to_db_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_snapshot_attributes_message() :: #{
-%%   <<"DBSnapshotIdentifier">> := string()
-%% }
--type describe_db_snapshot_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_event_subscription_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_event_subscription_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_restore_not_enabled_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type point_in_time_restore_not_enabled_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_source_regions_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"RegionName">> => string()
-%% }
--type describe_source_regions_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_snapshot_message() :: #{
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"DBClusterSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_shard_group() :: #{
-%%   <<"ComputeRedundancy">> => integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"DBShardGroupArn">> => string(),
-%%   <<"DBShardGroupIdentifier">> => string(),
-%%   <<"DBShardGroupResourceId">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"MaxACU">> => float(),
-%%   <<"MinACU">> => float(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"Status">> => string(),
-%%   <<"TagList">> => list(tag())
-%% }
--type db_shard_group() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot() :: #{
-%%   <<"Encrypted">> => boolean(),
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Timezone">> => string(),
-%%   <<"SourceRegion">> => string(),
-%%   <<"DBSnapshotArn">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"SnapshotDatabaseTime">> => non_neg_integer(),
-%%   <<"Iops">> => integer(),
-%%   <<"MultiTenant">> => boolean(),
-%%   <<"SnapshotType">> => string(),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"SourceDBSnapshotIdentifier">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"DBSnapshotIdentifier">> => string(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"SnapshotCreateTime">> => non_neg_integer(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"SnapshotAvailabilityZone">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"LicenseModel">> => string(),
-%%   <<"OriginalSnapshotCreateTime">> => non_neg_integer(),
-%%   <<"VpcId">> => string(),
-%%   <<"SnapshotTarget">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PercentProgress">> => integer(),
-%%   <<"InstanceCreateTime">> => non_neg_integer(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"Status">> => string(),
-%%   <<"StorageEncryptionType">> => list(any()),
-%%   <<"DBSystemId">> => string()
-%% }
--type db_snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% db_security_group_membership() :: #{
-%%   <<"DBSecurityGroupName">> => string(),
-%%   <<"Status">> => string()
-%% }
--type db_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% supported_engine_lifecycle() :: #{
-%%   <<"LifecycleSupportEndDate">> => non_neg_integer(),
-%%   <<"LifecycleSupportName">> => list(any()),
-%%   <<"LifecycleSupportStartDate">> => non_neg_integer()
-%% }
--type supported_engine_lifecycle() :: #{binary() => any()}.
-
-%% Example:
-%% additional_storage_volume_output() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"IOPS">> => integer(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"StorageType">> => string(),
-%%   <<"StorageVolumeStatus">> => string(),
-%%   <<"VolumeName">> => string()
-%% }
--type additional_storage_volume_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_db_engine_version_message() :: #{
-%%   <<"Engine">> := string(),
-%%   <<"EngineVersion">> := string()
-%% }
--type delete_custom_db_engine_version_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_parameter_group_message() :: #{
-%%   <<"DBClusterParameterGroupName">> := string()
-%% }
--type delete_db_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_snapshot_message() :: #{
-%%   <<"DBSnapshotIdentifier">> := string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"OptionGroupName">> => string()
-%% }
--type modify_db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_clusters_message() :: #{
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludeShared">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_clusters_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_export_only_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_export_only_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group_not_allowed_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_subnet_group_not_allowed_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_pending_modified_values() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"CertificateDetails">> => certificate_details(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
-%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"StorageType">> => string()
-%% }
--type cluster_pending_modified_values() :: #{binary() => any()}.
-
-%% Example:
-%% modify_certificates_result() :: #{
-%%   <<"Certificate">> => certificate()
-%% }
--type modify_certificates_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_endpoint() :: #{
-%%   <<"CustomEndpointType">> => string(),
-%%   <<"DBClusterEndpointArn">> => string(),
-%%   <<"DBClusterEndpointIdentifier">> => string(),
-%%   <<"DBClusterEndpointResourceIdentifier">> => string(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"EndpointType">> => string(),
-%%   <<"ExcludedMembers">> => list(string()),
-%%   <<"StaticMembers">> => list(string()),
-%%   <<"Status">> => string()
-%% }
--type db_cluster_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_endpoint_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_endpoint_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_log_files_response() :: #{
-%%   <<"DescribeDBLogFiles">> => list(describe_db_log_files_details()),
-%%   <<"Marker">> => string()
-%% }
--type describe_db_log_files_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_export_task_message() :: #{
-%%   <<"ExportOnly">> => list(string()),
-%%   <<"ExportTaskIdentifier">> := string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"KmsKeyId">> := string(),
-%%   <<"S3BucketName">> := string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"SourceArn">> := string()
-%% }
--type start_export_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_parameter_groups_message() :: #{
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_option_group_result() :: #{
-%%   <<"OptionGroup">> => option_group()
-%% }
--type modify_option_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_parameter_group_message() :: #{
-%%   <<"DBParameterGroupName">> := string(),
-%%   <<"Parameters">> := list(parameter())
-%% }
--type modify_db_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_snapshot_result() :: #{
-%%   <<"DBSnapshot">> => db_snapshot()
-%% }
--type create_db_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% switchover_global_cluster_message() :: #{
-%%   <<"GlobalClusterIdentifier">> := string(),
-%%   <<"TargetDbClusterIdentifier">> := string()
-%% }
--type switchover_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_to_point_in_time_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Engine">> => string(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DomainOu">> => string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"EnableCustomerOwnedIp">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"SourceDbiResourceId">> => string(),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"SourceDBInstanceIdentifier">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"UseDefaultProcessorFeatures">> => boolean(),
-%%   <<"TargetDBInstanceIdentifier">> := string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"RestoreTime">> => non_neg_integer(),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DomainAuthSecretArn">> => string(),
-%%   <<"TdeCredentialPassword">> => string(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"DomainDnsIps">> => list(string()),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"LicenseModel">> => string(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"SourceDBInstanceAutomatedBackupsArn">> => string(),
-%%   <<"UseLatestRestorableTime">> => boolean(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"DomainFqdn">> => string(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"CustomIamInstanceProfile">> => string(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type restore_db_instance_to_point_in_time_message() :: #{binary() => any()}.
-
-%% Example:
-%% export_tasks_message() :: #{
-%%   <<"ExportTasks">> => list(export_task()),
-%%   <<"Marker">> => string()
-%% }
--type export_tasks_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_option_groups_message() :: #{
-%%   <<"EngineName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"OptionGroupName">> => string()
-%% }
--type describe_option_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% disable_http_endpoint_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type disable_http_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_cluster_parameter_group_message() :: #{
-%%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"Parameters">> := list(parameter())
-%% }
--type modify_db_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subscription_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% domain_membership() :: #{
-%%   <<"AuthSecretArn">> => string(),
-%%   <<"DnsIps">> => list(string()),
-%%   <<"Domain">> => string(),
-%%   <<"FQDN">> => string(),
-%%   <<"IAMRoleName">> => string(),
-%%   <<"OU">> => string(),
-%%   <<"Status">> => string()
-%% }
--type domain_membership() :: #{binary() => any()}.
-
-%% Example:
-%% source_region_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SourceRegions">> => list(source_region())
-%% }
--type source_region_message() :: #{binary() => any()}.
-
-%% Example:
-%% enable_http_endpoint_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type enable_http_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% source_database_not_supported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type source_database_not_supported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_endpoint_message() :: #{
-%%   <<"DBClusterEndpointIdentifier">> := string()
-%% }
--type delete_db_cluster_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_option_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_option_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"MasterUserAuthenticationType">> => list(any()),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"CharacterSetName">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"DBClusterInstanceClass">> => string(),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"ScalingConfiguration">> => scaling_configuration(),
-%%   <<"EnableHttpEndpoint">> => boolean(),
-%%   <<"ReplicationSourceIdentifier">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"EngineMode">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"Engine">> := string(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"EnableLocalWriteForwarding">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"EnableLimitlessDatabase">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"WithExpressConfiguration">> => boolean(),
-%%   <<"EnableGlobalWriteForwarding">> => boolean(),
-%%   <<"DBSystemId">> => string(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"ClusterScalabilityType">> => list(any())
-%% }
--type create_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% valid_storage_options() :: #{
-%%   <<"IopsToStorageRatio">> => list(double_range()),
-%%   <<"ProvisionedIops">> => list(range()),
-%%   <<"ProvisionedStorageThroughput">> => list(range()),
-%%   <<"StorageSize">> => list(range()),
-%%   <<"StorageThroughputToIopsRatio">> => list(double_range()),
-%%   <<"StorageType">> => string(),
-%%   <<"SupportsStorageAutoscaling">> => boolean()
-%% }
--type valid_storage_options() :: #{binary() => any()}.
-
-%% Example:
-%% doc_link() :: #{
-%%   <<"Text">> => string(),
-%%   <<"Url">> => string()
-%% }
--type doc_link() :: #{binary() => any()}.
-
-%% Example:
-%% stop_db_instance_automated_backups_replication_message() :: #{
-%%   <<"SourceDBInstanceArn">> := string()
-%% }
--type stop_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_groups_message() :: #{
-%%   <<"DBParameterGroups">> => list(db_parameter_group()),
-%%   <<"Marker">> => string()
-%% }
--type db_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instances_offering_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReservedDBInstancesOfferings">> => list(reserved_db_instances_offering())
-%% }
--type reserved_db_instances_offering_message() :: #{binary() => any()}.
-
-%% Example:
-%% instance_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_recommendation_message() :: #{
-%%   <<"Locale">> => string(),
-%%   <<"RecommendationId">> := string(),
-%%   <<"RecommendedActionUpdates">> => list(recommended_action_update()),
-%%   <<"Status">> => string()
-%% }
--type modify_db_recommendation_message() :: #{binary() => any()}.
-
-%% Example:
-%% valid_db_instance_modifications_message() :: #{
-%%   <<"AdditionalStorage">> => valid_additional_storage_options(),
-%%   <<"Storage">> => list(valid_storage_options()),
-%%   <<"SupportsDedicatedLogVolume">> => boolean(),
-%%   <<"ValidProcessorFeatures">> => list(available_processor_feature())
-%% }
--type valid_db_instance_modifications_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_endpoint_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_shard_groups_response() :: #{
-%%   <<"DBShardGroups">> => list(db_shard_group()),
-%%   <<"Marker">> => string()
-%% }
--type describe_db_shard_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_global_cluster_message() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"GlobalClusterIdentifier">> := string(),
-%%   <<"SourceDBClusterIdentifier">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_option_group_result() :: #{
-%%   <<"OptionGroup">> => option_group()
-%% }
--type create_option_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_endpoint_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_endpoint_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_tenant_database_result() :: #{
-%%   <<"TenantDatabase">> => tenant_database()
-%% }
--type modify_tenant_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% option_version() :: #{
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Version">> => string()
-%% }
--type option_version() :: #{binary() => any()}.
-
-%% Example:
-%% storage_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type storage_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_snapshot_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_snapshot_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% user_auth_config() :: #{
-%%   <<"AuthScheme">> => list(any()),
-%%   <<"ClientPasswordAuthType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"IAMAuth">> => list(any()),
-%%   <<"SecretArn">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user_auth_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_snapshot_result() :: #{
-%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
-%% }
--type create_db_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% integration_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% option_configuration() :: #{
-%%   <<"DBSecurityGroupMemberships">> => list(string()),
-%%   <<"OptionName">> => string(),
-%%   <<"OptionSettings">> => list(option_setting()),
-%%   <<"OptionVersion">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"VpcSecurityGroupMemberships">> => list(string())
-%% }
--type option_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_parameter_group_result() :: #{
-%%   <<"DBParameterGroup">> => db_parameter_group()
-%% }
--type create_db_parameter_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% serverless_v2_platform_version_info() :: #{
-%%   <<"Engine">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
-%%   <<"ServerlessV2PlatformVersion">> => string(),
-%%   <<"ServerlessV2PlatformVersionDescription">> => string(),
-%%   <<"Status">> => string()
-%% }
--type serverless_v2_platform_version_info() :: #{binary() => any()}.
-
-%% Example:
-%% metric_query() :: #{
-%%   <<"PerformanceInsightsMetricQuery">> => performance_insights_metric_query()
-%% }
--type metric_query() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_db_instances_message() :: #{
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"Duration">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"LeaseId">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"OfferingType">> => string(),
-%%   <<"ProductDescription">> => string(),
-%%   <<"ReservedDBInstanceId">> => string(),
-%%   <<"ReservedDBInstancesOfferingId">> => string()
-%% }
--type describe_reserved_db_instances_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"Port">> => integer()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% modify_integration_message() :: #{
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationIdentifier">> := string(),
-%%   <<"IntegrationName">> => string()
-%% }
--type modify_integration_message() :: #{binary() => any()}.
-
-%% Example:
-%% events_message() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"Marker">> => string()
-%% }
--type events_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_snapshot_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_parameter_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_parameter_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reset_db_cluster_parameter_group_message() :: #{
-%%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"ResetAllParameters">> => boolean()
-%% }
--type reset_db_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% export_task() :: #{
-%%   <<"ExportOnly">> => list(string()),
-%%   <<"ExportTaskIdentifier">> => string(),
-%%   <<"FailureCause">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PercentProgress">> => integer(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"SnapshotTime">> => non_neg_integer(),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"Status">> => string(),
-%%   <<"TaskEndTime">> => non_neg_integer(),
-%%   <<"TaskStartTime">> => non_neg_integer(),
-%%   <<"TotalExtractedDataInGB">> => integer(),
-%%   <<"WarningMessage">> => string()
-%% }
--type export_task() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_automated_backup_result() :: #{
-%%   <<"DBClusterAutomatedBackup">> => db_cluster_automated_backup()
-%% }
--type delete_db_cluster_automated_backup_result() :: #{binary() => any()}.
-
-%% Example:
-%% tenant_database_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type tenant_database_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_from_s3_result() :: #{
+%% promote_read_replica_result() :: #{
 %%   <<"DBInstance">> => db_instance()
 %% }
--type restore_db_instance_from_s3_result() :: #{binary() => any()}.
+-type promote_read_replica_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_global_cluster_message() :: #{
-%%   <<"GlobalClusterIdentifier">> := string()
-%% }
--type delete_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% option_group() :: #{
-%%   <<"AllowsVpcAndNonVpcInstanceMemberships">> => boolean(),
-%%   <<"CopyTimestamp">> => non_neg_integer(),
-%%   <<"EngineName">> => string(),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"OptionGroupArn">> => string(),
-%%   <<"OptionGroupDescription">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"Options">> => list(option()),
-%%   <<"SourceAccountId">> => string(),
-%%   <<"SourceOptionGroup">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type option_group() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_subscription_message() :: #{
-%%   <<"SubscriptionName">> := string()
-%% }
--type delete_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_target_groups_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"TargetGroups">> => list(db_proxy_target_group())
-%% }
--type describe_db_proxy_target_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_target_not_found_fault() :: #{
+%% provisioned_iops_not_available_in_a_z_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type db_proxy_target_not_found_fault() :: #{binary() => any()}.
+-type provisioned_iops_not_available_in_a_z_fault() :: #{binary() => any()}.
 
 %% Example:
-%% subscription_category_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% purchase_reserved_db_instances_offering_message() :: #{
+%%   <<"DBInstanceCount">> => integer(),
+%%   <<"ReservedDBInstanceId">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type subscription_category_not_found_fault() :: #{binary() => any()}.
+-type purchase_reserved_db_instances_offering_message() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_db_instances_offering_result() :: #{
+%%   <<"ReservedDBInstance">> => reserved_db_instance()
+%% }
+-type purchase_reserved_db_instances_offering_result() :: #{binary() => any()}.
+
+%% Example:
+%% range() :: #{
+%%   <<"From">> => integer(),
+%%   <<"Step">> => integer(),
+%%   <<"To">> => integer()
+%% }
+-type range() :: #{binary() => any()}.
+
+%% Example:
+%% rds_custom_cluster_configuration() :: #{
+%%   <<"InterconnectSubnetId">> => string(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"TransitGatewayMulticastDomainId">> => string()
+%% }
+-type rds_custom_cluster_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type reboot_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type reboot_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ForceFailover">> => boolean()
+%% }
+-type reboot_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type reboot_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_shard_group_message() :: #{
+%%   <<"DBShardGroupIdentifier">> := string()
+%% }
+-type reboot_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"ApplyModes">> => list(string()),
+%%   <<"ContextAttributes">> => list(context_attribute()),
+%%   <<"Description">> => string(),
+%%   <<"IssueDetails">> => issue_details(),
+%%   <<"Operation">> => string(),
+%%   <<"Parameters">> => list(recommended_action_parameter()),
+%%   <<"Status">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type recommended_action() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type recommended_action_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_update() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type recommended_action_update() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% reference_details() :: #{
+%%   <<"ScalarReferenceDetails">> => scalar_reference_details()
+%% }
+-type reference_details() :: #{binary() => any()}.
 
 %% Example:
 %% register_db_proxy_targets_request() :: #{
@@ -3927,54 +4769,23 @@
 -type register_db_proxy_targets_request() :: #{binary() => any()}.
 
 %% Example:
-%% certificate() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateIdentifier">> => string(),
-%%   <<"CertificateType">> => string(),
-%%   <<"CustomerOverride">> => boolean(),
-%%   <<"CustomerOverrideValidTill">> => non_neg_integer(),
-%%   <<"Thumbprint">> => string(),
-%%   <<"ValidFrom">> => non_neg_integer(),
-%%   <<"ValidTill">> => non_neg_integer()
+%% register_db_proxy_targets_response() :: #{
+%%   <<"DBProxyTargets">> => list(db_proxy_target())
 %% }
--type certificate() :: #{binary() => any()}.
+-type register_db_proxy_targets_response() :: #{binary() => any()}.
 
 %% Example:
-%% copy_option_group_result() :: #{
-%%   <<"OptionGroup">> => option_group()
+%% remove_from_global_cluster_message() :: #{
+%%   <<"DbClusterIdentifier">> := string(),
+%%   <<"GlobalClusterIdentifier">> := string()
 %% }
--type copy_option_group_result() :: #{binary() => any()}.
+-type remove_from_global_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% kms_key_not_accessible_fault() :: #{
-%%   <<"message">> => string()
+%% remove_from_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
 %% }
--type kms_key_not_accessible_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_parameter_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_parameter_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_invalid_topic_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_message() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationName">> := string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"SourceArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetArn">> := string()
-%% }
--type create_integration_message() :: #{binary() => any()}.
+-type remove_from_global_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% remove_role_from_db_cluster_message() :: #{
@@ -3985,360 +4796,6 @@
 -type remove_role_from_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_engine_default_parameters_result() :: #{
-%%   <<"EngineDefaults">> => engine_defaults()
-%% }
--type describe_engine_default_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_proxy_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_proxy_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_cluster_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_cluster_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type option_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_db_shard_group_message() :: #{
-%%   <<"DBShardGroupIdentifier">> := string()
-%% }
--type reboot_db_shard_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_db_engine_version_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_db_engine_version_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_cluster_parameter_group_result() :: #{
-%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
-%% }
--type create_db_cluster_parameter_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Message">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type create_event_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instances_offering() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"OfferingType">> => string(),
-%%   <<"ProductDescription">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservedDBInstancesOfferingId">> => string(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_db_instances_offering() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_shard_group_message() :: #{
-%%   <<"ComputeRedundancy">> => integer(),
-%%   <<"DBShardGroupIdentifier">> := string(),
-%%   <<"MaxACU">> => float(),
-%%   <<"MinACU">> => float()
-%% }
--type modify_db_shard_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_proxy_endpoint_response() :: #{
-%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
-%% }
--type delete_db_proxy_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_snapshot_attribute_message() :: #{
-%%   <<"AttributeName">> := string(),
-%%   <<"DBSnapshotIdentifier">> := string(),
-%%   <<"ValuesToAdd">> => list(string()),
-%%   <<"ValuesToRemove">> => list(string())
-%% }
--type modify_db_snapshot_attribute_message() :: #{binary() => any()}.
-
-%% Example:
-%% performance_insights_metric_query() :: #{
-%%   <<"GroupBy">> => performance_insights_metric_dimension_group(),
-%%   <<"Metric">> => string()
-%% }
--type performance_insights_metric_query() :: #{binary() => any()}.
-
-%% Example:
-%% context_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type context_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% tag_specification() :: #{
-%%   <<"ResourceType">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type tag_specification() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_message() :: #{
-%%   <<"DBInstances">> => list(db_instance()),
-%%   <<"Marker">> => string()
-%% }
--type db_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_engine_default_cluster_parameters_message() :: #{
-%%   <<"DBParameterGroupFamily">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_engine_default_cluster_parameters_message() :: #{binary() => any()}.
-
-%% Example:
-%% tag_list_message() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type tag_list_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_targets_request() :: #{
-%%   <<"DBProxyName">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TargetGroupName">> => string()
-%% }
--type describe_db_proxy_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tenant_databases_message() :: #{
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TenantDBName">> => string()
-%% }
--type describe_tenant_databases_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_option_group_message() :: #{
-%%   <<"OptionGroupName">> := string()
-%% }
--type delete_option_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_to_point_in_time_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type restore_db_instance_to_point_in_time_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_integration_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_integration_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"HttpEndpointEnabled">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerlessV2PlatformVersion">> => string(),
-%%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
-%%   <<"InternetAccessGatewayEnabled">> => boolean(),
-%%   <<"Engine">> => string(),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"ActivityStreamMode">> => list(any()),
-%%   <<"DBClusterMembers">> => list(db_cluster_member()),
-%%   <<"ClusterCreateTime">> => non_neg_integer(),
-%%   <<"MasterUserSecret">> => master_user_secret(),
-%%   <<"AutomaticRestartTime">> => non_neg_integer(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterParameterGroup">> => string(),
-%%   <<"ActivityStreamKmsKeyId">> => string(),
-%%   <<"StatusInfos">> => list(db_cluster_status_info()),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"DomainMemberships">> => list(domain_membership()),
-%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"CharacterSetName">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"PendingModifiedValues">> => cluster_pending_modified_values(),
-%%   <<"DBClusterInstanceClass">> => string(),
-%%   <<"UpgradeRolloutOrder">> => list(any()),
-%%   <<"ActivityStreamStatus">> => list(any()),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"LimitlessDatabase">> => limitless_database(),
-%%   <<"BacktrackConsumedChangeRecords">> => float(),
-%%   <<"DBSubnetGroup">> => string(),
-%%   <<"ReplicationSourceIdentifier">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"PerformanceInsightsEnabled">> => boolean(),
-%%   <<"ActivityStreamKinesisStreamName">> => string(),
-%%   <<"LocalWriteForwardingStatus">> => list(any()),
-%%   <<"EarliestRestorableTime">> => non_neg_integer(),
-%%   <<"ScalingConfigurationInfo">> => scaling_configuration_info(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"CrossAccountClone">> => boolean(),
-%%   <<"DBClusterOptionGroupMemberships">> => list(db_cluster_option_group_status()),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"EngineMode">> => string(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"GlobalWriteForwardingRequested">> => boolean(),
-%%   <<"GlobalWriteForwardingStatus">> => list(any()),
-%%   <<"LatestRestorableTime">> => non_neg_integer(),
-%%   <<"CloneGroupId">> => string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ReaderEndpoint">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"AssociatedRoles">> => list(db_cluster_role()),
-%%   <<"DBClusterArn">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"CustomEndpoints">> => list(string()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"DbClusterResourceId">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"PercentProgress">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"EarliestBacktrackTime">> => non_neg_integer(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"Capacity">> => integer(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"Status">> => string(),
-%%   <<"VPCNetworkingEnabled">> => boolean(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"AwsBackupRecoveryPointArn">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"CertificateDetails">> => certificate_details(),
-%%   <<"StorageEncryptionType">> => list(any()),
-%%   <<"ReadReplicaIdentifiers">> => list(string()),
-%%   <<"DBSystemId">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean(),
-%%   <<"ClusterScalabilityType">> => list(any())
-%% }
--type db_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% switchover_blue_green_deployment_response() :: #{
-%%   <<"BlueGreenDeployment">> => blue_green_deployment()
-%% }
--type switchover_blue_green_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_topic_arn_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_snapshot_result() :: #{
-%%   <<"DBSnapshot">> => db_snapshot()
-%% }
--type delete_db_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_option_group_message() :: #{
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"OptionGroupName">> := string(),
-%%   <<"OptionsToInclude">> => list(option_configuration()),
-%%   <<"OptionsToRemove">> => list(string())
-%% }
--type modify_option_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_s3_bucket_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_s3_bucket_fault() :: #{binary() => any()}.
-
-%% Example:
-%% remove_source_identifier_from_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type remove_source_identifier_from_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% available_additional_storage_volumes_option() :: #{
-%%   <<"MaxIops">> => integer(),
-%%   <<"MaxIopsPerGib">> => float(),
-%%   <<"MaxStorageSize">> => integer(),
-%%   <<"MaxStorageThroughput">> => integer(),
-%%   <<"MinIops">> => integer(),
-%%   <<"MinIopsPerGib">> => float(),
-%%   <<"MinStorageSize">> => integer(),
-%%   <<"MinStorageThroughput">> => integer(),
-%%   <<"StorageType">> => string(),
-%%   <<"SupportsIops">> => boolean(),
-%%   <<"SupportsStorageAutoscaling">> => boolean(),
-%%   <<"SupportsStorageThroughput">> => boolean()
-%% }
--type available_additional_storage_volumes_option() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_security_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_security_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% option_setting() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"ApplyType">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsCollection">> => boolean(),
-%%   <<"IsModifiable">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type option_setting() :: #{binary() => any()}.
-
-%% Example:
-%% start_db_instance_automated_backups_replication_result() :: #{
-%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
-%% }
--type start_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
-
-%% Example:
 %% remove_role_from_db_instance_message() :: #{
 %%   <<"DBInstanceIdentifier">> := string(),
 %%   <<"FeatureName">> := string(),
@@ -4347,894 +4804,17 @@
 -type remove_role_from_db_instance_message() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_security_group_result() :: #{
-%%   <<"DBSecurityGroup">> => db_security_group()
+%% remove_source_identifier_from_subscription_message() :: #{
+%%   <<"SourceIdentifier">> := string(),
+%%   <<"SubscriptionName">> := string()
 %% }
--type create_db_security_group_result() :: #{binary() => any()}.
+-type remove_source_identifier_from_subscription_message() :: #{binary() => any()}.
 
 %% Example:
-%% start_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type start_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_activity_stream_response() :: #{
-%%   <<"KinesisStreamName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type stop_activity_stream_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_target_group_response() :: #{
-%%   <<"DBProxyTargetGroup">> => db_proxy_target_group()
-%% }
--type modify_db_proxy_target_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_message() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_to_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% register_db_proxy_targets_response() :: #{
-%%   <<"DBProxyTargets">> => list(db_proxy_target())
-%% }
--type register_db_proxy_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_snapshot_result() :: #{
-%%   <<"DBSnapshot">> => db_snapshot()
-%% }
--type copy_db_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_categories_message() :: #{
-%%   <<"EventCategoriesMapList">> => list(event_categories_map())
-%% }
--type event_categories_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_configuration() :: #{
-%%   <<"AutoPause">> => boolean(),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer(),
-%%   <<"SecondsBeforeTimeout">> => integer(),
-%%   <<"SecondsUntilAutoPause">> => integer(),
-%%   <<"TimeoutAction">> => string()
-%% }
--type scaling_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type delete_db_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_current_db_cluster_capacity_message() :: #{
-%%   <<"Capacity">> => integer(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"SecondsBeforeTimeout">> => integer(),
-%%   <<"TimeoutAction">> => string()
-%% }
--type modify_current_db_cluster_capacity_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_subnet_group_message() :: #{
-%%   <<"DBSubnetGroupDescription">> := string(),
-%%   <<"DBSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_db_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_cluster_from_snapshot_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type restore_db_cluster_from_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_backtracks_message() :: #{
-%%   <<"BacktrackIdentifier">> => string(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_cluster_backtracks_message() :: #{binary() => any()}.
-
-%% Example:
-%% tenant_database_pending_modified_values() :: #{
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"TenantDBName">> => string()
-%% }
--type tenant_database_pending_modified_values() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_instance_from_db_snapshot_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Engine">> => string(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DomainOu">> => string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"EnableCustomerOwnedIp">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterSnapshotIdentifier">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"UseDefaultProcessorFeatures">> => boolean(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"DBSnapshotIdentifier">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DomainAuthSecretArn">> => string(),
-%%   <<"TdeCredentialPassword">> => string(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"DomainDnsIps">> => list(string()),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"LicenseModel">> => string(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"DomainFqdn">> => string(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"CustomIamInstanceProfile">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type restore_db_instance_from_db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_integrations_response() :: #{
-%%   <<"Integrations">> => list(integration()),
-%%   <<"Marker">> => string()
-%% }
--type describe_integrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_db_cluster_capacity_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_db_cluster_capacity_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_status_info() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Normal">> => boolean(),
-%%   <<"Status">> => string(),
-%%   <<"StatusType">> => string()
-%% }
--type db_instance_status_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_log_files_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"FileLastWritten">> => float(),
-%%   <<"FileSize">> => float(),
-%%   <<"FilenameContains">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_log_files_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_global_clusters_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"GlobalClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_global_clusters_message() :: #{binary() => any()}.
-
-%% Example:
-%% global_cluster_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type global_cluster_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_message() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type describe_events_message() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_reserved_db_instances_offering_result() :: #{
-%%   <<"ReservedDBInstance">> => reserved_db_instance()
-%% }
--type purchase_reserved_db_instances_offering_result() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_action_update() :: #{
-%%   <<"ActionId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type recommended_action_update() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_snapshot_attributes_message() :: #{
-%%   <<"DBClusterSnapshotIdentifier">> := string()
-%% }
--type describe_db_cluster_snapshot_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
-%% }
--type start_db_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_snapshot_tenant_databases_message() :: #{
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DBSnapshotIdentifier">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SnapshotType">> => string()
-%% }
--type describe_db_snapshot_tenant_databases_message() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_snapshot_message() :: #{
-%%   <<"CopyOptionGroup">> => boolean(),
-%%   <<"CopyTags">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"SnapshotAvailabilityZone">> => string(),
-%%   <<"SnapshotTarget">> => string(),
-%%   <<"SourceDBSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetCustomAvailabilityZone">> => string(),
-%%   <<"TargetDBSnapshotIdentifier">> := string()
-%% }
--type copy_db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_backtrack() :: #{
-%%   <<"BacktrackIdentifier">> => string(),
-%%   <<"BacktrackRequestCreationTime">> => non_neg_integer(),
-%%   <<"BacktrackTo">> => non_neg_integer(),
-%%   <<"BacktrackedFrom">> => non_neg_integer(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Status">> => string()
-%% }
--type db_cluster_backtrack() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_proxy_request() :: #{
-%%   <<"DBProxyName">> := string()
-%% }
--type delete_db_proxy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_proxy_endpoint_request() :: #{
-%%   <<"DBProxyEndpointName">> := string()
-%% }
--type delete_db_proxy_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type option_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% option_groups() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"OptionGroupsList">> => list(option_group())
-%% }
--type option_groups() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_response() :: #{
-%%   <<"DBProxy">> => db_proxy()
-%% }
--type modify_db_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_additional_storage_volume() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"IOPS">> => integer(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"SetForDelete">> => boolean(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"StorageType">> => string(),
-%%   <<"VolumeName">> => string()
-%% }
--type modify_additional_storage_volume() :: #{binary() => any()}.
-
-%% Example:
-%% account_attributes_message() :: #{
-%%   <<"AccountQuotas">> => list(account_quota())
-%% }
--type account_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_deployment_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type blue_green_deployment_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% global_cluster_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type global_cluster_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_snapshot_attributes_result() :: #{
-%%   <<"DBClusterSnapshotAttributes">> => list(db_cluster_snapshot_attribute()),
-%%   <<"DBClusterSnapshotIdentifier">> => string()
-%% }
--type db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
-
-%% Example:
-%% export_task_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type export_task_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% custom_db_engine_version_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_db_engine_version_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_event_subscription_result() :: #{
+%% remove_source_identifier_from_subscription_result() :: #{
 %%   <<"EventSubscription">> => event_subscription()
 %% }
--type modify_event_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_available_ips_in_subnet_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_available_ips_in_subnet_fault() :: #{binary() => any()}.
-
-%% Example:
-%% global_cluster_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type global_cluster_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_automated_backup_message() :: #{
-%%   <<"DBClusterAutomatedBackups">> => list(db_cluster_automated_backup()),
-%%   <<"Marker">> => string()
-%% }
--type db_cluster_automated_backup_message() :: #{binary() => any()}.
-
-%% Example:
-%% apply_pending_maintenance_action_result() :: #{
-%%   <<"ResourcePendingMaintenanceActions">> => resource_pending_maintenance_actions()
-%% }
--type apply_pending_maintenance_action_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_blue_green_deployment_response() :: #{
-%%   <<"BlueGreenDeployment">> => blue_green_deployment()
-%% }
--type create_blue_green_deployment_response() :: #{binary() => any()}.
-
-%% Example:
-%% source_cluster_not_supported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type source_cluster_not_supported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% upgrade_target() :: #{
-%%   <<"AutoUpgrade">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"IsMajorVersionUpgrade">> => boolean(),
-%%   <<"SupportedEngineModes">> => list(string()),
-%%   <<"SupportsBabelfish">> => boolean(),
-%%   <<"SupportsGlobalDatabases">> => boolean(),
-%%   <<"SupportsIntegrations">> => boolean(),
-%%   <<"SupportsLimitlessDatabase">> => boolean(),
-%%   <<"SupportsLocalWriteForwarding">> => boolean(),
-%%   <<"SupportsParallelQuery">> => boolean()
-%% }
--type upgrade_target() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instance_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_db_instance_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_parameter_group_result() :: #{
-%%   <<"DBParameterGroup">> => db_parameter_group()
-%% }
--type copy_db_parameter_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type delete_event_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% limitless_database() :: #{
-%%   <<"MinRequiredACU">> => float(),
-%%   <<"Status">> => list(any())
-%% }
--type limitless_database() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_option() :: #{
-%%   <<"CopyableCrossAccount">> => boolean(),
-%%   <<"DefaultPort">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"EngineName">> => string(),
-%%   <<"MajorEngineVersion">> => string(),
-%%   <<"MinimumRequiredMinorEngineVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OptionGroupOptionSettings">> => list(option_group_option_setting()),
-%%   <<"OptionGroupOptionVersions">> => list(option_version()),
-%%   <<"OptionsConflictsWith">> => list(string()),
-%%   <<"OptionsDependedOn">> => list(string()),
-%%   <<"Permanent">> => boolean(),
-%%   <<"Persistent">> => boolean(),
-%%   <<"PortRequired">> => boolean(),
-%%   <<"RequiresAutoMinorEngineVersionUpgrade">> => boolean(),
-%%   <<"SupportsOptionVersionDowngrade">> => boolean(),
-%%   <<"VpcOnly">> => boolean()
-%% }
--type option_group_option() :: #{binary() => any()}.
-
-%% Example:
-%% download_db_log_file_portion_message() :: #{
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"LogFileName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"NumberOfLines">> => integer()
-%% }
--type download_db_log_file_portion_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_instance_automated_backup() :: #{
-%%   <<"Encrypted">> => boolean(),
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Timezone">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"Iops">> => integer(),
-%%   <<"MultiTenant">> => boolean(),
-%%   <<"Region">> => string(),
-%%   <<"DBInstanceArn">> => string(),
-%%   <<"BackupTarget">> => string(),
-%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
-%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"RestoreWindow">> => restore_window(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"LicenseModel">> => string(),
-%%   <<"VpcId">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"InstanceCreateTime">> => non_neg_integer(),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"Status">> => string(),
-%%   <<"AwsBackupRecoveryPointArn">> => string(),
-%%   <<"StorageEncryptionType">> => list(any()),
-%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication())
-%% }
--type db_instance_automated_backup() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_status_info() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Normal">> => boolean(),
-%%   <<"Status">> => string(),
-%%   <<"StatusType">> => string()
-%% }
--type db_cluster_status_info() :: #{binary() => any()}.
-
-%% Example:
-%% start_db_instance_automated_backups_replication_message() :: #{
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"SourceDBInstanceArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_instance_automated_backup_result() :: #{
-%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
-%% }
--type delete_db_instance_automated_backup_result() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_details() :: #{
-%%   <<"CAIdentifier">> => string(),
-%%   <<"ValidTill">> => non_neg_integer()
-%% }
--type certificate_details() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_option_group_status() :: #{
-%%   <<"DBClusterOptionGroupName">> => string(),
-%%   <<"Status">> => string()
-%% }
--type db_cluster_option_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_tasks_message() :: #{
-%%   <<"ExportTaskIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type describe_export_tasks_message() :: #{binary() => any()}.
-
-%% Example:
-%% option() :: #{
-%%   <<"DBSecurityGroupMemberships">> => list(db_security_group_membership()),
-%%   <<"OptionDescription">> => string(),
-%%   <<"OptionName">> => string(),
-%%   <<"OptionSettings">> => list(option_setting()),
-%%   <<"OptionVersion">> => string(),
-%%   <<"Permanent">> => boolean(),
-%%   <<"Persistent">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"VpcSecurityGroupMemberships">> => list(vpc_security_group_membership())
-%% }
--type option() :: #{binary() => any()}.
-
-%% Example:
-%% delete_blue_green_deployment_request() :: #{
-%%   <<"BlueGreenDeploymentIdentifier">> := string(),
-%%   <<"DeleteTarget">> => boolean()
-%% }
--type delete_blue_green_deployment_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_tenant_database_result() :: #{
-%%   <<"TenantDatabase">> => tenant_database()
-%% }
--type create_tenant_database_result() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_iops_not_available_in_a_z_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type provisioned_iops_not_available_in_a_z_fault() :: #{binary() => any()}.
-
-%% Example:
-%% scalar_reference_details() :: #{
-%%   <<"Value">> => float()
-%% }
--type scalar_reference_details() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_cluster_automated_backup_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_cluster_automated_backup_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_proxy_endpoints_request() :: #{
-%%   <<"DBProxyEndpointName">> => string(),
-%%   <<"DBProxyName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_proxy_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_subnet_groups_message() :: #{
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_subnet_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% user_auth_config_info() :: #{
-%%   <<"AuthScheme">> => list(any()),
-%%   <<"ClientPasswordAuthType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"IAMAuth">> => list(any()),
-%%   <<"SecretArn">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user_auth_config_info() :: #{binary() => any()}.
-
-%% Example:
-%% db_recommendation() :: #{
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"Category">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Detection">> => string(),
-%%   <<"Impact">> => string(),
-%%   <<"IssueDetails">> => issue_details(),
-%%   <<"Links">> => list(doc_link()),
-%%   <<"Reason">> => string(),
-%%   <<"Recommendation">> => string(),
-%%   <<"RecommendationId">> => string(),
-%%   <<"RecommendedActions">> => list(recommended_action()),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Severity">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"TypeDetection">> => string(),
-%%   <<"TypeId">> => string(),
-%%   <<"TypeRecommendation">> => string(),
-%%   <<"UpdatedTime">> => non_neg_integer()
-%% }
--type db_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_subnet_group_result() :: #{
-%%   <<"DBSubnetGroup">> => db_subnet_group()
-%% }
--type modify_db_subnet_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% option_group_options_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"OptionGroupOptions">> => list(option_group_option())
-%% }
--type option_group_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_log_files_details() :: #{
-%%   <<"LastWritten">> => float(),
-%%   <<"LogFileName">> => string(),
-%%   <<"Size">> => float()
-%% }
--type describe_db_log_files_details() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_snapshot_result() :: #{
-%%   <<"DBSnapshot">> => db_snapshot()
-%% }
--type modify_db_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instance_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_db_instance_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_tenant_database_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_snapshot_tenant_database_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% serverless_v2_scaling_configuration_info() :: #{
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MinCapacity">> => float(),
-%%   <<"SecondsUntilAutoPause">> => integer()
-%% }
--type serverless_v2_scaling_configuration_info() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_proxy_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_integrations_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"IntegrationIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_integrations_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_db_cluster_from_s3_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
-%%   <<"S3IngestionRoleArn">> := string(),
-%%   <<"EngineLifecycleSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"SourceEngineVersion">> := string(),
-%%   <<"CharacterSetName">> => string(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MasterUsername">> := string(),
-%%   <<"S3BucketName">> := string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"Engine">> := string(),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SourceEngine">> := string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"NetworkType">> => string(),
-%%   <<"StorageEncrypted">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type restore_db_cluster_from_s3_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_proxy_endpoint_response() :: #{
-%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
-%% }
--type modify_db_proxy_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_automated_backup_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_message() :: #{
-%%   <<"DBSnapshots">> => list(db_snapshot()),
-%%   <<"Marker">> => string()
-%% }
--type db_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_subnet_group() :: #{
-%%   <<"DBSubnetGroupArn">> => string(),
-%%   <<"DBSubnetGroupDescription">> => string(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(subnet()),
-%%   <<"SupportedNetworkTypes">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type db_subnet_group() :: #{binary() => any()}.
-
-%% Example:
-%% db_snapshot_tenant_database() :: #{
-%%   <<"CharacterSetName">> => string(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DBSnapshotIdentifier">> => string(),
-%%   <<"DBSnapshotTenantDatabaseARN">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"EngineName">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"NcharCharacterSetName">> => string(),
-%%   <<"SnapshotType">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"TenantDBName">> => string(),
-%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
-%%   <<"TenantDatabaseResourceId">> => string()
-%% }
--type db_snapshot_tenant_database() :: #{binary() => any()}.
-
-%% Example:
-%% modify_custom_db_engine_version_message() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Engine">> := string(),
-%%   <<"EngineVersion">> := string(),
-%%   <<"Status">> => list(any())
-%% }
--type modify_custom_db_engine_version_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_subnet_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_subnet_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% failover_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"TargetDBInstanceIdentifier">> => string()
-%% }
--type failover_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_subnet_group_message() :: #{
-%%   <<"DBSubnetGroupName">> := string()
-%% }
--type delete_db_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% remove_from_global_cluster_result() :: #{
-%%   <<"GlobalCluster">> => global_cluster()
-%% }
--type remove_from_global_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% tenant_database_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type tenant_database_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_member() :: #{
-%%   <<"DBClusterParameterGroupStatus">> => string(),
-%%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"IsClusterWriter">> => boolean(),
-%%   <<"PromotionTier">> => integer()
-%% }
--type db_cluster_member() :: #{binary() => any()}.
+-type remove_source_identifier_from_subscription_result() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_resource_message() :: #{
@@ -5242,282 +4822,6 @@
 %%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy() :: #{
-%%   <<"Auth">> => list(user_auth_config_info()),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DBProxyArn">> => string(),
-%%   <<"DBProxyName">> => string(),
-%%   <<"DebugLogging">> => boolean(),
-%%   <<"DefaultAuthScheme">> => string(),
-%%   <<"Endpoint">> => string(),
-%%   <<"EndpointNetworkType">> => list(any()),
-%%   <<"EngineFamily">> => string(),
-%%   <<"IdleClientTimeout">> => integer(),
-%%   <<"RequireTLS">> => boolean(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetConnectionNetworkType">> => list(any()),
-%%   <<"UpdatedDate">> => non_neg_integer(),
-%%   <<"VpcId">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"VpcSubnetIds">> => list(string())
-%% }
--type db_proxy() :: #{binary() => any()}.
-
-%% Example:
-%% storage_type_not_available_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type storage_type_not_available_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_cluster_capacity_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_cluster_capacity_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_snapshot_attribute_result() :: #{
-%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
-%% }
--type modify_db_snapshot_attribute_result() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% event_subscription_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type event_subscription_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_cluster_message() :: #{
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"MasterUserAuthenticationType">> => list(any()),
-%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
-%%   <<"DBInstanceParameterGroupName">> => string(),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"DBClusterInstanceClass">> => string(),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"ScalingConfiguration">> => scaling_configuration(),
-%%   <<"EnableHttpEndpoint">> => boolean(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"EngineMode">> => string(),
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DBClusterIdentifier">> := string(),
-%%   <<"RotateMasterUserPassword">> => boolean(),
-%%   <<"EnableLocalWriteForwarding">> => boolean(),
-%%   <<"EnableLimitlessDatabase">> => boolean(),
-%%   <<"AllowMajorVersionUpgrade">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"AllowEngineModeChange">> => boolean(),
-%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"NewDBClusterIdentifier">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"BacktrackWindow">> => float(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"AwsBackupRecoveryPointArn">> => string(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"EnableGlobalWriteForwarding">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
-%% }
--type modify_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_log_file_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_log_file_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_categories_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"SourceType">> => string()
-%% }
--type describe_event_categories_message() :: #{binary() => any()}.
-
-%% Example:
-%% rds_custom_cluster_configuration() :: #{
-%%   <<"InterconnectSubnetId">> => string(),
-%%   <<"ReplicaMode">> => list(any()),
-%%   <<"TransitGatewayMulticastDomainId">> => string()
-%% }
--type rds_custom_cluster_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instances_offering_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_db_instances_offering_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_parameter_group() :: #{
-%%   <<"DBClusterParameterGroupArn">> => string(),
-%%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"DBParameterGroupFamily">> => string(),
-%%   <<"Description">> => string()
-%% }
--type db_cluster_parameter_group() :: #{binary() => any()}.
-
-%% Example:
-%% describe_db_cluster_automated_backups_message() :: #{
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"DbClusterResourceId">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_db_cluster_automated_backups_message() :: #{binary() => any()}.
-
-%% Example:
-%% stop_db_cluster_message() :: #{
-%%   <<"DBClusterIdentifier">> := string()
-%% }
--type stop_db_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_snapshot_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_snapshot_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_status() :: #{
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"ParameterApplyStatus">> => string()
-%% }
--type db_parameter_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% db_parameter_group_name_message() :: #{
-%%   <<"DBParameterGroupName">> => string()
-%% }
--type db_parameter_group_name_message() :: #{binary() => any()}.
-
-%% Example:
-%% outpost() :: #{
-%%   <<"Arn">> => string()
-%% }
--type outpost() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_no_authorization_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_no_authorization_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_db_cluster_endpoint_message() :: #{
-%%   <<"DBClusterEndpointIdentifier">> := string(),
-%%   <<"EndpointType">> => string(),
-%%   <<"ExcludedMembers">> => list(string()),
-%%   <<"StaticMembers">> => list(string())
-%% }
--type modify_db_cluster_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_db_engine_version_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type create_custom_db_engine_version_fault() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_security_group_membership() :: #{
-%%   <<"Status">> => string(),
-%%   <<"VpcSecurityGroupId">> => string()
-%% }
--type vpc_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% issue_details() :: #{
-%%   <<"PerformanceIssueDetails">> => performance_issue_details()
-%% }
--type issue_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_shard_group_message() :: #{
-%%   <<"DBShardGroupIdentifier">> := string()
-%% }
--type delete_db_shard_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% custom_availability_zone_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_availability_zone_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_proxy_target_group() :: #{
-%%   <<"ConnectionPoolConfig">> => connection_pool_configuration_info(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DBProxyName">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Status">> => string(),
-%%   <<"TargetGroupArn">> => string(),
-%%   <<"TargetGroupName">> => string(),
-%%   <<"UpdatedDate">> => non_neg_integer()
-%% }
--type db_proxy_target_group() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_proxy_response() :: #{
-%%   <<"DBProxy">> => db_proxy()
-%% }
--type create_db_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_db_security_group_ingress_message() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"DBSecurityGroupName">> := string(),
-%%   <<"EC2SecurityGroupId">> => string(),
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string()
-%% }
--type revoke_db_security_group_ingress_message() :: #{binary() => any()}.
-
-%% Example:
-%% valid_additional_storage_options() :: #{
-%%   <<"SupportsAdditionalStorageVolumes">> => boolean(),
-%%   <<"Volumes">> => list(valid_volume_options())
-%% }
--type valid_additional_storage_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_db_cluster_snapshot_message() :: #{
-%%   <<"DBClusterSnapshotIdentifier">> := string()
-%% }
--type delete_db_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_db_instance_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_db_instance_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
 %% reserved_db_instance() :: #{
@@ -5541,49 +4845,427 @@
 -type reserved_db_instance() :: #{binary() => any()}.
 
 %% Example:
-%% db_cluster_automated_backup() :: #{
-%%   <<"AllocatedStorage">> => integer(),
+%% reserved_db_instance_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedDBInstances">> => list(reserved_db_instance())
+%% }
+-type reserved_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservedDBInstancesOfferingId">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_db_instances_offering() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedDBInstancesOfferings">> => list(reserved_db_instances_offering())
+%% }
+-type reserved_db_instances_offering_message() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instances_offering_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reset_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResetAllParameters">> => boolean()
+%% }
+-type reset_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% reset_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResetAllParameters">> => boolean()
+%% }
+-type reset_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resource_pending_maintenance_actions() :: #{
+%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type resource_pending_maintenance_actions() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_s3_message() :: #{
+%%   <<"AssociatedRoles">> => list(db_cluster_associated_role()),
 %%   <<"AvailabilityZones">> => list(string()),
-%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BacktrackWindow">> => float(),
 %%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"ClusterCreateTime">> => non_neg_integer(),
-%%   <<"DBClusterArn">> => string(),
-%%   <<"DBClusterAutomatedBackupsArn">> => string(),
-%%   <<"DBClusterIdentifier">> => string(),
-%%   <<"DbClusterResourceId">> => string(),
-%%   <<"Engine">> => string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> := string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3IngestionRoleArn">> := string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"SourceEngine">> := string(),
+%%   <<"SourceEngineVersion">> := string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type restore_db_cluster_from_s3_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_s3_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_from_s3_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_snapshot_message() :: #{
+%%   <<"AssociatedRoles">> => list(db_cluster_associated_role()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"EnableVPCNetworking">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EngineMode">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"SnapshotIdentifier">> := string(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type restore_db_cluster_from_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_snapshot_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_to_point_in_time_message() :: #{
+%%   <<"AssociatedRoles">> => list(db_cluster_associated_role()),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"EnableVPCNetworking">> => boolean(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"RestoreToTime">> => non_neg_integer(),
+%%   <<"RestoreType">> => string(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"SourceDbClusterResourceId">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UseLatestRestorableTime">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type restore_db_cluster_to_point_in_time_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_to_point_in_time_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_to_point_in_time_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_db_snapshot_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"DBClusterSnapshotIdentifier">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBName">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DomainDnsIps">> => list(string()),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type restore_db_instance_from_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_db_snapshot_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type restore_db_instance_from_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_s3_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBInstanceClass">> := string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBName">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBSecurityGroups">> => list(string()),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseInsightsMode">> => list(any()),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"EngineVersion">> => string(),
 %%   <<"Iops">> => integer(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LicenseModel">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"MasterUsername">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
 %%   <<"Port">> => integer(),
 %%   <<"PreferredBackupWindow">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"RestoreWindow">> => restore_window(),
-%%   <<"Status">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3IngestionRoleArn">> := string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"SourceEngine">> := string(),
+%%   <<"SourceEngineVersion">> := string(),
 %%   <<"StorageEncrypted">> => boolean(),
-%%   <<"StorageEncryptionType">> => list(any()),
 %%   <<"StorageThroughput">> => integer(),
 %%   <<"StorageType">> => string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"VpcId">> => string()
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type db_cluster_automated_backup() :: #{binary() => any()}.
+-type restore_db_instance_from_s3_message() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_blue_green_deployment_state_fault() :: #{
-%%   <<"message">> => string()
+%% restore_db_instance_from_s3_result() :: #{
+%%   <<"DBInstance">> => db_instance()
 %% }
--type invalid_blue_green_deployment_state_fault() :: #{binary() => any()}.
+-type restore_db_instance_from_s3_result() :: #{binary() => any()}.
 
 %% Example:
-%% failover_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
+%% restore_db_instance_to_point_in_time_message() :: #{
+%%   <<"AdditionalStorageVolumes">> => list(additional_storage_volume()),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DomainDnsIps">> => list(string()),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineLifecycleSupport">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RestoreTime">> => non_neg_integer(),
+%%   <<"SourceDBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"SourceDBInstanceIdentifier">> => string(),
+%%   <<"SourceDbiResourceId">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDBInstanceIdentifier">> := string(),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"UseLatestRestorableTime">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type failover_db_cluster_result() :: #{binary() => any()}.
+-type restore_db_instance_to_point_in_time_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_to_point_in_time_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type restore_db_instance_to_point_in_time_result() :: #{binary() => any()}.
 
 %% Example:
 %% restore_window() :: #{
@@ -5593,86 +5275,91 @@
 -type restore_window() :: #{binary() => any()}.
 
 %% Example:
-%% modify_db_instance_message() :: #{
-%%   <<"NewDBInstanceIdentifier">> => string(),
-%%   <<"PreferredBackupWindow">> => string(),
-%%   <<"MasterUserAuthenticationType">> => list(any()),
-%%   <<"Engine">> => string(),
-%%   <<"PromotionTier">> => integer(),
-%%   <<"StorageThroughput">> => integer(),
-%%   <<"DomainOu">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
-%%   <<"MasterUserSecretKmsKeyId">> => string(),
-%%   <<"EnableCustomerOwnedIp">> => boolean(),
-%%   <<"Iops">> => integer(),
-%%   <<"DBSubnetGroupName">> => string(),
-%%   <<"MultiTenant">> => boolean(),
-%%   <<"DBInstanceClass">> => string(),
-%%   <<"CertificateRotationRestart">> => boolean(),
-%%   <<"DatabaseInsightsMode">> => list(any()),
-%%   <<"AdditionalStorageVolumes">> => list(modify_additional_storage_volume()),
-%%   <<"PerformanceInsightsKMSKeyId">> => string(),
-%%   <<"DBPortNumber">> => integer(),
-%%   <<"ResumeFullAutomationModeMinutes">> => integer(),
-%%   <<"CopyTagsToSnapshot">> => boolean(),
-%%   <<"DBSecurityGroups">> => list(string()),
-%%   <<"OptionGroupName">> => string(),
-%%   <<"StorageType">> => string(),
-%%   <<"UseDefaultProcessorFeatures">> => boolean(),
-%%   <<"MonitoringRoleArn">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"DomainAuthSecretArn">> => string(),
-%%   <<"TdeCredentialPassword">> => string(),
-%%   <<"RotateMasterUserPassword">> => boolean(),
-%%   <<"DedicatedLogVolume">> => boolean(),
-%%   <<"AutomationMode">> => list(any()),
-%%   <<"DisableDomain">> => boolean(),
-%%   <<"DomainDnsIps">> => list(string()),
-%%   <<"AllowMajorVersionUpgrade">> => boolean(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"LicenseModel">> => string(),
-%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
-%%   <<"DBInstanceIdentifier">> := string(),
-%%   <<"ManageMasterUserPassword">> => boolean(),
-%%   <<"ReplicaMode">> => list(any()),
-%%   <<"DBParameterGroupName">> => string(),
-%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ProcessorFeatures">> => list(processor_feature()),
-%%   <<"TdeCredentialArn">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainIAMRoleName">> => string(),
-%%   <<"DomainFqdn">> => string(),
-%%   <<"EnablePerformanceInsights">> => boolean(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"MonitoringInterval">> => integer(),
-%%   <<"AwsBackupRecoveryPointArn">> => string(),
-%%   <<"CACertificateIdentifier">> => string(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"DeletionProtection">> => boolean()
+%% revoke_db_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
 %% }
--type modify_db_instance_message() :: #{binary() => any()}.
+-type revoke_db_security_group_ingress_message() :: #{binary() => any()}.
 
 %% Example:
-%% tenant_databases_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"TenantDatabases">> => list(tenant_database())
+%% revoke_db_security_group_ingress_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
 %% }
--type tenant_databases_message() :: #{binary() => any()}.
+-type revoke_db_security_group_ingress_result() :: #{binary() => any()}.
 
 %% Example:
-%% db_cluster_endpoint_already_exists_fault() :: #{
+%% s_n_s_invalid_topic_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type db_cluster_endpoint_already_exists_fault() :: #{binary() => any()}.
+-type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_no_authorization_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_no_authorization_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_topic_arn_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scalar_reference_details() :: #{
+%%   <<"Value">> => float()
+%% }
+-type scalar_reference_details() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration() :: #{
+%%   <<"AutoPause">> => boolean(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"SecondsUntilAutoPause">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration_info() :: #{
+%%   <<"AutoPause">> => boolean(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"SecondsUntilAutoPause">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type scaling_configuration_info() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_features_support() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_features_support() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_version_info() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
+%%   <<"ServerlessV2PlatformVersionDescription">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type serverless_v2_platform_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_versions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ServerlessV2PlatformVersions">> => list(serverless_v2_platform_version_info())
+%% }
+-type serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% serverless_v2_scaling_configuration() :: #{
@@ -5683,113 +5370,68 @@
 -type serverless_v2_scaling_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% valid_volume_options() :: #{
-%%   <<"Storage">> => list(valid_storage_options()),
-%%   <<"VolumeName">> => string()
+%% serverless_v2_scaling_configuration_info() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float(),
+%%   <<"SecondsUntilAutoPause">> => integer()
 %% }
--type valid_volume_options() :: #{binary() => any()}.
+-type serverless_v2_scaling_configuration_info() :: #{binary() => any()}.
 
 %% Example:
-%% create_db_instance_result() :: #{
-%%   <<"DBInstance">> => db_instance()
-%% }
--type create_db_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_proxy_endpoint_response() :: #{
-%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
-%% }
--type create_db_proxy_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_deployment_already_exists_fault() :: #{
+%% shared_snapshot_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type blue_green_deployment_already_exists_fault() :: #{binary() => any()}.
+-type shared_snapshot_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% failover_global_cluster_message() :: #{
-%%   <<"AllowDataLoss">> => boolean(),
-%%   <<"GlobalClusterIdentifier">> := string(),
-%%   <<"Switchover">> => boolean(),
-%%   <<"TargetDbClusterIdentifier">> := string()
-%% }
--type failover_global_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_role_quota_exceeded_fault() :: #{
+%% snapshot_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type db_cluster_role_quota_exceeded_fault() :: #{binary() => any()}.
+-type snapshot_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% db_cluster_parameter_group_details() :: #{
+%% source_cluster_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_cluster_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_database_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_database_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_region() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SupportsDBInstanceAutomatedBackupsReplication">> => boolean()
+%% }
+-type source_region() :: #{binary() => any()}.
+
+%% Example:
+%% source_region_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter())
+%%   <<"SourceRegions">> => list(source_region())
 %% }
--type db_cluster_parameter_group_details() :: #{binary() => any()}.
+-type source_region_message() :: #{binary() => any()}.
 
 %% Example:
-%% stop_db_cluster_result() :: #{
-%%   <<"DBCluster">> => db_cluster()
+%% start_activity_stream_request() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"EngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"Mode">> := list(any()),
+%%   <<"ResourceArn">> := string()
 %% }
--type stop_db_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% pending_maintenance_actions_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
-%% }
--type pending_maintenance_actions_message() :: #{binary() => any()}.
-
-%% Example:
-%% timezone() :: #{
-%%   <<"TimezoneName">> => string()
-%% }
--type timezone() :: #{binary() => any()}.
-
-%% Example:
-%% create_option_group_message() :: #{
-%%   <<"EngineName">> := string(),
-%%   <<"MajorEngineVersion">> := string(),
-%%   <<"OptionGroupDescription">> := string(),
-%%   <<"OptionGroupName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_option_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_db_instance_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_db_instance_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% db_cluster_role_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type db_cluster_role_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_db_proxy_endpoint_request() :: #{
-%%   <<"DBProxyEndpointName">> := string(),
-%%   <<"DBProxyName">> := string(),
-%%   <<"EndpointNetworkType">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetRole">> => list(any()),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"VpcSubnetIds">> := list(string())
-%% }
--type create_db_proxy_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% copy_db_parameter_group_message() :: #{
-%%   <<"SourceDBParameterGroupIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDBParameterGroupDescription">> := string(),
-%%   <<"TargetDBParameterGroupIdentifier">> := string()
-%% }
--type copy_db_parameter_group_message() :: #{binary() => any()}.
+-type start_activity_stream_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_activity_stream_response() :: #{
@@ -5803,27 +5445,402 @@
 -type start_activity_stream_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_db_cluster_automated_backup_message() :: #{
-%%   <<"DbClusterResourceId">> := string()
+%% start_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
 %% }
--type delete_db_cluster_automated_backup_message() :: #{binary() => any()}.
+-type start_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% insufficient_storage_cluster_capacity_fault() :: #{
+%% start_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type start_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_automated_backups_replication_message() :: #{
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SourceDBInstanceArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_automated_backups_replication_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type start_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type start_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type start_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_export_task_message() :: #{
+%%   <<"ExportOnly">> => list(string()),
+%%   <<"ExportTaskIdentifier">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"SourceArn">> := string()
+%% }
+-type start_export_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_activity_stream_request() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type stop_activity_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_activity_stream_response() :: #{
+%%   <<"KinesisStreamName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stop_activity_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type stop_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type stop_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_automated_backups_replication_message() :: #{
+%%   <<"SourceDBInstanceArn">> := string()
+%% }
+-type stop_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_automated_backups_replication_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type stop_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBSnapshotIdentifier">> => string()
+%% }
+-type stop_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type stop_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% storage_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type insufficient_storage_cluster_capacity_fault() :: #{binary() => any()}.
+-type storage_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% storage_type_not_available_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_type_not_available_fault() :: #{binary() => any()}.
+
+%% Example:
+%% storage_type_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_type_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => availability_zone(),
+%%   <<"SubnetIdentifier">> => string(),
+%%   <<"SubnetOutpost">> => outpost(),
+%%   <<"SubnetStatus">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_already_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_already_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_already_exist_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_already_exist_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_category_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_category_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% supported_engine_lifecycle() :: #{
+%%   <<"LifecycleSupportEndDate">> => non_neg_integer(),
+%%   <<"LifecycleSupportName">> => list(any()),
+%%   <<"LifecycleSupportStartDate">> => non_neg_integer()
+%% }
+-type supported_engine_lifecycle() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> := string(),
+%%   <<"SwitchoverTimeout">> => integer()
+%% }
+-type switchover_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type switchover_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_detail() :: #{
+%%   <<"SourceMember">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TargetMember">> => string()
+%% }
+-type switchover_detail() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type switchover_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type switchover_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_read_replica_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type switchover_read_replica_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_read_replica_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type switchover_read_replica_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_list_message() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type tag_list_message() :: #{binary() => any()}.
+
+%% Example:
+%% tag_specification() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type tag_specification() :: #{binary() => any()}.
+
+%% Example:
+%% target_health() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type target_health() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"MasterUserSecret">> => master_user_secret(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"PendingModifiedValues">> => tenant_database_pending_modified_values(),
+%%   <<"Status">> => string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TenantDBName">> => string(),
+%%   <<"TenantDatabaseARN">> => string(),
+%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
+%%   <<"TenantDatabaseResourceId">> => string()
+%% }
+-type tenant_database() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_pending_modified_values() :: #{
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"TenantDBName">> => string()
+%% }
+-type tenant_database_pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_databases_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TenantDatabases">> => list(tenant_database())
+%% }
+-type tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% timezone() :: #{
+%%   <<"TimezoneName">> => string()
+%% }
+-type timezone() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_db_engine_version_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_db_engine_version_fault() :: #{binary() => any()}.
+
+%% Example:
+%% upgrade_target() :: #{
+%%   <<"AutoUpgrade">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IsMajorVersionUpgrade">> => boolean(),
+%%   <<"SupportedEngineModes">> => list(string()),
+%%   <<"SupportsBabelfish">> => boolean(),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"SupportsIntegrations">> => boolean(),
+%%   <<"SupportsLimitlessDatabase">> => boolean(),
+%%   <<"SupportsLocalWriteForwarding">> => boolean(),
+%%   <<"SupportsParallelQuery">> => boolean()
+%% }
+-type upgrade_target() :: #{binary() => any()}.
+
+%% Example:
+%% user_auth_config() :: #{
+%%   <<"AuthScheme">> => list(any()),
+%%   <<"ClientPasswordAuthType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IAMAuth">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% user_auth_config_info() :: #{
+%%   <<"AuthScheme">> => list(any()),
+%%   <<"ClientPasswordAuthType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IAMAuth">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user_auth_config_info() :: #{binary() => any()}.
+
+%% Example:
+%% valid_additional_storage_options() :: #{
+%%   <<"SupportsAdditionalStorageVolumes">> => boolean(),
+%%   <<"Volumes">> => list(valid_volume_options())
+%% }
+-type valid_additional_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% valid_db_instance_modifications_message() :: #{
+%%   <<"AdditionalStorage">> => valid_additional_storage_options(),
+%%   <<"Storage">> => list(valid_storage_options()),
+%%   <<"SupportsDedicatedLogVolume">> => boolean(),
+%%   <<"ValidProcessorFeatures">> => list(available_processor_feature())
+%% }
+-type valid_db_instance_modifications_message() :: #{binary() => any()}.
+
+%% Example:
+%% valid_storage_options() :: #{
+%%   <<"IopsToStorageRatio">> => list(double_range()),
+%%   <<"ProvisionedIops">> => list(range()),
+%%   <<"ProvisionedStorageThroughput">> => list(range()),
+%%   <<"StorageSize">> => list(range()),
+%%   <<"StorageThroughputToIopsRatio">> => list(double_range()),
+%%   <<"StorageType">> => string(),
+%%   <<"SupportsStorageAutoscaling">> => boolean()
+%% }
+-type valid_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% valid_volume_options() :: #{
+%%   <<"Storage">> => list(valid_storage_options()),
+%%   <<"VolumeName">> => string()
+%% }
+-type valid_volume_options() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_encryption_control_violation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type vpc_encryption_control_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_security_group_membership() :: #{
+%%   <<"Status">> => string(),
+%%   <<"VpcSecurityGroupId">> => string()
+%% }
+-type vpc_security_group_membership() :: #{binary() => any()}.
 
 -type add_role_to_db_cluster_errors() ::
-    db_cluster_role_quota_exceeded_fault() | 
-    db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_cluster_role_already_exists_fault().
+    db_cluster_role_quota_exceeded_fault() | 
+    db_cluster_role_already_exists_fault() | 
+    db_cluster_not_found_fault().
 
 -type add_role_to_db_instance_errors() ::
     invalid_db_instance_state_fault() | 
-    db_instance_role_already_exists_fault() | 
     db_instance_role_quota_exceeded_fault() | 
+    db_instance_role_already_exists_fault() | 
     db_instance_not_found_fault().
 
 -type add_source_identifier_to_subscription_errors() ::
@@ -5831,269 +5848,270 @@
     source_not_found_fault().
 
 -type add_tags_to_resource_errors() ::
-    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
-    db_snapshot_tenant_database_not_found_fault() | 
-    blue_green_deployment_not_found_fault() | 
-    db_cluster_not_found_fault() | 
+    invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_snapshot_not_found_fault() | 
-    integration_not_found_fault() | 
-    db_proxy_endpoint_not_found_fault() | 
-    db_proxy_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    db_shard_group_not_found_fault() | 
     invalid_db_cluster_endpoint_state_fault() | 
-    db_proxy_target_group_not_found_fault().
+    integration_not_found_fault() | 
+    db_snapshot_tenant_database_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
+    db_shard_group_not_found_fault() | 
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    blue_green_deployment_not_found_fault().
 
 -type apply_pending_maintenance_action_errors() ::
+    resource_not_found_fault() | 
     invalid_db_instance_state_fault() | 
-    invalid_db_cluster_state_fault() | 
-    resource_not_found_fault().
-
--type authorize_db_security_group_ingress_errors() ::
-    authorization_quota_exceeded_fault() | 
-    invalid_db_security_group_state_fault() | 
-    authorization_already_exists_fault() | 
-    db_security_group_not_found_fault().
-
--type backtrack_db_cluster_errors() ::
-    db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault().
 
+-type authorize_db_security_group_ingress_errors() ::
+    invalid_db_security_group_state_fault() | 
+    db_security_group_not_found_fault() | 
+    authorization_quota_exceeded_fault() | 
+    authorization_already_exists_fault().
+
+-type backtrack_db_cluster_errors() ::
+    invalid_db_cluster_state_fault() | 
+    db_cluster_not_found_fault().
+
 -type cancel_export_task_errors() ::
-    export_task_not_found_fault() | 
-    invalid_export_task_state_fault().
+    invalid_export_task_state_fault() | 
+    export_task_not_found_fault().
 
 -type copy_db_cluster_parameter_group_errors() ::
-    db_parameter_group_already_exists_fault() | 
     db_parameter_group_quota_exceeded_fault() | 
-    db_parameter_group_not_found_fault().
+    db_parameter_group_not_found_fault() | 
+    db_parameter_group_already_exists_fault().
 
 -type copy_db_cluster_snapshot_errors() ::
-    db_cluster_snapshot_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    snapshot_quota_exceeded_fault() | 
     kms_key_not_accessible_fault() | 
+    invalid_db_cluster_state_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
-    db_cluster_snapshot_already_exists_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_cluster_snapshot_not_found_fault() | 
+    db_cluster_snapshot_already_exists_fault().
 
 -type copy_db_parameter_group_errors() ::
-    db_parameter_group_already_exists_fault() | 
     db_parameter_group_quota_exceeded_fault() | 
-    db_parameter_group_not_found_fault().
+    db_parameter_group_not_found_fault() | 
+    db_parameter_group_already_exists_fault().
 
 -type copy_db_snapshot_errors() ::
-    custom_availability_zone_not_found_fault() | 
+    snapshot_quota_exceeded_fault() | 
     kms_key_not_accessible_fault() | 
-    db_snapshot_not_found_fault() | 
     invalid_db_snapshot_state_fault() | 
+    db_snapshot_not_found_fault() | 
     db_snapshot_already_exists_fault() | 
-    snapshot_quota_exceeded_fault().
+    custom_availability_zone_not_found_fault().
 
 -type copy_option_group_errors() ::
+    option_group_quota_exceeded_fault() | 
     option_group_not_found_fault() | 
-    option_group_already_exists_fault() | 
-    option_group_quota_exceeded_fault().
+    option_group_already_exists_fault().
 
 -type create_blue_green_deployment_errors() ::
-    invalid_db_instance_state_fault() | 
-    blue_green_deployment_already_exists_fault() | 
-    source_cluster_not_supported_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
     storage_quota_exceeded_fault() | 
-    instance_quota_exceeded_fault() | 
     source_database_not_supported_fault() | 
-    db_instance_not_found_fault() | 
+    source_cluster_not_supported_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    instance_quota_exceeded_fault() | 
     db_parameter_group_not_found_fault() | 
-    db_cluster_quota_exceeded_fault().
+    db_instance_not_found_fault() | 
+    db_cluster_quota_exceeded_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    blue_green_deployment_already_exists_fault().
 
 -type create_custom_db_engine_version_errors() ::
-    create_custom_db_engine_version_fault() | 
-    custom_db_engine_version_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
     invalid_custom_db_engine_version_state_fault() | 
     ec2_image_properties_not_supported_fault() | 
     custom_db_engine_version_quota_exceeded_fault() | 
-    custom_db_engine_version_not_found_fault().
+    custom_db_engine_version_not_found_fault() | 
+    custom_db_engine_version_already_exists_fault() | 
+    create_custom_db_engine_version_fault().
 
 -type create_db_cluster_errors() ::
-    insufficient_storage_cluster_capacity_fault() | 
-    invalid_db_instance_state_fault() | 
-    global_cluster_not_found_fault() | 
-    option_group_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    db_cluster_already_exists_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
-    storage_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    invalid_global_cluster_state_fault() | 
+    vpc_encryption_control_violation_exception() | 
     storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
+    option_group_not_found_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
+    invalid_global_cluster_state_fault() | 
     invalid_db_subnet_group_state_fault() | 
     invalid_db_subnet_group_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    insufficient_storage_cluster_capacity_fault() | 
     insufficient_db_instance_capacity_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_cluster_quota_exceeded_fault().
+    global_cluster_not_found_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_instance_not_found_fault() | 
+    db_cluster_role_quota_exceeded_fault() | 
+    db_cluster_quota_exceeded_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault().
 
 -type create_db_cluster_endpoint_errors() ::
     invalid_db_instance_state_fault() | 
-    db_cluster_endpoint_already_exists_fault() | 
-    db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault() | 
     db_cluster_endpoint_quota_exceeded_fault() | 
-    db_instance_not_found_fault().
+    db_cluster_endpoint_already_exists_fault().
 
 -type create_db_cluster_parameter_group_errors() ::
-    db_parameter_group_already_exists_fault() | 
-    db_parameter_group_quota_exceeded_fault().
+    db_parameter_group_quota_exceeded_fault() | 
+    db_parameter_group_already_exists_fault().
 
 -type create_db_cluster_snapshot_errors() ::
-    db_cluster_not_found_fault() | 
+    snapshot_quota_exceeded_fault() | 
     invalid_db_cluster_state_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
     db_cluster_snapshot_already_exists_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_cluster_not_found_fault().
 
 -type create_db_instance_errors() ::
+    vpc_encryption_control_violation_exception() | 
+    tenant_database_quota_exceeded_fault() | 
+    storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
     provisioned_iops_not_available_in_a_z_fault() | 
     option_group_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    storage_quota_exceeded_fault() | 
-    instance_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    certificate_not_found_fault() | 
-    authorization_not_found_fault() | 
-    backup_policy_not_found_fault() | 
     network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    tenant_database_quota_exceeded_fault() | 
-    db_security_group_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    storage_type_not_supported_fault() | 
     invalid_subnet() | 
+    invalid_db_cluster_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
+    instance_quota_exceeded_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_security_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    db_cluster_not_found_fault() | 
+    certificate_not_found_fault() | 
+    backup_policy_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type create_db_instance_read_replica_errors() ::
-    invalid_db_instance_state_fault() | 
+    vpc_encryption_control_violation_exception() | 
+    tenant_database_quota_exceeded_fault() | 
+    storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
     provisioned_iops_not_available_in_a_z_fault() | 
     option_group_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    storage_quota_exceeded_fault() | 
-    instance_quota_exceeded_fault() | 
-    db_subnet_group_not_allowed_fault() | 
-    db_subnet_group_not_found_fault() | 
-    certificate_not_found_fault() | 
-    db_instance_not_found_fault() | 
     network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    tenant_database_quota_exceeded_fault() | 
-    db_security_group_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
+    instance_quota_exceeded_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_not_allowed_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_security_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
+    db_instance_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    db_cluster_not_found_fault() | 
+    certificate_not_found_fault().
 
 -type create_db_parameter_group_errors() ::
-    db_parameter_group_already_exists_fault() | 
-    db_parameter_group_quota_exceeded_fault().
+    db_parameter_group_quota_exceeded_fault() | 
+    db_parameter_group_already_exists_fault().
 
 -type create_db_proxy_errors() ::
-    db_proxy_quota_exceeded_fault() | 
     invalid_subnet() | 
+    db_proxy_quota_exceeded_fault() | 
     db_proxy_already_exists_fault().
 
 -type create_db_proxy_endpoint_errors() ::
+    invalid_subnet() | 
     invalid_db_proxy_state_fault() | 
-    db_proxy_endpoint_quota_exceeded_fault() | 
     db_proxy_not_found_fault() | 
-    db_proxy_endpoint_already_exists_fault() | 
-    invalid_subnet().
+    db_proxy_endpoint_quota_exceeded_fault() | 
+    db_proxy_endpoint_already_exists_fault().
 
 -type create_db_security_group_errors() ::
-    db_security_group_already_exists_fault() | 
     db_security_group_quota_exceeded_fault() | 
-    db_security_group_not_supported_fault().
+    db_security_group_not_supported_fault() | 
+    db_security_group_already_exists_fault().
 
 -type create_db_shard_group_errors() ::
-    db_cluster_not_found_fault() | 
     unsupported_db_engine_version_fault() | 
-    invalid_db_cluster_state_fault() | 
     network_type_not_supported() | 
+    max_db_shard_group_limit_reached() | 
     invalid_vpc_network_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     db_shard_group_already_exists_fault() | 
-    max_db_shard_group_limit_reached().
+    db_cluster_not_found_fault().
 
 -type create_db_snapshot_errors() ::
+    snapshot_quota_exceeded_fault() | 
     invalid_db_instance_state_fault() | 
-    db_instance_not_found_fault() | 
     db_snapshot_already_exists_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_instance_not_found_fault().
 
 -type create_db_subnet_group_errors() ::
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    db_subnet_group_quota_exceeded_fault() | 
-    db_subnet_quota_exceeded_fault() | 
     invalid_subnet() | 
+    db_subnet_quota_exceeded_fault() | 
+    db_subnet_group_quota_exceeded_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
     db_subnet_group_already_exists_fault().
 
 -type create_event_subscription_errors() ::
-    s_n_s_no_authorization_fault() | 
-    event_subscription_quota_exceeded_fault() | 
-    s_n_s_topic_arn_not_found_fault() | 
-    s_n_s_invalid_topic_fault() | 
     subscription_category_not_found_fault() | 
+    subscription_already_exist_fault() | 
     source_not_found_fault() | 
-    subscription_already_exist_fault().
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_no_authorization_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    event_subscription_quota_exceeded_fault().
 
 -type create_global_cluster_errors() ::
-    global_cluster_already_exists_fault() | 
-    global_cluster_quota_exceeded_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    resource_not_found_fault() | 
     invalid_db_shard_group_state_fault() | 
-    resource_not_found_fault().
+    invalid_db_cluster_state_fault() | 
+    global_cluster_quota_exceeded_fault() | 
+    global_cluster_already_exists_fault() | 
+    db_cluster_not_found_fault().
 
 -type create_integration_errors() ::
-    db_cluster_not_found_fault() | 
     kms_key_not_accessible_fault() | 
-    db_instance_not_found_fault() | 
     integration_quota_exceeded_fault() | 
     integration_conflict_operation_fault() | 
-    integration_already_exists_fault().
+    integration_already_exists_fault() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type create_option_group_errors() ::
-    option_group_already_exists_fault() | 
-    option_group_quota_exceeded_fault().
+    option_group_quota_exceeded_fault() | 
+    option_group_already_exists_fault().
 
 -type create_tenant_database_errors() ::
-    invalid_db_instance_state_fault() | 
-    kms_key_not_accessible_fault() | 
+    tenant_database_quota_exceeded_fault() | 
     tenant_database_already_exists_fault() | 
-    db_instance_not_found_fault() | 
-    tenant_database_quota_exceeded_fault().
+    kms_key_not_accessible_fault() | 
+    invalid_db_instance_state_fault() | 
+    db_instance_not_found_fault().
 
 -type delete_blue_green_deployment_errors() ::
     invalid_blue_green_deployment_state_fault() | 
@@ -6104,14 +6122,14 @@
     custom_db_engine_version_not_found_fault().
 
 -type delete_db_cluster_errors() ::
-    db_cluster_automated_backup_quota_exceeded_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    snapshot_quota_exceeded_fault() | 
     kms_key_not_accessible_fault() | 
+    invalid_global_cluster_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
     db_cluster_snapshot_already_exists_fault() | 
-    invalid_global_cluster_state_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_cluster_not_found_fault() | 
+    db_cluster_automated_backup_quota_exceeded_fault().
 
 -type delete_db_cluster_automated_backup_errors() ::
     invalid_db_cluster_automated_backup_state_fault() | 
@@ -6119,29 +6137,29 @@
 
 -type delete_db_cluster_endpoint_errors() ::
     invalid_db_cluster_state_fault() | 
-    db_cluster_endpoint_not_found_fault() | 
-    invalid_db_cluster_endpoint_state_fault().
+    invalid_db_cluster_endpoint_state_fault() | 
+    db_cluster_endpoint_not_found_fault().
 
 -type delete_db_cluster_parameter_group_errors() ::
     invalid_db_parameter_group_state_fault() | 
     db_parameter_group_not_found_fault().
 
 -type delete_db_cluster_snapshot_errors() ::
-    db_cluster_snapshot_not_found_fault() | 
-    invalid_db_cluster_snapshot_state_fault().
+    invalid_db_cluster_snapshot_state_fault() | 
+    db_cluster_snapshot_not_found_fault().
 
 -type delete_db_instance_errors() ::
+    snapshot_quota_exceeded_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_instance_not_found_fault() | 
     db_snapshot_already_exists_fault() | 
-    db_instance_automated_backup_quota_exceeded_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_instance_not_found_fault() | 
+    db_instance_automated_backup_quota_exceeded_fault().
 
 -type delete_db_instance_automated_backup_errors() ::
-    db_instance_automated_backup_not_found_fault() | 
-    invalid_db_instance_automated_backup_state_fault().
+    invalid_db_instance_automated_backup_state_fault() | 
+    db_instance_automated_backup_not_found_fault().
 
 -type delete_db_parameter_group_errors() ::
     invalid_db_parameter_group_state_fault() | 
@@ -6152,34 +6170,34 @@
     db_proxy_not_found_fault().
 
 -type delete_db_proxy_endpoint_errors() ::
-    db_proxy_endpoint_not_found_fault() | 
-    invalid_db_proxy_endpoint_state_fault().
+    invalid_db_proxy_endpoint_state_fault() | 
+    db_proxy_endpoint_not_found_fault().
 
 -type delete_db_security_group_errors() ::
     invalid_db_security_group_state_fault() | 
     db_security_group_not_found_fault().
 
 -type delete_db_shard_group_errors() ::
+    invalid_db_shard_group_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_shard_group_not_found_fault() | 
-    invalid_db_shard_group_state_fault().
+    db_shard_group_not_found_fault().
 
 -type delete_db_snapshot_errors() ::
-    db_snapshot_not_found_fault() | 
-    invalid_db_snapshot_state_fault().
+    invalid_db_snapshot_state_fault() | 
+    db_snapshot_not_found_fault().
 
 -type delete_db_subnet_group_errors() ::
     invalid_db_subnet_state_fault() | 
-    db_subnet_group_not_found_fault() | 
-    invalid_db_subnet_group_state_fault().
+    invalid_db_subnet_group_state_fault() | 
+    db_subnet_group_not_found_fault().
 
 -type delete_event_subscription_errors() ::
     subscription_not_found_fault() | 
     invalid_event_subscription_state_fault().
 
 -type delete_global_cluster_errors() ::
-    global_cluster_not_found_fault() | 
-    invalid_global_cluster_state_fault().
+    invalid_global_cluster_state_fault() | 
+    global_cluster_not_found_fault().
 
 -type delete_integration_errors() ::
     invalid_integration_state_fault() | 
@@ -6191,16 +6209,16 @@
     invalid_option_group_state_fault().
 
 -type delete_tenant_database_errors() ::
-    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    db_snapshot_already_exists_fault().
+    invalid_db_instance_state_fault() | 
+    db_snapshot_already_exists_fault() | 
+    db_instance_not_found_fault().
 
 -type deregister_db_proxy_targets_errors() ::
     invalid_db_proxy_state_fault() | 
     db_proxy_target_not_found_fault() | 
-    db_proxy_not_found_fault() | 
-    db_proxy_target_group_not_found_fault().
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault().
 
 -type describe_blue_green_deployments_errors() ::
     blue_green_deployment_not_found_fault().
@@ -6240,8 +6258,8 @@
     db_instance_not_found_fault().
 
 -type describe_db_log_files_errors() ::
-    db_instance_not_found_fault() | 
-    db_instance_not_ready_fault().
+    db_instance_not_ready_fault() | 
+    db_instance_not_found_fault().
 
 -type describe_db_parameter_groups_errors() ::
     db_parameter_group_not_found_fault().
@@ -6253,26 +6271,26 @@
     db_proxy_not_found_fault().
 
 -type describe_db_proxy_endpoints_errors() ::
-    db_proxy_endpoint_not_found_fault() | 
-    db_proxy_not_found_fault().
+    db_proxy_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault().
 
 -type describe_db_proxy_target_groups_errors() ::
     invalid_db_proxy_state_fault() | 
-    db_proxy_not_found_fault() | 
-    db_proxy_target_group_not_found_fault().
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault().
 
 -type describe_db_proxy_targets_errors() ::
     invalid_db_proxy_state_fault() | 
     db_proxy_target_not_found_fault() | 
-    db_proxy_not_found_fault() | 
-    db_proxy_target_group_not_found_fault().
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault().
 
 -type describe_db_security_groups_errors() ::
     db_security_group_not_found_fault().
 
 -type describe_db_shard_groups_errors() ::
-    db_cluster_not_found_fault() | 
-    db_shard_group_not_found_fault().
+    db_shard_group_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type describe_db_snapshot_attributes_errors() ::
     db_snapshot_not_found_fault().
@@ -6318,121 +6336,121 @@
     db_instance_not_found_fault().
 
 -type disable_http_endpoint_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type download_db_log_file_portion_errors() ::
     db_log_file_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    db_instance_not_ready_fault().
+    db_instance_not_ready_fault() | 
+    db_instance_not_found_fault().
 
 -type enable_http_endpoint_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type failover_db_cluster_errors() ::
     invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    invalid_db_cluster_state_fault() | 
+    db_cluster_not_found_fault().
 
 -type failover_global_cluster_errors() ::
-    global_cluster_not_found_fault() | 
-    db_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    invalid_global_cluster_state_fault().
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type list_tags_for_resource_errors() ::
     tenant_database_not_found_fault() | 
-    db_snapshot_tenant_database_not_found_fault() | 
-    blue_green_deployment_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    db_snapshot_not_found_fault() | 
     integration_not_found_fault() | 
-    db_proxy_endpoint_not_found_fault() | 
-    db_proxy_not_found_fault() | 
-    db_instance_not_found_fault() | 
+    db_snapshot_tenant_database_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
     db_shard_group_not_found_fault() | 
-    db_proxy_target_group_not_found_fault().
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    blue_green_deployment_not_found_fault().
 
 -type modify_activity_stream_errors() ::
+    resource_not_found_fault() | 
     invalid_db_instance_state_fault() | 
-    db_instance_not_found_fault() | 
-    resource_not_found_fault().
+    db_instance_not_found_fault().
 
 -type modify_certificates_errors() ::
     certificate_not_found_fault().
 
 -type modify_current_db_cluster_capacity_errors() ::
+    invalid_db_cluster_state_fault() | 
     invalid_db_cluster_capacity_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    db_cluster_not_found_fault().
 
 -type modify_custom_db_engine_version_errors() ::
     invalid_custom_db_engine_version_state_fault() | 
     custom_db_engine_version_not_found_fault().
 
 -type modify_db_cluster_errors() ::
-    invalid_db_instance_state_fault() | 
-    storage_type_not_available_fault() | 
-    option_group_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    db_cluster_already_exists_fault() | 
-    invalid_db_security_group_state_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
-    storage_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    network_type_not_supported() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    invalid_global_cluster_state_fault() | 
-    storage_type_not_supported_fault() | 
-    invalid_subnet() | 
-    invalid_db_subnet_group_state_fault() | 
-    db_instance_already_exists_fault() | 
     vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    storage_type_not_supported_fault() | 
+    storage_type_not_available_fault() | 
+    storage_quota_exceeded_fault() | 
+    option_group_not_found_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_subnet() | 
+    invalid_global_cluster_state_fault() | 
+    invalid_db_subnet_group_state_fault() | 
+    invalid_db_security_group_state_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
+    db_instance_already_exists_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault().
 
 -type modify_db_cluster_endpoint_errors() ::
     invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_cluster_endpoint_not_found_fault() | 
+    invalid_db_cluster_endpoint_state_fault() | 
     db_instance_not_found_fault() | 
-    invalid_db_cluster_endpoint_state_fault().
+    db_cluster_endpoint_not_found_fault().
 
 -type modify_db_cluster_parameter_group_errors() ::
     invalid_db_parameter_group_state_fault() | 
     db_parameter_group_not_found_fault().
 
 -type modify_db_cluster_snapshot_attribute_errors() ::
-    db_cluster_snapshot_not_found_fault() | 
+    shared_snapshot_quota_exceeded_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
-    shared_snapshot_quota_exceeded_fault().
+    db_cluster_snapshot_not_found_fault().
 
 -type modify_db_instance_errors() ::
-    invalid_db_instance_state_fault() | 
+    vpc_encryption_control_violation_exception() | 
+    tenant_database_quota_exceeded_fault() | 
+    storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
     provisioned_iops_not_available_in_a_z_fault() | 
     option_group_not_found_fault() | 
-    invalid_db_security_group_state_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    storage_quota_exceeded_fault() | 
-    certificate_not_found_fault() | 
-    db_upgrade_dependency_failure_fault() | 
-    db_instance_not_found_fault() | 
-    authorization_not_found_fault() | 
-    backup_policy_not_found_fault() | 
     network_type_not_supported() | 
-    tenant_database_quota_exceeded_fault() | 
-    db_security_group_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    storage_type_not_supported_fault() | 
+    invalid_db_security_group_state_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
+    domain_not_found_fault() | 
+    db_upgrade_dependency_failure_fault() | 
+    db_security_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
+    db_instance_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    certificate_not_found_fault() | 
+    backup_policy_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type modify_db_parameter_group_errors() ::
     invalid_db_parameter_group_state_fault() | 
@@ -6445,14 +6463,14 @@
 
 -type modify_db_proxy_endpoint_errors() ::
     invalid_db_proxy_state_fault() | 
+    invalid_db_proxy_endpoint_state_fault() | 
     db_proxy_endpoint_not_found_fault() | 
-    db_proxy_endpoint_already_exists_fault() | 
-    invalid_db_proxy_endpoint_state_fault().
+    db_proxy_endpoint_already_exists_fault().
 
 -type modify_db_proxy_target_group_errors() ::
     invalid_db_proxy_state_fault() | 
-    db_proxy_not_found_fault() | 
-    db_proxy_target_group_not_found_fault().
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault().
 
 -type modify_db_shard_group_errors() ::
     invalid_db_cluster_state_fault() | 
@@ -6461,36 +6479,36 @@
 
 -type modify_db_snapshot_errors() ::
     kms_key_not_accessible_fault() | 
-    db_snapshot_not_found_fault() | 
-    invalid_db_snapshot_state_fault().
+    invalid_db_snapshot_state_fault() | 
+    db_snapshot_not_found_fault().
 
 -type modify_db_snapshot_attribute_errors() ::
-    db_snapshot_not_found_fault() | 
+    shared_snapshot_quota_exceeded_fault() | 
     invalid_db_snapshot_state_fault() | 
-    shared_snapshot_quota_exceeded_fault().
+    db_snapshot_not_found_fault().
 
 -type modify_db_subnet_group_errors() ::
-    db_subnet_group_not_found_fault() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    db_subnet_quota_exceeded_fault() | 
+    subnet_already_in_use() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault() | 
-    subnet_already_in_use().
+    db_subnet_quota_exceeded_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs().
 
 -type modify_event_subscription_errors() ::
-    s_n_s_no_authorization_fault() | 
-    event_subscription_quota_exceeded_fault() | 
-    s_n_s_topic_arn_not_found_fault() | 
-    s_n_s_invalid_topic_fault() | 
+    subscription_not_found_fault() | 
     subscription_category_not_found_fault() | 
-    subscription_not_found_fault().
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_no_authorization_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    event_subscription_quota_exceeded_fault().
 
 -type modify_global_cluster_errors() ::
+    invalid_global_cluster_state_fault() | 
     invalid_db_instance_state_fault() | 
-    global_cluster_already_exists_fault() | 
-    global_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
-    invalid_global_cluster_state_fault().
+    global_cluster_not_found_fault() | 
+    global_cluster_already_exists_fault().
 
 -type modify_integration_errors() ::
     invalid_integration_state_fault() | 
@@ -6502,10 +6520,10 @@
     invalid_option_group_state_fault().
 
 -type modify_tenant_database_errors() ::
-    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
-    kms_key_not_accessible_fault() | 
     tenant_database_already_exists_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_db_instance_state_fault() | 
     db_instance_not_found_fault().
 
 -type promote_read_replica_errors() ::
@@ -6513,74 +6531,74 @@
     db_instance_not_found_fault().
 
 -type promote_read_replica_db_cluster_errors() ::
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    invalid_db_cluster_state_fault() | 
+    db_cluster_not_found_fault().
 
 -type purchase_reserved_db_instances_offering_errors() ::
-    reserved_db_instance_already_exists_fault() | 
     reserved_db_instances_offering_not_found_fault() | 
-    reserved_db_instance_quota_exceeded_fault().
+    reserved_db_instance_quota_exceeded_fault() | 
+    reserved_db_instance_already_exists_fault().
 
 -type reboot_db_cluster_errors() ::
     invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    invalid_db_cluster_state_fault() | 
+    db_cluster_not_found_fault().
 
 -type reboot_db_instance_errors() ::
-    invalid_db_instance_state_fault() | 
     kms_key_not_accessible_fault() | 
+    invalid_db_instance_state_fault() | 
     db_instance_not_found_fault().
 
 -type reboot_db_shard_group_errors() ::
-    db_shard_group_not_found_fault() | 
-    invalid_db_shard_group_state_fault().
+    invalid_db_shard_group_state_fault() | 
+    db_shard_group_not_found_fault().
 
 -type register_db_proxy_targets_errors() ::
-    invalid_db_instance_state_fault() | 
-    insufficient_available_ips_in_subnet_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
     invalid_db_proxy_state_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    insufficient_available_ips_in_subnet_fault() | 
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_target_already_registered_fault() | 
     db_proxy_not_found_fault() | 
     db_instance_not_found_fault() | 
-    db_proxy_target_group_not_found_fault() | 
-    db_proxy_target_already_registered_fault().
+    db_cluster_not_found_fault().
 
 -type remove_from_global_cluster_errors() ::
-    global_cluster_not_found_fault() | 
-    db_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    invalid_global_cluster_state_fault().
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type remove_role_from_db_cluster_errors() ::
+    invalid_db_cluster_state_fault() | 
     db_cluster_role_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    db_cluster_not_found_fault().
 
 -type remove_role_from_db_instance_errors() ::
     invalid_db_instance_state_fault() | 
-    db_instance_not_found_fault() | 
-    db_instance_role_not_found_fault().
+    db_instance_role_not_found_fault() | 
+    db_instance_not_found_fault().
 
 -type remove_source_identifier_from_subscription_errors() ::
     subscription_not_found_fault() | 
     source_not_found_fault().
 
 -type remove_tags_from_resource_errors() ::
-    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
-    db_snapshot_tenant_database_not_found_fault() | 
-    blue_green_deployment_not_found_fault() | 
-    db_cluster_not_found_fault() | 
+    invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_snapshot_not_found_fault() | 
-    integration_not_found_fault() | 
-    db_proxy_endpoint_not_found_fault() | 
-    db_proxy_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    db_shard_group_not_found_fault() | 
     invalid_db_cluster_endpoint_state_fault() | 
-    db_proxy_target_group_not_found_fault().
+    integration_not_found_fault() | 
+    db_snapshot_tenant_database_not_found_fault() | 
+    db_snapshot_not_found_fault() | 
+    db_shard_group_not_found_fault() | 
+    db_proxy_target_group_not_found_fault() | 
+    db_proxy_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    blue_green_deployment_not_found_fault().
 
 -type reset_db_cluster_parameter_group_errors() ::
     invalid_db_parameter_group_state_fault() | 
@@ -6591,224 +6609,227 @@
     db_parameter_group_not_found_fault().
 
 -type restore_db_cluster_from_s3_errors() ::
-    insufficient_storage_cluster_capacity_fault() | 
-    db_cluster_not_found_fault() | 
-    db_cluster_already_exists_fault() | 
-    invalid_s3_bucket_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
-    storage_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    network_type_not_supported() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
     storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
+    invalid_s3_bucket_fault() | 
     invalid_db_subnet_group_state_fault() | 
-    db_cluster_quota_exceeded_fault().
+    invalid_db_cluster_state_fault() | 
+    insufficient_storage_cluster_capacity_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_cluster_role_quota_exceeded_fault() | 
+    db_cluster_quota_exceeded_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_already_exists_fault().
 
 -type restore_db_cluster_from_snapshot_errors() ::
-    insufficient_storage_cluster_capacity_fault() | 
-    invalid_db_instance_state_fault() | 
-    db_cluster_snapshot_not_found_fault() | 
-    option_group_not_found_fault() | 
-    insufficient_db_cluster_capacity_fault() | 
-    db_cluster_already_exists_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
-    db_snapshot_not_found_fault() | 
-    invalid_db_snapshot_state_fault() | 
-    storage_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    invalid_db_cluster_snapshot_state_fault() | 
-    network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
+    vpc_encryption_control_violation_exception() | 
     storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
+    option_group_not_found_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
+    invalid_db_snapshot_state_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    insufficient_storage_cluster_capacity_fault() | 
     insufficient_db_instance_capacity_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_cluster_quota_exceeded_fault().
+    insufficient_db_cluster_capacity_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_snapshot_not_found_fault() | 
+    db_cluster_snapshot_not_found_fault() | 
+    db_cluster_role_quota_exceeded_fault() | 
+    db_cluster_quota_exceeded_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_already_exists_fault().
 
 -type restore_db_cluster_to_point_in_time_errors() ::
-    insufficient_storage_cluster_capacity_fault() | 
-    db_cluster_snapshot_not_found_fault() | 
-    option_group_not_found_fault() | 
-    insufficient_db_cluster_capacity_fault() | 
-    db_cluster_not_found_fault() | 
-    db_cluster_already_exists_fault() | 
-    invalid_db_cluster_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_cluster_parameter_group_not_found_fault() | 
-    invalid_db_snapshot_state_fault() | 
-    storage_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    invalid_db_cluster_snapshot_state_fault() | 
-    network_type_not_supported() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    db_cluster_automated_backup_not_found_fault() | 
+    vpc_encryption_control_violation_exception() | 
     storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
+    option_group_not_found_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
+    invalid_db_snapshot_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    invalid_db_cluster_snapshot_state_fault() | 
+    insufficient_storage_cluster_capacity_fault() | 
     insufficient_db_instance_capacity_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_cluster_quota_exceeded_fault().
+    insufficient_db_cluster_capacity_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_cluster_snapshot_not_found_fault() | 
+    db_cluster_role_quota_exceeded_fault() | 
+    db_cluster_quota_exceeded_fault() | 
+    db_cluster_parameter_group_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    db_cluster_automated_backup_not_found_fault() | 
+    db_cluster_already_exists_fault().
 
 -type restore_db_instance_from_db_snapshot_errors() ::
-    db_cluster_snapshot_not_found_fault() | 
+    vpc_encryption_control_violation_exception() | 
+    tenant_database_quota_exceeded_fault() | 
+    storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
     provisioned_iops_not_available_in_a_z_fault() | 
     option_group_not_found_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_snapshot_not_found_fault() | 
-    invalid_db_snapshot_state_fault() | 
-    storage_quota_exceeded_fault() | 
-    instance_quota_exceeded_fault() | 
-    db_subnet_group_not_found_fault() | 
-    certificate_not_found_fault() | 
-    authorization_not_found_fault() | 
-    backup_policy_not_found_fault() | 
     network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
-    tenant_database_quota_exceeded_fault() | 
-    db_security_group_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
-    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
+    invalid_db_snapshot_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
+    instance_quota_exceeded_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_snapshot_not_found_fault() | 
+    db_security_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    db_cluster_snapshot_not_found_fault() | 
+    certificate_not_found_fault() | 
+    backup_policy_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type restore_db_instance_from_s3_errors() ::
+    vpc_encryption_control_violation_exception() | 
+    storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
     provisioned_iops_not_available_in_a_z_fault() | 
     option_group_not_found_fault() | 
-    invalid_s3_bucket_fault() | 
+    network_type_not_supported() | 
     kms_key_not_accessible_fault() | 
-    storage_quota_exceeded_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_subnet() | 
+    invalid_s3_bucket_fault() | 
+    insufficient_db_instance_capacity_fault() | 
     instance_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
-    certificate_not_found_fault() | 
-    authorization_not_found_fault() | 
-    backup_policy_not_found_fault() | 
-    network_type_not_supported() | 
     db_subnet_group_does_not_cover_enough_a_zs() | 
     db_security_group_not_found_fault() | 
-    invalid_vpc_network_state_fault() | 
-    storage_type_not_supported_fault() | 
-    invalid_subnet() | 
-    insufficient_db_instance_capacity_fault() | 
+    db_parameter_group_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    certificate_not_found_fault() | 
+    backup_policy_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type restore_db_instance_to_point_in_time_errors() ::
-    invalid_db_instance_state_fault() | 
-    provisioned_iops_not_available_in_a_z_fault() | 
-    option_group_not_found_fault() | 
-    kms_key_not_accessible_fault() | 
-    storage_quota_exceeded_fault() | 
-    instance_quota_exceeded_fault() | 
-    point_in_time_restore_not_enabled_fault() | 
-    db_subnet_group_not_found_fault() | 
-    certificate_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    authorization_not_found_fault() | 
-    db_instance_automated_backup_not_found_fault() | 
-    backup_policy_not_found_fault() | 
-    network_type_not_supported() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
+    vpc_encryption_control_violation_exception() | 
     tenant_database_quota_exceeded_fault() | 
-    db_security_group_not_found_fault() | 
-    invalid_vpc_network_state_fault() | 
-    domain_not_found_fault() | 
     storage_type_not_supported_fault() | 
+    storage_quota_exceeded_fault() | 
+    provisioned_iops_not_available_in_a_z_fault() | 
+    point_in_time_restore_not_enabled_fault() | 
+    option_group_not_found_fault() | 
+    network_type_not_supported() | 
+    kms_key_not_accessible_fault() | 
+    invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
+    invalid_db_instance_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
+    instance_quota_exceeded_fault() | 
+    domain_not_found_fault() | 
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_security_group_not_found_fault() | 
+    db_parameter_group_not_found_fault() | 
+    db_instance_not_found_fault() | 
+    db_instance_automated_backup_not_found_fault() | 
     db_instance_already_exists_fault() | 
-    vpc_encryption_control_violation_exception() | 
-    db_parameter_group_not_found_fault().
+    certificate_not_found_fault() | 
+    backup_policy_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type revoke_db_security_group_ingress_errors() ::
     invalid_db_security_group_state_fault() | 
-    authorization_not_found_fault() | 
-    db_security_group_not_found_fault().
+    db_security_group_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type start_activity_stream_errors() ::
-    invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    resource_not_found_fault() | 
     kms_key_not_accessible_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     db_instance_not_found_fault() | 
-    resource_not_found_fault().
+    db_cluster_not_found_fault().
 
 -type start_db_cluster_errors() ::
-    invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    vpc_encryption_control_violation_exception() | 
     kms_key_not_accessible_fault() | 
     invalid_db_shard_group_state_fault() | 
-    vpc_encryption_control_violation_exception().
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
+    db_cluster_not_found_fault().
 
 -type start_db_instance_errors() ::
-    invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault() | 
+    vpc_encryption_control_violation_exception() | 
     kms_key_not_accessible_fault() | 
-    db_subnet_group_not_found_fault() | 
-    db_instance_not_found_fault() | 
-    authorization_not_found_fault() | 
-    db_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_cluster_state_fault() | 
     insufficient_db_instance_capacity_fault() | 
-    vpc_encryption_control_violation_exception().
+    db_subnet_group_not_found_fault() | 
+    db_subnet_group_does_not_cover_enough_a_zs() | 
+    db_instance_not_found_fault() | 
+    db_cluster_not_found_fault() | 
+    authorization_not_found_fault().
 
 -type start_db_instance_automated_backups_replication_errors() ::
-    invalid_db_instance_state_fault() | 
-    kms_key_not_accessible_fault() | 
-    db_instance_not_found_fault() | 
-    invalid_db_instance_automated_backup_state_fault() | 
     storage_type_not_supported_fault() | 
+    kms_key_not_accessible_fault() | 
+    invalid_db_instance_state_fault() | 
+    invalid_db_instance_automated_backup_state_fault() | 
+    db_instance_not_found_fault() | 
     db_instance_automated_backup_quota_exceeded_fault().
 
 -type start_export_task_errors() ::
-    db_cluster_snapshot_not_found_fault() | 
-    db_cluster_not_found_fault() | 
-    invalid_s3_bucket_fault() | 
     kms_key_not_accessible_fault() | 
-    db_snapshot_not_found_fault() | 
+    invalid_s3_bucket_fault() | 
+    invalid_export_source_state_fault() | 
     invalid_export_only_fault() | 
+    iam_role_not_found_fault() | 
     iam_role_missing_permissions_fault() | 
     export_task_already_exists_fault() | 
-    invalid_export_source_state_fault() | 
-    iam_role_not_found_fault().
+    db_snapshot_not_found_fault() | 
+    db_cluster_snapshot_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type stop_activity_stream_errors() ::
+    resource_not_found_fault() | 
     invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
     db_instance_not_found_fault() | 
-    resource_not_found_fault().
+    db_cluster_not_found_fault().
 
 -type stop_db_cluster_errors() ::
+    invalid_db_shard_group_state_fault() | 
     invalid_db_instance_state_fault() | 
-    db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
-    invalid_db_shard_group_state_fault().
+    db_cluster_not_found_fault().
 
 -type stop_db_instance_errors() ::
+    snapshot_quota_exceeded_fault() | 
     invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    db_instance_not_found_fault() | 
     db_snapshot_already_exists_fault() | 
-    snapshot_quota_exceeded_fault().
+    db_instance_not_found_fault().
 
 -type stop_db_instance_automated_backups_replication_errors() ::
     invalid_db_instance_state_fault() | 
@@ -6819,10 +6840,10 @@
     blue_green_deployment_not_found_fault().
 
 -type switchover_global_cluster_errors() ::
-    global_cluster_not_found_fault() | 
-    db_cluster_not_found_fault() | 
+    invalid_global_cluster_state_fault() | 
     invalid_db_cluster_state_fault() | 
-    invalid_global_cluster_state_fault().
+    global_cluster_not_found_fault() | 
+    db_cluster_not_found_fault().
 
 -type switchover_read_replica_errors() ::
     invalid_db_instance_state_fault() | 
@@ -7259,6 +7280,12 @@ create_custom_db_engine_version(Client, Input, Options)
 %% Aurora DB Cluster with express configuration and create cluster in
 %% seconds. Express configuration provides a cluster with a writer instance
 %% and feature specific values set to all other input parameters of this API.
+%%
+%% You can use the `AssociatedRoles' parameter to associate one or more
+%% Amazon Web Services Identity and Access Management (IAM) roles with an
+%% Aurora DB cluster. Each associated role lets the DB cluster access other
+%% Amazon Web Services on your behalf, such as Amazon S3 for data import and
+%% export, or Amazon Web Services Lambda for invoking functions.
 -spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
@@ -10500,6 +10527,10 @@ reset_db_parameter_group(Client, Input, Options)
 %%
 %% This operation only applies to Aurora DB clusters. The source DB engine
 %% must be MySQL.
+%%
+%% You can use the `AssociatedRoles' parameter to associate one or more
+%% Amazon Web Services Identity and Access Management (IAM) roles with the
+%% Aurora DB cluster when you restore it from Amazon S3.
 -spec restore_db_cluster_from_s3(aws_client:aws_client(), restore_db_cluster_from_s3_message()) ->
     {ok, restore_db_cluster_from_s3_result(), tuple()} |
     {error, any()} |
@@ -10533,6 +10564,10 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% `EnableIAMDatabaseAuthentication'. Once the cluster is restored, you
 %% need to modify the DB cluster to update `MasterUserAuthenticationType'
 %% to `iam-db-auth'.
+%%
+%% You can use the `AssociatedRoles' parameter to associate one or more
+%% Amazon Web Services Identity and Access Management (IAM) roles with an
+%% Aurora DB cluster when you restore it from a snapshot.
 %%
 %% This operation only restores the DB cluster, not the DB instances for that
 %% DB cluster. You must invoke the `CreateDBInstance' operation to create
@@ -10588,6 +10623,10 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% `EnableIAMDatabaseAuthentication'. Once the cluster is restored, you
 %% need to modify the DB cluster to update `MasterUserAuthenticationType'
 %% to `iam-db-auth'.
+%%
+%% You can use the `AssociatedRoles' parameter to associate one or more
+%% Amazon Web Services Identity and Access Management (IAM) roles with an
+%% Aurora DB cluster when you restore it to a point in time.
 %%
 %% For Aurora, this operation only restores the DB cluster, not the DB
 %% instances for that DB cluster. You must invoke the `CreateDBInstance'

@@ -105,424 +105,10 @@
 
 
 %% Example:
-%% delete_budget_action_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionId">> := string(),
-%%   <<"BudgetName">> := string()
-%% }
--type delete_budget_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% expression_dimension_values() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string())
-%% }
--type expression_dimension_values() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budgets_response() :: #{
-%%   <<"Budgets">> => list(budget()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budgets_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_notifications_for_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_notifications_for_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_budget_response() :: #{
-
-%% }
--type delete_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscriber_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"Notification">> := notification(),
-%%   <<"Subscriber">> := subscriber()
-%% }
--type delete_subscriber_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_budget_action_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Action">> => action(),
-%%   <<"BudgetName">> => string()
-%% }
--type delete_budget_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_action_histories_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TimePeriod">> => time_period()
-%% }
--type describe_budget_action_histories_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_budget_response() :: #{
-
-%% }
--type create_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_subscriber_response() :: #{
-
-%% }
--type update_subscriber_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_values() :: #{
-%%   <<"Key">> => string(),
-%%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string())
-%% }
--type tag_values() :: #{binary() => any()}.
-
-%% Example:
-%% action_threshold() :: #{
-%%   <<"ActionThresholdType">> => list(any()),
-%%   <<"ActionThresholdValue">> => float()
-%% }
--type action_threshold() :: #{binary() => any()}.
-
-%% Example:
-%% create_subscriber_response() :: #{
-
-%% }
--type create_subscriber_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"ResourceTagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_budget_action_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionId">> := string(),
-%%   <<"ActionThreshold">> => action_threshold(),
-%%   <<"ApprovalModel">> => list(any()),
-%%   <<"BudgetName">> := string(),
-%%   <<"Definition">> => definition(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"NotificationType">> => list(any()),
-%%   <<"Subscribers">> => list(subscriber())
-%% }
--type update_budget_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_actions_for_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_actions_for_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budgets_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ShowFilterExpression">> => boolean()
-%% }
--type describe_budgets_request() :: #{binary() => any()}.
-
-%% Example:
-%% time_period() :: #{
-%%   <<"End">> => non_neg_integer(),
-%%   <<"Start">> => non_neg_integer()
-%% }
--type time_period() :: #{binary() => any()}.
-
-%% Example:
-%% create_notification_response() :: #{
-
-%% }
--type create_notification_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_actions_for_budget_response() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_actions_for_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_actions_for_budget_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_actions_for_budget_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_budget_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"NewBudget">> := budget()
-%% }
--type update_budget_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscriber_response() :: #{
-
-%% }
--type delete_subscriber_response() :: #{binary() => any()}.
-
-%% Example:
-%% expired_next_token_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type expired_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscribers_for_notification_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Subscribers">> => list(subscriber())
-%% }
--type describe_subscribers_for_notification_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_notifications_for_account_response() :: #{
-%%   <<"BudgetNotificationsForAccount">> => list(budget_notifications_for_account()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_notifications_for_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% execute_budget_action_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ActionId">> => string(),
-%%   <<"BudgetName">> => string(),
-%%   <<"ExecutionType">> => list(any())
-%% }
--type execute_budget_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% calculated_spend() :: #{
-%%   <<"ActualSpend">> => spend(),
-%%   <<"ForecastedSpend">> => spend()
-%% }
--type calculated_spend() :: #{binary() => any()}.
-
-%% Example:
-%% update_subscriber_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"NewSubscriber">> := subscriber(),
-%%   <<"Notification">> := notification(),
-%%   <<"OldSubscriber">> := subscriber()
-%% }
--type update_subscriber_request() :: #{binary() => any()}.
-
-%% Example:
-%% scp_action_definition() :: #{
-%%   <<"PolicyId">> => string(),
-%%   <<"TargetIds">> => list(string())
-%% }
--type scp_action_definition() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_performance_history_response() :: #{
-%%   <<"BudgetPerformanceHistory">> => budget_performance_history(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_performance_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% action_history() :: #{
-%%   <<"ActionHistoryDetails">> => action_history_details(),
-%%   <<"EventType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type action_history() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ssm_action_definition() :: #{
-%%   <<"ActionSubType">> => list(any()),
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"Region">> => string()
-%% }
--type ssm_action_definition() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% billing_view_health_status_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type billing_view_health_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_action_histories_response() :: #{
-%%   <<"ActionHistories">> => list(action_history()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_action_histories_response() :: #{binary() => any()}.
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cost_types() :: #{
-%%   <<"IncludeCredit">> => boolean(),
-%%   <<"IncludeDiscount">> => boolean(),
-%%   <<"IncludeOtherSubscription">> => boolean(),
-%%   <<"IncludeRecurring">> => boolean(),
-%%   <<"IncludeRefund">> => boolean(),
-%%   <<"IncludeSubscription">> => boolean(),
-%%   <<"IncludeSupport">> => boolean(),
-%%   <<"IncludeTax">> => boolean(),
-%%   <<"IncludeUpfront">> => boolean(),
-%%   <<"UseAmortized">> => boolean(),
-%%   <<"UseBlended">> => boolean()
-%% }
--type cost_types() :: #{binary() => any()}.
-
-%% Example:
-%% update_budget_response() :: #{
-
-%% }
--type update_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_adjust_data() :: #{
-%%   <<"AutoAdjustType">> => list(any()),
-%%   <<"HistoricalOptions">> => historical_options(),
-%%   <<"LastAutoAdjustTime">> => non_neg_integer()
-%% }
--type auto_adjust_data() :: #{binary() => any()}.
-
-%% Example:
-%% notification_with_subscribers() :: #{
-%%   <<"Notification">> => notification(),
-%%   <<"Subscribers">> => list(subscriber())
-%% }
--type notification_with_subscribers() :: #{binary() => any()}.
-
-%% Example:
-%% subscriber() :: #{
-%%   <<"Address">> => string(),
-%%   <<"SubscriptionType">> => list(any())
-%% }
--type subscriber() :: #{binary() => any()}.
-
-%% Example:
-%% create_budget_action_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionThreshold">> := action_threshold(),
-%%   <<"ActionType">> := list(any()),
-%%   <<"ApprovalModel">> := list(any()),
-%%   <<"BudgetName">> := string(),
-%%   <<"Definition">> := definition(),
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"NotificationType">> := list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()),
-%%   <<"Subscribers">> := list(subscriber())
-%% }
--type create_budget_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% health_status() :: #{
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any())
-%% }
--type health_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notifications_for_budget_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_notifications_for_budget_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_action_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionId">> := string(),
-%%   <<"BudgetName">> := string()
-%% }
--type describe_budget_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"ShowFilterExpression">> => boolean()
-%% }
--type describe_budget_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"NewNotification">> := notification(),
-%%   <<"OldNotification">> := notification()
-%% }
--type update_notification_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_actions_for_account_response() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_budget_actions_for_account_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% action() :: #{
@@ -540,12 +126,41 @@
 -type action() :: #{binary() => any()}.
 
 %% Example:
-%% cost_category_values() :: #{
-%%   <<"Key">> => string(),
-%%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string())
+%% action_history() :: #{
+%%   <<"ActionHistoryDetails">> => action_history_details(),
+%%   <<"EventType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
--type cost_category_values() :: #{binary() => any()}.
+-type action_history() :: #{binary() => any()}.
+
+%% Example:
+%% action_history_details() :: #{
+%%   <<"Action">> => action(),
+%%   <<"Message">> => string()
+%% }
+-type action_history_details() :: #{binary() => any()}.
+
+%% Example:
+%% action_threshold() :: #{
+%%   <<"ActionThresholdType">> => list(any()),
+%%   <<"ActionThresholdValue">> => float()
+%% }
+-type action_threshold() :: #{binary() => any()}.
+
+%% Example:
+%% auto_adjust_data() :: #{
+%%   <<"AutoAdjustType">> => list(any()),
+%%   <<"HistoricalOptions">> => historical_options(),
+%%   <<"LastAutoAdjustTime">> => non_neg_integer()
+%% }
+-type auto_adjust_data() :: #{binary() => any()}.
+
+%% Example:
+%% billing_view_health_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type billing_view_health_status_exception() :: #{binary() => any()}.
 
 %% Example:
 %% budget() :: #{
@@ -568,138 +183,11 @@
 -type budget() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% historical_options() :: #{
-%%   <<"BudgetAdjustmentPeriod">> => integer(),
-%%   <<"LookBackAvailablePeriods">> => integer()
-%% }
--type historical_options() :: #{binary() => any()}.
-
-%% Example:
-%% create_budget_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"Budget">> := budget(),
-%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()),
-%%   <<"ResourceTags">> => list(resource_tag())
-%% }
--type create_budget_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_budget_action_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ActionId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"ExecutionType">> := list(any())
-%% }
--type execute_budget_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_response() :: #{
-
-%% }
--type delete_notification_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_budget_response() :: #{
-%%   <<"Budget">> => budget()
-%% }
--type describe_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_locked_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_locked_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notifications_for_budget_response() :: #{
-%%   <<"NextToken">> => string(),
+%% budget_notifications_for_account() :: #{
+%%   <<"BudgetName">> => string(),
 %%   <<"Notifications">> => list(notification())
 %% }
--type describe_notifications_for_budget_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_budget_action_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ActionId">> => string(),
-%%   <<"BudgetName">> => string()
-%% }
--type create_budget_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% definition() :: #{
-%%   <<"IamActionDefinition">> => iam_action_definition(),
-%%   <<"ScpActionDefinition">> => scp_action_definition(),
-%%   <<"SsmActionDefinition">> => ssm_action_definition()
-%% }
--type definition() :: #{binary() => any()}.
-
-%% Example:
-%% expression() :: #{
-%%   <<"And">> => list(expression()),
-%%   <<"CostCategories">> => cost_category_values(),
-%%   <<"Dimensions">> => expression_dimension_values(),
-%%   <<"Not">> => expression(),
-%%   <<"Or">> => list(expression()),
-%%   <<"Tags">> => tag_values()
-%% }
--type expression() :: #{binary() => any()}.
-
-%% Example:
-%% budgeted_and_actual_amounts() :: #{
-%%   <<"ActualAmount">> => spend(),
-%%   <<"BudgetedAmount">> => spend(),
-%%   <<"TimePeriod">> => time_period()
-%% }
--type budgeted_and_actual_amounts() :: #{binary() => any()}.
-
-%% Example:
-%% update_budget_action_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BudgetName">> => string(),
-%%   <<"NewAction">> => action(),
-%%   <<"OldAction">> => action()
-%% }
--type update_budget_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% notification() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"NotificationState">> => list(any()),
-%%   <<"NotificationType">> => list(any()),
-%%   <<"Threshold">> => float(),
-%%   <<"ThresholdType">> => list(any())
-%% }
--type notification() :: #{binary() => any()}.
+-type budget_notifications_for_account() :: #{binary() => any()}.
 
 %% Example:
 %% budget_performance_history() :: #{
@@ -716,64 +204,81 @@
 -type budget_performance_history() :: #{binary() => any()}.
 
 %% Example:
-%% describe_budget_action_response() :: #{
+%% budgeted_and_actual_amounts() :: #{
+%%   <<"ActualAmount">> => spend(),
+%%   <<"BudgetedAmount">> => spend(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type budgeted_and_actual_amounts() :: #{binary() => any()}.
+
+%% Example:
+%% calculated_spend() :: #{
+%%   <<"ActualSpend">> => spend(),
+%%   <<"ForecastedSpend">> => spend()
+%% }
+-type calculated_spend() :: #{binary() => any()}.
+
+%% Example:
+%% cost_category_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string())
+%% }
+-type cost_category_values() :: #{binary() => any()}.
+
+%% Example:
+%% cost_types() :: #{
+%%   <<"IncludeCredit">> => boolean(),
+%%   <<"IncludeDiscount">> => boolean(),
+%%   <<"IncludeOtherSubscription">> => boolean(),
+%%   <<"IncludeRecurring">> => boolean(),
+%%   <<"IncludeRefund">> => boolean(),
+%%   <<"IncludeSubscription">> => boolean(),
+%%   <<"IncludeSupport">> => boolean(),
+%%   <<"IncludeTax">> => boolean(),
+%%   <<"IncludeUpfront">> => boolean(),
+%%   <<"UseAmortized">> => boolean(),
+%%   <<"UseBlended">> => boolean()
+%% }
+-type cost_types() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionThreshold">> := action_threshold(),
+%%   <<"ActionType">> := list(any()),
+%%   <<"ApprovalModel">> := list(any()),
+%%   <<"BudgetName">> := string(),
+%%   <<"Definition">> := definition(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"NotificationType">> := list(any()),
+%%   <<"ResourceTags">> => list(resource_tag()),
+%%   <<"Subscribers">> := list(subscriber())
+%% }
+-type create_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_action_response() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Action">> => action(),
+%%   <<"ActionId">> => string(),
 %%   <<"BudgetName">> => string()
 %% }
--type describe_budget_action_response() :: #{binary() => any()}.
+-type create_budget_action_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_budget_request() :: #{
+%% create_budget_request() :: #{
 %%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string()
+%%   <<"Budget">> := budget(),
+%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()),
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
--type delete_budget_request() :: #{binary() => any()}.
+-type create_budget_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_subscriber_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"Notification">> := notification(),
-%%   <<"Subscriber">> := subscriber()
-%% }
--type create_subscriber_request() :: #{binary() => any()}.
-
-%% Example:
-%% iam_action_definition() :: #{
-%%   <<"Groups">> => list(string()),
-%%   <<"PolicyArn">> => string(),
-%%   <<"Roles">> => list(string()),
-%%   <<"Users">> => list(string())
-%% }
--type iam_action_definition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"BudgetName">> := string(),
-%%   <<"Notification">> := notification()
-%% }
--type delete_notification_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_record_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_record_exception() :: #{binary() => any()}.
-
-%% Example:
-%% budget_notifications_for_account() :: #{
-%%   <<"BudgetName">> => string(),
-%%   <<"Notifications">> => list(notification())
-%% }
--type budget_notifications_for_account() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_response() :: #{
+%% create_budget_response() :: #{
 
 %% }
--type update_notification_response() :: #{binary() => any()}.
+-type create_budget_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_notification_request() :: #{
@@ -785,11 +290,177 @@
 -type create_notification_request() :: #{binary() => any()}.
 
 %% Example:
-%% spend() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Unit">> => string()
+%% create_notification_response() :: #{
+
 %% }
--type spend() :: #{binary() => any()}.
+-type create_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification(),
+%%   <<"Subscriber">> := subscriber()
+%% }
+-type create_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscriber_response() :: #{
+
+%% }
+-type create_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% creation_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type creation_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% definition() :: #{
+%%   <<"IamActionDefinition">> => iam_action_definition(),
+%%   <<"ScpActionDefinition">> => scp_action_definition(),
+%%   <<"SsmActionDefinition">> => ssm_action_definition()
+%% }
+-type definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type delete_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Action">> => action(),
+%%   <<"BudgetName">> => string()
+%% }
+-type delete_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type delete_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_response() :: #{
+
+%% }
+-type delete_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification()
+%% }
+-type delete_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_response() :: #{
+
+%% }
+-type delete_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification(),
+%%   <<"Subscriber">> := subscriber()
+%% }
+-type delete_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_response() :: #{
+
+%% }
+-type delete_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_histories_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type describe_budget_action_histories_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_histories_response() :: #{
+%%   <<"ActionHistories">> => list(action_history()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_action_histories_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type describe_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Action">> => action(),
+%%   <<"BudgetName">> => string()
+%% }
+-type describe_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_account_response() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_budget_response() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_notifications_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_notifications_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_notifications_for_account_response() :: #{
+%%   <<"BudgetNotificationsForAccount">> => list(budget_notifications_for_account()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_notifications_for_account_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budget_performance_history_request() :: #{
@@ -802,17 +473,57 @@
 -type describe_budget_performance_history_request() :: #{binary() => any()}.
 
 %% Example:
-%% creation_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_budget_performance_history_response() :: #{
+%%   <<"BudgetPerformanceHistory">> => budget_performance_history(),
+%%   <<"NextToken">> => string()
 %% }
--type creation_limit_exceeded_exception() :: #{binary() => any()}.
+-type describe_budget_performance_history_response() :: #{binary() => any()}.
 
 %% Example:
-%% action_history_details() :: #{
-%%   <<"Action">> => action(),
-%%   <<"Message">> => string()
+%% describe_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"ShowFilterExpression">> => boolean()
 %% }
--type action_history_details() :: #{binary() => any()}.
+-type describe_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_response() :: #{
+%%   <<"Budget">> => budget()
+%% }
+-type describe_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budgets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowFilterExpression">> => boolean()
+%% }
+-type describe_budgets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budgets_response() :: #{
+%%   <<"Budgets">> => list(budget()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budgets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notifications_for_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_notifications_for_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notifications_for_budget_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Notifications">> => list(notification())
+%% }
+-type describe_notifications_for_budget_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_subscribers_for_notification_request() :: #{
@@ -825,224 +536,513 @@
 -type describe_subscribers_for_notification_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_subscribers_for_notification_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscribers">> => list(subscriber())
+%% }
+-type describe_subscribers_for_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_record_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_record_exception() :: #{binary() => any()}.
+
+%% Example:
+%% execute_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"ExecutionType">> := list(any())
+%% }
+-type execute_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"BudgetName">> => string(),
+%%   <<"ExecutionType">> => list(any())
+%% }
+-type execute_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type expired_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% expression() :: #{
+%%   <<"And">> => list(expression()),
+%%   <<"CostCategories">> => cost_category_values(),
+%%   <<"Dimensions">> => expression_dimension_values(),
+%%   <<"Not">> => expression(),
+%%   <<"Or">> => list(expression()),
+%%   <<"Tags">> => tag_values()
+%% }
+-type expression() :: #{binary() => any()}.
+
+%% Example:
+%% expression_dimension_values() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string())
+%% }
+-type expression_dimension_values() :: #{binary() => any()}.
+
+%% Example:
+%% health_status() :: #{
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type health_status() :: #{binary() => any()}.
+
+%% Example:
+%% historical_options() :: #{
+%%   <<"BudgetAdjustmentPeriod">> => integer(),
+%%   <<"LookBackAvailablePeriods">> => integer()
+%% }
+-type historical_options() :: #{binary() => any()}.
+
+%% Example:
+%% iam_action_definition() :: #{
+%%   <<"Groups">> => list(string()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"Roles">> => list(string()),
+%%   <<"Users">> => list(string())
+%% }
+-type iam_action_definition() :: #{binary() => any()}.
+
+%% Example:
 %% internal_error_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type internal_error_exception() :: #{binary() => any()}.
 
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTags">> => list(resource_tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% notification() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"NotificationState">> => list(any()),
+%%   <<"NotificationType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"ThresholdType">> => list(any())
+%% }
+-type notification() :: #{binary() => any()}.
+
+%% Example:
+%% notification_with_subscribers() :: #{
+%%   <<"Notification">> => notification(),
+%%   <<"Subscribers">> => list(subscriber())
+%% }
+-type notification_with_subscribers() :: #{binary() => any()}.
+
+%% Example:
+%% resource_locked_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_locked_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% scp_action_definition() :: #{
+%%   <<"PolicyId">> => string(),
+%%   <<"TargetIds">> => list(string())
+%% }
+-type scp_action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% spend() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type spend() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_action_definition() :: #{
+%%   <<"ActionSubType">> => list(any()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"Region">> => string()
+%% }
+-type ssm_action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% subscriber() :: #{
+%%   <<"Address">> => string(),
+%%   <<"SubscriptionType">> => list(any())
+%% }
+-type subscriber() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ResourceTags">> := list(resource_tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string())
+%% }
+-type tag_values() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_period() :: #{
+%%   <<"End">> => non_neg_integer(),
+%%   <<"Start">> => non_neg_integer()
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"ResourceTagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"ActionThreshold">> => action_threshold(),
+%%   <<"ApprovalModel">> => list(any()),
+%%   <<"BudgetName">> := string(),
+%%   <<"Definition">> => definition(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"NotificationType">> => list(any()),
+%%   <<"Subscribers">> => list(subscriber())
+%% }
+-type update_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BudgetName">> => string(),
+%%   <<"NewAction">> => action(),
+%%   <<"OldAction">> => action()
+%% }
+-type update_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NewBudget">> := budget()
+%% }
+-type update_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_response() :: #{
+
+%% }
+-type update_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"NewNotification">> := notification(),
+%%   <<"OldNotification">> := notification()
+%% }
+-type update_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_response() :: #{
+
+%% }
+-type update_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"NewSubscriber">> := subscriber(),
+%%   <<"Notification">> := notification(),
+%%   <<"OldSubscriber">> := subscriber()
+%% }
+-type update_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscriber_response() :: #{
+
+%% }
+-type update_subscriber_response() :: #{binary() => any()}.
+
 -type create_budget_errors() ::
-    internal_error_exception() | 
-    creation_limit_exceeded_exception() | 
-    duplicate_record_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    duplicate_record_exception() | 
+    creation_limit_exceeded_exception() | 
     billing_view_health_status_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type create_budget_action_errors() ::
-    internal_error_exception() | 
-    creation_limit_exceeded_exception() | 
-    duplicate_record_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     not_found_exception() | 
-    service_quota_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    duplicate_record_exception() | 
+    creation_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type create_notification_errors() ::
-    internal_error_exception() | 
-    creation_limit_exceeded_exception() | 
-    duplicate_record_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    duplicate_record_exception() | 
+    creation_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type create_subscriber_errors() ::
-    internal_error_exception() | 
-    creation_limit_exceeded_exception() | 
-    duplicate_record_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    duplicate_record_exception() | 
+    creation_limit_exceeded_exception() | 
+    access_denied_exception().
 
 -type delete_budget_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type delete_budget_action_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
     resource_locked_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type delete_notification_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type delete_subscriber_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_action_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_action_histories_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    invalid_next_token_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_actions_for_account_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_actions_for_budget_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    invalid_next_token_exception().
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type describe_budget_notifications_for_account_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    expired_next_token_exception().
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
 
 -type describe_budget_performance_history_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    billing_view_health_status_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    expired_next_token_exception().
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    billing_view_health_status_exception() | 
+    access_denied_exception().
 
 -type describe_budgets_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    expired_next_token_exception().
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
 
 -type describe_notifications_for_budget_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    expired_next_token_exception().
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
 
 -type describe_subscribers_for_notification_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    expired_next_token_exception().
+    internal_error_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
 
 -type execute_budget_action_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
     resource_locked_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     not_found_exception() | 
-    service_quota_exceeded_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type update_budget_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
+    service_quota_exceeded_exception() | 
     not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     billing_view_health_status_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type update_budget_action_errors() ::
-    internal_error_exception() | 
     throttling_exception() | 
     resource_locked_exception() | 
+    not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    internal_error_exception() | 
+    access_denied_exception().
 
 -type update_notification_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_error_exception() | 
     duplicate_record_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 -type update_subscriber_errors() ::
+    throttling_exception() | 
+    not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_error_exception() | 
     duplicate_record_exception() | 
-    throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

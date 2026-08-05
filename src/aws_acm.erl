@@ -93,593 +93,10 @@
 
 
 %% Example:
-%% acme_domain_validation_summary() :: #{
-%%   <<"AcmeDomainValidationArn">> => string(),
-%%   <<"AcmeEndpointArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DomainName">> => string(),
-%%   <<"FailureDetails">> => failure_details(),
-%%   <<"PrevalidationDetails">> => list(),
-%%   <<"PrevalidationType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type acme_domain_validation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_certificate_options_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"Options">> := certificate_options()
-%% }
--type update_certificate_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_validation_option() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"ValidationDomain">> => string()
-%% }
--type domain_validation_option() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_endpoint_response() :: #{
-%%   <<"AcmeEndpointArn">> => string()
-%% }
--type create_acme_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_endpoint_response() :: #{
-%%   <<"AcmeEndpoint">> => acme_endpoint()
-%% }
--type describe_acme_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% dns_prevalidation_details() :: #{
-%%   <<"DomainScope">> => domain_scope(),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"ResourceRecord">> => resource_record()
-%% }
--type dns_prevalidation_details() :: #{binary() => any()}.
-
-%% Example:
-%% request_in_progress_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type request_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% dns_name_filter() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type dns_name_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_external_account_binding_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
-%%   <<"Expiration">> => expiration(),
-%%   <<"IdempotencyToken">> => [string()],
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_acme_external_account_binding_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_external_account_binding_request() :: #{
-%%   <<"AcmeExternalAccountBindingArn">> := string()
-%% }
--type describe_acme_external_account_binding_request() :: #{binary() => any()}.
-
-%% Example:
-%% acme_account_summary() :: #{
-%%   <<"AccountUrl">> => [string()],
-%%   <<"AcmeExternalAccountBindingArn">> => string(),
-%%   <<"Contacts">> => list([string()]()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"PublicKeyThumbprint">> => [string()],
-%%   <<"Status">> => list(any())
-%% }
--type acme_account_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_accounts_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_certificate_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"RevocationReason">> := list(any())
-%% }
--type revoke_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_accounts_response() :: #{
-%%   <<"AcmeAccounts">> => list(acme_account_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_certificates_request() :: #{
-%%   <<"FilterStatement">> => list(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type search_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_acme_external_account_binding_request() :: #{
-%%   <<"AcmeExternalAccountBindingArn">> := string()
-%% }
--type delete_acme_external_account_binding_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_acme_domain_validation_request() :: #{
-%%   <<"AcmeDomainValidationArn">> := string()
-%% }
--type delete_acme_domain_validation_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_domain_validation_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
-%%   <<"DomainName">> := string(),
-%%   <<"IdempotencyToken">> => [string()],
-%%   <<"PrevalidationOptions">> := list(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_acme_domain_validation_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_certificate_response() :: #{
-%%   <<"Certificate">> => string(),
-%%   <<"CertificateChain">> => string(),
-%%   <<"PrivateKey">> => string()
-%% }
--type export_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_external_account_bindings_response() :: #{
-%%   <<"ExternalAccountBindings">> => list(acme_external_account_binding_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_external_account_bindings_response() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_acme_external_account_binding_request() :: #{
-%%   <<"AcmeExternalAccountBindingArn">> := string()
-%% }
--type revoke_acme_external_account_binding_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_account_request() :: #{
-%%   <<"AccountUrl">> := [string()],
-%%   <<"AcmeEndpointArn">> := string()
-%% }
--type describe_acme_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_acme_domain_validation_request() :: #{
-%%   <<"AcmeDomainValidationArn">> := string(),
-%%   <<"PrevalidationOptions">> => list()
-%% }
--type update_acme_domain_validation_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_certificate_response() :: #{
-%%   <<"CertificateArn">> => string()
-%% }
--type import_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_certificate_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"Passphrase">> := binary()
-%% }
--type export_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% renewal_summary() :: #{
-%%   <<"DomainValidationOptions">> => list(domain_validation()),
-%%   <<"RenewalStatus">> => list(any()),
-%%   <<"RenewalStatusReason">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type renewal_summary() :: #{binary() => any()}.
-
-%% Example:
-%% http_redirect() :: #{
-%%   <<"RedirectFrom">> => string(),
-%%   <<"RedirectTo">> => string()
-%% }
--type http_redirect() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_certificates_request() :: #{
-%%   <<"CertificateKeyPairOrigins">> => list(list(any())()),
-%%   <<"CertificateStatuses">> => list(list(any())()),
-%%   <<"Includes">> => filters(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type list_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% request_certificate_request() :: #{
-%%   <<"CertificateAuthorityArn">> => string(),
-%%   <<"DomainName">> := string(),
-%%   <<"DomainValidationOptions">> => list(domain_validation_option()),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"KeyAlgorithm">> => list(any()),
-%%   <<"ManagedBy">> => list(any()),
-%%   <<"Options">> => certificate_options(),
-%%   <<"SubjectAlternativeNames">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"ValidationMethod">> => list(any())
-%% }
--type request_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% acme_endpoint_summary() :: #{
-%%   <<"AcmeEndpointArn">> => string(),
-%%   <<"AuthorizationBehavior">> => list(any()),
-%%   <<"CertificateAuthority">> => list(),
-%%   <<"CertificateTags">> => list(tag()),
-%%   <<"Contact">> => list(any()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"EndpointUrl">> => [string()],
-%%   <<"FailureReason">> => [string()],
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type acme_endpoint_summary() :: #{binary() => any()}.
-
-%% Example:
-%% failure_details() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_certificate_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type remove_tags_from_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_args_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_args_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_domain_validation_response() :: #{
-%%   <<"AcmeDomainValidation">> => acme_domain_validation()
-%% }
--type describe_acme_domain_validation_response() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_summary() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateKeyPairOrigin">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"ExportOption">> => list(any()),
-%%   <<"Exported">> => boolean(),
-%%   <<"ExtendedKeyUsages">> => list(list(any())()),
-%%   <<"HasAdditionalSubjectAlternativeNames">> => boolean(),
-%%   <<"ImportedAt">> => non_neg_integer(),
-%%   <<"InUse">> => boolean(),
-%%   <<"IssuedAt">> => non_neg_integer(),
-%%   <<"KeyAlgorithm">> => list(any()),
-%%   <<"KeyUsages">> => list(list(any())()),
-%%   <<"ManagedBy">> => list(any()),
-%%   <<"NotAfter">> => non_neg_integer(),
-%%   <<"NotBefore">> => non_neg_integer(),
-%%   <<"RenewalEligibility">> => list(any()),
-%%   <<"RevokedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubjectAlternativeNameSummaries">> => list(string()),
-%%   <<"Type">> => list(any())
-%% }
--type certificate_summary() :: #{binary() => any()}.
-
-%% Example:
-%% renew_certificate_request() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type renew_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_options() :: #{
-%%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
-%%   <<"Export">> => list(any())
-%% }
--type certificate_options() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_endpoint_request() :: #{
-%%   <<"AuthorizationBehavior">> := list(any()),
-%%   <<"CertificateAuthority">> := list(),
-%%   <<"CertificateTags">> => list(tag()),
-%%   <<"Contact">> => list(any()),
-%%   <<"IdempotencyToken">> => [string()],
-%%   <<"Tags">> => list(tag())
-%% }
--type create_acme_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_certificate_request() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type list_tags_for_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_acme_external_account_binding_credentials_request() :: #{
-%%   <<"AcmeExternalAccountBindingArn">> := string()
-%% }
--type get_acme_external_account_binding_credentials_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% expiry_events_configuration() :: #{
-%%   <<"DaysBeforeExpiry">> => integer()
-%% }
--type expiry_events_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_external_account_binding_response() :: #{
-%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
-%% }
--type create_acme_external_account_binding_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% acme_external_account_binding_summary() :: #{
-%%   <<"AcmeEndpointArn">> => string(),
-%%   <<"AcmeExternalAccountBindingArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"LastUsedAt">> => [non_neg_integer()],
-%%   <<"RevokedAt">> => [non_neg_integer()],
-%%   <<"RoleArn">> => string(),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type acme_external_account_binding_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_domain_validations_response() :: #{
-%%   <<"AcmeDomainValidations">> => list(acme_domain_validation_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_domain_validations_response() :: #{binary() => any()}.
-
-%% Example:
-%% public_certificate_authority() :: #{
-%%   <<"AllowedKeyAlgorithms">> => list(list(any())())
-%% }
--type public_certificate_authority() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_configuration_request() :: #{
-%%   <<"ExpiryEvents">> => expiry_events_configuration(),
-%%   <<"IdempotencyToken">> := string()
-%% }
--type put_account_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% dns_prevalidation_options() :: #{
-%%   <<"DomainScope">> => domain_scope(),
-%%   <<"HostedZoneId">> => string()
-%% }
--type dns_prevalidation_options() :: #{binary() => any()}.
-
-%% Example:
-%% get_certificate_request() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type get_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_request() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type describe_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% other_name() :: #{
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"Value">> => string()
-%% }
--type other_name() :: #{binary() => any()}.
-
-%% Example:
-%% distinguished_name() :: #{
-%%   <<"CommonName">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"CustomAttributes">> => list(custom_attribute()),
-%%   <<"DistinguishedNameQualifier">> => string(),
-%%   <<"DomainComponents">> => list(string()),
-%%   <<"GenerationQualifier">> => string(),
-%%   <<"GivenName">> => string(),
-%%   <<"Initials">> => string(),
-%%   <<"Locality">> => string(),
-%%   <<"Organization">> => string(),
-%%   <<"OrganizationalUnit">> => string(),
-%%   <<"Pseudonym">> => string(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Surname">> => string(),
-%%   <<"Title">> => string()
-%% }
--type distinguished_name() :: #{binary() => any()}.
-
-%% Example:
-%% request_certificate_response() :: #{
-%%   <<"CertificateArn">> => string()
-%% }
--type request_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% common_name_filter() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type common_name_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_configuration_response() :: #{
-%%   <<"ExpiryEvents">> => expiry_events_configuration()
-%% }
--type get_account_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% resend_validation_email_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"Domain">> := string(),
-%%   <<"ValidationDomain">> := string()
-%% }
--type resend_validation_email_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_certificate_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_account_response() :: #{
-%%   <<"AcmeAccount">> => acme_account()
-%% }
--type describe_acme_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_acme_external_account_binding_credentials_response() :: #{
-%%   <<"KeyId">> => [string()],
-%%   <<"MacKey">> => string()
-%% }
--type get_acme_external_account_binding_credentials_response() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_acme_account_request() :: #{
-%%   <<"AccountUrl">> := [string()],
-%%   <<"AcmeEndpointArn">> := string()
-%% }
--type revoke_acme_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_domain_validation_options_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_domain_validation_options_exception() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_certificate_request() :: #{
-%%   <<"CertificateArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_to_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_endpoints_response() :: #{
-%%   <<"AcmeEndpoints">> => list(acme_endpoint_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% acme_external_account_binding() :: #{
-%%   <<"AcmeEndpointArn">> => string(),
-%%   <<"AcmeExternalAccountBindingArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"ExpiresAt">> => [non_neg_integer()],
-%%   <<"LastUsedAt">> => [non_neg_integer()],
-%%   <<"RevokedAt">> => [non_neg_integer()],
-%%   <<"RoleArn">> => string(),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type acme_external_account_binding() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_external_account_binding_response() :: #{
-%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
-%% }
--type describe_acme_external_account_binding_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% acm_certificate_metadata() :: #{
@@ -703,18 +120,6 @@
 -type acm_certificate_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_acme_endpoint_request() :: #{
-%%   <<"AcmeEndpointArn">> := string()
-%% }
--type delete_acme_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
 %% acme_account() :: #{
 %%   <<"AccountUrl">> => [string()],
 %%   <<"AcmeExternalAccountBindingArn">> => string(),
@@ -726,157 +131,15 @@
 -type acme_account() :: #{binary() => any()}.
 
 %% Example:
-%% timestamp_range() :: #{
-%%   <<"End">> => non_neg_integer(),
-%%   <<"Start">> => non_neg_integer()
+%% acme_account_summary() :: #{
+%%   <<"AccountUrl">> => [string()],
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"Contacts">> => list([string()]()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"PublicKeyThumbprint">> => [string()],
+%%   <<"Status">> => list(any())
 %% }
--type timestamp_range() :: #{binary() => any()}.
-
-%% Example:
-%% import_certificate_request() :: #{
-%%   <<"Certificate">> := binary(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateChain">> => binary(),
-%%   <<"PrivateKey">> := binary(),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_request() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type delete_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_response() :: #{
-%%   <<"Certificate">> => certificate_detail()
-%% }
--type describe_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% domain_scope() :: #{
-%%   <<"ExactDomain">> => list(any()),
-%%   <<"Subdomains">> => list(any()),
-%%   <<"Wildcards">> => list(any())
-%% }
--type domain_scope() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_domain_validations_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_domain_validations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_external_account_bindings_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_external_account_bindings_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"throttlingReasons">> => list(throttling_reason())
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_acme_domain_validation_response() :: #{
-%%   <<"AcmeDomainValidationArn">> => string()
-%% }
--type create_acme_domain_validation_response() :: #{binary() => any()}.
-
-%% Example:
-%% x509_attributes() :: #{
-%%   <<"ExtendedKeyUsages">> => list(list(any())()),
-%%   <<"Issuer">> => distinguished_name(),
-%%   <<"KeyAlgorithm">> => list(any()),
-%%   <<"KeyUsages">> => list(list(any())()),
-%%   <<"NotAfter">> => non_neg_integer(),
-%%   <<"NotBefore">> => non_neg_integer(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"Subject">> => distinguished_name(),
-%%   <<"SubjectAlternativeNames">> => list(list())
-%% }
--type x509_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% filters() :: #{
-%%   <<"exportOption">> => list(any()),
-%%   <<"extendedKeyUsage">> => list(list(any())()),
-%%   <<"keyTypes">> => list(list(any())()),
-%%   <<"keyUsage">> => list(list(any())()),
-%%   <<"managedBy">> => list(any())
-%% }
--type filters() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_acme_endpoints_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_acme_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% expiration() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => [float()]
-%% }
--type expiration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_endpoint_request() :: #{
-%%   <<"AcmeEndpointArn">> := string()
-%% }
--type describe_acme_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_acme_domain_validation_request() :: #{
-%%   <<"AcmeDomainValidationArn">> := string()
-%% }
--type describe_acme_domain_validation_request() :: #{binary() => any()}.
-
-%% Example:
-%% extended_key_usage() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"OID">> => string()
-%% }
--type extended_key_usage() :: #{binary() => any()}.
+-type acme_account_summary() :: #{binary() => any()}.
 
 %% Example:
 %% acme_domain_validation() :: #{
@@ -893,93 +156,81 @@
 -type acme_domain_validation() :: #{binary() => any()}.
 
 %% Example:
-%% domain_validation() :: #{
+%% acme_domain_validation_summary() :: #{
+%%   <<"AcmeDomainValidationArn">> => string(),
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"DomainName">> => string(),
-%%   <<"HttpRedirect">> => http_redirect(),
-%%   <<"ResourceRecord">> => resource_record(),
-%%   <<"ValidationDomain">> => string(),
-%%   <<"ValidationEmails">> => list(string()),
-%%   <<"ValidationMethod">> => list(any()),
-%%   <<"ValidationStatus">> => list(any())
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"PrevalidationDetails">> => list(),
+%%   <<"PrevalidationType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type domain_validation() :: #{binary() => any()}.
+-type acme_domain_validation_summary() :: #{binary() => any()}.
 
 %% Example:
-%% resource_record() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type resource_record() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_certificate_response() :: #{
-%%   <<"CertificateArn">> => string()
-%% }
--type revoke_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_reason() :: #{
-%%   <<"reason">> => string(),
-%%   <<"resource">> => string()
-%% }
--type throttling_reason() :: #{binary() => any()}.
-
-%% Example:
-%% custom_attribute() :: #{
-%%   <<"ObjectIdentifier">> => string(),
-%%   <<"Value">> => string()
-%% }
--type custom_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_certificate_response() :: #{
-%%   <<"Certificate">> => string(),
-%%   <<"CertificateChain">> => string()
-%% }
--type get_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_acme_endpoint_request() :: #{
-%%   <<"AcmeEndpointArn">> := string(),
+%% acme_endpoint() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
 %%   <<"AuthorizationBehavior">> => list(any()),
 %%   <<"CertificateAuthority">> => list(),
-%%   <<"Contact">> => list(any())
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndpointUrl">> => [string()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type update_acme_endpoint_request() :: #{binary() => any()}.
+-type acme_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_search_result() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateMetadata">> => list(),
-%%   <<"X509Attributes">> => x509_attributes()
+%% acme_endpoint_summary() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AuthorizationBehavior">> => list(any()),
+%%   <<"CertificateAuthority">> => list(),
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndpointUrl">> => [string()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type certificate_search_result() :: #{binary() => any()}.
+-type acme_endpoint_summary() :: #{binary() => any()}.
 
 %% Example:
-%% key_usage() :: #{
-%%   <<"Name">> => list(any())
+%% acme_external_account_binding() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"LastUsedAt">> => [non_neg_integer()],
+%%   <<"RevokedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type key_usage() :: #{binary() => any()}.
+-type acme_external_account_binding() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
+%% acme_external_account_binding_summary() :: #{
+%%   <<"AcmeEndpointArn">> => string(),
+%%   <<"AcmeExternalAccountBindingArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ExpiresAt">> => [non_neg_integer()],
+%%   <<"LastUsedAt">> => [non_neg_integer()],
+%%   <<"RevokedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type acme_external_account_binding_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_certificates_response() :: #{
-%%   <<"CertificateSummaryList">> => list(certificate_summary()),
-%%   <<"NextToken">> => string()
+%% add_tags_to_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type list_certificates_response() :: #{binary() => any()}.
+-type add_tags_to_certificate_request() :: #{binary() => any()}.
 
 %% Example:
 %% certificate_detail() :: #{
@@ -1017,6 +268,667 @@
 -type certificate_detail() :: #{binary() => any()}.
 
 %% Example:
+%% certificate_options() :: #{
+%%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
+%%   <<"Export">> => list(any())
+%% }
+-type certificate_options() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_search_result() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateMetadata">> => list(),
+%%   <<"X509Attributes">> => x509_attributes()
+%% }
+-type certificate_search_result() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_summary() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateKeyPairOrigin">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"ExportOption">> => list(any()),
+%%   <<"Exported">> => boolean(),
+%%   <<"ExtendedKeyUsages">> => list(list(any())()),
+%%   <<"HasAdditionalSubjectAlternativeNames">> => boolean(),
+%%   <<"ImportedAt">> => non_neg_integer(),
+%%   <<"InUse">> => boolean(),
+%%   <<"IssuedAt">> => non_neg_integer(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyUsages">> => list(list(any())()),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"RenewalEligibility">> => list(any()),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubjectAlternativeNameSummaries">> => list(string()),
+%%   <<"Type">> => list(any())
+%% }
+-type certificate_summary() :: #{binary() => any()}.
+
+%% Example:
+%% common_name_filter() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type common_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_domain_validation_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"DomainName">> := string(),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"PrevalidationOptions">> := list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_domain_validation_response() :: #{
+%%   <<"AcmeDomainValidationArn">> => string()
+%% }
+-type create_acme_domain_validation_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_endpoint_request() :: #{
+%%   <<"AuthorizationBehavior">> := list(any()),
+%%   <<"CertificateAuthority">> := list(),
+%%   <<"CertificateTags">> => list(tag()),
+%%   <<"Contact">> => list(any()),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_endpoint_response() :: #{
+%%   <<"AcmeEndpointArn">> => string()
+%% }
+-type create_acme_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_external_account_binding_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"Expiration">> => expiration(),
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_acme_external_account_binding_response() :: #{
+%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
+%% }
+-type create_acme_external_account_binding_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_attribute() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string()
+%% }
+-type delete_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type delete_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type delete_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type delete_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_account_request() :: #{
+%%   <<"AccountUrl">> := [string()],
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type describe_acme_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_account_response() :: #{
+%%   <<"AcmeAccount">> => acme_account()
+%% }
+-type describe_acme_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string()
+%% }
+-type describe_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_domain_validation_response() :: #{
+%%   <<"AcmeDomainValidation">> => acme_domain_validation()
+%% }
+-type describe_acme_domain_validation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type describe_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_endpoint_response() :: #{
+%%   <<"AcmeEndpoint">> => acme_endpoint()
+%% }
+-type describe_acme_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type describe_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acme_external_account_binding_response() :: #{
+%%   <<"ExternalAccountBinding">> => acme_external_account_binding()
+%% }
+-type describe_acme_external_account_binding_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type describe_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_response() :: #{
+%%   <<"Certificate">> => certificate_detail()
+%% }
+-type describe_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% distinguished_name() :: #{
+%%   <<"CommonName">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CustomAttributes">> => list(custom_attribute()),
+%%   <<"DistinguishedNameQualifier">> => string(),
+%%   <<"DomainComponents">> => list(string()),
+%%   <<"GenerationQualifier">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"Initials">> => string(),
+%%   <<"Locality">> => string(),
+%%   <<"Organization">> => string(),
+%%   <<"OrganizationalUnit">> => string(),
+%%   <<"Pseudonym">> => string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Surname">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type distinguished_name() :: #{binary() => any()}.
+
+%% Example:
+%% dns_name_filter() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type dns_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% dns_prevalidation_details() :: #{
+%%   <<"DomainScope">> => domain_scope(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"ResourceRecord">> => resource_record()
+%% }
+-type dns_prevalidation_details() :: #{binary() => any()}.
+
+%% Example:
+%% dns_prevalidation_options() :: #{
+%%   <<"DomainScope">> => domain_scope(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type dns_prevalidation_options() :: #{binary() => any()}.
+
+%% Example:
+%% domain_scope() :: #{
+%%   <<"ExactDomain">> => list(any()),
+%%   <<"Subdomains">> => list(any()),
+%%   <<"Wildcards">> => list(any())
+%% }
+-type domain_scope() :: #{binary() => any()}.
+
+%% Example:
+%% domain_validation() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"HttpRedirect">> => http_redirect(),
+%%   <<"ResourceRecord">> => resource_record(),
+%%   <<"ValidationDomain">> => string(),
+%%   <<"ValidationEmails">> => list(string()),
+%%   <<"ValidationMethod">> => list(any()),
+%%   <<"ValidationStatus">> => list(any())
+%% }
+-type domain_validation() :: #{binary() => any()}.
+
+%% Example:
+%% domain_validation_option() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ValidationDomain">> => string()
+%% }
+-type domain_validation_option() :: #{binary() => any()}.
+
+%% Example:
+%% expiration() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => [float()]
+%% }
+-type expiration() :: #{binary() => any()}.
+
+%% Example:
+%% expiry_events_configuration() :: #{
+%%   <<"DaysBeforeExpiry">> => integer()
+%% }
+-type expiry_events_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% export_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Passphrase">> := binary()
+%% }
+-type export_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"PrivateKey">> => string()
+%% }
+-type export_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% extended_key_usage() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"OID">> => string()
+%% }
+-type extended_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% filters() :: #{
+%%   <<"exportOption">> => list(any()),
+%%   <<"extendedKeyUsage">> => list(list(any())()),
+%%   <<"keyTypes">> => list(list(any())()),
+%%   <<"keyUsage">> => list(list(any())()),
+%%   <<"managedBy">> => list(any())
+%% }
+-type filters() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_configuration_response() :: #{
+%%   <<"ExpiryEvents">> => expiry_events_configuration()
+%% }
+-type get_account_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_acme_external_account_binding_credentials_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type get_acme_external_account_binding_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_acme_external_account_binding_credentials_response() :: #{
+%%   <<"KeyId">> => [string()],
+%%   <<"MacKey">> => string()
+%% }
+-type get_acme_external_account_binding_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type get_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string()
+%% }
+-type get_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% http_redirect() :: #{
+%%   <<"RedirectFrom">> => string(),
+%%   <<"RedirectTo">> => string()
+%% }
+-type http_redirect() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_request() :: #{
+%%   <<"Certificate">> := binary(),
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateChain">> => binary(),
+%%   <<"PrivateKey">> := binary(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type import_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_args_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_args_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_domain_validation_options_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_domain_validation_options_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% key_usage() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_accounts_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_accounts_response() :: #{
+%%   <<"AcmeAccounts">> => list(acme_account_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_domain_validations_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_domain_validations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_domain_validations_response() :: #{
+%%   <<"AcmeDomainValidations">> => list(acme_domain_validation_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_domain_validations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_endpoints_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_endpoints_response() :: #{
+%%   <<"AcmeEndpoints">> => list(acme_endpoint_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_external_account_bindings_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_external_account_bindings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_acme_external_account_bindings_response() :: #{
+%%   <<"ExternalAccountBindings">> => list(acme_external_account_binding_summary()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_acme_external_account_bindings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_request() :: #{
+%%   <<"CertificateKeyPairOrigins">> => list(list(any())()),
+%%   <<"CertificateStatuses">> => list(list(any())()),
+%%   <<"Includes">> => filters(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_response() :: #{
+%%   <<"CertificateSummaryList">> => list(certificate_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type list_tags_for_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_certificate_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% other_name() :: #{
+%%   <<"ObjectIdentifier">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type other_name() :: #{binary() => any()}.
+
+%% Example:
+%% public_certificate_authority() :: #{
+%%   <<"AllowedKeyAlgorithms">> => list(list(any())())
+%% }
+-type public_certificate_authority() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_configuration_request() :: #{
+%%   <<"ExpiryEvents">> => expiry_events_configuration(),
+%%   <<"IdempotencyToken">> := string()
+%% }
+-type put_account_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type remove_tags_from_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% renew_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type renew_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% renewal_summary() :: #{
+%%   <<"DomainValidationOptions">> => list(domain_validation()),
+%%   <<"RenewalStatus">> => list(any()),
+%%   <<"RenewalStatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type renewal_summary() :: #{binary() => any()}.
+
+%% Example:
+%% request_certificate_request() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"DomainName">> := string(),
+%%   <<"DomainValidationOptions">> => list(domain_validation_option()),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"Options">> => certificate_options(),
+%%   <<"SubjectAlternativeNames">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ValidationMethod">> => list(any())
+%% }
+-type request_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type request_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resend_validation_email_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Domain">> := string(),
+%%   <<"ValidationDomain">> := string()
+%% }
+-type resend_validation_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_record() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type resource_record() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_acme_account_request() :: #{
+%%   <<"AccountUrl">> := [string()],
+%%   <<"AcmeEndpointArn">> := string()
+%% }
+-type revoke_acme_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_acme_external_account_binding_request() :: #{
+%%   <<"AcmeExternalAccountBindingArn">> := string()
+%% }
+-type revoke_acme_external_account_binding_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"RevocationReason">> := list(any())
+%% }
+-type revoke_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type revoke_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_certificates_request() :: #{
+%%   <<"FilterStatement">> => list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type search_certificates_request() :: #{binary() => any()}.
+
+%% Example:
 %% search_certificates_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(certificate_search_result())
@@ -1024,112 +936,200 @@
 -type search_certificates_response() :: #{binary() => any()}.
 
 %% Example:
-%% acme_endpoint() :: #{
-%%   <<"AcmeEndpointArn">> => string(),
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_reason() :: #{
+%%   <<"reason">> => string(),
+%%   <<"resource">> => string()
+%% }
+-type throttling_reason() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_range() :: #{
+%%   <<"End">> => non_neg_integer(),
+%%   <<"Start">> => non_neg_integer()
+%% }
+-type timestamp_range() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_acme_domain_validation_request() :: #{
+%%   <<"AcmeDomainValidationArn">> := string(),
+%%   <<"PrevalidationOptions">> => list()
+%% }
+-type update_acme_domain_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_acme_endpoint_request() :: #{
+%%   <<"AcmeEndpointArn">> := string(),
 %%   <<"AuthorizationBehavior">> => list(any()),
 %%   <<"CertificateAuthority">> => list(),
-%%   <<"CertificateTags">> => list(tag()),
-%%   <<"Contact">> => list(any()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"EndpointUrl">> => [string()],
-%%   <<"FailureReason">> => [string()],
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => [non_neg_integer()]
+%%   <<"Contact">> => list(any())
 %% }
--type acme_endpoint() :: #{binary() => any()}.
+-type update_acme_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_certificate_options_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Options">> := certificate_options()
+%% }
+-type update_certificate_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% x509_attributes() :: #{
+%%   <<"ExtendedKeyUsages">> => list(list(any())()),
+%%   <<"Issuer">> => distinguished_name(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyUsages">> => list(list(any())()),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Subject">> => distinguished_name(),
+%%   <<"SubjectAlternativeNames">> => list(list())
+%% }
+-type x509_attributes() :: #{binary() => any()}.
 
 -type add_tags_to_certificate_errors() ::
-    too_many_tags_exception() | 
-    invalid_tag_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    tag_policy_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    tag_policy_exception().
+    invalid_tag_exception() | 
+    invalid_parameter_exception() | 
+    invalid_arn_exception().
 
 -type create_acme_domain_validation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_acme_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_acme_external_account_binding_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_acme_domain_validation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_acme_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_acme_external_account_binding_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    resource_in_use_exception() | 
     invalid_arn_exception() | 
-    resource_in_use_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_acme_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_acme_domain_validation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_acme_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_acme_external_account_binding_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_certificate_errors() ::
     validation_exception() | 
@@ -1137,66 +1137,66 @@
     invalid_arn_exception().
 
 -type export_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    request_in_progress_exception().
+    request_in_progress_exception() | 
+    invalid_arn_exception().
 
 -type get_account_configuration_errors() ::
     throttling_exception() | 
     access_denied_exception().
 
 -type get_acme_external_account_binding_credentials_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_certificate_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    request_in_progress_exception().
+    request_in_progress_exception() | 
+    invalid_arn_exception().
 
 -type import_certificate_errors() ::
-    too_many_tags_exception() | 
-    invalid_tag_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
+    too_many_tags_exception() | 
+    tag_policy_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_tag_exception() | 
+    invalid_parameter_exception() | 
     invalid_arn_exception() | 
-    tag_policy_exception().
+    conflict_exception().
 
 -type list_acme_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_acme_domain_validations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_acme_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_acme_external_account_bindings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_certificates_errors() ::
     validation_exception() | 
@@ -1212,70 +1212,70 @@
     resource_not_found_exception().
 
 -type put_account_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_tags_from_certificate_errors() ::
-    invalid_tag_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
+    throttling_exception() | 
+    tag_policy_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    tag_policy_exception().
+    invalid_tag_exception() | 
+    invalid_parameter_exception() | 
+    invalid_arn_exception().
 
 -type renew_certificate_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    request_in_progress_exception().
+    request_in_progress_exception() | 
+    invalid_arn_exception().
 
 -type request_certificate_errors() ::
     too_many_tags_exception() | 
-    invalid_tag_exception() | 
+    tag_policy_exception() | 
     limit_exceeded_exception() | 
+    invalid_tag_exception() | 
     invalid_parameter_exception() | 
     invalid_domain_validation_options_exception() | 
-    invalid_arn_exception() | 
-    tag_policy_exception().
+    invalid_arn_exception().
 
 -type resend_validation_email_errors() ::
     validation_exception() | 
-    invalid_domain_validation_options_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_domain_validation_options_exception() | 
+    invalid_arn_exception().
 
 -type revoke_acme_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type revoke_acme_external_account_binding_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type revoke_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    resource_in_use_exception() | 
     invalid_arn_exception() | 
-    resource_in_use_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_certificates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1288,27 +1288,27 @@
     resource_not_found_exception().
 
 -type update_acme_domain_validation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_acme_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_certificate_options_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
     resource_not_found_exception() | 
-    invalid_arn_exception() | 
-    invalid_state_exception().
+    limit_exceeded_exception() | 
+    invalid_state_exception() | 
+    invalid_arn_exception().
 
 %%====================================================================
 %% API

@@ -106,66 +106,6 @@
 
 
 %% Example:
-%% describe_communications_request() :: #{
-%%   <<"afterTime">> => string(),
-%%   <<"beforeTime">> => string(),
-%%   <<"caseId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_communications_request() :: #{binary() => any()}.
-
-%% Example:
-%% trusted_advisor_category_specific_summary() :: #{
-%%   <<"costOptimizing">> => trusted_advisor_cost_optimizing_summary()
-%% }
--type trusted_advisor_category_specific_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_severity_levels_request() :: #{
-%%   <<"language">> => string()
-%% }
--type describe_severity_levels_request() :: #{binary() => any()}.
-
-%% Example:
-%% supported_language() :: #{
-%%   <<"code">> => string(),
-%%   <<"display">> => string(),
-%%   <<"language">> => string()
-%% }
--type supported_language() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type attachment_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% communication() :: #{
-%%   <<"attachmentSet">> => list(attachment_details()),
-%%   <<"body">> => string(),
-%%   <<"caseId">> => string(),
-%%   <<"submittedBy">> => string(),
-%%   <<"timeCreated">> => string()
-%% }
--type communication() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_trusted_advisor_check_request() :: #{
-%%   <<"checkId">> := string()
-%% }
--type refresh_trusted_advisor_check_request() :: #{binary() => any()}.
-
-%% Example:
-%% trusted_advisor_check_refresh_status() :: #{
-%%   <<"checkId">> => string(),
-%%   <<"millisUntilNextRefreshable">> => float(),
-%%   <<"status">> => string()
-%% }
--type trusted_advisor_check_refresh_status() :: #{binary() => any()}.
-
-%% Example:
 %% add_attachments_to_set_request() :: #{
 %%   <<"attachmentSetId">> => string(),
 %%   <<"attachments">> := list(attachment())
@@ -173,134 +113,11 @@
 -type add_attachments_to_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_services_request() :: #{
-%%   <<"language">> => string(),
-%%   <<"serviceCodeList">> => list(string())
-%% }
--type describe_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_case_request() :: #{
-%%   <<"attachmentSetId">> => string(),
-%%   <<"categoryCode">> => string(),
-%%   <<"ccEmailAddresses">> => list(string()),
-%%   <<"communicationBody">> := string(),
-%%   <<"issueType">> => string(),
-%%   <<"language">> => string(),
-%%   <<"serviceCode">> => string(),
-%%   <<"severityCode">> => string(),
-%%   <<"subject">> := string()
-%% }
--type create_case_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_check_result_request() :: #{
-%%   <<"checkId">> := string(),
-%%   <<"language">> => string()
-%% }
--type describe_trusted_advisor_check_result_request() :: #{binary() => any()}.
-
-%% Example:
-%% case_id_not_found() :: #{
-%%   <<"message">> => string()
-%% }
--type case_id_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% date_interval() :: #{
-%%   <<"endDateTime">> => string(),
-%%   <<"startDateTime">> => string()
-%% }
--type date_interval() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_check_summaries_request() :: #{
-%%   <<"checkIds">> := list(string())
-%% }
--type describe_trusted_advisor_check_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% recent_case_communications() :: #{
-%%   <<"communications">> => list(communication()),
-%%   <<"nextToken">> => string()
-%% }
--type recent_case_communications() :: #{binary() => any()}.
-
-%% Example:
-%% attachment() :: #{
-%%   <<"data">> => binary(),
-%%   <<"fileName">> => string()
-%% }
--type attachment() :: #{binary() => any()}.
-
-%% Example:
-%% create_case_response() :: #{
-%%   <<"caseId">> => string()
-%% }
--type create_case_response() :: #{binary() => any()}.
-
-%% Example:
-%% service() :: #{
-%%   <<"categories">> => list(category()),
-%%   <<"code">> => string(),
-%%   <<"name">> => string()
-%% }
--type service() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_check_refresh_statuses_response() :: #{
-%%   <<"statuses">> => list(trusted_advisor_check_refresh_status())
-%% }
--type describe_trusted_advisor_check_refresh_statuses_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_checks_request() :: #{
-%%   <<"language">> := string()
-%% }
--type describe_trusted_advisor_checks_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_supported_languages_request() :: #{
-%%   <<"categoryCode">> := string(),
-%%   <<"issueType">> := string(),
-%%   <<"serviceCode">> := string()
-%% }
--type describe_supported_languages_request() :: #{binary() => any()}.
-
-%% Example:
 %% add_attachments_to_set_response() :: #{
 %%   <<"attachmentSetId">> => string(),
 %%   <<"expiryTime">> => string()
 %% }
 -type add_attachments_to_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% trusted_advisor_check_description() :: #{
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => list(string()),
-%%   <<"name">> => string()
-%% }
--type trusted_advisor_check_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_services_response() :: #{
-%%   <<"services">> => list(service())
-%% }
--type describe_services_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_attachment_request() :: #{
-%%   <<"attachmentId">> := string()
-%% }
--type describe_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_checks_response() :: #{
-%%   <<"checks">> => list(trusted_advisor_check_description())
-%% }
--type describe_trusted_advisor_checks_response() :: #{binary() => any()}.
 
 %% Example:
 %% add_communication_to_case_request() :: #{
@@ -312,20 +129,17 @@
 -type add_communication_to_case_request() :: #{binary() => any()}.
 
 %% Example:
-%% trusted_advisor_resource_detail() :: #{
-%%   <<"isSuppressed">> => boolean(),
-%%   <<"metadata">> => list(string()),
-%%   <<"region">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"status">> => string()
+%% add_communication_to_case_response() :: #{
+%%   <<"result">> => boolean()
 %% }
--type trusted_advisor_resource_detail() :: #{binary() => any()}.
+-type add_communication_to_case_response() :: #{binary() => any()}.
 
 %% Example:
-%% case_creation_limit_exceeded() :: #{
-%%   <<"message">> => string()
+%% attachment() :: #{
+%%   <<"data">> => binary(),
+%%   <<"fileName">> => string()
 %% }
--type case_creation_limit_exceeded() :: #{binary() => any()}.
+-type attachment() :: #{binary() => any()}.
 
 %% Example:
 %% attachment_details() :: #{
@@ -335,61 +149,40 @@
 -type attachment_details() :: #{binary() => any()}.
 
 %% Example:
+%% attachment_id_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
 %% attachment_set_expired() :: #{
 %%   <<"message">> => string()
 %% }
 -type attachment_set_expired() :: #{binary() => any()}.
 
 %% Example:
-%% describe_trusted_advisor_check_refresh_statuses_request() :: #{
-%%   <<"checkIds">> := list(string())
+%% attachment_set_id_not_found() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_trusted_advisor_check_refresh_statuses_request() :: #{binary() => any()}.
+-type attachment_set_id_not_found() :: #{binary() => any()}.
 
 %% Example:
-%% refresh_trusted_advisor_check_response() :: #{
-%%   <<"status">> => trusted_advisor_check_refresh_status()
+%% attachment_set_size_limit_exceeded() :: #{
+%%   <<"message">> => string()
 %% }
--type refresh_trusted_advisor_check_response() :: #{binary() => any()}.
+-type attachment_set_size_limit_exceeded() :: #{binary() => any()}.
 
 %% Example:
-%% describe_severity_levels_response() :: #{
-%%   <<"severityLevels">> => list(severity_level())
+%% case_creation_limit_exceeded() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_severity_levels_response() :: #{binary() => any()}.
-
-%% Example:
-%% resolve_case_request() :: #{
-%%   <<"caseId">> => string()
-%% }
--type resolve_case_request() :: #{binary() => any()}.
-
-%% Example:
-%% trusted_advisor_cost_optimizing_summary() :: #{
-%%   <<"estimatedMonthlySavings">> => float(),
-%%   <<"estimatedPercentMonthlySavings">> => float()
-%% }
--type trusted_advisor_cost_optimizing_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cases_response() :: #{
-%%   <<"cases">> => list(case_details()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_cases_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_create_case_options_response() :: #{
-%%   <<"communicationTypes">> => list(communication_type_options()),
-%%   <<"languageAvailability">> => string()
-%% }
--type describe_create_case_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_supported_languages_response() :: #{
-%%   <<"supportedLanguages">> => list(supported_language())
-%% }
--type describe_supported_languages_response() :: #{binary() => any()}.
+-type case_creation_limit_exceeded() :: #{binary() => any()}.
 
 %% Example:
 %% case_details() :: #{
@@ -409,61 +202,80 @@
 -type case_details() :: #{binary() => any()}.
 
 %% Example:
-%% trusted_advisor_check_result() :: #{
-%%   <<"categorySpecificSummary">> => trusted_advisor_category_specific_summary(),
-%%   <<"checkId">> => string(),
-%%   <<"flaggedResources">> => list(trusted_advisor_resource_detail()),
-%%   <<"resourcesSummary">> => trusted_advisor_resources_summary(),
-%%   <<"status">> => string(),
-%%   <<"timestamp">> => string()
-%% }
--type trusted_advisor_check_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_advisor_check_result_response() :: #{
-%%   <<"result">> => trusted_advisor_check_result()
-%% }
--type describe_trusted_advisor_check_result_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_create_case_options_request() :: #{
-%%   <<"categoryCode">> := string(),
-%%   <<"issueType">> := string(),
-%%   <<"language">> := string(),
-%%   <<"serviceCode">> := string()
-%% }
--type describe_create_case_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_communications_response() :: #{
-%%   <<"communications">> => list(communication()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_communications_response() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_set_id_not_found() :: #{
+%% case_id_not_found() :: #{
 %%   <<"message">> => string()
 %% }
--type attachment_set_id_not_found() :: #{binary() => any()}.
+-type case_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% category() :: #{
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type category() :: #{binary() => any()}.
+
+%% Example:
+%% communication() :: #{
+%%   <<"attachmentSet">> => list(attachment_details()),
+%%   <<"body">> => string(),
+%%   <<"caseId">> => string(),
+%%   <<"submittedBy">> => string(),
+%%   <<"timeCreated">> => string()
+%% }
+-type communication() :: #{binary() => any()}.
+
+%% Example:
+%% communication_type_options() :: #{
+%%   <<"datesWithoutSupport">> => list(date_interval()),
+%%   <<"supportedHours">> => list(supported_hour()),
+%%   <<"type">> => string()
+%% }
+-type communication_type_options() :: #{binary() => any()}.
+
+%% Example:
+%% create_case_request() :: #{
+%%   <<"attachmentSetId">> => string(),
+%%   <<"categoryCode">> => string(),
+%%   <<"ccEmailAddresses">> => list(string()),
+%%   <<"communicationBody">> := string(),
+%%   <<"issueType">> => string(),
+%%   <<"language">> => string(),
+%%   <<"serviceCode">> => string(),
+%%   <<"severityCode">> => string(),
+%%   <<"subject">> := string()
+%% }
+-type create_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_case_response() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type create_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% date_interval() :: #{
+%%   <<"endDateTime">> => string(),
+%%   <<"startDateTime">> => string()
+%% }
+-type date_interval() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type describe_attachment_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_request() :: #{
+%%   <<"attachmentId">> := string()
+%% }
+-type describe_attachment_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_attachment_response() :: #{
 %%   <<"attachment">> => attachment()
 %% }
 -type describe_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_communication_to_case_response() :: #{
-%%   <<"result">> => boolean()
-%% }
--type add_communication_to_case_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cases_request() :: #{
@@ -480,12 +292,114 @@
 -type describe_cases_request() :: #{binary() => any()}.
 
 %% Example:
-%% communication_type_options() :: #{
-%%   <<"datesWithoutSupport">> => list(date_interval()),
-%%   <<"supportedHours">> => list(supported_hour()),
-%%   <<"type">> => string()
+%% describe_cases_response() :: #{
+%%   <<"cases">> => list(case_details()),
+%%   <<"nextToken">> => string()
 %% }
--type communication_type_options() :: #{binary() => any()}.
+-type describe_cases_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_communications_request() :: #{
+%%   <<"afterTime">> => string(),
+%%   <<"beforeTime">> => string(),
+%%   <<"caseId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_communications_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_communications_response() :: #{
+%%   <<"communications">> => list(communication()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_communications_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_case_options_request() :: #{
+%%   <<"categoryCode">> := string(),
+%%   <<"issueType">> := string(),
+%%   <<"language">> := string(),
+%%   <<"serviceCode">> := string()
+%% }
+-type describe_create_case_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_case_options_response() :: #{
+%%   <<"communicationTypes">> => list(communication_type_options()),
+%%   <<"languageAvailability">> => string()
+%% }
+-type describe_create_case_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_request() :: #{
+%%   <<"language">> => string(),
+%%   <<"serviceCodeList">> => list(string())
+%% }
+-type describe_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_response() :: #{
+%%   <<"services">> => list(service())
+%% }
+-type describe_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_severity_levels_request() :: #{
+%%   <<"language">> => string()
+%% }
+-type describe_severity_levels_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_severity_levels_response() :: #{
+%%   <<"severityLevels">> => list(severity_level())
+%% }
+-type describe_severity_levels_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_supported_languages_request() :: #{
+%%   <<"categoryCode">> := string(),
+%%   <<"issueType">> := string(),
+%%   <<"serviceCode">> := string()
+%% }
+-type describe_supported_languages_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_supported_languages_response() :: #{
+%%   <<"supportedLanguages">> => list(supported_language())
+%% }
+-type describe_supported_languages_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_refresh_statuses_request() :: #{
+%%   <<"checkIds">> := list(string())
+%% }
+-type describe_trusted_advisor_check_refresh_statuses_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_refresh_statuses_response() :: #{
+%%   <<"statuses">> => list(trusted_advisor_check_refresh_status())
+%% }
+-type describe_trusted_advisor_check_refresh_statuses_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_result_request() :: #{
+%%   <<"checkId">> := string(),
+%%   <<"language">> => string()
+%% }
+-type describe_trusted_advisor_check_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_result_response() :: #{
+%%   <<"result">> => trusted_advisor_check_result()
+%% }
+-type describe_trusted_advisor_check_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_advisor_check_summaries_request() :: #{
+%%   <<"checkIds">> := list(string())
+%% }
+-type describe_trusted_advisor_check_summaries_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trusted_advisor_check_summaries_response() :: #{
@@ -494,26 +408,62 @@
 -type describe_trusted_advisor_check_summaries_response() :: #{binary() => any()}.
 
 %% Example:
-%% supported_hour() :: #{
-%%   <<"endTime">> => string(),
-%%   <<"startTime">> => string()
+%% describe_trusted_advisor_checks_request() :: #{
+%%   <<"language">> := string()
 %% }
--type supported_hour() :: #{binary() => any()}.
+-type describe_trusted_advisor_checks_request() :: #{binary() => any()}.
 
 %% Example:
-%% trusted_advisor_resources_summary() :: #{
-%%   <<"resourcesFlagged">> => float(),
-%%   <<"resourcesIgnored">> => float(),
-%%   <<"resourcesProcessed">> => float(),
-%%   <<"resourcesSuppressed">> => float()
+%% describe_trusted_advisor_checks_response() :: #{
+%%   <<"checks">> => list(trusted_advisor_check_description())
 %% }
--type trusted_advisor_resources_summary() :: #{binary() => any()}.
+-type describe_trusted_advisor_checks_response() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
+%% internal_server_error() :: #{
 %%   <<"message">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% recent_case_communications() :: #{
+%%   <<"communications">> => list(communication()),
+%%   <<"nextToken">> => string()
+%% }
+-type recent_case_communications() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_trusted_advisor_check_request() :: #{
+%%   <<"checkId">> := string()
+%% }
+-type refresh_trusted_advisor_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_trusted_advisor_check_response() :: #{
+%%   <<"status">> => trusted_advisor_check_refresh_status()
+%% }
+-type refresh_trusted_advisor_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_case_request() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type resolve_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_case_response() :: #{
+%%   <<"finalCaseStatus">> => string(),
+%%   <<"initialCaseStatus">> => string()
+%% }
+-type resolve_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"categories">> => list(category()),
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type service() :: #{binary() => any()}.
 
 %% Example:
 %% severity_level() :: #{
@@ -523,17 +473,60 @@
 -type severity_level() :: #{binary() => any()}.
 
 %% Example:
-%% category() :: #{
-%%   <<"code">> => string(),
-%%   <<"name">> => string()
+%% supported_hour() :: #{
+%%   <<"endTime">> => string(),
+%%   <<"startTime">> => string()
 %% }
--type category() :: #{binary() => any()}.
+-type supported_hour() :: #{binary() => any()}.
 
 %% Example:
-%% attachment_set_size_limit_exceeded() :: #{
+%% supported_language() :: #{
+%%   <<"code">> => string(),
+%%   <<"display">> => string(),
+%%   <<"language">> => string()
+%% }
+-type supported_language() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type attachment_set_size_limit_exceeded() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_category_specific_summary() :: #{
+%%   <<"costOptimizing">> => trusted_advisor_cost_optimizing_summary()
+%% }
+-type trusted_advisor_category_specific_summary() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_description() :: #{
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list(string()),
+%%   <<"name">> => string()
+%% }
+-type trusted_advisor_check_description() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_refresh_status() :: #{
+%%   <<"checkId">> => string(),
+%%   <<"millisUntilNextRefreshable">> => float(),
+%%   <<"status">> => string()
+%% }
+-type trusted_advisor_check_refresh_status() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_advisor_check_result() :: #{
+%%   <<"categorySpecificSummary">> => trusted_advisor_category_specific_summary(),
+%%   <<"checkId">> => string(),
+%%   <<"flaggedResources">> => list(trusted_advisor_resource_detail()),
+%%   <<"resourcesSummary">> => trusted_advisor_resources_summary(),
+%%   <<"status">> => string(),
+%%   <<"timestamp">> => string()
+%% }
+-type trusted_advisor_check_result() :: #{binary() => any()}.
 
 %% Example:
 %% trusted_advisor_check_summary() :: #{
@@ -547,47 +540,54 @@
 -type trusted_advisor_check_summary() :: #{binary() => any()}.
 
 %% Example:
-%% resolve_case_response() :: #{
-%%   <<"finalCaseStatus">> => string(),
-%%   <<"initialCaseStatus">> => string()
+%% trusted_advisor_cost_optimizing_summary() :: #{
+%%   <<"estimatedMonthlySavings">> => float(),
+%%   <<"estimatedPercentMonthlySavings">> => float()
 %% }
--type resolve_case_response() :: #{binary() => any()}.
+-type trusted_advisor_cost_optimizing_summary() :: #{binary() => any()}.
 
 %% Example:
-%% attachment_id_not_found() :: #{
-%%   <<"message">> => string()
+%% trusted_advisor_resource_detail() :: #{
+%%   <<"isSuppressed">> => boolean(),
+%%   <<"metadata">> => list(string()),
+%%   <<"region">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"status">> => string()
 %% }
--type attachment_id_not_found() :: #{binary() => any()}.
+-type trusted_advisor_resource_detail() :: #{binary() => any()}.
 
 %% Example:
-%% describe_attachment_limit_exceeded() :: #{
-%%   <<"message">> => string()
+%% trusted_advisor_resources_summary() :: #{
+%%   <<"resourcesFlagged">> => float(),
+%%   <<"resourcesIgnored">> => float(),
+%%   <<"resourcesProcessed">> => float(),
+%%   <<"resourcesSuppressed">> => float()
 %% }
--type describe_attachment_limit_exceeded() :: #{binary() => any()}.
+-type trusted_advisor_resources_summary() :: #{binary() => any()}.
 
 -type add_attachments_to_set_errors() ::
-    attachment_set_size_limit_exceeded() | 
     internal_server_error() | 
+    attachment_set_size_limit_exceeded() | 
     attachment_set_id_not_found() | 
     attachment_set_expired() | 
     attachment_limit_exceeded().
 
 -type add_communication_to_case_errors() ::
     internal_server_error() | 
+    case_id_not_found() | 
     attachment_set_id_not_found() | 
-    attachment_set_expired() | 
-    case_id_not_found().
+    attachment_set_expired().
 
 -type create_case_errors() ::
     internal_server_error() | 
+    case_creation_limit_exceeded() | 
     attachment_set_id_not_found() | 
-    attachment_set_expired() | 
-    case_creation_limit_exceeded().
+    attachment_set_expired().
 
 -type describe_attachment_errors() ::
+    internal_server_error() | 
     describe_attachment_limit_exceeded() | 
-    attachment_id_not_found() | 
-    internal_server_error().
+    attachment_id_not_found().
 
 -type describe_cases_errors() ::
     internal_server_error() | 

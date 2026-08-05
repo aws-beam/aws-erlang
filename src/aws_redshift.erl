@@ -89,6 +89,8 @@
          create_hsm_configuration/3,
          create_integration/2,
          create_integration/3,
+         create_qev2_idc_application/2,
+         create_qev2_idc_application/3,
          create_redshift_idc_application/2,
          create_redshift_idc_application/3,
          create_scheduled_action/2,
@@ -129,6 +131,8 @@
          delete_integration/3,
          delete_partner/2,
          delete_partner/3,
+         delete_qev2_idc_application/2,
+         delete_qev2_idc_application/3,
          delete_redshift_idc_application/2,
          delete_redshift_idc_application/3,
          delete_resource_policy/2,
@@ -203,6 +207,8 @@
          describe_orderable_cluster_options/3,
          describe_partners/2,
          describe_partners/3,
+         describe_qev2_idc_applications/2,
+         describe_qev2_idc_applications/3,
          describe_redshift_idc_applications/2,
          describe_redshift_idc_applications/3,
          describe_reserved_node_exchange_status/2,
@@ -283,6 +289,8 @@
          modify_integration/3,
          modify_lakehouse_configuration/2,
          modify_lakehouse_configuration/3,
+         modify_qev2_idc_application/2,
+         modify_qev2_idc_application/3,
          modify_redshift_idc_application/2,
          modify_redshift_idc_application/3,
          modify_scheduled_action/2,
@@ -330,187 +338,138 @@
 
 
 %% Example:
-%% endpoint_authorization_not_found_fault() :: #{
+%% accept_reserved_node_exchange_input_message() :: #{
+%%   <<"ReservedNodeId">> := string(),
+%%   <<"TargetReservedNodeOfferingId">> := string()
+%% }
+-type accept_reserved_node_exchange_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% accept_reserved_node_exchange_output_message() :: #{
+%%   <<"ExchangedReservedNode">> => reserved_node()
+%% }
+-type accept_reserved_node_exchange_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% access_to_cluster_denied_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type endpoint_authorization_not_found_fault() :: #{binary() => any()}.
+-type access_to_cluster_denied_fault() :: #{binary() => any()}.
 
 %% Example:
-%% integration_source_not_found_fault() :: #{
+%% access_to_snapshot_denied_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type integration_source_not_found_fault() :: #{binary() => any()}.
+-type access_to_snapshot_denied_fault() :: #{binary() => any()}.
 
 %% Example:
-%% describe_scheduled_actions_message() :: #{
-%%   <<"Active">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Filters">> => list(scheduled_action_filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ScheduledActionName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TargetActionType">> => list(any())
+%% account_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValues">> => list(attribute_value_target())
 %% }
--type describe_scheduled_actions_message() :: #{binary() => any()}.
+-type account_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_result() :: #{
-%%   <<"Cluster">> => cluster()
+%% account_attribute_list() :: #{
+%%   <<"AccountAttributes">> => list(account_attribute())
 %% }
--type delete_cluster_result() :: #{binary() => any()}.
+-type account_attribute_list() :: #{binary() => any()}.
 
 %% Example:
-%% event_subscriptions_message() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()),
-%%   <<"Marker">> => string()
+%% account_with_restore_access() :: #{
+%%   <<"AccountAlias">> => string(),
+%%   <<"AccountId">> => string()
 %% }
--type event_subscriptions_message() :: #{binary() => any()}.
+-type account_with_restore_access() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_cluster_subnet_group_state_fault() :: #{
+%% aqua_configuration() :: #{
+%%   <<"AquaConfigurationStatus">> => list(any()),
+%%   <<"AquaStatus">> => list(any())
+%% }
+-type aqua_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% associate_data_share_consumer_message() :: #{
+%%   <<"AllowWrites">> => boolean(),
+%%   <<"AssociateEntireAccount">> => boolean(),
+%%   <<"ConsumerArn">> => string(),
+%%   <<"ConsumerRegion">> => string(),
+%%   <<"DataShareArn">> := string()
+%% }
+-type associate_data_share_consumer_message() :: #{binary() => any()}.
+
+%% Example:
+%% association() :: #{
+%%   <<"CertificateAssociations">> => list(certificate_association()),
+%%   <<"CustomDomainCertificateArn">> => string(),
+%%   <<"CustomDomainCertificateExpiryDate">> => non_neg_integer()
+%% }
+-type association() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_value_target() :: #{
+%%   <<"AttributeValue">> => string()
+%% }
+-type attribute_value_target() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_profile() :: #{
+%%   <<"AuthenticationProfileContent">> => string(),
+%%   <<"AuthenticationProfileName">> => string()
+%% }
+-type authentication_profile() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_profile_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_cluster_subnet_group_state_fault() :: #{binary() => any()}.
+-type authentication_profile_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_fault() :: #{
+%% authentication_profile_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_not_found_fault() :: #{binary() => any()}.
+-type authentication_profile_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% table_restore_status() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"NewTableName">> => string(),
-%%   <<"ProgressInMegaBytes">> => float(),
-%%   <<"RequestTime">> => non_neg_integer(),
-%%   <<"SnapshotIdentifier">> => string(),
-%%   <<"SourceDatabaseName">> => string(),
-%%   <<"SourceSchemaName">> => string(),
-%%   <<"SourceTableName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TableRestoreRequestId">> => string(),
-%%   <<"TargetDatabaseName">> => string(),
-%%   <<"TargetSchemaName">> => string(),
-%%   <<"TotalDataInMegaBytes">> => float()
-%% }
--type table_restore_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_shares_for_producer_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ProducerArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_data_shares_for_producer_message() :: #{binary() => any()}.
-
-%% Example:
-%% integration_target_not_found_fault() :: #{
+%% authentication_profile_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type integration_target_not_found_fault() :: #{binary() => any()}.
+-type authentication_profile_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% recommended_action() :: #{
-%%   <<"Command">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"Text">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type recommended_action() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_on_latest_revision_fault() :: #{
+%% authorization_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_on_latest_revision_fault() :: #{binary() => any()}.
+-type authorization_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% schedule_definition_type_unsupported_fault() :: #{
+%% authorization_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type schedule_definition_type_unsupported_fault() :: #{binary() => any()}.
+-type authorization_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_snapshot_copy_grant_state_fault() :: #{
+%% authorization_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_snapshot_copy_grant_state_fault() :: #{binary() => any()}.
+-type authorization_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% endpoint_access_list() :: #{
-%%   <<"EndpointAccessList">> => list(endpoint_access()),
-%%   <<"Marker">> => string()
+%% authorize_cluster_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"ClusterSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
 %% }
--type endpoint_access_list() :: #{binary() => any()}.
+-type authorize_cluster_security_group_ingress_message() :: #{binary() => any()}.
 
 %% Example:
-%% subnet_already_in_use() :: #{
-%%   <<"message">> => string()
+%% authorize_cluster_security_group_ingress_result() :: #{
+%%   <<"ClusterSecurityGroup">> => cluster_security_group()
 %% }
--type subnet_already_in_use() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_db_revision_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"RevisionTarget">> := string()
-%% }
--type modify_cluster_db_revision_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_center_auth_token_request() :: #{
-%%   <<"ClusterIds">> := list(string())
-%% }
--type get_identity_center_auth_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_associated_to_schedule() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"ScheduleAssociationState">> => list(any())
-%% }
--type cluster_associated_to_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_invalid_parameter_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type redshift_invalid_parameter_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_configuration_option() :: #{
-%%   <<"SourceReservedNode">> => reserved_node(),
-%%   <<"TargetReservedNodeCount">> => integer(),
-%%   <<"TargetReservedNodeOffering">> => reserved_node_offering()
-%% }
--type reserved_node_configuration_option() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommendations_result() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type list_recommendations_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_categories_map() :: #{
-%%   <<"Events">> => list(event_info_map()),
-%%   <<"SourceType">> => string()
-%% }
--type event_categories_map() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshot_schedules_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ScheduleIdentifier">> => string(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_snapshot_schedules_message() :: #{binary() => any()}.
+-type authorize_cluster_security_group_ingress_result() :: #{binary() => any()}.
 
 %% Example:
 %% authorize_data_share_message() :: #{
@@ -521,89 +480,34 @@
 -type authorize_data_share_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_resize_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
+%% authorize_endpoint_access_message() :: #{
+%%   <<"Account">> := string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"VpcIds">> => list(string())
 %% }
--type describe_resize_message() :: #{binary() => any()}.
+-type authorize_endpoint_access_message() :: #{binary() => any()}.
 
 %% Example:
-%% snapshot_schedule_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% authorize_snapshot_access_message() :: #{
+%%   <<"AccountWithRestoreAccess">> := string(),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotClusterIdentifier">> => string(),
+%%   <<"SnapshotIdentifier">> => string()
 %% }
--type snapshot_schedule_already_exists_fault() :: #{binary() => any()}.
+-type authorize_snapshot_access_message() :: #{binary() => any()}.
 
 %% Example:
-%% disable_snapshot_copy_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type disable_snapshot_copy_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_parameter_groups_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ParameterGroupName">> => string(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_cluster_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_snapshot_result() :: #{
+%% authorize_snapshot_access_result() :: #{
 %%   <<"Snapshot">> => snapshot()
 %% }
--type modify_cluster_snapshot_result() :: #{binary() => any()}.
+-type authorize_snapshot_access_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_cluster_snapshot_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag())
+%% authorized_token_issuer() :: #{
+%%   <<"AuthorizedAudiencesList">> => list(string()),
+%%   <<"TrustedTokenIssuerArn">> => string()
 %% }
--type create_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_severity_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subscription_severity_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% get_reserved_node_exchange_offerings_output_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
-%% }
--type get_reserved_node_exchange_offerings_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_copy_grant_message() :: #{
-%%   <<"SnapshotCopyGrantName">> := string()
-%% }
--type delete_snapshot_copy_grant_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_maintenance_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type modify_cluster_maintenance_result() :: #{binary() => any()}.
-
-%% Example:
-%% inbound_integration() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(integration_error()),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetArn">> => string()
-%% }
--type inbound_integration() :: #{binary() => any()}.
-
-%% Example:
-%% integration_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_already_exists_fault() :: #{binary() => any()}.
+-type authorized_token_issuer() :: #{binary() => any()}.
 
 %% Example:
 %% availability_zone() :: #{
@@ -613,16 +517,310 @@
 -type availability_zone() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_policy_fault() :: #{
-%%   <<"message">> => string()
+%% batch_delete_cluster_snapshots_request() :: #{
+%%   <<"Identifiers">> := list(delete_cluster_snapshot_message())
 %% }
--type invalid_policy_fault() :: #{binary() => any()}.
+-type batch_delete_cluster_snapshots_request() :: #{binary() => any()}.
 
 %% Example:
-%% usage_limit_not_found_fault() :: #{
+%% batch_delete_cluster_snapshots_result() :: #{
+%%   <<"Errors">> => list(snapshot_error_message()),
+%%   <<"Resources">> => list(string())
+%% }
+-type batch_delete_cluster_snapshots_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_request_size_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type usage_limit_not_found_fault() :: #{binary() => any()}.
+-type batch_delete_request_size_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% batch_modify_cluster_snapshots_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_modify_cluster_snapshots_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% batch_modify_cluster_snapshots_message() :: #{
+%%   <<"Force">> => boolean(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"SnapshotIdentifierList">> := list(string())
+%% }
+-type batch_modify_cluster_snapshots_message() :: #{binary() => any()}.
+
+%% Example:
+%% batch_modify_cluster_snapshots_output_message() :: #{
+%%   <<"Errors">> => list(snapshot_error_message()),
+%%   <<"Resources">> => list(string())
+%% }
+-type batch_modify_cluster_snapshots_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type bucket_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_resize_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type cancel_resize_message() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_association() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CustomDomainName">> => string()
+%% }
+-type certificate_association() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"AllowVersionUpgrade">> => boolean(),
+%%   <<"AquaConfiguration">> => aqua_configuration(),
+%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneRelocationStatus">> => string(),
+%%   <<"CatalogArn">> => string(),
+%%   <<"ClusterAvailabilityStatus">> => string(),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ClusterNamespaceArn">> => string(),
+%%   <<"ClusterNodes">> => list(cluster_node()),
+%%   <<"ClusterParameterGroups">> => list(cluster_parameter_group_status()),
+%%   <<"ClusterPublicKey">> => string(),
+%%   <<"ClusterRevisionNumber">> => string(),
+%%   <<"ClusterSecurityGroups">> => list(cluster_security_group_membership()),
+%%   <<"ClusterSnapshotCopyStatus">> => cluster_snapshot_copy_status(),
+%%   <<"ClusterStatus">> => string(),
+%%   <<"ClusterSubnetGroupName">> => string(),
+%%   <<"ClusterVersion">> => string(),
+%%   <<"CustomDomainCertificateArn">> => string(),
+%%   <<"CustomDomainCertificateExpiryDate">> => non_neg_integer(),
+%%   <<"CustomDomainName">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"DataTransferProgress">> => data_transfer_progress(),
+%%   <<"DefaultIamRoleArn">> => string(),
+%%   <<"DeferredMaintenanceWindows">> => list(deferred_maintenance_window()),
+%%   <<"ElasticIpStatus">> => elastic_ip_status(),
+%%   <<"ElasticResizeNumberOfNodeOptions">> => string(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"ExpectedNextSnapshotScheduleTime">> => non_neg_integer(),
+%%   <<"ExpectedNextSnapshotScheduleTimeStatus">> => string(),
+%%   <<"ExtraComputeForAutomaticOptimization">> => string(),
+%%   <<"HsmStatus">> => hsm_status(),
+%%   <<"IamRoles">> => list(cluster_iam_role()),
+%%   <<"IpAddressType">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LakehouseRegistrationStatus">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"MasterPasswordSecretArn">> => string(),
+%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"ModifyStatus">> => string(),
+%%   <<"MultiAZ">> => string(),
+%%   <<"MultiAZSecondary">> => secondary_cluster_info(),
+%%   <<"NextMaintenanceWindowStartTime">> => non_neg_integer(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"PendingActions">> => list(string()),
+%%   <<"PendingModifiedValues">> => pending_modified_values(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ReservedNodeExchangeStatus">> => reserved_node_exchange_status(),
+%%   <<"ResizeInfo">> => resize_info(),
+%%   <<"RestoreStatus">> => restore_status(),
+%%   <<"SnapshotScheduleIdentifier">> => string(),
+%%   <<"SnapshotScheduleState">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TotalStorageCapacityInMegaBytes">> => float(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_associated_to_schedule() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ScheduleAssociationState">> => list(any())
+%% }
+-type cluster_associated_to_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_credentials() :: #{
+%%   <<"DbPassword">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Expiration">> => non_neg_integer()
+%% }
+-type cluster_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_db_revision() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CurrentDatabaseRevision">> => string(),
+%%   <<"DatabaseRevisionReleaseDate">> => non_neg_integer(),
+%%   <<"RevisionTargets">> => list(revision_target())
+%% }
+-type cluster_db_revision() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_db_revisions_message() :: #{
+%%   <<"ClusterDbRevisions">> => list(cluster_db_revision()),
+%%   <<"Marker">> => string()
+%% }
+-type cluster_db_revisions_message() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_extended_credentials() :: #{
+%%   <<"DbPassword">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"NextRefreshTime">> => non_neg_integer()
+%% }
+-type cluster_extended_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_iam_role() :: #{
+%%   <<"ApplyStatus">> => string(),
+%%   <<"IamRoleArn">> => string()
+%% }
+-type cluster_iam_role() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_node() :: #{
+%%   <<"NodeRole">> => string(),
+%%   <<"PrivateIPAddress">> => string(),
+%%   <<"PublicIPAddress">> => string()
+%% }
+-type cluster_node() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_on_latest_revision_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_on_latest_revision_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ParameterGroupFamily">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type cluster_parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_parameter_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_details() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type cluster_parameter_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_name_message() :: #{
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"ParameterGroupStatus">> => string()
+%% }
+-type cluster_parameter_group_name_message() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_group_status() :: #{
+%%   <<"ClusterParameterStatusList">> => list(cluster_parameter_status()),
+%%   <<"ParameterApplyStatus">> => string(),
+%%   <<"ParameterGroupName">> => string()
+%% }
+-type cluster_parameter_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_groups_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ParameterGroups">> => list(cluster_parameter_group())
+%% }
+-type cluster_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_parameter_status() :: #{
+%%   <<"ParameterApplyErrorDescription">> => string(),
+%%   <<"ParameterApplyStatus">> => string(),
+%%   <<"ParameterName">> => string()
+%% }
+-type cluster_parameter_status() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_security_group() :: #{
+%%   <<"ClusterSecurityGroupName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
+%%   <<"IPRanges">> => list(ip_range()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type cluster_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_security_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_security_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_security_group_membership() :: #{
+%%   <<"ClusterSecurityGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type cluster_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_security_group_message() :: #{
+%%   <<"ClusterSecurityGroups">> => list(cluster_security_group()),
+%%   <<"Marker">> => string()
+%% }
+-type cluster_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_security_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_security_group_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_security_group_quota_exceeded_fault() :: #{
@@ -631,207 +829,31 @@
 -type cluster_security_group_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_subnet_group_not_found_fault() :: #{
+%% cluster_snapshot_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_subnet_group_not_found_fault() :: #{binary() => any()}.
+-type cluster_snapshot_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_parameter_group_message() :: #{
-%%   <<"ParameterGroupName">> := string()
+%% cluster_snapshot_copy_status() :: #{
+%%   <<"DestinationRegion">> => string(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"RetentionPeriod">> => float(),
+%%   <<"SnapshotCopyGrantName">> => string()
 %% }
--type delete_cluster_parameter_group_message() :: #{binary() => any()}.
+-type cluster_snapshot_copy_status() :: #{binary() => any()}.
 
 %% Example:
-%% describe_cluster_security_groups_message() :: #{
-%%   <<"ClusterSecurityGroupName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_cluster_security_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshot_copy_grants_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SnapshotCopyGrantName">> => string(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_snapshot_copy_grants_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_schedule_message() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"NextInvocations">> => integer(),
-%%   <<"ScheduleDefinitions">> => list(string()),
-%%   <<"ScheduleDescription">> => string(),
-%%   <<"ScheduleIdentifier">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_snapshot_schedule_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_authentication_profile_result() :: #{
-%%   <<"AuthenticationProfileContent">> => string(),
-%%   <<"AuthenticationProfileName">> => string()
-%% }
--type create_authentication_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_authentication_profile_result() :: #{
-%%   <<"AuthenticationProfileContent">> => string(),
-%%   <<"AuthenticationProfileName">> => string()
-%% }
--type modify_authentication_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_value_target() :: #{
-%%   <<"AttributeValue">> => string()
-%% }
--type attribute_value_target() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_db_revisions_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_cluster_db_revisions_message() :: #{binary() => any()}.
-
-%% Example:
-%% integration() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationName">> => string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetArn">> => string()
-%% }
--type integration() :: #{binary() => any()}.
-
-%% Example:
-%% create_tags_message() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type create_tags_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_integrations_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type describe_integrations_filter() :: #{binary() => any()}.
-
-%% Example:
-%% modify_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Severity">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIds">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string()
-%% }
--type modify_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_default_cluster_parameters_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ParameterGroupFamily">> := string()
-%% }
--type describe_default_cluster_parameters_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_configuration() :: #{
-%%   <<"Description">> => string(),
-%%   <<"HsmConfigurationIdentifier">> => string(),
-%%   <<"HsmIpAddress">> => string(),
-%%   <<"HsmPartitionName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type hsm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% pause_cluster_message() :: #{
-%%   <<"ClusterIdentifier">> => string()
-%% }
--type pause_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type scheduled_action_filter() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_s3_bucket_name_fault() :: #{
+%% cluster_snapshot_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_s3_bucket_name_fault() :: #{binary() => any()}.
+-type cluster_snapshot_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_subnet_group_quota_exceeded_fault() :: #{
+%% cluster_snapshot_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_redshift_idc_application_message() :: #{
-%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IdcDisplayName">> => string(),
-%%   <<"IdentityNamespace">> => string(),
-%%   <<"RedshiftIdcApplicationArn">> := string(),
-%%   <<"ServiceIntegrations">> => list(list())
-%% }
--type modify_redshift_idc_application_message() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_reserved_node_offering_result() :: #{
-%%   <<"ReservedNode">> => reserved_node()
-%% }
--type purchase_reserved_node_offering_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_result() :: #{
-%%   <<"ResourcePolicy">> => resource_policy()
-%% }
--type put_resource_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% reject_data_share_message() :: #{
-%%   <<"DataShareArn">> := string()
-%% }
--type reject_data_share_message() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_grant_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_copy_grant_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_node_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_limit_message() :: #{
-%%   <<"UsageLimitId">> := string()
-%% }
--type delete_usage_limit_message() :: #{binary() => any()}.
+-type cluster_snapshot_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_subnet_group() :: #{
@@ -846,435 +868,35 @@
 -type cluster_subnet_group() :: #{binary() => any()}.
 
 %% Example:
-%% create_snapshot_copy_grant_result() :: #{
-%%   <<"SnapshotCopyGrant">> => snapshot_copy_grant()
-%% }
--type create_snapshot_copy_grant_result() :: #{binary() => any()}.
-
-%% Example:
-%% event_subscription() :: #{
-%%   <<"CustSubscriptionId">> => string(),
-%%   <<"CustomerAwsId">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()),
-%%   <<"Severity">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"SubscriptionCreationTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type event_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_security_group() :: #{
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type ec2_security_group() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_snapshot_access_message() :: #{
-%%   <<"AccountWithRestoreAccess">> := string(),
-%%   <<"SnapshotArn">> => string(),
-%%   <<"SnapshotClusterIdentifier">> => string(),
-%%   <<"SnapshotIdentifier">> => string()
-%% }
--type authorize_snapshot_access_message() :: #{binary() => any()}.
-
-%% Example:
-%% resize_not_found_fault() :: #{
+%% cluster_subnet_group_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type resize_not_found_fault() :: #{binary() => any()}.
+-type cluster_subnet_group_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% recurring_charge() :: #{
-%%   <<"RecurringChargeAmount">> => float(),
-%%   <<"RecurringChargeFrequency">> => string()
-%% }
--type recurring_charge() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_restore_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_restore_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_scheduled_action_message() :: #{
-%%   <<"Enable">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"IamRole">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduledActionDescription">> => string(),
-%%   <<"ScheduledActionName">> := string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TargetAction">> => scheduled_action_type()
-%% }
--type modify_scheduled_action_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_endpoint_access_message() :: #{
-%%   <<"EndpointName">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type modify_endpoint_access_message() :: #{binary() => any()}.
-
-%% Example:
-%% batch_modify_cluster_snapshots_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type batch_modify_cluster_snapshots_limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_cluster_security_group_ingress_message() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"ClusterSecurityGroupName">> := string(),
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string()
-%% }
--type authorize_cluster_security_group_ingress_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Ipv6Address">> => string(),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"PrivateIpAddress">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% modify_snapshot_copy_retention_period_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"Manual">> => boolean(),
-%%   <<"RetentionPeriod">> := integer()
-%% }
--type modify_snapshot_copy_retention_period_message() :: #{binary() => any()}.
-
-%% Example:
-%% integration_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type integration_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_message() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type delete_tags_message() :: #{binary() => any()}.
-
-%% Example:
-%% subnet() :: #{
-%%   <<"SubnetAvailabilityZone">> => availability_zone(),
-%%   <<"SubnetIdentifier">> => string(),
-%%   <<"SubnetStatus">> => string()
-%% }
--type subnet() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_idc_application_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type redshift_idc_application_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_subnet() :: #{binary() => any()}.
-
-%% Example:
-%% failover_primary_compute_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type failover_primary_compute_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_iam_roles_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type modify_cluster_iam_roles_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_iam_roles_message() :: #{
-%%   <<"AddIamRoles">> => list(string()),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DefaultIamRoleArn">> => string(),
-%%   <<"RemoveIamRoles">> => list(string())
-%% }
--type modify_cluster_iam_roles_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_nodes_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReservedNodeId">> => string()
-%% }
--type describe_reserved_nodes_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_data_share_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_data_share_fault() :: #{binary() => any()}.
-
-%% Example:
-%% node_configuration_option() :: #{
-%%   <<"EstimatedDiskUtilizationPercent">> => float(),
-%%   <<"Mode">> => list(any()),
-%%   <<"NodeType">> => string(),
-%%   <<"NumberOfNodes">> => integer()
-%% }
--type node_configuration_option() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inbound_integrations_message() :: #{
-%%   <<"IntegrationArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TargetArn">> => string()
-%% }
--type describe_inbound_integrations_message() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_already_disabled_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_copy_already_disabled_fault() :: #{binary() => any()}.
-
-%% Example:
-%% dependent_service_request_throttling_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type dependent_service_request_throttling_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_snapshot_message() :: #{
-%%   <<"Force">> => boolean(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotIdentifier">> := string()
-%% }
--type modify_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_parameter_group_message() :: #{
-%%   <<"Description">> := string(),
-%%   <<"ParameterGroupFamily">> := string(),
-%%   <<"ParameterGroupName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_operation_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_group_name_message() :: #{
-%%   <<"ParameterGroupName">> => string(),
-%%   <<"ParameterGroupStatus">> => string()
-%% }
--type cluster_parameter_group_name_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_message() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policy_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_shares_for_consumer_result() :: #{
-%%   <<"DataShares">> => list(data_share()),
+%% cluster_subnet_group_message() :: #{
+%%   <<"ClusterSubnetGroups">> => list(cluster_subnet_group()),
 %%   <<"Marker">> => string()
 %% }
--type describe_data_shares_for_consumer_result() :: #{binary() => any()}.
+-type cluster_subnet_group_message() :: #{binary() => any()}.
 
 %% Example:
-%% authentication_profile() :: #{
-%%   <<"AuthenticationProfileContent">> => string(),
-%%   <<"AuthenticationProfileName">> => string()
-%% }
--type authentication_profile() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_quota_exceeded_fault() :: #{
+%% cluster_subnet_group_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_quota_exceeded_fault() :: #{binary() => any()}.
+-type cluster_subnet_group_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% subscription_already_exist_fault() :: #{
+%% cluster_subnet_group_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type subscription_already_exist_fault() :: #{binary() => any()}.
+-type cluster_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_snapshot_quota_exceeded_fault() :: #{
+%% cluster_subnet_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_snapshot_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_configuration_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type hsm_configuration_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_shares_result() :: #{
-%%   <<"DataShares">> => list(data_share()),
-%%   <<"Marker">> => string()
-%% }
--type describe_data_shares_result() :: #{binary() => any()}.
-
-%% Example:
-%% pause_cluster_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type pause_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_authorization() :: #{
-%%   <<"AllowedAllVPCs">> => boolean(),
-%%   <<"AllowedVPCs">> => list(string()),
-%%   <<"AuthorizeTime">> => non_neg_integer(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"ClusterStatus">> => string(),
-%%   <<"EndpointCount">> => integer(),
-%%   <<"Grantee">> => string(),
-%%   <<"Grantor">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type endpoint_authorization() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_track_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_track_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_parameter_group_result() :: #{
-%%   <<"ClusterParameterGroup">> => cluster_parameter_group()
-%% }
--type create_cluster_parameter_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_cluster_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type reboot_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_client_certificate_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type hsm_client_certificate_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% data_transfer_progress() :: #{
-%%   <<"CurrentRateInMegaBytesPerSecond">> => float(),
-%%   <<"DataTransferredInMegaBytes">> => float(),
-%%   <<"ElapsedTimeInSeconds">> => float(),
-%%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
-%%   <<"Status">> => string(),
-%%   <<"TotalDataInMegaBytes">> => float()
-%% }
--type data_transfer_progress() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_event_id_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subscription_event_id_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% partner_integration_input_message() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartnerName">> := string()
-%% }
--type partner_integration_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_parameter_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_parameter_group_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_association() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CustomDomainName">> => string()
-%% }
--type certificate_association() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_security_group_message() :: #{
-%%   <<"ClusterSecurityGroupName">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_cluster_security_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_grant_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_copy_grant_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hsm_configurations_message() :: #{
-%%   <<"HsmConfigurationIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_hsm_configurations_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_namespace_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_namespace_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_domain_association_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"CustomDomainName">> := string()
-%% }
--type delete_custom_domain_association_message() :: #{binary() => any()}.
-
-%% Example:
-%% accept_reserved_node_exchange_input_message() :: #{
-%%   <<"ReservedNodeId">> := string(),
-%%   <<"TargetReservedNodeOfferingId">> := string()
-%% }
--type accept_reserved_node_exchange_input_message() :: #{binary() => any()}.
+-type cluster_subnet_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_version() :: #{
@@ -1285,390 +907,24 @@
 -type cluster_version() :: #{binary() => any()}.
 
 %% Example:
-%% get_reserved_node_exchange_offerings_input_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReservedNodeId">> := string()
-%% }
--type get_reserved_node_exchange_offerings_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_type_unsupported_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type scheduled_action_type_unsupported_fault() :: #{binary() => any()}.
-
-%% Example:
-%% disable_snapshot_copy_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type disable_snapshot_copy_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoints_per_authorization_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type endpoints_per_authorization_limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_nodes_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReservedNodes">> => list(reserved_node())
-%% }
--type reserved_nodes_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_credentials() :: #{
-%%   <<"DbPassword">> => string(),
-%%   <<"DbUser">> => string(),
-%%   <<"Expiration">> => non_neg_integer()
-%% }
--type cluster_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_snapshot_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_snapshot_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_subnet_groups_message() :: #{
-%%   <<"ClusterSubnetGroupName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_cluster_subnet_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_offering() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"NodeType">> => string(),
-%%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservedNodeOfferingId">> => string(),
-%%   <<"ReservedNodeOfferingType">> => list(any()),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_node_offering() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_already_migrated_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_node_already_migrated_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_snapshot_schedule_message() :: #{
-%%   <<"ScheduleDefinitions">> := list(string()),
-%%   <<"ScheduleIdentifier">> := string()
-%% }
--type modify_snapshot_schedule_message() :: #{binary() => any()}.
-
-%% Example:
-%% serverless_identifier() :: #{
-%%   <<"NamespaceIdentifier">> => string(),
-%%   <<"WorkgroupIdentifier">> => string()
-%% }
--type serverless_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_namespace_output_message() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type deregister_namespace_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_endpoint_access_message() :: #{
-%%   <<"Account">> := string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"VpcIds">> => list(string())
-%% }
--type authorize_endpoint_access_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_attributes_message() :: #{
-%%   <<"AttributeNames">> => list(string())
-%% }
--type describe_account_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_profile_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authentication_profile_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_cluster_snapshot_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"EnableCaseSensitiveIdentifier">> => boolean(),
-%%   <<"NewTableName">> := string(),
-%%   <<"SnapshotIdentifier">> := string(),
-%%   <<"SourceDatabaseName">> := string(),
-%%   <<"SourceSchemaName">> => string(),
-%%   <<"SourceTableName">> := string(),
-%%   <<"TargetDatabaseName">> => string(),
-%%   <<"TargetSchemaName">> => string()
-%% }
--type restore_table_from_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_authentication_profile_request_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_authentication_profile_request_fault() :: #{binary() => any()}.
-
-%% Example:
-%% unauthorized_operation() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_operation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_message() :: #{
-%%   <<"ScheduledActionName">> := string()
-%% }
--type delete_scheduled_action_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_vpc_network_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_vpc_network_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_redshift_idc_application_result() :: #{
-%%   <<"RedshiftIdcApplication">> => redshift_idc_application()
-%% }
--type create_redshift_idc_application_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_restore_status_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TableRestoreRequestId">> => string()
-%% }
--type describe_table_restore_status_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_security_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_security_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_schedule_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_schedule_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_elastic_ip_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_elastic_ip_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Severity">> => string(),
-%%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_type() :: #{
-%%   <<"PauseCluster">> => pause_cluster_message(),
-%%   <<"ResizeCluster">> => resize_cluster_message(),
-%%   <<"ResumeCluster">> => resume_cluster_message()
-%% }
--type scheduled_action_type() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_copy_grant_message() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SnapshotCopyGrantName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_snapshot_copy_grant_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_credentials_with_iam_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CustomDomainName">> => string(),
-%%   <<"DbName">> => string(),
-%%   <<"DurationSeconds">> => integer()
-%% }
--type get_cluster_credentials_with_iam_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_authorization_list() :: #{
-%%   <<"EndpointAuthorizationList">> => list(endpoint_authorization()),
+%% cluster_versions_message() :: #{
+%%   <<"ClusterVersions">> => list(cluster_version()),
 %%   <<"Marker">> => string()
 %% }
--type endpoint_authorization_list() :: #{binary() => any()}.
+-type cluster_versions_message() :: #{binary() => any()}.
 
 %% Example:
-%% bucket_not_found_fault() :: #{
+%% clusters_message() :: #{
+%%   <<"Clusters">> => list(cluster()),
+%%   <<"Marker">> => string()
+%% }
+-type clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_policy_update_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type bucket_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% integration_conflict_operation_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_conflict_operation_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type modify_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% orderable_cluster_options_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"OrderableClusterOptions">> => list(orderable_cluster_option())
-%% }
--type orderable_cluster_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_subscriptions_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SubscriptionName">> => string(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_event_subscriptions_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_group_status() :: #{
-%%   <<"ClusterParameterStatusList">> => list(cluster_parameter_status()),
-%%   <<"ParameterApplyStatus">> => string(),
-%%   <<"ParameterGroupName">> => string()
-%% }
--type cluster_parameter_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% in_progress_table_restore_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type in_progress_table_restore_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hsm_configuration_message() :: #{
-%%   <<"HsmConfigurationIdentifier">> := string()
-%% }
--type delete_hsm_configuration_message() :: #{binary() => any()}.
-
-%% Example:
-%% register_namespace_input_message() :: #{
-%%   <<"ConsumerIdentifiers">> := list(string()),
-%%   <<"NamespaceIdentifier">> := list()
-%% }
--type register_namespace_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_message() :: #{
-%%   <<"IntegrationArn">> := string()
-%% }
--type delete_integration_message() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommendations_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NamespaceArn">> => string()
-%% }
--type list_recommendations_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_authorizations_per_cluster_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type endpoint_authorizations_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_grant_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SnapshotCopyGrants">> => list(snapshot_copy_grant())
-%% }
--type snapshot_copy_grant_message() :: #{binary() => any()}.
-
-%% Example:
-%% pending_modified_values() :: #{
-%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"ClusterType">> => string(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"EncryptionType">> => string(),
-%%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"NodeType">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"PubliclyAccessible">> => boolean()
-%% }
--type pending_modified_values() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_resize_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type cancel_resize_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string())
-%% }
--type describe_tags_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_group_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_parameter_group_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% integration_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_already_enabled_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_copy_already_enabled_fault() :: #{binary() => any()}.
+-type conflict_policy_update_fault() :: #{binary() => any()}.
 
 %% Example:
 %% connect() :: #{
@@ -1686,277 +942,16 @@
 -type copy_cluster_snapshot_message() :: #{binary() => any()}.
 
 %% Example:
-%% dependent_service_access_denied_fault() :: #{
+%% copy_cluster_snapshot_result() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type copy_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_to_region_disabled_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type dependent_service_access_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% orderable_cluster_option() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()),
-%%   <<"ClusterType">> => string(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"NodeType">> => string()
-%% }
--type orderable_cluster_option() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_hsm_configuration_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_hsm_configuration_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% event_info_map() :: #{
-%%   <<"EventCategories">> => list(string()),
-%%   <<"EventDescription">> => string(),
-%%   <<"EventId">> => string(),
-%%   <<"Severity">> => string()
-%% }
--type event_info_map() :: #{binary() => any()}.
-
-%% Example:
-%% modify_lakehouse_configuration_message() :: #{
-%%   <<"CatalogName">> => string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"LakehouseIdcApplicationArn">> => string(),
-%%   <<"LakehouseIdcRegistration">> => list(any()),
-%%   <<"LakehouseRegistration">> => list(any())
-%% }
--type modify_lakehouse_configuration_message() :: #{binary() => any()}.
-
-%% Example:
-%% batch_modify_cluster_snapshots_output_message() :: #{
-%%   <<"Errors">> => list(snapshot_error_message()),
-%%   <<"Resources">> => list(string())
-%% }
--type batch_modify_cluster_snapshots_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_db_revisions_message() :: #{
-%%   <<"ClusterDbRevisions">> => list(cluster_db_revision()),
-%%   <<"Marker">> => string()
-%% }
--type cluster_db_revisions_message() :: #{binary() => any()}.
-
-%% Example:
-%% associate_data_share_consumer_message() :: #{
-%%   <<"AllowWrites">> => boolean(),
-%%   <<"AssociateEntireAccount">> => boolean(),
-%%   <<"ConsumerArn">> => string(),
-%%   <<"ConsumerRegion">> => string(),
-%%   <<"DataShareArn">> := string()
-%% }
--type associate_data_share_consumer_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_node() :: #{
-%%   <<"NodeRole">> => string(),
-%%   <<"PrivateIPAddress">> => string(),
-%%   <<"PublicIPAddress">> => string()
-%% }
--type cluster_node() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_subnet_group_message() :: #{
-%%   <<"ClusterSubnetGroupName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"SubnetIds">> := list(string())
-%% }
--type modify_cluster_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_subnet_group_result() :: #{
-%%   <<"ClusterSubnetGroup">> => cluster_subnet_group()
-%% }
--type create_cluster_subnet_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_usage_limit_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_usage_limit_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_redshift_idc_application_message() :: #{
-%%   <<"RedshiftIdcApplicationArn">> := string()
-%% }
--type delete_redshift_idc_application_message() :: #{binary() => any()}.
-
-%% Example:
-%% deferred_maintenance_window() :: #{
-%%   <<"DeferMaintenanceEndTime">> => non_neg_integer(),
-%%   <<"DeferMaintenanceIdentifier">> => string(),
-%%   <<"DeferMaintenanceStartTime">> => non_neg_integer()
-%% }
--type deferred_maintenance_window() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_reserved_node_offering_message() :: #{
-%%   <<"NodeCount">> => integer(),
-%%   <<"ReservedNodeOfferingId">> := string()
-%% }
--type purchase_reserved_node_offering_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_groups_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ParameterGroups">> => list(cluster_parameter_group())
-%% }
--type cluster_parameter_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authorization_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_parameter_group_message() :: #{
-%%   <<"ParameterGroupName">> := string(),
-%%   <<"Parameters">> := list(parameter())
-%% }
--type modify_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_center_auth_token_response() :: #{
-%%   <<"ExpirationTime">> => non_neg_integer(),
-%%   <<"Token">> => string()
-%% }
--type get_identity_center_auth_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type create_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% cluster() :: #{
-%%   <<"Encrypted">> => boolean(),
-%%   <<"ClusterAvailabilityStatus">> => string(),
-%%   <<"IamRoles">> => list(cluster_iam_role()),
-%%   <<"HsmStatus">> => hsm_status(),
-%%   <<"ClusterCreateTime">> => non_neg_integer(),
-%%   <<"ClusterStatus">> => string(),
-%%   <<"ClusterSubnetGroupName">> => string(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"MasterPasswordSecretArn">> => string(),
-%%   <<"AvailabilityZoneRelocationStatus">> => string(),
-%%   <<"SnapshotScheduleState">> => list(any()),
-%%   <<"MultiAZSecondary">> => secondary_cluster_info(),
-%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
-%%   <<"ResizeInfo">> => resize_info(),
-%%   <<"TotalStorageCapacityInMegaBytes">> => float(),
-%%   <<"CustomDomainName">> => string(),
-%%   <<"CustomDomainCertificateExpiryDate">> => non_neg_integer(),
-%%   <<"ExpectedNextSnapshotScheduleTime">> => non_neg_integer(),
-%%   <<"SnapshotScheduleIdentifier">> => string(),
-%%   <<"RestoreStatus">> => restore_status(),
-%%   <<"PendingModifiedValues">> => pending_modified_values(),
-%%   <<"DataTransferProgress">> => data_transfer_progress(),
-%%   <<"ClusterNodes">> => list(cluster_node()),
-%%   <<"IpAddressType">> => string(),
-%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
-%%   <<"ElasticIpStatus">> => elastic_ip_status(),
-%%   <<"ExpectedNextSnapshotScheduleTimeStatus">> => string(),
-%%   <<"LakehouseRegistrationStatus">> => string(),
-%%   <<"AquaConfiguration">> => aqua_configuration(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(cluster_security_group_membership()),
-%%   <<"ClusterRevisionNumber">> => string(),
-%%   <<"NodeType">> => string(),
-%%   <<"ElasticResizeNumberOfNodeOptions">> => string(),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"ClusterParameterGroups">> => list(cluster_parameter_group_status()),
-%%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"ClusterSnapshotCopyStatus">> => cluster_snapshot_copy_status(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"PendingActions">> => list(string()),
-%%   <<"DefaultIamRoleArn">> => string(),
-%%   <<"ClusterNamespaceArn">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcId">> => string(),
-%%   <<"ClusterPublicKey">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"CatalogArn">> => string(),
-%%   <<"Endpoint">> => endpoint(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ReservedNodeExchangeStatus">> => reserved_node_exchange_status(),
-%%   <<"NextMaintenanceWindowStartTime">> => non_neg_integer(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
-%%   <<"ModifyStatus">> => string(),
-%%   <<"DeferredMaintenanceWindows">> => list(deferred_maintenance_window()),
-%%   <<"CustomDomainCertificateArn">> => string(),
-%%   <<"AllowVersionUpgrade">> => boolean(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"MultiAZ">> => string(),
-%%   <<"ExtraComputeForAutomaticOptimization">> => string()
-%% }
--type cluster() :: #{binary() => any()}.
-
-%% Example:
-%% reset_cluster_parameter_group_message() :: #{
-%%   <<"ParameterGroupName">> := string(),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"ResetAllParameters">> => boolean()
-%% }
--type reset_cluster_parameter_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_message() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_message() :: #{binary() => any()}.
-
-%% Example:
-%% inbound_integrations_message() :: #{
-%%   <<"InboundIntegrations">> => list(inbound_integration()),
-%%   <<"Marker">> => string()
-%% }
--type inbound_integrations_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoints_per_cluster_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type endpoints_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% accept_reserved_node_exchange_output_message() :: #{
-%%   <<"ExchangedReservedNode">> => reserved_node()
-%% }
--type accept_reserved_node_exchange_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ImpactRanking">> => list(any()),
-%%   <<"NamespaceArn">> => string(),
-%%   <<"Observation">> => string(),
-%%   <<"RecommendationText">> => string(),
-%%   <<"RecommendationType">> => string(),
-%%   <<"RecommendedActions">> => list(recommended_action()),
-%%   <<"ReferenceLinks">> => list(reference_link()),
-%%   <<"Title">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
+-type copy_to_region_disabled_fault() :: #{binary() => any()}.
 
 %% Example:
 %% create_authentication_profile_message() :: #{
@@ -1966,574 +961,86 @@
 -type create_authentication_profile_message() :: #{binary() => any()}.
 
 %% Example:
-%% snapshot_sorting_entity() :: #{
-%%   <<"Attribute">> => list(any()),
-%%   <<"SortOrder">> => list(any())
+%% create_authentication_profile_result() :: #{
+%%   <<"AuthenticationProfileContent">> => string(),
+%%   <<"AuthenticationProfileName">> => string()
 %% }
--type snapshot_sorting_entity() :: #{binary() => any()}.
+-type create_authentication_profile_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_authentication_profile_message() :: #{
-%%   <<"AuthenticationProfileName">> := string()
-%% }
--type delete_authentication_profile_message() :: #{binary() => any()}.
-
-%% Example:
-%% resume_cluster_message() :: #{
-%%   <<"ClusterIdentifier">> => string()
-%% }
--type resume_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_security_group_membership() :: #{
-%%   <<"ClusterSecurityGroupName">> => string(),
-%%   <<"Status">> => string()
-%% }
--type cluster_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% ip_range() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type ip_range() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"IamRole">> => string(),
-%%   <<"NextInvocations">> => list(non_neg_integer()),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduledActionDescription">> => string(),
-%%   <<"ScheduledActionName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"TargetAction">> => scheduled_action_type()
-%% }
--type scheduled_action() :: #{binary() => any()}.
-
-%% Example:
-%% describe_authentication_profiles_result() :: #{
-%%   <<"AuthenticationProfiles">> => list(authentication_profile())
-%% }
--type describe_authentication_profiles_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_authorization_message() :: #{
-%%   <<"Account">> => string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Grantee">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_endpoint_authorization_message() :: #{binary() => any()}.
-
-%% Example:
-%% lakehouse_configuration() :: #{
-%%   <<"CatalogArn">> => string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"LakehouseIdcApplicationArn">> => string(),
-%%   <<"LakehouseRegistrationStatus">> => string()
-%% }
--type lakehouse_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% source_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type source_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_s3_bucket_policy_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_s3_bucket_policy_fault() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_result() :: #{
-%%   <<"ResourcePolicy">> => resource_policy()
-%% }
--type get_resource_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% node_configuration_options_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type node_configuration_options_filter() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_idc_application_not_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type redshift_idc_application_not_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_hsm_client_certificate_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_hsm_client_certificate_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% parameter() :: #{
-%%   <<"AllowedValues">> => string(),
-%%   <<"ApplyType">> => list(any()),
-%%   <<"DataType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsModifiable">> => boolean(),
-%%   <<"MinimumEngineVersion">> => string(),
-%%   <<"ParameterName">> => string(),
-%%   <<"ParameterValue">> => string(),
-%%   <<"Source">> => string()
-%% }
--type parameter() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_idc_application() :: #{
-%%   <<"ApplicationType">> => list(any()),
-%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IdcDisplayName">> => string(),
-%%   <<"IdcInstanceArn">> => string(),
-%%   <<"IdcManagedApplicationArn">> => string(),
-%%   <<"IdcOnboardStatus">> => string(),
-%%   <<"IdentityNamespace">> => string(),
-%%   <<"RedshiftIdcApplicationArn">> => string(),
-%%   <<"RedshiftIdcApplicationName">> => string(),
-%%   <<"ServiceIntegrations">> => list(list()),
-%%   <<"SsoTagKeys">> => list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type redshift_idc_application() :: #{binary() => any()}.
-
-%% Example:
-%% association() :: #{
-%%   <<"CertificateAssociations">> => list(certificate_association()),
-%%   <<"CustomDomainCertificateArn">> => string(),
-%%   <<"CustomDomainCertificateExpiryDate">> => non_neg_integer()
-%% }
--type association() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_extended_credentials() :: #{
-%%   <<"DbPassword">> => string(),
-%%   <<"DbUser">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"NextRefreshTime">> => non_neg_integer()
-%% }
--type cluster_extended_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% modify_custom_domain_association_result() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CustomDomainCertExpiryTime">> => string(),
-%%   <<"CustomDomainCertificateArn">> => string(),
-%%   <<"CustomDomainName">> => string()
-%% }
--type modify_custom_domain_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_actions_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ScheduledActions">> => list(scheduled_action())
-%% }
--type scheduled_actions_message() :: #{binary() => any()}.
-
-%% Example:
-%% read_write_access() :: #{
-%%   <<"Authorization">> => list(any())
-%% }
--type read_write_access() :: #{binary() => any()}.
-
-%% Example:
-%% modify_usage_limit_message() :: #{
-%%   <<"Amount">> => float(),
-%%   <<"BreachAction">> => list(any()),
-%%   <<"UsageLimitId">> := string()
-%% }
--type modify_usage_limit_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_reserved_node_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_reserved_node_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_client_certificate() :: #{
-%%   <<"HsmClientCertificateIdentifier">> => string(),
-%%   <<"HsmClientCertificatePublicKey">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type hsm_client_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_snapshots_request() :: #{
-%%   <<"Identifiers">> := list(delete_cluster_snapshot_message())
-%% }
--type batch_delete_cluster_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_profile_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type authentication_profile_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_snapshot_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_snapshot_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node() :: #{
-%%   <<"CurrencyCode">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"FixedPrice">> => float(),
-%%   <<"NodeCount">> => integer(),
-%%   <<"NodeType">> => string(),
-%%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()),
-%%   <<"ReservedNodeId">> => string(),
-%%   <<"ReservedNodeOfferingId">> => string(),
-%%   <<"ReservedNodeOfferingType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"UsagePrice">> => float()
-%% }
--type reserved_node() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_orderable_options() :: #{
-%%   <<"message">> => string()
-%% }
--type incompatible_orderable_options() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_grant() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SnapshotCopyGrantName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type snapshot_copy_grant() :: #{binary() => any()}.
-
-%% Example:
-%% resize_cluster_message() :: #{
-%%   <<"Classic">> => boolean(),
-%%   <<"ClusterIdentifier">> => string(),
+%% create_cluster_message() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"AllowVersionUpgrade">> => boolean(),
+%%   <<"AquaConfigurationStatus">> => list(any()),
+%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneRelocation">> => boolean(),
+%%   <<"CatalogName">> => string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"ClusterParameterGroupName">> => string(),
+%%   <<"ClusterSecurityGroups">> => list(string()),
+%%   <<"ClusterSubnetGroupName">> => string(),
 %%   <<"ClusterType">> => string(),
-%%   <<"NodeType">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"ReservedNodeId">> => string(),
-%%   <<"TargetReservedNodeOfferingId">> => string()
-%% }
--type resize_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_client_certificate_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type hsm_client_certificate_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_configuration_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type hsm_configuration_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% data_share() :: #{
-%%   <<"AllowPubliclyAccessibleConsumers">> => boolean(),
-%%   <<"DataShareArn">> => string(),
-%%   <<"DataShareAssociations">> => list(data_share_association()),
-%%   <<"DataShareType">> => list(any()),
-%%   <<"ManagedBy">> => string(),
-%%   <<"ProducerArn">> => string()
-%% }
--type data_share() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_endpoint_access_message() :: #{
-%%   <<"Account">> => string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Force">> => boolean(),
-%%   <<"VpcIds">> => list(string())
-%% }
--type revoke_endpoint_access_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_configuration_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type hsm_configuration_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_status() :: #{
-%%   <<"ParameterApplyErrorDescription">> => string(),
-%%   <<"ParameterApplyStatus">> => string(),
-%%   <<"ParameterName">> => string()
-%% }
--type cluster_parameter_status() :: #{binary() => any()}.
-
-%% Example:
-%% number_of_nodes_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type number_of_nodes_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint() :: #{
-%%   <<"NetworkInterfaces">> => list(network_interface()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type vpc_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_group_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_s3_key_prefix_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_s3_key_prefix_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_hsm_client_certificate_result() :: #{
-%%   <<"HsmClientCertificate">> => hsm_client_certificate()
-%% }
--type create_hsm_client_certificate_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_namespace_input_message() :: #{
-%%   <<"ConsumerIdentifiers">> := list(string()),
-%%   <<"NamespaceIdentifier">> := list()
-%% }
--type deregister_namespace_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_offerings_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
-%% }
--type reserved_node_offerings_message() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type subscription_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_idc_application_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type redshift_idc_application_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_shares_message() :: #{
-%%   <<"DataShareArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_data_shares_message() :: #{binary() => any()}.
-
-%% Example:
-%% resize_cluster_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type resize_cluster_result() :: #{binary() => any()}.
-
-%% Example:
-%% table_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type table_limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_parameters_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ParameterGroupName">> := string(),
-%%   <<"Source">> => string()
-%% }
--type describe_cluster_parameters_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_reserved_node_exchange_configuration_options_input_message() :: #{
-%%   <<"ActionType">> := list(any()),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SnapshotIdentifier">> => string()
-%% }
--type get_reserved_node_exchange_configuration_options_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% elastic_ip_status() :: #{
+%%   <<"ClusterVersion">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"DefaultIamRoleArn">> => string(),
 %%   <<"ElasticIp">> => string(),
-%%   <<"Status">> => string()
+%%   <<"Encrypted">> => boolean(),
+%%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"ExtraComputeForAutomaticOptimization">> => boolean(),
+%%   <<"HsmClientCertificateIdentifier">> => string(),
+%%   <<"HsmConfigurationIdentifier">> => string(),
+%%   <<"IamRoles">> => list(string()),
+%%   <<"IpAddressType">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LoadSampleData">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"ManageMasterPassword">> => boolean(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MasterUsername">> := string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NodeType">> := string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RedshiftIdcApplicationArn">> => string(),
+%%   <<"SnapshotScheduleIdentifier">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type elastic_ip_status() :: #{binary() => any()}.
+-type create_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% reboot_cluster_result() :: #{
+%% create_cluster_parameter_group_message() :: #{
+%%   <<"Description">> := string(),
+%%   <<"ParameterGroupFamily">> := string(),
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_parameter_group_result() :: #{
+%%   <<"ClusterParameterGroup">> => cluster_parameter_group()
+%% }
+-type create_cluster_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_result() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
--type reboot_cluster_result() :: #{binary() => any()}.
+-type create_cluster_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_redshift_idc_applications_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"RedshiftIdcApplicationArn">> => string()
+%% create_cluster_security_group_message() :: #{
+%%   <<"ClusterSecurityGroupName">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type describe_redshift_idc_applications_message() :: #{binary() => any()}.
-
-%% Example:
-%% usage_limit_list() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"UsageLimits">> => list(usage_limit())
-%% }
--type usage_limit_list() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hsm_client_certificate_message() :: #{
-%%   <<"HsmClientCertificateIdentifier">> := string()
-%% }
--type delete_hsm_client_certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_parameter_group_details() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type cluster_parameter_group_details() :: #{binary() => any()}.
-
-%% Example:
-%% logging_status() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"LastFailureTime">> => non_neg_integer(),
-%%   <<"LastSuccessfulDeliveryTime">> => non_neg_integer(),
-%%   <<"LogDestinationType">> => list(any()),
-%%   <<"LogExports">> => list(string()),
-%%   <<"LoggingEnabled">> => boolean(),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type logging_status() :: #{binary() => any()}.
-
-%% Example:
-%% account_attribute_list() :: #{
-%%   <<"AccountAttributes">> => list(account_attribute())
-%% }
--type account_attribute_list() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_subnet_group_message() :: #{
-%%   <<"ClusterSubnetGroupName">> := string()
-%% }
--type delete_cluster_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_versions_message() :: #{
-%%   <<"ClusterVersions">> => list(cluster_version()),
-%%   <<"Marker">> => string()
-%% }
--type cluster_versions_message() :: #{binary() => any()}.
-
-%% Example:
-%% integration_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type integration_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_snapshot_schedule_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_snapshot_schedule_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_subnet_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_subnet_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_disabled_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_copy_disabled_fault() :: #{binary() => any()}.
-
-%% Example:
-%% custom_cname_association_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type custom_cname_association_fault() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint())
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% modify_integration_message() :: #{
-%%   <<"Description">> => string(),
-%%   <<"IntegrationArn">> := string(),
-%%   <<"IntegrationName">> => string()
-%% }
--type modify_integration_message() :: #{binary() => any()}.
-
-%% Example:
-%% events_message() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"Marker">> => string()
-%% }
--type events_message() :: #{binary() => any()}.
-
-%% Example:
-%% tagged_resource_list_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"TaggedResources">> => list(tagged_resource())
-%% }
--type tagged_resource_list_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_subnet_group_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type cluster_subnet_group_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_error_message() :: #{
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"SnapshotClusterIdentifier">> => string(),
-%%   <<"SnapshotIdentifier">> => string()
-%% }
--type snapshot_error_message() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_iam_role() :: #{
-%%   <<"ApplyStatus">> => string(),
-%%   <<"IamRoleArn">> => string()
-%% }
--type cluster_iam_role() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_subscription_message() :: #{
-%%   <<"SubscriptionName">> := string()
-%% }
--type delete_event_subscription_message() :: #{binary() => any()}.
+-type create_cluster_security_group_message() :: #{binary() => any()}.
 
 %% Example:
 %% create_cluster_security_group_result() :: #{
@@ -2542,66 +1049,138 @@
 -type create_cluster_security_group_result() :: #{binary() => any()}.
 
 %% Example:
-%% scheduled_action_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type scheduled_action_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% enable_snapshot_copy_message() :: #{
+%% create_cluster_snapshot_message() :: #{
 %%   <<"ClusterIdentifier">> := string(),
-%%   <<"DestinationRegion">> := string(),
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"RetentionPeriod">> => integer(),
-%%   <<"SnapshotCopyGrantName">> => string()
+%%   <<"SnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type enable_snapshot_copy_message() :: #{binary() => any()}.
+-type create_cluster_snapshot_message() :: #{binary() => any()}.
 
 %% Example:
-%% resource_policy() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
+%% create_cluster_snapshot_result() :: #{
+%%   <<"Snapshot">> => snapshot()
 %% }
--type resource_policy() :: #{binary() => any()}.
+-type create_cluster_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_cluster_tracks_message() :: #{
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% create_cluster_subnet_group_message() :: #{
+%%   <<"ClusterSubnetGroupName">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
--type describe_cluster_tracks_message() :: #{binary() => any()}.
+-type create_cluster_subnet_group_message() :: #{binary() => any()}.
 
 %% Example:
-%% resize_info() :: #{
-%%   <<"AllowCancelResize">> => boolean(),
-%%   <<"ResizeType">> => string()
+%% create_cluster_subnet_group_result() :: #{
+%%   <<"ClusterSubnetGroup">> => cluster_subnet_group()
 %% }
--type resize_info() :: #{binary() => any()}.
+-type create_cluster_subnet_group_result() :: #{binary() => any()}.
 
 %% Example:
-%% reserved_node_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% create_custom_domain_association_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"CustomDomainCertificateArn">> := string(),
+%%   <<"CustomDomainName">> := string()
 %% }
--type reserved_node_not_found_fault() :: #{binary() => any()}.
+-type create_custom_domain_association_message() :: #{binary() => any()}.
 
 %% Example:
-%% snapshot_copy_grant_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% create_custom_domain_association_result() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CustomDomainCertExpiryTime">> => string(),
+%%   <<"CustomDomainCertificateArn">> => string(),
+%%   <<"CustomDomainName">> => string()
 %% }
--type snapshot_copy_grant_quota_exceeded_fault() :: #{binary() => any()}.
+-type create_custom_domain_association_result() :: #{binary() => any()}.
 
 %% Example:
-%% custom_domain_association_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% create_endpoint_access_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"EndpointName">> := string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
--type custom_domain_association_not_found_fault() :: #{binary() => any()}.
+-type create_endpoint_access_message() :: #{binary() => any()}.
 
 %% Example:
-%% subscription_category_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% create_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Severity">> => string(),
+%%   <<"SnsTopicArn">> := string(),
+%%   <<"SourceIds">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type subscription_category_not_found_fault() :: #{binary() => any()}.
+-type create_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type create_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_client_certificate_message() :: #{
+%%   <<"HsmClientCertificateIdentifier">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hsm_client_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_client_certificate_result() :: #{
+%%   <<"HsmClientCertificate">> => hsm_client_certificate()
+%% }
+-type create_hsm_client_certificate_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_configuration_message() :: #{
+%%   <<"Description">> := string(),
+%%   <<"HsmConfigurationIdentifier">> := string(),
+%%   <<"HsmIpAddress">> := string(),
+%%   <<"HsmPartitionName">> := string(),
+%%   <<"HsmPartitionPassword">> := string(),
+%%   <<"HsmServerPublicCertificate">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hsm_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_configuration_result() :: #{
+%%   <<"HsmConfiguration">> => hsm_configuration()
+%% }
+-type create_hsm_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_message() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"TagList">> => list(tag()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_qev2_idc_application_message() :: #{
+%%   <<"IdcDisplayName">> := string(),
+%%   <<"IdcInstanceArn">> := string(),
+%%   <<"Qev2IdcApplicationName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_qev2_idc_application_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_qev2_idc_application_result() :: #{
+%%   <<"Qev2IdcApplication">> => qev2_idc_application()
+%% }
+-type create_qev2_idc_application_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_redshift_idc_application_message() :: #{
@@ -2619,79 +1198,104 @@
 -type create_redshift_idc_application_message() :: #{binary() => any()}.
 
 %% Example:
-%% s_n_s_invalid_topic_fault() :: #{
+%% create_redshift_idc_application_result() :: #{
+%%   <<"RedshiftIdcApplication">> => redshift_idc_application()
+%% }
+-type create_redshift_idc_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_action_message() :: #{
+%%   <<"Enable">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IamRole">> := string(),
+%%   <<"Schedule">> := string(),
+%%   <<"ScheduledActionDescription">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TargetAction">> := scheduled_action_type()
+%% }
+-type create_scheduled_action_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_grant_message() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SnapshotCopyGrantName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_snapshot_copy_grant_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_grant_result() :: #{
+%%   <<"SnapshotCopyGrant">> => snapshot_copy_grant()
+%% }
+-type create_snapshot_copy_grant_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_schedule_message() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"NextInvocations">> => integer(),
+%%   <<"ScheduleDefinitions">> => list(string()),
+%%   <<"ScheduleDescription">> => string(),
+%%   <<"ScheduleIdentifier">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_snapshot_schedule_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_tags_message() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type create_tags_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_limit_message() :: #{
+%%   <<"Amount">> := float(),
+%%   <<"BreachAction">> => list(any()),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"FeatureType">> := list(any()),
+%%   <<"LimitType">> := list(any()),
+%%   <<"Period">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_usage_limit_message() :: #{binary() => any()}.
+
+%% Example:
+%% custom_cname_association_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+-type custom_cname_association_fault() :: #{binary() => any()}.
 
 %% Example:
-%% create_integration_message() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationName">> := string(),
-%%   <<"KMSKeyId">> => string(),
-%%   <<"SourceArn">> := string(),
-%%   <<"TagList">> => list(tag()),
-%%   <<"TargetArn">> := string()
+%% custom_domain_association_not_found_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type create_integration_message() :: #{binary() => any()}.
+-type custom_domain_association_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% update_partner_status_input_message() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartnerName">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type update_partner_status_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_node_offerings_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReservedNodeOfferingId">> => string()
-%% }
--type describe_reserved_node_offerings_message() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"EventId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Severity">> => string(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type create_event_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% clusters_message() :: #{
-%%   <<"Clusters">> => list(cluster()),
+%% custom_domain_associations_message() :: #{
+%%   <<"Associations">> => list(association()),
 %%   <<"Marker">> => string()
 %% }
--type clusters_message() :: #{binary() => any()}.
+-type custom_domain_associations_message() :: #{binary() => any()}.
 
 %% Example:
-%% enable_snapshot_copy_result() :: #{
-%%   <<"Cluster">> => cluster()
+%% customer_storage_message() :: #{
+%%   <<"TotalBackupSizeInMegaBytes">> => float(),
+%%   <<"TotalProvisionedStorageInMegaBytes">> => float()
 %% }
--type enable_snapshot_copy_result() :: #{binary() => any()}.
+-type customer_storage_message() :: #{binary() => any()}.
 
 %% Example:
-%% deauthorize_data_share_message() :: #{
-%%   <<"ConsumerIdentifier">> := string(),
-%%   <<"DataShareArn">> := string()
+%% data_share() :: #{
+%%   <<"AllowPubliclyAccessibleConsumers">> => boolean(),
+%%   <<"DataShareArn">> => string(),
+%%   <<"DataShareAssociations">> => list(data_share_association()),
+%%   <<"DataShareType">> => list(any()),
+%%   <<"ManagedBy">> => string(),
+%%   <<"ProducerArn">> => string()
 %% }
--type deauthorize_data_share_message() :: #{binary() => any()}.
+-type data_share() :: #{binary() => any()}.
 
 %% Example:
 %% data_share_association() :: #{
@@ -2706,289 +1310,268 @@
 -type data_share_association() :: #{binary() => any()}.
 
 %% Example:
-%% revoke_snapshot_access_result() :: #{
-%%   <<"Snapshot">> => snapshot()
-%% }
--type revoke_snapshot_access_result() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot() :: #{
-%%   <<"ManualSnapshotRemainingDays">> => integer(),
-%%   <<"Encrypted">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"EngineFullVersion">> => string(),
-%%   <<"SourceRegion">> => string(),
-%%   <<"SnapshotRetentionStartTime">> => non_neg_integer(),
-%%   <<"ClusterCreateTime">> => non_neg_integer(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"EstimatedSecondsToCompletion">> => float(),
-%%   <<"MasterPasswordSecretArn">> => string(),
-%%   <<"RestorableNodeTypes">> => list(string()),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"SnapshotType">> => string(),
-%%   <<"TotalBackupSizeInMegaBytes">> => float(),
-%%   <<"ActualIncrementalBackupSizeInMegaBytes">> => float(),
-%%   <<"AccountsWithRestoreAccess">> => list(account_with_restore_access()),
-%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"MasterUsername">> => string(),
-%%   <<"NodeType">> => string(),
-%%   <<"DBName">> => string(),
-%%   <<"BackupProgressInMegaBytes">> => float(),
-%%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"SnapshotCreateTime">> => non_neg_integer(),
-%%   <<"SnapshotArn">> => string(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcId">> => string(),
-%%   <<"SnapshotIdentifier">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"EncryptedWithHSM">> => boolean(),
-%%   <<"CurrentBackupRateInMegaBytesPerSecond">> => float(),
-%%   <<"Status">> => string(),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"ElapsedTimeInSeconds">> => float()
-%% }
--type snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% restore_status() :: #{
-%%   <<"CurrentRestoreRateInMegaBytesPerSecond">> => float(),
+%% data_transfer_progress() :: #{
+%%   <<"CurrentRateInMegaBytesPerSecond">> => float(),
+%%   <<"DataTransferredInMegaBytes">> => float(),
 %%   <<"ElapsedTimeInSeconds">> => float(),
 %%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
-%%   <<"ProgressInMegaBytes">> => float(),
-%%   <<"SnapshotSizeInMegaBytes">> => float(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => string(),
+%%   <<"TotalDataInMegaBytes">> => float()
 %% }
--type restore_status() :: #{binary() => any()}.
+-type data_transfer_progress() :: #{binary() => any()}.
 
 %% Example:
-%% unauthorized_partner_integration_fault() :: #{
-%%   <<"message">> => string()
+%% deauthorize_data_share_message() :: #{
+%%   <<"ConsumerIdentifier">> := string(),
+%%   <<"DataShareArn">> := string()
 %% }
--type unauthorized_partner_integration_fault() :: #{binary() => any()}.
+-type deauthorize_data_share_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_orderable_cluster_options_message() :: #{
-%%   <<"ClusterVersion">> => string(),
+%% default_cluster_parameters() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NodeType">> => string()
+%%   <<"ParameterGroupFamily">> => string(),
+%%   <<"Parameters">> => list(parameter())
 %% }
--type describe_orderable_cluster_options_message() :: #{binary() => any()}.
+-type default_cluster_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% snapshot_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Snapshots">> => list(snapshot())
+%% deferred_maintenance_window() :: #{
+%%   <<"DeferMaintenanceEndTime">> => non_neg_integer(),
+%%   <<"DeferMaintenanceIdentifier">> => string(),
+%%   <<"DeferMaintenanceStartTime">> => non_neg_integer()
 %% }
--type snapshot_message() :: #{binary() => any()}.
+-type deferred_maintenance_window() :: #{binary() => any()}.
 
 %% Example:
-%% scheduled_action_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% delete_authentication_profile_message() :: #{
+%%   <<"AuthenticationProfileName">> := string()
 %% }
--type scheduled_action_already_exists_fault() :: #{binary() => any()}.
+-type delete_authentication_profile_message() :: #{binary() => any()}.
 
 %% Example:
-%% modify_cluster_subnet_group_result() :: #{
-%%   <<"ClusterSubnetGroup">> => cluster_subnet_group()
+%% delete_authentication_profile_result() :: #{
+%%   <<"AuthenticationProfileName">> => string()
 %% }
--type modify_cluster_subnet_group_result() :: #{binary() => any()}.
+-type delete_authentication_profile_result() :: #{binary() => any()}.
 
 %% Example:
-%% s_n_s_topic_arn_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% delete_cluster_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"FinalClusterSnapshotIdentifier">> => string(),
+%%   <<"FinalClusterSnapshotRetentionPeriod">> => integer(),
+%%   <<"SkipFinalClusterSnapshot">> => boolean()
 %% }
--type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
+-type delete_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% resume_cluster_result() :: #{
+%% delete_cluster_parameter_group_message() :: #{
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type delete_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_result() :: #{
 %%   <<"Cluster">> => cluster()
 %% }
--type resume_cluster_result() :: #{binary() => any()}.
+-type delete_cluster_result() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_parameter_group_already_exists_fault() :: #{
+%% delete_cluster_security_group_message() :: #{
+%%   <<"ClusterSecurityGroupName">> := string()
+%% }
+-type delete_cluster_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_snapshot_message() :: #{
+%%   <<"SnapshotClusterIdentifier">> => string(),
+%%   <<"SnapshotIdentifier">> => string()
+%% }
+-type delete_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_snapshot_result() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type delete_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_subnet_group_message() :: #{
+%%   <<"ClusterSubnetGroupName">> := string()
+%% }
+-type delete_cluster_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_domain_association_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"CustomDomainName">> := string()
+%% }
+-type delete_custom_domain_association_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_access_message() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type delete_endpoint_access_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_message() :: #{
+%%   <<"SubscriptionName">> := string()
+%% }
+-type delete_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hsm_client_certificate_message() :: #{
+%%   <<"HsmClientCertificateIdentifier">> := string()
+%% }
+-type delete_hsm_client_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hsm_configuration_message() :: #{
+%%   <<"HsmConfigurationIdentifier">> := string()
+%% }
+-type delete_hsm_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_message() :: #{
+%%   <<"IntegrationArn">> := string()
+%% }
+-type delete_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_qev2_idc_application_message() :: #{
+%%   <<"Qev2IdcApplicationArn">> := string()
+%% }
+-type delete_qev2_idc_application_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_redshift_idc_application_message() :: #{
+%%   <<"RedshiftIdcApplicationArn">> := string()
+%% }
+-type delete_redshift_idc_application_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_message() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_message() :: #{
+%%   <<"ScheduledActionName">> := string()
+%% }
+-type delete_scheduled_action_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_copy_grant_message() :: #{
+%%   <<"SnapshotCopyGrantName">> := string()
+%% }
+-type delete_snapshot_copy_grant_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_schedule_message() :: #{
+%%   <<"ScheduleIdentifier">> := string()
+%% }
+-type delete_snapshot_schedule_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_message() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type delete_tags_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_limit_message() :: #{
+%%   <<"UsageLimitId">> := string()
+%% }
+-type delete_usage_limit_message() :: #{binary() => any()}.
+
+%% Example:
+%% dependent_service_access_denied_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_parameter_group_already_exists_fault() :: #{binary() => any()}.
+-type dependent_service_access_denied_fault() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_subscription_state_fault() :: #{
+%% dependent_service_request_throttling_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_subscription_state_fault() :: #{binary() => any()}.
+-type dependent_service_request_throttling_fault() :: #{binary() => any()}.
 
 %% Example:
-%% create_hsm_configuration_result() :: #{
-%%   <<"HsmConfiguration">> => hsm_configuration()
-%% }
--type create_hsm_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_logging_status_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type describe_logging_status_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_client_certificate_message() :: #{
-%%   <<"HsmClientCertificates">> => list(hsm_client_certificate()),
-%%   <<"Marker">> => string()
-%% }
--type hsm_client_certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% customer_storage_message() :: #{
-%%   <<"TotalBackupSizeInMegaBytes">> => float(),
-%%   <<"TotalProvisionedStorageInMegaBytes">> => float()
-%% }
--type customer_storage_message() :: #{binary() => any()}.
-
-%% Example:
-%% ipv6_cidr_block_not_found_fault() :: #{
+%% dependent_service_unavailable_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type ipv6_cidr_block_not_found_fault() :: #{binary() => any()}.
+-type dependent_service_unavailable_fault() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_db_revision() :: #{
+%% deregister_namespace_input_message() :: #{
+%%   <<"ConsumerIdentifiers">> := list(string()),
+%%   <<"NamespaceIdentifier">> := list()
+%% }
+-type deregister_namespace_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_namespace_output_message() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type deregister_namespace_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_message() :: #{
+%%   <<"AttributeNames">> => list(string())
+%% }
+-type describe_account_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_authentication_profiles_message() :: #{
+%%   <<"AuthenticationProfileName">> => string()
+%% }
+-type describe_authentication_profiles_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_authentication_profiles_result() :: #{
+%%   <<"AuthenticationProfiles">> => list(authentication_profile())
+%% }
+-type describe_authentication_profiles_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_db_revisions_message() :: #{
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"CurrentDatabaseRevision">> => string(),
-%%   <<"DatabaseRevisionReleaseDate">> => non_neg_integer(),
-%%   <<"RevisionTargets">> => list(revision_target())
-%% }
--type cluster_db_revision() :: #{binary() => any()}.
-
-%% Example:
-%% disable_logging_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type disable_logging_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_domain_associations_message() :: #{
-%%   <<"CustomDomainCertificateArn">> => string(),
-%%   <<"CustomDomainName">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
--type describe_custom_domain_associations_message() :: #{binary() => any()}.
+-type describe_cluster_db_revisions_message() :: #{binary() => any()}.
 
 %% Example:
-%% reference_link() :: #{
-%%   <<"Link">> => string(),
-%%   <<"Text">> => string()
-%% }
--type reference_link() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_db_revision_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type modify_cluster_db_revision_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_modify_cluster_snapshots_message() :: #{
-%%   <<"Force">> => boolean(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotIdentifierList">> := list(string())
-%% }
--type batch_modify_cluster_snapshots_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_custom_domain_association_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"CustomDomainCertificateArn">> := string(),
-%%   <<"CustomDomainName">> := string()
-%% }
--type modify_custom_domain_association_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_access_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"EndpointName">> => string(),
+%% describe_cluster_parameter_groups_message() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"VpcId">> => string()
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
--type describe_endpoint_access_message() :: #{binary() => any()}.
+-type describe_cluster_parameter_groups_message() :: #{binary() => any()}.
 
 %% Example:
-%% event_categories_message() :: #{
-%%   <<"EventCategoriesMapList">> => list(event_categories_map())
-%% }
--type event_categories_message() :: #{binary() => any()}.
-
-%% Example:
-%% supported_operation() :: #{
-%%   <<"OperationName">> => string()
-%% }
--type supported_operation() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_cluster_security_group_ingress_message() :: #{
-%%   <<"CIDRIP">> => string(),
-%%   <<"ClusterSecurityGroupName">> := string(),
-%%   <<"EC2SecurityGroupName">> => string(),
-%%   <<"EC2SecurityGroupOwnerId">> => string()
-%% }
--type revoke_cluster_security_group_ingress_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_cluster_snapshot_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type restore_from_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_default_cluster_parameters_result() :: #{
-%%   <<"DefaultClusterParameters">> => default_cluster_parameters()
-%% }
--type describe_default_cluster_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% tagged_resource() :: #{
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Tag">> => tag()
-%% }
--type tagged_resource() :: #{binary() => any()}.
-
-%% Example:
-%% failover_primary_compute_input_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type failover_primary_compute_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_message() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
+%% describe_cluster_parameters_message() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Source">> => string()
 %% }
--type describe_events_message() :: #{binary() => any()}.
+-type describe_cluster_parameters_message() :: #{binary() => any()}.
 
 %% Example:
-%% account_with_restore_access() :: #{
-%%   <<"AccountAlias">> => string(),
-%%   <<"AccountId">> => string()
+%% describe_cluster_security_groups_message() :: #{
+%%   <<"ClusterSecurityGroupName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
--type account_with_restore_access() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_security_group_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_security_group_state_fault() :: #{binary() => any()}.
+-type describe_cluster_security_groups_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cluster_snapshots_message() :: #{
@@ -3009,223 +1592,31 @@
 -type describe_cluster_snapshots_message() :: #{binary() => any()}.
 
 %% Example:
-%% endpoint_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type endpoint_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_subnet_group_message() :: #{
-%%   <<"ClusterSubnetGroups">> => list(cluster_subnet_group()),
-%%   <<"Marker">> => string()
-%% }
--type cluster_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_message() :: #{
-%%   <<"Encrypted">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"IamRoles">> => list(string()),
-%%   <<"RedshiftIdcApplicationArn">> => string(),
-%%   <<"ElasticIp">> => string(),
+%% describe_cluster_subnet_groups_message() :: #{
 %%   <<"ClusterSubnetGroupName">> => string(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotScheduleIdentifier">> => string(),
-%%   <<"ManageMasterPassword">> => boolean(),
-%%   <<"HsmClientCertificateIdentifier">> => string(),
-%%   <<"AquaConfigurationStatus">> => list(any()),
-%%   <<"IpAddressType">> => string(),
-%%   <<"AvailabilityZoneRelocation">> => boolean(),
-%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"MasterUsername">> := string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(string()),
-%%   <<"DBName">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"CatalogName">> => string(),
-%%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"NodeType">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"ClusterParameterGroupName">> => string(),
-%%   <<"ClusterType">> => string(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"HsmConfigurationIdentifier">> => string(),
-%%   <<"DefaultIamRoleArn">> => string(),
-%%   <<"MasterUserPassword">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"LoadSampleData">> => string(),
-%%   <<"AllowVersionUpgrade">> => boolean(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"ExtraComputeForAutomaticOptimization">> => boolean()
-%% }
--type create_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_authentication_profile_result() :: #{
-%%   <<"AuthenticationProfileName">> => string()
-%% }
--type delete_authentication_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_snapshot_copy_status() :: #{
-%%   <<"DestinationRegion">> => string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"RetentionPeriod">> => float(),
-%%   <<"SnapshotCopyGrantName">> => string()
-%% }
--type cluster_snapshot_copy_status() :: #{binary() => any()}.
-
-%% Example:
-%% usage_limit() :: #{
-%%   <<"Amount">> => float(),
-%%   <<"BreachAction">> => list(any()),
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"FeatureType">> => list(any()),
-%%   <<"LimitType">> => list(any()),
-%%   <<"Period">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UsageLimitId">> => string()
-%% }
--type usage_limit() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_schedule_update_in_progress_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_schedule_update_in_progress_fault() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type scheduled_action_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_subnet_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_subnet_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% enable_logging_message() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"LogDestinationType">> => list(any()),
-%%   <<"LogExports">> => list(string()),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type enable_logging_message() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_exchange_status() :: #{
-%%   <<"RequestTime">> => non_neg_integer(),
-%%   <<"ReservedNodeExchangeRequestId">> => string(),
-%%   <<"SourceReservedNodeCount">> => integer(),
-%%   <<"SourceReservedNodeId">> => string(),
-%%   <<"SourceReservedNodeType">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetReservedNodeCount">> => integer(),
-%%   <<"TargetReservedNodeOfferingId">> => string(),
-%%   <<"TargetReservedNodeType">> => string()
-%% }
--type reserved_node_exchange_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_redshift_idc_applications_result() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"RedshiftIdcApplications">> => list(redshift_idc_application())
-%% }
--type describe_redshift_idc_applications_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_event_subscription_result() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type modify_event_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_request_size_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type batch_delete_request_size_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_access_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"EndpointName">> := string(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"SubnetGroupName">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type create_endpoint_access_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_shares_for_consumer_message() :: #{
-%%   <<"ConsumerArn">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"Status">> => list(any())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
--type describe_data_shares_for_consumer_message() :: #{binary() => any()}.
+-type describe_cluster_subnet_groups_message() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_endpoint_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_endpoint_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_snapshot_schedules_output_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SnapshotSchedules">> => list(snapshot_schedule())
-%% }
--type describe_snapshot_schedules_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% reserved_node_exchange_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type reserved_node_exchange_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% update_target() :: #{
-%%   <<"DatabaseVersion">> => string(),
+%% describe_cluster_tracks_message() :: #{
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"SupportedOperations">> => list(supported_operation())
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type update_target() :: #{binary() => any()}.
+-type describe_cluster_tracks_message() :: #{binary() => any()}.
 
 %% Example:
-%% create_usage_limit_message() :: #{
-%%   <<"Amount">> := float(),
-%%   <<"BreachAction">> => list(any()),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"FeatureType">> := list(any()),
-%%   <<"LimitType">> := list(any()),
-%%   <<"Period">> => list(any()),
-%%   <<"Tags">> => list(tag())
+%% describe_cluster_versions_message() :: #{
+%%   <<"ClusterParameterGroupFamily">> => string(),
+%%   <<"ClusterVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type create_usage_limit_message() :: #{binary() => any()}.
-
-%% Example:
-%% rotate_encryption_key_result() :: #{
-%%   <<"Cluster">> => cluster()
-%% }
--type rotate_encryption_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_authentication_profile_message() :: #{
-%%   <<"AuthenticationProfileContent">> := string(),
-%%   <<"AuthenticationProfileName">> := string()
-%% }
--type modify_authentication_profile_message() :: #{binary() => any()}.
+-type describe_cluster_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_clusters_message() :: #{
@@ -3238,156 +1629,123 @@
 -type describe_clusters_message() :: #{binary() => any()}.
 
 %% Example:
-%% provisioned_identifier() :: #{
-%%   <<"ClusterIdentifier">> => string()
+%% describe_custom_domain_associations_message() :: #{
+%%   <<"CustomDomainCertificateArn">> => string(),
+%%   <<"CustomDomainName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type provisioned_identifier() :: #{binary() => any()}.
+-type describe_custom_domain_associations_message() :: #{binary() => any()}.
 
 %% Example:
-%% snapshot_schedule_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type snapshot_schedule_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% resize_progress_message() :: #{
-%%   <<"AvgResizeRateInMegaBytesPerSecond">> => float(),
-%%   <<"DataTransferProgressPercent">> => float(),
-%%   <<"ElapsedTimeInSeconds">> => float(),
-%%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
-%%   <<"ImportTablesCompleted">> => list(string()),
-%%   <<"ImportTablesInProgress">> => list(string()),
-%%   <<"ImportTablesNotStarted">> => list(string()),
-%%   <<"Message">> => string(),
-%%   <<"ProgressInMegaBytes">> => float(),
-%%   <<"ResizeType">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"TargetClusterType">> => string(),
-%%   <<"TargetEncryptionType">> => string(),
-%%   <<"TargetNodeType">> => string(),
-%%   <<"TargetNumberOfNodes">> => integer(),
-%%   <<"TotalResizeDataInMegaBytes">> => float()
-%% }
--type resize_progress_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_hsm_client_certificate_message() :: #{
-%%   <<"HsmClientCertificateIdentifier">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_hsm_client_certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_message() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_message() :: #{binary() => any()}.
-
-%% Example:
-%% account_attribute() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(attribute_value_target())
-%% }
--type account_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% access_to_snapshot_denied_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type access_to_snapshot_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_node_exchange_status_input_message() :: #{
+%% describe_data_shares_for_consumer_message() :: #{
+%%   <<"ConsumerArn">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"ReservedNodeExchangeRequestId">> => string(),
-%%   <<"ReservedNodeId">> => string()
+%%   <<"Status">> => list(any())
 %% }
--type describe_reserved_node_exchange_status_input_message() :: #{binary() => any()}.
+-type describe_data_shares_for_consumer_message() :: #{binary() => any()}.
 
 %% Example:
-%% supported_platform() :: #{
-%%   <<"Name">> => string()
-%% }
--type supported_platform() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_cluster_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_cluster_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% unknown_snapshot_copy_region_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type unknown_snapshot_copy_region_fault() :: #{binary() => any()}.
-
-%% Example:
-%% partner_integration_info() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"PartnerName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type partner_integration_info() :: #{binary() => any()}.
-
-%% Example:
-%% integrations_message() :: #{
-%%   <<"Integrations">> => list(integration()),
+%% describe_data_shares_for_consumer_result() :: #{
+%%   <<"DataShares">> => list(data_share()),
 %%   <<"Marker">> => string()
 %% }
--type integrations_message() :: #{binary() => any()}.
+-type describe_data_shares_for_consumer_result() :: #{binary() => any()}.
 
 %% Example:
-%% copy_to_region_disabled_fault() :: #{
-%%   <<"message">> => string()
+%% describe_data_shares_for_producer_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ProducerArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type copy_to_region_disabled_fault() :: #{binary() => any()}.
+-type describe_data_shares_for_producer_message() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_security_group_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% describe_data_shares_for_producer_result() :: #{
+%%   <<"DataShares">> => list(data_share()),
+%%   <<"Marker">> => string()
 %% }
--type cluster_security_group_not_found_fault() :: #{binary() => any()}.
+-type describe_data_shares_for_producer_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_hsm_configuration_message() :: #{
-%%   <<"Description">> := string(),
-%%   <<"HsmConfigurationIdentifier">> := string(),
-%%   <<"HsmIpAddress">> := string(),
-%%   <<"HsmPartitionName">> := string(),
-%%   <<"HsmPartitionPassword">> := string(),
-%%   <<"HsmServerPublicCertificate">> := string(),
-%%   <<"Tags">> => list(tag())
+%% describe_data_shares_message() :: #{
+%%   <<"DataShareArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
 %% }
--type create_hsm_configuration_message() :: #{binary() => any()}.
+-type describe_data_shares_message() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_snapshot_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% describe_data_shares_result() :: #{
+%%   <<"DataShares">> => list(data_share()),
+%%   <<"Marker">> => string()
 %% }
--type cluster_snapshot_not_found_fault() :: #{binary() => any()}.
+-type describe_data_shares_result() :: #{binary() => any()}.
 
 %% Example:
-%% rotate_encryption_key_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
+%% describe_default_cluster_parameters_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ParameterGroupFamily">> := string()
 %% }
--type rotate_encryption_key_message() :: #{binary() => any()}.
+-type describe_default_cluster_parameters_message() :: #{binary() => any()}.
 
 %% Example:
-%% get_cluster_credentials_message() :: #{
-%%   <<"AutoCreate">> => boolean(),
+%% describe_default_cluster_parameters_result() :: #{
+%%   <<"DefaultClusterParameters">> => default_cluster_parameters()
+%% }
+-type describe_default_cluster_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_access_message() :: #{
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"CustomDomainName">> => string(),
-%%   <<"DbGroups">> => list(string()),
-%%   <<"DbName">> => string(),
-%%   <<"DbUser">> := string(),
-%%   <<"DurationSeconds">> => integer()
+%%   <<"EndpointName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type get_cluster_credentials_message() :: #{binary() => any()}.
+-type describe_endpoint_access_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_authorization_message() :: #{
+%%   <<"Account">> => string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Grantee">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_endpoint_authorization_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_categories_message() :: #{
+%%   <<"SourceType">> => string()
+%% }
+-type describe_event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_subscriptions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SubscriptionName">> => string(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
+%% }
+-type describe_event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_message() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hsm_client_certificates_message() :: #{
@@ -3400,10 +1758,30 @@
 -type describe_hsm_client_certificates_message() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_security_group_message() :: #{
-%%   <<"ClusterSecurityGroupName">> := string()
+%% describe_hsm_configurations_message() :: #{
+%%   <<"HsmConfigurationIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
--type delete_cluster_security_group_message() :: #{binary() => any()}.
+-type describe_hsm_configurations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_integrations_message() :: #{
+%%   <<"IntegrationArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetArn">> => string()
+%% }
+-type describe_inbound_integrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type describe_integrations_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_integrations_message() :: #{
@@ -3415,67 +1793,265 @@
 -type describe_integrations_message() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_option_fault() :: #{
-%%   <<"message">> => string()
+%% describe_logging_status_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
 %% }
--type unsupported_option_fault() :: #{binary() => any()}.
+-type describe_logging_status_message() :: #{binary() => any()}.
 
 %% Example:
-%% usage_limit_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% describe_node_configuration_options_message() :: #{
+%%   <<"ActionType">> := list(any()),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Filters">> => list(node_configuration_options_filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotIdentifier">> => string()
 %% }
--type usage_limit_already_exists_fault() :: #{binary() => any()}.
+-type describe_node_configuration_options_message() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_security_group_message() :: #{
-%%   <<"ClusterSecurityGroups">> => list(cluster_security_group()),
-%%   <<"Marker">> => string()
+%% describe_orderable_cluster_options_message() :: #{
+%%   <<"ClusterVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NodeType">> => string()
 %% }
--type cluster_security_group_message() :: #{binary() => any()}.
+-type describe_orderable_cluster_options_message() :: #{binary() => any()}.
 
 %% Example:
-%% access_to_cluster_denied_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type access_to_cluster_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% partner_integration_output_message() :: #{
+%% describe_partners_input_message() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClusterIdentifier">> := string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"PartnerName">> => string()
 %% }
--type partner_integration_output_message() :: #{binary() => any()}.
+-type describe_partners_input_message() :: #{binary() => any()}.
 
 %% Example:
-%% number_of_nodes_per_cluster_limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% describe_partners_output_message() :: #{
+%%   <<"PartnerIntegrationInfoList">> => list(partner_integration_info())
 %% }
--type number_of_nodes_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
+-type describe_partners_output_message() :: #{binary() => any()}.
 
 %% Example:
-%% endpoint_authorization_already_exists_fault() :: #{
-%%   <<"message">> => string()
+%% describe_qev2_idc_applications_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Qev2IdcApplicationArn">> => string()
 %% }
--type endpoint_authorization_already_exists_fault() :: #{binary() => any()}.
+-type describe_qev2_idc_applications_message() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_scheduled_action_fault() :: #{
-%%   <<"message">> => string()
+%% describe_qev2_idc_applications_result() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Qev2IdcApplications">> => list(qev2_idc_application())
 %% }
--type invalid_scheduled_action_fault() :: #{binary() => any()}.
+-type describe_qev2_idc_applications_result() :: #{binary() => any()}.
 
 %% Example:
-%% reserved_node_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% describe_redshift_idc_applications_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"RedshiftIdcApplicationArn">> => string()
 %% }
--type reserved_node_quota_exceeded_fault() :: #{binary() => any()}.
+-type describe_redshift_idc_applications_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_data_shares_for_producer_result() :: #{
-%%   <<"DataShares">> => list(data_share()),
-%%   <<"Marker">> => string()
+%% describe_redshift_idc_applications_result() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"RedshiftIdcApplications">> => list(redshift_idc_application())
 %% }
--type describe_data_shares_for_producer_result() :: #{binary() => any()}.
+-type describe_redshift_idc_applications_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_node_exchange_status_input_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReservedNodeExchangeRequestId">> => string(),
+%%   <<"ReservedNodeId">> => string()
+%% }
+-type describe_reserved_node_exchange_status_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_node_exchange_status_output_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedNodeExchangeStatusDetails">> => list(reserved_node_exchange_status())
+%% }
+-type describe_reserved_node_exchange_status_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_node_offerings_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReservedNodeOfferingId">> => string()
+%% }
+-type describe_reserved_node_offerings_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_nodes_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReservedNodeId">> => string()
+%% }
+-type describe_reserved_nodes_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resize_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type describe_resize_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_message() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Filters">> => list(scheduled_action_filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TargetActionType">> => list(any())
+%% }
+-type describe_scheduled_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_copy_grants_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotCopyGrantName">> => string(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
+%% }
+-type describe_snapshot_copy_grants_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedules_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ScheduleIdentifier">> => string(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
+%% }
+-type describe_snapshot_schedules_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_schedules_output_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SnapshotSchedules">> => list(snapshot_schedule())
+%% }
+-type describe_snapshot_schedules_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_restore_status_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TableRestoreRequestId">> => string()
+%% }
+-type describe_table_restore_status_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
+%% }
+-type describe_tags_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_usage_limits_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string()),
+%%   <<"UsageLimitId">> => string()
+%% }
+-type describe_usage_limits_message() :: #{binary() => any()}.
+
+%% Example:
+%% disable_logging_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type disable_logging_message() :: #{binary() => any()}.
+
+%% Example:
+%% disable_snapshot_copy_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type disable_snapshot_copy_message() :: #{binary() => any()}.
+
+%% Example:
+%% disable_snapshot_copy_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type disable_snapshot_copy_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_data_share_consumer_message() :: #{
+%%   <<"ConsumerArn">> => string(),
+%%   <<"ConsumerRegion">> => string(),
+%%   <<"DataShareArn">> := string(),
+%%   <<"DisassociateEntireAccount">> => boolean()
+%% }
+-type disassociate_data_share_consumer_message() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_security_group() :: #{
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type ec2_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% elastic_ip_status() :: #{
+%%   <<"ElasticIp">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type elastic_ip_status() :: #{binary() => any()}.
+
+%% Example:
+%% enable_logging_message() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"LogDestinationType">> => list(any()),
+%%   <<"LogExports">> => list(string()),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type enable_logging_message() :: #{binary() => any()}.
+
+%% Example:
+%% enable_snapshot_copy_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DestinationRegion">> := string(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"RetentionPeriod">> => integer(),
+%%   <<"SnapshotCopyGrantName">> => string()
+%% }
+-type enable_snapshot_copy_message() :: #{binary() => any()}.
+
+%% Example:
+%% enable_snapshot_copy_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type enable_snapshot_copy_result() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
+%% }
+-type endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint_access() :: #{
@@ -3493,32 +2069,11 @@
 -type endpoint_access() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_policy_update_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_policy_update_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"FinalClusterSnapshotIdentifier">> => string(),
-%%   <<"FinalClusterSnapshotRetentionPeriod">> => integer(),
-%%   <<"SkipFinalClusterSnapshot">> => boolean()
-%% }
--type delete_cluster_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_cluster_snapshot_result() :: #{
-%%   <<"TableRestoreStatus">> => table_restore_status()
-%% }
--type restore_table_from_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% custom_domain_associations_message() :: #{
-%%   <<"Associations">> => list(association()),
+%% endpoint_access_list() :: #{
+%%   <<"EndpointAccessList">> => list(endpoint_access()),
 %%   <<"Marker">> => string()
 %% }
--type custom_domain_associations_message() :: #{binary() => any()}.
+-type endpoint_access_list() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint_already_exists_fault() :: #{
@@ -3527,10 +2082,741 @@
 -type endpoint_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% authentication_profile_quota_exceeded_fault() :: #{
+%% endpoint_authorization() :: #{
+%%   <<"AllowedAllVPCs">> => boolean(),
+%%   <<"AllowedVPCs">> => list(string()),
+%%   <<"AuthorizeTime">> => non_neg_integer(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ClusterStatus">> => string(),
+%%   <<"EndpointCount">> => integer(),
+%%   <<"Grantee">> => string(),
+%%   <<"Grantor">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type endpoint_authorization() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_authorization_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type authentication_profile_quota_exceeded_fault() :: #{binary() => any()}.
+-type endpoint_authorization_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_authorization_list() :: #{
+%%   <<"EndpointAuthorizationList">> => list(endpoint_authorization()),
+%%   <<"Marker">> => string()
+%% }
+-type endpoint_authorization_list() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_authorization_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoint_authorization_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_authorizations_per_cluster_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoint_authorizations_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoint_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% endpoints_per_authorization_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoints_per_authorization_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% endpoints_per_cluster_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoints_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"EventId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Severity">> => string(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_map() :: #{
+%%   <<"Events">> => list(event_info_map()),
+%%   <<"SourceType">> => string()
+%% }
+-type event_categories_map() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_message() :: #{
+%%   <<"EventCategoriesMapList">> => list(event_categories_map())
+%% }
+-type event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% event_info_map() :: #{
+%%   <<"EventCategories">> => list(string()),
+%%   <<"EventDescription">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type event_info_map() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"CustSubscriptionId">> => string(),
+%%   <<"CustomerAwsId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategoriesList">> => list(string()),
+%%   <<"Severity">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceIdsList">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubscriptionCreationTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type event_subscription_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscriptions_message() :: #{
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
+%%   <<"Marker">> => string()
+%% }
+-type event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% events_message() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"Marker">> => string()
+%% }
+-type events_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_primary_compute_input_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type failover_primary_compute_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_primary_compute_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type failover_primary_compute_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_credentials_message() :: #{
+%%   <<"AutoCreate">> => boolean(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CustomDomainName">> => string(),
+%%   <<"DbGroups">> => list(string()),
+%%   <<"DbName">> => string(),
+%%   <<"DbUser">> := string(),
+%%   <<"DurationSeconds">> => integer()
+%% }
+-type get_cluster_credentials_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_credentials_with_iam_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CustomDomainName">> => string(),
+%%   <<"DbName">> => string(),
+%%   <<"DurationSeconds">> => integer()
+%% }
+-type get_cluster_credentials_with_iam_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_request() :: #{
+%%   <<"ClusterIds">> := list(string())
+%% }
+-type get_identity_center_auth_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_response() :: #{
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Token">> => string()
+%% }
+-type get_identity_center_auth_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reserved_node_exchange_configuration_options_input_message() :: #{
+%%   <<"ActionType">> := list(any()),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotIdentifier">> => string()
+%% }
+-type get_reserved_node_exchange_configuration_options_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_reserved_node_exchange_configuration_options_output_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedNodeConfigurationOptionList">> => list(reserved_node_configuration_option())
+%% }
+-type get_reserved_node_exchange_configuration_options_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_reserved_node_exchange_offerings_input_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReservedNodeId">> := string()
+%% }
+-type get_reserved_node_exchange_offerings_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_reserved_node_exchange_offerings_output_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
+%% }
+-type get_reserved_node_exchange_offerings_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_message() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_result() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type get_resource_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_client_certificate() :: #{
+%%   <<"HsmClientCertificateIdentifier">> => string(),
+%%   <<"HsmClientCertificatePublicKey">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type hsm_client_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_client_certificate_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_client_certificate_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_client_certificate_message() :: #{
+%%   <<"HsmClientCertificates">> => list(hsm_client_certificate()),
+%%   <<"Marker">> => string()
+%% }
+-type hsm_client_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_client_certificate_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_client_certificate_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_client_certificate_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_client_certificate_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_configuration() :: #{
+%%   <<"Description">> => string(),
+%%   <<"HsmConfigurationIdentifier">> => string(),
+%%   <<"HsmIpAddress">> => string(),
+%%   <<"HsmPartitionName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type hsm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_configuration_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_configuration_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_configuration_message() :: #{
+%%   <<"HsmConfigurations">> => list(hsm_configuration()),
+%%   <<"Marker">> => string()
+%% }
+-type hsm_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_configuration_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_configuration_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_configuration_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type hsm_configuration_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% hsm_status() :: #{
+%%   <<"HsmClientCertificateIdentifier">> => string(),
+%%   <<"HsmConfigurationIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type hsm_status() :: #{binary() => any()}.
+
+%% Example:
+%% in_progress_table_restore_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type in_progress_table_restore_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_integration() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Errors">> => list(integration_error()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetArn">> => string()
+%% }
+-type inbound_integration() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_integrations_message() :: #{
+%%   <<"InboundIntegrations">> => list(inbound_integration()),
+%%   <<"Marker">> => string()
+%% }
+-type inbound_integrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_orderable_options() :: #{
+%%   <<"message">> => string()
+%% }
+-type incompatible_orderable_options() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_s3_bucket_policy_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_s3_bucket_policy_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetArn">> => string()
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
+%% integration_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_conflict_operation_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_conflict_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_conflict_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type integration_error() :: #{binary() => any()}.
+
+%% Example:
+%% integration_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_source_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_source_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_target_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_target_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integrations_message() :: #{
+%%   <<"Integrations">> => list(integration()),
+%%   <<"Marker">> => string()
+%% }
+-type integrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_authentication_profile_request_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_authentication_profile_request_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_authorization_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_authorization_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_security_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_security_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_snapshot_schedule_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_snapshot_schedule_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_subnet_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_subnet_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_subnet_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_subnet_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_track_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_track_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_data_share_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_data_share_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_elastic_ip_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_elastic_ip_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_endpoint_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_hsm_client_certificate_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_hsm_client_certificate_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_hsm_configuration_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_hsm_configuration_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_namespace_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_namespace_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reserved_node_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reserved_node_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_restore_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_restore_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_retention_period_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_retention_period_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_bucket_name_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_bucket_name_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_key_prefix_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_key_prefix_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_schedule_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_schedule_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_scheduled_action_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_scheduled_action_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_snapshot_copy_grant_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_snapshot_copy_grant_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subscription_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subscription_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_table_restore_argument_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_table_restore_argument_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_usage_limit_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_usage_limit_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% ip_range() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type ip_range() :: #{binary() => any()}.
+
+%% Example:
+%% ipv6_cidr_block_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type ipv6_cidr_block_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% lake_formation_query() :: #{
+%%   <<"Authorization">> => list(any())
+%% }
+-type lake_formation_query() :: #{binary() => any()}.
+
+%% Example:
+%% lakehouse_configuration() :: #{
+%%   <<"CatalogArn">> => string(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"LakehouseIdcApplicationArn">> => string(),
+%%   <<"LakehouseRegistrationStatus">> => string()
+%% }
+-type lakehouse_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommendations_message() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NamespaceArn">> => string()
+%% }
+-type list_recommendations_message() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommendations_result() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type list_recommendations_result() :: #{binary() => any()}.
+
+%% Example:
+%% logging_status() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"LastFailureTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulDeliveryTime">> => non_neg_integer(),
+%%   <<"LogDestinationType">> => list(any()),
+%%   <<"LogExports">> => list(string()),
+%%   <<"LoggingEnabled">> => boolean(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type logging_status() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_track() :: #{
+%%   <<"DatabaseVersion">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"UpdateTargets">> => list(update_target())
+%% }
+-type maintenance_track() :: #{binary() => any()}.
+
+%% Example:
+%% modify_aqua_input_message() :: #{
+%%   <<"AquaConfigurationStatus">> => list(any()),
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type modify_aqua_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_aqua_output_message() :: #{
+%%   <<"AquaConfiguration">> => aqua_configuration()
+%% }
+-type modify_aqua_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_authentication_profile_message() :: #{
+%%   <<"AuthenticationProfileContent">> := string(),
+%%   <<"AuthenticationProfileName">> := string()
+%% }
+-type modify_authentication_profile_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_authentication_profile_result() :: #{
+%%   <<"AuthenticationProfileContent">> => string(),
+%%   <<"AuthenticationProfileName">> => string()
+%% }
+-type modify_authentication_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_db_revision_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"RevisionTarget">> := string()
+%% }
+-type modify_cluster_db_revision_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_db_revision_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type modify_cluster_db_revision_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_iam_roles_message() :: #{
+%%   <<"AddIamRoles">> => list(string()),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DefaultIamRoleArn">> => string(),
+%%   <<"RemoveIamRoles">> => list(string())
+%% }
+-type modify_cluster_iam_roles_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_iam_roles_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type modify_cluster_iam_roles_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_maintenance_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DeferMaintenance">> => boolean(),
+%%   <<"DeferMaintenanceDuration">> => integer(),
+%%   <<"DeferMaintenanceEndTime">> => non_neg_integer(),
+%%   <<"DeferMaintenanceIdentifier">> => string(),
+%%   <<"DeferMaintenanceStartTime">> => non_neg_integer()
+%% }
+-type modify_cluster_maintenance_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_maintenance_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type modify_cluster_maintenance_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_cluster_message() :: #{
@@ -3568,32 +2854,31 @@
 -type modify_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% authorization_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% modify_cluster_parameter_group_message() :: #{
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Parameters">> := list(parameter())
 %% }
--type authorization_quota_exceeded_fault() :: #{binary() => any()}.
+-type modify_cluster_parameter_group_message() :: #{binary() => any()}.
 
 %% Example:
-%% reserved_node_offering_not_found_fault() :: #{
-%%   <<"message">> => string()
+%% modify_cluster_result() :: #{
+%%   <<"Cluster">> => cluster()
 %% }
--type reserved_node_offering_not_found_fault() :: #{binary() => any()}.
+-type modify_cluster_result() :: #{binary() => any()}.
 
 %% Example:
-%% event_subscription_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
+%% modify_cluster_snapshot_message() :: #{
+%%   <<"Force">> => boolean(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"SnapshotIdentifier">> := string()
 %% }
--type event_subscription_quota_exceeded_fault() :: #{binary() => any()}.
+-type modify_cluster_snapshot_message() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_security_group() :: #{
-%%   <<"ClusterSecurityGroupName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
-%%   <<"IPRanges">> => list(ip_range()),
-%%   <<"Tags">> => list(tag())
+%% modify_cluster_snapshot_result() :: #{
+%%   <<"Snapshot">> => snapshot()
 %% }
--type cluster_security_group() :: #{binary() => any()}.
+-type modify_cluster_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_cluster_snapshot_schedule_message() :: #{
@@ -3604,10 +2889,103 @@
 -type modify_cluster_snapshot_schedule_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_categories_message() :: #{
-%%   <<"SourceType">> => string()
+%% modify_cluster_subnet_group_message() :: #{
+%%   <<"ClusterSubnetGroupName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"SubnetIds">> := list(string())
 %% }
--type describe_event_categories_message() :: #{binary() => any()}.
+-type modify_cluster_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_cluster_subnet_group_result() :: #{
+%%   <<"ClusterSubnetGroup">> => cluster_subnet_group()
+%% }
+-type modify_cluster_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_custom_domain_association_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"CustomDomainCertificateArn">> := string(),
+%%   <<"CustomDomainName">> := string()
+%% }
+-type modify_custom_domain_association_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_custom_domain_association_result() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CustomDomainCertExpiryTime">> => string(),
+%%   <<"CustomDomainCertificateArn">> => string(),
+%%   <<"CustomDomainName">> => string()
+%% }
+-type modify_custom_domain_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_endpoint_access_message() :: #{
+%%   <<"EndpointName">> := string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type modify_endpoint_access_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Severity">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceIds">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type modify_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type modify_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_integration_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IntegrationArn">> := string(),
+%%   <<"IntegrationName">> => string()
+%% }
+-type modify_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_lakehouse_configuration_message() :: #{
+%%   <<"CatalogName">> => string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"LakehouseIdcApplicationArn">> => string(),
+%%   <<"LakehouseIdcRegistration">> => list(any()),
+%%   <<"LakehouseRegistration">> => list(any())
+%% }
+-type modify_lakehouse_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_qev2_idc_application_message() :: #{
+%%   <<"IdcDisplayName">> => string(),
+%%   <<"Qev2IdcApplicationArn">> := string()
+%% }
+-type modify_qev2_idc_application_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_qev2_idc_application_result() :: #{
+%%   <<"Qev2IdcApplication">> => qev2_idc_application()
+%% }
+-type modify_qev2_idc_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_redshift_idc_application_message() :: #{
+%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IdcDisplayName">> => string(),
+%%   <<"IdentityNamespace">> => string(),
+%%   <<"RedshiftIdcApplicationArn">> := string(),
+%%   <<"ServiceIntegrations">> => list(list())
+%% }
+-type modify_redshift_idc_application_message() :: #{binary() => any()}.
 
 %% Example:
 %% modify_redshift_idc_application_result() :: #{
@@ -3616,53 +2994,628 @@
 -type modify_redshift_idc_application_result() :: #{binary() => any()}.
 
 %% Example:
-%% insufficient_cluster_capacity_fault() :: #{
-%%   <<"message">> => string()
+%% modify_scheduled_action_message() :: #{
+%%   <<"Enable">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IamRole">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionDescription">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TargetAction">> => scheduled_action_type()
 %% }
--type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
+-type modify_scheduled_action_message() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_schedule_fault() :: #{
-%%   <<"message">> => string()
+%% modify_snapshot_copy_retention_period_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"Manual">> => boolean(),
+%%   <<"RetentionPeriod">> := integer()
 %% }
--type invalid_schedule_fault() :: #{binary() => any()}.
+-type modify_snapshot_copy_retention_period_message() :: #{binary() => any()}.
 
 %% Example:
-%% lake_formation_query() :: #{
+%% modify_snapshot_copy_retention_period_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type modify_snapshot_copy_retention_period_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_snapshot_schedule_message() :: #{
+%%   <<"ScheduleDefinitions">> := list(string()),
+%%   <<"ScheduleIdentifier">> := string()
+%% }
+-type modify_snapshot_schedule_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_usage_limit_message() :: #{
+%%   <<"Amount">> => float(),
+%%   <<"BreachAction">> => list(any()),
+%%   <<"UsageLimitId">> := string()
+%% }
+-type modify_usage_limit_message() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Ipv6Address">> => string(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"PrivateIpAddress">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% node_configuration_option() :: #{
+%%   <<"EstimatedDiskUtilizationPercent">> => float(),
+%%   <<"Mode">> => list(any()),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer()
+%% }
+-type node_configuration_option() :: #{binary() => any()}.
+
+%% Example:
+%% node_configuration_options_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type node_configuration_options_filter() :: #{binary() => any()}.
+
+%% Example:
+%% node_configuration_options_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"NodeConfigurationOptionList">> => list(node_configuration_option())
+%% }
+-type node_configuration_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_nodes_per_cluster_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_nodes_per_cluster_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_nodes_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_nodes_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% orderable_cluster_option() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()),
+%%   <<"ClusterType">> => string(),
+%%   <<"ClusterVersion">> => string(),
+%%   <<"NodeType">> => string()
+%% }
+-type orderable_cluster_option() :: #{binary() => any()}.
+
+%% Example:
+%% orderable_cluster_options_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OrderableClusterOptions">> => list(orderable_cluster_option())
+%% }
+-type orderable_cluster_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyType">> => list(any()),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% partner_integration_info() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"PartnerName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type partner_integration_info() :: #{binary() => any()}.
+
+%% Example:
+%% partner_integration_input_message() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartnerName">> := string()
+%% }
+-type partner_integration_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% partner_integration_output_message() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"PartnerName">> => string()
+%% }
+-type partner_integration_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% partner_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type partner_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% pause_cluster_message() :: #{
+%%   <<"ClusterIdentifier">> => string()
+%% }
+-type pause_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% pause_cluster_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type pause_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% pending_modified_values() :: #{
+%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ClusterType">> => string(),
+%%   <<"ClusterVersion">> => string(),
+%%   <<"EncryptionType">> => string(),
+%%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean()
+%% }
+-type pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_identifier() :: #{
+%%   <<"ClusterIdentifier">> => string()
+%% }
+-type provisioned_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_node_offering_message() :: #{
+%%   <<"NodeCount">> => integer(),
+%%   <<"ReservedNodeOfferingId">> := string()
+%% }
+-type purchase_reserved_node_offering_message() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_node_offering_result() :: #{
+%%   <<"ReservedNode">> => reserved_node()
+%% }
+-type purchase_reserved_node_offering_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_message() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_message() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_result() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% qev2_idc_application() :: #{
+%%   <<"IdcDisplayName">> => string(),
+%%   <<"IdcInstanceArn">> => string(),
+%%   <<"IdcManagedApplicationArn">> => string(),
+%%   <<"IdcOnboardStatus">> => string(),
+%%   <<"Qev2IdcApplicationArn">> => string(),
+%%   <<"Qev2IdcApplicationName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type qev2_idc_application() :: #{binary() => any()}.
+
+%% Example:
+%% qev2_idc_application_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type qev2_idc_application_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% qev2_idc_application_not_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type qev2_idc_application_not_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% read_write_access() :: #{
 %%   <<"Authorization">> => list(any())
 %% }
--type lake_formation_query() :: #{binary() => any()}.
+-type read_write_access() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_snapshot_result() :: #{
-%%   <<"Snapshot">> => snapshot()
+%% reboot_cluster_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
 %% }
--type delete_cluster_snapshot_result() :: #{binary() => any()}.
+-type reboot_cluster_message() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_table_restore_argument_fault() :: #{
+%% reboot_cluster_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type reboot_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ImpactRanking">> => list(any()),
+%%   <<"NamespaceArn">> => string(),
+%%   <<"Observation">> => string(),
+%%   <<"RecommendationText">> => string(),
+%%   <<"RecommendationType">> => string(),
+%%   <<"RecommendedActions">> => list(recommended_action()),
+%%   <<"ReferenceLinks">> => list(reference_link()),
+%%   <<"Title">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action() :: #{
+%%   <<"Command">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"Text">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type recommended_action() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_idc_application() :: #{
+%%   <<"ApplicationType">> => list(any()),
+%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IdcDisplayName">> => string(),
+%%   <<"IdcInstanceArn">> => string(),
+%%   <<"IdcManagedApplicationArn">> => string(),
+%%   <<"IdcOnboardStatus">> => string(),
+%%   <<"IdentityNamespace">> => string(),
+%%   <<"RedshiftIdcApplicationArn">> => string(),
+%%   <<"RedshiftIdcApplicationName">> => string(),
+%%   <<"ServiceIntegrations">> => list(list()),
+%%   <<"SsoTagKeys">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type redshift_idc_application() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_idc_application_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_table_restore_argument_fault() :: #{binary() => any()}.
+-type redshift_idc_application_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% integration_conflict_state_fault() :: #{
+%% redshift_idc_application_not_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type integration_conflict_state_fault() :: #{binary() => any()}.
+-type redshift_idc_application_not_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_already_exists_fault() :: #{
+%% redshift_idc_application_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type cluster_already_exists_fault() :: #{binary() => any()}.
+-type redshift_idc_application_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
-%% table_restore_status_message() :: #{
+%% redshift_invalid_parameter_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type redshift_invalid_parameter_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reference_link() :: #{
+%%   <<"Link">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type reference_link() :: #{binary() => any()}.
+
+%% Example:
+%% register_namespace_input_message() :: #{
+%%   <<"ConsumerIdentifiers">> := list(string()),
+%%   <<"NamespaceIdentifier">> := list()
+%% }
+-type register_namespace_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% register_namespace_output_message() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type register_namespace_output_message() :: #{binary() => any()}.
+
+%% Example:
+%% reject_data_share_message() :: #{
+%%   <<"DataShareArn">> := string()
+%% }
+-type reject_data_share_message() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"NodeCount">> => integer(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservedNodeId">> => string(),
+%%   <<"ReservedNodeOfferingId">> => string(),
+%%   <<"ReservedNodeOfferingType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_node() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_already_migrated_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_already_migrated_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_configuration_option() :: #{
+%%   <<"SourceReservedNode">> => reserved_node(),
+%%   <<"TargetReservedNodeCount">> => integer(),
+%%   <<"TargetReservedNodeOffering">> => reserved_node_offering()
+%% }
+-type reserved_node_configuration_option() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_exchange_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_exchange_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_exchange_status() :: #{
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"ReservedNodeExchangeRequestId">> => string(),
+%%   <<"SourceReservedNodeCount">> => integer(),
+%%   <<"SourceReservedNodeId">> => string(),
+%%   <<"SourceReservedNodeType">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetReservedNodeCount">> => integer(),
+%%   <<"TargetReservedNodeOfferingId">> => string(),
+%%   <<"TargetReservedNodeType">> => string()
+%% }
+-type reserved_node_exchange_status() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
+%%   <<"ReservedNodeOfferingId">> => string(),
+%%   <<"ReservedNodeOfferingType">> => list(any()),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_node_offering() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_offering_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_offering_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_offerings_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"TableRestoreStatusDetails">> => list(table_restore_status())
+%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
 %% }
--type table_restore_status_message() :: #{binary() => any()}.
+-type reserved_node_offerings_message() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_nodes_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedNodes">> => list(reserved_node())
+%% }
+-type reserved_nodes_message() :: #{binary() => any()}.
+
+%% Example:
+%% reset_cluster_parameter_group_message() :: #{
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResetAllParameters">> => boolean()
+%% }
+-type reset_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% resize_cluster_message() :: #{
+%%   <<"Classic">> => boolean(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ClusterType">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"ReservedNodeId">> => string(),
+%%   <<"TargetReservedNodeOfferingId">> => string()
+%% }
+-type resize_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% resize_cluster_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type resize_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% resize_info() :: #{
+%%   <<"AllowCancelResize">> => boolean(),
+%%   <<"ResizeType">> => string()
+%% }
+-type resize_info() :: #{binary() => any()}.
+
+%% Example:
+%% resize_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resize_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resize_progress_message() :: #{
+%%   <<"AvgResizeRateInMegaBytesPerSecond">> => float(),
+%%   <<"DataTransferProgressPercent">> => float(),
+%%   <<"ElapsedTimeInSeconds">> => float(),
+%%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
+%%   <<"ImportTablesCompleted">> => list(string()),
+%%   <<"ImportTablesInProgress">> => list(string()),
+%%   <<"ImportTablesNotStarted">> => list(string()),
+%%   <<"Message">> => string(),
+%%   <<"ProgressInMegaBytes">> => float(),
+%%   <<"ResizeType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TargetClusterType">> => string(),
+%%   <<"TargetEncryptionType">> => string(),
+%%   <<"TargetNodeType">> => string(),
+%%   <<"TargetNumberOfNodes">> => integer(),
+%%   <<"TotalResizeDataInMegaBytes">> => float()
+%% }
+-type resize_progress_message() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_cluster_snapshot_message() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"AllowVersionUpgrade">> => boolean(),
+%%   <<"AquaConfigurationStatus">> => list(any()),
+%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneRelocation">> => boolean(),
+%%   <<"CatalogName">> => string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"ClusterParameterGroupName">> => string(),
+%%   <<"ClusterSecurityGroups">> => list(string()),
+%%   <<"ClusterSubnetGroupName">> => string(),
+%%   <<"DefaultIamRoleArn">> => string(),
+%%   <<"ElasticIp">> => string(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"HsmClientCertificateIdentifier">> => string(),
+%%   <<"HsmConfigurationIdentifier">> => string(),
+%%   <<"IamRoles">> => list(string()),
+%%   <<"IpAddressType">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"ManageMasterPassword">> => boolean(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RedshiftIdcApplicationArn">> => string(),
+%%   <<"ReservedNodeId">> => string(),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotClusterIdentifier">> => string(),
+%%   <<"SnapshotIdentifier">> => string(),
+%%   <<"SnapshotScheduleIdentifier">> => string(),
+%%   <<"TargetReservedNodeOfferingId">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type restore_from_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_cluster_snapshot_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type restore_from_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_status() :: #{
+%%   <<"CurrentRestoreRateInMegaBytesPerSecond">> => float(),
+%%   <<"ElapsedTimeInSeconds">> => float(),
+%%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
+%%   <<"ProgressInMegaBytes">> => float(),
+%%   <<"SnapshotSizeInMegaBytes">> => float(),
+%%   <<"Status">> => string()
+%% }
+-type restore_status() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_cluster_snapshot_message() :: #{
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"EnableCaseSensitiveIdentifier">> => boolean(),
+%%   <<"NewTableName">> := string(),
+%%   <<"SnapshotIdentifier">> := string(),
+%%   <<"SourceDatabaseName">> := string(),
+%%   <<"SourceSchemaName">> => string(),
+%%   <<"SourceTableName">> := string(),
+%%   <<"TargetDatabaseName">> => string(),
+%%   <<"TargetSchemaName">> => string()
+%% }
+-type restore_table_from_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_cluster_snapshot_result() :: #{
+%%   <<"TableRestoreStatus">> => table_restore_status()
+%% }
+-type restore_table_from_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% resume_cluster_message() :: #{
+%%   <<"ClusterIdentifier">> => string()
+%% }
+-type resume_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% resume_cluster_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type resume_cluster_result() :: #{binary() => any()}.
 
 %% Example:
 %% revision_target() :: #{
@@ -3673,97 +3626,13 @@
 -type revision_target() :: #{binary() => any()}.
 
 %% Example:
-%% describe_partners_input_message() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"PartnerName">> => string()
+%% revoke_cluster_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"ClusterSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
 %% }
--type describe_partners_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_cluster_snapshots_result() :: #{
-%%   <<"Errors">> => list(snapshot_error_message()),
-%%   <<"Resources">> => list(string())
-%% }
--type batch_delete_cluster_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_partners_output_message() :: #{
-%%   <<"PartnerIntegrationInfoList">> => list(partner_integration_info())
-%% }
--type describe_partners_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_cluster_snapshot_message() :: #{
-%%   <<"Encrypted">> => boolean(),
-%%   <<"SnapshotClusterIdentifier">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"IamRoles">> => list(string()),
-%%   <<"RedshiftIdcApplicationArn">> => string(),
-%%   <<"ElasticIp">> => string(),
-%%   <<"ClusterSubnetGroupName">> => string(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"AutomatedSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotScheduleIdentifier">> => string(),
-%%   <<"ManageMasterPassword">> => boolean(),
-%%   <<"HsmClientCertificateIdentifier">> => string(),
-%%   <<"AquaConfigurationStatus">> => list(any()),
-%%   <<"IpAddressType">> => string(),
-%%   <<"AvailabilityZoneRelocation">> => boolean(),
-%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"TargetReservedNodeOfferingId">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(string()),
-%%   <<"NodeType">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"CatalogName">> => string(),
-%%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()),
-%%   <<"ClusterParameterGroupName">> => string(),
-%%   <<"SnapshotArn">> => string(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"HsmConfigurationIdentifier">> => string(),
-%%   <<"DefaultIamRoleArn">> => string(),
-%%   <<"SnapshotIdentifier">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"ReservedNodeId">> => string(),
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"AllowVersionUpgrade">> => boolean(),
-%%   <<"MultiAZ">> => boolean()
-%% }
--type restore_from_cluster_snapshot_message() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_no_authorization_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_no_authorization_fault() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_authorization_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_authorization_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% default_cluster_parameters() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ParameterGroupFamily">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type default_cluster_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_configuration_message() :: #{
-%%   <<"HsmConfigurations">> => list(hsm_configuration()),
-%%   <<"Marker">> => string()
-%% }
--type hsm_configuration_message() :: #{binary() => any()}.
+-type revoke_cluster_security_group_ingress_message() :: #{binary() => any()}.
 
 %% Example:
 %% revoke_cluster_security_group_ingress_result() :: #{
@@ -3772,124 +3641,13 @@
 -type revoke_cluster_security_group_ingress_result() :: #{binary() => any()}.
 
 %% Example:
-%% cluster_parameter_group() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ParameterGroupFamily">> => string(),
-%%   <<"ParameterGroupName">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type cluster_parameter_group() :: #{binary() => any()}.
-
-%% Example:
-%% table_restore_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type table_restore_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_schedule_message() :: #{
-%%   <<"ScheduleIdentifier">> := string()
-%% }
--type delete_snapshot_schedule_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_aqua_output_message() :: #{
-%%   <<"AquaConfiguration">> => aqua_configuration()
-%% }
--type modify_aqua_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_security_group_membership() :: #{
-%%   <<"Status">> => string(),
-%%   <<"VpcSecurityGroupId">> => string()
-%% }
--type vpc_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_versions_message() :: #{
-%%   <<"ClusterParameterGroupFamily">> => string(),
-%%   <<"ClusterVersion">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_cluster_versions_message() :: #{binary() => any()}.
-
-%% Example:
-%% aqua_configuration() :: #{
-%%   <<"AquaConfigurationStatus">> => list(any()),
-%%   <<"AquaStatus">> => list(any())
-%% }
--type aqua_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_node_configuration_options_message() :: #{
-%%   <<"ActionType">> := list(any()),
+%% revoke_endpoint_access_message() :: #{
+%%   <<"Account">> => string(),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"Filters">> => list(node_configuration_options_filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"SnapshotArn">> => string(),
-%%   <<"SnapshotIdentifier">> => string()
+%%   <<"Force">> => boolean(),
+%%   <<"VpcIds">> => list(string())
 %% }
--type describe_node_configuration_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_domain_association_result() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"CustomDomainCertExpiryTime">> => string(),
-%%   <<"CustomDomainCertificateArn">> => string(),
-%%   <<"CustomDomainName">> => string()
-%% }
--type create_custom_domain_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_aqua_input_message() :: #{
-%%   <<"AquaConfigurationStatus">> => list(any()),
-%%   <<"ClusterIdentifier">> := string()
-%% }
--type modify_aqua_input_message() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_snapshot_access_result() :: #{
-%%   <<"Snapshot">> => snapshot()
-%% }
--type authorize_snapshot_access_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_retention_period_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_retention_period_fault() :: #{binary() => any()}.
-
-%% Example:
-%% node_configuration_options_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"NodeConfigurationOptionList">> => list(node_configuration_option())
-%% }
--type node_configuration_options_message() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_data_share_consumer_message() :: #{
-%%   <<"ConsumerArn">> => string(),
-%%   <<"ConsumerRegion">> => string(),
-%%   <<"DataShareArn">> := string(),
-%%   <<"DisassociateEntireAccount">> => boolean()
-%% }
--type disassociate_data_share_consumer_message() :: #{binary() => any()}.
-
-%% Example:
-%% register_namespace_output_message() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type register_namespace_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% authorized_token_issuer() :: #{
-%%   <<"AuthorizedAudiencesList">> => list(string()),
-%%   <<"TrustedTokenIssuerArn">> => string()
-%% }
--type authorized_token_issuer() :: #{binary() => any()}.
+-type revoke_endpoint_access_message() :: #{binary() => any()}.
 
 %% Example:
 %% revoke_snapshot_access_message() :: #{
@@ -3901,16 +3659,106 @@
 -type revoke_snapshot_access_message() :: #{binary() => any()}.
 
 %% Example:
-%% copy_cluster_snapshot_result() :: #{
+%% revoke_snapshot_access_result() :: #{
 %%   <<"Snapshot">> => snapshot()
 %% }
--type copy_cluster_snapshot_result() :: #{binary() => any()}.
+-type revoke_snapshot_access_result() :: #{binary() => any()}.
 
 %% Example:
-%% tag_limit_exceeded_fault() :: #{
+%% rotate_encryption_key_message() :: #{
+%%   <<"ClusterIdentifier">> := string()
+%% }
+-type rotate_encryption_key_message() :: #{binary() => any()}.
+
+%% Example:
+%% rotate_encryption_key_result() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type rotate_encryption_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_invalid_topic_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type tag_limit_exceeded_fault() :: #{binary() => any()}.
+-type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_no_authorization_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_no_authorization_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_topic_arn_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_definition_type_unsupported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type schedule_definition_type_unsupported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IamRole">> => string(),
+%%   <<"NextInvocations">> => list(non_neg_integer()),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionDescription">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"TargetAction">> => scheduled_action_type()
+%% }
+-type scheduled_action() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scheduled_action_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type scheduled_action_filter() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scheduled_action_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scheduled_action_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_type() :: #{
+%%   <<"PauseCluster">> => pause_cluster_message(),
+%%   <<"ResizeCluster">> => resize_cluster_message(),
+%%   <<"ResumeCluster">> => resume_cluster_message()
+%% }
+-type scheduled_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_type_unsupported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scheduled_action_type_unsupported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_actions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ScheduledActions">> => list(scheduled_action())
+%% }
+-type scheduled_actions_message() :: #{binary() => any()}.
 
 %% Example:
 %% secondary_cluster_info() :: #{
@@ -3920,103 +3768,120 @@
 -type secondary_cluster_info() :: #{binary() => any()}.
 
 %% Example:
-%% partner_not_found_fault() :: #{
+%% serverless_identifier() :: #{
+%%   <<"NamespaceIdentifier">> => string(),
+%%   <<"WorkgroupIdentifier">> => string()
+%% }
+-type serverless_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"AccountsWithRestoreAccess">> => list(account_with_restore_access()),
+%%   <<"ActualIncrementalBackupSizeInMegaBytes">> => float(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BackupProgressInMegaBytes">> => float(),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"ClusterVersion">> => string(),
+%%   <<"CurrentBackupRateInMegaBytesPerSecond">> => float(),
+%%   <<"DBName">> => string(),
+%%   <<"ElapsedTimeInSeconds">> => float(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"EncryptedWithHSM">> => boolean(),
+%%   <<"EngineFullVersion">> => string(),
+%%   <<"EnhancedVpcRouting">> => boolean(),
+%%   <<"EstimatedSecondsToCompletion">> => float(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"ManualSnapshotRemainingDays">> => integer(),
+%%   <<"ManualSnapshotRetentionPeriod">> => integer(),
+%%   <<"MasterPasswordSecretArn">> => string(),
+%%   <<"MasterPasswordSecretKmsKeyId">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"RestorableNodeTypes">> => list(string()),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotCreateTime">> => non_neg_integer(),
+%%   <<"SnapshotIdentifier">> => string(),
+%%   <<"SnapshotRetentionStartTime">> => non_neg_integer(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"SourceRegion">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TotalBackupSizeInMegaBytes">> => float(),
+%%   <<"VpcId">> => string()
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_copy_already_disabled_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type partner_not_found_fault() :: #{binary() => any()}.
+-type snapshot_copy_already_disabled_fault() :: #{binary() => any()}.
 
 %% Example:
-%% describe_usage_limits_message() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"FeatureType">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()),
-%%   <<"TagValues">> => list(string()),
-%%   <<"UsageLimitId">> => string()
+%% snapshot_copy_already_enabled_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_usage_limits_message() :: #{binary() => any()}.
+-type snapshot_copy_already_enabled_fault() :: #{binary() => any()}.
 
 %% Example:
-%% create_cluster_subnet_group_message() :: #{
-%%   <<"ClusterSubnetGroupName">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"SubnetIds">> := list(string()),
+%% snapshot_copy_disabled_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_copy_disabled_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_copy_grant() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SnapshotCopyGrantName">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_cluster_subnet_group_message() :: #{binary() => any()}.
+-type snapshot_copy_grant() :: #{binary() => any()}.
 
 %% Example:
-%% create_cluster_snapshot_result() :: #{
-%%   <<"Snapshot">> => snapshot()
-%% }
--type create_cluster_snapshot_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_cluster_maintenance_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"DeferMaintenance">> => boolean(),
-%%   <<"DeferMaintenanceDuration">> => integer(),
-%%   <<"DeferMaintenanceEndTime">> => non_neg_integer(),
-%%   <<"DeferMaintenanceIdentifier">> => string(),
-%%   <<"DeferMaintenanceStartTime">> => non_neg_integer()
-%% }
--type modify_cluster_maintenance_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_domain_association_message() :: #{
-%%   <<"ClusterIdentifier">> := string(),
-%%   <<"CustomDomainCertificateArn">> := string(),
-%%   <<"CustomDomainName">> := string()
-%% }
--type create_custom_domain_association_message() :: #{binary() => any()}.
-
-%% Example:
-%% hsm_client_certificate_already_exists_fault() :: #{
+%% snapshot_copy_grant_already_exists_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type hsm_client_certificate_already_exists_fault() :: #{binary() => any()}.
+-type snapshot_copy_grant_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
-%% maintenance_track() :: #{
-%%   <<"DatabaseVersion">> => string(),
-%%   <<"MaintenanceTrackName">> => string(),
-%%   <<"UpdateTargets">> => list(update_target())
+%% snapshot_copy_grant_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SnapshotCopyGrants">> => list(snapshot_copy_grant())
 %% }
--type maintenance_track() :: #{binary() => any()}.
+-type snapshot_copy_grant_message() :: #{binary() => any()}.
 
 %% Example:
-%% dependent_service_unavailable_fault() :: #{
+%% snapshot_copy_grant_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
--type dependent_service_unavailable_fault() :: #{binary() => any()}.
+-type snapshot_copy_grant_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% get_reserved_node_exchange_configuration_options_output_message() :: #{
+%% snapshot_copy_grant_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_copy_grant_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_error_message() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"SnapshotClusterIdentifier">> => string(),
+%%   <<"SnapshotIdentifier">> => string()
+%% }
+-type snapshot_error_message() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodeConfigurationOptionList">> => list(reserved_node_configuration_option())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
--type get_reserved_node_exchange_configuration_options_output_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_action_message() :: #{
-%%   <<"Enable">> => boolean(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"IamRole">> := string(),
-%%   <<"Schedule">> := string(),
-%%   <<"ScheduledActionDescription">> => string(),
-%%   <<"ScheduledActionName">> := string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TargetAction">> := scheduled_action_type()
-%% }
--type create_scheduled_action_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_reserved_node_exchange_status_output_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReservedNodeExchangeStatusDetails">> => list(reserved_node_exchange_status())
-%% }
--type describe_reserved_node_exchange_status_output_message() :: #{binary() => any()}.
+-type snapshot_message() :: #{binary() => any()}.
 
 %% Example:
 %% snapshot_schedule() :: #{
@@ -4031,6 +3896,165 @@
 -type snapshot_schedule() :: #{binary() => any()}.
 
 %% Example:
+%% snapshot_schedule_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_schedule_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_schedule_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_schedule_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_schedule_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_schedule_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_schedule_update_in_progress_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_schedule_update_in_progress_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_sorting_entity() :: #{
+%%   <<"Attribute">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type snapshot_sorting_entity() :: #{binary() => any()}.
+
+%% Example:
+%% source_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => availability_zone(),
+%%   <<"SubnetIdentifier">> => string(),
+%%   <<"SubnetStatus">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_already_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_already_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_already_exist_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_already_exist_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_category_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_category_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_event_id_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_event_id_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_severity_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_severity_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% supported_operation() :: #{
+%%   <<"OperationName">> => string()
+%% }
+-type supported_operation() :: #{binary() => any()}.
+
+%% Example:
+%% supported_platform() :: #{
+%%   <<"Name">> => string()
+%% }
+-type supported_platform() :: #{binary() => any()}.
+
+%% Example:
+%% table_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% table_restore_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type table_restore_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% table_restore_status() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"NewTableName">> => string(),
+%%   <<"ProgressInMegaBytes">> => float(),
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"SnapshotIdentifier">> => string(),
+%%   <<"SourceDatabaseName">> => string(),
+%%   <<"SourceSchemaName">> => string(),
+%%   <<"SourceTableName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TableRestoreRequestId">> => string(),
+%%   <<"TargetDatabaseName">> => string(),
+%%   <<"TargetSchemaName">> => string(),
+%%   <<"TotalDataInMegaBytes">> => float()
+%% }
+-type table_restore_status() :: #{binary() => any()}.
+
+%% Example:
+%% table_restore_status_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TableRestoreStatusDetails">> => list(table_restore_status())
+%% }
+-type table_restore_status_message() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tagged_resource() :: #{
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type tagged_resource() :: #{binary() => any()}.
+
+%% Example:
+%% tagged_resource_list_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TaggedResources">> => list(tagged_resource())
+%% }
+-type tagged_resource_list_message() :: #{binary() => any()}.
+
+%% Example:
 %% track_list_message() :: #{
 %%   <<"MaintenanceTracks">> => list(maintenance_track()),
 %%   <<"Marker">> => string()
@@ -4038,57 +4062,114 @@
 -type track_list_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_authentication_profiles_message() :: #{
-%%   <<"AuthenticationProfileName">> => string()
+%% unauthorized_operation() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_authentication_profiles_message() :: #{binary() => any()}.
+-type unauthorized_operation() :: #{binary() => any()}.
 
 %% Example:
-%% modify_snapshot_copy_retention_period_result() :: #{
-%%   <<"Cluster">> => cluster()
+%% unauthorized_partner_integration_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type modify_snapshot_copy_retention_period_result() :: #{binary() => any()}.
+-type unauthorized_partner_integration_fault() :: #{binary() => any()}.
 
 %% Example:
-%% authorize_cluster_security_group_ingress_result() :: #{
-%%   <<"ClusterSecurityGroup">> => cluster_security_group()
+%% unknown_snapshot_copy_region_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type authorize_cluster_security_group_ingress_result() :: #{binary() => any()}.
+-type unknown_snapshot_copy_region_fault() :: #{binary() => any()}.
 
 %% Example:
-%% hsm_status() :: #{
-%%   <<"HsmClientCertificateIdentifier">> => string(),
-%%   <<"HsmConfigurationIdentifier">> => string(),
-%%   <<"Status">> => string()
+%% unsupported_operation_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type hsm_status() :: #{binary() => any()}.
+-type unsupported_operation_fault() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cluster_snapshot_message() :: #{
-%%   <<"SnapshotClusterIdentifier">> => string(),
-%%   <<"SnapshotIdentifier">> => string()
+%% unsupported_option_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_cluster_snapshot_message() :: #{binary() => any()}.
+-type unsupported_option_fault() :: #{binary() => any()}.
 
 %% Example:
-%% delete_endpoint_access_message() :: #{
-%%   <<"EndpointName">> := string()
+%% update_partner_status_input_message() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartnerName">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"StatusMessage">> => string()
 %% }
--type delete_endpoint_access_message() :: #{binary() => any()}.
+-type update_partner_status_input_message() :: #{binary() => any()}.
+
+%% Example:
+%% update_target() :: #{
+%%   <<"DatabaseVersion">> => string(),
+%%   <<"MaintenanceTrackName">> => string(),
+%%   <<"SupportedOperations">> => list(supported_operation())
+%% }
+-type update_target() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit() :: #{
+%%   <<"Amount">> => float(),
+%%   <<"BreachAction">> => list(any()),
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"LimitType">> => list(any()),
+%%   <<"Period">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UsageLimitId">> => string()
+%% }
+-type usage_limit() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type usage_limit_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit_list() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"UsageLimits">> => list(usage_limit())
+%% }
+-type usage_limit_list() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type usage_limit_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"NetworkInterfaces">> => list(network_interface()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_security_group_membership() :: #{
+%%   <<"Status">> => string(),
+%%   <<"VpcSecurityGroupId">> => string()
+%% }
+-type vpc_security_group_membership() :: #{binary() => any()}.
 
 -type accept_reserved_node_exchange_errors() ::
-    dependent_service_unavailable_fault() | 
+    unsupported_operation_fault() | 
     reserved_node_offering_not_found_fault() | 
     reserved_node_not_found_fault() | 
-    invalid_reserved_node_state_fault() | 
     reserved_node_already_migrated_fault() | 
-    unsupported_operation_fault() | 
-    reserved_node_already_exists_fault().
+    reserved_node_already_exists_fault() | 
+    invalid_reserved_node_state_fault() | 
+    dependent_service_unavailable_fault().
 
 -type add_partner_errors() ::
-    partner_not_found_fault() | 
-    unauthorized_partner_integration_fault() | 
     unsupported_operation_fault() | 
+    unauthorized_partner_integration_fault() | 
+    partner_not_found_fault() | 
     cluster_not_found_fault().
 
 -type associate_data_share_consumer_errors() ::
@@ -4096,30 +4177,30 @@
     invalid_data_share_fault().
 
 -type authorize_cluster_security_group_ingress_errors() ::
-    authorization_quota_exceeded_fault() | 
-    cluster_security_group_not_found_fault() | 
     invalid_cluster_security_group_state_fault() | 
+    cluster_security_group_not_found_fault() | 
+    authorization_quota_exceeded_fault() | 
     authorization_already_exists_fault().
 
 -type authorize_data_share_errors() ::
     invalid_data_share_fault().
 
 -type authorize_endpoint_access_errors() ::
-    invalid_authorization_state_fault() | 
-    endpoint_authorization_already_exists_fault() | 
-    invalid_cluster_state_fault() | 
-    endpoint_authorizations_per_cluster_limit_exceeded_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_authorization_state_fault() | 
+    endpoint_authorizations_per_cluster_limit_exceeded_fault() | 
+    endpoint_authorization_already_exists_fault() | 
     cluster_not_found_fault().
 
 -type authorize_snapshot_access_errors() ::
-    authorization_quota_exceeded_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    authorization_already_exists_fault() | 
-    invalid_cluster_snapshot_state_fault() | 
     unsupported_operation_fault() | 
+    limit_exceeded_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
     dependent_service_request_throttling_fault() | 
-    limit_exceeded_fault().
+    cluster_snapshot_not_found_fault() | 
+    authorization_quota_exceeded_fault() | 
+    authorization_already_exists_fault().
 
 -type batch_delete_cluster_snapshots_errors() ::
     batch_delete_request_size_exceeded_fault().
@@ -4129,268 +4210,280 @@
     batch_modify_cluster_snapshots_limit_exceeded_fault().
 
 -type cancel_resize_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
-    resize_not_found_fault().
+    resize_not_found_fault() | 
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
 
 -type copy_cluster_snapshot_errors() ::
     invalid_retention_period_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    cluster_snapshot_already_exists_fault() | 
     invalid_cluster_snapshot_state_fault() | 
     cluster_snapshot_quota_exceeded_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    cluster_snapshot_already_exists_fault() | 
     cluster_not_found_fault().
 
 -type create_authentication_profile_errors() ::
-    authentication_profile_quota_exceeded_fault() | 
     invalid_authentication_profile_request_fault() | 
+    authentication_profile_quota_exceeded_fault() | 
     authentication_profile_already_exists_fault().
 
 -type create_cluster_errors() ::
-    dependent_service_unavailable_fault() | 
-    tag_limit_exceeded_fault() | 
-    invalid_retention_period_fault() | 
-    cluster_already_exists_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    number_of_nodes_per_cluster_limit_exceeded_fault() | 
-    cluster_security_group_not_found_fault() | 
-    snapshot_schedule_not_found_fault() | 
-    ipv6_cidr_block_not_found_fault() | 
-    number_of_nodes_quota_exceeded_fault() | 
-    hsm_client_certificate_not_found_fault() | 
-    redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    cluster_parameter_group_not_found_fault() | 
-    invalid_tag_fault() | 
-    invalid_elastic_ip_fault() | 
-    invalid_vpc_network_state_fault() | 
-    unauthorized_operation() | 
-    invalid_cluster_track_fault() | 
-    hsm_configuration_not_found_fault() | 
-    cluster_quota_exceeded_fault() | 
     unsupported_operation_fault() | 
-    dependent_service_request_throttling_fault() | 
-    invalid_subnet() | 
+    unauthorized_operation() | 
+    tag_limit_exceeded_fault() | 
+    snapshot_schedule_not_found_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
     limit_exceeded_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_tag_fault() | 
+    invalid_subnet() | 
+    invalid_retention_period_fault() | 
+    invalid_elastic_ip_fault() | 
+    invalid_cluster_track_fault() | 
+    invalid_cluster_subnet_group_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    hsm_configuration_not_found_fault() | 
+    hsm_client_certificate_not_found_fault() | 
+    dependent_service_unavailable_fault() | 
+    dependent_service_request_throttling_fault() | 
+    dependent_service_access_denied_fault() | 
     cluster_subnet_group_not_found_fault() | 
-    invalid_cluster_subnet_group_state_fault().
+    cluster_security_group_not_found_fault() | 
+    cluster_quota_exceeded_fault() | 
+    cluster_parameter_group_not_found_fault() | 
+    cluster_already_exists_fault().
 
 -type create_cluster_parameter_group_errors() ::
     tag_limit_exceeded_fault() | 
-    cluster_parameter_group_already_exists_fault() | 
+    invalid_tag_fault() | 
     cluster_parameter_group_quota_exceeded_fault() | 
-    invalid_tag_fault().
+    cluster_parameter_group_already_exists_fault().
 
 -type create_cluster_security_group_errors() ::
     tag_limit_exceeded_fault() | 
     invalid_tag_fault() | 
-    cluster_security_group_already_exists_fault() | 
-    cluster_security_group_quota_exceeded_fault().
+    cluster_security_group_quota_exceeded_fault() | 
+    cluster_security_group_already_exists_fault().
 
 -type create_cluster_snapshot_errors() ::
     tag_limit_exceeded_fault() | 
+    invalid_tag_fault() | 
     invalid_retention_period_fault() | 
     invalid_cluster_state_fault() | 
-    cluster_snapshot_already_exists_fault() | 
-    invalid_tag_fault() | 
     cluster_snapshot_quota_exceeded_fault() | 
+    cluster_snapshot_already_exists_fault() | 
     cluster_not_found_fault().
 
 -type create_cluster_subnet_group_errors() ::
-    tag_limit_exceeded_fault() | 
-    cluster_subnet_group_already_exists_fault() | 
-    cluster_subnet_quota_exceeded_fault() | 
-    invalid_tag_fault() | 
     unauthorized_operation() | 
-    dependent_service_request_throttling_fault() | 
+    tag_limit_exceeded_fault() | 
+    invalid_tag_fault() | 
     invalid_subnet() | 
-    cluster_subnet_group_quota_exceeded_fault().
+    dependent_service_request_throttling_fault() | 
+    cluster_subnet_quota_exceeded_fault() | 
+    cluster_subnet_group_quota_exceeded_fault() | 
+    cluster_subnet_group_already_exists_fault().
 
 -type create_custom_domain_association_errors() ::
-    custom_cname_association_fault() | 
     unsupported_operation_fault() | 
+    custom_cname_association_fault() | 
     cluster_not_found_fault().
 
 -type create_endpoint_access_errors() ::
-    endpoint_already_exists_fault() | 
-    access_to_cluster_denied_fault() | 
+    unsupported_operation_fault() | 
+    unauthorized_operation() | 
     invalid_cluster_state_fault() | 
     invalid_cluster_security_group_state_fault() | 
     endpoints_per_cluster_limit_exceeded_fault() | 
-    unauthorized_operation() | 
     endpoints_per_authorization_limit_exceeded_fault() | 
-    unsupported_operation_fault() | 
+    endpoint_already_exists_fault() | 
+    cluster_subnet_group_not_found_fault() | 
     cluster_not_found_fault() | 
-    cluster_subnet_group_not_found_fault().
+    access_to_cluster_denied_fault().
 
 -type create_event_subscription_errors() ::
     tag_limit_exceeded_fault() | 
-    s_n_s_no_authorization_fault() | 
-    event_subscription_quota_exceeded_fault() | 
-    s_n_s_topic_arn_not_found_fault() | 
-    s_n_s_invalid_topic_fault() | 
-    subscription_category_not_found_fault() | 
-    source_not_found_fault() | 
-    invalid_tag_fault() | 
+    subscription_severity_not_found_fault() | 
     subscription_event_id_not_found_fault() | 
+    subscription_category_not_found_fault() | 
     subscription_already_exist_fault() | 
-    subscription_severity_not_found_fault().
+    source_not_found_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_no_authorization_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    invalid_tag_fault() | 
+    event_subscription_quota_exceeded_fault().
 
 -type create_hsm_client_certificate_errors() ::
-    hsm_client_certificate_already_exists_fault() | 
     tag_limit_exceeded_fault() | 
     invalid_tag_fault() | 
-    hsm_client_certificate_quota_exceeded_fault().
+    hsm_client_certificate_quota_exceeded_fault() | 
+    hsm_client_certificate_already_exists_fault().
 
 -type create_hsm_configuration_errors() ::
     tag_limit_exceeded_fault() | 
-    hsm_configuration_already_exists_fault() | 
+    invalid_tag_fault() | 
     hsm_configuration_quota_exceeded_fault() | 
-    invalid_tag_fault().
+    hsm_configuration_already_exists_fault().
 
 -type create_integration_errors() ::
+    unsupported_operation_fault() | 
     tag_limit_exceeded_fault() | 
+    invalid_tag_fault() | 
     invalid_cluster_state_fault() | 
+    integration_target_not_found_fault() | 
+    integration_source_not_found_fault() | 
     integration_quota_exceeded_fault() | 
     integration_conflict_operation_fault() | 
-    invalid_tag_fault() | 
+    integration_already_exists_fault().
+
+-type create_qev2_idc_application_errors() ::
     unsupported_operation_fault() | 
-    integration_already_exists_fault() | 
-    integration_target_not_found_fault() | 
-    integration_source_not_found_fault().
+    qev2_idc_application_already_exists_fault() | 
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
 
 -type create_redshift_idc_application_errors() ::
-    dependent_service_unavailable_fault() | 
+    unsupported_operation_fault() | 
     tag_limit_exceeded_fault() | 
     redshift_idc_application_quota_exceeded_fault() | 
-    dependent_service_access_denied_fault() | 
+    redshift_idc_application_already_exists_fault() | 
     invalid_tag_fault() | 
-    unsupported_operation_fault() | 
-    redshift_idc_application_already_exists_fault().
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
 
 -type create_scheduled_action_errors() ::
-    invalid_schedule_fault() | 
-    invalid_scheduled_action_fault() | 
-    scheduled_action_already_exists_fault() | 
-    scheduled_action_quota_exceeded_fault() | 
+    unsupported_operation_fault() | 
     unauthorized_operation() | 
     scheduled_action_type_unsupported_fault() | 
-    unsupported_operation_fault() | 
+    scheduled_action_quota_exceeded_fault() | 
+    scheduled_action_already_exists_fault() | 
+    invalid_scheduled_action_fault() | 
+    invalid_schedule_fault() | 
     cluster_not_found_fault().
 
 -type create_snapshot_copy_grant_errors() ::
     tag_limit_exceeded_fault() | 
     snapshot_copy_grant_quota_exceeded_fault() | 
-    invalid_tag_fault() | 
     snapshot_copy_grant_already_exists_fault() | 
-    dependent_service_request_throttling_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    invalid_tag_fault() | 
+    dependent_service_request_throttling_fault().
 
 -type create_snapshot_schedule_errors() ::
     tag_limit_exceeded_fault() | 
-    invalid_schedule_fault() | 
-    invalid_tag_fault() | 
     snapshot_schedule_quota_exceeded_fault() | 
     snapshot_schedule_already_exists_fault() | 
-    schedule_definition_type_unsupported_fault().
+    schedule_definition_type_unsupported_fault() | 
+    invalid_tag_fault() | 
+    invalid_schedule_fault().
 
 -type create_tags_errors() ::
     tag_limit_exceeded_fault() | 
-    invalid_cluster_state_fault() | 
+    resource_not_found_fault() | 
     invalid_tag_fault() | 
-    resource_not_found_fault().
+    invalid_cluster_state_fault().
 
 -type create_usage_limit_errors() ::
-    tag_limit_exceeded_fault() | 
     usage_limit_already_exists_fault() | 
-    invalid_cluster_state_fault() | 
-    invalid_usage_limit_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
-    limit_exceeded_fault().
+    tag_limit_exceeded_fault() | 
+    limit_exceeded_fault() | 
+    invalid_usage_limit_fault() | 
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
 
 -type deauthorize_data_share_errors() ::
     invalid_data_share_fault().
 
 -type delete_authentication_profile_errors() ::
-    authentication_profile_not_found_fault() | 
-    invalid_authentication_profile_request_fault().
+    invalid_authentication_profile_request_fault() | 
+    authentication_profile_not_found_fault().
 
 -type delete_cluster_errors() ::
     invalid_retention_period_fault() | 
     invalid_cluster_state_fault() | 
-    cluster_snapshot_already_exists_fault() | 
     cluster_snapshot_quota_exceeded_fault() | 
+    cluster_snapshot_already_exists_fault() | 
     cluster_not_found_fault().
 
 -type delete_cluster_parameter_group_errors() ::
-    cluster_parameter_group_not_found_fault() | 
-    invalid_cluster_parameter_group_state_fault().
+    invalid_cluster_parameter_group_state_fault() | 
+    cluster_parameter_group_not_found_fault().
 
 -type delete_cluster_security_group_errors() ::
-    cluster_security_group_not_found_fault() | 
-    invalid_cluster_security_group_state_fault().
+    invalid_cluster_security_group_state_fault() | 
+    cluster_security_group_not_found_fault().
 
 -type delete_cluster_snapshot_errors() ::
-    cluster_snapshot_not_found_fault() | 
-    invalid_cluster_snapshot_state_fault().
+    invalid_cluster_snapshot_state_fault() | 
+    cluster_snapshot_not_found_fault().
 
 -type delete_cluster_subnet_group_errors() ::
     invalid_cluster_subnet_state_fault() | 
-    cluster_subnet_group_not_found_fault() | 
-    invalid_cluster_subnet_group_state_fault().
+    invalid_cluster_subnet_group_state_fault() | 
+    cluster_subnet_group_not_found_fault().
 
 -type delete_custom_domain_association_errors() ::
+    unsupported_operation_fault() | 
     custom_domain_association_not_found_fault() | 
     custom_cname_association_fault() | 
-    unsupported_operation_fault() | 
     cluster_not_found_fault().
 
 -type delete_endpoint_access_errors() ::
-    invalid_cluster_state_fault() | 
     invalid_endpoint_state_fault() | 
-    endpoint_not_found_fault() | 
+    invalid_cluster_state_fault() | 
     invalid_cluster_security_group_state_fault() | 
+    endpoint_not_found_fault() | 
     cluster_not_found_fault().
 
 -type delete_event_subscription_errors() ::
-    invalid_subscription_state_fault() | 
-    subscription_not_found_fault().
+    subscription_not_found_fault() | 
+    invalid_subscription_state_fault().
 
 -type delete_hsm_client_certificate_errors() ::
-    hsm_client_certificate_not_found_fault() | 
-    invalid_hsm_client_certificate_state_fault().
+    invalid_hsm_client_certificate_state_fault() | 
+    hsm_client_certificate_not_found_fault().
 
 -type delete_hsm_configuration_errors() ::
     invalid_hsm_configuration_state_fault() | 
     hsm_configuration_not_found_fault().
 
 -type delete_integration_errors() ::
-    integration_conflict_state_fault() | 
+    unsupported_operation_fault() | 
     integration_not_found_fault() | 
-    integration_conflict_operation_fault() | 
-    unsupported_operation_fault().
+    integration_conflict_state_fault() | 
+    integration_conflict_operation_fault().
 
 -type delete_partner_errors() ::
-    partner_not_found_fault() | 
-    unauthorized_partner_integration_fault() | 
     unsupported_operation_fault() | 
+    unauthorized_partner_integration_fault() | 
+    partner_not_found_fault() | 
     cluster_not_found_fault().
 
--type delete_redshift_idc_application_errors() ::
+-type delete_qev2_idc_application_errors() ::
+    unsupported_operation_fault() | 
+    qev2_idc_application_not_exists_fault() | 
     dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
+
+-type delete_redshift_idc_application_errors() ::
+    unsupported_operation_fault() | 
     redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    unsupported_operation_fault().
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
 
 -type delete_resource_policy_errors() ::
     unsupported_operation_fault() | 
     resource_not_found_fault().
 
 -type delete_scheduled_action_errors() ::
-    scheduled_action_not_found_fault() | 
-    unauthorized_operation().
+    unauthorized_operation() | 
+    scheduled_action_not_found_fault().
 
 -type delete_snapshot_copy_grant_errors() ::
     snapshot_copy_grant_not_found_fault() | 
@@ -4401,41 +4494,41 @@
     invalid_cluster_snapshot_schedule_state_fault().
 
 -type delete_tags_errors() ::
-    invalid_tag_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_tag_fault().
 
 -type delete_usage_limit_errors() ::
-    unsupported_operation_fault() | 
-    usage_limit_not_found_fault().
+    usage_limit_not_found_fault() | 
+    unsupported_operation_fault().
 
 -type deregister_namespace_errors() ::
-    invalid_cluster_state_fault() | 
     invalid_namespace_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type describe_authentication_profiles_errors() ::
-    authentication_profile_not_found_fault() | 
-    invalid_authentication_profile_request_fault().
+    invalid_authentication_profile_request_fault() | 
+    authentication_profile_not_found_fault().
 
 -type describe_cluster_db_revisions_errors() ::
     invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type describe_cluster_parameter_groups_errors() ::
-    cluster_parameter_group_not_found_fault() | 
-    invalid_tag_fault().
+    invalid_tag_fault() | 
+    cluster_parameter_group_not_found_fault().
 
 -type describe_cluster_parameters_errors() ::
     cluster_parameter_group_not_found_fault().
 
 -type describe_cluster_security_groups_errors() ::
-    cluster_security_group_not_found_fault() | 
-    invalid_tag_fault().
+    invalid_tag_fault() | 
+    cluster_security_group_not_found_fault().
 
 -type describe_cluster_snapshots_errors() ::
-    cluster_snapshot_not_found_fault() | 
-    invalid_tag_fault() | 
     unsupported_operation_fault() | 
+    invalid_tag_fault() | 
+    cluster_snapshot_not_found_fault() | 
     cluster_not_found_fault().
 
 -type describe_cluster_subnet_groups_errors() ::
@@ -4451,8 +4544,8 @@
     cluster_not_found_fault().
 
 -type describe_custom_domain_associations_errors() ::
-    custom_domain_association_not_found_fault() | 
-    unsupported_operation_fault().
+    unsupported_operation_fault() | 
+    custom_domain_association_not_found_fault().
 
 -type describe_data_shares_errors() ::
     invalid_data_share_fault().
@@ -4477,93 +4570,99 @@
     invalid_tag_fault().
 
 -type describe_hsm_client_certificates_errors() ::
-    hsm_client_certificate_not_found_fault() | 
-    invalid_tag_fault().
+    invalid_tag_fault() | 
+    hsm_client_certificate_not_found_fault().
 
 -type describe_hsm_configurations_errors() ::
     invalid_tag_fault() | 
     hsm_configuration_not_found_fault().
 
 -type describe_inbound_integrations_errors() ::
-    integration_not_found_fault() | 
+    unsupported_operation_fault() | 
     invalid_namespace_fault() | 
-    unsupported_operation_fault().
+    integration_not_found_fault().
 
 -type describe_integrations_errors() ::
-    integration_not_found_fault() | 
-    unsupported_operation_fault().
+    unsupported_operation_fault() | 
+    integration_not_found_fault().
 
 -type describe_logging_status_errors() ::
     unsupported_operation_fault() | 
     cluster_not_found_fault().
 
 -type describe_node_configuration_options_errors() ::
-    cluster_snapshot_not_found_fault() | 
-    access_to_snapshot_denied_fault() | 
-    invalid_cluster_snapshot_state_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault().
+    invalid_cluster_snapshot_state_fault() | 
+    cluster_snapshot_not_found_fault() | 
+    cluster_not_found_fault() | 
+    access_to_snapshot_denied_fault().
 
 -type describe_partners_errors() ::
-    unauthorized_partner_integration_fault() | 
     unsupported_operation_fault() | 
+    unauthorized_partner_integration_fault() | 
     cluster_not_found_fault().
 
--type describe_redshift_idc_applications_errors() ::
+-type describe_qev2_idc_applications_errors() ::
+    unsupported_operation_fault() | 
+    qev2_idc_application_not_exists_fault() | 
     dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
+
+-type describe_redshift_idc_applications_errors() ::
+    unsupported_operation_fault() | 
     redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    unsupported_operation_fault().
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
 
 -type describe_reserved_node_exchange_status_errors() ::
-    reserved_node_exchange_not_found_fault() | 
+    unsupported_operation_fault() | 
     reserved_node_not_found_fault() | 
-    unsupported_operation_fault().
+    reserved_node_exchange_not_found_fault().
 
 -type describe_reserved_node_offerings_errors() ::
-    dependent_service_unavailable_fault() | 
+    unsupported_operation_fault() | 
     reserved_node_offering_not_found_fault() | 
-    unsupported_operation_fault().
+    dependent_service_unavailable_fault().
 
 -type describe_reserved_nodes_errors() ::
-    dependent_service_unavailable_fault() | 
-    reserved_node_not_found_fault().
+    reserved_node_not_found_fault() | 
+    dependent_service_unavailable_fault().
 
 -type describe_resize_errors() ::
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
-    resize_not_found_fault().
+    resize_not_found_fault() | 
+    cluster_not_found_fault().
 
 -type describe_scheduled_actions_errors() ::
-    scheduled_action_not_found_fault() | 
-    unauthorized_operation().
+    unauthorized_operation() | 
+    scheduled_action_not_found_fault().
 
 -type describe_snapshot_copy_grants_errors() ::
-    invalid_tag_fault() | 
-    snapshot_copy_grant_not_found_fault().
+    snapshot_copy_grant_not_found_fault() | 
+    invalid_tag_fault().
 
 -type describe_table_restore_status_errors() ::
     table_restore_not_found_fault() | 
     cluster_not_found_fault().
 
 -type describe_tags_errors() ::
-    invalid_tag_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_tag_fault().
 
 -type describe_usage_limits_errors() ::
     unsupported_operation_fault() | 
     cluster_not_found_fault().
 
 -type disable_logging_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type disable_snapshot_copy_errors() ::
-    invalid_cluster_state_fault() | 
-    unauthorized_operation() | 
     unsupported_operation_fault() | 
+    unauthorized_operation() | 
     snapshot_copy_already_disabled_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type disassociate_data_share_consumer_errors() ::
@@ -4571,31 +4670,31 @@
     invalid_data_share_fault().
 
 -type enable_logging_errors() ::
-    invalid_cluster_state_fault() | 
-    invalid_s3_key_prefix_fault() | 
-    insufficient_s3_bucket_policy_fault() | 
-    bucket_not_found_fault() | 
     unsupported_operation_fault() | 
+    invalid_s3_key_prefix_fault() | 
+    invalid_s3_bucket_name_fault() | 
+    invalid_cluster_state_fault() | 
+    insufficient_s3_bucket_policy_fault() | 
     cluster_not_found_fault() | 
-    invalid_s3_bucket_name_fault().
+    bucket_not_found_fault().
 
 -type enable_snapshot_copy_errors() ::
-    invalid_retention_period_fault() | 
-    copy_to_region_disabled_fault() | 
     unknown_snapshot_copy_region_fault() | 
+    unauthorized_operation() | 
+    snapshot_copy_grant_not_found_fault() | 
+    snapshot_copy_already_enabled_fault() | 
+    limit_exceeded_fault() | 
+    invalid_retention_period_fault() | 
     invalid_cluster_state_fault() | 
     incompatible_orderable_options() | 
-    snapshot_copy_already_enabled_fault() | 
-    unauthorized_operation() | 
     dependent_service_request_throttling_fault() | 
-    cluster_not_found_fault() | 
-    limit_exceeded_fault() | 
-    snapshot_copy_grant_not_found_fault().
+    copy_to_region_disabled_fault() | 
+    cluster_not_found_fault().
 
 -type failover_primary_compute_errors() ::
-    invalid_cluster_state_fault() | 
-    unauthorized_operation() | 
     unsupported_operation_fault() | 
+    unauthorized_operation() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type get_cluster_credentials_errors() ::
@@ -4607,77 +4706,77 @@
     cluster_not_found_fault().
 
 -type get_identity_center_auth_token_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
-    redshift_invalid_parameter_fault().
+    redshift_invalid_parameter_fault() | 
+    invalid_cluster_state_fault() | 
+    cluster_not_found_fault().
 
 -type get_reserved_node_exchange_configuration_options_errors() ::
-    dependent_service_unavailable_fault() | 
-    reserved_node_offering_not_found_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    reserved_node_not_found_fault() | 
-    invalid_reserved_node_state_fault() | 
-    reserved_node_already_migrated_fault() | 
     unsupported_operation_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    reserved_node_already_migrated_fault() | 
+    invalid_reserved_node_state_fault() | 
+    dependent_service_unavailable_fault() | 
+    cluster_snapshot_not_found_fault() | 
     cluster_not_found_fault().
 
 -type get_reserved_node_exchange_offerings_errors() ::
-    dependent_service_unavailable_fault() | 
+    unsupported_operation_fault() | 
     reserved_node_offering_not_found_fault() | 
     reserved_node_not_found_fault() | 
-    invalid_reserved_node_state_fault() | 
     reserved_node_already_migrated_fault() | 
-    unsupported_operation_fault().
+    invalid_reserved_node_state_fault() | 
+    dependent_service_unavailable_fault().
 
 -type get_resource_policy_errors() ::
     unsupported_operation_fault() | 
-    invalid_policy_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_policy_fault().
 
 -type list_recommendations_errors() ::
     unsupported_operation_fault() | 
     cluster_not_found_fault().
 
 -type modify_aqua_configuration_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type modify_authentication_profile_errors() ::
+    invalid_authentication_profile_request_fault() | 
     authentication_profile_quota_exceeded_fault() | 
-    authentication_profile_not_found_fault() | 
-    invalid_authentication_profile_request_fault().
+    authentication_profile_not_found_fault().
 
 -type modify_cluster_errors() ::
-    invalid_retention_period_fault() | 
-    cluster_already_exists_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    number_of_nodes_per_cluster_limit_exceeded_fault() | 
     unsupported_option_fault() | 
-    cluster_security_group_not_found_fault() | 
-    invalid_cluster_state_fault() | 
-    invalid_cluster_security_group_state_fault() | 
-    ipv6_cidr_block_not_found_fault() | 
-    custom_cname_association_fault() | 
+    unsupported_operation_fault() | 
+    unauthorized_operation() | 
     table_limit_exceeded_fault() | 
     number_of_nodes_quota_exceeded_fault() | 
-    hsm_client_certificate_not_found_fault() | 
-    cluster_parameter_group_not_found_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    limit_exceeded_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    invalid_retention_period_fault() | 
     invalid_elastic_ip_fault() | 
-    unauthorized_operation() | 
     invalid_cluster_track_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
     hsm_configuration_not_found_fault() | 
-    unsupported_operation_fault() | 
+    hsm_client_certificate_not_found_fault() | 
     dependent_service_request_throttling_fault() | 
+    custom_cname_association_fault() | 
+    cluster_security_group_not_found_fault() | 
+    cluster_parameter_group_not_found_fault() | 
     cluster_not_found_fault() | 
-    limit_exceeded_fault().
+    cluster_already_exists_fault().
 
 -type modify_cluster_db_revision_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
-    cluster_on_latest_revision_fault().
+    invalid_cluster_state_fault() | 
+    cluster_on_latest_revision_fault() | 
+    cluster_not_found_fault().
 
 -type modify_cluster_iam_roles_errors() ::
     invalid_cluster_state_fault() | 
@@ -4688,13 +4787,13 @@
     cluster_not_found_fault().
 
 -type modify_cluster_parameter_group_errors() ::
-    cluster_parameter_group_not_found_fault() | 
-    invalid_cluster_parameter_group_state_fault().
+    invalid_cluster_parameter_group_state_fault() | 
+    cluster_parameter_group_not_found_fault().
 
 -type modify_cluster_snapshot_errors() ::
     invalid_retention_period_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    invalid_cluster_snapshot_state_fault().
+    invalid_cluster_snapshot_state_fault() | 
+    cluster_snapshot_not_found_fault().
 
 -type modify_cluster_snapshot_schedule_errors() ::
     snapshot_schedule_not_found_fault() | 
@@ -4702,218 +4801,224 @@
     cluster_not_found_fault().
 
 -type modify_cluster_subnet_group_errors() ::
-    cluster_subnet_quota_exceeded_fault() | 
     unauthorized_operation() | 
-    dependent_service_request_throttling_fault() | 
+    subnet_already_in_use() | 
     invalid_subnet() | 
-    cluster_subnet_group_not_found_fault() | 
-    subnet_already_in_use().
+    dependent_service_request_throttling_fault() | 
+    cluster_subnet_quota_exceeded_fault() | 
+    cluster_subnet_group_not_found_fault().
 
 -type modify_custom_domain_association_errors() ::
+    unsupported_operation_fault() | 
     custom_domain_association_not_found_fault() | 
     custom_cname_association_fault() | 
-    unsupported_operation_fault() | 
     cluster_not_found_fault().
 
 -type modify_endpoint_access_errors() ::
-    invalid_cluster_state_fault() | 
-    invalid_endpoint_state_fault() | 
-    endpoint_not_found_fault() | 
-    invalid_cluster_security_group_state_fault() | 
     unauthorized_operation() | 
+    invalid_endpoint_state_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_cluster_security_group_state_fault() | 
+    endpoint_not_found_fault() | 
     cluster_not_found_fault().
 
 -type modify_event_subscription_errors() ::
-    s_n_s_no_authorization_fault() | 
-    invalid_subscription_state_fault() | 
-    s_n_s_topic_arn_not_found_fault() | 
-    s_n_s_invalid_topic_fault() | 
-    subscription_category_not_found_fault() | 
+    subscription_severity_not_found_fault() | 
     subscription_not_found_fault() | 
-    source_not_found_fault() | 
     subscription_event_id_not_found_fault() | 
-    subscription_severity_not_found_fault().
+    subscription_category_not_found_fault() | 
+    source_not_found_fault() | 
+    s_n_s_topic_arn_not_found_fault() | 
+    s_n_s_no_authorization_fault() | 
+    s_n_s_invalid_topic_fault() | 
+    invalid_subscription_state_fault().
 
 -type modify_integration_errors() ::
-    integration_conflict_state_fault() | 
-    integration_not_found_fault() | 
-    integration_conflict_operation_fault() | 
     unsupported_operation_fault() | 
+    integration_not_found_fault() | 
+    integration_conflict_state_fault() | 
+    integration_conflict_operation_fault() | 
     integration_already_exists_fault().
 
 -type modify_lakehouse_configuration_errors() ::
-    dependent_service_unavailable_fault() | 
-    invalid_cluster_state_fault() | 
-    redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    unauthorized_operation() | 
     unsupported_operation_fault() | 
+    unauthorized_operation() | 
+    redshift_idc_application_not_exists_fault() | 
+    invalid_cluster_state_fault() | 
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault() | 
     cluster_not_found_fault().
 
--type modify_redshift_idc_application_errors() ::
+-type modify_qev2_idc_application_errors() ::
+    unsupported_operation_fault() | 
+    qev2_idc_application_not_exists_fault() | 
     dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
+
+-type modify_redshift_idc_application_errors() ::
+    unsupported_operation_fault() | 
     redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    unsupported_operation_fault().
+    dependent_service_unavailable_fault() | 
+    dependent_service_access_denied_fault().
 
 -type modify_scheduled_action_errors() ::
-    invalid_schedule_fault() | 
-    invalid_scheduled_action_fault() | 
-    scheduled_action_not_found_fault() | 
+    unsupported_operation_fault() | 
     unauthorized_operation() | 
     scheduled_action_type_unsupported_fault() | 
-    unsupported_operation_fault() | 
+    scheduled_action_not_found_fault() | 
+    invalid_scheduled_action_fault() | 
+    invalid_schedule_fault() | 
     cluster_not_found_fault().
 
 -type modify_snapshot_copy_retention_period_errors() ::
+    unauthorized_operation() | 
+    snapshot_copy_disabled_fault() | 
     invalid_retention_period_fault() | 
     invalid_cluster_state_fault() | 
-    snapshot_copy_disabled_fault() | 
-    unauthorized_operation() | 
     cluster_not_found_fault().
 
 -type modify_snapshot_schedule_errors() ::
-    invalid_schedule_fault() | 
+    snapshot_schedule_update_in_progress_fault() | 
     snapshot_schedule_not_found_fault() | 
-    snapshot_schedule_update_in_progress_fault().
+    invalid_schedule_fault().
 
 -type modify_usage_limit_errors() ::
-    invalid_usage_limit_fault() | 
+    usage_limit_not_found_fault() | 
     unsupported_operation_fault() | 
-    usage_limit_not_found_fault().
+    invalid_usage_limit_fault().
 
 -type pause_cluster_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type purchase_reserved_node_offering_errors() ::
-    reserved_node_offering_not_found_fault() | 
-    reserved_node_quota_exceeded_fault() | 
     unsupported_operation_fault() | 
+    reserved_node_quota_exceeded_fault() | 
+    reserved_node_offering_not_found_fault() | 
     reserved_node_already_exists_fault().
 
 -type put_resource_policy_errors() ::
-    conflict_policy_update_fault() | 
     unsupported_operation_fault() | 
+    resource_not_found_fault() | 
     invalid_policy_fault() | 
-    resource_not_found_fault().
+    conflict_policy_update_fault().
 
 -type reboot_cluster_errors() ::
     invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type register_namespace_errors() ::
-    invalid_cluster_state_fault() | 
     invalid_namespace_fault() | 
+    invalid_cluster_state_fault() | 
     cluster_not_found_fault().
 
 -type reject_data_share_errors() ::
     invalid_data_share_fault().
 
 -type reset_cluster_parameter_group_errors() ::
-    cluster_parameter_group_not_found_fault() | 
-    invalid_cluster_parameter_group_state_fault().
+    invalid_cluster_parameter_group_state_fault() | 
+    cluster_parameter_group_not_found_fault().
 
 -type resize_cluster_errors() ::
-    dependent_service_unavailable_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    reserved_node_offering_not_found_fault() | 
-    number_of_nodes_per_cluster_limit_exceeded_fault() | 
     unsupported_option_fault() | 
-    invalid_cluster_state_fault() | 
-    reserved_node_not_found_fault() | 
-    number_of_nodes_quota_exceeded_fault() | 
-    invalid_reserved_node_state_fault() | 
-    unauthorized_operation() | 
-    reserved_node_already_migrated_fault() | 
     unsupported_operation_fault() | 
-    cluster_not_found_fault() | 
+    unauthorized_operation() | 
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    reserved_node_already_migrated_fault() | 
+    reserved_node_already_exists_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
     limit_exceeded_fault() | 
-    reserved_node_already_exists_fault().
+    invalid_reserved_node_state_fault() | 
+    invalid_cluster_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    dependent_service_unavailable_fault() | 
+    cluster_not_found_fault().
 
 -type restore_from_cluster_snapshot_errors() ::
-    dependent_service_unavailable_fault() | 
-    tag_limit_exceeded_fault() | 
-    cluster_already_exists_fault() | 
-    insufficient_cluster_capacity_fault() | 
-    reserved_node_offering_not_found_fault() | 
-    number_of_nodes_per_cluster_limit_exceeded_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    cluster_security_group_not_found_fault() | 
-    access_to_snapshot_denied_fault() | 
-    snapshot_schedule_not_found_fault() | 
-    ipv6_cidr_block_not_found_fault() | 
-    reserved_node_not_found_fault() | 
-    number_of_nodes_quota_exceeded_fault() | 
-    hsm_client_certificate_not_found_fault() | 
-    invalid_reserved_node_state_fault() | 
-    redshift_idc_application_not_exists_fault() | 
-    dependent_service_access_denied_fault() | 
-    cluster_parameter_group_not_found_fault() | 
-    invalid_tag_fault() | 
-    invalid_elastic_ip_fault() | 
-    invalid_vpc_network_state_fault() | 
-    unauthorized_operation() | 
-    reserved_node_already_migrated_fault() | 
-    invalid_cluster_snapshot_state_fault() | 
-    invalid_cluster_track_fault() | 
-    hsm_configuration_not_found_fault() | 
-    cluster_quota_exceeded_fault() | 
     unsupported_operation_fault() | 
-    dependent_service_request_throttling_fault() | 
+    unauthorized_operation() | 
+    tag_limit_exceeded_fault() | 
+    snapshot_schedule_not_found_fault() | 
+    reserved_node_offering_not_found_fault() | 
+    reserved_node_not_found_fault() | 
+    reserved_node_already_migrated_fault() | 
+    reserved_node_already_exists_fault() | 
+    redshift_idc_application_not_exists_fault() | 
+    number_of_nodes_quota_exceeded_fault() | 
+    number_of_nodes_per_cluster_limit_exceeded_fault() | 
+    limit_exceeded_fault() | 
+    ipv6_cidr_block_not_found_fault() | 
+    invalid_vpc_network_state_fault() | 
+    invalid_tag_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
-    limit_exceeded_fault() | 
-    reserved_node_already_exists_fault() | 
+    invalid_reserved_node_state_fault() | 
+    invalid_elastic_ip_fault() | 
+    invalid_cluster_track_fault() | 
+    invalid_cluster_subnet_group_state_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
+    hsm_configuration_not_found_fault() | 
+    hsm_client_certificate_not_found_fault() | 
+    dependent_service_unavailable_fault() | 
+    dependent_service_request_throttling_fault() | 
+    dependent_service_access_denied_fault() | 
     cluster_subnet_group_not_found_fault() | 
-    invalid_cluster_subnet_group_state_fault().
+    cluster_snapshot_not_found_fault() | 
+    cluster_security_group_not_found_fault() | 
+    cluster_quota_exceeded_fault() | 
+    cluster_parameter_group_not_found_fault() | 
+    cluster_already_exists_fault() | 
+    access_to_snapshot_denied_fault().
 
 -type restore_table_from_cluster_snapshot_errors() ::
-    invalid_table_restore_argument_fault() | 
-    cluster_snapshot_not_found_fault() | 
-    invalid_cluster_state_fault() | 
-    in_progress_table_restore_quota_exceeded_fault() | 
-    invalid_cluster_snapshot_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_table_restore_argument_fault() | 
+    invalid_cluster_state_fault() | 
+    invalid_cluster_snapshot_state_fault() | 
+    in_progress_table_restore_quota_exceeded_fault() | 
+    cluster_snapshot_not_found_fault() | 
     cluster_not_found_fault().
 
 -type resume_cluster_errors() ::
-    insufficient_cluster_capacity_fault() | 
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
+    insufficient_cluster_capacity_fault() | 
     cluster_not_found_fault().
 
 -type revoke_cluster_security_group_ingress_errors() ::
-    cluster_security_group_not_found_fault() | 
     invalid_cluster_security_group_state_fault() | 
+    cluster_security_group_not_found_fault() | 
     authorization_not_found_fault().
 
 -type revoke_endpoint_access_errors() ::
-    invalid_authorization_state_fault() | 
-    invalid_cluster_state_fault() | 
     invalid_endpoint_state_fault() | 
-    endpoint_not_found_fault() | 
+    invalid_cluster_state_fault() | 
     invalid_cluster_security_group_state_fault() | 
-    cluster_not_found_fault() | 
-    endpoint_authorization_not_found_fault().
+    invalid_authorization_state_fault() | 
+    endpoint_not_found_fault() | 
+    endpoint_authorization_not_found_fault() | 
+    cluster_not_found_fault().
 
 -type revoke_snapshot_access_errors() ::
+    unsupported_operation_fault() | 
     cluster_snapshot_not_found_fault() | 
-    access_to_snapshot_denied_fault() | 
     authorization_not_found_fault() | 
-    unsupported_operation_fault().
+    access_to_snapshot_denied_fault().
 
 -type rotate_encryption_key_errors() ::
-    invalid_cluster_state_fault() | 
     unsupported_operation_fault() | 
+    invalid_cluster_state_fault() | 
     dependent_service_request_throttling_fault() | 
     cluster_not_found_fault().
 
 -type update_partner_status_errors() ::
-    partner_not_found_fault() | 
-    unauthorized_partner_integration_fault() | 
     unsupported_operation_fault() | 
+    unauthorized_partner_integration_fault() | 
+    partner_not_found_fault() | 
     cluster_not_found_fault().
 
 %%====================================================================
@@ -5526,6 +5631,24 @@ create_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIntegration">>, Input, Options).
 
+%% @doc Creates an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+%% application.
+-spec create_qev2_idc_application(aws_client:aws_client(), create_qev2_idc_application_message()) ->
+    {ok, create_qev2_idc_application_result(), tuple()} |
+    {error, any()} |
+    {error, create_qev2_idc_application_errors(), tuple()}.
+create_qev2_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_qev2_idc_application(Client, Input, []).
+
+-spec create_qev2_idc_application(aws_client:aws_client(), create_qev2_idc_application_message(), proplists:proplist()) ->
+    {ok, create_qev2_idc_application_result(), tuple()} |
+    {error, any()} |
+    {error, create_qev2_idc_application_errors(), tuple()}.
+create_qev2_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateQev2IdcApplication">>, Input, Options).
+
 %% @doc Creates an Amazon Redshift application for use with IAM Identity
 %% Center.
 -spec create_redshift_idc_application(aws_client:aws_client(), create_redshift_idc_application_message()) ->
@@ -5948,6 +6071,24 @@ delete_partner(Client, Input)
 delete_partner(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartner">>, Input, Options).
+
+%% @doc Deletes an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+%% application.
+-spec delete_qev2_idc_application(aws_client:aws_client(), delete_qev2_idc_application_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_qev2_idc_application_errors(), tuple()}.
+delete_qev2_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_qev2_idc_application(Client, Input, []).
+
+-spec delete_qev2_idc_application(aws_client:aws_client(), delete_qev2_idc_application_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_qev2_idc_application_errors(), tuple()}.
+delete_qev2_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteQev2IdcApplication">>, Input, Options).
 
 %% @doc Deletes an Amazon Redshift IAM Identity Center application.
 -spec delete_redshift_idc_application(aws_client:aws_client(), delete_redshift_idc_application_message()) ->
@@ -6817,6 +6958,26 @@ describe_partners(Client, Input)
 describe_partners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartners">>, Input, Options).
+
+%% @doc Lists the Amazon Redshift Query Editor (QEV2) IAM Identity Center
+%% applications.
+%%
+%% To retrieve additional results, use the MaxRecords and Marker parameters.
+-spec describe_qev2_idc_applications(aws_client:aws_client(), describe_qev2_idc_applications_message()) ->
+    {ok, describe_qev2_idc_applications_result(), tuple()} |
+    {error, any()} |
+    {error, describe_qev2_idc_applications_errors(), tuple()}.
+describe_qev2_idc_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_qev2_idc_applications(Client, Input, []).
+
+-spec describe_qev2_idc_applications(aws_client:aws_client(), describe_qev2_idc_applications_message(), proplists:proplist()) ->
+    {ok, describe_qev2_idc_applications_result(), tuple()} |
+    {error, any()} |
+    {error, describe_qev2_idc_applications_errors(), tuple()}.
+describe_qev2_idc_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQev2IdcApplications">>, Input, Options).
 
 %% @doc Lists the Amazon Redshift IAM Identity Center applications.
 -spec describe_redshift_idc_applications(aws_client:aws_client(), describe_redshift_idc_applications_message()) ->
@@ -7786,6 +7947,24 @@ modify_lakehouse_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLakehouseConfiguration">>, Input, Options).
 
+%% @doc Modifies an Amazon Redshift Query Editor (QEV2) IAM Identity Center
+%% application.
+-spec modify_qev2_idc_application(aws_client:aws_client(), modify_qev2_idc_application_message()) ->
+    {ok, modify_qev2_idc_application_result(), tuple()} |
+    {error, any()} |
+    {error, modify_qev2_idc_application_errors(), tuple()}.
+modify_qev2_idc_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_qev2_idc_application(Client, Input, []).
+
+-spec modify_qev2_idc_application(aws_client:aws_client(), modify_qev2_idc_application_message(), proplists:proplist()) ->
+    {ok, modify_qev2_idc_application_result(), tuple()} |
+    {error, any()} |
+    {error, modify_qev2_idc_application_errors(), tuple()}.
+modify_qev2_idc_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyQev2IdcApplication">>, Input, Options).
+
 %% @doc Changes an existing Amazon Redshift IAM Identity Center application.
 -spec modify_redshift_idc_application(aws_client:aws_client(), modify_redshift_idc_application_message()) ->
     {ok, modify_redshift_idc_application_result(), tuple()} |
@@ -8059,9 +8238,13 @@ reset_cluster_parameter_group(Client, Input, Options)
 %%
 %% dc2.8xlarge
 %%
+%% rg.large
+%%
 %% rg.xlarge
 %%
 %% rg.4xlarge
+%%
+%% rg.12xlarge
 %%
 %% ra3.large
 %%

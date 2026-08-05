@@ -154,388 +154,18 @@
 
 
 %% Example:
-%% cancel_job_request() :: #{
-%%   <<"JobId">> := string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type cancel_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_position_request() :: #{}
--type get_device_position_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_geofence_collections_response() :: #{
-%%   <<"Entries">> := list(list_geofence_collections_response_entry()),
-%%   <<"NextToken">> => string()
+%% android_app() :: #{
+%%   <<"CertificateFingerprint">> => string(),
+%%   <<"Package">> => string()
 %% }
--type list_geofence_collections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% truck_dimensions() :: #{
-%%   <<"Height">> => float(),
-%%   <<"Length">> => float(),
-%%   <<"Unit">> => string(),
-%%   <<"Width">> => float()
-%% }
--type truck_dimensions() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_geofence_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"GeofenceId">> := string(),
-%%   <<"GeofenceProperties">> => map(),
-%%   <<"Geometry">> := geofence_geometry(),
-%%   <<"Status">> := [string()],
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type get_geofence_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_geofence_collection_request() :: #{}
--type describe_geofence_collection_request() :: #{}.
-
-
-%% Example:
-%% batch_update_device_position_response() :: #{
-%%   <<"Errors">> := list(batch_update_device_position_error())
-%% }
--type batch_update_device_position_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_positions_response() :: #{
-%%   <<"Entries">> := list(list_device_positions_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_positions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_tracker_consumer_request() :: #{
-%%   <<"ConsumerArn">> := string()
-%% }
--type associate_tracker_consumer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_geofence_request() :: #{
-%%   <<"Entries">> := list(batch_put_geofence_request_entry())
-%% }
--type batch_put_geofence_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculate_route_car_mode_options() :: #{
-%%   <<"AvoidFerries">> => boolean(),
-%%   <<"AvoidTolls">> => boolean()
-%% }
--type calculate_route_car_mode_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_geofence_error() :: #{
-%%   <<"Error">> => batch_item_error(),
-%%   <<"GeofenceId">> => string()
-%% }
--type batch_put_geofence_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_action_options() :: #{
-%%   <<"ValidateAddress">> => validate_address_action_options()
-%% }
--type job_action_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% forecasted_event() :: #{
-%%   <<"EventId">> => string(),
-%%   <<"EventType">> => string(),
-%%   <<"ForecastedBreachTime">> => non_neg_integer(),
-%%   <<"GeofenceId">> => string(),
-%%   <<"GeofenceProperties">> => map(),
-%%   <<"IsDeviceInGeofence">> => [boolean()],
-%%   <<"NearestDistance">> => float()
-%% }
--type forecasted_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_device_position_error() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"Error">> => batch_item_error(),
-%%   <<"SampleTime">> => non_neg_integer()
-%% }
--type batch_update_device_position_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_geofence_response() :: #{
-%%   <<"Errors">> := list(batch_delete_geofence_error())
-%% }
--type batch_delete_geofence_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ExpireTime">> => non_neg_integer(),
-%%   <<"KeyName">> := string(),
-%%   <<"NoExpiry">> => [boolean()],
-%%   <<"Restrictions">> := api_key_restrictions(),
-%%   <<"Tags">> => map()
-%% }
--type create_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_place_index_request() :: #{
-%%   <<"DataSource">> := [string()],
-%%   <<"DataSourceConfiguration">> => data_source_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"IndexName">> := string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_place_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_configuration() :: #{
-%%   <<"IntendedUse">> => string()
-%% }
--type data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_calculator_response() :: #{
-%%   <<"CalculatorArn">> := string(),
-%%   <<"CalculatorName">> := string(),
-%%   <<"CreateTime">> := non_neg_integer()
-%% }
--type create_route_calculator_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_tracker_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"TrackerArn">> := string(),
-%%   <<"TrackerName">> := string()
-%% }
--type create_tracker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_map_tile_response() :: #{
-%%   <<"Blob">> => [binary()],
-%%   <<"CacheControl">> => [string()],
-%%   <<"ContentType">> => [string()]
-%% }
--type get_map_tile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_map_response() :: #{
-%%   <<"MapArn">> := string(),
-%%   <<"MapName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type update_map_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_maps_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_maps_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_route_calculator_response() :: #{}
--type delete_route_calculator_response() :: #{}.
-
-
-%% Example:
-%% get_map_glyphs_response() :: #{
-%%   <<"Blob">> => [binary()],
-%%   <<"CacheControl">> => [string()],
-%%   <<"ContentType">> => [string()]
-%% }
--type get_map_glyphs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_place_index_request() :: #{}
--type describe_place_index_request() :: #{}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"Filter">> => jobs_filter(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_keys_response() :: #{
-%%   <<"Entries">> := list(list_keys_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_keys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculate_route_response() :: #{
-%%   <<"Legs">> => list(leg()),
-%%   <<"Summary">> => calculate_route_summary()
-%% }
--type calculate_route_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_route_calculators_response_entry() :: #{
-%%   <<"CalculatorName">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DataSource">> => [string()],
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type list_route_calculators_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_job_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type start_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_key_response() :: #{
-%%   <<"KeyArn">> := string(),
-%%   <<"KeyName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type update_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_place_index_for_position_response() :: #{
-%%   <<"Results">> := list(search_for_position_result()),
-%%   <<"Summary">> := search_place_index_for_position_summary()
-%% }
--type search_place_index_for_position_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_maps_response_entry() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DataSource">> => [string()],
-%%   <<"Description">> => string(),
-%%   <<"MapName">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type list_maps_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trackers_response() :: #{
-%%   <<"Entries">> := list(list_trackers_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_trackers_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_route_calculator_request() :: #{}
--type describe_route_calculator_request() :: #{}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"Entries">> => list(list_jobs_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_key_request() :: #{
-%%   <<"ForceDelete">> => [boolean()]
-%% }
--type delete_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_calculator_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string()
-%% }
--type update_route_calculator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_for_position_result() :: #{
-%%   <<"Distance">> => float(),
-%%   <<"Place">> => place(),
-%%   <<"PlaceId">> => string()
-%% }
--type search_for_position_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_geofence_request() :: #{
-%%   <<"GeofenceProperties">> => map(),
-%%   <<"Geometry">> := geofence_geometry()
-%% }
--type put_geofence_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response_entry() :: #{
-%%   <<"Action">> => string(),
-%%   <<"ActionOptions">> => job_action_options(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"Error">> => job_error(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"InputOptions">> => job_input_options(),
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputOptions">> => job_output_options(),
-%%   <<"Status">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type list_jobs_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_geofence_success() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"GeofenceId">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type batch_put_geofence_success() :: #{binary() => any()}.
+-type android_app() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,598 +173,6 @@
 %%   <<"KeyStatus">> => string()
 %% }
 -type api_key_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_for_suggestions_result() :: #{
-%%   <<"Categories">> => list(string()),
-%%   <<"PlaceId">> => string(),
-%%   <<"SupplementalCategories">> => list(string()),
-%%   <<"Text">> => string()
-%% }
--type search_for_suggestions_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_tracker_consumer_response() :: #{}
--type associate_tracker_consumer_response() :: #{}.
-
-
-%% Example:
-%% search_place_index_for_text_summary() :: #{
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"DataSource">> => [string()],
-%%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()),
-%%   <<"FilterCountries">> => list(string()),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"ResultBBox">> => list([float()]()),
-%%   <<"Text">> => string()
-%% }
--type search_place_index_for_text_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_geofence_error() :: #{
-%%   <<"Error">> => batch_item_error(),
-%%   <<"GeofenceId">> => string()
-%% }
--type batch_delete_geofence_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_evaluate_geofences_request() :: #{
-%%   <<"DevicePositionUpdates">> := list(device_position_update())
-%% }
--type batch_evaluate_geofences_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_geofences_response() :: #{
-%%   <<"Entries">> := list(list_geofence_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_geofences_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_matrix_entry_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => [string()]
-%% }
--type route_matrix_entry_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_place_index_response() :: #{}
--type delete_place_index_response() :: #{}.
-
-
-%% Example:
-%% get_map_sprites_request() :: #{
-%%   <<"Key">> => string()
-%% }
--type get_map_sprites_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% jobs_filter() :: #{
-%%   <<"JobStatus">> => string()
-%% }
--type jobs_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_map_request() :: #{}
--type delete_map_request() :: #{}.
-
-
-%% Example:
-%% list_geofence_collections_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_geofence_collections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_map_style_descriptor_response() :: #{
-%%   <<"Blob">> => [binary()],
-%%   <<"CacheControl">> => [string()],
-%%   <<"ContentType">> => [string()]
-%% }
--type get_map_style_descriptor_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_response() :: #{}
--type delete_key_response() :: #{}.
-
-
-%% Example:
-%% list_tracker_consumers_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_tracker_consumers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_positions_response_entry() :: #{
-%%   <<"Accuracy">> => positional_accuracy(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"PositionProperties">> => map(),
-%%   <<"SampleTime">> => non_neg_integer()
-%% }
--type list_device_positions_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_keys_request() :: #{
-%%   <<"Filter">> => api_key_filter(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_place_index_for_position_summary() :: #{
-%%   <<"DataSource">> => [string()],
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Position">> => list([float()]())
-%% }
--type search_place_index_for_position_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_place_index_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"IndexArn">> := string(),
-%%   <<"IndexName">> := string()
-%% }
--type create_place_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_route_calculator_request() :: #{}
--type delete_route_calculator_request() :: #{}.
-
-
-%% Example:
-%% update_geofence_collection_response() :: #{
-%%   <<"CollectionArn">> := string(),
-%%   <<"CollectionName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type update_geofence_collection_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_key_request() :: #{}
--type describe_key_request() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_geofence_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"GeofenceId">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type put_geofence_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lte_local_id() :: #{
-%%   <<"Earfcn">> => integer(),
-%%   <<"Pci">> => integer()
-%% }
--type lte_local_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_geofence_response_entry() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"GeofenceId">> => string(),
-%%   <<"GeofenceProperties">> => map(),
-%%   <<"Geometry">> => geofence_geometry(),
-%%   <<"Status">> => [string()],
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type list_geofence_response_entry() :: #{binary() => any()}.
-
-%% Example:
-%% delete_map_response() :: #{}
--type delete_map_response() :: #{}.
-
-
-%% Example:
-%% search_place_index_for_text_response() :: #{
-%%   <<"Results">> := list(search_for_text_result()),
-%%   <<"Summary">> := search_place_index_for_text_summary()
-%% }
--type search_place_index_for_text_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_map_tile_request() :: #{
-%%   <<"Key">> => string()
-%% }
--type get_map_tile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_key_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ExpireTime">> => non_neg_integer(),
-%%   <<"ForceUpdate">> => [boolean()],
-%%   <<"NoExpiry">> => [boolean()],
-%%   <<"Restrictions">> => api_key_restrictions()
-%% }
--type update_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_geofence_collection_response() :: #{
-%%   <<"CollectionArn">> := string(),
-%%   <<"CollectionName">> := string(),
-%%   <<"CreateTime">> := non_neg_integer()
-%% }
--type create_geofence_collection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% wi_fi_access_point() :: #{
-%%   <<"MacAddress">> => [string()],
-%%   <<"Rss">> => [integer()]
-%% }
--type wi_fi_access_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_state() :: #{
-%%   <<"Accuracy">> => positional_accuracy(),
-%%   <<"CellSignals">> => cell_signals(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Ipv4Address">> => [string()],
-%%   <<"Position">> => list([float()]()),
-%%   <<"SampleTime">> => non_neg_integer(),
-%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
-%% }
--type device_state() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tracker_request() :: #{}
--type describe_tracker_request() :: #{}.
-
-
-%% Example:
-%% describe_route_calculator_response() :: #{
-%%   <<"CalculatorArn">> := string(),
-%%   <<"CalculatorName">> := string(),
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"DataSource">> := [string()],
-%%   <<"Description">> := string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type describe_route_calculator_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_map_request() :: #{}
--type describe_map_request() :: #{}.
-
-
-%% Example:
-%% map_configuration_update() :: #{
-%%   <<"CustomLayers">> => list(string()),
-%%   <<"PoliticalView">> => string()
-%% }
--type map_configuration_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_map_request() :: #{
-%%   <<"ConfigurationUpdate">> => map_configuration_update(),
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string()
-%% }
--type update_map_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% apple_app() :: #{
-%%   <<"BundleId">> => string()
-%% }
--type apple_app() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_calculator_response() :: #{
-%%   <<"CalculatorArn">> := string(),
-%%   <<"CalculatorName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type update_route_calculator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% place_geometry() :: #{
-%%   <<"Point">> => list([float()]())
-%% }
--type place_geometry() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_device_position_request() :: #{
-%%   <<"DeviceIds">> := list(string())
-%% }
--type batch_get_device_position_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_place_indexes_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_place_indexes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% circle() :: #{
-%%   <<"Center">> => list([float()]()),
-%%   <<"Radius">> => float()
-%% }
--type circle() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_map_request() :: #{
-%%   <<"Configuration">> := map_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"MapName">> := string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_map_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forecast_geofence_events_device_state() :: #{
-%%   <<"Position">> => list([float()]()),
-%%   <<"Speed">> => [float()]
-%% }
--type forecast_geofence_events_device_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_device_position_request() :: #{
-%%   <<"DeviceState">> := device_state(),
-%%   <<"DistanceUnit">> => string()
-%% }
--type verify_device_position_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_tracker_consumer_request() :: #{}
--type disassociate_tracker_consumer_request() :: #{}.
-
-
-%% Example:
-%% search_place_index_for_text_request() :: #{
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()),
-%%   <<"FilterCountries">> => list(string()),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Text">> := string()
-%% }
--type search_place_index_for_text_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_place_request() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string()
-%% }
--type get_place_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_zone() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Offset">> => integer()
-%% }
--type time_zone() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_geofence_collection_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()]
-%% }
--type update_geofence_collection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_address_action_options() :: #{
-%%   <<"AdditionalFeatures">> => list(string())
-%% }
--type validate_address_action_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_input_options() :: #{
-%%   <<"Format">> => string(),
-%%   <<"Location">> => string()
-%% }
--type job_input_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_geofence_collection_request() :: #{}
--type delete_geofence_collection_request() :: #{}.
-
-
-%% Example:
-%% batch_item_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => [string()]
-%% }
--type batch_item_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_map_response() :: #{
-%%   <<"Configuration">> := map_configuration(),
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"DataSource">> := [string()],
-%%   <<"Description">> := string(),
-%%   <<"MapArn">> := string(),
-%%   <<"MapName">> := string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type describe_map_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_place_index_for_suggestions_summary() :: #{
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"DataSource">> => [string()],
-%%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()),
-%%   <<"FilterCountries">> => list(string()),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"Text">> => string()
-%% }
--type search_place_index_for_suggestions_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_place_index_response() :: #{
-%%   <<"IndexArn">> := string(),
-%%   <<"IndexName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type update_place_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_job_request() :: #{
-%%   <<"Action">> := string(),
-%%   <<"ActionOptions">> => job_action_options(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ExecutionRoleArn">> := string(),
-%%   <<"InputOptions">> := job_input_options(),
-%%   <<"Name">> => string(),
-%%   <<"OutputOptions">> := job_output_options(),
-%%   <<"Tags">> => map()
-%% }
--type start_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_calculator_request() :: #{
-%%   <<"CalculatorName">> := string(),
-%%   <<"DataSource">> := [string()],
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_route_calculator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_place_indexes_response_entry() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DataSource">> => [string()],
-%%   <<"Description">> => string(),
-%%   <<"IndexName">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type list_place_indexes_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_position_history_response() :: #{
-%%   <<"DevicePositions">> := list(device_position()),
-%%   <<"NextToken">> => string()
-%% }
--type get_device_position_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_evaluate_geofences_response() :: #{
-%%   <<"Errors">> := list(batch_evaluate_geofences_error())
-%% }
--type batch_evaluate_geofences_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_map_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"MapArn">> := string(),
-%%   <<"MapName">> := string()
-%% }
--type create_map_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forecast_geofence_events_request() :: #{
-%%   <<"DeviceState">> := forecast_geofence_events_device_state(),
-%%   <<"DistanceUnit">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"SpeedUnit">> => string(),
-%%   <<"TimeHorizonMinutes">> => [float()]
-%% }
--type forecast_geofence_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1149,43 +187,134 @@
 
 
 %% Example:
-%% update_tracker_response() :: #{
-%%   <<"TrackerArn">> := string(),
-%%   <<"TrackerName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
+%% apple_app() :: #{
+%%   <<"BundleId">> => string()
 %% }
--type update_tracker_response() :: #{binary() => any()}.
+-type apple_app() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% associate_tracker_consumer_request() :: #{
+%%   <<"ConsumerArn">> := string()
+%% }
+-type associate_tracker_consumer_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_tracker_consumer_response() :: #{}
+-type associate_tracker_consumer_response() :: #{}.
+
+
+%% Example:
+%% batch_delete_device_position_history_error() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"Error">> => batch_item_error()
+%% }
+-type batch_delete_device_position_history_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_device_position_history_request() :: #{
+%%   <<"DeviceIds">> := list(string())
+%% }
+-type batch_delete_device_position_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_device_position_history_response() :: #{
+%%   <<"Errors">> := list(batch_delete_device_position_history_error())
+%% }
+-type batch_delete_device_position_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_geofence_error() :: #{
+%%   <<"Error">> => batch_item_error(),
+%%   <<"GeofenceId">> => string()
+%% }
+-type batch_delete_geofence_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_geofence_request() :: #{
+%%   <<"GeofenceIds">> := list(string())
+%% }
+-type batch_delete_geofence_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_geofence_response() :: #{
+%%   <<"Errors">> := list(batch_delete_geofence_error())
+%% }
+-type batch_delete_geofence_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluate_geofences_error() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"Error">> => batch_item_error(),
+%%   <<"SampleTime">> => non_neg_integer()
+%% }
+-type batch_evaluate_geofences_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluate_geofences_request() :: #{
+%%   <<"DevicePositionUpdates">> := list(device_position_update())
+%% }
+-type batch_evaluate_geofences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluate_geofences_response() :: #{
+%%   <<"Errors">> := list(batch_evaluate_geofences_error())
+%% }
+-type batch_evaluate_geofences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_device_position_error() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"Error">> => batch_item_error()
+%% }
+-type batch_get_device_position_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_device_position_request() :: #{
+%%   <<"DeviceIds">> := list(string())
+%% }
+-type batch_get_device_position_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_device_position_response() :: #{
+%%   <<"DevicePositions">> := list(device_position()),
+%%   <<"Errors">> := list(batch_get_device_position_error())
+%% }
+-type batch_get_device_position_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_item_error() :: #{
+%%   <<"Code">> => string(),
 %%   <<"Message">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type batch_item_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_place_indexes_response() :: #{
-%%   <<"Entries">> := list(list_place_indexes_response_entry()),
-%%   <<"NextToken">> => string()
+%% batch_put_geofence_error() :: #{
+%%   <<"Error">> => batch_item_error(),
+%%   <<"GeofenceId">> => string()
 %% }
--type list_place_indexes_response() :: #{binary() => any()}.
+-type batch_put_geofence_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_route_calculators_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
+%% batch_put_geofence_request() :: #{
+%%   <<"Entries">> := list(batch_put_geofence_request_entry())
 %% }
--type list_route_calculators_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_maps_response() :: #{
-%%   <<"Entries">> := list(list_maps_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_maps_response() :: #{binary() => any()}.
+-type batch_put_geofence_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1196,103 +325,68 @@
 %% }
 -type batch_put_geofence_request_entry() :: #{binary() => any()}.
 
-%% Example:
-%% delete_tracker_request() :: #{}
--type delete_tracker_request() :: #{}.
-
 
 %% Example:
-%% get_map_sprites_response() :: #{
-%%   <<"Blob">> => [binary()],
-%%   <<"CacheControl">> => [string()],
-%%   <<"ContentType">> => [string()]
+%% batch_put_geofence_response() :: #{
+%%   <<"Errors">> := list(batch_put_geofence_error()),
+%%   <<"Successes">> := list(batch_put_geofence_success())
 %% }
--type get_map_sprites_response() :: #{binary() => any()}.
+-type batch_put_geofence_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
+%% batch_put_geofence_success() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"GeofenceId">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type batch_put_geofence_success() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_place_index_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"DataSource">> := [string()],
-%%   <<"DataSourceConfiguration">> := data_source_configuration(),
-%%   <<"Description">> := string(),
-%%   <<"IndexArn">> := string(),
-%%   <<"IndexName">> := string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdateTime">> := non_neg_integer()
+%% batch_update_device_position_error() :: #{
+%%   <<"DeviceId">> => string(),
+%%   <<"Error">> => batch_item_error(),
+%%   <<"SampleTime">> => non_neg_integer()
 %% }
--type describe_place_index_response() :: #{binary() => any()}.
+-type batch_update_device_position_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% calculate_route_truck_mode_options() :: #{
+%% batch_update_device_position_request() :: #{
+%%   <<"Updates">> := list(device_position_update())
+%% }
+-type batch_update_device_position_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_device_position_response() :: #{
+%%   <<"Errors">> := list(batch_update_device_position_error())
+%% }
+-type batch_update_device_position_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculate_route_car_mode_options() :: #{
 %%   <<"AvoidFerries">> => boolean(),
-%%   <<"AvoidTolls">> => boolean(),
-%%   <<"Dimensions">> => truck_dimensions(),
-%%   <<"Weight">> => truck_weight()
+%%   <<"AvoidTolls">> => boolean()
 %% }
--type calculate_route_truck_mode_options() :: #{binary() => any()}.
+-type calculate_route_car_mode_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_tracker_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"Description">> := string(),
-%%   <<"EventBridgeEnabled">> => [boolean()],
-%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PositionFiltering">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"Tags">> => map(),
-%%   <<"TrackerArn">> := string(),
-%%   <<"TrackerName">> := string(),
-%%   <<"UpdateTime">> := non_neg_integer()
+%% calculate_route_matrix_request() :: #{
+%%   <<"CarModeOptions">> => calculate_route_car_mode_options(),
+%%   <<"DepartNow">> => boolean(),
+%%   <<"DeparturePositions">> := list(list([float()]())()),
+%%   <<"DepartureTime">> => non_neg_integer(),
+%%   <<"DestinationPositions">> := list(list([float()]())()),
+%%   <<"DistanceUnit">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"TravelMode">> => string(),
+%%   <<"TruckModeOptions">> => calculate_route_truck_mode_options()
 %% }
--type describe_tracker_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_tracker_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventBridgeEnabled">> => [boolean()],
-%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PositionFiltering">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"Tags">> => map(),
-%%   <<"TrackerName">> := string()
-%% }
--type create_tracker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_geofence_collection_response() :: #{
-%%   <<"CollectionArn">> := string(),
-%%   <<"CollectionName">> := string(),
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"Description">> := string(),
-%%   <<"GeofenceCount">> => [integer()],
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"Tags">> => map(),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type describe_geofence_collection_response() :: #{binary() => any()}.
+-type calculate_route_matrix_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1306,19 +400,13 @@
 
 
 %% Example:
-%% android_app() :: #{
-%%   <<"CertificateFingerprint">> => string(),
-%%   <<"Package">> => string()
+%% calculate_route_matrix_summary() :: #{
+%%   <<"DataSource">> => [string()],
+%%   <<"DistanceUnit">> => string(),
+%%   <<"ErrorCount">> => [integer()],
+%%   <<"RouteCount">> => [integer()]
 %% }
--type android_app() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_device_position_error() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"Error">> => batch_item_error()
-%% }
--type batch_get_device_position_error() :: #{binary() => any()}.
+-type calculate_route_matrix_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1338,6 +426,527 @@
 %%   <<"WaypointPositions">> => list(list([float()]())())
 %% }
 -type calculate_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculate_route_response() :: #{
+%%   <<"Legs">> => list(leg()),
+%%   <<"Summary">> => calculate_route_summary()
+%% }
+-type calculate_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculate_route_summary() :: #{
+%%   <<"DataSource">> => [string()],
+%%   <<"Distance">> => float(),
+%%   <<"DistanceUnit">> => string(),
+%%   <<"DurationSeconds">> => float(),
+%%   <<"RouteBBox">> => list([float()]())
+%% }
+-type calculate_route_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculate_route_truck_mode_options() :: #{
+%%   <<"AvoidFerries">> => boolean(),
+%%   <<"AvoidTolls">> => boolean(),
+%%   <<"Dimensions">> => truck_dimensions(),
+%%   <<"Weight">> => truck_weight()
+%% }
+-type calculate_route_truck_mode_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type cancel_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_job_response() :: #{
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type cancel_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cell_signals() :: #{
+%%   <<"LteCellDetails">> => list(lte_cell_details())
+%% }
+-type cell_signals() :: #{binary() => any()}.
+
+
+%% Example:
+%% circle() :: #{
+%%   <<"Center">> => list([float()]()),
+%%   <<"Radius">> => float()
+%% }
+-type circle() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_geofence_collection_request() :: #{
+%%   <<"CollectionName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_geofence_collection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_geofence_collection_response() :: #{
+%%   <<"CollectionArn">> := string(),
+%%   <<"CollectionName">> := string(),
+%%   <<"CreateTime">> := non_neg_integer()
+%% }
+-type create_geofence_collection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExpireTime">> => non_neg_integer(),
+%%   <<"KeyName">> := string(),
+%%   <<"NoExpiry">> => [boolean()],
+%%   <<"Restrictions">> := api_key_restrictions(),
+%%   <<"Tags">> => map()
+%% }
+-type create_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"Key">> := string(),
+%%   <<"KeyArn">> := string(),
+%%   <<"KeyName">> := string()
+%% }
+-type create_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_map_request() :: #{
+%%   <<"Configuration">> := map_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"MapName">> := string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_map_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_map_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"MapArn">> := string(),
+%%   <<"MapName">> := string()
+%% }
+-type create_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_place_index_request() :: #{
+%%   <<"DataSource">> := [string()],
+%%   <<"DataSourceConfiguration">> => data_source_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"IndexName">> := string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_place_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_place_index_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"IndexArn">> := string(),
+%%   <<"IndexName">> := string()
+%% }
+-type create_place_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_calculator_request() :: #{
+%%   <<"CalculatorName">> := string(),
+%%   <<"DataSource">> := [string()],
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_route_calculator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_calculator_response() :: #{
+%%   <<"CalculatorArn">> := string(),
+%%   <<"CalculatorName">> := string(),
+%%   <<"CreateTime">> := non_neg_integer()
+%% }
+-type create_route_calculator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tracker_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBridgeEnabled">> => [boolean()],
+%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PositionFiltering">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"Tags">> => map(),
+%%   <<"TrackerName">> := string()
+%% }
+-type create_tracker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tracker_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"TrackerArn">> := string(),
+%%   <<"TrackerName">> := string()
+%% }
+-type create_tracker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_configuration() :: #{
+%%   <<"IntendedUse">> => string()
+%% }
+-type data_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_geofence_collection_request() :: #{}
+-type delete_geofence_collection_request() :: #{}.
+
+%% Example:
+%% delete_geofence_collection_response() :: #{}
+-type delete_geofence_collection_response() :: #{}.
+
+
+%% Example:
+%% delete_key_request() :: #{
+%%   <<"ForceDelete">> => [boolean()]
+%% }
+-type delete_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_response() :: #{}
+-type delete_key_response() :: #{}.
+
+%% Example:
+%% delete_map_request() :: #{}
+-type delete_map_request() :: #{}.
+
+%% Example:
+%% delete_map_response() :: #{}
+-type delete_map_response() :: #{}.
+
+%% Example:
+%% delete_place_index_request() :: #{}
+-type delete_place_index_request() :: #{}.
+
+%% Example:
+%% delete_place_index_response() :: #{}
+-type delete_place_index_response() :: #{}.
+
+%% Example:
+%% delete_route_calculator_request() :: #{}
+-type delete_route_calculator_request() :: #{}.
+
+%% Example:
+%% delete_route_calculator_response() :: #{}
+-type delete_route_calculator_response() :: #{}.
+
+%% Example:
+%% delete_tracker_request() :: #{}
+-type delete_tracker_request() :: #{}.
+
+%% Example:
+%% delete_tracker_response() :: #{}
+-type delete_tracker_response() :: #{}.
+
+%% Example:
+%% describe_geofence_collection_request() :: #{}
+-type describe_geofence_collection_request() :: #{}.
+
+
+%% Example:
+%% describe_geofence_collection_response() :: #{
+%%   <<"CollectionArn">> := string(),
+%%   <<"CollectionName">> := string(),
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"Description">> := string(),
+%%   <<"GeofenceCount">> => [integer()],
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"Tags">> => map(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_geofence_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_request() :: #{}
+-type describe_key_request() :: #{}.
+
+
+%% Example:
+%% describe_key_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpireTime">> := non_neg_integer(),
+%%   <<"Key">> := string(),
+%%   <<"KeyArn">> := string(),
+%%   <<"KeyName">> := string(),
+%%   <<"Restrictions">> := api_key_restrictions(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_map_request() :: #{}
+-type describe_map_request() :: #{}.
+
+
+%% Example:
+%% describe_map_response() :: #{
+%%   <<"Configuration">> := map_configuration(),
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"DataSource">> := [string()],
+%%   <<"Description">> := string(),
+%%   <<"MapArn">> := string(),
+%%   <<"MapName">> := string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_map_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_place_index_request() :: #{}
+-type describe_place_index_request() :: #{}.
+
+
+%% Example:
+%% describe_place_index_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"DataSource">> := [string()],
+%%   <<"DataSourceConfiguration">> := data_source_configuration(),
+%%   <<"Description">> := string(),
+%%   <<"IndexArn">> := string(),
+%%   <<"IndexName">> := string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_place_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_route_calculator_request() :: #{}
+-type describe_route_calculator_request() :: #{}.
+
+
+%% Example:
+%% describe_route_calculator_response() :: #{
+%%   <<"CalculatorArn">> := string(),
+%%   <<"CalculatorName">> := string(),
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"DataSource">> := [string()],
+%%   <<"Description">> := string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_route_calculator_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tracker_request() :: #{}
+-type describe_tracker_request() :: #{}.
+
+
+%% Example:
+%% describe_tracker_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"Description">> := string(),
+%%   <<"EventBridgeEnabled">> => [boolean()],
+%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PositionFiltering">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"Tags">> => map(),
+%%   <<"TrackerArn">> := string(),
+%%   <<"TrackerName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type describe_tracker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_position() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"PositionProperties">> => map(),
+%%   <<"ReceivedTime">> => non_neg_integer(),
+%%   <<"SampleTime">> => non_neg_integer()
+%% }
+-type device_position() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_position_update() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Position">> => list([float()]()),
+%%   <<"PositionProperties">> => map(),
+%%   <<"SampleTime">> => non_neg_integer()
+%% }
+-type device_position_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_state() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"CellSignals">> => cell_signals(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Ipv4Address">> => [string()],
+%%   <<"Position">> => list([float()]()),
+%%   <<"SampleTime">> => non_neg_integer(),
+%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
+%% }
+-type device_state() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_tracker_consumer_request() :: #{}
+-type disassociate_tracker_consumer_request() :: #{}.
+
+%% Example:
+%% disassociate_tracker_consumer_response() :: #{}
+-type disassociate_tracker_consumer_response() :: #{}.
+
+
+%% Example:
+%% forecast_geofence_events_device_state() :: #{
+%%   <<"Position">> => list([float()]()),
+%%   <<"Speed">> => [float()]
+%% }
+-type forecast_geofence_events_device_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_geofence_events_request() :: #{
+%%   <<"DeviceState">> := forecast_geofence_events_device_state(),
+%%   <<"DistanceUnit">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"SpeedUnit">> => string(),
+%%   <<"TimeHorizonMinutes">> => [float()]
+%% }
+-type forecast_geofence_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecast_geofence_events_response() :: #{
+%%   <<"DistanceUnit">> => string(),
+%%   <<"ForecastedEvents">> => list(forecasted_event()),
+%%   <<"NextToken">> => string(),
+%%   <<"SpeedUnit">> => string()
+%% }
+-type forecast_geofence_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forecasted_event() :: #{
+%%   <<"EventId">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"ForecastedBreachTime">> => non_neg_integer(),
+%%   <<"GeofenceId">> => string(),
+%%   <<"GeofenceProperties">> => map(),
+%%   <<"IsDeviceInGeofence">> => [boolean()],
+%%   <<"NearestDistance">> => float()
+%% }
+-type forecasted_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% geofence_geometry() :: #{
+%%   <<"Circle">> => circle(),
+%%   <<"Geobuf">> => binary(),
+%%   <<"MultiPolygon">> => list(list(list(list([float()]())())())()),
+%%   <<"Polygon">> => list(list(list([float()]())())())
+%% }
+-type geofence_geometry() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_position_history_request() :: #{
+%%   <<"EndTimeExclusive">> => non_neg_integer(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartTimeInclusive">> => non_neg_integer()
+%% }
+-type get_device_position_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_device_position_history_response() :: #{
+%%   <<"DevicePositions">> := list(device_position()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_device_position_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_position_request() :: #{}
+-type get_device_position_request() :: #{}.
+
+
+%% Example:
+%% get_device_position_response() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"DeviceId">> => string(),
+%%   <<"Position">> := list([float()]()),
+%%   <<"PositionProperties">> => map(),
+%%   <<"ReceivedTime">> := non_neg_integer(),
+%%   <<"SampleTime">> := non_neg_integer()
+%% }
+-type get_device_position_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_geofence_request() :: #{}
+-type get_geofence_request() :: #{}.
+
+
+%% Example:
+%% get_geofence_response() :: #{
+%%   <<"CreateTime">> := non_neg_integer(),
+%%   <<"GeofenceId">> := string(),
+%%   <<"GeofenceProperties">> => map(),
+%%   <<"Geometry">> := geofence_geometry(),
+%%   <<"Status">> := [string()],
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type get_geofence_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
 
 
 %% Example:
@@ -1361,32 +970,75 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => string()
+%% get_map_glyphs_request() :: #{
+%%   <<"Key">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type get_map_glyphs_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_put_geofence_response() :: #{
-%%   <<"Errors">> := list(batch_put_geofence_error()),
-%%   <<"Successes">> := list(batch_put_geofence_success())
+%% get_map_glyphs_response() :: #{
+%%   <<"Blob">> => [binary()],
+%%   <<"CacheControl">> => [string()],
+%%   <<"ContentType">> => [string()]
 %% }
--type batch_put_geofence_response() :: #{binary() => any()}.
+-type get_map_glyphs_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_device_position_history_error() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"Error">> => batch_item_error()
+%% get_map_sprites_request() :: #{
+%%   <<"Key">> => string()
 %% }
--type batch_delete_device_position_history_error() :: #{binary() => any()}.
+-type get_map_sprites_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_map_sprites_response() :: #{
+%%   <<"Blob">> => [binary()],
+%%   <<"CacheControl">> => [string()],
+%%   <<"ContentType">> => [string()]
+%% }
+-type get_map_sprites_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_map_style_descriptor_request() :: #{
+%%   <<"Key">> => string()
+%% }
+-type get_map_style_descriptor_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_map_style_descriptor_response() :: #{
+%%   <<"Blob">> => [binary()],
+%%   <<"CacheControl">> => [string()],
+%%   <<"ContentType">> => [string()]
+%% }
+-type get_map_style_descriptor_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_map_tile_request() :: #{
+%%   <<"Key">> => string()
+%% }
+-type get_map_tile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_map_tile_response() :: #{
+%%   <<"Blob">> => [binary()],
+%%   <<"CacheControl">> => [string()],
+%%   <<"ContentType">> => [string()]
+%% }
+-type get_map_tile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_place_request() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string()
+%% }
+-type get_place_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1395,69 +1047,367 @@
 %% }
 -type get_place_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_job_request() :: #{}
--type get_job_request() :: #{}.
-
 
 %% Example:
-%% batch_get_device_position_response() :: #{
-%%   <<"DevicePositions">> := list(device_position()),
-%%   <<"Errors">> := list(batch_get_device_position_error())
+%% inferred_state() :: #{
+%%   <<"Accuracy">> => positional_accuracy(),
+%%   <<"DeviationDistance">> => [float()],
+%%   <<"Position">> => list([float()]()),
+%%   <<"ProxyDetected">> => [boolean()]
 %% }
--type batch_get_device_position_response() :: #{binary() => any()}.
+-type inferred_state() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
+%% internal_server_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_tracker_consumer_response() :: #{}
--type disassociate_tracker_consumer_response() :: #{}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% truck_weight() :: #{
-%%   <<"Total">> => float(),
-%%   <<"Unit">> => string()
+%% job_action_options() :: #{
+%%   <<"ValidateAddress">> => validate_address_action_options()
 %% }
--type truck_weight() :: #{binary() => any()}.
+-type job_action_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_key_response() :: #{
-%%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ExpireTime">> := non_neg_integer(),
-%%   <<"Key">> := string(),
-%%   <<"KeyArn">> := string(),
-%%   <<"KeyName">> := string(),
-%%   <<"Restrictions">> := api_key_restrictions(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdateTime">> := non_neg_integer()
+%% job_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Messages">> => list(string())
 %% }
--type describe_key_response() :: #{binary() => any()}.
+-type job_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_update_device_position_request() :: #{
-%%   <<"Updates">> := list(device_position_update())
+%% job_input_options() :: #{
+%%   <<"Format">> => string(),
+%%   <<"Location">> => string()
 %% }
--type batch_update_device_position_request() :: #{binary() => any()}.
+-type job_input_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% device_position_update() :: #{
+%% job_output_options() :: #{
+%%   <<"Format">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type job_output_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% jobs_filter() :: #{
+%%   <<"JobStatus">> => string()
+%% }
+-type jobs_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% leg() :: #{
+%%   <<"Distance">> => float(),
+%%   <<"DurationSeconds">> => float(),
+%%   <<"EndPosition">> => list([float()]()),
+%%   <<"Geometry">> => leg_geometry(),
+%%   <<"StartPosition">> => list([float()]()),
+%%   <<"Steps">> => list(step())
+%% }
+-type leg() :: #{binary() => any()}.
+
+
+%% Example:
+%% leg_geometry() :: #{
+%%   <<"LineString">> => list(list([float()]())())
+%% }
+-type leg_geometry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_positions_request() :: #{
+%%   <<"FilterGeometry">> => tracking_filter_geometry(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_positions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_positions_response() :: #{
+%%   <<"Entries">> := list(list_device_positions_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_positions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_positions_response_entry() :: #{
 %%   <<"Accuracy">> => positional_accuracy(),
 %%   <<"DeviceId">> => string(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"PositionProperties">> => map(),
 %%   <<"SampleTime">> => non_neg_integer()
 %% }
--type device_position_update() :: #{binary() => any()}.
+-type list_device_positions_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofence_collections_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_geofence_collections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofence_collections_response() :: #{
+%%   <<"Entries">> := list(list_geofence_collections_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_geofence_collections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofence_collections_response_entry() :: #{
+%%   <<"CollectionName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_geofence_collections_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofence_response_entry() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"GeofenceId">> => string(),
+%%   <<"GeofenceProperties">> => map(),
+%%   <<"Geometry">> => geofence_geometry(),
+%%   <<"Status">> => [string()],
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_geofence_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofences_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_geofences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geofences_response() :: #{
+%%   <<"Entries">> := list(list_geofence_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_geofences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"Filter">> => jobs_filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"Entries">> => list(list_jobs_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response_entry() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ActionOptions">> => job_action_options(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Error">> => job_error(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"InputOptions">> => job_input_options(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputOptions">> => job_output_options(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type list_jobs_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_keys_request() :: #{
+%%   <<"Filter">> => api_key_filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_keys_response() :: #{
+%%   <<"Entries">> := list(list_keys_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_keys_response_entry() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpireTime">> => non_neg_integer(),
+%%   <<"KeyName">> => string(),
+%%   <<"Restrictions">> => api_key_restrictions(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_keys_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_maps_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_maps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_maps_response() :: #{
+%%   <<"Entries">> := list(list_maps_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_maps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_maps_response_entry() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataSource">> => [string()],
+%%   <<"Description">> => string(),
+%%   <<"MapName">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_maps_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_place_indexes_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_place_indexes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_place_indexes_response() :: #{
+%%   <<"Entries">> := list(list_place_indexes_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_place_indexes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_place_indexes_response_entry() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataSource">> => [string()],
+%%   <<"Description">> => string(),
+%%   <<"IndexName">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_place_indexes_response_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_route_calculators_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_route_calculators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_route_calculators_response() :: #{
+%%   <<"Entries">> := list(list_route_calculators_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_route_calculators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_route_calculators_response_entry() :: #{
+%%   <<"CalculatorName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataSource">> => [string()],
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_route_calculators_response_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tracker_consumers_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_tracker_consumers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tracker_consumers_response() :: #{
+%%   <<"ConsumerArns">> := list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tracker_consumers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trackers_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_trackers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trackers_response() :: #{
+%%   <<"Entries">> := list(list_trackers_response_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_trackers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trackers_response_entry() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()],
+%%   <<"TrackerName">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type list_trackers_response_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1477,50 +1427,11 @@
 
 
 %% Example:
-%% cell_signals() :: #{
-%%   <<"LteCellDetails">> => list(lte_cell_details())
+%% lte_local_id() :: #{
+%%   <<"Earfcn">> => integer(),
+%%   <<"Pci">> => integer()
 %% }
--type cell_signals() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculate_route_matrix_summary() :: #{
-%%   <<"DataSource">> => [string()],
-%%   <<"DistanceUnit">> => string(),
-%%   <<"ErrorCount">> => [integer()],
-%%   <<"RouteCount">> => [integer()]
-%% }
--type calculate_route_matrix_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_geofence_request() :: #{
-%%   <<"GeofenceIds">> := list(string())
-%% }
--type batch_delete_geofence_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_keys_response_entry() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ExpireTime">> => non_neg_integer(),
-%%   <<"KeyName">> => string(),
-%%   <<"Restrictions">> => api_key_restrictions(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type list_keys_response_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculate_route_summary() :: #{
-%%   <<"DataSource">> => [string()],
-%%   <<"Distance">> => float(),
-%%   <<"DistanceUnit">> => string(),
-%%   <<"DurationSeconds">> => float(),
-%%   <<"RouteBBox">> => list([float()]())
-%% }
--type calculate_route_summary() :: #{binary() => any()}.
+-type lte_local_id() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1544,252 +1455,11 @@
 
 
 %% Example:
-%% positional_accuracy() :: #{
-%%   <<"Horizontal">> => float()
+%% map_configuration_update() :: #{
+%%   <<"CustomLayers">> => list(string()),
+%%   <<"PoliticalView">> => string()
 %% }
--type positional_accuracy() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_position() :: #{
-%%   <<"Accuracy">> => positional_accuracy(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Position">> => list([float()]()),
-%%   <<"PositionProperties">> => map(),
-%%   <<"ReceivedTime">> => non_neg_integer(),
-%%   <<"SampleTime">> => non_neg_integer()
-%% }
--type device_position() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_geofence_collection_request() :: #{
-%%   <<"CollectionName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"Tags">> => map()
-%% }
--type create_geofence_collection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step() :: #{
-%%   <<"Distance">> => float(),
-%%   <<"DurationSeconds">> => float(),
-%%   <<"EndPosition">> => list([float()]()),
-%%   <<"GeometryOffset">> => [integer()],
-%%   <<"StartPosition">> => list([float()]())
-%% }
--type step() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tracker_consumers_response() :: #{
-%%   <<"ConsumerArns">> := list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_tracker_consumers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_map_style_descriptor_request() :: #{
-%%   <<"Key">> => string()
-%% }
--type get_map_style_descriptor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tracking_filter_geometry() :: #{
-%%   <<"Polygon">> => list(list(list([float()]())())())
-%% }
--type tracking_filter_geometry() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_for_text_result() :: #{
-%%   <<"Distance">> => float(),
-%%   <<"Place">> => place(),
-%%   <<"PlaceId">> => string(),
-%%   <<"Relevance">> => float()
-%% }
--type search_for_text_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trackers_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_trackers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_device_position_response() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"DistanceUnit">> => string(),
-%%   <<"InferredState">> => inferred_state(),
-%%   <<"ReceivedTime">> => non_neg_integer(),
-%%   <<"SampleTime">> => non_neg_integer()
-%% }
--type verify_device_position_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_place_index_request() :: #{}
--type delete_place_index_request() :: #{}.
-
-
-%% Example:
-%% update_tracker_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventBridgeEnabled">> => [boolean()],
-%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
-%%   <<"PositionFiltering">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()]
-%% }
--type update_tracker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_positions_request() :: #{
-%%   <<"FilterGeometry">> => tracking_filter_geometry(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_device_positions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% leg_geometry() :: #{
-%%   <<"LineString">> => list(list([float()]())())
-%% }
--type leg_geometry() :: #{binary() => any()}.
-
-
-%% Example:
-%% geofence_geometry() :: #{
-%%   <<"Circle">> => circle(),
-%%   <<"Geobuf">> => binary(),
-%%   <<"MultiPolygon">> => list(list(list(list([float()]())())())()),
-%%   <<"Polygon">> => list(list(list([float()]())())())
-%% }
--type geofence_geometry() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_job_response() :: #{
-%%   <<"JobArn">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type cancel_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_geofence_request() :: #{}
--type get_geofence_request() :: #{}.
-
-
-%% Example:
-%% list_route_calculators_response() :: #{
-%%   <<"Entries">> := list(list_route_calculators_response_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_route_calculators_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_position_history_request() :: #{
-%%   <<"EndTimeExclusive">> => non_neg_integer(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"StartTimeInclusive">> => non_neg_integer()
-%% }
--type get_device_position_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% route_matrix_entry() :: #{
-%%   <<"Distance">> => float(),
-%%   <<"DurationSeconds">> => float(),
-%%   <<"Error">> => route_matrix_entry_error()
-%% }
--type route_matrix_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% inferred_state() :: #{
-%%   <<"Accuracy">> => positional_accuracy(),
-%%   <<"DeviationDistance">> => [float()],
-%%   <<"Position">> => list([float()]()),
-%%   <<"ProxyDetected">> => [boolean()]
-%% }
--type inferred_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_position_response() :: #{
-%%   <<"Accuracy">> => positional_accuracy(),
-%%   <<"DeviceId">> => string(),
-%%   <<"Position">> := list([float()]()),
-%%   <<"PositionProperties">> => map(),
-%%   <<"ReceivedTime">> := non_neg_integer(),
-%%   <<"SampleTime">> := non_neg_integer()
-%% }
--type get_device_position_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_place_index_for_suggestions_request() :: #{
-%%   <<"BiasPosition">> => list([float()]()),
-%%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()),
-%%   <<"FilterCountries">> => list(string()),
-%%   <<"Key">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"Text">> := string()
-%% }
--type search_place_index_for_suggestions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_device_position_history_response() :: #{
-%%   <<"Errors">> := list(batch_delete_device_position_history_error())
-%% }
--type batch_delete_device_position_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tracker_response() :: #{}
--type delete_tracker_response() :: #{}.
-
-
-%% Example:
-%% search_place_index_for_suggestions_response() :: #{
-%%   <<"Results">> := list(search_for_suggestions_result()),
-%%   <<"Summary">> := search_place_index_for_suggestions_summary()
-%% }
--type search_place_index_for_suggestions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_map_glyphs_request() :: #{
-%%   <<"Key">> => string()
-%% }
--type get_map_glyphs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% leg() :: #{
-%%   <<"Distance">> => float(),
-%%   <<"DurationSeconds">> => float(),
-%%   <<"EndPosition">> => list([float()]()),
-%%   <<"Geometry">> => leg_geometry(),
-%%   <<"StartPosition">> => list([float()]()),
-%%   <<"Steps">> => list(step())
-%% }
--type leg() :: #{binary() => any()}.
+-type map_configuration_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1816,51 +1486,87 @@
 
 
 %% Example:
-%% job_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Messages">> => list(string())
+%% place_geometry() :: #{
+%%   <<"Point">> => list([float()]())
 %% }
--type job_error() :: #{binary() => any()}.
+-type place_geometry() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_evaluate_geofences_error() :: #{
-%%   <<"DeviceId">> => string(),
-%%   <<"Error">> => batch_item_error(),
-%%   <<"SampleTime">> => non_neg_integer()
+%% positional_accuracy() :: #{
+%%   <<"Horizontal">> => float()
 %% }
--type batch_evaluate_geofences_error() :: #{binary() => any()}.
+-type positional_accuracy() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_geofence_collections_response_entry() :: #{
-%%   <<"CollectionName">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"UpdateTime">> => non_neg_integer()
+%% put_geofence_request() :: #{
+%%   <<"GeofenceProperties">> => map(),
+%%   <<"Geometry">> := geofence_geometry()
 %% }
--type list_geofence_collections_response_entry() :: #{binary() => any()}.
+-type put_geofence_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_place_index_request() :: #{
-%%   <<"DataSourceConfiguration">> => data_source_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"PricingPlan">> => string()
-%% }
--type update_place_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_response() :: #{
+%% put_geofence_response() :: #{
 %%   <<"CreateTime">> := non_neg_integer(),
-%%   <<"Key">> := string(),
-%%   <<"KeyArn">> := string(),
-%%   <<"KeyName">> := string()
+%%   <<"GeofenceId">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
 %% }
--type create_key_response() :: #{binary() => any()}.
+-type put_geofence_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_matrix_entry() :: #{
+%%   <<"Distance">> => float(),
+%%   <<"DurationSeconds">> => float(),
+%%   <<"Error">> => route_matrix_entry_error()
+%% }
+-type route_matrix_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% route_matrix_entry_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => [string()]
+%% }
+-type route_matrix_entry_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_for_position_result() :: #{
+%%   <<"Distance">> => float(),
+%%   <<"Place">> => place(),
+%%   <<"PlaceId">> => string()
+%% }
+-type search_for_position_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_for_suggestions_result() :: #{
+%%   <<"Categories">> => list(string()),
+%%   <<"PlaceId">> => string(),
+%%   <<"SupplementalCategories">> => list(string()),
+%%   <<"Text">> => string()
+%% }
+-type search_for_suggestions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_for_text_result() :: #{
+%%   <<"Distance">> => float(),
+%%   <<"Place">> => place(),
+%%   <<"PlaceId">> => string(),
+%%   <<"Relevance">> => float()
+%% }
+-type search_for_text_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1874,514 +1580,808 @@
 
 
 %% Example:
-%% calculate_route_matrix_request() :: #{
-%%   <<"CarModeOptions">> => calculate_route_car_mode_options(),
-%%   <<"DepartNow">> => boolean(),
-%%   <<"DeparturePositions">> := list(list([float()]())()),
-%%   <<"DepartureTime">> => non_neg_integer(),
-%%   <<"DestinationPositions">> := list(list([float()]())()),
-%%   <<"DistanceUnit">> => string(),
+%% search_place_index_for_position_response() :: #{
+%%   <<"Results">> := list(search_for_position_result()),
+%%   <<"Summary">> := search_place_index_for_position_summary()
+%% }
+-type search_place_index_for_position_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_position_summary() :: #{
+%%   <<"DataSource">> => [string()],
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Position">> => list([float()]())
+%% }
+-type search_place_index_for_position_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_suggestions_request() :: #{
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"FilterBBox">> => list([float()]()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
 %%   <<"Key">> => string(),
-%%   <<"TravelMode">> => string(),
-%%   <<"TruckModeOptions">> => calculate_route_truck_mode_options()
-%% }
--type calculate_route_matrix_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_geofence_collection_response() :: #{}
--type delete_geofence_collection_response() :: #{}.
-
-
-%% Example:
-%% list_geofences_request() :: #{
+%%   <<"Language">> => string(),
 %%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
+%%   <<"Text">> := string()
 %% }
--type list_geofences_request() :: #{binary() => any()}.
+-type search_place_index_for_suggestions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_trackers_response_entry() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
+%% search_place_index_for_suggestions_response() :: #{
+%%   <<"Results">> := list(search_for_suggestions_result()),
+%%   <<"Summary">> := search_place_index_for_suggestions_summary()
+%% }
+-type search_place_index_for_suggestions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_suggestions_summary() :: #{
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"DataSource">> => [string()],
+%%   <<"FilterBBox">> => list([float()]()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"Text">> => string()
+%% }
+-type search_place_index_for_suggestions_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_text_request() :: #{
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"FilterBBox">> => list([float()]()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
+%%   <<"Key">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Text">> := string()
+%% }
+-type search_place_index_for_text_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_text_response() :: #{
+%%   <<"Results">> := list(search_for_text_result()),
+%%   <<"Summary">> := search_place_index_for_text_summary()
+%% }
+-type search_place_index_for_text_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_place_index_for_text_summary() :: #{
+%%   <<"BiasPosition">> => list([float()]()),
+%%   <<"DataSource">> => [string()],
+%%   <<"FilterBBox">> => list([float()]()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
+%%   <<"Language">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"ResultBBox">> => list([float()]()),
+%%   <<"Text">> => string()
+%% }
+-type search_place_index_for_text_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"ActionOptions">> => job_action_options(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"InputOptions">> := job_input_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputOptions">> := job_output_options(),
+%%   <<"Tags">> => map()
+%% }
+-type start_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_job_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"JobArn">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type start_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% step() :: #{
+%%   <<"Distance">> => float(),
+%%   <<"DurationSeconds">> => float(),
+%%   <<"EndPosition">> => list([float()]()),
+%%   <<"GeometryOffset">> => [integer()],
+%%   <<"StartPosition">> => list([float()]())
+%% }
+-type step() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_zone() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Offset">> => integer()
+%% }
+-type time_zone() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracking_filter_geometry() :: #{
+%%   <<"Polygon">> => list(list(list([float()]())())())
+%% }
+-type tracking_filter_geometry() :: #{binary() => any()}.
+
+
+%% Example:
+%% truck_dimensions() :: #{
+%%   <<"Height">> => float(),
+%%   <<"Length">> => float(),
+%%   <<"Unit">> => string(),
+%%   <<"Width">> => float()
+%% }
+-type truck_dimensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% truck_weight() :: #{
+%%   <<"Total">> => float(),
+%%   <<"Unit">> => string()
+%% }
+-type truck_weight() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_geofence_collection_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"PricingPlan">> => string(),
-%%   <<"PricingPlanDataSource">> => [string()],
-%%   <<"TrackerName">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
+%%   <<"PricingPlanDataSource">> => [string()]
 %% }
--type list_trackers_response_entry() :: #{binary() => any()}.
+-type update_geofence_collection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% forecast_geofence_events_response() :: #{
+%% update_geofence_collection_response() :: #{
+%%   <<"CollectionArn">> := string(),
+%%   <<"CollectionName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_geofence_collection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExpireTime">> => non_neg_integer(),
+%%   <<"ForceUpdate">> => [boolean()],
+%%   <<"NoExpiry">> => [boolean()],
+%%   <<"Restrictions">> => api_key_restrictions()
+%% }
+-type update_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_response() :: #{
+%%   <<"KeyArn">> := string(),
+%%   <<"KeyName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_map_request() :: #{
+%%   <<"ConfigurationUpdate">> => map_configuration_update(),
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string()
+%% }
+-type update_map_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_map_response() :: #{
+%%   <<"MapArn">> := string(),
+%%   <<"MapName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_map_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_place_index_request() :: #{
+%%   <<"DataSourceConfiguration">> => data_source_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string()
+%% }
+-type update_place_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_place_index_response() :: #{
+%%   <<"IndexArn">> := string(),
+%%   <<"IndexName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_place_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_calculator_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"PricingPlan">> => string()
+%% }
+-type update_route_calculator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_route_calculator_response() :: #{
+%%   <<"CalculatorArn">> := string(),
+%%   <<"CalculatorName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_route_calculator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tracker_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBridgeEnabled">> => [boolean()],
+%%   <<"KmsKeyEnableGeospatialQueries">> => [boolean()],
+%%   <<"PositionFiltering">> => string(),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PricingPlanDataSource">> => [string()]
+%% }
+-type update_tracker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tracker_response() :: #{
+%%   <<"TrackerArn">> := string(),
+%%   <<"TrackerName">> := string(),
+%%   <<"UpdateTime">> := non_neg_integer()
+%% }
+-type update_tracker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_address_action_options() :: #{
+%%   <<"AdditionalFeatures">> => list(string())
+%% }
+-type validate_address_action_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_device_position_request() :: #{
+%%   <<"DeviceState">> := device_state(),
+%%   <<"DistanceUnit">> => string()
+%% }
+-type verify_device_position_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_device_position_response() :: #{
+%%   <<"DeviceId">> => string(),
 %%   <<"DistanceUnit">> => string(),
-%%   <<"ForecastedEvents">> => list(forecasted_event()),
-%%   <<"NextToken">> => string(),
-%%   <<"SpeedUnit">> => string()
+%%   <<"InferredState">> => inferred_state(),
+%%   <<"ReceivedTime">> => non_neg_integer(),
+%%   <<"SampleTime">> => non_neg_integer()
 %% }
--type forecast_geofence_events_response() :: #{binary() => any()}.
+-type verify_device_position_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_output_options() :: #{
-%%   <<"Format">> => string(),
-%%   <<"Location">> => string()
+%% wi_fi_access_point() :: #{
+%%   <<"MacAddress">> => [string()],
+%%   <<"Rss">> => [integer()]
 %% }
--type job_output_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_device_position_history_request() :: #{
-%%   <<"DeviceIds">> := list(string())
-%% }
--type batch_delete_device_position_history_request() :: #{binary() => any()}.
+-type wi_fi_access_point() :: #{binary() => any()}.
 
 -type associate_tracker_consumer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_device_position_history_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_delete_geofence_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_evaluate_geofences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_device_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_put_geofence_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_update_device_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type calculate_route_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type calculate_route_matrix_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_geofence_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_map_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_place_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_route_calculator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_tracker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_geofence_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_map_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_place_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_route_calculator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_tracker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_geofence_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_map_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_place_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_route_calculator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_tracker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_tracker_consumer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type forecast_geofence_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_device_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_device_position_history_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_geofence_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_map_glyphs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_map_sprites_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_map_style_descriptor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_map_tile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_place_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_device_positions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_geofence_collections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_geofences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_keys_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_maps_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_place_indexes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_route_calculators_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tracker_consumers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_trackers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_geofence_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_place_index_for_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_place_index_for_suggestions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_place_index_for_text_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_geofence_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_map_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_place_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_route_calculator_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_tracker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type verify_device_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

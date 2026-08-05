@@ -45,68 +45,6 @@
 
 
 %% Example:
-%% resource_limit_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_limit_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_output() :: #{
-%%   <<"workload">> => workload_data()
-%% }
--type get_workload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_data() :: #{
-%%   <<"description">> => [string()],
-%%   <<"displayName">> => [string()],
-%%   <<"documentationUrl">> => [string()],
-%%   <<"iconUrl">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"workloadName">> => string()
-%% }
--type workload_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_pattern_version_data_summary() :: #{
-%%   <<"deploymentPatternName">> => [string()],
-%%   <<"deploymentPatternVersionName">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"documentationUrl">> => [string()],
-%%   <<"workloadName">> => [string()]
-%% }
--type deployment_pattern_version_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workloads_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_workloads_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_data_summary() :: #{
-%%   <<"displayName">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"workloadName">> => string()
-%% }
--type workload_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_output() :: #{
-%%   <<"deployment">> => deployment_data()
-%% }
--type get_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_deployment_input() :: #{
 %%   <<"deploymentPatternName">> := string(),
 %%   <<"dryRun">> => [boolean()],
@@ -119,108 +57,10 @@
 
 
 %% Example:
-%% get_deployment_pattern_version_input() :: #{
-%%   <<"deploymentPatternName">> := string(),
-%%   <<"deploymentPatternVersionName">> := string(),
-%%   <<"workloadName">> := string()
+%% create_deployment_output() :: #{
+%%   <<"deploymentId">> => string()
 %% }
--type get_deployment_pattern_version_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_input() :: #{
-%%   <<"deploymentId">> := string()
-%% }
--type get_deployment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type deployment_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_input() :: #{
-%%   <<"workloadName">> := string()
-%% }
--type get_workload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_pattern_versions_input() :: #{
-%%   <<"deploymentPatternName">> := string(),
-%%   <<"filters">> => list(deployment_pattern_version_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workloadName">> := string()
-%% }
--type list_deployment_pattern_versions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_event_data_summary() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type deployment_event_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_events_output() :: #{
-%%   <<"deploymentEvents">> => list(deployment_event_data_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deployment_pattern_version_output() :: #{
-%%   <<"deploymentPatternVersion">> => deployment_pattern_version_data_summary()
-%% }
--type get_deployment_pattern_version_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_deployment_output() :: #{
-%%   <<"deployment">> => deployment_data_summary()
-%% }
--type update_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_pattern_version_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type deployment_pattern_version_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workload_deployment_patterns_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary())
-%% }
--type list_workload_deployment_patterns_output() :: #{binary() => any()}.
+-type create_deployment_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -228,58 +68,6 @@
 %%   <<"deploymentId">> := string()
 %% }
 -type delete_deployment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_deployment_pattern_data_summary() :: #{
-%%   <<"deploymentPatternName">> => string(),
-%%   <<"deploymentPatternVersionName">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"displayName">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"workloadName">> => string(),
-%%   <<"workloadVersionName">> => string()
-%% }
--type workload_deployment_pattern_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_data_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"patternName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workloadName">> => string()
-%% }
--type deployment_data_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -291,96 +79,12 @@
 
 
 %% Example:
-%% list_workloads_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workloads">> => list(workload_data_summary())
-%% }
--type list_workloads_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% list_workload_deployment_patterns_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workloadName">> := string()
-%% }
--type list_workload_deployment_patterns_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% deployment_specifications_field() :: #{
-%%   <<"allowedValues">> => list(string()),
-%%   <<"conditionals">> => list(deployment_conditional_field()),
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"required">> => [string()]
-%% }
--type deployment_specifications_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_deployment_pattern_input() :: #{
-%%   <<"deploymentPatternName">> := string(),
-%%   <<"workloadName">> := string()
-%% }
--type get_workload_deployment_pattern_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_events_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_events_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% deployment_conditional_field() :: #{
 %%   <<"comparator">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"value">> => [string()]
 %% }
 -type deployment_conditional_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_output() :: #{
-%%   <<"deployments">> => list(deployment_data_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_output() :: #{
-%%   <<"deploymentId">> => string()
-%% }
--type create_deployment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_input() :: #{
-%%   <<"filters">> => list(deployment_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,18 +106,264 @@
 
 
 %% Example:
-%% workload_deployment_pattern_data() :: #{
-%%   <<"deploymentPatternName">> => string(),
-%%   <<"deploymentPatternVersionName">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"displayName">> => [string()],
-%%   <<"specifications">> => list(deployment_specifications_field()),
+%% deployment_data_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => [string()],
+%%   <<"patternName">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => [string()],
-%%   <<"workloadName">> => string(),
-%%   <<"workloadVersionName">> => string()
+%%   <<"workloadName">> => string()
 %% }
--type workload_deployment_pattern_data() :: #{binary() => any()}.
+-type deployment_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_event_data_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type deployment_event_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type deployment_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_pattern_version_data_summary() :: #{
+%%   <<"deploymentPatternName">> => [string()],
+%%   <<"deploymentPatternVersionName">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"documentationUrl">> => [string()],
+%%   <<"workloadName">> => [string()]
+%% }
+-type deployment_pattern_version_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_pattern_version_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type deployment_pattern_version_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_specifications_field() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"conditionals">> => list(deployment_conditional_field()),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"required">> => [string()]
+%% }
+-type deployment_specifications_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_input() :: #{
+%%   <<"deploymentId">> := string()
+%% }
+-type get_deployment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_output() :: #{
+%%   <<"deployment">> => deployment_data()
+%% }
+-type get_deployment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_pattern_version_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"deploymentPatternVersionName">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_deployment_pattern_version_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_deployment_pattern_version_output() :: #{
+%%   <<"deploymentPatternVersion">> => deployment_pattern_version_data_summary()
+%% }
+-type get_deployment_pattern_version_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_deployment_pattern_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_deployment_pattern_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_deployment_pattern_output() :: #{
+%%   <<"workloadDeploymentPattern">> => workload_deployment_pattern_data()
+%% }
+-type get_workload_deployment_pattern_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_input() :: #{
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_output() :: #{
+%%   <<"workload">> => workload_data()
+%% }
+-type get_workload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_events_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_events_output() :: #{
+%%   <<"deploymentEvents">> => list(deployment_event_data_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_pattern_versions_input() :: #{
+%%   <<"deploymentPatternName">> := string(),
+%%   <<"filters">> => list(deployment_pattern_version_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workloadName">> := string()
+%% }
+-type list_deployment_pattern_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_pattern_versions_output() :: #{
+%%   <<"deploymentPatternVersions">> => list(deployment_pattern_version_data_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_pattern_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_input() :: #{
+%%   <<"filters">> => list(deployment_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_output() :: #{
+%%   <<"deployments">> => list(deployment_data_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_deployment_patterns_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workloadName">> := string()
+%% }
+-type list_workload_deployment_patterns_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_deployment_patterns_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary())
+%% }
+-type list_workload_deployment_patterns_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workloads_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workloads_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workloads_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workloads">> => list(workload_data_summary())
+%% }
+-type list_workloads_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_limit_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -429,59 +379,109 @@
 
 
 %% Example:
-%% get_workload_deployment_pattern_output() :: #{
-%%   <<"workloadDeploymentPattern">> => workload_deployment_pattern_data()
+%% update_deployment_output() :: #{
+%%   <<"deployment">> => deployment_data_summary()
 %% }
--type get_workload_deployment_pattern_output() :: #{binary() => any()}.
+-type update_deployment_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_deployment_pattern_versions_output() :: #{
-%%   <<"deploymentPatternVersions">> => list(deployment_pattern_version_data_summary()),
-%%   <<"nextToken">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_deployment_pattern_versions_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_data() :: #{
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"documentationUrl">> => [string()],
+%%   <<"iconUrl">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"workloadName">> => string()
+%% }
+-type workload_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_data_summary() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"workloadName">> => string()
+%% }
+-type workload_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_deployment_pattern_data() :: #{
+%%   <<"deploymentPatternName">> => string(),
+%%   <<"deploymentPatternVersionName">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"specifications">> => list(deployment_specifications_field()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"workloadName">> => string(),
+%%   <<"workloadVersionName">> => string()
+%% }
+-type workload_deployment_pattern_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_deployment_pattern_data_summary() :: #{
+%%   <<"deploymentPatternName">> => string(),
+%%   <<"deploymentPatternVersionName">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => [string()],
+%%   <<"workloadName">> => string(),
+%%   <<"workloadVersionName">> => string()
+%% }
+-type workload_deployment_pattern_data_summary() :: #{binary() => any()}.
 
 -type create_deployment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_limit_exception().
+    resource_limit_exception() | 
+    internal_server_exception().
 
 -type delete_deployment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_limit_exception().
+    resource_limit_exception() | 
+    internal_server_exception().
 
 -type get_deployment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_deployment_pattern_version_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_workload_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_workload_deployment_pattern_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_deployment_events_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_deployment_pattern_versions_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_deployments_errors() ::
     validation_exception() | 
@@ -489,13 +489,13 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_workload_deployment_patterns_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_workloads_errors() ::
     validation_exception() | 
@@ -503,19 +503,19 @@
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_deployment_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    resource_limit_exception().
+    resource_limit_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

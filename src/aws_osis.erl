@@ -69,19 +69,160 @@
 
 
 %% Example:
-%% service_vpc_endpoint() :: #{
-%%   <<"ServiceName">> => list(any()),
-%%   <<"VpcEndpointId">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type service_vpc_endpoint() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% buffer_options() :: #{
+%%   <<"PersistentBufferEnabled">> => boolean()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type buffer_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_stage() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type change_progress_stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_progress_status() :: #{
+%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalNumberOfStages">> => integer()
+%% }
+-type change_progress_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log_destination() :: #{
+%%   <<"LogGroup">> => string()
+%% }
+-type cloud_watch_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_endpoint_request() :: #{
+%%   <<"PipelineArn">> := string(),
+%%   <<"VpcOptions">> := pipeline_endpoint_vpc_options()
+%% }
+-type create_pipeline_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_endpoint_response() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type create_pipeline_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_request() :: #{
+%%   <<"BufferOptions">> => buffer_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"LogPublishingOptions">> => log_publishing_options(),
+%%   <<"MaxUnits">> := integer(),
+%%   <<"MinUnits">> := integer(),
+%%   <<"PipelineConfigurationBody">> := string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"PipelineRoleArn">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcOptions">> => vpc_options()
+%% }
+-type create_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type create_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_endpoint_request() :: #{}
+-type delete_pipeline_endpoint_request() :: #{}.
+
+%% Example:
+%% delete_pipeline_endpoint_response() :: #{}
+-type delete_pipeline_endpoint_response() :: #{}.
+
+%% Example:
+%% delete_pipeline_request() :: #{}
+-type delete_pipeline_request() :: #{}.
+
+%% Example:
+%% delete_pipeline_response() :: #{}
+-type delete_pipeline_response() :: #{}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% disabled_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_operation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest_options() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_at_rest_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_pipeline_blueprint_request() :: #{
+%%   <<"Format">> => string()
+%% }
+-type get_pipeline_blueprint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_pipeline_blueprint_response() :: #{
+%%   <<"Blueprint">> => pipeline_blueprint(),
+%%   <<"Format">> => string()
+%% }
+-type get_pipeline_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_change_progress_request() :: #{}
+-type get_pipeline_change_progress_request() :: #{}.
+
+
+%% Example:
+%% get_pipeline_change_progress_response() :: #{
+%%   <<"ChangeProgressStatuses">> => list(change_progress_status())
+%% }
+-type get_pipeline_change_progress_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_request() :: #{}
+-type get_pipeline_request() :: #{}.
 
 
 %% Example:
@@ -91,8 +232,88 @@
 -type get_pipeline_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_blueprints_request() :: #{}
+-type list_pipeline_blueprints_request() :: #{}.
+
+
+%% Example:
+%% list_pipeline_blueprints_response() :: #{
+%%   <<"Blueprints">> => list(pipeline_blueprint_summary())
+%% }
+-type list_pipeline_blueprints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoint_connections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipeline_endpoint_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoint_connections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineEndpointConnections">> => list(pipeline_endpoint_connection())
+%% }
+-type list_pipeline_endpoint_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipeline_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoints_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineEndpoints">> => list(pipeline_endpoint())
+%% }
+-type list_pipeline_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipelines_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipelines_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -104,43 +325,25 @@
 
 
 %% Example:
-%% update_pipeline_response() :: #{
-%%   <<"Pipeline">> => pipeline()
+%% list_tags_for_resource_request() :: #{
+%%   <<"Arn">> := string()
 %% }
--type update_pipeline_response() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_pipelines_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
 %% }
--type list_pipelines_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% revoke_pipeline_endpoint_connections_response() :: #{
-%%   <<"PipelineArn">> => string()
+%% log_publishing_options() :: #{
+%%   <<"CloudWatchLogDestination">> => cloud_watch_log_destination(),
+%%   <<"IsLoggingEnabled">> => boolean()
 %% }
--type revoke_pipeline_endpoint_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pipeline_response() :: #{
-%%   <<"Pipeline">> => pipeline()
-%% }
--type create_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_pipeline_change_progress_response() :: #{
-%%   <<"ChangeProgressStatuses">> => list(change_progress_status())
-%% }
--type get_pipeline_change_progress_response() :: #{binary() => any()}.
+-type log_publishing_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -169,53 +372,34 @@
 
 
 %% Example:
-%% start_pipeline_response() :: #{
-%%   <<"Pipeline">> => pipeline()
+%% pipeline_blueprint() :: #{
+%%   <<"BlueprintName">> => string(),
+%%   <<"DisplayDescription">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"PipelineConfigurationBody">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"UseCase">> => string()
 %% }
--type start_pipeline_response() :: #{binary() => any()}.
+-type pipeline_blueprint() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_pipeline_endpoint_request() :: #{
-%%   <<"PipelineArn">> := string(),
-%%   <<"VpcOptions">> := pipeline_endpoint_vpc_options()
+%% pipeline_blueprint_summary() :: #{
+%%   <<"BlueprintName">> => string(),
+%%   <<"DisplayDescription">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"UseCase">> => string()
 %% }
--type create_pipeline_endpoint_request() :: #{binary() => any()}.
+-type pipeline_blueprint_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% pipeline_endpoint_connection() :: #{
-%%   <<"EndpointId">> => string(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcEndpointOwner">> => string()
+%% pipeline_destination() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"ServiceName">> => string()
 %% }
--type pipeline_endpoint_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disabled_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type disabled_operation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_progress_status() :: #{
-%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalNumberOfStages">> => integer()
-%% }
--type change_progress_status() :: #{binary() => any()}.
+-type pipeline_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -229,136 +413,30 @@
 %% }
 -type pipeline_endpoint() :: #{binary() => any()}.
 
-%% Example:
-%% delete_pipeline_endpoint_request() :: #{}
--type delete_pipeline_endpoint_request() :: #{}.
-
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% pipeline_endpoint_connection() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointOwner">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type pipeline_endpoint_connection() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_watch_log_destination() :: #{
-%%   <<"LogGroup">> => string()
+%% pipeline_endpoint_vpc_options() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type cloud_watch_log_destination() :: #{binary() => any()}.
-
-%% Example:
-%% start_pipeline_request() :: #{}
--type start_pipeline_request() :: #{}.
+-type pipeline_endpoint_vpc_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% buffer_options() :: #{
-%%   <<"PersistentBufferEnabled">> => boolean()
+%% pipeline_status_reason() :: #{
+%%   <<"Description">> => string()
 %% }
--type buffer_options() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipeline_blueprints_request() :: #{}
--type list_pipeline_blueprints_request() :: #{}.
-
-
-%% Example:
-%% list_pipeline_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(pipeline_blueprint_summary())
-%% }
--type list_pipeline_blueprints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pipeline_endpoint_connections_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineEndpointConnections">> => list(pipeline_endpoint_connection())
-%% }
--type list_pipeline_endpoint_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pipeline_endpoint_connections_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pipeline_endpoint_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pipeline_request() :: #{
-%%   <<"BufferOptions">> => buffer_options(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"LogPublishingOptions">> => log_publishing_options(),
-%%   <<"MaxUnits">> := integer(),
-%%   <<"MinUnits">> := integer(),
-%%   <<"PipelineConfigurationBody">> := string(),
-%%   <<"PipelineName">> := string(),
-%%   <<"PipelineRoleArn">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcOptions">> => vpc_options()
-%% }
--type create_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pipeline_request() :: #{
-%%   <<"BufferOptions">> => buffer_options(),
-%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"LogPublishingOptions">> => log_publishing_options(),
-%%   <<"MaxUnits">> => integer(),
-%%   <<"MinUnits">> => integer(),
-%%   <<"PipelineConfigurationBody">> => string(),
-%%   <<"PipelineRoleArn">> => string()
-%% }
--type update_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_pipeline_blueprint_request() :: #{
-%%   <<"Format">> => string()
-%% }
--type get_pipeline_blueprint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_request() :: #{}
--type delete_pipeline_request() :: #{}.
-
-
-%% Example:
-%% get_pipeline_blueprint_response() :: #{
-%%   <<"Blueprint">> => pipeline_blueprint(),
-%%   <<"Format">> => string()
-%% }
--type get_pipeline_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_change_progress_request() :: #{}
--type get_pipeline_change_progress_request() :: #{}.
+-type pipeline_status_reason() :: #{binary() => any()}.
 
 
 %% Example:
@@ -378,27 +456,166 @@
 
 
 %% Example:
-%% encryption_at_rest_options() :: #{
-%%   <<"KmsKeyArn">> => string()
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string()
 %% }
--type encryption_at_rest_options() :: #{binary() => any()}.
+-type put_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type put_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_pipeline_endpoint_response() :: #{
-%%   <<"EndpointId">> => string(),
-%%   <<"PipelineArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcId">> => string()
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_pipeline_endpoint_response() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_pipeline_endpoint_connections_request() :: #{
+%%   <<"EndpointIds">> := list(string()),
+%%   <<"PipelineArn">> := string()
+%% }
+-type revoke_pipeline_endpoint_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_pipeline_endpoint_connections_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type revoke_pipeline_endpoint_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_vpc_endpoint() :: #{
+%%   <<"ServiceName">> => list(any()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type service_vpc_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% start_pipeline_request() :: #{}
+-type start_pipeline_request() :: #{}.
+
+
+%% Example:
+%% start_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type start_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_pipeline_request() :: #{}
+-type stop_pipeline_request() :: #{}.
+
+
+%% Example:
+%% stop_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type stop_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_pipeline_request() :: #{
+%%   <<"BufferOptions">> => buffer_options(),
+%%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
+%%   <<"LogPublishingOptions">> => log_publishing_options(),
+%%   <<"MaxUnits">> => integer(),
+%%   <<"MinUnits">> => integer(),
+%%   <<"PipelineConfigurationBody">> => string(),
+%%   <<"PipelineRoleArn">> => string()
+%% }
+-type update_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pipeline_response() :: #{
+%%   <<"Pipeline">> => pipeline()
+%% }
+-type update_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_pipeline_request() :: #{
+%%   <<"PipelineConfigurationBody">> := string()
+%% }
+-type validate_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_pipeline_response() :: #{
+%%   <<"Errors">> => list(validation_message()),
+%%   <<"isValid">> => boolean()
+%% }
+-type validate_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_message() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_attachment_options() :: #{
+%%   <<"AttachToVpc">> => boolean(),
+%%   <<"CidrBlock">> => string()
+%% }
+-type vpc_attachment_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -411,159 +628,6 @@
 
 
 %% Example:
-%% pipeline_blueprint() :: #{
-%%   <<"BlueprintName">> => string(),
-%%   <<"DisplayDescription">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"PipelineConfigurationBody">> => string(),
-%%   <<"Service">> => string(),
-%%   <<"UseCase">> => string()
-%% }
--type pipeline_blueprint() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% log_publishing_options() :: #{
-%%   <<"CloudWatchLogDestination">> => cloud_watch_log_destination(),
-%%   <<"IsLoggingEnabled">> => boolean()
-%% }
--type log_publishing_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_blueprint_summary() :: #{
-%%   <<"BlueprintName">> => string(),
-%%   <<"DisplayDescription">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Service">> => string(),
-%%   <<"UseCase">> => string()
-%% }
--type pipeline_blueprint_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_pipeline_request() :: #{}
--type stop_pipeline_request() :: #{}.
-
-
-%% Example:
-%% change_progress_stage() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type change_progress_stage() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_message() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_endpoint_vpc_options() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type pipeline_endpoint_vpc_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_pipeline_endpoint_connections_request() :: #{
-%%   <<"EndpointIds">> := list(string()),
-%%   <<"PipelineArn">> := string()
-%% }
--type revoke_pipeline_endpoint_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pipeline_endpoints_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineEndpoints">> => list(pipeline_endpoint())
-%% }
--type list_pipeline_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% stop_pipeline_response() :: #{
-%%   <<"Pipeline">> => pipeline()
-%% }
--type stop_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_pipeline_response() :: #{
-%%   <<"Errors">> => list(validation_message()),
-%%   <<"isValid">> => boolean()
-%% }
--type validate_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_request() :: #{}
--type get_pipeline_request() :: #{}.
-
-
-%% Example:
-%% pipeline_status_reason() :: #{
-%%   <<"Description">> => string()
-%% }
--type pipeline_status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_destination() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"ServiceName">> => string()
-%% }
--type pipeline_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% vpc_options() :: #{
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string()),
@@ -572,232 +636,168 @@
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_endpoint_response() :: #{}
--type delete_pipeline_endpoint_response() :: #{}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{}
--type delete_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% list_pipeline_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pipeline_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_attachment_options() :: #{
-%%   <<"AttachToVpc">> => boolean(),
-%%   <<"CidrBlock">> => string()
-%% }
--type vpc_attachment_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_pipeline_request() :: #{
-%%   <<"PipelineConfigurationBody">> := string()
-%% }
--type validate_pipeline_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_response() :: #{}
--type delete_pipeline_response() :: #{}.
-
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
-
 -type create_pipeline_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     internal_exception() | 
-    resource_not_found_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type create_pipeline_endpoint_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type delete_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type delete_pipeline_endpoint_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_pipeline_blueprint_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_pipeline_change_progress_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_pipeline_blueprints_errors() ::
-    invalid_pagination_token_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    invalid_pagination_token_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_pipeline_endpoint_connections_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_pipeline_endpoints_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_pipelines_errors() ::
-    invalid_pagination_token_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    invalid_pagination_token_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type revoke_pipeline_endpoint_connections_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    limit_exceeded_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type start_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type stop_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    internal_exception() | 
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 -type update_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     conflict_exception() | 
-    disabled_operation_exception().
+    access_denied_exception().
 
 -type validate_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     internal_exception() | 
-    disabled_operation_exception().
+    disabled_operation_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

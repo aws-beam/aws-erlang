@@ -111,57 +111,48 @@
 
 
 %% Example:
-%% workflow_execution_infos() :: #{
-%%   <<"executionInfos">> => list(workflow_execution_info()),
-%%   <<"nextPageToken">> => string()
-%% }
--type workflow_execution_infos() :: #{binary() => any()}.
-
-%% Example:
-%% respond_decision_task_completed_input() :: #{
-%%   <<"decisions">> => list(decision()),
-%%   <<"executionContext">> => string(),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskListScheduleToStartTimeout">> => string(),
-%%   <<"taskToken">> := string()
-%% }
--type respond_decision_task_completed_input() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_type_detail() :: #{
-%%   <<"configuration">> => workflow_type_configuration(),
-%%   <<"typeInfo">> => workflow_type_info()
-%% }
--type workflow_type_detail() :: #{binary() => any()}.
-
-%% Example:
-%% timer_canceled_event_attributes() :: #{
-%%   <<"decisionTaskCompletedEventId">> => float(),
+%% activity_task() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"input">> => string(),
 %%   <<"startedEventId">> => float(),
-%%   <<"timerId">> => string()
+%%   <<"taskToken">> => string(),
+%%   <<"workflowExecution">> => workflow_execution()
 %% }
--type timer_canceled_event_attributes() :: #{binary() => any()}.
+-type activity_task() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_execution_cancel_requested_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"externalInitiatedEventId">> => float(),
-%%   <<"externalWorkflowExecution">> => workflow_execution()
+%% activity_task_cancel_requested_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float()
 %% }
--type workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
+-type activity_task_cancel_requested_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% activity_task_status() :: #{
-%%   <<"cancelRequested">> => boolean()
+%% activity_task_canceled_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"latestCancelRequestedEventId">> => float(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
 %% }
--type activity_task_status() :: #{binary() => any()}.
+-type activity_task_canceled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% undeprecate_workflow_type_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"workflowType">> := workflow_type()
+%% activity_task_completed_event_attributes() :: #{
+%%   <<"result">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
 %% }
--type undeprecate_workflow_type_input() :: #{binary() => any()}.
+-type activity_task_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_failed_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type activity_task_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% activity_task_scheduled_event_attributes() :: #{
@@ -180,16 +171,33 @@
 -type activity_task_scheduled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% count_closed_workflow_executions_input() :: #{
-%%   <<"closeStatusFilter">> => close_status_filter(),
-%%   <<"closeTimeFilter">> => execution_time_filter(),
-%%   <<"domain">> := string(),
-%%   <<"executionFilter">> => workflow_execution_filter(),
-%%   <<"startTimeFilter">> => execution_time_filter(),
-%%   <<"tagFilter">> => tag_filter(),
-%%   <<"typeFilter">> => workflow_type_filter()
+%% activity_task_started_event_attributes() :: #{
+%%   <<"identity">> => string(),
+%%   <<"scheduledEventId">> => float()
 %% }
--type count_closed_workflow_executions_input() :: #{binary() => any()}.
+-type activity_task_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_status() :: #{
+%%   <<"cancelRequested">> => boolean()
+%% }
+-type activity_task_status() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_timed_out_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type activity_task_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type activity_type() :: #{binary() => any()}.
 
 %% Example:
 %% activity_type_configuration() :: #{
@@ -203,60 +211,55 @@
 -type activity_type_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% lambda_function_completed_event_attributes() :: #{
-%%   <<"result">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float()
+%% activity_type_detail() :: #{
+%%   <<"configuration">> => activity_type_configuration(),
+%%   <<"typeInfo">> => activity_type_info()
 %% }
--type lambda_function_completed_event_attributes() :: #{binary() => any()}.
+-type activity_type_detail() :: #{binary() => any()}.
 
 %% Example:
-%% start_child_workflow_execution_decision_attributes() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"control">> => string(),
-%%   <<"executionStartToCloseTimeout">> => string(),
-%%   <<"input">> => string(),
-%%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string(),
-%%   <<"taskStartToCloseTimeout">> => string(),
-%%   <<"workflowId">> => string(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type start_child_workflow_execution_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_timed_out_event_attributes() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"timeoutType">> => list(any())
-%% }
--type workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_decision_task_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"identity">> => string(),
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"reverseOrder">> => boolean(),
-%%   <<"startAtPreviousStartedEvent">> => boolean(),
-%%   <<"taskList">> := task_list()
-%% }
--type poll_for_decision_task_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workflow_execution_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"execution">> := workflow_execution()
-%% }
--type describe_workflow_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% close_status_filter() :: #{
+%% activity_type_info() :: #{
+%%   <<"activityType">> => activity_type(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deprecationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type close_status_filter() :: #{binary() => any()}.
+-type activity_type_info() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type_infos() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"typeInfos">> => list(activity_type_info())
+%% }
+-type activity_type_infos() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_timer_decision_attributes() :: #{
+%%   <<"timerId">> => string()
+%% }
+-type cancel_timer_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_timer_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type cancel_timer_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_workflow_execution_decision_attributes() :: #{
+%%   <<"details">> => string()
+%% }
+-type cancel_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type cancel_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% child_workflow_execution_canceled_event_attributes() :: #{
@@ -269,83 +272,6 @@
 -type child_workflow_execution_canceled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% register_activity_type_input() :: #{
-%%   <<"defaultTaskHeartbeatTimeout">> => string(),
-%%   <<"defaultTaskList">> => task_list(),
-%%   <<"defaultTaskPriority">> => string(),
-%%   <<"defaultTaskScheduleToCloseTimeout">> => string(),
-%%   <<"defaultTaskScheduleToStartTimeout">> => string(),
-%%   <<"defaultTaskStartToCloseTimeout">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domain">> := string(),
-%%   <<"name">> := string(),
-%%   <<"version">> := string()
-%% }
--type register_activity_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_count() :: #{
-%%   <<"count">> => integer(),
-%%   <<"truncated">> => boolean()
-%% }
--type workflow_execution_count() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_started_event_attributes() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"continuedExecutionRunId">> => string(),
-%%   <<"executionStartToCloseTimeout">> => string(),
-%%   <<"input">> => string(),
-%%   <<"lambdaRole">> => string(),
-%%   <<"parentInitiatedEventId">> => float(),
-%%   <<"parentWorkflowExecution">> => workflow_execution(),
-%%   <<"tagList">> => list(string()),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string(),
-%%   <<"taskStartToCloseTimeout">> => string(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type workflow_execution_started_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_type_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type workflow_type_filter() :: #{binary() => any()}.
-
-%% Example:
-%% request_cancel_activity_task_decision_attributes() :: #{
-%%   <<"activityId">> => string()
-%% }
--type request_cancel_activity_task_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_workflow_execution_decision_attributes() :: #{
-%%   <<"details">> => string()
-%% }
--type cancel_workflow_execution_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% complete_workflow_execution_decision_attributes() :: #{
-%%   <<"result">> => string()
-%% }
--type complete_workflow_execution_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% external_workflow_execution_signaled_event_attributes() :: #{
-%%   <<"initiatedEventId">> => float(),
-%%   <<"workflowExecution">> => workflow_execution()
-%% }
--type external_workflow_execution_signaled_event_attributes() :: #{binary() => any()}.
-
-%% Example:
 %% child_workflow_execution_completed_event_attributes() :: #{
 %%   <<"initiatedEventId">> => float(),
 %%   <<"result">> => string(),
@@ -356,168 +282,61 @@
 -type child_workflow_execution_completed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% decision_task_timed_out_event_attributes() :: #{
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"timeoutType">> => list(any())
-%% }
--type decision_task_timed_out_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_canceled_event_attributes() :: #{
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"details">> => string()
-%% }
--type workflow_execution_canceled_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_configuration() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"executionStartToCloseTimeout">> => string(),
-%%   <<"lambdaRole">> => string(),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string(),
-%%   <<"taskStartToCloseTimeout">> => string()
-%% }
--type workflow_execution_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_type_infos() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"typeInfos">> => list(workflow_type_info())
-%% }
--type workflow_type_infos() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_already_started_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type workflow_execution_already_started_fault() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflow_types_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"registrationStatus">> := list(any()),
-%%   <<"reverseOrder">> => boolean()
-%% }
--type list_workflow_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% activity_task_canceled_event_attributes() :: #{
+%% child_workflow_execution_failed_event_attributes() :: #{
 %%   <<"details">> => string(),
-%%   <<"latestCancelRequestedEventId">> => float(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float()
-%% }
--type activity_task_canceled_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => list(resource_tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_lambda_function_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type schedule_lambda_function_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% respond_activity_task_failed_input() :: #{
-%%   <<"details">> => string(),
+%%   <<"initiatedEventId">> => float(),
 %%   <<"reason">> => string(),
-%%   <<"taskToken">> := string()
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
 %% }
--type respond_activity_task_failed_input() :: #{binary() => any()}.
+-type child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% execution_time_filter() :: #{
-%%   <<"latestDate">> => non_neg_integer(),
-%%   <<"oldestDate">> => non_neg_integer()
+%% child_workflow_execution_started_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
 %% }
--type execution_time_filter() :: #{binary() => any()}.
+-type child_workflow_execution_started_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_timer_failed_event_attributes() :: #{
+%% child_workflow_execution_terminated_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_timed_out_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any()),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% close_status_filter() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type close_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% complete_workflow_execution_decision_attributes() :: #{
+%%   <<"result">> => string()
+%% }
+-type complete_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% complete_workflow_execution_failed_event_attributes() :: #{
 %%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"timerId">> => string()
+%%   <<"decisionTaskCompletedEventId">> => float()
 %% }
--type cancel_timer_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% start_timer_decision_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"startToFireTimeout">> => string(),
-%%   <<"timerId">> => string()
-%% }
--type start_timer_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% type_not_deprecated_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type type_not_deprecated_fault() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_type_configuration() :: #{
-%%   <<"defaultChildPolicy">> => list(any()),
-%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
-%%   <<"defaultLambdaRole">> => string(),
-%%   <<"defaultTaskList">> => task_list(),
-%%   <<"defaultTaskPriority">> => string(),
-%%   <<"defaultTaskStartToCloseTimeout">> => string()
-%% }
--type workflow_type_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% register_domain_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(resource_tag()),
-%%   <<"workflowExecutionRetentionPeriodInDays">> := string()
-%% }
--type register_domain_input() :: #{binary() => any()}.
-
-%% Example:
-%% undeprecate_domain_input() :: #{
-%%   <<"name">> := string()
-%% }
--type undeprecate_domain_input() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_activity_task_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"identity">> => string(),
-%%   <<"taskList">> := task_list()
-%% }
--type poll_for_activity_task_input() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_scheduled_event_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"id">> => string(),
-%%   <<"input">> => string(),
-%%   <<"name">> => string(),
-%%   <<"startToCloseTimeout">> => string()
-%% }
--type lambda_function_scheduled_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% request_cancel_external_workflow_execution_decision_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type request_cancel_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
+-type complete_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% continue_as_new_workflow_execution_decision_attributes() :: #{
@@ -534,78 +353,47 @@
 -type continue_as_new_workflow_execution_decision_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% lambda_function_timed_out_event_attributes() :: #{
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"timeoutType">> => list(any())
+%% continue_as_new_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
 %% }
--type lambda_function_timed_out_event_attributes() :: #{binary() => any()}.
+-type continue_as_new_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% record_activity_task_heartbeat_input() :: #{
-%%   <<"details">> => string(),
-%%   <<"taskToken">> := string()
-%% }
--type record_activity_task_heartbeat_input() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workflow_execution_input() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"details">> => string(),
-%%   <<"domain">> := string(),
-%%   <<"reason">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> := string()
-%% }
--type terminate_workflow_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% respond_activity_task_completed_input() :: #{
-%%   <<"result">> => string(),
-%%   <<"taskToken">> := string()
-%% }
--type respond_activity_task_completed_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_open_workflow_executions_input() :: #{
+%% count_closed_workflow_executions_input() :: #{
+%%   <<"closeStatusFilter">> => close_status_filter(),
+%%   <<"closeTimeFilter">> => execution_time_filter(),
 %%   <<"domain">> := string(),
 %%   <<"executionFilter">> => workflow_execution_filter(),
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"reverseOrder">> => boolean(),
+%%   <<"startTimeFilter">> => execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type count_closed_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% count_open_workflow_executions_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
 %%   <<"startTimeFilter">> := execution_time_filter(),
 %%   <<"tagFilter">> => tag_filter(),
 %%   <<"typeFilter">> => workflow_type_filter()
 %% }
--type list_open_workflow_executions_input() :: #{binary() => any()}.
+-type count_open_workflow_executions_input() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_execution() :: #{
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type workflow_execution() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_domain_input() :: #{
-%%   <<"name">> := string()
-%% }
--type deprecate_domain_input() :: #{binary() => any()}.
-
-%% Example:
-%% register_workflow_type_input() :: #{
-%%   <<"defaultChildPolicy">> => list(any()),
-%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
-%%   <<"defaultLambdaRole">> => string(),
-%%   <<"defaultTaskList">> => task_list(),
-%%   <<"defaultTaskPriority">> => string(),
-%%   <<"defaultTaskStartToCloseTimeout">> => string(),
-%%   <<"description">> => string(),
+%% count_pending_activity_tasks_input() :: #{
 %%   <<"domain">> := string(),
-%%   <<"name">> := string(),
-%%   <<"version">> := string()
+%%   <<"taskList">> := task_list()
 %% }
--type register_workflow_type_input() :: #{binary() => any()}.
+-type count_pending_activity_tasks_input() :: #{binary() => any()}.
+
+%% Example:
+%% count_pending_decision_tasks_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"taskList">> := task_list()
+%% }
+-type count_pending_decision_tasks_input() :: #{binary() => any()}.
 
 %% Example:
 %% decision() :: #{
@@ -627,31 +415,35 @@
 -type decision() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_type_info() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"deprecationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type workflow_type_info() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_started_event_attributes() :: #{
-%%   <<"scheduledEventId">> => float()
-%% }
--type lambda_function_started_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% child_workflow_execution_failed_event_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"initiatedEventId">> => float(),
-%%   <<"reason">> => string(),
+%% decision_task() :: #{
+%%   <<"events">> => list(history_event()),
+%%   <<"nextPageToken">> => string(),
+%%   <<"previousStartedEventId">> => float(),
 %%   <<"startedEventId">> => float(),
+%%   <<"taskToken">> => string(),
 %%   <<"workflowExecution">> => workflow_execution(),
 %%   <<"workflowType">> => workflow_type()
 %% }
--type child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+-type decision_task() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_completed_event_attributes() :: #{
+%%   <<"executionContext">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskListScheduleToStartTimeout">> => string()
+%% }
+-type decision_task_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_scheduled_event_attributes() :: #{
+%%   <<"scheduleToStartTimeout">> => string(),
+%%   <<"startToCloseTimeout">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string()
+%% }
+-type decision_task_scheduled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% decision_task_started_event_attributes() :: #{
@@ -661,11 +453,293 @@
 -type decision_task_started_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% pending_task_count() :: #{
-%%   <<"count">> => integer(),
-%%   <<"truncated">> => boolean()
+%% decision_task_timed_out_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
 %% }
--type pending_task_count() :: #{binary() => any()}.
+-type decision_task_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% default_undefined_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type default_undefined_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type delete_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type delete_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type deprecate_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type deprecate_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type deprecate_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type describe_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type describe_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"execution">> := workflow_execution()
+%% }
+-type describe_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type describe_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% domain_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% domain_configuration() :: #{
+%%   <<"workflowExecutionRetentionPeriodInDays">> => string()
+%% }
+-type domain_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% domain_deprecated_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_deprecated_fault() :: #{binary() => any()}.
+
+%% Example:
+%% domain_detail() :: #{
+%%   <<"configuration">> => domain_configuration(),
+%%   <<"domainInfo">> => domain_info()
+%% }
+-type domain_detail() :: #{binary() => any()}.
+
+%% Example:
+%% domain_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type domain_info() :: #{binary() => any()}.
+
+%% Example:
+%% domain_infos() :: #{
+%%   <<"domainInfos">> => list(domain_info()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type domain_infos() :: #{binary() => any()}.
+
+%% Example:
+%% execution_time_filter() :: #{
+%%   <<"latestDate">> => non_neg_integer(),
+%%   <<"oldestDate">> => non_neg_integer()
+%% }
+-type execution_time_filter() :: #{binary() => any()}.
+
+%% Example:
+%% external_workflow_execution_cancel_requested_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution()
+%% }
+-type external_workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% external_workflow_execution_signaled_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution()
+%% }
+-type external_workflow_execution_signaled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% fail_workflow_execution_decision_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type fail_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% fail_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type fail_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_execution_history_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"execution">> := workflow_execution(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type get_workflow_execution_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% history() :: #{
+%%   <<"events">> => list(history_event()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type history() :: #{binary() => any()}.
+
+%% Example:
+%% history_event() :: #{
+%%   <<"activityTaskCancelRequestedEventAttributes">> => activity_task_cancel_requested_event_attributes(),
+%%   <<"activityTaskCanceledEventAttributes">> => activity_task_canceled_event_attributes(),
+%%   <<"activityTaskCompletedEventAttributes">> => activity_task_completed_event_attributes(),
+%%   <<"activityTaskFailedEventAttributes">> => activity_task_failed_event_attributes(),
+%%   <<"activityTaskScheduledEventAttributes">> => activity_task_scheduled_event_attributes(),
+%%   <<"activityTaskStartedEventAttributes">> => activity_task_started_event_attributes(),
+%%   <<"activityTaskTimedOutEventAttributes">> => activity_task_timed_out_event_attributes(),
+%%   <<"cancelTimerFailedEventAttributes">> => cancel_timer_failed_event_attributes(),
+%%   <<"cancelWorkflowExecutionFailedEventAttributes">> => cancel_workflow_execution_failed_event_attributes(),
+%%   <<"childWorkflowExecutionCanceledEventAttributes">> => child_workflow_execution_canceled_event_attributes(),
+%%   <<"childWorkflowExecutionCompletedEventAttributes">> => child_workflow_execution_completed_event_attributes(),
+%%   <<"childWorkflowExecutionFailedEventAttributes">> => child_workflow_execution_failed_event_attributes(),
+%%   <<"childWorkflowExecutionStartedEventAttributes">> => child_workflow_execution_started_event_attributes(),
+%%   <<"childWorkflowExecutionTerminatedEventAttributes">> => child_workflow_execution_terminated_event_attributes(),
+%%   <<"childWorkflowExecutionTimedOutEventAttributes">> => child_workflow_execution_timed_out_event_attributes(),
+%%   <<"completeWorkflowExecutionFailedEventAttributes">> => complete_workflow_execution_failed_event_attributes(),
+%%   <<"continueAsNewWorkflowExecutionFailedEventAttributes">> => continue_as_new_workflow_execution_failed_event_attributes(),
+%%   <<"decisionTaskCompletedEventAttributes">> => decision_task_completed_event_attributes(),
+%%   <<"decisionTaskScheduledEventAttributes">> => decision_task_scheduled_event_attributes(),
+%%   <<"decisionTaskStartedEventAttributes">> => decision_task_started_event_attributes(),
+%%   <<"decisionTaskTimedOutEventAttributes">> => decision_task_timed_out_event_attributes(),
+%%   <<"eventId">> => float(),
+%%   <<"eventTimestamp">> => non_neg_integer(),
+%%   <<"eventType">> => list(any()),
+%%   <<"externalWorkflowExecutionCancelRequestedEventAttributes">> => external_workflow_execution_cancel_requested_event_attributes(),
+%%   <<"externalWorkflowExecutionSignaledEventAttributes">> => external_workflow_execution_signaled_event_attributes(),
+%%   <<"failWorkflowExecutionFailedEventAttributes">> => fail_workflow_execution_failed_event_attributes(),
+%%   <<"lambdaFunctionCompletedEventAttributes">> => lambda_function_completed_event_attributes(),
+%%   <<"lambdaFunctionFailedEventAttributes">> => lambda_function_failed_event_attributes(),
+%%   <<"lambdaFunctionScheduledEventAttributes">> => lambda_function_scheduled_event_attributes(),
+%%   <<"lambdaFunctionStartedEventAttributes">> => lambda_function_started_event_attributes(),
+%%   <<"lambdaFunctionTimedOutEventAttributes">> => lambda_function_timed_out_event_attributes(),
+%%   <<"markerRecordedEventAttributes">> => marker_recorded_event_attributes(),
+%%   <<"recordMarkerFailedEventAttributes">> => record_marker_failed_event_attributes(),
+%%   <<"requestCancelActivityTaskFailedEventAttributes">> => request_cancel_activity_task_failed_event_attributes(),
+%%   <<"requestCancelExternalWorkflowExecutionFailedEventAttributes">> => request_cancel_external_workflow_execution_failed_event_attributes(),
+%%   <<"requestCancelExternalWorkflowExecutionInitiatedEventAttributes">> => request_cancel_external_workflow_execution_initiated_event_attributes(),
+%%   <<"scheduleActivityTaskFailedEventAttributes">> => schedule_activity_task_failed_event_attributes(),
+%%   <<"scheduleLambdaFunctionFailedEventAttributes">> => schedule_lambda_function_failed_event_attributes(),
+%%   <<"signalExternalWorkflowExecutionFailedEventAttributes">> => signal_external_workflow_execution_failed_event_attributes(),
+%%   <<"signalExternalWorkflowExecutionInitiatedEventAttributes">> => signal_external_workflow_execution_initiated_event_attributes(),
+%%   <<"startChildWorkflowExecutionFailedEventAttributes">> => start_child_workflow_execution_failed_event_attributes(),
+%%   <<"startChildWorkflowExecutionInitiatedEventAttributes">> => start_child_workflow_execution_initiated_event_attributes(),
+%%   <<"startLambdaFunctionFailedEventAttributes">> => start_lambda_function_failed_event_attributes(),
+%%   <<"startTimerFailedEventAttributes">> => start_timer_failed_event_attributes(),
+%%   <<"timerCanceledEventAttributes">> => timer_canceled_event_attributes(),
+%%   <<"timerFiredEventAttributes">> => timer_fired_event_attributes(),
+%%   <<"timerStartedEventAttributes">> => timer_started_event_attributes(),
+%%   <<"workflowExecutionCancelRequestedEventAttributes">> => workflow_execution_cancel_requested_event_attributes(),
+%%   <<"workflowExecutionCanceledEventAttributes">> => workflow_execution_canceled_event_attributes(),
+%%   <<"workflowExecutionCompletedEventAttributes">> => workflow_execution_completed_event_attributes(),
+%%   <<"workflowExecutionContinuedAsNewEventAttributes">> => workflow_execution_continued_as_new_event_attributes(),
+%%   <<"workflowExecutionFailedEventAttributes">> => workflow_execution_failed_event_attributes(),
+%%   <<"workflowExecutionSignaledEventAttributes">> => workflow_execution_signaled_event_attributes(),
+%%   <<"workflowExecutionStartedEventAttributes">> => workflow_execution_started_event_attributes(),
+%%   <<"workflowExecutionTerminatedEventAttributes">> => workflow_execution_terminated_event_attributes(),
+%%   <<"workflowExecutionTimedOutEventAttributes">> => workflow_execution_timed_out_event_attributes()
+%% }
+-type history_event() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_completed_event_attributes() :: #{
+%%   <<"result">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type lambda_function_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_failed_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_scheduled_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"id">> => string(),
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startToCloseTimeout">> => string()
+%% }
+-type lambda_function_scheduled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_started_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float()
+%% }
+-type lambda_function_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_timed_out_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type lambda_function_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_activity_types_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_activity_types_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_closed_workflow_executions_input() :: #{
@@ -683,14 +757,310 @@
 -type list_closed_workflow_executions_input() :: #{binary() => any()}.
 
 %% Example:
-%% decision_task_completed_event_attributes() :: #{
-%%   <<"executionContext">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskListScheduleToStartTimeout">> => string()
+%% list_domains_input() :: #{
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
 %% }
--type decision_task_completed_event_attributes() :: #{binary() => any()}.
+-type list_domains_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_workflow_executions_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"startTimeFilter">> := execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type list_open_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => list(resource_tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_types_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_workflow_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% marker_recorded_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"details">> => string(),
+%%   <<"markerName">> => string()
+%% }
+-type marker_recorded_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_permitted_fault() :: #{binary() => any()}.
+
+%% Example:
+%% pending_task_count() :: #{
+%%   <<"count">> => integer(),
+%%   <<"truncated">> => boolean()
+%% }
+-type pending_task_count() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_activity_task_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"identity">> => string(),
+%%   <<"taskList">> := task_list()
+%% }
+-type poll_for_activity_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_decision_task_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"identity">> => string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"startAtPreviousStartedEvent">> => boolean(),
+%%   <<"taskList">> := task_list()
+%% }
+-type poll_for_decision_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% record_activity_task_heartbeat_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type record_activity_task_heartbeat_input() :: #{binary() => any()}.
+
+%% Example:
+%% record_marker_decision_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"markerName">> => string()
+%% }
+-type record_marker_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% record_marker_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"markerName">> => string()
+%% }
+-type record_marker_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% register_activity_type_input() :: #{
+%%   <<"defaultTaskHeartbeatTimeout">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskScheduleToCloseTimeout">> => string(),
+%%   <<"defaultTaskScheduleToStartTimeout">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"name">> := string(),
+%%   <<"version">> := string()
+%% }
+-type register_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_domain_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(resource_tag()),
+%%   <<"workflowExecutionRetentionPeriodInDays">> := string()
+%% }
+-type register_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_workflow_type_input() :: #{
+%%   <<"defaultChildPolicy">> => list(any()),
+%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
+%%   <<"defaultLambdaRole">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"name">> := string(),
+%%   <<"version">> := string()
+%% }
+-type register_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_activity_task_decision_attributes() :: #{
+%%   <<"activityId">> => string()
+%% }
+-type request_cancel_activity_task_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_activity_task_failed_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type request_cancel_activity_task_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_initiated_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> := string()
+%% }
+-type request_cancel_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_canceled_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_canceled_input() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_completed_input() :: #{
+%%   <<"result">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_completed_input() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_failed_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_failed_input() :: #{binary() => any()}.
+
+%% Example:
+%% respond_decision_task_completed_input() :: #{
+%%   <<"decisions">> => list(decision()),
+%%   <<"executionContext">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskListScheduleToStartTimeout">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_decision_task_completed_input() :: #{binary() => any()}.
+
+%% Example:
+%% run() :: #{
+%%   <<"runId">> => string()
+%% }
+-type run() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_activity_task_decision_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"control">> => string(),
+%%   <<"heartbeatTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"scheduleToCloseTimeout">> => string(),
+%%   <<"scheduleToStartTimeout">> => string(),
+%%   <<"startToCloseTimeout">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string()
+%% }
+-type schedule_activity_task_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_activity_task_failed_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type schedule_activity_task_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_lambda_function_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"id">> => string(),
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startToCloseTimeout">> => string()
+%% }
+-type schedule_lambda_function_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_lambda_function_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type schedule_lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% signal_external_workflow_execution_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"input">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"signalName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type signal_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% signal_external_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type signal_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% signal_external_workflow_execution_initiated_event_attributes() :: #{
@@ -704,20 +1074,82 @@
 -type signal_external_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% record_marker_decision_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"markerName">> => string()
+%% signal_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"input">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"signalName">> := string(),
+%%   <<"workflowId">> := string()
 %% }
--type record_marker_decision_attributes() :: #{binary() => any()}.
+-type signal_workflow_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_execution_terminated_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
+%% start_child_workflow_execution_decision_attributes() :: #{
 %%   <<"childPolicy">> => list(any()),
-%%   <<"details">> => string(),
-%%   <<"reason">> => string()
+%%   <<"control">> => string(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
 %% }
--type workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
+-type start_child_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_child_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type start_child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_child_workflow_execution_initiated_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type start_child_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_lambda_function_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"scheduledEventId">> => float()
+%% }
+-type start_lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_timer_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"startToFireTimeout">> => string(),
+%%   <<"timerId">> => string()
+%% }
+-type start_timer_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_timer_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type start_timer_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% start_workflow_execution_input() :: #{
@@ -736,34 +1168,17 @@
 -type start_workflow_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% activity_task_timed_out_event_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"timeoutType">> => list(any())
+%% tag_filter() :: #{
+%%   <<"tag">> => string()
 %% }
--type activity_task_timed_out_event_attributes() :: #{binary() => any()}.
+-type tag_filter() :: #{binary() => any()}.
 
 %% Example:
-%% continue_as_new_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(resource_tag())
 %% }
--type continue_as_new_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% fail_workflow_execution_decision_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"reason">> => string()
-%% }
--type fail_workflow_execution_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% complete_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
-%% }
--type complete_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% task_list() :: #{
@@ -772,72 +1187,51 @@
 -type task_list() :: #{binary() => any()}.
 
 %% Example:
-%% deprecate_activity_type_input() :: #{
-%%   <<"activityType">> := activity_type(),
-%%   <<"domain">> := string()
+%% terminate_workflow_execution_input() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"details">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> := string()
 %% }
--type deprecate_activity_type_input() :: #{binary() => any()}.
+-type terminate_workflow_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_timer_decision_attributes() :: #{
+%% timer_canceled_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
 %%   <<"timerId">> => string()
 %% }
--type cancel_timer_decision_attributes() :: #{binary() => any()}.
+-type timer_canceled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% decision_task() :: #{
-%%   <<"events">> => list(history_event()),
-%%   <<"nextPageToken">> => string(),
-%%   <<"previousStartedEventId">> => float(),
+%% timer_fired_event_attributes() :: #{
 %%   <<"startedEventId">> => float(),
-%%   <<"taskToken">> => string(),
-%%   <<"workflowExecution">> => workflow_execution(),
-%%   <<"workflowType">> => workflow_type()
+%%   <<"timerId">> => string()
 %% }
--type decision_task() :: #{binary() => any()}.
+-type timer_fired_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% child_workflow_execution_timed_out_event_attributes() :: #{
-%%   <<"initiatedEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"timeoutType">> => list(any()),
-%%   <<"workflowExecution">> => workflow_execution(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type child_workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% fail_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
-%% }
--type fail_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_activity_task_decision_attributes() :: #{
-%%   <<"activityId">> => string(),
-%%   <<"activityType">> => activity_type(),
-%%   <<"control">> => string(),
-%%   <<"heartbeatTimeout">> => string(),
-%%   <<"input">> => string(),
-%%   <<"scheduleToCloseTimeout">> => string(),
-%%   <<"scheduleToStartTimeout">> => string(),
-%%   <<"startToCloseTimeout">> => string(),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string()
-%% }
--type schedule_activity_task_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% signal_external_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
+%% timer_started_event_attributes() :: #{
 %%   <<"control">> => string(),
 %%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"initiatedEventId">> => float(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string()
+%%   <<"startToFireTimeout">> => string(),
+%%   <<"timerId">> => string()
 %% }
--type signal_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+-type timer_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_fault() :: #{binary() => any()}.
+
+%% Example:
+%% type_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type type_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
 %% type_deprecated_fault() :: #{
@@ -846,21 +1240,112 @@
 -type type_deprecated_fault() :: #{binary() => any()}.
 
 %% Example:
-%% request_cancel_activity_task_failed_event_attributes() :: #{
-%%   <<"activityId">> => string(),
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
+%% type_not_deprecated_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type request_cancel_activity_task_failed_event_attributes() :: #{binary() => any()}.
+-type type_not_deprecated_fault() :: #{binary() => any()}.
 
 %% Example:
-%% schedule_activity_task_failed_event_attributes() :: #{
-%%   <<"activityId">> => string(),
-%%   <<"activityType">> => activity_type(),
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
+%% undeprecate_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
 %% }
--type schedule_activity_task_failed_event_attributes() :: #{binary() => any()}.
+-type undeprecate_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% undeprecate_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type undeprecate_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% undeprecate_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type undeprecate_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% unknown_resource_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type unknown_resource_fault() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution() :: #{
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type workflow_execution() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_already_started_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type workflow_execution_already_started_fault() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_cancel_requested_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"externalInitiatedEventId">> => float(),
+%%   <<"externalWorkflowExecution">> => workflow_execution()
+%% }
+-type workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_canceled_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"details">> => string()
+%% }
+-type workflow_execution_canceled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_completed_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"result">> => string()
+%% }
+-type workflow_execution_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_configuration() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string()
+%% }
+-type workflow_execution_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_continued_as_new_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"newExecutionRunId">> => string(),
+%%   <<"tagList">> => list(string()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_execution_continued_as_new_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_count() :: #{
+%%   <<"count">> => integer(),
+%%   <<"truncated">> => boolean()
+%% }
+-type workflow_execution_count() :: #{binary() => any()}.
 
 %% Example:
 %% workflow_execution_detail() :: #{
@@ -881,28 +1366,10 @@
 -type workflow_execution_failed_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% count_open_workflow_executions_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"executionFilter">> => workflow_execution_filter(),
-%%   <<"startTimeFilter">> := execution_time_filter(),
-%%   <<"tagFilter">> => tag_filter(),
-%%   <<"typeFilter">> => workflow_type_filter()
+%% workflow_execution_filter() :: #{
+%%   <<"workflowId">> => string()
 %% }
--type count_open_workflow_executions_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(resource_tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_type() :: #{
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type workflow_type() :: #{binary() => any()}.
+-type workflow_execution_filter() :: #{binary() => any()}.
 
 %% Example:
 %% workflow_execution_info() :: #{
@@ -919,371 +1386,11 @@
 -type workflow_execution_info() :: #{binary() => any()}.
 
 %% Example:
-%% activity_task() :: #{
-%%   <<"activityId">> => string(),
-%%   <<"activityType">> => activity_type(),
-%%   <<"input">> => string(),
-%%   <<"startedEventId">> => float(),
-%%   <<"taskToken">> => string(),
-%%   <<"workflowExecution">> => workflow_execution()
-%% }
--type activity_task() :: #{binary() => any()}.
-
-%% Example:
-%% history_event() :: #{
-%%   <<"startChildWorkflowExecutionFailedEventAttributes">> => start_child_workflow_execution_failed_event_attributes(),
-%%   <<"timerStartedEventAttributes">> => timer_started_event_attributes(),
-%%   <<"childWorkflowExecutionStartedEventAttributes">> => child_workflow_execution_started_event_attributes(),
-%%   <<"workflowExecutionFailedEventAttributes">> => workflow_execution_failed_event_attributes(),
-%%   <<"requestCancelActivityTaskFailedEventAttributes">> => request_cancel_activity_task_failed_event_attributes(),
-%%   <<"activityTaskStartedEventAttributes">> => activity_task_started_event_attributes(),
-%%   <<"externalWorkflowExecutionCancelRequestedEventAttributes">> => external_workflow_execution_cancel_requested_event_attributes(),
-%%   <<"activityTaskScheduledEventAttributes">> => activity_task_scheduled_event_attributes(),
-%%   <<"workflowExecutionCanceledEventAttributes">> => workflow_execution_canceled_event_attributes(),
-%%   <<"timerCanceledEventAttributes">> => timer_canceled_event_attributes(),
-%%   <<"decisionTaskTimedOutEventAttributes">> => decision_task_timed_out_event_attributes(),
-%%   <<"lambdaFunctionScheduledEventAttributes">> => lambda_function_scheduled_event_attributes(),
-%%   <<"childWorkflowExecutionFailedEventAttributes">> => child_workflow_execution_failed_event_attributes(),
-%%   <<"decisionTaskStartedEventAttributes">> => decision_task_started_event_attributes(),
-%%   <<"lambdaFunctionTimedOutEventAttributes">> => lambda_function_timed_out_event_attributes(),
-%%   <<"requestCancelExternalWorkflowExecutionFailedEventAttributes">> => request_cancel_external_workflow_execution_failed_event_attributes(),
-%%   <<"decisionTaskScheduledEventAttributes">> => decision_task_scheduled_event_attributes(),
-%%   <<"scheduleActivityTaskFailedEventAttributes">> => schedule_activity_task_failed_event_attributes(),
-%%   <<"cancelTimerFailedEventAttributes">> => cancel_timer_failed_event_attributes(),
-%%   <<"workflowExecutionCancelRequestedEventAttributes">> => workflow_execution_cancel_requested_event_attributes(),
-%%   <<"eventTimestamp">> => non_neg_integer(),
-%%   <<"markerRecordedEventAttributes">> => marker_recorded_event_attributes(),
-%%   <<"signalExternalWorkflowExecutionInitiatedEventAttributes">> => signal_external_workflow_execution_initiated_event_attributes(),
-%%   <<"childWorkflowExecutionTimedOutEventAttributes">> => child_workflow_execution_timed_out_event_attributes(),
-%%   <<"scheduleLambdaFunctionFailedEventAttributes">> => schedule_lambda_function_failed_event_attributes(),
-%%   <<"lambdaFunctionCompletedEventAttributes">> => lambda_function_completed_event_attributes(),
-%%   <<"childWorkflowExecutionTerminatedEventAttributes">> => child_workflow_execution_terminated_event_attributes(),
-%%   <<"continueAsNewWorkflowExecutionFailedEventAttributes">> => continue_as_new_workflow_execution_failed_event_attributes(),
-%%   <<"activityTaskTimedOutEventAttributes">> => activity_task_timed_out_event_attributes(),
-%%   <<"lambdaFunctionStartedEventAttributes">> => lambda_function_started_event_attributes(),
-%%   <<"externalWorkflowExecutionSignaledEventAttributes">> => external_workflow_execution_signaled_event_attributes(),
-%%   <<"workflowExecutionTerminatedEventAttributes">> => workflow_execution_terminated_event_attributes(),
-%%   <<"workflowExecutionSignaledEventAttributes">> => workflow_execution_signaled_event_attributes(),
-%%   <<"workflowExecutionContinuedAsNewEventAttributes">> => workflow_execution_continued_as_new_event_attributes(),
-%%   <<"decisionTaskCompletedEventAttributes">> => decision_task_completed_event_attributes(),
-%%   <<"activityTaskCompletedEventAttributes">> => activity_task_completed_event_attributes(),
-%%   <<"startChildWorkflowExecutionInitiatedEventAttributes">> => start_child_workflow_execution_initiated_event_attributes(),
-%%   <<"requestCancelExternalWorkflowExecutionInitiatedEventAttributes">> => request_cancel_external_workflow_execution_initiated_event_attributes(),
-%%   <<"timerFiredEventAttributes">> => timer_fired_event_attributes(),
-%%   <<"eventType">> => list(any()),
-%%   <<"failWorkflowExecutionFailedEventAttributes">> => fail_workflow_execution_failed_event_attributes(),
-%%   <<"recordMarkerFailedEventAttributes">> => record_marker_failed_event_attributes(),
-%%   <<"activityTaskFailedEventAttributes">> => activity_task_failed_event_attributes(),
-%%   <<"activityTaskCancelRequestedEventAttributes">> => activity_task_cancel_requested_event_attributes(),
-%%   <<"signalExternalWorkflowExecutionFailedEventAttributes">> => signal_external_workflow_execution_failed_event_attributes(),
-%%   <<"childWorkflowExecutionCompletedEventAttributes">> => child_workflow_execution_completed_event_attributes(),
-%%   <<"childWorkflowExecutionCanceledEventAttributes">> => child_workflow_execution_canceled_event_attributes(),
-%%   <<"workflowExecutionCompletedEventAttributes">> => workflow_execution_completed_event_attributes(),
-%%   <<"workflowExecutionTimedOutEventAttributes">> => workflow_execution_timed_out_event_attributes(),
-%%   <<"cancelWorkflowExecutionFailedEventAttributes">> => cancel_workflow_execution_failed_event_attributes(),
-%%   <<"eventId">> => float(),
-%%   <<"completeWorkflowExecutionFailedEventAttributes">> => complete_workflow_execution_failed_event_attributes(),
-%%   <<"activityTaskCanceledEventAttributes">> => activity_task_canceled_event_attributes(),
-%%   <<"lambdaFunctionFailedEventAttributes">> => lambda_function_failed_event_attributes(),
-%%   <<"startLambdaFunctionFailedEventAttributes">> => start_lambda_function_failed_event_attributes(),
-%%   <<"startTimerFailedEventAttributes">> => start_timer_failed_event_attributes(),
-%%   <<"workflowExecutionStartedEventAttributes">> => workflow_execution_started_event_attributes()
-%% }
--type history_event() :: #{binary() => any()}.
-
-%% Example:
-%% domain_configuration() :: #{
-%%   <<"workflowExecutionRetentionPeriodInDays">> => string()
-%% }
--type domain_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_lambda_function_decision_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"id">> => string(),
-%%   <<"input">> => string(),
-%%   <<"name">> => string(),
-%%   <<"startToCloseTimeout">> => string()
-%% }
--type schedule_lambda_function_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% request_cancel_workflow_execution_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> := string()
-%% }
--type request_cancel_workflow_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_timer_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"timerId">> => string()
-%% }
--type start_timer_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% domain_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type domain_info() :: #{binary() => any()}.
-
-%% Example:
-%% timer_fired_event_attributes() :: #{
-%%   <<"startedEventId">> => float(),
-%%   <<"timerId">> => string()
-%% }
--type timer_fired_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% respond_activity_task_canceled_input() :: #{
-%%   <<"details">> => string(),
-%%   <<"taskToken">> := string()
-%% }
--type respond_activity_task_canceled_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_activity_types_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"registrationStatus">> := list(any()),
-%%   <<"reverseOrder">> => boolean()
-%% }
--type list_activity_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% domain_detail() :: #{
-%%   <<"configuration">> => domain_configuration(),
-%%   <<"domainInfo">> => domain_info()
-%% }
--type domain_detail() :: #{binary() => any()}.
-
-%% Example:
-%% unknown_resource_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type unknown_resource_fault() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% activity_type() :: #{
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type activity_type() :: #{binary() => any()}.
-
-%% Example:
-%% activity_type_infos() :: #{
-%%   <<"nextPageToken">> => string(),
-%%   <<"typeInfos">> => list(activity_type_info())
-%% }
--type activity_type_infos() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_fault() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_failed_event_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float()
-%% }
--type lambda_function_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% domain_infos() :: #{
-%%   <<"domainInfos">> => list(domain_info()),
+%% workflow_execution_infos() :: #{
+%%   <<"executionInfos">> => list(workflow_execution_info()),
 %%   <<"nextPageToken">> => string()
 %% }
--type domain_infos() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_filter() :: #{
-%%   <<"workflowId">> => string()
-%% }
--type workflow_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_completed_event_attributes() :: #{
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"result">> => string()
-%% }
--type workflow_execution_completed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% signal_workflow_execution_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"input">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"signalName">> := string(),
-%%   <<"workflowId">> := string()
-%% }
--type signal_workflow_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% request_cancel_external_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"initiatedEventId">> => float(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type request_cancel_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_permitted_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_not_permitted_fault() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_input() :: #{
-%%   <<"name">> := string()
-%% }
--type describe_domain_input() :: #{binary() => any()}.
-
-%% Example:
-%% activity_type_info() :: #{
-%%   <<"activityType">> => activity_type(),
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"deprecationDate">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type activity_type_info() :: #{binary() => any()}.
-
-%% Example:
-%% request_cancel_external_workflow_execution_initiated_event_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type request_cancel_external_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% external_workflow_execution_cancel_requested_event_attributes() :: #{
-%%   <<"initiatedEventId">> => float(),
-%%   <<"workflowExecution">> => workflow_execution()
-%% }
--type external_workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% child_workflow_execution_terminated_event_attributes() :: #{
-%%   <<"initiatedEventId">> => float(),
-%%   <<"startedEventId">> => float(),
-%%   <<"workflowExecution">> => workflow_execution(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type child_workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% domain_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type domain_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% activity_task_completed_event_attributes() :: #{
-%%   <<"result">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float()
-%% }
--type activity_task_completed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% decision_task_scheduled_event_attributes() :: #{
-%%   <<"scheduleToStartTimeout">> => string(),
-%%   <<"startToCloseTimeout">> => string(),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string()
-%% }
--type decision_task_scheduled_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% count_pending_decision_tasks_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"taskList">> := task_list()
-%% }
--type count_pending_decision_tasks_input() :: #{binary() => any()}.
-
-%% Example:
-%% activity_task_started_event_attributes() :: #{
-%%   <<"identity">> => string(),
-%%   <<"scheduledEventId">> => float()
-%% }
--type activity_task_started_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% start_child_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"initiatedEventId">> => float(),
-%%   <<"workflowId">> => string(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type start_child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% count_pending_activity_tasks_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"taskList">> := task_list()
-%% }
--type count_pending_activity_tasks_input() :: #{binary() => any()}.
-
-%% Example:
-%% undeprecate_activity_type_input() :: #{
-%%   <<"activityType">> := activity_type(),
-%%   <<"domain">> := string()
-%% }
--type undeprecate_activity_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% timer_started_event_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"startToFireTimeout">> => string(),
-%%   <<"timerId">> => string()
-%% }
--type timer_started_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% activity_task_cancel_requested_event_attributes() :: #{
-%%   <<"activityId">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float()
-%% }
--type activity_task_cancel_requested_event_attributes() :: #{binary() => any()}.
+-type workflow_execution_infos() :: #{binary() => any()}.
 
 %% Example:
 %% workflow_execution_open_counts() :: #{
@@ -1296,139 +1403,6 @@
 -type workflow_execution_open_counts() :: #{binary() => any()}.
 
 %% Example:
-%% describe_activity_type_input() :: #{
-%%   <<"activityType">> := activity_type(),
-%%   <<"domain">> := string()
-%% }
--type describe_activity_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_execution_continued_as_new_event_attributes() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"executionStartToCloseTimeout">> => string(),
-%%   <<"input">> => string(),
-%%   <<"lambdaRole">> => string(),
-%%   <<"newExecutionRunId">> => string(),
-%%   <<"tagList">> => list(string()),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string(),
-%%   <<"taskStartToCloseTimeout">> => string(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type workflow_execution_continued_as_new_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% marker_recorded_event_attributes() :: #{
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"details">> => string(),
-%%   <<"markerName">> => string()
-%% }
--type marker_recorded_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% record_marker_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"markerName">> => string()
-%% }
--type record_marker_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% start_lambda_function_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"scheduledEventId">> => float()
-%% }
--type start_lambda_function_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% history() :: #{
-%%   <<"events">> => list(history_event()),
-%%   <<"nextPageToken">> => string()
-%% }
--type history() :: #{binary() => any()}.
-
-%% Example:
-%% activity_type_detail() :: #{
-%%   <<"configuration">> => activity_type_configuration(),
-%%   <<"typeInfo">> => activity_type_info()
-%% }
--type activity_type_detail() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_workflow_type_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"workflowType">> := workflow_type()
-%% }
--type deprecate_workflow_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_child_workflow_execution_initiated_event_attributes() :: #{
-%%   <<"childPolicy">> => list(any()),
-%%   <<"control">> => string(),
-%%   <<"decisionTaskCompletedEventId">> => float(),
-%%   <<"executionStartToCloseTimeout">> => string(),
-%%   <<"input">> => string(),
-%%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()),
-%%   <<"taskList">> => task_list(),
-%%   <<"taskPriority">> => string(),
-%%   <<"taskStartToCloseTimeout">> => string(),
-%%   <<"workflowId">> => string(),
-%%   <<"workflowType">> => workflow_type()
-%% }
--type start_child_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% type_already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type type_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% tag_filter() :: #{
-%%   <<"tag">> => string()
-%% }
--type tag_filter() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_workflow_execution_failed_event_attributes() :: #{
-%%   <<"cause">> => list(any()),
-%%   <<"decisionTaskCompletedEventId">> => float()
-%% }
--type cancel_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_execution_history_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"execution">> := workflow_execution(),
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"reverseOrder">> => boolean()
-%% }
--type get_workflow_execution_history_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_input() :: #{
-%%   <<"maximumPageSize">> => integer(),
-%%   <<"nextPageToken">> => string(),
-%%   <<"registrationStatus">> := list(any()),
-%%   <<"reverseOrder">> => boolean()
-%% }
--type list_domains_input() :: #{binary() => any()}.
-
-%% Example:
-%% signal_external_workflow_execution_decision_attributes() :: #{
-%%   <<"control">> => string(),
-%%   <<"input">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"signalName">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type signal_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
-
-%% Example:
 %% workflow_execution_signaled_event_attributes() :: #{
 %%   <<"externalInitiatedEventId">> => float(),
 %%   <<"externalWorkflowExecution">> => workflow_execution(),
@@ -1438,238 +1412,264 @@
 -type workflow_execution_signaled_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% domain_deprecated_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type domain_deprecated_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_type_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"workflowType">> := workflow_type()
-%% }
--type delete_workflow_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workflow_type_input() :: #{
-%%   <<"domain">> := string(),
-%%   <<"workflowType">> := workflow_type()
-%% }
--type describe_workflow_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% default_undefined_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type default_undefined_fault() :: #{binary() => any()}.
-
-%% Example:
-%% activity_task_failed_event_attributes() :: #{
-%%   <<"details">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"scheduledEventId">> => float(),
-%%   <<"startedEventId">> => float()
-%% }
--type activity_task_failed_event_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% run() :: #{
-%%   <<"runId">> => string()
-%% }
--type run() :: #{binary() => any()}.
-
-%% Example:
-%% child_workflow_execution_started_event_attributes() :: #{
-%%   <<"initiatedEventId">> => float(),
-%%   <<"workflowExecution">> => workflow_execution(),
+%% workflow_execution_started_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"continuedExecutionRunId">> => string(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"parentInitiatedEventId">> => float(),
+%%   <<"parentWorkflowExecution">> => workflow_execution(),
+%%   <<"tagList">> => list(string()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
 %%   <<"workflowType">> => workflow_type()
 %% }
--type child_workflow_execution_started_event_attributes() :: #{binary() => any()}.
+-type workflow_execution_started_event_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% delete_activity_type_input() :: #{
-%%   <<"activityType">> := activity_type(),
-%%   <<"domain">> := string()
+%% workflow_execution_terminated_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"childPolicy">> => list(any()),
+%%   <<"details">> => string(),
+%%   <<"reason">> => string()
 %% }
--type delete_activity_type_input() :: #{binary() => any()}.
+-type workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_timed_out_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type workflow_type() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_configuration() :: #{
+%%   <<"defaultChildPolicy">> => list(any()),
+%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
+%%   <<"defaultLambdaRole">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string()
+%% }
+-type workflow_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_detail() :: #{
+%%   <<"configuration">> => workflow_type_configuration(),
+%%   <<"typeInfo">> => workflow_type_info()
+%% }
+-type workflow_type_detail() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type workflow_type_filter() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_info() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deprecationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_type_info() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_infos() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"typeInfos">> => list(workflow_type_info())
+%% }
+-type workflow_type_infos() :: #{binary() => any()}.
 
 -type count_closed_workflow_executions_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type count_open_workflow_executions_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type count_pending_activity_tasks_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type count_pending_decision_tasks_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type delete_activity_type_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
-    type_not_deprecated_fault().
+    type_not_deprecated_fault() | 
+    operation_not_permitted_fault().
 
 -type delete_workflow_type_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
-    type_not_deprecated_fault().
+    type_not_deprecated_fault() | 
+    operation_not_permitted_fault().
 
 -type deprecate_activity_type_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
-    type_deprecated_fault().
+    type_deprecated_fault() | 
+    operation_not_permitted_fault().
 
 -type deprecate_domain_errors() ::
-    domain_deprecated_fault() | 
+    unknown_resource_fault() | 
     operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    domain_deprecated_fault().
 
 -type deprecate_workflow_type_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
-    type_deprecated_fault().
+    type_deprecated_fault() | 
+    operation_not_permitted_fault().
 
 -type describe_activity_type_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type describe_domain_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type describe_workflow_execution_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type describe_workflow_type_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type get_workflow_execution_history_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type list_activity_types_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type list_closed_workflow_executions_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type list_domains_errors() ::
     operation_not_permitted_fault().
 
 -type list_open_workflow_executions_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type list_tags_for_resource_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
+    operation_not_permitted_fault() | 
     limit_exceeded_fault().
 
 -type list_workflow_types_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type poll_for_activity_task_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
+    operation_not_permitted_fault() | 
     limit_exceeded_fault().
 
 -type poll_for_decision_task_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
+    operation_not_permitted_fault() | 
     limit_exceeded_fault().
 
 -type record_activity_task_heartbeat_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type register_activity_type_errors() ::
+    unknown_resource_fault() | 
     type_already_exists_fault() | 
     operation_not_permitted_fault() | 
-    unknown_resource_fault() | 
     limit_exceeded_fault().
 
 -type register_domain_errors() ::
-    domain_already_exists_fault() | 
-    operation_not_permitted_fault() | 
     too_many_tags_fault() | 
-    limit_exceeded_fault().
+    operation_not_permitted_fault() | 
+    limit_exceeded_fault() | 
+    domain_already_exists_fault().
 
 -type register_workflow_type_errors() ::
+    unknown_resource_fault() | 
     type_already_exists_fault() | 
     operation_not_permitted_fault() | 
-    unknown_resource_fault() | 
     limit_exceeded_fault().
 
 -type request_cancel_workflow_execution_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type respond_activity_task_canceled_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type respond_activity_task_completed_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type respond_activity_task_failed_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type respond_decision_task_completed_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type signal_workflow_execution_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type start_workflow_execution_errors() ::
-    default_undefined_fault() | 
-    operation_not_permitted_fault() | 
+    workflow_execution_already_started_fault() | 
     unknown_resource_fault() | 
     type_deprecated_fault() | 
-    workflow_execution_already_started_fault() | 
-    limit_exceeded_fault().
+    operation_not_permitted_fault() | 
+    limit_exceeded_fault() | 
+    default_undefined_fault().
 
 -type tag_resource_errors() ::
-    operation_not_permitted_fault() | 
-    too_many_tags_fault() | 
     unknown_resource_fault() | 
+    too_many_tags_fault() | 
+    operation_not_permitted_fault() | 
     limit_exceeded_fault().
 
 -type terminate_workflow_execution_errors() ::
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    unknown_resource_fault() | 
+    operation_not_permitted_fault().
 
 -type undeprecate_activity_type_errors() ::
+    unknown_resource_fault() | 
     type_already_exists_fault() | 
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    operation_not_permitted_fault().
 
 -type undeprecate_domain_errors() ::
-    domain_already_exists_fault() | 
+    unknown_resource_fault() | 
     operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    domain_already_exists_fault().
 
 -type undeprecate_workflow_type_errors() ::
+    unknown_resource_fault() | 
     type_already_exists_fault() | 
-    operation_not_permitted_fault() | 
-    unknown_resource_fault().
+    operation_not_permitted_fault().
 
 -type untag_resource_errors() ::
-    operation_not_permitted_fault() | 
     unknown_resource_fault() | 
+    operation_not_permitted_fault() | 
     limit_exceeded_fault().
 
 %%====================================================================

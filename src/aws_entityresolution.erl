@@ -116,94 +116,12 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% get_id_mapping_job_input() :: #{}
--type get_id_mapping_job_input() :: #{}.
-
 
 %% Example:
-%% list_provider_services_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"providerName">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_provider_services_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_matching_job_input() :: #{}
--type start_matching_job_input() :: #{}.
-
-
-%% Example:
-%% id_mapping_techniques() :: #{
-%%   <<"idMappingType">> => list(any()),
-%%   <<"providerProperties">> => provider_properties(),
-%%   <<"ruleBasedProperties">> => id_mapping_rule_based_properties()
-%% }
--type id_mapping_techniques() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_source() :: #{
-%%   <<"applyNormalization">> => [boolean()],
-%%   <<"inputSourceARN">> => string(),
-%%   <<"schemaName">> => string()
-%% }
--type input_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_matching_workflow_input() :: #{}
--type delete_matching_workflow_input() :: #{}.
-
-
-%% Example:
-%% get_match_id_output() :: #{
-%%   <<"matchId">> => [string()],
-%%   <<"matchRule">> => [string()]
-%% }
--type get_match_id_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resolution_techniques() :: #{
-%%   <<"providerProperties">> => provider_properties(),
-%%   <<"resolutionType">> => list(any()),
-%%   <<"ruleBasedProperties">> => rule_based_properties(),
-%%   <<"ruleConditionProperties">> => rule_condition_properties()
-%% }
--type resolution_techniques() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_profiles_integration_config() :: #{
-%%   <<"domainArn">> => string(),
-%%   <<"objectTypeArn">> => string()
-%% }
--type customer_profiles_integration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_schema_mapping_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"mappedInputFields">> => list(schema_input_attribute()),
-%%   <<"schemaArn">> => string(),
-%%   <<"schemaName">> => string()
-%% }
--type update_schema_mapping_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deleted_unique_id() :: #{
-%%   <<"uniqueId">> => string()
-%% }
--type deleted_unique_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_id_mapping_workflow_output() :: #{
-%%   <<"message">> => [string()]
-%% }
--type delete_id_mapping_workflow_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -217,120 +135,132 @@
 
 
 %% Example:
-%% update_schema_mapping_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"mappedInputFields">> := list(schema_input_attribute())
+%% add_policy_statement_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
 %% }
--type update_schema_mapping_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_input() :: #{}
--type get_policy_input() :: #{}.
+-type add_policy_statement_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_matching_workflow_input() :: #{
+%% batch_delete_unique_id_input() :: #{
+%%   <<"inputSource">> => [string()],
+%%   <<"uniqueIds">> := list(string())
+%% }
+-type batch_delete_unique_id_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_unique_id_output() :: #{
+%%   <<"deleted">> => list(deleted_unique_id()),
+%%   <<"disconnectedUniqueIds">> => list(string()),
+%%   <<"errors">> => list(delete_unique_id_error()),
+%%   <<"status">> => list(any())
+%% }
+-type batch_delete_unique_id_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_mapping_workflow_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingTechniques">> := id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
+%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"workflowName">> := string()
+%% }
+-type create_id_mapping_workflow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_mapping_workflow_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingTechniques">> => id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
+%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"workflowArn">> => string(),
+%%   <<"workflowName">> => string()
+%% }
+-type create_id_mapping_workflow_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_namespace_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
+%%   <<"idNamespaceName">> := string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_id_namespace_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_id_namespace_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_id_namespace_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_matching_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
 %%   <<"inputSourceConfig">> := list(input_source()),
 %%   <<"outputSourceConfig">> := list(output_source()),
 %%   <<"resolutionTechniques">> := resolution_techniques(),
-%%   <<"roleArn">> := [string()]
+%%   <<"roleArn">> := [string()],
+%%   <<"tags">> => map(),
+%%   <<"workflowName">> := string()
 %% }
--type update_matching_workflow_input() :: #{binary() => any()}.
+-type create_matching_workflow_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% provider_service_summary() :: #{
-%%   <<"providerName">> => string(),
-%%   <<"providerServiceArn">> => string(),
-%%   <<"providerServiceDisplayName">> => string(),
-%%   <<"providerServiceName">> => string(),
-%%   <<"providerServiceType">> => list(any())
+%% create_matching_workflow_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"incrementalRunConfig">> => incremental_run_config(),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
+%%   <<"resolutionTechniques">> => resolution_techniques(),
+%%   <<"roleArn">> => [string()],
+%%   <<"workflowArn">> => string(),
+%%   <<"workflowName">> => string()
 %% }
--type provider_service_summary() :: #{binary() => any()}.
+-type create_matching_workflow_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_schema_mappings_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"schemaList">> => list(schema_mapping_summary())
+%% create_schema_mapping_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"mappedInputFields">> := list(schema_input_attribute()),
+%%   <<"schemaName">> := string(),
+%%   <<"tags">> => map()
 %% }
--type list_schema_mappings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_attribute() :: #{
-%%   <<"hashed">> => [boolean()],
-%%   <<"name">> => string()
-%% }
--type output_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_matching_job_output() :: #{
-%%   <<"jobId">> => string()
-%% }
--type start_matching_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% exceeds_limit_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaName">> => [string()],
-%%   <<"quotaValue">> => [integer()]
-%% }
--type exceeds_limit_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_mapping_input() :: #{}
--type delete_schema_mapping_input() :: #{}.
-
-
-%% Example:
-%% put_policy_input() :: #{
-%%   <<"policy">> := string(),
-%%   <<"token">> => string()
-%% }
--type put_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_policy_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"token">> => string()
-%% }
--type put_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_mapping_jobs_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_id_mapping_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_id_mapping_workflow_input() :: #{}
--type delete_id_mapping_workflow_input() :: #{}.
-
-
-%% Example:
-%% list_id_namespaces_output() :: #{
-%%   <<"idNamespaceSummaries">> => list(id_namespace_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_id_namespaces_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_namespace_id_mapping_workflow_properties() :: #{
-%%   <<"idMappingType">> => list(any()),
-%%   <<"providerProperties">> => namespace_provider_properties(),
-%%   <<"ruleBasedProperties">> => namespace_rule_based_properties()
-%% }
--type id_namespace_id_mapping_workflow_properties() :: #{binary() => any()}.
+-type create_schema_mapping_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -344,35 +274,155 @@
 
 
 %% Example:
-%% update_matching_workflow_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()),
-%%   <<"outputSourceConfig">> => list(output_source()),
-%%   <<"resolutionTechniques">> => resolution_techniques(),
-%%   <<"roleArn">> => [string()],
-%%   <<"workflowName">> => string()
+%% customer_profiles_integration_config() :: #{
+%%   <<"domainArn">> => string(),
+%%   <<"objectTypeArn">> => string()
 %% }
--type update_matching_workflow_output() :: #{binary() => any()}.
+-type customer_profiles_integration_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_mapping_workflow_input() :: #{}
+-type delete_id_mapping_workflow_input() :: #{}.
 
 
 %% Example:
-%% list_id_mapping_jobs_output() :: #{
-%%   <<"jobs">> => list(job_summary()),
-%%   <<"nextToken">> => string()
+%% delete_id_mapping_workflow_output() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_id_mapping_jobs_output() :: #{binary() => any()}.
+-type delete_id_mapping_workflow_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_id_namespace_input() :: #{}
+-type delete_id_namespace_input() :: #{}.
 
 
 %% Example:
-%% job_metrics() :: #{
-%%   <<"deleteRecordsProcessed">> => [integer()],
-%%   <<"inputRecords">> => [integer()],
-%%   <<"matchIDs">> => [integer()],
-%%   <<"recordsNotProcessed">> => [integer()],
-%%   <<"totalRecordsProcessed">> => [integer()]
+%% delete_id_namespace_output() :: #{
+%%   <<"message">> => [string()]
 %% }
--type job_metrics() :: #{binary() => any()}.
+-type delete_id_namespace_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_matching_workflow_input() :: #{}
+-type delete_matching_workflow_input() :: #{}.
+
+
+%% Example:
+%% delete_matching_workflow_output() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type delete_matching_workflow_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_statement_input() :: #{}
+-type delete_policy_statement_input() :: #{}.
+
+
+%% Example:
+%% delete_policy_statement_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type delete_policy_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schema_mapping_input() :: #{}
+-type delete_schema_mapping_input() :: #{}.
+
+
+%% Example:
+%% delete_schema_mapping_output() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type delete_schema_mapping_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_unique_id_error() :: #{
+%%   <<"errorType">> => list(any()),
+%%   <<"uniqueId">> => string()
+%% }
+-type delete_unique_id_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% deleted_unique_id() :: #{
+%%   <<"uniqueId">> => string()
+%% }
+-type deleted_unique_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% entityresolution_record() :: #{
+%%   <<"inputSourceARN">> => string(),
+%%   <<"recordAttributeMap">> => map(),
+%%   <<"uniqueId">> => string()
+%% }
+-type entityresolution_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"errorMessage">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% exceeds_limit_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaName">> => [string()],
+%%   <<"quotaValue">> => [integer()]
+%% }
+-type exceeds_limit_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_record() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"inputSourceARN">> => string(),
+%%   <<"uniqueId">> => [string()]
+%% }
+-type failed_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_match_id_input() :: #{
+%%   <<"processingType">> => list(any()),
+%%   <<"records">> := list(record())
+%% }
+-type generate_match_id_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_match_id_output() :: #{
+%%   <<"failedRecords">> => list(failed_record()),
+%%   <<"matchGroups">> => list(match_group())
+%% }
+-type generate_match_id_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_mapping_job_input() :: #{}
+-type get_id_mapping_job_input() :: #{}.
+
+
+%% Example:
+%% get_id_mapping_job_output() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"errorDetails">> => error_details(),
+%%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"metrics">> => id_mapping_job_metrics(),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type get_id_mapping_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_id_mapping_workflow_input() :: #{}
+-type get_id_mapping_workflow_input() :: #{}.
 
 
 %% Example:
@@ -391,29 +441,119 @@
 %% }
 -type get_id_mapping_workflow_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+%% get_id_namespace_input() :: #{}
+-type get_id_namespace_input() :: #{}.
 
 
 %% Example:
-%% failed_record() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"inputSourceARN">> => string(),
-%%   <<"uniqueId">> => [string()]
+%% get_id_namespace_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
+%%   <<"idNamespaceArn">> => string(),
+%%   <<"idNamespaceName">> => string(),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type failed_record() :: #{binary() => any()}.
+-type get_id_namespace_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_id_namespaces_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% get_match_id_input() :: #{
+%%   <<"applyNormalization">> => [boolean()],
+%%   <<"record">> := map()
 %% }
--type list_id_namespaces_input() :: #{binary() => any()}.
+-type get_match_id_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_match_id_output() :: #{
+%%   <<"matchId">> => [string()],
+%%   <<"matchRule">> => [string()]
+%% }
+-type get_match_id_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_matching_job_input() :: #{}
+-type get_matching_job_input() :: #{}.
+
+
+%% Example:
+%% get_matching_job_output() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"errorDetails">> => error_details(),
+%%   <<"jobId">> => string(),
+%%   <<"metrics">> => job_metrics(),
+%%   <<"outputSourceConfig">> => list(job_output_source()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type get_matching_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_matching_workflow_input() :: #{}
+-type get_matching_workflow_input() :: #{}.
+
+
+%% Example:
+%% get_matching_workflow_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"incrementalRunConfig">> => incremental_run_config(),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
+%%   <<"resolutionTechniques">> => resolution_techniques(),
+%%   <<"roleArn">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"workflowArn">> => string(),
+%%   <<"workflowName">> => string()
+%% }
+-type get_matching_workflow_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_input() :: #{}
+-type get_policy_input() :: #{}.
+
+
+%% Example:
+%% get_policy_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type get_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_provider_service_input() :: #{}
+-type get_provider_service_input() :: #{}.
+
+
+%% Example:
+%% get_provider_service_output() :: #{
+%%   <<"anonymizedOutput">> => [boolean()],
+%%   <<"providerComponentSchema">> => provider_component_schema(),
+%%   <<"providerConfigurationDefinition">> => [any()],
+%%   <<"providerEndpointConfiguration">> => list(),
+%%   <<"providerEntityOutputDefinition">> => [any()],
+%%   <<"providerIdNameSpaceConfiguration">> => provider_id_name_space_configuration(),
+%%   <<"providerIntermediateDataAccessConfiguration">> => provider_intermediate_data_access_configuration(),
+%%   <<"providerJobConfiguration">> => [any()],
+%%   <<"providerName">> => string(),
+%%   <<"providerServiceArn">> => string(),
+%%   <<"providerServiceDisplayName">> => string(),
+%%   <<"providerServiceName">> => string(),
+%%   <<"providerServiceType">> => list(any())
+%% }
+-type get_provider_service_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_mapping_input() :: #{}
+-type get_schema_mapping_input() :: #{}.
 
 
 %% Example:
@@ -431,150 +571,10 @@
 
 
 %% Example:
-%% namespace_rule_based_properties() :: #{
-%%   <<"attributeMatchingModel">> => list(any()),
-%%   <<"recordMatchingModels">> => list(list(any())()),
-%%   <<"ruleDefinitionTypes">> => list(list(any())()),
-%%   <<"rules">> => list(rule())
+%% id_mapping_incremental_run_config() :: #{
+%%   <<"incrementalRunType">> => list(any())
 %% }
--type namespace_rule_based_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_matching_workflows_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_matching_workflows_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_workflow_output_source() :: #{
-%%   <<"KMSArn">> => string(),
-%%   <<"outputS3Path">> => string()
-%% }
--type id_mapping_workflow_output_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_matching_workflow_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()),
-%%   <<"outputSourceConfig">> => list(output_source()),
-%%   <<"resolutionTechniques">> => resolution_techniques(),
-%%   <<"roleArn">> => [string()],
-%%   <<"workflowArn">> => string(),
-%%   <<"workflowName">> => string()
-%% }
--type create_matching_workflow_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"jobId">> => string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% namespace_provider_properties() :: #{
-%%   <<"providerConfiguration">> => [any()],
-%%   <<"providerServiceArn">> => string()
-%% }
--type namespace_provider_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_unique_id_output() :: #{
-%%   <<"deleted">> => list(deleted_unique_id()),
-%%   <<"disconnectedUniqueIds">> => list(string()),
-%%   <<"errors">> => list(delete_unique_id_error()),
-%%   <<"status">> => list(any())
-%% }
--type batch_delete_unique_id_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_mapping_input() :: #{}
--type get_schema_mapping_input() :: #{}.
-
-
-%% Example:
-%% job_output_source() :: #{
-%%   <<"KMSArn">> => string(),
-%%   <<"outputS3Path">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type job_output_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_id_name_space_configuration() :: #{
-%%   <<"description">> => [string()],
-%%   <<"providerSourceConfigurationDefinition">> => [any()],
-%%   <<"providerTargetConfigurationDefinition">> => [any()]
-%% }
--type provider_id_name_space_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_unique_id_input() :: #{
-%%   <<"inputSource">> => [string()],
-%%   <<"uniqueIds">> := list(string())
-%% }
--type batch_delete_unique_id_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% intermediate_source_configuration() :: #{
-%%   <<"intermediateS3Path">> => string()
-%% }
--type intermediate_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_id_namespace_input() :: #{}
--type delete_id_namespace_input() :: #{}.
-
-
-%% Example:
-%% generate_match_id_input() :: #{
-%%   <<"processingType">> => list(any()),
-%%   <<"records">> := list(record())
-%% }
--type generate_match_id_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_mapping_workflows_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowSummaries">> => list(id_mapping_workflow_summary())
-%% }
--type list_id_mapping_workflows_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_condition_properties() :: #{
-%%   <<"matchingConfig">> => matching_config(),
-%%   <<"rules">> => list(rule_condition())
-%% }
--type rule_condition_properties() :: #{binary() => any()}.
+-type id_mapping_incremental_run_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -599,411 +599,48 @@
 
 
 %% Example:
-%% create_id_mapping_workflow_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingTechniques">> := id_mapping_techniques(),
-%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
-%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"workflowName">> := string()
+%% id_mapping_job_output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"outputS3Path">> => string(),
+%%   <<"roleArn">> => string()
 %% }
--type create_id_mapping_workflow_input() :: #{binary() => any()}.
+-type id_mapping_job_output_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_matching_workflows_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowSummaries">> => list(matching_workflow_summary())
+%% id_mapping_rule_based_properties() :: #{
+%%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"recordMatchingModel">> => list(any()),
+%%   <<"ruleDefinitionType">> => list(any()),
+%%   <<"rules">> => list(rule())
 %% }
--type list_matching_workflows_output() :: #{binary() => any()}.
+-type id_mapping_rule_based_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_matching_workflow_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> := list(input_source()),
-%%   <<"outputSourceConfig">> := list(output_source()),
-%%   <<"resolutionTechniques">> := resolution_techniques(),
-%%   <<"roleArn">> := [string()],
-%%   <<"tags">> => map(),
-%%   <<"workflowName">> := string()
+%% id_mapping_techniques() :: #{
+%%   <<"idMappingType">> => list(any()),
+%%   <<"providerProperties">> => provider_properties(),
+%%   <<"ruleBasedProperties">> => id_mapping_rule_based_properties()
 %% }
--type create_matching_workflow_input() :: #{binary() => any()}.
+-type id_mapping_techniques() :: #{binary() => any()}.
 
 
 %% Example:
-%% error_details() :: #{
-%%   <<"errorMessage">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% matching_workflow_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"resolutionType">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"workflowArn">> => string(),
-%%   <<"workflowName">> => string()
-%% }
--type matching_workflow_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_id_mapping_job_output() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"errorDetails">> => error_details(),
-%%   <<"jobId">> => string(),
-%%   <<"jobType">> => list(any()),
-%%   <<"metrics">> => id_mapping_job_metrics(),
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type get_id_mapping_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_schema_attribute() :: #{
-%%   <<"fieldName">> => string(),
-%%   <<"hashing">> => [boolean()],
-%%   <<"subType">> => string(),
+%% id_mapping_workflow_input_source() :: #{
+%%   <<"inputSourceARN">> => string(),
+%%   <<"schemaName">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type provider_schema_attribute() :: #{binary() => any()}.
+-type id_mapping_workflow_input_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_id_mapping_job_input() :: #{
-%%   <<"jobType">> => list(any()),
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
+%% id_mapping_workflow_output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"outputS3Path">> => string()
 %% }
--type start_id_mapping_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_mapping_workflow_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingTechniques">> => id_mapping_techniques(),
-%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"workflowArn">> => string(),
-%%   <<"workflowName">> => string()
-%% }
--type update_id_mapping_workflow_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_provider_service_input() :: #{}
--type get_provider_service_input() :: #{}.
-
-
-%% Example:
-%% id_namespace_id_mapping_workflow_metadata() :: #{
-%%   <<"idMappingType">> => list(any())
-%% }
--type id_namespace_id_mapping_workflow_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schema_mappings_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_schema_mappings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_matching_jobs_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_matching_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_id_mapping_workflow_input() :: #{}
--type get_id_mapping_workflow_input() :: #{}.
-
-%% Example:
-%% get_id_namespace_input() :: #{}
--type get_id_namespace_input() :: #{}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_policy_statement_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"token">> => string()
-%% }
--type delete_policy_statement_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule() :: #{
-%%   <<"matchingKeys">> => list(string()),
-%%   <<"ruleName">> => [string()]
-%% }
--type rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_matching_workflow_output() :: #{
-%%   <<"message">> => [string()]
-%% }
--type delete_matching_workflow_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_incremental_run_config() :: #{
-%%   <<"incrementalRunType">> => list(any())
-%% }
--type id_mapping_incremental_run_config() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% match_group() :: #{
-%%   <<"matchId">> => [string()],
-%%   <<"matchRule">> => [string()],
-%%   <<"records">> => list(matched_record())
-%% }
--type match_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_id_mapping_workflows_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_id_mapping_workflows_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_mapping_workflow_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingTechniques">> => id_mapping_techniques(),
-%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"workflowArn">> => string(),
-%%   <<"workflowName">> => string()
-%% }
--type create_id_mapping_workflow_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_mapping_workflow_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingTechniques">> := id_mapping_techniques(),
-%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
-%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
-%%   <<"roleArn">> => string()
-%% }
--type update_id_mapping_workflow_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_mapping_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"hasWorkflows">> => [boolean()],
-%%   <<"schemaArn">> => string(),
-%%   <<"schemaName">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type schema_mapping_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% entityresolution_record() :: #{
-%%   <<"inputSourceARN">> => string(),
-%%   <<"recordAttributeMap">> => map(),
-%%   <<"uniqueId">> => string()
-%% }
--type entityresolution_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_id_namespace_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
-%%   <<"idNamespaceArn">> => string(),
-%%   <<"idNamespaceName">> => string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_id_namespace_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schema_mapping_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"mappedInputFields">> := list(schema_input_attribute()),
-%%   <<"schemaName">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_schema_mapping_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_namespace_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
-%%   <<"idNamespaceName">> := string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any())
-%% }
--type create_id_namespace_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_intermediate_data_access_configuration() :: #{
-%%   <<"awsAccountIds">> => list(string()),
-%%   <<"requiredBucketActions">> => list([string()]())
-%% }
--type provider_intermediate_data_access_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_unique_id_error() :: #{
-%%   <<"errorType">> => list(any()),
-%%   <<"uniqueId">> => string()
-%% }
--type delete_unique_id_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_match_id_output() :: #{
-%%   <<"failedRecords">> => list(failed_record()),
-%%   <<"matchGroups">> => list(match_group())
-%% }
--type generate_match_id_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_id_namespace_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
-%%   <<"roleArn">> => string()
-%% }
--type update_id_namespace_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_statement_input() :: #{}
--type delete_policy_statement_input() :: #{}.
-
-
-%% Example:
-%% rule_condition() :: #{
-%%   <<"condition">> => [string()],
-%%   <<"ruleName">> => [string()]
-%% }
--type rule_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% matched_record() :: #{
-%%   <<"inputSourceARN">> => string(),
-%%   <<"recordId">> => [string()]
-%% }
--type matched_record() :: #{binary() => any()}.
-
-%% Example:
-%% get_matching_job_input() :: #{}
--type get_matching_job_input() :: #{}.
-
-
-%% Example:
-%% delete_id_namespace_output() :: #{
-%%   <<"message">> => [string()]
-%% }
--type delete_id_namespace_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% get_provider_service_output() :: #{
-%%   <<"anonymizedOutput">> => [boolean()],
-%%   <<"providerComponentSchema">> => provider_component_schema(),
-%%   <<"providerConfigurationDefinition">> => [any()],
-%%   <<"providerEndpointConfiguration">> => list(),
-%%   <<"providerEntityOutputDefinition">> => [any()],
-%%   <<"providerIdNameSpaceConfiguration">> => provider_id_name_space_configuration(),
-%%   <<"providerIntermediateDataAccessConfiguration">> => provider_intermediate_data_access_configuration(),
-%%   <<"providerJobConfiguration">> => [any()],
-%%   <<"providerName">> => string(),
-%%   <<"providerServiceArn">> => string(),
-%%   <<"providerServiceDisplayName">> => string(),
-%%   <<"providerServiceName">> => string(),
-%%   <<"providerServiceType">> => list(any())
-%% }
--type get_provider_service_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% add_policy_statement_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"token">> => string()
-%% }
--type add_policy_statement_output() :: #{binary() => any()}.
+-type id_mapping_workflow_output_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1017,54 +654,27 @@
 
 
 %% Example:
-%% output_source() :: #{
-%%   <<"KMSArn">> => string(),
-%%   <<"applyNormalization">> => [boolean()],
-%%   <<"customerProfilesIntegrationConfig">> => customer_profiles_integration_config(),
-%%   <<"output">> => list(output_attribute()),
-%%   <<"outputS3Path">> => string()
+%% id_namespace_id_mapping_workflow_metadata() :: #{
+%%   <<"idMappingType">> => list(any())
 %% }
--type output_source() :: #{binary() => any()}.
+-type id_namespace_id_mapping_workflow_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
+%% id_namespace_id_mapping_workflow_properties() :: #{
+%%   <<"idMappingType">> => list(any()),
+%%   <<"providerProperties">> => namespace_provider_properties(),
+%%   <<"ruleBasedProperties">> => namespace_rule_based_properties()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type id_namespace_id_mapping_workflow_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% provider_properties() :: #{
-%%   <<"intermediateSourceConfiguration">> => intermediate_source_configuration(),
-%%   <<"providerConfiguration">> => [any()],
-%%   <<"providerServiceArn">> => string()
+%% id_namespace_input_source() :: #{
+%%   <<"inputSourceARN">> => string(),
+%%   <<"schemaName">> => string()
 %% }
--type provider_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_schema_mapping_output() :: #{
-%%   <<"message">> => [string()]
-%% }
--type delete_schema_mapping_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_component_schema() :: #{
-%%   <<"providerSchemaAttributes">> => list(provider_schema_attribute()),
-%%   <<"schemas">> => list(list([string()]())())
-%% }
--type provider_component_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% id_mapping_job_output_source() :: #{
-%%   <<"KMSArn">> => string(),
-%%   <<"outputS3Path">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type id_mapping_job_output_source() :: #{binary() => any()}.
+-type id_namespace_input_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1081,29 +691,392 @@
 
 
 %% Example:
-%% start_id_mapping_job_output() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"jobType">> => list(any()),
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
+%% incremental_run_config() :: #{
+%%   <<"incrementalRunType">> => list(any())
 %% }
--type start_id_mapping_job_output() :: #{binary() => any()}.
+-type incremental_run_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_matching_workflow_output() :: #{
+%% input_source() :: #{
+%%   <<"applyNormalization">> => [boolean()],
+%%   <<"inputSourceARN">> => string(),
+%%   <<"schemaName">> => string()
+%% }
+-type input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% intermediate_source_configuration() :: #{
+%%   <<"intermediateS3Path">> => string()
+%% }
+-type intermediate_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_metrics() :: #{
+%%   <<"deleteRecordsProcessed">> => [integer()],
+%%   <<"inputRecords">> => [integer()],
+%%   <<"matchIDs">> => [integer()],
+%%   <<"recordsNotProcessed">> => [integer()],
+%%   <<"totalRecordsProcessed">> => [integer()]
+%% }
+-type job_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"outputS3Path">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type job_output_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"jobId">> => string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_jobs_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_jobs_output() :: #{
+%%   <<"jobs">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_workflows_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_mapping_workflows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_mapping_workflows_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowSummaries">> => list(id_mapping_workflow_summary())
+%% }
+-type list_id_mapping_workflows_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_namespaces_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_id_namespaces_output() :: #{
+%%   <<"idNamespaceSummaries">> => list(id_namespace_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_id_namespaces_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_matching_jobs_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_matching_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_matching_jobs_output() :: #{
+%%   <<"jobs">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_matching_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_matching_workflows_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_matching_workflows_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_matching_workflows_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowSummaries">> => list(matching_workflow_summary())
+%% }
+-type list_matching_workflows_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provider_services_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"providerName">> => string()
+%% }
+-type list_provider_services_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provider_services_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"providerServiceSummaries">> => list(provider_service_summary())
+%% }
+-type list_provider_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_mappings_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_schema_mappings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_mappings_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schemaList">> => list(schema_mapping_summary())
+%% }
+-type list_schema_mappings_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_group() :: #{
+%%   <<"matchId">> => [string()],
+%%   <<"matchRule">> => [string()],
+%%   <<"records">> => list(matched_record())
+%% }
+-type match_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% matched_record() :: #{
+%%   <<"inputSourceARN">> => string(),
+%%   <<"recordId">> => [string()]
+%% }
+-type matched_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_config() :: #{
+%%   <<"enableTransitiveMatching">> => [boolean()]
+%% }
+-type matching_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_workflow_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()),
-%%   <<"outputSourceConfig">> => list(output_source()),
-%%   <<"resolutionTechniques">> => resolution_techniques(),
-%%   <<"roleArn">> => [string()],
-%%   <<"tags">> => map(),
+%%   <<"resolutionType">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"workflowArn">> => string(),
 %%   <<"workflowName">> => string()
 %% }
--type get_matching_workflow_output() :: #{binary() => any()}.
+-type matching_workflow_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_provider_properties() :: #{
+%%   <<"providerConfiguration">> => [any()],
+%%   <<"providerServiceArn">> => string()
+%% }
+-type namespace_provider_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_rule_based_properties() :: #{
+%%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"recordMatchingModels">> => list(list(any())()),
+%%   <<"ruleDefinitionTypes">> => list(list(any())()),
+%%   <<"rules">> => list(rule())
+%% }
+-type namespace_rule_based_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_attribute() :: #{
+%%   <<"hashed">> => [boolean()],
+%%   <<"name">> => string()
+%% }
+-type output_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_source() :: #{
+%%   <<"KMSArn">> => string(),
+%%   <<"applyNormalization">> => [boolean()],
+%%   <<"customerProfilesIntegrationConfig">> => customer_profiles_integration_config(),
+%%   <<"output">> => list(output_attribute()),
+%%   <<"outputS3Path">> => string()
+%% }
+-type output_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_component_schema() :: #{
+%%   <<"providerSchemaAttributes">> => list(provider_schema_attribute()),
+%%   <<"schemas">> => list(list([string()]())())
+%% }
+-type provider_component_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_id_name_space_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"providerSourceConfigurationDefinition">> => [any()],
+%%   <<"providerTargetConfigurationDefinition">> => [any()]
+%% }
+-type provider_id_name_space_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_intermediate_data_access_configuration() :: #{
+%%   <<"awsAccountIds">> => list(string()),
+%%   <<"requiredBucketActions">> => list([string()]())
+%% }
+-type provider_intermediate_data_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_marketplace_configuration() :: #{
+%%   <<"assetId">> => [string()],
+%%   <<"dataSetId">> => [string()],
+%%   <<"listingId">> => [string()],
+%%   <<"revisionId">> => [string()]
+%% }
+-type provider_marketplace_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_properties() :: #{
+%%   <<"intermediateSourceConfiguration">> => intermediate_source_configuration(),
+%%   <<"providerConfiguration">> => [any()],
+%%   <<"providerServiceArn">> => string()
+%% }
+-type provider_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_schema_attribute() :: #{
+%%   <<"fieldName">> => string(),
+%%   <<"hashing">> => [boolean()],
+%%   <<"subType">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type provider_schema_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_service_summary() :: #{
+%%   <<"providerName">> => string(),
+%%   <<"providerServiceArn">> => string(),
+%%   <<"providerServiceDisplayName">> => string(),
+%%   <<"providerServiceName">> => string(),
+%%   <<"providerServiceType">> => list(any())
+%% }
+-type provider_service_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_input() :: #{
+%%   <<"policy">> := string(),
+%%   <<"token">> => string()
+%% }
+-type put_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"policy">> => string(),
+%%   <<"token">> => string()
+%% }
+-type put_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolution_techniques() :: #{
+%%   <<"enableRealTimeMatching">> => [boolean()],
+%%   <<"providerProperties">> => provider_properties(),
+%%   <<"resolutionType">> => list(any()),
+%%   <<"ruleBasedProperties">> => rule_based_properties(),
+%%   <<"ruleConditionProperties">> => rule_condition_properties()
+%% }
+-type resolution_techniques() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"matchingKeys">> => list(string()),
+%%   <<"ruleName">> => [string()]
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_based_properties() :: #{
+%%   <<"attributeMatchingModel">> => list(any()),
+%%   <<"matchPurpose">> => list(any()),
+%%   <<"rules">> => list(rule())
+%% }
+-type rule_based_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_condition() :: #{
+%%   <<"condition">> => [string()],
+%%   <<"ruleName">> => [string()]
+%% }
+-type rule_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_condition_properties() :: #{
+%%   <<"matchingConfig">> => matching_config(),
+%%   <<"rules">> => list(rule_condition())
+%% }
+-type rule_condition_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1119,69 +1092,107 @@
 
 
 %% Example:
-%% id_namespace_input_source() :: #{
-%%   <<"inputSourceARN">> => string(),
-%%   <<"schemaName">> => string()
-%% }
--type id_namespace_input_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% provider_marketplace_configuration() :: #{
-%%   <<"assetId">> => [string()],
-%%   <<"dataSetId">> => [string()],
-%%   <<"listingId">> => [string()],
-%%   <<"revisionId">> => [string()]
-%% }
--type provider_marketplace_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_matching_job_output() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"errorDetails">> => error_details(),
-%%   <<"jobId">> => string(),
-%%   <<"metrics">> => job_metrics(),
-%%   <<"outputSourceConfig">> => list(job_output_source()),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type get_matching_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_based_properties() :: #{
-%%   <<"attributeMatchingModel">> => list(any()),
-%%   <<"matchPurpose">> => list(any()),
-%%   <<"rules">> => list(rule())
-%% }
--type rule_based_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_id_namespace_output() :: #{
+%% schema_mapping_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
-%%   <<"idNamespaceArn">> => string(),
-%%   <<"idNamespaceName">> => string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
+%%   <<"hasWorkflows">> => [boolean()],
+%%   <<"schemaArn">> => string(),
+%%   <<"schemaName">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type create_id_namespace_output() :: #{binary() => any()}.
+-type schema_mapping_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% id_mapping_rule_based_properties() :: #{
-%%   <<"attributeMatchingModel">> => list(any()),
-%%   <<"recordMatchingModel">> => list(any()),
-%%   <<"ruleDefinitionType">> => list(any()),
-%%   <<"rules">> => list(rule())
+%% start_id_mapping_job_input() :: #{
+%%   <<"jobType">> => list(any()),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
 %% }
--type id_mapping_rule_based_properties() :: #{binary() => any()}.
+-type start_id_mapping_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_id_mapping_job_output() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
+%% }
+-type start_id_mapping_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_matching_job_input() :: #{}
+-type start_matching_job_input() :: #{}.
+
+
+%% Example:
+%% start_matching_job_output() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type start_matching_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_id_mapping_workflow_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingTechniques">> := id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
+%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
+%%   <<"roleArn">> => string()
+%% }
+-type update_id_mapping_workflow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_mapping_workflow_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingTechniques">> => id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
+%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
+%%   <<"roleArn">> => string(),
+%%   <<"workflowArn">> => string(),
+%%   <<"workflowName">> => string()
+%% }
+-type update_id_mapping_workflow_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_id_namespace_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
+%%   <<"roleArn">> => string()
+%% }
+-type update_id_namespace_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1200,326 +1211,316 @@
 
 
 %% Example:
-%% id_mapping_workflow_input_source() :: #{
-%%   <<"inputSourceARN">> => string(),
-%%   <<"schemaName">> => string(),
-%%   <<"type">> => list(any())
+%% update_matching_workflow_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"incrementalRunConfig">> => incremental_run_config(),
+%%   <<"inputSourceConfig">> := list(input_source()),
+%%   <<"outputSourceConfig">> := list(output_source()),
+%%   <<"resolutionTechniques">> := resolution_techniques(),
+%%   <<"roleArn">> := [string()]
 %% }
--type id_mapping_workflow_input_source() :: #{binary() => any()}.
+-type update_matching_workflow_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_match_id_input() :: #{
-%%   <<"applyNormalization">> => [boolean()],
-%%   <<"record">> := map()
+%% update_matching_workflow_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"incrementalRunConfig">> => incremental_run_config(),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
+%%   <<"resolutionTechniques">> => resolution_techniques(),
+%%   <<"roleArn">> => [string()],
+%%   <<"workflowName">> => string()
 %% }
--type get_match_id_input() :: #{binary() => any()}.
+-type update_matching_workflow_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% matching_config() :: #{
-%%   <<"enableTransitiveMatching">> => [boolean()]
+%% update_schema_mapping_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"mappedInputFields">> := list(schema_input_attribute())
 %% }
--type matching_config() :: #{binary() => any()}.
+-type update_schema_mapping_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% incremental_run_config() :: #{
-%%   <<"incrementalRunType">> => list(any())
+%% update_schema_mapping_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"mappedInputFields">> => list(schema_input_attribute()),
+%%   <<"schemaArn">> => string(),
+%%   <<"schemaName">> => string()
 %% }
--type incremental_run_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_matching_workflow_input() :: #{}
--type get_matching_workflow_input() :: #{}.
-
-
-%% Example:
-%% list_matching_jobs_output() :: #{
-%%   <<"jobs">> => list(job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_matching_jobs_output() :: #{binary() => any()}.
+-type update_schema_mapping_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_provider_services_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"providerServiceSummaries">> => list(provider_service_summary())
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_provider_services_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"policy">> => string(),
-%%   <<"token">> => string()
-%% }
--type get_policy_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type add_policy_statement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_unique_id_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type create_id_mapping_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type create_id_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type create_matching_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type create_schema_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type delete_id_mapping_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_id_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_matching_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_policy_statement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_schema_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type generate_match_id_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_id_mapping_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_id_mapping_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_id_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_match_id_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_matching_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_matching_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_provider_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_schema_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_id_mapping_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_id_mapping_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_id_namespaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_matching_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_matching_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_provider_services_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_schema_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_id_mapping_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type start_matching_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    exceeds_limit_exception() | 
     conflict_exception() | 
-    exceeds_limit_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_id_mapping_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_id_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_matching_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_schema_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1683,8 +1684,8 @@ create_id_namespace(Client, Input0, Options0) ->
 %% The workflow name must be unique. To modify an existing workflow, use
 %% `UpdateMatchingWorkflow'.
 %%
-%% For workflows where `resolutionType' is `ML_MATCHING' or
-%% `PROVIDER', incremental processing is not supported.
+%% For workflows where `resolutionType' is `PROVIDER', incremental
+%% processing is not supported.
 -spec create_matching_workflow(aws_client:aws_client(), create_matching_workflow_input()) ->
     {ok, create_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -2932,8 +2933,8 @@ update_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
 %%
 %% The workflow must already exist for this operation to succeed.
 %%
-%% For workflows where `resolutionType' is `ML_MATCHING' or
-%% `PROVIDER', incremental processing is not supported.
+%% For workflows where `resolutionType' is `PROVIDER', incremental
+%% processing is not supported.
 -spec update_matching_workflow(aws_client:aws_client(), binary() | list(), update_matching_workflow_input()) ->
     {ok, update_matching_workflow_output(), tuple()} |
     {error, any()} |

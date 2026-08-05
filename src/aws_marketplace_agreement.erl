@@ -66,32 +66,96 @@
 
 
 %% Example:
-%% charge_summary() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"estimatedTaxes">> => estimated_taxes(),
-%%   <<"expectedCharges">> => list(expected_charge()),
-%%   <<"invoicingEntity">> => invoicing_entity(),
-%%   <<"itemizedCharges">> => list(itemized_charge()),
-%%   <<"newAgreementValue">> => string(),
-%%   <<"newAgreementValueAfterTax">> => string()
+%% accept_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string()
 %% }
--type charge_summary() :: #{binary() => any()}.
+-type accept_agreement_cancellation_request_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_billing_adjustment_error() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"code">> => list(any()),
-%%   <<"message">> => [string()]
+%% accept_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type batch_create_billing_adjustment_error() :: #{binary() => any()}.
+-type accept_agreement_cancellation_request_output() :: #{binary() => any()}.
 
 %% Example:
-%% pricing_currency_amount() :: #{
-%%   <<"amount">> => string(),
-%%   <<"currencyCode">> => string(),
-%%   <<"maxAdjustmentAmount">> => string()
+%% accept_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string(),
+%%   <<"purchaseOrderReference">> => string()
 %% }
--type pricing_currency_amount() :: #{binary() => any()}.
+-type accept_agreement_payment_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% accept_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type accept_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% accept_agreement_request_input() :: #{
+%%   <<"agreementRequestId">> := string(),
+%%   <<"purchaseOrders">> => list(purchase_order())
+%% }
+-type accept_agreement_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% accept_agreement_request_output() :: #{
+%%   <<"agreementId">> => string()
+%% }
+-type accept_agreement_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% acceptor() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type acceptor() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"requestId">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_cancellation_request_summary() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type agreement_cancellation_request_summary() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_entitlement() :: #{
+%%   <<"licenseArn">> => string(),
+%%   <<"registrationToken">> => string(),
+%%   <<"resource">> => resource(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasonCode">> => list(any()),
+%%   <<"type">> => string()
+%% }
+-type agreement_entitlement() :: #{binary() => any()}.
 
 %% Example:
 %% agreement_invoice_line_item_group_summary() :: #{
@@ -106,66 +170,320 @@
 -type agreement_invoice_line_item_group_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_agreement_charges_output() :: #{
-%%   <<"items">> => list(charge()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agreement_charges_output() :: #{binary() => any()}.
-
-%% Example:
-%% renewal_term_configuration() :: #{
-%%   <<"enableAutoRenew">> => boolean()
-%% }
--type renewal_term_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_billing_adjustment_requests_input() :: #{
+%% agreement_view_summary() :: #{
+%%   <<"acceptanceTime">> => non_neg_integer(),
+%%   <<"acceptor">> => acceptor(),
 %%   <<"agreementId">> => string(),
 %%   <<"agreementType">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"createdAfter">> => non_neg_integer(),
-%%   <<"createdBefore">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"entitlements">> => list(entitlement()),
+%%   <<"proposalSummary">> => proposal_summary(),
+%%   <<"proposer">> => proposer(),
+%%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any())
 %% }
--type list_billing_adjustment_requests_input() :: #{binary() => any()}.
+-type agreement_view_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_purchase_orders_output() :: #{
-
-%% }
--type update_purchase_orders_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_agreement_payment_requests_input() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"partyType">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type list_agreement_payment_requests_input() :: #{binary() => any()}.
-
-%% Example:
-%% send_agreement_payment_request_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"chargeAmount">> := string(),
+%% batch_create_billing_adjustment_error() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"termId">> := string()
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()]
 %% }
--type send_agreement_payment_request_input() :: #{binary() => any()}.
+-type batch_create_billing_adjustment_error() :: #{binary() => any()}.
 
 %% Example:
-%% get_agreement_terms_output() :: #{
-%%   <<"acceptedTerms">> => list(list()),
-%%   <<"nextToken">> => string()
+%% batch_create_billing_adjustment_item() :: #{
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"clientToken">> => string()
 %% }
--type get_agreement_terms_output() :: #{binary() => any()}.
+-type batch_create_billing_adjustment_item() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_entry() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"adjustmentReasonCode">> => list(any()),
+%%   <<"agreementId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"originalInvoiceId">> => string()
+%% }
+-type batch_create_billing_adjustment_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_input() :: #{
+%%   <<"billingAdjustmentRequestEntries">> := list(batch_create_billing_adjustment_request_entry())
+%% }
+-type batch_create_billing_adjustment_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_billing_adjustment_request_output() :: #{
+%%   <<"errors">> => list(batch_create_billing_adjustment_error()),
+%%   <<"items">> => list(batch_create_billing_adjustment_item())
+%% }
+-type batch_create_billing_adjustment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% billing_adjustment_summary() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"originalInvoiceId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type billing_adjustment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% byol_pricing_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type byol_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string(),
+%%   <<"cancellationReason">> := string()
+%% }
+-type cancel_agreement_cancellation_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type cancel_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_input() :: #{
+%%   <<"agreementId">> := string()
+%% }
+-type cancel_agreement_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_output() :: #{
+
+%% }
+-type cancel_agreement_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string()
+%% }
+-type cancel_agreement_payment_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type cancel_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% charge() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"amount">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"purchaseOrderReference">> => string(),
+%%   <<"revision">> => float(),
+%%   <<"time">> => non_neg_integer()
+%% }
+-type charge() :: #{binary() => any()}.
+
+%% Example:
+%% charge_summary() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"estimatedTaxes">> => estimated_taxes(),
+%%   <<"expectedCharges">> => list(expected_charge()),
+%%   <<"invoicingEntity">> => invoicing_entity(),
+%%   <<"itemizedCharges">> => list(itemized_charge()),
+%%   <<"newAgreementValue">> => string(),
+%%   <<"newAgreementValueAfterTax">> => string()
+%% }
+-type charge_summary() :: #{binary() => any()}.
+
+%% Example:
+%% configurable_upfront_pricing_term() :: #{
+%%   <<"configuration">> => configurable_upfront_pricing_term_configuration(),
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()),
+%%   <<"type">> => string()
+%% }
+-type configurable_upfront_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% configurable_upfront_pricing_term_configuration() :: #{
+%%   <<"dimensions">> => list(dimension()),
+%%   <<"selectorValue">> => string()
+%% }
+-type configurable_upfront_pricing_term_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% configurable_upfront_rate_card_item() :: #{
+%%   <<"constraints">> => constraints(),
+%%   <<"rateCard">> => list(rate_card_item()),
+%%   <<"selector">> => selector()
+%% }
+-type configurable_upfront_rate_card_item() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% constraints() :: #{
+%%   <<"multipleDimensionSelection">> => string(),
+%%   <<"quantityConfiguration">> => string()
+%% }
+-type constraints() :: #{binary() => any()}.
+
+%% Example:
+%% create_agreement_request_input() :: #{
+%%   <<"agreementProposalIdentifier">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"intent">> := list(any()),
+%%   <<"requestedTerms">> := list(requested_term()),
+%%   <<"sourceAgreementIdentifier">> => string(),
+%%   <<"taxConfiguration">> => tax_configuration()
+%% }
+-type create_agreement_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_agreement_request_output() :: #{
+%%   <<"agreementRequestId">> => string(),
+%%   <<"chargeSummary">> => charge_summary()
+%% }
+-type create_agreement_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agreement_input() :: #{
+%%   <<"agreementId">> := string()
+%% }
+-type describe_agreement_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agreement_output() :: #{
+%%   <<"acceptanceTime">> => non_neg_integer(),
+%%   <<"acceptor">> => acceptor(),
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"estimatedCharges">> => estimated_charges(),
+%%   <<"proposalSummary">> => proposal_summary(),
+%%   <<"proposer">> => proposer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_agreement_output() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"dimensionKey">> => string(),
+%%   <<"dimensionValue">> => integer()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% document_item() :: #{
+%%   <<"type">> => string(),
+%%   <<"url">> => string(),
+%%   <<"version">> => string()
+%% }
+-type document_item() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement() :: #{
+%%   <<"licenseArn">> => [string()]
+%% }
+-type entitlement() :: #{binary() => any()}.
+
+%% Example:
+%% estimated_charges() :: #{
+%%   <<"agreementValue">> => string(),
+%%   <<"currencyCode">> => string()
+%% }
+-type estimated_charges() :: #{binary() => any()}.
+
+%% Example:
+%% estimated_taxes() :: #{
+%%   <<"breakdown">> => list(tax_breakdown_item()),
+%%   <<"totalAmount">> => string()
+%% }
+-type estimated_taxes() :: #{binary() => any()}.
+
+%% Example:
+%% expected_charge() :: #{
+%%   <<"amount">> => string(),
+%%   <<"amountAfterTax">> => string(),
+%%   <<"estimatedTaxes">> => estimated_taxes(),
+%%   <<"id">> => string(),
+%%   <<"time">> => non_neg_integer(),
+%%   <<"timing">> => list(any())
+%% }
+-type expected_charge() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% fixed_upfront_pricing_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"duration">> => string(),
+%%   <<"grants">> => list(grant_item()),
+%%   <<"id">> => string(),
+%%   <<"price">> => string(),
+%%   <<"type">> => string()
+%% }
+-type fixed_upfront_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% free_trial_pricing_term() :: #{
+%%   <<"duration">> => string(),
+%%   <<"grants">> => list(grant_item()),
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type free_trial_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string()
+%% }
+-type get_agreement_cancellation_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_cancellation_request_output() :: #{
@@ -181,102 +499,26 @@
 -type get_agreement_cancellation_request_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_billing_adjustment_request_input() :: #{
-%%   <<"billingAdjustmentRequestEntries">> := list(batch_create_billing_adjustment_request_entry())
-%% }
--type batch_create_billing_adjustment_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% estimated_charges() :: #{
-%%   <<"agreementValue">> => string(),
-%%   <<"currencyCode">> => string()
-%% }
--type estimated_charges() :: #{binary() => any()}.
-
-%% Example:
-%% accept_agreement_request_input() :: #{
-%%   <<"agreementRequestId">> := string(),
-%%   <<"purchaseOrders">> => list(purchase_order())
-%% }
--type accept_agreement_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% configurable_upfront_pricing_term_configuration() :: #{
-%%   <<"dimensions">> => list(dimension()),
-%%   <<"selectorValue">> => string()
-%% }
--type configurable_upfront_pricing_term_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% accept_agreement_request_output() :: #{
-%%   <<"agreementId">> => string()
-%% }
--type accept_agreement_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% selector() :: #{
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
-%% }
--type selector() :: #{binary() => any()}.
-
-%% Example:
-%% reject_agreement_cancellation_request_input() :: #{
-%%   <<"agreementCancellationRequestId">> := string(),
+%% get_agreement_entitlements_input() :: #{
 %%   <<"agreementId">> := string(),
-%%   <<"rejectionReason">> := string()
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type reject_agreement_cancellation_request_input() :: #{binary() => any()}.
+-type get_agreement_entitlements_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_billing_adjustment_request_output() :: #{
-%%   <<"adjustmentAmount">> => string(),
-%%   <<"adjustmentReasonCode">> => list(any()),
-%%   <<"agreementId">> => string(),
-%%   <<"billingAdjustmentRequestId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currencyCode">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"originalInvoiceId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%% get_agreement_entitlements_output() :: #{
+%%   <<"agreementEntitlements">> => list(agreement_entitlement()),
+%%   <<"nextToken">> => string()
 %% }
--type get_billing_adjustment_request_output() :: #{binary() => any()}.
+-type get_agreement_entitlements_output() :: #{binary() => any()}.
 
 %% Example:
-%% agreement_entitlement() :: #{
-%%   <<"licenseArn">> => string(),
-%%   <<"registrationToken">> => string(),
-%%   <<"resource">> => resource(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReasonCode">> => list(any()),
-%%   <<"type">> => string()
+%% get_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string()
 %% }
--type agreement_entitlement() :: #{binary() => any()}.
-
-%% Example:
-%% support_term() :: #{
-%%   <<"id">> => string(),
-%%   <<"refundPolicy">> => string(),
-%%   <<"type">> => string()
-%% }
--type support_term() :: #{binary() => any()}.
-
-%% Example:
-%% renewal_term() :: #{
-%%   <<"configuration">> => renewal_term_configuration(),
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
-%% }
--type renewal_term() :: #{binary() => any()}.
-
-%% Example:
-%% create_agreement_request_output() :: #{
-%%   <<"agreementRequestId">> => string(),
-%%   <<"chargeSummary">> => charge_summary()
-%% }
--type create_agreement_request_output() :: #{binary() => any()}.
+-type get_agreement_payment_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_payment_request_output() :: #{
@@ -295,223 +537,19 @@
 -type get_agreement_payment_request_output() :: #{binary() => any()}.
 
 %% Example:
-%% acceptor() :: #{
-%%   <<"accountId">> => string()
-%% }
--type acceptor() :: #{binary() => any()}.
-
-%% Example:
-%% invoicing_entity() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"legalName">> => string()
-%% }
--type invoicing_entity() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_agreement_payment_request_input() :: #{
+%% get_agreement_terms_input() :: #{
 %%   <<"agreementId">> := string(),
-%%   <<"paymentRequestId">> := string()
-%% }
--type cancel_agreement_payment_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% document_item() :: #{
-%%   <<"type">> => string(),
-%%   <<"url">> => string(),
-%%   <<"version">> => string()
-%% }
--type document_item() :: #{binary() => any()}.
-
-%% Example:
-%% agreement_cancellation_request_summary() :: #{
-%%   <<"agreementCancellationRequestId">> => string(),
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"reasonCode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type agreement_cancellation_request_summary() :: #{binary() => any()}.
-
-%% Example:
-%% charge() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"amount">> => string(),
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"purchaseOrderReference">> => string(),
-%%   <<"revision">> => float(),
-%%   <<"time">> => non_neg_integer()
-%% }
--type charge() :: #{binary() => any()}.
-
-%% Example:
-%% send_agreement_payment_request_output() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"chargeAmount">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currencyCode">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"paymentRequestId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type send_agreement_payment_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% tax_configuration() :: #{
-%%   <<"taxEstimation">> => list(any())
-%% }
--type tax_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% agreement_view_summary() :: #{
-%%   <<"acceptanceTime">> => non_neg_integer(),
-%%   <<"acceptor">> => acceptor(),
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"entitlements">> => list(entitlement()),
-%%   <<"proposalSummary">> => proposal_summary(),
-%%   <<"proposer">> => proposer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type agreement_view_summary() :: #{binary() => any()}.
-
-%% Example:
-%% accept_agreement_cancellation_request_output() :: #{
-%%   <<"agreementCancellationRequestId">> => string(),
-%%   <<"agreementId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"reasonCode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type accept_agreement_cancellation_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_agreement_cancellation_request_output() :: #{
-%%   <<"agreementCancellationRequestId">> => string(),
-%%   <<"agreementId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"reasonCode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type cancel_agreement_cancellation_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% requested_term() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"id">> => string()
-%% }
--type requested_term() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agreement_output() :: #{
-%%   <<"acceptanceTime">> => non_neg_integer(),
-%%   <<"acceptor">> => acceptor(),
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"estimatedCharges">> => estimated_charges(),
-%%   <<"proposalSummary">> => proposal_summary(),
-%%   <<"proposer">> => proposer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type describe_agreement_output() :: #{binary() => any()}.
-
-%% Example:
-%% purchase_order() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"chargeId">> => string(),
-%%   <<"chargeRevision">> => float(),
-%%   <<"purchaseOrderReference">> => string()
-%% }
--type purchase_order() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% estimated_taxes() :: #{
-%%   <<"breakdown">> => list(tax_breakdown_item()),
-%%   <<"totalAmount">> => string()
-%% }
--type estimated_taxes() :: #{binary() => any()}.
-
-%% Example:
-%% usage_based_pricing_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rateCards">> => list(usage_based_rate_card_item()),
-%%   <<"type">> => string()
-%% }
--type usage_based_pricing_term() :: #{binary() => any()}.
-
-%% Example:
-%% list_agreement_payment_requests_output() :: #{
-%%   <<"items">> => list(payment_request_summary()),
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_agreement_payment_requests_output() :: #{binary() => any()}.
+-type get_agreement_terms_input() :: #{binary() => any()}.
 
 %% Example:
-%% byol_pricing_term() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
+%% get_agreement_terms_output() :: #{
+%%   <<"acceptedTerms">> => list(list()),
+%%   <<"nextToken">> => string()
 %% }
--type byol_pricing_term() :: #{binary() => any()}.
-
-%% Example:
-%% recurring_payment_term() :: #{
-%%   <<"billingPeriod">> => string(),
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"price">> => string(),
-%%   <<"type">> => string()
-%% }
--type recurring_payment_term() :: #{binary() => any()}.
-
-%% Example:
-%% proposer() :: #{
-%%   <<"accountId">> => string()
-%% }
--type proposer() :: #{binary() => any()}.
+-type get_agreement_terms_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_billing_adjustment_request_input() :: #{
@@ -521,11 +559,20 @@
 -type get_billing_adjustment_request_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_agreement_cancellation_request_input() :: #{
-%%   <<"agreementCancellationRequestId">> := string(),
-%%   <<"agreementId">> := string()
+%% get_billing_adjustment_request_output() :: #{
+%%   <<"adjustmentAmount">> => string(),
+%%   <<"adjustmentReasonCode">> => list(any()),
+%%   <<"agreementId">> => string(),
+%%   <<"billingAdjustmentRequestId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"originalInvoiceId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_agreement_cancellation_request_input() :: #{binary() => any()}.
+-type get_billing_adjustment_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% grant_item() :: #{
@@ -535,16 +582,35 @@
 -type grant_item() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_billing_adjustment_request_entry() :: #{
-%%   <<"adjustmentAmount">> => string(),
-%%   <<"adjustmentReasonCode">> => list(any()),
-%%   <<"agreementId">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"currencyCode">> => string(),
-%%   <<"description">> => string(),
-%%   <<"originalInvoiceId">> => string()
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string()
 %% }
--type batch_create_billing_adjustment_request_entry() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_billing_period() :: #{
+%%   <<"month">> => [integer()],
+%%   <<"year">> => [integer()]
+%% }
+-type invoice_billing_period() :: #{binary() => any()}.
+
+%% Example:
+%% invoicing_entity() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"legalName">> => string()
+%% }
+-type invoicing_entity() :: #{binary() => any()}.
+
+%% Example:
+%% itemized_charge() :: #{
+%%   <<"chargeReference">> => string(),
+%%   <<"dimensionKey">> => string(),
+%%   <<"incrementalChargeAmount">> => string(),
+%%   <<"newQuantity">> => [integer()],
+%%   <<"oldQuantity">> => [integer()]
+%% }
+-type itemized_charge() :: #{binary() => any()}.
 
 %% Example:
 %% legal_term() :: #{
@@ -555,217 +621,16 @@
 -type legal_term() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_billing_adjustment_item() :: #{
-%%   <<"billingAdjustmentRequestId">> => string(),
-%%   <<"clientToken">> => string()
-%% }
--type batch_create_billing_adjustment_item() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% batch_create_billing_adjustment_request_output() :: #{
-%%   <<"errors">> => list(batch_create_billing_adjustment_error()),
-%%   <<"items">> => list(batch_create_billing_adjustment_item())
-%% }
--type batch_create_billing_adjustment_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% payment_schedule_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"schedule">> => list(schedule_item()),
-%%   <<"type">> => string()
-%% }
--type payment_schedule_term() :: #{binary() => any()}.
-
-%% Example:
-%% usage_based_rate_card_item() :: #{
-%%   <<"rateCard">> => list(rate_card_item())
-%% }
--type usage_based_rate_card_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_agreement_terms_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_agreement_terms_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_agreement_entitlements_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_agreement_entitlements_input() :: #{binary() => any()}.
-
-%% Example:
-%% accept_agreement_payment_request_output() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"chargeAmount">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"currencyCode">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"paymentRequestId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type accept_agreement_payment_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_agreement_invoice_line_items_output() :: #{
-%%   <<"agreementInvoiceLineItemGroupSummaries">> => list(agreement_invoice_line_item_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_agreement_invoice_line_items_output() :: #{binary() => any()}.
-
-%% Example:
-%% sort() :: #{
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type sort() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agreement_input() :: #{
-%%   <<"agreementId">> := string()
-%% }
--type describe_agreement_input() :: #{binary() => any()}.
-
-%% Example:
-%% search_agreements_output() :: #{
-%%   <<"agreementViewSummaries">> => list(agreement_view_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type search_agreements_output() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% reject_agreement_payment_request_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"paymentRequestId">> := string(),
-%%   <<"rejectionReason">> => string()
-%% }
--type reject_agreement_payment_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% fixed_upfront_pricing_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"duration">> => string(),
-%%   <<"grants">> => list(grant_item()),
-%%   <<"id">> => string(),
-%%   <<"price">> => string(),
-%%   <<"type">> => string()
-%% }
--type fixed_upfront_pricing_term() :: #{binary() => any()}.
-
-%% Example:
-%% billing_adjustment_summary() :: #{
-%%   <<"adjustmentAmount">> => string(),
+%% list_agreement_cancellation_requests_input() :: #{
 %%   <<"agreementId">> => string(),
 %%   <<"agreementType">> => string(),
-%%   <<"billingAdjustmentRequestId">> => string(),
 %%   <<"catalog">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currencyCode">> => string(),
-%%   <<"originalInvoiceId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type billing_adjustment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement() :: #{
-%%   <<"licenseArn">> => [string()]
-%% }
--type entitlement() :: #{binary() => any()}.
-
-%% Example:
-%% search_agreements_input() :: #{
-%%   <<"catalog">> => string(),
-%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"sort">> => sort()
+%%   <<"partyType">> := string(),
+%%   <<"status">> => list(any())
 %% }
--type search_agreements_input() :: #{binary() => any()}.
-
-%% Example:
-%% payment_request_summary() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"chargeAmount">> => string(),
-%%   <<"chargeId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"currencyCode">> => string(),
-%%   <<"name">> => string(),
-%%   <<"paymentRequestId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type payment_request_summary() :: #{binary() => any()}.
-
-%% Example:
-%% send_agreement_cancellation_request_output() :: #{
-%%   <<"agreementCancellationRequestId">> => string(),
-%%   <<"agreementId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"reasonCode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type send_agreement_cancellation_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% send_agreement_cancellation_request_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"reasonCode">> := list(any())
-%% }
--type send_agreement_cancellation_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_agreement_output() :: #{
-
-%% }
--type cancel_agreement_output() :: #{binary() => any()}.
-
-%% Example:
-%% constraints() :: #{
-%%   <<"multipleDimensionSelection">> => string(),
-%%   <<"quantityConfiguration">> => string()
-%% }
--type constraints() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"requestId">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
+-type list_agreement_cancellation_requests_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_agreement_cancellation_requests_output() :: #{
@@ -775,134 +640,21 @@
 -type list_agreement_cancellation_requests_output() :: #{binary() => any()}.
 
 %% Example:
-%% accept_agreement_cancellation_request_input() :: #{
-%%   <<"agreementCancellationRequestId">> := string(),
-%%   <<"agreementId">> := string()
-%% }
--type accept_agreement_cancellation_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% configurable_upfront_rate_card_item() :: #{
-%%   <<"constraints">> => constraints(),
-%%   <<"rateCard">> => list(rate_card_item()),
-%%   <<"selector">> => selector()
-%% }
--type configurable_upfront_rate_card_item() :: #{binary() => any()}.
-
-%% Example:
-%% variable_payment_term() :: #{
-%%   <<"configuration">> => variable_payment_term_configuration(),
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"maxTotalChargeAmount">> => string(),
-%%   <<"type">> => string()
-%% }
--type variable_payment_term() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_item() :: #{
-%%   <<"chargeAmount">> => string(),
-%%   <<"chargeDate">> => non_neg_integer()
-%% }
--type schedule_item() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"requestId">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% proposal_summary() :: #{
-%%   <<"offerId">> => string(),
-%%   <<"offerSetId">> => string(),
-%%   <<"resources">> => list(resource())
-%% }
--type proposal_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tax_breakdown_item() :: #{
-%%   <<"amount">> => string(),
-%%   <<"rate">> => string(),
-%%   <<"type">> => string()
-%% }
--type tax_breakdown_item() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_billing_adjustment_requests_output() :: #{
-%%   <<"items">> => list(billing_adjustment_summary()),
+%% list_agreement_charges_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_billing_adjustment_requests_output() :: #{binary() => any()}.
+-type list_agreement_charges_input() :: #{binary() => any()}.
 
 %% Example:
-%% expected_charge() :: #{
-%%   <<"amount">> => string(),
-%%   <<"amountAfterTax">> => string(),
-%%   <<"estimatedTaxes">> => estimated_taxes(),
-%%   <<"id">> => string(),
-%%   <<"time">> => non_neg_integer(),
-%%   <<"timing">> => list(any())
-%% }
--type expected_charge() :: #{binary() => any()}.
-
-%% Example:
-%% get_agreement_payment_request_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"paymentRequestId">> := string()
-%% }
--type get_agreement_payment_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_agreement_entitlements_output() :: #{
-%%   <<"agreementEntitlements">> => list(agreement_entitlement()),
+%% list_agreement_charges_output() :: #{
+%%   <<"items">> => list(charge()),
 %%   <<"nextToken">> => string()
 %% }
--type get_agreement_entitlements_output() :: #{binary() => any()}.
-
-%% Example:
-%% free_trial_pricing_term() :: #{
-%%   <<"duration">> => string(),
-%%   <<"grants">> => list(grant_item()),
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
-%% }
--type free_trial_pricing_term() :: #{binary() => any()}.
-
-%% Example:
-%% dimension() :: #{
-%%   <<"dimensionKey">> => string(),
-%%   <<"dimensionValue">> => integer()
-%% }
--type dimension() :: #{binary() => any()}.
-
-%% Example:
-%% validity_term() :: #{
-%%   <<"agreementDuration">> => string(),
-%%   <<"agreementEndDate">> => non_neg_integer(),
-%%   <<"agreementStartDate">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"type">> => string()
-%% }
--type validity_term() :: #{binary() => any()}.
-
-%% Example:
-%% accept_agreement_payment_request_input() :: #{
-%%   <<"agreementId">> := string(),
-%%   <<"paymentRequestId">> := string(),
-%%   <<"purchaseOrderReference">> => string()
-%% }
--type accept_agreement_payment_request_input() :: #{binary() => any()}.
+-type list_agreement_charges_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_agreement_invoice_line_items_input() :: #{
@@ -919,20 +671,129 @@
 -type list_agreement_invoice_line_items_input() :: #{binary() => any()}.
 
 %% Example:
-%% itemized_charge() :: #{
-%%   <<"chargeReference">> => string(),
-%%   <<"dimensionKey">> => string(),
-%%   <<"incrementalChargeAmount">> => string(),
-%%   <<"newQuantity">> => [integer()],
-%%   <<"oldQuantity">> => [integer()]
+%% list_agreement_invoice_line_items_output() :: #{
+%%   <<"agreementInvoiceLineItemGroupSummaries">> => list(agreement_invoice_line_item_group_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type itemized_charge() :: #{binary() => any()}.
+-type list_agreement_invoice_line_items_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_purchase_orders_input() :: #{
-%%   <<"purchaseOrders">> := list(purchase_order())
+%% list_agreement_payment_requests_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"partyType">> := string(),
+%%   <<"status">> => list(any())
 %% }
--type update_purchase_orders_input() :: #{binary() => any()}.
+-type list_agreement_payment_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_payment_requests_output() :: #{
+%%   <<"items">> => list(payment_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_payment_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_billing_adjustment_requests_input() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_billing_adjustment_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_billing_adjustment_requests_output() :: #{
+%%   <<"items">> => list(billing_adjustment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_billing_adjustment_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% payment_request_summary() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"chargeId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"currencyCode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type payment_request_summary() :: #{binary() => any()}.
+
+%% Example:
+%% payment_schedule_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"schedule">> => list(schedule_item()),
+%%   <<"type">> => string()
+%% }
+-type payment_schedule_term() :: #{binary() => any()}.
+
+%% Example:
+%% pricing_currency_amount() :: #{
+%%   <<"amount">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"maxAdjustmentAmount">> => string()
+%% }
+-type pricing_currency_amount() :: #{binary() => any()}.
+
+%% Example:
+%% proposal_summary() :: #{
+%%   <<"offerId">> => string(),
+%%   <<"offerSetId">> => string(),
+%%   <<"resources">> => list(resource())
+%% }
+-type proposal_summary() :: #{binary() => any()}.
+
+%% Example:
+%% proposer() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type proposer() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_order() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeId">> => string(),
+%%   <<"chargeRevision">> => float(),
+%%   <<"purchaseOrderReference">> => string()
+%% }
+-type purchase_order() :: #{binary() => any()}.
+
+%% Example:
+%% rate_card_item() :: #{
+%%   <<"dimensionKey">> => string(),
+%%   <<"price">> => string()
+%% }
+-type rate_card_item() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_payment_term() :: #{
+%%   <<"billingPeriod">> => string(),
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"price">> => string(),
+%%   <<"type">> => string()
+%% }
+-type recurring_payment_term() :: #{binary() => any()}.
+
+%% Example:
+%% reject_agreement_cancellation_request_input() :: #{
+%%   <<"agreementCancellationRequestId">> := string(),
+%%   <<"agreementId">> := string(),
+%%   <<"rejectionReason">> := string()
+%% }
+-type reject_agreement_cancellation_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% reject_agreement_cancellation_request_output() :: #{
@@ -946,6 +807,14 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type reject_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% reject_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"paymentRequestId">> := string(),
+%%   <<"rejectionReason">> => string()
+%% }
+-type reject_agreement_payment_request_input() :: #{binary() => any()}.
 
 %% Example:
 %% reject_agreement_payment_request_output() :: #{
@@ -963,96 +832,25 @@
 -type reject_agreement_payment_request_output() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_agreement_cancellation_request_input() :: #{
-%%   <<"agreementCancellationRequestId">> := string(),
-%%   <<"agreementId">> := string(),
-%%   <<"cancellationReason">> := string()
-%% }
--type cancel_agreement_cancellation_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_billing_period() :: #{
-%%   <<"month">> => [integer()],
-%%   <<"year">> => [integer()]
-%% }
--type invoice_billing_period() :: #{binary() => any()}.
-
-%% Example:
-%% list_agreement_charges_input() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_agreement_charges_input() :: #{binary() => any()}.
-
-%% Example:
-%% rate_card_item() :: #{
-%%   <<"dimensionKey">> => string(),
-%%   <<"price">> => string()
-%% }
--type rate_card_item() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_agreement_input() :: #{
-%%   <<"agreementId">> := string()
-%% }
--type cancel_agreement_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_agreement_cancellation_requests_input() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"agreementType">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"partyType">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type list_agreement_cancellation_requests_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_agreement_payment_request_output() :: #{
-%%   <<"agreementId">> => string(),
-%%   <<"chargeAmount">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"currencyCode">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"paymentRequestId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type cancel_agreement_payment_request_output() :: #{binary() => any()}.
-
-%% Example:
-%% variable_payment_term_configuration() :: #{
-%%   <<"expirationDuration">> => string(),
-%%   <<"paymentRequestApprovalStrategy">> => list(any())
-%% }
--type variable_payment_term_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_agreement_request_input() :: #{
-%%   <<"agreementProposalIdentifier">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"intent">> := list(any()),
-%%   <<"requestedTerms">> := list(requested_term()),
-%%   <<"sourceAgreementIdentifier">> => string(),
-%%   <<"taxConfiguration">> => tax_configuration()
-%% }
--type create_agreement_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% configurable_upfront_pricing_term() :: #{
-%%   <<"configuration">> => configurable_upfront_pricing_term_configuration(),
-%%   <<"currencyCode">> => string(),
+%% renewal_term() :: #{
+%%   <<"configuration">> => renewal_term_configuration(),
 %%   <<"id">> => string(),
-%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()),
 %%   <<"type">> => string()
 %% }
--type configurable_upfront_pricing_term() :: #{binary() => any()}.
+-type renewal_term() :: #{binary() => any()}.
+
+%% Example:
+%% renewal_term_configuration() :: #{
+%%   <<"enableAutoRenew">> => boolean()
+%% }
+-type renewal_term_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% requested_term() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"id">> => string()
+%% }
+-type requested_term() :: #{binary() => any()}.
 
 %% Example:
 %% resource() :: #{
@@ -1061,188 +859,390 @@
 %% }
 -type resource() :: #{binary() => any()}.
 
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_item() :: #{
+%%   <<"chargeAmount">> => string(),
+%%   <<"chargeDate">> => non_neg_integer()
+%% }
+-type schedule_item() :: #{binary() => any()}.
+
+%% Example:
+%% search_agreements_input() :: #{
+%%   <<"catalog">> => string(),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort()
+%% }
+-type search_agreements_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_agreements_output() :: #{
+%%   <<"agreementViewSummaries">> => list(agreement_view_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_agreements_output() :: #{binary() => any()}.
+
+%% Example:
+%% selector() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type selector() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_cancellation_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> := list(any())
+%% }
+-type send_agreement_cancellation_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_cancellation_request_output() :: #{
+%%   <<"agreementCancellationRequestId">> => string(),
+%%   <<"agreementId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"reasonCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type send_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_payment_request_input() :: #{
+%%   <<"agreementId">> := string(),
+%%   <<"chargeAmount">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"termId">> := string()
+%% }
+-type send_agreement_payment_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% send_agreement_payment_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"chargeAmount">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"currencyCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"paymentRequestId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type send_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sort() :: #{
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type sort() :: #{binary() => any()}.
+
+%% Example:
+%% support_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"refundPolicy">> => string(),
+%%   <<"type">> => string()
+%% }
+-type support_term() :: #{binary() => any()}.
+
+%% Example:
+%% tax_breakdown_item() :: #{
+%%   <<"amount">> => string(),
+%%   <<"rate">> => string(),
+%%   <<"type">> => string()
+%% }
+-type tax_breakdown_item() :: #{binary() => any()}.
+
+%% Example:
+%% tax_configuration() :: #{
+%%   <<"taxEstimation">> => list(any())
+%% }
+-type tax_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_purchase_orders_input() :: #{
+%%   <<"purchaseOrders">> := list(purchase_order())
+%% }
+-type update_purchase_orders_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_purchase_orders_output() :: #{
+
+%% }
+-type update_purchase_orders_output() :: #{binary() => any()}.
+
+%% Example:
+%% usage_based_pricing_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rateCards">> => list(usage_based_rate_card_item()),
+%%   <<"type">> => string()
+%% }
+-type usage_based_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% usage_based_rate_card_item() :: #{
+%%   <<"rateCard">> => list(rate_card_item())
+%% }
+-type usage_based_rate_card_item() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"requestId">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% validity_term() :: #{
+%%   <<"agreementDuration">> => string(),
+%%   <<"agreementEndDate">> => non_neg_integer(),
+%%   <<"agreementStartDate">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"type">> => string()
+%% }
+-type validity_term() :: #{binary() => any()}.
+
+%% Example:
+%% variable_payment_term() :: #{
+%%   <<"configuration">> => variable_payment_term_configuration(),
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"maxTotalChargeAmount">> => string(),
+%%   <<"type">> => string()
+%% }
+-type variable_payment_term() :: #{binary() => any()}.
+
+%% Example:
+%% variable_payment_term_configuration() :: #{
+%%   <<"expirationDuration">> => string(),
+%%   <<"paymentRequestApprovalStrategy">> => list(any())
+%% }
+-type variable_payment_term_configuration() :: #{binary() => any()}.
+
 -type accept_agreement_cancellation_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type accept_agreement_payment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type accept_agreement_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_create_billing_adjustment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_agreement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_agreement_cancellation_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_agreement_payment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_agreement_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_agreement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agreement_cancellation_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agreement_entitlements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agreement_payment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_agreement_terms_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_billing_adjustment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agreement_cancellation_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_agreement_charges_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_agreement_invoice_line_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_agreement_payment_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_billing_adjustment_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type reject_agreement_cancellation_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reject_agreement_payment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_agreements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type send_agreement_cancellation_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_agreement_payment_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_purchase_orders_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

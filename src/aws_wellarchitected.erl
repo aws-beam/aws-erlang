@@ -193,181 +193,20 @@
 
 
 %% Example:
-%% import_lens_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"JSONString">> := string(),
-%%   <<"LensAlias">> => string(),
-%%   <<"Tags">> => map()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type import_lens_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% profile() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Owner">> => string(),
-%%   <<"ProfileArn">> => string(),
-%%   <<"ProfileDescription">> => string(),
-%%   <<"ProfileName">> => string(),
-%%   <<"ProfileQuestions">> => list(profile_question()),
-%%   <<"ProfileVersion">> => string(),
-%%   <<"ShareInvitationId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_answer_input() :: #{
-%%   <<"ChoiceUpdates">> => map(),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"Notes">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type update_answer_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_question() :: #{
-%%   <<"MaxSelectedChoices">> => integer(),
-%%   <<"MinSelectedChoices">> => integer(),
-%%   <<"QuestionChoices">> => list(profile_choice()),
-%%   <<"QuestionDescription">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"SelectedChoiceIds">> => list(string())
-%% }
--type profile_question() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice_answer_summary() :: #{
-%%   <<"ChoiceId">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type choice_answer_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lenses_output() :: #{
-%%   <<"LensSummaries">> => list(lens_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_lenses_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_output() :: #{
-%%   <<"Profile">> => profile()
-%% }
--type get_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% question_metric() :: #{
-%%   <<"BestPractices">> => list(best_practice()),
-%%   <<"QuestionId">> => string(),
-%%   <<"Risk">> => list(any())
-%% }
--type question_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workload_share_output() :: #{
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadShare">> => workload_share()
-%% }
--type update_workload_share_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens_review() :: #{
-%%   <<"JiraConfiguration">> => jira_selected_question_configuration(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"LensName">> => string(),
-%%   <<"LensStatus">> => list(any()),
-%%   <<"LensVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Notes">> => string(),
-%%   <<"PillarReviewSummaries">> => list(pillar_review_summary()),
-%%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()),
-%%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type lens_review() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_output() :: #{
-%%   <<"Workload">> => workload()
-%% }
--type get_workload_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_review_template_input() :: #{}
--type get_review_template_input() :: #{}.
-
-
-%% Example:
-%% workload_share_summary() :: #{
-%%   <<"PermissionType">> => list(any()),
-%%   <<"ShareId">> => string(),
-%%   <<"SharedWith">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type workload_share_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_summary() :: #{
-%%   <<"ImprovementStatus">> => list(any()),
-%%   <<"Lenses">> => list(string()),
-%%   <<"Owner">> => string(),
-%%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()),
-%%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"WorkloadArn">> => string(),
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadName">> => string()
-%% }
--type workload_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lens_review_improvements_output() :: #{
-%%   <<"ImprovementSummaries">> => list(improvement_summary()),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_lens_review_improvements_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% best_practice() :: #{
-%%   <<"ChoiceId">> => string(),
-%%   <<"ChoiceTitle">> => string()
-%% }
--type best_practice() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_jira_configuration_output() :: #{
+%% account_jira_configuration_input() :: #{
+%%   <<"IntegrationStatus">> => list(any()),
 %%   <<"IssueManagementStatus">> => list(any()),
 %%   <<"IssueManagementType">> => list(any()),
-%%   <<"JiraProjectKey">> => string(),
-%%   <<"StatusMessage">> => string()
+%%   <<"JiraProjectKey">> => string()
 %% }
--type workload_jira_configuration_output() :: #{binary() => any()}.
+-type account_jira_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -383,36 +222,56 @@
 
 
 %% Example:
-%% get_lens_review_output() :: #{
-%%   <<"LensReview">> => lens_review(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"WorkloadId">> => string()
+%% additional_resources() :: #{
+%%   <<"Content">> => list(choice_content()),
+%%   <<"Type">> => list(any())
 %% }
--type get_lens_review_output() :: #{binary() => any()}.
+-type additional_resources() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workloads_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadNamePrefix">> => string()
+%% answer() :: #{
+%%   <<"ChoiceAnswers">> => list(choice_answer()),
+%%   <<"Choices">> => list(choice()),
+%%   <<"HelpfulResourceDisplayText">> => string(),
+%%   <<"HelpfulResourceUrl">> => string(),
+%%   <<"ImprovementPlanUrl">> => string(),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"JiraConfiguration">> => jira_configuration(),
+%%   <<"Notes">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionDescription">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"Risk">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
 %% }
--type list_workloads_input() :: #{binary() => any()}.
+-type answer() :: #{binary() => any()}.
 
 
 %% Example:
-%% jira_selected_question_configuration() :: #{
-%%   <<"SelectedPillars">> => list(selected_pillar())
+%% answer_summary() :: #{
+%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
+%%   <<"Choices">> => list(choice()),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"JiraConfiguration">> => jira_configuration(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"QuestionType">> => list(any()),
+%%   <<"Reason">> => list(any()),
+%%   <<"Risk">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
 %% }
--type jira_selected_question_configuration() :: #{binary() => any()}.
+-type answer_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_check_details_output() :: #{
-%%   <<"CheckDetails">> => list(check_detail()),
-%%   <<"NextToken">> => string()
+%% associate_lenses_input() :: #{
+%%   <<"LensAliases">> := list(string())
 %% }
--type list_check_details_output() :: #{binary() => any()}.
+-type associate_lenses_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -420,6 +279,14 @@
 %%   <<"ProfileArns">> := list(string())
 %% }
 -type associate_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% best_practice() :: #{
+%%   <<"ChoiceId">> => string(),
+%%   <<"ChoiceTitle">> => string()
+%% }
+-type best_practice() :: #{binary() => any()}.
 
 
 %% Example:
@@ -442,6 +309,375 @@
 
 
 %% Example:
+%% check_summary() :: #{
+%%   <<"AccountSummary">> => map(),
+%%   <<"ChoiceId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"QuestionId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type check_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice() :: #{
+%%   <<"AdditionalResources">> => list(additional_resources()),
+%%   <<"ChoiceId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HelpfulResource">> => choice_content(),
+%%   <<"ImprovementPlan">> => choice_content(),
+%%   <<"Title">> => string()
+%% }
+-type choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice_answer() :: #{
+%%   <<"ChoiceId">> => string(),
+%%   <<"Notes">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type choice_answer() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice_answer_summary() :: #{
+%%   <<"ChoiceId">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type choice_answer_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice_content() :: #{
+%%   <<"DisplayText">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type choice_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice_improvement_plan() :: #{
+%%   <<"ChoiceId">> => string(),
+%%   <<"DisplayText">> => string(),
+%%   <<"ImprovementPlanUrl">> => string()
+%% }
+-type choice_improvement_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% choice_update() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type choice_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidated_report_metric() :: #{
+%%   <<"Lenses">> => list(lens_metric()),
+%%   <<"LensesAppliedCount">> => integer(),
+%%   <<"MetricType">> => list(any()),
+%%   <<"RiskCounts">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"WorkloadArn">> => string(),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadName">> => string()
+%% }
+-type consolidated_report_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lens_share_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"SharedWith">> := string()
+%% }
+-type create_lens_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lens_share_output() :: #{
+%%   <<"ShareId">> => string()
+%% }
+-type create_lens_share_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lens_version_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"IsMajorVersion">> => boolean(),
+%%   <<"LensVersion">> := string()
+%% }
+-type create_lens_version_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lens_version_output() :: #{
+%%   <<"LensArn">> => string(),
+%%   <<"LensVersion">> => string()
+%% }
+-type create_lens_version_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_milestone_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"MilestoneName">> := string()
+%% }
+-type create_milestone_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_milestone_output() :: #{
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type create_milestone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ProfileDescription">> := string(),
+%%   <<"ProfileName">> := string(),
+%%   <<"ProfileQuestions">> := list(profile_question_update()),
+%%   <<"Tags">> => map()
+%% }
+-type create_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_output() :: #{
+%%   <<"ProfileArn">> => string(),
+%%   <<"ProfileVersion">> => string()
+%% }
+-type create_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_share_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"SharedWith">> := string()
+%% }
+-type create_profile_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_share_output() :: #{
+%%   <<"ProfileArn">> => string(),
+%%   <<"ShareId">> => string()
+%% }
+-type create_profile_share_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_review_template_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Lenses">> := list(string()),
+%%   <<"Notes">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateName">> := string()
+%% }
+-type create_review_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_review_template_output() :: #{
+%%   <<"TemplateArn">> => string()
+%% }
+-type create_review_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_share_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"SharedWith">> := string()
+%% }
+-type create_template_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_share_output() :: #{
+%%   <<"ShareId">> => string(),
+%%   <<"TemplateArn">> => string()
+%% }
+-type create_template_share_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_input() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Applications">> => list(string()),
+%%   <<"ArchitecturalDesign">> => string(),
+%%   <<"AwsRegions">> => list(string()),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"DiscoveryConfig">> => workload_discovery_config(),
+%%   <<"Environment">> := list(any()),
+%%   <<"Industry">> => string(),
+%%   <<"IndustryType">> => string(),
+%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
+%%   <<"Lenses">> := list(string()),
+%%   <<"NonAwsRegions">> => list(string()),
+%%   <<"Notes">> => string(),
+%%   <<"PillarPriorities">> => list(string()),
+%%   <<"ProfileArns">> => list(string()),
+%%   <<"ReviewOwner">> => string(),
+%%   <<"ReviewTemplateArns">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"WorkloadName">> := string()
+%% }
+-type create_workload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_output() :: #{
+%%   <<"WorkloadArn">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type create_workload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_share_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"PermissionType">> := list(any()),
+%%   <<"SharedWith">> := string()
+%% }
+-type create_workload_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workload_share_output() :: #{
+%%   <<"ShareId">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type create_workload_share_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_lens_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"LensStatus">> := list(any())
+%% }
+-type delete_lens_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_lens_share_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_lens_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_share_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_profile_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_review_template_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_review_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_template_share_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_template_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workload_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_workload_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workload_share_input() :: #{
+%%   <<"ClientRequestToken">> := string()
+%% }
+-type delete_workload_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_lenses_input() :: #{
+%%   <<"LensAliases">> := list(string())
+%% }
+-type disassociate_lenses_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_profiles_input() :: #{
+%%   <<"ProfileArns">> := list(string())
+%% }
+-type disassociate_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_lens_input() :: #{
+%%   <<"LensVersion">> => string()
+%% }
+-type export_lens_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_lens_output() :: #{
+%%   <<"LensJSON">> => string()
+%% }
+-type export_lens_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_answer_input() :: #{
+%%   <<"MilestoneNumber">> => integer()
+%% }
+-type get_answer_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_answer_output() :: #{
+%%   <<"Answer">> => answer(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type get_answer_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_consolidated_report_input() :: #{
 %%   <<"Format">> := list(any()),
 %%   <<"IncludeSharedResources">> => boolean(),
@@ -452,11 +688,948 @@
 
 
 %% Example:
-%% create_profile_output() :: #{
-%%   <<"ProfileArn">> => string(),
+%% get_consolidated_report_output() :: #{
+%%   <<"Base64String">> => string(),
+%%   <<"Metrics">> => list(consolidated_report_metric()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_consolidated_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_global_settings_output() :: #{
+%%   <<"DiscoveryIntegrationStatus">> => list(any()),
+%%   <<"JiraConfiguration">> => account_jira_configuration_output(),
+%%   <<"OrganizationSharingStatus">> => list(any())
+%% }
+-type get_global_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_input() :: #{
+%%   <<"LensVersion">> => string()
+%% }
+-type get_lens_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_output() :: #{
+%%   <<"Lens">> => lens()
+%% }
+-type get_lens_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_review_input() :: #{
+%%   <<"MilestoneNumber">> => integer()
+%% }
+-type get_lens_review_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_review_output() :: #{
+%%   <<"LensReview">> => lens_review(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type get_lens_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_review_report_input() :: #{
+%%   <<"MilestoneNumber">> => integer()
+%% }
+-type get_lens_review_report_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_review_report_output() :: #{
+%%   <<"LensReviewReport">> => lens_review_report(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type get_lens_review_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_version_difference_input() :: #{
+%%   <<"BaseLensVersion">> => string(),
+%%   <<"TargetLensVersion">> => string()
+%% }
+-type get_lens_version_difference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lens_version_difference_output() :: #{
+%%   <<"BaseLensVersion">> => string(),
+%%   <<"LatestLensVersion">> => string(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"TargetLensVersion">> => string(),
+%%   <<"VersionDifferences">> => version_differences()
+%% }
+-type get_lens_version_difference_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_milestone_input() :: #{}
+-type get_milestone_input() :: #{}.
+
+
+%% Example:
+%% get_milestone_output() :: #{
+%%   <<"Milestone">> => milestone(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type get_milestone_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_input() :: #{
 %%   <<"ProfileVersion">> => string()
 %% }
--type create_profile_output() :: #{binary() => any()}.
+-type get_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_output() :: #{
+%%   <<"Profile">> => profile()
+%% }
+-type get_profile_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_template_input() :: #{}
+-type get_profile_template_input() :: #{}.
+
+
+%% Example:
+%% get_profile_template_output() :: #{
+%%   <<"ProfileTemplate">> => profile_template()
+%% }
+-type get_profile_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_review_template_answer_input() :: #{}
+-type get_review_template_answer_input() :: #{}.
+
+
+%% Example:
+%% get_review_template_answer_output() :: #{
+%%   <<"Answer">> => review_template_answer(),
+%%   <<"LensAlias">> => string(),
+%%   <<"TemplateArn">> => string()
+%% }
+-type get_review_template_answer_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_review_template_input() :: #{}
+-type get_review_template_input() :: #{}.
+
+%% Example:
+%% get_review_template_lens_review_input() :: #{}
+-type get_review_template_lens_review_input() :: #{}.
+
+
+%% Example:
+%% get_review_template_lens_review_output() :: #{
+%%   <<"LensReview">> => review_template_lens_review(),
+%%   <<"TemplateArn">> => string()
+%% }
+-type get_review_template_lens_review_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_review_template_output() :: #{
+%%   <<"ReviewTemplate">> => review_template()
+%% }
+-type get_review_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_workload_input() :: #{}
+-type get_workload_input() :: #{}.
+
+
+%% Example:
+%% get_workload_output() :: #{
+%%   <<"Workload">> => workload()
+%% }
+-type get_workload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_lens_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"JSONString">> := string(),
+%%   <<"LensAlias">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type import_lens_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_lens_output() :: #{
+%%   <<"LensArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type import_lens_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% improvement_summary() :: #{
+%%   <<"ImprovementPlanUrl">> => string(),
+%%   <<"ImprovementPlans">> => list(choice_improvement_plan()),
+%%   <<"JiraConfiguration">> => jira_configuration(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"Risk">> => list(any())
+%% }
+-type improvement_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_configuration() :: #{
+%%   <<"JiraIssueUrl">> => string(),
+%%   <<"LastSyncedTime">> => non_neg_integer()
+%% }
+-type jira_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_selected_question_configuration() :: #{
+%%   <<"SelectedPillars">> => list(selected_pillar())
+%% }
+-type jira_selected_question_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"LensVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ShareInvitationId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type lens() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_metric() :: #{
+%%   <<"LensArn">> => string(),
+%%   <<"Pillars">> => list(pillar_metric()),
+%%   <<"RiskCounts">> => map()
+%% }
+-type lens_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_review() :: #{
+%%   <<"JiraConfiguration">> => jira_selected_question_configuration(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"LensName">> => string(),
+%%   <<"LensStatus">> => list(any()),
+%%   <<"LensVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Notes">> => string(),
+%%   <<"PillarReviewSummaries">> => list(pillar_review_summary()),
+%%   <<"PrioritizedRiskCounts">> => map(),
+%%   <<"Profiles">> => list(workload_profile()),
+%%   <<"RiskCounts">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type lens_review() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_review_report() :: #{
+%%   <<"Base64String">> => string(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string()
+%% }
+-type lens_review_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_review_summary() :: #{
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"LensName">> => string(),
+%%   <<"LensStatus">> => list(any()),
+%%   <<"LensVersion">> => string(),
+%%   <<"PrioritizedRiskCounts">> => map(),
+%%   <<"Profiles">> => list(workload_profile()),
+%%   <<"RiskCounts">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type lens_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_share_summary() :: #{
+%%   <<"ShareId">> => string(),
+%%   <<"SharedWith">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type lens_share_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"LensName">> => string(),
+%%   <<"LensStatus">> => list(any()),
+%%   <<"LensType">> => list(any()),
+%%   <<"LensVersion">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type lens_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lens_upgrade_summary() :: #{
+%%   <<"CurrentLensVersion">> => string(),
+%%   <<"LatestLensVersion">> => string(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadName">> => string()
+%% }
+-type lens_upgrade_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_answers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionPriority">> => list(any())
+%% }
+-type list_answers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_answers_output() :: #{
+%%   <<"AnswerSummaries">> => list(answer_summary()),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_answers_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_check_details_input() :: #{
+%%   <<"ChoiceId">> := string(),
+%%   <<"LensArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PillarId">> := string(),
+%%   <<"QuestionId">> := string()
+%% }
+-type list_check_details_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_check_details_output() :: #{
+%%   <<"CheckDetails">> => list(check_detail()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_check_details_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_check_summaries_input() :: #{
+%%   <<"ChoiceId">> := string(),
+%%   <<"LensArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PillarId">> := string(),
+%%   <<"QuestionId">> := string()
+%% }
+-type list_check_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_check_summaries_output() :: #{
+%%   <<"CheckSummaries">> => list(check_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_check_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_review_improvements_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionPriority">> => list(any())
+%% }
+-type list_lens_review_improvements_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_review_improvements_output() :: #{
+%%   <<"ImprovementSummaries">> => list(improvement_summary()),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_lens_review_improvements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_reviews_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lens_reviews_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_reviews_output() :: #{
+%%   <<"LensReviewSummaries">> => list(lens_review_summary()),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_lens_reviews_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_shares_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedWithPrefix">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_lens_shares_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lens_shares_output() :: #{
+%%   <<"LensShareSummaries">> => list(lens_share_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lens_shares_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lenses_input() :: #{
+%%   <<"LensName">> => string(),
+%%   <<"LensStatus">> => list(any()),
+%%   <<"LensType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lenses_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lenses_output() :: #{
+%%   <<"LensSummaries">> => list(lens_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lenses_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_milestones_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_milestones_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_milestones_output() :: #{
+%%   <<"MilestoneSummaries">> => list(milestone_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_milestones_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationSummaries">> => list(notification_summary())
+%% }
+-type list_notifications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_notifications_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type list_profile_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_notifications_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationSummaries">> => list(profile_notification_summary())
+%% }
+-type list_profile_notifications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_shares_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedWithPrefix">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_profile_shares_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_shares_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileShareSummaries">> => list(profile_share_summary())
+%% }
+-type list_profile_shares_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profiles_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileNamePrefix">> => string(),
+%%   <<"ProfileOwnerType">> => list(any())
+%% }
+-type list_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profiles_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileSummaries">> => list(profile_summary())
+%% }
+-type list_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_review_template_answers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PillarId">> => string()
+%% }
+-type list_review_template_answers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_review_template_answers_output() :: #{
+%%   <<"AnswerSummaries">> => list(review_template_answer_summary()),
+%%   <<"LensAlias">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"TemplateArn">> => string()
+%% }
+-type list_review_template_answers_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_review_templates_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_review_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_review_templates_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReviewTemplates">> => list(review_template_summary())
+%% }
+-type list_review_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_share_invitations_input() :: #{
+%%   <<"LensNamePrefix">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileNamePrefix">> => string(),
+%%   <<"ShareResourceType">> => list(any()),
+%%   <<"TemplateNamePrefix">> => string(),
+%%   <<"WorkloadNamePrefix">> => string()
+%% }
+-type list_share_invitations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_share_invitations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ShareInvitationSummaries">> => list(share_invitation_summary())
+%% }
+-type list_share_invitations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_shares_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedWithPrefix">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_template_shares_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_shares_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateShareSummaries">> => list(template_share_summary())
+%% }
+-type list_template_shares_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_shares_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedWithPrefix">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_workload_shares_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workload_shares_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadShareSummaries">> => list(workload_share_summary())
+%% }
+-type list_workload_shares_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workloads_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadNamePrefix">> => string()
+%% }
+-type list_workloads_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workloads_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadSummaries">> => list(workload_summary())
+%% }
+-type list_workloads_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% milestone() :: #{
+%%   <<"MilestoneName">> => string(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"RecordedAt">> => non_neg_integer(),
+%%   <<"Workload">> => workload()
+%% }
+-type milestone() :: #{binary() => any()}.
+
+
+%% Example:
+%% milestone_summary() :: #{
+%%   <<"MilestoneName">> => string(),
+%%   <<"MilestoneNumber">> => integer(),
+%%   <<"RecordedAt">> => non_neg_integer(),
+%%   <<"WorkloadSummary">> => workload_summary()
+%% }
+-type milestone_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_summary() :: #{
+%%   <<"LensUpgradeSummary">> => lens_upgrade_summary(),
+%%   <<"Type">> => list(any())
+%% }
+-type notification_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% pillar_difference() :: #{
+%%   <<"DifferenceStatus">> => list(any()),
+%%   <<"PillarId">> => string(),
+%%   <<"PillarName">> => string(),
+%%   <<"QuestionDifferences">> => list(question_difference())
+%% }
+-type pillar_difference() :: #{binary() => any()}.
+
+
+%% Example:
+%% pillar_metric() :: #{
+%%   <<"PillarId">> => string(),
+%%   <<"Questions">> => list(question_metric()),
+%%   <<"RiskCounts">> => map()
+%% }
+-type pillar_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% pillar_review_summary() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"PillarName">> => string(),
+%%   <<"PrioritizedRiskCounts">> => map(),
+%%   <<"RiskCounts">> => map()
+%% }
+-type pillar_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Owner">> => string(),
+%%   <<"ProfileArn">> => string(),
+%%   <<"ProfileDescription">> => string(),
+%%   <<"ProfileName">> => string(),
+%%   <<"ProfileQuestions">> => list(profile_question()),
+%%   <<"ProfileVersion">> => string(),
+%%   <<"ShareInvitationId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_choice() :: #{
+%%   <<"ChoiceDescription">> => string(),
+%%   <<"ChoiceId">> => string(),
+%%   <<"ChoiceTitle">> => string()
+%% }
+-type profile_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_notification_summary() :: #{
+%%   <<"CurrentProfileVersion">> => string(),
+%%   <<"LatestProfileVersion">> => string(),
+%%   <<"ProfileArn">> => string(),
+%%   <<"ProfileName">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadName">> => string()
+%% }
+-type profile_notification_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_question() :: #{
+%%   <<"MaxSelectedChoices">> => integer(),
+%%   <<"MinSelectedChoices">> => integer(),
+%%   <<"QuestionChoices">> => list(profile_choice()),
+%%   <<"QuestionDescription">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"SelectedChoiceIds">> => list(string())
+%% }
+-type profile_question() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_question_update() :: #{
+%%   <<"QuestionId">> => string(),
+%%   <<"SelectedChoiceIds">> => list(string())
+%% }
+-type profile_question_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_share_summary() :: #{
+%%   <<"ShareId">> => string(),
+%%   <<"SharedWith">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type profile_share_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Owner">> => string(),
+%%   <<"ProfileArn">> => string(),
+%%   <<"ProfileDescription">> => string(),
+%%   <<"ProfileName">> => string(),
+%%   <<"ProfileVersion">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_template() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateQuestions">> => list(profile_template_question()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type profile_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_template_choice() :: #{
+%%   <<"ChoiceDescription">> => string(),
+%%   <<"ChoiceId">> => string(),
+%%   <<"ChoiceTitle">> => string()
+%% }
+-type profile_template_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_template_question() :: #{
+%%   <<"MaxSelectedChoices">> => integer(),
+%%   <<"MinSelectedChoices">> => integer(),
+%%   <<"QuestionChoices">> => list(profile_template_choice()),
+%%   <<"QuestionDescription">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string()
+%% }
+-type profile_template_question() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_difference() :: #{
+%%   <<"DifferenceStatus">> => list(any()),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string()
+%% }
+-type question_difference() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_metric() :: #{
+%%   <<"BestPractices">> => list(best_practice()),
+%%   <<"QuestionId">> => string(),
+%%   <<"Risk">> => list(any())
+%% }
+-type question_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_template() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Lenses">> => list(string()),
+%%   <<"Notes">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"QuestionCounts">> => map(),
+%%   <<"ShareInvitationId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"UpdateStatus">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type review_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_template_answer() :: #{
+%%   <<"AnswerStatus">> => list(any()),
+%%   <<"ChoiceAnswers">> => list(choice_answer()),
+%%   <<"Choices">> => list(choice()),
+%%   <<"HelpfulResourceDisplayText">> => string(),
+%%   <<"HelpfulResourceUrl">> => string(),
+%%   <<"ImprovementPlanUrl">> => string(),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"Notes">> => string(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionDescription">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
+%% }
+-type review_template_answer() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_template_answer_summary() :: #{
+%%   <<"AnswerStatus">> => list(any()),
+%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
+%%   <<"Choices">> => list(choice()),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"PillarId">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"QuestionTitle">> => string(),
+%%   <<"QuestionType">> => list(any()),
+%%   <<"Reason">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
+%% }
+-type review_template_answer_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_template_lens_review() :: #{
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"LensName">> => string(),
+%%   <<"LensStatus">> => list(any()),
+%%   <<"LensVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Notes">> => string(),
+%%   <<"PillarReviewSummaries">> => list(review_template_pillar_review_summary()),
+%%   <<"QuestionCounts">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type review_template_lens_review() :: #{binary() => any()}.
 
 
 %% Example:
@@ -470,21 +1643,48 @@
 
 
 %% Example:
-%% template_share_summary() :: #{
-%%   <<"ShareId">> => string(),
-%%   <<"SharedWith">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%% review_template_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Lenses">> => list(string()),
+%%   <<"Owner">> => string(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"UpdateStatus">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type template_share_summary() :: #{binary() => any()}.
+-type review_template_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_lens_version_output() :: #{
-%%   <<"LensArn">> => string(),
-%%   <<"LensVersion">> => string()
+%% selected_pillar() :: #{
+%%   <<"PillarId">> => string(),
+%%   <<"SelectedQuestionIds">> => list(string())
 %% }
--type create_lens_version_output() :: #{binary() => any()}.
+-type selected_pillar() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_invitation() :: #{
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"ProfileArn">> => string(),
+%%   <<"ShareInvitationId">> => string(),
+%%   <<"ShareResourceType">> => list(any()),
+%%   <<"TemplateArn">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type share_invitation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -507,35 +1707,74 @@
 
 
 %% Example:
-%% update_share_invitation_output() :: #{
-%%   <<"ShareInvitation">> => share_invitation()
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
 %% }
--type update_share_invitation_output() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
 
 
 %% Example:
-%% profile_share_summary() :: #{
+%% template_share_summary() :: #{
 %%   <<"ShareId">> => string(),
 %%   <<"SharedWith">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string()
 %% }
--type profile_share_summary() :: #{binary() => any()}.
+-type template_share_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_review_template_output() :: #{
-%%   <<"TemplateArn">> => string()
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ServiceCode">> => string()
 %% }
--type create_review_template_output() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_lens_shares_output() :: #{
-%%   <<"LensShareSummaries">> => list(lens_share_summary()),
-%%   <<"NextToken">> => string()
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type list_lens_shares_output() :: #{binary() => any()}.
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_answer_input() :: #{
+%%   <<"ChoiceUpdates">> => map(),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"Notes">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
+%% }
+-type update_answer_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_answer_output() :: #{
+%%   <<"Answer">> => answer(),
+%%   <<"LensAlias">> => string(),
+%%   <<"LensArn">> => string(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type update_answer_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_input() :: #{
+%%   <<"DiscoveryIntegrationStatus">> => list(any()),
+%%   <<"JiraConfiguration">> => account_jira_configuration_input(),
+%%   <<"OrganizationSharingStatus">> => list(any())
+%% }
+-type update_global_settings_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -544,157 +1783,6 @@
 %%   <<"IntegratingService">> := list(any())
 %% }
 -type update_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_check_details_input() :: #{
-%%   <<"ChoiceId">> := string(),
-%%   <<"LensArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PillarId">> := string(),
-%%   <<"QuestionId">> := string()
-%% }
--type list_check_details_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lens_shares_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedWithPrefix">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_lens_shares_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_lens_review_output() :: #{
-%%   <<"LensReview">> => lens_review(),
-%%   <<"WorkloadId">> => string()
-%% }
--type update_lens_review_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_milestones_output() :: #{
-%%   <<"MilestoneSummaries">> => list(milestone_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_milestones_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_answer_input() :: #{
-%%   <<"MilestoneNumber">> => integer()
-%% }
--type get_answer_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_lens_version_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"IsMajorVersion">> => boolean(),
-%%   <<"LensVersion">> := string()
-%% }
--type create_lens_version_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_notifications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_milestone_output() :: #{
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"WorkloadId">> => string()
-%% }
--type create_milestone_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lens_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"LensStatus">> := list(any())
-%% }
--type delete_lens_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_question_update() :: #{
-%%   <<"QuestionId">> => string(),
-%%   <<"SelectedChoiceIds">> => list(string())
-%% }
--type profile_question_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lens_share_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_lens_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_shares_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileShareSummaries">> => list(profile_share_summary())
-%% }
--type list_profile_shares_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% share_invitation() :: #{
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"ProfileArn">> => string(),
-%%   <<"ShareInvitationId">> => string(),
-%%   <<"ShareResourceType">> => list(any()),
-%%   <<"TemplateArn">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type share_invitation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"ProfileDescription">> := string(),
-%%   <<"ProfileName">> := string(),
-%%   <<"ProfileQuestions">> := list(profile_question_update()),
-%%   <<"Tags">> => map()
-%% }
--type create_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profiles_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileSummaries">> => list(profile_summary())
-%% }
--type list_profiles_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_milestones_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_milestones_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -707,52 +1795,46 @@
 
 
 %% Example:
-%% associate_lenses_input() :: #{
-%%   <<"LensAliases">> := list(string())
+%% update_lens_review_output() :: #{
+%%   <<"LensReview">> => lens_review(),
+%%   <<"WorkloadId">> => string()
 %% }
--type associate_lenses_input() :: #{binary() => any()}.
+-type update_lens_review_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_review_template_output() :: #{
-%%   <<"ReviewTemplate">> => review_template()
+%% update_profile_input() :: #{
+%%   <<"ProfileDescription">> => string(),
+%%   <<"ProfileQuestions">> => list(profile_question_update())
 %% }
--type update_review_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_workload_input() :: #{}
--type get_workload_input() :: #{}.
+-type update_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% lens_review_summary() :: #{
+%% update_profile_output() :: #{
+%%   <<"Profile">> => profile()
+%% }
+-type update_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_review_template_answer_input() :: #{
+%%   <<"ChoiceUpdates">> => map(),
+%%   <<"IsApplicable">> => boolean(),
+%%   <<"Notes">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"SelectedChoices">> => list(string())
+%% }
+-type update_review_template_answer_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_review_template_answer_output() :: #{
+%%   <<"Answer">> => review_template_answer(),
 %%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"LensName">> => string(),
-%%   <<"LensStatus">> => list(any()),
-%%   <<"LensVersion">> => string(),
-%%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()),
-%%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"TemplateArn">> => string()
 %% }
--type lens_review_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_shares_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TemplateArn">> => string(),
-%%   <<"TemplateShareSummaries">> => list(template_share_summary())
-%% }
--type list_template_shares_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_profile_input() :: #{binary() => any()}.
+-type update_review_template_answer_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -767,70 +1849,85 @@
 
 
 %% Example:
-%% list_workload_shares_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedWithPrefix">> => string(),
-%%   <<"Status">> => list(any())
+%% update_review_template_lens_review_input() :: #{
+%%   <<"LensNotes">> => string(),
+%%   <<"PillarNotes">> => map()
 %% }
--type list_workload_shares_input() :: #{binary() => any()}.
+-type update_review_template_lens_review_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_lens_output() :: #{
-%%   <<"LensArn">> => string(),
-%%   <<"Status">> => list(any())
+%% update_review_template_lens_review_output() :: #{
+%%   <<"LensReview">> => review_template_lens_review(),
+%%   <<"TemplateArn">> => string()
 %% }
--type import_lens_output() :: #{binary() => any()}.
+-type update_review_template_lens_review_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_milestone_output() :: #{
-%%   <<"Milestone">> => milestone(),
-%%   <<"WorkloadId">> => string()
+%% update_review_template_output() :: #{
+%%   <<"ReviewTemplate">> => review_template()
 %% }
--type get_milestone_output() :: #{binary() => any()}.
+-type update_review_template_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% lens_share_summary() :: #{
-%%   <<"ShareId">> => string(),
-%%   <<"SharedWith">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%% update_share_invitation_input() :: #{
+%%   <<"ShareInvitationAction">> := list(any())
 %% }
--type lens_share_summary() :: #{binary() => any()}.
+-type update_share_invitation_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% consolidated_report_metric() :: #{
-%%   <<"Lenses">> => list(lens_metric()),
-%%   <<"LensesAppliedCount">> => integer(),
-%%   <<"MetricType">> => list(any()),
-%%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"WorkloadArn">> => string(),
-%%   <<"WorkloadId">> => string(),
+%% update_share_invitation_output() :: #{
+%%   <<"ShareInvitation">> => share_invitation()
+%% }
+-type update_share_invitation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workload_input() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Applications">> => list(string()),
+%%   <<"ArchitecturalDesign">> => string(),
+%%   <<"AwsRegions">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"DiscoveryConfig">> => workload_discovery_config(),
+%%   <<"Environment">> => list(any()),
+%%   <<"ImprovementStatus">> => list(any()),
+%%   <<"Industry">> => string(),
+%%   <<"IndustryType">> => string(),
+%%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
+%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
+%%   <<"NonAwsRegions">> => list(string()),
+%%   <<"Notes">> => string(),
+%%   <<"PillarPriorities">> => list(string()),
+%%   <<"ReviewOwner">> => string(),
 %%   <<"WorkloadName">> => string()
 %% }
--type consolidated_report_metric() :: #{binary() => any()}.
+-type update_workload_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% profile_choice() :: #{
-%%   <<"ChoiceDescription">> => string(),
-%%   <<"ChoiceId">> => string(),
-%%   <<"ChoiceTitle">> => string()
+%% update_workload_output() :: #{
+%%   <<"Workload">> => workload()
 %% }
--type profile_choice() :: #{binary() => any()}.
+-type update_workload_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% workload_discovery_config() :: #{
-%%   <<"TrustedAdvisorIntegrationStatus">> => list(any()),
-%%   <<"WorkloadResourceDefinition">> => list(list(any())())
+%% update_workload_share_input() :: #{
+%%   <<"PermissionType">> := list(any())
 %% }
--type workload_discovery_config() :: #{binary() => any()}.
+-type update_workload_share_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workload_share_output() :: #{
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadShare">> => workload_share()
+%% }
+-type update_workload_share_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -842,57 +1939,42 @@
 
 
 %% Example:
-%% create_review_template_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"Lenses">> := list(string()),
-%%   <<"Notes">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateName">> := string()
+%% upgrade_profile_version_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"MilestoneName">> => string()
 %% }
--type create_review_template_input() :: #{binary() => any()}.
+-type upgrade_profile_version_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% workload_jira_configuration_input() :: #{
-%%   <<"IssueManagementStatus">> => list(any()),
-%%   <<"IssueManagementType">> => list(any()),
-%%   <<"JiraProjectKey">> => string()
+%% upgrade_review_template_lens_review_input() :: #{
+%%   <<"ClientRequestToken">> => string()
 %% }
--type workload_jira_configuration_input() :: #{binary() => any()}.
+-type upgrade_review_template_lens_review_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_workload_share_input() :: #{
-%%   <<"PermissionType">> := list(any())
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type update_workload_share_input() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_profiles_input() :: #{
-%%   <<"ProfileArns">> := list(string())
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
 %% }
--type disassociate_profiles_input() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% profile_template_choice() :: #{
-%%   <<"ChoiceDescription">> => string(),
-%%   <<"ChoiceId">> => string(),
-%%   <<"ChoiceTitle">> => string()
+%% version_differences() :: #{
+%%   <<"PillarDifferences">> => list(pillar_difference())
 %% }
--type profile_template_choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_review_template_answers_output() :: #{
-%%   <<"AnswerSummaries">> => list(review_template_answer_summary()),
-%%   <<"LensAlias">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"TemplateArn">> => string()
-%% }
--type list_review_template_answers_output() :: #{binary() => any()}.
+-type version_differences() :: #{binary() => any()}.
 
 
 %% Example:
@@ -930,956 +2012,38 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
+%% workload_discovery_config() :: #{
+%%   <<"TrustedAdvisorIntegrationStatus">> => list(any()),
+%%   <<"WorkloadResourceDefinition">> => list(list(any())())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type workload_discovery_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_answer_output() :: #{
-%%   <<"Answer">> => answer(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"WorkloadId">> => string()
-%% }
--type get_answer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% review_template_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Lenses">> => list(string()),
-%%   <<"Owner">> => string(),
-%%   <<"TemplateArn">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"UpdateStatus">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type review_template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% answer() :: #{
-%%   <<"ChoiceAnswers">> => list(choice_answer()),
-%%   <<"Choices">> => list(choice()),
-%%   <<"HelpfulResourceDisplayText">> => string(),
-%%   <<"HelpfulResourceUrl">> => string(),
-%%   <<"ImprovementPlanUrl">> => string(),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"JiraConfiguration">> => jira_configuration(),
-%%   <<"Notes">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionDescription">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"Risk">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type answer() :: #{binary() => any()}.
-
-
-%% Example:
-%% review_template_answer_summary() :: #{
-%%   <<"AnswerStatus">> => list(any()),
-%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
-%%   <<"Choices">> => list(choice()),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"QuestionType">> => list(any()),
-%%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type review_template_answer_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workload_share_output() :: #{
-%%   <<"ShareId">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type create_workload_share_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_review_template_lens_review_input() :: #{
-%%   <<"LensNotes">> => string(),
-%%   <<"PillarNotes">> => map()
-%% }
--type update_review_template_lens_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workload_share_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_workload_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_review_template_lens_review_output() :: #{
-%%   <<"LensReview">> => review_template_lens_review(),
-%%   <<"TemplateArn">> => string()
-%% }
--type get_review_template_lens_review_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens_review_report() :: #{
-%%   <<"Base64String">> => string(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string()
-%% }
--type lens_review_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_template_output() :: #{
-%%   <<"ProfileTemplate">> => profile_template()
-%% }
--type get_profile_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_review_templates_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReviewTemplates">> => list(review_template_summary())
-%% }
--type list_review_templates_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens_upgrade_summary() :: #{
-%%   <<"CurrentLensVersion">> => string(),
-%%   <<"LatestLensVersion">> => string(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadName">> => string()
-%% }
--type lens_upgrade_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% milestone() :: #{
-%%   <<"MilestoneName">> => string(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"RecordedAt">> => non_neg_integer(),
-%%   <<"Workload">> => workload()
-%% }
--type milestone() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_review_report_input() :: #{
-%%   <<"MilestoneNumber">> => integer()
-%% }
--type get_lens_review_report_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_lens_input() :: #{
-%%   <<"LensVersion">> => string()
-%% }
--type export_lens_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_template_input() :: #{}
--type get_profile_template_input() :: #{}.
-
-
-%% Example:
-%% review_template_lens_review() :: #{
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"LensName">> => string(),
-%%   <<"LensStatus">> => list(any()),
-%%   <<"LensVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Notes">> => string(),
-%%   <<"PillarReviewSummaries">> => list(review_template_pillar_review_summary()),
-%%   <<"QuestionCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type review_template_lens_review() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_milestone_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"MilestoneName">> := string()
-%% }
--type create_milestone_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_review_template_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_review_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_template_share_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"SharedWith">> := string()
-%% }
--type create_template_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_template_share_output() :: #{
-%%   <<"ShareId">> => string(),
-%%   <<"TemplateArn">> => string()
-%% }
--type create_template_share_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% review_template() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Lenses">> => list(string()),
-%%   <<"Notes">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"QuestionCounts">> => map(),
-%%   <<"ShareInvitationId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateArn">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"UpdateStatus">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type review_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workload_shares_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadShareSummaries">> => list(workload_share_summary())
-%% }
--type list_workload_shares_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_review_report_output() :: #{
-%%   <<"LensReviewReport">> => lens_review_report(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"WorkloadId">> => string()
-%% }
--type get_lens_review_report_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice() :: #{
-%%   <<"AdditionalResources">> => list(additional_resources()),
-%%   <<"ChoiceId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HelpfulResource">> => choice_content(),
-%%   <<"ImprovementPlan">> => choice_content(),
-%%   <<"Title">> => string()
-%% }
--type choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_shares_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedWithPrefix">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_profile_shares_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_review_template_answer_input() :: #{
-%%   <<"ChoiceUpdates">> => map(),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"Notes">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type update_review_template_answer_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pillar_metric() :: #{
-%%   <<"PillarId">> => string(),
-%%   <<"Questions">> => list(question_metric()),
-%%   <<"RiskCounts">> => map()
-%% }
--type pillar_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profiles_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileNamePrefix">> => string(),
-%%   <<"ProfileOwnerType">> => list(any())
-%% }
--type list_profiles_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% milestone_summary() :: #{
-%%   <<"MilestoneName">> => string(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"RecordedAt">> => non_neg_integer(),
-%%   <<"WorkloadSummary">> => workload_summary()
-%% }
--type milestone_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_milestone_input() :: #{}
--type get_milestone_input() :: #{}.
-
-
-%% Example:
-%% question_difference() :: #{
-%%   <<"DifferenceStatus">> => list(any()),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string()
-%% }
--type question_difference() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_share_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"SharedWith">> := string()
-%% }
--type create_profile_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_review_templates_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_review_templates_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% pillar_review_summary() :: #{
-%%   <<"Notes">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"PillarName">> => string(),
-%%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"RiskCounts">> => map()
-%% }
--type pillar_review_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_share_invitation_input() :: #{
-%%   <<"ShareInvitationAction">> := list(any())
-%% }
--type update_share_invitation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% pillar_difference() :: #{
-%%   <<"DifferenceStatus">> => list(any()),
-%%   <<"PillarId">> => string(),
-%%   <<"PillarName">> => string(),
-%%   <<"QuestionDifferences">> => list(question_difference())
-%% }
--type pillar_difference() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens_metric() :: #{
-%%   <<"LensArn">> => string(),
-%%   <<"Pillars">> => list(pillar_metric()),
-%%   <<"RiskCounts">> => map()
-%% }
--type lens_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice_content() :: #{
-%%   <<"DisplayText">> => string(),
-%%   <<"Url">> => string()
-%% }
--type choice_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_review_template_answers_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PillarId">> => string()
-%% }
--type list_review_template_answers_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_share_invitations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ShareInvitationSummaries">> => list(share_invitation_summary())
-%% }
--type list_share_invitations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% selected_pillar() :: #{
-%%   <<"PillarId">> => string(),
-%%   <<"SelectedQuestionIds">> => list(string())
-%% }
--type selected_pillar() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_input() :: #{
-%%   <<"ProfileVersion">> => string()
-%% }
--type get_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_input() :: #{
-%%   <<"LensVersion">> => string()
-%% }
--type get_lens_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_profile_version_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"MilestoneName">> => string()
-%% }
--type upgrade_profile_version_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_resources() :: #{
-%%   <<"Content">> => list(choice_content()),
-%%   <<"Type">> => list(any())
-%% }
--type additional_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationSummaries">> => list(notification_summary())
-%% }
--type list_notifications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_answer_output() :: #{
-%%   <<"Answer">> => answer(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type update_answer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_template() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateQuestions">> => list(profile_template_question()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type profile_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice_answer() :: #{
-%%   <<"ChoiceId">> => string(),
-%%   <<"Notes">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type choice_answer() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_template_share_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_template_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workload_output() :: #{
-%%   <<"Workload">> => workload()
-%% }
--type update_workload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_share_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_profile_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_version_difference_output() :: #{
-%%   <<"BaseLensVersion">> => string(),
-%%   <<"LatestLensVersion">> => string(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"TargetLensVersion">> => string(),
-%%   <<"VersionDifferences">> => version_differences()
-%% }
--type get_lens_version_difference_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workloads_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadSummaries">> => list(workload_summary())
-%% }
--type list_workloads_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_review_template_answer_output() :: #{
-%%   <<"Answer">> => review_template_answer(),
-%%   <<"LensAlias">> => string(),
-%%   <<"TemplateArn">> => string()
-%% }
--type update_review_template_answer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_settings_input() :: #{
-%%   <<"DiscoveryIntegrationStatus">> => list(any()),
-%%   <<"JiraConfiguration">> => account_jira_configuration_input(),
-%%   <<"OrganizationSharingStatus">> => list(any())
-%% }
--type update_global_settings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_notifications_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationSummaries">> => list(profile_notification_summary())
-%% }
--type list_profile_notifications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% improvement_summary() :: #{
-%%   <<"ImprovementPlanUrl">> => string(),
-%%   <<"ImprovementPlans">> => list(choice_improvement_plan()),
-%%   <<"JiraConfiguration">> => jira_configuration(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"Risk">> => list(any())
-%% }
--type improvement_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lens_reviews_output() :: #{
-%%   <<"LensReviewSummaries">> => list(lens_review_summary()),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_lens_reviews_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_lenses_input() :: #{
-%%   <<"LensAliases">> := list(string())
-%% }
--type disassociate_lenses_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lens_review_improvements_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionPriority">> => list(any())
-%% }
--type list_lens_review_improvements_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_profile_output() :: #{
-%%   <<"Profile">> => profile()
-%% }
--type update_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% upgrade_review_template_lens_review_input() :: #{
-%%   <<"ClientRequestToken">> => string()
-%% }
--type upgrade_review_template_lens_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_jira_configuration_input() :: #{
-%%   <<"IntegrationStatus">> => list(any()),
+%% workload_jira_configuration_input() :: #{
 %%   <<"IssueManagementStatus">> => list(any()),
 %%   <<"IssueManagementType">> => list(any()),
 %%   <<"JiraProjectKey">> => string()
 %% }
--type account_jira_configuration_input() :: #{binary() => any()}.
+-type workload_jira_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
+%% workload_jira_configuration_output() :: #{
+%%   <<"IssueManagementStatus">> => list(any()),
+%%   <<"IssueManagementType">> => list(any()),
+%%   <<"JiraProjectKey">> => string(),
+%%   <<"StatusMessage">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
+-type workload_jira_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_check_summaries_input() :: #{
-%%   <<"ChoiceId">> := string(),
-%%   <<"LensArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PillarId">> := string(),
-%%   <<"QuestionId">> := string()
-%% }
--type list_check_summaries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workload_input() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"Applications">> => list(string()),
-%%   <<"ArchitecturalDesign">> => string(),
-%%   <<"AwsRegions">> => list(string()),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"DiscoveryConfig">> => workload_discovery_config(),
-%%   <<"Environment">> := list(any()),
-%%   <<"Industry">> => string(),
-%%   <<"IndustryType">> => string(),
-%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
-%%   <<"Lenses">> := list(string()),
-%%   <<"NonAwsRegions">> => list(string()),
-%%   <<"Notes">> => string(),
-%%   <<"PillarPriorities">> => list(string()),
-%%   <<"ProfileArns">> => list(string()),
-%%   <<"ReviewOwner">> => string(),
-%%   <<"ReviewTemplateArns">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"WorkloadName">> := string()
-%% }
--type create_workload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lens_reviews_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_lens_reviews_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_notifications_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_profile_notifications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_lens_share_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"SharedWith">> := string()
-%% }
--type create_lens_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_output() :: #{
-%%   <<"Lens">> => lens()
-%% }
--type get_lens_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_share_output() :: #{
+%% workload_profile() :: #{
 %%   <<"ProfileArn">> => string(),
-%%   <<"ShareId">> => string()
+%%   <<"ProfileVersion">> => string()
 %% }
--type create_profile_share_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% jira_configuration() :: #{
-%%   <<"JiraIssueUrl">> => string(),
-%%   <<"LastSyncedTime">> => non_neg_integer()
-%% }
--type jira_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_review_input() :: #{
-%%   <<"MilestoneNumber">> => integer()
-%% }
--type get_lens_review_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice_update() :: #{
-%%   <<"Notes">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type choice_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_consolidated_report_output() :: #{
-%%   <<"Base64String">> => string(),
-%%   <<"Metrics">> => list(consolidated_report_metric()),
-%%   <<"NextToken">> => string()
-%% }
--type get_consolidated_report_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_lens_share_output() :: #{
-%%   <<"ShareId">> => string()
-%% }
--type create_lens_share_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workload_share_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"PermissionType">> := list(any()),
-%%   <<"SharedWith">> := string()
-%% }
--type create_workload_share_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lens_version_difference_input() :: #{
-%%   <<"BaseLensVersion">> => string(),
-%%   <<"TargetLensVersion">> => string()
-%% }
--type get_lens_version_difference_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_review_template_lens_review_output() :: #{
-%%   <<"LensReview">> => review_template_lens_review(),
-%%   <<"TemplateArn">> => string()
-%% }
--type update_review_template_lens_review_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_review_template_answer_input() :: #{}
--type get_review_template_answer_input() :: #{}.
-
-%% Example:
-%% get_review_template_lens_review_input() :: #{}
--type get_review_template_lens_review_input() :: #{}.
-
-
-%% Example:
-%% create_workload_output() :: #{
-%%   <<"WorkloadArn">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type create_workload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_summary() :: #{
-%%   <<"AccountSummary">> => map(),
-%%   <<"ChoiceId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"Provider">> => list(any()),
-%%   <<"QuestionId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type check_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_global_settings_output() :: #{
-%%   <<"DiscoveryIntegrationStatus">> => list(any()),
-%%   <<"JiraConfiguration">> => account_jira_configuration_output(),
-%%   <<"OrganizationSharingStatus">> => list(any())
-%% }
--type get_global_settings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_differences() :: #{
-%%   <<"PillarDifferences">> => list(pillar_difference())
-%% }
--type version_differences() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_answers_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionPriority">> => list(any())
-%% }
--type list_answers_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_check_summaries_output() :: #{
-%%   <<"CheckSummaries">> => list(check_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_check_summaries_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"LensName">> => string(),
-%%   <<"LensStatus">> => list(any()),
-%%   <<"LensType">> => list(any()),
-%%   <<"LensVersion">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type lens_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_answers_output() :: #{
-%%   <<"AnswerSummaries">> => list(answer_summary()),
-%%   <<"LensAlias">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"MilestoneNumber">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkloadId">> => string()
-%% }
--type list_answers_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_summary() :: #{
-%%   <<"LensUpgradeSummary">> => lens_upgrade_summary(),
-%%   <<"Type">> => list(any())
-%% }
--type notification_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% choice_improvement_plan() :: #{
-%%   <<"ChoiceId">> => string(),
-%%   <<"DisplayText">> => string(),
-%%   <<"ImprovementPlanUrl">> => string()
-%% }
--type choice_improvement_plan() :: #{binary() => any()}.
+-type workload_profile() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1896,727 +2060,563 @@
 
 
 %% Example:
-%% profile_notification_summary() :: #{
-%%   <<"CurrentProfileVersion">> => string(),
-%%   <<"LatestProfileVersion">> => string(),
-%%   <<"ProfileArn">> => string(),
-%%   <<"ProfileName">> => string(),
-%%   <<"Type">> => list(any()),
+%% workload_share_summary() :: #{
+%%   <<"PermissionType">> => list(any()),
+%%   <<"ShareId">> => string(),
+%%   <<"SharedWith">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type workload_share_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_summary() :: #{
+%%   <<"ImprovementStatus">> => list(any()),
+%%   <<"Lenses">> => list(string()),
+%%   <<"Owner">> => string(),
+%%   <<"PrioritizedRiskCounts">> => map(),
+%%   <<"Profiles">> => list(workload_profile()),
+%%   <<"RiskCounts">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"WorkloadArn">> => string(),
 %%   <<"WorkloadId">> => string(),
 %%   <<"WorkloadName">> => string()
 %% }
--type profile_notification_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% lens() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LensArn">> => string(),
-%%   <<"LensVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"ShareInvitationId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type lens() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workload_input() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"Applications">> => list(string()),
-%%   <<"ArchitecturalDesign">> => string(),
-%%   <<"AwsRegions">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"DiscoveryConfig">> => workload_discovery_config(),
-%%   <<"Environment">> => list(any()),
-%%   <<"ImprovementStatus">> => list(any()),
-%%   <<"Industry">> => string(),
-%%   <<"IndustryType">> => string(),
-%%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
-%%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
-%%   <<"NonAwsRegions">> => list(string()),
-%%   <<"Notes">> => string(),
-%%   <<"PillarPriorities">> => list(string()),
-%%   <<"ReviewOwner">> => string(),
-%%   <<"WorkloadName">> => string()
-%% }
--type update_workload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workload_input() :: #{
-%%   <<"ClientRequestToken">> := string()
-%% }
--type delete_workload_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_lens_output() :: #{
-%%   <<"LensJSON">> => string()
-%% }
--type export_lens_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_template_question() :: #{
-%%   <<"MaxSelectedChoices">> => integer(),
-%%   <<"MinSelectedChoices">> => integer(),
-%%   <<"QuestionChoices">> => list(profile_template_choice()),
-%%   <<"QuestionDescription">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string()
-%% }
--type profile_template_question() :: #{binary() => any()}.
-
-
-%% Example:
-%% review_template_answer() :: #{
-%%   <<"AnswerStatus">> => list(any()),
-%%   <<"ChoiceAnswers">> => list(choice_answer()),
-%%   <<"Choices">> => list(choice()),
-%%   <<"HelpfulResourceDisplayText">> => string(),
-%%   <<"HelpfulResourceUrl">> => string(),
-%%   <<"ImprovementPlanUrl">> => string(),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"Notes">> => string(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionDescription">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type review_template_answer() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_profile_input() :: #{
-%%   <<"ProfileDescription">> => string(),
-%%   <<"ProfileQuestions">> => list(profile_question_update())
-%% }
--type update_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_review_template_output() :: #{
-%%   <<"ReviewTemplate">> => review_template()
-%% }
--type get_review_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_share_invitations_input() :: #{
-%%   <<"LensNamePrefix">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileNamePrefix">> => string(),
-%%   <<"ShareResourceType">> => list(any()),
-%%   <<"TemplateNamePrefix">> => string(),
-%%   <<"WorkloadNamePrefix">> => string()
-%% }
--type list_share_invitations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% answer_summary() :: #{
-%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
-%%   <<"Choices">> => list(choice()),
-%%   <<"IsApplicable">> => boolean(),
-%%   <<"JiraConfiguration">> => jira_configuration(),
-%%   <<"PillarId">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"QuestionTitle">> => string(),
-%%   <<"QuestionType">> => list(any()),
-%%   <<"Reason">> => list(any()),
-%%   <<"Risk">> => list(any()),
-%%   <<"SelectedChoices">> => list(string())
-%% }
--type answer_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lenses_input() :: #{
-%%   <<"LensName">> => string(),
-%%   <<"LensStatus">> => list(any()),
-%%   <<"LensType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_lenses_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Owner">> => string(),
-%%   <<"ProfileArn">> => string(),
-%%   <<"ProfileDescription">> => string(),
-%%   <<"ProfileName">> => string(),
-%%   <<"ProfileVersion">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_review_template_answer_output() :: #{
-%%   <<"Answer">> => review_template_answer(),
-%%   <<"LensAlias">> => string(),
-%%   <<"TemplateArn">> => string()
-%% }
--type get_review_template_answer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% workload_profile() :: #{
-%%   <<"ProfileArn">> => string(),
-%%   <<"ProfileVersion">> => string()
-%% }
--type workload_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_shares_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedWithPrefix">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_template_shares_input() :: #{binary() => any()}.
+-type workload_summary() :: #{binary() => any()}.
 
 -type associate_lenses_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_lens_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_lens_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_milestone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_profile_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_review_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_template_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workload_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_lens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_lens_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_profile_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_review_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_template_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workload_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_lenses_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_lens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_answer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_consolidated_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_global_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_lens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lens_review_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lens_version_difference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_milestone_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_profile_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_review_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_review_template_answer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_review_template_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_lens_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_answers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_check_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_check_summaries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_lens_review_improvements_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_lens_reviews_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_lens_shares_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_lenses_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_milestones_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_notifications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_profile_notifications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_profile_shares_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_review_template_answers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_review_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_share_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_template_shares_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_workload_shares_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type list_workloads_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
--type tag_resource_errors() ::
+-type list_template_shares_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_workload_shares_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_workloads_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type tag_resource_errors() ::
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_answer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_global_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_review_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_review_template_answer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_review_template_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_share_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workload_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type upgrade_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type upgrade_profile_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type upgrade_review_template_lens_review_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -83,33 +83,156 @@
 
 
 %% Example:
-%% policy_version_summary() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% approval_team_request_approver() :: #{
+%%   <<"PrimaryIdentityId">> => string(),
+%%   <<"PrimaryIdentitySourceArn">> => string()
+%% }
+-type approval_team_request_approver() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_session_request() :: #{}
+-type cancel_session_request() :: #{}.
+
+%% Example:
+%% cancel_session_response() :: #{}
+-type cancel_session_response() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_approval_team_request() :: #{
+%%   <<"ApprovalStrategy">> := list(),
+%%   <<"Approvers">> := list(approval_team_request_approver()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Policies">> := list(policy_reference()),
+%%   <<"Tags">> => map()
+%% }
+-type create_approval_team_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_approval_team_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"IsDefault">> => [boolean()],
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyType">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type create_approval_team_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_identity_source_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"IdentitySourceParameters">> := identity_source_parameters(),
+%%   <<"Tags">> => map()
+%% }
+-type create_identity_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_identity_source_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IdentitySourceArn">> => string(),
+%%   <<"IdentitySourceType">> => list(any())
+%% }
+-type create_identity_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_source_request() :: #{}
+-type delete_identity_source_request() :: #{}.
+
+%% Example:
+%% delete_inactive_approval_team_version_request() :: #{}
+-type delete_inactive_approval_team_version_request() :: #{}.
+
+%% Example:
+%% delete_inactive_approval_team_version_response() :: #{}
+-type delete_inactive_approval_team_version_response() :: #{}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_approval_team_request() :: #{}
+-type get_approval_team_request() :: #{}.
+
+
+%% Example:
+%% get_approval_team_response() :: #{
+%%   <<"ApprovalStrategy">> => list(),
+%%   <<"Approvers">> => list(get_approval_team_response_approver()),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfApprovers">> => [integer()],
+%%   <<"PendingUpdate">> => pending_update(),
+%%   <<"Policies">> => list(policy_reference()),
 %%   <<"Status">> => list(any()),
-%%   <<"VersionId">> => integer()
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdateSessionArn">> => string(),
+%%   <<"VersionId">> => string()
 %% }
--type policy_version_summary() :: #{binary() => any()}.
+-type get_approval_team_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_policy_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyVersions">> => list(policy_version_summary())
+%% get_approval_team_response_approver() :: #{
+%%   <<"ApproverId">> => string(),
+%%   <<"LastActivity">> => list(any()),
+%%   <<"LastActivityTime">> => non_neg_integer(),
+%%   <<"MfaMethods">> => list(mfa_method()),
+%%   <<"PendingBaselineSessionArn">> => string(),
+%%   <<"PrimaryIdentityId">> => string(),
+%%   <<"PrimaryIdentitySourceArn">> => string(),
+%%   <<"PrimaryIdentityStatus">> => list(any()),
+%%   <<"ResponseTime">> => non_neg_integer()
 %% }
--type list_policy_versions_response() :: #{binary() => any()}.
+-type get_approval_team_response_approver() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_source_request() :: #{}
+-type get_identity_source_request() :: #{}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% get_identity_source_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IdentitySourceArn">> => string(),
+%%   <<"IdentitySourceParameters">> => list(),
+%%   <<"IdentitySourceType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type get_identity_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_request() :: #{}
+-type get_policy_version_request() :: #{}.
 
 
 %% Example:
@@ -120,22 +243,27 @@
 
 
 %% Example:
-%% get_session_response_approver_response() :: #{
-%%   <<"ApproverId">> => string(),
-%%   <<"IdentityId">> => string(),
-%%   <<"IdentitySourceArn">> => string(),
-%%   <<"Response">> => list(any()),
-%%   <<"ResponseTime">> => non_neg_integer()
+%% get_resource_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyType">> := list(any()),
+%%   <<"ResourceArn">> := string()
 %% }
--type get_session_response_approver_response() :: #{binary() => any()}.
+-type get_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_active_approval_team_deletion_response() :: #{
-%%   <<"DeletionCompletionTime">> => non_neg_integer(),
-%%   <<"DeletionStartTime">> => non_neg_integer()
+%% get_resource_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"PolicyVersionArn">> => string(),
+%%   <<"ResourceArn">> => string()
 %% }
--type start_active_approval_team_deletion_response() :: #{binary() => any()}.
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
 
 
 %% Example:
@@ -169,113 +297,14 @@
 
 
 %% Example:
-%% start_approval_team_baseline_request() :: #{
-%%   <<"ApproverIds">> => list(string())
-%% }
--type start_approval_team_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_version_request() :: #{}
--type get_policy_version_request() :: #{}.
-
-
-%% Example:
-%% list_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy())
-%% }
--type list_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_identity_source_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
+%% get_session_response_approver_response() :: #{
+%%   <<"ApproverId">> => string(),
+%%   <<"IdentityId">> => string(),
 %%   <<"IdentitySourceArn">> => string(),
-%%   <<"IdentitySourceParameters">> => list(),
-%%   <<"IdentitySourceType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusCode">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%%   <<"Response">> => list(any()),
+%%   <<"ResponseTime">> => non_neg_integer()
 %% }
--type get_identity_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_approval_team_response() :: #{
-%%   <<"ApprovalStrategy">> => list(),
-%%   <<"Approvers">> => list(get_approval_team_response_approver()),
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NumberOfApprovers">> => [integer()],
-%%   <<"PendingUpdate">> => pending_update(),
-%%   <<"Policies">> => list(policy_reference()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusCode">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdateSessionArn">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type get_approval_team_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_approval_team_response() :: #{
-%%   <<"VersionId">> => string()
-%% }
--type update_approval_team_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyType">> => list(any()),
-%%   <<"PolicyVersionArn">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% mfa_method() :: #{
-%%   <<"SyncStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type mfa_method() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inactive_approval_team_version_request() :: #{}
--type delete_inactive_approval_team_version_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_session_response() :: #{}
--type cancel_session_response() :: #{}.
-
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
+-type get_session_response_approver_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -285,45 +314,23 @@
 %% }
 -type iam_identity_center() :: #{binary() => any()}.
 
-%% Example:
-%% cancel_session_request() :: #{}
--type cancel_session_request() :: #{}.
-
 
 %% Example:
-%% create_identity_source_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"IdentitySourceArn">> => string(),
-%%   <<"IdentitySourceType">> => list(any())
+%% iam_identity_center_for_get() :: #{
+%%   <<"ApprovalPortalUrl">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Region">> => string()
 %% }
--type create_identity_source_response() :: #{binary() => any()}.
+-type iam_identity_center_for_get() :: #{binary() => any()}.
 
 
 %% Example:
-%% policy_version() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Document">> => string(),
-%%   <<"IsDefault">> => [boolean()],
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"VersionId">> => integer()
+%% iam_identity_center_for_list() :: #{
+%%   <<"ApprovalPortalUrl">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Region">> => string()
 %% }
--type policy_version() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_source_request() :: #{}
--type get_identity_source_request() :: #{}.
-
-
-%% Example:
-%% start_approval_team_baseline_response() :: #{
-%%   <<"BaselineSessionArn">> => string()
-%% }
--type start_approval_team_baseline_response() :: #{binary() => any()}.
+-type iam_identity_center_for_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -340,144 +347,10 @@
 
 
 %% Example:
-%% list_sessions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(list_sessions_response_session())
+%% identity_source_parameters() :: #{
+%%   <<"IamIdentityCenter">> => iam_identity_center()
 %% }
--type list_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_reference() :: #{
-%%   <<"PolicyArn">> => string()
-%% }
--type policy_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_sources_response() :: #{
-%%   <<"IdentitySources">> => list(identity_source_for_list()),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_approval_team_response_approver() :: #{
-%%   <<"ApproverId">> => string(),
-%%   <<"LastActivity">> => list(any()),
-%%   <<"LastActivityTime">> => non_neg_integer(),
-%%   <<"MfaMethods">> => list(mfa_method()),
-%%   <<"PendingBaselineSessionArn">> => string(),
-%%   <<"PrimaryIdentityId">> => string(),
-%%   <<"PrimaryIdentitySourceArn">> => string(),
-%%   <<"PrimaryIdentityStatus">> => list(any()),
-%%   <<"ResponseTime">> => non_neg_integer()
-%% }
--type get_approval_team_response_approver() :: #{binary() => any()}.
-
-
-%% Example:
-%% approval_team_request_approver() :: #{
-%%   <<"PrimaryIdentityId">> => string(),
-%%   <<"PrimaryIdentitySourceArn">> => string()
-%% }
--type approval_team_request_approver() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyType">> := list(any()),
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"FieldName">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_active_approval_team_deletion_request() :: #{
-%%   <<"PendingWindowDays">> => [integer()]
-%% }
--type start_active_approval_team_deletion_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_policy_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_policy_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_approval_teams_response() :: #{
-%%   <<"ApprovalTeams">> => list(list_approval_teams_response_approval_team()),
-%%   <<"NextToken">> => string()
-%% }
--type list_approval_teams_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_identity_center_for_list() :: #{
-%%   <<"ApprovalPortalUrl">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Region">> => string()
-%% }
--type iam_identity_center_for_list() :: #{binary() => any()}.
+-type identity_source_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -486,9 +359,12 @@
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_approval_team_request() :: #{}
--type get_approval_team_request() :: #{}.
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -500,119 +376,11 @@
 
 
 %% Example:
-%% list_resource_policies_response_resource_policy() :: #{
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyType">> => list(any())
-%% }
--type list_resource_policies_response_resource_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DefaultVersion">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"PolicyType">> => list(any())
-%% }
--type policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_approval_team_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type create_approval_team_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_approval_team_request() :: #{
-%%   <<"ApprovalStrategy">> := list(),
-%%   <<"Approvers">> := list(approval_team_request_approver()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Policies">> := list(policy_reference()),
-%%   <<"Tags">> => map()
-%% }
--type create_approval_team_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_identity_center_for_get() :: #{
-%%   <<"ApprovalPortalUrl">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Region">> => string()
-%% }
--type iam_identity_center_for_get() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourcePolicies">> => list(list_resource_policies_response_resource_policy())
-%% }
--type list_resource_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inactive_approval_team_version_response() :: #{}
--type delete_inactive_approval_team_version_response() :: #{}.
-
-
-%% Example:
-%% list_identity_sources_request() :: #{
-%%   <<"MaxResults">> => integer(),
+%% list_approval_teams_response() :: #{
+%%   <<"ApprovalTeams">> => list(list_approval_teams_response_approval_team()),
 %%   <<"NextToken">> => string()
 %% }
--type list_identity_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_identity_source_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"IdentitySourceParameters">> := identity_source_parameters(),
-%%   <<"Tags">> => map()
-%% }
--type create_identity_source_request() :: #{binary() => any()}.
+-type list_approval_teams_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -628,6 +396,96 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type list_approval_teams_response_approval_team() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_sources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_sources_response() :: #{
+%%   <<"IdentitySources">> => list(identity_source_for_list()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(policy())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_policy_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyVersions">> => list(policy_version_summary())
+%% }
+-type list_policy_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourcePolicies">> => list(list_resource_policies_response_resource_policy())
+%% }
+-type list_resource_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_policies_response_resource_policy() :: #{
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type list_resource_policies_response_resource_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(list_sessions_response_session())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -653,16 +511,31 @@
 %% }
 -type list_sessions_response_session() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
 
 %% Example:
-%% identity_source_parameters() :: #{
-%%   <<"IamIdentityCenter">> => iam_identity_center()
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type identity_source_parameters() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_identity_source_request() :: #{}
--type delete_identity_source_request() :: #{}.
+%% mfa_method() :: #{
+%%   <<"SyncStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type mfa_method() :: #{binary() => any()}.
+
+
+%% Example:
+%% mof_n_approval_strategy() :: #{
+%%   <<"MinApprovalsRequired">> => [integer()]
+%% }
+-type mof_n_approval_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -681,11 +554,131 @@
 
 
 %% Example:
+%% policy() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DefaultVersion">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_reference() :: #{
+%%   <<"PolicyArn">> => string()
+%% }
+-type policy_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_version() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Document">> => string(),
+%%   <<"IsDefault">> => [boolean()],
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionId">> => integer()
+%% }
+-type policy_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"IsDefault">> => [boolean()],
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionId">> => integer()
+%% }
+-type policy_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_active_approval_team_deletion_request() :: #{
+%%   <<"PendingWindowDays">> => [integer()]
+%% }
+-type start_active_approval_team_deletion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_active_approval_team_deletion_response() :: #{
+%%   <<"DeletionCompletionTime">> => non_neg_integer(),
+%%   <<"DeletionStartTime">> => non_neg_integer()
+%% }
+-type start_active_approval_team_deletion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_approval_team_baseline_request() :: #{
+%%   <<"ApproverIds">> => list(string())
+%% }
+-type start_approval_team_baseline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_approval_team_baseline_response() :: #{
+%%   <<"BaselineSessionArn">> => string()
+%% }
+-type start_approval_team_baseline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"ResourceName">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -699,168 +692,175 @@
 
 
 %% Example:
-%% mof_n_approval_strategy() :: #{
-%%   <<"MinApprovalsRequired">> => [integer()]
+%% update_approval_team_response() :: #{
+%%   <<"VersionId">> => string()
 %% }
--type mof_n_approval_strategy() :: #{binary() => any()}.
+-type update_approval_team_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_approval_team_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_identity_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type delete_identity_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_inactive_approval_team_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_approval_team_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_identity_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_approval_teams_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_identity_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_policy_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resource_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_active_approval_team_deletion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_approval_team_baseline_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_approval_team_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

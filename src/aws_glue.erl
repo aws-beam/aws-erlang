@@ -26,6 +26,8 @@
          batch_get_custom_entity_types/3,
          batch_get_data_quality_result/2,
          batch_get_data_quality_result/3,
+         batch_get_data_quality_ruleset_evaluation_run/2,
+         batch_get_data_quality_ruleset_evaluation_run/3,
          batch_get_dev_endpoints/2,
          batch_get_dev_endpoints/3,
          batch_get_iterable_forms/2,
@@ -254,6 +256,8 @@
          get_dashboard_url/3,
          get_data_catalog_encryption_settings/2,
          get_data_catalog_encryption_settings/3,
+         get_data_catalog_export_configuration/2,
+         get_data_catalog_export_configuration/3,
          get_data_quality_model/2,
          get_data_quality_model/3,
          get_data_quality_model_result/2,
@@ -456,6 +460,8 @@
          put_attachment/3,
          put_data_catalog_encryption_settings/2,
          put_data_catalog_encryption_settings/3,
+         put_data_catalog_export_configuration/2,
+         put_data_catalog_export_configuration/3,
          put_data_quality_profile_annotation/2,
          put_data_quality_profile_annotation/3,
          put_form_type/2,
@@ -603,37 +609,883 @@
 
 
 %% Example:
-%% decimal_number() :: #{
-%%   <<"Scale">> => integer(),
-%%   <<"UnscaledValue">> => binary()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type decimal_number() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_catalog_request() :: #{
-%%   <<"CatalogId">> := string()
+%% action() :: #{
+%%   <<"Arguments">> => map(),
+%%   <<"CrawlerName">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"NotificationProperty">> => notification_property(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"Timeout">> => integer()
 %% }
--type get_catalog_request() :: #{binary() => any()}.
+-type action() :: #{binary() => any()}.
 
 %% Example:
-%% list_glossary_terms_request() :: #{
-%%   <<"GlossaryIdentifier">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% aggregate() :: #{
+%%   <<"Aggs">> => list(aggregate_operation()),
+%%   <<"Groups">> => list(list(string())()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
 %% }
--type list_glossary_terms_request() :: #{binary() => any()}.
+-type aggregate() :: #{binary() => any()}.
 
 %% Example:
-%% update_ml_transform_response() :: #{
+%% aggregate_operation() :: #{
+%%   <<"AggFunc">> => list(any()),
+%%   <<"Column">> => list(string())
+%% }
+-type aggregate_operation() :: #{binary() => any()}.
+
+%% Example:
+%% allowed_value() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type allowed_value() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_redshift_advanced_option() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type amazon_redshift_advanced_option() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_redshift_node_data() :: #{
+%%   <<"AccessType">> => string(),
+%%   <<"Action">> => string(),
+%%   <<"AdvancedOptions">> => list(amazon_redshift_advanced_option()),
+%%   <<"CatalogDatabase">> => option(),
+%%   <<"CatalogRedshiftSchema">> => string(),
+%%   <<"CatalogRedshiftTable">> => string(),
+%%   <<"CatalogTable">> => option(),
+%%   <<"Connection">> => option(),
+%%   <<"CrawlerConnection">> => string(),
+%%   <<"IamRole">> => option(),
+%%   <<"MergeAction">> => string(),
+%%   <<"MergeClause">> => string(),
+%%   <<"MergeWhenMatched">> => string(),
+%%   <<"MergeWhenNotMatched">> => string(),
+%%   <<"PostAction">> => string(),
+%%   <<"PreAction">> => string(),
+%%   <<"SampleQuery">> => string(),
+%%   <<"Schema">> => option(),
+%%   <<"SelectedColumns">> => list(option()),
+%%   <<"SourceType">> => string(),
+%%   <<"StagingTable">> => string(),
+%%   <<"Table">> => option(),
+%%   <<"TablePrefix">> => string(),
+%%   <<"TableSchema">> => list(option()),
+%%   <<"TempDir">> => string(),
+%%   <<"Upsert">> => boolean()
+%% }
+-type amazon_redshift_node_data() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_redshift_source() :: #{
+%%   <<"Data">> => amazon_redshift_node_data(),
+%%   <<"Name">> => string()
+%% }
+-type amazon_redshift_source() :: #{binary() => any()}.
+
+%% Example:
+%% amazon_redshift_target() :: #{
+%%   <<"Data">> => amazon_redshift_node_data(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type amazon_redshift_target() :: #{binary() => any()}.
+
+%% Example:
+%% annotation_error() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type annotation_error() :: #{binary() => any()}.
+
+%% Example:
+%% apply_mapping() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Mapping">> => list(mapping()),
+%%   <<"Name">> => string()
+%% }
+-type apply_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% asset_form_entry() :: #{
+%%   <<"Content">> => string(),
+%%   <<"FormTypeId">> => string()
+%% }
+-type asset_form_entry() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type_form_reference() :: #{
+%%   <<"FormTypeIdentifier">> => string()
+%% }
+-type asset_type_form_reference() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type asset_type_item() :: #{binary() => any()}.
+
+%% Example:
+%% associate_glossary_terms_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryTermIdentifiers">> := list(string())
+%% }
+-type associate_glossary_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_glossary_terms_response() :: #{
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"GlossaryTerms">> => list(string())
+%% }
+-type associate_glossary_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% athena_connector_source() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionTable">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"ConnectorName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"SchemaName">> => string()
+%% }
+-type athena_connector_source() :: #{binary() => any()}.
+
+%% Example:
+%% audit_context() :: #{
+%%   <<"AdditionalAuditContext">> => string(),
+%%   <<"AllColumnsRequested">> => boolean(),
+%%   <<"RequestedColumns">> => list(string())
+%% }
+-type audit_context() :: #{binary() => any()}.
+
+%% Example:
+%% auth_configuration() :: #{
+%%   <<"AuthenticationType">> => property(),
+%%   <<"BasicAuthenticationProperties">> => map(),
+%%   <<"CustomAuthenticationProperties">> => map(),
+%%   <<"OAuth2Properties">> => map(),
+%%   <<"SecretArn">> => property()
+%% }
+-type auth_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"OAuth2Properties">> => o_auth2_properties(),
+%%   <<"SecretArn">> => string()
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration_input() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"BasicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"CustomAuthenticationCredentials">> => map(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"OAuth2Properties">> => o_auth2_properties_input(),
+%%   <<"SecretArn">> => string()
+%% }
+-type authentication_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_code_properties() :: #{
+%%   <<"AuthorizationCode">> => string(),
+%%   <<"RedirectUri">> => string()
+%% }
+-type authorization_code_properties() :: #{binary() => any()}.
+
+%% Example:
+%% auto_data_quality() :: #{
+%%   <<"EvaluationContext">> => string(),
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type auto_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% backfill_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Partitions">> => list(partition_value_list())
+%% }
+-type backfill_error() :: #{binary() => any()}.
+
+%% Example:
+%% basic_authentication_credentials() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type basic_authentication_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% basic_authentication_properties() :: #{
+%%   <<"Password">> => connector_property(),
+%%   <<"Username">> => connector_property()
+%% }
+-type basic_authentication_properties() :: #{binary() => any()}.
+
+%% Example:
+%% basic_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"Table">> => string()
+%% }
+-type basic_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionInputList">> := list(partition_input()),
+%%   <<"TableName">> := string()
+%% }
+-type batch_create_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_create_partition_response() :: #{
+%%   <<"Errors">> => list(partition_error())
+%% }
+-type batch_create_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionNameList">> := list(string())
+%% }
+-type batch_delete_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_connection_response() :: #{
+%%   <<"Errors">> => map(),
+%%   <<"Succeeded">> => list(string())
+%% }
+-type batch_delete_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionsToDelete">> := list(partition_value_list()),
+%%   <<"TableName">> := string()
+%% }
+-type batch_delete_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_partition_response() :: #{
+%%   <<"Errors">> => list(partition_error())
+%% }
+-type batch_delete_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TablesToDelete">> := list(string()),
+%%   <<"TransactionId">> => string()
+%% }
+-type batch_delete_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_table_response() :: #{
+%%   <<"Errors">> => list(table_error())
+%% }
+-type batch_delete_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_table_version_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"VersionIds">> := list(string())
+%% }
+-type batch_delete_table_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_table_version_response() :: #{
+%%   <<"Errors">> => list(table_version_error())
+%% }
+-type batch_delete_table_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_blueprints_request() :: #{
+%%   <<"IncludeBlueprint">> => boolean(),
+%%   <<"IncludeParameterSpec">> => boolean(),
+%%   <<"Names">> := list(string())
+%% }
+-type batch_get_blueprints_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_blueprints_response() :: #{
+%%   <<"Blueprints">> => list(blueprint()),
+%%   <<"MissingBlueprints">> => list(string())
+%% }
+-type batch_get_blueprints_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_crawlers_request() :: #{
+%%   <<"CrawlerNames">> := list(string())
+%% }
+-type batch_get_crawlers_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_crawlers_response() :: #{
+%%   <<"Crawlers">> => list(crawler()),
+%%   <<"CrawlersNotFound">> => list(string())
+%% }
+-type batch_get_crawlers_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_custom_entity_types_request() :: #{
+%%   <<"Names">> := list(string())
+%% }
+-type batch_get_custom_entity_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_custom_entity_types_response() :: #{
+%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
+%%   <<"CustomEntityTypesNotFound">> => list(string())
+%% }
+-type batch_get_custom_entity_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_result_request() :: #{
+%%   <<"ResultIds">> := list(string())
+%% }
+-type batch_get_data_quality_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_result_response() :: #{
+%%   <<"Results">> => list(data_quality_result()),
+%%   <<"ResultsNotFound">> => list(string())
+%% }
+-type batch_get_data_quality_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_ruleset_evaluation_run_request() :: #{
+%%   <<"RunIds">> := list(string())
+%% }
+-type batch_get_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_ruleset_evaluation_run_response() :: #{
+%%   <<"Runs">> => list(data_quality_ruleset_evaluation_run()),
+%%   <<"RunsNotFound">> => list(string())
+%% }
+-type batch_get_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_dev_endpoints_request() :: #{
+%%   <<"DevEndpointNames">> := list(string())
+%% }
+-type batch_get_dev_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_dev_endpoints_response() :: #{
+%%   <<"DevEndpoints">> => list(dev_endpoint()),
+%%   <<"DevEndpointsNotFound">> => list(string())
+%% }
+-type batch_get_dev_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_iterable_forms_request() :: #{
+%%   <<"ItemIdentifiers">> := list(string())
+%% }
+-type batch_get_iterable_forms_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_iterable_forms_response() :: #{
+%%   <<"Errors">> => list(item_error()),
+%%   <<"Items">> => list(iterable_form_item())
+%% }
+-type batch_get_iterable_forms_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_jobs_request() :: #{
+%%   <<"JobNames">> := list(string())
+%% }
+-type batch_get_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"JobsNotFound">> => list(string())
+%% }
+-type batch_get_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_partition_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionsToGet">> := list(partition_value_list()),
+%%   <<"QuerySessionContext">> => query_session_context(),
+%%   <<"TableName">> := string()
+%% }
+-type batch_get_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_partition_response() :: #{
+%%   <<"Partitions">> => list(partition()),
+%%   <<"UnprocessedKeys">> => list(partition_value_list())
+%% }
+-type batch_get_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_table_optimizer_entry() :: #{
+%%   <<"catalogId">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type batch_get_table_optimizer_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_table_optimizer_error() :: #{
+%%   <<"catalogId">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"tableName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type batch_get_table_optimizer_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_table_optimizer_request() :: #{
+%%   <<"Entries">> := list(batch_get_table_optimizer_entry())
+%% }
+-type batch_get_table_optimizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_table_optimizer_response() :: #{
+%%   <<"Failures">> => list(batch_get_table_optimizer_error()),
+%%   <<"TableOptimizers">> => list(batch_table_optimizer())
+%% }
+-type batch_get_table_optimizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_triggers_request() :: #{
+%%   <<"TriggerNames">> := list(string())
+%% }
+-type batch_get_triggers_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_triggers_response() :: #{
+%%   <<"Triggers">> => list(trigger()),
+%%   <<"TriggersNotFound">> => list(string())
+%% }
+-type batch_get_triggers_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_workflows_request() :: #{
+%%   <<"IncludeGraph">> => boolean(),
+%%   <<"Names">> := list(string())
+%% }
+-type batch_get_workflows_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_workflows_response() :: #{
+%%   <<"MissingWorkflows">> => list(string()),
+%%   <<"Workflows">> => list(workflow())
+%% }
+-type batch_get_workflows_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_data_quality_statistic_annotation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InclusionAnnotations">> := list(datapoint_inclusion_annotation())
+%% }
+-type batch_put_data_quality_statistic_annotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_data_quality_statistic_annotation_response() :: #{
+%%   <<"FailedInclusionAnnotations">> => list(annotation_error())
+%% }
+-type batch_put_data_quality_statistic_annotation_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_stop_job_run_error() :: #{
+%%   <<"ErrorDetail">> => error_detail(),
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string()
+%% }
+-type batch_stop_job_run_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_stop_job_run_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"JobRunIds">> := list(string())
+%% }
+-type batch_stop_job_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_stop_job_run_response() :: #{
+%%   <<"Errors">> => list(batch_stop_job_run_error()),
+%%   <<"SuccessfulSubmissions">> => list(batch_stop_job_run_successful_submission())
+%% }
+-type batch_stop_job_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_stop_job_run_successful_submission() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string()
+%% }
+-type batch_stop_job_run_successful_submission() :: #{binary() => any()}.
+
+%% Example:
+%% batch_table_optimizer() :: #{
+%%   <<"catalogId">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"tableOptimizer">> => table_optimizer()
+%% }
+-type batch_table_optimizer() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_partition_failure_entry() :: #{
+%%   <<"ErrorDetail">> => error_detail(),
+%%   <<"PartitionValueList">> => list(string())
+%% }
+-type batch_update_partition_failure_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Entries">> := list(batch_update_partition_request_entry()),
+%%   <<"TableName">> := string()
+%% }
+-type batch_update_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_partition_request_entry() :: #{
+%%   <<"PartitionInput">> => partition_input(),
+%%   <<"PartitionValueList">> => list(string())
+%% }
+-type batch_update_partition_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_partition_response() :: #{
+%%   <<"Errors">> => list(batch_update_partition_failure_entry())
+%% }
+-type batch_update_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% between_configuration() :: #{
+%%   <<"HighBoundKey">> => [string()],
+%%   <<"LowBoundKey">> => [string()],
+%%   <<"Template">> => [string()]
+%% }
+-type between_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% binary_column_statistics_data() :: #{
+%%   <<"AverageLength">> => float(),
+%%   <<"MaximumLength">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type binary_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint() :: #{
+%%   <<"BlueprintLocation">> => string(),
+%%   <<"BlueprintServiceLocation">> => string(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastActiveDefinition">> => last_active_definition(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ParameterSpec">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type blueprint() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint_details() :: #{
+%%   <<"BlueprintName">> => string(),
+%%   <<"RunId">> => string()
+%% }
+-type blueprint_details() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint_run() :: #{
+%%   <<"BlueprintName">> => string(),
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Parameters">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RollbackErrorMessage">> => string(),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"WorkflowName">> => string()
+%% }
+-type blueprint_run() :: #{binary() => any()}.
+
+%% Example:
+%% boolean_column_statistics_data() :: #{
+%%   <<"NumberOfFalses">> => float(),
+%%   <<"NumberOfNulls">> => float(),
+%%   <<"NumberOfTrues">> => float()
+%% }
+-type boolean_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_quality_rule_recommendation_run_request() :: #{
+%%   <<"RunId">> := string()
+%% }
+-type cancel_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_quality_rule_recommendation_run_response() :: #{
+
+%% }
+-type cancel_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_quality_ruleset_evaluation_run_request() :: #{
+%%   <<"RunId">> := string()
+%% }
+-type cancel_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_data_quality_ruleset_evaluation_run_response() :: #{
+
+%% }
+-type cancel_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_ml_task_run_request() :: #{
+%%   <<"TaskRunId">> := string(),
+%%   <<"TransformId">> := string()
+%% }
+-type cancel_ml_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_ml_task_run_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TaskRunId">> => string(),
 %%   <<"TransformId">> => string()
 %% }
--type update_ml_transform_response() :: #{binary() => any()}.
+-type cancel_ml_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_crawler_request() :: #{
-%%   <<"Name">> := string()
+%% cancel_statement_request() :: #{
+%%   <<"Id">> := integer(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"SessionId">> := string()
 %% }
--type start_crawler_request() :: #{binary() => any()}.
+-type cancel_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_statement_response() :: #{
+
+%% }
+-type cancel_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% capabilities() :: #{
+%%   <<"SupportedAuthenticationTypes">> => list(list(any())()),
+%%   <<"SupportedComputeEnvironments">> => list(list(any())()),
+%%   <<"SupportedDataOperations">> => list(list(any())())
+%% }
+-type capabilities() :: #{binary() => any()}.
+
+%% Example:
+%% catalog() :: #{
+%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
+%%   <<"CatalogId">> => string(),
+%%   <<"CatalogProperties">> => catalog_properties_output(),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FederatedCatalog">> => federated_catalog(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type catalog() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_delta_source() :: #{
+%%   <<"AdditionalDeltaOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type catalog_delta_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_entry() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type catalog_entry() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_hudi_source() :: #{
+%%   <<"AdditionalHudiOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type catalog_hudi_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_iceberg_source() :: #{
+%%   <<"AdditionalIcebergOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type catalog_iceberg_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_import_status() :: #{
+%%   <<"ImportCompleted">> => boolean(),
+%%   <<"ImportTime">> => non_neg_integer(),
+%%   <<"ImportedBy">> => string()
+%% }
+-type catalog_import_status() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_input() :: #{
+%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
+%%   <<"CatalogProperties">> => catalog_properties(),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
+%%   <<"Description">> => string(),
+%%   <<"FederatedCatalog">> => federated_catalog(),
+%%   <<"OverwriteChildResourcePermissionsWithDefault">> => list(any()),
+%%   <<"Parameters">> => map(),
+%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog()
+%% }
+-type catalog_input() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_kafka_source() :: #{
+%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
+%%   <<"Database">> => string(),
+%%   <<"DetectSchema">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"StreamingOptions">> => kafka_streaming_source_options(),
+%%   <<"Table">> => string(),
+%%   <<"WindowSize">> => integer()
+%% }
+-type catalog_kafka_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_kinesis_source() :: #{
+%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
+%%   <<"Database">> => string(),
+%%   <<"DetectSchema">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"StreamingOptions">> => kinesis_streaming_source_options(),
+%%   <<"Table">> => string(),
+%%   <<"WindowSize">> => integer()
+%% }
+-type catalog_kinesis_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_properties() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties(),
+%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties()
+%% }
+-type catalog_properties() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_properties_output() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties_output(),
+%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties_output()
+%% }
+-type catalog_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_schema_change_policy() :: #{
+%%   <<"EnableUpdateCatalog">> => boolean(),
+%%   <<"UpdateBehavior">> => list(any())
+%% }
+-type catalog_schema_change_policy() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionPredicate">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_table_config_options() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"S3Location">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type catalog_table_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DlqEventQueueArn">> => string(),
+%%   <<"EventQueueArn">> => string(),
+%%   <<"Tables">> => list(string())
+%% }
+-type catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% check_schema_version_validity_input() :: #{
+%%   <<"DataFormat">> := list(any()),
+%%   <<"SchemaDefinition">> := string()
+%% }
+-type check_schema_version_validity_input() :: #{binary() => any()}.
+
+%% Example:
+%% check_schema_version_validity_response() :: #{
+%%   <<"Error">> => string(),
+%%   <<"Valid">> => boolean()
+%% }
+-type check_schema_version_validity_response() :: #{binary() => any()}.
+
+%% Example:
+%% classifier() :: #{
+%%   <<"CsvClassifier">> => csv_classifier(),
+%%   <<"GrokClassifier">> => grok_classifier(),
+%%   <<"JsonClassifier">> => json_classifier(),
+%%   <<"XMLClassifier">> => x_ml_classifier()
+%% }
+-type classifier() :: #{binary() => any()}.
 
 %% Example:
 %% client_credentials_properties() :: #{
@@ -648,418 +1500,150 @@
 -type client_credentials_properties() :: #{binary() => any()}.
 
 %% Example:
-%% delete_catalog_response() :: #{
-
-%% }
--type delete_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_data_quality_multi_frame() :: #{
-%%   <<"AdditionalDataSources">> => map(),
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PublishingOptions">> => d_q_results_publishing_options(),
-%%   <<"Ruleset">> => string(),
-%%   <<"StopJobOnFailureOptions">> => d_q_stop_job_on_failure_options()
-%% }
--type evaluate_data_quality_multi_frame() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawler_response() :: #{
-%%   <<"Crawler">> => crawler()
-%% }
--type get_crawler_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_asset_type_request() :: #{
-
-%% }
--type get_asset_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% task_run_sort_criteria() :: #{
-%%   <<"Column">> => list(any()),
-%%   <<"SortDirection">> => list(any())
-%% }
--type task_run_sort_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_input() :: #{
-%%   <<"RegistryId">> := registry_id()
-%% }
--type get_registry_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_request() :: #{
-%%   <<"ApplyOverrideForComputeEnvironment">> => list(any()),
-%%   <<"CatalogId">> => string(),
-%%   <<"HidePassword">> => boolean(),
-%%   <<"Name">> := string()
-%% }
--type get_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_defined_function() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ClassName">> => string(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"FunctionType">> => list(any()),
-%%   <<"OwnerName">> => string(),
-%%   <<"OwnerType">> => list(any()),
-%%   <<"ResourceUris">> => list(resource_uri())
-%% }
--type user_defined_function() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_schema_change_policy() :: #{
-%%   <<"EnableUpdateCatalog">> => boolean(),
-%%   <<"UpdateBehavior">> => list(any())
-%% }
--type catalog_schema_change_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_dashboard_url_request() :: #{
-%%   <<"RequestOrigin">> => string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type get_dashboard_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% integration_config() :: #{
-%%   <<"ContinuousSync">> => boolean(),
-%%   <<"RefreshInterval">> => string(),
-%%   <<"SourceProperties">> => map()
-%% }
--type integration_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_entity_type_response() :: #{
-%%   <<"ContextWords">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"RegexString">> => string()
-%% }
--type get_custom_entity_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_table_properties_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceTableConfig">> => source_table_config(),
-%%   <<"TableName">> := string(),
-%%   <<"TargetTableConfig">> => target_table_config()
-%% }
--type create_integration_table_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% statistic_summary() :: #{
-%%   <<"ColumnsReferenced">> => list(string()),
-%%   <<"DoubleValue">> => float(),
-%%   <<"EvaluationLevel">> => list(any()),
-%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
-%%   <<"ProfileId">> => string(),
-%%   <<"RecordedOn">> => non_neg_integer(),
-%%   <<"ReferencedDatasets">> => list(string()),
-%%   <<"RunIdentifier">> => run_identifier(),
-%%   <<"StatisticId">> => string(),
-%%   <<"StatisticName">> => string(),
-%%   <<"StatisticProperties">> => map()
-%% }
--type statistic_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_results_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(data_quality_result_description())
-%% }
--type list_data_quality_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_quality_rule_recommendation_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type start_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_catalog_target() :: #{
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
-%%   <<"Table">> => string()
-%% }
--type s3_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% update_catalog_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"CatalogInput">> := catalog_input()
-%% }
--type update_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_table_properties_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type get_integration_table_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_run_response() :: #{
-%%   <<"JobRun">> => job_run()
-%% }
--type get_job_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_schemas_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegistryId">> => registry_id()
-%% }
--type list_schemas_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_iceberg_input() :: #{
-%%   <<"UpdateIcebergTableInput">> => update_iceberg_table_input()
-%% }
--type update_iceberg_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_workflow_request() :: #{
-%%   <<"DefaultRunProperties">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"MaxConcurrentRuns">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_crawlers_request() :: #{
-%%   <<"CrawlerNames">> := list(string())
-%% }
--type batch_get_crawlers_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_schema_version_metadata_input() :: #{
-%%   <<"MetadataKeyValue">> := metadata_key_value_pair(),
-%%   <<"SchemaId">> => schema_id(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionNumber">> => schema_version_number()
-%% }
--type put_schema_version_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_versions_diff_response() :: #{
-%%   <<"Diff">> => string()
-%% }
--type get_schema_versions_diff_response() :: #{binary() => any()}.
-
-%% Example:
-%% ser_de_info() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"SerializationLibrary">> => string()
-%% }
--type ser_de_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionInput">> := connection_input(),
-%%   <<"Name">> := string()
-%% }
--type update_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% glue_policy() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"PolicyHash">> => string(),
-%%   <<"PolicyInJson">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type glue_policy() :: #{binary() => any()}.
-
-%% Example:
-%% retention_metrics() :: #{
-%%   <<"IcebergMetrics">> => iceberg_retention_metrics()
-%% }
--type retention_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_statement_response() :: #{
-
-%% }
--type cancel_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_target_table() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type data_quality_target_table() :: #{binary() => any()}.
-
-%% Example:
-%% update_column_statistics_for_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ColumnStatisticsList">> := list(column_statistics()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
-%%   <<"TableName">> := string()
-%% }
--type update_column_statistics_for_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_triggers_response() :: #{
-%%   <<"Triggers">> => list(trigger()),
-%%   <<"TriggersNotFound">> => list(string())
-%% }
--type batch_get_triggers_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_glossary_term_response() :: #{
-%%   <<"GlossaryId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LongDescription">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ShortDescription">> => string()
-%% }
--type update_glossary_term_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"DataStoreApiVersion">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParentEntityName">> => string()
-%% }
--type list_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% recipe_reference() :: #{
-%%   <<"RecipeArn">> => string(),
-%%   <<"RecipeVersion">> => string()
-%% }
--type recipe_reference() :: #{binary() => any()}.
-
-%% Example:
-%% target_processing_properties() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"EventBusArn">> => string(),
-%%   <<"KmsArn">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type target_processing_properties() :: #{binary() => any()}.
-
-%% Example:
-%% basic_catalog_target() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"Table">> => string()
-%% }
--type basic_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% search_attribute_filter() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => list()
-%% }
--type search_attribute_filter() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_glossary_terms_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"GlossaryTermIdentifiers">> := list(string())
-%% }
--type disassociate_glossary_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_column_statistics_task_settings_response() :: #{
-
-%% }
--type delete_column_statistics_task_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% job_bookmarks_encryption() :: #{
-%%   <<"JobBookmarksEncryptionMode">> => list(any()),
+%% cloud_watch_encryption() :: #{
+%%   <<"CloudWatchEncryptionMode">> => list(any()),
 %%   <<"KmsKeyArn">> => string()
 %% }
--type job_bookmarks_encryption() :: #{binary() => any()}.
+-type cloud_watch_encryption() :: #{binary() => any()}.
 
 %% Example:
-%% delete_integration_response() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetArn">> => string()
+%% code_gen_configuration_node() :: #{
+%%   <<"Aggregate">> => aggregate(),
+%%   <<"AmazonRedshiftSource">> => amazon_redshift_source(),
+%%   <<"AmazonRedshiftTarget">> => amazon_redshift_target(),
+%%   <<"ApplyMapping">> => apply_mapping(),
+%%   <<"AthenaConnectorSource">> => athena_connector_source(),
+%%   <<"CatalogDeltaSource">> => catalog_delta_source(),
+%%   <<"CatalogHudiSource">> => catalog_hudi_source(),
+%%   <<"CatalogIcebergSource">> => catalog_iceberg_source(),
+%%   <<"CatalogKafkaSource">> => catalog_kafka_source(),
+%%   <<"CatalogKinesisSource">> => catalog_kinesis_source(),
+%%   <<"CatalogSource">> => catalog_source(),
+%%   <<"CatalogTarget">> => basic_catalog_target(),
+%%   <<"ConnectorDataSource">> => connector_data_source(),
+%%   <<"ConnectorDataTarget">> => connector_data_target(),
+%%   <<"CustomCode">> => custom_code(),
+%%   <<"DirectJDBCSource">> => direct_j_db_c_source(),
+%%   <<"DirectKafkaSource">> => direct_kafka_source(),
+%%   <<"DirectKinesisSource">> => direct_kinesis_source(),
+%%   <<"DropDuplicates">> => drop_duplicates(),
+%%   <<"DropFields">> => drop_fields(),
+%%   <<"DropNullFields">> => drop_null_fields(),
+%%   <<"DynamicTransform">> => dynamic_transform(),
+%%   <<"DynamoDBCatalogSource">> => dynamo_db_catalog_source(),
+%%   <<"DynamoDBELTConnectorSource">> => dynamo_db_e_l_t_connector_source(),
+%%   <<"EvaluateDataQuality">> => evaluate_data_quality(),
+%%   <<"EvaluateDataQualityMultiFrame">> => evaluate_data_quality_multi_frame(),
+%%   <<"FillMissingValues">> => fill_missing_values(),
+%%   <<"Filter">> => filter(),
+%%   <<"GovernedCatalogSource">> => governed_catalog_source(),
+%%   <<"GovernedCatalogTarget">> => governed_catalog_target(),
+%%   <<"JDBCConnectorSource">> => j_db_c_connector_source(),
+%%   <<"JDBCConnectorTarget">> => j_db_c_connector_target(),
+%%   <<"Join">> => join(),
+%%   <<"Merge">> => merge(),
+%%   <<"MicrosoftSQLServerCatalogSource">> => microsoft_s_q_l_server_catalog_source(),
+%%   <<"MicrosoftSQLServerCatalogTarget">> => microsoft_s_q_l_server_catalog_target(),
+%%   <<"MySQLCatalogSource">> => my_s_q_l_catalog_source(),
+%%   <<"MySQLCatalogTarget">> => my_s_q_l_catalog_target(),
+%%   <<"OracleSQLCatalogSource">> => oracle_s_q_l_catalog_source(),
+%%   <<"OracleSQLCatalogTarget">> => oracle_s_q_l_catalog_target(),
+%%   <<"PIIDetection">> => p_i_idetection(),
+%%   <<"PostgreSQLCatalogSource">> => postgre_s_q_l_catalog_source(),
+%%   <<"PostgreSQLCatalogTarget">> => postgre_s_q_l_catalog_target(),
+%%   <<"Recipe">> => recipe(),
+%%   <<"RedshiftSource">> => redshift_source(),
+%%   <<"RedshiftTarget">> => redshift_target(),
+%%   <<"RelationalCatalogSource">> => relational_catalog_source(),
+%%   <<"RenameField">> => rename_field(),
+%%   <<"Route">> => route(),
+%%   <<"S3CatalogDeltaSource">> => s3_catalog_delta_source(),
+%%   <<"S3CatalogHudiSource">> => s3_catalog_hudi_source(),
+%%   <<"S3CatalogIcebergSource">> => s3_catalog_iceberg_source(),
+%%   <<"S3CatalogSource">> => s3_catalog_source(),
+%%   <<"S3CatalogTarget">> => s3_catalog_target(),
+%%   <<"S3CsvSource">> => s3_csv_source(),
+%%   <<"S3DeltaCatalogTarget">> => s3_delta_catalog_target(),
+%%   <<"S3DeltaDirectTarget">> => s3_delta_direct_target(),
+%%   <<"S3DeltaSource">> => s3_delta_source(),
+%%   <<"S3DirectTarget">> => s3_direct_target(),
+%%   <<"S3ExcelSource">> => s3_excel_source(),
+%%   <<"S3GlueParquetTarget">> => s3_glue_parquet_target(),
+%%   <<"S3HudiCatalogTarget">> => s3_hudi_catalog_target(),
+%%   <<"S3HudiDirectTarget">> => s3_hudi_direct_target(),
+%%   <<"S3HudiSource">> => s3_hudi_source(),
+%%   <<"S3HyperDirectTarget">> => s3_hyper_direct_target(),
+%%   <<"S3IcebergCatalogTarget">> => s3_iceberg_catalog_target(),
+%%   <<"S3IcebergDirectTarget">> => s3_iceberg_direct_target(),
+%%   <<"S3JsonSource">> => s3_json_source(),
+%%   <<"S3ParquetSource">> => s3_parquet_source(),
+%%   <<"SelectFields">> => select_fields(),
+%%   <<"SelectFromCollection">> => select_from_collection(),
+%%   <<"SnowflakeSource">> => snowflake_source(),
+%%   <<"SnowflakeTarget">> => snowflake_target(),
+%%   <<"SparkConnectorSource">> => spark_connector_source(),
+%%   <<"SparkConnectorTarget">> => spark_connector_target(),
+%%   <<"SparkSQL">> => spark_s_q_l(),
+%%   <<"Spigot">> => spigot(),
+%%   <<"SplitFields">> => split_fields(),
+%%   <<"Union">> => union()
 %% }
--type delete_integration_response() :: #{binary() => any()}.
+-type code_gen_configuration_node() :: #{binary() => any()}.
 
 %% Example:
-%% view_definition_input() :: #{
-%%   <<"Definer">> => string(),
-%%   <<"IsProtected">> => boolean(),
-%%   <<"LastRefreshType">> => list(any()),
-%%   <<"RefreshSeconds">> => float(),
-%%   <<"Representations">> => list(view_representation_input()),
-%%   <<"SubObjectVersionIds">> => list(float()),
-%%   <<"SubObjects">> => list(string()),
-%%   <<"ViewVersionId">> => float(),
-%%   <<"ViewVersionToken">> => string()
+%% code_gen_edge() :: #{
+%%   <<"Source">> => string(),
+%%   <<"Target">> => string(),
+%%   <<"TargetParameter">> => string()
 %% }
--type view_definition_input() :: #{binary() => any()}.
+-type code_gen_edge() :: #{binary() => any()}.
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"CloudWatchEncryption">> => cloud_watch_encryption(),
-%%   <<"DataQualityEncryption">> => data_quality_encryption(),
-%%   <<"JobBookmarksEncryption">> => job_bookmarks_encryption(),
-%%   <<"S3Encryption">> => list(s3_encryption())
+%% code_gen_node() :: #{
+%%   <<"Args">> => list(code_gen_node_arg()),
+%%   <<"Id">> => string(),
+%%   <<"LineNumber">> => integer(),
+%%   <<"NodeType">> => string()
 %% }
--type encryption_configuration() :: #{binary() => any()}.
+-type code_gen_node() :: #{binary() => any()}.
 
 %% Example:
-%% delete_trigger_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% spark_connector_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"ConnectorName">> => string(),
-%%   <<"Inputs">> => list(string()),
+%% code_gen_node_arg() :: #{
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
+%%   <<"Param">> => boolean(),
+%%   <<"Value">> => string()
 %% }
--type spark_connector_target() :: #{binary() => any()}.
+-type code_gen_node_arg() :: #{binary() => any()}.
 
 %% Example:
-%% apply_mapping() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Mapping">> => list(mapping()),
-%%   <<"Name">> => string()
+%% column() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Type">> => string()
 %% }
--type apply_mapping() :: #{binary() => any()}.
+-type column() :: #{binary() => any()}.
+
+%% Example:
+%% column_error() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"Error">> => error_detail()
+%% }
+-type column_error() :: #{binary() => any()}.
+
+%% Example:
+%% column_importance() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"Importance">> => float()
+%% }
+-type column_importance() :: #{binary() => any()}.
+
+%% Example:
+%% column_row_filter() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"RowFilterExpression">> => string()
+%% }
+-type column_row_filter() :: #{binary() => any()}.
 
 %% Example:
 %% column_statistics() :: #{
@@ -1071,19 +1655,735 @@
 -type column_statistics() :: #{binary() => any()}.
 
 %% Example:
-%% get_blueprint_run_request() :: #{
-%%   <<"BlueprintName">> := string(),
-%%   <<"RunId">> := string()
+%% column_statistics_data() :: #{
+%%   <<"BinaryColumnStatisticsData">> => binary_column_statistics_data(),
+%%   <<"BooleanColumnStatisticsData">> => boolean_column_statistics_data(),
+%%   <<"DateColumnStatisticsData">> => date_column_statistics_data(),
+%%   <<"DecimalColumnStatisticsData">> => decimal_column_statistics_data(),
+%%   <<"DoubleColumnStatisticsData">> => double_column_statistics_data(),
+%%   <<"LongColumnStatisticsData">> => long_column_statistics_data(),
+%%   <<"StringColumnStatisticsData">> => string_column_statistics_data(),
+%%   <<"Type">> => list(any())
 %% }
--type get_blueprint_run_request() :: #{binary() => any()}.
+-type column_statistics_data() :: #{binary() => any()}.
 
 %% Example:
-%% list_blueprints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% column_statistics_error() :: #{
+%%   <<"ColumnStatistics">> => column_statistics(),
+%%   <<"Error">> => error_detail()
+%% }
+-type column_statistics_error() :: #{binary() => any()}.
+
+%% Example:
+%% column_statistics_task_not_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type column_statistics_task_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% column_statistics_task_run() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()),
+%%   <<"ColumnStatisticsTaskRunId">> => string(),
+%%   <<"ComputationType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerId">> => string(),
+%%   <<"DPUSeconds">> => float(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Role">> => string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TableName">> => string(),
+%%   <<"WorkerType">> => string()
+%% }
+-type column_statistics_task_run() :: #{binary() => any()}.
+
+%% Example:
+%% column_statistics_task_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type column_statistics_task_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% column_statistics_task_settings() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"LastExecutionAttempt">> => execution_attempt(),
+%%   <<"Role">> => string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => schedule(),
+%%   <<"ScheduleType">> => list(any()),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SettingSource">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type column_statistics_task_settings() :: #{binary() => any()}.
+
+%% Example:
+%% column_statistics_task_stopping_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type column_statistics_task_stopping_exception() :: #{binary() => any()}.
+
+%% Example:
+%% compaction_configuration() :: #{
+%%   <<"icebergConfiguration">> => iceberg_compaction_configuration()
+%% }
+-type compaction_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% compaction_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_compaction_metrics()
+%% }
+-type compaction_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% compute_environment_configuration() :: #{
+%%   <<"ComputeEnvironment">> => list(any()),
+%%   <<"ConnectionOptionNameOverrides">> => map(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"ConnectionPropertiesRequiredOverrides">> => list([string()]()),
+%%   <<"ConnectionPropertyNameOverrides">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhysicalConnectionPropertiesRequired">> => boolean(),
+%%   <<"SupportedAuthenticationTypes">> => list(list(any())())
+%% }
+-type compute_environment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_runs_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_runs_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"CrawlState">> => list(any()),
+%%   <<"CrawlerName">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"LogicalOperator">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% condition_check_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type condition_check_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition_expression() :: #{
+%%   <<"Condition">> => string(),
+%%   <<"TargetColumn">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type condition_expression() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_object() :: #{
+%%   <<"AllowedValues">> => list(string()),
+%%   <<"DefaultValue">> => string(),
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type configuration_object() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confusion_matrix() :: #{
+%%   <<"NumFalseNegatives">> => float(),
+%%   <<"NumFalsePositives">> => float(),
+%%   <<"NumTrueNegatives">> => float(),
+%%   <<"NumTruePositives">> => float()
+%% }
+-type confusion_matrix() :: #{binary() => any()}.
+
+%% Example:
+%% connection() :: #{
+%%   <<"AthenaProperties">> => map(),
+%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
+%%   <<"CompatibleComputeEnvironments">> => list(list(any())()),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionSchemaVersion">> => integer(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastConnectionValidationTime">> => non_neg_integer(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"MatchCriteria">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"PythonProperties">> => map(),
+%%   <<"SparkProperties">> => map(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% connection_input() :: #{
+%%   <<"AthenaProperties">> => map(),
+%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"MatchCriteria">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"PythonProperties">> => map(),
+%%   <<"SparkProperties">> => map(),
+%%   <<"ValidateCredentials">> => boolean(),
+%%   <<"ValidateForComputeEnvironments">> => list(list(any())())
+%% }
+-type connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% connection_password_encryption() :: #{
+%%   <<"AwsKmsKeyId">> => string(),
+%%   <<"ReturnConnectionPasswordEncrypted">> => boolean()
+%% }
+-type connection_password_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% connection_properties_configuration() :: #{
+%%   <<"AdditionalRequestParameters">> => list(connector_property()),
+%%   <<"Url">> => connector_property()
+%% }
+-type connection_properties_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% connection_type_brief() :: #{
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"Categories">> => list([string()]()),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ConnectionTypeVariants">> => list(connection_type_variant()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LogoUrl">> => string(),
+%%   <<"Vendor">> => string()
+%% }
+-type connection_type_brief() :: #{binary() => any()}.
+
+%% Example:
+%% connection_type_variant() :: #{
+%%   <<"ConnectionTypeVariantName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LogoUrl">> => string()
+%% }
+-type connection_type_variant() :: #{binary() => any()}.
+
+%% Example:
+%% connections_list() :: #{
+%%   <<"Connections">> => list(string())
+%% }
+-type connections_list() :: #{binary() => any()}.
+
+%% Example:
+%% connector_authentication_configuration() :: #{
+%%   <<"AuthenticationTypes">> => list(list(any())()),
+%%   <<"BasicAuthenticationProperties">> => basic_authentication_properties(),
+%%   <<"CustomAuthenticationProperties">> => custom_authentication_properties(),
+%%   <<"OAuth2Properties">> => connector_o_auth2_properties()
+%% }
+-type connector_authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% connector_authorization_code_properties() :: #{
+%%   <<"AuthorizationCode">> => connector_property(),
+%%   <<"AuthorizationCodeUrl">> => connector_property(),
+%%   <<"ClientId">> => connector_property(),
+%%   <<"ClientSecret">> => connector_property(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"Prompt">> => connector_property(),
+%%   <<"RedirectUri">> => connector_property(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"Scope">> => connector_property(),
+%%   <<"TokenUrl">> => connector_property(),
+%%   <<"TokenUrlParameters">> => list(connector_property())
+%% }
+-type connector_authorization_code_properties() :: #{binary() => any()}.
+
+%% Example:
+%% connector_data_source() :: #{
+%%   <<"ConnectionType">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
+%% }
+-type connector_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% connector_data_target() :: #{
+%%   <<"ConnectionType">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type connector_data_target() :: #{binary() => any()}.
+
+%% Example:
+%% connector_o_auth2_properties() :: #{
+%%   <<"AuthorizationCodeProperties">> => connector_authorization_code_properties(),
+%%   <<"ClientCredentialsProperties">> => client_credentials_properties(),
+%%   <<"JWTBearerProperties">> => j_w_t_bearer_properties(),
+%%   <<"OAuth2GrantType">> => list(any())
+%% }
+-type connector_o_auth2_properties() :: #{binary() => any()}.
+
+%% Example:
+%% connector_property() :: #{
+%%   <<"AllowedValues">> => list([string()]()),
+%%   <<"DefaultValue">> => [string()],
+%%   <<"Format">> => [string()],
+%%   <<"KeyOverride">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
+%%   <<"PropertyType">> => list(any()),
+%%   <<"Required">> => boolean()
+%% }
+-type connector_property() :: #{binary() => any()}.
+
+%% Example:
+%% crawl() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStream">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type crawl() :: #{binary() => any()}.
+
+%% Example:
+%% crawler() :: #{
+%%   <<"Classifiers">> => list(string()),
+%%   <<"Configuration">> => string(),
+%%   <<"CrawlElapsedTime">> => float(),
+%%   <<"CrawlerSecurityConfiguration">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
+%%   <<"LastCrawl">> => last_crawl_info(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"LineageConfiguration">> => lineage_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"RecrawlPolicy">> => recrawl_policy(),
+%%   <<"Role">> => string(),
+%%   <<"Schedule">> => schedule(),
+%%   <<"SchemaChangePolicy">> => schema_change_policy(),
+%%   <<"State">> => list(any()),
+%%   <<"TablePrefix">> => string(),
+%%   <<"Targets">> => crawler_targets(),
+%%   <<"Version">> => float()
+%% }
+-type crawler() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_history() :: #{
+%%   <<"CrawlId">> => string(),
+%%   <<"DPUHour">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStream">> => string(),
+%%   <<"MessagePrefix">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Summary">> => string()
+%% }
+-type crawler_history() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_metrics() :: #{
+%%   <<"CrawlerName">> => string(),
+%%   <<"LastRuntimeSeconds">> => float(),
+%%   <<"MedianRuntimeSeconds">> => float(),
+%%   <<"StillEstimating">> => boolean(),
+%%   <<"TablesCreated">> => integer(),
+%%   <<"TablesDeleted">> => integer(),
+%%   <<"TablesUpdated">> => integer(),
+%%   <<"TimeLeftSeconds">> => float()
+%% }
+-type crawler_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_node_details() :: #{
+%%   <<"Crawls">> => list(crawl())
+%% }
+-type crawler_node_details() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_not_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type crawler_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type crawler_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_stopping_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type crawler_stopping_exception() :: #{binary() => any()}.
+
+%% Example:
+%% crawler_targets() :: #{
+%%   <<"CatalogTargets">> => list(catalog_target()),
+%%   <<"DeltaTargets">> => list(delta_target()),
+%%   <<"DynamoDBTargets">> => list(dynamo_db_target()),
+%%   <<"HudiTargets">> => list(hudi_target()),
+%%   <<"IcebergTargets">> => list(iceberg_target()),
+%%   <<"JdbcTargets">> => list(jdbc_target()),
+%%   <<"MongoDBTargets">> => list(mongo_db_target()),
+%%   <<"S3Targets">> => list(s3_target())
+%% }
+-type crawler_targets() :: #{binary() => any()}.
+
+%% Example:
+%% crawls_filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"FieldValue">> => string(),
+%%   <<"FilterOperator">> => list(any())
+%% }
+-type crawls_filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_blueprint_request() :: #{
+%%   <<"BlueprintLocation">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
--type list_blueprints_request() :: #{binary() => any()}.
+-type create_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_blueprint_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_catalog_request() :: #{
+%%   <<"CatalogInput">> := catalog_input(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_catalog_response() :: #{
+
+%% }
+-type create_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_classifier_request() :: #{
+%%   <<"CsvClassifier">> => create_csv_classifier_request(),
+%%   <<"GrokClassifier">> => create_grok_classifier_request(),
+%%   <<"JsonClassifier">> => create_json_classifier_request(),
+%%   <<"XMLClassifier">> => create_x_ml_classifier_request()
+%% }
+-type create_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_classifier_response() :: #{
+
+%% }
+-type create_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Role">> := string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"TableName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_column_statistics_task_settings_response() :: #{
+
+%% }
+-type create_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionInput">> := connection_input(),
+%%   <<"Tags">> => map()
+%% }
+-type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_response() :: #{
+%%   <<"CreateConnectionStatus">> => list(any())
+%% }
+-type create_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_crawler_request() :: #{
+%%   <<"Classifiers">> => list(string()),
+%%   <<"Configuration">> => string(),
+%%   <<"CrawlerSecurityConfiguration">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
+%%   <<"LineageConfiguration">> => lineage_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"RecrawlPolicy">> => recrawl_policy(),
+%%   <<"Role">> := string(),
+%%   <<"Schedule">> => string(),
+%%   <<"SchemaChangePolicy">> => schema_change_policy(),
+%%   <<"TablePrefix">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Targets">> := crawler_targets()
+%% }
+-type create_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_crawler_response() :: #{
+
+%% }
+-type create_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_csv_classifier_request() :: #{
+%%   <<"AllowSingleColumn">> => boolean(),
+%%   <<"ContainsHeader">> => list(any()),
+%%   <<"CustomDatatypeConfigured">> => boolean(),
+%%   <<"CustomDatatypes">> => list(string()),
+%%   <<"Delimiter">> => string(),
+%%   <<"DisableValueTrimming">> => boolean(),
+%%   <<"Header">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"QuoteSymbol">> => string(),
+%%   <<"Serde">> => list(any())
+%% }
+-type create_csv_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_entity_type_request() :: #{
+%%   <<"ContextWords">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"RegexString">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_custom_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_entity_type_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_custom_entity_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_ruleset_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Ruleset">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"TargetTable">> => data_quality_target_table()
+%% }
+-type create_data_quality_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_ruleset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_data_quality_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseInput">> := database_input(),
+%%   <<"Tags">> => map()
+%% }
+-type create_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_database_response() :: #{
+
+%% }
+-type create_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dev_endpoint_request() :: #{
+%%   <<"Arguments">> => map(),
+%%   <<"EndpointName">> := string(),
+%%   <<"ExtraJarsS3Path">> => string(),
+%%   <<"ExtraPythonLibsS3Path">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"PublicKey">> => string(),
+%%   <<"PublicKeys">> => list(string()),
+%%   <<"RoleArn">> := string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type create_dev_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dev_endpoint_response() :: #{
+%%   <<"Arguments">> => map(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"ExtraJarsS3Path">> => string(),
+%%   <<"ExtraPythonLibsS3Path">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Status">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string(),
+%%   <<"WorkerType">> => list(any()),
+%%   <<"YarnEndpointAddress">> => string(),
+%%   <<"ZeppelinRemoteSparkInterpreterPort">> => integer()
+%% }
+-type create_dev_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type create_glossary_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_glossary_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_term_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryIdentifier">> := string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type create_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type create_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_glue_identity_center_configuration_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
+%% }
+-type create_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_glue_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type create_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_grok_classifier_request() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"CustomPatterns">> => string(),
+%%   <<"GrokPattern">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_grok_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_iceberg_table_input() :: #{
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpec">> => iceberg_partition_spec(),
+%%   <<"Properties">> => map(),
+%%   <<"Schema">> => iceberg_schema(),
+%%   <<"WriteOrder">> => iceberg_sort_order()
+%% }
+-type create_iceberg_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_request() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type create_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type create_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_integration_response() :: #{
@@ -1104,36 +2404,572 @@
 -type create_integration_response() :: #{binary() => any()}.
 
 %% Example:
-%% iceberg_struct_field() :: #{
-%%   <<"Doc">> => string(),
-%%   <<"Id">> => integer(),
-%%   <<"InitialDefault">> => any(),
-%%   <<"Name">> => string(),
-%%   <<"Required">> => boolean(),
-%%   <<"Type">> => any(),
-%%   <<"WriteDefault">> => any()
-%% }
--type iceberg_struct_field() :: #{binary() => any()}.
-
-%% Example:
-%% supported_dialect() :: #{
-%%   <<"Dialect">> => list(any()),
-%%   <<"DialectVersion">> => string()
-%% }
--type supported_dialect() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
+%% create_integration_table_properties_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagsToAdd">> := map()
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> := string(),
+%%   <<"TargetTableConfig">> => target_table_config()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_integration_table_properties_request() :: #{binary() => any()}.
 
 %% Example:
-%% column_statistics_task_stopping_exception() :: #{
-%%   <<"Message">> => string()
+%% create_integration_table_properties_response() :: #{
+
 %% }
--type column_statistics_task_stopping_exception() :: #{binary() => any()}.
+-type create_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_job_request() :: #{
+%%   <<"AllocatedCapacity">> => integer(),
+%%   <<"CodeGenConfigurationNodes">> => map(),
+%%   <<"Command">> := job_command(),
+%%   <<"Connections">> => connections_list(),
+%%   <<"DefaultArguments">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"ExecutionClass">> => list(any()),
+%%   <<"ExecutionProperty">> => execution_property(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"JobMode">> => list(any()),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
+%%   <<"LogUri">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NonOverridableArguments">> => map(),
+%%   <<"NotificationProperty">> => notification_property(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Role">> := string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SourceControlDetails">> => source_control_details(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type create_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_json_classifier_request() :: #{
+%%   <<"JsonPath">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_json_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ml_transform_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"InputRecordTables">> := list(glue_table()),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Parameters">> := transform_parameters(),
+%%   <<"Role">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TransformEncryption">> => transform_encryption(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type create_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ml_transform_response() :: #{
+%%   <<"TransformId">> => string()
+%% }
+-type create_ml_transform_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partition_index_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionIndex">> := partition_index(),
+%%   <<"TableName">> := string()
+%% }
+-type create_partition_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partition_index_response() :: #{
+
+%% }
+-type create_partition_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionInput">> := partition_input(),
+%%   <<"TableName">> := string()
+%% }
+-type create_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partition_response() :: #{
+
+%% }
+-type create_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_registry_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RegistryName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_registry_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_registry_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_schema_input() :: #{
+%%   <<"Compatibility">> => list(any()),
+%%   <<"DataFormat">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"RegistryId">> => registry_id(),
+%%   <<"SchemaDefinition">> => string(),
+%%   <<"SchemaName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_schema_response() :: #{
+%%   <<"Compatibility">> => list(any()),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LatestSchemaVersion">> => float(),
+%%   <<"NextSchemaVersion">> => float(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaCheckpoint">> => float(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaStatus">> => list(any()),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionStatus">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_script_request() :: #{
+%%   <<"DagEdges">> => list(code_gen_edge()),
+%%   <<"DagNodes">> => list(code_gen_node()),
+%%   <<"Language">> => list(any())
+%% }
+-type create_script_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_script_response() :: #{
+%%   <<"PythonScript">> => string(),
+%%   <<"ScalaCode">> => string()
+%% }
+-type create_script_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_security_configuration_request() :: #{
+%%   <<"EncryptionConfiguration">> := encryption_configuration(),
+%%   <<"Name">> := string()
+%% }
+-type create_security_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_security_configuration_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type create_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_session_request() :: #{
+%%   <<"Command">> := session_command(),
+%%   <<"Connections">> => connections_list(),
+%%   <<"DefaultArguments">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IdleTimeout">> => integer(),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"Role">> := string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SessionType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_session_response() :: #{
+%%   <<"Session">> => session()
+%% }
+-type create_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_optimizer_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"TableOptimizerConfiguration">> := table_optimizer_configuration(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_table_optimizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_optimizer_response() :: #{
+
+%% }
+-type create_table_optimizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"OpenTableFormatInput">> => open_table_format_input(),
+%%   <<"PartitionIndexes">> => list(partition_index()),
+%%   <<"TableInput">> => table_input(),
+%%   <<"TransactionId">> => string()
+%% }
+-type create_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_response() :: #{
+
+%% }
+-type create_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_trigger_request() :: #{
+%%   <<"Actions">> := list(action()),
+%%   <<"Description">> => string(),
+%%   <<"EventBatchingCondition">> => event_batching_condition(),
+%%   <<"Name">> := string(),
+%%   <<"Predicate">> => predicate(),
+%%   <<"Schedule">> => string(),
+%%   <<"StartOnCreation">> => boolean(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> := list(any()),
+%%   <<"WorkflowName">> => string()
+%% }
+-type create_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trigger_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_profile_request() :: #{
+%%   <<"Configuration">> := profile_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_usage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_profile_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_defined_function_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"FunctionInput">> := user_defined_function_input()
+%% }
+-type create_user_defined_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_defined_function_response() :: #{
+
+%% }
+-type create_user_defined_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_workflow_request() :: #{
+%%   <<"DefaultRunProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"MaxConcurrentRuns">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workflow_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_x_ml_classifier_request() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RowTag">> => string()
+%% }
+-type create_x_ml_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% csv_classifier() :: #{
+%%   <<"AllowSingleColumn">> => boolean(),
+%%   <<"ContainsHeader">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomDatatypeConfigured">> => boolean(),
+%%   <<"CustomDatatypes">> => list(string()),
+%%   <<"Delimiter">> => string(),
+%%   <<"DisableValueTrimming">> => boolean(),
+%%   <<"Header">> => list(string()),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"QuoteSymbol">> => string(),
+%%   <<"Serde">> => list(any()),
+%%   <<"Version">> => float()
+%% }
+-type csv_classifier() :: #{binary() => any()}.
+
+%% Example:
+%% cursor_configuration() :: #{
+%%   <<"LimitParameter">> => extracted_parameter(),
+%%   <<"NextPage">> => extracted_parameter()
+%% }
+-type cursor_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% custom_authentication_properties() :: #{
+%%   <<"AuthenticationParameters">> => list(connector_property())
+%% }
+-type custom_authentication_properties() :: #{binary() => any()}.
+
+%% Example:
+%% custom_code() :: #{
+%%   <<"ClassName">> => string(),
+%%   <<"Code">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
+%% }
+-type custom_code() :: #{binary() => any()}.
+
+%% Example:
+%% custom_entity_type() :: #{
+%%   <<"ContextWords">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"RegexString">> => string()
+%% }
+-type custom_entity_type() :: #{binary() => any()}.
+
+%% Example:
+%% d_db_e_l_t_catalog_additional_options() :: #{
+%%   <<"DynamodbExport">> => string(),
+%%   <<"DynamodbUnnestDDBJson">> => boolean()
+%% }
+-type d_db_e_l_t_catalog_additional_options() :: #{binary() => any()}.
+
+%% Example:
+%% d_db_e_l_t_connection_options() :: #{
+%%   <<"DynamodbExport">> => list(any()),
+%%   <<"DynamodbS3Bucket">> => string(),
+%%   <<"DynamodbS3BucketOwner">> => string(),
+%%   <<"DynamodbS3Prefix">> => string(),
+%%   <<"DynamodbStsRoleArn">> => string(),
+%%   <<"DynamodbTableArn">> => string(),
+%%   <<"DynamodbUnnestDDBJson">> => boolean()
+%% }
+-type d_db_e_l_t_connection_options() :: #{binary() => any()}.
+
+%% Example:
+%% d_q_results_publishing_options() :: #{
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"ResultsPublishingEnabled">> => boolean(),
+%%   <<"ResultsS3Prefix">> => string()
+%% }
+-type d_q_results_publishing_options() :: #{binary() => any()}.
+
+%% Example:
+%% d_q_stop_job_on_failure_options() :: #{
+%%   <<"StopJobOnFailureTiming">> => list(any())
+%% }
+-type d_q_stop_job_on_failure_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_catalog_encryption_settings() :: #{
+%%   <<"ConnectionPasswordEncryption">> => connection_password_encryption(),
+%%   <<"EncryptionAtRest">> => encryption_at_rest()
+%% }
+-type data_catalog_encryption_settings() :: #{binary() => any()}.
+
+%% Example:
+%% data_lake_access_properties() :: #{
+%%   <<"CatalogType">> => string(),
+%%   <<"DataLakeAccess">> => boolean(),
+%%   <<"DataTransferRole">> => string(),
+%%   <<"KmsKey">> => string()
+%% }
+-type data_lake_access_properties() :: #{binary() => any()}.
+
+%% Example:
+%% data_lake_access_properties_output() :: #{
+%%   <<"CatalogType">> => string(),
+%%   <<"DataLakeAccess">> => boolean(),
+%%   <<"DataTransferRole">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"ManagedWorkgroupName">> => string(),
+%%   <<"ManagedWorkgroupStatus">> => string(),
+%%   <<"RedshiftDatabaseName">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type data_lake_access_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% data_lake_principal() :: #{
+%%   <<"DataLakePrincipalIdentifier">> => string()
+%% }
+-type data_lake_principal() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_aggregated_metrics() :: #{
+%%   <<"TotalRowsFailed">> => float(),
+%%   <<"TotalRowsPassed">> => float(),
+%%   <<"TotalRowsProcessed">> => float(),
+%%   <<"TotalRulesFailed">> => float(),
+%%   <<"TotalRulesPassed">> => float(),
+%%   <<"TotalRulesProcessed">> => float()
+%% }
+-type data_quality_aggregated_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_analyzer_result() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EvaluatedDistributions">> => map(),
+%%   <<"EvaluatedMetrics">> => map(),
+%%   <<"EvaluationMessage">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type data_quality_analyzer_result() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_encryption() :: #{
+%%   <<"DataQualityEncryptionMode">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type data_quality_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_run_additional_run_options() :: #{
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"CompositeRuleEvaluationMethod">> => list(any()),
+%%   <<"CustomLogGroupPrefix">> => string(),
+%%   <<"DataQualityRuleResults">> => data_quality_rule_results_options(),
+%%   <<"ObservationMode">> => list(any()),
+%%   <<"ObservationResults">> => observation_results_options(),
+%%   <<"ObservationScope">> => list(any()),
+%%   <<"ProfilingResults">> => profiling_results_options(),
+%%   <<"ResultsS3Prefix">> => string(),
+%%   <<"RowLevelResults">> => row_level_results_options()
+%% }
+-type data_quality_evaluation_run_additional_run_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_glue_table() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"PreProcessingQuery">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type data_quality_glue_table() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_metric_values() :: #{
+%%   <<"ActualValue">> => float(),
+%%   <<"ExpectedValue">> => float(),
+%%   <<"LowerLimit">> => float(),
+%%   <<"UpperLimit">> => float()
+%% }
+-type data_quality_metric_values() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_observation() :: #{
+%%   <<"Description">> => string(),
+%%   <<"MetricBasedObservation">> => metric_based_observation()
+%% }
+-type data_quality_observation() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_result() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string(),
+%%   <<"Observations">> => list(data_quality_observation()),
+%%   <<"ProfileId">> => string(),
+%%   <<"ResultId">> => string(),
+%%   <<"RuleResults">> => list(data_quality_rule_result()),
+%%   <<"RulesetEvaluationRunId">> => string(),
+%%   <<"RulesetName">> => string(),
+%%   <<"Score">> => float(),
+%%   <<"StartedOn">> => non_neg_integer()
+%% }
+-type data_quality_result() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_result_description() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string(),
+%%   <<"ResultId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer()
+%% }
+-type data_quality_result_description() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_result_filter_criteria() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string(),
+%%   <<"StartedAfter">> => non_neg_integer(),
+%%   <<"StartedBefore">> => non_neg_integer()
+%% }
+-type data_quality_result_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_rule_recommendation_run_additional_run_options() :: #{
+%%   <<"CustomLogGroupPrefix">> => string()
+%% }
+-type data_quality_rule_recommendation_run_additional_run_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_rule_recommendation_run_description() :: #{
+%%   <<"CreatedRulesetName">> => string(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type data_quality_rule_recommendation_run_description() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_rule_recommendation_run_filter() :: #{
@@ -1144,117 +2980,101 @@
 -type data_quality_rule_recommendation_run_filter() :: #{binary() => any()}.
 
 %% Example:
-%% oracle_s_q_l_catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type oracle_s_q_l_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% start_crawler_schedule_request() :: #{
-%%   <<"CrawlerName">> := string()
-%% }
--type start_crawler_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% schema_version_list_item() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VersionNumber">> => float()
-%% }
--type schema_version_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_quality_ruleset_request() :: #{
+%% data_quality_rule_result() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Ruleset">> => string()
+%%   <<"EvaluatedMetrics">> => map(),
+%%   <<"EvaluatedRule">> => string(),
+%%   <<"EvaluationMessage">> => string(),
+%%   <<"Labels">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"Result">> => list(any()),
+%%   <<"RuleMetrics">> => map()
 %% }
--type update_data_quality_ruleset_request() :: #{binary() => any()}.
+-type data_quality_rule_result() :: #{binary() => any()}.
 
 %% Example:
-%% timestamped_inclusion_annotation() :: #{
+%% data_quality_rule_results_options() :: #{
+%%   <<"CatalogTableConfig">> => catalog_table_config_options(),
+%%   <<"WriteDataQualityRuleResultsEnabled">> => boolean()
+%% }
+-type data_quality_rule_results_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_ruleset_evaluation_run() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_run_additional_run_options(),
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"ErrorString">> => string(),
+%%   <<"ExecutionTime">> => integer(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"Value">> => list(any())
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"ResultIds">> => list(string()),
+%%   <<"Role">> => string(),
+%%   <<"RulesetNames">> => list(string()),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timeout">> => integer()
 %% }
--type timestamped_inclusion_annotation() :: #{binary() => any()}.
+-type data_quality_ruleset_evaluation_run() :: #{binary() => any()}.
 
 %% Example:
-%% import_labels_task_run_properties() :: #{
-%%   <<"InputS3Path">> => string(),
-%%   <<"Replace">> => boolean()
+%% data_quality_ruleset_evaluation_run_description() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type import_labels_task_run_properties() :: #{binary() => any()}.
+-type data_quality_ruleset_evaluation_run_description() :: #{binary() => any()}.
 
 %% Example:
-%% delete_schema_versions_input() :: #{
-%%   <<"SchemaId">> := schema_id(),
-%%   <<"Versions">> := string()
+%% data_quality_ruleset_evaluation_run_filter() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"RulesetName">> => string(),
+%%   <<"StartedAfter">> => non_neg_integer(),
+%%   <<"StartedBefore">> => non_neg_integer()
 %% }
--type delete_schema_versions_input() :: #{binary() => any()}.
+-type data_quality_ruleset_evaluation_run_filter() :: #{binary() => any()}.
 
 %% Example:
-%% principal_permissions() :: #{
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"Principal">> => data_lake_principal()
-%% }
--type principal_permissions() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_usage_profile_request() :: #{
-%%   <<"Configuration">> := profile_configuration(),
+%% data_quality_ruleset_filter_criteria() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string()
-%% }
--type update_usage_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% check_schema_version_validity_input() :: #{
-%%   <<"DataFormat">> := list(any()),
-%%   <<"SchemaDefinition">> := string()
-%% }
--type check_schema_version_validity_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(blueprint()),
-%%   <<"MissingBlueprints">> => list(string())
-%% }
--type batch_get_blueprints_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_transform_request() :: #{
-%%   <<"TransformId">> := string()
-%% }
--type get_ml_transform_request() :: #{binary() => any()}.
-
-%% Example:
-%% j_db_c_connector_source() :: #{
-%%   <<"AdditionalOptions">> => j_db_c_connector_options(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionTable">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"ConnectorName">> => string(),
+%%   <<"LastModifiedAfter">> => non_neg_integer(),
+%%   <<"LastModifiedBefore">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Query">> => string()
+%%   <<"TargetTable">> => data_quality_target_table()
 %% }
--type j_db_c_connector_source() :: #{binary() => any()}.
+-type data_quality_ruleset_filter_criteria() :: #{binary() => any()}.
 
 %% Example:
-%% scheduler_not_running_exception() :: #{
-%%   <<"Message">> => string()
+%% data_quality_ruleset_list_details() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RecommendationRunId">> => string(),
+%%   <<"RuleCount">> => integer(),
+%%   <<"TargetTable">> => data_quality_target_table()
 %% }
--type scheduler_not_running_exception() :: #{binary() => any()}.
+-type data_quality_ruleset_list_details() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_target_table() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type data_quality_target_table() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"DataQualityGlueTable">> => data_quality_glue_table(),
+%%   <<"GlueTable">> => glue_table()
+%% }
+-type data_source() :: #{binary() => any()}.
 
 %% Example:
 %% database() :: #{
@@ -1271,31 +3091,894 @@
 -type database() :: #{binary() => any()}.
 
 %% Example:
-%% get_triggers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Triggers">> => list(trigger())
+%% database_identifier() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Region">> => string()
 %% }
--type get_triggers_response() :: #{binary() => any()}.
+-type database_identifier() :: #{binary() => any()}.
 
 %% Example:
-%% remove_schema_version_metadata_response() :: #{
-%%   <<"LatestVersion">> => boolean(),
-%%   <<"MetadataKey">> => string(),
-%%   <<"MetadataValue">> => string(),
+%% database_input() :: #{
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
+%%   <<"Description">> => string(),
+%%   <<"FederatedDatabase">> => federated_database(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"TargetDatabase">> => database_identifier()
+%% }
+-type database_input() :: #{binary() => any()}.
+
+%% Example:
+%% datapoint_inclusion_annotation() :: #{
+%%   <<"InclusionAnnotation">> => list(any()),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type datapoint_inclusion_annotation() :: #{binary() => any()}.
+
+%% Example:
+%% datatype() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string()
+%% }
+-type datatype() :: #{binary() => any()}.
+
+%% Example:
+%% date_column_statistics_data() :: #{
+%%   <<"MaximumValue">> => non_neg_integer(),
+%%   <<"MinimumValue">> => non_neg_integer(),
+%%   <<"NumberOfDistinctValues">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type date_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% decimal_column_statistics_data() :: #{
+%%   <<"MaximumValue">> => decimal_number(),
+%%   <<"MinimumValue">> => decimal_number(),
+%%   <<"NumberOfDistinctValues">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type decimal_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% decimal_number() :: #{
+%%   <<"Scale">> => integer(),
+%%   <<"UnscaledValue">> => binary()
+%% }
+-type decimal_number() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_request() :: #{
+
+%% }
+-type delete_asset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_response() :: #{
+
+%% }
+-type delete_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_type_request() :: #{
+
+%% }
+-type delete_asset_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_asset_type_response() :: #{
+
+%% }
+-type delete_asset_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_request() :: #{
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
+%% }
+-type delete_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_response() :: #{
+%%   <<"AssetIdentifier">> => string()
+%% }
+-type delete_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blueprint_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blueprint_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_catalog_request() :: #{
+%%   <<"CatalogId">> := string()
+%% }
+-type delete_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_catalog_response() :: #{
+
+%% }
+-type delete_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_classifier_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_classifier_response() :: #{
+
+%% }
+-type delete_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_for_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ColumnName">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type delete_column_statistics_for_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_for_partition_response() :: #{
+
+%% }
+-type delete_column_statistics_for_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_for_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ColumnName">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_column_statistics_for_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_for_table_response() :: #{
+
+%% }
+-type delete_column_statistics_for_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_task_settings_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_column_statistics_task_settings_response() :: #{
+
+%% }
+-type delete_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> := string()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_response() :: #{
+
+%% }
+-type delete_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_type_request() :: #{
+%%   <<"ConnectionType">> := string()
+%% }
+-type delete_connection_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_type_response() :: #{
+
+%% }
+-type delete_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_crawler_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_crawler_response() :: #{
+
+%% }
+-type delete_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_entity_type_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_custom_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_entity_type_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_custom_entity_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_ruleset_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_data_quality_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_ruleset_response() :: #{
+
+%% }
+-type delete_data_quality_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_database_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type delete_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_database_response() :: #{
+
+%% }
+-type delete_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dev_endpoint_request() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type delete_dev_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dev_endpoint_response() :: #{
+
+%% }
+-type delete_dev_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_form_type_request() :: #{
+
+%% }
+-type delete_form_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_form_type_response() :: #{
+
+%% }
+-type delete_form_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_request() :: #{
+
+%% }
+-type delete_glossary_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_response() :: #{
+
+%% }
+-type delete_glossary_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_term_request() :: #{
+
+%% }
+-type delete_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glossary_term_response() :: #{
+
+%% }
+-type delete_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glue_identity_center_configuration_request() :: #{
+
+%% }
+-type delete_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glue_identity_center_configuration_response() :: #{
+
+%% }
+-type delete_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_request() :: #{
+%%   <<"IntegrationIdentifier">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_resource_property_response() :: #{
+
+%% }
+-type delete_integration_resource_property_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_response() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetArn">> => string()
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_table_properties_response() :: #{
+
+%% }
+-type delete_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_response() :: #{
+%%   <<"JobName">> => string()
+%% }
+-type delete_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ml_transform_request() :: #{
+%%   <<"TransformId">> := string()
+%% }
+-type delete_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ml_transform_response() :: #{
+%%   <<"TransformId">> => string()
+%% }
+-type delete_ml_transform_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partition_index_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"IndexName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type delete_partition_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partition_index_response() :: #{
+
+%% }
+-type delete_partition_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type delete_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partition_response() :: #{
+
+%% }
+-type delete_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_input() :: #{
+%%   <<"RegistryId">> := registry_id()
+%% }
+-type delete_registry_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_registry_response() :: #{
+%%   <<"RegistryArn">> => string(),
 %%   <<"RegistryName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyHashCondition">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schema_input() :: #{
+%%   <<"SchemaId">> := schema_id()
+%% }
+-type delete_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schema_response() :: #{
 %%   <<"SchemaArn">> => string(),
 %%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"VersionNumber">> => float()
+%%   <<"Status">> => list(any())
 %% }
--type remove_schema_version_metadata_response() :: #{binary() => any()}.
+-type delete_schema_response() :: #{binary() => any()}.
 
 %% Example:
-%% iceberg_partition_spec() :: #{
-%%   <<"Fields">> => list(iceberg_partition_field()),
-%%   <<"SpecId">> => integer()
+%% delete_schema_versions_input() :: #{
+%%   <<"SchemaId">> := schema_id(),
+%%   <<"Versions">> := string()
 %% }
--type iceberg_partition_spec() :: #{binary() => any()}.
+-type delete_schema_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schema_versions_response() :: #{
+%%   <<"SchemaVersionErrors">> => list(schema_version_error_item())
+%% }
+-type delete_schema_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_configuration_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_security_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_configuration_response() :: #{
+
+%% }
+-type delete_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_session_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"RequestOrigin">> => string()
+%% }
+-type delete_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_session_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type delete_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_optimizer_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type delete_table_optimizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_optimizer_response() :: #{
+
+%% }
+-type delete_table_optimizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"TransactionId">> => string()
+%% }
+-type delete_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_response() :: #{
+
+%% }
+-type delete_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_version_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type delete_table_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_version_response() :: #{
+
+%% }
+-type delete_table_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trigger_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trigger_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_profile_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_usage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_profile_response() :: #{
+
+%% }
+-type delete_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_defined_function_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"FunctionName">> := string()
+%% }
+-type delete_user_defined_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_defined_function_response() :: #{
+
+%% }
+-type delete_user_defined_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% delta_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"CreateNativeDeltaTable">> => boolean(),
+%%   <<"DeltaTables">> => list(string()),
+%%   <<"WriteManifest">> => boolean()
+%% }
+-type delta_target() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_type_request() :: #{
+%%   <<"ConnectionType">> := string()
+%% }
+-type describe_connection_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_type_response() :: #{
+%%   <<"AthenaConnectionProperties">> => map(),
+%%   <<"AuthenticationConfiguration">> => auth_configuration(),
+%%   <<"Capabilities">> => capabilities(),
+%%   <<"ComputeEnvironmentConfigurations">> => map(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"PhysicalConnectionRequirements">> => map(),
+%%   <<"PythonConnectionProperties">> => map(),
+%%   <<"RestConfiguration">> => rest_configuration(),
+%%   <<"SparkConnectionProperties">> => map()
+%% }
+-type describe_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> := string(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"EntityName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_response() :: #{
+%%   <<"Fields">> => list(field()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_integrations_request() :: #{
+%%   <<"IntegrationArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetArn">> => string()
+%% }
+-type describe_inbound_integrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inbound_integrations_response() :: #{
+%%   <<"InboundIntegrations">> => list(inbound_integration()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_inbound_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_request() :: #{
+%%   <<"Filters">> => list(integration_filter()),
+%%   <<"IntegrationIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_integrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_response() :: #{
+%%   <<"Integrations">> => list(integration()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% dev_endpoint() :: #{
+%%   <<"Arguments">> => map(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EndpointName">> => string(),
+%%   <<"ExtraJarsS3Path">> => string(),
+%%   <<"ExtraPythonLibsS3Path">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"LastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdateStatus">> => string(),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"PrivateAddress">> => string(),
+%%   <<"PublicAddress">> => string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"PublicKeys">> => list(string()),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Status">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string(),
+%%   <<"WorkerType">> => list(any()),
+%%   <<"YarnEndpointAddress">> => string(),
+%%   <<"ZeppelinRemoteSparkInterpreterPort">> => integer()
+%% }
+-type dev_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% dev_endpoint_custom_libraries() :: #{
+%%   <<"ExtraJarsS3Path">> => string(),
+%%   <<"ExtraPythonLibsS3Path">> => string()
+%% }
+-type dev_endpoint_custom_libraries() :: #{binary() => any()}.
+
+%% Example:
+%% direct_j_db_c_source() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"RedshiftTmpDir">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type direct_j_db_c_source() :: #{binary() => any()}.
+
+%% Example:
+%% direct_kafka_source() :: #{
+%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
+%%   <<"DetectSchema">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"StreamingOptions">> => kafka_streaming_source_options(),
+%%   <<"WindowSize">> => integer()
+%% }
+-type direct_kafka_source() :: #{binary() => any()}.
+
+%% Example:
+%% direct_kinesis_source() :: #{
+%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
+%%   <<"DetectSchema">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"StreamingOptions">> => kinesis_streaming_source_options(),
+%%   <<"WindowSize">> => integer()
+%% }
+-type direct_kinesis_source() :: #{binary() => any()}.
+
+%% Example:
+%% direct_schema_change_policy() :: #{
+%%   <<"Database">> => string(),
+%%   <<"EnableUpdateCatalog">> => boolean(),
+%%   <<"Table">> => string(),
+%%   <<"UpdateBehavior">> => list(any())
+%% }
+-type direct_schema_change_policy() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_glossary_terms_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GlossaryTermIdentifiers">> := list(string())
+%% }
+-type disassociate_glossary_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_glossary_terms_response() :: #{
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"GlossaryTerms">> => list(string())
+%% }
+-type disassociate_glossary_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% distribution_data() :: #{
+%%   <<"BinEdges">> => list(string()),
+%%   <<"Count">> => list(integer()),
+%%   <<"DataType">> => string()
+%% }
+-type distribution_data() :: #{binary() => any()}.
+
+%% Example:
+%% distribution_results_options() :: #{
+%%   <<"CatalogTableConfig">> => catalog_table_config_options(),
+%%   <<"WriteDistributionResultsEnabled">> => boolean()
+%% }
+-type distribution_results_options() :: #{binary() => any()}.
+
+%% Example:
+%% double_column_statistics_data() :: #{
+%%   <<"MaximumValue">> => float(),
+%%   <<"MinimumValue">> => float(),
+%%   <<"NumberOfDistinctValues">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type double_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% drop_duplicates() :: #{
+%%   <<"Columns">> => list(list(string())()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type drop_duplicates() :: #{binary() => any()}.
+
+%% Example:
+%% drop_fields() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Paths">> => list(list(string())())
+%% }
+-type drop_fields() :: #{binary() => any()}.
+
+%% Example:
+%% drop_null_fields() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NullCheckBoxList">> => null_check_box_list(),
+%%   <<"NullTextList">> => list(null_value_field())
+%% }
+-type drop_null_fields() :: #{binary() => any()}.
+
+%% Example:
+%% dynamic_transform() :: #{
+%%   <<"FunctionName">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Parameters">> => list(transform_config_parameter()),
+%%   <<"Path">> => string(),
+%%   <<"TransformName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type dynamic_transform() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_catalog_source() :: #{
+%%   <<"AdditionalOptions">> => d_db_e_l_t_catalog_additional_options(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PitrEnabled">> => boolean(),
+%%   <<"Table">> => string()
+%% }
+-type dynamo_db_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_e_l_t_connector_source() :: #{
+%%   <<"ConnectionOptions">> => d_db_e_l_t_connection_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
+%% }
+-type dynamo_db_e_l_t_connector_source() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_target() :: #{
+%%   <<"Path">> => string(),
+%%   <<"scanAll">> => boolean(),
+%%   <<"scanRate">> => float()
+%% }
+-type dynamo_db_target() :: #{binary() => any()}.
+
+%% Example:
+%% edge() :: #{
+%%   <<"DestinationId">> => string(),
+%%   <<"SourceId">> => string()
+%% }
+-type edge() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_at_rest() :: #{
+%%   <<"CatalogEncryptionMode">> => list(any()),
+%%   <<"CatalogEncryptionServiceRole">> => string(),
+%%   <<"SseAwsKmsKeyId">> => string()
+%% }
+-type encryption_at_rest() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"CloudWatchEncryption">> => cloud_watch_encryption(),
+%%   <<"DataQualityEncryption">> => data_quality_encryption(),
+%%   <<"JobBookmarksEncryption">> => job_bookmarks_encryption(),
+%%   <<"S3Encryption">> => list(s3_encryption())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"Category">> => string(),
+%%   <<"CustomProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"EntityName">> => string(),
+%%   <<"IsParentEntity">> => boolean(),
+%%   <<"Label">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% entity_configuration() :: #{
+%%   <<"Schema">> => map(),
+%%   <<"SourceConfiguration">> => source_configuration()
+%% }
+-type entity_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% entity_not_found_exception() :: #{
@@ -1305,305 +3988,662 @@
 -type entity_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% search_sort() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"Order">> => list(any())
+%% error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
 %% }
--type search_sort() :: #{binary() => any()}.
+-type error_detail() :: #{binary() => any()}.
 
 %% Example:
-%% crawler_metrics() :: #{
-%%   <<"CrawlerName">> => string(),
-%%   <<"LastRuntimeSeconds">> => float(),
-%%   <<"MedianRuntimeSeconds">> => float(),
-%%   <<"StillEstimating">> => boolean(),
-%%   <<"TablesCreated">> => integer(),
-%%   <<"TablesDeleted">> => integer(),
-%%   <<"TablesUpdated">> => integer(),
-%%   <<"TimeLeftSeconds">> => float()
+%% error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
 %% }
--type crawler_metrics() :: #{binary() => any()}.
+-type error_details() :: #{binary() => any()}.
 
 %% Example:
-%% boolean_column_statistics_data() :: #{
-%%   <<"NumberOfFalses">> => float(),
-%%   <<"NumberOfNulls">> => float(),
-%%   <<"NumberOfTrues">> => float()
+%% evaluate_data_quality() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Output">> => list(any()),
+%%   <<"PublishingOptions">> => d_q_results_publishing_options(),
+%%   <<"Ruleset">> => string(),
+%%   <<"StopJobOnFailureOptions">> => d_q_stop_job_on_failure_options()
 %% }
--type boolean_column_statistics_data() :: #{binary() => any()}.
+-type evaluate_data_quality() :: #{binary() => any()}.
 
 %% Example:
-%% list_form_types_response() :: #{
-%%   <<"Items">> => list(form_type_item()),
-%%   <<"NextToken">> => string()
+%% evaluate_data_quality_multi_frame() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PublishingOptions">> => d_q_results_publishing_options(),
+%%   <<"Ruleset">> => string(),
+%%   <<"StopJobOnFailureOptions">> => d_q_stop_job_on_failure_options()
 %% }
--type list_form_types_response() :: #{binary() => any()}.
+-type evaluate_data_quality_multi_frame() :: #{binary() => any()}.
 
 %% Example:
-%% operation_timeout_exception() :: #{
+%% evaluation_metrics() :: #{
+%%   <<"FindMatchesMetrics">> => find_matches_metrics(),
+%%   <<"TransformType">> => list(any())
+%% }
+-type evaluation_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% event_batching_condition() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"BatchWindow">> => integer()
+%% }
+-type event_batching_condition() :: #{binary() => any()}.
+
+%% Example:
+%% execution_attempt() :: #{
+%%   <<"ColumnStatisticsTaskRunId">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExecutionTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type execution_attempt() :: #{binary() => any()}.
+
+%% Example:
+%% execution_property() :: #{
+%%   <<"MaxConcurrentRuns">> => integer()
+%% }
+-type execution_property() :: #{binary() => any()}.
+
+%% Example:
+%% export_encryption_configuration() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SseAlgorithm">> => string()
+%% }
+-type export_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% export_labels_task_run_properties() :: #{
+%%   <<"OutputS3Path">> => string()
+%% }
+-type export_labels_task_run_properties() :: #{binary() => any()}.
+
+%% Example:
+%% extracted_parameter() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
+%%   <<"Value">> => response_extraction_mapping()
+%% }
+-type extracted_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% federated_catalog() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"Identifier">> => string()
+%% }
+-type federated_catalog() :: #{binary() => any()}.
+
+%% Example:
+%% federated_database() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"Identifier">> => string()
+%% }
+-type federated_database() :: #{binary() => any()}.
+
+%% Example:
+%% federated_resource_already_exists_exception() :: #{
+%%   <<"AssociatedGlueResource">> => string(),
 %%   <<"Message">> => string()
 %% }
--type operation_timeout_exception() :: #{binary() => any()}.
+-type federated_resource_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_statement_response() :: #{
-%%   <<"Statement">> => statement()
+%% federated_table() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"DatabaseIdentifier">> => string(),
+%%   <<"Identifier">> => string()
 %% }
--type get_statement_response() :: #{binary() => any()}.
+-type federated_table() :: #{binary() => any()}.
 
 %% Example:
-%% create_glossary_term_response() :: #{
-%%   <<"GlossaryId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LongDescription">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ShortDescription">> => string()
+%% federation_source_exception() :: #{
+%%   <<"FederationSourceErrorCode">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type create_glossary_term_response() :: #{binary() => any()}.
+-type federation_source_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_data_quality_rulesets_request() :: #{
-%%   <<"Filter">> => data_quality_ruleset_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
+%% federation_source_retryable_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_data_quality_rulesets_request() :: #{binary() => any()}.
+-type federation_source_retryable_exception() :: #{binary() => any()}.
 
 %% Example:
-%% run_identifier() :: #{
-%%   <<"JobRunId">> => string(),
-%%   <<"RunId">> => string()
+%% field() :: #{
+%%   <<"CustomProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"FieldName">> => string(),
+%%   <<"FieldType">> => list(any()),
+%%   <<"IsCreateable">> => boolean(),
+%%   <<"IsDefaultOnCreate">> => boolean(),
+%%   <<"IsFilterable">> => boolean(),
+%%   <<"IsNullable">> => boolean(),
+%%   <<"IsPartitionable">> => boolean(),
+%%   <<"IsPrimaryKey">> => boolean(),
+%%   <<"IsRetrievable">> => boolean(),
+%%   <<"IsUpdateable">> => boolean(),
+%%   <<"IsUpsertable">> => boolean(),
+%%   <<"Label">> => string(),
+%%   <<"NativeDataType">> => [string()],
+%%   <<"ParentField">> => [string()],
+%%   <<"SupportedFilterOperators">> => list(list(any())()),
+%%   <<"SupportedValues">> => list([string()]())
 %% }
--type run_identifier() :: #{binary() => any()}.
+-type field() :: #{binary() => any()}.
 
 %% Example:
-%% partition_index() :: #{
-%%   <<"IndexName">> => string(),
-%%   <<"Keys">> => list(string())
+%% field_definition() :: #{
+%%   <<"FieldDataType">> => list(any()),
+%%   <<"FilterOverrides">> => filter_overrides(),
+%%   <<"IsNullable">> => boolean(),
+%%   <<"IsOrderable">> => boolean(),
+%%   <<"IsPartitionable">> => boolean(),
+%%   <<"IsQueryable">> => boolean(),
+%%   <<"Name">> => [string()],
+%%   <<"ResponseDateFormat">> => [string()]
 %% }
--type partition_index() :: #{binary() => any()}.
+-type field_definition() :: #{binary() => any()}.
 
 %% Example:
-%% table_status() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Details">> => status_details(),
-%%   <<"Error">> => error_detail(),
-%%   <<"RequestTime">> => non_neg_integer(),
-%%   <<"RequestedBy">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateTime">> => non_neg_integer(),
-%%   <<"UpdatedBy">> => string()
-%% }
--type table_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_input() :: #{
-%%   <<"RegistryId">> := registry_id()
-%% }
--type delete_registry_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_response() :: #{
-%%   <<"Session">> => session()
-%% }
--type get_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_lake_access_properties_output() :: #{
-%%   <<"CatalogType">> => string(),
-%%   <<"DataLakeAccess">> => boolean(),
-%%   <<"DataTransferRole">> => string(),
-%%   <<"KmsKey">> => string(),
-%%   <<"ManagedWorkgroupName">> => string(),
-%%   <<"ManagedWorkgroupStatus">> => string(),
-%%   <<"RedshiftDatabaseName">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type data_lake_access_properties_output() :: #{binary() => any()}.
-
-%% Example:
-%% inbound_integration() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(integration_error()),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationConfig">> => integration_config(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetArn">> => string()
-%% }
--type inbound_integration() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_result_description() :: #{
-%%   <<"DataSource">> => data_source(),
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string(),
-%%   <<"ResultId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer()
-%% }
--type data_quality_result_description() :: #{binary() => any()}.
-
-%% Example:
-%% blueprint_details() :: #{
-%%   <<"BlueprintName">> => string(),
-%%   <<"RunId">> => string()
-%% }
--type blueprint_details() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_partition_response() :: #{
-%%   <<"Errors">> => list(partition_error())
-%% }
--type batch_delete_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_run_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"PredecessorsIncluded">> => boolean(),
-%%   <<"RunId">> := string()
-%% }
--type get_job_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_defined_functions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserDefinedFunctions">> => list(user_defined_function())
-%% }
--type get_user_defined_functions_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_script_request() :: #{
-%%   <<"DagEdges">> => list(code_gen_edge()),
-%%   <<"DagNodes">> => list(code_gen_node()),
-%%   <<"Language">> => list(any())
-%% }
--type create_script_request() :: #{binary() => any()}.
-
-%% Example:
-%% partition_error() :: #{
-%%   <<"ErrorDetail">> => error_detail(),
-%%   <<"PartitionValues">> => list(string())
-%% }
--type partition_error() :: #{binary() => any()}.
-
-%% Example:
-%% create_job_response() :: #{
+%% fill_missing_values() :: #{
+%%   <<"FilledPath">> => string(),
+%%   <<"ImputedPath">> => string(),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
--type create_job_response() :: #{binary() => any()}.
+-type fill_missing_values() :: #{binary() => any()}.
 
 %% Example:
-%% list_triggers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TriggerNames">> => list(string())
+%% filter() :: #{
+%%   <<"Filters">> => list(filter_expression()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"LogicalOperator">> => list(any()),
+%%   <<"Name">> => string()
 %% }
--type list_triggers_response() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 %% Example:
-%% update_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Force">> => boolean(),
+%% filter_configuration() :: #{
+%%   <<"BetweenConfiguration">> => between_configuration(),
+%%   <<"DateTimeFormat">> => [string()],
+%%   <<"FilterMode">> => list(any()),
+%%   <<"FilterStringConfiguration">> => filter_string_configuration(),
+%%   <<"OperatorMappings">> => map(),
+%%   <<"StripQuotes">> => boolean()
+%% }
+-type filter_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% filter_expression() :: #{
+%%   <<"Negated">> => boolean(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Values">> => list(filter_value())
+%% }
+-type filter_expression() :: #{binary() => any()}.
+
+%% Example:
+%% filter_overrides() :: #{
+%%   <<"BetweenConfiguration">> => between_configuration(),
+%%   <<"DateTimeFormat">> => [string()],
+%%   <<"FieldName">> => [string()],
+%%   <<"OperatorMappings">> => map()
+%% }
+-type filter_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% filter_string_configuration() :: #{
+%%   <<"QueryParameterName">> => [string()],
+%%   <<"QuoteCharacter">> => [string()],
+%%   <<"QuoteStringValues">> => boolean()
+%% }
+-type filter_string_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% filter_value() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => list(string())
+%% }
+-type filter_value() :: #{binary() => any()}.
+
+%% Example:
+%% find_matches_metrics() :: #{
+%%   <<"AreaUnderPRCurve">> => float(),
+%%   <<"ColumnImportances">> => list(column_importance()),
+%%   <<"ConfusionMatrix">> => confusion_matrix(),
+%%   <<"F1">> => float(),
+%%   <<"Precision">> => float(),
+%%   <<"Recall">> => float()
+%% }
+-type find_matches_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% find_matches_parameters() :: #{
+%%   <<"AccuracyCostTradeoff">> => float(),
+%%   <<"EnforceProvidedLabels">> => boolean(),
+%%   <<"PrecisionRecallTradeoff">> => float(),
+%%   <<"PrimaryKeyColumnName">> => string()
+%% }
+-type find_matches_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% find_matches_task_run_properties() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobRunId">> => string()
+%% }
+-type find_matches_task_run_properties() :: #{binary() => any()}.
+
+%% Example:
+%% form_type_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type form_type_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_input() :: #{
+
+%% }
+-type get_asset_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_output() :: #{
+%%   <<"AssetTypeId">> => string(),
+%%   <<"Attachments">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> => map(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"IterableForms">> => map(),
 %%   <<"Name">> => string(),
-%%   <<"SkipArchive">> => boolean(),
-%%   <<"TableInput">> => table_input(),
-%%   <<"TransactionId">> => string(),
-%%   <<"UpdateOpenTableFormatInput">> => update_open_table_format_input(),
-%%   <<"VersionId">> => string(),
-%%   <<"ViewUpdateAction">> => list(any())
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type update_table_request() :: #{binary() => any()}.
+-type get_asset_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TablesToDelete">> := list(string()),
-%%   <<"TransactionId">> => string()
-%% }
--type batch_delete_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_crawler_response() :: #{
+%% get_asset_type_request() :: #{
 
 %% }
--type delete_crawler_response() :: #{binary() => any()}.
+-type get_asset_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_glossary_request() :: #{
-
+%% get_asset_type_response() :: #{
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
 %% }
--type get_glossary_request() :: #{binary() => any()}.
+-type get_asset_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_ml_transforms_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Transforms">> => list(ml_transform())
+%% get_blueprint_request() :: #{
+%%   <<"IncludeBlueprint">> => boolean(),
+%%   <<"IncludeParameterSpec">> => boolean(),
+%%   <<"Name">> := string()
 %% }
--type get_ml_transforms_response() :: #{binary() => any()}.
+-type get_blueprint_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_job_runs_request() :: #{
-%%   <<"JobName">> := string(),
+%% get_blueprint_response() :: #{
+%%   <<"Blueprint">> => blueprint()
+%% }
+-type get_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprint_run_request() :: #{
+%%   <<"BlueprintName">> := string(),
+%%   <<"RunId">> := string()
+%% }
+-type get_blueprint_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprint_run_response() :: #{
+%%   <<"BlueprintRun">> => blueprint_run()
+%% }
+-type get_blueprint_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprint_runs_request() :: #{
+%%   <<"BlueprintName">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type get_job_runs_request() :: #{binary() => any()}.
+-type get_blueprint_runs_request() :: #{binary() => any()}.
 
 %% Example:
-%% query_session_context() :: #{
-%%   <<"AdditionalContext">> => map(),
-%%   <<"ClusterId">> => string(),
-%%   <<"QueryAuthorizationId">> => string(),
-%%   <<"QueryId">> => string(),
-%%   <<"QueryStartTime">> => non_neg_integer()
+%% get_blueprint_runs_response() :: #{
+%%   <<"BlueprintRuns">> => list(blueprint_run()),
+%%   <<"NextToken">> => string()
 %% }
--type query_session_context() :: #{binary() => any()}.
+-type get_blueprint_runs_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_table_optimizer_error() :: #{
-%%   <<"catalogId">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"error">> => error_detail(),
-%%   <<"tableName">> => string(),
-%%   <<"type">> => list(any())
+%% get_catalog_import_status_request() :: #{
+%%   <<"CatalogId">> => string()
 %% }
--type batch_get_table_optimizer_error() :: #{binary() => any()}.
+-type get_catalog_import_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_tables_response() :: #{
+%% get_catalog_import_status_response() :: #{
+%%   <<"ImportStatus">> => catalog_import_status()
+%% }
+-type get_catalog_import_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalog_request() :: #{
+%%   <<"CatalogId">> := string()
+%% }
+-type get_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalog_response() :: #{
+%%   <<"Catalog">> => catalog()
+%% }
+-type get_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_catalogs_request() :: #{
+%%   <<"HasDatabases">> => boolean(),
+%%   <<"IncludeRoot">> => boolean(),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(table())
+%%   <<"ParentCatalogId">> => string(),
+%%   <<"Recursive">> => boolean()
 %% }
--type get_tables_response() :: #{binary() => any()}.
+-type get_catalogs_request() :: #{binary() => any()}.
 
 %% Example:
-%% trigger() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"Description">> => string(),
-%%   <<"EventBatchingCondition">> => event_batching_condition(),
-%%   <<"Id">> => string(),
+%% get_catalogs_response() :: #{
+%%   <<"CatalogList">> => list(catalog()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_catalogs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_classifier_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_classifier_response() :: #{
+%%   <<"Classifier">> => classifier()
+%% }
+-type get_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_classifiers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_classifiers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_classifiers_response() :: #{
+%%   <<"Classifiers">> => list(classifier()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_classifiers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_for_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ColumnNames">> := list(string()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type get_column_statistics_for_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_for_partition_response() :: #{
+%%   <<"ColumnStatisticsList">> => list(column_statistics()),
+%%   <<"Errors">> => list(column_error())
+%% }
+-type get_column_statistics_for_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_for_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ColumnNames">> := list(string()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_column_statistics_for_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_for_table_response() :: #{
+%%   <<"ColumnStatisticsList">> => list(column_statistics()),
+%%   <<"Errors">> => list(column_error())
+%% }
+-type get_column_statistics_for_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_run_request() :: #{
+%%   <<"ColumnStatisticsTaskRunId">> := string()
+%% }
+-type get_column_statistics_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_run_response() :: #{
+%%   <<"ColumnStatisticsTaskRun">> => column_statistics_task_run()
+%% }
+-type get_column_statistics_task_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_runs_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_column_statistics_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_runs_response() :: #{
+%%   <<"ColumnStatisticsTaskRuns">> => list(column_statistics_task_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_column_statistics_task_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_settings_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_column_statistics_task_settings_response() :: #{
+%%   <<"ColumnStatisticsTaskSettings">> => column_statistics_task_settings()
+%% }
+-type get_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_request() :: #{
+%%   <<"ApplyOverrideForComputeEnvironment">> => list(any()),
+%%   <<"CatalogId">> => string(),
+%%   <<"HidePassword">> => boolean(),
+%%   <<"Name">> := string()
+%% }
+-type get_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_response() :: #{
+%%   <<"Connection">> => connection()
+%% }
+-type get_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connections_filter() :: #{
+%%   <<"ConnectionSchemaVersion">> => integer(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"MatchCriteria">> => list(string())
+%% }
+-type get_connections_filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_connections_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Filter">> => get_connections_filter(),
+%%   <<"HidePassword">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_connections_response() :: #{
+%%   <<"ConnectionList">> => list(connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawler_metrics_request() :: #{
+%%   <<"CrawlerNameList">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_crawler_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawler_metrics_response() :: #{
+%%   <<"CrawlerMetricsList">> => list(crawler_metrics()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_crawler_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawler_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawler_response() :: #{
+%%   <<"Crawler">> => crawler()
+%% }
+-type get_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawlers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_crawlers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_crawlers_response() :: #{
+%%   <<"Crawlers">> => list(crawler()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_crawlers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_entity_type_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_custom_entity_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_entity_type_response() :: #{
+%%   <<"ContextWords">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"Predicate">> => predicate(),
-%%   <<"Schedule">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"WorkflowName">> => string()
+%%   <<"RegexString">> => string()
 %% }
--type trigger() :: #{binary() => any()}.
+-type get_custom_entity_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_tags_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% get_dashboard_url_request() :: #{
+%%   <<"RequestOrigin">> => string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any())
 %% }
--type get_tags_request() :: #{binary() => any()}.
+-type get_dashboard_url_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_crawler_response() :: #{
+%% get_dashboard_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type get_dashboard_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_encryption_settings_request() :: #{
+%%   <<"CatalogId">> => string()
+%% }
+-type get_data_catalog_encryption_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_encryption_settings_response() :: #{
+%%   <<"DataCatalogEncryptionSettings">> => data_catalog_encryption_settings()
+%% }
+-type get_data_catalog_encryption_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_export_configuration_input() :: #{
 
 %% }
--type update_crawler_response() :: #{binary() => any()}.
+-type get_data_catalog_export_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_catalog_export_configuration_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
+%%   <<"ExportSetting">> => list(any()),
+%%   <<"S3TableBucketArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_data_catalog_export_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_request() :: #{
+%%   <<"ProfileId">> := string(),
+%%   <<"StatisticId">> => string()
+%% }
+-type get_data_quality_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_response() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_data_quality_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_result_request() :: #{
+%%   <<"ProfileId">> := string(),
+%%   <<"StatisticId">> := string()
+%% }
+-type get_data_quality_model_result_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_model_result_response() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"Model">> => list(statistic_model_result())
+%% }
+-type get_data_quality_model_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_result_request() :: #{
+%%   <<"ResultId">> := string()
+%% }
+-type get_data_quality_result_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_data_quality_result_response() :: #{
@@ -1626,182 +4666,399 @@
 -type get_data_quality_result_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_partition_response() :: #{
-%%   <<"Errors">> => list(partition_error())
+%% get_data_quality_rule_recommendation_run_request() :: #{
+%%   <<"RunId">> := string()
 %% }
--type batch_create_partition_response() :: #{binary() => any()}.
+-type get_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% null_value_field() :: #{
-%%   <<"Datatype">> => datatype(),
-%%   <<"Value">> => string()
+%% get_data_quality_rule_recommendation_run_response() :: #{
+%%   <<"AdditionalRunOptions">> => data_quality_rule_recommendation_run_additional_run_options(),
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"CreatedRulesetName">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"ErrorString">> => string(),
+%%   <<"ExecutionTime">> => integer(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"RecommendedRuleset">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timeout">> => integer()
 %% }
--type null_value_field() :: #{binary() => any()}.
+-type get_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_classifiers_response() :: #{
-%%   <<"Classifiers">> => list(classifier()),
-%%   <<"NextToken">> => string()
+%% get_data_quality_ruleset_evaluation_run_request() :: #{
+%%   <<"RunId">> := string()
 %% }
--type get_classifiers_response() :: #{binary() => any()}.
+-type get_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_dev_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
+%% get_data_quality_ruleset_evaluation_run_response() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_run_additional_run_options(),
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"ErrorString">> => string(),
+%%   <<"ExecutionTime">> => integer(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"ResultIds">> => list(string()),
+%%   <<"Role">> => string(),
+%%   <<"RulesetNames">> => list(string()),
+%%   <<"RunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timeout">> => integer()
 %% }
--type list_dev_endpoints_request() :: #{binary() => any()}.
+-type get_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% crawler_targets() :: #{
-%%   <<"CatalogTargets">> => list(catalog_target()),
-%%   <<"DeltaTargets">> => list(delta_target()),
-%%   <<"DynamoDBTargets">> => list(dynamo_db_target()),
-%%   <<"HudiTargets">> => list(hudi_target()),
-%%   <<"IcebergTargets">> => list(iceberg_target()),
-%%   <<"JdbcTargets">> => list(jdbc_target()),
-%%   <<"MongoDBTargets">> => list(mongo_db_target()),
-%%   <<"S3Targets">> => list(s3_target())
+%% get_data_quality_ruleset_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type crawler_targets() :: #{binary() => any()}.
+-type get_data_quality_ruleset_request() :: #{binary() => any()}.
 
 %% Example:
-%% s3_catalog_hudi_source() :: #{
-%%   <<"AdditionalHudiOptions">> => map(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Table">> => string()
-%% }
--type s3_catalog_hudi_source() :: #{binary() => any()}.
-
-%% Example:
-%% open_table_format_input() :: #{
-%%   <<"IcebergInput">> => iceberg_input()
-%% }
--type open_table_format_input() :: #{binary() => any()}.
-
-%% Example:
-%% table_optimizer_configuration() :: #{
-%%   <<"compactionConfiguration">> => compaction_configuration(),
-%%   <<"enabled">> => boolean(),
-%%   <<"orphanFileDeletionConfiguration">> => orphan_file_deletion_configuration(),
-%%   <<"retentionConfiguration">> => retention_configuration(),
-%%   <<"roleArn">> => string(),
-%%   <<"vpcConfiguration">> => list()
-%% }
--type table_optimizer_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% hudi_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"MaximumTraversalDepth">> => integer(),
-%%   <<"Paths">> => list(string())
-%% }
--type hudi_target() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_runs_request() :: #{
-%%   <<"IncludeGraph">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type get_workflow_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_endpoint_response() :: #{
-%%   <<"SparkConnect">> => session_endpoint()
-%% }
--type get_session_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_optimizer_response() :: #{
-
-%% }
--type create_table_optimizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% usage_profile_definition() :: #{
+%% get_data_quality_ruleset_response() :: #{
 %%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type usage_profile_definition() :: #{binary() => any()}.
-
-%% Example:
-%% amazon_redshift_advanced_option() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type amazon_redshift_advanced_option() :: #{binary() => any()}.
-
-%% Example:
-%% integration() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationConfig">> => integration_config(),
-%%   <<"IntegrationName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetArn">> => string()
-%% }
--type integration() :: #{binary() => any()}.
-
-%% Example:
-%% import_catalog_to_glue_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type import_catalog_to_glue_request() :: #{binary() => any()}.
-
-%% Example:
-%% federated_database() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"Identifier">> => string()
-%% }
--type federated_database() :: #{binary() => any()}.
-
-%% Example:
-%% direct_j_db_c_source() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"RedshiftTmpDir">> => string(),
-%%   <<"Table">> => string()
+%%   <<"RecommendationRunId">> => string(),
+%%   <<"Ruleset">> => string(),
+%%   <<"TargetTable">> => data_quality_target_table()
 %% }
--type direct_j_db_c_source() :: #{binary() => any()}.
+-type get_data_quality_ruleset_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_security_configurations_request() :: #{
+%% get_database_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type get_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_database_response() :: #{
+%%   <<"Database">> => database()
+%% }
+-type get_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_databases_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
+%%   <<"CatalogId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceShareType">> => list(any())
+%% }
+-type get_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_databases_response() :: #{
+%%   <<"DatabaseList">> => list(database()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataflow_graph_request() :: #{
+%%   <<"PythonScript">> => string()
+%% }
+-type get_dataflow_graph_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataflow_graph_response() :: #{
+%%   <<"DagEdges">> => list(code_gen_edge()),
+%%   <<"DagNodes">> => list(code_gen_node())
+%% }
+-type get_dataflow_graph_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dev_endpoint_request() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type get_dev_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_dev_endpoint_response() :: #{
+%%   <<"DevEndpoint">> => dev_endpoint()
+%% }
+-type get_dev_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dev_endpoints_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type get_security_configurations_request() :: #{binary() => any()}.
+-type get_dev_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
-%% j_w_t_bearer_properties() :: #{
-%%   <<"ContentType">> => list(any()),
-%%   <<"JwtToken">> => connector_property(),
-%%   <<"RequestMethod">> => list(any()),
-%%   <<"TokenUrl">> => connector_property(),
-%%   <<"TokenUrlParameters">> => list(connector_property())
+%% get_dev_endpoints_response() :: #{
+%%   <<"DevEndpoints">> => list(dev_endpoint()),
+%%   <<"NextToken">> => string()
 %% }
--type j_w_t_bearer_properties() :: #{binary() => any()}.
+-type get_dev_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
-%% ml_transform() :: #{
+%% get_entity_records_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionOptions">> => map(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"EntityName">> := string(),
+%%   <<"FilterPredicate">> => string(),
+%%   <<"Limit">> := float(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrderBy">> => [string()],
+%%   <<"SelectedFields">> => list(string())
+%% }
+-type get_entity_records_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_records_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(any())
+%% }
+-type get_entity_records_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_form_type_request() :: #{
+
+%% }
+-type get_form_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_form_type_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type get_form_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_request() :: #{
+
+%% }
+-type get_glossary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_glossary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_term_request() :: #{
+
+%% }
+-type get_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type get_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glue_identity_center_configuration_request() :: #{
+
+%% }
+-type get_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_glue_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
+%% }
+-type get_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type get_integration_resource_property_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_table_properties_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> => string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type get_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_bookmark_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"RunId">> => string()
+%% }
+-type get_job_bookmark_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_bookmark_response() :: #{
+%%   <<"JobBookmarkEntry">> => job_bookmark_entry()
+%% }
+-type get_job_bookmark_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{
+%%   <<"JobName">> := string()
+%% }
+-type get_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_response() :: #{
+%%   <<"Job">> => job()
+%% }
+-type get_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_run_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"PredecessorsIncluded">> => boolean(),
+%%   <<"RunId">> := string()
+%% }
+-type get_job_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_run_response() :: #{
+%%   <<"JobRun">> => job_run()
+%% }
+-type get_job_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_runs_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_job_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_runs_response() :: #{
+%%   <<"JobRuns">> => list(job_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_job_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mapping_request() :: #{
+%%   <<"Location">> => location(),
+%%   <<"Sinks">> => list(catalog_entry()),
+%%   <<"Source">> := catalog_entry()
+%% }
+-type get_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mapping_response() :: #{
+%%   <<"Mapping">> => list(mapping_entry())
+%% }
+-type get_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_materialized_view_refresh_task_run_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"MaterializedViewRefreshTaskRunId">> := string()
+%% }
+-type get_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_materialized_view_refresh_task_run_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRun">> => materialized_view_refresh_task_run()
+%% }
+-type get_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_task_run_request() :: #{
+%%   <<"TaskRunId">> := string(),
+%%   <<"TransformId">> := string()
+%% }
+-type get_ml_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_task_run_response() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"ErrorString">> => string(),
+%%   <<"ExecutionTime">> => integer(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"Properties">> => task_run_properties(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskRunId">> => string(),
+%%   <<"TransformId">> => string()
+%% }
+-type get_ml_task_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_task_runs_request() :: #{
+%%   <<"Filter">> => task_run_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => task_run_sort_criteria(),
+%%   <<"TransformId">> := string()
+%% }
+-type get_ml_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_task_runs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TaskRuns">> => list(task_run())
+%% }
+-type get_ml_task_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_transform_request() :: #{
+%%   <<"TransformId">> := string()
+%% }
+-type get_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_transform_response() :: #{
 %%   <<"CreatedOn">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationMetrics">> => evaluation_metrics(),
@@ -1822,16 +5079,952 @@
 %%   <<"TransformId">> => string(),
 %%   <<"WorkerType">> => list(any())
 %% }
--type ml_transform() :: #{binary() => any()}.
+-type get_ml_transform_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_partition_response() :: #{
+%% get_ml_transforms_request() :: #{
+%%   <<"Filter">> => transform_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => transform_sort_criteria()
+%% }
+-type get_ml_transforms_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_transforms_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Transforms">> => list(ml_transform())
+%% }
+-type get_ml_transforms_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_partition_indexes_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_partition_indexes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_partition_indexes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartitionIndexDescriptorList">> => list(partition_index_descriptor())
+%% }
+-type get_partition_indexes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_partition_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type get_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_partition_response() :: #{
+%%   <<"Partition">> => partition()
+%% }
+-type get_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_partitions_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"ExcludeColumnSchema">> => boolean(),
+%%   <<"Expression">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"Segment">> => segment(),
+%%   <<"TableName">> := string(),
+%%   <<"TransactionId">> => string()
+%% }
+-type get_partitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_partitions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Partitions">> => list(partition())
+%% }
+-type get_partitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_plan_request() :: #{
+%%   <<"AdditionalPlanOptionsMap">> => map(),
+%%   <<"Language">> => list(any()),
+%%   <<"Location">> => location(),
+%%   <<"Mapping">> := list(mapping_entry()),
+%%   <<"Sinks">> => list(catalog_entry()),
+%%   <<"Source">> := catalog_entry()
+%% }
+-type get_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_plan_response() :: #{
+%%   <<"PythonScript">> => string(),
+%%   <<"ScalaCode">> => string()
+%% }
+-type get_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_input() :: #{
+%%   <<"RegistryId">> := registry_id()
+%% }
+-type get_registry_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_response() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTime">> => string()
+%% }
+-type get_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policies_response() :: #{
+%%   <<"GetResourcePoliciesResponseList">> => list(glue_policy()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_resource_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"PolicyHash">> => string(),
+%%   <<"PolicyInJson">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_by_definition_input() :: #{
+%%   <<"SchemaDefinition">> := string(),
+%%   <<"SchemaId">> := schema_id()
+%% }
+-type get_schema_by_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_by_definition_response() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_schema_by_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_input() :: #{
+%%   <<"SchemaId">> := schema_id()
+%% }
+-type get_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_response() :: #{
+%%   <<"Compatibility">> => list(any()),
+%%   <<"CreatedTime">> => string(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LatestSchemaVersion">> => float(),
+%%   <<"NextSchemaVersion">> => float(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaCheckpoint">> => float(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaStatus">> => list(any()),
+%%   <<"UpdatedTime">> => string()
+%% }
+-type get_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_version_input() :: #{
+%%   <<"SchemaId">> => schema_id(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionNumber">> => schema_version_number()
+%% }
+-type get_schema_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_version_response() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaDefinition">> => string(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type get_schema_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_versions_diff_input() :: #{
+%%   <<"FirstSchemaVersionNumber">> := schema_version_number(),
+%%   <<"SchemaDiffType">> := list(any()),
+%%   <<"SchemaId">> := schema_id(),
+%%   <<"SecondSchemaVersionNumber">> := schema_version_number()
+%% }
+-type get_schema_versions_diff_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_versions_diff_response() :: #{
+%%   <<"Diff">> => string()
+%% }
+-type get_schema_versions_diff_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_configuration_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_security_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_configuration_response() :: #{
+%%   <<"SecurityConfiguration">> => security_configuration()
+%% }
+-type get_security_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_security_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityConfigurations">> => list(security_configuration())
+%% }
+-type get_security_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type get_session_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_endpoint_response() :: #{
+%%   <<"SparkConnect">> => session_endpoint()
+%% }
+-type get_session_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"RequestOrigin">> => string()
+%% }
+-type get_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"Session">> => session()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_request() :: #{
+%%   <<"Id">> := integer(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"SessionId">> := string()
+%% }
+-type get_statement_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_statement_response() :: #{
+%%   <<"Statement">> => statement()
+%% }
+-type get_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_optimizer_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type get_table_optimizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_optimizer_response() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableOptimizer">> => table_optimizer()
+%% }
+-type get_table_optimizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"IncludeStatusDetails">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"TransactionId">> => string()
+%% }
+-type get_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_response() :: #{
+%%   <<"Table">> => table()
+%% }
+-type get_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_version_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"VersionId">> => string()
+%% }
+-type get_table_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_version_response() :: #{
+%%   <<"TableVersion">> => table_version()
+%% }
+-type get_table_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_versions_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type get_table_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TableVersions">> => list(table_version())
+%% }
+-type get_table_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_tables_request() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Expression">> => string(),
+%%   <<"IncludeStatusDetails">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"TransactionId">> => string()
+%% }
+-type get_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TableList">> => list(table())
+%% }
+-type get_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_tags_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type get_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trigger_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_trigger_response() :: #{
+%%   <<"Trigger">> => trigger()
+%% }
+-type get_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_triggers_request() :: #{
+%%   <<"DependentJobName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_triggers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_triggers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Triggers">> => list(trigger())
+%% }
+-type get_triggers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_partition_metadata_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"QuerySessionContext">> => query_session_context(),
+%%   <<"Region">> => string(),
+%%   <<"SupportedPermissionTypes">> := list(list(any())()),
+%%   <<"TableName">> := string()
+%% }
+-type get_unfiltered_partition_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_partition_metadata_response() :: #{
+%%   <<"AuthorizedColumns">> => list(string()),
+%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
+%%   <<"Partition">> => partition()
+%% }
+-type get_unfiltered_partition_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_partitions_metadata_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Expression">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuerySessionContext">> => query_session_context(),
+%%   <<"Region">> => string(),
+%%   <<"Segment">> => segment(),
+%%   <<"SupportedPermissionTypes">> := list(list(any())()),
+%%   <<"TableName">> := string()
+%% }
+-type get_unfiltered_partitions_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_partitions_metadata_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UnfilteredPartitions">> => list(unfiltered_partition())
+%% }
+-type get_unfiltered_partitions_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_table_metadata_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ParentResourceArn">> => string(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"QuerySessionContext">> => query_session_context(),
+%%   <<"Region">> => string(),
+%%   <<"RootResourceArn">> => string(),
+%%   <<"SupportedDialect">> => supported_dialect(),
+%%   <<"SupportedPermissionTypes">> := list(list(any())())
+%% }
+-type get_unfiltered_table_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_unfiltered_table_metadata_response() :: #{
+%%   <<"AuthorizedColumns">> => list(string()),
+%%   <<"CellFilters">> => list(column_row_filter()),
+%%   <<"IsMaterializedView">> => boolean(),
+%%   <<"IsMultiDialectView">> => boolean(),
+%%   <<"IsProtected">> => boolean(),
+%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"QueryAuthorizationId">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"RowFilter">> => string(),
+%%   <<"Table">> => table()
+%% }
+-type get_unfiltered_table_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_profile_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_usage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_profile_response() :: #{
+%%   <<"Configuration">> => profile_configuration(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type get_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_defined_function_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"FunctionName">> := string()
+%% }
+-type get_user_defined_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_defined_function_response() :: #{
+%%   <<"UserDefinedFunction">> => user_defined_function()
+%% }
+-type get_user_defined_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_defined_functions_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Pattern">> := string()
+%% }
+-type get_user_defined_functions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_defined_functions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserDefinedFunctions">> => list(user_defined_function())
+%% }
+-type get_user_defined_functions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_request() :: #{
+%%   <<"IncludeGraph">> => boolean(),
+%%   <<"Name">> := string()
+%% }
+-type get_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_response() :: #{
+%%   <<"Workflow">> => workflow()
+%% }
+-type get_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_run_properties_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RunId">> := string()
+%% }
+-type get_workflow_run_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_run_properties_response() :: #{
+%%   <<"RunProperties">> => map()
+%% }
+-type get_workflow_run_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_run_request() :: #{
+%%   <<"IncludeGraph">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"RunId">> := string()
+%% }
+-type get_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_run_response() :: #{
+%%   <<"Run">> => workflow_run()
+%% }
+-type get_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_runs_request() :: #{
+%%   <<"IncludeGraph">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_workflow_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_runs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Runs">> => list(workflow_run())
+%% }
+-type get_workflow_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% glossary_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type glossary_item() :: #{binary() => any()}.
+
+%% Example:
+%% glossary_term_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type glossary_term_item() :: #{binary() => any()}.
+
+%% Example:
+%% glue_encryption_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type glue_encryption_exception() :: #{binary() => any()}.
+
+%% Example:
+%% glue_node() :: #{
+%%   <<"CrawlerDetails">> => crawler_node_details(),
+%%   <<"JobDetails">> => job_node_details(),
+%%   <<"Name">> => string(),
+%%   <<"TriggerDetails">> => trigger_node_details(),
+%%   <<"Type">> => list(any()),
+%%   <<"UniqueId">> => string()
+%% }
+-type glue_node() :: #{binary() => any()}.
+
+%% Example:
+%% glue_policy() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"PolicyHash">> => string(),
+%%   <<"PolicyInJson">> => string(),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type glue_policy() :: #{binary() => any()}.
+
+%% Example:
+%% glue_schema() :: #{
+%%   <<"Columns">> => list(glue_studio_schema_column())
+%% }
+-type glue_schema() :: #{binary() => any()}.
+
+%% Example:
+%% glue_studio_schema_column() :: #{
+%%   <<"GlueStudioType">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type glue_studio_schema_column() :: #{binary() => any()}.
+
+%% Example:
+%% glue_table() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type glue_table() :: #{binary() => any()}.
+
+%% Example:
+%% governed_catalog_source() :: #{
+%%   <<"AdditionalOptions">> => s3_source_additional_options(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PartitionPredicate">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type governed_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% governed_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
+%%   <<"Table">> => string()
+%% }
+-type governed_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% grok_classifier() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomPatterns">> => string(),
+%%   <<"GrokPattern">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type grok_classifier() :: #{binary() => any()}.
+
+%% Example:
+%% group_filters() :: #{
+%%   <<"Filters">> => list(filter_expression()),
+%%   <<"GroupName">> => string(),
+%%   <<"LogicalOperator">> => list(any())
+%% }
+-type group_filters() :: #{binary() => any()}.
+
+%% Example:
+%% hudi_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"MaximumTraversalDepth">> => integer(),
+%%   <<"Paths">> => list(string())
+%% }
+-type hudi_target() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_compaction_configuration() :: #{
+%%   <<"deleteFileThreshold">> => integer(),
+%%   <<"minInputFiles">> => integer(),
+%%   <<"strategy">> => list(any())
+%% }
+-type iceberg_compaction_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_compaction_metrics() :: #{
+%%   <<"DpuHours">> => float(),
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfBytesCompacted">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfFilesCompacted">> => float()
+%% }
+-type iceberg_compaction_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_encrypted_key() :: #{
+%%   <<"EncryptedById">> => string(),
+%%   <<"EncryptedKeyMetadata">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Properties">> => map()
+%% }
+-type iceberg_encrypted_key() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_input() :: #{
+%%   <<"CreateIcebergTableInput">> => create_iceberg_table_input(),
+%%   <<"MetadataOperation">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type iceberg_input() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_optimization_properties() :: #{
+%%   <<"Compaction">> => map(),
+%%   <<"OrphanFileDeletion">> => map(),
+%%   <<"Retention">> => map(),
+%%   <<"RoleArn">> => string()
+%% }
+-type iceberg_optimization_properties() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_optimization_properties_output() :: #{
+%%   <<"Compaction">> => map(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"OrphanFileDeletion">> => map(),
+%%   <<"Retention">> => map(),
+%%   <<"RoleArn">> => string()
+%% }
+-type iceberg_optimization_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_orphan_file_deletion_configuration() :: #{
+%%   <<"location">> => string(),
+%%   <<"orphanFileRetentionPeriodInDays">> => integer(),
+%%   <<"runRateInHours">> => integer()
+%% }
+-type iceberg_orphan_file_deletion_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_orphan_file_deletion_metrics() :: #{
+%%   <<"DpuHours">> => float(),
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfOrphanFilesDeleted">> => float()
+%% }
+-type iceberg_orphan_file_deletion_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_partition_field() :: #{
+%%   <<"FieldId">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"SourceId">> => integer(),
+%%   <<"Transform">> => string()
+%% }
+-type iceberg_partition_field() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_partition_spec() :: #{
+%%   <<"Fields">> => list(iceberg_partition_field()),
+%%   <<"SpecId">> => integer()
+%% }
+-type iceberg_partition_spec() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_retention_configuration() :: #{
+%%   <<"cleanExpiredFiles">> => boolean(),
+%%   <<"numberOfSnapshotsToRetain">> => integer(),
+%%   <<"runRateInHours">> => integer(),
+%%   <<"snapshotRetentionPeriodInDays">> => integer()
+%% }
+-type iceberg_retention_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_retention_metrics() :: #{
+%%   <<"DpuHours">> => float(),
+%%   <<"JobDurationInHour">> => float(),
+%%   <<"NumberOfDataFilesDeleted">> => float(),
+%%   <<"NumberOfDpus">> => integer(),
+%%   <<"NumberOfManifestFilesDeleted">> => float(),
+%%   <<"NumberOfManifestListsDeleted">> => float()
+%% }
+-type iceberg_retention_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_schema() :: #{
+%%   <<"Fields">> => list(iceberg_struct_field()),
+%%   <<"IdentifierFieldIds">> => list(integer()),
+%%   <<"SchemaId">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type iceberg_schema() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_sort_field() :: #{
+%%   <<"Direction">> => list(any()),
+%%   <<"NullOrder">> => list(any()),
+%%   <<"SourceId">> => integer(),
+%%   <<"Transform">> => string()
+%% }
+-type iceberg_sort_field() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_sort_order() :: #{
+%%   <<"Fields">> => list(iceberg_sort_field()),
+%%   <<"OrderId">> => integer()
+%% }
+-type iceberg_sort_order() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_struct_field() :: #{
+%%   <<"Doc">> => string(),
+%%   <<"Id">> => integer(),
+%%   <<"InitialDefault">> => any(),
+%%   <<"Name">> => string(),
+%%   <<"Required">> => boolean(),
+%%   <<"Type">> => any(),
+%%   <<"WriteDefault">> => any()
+%% }
+-type iceberg_struct_field() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_table_metadata() :: #{
+%%   <<"CurrentSchemaId">> => integer(),
+%%   <<"DefaultSortOrderId">> => integer(),
+%%   <<"DefaultSpecId">> => integer(),
+%%   <<"FormatVersion">> => string(),
+%%   <<"LastColumnId">> => integer(),
+%%   <<"LastPartitionId">> => integer(),
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpecs">> => list(iceberg_partition_spec()),
+%%   <<"Properties">> => map(),
+%%   <<"Schemas">> => list(iceberg_schema()),
+%%   <<"SortOrders">> => list(iceberg_sort_order()),
+%%   <<"TableUuid">> => string()
+%% }
+-type iceberg_table_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_table_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"EncryptionKey">> => iceberg_encrypted_key(),
+%%   <<"KeyId">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"PartitionSpec">> => iceberg_partition_spec(),
+%%   <<"Properties">> => map(),
+%%   <<"Schema">> => iceberg_schema(),
+%%   <<"SortOrder">> => iceberg_sort_order()
+%% }
+-type iceberg_table_update() :: #{binary() => any()}.
+
+%% Example:
+%% iceberg_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"MaximumTraversalDepth">> => integer(),
+%%   <<"Paths">> => list(string())
+%% }
+-type iceberg_target() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_blueprint_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_blueprint_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_session_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_session_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_workflow_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_workflow_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_catalog_to_glue_request() :: #{
+%%   <<"CatalogId">> => string()
+%% }
+-type import_catalog_to_glue_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_catalog_to_glue_response() :: #{
 
 %% }
--type create_partition_response() :: #{binary() => any()}.
+-type import_catalog_to_glue_response() :: #{binary() => any()}.
 
 %% Example:
-%% modify_integration_response() :: #{
+%% import_labels_task_run_properties() :: #{
+%%   <<"InputS3Path">> => string(),
+%%   <<"Replace">> => boolean()
+%% }
+-type import_labels_task_run_properties() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_integration() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Errors">> => list(integration_error()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetArn">> => string()
+%% }
+-type inbound_integration() :: #{binary() => any()}.
+
+%% Example:
+%% integration() :: #{
 %%   <<"AdditionalEncryptionContext">> => map(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DataFilter">> => string(),
@@ -1846,7 +6039,259 @@
 %%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
--type modify_integration_response() :: #{binary() => any()}.
+-type integration() :: #{binary() => any()}.
+
+%% Example:
+%% integration_config() :: #{
+%%   <<"ContinuousSync">> => boolean(),
+%%   <<"RefreshInterval">> => string(),
+%%   <<"SourceProperties">> => map()
+%% }
+-type integration_config() :: #{binary() => any()}.
+
+%% Example:
+%% integration_conflict_operation_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type integration_error() :: #{binary() => any()}.
+
+%% Example:
+%% integration_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type integration_filter() :: #{binary() => any()}.
+
+%% Example:
+%% integration_not_found_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_partition() :: #{
+%%   <<"ConversionSpec">> => string(),
+%%   <<"FieldName">> => string(),
+%%   <<"FunctionSpec">> => string()
+%% }
+-type integration_partition() :: #{binary() => any()}.
+
+%% Example:
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_resource_property() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type integration_resource_property() :: #{binary() => any()}.
+
+%% Example:
+%% integration_resource_property_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type integration_resource_property_filter() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"FromFederationSource">> => boolean(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_integration_state_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_integration_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% item_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type item_error() :: #{binary() => any()}.
+
+%% Example:
+%% iterable_form_entry() :: #{
+%%   <<"FormTypeId">> => string()
+%% }
+-type iterable_form_entry() :: #{binary() => any()}.
+
+%% Example:
+%% iterable_form_item() :: #{
+%%   <<"Attachments">> => map(),
+%%   <<"Forms">> => map(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemId">> => string(),
+%%   <<"ItemName">> => string()
+%% }
+-type iterable_form_item() :: #{binary() => any()}.
+
+%% Example:
+%% iterable_form_list_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemId">> => string(),
+%%   <<"ItemName">> => string()
+%% }
+-type iterable_form_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% j_db_c_connector_options() :: #{
+%%   <<"DataTypeMapping">> => map(),
+%%   <<"FilterPredicate">> => string(),
+%%   <<"JobBookmarkKeys">> => list(string()),
+%%   <<"JobBookmarkKeysSortOrder">> => string(),
+%%   <<"LowerBound">> => float(),
+%%   <<"NumPartitions">> => float(),
+%%   <<"PartitionColumn">> => string(),
+%%   <<"UpperBound">> => float()
+%% }
+-type j_db_c_connector_options() :: #{binary() => any()}.
+
+%% Example:
+%% j_db_c_connector_source() :: #{
+%%   <<"AdditionalOptions">> => j_db_c_connector_options(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionTable">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"ConnectorName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Query">> => string()
+%% }
+-type j_db_c_connector_source() :: #{binary() => any()}.
+
+%% Example:
+%% j_db_c_connector_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionTable">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"ConnectorName">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
+%% }
+-type j_db_c_connector_target() :: #{binary() => any()}.
+
+%% Example:
+%% j_w_t_bearer_properties() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"JwtToken">> => connector_property(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"TokenUrl">> => connector_property(),
+%%   <<"TokenUrlParameters">> => list(connector_property())
+%% }
+-type j_w_t_bearer_properties() :: #{binary() => any()}.
+
+%% Example:
+%% jdbc_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"EnableAdditionalMetadata">> => list(list(any())()),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"Path">> => string()
+%% }
+-type jdbc_target() :: #{binary() => any()}.
+
+%% Example:
+%% job() :: #{
+%%   <<"AllocatedCapacity">> => integer(),
+%%   <<"CodeGenConfigurationNodes">> => map(),
+%%   <<"Command">> => job_command(),
+%%   <<"Connections">> => connections_list(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DefaultArguments">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"ExecutionClass">> => list(any()),
+%%   <<"ExecutionProperty">> => execution_property(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"JobMode">> => list(any()),
+%%   <<"JobRunQueuingEnabled">> => boolean(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"LogUri">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NonOverridableArguments">> => map(),
+%%   <<"NotificationProperty">> => notification_property(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"ProfileName">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"SourceControlDetails">> => source_control_details(),
+%%   <<"Timeout">> => integer(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type job() :: #{binary() => any()}.
+
+%% Example:
+%% job_bookmark_entry() :: #{
+%%   <<"Attempt">> => integer(),
+%%   <<"JobBookmark">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"PreviousRunId">> => string(),
+%%   <<"Run">> => integer(),
+%%   <<"RunId">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type job_bookmark_entry() :: #{binary() => any()}.
+
+%% Example:
+%% job_bookmarks_encryption() :: #{
+%%   <<"JobBookmarksEncryptionMode">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type job_bookmarks_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% job_command() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PythonVersion">> => string(),
+%%   <<"Runtime">> => string(),
+%%   <<"ScriptLocation">> => string()
+%% }
+-type job_command() :: #{binary() => any()}.
+
+%% Example:
+%% job_node_details() :: #{
+%%   <<"JobRuns">> => list(job_run())
+%% }
+-type job_node_details() :: #{binary() => any()}.
 
 %% Example:
 %% job_run() :: #{
@@ -1884,2076 +6329,6 @@
 -type job_run() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"Category">> => string(),
-%%   <<"CustomProperties">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"EntityName">> => string(),
-%%   <<"IsParentEntity">> => boolean(),
-%%   <<"Label">> => string()
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% integration_resource_property_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type integration_resource_property_filter() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_orphan_file_deletion_configuration() :: #{
-%%   <<"location">> => string(),
-%%   <<"orphanFileRetentionPeriodInDays">> => integer(),
-%%   <<"runRateInHours">> => integer()
-%% }
--type iceberg_orphan_file_deletion_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% extracted_parameter() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"PropertyLocation">> => list(any()),
-%%   <<"Value">> => response_extraction_mapping()
-%% }
--type extracted_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_data_quality_result_response() :: #{
-%%   <<"Results">> => list(data_quality_result()),
-%%   <<"ResultsNotFound">> => list(string())
-%% }
--type batch_get_data_quality_result_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type get_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% code_gen_configuration_node() :: #{
-%%   <<"S3HyperDirectTarget">> => s3_hyper_direct_target(),
-%%   <<"DynamicTransform">> => dynamic_transform(),
-%%   <<"S3CatalogIcebergSource">> => s3_catalog_iceberg_source(),
-%%   <<"ConnectorDataSource">> => connector_data_source(),
-%%   <<"AmazonRedshiftSource">> => amazon_redshift_source(),
-%%   <<"Filter">> => filter(),
-%%   <<"RenameField">> => rename_field(),
-%%   <<"S3DeltaSource">> => s3_delta_source(),
-%%   <<"MicrosoftSQLServerCatalogTarget">> => microsoft_s_q_l_server_catalog_target(),
-%%   <<"S3ParquetSource">> => s3_parquet_source(),
-%%   <<"S3CatalogTarget">> => s3_catalog_target(),
-%%   <<"CatalogSource">> => catalog_source(),
-%%   <<"EvaluateDataQualityMultiFrame">> => evaluate_data_quality_multi_frame(),
-%%   <<"S3CsvSource">> => s3_csv_source(),
-%%   <<"S3IcebergCatalogTarget">> => s3_iceberg_catalog_target(),
-%%   <<"PostgreSQLCatalogSource">> => postgre_s_q_l_catalog_source(),
-%%   <<"S3ExcelSource">> => s3_excel_source(),
-%%   <<"JDBCConnectorTarget">> => j_db_c_connector_target(),
-%%   <<"RelationalCatalogSource">> => relational_catalog_source(),
-%%   <<"SelectFields">> => select_fields(),
-%%   <<"AmazonRedshiftTarget">> => amazon_redshift_target(),
-%%   <<"S3CatalogHudiSource">> => s3_catalog_hudi_source(),
-%%   <<"S3CatalogSource">> => s3_catalog_source(),
-%%   <<"Merge">> => merge(),
-%%   <<"Aggregate">> => aggregate(),
-%%   <<"MySQLCatalogTarget">> => my_s_q_l_catalog_target(),
-%%   <<"S3HudiSource">> => s3_hudi_source(),
-%%   <<"DynamoDBCatalogSource">> => dynamo_db_catalog_source(),
-%%   <<"Recipe">> => recipe(),
-%%   <<"RedshiftSource">> => redshift_source(),
-%%   <<"SnowflakeTarget">> => snowflake_target(),
-%%   <<"RedshiftTarget">> => redshift_target(),
-%%   <<"AthenaConnectorSource">> => athena_connector_source(),
-%%   <<"SplitFields">> => split_fields(),
-%%   <<"OracleSQLCatalogTarget">> => oracle_s_q_l_catalog_target(),
-%%   <<"SelectFromCollection">> => select_from_collection(),
-%%   <<"CustomCode">> => custom_code(),
-%%   <<"DirectKafkaSource">> => direct_kafka_source(),
-%%   <<"DirectKinesisSource">> => direct_kinesis_source(),
-%%   <<"CatalogIcebergSource">> => catalog_iceberg_source(),
-%%   <<"ConnectorDataTarget">> => connector_data_target(),
-%%   <<"DropNullFields">> => drop_null_fields(),
-%%   <<"S3JsonSource">> => s3_json_source(),
-%%   <<"CatalogDeltaSource">> => catalog_delta_source(),
-%%   <<"S3HudiDirectTarget">> => s3_hudi_direct_target(),
-%%   <<"S3GlueParquetTarget">> => s3_glue_parquet_target(),
-%%   <<"ApplyMapping">> => apply_mapping(),
-%%   <<"EvaluateDataQuality">> => evaluate_data_quality(),
-%%   <<"GovernedCatalogTarget">> => governed_catalog_target(),
-%%   <<"GovernedCatalogSource">> => governed_catalog_source(),
-%%   <<"PIIDetection">> => p_i_idetection(),
-%%   <<"FillMissingValues">> => fill_missing_values(),
-%%   <<"Union">> => union(),
-%%   <<"DirectJDBCSource">> => direct_j_db_c_source(),
-%%   <<"S3CatalogDeltaSource">> => s3_catalog_delta_source(),
-%%   <<"DropFields">> => drop_fields(),
-%%   <<"CatalogHudiSource">> => catalog_hudi_source(),
-%%   <<"OracleSQLCatalogSource">> => oracle_s_q_l_catalog_source(),
-%%   <<"MicrosoftSQLServerCatalogSource">> => microsoft_s_q_l_server_catalog_source(),
-%%   <<"CatalogKinesisSource">> => catalog_kinesis_source(),
-%%   <<"Route">> => route(),
-%%   <<"SparkConnectorTarget">> => spark_connector_target(),
-%%   <<"SparkSQL">> => spark_s_q_l(),
-%%   <<"Join">> => join(),
-%%   <<"SnowflakeSource">> => snowflake_source(),
-%%   <<"S3IcebergDirectTarget">> => s3_iceberg_direct_target(),
-%%   <<"S3DeltaDirectTarget">> => s3_delta_direct_target(),
-%%   <<"CatalogTarget">> => basic_catalog_target(),
-%%   <<"S3HudiCatalogTarget">> => s3_hudi_catalog_target(),
-%%   <<"JDBCConnectorSource">> => j_db_c_connector_source(),
-%%   <<"S3DirectTarget">> => s3_direct_target(),
-%%   <<"PostgreSQLCatalogTarget">> => postgre_s_q_l_catalog_target(),
-%%   <<"DropDuplicates">> => drop_duplicates(),
-%%   <<"SparkConnectorSource">> => spark_connector_source(),
-%%   <<"Spigot">> => spigot(),
-%%   <<"S3DeltaCatalogTarget">> => s3_delta_catalog_target(),
-%%   <<"DynamoDBELTConnectorSource">> => dynamo_db_e_l_t_connector_source(),
-%%   <<"CatalogKafkaSource">> => catalog_kafka_source(),
-%%   <<"MySQLCatalogSource">> => my_s_q_l_catalog_source()
-%% }
--type code_gen_configuration_node() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_catalog_encryption_settings_response() :: #{
-
-%% }
--type put_data_catalog_encryption_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_dev_endpoints_response() :: #{
-%%   <<"DevEndpoints">> => list(dev_endpoint()),
-%%   <<"NextToken">> => string()
-%% }
--type get_dev_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_unfiltered_table_metadata_response() :: #{
-%%   <<"AuthorizedColumns">> => list(string()),
-%%   <<"CellFilters">> => list(column_row_filter()),
-%%   <<"IsMaterializedView">> => boolean(),
-%%   <<"IsMultiDialectView">> => boolean(),
-%%   <<"IsProtected">> => boolean(),
-%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"QueryAuthorizationId">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"RowFilter">> => string(),
-%%   <<"Table">> => table()
-%% }
--type get_unfiltered_table_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_configuration_input() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"BasicAuthenticationCredentials">> => basic_authentication_credentials(),
-%%   <<"CustomAuthenticationCredentials">> => map(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"OAuth2Properties">> => o_auth2_properties_input(),
-%%   <<"SecretArn">> => string()
-%% }
--type authentication_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% task_run_filter_criteria() :: #{
-%%   <<"StartedAfter">> => non_neg_integer(),
-%%   <<"StartedBefore">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskRunType">> => list(any())
-%% }
--type task_run_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% materialized_view_refresh_task_run() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomerId">> => string(),
-%%   <<"DPUSeconds">> => float(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"MaterializedViewRefreshTaskRunId">> => string(),
-%%   <<"ProcessedBytes">> => float(),
-%%   <<"RefreshType">> => list(any()),
-%%   <<"Role">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TableName">> => string()
-%% }
--type materialized_view_refresh_task_run() :: #{binary() => any()}.
-
-%% Example:
-%% delete_classifier_response() :: #{
-
-%% }
--type delete_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_blueprint_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_partition_failure_entry() :: #{
-%%   <<"ErrorDetail">> => error_detail(),
-%%   <<"PartitionValueList">> => list(string())
-%% }
--type batch_update_partition_failure_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_model_result_request() :: #{
-%%   <<"ProfileId">> := string(),
-%%   <<"StatisticId">> := string()
-%% }
--type get_data_quality_model_result_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_rule_recommendation_run_description() :: #{
-%%   <<"DataSource">> => data_source(),
-%%   <<"RunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type data_quality_rule_recommendation_run_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_usage_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Profiles">> => list(usage_profile_definition())
-%% }
--type list_usage_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% athena_connector_source() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionTable">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"ConnectorName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"SchemaName">> => string()
-%% }
--type athena_connector_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_properties_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"RunId">> := string()
-%% }
--type get_workflow_run_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_resource_property_response() :: #{
-
-%% }
--type delete_integration_resource_property_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"TransactionId">> => string()
-%% }
--type delete_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% table_optimizer_run() :: #{
-%%   <<"compactionMetrics">> => compaction_metrics(),
-%%   <<"compactionStrategy">> => list(any()),
-%%   <<"endTimestamp">> => non_neg_integer(),
-%%   <<"error">> => string(),
-%%   <<"eventType">> => list(any()),
-%%   <<"metrics">> => run_metrics(),
-%%   <<"orphanFileDeletionMetrics">> => orphan_file_deletion_metrics(),
-%%   <<"retentionMetrics">> => retention_metrics(),
-%%   <<"startTimestamp">> => non_neg_integer()
-%% }
--type table_optimizer_run() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_code_properties() :: #{
-%%   <<"AuthorizationCode">> => string(),
-%%   <<"RedirectUri">> => string()
-%% }
--type authorization_code_properties() :: #{binary() => any()}.
-
-%% Example:
-%% event_batching_condition() :: #{
-%%   <<"BatchSize">> => integer(),
-%%   <<"BatchWindow">> => integer()
-%% }
--type event_batching_condition() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_rulesets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Rulesets">> => list(data_quality_ruleset_list_details())
-%% }
--type list_data_quality_rulesets_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_catalog_encryption_settings() :: #{
-%%   <<"ConnectionPasswordEncryption">> => connection_password_encryption(),
-%%   <<"EncryptionAtRest">> => encryption_at_rest()
-%% }
--type data_catalog_encryption_settings() :: #{binary() => any()}.
-
-%% Example:
-%% integration_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type integration_filter() :: #{binary() => any()}.
-
-%% Example:
-%% column() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Type">> => string()
-%% }
--type column() :: #{binary() => any()}.
-
-%% Example:
-%% create_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionInput">> := partition_input(),
-%%   <<"TableName">> := string()
-%% }
--type create_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% crawl() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LogGroup">> => string(),
-%%   <<"LogStream">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type crawl() :: #{binary() => any()}.
-
-%% Example:
-%% already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_quality_ruleset_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_data_quality_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% reset_job_bookmark_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"RunId">> => string()
-%% }
--type reset_job_bookmark_request() :: #{binary() => any()}.
-
-%% Example:
-%% resume_workflow_run_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"NodeIds">> := list(string()),
-%%   <<"RunId">> := string()
-%% }
--type resume_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_optimizer_response() :: #{
-
-%% }
--type delete_table_optimizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_materialized_view_refresh_task_runs_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type list_materialized_view_refresh_task_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% registry_id() :: #{
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string()
-%% }
--type registry_id() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_for_partition_response() :: #{
-%%   <<"ColumnStatisticsList">> => list(column_statistics()),
-%%   <<"Errors">> => list(column_error())
-%% }
--type get_column_statistics_for_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RedshiftTmpDir">> => string(),
-%%   <<"Table">> => string(),
-%%   <<"TmpDirIAMRole">> => string()
-%% }
--type redshift_source() :: #{binary() => any()}.
-
-%% Example:
-%% csv_classifier() :: #{
-%%   <<"AllowSingleColumn">> => boolean(),
-%%   <<"ContainsHeader">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()),
-%%   <<"Delimiter">> => string(),
-%%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"QuoteSymbol">> => string(),
-%%   <<"Serde">> => list(any()),
-%%   <<"Version">> => float()
-%% }
--type csv_classifier() :: #{binary() => any()}.
-
-%% Example:
-%% list_schema_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(schema_version_list_item())
-%% }
--type list_schema_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% version_mismatch_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type version_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_attachment_request() :: #{
-%%   <<"AttachmentName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Content">> := string(),
-%%   <<"FormTypeId">> := string(),
-%%   <<"ItemIdentifier">> => string(),
-%%   <<"IterableFormName">> => string()
-%% }
--type put_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_crawler_response() :: #{
-
-%% }
--type create_crawler_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_registry_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% oracle_s_q_l_catalog_target() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type oracle_s_q_l_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% schema_list_item() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaStatus">> => list(any()),
-%%   <<"UpdatedTime">> => string()
-%% }
--type schema_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% run_metrics() :: #{
-%%   <<"JobDurationInHour">> => string(),
-%%   <<"NumberOfBytesCompacted">> => string(),
-%%   <<"NumberOfDpus">> => string(),
-%%   <<"NumberOfFilesCompacted">> => string()
-%% }
--type run_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_encrypted_key() :: #{
-%%   <<"EncryptedById">> => string(),
-%%   <<"EncryptedKeyMetadata">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"Properties">> => map()
-%% }
--type iceberg_encrypted_key() :: #{binary() => any()}.
-
-%% Example:
-%% column_statistics_data() :: #{
-%%   <<"BinaryColumnStatisticsData">> => binary_column_statistics_data(),
-%%   <<"BooleanColumnStatisticsData">> => boolean_column_statistics_data(),
-%%   <<"DateColumnStatisticsData">> => date_column_statistics_data(),
-%%   <<"DecimalColumnStatisticsData">> => decimal_column_statistics_data(),
-%%   <<"DoubleColumnStatisticsData">> => double_column_statistics_data(),
-%%   <<"LongColumnStatisticsData">> => long_column_statistics_data(),
-%%   <<"StringColumnStatisticsData">> => string_column_statistics_data(),
-%%   <<"Type">> => list(any())
-%% }
--type column_statistics_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_runs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(workflow_run())
-%% }
--type get_workflow_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_type_request() :: #{
-
-%% }
--type delete_asset_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_request() :: #{
-%%   <<"AttributesToGet">> => list(list(any())()),
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"IncludeStatusDetails">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"QueryAsOfTime">> => non_neg_integer(),
-%%   <<"TransactionId">> => string()
-%% }
--type get_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inbound_integrations_response() :: #{
-%%   <<"InboundIntegrations">> => list(inbound_integration()),
-%%   <<"Marker">> => string()
-%% }
--type describe_inbound_integrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_blueprint_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_glossary_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string()
-%% }
--type create_glossary_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_entity_type_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_custom_entity_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_sort_order() :: #{
-%%   <<"Fields">> => list(iceberg_sort_field()),
-%%   <<"OrderId">> => integer()
-%% }
--type iceberg_sort_order() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glue_identity_center_configuration_request() :: #{
-
-%% }
--type delete_glue_identity_center_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_x_ml_classifier_request() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RowTag">> => string()
-%% }
--type update_x_ml_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_kinesis_source() :: #{
-%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
-%%   <<"Database">> => string(),
-%%   <<"DetectSchema">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"StreamingOptions">> => kinesis_streaming_source_options(),
-%%   <<"Table">> => string(),
-%%   <<"WindowSize">> => integer()
-%% }
--type catalog_kinesis_source() :: #{binary() => any()}.
-
-%% Example:
-%% federated_catalog() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"Identifier">> => string()
-%% }
--type federated_catalog() :: #{binary() => any()}.
-
-%% Example:
-%% dynamic_transform() :: #{
-%%   <<"FunctionName">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Parameters">> => list(transform_config_parameter()),
-%%   <<"Path">> => string(),
-%%   <<"TransformName">> => string(),
-%%   <<"Version">> => string()
-%% }
--type dynamic_transform() :: #{binary() => any()}.
-
-%% Example:
-%% search_assets_output() :: #{
-%%   <<"Items">> => list(search_result_item()),
-%%   <<"NextToken">> => string()
-%% }
--type search_assets_output() :: #{binary() => any()}.
-
-%% Example:
-%% integration_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type integration_error() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_runs_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_runs_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s3_parquet_source() :: #{
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"GroupFiles">> => string(),
-%%   <<"GroupSize">> => string(),
-%%   <<"MaxBand">> => integer(),
-%%   <<"MaxFilesInBand">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string()),
-%%   <<"Recurse">> => boolean()
-%% }
--type s3_parquet_source() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_statement_request() :: #{
-%%   <<"Id">> := integer(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type cancel_statement_request() :: #{binary() => any()}.
-
-%% Example:
-%% illegal_session_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_session_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workflow_run_response() :: #{
-
-%% }
--type stop_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_dev_endpoints_response() :: #{
-%%   <<"DevEndpoints">> => list(dev_endpoint()),
-%%   <<"DevEndpointsNotFound">> => list(string())
-%% }
--type batch_get_dev_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% run_statement_response() :: #{
-%%   <<"Id">> => integer()
-%% }
--type run_statement_response() :: #{binary() => any()}.
-
-%% Example:
-%% notification_property() :: #{
-%%   <<"NotifyDelayAfter">> => integer()
-%% }
--type notification_property() :: #{binary() => any()}.
-
-%% Example:
-%% run_statement_request() :: #{
-%%   <<"Code">> := string(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type run_statement_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connections_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Filter">> => get_connections_filter(),
-%%   <<"HidePassword">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_defined_function_response() :: #{
-%%   <<"UserDefinedFunction">> => user_defined_function()
-%% }
--type get_user_defined_function_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_endpoint_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type get_session_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_catalog_response() :: #{
-
-%% }
--type update_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_asset_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_asset_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ml_transform_response() :: #{
-%%   <<"TransformId">> => string()
-%% }
--type delete_ml_transform_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_export_labels_task_run_response() :: #{
-%%   <<"TaskRunId">> => string()
-%% }
--type start_export_labels_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% crawler_node_details() :: #{
-%%   <<"Crawls">> => list(crawl())
-%% }
--type crawler_node_details() :: #{binary() => any()}.
-
-%% Example:
-%% s3_direct_target() :: #{
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Compression">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NumberTargetPartitions">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"Path">> => string(),
-%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
-%% }
--type s3_direct_target() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_quality_profile_annotation_request() :: #{
-%%   <<"InclusionAnnotation">> := list(any()),
-%%   <<"ProfileId">> := string()
-%% }
--type put_data_quality_profile_annotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_entity_records_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(any())
-%% }
--type get_entity_records_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_task_run_request() :: #{
-%%   <<"TaskRunId">> := string(),
-%%   <<"TransformId">> := string()
-%% }
--type get_ml_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"OpenTableFormatInput">> => open_table_format_input(),
-%%   <<"PartitionIndexes">> => list(partition_index()),
-%%   <<"TableInput">> => table_input(),
-%%   <<"TransactionId">> => string()
-%% }
--type create_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% statistic_annotation() :: #{
-%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
-%%   <<"ProfileId">> => string(),
-%%   <<"StatisticId">> => string(),
-%%   <<"StatisticRecordedOn">> => non_neg_integer()
-%% }
--type statistic_annotation() :: #{binary() => any()}.
-
-%% Example:
-%% get_dev_endpoint_request() :: #{
-%%   <<"EndpointName">> := string()
-%% }
--type get_dev_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_database_response() :: #{
-%%   <<"Database">> => database()
-%% }
--type get_database_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_entity_records_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionOptions">> => map(),
-%%   <<"DataStoreApiVersion">> => string(),
-%%   <<"EntityName">> := string(),
-%%   <<"FilterPredicate">> => string(),
-%%   <<"Limit">> := float(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrderBy">> => [string()],
-%%   <<"SelectedFields">> => list(string())
-%% }
--type get_entity_records_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_response() :: #{
-%%   <<"Table">> => table()
-%% }
--type get_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_configuration_request() :: #{
-%%   <<"EncryptionConfiguration">> := encryption_configuration(),
-%%   <<"Name">> := string()
-%% }
--type create_security_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_statistic_annotations_response() :: #{
-%%   <<"Annotations">> => list(statistic_annotation()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_quality_statistic_annotations_response() :: #{binary() => any()}.
-
-%% Example:
-%% cursor_configuration() :: #{
-%%   <<"LimitParameter">> => extracted_parameter(),
-%%   <<"NextPage">> => extracted_parameter()
-%% }
--type cursor_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% find_matches_parameters() :: #{
-%%   <<"AccuracyCostTradeoff">> => float(),
-%%   <<"EnforceProvidedLabels">> => boolean(),
-%%   <<"PrecisionRecallTradeoff">> => float(),
-%%   <<"PrimaryKeyColumnName">> => string()
-%% }
--type find_matches_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% create_ml_transform_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"InputRecordTables">> := list(glue_table()),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"Parameters">> := transform_parameters(),
-%%   <<"Role">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"Timeout">> => integer(),
-%%   <<"TransformEncryption">> => transform_encryption(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type create_ml_transform_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_connection_types_response() :: #{
-%%   <<"ConnectionTypes">> => list(connection_type_brief()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connection_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% partition_index_descriptor() :: #{
-%%   <<"BackfillErrors">> => list(backfill_error()),
-%%   <<"IndexName">> => string(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"Keys">> => list(key_schema_element())
-%% }
--type partition_index_descriptor() :: #{binary() => any()}.
-
-%% Example:
-%% dev_endpoint() :: #{
-%%   <<"Arguments">> => map(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"ExtraJarsS3Path">> => string(),
-%%   <<"ExtraPythonLibsS3Path">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"LastModifiedTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdateStatus">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"PrivateAddress">> => string(),
-%%   <<"PublicAddress">> => string(),
-%%   <<"PublicKey">> => string(),
-%%   <<"PublicKeys">> => list(string()),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Status">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"VpcId">> => string(),
-%%   <<"WorkerType">> => list(any()),
-%%   <<"YarnEndpointAddress">> => string(),
-%%   <<"ZeppelinRemoteSparkInterpreterPort">> => integer()
-%% }
--type dev_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"PolicyHash">> => string(),
-%%   <<"PolicyInJson">> => string(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduler_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type scheduler_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% transform_filter_criteria() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"LastModifiedAfter">> => non_neg_integer(),
-%%   <<"LastModifiedBefore">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => list(schema_column()),
-%%   <<"Status">> => list(any()),
-%%   <<"TransformType">> => list(any())
-%% }
--type transform_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% aggregate() :: #{
-%%   <<"Aggs">> => list(aggregate_operation()),
-%%   <<"Groups">> => list(list(string())()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type aggregate() :: #{binary() => any()}.
-
-%% Example:
-%% transform_sort_criteria() :: #{
-%%   <<"Column">> => list(any()),
-%%   <<"SortDirection">> => list(any())
-%% }
--type transform_sort_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% partition() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"LastAccessTime">> => non_neg_integer(),
-%%   <<"LastAnalyzedTime">> => non_neg_integer(),
-%%   <<"Parameters">> => map(),
-%%   <<"StorageDescriptor">> => storage_descriptor(),
-%%   <<"TableName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type partition() :: #{binary() => any()}.
-
-%% Example:
-%% list_ml_transforms_request() :: #{
-%%   <<"Filter">> => transform_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Sort">> => transform_sort_criteria(),
-%%   <<"Tags">> => map()
-%% }
--type list_ml_transforms_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_bookmark_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"RunId">> => string()
-%% }
--type get_job_bookmark_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_column_statistics_task_settings_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type delete_column_statistics_task_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_jobs_request() :: #{
-%%   <<"JobNames">> := list(string())
-%% }
--type batch_get_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_hudi_catalog_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
-%%   <<"Table">> => string()
-%% }
--type s3_hudi_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_ruleset_evaluation_run_response() :: #{
-%%   <<"AdditionalDataSources">> => map(),
-%%   <<"AdditionalRunOptions">> => data_quality_evaluation_run_additional_run_options(),
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"DataSource">> => data_source(),
-%%   <<"ErrorString">> => string(),
-%%   <<"ExecutionTime">> => integer(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"ResultIds">> => list(string()),
-%%   <<"Role">> => string(),
-%%   <<"RulesetNames">> => list(string()),
-%%   <<"RunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Timeout">> => integer()
-%% }
--type get_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% key_schema_element() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type key_schema_element() :: #{binary() => any()}.
-
-%% Example:
-%% last_crawl_info() :: #{
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LogGroup">> => string(),
-%%   <<"LogStream">> => string(),
-%%   <<"MessagePrefix">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type last_crawl_info() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_aggregated_metrics() :: #{
-%%   <<"TotalRowsFailed">> => float(),
-%%   <<"TotalRowsPassed">> => float(),
-%%   <<"TotalRowsProcessed">> => float(),
-%%   <<"TotalRulesFailed">> => float(),
-%%   <<"TotalRulesPassed">> => float(),
-%%   <<"TotalRulesProcessed">> => float()
-%% }
--type data_quality_aggregated_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% code_gen_node() :: #{
-%%   <<"Args">> => list(code_gen_node_arg()),
-%%   <<"Id">> => string(),
-%%   <<"LineNumber">> => integer(),
-%%   <<"NodeType">> => string()
-%% }
--type code_gen_node() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_optimizer_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"TableOptimizerConfiguration">> := table_optimizer_configuration(),
-%%   <<"Type">> := list(any())
-%% }
--type create_table_optimizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_triggers_request() :: #{
-%%   <<"TriggerNames">> := list(string())
-%% }
--type batch_get_triggers_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_entity_type_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_custom_entity_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_schema_version_metadata_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetadataList">> => list(metadata_key_value_pair()),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaId">> => schema_id(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionNumber">> => schema_version_number()
-%% }
--type query_schema_version_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_integration_table_properties_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceTableConfig">> => source_table_config(),
-%%   <<"TableName">> := string(),
-%%   <<"TargetTableConfig">> => target_table_config()
-%% }
--type update_integration_table_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_model_result_response() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"Model">> => list(statistic_model_result())
-%% }
--type get_data_quality_model_result_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_crawlers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_crawlers_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"JobNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% auth_configuration() :: #{
-%%   <<"AuthenticationType">> => property(),
-%%   <<"BasicAuthenticationProperties">> => map(),
-%%   <<"CustomAuthenticationProperties">> => map(),
-%%   <<"OAuth2Properties">> => map(),
-%%   <<"SecretArn">> => property()
-%% }
--type auth_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% asset_type_form_reference() :: #{
-%%   <<"FormTypeIdentifier">> => string()
-%% }
--type asset_type_form_reference() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_quality_ruleset_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Ruleset">> => string()
-%% }
--type update_data_quality_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_asset_type_response() :: #{
-%%   <<"Forms">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type put_asset_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"AllocatedCapacity">> => integer(),
-%%   <<"CodeGenConfigurationNodes">> => map(),
-%%   <<"Command">> := job_command(),
-%%   <<"Connections">> => connections_list(),
-%%   <<"DefaultArguments">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionClass">> => list(any()),
-%%   <<"ExecutionProperty">> => execution_property(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"JobMode">> => list(any()),
-%%   <<"JobRunQueuingEnabled">> => boolean(),
-%%   <<"LogUri">> => string(),
-%%   <<"MaintenanceWindow">> => string(),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NonOverridableArguments">> => map(),
-%%   <<"NotificationProperty">> => notification_property(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"Role">> := string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SourceControlDetails">> => source_control_details(),
-%%   <<"Tags">> => map(),
-%%   <<"Timeout">> => integer(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% statement() :: #{
-%%   <<"Code">> => string(),
-%%   <<"CompletedOn">> => float(),
-%%   <<"Id">> => integer(),
-%%   <<"Output">> => statement_output(),
-%%   <<"Progress">> => float(),
-%%   <<"StartedOn">> => float(),
-%%   <<"State">> => list(any())
-%% }
--type statement() :: #{binary() => any()}.
-
-%% Example:
-%% start_trigger_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type start_trigger_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_metric_values() :: #{
-%%   <<"ActualValue">> => float(),
-%%   <<"ExpectedValue">> => float(),
-%%   <<"LowerLimit">> => float(),
-%%   <<"UpperLimit">> => float()
-%% }
--type data_quality_metric_values() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_version_response() :: #{
-%%   <<"TableVersion">> => table_version()
-%% }
--type get_table_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% join_column() :: #{
-%%   <<"From">> => string(),
-%%   <<"Keys">> => list(list(string())())
-%% }
--type join_column() :: #{binary() => any()}.
-
-%% Example:
-%% get_plan_request() :: #{
-%%   <<"AdditionalPlanOptionsMap">> => map(),
-%%   <<"Language">> => list(any()),
-%%   <<"Location">> => location(),
-%%   <<"Mapping">> := list(mapping_entry()),
-%%   <<"Sinks">> => list(catalog_entry()),
-%%   <<"Source">> := catalog_entry()
-%% }
--type get_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_asset_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Forms">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type put_asset_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_grok_classifier_request() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"CustomPatterns">> => string(),
-%%   <<"GrokPattern">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_grok_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workflow_request() :: #{
-%%   <<"DefaultRunProperties">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"MaxConcurrentRuns">> => integer(),
-%%   <<"Name">> := string()
-%% }
--type update_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% ml_transform_not_ready_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ml_transform_not_ready_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_form_type_response() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type put_form_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connections_response() :: #{
-%%   <<"ConnectionList">> => list(connection()),
-%%   <<"NextToken">> => string()
-%% }
--type get_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_schema_response() :: #{
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string()
-%% }
--type update_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% direct_kinesis_source() :: #{
-%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
-%%   <<"DetectSchema">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"StreamingOptions">> => kinesis_streaming_source_options(),
-%%   <<"WindowSize">> => integer()
-%% }
--type direct_kinesis_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_term_response() :: #{
-
-%% }
--type delete_glossary_term_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% task_run_properties() :: #{
-%%   <<"ExportLabelsTaskRunProperties">> => export_labels_task_run_properties(),
-%%   <<"FindMatchesTaskRunProperties">> => find_matches_task_run_properties(),
-%%   <<"ImportLabelsTaskRunProperties">> => import_labels_task_run_properties(),
-%%   <<"LabelingSetGenerationTaskRunProperties">> => labeling_set_generation_task_run_properties(),
-%%   <<"TaskType">> => list(any())
-%% }
--type task_run_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_run_response() :: #{
-%%   <<"BlueprintRun">> => blueprint_run()
-%% }
--type get_blueprint_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% microsoft_s_q_l_server_catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type microsoft_s_q_l_server_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% transform_encryption() :: #{
-%%   <<"MlUserDataEncryption">> => ml_user_data_encryption(),
-%%   <<"TaskRunSecurityConfigurationName">> => string()
-%% }
--type transform_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% column_error() :: #{
-%%   <<"ColumnName">> => string(),
-%%   <<"Error">> => error_detail()
-%% }
--type column_error() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_response() :: #{
-%%   <<"Fields">> => list(field()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_entity_response() :: #{binary() => any()}.
-
-%% Example:
-%% code_gen_edge() :: #{
-%%   <<"Source">> => string(),
-%%   <<"Target">> => string(),
-%%   <<"TargetParameter">> => string()
-%% }
--type code_gen_edge() :: #{binary() => any()}.
-
-%% Example:
-%% create_schema_response() :: #{
-%%   <<"Compatibility">> => list(any()),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LatestSchemaVersion">> => float(),
-%%   <<"NextSchemaVersion">> => float(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaCheckpoint">> => float(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaStatus">> => list(any()),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionStatus">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_integration_request() :: #{
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationConfig">> => integration_config(),
-%%   <<"IntegrationIdentifier">> := string(),
-%%   <<"IntegrationName">> => string()
-%% }
--type modify_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagsToRemove">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_glossary_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_glossary_response() :: #{binary() => any()}.
-
-%% Example:
-%% target_resource_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type target_resource_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% get_tables_request() :: #{
-%%   <<"AttributesToGet">> => list(list(any())()),
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Expression">> => string(),
-%%   <<"IncludeStatusDetails">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryAsOfTime">> => non_neg_integer(),
-%%   <<"TransactionId">> => string()
-%% }
--type get_tables_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_task_run_request() :: #{
-%%   <<"ColumnStatisticsTaskRunId">> := string()
-%% }
--type get_column_statistics_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% postgre_s_q_l_catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type postgre_s_q_l_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_table_config() :: #{
-%%   <<"PartitionSpec">> => list(integration_partition()),
-%%   <<"TargetTableName">> => string(),
-%%   <<"UnnestSpec">> => list(any())
-%% }
--type target_table_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_materialized_view_refresh_task_runs_response() :: #{
-%%   <<"MaterializedViewRefreshTaskRuns">> => list(materialized_view_refresh_task_run()),
-%%   <<"NextToken">> => string()
-%% }
--type list_materialized_view_refresh_task_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% status_details() :: #{
-%%   <<"RequestedChange">> => table(),
-%%   <<"ViewValidations">> => list(view_validation())
-%% }
--type status_details() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_ruleset_evaluation_runs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(data_quality_ruleset_evaluation_run_description())
-%% }
--type list_data_quality_ruleset_evaluation_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% labeling_set_generation_task_run_properties() :: #{
-%%   <<"OutputS3Path">> => string()
-%% }
--type labeling_set_generation_task_run_properties() :: #{binary() => any()}.
-
-%% Example:
-%% amazon_redshift_node_data() :: #{
-%%   <<"AccessType">> => string(),
-%%   <<"Action">> => string(),
-%%   <<"AdvancedOptions">> => list(amazon_redshift_advanced_option()),
-%%   <<"CatalogDatabase">> => option(),
-%%   <<"CatalogRedshiftSchema">> => string(),
-%%   <<"CatalogRedshiftTable">> => string(),
-%%   <<"CatalogTable">> => option(),
-%%   <<"Connection">> => option(),
-%%   <<"CrawlerConnection">> => string(),
-%%   <<"IamRole">> => option(),
-%%   <<"MergeAction">> => string(),
-%%   <<"MergeClause">> => string(),
-%%   <<"MergeWhenMatched">> => string(),
-%%   <<"MergeWhenNotMatched">> => string(),
-%%   <<"PostAction">> => string(),
-%%   <<"PreAction">> => string(),
-%%   <<"SampleQuery">> => string(),
-%%   <<"Schema">> => option(),
-%%   <<"SelectedColumns">> => list(option()),
-%%   <<"SourceType">> => string(),
-%%   <<"StagingTable">> => string(),
-%%   <<"Table">> => option(),
-%%   <<"TablePrefix">> => string(),
-%%   <<"TableSchema">> => list(option()),
-%%   <<"TempDir">> => string(),
-%%   <<"Upsert">> => boolean()
-%% }
--type amazon_redshift_node_data() :: #{binary() => any()}.
-
-%% Example:
-%% schema_reference() :: #{
-%%   <<"SchemaId">> => schema_id(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionNumber">> => float()
-%% }
--type schema_reference() :: #{binary() => any()}.
-
-%% Example:
-%% delete_classifier_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_entity_type_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_custom_entity_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% column_row_filter() :: #{
-%%   <<"ColumnName">> => string(),
-%%   <<"RowFilterExpression">> => string()
-%% }
--type column_row_filter() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_glue_table() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"PreProcessingQuery">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type data_quality_glue_table() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_entity_types_response() :: #{
-%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_entity_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_column_statistics_task_run_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type stop_column_statistics_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_type_brief() :: #{
-%%   <<"Capabilities">> => capabilities(),
-%%   <<"Categories">> => list([string()]()),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"ConnectionTypeVariants">> => list(connection_type_variant()),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LogoUrl">> => string(),
-%%   <<"Vendor">> => string()
-%% }
--type connection_type_brief() :: #{binary() => any()}.
-
-%% Example:
-%% get_catalog_import_status_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type get_catalog_import_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_json_classifier_request() :: #{
-%%   <<"JsonPath">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_json_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"RequestOrigin">> => string()
-%% }
--type get_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"NextToken">> => string()
-%% }
--type get_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_table_metadata() :: #{
-%%   <<"CurrentSchemaId">> => integer(),
-%%   <<"DefaultSortOrderId">> => integer(),
-%%   <<"DefaultSpecId">> => integer(),
-%%   <<"FormatVersion">> => string(),
-%%   <<"LastColumnId">> => integer(),
-%%   <<"LastPartitionId">> => integer(),
-%%   <<"Location">> => string(),
-%%   <<"PartitionSpecs">> => list(iceberg_partition_spec()),
-%%   <<"Properties">> => map(),
-%%   <<"Schemas">> => list(iceberg_schema()),
-%%   <<"SortOrders">> => list(iceberg_sort_order()),
-%%   <<"TableUuid">> => string()
-%% }
--type iceberg_table_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_versions_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableName">> := string()
-%% }
--type get_table_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_put_data_quality_statistic_annotation_response() :: #{
-%%   <<"FailedInclusionAnnotations">> => list(annotation_error())
-%% }
--type batch_put_data_quality_statistic_annotation_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduler_transitioning_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type scheduler_transitioning_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_runs_response() :: #{
-%%   <<"BlueprintRuns">> => list(blueprint_run()),
-%%   <<"NextToken">> => string()
-%% }
--type get_blueprint_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_request() :: #{
-%%   <<"IncludeGraph">> => boolean(),
-%%   <<"Name">> := string()
-%% }
--type get_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_column_statistics_task_settings_response() :: #{
-
-%% }
--type update_column_statistics_task_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_glue_identity_center_configuration_response() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Scopes">> => list(string()),
-%%   <<"UserBackgroundSessionsEnabled">> => boolean()
-%% }
--type get_glue_identity_center_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_number_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_number_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% j_db_c_connector_options() :: #{
-%%   <<"DataTypeMapping">> => map(),
-%%   <<"FilterPredicate">> => string(),
-%%   <<"JobBookmarkKeys">> => list(string()),
-%%   <<"JobBookmarkKeysSortOrder">> => string(),
-%%   <<"LowerBound">> => float(),
-%%   <<"NumPartitions">> => float(),
-%%   <<"PartitionColumn">> => string(),
-%%   <<"UpperBound">> => float()
-%% }
--type j_db_c_connector_options() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_resource_property_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_integration_resource_property_request() :: #{binary() => any()}.
-
-%% Example:
-%% segment() :: #{
-%%   <<"SegmentNumber">> => integer(),
-%%   <<"TotalSegments">> => integer()
-%% }
--type segment() :: #{binary() => any()}.
-
-%% Example:
-%% select_fields() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string())())
-%% }
--type select_fields() :: #{binary() => any()}.
-
-%% Example:
-%% connection_properties_configuration() :: #{
-%%   <<"AdditionalRequestParameters">> => list(connector_property()),
-%%   <<"Url">> => connector_property()
-%% }
--type connection_properties_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_column_statistics_for_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ColumnName">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type delete_column_statistics_for_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_column_statistics_task_run_response() :: #{
-
-%% }
--type stop_column_statistics_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% amazon_redshift_source() :: #{
-%%   <<"Data">> => amazon_redshift_node_data(),
-%%   <<"Name">> => string()
-%% }
--type amazon_redshift_source() :: #{binary() => any()}.
-
-%% Example:
-%% glossary_term_item() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ShortDescription">> => string()
-%% }
--type glossary_term_item() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_connection_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionNameList">> := list(string())
-%% }
--type batch_delete_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_ruleset_evaluation_run_filter() :: #{
-%%   <<"DataSource">> => data_source(),
-%%   <<"RulesetName">> => string(),
-%%   <<"StartedAfter">> => non_neg_integer(),
-%%   <<"StartedBefore">> => non_neg_integer()
-%% }
--type data_quality_ruleset_evaluation_run_filter() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_workflows_response() :: #{
-%%   <<"MissingWorkflows">> => list(string()),
-%%   <<"Workflows">> => list(workflow())
-%% }
--type batch_get_workflows_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_by_definition_input() :: #{
-%%   <<"SchemaDefinition">> := string(),
-%%   <<"SchemaId">> := schema_id()
-%% }
--type get_schema_by_definition_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_request() :: #{
-%%   <<"IncludeBlueprint">> => boolean(),
-%%   <<"IncludeParameterSpec">> => boolean(),
-%%   <<"Name">> := string()
-%% }
--type get_blueprint_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_databases_response() :: #{
-%%   <<"DatabaseList">> => list(database()),
-%%   <<"NextToken">> => string()
-%% }
--type get_databases_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_statistic_annotations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"StatisticId">> => string(),
-%%   <<"TimestampFilter">> => timestamp_filter()
-%% }
--type list_data_quality_statistic_annotations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_catalogs_request() :: #{
-%%   <<"HasDatabases">> => boolean(),
-%%   <<"IncludeRoot">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParentCatalogId">> => string(),
-%%   <<"Recursive">> => boolean()
-%% }
--type get_catalogs_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter_value() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => list(string())
-%% }
--type filter_value() :: #{binary() => any()}.
-
-%% Example:
-%% import_catalog_to_glue_response() :: #{
-
-%% }
--type import_catalog_to_glue_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_workflows_request() :: #{
-%%   <<"IncludeGraph">> => boolean(),
-%%   <<"Names">> := list(string())
-%% }
--type batch_get_workflows_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_trigger_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_glossary_terms_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
-%%   <<"GlossaryTerms">> => list(string())
-%% }
--type disassociate_glossary_terms_response() :: #{binary() => any()}.
-
-%% Example:
-%% schema_version_number() :: #{
-%%   <<"LatestVersion">> => boolean(),
-%%   <<"VersionNumber">> => float()
-%% }
--type schema_version_number() :: #{binary() => any()}.
-
-%% Example:
-%% get_unfiltered_table_metadata_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ParentResourceArn">> => string(),
-%%   <<"Permissions">> => list(list(any())()),
-%%   <<"QuerySessionContext">> => query_session_context(),
-%%   <<"Region">> => string(),
-%%   <<"RootResourceArn">> => string(),
-%%   <<"SupportedDialect">> => supported_dialect(),
-%%   <<"SupportedPermissionTypes">> := list(list(any())())
-%% }
--type get_unfiltered_table_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_rule_recommendation_runs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(data_quality_rule_recommendation_run_description())
-%% }
--type list_data_quality_rule_recommendation_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_task_runs_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableName">> := string()
-%% }
--type get_column_statistics_task_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_usage_profile_response() :: #{
-%%   <<"Configuration">> => profile_configuration(),
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type get_usage_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_defined_function_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"FunctionName">> := string()
-%% }
--type delete_user_defined_function_request() :: #{binary() => any()}.
-
-%% Example:
-%% o_auth2_client_application() :: #{
-%%   <<"AWSManagedClientApplicationReference">> => string(),
-%%   <<"UserManagedClientApplicationClientId">> => string()
-%% }
--type o_auth2_client_application() :: #{binary() => any()}.
-
-%% Example:
-%% register_schema_version_response() :: #{
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VersionNumber">> => float()
-%% }
--type register_schema_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% materialized_view_refresh_task_stopping_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type materialized_view_refresh_task_stopping_exception() :: #{binary() => any()}.
-
-%% Example:
-%% basic_authentication_properties() :: #{
-%%   <<"Password">> => connector_property(),
-%%   <<"Username">> => connector_property()
-%% }
--type basic_authentication_properties() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_table_properties_response() :: #{
-
-%% }
--type create_integration_table_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_asset_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type update_asset_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_crawler_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_crawler_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_entity_type_request() :: #{
-%%   <<"ContextWords">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"RegexString">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_custom_entity_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_profile_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_usage_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_unfiltered_partition_metadata_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
-%%   <<"QuerySessionContext">> => query_session_context(),
-%%   <<"Region">> => string(),
-%%   <<"SupportedPermissionTypes">> := list(list(any())()),
-%%   <<"TableName">> := string()
-%% }
--type get_unfiltered_partition_metadata_request() :: #{binary() => any()}.
-
-%% Example:
 %% job_update() :: #{
 %%   <<"AllocatedCapacity">> => integer(),
 %%   <<"CodeGenConfigurationNodes">> => map(),
@@ -3982,382 +6357,61 @@
 -type job_update() :: #{binary() => any()}.
 
 %% Example:
-%% find_matches_metrics() :: #{
-%%   <<"AreaUnderPRCurve">> => float(),
-%%   <<"ColumnImportances">> => list(column_importance()),
-%%   <<"ConfusionMatrix">> => confusion_matrix(),
-%%   <<"F1">> => float(),
-%%   <<"Precision">> => float(),
-%%   <<"Recall">> => float()
+%% join() :: #{
+%%   <<"Columns">> => list(join_column()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"JoinType">> => list(any()),
+%%   <<"Name">> => string()
 %% }
--type find_matches_metrics() :: #{binary() => any()}.
+-type join() :: #{binary() => any()}.
 
 %% Example:
-%% s3_json_source() :: #{
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"GroupFiles">> => string(),
-%%   <<"GroupSize">> => string(),
+%% join_column() :: #{
+%%   <<"From">> => string(),
+%%   <<"Keys">> => list(list(string())())
+%% }
+-type join_column() :: #{binary() => any()}.
+
+%% Example:
+%% json_classifier() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"JsonPath">> => string(),
-%%   <<"MaxBand">> => integer(),
-%%   <<"MaxFilesInBand">> => integer(),
-%%   <<"Multiline">> => boolean(),
+%%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string()),
-%%   <<"Recurse">> => boolean()
+%%   <<"Version">> => float()
 %% }
--type s3_json_source() :: #{binary() => any()}.
+-type json_classifier() :: #{binary() => any()}.
 
 %% Example:
-%% get_classifier_response() :: #{
-%%   <<"Classifier">> => classifier()
-%% }
--type get_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_usage_profile_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_usage_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% integration_conflict_operation_fault() :: #{
-%%   <<"Message">> => string()
-%% }
--type integration_conflict_operation_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_session_request() :: #{
-%%   <<"Command">> := session_command(),
-%%   <<"Connections">> => connections_list(),
-%%   <<"DefaultArguments">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IdleTimeout">> => integer(),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"Role">> := string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SessionType">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Timeout">> => integer(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type create_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_integration_table_properties_response() :: #{
-
-%% }
--type update_integration_table_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% long_column_statistics_data() :: #{
-%%   <<"MaximumValue">> => float(),
-%%   <<"MinimumValue">> => float(),
-%%   <<"NumberOfDistinctValues">> => float(),
-%%   <<"NumberOfNulls">> => float()
-%% }
--type long_column_statistics_data() :: #{binary() => any()}.
-
-%% Example:
-%% create_dev_endpoint_response() :: #{
-%%   <<"Arguments">> => map(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"EndpointName">> => string(),
-%%   <<"ExtraJarsS3Path">> => string(),
-%%   <<"ExtraPythonLibsS3Path">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"Status">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"VpcId">> => string(),
-%%   <<"WorkerType">> => list(any()),
-%%   <<"YarnEndpointAddress">> => string(),
-%%   <<"ZeppelinRemoteSparkInterpreterPort">> => integer()
-%% }
--type create_dev_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_custom_entity_types_response() :: #{
-%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
-%%   <<"CustomEntityTypesNotFound">> => list(string())
-%% }
--type batch_get_custom_entity_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_lake_principal() :: #{
-%%   <<"DataLakePrincipalIdentifier">> => string()
-%% }
--type data_lake_principal() :: #{binary() => any()}.
-
-%% Example:
-%% list_statements_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Statements">> => list(statement())
-%% }
--type list_statements_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_request() :: #{
-
-%% }
--type delete_glossary_request() :: #{binary() => any()}.
-
-%% Example:
-%% table_error() :: #{
-%%   <<"ErrorDetail">> => error_detail(),
-%%   <<"TableName">> => string()
-%% }
--type table_error() :: #{binary() => any()}.
-
-%% Example:
-%% ml_user_data_encryption() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MlUserDataEncryptionMode">> => list(any())
-%% }
--type ml_user_data_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_defined_function_response() :: #{
-
-%% }
--type delete_user_defined_function_response() :: #{binary() => any()}.
-
-%% Example:
-%% schema_column() :: #{
-%%   <<"DataType">> => string(),
-%%   <<"Name">> => string()
-%% }
--type schema_column() :: #{binary() => any()}.
-
-%% Example:
-%% binary_column_statistics_data() :: #{
-%%   <<"AverageLength">> => float(),
-%%   <<"MaximumLength">> => float(),
-%%   <<"NumberOfNulls">> => float()
-%% }
--type binary_column_statistics_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_partition_indexes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PartitionIndexDescriptorList">> => list(partition_index_descriptor())
-%% }
--type get_partition_indexes_response() :: #{binary() => any()}.
-
-%% Example:
-%% execution_attempt() :: #{
-%%   <<"ColumnStatisticsTaskRunId">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ExecutionTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type execution_attempt() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_defined_function_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"FunctionInput">> := user_defined_function_input()
-%% }
--type create_user_defined_function_request() :: #{binary() => any()}.
-
-%% Example:
-%% upsert_redshift_target_options() :: #{
+%% kafka_streaming_source_options() :: #{
+%%   <<"AddRecordTimestamp">> => string(),
+%%   <<"Assign">> => string(),
+%%   <<"BootstrapServers">> => string(),
+%%   <<"Classification">> => string(),
 %%   <<"ConnectionName">> => string(),
-%%   <<"TableLocation">> => string(),
-%%   <<"UpsertKeys">> => list(string())
+%%   <<"Delimiter">> => string(),
+%%   <<"EmitConsumerLagMetrics">> => string(),
+%%   <<"EndingOffsets">> => string(),
+%%   <<"IncludeHeaders">> => boolean(),
+%%   <<"MaxOffsetsPerTrigger">> => float(),
+%%   <<"MinPartitions">> => integer(),
+%%   <<"NumRetries">> => integer(),
+%%   <<"PollTimeoutMs">> => float(),
+%%   <<"RetryIntervalMs">> => float(),
+%%   <<"SecurityProtocol">> => string(),
+%%   <<"StartingOffsets">> => string(),
+%%   <<"StartingTimestamp">> => non_neg_integer(),
+%%   <<"SubscribePattern">> => string(),
+%%   <<"TopicName">> => string()
 %% }
--type upsert_redshift_target_options() :: #{binary() => any()}.
+-type kafka_streaming_source_options() :: #{binary() => any()}.
 
 %% Example:
-%% connector_property() :: #{
-%%   <<"AllowedValues">> => list([string()]()),
-%%   <<"DefaultValue">> => [string()],
-%%   <<"KeyOverride">> => string(),
+%% key_schema_element() :: #{
 %%   <<"Name">> => string(),
-%%   <<"PropertyLocation">> => list(any()),
-%%   <<"PropertyType">> => list(any()),
-%%   <<"Required">> => boolean()
+%%   <<"Type">> => string()
 %% }
--type connector_property() :: #{binary() => any()}.
-
-%% Example:
-%% allowed_value() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Value">> => string()
-%% }
--type allowed_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_glossary_terms_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"GlossaryTermIdentifiers">> := list(string())
-%% }
--type associate_glossary_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_authentication_properties() :: #{
-%%   <<"AuthenticationParameters">> => list(connector_property())
-%% }
--type custom_authentication_properties() :: #{binary() => any()}.
-
-%% Example:
-%% s3_hudi_source() :: #{
-%%   <<"AdditionalHudiOptions">> => map(),
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string())
-%% }
--type s3_hudi_source() :: #{binary() => any()}.
-
-%% Example:
-%% stop_column_statistics_task_run_schedule_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type stop_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_workflow_run_properties_response() :: #{
-
-%% }
--type put_workflow_run_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_iceberg_direct_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Compression">> => list(any()),
-%%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NumberTargetPartitions">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"Path">> => string(),
-%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
-%% }
--type s3_iceberg_direct_target() :: #{binary() => any()}.
-
-%% Example:
-%% jdbc_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"EnableAdditionalMetadata">> => list(list(any())()),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"Path">> => string()
-%% }
--type jdbc_target() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_blueprints_request() :: #{
-%%   <<"IncludeBlueprint">> => boolean(),
-%%   <<"IncludeParameterSpec">> => boolean(),
-%%   <<"Names">> := list(string())
-%% }
--type batch_get_blueprints_request() :: #{binary() => any()}.
-
-%% Example:
-%% lineage_configuration() :: #{
-%%   <<"CrawlerLineageSettings">> => list(any())
-%% }
--type lineage_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% fill_missing_values() :: #{
-%%   <<"FilledPath">> => string(),
-%%   <<"ImputedPath">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type fill_missing_values() :: #{binary() => any()}.
-
-%% Example:
-%% get_asset_input() :: #{
-
-%% }
--type get_asset_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_for_table_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ColumnNames">> := list(string()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type get_column_statistics_for_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_catalog_request() :: #{
-%%   <<"CatalogId">> := string()
-%% }
--type delete_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_trigger_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"TriggerUpdate">> := trigger_update()
-%% }
--type update_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_registries_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_registries_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_sessions_response() :: #{
-%%   <<"Ids">> => list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session())
-%% }
--type list_sessions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_profile_response() :: #{
-
-%% }
--type delete_usage_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_partition_response() :: #{
-%%   <<"Partition">> => partition()
-%% }
--type get_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_custom_entity_types_request() :: #{
-%%   <<"Names">> := list(string())
-%% }
--type batch_get_custom_entity_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_defined_function_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"FunctionName">> := string()
-%% }
--type get_user_defined_function_request() :: #{binary() => any()}.
+-type key_schema_element() :: #{binary() => any()}.
 
 %% Example:
 %% kinesis_streaming_source_options() :: #{
@@ -4387,11 +6441,1317 @@
 -type kinesis_streaming_source_options() :: #{binary() => any()}.
 
 %% Example:
-%% get_materialized_view_refresh_task_run_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"MaterializedViewRefreshTaskRunId">> := string()
+%% kms_key_not_accessible_fault() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
+-type kms_key_not_accessible_fault() :: #{binary() => any()}.
+
+%% Example:
+%% labeling_set_generation_task_run_properties() :: #{
+%%   <<"OutputS3Path">> => string()
+%% }
+-type labeling_set_generation_task_run_properties() :: #{binary() => any()}.
+
+%% Example:
+%% lake_formation_configuration() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"UseLakeFormationCredentials">> => boolean()
+%% }
+-type lake_formation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% last_active_definition() :: #{
+%%   <<"BlueprintLocation">> => string(),
+%%   <<"BlueprintServiceLocation">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"ParameterSpec">> => string()
+%% }
+-type last_active_definition() :: #{binary() => any()}.
+
+%% Example:
+%% last_crawl_info() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LogGroup">> => string(),
+%%   <<"LogStream">> => string(),
+%%   <<"MessagePrefix">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type last_crawl_info() :: #{binary() => any()}.
+
+%% Example:
+%% lineage_configuration() :: #{
+%%   <<"CrawlerLineageSettings">> => list(any())
+%% }
+-type lineage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_asset_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_asset_types_response() :: #{
+%%   <<"Items">> => list(asset_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_asset_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_blueprints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_blueprints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_blueprints_response() :: #{
+%%   <<"Blueprints">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blueprints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_column_statistics_task_runs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_column_statistics_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_column_statistics_task_runs_response() :: #{
+%%   <<"ColumnStatisticsTaskRunIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_column_statistics_task_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connection_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connection_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connection_types_response() :: #{
+%%   <<"ConnectionTypes">> => list(connection_type_brief()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connection_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_crawlers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_crawlers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_crawlers_response() :: #{
+%%   <<"CrawlerNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_crawlers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_crawls_request() :: #{
+%%   <<"CrawlerName">> := string(),
+%%   <<"Filters">> => list(crawls_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_crawls_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_crawls_response() :: #{
+%%   <<"Crawls">> => list(crawler_history()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_crawls_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_entity_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_custom_entity_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_entity_types_response() :: #{
+%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_entity_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_results_request() :: #{
+%%   <<"Filter">> => data_quality_result_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_results_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(data_quality_result_description())
+%% }
+-type list_data_quality_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_rule_recommendation_runs_request() :: #{
+%%   <<"Filter">> => data_quality_rule_recommendation_run_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_data_quality_rule_recommendation_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_rule_recommendation_runs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Runs">> => list(data_quality_rule_recommendation_run_description())
+%% }
+-type list_data_quality_rule_recommendation_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_ruleset_evaluation_runs_request() :: #{
+%%   <<"Filter">> => data_quality_ruleset_evaluation_run_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_ruleset_evaluation_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_ruleset_evaluation_runs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Runs">> => list(data_quality_ruleset_evaluation_run_description())
+%% }
+-type list_data_quality_ruleset_evaluation_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_rulesets_request() :: #{
+%%   <<"Filter">> => data_quality_ruleset_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_data_quality_rulesets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_rulesets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rulesets">> => list(data_quality_ruleset_list_details())
+%% }
+-type list_data_quality_rulesets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistic_annotations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"TimestampFilter">> => timestamp_filter()
+%% }
+-type list_data_quality_statistic_annotations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistic_annotations_response() :: #{
+%%   <<"Annotations">> => list(statistic_annotation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_statistic_annotations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"TimestampFilter">> => timestamp_filter()
+%% }
+-type list_data_quality_statistics_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_statistics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Statistics">> => list(statistic_summary())
+%% }
+-type list_data_quality_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dev_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_dev_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dev_endpoints_response() :: #{
+%%   <<"DevEndpointNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dev_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DataStoreApiVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentEntityName">> => string()
+%% }
+-type list_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_response() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_form_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_form_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_form_types_response() :: #{
+%%   <<"Items">> => list(form_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_form_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_glossaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_glossaries_response() :: #{
+%%   <<"Items">> => list(glossary_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_glossary_terms_request() :: #{
+%%   <<"GlossaryIdentifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossary_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_glossary_terms_response() :: #{
+%%   <<"Items">> => list(glossary_term_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_glossary_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_resource_properties_request() :: #{
+%%   <<"Filters">> => list(integration_resource_property_filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type list_integration_resource_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_resource_properties_response() :: #{
+%%   <<"IntegrationResourcePropertyList">> => list(integration_resource_property()),
+%%   <<"Marker">> => string()
+%% }
+-type list_integration_resource_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_iterable_forms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iterable_forms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_iterable_forms_response() :: #{
+%%   <<"Items">> => list(iterable_form_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_iterable_forms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"JobNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_materialized_view_refresh_task_runs_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type list_materialized_view_refresh_task_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_materialized_view_refresh_task_runs_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRuns">> => list(materialized_view_refresh_task_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_materialized_view_refresh_task_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ml_transforms_request() :: #{
+%%   <<"Filter">> => transform_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => transform_sort_criteria(),
+%%   <<"Tags">> => map()
+%% }
+-type list_ml_transforms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ml_transforms_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransformIds">> => list(string())
+%% }
+-type list_ml_transforms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_registries_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_registries_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_registries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Registries">> => list(registry_list_item())
+%% }
+-type list_registries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schema_versions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaId">> := schema_id()
+%% }
+-type list_schema_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_schema_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(schema_version_list_item())
+%% }
+-type list_schema_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegistryId">> => registry_id()
+%% }
+-type list_schemas_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(schema_list_item())
+%% }
+-type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"Ids">> => list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"SessionId">> := string()
+%% }
+-type list_statements_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_statements_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Statements">> => list(statement())
+%% }
+-type list_statements_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_optimizer_runs_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type list_table_optimizer_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_optimizer_runs_response() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableOptimizerRuns">> => list(table_optimizer_run())
+%% }
+-type list_table_optimizer_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_triggers_request() :: #{
+%%   <<"DependentJobName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_triggers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_triggers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TriggerNames">> => list(string())
+%% }
+-type list_triggers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_usage_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Profiles">> => list(usage_profile_definition())
+%% }
+-type list_usage_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workflows">> => list(string())
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+%% Example:
+%% location() :: #{
+%%   <<"DynamoDB">> => list(code_gen_node_arg()),
+%%   <<"Jdbc">> => list(code_gen_node_arg()),
+%%   <<"S3">> => list(code_gen_node_arg())
+%% }
+-type location() :: #{binary() => any()}.
+
+%% Example:
+%% long_column_statistics_data() :: #{
+%%   <<"MaximumValue">> => float(),
+%%   <<"MinimumValue">> => float(),
+%%   <<"NumberOfDistinctValues">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type long_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% mapping() :: #{
+%%   <<"Children">> => list(mapping()),
+%%   <<"Dropped">> => boolean(),
+%%   <<"FromPath">> => list(string()),
+%%   <<"FromType">> => string(),
+%%   <<"ToKey">> => string(),
+%%   <<"ToType">> => string()
+%% }
+-type mapping() :: #{binary() => any()}.
+
+%% Example:
+%% mapping_entry() :: #{
+%%   <<"SourcePath">> => string(),
+%%   <<"SourceTable">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"TargetPath">> => string(),
+%%   <<"TargetTable">> => string(),
+%%   <<"TargetType">> => string()
+%% }
+-type mapping_entry() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_not_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_run() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerId">> => string(),
+%%   <<"DPUSeconds">> => float(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MaterializedViewRefreshTaskRunId">> => string(),
+%%   <<"ProcessedBytes">> => float(),
+%%   <<"RefreshType">> => list(any()),
+%%   <<"Role">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TableName">> => string()
+%% }
+-type materialized_view_refresh_task_run() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% materialized_view_refresh_task_stopping_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type materialized_view_refresh_task_stopping_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PrimaryKeys">> => list(list(string())()),
+%%   <<"Source">> => string()
+%% }
+-type merge() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_info() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"MetadataValue">> => string(),
+%%   <<"OtherMetadataValueList">> => list(other_metadata_value_list_item())
+%% }
+-type metadata_info() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_key_value_pair() :: #{
+%%   <<"MetadataKey">> => string(),
+%%   <<"MetadataValue">> => string()
+%% }
+-type metadata_key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% metric_based_observation() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"MetricValues">> => data_quality_metric_values(),
+%%   <<"NewRules">> => list(string()),
+%%   <<"StatisticId">> => string()
+%% }
+-type metric_based_observation() :: #{binary() => any()}.
+
+%% Example:
+%% microsoft_s_q_l_server_catalog_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type microsoft_s_q_l_server_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% microsoft_s_q_l_server_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type microsoft_s_q_l_server_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% ml_transform() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationMetrics">> => evaluation_metrics(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"InputRecordTables">> => list(glue_table()),
+%%   <<"LabelCount">> => integer(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Parameters">> => transform_parameters(),
+%%   <<"Role">> => string(),
+%%   <<"Schema">> => list(schema_column()),
+%%   <<"Status">> => list(any()),
+%%   <<"Timeout">> => integer(),
+%%   <<"TransformEncryption">> => transform_encryption(),
+%%   <<"TransformId">> => string(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type ml_transform() :: #{binary() => any()}.
+
+%% Example:
+%% ml_transform_not_ready_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ml_transform_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ml_user_data_encryption() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MlUserDataEncryptionMode">> => list(any())
+%% }
+-type ml_user_data_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% modify_integration_request() :: #{
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
+%%   <<"IntegrationIdentifier">> := string(),
+%%   <<"IntegrationName">> => string()
+%% }
+-type modify_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_integration_response() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DataFilter">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Errors">> => list(integration_error()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetArn">> => string()
+%% }
+-type modify_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% mongo_db_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"ScanAll">> => boolean()
+%% }
+-type mongo_db_target() :: #{binary() => any()}.
+
+%% Example:
+%% my_s_q_l_catalog_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type my_s_q_l_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% my_s_q_l_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type my_s_q_l_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% no_schedule_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_schedule_exception() :: #{binary() => any()}.
+
+%% Example:
+%% notification_property() :: #{
+%%   <<"NotifyDelayAfter">> => integer()
+%% }
+-type notification_property() :: #{binary() => any()}.
+
+%% Example:
+%% null_check_box_list() :: #{
+%%   <<"IsEmpty">> => boolean(),
+%%   <<"IsNegOne">> => boolean(),
+%%   <<"IsNullString">> => boolean()
+%% }
+-type null_check_box_list() :: #{binary() => any()}.
+
+%% Example:
+%% null_value_field() :: #{
+%%   <<"Datatype">> => datatype(),
+%%   <<"Value">> => string()
+%% }
+-type null_value_field() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_client_application() :: #{
+%%   <<"AWSManagedClientApplicationReference">> => string(),
+%%   <<"UserManagedClientApplicationClientId">> => string()
+%% }
+-type o_auth2_client_application() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_credentials() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"JwtToken">> => string(),
+%%   <<"RefreshToken">> => string(),
+%%   <<"UserManagedClientApplicationClientSecret">> => string()
+%% }
+-type o_auth2_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_properties() :: #{
+%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"OAuth2GrantType">> => list(any()),
+%%   <<"TokenUrl">> => string(),
+%%   <<"TokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth2_properties_input() :: #{
+%%   <<"AuthorizationCodeProperties">> => authorization_code_properties(),
+%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"OAuth2Credentials">> => o_auth2_credentials(),
+%%   <<"OAuth2GrantType">> => list(any()),
+%%   <<"TokenUrl">> => string(),
+%%   <<"TokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties_input() :: #{binary() => any()}.
+
+%% Example:
+%% observation_results_options() :: #{
+%%   <<"CatalogTableConfig">> => catalog_table_config_options(),
+%%   <<"WriteObservationResultsEnabled">> => boolean()
+%% }
+-type observation_results_options() :: #{binary() => any()}.
+
+%% Example:
+%% offset_configuration() :: #{
+%%   <<"LimitParameter">> => extracted_parameter(),
+%%   <<"OffsetParameter">> => extracted_parameter()
+%% }
+-type offset_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% open_table_format_input() :: #{
+%%   <<"IcebergInput">> => iceberg_input()
+%% }
+-type open_table_format_input() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% option() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type option() :: #{binary() => any()}.
+
+%% Example:
+%% oracle_s_q_l_catalog_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type oracle_s_q_l_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% oracle_s_q_l_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type oracle_s_q_l_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% order() :: #{
+%%   <<"Column">> => string(),
+%%   <<"SortOrder">> => integer()
+%% }
+-type order() :: #{binary() => any()}.
+
+%% Example:
+%% orphan_file_deletion_configuration() :: #{
+%%   <<"icebergConfiguration">> => iceberg_orphan_file_deletion_configuration()
+%% }
+-type orphan_file_deletion_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% orphan_file_deletion_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_orphan_file_deletion_metrics()
+%% }
+-type orphan_file_deletion_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% other_metadata_value_list_item() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"MetadataValue">> => string()
+%% }
+-type other_metadata_value_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% p_i_idetection() :: #{
+%%   <<"DetectionParameters">> => string(),
+%%   <<"DetectionSensitivity">> => string(),
+%%   <<"EntityTypesToDetect">> => list(string()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"MaskValue">> => string(),
+%%   <<"MatchPattern">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NumLeftCharsToExclude">> => integer(),
+%%   <<"NumRightCharsToExclude">> => integer(),
+%%   <<"OutputColumnName">> => string(),
+%%   <<"PiiType">> => list(any()),
+%%   <<"RedactChar">> => string(),
+%%   <<"RedactText">> => string(),
+%%   <<"SampleFraction">> => float(),
+%%   <<"ThresholdFraction">> => float()
+%% }
+-type p_i_idetection() :: #{binary() => any()}.
+
+%% Example:
+%% pagination_configuration() :: #{
+%%   <<"CursorConfiguration">> => cursor_configuration(),
+%%   <<"OffsetConfiguration">> => offset_configuration()
+%% }
+-type pagination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% partition() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"LastAccessTime">> => non_neg_integer(),
+%%   <<"LastAnalyzedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => map(),
+%%   <<"StorageDescriptor">> => storage_descriptor(),
+%%   <<"TableName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type partition() :: #{binary() => any()}.
+
+%% Example:
+%% partition_error() :: #{
+%%   <<"ErrorDetail">> => error_detail(),
+%%   <<"PartitionValues">> => list(string())
+%% }
+-type partition_error() :: #{binary() => any()}.
+
+%% Example:
+%% partition_index() :: #{
+%%   <<"IndexName">> => string(),
+%%   <<"Keys">> => list(string())
+%% }
+-type partition_index() :: #{binary() => any()}.
+
+%% Example:
+%% partition_index_descriptor() :: #{
+%%   <<"BackfillErrors">> => list(backfill_error()),
+%%   <<"IndexName">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"Keys">> => list(key_schema_element())
+%% }
+-type partition_index_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% partition_input() :: #{
+%%   <<"LastAccessTime">> => non_neg_integer(),
+%%   <<"LastAnalyzedTime">> => non_neg_integer(),
+%%   <<"Parameters">> => map(),
+%%   <<"StorageDescriptor">> => storage_descriptor(),
+%%   <<"Values">> => list(string())
+%% }
+-type partition_input() :: #{binary() => any()}.
+
+%% Example:
+%% partition_value_list() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type partition_value_list() :: #{binary() => any()}.
+
+%% Example:
+%% permission_type_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type permission_type_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% physical_connection_requirements() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"SecurityGroupIdList">> => list(string()),
+%%   <<"SubnetId">> => string()
+%% }
+-type physical_connection_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% postgre_s_q_l_catalog_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type postgre_s_q_l_catalog_source() :: #{binary() => any()}.
+
+%% Example:
+%% postgre_s_q_l_catalog_target() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Table">> => string()
+%% }
+-type postgre_s_q_l_catalog_target() :: #{binary() => any()}.
+
+%% Example:
+%% predecessor() :: #{
+%%   <<"JobName">> => string(),
+%%   <<"RunId">> => string()
+%% }
+-type predecessor() :: #{binary() => any()}.
+
+%% Example:
+%% predicate() :: #{
+%%   <<"Conditions">> => list(condition()),
+%%   <<"Logical">> => list(any())
+%% }
+-type predicate() :: #{binary() => any()}.
+
+%% Example:
+%% principal_permissions() :: #{
+%%   <<"Permissions">> => list(list(any())()),
+%%   <<"Principal">> => data_lake_principal()
+%% }
+-type principal_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% profile_configuration() :: #{
+%%   <<"JobConfiguration">> => map(),
+%%   <<"SessionConfiguration">> => map()
+%% }
+-type profile_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% profiling_results_options() :: #{
+%%   <<"CatalogTableConfig">> => catalog_table_config_options(),
+%%   <<"DistributionResults">> => distribution_results_options(),
+%%   <<"WriteProfilingResultsEnabled">> => boolean()
+%% }
+-type profiling_results_options() :: #{binary() => any()}.
+
+%% Example:
+%% property() :: #{
+%%   <<"AllowedValues">> => list(allowed_value()),
+%%   <<"DataOperationScopes">> => list(list(any())()),
+%%   <<"DefaultValue">> => [string()],
+%%   <<"Description">> => string(),
+%%   <<"KeyOverride">> => [string()],
+%%   <<"Name">> => string(),
+%%   <<"PropertyLocation">> => list(any()),
+%%   <<"PropertyTypes">> => list(list(any())()),
+%%   <<"Required">> => boolean()
+%% }
+-type property() :: #{binary() => any()}.
+
+%% Example:
+%% property_predicate() :: #{
+%%   <<"Comparator">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type property_predicate() :: #{binary() => any()}.
+
+%% Example:
+%% put_asset_request() :: #{
+%%   <<"AssetTypeId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> := map(),
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type put_asset_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_asset_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_asset_type_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Forms">> := map(),
+%%   <<"Name">> := string()
+%% }
+-type put_asset_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_asset_type_response() :: #{
+%%   <<"Forms">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type put_asset_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_attachment_request() :: #{
+%%   <<"AttachmentName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := string(),
+%%   <<"FormTypeId">> := string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
+%% }
+-type put_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_attachment_response() :: #{
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"AttachmentName">> => string(),
+%%   <<"FormTypeId">> => string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
+%% }
+-type put_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_catalog_encryption_settings_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DataCatalogEncryptionSettings">> := data_catalog_encryption_settings()
+%% }
+-type put_data_catalog_encryption_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_catalog_encryption_settings_response() :: #{
+
+%% }
+-type put_data_catalog_encryption_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_catalog_export_configuration_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
+%%   <<"ExportSetting">> := list(any())
+%% }
+-type put_data_catalog_export_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_catalog_export_configuration_output() :: #{
+%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
+%%   <<"ExportSetting">> => list(any())
+%% }
+-type put_data_catalog_export_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_quality_profile_annotation_request() :: #{
+%%   <<"InclusionAnnotation">> := list(any()),
+%%   <<"ProfileId">> := string()
+%% }
+-type put_data_quality_profile_annotation_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_quality_profile_annotation_response() :: #{
+
+%% }
+-type put_data_quality_profile_annotation_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_form_type_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schema">> := string()
+%% }
+-type put_form_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_form_type_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type put_form_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"EnableHybrid">> => list(any()),
+%%   <<"PolicyExistsCondition">> => list(any()),
+%%   <<"PolicyHashCondition">> => string(),
+%%   <<"PolicyInJson">> := string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"PolicyHash">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_schema_version_metadata_input() :: #{
+%%   <<"MetadataKeyValue">> := metadata_key_value_pair(),
+%%   <<"SchemaId">> => schema_id(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionNumber">> => schema_version_number()
+%% }
+-type put_schema_version_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_schema_version_metadata_response() :: #{
+%%   <<"LatestVersion">> => boolean(),
+%%   <<"MetadataKey">> => string(),
+%%   <<"MetadataValue">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type put_schema_version_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_workflow_run_properties_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RunId">> := string(),
+%%   <<"RunProperties">> := map()
+%% }
+-type put_workflow_run_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_workflow_run_properties_response() :: #{
+
+%% }
+-type put_workflow_run_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_schema_version_metadata_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetadataList">> => list(metadata_key_value_pair()),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaId">> => schema_id(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionNumber">> => schema_version_number()
+%% }
+-type query_schema_version_metadata_input() :: #{binary() => any()}.
+
+%% Example:
+%% query_schema_version_metadata_response() :: #{
+%%   <<"MetadataInfoMap">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaVersionId">> => string()
+%% }
+-type query_schema_version_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_session_context() :: #{
+%%   <<"AdditionalContext">> => map(),
+%%   <<"ClusterId">> => string(),
+%%   <<"QueryAuthorizationId">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStartTime">> => non_neg_integer()
+%% }
+-type query_session_context() :: #{binary() => any()}.
+
+%% Example:
+%% recipe() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"RecipeReference">> => recipe_reference(),
+%%   <<"RecipeSteps">> => list(recipe_step())
+%% }
+-type recipe() :: #{binary() => any()}.
+
+%% Example:
+%% recipe_action() :: #{
+%%   <<"Operation">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type recipe_action() :: #{binary() => any()}.
+
+%% Example:
+%% recipe_reference() :: #{
+%%   <<"RecipeArn">> => string(),
+%%   <<"RecipeVersion">> => string()
+%% }
+-type recipe_reference() :: #{binary() => any()}.
+
+%% Example:
+%% recipe_step() :: #{
+%%   <<"Action">> => recipe_action(),
+%%   <<"ConditionExpressions">> => list(condition_expression())
+%% }
+-type recipe_step() :: #{binary() => any()}.
+
+%% Example:
+%% recrawl_policy() :: #{
+%%   <<"RecrawlBehavior">> => list(any())
+%% }
+-type recrawl_policy() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_source() :: #{
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RedshiftTmpDir">> => string(),
+%%   <<"Table">> => string(),
+%%   <<"TmpDirIAMRole">> => string()
+%% }
+-type redshift_source() :: #{binary() => any()}.
 
 %% Example:
 %% redshift_target() :: #{
@@ -4406,71 +7766,107 @@
 -type redshift_target() :: #{binary() => any()}.
 
 %% Example:
-%% catalog_hudi_source() :: #{
-%%   <<"AdditionalHudiOptions">> => map(),
+%% register_connection_type_request() :: #{
+%%   <<"ConnectionProperties">> := connection_properties_configuration(),
+%%   <<"ConnectionType">> := string(),
+%%   <<"ConnectorAuthenticationConfiguration">> := connector_authentication_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationType">> := list(any()),
+%%   <<"RestConfiguration">> := rest_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type register_connection_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_connection_type_response() :: #{
+%%   <<"ConnectionTypeArn">> => string()
+%% }
+-type register_connection_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_schema_version_input() :: #{
+%%   <<"SchemaDefinition">> := string(),
+%%   <<"SchemaId">> := schema_id()
+%% }
+-type register_schema_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_schema_version_response() :: #{
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type register_schema_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% registry_id() :: #{
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string()
+%% }
+-type registry_id() :: #{binary() => any()}.
+
+%% Example:
+%% registry_list_item() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTime">> => string()
+%% }
+-type registry_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% relational_catalog_source() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Table">> => string()
 %% }
--type catalog_hudi_source() :: #{binary() => any()}.
+-type relational_catalog_source() :: #{binary() => any()}.
 
 %% Example:
-%% column_statistics_task_not_running_exception() :: #{
-%%   <<"Message">> => string()
+%% remove_schema_version_metadata_input() :: #{
+%%   <<"MetadataKeyValue">> := metadata_key_value_pair(),
+%%   <<"SchemaId">> => schema_id(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionNumber">> => schema_version_number()
 %% }
--type column_statistics_task_not_running_exception() :: #{binary() => any()}.
+-type remove_schema_version_metadata_input() :: #{binary() => any()}.
 
 %% Example:
-%% integration_quota_exceeded_fault() :: #{
-%%   <<"Message">> => string()
+%% remove_schema_version_metadata_response() :: #{
+%%   <<"LatestVersion">> => boolean(),
+%%   <<"MetadataKey">> => string(),
+%%   <<"MetadataValue">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"VersionNumber">> => float()
 %% }
--type integration_quota_exceeded_fault() :: #{binary() => any()}.
+-type remove_schema_version_metadata_response() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_object() :: #{
-%%   <<"AllowedValues">> => list(string()),
-%%   <<"DefaultValue">> => string(),
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string()
-%% }
--type configuration_object() :: #{binary() => any()}.
-
-%% Example:
-%% partition_value_list() :: #{
-%%   <<"Values">> => list(string())
-%% }
--type partition_value_list() :: #{binary() => any()}.
-
-%% Example:
-%% delete_crawler_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_crawler_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% backfill_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Partitions">> => list(partition_value_list())
-%% }
--type backfill_error() :: #{binary() => any()}.
-
-%% Example:
-%% governed_catalog_target() :: #{
-%%   <<"Database">> => string(),
+%% rename_field() :: #{
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
-%%   <<"Table">> => string()
+%%   <<"SourcePath">> => list(string()),
+%%   <<"TargetPath">> => list(string())
 %% }
--type governed_catalog_target() :: #{binary() => any()}.
+-type rename_field() :: #{binary() => any()}.
+
+%% Example:
+%% reset_job_bookmark_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"RunId">> => string()
+%% }
+-type reset_job_bookmark_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_job_bookmark_response() :: #{
+%%   <<"JobBookmarkEntry">> => job_bookmark_entry()
+%% }
+-type reset_job_bookmark_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -4479,25 +7875,60 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_column_statistics_task_runs_response() :: #{
-%%   <<"ColumnStatisticsTaskRunIds">> => list(string()),
-%%   <<"NextToken">> => string()
+%% resource_not_ready_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_column_statistics_task_runs_response() :: #{binary() => any()}.
+-type resource_not_ready_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_triggers_request() :: #{
-%%   <<"DependentJobName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% resource_number_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_triggers_request() :: #{binary() => any()}.
+-type resource_number_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_integration_request() :: #{
-%%   <<"IntegrationIdentifier">> := string()
+%% resource_uri() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Uri">> => string()
 %% }
--type delete_integration_request() :: #{binary() => any()}.
+-type resource_uri() :: #{binary() => any()}.
+
+%% Example:
+%% response_configuration() :: #{
+%%   <<"ErrorPath">> => string(),
+%%   <<"ResultPath">> => string()
+%% }
+-type response_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% response_extraction_mapping() :: #{
+%%   <<"ContentPath">> => string(),
+%%   <<"HeaderKey">> => string()
+%% }
+-type response_extraction_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% rest_configuration() :: #{
+%%   <<"EntityConfigurations">> => map(),
+%%   <<"GlobalSourceConfiguration">> => source_configuration(),
+%%   <<"ValidationEndpointConfiguration">> => source_configuration()
+%% }
+-type rest_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resume_workflow_run_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"NodeIds">> := list(string()),
+%%   <<"RunId">> := string()
+%% }
+-type resume_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_workflow_run_response() :: #{
+%%   <<"NodeIds">> => list(string()),
+%%   <<"RunId">> => string()
+%% }
+-type resume_workflow_run_response() :: #{binary() => any()}.
 
 %% Example:
 %% retention_configuration() :: #{
@@ -4506,191 +7937,76 @@
 -type retention_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_run() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Graph">> => workflow_graph(),
-%%   <<"Name">> => string(),
-%%   <<"PreviousRunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"StartingEventBatchCondition">> => starting_event_batch_condition(),
-%%   <<"Statistics">> => workflow_run_statistics(),
-%%   <<"Status">> => list(any()),
-%%   <<"WorkflowRunId">> => string(),
-%%   <<"WorkflowRunProperties">> => map()
+%% retention_metrics() :: #{
+%%   <<"IcebergMetrics">> => iceberg_retention_metrics()
 %% }
--type workflow_run() :: #{binary() => any()}.
+-type retention_metrics() :: #{binary() => any()}.
 
 %% Example:
-%% batch_stop_job_run_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"JobRunIds">> := list(string())
-%% }
--type batch_stop_job_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_connection_response() :: #{
-%%   <<"Errors">> => map(),
-%%   <<"Succeeded">> => list(string())
-%% }
--type batch_delete_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_rule_result() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EvaluatedMetrics">> => map(),
-%%   <<"EvaluatedRule">> => string(),
-%%   <<"EvaluationMessage">> => string(),
-%%   <<"Labels">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"Result">> => list(any()),
-%%   <<"RuleMetrics">> => map()
-%% }
--type data_quality_rule_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_registry_input() :: #{
-%%   <<"Description">> := string(),
-%%   <<"RegistryId">> := registry_id()
-%% }
--type update_registry_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_put_data_quality_statistic_annotation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InclusionAnnotations">> := list(datapoint_inclusion_annotation())
-%% }
--type batch_put_data_quality_statistic_annotation_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_job_run_response() :: #{
-%%   <<"JobRunId">> => string()
-%% }
--type start_job_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ml_transform_request() :: #{
-%%   <<"TransformId">> := string()
-%% }
--type delete_ml_transform_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_blueprint_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type start_blueprint_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% check_schema_version_validity_response() :: #{
-%%   <<"Error">> => string(),
-%%   <<"Valid">> => boolean()
-%% }
--type check_schema_version_validity_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_catalog_encryption_settings_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DataCatalogEncryptionSettings">> := data_catalog_encryption_settings()
-%% }
--type put_data_catalog_encryption_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_schema_input() :: #{
-%%   <<"Compatibility">> => list(any()),
-%%   <<"DataFormat">> := list(any()),
-%%   <<"Description">> => string(),
-%%   <<"RegistryId">> => registry_id(),
-%%   <<"SchemaDefinition">> => string(),
-%%   <<"SchemaName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_iceberg_table_input() :: #{
-%%   <<"Updates">> => list(iceberg_table_update())
-%% }
--type update_iceberg_table_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_dev_endpoint_response() :: #{
-%%   <<"DevEndpoint">> => dev_endpoint()
-%% }
--type get_dev_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_glossary_terms_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
-%%   <<"GlossaryTerms">> => list(string())
-%% }
--type associate_glossary_terms_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_quality_profile_annotation_response() :: #{
-
-%% }
--type put_data_quality_profile_annotation_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_column_statistics_for_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ColumnName">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
-%%   <<"TableName">> := string()
-%% }
--type delete_column_statistics_for_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_trigger_response() :: #{
+%% route() :: #{
+%%   <<"GroupFiltersList">> => list(group_filters()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
--type create_trigger_response() :: #{binary() => any()}.
+-type route() :: #{binary() => any()}.
 
 %% Example:
-%% delete_session_response() :: #{
-%%   <<"Id">> => string()
+%% row_level_results_options() :: #{
+%%   <<"CatalogTableConfig">> => catalog_table_config_options(),
+%%   <<"MaxRowsToWrite">> => integer(),
+%%   <<"ResultType">> => list(any())
 %% }
--type delete_session_response() :: #{binary() => any()}.
+-type row_level_results_options() :: #{binary() => any()}.
 
 %% Example:
-%% get_dataflow_graph_request() :: #{
-%%   <<"PythonScript">> => string()
+%% run_identifier() :: #{
+%%   <<"JobRunId">> => string(),
+%%   <<"RunId">> => string()
 %% }
--type get_dataflow_graph_request() :: #{binary() => any()}.
+-type run_identifier() :: #{binary() => any()}.
 
 %% Example:
-%% sql_alias() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"From">> => string()
+%% run_metrics() :: #{
+%%   <<"JobDurationInHour">> => string(),
+%%   <<"NumberOfBytesCompacted">> => string(),
+%%   <<"NumberOfDpus">> => string(),
+%%   <<"NumberOfFilesCompacted">> => string()
 %% }
--type sql_alias() :: #{binary() => any()}.
+-type run_metrics() :: #{binary() => any()}.
 
 %% Example:
-%% get_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% run_statement_request() :: #{
+%%   <<"Code">> := string(),
+%%   <<"RequestOrigin">> => string(),
+%%   <<"SessionId">> := string()
 %% }
--type get_jobs_request() :: #{binary() => any()}.
+-type run_statement_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_data_quality_rule_recommendation_run_response() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"CreatedRulesetName">> => string(),
-%%   <<"DataQualitySecurityConfiguration">> => string(),
-%%   <<"DataSource">> => data_source(),
-%%   <<"ErrorString">> => string(),
-%%   <<"ExecutionTime">> => integer(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"RecommendedRuleset">> => string(),
-%%   <<"Role">> => string(),
-%%   <<"RunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Timeout">> => integer()
+%% run_statement_response() :: #{
+%%   <<"Id">> => integer()
 %% }
--type get_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
+-type run_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_catalog_delta_source() :: #{
+%%   <<"AdditionalDeltaOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type s3_catalog_delta_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_catalog_hudi_source() :: #{
+%%   <<"AdditionalHudiOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type s3_catalog_hudi_source() :: #{binary() => any()}.
 
 %% Example:
 %% s3_catalog_iceberg_source() :: #{
@@ -4703,37 +8019,64 @@
 -type s3_catalog_iceberg_source() :: #{binary() => any()}.
 
 %% Example:
-%% describe_connection_type_response() :: #{
-%%   <<"AthenaConnectionProperties">> => map(),
-%%   <<"AuthenticationConfiguration">> => auth_configuration(),
-%%   <<"Capabilities">> => capabilities(),
-%%   <<"ComputeEnvironmentConfigurations">> => map(),
-%%   <<"ConnectionOptions">> => map(),
-%%   <<"ConnectionProperties">> => map(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"PhysicalConnectionRequirements">> => map(),
-%%   <<"PythonConnectionProperties">> => map(),
-%%   <<"RestConfiguration">> => rest_configuration(),
-%%   <<"SparkConnectionProperties">> => map()
+%% s3_catalog_source() :: #{
+%%   <<"AdditionalOptions">> => s3_source_additional_options(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PartitionPredicate">> => string(),
+%%   <<"Table">> => string()
 %% }
--type describe_connection_type_response() :: #{binary() => any()}.
+-type s3_catalog_source() :: #{binary() => any()}.
 
 %% Example:
-%% update_glossary_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%% s3_catalog_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
+%%   <<"Table">> => string()
 %% }
--type update_glossary_request() :: #{binary() => any()}.
+-type s3_catalog_target() :: #{binary() => any()}.
 
 %% Example:
-%% dynamo_db_target() :: #{
-%%   <<"Path">> => string(),
-%%   <<"scanAll">> => boolean(),
-%%   <<"scanRate">> => float()
+%% s3_csv_source() :: #{
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"Escaper">> => string(),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"GroupFiles">> => string(),
+%%   <<"GroupSize">> => string(),
+%%   <<"MaxBand">> => integer(),
+%%   <<"MaxFilesInBand">> => integer(),
+%%   <<"Multiline">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OptimizePerformance">> => boolean(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
+%%   <<"QuoteChar">> => list(any()),
+%%   <<"Recurse">> => boolean(),
+%%   <<"Separator">> => list(any()),
+%%   <<"SkipFirst">> => boolean(),
+%%   <<"WithHeader">> => boolean(),
+%%   <<"WriteHeader">> => boolean()
 %% }
--type dynamo_db_target() :: #{binary() => any()}.
+-type s3_csv_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_delta_catalog_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
+%%   <<"Table">> => string()
+%% }
+-type s3_delta_catalog_target() :: #{binary() => any()}.
 
 %% Example:
 %% s3_delta_direct_target() :: #{
@@ -4751,11 +8094,38 @@
 -type s3_delta_direct_target() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% s3_delta_source() :: #{
+%%   <<"AdditionalDeltaOptions">> => map(),
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string())
 %% }
--type tag() :: #{binary() => any()}.
+-type s3_delta_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_direct_source_additional_options() :: #{
+%%   <<"BoundedFiles">> => float(),
+%%   <<"BoundedSize">> => float(),
+%%   <<"EnableSamplePath">> => boolean(),
+%%   <<"SamplePath">> => string()
+%% }
+-type s3_direct_source_additional_options() :: #{binary() => any()}.
+
+%% Example:
+%% s3_direct_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Compression">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
+%% }
+-type s3_direct_target() :: #{binary() => any()}.
 
 %% Example:
 %% s3_encryption() :: #{
@@ -4765,540 +8135,74 @@
 -type s3_encryption() :: #{binary() => any()}.
 
 %% Example:
-%% create_x_ml_classifier_request() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RowTag">> => string()
-%% }
--type create_x_ml_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_orphan_file_deletion_metrics() :: #{
-%%   <<"DpuHours">> => float(),
-%%   <<"JobDurationInHour">> => float(),
-%%   <<"NumberOfDpus">> => integer(),
-%%   <<"NumberOfOrphanFilesDeleted">> => float()
-%% }
--type iceberg_orphan_file_deletion_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_properties_response() :: #{
-%%   <<"RunProperties">> => map()
-%% }
--type get_workflow_run_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% orphan_file_deletion_metrics() :: #{
-%%   <<"IcebergMetrics">> => iceberg_orphan_file_deletion_metrics()
-%% }
--type orphan_file_deletion_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% statistic_model_result() :: #{
-%%   <<"ActualValue">> => float(),
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"InclusionAnnotation">> => list(any()),
-%%   <<"LowerBound">> => float(),
-%%   <<"PredictedValue">> => float(),
-%%   <<"UpperBound">> => float()
-%% }
--type statistic_model_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_request() :: #{
-%%   <<"JobName">> := string(),
-%%   <<"JobUpdate">> := job_update()
-%% }
--type update_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_partition_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionsToGet">> := list(partition_value_list()),
-%%   <<"QuerySessionContext">> => query_session_context(),
-%%   <<"TableName">> := string()
-%% }
--type batch_get_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_partition_response() :: #{
-%%   <<"Partitions">> => list(partition()),
-%%   <<"UnprocessedKeys">> => list(partition_value_list())
-%% }
--type batch_get_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% schema_version_error_item() :: #{
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"VersionNumber">> => float()
-%% }
--type schema_version_error_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_glue_identity_center_configuration_request() :: #{
-
-%% }
--type get_glue_identity_center_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_crawler_schedule_response() :: #{
-
-%% }
--type start_crawler_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_retention_metrics() :: #{
-%%   <<"DpuHours">> => float(),
-%%   <<"JobDurationInHour">> => float(),
-%%   <<"NumberOfDataFilesDeleted">> => float(),
-%%   <<"NumberOfDpus">> => integer(),
-%%   <<"NumberOfManifestFilesDeleted">> => float(),
-%%   <<"NumberOfManifestListsDeleted">> => float()
-%% }
--type iceberg_retention_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_mapping_response() :: #{
-%%   <<"Mapping">> => list(mapping_entry())
-%% }
--type get_mapping_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_dataflow_graph_response() :: #{
-%%   <<"DagEdges">> => list(code_gen_edge()),
-%%   <<"DagNodes">> => list(code_gen_node())
-%% }
--type get_dataflow_graph_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_response() :: #{
-
-%% }
--type create_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_form_type_response() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type get_form_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% metric_based_observation() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"MetricValues">> => data_quality_metric_values(),
-%%   <<"NewRules">> => list(string()),
-%%   <<"StatisticId">> => string()
-%% }
--type metric_based_observation() :: #{binary() => any()}.
-
-%% Example:
-%% update_source_control_from_job_response() :: #{
-%%   <<"JobName">> => string()
-%% }
--type update_source_control_from_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_transforms_request() :: #{
-%%   <<"Filter">> => transform_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Sort">> => transform_sort_criteria()
-%% }
--type get_ml_transforms_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection() :: #{
-%%   <<"AthenaProperties">> => map(),
-%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
-%%   <<"CompatibleComputeEnvironments">> => list(list(any())()),
-%%   <<"ConnectionProperties">> => map(),
-%%   <<"ConnectionSchemaVersion">> => integer(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastConnectionValidationTime">> => non_neg_integer(),
-%%   <<"LastUpdatedBy">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"MatchCriteria">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"PythonProperties">> => map(),
-%%   <<"SparkProperties">> => map(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type connection() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_optimizer_response() :: #{
-
-%% }
--type update_table_optimizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_versions_diff_input() :: #{
-%%   <<"FirstSchemaVersionNumber">> := schema_version_number(),
-%%   <<"SchemaDiffType">> := list(any()),
-%%   <<"SchemaId">> := schema_id(),
-%%   <<"SecondSchemaVersionNumber">> := schema_version_number()
-%% }
--type get_schema_versions_diff_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_connections_filter() :: #{
-%%   <<"ConnectionSchemaVersion">> => integer(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"MatchCriteria">> => list(string())
-%% }
--type get_connections_filter() :: #{binary() => any()}.
-
-%% Example:
-%% s3_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"DlqEventQueueArn">> => string(),
-%%   <<"EventQueueArn">> => string(),
+%% s3_excel_source() :: #{
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"CompressionType">> => list(any()),
 %%   <<"Exclusions">> => list(string()),
-%%   <<"Path">> => string(),
-%%   <<"SampleSize">> => integer()
-%% }
--type s3_target() :: #{binary() => any()}.
-
-%% Example:
-%% start_import_labels_task_run_request() :: #{
-%%   <<"InputS3Path">> := string(),
-%%   <<"ReplaceAllLabels">> => boolean(),
-%%   <<"TransformId">> := string()
-%% }
--type start_import_labels_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_import_status() :: #{
-%%   <<"ImportCompleted">> => boolean(),
-%%   <<"ImportTime">> => non_neg_integer(),
-%%   <<"ImportedBy">> => string()
-%% }
--type catalog_import_status() :: #{binary() => any()}.
-
-%% Example:
-%% get_form_type_request() :: #{
-
-%% }
--type get_form_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_schema_input() :: #{
-%%   <<"Compatibility">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"SchemaId">> := schema_id(),
-%%   <<"SchemaVersionNumber">> => schema_version_number()
-%% }
--type update_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% crawls_filter() :: #{
-%%   <<"FieldName">> => list(any()),
-%%   <<"FieldValue">> => string(),
-%%   <<"FilterOperator">> => list(any())
-%% }
--type crawls_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_quality_ruleset_response() :: #{
-
-%% }
--type delete_data_quality_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_materialized_view_refresh_task_run_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"FullRefresh">> => boolean(),
-%%   <<"TableName">> := string()
-%% }
--type start_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attachment_request() :: #{
-%%   <<"ItemIdentifier">> => string(),
-%%   <<"IterableFormName">> => string()
-%% }
--type delete_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% session_busy_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type session_busy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_graph() :: #{
-%%   <<"Edges">> => list(edge()),
-%%   <<"Nodes">> => list(node())
-%% }
--type workflow_graph() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_resource_property_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourcePropertyArn">> => string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
-%% }
--type get_integration_resource_property_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_quality_rule_recommendation_run_response() :: #{
-
-%% }
--type cancel_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_triggers_request() :: #{
-%%   <<"DependentJobName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_triggers_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_attachment_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
-%%   <<"AttachmentName">> => string(),
-%%   <<"FormTypeId">> => string(),
-%%   <<"ItemIdentifier">> => string(),
-%%   <<"IterableFormName">> => string()
-%% }
--type put_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_workflow_run_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"RunProperties">> => map()
-%% }
--type start_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% dynamo_db_e_l_t_connector_source() :: #{
-%%   <<"ConnectionOptions">> => d_db_e_l_t_connection_options(),
+%%   <<"GroupFiles">> => string(),
+%%   <<"GroupSize">> => string(),
+%%   <<"MaxBand">> => integer(),
+%%   <<"MaxFilesInBand">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
+%%   <<"NumberRows">> => float(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
+%%   <<"Recurse">> => boolean(),
+%%   <<"SkipFooter">> => integer()
 %% }
--type dynamo_db_e_l_t_connector_source() :: #{binary() => any()}.
+-type s3_excel_source() :: #{binary() => any()}.
 
 %% Example:
-%% get_dashboard_url_response() :: #{
-%%   <<"Url">> => string()
-%% }
--type get_dashboard_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_crawler_schedule_response() :: #{
-
-%% }
--type stop_crawler_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
-%%   <<"TableName">> := string()
-%% }
--type delete_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_defined_function_response() :: #{
-
-%% }
--type update_user_defined_function_response() :: #{binary() => any()}.
-
-%% Example:
-%% federated_table() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"DatabaseIdentifier">> => string(),
-%%   <<"Identifier">> => string()
-%% }
--type federated_table() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_for_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ColumnNames">> := list(string()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
-%%   <<"TableName">> := string()
-%% }
--type get_column_statistics_for_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_dev_endpoints_request() :: #{
-%%   <<"DevEndpointNames">> := list(string())
-%% }
--type batch_get_dev_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% crawler_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type crawler_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% field_definition() :: #{
-%%   <<"FieldDataType">> => list(any()),
-%%   <<"Name">> => [string()]
-%% }
--type field_definition() :: #{binary() => any()}.
-
-%% Example:
-%% grok_classifier() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomPatterns">> => string(),
-%%   <<"GrokPattern">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => float()
-%% }
--type grok_classifier() :: #{binary() => any()}.
-
-%% Example:
-%% stop_trigger_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type stop_trigger_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_connection_type_request() :: #{
-%%   <<"ConnectionProperties">> := connection_properties_configuration(),
-%%   <<"ConnectionType">> := string(),
-%%   <<"ConnectorAuthenticationConfiguration">> := connector_authentication_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationType">> := list(any()),
-%%   <<"RestConfiguration">> := rest_configuration(),
-%%   <<"Tags">> => map()
-%% }
--type register_connection_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% join() :: #{
-%%   <<"Columns">> => list(join_column()),
+%% s3_glue_parquet_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Compression">> => list(any()),
 %%   <<"Inputs">> => list(string()),
-%%   <<"JoinType">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type join() :: #{binary() => any()}.
-
-%% Example:
-%% metadata_info() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"MetadataValue">> => string(),
-%%   <<"OtherMetadataValueList">> => list(other_metadata_value_list_item())
-%% }
--type metadata_info() :: #{binary() => any()}.
-
-%% Example:
-%% recipe_action() :: #{
-%%   <<"Operation">> => string(),
-%%   <<"Parameters">> => map()
-%% }
--type recipe_action() :: #{binary() => any()}.
-
-%% Example:
-%% find_matches_task_run_properties() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string()
-%% }
--type find_matches_task_run_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_runs_response() :: #{
-%%   <<"JobRuns">> => list(job_run()),
-%%   <<"NextToken">> => string()
-%% }
--type get_job_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% governed_catalog_source() :: #{
-%%   <<"AdditionalOptions">> => s3_source_additional_options(),
-%%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PartitionPredicate">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
+%% }
+-type s3_glue_parquet_target() :: #{binary() => any()}.
+
+%% Example:
+%% s3_hudi_catalog_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
 %% }
--type governed_catalog_source() :: #{binary() => any()}.
+-type s3_hudi_catalog_target() :: #{binary() => any()}.
 
 %% Example:
-%% data_quality_ruleset_list_details() :: #{
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
+%% s3_hudi_direct_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Compression">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"RecommendationRunId">> => string(),
-%%   <<"RuleCount">> => integer(),
-%%   <<"TargetTable">> => data_quality_target_table()
+%%   <<"NumberTargetPartitions">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
--type data_quality_ruleset_list_details() :: #{binary() => any()}.
+-type s3_hudi_direct_target() :: #{binary() => any()}.
 
 %% Example:
-%% batch_update_partition_request_entry() :: #{
-%%   <<"PartitionInput">> => partition_input(),
-%%   <<"PartitionValueList">> => list(string())
+%% s3_hudi_source() :: #{
+%%   <<"AdditionalHudiOptions">> => map(),
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string())
 %% }
--type batch_update_partition_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% source_control_details() :: #{
-%%   <<"AuthStrategy">> => list(any()),
-%%   <<"AuthToken">> => string(),
-%%   <<"Branch">> => string(),
-%%   <<"Folder">> => string(),
-%%   <<"LastCommitId">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"Provider">> => list(any()),
-%%   <<"Repository">> => string()
-%% }
--type source_control_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_grok_classifier_request() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"CustomPatterns">> => string(),
-%%   <<"GrokPattern">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_grok_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% materialized_view_refresh_task_not_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type materialized_view_refresh_task_not_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflows_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_workflows_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_schedule_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_schedule_exception() :: #{binary() => any()}.
+-type s3_hudi_source() :: #{binary() => any()}.
 
 %% Example:
 %% s3_hyper_direct_target() :: #{
@@ -5315,876 +8219,6 @@
 -type s3_hyper_direct_target() :: #{binary() => any()}.
 
 %% Example:
-%% table_optimizer() :: #{
-%%   <<"configuration">> => table_optimizer_configuration(),
-%%   <<"configurationSource">> => list(any()),
-%%   <<"lastRun">> => table_optimizer_run(),
-%%   <<"type">> => list(any())
-%% }
--type table_optimizer() :: #{binary() => any()}.
-
-%% Example:
-%% spark_connector_source() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"ConnectorName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
-%% }
--type spark_connector_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_quality_ruleset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_data_quality_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_response() :: #{
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type delete_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_version_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"VersionId">> := string()
-%% }
--type delete_table_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% d_db_e_l_t_connection_options() :: #{
-%%   <<"DynamodbExport">> => list(any()),
-%%   <<"DynamodbS3Bucket">> => string(),
-%%   <<"DynamodbS3BucketOwner">> => string(),
-%%   <<"DynamodbS3Prefix">> => string(),
-%%   <<"DynamodbStsRoleArn">> => string(),
-%%   <<"DynamodbTableArn">> => string(),
-%%   <<"DynamodbUnnestDDBJson">> => boolean()
-%% }
--type d_db_e_l_t_connection_options() :: #{binary() => any()}.
-
-%% Example:
-%% recipe() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"RecipeReference">> => recipe_reference(),
-%%   <<"RecipeSteps">> => list(recipe_step())
-%% }
--type recipe() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_response() :: #{
-%%   <<"Blueprint">> => blueprint()
-%% }
--type get_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_runs_request() :: #{
-%%   <<"BlueprintName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_blueprint_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% route() :: #{
-%%   <<"GroupFiltersList">> => list(group_filters()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type route() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_entry() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type catalog_entry() :: #{binary() => any()}.
-
-%% Example:
-%% my_s_q_l_catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type my_s_q_l_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% workflow() :: #{
-%%   <<"BlueprintDetails">> => blueprint_details(),
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"DefaultRunProperties">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"Graph">> => workflow_graph(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"LastRun">> => workflow_run(),
-%%   <<"MaxConcurrentRuns">> => integer(),
-%%   <<"Name">> => string()
-%% }
--type workflow() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_task_runs_request() :: #{
-%%   <<"Filter">> => task_run_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Sort">> => task_run_sort_criteria(),
-%%   <<"TransformId">> := string()
-%% }
--type get_ml_task_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% view_validation() :: #{
-%%   <<"Dialect">> => list(any()),
-%%   <<"DialectVersion">> => string(),
-%%   <<"Error">> => error_detail(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateTime">> => non_neg_integer(),
-%%   <<"ViewValidationText">> => string()
-%% }
--type view_validation() :: #{binary() => any()}.
-
-%% Example:
-%% field() :: #{
-%%   <<"CustomProperties">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"FieldName">> => string(),
-%%   <<"FieldType">> => list(any()),
-%%   <<"IsCreateable">> => boolean(),
-%%   <<"IsDefaultOnCreate">> => boolean(),
-%%   <<"IsFilterable">> => boolean(),
-%%   <<"IsNullable">> => boolean(),
-%%   <<"IsPartitionable">> => boolean(),
-%%   <<"IsPrimaryKey">> => boolean(),
-%%   <<"IsRetrievable">> => boolean(),
-%%   <<"IsUpdateable">> => boolean(),
-%%   <<"IsUpsertable">> => boolean(),
-%%   <<"Label">> => string(),
-%%   <<"NativeDataType">> => [string()],
-%%   <<"ParentField">> => [string()],
-%%   <<"SupportedFilterOperators">> => list(list(any())()),
-%%   <<"SupportedValues">> => list([string()]())
-%% }
--type field() :: #{binary() => any()}.
-
-%% Example:
-%% illegal_workflow_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_workflow_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% datapoint_inclusion_annotation() :: #{
-%%   <<"InclusionAnnotation">> => list(any()),
-%%   <<"ProfileId">> => string(),
-%%   <<"StatisticId">> => string()
-%% }
--type datapoint_inclusion_annotation() :: #{binary() => any()}.
-
-%% Example:
-%% sort_criterion() :: #{
-%%   <<"FieldName">> => string(),
-%%   <<"Sort">> => list(any())
-%% }
--type sort_criterion() :: #{binary() => any()}.
-
-%% Example:
-%% glue_studio_schema_column() :: #{
-%%   <<"GlueStudioType">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type glue_studio_schema_column() :: #{binary() => any()}.
-
-%% Example:
-%% update_crawler_request() :: #{
-%%   <<"Classifiers">> => list(string()),
-%%   <<"Configuration">> => string(),
-%%   <<"CrawlerSecurityConfiguration">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
-%%   <<"LineageConfiguration">> => lineage_configuration(),
-%%   <<"Name">> := string(),
-%%   <<"RecrawlPolicy">> => recrawl_policy(),
-%%   <<"Role">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"SchemaChangePolicy">> => schema_change_policy(),
-%%   <<"TablePrefix">> => string(),
-%%   <<"Targets">> => crawler_targets()
-%% }
--type update_crawler_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_classifier_request() :: #{
-%%   <<"CsvClassifier">> => create_csv_classifier_request(),
-%%   <<"GrokClassifier">> => create_grok_classifier_request(),
-%%   <<"JsonClassifier">> => create_json_classifier_request(),
-%%   <<"XMLClassifier">> => create_x_ml_classifier_request()
-%% }
--type create_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_configuration_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_security_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_tags_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type get_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_iceberg_source() :: #{
-%%   <<"AdditionalIcebergOptions">> => map(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Table">> => string()
-%% }
--type catalog_iceberg_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_rule_recommendation_run_request() :: #{
-%%   <<"RunId">> := string()
-%% }
--type get_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_response() :: #{
-
-%% }
--type delete_asset_response() :: #{binary() => any()}.
-
-%% Example:
-%% direct_schema_change_policy() :: #{
-%%   <<"Database">> => string(),
-%%   <<"EnableUpdateCatalog">> => boolean(),
-%%   <<"Table">> => string(),
-%%   <<"UpdateBehavior">> => list(any())
-%% }
--type direct_schema_change_policy() :: #{binary() => any()}.
-
-%% Example:
-%% create_crawler_request() :: #{
-%%   <<"Classifiers">> => list(string()),
-%%   <<"Configuration">> => string(),
-%%   <<"CrawlerSecurityConfiguration">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
-%%   <<"LineageConfiguration">> => lineage_configuration(),
-%%   <<"Name">> := string(),
-%%   <<"RecrawlPolicy">> => recrawl_policy(),
-%%   <<"Role">> := string(),
-%%   <<"Schedule">> => string(),
-%%   <<"SchemaChangePolicy">> => schema_change_policy(),
-%%   <<"TablePrefix">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Targets">> := crawler_targets()
-%% }
--type create_crawler_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_workflow_run_properties_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"RunId">> := string(),
-%%   <<"RunProperties">> := map()
-%% }
--type put_workflow_run_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_versions_response() :: #{
-%%   <<"SchemaVersionErrors">> => list(schema_version_error_item())
-%% }
--type delete_schema_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% direct_kafka_source() :: #{
-%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
-%%   <<"DetectSchema">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"StreamingOptions">> => kafka_streaming_source_options(),
-%%   <<"WindowSize">> => integer()
-%% }
--type direct_kafka_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_iterable_forms_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_iterable_forms_request() :: #{binary() => any()}.
-
-%% Example:
-%% asset_type_item() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type asset_type_item() :: #{binary() => any()}.
-
-%% Example:
-%% select_from_collection() :: #{
-%%   <<"Index">> => integer(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type select_from_collection() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partition_response() :: #{
-
-%% }
--type delete_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_glue_parquet_target() :: #{
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Compression">> => list(any()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"Path">> => string(),
-%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
-%% }
--type s3_glue_parquet_target() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"FromFederationSource">> => boolean(),
-%%   <<"Message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_task_run_response() :: #{
-%%   <<"ColumnStatisticsTaskRun">> => column_statistics_task_run()
-%% }
--type get_column_statistics_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_table_properties_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type delete_integration_table_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% storage_descriptor() :: #{
-%%   <<"AdditionalLocations">> => list(string()),
-%%   <<"BucketColumns">> => list(string()),
-%%   <<"Columns">> => list(column()),
-%%   <<"Compressed">> => boolean(),
-%%   <<"InputFormat">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"NumberOfBuckets">> => integer(),
-%%   <<"OutputFormat">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"SchemaReference">> => schema_reference(),
-%%   <<"SerdeInfo">> => ser_de_info(),
-%%   <<"SkewedInfo">> => skewed_info(),
-%%   <<"SortColumns">> => list(order()),
-%%   <<"StoredAsSubDirectories">> => boolean()
-%% }
--type storage_descriptor() :: #{binary() => any()}.
-
-%% Example:
-%% compaction_metrics() :: #{
-%%   <<"IcebergMetrics">> => iceberg_compaction_metrics()
-%% }
--type compaction_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_table_properties_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"SourceTableConfig">> => source_table_config(),
-%%   <<"TableName">> => string(),
-%%   <<"TargetTableConfig">> => target_table_config()
-%% }
--type get_integration_table_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_term_request() :: #{
-
-%% }
--type delete_glossary_term_request() :: #{binary() => any()}.
-
-%% Example:
-%% integration_partition() :: #{
-%%   <<"ConversionSpec">> => string(),
-%%   <<"FieldName">> => string(),
-%%   <<"FunctionSpec">> => string()
-%% }
--type integration_partition() :: #{binary() => any()}.
-
-%% Example:
-%% error_details() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-%% Example:
-%% target_redshift_catalog() :: #{
-%%   <<"CatalogArn">> => string()
-%% }
--type target_redshift_catalog() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_configuration_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_security_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% unfiltered_partition() :: #{
-%%   <<"AuthorizedColumns">> => list(string()),
-%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
-%%   <<"Partition">> => partition()
-%% }
--type unfiltered_partition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partition_index_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"IndexName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type delete_partition_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_ruleset_evaluation_run_request() :: #{
-%%   <<"RunId">> := string()
-%% }
--type get_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DlqEventQueueArn">> => string(),
-%%   <<"EventQueueArn">> => string(),
-%%   <<"Tables">> => list(string())
-%% }
--type catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_script_response() :: #{
-%%   <<"PythonScript">> => string(),
-%%   <<"ScalaCode">> => string()
-%% }
--type create_script_response() :: #{binary() => any()}.
-
-%% Example:
-%% form_type_item() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type form_type_item() :: #{binary() => any()}.
-
-%% Example:
-%% last_active_definition() :: #{
-%%   <<"BlueprintLocation">> => string(),
-%%   <<"BlueprintServiceLocation">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"ParameterSpec">> => string()
-%% }
--type last_active_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_partition_index_response() :: #{
-
-%% }
--type create_partition_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_mapping_request() :: #{
-%%   <<"Location">> => location(),
-%%   <<"Sinks">> => list(catalog_entry()),
-%%   <<"Source">> := catalog_entry()
-%% }
--type get_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_trigger_response() :: #{
-%%   <<"Trigger">> => trigger()
-%% }
--type update_trigger_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_result_request() :: #{
-%%   <<"ResultId">> := string()
-%% }
--type get_data_quality_result_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_catalog_import_status_response() :: #{
-%%   <<"ImportStatus">> => catalog_import_status()
-%% }
--type get_catalog_import_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_input() :: #{
-%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
-%%   <<"CatalogProperties">> => catalog_properties(),
-%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
-%%   <<"Description">> => string(),
-%%   <<"FederatedCatalog">> => federated_catalog(),
-%%   <<"OverwriteChildResourcePermissionsWithDefault">> => list(any()),
-%%   <<"Parameters">> => map(),
-%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog()
-%% }
--type catalog_input() :: #{binary() => any()}.
-
-%% Example:
-%% source_table_config() :: #{
-%%   <<"Fields">> => list(string()),
-%%   <<"FilterPredicate">> => string(),
-%%   <<"PrimaryKey">> => list(string()),
-%%   <<"RecordUpdateField">> => string()
-%% }
--type source_table_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dev_endpoint_request() :: #{
-%%   <<"EndpointName">> := string()
-%% }
--type delete_dev_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% offset_configuration() :: #{
-%%   <<"LimitParameter">> => extracted_parameter(),
-%%   <<"OffsetParameter">> => extracted_parameter()
-%% }
--type offset_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_resource_property_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_integration_resource_property_request() :: #{binary() => any()}.
-
-%% Example:
-%% source_configuration() :: #{
-%%   <<"PaginationConfiguration">> => pagination_configuration(),
-%%   <<"RequestMethod">> => list(any()),
-%%   <<"RequestParameters">> => list(connector_property()),
-%%   <<"RequestPath">> => string(),
-%%   <<"ResponseConfiguration">> => response_configuration()
-%% }
--type source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_response() :: #{
-
-%% }
--type update_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawler_metrics_request() :: #{
-%%   <<"CrawlerNameList">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_crawler_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_lake_access_properties() :: #{
-%%   <<"CatalogType">> => string(),
-%%   <<"DataLakeAccess">> => boolean(),
-%%   <<"DataTransferRole">> => string(),
-%%   <<"KmsKey">> => string()
-%% }
--type data_lake_access_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_sessions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workflow_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_compaction_configuration() :: #{
-%%   <<"deleteFileThreshold">> => integer(),
-%%   <<"minInputFiles">> => integer(),
-%%   <<"strategy">> => list(any())
-%% }
--type iceberg_compaction_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_csv_classifier_request() :: #{
-%%   <<"AllowSingleColumn">> => boolean(),
-%%   <<"ContainsHeader">> => list(any()),
-%%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()),
-%%   <<"Delimiter">> => string(),
-%%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"QuoteSymbol">> => string(),
-%%   <<"Serde">> => list(any())
-%% }
--type create_csv_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% blueprint() :: #{
-%%   <<"BlueprintLocation">> => string(),
-%%   <<"BlueprintServiceLocation">> => string(),
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LastActiveDefinition">> => last_active_definition(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ParameterSpec">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type blueprint() :: #{binary() => any()}.
-
-%% Example:
-%% annotation_error() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"StatisticId">> => string()
-%% }
--type annotation_error() :: #{binary() => any()}.
-
-%% Example:
-%% crawler_history() :: #{
-%%   <<"CrawlId">> => string(),
-%%   <<"DPUHour">> => float(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LogGroup">> => string(),
-%%   <<"LogStream">> => string(),
-%%   <<"MessagePrefix">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Summary">> => string()
-%% }
--type crawler_history() :: #{binary() => any()}.
-
-%% Example:
-%% connections_list() :: #{
-%%   <<"Connections">> => list(string())
-%% }
--type connections_list() :: #{binary() => any()}.
-
-%% Example:
-%% create_security_configuration_response() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type create_security_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_workflow_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type start_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_sort_field() :: #{
-%%   <<"Direction">> => list(any()),
-%%   <<"NullOrder">> => list(any()),
-%%   <<"SourceId">> => integer(),
-%%   <<"Transform">> => string()
-%% }
--type iceberg_sort_field() :: #{binary() => any()}.
-
-%% Example:
-%% compute_environment_configuration() :: #{
-%%   <<"ComputeEnvironment">> => list(any()),
-%%   <<"ConnectionOptionNameOverrides">> => map(),
-%%   <<"ConnectionOptions">> => map(),
-%%   <<"ConnectionPropertiesRequiredOverrides">> => list([string()]()),
-%%   <<"ConnectionPropertyNameOverrides">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PhysicalConnectionPropertiesRequired">> => boolean(),
-%%   <<"SupportedAuthenticationTypes">> => list(list(any())())
-%% }
--type compute_environment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% session_endpoint() :: #{
-%%   <<"AuthToken">> => string(),
-%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
-%%   <<"Url">> => string()
-%% }
--type session_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% update_csv_classifier_request() :: #{
-%%   <<"AllowSingleColumn">> => boolean(),
-%%   <<"ContainsHeader">> => list(any()),
-%%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()),
-%%   <<"Delimiter">> => string(),
-%%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"QuoteSymbol">> => string(),
-%%   <<"Serde">> => list(any())
-%% }
--type update_csv_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_materialized_view_refresh_task_run_response() :: #{
-%%   <<"MaterializedViewRefreshTaskRunId">> => string()
-%% }
--type start_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_catalog_delta_source() :: #{
-%%   <<"AdditionalDeltaOptions">> => map(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Table">> => string()
-%% }
--type s3_catalog_delta_source() :: #{binary() => any()}.
-
-%% Example:
-%% condition() :: #{
-%%   <<"CrawlState">> => list(any()),
-%%   <<"CrawlerName">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"LogicalOperator">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type condition() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_model_request() :: #{
-%%   <<"ProfileId">> := string(),
-%%   <<"StatisticId">> => string()
-%% }
--type get_data_quality_model_request() :: #{binary() => any()}.
-
-%% Example:
-%% location() :: #{
-%%   <<"DynamoDB">> => list(code_gen_node_arg()),
-%%   <<"Jdbc">> => list(code_gen_node_arg()),
-%%   <<"S3">> => list(code_gen_node_arg())
-%% }
--type location() :: #{binary() => any()}.
-
-%% Example:
-%% classifier() :: #{
-%%   <<"CsvClassifier">> => csv_classifier(),
-%%   <<"GrokClassifier">> => grok_classifier(),
-%%   <<"JsonClassifier">> => json_classifier(),
-%%   <<"XMLClassifier">> => x_ml_classifier()
-%% }
--type classifier() :: #{binary() => any()}.
-
-%% Example:
-%% filter_expression() :: #{
-%%   <<"Negated">> => boolean(),
-%%   <<"Operation">> => list(any()),
-%%   <<"Values">> => list(filter_value())
-%% }
--type filter_expression() :: #{binary() => any()}.
-
-%% Example:
-%% search_tables_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(table())
-%% }
--type search_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_ml_evaluation_task_run_request() :: #{
-%%   <<"TransformId">> := string()
-%% }
--type start_ml_evaluation_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_trigger_request() :: #{
-%%   <<"Actions">> := list(action()),
-%%   <<"Description">> => string(),
-%%   <<"EventBatchingCondition">> => event_batching_condition(),
-%%   <<"Name">> := string(),
-%%   <<"Predicate">> => predicate(),
-%%   <<"Schedule">> => string(),
-%%   <<"StartOnCreation">> => boolean(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> := list(any()),
-%%   <<"WorkflowName">> => string()
-%% }
--type create_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% mongo_db_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"ScanAll">> => boolean()
-%% }
--type mongo_db_target() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_encryption() :: #{
-%%   <<"DataQualityEncryptionMode">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type data_quality_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% datatype() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string()
-%% }
--type datatype() :: #{binary() => any()}.
-
-%% Example:
-%% glue_node() :: #{
-%%   <<"CrawlerDetails">> => crawler_node_details(),
-%%   <<"JobDetails">> => job_node_details(),
-%%   <<"Name">> => string(),
-%%   <<"TriggerDetails">> => trigger_node_details(),
-%%   <<"Type">> => list(any()),
-%%   <<"UniqueId">> => string()
-%% }
--type glue_node() :: #{binary() => any()}.
-
-%% Example:
-%% connection_password_encryption() :: #{
-%%   <<"AwsKmsKeyId">> => string(),
-%%   <<"ReturnConnectionPasswordEncrypted">> => boolean()
-%% }
--type connection_password_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% database_identifier() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Region">> => string()
-%% }
--type database_identifier() :: #{binary() => any()}.
-
-%% Example:
 %% s3_iceberg_catalog_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"AutoDataQuality">> => auto_data_quality(),
@@ -6198,36 +8232,272 @@
 -type s3_iceberg_catalog_target() :: #{binary() => any()}.
 
 %% Example:
-%% batch_update_partition_request() :: #{
+%% s3_iceberg_direct_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Compression">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"NumberTargetPartitions">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"Path">> => string(),
+%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
+%% }
+-type s3_iceberg_direct_target() :: #{binary() => any()}.
+
+%% Example:
+%% s3_json_source() :: #{
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"GroupFiles">> => string(),
+%%   <<"GroupSize">> => string(),
+%%   <<"JsonPath">> => string(),
+%%   <<"MaxBand">> => integer(),
+%%   <<"MaxFilesInBand">> => integer(),
+%%   <<"Multiline">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
+%%   <<"Recurse">> => boolean()
+%% }
+-type s3_json_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_parquet_source() :: #{
+%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"GroupFiles">> => string(),
+%%   <<"GroupSize">> => string(),
+%%   <<"MaxBand">> => integer(),
+%%   <<"MaxFilesInBand">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
+%%   <<"Recurse">> => boolean()
+%% }
+-type s3_parquet_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_source_additional_options() :: #{
+%%   <<"BoundedFiles">> => float(),
+%%   <<"BoundedSize">> => float()
+%% }
+-type s3_source_additional_options() :: #{binary() => any()}.
+
+%% Example:
+%% s3_target() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"DlqEventQueueArn">> => string(),
+%%   <<"EventQueueArn">> => string(),
+%%   <<"Exclusions">> => list(string()),
+%%   <<"Path">> => string(),
+%%   <<"SampleSize">> => integer()
+%% }
+-type s3_target() :: #{binary() => any()}.
+
+%% Example:
+%% schedule() :: #{
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type schedule() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler_not_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type scheduler_not_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler_running_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type scheduler_running_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler_transitioning_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type scheduler_transitioning_exception() :: #{binary() => any()}.
+
+%% Example:
+%% schema_change_policy() :: #{
+%%   <<"DeleteBehavior">> => list(any()),
+%%   <<"UpdateBehavior">> => list(any())
+%% }
+-type schema_change_policy() :: #{binary() => any()}.
+
+%% Example:
+%% schema_column() :: #{
+%%   <<"DataType">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type schema_column() :: #{binary() => any()}.
+
+%% Example:
+%% schema_id() :: #{
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string()
+%% }
+-type schema_id() :: #{binary() => any()}.
+
+%% Example:
+%% schema_list_item() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaStatus">> => list(any()),
+%%   <<"UpdatedTime">> => string()
+%% }
+-type schema_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% schema_reference() :: #{
+%%   <<"SchemaId">> => schema_id(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"SchemaVersionNumber">> => float()
+%% }
+-type schema_reference() :: #{binary() => any()}.
+
+%% Example:
+%% schema_version_error_item() :: #{
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type schema_version_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% schema_version_list_item() :: #{
+%%   <<"CreatedTime">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaVersionId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VersionNumber">> => float()
+%% }
+-type schema_version_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% schema_version_number() :: #{
+%%   <<"LatestVersion">> => boolean(),
+%%   <<"VersionNumber">> => float()
+%% }
+-type schema_version_number() :: #{binary() => any()}.
+
+%% Example:
+%% search_assets_input() :: #{
+%%   <<"FilterClause">> => list(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchText">> => string(),
+%%   <<"Sort">> => search_sort()
+%% }
+-type search_assets_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_assets_output() :: #{
+%%   <<"Items">> => list(search_result_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_assets_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_attribute_filter() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type search_attribute_filter() :: #{binary() => any()}.
+
+%% Example:
+%% search_map_filter() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => list()
+%% }
+-type search_map_filter() :: #{binary() => any()}.
+
+%% Example:
+%% search_result_item() :: #{
+%%   <<"AssetDescription">> => string(),
+%%   <<"AssetName">> => string(),
+%%   <<"AssetTypeId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type search_result_item() :: #{binary() => any()}.
+
+%% Example:
+%% search_sort() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"Order">> => list(any())
+%% }
+-type search_sort() :: #{binary() => any()}.
+
+%% Example:
+%% search_tables_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Entries">> := list(batch_update_partition_request_entry()),
-%%   <<"TableName">> := string()
+%%   <<"Filters">> => list(property_predicate()),
+%%   <<"IncludeStatusDetails">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceShareType">> => list(any()),
+%%   <<"SearchText">> => string(),
+%%   <<"SortCriteria">> => list(sort_criterion())
 %% }
--type batch_update_partition_request() :: #{binary() => any()}.
+-type search_tables_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"ResourceArn">> => string()
+%% search_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TableList">> => list(table())
 %% }
--type get_resource_policy_request() :: #{binary() => any()}.
+-type search_tables_response() :: #{binary() => any()}.
 
 %% Example:
-%% decimal_column_statistics_data() :: #{
-%%   <<"MaximumValue">> => decimal_number(),
-%%   <<"MinimumValue">> => decimal_number(),
-%%   <<"NumberOfDistinctValues">> => float(),
-%%   <<"NumberOfNulls">> => float()
+%% security_configuration() :: #{
+%%   <<"CreatedTimeStamp">> => non_neg_integer(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Name">> => string()
 %% }
--type decimal_column_statistics_data() :: #{binary() => any()}.
+-type security_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% null_check_box_list() :: #{
-%%   <<"IsEmpty">> => boolean(),
-%%   <<"IsNegOne">> => boolean(),
-%%   <<"IsNullString">> => boolean()
+%% segment() :: #{
+%%   <<"SegmentNumber">> => integer(),
+%%   <<"TotalSegments">> => integer()
 %% }
--type null_check_box_list() :: #{binary() => any()}.
+-type segment() :: #{binary() => any()}.
+
+%% Example:
+%% select_fields() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Paths">> => list(list(string())())
+%% }
+-type select_fields() :: #{binary() => any()}.
+
+%% Example:
+%% select_from_collection() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type select_from_collection() :: #{binary() => any()}.
+
+%% Example:
+%% ser_de_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"SerializationLibrary">> => string()
+%% }
+-type ser_de_info() :: #{binary() => any()}.
 
 %% Example:
 %% session() :: #{
@@ -6256,45 +8526,33 @@
 -type session() :: #{binary() => any()}.
 
 %% Example:
-%% get_catalog_response() :: #{
-%%   <<"Catalog">> => catalog()
+%% session_busy_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_catalog_response() :: #{binary() => any()}.
+-type session_busy_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_form_type_request() :: #{
-
+%% session_command() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PythonVersion">> => string()
 %% }
--type delete_form_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% execution_property() :: #{
-%%   <<"MaxConcurrentRuns">> => integer()
-%% }
--type execution_property() :: #{binary() => any()}.
+-type session_command() :: #{binary() => any()}.
 
 %% Example:
-%% glossary_item() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%% session_endpoint() :: #{
+%%   <<"AuthToken">> => string(),
+%%   <<"AuthTokenExpirationTime">> => non_neg_integer(),
+%%   <<"Url">> => string()
 %% }
--type glossary_item() :: #{binary() => any()}.
+-type session_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% start_blueprint_run_request() :: #{
-%%   <<"BlueprintName">> := string(),
-%%   <<"Parameters">> => string(),
-%%   <<"RoleArn">> := string()
+%% skewed_info() :: #{
+%%   <<"SkewedColumnNames">> => list(string()),
+%%   <<"SkewedColumnValueLocationMaps">> => map(),
+%%   <<"SkewedColumnValues">> => list(string())
 %% }
--type start_blueprint_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_resource_policies_request() :: #{binary() => any()}.
+-type skewed_info() :: #{binary() => any()}.
 
 %% Example:
 %% snowflake_node_data() :: #{
@@ -6323,94 +8581,197 @@
 -type snowflake_node_data() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policies_response() :: #{
-%%   <<"GetResourcePoliciesResponseList">> => list(glue_policy()),
-%%   <<"NextToken">> => string()
+%% snowflake_source() :: #{
+%%   <<"Data">> => snowflake_node_data(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
--type get_resource_policies_response() :: #{binary() => any()}.
+-type snowflake_source() :: #{binary() => any()}.
 
 %% Example:
-%% view_definition() :: #{
-%%   <<"Definer">> => string(),
-%%   <<"IsProtected">> => boolean(),
-%%   <<"LastRefreshType">> => list(any()),
-%%   <<"RefreshSeconds">> => float(),
-%%   <<"Representations">> => list(view_representation()),
-%%   <<"SubObjectVersionIds">> => list(float()),
-%%   <<"SubObjects">> => list(string()),
-%%   <<"ViewVersionId">> => float(),
-%%   <<"ViewVersionToken">> => string()
-%% }
--type view_definition() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawlers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_crawlers_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Filters">> => list(filter_expression()),
+%% snowflake_target() :: #{
+%%   <<"Data">> => snowflake_node_data(),
 %%   <<"Inputs">> => list(string()),
-%%   <<"LogicalOperator">> => list(any()),
 %%   <<"Name">> => string()
 %% }
--type filter() :: #{binary() => any()}.
+-type snowflake_target() :: #{binary() => any()}.
 
 %% Example:
-%% predecessor() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"RunId">> => string()
+%% sort_criterion() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"Sort">> => list(any())
 %% }
--type predecessor() :: #{binary() => any()}.
+-type sort_criterion() :: #{binary() => any()}.
 
 %% Example:
-%% delete_column_statistics_for_partition_response() :: #{
-
+%% source_configuration() :: #{
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"PaginationConfiguration">> => pagination_configuration(),
+%%   <<"RequestMethod">> => list(any()),
+%%   <<"RequestParameters">> => list(connector_property()),
+%%   <<"RequestPath">> => string(),
+%%   <<"ResponseConfiguration">> => response_configuration()
 %% }
--type delete_column_statistics_for_partition_response() :: #{binary() => any()}.
+-type source_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% group_filters() :: #{
-%%   <<"Filters">> => list(filter_expression()),
-%%   <<"GroupName">> => string(),
-%%   <<"LogicalOperator">> => list(any())
+%% source_control_details() :: #{
+%%   <<"AuthStrategy">> => list(any()),
+%%   <<"AuthToken">> => string(),
+%%   <<"Branch">> => string(),
+%%   <<"Folder">> => string(),
+%%   <<"LastCommitId">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"Repository">> => string()
 %% }
--type group_filters() :: #{binary() => any()}.
+-type source_control_details() :: #{binary() => any()}.
 
 %% Example:
-%% get_classifier_request() :: #{
-%%   <<"Name">> := string()
+%% source_processing_properties() :: #{
+%%   <<"RoleArn">> => string()
 %% }
--type get_classifier_request() :: #{binary() => any()}.
+-type source_processing_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_session_response() :: #{
-%%   <<"Id">> => string()
+%% source_table_config() :: #{
+%%   <<"Fields">> => list(string()),
+%%   <<"FilterPredicate">> => string(),
+%%   <<"PrimaryKey">> => list(string()),
+%%   <<"RecordUpdateField">> => string()
 %% }
--type stop_session_response() :: #{binary() => any()}.
+-type source_table_config() :: #{binary() => any()}.
 
 %% Example:
-%% column_statistics_error() :: #{
-%%   <<"ColumnStatistics">> => column_statistics(),
-%%   <<"Error">> => error_detail()
+%% spark_connector_source() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"ConnectorName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
--type column_statistics_error() :: #{binary() => any()}.
+-type spark_connector_source() :: #{binary() => any()}.
 
 %% Example:
-%% custom_code() :: #{
-%%   <<"ClassName">> => string(),
-%%   <<"Code">> => string(),
+%% spark_connector_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"ConnectorName">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"OutputSchemas">> => list(glue_schema())
 %% }
--type custom_code() :: #{binary() => any()}.
+-type spark_connector_target() :: #{binary() => any()}.
+
+%% Example:
+%% spark_s_q_l() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"SqlAliases">> => list(sql_alias()),
+%%   <<"SqlQuery">> => string()
+%% }
+-type spark_s_q_l() :: #{binary() => any()}.
+
+%% Example:
+%% spigot() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Prob">> => float(),
+%%   <<"Topk">> => integer()
+%% }
+-type spigot() :: #{binary() => any()}.
+
+%% Example:
+%% split_fields() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Paths">> => list(list(string())())
+%% }
+-type split_fields() :: #{binary() => any()}.
+
+%% Example:
+%% sql_alias() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"From">> => string()
+%% }
+-type sql_alias() :: #{binary() => any()}.
+
+%% Example:
+%% start_blueprint_run_request() :: #{
+%%   <<"BlueprintName">> := string(),
+%%   <<"Parameters">> => string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type start_blueprint_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_blueprint_run_response() :: #{
+%%   <<"RunId">> => string()
+%% }
+-type start_blueprint_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_column_statistics_task_run_request() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Role">> := string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"SecurityConfiguration">> => string(),
+%%   <<"TableName">> := string()
+%% }
+-type start_column_statistics_task_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_column_statistics_task_run_response() :: #{
+%%   <<"ColumnStatisticsTaskRunId">> => string()
+%% }
+-type start_column_statistics_task_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_column_statistics_task_run_schedule_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
+%% }
+-type start_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_column_statistics_task_run_schedule_response() :: #{
+
+%% }
+-type start_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_crawler_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_crawler_response() :: #{
+
+%% }
+-type start_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_crawler_schedule_request() :: #{
+%%   <<"CrawlerName">> := string()
+%% }
+-type start_crawler_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_crawler_schedule_response() :: #{
+
+%% }
+-type start_crawler_schedule_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_data_quality_rule_recommendation_run_request() :: #{
+%%   <<"AdditionalRunOptions">> => data_quality_rule_recommendation_run_additional_run_options(),
 %%   <<"ClientToken">> => string(),
 %%   <<"CreatedRulesetName">> => string(),
 %%   <<"DataQualitySecurityConfiguration">> => string(),
@@ -6422,87 +8783,10 @@
 -type start_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_crawler_schedule_request() :: #{
-%%   <<"CrawlerName">> := string()
+%% start_data_quality_rule_recommendation_run_response() :: #{
+%%   <<"RunId">> => string()
 %% }
--type stop_crawler_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_blueprint_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_partition_index_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionIndex">> := partition_index(),
-%%   <<"TableName">> := string()
-%% }
--type create_partition_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_usage_profile_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_usage_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_partition_field() :: #{
-%%   <<"FieldId">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"SourceId">> => integer(),
-%%   <<"Transform">> => string()
-%% }
--type iceberg_partition_field() :: #{binary() => any()}.
-
-%% Example:
-%% create_classifier_response() :: #{
-
-%% }
--type create_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_delta_source() :: #{
-%%   <<"AdditionalDeltaOptions">> => map(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Table">> => string()
-%% }
--type catalog_delta_source() :: #{binary() => any()}.
-
-%% Example:
-%% order() :: #{
-%%   <<"Column">> => string(),
-%%   <<"SortOrder">> => integer()
-%% }
--type order() :: #{binary() => any()}.
-
-%% Example:
-%% column_statistics_task_run() :: #{
-%%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()),
-%%   <<"ColumnStatisticsTaskRunId">> => string(),
-%%   <<"ComputationType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomerId">> => string(),
-%%   <<"DPUSeconds">> => float(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"Role">> => string(),
-%%   <<"SampleSize">> => float(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TableName">> => string(),
-%%   <<"WorkerType">> => string()
-%% }
--type column_statistics_task_run() :: #{binary() => any()}.
+-type start_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_data_quality_ruleset_evaluation_run_request() :: #{
@@ -6518,341 +8802,37 @@
 -type start_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% integration_not_found_fault() :: #{
-%%   <<"Message">> => string()
+%% start_data_quality_ruleset_evaluation_run_response() :: #{
+%%   <<"RunId">> => string()
 %% }
--type integration_not_found_fault() :: #{binary() => any()}.
+-type start_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_ml_transforms_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TransformIds">> => list(string())
+%% start_export_labels_task_run_request() :: #{
+%%   <<"OutputS3Path">> := string(),
+%%   <<"TransformId">> := string()
 %% }
--type list_ml_transforms_response() :: #{binary() => any()}.
+-type start_export_labels_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_unfiltered_partitions_metadata_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Expression">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuerySessionContext">> => query_session_context(),
-%%   <<"Region">> => string(),
-%%   <<"Segment">> => segment(),
-%%   <<"SupportedPermissionTypes">> := list(list(any())()),
-%%   <<"TableName">> := string()
+%% start_export_labels_task_run_response() :: #{
+%%   <<"TaskRunId">> => string()
 %% }
--type get_unfiltered_partitions_metadata_request() :: #{binary() => any()}.
+-type start_export_labels_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% schema_id() :: #{
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string()
+%% start_import_labels_task_run_request() :: #{
+%%   <<"InputS3Path">> := string(),
+%%   <<"ReplaceAllLabels">> => boolean(),
+%%   <<"TransformId">> := string()
 %% }
--type schema_id() :: #{binary() => any()}.
+-type start_import_labels_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_blueprint_request() :: #{
-%%   <<"BlueprintLocation">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string()
+%% start_import_labels_task_run_response() :: #{
+%%   <<"TaskRunId">> => string()
 %% }
--type update_blueprint_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_asset_type_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Forms">> := map(),
-%%   <<"Name">> := string()
-%% }
--type put_asset_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_trigger_response() :: #{
-%%   <<"Trigger">> => trigger()
-%% }
--type get_trigger_response() :: #{binary() => any()}.
-
-%% Example:
-%% microsoft_s_q_l_server_catalog_target() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type microsoft_s_q_l_server_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_model_response() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type get_data_quality_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_registry_response() :: #{
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string()
-%% }
--type update_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% federation_source_exception() :: #{
-%%   <<"FederationSourceErrorCode">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type federation_source_exception() :: #{binary() => any()}.
-
-%% Example:
-%% table_identifier() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Region">> => string()
-%% }
--type table_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% source_processing_properties() :: #{
-%%   <<"RoleArn">> => string()
-%% }
--type source_processing_properties() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_response() :: #{
-%%   <<"JobName">> => string()
-%% }
--type update_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% connection_input() :: #{
-%%   <<"AthenaProperties">> => map(),
-%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
-%%   <<"ConnectionProperties">> => map(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"MatchCriteria">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"PythonProperties">> => map(),
-%%   <<"SparkProperties">> => map(),
-%%   <<"ValidateCredentials">> => boolean(),
-%%   <<"ValidateForComputeEnvironments">> => list(list(any())())
-%% }
--type connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_optimizer_response() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableOptimizer">> => table_optimizer()
-%% }
--type get_table_optimizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_glossaries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_glossaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% session_command() :: #{
-%%   <<"Name">> => string(),
-%%   <<"PythonVersion">> => string()
-%% }
--type session_command() :: #{binary() => any()}.
-
-%% Example:
-%% create_glossary_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_glossary_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_bookmark_response() :: #{
-%%   <<"JobBookmarkEntry">> => job_bookmark_entry()
-%% }
--type get_job_bookmark_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_entity_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type list_custom_entity_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_request() :: #{
-%%   <<"AdditionalEncryptionContext">> => map(),
-%%   <<"DataFilter">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IntegrationConfig">> => integration_config(),
-%%   <<"IntegrationName">> := string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SourceArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetArn">> := string()
-%% }
--type create_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_schema_version_input() :: #{
-%%   <<"SchemaDefinition">> := string(),
-%%   <<"SchemaId">> := schema_id()
-%% }
--type register_schema_version_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_ml_transform_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"Parameters">> => transform_parameters(),
-%%   <<"Role">> => string(),
-%%   <<"Timeout">> => integer(),
-%%   <<"TransformId">> := string(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type update_ml_transform_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% test_connection_response() :: #{
-
-%% }
--type test_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_transform_response() :: #{
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationMetrics">> => evaluation_metrics(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"InputRecordTables">> => list(glue_table()),
-%%   <<"LabelCount">> => integer(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"Parameters">> => transform_parameters(),
-%%   <<"Role">> => string(),
-%%   <<"Schema">> => list(schema_column()),
-%%   <<"Status">> => list(any()),
-%%   <<"Timeout">> => integer(),
-%%   <<"TransformEncryption">> => transform_encryption(),
-%%   <<"TransformId">> => string(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type get_ml_transform_response() :: #{binary() => any()}.
-
-%% Example:
-%% schedule() :: #{
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type schedule() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityConfigurations">> => list(security_configuration())
-%% }
--type get_security_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_quality_ruleset_evaluation_run_response() :: #{
-
-%% }
--type cancel_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_catalog_encryption_settings_request() :: #{
-%%   <<"CatalogId">> => string()
-%% }
--type get_data_catalog_encryption_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% trigger_update() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"Description">> => string(),
-%%   <<"EventBatchingCondition">> => event_batching_condition(),
-%%   <<"Name">> => string(),
-%%   <<"Predicate">> => predicate(),
-%%   <<"Schedule">> => string()
-%% }
--type trigger_update() :: #{binary() => any()}.
-
-%% Example:
-%% update_dev_endpoint_response() :: #{
-
-%% }
--type update_dev_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_column_statistics_for_table_response() :: #{
-
-%% }
--type delete_column_statistics_for_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_statistics_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Statistics">> => list(statistic_summary())
-%% }
--type list_data_quality_statistics_response() :: #{binary() => any()}.
-
-%% Example:
-%% timestamp_filter() :: #{
-%%   <<"RecordedAfter">> => non_neg_integer(),
-%%   <<"RecordedBefore">> => non_neg_integer()
-%% }
--type timestamp_filter() :: #{binary() => any()}.
-
-%% Example:
-%% kms_key_not_accessible_fault() :: #{
-%%   <<"Message">> => string()
-%% }
--type kms_key_not_accessible_fault() :: #{binary() => any()}.
-
-%% Example:
-%% federated_resource_already_exists_exception() :: #{
-%%   <<"AssociatedGlueResource">> => string(),
-%%   <<"Message">> => string()
-%% }
--type federated_resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_ml_task_run_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TaskRunId">> => string(),
-%%   <<"TransformId">> => string()
-%% }
--type cancel_ml_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_quality_rule_recommendation_run_request() :: #{
-%%   <<"RunId">> := string()
-%% }
--type cancel_data_quality_rule_recommendation_run_request() :: #{binary() => any()}.
+-type start_import_labels_task_run_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_job_run_request() :: #{
@@ -6873,793 +8853,31 @@
 -type start_job_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% connector_data_source() :: #{
-%%   <<"ConnectionType">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
+%% start_job_run_response() :: #{
+%%   <<"JobRunId">> => string()
 %% }
--type connector_data_source() :: #{binary() => any()}.
+-type start_job_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_form_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_form_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% trigger_node_details() :: #{
-%%   <<"Trigger">> => trigger()
-%% }
--type trigger_node_details() :: #{binary() => any()}.
-
-%% Example:
-%% export_labels_task_run_properties() :: #{
-%%   <<"OutputS3Path">> => string()
-%% }
--type export_labels_task_run_properties() :: #{binary() => any()}.
-
-%% Example:
-%% resource_uri() :: #{
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Uri">> => string()
-%% }
--type resource_uri() :: #{binary() => any()}.
-
-%% Example:
-%% s3_delta_catalog_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
-%%   <<"Table">> => string()
-%% }
--type s3_delta_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_column_statistics_task_settings_response() :: #{
-
-%% }
--type create_column_statistics_task_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% test_connection_input() :: #{
-%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
-%%   <<"ConnectionProperties">> => map(),
-%%   <<"ConnectionType">> => list(any())
-%% }
--type test_connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% o_auth2_credentials() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"JwtToken">> => string(),
-%%   <<"RefreshToken">> => string(),
-%%   <<"UserManagedClientApplicationClientSecret">> => string()
-%% }
--type o_auth2_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% s3_source_additional_options() :: #{
-%%   <<"BoundedFiles">> => float(),
-%%   <<"BoundedSize">> => float()
-%% }
--type s3_source_additional_options() :: #{binary() => any()}.
-
-%% Example:
-%% physical_connection_requirements() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"SecurityGroupIdList">> => list(string()),
-%%   <<"SubnetId">> => string()
-%% }
--type physical_connection_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% table_version() :: #{
-%%   <<"Table">> => table(),
-%%   <<"VersionId">> => string()
-%% }
--type table_version() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_properties() :: #{
-%%   <<"CustomProperties">> => map(),
-%%   <<"DataLakeAccessProperties">> => data_lake_access_properties(),
-%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties()
-%% }
--type catalog_properties() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entity_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> := string(),
-%%   <<"DataStoreApiVersion">> => string(),
-%%   <<"EntityName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_entity_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_task_settings_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type get_column_statistics_task_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% action() :: #{
-%%   <<"Arguments">> => map(),
-%%   <<"CrawlerName">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"NotificationProperty">> => notification_property(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"Timeout">> => integer()
-%% }
--type action() :: #{binary() => any()}.
-
-%% Example:
-%% code_gen_node_arg() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Param">> => boolean(),
-%%   <<"Value">> => string()
-%% }
--type code_gen_node_arg() :: #{binary() => any()}.
-
-%% Example:
-%% user_defined_function_input() :: #{
-%%   <<"ClassName">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"FunctionType">> => list(any()),
-%%   <<"OwnerName">> => string(),
-%%   <<"OwnerType">> => list(any()),
-%%   <<"ResourceUris">> => list(resource_uri())
-%% }
--type user_defined_function_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_column_statistics_for_partition_response() :: #{
-%%   <<"Errors">> => list(column_statistics_error())
-%% }
--type update_column_statistics_for_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% profile_configuration() :: #{
-%%   <<"JobConfiguration">> => map(),
-%%   <<"SessionConfiguration">> => map()
-%% }
--type profile_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_classifiers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_classifiers_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_connection_type_response() :: #{
-%%   <<"ConnectionTypeArn">> => string()
-%% }
--type register_connection_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% my_s_q_l_catalog_target() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type my_s_q_l_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% start_column_statistics_task_run_response() :: #{
-%%   <<"ColumnStatisticsTaskRunId">> => string()
-%% }
--type start_column_statistics_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% mapping_entry() :: #{
-%%   <<"SourcePath">> => string(),
-%%   <<"SourceTable">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"TargetPath">> => string(),
-%%   <<"TargetTable">> => string(),
-%%   <<"TargetType">> => string()
-%% }
--type mapping_entry() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_at_rest() :: #{
-%%   <<"CatalogEncryptionMode">> => list(any()),
-%%   <<"CatalogEncryptionServiceRole">> => string(),
-%%   <<"SseAwsKmsKeyId">> => string()
-%% }
--type encryption_at_rest() :: #{binary() => any()}.
-
-%% Example:
-%% stop_materialized_view_refresh_task_run_response() :: #{
-
-%% }
--type stop_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_request() :: #{
-
-%% }
--type delete_asset_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_plan_response() :: #{
-%%   <<"PythonScript">> => string(),
-%%   <<"ScalaCode">> => string()
-%% }
--type get_plan_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_integration_resource_property_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourcePropertyArn">> => string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
-%% }
--type update_integration_resource_property_response() :: #{binary() => any()}.
-
-%% Example:
-%% item_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"ItemIdentifier">> => string(),
-%%   <<"Message">> => string()
-%% }
--type item_error() :: #{binary() => any()}.
-
-%% Example:
-%% update_glue_identity_center_configuration_request() :: #{
-%%   <<"Scopes">> => list(string()),
-%%   <<"UserBackgroundSessionsEnabled">> => boolean()
-%% }
--type update_glue_identity_center_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_form_type_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Schema">> := string()
-%% }
--type put_form_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% search_result_item() :: #{
-%%   <<"AssetDescription">> => string(),
-%%   <<"AssetName">> => string(),
-%%   <<"AssetTypeId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type search_result_item() :: #{binary() => any()}.
-
-%% Example:
-%% list_registries_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Registries">> => list(registry_list_item())
-%% }
--type list_registries_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_statements_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type list_statements_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_type_response() :: #{
-
-%% }
--type delete_connection_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"JobsNotFound">> => list(string())
-%% }
--type batch_get_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"EnableHybrid">> => list(any()),
-%%   <<"PolicyExistsCondition">> => list(any()),
-%%   <<"PolicyHashCondition">> => string(),
-%%   <<"PolicyInJson">> := string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% schema_change_policy() :: #{
-%%   <<"DeleteBehavior">> => list(any()),
-%%   <<"UpdateBehavior">> => list(any())
-%% }
--type schema_change_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_materialized_view_refresh_task_run_response() :: #{
-%%   <<"MaterializedViewRefreshTaskRun">> => materialized_view_refresh_task_run()
-%% }
--type get_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% connector_authorization_code_properties() :: #{
-%%   <<"AuthorizationCode">> => connector_property(),
-%%   <<"AuthorizationCodeUrl">> => connector_property(),
-%%   <<"ClientId">> => connector_property(),
-%%   <<"ClientSecret">> => connector_property(),
-%%   <<"ContentType">> => list(any()),
-%%   <<"Prompt">> => connector_property(),
-%%   <<"RedirectUri">> => connector_property(),
-%%   <<"RequestMethod">> => list(any()),
-%%   <<"Scope">> => connector_property(),
-%%   <<"TokenUrl">> => connector_property(),
-%%   <<"TokenUrlParameters">> => list(connector_property())
-%% }
--type connector_authorization_code_properties() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_resource_property_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
-%% }
--type create_integration_resource_property_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_source_control_from_job_request() :: #{
-%%   <<"AuthStrategy">> => list(any()),
-%%   <<"AuthToken">> => string(),
-%%   <<"BranchName">> => string(),
-%%   <<"CommitId">> => string(),
-%%   <<"Folder">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"Provider">> => list(any()),
-%%   <<"RepositoryName">> => string(),
-%%   <<"RepositoryOwner">> => string()
-%% }
--type update_source_control_from_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% recipe_step() :: #{
-%%   <<"Action">> => recipe_action(),
-%%   <<"ConditionExpressions">> => list(condition_expression())
-%% }
--type recipe_step() :: #{binary() => any()}.
-
-%% Example:
-%% catalog() :: #{
-%%   <<"AllowFullTableExternalDataAccess">> => list(any()),
-%%   <<"CatalogId">> => string(),
-%%   <<"CatalogProperties">> => catalog_properties_output(),
-%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FederatedCatalog">> => federated_catalog(),
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"TargetRedshiftCatalog">> => target_redshift_catalog(),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type catalog() :: #{binary() => any()}.
-
-%% Example:
-%% get_database_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Name">> := string()
-%% }
--type get_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_integration_state_fault() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_integration_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% job_node_details() :: #{
-%%   <<"JobRuns">> => list(job_run())
-%% }
--type job_node_details() :: #{binary() => any()}.
-
-%% Example:
-%% rename_field() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SourcePath">> => list(string()),
-%%   <<"TargetPath">> => list(string())
-%% }
--type rename_field() :: #{binary() => any()}.
-
-%% Example:
-%% start_trigger_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type start_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_statistics_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"StatisticId">> => string(),
-%%   <<"TimestampFilter">> => timestamp_filter()
-%% }
--type list_data_quality_statistics_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_response() :: #{
-
-%% }
--type delete_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_workflow_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionsToDelete">> := list(partition_value_list()),
-%%   <<"TableName">> := string()
-%% }
--type batch_delete_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% crawler_stopping_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type crawler_stopping_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glue_identity_center_configuration_response() :: #{
-
-%% }
--type delete_glue_identity_center_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_crawler_schedule_response() :: #{
-
-%% }
--type update_crawler_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_delta_source() :: #{
-%%   <<"AdditionalDeltaOptions">> => map(),
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string())
-%% }
--type s3_delta_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_task_runs_response() :: #{
-%%   <<"ColumnStatisticsTaskRuns">> => list(column_statistics_task_run()),
-%%   <<"NextToken">> => string()
-%% }
--type get_column_statistics_task_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_table_optimizer() :: #{
-%%   <<"catalogId">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"tableName">> => string(),
-%%   <<"tableOptimizer">> => table_optimizer()
-%% }
--type batch_table_optimizer() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_table_response() :: #{
-%%   <<"Errors">> => list(table_error())
-%% }
--type batch_delete_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% d_q_results_publishing_options() :: #{
-%%   <<"CloudWatchMetricsEnabled">> => boolean(),
-%%   <<"EvaluationContext">> => string(),
-%%   <<"ResultsPublishingEnabled">> => boolean(),
-%%   <<"ResultsS3Prefix">> => string()
-%% }
--type d_q_results_publishing_options() :: #{binary() => any()}.
-
-%% Example:
-%% table_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastAccessTime">> => non_neg_integer(),
-%%   <<"LastAnalyzedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"PartitionKeys">> => list(column()),
-%%   <<"Retention">> => integer(),
-%%   <<"StorageDescriptor">> => storage_descriptor(),
-%%   <<"TableType">> => string(),
-%%   <<"TargetTable">> => table_identifier(),
-%%   <<"ViewDefinition">> => view_definition_input(),
-%%   <<"ViewExpandedText">> => string(),
-%%   <<"ViewOriginalText">> => string()
-%% }
--type table_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_asset_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_asset_request() :: #{binary() => any()}.
-
-%% Example:
-%% column_importance() :: #{
-%%   <<"ColumnName">> => string(),
-%%   <<"Importance">> => float()
-%% }
--type column_importance() :: #{binary() => any()}.
-
-%% Example:
-%% create_column_statistics_task_settings_request() :: #{
-%%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Role">> := string(),
-%%   <<"SampleSize">> => float(),
-%%   <<"Schedule">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"TableName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_column_statistics_task_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_task_runs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TaskRuns">> => list(task_run())
-%% }
--type get_ml_task_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_run_statistics() :: #{
-%%   <<"ErroredActions">> => integer(),
-%%   <<"FailedActions">> => integer(),
-%%   <<"RunningActions">> => integer(),
-%%   <<"StoppedActions">> => integer(),
-%%   <<"SucceededActions">> => integer(),
-%%   <<"TimeoutActions">> => integer(),
-%%   <<"TotalActions">> => integer(),
-%%   <<"WaitingActions">> => integer()
-%% }
--type workflow_run_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% delta_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"CreateNativeDeltaTable">> => boolean(),
-%%   <<"DeltaTables">> => list(string()),
-%%   <<"WriteManifest">> => boolean()
-%% }
--type delta_target() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% transform_config_parameter() :: #{
-%%   <<"IsOptional">> => boolean(),
-%%   <<"ListType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"ValidationMessage">> => string(),
-%%   <<"ValidationRule">> => string(),
-%%   <<"Value">> => list(string())
-%% }
--type transform_config_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_optimizer_request() :: #{
+%% start_materialized_view_refresh_task_run_request() :: #{
 %%   <<"CatalogId">> := string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"Type">> := list(any())
+%%   <<"FullRefresh">> => boolean(),
+%%   <<"TableName">> := string()
 %% }
--type delete_table_optimizer_request() :: #{binary() => any()}.
+-type start_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_table_optimizer_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"TableOptimizerConfiguration">> := table_optimizer_configuration(),
-%%   <<"Type">> := list(any())
+%% start_materialized_view_refresh_task_run_response() :: #{
+%%   <<"MaterializedViewRefreshTaskRunId">> => string()
 %% }
--type update_table_optimizer_request() :: #{binary() => any()}.
+-type start_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_table_version_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"VersionId">> => string()
+%% start_ml_evaluation_task_run_request() :: #{
+%%   <<"TransformId">> := string()
 %% }
--type get_table_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_ruleset_evaluation_run_description() :: #{
-%%   <<"DataSource">> => data_source(),
-%%   <<"RunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type data_quality_ruleset_evaluation_run_description() :: #{binary() => any()}.
-
-%% Example:
-%% create_ml_transform_response() :: #{
-%%   <<"TransformId">> => string()
-%% }
--type create_ml_transform_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_configuration_response() :: #{
-%%   <<"SecurityConfiguration">> => security_configuration()
-%% }
--type get_security_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_crawls_response() :: #{
-%%   <<"Crawls">> => list(crawler_history()),
-%%   <<"NextToken">> => string()
-%% }
--type list_crawls_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dev_endpoint_response() :: #{
-
-%% }
--type delete_dev_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity_configuration() :: #{
-%%   <<"Schema">> => map(),
-%%   <<"SourceConfiguration">> => source_configuration()
-%% }
--type entity_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_dev_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_dev_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% security_configuration() :: #{
-%%   <<"CreatedTimeStamp">> => non_neg_integer(),
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
-%%   <<"Name">> => string()
-%% }
--type security_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% partition_input() :: #{
-%%   <<"LastAccessTime">> => non_neg_integer(),
-%%   <<"LastAnalyzedTime">> => non_neg_integer(),
-%%   <<"Parameters">> => map(),
-%%   <<"StorageDescriptor">> => storage_descriptor(),
-%%   <<"Values">> => list(string())
-%% }
--type partition_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_integrations_request() :: #{
-%%   <<"Filters">> => list(integration_filter()),
-%%   <<"IntegrationIdentifier">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_update_partition_response() :: #{
-%%   <<"Errors">> => list(batch_update_partition_failure_entry())
-%% }
--type batch_update_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_integrations_response() :: #{
-%%   <<"Integrations">> => list(integration()),
-%%   <<"Marker">> => string()
-%% }
--type describe_integrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_table_update() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"EncryptionKey">> => iceberg_encrypted_key(),
-%%   <<"KeyId">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"PartitionSpec">> => iceberg_partition_spec(),
-%%   <<"Properties">> => map(),
-%%   <<"Schema">> => iceberg_schema(),
-%%   <<"SortOrder">> => iceberg_sort_order()
-%% }
--type iceberg_table_update() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_request() :: #{
-%%   <<"JobName">> := string()
-%% }
--type delete_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% connector_o_auth2_properties() :: #{
-%%   <<"AuthorizationCodeProperties">> => connector_authorization_code_properties(),
-%%   <<"ClientCredentialsProperties">> => client_credentials_properties(),
-%%   <<"JWTBearerProperties">> => j_w_t_bearer_properties(),
-%%   <<"OAuth2GrantType">> => list(any())
-%% }
--type connector_o_auth2_properties() :: #{binary() => any()}.
-
-%% Example:
-%% p_i_idetection() :: #{
-%%   <<"DetectionParameters">> => string(),
-%%   <<"DetectionSensitivity">> => string(),
-%%   <<"EntityTypesToDetect">> => list(string()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"MaskValue">> => string(),
-%%   <<"MatchPattern">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NumLeftCharsToExclude">> => integer(),
-%%   <<"NumRightCharsToExclude">> => integer(),
-%%   <<"OutputColumnName">> => string(),
-%%   <<"PiiType">> => list(any()),
-%%   <<"RedactChar">> => string(),
-%%   <<"RedactText">> => string(),
-%%   <<"SampleFraction">> => float(),
-%%   <<"ThresholdFraction">> => float()
-%% }
--type p_i_idetection() :: #{binary() => any()}.
-
-%% Example:
-%% aggregate_operation() :: #{
-%%   <<"AggFunc">> => list(any()),
-%%   <<"Column">> => list(string())
-%% }
--type aggregate_operation() :: #{binary() => any()}.
+-type start_ml_evaluation_task_run_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_ml_evaluation_task_run_response() :: #{
@@ -7668,1398 +8886,61 @@
 -type start_ml_evaluation_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_data_quality_ruleset_evaluation_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type start_data_quality_ruleset_evaluation_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_observation() :: #{
-%%   <<"Description">> => string(),
-%%   <<"MetricBasedObservation">> => metric_based_observation()
-%% }
--type data_quality_observation() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_crawlers_response() :: #{
-%%   <<"Crawlers">> => list(crawler()),
-%%   <<"CrawlersNotFound">> => list(string())
-%% }
--type batch_get_crawlers_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_input() :: #{
-%%   <<"SchemaId">> := schema_id()
-%% }
--type get_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% snowflake_source() :: #{
-%%   <<"Data">> => snowflake_node_data(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
-%% }
--type snowflake_source() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_result() :: #{
-%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
-%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"DataSource">> => data_source(),
-%%   <<"EvaluationContext">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string(),
-%%   <<"Observations">> => list(data_quality_observation()),
-%%   <<"ProfileId">> => string(),
-%%   <<"ResultId">> => string(),
-%%   <<"RuleResults">> => list(data_quality_rule_result()),
-%%   <<"RulesetEvaluationRunId">> => string(),
-%%   <<"RulesetName">> => string(),
-%%   <<"Score">> => float(),
-%%   <<"StartedOn">> => non_neg_integer()
-%% }
--type data_quality_result() :: #{binary() => any()}.
-
-%% Example:
-%% drop_null_fields() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NullCheckBoxList">> => null_check_box_list(),
-%%   <<"NullTextList">> => list(null_value_field())
-%% }
--type drop_null_fields() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_response() :: #{
-%%   <<"Job">> => job()
-%% }
--type get_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_evaluation_run_additional_run_options() :: #{
-%%   <<"CloudWatchMetricsEnabled">> => boolean(),
-%%   <<"CompositeRuleEvaluationMethod">> => list(any()),
-%%   <<"CustomLogGroupPrefix">> => string(),
-%%   <<"ResultsS3Prefix">> => string()
-%% }
--type data_quality_evaluation_run_additional_run_options() :: #{binary() => any()}.
-
-%% Example:
-%% d_q_stop_job_on_failure_options() :: #{
-%%   <<"StopJobOnFailureTiming">> => list(any())
-%% }
--type d_q_stop_job_on_failure_options() :: #{binary() => any()}.
-
-%% Example:
-%% get_catalogs_response() :: #{
-%%   <<"CatalogList">> => list(catalog()),
-%%   <<"NextToken">> => string()
-%% }
--type get_catalogs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_registry_response() :: #{
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type delete_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_crawls_request() :: #{
-%%   <<"CrawlerName">> := string(),
-%%   <<"Filters">> => list(crawls_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_crawls_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_session_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"RequestOrigin">> => string()
-%% }
--type stop_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_schema_version_metadata_input() :: #{
-%%   <<"MetadataKeyValue">> := metadata_key_value_pair(),
-%%   <<"SchemaId">> => schema_id(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionNumber">> => schema_version_number()
-%% }
--type remove_schema_version_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_response() :: #{
-
-%% }
--type delete_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% condition_check_failure_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type condition_check_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% glue_table() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type glue_table() :: #{binary() => any()}.
-
-%% Example:
-%% audit_context() :: #{
-%%   <<"AdditionalAuditContext">> => string(),
-%%   <<"AllColumnsRequested">> => boolean(),
-%%   <<"RequestedColumns">> => list(string())
-%% }
--type audit_context() :: #{binary() => any()}.
-
-%% Example:
-%% x_ml_classifier() :: #{
-%%   <<"Classification">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RowTag">> => string(),
-%%   <<"Version">> => float()
-%% }
--type x_ml_classifier() :: #{binary() => any()}.
-
-%% Example:
-%% start_export_labels_task_run_request() :: #{
+%% start_ml_labeling_set_generation_task_run_request() :: #{
 %%   <<"OutputS3Path">> := string(),
 %%   <<"TransformId">> := string()
 %% }
--type start_export_labels_task_run_request() :: #{binary() => any()}.
+-type start_ml_labeling_set_generation_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"PartitionPredicate">> => string(),
-%%   <<"Table">> => string()
-%% }
--type catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_catalog_encryption_settings_response() :: #{
-%%   <<"DataCatalogEncryptionSettings">> => data_catalog_encryption_settings()
-%% }
--type get_data_catalog_encryption_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_type_request() :: #{
-%%   <<"ConnectionType">> := string()
-%% }
--type delete_connection_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% job() :: #{
-%%   <<"AllocatedCapacity">> => integer(),
-%%   <<"CodeGenConfigurationNodes">> => map(),
-%%   <<"Command">> => job_command(),
-%%   <<"Connections">> => connections_list(),
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"DefaultArguments">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionClass">> => list(any()),
-%%   <<"ExecutionProperty">> => execution_property(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"JobMode">> => list(any()),
-%%   <<"JobRunQueuingEnabled">> => boolean(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"LogUri">> => string(),
-%%   <<"MaintenanceWindow">> => string(),
-%%   <<"MaxCapacity">> => float(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NonOverridableArguments">> => map(),
-%%   <<"NotificationProperty">> => notification_property(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"ProfileName">> => string(),
-%%   <<"Role">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SourceControlDetails">> => source_control_details(),
-%%   <<"Timeout">> => integer(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type job() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trigger_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_trigger_response() :: #{binary() => any()}.
-
-%% Example:
-%% connector_data_target() :: #{
-%%   <<"ConnectionType">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type connector_data_target() :: #{binary() => any()}.
-
-%% Example:
-%% property() :: #{
-%%   <<"AllowedValues">> => list(allowed_value()),
-%%   <<"DataOperationScopes">> => list(list(any())()),
-%%   <<"DefaultValue">> => [string()],
-%%   <<"Description">> => string(),
-%%   <<"KeyOverride">> => [string()],
-%%   <<"Name">> => string(),
-%%   <<"PropertyLocation">> => list(any()),
-%%   <<"PropertyTypes">> => list(list(any())()),
-%%   <<"Required">> => boolean()
-%% }
--type property() :: #{binary() => any()}.
-
-%% Example:
-%% connector_authentication_configuration() :: #{
-%%   <<"AuthenticationTypes">> => list(list(any())()),
-%%   <<"BasicAuthenticationProperties">> => basic_authentication_properties(),
-%%   <<"CustomAuthenticationProperties">> => custom_authentication_properties(),
-%%   <<"OAuth2Properties">> => connector_o_auth2_properties()
-%% }
--type connector_authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_type_request() :: #{
-%%   <<"ConnectionType">> := string()
-%% }
--type describe_connection_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_profile_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_usage_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_column_statistics_task_run_schedule_request() :: #{
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type start_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_catalog_source() :: #{
-%%   <<"AdditionalOptions">> => s3_source_additional_options(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PartitionPredicate">> => string(),
-%%   <<"Table">> => string()
-%% }
--type s3_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% metadata_key_value_pair() :: #{
-%%   <<"MetadataKey">> => string(),
-%%   <<"MetadataValue">> => string()
-%% }
--type metadata_key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_input() :: #{
-%%   <<"CreateIcebergTableInput">> => create_iceberg_table_input(),
-%%   <<"MetadataOperation">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type iceberg_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_table_properties_response() :: #{
-
-%% }
--type delete_integration_table_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_blueprint_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_blueprint_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_result_filter_criteria() :: #{
-%%   <<"DataSource">> => data_source(),
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string(),
-%%   <<"StartedAfter">> => non_neg_integer(),
-%%   <<"StartedBefore">> => non_neg_integer()
-%% }
--type data_quality_result_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% data_quality_analyzer_result() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EvaluatedMetrics">> => map(),
-%%   <<"EvaluationMessage">> => string(),
-%%   <<"Name">> => string()
-%% }
--type data_quality_analyzer_result() :: #{binary() => any()}.
-
-%% Example:
-%% permission_type_mismatch_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type permission_type_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_materialized_view_refresh_task_run_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string()
-%% }
--type stop_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_data_quality() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Output">> => list(any()),
-%%   <<"PublishingOptions">> => d_q_results_publishing_options(),
-%%   <<"Ruleset">> => string(),
-%%   <<"StopJobOnFailureOptions">> => d_q_stop_job_on_failure_options()
-%% }
--type evaluate_data_quality() :: #{binary() => any()}.
-
-%% Example:
-%% start_column_statistics_task_run_schedule_response() :: #{
-
-%% }
--type start_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_request() :: #{
-%%   <<"JobName">> := string()
-%% }
--type get_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_dev_endpoint_request() :: #{
-%%   <<"Arguments">> => map(),
-%%   <<"EndpointName">> := string(),
-%%   <<"ExtraJarsS3Path">> => string(),
-%%   <<"ExtraPythonLibsS3Path">> => string(),
-%%   <<"GlueVersion">> => string(),
-%%   <<"NumberOfNodes">> => integer(),
-%%   <<"NumberOfWorkers">> => integer(),
-%%   <<"PublicKey">> => string(),
-%%   <<"PublicKeys">> => list(string()),
-%%   <<"RoleArn">> := string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"WorkerType">> => list(any())
-%% }
--type create_dev_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% federation_source_retryable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type federation_source_retryable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_from_source_control_response() :: #{
-%%   <<"JobName">> => string()
-%% }
--type update_job_from_source_control_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TableVersions">> => list(table_version())
-%% }
--type get_table_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_integration_resource_properties_response() :: #{
-%%   <<"IntegrationResourcePropertyList">> => list(integration_resource_property()),
-%%   <<"Marker">> => string()
-%% }
--type list_integration_resource_properties_response() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_compaction_metrics() :: #{
-%%   <<"DpuHours">> => float(),
-%%   <<"JobDurationInHour">> => float(),
-%%   <<"NumberOfBytesCompacted">> => float(),
-%%   <<"NumberOfDpus">> => integer(),
-%%   <<"NumberOfFilesCompacted">> => float()
-%% }
--type iceberg_compaction_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partition_index_response() :: #{
-
-%% }
--type delete_partition_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_glossary_term_response() :: #{
-%%   <<"GlossaryId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LongDescription">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ShortDescription">> => string()
-%% }
--type get_glossary_term_response() :: #{binary() => any()}.
-
-%% Example:
-%% predicate() :: #{
-%%   <<"Conditions">> => list(condition()),
-%%   <<"Logical">> => list(any())
-%% }
--type predicate() :: #{binary() => any()}.
-
-%% Example:
-%% double_column_statistics_data() :: #{
-%%   <<"MaximumValue">> => float(),
-%%   <<"MinimumValue">> => float(),
-%%   <<"NumberOfDistinctValues">> => float(),
-%%   <<"NumberOfNulls">> => float()
-%% }
--type double_column_statistics_data() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_encryption() :: #{
-%%   <<"CloudWatchEncryptionMode">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type cloud_watch_encryption() :: #{binary() => any()}.
-
-%% Example:
-%% iterable_form_entry() :: #{
-%%   <<"FormTypeId">> => string()
-%% }
--type iterable_form_entry() :: #{binary() => any()}.
-
-%% Example:
-%% crawler_not_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type crawler_not_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% condition_expression() :: #{
-%%   <<"Condition">> => string(),
-%%   <<"TargetColumn">> => string(),
-%%   <<"Value">> => string()
-%% }
--type condition_expression() :: #{binary() => any()}.
-
-%% Example:
-%% resume_workflow_run_response() :: #{
-%%   <<"NodeIds">> => list(string()),
-%%   <<"RunId">> => string()
-%% }
--type resume_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_connection_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connection_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% option() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"Value">> => string()
-%% }
--type option() :: #{binary() => any()}.
-
-%% Example:
-%% list_schema_versions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaId">> := schema_id()
-%% }
--type list_schema_versions_input() :: #{binary() => any()}.
-
-%% Example:
-%% compaction_configuration() :: #{
-%%   <<"icebergConfiguration">> => iceberg_compaction_configuration()
-%% }
--type compaction_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% response_configuration() :: #{
-%%   <<"ErrorPath">> => string(),
-%%   <<"ResultPath">> => string()
-%% }
--type response_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% put_asset_request() :: #{
-%%   <<"AssetTypeId">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Forms">> := map(),
-%%   <<"Identifier">> := string(),
-%%   <<"Name">> := string()
-%% }
--type put_asset_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_unfiltered_partitions_metadata_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UnfilteredPartitions">> => list(unfiltered_partition())
-%% }
--type get_unfiltered_partitions_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_column_statistics_task_run_schedule_response() :: #{
-
-%% }
--type stop_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
-
-%% Example:
-%% other_metadata_value_list_item() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"MetadataValue">> => string()
-%% }
--type other_metadata_value_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% create_blueprint_request() :: #{
-%%   <<"BlueprintLocation">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_blueprint_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_data_quality_result_request() :: #{
-%%   <<"ResultIds">> := list(string())
-%% }
--type batch_get_data_quality_result_request() :: #{binary() => any()}.
-
-%% Example:
-%% json_classifier() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"JsonPath">> => string(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => float()
-%% }
--type json_classifier() :: #{binary() => any()}.
-
-%% Example:
-%% get_glossary_term_request() :: #{
-
-%% }
--type get_glossary_term_request() :: #{binary() => any()}.
-
-%% Example:
-%% search_tables_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Filters">> => list(property_predicate()),
-%%   <<"IncludeStatusDetails">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceShareType">> => list(any()),
-%%   <<"SearchText">> => string(),
-%%   <<"SortCriteria">> => list(sort_criterion())
-%% }
--type search_tables_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inbound_integrations_request() :: #{
-%%   <<"IntegrationArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"TargetArn">> => string()
-%% }
--type describe_inbound_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_crawler_schedule_request() :: #{
-%%   <<"CrawlerName">> := string(),
-%%   <<"Schedule">> => string()
-%% }
--type update_crawler_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_request() :: #{
-%%   <<"IncludeGraph">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"RunId">> := string()
-%% }
--type get_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_crawler_response() :: #{
-
-%% }
--type start_crawler_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawler_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_crawler_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_partitions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Partitions">> => list(partition())
-%% }
--type get_partitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% dynamo_db_catalog_source() :: #{
-%%   <<"AdditionalOptions">> => d_db_e_l_t_catalog_additional_options(),
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PitrEnabled">> => boolean(),
-%%   <<"Table">> => string()
-%% }
--type dynamo_db_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% list_usage_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_usage_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_blueprints_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_database_response() :: #{
-
-%% }
--type delete_database_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workflow_run_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"RunId">> := string()
-%% }
--type stop_workflow_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% pagination_configuration() :: #{
-%%   <<"CursorConfiguration">> => cursor_configuration(),
-%%   <<"OffsetConfiguration">> => offset_configuration()
-%% }
--type pagination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_response() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTime">> => string()
-%% }
--type get_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"PolicyHash">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_properties_output() :: #{
-%%   <<"CustomProperties">> => map(),
-%%   <<"DataLakeAccessProperties">> => data_lake_access_properties_output(),
-%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties_output()
-%% }
--type catalog_properties_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_quality_ruleset_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DataQualitySecurityConfiguration">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Ruleset">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"TargetTable">> => data_quality_target_table()
-%% }
--type create_data_quality_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% column_statistics_task_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type column_statistics_task_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_stop_job_run_successful_submission() :: #{
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string()
-%% }
--type batch_stop_job_run_successful_submission() :: #{binary() => any()}.
-
-%% Example:
-%% s3_hudi_direct_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"AutoDataQuality">> => auto_data_quality(),
-%%   <<"Compression">> => list(any()),
-%%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string())()),
-%%   <<"Path">> => string(),
-%%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
-%% }
--type s3_hudi_direct_target() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_ruleset_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_data_quality_ruleset_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_statement_request() :: #{
-%%   <<"Id">> := integer(),
-%%   <<"RequestOrigin">> => string(),
-%%   <<"SessionId">> := string()
-%% }
--type get_statement_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_data_quality_ruleset_evaluation_run_request() :: #{
-%%   <<"RunId">> := string()
-%% }
--type cancel_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_schema() :: #{
-%%   <<"Fields">> => list(iceberg_struct_field()),
-%%   <<"IdentifierFieldIds">> => list(integer()),
-%%   <<"SchemaId">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type iceberg_schema() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_response() :: #{
-%%   <<"CreateConnectionStatus">> => list(any())
-%% }
--type create_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_unfiltered_partition_metadata_response() :: #{
-%%   <<"AuthorizedColumns">> => list(string()),
-%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
-%%   <<"Partition">> => partition()
-%% }
--type get_unfiltered_partition_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_database_response() :: #{
-
-%% }
--type update_database_response() :: #{binary() => any()}.
-
-%% Example:
-%% o_auth2_properties() :: #{
-%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
-%%   <<"OAuth2GrantType">> => list(any()),
-%%   <<"TokenUrl">> => string(),
-%%   <<"TokenUrlParametersMap">> => map()
-%% }
--type o_auth2_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_dev_endpoints_response() :: #{
-%%   <<"DevEndpointNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_dev_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% database_input() :: #{
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
-%%   <<"Description">> => string(),
-%%   <<"FederatedDatabase">> => federated_database(),
-%%   <<"LocationUri">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"TargetDatabase">> => database_identifier()
-%% }
--type database_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_ruleset_evaluation_runs_request() :: #{
-%%   <<"Filter">> => data_quality_ruleset_evaluation_run_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_quality_ruleset_evaluation_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_response() :: #{
-
-%% }
--type delete_glossary_response() :: #{binary() => any()}.
-
-%% Example:
-%% relational_catalog_source() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type relational_catalog_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_entity_type_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_custom_entity_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% spark_s_q_l() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"SqlAliases">> => list(sql_alias()),
-%%   <<"SqlQuery">> => string()
-%% }
--type spark_s_q_l() :: #{binary() => any()}.
-
-%% Example:
-%% delete_form_type_response() :: #{
-
-%% }
--type delete_form_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% kafka_streaming_source_options() :: #{
-%%   <<"AddRecordTimestamp">> => string(),
-%%   <<"Assign">> => string(),
-%%   <<"BootstrapServers">> => string(),
-%%   <<"Classification">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"Delimiter">> => string(),
-%%   <<"EmitConsumerLagMetrics">> => string(),
-%%   <<"EndingOffsets">> => string(),
-%%   <<"IncludeHeaders">> => boolean(),
-%%   <<"MaxOffsetsPerTrigger">> => float(),
-%%   <<"MinPartitions">> => integer(),
-%%   <<"NumRetries">> => integer(),
-%%   <<"PollTimeoutMs">> => float(),
-%%   <<"RetryIntervalMs">> => float(),
-%%   <<"SecurityProtocol">> => string(),
-%%   <<"StartingOffsets">> => string(),
-%%   <<"StartingTimestamp">> => non_neg_integer(),
-%%   <<"SubscribePattern">> => string(),
-%%   <<"TopicName">> => string()
-%% }
--type kafka_streaming_source_options() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_iterable_forms_response() :: #{
-%%   <<"Errors">> => list(item_error()),
-%%   <<"Items">> => list(iterable_form_item())
-%% }
--type batch_get_iterable_forms_response() :: #{binary() => any()}.
-
-%% Example:
-%% table_version_error() :: #{
-%%   <<"ErrorDetail">> => error_detail(),
-%%   <<"TableName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type table_version_error() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_table_version_response() :: #{
-%%   <<"Errors">> => list(table_version_error())
-%% }
--type batch_delete_table_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_databases_request() :: #{
-%%   <<"AttributesToGet">> => list(list(any())()),
-%%   <<"CatalogId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceShareType">> => list(any())
-%% }
--type get_databases_request() :: #{binary() => any()}.
-
-%% Example:
-%% catalog_kafka_source() :: #{
-%%   <<"DataPreviewOptions">> => streaming_data_preview_options(),
-%%   <<"Database">> => string(),
-%%   <<"DetectSchema">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"StreamingOptions">> => kafka_streaming_source_options(),
-%%   <<"Table">> => string(),
-%%   <<"WindowSize">> => integer()
-%% }
--type catalog_kafka_source() :: #{binary() => any()}.
-
-%% Example:
-%% date_column_statistics_data() :: #{
-%%   <<"MaximumValue">> => non_neg_integer(),
-%%   <<"MinimumValue">> => non_neg_integer(),
-%%   <<"NumberOfDistinctValues">> => float(),
-%%   <<"NumberOfNulls">> => float()
-%% }
--type date_column_statistics_data() :: #{binary() => any()}.
-
-%% Example:
-%% drop_fields() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string())())
-%% }
--type drop_fields() :: #{binary() => any()}.
-
-%% Example:
-%% reset_job_bookmark_response() :: #{
-%%   <<"JobBookmarkEntry">> => job_bookmark_entry()
-%% }
--type reset_job_bookmark_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"PolicyHashCondition">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawler_metrics_response() :: #{
-%%   <<"CrawlerMetricsList">> => list(crawler_metrics()),
-%%   <<"NextToken">> => string()
-%% }
--type get_crawler_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_partitions_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"ExcludeColumnSchema">> => boolean(),
-%%   <<"Expression">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryAsOfTime">> => non_neg_integer(),
-%%   <<"Segment">> => segment(),
-%%   <<"TableName">> := string(),
-%%   <<"TransactionId">> => string()
-%% }
--type get_partitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% streaming_data_preview_options() :: #{
-%%   <<"PollingTime">> => float(),
-%%   <<"RecordPollingLimit">> => float()
-%% }
--type streaming_data_preview_options() :: #{binary() => any()}.
-
-%% Example:
-%% search_assets_input() :: #{
-%%   <<"FilterClause">> => list(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchText">> => string(),
-%%   <<"Sort">> => search_sort()
-%% }
--type search_assets_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_type_response() :: #{
-
-%% }
--type delete_asset_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% integration_resource_property() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourcePropertyArn">> => string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
-%% }
--type integration_resource_property() :: #{binary() => any()}.
-
-%% Example:
-%% create_json_classifier_request() :: #{
-%%   <<"JsonPath">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_json_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_stop_job_run_response() :: #{
-%%   <<"Errors">> => list(batch_stop_job_run_error()),
-%%   <<"SuccessfulSubmissions">> => list(batch_stop_job_run_successful_submission())
-%% }
--type batch_stop_job_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_stop_job_run_error() :: #{
-%%   <<"ErrorDetail">> => error_detail(),
-%%   <<"JobName">> => string(),
-%%   <<"JobRunId">> => string()
-%% }
--type batch_stop_job_run_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_results_request() :: #{
-%%   <<"Filter">> => data_quality_result_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_quality_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_input() :: #{
-%%   <<"SchemaId">> := schema_id()
-%% }
--type delete_schema_input() :: #{binary() => any()}.
-
-%% Example:
-%% view_representation() :: #{
-%%   <<"Dialect">> => list(any()),
-%%   <<"DialectVersion">> => string(),
-%%   <<"IsStale">> => boolean(),
-%%   <<"ValidationConnection">> => string(),
-%%   <<"ViewExpandedText">> => string(),
-%%   <<"ViewOriginalText">> => string()
-%% }
--type view_representation() :: #{binary() => any()}.
-
-%% Example:
-%% update_job_from_source_control_request() :: #{
-%%   <<"AuthStrategy">> => list(any()),
-%%   <<"AuthToken">> => string(),
-%%   <<"BranchName">> => string(),
-%%   <<"CommitId">> => string(),
-%%   <<"Folder">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"Provider">> => list(any()),
-%%   <<"RepositoryName">> => string(),
-%%   <<"RepositoryOwner">> => string()
-%% }
--type update_job_from_source_control_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_defined_function_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"FunctionInput">> := user_defined_function_input(),
-%%   <<"FunctionName">> := string()
-%% }
--type update_user_defined_function_request() :: #{binary() => any()}.
-
-%% Example:
-%% o_auth2_properties_input() :: #{
-%%   <<"AuthorizationCodeProperties">> => authorization_code_properties(),
-%%   <<"OAuth2ClientApplication">> => o_auth2_client_application(),
-%%   <<"OAuth2Credentials">> => o_auth2_credentials(),
-%%   <<"OAuth2GrantType">> => list(any()),
-%%   <<"TokenUrl">> => string(),
-%%   <<"TokenUrlParametersMap">> => map()
-%% }
--type o_auth2_properties_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_glue_identity_center_configuration_response() :: #{
-%%   <<"ApplicationArn">> => string()
-%% }
--type create_glue_identity_center_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_configuration() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"OAuth2Properties">> => o_auth2_properties(),
-%%   <<"SecretArn">> => string()
-%% }
--type authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_classifier_request() :: #{
-%%   <<"CsvClassifier">> => update_csv_classifier_request(),
-%%   <<"GrokClassifier">> => update_grok_classifier_request(),
-%%   <<"JsonClassifier">> => update_json_classifier_request(),
-%%   <<"XMLClassifier">> => update_x_ml_classifier_request()
-%% }
--type update_classifier_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_column_statistics_for_table_response() :: #{
-%%   <<"Errors">> => list(column_statistics_error())
-%% }
--type update_column_statistics_for_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_trigger_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type get_trigger_request() :: #{binary() => any()}.
-
-%% Example:
-%% glue_encryption_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type glue_encryption_exception() :: #{binary() => any()}.
-
-%% Example:
-%% mapping() :: #{
-%%   <<"Children">> => list(mapping()),
-%%   <<"Dropped">> => boolean(),
-%%   <<"FromPath">> => list(string()),
-%%   <<"FromType">> => string(),
-%%   <<"ToKey">> => string(),
-%%   <<"ToType">> => string()
-%% }
--type mapping() :: #{binary() => any()}.
-
-%% Example:
-%% drop_duplicates() :: #{
-%%   <<"Columns">> => list(list(string())()),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type drop_duplicates() :: #{binary() => any()}.
-
-%% Example:
-%% update_classifier_response() :: #{
-
-%% }
--type update_classifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_task_run_response() :: #{
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"ErrorString">> => string(),
-%%   <<"ExecutionTime">> => integer(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"LogGroupName">> => string(),
-%%   <<"Properties">> => task_run_properties(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskRunId">> => string(),
-%%   <<"TransformId">> => string()
-%% }
--type get_ml_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_defined_function_response() :: #{
-
-%% }
--type create_user_defined_function_response() :: #{binary() => any()}.
-
-%% Example:
-%% property_predicate() :: #{
-%%   <<"Comparator">> => list(any()),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type property_predicate() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_table_optimizer_request() :: #{
-%%   <<"Entries">> := list(batch_get_table_optimizer_entry())
-%% }
--type batch_get_table_optimizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_iterable_forms_request() :: #{
-%%   <<"ItemIdentifiers">> := list(string())
-%% }
--type batch_get_iterable_forms_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_source() :: #{
-%%   <<"DataQualityGlueTable">> => data_quality_glue_table(),
-%%   <<"GlueTable">> => glue_table()
-%% }
--type data_source() :: #{binary() => any()}.
-
-%% Example:
-%% update_glossary_term_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LongDescription">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ShortDescription">> => string()
-%% }
--type update_glossary_term_request() :: #{binary() => any()}.
-
-%% Example:
-%% d_db_e_l_t_catalog_additional_options() :: #{
-%%   <<"DynamodbExport">> => string(),
-%%   <<"DynamodbUnnestDDBJson">> => boolean()
-%% }
--type d_db_e_l_t_catalog_additional_options() :: #{binary() => any()}.
-
-%% Example:
-%% postgre_s_q_l_catalog_target() :: #{
-%%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Table">> => string()
-%% }
--type postgre_s_q_l_catalog_target() :: #{binary() => any()}.
-
-%% Example:
-%% snowflake_target() :: #{
-%%   <<"Data">> => snowflake_node_data(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type snowflake_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_catalog_request() :: #{
-%%   <<"CatalogInput">> := catalog_input(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_catalog_request() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_supported_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_response() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"NextToken">> => string()
-%% }
--type list_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% edge() :: #{
-%%   <<"DestinationId">> => string(),
-%%   <<"SourceId">> => string()
-%% }
--type edge() :: #{binary() => any()}.
-
-%% Example:
-%% list_crawlers_response() :: #{
-%%   <<"CrawlerNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_crawlers_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_quality_rule_recommendation_runs_request() :: #{
-%%   <<"Filter">> => data_quality_rule_recommendation_run_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_quality_rule_recommendation_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_table_optimizer_runs_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TableName">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type list_table_optimizer_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_profile_request() :: #{
-%%   <<"Configuration">> := profile_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_usage_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> := string()
-%% }
--type delete_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% registry_list_item() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTime">> => string()
-%% }
--type registry_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_optimizer_request() :: #{
-%%   <<"CatalogId">> := string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"Type">> := list(any())
-%% }
--type get_table_optimizer_request() :: #{binary() => any()}.
-
-%% Example:
-%% split_fields() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string())())
-%% }
--type split_fields() :: #{binary() => any()}.
-
-%% Example:
-%% start_import_labels_task_run_response() :: #{
+%% start_ml_labeling_set_generation_task_run_response() :: #{
 %%   <<"TaskRunId">> => string()
 %% }
--type start_import_labels_task_run_response() :: #{binary() => any()}.
+-type start_ml_labeling_set_generation_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_create_partition_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionInputList">> := list(partition_input()),
-%%   <<"TableName">> := string()
+%% start_trigger_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type batch_create_partition_request() :: #{binary() => any()}.
+-type start_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_trigger_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type start_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_workflow_run_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RunProperties">> => map()
+%% }
+-type start_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_workflow_run_response() :: #{
+%%   <<"RunId">> => string()
+%% }
+-type start_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% starting_event_batch_condition() :: #{
+%%   <<"BatchSize">> => integer(),
+%%   <<"BatchWindow">> => integer()
+%% }
+-type starting_event_batch_condition() :: #{binary() => any()}.
+
+%% Example:
+%% statement() :: #{
+%%   <<"Code">> => string(),
+%%   <<"CompletedOn">> => float(),
+%%   <<"Id">> => integer(),
+%%   <<"Output">> => statement_output(),
+%%   <<"Progress">> => float(),
+%%   <<"StartedOn">> => float(),
+%%   <<"State">> => list(any())
+%% }
+-type statement() :: #{binary() => any()}.
 
 %% Example:
 %% statement_output() :: #{
@@ -9073,157 +8954,198 @@
 -type statement_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_partition_request() :: #{
-%%   <<"AuditContext">> => audit_context(),
-%%   <<"CatalogId">> => string(),
+%% statement_output_data() :: #{
+%%   <<"TextPlain">> => string()
+%% }
+-type statement_output_data() :: #{binary() => any()}.
+
+%% Example:
+%% statistic_annotation() :: #{
+%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
+%%   <<"ProfileId">> => string(),
+%%   <<"StatisticId">> => string(),
+%%   <<"StatisticRecordedOn">> => non_neg_integer()
+%% }
+-type statistic_annotation() :: #{binary() => any()}.
+
+%% Example:
+%% statistic_model_result() :: #{
+%%   <<"ActualValue">> => float(),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"InclusionAnnotation">> => list(any()),
+%%   <<"LowerBound">> => float(),
+%%   <<"PredictedValue">> => float(),
+%%   <<"UpperBound">> => float()
+%% }
+-type statistic_model_result() :: #{binary() => any()}.
+
+%% Example:
+%% statistic_summary() :: #{
+%%   <<"ColumnsReferenced">> => list(string()),
+%%   <<"DistributionValue">> => distribution_data(),
+%%   <<"DoubleValue">> => float(),
+%%   <<"EvaluationLevel">> => list(any()),
+%%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
+%%   <<"ProfileId">> => string(),
+%%   <<"RecordedOn">> => non_neg_integer(),
+%%   <<"ReferencedDatasets">> => list(string()),
+%%   <<"RunIdentifier">> => run_identifier(),
+%%   <<"StatisticId">> => string(),
+%%   <<"StatisticName">> => string(),
+%%   <<"StatisticProperties">> => map()
+%% }
+-type statistic_summary() :: #{binary() => any()}.
+
+%% Example:
+%% status_details() :: #{
+%%   <<"RequestedChange">> => table(),
+%%   <<"ViewValidations">> => list(view_validation())
+%% }
+-type status_details() :: #{binary() => any()}.
+
+%% Example:
+%% stop_column_statistics_task_run_request() :: #{
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
--type get_partition_request() :: #{binary() => any()}.
+-type stop_column_statistics_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_schema_version_response() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaDefinition">> => string(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"VersionNumber">> => float()
+%% stop_column_statistics_task_run_response() :: #{
+
 %% }
--type get_schema_version_response() :: #{binary() => any()}.
+-type stop_column_statistics_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_schema_version_metadata_response() :: #{
-%%   <<"LatestVersion">> => boolean(),
-%%   <<"MetadataKey">> => string(),
-%%   <<"MetadataValue">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"VersionNumber">> => float()
+%% stop_column_statistics_task_run_schedule_request() :: #{
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
 %% }
--type put_schema_version_metadata_response() :: #{binary() => any()}.
+-type stop_column_statistics_task_run_schedule_request() :: #{binary() => any()}.
 
 %% Example:
-%% s3_excel_source() :: #{
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"GroupFiles">> => string(),
-%%   <<"GroupSize">> => string(),
-%%   <<"MaxBand">> => integer(),
-%%   <<"MaxFilesInBand">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NumberRows">> => float(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string()),
-%%   <<"Recurse">> => boolean(),
-%%   <<"SkipFooter">> => integer()
+%% stop_column_statistics_task_run_schedule_response() :: #{
+
 %% }
--type s3_excel_source() :: #{binary() => any()}.
+-type stop_column_statistics_task_run_schedule_response() :: #{binary() => any()}.
 
 %% Example:
-%% iceberg_optimization_properties_output() :: #{
-%%   <<"Compaction">> => map(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"OrphanFileDeletion">> => map(),
-%%   <<"Retention">> => map(),
-%%   <<"RoleArn">> => string()
+%% stop_crawler_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type iceberg_optimization_properties_output() :: #{binary() => any()}.
+-type stop_crawler_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_glossary_terms_response() :: #{
-%%   <<"Items">> => list(glossary_term_item()),
-%%   <<"NextToken">> => string()
+%% stop_crawler_response() :: #{
+
 %% }
--type list_glossary_terms_response() :: #{binary() => any()}.
+-type stop_crawler_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_schema_by_definition_response() :: #{
-%%   <<"CreatedTime">> => string(),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"Status">> => list(any())
+%% stop_crawler_schedule_request() :: #{
+%%   <<"CrawlerName">> := string()
 %% }
--type get_schema_by_definition_response() :: #{binary() => any()}.
+-type stop_crawler_schedule_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_table_response() :: #{
+%% stop_crawler_schedule_response() :: #{
 
 %% }
--type update_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% orphan_file_deletion_configuration() :: #{
-%%   <<"icebergConfiguration">> => iceberg_orphan_file_deletion_configuration()
-%% }
--type orphan_file_deletion_configuration() :: #{binary() => any()}.
+-type stop_crawler_schedule_response() :: #{binary() => any()}.
 
 %% Example:
-%% glue_schema() :: #{
-%%   <<"Columns">> => list(glue_studio_schema_column())
+%% stop_materialized_view_refresh_task_run_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string()
 %% }
--type glue_schema() :: #{binary() => any()}.
+-type stop_materialized_view_refresh_task_run_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_integration_resource_property_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% stop_materialized_view_refresh_task_run_response() :: #{
+
 %% }
--type update_integration_resource_property_request() :: #{binary() => any()}.
+-type stop_materialized_view_refresh_task_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_job_response() :: #{
-%%   <<"JobName">> => string()
+%% stop_session_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"RequestOrigin">> => string()
 %% }
--type delete_job_response() :: #{binary() => any()}.
+-type stop_session_request() :: #{binary() => any()}.
 
 %% Example:
-%% iterable_form_item() :: #{
-%%   <<"Attachments">> => map(),
-%%   <<"Forms">> => map(),
-%%   <<"GlossaryTerms">> => list(string()),
-%%   <<"ItemId">> => string(),
-%%   <<"ItemName">> => string()
+%% stop_session_response() :: #{
+%%   <<"Id">> => string()
 %% }
--type iterable_form_item() :: #{binary() => any()}.
+-type stop_session_response() :: #{binary() => any()}.
 
 %% Example:
-%% response_extraction_mapping() :: #{
-%%   <<"ContentPath">> => string(),
-%%   <<"HeaderKey">> => string()
+%% stop_trigger_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type response_extraction_mapping() :: #{binary() => any()}.
+-type stop_trigger_request() :: #{binary() => any()}.
 
 %% Example:
-%% s3_direct_source_additional_options() :: #{
-%%   <<"BoundedFiles">> => float(),
-%%   <<"BoundedSize">> => float(),
-%%   <<"EnableSamplePath">> => boolean(),
-%%   <<"SamplePath">> => string()
+%% stop_trigger_response() :: #{
+%%   <<"Name">> => string()
 %% }
--type s3_direct_source_additional_options() :: #{binary() => any()}.
+-type stop_trigger_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_asset_output() :: #{
-%%   <<"AssetTypeId">> => string(),
-%%   <<"Attachments">> => map(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Forms">> => map(),
-%%   <<"GlossaryTerms">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"IterableForms">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% stop_workflow_run_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RunId">> := string()
 %% }
--type get_asset_output() :: #{binary() => any()}.
+-type stop_workflow_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workflow_run_response() :: #{
+
+%% }
+-type stop_workflow_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% storage_descriptor() :: #{
+%%   <<"AdditionalLocations">> => list(string()),
+%%   <<"BucketColumns">> => list(string()),
+%%   <<"Columns">> => list(column()),
+%%   <<"Compressed">> => boolean(),
+%%   <<"InputFormat">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"NumberOfBuckets">> => integer(),
+%%   <<"OutputFormat">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"SchemaReference">> => schema_reference(),
+%%   <<"SerdeInfo">> => ser_de_info(),
+%%   <<"SkewedInfo">> => skewed_info(),
+%%   <<"SortColumns">> => list(order()),
+%%   <<"StoredAsSubDirectories">> => boolean()
+%% }
+-type storage_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% streaming_data_preview_options() :: #{
+%%   <<"PollingTime">> => float(),
+%%   <<"RecordPollingLimit">> => float()
+%% }
+-type streaming_data_preview_options() :: #{binary() => any()}.
+
+%% Example:
+%% string_column_statistics_data() :: #{
+%%   <<"AverageLength">> => float(),
+%%   <<"MaximumLength">> => float(),
+%%   <<"NumberOfDistinctValues">> => float(),
+%%   <<"NumberOfNulls">> => float()
+%% }
+-type string_column_statistics_data() :: #{binary() => any()}.
+
+%% Example:
+%% supported_dialect() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string()
+%% }
+-type supported_dialect() :: #{binary() => any()}.
 
 %% Example:
 %% table() :: #{
@@ -9257,675 +9179,150 @@
 -type table() :: #{binary() => any()}.
 
 %% Example:
-%% recrawl_policy() :: #{
-%%   <<"RecrawlBehavior">> => list(any())
+%% table_error() :: #{
+%%   <<"ErrorDetail">> => error_detail(),
+%%   <<"TableName">> => string()
 %% }
--type recrawl_policy() :: #{binary() => any()}.
+-type table_error() :: #{binary() => any()}.
 
 %% Example:
-%% dev_endpoint_custom_libraries() :: #{
-%%   <<"ExtraJarsS3Path">> => string(),
-%%   <<"ExtraPythonLibsS3Path">> => string()
-%% }
--type dev_endpoint_custom_libraries() :: #{binary() => any()}.
-
-%% Example:
-%% get_column_statistics_for_table_response() :: #{
-%%   <<"ColumnStatisticsList">> => list(column_statistics()),
-%%   <<"Errors">> => list(column_error())
-%% }
--type get_column_statistics_for_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Workflows">> => list(string())
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-%% Example:
-%% query_schema_version_metadata_response() :: #{
-%%   <<"MetadataInfoMap">> => map(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaVersionId">> => string()
-%% }
--type query_schema_version_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% job_command() :: #{
-%%   <<"Name">> => string(),
-%%   <<"PythonVersion">> => string(),
-%%   <<"Runtime">> => string(),
-%%   <<"ScriptLocation">> => string()
-%% }
--type job_command() :: #{binary() => any()}.
-
-%% Example:
-%% create_integration_resource_property_response() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourcePropertyArn">> => string(),
-%%   <<"SourceProcessingProperties">> => source_processing_properties(),
-%%   <<"TargetProcessingProperties">> => target_processing_properties()
-%% }
--type create_integration_resource_property_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_partition_request() :: #{
+%% table_identifier() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"PartitionInput">> := partition_input(),
-%%   <<"PartitionValueList">> := list(string()),
-%%   <<"TableName">> := string()
-%% }
--type update_partition_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_schemas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(schema_list_item())
-%% }
--type list_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% illegal_blueprint_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_blueprint_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s3_csv_source() :: #{
-%%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"Escaper">> => string(),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"GroupFiles">> => string(),
-%%   <<"GroupSize">> => string(),
-%%   <<"MaxBand">> => integer(),
-%%   <<"MaxFilesInBand">> => integer(),
-%%   <<"Multiline">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"OptimizePerformance">> => boolean(),
-%%   <<"OutputSchemas">> => list(glue_schema()),
-%%   <<"Paths">> => list(string()),
-%%   <<"QuoteChar">> => list(any()),
-%%   <<"Recurse">> => boolean(),
-%%   <<"Separator">> => list(any()),
-%%   <<"SkipFirst">> => boolean(),
-%%   <<"WithHeader">> => boolean(),
-%%   <<"WriteHeader">> => boolean()
-%% }
--type s3_csv_source() :: #{binary() => any()}.
-
-%% Example:
-%% statement_output_data() :: #{
-%%   <<"TextPlain">> => string()
-%% }
--type statement_output_data() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_ready_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_ready_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_open_table_format_input() :: #{
-%%   <<"UpdateIcebergInput">> => update_iceberg_input()
-%% }
--type update_open_table_format_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_ml_labeling_set_generation_task_run_response() :: #{
-%%   <<"TaskRunId">> => string()
-%% }
--type start_ml_labeling_set_generation_task_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_session_response() :: #{
-%%   <<"Session">> => session()
-%% }
--type create_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_session_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"RequestOrigin">> => string()
-%% }
--type delete_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% crawler() :: #{
-%%   <<"Classifiers">> => list(string()),
-%%   <<"Configuration">> => string(),
-%%   <<"CrawlElapsedTime">> => float(),
-%%   <<"CrawlerSecurityConfiguration">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DatabaseName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
-%%   <<"LastCrawl">> => last_crawl_info(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"LineageConfiguration">> => lineage_configuration(),
 %%   <<"Name">> => string(),
-%%   <<"RecrawlPolicy">> => recrawl_policy(),
-%%   <<"Role">> => string(),
-%%   <<"Schedule">> => schedule(),
-%%   <<"SchemaChangePolicy">> => schema_change_policy(),
-%%   <<"State">> => list(any()),
-%%   <<"TablePrefix">> => string(),
-%%   <<"Targets">> => crawler_targets(),
-%%   <<"Version">> => float()
+%%   <<"Region">> => string()
 %% }
--type crawler() :: #{binary() => any()}.
+-type table_identifier() :: #{binary() => any()}.
 
 %% Example:
-%% amazon_redshift_target() :: #{
-%%   <<"Data">> => amazon_redshift_node_data(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type amazon_redshift_target() :: #{binary() => any()}.
-
-%% Example:
-%% iterable_form_list_item() :: #{
+%% table_input() :: #{
 %%   <<"Description">> => string(),
-%%   <<"GlossaryTerms">> => list(string()),
-%%   <<"ItemId">> => string(),
-%%   <<"ItemName">> => string()
-%% }
--type iterable_form_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_configuration_response() :: #{
-
-%% }
--type delete_security_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% view_representation_input() :: #{
-%%   <<"Dialect">> => list(any()),
-%%   <<"DialectVersion">> => string(),
-%%   <<"ValidationConnection">> => string(),
+%%   <<"LastAccessTime">> => non_neg_integer(),
+%%   <<"LastAnalyzedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"PartitionKeys">> => list(column()),
+%%   <<"Retention">> => integer(),
+%%   <<"StorageDescriptor">> => storage_descriptor(),
+%%   <<"TableType">> => string(),
+%%   <<"TargetTable">> => table_identifier(),
+%%   <<"ViewDefinition">> => view_definition_input(),
 %%   <<"ViewExpandedText">> => string(),
 %%   <<"ViewOriginalText">> => string()
 %% }
--type view_representation_input() :: #{binary() => any()}.
+-type table_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_table_optimizer_response() :: #{
-%%   <<"Failures">> => list(batch_get_table_optimizer_error()),
-%%   <<"TableOptimizers">> => list(batch_table_optimizer())
-%% }
--type batch_get_table_optimizer_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_workflow_run_response() :: #{
-%%   <<"Run">> => workflow_run()
-%% }
--type get_workflow_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% blueprint_run() :: #{
-%%   <<"BlueprintName">> => string(),
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Parameters">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"RollbackErrorMessage">> => string(),
-%%   <<"RunId">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"WorkflowName">> => string()
-%% }
--type blueprint_run() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_quality_ruleset_response() :: #{
-%%   <<"CreatedOn">> => non_neg_integer(),
-%%   <<"DataQualitySecurityConfiguration">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedOn">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RecommendationRunId">> => string(),
-%%   <<"Ruleset">> => string(),
-%%   <<"TargetTable">> => data_quality_target_table()
-%% }
--type get_data_quality_ruleset_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_database_response() :: #{
-
-%% }
--type create_database_response() :: #{binary() => any()}.
-
-%% Example:
-%% confusion_matrix() :: #{
-%%   <<"NumFalseNegatives">> => float(),
-%%   <<"NumFalsePositives">> => float(),
-%%   <<"NumTrueNegatives">> => float(),
-%%   <<"NumTruePositives">> => float()
-%% }
--type confusion_matrix() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attachment_response() :: #{
-%%   <<"AssetIdentifier">> => string()
-%% }
--type delete_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% auto_data_quality() :: #{
-%%   <<"EvaluationContext">> => string(),
-%%   <<"IsEnabled">> => boolean()
-%% }
--type auto_data_quality() :: #{binary() => any()}.
-
-%% Example:
-%% update_glue_identity_center_configuration_response() :: #{
-
-%% }
--type update_glue_identity_center_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_metrics() :: #{
-%%   <<"FindMatchesMetrics">> => find_matches_metrics(),
-%%   <<"TransformType">> => list(any())
-%% }
--type evaluation_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% column_statistics_task_settings() :: #{
-%%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"LastExecutionAttempt">> => execution_attempt(),
-%%   <<"Role">> => string(),
-%%   <<"SampleSize">> => float(),
-%%   <<"Schedule">> => schedule(),
-%%   <<"ScheduleType">> => list(any()),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"SettingSource">> => list(any()),
-%%   <<"TableName">> => string()
-%% }
--type column_statistics_task_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_database_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseInput">> := database_input(),
-%%   <<"Tags">> => map()
-%% }
--type create_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionInput">> := connection_input(),
-%%   <<"Tags">> => map()
-%% }
--type create_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_catalog_response() :: #{
-
-%% }
--type create_catalog_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_defined_functions_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"FunctionType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Pattern">> := string()
-%% }
--type get_user_defined_functions_request() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_target() :: #{
-%%   <<"ConnectionName">> => string(),
-%%   <<"Exclusions">> => list(string()),
-%%   <<"MaximumTraversalDepth">> => integer(),
-%%   <<"Paths">> => list(string())
-%% }
--type iceberg_target() :: #{binary() => any()}.
-
-%% Example:
-%% update_dev_endpoint_request() :: #{
-%%   <<"AddArguments">> => map(),
-%%   <<"AddPublicKeys">> => list(string()),
-%%   <<"CustomLibraries">> => dev_endpoint_custom_libraries(),
-%%   <<"DeleteArguments">> => list(string()),
-%%   <<"DeletePublicKeys">> => list(string()),
-%%   <<"EndpointName">> := string(),
-%%   <<"PublicKey">> => string(),
-%%   <<"UpdateEtlLibraries">> => boolean()
-%% }
--type update_dev_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_database_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseInput">> := database_input(),
-%%   <<"Name">> := string()
-%% }
--type update_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_column_statistics_task_run_request() :: #{
-%%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Role">> := string(),
-%%   <<"SampleSize">> => float(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"TableName">> := string()
-%% }
--type start_column_statistics_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_entity_type() :: #{
-%%   <<"ContextWords">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"RegexString">> => string()
-%% }
--type custom_entity_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_response() :: #{
-%%   <<"Compatibility">> => list(any()),
-%%   <<"CreatedTime">> => string(),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LatestSchemaVersion">> => float(),
-%%   <<"NextSchemaVersion">> => float(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaCheckpoint">> => float(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaStatus">> => list(any()),
-%%   <<"UpdatedTime">> => string()
-%% }
--type get_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_asset_type_response() :: #{
-%%   <<"Forms">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type get_asset_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_table_optimizer_entry() :: #{
-%%   <<"catalogId">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"tableName">> => string(),
+%% table_optimizer() :: #{
+%%   <<"configuration">> => table_optimizer_configuration(),
+%%   <<"configurationSource">> => list(any()),
+%%   <<"lastRun">> => table_optimizer_run(),
 %%   <<"type">> => list(any())
 %% }
--type batch_get_table_optimizer_entry() :: #{binary() => any()}.
+-type table_optimizer() :: #{binary() => any()}.
 
 %% Example:
-%% list_asset_types_response() :: #{
-%%   <<"Items">> => list(asset_type_item()),
-%%   <<"NextToken">> => string()
+%% table_optimizer_configuration() :: #{
+%%   <<"compactionConfiguration">> => compaction_configuration(),
+%%   <<"enabled">> => boolean(),
+%%   <<"orphanFileDeletionConfiguration">> => orphan_file_deletion_configuration(),
+%%   <<"retentionConfiguration">> => retention_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"vpcConfiguration">> => list()
 %% }
--type list_asset_types_response() :: #{binary() => any()}.
+-type table_optimizer_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_glossary_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%% table_optimizer_run() :: #{
+%%   <<"compactionMetrics">> => compaction_metrics(),
+%%   <<"compactionStrategy">> => list(any()),
+%%   <<"endTimestamp">> => non_neg_integer(),
+%%   <<"error">> => string(),
+%%   <<"eventType">> => list(any()),
+%%   <<"metrics">> => run_metrics(),
+%%   <<"orphanFileDeletionMetrics">> => orphan_file_deletion_metrics(),
+%%   <<"retentionMetrics">> => retention_metrics(),
+%%   <<"startTimestamp">> => non_neg_integer()
 %% }
--type get_glossary_response() :: #{binary() => any()}.
+-type table_optimizer_run() :: #{binary() => any()}.
 
 %% Example:
-%% merge() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"PrimaryKeys">> => list(list(string())()),
-%%   <<"Source">> => string()
+%% table_status() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Details">> => status_details(),
+%%   <<"Error">> => error_detail(),
+%%   <<"RequestTime">> => non_neg_integer(),
+%%   <<"RequestedBy">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer(),
+%%   <<"UpdatedBy">> => string()
 %% }
--type merge() :: #{binary() => any()}.
+-type table_status() :: #{binary() => any()}.
 
 %% Example:
-%% data_quality_ruleset_filter_criteria() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedAfter">> => non_neg_integer(),
-%%   <<"LastModifiedBefore">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"TargetTable">> => data_quality_target_table()
+%% table_version() :: #{
+%%   <<"Table">> => table(),
+%%   <<"VersionId">> => string()
 %% }
--type data_quality_ruleset_filter_criteria() :: #{binary() => any()}.
+-type table_version() :: #{binary() => any()}.
 
 %% Example:
-%% materialized_view_refresh_task_running_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type materialized_view_refresh_task_running_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_table_version_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> := string(),
-%%   <<"TableName">> := string(),
-%%   <<"VersionIds">> := list(string())
-%% }
--type batch_delete_table_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% skewed_info() :: #{
-%%   <<"SkewedColumnNames">> => list(string()),
-%%   <<"SkewedColumnValueLocationMaps">> => map(),
-%%   <<"SkewedColumnValues">> => list(string())
-%% }
--type skewed_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_version_input() :: #{
-%%   <<"SchemaId">> => schema_id(),
-%%   <<"SchemaVersionId">> => string(),
-%%   <<"SchemaVersionNumber">> => schema_version_number()
-%% }
--type get_schema_version_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_version_response() :: #{
-
-%% }
--type delete_table_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% union() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"UnionType">> => list(any())
-%% }
--type union() :: #{binary() => any()}.
-
-%% Example:
-%% get_crawlers_response() :: #{
-%%   <<"Crawlers">> => list(crawler()),
-%%   <<"NextToken">> => string()
-%% }
--type get_crawlers_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_iterable_forms_response() :: #{
-%%   <<"Items">> => list(iterable_form_list_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_iterable_forms_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_glossary_term_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"GlossaryIdentifier">> := string(),
-%%   <<"LongDescription">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ShortDescription">> => string()
-%% }
--type create_glossary_term_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_column_statistics_task_runs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_column_statistics_task_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_glossaries_response() :: #{
-%%   <<"Items">> => list(glossary_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_glossaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% capabilities() :: #{
-%%   <<"SupportedAuthenticationTypes">> => list(list(any())()),
-%%   <<"SupportedComputeEnvironments">> => list(list(any())()),
-%%   <<"SupportedDataOperations">> => list(list(any())())
-%% }
--type capabilities() :: #{binary() => any()}.
-
-%% Example:
-%% create_registry_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RegistryName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_registry_input() :: #{binary() => any()}.
-
-%% Example:
-%% test_connection_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"TestConnectionInput">> => test_connection_input()
-%% }
--type test_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_partition_response() :: #{
-
-%% }
--type update_partition_response() :: #{binary() => any()}.
-
-%% Example:
-%% job_bookmark_entry() :: #{
-%%   <<"Attempt">> => integer(),
-%%   <<"JobBookmark">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"PreviousRunId">> => string(),
-%%   <<"Run">> => integer(),
-%%   <<"RunId">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type job_bookmark_entry() :: #{binary() => any()}.
-
-%% Example:
-%% lake_formation_configuration() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"UseLakeFormationCredentials">> => boolean()
-%% }
--type lake_formation_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_table_optimizer_runs_response() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"NextToken">> => string(),
+%% table_version_error() :: #{
+%%   <<"ErrorDetail">> => error_detail(),
 %%   <<"TableName">> => string(),
-%%   <<"TableOptimizerRuns">> => list(table_optimizer_run())
+%%   <<"VersionId">> => string()
 %% }
--type list_table_optimizer_runs_response() :: #{binary() => any()}.
+-type table_version_error() :: #{binary() => any()}.
 
 %% Example:
-%% update_column_statistics_task_settings_request() :: #{
-%%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()),
-%%   <<"DatabaseName">> := string(),
-%%   <<"Role">> => string(),
-%%   <<"SampleSize">> => float(),
-%%   <<"Schedule">> => string(),
-%%   <<"SecurityConfiguration">> => string(),
-%%   <<"TableName">> := string()
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type update_column_statistics_task_settings_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% start_ml_labeling_set_generation_task_run_request() :: #{
-%%   <<"OutputS3Path">> := string(),
-%%   <<"TransformId">> := string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagsToAdd">> := map()
 %% }
--type start_ml_labeling_set_generation_task_run_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% connection_type_variant() :: #{
-%%   <<"ConnectionTypeVariantName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LogoUrl">> => string()
+%% tag_resource_response() :: #{
+
 %% }
--type connection_type_variant() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% search_map_filter() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => list()
-%% }
--type search_map_filter() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_ml_task_run_request() :: #{
-%%   <<"TaskRunId">> := string(),
-%%   <<"TransformId">> := string()
-%% }
--type cancel_ml_task_run_request() :: #{binary() => any()}.
-
-%% Example:
-%% spigot() :: #{
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Prob">> => float(),
-%%   <<"Topk">> => integer()
-%% }
--type spigot() :: #{binary() => any()}.
-
-%% Example:
-%% iceberg_optimization_properties() :: #{
-%%   <<"Compaction">> => map(),
-%%   <<"OrphanFileDeletion">> => map(),
-%%   <<"Retention">> => map(),
+%% target_processing_properties() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"EventBusArn">> => string(),
+%%   <<"KmsArn">> => string(),
 %%   <<"RoleArn">> => string()
 %% }
--type iceberg_optimization_properties() :: #{binary() => any()}.
+-type target_processing_properties() :: #{binary() => any()}.
 
 %% Example:
-%% j_db_c_connector_target() :: #{
-%%   <<"AdditionalOptions">> => map(),
-%%   <<"ConnectionName">> => string(),
-%%   <<"ConnectionTable">> => string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"ConnectorName">> => string(),
-%%   <<"Inputs">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema())
+%% target_redshift_catalog() :: #{
+%%   <<"CatalogArn">> => string()
 %% }
--type j_db_c_connector_target() :: #{binary() => any()}.
+-type target_redshift_catalog() :: #{binary() => any()}.
 
 %% Example:
-%% stop_crawler_response() :: #{
-
+%% target_resource_not_found() :: #{
+%%   <<"Message">> => string()
 %% }
--type stop_crawler_response() :: #{binary() => any()}.
+-type target_resource_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% target_table_config() :: #{
+%%   <<"PartitionSpec">> => list(integration_partition()),
+%%   <<"TargetTableName">> => string(),
+%%   <<"UnnestSpec">> => list(any())
+%% }
+-type target_table_config() :: #{binary() => any()}.
 
 %% Example:
 %% task_run() :: #{
@@ -9943,68 +9340,255 @@
 -type task_run() :: #{binary() => any()}.
 
 %% Example:
-%% create_glue_identity_center_configuration_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"Scopes">> => list(string()),
-%%   <<"UserBackgroundSessionsEnabled">> => boolean()
+%% task_run_filter_criteria() :: #{
+%%   <<"StartedAfter">> => non_neg_integer(),
+%%   <<"StartedBefore">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskRunType">> => list(any())
 %% }
--type create_glue_identity_center_configuration_request() :: #{binary() => any()}.
+-type task_run_filter_criteria() :: #{binary() => any()}.
 
 %% Example:
-%% get_column_statistics_task_settings_response() :: #{
-%%   <<"ColumnStatisticsTaskSettings">> => column_statistics_task_settings()
+%% task_run_properties() :: #{
+%%   <<"ExportLabelsTaskRunProperties">> => export_labels_task_run_properties(),
+%%   <<"FindMatchesTaskRunProperties">> => find_matches_task_run_properties(),
+%%   <<"ImportLabelsTaskRunProperties">> => import_labels_task_run_properties(),
+%%   <<"LabelingSetGenerationTaskRunProperties">> => labeling_set_generation_task_run_properties(),
+%%   <<"TaskType">> => list(any())
 %% }
--type get_column_statistics_task_settings_response() :: #{binary() => any()}.
+-type task_run_properties() :: #{binary() => any()}.
 
 %% Example:
-%% rest_configuration() :: #{
-%%   <<"EntityConfigurations">> => map(),
-%%   <<"GlobalSourceConfiguration">> => source_configuration(),
-%%   <<"ValidationEndpointConfiguration">> => source_configuration()
+%% task_run_sort_criteria() :: #{
+%%   <<"Column">> => list(any()),
+%%   <<"SortDirection">> => list(any())
 %% }
--type rest_configuration() :: #{binary() => any()}.
+-type task_run_sort_criteria() :: #{binary() => any()}.
 
 %% Example:
-%% string_column_statistics_data() :: #{
-%%   <<"AverageLength">> => float(),
-%%   <<"MaximumLength">> => float(),
-%%   <<"NumberOfDistinctValues">> => float(),
-%%   <<"NumberOfNulls">> => float()
+%% test_connection_input() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"ConnectionProperties">> => map(),
+%%   <<"ConnectionType">> => list(any())
 %% }
--type string_column_statistics_data() :: #{binary() => any()}.
+-type test_connection_input() :: #{binary() => any()}.
 
 %% Example:
-%% basic_authentication_credentials() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
+%% test_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"TestConnectionInput">> => test_connection_input()
 %% }
--type basic_authentication_credentials() :: #{binary() => any()}.
+-type test_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_iceberg_table_input() :: #{
-%%   <<"Location">> => string(),
-%%   <<"PartitionSpec">> => iceberg_partition_spec(),
-%%   <<"Properties">> => map(),
-%%   <<"Schema">> => iceberg_schema(),
-%%   <<"WriteOrder">> => iceberg_sort_order()
+%% test_connection_response() :: #{
+
 %% }
--type create_iceberg_table_input() :: #{binary() => any()}.
+-type test_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% asset_form_entry() :: #{
-%%   <<"Content">> => string(),
-%%   <<"FormTypeId">> => string()
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type asset_form_entry() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% iceberg_retention_configuration() :: #{
-%%   <<"cleanExpiredFiles">> => boolean(),
-%%   <<"numberOfSnapshotsToRetain">> => integer(),
-%%   <<"runRateInHours">> => integer(),
-%%   <<"snapshotRetentionPeriodInDays">> => integer()
+%% timestamp_filter() :: #{
+%%   <<"RecordedAfter">> => non_neg_integer(),
+%%   <<"RecordedBefore">> => non_neg_integer()
 %% }
--type iceberg_retention_configuration() :: #{binary() => any()}.
+-type timestamp_filter() :: #{binary() => any()}.
+
+%% Example:
+%% timestamped_inclusion_annotation() :: #{
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Value">> => list(any())
+%% }
+-type timestamped_inclusion_annotation() :: #{binary() => any()}.
+
+%% Example:
+%% transform_config_parameter() :: #{
+%%   <<"IsOptional">> => boolean(),
+%%   <<"ListType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"ValidationMessage">> => string(),
+%%   <<"ValidationRule">> => string(),
+%%   <<"Value">> => list(string())
+%% }
+-type transform_config_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% transform_encryption() :: #{
+%%   <<"MlUserDataEncryption">> => ml_user_data_encryption(),
+%%   <<"TaskRunSecurityConfigurationName">> => string()
+%% }
+-type transform_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% transform_filter_criteria() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"LastModifiedAfter">> => non_neg_integer(),
+%%   <<"LastModifiedBefore">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => list(schema_column()),
+%%   <<"Status">> => list(any()),
+%%   <<"TransformType">> => list(any())
+%% }
+-type transform_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% transform_parameters() :: #{
+%%   <<"FindMatchesParameters">> => find_matches_parameters(),
+%%   <<"TransformType">> => list(any())
+%% }
+-type transform_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% transform_sort_criteria() :: #{
+%%   <<"Column">> => list(any()),
+%%   <<"SortDirection">> => list(any())
+%% }
+-type transform_sort_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% trigger() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"Description">> => string(),
+%%   <<"EventBatchingCondition">> => event_batching_condition(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Predicate">> => predicate(),
+%%   <<"Schedule">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"WorkflowName">> => string()
+%% }
+-type trigger() :: #{binary() => any()}.
+
+%% Example:
+%% trigger_node_details() :: #{
+%%   <<"Trigger">> => trigger()
+%% }
+-type trigger_node_details() :: #{binary() => any()}.
+
+%% Example:
+%% trigger_update() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"Description">> => string(),
+%%   <<"EventBatchingCondition">> => event_batching_condition(),
+%%   <<"Name">> => string(),
+%%   <<"Predicate">> => predicate(),
+%%   <<"Schedule">> => string()
+%% }
+-type trigger_update() :: #{binary() => any()}.
+
+%% Example:
+%% unfiltered_partition() :: #{
+%%   <<"AuthorizedColumns">> => list(string()),
+%%   <<"IsRegisteredWithLakeFormation">> => boolean(),
+%%   <<"Partition">> => partition()
+%% }
+-type unfiltered_partition() :: #{binary() => any()}.
+
+%% Example:
+%% union() :: #{
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"UnionType">> => list(any())
+%% }
+-type union() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagsToRemove">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_asset_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_asset_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_asset_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_asset_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_blueprint_request() :: #{
+%%   <<"BlueprintLocation">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_blueprint_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_catalog_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"CatalogInput">> := catalog_input()
+%% }
+-type update_catalog_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_catalog_response() :: #{
+
+%% }
+-type update_catalog_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_classifier_request() :: #{
+%%   <<"CsvClassifier">> => update_csv_classifier_request(),
+%%   <<"GrokClassifier">> => update_grok_classifier_request(),
+%%   <<"JsonClassifier">> => update_json_classifier_request(),
+%%   <<"XMLClassifier">> => update_x_ml_classifier_request()
+%% }
+-type update_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_classifier_response() :: #{
+
+%% }
+-type update_classifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_column_statistics_for_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ColumnStatisticsList">> := list(column_statistics()),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionValues">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type update_column_statistics_for_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_column_statistics_for_partition_response() :: #{
+%%   <<"Errors">> => list(column_statistics_error())
+%% }
+-type update_column_statistics_for_partition_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_column_statistics_for_table_request() :: #{
@@ -10016,537 +9600,1152 @@
 -type update_column_statistics_for_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_integration_resource_properties_request() :: #{
-%%   <<"Filters">> => list(integration_resource_property_filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% update_column_statistics_for_table_response() :: #{
+%%   <<"Errors">> => list(column_statistics_error())
 %% }
--type list_integration_resource_properties_request() :: #{binary() => any()}.
+-type update_column_statistics_for_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_workflow_response() :: #{
-%%   <<"Workflow">> => workflow()
-%% }
--type get_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% starting_event_batch_condition() :: #{
-%%   <<"BatchSize">> => integer(),
-%%   <<"BatchWindow">> => integer()
-%% }
--type starting_event_batch_condition() :: #{binary() => any()}.
-
-%% Example:
-%% transform_parameters() :: #{
-%%   <<"FindMatchesParameters">> => find_matches_parameters(),
-%%   <<"TransformType">> => list(any())
-%% }
--type transform_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_database_request() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"Name">> := string()
-%% }
--type delete_database_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_partition_indexes_request() :: #{
-%%   <<"CatalogId">> => string(),
+%% update_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"DatabaseName">> := string(),
-%%   <<"NextToken">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"SampleSize">> => float(),
+%%   <<"Schedule">> => string(),
+%%   <<"SecurityConfiguration">> => string(),
 %%   <<"TableName">> := string()
 %% }
--type get_partition_indexes_request() :: #{binary() => any()}.
+-type update_column_statistics_task_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_column_statistics_task_settings_response() :: #{
+
+%% }
+-type update_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionInput">> := connection_input(),
+%%   <<"Name">> := string()
+%% }
+-type update_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_response() :: #{
+
+%% }
+-type update_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_crawler_request() :: #{
+%%   <<"Classifiers">> => list(string()),
+%%   <<"Configuration">> => string(),
+%%   <<"CrawlerSecurityConfiguration">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LakeFormationConfiguration">> => lake_formation_configuration(),
+%%   <<"LineageConfiguration">> => lineage_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"RecrawlPolicy">> => recrawl_policy(),
+%%   <<"Role">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"SchemaChangePolicy">> => schema_change_policy(),
+%%   <<"TablePrefix">> => string(),
+%%   <<"Targets">> => crawler_targets()
+%% }
+-type update_crawler_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_crawler_response() :: #{
+
+%% }
+-type update_crawler_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_crawler_schedule_request() :: #{
+%%   <<"CrawlerName">> := string(),
+%%   <<"Schedule">> => string()
+%% }
+-type update_crawler_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_crawler_schedule_response() :: #{
+
+%% }
+-type update_crawler_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_csv_classifier_request() :: #{
+%%   <<"AllowSingleColumn">> => boolean(),
+%%   <<"ContainsHeader">> => list(any()),
+%%   <<"CustomDatatypeConfigured">> => boolean(),
+%%   <<"CustomDatatypes">> => list(string()),
+%%   <<"Delimiter">> => string(),
+%%   <<"DisableValueTrimming">> => boolean(),
+%%   <<"Header">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"QuoteSymbol">> => string(),
+%%   <<"Serde">> => list(any())
+%% }
+-type update_csv_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_quality_ruleset_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Ruleset">> => string()
+%% }
+-type update_data_quality_ruleset_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_quality_ruleset_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Ruleset">> => string()
+%% }
+-type update_data_quality_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_database_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseInput">> := database_input(),
+%%   <<"Name">> := string()
+%% }
+-type update_database_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_database_response() :: #{
+
+%% }
+-type update_database_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_dev_endpoint_request() :: #{
+%%   <<"AddArguments">> => map(),
+%%   <<"AddPublicKeys">> => list(string()),
+%%   <<"CustomLibraries">> => dev_endpoint_custom_libraries(),
+%%   <<"DeleteArguments">> => list(string()),
+%%   <<"DeletePublicKeys">> => list(string()),
+%%   <<"EndpointName">> := string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"UpdateEtlLibraries">> => boolean()
+%% }
+-type update_dev_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dev_endpoint_response() :: #{
+
+%% }
+-type update_dev_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_glossary_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_glossary_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_term_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type update_glossary_term_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_glossary_term_response() :: #{
+%%   <<"GlossaryId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LongDescription">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ShortDescription">> => string()
+%% }
+-type update_glossary_term_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_glue_identity_center_configuration_request() :: #{
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
+%% }
+-type update_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_glue_identity_center_configuration_response() :: #{
+
+%% }
+-type update_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_grok_classifier_request() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"CustomPatterns">> => string(),
+%%   <<"GrokPattern">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_grok_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_iceberg_input() :: #{
+%%   <<"UpdateIcebergTableInput">> => update_iceberg_table_input()
+%% }
+-type update_iceberg_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_iceberg_table_input() :: #{
+%%   <<"Updates">> => list(iceberg_table_update())
+%% }
+-type update_iceberg_table_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_resource_property_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type update_integration_resource_property_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_resource_property_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourcePropertyArn">> => string(),
+%%   <<"SourceProcessingProperties">> => source_processing_properties(),
+%%   <<"TargetProcessingProperties">> => target_processing_properties()
+%% }
+-type update_integration_resource_property_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_table_properties_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> := string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type update_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_table_properties_response() :: #{
+
+%% }
+-type update_integration_table_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_from_source_control_request() :: #{
+%%   <<"AuthStrategy">> => list(any()),
+%%   <<"AuthToken">> => string(),
+%%   <<"BranchName">> => string(),
+%%   <<"CommitId">> => string(),
+%%   <<"Folder">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"RepositoryName">> => string(),
+%%   <<"RepositoryOwner">> => string()
+%% }
+-type update_job_from_source_control_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_from_source_control_response() :: #{
+%%   <<"JobName">> => string()
+%% }
+-type update_job_from_source_control_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"JobUpdate">> := job_update()
+%% }
+-type update_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_response() :: #{
+%%   <<"JobName">> => string()
+%% }
+-type update_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_json_classifier_request() :: #{
+%%   <<"JsonPath">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_json_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ml_transform_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GlueVersion">> => string(),
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Parameters">> => transform_parameters(),
+%%   <<"Role">> => string(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TransformId">> := string(),
+%%   <<"WorkerType">> => list(any())
+%% }
+-type update_ml_transform_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ml_transform_response() :: #{
+%%   <<"TransformId">> => string()
+%% }
+-type update_ml_transform_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_table_format_input() :: #{
+%%   <<"UpdateIcebergInput">> => update_iceberg_input()
+%% }
+-type update_open_table_format_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_partition_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"PartitionInput">> := partition_input(),
+%%   <<"PartitionValueList">> := list(string()),
+%%   <<"TableName">> := string()
+%% }
+-type update_partition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_partition_response() :: #{
+
+%% }
+-type update_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_registry_input() :: #{
+%%   <<"Description">> := string(),
+%%   <<"RegistryId">> := registry_id()
+%% }
+-type update_registry_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_registry_response() :: #{
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string()
+%% }
+-type update_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_schema_input() :: #{
+%%   <<"Compatibility">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"SchemaId">> := schema_id(),
+%%   <<"SchemaVersionNumber">> => schema_version_number()
+%% }
+-type update_schema_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_schema_response() :: #{
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string()
+%% }
+-type update_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_source_control_from_job_request() :: #{
+%%   <<"AuthStrategy">> => list(any()),
+%%   <<"AuthToken">> => string(),
+%%   <<"BranchName">> => string(),
+%%   <<"CommitId">> => string(),
+%%   <<"Folder">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"RepositoryName">> => string(),
+%%   <<"RepositoryOwner">> => string()
+%% }
+-type update_source_control_from_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_source_control_from_job_response() :: #{
+%%   <<"JobName">> => string()
+%% }
+-type update_source_control_from_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_optimizer_request() :: #{
+%%   <<"CatalogId">> := string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"TableName">> := string(),
+%%   <<"TableOptimizerConfiguration">> := table_optimizer_configuration(),
+%%   <<"Type">> := list(any())
+%% }
+-type update_table_optimizer_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_optimizer_response() :: #{
+
+%% }
+-type update_table_optimizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SkipArchive">> => boolean(),
+%%   <<"TableInput">> => table_input(),
+%%   <<"TransactionId">> => string(),
+%%   <<"UpdateOpenTableFormatInput">> => update_open_table_format_input(),
+%%   <<"VersionId">> => string(),
+%%   <<"ViewUpdateAction">> => list(any())
+%% }
+-type update_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_response() :: #{
+
+%% }
+-type update_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_trigger_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"TriggerUpdate">> := trigger_update()
+%% }
+-type update_trigger_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trigger_response() :: #{
+%%   <<"Trigger">> => trigger()
+%% }
+-type update_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_profile_request() :: #{
+%%   <<"Configuration">> := profile_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_usage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_profile_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_usage_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_defined_function_request() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> := string(),
+%%   <<"FunctionInput">> := user_defined_function_input(),
+%%   <<"FunctionName">> := string()
+%% }
+-type update_user_defined_function_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_defined_function_response() :: #{
+
+%% }
+-type update_user_defined_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workflow_request() :: #{
+%%   <<"DefaultRunProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"MaxConcurrentRuns">> => integer(),
+%%   <<"Name">> := string()
+%% }
+-type update_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workflow_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_x_ml_classifier_request() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RowTag">> => string()
+%% }
+-type update_x_ml_classifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% upsert_redshift_target_options() :: #{
+%%   <<"ConnectionName">> => string(),
+%%   <<"TableLocation">> => string(),
+%%   <<"UpsertKeys">> => list(string())
+%% }
+-type upsert_redshift_target_options() :: #{binary() => any()}.
+
+%% Example:
+%% usage_profile_definition() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type usage_profile_definition() :: #{binary() => any()}.
+
+%% Example:
+%% user_defined_function() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ClassName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"OwnerName">> => string(),
+%%   <<"OwnerType">> => list(any()),
+%%   <<"ResourceUris">> => list(resource_uri())
+%% }
+-type user_defined_function() :: #{binary() => any()}.
+
+%% Example:
+%% user_defined_function_input() :: #{
+%%   <<"ClassName">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionType">> => list(any()),
+%%   <<"OwnerName">> => string(),
+%%   <<"OwnerType">> => list(any()),
+%%   <<"ResourceUris">> => list(resource_uri())
+%% }
+-type user_defined_function_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% version_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type version_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% view_definition() :: #{
+%%   <<"Definer">> => string(),
+%%   <<"IsProtected">> => boolean(),
+%%   <<"LastRefreshType">> => list(any()),
+%%   <<"RefreshSeconds">> => float(),
+%%   <<"Representations">> => list(view_representation()),
+%%   <<"SubObjectVersionIds">> => list(float()),
+%%   <<"SubObjects">> => list(string()),
+%%   <<"ViewVersionId">> => float(),
+%%   <<"ViewVersionToken">> => string()
+%% }
+-type view_definition() :: #{binary() => any()}.
+
+%% Example:
+%% view_definition_input() :: #{
+%%   <<"Definer">> => string(),
+%%   <<"IsProtected">> => boolean(),
+%%   <<"LastRefreshType">> => list(any()),
+%%   <<"RefreshSeconds">> => float(),
+%%   <<"Representations">> => list(view_representation_input()),
+%%   <<"SubObjectVersionIds">> => list(float()),
+%%   <<"SubObjects">> => list(string()),
+%%   <<"ViewVersionId">> => float(),
+%%   <<"ViewVersionToken">> => string()
+%% }
+-type view_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% view_representation() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"IsStale">> => boolean(),
+%%   <<"ValidationConnection">> => string(),
+%%   <<"ViewExpandedText">> => string(),
+%%   <<"ViewOriginalText">> => string()
+%% }
+-type view_representation() :: #{binary() => any()}.
+
+%% Example:
+%% view_representation_input() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"ValidationConnection">> => string(),
+%%   <<"ViewExpandedText">> => string(),
+%%   <<"ViewOriginalText">> => string()
+%% }
+-type view_representation_input() :: #{binary() => any()}.
+
+%% Example:
+%% view_validation() :: #{
+%%   <<"Dialect">> => list(any()),
+%%   <<"DialectVersion">> => string(),
+%%   <<"Error">> => error_detail(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateTime">> => non_neg_integer(),
+%%   <<"ViewValidationText">> => string()
+%% }
+-type view_validation() :: #{binary() => any()}.
+
+%% Example:
+%% workflow() :: #{
+%%   <<"BlueprintDetails">> => blueprint_details(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DefaultRunProperties">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Graph">> => workflow_graph(),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"LastRun">> => workflow_run(),
+%%   <<"MaxConcurrentRuns">> => integer(),
+%%   <<"Name">> => string()
+%% }
+-type workflow() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_graph() :: #{
+%%   <<"Edges">> => list(edge()),
+%%   <<"Nodes">> => list(node())
+%% }
+-type workflow_graph() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_run() :: #{
+%%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Graph">> => workflow_graph(),
+%%   <<"Name">> => string(),
+%%   <<"PreviousRunId">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"StartingEventBatchCondition">> => starting_event_batch_condition(),
+%%   <<"Statistics">> => workflow_run_statistics(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowRunId">> => string(),
+%%   <<"WorkflowRunProperties">> => map()
+%% }
+-type workflow_run() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_run_statistics() :: #{
+%%   <<"ErroredActions">> => integer(),
+%%   <<"FailedActions">> => integer(),
+%%   <<"RunningActions">> => integer(),
+%%   <<"StoppedActions">> => integer(),
+%%   <<"SucceededActions">> => integer(),
+%%   <<"TimeoutActions">> => integer(),
+%%   <<"TotalActions">> => integer(),
+%%   <<"WaitingActions">> => integer()
+%% }
+-type workflow_run_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% x_ml_classifier() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RowTag">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type x_ml_classifier() :: #{binary() => any()}.
 
 -type associate_glossary_terms_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type batch_create_partition_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception().
 
 -type batch_delete_connection_errors() ::
-    internal_service_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_service_exception().
 
 -type batch_delete_partition_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type batch_delete_table_errors() ::
     resource_not_ready_exception() | 
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type batch_delete_table_version_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type batch_get_blueprints_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_get_crawlers_errors() ::
-    invalid_input_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    invalid_input_exception().
 
 -type batch_get_custom_entity_types_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_get_data_quality_result_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
+
+-type batch_get_data_quality_ruleset_evaluation_run_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
 
 -type batch_get_dev_endpoints_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type batch_get_iterable_forms_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type batch_get_jobs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_get_partition_errors() ::
+    operation_timeout_exception() | 
+    invalid_state_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    invalid_state_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type batch_get_table_optimizer_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type batch_get_triggers_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_get_workflows_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_put_data_quality_statistic_annotation_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
 
 -type batch_stop_job_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type batch_update_partition_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type cancel_data_quality_rule_recommendation_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type cancel_data_quality_ruleset_evaluation_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type cancel_ml_task_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type cancel_statement_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type check_schema_version_validity_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_blueprint_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    already_exists_exception().
 
 -type create_catalog_errors() ::
-    glue_encryption_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    federated_resource_already_exists_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    federated_resource_already_exists_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
 
 -type create_classifier_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    already_exists_exception().
 
 -type create_column_statistics_task_settings_errors() ::
-    column_statistics_task_running_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    column_statistics_task_running_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
 
 -type create_connection_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
+    already_exists_exception().
 
 -type create_crawler_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    already_exists_exception().
 
 -type create_custom_entity_type_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_data_quality_ruleset_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    already_exists_exception().
 
 -type create_database_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
-    federated_resource_already_exists_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    federated_resource_already_exists_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type create_dev_endpoint_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_glossary_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception().
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
 
 -type create_glossary_term_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
     already_exists_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type create_glue_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    concurrent_modification_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_integration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    kms_key_not_accessible_fault() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
+    resource_number_limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    kms_key_not_accessible_fault() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    internal_server_exception() | 
     integration_quota_exceeded_fault() | 
     integration_conflict_operation_fault() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_integration_resource_property_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_integration_table_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type create_job_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    idempotent_parameter_mismatch_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type create_ml_transform_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_partition_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception().
 
 -type create_partition_index_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception().
 
 -type create_registry_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
+
+-type create_schema_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
+
+-type create_script_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type create_security_configuration_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     already_exists_exception().
 
--type create_schema_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
-    entity_not_found_exception().
-
--type create_script_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type create_security_configuration_errors() ::
-    invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
-
 -type create_session_errors() ::
-    operation_not_supported_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type create_table_errors() ::
+    resource_number_limit_exceeded_exception() | 
     resource_not_ready_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type create_table_optimizer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
     already_exists_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type create_trigger_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type create_usage_profile_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
     operation_not_supported_exception() | 
     invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    already_exists_exception().
 
 -type create_user_defined_function_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception().
 
 -type create_workflow_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception().
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type delete_asset_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_asset_type_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_attachment_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_blueprint_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type delete_catalog_errors() ::
-    glue_encryption_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_classifier_errors() ::
     operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type delete_column_statistics_for_partition_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type delete_column_statistics_for_table_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type delete_column_statistics_task_settings_errors() ::
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type delete_connection_errors() ::
@@ -10555,316 +10754,316 @@
 
 -type delete_connection_type_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_crawler_errors() ::
-    crawler_running_exception() | 
     scheduler_transitioning_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    crawler_running_exception().
 
 -type delete_custom_entity_type_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_data_quality_ruleset_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type delete_database_errors() ::
-    federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type delete_dev_endpoint_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type delete_form_type_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_glossary_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_glossary_term_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception().
-
--type delete_glue_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type delete_glue_identity_center_configuration_errors() ::
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type delete_integration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    invalid_state_exception() | 
     invalid_integration_state_fault() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     internal_server_exception() | 
     integration_not_found_fault() | 
-    invalid_input_exception() | 
-    conflict_exception() | 
     integration_conflict_operation_fault() | 
-    invalid_state_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_integration_resource_property_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_integration_table_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_job_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type delete_ml_transform_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_partition_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_partition_index_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
-    conflict_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_registry_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    entity_not_found_exception().
-
--type delete_resource_policy_errors() ::
-    condition_check_failure_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_schema_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    entity_not_found_exception().
-
--type delete_schema_versions_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    entity_not_found_exception().
-
--type delete_security_configuration_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_session_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    illegal_session_state_exception() | 
-    operation_timeout_exception().
-
--type delete_table_errors() ::
-    resource_not_ready_exception() | 
-    federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_table_optimizer_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception().
-
--type delete_table_version_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_trigger_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type delete_usage_profile_errors() ::
-    operation_not_supported_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type delete_user_defined_function_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type delete_workflow_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type describe_connection_type_errors() ::
-    validation_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception().
 
--type describe_entity_errors() ::
-    glue_encryption_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
+-type delete_ml_transform_errors() ::
     operation_timeout_exception() | 
-    entity_not_found_exception().
-
--type describe_inbound_integrations_errors() ::
-    operation_not_supported_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    integration_not_found_fault() | 
     invalid_input_exception() | 
-    target_resource_not_found() | 
     internal_service_exception() | 
     entity_not_found_exception().
+
+-type delete_partition_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_partition_index_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception().
+
+-type delete_registry_errors() ::
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type delete_resource_policy_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    condition_check_failure_exception().
+
+-type delete_schema_errors() ::
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type delete_schema_versions_errors() ::
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type delete_security_configuration_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_session_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_session_state_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type delete_table_errors() ::
+    resource_not_ready_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
+
+-type delete_table_optimizer_errors() ::
+    throttling_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type delete_table_version_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_trigger_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_modification_exception().
+
+-type delete_usage_profile_errors() ::
+    operation_timeout_exception() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type delete_user_defined_function_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
+-type delete_workflow_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_modification_exception().
+
+-type describe_connection_type_errors() ::
+    validation_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type describe_entity_errors() ::
+    validation_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type describe_inbound_integrations_errors() ::
+    validation_exception() | 
+    target_resource_not_found() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_integrations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    integration_not_found_fault() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type disassociate_glossary_terms_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type get_asset_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_asset_type_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_blueprint_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_blueprint_run_errors() ::
-    internal_service_exception() | 
     operation_timeout_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type get_blueprint_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_catalog_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_catalog_import_status_errors() ::
-    internal_service_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_service_exception().
 
 -type get_catalogs_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_classifier_errors() ::
     operation_timeout_exception() | 
@@ -10874,42 +11073,42 @@
     operation_timeout_exception().
 
 -type get_column_statistics_for_partition_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_column_statistics_for_table_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_column_statistics_task_run_errors() ::
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type get_column_statistics_task_runs_errors() ::
     operation_timeout_exception().
 
 -type get_column_statistics_task_settings_errors() ::
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type get_connection_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_connections_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_crawler_errors() ::
@@ -10923,513 +11122,519 @@
     operation_timeout_exception().
 
 -type get_custom_entity_type_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_dashboard_url_errors() ::
     operation_not_supported_exception() | 
-    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type get_data_catalog_encryption_settings_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type get_data_catalog_export_configuration_errors() ::
+    throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
 
--type get_data_catalog_encryption_settings_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
 -type get_data_quality_model_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_data_quality_model_result_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_data_quality_result_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_data_quality_rule_recommendation_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_data_quality_ruleset_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_data_quality_ruleset_evaluation_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_database_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_databases_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_dataflow_graph_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type get_dev_endpoint_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_dev_endpoints_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_entity_records_errors() ::
-    glue_encryption_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_form_type_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_glossary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_glossary_term_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_glue_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type get_integration_resource_property_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_integration_table_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_job_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_job_bookmark_errors() ::
     validation_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_job_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_job_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_jobs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_mapping_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_materialized_view_refresh_task_run_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_ml_task_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_ml_task_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_ml_transform_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_ml_transforms_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_partition_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_partition_indexes_errors() ::
-    invalid_input_exception() | 
-    conflict_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception().
 
 -type get_partitions_errors() ::
     resource_not_ready_exception() | 
+    operation_timeout_exception() | 
+    invalid_state_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    invalid_state_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_plan_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type get_registry_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_resource_policies_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    glue_encryption_exception().
 
 -type get_resource_policy_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_schema_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_schema_by_definition_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_schema_version_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_schema_versions_diff_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_security_configuration_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_security_configurations_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_session_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_session_endpoint_errors() ::
+    operation_timeout_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_statement_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_table_errors() ::
     resource_not_ready_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_table_optimizer_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_table_version_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_table_versions_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_tables_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_tags_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_trigger_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_triggers_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_unfiltered_partition_metadata_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
     permission_type_mismatch_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
     entity_not_found_exception().
 
 -type get_unfiltered_partitions_metadata_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
     permission_type_mismatch_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
     entity_not_found_exception().
 
 -type get_unfiltered_table_metadata_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
     permission_type_mismatch_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
     entity_not_found_exception().
 
 -type get_usage_profile_errors() ::
+    operation_timeout_exception() | 
     operation_not_supported_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_user_defined_function_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_user_defined_functions_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type get_workflow_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_workflow_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_workflow_run_properties_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type get_workflow_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type import_catalog_to_glue_errors() ::
-    internal_service_exception() | 
-    operation_timeout_exception().
+    operation_timeout_exception() | 
+    internal_service_exception().
 
 -type list_asset_types_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception().
-
--type list_blueprints_errors() ::
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
+
+-type list_blueprints_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
 
 -type list_column_statistics_task_runs_errors() ::
     operation_timeout_exception().
 
 -type list_connection_types_errors() ::
-    access_denied_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_crawlers_errors() ::
     operation_timeout_exception().
 
 -type list_crawls_errors() ::
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type list_custom_entity_types_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_data_quality_results_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_data_quality_rule_recommendation_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_data_quality_ruleset_evaluation_runs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
+    internal_service_exception().
 
 -type list_data_quality_rulesets_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type list_data_quality_statistic_annotations_errors() ::
@@ -11442,167 +11647,174 @@
     entity_not_found_exception().
 
 -type list_dev_endpoints_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type list_entities_errors() ::
-    glue_encryption_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_form_types_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_glossaries_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_glossary_terms_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_integration_resource_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_iterable_forms_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_jobs_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type list_materialized_view_refresh_task_runs_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_ml_transforms_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type list_registries_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_schema_versions_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_schemas_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_sessions_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type list_statements_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_table_optimizer_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_triggers_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type list_usage_profiles_errors() ::
+    operation_timeout_exception() | 
     operation_not_supported_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type list_workflows_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
--type modify_integration_errors() ::
-    validation_exception() | 
-    access_denied_exception() | 
-    invalid_integration_state_fault() | 
-    internal_server_exception() | 
-    integration_not_found_fault() | 
-    invalid_input_exception() | 
-    conflict_exception() | 
-    integration_conflict_operation_fault() | 
-    invalid_state_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception().
-
--type put_asset_errors() ::
-    throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception().
-
--type put_asset_type_errors() ::
-    throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception().
 
+-type list_workflows_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type modify_integration_errors() ::
+    validation_exception() | 
+    invalid_state_exception() | 
+    invalid_integration_state_fault() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    internal_server_exception() | 
+    integration_not_found_fault() | 
+    integration_conflict_operation_fault() | 
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_asset_errors() ::
+    throttling_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type put_asset_type_errors() ::
+    throttling_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
 -type put_attachment_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type put_data_catalog_encryption_settings_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
+-type put_data_catalog_export_configuration_errors() ::
+    throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_data_quality_profile_annotation_errors() ::
     invalid_input_exception() | 
@@ -11611,526 +11823,526 @@
 
 -type put_form_type_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    condition_check_failure_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    condition_check_failure_exception().
 
 -type put_schema_version_metadata_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
     already_exists_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type put_workflow_run_properties_errors() ::
-    concurrent_modification_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type query_schema_version_metadata_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type register_connection_type_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    access_denied_exception().
 
 -type register_schema_version_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type remove_schema_version_metadata_errors() ::
-    access_denied_exception() | 
     invalid_input_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type reset_job_bookmark_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type resume_workflow_run_errors() ::
-    invalid_input_exception() | 
-    illegal_workflow_state_exception() | 
-    internal_service_exception() | 
-    concurrent_runs_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_workflow_state_exception() | 
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type run_statement_errors() ::
-    operation_not_supported_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     session_busy_exception() | 
     resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type search_assets_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type search_tables_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception().
 
--type search_tables_errors() ::
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    operation_timeout_exception().
-
 -type start_blueprint_run_errors() ::
-    illegal_blueprint_state_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_blueprint_state_exception() | 
     entity_not_found_exception().
 
 -type start_column_statistics_task_run_errors() ::
-    column_statistics_task_running_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    column_statistics_task_running_exception() | 
+    access_denied_exception().
 
 -type start_column_statistics_task_run_schedule_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type start_crawler_errors() ::
-    crawler_running_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    crawler_running_exception().
 
 -type start_crawler_schedule_errors() ::
-    no_schedule_exception() | 
     scheduler_transitioning_exception() | 
     scheduler_running_exception() | 
     operation_timeout_exception() | 
+    no_schedule_exception() | 
     entity_not_found_exception().
 
 -type start_data_quality_rule_recommendation_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
-    conflict_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception().
+    conflict_exception().
 
 -type start_data_quality_ruleset_evaluation_run_errors() ::
-    invalid_input_exception() | 
-    conflict_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception().
 
 -type start_export_labels_task_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type start_import_labels_task_run_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     entity_not_found_exception().
 
 -type start_job_run_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    concurrent_runs_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type start_materialized_view_refresh_task_run_errors() ::
-    materialized_view_refresh_task_running_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    materialized_view_refresh_task_running_exception() | 
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type start_ml_evaluation_task_run_errors() ::
+    operation_timeout_exception() | 
+    ml_transform_not_ready_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    ml_transform_not_ready_exception() | 
-    concurrent_runs_exceeded_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type start_ml_labeling_set_generation_task_run_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    concurrent_runs_exceeded_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type start_trigger_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    concurrent_runs_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type start_workflow_run_errors() ::
-    invalid_input_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    concurrent_runs_exceeded_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_runs_exceeded_exception().
 
 -type stop_column_statistics_task_run_errors() ::
-    column_statistics_task_not_running_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception() | 
-    column_statistics_task_stopping_exception().
+    column_statistics_task_stopping_exception() | 
+    column_statistics_task_not_running_exception().
 
 -type stop_column_statistics_task_run_schedule_errors() ::
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type stop_crawler_errors() ::
-    crawler_not_running_exception() | 
-    crawler_stopping_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    crawler_stopping_exception() | 
+    crawler_not_running_exception().
 
 -type stop_crawler_schedule_errors() ::
     scheduler_transitioning_exception() | 
+    scheduler_not_running_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception() | 
-    scheduler_not_running_exception().
+    entity_not_found_exception().
 
 -type stop_materialized_view_refresh_task_run_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    materialized_view_refresh_task_not_running_exception() | 
+    operation_timeout_exception() | 
     materialized_view_refresh_task_stopping_exception() | 
-    operation_timeout_exception().
+    materialized_view_refresh_task_not_running_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type stop_session_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     illegal_session_state_exception() | 
-    operation_timeout_exception().
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type stop_trigger_errors() ::
-    concurrent_modification_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type stop_workflow_run_errors() ::
-    invalid_input_exception() | 
-    illegal_workflow_state_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    illegal_workflow_state_exception() | 
     entity_not_found_exception().
 
 -type tag_resource_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type test_connection_errors() ::
-    glue_encryption_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
-    invalid_input_exception() | 
-    conflict_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type update_asset_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_blueprint_errors() ::
-    illegal_blueprint_state_exception() | 
-    concurrent_modification_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    illegal_blueprint_state_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type update_catalog_errors() ::
-    glue_encryption_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_classifier_errors() ::
-    invalid_input_exception() | 
     version_mismatch_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type update_column_statistics_for_partition_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type update_column_statistics_for_table_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type update_column_statistics_task_settings_errors() ::
-    access_denied_exception() | 
-    invalid_input_exception() | 
     version_mismatch_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type update_connection_errors() ::
-    glue_encryption_exception() | 
-    invalid_input_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type update_crawler_errors() ::
-    invalid_input_exception() | 
-    crawler_running_exception() | 
     version_mismatch_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    entity_not_found_exception() | 
+    crawler_running_exception().
 
 -type update_crawler_schedule_errors() ::
-    invalid_input_exception() | 
-    scheduler_transitioning_exception() | 
     version_mismatch_exception() | 
+    scheduler_transitioning_exception() | 
     operation_timeout_exception() | 
+    invalid_input_exception() | 
     entity_not_found_exception().
 
 -type update_data_quality_ruleset_errors() ::
-    invalid_input_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
     operation_timeout_exception() | 
-    entity_not_found_exception().
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception().
 
 -type update_database_errors() ::
-    glue_encryption_exception() | 
-    federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
-    federation_source_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    glue_encryption_exception() | 
+    federation_source_retryable_exception() | 
+    federation_source_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type update_dev_endpoint_errors() ::
     validation_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
     entity_not_found_exception().
 
 -type update_glossary_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
     already_exists_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type update_glossary_term_errors() ::
     throttling_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
     already_exists_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type update_glue_identity_center_configuration_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_integration_resource_property_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type update_integration_table_properties_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type update_job_errors() ::
-    concurrent_modification_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type update_job_from_source_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type update_ml_transform_errors() ::
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type update_partition_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type update_registry_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_schema_errors() ::
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_source_control_from_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
     already_exists_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    access_denied_exception().
 
 -type update_table_errors() ::
+    resource_number_limit_exceeded_exception() | 
     resource_not_ready_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     glue_encryption_exception() | 
     federation_source_retryable_exception() | 
-    concurrent_modification_exception() | 
     federation_source_exception() | 
-    invalid_input_exception() | 
-    resource_number_limit_exceeded_exception() | 
-    internal_service_exception() | 
-    already_exists_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception().
 
 -type update_table_optimizer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_trigger_errors() ::
-    concurrent_modification_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type update_usage_profile_errors() ::
+    operation_timeout_exception() | 
     operation_not_supported_exception() | 
-    concurrent_modification_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type update_user_defined_function_errors() ::
-    glue_encryption_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
+    glue_encryption_exception() | 
     entity_not_found_exception().
 
 -type update_workflow_errors() ::
-    concurrent_modification_exception() | 
+    operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    operation_timeout_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API
@@ -12326,6 +12538,24 @@ batch_get_data_quality_result(Client, Input)
 batch_get_data_quality_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDataQualityResult">>, Input, Options).
+
+%% @doc Retrieves the details of multiple evaluation runs in a single
+%% request.
+-spec batch_get_data_quality_ruleset_evaluation_run(aws_client:aws_client(), batch_get_data_quality_ruleset_evaluation_run_request()) ->
+    {ok, batch_get_data_quality_ruleset_evaluation_run_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
+batch_get_data_quality_ruleset_evaluation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_data_quality_ruleset_evaluation_run(Client, Input, []).
+
+-spec batch_get_data_quality_ruleset_evaluation_run(aws_client:aws_client(), batch_get_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
+    {ok, batch_get_data_quality_ruleset_evaluation_run_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
+batch_get_data_quality_ruleset_evaluation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDataQualityRulesetEvaluationRun">>, Input, Options).
 
 %% @doc Returns a list of resource metadata for a given list of development
 %% endpoint names.
@@ -14537,6 +14767,26 @@ get_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalogEncryptionSettings">>, Input, Options).
 
+%% @doc Retrieves the current export configuration for the Glue Data Catalog.
+%%
+%% The export configuration controls whether catalog metadata is exported to
+%% S3 Tables.
+-spec get_data_catalog_export_configuration(aws_client:aws_client(), get_data_catalog_export_configuration_input()) ->
+    {ok, get_data_catalog_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_catalog_export_configuration_errors(), tuple()}.
+get_data_catalog_export_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_catalog_export_configuration(Client, Input, []).
+
+-spec get_data_catalog_export_configuration(aws_client:aws_client(), get_data_catalog_export_configuration_input(), proplists:proplist()) ->
+    {ok, get_data_catalog_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_data_catalog_export_configuration_errors(), tuple()}.
+get_data_catalog_export_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataCatalogExportConfiguration">>, Input, Options).
+
 %% @doc Retrieve the training status of the model along with more information
 %% (CompletedOn, StartedOn, FailureReason).
 -spec get_data_quality_model(aws_client:aws_client(), get_data_quality_model_request()) ->
@@ -16494,6 +16744,27 @@ put_data_catalog_encryption_settings(Client, Input)
 put_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataCatalogEncryptionSettings">>, Input, Options).
+
+%% @doc Creates or updates the export configuration for the Glue Data
+%% Catalog.
+%%
+%% Use this operation to enable or disable the export of catalog metadata to
+%% S3 Tables.
+-spec put_data_catalog_export_configuration(aws_client:aws_client(), put_data_catalog_export_configuration_input()) ->
+    {ok, put_data_catalog_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_data_catalog_export_configuration_errors(), tuple()}.
+put_data_catalog_export_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_data_catalog_export_configuration(Client, Input, []).
+
+-spec put_data_catalog_export_configuration(aws_client:aws_client(), put_data_catalog_export_configuration_input(), proplists:proplist()) ->
+    {ok, put_data_catalog_export_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_data_catalog_export_configuration_errors(), tuple()}.
+put_data_catalog_export_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDataCatalogExportConfiguration">>, Input, Options).
 
 %% @doc Annotate all datapoints for a Profile.
 -spec put_data_quality_profile_annotation(aws_client:aws_client(), put_data_quality_profile_annotation_request()) ->

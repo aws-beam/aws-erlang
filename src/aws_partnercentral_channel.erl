@@ -52,103 +52,45 @@
 -type accept_channel_handshake_detail() :: #{binary() => any()}.
 
 %% Example:
-%% program_management_account_type_sort() :: #{
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type program_management_account_type_sort() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_program_management_account_response() :: #{
-%%   <<"programManagementAccountDetail">> => update_program_management_account_detail()
-%% }
--type update_program_management_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_program_management_account_request() :: #{
+%% accept_channel_handshake_request() :: #{
 %%   <<"catalog">> := string(),
-%%   <<"clientToken">> => string(),
 %%   <<"identifier">> := string()
 %% }
--type delete_program_management_account_request() :: #{binary() => any()}.
+-type accept_channel_handshake_request() :: #{binary() => any()}.
 
 %% Example:
-%% partner_led_support() :: #{
-%%   <<"coverage">> => list(any()),
-%%   <<"provider">> => list(any()),
-%%   <<"tamLocation">> => [string()]
+%% accept_channel_handshake_response() :: #{
+%%   <<"channelHandshakeDetail">> => accept_channel_handshake_detail()
 %% }
--type partner_led_support() :: #{binary() => any()}.
+-type accept_channel_handshake_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => [string()]
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_relationship_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"displayName">> => string(),
-%%   <<"identifier">> := string(),
-%%   <<"programManagementAccountIdentifier">> := string(),
-%%   <<"requestedSupportPlan">> => list(),
-%%   <<"revision">> => string()
-%% }
--type update_relationship_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_program_management_account_response() :: #{
-
-%% }
--type delete_program_management_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_channel_handshake_detail() :: #{
+%% cancel_channel_handshake_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type reject_channel_handshake_detail() :: #{binary() => any()}.
+-type cancel_channel_handshake_detail() :: #{binary() => any()}.
 
 %% Example:
-%% revoke_service_period_payload() :: #{
-%%   <<"note">> => string(),
-%%   <<"programManagementAccountIdentifier">> => string()
+%% cancel_channel_handshake_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"identifier">> := string()
 %% }
--type revoke_service_period_payload() :: #{binary() => any()}.
+-type cancel_channel_handshake_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_channel_handshake_response() :: #{
 %%   <<"channelHandshakeDetail">> => cancel_channel_handshake_detail()
 %% }
 -type cancel_channel_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_relationships_request() :: #{
-%%   <<"associatedAccountIds">> => list(string()),
-%%   <<"associationTypes">> => list(list(any())()),
-%%   <<"catalog">> := string(),
-%%   <<"displayNames">> => list(string()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"programManagementAccountIdentifiers">> => list(string()),
-%%   <<"sort">> => list_relationships_sort_base()
-%% }
--type list_relationships_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_relationship_response() :: #{
-%%   <<"relationshipDetail">> => update_relationship_detail()
-%% }
--type update_relationship_response() :: #{binary() => any()}.
 
 %% Example:
 %% channel_handshake_summary() :: #{
@@ -169,6 +111,69 @@
 -type channel_handshake_summary() :: #{binary() => any()}.
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_handshake_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type create_channel_handshake_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_handshake_request() :: #{
+%%   <<"associatedResourceIdentifier">> := string(),
+%%   <<"catalog">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"handshakeType">> := list(any()),
+%%   <<"payload">> => list(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_channel_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_handshake_response() :: #{
+%%   <<"channelHandshakeDetail">> => create_channel_handshake_detail()
+%% }
+-type create_channel_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_program_management_account_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type create_program_management_account_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_program_management_account_request() :: #{
+%%   <<"accountId">> := string(),
+%%   <<"catalog">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"program">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_program_management_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_program_management_account_response() :: #{
+%%   <<"programManagementAccountDetail">> => create_program_management_account_detail()
+%% }
+-type create_program_management_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_relationship_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type create_relationship_detail() :: #{binary() => any()}.
+
+%% Example:
 %% create_relationship_request() :: #{
 %%   <<"associatedAccountId">> := string(),
 %%   <<"associationType">> := list(any()),
@@ -184,59 +189,80 @@
 -type create_relationship_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_channel_handshake_request() :: #{
-%%   <<"associatedResourceIdentifier">> := string(),
+%% create_relationship_response() :: #{
+%%   <<"relationshipDetail">> => create_relationship_detail()
+%% }
+-type create_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_program_management_account_request() :: #{
 %%   <<"catalog">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"handshakeType">> := list(any()),
-%%   <<"payload">> => list(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_channel_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_service_period_handshake_detail() :: #{
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"minimumNoticeDays">> => string(),
-%%   <<"note">> => string(),
-%%   <<"servicePeriodType">> => list(any()),
-%%   <<"startDate">> => non_neg_integer()
-%% }
--type revoke_service_period_handshake_detail() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% reject_channel_handshake_request() :: #{
-%%   <<"catalog">> := string(),
 %%   <<"identifier">> := string()
 %% }
--type reject_channel_handshake_request() :: #{binary() => any()}.
+-type delete_program_management_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_program_management_account_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"displayName">> => string(),
-%%   <<"identifier">> := string(),
-%%   <<"revision">> => string()
+%% delete_program_management_account_response() :: #{
+
 %% }
--type update_program_management_account_request() :: #{binary() => any()}.
+-type delete_program_management_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_program_management_account_request() :: #{
-%%   <<"accountId">> := string(),
+%% delete_relationship_request() :: #{
 %%   <<"catalog">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"program">> := list(any()),
-%%   <<"tags">> => list(tag())
+%%   <<"identifier">> := string(),
+%%   <<"programManagementAccountIdentifier">> := string()
 %% }
--type create_program_management_account_request() :: #{binary() => any()}.
+-type delete_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relationship_response() :: #{
+
+%% }
+-type delete_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_relationship_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"identifier">> := string(),
+%%   <<"programManagementAccountIdentifier">> := string()
+%% }
+-type get_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relationship_response() :: #{
+%%   <<"relationshipDetail">> => relationship_detail()
+%% }
+-type get_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_channel_handshakes_request() :: #{
+%%   <<"associatedResourceIdentifiers">> => list(string()),
+%%   <<"catalog">> := string(),
+%%   <<"handshakeType">> := list(any()),
+%%   <<"handshakeTypeFilters">> => list(),
+%%   <<"handshakeTypeSort">> => list(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"participantType">> := list(any()),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_channel_handshakes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_channel_handshakes_response() :: #{
+%%   <<"items">> => list(channel_handshake_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_handshakes_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_program_management_accounts_request() :: #{
@@ -252,17 +278,38 @@
 -type list_program_management_accounts_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_channel_handshake_response() :: #{
-%%   <<"channelHandshakeDetail">> => create_channel_handshake_detail()
-%% }
--type create_channel_handshake_response() :: #{binary() => any()}.
-
-%% Example:
 %% list_program_management_accounts_response() :: #{
 %%   <<"items">> => list(program_management_account_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_program_management_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_program_management_accounts_sort_base() :: #{
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_program_management_accounts_sort_base() :: #{binary() => any()}.
+
+%% Example:
+%% list_relationships_request() :: #{
+%%   <<"associatedAccountIds">> => list(string()),
+%%   <<"associationTypes">> => list(list(any())()),
+%%   <<"catalog">> := string(),
+%%   <<"displayNames">> => list(string()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"programManagementAccountIdentifiers">> => list(string()),
+%%   <<"sort">> => list_relationships_sort_base()
+%% }
+-type list_relationships_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_relationships_response() :: #{
+%%   <<"items">> => list(relationship_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_relationships_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_relationships_sort_base() :: #{
@@ -272,12 +319,80 @@
 -type list_relationships_sort_base() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_channel_handshake_detail() :: #{
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% partner_led_support() :: #{
+%%   <<"coverage">> => list(any()),
+%%   <<"provider">> => list(any()),
+%%   <<"tamLocation">> => [string()]
+%% }
+-type partner_led_support() :: #{binary() => any()}.
+
+%% Example:
+%% program_management_account_handshake_detail() :: #{
+%%   <<"program">> => list(any())
+%% }
+-type program_management_account_handshake_detail() :: #{binary() => any()}.
+
+%% Example:
+%% program_management_account_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"program">> => list(any()),
+%%   <<"revision">> => string(),
+%%   <<"startDate">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type program_management_account_summary() :: #{binary() => any()}.
+
+%% Example:
+%% program_management_account_type_filters() :: #{
+%%   <<"programs">> => list(list(any())())
+%% }
+-type program_management_account_type_filters() :: #{binary() => any()}.
+
+%% Example:
+%% program_management_account_type_sort() :: #{
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type program_management_account_type_sort() :: #{binary() => any()}.
+
+%% Example:
+%% reject_channel_handshake_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type cancel_channel_handshake_detail() :: #{binary() => any()}.
+-type reject_channel_handshake_detail() :: #{binary() => any()}.
+
+%% Example:
+%% reject_channel_handshake_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"identifier">> := string()
+%% }
+-type reject_channel_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_channel_handshake_response() :: #{
+%%   <<"channelHandshakeDetail">> => reject_channel_handshake_detail()
+%% }
+-type reject_channel_handshake_response() :: #{binary() => any()}.
 
 %% Example:
 %% relationship_detail() :: #{
@@ -298,59 +413,6 @@
 -type relationship_detail() :: #{binary() => any()}.
 
 %% Example:
-%% create_program_management_account_response() :: #{
-%%   <<"programManagementAccountDetail">> => create_program_management_account_detail()
-%% }
--type create_program_management_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_relationship_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"identifier">> := string(),
-%%   <<"programManagementAccountIdentifier">> := string()
-%% }
--type get_relationship_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resold_enterprise() :: #{
-%%   <<"chargeAccountId">> => string(),
-%%   <<"coverage">> => list(any()),
-%%   <<"tamLocation">> => [string()]
-%% }
--type resold_enterprise() :: #{binary() => any()}.
-
-%% Example:
-%% update_relationship_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"revision">> => string()
-%% }
--type update_relationship_detail() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_service_period_type_filters() :: #{
-%%   <<"servicePeriodTypes">> => list(list(any())())
-%% }
--type revoke_service_period_type_filters() :: #{binary() => any()}.
-
-%% Example:
 %% relationship_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"associatedAccountId">> => string(),
@@ -368,27 +430,12 @@
 -type relationship_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_program_management_account_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
+%% resold_enterprise() :: #{
+%%   <<"chargeAccountId">> => string(),
+%%   <<"coverage">> => list(any()),
+%%   <<"tamLocation">> => [string()]
 %% }
--type create_program_management_account_detail() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type resold_enterprise() :: #{binary() => any()}.
 
 %% Example:
 %% resold_unified_operations() :: #{
@@ -399,32 +446,51 @@
 -type resold_unified_operations() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_channel_handshakes_response() :: #{
-%%   <<"items">> => list(channel_handshake_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_channel_handshakes_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_relationships_response() :: #{
-%%   <<"items">> => list(relationship_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_relationships_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"code">> => [string()],
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_service_period_handshake_detail() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"minimumNoticeDays">> => string(),
+%%   <<"note">> => string(),
+%%   <<"servicePeriodType">> => list(any()),
+%%   <<"startDate">> => non_neg_integer()
+%% }
+-type revoke_service_period_handshake_detail() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_service_period_payload() :: #{
+%%   <<"note">> => string(),
+%%   <<"programManagementAccountIdentifier">> => string()
+%% }
+-type revoke_service_period_payload() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_service_period_type_filters() :: #{
+%%   <<"servicePeriodTypes">> => list(list(any())())
+%% }
+-type revoke_service_period_type_filters() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_service_period_type_sort() :: #{
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type revoke_service_period_type_sort() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% start_service_period_handshake_detail() :: #{
@@ -437,78 +503,14 @@
 -type start_service_period_handshake_detail() :: #{binary() => any()}.
 
 %% Example:
-%% reject_channel_handshake_response() :: #{
-%%   <<"channelHandshakeDetail">> => reject_channel_handshake_detail()
+%% start_service_period_payload() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"minimumNoticeDays">> => string(),
+%%   <<"note">> => string(),
+%%   <<"programManagementAccountIdentifier">> => string(),
+%%   <<"servicePeriodType">> => list(any())
 %% }
--type reject_channel_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% accept_channel_handshake_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"identifier">> := string()
-%% }
--type accept_channel_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_channel_handshakes_request() :: #{
-%%   <<"associatedResourceIdentifiers">> => list(string()),
-%%   <<"catalog">> := string(),
-%%   <<"handshakeType">> := list(any()),
-%%   <<"handshakeTypeFilters">> => list(),
-%%   <<"handshakeTypeSort">> => list(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"participantType">> := list(any()),
-%%   <<"statuses">> => list(list(any())())
-%% }
--type list_channel_handshakes_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_channel_handshake_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type create_channel_handshake_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relationship_response() :: #{
-
-%% }
--type delete_relationship_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_relationship_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type create_relationship_detail() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reason">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_channel_handshake_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"identifier">> := string()
-%% }
--type cancel_channel_handshake_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_program_management_accounts_sort_base() :: #{
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_program_management_accounts_sort_base() :: #{binary() => any()}.
+-type start_service_period_payload() :: #{binary() => any()}.
 
 %% Example:
 %% start_service_period_type_filters() :: #{
@@ -517,22 +519,52 @@
 -type start_service_period_type_filters() :: #{binary() => any()}.
 
 %% Example:
+%% start_service_period_type_sort() :: #{
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type start_service_period_type_sort() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_response() :: #{
 
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% program_management_account_handshake_detail() :: #{
-%%   <<"program">> => list(any())
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"serviceCode">> => [string()]
 %% }
--type program_management_account_handshake_detail() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_relationship_response() :: #{
-%%   <<"relationshipDetail">> => create_relationship_detail()
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
 %% }
--type create_relationship_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_program_management_account_detail() :: #{
@@ -544,6 +576,47 @@
 -type update_program_management_account_detail() :: #{binary() => any()}.
 
 %% Example:
+%% update_program_management_account_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"displayName">> => string(),
+%%   <<"identifier">> := string(),
+%%   <<"revision">> => string()
+%% }
+-type update_program_management_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_program_management_account_response() :: #{
+%%   <<"programManagementAccountDetail">> => update_program_management_account_detail()
+%% }
+-type update_program_management_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_relationship_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type update_relationship_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_relationship_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"displayName">> => string(),
+%%   <<"identifier">> := string(),
+%%   <<"programManagementAccountIdentifier">> := string(),
+%%   <<"requestedSupportPlan">> => list(),
+%%   <<"revision">> => string()
+%% }
+-type update_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_relationship_response() :: #{
+%%   <<"relationshipDetail">> => update_relationship_detail()
+%% }
+-type update_relationship_response() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -552,216 +625,143 @@
 -type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
+%% validation_exception_field() :: #{
+%%   <<"code">> => [string()],
 %%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"serviceCode">> => [string()]
+%%   <<"name">> => [string()]
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relationship_request() :: #{
-%%   <<"catalog">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"identifier">> := string(),
-%%   <<"programManagementAccountIdentifier">> := string()
-%% }
--type delete_relationship_request() :: #{binary() => any()}.
-
-%% Example:
-%% program_management_account_summary() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"program">> => list(any()),
-%%   <<"revision">> => string(),
-%%   <<"startDate">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type program_management_account_summary() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_service_period_type_sort() :: #{
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type revoke_service_period_type_sort() :: #{binary() => any()}.
-
-%% Example:
-%% accept_channel_handshake_response() :: #{
-%%   <<"channelHandshakeDetail">> => accept_channel_handshake_detail()
-%% }
--type accept_channel_handshake_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_service_period_type_sort() :: #{
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type start_service_period_type_sort() :: #{binary() => any()}.
-
-%% Example:
-%% get_relationship_response() :: #{
-%%   <<"relationshipDetail">> => relationship_detail()
-%% }
--type get_relationship_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_service_period_payload() :: #{
-%%   <<"endDate">> => non_neg_integer(),
-%%   <<"minimumNoticeDays">> => string(),
-%%   <<"note">> => string(),
-%%   <<"programManagementAccountIdentifier">> => string(),
-%%   <<"servicePeriodType">> => list(any())
-%% }
--type start_service_period_payload() :: #{binary() => any()}.
-
-%% Example:
-%% program_management_account_type_filters() :: #{
-%%   <<"programs">> => list(list(any())())
-%% }
--type program_management_account_type_filters() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type accept_channel_handshake_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_channel_handshake_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_channel_handshake_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_program_management_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_relationship_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_program_management_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_relationship_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_relationship_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_channel_handshakes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_program_management_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_relationships_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reject_channel_handshake_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_program_management_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_relationship_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

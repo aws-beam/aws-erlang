@@ -96,83 +96,52 @@
 
 
 %% Example:
-%% delete_pricing_rule_output() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_associations_list_element() :: #{
+%%   <<"AccountEmail">> => string(),
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> => string(),
+%%   <<"BillingGroupArn">> => string()
+%% }
+-type account_associations_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_grouping() :: #{
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"LinkedAccountIds">> => list(string()),
+%%   <<"ResponsibilityTransferArn">> => string()
+%% }
+-type account_grouping() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_accounts_input() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"Arn">> := string()
+%% }
+-type associate_accounts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_accounts_output() :: #{
 %%   <<"Arn">> => string()
 %% }
--type delete_pricing_rule_output() :: #{binary() => any()}.
+-type associate_accounts_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_custom_line_item_percentage_charge_details() :: #{
-%%   <<"PercentageValue">> => float()
-%% }
--type list_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_rules_output() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingRules">> => list(pricing_rule_list_element())
-%% }
--type list_pricing_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_associated_to_custom_line_item_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_resources_associated_to_custom_line_item_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resources_associated_to_custom_line_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_rules_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_pricing_rules_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pricing_rules_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_line_item_charge_details() :: #{
-%%   <<"Flat">> => update_custom_line_item_flat_charge_details(),
-%%   <<"LineItemFilters">> => list(line_item_filter()),
-%%   <<"Percentage">> => update_custom_line_item_percentage_charge_details()
-%% }
--type update_custom_line_item_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_pricing_rules_input() :: #{
+%% associate_pricing_rules_input() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"PricingRuleArns">> := list(string())
 %% }
--type disassociate_pricing_rules_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_billing_group_input() :: #{
-%%   <<"AccountGrouping">> => update_billing_group_account_grouping(),
-%%   <<"Arn">> := string(),
-%%   <<"ComputationPreference">> => computation_preference(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_billing_group_input() :: #{binary() => any()}.
+-type associate_pricing_rules_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -183,29 +152,129 @@
 
 
 %% Example:
-%% create_free_tier_config() :: #{
-%%   <<"Activated">> => boolean()
+%% associate_resource_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type create_free_tier_config() :: #{binary() => any()}.
+-type associate_resource_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_pricing_plans_output() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingPlans">> => list(pricing_plan_list_element())
+%% associate_resource_response_element() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Error">> => associate_resource_error()
 %% }
--type list_pricing_plans_output() :: #{binary() => any()}.
+-type associate_resource_response_element() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_pricing_rules_associated_to_pricing_plan_output() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingPlanArn">> => string(),
-%%   <<"PricingRuleArns">> => list(string())
+%% attribute() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
 %% }
--type list_pricing_rules_associated_to_pricing_plan_output() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_resources_to_custom_line_item_input() :: #{
+%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"TargetArn">> := string()
+%% }
+-type batch_associate_resources_to_custom_line_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_resources_to_custom_line_item_output() :: #{
+%%   <<"FailedAssociatedResources">> => list(associate_resource_response_element()),
+%%   <<"SuccessfullyAssociatedResources">> => list(associate_resource_response_element())
+%% }
+-type batch_associate_resources_to_custom_line_item_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_resources_from_custom_line_item_input() :: #{
+%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"TargetArn">> := string()
+%% }
+-type batch_disassociate_resources_from_custom_line_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_resources_from_custom_line_item_output() :: #{
+%%   <<"FailedDisassociatedResources">> => list(disassociate_resource_response_element()),
+%%   <<"SuccessfullyDisassociatedResources">> => list(disassociate_resource_response_element())
+%% }
+-type batch_disassociate_resources_from_custom_line_item_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_group_cost_report_element() :: #{
+%%   <<"AWSCost">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Currency">> => string(),
+%%   <<"Margin">> => string(),
+%%   <<"MarginPercentage">> => string(),
+%%   <<"ProformaCost">> => string()
+%% }
+-type billing_group_cost_report_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_group_cost_report_result_element() :: #{
+%%   <<"AWSCost">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Attributes">> => list(attribute()),
+%%   <<"Currency">> => string(),
+%%   <<"Margin">> => string(),
+%%   <<"MarginPercentage">> => string(),
+%%   <<"ProformaCost">> => string()
+%% }
+-type billing_group_cost_report_result_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_group_list_element() :: #{
+%%   <<"AccountGrouping">> => list_billing_group_account_grouping(),
+%%   <<"Arn">> => string(),
+%%   <<"BillingGroupType">> => list(any()),
+%%   <<"ComputationPreference">> => computation_preference(),
+%%   <<"CreationTime">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"PrimaryAccountId">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type billing_group_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% billing_period_range() :: #{
+%%   <<"ExclusiveEndBillingPeriod">> => string(),
+%%   <<"InclusiveStartBillingPeriod">> => string()
+%% }
+-type billing_period_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_preference() :: #{
+%%   <<"PricingPlanArn">> => string()
+%% }
+-type computation_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -220,47 +289,60 @@
 %% }
 -type create_billing_group_input() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
 
 %% Example:
-%% delete_pricing_rule_input() :: #{
-%%   <<"Arn">> := string()
+%% create_billing_group_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type delete_pricing_rule_input() :: #{binary() => any()}.
+-type create_billing_group_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_billing_group_cost_report_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"BillingPeriodRange">> => billing_period_range(),
-%%   <<"GroupBy">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_custom_line_item_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BillingGroupArn">> => string(),
+%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
+%%   <<"ChargeDetails">> => custom_line_item_charge_details(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ComputationRule">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PresentationDetails">> => presentation_object(),
+%%   <<"Tags">> => map()
 %% }
--type get_billing_group_cost_report_input() :: #{binary() => any()}.
+-type create_custom_line_item_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_custom_line_item_charge_details() :: #{
-%%   <<"Flat">> => list_custom_line_item_flat_charge_details(),
-%%   <<"LineItemFilters">> => list(line_item_filter()),
-%%   <<"Percentage">> => list_custom_line_item_percentage_charge_details(),
-%%   <<"Type">> => list(any())
+%% create_custom_line_item_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type list_custom_line_item_charge_details() :: #{binary() => any()}.
+-type create_custom_line_item_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_pricing_plans_associated_with_pricing_rule_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingRuleArn">> := string()
+%% create_free_tier_config() :: #{
+%%   <<"Activated">> => boolean()
 %% }
--type list_pricing_plans_associated_with_pricing_rule_input() :: #{binary() => any()}.
+-type create_free_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pricing_plan_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"PricingRuleArns">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type create_pricing_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_pricing_plan_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_pricing_plan_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -282,30 +364,6 @@
 
 
 %% Example:
-%% update_custom_line_item_percentage_charge_details() :: #{
-%%   <<"PercentageValue">> => float()
-%% }
--type update_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pricing_plan_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_pricing_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_group_cost_reports_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_billing_group_cost_reports_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_billing_group_cost_reports_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_pricing_rule_output() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -313,25 +371,18 @@
 
 
 %% Example:
-%% free_tier_config() :: #{
-%%   <<"Activated">> => boolean()
+%% create_tiering_input() :: #{
+%%   <<"FreeTier">> => create_free_tier_config()
 %% }
--type free_tier_config() :: #{binary() => any()}.
+-type create_tiering_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_resource_error() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
+%% custom_line_item_billing_period_range() :: #{
+%%   <<"ExclusiveEndBillingPeriod">> => string(),
+%%   <<"InclusiveStartBillingPeriod">> => string()
 %% }
--type associate_resource_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_billing_group_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_billing_group_output() :: #{binary() => any()}.
+-type custom_line_item_billing_period_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -345,559 +396,10 @@
 
 
 %% Example:
-%% batch_associate_resources_to_custom_line_item_input() :: #{
-%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ResourceArns">> := list(string()),
-%%   <<"TargetArn">> := string()
-%% }
--type batch_associate_resources_to_custom_line_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> => list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_items_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_custom_line_items_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_line_items_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_item_versions_output() :: #{
-%%   <<"CustomLineItemVersions">> => list(custom_line_item_version_list_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_line_item_versions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_pricing_rules_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"PricingRuleArns">> := list(string())
-%% }
--type associate_pricing_rules_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_line_item_billing_period_range() :: #{
-%%   <<"ExclusiveEndBillingPeriod">> => string(),
-%%   <<"InclusiveStartBillingPeriod">> => string()
-%% }
--type custom_line_item_billing_period_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_items_output() :: #{
-%%   <<"CustomLineItems">> => list(custom_line_item_list_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_line_items_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% presentation_object() :: #{
-%%   <<"Service">> => string()
-%% }
--type presentation_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pricing_plan_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Size">> => float()
-%% }
--type update_pricing_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_billing_group_output() :: #{
-%%   <<"AccountGrouping">> => update_billing_group_account_grouping(),
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"PricingPlanArn">> => string(),
-%%   <<"PrimaryAccountId">> => string(),
-%%   <<"Size">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type update_billing_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_disassociate_resources_from_custom_line_item_output() :: #{
-%%   <<"FailedDisassociatedResources">> => list(disassociate_resource_response_element()),
-%%   <<"SuccessfullyDisassociatedResources">> => list(disassociate_resource_response_element())
-%% }
--type batch_disassociate_resources_from_custom_line_item_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% computation_preference() :: #{
-%%   <<"PricingPlanArn">> => string()
-%% }
--type computation_preference() :: #{binary() => any()}.
-
-
-%% Example:
-%% pricing_plan_list_element() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => float(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Size">> => float()
-%% }
--type pricing_plan_list_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_associated_to_custom_line_item_response_element() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"EndBillingPeriod">> => string(),
-%%   <<"Relationship">> => list(any())
-%% }
--type list_resources_associated_to_custom_line_item_response_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_pricing_rules_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type disassociate_pricing_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_billing_group_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type delete_billing_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% billing_period_range() :: #{
-%%   <<"ExclusiveEndBillingPeriod">> => string(),
-%%   <<"InclusiveStartBillingPeriod">> => string()
-%% }
--type billing_period_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_plans_associated_with_pricing_rule_output() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingPlanArns">> => list(string()),
-%%   <<"PricingRuleArn">> => string()
-%% }
--type list_pricing_plans_associated_with_pricing_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_tiering_input() :: #{
-%%   <<"FreeTier">> => update_free_tier_config()
-%% }
--type update_tiering_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_groups_output() :: #{
-%%   <<"BillingGroups">> => list(billing_group_list_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_billing_groups_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_item_versions_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Filters">> => list_custom_line_item_versions_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_line_item_versions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_pricing_plan_input() :: #{
-%%   <<"Arn">> := string()
-%% }
--type delete_pricing_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_associations_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_account_associations_filter(),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_associations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_item_versions_filter() :: #{
-%%   <<"BillingPeriodRange">> => list_custom_line_item_versions_billing_period_range_filter()
-%% }
--type list_custom_line_item_versions_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% billing_group_cost_report_result_element() :: #{
-%%   <<"AWSCost">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Attributes">> => list(attribute()),
-%%   <<"Currency">> => string(),
-%%   <<"Margin">> => string(),
-%%   <<"MarginPercentage">> => string(),
-%%   <<"ProformaCost">> => string()
-%% }
--type billing_group_cost_report_result_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_rules_associated_to_pricing_plan_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PricingPlanArn">> := string()
-%% }
--type list_pricing_rules_associated_to_pricing_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_grouping() :: #{
-%%   <<"AutoAssociate">> => [boolean()],
-%%   <<"LinkedAccountIds">> => list(string()),
-%%   <<"ResponsibilityTransferArn">> => string()
-%% }
--type account_grouping() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_line_item_flat_charge_details() :: #{
-%%   <<"ChargeValue">> => float()
-%% }
--type update_custom_line_item_flat_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_pricing_plan_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"PricingRuleArns">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_pricing_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_plans_filter() :: #{
-%%   <<"Arns">> => list(string())
-%% }
--type list_pricing_plans_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_item_flat_charge_details() :: #{
-%%   <<"ChargeValue">> => float()
-%% }
--type list_custom_line_item_flat_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_associated_to_custom_line_item_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedResources">> => list(list_resources_associated_to_custom_line_item_response_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_resources_associated_to_custom_line_item_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_associations_output() :: #{
-%%   <<"LinkedAccounts">> => list(account_associations_list_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_associations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_plans_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_pricing_plans_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_pricing_plans_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pricing_plan_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_pricing_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_associations_filter() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AccountIds">> => list(string()),
-%%   <<"Association">> => string()
-%% }
--type list_account_associations_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_group_cost_reports_filter() :: #{
-%%   <<"BillingGroupArns">> => list(string())
-%% }
--type list_billing_group_cost_reports_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pricing_rules_filter() :: #{
-%%   <<"Arns">> => list(string())
-%% }
--type list_pricing_rules_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_response_element() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Error">> => associate_resource_error()
-%% }
--type associate_resource_response_element() :: #{binary() => any()}.
-
-
-%% Example:
 %% custom_line_item_flat_charge_details() :: #{
 %%   <<"ChargeValue">> => float()
 %% }
 -type custom_line_item_flat_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pricing_rule_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedPricingPlanCount">> => float(),
-%%   <<"BillingEntity">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => float(),
-%%   <<"ModifierPercentage">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"Service">> => string(),
-%%   <<"Tiering">> => update_tiering_input(),
-%%   <<"Type">> => list(any()),
-%%   <<"UsageType">> => string()
-%% }
--type update_pricing_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_custom_line_item_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range()
-%% }
--type delete_custom_line_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% line_item_filter() :: #{
-%%   <<"Attribute">> => list(any()),
-%%   <<"AttributeValues">> => list(string()),
-%%   <<"MatchOption">> => list(any()),
-%%   <<"Values">> => list(list(any())())
-%% }
--type line_item_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_line_item_percentage_charge_details() :: #{
-%%   <<"AssociatedValues">> => list(string()),
-%%   <<"PercentageValue">> => float()
-%% }
--type custom_line_item_percentage_charge_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_groups_filter() :: #{
-%%   <<"Arns">> => list(string()),
-%%   <<"AutoAssociate">> => [boolean()],
-%%   <<"BillingGroupTypes">> => list(list(any())()),
-%%   <<"Names">> => list(string_search()),
-%%   <<"PricingPlan">> => string(),
-%%   <<"PrimaryAccountIds">> => list(string()),
-%%   <<"ResponsibilityTransferArns">> => list(string()),
-%%   <<"Statuses">> => list(list(any())())
-%% }
--type list_billing_groups_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_accounts_input() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"Arn">> := string()
-%% }
--type disassociate_accounts_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_group_account_grouping() :: #{
-%%   <<"AutoAssociate">> => [boolean()],
-%%   <<"ResponsibilityTransferArn">> => string()
-%% }
--type list_billing_group_account_grouping() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_billing_group_cost_report_output() :: #{
-%%   <<"BillingGroupCostReportResults">> => list(billing_group_cost_report_result_element()),
-%%   <<"NextToken">> => string()
-%% }
--type get_billing_group_cost_report_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_custom_line_items_filter() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"Arns">> => list(string()),
-%%   <<"BillingGroups">> => list(string()),
-%%   <<"Names">> => list(string())
-%% }
--type list_custom_line_items_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_line_item_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_custom_line_item_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_billing_group_account_grouping() :: #{
-%%   <<"AutoAssociate">> => [boolean()],
-%%   <<"ResponsibilityTransferArn">> => string()
-%% }
--type update_billing_group_account_grouping() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_response_element() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Error">> => associate_resource_error()
-%% }
--type disassociate_resource_response_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% batch_disassociate_resources_from_custom_line_item_input() :: #{
-%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ResourceArns">> := list(string()),
-%%   <<"TargetArn">> := string()
-%% }
--type batch_disassociate_resources_from_custom_line_item_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_line_item_versions_billing_period_range_filter() :: #{
-%%   <<"EndBillingPeriod">> => string(),
-%%   <<"StartBillingPeriod">> => string()
-%% }
--type list_custom_line_item_versions_billing_period_range_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_limit_exceeded_exception() :: #{
-%%   <<"LimitCode">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -917,6 +419,14 @@
 %%   <<"ProductCode">> => string()
 %% }
 -type custom_line_item_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_line_item_percentage_charge_details() :: #{
+%%   <<"AssociatedValues">> => list(string()),
+%%   <<"PercentageValue">> => float()
+%% }
+-type custom_line_item_percentage_charge_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -942,60 +452,39 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
+%% delete_billing_group_input() :: #{
+%%   <<"Arn">> := string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type delete_billing_group_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_custom_line_item_input() :: #{
+%% delete_billing_group_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type delete_billing_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_custom_line_item_input() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ChargeDetails">> => update_custom_line_item_charge_details(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range()
 %% }
--type update_custom_line_item_input() :: #{binary() => any()}.
+-type delete_custom_line_item_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% attribute() :: #{
-%%   <<"Key">> => [string()],
-%%   <<"Value">> => [string()]
+%% delete_custom_line_item_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type attribute() :: #{binary() => any()}.
+-type delete_custom_line_item_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% billing_group_list_element() :: #{
-%%   <<"AccountGrouping">> => list_billing_group_account_grouping(),
-%%   <<"Arn">> => string(),
-%%   <<"BillingGroupType">> => list(any()),
-%%   <<"ComputationPreference">> => computation_preference(),
-%%   <<"CreationTime">> => float(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"PrimaryAccountId">> => string(),
-%%   <<"Size">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% delete_pricing_plan_input() :: #{
+%%   <<"Arn">> := string()
 %% }
--type billing_group_list_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pricing_rule_input() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ModifierPercentage">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"Tiering">> => update_tiering_input(),
-%%   <<"Type">> => list(any())
-%% }
--type update_pricing_rule_input() :: #{binary() => any()}.
+-type delete_pricing_plan_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1006,25 +495,367 @@
 
 
 %% Example:
-%% tiering() :: #{
-%%   <<"FreeTier">> => free_tier_config()
+%% delete_pricing_rule_input() :: #{
+%%   <<"Arn">> := string()
 %% }
--type tiering() :: #{binary() => any()}.
+-type delete_pricing_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_tiering_input() :: #{
-%%   <<"FreeTier">> => create_free_tier_config()
+%% delete_pricing_rule_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type create_tiering_input() :: #{binary() => any()}.
+-type delete_pricing_rule_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_accounts_input() :: #{
+%% disassociate_accounts_input() :: #{
 %%   <<"AccountIds">> := list(string()),
 %%   <<"Arn">> := string()
 %% }
--type associate_accounts_input() :: #{binary() => any()}.
+-type disassociate_accounts_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_accounts_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type disassociate_accounts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_pricing_rules_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"PricingRuleArns">> := list(string())
+%% }
+-type disassociate_pricing_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_pricing_rules_output() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type disassociate_pricing_rules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_response_element() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Error">> => associate_resource_error()
+%% }
+-type disassociate_resource_response_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_tier_config() :: #{
+%%   <<"Activated">> => boolean()
+%% }
+-type free_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_billing_group_cost_report_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"BillingPeriodRange">> => billing_period_range(),
+%%   <<"GroupBy">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_billing_group_cost_report_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_billing_group_cost_report_output() :: #{
+%%   <<"BillingGroupCostReportResults">> => list(billing_group_cost_report_result_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_billing_group_cost_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% line_item_filter() :: #{
+%%   <<"Attribute">> => list(any()),
+%%   <<"AttributeValues">> => list(string()),
+%%   <<"MatchOption">> => list(any()),
+%%   <<"Values">> => list(list(any())())
+%% }
+-type line_item_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_associations_filter() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Association">> => string()
+%% }
+-type list_account_associations_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_associations_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_account_associations_filter(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_associations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_associations_output() :: #{
+%%   <<"LinkedAccounts">> => list(account_associations_list_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_associations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_group_account_grouping() :: #{
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"ResponsibilityTransferArn">> => string()
+%% }
+-type list_billing_group_account_grouping() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_group_cost_reports_filter() :: #{
+%%   <<"BillingGroupArns">> => list(string())
+%% }
+-type list_billing_group_cost_reports_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_group_cost_reports_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_billing_group_cost_reports_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_billing_group_cost_reports_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_group_cost_reports_output() :: #{
+%%   <<"BillingGroupCostReports">> => list(billing_group_cost_report_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_billing_group_cost_reports_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_groups_filter() :: #{
+%%   <<"Arns">> => list(string()),
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"BillingGroupTypes">> => list(list(any())()),
+%%   <<"Names">> => list(string_search()),
+%%   <<"PricingPlan">> => string(),
+%%   <<"PrimaryAccountIds">> => list(string()),
+%%   <<"ResponsibilityTransferArns">> => list(string()),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_billing_groups_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_groups_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_billing_groups_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_billing_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_billing_groups_output() :: #{
+%%   <<"BillingGroups">> => list(billing_group_list_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_billing_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_charge_details() :: #{
+%%   <<"Flat">> => list_custom_line_item_flat_charge_details(),
+%%   <<"LineItemFilters">> => list(line_item_filter()),
+%%   <<"Percentage">> => list_custom_line_item_percentage_charge_details(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_custom_line_item_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_flat_charge_details() :: #{
+%%   <<"ChargeValue">> => float()
+%% }
+-type list_custom_line_item_flat_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_percentage_charge_details() :: #{
+%%   <<"PercentageValue">> => float()
+%% }
+-type list_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_versions_billing_period_range_filter() :: #{
+%%   <<"EndBillingPeriod">> => string(),
+%%   <<"StartBillingPeriod">> => string()
+%% }
+-type list_custom_line_item_versions_billing_period_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_versions_filter() :: #{
+%%   <<"BillingPeriodRange">> => list_custom_line_item_versions_billing_period_range_filter()
+%% }
+-type list_custom_line_item_versions_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_versions_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Filters">> => list_custom_line_item_versions_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_line_item_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_item_versions_output() :: #{
+%%   <<"CustomLineItemVersions">> => list(custom_line_item_version_list_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_line_item_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_items_filter() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Arns">> => list(string()),
+%%   <<"BillingGroups">> => list(string()),
+%%   <<"Names">> => list(string())
+%% }
+-type list_custom_line_items_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_items_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_custom_line_items_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_line_items_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_line_items_output() :: #{
+%%   <<"CustomLineItems">> => list(custom_line_item_list_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_line_items_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_plans_associated_with_pricing_rule_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingRuleArn">> := string()
+%% }
+-type list_pricing_plans_associated_with_pricing_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_plans_associated_with_pricing_rule_output() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingPlanArns">> => list(string()),
+%%   <<"PricingRuleArn">> => string()
+%% }
+-type list_pricing_plans_associated_with_pricing_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_plans_filter() :: #{
+%%   <<"Arns">> => list(string())
+%% }
+-type list_pricing_plans_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_plans_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_pricing_plans_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pricing_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_plans_output() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingPlans">> => list(pricing_plan_list_element())
+%% }
+-type list_pricing_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_rules_associated_to_pricing_plan_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingPlanArn">> := string()
+%% }
+-type list_pricing_rules_associated_to_pricing_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_rules_associated_to_pricing_plan_output() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingPlanArn">> => string(),
+%%   <<"PricingRuleArns">> => list(string())
+%% }
+-type list_pricing_rules_associated_to_pricing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_rules_filter() :: #{
+%%   <<"Arns">> => list(string())
+%% }
+-type list_pricing_rules_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_rules_input() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_pricing_rules_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pricing_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pricing_rules_output() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PricingRules">> => list(pricing_rule_list_element())
+%% }
+-type list_pricing_rules_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1035,10 +866,62 @@
 
 
 %% Example:
-%% associate_accounts_output() :: #{
-%%   <<"Arn">> => string()
+%% list_resources_associated_to_custom_line_item_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"BillingPeriod">> => string(),
+%%   <<"Filters">> => list_resources_associated_to_custom_line_item_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type associate_accounts_output() :: #{binary() => any()}.
+-type list_resources_associated_to_custom_line_item_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_associated_to_custom_line_item_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedResources">> => list(list_resources_associated_to_custom_line_item_response_element()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resources_associated_to_custom_line_item_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_associated_to_custom_line_item_response_element() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"EndBillingPeriod">> => string(),
+%%   <<"Relationship">> => list(any())
+%% }
+-type list_resources_associated_to_custom_line_item_response_element() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% presentation_object() :: #{
+%%   <<"Service">> => string()
+%% }
+-type presentation_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% pricing_plan_list_element() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type pricing_plan_list_element() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1062,60 +945,23 @@
 
 
 %% Example:
-%% update_free_tier_config() :: #{
-%%   <<"Activated">> => boolean()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type update_free_tier_config() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_billing_groups_input() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"Filters">> => list_billing_groups_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% service_limit_exceeded_exception() :: #{
+%%   <<"LimitCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
 %% }
--type list_billing_groups_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_accounts_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type disassociate_accounts_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_associations_list_element() :: #{
-%%   <<"AccountEmail">> => string(),
-%%   <<"AccountId">> => string(),
-%%   <<"AccountName">> => string(),
-%%   <<"BillingGroupArn">> => string()
-%% }
--type account_associations_list_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_billing_group_input() :: #{
-%%   <<"Arn">> := string()
-%% }
--type delete_billing_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_billing_group_cost_reports_output() :: #{
-%%   <<"BillingGroupCostReports">> => list(billing_group_cost_report_element()),
-%%   <<"NextToken">> => string()
-%% }
--type list_billing_group_cost_reports_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_resources_to_custom_line_item_output() :: #{
-%%   <<"FailedAssociatedResources">> => list(associate_resource_response_element()),
-%%   <<"SuccessfullyAssociatedResources">> => list(associate_resource_response_element())
-%% }
--type batch_associate_resources_to_custom_line_item_output() :: #{binary() => any()}.
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1127,26 +973,103 @@
 
 
 %% Example:
-%% delete_custom_line_item_output() :: #{
-%%   <<"Arn">> => string()
+%% tag_resource_request() :: #{
+%%   <<"Tags">> => map()
 %% }
--type delete_custom_line_item_output() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% create_custom_line_item_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BillingGroupArn">> => string(),
-%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ChargeDetails">> => custom_line_item_charge_details(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ComputationRule">> => list(any()),
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering() :: #{
+%%   <<"FreeTier">> => free_tier_config()
+%% }
+-type tiering() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> => list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_billing_group_account_grouping() :: #{
+%%   <<"AutoAssociate">> => [boolean()],
+%%   <<"ResponsibilityTransferArn">> => string()
+%% }
+-type update_billing_group_account_grouping() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_billing_group_input() :: #{
+%%   <<"AccountGrouping">> => update_billing_group_account_grouping(),
+%%   <<"Arn">> := string(),
+%%   <<"ComputationPreference">> => computation_preference(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PresentationDetails">> => presentation_object(),
-%%   <<"Tags">> => map()
+%%   <<"Status">> => list(any())
 %% }
--type create_custom_line_item_input() :: #{binary() => any()}.
+-type update_billing_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_billing_group_output() :: #{
+%%   <<"AccountGrouping">> => update_billing_group_account_grouping(),
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"PricingPlanArn">> => string(),
+%%   <<"PrimaryAccountId">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type update_billing_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_line_item_charge_details() :: #{
+%%   <<"Flat">> => update_custom_line_item_flat_charge_details(),
+%%   <<"LineItemFilters">> => list(line_item_filter()),
+%%   <<"Percentage">> => update_custom_line_item_percentage_charge_details()
+%% }
+-type update_custom_line_item_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_line_item_flat_charge_details() :: #{
+%%   <<"ChargeValue">> => float()
+%% }
+-type update_custom_line_item_flat_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_line_item_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
+%%   <<"ChargeDetails">> => update_custom_line_item_charge_details(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_custom_line_item_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1163,253 +1086,330 @@
 
 
 %% Example:
-%% billing_group_cost_report_element() :: #{
-%%   <<"AWSCost">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Currency">> => string(),
-%%   <<"Margin">> => string(),
-%%   <<"MarginPercentage">> => string(),
-%%   <<"ProformaCost">> => string()
+%% update_custom_line_item_percentage_charge_details() :: #{
+%%   <<"PercentageValue">> => float()
 %% }
--type billing_group_cost_report_element() :: #{binary() => any()}.
+-type update_custom_line_item_percentage_charge_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_free_tier_config() :: #{
+%%   <<"Activated">> => boolean()
+%% }
+-type update_free_tier_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_plan_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_pricing_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_plan_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type update_pricing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_rule_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"ModifierPercentage">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Tiering">> => update_tiering_input(),
+%%   <<"Type">> => list(any())
+%% }
+-type update_pricing_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_rule_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedPricingPlanCount">> => float(),
+%%   <<"BillingEntity">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"ModifierPercentage">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Service">> => string(),
+%%   <<"Tiering">> => update_tiering_input(),
+%%   <<"Type">> => list(any()),
+%%   <<"UsageType">> => string()
+%% }
+-type update_pricing_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tiering_input() :: #{
+%%   <<"FreeTier">> => update_free_tier_config()
+%% }
+-type update_tiering_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_accounts_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_pricing_rules_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_associate_resources_to_custom_line_item_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_disassociate_resources_from_custom_line_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_billing_group_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_custom_line_item_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_pricing_plan_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_pricing_rule_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     service_limit_exceeded_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_billing_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_custom_line_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_pricing_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_pricing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_pricing_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_billing_group_cost_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_billing_group_cost_reports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_billing_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_custom_line_item_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_custom_line_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_pricing_plans_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_pricing_plans_associated_with_pricing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_pricing_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_pricing_rules_associated_to_pricing_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resources_associated_to_custom_line_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_billing_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_custom_line_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_pricing_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_pricing_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

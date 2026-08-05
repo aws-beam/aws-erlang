@@ -90,511 +90,10 @@
 
 
 %% Example:
-%% create_media_capture_pipeline_response() :: #{
-%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
+%% active_speaker_only_configuration() :: #{
+%%   <<"ActiveSpeakerPosition">> => list(any())
 %% }
--type create_media_capture_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_data_stream_sink_configuration() :: #{
-%%   <<"InsightsTarget">> => string()
-%% }
--type kinesis_data_stream_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% recording_stream_configuration() :: #{
-%%   <<"StreamArn">> => string()
-%% }
--type recording_stream_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_media_insights_pipeline_configuration_response() :: #{
-%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
-%% }
--type update_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_channel_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type data_channel_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_voice_tone_analysis_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"KinesisVideoStreamSourceTaskConfiguration">> => kinesis_video_stream_source_task_configuration(),
-%%   <<"LanguageCode">> := list(any())
-%% }
--type start_voice_tone_analysis_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type video_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_speaker_search_task_response() :: #{
-%%   <<"SpeakerSearchTask">> => speaker_search_task()
-%% }
--type start_speaker_search_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_media_pipeline_kinesis_video_stream_pool_request() :: #{}
--type delete_media_pipeline_kinesis_video_stream_pool_request() :: #{}.
-
-
-%% Example:
-%% create_media_concatenation_pipeline_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(concatenation_sink()),
-%%   <<"Sources">> := list(concatenation_source()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_concatenation_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_media_capture_pipeline_response() :: #{
-%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
-%% }
--type get_media_capture_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% video_artifacts_configuration() :: #{
-%%   <<"MuxType">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type video_artifacts_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type service_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% meeting_events_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type meeting_events_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% chime_sdk_meeting_live_connector_configuration() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CompositedVideo">> => composited_video_artifacts_configuration(),
-%%   <<"MuxType">> => list(any()),
-%%   <<"SourceConfiguration">> => source_configuration()
-%% }
--type chime_sdk_meeting_live_connector_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_pipeline_kinesis_video_stream_pool_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"PoolName">> := string(),
-%%   <<"StreamConfiguration">> := kinesis_video_stream_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_pipeline_kinesis_video_stream_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_media_capture_pipeline_request() :: #{}
--type get_media_capture_pipeline_request() :: #{}.
-
-%% Example:
-%% delete_media_pipeline_request() :: #{}
--type delete_media_pipeline_request() :: #{}.
-
-
-%% Example:
-%% list_media_pipeline_kinesis_video_stream_pools_response() :: #{
-%%   <<"KinesisVideoStreamPools">> => list(kinesis_video_stream_pool_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_pipeline_kinesis_video_stream_pools_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_media_insights_pipeline_configuration_request() :: #{}
--type get_media_insights_pipeline_configuration_request() :: #{}.
-
-%% Example:
-%% get_media_pipeline_request() :: #{}
--type get_media_pipeline_request() :: #{}.
-
-
-%% Example:
-%% sqs_queue_sink_configuration() :: #{
-%%   <<"InsightsTarget">> => string()
-%% }
--type sqs_queue_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% selected_video_streams() :: #{
-%%   <<"AttendeeIds">> => list(string()),
-%%   <<"ExternalUserIds">> => list(string())
-%% }
--type selected_video_streams() :: #{binary() => any()}.
-
-
-%% Example:
-%% live_connector_r_t_m_p_configuration() :: #{
-%%   <<"AudioChannels">> => list(any()),
-%%   <<"AudioSampleRate">> => string(),
-%%   <<"Url">> => string()
-%% }
--type live_connector_r_t_m_p_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_source_task_configuration() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"FragmentNumber">> => string(),
-%%   <<"StreamArn">> => string()
-%% }
--type kinesis_video_stream_source_task_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_recording_sink_configuration() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"RecordingFileFormat">> => list(any())
-%% }
--type s3_recording_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type unauthorized_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type audio_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% composited_video_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type composited_video_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% speaker_search_task() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"SpeakerSearchTaskId">> => string(),
-%%   <<"SpeakerSearchTaskStatus">> => list(any()),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type speaker_search_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_pipeline_element_status() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type media_insights_pipeline_element_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_pipelines_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_pipelines_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% concatenation_sink() :: #{
-%%   <<"S3BucketSinkConfiguration">> => s3_bucket_sink_configuration(),
-%%   <<"Type">> => list(any())
-%% }
--type concatenation_sink() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_speaker_search_task_response() :: #{
-%%   <<"SpeakerSearchTask">> => speaker_search_task()
-%% }
--type get_speaker_search_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_speaker_search_task_request() :: #{}
--type stop_speaker_search_task_request() :: #{}.
-
-
-%% Example:
-%% content_artifacts_configuration() :: #{
-%%   <<"MuxType">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type content_artifacts_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type throttled_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vertical_layout_configuration() :: #{
-%%   <<"TileAspectRatio">> => string(),
-%%   <<"TileCount">> => integer(),
-%%   <<"TileOrder">> => list(any()),
-%%   <<"TilePosition">> => list(any())
-%% }
--type vertical_layout_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_insights_pipeline_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_insights_pipeline_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_capture_pipelines_response() :: #{
-%%   <<"MediaCapturePipelines">> => list(media_capture_pipeline_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_capture_pipelines_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fragment_selector() :: #{
-%%   <<"FragmentSelectorType">> => list(any()),
-%%   <<"TimestampRange">> => timestamp_range()
-%% }
--type fragment_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_pipeline_kinesis_video_stream_pool_response() :: #{
-%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
-%% }
--type create_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sentiment_configuration() :: #{
-%%   <<"RuleName">> => string(),
-%%   <<"SentimentType">> => list(any()),
-%%   <<"TimePeriod">> => integer()
-%% }
--type sentiment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% live_connector_sink_configuration() :: #{
-%%   <<"RTMPConfiguration">> => live_connector_r_t_m_p_configuration(),
-%%   <<"SinkType">> => list(any())
-%% }
--type live_connector_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% sns_topic_sink_configuration() :: #{
-%%   <<"InsightsTarget">> => string()
-%% }
--type sns_topic_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% presenter_only_configuration() :: #{
-%%   <<"PresenterPosition">> => list(any())
-%% }
--type presenter_only_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_tone_analysis_task_response() :: #{
-%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
-%% }
--type get_voice_tone_analysis_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_media_capture_pipeline_request() :: #{}
--type delete_media_capture_pipeline_request() :: #{}.
-
-
-%% Example:
-%% get_media_insights_pipeline_configuration_response() :: #{
-%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
-%% }
--type get_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_configuration_update() :: #{
-%%   <<"DataRetentionInHours">> => integer()
-%% }
--type kinesis_video_stream_configuration_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_voice_tone_analysis_task_response() :: #{
-%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
-%% }
--type start_voice_tone_analysis_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_concatenation_pipeline_response() :: #{
-%%   <<"MediaConcatenationPipeline">> => media_concatenation_pipeline()
-%% }
--type create_media_concatenation_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% live_connector_source_configuration() :: #{
-%%   <<"ChimeSdkMeetingLiveConnectorConfiguration">> => chime_sdk_meeting_live_connector_configuration(),
-%%   <<"SourceType">> => list(any())
-%% }
--type live_connector_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_pipeline_configuration() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Elements">> => list(media_insights_pipeline_configuration_element()),
-%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
-%%   <<"MediaInsightsPipelineConfigurationId">> => string(),
-%%   <<"MediaInsightsPipelineConfigurationName">> => string(),
-%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
-%%   <<"ResourceAccessRoleArn">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type media_insights_pipeline_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% horizontal_layout_configuration() :: #{
-%%   <<"TileAspectRatio">> => string(),
-%%   <<"TileCount">> => integer(),
-%%   <<"TileOrder">> => list(any()),
-%%   <<"TilePosition">> => list(any())
-%% }
--type horizontal_layout_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% issue_detection_configuration() :: #{
-%%   <<"RuleName">> => string()
-%% }
--type issue_detection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_aws_key_management_params() :: #{
-%%   <<"AwsKmsEncryptionContext">> => string(),
-%%   <<"AwsKmsKeyId">> => string()
-%% }
--type sse_aws_key_management_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_capture_pipeline() :: #{
-%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string(),
-%%   <<"SinkArn">> => string(),
-%%   <<"SinkIamRoleArn">> => string(),
-%%   <<"SinkType">> => list(any()),
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type media_capture_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_concatenation_pipeline() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(concatenation_sink()),
-%%   <<"Sources">> => list(concatenation_source()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type media_concatenation_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_configuration() :: #{
-%%   <<"DataRetentionInHours">> => integer(),
-%%   <<"Region">> => string()
-%% }
--type kinesis_video_stream_configuration() :: #{binary() => any()}.
+-type active_speaker_only_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -614,582 +113,6 @@
 %%   <<"VocabularyName">> => string()
 %% }
 -type amazon_transcribe_call_analytics_processor_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_pool_summary() :: #{
-%%   <<"PoolArn">> => string(),
-%%   <<"PoolId">> => string(),
-%%   <<"PoolName">> => string()
-%% }
--type kinesis_video_stream_pool_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_speaker_search_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"KinesisVideoStreamSourceTaskConfiguration">> => kinesis_video_stream_source_task_configuration(),
-%%   <<"VoiceProfileDomainArn">> := string()
-%% }
--type start_speaker_search_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_pipeline_kinesis_video_stream_pools_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_pipeline_kinesis_video_stream_pools_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% composited_video_artifacts_configuration() :: #{
-%%   <<"GridViewConfiguration">> => grid_view_configuration(),
-%%   <<"Layout">> => list(any()),
-%%   <<"Resolution">> => list(any())
-%% }
--type composited_video_artifacts_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_definition() :: #{
-%%   <<"ChannelId">> => integer(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type channel_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_media_insights_pipeline_configuration_request() :: #{
-%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
-%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
-%%   <<"ResourceAccessRoleArn">> := string()
-%% }
--type update_media_insights_pipeline_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_alert_rule() :: #{
-%%   <<"IssueDetectionConfiguration">> => issue_detection_configuration(),
-%%   <<"KeywordMatchConfiguration">> => keyword_match_configuration(),
-%%   <<"SentimentConfiguration">> => sentiment_configuration(),
-%%   <<"Type">> => list(any())
-%% }
--type real_time_alert_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_media_insights_pipeline_configuration_request() :: #{}
--type delete_media_insights_pipeline_configuration_request() :: #{}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_media_pipeline_kinesis_video_stream_pool_response() :: #{
-%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
-%% }
--type get_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_live_connector_pipeline() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(live_connector_sink_configuration()),
-%%   <<"Sources">> => list(live_connector_source_configuration()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type media_live_connector_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_pipelines_response() :: #{
-%%   <<"MediaPipelines">> => list(media_pipeline_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_pipelines_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_pipeline_configuration_element() :: #{
-%%   <<"AmazonTranscribeCallAnalyticsProcessorConfiguration">> => amazon_transcribe_call_analytics_processor_configuration(),
-%%   <<"AmazonTranscribeProcessorConfiguration">> => amazon_transcribe_processor_configuration(),
-%%   <<"KinesisDataStreamSinkConfiguration">> => kinesis_data_stream_sink_configuration(),
-%%   <<"LambdaFunctionSinkConfiguration">> => lambda_function_sink_configuration(),
-%%   <<"S3RecordingSinkConfiguration">> => s3_recording_sink_configuration(),
-%%   <<"SnsTopicSinkConfiguration">> => sns_topic_sink_configuration(),
-%%   <<"SqsQueueSinkConfiguration">> => sqs_queue_sink_configuration(),
-%%   <<"Type">> => list(any()),
-%%   <<"VoiceAnalyticsProcessorConfiguration">> => voice_analytics_processor_configuration(),
-%%   <<"VoiceEnhancementSinkConfiguration">> => voice_enhancement_sink_configuration()
-%% }
--type media_insights_pipeline_configuration_element() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_artifacts_configuration() :: #{
-%%   <<"MuxType">> => list(any())
-%% }
--type audio_artifacts_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_sink() :: #{
-%%   <<"MediaStreamType">> => list(any()),
-%%   <<"ReservedStreamCapacity">> => integer(),
-%%   <<"SinkArn">> => string(),
-%%   <<"SinkType">> => list(any())
-%% }
--type media_stream_sink() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_capture_pipelines_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_capture_pipelines_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_analytics_processor_configuration() :: #{
-%%   <<"SpeakerSearchStatus">> => list(any()),
-%%   <<"VoiceToneAnalysisStatus">> => list(any())
-%% }
--type voice_analytics_processor_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_live_connector_pipeline_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(live_connector_sink_configuration()),
-%%   <<"Sources">> := list(live_connector_source_configuration()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_live_connector_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_capture_pipeline_source_configuration() :: #{
-%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_concatenation_configuration(),
-%%   <<"MediaPipelineArn">> => string()
-%% }
--type media_capture_pipeline_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_call_analytics_settings() :: #{
-%%   <<"ContentRedactionOutput">> => list(any()),
-%%   <<"DataAccessRoleArn">> => string(),
-%%   <<"OutputEncryptionKMSKeyId">> => string(),
-%%   <<"OutputLocation">> => string()
-%% }
--type post_call_analytics_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function_sink_configuration() :: #{
-%%   <<"InsightsTarget">> => string()
-%% }
--type lambda_function_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_configuration() :: #{
-%%   <<"SelectedVideoStreams">> => selected_video_streams()
-%% }
--type source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_tone_analysis_task() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceToneAnalysisTaskId">> => string(),
-%%   <<"VoiceToneAnalysisTaskStatus">> => list(any())
-%% }
--type voice_tone_analysis_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_attribute() :: #{
-%%   <<"BorderColor">> => list(any()),
-%%   <<"BorderThickness">> => integer(),
-%%   <<"CornerRadius">> => integer(),
-%%   <<"HighlightColor">> => list(any())
-%% }
--type video_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% chime_sdk_meeting_configuration() :: #{
-%%   <<"ArtifactsConfiguration">> => artifacts_configuration(),
-%%   <<"SourceConfiguration">> => source_configuration()
-%% }
--type chime_sdk_meeting_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_pipeline_summary() :: #{
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string()
-%% }
--type media_pipeline_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_capture_pipeline_summary() :: #{
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string()
-%% }
--type media_capture_pipeline_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_source_runtime_configuration() :: #{
-%%   <<"MediaEncoding">> => list(any()),
-%%   <<"MediaSampleRate">> => integer(),
-%%   <<"Streams">> => list(stream_configuration())
-%% }
--type kinesis_video_stream_source_runtime_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_pipeline() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"ElementStatuses">> => list(media_insights_pipeline_element_status()),
-%%   <<"KinesisVideoStreamRecordingSourceRuntimeConfiguration">> => kinesis_video_stream_recording_source_runtime_configuration(),
-%%   <<"KinesisVideoStreamSourceRuntimeConfiguration">> => kinesis_video_stream_source_runtime_configuration(),
-%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
-%%   <<"MediaInsightsRuntimeMetadata">> => map(),
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string(),
-%%   <<"S3RecordingSinkRuntimeConfiguration">> => s3_recording_sink_runtime_configuration(),
-%%   <<"Status">> => list(any())
-%% }
--type media_insights_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% concatenation_source() :: #{
-%%   <<"MediaCapturePipelineSourceConfiguration">> => media_capture_pipeline_source_configuration(),
-%%   <<"Type">> => list(any())
-%% }
--type concatenation_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_pipeline() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"MediaPipelineArn">> => string(),
-%%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(media_stream_sink()),
-%%   <<"Sources">> => list(media_stream_source()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type media_stream_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_stream_source() :: #{
-%%   <<"SourceArn">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type media_stream_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_media_pipeline_kinesis_video_stream_pool_response() :: #{
-%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
-%% }
--type update_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_voice_tone_analysis_task_request() :: #{}
--type stop_voice_tone_analysis_task_request() :: #{}.
-
-
-%% Example:
-%% s3_recording_sink_runtime_configuration() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"RecordingFileFormat">> => list(any())
-%% }
--type s3_recording_sink_runtime_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_pipeline_configuration_summary() :: #{
-%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
-%%   <<"MediaInsightsPipelineConfigurationId">> => string(),
-%%   <<"MediaInsightsPipelineConfigurationName">> => string()
-%% }
--type media_insights_pipeline_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_media_insights_pipeline_configurations_response() :: #{
-%%   <<"MediaInsightsPipelineConfigurations">> => list(media_insights_pipeline_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_media_insights_pipeline_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% timestamp_range() :: #{
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"StartTimestamp">> => non_neg_integer()
-%% }
--type timestamp_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type content_concatenation_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_media_pipeline_kinesis_video_stream_pool_request() :: #{}
--type get_media_pipeline_kinesis_video_stream_pool_request() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_media_capture_pipeline_request() :: #{
-%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"SinkArn">> := string(),
-%%   <<"SinkIamRoleArn">> => string(),
-%%   <<"SinkType">> := list(any()),
-%%   <<"SourceArn">> := string(),
-%%   <<"SourceType">> := list(any()),
-%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_capture_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_live_connector_pipeline_response() :: #{
-%%   <<"MediaLiveConnectorPipeline">> => media_live_connector_pipeline()
-%% }
--type create_media_live_connector_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_insights_pipeline_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"KinesisVideoStreamRecordingSourceRuntimeConfiguration">> => kinesis_video_stream_recording_source_runtime_configuration(),
-%%   <<"KinesisVideoStreamSourceRuntimeConfiguration">> => kinesis_video_stream_source_runtime_configuration(),
-%%   <<"MediaInsightsPipelineConfigurationArn">> := string(),
-%%   <<"MediaInsightsRuntimeMetadata">> => map(),
-%%   <<"S3RecordingSinkRuntimeConfiguration">> => s3_recording_sink_runtime_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_insights_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_media_pipeline_response() :: #{
-%%   <<"MediaPipeline">> => media_pipeline()
-%% }
--type get_media_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_video_stream_recording_source_runtime_configuration() :: #{
-%%   <<"FragmentSelector">> => fragment_selector(),
-%%   <<"Streams">> => list(recording_stream_configuration())
-%% }
--type kinesis_video_stream_recording_source_runtime_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_enhancement_sink_configuration() :: #{
-%%   <<"Disabled">> => boolean()
-%% }
--type voice_enhancement_sink_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifacts_concatenation_configuration() :: #{
-%%   <<"Audio">> => audio_concatenation_configuration(),
-%%   <<"CompositedVideo">> => composited_video_concatenation_configuration(),
-%%   <<"Content">> => content_concatenation_configuration(),
-%%   <<"DataChannel">> => data_channel_concatenation_configuration(),
-%%   <<"MeetingEvents">> => meeting_events_concatenation_configuration(),
-%%   <<"TranscriptionMessages">> => transcription_messages_concatenation_configuration(),
-%%   <<"Video">> => video_concatenation_configuration()
-%% }
--type artifacts_concatenation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_insights_pipeline_configuration_response() :: #{
-%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
-%% }
--type create_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_pipeline() :: #{
-%%   <<"MediaCapturePipeline">> => media_capture_pipeline(),
-%%   <<"MediaConcatenationPipeline">> => media_concatenation_pipeline(),
-%%   <<"MediaInsightsPipeline">> => media_insights_pipeline(),
-%%   <<"MediaLiveConnectorPipeline">> => media_live_connector_pipeline(),
-%%   <<"MediaStreamPipeline">> => media_stream_pipeline()
-%% }
--type media_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% active_speaker_only_configuration() :: #{
-%%   <<"ActiveSpeakerPosition">> => list(any())
-%% }
--type active_speaker_only_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_media_insights_pipeline_status_request() :: #{
-%%   <<"UpdateStatus">> := list(any())
-%% }
--type update_media_insights_pipeline_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_stream_pipeline_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(media_stream_sink()),
-%%   <<"Sources">> := list(media_stream_source()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_stream_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% keyword_match_configuration() :: #{
-%%   <<"Keywords">> => list(string()),
-%%   <<"Negate">> => boolean(),
-%%   <<"RuleName">> => string()
-%% }
--type keyword_match_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% grid_view_configuration() :: #{
-%%   <<"ActiveSpeakerOnlyConfiguration">> => active_speaker_only_configuration(),
-%%   <<"CanvasOrientation">> => list(any()),
-%%   <<"ContentShareLayout">> => list(any()),
-%%   <<"HorizontalLayoutConfiguration">> => horizontal_layout_configuration(),
-%%   <<"PresenterOnlyConfiguration">> => presenter_only_configuration(),
-%%   <<"VerticalLayoutConfiguration">> => vertical_layout_configuration(),
-%%   <<"VideoAttribute">> => video_attribute()
-%% }
--type grid_view_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_tone_analysis_task_request() :: #{}
--type get_voice_tone_analysis_task_request() :: #{}.
-
-
-%% Example:
-%% real_time_alert_configuration() :: #{
-%%   <<"Disabled">> => boolean(),
-%%   <<"Rules">> => list(real_time_alert_rule())
-%% }
--type real_time_alert_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_media_stream_pipeline_response() :: #{
-%%   <<"MediaStreamPipeline">> => media_stream_pipeline()
-%% }
--type create_media_stream_pipeline_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_speaker_search_task_request() :: #{}
--type get_speaker_search_task_request() :: #{}.
-
-
-%% Example:
-%% create_media_insights_pipeline_configuration_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
-%%   <<"MediaInsightsPipelineConfigurationName">> := string(),
-%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
-%%   <<"ResourceAccessRoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_media_insights_pipeline_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcription_messages_concatenation_configuration() :: #{
-%%   <<"State">> => list(any())
-%% }
--type transcription_messages_concatenation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1217,10 +140,16 @@
 
 
 %% Example:
-%% s3_bucket_sink_configuration() :: #{
-%%   <<"Destination">> => string()
+%% artifacts_concatenation_configuration() :: #{
+%%   <<"Audio">> => audio_concatenation_configuration(),
+%%   <<"CompositedVideo">> => composited_video_concatenation_configuration(),
+%%   <<"Content">> => content_concatenation_configuration(),
+%%   <<"DataChannel">> => data_channel_concatenation_configuration(),
+%%   <<"MeetingEvents">> => meeting_events_concatenation_configuration(),
+%%   <<"TranscriptionMessages">> => transcription_messages_concatenation_configuration(),
+%%   <<"Video">> => video_concatenation_configuration()
 %% }
--type s3_bucket_sink_configuration() :: #{binary() => any()}.
+-type artifacts_concatenation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1234,10 +163,34 @@
 
 
 %% Example:
-%% create_media_insights_pipeline_response() :: #{
-%%   <<"MediaInsightsPipeline">> => media_insights_pipeline()
+%% audio_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any())
 %% }
--type create_media_insights_pipeline_response() :: #{binary() => any()}.
+-type audio_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type audio_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_definition() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type channel_definition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1248,10 +201,373 @@
 
 
 %% Example:
-%% update_media_pipeline_kinesis_video_stream_pool_request() :: #{
-%%   <<"StreamConfiguration">> => kinesis_video_stream_configuration_update()
+%% chime_sdk_meeting_configuration() :: #{
+%%   <<"ArtifactsConfiguration">> => artifacts_configuration(),
+%%   <<"SourceConfiguration">> => source_configuration()
 %% }
--type update_media_pipeline_kinesis_video_stream_pool_request() :: #{binary() => any()}.
+-type chime_sdk_meeting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% chime_sdk_meeting_live_connector_configuration() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompositedVideo">> => composited_video_artifacts_configuration(),
+%%   <<"MuxType">> => list(any()),
+%%   <<"SourceConfiguration">> => source_configuration()
+%% }
+-type chime_sdk_meeting_live_connector_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% composited_video_artifacts_configuration() :: #{
+%%   <<"GridViewConfiguration">> => grid_view_configuration(),
+%%   <<"Layout">> => list(any()),
+%%   <<"Resolution">> => list(any())
+%% }
+-type composited_video_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% composited_video_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type composited_video_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% concatenation_sink() :: #{
+%%   <<"S3BucketSinkConfiguration">> => s3_bucket_sink_configuration(),
+%%   <<"Type">> => list(any())
+%% }
+-type concatenation_sink() :: #{binary() => any()}.
+
+
+%% Example:
+%% concatenation_source() :: #{
+%%   <<"MediaCapturePipelineSourceConfiguration">> => media_capture_pipeline_source_configuration(),
+%%   <<"Type">> => list(any())
+%% }
+-type concatenation_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type content_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type content_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_capture_pipeline_request() :: #{
+%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SinkArn">> := string(),
+%%   <<"SinkIamRoleArn">> => string(),
+%%   <<"SinkType">> := list(any()),
+%%   <<"SourceArn">> := string(),
+%%   <<"SourceType">> := list(any()),
+%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_capture_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_capture_pipeline_response() :: #{
+%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
+%% }
+-type create_media_capture_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_concatenation_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Sinks">> := list(concatenation_sink()),
+%%   <<"Sources">> := list(concatenation_source()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_concatenation_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_concatenation_pipeline_response() :: #{
+%%   <<"MediaConcatenationPipeline">> => media_concatenation_pipeline()
+%% }
+-type create_media_concatenation_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_insights_pipeline_configuration_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
+%%   <<"MediaInsightsPipelineConfigurationName">> := string(),
+%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
+%%   <<"ResourceAccessRoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_insights_pipeline_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_insights_pipeline_configuration_response() :: #{
+%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
+%% }
+-type create_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_insights_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KinesisVideoStreamRecordingSourceRuntimeConfiguration">> => kinesis_video_stream_recording_source_runtime_configuration(),
+%%   <<"KinesisVideoStreamSourceRuntimeConfiguration">> => kinesis_video_stream_source_runtime_configuration(),
+%%   <<"MediaInsightsPipelineConfigurationArn">> := string(),
+%%   <<"MediaInsightsRuntimeMetadata">> => map(),
+%%   <<"S3RecordingSinkRuntimeConfiguration">> => s3_recording_sink_runtime_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_insights_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_insights_pipeline_response() :: #{
+%%   <<"MediaInsightsPipeline">> => media_insights_pipeline()
+%% }
+-type create_media_insights_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_live_connector_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Sinks">> := list(live_connector_sink_configuration()),
+%%   <<"Sources">> := list(live_connector_source_configuration()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_live_connector_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_live_connector_pipeline_response() :: #{
+%%   <<"MediaLiveConnectorPipeline">> => media_live_connector_pipeline()
+%% }
+-type create_media_live_connector_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_pipeline_kinesis_video_stream_pool_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"PoolName">> := string(),
+%%   <<"StreamConfiguration">> := kinesis_video_stream_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_pipeline_kinesis_video_stream_pool_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_pipeline_kinesis_video_stream_pool_response() :: #{
+%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
+%% }
+-type create_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_stream_pipeline_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Sinks">> := list(media_stream_sink()),
+%%   <<"Sources">> := list(media_stream_source()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_media_stream_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_media_stream_pipeline_response() :: #{
+%%   <<"MediaStreamPipeline">> => media_stream_pipeline()
+%% }
+-type create_media_stream_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_channel_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type data_channel_concatenation_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_media_capture_pipeline_request() :: #{}
+-type delete_media_capture_pipeline_request() :: #{}.
+
+%% Example:
+%% delete_media_insights_pipeline_configuration_request() :: #{}
+-type delete_media_insights_pipeline_configuration_request() :: #{}.
+
+%% Example:
+%% delete_media_pipeline_kinesis_video_stream_pool_request() :: #{}
+-type delete_media_pipeline_kinesis_video_stream_pool_request() :: #{}.
+
+%% Example:
+%% delete_media_pipeline_request() :: #{}
+-type delete_media_pipeline_request() :: #{}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% fragment_selector() :: #{
+%%   <<"FragmentSelectorType">> => list(any()),
+%%   <<"TimestampRange">> => timestamp_range()
+%% }
+-type fragment_selector() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_capture_pipeline_request() :: #{}
+-type get_media_capture_pipeline_request() :: #{}.
+
+
+%% Example:
+%% get_media_capture_pipeline_response() :: #{
+%%   <<"MediaCapturePipeline">> => media_capture_pipeline()
+%% }
+-type get_media_capture_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_insights_pipeline_configuration_request() :: #{}
+-type get_media_insights_pipeline_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_media_insights_pipeline_configuration_response() :: #{
+%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
+%% }
+-type get_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_pipeline_kinesis_video_stream_pool_request() :: #{}
+-type get_media_pipeline_kinesis_video_stream_pool_request() :: #{}.
+
+
+%% Example:
+%% get_media_pipeline_kinesis_video_stream_pool_response() :: #{
+%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
+%% }
+-type get_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_pipeline_request() :: #{}
+-type get_media_pipeline_request() :: #{}.
+
+
+%% Example:
+%% get_media_pipeline_response() :: #{
+%%   <<"MediaPipeline">> => media_pipeline()
+%% }
+-type get_media_pipeline_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_speaker_search_task_request() :: #{}
+-type get_speaker_search_task_request() :: #{}.
+
+
+%% Example:
+%% get_speaker_search_task_response() :: #{
+%%   <<"SpeakerSearchTask">> => speaker_search_task()
+%% }
+-type get_speaker_search_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_tone_analysis_task_request() :: #{}
+-type get_voice_tone_analysis_task_request() :: #{}.
+
+
+%% Example:
+%% get_voice_tone_analysis_task_response() :: #{
+%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
+%% }
+-type get_voice_tone_analysis_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_view_configuration() :: #{
+%%   <<"ActiveSpeakerOnlyConfiguration">> => active_speaker_only_configuration(),
+%%   <<"CanvasOrientation">> => list(any()),
+%%   <<"ContentShareLayout">> => list(any()),
+%%   <<"HorizontalLayoutConfiguration">> => horizontal_layout_configuration(),
+%%   <<"PresenterOnlyConfiguration">> => presenter_only_configuration(),
+%%   <<"VerticalLayoutConfiguration">> => vertical_layout_configuration(),
+%%   <<"VideoAttribute">> => video_attribute()
+%% }
+-type grid_view_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% horizontal_layout_configuration() :: #{
+%%   <<"TileAspectRatio">> => string(),
+%%   <<"TileCount">> => integer(),
+%%   <<"TileOrder">> => list(any()),
+%%   <<"TilePosition">> => list(any())
+%% }
+-type horizontal_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue_detection_configuration() :: #{
+%%   <<"RuleName">> => string()
+%% }
+-type issue_detection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% keyword_match_configuration() :: #{
+%%   <<"Keywords">> => list(string()),
+%%   <<"Negate">> => boolean(),
+%%   <<"RuleName">> => string()
+%% }
+-type keyword_match_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_data_stream_sink_configuration() :: #{
+%%   <<"InsightsTarget">> => string()
+%% }
+-type kinesis_data_stream_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_configuration() :: #{
+%%   <<"DataRetentionInHours">> => integer(),
+%%   <<"Region">> => string()
+%% }
+-type kinesis_video_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_configuration_update() :: #{
+%%   <<"DataRetentionInHours">> => integer()
+%% }
+-type kinesis_video_stream_configuration_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1269,12 +585,525 @@
 
 
 %% Example:
-%% stream_configuration() :: #{
-%%   <<"FragmentNumber">> => string(),
-%%   <<"StreamArn">> => string(),
-%%   <<"StreamChannelDefinition">> => stream_channel_definition()
+%% kinesis_video_stream_pool_summary() :: #{
+%%   <<"PoolArn">> => string(),
+%%   <<"PoolId">> => string(),
+%%   <<"PoolName">> => string()
 %% }
--type stream_configuration() :: #{binary() => any()}.
+-type kinesis_video_stream_pool_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_recording_source_runtime_configuration() :: #{
+%%   <<"FragmentSelector">> => fragment_selector(),
+%%   <<"Streams">> => list(recording_stream_configuration())
+%% }
+-type kinesis_video_stream_recording_source_runtime_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_source_runtime_configuration() :: #{
+%%   <<"MediaEncoding">> => list(any()),
+%%   <<"MediaSampleRate">> => integer(),
+%%   <<"Streams">> => list(stream_configuration())
+%% }
+-type kinesis_video_stream_source_runtime_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_source_task_configuration() :: #{
+%%   <<"ChannelId">> => integer(),
+%%   <<"FragmentNumber">> => string(),
+%%   <<"StreamArn">> => string()
+%% }
+-type kinesis_video_stream_source_task_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_sink_configuration() :: #{
+%%   <<"InsightsTarget">> => string()
+%% }
+-type lambda_function_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_capture_pipelines_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_capture_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_capture_pipelines_response() :: #{
+%%   <<"MediaCapturePipelines">> => list(media_capture_pipeline_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_capture_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_insights_pipeline_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_insights_pipeline_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_insights_pipeline_configurations_response() :: #{
+%%   <<"MediaInsightsPipelineConfigurations">> => list(media_insights_pipeline_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_insights_pipeline_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_pipeline_kinesis_video_stream_pools_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_pipeline_kinesis_video_stream_pools_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_pipeline_kinesis_video_stream_pools_response() :: #{
+%%   <<"KinesisVideoStreamPools">> => list(kinesis_video_stream_pool_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_pipeline_kinesis_video_stream_pools_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_pipelines_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_pipelines_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_media_pipelines_response() :: #{
+%%   <<"MediaPipelines">> => list(media_pipeline_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_media_pipelines_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_connector_r_t_m_p_configuration() :: #{
+%%   <<"AudioChannels">> => list(any()),
+%%   <<"AudioSampleRate">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type live_connector_r_t_m_p_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_connector_sink_configuration() :: #{
+%%   <<"RTMPConfiguration">> => live_connector_r_t_m_p_configuration(),
+%%   <<"SinkType">> => list(any())
+%% }
+-type live_connector_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_connector_source_configuration() :: #{
+%%   <<"ChimeSdkMeetingLiveConnectorConfiguration">> => chime_sdk_meeting_live_connector_configuration(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type live_connector_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_capture_pipeline() :: #{
+%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_configuration(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"SinkArn">> => string(),
+%%   <<"SinkIamRoleArn">> => string(),
+%%   <<"SinkType">> => list(any()),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_capture_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_capture_pipeline_source_configuration() :: #{
+%%   <<"ChimeSdkMeetingConfiguration">> => chime_sdk_meeting_concatenation_configuration(),
+%%   <<"MediaPipelineArn">> => string()
+%% }
+-type media_capture_pipeline_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_capture_pipeline_summary() :: #{
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string()
+%% }
+-type media_capture_pipeline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_concatenation_pipeline() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"Sinks">> => list(concatenation_sink()),
+%%   <<"Sources">> => list(concatenation_source()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_concatenation_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_pipeline() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"ElementStatuses">> => list(media_insights_pipeline_element_status()),
+%%   <<"KinesisVideoStreamRecordingSourceRuntimeConfiguration">> => kinesis_video_stream_recording_source_runtime_configuration(),
+%%   <<"KinesisVideoStreamSourceRuntimeConfiguration">> => kinesis_video_stream_source_runtime_configuration(),
+%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
+%%   <<"MediaInsightsRuntimeMetadata">> => map(),
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"S3RecordingSinkRuntimeConfiguration">> => s3_recording_sink_runtime_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type media_insights_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_pipeline_configuration() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Elements">> => list(media_insights_pipeline_configuration_element()),
+%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
+%%   <<"MediaInsightsPipelineConfigurationId">> => string(),
+%%   <<"MediaInsightsPipelineConfigurationName">> => string(),
+%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
+%%   <<"ResourceAccessRoleArn">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_insights_pipeline_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_pipeline_configuration_element() :: #{
+%%   <<"AmazonTranscribeCallAnalyticsProcessorConfiguration">> => amazon_transcribe_call_analytics_processor_configuration(),
+%%   <<"AmazonTranscribeProcessorConfiguration">> => amazon_transcribe_processor_configuration(),
+%%   <<"KinesisDataStreamSinkConfiguration">> => kinesis_data_stream_sink_configuration(),
+%%   <<"LambdaFunctionSinkConfiguration">> => lambda_function_sink_configuration(),
+%%   <<"S3RecordingSinkConfiguration">> => s3_recording_sink_configuration(),
+%%   <<"SnsTopicSinkConfiguration">> => sns_topic_sink_configuration(),
+%%   <<"SqsQueueSinkConfiguration">> => sqs_queue_sink_configuration(),
+%%   <<"Type">> => list(any()),
+%%   <<"VoiceAnalyticsProcessorConfiguration">> => voice_analytics_processor_configuration(),
+%%   <<"VoiceEnhancementSinkConfiguration">> => voice_enhancement_sink_configuration()
+%% }
+-type media_insights_pipeline_configuration_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_pipeline_configuration_summary() :: #{
+%%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
+%%   <<"MediaInsightsPipelineConfigurationId">> => string(),
+%%   <<"MediaInsightsPipelineConfigurationName">> => string()
+%% }
+-type media_insights_pipeline_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_pipeline_element_status() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type media_insights_pipeline_element_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_live_connector_pipeline() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"Sinks">> => list(live_connector_sink_configuration()),
+%%   <<"Sources">> => list(live_connector_source_configuration()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_live_connector_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_pipeline() :: #{
+%%   <<"MediaCapturePipeline">> => media_capture_pipeline(),
+%%   <<"MediaConcatenationPipeline">> => media_concatenation_pipeline(),
+%%   <<"MediaInsightsPipeline">> => media_insights_pipeline(),
+%%   <<"MediaLiveConnectorPipeline">> => media_live_connector_pipeline(),
+%%   <<"MediaStreamPipeline">> => media_stream_pipeline()
+%% }
+-type media_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_pipeline_summary() :: #{
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string()
+%% }
+-type media_pipeline_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_pipeline() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"MediaPipelineArn">> => string(),
+%%   <<"MediaPipelineId">> => string(),
+%%   <<"Sinks">> => list(media_stream_sink()),
+%%   <<"Sources">> => list(media_stream_source()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type media_stream_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_sink() :: #{
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"ReservedStreamCapacity">> => integer(),
+%%   <<"SinkArn">> => string(),
+%%   <<"SinkType">> => list(any())
+%% }
+-type media_stream_sink() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_stream_source() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type media_stream_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting_events_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type meeting_events_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_call_analytics_settings() :: #{
+%%   <<"ContentRedactionOutput">> => list(any()),
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"OutputEncryptionKMSKeyId">> => string(),
+%%   <<"OutputLocation">> => string()
+%% }
+-type post_call_analytics_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% presenter_only_configuration() :: #{
+%%   <<"PresenterPosition">> => list(any())
+%% }
+-type presenter_only_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_alert_configuration() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Rules">> => list(real_time_alert_rule())
+%% }
+-type real_time_alert_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_alert_rule() :: #{
+%%   <<"IssueDetectionConfiguration">> => issue_detection_configuration(),
+%%   <<"KeywordMatchConfiguration">> => keyword_match_configuration(),
+%%   <<"SentimentConfiguration">> => sentiment_configuration(),
+%%   <<"Type">> => list(any())
+%% }
+-type real_time_alert_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_stream_configuration() :: #{
+%%   <<"StreamArn">> => string()
+%% }
+-type recording_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_sink_configuration() :: #{
+%%   <<"Destination">> => string()
+%% }
+-type s3_bucket_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_recording_sink_configuration() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"RecordingFileFormat">> => list(any())
+%% }
+-type s3_recording_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_recording_sink_runtime_configuration() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"RecordingFileFormat">> => list(any())
+%% }
+-type s3_recording_sink_runtime_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% selected_video_streams() :: #{
+%%   <<"AttendeeIds">> => list(string()),
+%%   <<"ExternalUserIds">> => list(string())
+%% }
+-type selected_video_streams() :: #{binary() => any()}.
+
+
+%% Example:
+%% sentiment_configuration() :: #{
+%%   <<"RuleName">> => string(),
+%%   <<"SentimentType">> => list(any()),
+%%   <<"TimePeriod">> => integer()
+%% }
+-type sentiment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_topic_sink_configuration() :: #{
+%%   <<"InsightsTarget">> => string()
+%% }
+-type sns_topic_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"SelectedVideoStreams">> => selected_video_streams()
+%% }
+-type source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% speaker_search_task() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"SpeakerSearchTaskId">> => string(),
+%%   <<"SpeakerSearchTaskStatus">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type speaker_search_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_queue_sink_configuration() :: #{
+%%   <<"InsightsTarget">> => string()
+%% }
+-type sqs_queue_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_aws_key_management_params() :: #{
+%%   <<"AwsKmsEncryptionContext">> => string(),
+%%   <<"AwsKmsKeyId">> => string()
+%% }
+-type sse_aws_key_management_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speaker_search_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KinesisVideoStreamSourceTaskConfiguration">> => kinesis_video_stream_source_task_configuration(),
+%%   <<"VoiceProfileDomainArn">> := string()
+%% }
+-type start_speaker_search_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speaker_search_task_response() :: #{
+%%   <<"SpeakerSearchTask">> => speaker_search_task()
+%% }
+-type start_speaker_search_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_voice_tone_analysis_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KinesisVideoStreamSourceTaskConfiguration">> => kinesis_video_stream_source_task_configuration(),
+%%   <<"LanguageCode">> := list(any())
+%% }
+-type start_voice_tone_analysis_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_voice_tone_analysis_task_response() :: #{
+%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
+%% }
+-type start_voice_tone_analysis_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_speaker_search_task_request() :: #{}
+-type stop_speaker_search_task_request() :: #{}.
+
+%% Example:
+%% stop_voice_tone_analysis_task_request() :: #{}
+-type stop_voice_tone_analysis_task_request() :: #{}.
 
 
 %% Example:
@@ -1284,298 +1113,469 @@
 %% }
 -type stream_channel_definition() :: #{binary() => any()}.
 
+
+%% Example:
+%% stream_configuration() :: #{
+%%   <<"FragmentNumber">> => string(),
+%%   <<"StreamArn">> => string(),
+%%   <<"StreamChannelDefinition">> => stream_channel_definition()
+%% }
+-type stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type throttled_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_range() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type timestamp_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcription_messages_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type transcription_messages_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_media_insights_pipeline_configuration_request() :: #{
+%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
+%%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
+%%   <<"ResourceAccessRoleArn">> := string()
+%% }
+-type update_media_insights_pipeline_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_media_insights_pipeline_configuration_response() :: #{
+%%   <<"MediaInsightsPipelineConfiguration">> => media_insights_pipeline_configuration()
+%% }
+-type update_media_insights_pipeline_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_media_insights_pipeline_status_request() :: #{
+%%   <<"UpdateStatus">> := list(any())
+%% }
+-type update_media_insights_pipeline_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_media_pipeline_kinesis_video_stream_pool_request() :: #{
+%%   <<"StreamConfiguration">> => kinesis_video_stream_configuration_update()
+%% }
+-type update_media_pipeline_kinesis_video_stream_pool_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_media_pipeline_kinesis_video_stream_pool_response() :: #{
+%%   <<"KinesisVideoStreamPoolConfiguration">> => kinesis_video_stream_pool_configuration()
+%% }
+-type update_media_pipeline_kinesis_video_stream_pool_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vertical_layout_configuration() :: #{
+%%   <<"TileAspectRatio">> => string(),
+%%   <<"TileCount">> => integer(),
+%%   <<"TileOrder">> => list(any()),
+%%   <<"TilePosition">> => list(any())
+%% }
+-type vertical_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_artifacts_configuration() :: #{
+%%   <<"MuxType">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type video_artifacts_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_attribute() :: #{
+%%   <<"BorderColor">> => list(any()),
+%%   <<"BorderThickness">> => integer(),
+%%   <<"CornerRadius">> => integer(),
+%%   <<"HighlightColor">> => list(any())
+%% }
+-type video_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_concatenation_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type video_concatenation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_analytics_processor_configuration() :: #{
+%%   <<"SpeakerSearchStatus">> => list(any()),
+%%   <<"VoiceToneAnalysisStatus">> => list(any())
+%% }
+-type voice_analytics_processor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_enhancement_sink_configuration() :: #{
+%%   <<"Disabled">> => boolean()
+%% }
+-type voice_enhancement_sink_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_tone_analysis_task() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceToneAnalysisTaskId">> => string(),
+%%   <<"VoiceToneAnalysisTaskStatus">> => list(any())
+%% }
+-type voice_tone_analysis_task() :: #{binary() => any()}.
+
 -type create_media_capture_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_media_concatenation_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_media_insights_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_media_insights_pipeline_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_media_live_connector_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_media_pipeline_kinesis_video_stream_pool_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_media_stream_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_media_capture_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_media_insights_pipeline_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_media_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_media_pipeline_kinesis_video_stream_pool_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_media_capture_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_media_insights_pipeline_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_media_pipeline_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_media_pipeline_kinesis_video_stream_pool_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_media_capture_pipelines_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_media_insights_pipeline_configurations_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_media_pipeline_kinesis_video_stream_pools_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_media_pipelines_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type start_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type stop_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type stop_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_media_insights_pipeline_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_media_insights_pipeline_status_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_media_pipeline_kinesis_video_stream_pool_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

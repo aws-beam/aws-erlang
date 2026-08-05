@@ -59,108 +59,10 @@
 
 
 %% Example:
-%% update_cluster_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"kmsEncryptionKey">> => string(),
-%%   <<"multiRegionProperties">> => multi_region_properties()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_cluster_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_reason() :: #{
-%%   <<"error">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cluster_policy_output() :: #{
-%%   <<"policy">> => string(),
-%%   <<"policyVersion">> => string()
-%% }
--type get_cluster_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_input() :: #{
-%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"kmsEncryptionKey">> => string(),
-%%   <<"multiRegionProperties">> => multi_region_properties(),
-%%   <<"policy">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_cluster_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clusterIdentifier">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"format">> => list(any()),
-%%   <<"ordering">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => status_reason(),
-%%   <<"streamIdentifier">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targetDefinition">> => list()
-%% }
--type get_stream_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_stream_input() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_input() :: #{}
--type get_cluster_input() :: #{}.
-
-
-%% Example:
-%% kinesis_target_definition() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"streamArn">> => string()
-%% }
--type kinesis_target_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_output() :: #{
-%%   <<"clusters">> => list(cluster_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"streams">> => list(stream_summary())
-%% }
--type list_streams_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vpc_endpoint_service_name_output() :: #{
-%%   <<"clusterVpcEndpoint">> => string(),
-%%   <<"serviceName">> => string()
-%% }
--type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -181,107 +83,16 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_policy_output() :: #{
-%%   <<"policyVersion">> => string()
-%% }
--type delete_cluster_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"identifier">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
+%% create_cluster_input() :: #{
+%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"encryptionDetails">> => encryption_details(),
-%%   <<"endpoint">> => string(),
-%%   <<"identifier">> => string(),
+%%   <<"kmsEncryptionKey">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
-%%   <<"status">> => list(any()),
+%%   <<"policy">> => string(),
 %%   <<"tags">> => map()
 %% }
--type get_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% get_stream_input() :: #{}
--type get_stream_input() :: #{}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"identifier">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_input() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_cluster_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type create_cluster_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -299,80 +110,6 @@
 
 
 %% Example:
-%% list_streams_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_streams_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_policy_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"expectedPolicyVersion">> => string()
-%% }
--type delete_cluster_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_cluster_policy_input() :: #{
-%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
-%%   <<"clientToken">> => string(),
-%%   <<"expectedPolicyVersion">> => string(),
-%%   <<"policy">> := string()
-%% }
--type put_cluster_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clusterIdentifier">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"streamIdentifier">> => string()
-%% }
--type stream_summary() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_stream_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"format">> := list(any()),
@@ -381,30 +118,6 @@
 %%   <<"targetDefinition">> := list()
 %% }
 -type create_stream_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_details() :: #{
-%%   <<"encryptionStatus">> => list(any()),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type encryption_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_properties() :: #{
-%%   <<"clusters">> => list(string()),
-%%   <<"witnessRegion">> => string()
-%% }
--type multi_region_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_cluster_policy_output() :: #{
-%%   <<"policyVersion">> => string()
-%% }
--type put_cluster_policy_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,9 +132,44 @@
 %% }
 -type create_stream_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_vpc_endpoint_service_name_input() :: #{}
--type get_vpc_endpoint_service_name_input() :: #{}.
+%% delete_cluster_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_policy_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"expectedPolicyVersion">> => string()
+%% }
+-type delete_cluster_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_policy_output() :: #{
+%%   <<"policyVersion">> => string()
+%% }
+-type delete_cluster_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_stream_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_stream_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -434,9 +182,261 @@
 %% }
 -type delete_stream_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% encryption_details() :: #{
+%%   <<"encryptionStatus">> => list(any()),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type encryption_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_input() :: #{}
+-type get_cluster_input() :: #{}.
+
+
+%% Example:
+%% get_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"encryptionDetails">> => encryption_details(),
+%%   <<"endpoint">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"multiRegionProperties">> => multi_region_properties(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_cluster_output() :: #{binary() => any()}.
+
 %% Example:
 %% get_cluster_policy_input() :: #{}
 -type get_cluster_policy_input() :: #{}.
+
+
+%% Example:
+%% get_cluster_policy_output() :: #{
+%%   <<"policy">> => string(),
+%%   <<"policyVersion">> => string()
+%% }
+-type get_cluster_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_input() :: #{}
+-type get_stream_input() :: #{}.
+
+
+%% Example:
+%% get_stream_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"format">> => list(any()),
+%%   <<"ordering">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"streamIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetDefinition">> => list()
+%% }
+-type get_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_endpoint_service_name_input() :: #{}
+-type get_vpc_endpoint_service_name_input() :: #{}.
+
+
+%% Example:
+%% get_vpc_endpoint_service_name_output() :: #{
+%%   <<"clusterVpcEndpoint">> => string(),
+%%   <<"serviceName">> => string()
+%% }
+-type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_target_definition() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"streamArn">> => string()
+%% }
+-type kinesis_target_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_output() :: #{
+%%   <<"clusters">> => list(cluster_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_streams_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streams">> => list(stream_summary())
+%% }
+-type list_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_region_properties() :: #{
+%%   <<"clusters">> => list(string()),
+%%   <<"witnessRegion">> => string()
+%% }
+-type multi_region_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_cluster_policy_input() :: #{
+%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"expectedPolicyVersion">> => string(),
+%%   <<"policy">> := string()
+%% }
+-type put_cluster_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_cluster_policy_output() :: #{
+%%   <<"policyVersion">> => string()
+%% }
+-type put_cluster_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_reason() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clusterIdentifier">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"streamIdentifier">> => string()
+%% }
+-type stream_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"multiRegionProperties">> => multi_region_properties()
+%% }
+-type update_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_cluster_errors() ::
     validation_exception() | 
@@ -473,10 +473,10 @@
     resource_not_found_exception().
 
 -type get_vpc_endpoint_service_name_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_clusters_errors() ::
     resource_not_found_exception().
@@ -1163,11 +1163,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Each peer cluster: exact ARN of each specified peer cluster
 %%
-%% dsql:RemovePeerCluster Permission to remove peer clusters. The
-%% dsql:RemovePeerCluster permission uses a wildcard ARN pattern to simplify
-%% permission management during updates.
+%% dsql:RemovePeerCluster Permission to remove peer clusters. When you list
+%% peer clusters in `multiRegionProperties.clusters', you need this
+%% permission for each current peer cluster that your list omits.
 %%
-%% Resources: `arn:aws:dsql:*:account-id:cluster/*'
+%% Resources:
+%%
+%% Each removed peer cluster: exact ARN of each removed peer cluster, in its
+%% own Region
 %%
 %% dsql:PutWitnessRegion Permission to set a witness Region.
 %%
@@ -1178,14 +1181,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% This permission is checked both in the cluster Region and in the witness
 %% Region.
 %%
-%% The witness region specified in `multiRegionProperties.witnessRegion'
+%% The witness Region specified in `multiRegionProperties.witnessRegion'
 %% cannot be the same as the cluster's Region.
 %%
-%% When updating clusters with peer relationships, permissions are checked
-%% for both adding and removing peers.
-%%
-%% The `dsql:RemovePeerCluster' permission uses a wildcard ARN pattern to
-%% simplify permission management during updates.
+%% When you list peer clusters in `multiRegionProperties.clusters', you
+%% need `dsql:AddPeerCluster' for every peer cluster in your request. You
+%% need `dsql:RemovePeerCluster' only for the peer clusters that the
+%% update removes.
 -spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_input()) ->
     {ok, update_cluster_output(), tuple()} |
     {error, any()} |

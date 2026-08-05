@@ -201,168 +201,33 @@
 
 
 %% Example:
-%% list_trusted_token_issuers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrustedTokenIssuers">> => list(trusted_token_issuer_metadata())
+%% access_control_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => access_control_attribute_value()
 %% }
--type list_trusted_token_issuers_response() :: #{binary() => any()}.
+-type access_control_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% authentication_method_item() :: #{
-%%   <<"AuthenticationMethod">> => list(),
-%%   <<"AuthenticationMethodType">> => list(any())
+%% access_control_attribute_value() :: #{
+%%   <<"Source">> => list(string())
 %% }
--type authentication_method_item() :: #{binary() => any()}.
+-type access_control_attribute_value() :: #{binary() => any()}.
 
 %% Example:
-%% create_instance_access_control_attribute_configuration_response() :: #{
-
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type create_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% scope_details() :: #{
-%%   <<"AuthorizedTargets">> => list(string()),
-%%   <<"Scope">> => string()
-%% }
--type scope_details() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"KeyType">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"InstanceArn">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_metadata() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"PrimaryRegion">> => string(),
-%%   <<"Regions">> => list(region_metadata()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type instance_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% application_assignment() :: #{
-%%   <<"ApplicationArn">> => string(),
+%% account_assignment() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"PermissionSetArn">> => string(),
 %%   <<"PrincipalId">> => string(),
 %%   <<"PrincipalType">> => list(any())
 %% }
--type application_assignment() :: #{binary() => any()}.
-
-%% Example:
-%% list_accounts_for_provisioned_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"ProvisioningStatus">> => list(any())
-%% }
--type list_accounts_for_provisioned_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_assignments_filter() :: #{
-%%   <<"ApplicationArn">> => string()
-%% }
--type list_application_assignments_filter() :: #{binary() => any()}.
-
-%% Example:
-%% remove_region_response() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type remove_region_response() :: #{binary() => any()}.
-
-%% Example:
-%% application_provider() :: #{
-%%   <<"ApplicationProviderArn">> => string(),
-%%   <<"DisplayData">> => display_data(),
-%%   <<"FederationProtocol">> => list(any()),
-%%   <<"ResourceServerConfig">> => resource_server_config()
-%% }
--type application_provider() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_authentication_methods_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_authentication_methods_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_region_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"RegionName">> := string()
-%% }
--type describe_region_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_session_configuration_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
-%% }
--type put_application_session_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_accounts_for_provisioned_permission_set_response() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_accounts_for_provisioned_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% account_assignment_operation_status_metadata() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"RequestId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type account_assignment_operation_status_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_assignments_for_principal_request() :: #{
-%%   <<"Filter">> => list_application_assignments_filter(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any())
-%% }
--type list_application_assignments_for_principal_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_policies_in_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type list_managed_policies_in_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignment_deletion_status_response() :: #{
-%%   <<"AccountAssignmentsDeletionStatus">> => list(account_assignment_operation_status_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignment_deletion_status_response() :: #{binary() => any()}.
+-type account_assignment() :: #{binary() => any()}.
 
 %% Example:
 %% account_assignment_for_principal() :: #{
@@ -374,494 +239,39 @@
 -type account_assignment_for_principal() :: #{binary() => any()}.
 
 %% Example:
-%% get_inline_policy_for_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
+%% account_assignment_operation_status() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"PermissionSetArn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"PrincipalType">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any())
 %% }
--type get_inline_policy_for_permission_set_request() :: #{binary() => any()}.
+-type account_assignment_operation_status() :: #{binary() => any()}.
 
 %% Example:
-%% put_inline_policy_to_permission_set_request() :: #{
-%%   <<"InlinePolicy">> := string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
+%% account_assignment_operation_status_metadata() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type put_inline_policy_to_permission_set_request() :: #{binary() => any()}.
+-type account_assignment_operation_status_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% trusted_token_issuer_metadata() :: #{
-%%   <<"Name">> => string(),
-%%   <<"TrustedTokenIssuerArn">> => string(),
-%%   <<"TrustedTokenIssuerType">> => list(any())
-%% }
--type trusted_token_issuer_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% remove_region_request() :: #{
+%% add_region_request() :: #{
 %%   <<"InstanceArn">> := string(),
 %%   <<"RegionName">> := string()
 %% }
--type remove_region_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_inline_policy_for_permission_set_response() :: #{
-%%   <<"InlinePolicy">> => string()
-%% }
--type get_inline_policy_for_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% iam_authentication_method() :: #{
-%%   <<"ActorPolicy">> => any()
-%% }
--type iam_authentication_method() :: #{binary() => any()}.
-
-%% Example:
-%% put_permissions_boundary_to_permission_set_response() :: #{
-
-%% }
--type put_permissions_boundary_to_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% detach_customer_managed_policy_reference_from_permission_set_response() :: #{
-
-%% }
--type detach_customer_managed_policy_reference_from_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_access_scopes_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_access_scopes_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_sets_provisioned_to_account_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSets">> => list(string())
-%% }
--type list_permission_sets_provisioned_to_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_authentication_method_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"AuthenticationMethodType">> := list(any())
-%% }
--type delete_application_authentication_method_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_assignment_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any())
-%% }
--type delete_application_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_grant_response() :: #{
-%%   <<"Grant">> => list()
-%% }
--type get_application_grant_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_assignments_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_assignments_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_assignment_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any())
-%% }
--type describe_application_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_assignment_configuration_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"AssignmentRequired">> := boolean()
-%% }
--type put_application_assignment_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% sign_in_options() :: #{
-%%   <<"ApplicationUrl">> => string(),
-%%   <<"Origin">> => list(any())
-%% }
--type sign_in_options() :: #{binary() => any()}.
-
-%% Example:
-%% operation_status_filter() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type operation_status_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_response() :: #{
-%%   <<"InstanceArn">> => string()
-%% }
--type create_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_authentication_method_response() :: #{
-%%   <<"AuthenticationMethod">> => list()
-%% }
--type get_application_authentication_method_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_trusted_token_issuers_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_trusted_token_issuers_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_access_scopes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Scopes">> => list(scope_details())
-%% }
--type list_application_access_scopes_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_session_configuration_response() :: #{
-
-%% }
--type put_application_session_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_set_provisioning_status_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSetsProvisioningStatus">> => list(permission_set_provisioning_status_metadata())
-%% }
--type list_permission_set_provisioning_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"InstanceArn">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_set_provisioning_status_request() :: #{
-%%   <<"Filter">> => operation_status_filter(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_permission_set_provisioning_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_trusted_token_issuer_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"TrustedTokenIssuerArn">> := string(),
-%%   <<"TrustedTokenIssuerConfiguration">> => list()
-%% }
--type update_trusted_token_issuer_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_provider_response() :: #{
-%%   <<"ApplicationProviderArn">> => string(),
-%%   <<"DisplayData">> => display_data(),
-%%   <<"FederationProtocol">> => list(any()),
-%%   <<"ResourceServerConfig">> => resource_server_config()
-%% }
--type describe_application_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_access_scope_response() :: #{
-%%   <<"AuthorizedTargets">> => list(string()),
-%%   <<"Scope">> => string()
-%% }
--type get_application_access_scope_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_grant_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"GrantType">> := list(any())
-%% }
--type delete_application_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% permission_set() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PermissionSetArn">> => string(),
-%%   <<"RelayState">> => string(),
-%%   <<"SessionDuration">> => string()
-%% }
--type permission_set() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_providers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_assignment_deletion_status_response() :: #{
-%%   <<"AccountAssignmentDeletionStatus">> => account_assignment_operation_status()
-%% }
--type describe_account_assignment_deletion_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignments_filter() :: #{
-%%   <<"AccountId">> => string()
-%% }
--type list_account_assignments_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_customer_managed_policy_references_in_permission_set_response() :: #{
-%%   <<"CustomerManagedPolicyReferences">> => list(customer_managed_policy_reference()),
-%%   <<"NextToken">> => string()
-%% }
--type list_customer_managed_policy_references_in_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_grants_response() :: #{
-%%   <<"Grants">> => list(grant_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_grants_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_permission_set_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RelayState">> => string(),
-%%   <<"SessionDuration">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_assignment_configuration_response() :: #{
-
-%% }
--type put_application_assignment_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_policies_in_permission_set_response() :: #{
-%%   <<"AttachedManagedPolicies">> => list(attached_managed_policy()),
-%%   <<"NextToken">> => string()
-%% }
--type list_managed_policies_in_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignments_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type list_account_assignments_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_assignment_response() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"PrincipalType">> => list(any())
-%% }
--type describe_application_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_access_scope_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"Scope">> := string()
-%% }
--type get_application_access_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_portal_options() :: #{
-%%   <<"SignInOptions">> => sign_in_options()
-%% }
--type update_application_portal_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_assignment_response() :: #{
-
-%% }
--type delete_application_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% application_assignment_for_principal() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"PrincipalType">> => list(any())
-%% }
--type application_assignment_for_principal() :: #{binary() => any()}.
-
-%% Example:
-%% update_permission_set_response() :: #{
-
-%% }
--type update_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_control_attribute_value() :: #{
-%%   <<"Source">> => list(string())
-%% }
--type access_control_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_assignment_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any()),
-%%   <<"TargetId">> := string(),
-%%   <<"TargetType">> := list(any())
-%% }
--type delete_account_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_authentication_method_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"AuthenticationMethodType">> := list(any())
-%% }
--type get_application_authentication_method_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_configuration_details() :: #{
-%%   <<"EncryptionStatus">> => list(any()),
-%%   <<"EncryptionStatusReason">> => string(),
-%%   <<"KeyType">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type encryption_configuration_details() :: #{binary() => any()}.
-
-%% Example:
-%% provision_permission_set_response() :: #{
-%%   <<"PermissionSetProvisioningStatus">> => permission_set_provisioning_status()
-%% }
--type provision_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% jwt_bearer_grant() :: #{
-%%   <<"AuthorizedTokenIssuers">> => list(authorized_token_issuer())
-%% }
--type jwt_bearer_grant() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_assignment_response() :: #{
-%%   <<"AccountAssignmentCreationStatus">> => account_assignment_operation_status()
-%% }
--type create_account_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_session_configuration_response() :: #{
-%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
-%% }
--type get_application_session_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_grant_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"GrantType">> := list(any())
-%% }
--type get_application_grant_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_access_control_attribute_configuration_response() :: #{
-
-%% }
--type update_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% detach_managed_policy_from_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"ManagedPolicyArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type detach_managed_policy_from_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_request() :: #{
-%%   <<"InstanceArn">> := string()
-%% }
--type describe_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_code_grant() :: #{
-%%   <<"RedirectUris">> => list(string())
-%% }
--type authorization_code_grant() :: #{binary() => any()}.
-
-%% Example:
-%% permissions_boundary() :: #{
-%%   <<"CustomerManagedPolicyReference">> => customer_managed_policy_reference(),
-%%   <<"ManagedPolicyArn">> => string()
-%% }
--type permissions_boundary() :: #{binary() => any()}.
+-type add_region_request() :: #{binary() => any()}.
 
 %% Example:
 %% add_region_response() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type add_region_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_inline_policy_to_permission_set_response() :: #{
-
-%% }
--type put_inline_policy_to_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% provision_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> := list(any())
-%% }
--type provision_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_assignment_response() :: #{
-
-%% }
--type create_application_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_providers_response() :: #{
-%%   <<"ApplicationProviders">> => list(application_provider()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_providers_response() :: #{binary() => any()}.
 
 %% Example:
 %% application() :: #{
@@ -880,85 +290,57 @@
 -type application() :: #{binary() => any()}.
 
 %% Example:
-%% update_instance_request() :: #{
-%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%% application_assignment() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type application_assignment() :: #{binary() => any()}.
+
+%% Example:
+%% application_assignment_for_principal() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type application_assignment_for_principal() :: #{binary() => any()}.
+
+%% Example:
+%% application_provider() :: #{
+%%   <<"ApplicationProviderArn">> => string(),
+%%   <<"DisplayData">> => display_data(),
+%%   <<"FederationProtocol">> => list(any()),
+%%   <<"ResourceServerConfig">> => resource_server_config()
+%% }
+-type application_provider() :: #{binary() => any()}.
+
+%% Example:
+%% attach_customer_managed_policy_reference_to_permission_set_request() :: #{
+%%   <<"CustomerManagedPolicyReference">> := customer_managed_policy_reference(),
 %%   <<"InstanceArn">> := string(),
-%%   <<"Name">> => string()
+%%   <<"PermissionSetArn">> := string()
 %% }
--type update_instance_request() :: #{binary() => any()}.
+-type attach_customer_managed_policy_reference_to_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_inline_policy_from_permission_set_response() :: #{
+%% attach_customer_managed_policy_reference_to_permission_set_response() :: #{
 
 %% }
--type delete_inline_policy_from_permission_set_response() :: #{binary() => any()}.
+-type attach_customer_managed_policy_reference_to_permission_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_instance_access_control_attribute_configuration_request() :: #{
-%%   <<"InstanceArn">> := string()
-%% }
--type delete_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% oidc_jwt_configuration() :: #{
-%%   <<"ClaimAttributePath">> => string(),
-%%   <<"IdentityStoreAttributePath">> => string(),
-%%   <<"IssuerUrl">> => string(),
-%%   <<"JwksRetrievalOption">> => list(any())
-%% }
--type oidc_jwt_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_token_issuer_response() :: #{
-%%   <<"Name">> => string(),
-%%   <<"TrustedTokenIssuerArn">> => string(),
-%%   <<"TrustedTokenIssuerConfiguration">> => list(),
-%%   <<"TrustedTokenIssuerType">> => list(any())
-%% }
--type describe_trusted_token_issuer_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_trusted_token_issuer_request() :: #{
-%%   <<"ClientToken">> => string(),
+%% attach_managed_policy_to_permission_set_request() :: #{
 %%   <<"InstanceArn">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrustedTokenIssuerConfiguration">> := list(),
-%%   <<"TrustedTokenIssuerType">> := list(any())
+%%   <<"ManagedPolicyArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
 %% }
--type create_trusted_token_issuer_request() :: #{binary() => any()}.
+-type attach_managed_policy_to_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_permission_set_provisioning_status_response() :: #{
-%%   <<"PermissionSetProvisioningStatus">> => permission_set_provisioning_status()
-%% }
--type describe_permission_set_provisioning_status_response() :: #{binary() => any()}.
+%% attach_managed_policy_to_permission_set_response() :: #{
 
-%% Example:
-%% list_regions_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
 %% }
--type list_regions_request() :: #{binary() => any()}.
-
-%% Example:
-%% permission_set_provisioning_status() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"PermissionSetArn">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type permission_set_provisioning_status() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignment_creation_status_response() :: #{
-%%   <<"AccountAssignmentsCreationStatus">> => list(account_assignment_operation_status_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignment_creation_status_response() :: #{binary() => any()}.
+-type attach_managed_policy_to_permission_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% attached_managed_policy() :: #{
@@ -968,20 +350,61 @@
 -type attached_managed_policy() :: #{binary() => any()}.
 
 %% Example:
-%% list_customer_managed_policy_references_in_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSetArn">> := string()
+%% authentication_method_item() :: #{
+%%   <<"AuthenticationMethod">> => list(),
+%%   <<"AuthenticationMethodType">> => list(any())
 %% }
--type list_customer_managed_policy_references_in_permission_set_request() :: #{binary() => any()}.
+-type authentication_method_item() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
+%% authorization_code_grant() :: #{
+%%   <<"RedirectUris">> => list(string())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type authorization_code_grant() :: #{binary() => any()}.
+
+%% Example:
+%% authorized_token_issuer() :: #{
+%%   <<"AuthorizedAudiences">> => list(string()),
+%%   <<"TrustedTokenIssuerArn">> => string()
+%% }
+-type authorized_token_issuer() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_assignment_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string(),
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any()),
+%%   <<"TargetId">> := string(),
+%%   <<"TargetType">> := list(any())
+%% }
+-type create_account_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_assignment_response() :: #{
+%%   <<"AccountAssignmentCreationStatus">> => account_assignment_operation_status()
+%% }
+-type create_account_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_assignment_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any())
+%% }
+-type create_application_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_assignment_response() :: #{
+
+%% }
+-type create_application_assignment_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_application_request() :: #{
@@ -997,70 +420,6 @@
 -type create_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% grant_item() :: #{
-%%   <<"Grant">> => list(),
-%%   <<"GrantType">> => list(any())
-%% }
--type grant_item() :: #{binary() => any()}.
-
-%% Example:
-%% describe_permission_set_response() :: #{
-%%   <<"PermissionSet">> => permission_set()
-%% }
--type describe_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% account_assignment_operation_status() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"PermissionSetArn">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"PrincipalType">> => list(any()),
-%%   <<"RequestId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> => list(any())
-%% }
--type account_assignment_operation_status() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_assignment_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any())
-%% }
--type create_application_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignments_for_principal_response() :: #{
-%%   <<"AccountAssignments">> => list(account_assignment_for_principal()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignments_for_principal_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_permissions_boundary_to_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"PermissionsBoundary">> := permissions_boundary()
-%% }
--type put_permissions_boundary_to_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_permissions_boundary_from_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type delete_permissions_boundary_from_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% customer_managed_policy_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string()
-%% }
--type customer_managed_policy_reference() :: #{binary() => any()}.
-
-%% Example:
 %% create_application_response() :: #{
 %%   <<"ApplicationArn">> => string(),
 %%   <<"IdentityStoreArn">> => string(),
@@ -1069,193 +428,17 @@
 -type create_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type describe_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inline_policy_from_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type delete_inline_policy_from_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type delete_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignment_creation_status_request() :: #{
-%%   <<"Filter">> => operation_status_filter(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignment_creation_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_response() :: #{
-
-%% }
--type delete_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_permission_set_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"RelayState">> => string(),
-%%   <<"SessionDuration">> => string()
-%% }
--type update_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_permissions_boundary_for_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type get_permissions_boundary_for_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_access_control_attribute_configuration_request() :: #{
+%% create_instance_access_control_attribute_configuration_request() :: #{
 %%   <<"InstanceAccessControlAttributeConfiguration">> := instance_access_control_attribute_configuration(),
 %%   <<"InstanceArn">> := string()
 %% }
--type update_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
+-type create_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_instances_response() :: #{
-%%   <<"Instances">> => list(instance_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type list_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_authentication_method_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"AuthenticationMethod">> := list(),
-%%   <<"AuthenticationMethodType">> := list(any())
-%% }
--type put_application_authentication_method_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PortalOptions">> => update_application_portal_options(),
-%%   <<"Status">> => list(any())
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_response() :: #{
+%% create_instance_access_control_attribute_configuration_response() :: #{
 
 %% }
--type update_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% portal_options() :: #{
-%%   <<"SignInOptions">> => sign_in_options(),
-%%   <<"Visibility">> => list(any())
-%% }
--type portal_options() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_assignments_for_principal_response() :: #{
-%%   <<"ApplicationAssignments">> => list(application_assignment_for_principal()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_assignments_for_principal_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_permission_set_response() :: #{
-%%   <<"PermissionSet">> => permission_set()
-%% }
--type create_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_request() :: #{
-%%   <<"ApplicationArn">> := string()
-%% }
--type describe_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_access_control_attribute_configuration_response() :: #{
-
-%% }
--type delete_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_grants_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_grants_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignments_response() :: #{
-%%   <<"AccountAssignments">> => list(account_assignment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignments_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_assignment_creation_status_request() :: #{
-%%   <<"AccountAssignmentCreationRequestId">> := string(),
-%%   <<"InstanceArn">> := string()
-%% }
--type describe_account_assignment_creation_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"Filter">> => list_applications_filter(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_assignments_response() :: #{
-%%   <<"ApplicationAssignments">> => list(application_assignment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_assignments_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_access_scope_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"Scope">> := string()
-%% }
--type delete_application_access_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_assignment() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"PermissionSetArn">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"PrincipalType">> => list(any())
-%% }
--type account_assignment() :: #{binary() => any()}.
+-type create_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_instance_request() :: #{
@@ -1266,47 +449,62 @@
 -type create_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_instance_response() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"EncryptionConfigurationDetails">> => encryption_configuration_details(),
-%%   <<"IdentityStoreId">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% create_instance_response() :: #{
+%%   <<"InstanceArn">> => string()
 %% }
--type describe_instance_response() :: #{binary() => any()}.
+-type create_instance_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_trusted_token_issuer_request() :: #{
-%%   <<"TrustedTokenIssuerArn">> := string()
-%% }
--type delete_trusted_token_issuer_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignments_for_principal_request() :: #{
-%%   <<"Filter">> => list_account_assignments_filter(),
+%% create_permission_set_request() :: #{
+%%   <<"Description">> => string(),
 %%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RelayState">> => string(),
+%%   <<"SessionDuration">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_permission_set_response() :: #{
+%%   <<"PermissionSet">> => permission_set()
+%% }
+-type create_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_trusted_token_issuer_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrustedTokenIssuerConfiguration">> := list(),
+%%   <<"TrustedTokenIssuerType">> := list(any())
+%% }
+-type create_trusted_token_issuer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trusted_token_issuer_response() :: #{
+%%   <<"TrustedTokenIssuerArn">> => string()
+%% }
+-type create_trusted_token_issuer_response() :: #{binary() => any()}.
+
+%% Example:
+%% customer_managed_policy_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type customer_managed_policy_reference() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_assignment_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string(),
 %%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any())
+%%   <<"PrincipalType">> := list(any()),
+%%   <<"TargetId">> := string(),
+%%   <<"TargetType">> := list(any())
 %% }
--type list_account_assignments_for_principal_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_permissions_boundary_for_permission_set_response() :: #{
-%%   <<"PermissionsBoundary">> => permissions_boundary()
-%% }
--type get_permissions_boundary_for_permission_set_response() :: #{binary() => any()}.
+-type delete_account_assignment_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_account_assignment_response() :: #{
@@ -1315,105 +513,76 @@
 -type delete_account_assignment_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
+%% delete_application_access_scope_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"Scope">> := string()
 %% }
--type tag_resource_response() :: #{binary() => any()}.
+-type delete_application_access_scope_request() :: #{binary() => any()}.
 
 %% Example:
-%% access_control_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => access_control_attribute_value()
+%% delete_application_assignment_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any())
 %% }
--type access_control_attribute() :: #{binary() => any()}.
+-type delete_application_assignment_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_application_assignment_configuration_request() :: #{
+%% delete_application_assignment_response() :: #{
+
+%% }
+-type delete_application_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_authentication_method_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"AuthenticationMethodType">> := list(any())
+%% }
+-type delete_application_authentication_method_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_grant_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"GrantType">> := list(any())
+%% }
+-type delete_application_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{
 %%   <<"ApplicationArn">> := string()
 %% }
--type get_application_assignment_configuration_request() :: #{binary() => any()}.
+-type delete_application_request() :: #{binary() => any()}.
 
 %% Example:
-%% token_exchange_grant() :: #{
+%% delete_application_response() :: #{
 
 %% }
--type token_exchange_grant() :: #{binary() => any()}.
+-type delete_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_instance_response() :: #{
-
+%% delete_inline_policy_from_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
 %% }
--type delete_instance_response() :: #{binary() => any()}.
+-type delete_inline_policy_from_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_access_control_attribute_configuration() :: #{
-%%   <<"AccessControlAttributes">> => list(access_control_attribute())
+%% delete_inline_policy_from_permission_set_response() :: #{
+
 %% }
--type instance_access_control_attribute_configuration() :: #{binary() => any()}.
+-type delete_inline_policy_from_permission_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_applications_filter() :: #{
-%%   <<"ApplicationAccount">> => string(),
-%%   <<"ApplicationProvider">> => string()
+%% delete_instance_access_control_attribute_configuration_request() :: #{
+%%   <<"InstanceArn">> := string()
 %% }
--type list_applications_filter() :: #{binary() => any()}.
+-type delete_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_permissions_boundary_from_permission_set_response() :: #{
+%% delete_instance_access_control_attribute_configuration_response() :: #{
 
 %% }
--type delete_permissions_boundary_from_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"InstanceArn">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% display_data() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IconUrl">> => string()
-%% }
--type display_data() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_authentication_methods_response() :: #{
-%%   <<"AuthenticationMethods">> => list(authentication_method_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_authentication_methods_response() :: #{binary() => any()}.
-
-%% Example:
-%% oidc_jwt_update_configuration() :: #{
-%%   <<"ClaimAttributePath">> => string(),
-%%   <<"IdentityStoreAttributePath">> => string(),
-%%   <<"JwksRetrievalOption">> => list(any())
-%% }
--type oidc_jwt_update_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_permission_set_response() :: #{
-
-%% }
--type delete_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type throttling_exception() :: #{binary() => any()}.
+-type delete_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_instance_request() :: #{
@@ -1422,56 +591,61 @@
 -type delete_instance_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_instance_response() :: #{
+
+%% }
+-type delete_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type delete_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permission_set_response() :: #{
+
+%% }
+-type delete_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permissions_boundary_from_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type delete_permissions_boundary_from_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_permissions_boundary_from_permission_set_response() :: #{
+
+%% }
+-type delete_permissions_boundary_from_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trusted_token_issuer_request() :: #{
+%%   <<"TrustedTokenIssuerArn">> := string()
+%% }
+-type delete_trusted_token_issuer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trusted_token_issuer_response() :: #{
+
+%% }
+-type delete_trusted_token_issuer_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_assignment_creation_status_request() :: #{
+%%   <<"AccountAssignmentCreationRequestId">> := string(),
+%%   <<"InstanceArn">> := string()
+%% }
+-type describe_account_assignment_creation_status_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_account_assignment_creation_status_response() :: #{
 %%   <<"AccountAssignmentCreationStatus">> => account_assignment_operation_status()
 %% }
 -type describe_account_assignment_creation_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_assignment_deletion_status_request() :: #{
-%%   <<"Filter">> => operation_status_filter(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_assignment_deletion_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% region_metadata() :: #{
-%%   <<"AddedDate">> => non_neg_integer(),
-%%   <<"IsPrimaryRegion">> => boolean(),
-%%   <<"RegionName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type region_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_access_control_attribute_configuration_request() :: #{
-%%   <<"InstanceAccessControlAttributeConfiguration">> := instance_access_control_attribute_configuration(),
-%%   <<"InstanceArn">> := string()
-%% }
--type create_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% detach_customer_managed_policy_reference_from_permission_set_request() :: #{
-%%   <<"CustomerManagedPolicyReference">> := customer_managed_policy_reference(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type detach_customer_managed_policy_reference_from_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_session_configuration_request() :: #{
-%%   <<"ApplicationArn">> := string()
-%% }
--type get_application_session_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"Applications">> => list(application()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_assignment_deletion_status_request() :: #{
@@ -1481,135 +655,26 @@
 -type describe_account_assignment_deletion_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% attach_managed_policy_to_permission_set_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"ManagedPolicyArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
+%% describe_account_assignment_deletion_status_response() :: #{
+%%   <<"AccountAssignmentDeletionStatus">> => account_assignment_operation_status()
 %% }
--type attach_managed_policy_to_permission_set_request() :: #{binary() => any()}.
+-type describe_account_assignment_deletion_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% permission_set_provisioning_status_metadata() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"RequestId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type permission_set_provisioning_status_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% attach_customer_managed_policy_reference_to_permission_set_request() :: #{
-%%   <<"CustomerManagedPolicyReference">> := customer_managed_policy_reference(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string()
-%% }
--type attach_customer_managed_policy_reference_to_permission_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_region_response() :: #{
-%%   <<"AddedDate">> => non_neg_integer(),
-%%   <<"IsPrimaryRegion">> => boolean(),
-%%   <<"RegionName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_region_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trusted_token_issuer_request() :: #{
-%%   <<"TrustedTokenIssuerArn">> := string()
-%% }
--type describe_trusted_token_issuer_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_grant_request() :: #{
+%% describe_application_assignment_request() :: #{
 %%   <<"ApplicationArn">> := string(),
-%%   <<"Grant">> := list(),
-%%   <<"GrantType">> := list(any())
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any())
 %% }
--type put_application_grant_request() :: #{binary() => any()}.
+-type describe_application_assignment_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_instance_access_control_attribute_configuration_response() :: #{
-%%   <<"InstanceAccessControlAttributeConfiguration">> => instance_access_control_attribute_configuration(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% describe_application_assignment_response() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"PrincipalType">> => list(any())
 %% }
--type describe_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_sets_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_permission_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_token_grant() :: #{
-
-%% }
--type refresh_token_grant() :: #{binary() => any()}.
-
-%% Example:
-%% list_regions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Regions">> => list(region_metadata())
-%% }
--type list_regions_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_permission_set_provisioning_status_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"ProvisionPermissionSetRequestId">> := string()
-%% }
--type describe_permission_set_provisioning_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_trusted_token_issuer_response() :: #{
-
-%% }
--type update_trusted_token_issuer_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_trusted_token_issuer_response() :: #{
-%%   <<"TrustedTokenIssuerArn">> => string()
-%% }
--type create_trusted_token_issuer_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_instance_response() :: #{
-
-%% }
--type update_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trusted_token_issuer_response() :: #{
-
-%% }
--type delete_trusted_token_issuer_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_application_access_scope_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"AuthorizedTargets">> => list(string()),
-%%   <<"Scope">> := string()
-%% }
--type put_application_access_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_sets_provisioned_to_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"InstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProvisioningStatus">> => list(any())
-%% }
--type list_permission_sets_provisioned_to_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_server_config() :: #{
-%%   <<"Scopes">> => map()
-%% }
--type resource_server_config() :: #{binary() => any()}.
+-type describe_application_assignment_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_provider_request() :: #{
@@ -1618,47 +683,19 @@
 -type describe_application_provider_request() :: #{binary() => any()}.
 
 %% Example:
-%% attach_customer_managed_policy_reference_to_permission_set_response() :: #{
-
+%% describe_application_provider_response() :: #{
+%%   <<"ApplicationProviderArn">> => string(),
+%%   <<"DisplayData">> => display_data(),
+%%   <<"FederationProtocol">> => list(any()),
+%%   <<"ResourceServerConfig">> => resource_server_config()
 %% }
--type attach_customer_managed_policy_reference_to_permission_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_assignment_configuration_response() :: #{
-%%   <<"AssignmentRequired">> => boolean()
-%% }
--type get_application_assignment_configuration_response() :: #{binary() => any()}.
+-type describe_application_provider_response() :: #{binary() => any()}.
 
 %% Example:
-%% authorized_token_issuer() :: #{
-%%   <<"AuthorizedAudiences">> => list(string()),
-%%   <<"TrustedTokenIssuerArn">> => string()
+%% describe_application_request() :: #{
+%%   <<"ApplicationArn">> := string()
 %% }
--type authorized_token_issuer() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_access_control_attribute_configuration_request() :: #{
-%%   <<"InstanceArn">> := string()
-%% }
--type describe_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_assignment_request() :: #{
-%%   <<"InstanceArn">> := string(),
-%%   <<"PermissionSetArn">> := string(),
-%%   <<"PrincipalId">> := string(),
-%%   <<"PrincipalType">> := list(any()),
-%%   <<"TargetId">> := string(),
-%%   <<"TargetType">> := list(any())
-%% }
--type create_account_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_permission_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionSets">> => list(string())
-%% }
--type list_permission_sets_response() :: #{binary() => any()}.
+-type describe_application_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_application_response() :: #{
@@ -1677,30 +714,117 @@
 -type describe_application_response() :: #{binary() => any()}.
 
 %% Example:
-%% resource_server_scope_details() :: #{
-%%   <<"DetailedTitle">> => string(),
-%%   <<"LongDescription">> => string()
+%% describe_instance_access_control_attribute_configuration_request() :: #{
+%%   <<"InstanceArn">> := string()
 %% }
--type resource_server_scope_details() :: #{binary() => any()}.
+-type describe_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_region_request() :: #{
+%% describe_instance_access_control_attribute_configuration_response() :: #{
+%%   <<"InstanceAccessControlAttributeConfiguration">> => instance_access_control_attribute_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_request() :: #{
+%%   <<"InstanceArn">> := string()
+%% }
+-type describe_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"EncryptionConfigurationDetails">> => encryption_configuration_details(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PermissionSetsEnabled">> => [boolean()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permission_set_provisioning_status_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"ProvisionPermissionSetRequestId">> := string()
+%% }
+-type describe_permission_set_provisioning_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permission_set_provisioning_status_response() :: #{
+%%   <<"PermissionSetProvisioningStatus">> => permission_set_provisioning_status()
+%% }
+-type describe_permission_set_provisioning_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type describe_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permission_set_response() :: #{
+%%   <<"PermissionSet">> => permission_set()
+%% }
+-type describe_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_region_request() :: #{
 %%   <<"InstanceArn">> := string(),
 %%   <<"RegionName">> := string()
 %% }
--type add_region_request() :: #{binary() => any()}.
+-type describe_region_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_request() :: #{
-%%   <<"ApplicationArn">> := string()
+%% describe_region_response() :: #{
+%%   <<"AddedDate">> => non_neg_integer(),
+%%   <<"IsPrimaryRegion">> => boolean(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type delete_application_request() :: #{binary() => any()}.
+-type describe_region_response() :: #{binary() => any()}.
 
 %% Example:
-%% attach_managed_policy_to_permission_set_response() :: #{
+%% describe_trusted_token_issuer_request() :: #{
+%%   <<"TrustedTokenIssuerArn">> := string()
+%% }
+-type describe_trusted_token_issuer_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trusted_token_issuer_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TrustedTokenIssuerArn">> => string(),
+%%   <<"TrustedTokenIssuerConfiguration">> => list(),
+%%   <<"TrustedTokenIssuerType">> => list(any())
+%% }
+-type describe_trusted_token_issuer_response() :: #{binary() => any()}.
+
+%% Example:
+%% detach_customer_managed_policy_reference_from_permission_set_request() :: #{
+%%   <<"CustomerManagedPolicyReference">> := customer_managed_policy_reference(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type detach_customer_managed_policy_reference_from_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_customer_managed_policy_reference_from_permission_set_response() :: #{
 
 %% }
--type attach_managed_policy_to_permission_set_response() :: #{binary() => any()}.
+-type detach_customer_managed_policy_reference_from_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% detach_managed_policy_from_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"ManagedPolicyArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type detach_managed_policy_from_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% detach_managed_policy_from_permission_set_response() :: #{
@@ -1708,599 +832,1477 @@
 %% }
 -type detach_managed_policy_from_permission_set_response() :: #{binary() => any()}.
 
+%% Example:
+%% display_data() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IconUrl">> => string()
+%% }
+-type display_data() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration_details() :: #{
+%%   <<"EncryptionStatus">> => list(any()),
+%%   <<"EncryptionStatusReason">> => string(),
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_configuration_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_access_scope_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"Scope">> := string()
+%% }
+-type get_application_access_scope_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_access_scope_response() :: #{
+%%   <<"AuthorizedTargets">> => list(string()),
+%%   <<"Scope">> => string()
+%% }
+-type get_application_access_scope_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_assignment_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string()
+%% }
+-type get_application_assignment_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_assignment_configuration_response() :: #{
+%%   <<"AssignmentRequired">> => boolean()
+%% }
+-type get_application_assignment_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_authentication_method_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"AuthenticationMethodType">> := list(any())
+%% }
+-type get_application_authentication_method_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_authentication_method_response() :: #{
+%%   <<"AuthenticationMethod">> => list()
+%% }
+-type get_application_authentication_method_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_grant_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"GrantType">> := list(any())
+%% }
+-type get_application_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_grant_response() :: #{
+%%   <<"Grant">> => list()
+%% }
+-type get_application_grant_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_session_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string()
+%% }
+-type get_application_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_session_configuration_response() :: #{
+%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
+%% }
+-type get_application_session_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_inline_policy_for_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type get_inline_policy_for_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_inline_policy_for_permission_set_response() :: #{
+%%   <<"InlinePolicy">> => string()
+%% }
+-type get_inline_policy_for_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_permissions_boundary_for_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type get_permissions_boundary_for_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_permissions_boundary_for_permission_set_response() :: #{
+%%   <<"PermissionsBoundary">> => permissions_boundary()
+%% }
+-type get_permissions_boundary_for_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% grant_item() :: #{
+%%   <<"Grant">> => list(),
+%%   <<"GrantType">> => list(any())
+%% }
+-type grant_item() :: #{binary() => any()}.
+
+%% Example:
+%% iam_authentication_method() :: #{
+%%   <<"ActorPolicy">> => any()
+%% }
+-type iam_authentication_method() :: #{binary() => any()}.
+
+%% Example:
+%% instance_access_control_attribute_configuration() :: #{
+%%   <<"AccessControlAttributes">> => list(access_control_attribute())
+%% }
+-type instance_access_control_attribute_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"Regions">> => list(region_metadata()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type instance_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_bearer_grant() :: #{
+%%   <<"AuthorizedTokenIssuers">> => list(authorized_token_issuer())
+%% }
+-type jwt_bearer_grant() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignment_creation_status_request() :: #{
+%%   <<"Filter">> => operation_status_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignment_creation_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignment_creation_status_response() :: #{
+%%   <<"AccountAssignmentsCreationStatus">> => list(account_assignment_operation_status_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignment_creation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignment_deletion_status_request() :: #{
+%%   <<"Filter">> => operation_status_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignment_deletion_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignment_deletion_status_response() :: #{
+%%   <<"AccountAssignmentsDeletionStatus">> => list(account_assignment_operation_status_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignment_deletion_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignments_filter() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type list_account_assignments_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignments_for_principal_request() :: #{
+%%   <<"Filter">> => list_account_assignments_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any())
+%% }
+-type list_account_assignments_for_principal_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignments_for_principal_response() :: #{
+%%   <<"AccountAssignments">> => list(account_assignment_for_principal()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignments_for_principal_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignments_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type list_account_assignments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_assignments_response() :: #{
+%%   <<"AccountAssignments">> => list(account_assignment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_assignments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_for_provisioned_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSetArn">> := string(),
+%%   <<"ProvisioningStatus">> => list(any())
+%% }
+-type list_accounts_for_provisioned_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_for_provisioned_permission_set_response() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_for_provisioned_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_access_scopes_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_access_scopes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_access_scopes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Scopes">> => list(scope_details())
+%% }
+-type list_application_access_scopes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_assignments_filter() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type list_application_assignments_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_assignments_for_principal_request() :: #{
+%%   <<"Filter">> => list_application_assignments_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrincipalId">> := string(),
+%%   <<"PrincipalType">> := list(any())
+%% }
+-type list_application_assignments_for_principal_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_assignments_for_principal_response() :: #{
+%%   <<"ApplicationAssignments">> => list(application_assignment_for_principal()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_assignments_for_principal_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_assignments_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_assignments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_assignments_response() :: #{
+%%   <<"ApplicationAssignments">> => list(application_assignment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_assignments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_authentication_methods_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_authentication_methods_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_authentication_methods_response() :: #{
+%%   <<"AuthenticationMethods">> => list(authentication_method_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_authentication_methods_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_grants_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_grants_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_grants_response() :: #{
+%%   <<"Grants">> => list(grant_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_grants_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_providers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_providers_response() :: #{
+%%   <<"ApplicationProviders">> => list(application_provider()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_filter() :: #{
+%%   <<"ApplicationAccount">> => string(),
+%%   <<"ApplicationProvider">> => string()
+%% }
+-type list_applications_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"Filter">> => list_applications_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"Applications">> => list(application()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_customer_managed_policy_references_in_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type list_customer_managed_policy_references_in_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_customer_managed_policy_references_in_permission_set_response() :: #{
+%%   <<"CustomerManagedPolicyReferences">> => list(customer_managed_policy_reference()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_customer_managed_policy_references_in_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"Instances">> => list(instance_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_policies_in_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type list_managed_policies_in_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_policies_in_permission_set_response() :: #{
+%%   <<"AttachedManagedPolicies">> => list(attached_managed_policy()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_policies_in_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_set_provisioning_status_request() :: #{
+%%   <<"Filter">> => operation_status_filter(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_permission_set_provisioning_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_set_provisioning_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSetsProvisioningStatus">> => list(permission_set_provisioning_status_metadata())
+%% }
+-type list_permission_set_provisioning_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_sets_provisioned_to_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProvisioningStatus">> => list(any())
+%% }
+-type list_permission_sets_provisioned_to_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_sets_provisioned_to_account_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSets">> => list(string())
+%% }
+-type list_permission_sets_provisioned_to_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_sets_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_permission_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_permission_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionSets">> => list(string())
+%% }
+-type list_permission_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Regions">> => list(region_metadata())
+%% }
+-type list_regions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"InstanceArn">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_trusted_token_issuers_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_trusted_token_issuers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_trusted_token_issuers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrustedTokenIssuers">> => list(trusted_token_issuer_metadata())
+%% }
+-type list_trusted_token_issuers_response() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_jwt_configuration() :: #{
+%%   <<"ClaimAttributePath">> => string(),
+%%   <<"IdentityStoreAttributePath">> => string(),
+%%   <<"IssuerUrl">> => string(),
+%%   <<"JwksRetrievalOption">> => list(any())
+%% }
+-type oidc_jwt_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% oidc_jwt_update_configuration() :: #{
+%%   <<"ClaimAttributePath">> => string(),
+%%   <<"IdentityStoreAttributePath">> => string(),
+%%   <<"JwksRetrievalOption">> => list(any())
+%% }
+-type oidc_jwt_update_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operation_status_filter() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type operation_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% permission_set() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PermissionSetArn">> => string(),
+%%   <<"RelayState">> => string(),
+%%   <<"SessionDuration">> => string()
+%% }
+-type permission_set() :: #{binary() => any()}.
+
+%% Example:
+%% permission_set_provisioning_status() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"PermissionSetArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type permission_set_provisioning_status() :: #{binary() => any()}.
+
+%% Example:
+%% permission_set_provisioning_status_metadata() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"RequestId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type permission_set_provisioning_status_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% permissions_boundary() :: #{
+%%   <<"CustomerManagedPolicyReference">> => customer_managed_policy_reference(),
+%%   <<"ManagedPolicyArn">> => string()
+%% }
+-type permissions_boundary() :: #{binary() => any()}.
+
+%% Example:
+%% portal_options() :: #{
+%%   <<"SignInOptions">> => sign_in_options(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type portal_options() :: #{binary() => any()}.
+
+%% Example:
+%% provision_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string(),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> := list(any())
+%% }
+-type provision_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% provision_permission_set_response() :: #{
+%%   <<"PermissionSetProvisioningStatus">> => permission_set_provisioning_status()
+%% }
+-type provision_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_access_scope_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"AuthorizedTargets">> => list(string()),
+%%   <<"Scope">> := string()
+%% }
+-type put_application_access_scope_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_assignment_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"AssignmentRequired">> := boolean()
+%% }
+-type put_application_assignment_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_assignment_configuration_response() :: #{
+
+%% }
+-type put_application_assignment_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_authentication_method_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"AuthenticationMethod">> := list(),
+%%   <<"AuthenticationMethodType">> := list(any())
+%% }
+-type put_application_authentication_method_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_grant_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"Grant">> := list(),
+%%   <<"GrantType">> := list(any())
+%% }
+-type put_application_grant_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_session_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
+%% }
+-type put_application_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_session_configuration_response() :: #{
+
+%% }
+-type put_application_session_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_inline_policy_to_permission_set_request() :: #{
+%%   <<"InlinePolicy">> := string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string()
+%% }
+-type put_inline_policy_to_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_inline_policy_to_permission_set_response() :: #{
+
+%% }
+-type put_inline_policy_to_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_permissions_boundary_to_permission_set_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string(),
+%%   <<"PermissionsBoundary">> := permissions_boundary()
+%% }
+-type put_permissions_boundary_to_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_permissions_boundary_to_permission_set_response() :: #{
+
+%% }
+-type put_permissions_boundary_to_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_token_grant() :: #{
+
+%% }
+-type refresh_token_grant() :: #{binary() => any()}.
+
+%% Example:
+%% region_metadata() :: #{
+%%   <<"AddedDate">> => non_neg_integer(),
+%%   <<"IsPrimaryRegion">> => boolean(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type region_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% remove_region_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"RegionName">> := string()
+%% }
+-type remove_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_region_response() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type remove_region_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_server_config() :: #{
+%%   <<"Scopes">> => map()
+%% }
+-type resource_server_config() :: #{binary() => any()}.
+
+%% Example:
+%% resource_server_scope_details() :: #{
+%%   <<"DetailedTitle">> => string(),
+%%   <<"LongDescription">> => string()
+%% }
+-type resource_server_scope_details() :: #{binary() => any()}.
+
+%% Example:
+%% scope_details() :: #{
+%%   <<"AuthorizedTargets">> => list(string()),
+%%   <<"Scope">> => string()
+%% }
+-type scope_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sign_in_options() :: #{
+%%   <<"ApplicationUrl">> => string(),
+%%   <<"Origin">> => list(any())
+%% }
+-type sign_in_options() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"InstanceArn">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% token_exchange_grant() :: #{
+
+%% }
+-type token_exchange_grant() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_token_issuer_metadata() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TrustedTokenIssuerArn">> => string(),
+%%   <<"TrustedTokenIssuerType">> => list(any())
+%% }
+-type trusted_token_issuer_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"InstanceArn">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_portal_options() :: #{
+%%   <<"SignInOptions">> => sign_in_options()
+%% }
+-type update_application_portal_options() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PortalOptions">> => update_application_portal_options(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{
+
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_access_control_attribute_configuration_request() :: #{
+%%   <<"InstanceAccessControlAttributeConfiguration">> := instance_access_control_attribute_configuration(),
+%%   <<"InstanceArn">> := string()
+%% }
+-type update_instance_access_control_attribute_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_access_control_attribute_configuration_response() :: #{
+
+%% }
+-type update_instance_access_control_attribute_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_request() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"PermissionSetsEnabled">> => [boolean()]
+%% }
+-type update_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_response() :: #{
+
+%% }
+-type update_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_permission_set_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InstanceArn">> := string(),
+%%   <<"PermissionSetArn">> := string(),
+%%   <<"RelayState">> => string(),
+%%   <<"SessionDuration">> => string()
+%% }
+-type update_permission_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_permission_set_response() :: #{
+
+%% }
+-type update_permission_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_trusted_token_issuer_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"TrustedTokenIssuerArn">> := string(),
+%%   <<"TrustedTokenIssuerConfiguration">> => list()
+%% }
+-type update_trusted_token_issuer_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trusted_token_issuer_response() :: #{
+
+%% }
+-type update_trusted_token_issuer_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type add_region_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type attach_customer_managed_policy_reference_to_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type attach_managed_policy_to_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_account_assignment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_application_assignment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_instance_access_control_attribute_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_trusted_token_issuer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_account_assignment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_access_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_assignment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_authentication_method_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_inline_policy_from_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_instance_access_control_attribute_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_permissions_boundary_from_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_trusted_token_issuer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_account_assignment_creation_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_account_assignment_deletion_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_application_assignment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_application_provider_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_instance_access_control_attribute_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_permission_set_provisioning_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_region_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_trusted_token_issuer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type detach_customer_managed_policy_reference_from_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type detach_managed_policy_from_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_application_access_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_application_assignment_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_application_authentication_method_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_application_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_application_session_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_inline_policy_for_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_permissions_boundary_for_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_assignment_creation_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_assignment_deletion_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_assignments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_assignments_for_principal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_accounts_for_provisioned_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_access_scopes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_assignments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_assignments_for_principal_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_authentication_methods_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_grants_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_application_providers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_applications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_customer_managed_policy_references_in_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_policies_in_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_permission_set_provisioning_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_permission_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_permission_sets_provisioned_to_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_trusted_token_issuers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type provision_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_application_access_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_application_assignment_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_application_authentication_method_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_application_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_application_session_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_inline_policy_to_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_permissions_boundary_to_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_region_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_instance_access_control_attribute_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_permission_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_trusted_token_issuer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -3903,6 +3905,20 @@ update_application(Client, Input, Options)
 
 %% @doc Update the details for the instance of IAM Identity Center that is
 %% owned by the Amazon Web Services account.
+%%
+%% In a single `UpdateInstance' request, you can perform only one of the
+%% following operations:
+%%
+%% Update the encryption configuration of the instance by specifying
+%% `EncryptionConfiguration'.
+%%
+%% Enable permission sets for the instance by specifying
+%% `PermissionSetsEnabled'.
+%%
+%% A request that specifies both `EncryptionConfiguration' and
+%% `PermissionSetsEnabled' returns a `ValidationException'. To
+%% perform both operations, call `UpdateInstance' separately for each.
+%% The two calls can be made in parallel.
 -spec update_instance(aws_client:aws_client(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |

@@ -413,6 +413,8 @@
          start_notebook_import/4,
          start_notebook_run/3,
          start_notebook_run/4,
+         start_notebook_sync/3,
+         start_notebook_sync/4,
          stop_notebook_run/4,
          stop_notebook_run/5,
          tag_resource/3,
@@ -469,117 +471,234 @@
 
 
 %% Example:
-%% lineage_node_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"downstreamLineageNodeIds">> => list(string()),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"sourceIdentifier">> => [string()],
-%%   <<"typeName">> => [string()],
-%%   <<"typeRevision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"upstreamLineageNodeIds">> => list(string())
+%% accept_choice() :: #{
+%%   <<"editedValue">> => string(),
+%%   <<"predictionChoice">> => [integer()],
+%%   <<"predictionTarget">> => [string()]
 %% }
--type lineage_node_item() :: #{binary() => any()}.
+-type accept_choice() :: #{binary() => any()}.
 
 
 %% Example:
-%% policy_grant_member() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"detail">> => list(),
-%%   <<"grantId">> => string(),
-%%   <<"principal">> => list()
-%% }
--type policy_grant_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_revision() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
+%% accept_predictions_input() :: #{
+%%   <<"acceptChoices">> => list(accept_choice()),
+%%   <<"acceptRule">> => accept_rule(),
+%%   <<"clientToken">> => string(),
 %%   <<"revision">> => string()
 %% }
--type asset_revision() :: #{binary() => any()}.
+-type accept_predictions_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_project_profiles_output() :: #{
-%%   <<"items">> => list(project_profile_summary()),
-%%   <<"nextToken">> => string()
+%% accept_predictions_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"revision">> => string()
 %% }
--type list_project_profiles_output() :: #{binary() => any()}.
+-type accept_predictions_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% metadata_form_enforcement_detail() :: #{
-%%   <<"requiredMetadataForms">> => list(metadata_form_reference())
+%% accept_rule() :: #{
+%%   <<"rule">> => list(any()),
+%%   <<"threshold">> => [float()]
 %% }
--type metadata_form_enforcement_detail() :: #{binary() => any()}.
+-type accept_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_group_profile_input() :: #{
-%%   <<"status">> := list(any())
+%% accept_subscription_request_input() :: #{
+%%   <<"assetPermissions">> => list(asset_permission()),
+%%   <<"assetScopes">> => list(accepted_asset_scope()),
+%%   <<"decisionComment">> => string()
 %% }
--type update_group_profile_input() :: #{binary() => any()}.
+-type accept_subscription_request_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_domain_output() :: #{
-%%   <<"description">> => [string()],
-%%   <<"domainExecutionRole">> => string(),
+%% accept_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => [string()],
-%%   <<"rootDomainUnitId">> => string(),
-%%   <<"serviceRole">> => string(),
-%%   <<"singleSignOn">> => single_sign_on()
-%% }
--type update_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metadata_generation_runs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%%   <<"metadataForms">> => list(form_output()),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"targetIdentifier">> => string(),
-%%   <<"type">> => list(any())
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type list_metadata_generation_runs_input() :: #{binary() => any()}.
+-type accept_subscription_request_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_asset_input() :: #{
+%% accepted_asset_scope() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"filterIds">> => list(string())
+%% }
+-type accepted_asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_info() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountName">> => string(),
+%%   <<"supportedRegions">> => list(string())
+%% }
+-type account_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_pool_summary() :: #{
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type account_pool_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_entity_owner_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"externalIdentifier">> => string(),
-%%   <<"formsInput">> => list(form_input()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"typeIdentifier">> := string(),
-%%   <<"typeRevision">> => string()
+%%   <<"owner">> := list()
 %% }
--type create_asset_input() :: #{binary() => any()}.
+-type add_entity_owner_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_entity_owner_output() :: #{}
+-type add_entity_owner_output() :: #{}.
 
 
 %% Example:
-%% search_user_profiles_output() :: #{
-%%   <<"items">> => list(user_profile_summary()),
-%%   <<"nextToken">> => string()
+%% add_policy_grant_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"detail">> := list(),
+%%   <<"policyType">> := list(any()),
+%%   <<"principal">> := list()
 %% }
--type search_user_profiles_output() :: #{binary() => any()}.
+-type add_policy_grant_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_policy_grant_output() :: #{
+%%   <<"grantId">> => string()
+%% }
+-type add_policy_grant_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_to_project_member_pool_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type add_to_project_member_pool_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_attributes() :: #{
+%%   <<"formNames">> => list(string())
+%% }
+-type additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_list_item() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"displayValue">> => string()
+%% }
+-type aggregation_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_output() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"displayValue">> => string(),
+%%   <<"items">> => list(aggregation_output_item())
+%% }
+-type aggregation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_output_item() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"displayValue">> => string(),
+%%   <<"value">> => string()
+%% }
+-type aggregation_output_item() :: #{binary() => any()}.
+
+%% Example:
+%% all_domain_units_grant_filter() :: #{}
+-type all_domain_units_grant_filter() :: #{}.
+
+%% Example:
+%% all_users_grant_filter() :: #{}
+-type all_users_grant_filter() :: #{}.
+
+
+%% Example:
+%% amazon_q_properties_input() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_q_properties_output() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_q_properties_patch() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_filter_summary() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type asset_filter_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_in_data_product_listing_item() :: #{
+%%   <<"entityId">> => [string()],
+%%   <<"entityRevision">> => [string()],
+%%   <<"entityType">> => [string()]
+%% }
+-type asset_in_data_product_listing_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -604,16 +723,294 @@
 
 
 %% Example:
-%% account_pool_summary() :: #{
+%% asset_item_additional_attributes() :: #{
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"matchRationale">> => list(list()),
+%%   <<"readOnlyFormsOutput">> => list(form_output())
+%% }
+-type asset_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"assetType">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
+%%   <<"owningProjectId">> => string()
+%% }
+-type asset_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing_details() :: #{
+%%   <<"listingId">> => string(),
+%%   <<"listingStatus">> => list(any())
+%% }
+-type asset_listing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing_item() :: #{
+%%   <<"additionalAttributes">> => asset_listing_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"listingCreatedBy">> => string(),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"listingUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
+%% }
+-type asset_listing_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_listing_item_additional_attributes() :: #{
+%%   <<"forms">> => string(),
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
+%%   <<"matchRationale">> => list(list())
+%% }
+-type asset_listing_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_permission() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"permissions">> => list()
+%% }
+-type asset_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_revision() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type asset_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_scope() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"errorMessage">> => [string()],
+%%   <<"filterIds">> => list(string()),
+%%   <<"status">> => [string()]
+%% }
+-type asset_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_target_name_map() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"targetName">> => [string()]
+%% }
+-type asset_target_name_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_type_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
 %%   <<"name">> => string(),
-%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type account_pool_summary() :: #{binary() => any()}.
+-type asset_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_types_for_rule() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"specificAssetTypes">> => list(string())
+%% }
+-type asset_types_for_rule() :: #{binary() => any()}.
+
+%% Example:
+%% associate_environment_role_input() :: #{}
+-type associate_environment_role_input() :: #{}.
+
+%% Example:
+%% associate_environment_role_output() :: #{}
+-type associate_environment_role_output() :: #{}.
+
+
+%% Example:
+%% associate_governed_terms_input() :: #{
+%%   <<"governedGlossaryTerms">> := list(string())
+%% }
+-type associate_governed_terms_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_governed_terms_output() :: #{}
+-type associate_governed_terms_output() :: #{}.
+
+
+%% Example:
+%% athena_properties_input() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% athena_properties_output() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% athena_properties_patch() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type athena_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_error() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type attribute_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_input() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"forms">> => list(form_input())
+%% }
+-type attribute_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"authenticationType">> => list(any()),
+%%   <<"oAuth2Properties">> => o_auth2_properties(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_configuration_input() :: #{
+%%   <<"authenticationType">> => list(any()),
+%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"customAuthenticationCredentials">> => map(),
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"oAuth2Properties">> => o_auth2_properties(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_configuration_patch() :: #{
+%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"secretArn">> => [string()]
+%% }
+-type authentication_configuration_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization_code_properties() :: #{
+%%   <<"authorizationCode">> => [string()],
+%%   <<"redirectUri">> => [string()]
+%% }
+-type authorization_code_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_console_link_parameters() :: #{
+%%   <<"uri">> => [string()]
+%% }
+-type aws_console_link_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_location() :: #{
+%%   <<"accessRole">> => [string()],
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"iamConnectionId">> => string()
+%% }
+-type aws_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% basic_authentication_credentials() :: #{
+%%   <<"password">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type basic_authentication_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attribute_output() :: #{
+%%   <<"attributeIdentifier">> => string(),
+%%   <<"forms">> => list(form_output())
+%% }
+-type batch_get_attribute_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attributes_metadata_input() :: #{
+%%   <<"attributeIdentifiers">> := list(string()),
+%%   <<"entityRevision">> => string()
+%% }
+-type batch_get_attributes_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attributes_metadata_output() :: #{
+%%   <<"attributes">> => list(batch_get_attribute_output()),
+%%   <<"errors">> => list(attribute_error())
+%% }
+-type batch_get_attributes_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_attribute_output() :: #{
+%%   <<"attributeIdentifier">> => string()
+%% }
+-type batch_put_attribute_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_attributes_metadata_input() :: #{
+%%   <<"attributes">> := list(attribute_input()),
+%%   <<"clientToken">> => string()
+%% }
+-type batch_put_attributes_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_attributes_metadata_output() :: #{
+%%   <<"attributes">> => list(batch_put_attribute_output()),
+%%   <<"errors">> => list(attribute_error())
+%% }
+-type batch_put_attributes_metadata_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -622,200 +1019,21 @@
 %% }
 -type business_name_generation_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_metadata_generation_run_input() :: #{}
+-type cancel_metadata_generation_run_input() :: #{}.
 
 %% Example:
-%% create_form_type_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type create_form_type_policy_grant_detail() :: #{binary() => any()}.
-
+%% cancel_metadata_generation_run_output() :: #{}
+-type cancel_metadata_generation_run_output() :: #{}.
 
 %% Example:
-%% data_product_listing() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataProductId">> => string(),
-%%   <<"dataProductRevision">> => string(),
-%%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"items">> => list(listing_summary()),
-%%   <<"owningProjectId">> => string()
-%% }
--type data_product_listing() :: #{binary() => any()}.
+%% cancel_subscription_input() :: #{}
+-type cancel_subscription_input() :: #{}.
 
 
 %% Example:
-%% create_environment_action_input() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> := [string()],
-%%   <<"parameters">> := list()
-%% }
--type create_environment_action_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_actions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_actions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_summary_item() :: #{
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"listingId">> => string(),
-%%   <<"listingRevision">> => string()
-%% }
--type listing_summary_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_filter_summary() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"effectiveColumnNames">> => list([string()]()),
-%%   <<"effectiveRowFilter">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type asset_filter_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_credential_configuration() :: #{
-%%   <<"secretManagerArn">> => [string()]
-%% }
--type redshift_credential_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsKeyArn">> => [string()],
-%%   <<"sseAlgorithm">> => [string()]
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_glossary_term_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"glossaryId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations(),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type update_glossary_term_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_time_series_data_points_output() :: #{}
--type delete_time_series_data_points_output() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_blueprint_configurations_output() :: #{
-%%   <<"items">> => list(environment_blueprint_configuration_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_blueprint_configurations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_runs_output() :: #{
-%%   <<"items">> => list(data_source_run_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_source_runs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_run_configuration_input() :: #{
-%%   <<"dataAccessRole">> => [string()],
-%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
-%%   <<"redshiftStorage">> => list(),
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
-%% }
--type redshift_run_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_filters_output() :: #{
-%%   <<"items">> => list(asset_filter_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_filters_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_properties_input() :: #{
-%%   <<"credentials">> => list(),
-%%   <<"databaseName">> => [string()],
-%%   <<"host">> => [string()],
-%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
-%%   <<"port">> => [integer()],
-%%   <<"storage">> => list()
-%% }
--type redshift_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_runs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_data_source_runs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_generation_run_type_stat() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type metadata_generation_run_type_stat() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_type_input() :: #{
-%%   <<"revision">> => string()
-%% }
--type get_asset_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% snowflake_properties_patch() :: #{
-%%   <<"connectivityPropertiesPatch">> => connectivity_properties_patch(),
-%%   <<"lineageSync">> => lineage_sync_input(),
-%%   <<"snowflakeRole">> => string()
-%% }
--type snowflake_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_sort() :: #{
-%%   <<"attribute">> => string(),
-%%   <<"order">> => list(any())
-%% }
--type search_sort() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_summary() :: #{
+%% cancel_subscription_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -828,263 +1046,127 @@
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type subscription_summary() :: #{binary() => any()}.
+-type cancel_subscription_output() :: #{binary() => any()}.
+
+%% Example:
+%% cell_information() :: #{}
+-type cell_information() :: #{}.
 
 
 %% Example:
-%% subscription_target_form() :: #{
-%%   <<"content">> => [string()],
-%%   <<"formName">> => string()
+%% cloud_formation_properties() :: #{
+%%   <<"templateUrl">> => [string()]
 %% }
--type subscription_target_form() :: #{binary() => any()}.
+-type cloud_formation_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_project_memberships_output() :: #{
-%%   <<"members">> => list(project_member()),
-%%   <<"nextToken">> => string()
+%% column_filter_configuration() :: #{
+%%   <<"includedColumnNames">> => list([string()]())
 %% }
--type list_project_memberships_output() :: #{binary() => any()}.
+-type column_filter_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_environment_profile_input() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"userParameters">> => list(environment_parameter())
+%% compute_config() :: #{
+%%   <<"environmentVersion">> => [string()],
+%%   <<"instanceType">> => string()
 %% }
--type update_environment_profile_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_project_profile_input() :: #{}
--type get_project_profile_input() :: #{}.
+-type compute_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_properties_patch() :: #{
-%%   <<"registerS3AccessGrantLocation">> => [boolean()],
-%%   <<"s3AccessGrantLocationId">> => string(),
-%%   <<"s3Uri">> => string()
+%% configurable_action_parameter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
 %% }
--type s3_properties_patch() :: #{binary() => any()}.
+-type configurable_action_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_subscription_target_output() :: #{
-%%   <<"applicableAssetTypes">> => list(string()),
-%%   <<"authorizedPrincipals">> => list(string()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"subscriptionGrantCreationMode">> => list(any()),
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
-%%   <<"type">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%% configurable_environment_action() :: #{
+%%   <<"auth">> => list(any()),
+%%   <<"parameters">> => list(configurable_action_parameter()),
+%%   <<"type">> => [string()]
 %% }
--type update_subscription_target_output() :: #{binary() => any()}.
+-type configurable_environment_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% reject_subscription_request_input() :: #{
-%%   <<"decisionComment">> => string()
+%% configuration() :: #{
+%%   <<"classification">> => [string()],
+%%   <<"properties">> => map()
 %% }
--type reject_subscription_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_input() :: #{}
--type delete_connection_input() :: #{}.
+-type configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_group_profile_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rolePrincipalArn">> => [string()],
-%%   <<"rolePrincipalId">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type update_group_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notebook_export_output() :: #{
-%%   <<"completedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"error">> => notebook_export_error(),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"notebookId">> => string(),
-%%   <<"outputLocation">> => list(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_notebook_export_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_runs_output() :: #{
-%%   <<"items">> => list(job_run_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_runs_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_input() :: #{}
--type get_domain_input() :: #{}.
-
-%% Example:
-%% get_environment_action_input() :: #{}
--type get_environment_action_input() :: #{}.
-
-
-%% Example:
-%% list_policy_grants_output() :: #{
-%%   <<"grantList">> => list(policy_grant_member()),
-%%   <<"nextToken">> => string()
-%% }
--type list_policy_grants_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_endpoint_credentials() :: #{
-%%   <<"id">> => [string()],
-%%   <<"token">> => [string()]
-%% }
--type managed_endpoint_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% metadata_form_reference() :: #{
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
+%% connection_credentials() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"secretAccessKey">> => [string()],
+%%   <<"sessionToken">> => [string()]
 %% }
--type metadata_form_reference() :: #{binary() => any()}.
+-type connection_credentials() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_asset_filter_output() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
+%% connection_summary() :: #{
+%%   <<"configurations">> => list(configuration()),
+%%   <<"connectionId">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"effectiveColumnNames">> => list([string()]()),
-%%   <<"effectiveRowFilter">> => [string()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"id">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type get_asset_filter_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_form_type_output() :: #{}
--type delete_form_type_output() :: #{}.
-
-%% Example:
-%% remove_entity_owner_output() :: #{}
--type remove_entity_owner_output() :: #{}.
+-type connection_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% redshift_properties_output() :: #{
-%%   <<"credentials">> => list(),
-%%   <<"databaseName">> => [string()],
-%%   <<"isProvisionedSecret">> => [boolean()],
-%%   <<"jdbcIamUrl">> => [string()],
-%%   <<"jdbcUrl">> => [string()],
-%%   <<"lineageSync">> => redshift_lineage_sync_configuration_output(),
-%%   <<"redshiftTempDir">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"storage">> => list()
+%% connectivity_properties() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"validateCredentials">> => [boolean()],
+%%   <<"validateForComputeEnvironments">> => list(list(any())())
 %% }
--type redshift_properties_output() :: #{binary() => any()}.
+-type connectivity_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_listing_details() :: #{
-%%   <<"listingId">> => string(),
-%%   <<"listingStatus">> => list(any())
+%% connectivity_properties_patch() :: #{
+%%   <<"authenticationConfiguration">> => authentication_configuration_patch(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"description">> => [string()]
 %% }
--type asset_listing_details() :: #{binary() => any()}.
-
-%% Example:
-%% all_users_grant_filter() :: #{}
--type all_users_grant_filter() :: #{}.
+-type connectivity_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment_configuration_parameters_details() :: #{
-%%   <<"parameterOverrides">> => list(environment_configuration_parameter()),
-%%   <<"resolvedParameters">> => list(environment_configuration_parameter()),
-%%   <<"ssmPath">> => string()
-%% }
--type environment_configuration_parameters_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_sync_schedule() :: #{
-%%   <<"schedule">> => [string()]
-%% }
--type lineage_sync_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% update_root_domain_unit_owner_output() :: #{}
--type update_root_domain_unit_owner_output() :: #{}.
-
-
-%% Example:
-%% network_config() :: #{
-%%   <<"networkAccessType">> => list(any()),
-%%   <<"securityGroupIds">> => list([string()]()),
-%%   <<"subnetIds">> => list([string()]()),
-%%   <<"vpcId">> => [string()]
-%% }
--type network_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notebook_output() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"computeId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
+%% create_account_pool_input() :: #{
+%%   <<"accountSource">> := list(),
 %%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"error">> => notebook_error(),
-%%   <<"id">> => string(),
-%%   <<"lockExpiresAt">> => [non_neg_integer()],
-%%   <<"lockedAt">> => [non_neg_integer()],
-%%   <<"lockedBy">> => [string()],
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"name">> := string(),
+%%   <<"resolutionStrategy">> := list(any())
 %% }
--type update_notebook_output() :: #{binary() => any()}.
+-type create_account_pool_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1105,179 +1187,139 @@
 
 
 %% Example:
-%% deployment() :: #{
-%%   <<"deploymentId">> => [string()],
-%%   <<"deploymentStatus">> => list(any()),
-%%   <<"deploymentType">> => list(any()),
-%%   <<"failureReason">> => environment_error(),
-%%   <<"isDeploymentComplete">> => [boolean()],
-%%   <<"messages">> => list(string())
+%% create_asset_filter_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
 %% }
--type deployment() :: #{binary() => any()}.
+-type create_asset_filter_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_environment_output() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"deploymentProperties">> => deployment_properties(),
+%% create_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentActions">> => list(configurable_environment_action()),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"environmentConfigurationId">> => string(),
-%%   <<"environmentConfigurationName">> => string(),
-%%   <<"environmentProfileId">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"lastDeployment">> => deployment(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"provisionedResources">> => list(resource()),
-%%   <<"provisioningProperties">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
-%% }
--type get_environment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_project_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"projectProfileVersion">> => [string()],
-%%   <<"resourceTags">> => map(),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter())
-%% }
--type update_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_source_input() :: #{}
--type get_data_source_input() :: #{}.
-
-
-%% Example:
-%% get_lineage_node_input() :: #{
-%%   <<"eventTimestamp">> => [non_neg_integer()]
-%% }
--type get_lineage_node_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_member() :: #{
-%%   <<"designation">> => list(any()),
-%%   <<"memberDetails">> => list()
-%% }
--type project_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"projectCategory">> => [string()],
-%%   <<"projectStatus">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"status">> => list(any())
 %% }
--type project_summary() :: #{binary() => any()}.
+-type create_asset_filter_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_notebook_output() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"computeId">> => string(),
+%% create_asset_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"typeIdentifier">> := string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type create_asset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"error">> => notebook_error(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"lockExpiresAt">> => [non_neg_integer()],
-%%   <<"lockedAt">> => [non_neg_integer()],
-%%   <<"lockedBy">> => [string()],
-%%   <<"metadata">> => map(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
 %% }
--type get_notebook_output() :: #{binary() => any()}.
+-type create_asset_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment_resolved_account() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"regionName">> => string(),
-%%   <<"sourceAccountPoolId">> => string()
+%% create_asset_revision_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"typeRevision">> => string()
 %% }
--type environment_resolved_account() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type create_asset_revision_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% workflows_mwaa_properties_input() :: #{
-%%   <<"mwaaEnvironmentName">> => [string()]
-%% }
--type workflows_mwaa_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% notebook_summary() :: #{
+%% create_asset_revision_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"predictionConfiguration">> => prediction_configuration(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
 %% }
--type notebook_summary() :: #{binary() => any()}.
+-type create_asset_revision_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% glue_connection() :: #{
-%%   <<"athenaProperties">> => map(),
-%%   <<"authenticationConfiguration">> => authentication_configuration(),
-%%   <<"compatibleComputeEnvironments">> => list(list(any())()),
-%%   <<"connectionProperties">> => map(),
-%%   <<"connectionSchemaVersion">> => [integer()],
-%%   <<"connectionType">> => list(any()),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"lastConnectionValidationTime">> => [non_neg_integer()],
-%%   <<"lastUpdatedBy">> => [string()],
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"matchCriteria">> => list([string()]()),
-%%   <<"name">> => [string()],
-%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"pythonProperties">> => map(),
-%%   <<"sparkProperties">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()]
+%% create_asset_type_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"formsInput">> := map(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string()
 %% }
--type glue_connection() :: #{binary() => any()}.
+-type create_asset_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_asset_type_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_asset_type_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1288,186 +1330,36 @@
 
 
 %% Example:
-%% list_accounts_in_account_pool_output() :: #{
-%%   <<"items">> => list(account_info()),
-%%   <<"nextToken">> => string()
+%% create_connection_input() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"clientToken">> => [string()],
+%%   <<"configurations">> => list(configuration()),
+%%   <<"description">> => string(),
+%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
+%%   <<"environmentIdentifier">> => string(),
+%%   <<"name">> := string(),
+%%   <<"props">> => list(),
+%%   <<"scope">> => list(any())
 %% }
--type list_accounts_in_account_pool_output() :: #{binary() => any()}.
+-type create_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% project_deletion_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type project_deletion_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_action_output() :: #{
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"parameters">> => list()
-%% }
--type create_environment_action_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_configuration_input() :: #{
-%%   <<"authenticationType">> => list(any()),
-%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
-%%   <<"customAuthenticationCredentials">> => map(),
-%%   <<"kmsKeyArn">> => [string()],
-%%   <<"oAuth2Properties">> => o_auth2_properties(),
-%%   <<"secretArn">> => [string()]
-%% }
--type authentication_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_project_profile_output() :: #{
-%%   <<"allowCustomProjectResourceTags">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
+%% create_connection_output() :: #{
+%%   <<"configurations">> => list(configuration()),
+%%   <<"connectionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"environmentId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
-%%   <<"projectResourceTagsDescription">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_project_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_listing_change_set_output() :: #{
-%%   <<"listingId">> => string(),
-%%   <<"listingRevision">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_listing_change_set_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_profile_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rolePrincipalArn">> => [string()],
-%%   <<"rolePrincipalId">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type get_group_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_blueprint_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deploymentProperties">> => deployment_properties(),
-%%   <<"description">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"provisioningProperties">> => list(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
-%% }
--type create_environment_blueprint_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% snowflake_properties_output() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"identityMapping">> => identity_mapping(),
-%%   <<"lineageSync">> => lineage_sync_output(),
-%%   <<"snowflakeRole">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type snowflake_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_input() :: #{
-%%   <<"deploymentOrder">> => [integer()],
-%%   <<"description">> => [string()],
-%%   <<"environmentAccountIdentifier">> => [string()],
-%%   <<"environmentAccountRegion">> => [string()],
-%%   <<"environmentBlueprintIdentifier">> => [string()],
-%%   <<"environmentConfigurationId">> => [string()],
-%%   <<"environmentConfigurationName">> => string(),
-%%   <<"environmentProfileIdentifier">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"name">> := [string()],
-%%   <<"projectIdentifier">> := string(),
-%%   <<"userParameters">> => list(environment_parameter())
-%% }
--type create_environment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% authorization_code_properties() :: #{
-%%   <<"authorizationCode">> => [string()],
-%%   <<"redirectUri">> => [string()]
-%% }
--type authorization_code_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_environment_profile_output() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
+%%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type update_environment_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% term_relations() :: #{
-%%   <<"classifies">> => list(string()),
-%%   <<"isA">> => list(string())
-%% }
--type term_relations() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_target_input() :: #{}
--type get_subscription_target_input() :: #{}.
-
-
-%% Example:
-%% list_lineage_events_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"processingStatus">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"timestampAfter">> => [non_neg_integer()],
-%%   <<"timestampBefore">> => [non_neg_integer()]
-%% }
--type list_lineage_events_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_time_series_data_points_output() :: #{
-%%   <<"items">> => list(time_series_data_point_summary_form_output()),
-%%   <<"nextToken">> => string()
-%% }
--type list_time_series_data_points_output() :: #{binary() => any()}.
+-type create_connection_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1482,145 +1374,37 @@
 %% }
 -type create_data_product_input() :: #{binary() => any()}.
 
-%% Example:
-%% get_notebook_run_input() :: #{}
--type get_notebook_run_input() :: #{}.
 
 %% Example:
-%% associate_governed_terms_output() :: #{}
--type associate_governed_terms_output() :: #{}.
-
-
-%% Example:
-%% domain_summary() :: #{
-%%   <<"arn">> => [string()],
+%% create_data_product_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
-%%   <<"domainVersion">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"managedAccountId">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"portalUrl">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type domain_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% notebook_run_summary() :: #{
-%%   <<"completedAt">> => [non_neg_integer()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"notebookId">> => string(),
+%%   <<"items">> => list(data_product_item()),
+%%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"scheduleId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"triggerSource">> => trigger_source(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type notebook_run_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type create_project_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_product_revision() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"revision">> => string()
-%% }
--type data_product_revision() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_target_output() :: #{
-%%   <<"applicableAssetTypes">> => list(string()),
-%%   <<"authorizedPrincipals">> => list(string()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"subscriptionGrantCreationMode">> => list(any()),
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
-%%   <<"type">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type create_subscription_target_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_run_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"error">> => job_run_error(),
-%%   <<"jobId">> => [string()],
-%%   <<"jobType">> => list(any()),
-%%   <<"runId">> => [string()],
-%%   <<"runMode">> => list(any()),
-%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"revision">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type job_run_summary() :: #{binary() => any()}.
+-type create_data_product_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_subscription_request_input() :: #{
-%%   <<"assetPermissions">> => list(asset_permission()),
-%%   <<"assetScopes">> => list(accepted_asset_scope()),
-%%   <<"clientToken">> => [string()],
-%%   <<"metadataForms">> => list(form_input()),
-%%   <<"requestReason">> := string(),
-%%   <<"subscribedListings">> := list(subscribed_listing_input()),
-%%   <<"subscribedPrincipals">> := list(list())
+%% create_data_product_revision_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"items">> => list(data_product_item()),
+%%   <<"name">> := string()
 %% }
--type create_subscription_request_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% owner_group_properties_output() :: #{
-%%   <<"groupId">> => [string()]
-%% }
--type owner_group_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% amazon_q_properties_input() :: #{
-%%   <<"authMode">> => [string()],
-%%   <<"isEnabled">> => [boolean()],
-%%   <<"profileArn">> => [string()]
-%% }
--type amazon_q_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_pools_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_account_pools_input() :: #{binary() => any()}.
+-type create_data_product_revision_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1663,690 +1447,7 @@
 
 
 %% Example:
-%% create_form_type_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"model">> := list(),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"status">> => list(any())
-%% }
--type create_form_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_project_profile_output() :: #{
-%%   <<"allowCustomProjectResourceTags">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
-%%   <<"projectResourceTagsDescription">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_project_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_policy_grant_output() :: #{
-%%   <<"grantId">> => string()
-%% }
--type add_policy_grant_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_summary() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentConfigurationId">> => string(),
-%%   <<"environmentConfigurationName">> => string(),
-%%   <<"environmentProfileId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type environment_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_accounts_in_account_pool_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_accounts_in_account_pool_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_resource() :: #{
-%%   <<"id">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type notification_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_run_activity() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataAssetId">> => [string()],
-%%   <<"dataAssetStatus">> => list(any()),
-%%   <<"dataSourceRunId">> => string(),
-%%   <<"database">> => string(),
-%%   <<"errorMessage">> => data_source_error_message(),
-%%   <<"lineageSummary">> => lineage_info(),
-%%   <<"projectId">> => string(),
-%%   <<"technicalDescription">> => string(),
-%%   <<"technicalName">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type data_source_run_activity() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_input() :: #{}
--type delete_environment_input() :: #{}.
-
-
-%% Example:
-%% search_input() :: #{
-%%   <<"additionalAttributes">> => list(list(any())()),
-%%   <<"filters">> => list(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owningProjectIdentifier">> => string(),
-%%   <<"searchIn">> => list(search_in_item()),
-%%   <<"searchScope">> := list(any()),
-%%   <<"searchText">> => string(),
-%%   <<"sort">> => search_sort()
-%% }
--type search_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_pool_output() :: #{
-%%   <<"accountSource">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"resolutionStrategy">> => list(any()),
-%%   <<"updatedBy">> => string()
-%% }
--type get_account_pool_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% single_sign_on() :: #{
-%%   <<"idcInstanceArn">> => [string()],
-%%   <<"type">> => list(any()),
-%%   <<"userAssignment">> => list(any())
-%% }
--type single_sign_on() :: #{binary() => any()}.
-
-%% Example:
-%% get_notebook_input() :: #{}
--type get_notebook_input() :: #{}.
-
-
-%% Example:
-%% create_asset_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"externalIdentifier">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"governedGlossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
-%%   <<"listing">> => asset_listing_details(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()),
-%%   <<"revision">> => string(),
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type create_asset_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_grants_output() :: #{
-%%   <<"items">> => list(subscription_grant_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscription_grants_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_configuration_user_parameter() :: #{
-%%   <<"environmentConfigurationName">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"environmentParameters">> => list(environment_parameter()),
-%%   <<"environmentResolvedAccount">> => environment_resolved_account()
-%% }
--type environment_configuration_user_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% less_than_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type less_than_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_subscription_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"retainPermissions">> => [boolean()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListing">> => subscribed_listing(),
-%%   <<"subscribedPrincipal">> => list(),
-%%   <<"subscriptionRequestId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type revoke_subscription_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rule_output() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"detail">> => list(),
-%%   <<"identifier">> => string(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"ruleType">> => list(any()),
-%%   <<"scope">> => rule_scope(),
-%%   <<"target">> => list(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_profile_output() :: #{
-%%   <<"details">> => list(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type get_user_profile_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_entity_owner_output() :: #{}
--type add_entity_owner_output() :: #{}.
-
-
-%% Example:
-%% list_connections_output() :: #{
-%%   <<"items">> => list(connection_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_connections_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_details() :: #{
-%%   <<"userId">> => [string()]
-%% }
--type user_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_unit_input() :: #{}
--type delete_domain_unit_input() :: #{}.
-
-
-%% Example:
-%% get_data_product_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"items">> => list(data_product_item()),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_data_product_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_input() :: #{
-%%   <<"awsLocation">> => aws_location(),
-%%   <<"configurations">> => list(configuration()),
-%%   <<"description">> => string(),
-%%   <<"props">> => list()
-%% }
--type update_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_runs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_job_runs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% notebook_error() :: #{
-%%   <<"message">> => [string()]
-%% }
--type notebook_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_profile_policy_grant_detail() :: #{
-%%   <<"domainUnitId">> => string()
-%% }
--type create_environment_profile_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notebook_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"parameters">> => map()
-%% }
--type create_notebook_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_time_series_data_points_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"formName">> := string()
-%% }
--type delete_time_series_data_points_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_profile_summary() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rolePrincipalArn">> => [string()],
-%%   <<"rolePrincipalId">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type group_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_revision_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"formsInput">> => list(form_input()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"typeRevision">> => string()
-%% }
--type create_asset_revision_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_info() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountName">> => string(),
-%%   <<"supportedRegions">> => list(string())
-%% }
--type account_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% is_not_null_expression() :: #{
-%%   <<"columnName">> => [string()]
-%% }
--type is_not_null_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_tag_parameter() :: #{
-%%   <<"isValueEditable">> => [boolean()],
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_tag_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_subscription_request_input() :: #{
-%%   <<"requestReason">> := string()
-%% }
--type update_subscription_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% unit() :: #{}
--type unit() :: #{}.
-
-
-%% Example:
-%% update_domain_unit_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owners">> => list(list()),
-%%   <<"parentDomainUnitId">> => string()
-%% }
--type update_domain_unit_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_listing_input() :: #{
-%%   <<"listingRevision">> => string()
-%% }
--type get_listing_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% lakehouse_properties_input() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
-%% }
--type lakehouse_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_self_grant_status_output() :: #{
-%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
-%% }
--type redshift_self_grant_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"failureReasons">> => list(project_deletion_error()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"projectCategory">> => [string()],
-%%   <<"projectProfileId">> => string(),
-%%   <<"projectStatus">> => list(any()),
-%%   <<"resourceTags">> => list(resource_tag()),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter())
-%% }
--type create_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_blueprint_configuration_input() :: #{}
--type get_environment_blueprint_configuration_input() :: #{}.
-
-
-%% Example:
-%% match_offset() :: #{
-%%   <<"endOffset">> => [integer()],
-%%   <<"startOffset">> => [integer()]
-%% }
--type match_offset() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_target_summary() :: #{
-%%   <<"applicableAssetTypes">> => list(string()),
-%%   <<"authorizedPrincipals">> => list(string()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"manageAccessRole">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"subscriptionGrantCreationMode">> => list(any()),
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
-%%   <<"type">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type subscription_target_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lineage_node_history_input() :: #{
-%%   <<"direction">> => list(any()),
-%%   <<"eventTimestampGTE">> => [non_neg_integer()],
-%%   <<"eventTimestampLTE">> => [non_neg_integer()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_lineage_node_history_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_subscription_input() :: #{
-%%   <<"retainPermissions">> => [boolean()]
-%% }
--type revoke_subscription_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_types_input() :: #{
-%%   <<"filters">> => list(),
-%%   <<"managed">> := [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchIn">> => list(search_in_item()),
-%%   <<"searchScope">> := list(any()),
-%%   <<"searchText">> => string(),
-%%   <<"sort">> => search_sort()
-%% }
--type search_types_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_output() :: #{
-%%   <<"configurations">> => list(configuration()),
-%%   <<"connectionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()),
-%%   <<"projectId">> => string(),
-%%   <<"props">> => list(),
-%%   <<"scope">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type create_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% override_project_owners_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type override_project_owners_policy_grant_detail() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_environment_role_input() :: #{}
--type disassociate_environment_role_input() :: #{}.
-
-
-%% Example:
-%% greater_than_or_equal_to_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type greater_than_or_equal_to_expression() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_pool_output() :: #{}
--type delete_account_pool_output() :: #{}.
-
-
-%% Example:
-%% list_policy_grants_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"policyType">> := list(any())
-%% }
--type list_policy_grants_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"classification">> => [string()],
-%%   <<"properties">> => map()
-%% }
--type configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_lineage_event_input() :: #{}
--type get_lineage_event_input() :: #{}.
-
-
-%% Example:
-%% domain_unit_filter_for_project() :: #{
-%%   <<"domainUnit">> => string(),
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type domain_unit_filter_for_project() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_filter_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"configuration">> := list(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type create_asset_filter_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% mlflow_properties_patch() :: #{
-%%   <<"trackingServerArn">> => [string()]
-%% }
--type mlflow_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_time_series_data_points_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"forms">> := list(time_series_data_point_form_input())
-%% }
--type post_time_series_data_points_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_properties_output() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type glue_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% connectivity_properties_patch() :: #{
-%%   <<"authenticationConfiguration">> => authentication_configuration_patch(),
-%%   <<"connectionProperties">> => map(),
-%%   <<"description">> => [string()]
-%% }
--type connectivity_properties_patch() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_unit_input() :: #{}
--type get_domain_unit_input() :: #{}.
-
-%% Example:
-%% get_data_source_run_input() :: #{}
--type get_data_source_run_input() :: #{}.
-
-
-%% Example:
-%% subscription_grant_summary() :: #{
-%%   <<"assets">> => list(subscribed_asset()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"grantedEntity">> => list(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type subscription_grant_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% athena_properties_output() :: #{
-%%   <<"workgroupName">> => [string()]
-%% }
--type athena_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_project_profile_input() :: #{
-%%   <<"allowCustomProjectResourceTags">> => [boolean()],
-%%   <<"description">> => string(),
-%%   <<"domainUnitIdentifier">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()),
-%%   <<"name">> => string(),
-%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
-%%   <<"projectResourceTagsDescription">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_project_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_source_output() :: #{
+%% create_data_source_output() :: #{
 %%   <<"assetFormsOutput">> => list(form_output()),
 %%   <<"configuration">> => list(),
 %%   <<"connectionId">> => [string()],
@@ -2357,7 +1458,6 @@
 %%   <<"environmentId">> => string(),
 %%   <<"errorMessage">> => data_source_error_message(),
 %%   <<"id">> => string(),
-%%   <<"lastRunAssetCount">> => [integer()],
 %%   <<"lastRunAt">> => non_neg_integer(),
 %%   <<"lastRunErrorMessage">> => data_source_error_message(),
 %%   <<"lastRunStatus">> => list(any()),
@@ -2366,327 +1466,11 @@
 %%   <<"publishOnImport">> => [boolean()],
 %%   <<"recommendation">> => recommendation_configuration(),
 %%   <<"schedule">> => schedule_configuration(),
-%%   <<"selfGrantStatus">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_data_source_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_product_revision_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"formsInput">> => list(form_input()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"items">> => list(data_product_item()),
-%%   <<"name">> := string()
-%% }
--type create_data_product_revision_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_input() :: #{
-%%   <<"afterTimestamp">> => [non_neg_integer()],
-%%   <<"beforeTimestamp">> => [non_neg_integer()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"subjects">> => list([string()]()),
-%%   <<"taskStatus">> => list(any()),
-%%   <<"type">> := list(any())
-%% }
--type list_notifications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_iam_principal() :: #{
-%%   <<"principalArn">> => string()
-%% }
--type subscribed_iam_principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_serverless_storage() :: #{
-%%   <<"workgroupName">> => [string()]
-%% }
--type redshift_serverless_storage() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscriptions_input() :: #{
-%%   <<"approverProjectId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owningGroupId">> => string(),
-%%   <<"owningIamPrincipalArn">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"owningUserId">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListingId">> => string(),
-%%   <<"subscriptionRequestIdentifier">> => string()
-%% }
--type list_subscriptions_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_filter_input() :: #{}
--type delete_asset_filter_input() :: #{}.
-
-
-%% Example:
-%% update_user_profile_input() :: #{
-%%   <<"sessionName">> => [string()],
-%%   <<"status">> := list(any()),
-%%   <<"type">> => list(any())
-%% }
--type update_user_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_type_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"formsOutput">> => map(),
-%%   <<"name">> => string(),
-%%   <<"originDomainId">> => string(),
-%%   <<"originProjectId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_asset_type_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_blueprint_configurations_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_blueprint_configurations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_input() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"environmentBlueprintIdentifier">> => string(),
-%%   <<"environmentProfileIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => [string()],
-%%   <<"nextToken">> => string(),
-%%   <<"projectIdentifier">> := string(),
-%%   <<"provider">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type list_environments_input() :: #{binary() => any()}.
-
-%% Example:
-%% associate_environment_role_input() :: #{}
--type associate_environment_role_input() :: #{}.
-
-%% Example:
-%% cancel_metadata_generation_run_output() :: #{}
--type cancel_metadata_generation_run_output() :: #{}.
-
-
-%% Example:
-%% list_environment_actions_output() :: #{
-%%   <<"items">> => list(environment_action_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_actions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_metadata_generation_run_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"target">> := metadata_generation_run_target(),
-%%   <<"type">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type start_metadata_generation_run_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_item_additional_attributes() :: #{
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
-%%   <<"matchRationale">> => list(list()),
-%%   <<"readOnlyFormsOutput">> => list(form_output())
-%% }
--type asset_item_additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_configuration_patch() :: #{
-%%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
-%%   <<"secretArn">> => [string()]
-%% }
--type authentication_configuration_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_blueprint_configuration_item() :: #{
-%%   <<"allowUserProvidedConfigurations">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"environmentRolePermissionBoundary">> => string(),
-%%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"regionalParameters">> => map(),
-%%   <<"resourceConfigurations">> => list(resource_configuration()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type environment_blueprint_configuration_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_environment_action_input() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"parameters">> => list()
-%% }
--type update_environment_action_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_entity_owner_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"owner">> := list()
-%% }
--type remove_entity_owner_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_rule_output() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"detail">> => list(),
-%%   <<"identifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ruleType">> => list(any()),
-%%   <<"scope">> => rule_scope(),
-%%   <<"target">> => list(),
-%%   <<"targetType">> => list(any())
-%% }
--type create_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_job_run_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"details">> => list(),
-%%   <<"domainId">> => string(),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"error">> => job_run_error(),
-%%   <<"id">> => [string()],
-%%   <<"jobId">> => [string()],
-%%   <<"jobType">> => list(any()),
-%%   <<"runMode">> => list(any()),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"status">> => list(any())
-%% }
--type get_job_run_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_product_input() :: #{}
--type delete_data_product_input() :: #{}.
-
-
-%% Example:
-%% start_data_source_run_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSourceConfigurationSnapshot">> => [string()],
-%%   <<"dataSourceId">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"errorMessage">> => data_source_error_message(),
-%%   <<"id">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type start_data_source_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_choice() :: #{
-%%   <<"predictionChoices">> => list([integer()]()),
-%%   <<"predictionTarget">> => [string()]
-%% }
--type reject_choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_run_activities_output() :: #{
-%%   <<"items">> => list(data_source_run_activity()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_source_run_activities_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_unit_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owners">> => list(list()),
-%%   <<"parentDomainUnitId">> => string()
-%% }
--type get_domain_unit_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_form_summary() :: #{
-%%   <<"formName">> => string(),
-%%   <<"typeName">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type metadata_form_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_predictions_output() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetRevision">> => string(),
-%%   <<"domainId">> => string()
-%% }
--type reject_predictions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_user() :: #{
-%%   <<"details">> => list(),
-%%   <<"id">> => string()
-%% }
--type subscribed_user() :: #{binary() => any()}.
+-type create_data_source_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2705,295 +1489,119 @@
 
 
 %% Example:
-%% iam_properties_output() :: #{
-%%   <<"environmentId">> => [string()],
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% create_domain_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"domainVersion">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"portalUrl">> => [string()],
+%%   <<"rootDomainUnitId">> => string(),
+%%   <<"serviceRole">> => string(),
+%%   <<"singleSignOn">> => single_sign_on(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type iam_properties_output() :: #{binary() => any()}.
+-type create_domain_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_data_export_configuration_input() :: #{
+%% create_domain_unit_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"enableExport">> := [boolean()],
-%%   <<"encryptionConfiguration">> => encryption_configuration()
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"parentDomainUnitIdentifier">> := string()
 %% }
--type put_data_export_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_target_input() :: #{}
--type delete_subscription_target_input() :: #{}.
+-type create_domain_unit_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% hyper_pod_properties_output() :: #{
-%%   <<"clusterArn">> => [string()],
-%%   <<"clusterName">> => [string()],
-%%   <<"orchestrator">> => list(any())
-%% }
--type hyper_pod_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_time_series_data_points_input() :: #{
-%%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"formName">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()]
-%% }
--type list_time_series_data_points_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_output() :: #{}
--type delete_notebook_output() :: #{}.
-
-
-%% Example:
-%% list_notebook_runs_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"notebookIdentifier">> => string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"scheduleIdentifier">> => string(),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_notebook_runs_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_request_details_input() :: #{}
--type get_subscription_request_details_input() :: #{}.
-
-
-%% Example:
-%% lineage_node_type_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"formsOutput">> => map(),
-%%   <<"name">> => [string()],
-%%   <<"revision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type lineage_node_type_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_export_configuration_input() :: #{}
--type delete_data_export_configuration_input() :: #{}.
-
-
-%% Example:
-%% get_metadata_generation_run_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"target">> => metadata_generation_run_target(),
-%%   <<"type">> => list(any()),
-%%   <<"typeStats">> => list(metadata_generation_run_type_stat()),
-%%   <<"types">> => list(list(any())())
-%% }
--type get_metadata_generation_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_rule_output() :: #{
-%%   <<"action">> => list(any()),
+%% create_domain_unit_output() :: #{
+%%   <<"ancestorDomainUnitIds">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
-%%   <<"detail">> => list(),
-%%   <<"identifier">> => string(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"ruleType">> => list(any()),
-%%   <<"scope">> => rule_scope(),
-%%   <<"target">> => list(),
-%%   <<"targetType">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_run_error() :: #{
-%%   <<"message">> => [string()]
-%% }
--type job_run_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_event_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"eventSummary">> => list(),
-%%   <<"eventTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
-%%   <<"processingStatus">> => list(any())
-%% }
--type lineage_event_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_connection_input() :: #{
-%%   <<"athenaProperties">> => map(),
-%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
-%%   <<"connectionProperties">> => map(),
-%%   <<"connectionType">> => list(any()),
-%%   <<"description">> => [string()],
-%%   <<"matchCriteria">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"pythonProperties">> => map(),
-%%   <<"sparkProperties">> => map(),
-%%   <<"validateCredentials">> => [boolean()],
-%%   <<"validateForComputeEnvironments">> => list(list(any())())
-%% }
--type glue_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_error_message() :: #{
-%%   <<"errorDetail">> => [string()],
-%%   <<"errorType">> => list(any())
-%% }
--type data_source_error_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_cluster_storage() :: #{
-%%   <<"clusterName">> => [string()]
-%% }
--type redshift_cluster_storage() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_type_output() :: #{}
--type delete_asset_type_output() :: #{}.
-
-
-%% Example:
-%% update_account_pool_output() :: #{
-%%   <<"accountSource">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"resolutionStrategy">> => list(any()),
-%%   <<"updatedBy">> => string()
+%%   <<"owners">> => list(list()),
+%%   <<"parentDomainUnitId">> => string()
 %% }
--type update_account_pool_output() :: #{binary() => any()}.
+-type create_domain_unit_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% reject_rule() :: #{
-%%   <<"rule">> => list(any()),
-%%   <<"threshold">> => [float()]
-%% }
--type reject_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_profile_input() :: #{
-%%   <<"sessionName">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type get_user_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% glossary_term_item() :: #{
-%%   <<"additionalAttributes">> => glossary_term_item_additional_attributes(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"glossaryId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type glossary_term_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% override_domain_unit_owners_policy_grant_detail() :: #{
+%% create_domain_unit_policy_grant_detail() :: #{
 %%   <<"includeChildDomainUnits">> => [boolean()]
 %% }
--type override_domain_unit_owners_policy_grant_detail() :: #{binary() => any()}.
+-type create_domain_unit_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% asset_target_name_map() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"targetName">> => [string()]
+%% create_environment_action_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> := [string()],
+%%   <<"parameters">> := list()
 %% }
--type asset_target_name_map() :: #{binary() => any()}.
+-type create_environment_action_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_environment_blueprint_configuration_output() :: #{
-%%   <<"allowUserProvidedConfigurations">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
+%% create_environment_action_output() :: #{
+%%   <<"description">> => [string()],
 %%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"environmentRolePermissionBoundary">> => string(),
-%%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"regionalParameters">> => map(),
-%%   <<"resourceConfigurations">> => list(resource_configuration()),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
 %% }
--type put_environment_blueprint_configuration_output() :: #{binary() => any()}.
+-type create_environment_action_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_subscription_grant_input() :: #{
-%%   <<"assetTargetNames">> => list(asset_target_name_map()),
-%%   <<"clientToken">> => [string()],
-%%   <<"environmentIdentifier">> := string(),
-%%   <<"grantedEntity">> := list(),
-%%   <<"subscriptionTargetIdentifier">> => string()
-%% }
--type create_subscription_grant_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_profile_input() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
+%% create_environment_blueprint_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"environmentBlueprintIdentifier">> := string(),
 %%   <<"name">> := string(),
+%%   <<"provisioningProperties">> := list(),
+%%   <<"userParameters">> => list(custom_parameter())
+%% }
+-type create_environment_blueprint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_blueprint_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisioningProperties">> => list(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
+%% }
+-type create_environment_blueprint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_input() :: #{
+%%   <<"deploymentOrder">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"environmentAccountIdentifier">> => [string()],
+%%   <<"environmentAccountRegion">> => [string()],
+%%   <<"environmentBlueprintIdentifier">> => [string()],
+%%   <<"environmentConfigurationId">> => [string()],
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentProfileIdentifier">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"name">> := [string()],
 %%   <<"projectIdentifier">> := string(),
 %%   <<"userParameters">> => list(environment_parameter())
 %% }
--type create_environment_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_attributes_metadata_input() :: #{
-%%   <<"attributeIdentifiers">> := list(string()),
-%%   <<"entityRevision">> => string()
-%% }
--type batch_get_attributes_metadata_input() :: #{binary() => any()}.
+-type create_environment_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3026,138 +1634,52 @@
 
 
 %% Example:
-%% post_lineage_event_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"event">> := binary()
-%% }
--type post_lineage_event_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_user_profile_details() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"groupProfileId">> => [string()],
-%%   <<"principalId">> => [string()],
-%%   <<"sessionName">> => [string()]
-%% }
--type iam_user_profile_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_predictions_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"rejectChoices">> => list(reject_choice()),
-%%   <<"rejectRule">> => reject_rule(),
-%%   <<"revision">> => string()
-%% }
--type reject_predictions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_series_data_point_form_input() :: #{
-%%   <<"content">> => [string()],
-%%   <<"formName">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type time_series_data_point_form_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_output() :: #{
-%%   <<"items">> => list(list()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalMatchCount">> => [integer()]
-%% }
--type search_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_grant_input() :: #{}
--type get_subscription_grant_input() :: #{}.
-
-
-%% Example:
-%% notebook_export_error() :: #{
-%%   <<"message">> => [string()]
-%% }
--type notebook_export_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_output() :: #{}
--type delete_rule_output() :: #{}.
-
-
-%% Example:
-%% o_auth2_client_application() :: #{
-%%   <<"aWSManagedClientApplicationReference">> => [string()],
-%%   <<"userManagedClientApplicationClientId">> => [string()]
-%% }
--type o_auth2_client_application() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lineage_event_input() :: #{}
--type delete_lineage_event_input() :: #{}.
-
-
-%% Example:
-%% create_user_profile_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"sessionName">> => [string()],
-%%   <<"userIdentifier">> := string(),
-%%   <<"userType">> => list(any())
-%% }
--type create_user_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_config() :: #{
-%%   <<"packageManager">> => list(any()),
-%%   <<"packageSpecification">> => [string()]
-%% }
--type package_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_blueprint_configuration_input() :: #{}
--type delete_environment_blueprint_configuration_input() :: #{}.
-
-
-%% Example:
-%% lineage_info() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"eventId">> => [string()],
-%%   <<"eventStatus">> => list(any())
-%% }
--type lineage_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_listing() :: #{
+%% create_environment_profile_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"item">> => list(),
-%%   <<"name">> => string(),
-%%   <<"ownerProjectId">> => string(),
-%%   <<"ownerProjectName">> => [string()],
-%%   <<"revision">> => string()
+%%   <<"environmentBlueprintIdentifier">> := string(),
+%%   <<"name">> := string(),
+%%   <<"projectIdentifier">> := string(),
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
--type subscribed_listing() :: #{binary() => any()}.
+-type create_environment_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_environment_blueprint_output() :: #{
+%% create_environment_profile_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"createdBy">> => [string()],
 %%   <<"description">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"provisioningProperties">> => list(),
+%%   <<"projectId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"userParameters">> => list(custom_parameter())
 %% }
--type update_environment_blueprint_output() :: #{binary() => any()}.
+-type create_environment_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_profile_policy_grant_detail() :: #{
+%%   <<"domainUnitId">> => string()
+%% }
+-type create_environment_profile_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_form_type_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"model">> := list(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_form_type_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3172,54 +1694,341 @@
 %% }
 -type create_form_type_output() :: #{binary() => any()}.
 
-%% Example:
-%% get_account_pool_input() :: #{}
--type get_account_pool_input() :: #{}.
-
 
 %% Example:
-%% lineage_sync_output() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"lineageJobId">> => [string()],
-%%   <<"schedule">> => string(),
-%%   <<"timezone">> => list(any())
+%% create_form_type_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
 %% }
--type lineage_sync_output() :: #{binary() => any()}.
-
-%% Example:
-%% workflows_serverless_properties_input() :: #{}
--type workflows_serverless_properties_input() :: #{}.
+-type create_form_type_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_entity_owners_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_glossary_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
--type list_entity_owners_input() :: #{binary() => any()}.
+-type create_glossary_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregation_output_item() :: #{
-%%   <<"count">> => [integer()],
-%%   <<"displayValue">> => string(),
-%%   <<"value">> => string()
+%% create_glossary_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
--type aggregation_output_item() :: #{binary() => any()}.
+-type create_glossary_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_metadata_generation_run_output() :: #{
+%% create_glossary_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_glossary_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_term_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"glossaryIdentifier">> := string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> := string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type create_glossary_term_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_glossary_term_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"usageRestrictions">> => list(list(any())())
+%% }
+-type create_glossary_term_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_profile_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"groupIdentifier">> => string(),
+%%   <<"rolePrincipalArn">> => [string()]
+%% }
+-type create_group_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type create_group_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_listing_change_set_input() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"entityIdentifier">> := string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> := list(any())
+%% }
+-type create_listing_change_set_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_listing_change_set_output() :: #{
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_listing_change_set_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notebook_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"parameters">> => map()
+%% }
+-type create_notebook_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"gitMetadata">> => git_metadata(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_notebook_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_from_project_profile_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()],
+%%   <<"projectProfiles">> => list([string()]())
+%% }
+-type create_project_from_project_profile_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"membershipAssignments">> => list(project_membership_assignment()),
+%%   <<"name">> := string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"projectExecutionRole">> => string(),
+%%   <<"projectProfileId">> => string(),
+%%   <<"resourceTags">> => map(),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
+%% }
+-type create_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_membership_input() :: #{
+%%   <<"designation">> := list(any()),
+%%   <<"member">> := list()
+%% }
+-type create_project_membership_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_membership_output() :: #{}
+-type create_project_membership_output() :: #{}.
+
+
+%% Example:
+%% create_project_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"projectProfileId">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
+%% }
+-type create_project_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type create_project_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_profile_input() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"domainUnitIdentifier">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
+%%   <<"name">> := string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_project_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_project_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_input() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> := list(),
+%%   <<"name">> := string(),
+%%   <<"scope">> := rule_scope(),
+%%   <<"target">> := list()
+%% }
+-type create_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any())
+%% }
+-type create_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_grant_input() :: #{
+%%   <<"assetTargetNames">> => list(asset_target_name_map()),
+%%   <<"clientToken">> => [string()],
+%%   <<"environmentIdentifier">> := string(),
+%%   <<"grantedEntity">> := list(),
+%%   <<"subscriptionTargetIdentifier">> => string()
+%% }
+-type create_subscription_grant_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
-%%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"types">> => list(list(any())())
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type start_metadata_generation_run_output() :: #{binary() => any()}.
+-type create_subscription_grant_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request_input() :: #{
+%%   <<"assetPermissions">> => list(asset_permission()),
+%%   <<"assetScopes">> => list(accepted_asset_scope()),
+%%   <<"clientToken">> => [string()],
+%%   <<"metadataForms">> => list(form_input()),
+%%   <<"requestReason">> := string(),
+%%   <<"subscribedListings">> := list(subscribed_listing_input()),
+%%   <<"subscribedPrincipals">> := list(list())
+%% }
+-type create_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_subscription_request_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3238,105 +2047,54 @@
 
 
 %% Example:
-%% update_data_source_input() :: #{
-%%   <<"assetFormsInput">> => list(form_input()),
-%%   <<"configuration">> => list(),
-%%   <<"description">> => string(),
-%%   <<"enableSetting">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"publishOnImport">> => [boolean()],
-%%   <<"recommendation">> => recommendation_configuration(),
-%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()],
-%%   <<"schedule">> => schedule_configuration()
-%% }
--type update_data_source_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_group_input() :: #{
-%%   <<"identifier">> => string()
-%% }
--type subscribed_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_in_data_product_listing_item() :: #{
-%%   <<"entityId">> => [string()],
-%%   <<"entityRevision">> => [string()],
-%%   <<"entityType">> => [string()]
-%% }
--type asset_in_data_product_listing_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_entry_input() :: #{
-%%   <<"required">> => [boolean()],
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type form_entry_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_listing() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetRevision">> => string(),
-%%   <<"assetType">> => string(),
+%% create_subscription_target_output() :: #{
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
-%%   <<"owningProjectId">> => string()
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type asset_listing() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_blueprint_input() :: #{}
--type delete_environment_blueprint_input() :: #{}.
-
-%% Example:
-%% delete_data_export_configuration_output() :: #{}
--type delete_data_export_configuration_output() :: #{}.
+-type create_subscription_target_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_unit_user_properties() :: #{
-%%   <<"userId">> => [string()]
-%% }
--type domain_unit_user_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_input() :: #{
+%% create_user_profile_input() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"skipDeletionCheck">> => [boolean()]
+%%   <<"sessionName">> => [string()],
+%%   <<"userIdentifier">> := string(),
+%%   <<"userType">> => list(any())
 %% }
--type delete_domain_input() :: #{binary() => any()}.
+-type create_user_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment_config() :: #{
-%%   <<"imageVersion">> => [string()],
-%%   <<"packageConfig">> => package_config()
+%% create_user_profile_output() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type environment_config() :: #{binary() => any()}.
+-type create_user_profile_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_rule_input() :: #{
-%%   <<"revision">> => string()
+%% custom_account_pool_handler() :: #{
+%%   <<"lambdaExecutionRoleArn">> => string(),
+%%   <<"lambdaFunctionArn">> => string()
 %% }
--type get_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_units_for_parent_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"parentDomainUnitIdentifier">> := string()
-%% }
--type list_domain_units_for_parent_input() :: #{binary() => any()}.
+-type custom_account_pool_handler() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3353,247 +2111,223 @@
 
 
 %% Example:
-%% get_asset_input() :: #{
+%% data_product_item() :: #{
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"identifier">> => string(),
+%%   <<"itemType">> => list(any()),
 %%   <<"revision">> => string()
 %% }
--type get_asset_input() :: #{binary() => any()}.
+-type data_product_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% projects_for_rule() :: #{
-%%   <<"selectionMode">> => list(any()),
-%%   <<"specificProjects">> => list(string())
+%% data_product_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
 %% }
--type projects_for_rule() :: #{binary() => any()}.
+-type data_product_item_additional_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_profile_output() :: #{
-%%   <<"details">> => list(),
+%% data_product_listing() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataProductId">> => string(),
+%%   <<"dataProductRevision">> => string(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"items">> => list(listing_summary()),
+%%   <<"owningProjectId">> => string()
+%% }
+-type data_product_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_listing_item() :: #{
+%%   <<"additionalAttributes">> => data_product_listing_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"items">> => list(listing_summary_item()),
+%%   <<"listingCreatedBy">> => string(),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string(),
+%%   <<"listingUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
+%% }
+-type data_product_listing_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_listing_item_additional_attributes() :: #{
+%%   <<"forms">> => string(),
+%%   <<"matchRationale">> => list(list())
+%% }
+-type data_product_listing_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_product_result_item() :: #{
+%%   <<"additionalAttributes">> => data_product_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string()
 %% }
--type update_user_profile_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_membership_output() :: #{}
--type create_project_membership_output() :: #{}.
+-type data_product_result_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% is_null_expression() :: #{
-%%   <<"columnName">> => [string()]
-%% }
--type is_null_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_match_item() :: #{
-%%   <<"attribute">> => string(),
-%%   <<"matchOffsets">> => list(match_offset()),
-%%   <<"text">> => [string()]
-%% }
--type text_match_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_policy_grant_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"detail">> := list(),
-%%   <<"policyType">> := list(any()),
-%%   <<"principal">> := list()
-%% }
--type add_policy_grant_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_output() :: #{}
--type delete_glossary_output() :: #{}.
-
-
-%% Example:
-%% get_glossary_term_output() :: #{
+%% data_product_revision() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"glossaryId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"usageRestrictions">> => list(list(any())())
+%%   <<"revision">> => string()
 %% }
--type get_glossary_term_output() :: #{binary() => any()}.
+-type data_product_revision() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_domains_output() :: #{
-%%   <<"items">> => list(domain_summary()),
-%%   <<"nextToken">> => string()
+%% data_source_error_message() :: #{
+%%   <<"errorDetail">> => [string()],
+%%   <<"errorType">> => list(any())
 %% }
--type list_domains_output() :: #{binary() => any()}.
+-type data_source_error_message() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_environment_output() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"deploymentProperties">> => deployment_properties(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentActions">> => list(configurable_environment_action()),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"environmentConfigurationId">> => string(),
-%%   <<"environmentConfigurationName">> => string(),
-%%   <<"environmentProfileId">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"lastDeployment">> => deployment(),
-%%   <<"name">> => string(),
+%% data_source_run_activity() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataAssetId">> => [string()],
+%%   <<"dataAssetStatus">> => list(any()),
+%%   <<"dataSourceRunId">> => string(),
+%%   <<"database">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"lineageSummary">> => lineage_info(),
 %%   <<"projectId">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"provisionedResources">> => list(resource()),
-%%   <<"provisioningProperties">> => list(),
+%%   <<"technicalDescription">> => string(),
+%%   <<"technicalName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source_run_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_run_lineage_summary() :: #{
+%%   <<"importStatus">> => list(any())
+%% }
+-type data_source_run_lineage_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_run_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type update_environment_output() :: #{binary() => any()}.
+-type data_source_run_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% like_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type like_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_output() :: #{
-%%   <<"assetFormsOutput">> => list(form_output()),
-%%   <<"configuration">> => list(),
+%% data_source_summary() :: #{
 %%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"enableSetting">> => list(any()),
-%%   <<"environmentId">> => string(),
-%%   <<"errorMessage">> => data_source_error_message(),
-%%   <<"id">> => string(),
+%%   <<"environmentId">> => [string()],
+%%   <<"lastRunAssetCount">> => [integer()],
 %%   <<"lastRunAt">> => non_neg_integer(),
 %%   <<"lastRunErrorMessage">> => data_source_error_message(),
 %%   <<"lastRunStatus">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"publishOnImport">> => [boolean()],
-%%   <<"recommendation">> => recommendation_configuration(),
 %%   <<"schedule">> => schedule_configuration(),
 %%   <<"status">> => list(any()),
-%%   <<"type">> => string(),
+%%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type create_data_source_output() :: #{binary() => any()}.
+-type data_source_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_pool_input() :: #{}
+-type delete_account_pool_input() :: #{}.
+
+%% Example:
+%% delete_account_pool_output() :: #{}
+-type delete_account_pool_output() :: #{}.
+
+%% Example:
+%% delete_asset_filter_input() :: #{}
+-type delete_asset_filter_input() :: #{}.
+
+%% Example:
+%% delete_asset_input() :: #{}
+-type delete_asset_input() :: #{}.
+
+%% Example:
+%% delete_asset_output() :: #{}
+-type delete_asset_output() :: #{}.
+
+%% Example:
+%% delete_asset_type_input() :: #{}
+-type delete_asset_type_input() :: #{}.
+
+%% Example:
+%% delete_asset_type_output() :: #{}
+-type delete_asset_type_output() :: #{}.
+
+%% Example:
+%% delete_connection_input() :: #{}
+-type delete_connection_input() :: #{}.
 
 
 %% Example:
-%% trigger_source() :: #{
-%%   <<"name">> => [string()],
-%%   <<"type">> => list(any())
+%% delete_connection_output() :: #{
+%%   <<"status">> => [string()]
 %% }
--type trigger_source() :: #{binary() => any()}.
+-type delete_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_export_configuration_input() :: #{}
+-type delete_data_export_configuration_input() :: #{}.
+
+%% Example:
+%% delete_data_export_configuration_output() :: #{}
+-type delete_data_export_configuration_output() :: #{}.
+
+%% Example:
+%% delete_data_product_input() :: #{}
+-type delete_data_product_input() :: #{}.
+
+%% Example:
+%% delete_data_product_output() :: #{}
+-type delete_data_product_output() :: #{}.
 
 
 %% Example:
-%% spark_glue_args() :: #{
-%%   <<"connection">> => [string()]
+%% delete_data_source_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()]
 %% }
--type spark_glue_args() :: #{binary() => any()}.
-
-
-%% Example:
-%% equal_to_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type equal_to_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_iam_portal_login_url_output() :: #{
-%%   <<"authCodeUrl">> => [string()],
-%%   <<"userProfileId">> => [string()]
-%% }
--type get_iam_portal_login_url_output() :: #{binary() => any()}.
-
-%% Example:
-%% workflows_serverless_properties_output() :: #{}
--type workflows_serverless_properties_output() :: #{}.
-
-
-%% Example:
-%% subscribed_product_listing() :: #{
-%%   <<"assetListings">> => list(asset_in_data_product_listing_item()),
-%%   <<"description">> => [string()],
-%%   <<"entityId">> => string(),
-%%   <<"entityRevision">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"name">> => [string()]
-%% }
--type subscribed_product_listing() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_attribute_output() :: #{
-%%   <<"attributeIdentifier">> => string()
-%% }
--type batch_put_attribute_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_rule() :: #{
-%%   <<"rule">> => list(any()),
-%%   <<"threshold">> => [float()]
-%% }
--type accept_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_generation_run_target() :: #{
-%%   <<"identifier">> => [string()],
-%%   <<"revision">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type metadata_generation_run_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_group() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type subscribed_group() :: #{binary() => any()}.
+-type delete_data_source_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3625,6 +2359,667 @@
 
 
 %% Example:
+%% delete_domain_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"skipDeletionCheck">> => [boolean()]
+%% }
+-type delete_domain_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_domain_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_domain_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_unit_input() :: #{}
+-type delete_domain_unit_input() :: #{}.
+
+%% Example:
+%% delete_domain_unit_output() :: #{}
+-type delete_domain_unit_output() :: #{}.
+
+%% Example:
+%% delete_environment_action_input() :: #{}
+-type delete_environment_action_input() :: #{}.
+
+%% Example:
+%% delete_environment_blueprint_configuration_input() :: #{}
+-type delete_environment_blueprint_configuration_input() :: #{}.
+
+%% Example:
+%% delete_environment_blueprint_configuration_output() :: #{}
+-type delete_environment_blueprint_configuration_output() :: #{}.
+
+%% Example:
+%% delete_environment_blueprint_input() :: #{}
+-type delete_environment_blueprint_input() :: #{}.
+
+%% Example:
+%% delete_environment_input() :: #{}
+-type delete_environment_input() :: #{}.
+
+%% Example:
+%% delete_environment_profile_input() :: #{}
+-type delete_environment_profile_input() :: #{}.
+
+%% Example:
+%% delete_form_type_input() :: #{}
+-type delete_form_type_input() :: #{}.
+
+%% Example:
+%% delete_form_type_output() :: #{}
+-type delete_form_type_output() :: #{}.
+
+%% Example:
+%% delete_glossary_input() :: #{}
+-type delete_glossary_input() :: #{}.
+
+%% Example:
+%% delete_glossary_output() :: #{}
+-type delete_glossary_output() :: #{}.
+
+%% Example:
+%% delete_glossary_term_input() :: #{}
+-type delete_glossary_term_input() :: #{}.
+
+%% Example:
+%% delete_glossary_term_output() :: #{}
+-type delete_glossary_term_output() :: #{}.
+
+%% Example:
+%% delete_lineage_event_input() :: #{}
+-type delete_lineage_event_input() :: #{}.
+
+
+%% Example:
+%% delete_lineage_event_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type delete_lineage_event_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listing_input() :: #{}
+-type delete_listing_input() :: #{}.
+
+%% Example:
+%% delete_listing_output() :: #{}
+-type delete_listing_output() :: #{}.
+
+%% Example:
+%% delete_notebook_input() :: #{}
+-type delete_notebook_input() :: #{}.
+
+%% Example:
+%% delete_notebook_output() :: #{}
+-type delete_notebook_output() :: #{}.
+
+
+%% Example:
+%% delete_project_input() :: #{
+%%   <<"skipDeletionCheck">> => [boolean()]
+%% }
+-type delete_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_project_membership_input() :: #{
+%%   <<"member">> := list()
+%% }
+-type delete_project_membership_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_membership_output() :: #{}
+-type delete_project_membership_output() :: #{}.
+
+%% Example:
+%% delete_project_output() :: #{}
+-type delete_project_output() :: #{}.
+
+%% Example:
+%% delete_project_profile_input() :: #{}
+-type delete_project_profile_input() :: #{}.
+
+%% Example:
+%% delete_project_profile_output() :: #{}
+-type delete_project_profile_output() :: #{}.
+
+%% Example:
+%% delete_rule_input() :: #{}
+-type delete_rule_input() :: #{}.
+
+%% Example:
+%% delete_rule_output() :: #{}
+-type delete_rule_output() :: #{}.
+
+%% Example:
+%% delete_subscription_grant_input() :: #{}
+-type delete_subscription_grant_input() :: #{}.
+
+
+%% Example:
+%% delete_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type delete_subscription_grant_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_request_input() :: #{}
+-type delete_subscription_request_input() :: #{}.
+
+%% Example:
+%% delete_subscription_target_input() :: #{}
+-type delete_subscription_target_input() :: #{}.
+
+
+%% Example:
+%% delete_time_series_data_points_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"formName">> := string()
+%% }
+-type delete_time_series_data_points_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_time_series_data_points_output() :: #{}
+-type delete_time_series_data_points_output() :: #{}.
+
+
+%% Example:
+%% deployment() :: #{
+%%   <<"deploymentId">> => [string()],
+%%   <<"deploymentStatus">> => list(any()),
+%%   <<"deploymentType">> => list(any()),
+%%   <<"failureReason">> => environment_error(),
+%%   <<"isDeploymentComplete">> => [boolean()],
+%%   <<"messages">> => list(string())
+%% }
+-type deployment() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_properties() :: #{
+%%   <<"endTimeoutMinutes">> => [integer()],
+%%   <<"startTimeoutMinutes">> => [integer()]
+%% }
+-type deployment_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% detailed_glossary_term() :: #{
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string()
+%% }
+-type detailed_glossary_term() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_environment_role_input() :: #{}
+-type disassociate_environment_role_input() :: #{}.
+
+%% Example:
+%% disassociate_environment_role_output() :: #{}
+-type disassociate_environment_role_output() :: #{}.
+
+
+%% Example:
+%% disassociate_governed_terms_input() :: #{
+%%   <<"governedGlossaryTerms">> := list(string())
+%% }
+-type disassociate_governed_terms_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_governed_terms_output() :: #{}
+-type disassociate_governed_terms_output() :: #{}.
+
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainVersion">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"managedAccountId">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_filter_for_project() :: #{
+%%   <<"domainUnit">> => string(),
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type domain_unit_filter_for_project() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_group_properties() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type domain_unit_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_policy_grant_principal() :: #{
+%%   <<"domainUnitDesignation">> => list(any()),
+%%   <<"domainUnitGrantFilter">> => list(),
+%%   <<"domainUnitIdentifier">> => string()
+%% }
+-type domain_unit_policy_grant_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type domain_unit_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_target() :: #{
+%%   <<"domainUnitId">> => string(),
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type domain_unit_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_unit_user_properties() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type domain_unit_user_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => [string()],
+%%   <<"sseAlgorithm">> => [string()]
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_pattern() :: #{
+%%   <<"entityType">> => list(any()),
+%%   <<"filters">> => list(),
+%%   <<"identifier">> => [string()]
+%% }
+-type entity_pattern() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_action_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
+%% }
+-type environment_action_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_blueprint_configuration_item() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_blueprint_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_blueprint_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisioningProperties">> => list(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_blueprint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_config() :: #{
+%%   <<"imageVersion">> => [string()],
+%%   <<"packageConfig">> => package_config()
+%% }
+-type environment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration() :: #{
+%%   <<"accountPools">> => list(string()),
+%%   <<"awsAccount">> => list(),
+%%   <<"awsRegion">> => list(),
+%%   <<"configurationParameters">> => environment_configuration_parameters_details(),
+%%   <<"deploymentMode">> => list(any()),
+%%   <<"deploymentOrder">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type environment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration_parameter() :: #{
+%%   <<"isEditable">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"value">> => [string()]
+%% }
+-type environment_configuration_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration_parameters_details() :: #{
+%%   <<"parameterOverrides">> => list(environment_configuration_parameter()),
+%%   <<"resolvedParameters">> => list(environment_configuration_parameter()),
+%%   <<"ssmPath">> => string()
+%% }
+-type environment_configuration_parameters_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_configuration_user_parameter() :: #{
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"environmentParameters">> => list(environment_parameter()),
+%%   <<"environmentResolvedAccount">> => environment_resolved_account()
+%% }
+-type environment_configuration_user_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_deployment_details() :: #{
+%%   <<"environmentFailureReasons">> => map(),
+%%   <<"overallDeploymentStatus">> => list(any())
+%% }
+-type environment_deployment_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type environment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_parameter() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type environment_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_profile_summary() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_resolved_account() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"regionName">> => string(),
+%%   <<"sourceAccountPoolId">> => string()
+%% }
+-type environment_resolved_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_cause() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type failure_cause() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"intValue">> => [float()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_expression() :: #{
+%%   <<"expression">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_entry_input() :: #{
+%%   <<"required">> => [boolean()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_entry_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_entry_output() :: #{
+%%   <<"required">> => [boolean()],
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_entry_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_input() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_output() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% form_type_data() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"imports">> => list(import()),
+%%   <<"model">> => list(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type form_type_data() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_pool_input() :: #{}
+-type get_account_pool_input() :: #{}.
+
+
+%% Example:
+%% get_account_pool_output() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_account_pool_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_asset_filter_input() :: #{}
+-type get_asset_filter_input() :: #{}.
+
+
+%% Example:
+%% get_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_asset_filter_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_asset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"externalIdentifier">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"listing">> => asset_listing_details(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
+%%   <<"revision">> => string(),
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type get_asset_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_type_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_asset_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_asset_type_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_asset_type_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_connection_input() :: #{
 %%   <<"withSecret">> => [boolean()]
 %% }
@@ -3650,251 +3045,109 @@
 %% }
 -type get_connection_output() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_export_configuration_input() :: #{}
+-type get_data_export_configuration_input() :: #{}.
+
 
 %% Example:
-%% get_glossary_output() :: #{
+%% get_data_export_configuration_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"isExportEnabled">> => [boolean()],
+%%   <<"s3TableBucketArn">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_data_export_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_product_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_data_product_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_product_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
+%%   <<"firstRevisionCreatedBy">> => string(),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type get_glossary_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_root_domain_unit_owner_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"currentOwner">> := string(),
-%%   <<"newOwner">> := [string()]
-%% }
--type update_root_domain_unit_owner_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_listing_item_additional_attributes() :: #{
-%%   <<"forms">> => string(),
-%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
-%%   <<"matchRationale">> => list(list())
-%% }
--type asset_listing_item_additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_blueprints_input() :: #{
-%%   <<"managed">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_blueprints_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sources_input() :: #{
-%%   <<"connectionIdentifier">> => [string()],
-%%   <<"environmentIdentifier">> => [string()],
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectIdentifier">> := [string()],
-%%   <<"status">> => list(any()),
-%%   <<"type">> => string()
-%% }
--type list_data_sources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lineage_events_output() :: #{
-%%   <<"items">> => list(lineage_event_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_lineage_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_properties_input() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
-%% }
--type iam_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_projects_output() :: #{
-%%   <<"items">> => list(project_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_projects_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_profile_output() :: #{
-%%   <<"details">> => list(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type create_user_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_user_profiles_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchText">> => string(),
-%%   <<"userType">> := list(any())
-%% }
--type search_user_profiles_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_environment_action_output() :: #{
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"parameters">> => list()
-%% }
--type get_environment_action_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_notebook_export_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"fileFormat">> => list(any()),
-%%   <<"id">> => string(),
-%%   <<"notebookId">> => string(),
-%%   <<"owningProjectId">> => string(),
+%%   <<"revision">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type start_notebook_export_output() :: #{binary() => any()}.
+-type get_data_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_input() :: #{}
+-type get_data_source_input() :: #{}.
 
 
 %% Example:
-%% data_source_run_lineage_summary() :: #{
-%%   <<"importStatus">> => list(any())
-%% }
--type data_source_run_lineage_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% notebook_run_error() :: #{
-%%   <<"message">> => [string()]
-%% }
--type notebook_run_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_subscription_request_output() :: #{
+%% get_data_source_output() :: #{
+%%   <<"assetFormsOutput">> => list(form_output()),
+%%   <<"configuration">> => list(),
+%%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"decisionComment">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"existingSubscriptionId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()),
-%%   <<"requestReason">> => string(),
-%%   <<"reviewerId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()),
-%%   <<"subscribedPrincipals">> => list(list()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type reject_subscription_request_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% hyper_pod_properties_input() :: #{
-%%   <<"clusterName">> => [string()]
-%% }
--type hyper_pod_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic() :: #{
-%%   <<"resource">> => notification_resource(),
-%%   <<"role">> => list(any()),
-%%   <<"subject">> => [string()]
-%% }
--type topic() :: #{binary() => any()}.
-
-
-%% Example:
-%% snowflake_properties_input() :: #{
-%%   <<"connectivityProperties">> => connectivity_properties(),
-%%   <<"identityMapping">> => identity_mapping(),
-%%   <<"lineageSync">> => lineage_sync_input(),
-%%   <<"snowflakeRole">> => string()
-%% }
--type snowflake_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notebook_output() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"computeId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"error">> => notebook_error(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
 %%   <<"id">> => string(),
-%%   <<"lockExpiresAt">> => [non_neg_integer()],
-%%   <<"lockedAt">> => [non_neg_integer()],
-%%   <<"lockedBy">> => [string()],
-%%   <<"metadata">> => map(),
+%%   <<"lastRunAssetCount">> => [integer()],
+%%   <<"lastRunAt">> => non_neg_integer(),
+%%   <<"lastRunErrorMessage">> => data_source_error_message(),
+%%   <<"lastRunStatus">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"parameters">> => map(),
+%%   <<"projectId">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"schedule">> => schedule_configuration(),
+%%   <<"selfGrantStatus">> => list(),
 %%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type create_notebook_output() :: #{binary() => any()}.
+-type get_data_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_run_input() :: #{}
+-type get_data_source_run_input() :: #{}.
 
 
 %% Example:
-%% configurable_environment_action() :: #{
-%%   <<"auth">> => list(any()),
-%%   <<"parameters">> => list(configurable_action_parameter()),
-%%   <<"type">> => [string()]
+%% get_data_source_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceConfigurationSnapshot">> => [string()],
+%%   <<"dataSourceId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type configurable_environment_action() :: #{binary() => any()}.
-
+-type get_data_source_run_output() :: #{binary() => any()}.
 
 %% Example:
-%% start_notebook_run_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"computeConfiguration">> => compute_config(),
-%%   <<"metadata">> => map(),
-%%   <<"networkConfiguration">> => network_config(),
-%%   <<"notebookIdentifier">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"parameters">> => map(),
-%%   <<"scheduleIdentifier">> => string(),
-%%   <<"timeoutConfiguration">> => timeout_config(),
-%%   <<"triggerSource">> => trigger_source()
-%% }
--type start_notebook_run_input() :: #{binary() => any()}.
+%% get_domain_input() :: #{}
+-type get_domain_input() :: #{}.
 
 
 %% Example:
@@ -3917,44 +3170,33 @@
 %% }
 -type get_domain_output() :: #{binary() => any()}.
 
+%% Example:
+%% get_domain_unit_input() :: #{}
+-type get_domain_unit_input() :: #{}.
+
 
 %% Example:
-%% search_listings_output() :: #{
-%%   <<"aggregates">> => list(aggregation_output()),
-%%   <<"items">> => list(list()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalMatchCount">> => [integer()]
+%% get_domain_unit_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owners">> => list(list()),
+%%   <<"parentDomainUnitId">> => string()
 %% }
--type search_listings_output() :: #{binary() => any()}.
+-type get_domain_unit_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_action_input() :: #{}
+-type get_environment_action_input() :: #{}.
 
 
 %% Example:
-%% aggregation_output() :: #{
-%%   <<"attribute">> => string(),
-%%   <<"displayValue">> => string(),
-%%   <<"items">> => list(aggregation_output_item())
-%% }
--type aggregation_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% prediction_configuration() :: #{
-%%   <<"businessNameGeneration">> => business_name_generation_configuration()
-%% }
--type prediction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_error() :: #{
-%%   <<"attributeIdentifier">> => string(),
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type attribute_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_action_summary() :: #{
+%% get_environment_action_output() :: #{
 %%   <<"description">> => [string()],
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
@@ -3962,20 +3204,63 @@
 %%   <<"name">> => [string()],
 %%   <<"parameters">> => list()
 %% }
--type environment_action_summary() :: #{binary() => any()}.
+-type get_environment_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_blueprint_configuration_input() :: #{}
+-type get_environment_blueprint_configuration_input() :: #{}.
 
 
 %% Example:
-%% environment_blueprint_summary() :: #{
+%% get_environment_blueprint_configuration_output() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_environment_blueprint_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_blueprint_input() :: #{}
+-type get_environment_blueprint_input() :: #{}.
+
+
+%% Example:
+%% get_environment_blueprint_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => [string()],
 %%   <<"provisioningProperties">> => list(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
--type environment_blueprint_summary() :: #{binary() => any()}.
+-type get_environment_blueprint_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_credentials_input() :: #{}
+-type get_environment_credentials_input() :: #{}.
+
+
+%% Example:
+%% get_environment_credentials_output() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"secretAccessKey">> => [string()],
+%%   <<"sessionToken">> => [string()]
+%% }
+-type get_environment_credentials_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_environment_input() :: #{}
@@ -3983,422 +3268,36 @@
 
 
 %% Example:
-%% create_glossary_input() :: #{
-%%   <<"clientToken">> => string(),
+%% get_environment_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"status">> => list(any()),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type create_glossary_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_revision_input() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"revision">> => string()
-%% }
--type listing_revision_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_account_pool_handler() :: #{
-%%   <<"lambdaExecutionRoleArn">> => string(),
-%%   <<"lambdaFunctionArn">> => string()
-%% }
--type custom_account_pool_handler() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notebooks_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type list_notebooks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_output() :: #{
-%%   <<"items">> => list(environment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environments_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_statistics_for_assets() :: #{
-%%   <<"added">> => [integer()],
-%%   <<"failed">> => [integer()],
-%%   <<"skipped">> => [integer()],
-%%   <<"unchanged">> => [integer()],
-%%   <<"updated">> => [integer()]
-%% }
--type run_statistics_for_assets() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_properties_patch() :: #{
-%%   <<"glueConnectionInput">> => glue_connection_patch()
-%% }
--type glue_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_subscription_grant_status_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"grantedEntity">> => list(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type update_subscription_grant_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_environment_input() :: #{
-%%   <<"blueprintVersion">> => [string()],
-%%   <<"description">> => [string()],
+%%   <<"environmentActions">> => list(configurable_environment_action()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentProfileId">> => string(),
 %%   <<"glossaryTerms">> => list(string()),
-%%   <<"name">> => [string()],
-%%   <<"userParameters">> => list(environment_parameter())
-%% }
--type update_environment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_targets_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_subscription_targets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% sage_maker_run_configuration_input() :: #{
-%%   <<"trackingAssets">> => map()
-%% }
--type sage_maker_run_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_notebook_run_input() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type stop_notebook_run_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_asset_filter_input() :: #{}
--type get_asset_filter_input() :: #{}.
-
-
-%% Example:
-%% post_lineage_event_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string()
-%% }
--type post_lineage_event_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% use_asset_type_policy_grant_detail() :: #{
-%%   <<"domainUnitId">> => string()
-%% }
--type use_asset_type_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_equal_to_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type not_equal_to_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_series_data_point_form_output() :: #{
-%%   <<"content">> => [string()],
-%%   <<"formName">> => string(),
 %%   <<"id">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type time_series_data_point_form_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_like_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type not_like_expression() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_request_input() :: #{}
--type delete_subscription_request_input() :: #{}.
-
-
-%% Example:
-%% owner_group_properties() :: #{
-%%   <<"groupIdentifier">> => string()
-%% }
--type owner_group_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_type_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"formsOutput">> => map(),
+%%   <<"lastDeployment">> => deployment(),
 %%   <<"name">> => string(),
-%%   <<"originDomainId">> => string(),
-%%   <<"originProjectId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type asset_type_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lineage_event_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"processingStatus">> => list(any())
-%% }
--type delete_lineage_event_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_o_auth2_credentials() :: #{
-%%   <<"accessToken">> => [string()],
-%%   <<"jwtToken">> => [string()],
-%%   <<"refreshToken">> => [string()],
-%%   <<"userManagedClientApplicationClientSecret">> => [string()]
-%% }
--type glue_o_auth2_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_run_configuration_input() :: #{
-%%   <<"autoImportDataQualityResult">> => [boolean()],
-%%   <<"catalogName">> => [string()],
-%%   <<"dataAccessRole">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
-%% }
--type glue_run_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notebook_input() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"status">> => list(any())
-%% }
--type update_notebook_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% athena_properties_input() :: #{
-%%   <<"workgroupName">> => [string()]
-%% }
--type athena_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_product_revisions_output() :: #{
-%%   <<"items">> => list(data_product_revision()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_product_revisions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_run_activities_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_data_source_run_activities_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% mlflow_properties_input() :: #{
-%%   <<"trackingServerArn">> => [string()]
-%% }
--type mlflow_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_properties_output() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"registerS3AccessGrantLocation">> => [boolean()],
-%%   <<"s3AccessGrantLocationId">> => string(),
-%%   <<"s3Uri">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type s3_properties_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_input() :: #{}
--type delete_glossary_input() :: #{}.
-
-
-%% Example:
-%% owner_user_properties() :: #{
-%%   <<"userIdentifier">> => string()
-%% }
--type owner_user_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_node_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"sourceIdentifier">> => [string()],
-%%   <<"typeName">> => [string()],
-%%   <<"typeRevision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type lineage_node_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_glue_properties_input() :: #{
-%%   <<"additionalArgs">> => spark_glue_args(),
-%%   <<"glueConnectionName">> => [string()],
-%%   <<"glueConnectionNames">> => list(string()),
-%%   <<"glueVersion">> => [string()],
-%%   <<"idleTimeout">> => [integer()],
-%%   <<"javaVirtualEnv">> => [string()],
-%%   <<"numberOfWorkers">> => [integer()],
-%%   <<"pythonVirtualEnv">> => [string()],
-%%   <<"workerType">> => [string()]
-%% }
--type spark_glue_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"grantedEntity">> => list(),
-%%   <<"id">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisionedResources">> => list(resource()),
+%%   <<"provisioningProperties">> => list(),
 %%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
--type create_subscription_grant_output() :: #{binary() => any()}.
-
+-type get_environment_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_glossary_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type create_glossary_policy_grant_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_term_output() :: #{}
--type delete_glossary_term_output() :: #{}.
-
-
-%% Example:
-%% athena_properties_patch() :: #{
-%%   <<"workgroupName">> => [string()]
-%% }
--type athena_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_requests_input() :: #{
-%%   <<"approverProjectId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owningGroupId">> => string(),
-%%   <<"owningIamPrincipalArn">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"owningUserId">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListingId">> => string()
-%% }
--type list_subscription_requests_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_type_data() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"imports">> => list(import()),
-%%   <<"model">> => list(),
-%%   <<"name">> => string(),
-%%   <<"originDomainId">> => string(),
-%%   <<"originProjectId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type form_type_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_permission() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"permissions">> => list()
-%% }
--type asset_permission() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_project() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type subscribed_project() :: #{binary() => any()}.
+%% get_environment_profile_input() :: #{}
+-type get_environment_profile_input() :: #{}.
 
 
 %% Example:
@@ -4420,141 +3319,36 @@
 
 
 %% Example:
-%% rule_scope() :: #{
-%%   <<"assetType">> => asset_types_for_rule(),
-%%   <<"dataProduct">> => [boolean()],
-%%   <<"project">> => projects_for_rule()
+%% get_form_type_input() :: #{
+%%   <<"revision">> => string()
 %% }
--type rule_scope() :: #{binary() => any()}.
+-type get_form_type_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_glossary_term_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"glossaryId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations(),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type create_glossary_term_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_profile_input() :: #{}
--type get_environment_profile_input() :: #{}.
-
-
-%% Example:
-%% entity_pattern() :: #{
-%%   <<"entityType">> => list(any()),
-%%   <<"filters">> => list(),
-%%   <<"identifier">> => [string()]
-%% }
--type entity_pattern() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_product_output() :: #{
+%% get_form_type_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"items">> => list(data_product_item()),
+%%   <<"imports">> => list(import()),
+%%   <<"model">> => list(),
 %%   <<"name">> => string(),
+%%   <<"originDomainId">> => string(),
+%%   <<"originProjectId">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"revision">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type create_data_product_output() :: #{binary() => any()}.
+-type get_form_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_input() :: #{}
+-type get_glossary_input() :: #{}.
 
 
 %% Example:
-%% create_environment_profile_output() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
-%% }
--type create_environment_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_listings_input() :: #{
-%%   <<"additionalAttributes">> => list(list(any())()),
-%%   <<"aggregations">> => list(aggregation_list_item()),
-%%   <<"filters">> => list(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchIn">> => list(search_in_item()),
-%%   <<"searchText">> => [string()],
-%%   <<"sort">> => search_sort()
-%% }
--type search_listings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_expression() :: #{
-%%   <<"expression">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_properties_input() :: #{
-%%   <<"glueConnectionInput">> => glue_connection_input()
-%% }
--type glue_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% connectivity_properties() :: #{
-%%   <<"athenaProperties">> => map(),
-%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
-%%   <<"connectionProperties">> => map(),
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
-%%   <<"pythonProperties">> => map(),
-%%   <<"sparkProperties">> => map(),
-%%   <<"validateCredentials">> => [boolean()],
-%%   <<"validateForComputeEnvironments">> => list(list(any())())
-%% }
--type connectivity_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_filters_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_asset_filters_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_job_run_input() :: #{}
--type get_job_run_input() :: #{}.
-
-
-%% Example:
-%% glossary_item() :: #{
-%%   <<"additionalAttributes">> => glossary_item_additional_attributes(),
+%% get_glossary_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -4567,87 +3361,402 @@
 %%   <<"updatedBy">> => string(),
 %%   <<"usageRestrictions">> => list(list(any())())
 %% }
--type glossary_item() :: #{binary() => any()}.
+-type get_glossary_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_glossary_term_input() :: #{}
+-type get_glossary_term_input() :: #{}.
 
 
 %% Example:
-%% list_subscription_grants_input() :: #{
-%%   <<"environmentId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owningGroupId">> => string(),
-%%   <<"owningIamPrincipalArn">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"owningUserId">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"subscribedListingId">> => string(),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string()
+%% get_glossary_term_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
--type list_subscription_grants_input() :: #{binary() => any()}.
+-type get_glossary_term_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_profile_input() :: #{}
+-type get_group_profile_input() :: #{}.
 
 
 %% Example:
-%% filter() :: #{
-%%   <<"attribute">> => string(),
-%%   <<"intValue">> => [float()],
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => [string()]
+%% get_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
+%%   <<"status">> => list(any())
 %% }
--type filter() :: #{binary() => any()}.
+-type get_group_profile_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_iam_portal_login_url_input() :: #{}
+-type get_iam_portal_login_url_input() :: #{}.
 
 
 %% Example:
-%% create_asset_type_output() :: #{
+%% get_iam_portal_login_url_output() :: #{
+%%   <<"authCodeUrl">> => [string()],
+%%   <<"userProfileId">> => [string()]
+%% }
+-type get_iam_portal_login_url_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_run_input() :: #{}
+-type get_job_run_input() :: #{}.
+
+
+%% Example:
+%% get_job_run_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"error">> => job_run_error(),
+%%   <<"id">> => [string()],
+%%   <<"jobId">> => [string()],
+%%   <<"jobType">> => list(any()),
+%%   <<"runMode">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type get_job_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_lineage_event_input() :: #{}
+-type get_lineage_event_input() :: #{}.
+
+
+%% Example:
+%% get_lineage_event_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"event">> => binary(),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type get_lineage_event_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lineage_node_input() :: #{
+%%   <<"eventTimestamp">> => [non_neg_integer()]
+%% }
+-type get_lineage_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lineage_node_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"downstreamNodes">> => list(lineage_node_reference()),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"upstreamNodes">> => list(lineage_node_reference())
+%% }
+-type get_lineage_node_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_listing_input() :: #{
+%%   <<"listingRevision">> => string()
+%% }
+-type get_listing_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_listing_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"formsOutput">> => map(),
+%%   <<"id">> => string(),
+%%   <<"item">> => list(),
+%%   <<"listingRevision">> => string(),
 %%   <<"name">> => string(),
-%%   <<"originDomainId">> => string(),
-%%   <<"originProjectId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type create_asset_type_output() :: #{binary() => any()}.
+-type get_listing_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_destination() :: #{
-%%   <<"uri">> => string()
+%% get_metadata_generation_run_input() :: #{
+%%   <<"type">> => list(any())
 %% }
--type s3_destination() :: #{binary() => any()}.
+-type get_metadata_generation_run_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_data_source_run_input() :: #{
-%%   <<"clientToken">> => [string()]
+%% get_metadata_generation_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => metadata_generation_run_target(),
+%%   <<"type">> => list(any()),
+%%   <<"typeStats">> => list(metadata_generation_run_type_stat()),
+%%   <<"types">> => list(list(any())())
 %% }
--type start_data_source_run_input() :: #{binary() => any()}.
+-type get_metadata_generation_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_export_input() :: #{}
+-type get_notebook_export_input() :: #{}.
 
 
 %% Example:
-%% create_rule_input() :: #{
-%%   <<"action">> := list(any()),
-%%   <<"clientToken">> => string(),
+%% get_notebook_export_output() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"error">> => notebook_export_error(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"outputLocation">> => list(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_notebook_export_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_input() :: #{}
+-type get_notebook_input() :: #{}.
+
+
+%% Example:
+%% get_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
-%%   <<"detail">> := list(),
-%%   <<"name">> := string(),
-%%   <<"scope">> := rule_scope(),
-%%   <<"target">> := list()
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"gitMetadata">> => git_metadata(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type create_rule_input() :: #{binary() => any()}.
+-type get_notebook_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_notebook_run_input() :: #{}
+-type get_notebook_run_input() :: #{}.
 
 
 %% Example:
-%% search_in_item() :: #{
-%%   <<"attribute">> => string()
+%% get_notebook_run_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_run_error(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"storageConfiguration">> => storage_config(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type search_in_item() :: #{binary() => any()}.
+-type get_notebook_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_input() :: #{}
+-type get_project_input() :: #{}.
+
+
+%% Example:
+%% get_project_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"projectProfileId">> => string(),
+%%   <<"projectStatus">> => list(any()),
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
+%% }
+-type get_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_profile_input() :: #{}
+-type get_project_profile_input() :: #{}.
+
+
+%% Example:
+%% get_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_project_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_rule_input() :: #{
+%%   <<"revision">> => string()
+%% }
+-type get_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_rule_output() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_grant_input() :: #{}
+-type get_subscription_grant_input() :: #{}.
+
+
+%% Example:
+%% get_subscription_grant_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_grant_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_input() :: #{}
+-type get_subscription_input() :: #{}.
+
+
+%% Example:
+%% get_subscription_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_request_details_input() :: #{}
+-type get_subscription_request_details_input() :: #{}.
+
+
+%% Example:
+%% get_subscription_request_details_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_subscription_request_details_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_target_input() :: #{}
+-type get_subscription_target_input() :: #{}.
 
 
 %% Example:
@@ -4673,92 +3782,10 @@
 
 
 %% Example:
-%% create_asset_revision_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"externalIdentifier">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"governedGlossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
-%%   <<"listing">> => asset_listing_details(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()),
-%%   <<"revision">> => string(),
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
+%% get_time_series_data_point_input() :: #{
+%%   <<"formName">> := string()
 %% }
--type create_asset_revision_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_project_membership_input() :: #{
-%%   <<"member">> := list()
-%% }
--type delete_project_membership_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_to_project_member_pool_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type add_to_project_member_pool_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% owner_user_properties_output() :: #{
-%%   <<"userId">> => [string()]
-%% }
--type owner_user_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_credentials() :: #{
-%%   <<"accessKeyId">> => [string()],
-%%   <<"expiration">> => [non_neg_integer()],
-%%   <<"secretAccessKey">> => [string()],
-%%   <<"sessionToken">> => [string()]
-%% }
--type connection_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_unit_output() :: #{
-%%   <<"ancestorDomainUnitIds">> => list(string()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owners">> => list(list()),
-%%   <<"parentDomainUnitId">> => string()
-%% }
--type create_domain_unit_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_product_result_item() :: #{
-%%   <<"additionalAttributes">> => data_product_item_additional_attributes(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string()
-%% }
--type data_product_result_item() :: #{binary() => any()}.
+-type get_time_series_data_point_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4773,13 +3800,164 @@
 
 
 %% Example:
-%% create_environment_blueprint_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"provisioningProperties">> := list(),
-%%   <<"userParameters">> => list(custom_parameter())
+%% get_user_profile_input() :: #{
+%%   <<"sessionName">> => [string()],
+%%   <<"type">> => list(any())
 %% }
--type create_environment_blueprint_input() :: #{binary() => any()}.
+-type get_user_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_user_profile_output() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type get_user_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_metadata() :: #{
+%%   <<"branch">> => string(),
+%%   <<"commitHash">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"committedAt">> => [non_neg_integer()],
+%%   <<"connectionId">> => string(),
+%%   <<"fileName">> => string(),
+%%   <<"repository">> => string()
+%% }
+-type git_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_properties_input() :: #{
+%%   <<"codeConnectionArn">> => [string()],
+%%   <<"defaultBranch">> => [string()],
+%%   <<"repositoryId">> => [string()]
+%% }
+-type git_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_properties_output() :: #{
+%%   <<"codeConnectionArn">> => [string()],
+%%   <<"defaultBranch">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"repositoryId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type git_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_properties_patch() :: #{
+%%   <<"codeConnectionArn">> => [string()],
+%%   <<"defaultBranch">> => [string()]
+%% }
+-type git_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_item() :: #{
+%%   <<"additionalAttributes">> => glossary_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
+%% }
+-type glossary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
+%% }
+-type glossary_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_term_enforcement_detail() :: #{
+%%   <<"requiredGlossaryTermIds">> => list(string())
+%% }
+-type glossary_term_enforcement_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_term_item() :: #{
+%%   <<"additionalAttributes">> => glossary_term_item_additional_attributes(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
+%% }
+-type glossary_term_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% glossary_term_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
+%% }
+-type glossary_term_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_connection() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration(),
+%%   <<"compatibleComputeEnvironments">> => list(list(any())()),
+%%   <<"connectionProperties">> => map(),
+%%   <<"connectionSchemaVersion">> => [integer()],
+%%   <<"connectionType">> => list(any()),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"lastConnectionValidationTime">> => [non_neg_integer()],
+%%   <<"lastUpdatedBy">> => [string()],
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"matchCriteria">> => list([string()]()),
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type glue_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_connection_input() :: #{
+%%   <<"athenaProperties">> => map(),
+%%   <<"authenticationConfiguration">> => authentication_configuration_input(),
+%%   <<"connectionProperties">> => map(),
+%%   <<"connectionType">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"matchCriteria">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"physicalConnectionRequirements">> => physical_connection_requirements(),
+%%   <<"pythonProperties">> => map(),
+%%   <<"sparkProperties">> => map(),
+%%   <<"validateCredentials">> => [boolean()],
+%%   <<"validateForComputeEnvironments">> => list(list(any())())
+%% }
+-type glue_connection_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4789,6 +3967,663 @@
 %%   <<"description">> => [string()]
 %% }
 -type glue_connection_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_o_auth2_credentials() :: #{
+%%   <<"accessToken">> => [string()],
+%%   <<"jwtToken">> => [string()],
+%%   <<"refreshToken">> => [string()],
+%%   <<"userManagedClientApplicationClientSecret">> => [string()]
+%% }
+-type glue_o_auth2_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_properties_input() :: #{
+%%   <<"glueConnectionInput">> => glue_connection_input()
+%% }
+-type glue_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type glue_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_properties_patch() :: #{
+%%   <<"glueConnectionInput">> => glue_connection_patch()
+%% }
+-type glue_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_run_configuration_input() :: #{
+%%   <<"autoImportDataQualityResult">> => [boolean()],
+%%   <<"catalogName">> => [string()],
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
+%% }
+-type glue_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"autoImportDataQualityResult">> => [boolean()],
+%%   <<"catalogName">> => [string()],
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"region">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
+%% }
+-type glue_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_self_grant_status_output() :: #{
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
+%% }
+-type glue_self_grant_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% greater_than_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type greater_than_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% greater_than_or_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type greater_than_or_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_details() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type group_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_profile_summary() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type group_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% hyper_pod_properties_input() :: #{
+%%   <<"clusterName">> => [string()]
+%% }
+-type hyper_pod_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% hyper_pod_properties_output() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterName">> => [string()],
+%%   <<"orchestrator">> => list(any())
+%% }
+-type hyper_pod_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_properties_input() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_properties_output() :: #{
+%%   <<"environmentId">> => [string()],
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_properties_patch() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type iam_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_user_profile_details() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"groupProfileId">> => [string()],
+%%   <<"principalId">> => [string()],
+%%   <<"sessionName">> => [string()]
+%% }
+-type iam_user_profile_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_mapping() :: #{
+%%   <<"prefix">> => [string()],
+%%   <<"usernameAttribute">> => [string()]
+%% }
+-type identity_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% import() :: #{
+%%   <<"name">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type import() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"values">> => list([string()]())
+%% }
+-type in_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% is_not_null_expression() :: #{
+%%   <<"columnName">> => [string()]
+%% }
+-type is_not_null_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% is_null_expression() :: #{
+%%   <<"columnName">> => [string()]
+%% }
+-type is_null_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type job_run_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_run_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"error">> => job_run_error(),
+%%   <<"jobId">> => [string()],
+%%   <<"jobType">> => list(any()),
+%%   <<"runId">> => [string()],
+%%   <<"runMode">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type job_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lake_formation_configuration() :: #{
+%%   <<"locationRegistrationExcludeS3Locations">> => list(string()),
+%%   <<"locationRegistrationRole">> => string()
+%% }
+-type lake_formation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lakehouse_properties_input() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% lakehouse_properties_output() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lakehouse_properties_patch() :: #{
+%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%% }
+-type lakehouse_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% less_than_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type less_than_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% less_than_or_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type less_than_or_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% like_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type like_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_event_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"eventSummary">> => list(),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"processingStatus">> => list(any())
+%% }
+-type lineage_event_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_info() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"eventId">> => [string()],
+%%   <<"eventStatus">> => list(any())
+%% }
+-type lineage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_node_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"downstreamLineageNodeIds">> => list(string()),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"upstreamLineageNodeIds">> => list(string())
+%% }
+-type lineage_node_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_node_reference() :: #{
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"id">> => string()
+%% }
+-type lineage_node_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_node_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sourceIdentifier">> => [string()],
+%%   <<"typeName">> => [string()],
+%%   <<"typeRevision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type lineage_node_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_node_type_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"domainId">> => string(),
+%%   <<"formsOutput">> => map(),
+%%   <<"name">> => [string()],
+%%   <<"revision">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type lineage_node_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_run_details() :: #{
+%%   <<"sqlQueryRunDetails">> => lineage_sql_query_run_details()
+%% }
+-type lineage_run_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sql_query_run_details() :: #{
+%%   <<"errorMessages">> => list([string()]()),
+%%   <<"numQueriesFailed">> => [integer()],
+%%   <<"queryEndTime">> => [non_neg_integer()],
+%%   <<"queryStartTime">> => [non_neg_integer()],
+%%   <<"totalQueriesProcessed">> => [integer()]
+%% }
+-type lineage_sql_query_run_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sync_input() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type lineage_sync_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sync_output() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"lineageJobId">> => [string()],
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type lineage_sync_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lineage_sync_schedule() :: #{
+%%   <<"schedule">> => [string()]
+%% }
+-type lineage_sync_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_pools_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_account_pools_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_pools_output() :: #{
+%%   <<"items">> => list(account_pool_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_account_pools_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_in_account_pool_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_in_account_pool_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_in_account_pool_output() :: #{
+%%   <<"items">> => list(account_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_in_account_pool_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_filters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_asset_filters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_filters_output() :: #{
+%%   <<"items">> => list(asset_filter_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_filters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_revisions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_revisions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_asset_revisions_output() :: #{
+%%   <<"items">> => list(asset_revision()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_asset_revisions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connections_input() :: #{
+%%   <<"environmentIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> => string(),
+%%   <<"scope">> => list(any()),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_connections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connections_output() :: #{
+%%   <<"items">> => list(connection_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_product_revisions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_product_revisions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_product_revisions_output() :: #{
+%%   <<"items">> => list(data_product_revision()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_product_revisions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_run_activities_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_data_source_run_activities_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_run_activities_output() :: #{
+%%   <<"items">> => list(data_source_run_activity()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_run_activities_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_data_source_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_runs_output() :: #{
+%%   <<"items">> => list(data_source_run_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_input() :: #{
+%%   <<"connectionIdentifier">> => [string()],
+%%   <<"environmentIdentifier">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> := [string()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string()
+%% }
+-type list_data_sources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_output() :: #{
+%%   <<"items">> => list(data_source_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_units_for_parent_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentDomainUnitIdentifier">> := string()
+%% }
+-type list_domain_units_for_parent_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_units_for_parent_output() :: #{
+%%   <<"items">> => list(domain_unit_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_units_for_parent_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_domains_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_output() :: #{
+%%   <<"items">> => list(domain_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_owners_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entity_owners_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_owners_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"owners">> => list(list())
+%% }
+-type list_entity_owners_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_actions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_actions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_actions_output() :: #{
+%%   <<"items">> => list(environment_action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_actions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprint_configurations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprint_configurations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprint_configurations_output() :: #{
+%%   <<"items">> => list(environment_blueprint_configuration_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprint_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprints_input() :: #{
+%%   <<"managed">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprints_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_blueprints_output() :: #{
+%%   <<"items">> => list(environment_blueprint_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_blueprints_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4802,6 +4637,2235 @@
 %%   <<"projectIdentifier">> => string()
 %% }
 -type list_environment_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_profiles_output() :: #{
+%%   <<"items">> => list(environment_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"environmentBlueprintIdentifier">> => string(),
+%%   <<"environmentProfileIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> := string(),
+%%   <<"provider">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_environments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_output() :: #{
+%%   <<"items">> => list(environment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environments_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_job_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_output() :: #{
+%%   <<"items">> => list(job_run_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_events_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"processingStatus">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"timestampAfter">> => [non_neg_integer()],
+%%   <<"timestampBefore">> => [non_neg_integer()]
+%% }
+-type list_lineage_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_events_output() :: #{
+%%   <<"items">> => list(lineage_event_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_lineage_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_node_history_input() :: #{
+%%   <<"direction">> => list(any()),
+%%   <<"eventTimestampGTE">> => [non_neg_integer()],
+%%   <<"eventTimestampLTE">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_lineage_node_history_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lineage_node_history_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"nodes">> => list(lineage_node_summary())
+%% }
+-type list_lineage_node_history_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metadata_generation_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetIdentifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_metadata_generation_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metadata_generation_runs_output() :: #{
+%%   <<"items">> => list(metadata_generation_run_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metadata_generation_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebook_runs_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"notebookIdentifier">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"scheduleIdentifier">> => string(),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_notebook_runs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebook_runs_output() :: #{
+%%   <<"items">> => list(notebook_run_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_notebook_runs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebooks_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_notebooks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notebooks_output() :: #{
+%%   <<"items">> => list(notebook_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_notebooks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_input() :: #{
+%%   <<"afterTimestamp">> => [non_neg_integer()],
+%%   <<"beforeTimestamp">> => [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"subjects">> => list([string()]()),
+%%   <<"taskStatus">> => list(any()),
+%%   <<"type">> := list(any())
+%% }
+-type list_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notifications">> => list(notification_output())
+%% }
+-type list_notifications_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_grants_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type list_policy_grants_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_grants_output() :: #{
+%%   <<"grantList">> => list(policy_grant_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_grants_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_memberships_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_project_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_memberships_output() :: #{
+%%   <<"members">> => list(project_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_memberships_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_profiles_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_project_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_project_profiles_output() :: #{
+%%   <<"items">> => list(project_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_project_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_input() :: #{
+%%   <<"groupIdentifier">> => [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"userIdentifier">> => [string()]
+%% }
+-type list_projects_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_output() :: #{
+%%   <<"items">> => list(project_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_projects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_input() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"assetTypes">> => list(string()),
+%%   <<"dataProduct">> => [boolean()],
+%%   <<"includeCascaded">> => [boolean()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"projectIds">> => list(string()),
+%%   <<"ruleType">> => list(any())
+%% }
+-type list_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_output() :: #{
+%%   <<"items">> => list(rule_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_grants_input() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"subscribedListingId">> => string(),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string()
+%% }
+-type list_subscription_grants_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_grants_output() :: #{
+%%   <<"items">> => list(subscription_grant_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_grants_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_requests_input() :: #{
+%%   <<"approverProjectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListingId">> => string()
+%% }
+-type list_subscription_requests_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_requests_output() :: #{
+%%   <<"items">> => list(subscription_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_requests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_targets_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_subscription_targets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscription_targets_output() :: #{
+%%   <<"items">> => list(subscription_target_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscription_targets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_input() :: #{
+%%   <<"approverProjectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
+%%   <<"owningIamPrincipalArn">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListingId">> => string(),
+%%   <<"subscriptionRequestIdentifier">> => string()
+%% }
+-type list_subscriptions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_output() :: #{
+%%   <<"items">> => list(subscription_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscriptions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_data_points_input() :: #{
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"formName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()]
+%% }
+-type list_time_series_data_points_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_time_series_data_points_output() :: #{
+%%   <<"items">> => list(time_series_data_point_summary_form_output()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_time_series_data_points_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_revision() :: #{
+%%   <<"id">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type listing_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_revision_input() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type listing_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary() :: #{
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string()
+%% }
+-type listing_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary_item() :: #{
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"listingId">> => string(),
+%%   <<"listingRevision">> => string()
+%% }
+-type listing_summary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_endpoint_credentials() :: #{
+%%   <<"id">> => [string()],
+%%   <<"token">> => [string()]
+%% }
+-type managed_endpoint_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_offset() :: #{
+%%   <<"endOffset">> => [integer()],
+%%   <<"startOffset">> => [integer()]
+%% }
+-type match_offset() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_form_enforcement_detail() :: #{
+%%   <<"requiredMetadataForms">> => list(metadata_form_reference())
+%% }
+-type metadata_form_enforcement_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_form_reference() :: #{
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type metadata_form_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_form_summary() :: #{
+%%   <<"formName">> => string(),
+%%   <<"typeName">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type metadata_form_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => metadata_generation_run_target(),
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type metadata_generation_run_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_target() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"revision">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_generation_run_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_generation_run_type_stat() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_generation_run_type_stat() :: #{binary() => any()}.
+
+
+%% Example:
+%% mlflow_properties_input() :: #{
+%%   <<"trackingServerArn">> => [string()]
+%% }
+-type mlflow_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% mlflow_properties_output() :: #{
+%%   <<"trackingServerArn">> => [string()]
+%% }
+-type mlflow_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% mlflow_properties_patch() :: #{
+%%   <<"trackingServerArn">> => [string()]
+%% }
+-type mlflow_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% name_identifier() :: #{
+%%   <<"name">> => [string()],
+%%   <<"namespace">> => [string()]
+%% }
+-type name_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_config() :: #{
+%%   <<"networkAccessType">> => list(any()),
+%%   <<"securityGroupIds">> => list([string()]()),
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcId">> => [string()]
+%% }
+-type network_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_equal_to_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type not_equal_to_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_in_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"values">> => list([string()]())
+%% }
+-type not_in_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_like_expression() :: #{
+%%   <<"columnName">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type not_like_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_export_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_export_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_run_error() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type notebook_run_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_run_summary() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type notebook_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notebook_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type notebook_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_output() :: #{
+%%   <<"actionLink">> => string(),
+%%   <<"creationTimestamp">> => [non_neg_integer()],
+%%   <<"domainIdentifier">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"message">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string(),
+%%   <<"topic">> => topic(),
+%%   <<"type">> => list(any())
+%% }
+-type notification_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_resource() :: #{
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type notification_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_client_application() :: #{
+%%   <<"aWSManagedClientApplicationReference">> => [string()],
+%%   <<"userManagedClientApplicationClientId">> => [string()]
+%% }
+-type o_auth2_client_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_properties() :: #{
+%%   <<"authorizationCodeProperties">> => authorization_code_properties(),
+%%   <<"oAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"oAuth2Credentials">> => glue_o_auth2_credentials(),
+%%   <<"oAuth2GrantType">> => list(any()),
+%%   <<"tokenUrl">> => [string()],
+%%   <<"tokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_lineage_run_event_summary() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"inputs">> => list(name_identifier()),
+%%   <<"job">> => name_identifier(),
+%%   <<"outputs">> => list(name_identifier()),
+%%   <<"runId">> => [string()]
+%% }
+-type open_lineage_run_event_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_domain_unit_owners_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type override_domain_unit_owners_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_project_owners_policy_grant_detail() :: #{
+%%   <<"includeChildDomainUnits">> => [boolean()]
+%% }
+-type override_project_owners_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_group_properties() :: #{
+%%   <<"groupIdentifier">> => string()
+%% }
+-type owner_group_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_group_properties_output() :: #{
+%%   <<"groupId">> => [string()]
+%% }
+-type owner_group_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_user_properties() :: #{
+%%   <<"userIdentifier">> => string()
+%% }
+-type owner_user_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner_user_properties_output() :: #{
+%%   <<"userId">> => [string()]
+%% }
+-type owner_user_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_config() :: #{
+%%   <<"packageManager">> => list(any()),
+%%   <<"packageSpecification">> => [string()]
+%% }
+-type package_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_connection_requirements() :: #{
+%%   <<"availabilityZone">> => [string()],
+%%   <<"securityGroupIdList">> => list([string()]()),
+%%   <<"subnetId">> => string(),
+%%   <<"subnetIdList">> => list(string())
+%% }
+-type physical_connection_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_endpoint() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
+%%   <<"glueConnection">> => glue_connection(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
+%%   <<"host">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"stage">> => [string()]
+%% }
+-type physical_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_grant_member() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"grantId">> => string(),
+%%   <<"principal">> => list()
+%% }
+-type policy_grant_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_lineage_event_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"event">> := binary()
+%% }
+-type post_lineage_event_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_lineage_event_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string()
+%% }
+-type post_lineage_event_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_time_series_data_points_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"forms">> := list(time_series_data_point_form_input())
+%% }
+-type post_time_series_data_points_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_time_series_data_points_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => list(any()),
+%%   <<"forms">> => list(time_series_data_point_form_output())
+%% }
+-type post_time_series_data_points_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% prediction_configuration() :: #{
+%%   <<"businessNameGeneration">> => business_name_generation_configuration()
+%% }
+-type prediction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_deletion_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type project_deletion_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_member() :: #{
+%%   <<"designation">> => list(any()),
+%%   <<"memberDetails">> => list()
+%% }
+-type project_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_membership_assignment() :: #{
+%%   <<"designation">> => list(any()),
+%%   <<"member">> => list()
+%% }
+-type project_membership_assignment() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_policy_grant_principal() :: #{
+%%   <<"projectDesignation">> => list(any()),
+%%   <<"projectGrantFilter">> => list(),
+%%   <<"projectIdentifier">> => string()
+%% }
+-type project_policy_grant_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_profile_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type project_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectCategory">> => [string()],
+%%   <<"projectStatus">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% projects_for_rule() :: #{
+%%   <<"selectionMode">> => list(any()),
+%%   <<"specificProjects">> => list(string())
+%% }
+-type projects_for_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_data_export_configuration_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"enableExport">> := [boolean()],
+%%   <<"encryptionConfiguration">> => encryption_configuration()
+%% }
+-type put_data_export_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_export_configuration_output() :: #{}
+-type put_data_export_configuration_output() :: #{}.
+
+
+%% Example:
+%% put_environment_blueprint_configuration_input() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
+%%   <<"enabledRegions">> := list(string()),
+%%   <<"environmentRolePermissionBoundary">> => string(),
+%%   <<"globalParameters">> => map(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(put_resource_configuration())
+%% }
+-type put_environment_blueprint_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_environment_blueprint_configuration_output() :: #{
+%%   <<"allowUserProvidedConfigurations">> => [boolean()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainId">> => string(),
+%%   <<"enabledRegions">> => list(string()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentRolePermissionBoundary">> => string(),
+%%   <<"manageAccessRoleArn">> => string(),
+%%   <<"provisioningConfigurations">> => list(list()),
+%%   <<"provisioningRoleArn">> => string(),
+%%   <<"regionalParameters">> => map(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type put_environment_blueprint_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"region">> => string()
+%% }
+-type put_resource_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_graph_input() :: #{
+%%   <<"additionalAttributes">> => additional_attributes(),
+%%   <<"match">> := list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type query_graph_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_graph_output() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type query_graph_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_configuration() :: #{
+%%   <<"enableBusinessNameGeneration">> => [boolean()]
+%% }
+-type recommendation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_cluster_storage() :: #{
+%%   <<"clusterName">> => [string()]
+%% }
+-type redshift_cluster_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_credential_configuration() :: #{
+%%   <<"secretManagerArn">> => [string()]
+%% }
+-type redshift_credential_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_lineage_sync_configuration_input() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"schedule">> => lineage_sync_schedule()
+%% }
+-type redshift_lineage_sync_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_lineage_sync_configuration_output() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"lineageJobId">> => [string()],
+%%   <<"schedule">> => lineage_sync_schedule()
+%% }
+-type redshift_lineage_sync_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_properties_input() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"host">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
+%%   <<"port">> => [integer()],
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_properties_output() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"isProvisionedSecret">> => [boolean()],
+%%   <<"jdbcIamUrl">> => [string()],
+%%   <<"jdbcUrl">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_output(),
+%%   <<"redshiftTempDir">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_properties_patch() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"databaseName">> => [string()],
+%%   <<"host">> => [string()],
+%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
+%%   <<"port">> => [integer()],
+%%   <<"storage">> => list()
+%% }
+-type redshift_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_run_configuration_input() :: #{
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
+%%   <<"redshiftStorage">> => list(),
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
+%% }
+-type redshift_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"dataAccessRole">> => [string()],
+%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
+%%   <<"redshiftStorage">> => list(),
+%%   <<"region">> => [string()],
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
+%% }
+-type redshift_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_self_grant_status_output() :: #{
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
+%% }
+-type redshift_self_grant_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% redshift_serverless_storage() :: #{
+%%   <<"workgroupName">> => [string()]
+%% }
+-type redshift_serverless_storage() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_choice() :: #{
+%%   <<"predictionChoices">> => list([integer()]()),
+%%   <<"predictionTarget">> => [string()]
+%% }
+-type reject_choice() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_predictions_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"rejectChoices">> => list(reject_choice()),
+%%   <<"rejectRule">> => reject_rule(),
+%%   <<"revision">> => string()
+%% }
+-type reject_predictions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_predictions_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"domainId">> => string()
+%% }
+-type reject_predictions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_rule() :: #{
+%%   <<"rule">> => list(any()),
+%%   <<"threshold">> => [float()]
+%% }
+-type reject_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_subscription_request_input() :: #{
+%%   <<"decisionComment">> => string()
+%% }
+-type reject_subscription_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_subscription_request_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadataForms">> => list(form_output()),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type reject_subscription_request_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% relation_pattern() :: #{
+%%   <<"maxPathLength">> => [integer()],
+%%   <<"relationDirection">> => list(any()),
+%%   <<"relationType">> => list(any())
+%% }
+-type relation_pattern() :: #{binary() => any()}.
+
+
+%% Example:
+%% relational_filter_configuration() :: #{
+%%   <<"databaseName">> => [string()],
+%%   <<"filterExpressions">> => list(filter_expression()),
+%%   <<"schemaName">> => [string()]
+%% }
+-type relational_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_entity_owner_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"owner">> := list()
+%% }
+-type remove_entity_owner_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_entity_owner_output() :: #{}
+-type remove_entity_owner_output() :: #{}.
+
+
+%% Example:
+%% remove_policy_grant_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"grantIdentifier">> => string(),
+%%   <<"policyType">> := list(any()),
+%%   <<"principal">> := list()
+%% }
+-type remove_policy_grant_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_policy_grant_output() :: #{}
+-type remove_policy_grant_output() :: #{}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"name">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"type">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_configuration() :: #{
+%%   <<"description">> => [string()],
+%%   <<"identifier">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"region">> => string()
+%% }
+-type resource_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tag_parameter() :: #{
+%%   <<"isValueEditable">> => [boolean()],
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_tag_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_subscription_input() :: #{
+%%   <<"retainPermissions">> => [boolean()]
+%% }
+-type revoke_subscription_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_subscription_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type revoke_subscription_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% row_filter_configuration() :: #{
+%%   <<"rowFilter">> => list(),
+%%   <<"sensitive">> => [boolean()]
+%% }
+-type row_filter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_scope() :: #{
+%%   <<"assetType">> => asset_types_for_rule(),
+%%   <<"dataProduct">> => [boolean()],
+%%   <<"project">> => projects_for_rule()
+%% }
+-type rule_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"targetType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_statistics_for_assets() :: #{
+%%   <<"added">> => [integer()],
+%%   <<"failed">> => [integer()],
+%%   <<"skipped">> => [integer()],
+%%   <<"unchanged">> => [integer()],
+%%   <<"updated">> => [integer()]
+%% }
+-type run_statistics_for_assets() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"uri">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_properties_input() :: #{
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type s3_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_properties_patch() :: #{
+%%   <<"registerS3AccessGrantLocation">> => [boolean()],
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_run_configuration_input() :: #{
+%%   <<"trackingAssets">> => map()
+%% }
+-type sage_maker_run_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_run_configuration_output() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"region">> => [string()],
+%%   <<"trackingAssets">> => map()
+%% }
+-type sage_maker_run_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"schedule">> => string(),
+%%   <<"timezone">> => list(any())
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_group_profiles_input() :: #{
+%%   <<"groupType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string()
+%% }
+-type search_group_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_group_profiles_output() :: #{
+%%   <<"items">> => list(group_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_group_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_in_item() :: #{
+%%   <<"attribute">> => string()
+%% }
+-type search_in_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_input() :: #{
+%%   <<"additionalAttributes">> => list(list(any())()),
+%%   <<"filters">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owningProjectIdentifier">> => string(),
+%%   <<"searchIn">> => list(search_in_item()),
+%%   <<"searchScope">> := list(any()),
+%%   <<"searchText">> => string(),
+%%   <<"sort">> => search_sort()
+%% }
+-type search_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_input() :: #{
+%%   <<"additionalAttributes">> => list(list(any())()),
+%%   <<"aggregations">> => list(aggregation_list_item()),
+%%   <<"filters">> => list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchIn">> => list(search_in_item()),
+%%   <<"searchText">> => [string()],
+%%   <<"sort">> => search_sort()
+%% }
+-type search_listings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_output() :: #{
+%%   <<"aggregates">> => list(aggregation_output()),
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_listings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_output() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sort() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"order">> => list(any())
+%% }
+-type search_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_types_input() :: #{
+%%   <<"filters">> => list(),
+%%   <<"managed">> := [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchIn">> => list(search_in_item()),
+%%   <<"searchScope">> := list(any()),
+%%   <<"searchText">> => string(),
+%%   <<"sort">> => search_sort()
+%% }
+-type search_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_types_output() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalMatchCount">> => [integer()]
+%% }
+-type search_types_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_profiles_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string(),
+%%   <<"userType">> := list(any())
+%% }
+-type search_user_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_profiles_output() :: #{
+%%   <<"items">> => list(user_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_user_profiles_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_grant_status_detail() :: #{
+%%   <<"databaseName">> => [string()],
+%%   <<"failureCause">> => [string()],
+%%   <<"schemaName">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type self_grant_status_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_sign_on() :: #{
+%%   <<"idcInstanceArn">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"userAssignment">> => list(any())
+%% }
+-type single_sign_on() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_properties_input() :: #{
+%%   <<"connectivityProperties">> => connectivity_properties(),
+%%   <<"identityMapping">> => identity_mapping(),
+%%   <<"lineageSync">> => lineage_sync_input(),
+%%   <<"snowflakeRole">> => string()
+%% }
+-type snowflake_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"identityMapping">> => identity_mapping(),
+%%   <<"lineageSync">> => lineage_sync_output(),
+%%   <<"snowflakeRole">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type snowflake_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% snowflake_properties_patch() :: #{
+%%   <<"connectivityPropertiesPatch">> => connectivity_properties_patch(),
+%%   <<"lineageSync">> => lineage_sync_input(),
+%%   <<"snowflakeRole">> => string()
+%% }
+-type snowflake_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_emr_properties_input() :: #{
+%%   <<"computeArn">> => [string()],
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_emr_properties_output() :: #{
+%%   <<"certificateData">> => [string()],
+%%   <<"computeArn">> => [string()],
+%%   <<"credentials">> => username_password(),
+%%   <<"credentialsExpiration">> => [non_neg_integer()],
+%%   <<"governanceType">> => list(any()),
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"livyEndpoint">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
+%%   <<"managedEndpointCredentials">> => managed_endpoint_credentials(),
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_emr_properties_patch() :: #{
+%%   <<"computeArn">> => [string()],
+%%   <<"instanceProfileArn">> => [string()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"runtimeRole">> => [string()],
+%%   <<"trustedCertificatesS3Uri">> => [string()]
+%% }
+-type spark_emr_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_glue_args() :: #{
+%%   <<"connection">> => [string()]
+%% }
+-type spark_glue_args() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_glue_properties_input() :: #{
+%%   <<"additionalArgs">> => spark_glue_args(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
+%%   <<"glueVersion">> => [string()],
+%%   <<"idleTimeout">> => [integer()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"numberOfWorkers">> => [integer()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"workerType">> => [string()]
+%% }
+-type spark_glue_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% spark_glue_properties_output() :: #{
+%%   <<"additionalArgs">> => spark_glue_args(),
+%%   <<"glueConnectionName">> => [string()],
+%%   <<"glueConnectionNames">> => list(string()),
+%%   <<"glueVersion">> => [string()],
+%%   <<"idleTimeout">> => [integer()],
+%%   <<"javaVirtualEnv">> => [string()],
+%%   <<"numberOfWorkers">> => [integer()],
+%%   <<"pythonVirtualEnv">> => [string()],
+%%   <<"workerType">> => [string()]
+%% }
+-type spark_glue_properties_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% sso_user_profile_details() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"username">> => string()
+%% }
+-type sso_user_profile_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_data_source_run_input() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type start_data_source_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_data_source_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceConfigurationSnapshot">> => [string()],
+%%   <<"dataSourceId">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"errorMessage">> => data_source_error_message(),
+%%   <<"id">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type start_data_source_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metadata_generation_run_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"target">> := metadata_generation_run_target(),
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type start_metadata_generation_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metadata_generation_run_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type start_metadata_generation_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_export_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"fileFormat">> := list(any()),
+%%   <<"notebookIdentifier">> := string(),
+%%   <<"owningProjectIdentifier">> := string()
+%% }
+-type start_notebook_export_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_export_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"fileFormat">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_notebook_export_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_import_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"sourceLocation">> := list()
+%% }
+-type start_notebook_import_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_import_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"sourceLocation">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type start_notebook_import_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_run_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookIdentifier">> := string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleIdentifier">> => string(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source()
+%% }
+-type start_notebook_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_run_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"computeConfiguration">> => compute_config(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_run_error(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"networkConfiguration">> => network_config(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"scheduleId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"storageConfiguration">> => storage_config(),
+%%   <<"timeoutConfiguration">> => timeout_config(),
+%%   <<"triggerSource">> => trigger_source(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type start_notebook_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_sync_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"gitMetadata">> => git_metadata(),
+%%   <<"name">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectIdentifier">> := string(),
+%%   <<"sourceLocation">> := list()
+%% }
+-type start_notebook_sync_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_notebook_sync_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"gitMetadata">> => git_metadata(),
+%%   <<"name">> => string(),
+%%   <<"notebookId">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"sourceLocation">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type start_notebook_sync_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_notebook_run_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type stop_notebook_run_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_notebook_run_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_notebook_run_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_config() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"projectS3Path">> => string()
+%% }
+-type storage_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_asset() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"assetRevision">> => string(),
+%%   <<"assetScope">> => asset_scope(),
+%%   <<"failureCause">> => failure_cause(),
+%%   <<"failureTimestamp">> => [non_neg_integer()],
+%%   <<"grantedTimestamp">> => [non_neg_integer()],
+%%   <<"permissions">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"targetName">> => [string()]
+%% }
+-type subscribed_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_asset_listing() :: #{
+%%   <<"assetScope">> => asset_scope(),
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"forms">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"permissions">> => list()
+%% }
+-type subscribed_asset_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_group() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type subscribed_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_group_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_iam_principal() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type subscribed_iam_principal() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_iam_principal_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_iam_principal_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_listing() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"item">> => list(),
+%%   <<"name">> => string(),
+%%   <<"ownerProjectId">> => string(),
+%%   <<"ownerProjectName">> => [string()],
+%%   <<"revision">> => string()
+%% }
+-type subscribed_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_listing_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_listing_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_product_listing() :: #{
+%%   <<"assetListings">> => list(asset_in_data_product_listing_item()),
+%%   <<"description">> => [string()],
+%%   <<"entityId">> => string(),
+%%   <<"entityRevision">> => string(),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"name">> => [string()]
+%% }
+-type subscribed_product_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_project() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type subscribed_project() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_project_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_project_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_user() :: #{
+%%   <<"details">> => list(),
+%%   <<"id">> => string()
+%% }
+-type subscribed_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_user_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_user_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_grant_summary() :: #{
+%%   <<"assets">> => list(subscribed_asset()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"grantedEntity">> => list(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_grant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_request_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"decisionComment">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"existingSubscriptionId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadataFormsSummary">> => list(metadata_form_summary()),
+%%   <<"requestReason">> => string(),
+%%   <<"reviewerId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_request_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"retainPermissions">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"subscribedListing">> => subscribed_listing(),
+%%   <<"subscribedPrincipal">> => list(),
+%%   <<"subscriptionRequestId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_target_form() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string()
+%% }
+-type subscription_target_form() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_target_summary() :: #{
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manageAccessRole">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
+%%   <<"type">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type subscription_target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% term_relations() :: #{
+%%   <<"classifies">> => list(string()),
+%%   <<"isA">> => list(string())
+%% }
+-type term_relations() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_match_item() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"matchOffsets">> => list(match_offset()),
+%%   <<"text">> => [string()]
+%% }
+-type text_match_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_series_data_point_form_input() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_form_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_series_data_point_form_output() :: #{
+%%   <<"content">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_series_data_point_summary_form_output() :: #{
+%%   <<"contentSummary">> => [string()],
+%%   <<"formName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"typeIdentifier">> => string(),
+%%   <<"typeRevision">> => string()
+%% }
+-type time_series_data_point_summary_form_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% timeout_config() :: #{
+%%   <<"runTimeoutInMinutes">> => [integer()]
+%% }
+-type timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic() :: #{
+%%   <<"resource">> => notification_resource(),
+%%   <<"role">> => list(any()),
+%%   <<"subject">> => [string()]
+%% }
+-type topic() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_source() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type trigger_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unit() :: #{}
+-type unit() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_account_pool_input() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any())
+%% }
+-type update_account_pool_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_pool_output() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_account_pool_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_filter_input() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type update_asset_filter_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_filter_output() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"effectiveColumnNames">> => list([string()]()),
+%%   <<"effectiveRowFilter">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_asset_filter_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_input() :: #{
+%%   <<"awsLocation">> => aws_location(),
+%%   <<"configurations">> => list(configuration()),
+%%   <<"description">> => string(),
+%%   <<"props">> => list()
+%% }
+-type update_connection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_output() :: #{
+%%   <<"configurations">> => list(configuration()),
+%%   <<"connectionId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
+%%   <<"projectId">> => string(),
+%%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type update_connection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_source_input() :: #{
+%%   <<"assetFormsInput">> => list(form_input()),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"enableSetting">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"publishOnImport">> => [boolean()],
+%%   <<"recommendation">> => recommendation_configuration(),
+%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()],
+%%   <<"schedule">> => schedule_configuration()
+%% }
+-type update_data_source_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4834,183 +6898,62 @@
 
 
 %% Example:
-%% create_project_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"membershipAssignments">> => list(project_membership_assignment()),
-%%   <<"name">> := string(),
-%%   <<"projectCategory">> => [string()],
-%%   <<"projectExecutionRole">> => string(),
-%%   <<"projectProfileId">> => string(),
-%%   <<"resourceTags">> => map(),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter())
+%% update_domain_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"serviceRole">> => string(),
+%%   <<"singleSignOn">> => single_sign_on()
 %% }
--type create_project_input() :: #{binary() => any()}.
+-type update_domain_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_rules_input() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"assetTypes">> => list(string()),
-%%   <<"dataProduct">> => [boolean()],
-%%   <<"includeCascaded">> => [boolean()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"projectIds">> => list(string()),
-%%   <<"ruleType">> => list(any())
-%% }
--type list_rules_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_grant_input() :: #{}
--type delete_subscription_grant_input() :: #{}.
-
-
-%% Example:
-%% get_environment_blueprint_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"deploymentProperties">> => deployment_properties(),
-%%   <<"description">> => string(),
-%%   <<"glossaryTerms">> => list(string()),
+%% update_domain_output() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domainExecutionRole">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"provider">> => [string()],
-%%   <<"provisioningProperties">> => list(),
-%%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter())
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => [string()],
+%%   <<"rootDomainUnitId">> => string(),
+%%   <<"serviceRole">> => string(),
+%%   <<"singleSignOn">> => single_sign_on()
 %% }
--type get_environment_blueprint_output() :: #{binary() => any()}.
+-type update_domain_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% aws_console_link_parameters() :: #{
-%%   <<"uri">> => [string()]
+%% update_domain_unit_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
 %% }
--type aws_console_link_parameters() :: #{binary() => any()}.
+-type update_domain_unit_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_form_type_output() :: #{
+%% update_domain_unit_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"imports">> => list(import()),
-%%   <<"model">> => list(),
-%%   <<"name">> => string(),
-%%   <<"originDomainId">> => string(),
-%%   <<"originProjectId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_form_type_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_filter_output() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"effectiveColumnNames">> => list([string()]()),
-%%   <<"effectiveRowFilter">> => [string()],
-%%   <<"errorMessage">> => [string()],
 %%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"owners">> => list(list()),
+%%   <<"parentDomainUnitId">> => string()
 %% }
--type create_asset_filter_output() :: #{binary() => any()}.
+-type update_domain_unit_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_properties_output() :: #{
-%%   <<"glueConnectionNames">> => list(string()),
-%%   <<"securityGroupId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
+%% update_environment_action_input() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"parameters">> => list()
 %% }
--type vpc_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% glossary_term_item_additional_attributes() :: #{
-%%   <<"matchRationale">> => list(list())
-%% }
--type glossary_term_item_additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_output() :: #{
-%%   <<"actionLink">> => string(),
-%%   <<"creationTimestamp">> => [non_neg_integer()],
-%%   <<"domainIdentifier">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"message">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"title">> => string(),
-%%   <<"topic">> => topic(),
-%%   <<"type">> => list(any())
-%% }
--type notification_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_governed_terms_input() :: #{
-%%   <<"governedGlossaryTerms">> := list(string())
-%% }
--type disassociate_governed_terms_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_membership_assignment() :: #{
-%%   <<"designation">> => list(any()),
-%%   <<"member">> => list()
-%% }
--type project_membership_assignment() :: #{binary() => any()}.
-
-
-%% Example:
-%% row_filter_configuration() :: #{
-%%   <<"rowFilter">> => list(),
-%%   <<"sensitive">> => [boolean()]
-%% }
--type row_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_properties_input() :: #{
-%%   <<"securityGroupId">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_properties_patch() :: #{
-%%   <<"securityGroupId">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_glossary_term_input() :: #{
-%%   <<"glossaryIdentifier">> => string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations()
-%% }
--type update_glossary_term_input() :: #{binary() => any()}.
+-type update_environment_action_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5026,352 +6969,221 @@
 
 
 %% Example:
-%% data_product_listing_item_additional_attributes() :: #{
-%%   <<"forms">> => string(),
-%%   <<"matchRationale">> => list(list())
-%% }
--type data_product_listing_item_additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_filter_configuration() :: #{
-%%   <<"includedColumnNames">> => list([string()]())
-%% }
--type column_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_environment_blueprint_configuration_output() :: #{
-%%   <<"allowUserProvidedConfigurations">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"environmentRolePermissionBoundary">> => string(),
-%%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"regionalParameters">> => map(),
-%%   <<"resourceConfigurations">> => list(resource_configuration()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_environment_blueprint_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_output() :: #{
-%%   <<"arn">> => [string()],
+%% update_environment_blueprint_input() :: #{
 %%   <<"description">> => [string()],
-%%   <<"domainExecutionRole">> => string(),
-%%   <<"domainVersion">> => list(any()),
+%%   <<"provisioningProperties">> => list(),
+%%   <<"userParameters">> => list(custom_parameter())
+%% }
+-type update_environment_blueprint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_blueprint_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"deploymentProperties">> => deployment_properties(),
+%%   <<"description">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisioningProperties">> => list(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
+%% }
+-type update_environment_blueprint_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_environment_input() :: #{
+%%   <<"blueprintVersion">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> => [string()],
-%%   <<"portalUrl">> => [string()],
-%%   <<"rootDomainUnitId">> => string(),
-%%   <<"serviceRole">> => string(),
-%%   <<"singleSignOn">> => single_sign_on(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
--type create_domain_output() :: #{binary() => any()}.
+-type update_environment_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% listing_summary() :: #{
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"listingId">> => string(),
-%%   <<"listingRevision">> => string()
-%% }
--type listing_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_asset_type_input() :: #{
+%% update_environment_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
-%%   <<"formsInput">> := map(),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string()
-%% }
--type create_asset_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_summary() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"identifier">> => string(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"revision">> => string(),
-%%   <<"ruleType">> => list(any()),
-%%   <<"scope">> => rule_scope(),
-%%   <<"target">> => list(),
-%%   <<"targetType">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type rule_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_subscription_input() :: #{}
--type cancel_subscription_input() :: #{}.
-
-
-%% Example:
-%% redshift_properties_patch() :: #{
-%%   <<"credentials">> => list(),
-%%   <<"databaseName">> => [string()],
-%%   <<"host">> => [string()],
-%%   <<"lineageSync">> => redshift_lineage_sync_configuration_input(),
-%%   <<"port">> => [integer()],
-%%   <<"storage">> => list()
-%% }
--type redshift_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% accepted_asset_scope() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"filterIds">> => list(string())
-%% }
--type accepted_asset_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_lineage_sync_configuration_output() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"lineageJobId">> => [string()],
-%%   <<"schedule">> => lineage_sync_schedule()
-%% }
--type redshift_lineage_sync_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_subscription_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentActions">> => list(configurable_environment_action()),
+%%   <<"environmentBlueprintId">> => string(),
+%%   <<"environmentConfigurationId">> => string(),
+%%   <<"environmentConfigurationName">> => string(),
+%%   <<"environmentProfileId">> => string(),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"retainPermissions">> => [boolean()],
+%%   <<"lastDeployment">> => deployment(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"provisionedResources">> => list(resource()),
+%%   <<"provisioningProperties">> => list(),
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListing">> => subscribed_listing(),
-%%   <<"subscribedPrincipal">> => list(),
-%%   <<"subscriptionRequestId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
--type cancel_subscription_output() :: #{binary() => any()}.
+-type update_environment_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% sso_user_profile_details() :: #{
-%%   <<"firstName">> => string(),
-%%   <<"lastName">> => string(),
-%%   <<"username">> => string()
+%% update_environment_profile_input() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
--type sso_user_profile_details() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_export_configuration_output() :: #{}
--type put_data_export_configuration_output() :: #{}.
-
-%% Example:
-%% cancel_metadata_generation_run_input() :: #{}
--type cancel_metadata_generation_run_input() :: #{}.
+-type update_environment_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"source">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscription_targets_output() :: #{
-%%   <<"items">> => list(subscription_target_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscription_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_input() :: #{}
--type delete_asset_input() :: #{}.
-
-%% Example:
-%% get_data_export_configuration_input() :: #{}
--type get_data_export_configuration_input() :: #{}.
-
-
-%% Example:
-%% storage_config() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"projectS3Path">> => string()
-%% }
--type storage_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% physical_connection_requirements() :: #{
-%%   <<"availabilityZone">> => [string()],
-%%   <<"securityGroupIdList">> => list([string()]()),
-%%   <<"subnetId">> => string(),
-%%   <<"subnetIdList">> => list(string())
-%% }
--type physical_connection_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% remove_policy_grant_output() :: #{}
--type remove_policy_grant_output() :: #{}.
-
-%% Example:
-%% delete_project_membership_output() :: #{}
--type delete_project_membership_output() :: #{}.
-
-
-%% Example:
-%% data_source_summary() :: #{
-%%   <<"connectionId">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSourceId">> => string(),
+%% update_environment_profile_output() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountRegion">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"enableSetting">> => list(any()),
-%%   <<"environmentId">> => [string()],
-%%   <<"lastRunAssetCount">> => [integer()],
-%%   <<"lastRunAt">> => non_neg_integer(),
-%%   <<"lastRunErrorMessage">> => data_source_error_message(),
-%%   <<"lastRunStatus">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"schedule">> => schedule_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type data_source_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_listing_item() :: #{
-%%   <<"additionalAttributes">> => asset_listing_item_additional_attributes(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"entityRevision">> => string(),
-%%   <<"entityType">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"listingCreatedBy">> => string(),
-%%   <<"listingId">> => string(),
-%%   <<"listingRevision">> => string(),
-%%   <<"listingUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string()
-%% }
--type asset_listing_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_credentials_input() :: #{}
--type get_environment_credentials_input() :: #{}.
-
-
-%% Example:
-%% aggregation_list_item() :: #{
-%%   <<"attribute">> => string(),
-%%   <<"displayValue">> => string()
-%% }
--type aggregation_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_blueprint_configuration_output() :: #{}
--type delete_environment_blueprint_configuration_output() :: #{}.
-
-%% Example:
-%% delete_account_pool_input() :: #{}
--type delete_account_pool_input() :: #{}.
-
-
-%% Example:
-%% search_group_profiles_input() :: #{
-%%   <<"groupType">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchText">> => string()
-%% }
--type search_group_profiles_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_blueprints_output() :: #{
-%%   <<"items">> => list(environment_blueprint_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_blueprints_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_emr_properties_output() :: #{
-%%   <<"certificateData">> => [string()],
-%%   <<"computeArn">> => [string()],
-%%   <<"credentials">> => username_password(),
-%%   <<"credentialsExpiration">> => [non_neg_integer()],
-%%   <<"governanceType">> => list(any()),
-%%   <<"instanceProfileArn">> => [string()],
-%%   <<"javaVirtualEnv">> => [string()],
-%%   <<"livyEndpoint">> => [string()],
-%%   <<"logUri">> => [string()],
-%%   <<"managedEndpointArn">> => [string()],
-%%   <<"managedEndpointCredentials">> => managed_endpoint_credentials(),
-%%   <<"pythonVirtualEnv">> => [string()],
-%%   <<"runtimeRole">> => [string()],
-%%   <<"trustedCertificatesS3Uri">> => [string()]
-%% }
--type spark_emr_properties_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_output() :: #{}
--type delete_asset_output() :: #{}.
-
-%% Example:
-%% get_iam_portal_login_url_input() :: #{}
--type get_iam_portal_login_url_input() :: #{}.
-
-%% Example:
-%% delete_project_profile_input() :: #{}
--type delete_project_profile_input() :: #{}.
-
-
-%% Example:
-%% list_notifications_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"notifications">> => list(notification_output())
-%% }
--type list_notifications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_filter_output() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"effectiveColumnNames">> => list([string()]()),
-%%   <<"effectiveRowFilter">> => [string()],
-%%   <<"errorMessage">> => [string()],
+%%   <<"environmentBlueprintId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"userParameters">> => list(custom_parameter())
+%% }
+-type update_environment_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type update_asset_filter_output() :: #{binary() => any()}.
+-type update_glossary_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
+%% }
+-type update_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_term_input() :: #{
+%%   <<"glossaryIdentifier">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations()
+%% }
+-type update_glossary_term_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_glossary_term_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"glossaryId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"longDescription">> => string(),
+%%   <<"name">> => string(),
+%%   <<"shortDescription">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"termRelations">> => term_relations(),
+%%   <<"usageRestrictions">> => list(list(any())())
+%% }
+-type update_glossary_term_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_profile_input() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_group_profile_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_group_profile_output() :: #{
+%%   <<"domainId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rolePrincipalArn">> => [string()],
+%%   <<"rolePrincipalId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type update_group_profile_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notebook_input() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any())
+%% }
+-type update_notebook_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notebook_output() :: #{
+%%   <<"cellOrder">> => list(cell_information()),
+%%   <<"computeId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"environmentConfiguration">> => environment_config(),
+%%   <<"error">> => notebook_error(),
+%%   <<"gitMetadata">> => git_metadata(),
+%%   <<"id">> => string(),
+%%   <<"lockExpiresAt">> => [non_neg_integer()],
+%%   <<"lockedAt">> => [non_neg_integer()],
+%%   <<"lockedBy">> => [string()],
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"owningProjectId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_notebook_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"projectProfileVersion">> => [string()],
+%%   <<"resourceTags">> => map(),
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
+%% }
+-type update_project_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5397,458 +7209,113 @@
 
 
 %% Example:
-%% data_product_item() :: #{
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"identifier">> => string(),
-%%   <<"itemType">> => list(any()),
-%%   <<"revision">> => string()
-%% }
--type data_product_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_node_reference() :: #{
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"id">> => string()
-%% }
--type lineage_node_reference() :: #{binary() => any()}.
-
-%% Example:
-%% delete_glossary_term_input() :: #{}
--type delete_glossary_term_input() :: #{}.
-
-
-%% Example:
-%% timeout_config() :: #{
-%%   <<"runTimeoutInMinutes">> => [integer()]
-%% }
--type timeout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_configuration() :: #{
-%%   <<"description">> => [string()],
-%%   <<"identifier">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"parameters">> => map(),
-%%   <<"region">> => string()
-%% }
--type resource_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"values">> => list([string()]())
-%% }
--type in_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_profile_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"groupIdentifier">> => string(),
-%%   <<"rolePrincipalArn">> => [string()]
-%% }
--type create_group_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lineage_node_history_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(lineage_node_summary())
-%% }
--type list_lineage_node_history_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_product_revisions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_product_revisions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% glossary_term_enforcement_detail() :: #{
-%%   <<"requiredGlossaryTermIds">> => list(string())
-%% }
--type glossary_term_enforcement_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_governed_terms_input() :: #{
-%%   <<"governedGlossaryTerms">> := list(string())
-%% }
--type associate_governed_terms_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_profile_summary() :: #{
-%%   <<"details">> => list(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type user_profile_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_product_output() :: #{}
--type delete_data_product_output() :: #{}.
-
-
-%% Example:
-%% data_source_run_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSourceId">> => string(),
-%%   <<"errorMessage">> => data_source_error_message(),
-%%   <<"id">> => string(),
-%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
-%%   <<"projectId">> => string(),
-%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type data_source_run_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% compute_config() :: #{
-%%   <<"environmentVersion">> => [string()],
-%%   <<"instanceType">> => string()
-%% }
--type compute_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_pools_output() :: #{
-%%   <<"items">> => list(account_pool_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_account_pools_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% username_password() :: #{
-%%   <<"password">> => string(),
-%%   <<"username">> => string()
-%% }
--type username_password() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_domain_unit_input() :: #{
-%%   <<"clientToken">> => string(),
+%% update_project_profile_input() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"parentDomainUnitIdentifier">> := string()
-%% }
--type create_domain_unit_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_unit_target() :: #{
-%%   <<"domainUnitId">> => string(),
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type domain_unit_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_product_input() :: #{
-%%   <<"revision">> => string()
-%% }
--type get_data_product_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_input() :: #{
-%%   <<"attributeIdentifier">> => string(),
-%%   <<"forms">> => list(form_input())
-%% }
--type attribute_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_predictions_input() :: #{
-%%   <<"acceptChoices">> => list(accept_choice()),
-%%   <<"acceptRule">> => accept_rule(),
-%%   <<"clientToken">> => string(),
-%%   <<"revision">> => string()
-%% }
--type accept_predictions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entity_owners_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"owners">> => list(list())
-%% }
--type list_entity_owners_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_projects_input() :: #{
-%%   <<"groupIdentifier">> => [string()],
-%%   <<"maxResults">> => integer(),
+%%   <<"domainUnitIdentifier">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectCategory">> => [string()],
-%%   <<"userIdentifier">> => [string()]
-%% }
--type list_projects_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_profile_summary() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsAccountRegion">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"projectId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type environment_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_request_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"decisionComment">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"existingSubscriptionId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadataFormsSummary">> => list(metadata_form_summary()),
-%%   <<"requestReason">> => string(),
-%%   <<"reviewerId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()),
-%%   <<"subscribedPrincipals">> => list(list()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type subscription_request_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_predictions_output() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"revision">> => string()
-%% }
--type accept_predictions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notebook_run_output() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"completedAt">> => [non_neg_integer()],
-%%   <<"computeConfiguration">> => compute_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"error">> => notebook_run_error(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"networkConfiguration">> => network_config(),
-%%   <<"notebookId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"scheduleId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"storageConfiguration">> => storage_config(),
-%%   <<"timeoutConfiguration">> => timeout_config(),
-%%   <<"triggerSource">> => trigger_source(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_notebook_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_configuration() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"parameters">> => map(),
-%%   <<"region">> => string()
-%% }
--type put_resource_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% lakehouse_properties_output() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
-%% }
--type lakehouse_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_asset_listing() :: #{
-%%   <<"assetScope">> => asset_scope(),
-%%   <<"entityId">> => string(),
-%%   <<"entityRevision">> => string(),
-%%   <<"entityType">> => string(),
-%%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"permissions">> => list()
-%% }
--type subscribed_asset_listing() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_summary() :: #{
-%%   <<"configurations">> => list(configuration()),
-%%   <<"connectionId">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()),
-%%   <<"projectId">> => string(),
-%%   <<"props">> => list(),
-%%   <<"scope">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type connection_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_grant_status_detail() :: #{
-%%   <<"databaseName">> => [string()],
-%%   <<"failureCause">> => [string()],
-%%   <<"schemaName">> => [string()],
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type self_grant_status_detail() :: #{binary() => any()}.
+-type update_project_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% remove_policy_grant_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"grantIdentifier">> => string(),
-%%   <<"policyType">> := list(any()),
-%%   <<"principal">> := list()
-%% }
--type remove_policy_grant_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connection_output() :: #{
-%%   <<"status">> => [string()]
-%% }
--type delete_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_pool_input() :: #{
-%%   <<"accountSource">> => list(),
+%% update_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"resolutionStrategy">> => list(any())
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type update_account_pool_input() :: #{binary() => any()}.
+-type update_project_profile_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_listing_change_set_input() :: #{
-%%   <<"action">> := list(any()),
+%% update_root_domain_unit_owner_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"entityIdentifier">> := string(),
-%%   <<"entityRevision">> => string(),
-%%   <<"entityType">> := list(any())
+%%   <<"currentOwner">> := string(),
+%%   <<"newOwner">> := [string()]
 %% }
--type create_listing_change_set_input() :: #{binary() => any()}.
+-type update_root_domain_unit_owner_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_root_domain_unit_owner_output() :: #{}
+-type update_root_domain_unit_owner_output() :: #{}.
 
 
 %% Example:
-%% domain_unit_policy_grant_principal() :: #{
-%%   <<"domainUnitDesignation">> => list(any()),
-%%   <<"domainUnitGrantFilter">> => list(),
-%%   <<"domainUnitIdentifier">> => string()
+%% update_rule_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"includeChildDomainUnits">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"scope">> => rule_scope()
 %% }
--type domain_unit_policy_grant_principal() :: #{binary() => any()}.
+-type update_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% relational_filter_configuration() :: #{
-%%   <<"databaseName">> => [string()],
-%%   <<"filterExpressions">> => list(filter_expression()),
-%%   <<"schemaName">> => [string()]
-%% }
--type relational_filter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_iam_principal_input() :: #{
-%%   <<"identifier">> => string()
-%% }
--type subscribed_iam_principal_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_form_type_input() :: #{}
--type delete_form_type_input() :: #{}.
-
-
-%% Example:
-%% less_than_or_equal_to_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type less_than_or_equal_to_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_unit_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()]
-%% }
--type create_domain_unit_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_subscription_request_output() :: #{
+%% update_rule_output() :: #{
+%%   <<"action">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
-%%   <<"decisionComment">> => string(),
+%%   <<"description">> => string(),
+%%   <<"detail">> => list(),
+%%   <<"identifier">> => string(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"revision">> => string(),
+%%   <<"ruleType">> => list(any()),
+%%   <<"scope">> => rule_scope(),
+%%   <<"target">> => list(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_grant_status_input() :: #{
+%%   <<"failureCause">> => failure_cause(),
+%%   <<"status">> := list(any()),
+%%   <<"targetName">> => [string()]
+%% }
+-type update_subscription_grant_status_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_grant_status_output() :: #{
+%%   <<"assets">> => list(subscribed_asset()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"existingSubscriptionId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()),
-%%   <<"requestReason">> => string(),
-%%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()),
-%%   <<"subscribedPrincipals">> => list(list()),
+%%   <<"subscriptionId">> => string(),
+%%   <<"subscriptionTargetId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type accept_subscription_request_output() :: #{binary() => any()}.
+-type update_subscription_grant_status_output() :: #{binary() => any()}.
+
 
 %% Example:
-%% disassociate_governed_terms_output() :: #{}
--type disassociate_governed_terms_output() :: #{}.
+%% update_subscription_request_input() :: #{
+%%   <<"requestReason">> := string()
+%% }
+-type update_subscription_request_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5872,1344 +7339,6 @@
 
 
 %% Example:
-%% list_rules_output() :: #{
-%%   <<"items">> => list(rule_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% spark_glue_properties_output() :: #{
-%%   <<"additionalArgs">> => spark_glue_args(),
-%%   <<"glueConnectionName">> => [string()],
-%%   <<"glueConnectionNames">> => list(string()),
-%%   <<"glueVersion">> => [string()],
-%%   <<"idleTimeout">> => [integer()],
-%%   <<"javaVirtualEnv">> => [string()],
-%%   <<"numberOfWorkers">> => [integer()],
-%%   <<"pythonVirtualEnv">> => [string()],
-%%   <<"workerType">> => [string()]
-%% }
--type spark_glue_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notebook_runs_output() :: #{
-%%   <<"items">> => list(notebook_run_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_notebook_runs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_units_for_parent_output() :: #{
-%%   <<"items">> => list(domain_unit_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_units_for_parent_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_sync_input() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"schedule">> => string(),
-%%   <<"timezone">> => list(any())
-%% }
--type lineage_sync_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflows_mwaa_properties_output() :: #{
-%%   <<"mwaaEnvironmentName">> => [string()]
-%% }
--type workflows_mwaa_properties_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_properties() :: #{
-%%   <<"templateUrl">> => [string()]
-%% }
--type cloud_formation_properties() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_type_input() :: #{}
--type delete_asset_type_input() :: #{}.
-
-
-%% Example:
-%% create_account_pool_input() :: #{
-%%   <<"accountSource">> := list(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"resolutionStrategy">> := list(any())
-%% }
--type create_account_pool_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_configuration() :: #{
-%%   <<"schedule">> => string(),
-%%   <<"timezone">> => list(any())
-%% }
--type schedule_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% associate_environment_role_output() :: #{}
--type associate_environment_role_output() :: #{}.
-
-
-%% Example:
-%% environment_deployment_details() :: #{
-%%   <<"environmentFailureReasons">> => map(),
-%%   <<"overallDeploymentStatus">> => list(any())
-%% }
--type environment_deployment_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_glossary_input() :: #{}
--type get_glossary_input() :: #{}.
-
-
-%% Example:
-%% subscribed_user_input() :: #{
-%%   <<"identifier">> => string()
-%% }
--type subscribed_user_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_configuration() :: #{
-%%   <<"enableBusinessNameGeneration">> => [boolean()]
-%% }
--type recommendation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_project_output() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"failureReasons">> => list(project_deletion_error()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"projectCategory">> => [string()],
-%%   <<"projectProfileId">> => string(),
-%%   <<"projectStatus">> => list(any()),
-%%   <<"resourceTags">> => list(resource_tag()),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter())
-%% }
--type get_project_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_project_profiles_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_project_profiles_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_listing_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"item">> => list(),
-%%   <<"listingRevision">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_listing_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_in_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"values">> => list([string()]())
-%% }
--type not_in_expression() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_profile_input() :: #{}
--type get_group_profile_input() :: #{}.
-
-
-%% Example:
-%% list_environment_profiles_output() :: #{
-%%   <<"items">> => list(environment_profile_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_profiles_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_asset_filter_input() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"description">> => string(),
-%%   <<"name">> => [string()]
-%% }
--type update_asset_filter_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_unit_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()]
-%% }
--type domain_unit_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_source_run_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSourceConfigurationSnapshot">> => [string()],
-%%   <<"dataSourceId">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"errorMessage">> => data_source_error_message(),
-%%   <<"id">> => string(),
-%%   <<"lineageSummary">> => data_source_run_lineage_summary(),
-%%   <<"projectId">> => string(),
-%%   <<"runStatisticsForAssets">> => run_statistics_for_assets(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"stoppedAt">> => non_neg_integer(),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_data_source_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_notebook_import_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"owningProjectIdentifier">> := string(),
-%%   <<"sourceLocation">> := list()
-%% }
--type start_notebook_import_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lineage_event_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"event">> => binary(),
-%%   <<"eventTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"processingStatus">> => list(any())
-%% }
--type get_lineage_event_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_emr_properties_patch() :: #{
-%%   <<"computeArn">> => [string()],
-%%   <<"instanceProfileArn">> => [string()],
-%%   <<"javaVirtualEnv">> => [string()],
-%%   <<"logUri">> => [string()],
-%%   <<"managedEndpointArn">> => [string()],
-%%   <<"pythonVirtualEnv">> => [string()],
-%%   <<"runtimeRole">> => [string()],
-%%   <<"trustedCertificatesS3Uri">> => [string()]
-%% }
--type spark_emr_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_lineage_run_event_summary() :: #{
-%%   <<"eventType">> => list(any()),
-%%   <<"inputs">> => list(name_identifier()),
-%%   <<"job">> => name_identifier(),
-%%   <<"outputs">> => list(name_identifier()),
-%%   <<"runId">> => [string()]
-%% }
--type open_lineage_run_event_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notebook_input() :: #{}
--type delete_notebook_input() :: #{}.
-
-%% Example:
-%% get_glossary_term_input() :: #{}
--type get_glossary_term_input() :: #{}.
-
-
-%% Example:
-%% update_domain_unit_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_domain_unit_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_project_input() :: #{}
--type get_project_input() :: #{}.
-
-%% Example:
-%% delete_project_output() :: #{}
--type delete_project_output() :: #{}.
-
-
-%% Example:
-%% list_metadata_generation_runs_output() :: #{
-%%   <<"items">> => list(metadata_generation_run_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_metadata_generation_runs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_run_details() :: #{
-%%   <<"sqlQueryRunDetails">> => lineage_sql_query_run_details()
-%% }
--type lineage_run_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_project_input() :: #{
-%%   <<"skipDeletionCheck">> => [boolean()]
-%% }
--type delete_project_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_choice() :: #{
-%%   <<"editedValue">> => string(),
-%%   <<"predictionChoice">> => [integer()],
-%%   <<"predictionTarget">> => [string()]
-%% }
--type accept_choice() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_revision() :: #{
-%%   <<"id">> => string(),
-%%   <<"revision">> => string()
-%% }
--type listing_revision() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_generation_run_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"target">> => metadata_generation_run_target(),
-%%   <<"type">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type metadata_generation_run_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_asset() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"assetRevision">> => string(),
-%%   <<"assetScope">> => asset_scope(),
-%%   <<"failureCause">> => failure_cause(),
-%%   <<"failureTimestamp">> => [non_neg_integer()],
-%%   <<"grantedTimestamp">> => [non_neg_integer()],
-%%   <<"permissions">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"targetName">> => [string()]
-%% }
--type subscribed_asset() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_profile_input() :: #{
-%%   <<"allowCustomProjectResourceTags">> => [boolean()],
-%%   <<"description">> => string(),
-%%   <<"domainUnitIdentifier">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()),
-%%   <<"name">> := string(),
-%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
-%%   <<"projectResourceTagsDescription">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_project_profile_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_project_memberships_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_project_memberships_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_configuration() :: #{
-%%   <<"accountPools">> => list(string()),
-%%   <<"awsAccount">> => list(),
-%%   <<"awsRegion">> => list(),
-%%   <<"configurationParameters">> => environment_configuration_parameters_details(),
-%%   <<"deploymentMode">> => list(any()),
-%%   <<"deploymentOrder">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"environmentBlueprintId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type environment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% amazon_q_properties_patch() :: #{
-%%   <<"authMode">> => [string()],
-%%   <<"isEnabled">> => [boolean()],
-%%   <<"profileArn">> => [string()]
-%% }
--type amazon_q_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_series_data_point_summary_form_output() :: #{
-%%   <<"contentSummary">> => [string()],
-%%   <<"formName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type time_series_data_point_summary_form_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_time_series_data_points_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"entityType">> => list(any()),
-%%   <<"forms">> => list(time_series_data_point_form_output())
-%% }
--type post_time_series_data_points_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"grantedEntity">> => list(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_subscription_grant_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% name_identifier() :: #{
-%%   <<"name">> => [string()],
-%%   <<"namespace">> => [string()]
-%% }
--type name_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_auth2_properties() :: #{
-%%   <<"authorizationCodeProperties">> => authorization_code_properties(),
-%%   <<"oAuth2ClientApplication">> => o_auth2_client_application(),
-%%   <<"oAuth2Credentials">> => glue_o_auth2_credentials(),
-%%   <<"oAuth2GrantType">> => list(any()),
-%%   <<"tokenUrl">> => [string()],
-%%   <<"tokenUrlParametersMap">> => map()
-%% }
--type o_auth2_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_run_configuration_output() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"autoImportDataQualityResult">> => [boolean()],
-%%   <<"catalogName">> => [string()],
-%%   <<"dataAccessRole">> => [string()],
-%%   <<"region">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
-%% }
--type glue_run_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscribed_project_input() :: #{
-%%   <<"identifier">> => string()
-%% }
--type subscribed_project_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% physical_endpoint() :: #{
-%%   <<"awsLocation">> => aws_location(),
-%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
-%%   <<"glueConnection">> => glue_connection(),
-%%   <<"glueConnectionName">> => [string()],
-%%   <<"glueConnectionNames">> => list(string()),
-%%   <<"host">> => [string()],
-%%   <<"port">> => [integer()],
-%%   <<"protocol">> => list(any()),
-%%   <<"stage">> => [string()]
-%% }
--type physical_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% relation_pattern() :: #{
-%%   <<"maxPathLength">> => [integer()],
-%%   <<"relationDirection">> => list(any()),
-%%   <<"relationType">> => list(any())
-%% }
--type relation_pattern() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_subscription_grant_status_input() :: #{
-%%   <<"failureCause">> => failure_cause(),
-%%   <<"status">> := list(any()),
-%%   <<"targetName">> => [string()]
-%% }
--type update_subscription_grant_status_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_output() :: #{
-%%   <<"content">> => [string()],
-%%   <<"formName">> => string(),
-%%   <<"typeName">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type form_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_properties() :: #{
-%%   <<"endTimeoutMinutes">> => [integer()],
-%%   <<"startTimeoutMinutes">> => [integer()]
-%% }
--type deployment_properties() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_environment_role_output() :: #{}
--type disassociate_environment_role_output() :: #{}.
-
-
-%% Example:
-%% get_subscription_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"retainPermissions">> => [boolean()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListing">> => subscribed_listing(),
-%%   <<"subscribedPrincipal">> => list(),
-%%   <<"subscriptionRequestId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_subscription_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_input() :: #{}
--type delete_rule_input() :: #{}.
-
-
-%% Example:
-%% subscribed_listing_input() :: #{
-%%   <<"identifier">> => string()
-%% }
--type subscribed_listing_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_cause() :: #{
-%%   <<"message">> => [string()]
-%% }
--type failure_cause() :: #{binary() => any()}.
-
-
-%% Example:
-%% spark_emr_properties_input() :: #{
-%%   <<"computeArn">> => [string()],
-%%   <<"instanceProfileArn">> => [string()],
-%%   <<"javaVirtualEnv">> => [string()],
-%%   <<"logUri">> => [string()],
-%%   <<"managedEndpointArn">> => [string()],
-%%   <<"pythonVirtualEnv">> => [string()],
-%%   <<"runtimeRole">> => [string()],
-%%   <<"trustedCertificatesS3Uri">> => [string()]
-%% }
--type spark_emr_properties_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_sql_query_run_details() :: #{
-%%   <<"errorMessages">> => list([string()]()),
-%%   <<"numQueriesFailed">> => [integer()],
-%%   <<"queryEndTime">> => [non_neg_integer()],
-%%   <<"queryStartTime">> => [non_neg_integer()],
-%%   <<"totalQueriesProcessed">> => [integer()]
-%% }
--type lineage_sql_query_run_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_attributes() :: #{
-%%   <<"formNames">> => list(string())
-%% }
--type additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_scope() :: #{
-%%   <<"assetId">> => string(),
-%%   <<"errorMessage">> => [string()],
-%%   <<"filterIds">> => list(string()),
-%%   <<"status">> => [string()]
-%% }
--type asset_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connections_input() :: #{
-%%   <<"environmentIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectIdentifier">> => string(),
-%%   <<"scope">> => list(any()),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type list_connections_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_notebook_run_output() :: #{
-%%   <<"cellOrder">> => list(cell_information()),
-%%   <<"completedAt">> => [non_neg_integer()],
-%%   <<"computeConfiguration">> => compute_config(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"environmentConfiguration">> => environment_config(),
-%%   <<"error">> => notebook_run_error(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"networkConfiguration">> => network_config(),
-%%   <<"notebookId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"scheduleId">> => string(),
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"storageConfiguration">> => storage_config(),
-%%   <<"timeoutConfiguration">> => timeout_config(),
-%%   <<"triggerSource">> => trigger_source(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type start_notebook_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% asset_types_for_rule() :: #{
-%%   <<"selectionMode">> => list(any()),
-%%   <<"specificAssetTypes">> => list(string())
-%% }
--type asset_types_for_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_asset_revisions_output() :: #{
-%%   <<"items">> => list(asset_revision()),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_revisions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_details() :: #{
-%%   <<"groupId">> => [string()]
-%% }
--type group_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_action_input() :: #{}
--type delete_environment_action_input() :: #{}.
-
-%% Example:
-%% all_domain_units_grant_filter() :: #{}
--type all_domain_units_grant_filter() :: #{}.
-
-
-%% Example:
-%% environment_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type environment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% detailed_glossary_term() :: #{
-%%   <<"name">> => string(),
-%%   <<"shortDescription">> => string()
-%% }
--type detailed_glossary_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_graph_input() :: #{
-%%   <<"additionalAttributes">> => additional_attributes(),
-%%   <<"match">> := list(list()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type query_graph_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_membership_input() :: #{
-%%   <<"designation">> := list(any()),
-%%   <<"member">> := list()
-%% }
--type create_project_membership_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_output() :: #{
-%%   <<"status">> => list(any())
-%% }
--type delete_domain_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_attributes_metadata_output() :: #{
-%%   <<"attributes">> => list(batch_put_attribute_output()),
-%%   <<"errors">> => list(attribute_error())
-%% }
--type batch_put_attributes_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_location() :: #{
-%%   <<"accessRole">> => [string()],
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"iamConnectionId">> => string()
-%% }
--type aws_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_configuration() :: #{
-%%   <<"authenticationType">> => list(any()),
-%%   <<"oAuth2Properties">> => o_auth2_properties(),
-%%   <<"secretArn">> => [string()]
-%% }
--type authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_unit_output() :: #{}
--type delete_domain_unit_output() :: #{}.
-
-
-%% Example:
-%% start_notebook_export_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"fileFormat">> := list(any()),
-%%   <<"notebookIdentifier">> := string(),
-%%   <<"owningProjectIdentifier">> := string()
-%% }
--type start_notebook_export_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_from_project_profile_policy_grant_detail() :: #{
-%%   <<"includeChildDomainUnits">> => [boolean()],
-%%   <<"projectProfiles">> => list([string()]())
-%% }
--type create_project_from_project_profile_policy_grant_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% glossary_item_additional_attributes() :: #{
-%%   <<"matchRationale">> => list(list())
-%% }
--type glossary_item_additional_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% delete_listing_input() :: #{}
--type delete_listing_input() :: #{}.
-
-
-%% Example:
-%% sage_maker_run_configuration_output() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"region">> => [string()],
-%%   <<"trackingAssets">> => map()
-%% }
--type sage_maker_run_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_input() :: #{
-%%   <<"awsLocation">> => aws_location(),
-%%   <<"clientToken">> => [string()],
-%%   <<"configurations">> => list(configuration()),
-%%   <<"description">> => string(),
-%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
-%%   <<"environmentIdentifier">> => string(),
-%%   <<"name">> := string(),
-%%   <<"props">> => list(),
-%%   <<"scope">> => list(any())
-%% }
--type create_connection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lineage_node_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => [string()],
-%%   <<"domainId">> => string(),
-%%   <<"downstreamNodes">> => list(lineage_node_reference()),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"sourceIdentifier">> => [string()],
-%%   <<"typeName">> => [string()],
-%%   <<"typeRevision">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"upstreamNodes">> => list(lineage_node_reference())
-%% }
--type get_lineage_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_form_type_input() :: #{
-%%   <<"revision">> => string()
-%% }
--type get_form_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% greater_than_expression() :: #{
-%%   <<"columnName">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type greater_than_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_profile_output() :: #{
-%%   <<"allowCustomProjectResourceTags">> => [boolean()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
-%%   <<"projectResourceTagsDescription">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_project_profile_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_notebook_run_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type stop_notebook_run_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscription_request_details_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"decisionComment">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"existingSubscriptionId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()),
-%%   <<"requestReason">> => string(),
-%%   <<"reviewerId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()),
-%%   <<"subscribedPrincipals">> => list(list()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_subscription_request_details_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% form_entry_output() :: #{
-%%   <<"required">> => [boolean()],
-%%   <<"typeName">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type form_entry_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_glossary_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"usageRestrictions">> => list(list(any())())
-%% }
--type update_glossary_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_domains_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_policy_grant_principal() :: #{
-%%   <<"projectDesignation">> => list(any()),
-%%   <<"projectGrantFilter">> => list(),
-%%   <<"projectIdentifier">> => string()
-%% }
--type project_policy_grant_principal() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_entity_owner_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"owner">> := list()
-%% }
--type add_entity_owner_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_self_grant_status_output() :: #{
-%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
-%% }
--type glue_self_grant_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_attribute_output() :: #{
-%%   <<"attributeIdentifier">> => string(),
-%%   <<"forms">> => list(form_output())
-%% }
--type batch_get_attribute_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% redshift_lineage_sync_configuration_input() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"schedule">> => lineage_sync_schedule()
-%% }
--type redshift_lineage_sync_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_blueprint_input() :: #{}
--type get_environment_blueprint_input() :: #{}.
-
-
-%% Example:
-%% list_data_sources_output() :: #{
-%%   <<"items">> => list(data_source_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_sources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rule_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"detail">> => list(),
-%%   <<"includeChildDomainUnits">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"scope">> => rule_scope()
-%% }
--type update_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_asset_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"externalIdentifier">> => string(),
-%%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
-%%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()),
-%%   <<"glossaryTerms">> => list(string()),
-%%   <<"governedGlossaryTerms">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
-%%   <<"listing">> => asset_listing_details(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()),
-%%   <<"revision">> => string(),
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type get_asset_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_parameter() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type environment_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% import() :: #{
-%%   <<"name">> => string(),
-%%   <<"revision">> => string()
-%% }
--type import() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_types_output() :: #{
-%%   <<"items">> => list(list()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalMatchCount">> => [integer()]
-%% }
--type search_types_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_source_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"retainPermissionsOnRevokeFailure">> => [boolean()]
-%% }
--type delete_data_source_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_properties_patch() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
-%% }
--type iam_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_environment_credentials_output() :: #{
-%%   <<"accessKeyId">> => [string()],
-%%   <<"expiration">> => [non_neg_integer()],
-%%   <<"secretAccessKey">> => [string()],
-%%   <<"sessionToken">> => [string()]
-%% }
--type get_environment_credentials_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_time_series_data_point_input() :: #{
-%%   <<"formName">> := string()
-%% }
--type get_time_series_data_point_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_profile_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type project_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_request_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"decisionComment">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"existingSubscriptionId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()),
-%%   <<"requestReason">> => string(),
-%%   <<"reviewerId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()),
-%%   <<"subscribedPrincipals">> => list(list()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type create_subscription_request_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lakehouse_properties_patch() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
-%% }
--type lakehouse_properties_patch() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_export_configuration_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"isExportEnabled">> => [boolean()],
-%%   <<"s3TableBucketArn">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_data_export_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notebooks_output() :: #{
-%%   <<"items">> => list(notebook_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_notebooks_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_notebook_export_input() :: #{}
--type get_notebook_export_input() :: #{}.
-
-
-%% Example:
-%% domain_unit_group_properties() :: #{
-%%   <<"groupId">> => [string()]
-%% }
--type domain_unit_group_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_mapping() :: #{
-%%   <<"prefix">> => [string()],
-%%   <<"usernameAttribute">> => [string()]
-%% }
--type identity_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_subscription_request_input() :: #{
-%%   <<"assetPermissions">> => list(asset_permission()),
-%%   <<"assetScopes">> => list(accepted_asset_scope()),
-%%   <<"decisionComment">> => string()
-%% }
--type accept_subscription_request_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_input() :: #{}
--type get_subscription_input() :: #{}.
-
-
-%% Example:
-%% list_subscription_requests_output() :: #{
-%%   <<"items">> => list(subscription_request_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscription_requests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_glossary_term_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"glossaryIdentifier">> := string(),
-%%   <<"longDescription">> => string(),
-%%   <<"name">> := string(),
-%%   <<"shortDescription">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations()
-%% }
--type create_glossary_term_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_glossary_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_glossary_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metadata_generation_run_input() :: #{
-%%   <<"type">> => list(any())
-%% }
--type get_metadata_generation_run_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_profile_input() :: #{}
--type delete_environment_profile_input() :: #{}.
-
-
-%% Example:
-%% update_environment_blueprint_input() :: #{
-%%   <<"description">> => [string()],
-%%   <<"provisioningProperties">> => list(),
-%%   <<"userParameters">> => list(custom_parameter())
-%% }
--type update_environment_blueprint_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_profile_output() :: #{
-%%   <<"domainId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rolePrincipalArn">> => [string()],
-%%   <<"rolePrincipalId">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type create_group_profile_output() :: #{binary() => any()}.
-
-%% Example:
-%% cell_information() :: #{}
--type cell_information() :: #{}.
-
-%% Example:
-%% delete_project_profile_output() :: #{}
--type delete_project_profile_output() :: #{}.
-
-
-%% Example:
-%% batch_get_attributes_metadata_output() :: #{
-%%   <<"attributes">> => list(batch_get_attribute_output()),
-%%   <<"errors">> => list(attribute_error())
-%% }
--type batch_get_attributes_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_attributes_metadata_input() :: #{
-%%   <<"attributes">> := list(attribute_input()),
-%%   <<"clientToken">> => string()
-%% }
--type batch_put_attributes_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_product_item_additional_attributes() :: #{
-%%   <<"matchRationale">> => list(list())
-%% }
--type data_product_item_additional_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_output() :: #{
-%%   <<"configurations">> => list(configuration()),
-%%   <<"connectionId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"domainUnitId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()),
-%%   <<"projectId">> => string(),
-%%   <<"props">> => list(),
-%%   <<"scope">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type update_connection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_notebook_import_output() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"notebookId">> => string(),
-%%   <<"owningProjectId">> => string(),
-%%   <<"sourceLocation">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type start_notebook_import_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_group_profiles_output() :: #{
-%%   <<"items">> => list(group_profile_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type search_group_profiles_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscriptions_output() :: #{
-%%   <<"items">> => list(subscription_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscriptions_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_subscription_target_input() :: #{
 %%   <<"applicableAssetTypes">> => list(string()),
 %%   <<"authorizedPrincipals">> => list(string()),
@@ -7223,1612 +7352,1567 @@
 
 
 %% Example:
-%% list_asset_revisions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_asset_revisions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"domainExecutionRole">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"serviceRole">> => string(),
-%%   <<"singleSignOn">> => single_sign_on()
-%% }
--type update_domain_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()),
+%% update_subscription_target_output() :: #{
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"environmentId">> => string(),
-%%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"subscriptionId">> => string(),
-%%   <<"subscriptionTargetId">> => string(),
+%%   <<"manageAccessRole">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectId">> => string(),
+%%   <<"provider">> => [string()],
+%%   <<"subscriptionGrantCreationMode">> => list(any()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
+%%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type delete_subscription_grant_output() :: #{binary() => any()}.
+-type update_subscription_target_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% lake_formation_configuration() :: #{
-%%   <<"locationRegistrationExcludeS3Locations">> => list(string()),
-%%   <<"locationRegistrationRole">> => string()
+%% update_user_profile_input() :: #{
+%%   <<"sessionName">> => [string()],
+%%   <<"status">> := list(any()),
+%%   <<"type">> => list(any())
 %% }
--type lake_formation_configuration() :: #{binary() => any()}.
+-type update_user_profile_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_graph_output() :: #{
-%%   <<"items">> => list(list()),
-%%   <<"nextToken">> => string()
-%% }
--type query_graph_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_properties_input() :: #{
-%%   <<"registerS3AccessGrantLocation">> => [boolean()],
-%%   <<"s3AccessGrantLocationId">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type s3_properties_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_listing_output() :: #{}
--type delete_listing_output() :: #{}.
-
-
-%% Example:
-%% form_input() :: #{
-%%   <<"content">> => [string()],
-%%   <<"formName">> => string(),
-%%   <<"typeIdentifier">> => string(),
-%%   <<"typeRevision">> => string()
-%% }
--type form_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_glossary_output() :: #{
-%%   <<"description">> => string(),
+%% update_user_profile_output() :: #{
+%%   <<"details">> => list(),
 %%   <<"domainId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"usageRestrictions">> => list(list(any())())
+%%   <<"type">> => list(any())
 %% }
--type create_glossary_output() :: #{binary() => any()}.
+-type update_user_profile_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% mlflow_properties_output() :: #{
-%%   <<"trackingServerArn">> => [string()]
+%% use_asset_type_policy_grant_detail() :: #{
+%%   <<"domainUnitId">> => string()
 %% }
--type mlflow_properties_output() :: #{binary() => any()}.
+-type use_asset_type_policy_grant_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% basic_authentication_credentials() :: #{
-%%   <<"password">> => [string()],
-%%   <<"userName">> => [string()]
+%% user_details() :: #{
+%%   <<"userId">> => [string()]
 %% }
--type basic_authentication_credentials() :: #{binary() => any()}.
+-type user_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment_configuration_parameter() :: #{
-%%   <<"isEditable">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"value">> => [string()]
+%% user_profile_summary() :: #{
+%%   <<"details">> => list(),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type environment_configuration_parameter() :: #{binary() => any()}.
+-type user_profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% configurable_action_parameter() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => [string()]
+%% username_password() :: #{
+%%   <<"password">> => string(),
+%%   <<"username">> => string()
 %% }
--type configurable_action_parameter() :: #{binary() => any()}.
+-type username_password() :: #{binary() => any()}.
 
 
 %% Example:
-%% amazon_q_properties_output() :: #{
-%%   <<"authMode">> => [string()],
-%%   <<"isEnabled">> => [boolean()],
-%%   <<"profileArn">> => [string()]
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type amazon_q_properties_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource() :: #{
-%%   <<"name">> => [string()],
-%%   <<"provider">> => [string()],
-%%   <<"type">> => [string()],
-%%   <<"value">> => [string()]
+%% vpc_properties_input() :: #{
+%%   <<"securityGroupId">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type resource() :: #{binary() => any()}.
+-type vpc_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% redshift_run_configuration_output() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"dataAccessRole">> => [string()],
-%%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
-%%   <<"redshiftStorage">> => list(),
-%%   <<"region">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
+%% vpc_properties_output() :: #{
+%%   <<"glueConnectionNames">> => list(string()),
+%%   <<"securityGroupId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type redshift_run_configuration_output() :: #{binary() => any()}.
+-type vpc_properties_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_environment_blueprint_configuration_input() :: #{
-%%   <<"allowUserProvidedConfigurations">> => [boolean()],
-%%   <<"enabledRegions">> := list(string()),
-%%   <<"environmentRolePermissionBoundary">> => string(),
-%%   <<"globalParameters">> => map(),
-%%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()),
-%%   <<"provisioningRoleArn">> => string(),
-%%   <<"regionalParameters">> => map(),
-%%   <<"resourceConfigurations">> => list(put_resource_configuration())
+%% vpc_properties_patch() :: #{
+%%   <<"securityGroupId">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type put_environment_blueprint_configuration_input() :: #{binary() => any()}.
+-type vpc_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_product_listing_item() :: #{
-%%   <<"additionalAttributes">> => data_product_listing_item_additional_attributes(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"entityRevision">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
-%%   <<"items">> => list(listing_summary_item()),
-%%   <<"listingCreatedBy">> => string(),
-%%   <<"listingId">> => string(),
-%%   <<"listingRevision">> => string(),
-%%   <<"listingUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owningProjectId">> => string()
+%% workflows_mwaa_properties_input() :: #{
+%%   <<"mwaaEnvironmentName">> => [string()]
 %% }
--type data_product_listing_item() :: #{binary() => any()}.
+-type workflows_mwaa_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflows_mwaa_properties_output() :: #{
+%%   <<"mwaaEnvironmentName">> => [string()]
+%% }
+-type workflows_mwaa_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% workflows_serverless_properties_input() :: #{}
+-type workflows_serverless_properties_input() :: #{}.
+
+%% Example:
+%% workflows_serverless_properties_output() :: #{}
+-type workflows_serverless_properties_output() :: #{}.
 
 -type accept_predictions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type accept_subscription_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type add_entity_owner_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type add_policy_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_environment_role_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_governed_terms_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_attributes_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_put_attributes_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_metadata_generation_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_account_pool_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_asset_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_asset_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_asset_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_product_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_product_revision_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_domain_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_environment_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_environment_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_environment_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_form_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_glossary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_glossary_term_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_group_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_listing_change_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_notebook_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_project_membership_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_project_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_subscription_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_subscription_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_subscription_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_account_pool_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_asset_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_asset_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_data_export_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_product_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_environment_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_environment_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_environment_blueprint_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_environment_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_form_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_glossary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_glossary_term_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_lineage_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_listing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_notebook_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_project_membership_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_project_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_subscription_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_subscription_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_subscription_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_time_series_data_points_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_environment_role_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_governed_terms_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_account_pool_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_asset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_asset_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_asset_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_export_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_product_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_data_source_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_domain_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_blueprint_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_credentials_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_form_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_glossary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_glossary_term_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_group_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_iam_portal_login_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_job_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lineage_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_lineage_node_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_listing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_metadata_generation_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notebook_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notebook_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notebook_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_project_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_subscription_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_subscription_request_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_subscription_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_time_series_data_point_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_user_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_pools_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_accounts_in_account_pool_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_asset_filters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_asset_revisions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_connections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_product_revisions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_source_run_activities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_source_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_domain_units_for_parent_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_entity_owners_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_environment_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_environment_blueprint_configurations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_environment_blueprints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_environment_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_environments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_job_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_lineage_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_lineage_node_history_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_metadata_generation_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_notebook_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notebooks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notifications_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_grants_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_project_memberships_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_project_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_projects_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscription_grants_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscription_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscription_targets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscriptions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_time_series_data_points_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type post_lineage_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type post_time_series_data_points_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_data_export_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_environment_blueprint_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type query_graph_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type reject_predictions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reject_subscription_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_entity_owner_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type remove_policy_grant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type revoke_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_group_profiles_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_listings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_user_profiles_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_data_source_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_metadata_generation_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_notebook_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_notebook_import_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_notebook_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_notebook_sync_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_notebook_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_account_pool_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_asset_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_domain_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_environment_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_environment_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_environment_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_glossary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_glossary_term_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_group_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_notebook_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_project_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_root_domain_unit_owner_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_subscription_grant_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_subscription_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_subscription_target_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -15647,6 +15731,42 @@ start_notebook_run(Client, DomainIdentifier, Input) ->
 start_notebook_run(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-runs"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a notebook sync in Amazon SageMaker Unified Studio.
+%%
+%% This operation syncs a notebook from a Git repository into a project.
+-spec start_notebook_sync(aws_client:aws_client(), binary() | list(), start_notebook_sync_input()) ->
+    {ok, start_notebook_sync_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_sync_errors(), tuple()}.
+start_notebook_sync(Client, DomainIdentifier, Input) ->
+    start_notebook_sync(Client, DomainIdentifier, Input, []).
+
+-spec start_notebook_sync(aws_client:aws_client(), binary() | list(), start_notebook_sync_input(), proplists:proplist()) ->
+    {ok, start_notebook_sync_output(), tuple()} |
+    {error, any()} |
+    {error, start_notebook_sync_errors(), tuple()}.
+start_notebook_sync(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/notebook-syncs"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

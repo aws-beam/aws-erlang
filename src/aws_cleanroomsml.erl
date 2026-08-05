@@ -175,67 +175,91 @@
 
 
 %% Example:
-%% update_configured_audience_model_response() :: #{
-%%   <<"configuredAudienceModelArn">> => string()
+%% access_budget() :: #{
+%%   <<"aggregateRemainingBudget">> => integer(),
+%%   <<"details">> => list(access_budget_details()),
+%%   <<"resourceArn">> => string()
 %% }
--type update_configured_audience_model_response() :: #{binary() => any()}.
+-type access_budget() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_trained_model_inference_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string()
+%% access_budget_details() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"budgetType">> => list(any()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"remainingBudget">> => integer(),
+%%   <<"startTime">> => [non_neg_integer()]
 %% }
--type list_trained_model_inference_jobs_request() :: #{binary() => any()}.
+-type access_budget_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% trained_model_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% audience_destination() :: #{
+%%   <<"s3Destination">> => s3_config_map()
+%% }
+-type audience_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% audience_export_job_summary() :: #{
+%%   <<"audienceGenerationJobArn">> => string(),
+%%   <<"audienceSize">> => audience_size(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputLocation">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type audience_export_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% audience_generation_job_data_source() :: #{
+%%   <<"dataSource">> => s3_config_map(),
+%%   <<"roleArn">> => string(),
+%%   <<"sqlComputeConfiguration">> => list(),
+%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
+%% }
+-type audience_generation_job_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% audience_generation_job_summary() :: #{
+%%   <<"audienceGenerationJobArn">> => string(),
+%%   <<"collaborationId">> => string(),
+%%   <<"configuredAudienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type audience_generation_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% audience_model_summary() :: #{
+%%   <<"audienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"versionIdentifier">> => string()
+%%   <<"trainingDatasetArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type trained_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_trained_model_inference_job_response() :: #{
-%%   <<"trainedModelInferenceJobArn">> => string()
-%% }
--type start_trained_model_inference_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_model_algorithm_associations_response() :: #{
-%%   <<"configuredModelAlgorithmAssociations">> => list(configured_model_algorithm_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_model_algorithm_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_audience_model_response() :: #{
-%%   <<"audienceModelArn">> => string()
-%% }
--type create_audience_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type audience_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -247,22 +271,164 @@
 
 
 %% Example:
-%% start_audience_generation_job_response() :: #{
-%%   <<"audienceGenerationJobArn">> => string()
+%% audience_size() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
 %% }
--type start_audience_generation_job_response() :: #{binary() => any()}.
+-type audience_size() :: #{binary() => any()}.
 
 
 %% Example:
-%% trained_model_exports_max_size() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => float()
+%% audience_size_config() :: #{
+%%   <<"audienceSizeBins">> => list(integer()),
+%%   <<"audienceSizeType">> => list(any())
 %% }
--type trained_model_exports_max_size() :: #{binary() => any()}.
+-type audience_size_config() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_trained_model_inference_job_request() :: #{}
+-type cancel_trained_model_inference_job_request() :: #{}.
 
 
 %% Example:
-%% get_configured_model_algorithm_association_response() :: #{
+%% cancel_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type cancel_trained_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_configured_model_algorithm_association_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_configured_model_algorithm_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_ml_input_channel_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"payerConfiguration">> => payer_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_ml_input_channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_trained_model_export_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => trained_model_export_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_trained_model_export_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_trained_model_inference_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"mlModelInferencePayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => inference_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_trained_model_inference_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_trained_model_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
+%% }
+-type collaboration_trained_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_classification_details() :: #{
+%%   <<"columnMapping">> => list(synthetic_data_column_properties())
+%% }
+-type column_classification_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_schema() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnTypes">> => list(list(any())())
+%% }
+-type column_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_audience_model_output_config() :: #{
+%%   <<"destination">> => audience_destination(),
+%%   <<"roleArn">> => string()
+%% }
+-type configured_audience_model_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_audience_model_summary() :: #{
+%%   <<"audienceModelArn">> => string(),
+%%   <<"configuredAudienceModelArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfig">> => configured_audience_model_output_config(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_audience_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_model_algorithm_association_summary() :: #{
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmArn">> => string(),
 %%   <<"configuredModelAlgorithmAssociationArn">> => string(),
@@ -270,11 +436,274 @@
 %%   <<"description">> => string(),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
-%%   <<"privacyConfiguration">> => privacy_configuration(),
-%%   <<"tags">> => map(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type get_configured_model_algorithm_association_response() :: #{binary() => any()}.
+-type configured_model_algorithm_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_model_algorithm_summary() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type configured_model_algorithm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_config() :: #{
+%%   <<"arguments">> => list(string()),
+%%   <<"entrypoint">> => list(string()),
+%%   <<"imageUri">> => string(),
+%%   <<"metricDefinitions">> => list(metric_definition())
+%% }
+-type container_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_audience_model_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingDataEndTime">> => [non_neg_integer()],
+%%   <<"trainingDataStartTime">> => [non_neg_integer()],
+%%   <<"trainingDatasetArn">> := string()
+%% }
+-type create_audience_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_audience_model_response() :: #{
+%%   <<"audienceModelArn">> => string()
+%% }
+-type create_audience_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_audience_model_request() :: #{
+%%   <<"audienceModelArn">> := string(),
+%%   <<"audienceSizeConfig">> => audience_size_config(),
+%%   <<"childResourceTagOnCreatePolicy">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"minMatchingSeedSize">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"outputConfig">> := configured_audience_model_output_config(),
+%%   <<"sharedAudienceMetrics">> := list(list(any())()),
+%%   <<"tags">> => map()
+%% }
+-type create_configured_audience_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_audience_model_response() :: #{
+%%   <<"configuredAudienceModelArn">> => string()
+%% }
+-type create_configured_audience_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_association_request() :: #{
+%%   <<"configuredModelAlgorithmArn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_configured_model_algorithm_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_association_response() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> => string()
+%% }
+-type create_configured_model_algorithm_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"inferenceContainerConfig">> => inference_container_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingContainerConfig">> => container_config()
+%% }
+-type create_configured_model_algorithm_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configured_model_algorithm_response() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string()
+%% }
+-type create_configured_model_algorithm_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ml_input_channel_request() :: #{
+%%   <<"configuredModelAlgorithmAssociations">> := list(string()),
+%%   <<"description">> => string(),
+%%   <<"inputChannel">> := input_channel(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"payerConfiguration">> => payer_configuration(),
+%%   <<"retentionInDays">> := [integer()],
+%%   <<"tags">> => map()
+%% }
+-type create_ml_input_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ml_input_channel_response() :: #{
+%%   <<"mlInputChannelArn">> => string()
+%% }
+-type create_ml_input_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trained_model_request() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> := string(),
+%%   <<"dataChannels">> := list(model_training_data_channel()),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"hyperparameters">> => map(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"resourceConfig">> := resource_config(),
+%%   <<"stoppingCondition">> => stopping_condition(),
+%%   <<"tags">> => map(),
+%%   <<"trainingInputMode">> => list(any())
+%% }
+-type create_trained_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trained_model_response() :: #{
+%%   <<"trainedModelArn">> => string(),
+%%   <<"versionIdentifier">> => string()
+%% }
+-type create_trained_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_training_dataset_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingData">> := list(dataset())
+%% }
+-type create_training_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_training_dataset_response() :: #{
+%%   <<"trainingDatasetArn">> => string()
+%% }
+-type create_training_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_entity_config() :: #{
+%%   <<"customDataIdentifiers">> => list(string())
+%% }
+-type custom_entity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_privacy_scores() :: #{
+%%   <<"membershipInferenceAttackScores">> => list(membership_inference_attack_score())
+%% }
+-type data_privacy_scores() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"glueDataSource">> => glue_data_source()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"inputConfig">> => dataset_input_config(),
+%%   <<"type">> => list(any())
+%% }
+-type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_input_config() :: #{
+%%   <<"dataSource">> => data_source(),
+%%   <<"schema">> => list(column_schema())
+%% }
+-type dataset_input_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_audience_generation_job_request() :: #{}
+-type delete_audience_generation_job_request() :: #{}.
+
+%% Example:
+%% delete_audience_model_request() :: #{}
+-type delete_audience_model_request() :: #{}.
+
+%% Example:
+%% delete_configured_audience_model_policy_request() :: #{}
+-type delete_configured_audience_model_policy_request() :: #{}.
+
+%% Example:
+%% delete_configured_audience_model_request() :: #{}
+-type delete_configured_audience_model_request() :: #{}.
+
+%% Example:
+%% delete_configured_model_algorithm_association_request() :: #{}
+-type delete_configured_model_algorithm_association_request() :: #{}.
+
+%% Example:
+%% delete_configured_model_algorithm_request() :: #{}
+-type delete_configured_model_algorithm_request() :: #{}.
+
+%% Example:
+%% delete_ml_configuration_request() :: #{}
+-type delete_ml_configuration_request() :: #{}.
+
+%% Example:
+%% delete_ml_input_channel_data_request() :: #{}
+-type delete_ml_input_channel_data_request() :: #{}.
+
+
+%% Example:
+%% delete_trained_model_output_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type delete_trained_model_output_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_training_dataset_request() :: #{}
+-type delete_training_dataset_request() :: #{}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"s3Destination">> => s3_config_map()
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% get_audience_generation_job_request() :: #{}
+-type get_audience_generation_job_request() :: #{}.
 
 
 %% Example:
@@ -297,222 +726,80 @@
 %% }
 -type get_audience_generation_job_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_configured_model_algorithms_response() :: #{
-%%   <<"configuredModelAlgorithms">> => list(configured_model_algorithm_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_model_algorithms_response() :: #{binary() => any()}.
+%% get_audience_model_request() :: #{}
+-type get_audience_model_request() :: #{}.
 
 
 %% Example:
-%% create_ml_input_channel_request() :: #{
-%%   <<"configuredModelAlgorithmAssociations">> := list(string()),
-%%   <<"description">> => string(),
-%%   <<"inputChannel">> := input_channel(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"payerConfiguration">> => payer_configuration(),
-%%   <<"retentionInDays">> := [integer()],
-%%   <<"tags">> => map()
-%% }
--type create_ml_input_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trained_model_request() :: #{
-%%   <<"versionIdentifier">> => string()
-%% }
--type get_trained_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budget() :: #{
-%%   <<"aggregateRemainingBudget">> => integer(),
-%%   <<"details">> => list(access_budget_details()),
-%%   <<"resourceArn">> => string()
-%% }
--type access_budget() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_redaction_configuration() :: #{
-%%   <<"customEntityConfig">> => custom_entity_config(),
-%%   <<"entitiesToRedact">> => list(list(any())())
-%% }
--type log_redaction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_training_dataset_response() :: #{
+%% get_audience_model_response() :: #{
+%%   <<"audienceModelArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
 %%   <<"tags">> => map(),
-%%   <<"trainingData">> => list(dataset()),
+%%   <<"trainingDataEndTime">> => [non_neg_integer()],
+%%   <<"trainingDataStartTime">> => [non_neg_integer()],
 %%   <<"trainingDatasetArn">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type get_training_dataset_response() :: #{binary() => any()}.
+-type get_audience_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_configured_model_algorithm_association_request() :: #{}
+-type get_collaboration_configured_model_algorithm_association_request() :: #{}.
 
 
 %% Example:
-%% trained_models_configuration_policy() :: #{
-%%   <<"containerLogs">> => list(logs_configuration_policy()),
-%%   <<"containerMetrics">> => metrics_configuration_policy(),
-%%   <<"maxArtifactSize">> => trained_model_artifact_max_size()
-%% }
--type trained_models_configuration_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% trained_model_inference_job_summary() :: #{
+%% get_collaboration_configured_model_algorithm_association_response() :: #{
 %%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
 %%   <<"configuredModelAlgorithmAssociationArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"logsStatus">> => list(any()),
-%%   <<"logsStatusDetails">> => [string()],
 %%   <<"membershipIdentifier">> => string(),
-%%   <<"metricsStatus">> => list(any()),
-%%   <<"metricsStatusDetails">> => [string()],
-%%   <<"mlModelInferencePayerAccountId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"outputConfiguration">> => inference_output_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainedModelInferenceJobArn">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type trained_model_inference_job_summary() :: #{binary() => any()}.
+-type get_collaboration_configured_model_algorithm_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_collaboration_ml_input_channel_request() :: #{}
+-type get_collaboration_ml_input_channel_request() :: #{}.
 
 
 %% Example:
-%% create_configured_audience_model_response() :: #{
-%%   <<"configuredAudienceModelArn">> => string()
-%% }
--type create_configured_audience_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% trained_model_export_receiver_member() :: #{
-%%   <<"accountId">> => string()
-%% }
--type trained_model_export_receiver_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_output_configuration() :: #{
-%%   <<"accept">> => [string()],
-%%   <<"members">> => list(inference_receiver_member())
-%% }
--type inference_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_input_parameters() :: #{
-%%   <<"computeConfiguration">> => list(),
-%%   <<"resultFormat">> => list(any()),
-%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
-%% }
--type protected_query_input_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_audience_models_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_audience_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_training_datasets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_training_datasets_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_model_algorithm_association_request() :: #{}
--type get_configured_model_algorithm_association_request() :: #{}.
-
-
-%% Example:
-%% create_configured_model_algorithm_association_request() :: #{
-%%   <<"configuredModelAlgorithmArn">> := string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"privacyConfiguration">> => privacy_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_configured_model_algorithm_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_ml_configuration_request() :: #{
-%%   <<"defaultOutputLocation">> := ml_output_configuration()
-%% }
--type put_ml_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_training_dataset_request() :: #{}
--type get_training_dataset_request() :: #{}.
-
-
-%% Example:
-%% get_ml_input_channel_response() :: #{
+%% get_collaboration_ml_input_channel_response() :: #{
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmAssociations">> => list(string()),
 %%   <<"createTime">> => [non_neg_integer()],
+%%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"inputChannel">> => input_channel(),
-%%   <<"kmsKeyArn">> => string(),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"mlInputChannelArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"numberOfFiles">> => [float()],
 %%   <<"numberOfRecords">> => [float()],
 %%   <<"payerConfiguration">> => payer_configuration(),
 %%   <<"privacyBudgets">> => list(),
-%%   <<"protectedQueryIdentifier">> => string(),
 %%   <<"retentionInDays">> => [integer()],
-%%   <<"sizeInGb">> => [float()],
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
 %%   <<"syntheticDataConfiguration">> => synthetic_data_configuration(),
-%%   <<"tags">> => map(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type get_ml_input_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_configuration_request() :: #{}
--type get_ml_configuration_request() :: #{}.
+-type get_collaboration_ml_input_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ml_input_channels_response() :: #{
-%%   <<"mlInputChannelsList">> => list(ml_input_channel_summary()),
-%%   <<"nextToken">> => string()
+%% get_collaboration_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
 %% }
--type list_ml_input_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% relevance_metric() :: #{
-%%   <<"audienceSize">> => audience_size(),
-%%   <<"score">> => [float()]
-%% }
--type relevance_metric() :: #{binary() => any()}.
+-type get_collaboration_trained_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,415 +829,22 @@
 %% }
 -type get_collaboration_trained_model_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% create_configured_audience_model_request() :: #{
-%%   <<"audienceModelArn">> := string(),
-%%   <<"audienceSizeConfig">> => audience_size_config(),
-%%   <<"childResourceTagOnCreatePolicy">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"minMatchingSeedSize">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"outputConfig">> := configured_audience_model_output_config(),
-%%   <<"sharedAudienceMetrics">> := list(list(any())()),
-%%   <<"tags">> => map()
-%% }
--type create_configured_audience_model_request() :: #{binary() => any()}.
+%% get_configured_audience_model_policy_request() :: #{}
+-type get_configured_audience_model_policy_request() :: #{}.
 
 
 %% Example:
-%% collaboration_ml_input_channel_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"mlInputChannelArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"payerConfiguration">> => payer_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_ml_input_channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% ml_input_channel_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"mlInputChannelArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"payerConfiguration">> => payer_configuration(),
-%%   <<"protectedQueryIdentifier">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type ml_input_channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_model_algorithm_association_response() :: #{
-%%   <<"configuredModelAlgorithmAssociationArn">> => string()
-%% }
--type create_configured_model_algorithm_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_definition() :: #{
-%%   <<"name">> => string(),
-%%   <<"regex">> => string()
-%% }
--type metric_definition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_audience_model_request() :: #{}
--type delete_configured_audience_model_request() :: #{}.
-
-%% Example:
-%% get_ml_input_channel_request() :: #{}
--type get_ml_input_channel_request() :: #{}.
-
-
-%% Example:
-%% list_collaboration_trained_model_export_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string()
-%% }
--type list_collaboration_trained_model_export_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_configured_model_algorithm_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_configured_model_algorithm_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trained_model_response() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"dataChannels">> => list(model_training_data_channel()),
-%%   <<"description">> => string(),
-%%   <<"environment">> => map(),
-%%   <<"hyperparameters">> => map(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"logsStatus">> => list(any()),
-%%   <<"logsStatusDetails">> => [string()],
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"metricsStatus">> => list(any()),
-%%   <<"metricsStatusDetails">> => [string()],
-%%   <<"mlModelTrainingPayerAccountId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceConfig">> => resource_config(),
-%%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => status_details(),
-%%   <<"stoppingCondition">> => stopping_condition(),
-%%   <<"tags">> => map(),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainingContainerImageDigest">> => [string()],
-%%   <<"trainingInputMode">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"versionIdentifier">> => string()
-%% }
--type get_trained_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_trained_model_export_job_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputConfiguration">> => trained_model_export_output_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => status_details(),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_trained_model_export_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trained_model_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModels">> => list(trained_model_summary())
-%% }
--type list_trained_model_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_details() :: #{
-%%   <<"message">> => [string()],
-%%   <<"statusCode">> => [string()]
-%% }
--type status_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_audience_export_job_request() :: #{
-%%   <<"audienceGenerationJobArn">> := string(),
-%%   <<"audienceSize">> := audience_size(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type start_audience_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_training_dataset_request() :: #{}
--type delete_training_dataset_request() :: #{}.
-
-
-%% Example:
-%% list_ml_input_channels_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_ml_input_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_model_algorithm_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"inferenceContainerConfig">> => inference_container_config(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"trainingContainerConfig">> => container_config()
-%% }
--type create_configured_model_algorithm_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audience_models_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_audience_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_ml_input_channels_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_ml_input_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset() :: #{
-%%   <<"inputConfig">> => dataset_input_config(),
-%%   <<"type">> => list(any())
-%% }
--type dataset() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics_configuration_policy() :: #{
-%%   <<"noiseLevel">> => list(any())
-%% }
--type metrics_configuration_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_privacy_scores() :: #{
-%%   <<"membershipInferenceAttackScores">> => list(membership_inference_attack_score())
-%% }
--type data_privacy_scores() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_entity_config() :: #{
-%%   <<"customDataIdentifiers">> => list(string())
-%% }
--type custom_entity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_size() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type audience_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_audience_generation_job_request() :: #{
-%%   <<"collaborationId">> => string(),
-%%   <<"configuredAudienceModelArn">> := string(),
-%%   <<"description">> => string(),
-%%   <<"includeSeedInOutput">> => [boolean()],
-%%   <<"name">> := string(),
-%%   <<"seedAudience">> := audience_generation_job_data_source(),
-%%   <<"tags">> => map()
-%% }
--type start_audience_generation_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% model_training_data_channel() :: #{
-%%   <<"channelName">> => string(),
-%%   <<"mlInputChannelArn">> => string(),
-%%   <<"s3DataDistributionType">> => list(any())
-%% }
--type model_training_data_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_generation_job_summary() :: #{
-%%   <<"audienceGenerationJobArn">> => string(),
-%%   <<"collaborationId">> => string(),
+%% get_configured_audience_model_policy_response() :: #{
 %%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"startedBy">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"configuredAudienceModelPolicy">> => string(),
+%%   <<"policyHash">> => string()
 %% }
--type audience_generation_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% trained_model_inference_jobs_configuration_policy() :: #{
-%%   <<"containerLogs">> => list(logs_configuration_policy()),
-%%   <<"maxOutputSize">> => trained_model_inference_max_output_size()
-%% }
--type trained_model_inference_jobs_configuration_policy() :: #{binary() => any()}.
-
+-type get_configured_audience_model_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_config() :: #{
-%%   <<"arguments">> => list(string()),
-%%   <<"entrypoint">> => list(string()),
-%%   <<"imageUri">> => string(),
-%%   <<"metricDefinitions">> => list(metric_definition())
-%% }
--type container_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% payer_configuration() :: #{
-%%   <<"computePayerAccountId">> => string(),
-%%   <<"syntheticDataPayerAccountId">> => string()
-%% }
--type payer_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_audience_model_request() :: #{}
--type get_audience_model_request() :: #{}.
-
-
-%% Example:
-%% list_trained_model_inference_jobs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModelInferenceJobs">> => list(trained_model_inference_job_summary())
-%% }
--type list_trained_model_inference_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_audience_model_output_config() :: #{
-%%   <<"destination">> => audience_destination(),
-%%   <<"roleArn">> => string()
-%% }
--type configured_audience_model_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_collaboration_configured_model_algorithm_association_request() :: #{}
--type get_collaboration_configured_model_algorithm_association_request() :: #{}.
-
-
-%% Example:
-%% configured_model_algorithm_summary() :: #{
-%%   <<"configuredModelAlgorithmArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_model_algorithm_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% incremental_training_data_channel() :: #{
-%%   <<"channelName">> => string(),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"versionIdentifier">> => string()
-%% }
--type incremental_training_data_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% trained_model_inference_max_output_size() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type trained_model_inference_max_output_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_trained_model_request() :: #{
-%%   <<"versionIdentifier">> => string()
-%% }
--type get_collaboration_trained_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_resource_config() :: #{
-%%   <<"instanceCount">> => [integer()],
-%%   <<"instanceType">> => list(any())
-%% }
--type inference_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaName">> => [string()],
-%%   <<"quotaValue">> => [float()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+%% get_configured_audience_model_request() :: #{}
+-type get_configured_audience_model_request() :: #{}.
 
 
 %% Example:
@@ -971,30 +865,49 @@
 %% }
 -type get_configured_audience_model_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_configured_model_algorithm_association_request() :: #{}
+-type get_configured_model_algorithm_association_request() :: #{}.
+
 
 %% Example:
-%% audience_model_summary() :: #{
-%%   <<"audienceModelArn">> => string(),
+%% get_configured_model_algorithm_association_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"trainingDatasetArn">> => string(),
+%%   <<"privacyConfiguration">> => privacy_configuration(),
+%%   <<"tags">> => map(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type audience_model_summary() :: #{binary() => any()}.
+-type get_configured_model_algorithm_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configured_model_algorithm_request() :: #{}
+-type get_configured_model_algorithm_request() :: #{}.
 
 
 %% Example:
-%% ml_output_configuration() :: #{
-%%   <<"destination">> => destination(),
-%%   <<"roleArn">> => string()
+%% get_configured_model_algorithm_response() :: #{
+%%   <<"configuredModelAlgorithmArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"inferenceContainerConfig">> => inference_container_config(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"trainingContainerConfig">> => container_config(),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type ml_output_configuration() :: #{binary() => any()}.
+-type get_configured_model_algorithm_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_audience_generation_job_request() :: #{}
--type delete_audience_generation_job_request() :: #{}.
+%% get_ml_configuration_request() :: #{}
+-type get_ml_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1006,704 +919,40 @@
 %% }
 -type get_ml_configuration_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% stopping_condition() :: #{
-%%   <<"maxRuntimeInSeconds">> => [integer()]
-%% }
--type stopping_condition() :: #{binary() => any()}.
+%% get_ml_input_channel_request() :: #{}
+-type get_ml_input_channel_request() :: #{}.
 
 
 %% Example:
-%% list_collaboration_trained_model_export_jobs_response() :: #{
-%%   <<"collaborationTrainedModelExportJobs">> => list(collaboration_trained_model_export_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_trained_model_export_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trained_model_request() :: #{
-%%   <<"configuredModelAlgorithmAssociationArn">> := string(),
-%%   <<"dataChannels">> := list(model_training_data_channel()),
+%% get_ml_input_channel_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
+%%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"environment">> => map(),
-%%   <<"hyperparameters">> => map(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel()),
+%%   <<"inputChannel">> => input_channel(),
 %%   <<"kmsKeyArn">> => string(),
-%%   <<"mlModelTrainingPayerAccountId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"resourceConfig">> := resource_config(),
-%%   <<"stoppingCondition">> => stopping_condition(),
-%%   <<"tags">> => map(),
-%%   <<"trainingInputMode">> => list(any())
-%% }
--type create_trained_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_training_datasets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"trainingDatasets">> => list(training_dataset_summary())
-%% }
--type list_training_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_trained_model_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
 %%   <<"membershipIdentifier">> => string(),
-%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"versionIdentifier">> => string()
-%% }
--type collaboration_trained_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_container_config() :: #{
-%%   <<"imageUri">> => string()
-%% }
--type inference_container_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_model_algorithms_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_model_algorithms_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ml_synthetic_data_parameters() :: #{
-%%   <<"columnClassification">> => column_classification_details(),
-%%   <<"epsilon">> => [float()],
-%%   <<"maxMembershipInferenceAttackScore">> => [float()]
-%% }
--type ml_synthetic_data_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% configured_model_algorithm_association_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmArn">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_model_algorithm_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_export_job_summary() :: #{
-%%   <<"audienceGenerationJobArn">> => string(),
-%%   <<"audienceSize">> => audience_size(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputLocation">> => string(),
+%%   <<"numberOfFiles">> => [float()],
+%%   <<"numberOfRecords">> => [float()],
+%%   <<"payerConfiguration">> => payer_configuration(),
+%%   <<"privacyBudgets">> => list(),
+%%   <<"protectedQueryIdentifier">> => string(),
+%%   <<"retentionInDays">> => [integer()],
+%%   <<"sizeInGb">> => [float()],
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
+%%   <<"syntheticDataConfiguration">> => synthetic_data_configuration(),
+%%   <<"tags">> => map(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type audience_export_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_audience_model_request() :: #{}
--type delete_audience_model_request() :: #{}.
-
-
-%% Example:
-%% trained_model_exports_configuration_policy() :: #{
-%%   <<"filesToExport">> => list(list(any())()),
-%%   <<"maxSize">> => trained_model_exports_max_size()
-%% }
--type trained_model_exports_configuration_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configured_model_algorithm_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_model_algorithm_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_training_dataset_response() :: #{
-%%   <<"trainingDatasetArn">> => string()
-%% }
--type create_training_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_audience_model_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"trainingDataEndTime">> => [non_neg_integer()],
-%%   <<"trainingDataStartTime">> => [non_neg_integer()],
-%%   <<"trainingDatasetArn">> := string()
-%% }
--type create_audience_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% privacy_configuration() :: #{
-%%   <<"policies">> => privacy_configuration_policies()
-%% }
--type privacy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_trained_model_inference_job_request() :: #{
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"containerExecutionParameters">> => inference_container_execution_parameters(),
-%%   <<"dataSource">> := model_inference_data_source(),
-%%   <<"description">> => string(),
-%%   <<"environment">> => map(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"mlModelInferencePayerAccountId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"outputConfiguration">> := inference_output_configuration(),
-%%   <<"resourceConfig">> := inference_resource_config(),
-%%   <<"tags">> => map(),
-%%   <<"trainedModelArn">> := string(),
-%%   <<"trainedModelVersionIdentifier">> => string()
-%% }
--type start_trained_model_inference_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trained_model_artifact_max_size() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => float()
-%% }
--type trained_model_artifact_max_size() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_receiver_member() :: #{
-%%   <<"accountId">> => string()
-%% }
--type inference_receiver_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% synthetic_data_column_properties() :: #{
-%%   <<"columnName">> => string(),
-%%   <<"columnType">> => list(any()),
-%%   <<"isPredictiveValue">> => [boolean()]
-%% }
--type synthetic_data_column_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_configured_model_algorithm_association_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmArn">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_configured_model_algorithm_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ml_input_channel_response() :: #{
-%%   <<"mlInputChannelArn">> => string()
-%% }
--type create_ml_input_channel_response() :: #{binary() => any()}.
+-type get_ml_input_channel_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_trained_model_inference_job_request() :: #{}
 -type get_trained_model_inference_job_request() :: #{}.
-
-
-%% Example:
-%% list_configured_audience_models_response() :: #{
-%%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configured_audience_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_classification_details() :: #{
-%%   <<"columnMapping">> => list(synthetic_data_column_properties())
-%% }
--type column_classification_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_config() :: #{
-%%   <<"instanceCount">> => [integer()],
-%%   <<"instanceType">> => list(any()),
-%%   <<"volumeSizeInGB">> => [integer()]
-%% }
--type resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_configured_model_algorithm_association_response() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmArn">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"name">> => string(),
-%%   <<"privacyConfiguration">> => privacy_configuration(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_collaboration_configured_model_algorithm_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_config_map() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type s3_config_map() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_audience_export_jobs_response() :: #{
-%%   <<"audienceExportJobs">> => list(audience_export_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_audience_export_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% incremental_training_data_channel_output() :: #{
-%%   <<"channelName">> => string(),
-%%   <<"modelName">> => string(),
-%%   <<"versionIdentifier">> => string()
-%% }
--type incremental_training_data_channel_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ml_input_channel_data_request() :: #{}
--type delete_ml_input_channel_data_request() :: #{}.
-
-
-%% Example:
-%% list_trained_models_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModels">> => list(trained_model_summary())
-%% }
--type list_trained_models_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% synthetic_data_evaluation_scores() :: #{
-%%   <<"dataPrivacyScores">> => data_privacy_scores()
-%% }
--type synthetic_data_evaluation_scores() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_configuration_policy() :: #{
-%%   <<"allowedAccountIds">> => list([string()]()),
-%%   <<"filterPattern">> => [string()],
-%%   <<"logRedactionConfiguration">> => log_redaction_configuration(),
-%%   <<"logType">> => list(any())
-%% }
--type logs_configuration_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trained_model_response() :: #{
-%%   <<"trainedModelArn">> => string(),
-%%   <<"versionIdentifier">> => string()
-%% }
--type create_trained_model_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_trained_model_export_job_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"outputConfiguration">> := trained_model_export_output_configuration(),
-%%   <<"trainedModelVersionIdentifier">> => string()
-%% }
--type start_trained_model_export_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_compute_configuration() :: #{
-%%   <<"number">> => [integer()],
-%%   <<"properties">> => list(),
-%%   <<"type">> => list(any())
-%% }
--type worker_compute_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_audience_model_request() :: #{}
--type get_configured_audience_model_request() :: #{}.
-
-
-%% Example:
-%% input_channel() :: #{
-%%   <<"dataSource">> => list(),
-%%   <<"roleArn">> => string()
-%% }
--type input_channel() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_trained_model_inference_job_request() :: #{}
--type cancel_trained_model_inference_job_request() :: #{}.
-
-
-%% Example:
-%% cancel_trained_model_request() :: #{
-%%   <<"versionIdentifier">> => string()
-%% }
--type cancel_trained_model_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trained_model_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_trained_model_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_trained_models_response() :: #{
-%%   <<"collaborationTrainedModels">> => list(collaboration_trained_model_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_trained_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% configured_audience_model_summary() :: #{
-%%   <<"audienceModelArn">> => string(),
-%%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputConfig">> => configured_audience_model_output_config(),
-%%   <<"status">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type configured_audience_model_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_trained_models_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_trained_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"s3Destination">> => s3_config_map()
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configured_audience_model_policy_response() :: #{
-%%   <<"configuredAudienceModelArn">> => string(),
-%%   <<"configuredAudienceModelPolicy">> => string(),
-%%   <<"policyHash">> => string()
-%% }
--type get_configured_audience_model_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_ml_input_channels_response() :: #{
-%%   <<"collaborationMLInputChannelsList">> => list(collaboration_ml_input_channel_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_ml_input_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% privacy_configuration_policies() :: #{
-%%   <<"trainedModelExports">> => trained_model_exports_configuration_policy(),
-%%   <<"trainedModelInferenceJobs">> => trained_model_inference_jobs_configuration_policy(),
-%%   <<"trainedModels">> => trained_models_configuration_policy()
-%% }
--type privacy_configuration_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% glue_data_source() :: #{
-%%   <<"catalogId">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"tableName">> => string()
-%% }
--type glue_data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% protected_query_s_q_l_parameters() :: #{
-%%   <<"analysisTemplateArn">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"queryString">> => [string()]
-%% }
--type protected_query_s_q_l_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% collaboration_trained_model_inference_job_summary() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"logsStatus">> => list(any()),
-%%   <<"logsStatusDetails">> => [string()],
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"metricsStatus">> => list(any()),
-%%   <<"metricsStatusDetails">> => [string()],
-%%   <<"mlModelInferencePayerAccountId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputConfiguration">> => inference_output_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainedModelInferenceJobArn">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type collaboration_trained_model_inference_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ml_configuration_request() :: #{}
--type delete_ml_configuration_request() :: #{}.
-
-
-%% Example:
-%% put_configured_audience_model_policy_response() :: #{
-%%   <<"configuredAudienceModelPolicy">> => string(),
-%%   <<"policyHash">> => string()
-%% }
--type put_configured_audience_model_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% membership_inference_attack_score() :: #{
-%%   <<"attackVersion">> => list(any()),
-%%   <<"score">> => [float()]
-%% }
--type membership_inference_attack_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_collaboration_ml_input_channel_response() :: #{
-%%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"creatorAccountId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"membershipIdentifier">> => string(),
-%%   <<"mlInputChannelArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"numberOfRecords">> => [float()],
-%%   <<"payerConfiguration">> => payer_configuration(),
-%%   <<"privacyBudgets">> => list(),
-%%   <<"retentionInDays">> => [integer()],
-%%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => status_details(),
-%%   <<"syntheticDataConfiguration">> => synthetic_data_configuration(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_collaboration_ml_input_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_configured_model_algorithm_request() :: #{}
--type get_configured_model_algorithm_request() :: #{}.
-
-
-%% Example:
-%% model_inference_data_source() :: #{
-%%   <<"mlInputChannelArn">> => string()
-%% }
--type model_inference_data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_training_dataset_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"trainingData">> := list(dataset())
-%% }
--type create_training_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_model_algorithm_association_request() :: #{}
--type delete_configured_model_algorithm_association_request() :: #{}.
-
-
-%% Example:
-%% training_dataset_summary() :: #{
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"trainingDatasetArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type training_dataset_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_schema() :: #{
-%%   <<"columnName">> => string(),
-%%   <<"columnTypes">> => list(list(any())())
-%% }
--type column_schema() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_collaboration_trained_model_inference_jobs_response() :: #{
-%%   <<"collaborationTrainedModelInferenceJobs">> => list(collaboration_trained_model_inference_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_trained_model_inference_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_audience_model_response() :: #{
-%%   <<"audienceModelArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusDetails">> => status_details(),
-%%   <<"tags">> => map(),
-%%   <<"trainingDataEndTime">> => [non_neg_integer()],
-%%   <<"trainingDataStartTime">> => [non_neg_integer()],
-%%   <<"trainingDatasetArn">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_audience_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configured_model_algorithm_request() :: #{}
--type delete_configured_model_algorithm_request() :: #{}.
-
-
-%% Example:
-%% dataset_input_config() :: #{
-%%   <<"dataSource">> => data_source(),
-%%   <<"schema">> => list(column_schema())
-%% }
--type dataset_input_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configured_model_algorithm_response() :: #{
-%%   <<"configuredModelAlgorithmArn">> => string()
-%% }
--type create_configured_model_algorithm_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_configured_audience_model_policy_request() :: #{
-%%   <<"configuredAudienceModelPolicy">> := string(),
-%%   <<"policyExistenceCondition">> => list(any()),
-%%   <<"previousPolicyHash">> => string()
-%% }
--type put_configured_audience_model_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source() :: #{
-%%   <<"glueDataSource">> => glue_data_source()
-%% }
--type data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_size_config() :: #{
-%%   <<"audienceSizeBins">> => list(integer()),
-%%   <<"audienceSizeType">> => list(any())
-%% }
--type audience_size_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% audience_destination() :: #{
-%%   <<"s3Destination">> => s3_config_map()
-%% }
--type audience_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_budget_details() :: #{
-%%   <<"autoRefresh">> => list(any()),
-%%   <<"budget">> => integer(),
-%%   <<"budgetType">> => list(any()),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"remainingBudget">> => integer(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type access_budget_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1737,6 +986,98 @@
 
 
 %% Example:
+%% get_trained_model_request() :: #{
+%%   <<"versionIdentifier">> => string()
+%% }
+-type get_trained_model_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trained_model_response() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"dataChannels">> => list(model_training_data_channel()),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"hyperparameters">> => map(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceConfig">> => resource_config(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => status_details(),
+%%   <<"stoppingCondition">> => stopping_condition(),
+%%   <<"tags">> => map(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainingContainerImageDigest">> => [string()],
+%%   <<"trainingInputMode">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
+%% }
+-type get_trained_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_training_dataset_request() :: #{}
+-type get_training_dataset_request() :: #{}.
+
+
+%% Example:
+%% get_training_dataset_response() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"trainingData">> => list(dataset()),
+%%   <<"trainingDatasetArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_training_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% glue_data_source() :: #{
+%%   <<"catalogId">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"tableName">> => string()
+%% }
+-type glue_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_training_data_channel() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"versionIdentifier">> => string()
+%% }
+-type incremental_training_data_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_training_data_channel_output() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"modelName">> => string(),
+%%   <<"versionIdentifier">> => string()
+%% }
+-type incremental_training_data_channel_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_container_config() :: #{
+%%   <<"imageUri">> => string()
+%% }
+-type inference_container_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% inference_container_execution_parameters() :: #{
 %%   <<"maxPayloadInMB">> => [integer()]
 %% }
@@ -1744,13 +1085,58 @@
 
 
 %% Example:
-%% audience_generation_job_data_source() :: #{
-%%   <<"dataSource">> => s3_config_map(),
-%%   <<"roleArn">> => string(),
-%%   <<"sqlComputeConfiguration">> => list(),
-%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
+%% inference_output_configuration() :: #{
+%%   <<"accept">> => [string()],
+%%   <<"members">> => list(inference_receiver_member())
 %% }
--type audience_generation_job_data_source() :: #{binary() => any()}.
+-type inference_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_receiver_member() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type inference_receiver_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_resource_config() :: #{
+%%   <<"instanceCount">> => [integer()],
+%%   <<"instanceType">> => list(any())
+%% }
+-type inference_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_channel() :: #{
+%%   <<"dataSource">> => list(),
+%%   <<"roleArn">> => string()
+%% }
+-type input_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audience_export_jobs_request() :: #{
+%%   <<"audienceGenerationJobArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_audience_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audience_export_jobs_response() :: #{
+%%   <<"audienceExportJobs">> => list(audience_export_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_audience_export_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1764,42 +1150,19 @@
 
 
 %% Example:
-%% list_collaboration_configured_model_algorithm_associations_response() :: #{
-%%   <<"collaborationConfiguredModelAlgorithmAssociations">> => list(collaboration_configured_model_algorithm_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_collaboration_configured_model_algorithm_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configured_model_algorithm_response() :: #{
-%%   <<"configuredModelAlgorithmArn">> => string(),
-%%   <<"createTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"inferenceContainerConfig">> => inference_container_config(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"trainingContainerConfig">> => container_config(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_configured_model_algorithm_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% trained_model_export_output_configuration() :: #{
-%%   <<"members">> => list(trained_model_export_receiver_member())
-%% }
--type trained_model_export_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
 %% list_audience_generation_jobs_response() :: #{
 %%   <<"audienceGenerationJobs">> => list(audience_generation_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_generation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_audience_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_audience_models_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1811,20 +1174,196 @@
 
 
 %% Example:
-%% list_audience_export_jobs_request() :: #{
-%%   <<"audienceGenerationJobArn">> => string(),
+%% list_collaboration_configured_model_algorithm_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_audience_export_jobs_request() :: #{binary() => any()}.
+-type list_collaboration_configured_model_algorithm_associations_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_configured_audience_model_policy_request() :: #{}
--type delete_configured_audience_model_policy_request() :: #{}.
+%% list_collaboration_configured_model_algorithm_associations_response() :: #{
+%%   <<"collaborationConfiguredModelAlgorithmAssociations">> => list(collaboration_configured_model_algorithm_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_configured_model_algorithm_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_collaboration_ml_input_channel_request() :: #{}
--type get_collaboration_ml_input_channel_request() :: #{}.
+%% list_collaboration_ml_input_channels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_ml_input_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_ml_input_channels_response() :: #{
+%%   <<"collaborationMLInputChannelsList">> => list(collaboration_ml_input_channel_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_ml_input_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_model_export_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
+%% }
+-type list_collaboration_trained_model_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_model_export_jobs_response() :: #{
+%%   <<"collaborationTrainedModelExportJobs">> => list(collaboration_trained_model_export_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_model_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_model_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
+%% }
+-type list_collaboration_trained_model_inference_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_model_inference_jobs_response() :: #{
+%%   <<"collaborationTrainedModelInferenceJobs">> => list(collaboration_trained_model_inference_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_model_inference_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_trained_models_response() :: #{
+%%   <<"collaborationTrainedModels">> => list(collaboration_trained_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_trained_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_audience_models_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_audience_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_audience_models_response() :: #{
+%%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_audience_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithm_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithm_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithm_associations_response() :: #{
+%%   <<"configuredModelAlgorithmAssociations">> => list(configured_model_algorithm_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithm_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithms_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configured_model_algorithms_response() :: #{
+%%   <<"configuredModelAlgorithms">> => list(configured_model_algorithm_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configured_model_algorithms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ml_input_channels_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ml_input_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ml_input_channels_response() :: #{
+%%   <<"mlInputChannelsList">> => list(ml_input_channel_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ml_input_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
+%% }
+-type list_trained_model_inference_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_inference_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModelInferenceJobs">> => list(trained_model_inference_job_summary())
+%% }
+-type list_trained_model_inference_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_trained_model_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trained_model_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModels">> => list(trained_model_summary())
+%% }
+-type list_trained_model_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1834,9 +1373,476 @@
 %% }
 -type list_trained_models_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_configured_audience_model_policy_request() :: #{}
--type get_configured_audience_model_policy_request() :: #{}.
+%% list_trained_models_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainedModels">> => list(trained_model_summary())
+%% }
+-type list_trained_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_training_datasets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_training_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_training_datasets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"trainingDatasets">> => list(training_dataset_summary())
+%% }
+-type list_training_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_redaction_configuration() :: #{
+%%   <<"customEntityConfig">> => custom_entity_config(),
+%%   <<"entitiesToRedact">> => list(list(any())())
+%% }
+-type log_redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_configuration_policy() :: #{
+%%   <<"allowedAccountIds">> => list([string()]()),
+%%   <<"filterPattern">> => [string()],
+%%   <<"logRedactionConfiguration">> => log_redaction_configuration(),
+%%   <<"logType">> => list(any())
+%% }
+-type logs_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_inference_attack_score() :: #{
+%%   <<"attackVersion">> => list(any()),
+%%   <<"score">> => [float()]
+%% }
+-type membership_inference_attack_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"regex">> => string()
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_configuration_policy() :: #{
+%%   <<"noiseLevel">> => list(any())
+%% }
+-type metrics_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_input_channel_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"payerConfiguration">> => payer_configuration(),
+%%   <<"protectedQueryIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type ml_input_channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_output_configuration() :: #{
+%%   <<"destination">> => destination(),
+%%   <<"roleArn">> => string()
+%% }
+-type ml_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ml_synthetic_data_parameters() :: #{
+%%   <<"columnClassification">> => column_classification_details(),
+%%   <<"epsilon">> => [float()],
+%%   <<"maxMembershipInferenceAttackScore">> => [float()]
+%% }
+-type ml_synthetic_data_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_inference_data_source() :: #{
+%%   <<"mlInputChannelArn">> => string()
+%% }
+-type model_inference_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_training_data_channel() :: #{
+%%   <<"channelName">> => string(),
+%%   <<"mlInputChannelArn">> => string(),
+%%   <<"s3DataDistributionType">> => list(any())
+%% }
+-type model_training_data_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% payer_configuration() :: #{
+%%   <<"computePayerAccountId">> => string(),
+%%   <<"syntheticDataPayerAccountId">> => string()
+%% }
+-type payer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_configuration() :: #{
+%%   <<"policies">> => privacy_configuration_policies()
+%% }
+-type privacy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% privacy_configuration_policies() :: #{
+%%   <<"trainedModelExports">> => trained_model_exports_configuration_policy(),
+%%   <<"trainedModelInferenceJobs">> => trained_model_inference_jobs_configuration_policy(),
+%%   <<"trainedModels">> => trained_models_configuration_policy()
+%% }
+-type privacy_configuration_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_input_parameters() :: #{
+%%   <<"computeConfiguration">> => list(),
+%%   <<"resultFormat">> => list(any()),
+%%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
+%% }
+-type protected_query_input_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_query_s_q_l_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queryString">> => [string()]
+%% }
+-type protected_query_s_q_l_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_configured_audience_model_policy_request() :: #{
+%%   <<"configuredAudienceModelPolicy">> := string(),
+%%   <<"policyExistenceCondition">> => list(any()),
+%%   <<"previousPolicyHash">> => string()
+%% }
+-type put_configured_audience_model_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_configured_audience_model_policy_response() :: #{
+%%   <<"configuredAudienceModelPolicy">> => string(),
+%%   <<"policyHash">> => string()
+%% }
+-type put_configured_audience_model_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_ml_configuration_request() :: #{
+%%   <<"defaultOutputLocation">> := ml_output_configuration()
+%% }
+-type put_ml_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% relevance_metric() :: #{
+%%   <<"audienceSize">> => audience_size(),
+%%   <<"score">> => [float()]
+%% }
+-type relevance_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_config() :: #{
+%%   <<"instanceCount">> => [integer()],
+%%   <<"instanceType">> => list(any()),
+%%   <<"volumeSizeInGB">> => [integer()]
+%% }
+-type resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_config_map() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_config_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaName">> => [string()],
+%%   <<"quotaValue">> => [float()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_audience_export_job_request() :: #{
+%%   <<"audienceGenerationJobArn">> := string(),
+%%   <<"audienceSize">> := audience_size(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type start_audience_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_audience_generation_job_request() :: #{
+%%   <<"collaborationId">> => string(),
+%%   <<"configuredAudienceModelArn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"includeSeedInOutput">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"seedAudience">> := audience_generation_job_data_source(),
+%%   <<"tags">> => map()
+%% }
+-type start_audience_generation_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_audience_generation_job_response() :: #{
+%%   <<"audienceGenerationJobArn">> => string()
+%% }
+-type start_audience_generation_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_export_job_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputConfiguration">> := trained_model_export_output_configuration(),
+%%   <<"trainedModelVersionIdentifier">> => string()
+%% }
+-type start_trained_model_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_inference_job_request() :: #{
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"containerExecutionParameters">> => inference_container_execution_parameters(),
+%%   <<"dataSource">> := model_inference_data_source(),
+%%   <<"description">> => string(),
+%%   <<"environment">> => map(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"mlModelInferencePayerAccountId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputConfiguration">> := inference_output_configuration(),
+%%   <<"resourceConfig">> := inference_resource_config(),
+%%   <<"tags">> => map(),
+%%   <<"trainedModelArn">> := string(),
+%%   <<"trainedModelVersionIdentifier">> => string()
+%% }
+-type start_trained_model_inference_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_trained_model_inference_job_response() :: #{
+%%   <<"trainedModelInferenceJobArn">> => string()
+%% }
+-type start_trained_model_inference_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_details() :: #{
+%%   <<"message">> => [string()],
+%%   <<"statusCode">> => [string()]
+%% }
+-type status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% stopping_condition() :: #{
+%%   <<"maxRuntimeInSeconds">> => [integer()]
+%% }
+-type stopping_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_column_properties() :: #{
+%%   <<"columnName">> => string(),
+%%   <<"columnType">> => list(any()),
+%%   <<"isPredictiveValue">> => [boolean()]
+%% }
+-type synthetic_data_column_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_configuration() :: #{
+%%   <<"syntheticDataEvaluationScores">> => synthetic_data_evaluation_scores(),
+%%   <<"syntheticDataParameters">> => ml_synthetic_data_parameters()
+%% }
+-type synthetic_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% synthetic_data_evaluation_scores() :: #{
+%%   <<"dataPrivacyScores">> => data_privacy_scores()
+%% }
+-type synthetic_data_evaluation_scores() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_artifact_max_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_artifact_max_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_export_output_configuration() :: #{
+%%   <<"members">> => list(trained_model_export_receiver_member())
+%% }
+-type trained_model_export_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_export_receiver_member() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type trained_model_export_receiver_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_exports_configuration_policy() :: #{
+%%   <<"filesToExport">> => list(list(any())()),
+%%   <<"maxSize">> => trained_model_exports_max_size()
+%% }
+-type trained_model_exports_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_exports_max_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_exports_max_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_inference_job_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"logsStatus">> => list(any()),
+%%   <<"logsStatusDetails">> => [string()],
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"metricsStatus">> => list(any()),
+%%   <<"metricsStatusDetails">> => [string()],
+%%   <<"mlModelInferencePayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfiguration">> => inference_output_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"trainedModelInferenceJobArn">> => string(),
+%%   <<"trainedModelVersionIdentifier">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type trained_model_inference_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_inference_jobs_configuration_policy() :: #{
+%%   <<"containerLogs">> => list(logs_configuration_policy()),
+%%   <<"maxOutputSize">> => trained_model_inference_max_output_size()
+%% }
+-type trained_model_inference_jobs_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_inference_max_output_size() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type trained_model_inference_max_output_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_model_summary() :: #{
+%%   <<"collaborationIdentifier">> => string(),
+%%   <<"configuredModelAlgorithmAssociationArn">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
+%%   <<"membershipIdentifier">> => string(),
+%%   <<"mlModelTrainingPayerAccountId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"trainedModelArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()],
+%%   <<"versionIdentifier">> => string()
+%% }
+-type trained_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trained_models_configuration_policy() :: #{
+%%   <<"containerLogs">> => list(logs_configuration_policy()),
+%%   <<"containerMetrics">> => metrics_configuration_policy(),
+%%   <<"maxArtifactSize">> => trained_model_artifact_max_size()
+%% }
+-type trained_models_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% training_dataset_summary() :: #{
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"trainingDatasetArn">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type training_dataset_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -1852,372 +1858,391 @@
 
 
 %% Example:
-%% delete_trained_model_output_request() :: #{
-%%   <<"versionIdentifier">> => string()
+%% update_configured_audience_model_response() :: #{
+%%   <<"configuredAudienceModelArn">> => string()
 %% }
--type delete_trained_model_output_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_audience_generation_job_request() :: #{}
--type get_audience_generation_job_request() :: #{}.
+-type update_configured_audience_model_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_collaboration_trained_model_inference_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"trainedModelArn">> => string(),
-%%   <<"trainedModelVersionIdentifier">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_collaboration_trained_model_inference_jobs_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% synthetic_data_configuration() :: #{
-%%   <<"syntheticDataEvaluationScores">> => synthetic_data_evaluation_scores(),
-%%   <<"syntheticDataParameters">> => ml_synthetic_data_parameters()
+%% worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
+%%   <<"type">> => list(any())
 %% }
--type synthetic_data_configuration() :: #{binary() => any()}.
+-type worker_compute_configuration() :: #{binary() => any()}.
 
 -type cancel_trained_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_trained_model_inference_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_configured_audience_model_errors() ::
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_configured_model_algorithm_errors() ::
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception().
-
--type create_configured_model_algorithm_association_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_ml_input_channel_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_trained_model_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
+
+-type create_configured_audience_model_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_configured_model_algorithm_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_configured_model_algorithm_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_ml_input_channel_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_trained_model_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_training_dataset_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_audience_generation_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_audience_model_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_configured_model_algorithm_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_configured_model_algorithm_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_ml_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_ml_input_channel_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_trained_model_output_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_training_dataset_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_audience_generation_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_collaboration_configured_model_algorithm_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_collaboration_ml_input_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_collaboration_trained_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_configured_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_configured_audience_model_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_configured_model_algorithm_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_configured_model_algorithm_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_ml_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_ml_input_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_trained_model_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_trained_model_inference_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_training_dataset_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_audience_export_jobs_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_audience_generation_jobs_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_audience_models_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_collaboration_configured_model_algorithm_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_collaboration_ml_input_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_model_export_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_model_inference_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_collaboration_trained_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_configured_audience_models_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_configured_model_algorithm_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_configured_model_algorithms_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_ml_input_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_trained_model_inference_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_trained_model_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_trained_models_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_training_datasets_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type put_configured_audience_model_policy_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type put_ml_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type start_audience_export_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_audience_generation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_trained_model_export_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_trained_model_inference_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_configured_audience_model_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

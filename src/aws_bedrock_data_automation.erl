@@ -64,495 +64,10 @@
 
 
 %% Example:
-%% create_blueprint_version_response() :: #{
-%%   <<"blueprint">> => blueprint()
-%% }
--type create_blueprint_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% speaker_labeling_configuration() :: #{
-%%   <<"state">> => list(any())
-%% }
--type speaker_labeling_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_automation_project_response() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_data_automation_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsEncryptionContext">> => map(),
-%%   <<"kmsKeyId">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_blueprints_request() :: #{
-%%   <<"blueprintArn">> => string(),
-%%   <<"blueprintStageFilter">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectFilter">> => data_automation_project_filter(),
-%%   <<"resourceOwner">> => list(any())
-%% }
--type list_blueprints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_standard_output_configuration() :: #{
-%%   <<"extraction">> => video_standard_extraction(),
-%%   <<"generativeField">> => video_standard_generative_field()
-%% }
--type video_standard_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% standard_output_configuration() :: #{
-%%   <<"audio">> => audio_standard_output_configuration(),
-%%   <<"document">> => document_standard_output_configuration(),
-%%   <<"image">> => image_standard_output_configuration(),
-%%   <<"video">> => video_standard_output_configuration()
-%% }
--type standard_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_automation_library_response() :: #{
-%%   <<"libraryArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_data_automation_library_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_library_entities_response() :: #{
-%%   <<"entities">> => list(list()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_automation_library_entities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sensitive_data_configuration() :: #{
-%%   <<"detectionMode">> => list(any()),
-%%   <<"detectionScope">> => list(list(any())()),
-%%   <<"piiEntitiesConfiguration">> => p_i_i_entities_configuration()
-%% }
--type sensitive_data_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_override_configuration() :: #{
-%%   <<"modalityProcessing">> => modality_processing_configuration(),
-%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
-%% }
--type image_override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_project_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"projectArn">> => string(),
-%%   <<"projectName">> => string(),
-%%   <<"projectStage">> => list(any()),
-%%   <<"projectType">> => list(any())
-%% }
--type data_automation_project_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% blueprint_item() :: #{
-%%   <<"blueprintArn">> => string(),
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"blueprintVersion">> => string()
-%% }
--type blueprint_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_bounding_box() :: #{
-%%   <<"state">> => list(any())
-%% }
--type video_bounding_box() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_blueprint_response() :: #{
-%%   <<"blueprint">> => blueprint()
-%% }
--type update_blueprint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library_item() :: #{
-%%   <<"libraryArn">> => string()
-%% }
--type data_automation_library_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% override_configuration() :: #{
-%%   <<"audio">> => audio_override_configuration(),
-%%   <<"document">> => document_override_configuration(),
-%%   <<"image">> => image_override_configuration(),
-%%   <<"modalityRouting">> => modality_routing_configuration(),
-%%   <<"video">> => video_override_configuration()
-%% }
--type override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_extraction_category_type_configuration() :: #{
-%%   <<"transcript">> => transcript_configuration()
-%% }
--type audio_extraction_category_type_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_automation_project_request() :: #{
-%%   <<"customOutputConfiguration">> => custom_output_configuration(),
-%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"overrideConfiguration">> => override_configuration(),
-%%   <<"projectDescription">> => string(),
-%%   <<"projectStage">> => list(any()),
-%%   <<"standardOutputConfiguration">> := standard_output_configuration()
-%% }
--type update_data_automation_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% blueprint_summary() :: #{
-%%   <<"blueprintArn">> => string(),
-%%   <<"blueprintName">> => string(),
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"blueprintVersion">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastModifiedTime">> => non_neg_integer()
-%% }
--type blueprint_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_projects_request() :: #{
-%%   <<"blueprintFilter">> => blueprint_filter(),
-%%   <<"libraryFilter">> => data_automation_library_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectStageFilter">> => list(any()),
-%%   <<"resourceOwner">> => list(any())
-%% }
--type list_data_automation_projects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% blueprint_optimization_sample() :: #{
-%%   <<"assetS3Object">> => s3_object(),
-%%   <<"groundTruthS3Object">> => s3_object()
-%% }
--type blueprint_optimization_sample() :: #{binary() => any()}.
-
-%% Example:
-%% delete_blueprint_response() :: #{}
--type delete_blueprint_response() :: #{}.
-
-
-%% Example:
-%% document_override_configuration() :: #{
-%%   <<"modalityProcessing">> => modality_processing_configuration(),
-%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration(),
-%%   <<"splitter">> => splitter_configuration()
-%% }
--type document_override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_override_configuration() :: #{
-%%   <<"modalityProcessing">> => modality_processing_configuration(),
-%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
-%% }
--type video_override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_standard_output_configuration() :: #{
-%%   <<"extraction">> => audio_standard_extraction(),
-%%   <<"generativeField">> => audio_standard_generative_field()
-%% }
--type audio_standard_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"s3Uri">> => string(),
-%%   <<"version">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_standard_generative_field() :: #{
-%%   <<"state">> => list(any())
-%% }
--type document_standard_generative_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_output_text_format() :: #{
-%%   <<"types">> => list(list(any())())
-%% }
--type document_output_text_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_data_automation_library_ingestion_job_response() :: #{
-%%   <<"jobArn">> => string()
-%% }
--type invoke_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_automation_project_response() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"projectStage">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type create_data_automation_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_blueprint_version_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type create_blueprint_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_blueprint_request() :: #{
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"blueprintVersion">> => string()
-%% }
--type get_blueprint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_blueprint_optimization_async_response() :: #{
-%%   <<"invocationArn">> => string()
-%% }
--type invoke_blueprint_optimization_async_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_automation_library_response() :: #{
-%%   <<"libraryArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_data_automation_library_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_entities_info() :: #{
-%%   <<"entityIds">> => list(string())
-%% }
--type delete_entities_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_extraction_granularity() :: #{
-%%   <<"types">> => list(list(any())())
-%% }
--type document_extraction_granularity() :: #{binary() => any()}.
-
-
-%% Example:
-%% phrase() :: #{
-%%   <<"displayAsText">> => string(),
-%%   <<"text">> => string()
-%% }
--type phrase() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_blueprint_stage_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sourceStage">> := list(any()),
-%%   <<"targetStage">> := list(any())
-%% }
--type copy_blueprint_stage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library_filter() :: #{
-%%   <<"libraryArn">> => string()
-%% }
--type data_automation_library_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_automation_library_entity_request() :: #{}
--type get_data_automation_library_entity_request() :: #{}.
-
-
-%% Example:
-%% video_standard_generative_field() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type video_standard_generative_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_standard_extraction() :: #{
-%%   <<"boundingBox">> => image_bounding_box(),
-%%   <<"category">> => image_extraction_category()
-%% }
--type image_standard_extraction() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_standard_generative_field() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type audio_standard_generative_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_labeling_configuration() :: #{
-%%   <<"state">> => list(any())
-%% }
--type channel_labeling_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_automation_library_response() :: #{
-%%   <<"library">> => data_automation_library()
-%% }
--type get_data_automation_library_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_output_additional_file_format() :: #{
-%%   <<"state">> => list(any())
-%% }
--type document_output_additional_file_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_automation_library_entity_response() :: #{
-%%   <<"entity">> => list()
-%% }
--type get_data_automation_library_entity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_blueprint_response() :: #{
-%%   <<"blueprint">> => blueprint()
-%% }
--type get_blueprint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_automation_project_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"customOutputConfiguration">> => custom_output_configuration(),
-%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"overrideConfiguration">> => override_configuration(),
-%%   <<"projectDescription">> => string(),
-%%   <<"projectName">> := string(),
-%%   <<"projectStage">> => list(any()),
-%%   <<"projectType">> => list(any()),
-%%   <<"standardOutputConfiguration">> := standard_output_configuration(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_data_automation_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_libraries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectFilter">> => data_automation_project_filter()
-%% }
--type list_data_automation_libraries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_automation_project_response() :: #{
-%%   <<"project">> => data_automation_project()
-%% }
--type get_data_automation_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_extraction_category() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type video_extraction_category() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -565,29 +80,51 @@
 
 
 %% Example:
-%% list_data_automation_library_ingestion_jobs_response() :: #{
-%%   <<"jobs">> => list(data_automation_library_ingestion_job_summary()),
-%%   <<"nextToken">> => string()
+%% audio_extraction_category_type_configuration() :: #{
+%%   <<"transcript">> => transcript_configuration()
 %% }
--type list_data_automation_library_ingestion_jobs_response() :: #{binary() => any()}.
+-type audio_extraction_category_type_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% audio_language_configuration() :: #{
+%%   <<"generativeOutputLanguage">> => list(any()),
+%%   <<"identifyMultipleLanguages">> => [boolean()],
+%%   <<"inputLanguages">> => list(list(any())())
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type audio_language_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% modality_routing_configuration() :: #{
-%%   <<"jpeg">> => list(any()),
-%%   <<"mov">> => list(any()),
-%%   <<"mp4">> => list(any()),
-%%   <<"png">> => list(any())
+%% audio_override_configuration() :: #{
+%%   <<"languageConfiguration">> => audio_language_configuration(),
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
 %% }
--type modality_routing_configuration() :: #{binary() => any()}.
+-type audio_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_standard_extraction() :: #{
+%%   <<"category">> => audio_extraction_category()
+%% }
+-type audio_standard_extraction() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_standard_generative_field() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type audio_standard_generative_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_standard_output_configuration() :: #{
+%%   <<"extraction">> => audio_standard_extraction(),
+%%   <<"generativeField">> => audio_standard_generative_field()
+%% }
+-type audio_standard_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -609,6 +146,187 @@
 
 
 %% Example:
+%% blueprint_filter() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"blueprintStage">> => list(any()),
+%%   <<"blueprintVersion">> => string()
+%% }
+-type blueprint_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_item() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"blueprintStage">> => list(any()),
+%%   <<"blueprintVersion">> => string()
+%% }
+-type blueprint_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_optimization_object() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"stage">> => list(any())
+%% }
+-type blueprint_optimization_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_optimization_output_configuration() :: #{
+%%   <<"s3Object">> => s3_object()
+%% }
+-type blueprint_optimization_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_optimization_sample() :: #{
+%%   <<"assetS3Object">> => s3_object(),
+%%   <<"groundTruthS3Object">> => s3_object()
+%% }
+-type blueprint_optimization_sample() :: #{binary() => any()}.
+
+
+%% Example:
+%% blueprint_summary() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"blueprintName">> => string(),
+%%   <<"blueprintStage">> => list(any()),
+%%   <<"blueprintVersion">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastModifiedTime">> => non_neg_integer()
+%% }
+-type blueprint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_labeling_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type channel_labeling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_blueprint_stage_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sourceStage">> := list(any()),
+%%   <<"targetStage">> := list(any())
+%% }
+-type copy_blueprint_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_blueprint_stage_response() :: #{}
+-type copy_blueprint_stage_response() :: #{}.
+
+
+%% Example:
+%% create_blueprint_request() :: #{
+%%   <<"blueprintName">> := string(),
+%%   <<"blueprintStage">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"schema">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> := list(any())
+%% }
+-type create_blueprint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_blueprint_response() :: #{
+%%   <<"blueprint">> => blueprint()
+%% }
+-type create_blueprint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_blueprint_version_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type create_blueprint_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_blueprint_version_response() :: #{
+%%   <<"blueprint">> => blueprint()
+%% }
+-type create_blueprint_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_library_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"libraryDescription">> => string(),
+%%   <<"libraryName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_data_automation_library_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_project_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"overrideConfiguration">> => override_configuration(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"projectStage">> => list(any()),
+%%   <<"projectType">> => list(any()),
+%%   <<"standardOutputConfiguration">> := standard_output_configuration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_data_automation_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_automation_project_response() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectStage">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type create_data_automation_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_output_configuration() :: #{
+%%   <<"blueprints">> => list(blueprint_item()),
+%%   <<"document">> => document_custom_output_configuration()
+%% }
+-type custom_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityTypes">> => list(entity_type_info()),
+%%   <<"kmsEncryptionContext">> => map(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"libraryArn">> => string(),
+%%   <<"libraryDescription">> => string(),
+%%   <<"libraryName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type data_automation_library() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_automation_library_configuration() :: #{
 %%   <<"libraries">> => list(data_automation_library_item())
 %% }
@@ -616,11 +334,53 @@
 
 
 %% Example:
-%% input_configuration() :: #{
-%%   <<"inlinePayload">> => list(),
-%%   <<"s3Object">> => s3_object()
+%% data_automation_library_filter() :: #{
+%%   <<"libraryArn">> => string()
 %% }
--type input_configuration() :: #{binary() => any()}.
+-type data_automation_library_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_ingestion_job() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityType">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => [string()],
+%%   <<"jobArn">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"operationType">> => list(any()),
+%%   <<"outputConfiguration">> => output_configuration()
+%% }
+-type data_automation_library_ingestion_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_ingestion_job_summary() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"entityType">> => list(any()),
+%%   <<"jobArn">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"operationType">> => list(any())
+%% }
+-type data_automation_library_ingestion_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_item() :: #{
+%%   <<"libraryArn">> => string()
+%% }
+-type data_automation_library_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_library_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"libraryArn">> => string(),
+%%   <<"libraryName">> => string()
+%% }
+-type data_automation_library_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -642,78 +402,118 @@
 %% }
 -type data_automation_project() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_automation_project_filter() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectStage">> => list(any())
+%% }
+-type data_automation_project_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_automation_project_summary() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"projectArn">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"projectStage">> => list(any()),
+%%   <<"projectType">> => list(any())
+%% }
+-type data_automation_project_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_blueprint_request() :: #{
+%%   <<"blueprintVersion">> => string()
+%% }
+-type delete_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blueprint_response() :: #{}
+-type delete_blueprint_response() :: #{}.
+
 %% Example:
 %% delete_data_automation_library_request() :: #{}
 -type delete_data_automation_library_request() :: #{}.
 
 
 %% Example:
-%% video_standard_extraction() :: #{
-%%   <<"boundingBox">> => video_bounding_box(),
-%%   <<"category">> => video_extraction_category()
+%% delete_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type video_standard_extraction() :: #{binary() => any()}.
+-type delete_data_automation_library_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_automation_project_request() :: #{}
+-type delete_data_automation_project_request() :: #{}.
 
 
 %% Example:
-%% image_standard_output_configuration() :: #{
-%%   <<"extraction">> => image_standard_extraction(),
-%%   <<"generativeField">> => image_standard_generative_field()
+%% delete_data_automation_project_response() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type image_standard_output_configuration() :: #{binary() => any()}.
+-type delete_data_automation_project_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% splitter_configuration() :: #{
+%% delete_entities_info() :: #{
+%%   <<"entityIds">> => list(string())
+%% }
+-type delete_entities_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_bounding_box() :: #{
 %%   <<"state">> => list(any())
 %% }
--type splitter_configuration() :: #{binary() => any()}.
+-type document_bounding_box() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_blueprint_response() :: #{
-%%   <<"blueprint">> => blueprint()
+%% document_custom_output_configuration() :: #{
+%%   <<"fallbackBlueprints">> => list(blueprint_item())
 %% }
--type create_blueprint_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_automation_library_request() :: #{}
--type get_data_automation_library_request() :: #{}.
+-type document_custom_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_blueprint_request() :: #{
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"schema">> := string()
+%% document_extraction_granularity() :: #{
+%%   <<"types">> => list(list(any())())
 %% }
--type update_blueprint_request() :: #{binary() => any()}.
+-type document_extraction_granularity() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_configuration() :: #{
-%%   <<"eventBridgeConfiguration">> => event_bridge_configuration()
+%% document_output_additional_file_format() :: #{
+%%   <<"state">> => list(any())
 %% }
--type notification_configuration() :: #{binary() => any()}.
+-type document_output_additional_file_format() :: #{binary() => any()}.
 
 
 %% Example:
-%% vocabulary_entity() :: #{
-%%   <<"description">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"phrases">> => list(phrase())
+%% document_output_format() :: #{
+%%   <<"additionalFileFormat">> => document_output_additional_file_format(),
+%%   <<"textFormat">> => document_output_text_format()
 %% }
--type vocabulary_entity() :: #{binary() => any()}.
+-type document_output_format() :: #{binary() => any()}.
 
 
 %% Example:
-%% p_i_i_entities_configuration() :: #{
-%%   <<"piiEntityTypes">> => list(list(any())()),
-%%   <<"redactionMaskMode">> => list(any())
+%% document_output_text_format() :: #{
+%%   <<"types">> => list(list(any())())
 %% }
--type p_i_i_entities_configuration() :: #{binary() => any()}.
+-type document_output_text_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration(),
+%%   <<"splitter">> => splitter_configuration()
+%% }
+-type document_override_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -725,74 +525,10 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
+%% document_standard_generative_field() :: #{
+%%   <<"state">> => list(any())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_configuration() :: #{
-%%   <<"eventBridgeEnabled">> => [boolean()]
-%% }
--type event_bridge_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript_configuration() :: #{
-%%   <<"channelLabeling">> => channel_labeling_configuration(),
-%%   <<"speakerLabeling">> => speaker_labeling_configuration()
-%% }
--type transcript_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% blueprint_optimization_object() :: #{
-%%   <<"blueprintArn">> => string(),
-%%   <<"stage">> => list(any())
-%% }
--type blueprint_optimization_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_language_configuration() :: #{
-%%   <<"generativeOutputLanguage">> => list(any()),
-%%   <<"identifyMultipleLanguages">> => [boolean()],
-%%   <<"inputLanguages">> => list(list(any())())
-%% }
--type audio_language_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_configuration() :: #{
-%%   <<"s3Uri">> => string()
-%% }
--type output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_standard_extraction() :: #{
-%%   <<"category">> => audio_extraction_category()
-%% }
--type audio_standard_extraction() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% blueprint_optimization_output_configuration() :: #{
-%%   <<"s3Object">> => s3_object()
-%% }
--type blueprint_optimization_output_configuration() :: #{binary() => any()}.
+-type document_standard_generative_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -805,59 +541,133 @@
 
 
 %% Example:
-%% update_data_automation_project_response() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"projectStage">> => list(any()),
+%% encryption_configuration() :: #{
+%%   <<"kmsEncryptionContext">> => map(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_type_info() :: #{
+%%   <<"entityMetadata">> => string(),
+%%   <<"entityType">> => list(any())
+%% }
+-type entity_type_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_configuration() :: #{
+%%   <<"eventBridgeEnabled">> => [boolean()]
+%% }
+-type event_bridge_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprint_optimization_status_request() :: #{}
+-type get_blueprint_optimization_status_request() :: #{}.
+
+
+%% Example:
+%% get_blueprint_optimization_status_response() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"errorType">> => [string()],
+%%   <<"outputConfiguration">> => blueprint_optimization_output_configuration(),
 %%   <<"status">> => list(any())
 %% }
--type update_data_automation_project_response() :: #{binary() => any()}.
+-type get_blueprint_optimization_status_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% modality_processing_configuration() :: #{
-%%   <<"state">> => list(any())
-%% }
--type modality_processing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_automation_library_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"libraryDescription">> => string(),
-%%   <<"libraryName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_data_automation_library_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_bounding_box() :: #{
-%%   <<"state">> => list(any())
-%% }
--type document_bounding_box() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_blueprint_request() :: #{
+%% get_blueprint_request() :: #{
+%%   <<"blueprintStage">> => list(any()),
 %%   <<"blueprintVersion">> => string()
 %% }
--type delete_blueprint_request() :: #{binary() => any()}.
+-type get_blueprint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_blueprint_response() :: #{
+%%   <<"blueprint">> => blueprint()
+%% }
+-type get_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_automation_library_entity_request() :: #{}
+-type get_data_automation_library_entity_request() :: #{}.
+
+
+%% Example:
+%% get_data_automation_library_entity_response() :: #{
+%%   <<"entity">> => list()
+%% }
+-type get_data_automation_library_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_automation_library_ingestion_job_request() :: #{}
+-type get_data_automation_library_ingestion_job_request() :: #{}.
+
+
+%% Example:
+%% get_data_automation_library_ingestion_job_response() :: #{
+%%   <<"job">> => data_automation_library_ingestion_job()
+%% }
+-type get_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_automation_library_request() :: #{}
+-type get_data_automation_library_request() :: #{}.
+
+
+%% Example:
+%% get_data_automation_library_response() :: #{
+%%   <<"library">> => data_automation_library()
+%% }
+-type get_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_automation_project_request() :: #{
+%%   <<"projectStage">> => list(any())
+%% }
+-type get_data_automation_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_automation_project_response() :: #{
+%%   <<"project">> => data_automation_project()
+%% }
+-type get_data_automation_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_bounding_box() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type image_bounding_box() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_extraction_category() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type image_extraction_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
+%% }
+-type image_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_standard_extraction() :: #{
+%%   <<"boundingBox">> => image_bounding_box(),
+%%   <<"category">> => image_extraction_category()
+%% }
+-type image_standard_extraction() :: #{binary() => any()}.
 
 
 %% Example:
@@ -869,10 +679,45 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
+%% image_standard_output_configuration() :: #{
+%%   <<"extraction">> => image_standard_extraction(),
+%%   <<"generativeField">> => image_standard_generative_field()
+%% }
+-type image_standard_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_configuration() :: #{
+%%   <<"inlinePayload">> => list(),
+%%   <<"s3Object">> => s3_object()
+%% }
+-type input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_blueprint_optimization_async_request() :: #{
+%%   <<"blueprint">> := blueprint_optimization_object(),
+%%   <<"dataAutomationProfileArn">> := string(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"outputConfiguration">> := blueprint_optimization_output_configuration(),
+%%   <<"samples">> := list(blueprint_optimization_sample()),
+%%   <<"tags">> => list(tag())
+%% }
+-type invoke_blueprint_optimization_async_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_blueprint_optimization_async_response() :: #{
+%%   <<"invocationArn">> => string()
+%% }
+-type invoke_blueprint_optimization_async_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -889,50 +734,22 @@
 
 
 %% Example:
-%% list_data_automation_library_entities_request() :: #{
+%% invoke_data_automation_library_ingestion_job_response() :: #{
+%%   <<"jobArn">> => string()
+%% }
+-type invoke_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blueprints_request() :: #{
+%%   <<"blueprintArn">> => string(),
+%%   <<"blueprintStageFilter">> => list(any()),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"projectFilter">> => data_automation_project_filter(),
+%%   <<"resourceOwner">> => list(any())
 %% }
--type list_data_automation_library_entities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_custom_output_configuration() :: #{
-%%   <<"fallbackBlueprints">> => list(blueprint_item())
-%% }
--type document_custom_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_blueprint_optimization_status_response() :: #{
-%%   <<"errorMessage">> => [string()],
-%%   <<"errorType">> => [string()],
-%%   <<"outputConfiguration">> => blueprint_optimization_output_configuration(),
-%%   <<"status">> => list(any())
-%% }
--type get_blueprint_optimization_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_override_configuration() :: #{
-%%   <<"languageConfiguration">> => audio_language_configuration(),
-%%   <<"modalityProcessing">> => modality_processing_configuration(),
-%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
-%% }
--type audio_override_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_blueprint_request() :: #{
-%%   <<"blueprintName">> := string(),
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"schema">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> := list(any())
-%% }
--type create_blueprint_request() :: #{binary() => any()}.
+-type list_blueprints_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -941,6 +758,377 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_blueprints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_libraries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectFilter">> => data_automation_project_filter()
+%% }
+-type list_data_automation_libraries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_libraries_response() :: #{
+%%   <<"libraries">> => list(data_automation_library_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_libraries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_entities_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_entities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_entities_response() :: #{
+%%   <<"entities">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_entities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_ingestion_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_ingestion_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_library_ingestion_jobs_response() :: #{
+%%   <<"jobs">> => list(data_automation_library_ingestion_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_automation_library_ingestion_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_projects_request() :: #{
+%%   <<"blueprintFilter">> => blueprint_filter(),
+%%   <<"libraryFilter">> => data_automation_library_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectStageFilter">> => list(any()),
+%%   <<"resourceOwner">> => list(any())
+%% }
+-type list_data_automation_projects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_automation_projects_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projects">> => list(data_automation_project_summary())
+%% }
+-type list_data_automation_projects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% modality_processing_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type modality_processing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% modality_routing_configuration() :: #{
+%%   <<"jpeg">> => list(any()),
+%%   <<"mov">> => list(any()),
+%%   <<"mp4">> => list(any()),
+%%   <<"png">> => list(any())
+%% }
+-type modality_routing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"eventBridgeConfiguration">> => event_bridge_configuration()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_configuration() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_configuration() :: #{
+%%   <<"audio">> => audio_override_configuration(),
+%%   <<"document">> => document_override_configuration(),
+%%   <<"image">> => image_override_configuration(),
+%%   <<"modalityRouting">> => modality_routing_configuration(),
+%%   <<"video">> => video_override_configuration()
+%% }
+-type override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% p_i_i_entities_configuration() :: #{
+%%   <<"piiEntityTypes">> => list(list(any())()),
+%%   <<"redactionMaskMode">> => list(any())
+%% }
+-type p_i_i_entities_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% phrase() :: #{
+%%   <<"displayAsText">> => string(),
+%%   <<"text">> => string()
+%% }
+-type phrase() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"s3Uri">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitive_data_configuration() :: #{
+%%   <<"detectionMode">> => list(any()),
+%%   <<"detectionScope">> => list(list(any())()),
+%%   <<"piiEntitiesConfiguration">> => p_i_i_entities_configuration()
+%% }
+-type sensitive_data_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% speaker_labeling_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type speaker_labeling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% splitter_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type splitter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_output_configuration() :: #{
+%%   <<"audio">> => audio_standard_output_configuration(),
+%%   <<"document">> => document_standard_output_configuration(),
+%%   <<"image">> => image_standard_output_configuration(),
+%%   <<"video">> => video_standard_output_configuration()
+%% }
+-type standard_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcript_configuration() :: #{
+%%   <<"channelLabeling">> => channel_labeling_configuration(),
+%%   <<"speakerLabeling">> => speaker_labeling_configuration()
+%% }
+-type transcript_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_blueprint_request() :: #{
+%%   <<"blueprintStage">> => list(any()),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"schema">> := string()
+%% }
+-type update_blueprint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_blueprint_response() :: #{
+%%   <<"blueprint">> => blueprint()
+%% }
+-type update_blueprint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_automation_library_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"libraryDescription">> => string()
+%% }
+-type update_data_automation_library_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_automation_library_response() :: #{
+%%   <<"libraryArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_data_automation_library_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_automation_project_request() :: #{
+%%   <<"customOutputConfiguration">> => custom_output_configuration(),
+%%   <<"dataAutomationLibraryConfiguration">> => data_automation_library_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"overrideConfiguration">> => override_configuration(),
+%%   <<"projectDescription">> => string(),
+%%   <<"projectStage">> => list(any()),
+%%   <<"standardOutputConfiguration">> := standard_output_configuration()
+%% }
+-type update_data_automation_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_automation_project_response() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectStage">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type update_data_automation_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_bounding_box() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type video_bounding_box() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_extraction_category() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type video_extraction_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_override_configuration() :: #{
+%%   <<"modalityProcessing">> => modality_processing_configuration(),
+%%   <<"sensitiveDataConfiguration">> => sensitive_data_configuration()
+%% }
+-type video_override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_standard_extraction() :: #{
+%%   <<"boundingBox">> => video_bounding_box(),
+%%   <<"category">> => video_extraction_category()
+%% }
+-type video_standard_extraction() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_standard_generative_field() :: #{
+%%   <<"state">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type video_standard_generative_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_standard_output_configuration() :: #{
+%%   <<"extraction">> => video_standard_extraction(),
+%%   <<"generativeField">> => video_standard_generative_field()
+%% }
+-type video_standard_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vocabulary_entity() :: #{
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"phrases">> => list(phrase())
+%% }
+-type vocabulary_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -954,161 +1142,6 @@
 
 
 %% Example:
-%% image_extraction_category() :: #{
-%%   <<"state">> => list(any()),
-%%   <<"types">> => list(list(any())())
-%% }
--type image_extraction_category() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_bounding_box() :: #{
-%%   <<"state">> => list(any())
-%% }
--type image_bounding_box() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_type_info() :: #{
-%%   <<"entityMetadata">> => string(),
-%%   <<"entityType">> => list(any())
-%% }
--type entity_type_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_project_filter() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"projectStage">> => list(any())
-%% }
--type data_automation_project_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"entityTypes">> => list(entity_type_info()),
-%%   <<"kmsEncryptionContext">> => map(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"libraryArn">> => string(),
-%%   <<"libraryDescription">> => string(),
-%%   <<"libraryName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type data_automation_library() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library_ingestion_job_summary() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"entityType">> => list(any()),
-%%   <<"jobArn">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"operationType">> => list(any())
-%% }
--type data_automation_library_ingestion_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library_ingestion_job() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"entityType">> => list(any()),
-%%   <<"errorMessage">> => [string()],
-%%   <<"errorType">> => [string()],
-%%   <<"jobArn">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"operationType">> => list(any()),
-%%   <<"outputConfiguration">> => output_configuration()
-%% }
--type data_automation_library_ingestion_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_output_configuration() :: #{
-%%   <<"blueprints">> => list(blueprint_item()),
-%%   <<"document">> => document_custom_output_configuration()
-%% }
--type custom_output_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_automation_library_ingestion_job_response() :: #{
-%%   <<"job">> => data_automation_library_ingestion_job()
-%% }
--type get_data_automation_library_ingestion_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_automation_project_request() :: #{
-%%   <<"projectStage">> => list(any())
-%% }
--type get_data_automation_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_library_ingestion_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_automation_library_ingestion_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_automation_library_ingestion_job_request() :: #{}
--type get_data_automation_library_ingestion_job_request() :: #{}.
-
-%% Example:
-%% delete_data_automation_project_request() :: #{}
--type delete_data_automation_project_request() :: #{}.
-
-
-%% Example:
-%% update_data_automation_library_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"libraryDescription">> => string()
-%% }
--type update_data_automation_library_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_projects_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(data_automation_project_summary())
-%% }
--type list_data_automation_projects_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_blueprint_optimization_status_request() :: #{}
--type get_blueprint_optimization_status_request() :: #{}.
-
-
-%% Example:
-%% invoke_blueprint_optimization_async_request() :: #{
-%%   <<"blueprint">> := blueprint_optimization_object(),
-%%   <<"dataAutomationProfileArn">> := string(),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"outputConfiguration">> := blueprint_optimization_output_configuration(),
-%%   <<"samples">> := list(blueprint_optimization_sample()),
-%%   <<"tags">> => list(tag())
-%% }
--type invoke_blueprint_optimization_async_request() :: #{binary() => any()}.
-
-%% Example:
-%% copy_blueprint_stage_response() :: #{}
--type copy_blueprint_stage_response() :: #{}.
-
-
-%% Example:
-%% blueprint_filter() :: #{
-%%   <<"blueprintArn">> => string(),
-%%   <<"blueprintStage">> => list(any()),
-%%   <<"blueprintVersion">> => string()
-%% }
--type blueprint_filter() :: #{binary() => any()}.
-
-
-%% Example:
 %% vocabulary_entity_summary() :: #{
 %%   <<"description">> => string(),
 %%   <<"entityId">> => string(),
@@ -1118,239 +1151,206 @@
 %% }
 -type vocabulary_entity_summary() :: #{binary() => any()}.
 
-
-%% Example:
-%% create_data_automation_library_response() :: #{
-%%   <<"libraryArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_data_automation_library_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_output_format() :: #{
-%%   <<"additionalFileFormat">> => document_output_additional_file_format(),
-%%   <<"textFormat">> => document_output_text_format()
-%% }
--type document_output_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_automation_libraries_response() :: #{
-%%   <<"libraries">> => list(data_automation_library_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_automation_libraries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_automation_library_summary() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"libraryArn">> => string(),
-%%   <<"libraryName">> => string()
-%% }
--type data_automation_library_summary() :: #{binary() => any()}.
-
 -type copy_blueprint_stage_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_blueprint_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_data_automation_library_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_automation_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_data_automation_library_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_automation_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_blueprint_optimization_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_automation_library_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_automation_library_entity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_automation_library_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_data_automation_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type invoke_blueprint_optimization_async_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_data_automation_library_ingestion_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_blueprints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_automation_libraries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_automation_library_entities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_automation_library_ingestion_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_automation_projects_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_blueprint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_automation_library_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_automation_project_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

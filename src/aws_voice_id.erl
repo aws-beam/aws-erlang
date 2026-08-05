@@ -69,28 +69,127 @@
 
 
 %% Example:
-%% update_domain_request() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_fraudster_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"FraudsterId">> := string(),
+%%   <<"WatchlistId">> := string()
+%% }
+-type associate_fraudster_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_fraudster_response() :: #{
+%%   <<"Fraudster">> => fraudster()
+%% }
+-type associate_fraudster_response() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"AcceptanceThreshold">> => integer()
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_result() :: #{
+%%   <<"AudioAggregationEndedAt">> => non_neg_integer(),
+%%   <<"AudioAggregationStartedAt">> => non_neg_integer(),
+%%   <<"AuthenticationResultId">> => string(),
+%%   <<"Configuration">> => authentication_configuration(),
+%%   <<"CustomerSpeakerId">> => string(),
+%%   <<"Decision">> => string(),
+%%   <<"GeneratedSpeakerId">> => string(),
+%%   <<"Score">> => integer()
+%% }
+-type authentication_result() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"ConflictType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_response() :: #{
+%%   <<"Domain">> => domain()
+%% }
+-type create_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_watchlist_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DomainId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration()
+%%   <<"Name">> := string()
 %% }
--type update_domain_request() :: #{binary() => any()}.
+-type create_watchlist_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% create_watchlist_response() :: #{
+%%   <<"Watchlist">> => watchlist()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_watchlist_response() :: #{binary() => any()}.
 
 %% Example:
-%% registration_config() :: #{
-%%   <<"DuplicateRegistrationAction">> => string(),
-%%   <<"FraudsterSimilarityThreshold">> => integer(),
-%%   <<"WatchlistIds">> => list(string())
+%% delete_domain_request() :: #{
+%%   <<"DomainId">> := string()
 %% }
--type registration_config() :: #{binary() => any()}.
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fraudster_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"FraudsterId">> := string()
+%% }
+-type delete_fraudster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_speaker_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpeakerId">> := string()
+%% }
+-type delete_speaker_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_watchlist_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"WatchlistId">> := string()
+%% }
+-type delete_watchlist_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_request() :: #{
+%%   <<"DomainId">> := string()
+%% }
+-type describe_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_response() :: #{
+%%   <<"Domain">> => domain()
+%% }
+-type describe_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fraudster_registration_job_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"JobId">> := string()
+%% }
+-type describe_fraudster_registration_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fraudster_registration_job_response() :: #{
@@ -99,32 +198,11 @@
 -type describe_fraudster_registration_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_speakers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SpeakerSummaries">> => list(speaker_summary())
-%% }
--type list_speakers_response() :: #{binary() => any()}.
-
-%% Example:
-%% input_data_config() :: #{
-%%   <<"S3Uri">> => string()
-%% }
--type input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_speaker_enrollment_jobs_request() :: #{
+%% describe_fraudster_request() :: #{
 %%   <<"DomainId">> := string(),
-%%   <<"JobStatus">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"FraudsterId">> := string()
 %% }
--type list_speaker_enrollment_jobs_request() :: #{binary() => any()}.
+-type describe_fraudster_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fraudster_response() :: #{
@@ -133,25 +211,24 @@
 -type describe_fraudster_response() :: #{binary() => any()}.
 
 %% Example:
-%% domain_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"DomainStatus">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"ServerSideEncryptionUpdateDetails">> => server_side_encryption_update_details(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"WatchlistDetails">> => watchlist_details()
+%% describe_speaker_enrollment_job_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"JobId">> := string()
 %% }
--type domain_summary() :: #{binary() => any()}.
+-type describe_speaker_enrollment_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_domain_response() :: #{
-%%   <<"Domain">> => domain()
+%% describe_speaker_enrollment_job_response() :: #{
+%%   <<"Job">> => speaker_enrollment_job()
 %% }
--type update_domain_response() :: #{binary() => any()}.
+-type describe_speaker_enrollment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_speaker_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"SpeakerId">> := string()
+%% }
+-type describe_speaker_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_speaker_response() :: #{
@@ -160,11 +237,31 @@
 -type describe_speaker_response() :: #{binary() => any()}.
 
 %% Example:
-%% evaluate_session_request() :: #{
+%% describe_watchlist_request() :: #{
 %%   <<"DomainId">> := string(),
-%%   <<"SessionNameOrId">> := string()
+%%   <<"WatchlistId">> := string()
 %% }
--type evaluate_session_request() :: #{binary() => any()}.
+-type describe_watchlist_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_watchlist_response() :: #{
+%%   <<"Watchlist">> => watchlist()
+%% }
+-type describe_watchlist_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_fraudster_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"FraudsterId">> := string(),
+%%   <<"WatchlistId">> := string()
+%% }
+-type disassociate_fraudster_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_fraudster_response() :: #{
+%%   <<"Fraudster">> => fraudster()
+%% }
+-type disassociate_fraudster_response() :: #{binary() => any()}.
 
 %% Example:
 %% domain() :: #{
@@ -182,52 +279,66 @@
 -type domain() :: #{binary() => any()}.
 
 %% Example:
-%% speaker() :: #{
+%% domain_summary() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CustomerSpeakerId">> => string(),
+%%   <<"Description">> => string(),
 %%   <<"DomainId">> => string(),
-%%   <<"GeneratedSpeakerId">> => string(),
-%%   <<"LastAccessedAt">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"DomainStatus">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"ServerSideEncryptionUpdateDetails">> => server_side_encryption_update_details(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"WatchlistDetails">> => watchlist_details()
 %% }
--type speaker() :: #{binary() => any()}.
+-type domain_summary() :: #{binary() => any()}.
 
 %% Example:
-%% job_progress() :: #{
-%%   <<"PercentComplete">> => integer()
+%% enrollment_config() :: #{
+%%   <<"ExistingEnrollmentAction">> => string(),
+%%   <<"FraudDetectionConfig">> => enrollment_job_fraud_detection_config()
 %% }
--type job_progress() :: #{binary() => any()}.
+-type enrollment_config() :: #{binary() => any()}.
 
 %% Example:
-%% watchlist_details() :: #{
-%%   <<"DefaultWatchlistId">> => string()
+%% enrollment_job_fraud_detection_config() :: #{
+%%   <<"FraudDetectionAction">> => string(),
+%%   <<"RiskThreshold">> => integer(),
+%%   <<"WatchlistIds">> => list(string())
 %% }
--type watchlist_details() :: #{binary() => any()}.
+-type enrollment_job_fraud_detection_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_fraudsters_request() :: #{
+%% evaluate_session_request() :: #{
 %%   <<"DomainId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%%   <<"SessionNameOrId">> := string()
+%% }
+-type evaluate_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_session_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result(),
+%%   <<"DomainId">> => string(),
+%%   <<"FraudDetectionResult">> => fraud_detection_result(),
+%%   <<"SessionId">> => string(),
+%%   <<"SessionName">> => string(),
+%%   <<"StreamingStatus">> => string()
+%% }
+-type evaluate_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% fraud_detection_configuration() :: #{
+%%   <<"RiskThreshold">> => integer(),
 %%   <<"WatchlistId">> => string()
 %% }
--type list_fraudsters_request() :: #{binary() => any()}.
-
-%% Example:
-%% server_side_encryption_update_details() :: #{
-%%   <<"Message">> => string(),
-%%   <<"OldKmsKeyId">> => string(),
-%%   <<"UpdateStatus">> => string()
-%% }
--type server_side_encryption_update_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type fraud_detection_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% fraud_detection_result() :: #{
@@ -242,13 +353,6 @@
 -type fraud_detection_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_watchlist_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"WatchlistId">> := string()
-%% }
--type describe_watchlist_request() :: #{binary() => any()}.
-
-%% Example:
 %% fraud_risk_details() :: #{
 %%   <<"KnownFraudsterRisk">> => known_fraudster_risk(),
 %%   <<"VoiceSpoofingRisk">> => voice_spoofing_risk()
@@ -256,163 +360,13 @@
 -type fraud_risk_details() :: #{binary() => any()}.
 
 %% Example:
-%% failure_details() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% known_fraudster_risk() :: #{
-%%   <<"GeneratedFraudsterId">> => string(),
-%%   <<"RiskScore">> => integer()
-%% }
--type known_fraudster_risk() :: #{binary() => any()}.
-
-%% Example:
-%% start_fraudster_registration_job_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"DomainId">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"RegistrationConfig">> => registration_config()
-%% }
--type start_fraudster_registration_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_speaker_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SpeakerId">> := string()
-%% }
--type describe_speaker_request() :: #{binary() => any()}.
-
-%% Example:
-%% fraudster_summary() :: #{
+%% fraudster() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
 %%   <<"GeneratedFraudsterId">> => string(),
 %%   <<"WatchlistIds">> => list(string())
 %% }
--type fraudster_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_speaker_enrollment_jobs_response() :: #{
-%%   <<"JobSummaries">> => list(speaker_enrollment_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_speaker_enrollment_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{
-%%   <<"DomainId">> := string()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_result() :: #{
-%%   <<"AudioAggregationEndedAt">> => non_neg_integer(),
-%%   <<"AudioAggregationStartedAt">> => non_neg_integer(),
-%%   <<"AuthenticationResultId">> => string(),
-%%   <<"Configuration">> => authentication_configuration(),
-%%   <<"CustomerSpeakerId">> => string(),
-%%   <<"Decision">> => string(),
-%%   <<"GeneratedSpeakerId">> => string(),
-%%   <<"Score">> => integer()
-%% }
--type authentication_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fraudster_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"FraudsterId">> := string()
-%% }
--type delete_fraudster_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"ConflictType">> => string(),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_fraudster_registration_jobs_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"JobStatus">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_fraudster_registration_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_watchlist_response() :: #{
-%%   <<"Watchlist">> => watchlist()
-%% }
--type create_watchlist_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_session_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result(),
-%%   <<"DomainId">> => string(),
-%%   <<"FraudDetectionResult">> => fraud_detection_result(),
-%%   <<"SessionId">> => string(),
-%%   <<"SessionName">> => string(),
-%%   <<"StreamingStatus">> => string()
-%% }
--type evaluate_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_watchlist_response() :: #{
-%%   <<"Watchlist">> => watchlist()
-%% }
--type update_watchlist_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_speakers_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_speakers_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"DomainSummaries">> => list(domain_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
+-type fraudster() :: #{binary() => any()}.
 
 %% Example:
 %% fraudster_registration_job() :: #{
@@ -432,10 +386,134 @@
 -type fraudster_registration_job() :: #{binary() => any()}.
 
 %% Example:
-%% start_speaker_enrollment_job_response() :: #{
-%%   <<"Job">> => speaker_enrollment_job()
+%% fraudster_registration_job_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobProgress">> => job_progress(),
+%%   <<"JobStatus">> => string()
 %% }
--type start_speaker_enrollment_job_response() :: #{binary() => any()}.
+-type fraudster_registration_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% fraudster_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainId">> => string(),
+%%   <<"GeneratedFraudsterId">> => string(),
+%%   <<"WatchlistIds">> => list(string())
+%% }
+-type fraudster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_progress() :: #{
+%%   <<"PercentComplete">> => integer()
+%% }
+-type job_progress() :: #{binary() => any()}.
+
+%% Example:
+%% known_fraudster_risk() :: #{
+%%   <<"GeneratedFraudsterId">> => string(),
+%%   <<"RiskScore">> => integer()
+%% }
+-type known_fraudster_risk() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"DomainSummaries">> => list(domain_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_fraudster_registration_jobs_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"JobStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fraudster_registration_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_fraudster_registration_jobs_response() :: #{
+%%   <<"JobSummaries">> => list(fraudster_registration_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fraudster_registration_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_fraudsters_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WatchlistId">> => string()
+%% }
+-type list_fraudsters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_fraudsters_response() :: #{
+%%   <<"FraudsterSummaries">> => list(fraudster_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fraudsters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_speaker_enrollment_jobs_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"JobStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_speaker_enrollment_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_speaker_enrollment_jobs_response() :: #{
+%%   <<"JobSummaries">> => list(speaker_enrollment_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_speaker_enrollment_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_speakers_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_speakers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_speakers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SpeakerSummaries">> => list(speaker_summary())
+%% }
+-type list_speakers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -444,10 +522,19 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_domain_response() :: #{
-%%   <<"Domain">> => domain()
+%% list_watchlists_request() :: #{
+%%   <<"DomainId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type describe_domain_response() :: #{binary() => any()}.
+-type list_watchlists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_watchlists_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WatchlistSummaries">> => list(watchlist_summary())
+%% }
+-type list_watchlists_response() :: #{binary() => any()}.
 
 %% Example:
 %% opt_out_speaker_request() :: #{
@@ -457,22 +544,64 @@
 -type opt_out_speaker_request() :: #{binary() => any()}.
 
 %% Example:
-%% watchlist() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DefaultWatchlist">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DomainId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"WatchlistId">> => string()
+%% opt_out_speaker_response() :: #{
+%%   <<"Speaker">> => speaker()
 %% }
--type watchlist() :: #{binary() => any()}.
+-type opt_out_speaker_response() :: #{binary() => any()}.
 
 %% Example:
-%% voice_spoofing_risk() :: #{
-%%   <<"RiskScore">> => integer()
+%% output_data_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Uri">> => string()
 %% }
--type voice_spoofing_risk() :: #{binary() => any()}.
+-type output_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% registration_config() :: #{
+%%   <<"DuplicateRegistrationAction">> => string(),
+%%   <<"FraudsterSimilarityThreshold">> => integer(),
+%%   <<"WatchlistIds">> => list(string())
+%% }
+-type registration_config() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% server_side_encryption_update_details() :: #{
+%%   <<"Message">> => string(),
+%%   <<"OldKmsKeyId">> => string(),
+%%   <<"UpdateStatus">> => string()
+%% }
+-type server_side_encryption_update_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% speaker() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CustomerSpeakerId">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"GeneratedSpeakerId">> => string(),
+%%   <<"LastAccessedAt">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type speaker() :: #{binary() => any()}.
 
 %% Example:
 %% speaker_enrollment_job() :: #{
@@ -492,39 +621,17 @@
 -type speaker_enrollment_job() :: #{binary() => any()}.
 
 %% Example:
-%% associate_fraudster_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"FraudsterId">> := string(),
-%%   <<"WatchlistId">> := string()
-%% }
--type associate_fraudster_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_speaker_enrollment_job_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"DomainId">> := string(),
-%%   <<"EnrollmentConfig">> => enrollment_config(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_speaker_enrollment_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% fraudster() :: #{
+%% speaker_enrollment_job_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
-%%   <<"GeneratedFraudsterId">> => string(),
-%%   <<"WatchlistIds">> => list(string())
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"JobProgress">> => job_progress(),
+%%   <<"JobStatus">> => string()
 %% }
--type fraudster() :: #{binary() => any()}.
-
-%% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"KmsKeyId">> => string()
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
+-type speaker_enrollment_job_summary() :: #{binary() => any()}.
 
 %% Example:
 %% speaker_summary() :: #{
@@ -539,90 +646,16 @@
 -type speaker_summary() :: #{binary() => any()}.
 
 %% Example:
-%% opt_out_speaker_response() :: #{
-%%   <<"Speaker">> => speaker()
-%% }
--type opt_out_speaker_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fraudster_registration_job_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"JobId">> := string()
-%% }
--type describe_fraudster_registration_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_fraudster_response() :: #{
-%%   <<"Fraudster">> => fraudster()
-%% }
--type associate_fraudster_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fraudster_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"FraudsterId">> := string()
-%% }
--type describe_fraudster_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_request() :: #{
-%%   <<"DomainId">> := string()
-%% }
--type describe_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_watchlist_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"WatchlistId">> := string()
-%% }
--type delete_watchlist_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_speaker_enrollment_job_response() :: #{
-%%   <<"Job">> => speaker_enrollment_job()
-%% }
--type describe_speaker_enrollment_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_watchlists_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WatchlistSummaries">> => list(watchlist_summary())
-%% }
--type list_watchlists_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_watchlist_request() :: #{
+%% start_fraudster_registration_job_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
 %%   <<"DomainId">> := string(),
-%%   <<"Name">> := string()
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"OutputDataConfig">> := output_data_config(),
+%%   <<"RegistrationConfig">> => registration_config()
 %% }
--type create_watchlist_request() :: #{binary() => any()}.
+-type start_fraudster_registration_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_fraudster_registration_job_response() :: #{
@@ -631,36 +664,42 @@
 -type start_fraudster_registration_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% fraudster_registration_job_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"FailureDetails">> => failure_details(),
-%%   <<"JobId">> => string(),
+%% start_speaker_enrollment_job_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"DomainId">> := string(),
+%%   <<"EnrollmentConfig">> => enrollment_config(),
+%%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"JobName">> => string(),
-%%   <<"JobProgress">> => job_progress(),
-%%   <<"JobStatus">> => string()
+%%   <<"OutputDataConfig">> := output_data_config()
 %% }
--type fraudster_registration_job_summary() :: #{binary() => any()}.
+-type start_speaker_enrollment_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_fraudsters_response() :: #{
-%%   <<"FraudsterSummaries">> => list(fraudster_summary()),
-%%   <<"NextToken">> => string()
+%% start_speaker_enrollment_job_response() :: #{
+%%   <<"Job">> => speaker_enrollment_job()
 %% }
--type list_fraudsters_response() :: #{binary() => any()}.
+-type start_speaker_enrollment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -669,38 +708,32 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_domain_response() :: #{
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DomainId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration()
+%% }
+-type update_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_response() :: #{
 %%   <<"Domain">> => domain()
 %% }
--type create_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_fraudster_registration_jobs_response() :: #{
-%%   <<"JobSummaries">> => list(fraudster_registration_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_fraudster_registration_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_speaker_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"SpeakerId">> := string()
-%% }
--type delete_speaker_request() :: #{binary() => any()}.
-
-%% Example:
-%% output_data_config() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type output_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% enrollment_config() :: #{
-%%   <<"ExistingEnrollmentAction">> => string(),
-%%   <<"FraudDetectionConfig">> => enrollment_job_fraud_detection_config()
-%% }
--type enrollment_config() :: #{binary() => any()}.
+-type update_domain_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_watchlist_request() :: #{
@@ -712,46 +745,40 @@
 -type update_watchlist_request() :: #{binary() => any()}.
 
 %% Example:
-%% authentication_configuration() :: #{
-%%   <<"AcceptanceThreshold">> => integer()
-%% }
--type authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_watchlists_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_watchlists_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_watchlist_response() :: #{
+%% update_watchlist_response() :: #{
 %%   <<"Watchlist">> => watchlist()
 %% }
--type describe_watchlist_response() :: #{binary() => any()}.
+-type update_watchlist_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_speaker_enrollment_job_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"JobId">> := string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type describe_speaker_enrollment_job_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% fraud_detection_configuration() :: #{
-%%   <<"RiskThreshold">> => integer(),
+%% voice_spoofing_risk() :: #{
+%%   <<"RiskScore">> => integer()
+%% }
+-type voice_spoofing_risk() :: #{binary() => any()}.
+
+%% Example:
+%% watchlist() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DefaultWatchlist">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DomainId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"WatchlistId">> => string()
 %% }
--type fraud_detection_configuration() :: #{binary() => any()}.
+-type watchlist() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_fraudster_request() :: #{
-%%   <<"DomainId">> := string(),
-%%   <<"FraudsterId">> := string(),
-%%   <<"WatchlistId">> := string()
+%% watchlist_details() :: #{
+%%   <<"DefaultWatchlistId">> => string()
 %% }
--type disassociate_fraudster_request() :: #{binary() => any()}.
+-type watchlist_details() :: #{binary() => any()}.
 
 %% Example:
 %% watchlist_summary() :: #{
@@ -765,256 +792,229 @@
 %% }
 -type watchlist_summary() :: #{binary() => any()}.
 
-%% Example:
-%% enrollment_job_fraud_detection_config() :: #{
-%%   <<"FraudDetectionAction">> => string(),
-%%   <<"RiskThreshold">> => integer(),
-%%   <<"WatchlistIds">> => list(string())
-%% }
--type enrollment_job_fraud_detection_config() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_fraudster_response() :: #{
-%%   <<"Fraudster">> => fraudster()
-%% }
--type disassociate_fraudster_response() :: #{binary() => any()}.
-
-%% Example:
-%% speaker_enrollment_job_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainId">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"FailureDetails">> => failure_details(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"JobProgress">> => job_progress(),
-%%   <<"JobStatus">> => string()
-%% }
--type speaker_enrollment_job_summary() :: #{binary() => any()}.
-
 -type associate_fraudster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_watchlist_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_fraudster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_speaker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_watchlist_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_fraudster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_fraudster_registration_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_speaker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_speaker_enrollment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_watchlist_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_fraudster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type evaluate_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_fraudster_registration_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_fraudsters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_speaker_enrollment_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_speakers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_watchlists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type opt_out_speaker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_fraudster_registration_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_speaker_enrollment_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_watchlist_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

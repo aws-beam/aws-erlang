@@ -95,118 +95,13 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% cancel_signing_profile_request() :: #{}
--type cancel_signing_profile_request() :: #{}.
-
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% access_denied_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_profile_permission_response() :: #{
-%%   <<"revisionId">> => string()
-%% }
--type remove_profile_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_source() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"key">> => string(),
-%%   <<"version">> => string()
-%% }
--type s3_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_platform_overrides() :: #{
-%%   <<"signingConfiguration">> => signing_configuration_overrides(),
-%%   <<"signingImageFormat">> => list(any())
-%% }
--type signing_platform_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_configuration_overrides() :: #{
-%%   <<"encryptionAlgorithm">> => list(any()),
-%%   <<"hashAlgorithm">> => list(any())
-%% }
--type signing_configuration_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_signing_job_request() :: #{
-%%   <<"clientRequestToken">> := string(),
-%%   <<"destination">> := destination(),
-%%   <<"profileName">> := string(),
-%%   <<"profileOwner">> => string(),
-%%   <<"source">> := source()
-%% }
--type start_signing_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_platform() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"displayName">> => string(),
-%%   <<"maxSizeInMB">> => integer(),
-%%   <<"partner">> => string(),
-%%   <<"platformId">> => string(),
-%%   <<"revocationSupported">> => boolean(),
-%%   <<"signingConfiguration">> => signing_configuration(),
-%%   <<"signingImageFormat">> => signing_image_format(),
-%%   <<"target">> => string()
-%% }
--type signing_platform() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% signing_image_format() :: #{
-%%   <<"defaultFormat">> => list(any()),
-%%   <<"supportedFormats">> => list(list(any())())
-%% }
--type signing_image_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_profile_permission_request() :: #{
-%%   <<"revisionId">> := string()
-%% }
--type remove_profile_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_profile() :: #{
-%%   <<"arn">> => string(),
-%%   <<"platformDisplayName">> => string(),
-%%   <<"platformId">> => string(),
-%%   <<"profileName">> => string(),
-%%   <<"profileVersion">> => string(),
-%%   <<"profileVersionArn">> => string(),
-%%   <<"signatureValidityPeriod">> => signature_validity_period(),
-%%   <<"signingMaterial">> => signing_material(),
-%%   <<"signingParameters">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type signing_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_signing_jobs_response() :: #{
-%%   <<"jobs">> => list(signing_job()),
-%%   <<"nextToken">> => string()
-%% }
--type list_signing_jobs_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -221,78 +116,22 @@
 
 
 %% Example:
-%% internal_service_error_exception() :: #{
+%% add_profile_permission_response() :: #{
+%%   <<"revisionId">> => string()
+%% }
+-type add_profile_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
 %%   <<"code">> => string(),
 %%   <<"message">> => string()
 %% }
--type internal_service_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
+-type bad_request_exception() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_signing_profile_request() :: #{
-%%   <<"overrides">> => signing_platform_overrides(),
-%%   <<"platformId">> := string(),
-%%   <<"signatureValidityPeriod">> => signature_validity_period(),
-%%   <<"signingMaterial">> => signing_material(),
-%%   <<"signingParameters">> => map(),
-%%   <<"tags">> => map()
-%% }
--type put_signing_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_signing_platform_request() :: #{}
--type get_signing_platform_request() :: #{}.
-
-
-%% Example:
-%% signing_configuration() :: #{
-%%   <<"encryptionAlgorithmOptions">> => encryption_algorithm_options(),
-%%   <<"hashAlgorithmOptions">> => hash_algorithm_options()
-%% }
--type signing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_signing_profile_request() :: #{
-%%   <<"profileOwner">> => string()
-%% }
--type get_signing_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% signature_validity_period() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type signature_validity_period() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_job_revocation_record() :: #{
-%%   <<"reason">> => string(),
-%%   <<"revokedAt">> => non_neg_integer(),
-%%   <<"revokedBy">> => string()
-%% }
--type signing_job_revocation_record() :: #{binary() => any()}.
-
-%% Example:
-%% describe_signing_job_request() :: #{}
--type describe_signing_job_request() :: #{}.
+%% cancel_signing_profile_request() :: #{}
+-type cancel_signing_profile_request() :: #{}.
 
 
 %% Example:
@@ -302,44 +141,9 @@
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
-
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_signing_profile_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"profileVersion">> => string(),
-%%   <<"profileVersionArn">> => string()
-%% }
--type put_signing_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_signing_platform_response() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"displayName">> => string(),
-%%   <<"maxSizeInMB">> => integer(),
-%%   <<"partner">> => string(),
-%%   <<"platformId">> => string(),
-%%   <<"revocationSupported">> => boolean(),
-%%   <<"signingConfiguration">> => signing_configuration(),
-%%   <<"signingImageFormat">> => signing_image_format(),
-%%   <<"target">> => string()
-%% }
--type get_signing_platform_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_revocation_status_response() :: #{
-%%   <<"revokedEntities">> => list(string())
-%% }
--type get_revocation_status_response() :: #{binary() => any()}.
+%% describe_signing_job_request() :: #{}
+-type describe_signing_job_request() :: #{}.
 
 
 %% Example:
@@ -368,18 +172,18 @@
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% destination() :: #{
+%%   <<"s3">> => s3_destination()
 %% }
--type not_found_exception() :: #{binary() => any()}.
+-type destination() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% encryption_algorithm_options() :: #{
+%%   <<"allowedValues">> => list(list(any())()),
+%%   <<"defaultValue">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type encryption_algorithm_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,195 +198,36 @@
 
 
 %% Example:
-%% list_profile_permissions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(permission()),
-%%   <<"policySizeBytes">> => integer(),
-%%   <<"revisionId">> => string()
+%% get_revocation_status_response() :: #{
+%%   <<"revokedEntities">> => list(string())
 %% }
--type list_profile_permissions_response() :: #{binary() => any()}.
+-type get_revocation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_platform_request() :: #{}
+-type get_signing_platform_request() :: #{}.
 
 
 %% Example:
-%% s3_destination() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type s3_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_signing_jobs_request() :: #{
-%%   <<"isRevoked">> => boolean(),
-%%   <<"jobInvoker">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%% get_signing_platform_response() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"displayName">> => string(),
+%%   <<"maxSizeInMB">> => integer(),
+%%   <<"partner">> => string(),
 %%   <<"platformId">> => string(),
-%%   <<"requestedBy">> => string(),
-%%   <<"signatureExpiresAfter">> => non_neg_integer(),
-%%   <<"signatureExpiresBefore">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%%   <<"revocationSupported">> => boolean(),
+%%   <<"signingConfiguration">> => signing_configuration(),
+%%   <<"signingImageFormat">> => signing_image_format(),
+%%   <<"target">> => string()
 %% }
--type list_signing_jobs_request() :: #{binary() => any()}.
+-type get_signing_platform_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% source() :: #{
-%%   <<"s3">> => s3_source()
-%% }
--type source() :: #{binary() => any()}.
-
-
-%% Example:
-%% signed_object() :: #{
-%%   <<"s3">> => s3_signed_object()
-%% }
--type signed_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_material() :: #{
-%%   <<"certificateArn">> => string()
-%% }
--type signing_material() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_signing_job_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"jobOwner">> => string()
-%% }
--type start_signing_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_signing_profiles_request() :: #{
-%%   <<"includeCanceled">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"platformId">> => string(),
-%%   <<"statuses">> => list(list(any())())
-%% }
--type list_signing_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_profile_revocation_record() :: #{
-%%   <<"revocationEffectiveFrom">> => non_neg_integer(),
-%%   <<"revokedAt">> => non_neg_integer(),
-%%   <<"revokedBy">> => string()
-%% }
--type signing_profile_revocation_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"s3">> => s3_destination()
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_limit_exceeded_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type service_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% signing_job() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"isRevoked">> => boolean(),
-%%   <<"jobId">> => string(),
-%%   <<"jobInvoker">> => string(),
-%%   <<"jobOwner">> => string(),
-%%   <<"platformDisplayName">> => string(),
-%%   <<"platformId">> => string(),
-%%   <<"profileName">> => string(),
-%%   <<"profileVersion">> => string(),
-%%   <<"signatureExpiresAt">> => non_neg_integer(),
-%%   <<"signedObject">> => signed_object(),
-%%   <<"signingMaterial">> => signing_material(),
-%%   <<"source">> => source(),
-%%   <<"status">> => list(any())
-%% }
--type signing_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% hash_algorithm_options() :: #{
-%%   <<"allowedValues">> => list(list(any())()),
-%%   <<"defaultValue">> => list(any())
-%% }
--type hash_algorithm_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_signing_profile_request() :: #{
-%%   <<"effectiveTime">> := non_neg_integer(),
-%%   <<"profileVersion">> := string(),
-%%   <<"reason">> := string()
-%% }
--type revoke_signing_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_signed_object() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3_signed_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% sign_payload_request() :: #{
-%%   <<"payload">> := binary(),
-%%   <<"payloadFormat">> := string(),
-%%   <<"profileName">> := string(),
+%% get_signing_profile_request() :: #{
 %%   <<"profileOwner">> => string()
 %% }
--type sign_payload_request() :: #{binary() => any()}.
+-type get_signing_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -606,21 +251,59 @@
 
 
 %% Example:
-%% list_signing_profiles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"profiles">> => list(signing_profile())
+%% hash_algorithm_options() :: #{
+%%   <<"allowedValues">> => list(list(any())()),
+%%   <<"defaultValue">> => list(any())
 %% }
--type list_signing_profiles_response() :: #{binary() => any()}.
+-type hash_algorithm_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% sign_payload_response() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"jobOwner">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"signature">> => binary()
+%% internal_service_error_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type sign_payload_response() :: #{binary() => any()}.
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_permissions_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_profile_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(permission()),
+%%   <<"policySizeBytes">> => integer(),
+%%   <<"revisionId">> => string()
+%% }
+-type list_profile_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signing_jobs_request() :: #{
+%%   <<"isRevoked">> => boolean(),
+%%   <<"jobInvoker">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"requestedBy">> => string(),
+%%   <<"signatureExpiresAfter">> => non_neg_integer(),
+%%   <<"signatureExpiresBefore">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type list_signing_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signing_jobs_response() :: #{
+%%   <<"jobs">> => list(signing_job()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_signing_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -635,26 +318,49 @@
 
 
 %% Example:
-%% revoke_signature_request() :: #{
-%%   <<"jobOwner">> => string(),
-%%   <<"reason">> := string()
-%% }
--type revoke_signature_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_profile_permission_response() :: #{
-%%   <<"revisionId">> => string()
-%% }
--type add_profile_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% list_signing_platforms_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"platforms">> => list(signing_platform())
 %% }
 -type list_signing_platforms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signing_profiles_request() :: #{
+%%   <<"includeCanceled">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_signing_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_signing_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profiles">> => list(signing_profile())
+%% }
+-type list_signing_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -668,143 +374,437 @@
 
 
 %% Example:
-%% encryption_algorithm_options() :: #{
-%%   <<"allowedValues">> => list(list(any())()),
-%%   <<"defaultValue">> => list(any())
+%% put_signing_profile_request() :: #{
+%%   <<"overrides">> => signing_platform_overrides(),
+%%   <<"platformId">> := string(),
+%%   <<"signatureValidityPeriod">> => signature_validity_period(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"tags">> => map()
 %% }
--type encryption_algorithm_options() :: #{binary() => any()}.
+-type put_signing_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_profile_permissions_request() :: #{
-%%   <<"nextToken">> => string()
+%% put_signing_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"profileVersionArn">> => string()
 %% }
--type list_profile_permissions_request() :: #{binary() => any()}.
+-type put_signing_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_profile_permission_request() :: #{
+%%   <<"revisionId">> := string()
+%% }
+-type remove_profile_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_profile_permission_response() :: #{
+%%   <<"revisionId">> => string()
+%% }
+-type remove_profile_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_signature_request() :: #{
+%%   <<"jobOwner">> => string(),
+%%   <<"reason">> := string()
+%% }
+-type revoke_signature_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_signing_profile_request() :: #{
+%%   <<"effectiveTime">> := non_neg_integer(),
+%%   <<"profileVersion">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type revoke_signing_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_signed_object() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_signed_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_limit_exceeded_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sign_payload_request() :: #{
+%%   <<"payload">> := binary(),
+%%   <<"payloadFormat">> := string(),
+%%   <<"profileName">> := string(),
+%%   <<"profileOwner">> => string()
+%% }
+-type sign_payload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sign_payload_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOwner">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"signature">> => binary()
+%% }
+-type sign_payload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% signature_validity_period() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type signature_validity_period() :: #{binary() => any()}.
+
+
+%% Example:
+%% signed_object() :: #{
+%%   <<"s3">> => s3_signed_object()
+%% }
+-type signed_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_configuration() :: #{
+%%   <<"encryptionAlgorithmOptions">> => encryption_algorithm_options(),
+%%   <<"hashAlgorithmOptions">> => hash_algorithm_options()
+%% }
+-type signing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_configuration_overrides() :: #{
+%%   <<"encryptionAlgorithm">> => list(any()),
+%%   <<"hashAlgorithm">> => list(any())
+%% }
+-type signing_configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_image_format() :: #{
+%%   <<"defaultFormat">> => list(any()),
+%%   <<"supportedFormats">> => list(list(any())())
+%% }
+-type signing_image_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_job() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"isRevoked">> => boolean(),
+%%   <<"jobId">> => string(),
+%%   <<"jobInvoker">> => string(),
+%%   <<"jobOwner">> => string(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"signatureExpiresAt">> => non_neg_integer(),
+%%   <<"signedObject">> => signed_object(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"source">> => source(),
+%%   <<"status">> => list(any())
+%% }
+-type signing_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_job_revocation_record() :: #{
+%%   <<"reason">> => string(),
+%%   <<"revokedAt">> => non_neg_integer(),
+%%   <<"revokedBy">> => string()
+%% }
+-type signing_job_revocation_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_material() :: #{
+%%   <<"certificateArn">> => string()
+%% }
+-type signing_material() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_platform() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"displayName">> => string(),
+%%   <<"maxSizeInMB">> => integer(),
+%%   <<"partner">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"revocationSupported">> => boolean(),
+%%   <<"signingConfiguration">> => signing_configuration(),
+%%   <<"signingImageFormat">> => signing_image_format(),
+%%   <<"target">> => string()
+%% }
+-type signing_platform() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_platform_overrides() :: #{
+%%   <<"signingConfiguration">> => signing_configuration_overrides(),
+%%   <<"signingImageFormat">> => list(any())
+%% }
+-type signing_platform_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_profile() :: #{
+%%   <<"arn">> => string(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"profileVersionArn">> => string(),
+%%   <<"signatureValidityPeriod">> => signature_validity_period(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type signing_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% signing_profile_revocation_record() :: #{
+%%   <<"revocationEffectiveFrom">> => non_neg_integer(),
+%%   <<"revokedAt">> => non_neg_integer(),
+%%   <<"revokedBy">> => string()
+%% }
+-type signing_profile_revocation_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"s3">> => s3_source()
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_signing_job_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"destination">> := destination(),
+%%   <<"profileName">> := string(),
+%%   <<"profileOwner">> => string(),
+%%   <<"source">> := source()
+%% }
+-type start_signing_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_signing_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOwner">> => string()
+%% }
+-type start_signing_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type add_profile_permission_errors() ::
-    service_limit_exceeded_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    service_limit_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_signing_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type describe_signing_job_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_revocation_status_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_signing_platform_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_signing_profile_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_profile_permissions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_signing_jobs_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_signing_platforms_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_signing_profiles_errors() ::
-    access_denied_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    not_found_exception() | 
+    internal_service_error_exception() | 
+    bad_request_exception().
 
 -type put_signing_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type remove_profile_permission_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type revoke_signature_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type revoke_signing_profile_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type sign_payload_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type start_signing_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    not_found_exception() | 
+    internal_service_error_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_error_exception().
+    not_found_exception() | 
+    internal_service_error_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

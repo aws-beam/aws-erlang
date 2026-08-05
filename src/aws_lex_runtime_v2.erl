@@ -24,11 +24,148 @@
 
 
 %% Example:
-%% recognized_bot_member() :: #{
-%%   <<"botId">> => string(),
-%%   <<"botName">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type recognized_bot_member() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_context() :: #{
+%%   <<"contextAttributes">> => map(),
+%%   <<"name">> => string(),
+%%   <<"timeToLive">> => active_context_time_to_live()
+%% }
+-type active_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% active_context_time_to_live() :: #{
+%%   <<"timeToLiveInSeconds">> => integer(),
+%%   <<"turnsToLive">> => integer()
+%% }
+-type active_context_time_to_live() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_input_event() :: #{
+%%   <<"audioChunk">> => binary(),
+%%   <<"clientTimestampMillis">> => float(),
+%%   <<"contentType">> => string(),
+%%   <<"eventId">> => string()
+%% }
+-type audio_input_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_response_event() :: #{
+%%   <<"audioChunk">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"eventId">> => string()
+%% }
+-type audio_response_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_gateway_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type bad_gateway_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% button() :: #{
+%%   <<"text">> => string(),
+%%   <<"value">> => string()
+%% }
+-type button() :: #{binary() => any()}.
+
+
+%% Example:
+%% confidence_score() :: #{
+%%   <<"score">> => float()
+%% }
+-type confidence_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_event() :: #{
+%%   <<"clientTimestampMillis">> => float(),
+%%   <<"disablePlayback">> => boolean(),
+%%   <<"eventId">> => string(),
+%%   <<"requestAttributes">> => map(),
+%%   <<"responseContentType">> => string(),
+%%   <<"sessionState">> => session_state(),
+%%   <<"welcomeMessages">> => list(message())
+%% }
+-type configuration_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% d_t_m_f_input_event() :: #{
+%%   <<"clientTimestampMillis">> => float(),
+%%   <<"eventId">> => string(),
+%%   <<"inputCharacter">> => string()
+%% }
+-type d_t_m_f_input_event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_session_request() :: #{}
+-type delete_session_request() :: #{}.
+
+
+%% Example:
+%% delete_session_response() :: #{
+%%   <<"botAliasId">> => string(),
+%%   <<"botId">> => string(),
+%%   <<"localeId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type delete_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% dialog_action() :: #{
+%%   <<"slotElicitationStyle">> => list(any()),
+%%   <<"slotToElicit">> => string(),
+%%   <<"subSlotToElicit">> => elicit_sub_slot(),
+%%   <<"type">> => list(any())
+%% }
+-type dialog_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnection_event() :: #{
+%%   <<"clientTimestampMillis">> => float(),
+%%   <<"eventId">> => string()
+%% }
+-type disconnection_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% elicit_sub_slot() :: #{
+%%   <<"name">> => string(),
+%%   <<"subSlotToElicit">> => elicit_sub_slot()
+%% }
+-type elicit_sub_slot() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
 
 
 %% Example:
@@ -42,108 +179,10 @@
 
 
 %% Example:
-%% put_session_request() :: #{
-%%   <<"messages">> => list(message()),
-%%   <<"requestAttributes">> => map(),
-%%   <<"responseContentType">> => string(),
-%%   <<"sessionState">> := session_state()
+%% heartbeat_event() :: #{
+%%   <<"eventId">> => string()
 %% }
--type put_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% elicit_sub_slot() :: #{
-%%   <<"name">> => string(),
-%%   <<"subSlotToElicit">> => elicit_sub_slot()
-%% }
--type elicit_sub_slot() :: #{binary() => any()}.
-
-
-%% Example:
-%% recognize_text_request() :: #{
-%%   <<"requestAttributes">> => map(),
-%%   <<"sessionState">> => session_state(),
-%%   <<"text">> := string()
-%% }
--type recognize_text_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_gateway_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_gateway_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% slot() :: #{
-%%   <<"shape">> => list(any()),
-%%   <<"subSlots">> => map(),
-%%   <<"value">> => value(),
-%%   <<"values">> => list(slot())
-%% }
--type slot() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_failed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type dependency_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% d_t_m_f_input_event() :: #{
-%%   <<"clientTimestampMillis">> => float(),
-%%   <<"eventId">> => string(),
-%%   <<"inputCharacter">> => string()
-%% }
--type d_t_m_f_input_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% recognize_utterance_request() :: #{
-%%   <<"inputStream">> => binary(),
-%%   <<"requestAttributes">> => string(),
-%%   <<"requestContentType">> := string(),
-%%   <<"responseContentType">> => string(),
-%%   <<"sessionState">> => string()
-%% }
--type recognize_utterance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% value() :: #{
-%%   <<"interpretedValue">> => string(),
-%%   <<"originalValue">> => string(),
-%%   <<"resolvedValues">> => list(string())
-%% }
--type value() :: #{binary() => any()}.
-
-
-%% Example:
-%% sentiment_response() :: #{
-%%   <<"sentiment">> => list(any()),
-%%   <<"sentimentScore">> => sentiment_score()
-%% }
--type sentiment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% active_context_time_to_live() :: #{
-%%   <<"timeToLiveInSeconds">> => integer(),
-%%   <<"turnsToLive">> => integer()
-%% }
--type active_context_time_to_live() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_input_event() :: #{
-%%   <<"clientTimestampMillis">> => float(),
-%%   <<"eventId">> => string(),
-%%   <<"text">> => string()
-%% }
--type text_input_event() :: #{binary() => any()}.
+-type heartbeat_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -155,22 +194,6 @@
 %% }
 -type image_response_card() :: #{binary() => any()}.
 
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
-
-%% Example:
-%% put_session_response() :: #{
-%%   <<"audioStream">> => binary(),
-%%   <<"contentType">> => string(),
-%%   <<"messages">> => string(),
-%%   <<"requestAttributes">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"sessionState">> => string()
-%% }
--type put_session_response() :: #{binary() => any()}.
-
 
 %% Example:
 %% intent() :: #{
@@ -180,30 +203,6 @@
 %%   <<"state">> => list(any())
 %% }
 -type intent() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% sentiment_score() :: #{
-%%   <<"mixed">> => float(),
-%%   <<"negative">> => float(),
-%%   <<"neutral">> => float(),
-%%   <<"positive">> => float()
-%% }
--type sentiment_score() :: #{binary() => any()}.
 
 
 %% Example:
@@ -220,57 +219,77 @@
 
 
 %% Example:
-%% delete_session_response() :: #{
-%%   <<"botAliasId">> => string(),
-%%   <<"botId">> => string(),
-%%   <<"localeId">> => string(),
-%%   <<"sessionId">> => string()
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type delete_session_response() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% text_response_event() :: #{
-%%   <<"eventId">> => string(),
-%%   <<"messages">> => list(message())
+%% interpretation() :: #{
+%%   <<"intent">> => intent(),
+%%   <<"interpretationSource">> => list(any()),
+%%   <<"nluConfidence">> => confidence_score(),
+%%   <<"sentimentResponse">> => sentiment_response()
 %% }
--type text_response_event() :: #{binary() => any()}.
+-type interpretation() :: #{binary() => any()}.
 
 
 %% Example:
-%% active_context() :: #{
-%%   <<"contextAttributes">> => map(),
-%%   <<"name">> => string(),
-%%   <<"timeToLive">> => active_context_time_to_live()
+%% message() :: #{
+%%   <<"content">> => string(),
+%%   <<"contentType">> => list(any()),
+%%   <<"imageResponseCard">> => image_response_card()
 %% }
--type active_context() :: #{binary() => any()}.
+-type message() :: #{binary() => any()}.
 
 
 %% Example:
-%% confidence_score() :: #{
-%%   <<"score">> => float()
-%% }
--type confidence_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnection_event() :: #{
+%% playback_completion_event() :: #{
 %%   <<"clientTimestampMillis">> => float(),
 %%   <<"eventId">> => string()
 %% }
--type disconnection_event() :: #{binary() => any()}.
+-type playback_completion_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% session_state() :: #{
-%%   <<"activeContexts">> => list(active_context()),
-%%   <<"dialogAction">> => dialog_action(),
-%%   <<"intent">> => intent(),
-%%   <<"originatingRequestId">> => string(),
-%%   <<"runtimeHints">> => runtime_hints(),
-%%   <<"sessionAttributes">> => map()
+%% playback_interruption_event() :: #{
+%%   <<"causedByEventId">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventReason">> => list(any())
 %% }
--type session_state() :: #{binary() => any()}.
+-type playback_interruption_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_session_request() :: #{
+%%   <<"messages">> => list(message()),
+%%   <<"requestAttributes">> => map(),
+%%   <<"responseContentType">> => string(),
+%%   <<"sessionState">> := session_state()
+%% }
+-type put_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_session_response() :: #{
+%%   <<"audioStream">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"messages">> => string(),
+%%   <<"requestAttributes">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionState">> => string()
+%% }
+-type put_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recognize_text_request() :: #{
+%%   <<"requestAttributes">> => map(),
+%%   <<"sessionState">> => session_state(),
+%%   <<"text">> := string()
+%% }
+-type recognize_text_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -286,27 +305,14 @@
 
 
 %% Example:
-%% audio_response_event() :: #{
-%%   <<"audioChunk">> => binary(),
-%%   <<"contentType">> => string(),
-%%   <<"eventId">> => string()
+%% recognize_utterance_request() :: #{
+%%   <<"inputStream">> => binary(),
+%%   <<"requestAttributes">> => string(),
+%%   <<"requestContentType">> := string(),
+%%   <<"responseContentType">> => string(),
+%%   <<"sessionState">> => string()
 %% }
--type audio_response_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_hint_value() :: #{
-%%   <<"phrase">> => string()
-%% }
--type runtime_hint_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_conversation_request() :: #{
-%%   <<"conversationMode">> => list(any()),
-%%   <<"requestEventStream">> := list()
-%% }
--type start_conversation_request() :: #{binary() => any()}.
+-type recognize_utterance_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -326,100 +332,18 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% recognized_bot_member() :: #{
+%%   <<"botId">> => string(),
+%%   <<"botName">> => string()
+%% }
+-type recognized_bot_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_event() :: #{
-%%   <<"clientTimestampMillis">> => float(),
-%%   <<"disablePlayback">> => boolean(),
-%%   <<"eventId">> => string(),
-%%   <<"requestAttributes">> => map(),
-%%   <<"responseContentType">> => string(),
-%%   <<"sessionState">> => session_state(),
-%%   <<"welcomeMessages">> => list(message())
-%% }
--type configuration_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% playback_interruption_event() :: #{
-%%   <<"causedByEventId">> => string(),
-%%   <<"eventId">> => string(),
-%%   <<"eventReason">> => list(any())
-%% }
--type playback_interruption_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_hints() :: #{
-%%   <<"slotHints">> => map()
-%% }
--type runtime_hints() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% playback_completion_event() :: #{
-%%   <<"clientTimestampMillis">> => float(),
-%%   <<"eventId">> => string()
-%% }
--type playback_completion_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% heartbeat_event() :: #{
-%%   <<"eventId">> => string()
-%% }
--type heartbeat_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_conversation_response() :: #{
-%%   <<"responseEventStream">> => list()
-%% }
--type start_conversation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% button() :: #{
-%%   <<"text">> => string(),
-%%   <<"value">> => string()
-%% }
--type button() :: #{binary() => any()}.
-
-
-%% Example:
-%% dialog_action() :: #{
-%%   <<"slotElicitationStyle">> => list(any()),
-%%   <<"slotToElicit">> => string(),
-%%   <<"subSlotToElicit">> => elicit_sub_slot(),
-%%   <<"type">> => list(any())
-%% }
--type dialog_action() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -431,95 +355,171 @@
 
 
 %% Example:
+%% runtime_hint_value() :: #{
+%%   <<"phrase">> => string()
+%% }
+-type runtime_hint_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_hints() :: #{
+%%   <<"slotHints">> => map()
+%% }
+-type runtime_hints() :: #{binary() => any()}.
+
+
+%% Example:
+%% sentiment_response() :: #{
+%%   <<"sentiment">> => list(any()),
+%%   <<"sentimentScore">> => sentiment_score()
+%% }
+-type sentiment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sentiment_score() :: #{
+%%   <<"mixed">> => float(),
+%%   <<"negative">> => float(),
+%%   <<"neutral">> => float(),
+%%   <<"positive">> => float()
+%% }
+-type sentiment_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_state() :: #{
+%%   <<"activeContexts">> => list(active_context()),
+%%   <<"dialogAction">> => dialog_action(),
+%%   <<"intent">> => intent(),
+%%   <<"originatingRequestId">> => string(),
+%%   <<"runtimeHints">> => runtime_hints(),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type session_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% slot() :: #{
+%%   <<"shape">> => list(any()),
+%%   <<"subSlots">> => map(),
+%%   <<"value">> => value(),
+%%   <<"values">> => list(slot())
+%% }
+-type slot() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_conversation_request() :: #{
+%%   <<"conversationMode">> => list(any()),
+%%   <<"requestEventStream">> := list()
+%% }
+-type start_conversation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_conversation_response() :: #{
+%%   <<"responseEventStream">> => list()
+%% }
+-type start_conversation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_input_event() :: #{
+%%   <<"clientTimestampMillis">> => float(),
+%%   <<"eventId">> => string(),
+%%   <<"text">> => string()
+%% }
+-type text_input_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_response_event() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"messages">> => list(message())
+%% }
+-type text_response_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% transcript_event() :: #{
 %%   <<"eventId">> => string(),
 %%   <<"transcript">> => string()
 %% }
 -type transcript_event() :: #{binary() => any()}.
 
-%% Example:
-%% delete_session_request() :: #{}
--type delete_session_request() :: #{}.
-
 
 %% Example:
-%% interpretation() :: #{
-%%   <<"intent">> => intent(),
-%%   <<"interpretationSource">> => list(any()),
-%%   <<"nluConfidence">> => confidence_score(),
-%%   <<"sentimentResponse">> => sentiment_response()
+%% validation_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type interpretation() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_input_event() :: #{
-%%   <<"audioChunk">> => binary(),
-%%   <<"clientTimestampMillis">> => float(),
-%%   <<"contentType">> => string(),
-%%   <<"eventId">> => string()
+%% value() :: #{
+%%   <<"interpretedValue">> => string(),
+%%   <<"originalValue">> => string(),
+%%   <<"resolvedValues">> => list(string())
 %% }
--type audio_input_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% message() :: #{
-%%   <<"content">> => string(),
-%%   <<"contentType">> => list(any()),
-%%   <<"imageResponseCard">> => image_response_card()
-%% }
--type message() :: #{binary() => any()}.
+-type value() :: #{binary() => any()}.
 
 -type delete_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     dependency_failed_exception() | 
-    bad_gateway_exception().
+    conflict_exception() | 
+    bad_gateway_exception() | 
+    access_denied_exception().
 
 -type recognize_text_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     dependency_failed_exception() | 
-    bad_gateway_exception().
+    conflict_exception() | 
+    bad_gateway_exception() | 
+    access_denied_exception().
 
 -type recognize_utterance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    internal_server_exception() | 
     dependency_failed_exception() | 
-    bad_gateway_exception().
+    conflict_exception() | 
+    bad_gateway_exception() | 
+    access_denied_exception().
 
 -type start_conversation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -76,88 +76,11 @@
 
 
 %% Example:
-%% update_service_access_policies_request() :: #{
-%%   <<"AccessPolicies">> := string(),
-%%   <<"DomainName">> := string()
-%% }
--type update_service_access_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_response() :: #{
-%%   <<"DomainStatus">> => domain_status()
-%% }
--type delete_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_endpoint_options_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string()
-%% }
--type describe_domain_endpoint_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_analysis_schemes_response() :: #{
-%%   <<"AnalysisSchemes">> => list(analysis_scheme_status())
-%% }
--type describe_analysis_schemes_response() :: #{binary() => any()}.
-
-%% Example:
-%% define_analysis_scheme_response() :: #{
-%%   <<"AnalysisScheme">> => analysis_scheme_status()
-%% }
--type define_analysis_scheme_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_array_options() :: #{
-%%   <<"AnalysisScheme">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"HighlightEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SourceFields">> => string()
-%% }
--type text_array_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_expression_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"ExpressionName">> := string()
-%% }
--type delete_expression_request() :: #{binary() => any()}.
-
-%% Example:
-%% expression_status() :: #{
-%%   <<"Options">> => expression(),
+%% access_policies_status() :: #{
+%%   <<"Options">> => string(),
 %%   <<"Status">> => option_status()
 %% }
--type expression_status() :: #{binary() => any()}.
-
-%% Example:
-%% date_array_options() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"FacetEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SearchEnabled">> => boolean(),
-%%   <<"SourceFields">> => string()
-%% }
--type date_array_options() :: #{binary() => any()}.
-
-%% Example:
-%% document_suggester_options() :: #{
-%%   <<"FuzzyMatching">> => list(any()),
-%%   <<"SortExpression">> => string(),
-%%   <<"SourceField">> => string()
-%% }
--type document_suggester_options() :: #{binary() => any()}.
-
-%% Example:
-%% literal_array_options() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"FacetEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SearchEnabled">> => boolean(),
-%%   <<"SourceFields">> => string()
-%% }
--type literal_array_options() :: #{binary() => any()}.
+-type access_policies_status() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_options() :: #{
@@ -170,105 +93,6 @@
 -type analysis_options() :: #{binary() => any()}.
 
 %% Example:
-%% delete_index_field_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"IndexFieldName">> := string()
-%% }
--type delete_index_field_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_endpoint() :: #{
-%%   <<"Endpoint">> => string()
-%% }
--type service_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domain_endpoint_options_response() :: #{
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status()
-%% }
--type describe_domain_endpoint_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_availability_options_response() :: #{
-%%   <<"AvailabilityOptions">> => availability_options_status()
-%% }
--type update_availability_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domains_request() :: #{
-%%   <<"DomainNames">> => list(string())
-%% }
--type describe_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% int_options() :: #{
-%%   <<"DefaultValue">> => float(),
-%%   <<"FacetEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SearchEnabled">> => boolean(),
-%%   <<"SortEnabled">> => boolean(),
-%%   <<"SourceField">> => string()
-%% }
--type int_options() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_field_response() :: #{
-%%   <<"IndexField">> => index_field_status()
-%% }
--type delete_index_field_response() :: #{binary() => any()}.
-
-%% Example:
-%% define_suggester_response() :: #{
-%%   <<"Suggester">> => suggester_status()
-%% }
--type define_suggester_response() :: #{binary() => any()}.
-
-%% Example:
-%% disabled_operation_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type disabled_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_parameters() :: #{
-%%   <<"DesiredInstanceType">> => list(any()),
-%%   <<"DesiredPartitionCount">> => integer(),
-%%   <<"DesiredReplicationCount">> => integer()
-%% }
--type scaling_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% define_index_field_response() :: #{
-%%   <<"IndexField">> => index_field_status()
-%% }
--type define_index_field_response() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_parameters_status() :: #{
-%%   <<"Options">> => scaling_parameters(),
-%%   <<"Status">> => option_status()
-%% }
--type scaling_parameters_status() :: #{binary() => any()}.
-
-%% Example:
-%% text_options() :: #{
-%%   <<"AnalysisScheme">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"HighlightEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SortEnabled">> => boolean(),
-%%   <<"SourceField">> => string()
-%% }
--type text_options() :: #{binary() => any()}.
-
-%% Example:
-%% describe_suggesters_response() :: #{
-%%   <<"Suggesters">> => list(suggester_status())
-%% }
--type describe_suggesters_response() :: #{binary() => any()}.
-
-%% Example:
 %% analysis_scheme() :: #{
 %%   <<"AnalysisOptions">> => analysis_options(),
 %%   <<"AnalysisSchemeLanguage">> => list(any()),
@@ -277,45 +101,11 @@
 -type analysis_scheme() :: #{binary() => any()}.
 
 %% Example:
-%% update_domain_endpoint_options_request() :: #{
-%%   <<"DomainEndpointOptions">> := domain_endpoint_options(),
-%%   <<"DomainName">> := string()
-%% }
--type update_domain_endpoint_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_access_policies_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string()
-%% }
--type describe_service_access_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% define_analysis_scheme_request() :: #{
-%%   <<"AnalysisScheme">> := analysis_scheme(),
-%%   <<"DomainName">> := string()
-%% }
--type define_analysis_scheme_request() :: #{binary() => any()}.
-
-%% Example:
-%% suggester_status() :: #{
-%%   <<"Options">> => suggester(),
+%% analysis_scheme_status() :: #{
+%%   <<"Options">> => analysis_scheme(),
 %%   <<"Status">> => option_status()
 %% }
--type suggester_status() :: #{binary() => any()}.
-
-%% Example:
-%% suggester() :: #{
-%%   <<"DocumentSuggesterOptions">> => document_suggester_options(),
-%%   <<"SuggesterName">> => string()
-%% }
--type suggester() :: #{binary() => any()}.
+-type analysis_scheme_status() :: #{binary() => any()}.
 
 %% Example:
 %% availability_options_status() :: #{
@@ -325,11 +115,23 @@
 -type availability_options_status() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% base_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type base_exception() :: #{binary() => any()}.
+
+%% Example:
+%% build_suggesters_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type build_suggesters_request() :: #{binary() => any()}.
+
+%% Example:
+%% build_suggesters_response() :: #{
+%%   <<"FieldNames">> => list(string())
+%% }
+-type build_suggesters_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_domain_request() :: #{
@@ -338,31 +140,57 @@
 -type create_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% option_status() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"PendingDeletion">> => boolean(),
-%%   <<"State">> => list(any()),
-%%   <<"UpdateDate">> => non_neg_integer(),
-%%   <<"UpdateVersion">> => integer()
+%% create_domain_response() :: #{
+%%   <<"DomainStatus">> => domain_status()
 %% }
--type option_status() :: #{binary() => any()}.
+-type create_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% double_options() :: #{
-%%   <<"DefaultValue">> => float(),
+%% date_array_options() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"FacetEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SearchEnabled">> => boolean(),
+%%   <<"SourceFields">> => string()
+%% }
+-type date_array_options() :: #{binary() => any()}.
+
+%% Example:
+%% date_options() :: #{
+%%   <<"DefaultValue">> => string(),
 %%   <<"FacetEnabled">> => boolean(),
 %%   <<"ReturnEnabled">> => boolean(),
 %%   <<"SearchEnabled">> => boolean(),
 %%   <<"SortEnabled">> => boolean(),
 %%   <<"SourceField">> => string()
 %% }
--type double_options() :: #{binary() => any()}.
+-type date_options() :: #{binary() => any()}.
 
 %% Example:
-%% update_domain_endpoint_options_response() :: #{
-%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status()
+%% define_analysis_scheme_request() :: #{
+%%   <<"AnalysisScheme">> := analysis_scheme(),
+%%   <<"DomainName">> := string()
 %% }
--type update_domain_endpoint_options_response() :: #{binary() => any()}.
+-type define_analysis_scheme_request() :: #{binary() => any()}.
+
+%% Example:
+%% define_analysis_scheme_response() :: #{
+%%   <<"AnalysisScheme">> => analysis_scheme_status()
+%% }
+-type define_analysis_scheme_response() :: #{binary() => any()}.
+
+%% Example:
+%% define_expression_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Expression">> := expression()
+%% }
+-type define_expression_request() :: #{binary() => any()}.
+
+%% Example:
+%% define_expression_response() :: #{
+%%   <<"Expression">> => expression_status()
+%% }
+-type define_expression_response() :: #{binary() => any()}.
 
 %% Example:
 %% define_index_field_request() :: #{
@@ -372,24 +200,10 @@
 -type define_index_field_request() :: #{binary() => any()}.
 
 %% Example:
-%% index_documents_response() :: #{
-%%   <<"FieldNames">> => list(string())
+%% define_index_field_response() :: #{
+%%   <<"IndexField">> => index_field_status()
 %% }
--type index_documents_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_scaling_parameters_response() :: #{
-%%   <<"ScalingParameters">> => scaling_parameters_status()
-%% }
--type update_scaling_parameters_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_fields_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string(),
-%%   <<"FieldNames">> => list(string())
-%% }
--type describe_index_fields_request() :: #{binary() => any()}.
+-type define_index_field_response() :: #{binary() => any()}.
 
 %% Example:
 %% define_suggester_request() :: #{
@@ -399,63 +213,17 @@
 -type define_suggester_request() :: #{binary() => any()}.
 
 %% Example:
-%% lat_lon_options() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"FacetEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SearchEnabled">> => boolean(),
-%%   <<"SortEnabled">> => boolean(),
-%%   <<"SourceField">> => string()
+%% define_suggester_response() :: #{
+%%   <<"Suggester">> => suggester_status()
 %% }
--type lat_lon_options() :: #{binary() => any()}.
+-type define_suggester_response() :: #{binary() => any()}.
 
 %% Example:
-%% int_array_options() :: #{
-%%   <<"DefaultValue">> => float(),
-%%   <<"FacetEnabled">> => boolean(),
-%%   <<"ReturnEnabled">> => boolean(),
-%%   <<"SearchEnabled">> => boolean(),
-%%   <<"SourceFields">> => string()
-%% }
--type int_array_options() :: #{binary() => any()}.
-
-%% Example:
-%% describe_suggesters_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string(),
-%%   <<"SuggesterNames">> => list(string())
-%% }
--type describe_suggesters_request() :: #{binary() => any()}.
-
-%% Example:
-%% index_documents_request() :: #{
+%% delete_analysis_scheme_request() :: #{
+%%   <<"AnalysisSchemeName">> := string(),
 %%   <<"DomainName">> := string()
 %% }
--type index_documents_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_domain_names_response() :: #{
-%%   <<"DomainNames">> => map()
-%% }
--type list_domain_names_response() :: #{binary() => any()}.
-
-%% Example:
-%% index_field() :: #{
-%%   <<"DateArrayOptions">> => date_array_options(),
-%%   <<"DateOptions">> => date_options(),
-%%   <<"DoubleArrayOptions">> => double_array_options(),
-%%   <<"DoubleOptions">> => double_options(),
-%%   <<"IndexFieldName">> => string(),
-%%   <<"IndexFieldType">> => list(any()),
-%%   <<"IntArrayOptions">> => int_array_options(),
-%%   <<"IntOptions">> => int_options(),
-%%   <<"LatLonOptions">> => lat_lon_options(),
-%%   <<"LiteralArrayOptions">> => literal_array_options(),
-%%   <<"LiteralOptions">> => literal_options(),
-%%   <<"TextArrayOptions">> => text_array_options(),
-%%   <<"TextOptions">> => text_options()
-%% }
--type index_field() :: #{binary() => any()}.
+-type delete_analysis_scheme_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_analysis_scheme_response() :: #{
@@ -464,10 +232,55 @@
 -type delete_analysis_scheme_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_domain_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"DomainStatus">> => domain_status()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_expression_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"ExpressionName">> := string()
+%% }
+-type delete_expression_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_expression_response() :: #{
 %%   <<"Expression">> => expression_status()
 %% }
 -type delete_expression_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_field_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"IndexFieldName">> := string()
+%% }
+-type delete_index_field_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_field_response() :: #{
+%%   <<"IndexField">> => index_field_status()
+%% }
+-type delete_index_field_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_suggester_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"SuggesterName">> := string()
+%% }
+-type delete_suggester_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_suggester_response() :: #{
+%%   <<"Suggester">> => suggester_status()
+%% }
+-type delete_suggester_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_analysis_schemes_request() :: #{
@@ -478,10 +291,144 @@
 -type describe_analysis_schemes_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_analysis_schemes_response() :: #{
+%%   <<"AnalysisSchemes">> => list(analysis_scheme_status())
+%% }
+-type describe_analysis_schemes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_options_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string()
+%% }
+-type describe_availability_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_availability_options_response() :: #{
+%%   <<"AvailabilityOptions">> => availability_options_status()
+%% }
+-type describe_availability_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_endpoint_options_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string()
+%% }
+-type describe_domain_endpoint_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_endpoint_options_response() :: #{
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status()
+%% }
+-type describe_domain_endpoint_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domains_request() :: #{
+%%   <<"DomainNames">> => list(string())
+%% }
+-type describe_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domains_response() :: #{
+%%   <<"DomainStatusList">> => list(domain_status())
+%% }
+-type describe_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_expressions_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string(),
+%%   <<"ExpressionNames">> => list(string())
+%% }
+-type describe_expressions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_expressions_response() :: #{
+%%   <<"Expressions">> => list(expression_status())
+%% }
+-type describe_expressions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_fields_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string(),
+%%   <<"FieldNames">> => list(string())
+%% }
+-type describe_index_fields_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_fields_response() :: #{
+%%   <<"IndexFields">> => list(index_field_status())
+%% }
+-type describe_index_fields_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_scaling_parameters_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
 -type describe_scaling_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_parameters_response() :: #{
+%%   <<"ScalingParameters">> => scaling_parameters_status()
+%% }
+-type describe_scaling_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_access_policies_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string()
+%% }
+-type describe_service_access_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_access_policies_response() :: #{
+%%   <<"AccessPolicies">> => access_policies_status()
+%% }
+-type describe_service_access_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_suggesters_request() :: #{
+%%   <<"Deployed">> => boolean(),
+%%   <<"DomainName">> := string(),
+%%   <<"SuggesterNames">> => list(string())
+%% }
+-type describe_suggesters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_suggesters_response() :: #{
+%%   <<"Suggesters">> => list(suggester_status())
+%% }
+-type describe_suggesters_response() :: #{binary() => any()}.
+
+%% Example:
+%% disabled_operation_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type disabled_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% document_suggester_options() :: #{
+%%   <<"FuzzyMatching">> => list(any()),
+%%   <<"SortExpression">> => string(),
+%%   <<"SourceField">> => string()
+%% }
+-type document_suggester_options() :: #{binary() => any()}.
+
+%% Example:
+%% domain_endpoint_options() :: #{
+%%   <<"EnforceHTTPS">> => boolean(),
+%%   <<"TLSSecurityPolicy">> => list(any())
+%% }
+-type domain_endpoint_options() :: #{binary() => any()}.
+
+%% Example:
+%% domain_endpoint_options_status() :: #{
+%%   <<"Options">> => domain_endpoint_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type domain_endpoint_options_status() :: #{binary() => any()}.
 
 %% Example:
 %% domain_status() :: #{
@@ -512,89 +459,15 @@
 -type double_array_options() :: #{binary() => any()}.
 
 %% Example:
-%% describe_expressions_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string(),
-%%   <<"ExpressionNames">> => list(string())
-%% }
--type describe_expressions_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_type_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type invalid_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% date_options() :: #{
-%%   <<"DefaultValue">> => string(),
+%% double_options() :: #{
+%%   <<"DefaultValue">> => float(),
 %%   <<"FacetEnabled">> => boolean(),
 %%   <<"ReturnEnabled">> => boolean(),
 %%   <<"SearchEnabled">> => boolean(),
 %%   <<"SortEnabled">> => boolean(),
 %%   <<"SourceField">> => string()
 %% }
--type date_options() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_access_policies_response() :: #{
-%%   <<"AccessPolicies">> => access_policies_status()
-%% }
--type describe_service_access_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% define_expression_response() :: #{
-%%   <<"Expression">> => expression_status()
-%% }
--type define_expression_response() :: #{binary() => any()}.
-
-%% Example:
-%% build_suggesters_response() :: #{
-%%   <<"FieldNames">> => list(string())
-%% }
--type build_suggesters_response() :: #{binary() => any()}.
-
-%% Example:
-%% index_field_status() :: #{
-%%   <<"Options">> => index_field(),
-%%   <<"Status">> => option_status()
-%% }
--type index_field_status() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_scaling_parameters_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"ScalingParameters">> := scaling_parameters()
-%% }
--type update_scaling_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_domain_response() :: #{
-%%   <<"DomainStatus">> => domain_status()
-%% }
--type create_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% base_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type base_exception() :: #{binary() => any()}.
+-type double_options() :: #{binary() => any()}.
 
 %% Example:
 %% expression() :: #{
@@ -604,6 +477,103 @@
 -type expression() :: #{binary() => any()}.
 
 %% Example:
+%% expression_status() :: #{
+%%   <<"Options">> => expression(),
+%%   <<"Status">> => option_status()
+%% }
+-type expression_status() :: #{binary() => any()}.
+
+%% Example:
+%% index_documents_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type index_documents_request() :: #{binary() => any()}.
+
+%% Example:
+%% index_documents_response() :: #{
+%%   <<"FieldNames">> => list(string())
+%% }
+-type index_documents_response() :: #{binary() => any()}.
+
+%% Example:
+%% index_field() :: #{
+%%   <<"DateArrayOptions">> => date_array_options(),
+%%   <<"DateOptions">> => date_options(),
+%%   <<"DoubleArrayOptions">> => double_array_options(),
+%%   <<"DoubleOptions">> => double_options(),
+%%   <<"IndexFieldName">> => string(),
+%%   <<"IndexFieldType">> => list(any()),
+%%   <<"IntArrayOptions">> => int_array_options(),
+%%   <<"IntOptions">> => int_options(),
+%%   <<"LatLonOptions">> => lat_lon_options(),
+%%   <<"LiteralArrayOptions">> => literal_array_options(),
+%%   <<"LiteralOptions">> => literal_options(),
+%%   <<"TextArrayOptions">> => text_array_options(),
+%%   <<"TextOptions">> => text_options()
+%% }
+-type index_field() :: #{binary() => any()}.
+
+%% Example:
+%% index_field_status() :: #{
+%%   <<"Options">> => index_field(),
+%%   <<"Status">> => option_status()
+%% }
+-type index_field_status() :: #{binary() => any()}.
+
+%% Example:
+%% int_array_options() :: #{
+%%   <<"DefaultValue">> => float(),
+%%   <<"FacetEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SearchEnabled">> => boolean(),
+%%   <<"SourceFields">> => string()
+%% }
+-type int_array_options() :: #{binary() => any()}.
+
+%% Example:
+%% int_options() :: #{
+%%   <<"DefaultValue">> => float(),
+%%   <<"FacetEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SearchEnabled">> => boolean(),
+%%   <<"SortEnabled">> => boolean(),
+%%   <<"SourceField">> => string()
+%% }
+-type int_options() :: #{binary() => any()}.
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_type_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lat_lon_options() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"FacetEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SearchEnabled">> => boolean(),
+%%   <<"SortEnabled">> => boolean(),
+%%   <<"SourceField">> => string()
+%% }
+-type lat_lon_options() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% limits() :: #{
 %%   <<"MaximumPartitionCount">> := integer(),
 %%   <<"MaximumReplicationCount">> := integer()
@@ -611,10 +581,20 @@
 -type limits() :: #{binary() => any()}.
 
 %% Example:
-%% build_suggesters_request() :: #{
-%%   <<"DomainName">> := string()
+%% list_domain_names_response() :: #{
+%%   <<"DomainNames">> => map()
 %% }
--type build_suggesters_request() :: #{binary() => any()}.
+-type list_domain_names_response() :: #{binary() => any()}.
+
+%% Example:
+%% literal_array_options() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"FacetEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SearchEnabled">> => boolean(),
+%%   <<"SourceFields">> => string()
+%% }
+-type literal_array_options() :: #{binary() => any()}.
 
 %% Example:
 %% literal_options() :: #{
@@ -628,64 +608,14 @@
 -type literal_options() :: #{binary() => any()}.
 
 %% Example:
-%% describe_index_fields_response() :: #{
-%%   <<"IndexFields">> => list(index_field_status())
+%% option_status() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"PendingDeletion">> => boolean(),
+%%   <<"State">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer(),
+%%   <<"UpdateVersion">> => integer()
 %% }
--type describe_index_fields_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_domains_response() :: #{
-%%   <<"DomainStatusList">> => list(domain_status())
-%% }
--type describe_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_availability_options_request() :: #{
-%%   <<"Deployed">> => boolean(),
-%%   <<"DomainName">> := string()
-%% }
--type describe_availability_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_expressions_response() :: #{
-%%   <<"Expressions">> => list(expression_status())
-%% }
--type describe_expressions_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_availability_options_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"MultiAZ">> := boolean()
-%% }
--type update_availability_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_endpoint_options_status() :: #{
-%%   <<"Options">> => domain_endpoint_options(),
-%%   <<"Status">> => option_status()
-%% }
--type domain_endpoint_options_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_suggester_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"SuggesterName">> := string()
-%% }
--type delete_suggester_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_policies_status() :: #{
-%%   <<"Options">> => string(),
-%%   <<"Status">> => option_status()
-%% }
--type access_policies_status() :: #{binary() => any()}.
+-type option_status() :: #{binary() => any()}.
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -695,10 +625,113 @@
 -type resource_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_availability_options_response() :: #{
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_parameters() :: #{
+%%   <<"DesiredInstanceType">> => list(any()),
+%%   <<"DesiredPartitionCount">> => integer(),
+%%   <<"DesiredReplicationCount">> => integer()
+%% }
+-type scaling_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_parameters_status() :: #{
+%%   <<"Options">> => scaling_parameters(),
+%%   <<"Status">> => option_status()
+%% }
+-type scaling_parameters_status() :: #{binary() => any()}.
+
+%% Example:
+%% service_endpoint() :: #{
+%%   <<"Endpoint">> => string()
+%% }
+-type service_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% suggester() :: #{
+%%   <<"DocumentSuggesterOptions">> => document_suggester_options(),
+%%   <<"SuggesterName">> => string()
+%% }
+-type suggester() :: #{binary() => any()}.
+
+%% Example:
+%% suggester_status() :: #{
+%%   <<"Options">> => suggester(),
+%%   <<"Status">> => option_status()
+%% }
+-type suggester_status() :: #{binary() => any()}.
+
+%% Example:
+%% text_array_options() :: #{
+%%   <<"AnalysisScheme">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"HighlightEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SourceFields">> => string()
+%% }
+-type text_array_options() :: #{binary() => any()}.
+
+%% Example:
+%% text_options() :: #{
+%%   <<"AnalysisScheme">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"HighlightEnabled">> => boolean(),
+%%   <<"ReturnEnabled">> => boolean(),
+%%   <<"SortEnabled">> => boolean(),
+%%   <<"SourceField">> => string()
+%% }
+-type text_options() :: #{binary() => any()}.
+
+%% Example:
+%% update_availability_options_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"MultiAZ">> := boolean()
+%% }
+-type update_availability_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_availability_options_response() :: #{
 %%   <<"AvailabilityOptions">> => availability_options_status()
 %% }
--type describe_availability_options_response() :: #{binary() => any()}.
+-type update_availability_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_endpoint_options_request() :: #{
+%%   <<"DomainEndpointOptions">> := domain_endpoint_options(),
+%%   <<"DomainName">> := string()
+%% }
+-type update_domain_endpoint_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_endpoint_options_response() :: #{
+%%   <<"DomainEndpointOptions">> => domain_endpoint_options_status()
+%% }
+-type update_domain_endpoint_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_scaling_parameters_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"ScalingParameters">> := scaling_parameters()
+%% }
+-type update_scaling_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scaling_parameters_response() :: #{
+%%   <<"ScalingParameters">> => scaling_parameters_status()
+%% }
+-type update_scaling_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_access_policies_request() :: #{
+%%   <<"AccessPolicies">> := string(),
+%%   <<"DomainName">> := string()
+%% }
+-type update_service_access_policies_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_access_policies_response() :: #{
@@ -707,213 +740,180 @@
 -type update_service_access_policies_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_analysis_scheme_request() :: #{
-%%   <<"AnalysisSchemeName">> := string(),
-%%   <<"DomainName">> := string()
+%% validation_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
 %% }
--type delete_analysis_scheme_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_suggester_response() :: #{
-%%   <<"Suggester">> => suggester_status()
-%% }
--type delete_suggester_response() :: #{binary() => any()}.
-
-%% Example:
-%% define_expression_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"Expression">> := expression()
-%% }
--type define_expression_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scaling_parameters_response() :: #{
-%%   <<"ScalingParameters">> => scaling_parameters_status()
-%% }
--type describe_scaling_parameters_response() :: #{binary() => any()}.
-
-%% Example:
-%% domain_endpoint_options() :: #{
-%%   <<"EnforceHTTPS">> => boolean(),
-%%   <<"TLSSecurityPolicy">> => list(any())
-%% }
--type domain_endpoint_options() :: #{binary() => any()}.
-
-%% Example:
-%% analysis_scheme_status() :: #{
-%%   <<"Options">> => analysis_scheme(),
-%%   <<"Status">> => option_status()
-%% }
--type analysis_scheme_status() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type build_suggesters_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type create_domain_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    base_exception() | 
-    validation_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type define_analysis_scheme_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type define_expression_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type define_index_field_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type define_suggester_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_analysis_scheme_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_domain_errors() ::
-    base_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_expression_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_index_field_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type delete_suggester_errors() ::
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type describe_analysis_schemes_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_availability_options_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
-    internal_exception() | 
-    invalid_type_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_type_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_domain_endpoint_options_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type describe_domains_errors() ::
-    base_exception() | 
-    internal_exception().
+    internal_exception() | 
+    base_exception().
 
 -type describe_expressions_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_index_fields_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_scaling_parameters_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_service_access_policies_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type describe_suggesters_errors() ::
-    base_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type index_documents_errors() ::
-    base_exception() | 
     validation_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    base_exception().
 
 -type list_domain_names_errors() ::
     base_exception().
 
 -type update_availability_options_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    invalid_type_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_type_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type update_domain_endpoint_options_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
-    invalid_type_exception() | 
     resource_not_found_exception() | 
-    disabled_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_type_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
+    base_exception().
 
 -type update_scaling_parameters_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 -type update_service_access_policies_errors() ::
-    limit_exceeded_exception() | 
-    base_exception() | 
     validation_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_type_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    base_exception().
 
 %%====================================================================
 %% API

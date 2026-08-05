@@ -64,58 +64,10 @@
 
 
 %% Example:
-%% batch_remove_role_output() :: #{
-%%   <<"errors">> => list(batch_error()),
-%%   <<"removedAccessorIds">> => list(string())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type batch_remove_role_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_remove_channel_role_from_accessors_input() :: #{
-%%   <<"accessorIds">> := list(string()),
-%%   <<"channelRole">> := list(any())
-%% }
--type batch_remove_channel_role_from_accessors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_admin_input() :: #{}
--type register_admin_input() :: #{}.
-
-
-%% Example:
-%% list_spaces_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"spaces">> => list(space_data())
-%% }
--type list_spaces_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_remove_role_input() :: #{
-%%   <<"accessorIds">> := list(string()),
-%%   <<"role">> := list(any())
-%% }
--type batch_remove_role_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% batch_add_channel_role_to_accessors_output() :: #{
-%%   <<"addedAccessorIds">> => list(string()),
-%%   <<"errors">> => list(batch_error())
-%% }
--type batch_add_channel_role_to_accessors_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -127,11 +79,68 @@
 
 
 %% Example:
-%% supported_email_domains_status() :: #{
-%%   <<"allowedDomains">> => list(string()),
-%%   <<"enabled">> => list(any())
+%% batch_add_channel_role_to_accessors_output() :: #{
+%%   <<"addedAccessorIds">> => list(string()),
+%%   <<"errors">> => list(batch_error())
 %% }
--type supported_email_domains_status() :: #{binary() => any()}.
+-type batch_add_channel_role_to_accessors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_role_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"role">> := list(any())
+%% }
+-type batch_add_role_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_role_output() :: #{
+%%   <<"addedAccessorIds">> => list(string()),
+%%   <<"errors">> => list(batch_error())
+%% }
+-type batch_add_role_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_error() :: #{
+%%   <<"accessorId">> => string(),
+%%   <<"error">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type batch_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_channel_role_from_accessors_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"channelRole">> := list(any())
+%% }
+-type batch_remove_channel_role_from_accessors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_channel_role_from_accessors_output() :: #{
+%%   <<"errors">> => list(batch_error()),
+%%   <<"removedAccessorIds">> => list(string())
+%% }
+-type batch_remove_channel_role_from_accessors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_role_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"role">> := list(any())
+%% }
+-type batch_remove_role_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_role_output() :: #{
+%%   <<"errors">> => list(batch_error()),
+%%   <<"removedAccessorIds">> => list(string())
+%% }
+-type batch_remove_role_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -150,30 +159,27 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_space_input() :: #{}
--type get_space_input() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_channels_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
+%% create_channel_input() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelName">> := string()
 %% }
--type list_channels_input() :: #{binary() => any()}.
+-type create_channel_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_channels_output() :: #{
-%%   <<"channels">> => list(channel_data()),
-%%   <<"nextToken">> => [string()]
+%% create_channel_output() :: #{
+%%   <<"channelId">> => string()
 %% }
--type list_channels_output() :: #{binary() => any()}.
+-type create_channel_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -191,77 +197,22 @@
 
 
 %% Example:
-%% update_channel_input() :: #{
-%%   <<"channelDescription">> => string(),
-%%   <<"channelName">> := string()
+%% create_space_output() :: #{
+%%   <<"spaceId">> => string()
 %% }
--type update_channel_input() :: #{binary() => any()}.
-
+-type create_space_output() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
+%% delete_space_input() :: #{}
+-type delete_space_input() :: #{}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
+%% deregister_admin_input() :: #{}
+-type deregister_admin_input() :: #{}.
 
 %% Example:
-%% update_space_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"supportedEmailDomains">> => supported_email_domains_parameters(),
-%%   <<"tier">> => list(any())
-%% }
--type update_space_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_output() :: #{
-%%   <<"channelId">> => string()
-%% }
--type create_channel_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_remove_channel_role_from_accessors_output() :: #{
-%%   <<"errors">> => list(batch_error()),
-%%   <<"removedAccessorIds">> => list(string())
-%% }
--type batch_remove_channel_role_from_accessors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% space_data() :: #{
-%%   <<"arn">> => string(),
-%%   <<"configurationStatus">> => list(any()),
-%%   <<"contentSize">> => float(),
-%%   <<"createDateTime">> => [non_neg_integer()],
-%%   <<"deleteDateTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"randomDomain">> => string(),
-%%   <<"spaceId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"storageLimit">> => float(),
-%%   <<"supportedEmailDomains">> => supported_email_domains_status(),
-%%   <<"tier">> => list(any()),
-%%   <<"userCount">> => integer(),
-%%   <<"userKMSKey">> => string(),
-%%   <<"vanityDomain">> => string(),
-%%   <<"vanityDomainStatus">> => list(any())
-%% }
--type space_data() :: #{binary() => any()}.
+%% get_channel_input() :: #{}
+-type get_channel_input() :: #{}.
 
 
 %% Example:
@@ -277,29 +228,9 @@
 %% }
 -type get_channel_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_space_input() :: #{}
--type delete_space_input() :: #{}.
-
-
-%% Example:
-%% send_invites_input() :: #{
-%%   <<"accessorIds">> := list(string()),
-%%   <<"body">> := string(),
-%%   <<"title">> := string()
-%% }
--type send_invites_input() :: #{binary() => any()}.
+%% get_space_input() :: #{}
+-type get_space_input() :: #{}.
 
 
 %% Example:
@@ -333,34 +264,27 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_add_role_output() :: #{
-%%   <<"addedAccessorIds">> => list(string()),
-%%   <<"errors">> => list(batch_error())
+%% list_channels_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
 %% }
--type batch_add_role_output() :: #{binary() => any()}.
+-type list_channels_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_channel_input() :: #{
-%%   <<"channelDescription">> => string(),
-%%   <<"channelName">> := string()
+%% list_channels_output() :: #{
+%%   <<"channels">> => list(channel_data()),
+%%   <<"nextToken">> => [string()]
 %% }
--type create_channel_input() :: #{binary() => any()}.
+-type list_channels_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -372,62 +296,105 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%% list_spaces_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"spaces">> => list(space_data())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_channel_output() :: #{}
--type update_channel_output() :: #{}.
-
-
-%% Example:
-%% create_space_output() :: #{
-%%   <<"spaceId">> => string()
-%% }
--type create_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_admin_input() :: #{}
--type deregister_admin_input() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% batch_add_role_input() :: #{
-%%   <<"accessorIds">> := list(string()),
-%%   <<"role">> := list(any())
-%% }
--type batch_add_role_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type list_spaces_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
 
+
 %% Example:
-%% get_channel_input() :: #{}
--type get_channel_input() :: #{}.
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_admin_input() :: #{}
+-type register_admin_input() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_invites_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"body">> := string(),
+%%   <<"title">> := string()
+%% }
+-type send_invites_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% space_data() :: #{
+%%   <<"arn">> => string(),
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"contentSize">> => float(),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"randomDomain">> => string(),
+%%   <<"spaceId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storageLimit">> => float(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_status(),
+%%   <<"tier">> => list(any()),
+%%   <<"userCount">> => integer(),
+%%   <<"userKMSKey">> => string(),
+%%   <<"vanityDomain">> => string(),
+%%   <<"vanityDomainStatus">> => list(any())
+%% }
+-type space_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% supported_email_domains_parameters() :: #{
+%%   <<"allowedDomains">> => list(string()),
+%%   <<"enabled">> => list(any())
+%% }
+-type supported_email_domains_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% supported_email_domains_status() :: #{
+%%   <<"allowedDomains">> => list(string()),
+%%   <<"enabled">> => list(any())
+%% }
+-type supported_email_domains_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -441,157 +408,190 @@
 
 
 %% Example:
-%% supported_email_domains_parameters() :: #{
-%%   <<"allowedDomains">> => list(string()),
-%%   <<"enabled">> => list(any())
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type supported_email_domains_parameters() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% batch_error() :: #{
-%%   <<"accessorId">> => string(),
-%%   <<"error">> => integer(),
-%%   <<"message">> => string()
+%% update_channel_input() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelName">> := string()
 %% }
--type batch_error() :: #{binary() => any()}.
+-type update_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_output() :: #{}
+-type update_channel_output() :: #{}.
+
+
+%% Example:
+%% update_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_parameters(),
+%%   <<"tier">> => list(any())
+%% }
+-type update_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type batch_add_channel_role_to_accessors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_add_role_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_remove_channel_role_from_accessors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_remove_role_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type deregister_admin_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_spaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_admin_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type send_invites_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_space_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

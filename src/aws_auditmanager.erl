@@ -211,155 +211,50 @@
 
 
 %% Example:
-%% update_assessment_response() :: #{
-%%   <<"assessment">> => assessment()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_assessment_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% framework_metadata() :: #{
-%%   <<"complianceType">> => string(),
+%% assessment() :: #{
+%%   <<"arn">> => string(),
+%%   <<"awsAccount">> => aws_account(),
+%%   <<"framework">> => assessment_framework(),
+%%   <<"metadata">> => assessment_metadata(),
+%%   <<"tags">> => map()
+%% }
+-type assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_control() :: #{
+%%   <<"assessmentReportEvidenceCount">> => integer(),
+%%   <<"comments">> => list(control_comment()),
 %%   <<"description">> => string(),
-%%   <<"logo">> => string(),
-%%   <<"name">> => string()
-%% }
--type framework_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessments_response() :: #{
-%%   <<"assessmentMetadata">> => list(assessment_metadata_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_delegations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_delegations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_control_response() :: #{
-%%   <<"control">> => control()
-%% }
--type update_control_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_domain_insights() :: #{
-%%   <<"controlsCountByNoncompliantEvidence">> => integer(),
-%%   <<"evidenceInsights">> => evidence_insights(),
+%%   <<"evidenceCount">> => integer(),
+%%   <<"evidenceSources">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"lastUpdated">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"totalControlsCount">> => integer()
-%% }
--type control_domain_insights() :: #{binary() => any()}.
-
-%% Example:
-%% get_settings_request() :: #{}
--type get_settings_request() :: #{}.
-
-%% Example:
-%% get_insights_request() :: #{}
--type get_insights_request() :: #{}.
-
-
-%% Example:
-%% aws_account() :: #{
-%%   <<"emailAddress">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type aws_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_framework_share_request() :: #{
-%%   <<"action">> := list(any()),
-%%   <<"requestType">> := list(any())
-%% }
--type update_assessment_framework_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_delegation_by_assessment_response() :: #{
-%%   <<"errors">> => list(batch_delete_delegation_by_assessment_error())
-%% }
--type batch_delete_delegation_by_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_control_response() :: #{}
--type delete_control_response() :: #{}.
-
-%% Example:
-%% delete_assessment_framework_response() :: #{}
--type delete_assessment_framework_response() :: #{}.
-
-
-%% Example:
-%% create_assessment_report_response() :: #{
-%%   <<"assessmentReport">> => assessment_report()
-%% }
--type create_assessment_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assessment_response() :: #{
-%%   <<"assessment">> => assessment()
-%% }
--type create_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_framework_request() :: #{}
--type delete_assessment_framework_request() :: #{}.
-
-
-%% Example:
-%% list_assessment_reports_response() :: #{
-%%   <<"assessmentReports">> => list(assessment_report_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_reports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_by_evidence_folder_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_evidence_by_evidence_folder_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"notifications">> => list(notification())
-%% }
--type list_notifications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_account_response() :: #{
+%%   <<"response">> => list(any()),
 %%   <<"status">> => list(any())
 %% }
--type register_account_response() :: #{binary() => any()}.
+-type assessment_control() :: #{binary() => any()}.
+
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% assessment_control_set() :: #{
+%%   <<"controls">> => list(assessment_control()),
+%%   <<"delegations">> => list(delegation()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"manualEvidenceCount">> => integer(),
+%%   <<"roles">> => list(role()),
+%%   <<"status">> => list(any()),
+%%   <<"systemEvidenceCount">> => integer()
+%% }
+-type assessment_control_set() :: #{binary() => any()}.
 
 
 %% Example:
@@ -387,878 +282,13 @@
 
 
 %% Example:
-%% register_account_request() :: #{
-%%   <<"delegatedAdminAccount">> => string(),
-%%   <<"kmsKey">> => string()
-%% }
--type register_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_account_request() :: #{}
--type deregister_account_request() :: #{}.
-
-
-%% Example:
-%% assessment_reports_destination() :: #{
-%%   <<"destination">> => string(),
-%%   <<"destinationType">> => list(any())
-%% }
--type assessment_reports_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_insights_by_control_domain_request() :: #{
-%%   <<"controlDomainId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_insights_by_control_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_set() :: #{
-%%   <<"controls">> => list(control()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type control_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_folders_by_assessment_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_evidence_folders_by_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assessment_framework_control() :: #{
-%%   <<"id">> => string()
-%% }
--type create_assessment_framework_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregistration_policy() :: #{
-%%   <<"deleteResources">> => list(any())
-%% }
--type deregistration_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_metadata() :: #{
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"name">> => string()
-%% }
--type service_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_metadata_item() :: #{
-%%   <<"complianceType">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"delegations">> => list(delegation()),
-%%   <<"id">> => string(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"roles">> => list(role()),
-%%   <<"status">> => list(any())
-%% }
--type assessment_metadata_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_control_mapping_source() :: #{
-%%   <<"sourceDescription">> => string(),
-%%   <<"sourceFrequency">> => list(any()),
-%%   <<"sourceKeyword">> => source_keyword(),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceSetUpOption">> => list(any()),
-%%   <<"sourceType">> => list(any()),
-%%   <<"troubleshootingText">> => string()
-%% }
--type create_control_mapping_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% role() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"roleType">> => list(any())
-%% }
--type role() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_organization_admin_account_response() :: #{}
--type deregister_organization_admin_account_response() :: #{}.
-
-
-%% Example:
-%% update_settings_response() :: #{
-%%   <<"settings">> => settings()
-%% }
--type update_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_control_set_status_request() :: #{
-%%   <<"comment">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type update_assessment_control_set_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% control() :: #{
-%%   <<"actionPlanInstructions">> => string(),
-%%   <<"actionPlanTitle">> => string(),
+%% assessment_framework() :: #{
 %%   <<"arn">> => string(),
-%%   <<"controlMappingSources">> => list(control_mapping_source()),
-%%   <<"controlSources">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
+%%   <<"controlSets">> => list(assessment_control_set()),
 %%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"name">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"testingInformation">> => string(),
-%%   <<"type">> => list(any())
+%%   <<"metadata">> => framework_metadata()
 %% }
--type control() :: #{binary() => any()}.
-
-%% Example:
-%% get_control_request() :: #{}
--type get_control_request() :: #{}.
-
-
-%% Example:
-%% list_control_insights_by_control_domain_response() :: #{
-%%   <<"controlInsightsMetadata">> => list(control_insights_metadata_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_insights_by_control_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_assessment_framework_request() :: #{}
--type get_assessment_framework_request() :: #{}.
-
-
-%% Example:
-%% control_comment() :: #{
-%%   <<"authorName">> => string(),
-%%   <<"commentBody">> => string(),
-%%   <<"postedDate">> => non_neg_integer()
-%% }
--type control_comment() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_metadata() :: #{
-%%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
-%%   <<"complianceType">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"delegations">> => list(delegation()),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"roles">> => list(role()),
-%%   <<"scope">> => scope(),
-%%   <<"status">> => list(any())
-%% }
--type assessment_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_disassociate_assessment_report_evidence_request() :: #{
-%%   <<"evidenceFolderId">> := string(),
-%%   <<"evidenceIds">> := list(string())
-%% }
--type batch_disassociate_assessment_report_evidence_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_control() :: #{
-%%   <<"assessmentReportEvidenceCount">> => integer(),
-%%   <<"comments">> => list(control_comment()),
-%%   <<"description">> => string(),
-%%   <<"evidenceCount">> => integer(),
-%%   <<"evidenceSources">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"response">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type assessment_control() :: #{binary() => any()}.
-
-%% Example:
-%% get_insights_by_assessment_request() :: #{}
--type get_insights_by_assessment_request() :: #{}.
-
-
-%% Example:
-%% update_assessment_status_request() :: #{
-%%   <<"status">> := list(any())
-%% }
--type update_assessment_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% manual_evidence() :: #{
-%%   <<"evidenceFileName">> => string(),
-%%   <<"s3ResourcePath">> => string(),
-%%   <<"textResponse">> => string()
-%% }
--type manual_evidence() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_controls_response() :: #{
-%%   <<"controlMetadataList">> => list(control_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type list_controls_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_keywords_for_data_source_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"source">> := list(any())
-%% }
--type list_keywords_for_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_organization_admin_account_request() :: #{
-%%   <<"adminAccountId">> => string()
-%% }
--type deregister_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_assessment_report_evidence_request() :: #{
-%%   <<"evidenceFolderId">> := string(),
-%%   <<"evidenceIds">> := list(string())
-%% }
--type batch_associate_assessment_report_evidence_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assessment_framework_response() :: #{
-%%   <<"framework">> => framework()
-%% }
--type create_assessment_framework_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_domain_insights_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_domain_insights_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_evidence_folder_request() :: #{}
--type get_evidence_folder_request() :: #{}.
-
-
-%% Example:
-%% list_control_domain_insights_by_assessment_response() :: #{
-%%   <<"controlDomainInsights">> => list(control_domain_insights()),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_domain_insights_by_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assessment_framework_control_set() :: #{
-%%   <<"controls">> => list(create_assessment_framework_control()),
-%%   <<"name">> => string()
-%% }
--type create_assessment_framework_control_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_control_response() :: #{
-%%   <<"control">> => control()
-%% }
--type create_control_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_change_logs_response() :: #{
-%%   <<"changeLogs">> => list(change_log()),
-%%   <<"nextToken">> => string()
-%% }
--type get_change_logs_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_organization_admin_account_request() :: #{}
--type get_organization_admin_account_request() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_organization_admin_account_response() :: #{
-%%   <<"adminAccountId">> => string(),
-%%   <<"organizationId">> => string()
-%% }
--type get_organization_admin_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_delegation_by_assessment_request() :: #{
-%%   <<"createDelegationRequests">> := list(create_delegation_request())
-%% }
--type batch_create_delegation_by_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evidence_insights() :: #{
-%%   <<"compliantEvidenceCount">> => integer(),
-%%   <<"inconclusiveEvidenceCount">> => integer(),
-%%   <<"noncompliantEvidenceCount">> => integer()
-%% }
--type evidence_insights() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_service() :: #{
-%%   <<"serviceName">> => string()
-%% }
--type aws_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assessment_framework_request() :: #{
-%%   <<"complianceType">> => string(),
-%%   <<"controlSets">> := list(create_assessment_framework_control_set()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_assessment_framework_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessment_frameworks_response() :: #{
-%%   <<"frameworkMetadataList">> => list(assessment_framework_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_frameworks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_metadata() :: #{
-%%   <<"arn">> => string(),
-%%   <<"controlSources">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type control_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessment_framework_share_requests_response() :: #{
-%%   <<"assessmentFrameworkShareRequests">> => list(assessment_framework_share_request()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_framework_share_requests_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessment_control_insights_by_control_domain_response() :: #{
-%%   <<"controlInsightsByAssessment">> => list(control_insights_metadata_by_assessment_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_control_insights_by_control_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_control_set_status_response() :: #{
-%%   <<"controlSet">> => assessment_control_set()
-%% }
--type update_assessment_control_set_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_notifications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insights_by_assessment_response() :: #{
-%%   <<"insights">> => insights_by_assessment()
-%% }
--type get_insights_by_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_framework_request() :: #{
-%%   <<"complianceType">> => string(),
-%%   <<"controlSets">> := list(update_assessment_framework_control_set()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type update_assessment_framework_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_delegation_by_assessment_error() :: #{
-%%   <<"delegationId">> => string(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_delete_delegation_by_assessment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_assessment_framework_share_request() :: #{
-%%   <<"requestType">> := list(any())
-%% }
--type delete_assessment_framework_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_export_destination() :: #{
-%%   <<"destination">> => string(),
-%%   <<"destinationType">> => list(any())
-%% }
--type default_export_destination() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_report_request() :: #{}
--type delete_assessment_report_request() :: #{}.
-
-%% Example:
-%% associate_assessment_report_evidence_folder_response() :: #{}
--type associate_assessment_report_evidence_folder_response() :: #{}.
-
-
-%% Example:
-%% list_assessment_control_insights_by_control_domain_request() :: #{
-%%   <<"assessmentId">> := string(),
-%%   <<"controlDomainId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_control_insights_by_control_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_control_set() :: #{
-%%   <<"controls">> => list(assessment_control()),
-%%   <<"delegations">> => list(delegation()),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"manualEvidenceCount">> => integer(),
-%%   <<"roles">> => list(role()),
-%%   <<"status">> => list(any()),
-%%   <<"systemEvidenceCount">> => integer()
-%% }
--type assessment_control_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_report_evidence_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"evidenceId">> => string()
-%% }
--type assessment_report_evidence_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% settings() :: #{
-%%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
-%%   <<"defaultExportDestination">> => default_export_destination(),
-%%   <<"defaultProcessOwners">> => list(role()),
-%%   <<"deregistrationPolicy">> => deregistration_policy(),
-%%   <<"evidenceFinderEnablement">> => evidence_finder_enablement(),
-%%   <<"isAwsOrgEnabled">> => boolean(),
-%%   <<"kmsKey">> => string(),
-%%   <<"snsTopic">> => string()
-%% }
--type settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_services_in_scope_response() :: #{
-%%   <<"serviceMetadata">> => list(service_metadata())
-%% }
--type get_services_in_scope_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_assessments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_domain_insights_by_assessment_request() :: #{
-%%   <<"assessmentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_domain_insights_by_assessment_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_response() :: #{}
--type delete_assessment_response() :: #{}.
-
-
-%% Example:
-%% batch_associate_assessment_report_evidence_response() :: #{
-%%   <<"errors">> => list(assessment_report_evidence_error()),
-%%   <<"evidenceIds">> => list(string())
-%% }
--type batch_associate_assessment_report_evidence_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_settings_request() :: #{
-%%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
-%%   <<"defaultExportDestination">> => default_export_destination(),
-%%   <<"defaultProcessOwners">> => list(role()),
-%%   <<"deregistrationPolicy">> => deregistration_policy(),
-%%   <<"evidenceFinderEnabled">> => boolean(),
-%%   <<"kmsKey">> => string(),
-%%   <<"snsTopic">> => string()
-%% }
--type update_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_folders_by_assessment_control_response() :: #{
-%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
-%%   <<"nextToken">> => string()
-%% }
--type get_evidence_folders_by_assessment_control_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_change_logs_request() :: #{
-%%   <<"controlId">> => string(),
-%%   <<"controlSetId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_change_logs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_organization_admin_account_request() :: #{
-%%   <<"adminAccountId">> := string()
-%% }
--type register_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_controls_request() :: #{
-%%   <<"controlCatalogId">> => string(),
-%%   <<"controlType">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_controls_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights() :: #{
-%%   <<"activeAssessmentsCount">> => integer(),
-%%   <<"assessmentControlsCountByNoncompliantEvidence">> => integer(),
-%%   <<"compliantEvidenceCount">> => integer(),
-%%   <<"inconclusiveEvidenceCount">> => integer(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"noncompliantEvidenceCount">> => integer(),
-%%   <<"totalAssessmentControlsCount">> => integer()
-%% }
--type insights() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_request() :: #{
-%%   <<"assessmentDescription">> => string(),
-%%   <<"assessmentName">> => string(),
-%%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
-%%   <<"roles">> => list(role()),
-%%   <<"scope">> := scope()
-%% }
--type update_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment() :: #{
-%%   <<"arn">> => string(),
-%%   <<"awsAccount">> => aws_account(),
-%%   <<"framework">> => assessment_framework(),
-%%   <<"metadata">> => assessment_metadata(),
-%%   <<"tags">> => map()
-%% }
--type assessment() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_import_evidence_to_assessment_control_request() :: #{
-%%   <<"manualEvidence">> := list(manual_evidence())
-%% }
--type batch_import_evidence_to_assessment_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_insights_response() :: #{
-%%   <<"insights">> => insights()
-%% }
--type get_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_settings_response() :: #{
-%%   <<"settings">> => settings()
-%% }
--type get_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_folders_by_assessment_response() :: #{
-%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
-%%   <<"nextToken">> => string()
-%% }
--type get_evidence_folders_by_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_file_upload_url_request() :: #{
-%%   <<"fileName">> := string()
-%% }
--type get_evidence_file_upload_url_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_file_upload_url_response() :: #{
-%%   <<"evidenceFileName">> => string(),
-%%   <<"uploadUrl">> => string()
-%% }
--type get_evidence_file_upload_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_assessment_request() :: #{}
--type get_assessment_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_assessment_report_evidence_folder_response() :: #{}
--type disassociate_assessment_report_evidence_folder_response() :: #{}.
-
-
-%% Example:
-%% scope() :: #{
-%%   <<"awsAccounts">> => list(aws_account()),
-%%   <<"awsServices">> => list(aws_service())
-%% }
--type scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_delegation_by_assessment_request() :: #{
-%%   <<"delegationIds">> := list(string())
-%% }
--type batch_delete_delegation_by_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% framework() :: #{
-%%   <<"arn">> => string(),
-%%   <<"complianceType">> => string(),
-%%   <<"controlSets">> => list(control_set()),
-%%   <<"controlSources">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lastUpdatedBy">> => string(),
-%%   <<"logo">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
-%% }
--type framework() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_assessment_report_integrity_request() :: #{
-%%   <<"s3RelativePath">> := string()
-%% }
--type validate_assessment_report_integrity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_delegations_response() :: #{
-%%   <<"delegations">> => list(delegation_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type get_delegations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessment_framework_share_requests_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"requestType">> := list(any())
-%% }
--type list_assessment_framework_share_requests_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_report_metadata() :: #{
-%%   <<"assessmentId">> => string(),
-%%   <<"assessmentName">> => string(),
-%%   <<"author">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type assessment_report_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_assessment_framework_control_set() :: #{
-%%   <<"controls">> => list(create_assessment_framework_control()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_assessment_framework_control_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assessment_response() :: #{
-%%   <<"assessment">> => assessment(),
-%%   <<"userRole">> => role()
-%% }
--type get_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_control_domain_insights_response() :: #{
-%%   <<"controlDomainInsights">> => list(control_domain_insights()),
-%%   <<"nextToken">> => string()
-%% }
--type list_control_domain_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_account_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type deregister_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_assessment_report_evidence_folder_request() :: #{
-%%   <<"evidenceFolderId">> := string()
-%% }
--type associate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_import_evidence_to_assessment_control_response() :: #{
-%%   <<"errors">> => list(batch_import_evidence_to_assessment_control_error())
-%% }
--type batch_import_evidence_to_assessment_control_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_insights_metadata_by_assessment_item() :: #{
-%%   <<"controlSetName">> => string(),
-%%   <<"evidenceInsights">> => evidence_insights(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"name">> => string()
-%% }
--type control_insights_metadata_by_assessment_item() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% validate_assessment_report_integrity_response() :: #{
-%%   <<"signatureAlgorithm">> => string(),
-%%   <<"signatureDateTime">> => string(),
-%%   <<"signatureKeyId">> => string(),
-%%   <<"signatureValid">> => boolean(),
-%%   <<"validationErrors">> => list(string())
-%% }
--type validate_assessment_report_integrity_response() :: #{binary() => any()}.
+-type assessment_framework() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1276,109 +306,6 @@
 %%   <<"type">> => list(any())
 %% }
 -type assessment_framework_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_control_request() :: #{
-%%   <<"actionPlanInstructions">> => string(),
-%%   <<"actionPlanTitle">> => string(),
-%%   <<"controlMappingSources">> := list(control_mapping_source()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"testingInformation">> => string()
-%% }
--type update_control_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_framework_share_response() :: #{}
--type delete_assessment_framework_share_response() :: #{}.
-
-
-%% Example:
-%% update_assessment_framework_response() :: #{
-%%   <<"framework">> => framework()
-%% }
--type update_assessment_framework_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_delegation_by_assessment_error() :: #{
-%%   <<"createDelegationRequest">> => create_delegation_request(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_create_delegation_by_assessment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% batch_create_delegation_by_assessment_response() :: #{
-%%   <<"delegations">> => list(delegation()),
-%%   <<"errors">> => list(batch_create_delegation_by_assessment_error())
-%% }
--type batch_create_delegation_by_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evidence_finder_enablement() :: #{
-%%   <<"backfillStatus">> => list(any()),
-%%   <<"enablementStatus">> => list(any()),
-%%   <<"error">> => string(),
-%%   <<"eventDataStoreArn">> => string()
-%% }
--type evidence_finder_enablement() :: #{binary() => any()}.
-
-%% Example:
-%% delete_control_request() :: #{}
--type delete_control_request() :: #{}.
-
-
-%% Example:
-%% url() :: #{
-%%   <<"hyperlinkName">> => string(),
-%%   <<"link">> => string()
-%% }
--type url() :: #{binary() => any()}.
-
-
-%% Example:
-%% evidence() :: #{
-%%   <<"assessmentReportSelection">> => string(),
-%%   <<"attributes">> => map(),
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsOrganization">> => string(),
-%%   <<"complianceCheck">> => string(),
-%%   <<"dataSource">> => string(),
-%%   <<"eventName">> => string(),
-%%   <<"eventSource">> => string(),
-%%   <<"evidenceAwsAccountId">> => string(),
-%%   <<"evidenceByType">> => string(),
-%%   <<"evidenceFolderId">> => string(),
-%%   <<"iamId">> => string(),
-%%   <<"id">> => string(),
-%%   <<"resourcesIncluded">> => list(resource()),
-%%   <<"time">> => non_neg_integer()
-%% }
--type evidence() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1403,22 +330,439 @@
 
 
 %% Example:
-%% get_evidence_by_evidence_folder_response() :: #{
-%%   <<"evidence">> => list(evidence()),
-%%   <<"nextToken">> => string()
+%% assessment_metadata() :: #{
+%%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
+%%   <<"complianceType">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"delegations">> => list(delegation()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roles">> => list(role()),
+%%   <<"scope">> => scope(),
+%%   <<"status">> => list(any())
 %% }
--type get_evidence_by_evidence_folder_response() :: #{binary() => any()}.
+-type assessment_metadata() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_evidence_request() :: #{}
--type get_evidence_request() :: #{}.
+%% assessment_metadata_item() :: #{
+%%   <<"complianceType">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"delegations">> => list(delegation()),
+%%   <<"id">> => string(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roles">> => list(role()),
+%%   <<"status">> => list(any())
+%% }
+-type assessment_metadata_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_assessment_control_response() :: #{
-%%   <<"control">> => assessment_control()
+%% assessment_report() :: #{
+%%   <<"assessmentId">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"author">> => string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type update_assessment_control_response() :: #{binary() => any()}.
+-type assessment_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_report_evidence_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"evidenceId">> => string()
+%% }
+-type assessment_report_evidence_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_report_metadata() :: #{
+%%   <<"assessmentId">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"author">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type assessment_report_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_reports_destination() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationType">> => list(any())
+%% }
+-type assessment_reports_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_assessment_report_evidence_folder_request() :: #{
+%%   <<"evidenceFolderId">> := string()
+%% }
+-type associate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_assessment_report_evidence_folder_response() :: #{}
+-type associate_assessment_report_evidence_folder_response() :: #{}.
+
+
+%% Example:
+%% aws_account() :: #{
+%%   <<"emailAddress">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type aws_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_service() :: #{
+%%   <<"serviceName">> => string()
+%% }
+-type aws_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_assessment_report_evidence_request() :: #{
+%%   <<"evidenceFolderId">> := string(),
+%%   <<"evidenceIds">> := list(string())
+%% }
+-type batch_associate_assessment_report_evidence_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_assessment_report_evidence_response() :: #{
+%%   <<"errors">> => list(assessment_report_evidence_error()),
+%%   <<"evidenceIds">> => list(string())
+%% }
+-type batch_associate_assessment_report_evidence_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_delegation_by_assessment_error() :: #{
+%%   <<"createDelegationRequest">> => create_delegation_request(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_create_delegation_by_assessment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_delegation_by_assessment_request() :: #{
+%%   <<"createDelegationRequests">> := list(create_delegation_request())
+%% }
+-type batch_create_delegation_by_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_delegation_by_assessment_response() :: #{
+%%   <<"delegations">> => list(delegation()),
+%%   <<"errors">> => list(batch_create_delegation_by_assessment_error())
+%% }
+-type batch_create_delegation_by_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_delegation_by_assessment_error() :: #{
+%%   <<"delegationId">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_delete_delegation_by_assessment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_delegation_by_assessment_request() :: #{
+%%   <<"delegationIds">> := list(string())
+%% }
+-type batch_delete_delegation_by_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_delegation_by_assessment_response() :: #{
+%%   <<"errors">> => list(batch_delete_delegation_by_assessment_error())
+%% }
+-type batch_delete_delegation_by_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_assessment_report_evidence_request() :: #{
+%%   <<"evidenceFolderId">> := string(),
+%%   <<"evidenceIds">> := list(string())
+%% }
+-type batch_disassociate_assessment_report_evidence_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_assessment_report_evidence_response() :: #{
+%%   <<"errors">> => list(assessment_report_evidence_error()),
+%%   <<"evidenceIds">> => list(string())
+%% }
+-type batch_disassociate_assessment_report_evidence_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_import_evidence_to_assessment_control_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"manualEvidence">> => manual_evidence()
+%% }
+-type batch_import_evidence_to_assessment_control_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_import_evidence_to_assessment_control_request() :: #{
+%%   <<"manualEvidence">> := list(manual_evidence())
+%% }
+-type batch_import_evidence_to_assessment_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_import_evidence_to_assessment_control_response() :: #{
+%%   <<"errors">> => list(batch_import_evidence_to_assessment_control_error())
+%% }
+-type batch_import_evidence_to_assessment_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_log() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"objectName">> => string(),
+%%   <<"objectType">> => list(any())
+%% }
+-type change_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% control() :: #{
+%%   <<"actionPlanInstructions">> => string(),
+%%   <<"actionPlanTitle">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"controlMappingSources">> => list(control_mapping_source()),
+%%   <<"controlSources">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"testingInformation">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type control() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_comment() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commentBody">> => string(),
+%%   <<"postedDate">> => non_neg_integer()
+%% }
+-type control_comment() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_domain_insights() :: #{
+%%   <<"controlsCountByNoncompliantEvidence">> => integer(),
+%%   <<"evidenceInsights">> => evidence_insights(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"totalControlsCount">> => integer()
+%% }
+-type control_domain_insights() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_insights_metadata_by_assessment_item() :: #{
+%%   <<"controlSetName">> => string(),
+%%   <<"evidenceInsights">> => evidence_insights(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type control_insights_metadata_by_assessment_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_insights_metadata_item() :: #{
+%%   <<"evidenceInsights">> => evidence_insights(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type control_insights_metadata_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_mapping_source() :: #{
+%%   <<"sourceDescription">> => string(),
+%%   <<"sourceFrequency">> => list(any()),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceKeyword">> => source_keyword(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceSetUpOption">> => list(any()),
+%%   <<"sourceType">> => list(any()),
+%%   <<"troubleshootingText">> => string()
+%% }
+-type control_mapping_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_metadata() :: #{
+%%   <<"arn">> => string(),
+%%   <<"controlSources">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type control_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_set() :: #{
+%%   <<"controls">> => list(control()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type control_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_framework_control() :: #{
+%%   <<"id">> => string()
+%% }
+-type create_assessment_framework_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_framework_control_set() :: #{
+%%   <<"controls">> => list(create_assessment_framework_control()),
+%%   <<"name">> => string()
+%% }
+-type create_assessment_framework_control_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_framework_request() :: #{
+%%   <<"complianceType">> => string(),
+%%   <<"controlSets">> := list(create_assessment_framework_control_set()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_assessment_framework_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_framework_response() :: #{
+%%   <<"framework">> => framework()
+%% }
+-type create_assessment_framework_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_report_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"queryStatement">> => string()
+%% }
+-type create_assessment_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_report_response() :: #{
+%%   <<"assessmentReport">> => assessment_report()
+%% }
+-type create_assessment_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_request() :: #{
+%%   <<"assessmentReportsDestination">> := assessment_reports_destination(),
+%%   <<"description">> => string(),
+%%   <<"frameworkId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"roles">> := list(role()),
+%%   <<"scope">> := scope(),
+%%   <<"tags">> => map()
+%% }
+-type create_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_response() :: #{
+%%   <<"assessment">> => assessment()
+%% }
+-type create_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_control_mapping_source() :: #{
+%%   <<"sourceDescription">> => string(),
+%%   <<"sourceFrequency">> => list(any()),
+%%   <<"sourceKeyword">> => source_keyword(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceSetUpOption">> => list(any()),
+%%   <<"sourceType">> => list(any()),
+%%   <<"troubleshootingText">> => string()
+%% }
+-type create_control_mapping_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_control_request() :: #{
+%%   <<"actionPlanInstructions">> => string(),
+%%   <<"actionPlanTitle">> => string(),
+%%   <<"controlMappingSources">> := list(create_control_mapping_source()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"testingInformation">> => string()
+%% }
+-type create_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_control_response() :: #{
+%%   <<"control">> => control()
+%% }
+-type create_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_delegation_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"controlSetId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"roleType">> => list(any())
+%% }
+-type create_delegation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_export_destination() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationType">> => list(any())
+%% }
+-type default_export_destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1439,6 +783,597 @@
 
 
 %% Example:
+%% delegation_metadata() :: #{
+%%   <<"assessmentId">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"controlSetName">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delegation_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assessment_framework_request() :: #{}
+-type delete_assessment_framework_request() :: #{}.
+
+%% Example:
+%% delete_assessment_framework_response() :: #{}
+-type delete_assessment_framework_response() :: #{}.
+
+
+%% Example:
+%% delete_assessment_framework_share_request() :: #{
+%%   <<"requestType">> := list(any())
+%% }
+-type delete_assessment_framework_share_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assessment_framework_share_response() :: #{}
+-type delete_assessment_framework_share_response() :: #{}.
+
+%% Example:
+%% delete_assessment_report_request() :: #{}
+-type delete_assessment_report_request() :: #{}.
+
+%% Example:
+%% delete_assessment_report_response() :: #{}
+-type delete_assessment_report_response() :: #{}.
+
+%% Example:
+%% delete_assessment_request() :: #{}
+-type delete_assessment_request() :: #{}.
+
+%% Example:
+%% delete_assessment_response() :: #{}
+-type delete_assessment_response() :: #{}.
+
+%% Example:
+%% delete_control_request() :: #{}
+-type delete_control_request() :: #{}.
+
+%% Example:
+%% delete_control_response() :: #{}
+-type delete_control_response() :: #{}.
+
+%% Example:
+%% deregister_account_request() :: #{}
+-type deregister_account_request() :: #{}.
+
+
+%% Example:
+%% deregister_account_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type deregister_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% deregister_organization_admin_account_request() :: #{
+%%   <<"adminAccountId">> => string()
+%% }
+-type deregister_organization_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_organization_admin_account_response() :: #{}
+-type deregister_organization_admin_account_response() :: #{}.
+
+
+%% Example:
+%% deregistration_policy() :: #{
+%%   <<"deleteResources">> => list(any())
+%% }
+-type deregistration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_assessment_report_evidence_folder_request() :: #{
+%%   <<"evidenceFolderId">> := string()
+%% }
+-type disassociate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_assessment_report_evidence_folder_response() :: #{}
+-type disassociate_assessment_report_evidence_folder_response() :: #{}.
+
+
+%% Example:
+%% evidence() :: #{
+%%   <<"assessmentReportSelection">> => string(),
+%%   <<"attributes">> => map(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsOrganization">> => string(),
+%%   <<"complianceCheck">> => string(),
+%%   <<"dataSource">> => string(),
+%%   <<"eventName">> => string(),
+%%   <<"eventSource">> => string(),
+%%   <<"evidenceAwsAccountId">> => string(),
+%%   <<"evidenceByType">> => string(),
+%%   <<"evidenceFolderId">> => string(),
+%%   <<"iamId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resourcesIncluded">> => list(resource()),
+%%   <<"time">> => non_neg_integer()
+%% }
+-type evidence() :: #{binary() => any()}.
+
+
+%% Example:
+%% evidence_finder_enablement() :: #{
+%%   <<"backfillStatus">> => list(any()),
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"error">> => string(),
+%%   <<"eventDataStoreArn">> => string()
+%% }
+-type evidence_finder_enablement() :: #{binary() => any()}.
+
+
+%% Example:
+%% evidence_insights() :: #{
+%%   <<"compliantEvidenceCount">> => integer(),
+%%   <<"inconclusiveEvidenceCount">> => integer(),
+%%   <<"noncompliantEvidenceCount">> => integer()
+%% }
+-type evidence_insights() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework() :: #{
+%%   <<"arn">> => string(),
+%%   <<"complianceType">> => string(),
+%%   <<"controlSets">> => list(control_set()),
+%%   <<"controlSources">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedBy">> => string(),
+%%   <<"logo">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type framework() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework_metadata() :: #{
+%%   <<"complianceType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"logo">> => string(),
+%%   <<"name">> => string()
+%% }
+-type framework_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_status_request() :: #{}
+-type get_account_status_request() :: #{}.
+
+
+%% Example:
+%% get_account_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_account_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assessment_framework_request() :: #{}
+-type get_assessment_framework_request() :: #{}.
+
+
+%% Example:
+%% get_assessment_framework_response() :: #{
+%%   <<"framework">> => framework()
+%% }
+-type get_assessment_framework_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assessment_report_url_request() :: #{}
+-type get_assessment_report_url_request() :: #{}.
+
+
+%% Example:
+%% get_assessment_report_url_response() :: #{
+%%   <<"preSignedUrl">> => url()
+%% }
+-type get_assessment_report_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assessment_request() :: #{}
+-type get_assessment_request() :: #{}.
+
+
+%% Example:
+%% get_assessment_response() :: #{
+%%   <<"assessment">> => assessment(),
+%%   <<"userRole">> => role()
+%% }
+-type get_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_change_logs_request() :: #{
+%%   <<"controlId">> => string(),
+%%   <<"controlSetId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_change_logs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_change_logs_response() :: #{
+%%   <<"changeLogs">> => list(change_log()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_change_logs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_control_request() :: #{}
+-type get_control_request() :: #{}.
+
+
+%% Example:
+%% get_control_response() :: #{
+%%   <<"control">> => control()
+%% }
+-type get_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_delegations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_delegations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_delegations_response() :: #{
+%%   <<"delegations">> => list(delegation_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_delegations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_by_evidence_folder_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_by_evidence_folder_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_by_evidence_folder_response() :: #{
+%%   <<"evidence">> => list(evidence()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_by_evidence_folder_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_file_upload_url_request() :: #{
+%%   <<"fileName">> := string()
+%% }
+-type get_evidence_file_upload_url_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_file_upload_url_response() :: #{
+%%   <<"evidenceFileName">> => string(),
+%%   <<"uploadUrl">> => string()
+%% }
+-type get_evidence_file_upload_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_evidence_folder_request() :: #{}
+-type get_evidence_folder_request() :: #{}.
+
+
+%% Example:
+%% get_evidence_folder_response() :: #{
+%%   <<"evidenceFolder">> => assessment_evidence_folder()
+%% }
+-type get_evidence_folder_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_folders_by_assessment_control_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_folders_by_assessment_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_folders_by_assessment_control_response() :: #{
+%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_folders_by_assessment_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_folders_by_assessment_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_folders_by_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evidence_folders_by_assessment_response() :: #{
+%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_evidence_folders_by_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_evidence_request() :: #{}
+-type get_evidence_request() :: #{}.
+
+
+%% Example:
+%% get_evidence_response() :: #{
+%%   <<"evidence">> => evidence()
+%% }
+-type get_evidence_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_insights_by_assessment_request() :: #{}
+-type get_insights_by_assessment_request() :: #{}.
+
+
+%% Example:
+%% get_insights_by_assessment_response() :: #{
+%%   <<"insights">> => insights_by_assessment()
+%% }
+-type get_insights_by_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_insights_request() :: #{}
+-type get_insights_request() :: #{}.
+
+
+%% Example:
+%% get_insights_response() :: #{
+%%   <<"insights">> => insights()
+%% }
+-type get_insights_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_organization_admin_account_request() :: #{}
+-type get_organization_admin_account_request() :: #{}.
+
+
+%% Example:
+%% get_organization_admin_account_response() :: #{
+%%   <<"adminAccountId">> => string(),
+%%   <<"organizationId">> => string()
+%% }
+-type get_organization_admin_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_services_in_scope_request() :: #{}
+-type get_services_in_scope_request() :: #{}.
+
+
+%% Example:
+%% get_services_in_scope_response() :: #{
+%%   <<"serviceMetadata">> => list(service_metadata())
+%% }
+-type get_services_in_scope_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_settings_request() :: #{}
+-type get_settings_request() :: #{}.
+
+
+%% Example:
+%% get_settings_response() :: #{
+%%   <<"settings">> => settings()
+%% }
+-type get_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights() :: #{
+%%   <<"activeAssessmentsCount">> => integer(),
+%%   <<"assessmentControlsCountByNoncompliantEvidence">> => integer(),
+%%   <<"compliantEvidenceCount">> => integer(),
+%%   <<"inconclusiveEvidenceCount">> => integer(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"noncompliantEvidenceCount">> => integer(),
+%%   <<"totalAssessmentControlsCount">> => integer()
+%% }
+-type insights() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights_by_assessment() :: #{
+%%   <<"assessmentControlsCountByNoncompliantEvidence">> => integer(),
+%%   <<"compliantEvidenceCount">> => integer(),
+%%   <<"inconclusiveEvidenceCount">> => integer(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"noncompliantEvidenceCount">> => integer(),
+%%   <<"totalAssessmentControlsCount">> => integer()
+%% }
+-type insights_by_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_control_insights_by_control_domain_request() :: #{
+%%   <<"assessmentId">> := string(),
+%%   <<"controlDomainId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_control_insights_by_control_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_control_insights_by_control_domain_response() :: #{
+%%   <<"controlInsightsByAssessment">> => list(control_insights_metadata_by_assessment_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_control_insights_by_control_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_framework_share_requests_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"requestType">> := list(any())
+%% }
+-type list_assessment_framework_share_requests_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_framework_share_requests_response() :: #{
+%%   <<"assessmentFrameworkShareRequests">> => list(assessment_framework_share_request()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_framework_share_requests_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_frameworks_request() :: #{
+%%   <<"frameworkType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_frameworks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_frameworks_response() :: #{
+%%   <<"frameworkMetadataList">> => list(assessment_framework_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_frameworks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_reports_response() :: #{
+%%   <<"assessmentReports">> => list(assessment_report_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessment_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_response() :: #{
+%%   <<"assessmentMetadata">> => list(assessment_metadata_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assessments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_domain_insights_by_assessment_request() :: #{
+%%   <<"assessmentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_domain_insights_by_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_domain_insights_by_assessment_response() :: #{
+%%   <<"controlDomainInsights">> => list(control_domain_insights()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_domain_insights_by_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_domain_insights_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_domain_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_domain_insights_response() :: #{
+%%   <<"controlDomainInsights">> => list(control_domain_insights()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_domain_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_insights_by_control_domain_request() :: #{
+%%   <<"controlDomainId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_insights_by_control_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_control_insights_by_control_domain_response() :: #{
+%%   <<"controlInsightsMetadata">> => list(control_insights_metadata_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_control_insights_by_control_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_request() :: #{
+%%   <<"controlCatalogId">> => string(),
+%%   <<"controlType">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_controls_response() :: #{
+%%   <<"controlMetadataList">> => list(control_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_controls_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_keywords_for_data_source_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"source">> := list(any())
+%% }
+-type list_keywords_for_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_keywords_for_data_source_response() :: #{
 %%   <<"keywords">> => list(string()),
 %%   <<"nextToken">> => string()
@@ -1447,18 +1382,39 @@
 
 
 %% Example:
-%% register_organization_admin_account_response() :: #{
-%%   <<"adminAccountId">> => string(),
-%%   <<"organizationId">> => string()
+%% list_notifications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type register_organization_admin_account_response() :: #{binary() => any()}.
+-type list_notifications_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_evidence_response() :: #{
-%%   <<"evidence">> => evidence()
+%% list_notifications_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notifications">> => list(notification())
 %% }
--type get_evidence_response() :: #{binary() => any()}.
+-type list_notifications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% manual_evidence() :: #{
+%%   <<"evidenceFileName">> => string(),
+%%   <<"s3ResourcePath">> => string(),
+%%   <<"textResponse">> => string()
+%% }
+-type manual_evidence() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1476,131 +1432,98 @@
 
 
 %% Example:
-%% start_assessment_framework_share_request() :: #{
-%%   <<"comment">> => string(),
-%%   <<"destinationAccount">> := string(),
-%%   <<"destinationRegion">> := string()
+%% register_account_request() :: #{
+%%   <<"delegatedAdminAccount">> => string(),
+%%   <<"kmsKey">> => string()
 %% }
--type start_assessment_framework_share_request() :: #{binary() => any()}.
+-type register_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_assessment_control_request() :: #{
-%%   <<"commentBody">> => string(),
-%%   <<"controlStatus">> => list(any())
-%% }
--type update_assessment_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assessment_frameworks_request() :: #{
-%%   <<"frameworkType">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assessment_frameworks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evidence_folder_response() :: #{
-%%   <<"evidenceFolder">> => assessment_evidence_folder()
-%% }
--type get_evidence_folder_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_assessment_report_evidence_folder_request() :: #{
-%%   <<"evidenceFolderId">> := string()
-%% }
--type disassociate_assessment_report_evidence_folder_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_assessment_framework_share_response() :: #{
-%%   <<"assessmentFrameworkShareRequest">> => assessment_framework_share_request()
-%% }
--type start_assessment_framework_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_report() :: #{
-%%   <<"assessmentId">> => string(),
-%%   <<"assessmentName">> => string(),
-%%   <<"author">> => string(),
-%%   <<"awsAccountId">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
+%% register_account_response() :: #{
 %%   <<"status">> => list(any())
 %% }
--type assessment_report() :: #{binary() => any()}.
+-type register_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_control_response() :: #{
-%%   <<"control">> => control()
+%% register_organization_admin_account_request() :: #{
+%%   <<"adminAccountId">> := string()
 %% }
--type get_control_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_assessment_report_url_request() :: #{}
--type get_assessment_report_url_request() :: #{}.
+-type register_organization_admin_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_assessment_request() :: #{
-%%   <<"assessmentReportsDestination">> := assessment_reports_destination(),
+%% register_organization_admin_account_response() :: #{
+%%   <<"adminAccountId">> => string(),
+%%   <<"organizationId">> => string()
+%% }
+-type register_organization_admin_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"arn">> => string(),
+%%   <<"complianceCheck">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% role() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"roleType">> => list(any())
+%% }
+-type role() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope() :: #{
+%%   <<"awsAccounts">> => list(aws_account()),
+%%   <<"awsServices">> => list(aws_service())
+%% }
+-type scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_metadata() :: #{
+%%   <<"category">> => string(),
 %%   <<"description">> => string(),
-%%   <<"frameworkId">> := string(),
-%%   <<"name">> := string(),
-%%   <<"roles">> := list(role()),
-%%   <<"scope">> := scope(),
-%%   <<"tags">> => map()
+%%   <<"displayName">> => string(),
+%%   <<"name">> => string()
 %% }
--type create_assessment_request() :: #{binary() => any()}.
+-type service_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_assessment_report_evidence_response() :: #{
-%%   <<"errors">> => list(assessment_report_evidence_error()),
-%%   <<"evidenceIds">> => list(string())
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type batch_disassociate_assessment_report_evidence_response() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_control_request() :: #{
-%%   <<"actionPlanInstructions">> => string(),
-%%   <<"actionPlanTitle">> => string(),
-%%   <<"controlMappingSources">> := list(create_control_mapping_source()),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"testingInformation">> => string()
+%% settings() :: #{
+%%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
+%%   <<"defaultExportDestination">> => default_export_destination(),
+%%   <<"defaultProcessOwners">> => list(role()),
+%%   <<"deregistrationPolicy">> => deregistration_policy(),
+%%   <<"evidenceFinderEnablement">> => evidence_finder_enablement(),
+%%   <<"isAwsOrgEnabled">> => boolean(),
+%%   <<"kmsKey">> => string(),
+%%   <<"snsTopic">> => string()
 %% }
--type create_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_import_evidence_to_assessment_control_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"manualEvidence">> => manual_evidence()
-%% }
--type batch_import_evidence_to_assessment_control_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights_by_assessment() :: #{
-%%   <<"assessmentControlsCountByNoncompliantEvidence">> => integer(),
-%%   <<"compliantEvidenceCount">> => integer(),
-%%   <<"inconclusiveEvidenceCount">> => integer(),
-%%   <<"lastUpdated">> => non_neg_integer(),
-%%   <<"noncompliantEvidenceCount">> => integer(),
-%%   <<"totalAssessmentControlsCount">> => integer()
-%% }
--type insights_by_assessment() :: #{binary() => any()}.
+-type settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1612,103 +1535,112 @@
 
 
 %% Example:
-%% create_delegation_request() :: #{
+%% start_assessment_framework_share_request() :: #{
 %%   <<"comment">> => string(),
-%%   <<"controlSetId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"roleType">> => list(any())
+%%   <<"destinationAccount">> := string(),
+%%   <<"destinationRegion">> := string()
 %% }
--type create_delegation_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assessment_request() :: #{}
--type delete_assessment_request() :: #{}.
-
-%% Example:
-%% get_services_in_scope_request() :: #{}
--type get_services_in_scope_request() :: #{}.
+-type start_assessment_framework_share_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_assessment_status_response() :: #{
-%%   <<"assessment">> => assessment()
+%% start_assessment_framework_share_response() :: #{
+%%   <<"assessmentFrameworkShareRequest">> => assessment_framework_share_request()
 %% }
--type update_assessment_status_response() :: #{binary() => any()}.
+-type start_assessment_framework_share_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% change_log() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"objectName">> => string(),
-%%   <<"objectType">> => list(any())
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type change_log() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% control_mapping_source() :: #{
-%%   <<"sourceDescription">> => string(),
-%%   <<"sourceFrequency">> => list(any()),
-%%   <<"sourceId">> => string(),
-%%   <<"sourceKeyword">> => source_keyword(),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceSetUpOption">> => list(any()),
-%%   <<"sourceType">> => list(any()),
-%%   <<"troubleshootingText">> => string()
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type control_mapping_source() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assessment_reports_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_assessment_reports_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_assessment_report_response() :: #{}
--type delete_assessment_report_response() :: #{}.
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% create_assessment_report_request() :: #{
+%% update_assessment_control_request() :: #{
+%%   <<"commentBody">> => string(),
+%%   <<"controlStatus">> => list(any())
+%% }
+-type update_assessment_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_control_response() :: #{
+%%   <<"control">> => assessment_control()
+%% }
+-type update_assessment_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_control_set_status_request() :: #{
+%%   <<"comment">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type update_assessment_control_set_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_control_set_status_response() :: #{
+%%   <<"controlSet">> => assessment_control_set()
+%% }
+-type update_assessment_control_set_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_framework_control_set() :: #{
+%%   <<"controls">> => list(create_assessment_framework_control()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_assessment_framework_control_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_framework_request() :: #{
+%%   <<"complianceType">> => string(),
+%%   <<"controlSets">> := list(update_assessment_framework_control_set()),
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"queryStatement">> => string()
+%%   <<"name">> := string()
 %% }
--type create_assessment_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_status_request() :: #{}
--type get_account_status_request() :: #{}.
+-type update_assessment_framework_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_assessment_framework_response() :: #{
+%% update_assessment_framework_response() :: #{
 %%   <<"framework">> => framework()
 %% }
--type get_assessment_framework_response() :: #{binary() => any()}.
+-type update_assessment_framework_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_evidence_folders_by_assessment_control_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% update_assessment_framework_share_request() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"requestType">> := list(any())
 %% }
--type get_evidence_folders_by_assessment_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_framework() :: #{
-%%   <<"arn">> => string(),
-%%   <<"controlSets">> => list(assessment_control_set()),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => framework_metadata()
-%% }
--type assessment_framework() :: #{binary() => any()}.
+-type update_assessment_framework_share_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1719,413 +1651,481 @@
 
 
 %% Example:
-%% delegation_metadata() :: #{
-%%   <<"assessmentId">> => string(),
+%% update_assessment_request() :: #{
+%%   <<"assessmentDescription">> => string(),
 %%   <<"assessmentName">> => string(),
-%%   <<"controlSetName">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
+%%   <<"roles">> => list(role()),
+%%   <<"scope">> := scope()
 %% }
--type delegation_metadata() :: #{binary() => any()}.
+-type update_assessment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% control_insights_metadata_item() :: #{
-%%   <<"evidenceInsights">> => evidence_insights(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdated">> => non_neg_integer(),
+%% update_assessment_response() :: #{
+%%   <<"assessment">> => assessment()
+%% }
+-type update_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_status_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_assessment_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_assessment_status_response() :: #{
+%%   <<"assessment">> => assessment()
+%% }
+-type update_assessment_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_control_request() :: #{
+%%   <<"actionPlanInstructions">> => string(),
+%%   <<"actionPlanTitle">> => string(),
+%%   <<"controlMappingSources">> := list(control_mapping_source()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"testingInformation">> => string()
+%% }
+-type update_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_control_response() :: #{
+%%   <<"control">> => control()
+%% }
+-type update_control_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_settings_request() :: #{
+%%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
+%%   <<"defaultExportDestination">> => default_export_destination(),
+%%   <<"defaultProcessOwners">> => list(role()),
+%%   <<"deregistrationPolicy">> => deregistration_policy(),
+%%   <<"evidenceFinderEnabled">> => boolean(),
+%%   <<"kmsKey">> => string(),
+%%   <<"snsTopic">> => string()
+%% }
+-type update_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_settings_response() :: #{
+%%   <<"settings">> => settings()
+%% }
+-type update_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% url() :: #{
+%%   <<"hyperlinkName">> => string(),
+%%   <<"link">> => string()
+%% }
+-type url() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_assessment_report_integrity_request() :: #{
+%%   <<"s3RelativePath">> := string()
+%% }
+-type validate_assessment_report_integrity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_assessment_report_integrity_response() :: #{
+%%   <<"signatureAlgorithm">> => string(),
+%%   <<"signatureDateTime">> => string(),
+%%   <<"signatureKeyId">> => string(),
+%%   <<"signatureValid">> => boolean(),
+%%   <<"validationErrors">> => list(string())
+%% }
+-type validate_assessment_report_integrity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
 %%   <<"name">> => string()
 %% }
--type control_insights_metadata_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_status_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type get_account_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assessment_report_url_response() :: #{
-%%   <<"preSignedUrl">> => url()
-%% }
--type get_assessment_report_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"arn">> => string(),
-%%   <<"complianceCheck">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_assessment_report_evidence_folder_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_associate_assessment_report_evidence_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_create_delegation_by_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_delete_delegation_by_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_disassociate_assessment_report_evidence_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_import_evidence_to_assessment_control_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_assessment_framework_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_assessment_report_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_assessment_framework_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_assessment_framework_share_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_assessment_report_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type deregister_account_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type deregister_organization_admin_account_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_assessment_report_evidence_folder_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_account_status_errors() ::
     internal_server_exception().
 
 -type get_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_assessment_framework_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_assessment_report_url_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_change_logs_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_delegations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_evidence_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_evidence_by_evidence_folder_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_evidence_file_upload_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_evidence_folder_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_evidence_folders_by_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_evidence_folders_by_assessment_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_insights_errors() ::
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_insights_by_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_organization_admin_account_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_services_in_scope_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_settings_errors() ::
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_assessment_control_insights_by_control_domain_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_assessment_framework_share_requests_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_assessment_frameworks_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_assessment_reports_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_assessments_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_control_domain_insights_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_control_domain_insights_by_assessment_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_control_insights_by_control_domain_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_controls_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_keywords_for_data_source_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notifications_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type register_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_organization_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_assessment_framework_share_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_assessment_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_assessment_control_set_status_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_assessment_framework_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_assessment_framework_share_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_assessment_status_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_control_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_settings_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type validate_assessment_report_integrity_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

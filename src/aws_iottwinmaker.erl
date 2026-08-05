@@ -107,52 +107,52 @@
 
 
 %% Example:
-%% execute_query_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryStatement">> := string(),
-%%   <<"workspaceId">> := string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type execute_query_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_sync_job_request() :: #{
-%%   <<"workspaceId">> => string()
+%% batch_put_property_error() :: #{
+%%   <<"entry">> => property_value_entry(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
 %% }
--type get_sync_job_request() :: #{binary() => any()}.
+-type batch_put_property_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_scene_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer()
+%% batch_put_property_error_entry() :: #{
+%%   <<"errors">> => list(batch_put_property_error())
 %% }
--type create_scene_response() :: #{binary() => any()}.
+-type batch_put_property_error_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_sync_job_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer(),
-%%   <<"status">> := sync_job_status(),
-%%   <<"syncRole">> := string(),
-%%   <<"syncSource">> := string(),
-%%   <<"updateDateTime">> := non_neg_integer(),
-%%   <<"workspaceId">> := string()
+%% batch_put_property_values_request() :: #{
+%%   <<"entries">> := list(property_value_entry())
 %% }
--type get_sync_job_response() :: #{binary() => any()}.
+-type batch_put_property_values_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% component_update_request() :: #{
-%%   <<"componentTypeId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"propertyGroupUpdates">> => map(),
-%%   <<"propertyUpdates">> => map(),
-%%   <<"updateType">> => string()
+%% batch_put_property_values_response() :: #{
+%%   <<"errorEntries">> := list(batch_put_property_error_entry())
 %% }
--type component_update_request() :: #{binary() => any()}.
+-type batch_put_property_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bundle_information() :: #{
+%%   <<"bundleNames">> => list(string()),
+%%   <<"pricingTier">> => string()
+%% }
+-type bundle_information() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_transfer_job_request() :: #{}
+-type cancel_metadata_transfer_job_request() :: #{}.
 
 
 %% Example:
@@ -167,54 +167,135 @@
 
 
 %% Example:
-%% list_entities_request() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% column_description() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
 %% }
--type list_entities_request() :: #{binary() => any()}.
+-type column_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_source_configuration() :: #{
-%%   <<"location">> => string()
+%% component_property_group_request() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"propertyNames">> => list(string()),
+%%   <<"updateType">> => string()
 %% }
--type s3_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_metadata_transfer_job_request() :: #{}
--type cancel_metadata_transfer_job_request() :: #{}.
+-type component_property_group_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_entity_response() :: #{
-%%   <<"state">> := string()
+%% component_property_group_response() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"propertyNames">> => list(string())
 %% }
--type delete_entity_response() :: #{binary() => any()}.
+-type component_property_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% tabular_conditions() :: #{
-%%   <<"orderBy">> => list(order_by()),
-%%   <<"propertyFilters">> => list(property_filter())
+%% component_request() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map()
 %% }
--type tabular_conditions() :: #{binary() => any()}.
+-type component_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tags">> := map()
+%% component_response() :: #{
+%%   <<"areAllCompositeComponentsReturned">> => boolean(),
+%%   <<"areAllPropertiesReturned">> => boolean(),
+%%   <<"componentName">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"compositeComponents">> => map(),
+%%   <<"definedIn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"status">> => status(),
+%%   <<"syncSource">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type component_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scenes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% component_summary() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"definedIn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"status">> => status(),
+%%   <<"syncSource">> => string()
 %% }
--type list_scenes_request() :: #{binary() => any()}.
+-type component_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_type_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"componentTypeName">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type component_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_update_request() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"propertyGroupUpdates">> => map(),
+%%   <<"propertyUpdates">> => map(),
+%%   <<"updateType">> => string()
+%% }
+-type component_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_component_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map()
+%% }
+-type composite_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_component_type_request() :: #{
+%%   <<"componentTypeId">> => string()
+%% }
+-type composite_component_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_component_type_response() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"isInherited">> => boolean()
+%% }
+-type composite_component_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% composite_component_update_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"propertyGroupUpdates">> => map(),
+%%   <<"propertyUpdates">> => map(),
+%%   <<"updateType">> => string()
+%% }
+-type composite_component_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -225,43 +306,10 @@
 
 
 %% Example:
-%% list_properties_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"propertySummaries">> => list(property_summary())
+%% connector_timeout_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_properties_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% iot_twin_maker_source_configuration() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"workspace">> => string()
-%% }
--type iot_twin_maker_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_request() :: #{
-%%   <<"definition">> => property_definition_request(),
-%%   <<"updateType">> => string(),
-%%   <<"value">> => data_value()
-%% }
--type property_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_property_value_request() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentPath">> => string(),
-%%   <<"componentTypeId">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"propertyGroupName">> => string(),
-%%   <<"selectedProperties">> := list(string()),
-%%   <<"tabularConditions">> => tabular_conditions()
-%% }
--type get_property_value_request() :: #{binary() => any()}.
+-type connector_timeout_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,58 +328,219 @@
 
 
 %% Example:
-%% composite_component_type_response() :: #{
-%%   <<"componentTypeId">> => string(),
-%%   <<"isInherited">> => boolean()
+%% create_component_type_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"state">> := string()
 %% }
--type composite_component_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type create_component_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% column_description() :: #{
-%%   <<"name">> => string(),
+%% create_entity_request() :: #{
+%%   <<"components">> => map(),
+%%   <<"compositeComponents">> => map(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityName">> := string(),
+%%   <<"parentEntityId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_entity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_entity_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"entityId">> := string(),
+%%   <<"state">> := string()
+%% }
+-type create_entity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_metadata_transfer_job_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"destination">> := destination_configuration(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"sources">> := list(source_configuration())
+%% }
+-type create_metadata_transfer_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_metadata_transfer_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"status">> => metadata_transfer_job_status()
+%% }
+-type create_metadata_transfer_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scene_request() :: #{
+%%   <<"capabilities">> => list(string()),
+%%   <<"contentLocation">> := string(),
+%%   <<"description">> => string(),
+%%   <<"sceneId">> := string(),
+%%   <<"sceneMetadata">> => map(),
+%%   <<"tags">> => map()
+%% }
+-type create_scene_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scene_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer()
+%% }
+-type create_scene_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sync_job_request() :: #{
+%%   <<"syncRole">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sync_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sync_job_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"state">> := string()
+%% }
+-type create_sync_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_connector() :: #{
+%%   <<"isNative">> => boolean(),
+%%   <<"lambda">> => lambda_function()
+%% }
+-type data_connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_type() :: #{
+%%   <<"allowedValues">> => list(data_value()),
+%%   <<"nestedType">> => data_type(),
+%%   <<"relationship">> => relationship(),
+%%   <<"type">> => string(),
+%%   <<"unitOfMeasure">> => string()
+%% }
+-type data_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_value() :: #{
+%%   <<"booleanValue">> => boolean(),
+%%   <<"doubleValue">> => float(),
+%%   <<"expression">> => string(),
+%%   <<"integerValue">> => integer(),
+%%   <<"listValue">> => list(data_value()),
+%%   <<"longValue">> => float(),
+%%   <<"mapValue">> => map(),
+%%   <<"relationshipValue">> => relationship_value(),
+%%   <<"stringValue">> => string()
+%% }
+-type data_value() :: #{binary() => any()}.
+
+%% Example:
+%% delete_component_type_request() :: #{}
+-type delete_component_type_request() :: #{}.
+
+
+%% Example:
+%% delete_component_type_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_component_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_entity_request() :: #{
+%%   <<"isRecursive">> => boolean()
+%% }
+-type delete_entity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_entity_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scene_request() :: #{}
+-type delete_scene_request() :: #{}.
+
+%% Example:
+%% delete_scene_response() :: #{}
+-type delete_scene_response() :: #{}.
+
+%% Example:
+%% delete_sync_job_request() :: #{}
+-type delete_sync_job_request() :: #{}.
+
+
+%% Example:
+%% delete_sync_job_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
+
+
+%% Example:
+%% delete_workspace_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_destination_configuration(),
+%%   <<"s3Configuration">> => s3_destination_configuration(),
 %%   <<"type">> => string()
 %% }
--type column_description() :: #{binary() => any()}.
-
-%% Example:
-%% get_pricing_plan_request() :: #{}
--type get_pricing_plan_request() :: #{}.
-
-%% Example:
-%% get_entity_request() :: #{}
--type get_entity_request() :: #{}.
+-type destination_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% pricing_plan() :: #{
-%%   <<"billableEntityCount">> => float(),
-%%   <<"bundleInformation">> => bundle_information(),
-%%   <<"effectiveDateTime">> => non_neg_integer(),
-%%   <<"pricingMode">> => string(),
-%%   <<"updateDateTime">> => non_neg_integer(),
-%%   <<"updateReason">> => string()
+%% entity_property_reference() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"externalIdProperty">> => map(),
+%%   <<"propertyName">> => string()
 %% }
--type pricing_plan() :: #{binary() => any()}.
-
-
-%% Example:
-%% relationship() :: #{
-%%   <<"relationshipType">> => string(),
-%%   <<"targetComponentTypeId">> => string()
-%% }
--type relationship() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function() :: #{
-%%   <<"arn">> => string()
-%% }
--type lambda_function() :: #{binary() => any()}.
+-type entity_property_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -350,293 +559,87 @@
 
 
 %% Example:
-%% workspace_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"linkedServices">> => list(string()),
-%%   <<"updateDateTime">> => non_neg_integer(),
-%%   <<"workspaceId">> => string()
+%% error_details() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type workspace_summary() :: #{binary() => any()}.
+-type error_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% component_property_group_response() :: #{
-%%   <<"groupType">> => string(),
-%%   <<"isInherited">> => boolean(),
-%%   <<"propertyNames">> => list(string())
-%% }
--type component_property_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% composite_component_update_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"propertyGroupUpdates">> => map(),
-%%   <<"propertyUpdates">> => map(),
-%%   <<"updateType">> => string()
-%% }
--type composite_component_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sync_job_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"status">> => sync_job_status(),
-%%   <<"syncSource">> => string(),
-%%   <<"updateDateTime">> => non_neg_integer(),
-%%   <<"workspaceId">> => string()
-%% }
--type sync_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% iot_twin_maker_destination_configuration() :: #{
-%%   <<"workspace">> => string()
-%% }
--type iot_twin_maker_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_entity_request() :: #{
-%%   <<"componentUpdates">> => map(),
-%%   <<"compositeComponentUpdates">> => map(),
-%%   <<"description">> => string(),
-%%   <<"entityName">> => string(),
-%%   <<"parentEntityUpdate">> => parent_entity_update_request()
-%% }
--type update_entity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% composite_component_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"properties">> => map(),
-%%   <<"propertyGroups">> => map()
-%% }
--type composite_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scene_response() :: #{
-%%   <<"updateDateTime">> := non_neg_integer()
-%% }
--type update_scene_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scene_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"contentLocation">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"sceneId">> => string(),
-%%   <<"updateDateTime">> => non_neg_integer()
-%% }
--type scene_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_type() :: #{
-%%   <<"allowedValues">> => list(data_value()),
-%%   <<"nestedType">> => data_type(),
-%%   <<"relationship">> => relationship(),
-%%   <<"type">> => string(),
-%%   <<"unitOfMeasure">> => string()
-%% }
--type data_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_component_type_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer(),
-%%   <<"state">> := string()
-%% }
--type create_component_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_properties_request() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentPath">> => string(),
-%%   <<"entityId">> := string(),
+%% execute_query_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_properties_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% order_by() :: #{
-%%   <<"order">> => string(),
-%%   <<"propertyName">> => string()
-%% }
--type order_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_summary() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentPath">> => string(),
-%%   <<"componentTypeId">> => string(),
-%%   <<"definedIn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"propertyGroups">> => map(),
-%%   <<"status">> => status(),
-%%   <<"syncSource">> => string()
-%% }
--type component_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_latest_value() :: #{
-%%   <<"propertyReference">> => entity_property_reference(),
-%%   <<"propertyValue">> => data_value()
-%% }
--type property_latest_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workspace_response() :: #{
-%%   <<"message">> => string()
-%% }
--type delete_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sync_job_response() :: #{
-%%   <<"state">> := string()
-%% }
--type delete_sync_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_value() :: #{
-%%   <<"time">> => string(),
-%%   <<"timestamp">> => non_neg_integer(),
-%%   <<"value">> => data_value()
-%% }
--type property_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_component_type_request() :: #{
-%%   <<"componentTypeName">> => string(),
-%%   <<"compositeComponentTypes">> => map(),
-%%   <<"description">> => string(),
-%%   <<"extendsFrom">> => list(string()),
-%%   <<"functions">> => map(),
-%%   <<"isSingleton">> => boolean(),
-%%   <<"propertyDefinitions">> => map(),
-%%   <<"propertyGroups">> => map()
-%% }
--type update_component_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_group_request() :: #{
-%%   <<"groupType">> => string(),
-%%   <<"propertyNames">> => list(string())
-%% }
--type property_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_property_reference() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentPath">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"externalIdProperty">> => map(),
-%%   <<"propertyName">> => string()
-%% }
--type entity_property_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_property_error() :: #{
-%%   <<"entry">> => property_value_entry(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_put_property_error() :: #{binary() => any()}.
-
-%% Example:
-%% get_metadata_transfer_job_request() :: #{}
--type get_metadata_transfer_job_request() :: #{}.
-
-
-%% Example:
-%% property_value_entry() :: #{
-%%   <<"entityPropertyReference">> => entity_property_reference(),
-%%   <<"propertyValues">> => list(property_value())
-%% }
--type property_value_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_property_group_request() :: #{
-%%   <<"groupType">> => string(),
-%%   <<"propertyNames">> => list(string()),
-%%   <<"updateType">> => string()
-%% }
--type component_property_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metadata_transfer_job_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"destination">> => destination_configuration(),
-%%   <<"metadataTransferJobId">> => string(),
-%%   <<"metadataTransferJobRole">> => string(),
-%%   <<"progress">> => metadata_transfer_job_progress(),
-%%   <<"reportUrl">> => string(),
-%%   <<"sources">> => list(source_configuration()),
-%%   <<"status">> => metadata_transfer_job_status(),
-%%   <<"updateDateTime">> => non_neg_integer()
-%% }
--type get_metadata_transfer_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_property_value_history_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"propertyValues">> := list(property_value_history())
+%%   <<"queryStatement">> := string(),
+%%   <<"workspaceId">> := string()
 %% }
--type get_property_value_history_response() :: #{binary() => any()}.
+-type execute_query_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_put_property_values_request() :: #{
-%%   <<"entries">> := list(property_value_entry())
+%% execute_query_response() :: #{
+%%   <<"columnDescriptions">> => list(column_description()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(row())
 %% }
--type batch_put_property_values_request() :: #{binary() => any()}.
+-type execute_query_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% filter_by_asset() :: #{
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"includeAssetModel">> => boolean(),
+%%   <<"includeOffspring">> => boolean()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type filter_by_asset() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% filter_by_asset_model() :: #{
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"includeAssets">> => boolean(),
+%%   <<"includeOffspring">> => boolean()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type filter_by_asset_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_by_component_type() :: #{
+%%   <<"componentTypeId">> => string()
+%% }
+-type filter_by_component_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_by_entity() :: #{
+%%   <<"entityId">> => string()
+%% }
+-type filter_by_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_request() :: #{
+%%   <<"implementedBy">> => data_connector(),
+%%   <<"requiredProperties">> => list(string()),
+%%   <<"scope">> => string()
+%% }
+-type function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_response() :: #{
+%%   <<"implementedBy">> => data_connector(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"requiredProperties">> => list(string()),
+%%   <<"scope">> => string()
+%% }
+-type function_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_component_type_request() :: #{}
+-type get_component_type_request() :: #{}.
 
 
 %% Example:
@@ -661,114 +664,113 @@
 %% }
 -type get_component_type_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_entity_request() :: #{}
+-type get_entity_request() :: #{}.
+
 
 %% Example:
-%% sync_resource_status() :: #{
-%%   <<"error">> => error_details(),
-%%   <<"state">> => string()
+%% get_entity_response() :: #{
+%%   <<"areAllComponentsReturned">> => boolean(),
+%%   <<"arn">> := string(),
+%%   <<"components">> => map(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> := string(),
+%%   <<"entityName">> := string(),
+%%   <<"hasChildEntities">> := boolean(),
+%%   <<"parentEntityId">> := string(),
+%%   <<"status">> := status(),
+%%   <<"syncSource">> => string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
 %% }
--type sync_resource_status() :: #{binary() => any()}.
+-type get_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_metadata_transfer_job_request() :: #{}
+-type get_metadata_transfer_job_request() :: #{}.
 
 
 %% Example:
-%% list_components_request() :: #{
+%% get_metadata_transfer_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"destination">> => destination_configuration(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"metadataTransferJobRole">> => string(),
+%%   <<"progress">> => metadata_transfer_job_progress(),
+%%   <<"reportUrl">> => string(),
+%%   <<"sources">> => list(source_configuration()),
+%%   <<"status">> => metadata_transfer_job_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type get_metadata_transfer_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_pricing_plan_request() :: #{}
+-type get_pricing_plan_request() :: #{}.
+
+
+%% Example:
+%% get_pricing_plan_response() :: #{
+%%   <<"currentPricingPlan">> := pricing_plan(),
+%%   <<"pendingPricingPlan">> => pricing_plan()
+%% }
+-type get_pricing_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_property_value_history_request() :: #{
+%%   <<"componentName">> => string(),
 %%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"endDateTime">> => non_neg_integer(),
+%%   <<"endTime">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"interpolation">> => interpolation_parameters(),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_components_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sync_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"syncJobSummaries">> => list(sync_job_summary())
+%%   <<"orderByTime">> => string(),
+%%   <<"propertyFilters">> => list(property_filter()),
+%%   <<"selectedProperties">> := list(string()),
+%%   <<"startDateTime">> => non_neg_integer(),
+%%   <<"startTime">> => string()
 %% }
--type list_sync_jobs_response() :: #{binary() => any()}.
+-type get_property_value_history_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_entity_request() :: #{
-%%   <<"isRecursive">> => boolean()
+%% get_property_value_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertyValues">> := list(property_value_history())
 %% }
--type delete_entity_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_workspace_request() :: #{}
--type get_workspace_request() :: #{}.
+-type get_property_value_history_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_put_property_values_response() :: #{
-%%   <<"errorEntries">> := list(batch_put_property_error_entry())
+%% get_property_value_request() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyGroupName">> => string(),
+%%   <<"selectedProperties">> := list(string()),
+%%   <<"tabularConditions">> => tabular_conditions()
 %% }
--type batch_put_property_values_response() :: #{binary() => any()}.
+-type get_property_value_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_sync_job_request() :: #{
-%%   <<"syncRole">> := string(),
-%%   <<"tags">> => map()
+%% get_property_value_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertyValues">> => map(),
+%%   <<"tabularPropertyValues">> => list(list(map())())
 %% }
--type create_sync_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% row() :: #{
-%%   <<"rowData">> => list(any())
-%% }
--type row() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_definition_request() :: #{
-%%   <<"configuration">> => map(),
-%%   <<"dataType">> => data_type(),
-%%   <<"defaultValue">> => data_value(),
-%%   <<"displayName">> => string(),
-%%   <<"isExternalId">> => boolean(),
-%%   <<"isRequiredInEntity">> => boolean(),
-%%   <<"isStoredExternally">> => boolean(),
-%%   <<"isTimeSeries">> => boolean()
-%% }
--type property_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% composite_component_type_request() :: #{
-%%   <<"componentTypeId">> => string()
-%% }
--type composite_component_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sync_job_status() :: #{
-%%   <<"error">> => error_details(),
-%%   <<"state">> => string()
-%% }
--type sync_job_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_configuration() :: #{
-%%   <<"location">> => string()
-%% }
--type s3_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% scene_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type scene_error() :: #{binary() => any()}.
+-type get_property_value_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_scene_request() :: #{}
@@ -793,30 +795,234 @@
 
 
 %% Example:
-%% component_request() :: #{
-%%   <<"componentTypeId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"properties">> => map(),
-%%   <<"propertyGroups">> => map()
+%% get_sync_job_request() :: #{
+%%   <<"workspaceId">> => string()
 %% }
--type component_request() :: #{binary() => any()}.
+-type get_sync_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_sync_job_response() :: #{
+%% get_sync_job_response() :: #{
 %%   <<"arn">> := string(),
 %%   <<"creationDateTime">> := non_neg_integer(),
-%%   <<"state">> := string()
+%%   <<"status">> := sync_job_status(),
+%%   <<"syncRole">> := string(),
+%%   <<"syncSource">> := string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
 %% }
--type create_sync_job_response() :: #{binary() => any()}.
+-type get_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workspace_request() :: #{}
+-type get_workspace_request() :: #{}.
 
 
 %% Example:
-%% error_details() :: #{
-%%   <<"code">> => string(),
+%% get_workspace_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"linkedServices">> => list(string()),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type error_details() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% interpolation_parameters() :: #{
+%%   <<"interpolationType">> => string(),
+%%   <<"intervalInSeconds">> => float()
+%% }
+-type interpolation_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_site_wise_source_configuration() :: #{
+%%   <<"filters">> => list(list())
+%% }
+-type iot_site_wise_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_twin_maker_destination_configuration() :: #{
+%%   <<"workspace">> => string()
+%% }
+-type iot_twin_maker_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% iot_twin_maker_source_configuration() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"workspace">> => string()
+%% }
+-type iot_twin_maker_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_types_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_types_response() :: #{
+%%   <<"componentTypeSummaries">> := list(component_type_summary()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type list_component_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"componentPath">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"componentSummaries">> => list(component_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entities_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entities_response() :: #{
+%%   <<"entitySummaries">> => list(entity_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metadata_transfer_jobs_request() :: #{
+%%   <<"destinationType">> := string(),
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceType">> := string()
+%% }
+-type list_metadata_transfer_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metadata_transfer_jobs_response() :: #{
+%%   <<"metadataTransferJobSummaries">> => list(metadata_transfer_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metadata_transfer_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_properties_request() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"entityId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_properties_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_properties_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertySummaries">> => list(property_summary())
+%% }
+-type list_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scenes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scenes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scenes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sceneSummaries">> => list(scene_summary())
+%% }
+-type list_scenes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sync_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sync_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sync_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syncJobSummaries">> => list(sync_job_summary())
+%% }
+-type list_sync_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sync_resources_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sync_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sync_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syncResources">> => list(sync_resource_summary())
+%% }
+-type list_sync_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -828,35 +1034,29 @@
 
 
 %% Example:
-%% update_pricing_plan_response() :: #{
-%%   <<"currentPricingPlan">> := pricing_plan(),
-%%   <<"pendingPricingPlan">> => pricing_plan()
+%% list_workspaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_pricing_plan_response() :: #{binary() => any()}.
+-type list_workspaces_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_configuration() :: #{
-%%   <<"iotSiteWiseConfiguration">> => iot_site_wise_source_configuration(),
-%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_source_configuration(),
-%%   <<"s3Configuration">> => s3_source_configuration(),
-%%   <<"type">> => string()
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceSummaries">> => list(workspace_summary())
 %% }
--type source_configuration() :: #{binary() => any()}.
+-type list_workspaces_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_put_property_error_entry() :: #{
-%%   <<"errors">> => list(batch_put_property_error())
+%% metadata_transfer_job_progress() :: #{
+%%   <<"failedCount">> => integer(),
+%%   <<"skippedCount">> => integer(),
+%%   <<"succeededCount">> => integer(),
+%%   <<"totalCount">> => integer()
 %% }
--type batch_put_property_error_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_response() :: #{
-%%   <<"updateDateTime">> := non_neg_integer()
-%% }
--type update_workspace_response() :: #{binary() => any()}.
+-type metadata_transfer_job_progress() :: #{binary() => any()}.
 
 
 %% Example:
@@ -866,93 +1066,6 @@
 %%   <<"state">> => string()
 %% }
 -type metadata_transfer_job_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% parent_entity_update_request() :: #{
-%%   <<"parentEntityId">> => string(),
-%%   <<"updateType">> => string()
-%% }
--type parent_entity_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_entity_response() :: #{
-%%   <<"state">> := string(),
-%%   <<"updateDateTime">> := non_neg_integer()
-%% }
--type update_entity_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_request() :: #{}
--type delete_workspace_request() :: #{}.
-
-
-%% Example:
-%% component_response() :: #{
-%%   <<"areAllCompositeComponentsReturned">> => boolean(),
-%%   <<"areAllPropertiesReturned">> => boolean(),
-%%   <<"componentName">> => string(),
-%%   <<"componentTypeId">> => string(),
-%%   <<"compositeComponents">> => map(),
-%%   <<"definedIn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"properties">> => map(),
-%%   <<"propertyGroups">> => map(),
-%%   <<"status">> => status(),
-%%   <<"syncSource">> => string()
-%% }
--type component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_type_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"componentTypeId">> => string(),
-%%   <<"componentTypeName">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"status">> => status(),
-%%   <<"updateDateTime">> => non_neg_integer()
-%% }
--type component_type_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_request() :: #{
-%%   <<"implementedBy">> => data_connector(),
-%%   <<"requiredProperties">> => list(string()),
-%%   <<"scope">> => string()
-%% }
--type function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"role">> => string(),
-%%   <<"s3Location">> => string()
-%% }
--type update_workspace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_group_response() :: #{
-%%   <<"groupType">> => string(),
-%%   <<"isInherited">> => boolean(),
-%%   <<"propertyNames">> => list(string())
-%% }
--type property_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_by_asset() :: #{
-%%   <<"assetExternalId">> => string(),
-%%   <<"assetId">> => string(),
-%%   <<"includeAssetModel">> => boolean(),
-%%   <<"includeOffspring">> => boolean()
-%% }
--type filter_by_asset() :: #{binary() => any()}.
 
 
 %% Example:
@@ -968,372 +1081,45 @@
 
 
 %% Example:
-%% data_connector() :: #{
-%%   <<"isNative">> => boolean(),
-%%   <<"lambda">> => lambda_function()
+%% order_by() :: #{
+%%   <<"order">> => string(),
+%%   <<"propertyName">> => string()
 %% }
--type data_connector() :: #{binary() => any()}.
+-type order_by() :: #{binary() => any()}.
 
 
 %% Example:
-%% property_summary() :: #{
-%%   <<"areAllPropertyValuesReturned">> => boolean(),
-%%   <<"definition">> => property_definition_response(),
-%%   <<"propertyName">> => string(),
-%%   <<"value">> => data_value()
-%% }
--type property_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_component_types_response() :: #{
-%%   <<"componentTypeSummaries">> := list(component_type_summary()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workspaceId">> := string()
-%% }
--type list_component_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sync_resource_summary() :: #{
-%%   <<"externalId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => sync_resource_status(),
-%%   <<"updateDateTime">> => non_neg_integer()
-%% }
--type sync_resource_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer()
-%% }
--type create_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sync_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"syncResources">> => list(sync_resource_summary())
-%% }
--type list_sync_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workspaceSummaries">> => list(workspace_summary())
-%% }
--type list_workspaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sync_job_request() :: #{}
--type delete_sync_job_request() :: #{}.
-
-
-%% Example:
-%% relationship_value() :: #{
-%%   <<"targetComponentName">> => string(),
-%%   <<"targetEntityId">> => string()
-%% }
--type relationship_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metadata_transfer_jobs_request() :: #{
-%%   <<"destinationType">> := string(),
-%%   <<"filters">> => list(list()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sourceType">> := string()
-%% }
--type list_metadata_transfer_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scene_response() :: #{}
--type delete_scene_response() :: #{}.
-
-
-%% Example:
-%% get_pricing_plan_response() :: #{
-%%   <<"currentPricingPlan">> := pricing_plan(),
-%%   <<"pendingPricingPlan">> => pricing_plan()
-%% }
--type get_pricing_plan_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_entity_request() :: #{
-%%   <<"components">> => map(),
-%%   <<"compositeComponents">> => map(),
-%%   <<"description">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"entityName">> := string(),
+%% parent_entity_update_request() :: #{
 %%   <<"parentEntityId">> => string(),
-%%   <<"tags">> => map()
+%%   <<"updateType">> => string()
 %% }
--type create_entity_request() :: #{binary() => any()}.
+-type parent_entity_update_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% property_filter() :: #{
-%%   <<"operator">> => string(),
-%%   <<"propertyName">> => string(),
-%%   <<"value">> => data_value()
+%% pricing_plan() :: #{
+%%   <<"billableEntityCount">> => float(),
+%%   <<"bundleInformation">> => bundle_information(),
+%%   <<"effectiveDateTime">> => non_neg_integer(),
+%%   <<"pricingMode">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"updateReason">> => string()
 %% }
--type property_filter() :: #{binary() => any()}.
+-type pricing_plan() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_sync_resources_request() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% property_definition_request() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"dataType">> => data_type(),
+%%   <<"defaultValue">> => data_value(),
+%%   <<"displayName">> => string(),
+%%   <<"isExternalId">> => boolean(),
+%%   <<"isRequiredInEntity">> => boolean(),
+%%   <<"isStoredExternally">> => boolean(),
+%%   <<"isTimeSeries">> => boolean()
 %% }
--type list_sync_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_transfer_job_progress() :: #{
-%%   <<"failedCount">> => integer(),
-%%   <<"skippedCount">> => integer(),
-%%   <<"succeededCount">> => integer(),
-%%   <<"totalCount">> => integer()
-%% }
--type metadata_transfer_job_progress() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% delete_component_type_request() :: #{}
--type delete_component_type_request() :: #{}.
-
-
-%% Example:
-%% property_response() :: #{
-%%   <<"areAllPropertyValuesReturned">> => boolean(),
-%%   <<"definition">> => property_definition_response(),
-%%   <<"value">> => data_value()
-%% }
--type property_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_by_component_type() :: #{
-%%   <<"componentTypeId">> => string()
-%% }
--type filter_by_component_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_entity_response() :: #{
-%%   <<"areAllComponentsReturned">> => boolean(),
-%%   <<"arn">> := string(),
-%%   <<"components">> => map(),
-%%   <<"creationDateTime">> := non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"entityId">> := string(),
-%%   <<"entityName">> := string(),
-%%   <<"hasChildEntities">> := boolean(),
-%%   <<"parentEntityId">> := string(),
-%%   <<"status">> := status(),
-%%   <<"syncSource">> => string(),
-%%   <<"updateDateTime">> := non_neg_integer(),
-%%   <<"workspaceId">> := string()
-%% }
--type get_entity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_by_asset_model() :: #{
-%%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelId">> => string(),
-%%   <<"includeAssets">> => boolean(),
-%%   <<"includeOffspring">> => boolean()
-%% }
--type filter_by_asset_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sync_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sync_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_workspaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_pricing_plan_request() :: #{
-%%   <<"bundleNames">> => list(string()),
-%%   <<"pricingMode">> := string()
-%% }
--type update_pricing_plan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_component_type_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"componentTypeId">> := string(),
-%%   <<"state">> := string(),
-%%   <<"workspaceId">> := string()
-%% }
--type update_component_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% execute_query_response() :: #{
-%%   <<"columnDescriptions">> => list(column_description()),
-%%   <<"nextToken">> => string(),
-%%   <<"rows">> => list(row())
-%% }
--type execute_query_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_timeout_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type query_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_component_type_response() :: #{
-%%   <<"state">> := string()
-%% }
--type delete_component_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_property_value_history_request() :: #{
-%%   <<"componentName">> => string(),
-%%   <<"componentPath">> => string(),
-%%   <<"componentTypeId">> => string(),
-%%   <<"endDateTime">> => non_neg_integer(),
-%%   <<"endTime">> => string(),
-%%   <<"entityId">> => string(),
-%%   <<"interpolation">> => interpolation_parameters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"orderByTime">> => string(),
-%%   <<"propertyFilters">> => list(property_filter()),
-%%   <<"selectedProperties">> := list(string()),
-%%   <<"startDateTime">> => non_neg_integer(),
-%%   <<"startTime">> => string()
-%% }
--type get_property_value_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_response() :: #{
-%%   <<"componentSummaries">> => list(component_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_entity_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer(),
-%%   <<"entityId">> := string(),
-%%   <<"state">> := string()
-%% }
--type create_entity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_metadata_transfer_job_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"destination">> := destination_configuration(),
-%%   <<"metadataTransferJobId">> => string(),
-%%   <<"sources">> := list(source_configuration())
-%% }
--type create_metadata_transfer_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bundle_information() :: #{
-%%   <<"bundleNames">> => list(string()),
-%%   <<"pricingTier">> => string()
-%% }
--type bundle_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_timeout_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type connector_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scene_request() :: #{
-%%   <<"capabilities">> => list(string()),
-%%   <<"contentLocation">> := string(),
-%%   <<"description">> => string(),
-%%   <<"sceneId">> := string(),
-%%   <<"sceneMetadata">> => map(),
-%%   <<"tags">> => map()
-%% }
--type create_scene_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metadata_transfer_jobs_response() :: #{
-%%   <<"metadataTransferJobSummaries">> => list(metadata_transfer_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_metadata_transfer_jobs_response() :: #{binary() => any()}.
+-type property_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1354,15 +1140,178 @@
 
 
 %% Example:
+%% property_filter() :: #{
+%%   <<"operator">> => string(),
+%%   <<"propertyName">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_group_request() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"propertyNames">> => list(string())
+%% }
+-type property_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_group_response() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"propertyNames">> => list(string())
+%% }
+-type property_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_latest_value() :: #{
+%%   <<"propertyReference">> => entity_property_reference(),
+%%   <<"propertyValue">> => data_value()
+%% }
+-type property_latest_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_request() :: #{
+%%   <<"definition">> => property_definition_request(),
+%%   <<"updateType">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_response() :: #{
+%%   <<"areAllPropertyValuesReturned">> => boolean(),
+%%   <<"definition">> => property_definition_response(),
+%%   <<"value">> => data_value()
+%% }
+-type property_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_summary() :: #{
+%%   <<"areAllPropertyValuesReturned">> => boolean(),
+%%   <<"definition">> => property_definition_response(),
+%%   <<"propertyName">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_value() :: #{
+%%   <<"time">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => data_value()
+%% }
+-type property_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_value_entry() :: #{
+%%   <<"entityPropertyReference">> => entity_property_reference(),
+%%   <<"propertyValues">> => list(property_value())
+%% }
+-type property_value_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% property_value_history() :: #{
 %%   <<"entityPropertyReference">> => entity_property_reference(),
 %%   <<"values">> => list(property_value())
 %% }
 -type property_value_history() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_scene_request() :: #{}
--type delete_scene_request() :: #{}.
+%% query_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% relationship() :: #{
+%%   <<"relationshipType">> => string(),
+%%   <<"targetComponentTypeId">> => string()
+%% }
+-type relationship() :: #{binary() => any()}.
+
+
+%% Example:
+%% relationship_value() :: #{
+%%   <<"targetComponentName">> => string(),
+%%   <<"targetEntityId">> => string()
+%% }
+-type relationship_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% row() :: #{
+%%   <<"rowData">> => list(any())
+%% }
+-type row() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"location">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source_configuration() :: #{
+%%   <<"location">> => string()
+%% }
+-type s3_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scene_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type scene_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% scene_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contentLocation">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"sceneId">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type scene_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"iotSiteWiseConfiguration">> => iot_site_wise_source_configuration(),
+%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_source_configuration(),
+%%   <<"s3Configuration">> => s3_source_configuration(),
+%%   <<"type">> => string()
+%% }
+-type source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1374,81 +1323,69 @@
 
 
 %% Example:
-%% function_response() :: #{
-%%   <<"implementedBy">> => data_connector(),
-%%   <<"isInherited">> => boolean(),
-%%   <<"requiredProperties">> => list(string()),
-%%   <<"scope">> => string()
+%% sync_job_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => string()
 %% }
--type function_response() :: #{binary() => any()}.
+-type sync_job_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_entities_response() :: #{
-%%   <<"entitySummaries">> => list(entity_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_entities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_by_entity() :: #{
-%%   <<"entityId">> => string()
-%% }
--type filter_by_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% iot_site_wise_source_configuration() :: #{
-%%   <<"filters">> => list(list())
-%% }
--type iot_site_wise_source_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_component_type_request() :: #{}
--type get_component_type_request() :: #{}.
-
-
-%% Example:
-%% interpolation_parameters() :: #{
-%%   <<"interpolationType">> => string(),
-%%   <<"intervalInSeconds">> => float()
-%% }
--type interpolation_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_component_types_request() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_component_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_value() :: #{
-%%   <<"booleanValue">> => boolean(),
-%%   <<"doubleValue">> => float(),
-%%   <<"expression">> => string(),
-%%   <<"integerValue">> => integer(),
-%%   <<"listValue">> => list(data_value()),
-%%   <<"longValue">> => float(),
-%%   <<"mapValue">> => map(),
-%%   <<"relationshipValue">> => relationship_value(),
-%%   <<"stringValue">> => string()
-%% }
--type data_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_metadata_transfer_job_response() :: #{
+%% sync_job_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"metadataTransferJobId">> => string(),
-%%   <<"status">> => metadata_transfer_job_status()
+%%   <<"status">> => sync_job_status(),
+%%   <<"syncSource">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"workspaceId">> => string()
 %% }
--type create_metadata_transfer_job_response() :: #{binary() => any()}.
+-type sync_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% sync_resource_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => string()
+%% }
+-type sync_resource_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% sync_resource_summary() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => sync_resource_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type sync_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tabular_conditions() :: #{
+%%   <<"orderBy">> => list(order_by()),
+%%   <<"propertyFilters">> => list(property_filter())
+%% }
+-type tabular_conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1459,53 +1396,74 @@
 
 
 %% Example:
-%% get_workspace_response() :: #{
-%%   <<"arn">> := string(),
-%%   <<"creationDateTime">> := non_neg_integer(),
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_component_type_request() :: #{
+%%   <<"componentTypeName">> => string(),
+%%   <<"compositeComponentTypes">> => map(),
 %%   <<"description">> => string(),
-%%   <<"linkedServices">> => list(string()),
-%%   <<"role">> => string(),
-%%   <<"s3Location">> => string(),
-%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"extendsFrom">> => list(string()),
+%%   <<"functions">> => map(),
+%%   <<"isSingleton">> => boolean(),
+%%   <<"propertyDefinitions">> => map(),
+%%   <<"propertyGroups">> => map()
+%% }
+-type update_component_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_component_type_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"componentTypeId">> := string(),
+%%   <<"state">> := string(),
 %%   <<"workspaceId">> := string()
 %% }
--type get_workspace_response() :: #{binary() => any()}.
+-type update_component_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scenes_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sceneSummaries">> => list(scene_summary())
-%% }
--type list_scenes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_configuration() :: #{
-%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_destination_configuration(),
-%%   <<"s3Configuration">> => s3_destination_configuration(),
-%%   <<"type">> => string()
-%% }
--type destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_request() :: #{
+%% update_entity_request() :: #{
+%%   <<"componentUpdates">> => map(),
+%%   <<"compositeComponentUpdates">> => map(),
 %%   <<"description">> => string(),
-%%   <<"role">> => string(),
-%%   <<"s3Location">> => string(),
-%%   <<"tags">> => map()
+%%   <<"entityName">> => string(),
+%%   <<"parentEntityUpdate">> => parent_entity_update_request()
 %% }
--type create_workspace_request() :: #{binary() => any()}.
+-type update_entity_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_property_value_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"propertyValues">> => map(),
-%%   <<"tabularPropertyValues">> => list(list(map())())
+%% update_entity_response() :: #{
+%%   <<"state">> := string(),
+%%   <<"updateDateTime">> := non_neg_integer()
 %% }
--type get_property_value_response() :: #{binary() => any()}.
+-type update_entity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_plan_request() :: #{
+%%   <<"bundleNames">> => list(string()),
+%%   <<"pricingMode">> := string()
+%% }
+-type update_pricing_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_pricing_plan_response() :: #{
+%%   <<"currentPricingPlan">> := pricing_plan(),
+%%   <<"pendingPricingPlan">> => pricing_plan()
+%% }
+-type update_pricing_plan_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1517,288 +1475,330 @@
 %% }
 -type update_scene_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_scene_response() :: #{
+%%   <<"updateDateTime">> := non_neg_integer()
+%% }
+-type update_scene_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string()
+%% }
+-type update_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_response() :: #{
+%%   <<"updateDateTime">> := non_neg_integer()
+%% }
+-type update_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"linkedServices">> => list(string()),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"workspaceId">> => string()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
+
 -type batch_put_property_values_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type cancel_metadata_transfer_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_component_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_entity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_metadata_transfer_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_scene_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_component_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_entity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_scene_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type execute_query_errors() ::
-    throttling_exception() | 
-    query_timeout_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    query_timeout_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type get_component_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_entity_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_metadata_transfer_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_pricing_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_property_value_errors() ::
-    connector_timeout_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    connector_failure_exception().
+    internal_server_exception() | 
+    connector_timeout_exception() | 
+    connector_failure_exception() | 
+    access_denied_exception().
 
 -type get_property_value_history_errors() ::
-    connector_timeout_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    connector_failure_exception().
+    internal_server_exception() | 
+    connector_timeout_exception() | 
+    connector_failure_exception() | 
+    access_denied_exception().
 
 -type get_scene_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_component_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_components_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_entities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type list_metadata_transfer_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_properties_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_scenes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sync_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_sync_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_workspaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_component_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type update_entity_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_entity_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_pricing_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_scene_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

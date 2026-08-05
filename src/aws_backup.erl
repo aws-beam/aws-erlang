@@ -292,68 +292,100 @@
 
 
 %% Example:
-%% list_restore_testing_plans_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_restore_testing_plans_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_job() :: #{
-%%   <<"CompletionTime">> => non_neg_integer(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ReportDestination">> => report_destination(),
-%%   <<"ReportJobId">> => string(),
-%%   <<"ReportPlanArn">> => string(),
-%%   <<"ReportTemplate">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type report_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_point_member() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"ResourceArn">> => string(),
+%% advanced_backup_setting() :: #{
+%%   <<"BackupOptions">> => map(),
 %%   <<"ResourceType">> => string()
 %% }
--type recovery_point_member() :: #{binary() => any()}.
+-type advanced_backup_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% missing_parameter_value_exception() :: #{
+%% aggregated_scan_result() :: #{
+%%   <<"FailedScan">> => boolean(),
+%%   <<"Findings">> => list(list(any())()),
+%%   <<"LastComputed">> => non_neg_integer()
+%% }
+-type aggregated_scan_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Code">> => string(),
 %%   <<"Context">> => string(),
+%%   <<"CreatorRequestId">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
--type missing_parameter_value_exception() :: #{binary() => any()}.
+-type already_exists_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_indexed_recovery_points_input() :: #{
-%%   <<"CreatedAfter">> => non_neg_integer(),
-%%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% associate_backup_vault_mpa_approval_team_input() :: #{
+%%   <<"MpaApprovalTeamArn">> := string(),
+%%   <<"RequesterComment">> => string()
+%% }
+-type associate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_job() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupJobId">> => string(),
+%%   <<"BackupOptions">> => map(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupType">> => string(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"BytesTransferred">> => float(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"ExpectedCompletionDate">> => non_neg_integer(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"IsEncrypted">> => boolean(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"RecoveryPointLifecycle">> => lifecycle(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
 %%   <<"ResourceType">> => string(),
-%%   <<"SourceResourceArn">> => string()
+%%   <<"StartBy">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VaultLockState">> => string(),
+%%   <<"VaultType">> => string()
 %% }
--type list_indexed_recovery_points_input() :: #{binary() => any()}.
+-type backup_job() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_backup_plan_output() :: #{
-%%   <<"BackupPlanArn">> => string(),
-%%   <<"BackupPlanId">> => string(),
-%%   <<"DeletionDate">> => non_neg_integer(),
-%%   <<"VersionId">> => string()
+%% backup_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
 %% }
--type delete_backup_plan_output() :: #{binary() => any()}.
+-type backup_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plan() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
+%%   <<"BackupPlanName">> => string(),
+%%   <<"Rules">> => list(backup_rule()),
+%%   <<"ScanSettings">> => list(scan_setting())
+%% }
+-type backup_plan() :: #{binary() => any()}.
 
 
 %% Example:
@@ -364,6 +396,14 @@
 %%   <<"ScanSettings">> => list(scan_setting())
 %% }
 -type backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_plan_templates_list_member() :: #{
+%%   <<"BackupPlanTemplateId">> => string(),
+%%   <<"BackupPlanTemplateName">> => string()
+%% }
+-type backup_plan_templates_list_member() :: #{binary() => any()}.
 
 
 %% Example:
@@ -380,66 +420,169 @@
 %% }
 -type backup_plans_list_member() :: #{binary() => any()}.
 
-%% Example:
-%% get_restore_job_metadata_input() :: #{}
--type get_restore_job_metadata_input() :: #{}.
 
 %% Example:
-%% get_restore_testing_plan_input() :: #{}
--type get_restore_testing_plan_input() :: #{}.
-
-
-%% Example:
-%% describe_recovery_point_input() :: #{
-%%   <<"BackupVaultAccountId">> => string()
+%% backup_rule() :: #{
+%%   <<"CompletionWindowMinutes">> => float(),
+%%   <<"CopyActions">> => list(copy_action()),
+%%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"IndexActions">> => list(index_action()),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"RuleId">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"ScanActions">> => list(scan_action()),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartWindowMinutes">> => float(),
+%%   <<"TargetBackupVaultName">> => string(),
+%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
 %% }
--type describe_recovery_point_input() :: #{binary() => any()}.
+-type backup_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_backup_vaults_output() :: #{
-%%   <<"BackupVaultList">> => list(backup_vault_list_member()),
-%%   <<"NextToken">> => string()
+%% backup_rule_input() :: #{
+%%   <<"CompletionWindowMinutes">> => float(),
+%%   <<"CopyActions">> => list(copy_action()),
+%%   <<"EnableContinuousBackup">> => boolean(),
+%%   <<"IndexActions">> => list(index_action()),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"RuleName">> => string(),
+%%   <<"ScanActions">> => list(scan_action()),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartWindowMinutes">> => float(),
+%%   <<"TargetBackupVaultName">> => string(),
+%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
 %% }
--type list_backup_vaults_output() :: #{binary() => any()}.
+-type backup_rule_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_recovery_point_lifecycle_input() :: #{
+%% backup_selection() :: #{
+%%   <<"Conditions">> => conditions(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"ListOfTags">> => list(condition()),
+%%   <<"NotResources">> => list(string()),
+%%   <<"Resources">> => list(string()),
+%%   <<"SelectionName">> => string()
+%% }
+-type backup_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_selections_list_member() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"SelectionId">> => string(),
+%%   <<"SelectionName">> => string()
+%% }
+-type backup_selections_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_vault_list_member() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyType">> => list(any()),
+%%   <<"LockDate">> => non_neg_integer(),
+%%   <<"Locked">> => boolean(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float(),
+%%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"VaultState">> => list(any()),
+%%   <<"VaultType">> => list(any())
+%% }
+-type backup_vault_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_lifecycle() :: #{
+%%   <<"DeleteAt">> => non_neg_integer(),
+%%   <<"MoveToColdStorageAt">> => non_neg_integer()
+%% }
+-type calculated_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_legal_hold_input() :: #{
+%%   <<"CancelDescription">> := string(),
+%%   <<"RetainRecordInDays">> => float()
+%% }
+-type cancel_legal_hold_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_legal_hold_output() :: #{}
+-type cancel_legal_hold_output() :: #{}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionType">> => list(any()),
+%%   <<"ConditionValue">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_parameter() :: #{
+%%   <<"ConditionKey">> => string(),
+%%   <<"ConditionValue">> => string()
+%% }
+-type condition_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditions() :: #{
+%%   <<"StringEquals">> => list(condition_parameter()),
+%%   <<"StringLike">> => list(condition_parameter()),
+%%   <<"StringNotEquals">> => list(condition_parameter()),
+%%   <<"StringNotLike">> => list(condition_parameter())
+%% }
+-type conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_input_parameter() :: #{
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string()
+%% }
+-type control_input_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_scope() :: #{
+%%   <<"ComplianceResourceIds">> => list(string()),
+%%   <<"ComplianceResourceTypes">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type control_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_action() :: #{
+%%   <<"DestinationBackupVaultArn">> => string(),
 %%   <<"Lifecycle">> => lifecycle()
 %% }
--type update_recovery_point_lifecycle_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_point_creator() :: #{
-%%   <<"BackupPlanArn">> => string(),
-%%   <<"BackupPlanId">> => string(),
-%%   <<"BackupPlanName">> => string(),
-%%   <<"BackupPlanVersion">> => string(),
-%%   <<"BackupRuleCron">> => string(),
-%%   <<"BackupRuleId">> => string(),
-%%   <<"BackupRuleName">> => string(),
-%%   <<"BackupRuleTimezone">> => string()
-%% }
--type recovery_point_creator() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_backup_job_input() :: #{
-%%   <<"BackupOptions">> => map(),
-%%   <<"BackupVaultName">> := string(),
-%%   <<"CompleteWindowMinutes">> => float(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"Index">> => list(any()),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"LogicallyAirGappedBackupVaultArn">> => string(),
-%%   <<"RecoveryPointTags">> => map(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"StartWindowMinutes">> => float()
-%% }
--type start_backup_job_input() :: #{binary() => any()}.
+-type copy_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,915 +619,6 @@
 
 
 %% Example:
-%% list_protected_resources_by_backup_vault_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(protected_resource())
-%% }
--type list_protected_resources_by_backup_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_report_plan_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ReportPlanArn">> => string(),
-%%   <<"ReportPlanName">> => string()
-%% }
--type create_report_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_restore_testing_selection_input() :: #{
-%%   <<"CreatorRequestId">> => [string()],
-%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_create()
-%% }
--type create_restore_testing_selection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_region_settings_output() :: #{
-%%   <<"ResourceTypeManagementPreference">> => map(),
-%%   <<"ResourceTypeOptInPreference">> => map()
-%% }
--type describe_region_settings_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_restore_testing_plan_input() :: #{}
--type delete_restore_testing_plan_input() :: #{}.
-
-
-%% Example:
-%% create_backup_plan_output() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
-%%   <<"BackupPlanArn">> => string(),
-%%   <<"BackupPlanId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"VersionId">> => string()
-%% }
--type create_backup_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_restore_job_input() :: #{
-%%   <<"CopySourceTagsToRestoredResource">> => boolean(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"Metadata">> := map(),
-%%   <<"RecoveryPointArn">> := string(),
-%%   <<"ResourceType">> => string()
-%% }
--type start_restore_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_plan() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
-%%   <<"BackupPlanName">> => string(),
-%%   <<"Rules">> => list(backup_rule()),
-%%   <<"ScanSettings">> => list(scan_setting())
-%% }
--type backup_plan() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_point_by_backup_vault() :: #{
-%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
-%%   <<"BackupSizeInBytes">> => float(),
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CompositeMemberIdentifier">> => string(),
-%%   <<"CreatedBy">> => recovery_point_creator(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyType">> => list(any()),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"IndexStatusMessage">> => string(),
-%%   <<"InitiationDate">> => non_neg_integer(),
-%%   <<"IsEncrypted">> => boolean(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"LastRestoreTime">> => non_neg_integer(),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"ParentRecoveryPointArn">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SourceBackupVaultArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VaultType">> => list(any())
-%% }
--type recovery_point_by_backup_vault() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_selection_for_list() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceType">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"RestoreTestingSelectionName">> => [string()],
-%%   <<"ValidationWindowHours">> => integer()
-%% }
--type restore_testing_selection_for_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_jobs_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReportJobs">> => list(report_job())
-%% }
--type list_report_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_plan_input() :: #{
-%%   <<"MaxScheduledRunsPreview">> => integer(),
-%%   <<"VersionId">> => string()
-%% }
--type get_backup_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_report_job_output() :: #{
-%%   <<"ReportJobId">> => string()
-%% }
--type start_report_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_plan_templates_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_plan_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_restore_job_metadata_output() :: #{
-%%   <<"Metadata">> => map(),
-%%   <<"RestoreJobId">> => string()
-%% }
--type get_restore_job_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_plan_from_json_output() :: #{
-%%   <<"BackupPlan">> => backup_plan()
-%% }
--type get_backup_plan_from_json_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% already_exists_exception() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_plan_for_list() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"LastExecutionTime">> => [non_neg_integer()],
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"ScheduleExpression">> => [string()],
-%%   <<"ScheduleExpressionTimezone">> => [string()],
-%%   <<"StartWindowHours">> => integer()
-%% }
--type restore_testing_plan_for_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_plan_for_update() :: #{
-%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
-%%   <<"ScheduleExpression">> => [string()],
-%%   <<"ScheduleExpressionTimezone">> => [string()],
-%%   <<"StartWindowHours">> => integer()
-%% }
--type restore_testing_plan_for_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_plan() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentStatus">> => string(),
-%%   <<"LastAttemptedExecutionTime">> => non_neg_integer(),
-%%   <<"LastSuccessfulExecutionTime">> => non_neg_integer(),
-%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
-%%   <<"ReportPlanArn">> => string(),
-%%   <<"ReportPlanDescription">> => string(),
-%%   <<"ReportPlanName">> => string(),
-%%   <<"ReportSetting">> => report_setting()
-%% }
--type report_plan() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_destination() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3Keys">> => list(string())
-%% }
--type report_destination() :: #{binary() => any()}.
-
-%% Example:
-%% describe_global_settings_input() :: #{}
--type describe_global_settings_input() :: #{}.
-
-%% Example:
-%% disassociate_recovery_point_input() :: #{}
--type disassociate_recovery_point_input() :: #{}.
-
-
-%% Example:
-%% protected_resource() :: #{
-%%   <<"LastBackupTime">> => non_neg_integer(),
-%%   <<"LastBackupVaultArn">> => string(),
-%%   <<"LastRecoveryPointArn">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type protected_resource() :: #{binary() => any()}.
-
-%% Example:
-%% stop_backup_job_input() :: #{}
--type stop_backup_job_input() :: #{}.
-
-
-%% Example:
-%% aggregated_scan_result() :: #{
-%%   <<"FailedScan">> => boolean(),
-%%   <<"Findings">> => list(list(any())()),
-%%   <<"LastComputed">> => non_neg_integer()
-%% }
--type aggregated_scan_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backup_vault_input() :: #{
-%%   <<"BackupVaultTags">> => map(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"EncryptionKeyArn">> => string()
-%% }
--type create_backup_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_plan_output() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
-%%   <<"BackupPlan">> => backup_plan(),
-%%   <<"BackupPlanArn">> => string(),
-%%   <<"BackupPlanId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"DeletionDate">> => non_neg_integer(),
-%%   <<"LastExecutionDate">> => non_neg_integer(),
-%%   <<"ScheduledRunsPreview">> => list(scheduled_plan_execution_member()),
-%%   <<"VersionId">> => string()
-%% }
--type get_backup_plan_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_framework_input() :: #{}
--type describe_framework_input() :: #{}.
-
-
-%% Example:
-%% scan_job_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"Region">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ScanResultStatus">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type scan_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_plans_output() :: #{
-%%   <<"BackupPlansList">> => list(backup_plans_list_member()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_plans_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_selections_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_selections_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_job_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Region">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type restore_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_tiering_configuration_input() :: #{
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"TieringConfiguration">> := tiering_configuration_input_for_create(),
-%%   <<"TieringConfigurationTags">> => map()
-%% }
--type create_tiering_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backup_vault_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer()
-%% }
--type create_backup_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_restore_testing_plan_output() :: #{
-%%   <<"RestoreTestingPlan">> => restore_testing_plan_for_get()
-%% }
--type get_restore_testing_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition_parameter() :: #{
-%%   <<"ConditionKey">> => string(),
-%%   <<"ConditionValue">> => string()
-%% }
--type condition_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_legal_hold_input() :: #{
-%%   <<"Description">> := string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
-%%   <<"Tags">> => map(),
-%%   <<"Title">> := string()
-%% }
--type create_legal_hold_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_result() :: #{
-%%   <<"Findings">> => list(list(any())()),
-%%   <<"LastScanTimestamp">> => non_neg_integer(),
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"ScanJobState">> => list(any())
-%% }
--type scan_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_selection_input() :: #{}
--type delete_backup_selection_input() :: #{}.
-
-
-%% Example:
-%% restore_jobs_list_member() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BackupSizeInBytes">> => float(),
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => restore_job_creator(),
-%%   <<"CreatedResourceArn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"DeletionStatus">> => list(any()),
-%%   <<"DeletionStatusMessage">> => string(),
-%%   <<"ExpectedCompletionTimeMinutes">> => float(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"ParentJobId">> => string(),
-%%   <<"PercentDone">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
-%%   <<"ResourceType">> => string(),
-%%   <<"RestoreJobId">> => string(),
-%%   <<"SourceResourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"ValidationStatus">> => list(any()),
-%%   <<"ValidationStatusMessage">> => string()
-%% }
--type restore_jobs_list_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_testing_plans_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list())
-%% }
--type list_restore_testing_plans_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_jobs_input() :: #{
-%%   <<"ByCreationAfter">> => non_neg_integer(),
-%%   <<"ByCreationBefore">> => non_neg_integer(),
-%%   <<"ByReportPlanName">> => string(),
-%%   <<"ByStatus">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_report_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_scan_job_input() :: #{
-%%   <<"BackupVaultName">> := [string()],
-%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
-%%   <<"IamRoleArn">> := [string()],
-%%   <<"IdempotencyToken">> => [string()],
-%%   <<"MalwareScanner">> := list(any()),
-%%   <<"RecoveryPointArn">> := [string()],
-%%   <<"ScanBaseRecoveryPointArn">> => [string()],
-%%   <<"ScanMode">> := list(any()),
-%%   <<"ScannerRoleArn">> := [string()]
-%% }
--type start_scan_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recovery_point_index_settings_output() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"Index">> => list(any()),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"RecoveryPointArn">> => string()
-%% }
--type update_recovery_point_index_settings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_p_i_t_r_malware_scan_results_input() :: #{
-%%   <<"BackupVaultName">> := [string()],
-%%   <<"MalwareScanner">> := list(any()),
-%%   <<"RecoveryPointArn">> := [string()],
-%%   <<"ScanEndTime">> := [non_neg_integer()]
-%% }
--type get_p_i_t_r_malware_scan_results_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_backup_vault_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyType">> => list(any()),
-%%   <<"LatestMpaApprovalTeamUpdate">> => latest_mpa_approval_team_update(),
-%%   <<"LockDate">> => non_neg_integer(),
-%%   <<"Locked">> => boolean(),
-%%   <<"MaxRetentionDays">> => float(),
-%%   <<"MinRetentionDays">> => float(),
-%%   <<"MpaApprovalTeamArn">> => string(),
-%%   <<"MpaSessionArn">> => string(),
-%%   <<"NumberOfRecoveryPoints">> => float(),
-%%   <<"SourceBackupVaultArn">> => string(),
-%%   <<"VaultState">> => list(any()),
-%%   <<"VaultType">> => list(any())
-%% }
--type describe_backup_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tiering_configuration_output() :: #{
-%%   <<"TieringConfiguration">> => tiering_configuration()
-%% }
--type get_tiering_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_testing_selections_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_restore_testing_selections_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_job_summaries_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MessageCategory">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_backup_job_summaries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_backup_vault_notifications_input() :: #{
-%%   <<"BackupVaultEvents">> := list(list(any())()),
-%%   <<"SNSTopicArn">> := string()
-%% }
--type put_backup_vault_notifications_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_restore_access_backup_vault_output() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"RestoreAccessBackupVaultArn">> => string(),
-%%   <<"RestoreAccessBackupVaultName">> => string(),
-%%   <<"VaultState">> => list(any())
-%% }
--type create_restore_access_backup_vault_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_protected_resource_input() :: #{}
--type describe_protected_resource_input() :: #{}.
-
-%% Example:
-%% cancel_legal_hold_output() :: #{}
--type cancel_legal_hold_output() :: #{}.
-
-
-%% Example:
-%% describe_scan_job_output() :: #{
-%%   <<"AccountId">> => [string()],
-%%   <<"BackupVaultArn">> => [string()],
-%%   <<"BackupVaultName">> => [string()],
-%%   <<"CompletionDate">> => [non_neg_integer()],
-%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
-%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
-%%   <<"CreatedBy">> => scan_job_creator(),
-%%   <<"CreationDate">> => [non_neg_integer()],
-%%   <<"IamRoleArn">> => [string()],
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"RecoveryPointArn">> => [string()],
-%%   <<"ResourceArn">> => [string()],
-%%   <<"ResourceName">> => [string()],
-%%   <<"ResourceType">> => list(any()),
-%%   <<"ScanBaseRecoveryPointArn">> => [string()],
-%%   <<"ScanId">> => [string()],
-%%   <<"ScanJobId">> => [string()],
-%%   <<"ScanMode">> => list(any()),
-%%   <<"ScanResult">> => scan_result_info(),
-%%   <<"ScannerRoleArn">> => [string()],
-%%   <<"State">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
-%% }
--type describe_scan_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_scope() :: #{
-%%   <<"ComplianceResourceIds">> => list(string()),
-%%   <<"ComplianceResourceTypes">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type control_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_legal_hold_output() :: #{
-%%   <<"CancelDescription">> => string(),
-%%   <<"CancellationDate">> => non_neg_integer(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LegalHoldArn">> => string(),
-%%   <<"LegalHoldId">> => string(),
-%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
-%%   <<"RetainRecordUntil">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type get_legal_hold_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_backup_vault_mpa_approval_team_input() :: #{
-%%   <<"RequesterComment">> => string()
-%% }
--type disassociate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% framework_control() :: #{
-%%   <<"ControlInputParameters">> => list(control_input_parameter()),
-%%   <<"ControlName">> => string(),
-%%   <<"ControlScope">> => control_scope()
-%% }
--type framework_control() :: #{binary() => any()}.
-
-%% Example:
-%% get_tiering_configuration_input() :: #{}
--type get_tiering_configuration_input() :: #{}.
-
-
-%% Example:
-%% scan_job() :: #{
-%%   <<"AccountId">> => [string()],
-%%   <<"BackupVaultArn">> => [string()],
-%%   <<"BackupVaultName">> => [string()],
-%%   <<"CompletionDate">> => [non_neg_integer()],
-%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
-%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
-%%   <<"CreatedBy">> => scan_job_creator(),
-%%   <<"CreationDate">> => [non_neg_integer()],
-%%   <<"IamRoleArn">> => [string()],
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"RecoveryPointArn">> => [string()],
-%%   <<"ResourceArn">> => [string()],
-%%   <<"ResourceName">> => [string()],
-%%   <<"ResourceType">> => list(any()),
-%%   <<"ScanBaseRecoveryPointArn">> => [string()],
-%%   <<"ScanId">> => [string()],
-%%   <<"ScanJobId">> => [string()],
-%%   <<"ScanMode">> => list(any()),
-%%   <<"ScanResult">> => scan_result_info(),
-%%   <<"ScannerRoleArn">> => [string()],
-%%   <<"State">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
-%% }
--type scan_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_jobs_output() :: #{
-%%   <<"BackupJobs">> => list(backup_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_jobs_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_backup_plan_from_template_input() :: #{}
--type get_backup_plan_from_template_input() :: #{}.
-
-
-%% Example:
-%% update_recovery_point_index_settings_input() :: #{
-%%   <<"IamRoleArn">> => string(),
-%%   <<"Index">> := list(any())
-%% }
--type update_recovery_point_index_settings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_backup_plan_template_output() :: #{
-%%   <<"BackupPlanTemplateJson">> => string()
-%% }
--type export_backup_plan_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backup_plan_input() :: #{
-%%   <<"BackupPlan">> := backup_plan_input()
-%% }
--type update_backup_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_plans_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReportPlans">> => list(report_plan())
-%% }
--type list_report_plans_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_selection() :: #{
-%%   <<"ResourceType">> => string(),
-%%   <<"Resources">> => list(string()),
-%%   <<"TieringDownSettingsInDays">> => integer()
-%% }
--type resource_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_selection() :: #{
-%%   <<"Conditions">> => conditions(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"ListOfTags">> => list(condition()),
-%%   <<"NotResources">> => list(string()),
-%%   <<"Resources">> => list(string()),
-%%   <<"SelectionName">> => string()
-%% }
--type backup_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_region_settings_input() :: #{
-%%   <<"ResourceTypeManagementPreference">> => map(),
-%%   <<"ResourceTypeOptInPreference">> => map()
-%% }
--type update_region_settings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_legal_holds_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_legal_holds_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_recovery_point_index_details_input() :: #{}
--type get_recovery_point_index_details_input() :: #{}.
-
-
-%% Example:
-%% lifecycle() :: #{
-%%   <<"DeleteAfterDays">> => float(),
-%%   <<"DeleteAfterEvent">> => list(any()),
-%%   <<"MoveToColdStorageAfterDays">> => float(),
-%%   <<"OptInToArchiveForSupportedResources">> => boolean()
-%% }
--type lifecycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% revoke_restore_access_backup_vault_input() :: #{
-%%   <<"RequesterComment">> => string()
-%% }
--type revoke_restore_access_backup_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recovery_points_by_legal_hold_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recovery_points_by_legal_hold_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backup_selection_output() :: #{
-%%   <<"BackupPlanId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"SelectionId">> => string()
-%% }
--type create_backup_selection_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_restore_testing_selection_input() :: #{}
--type get_restore_testing_selection_input() :: #{}.
-
-
-%% Example:
-%% protected_resource_conditions() :: #{
-%%   <<"StringEquals">> => list(key_value()),
-%%   <<"StringNotEquals">> => list(key_value())
-%% }
--type protected_resource_conditions() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_input_parameter() :: #{
-%%   <<"ParameterName">> => string(),
-%%   <<"ParameterValue">> => string()
-%% }
--type control_input_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculated_lifecycle() :: #{
-%%   <<"DeleteAt">> => non_neg_integer(),
-%%   <<"MoveToColdStorageAt">> => non_neg_integer()
-%% }
--type calculated_lifecycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_action() :: #{
-%%   <<"DestinationBackupVaultArn">> => string(),
-%%   <<"Lifecycle">> => lifecycle()
-%% }
--type copy_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_framework_input() :: #{
-%%   <<"FrameworkControls">> => list(framework_control()),
-%%   <<"FrameworkDescription">> => string(),
-%%   <<"IdempotencyToken">> => string()
-%% }
--type update_framework_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% latest_mpa_approval_team_update() :: #{
-%%   <<"ExpiryDate">> => non_neg_integer(),
-%%   <<"InitiationDate">> => non_neg_integer(),
-%%   <<"MpaSessionArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type latest_mpa_approval_team_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_restore_testing_inferred_metadata_input() :: #{
-%%   <<"BackupVaultAccountId">> => [string()],
-%%   <<"BackupVaultName">> := [string()],
-%%   <<"RecoveryPointArn">> := [string()]
-%% }
--type get_restore_testing_inferred_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_backup_vault_access_policy_input() :: #{}
--type get_backup_vault_access_policy_input() :: #{}.
-
-
-%% Example:
-%% tiering_configuration_input_for_create() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"ResourceSelection">> => list(resource_selection()),
-%%   <<"TieringConfigurationName">> => string()
-%% }
--type tiering_configuration_input_for_create() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_tiering_configuration_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"TieringConfigurationArn">> => string(),
-%%   <<"TieringConfigurationName">> => string()
-%% }
--type create_tiering_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_report_plans_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_report_plans_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backup_selection_input() :: #{
-%%   <<"BackupSelection">> := backup_selection(),
-%%   <<"CreatorRequestId">> => string()
-%% }
--type create_backup_selection_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_backup_vault_access_policy_input() :: #{
-%%   <<"Policy">> => string()
-%% }
--type put_backup_vault_access_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_jobs_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
-%% }
--type list_restore_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_restore_job_output() :: #{
-%%   <<"RestoreJobId">> => string()
-%% }
--type start_restore_job_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% copy_job_summary() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Count">> => integer(),
@@ -1399,160 +633,302 @@
 
 
 %% Example:
-%% associate_backup_vault_mpa_approval_team_input() :: #{
-%%   <<"MpaApprovalTeamArn">> := string(),
-%%   <<"RequesterComment">> => string()
+%% create_backup_plan_input() :: #{
+%%   <<"BackupPlan">> := backup_plan_input(),
+%%   <<"BackupPlanTags">> => map(),
+%%   <<"CreatorRequestId">> => string()
 %% }
--type associate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
+-type create_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_plan_output() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type create_backup_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_selection_input() :: #{
+%%   <<"BackupSelection">> := backup_selection(),
+%%   <<"CreatorRequestId">> => string()
+%% }
+-type create_backup_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_selection_output() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"SelectionId">> => string()
+%% }
+-type create_backup_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_vault_input() :: #{
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string()
+%% }
+-type create_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer()
+%% }
+-type create_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_framework_input() :: #{
+%%   <<"FrameworkControls">> := list(framework_control()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> := string(),
+%%   <<"FrameworkTags">> => map(),
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type create_framework_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_framework_output() :: #{
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkName">> => string()
+%% }
+-type create_framework_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_legal_hold_input() :: #{
+%%   <<"Description">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> := string()
+%% }
+-type create_legal_hold_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_legal_hold_output() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type create_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logically_air_gapped_backup_vault_input() :: #{
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"MaxRetentionDays">> := float(),
+%%   <<"MinRetentionDays">> := float()
+%% }
+-type create_logically_air_gapped_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logically_air_gapped_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type create_logically_air_gapped_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_plan_input() :: #{
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ReportDeliveryChannel">> := report_delivery_channel(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportPlanName">> := string(),
+%%   <<"ReportPlanTags">> => map(),
+%%   <<"ReportSetting">> := report_setting()
+%% }
+-type create_report_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_report_plan_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanName">> => string()
+%% }
+-type create_report_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_access_backup_vault_input() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"BackupVaultTags">> => map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"RequesterComment">> => string(),
+%%   <<"SourceBackupVaultArn">> := string()
+%% }
+-type create_restore_access_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_access_backup_vault_output() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"RestoreAccessBackupVaultArn">> => string(),
+%%   <<"RestoreAccessBackupVaultName">> => string(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type create_restore_access_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_plan_input() :: #{
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_create(),
+%%   <<"Tags">> => map()
+%% }
+-type create_restore_testing_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_plan_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()]
+%% }
+-type create_restore_testing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_selection_input() :: #{
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_create()
+%% }
+-type create_restore_testing_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_restore_testing_selection_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()]
+%% }
+-type create_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tiering_configuration_input() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"TieringConfiguration">> := tiering_configuration_input_for_create(),
+%%   <<"TieringConfigurationTags">> => map()
+%% }
+-type create_tiering_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tiering_configuration_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type create_tiering_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_range() :: #{
+%%   <<"FromDate">> => non_neg_integer(),
+%%   <<"ToDate">> => non_neg_integer()
+%% }
+-type date_range() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_plan_input() :: #{}
+-type delete_backup_plan_input() :: #{}.
+
+
+%% Example:
+%% delete_backup_plan_output() :: #{
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_backup_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backup_selection_input() :: #{}
+-type delete_backup_selection_input() :: #{}.
+
+%% Example:
+%% delete_backup_vault_access_policy_input() :: #{}
+-type delete_backup_vault_access_policy_input() :: #{}.
+
+%% Example:
+%% delete_backup_vault_input() :: #{}
+-type delete_backup_vault_input() :: #{}.
+
+%% Example:
+%% delete_backup_vault_lock_configuration_input() :: #{}
+-type delete_backup_vault_lock_configuration_input() :: #{}.
+
+%% Example:
+%% delete_backup_vault_notifications_input() :: #{}
+-type delete_backup_vault_notifications_input() :: #{}.
+
+%% Example:
+%% delete_framework_input() :: #{}
+-type delete_framework_input() :: #{}.
+
+%% Example:
+%% delete_recovery_point_input() :: #{}
+-type delete_recovery_point_input() :: #{}.
+
+%% Example:
+%% delete_report_plan_input() :: #{}
+-type delete_report_plan_input() :: #{}.
+
+%% Example:
+%% delete_restore_testing_plan_input() :: #{}
+-type delete_restore_testing_plan_input() :: #{}.
 
 %% Example:
 %% delete_restore_testing_selection_input() :: #{}
 -type delete_restore_testing_selection_input() :: #{}.
 
+%% Example:
+%% delete_tiering_configuration_input() :: #{}
+-type delete_tiering_configuration_input() :: #{}.
 
 %% Example:
-%% list_recovery_points_by_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_by_resource())
-%% }
--type list_recovery_points_by_resource_output() :: #{binary() => any()}.
+%% delete_tiering_configuration_output() :: #{}
+-type delete_tiering_configuration_output() :: #{}.
 
 
 %% Example:
-%% invalid_request_exception() :: #{
+%% dependency_failure_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Context">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_access_backup_vault_list_member() :: #{
-%%   <<"ApprovalDate">> => non_neg_integer(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LatestRevokeRequest">> => latest_revoke_request(),
-%%   <<"RestoreAccessBackupVaultArn">> => string(),
-%%   <<"VaultState">> => list(any())
-%% }
--type restore_access_backup_vault_list_member() :: #{binary() => any()}.
-
+-type dependency_failure_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_backup_selections_output() :: #{
-%%   <<"BackupSelectionsList">> => list(backup_selections_list_member()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_selections_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_plan_for_get() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"CreatorRequestId">> => [string()],
-%%   <<"LastExecutionTime">> => [non_neg_integer()],
-%%   <<"LastUpdateTime">> => [non_neg_integer()],
-%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"ScheduleExpression">> => [string()],
-%%   <<"ScheduleExpressionTimezone">> => [string()],
-%%   <<"StartWindowHours">> => integer()
-%% }
--type restore_testing_plan_for_get() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_restore_testing_selection_output() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"RestoreTestingSelectionName">> => [string()],
-%%   <<"UpdateTime">> => [non_neg_integer()]
-%% }
--type update_restore_testing_selection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_restore_job_output() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BackupSizeInBytes">> => float(),
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => restore_job_creator(),
-%%   <<"CreatedResourceArn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"DeletionStatus">> => list(any()),
-%%   <<"DeletionStatusMessage">> => string(),
-%%   <<"ExpectedCompletionTimeMinutes">> => float(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"ParentJobId">> => string(),
-%%   <<"PercentDone">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
-%%   <<"ResourceType">> => string(),
-%%   <<"RestoreJobId">> => string(),
-%%   <<"SourceResourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"ValidationStatus">> => list(any()),
-%%   <<"ValidationStatusMessage">> => string()
-%% }
--type describe_restore_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_selection_for_update() :: #{
-%%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceArns">> => list(string()),
-%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
-%%   <<"RestoreMetadataOverrides">> => map(),
-%%   <<"ValidationWindowHours">> => integer()
-%% }
--type restore_testing_selection_for_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_result_info() :: #{
-%%   <<"ScanResultStatus">> => list(any())
-%% }
--type scan_result_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_copy_job_output() :: #{
-%%   <<"CopyJobId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"IsParent">> => boolean()
-%% }
--type start_copy_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_job_summaries_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_restore_job_summaries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scan_job_summaries_output() :: #{
-%%   <<"AggregationPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScanJobSummaries">> => list(scan_job_summary())
-%% }
--type list_scan_job_summaries_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_recovery_point_from_parent_input() :: #{}
--type disassociate_recovery_point_from_parent_input() :: #{}.
+%% describe_backup_job_input() :: #{}
+-type describe_backup_job_input() :: #{}.
 
 
 %% Example:
@@ -1594,32 +970,66 @@
 
 
 %% Example:
-%% backup_selections_list_member() :: #{
-%%   <<"BackupPlanId">> => string(),
+%% describe_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
+%% }
+-type describe_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_backup_vault_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"CreatorRequestId">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"SelectionId">> => string(),
-%%   <<"SelectionName">> => string()
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyType">> => list(any()),
+%%   <<"LatestMpaApprovalTeamUpdate">> => latest_mpa_approval_team_update(),
+%%   <<"LockDate">> => non_neg_integer(),
+%%   <<"Locked">> => boolean(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float(),
+%%   <<"MpaApprovalTeamArn">> => string(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"NumberOfRecoveryPoints">> => float(),
+%%   <<"SourceBackupVaultArn">> => string(),
+%%   <<"VaultState">> => list(any()),
+%%   <<"VaultType">> => list(any())
 %% }
--type backup_selections_list_member() :: #{binary() => any()}.
+-type describe_backup_vault_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_copy_job_input() :: #{}
+-type describe_copy_job_input() :: #{}.
 
 
 %% Example:
-%% create_framework_output() :: #{
+%% describe_copy_job_output() :: #{
+%%   <<"CopyJob">> => copy_job()
+%% }
+-type describe_copy_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_framework_input() :: #{}
+-type describe_framework_input() :: #{}.
+
+
+%% Example:
+%% describe_framework_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
 %%   <<"FrameworkArn">> => string(),
-%%   <<"FrameworkName">> => string()
+%%   <<"FrameworkControls">> => list(framework_control()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> => string(),
+%%   <<"FrameworkStatus">> => string(),
+%%   <<"IdempotencyToken">> => string()
 %% }
--type create_framework_output() :: #{binary() => any()}.
-
+-type describe_framework_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_copy_job_summaries_output() :: #{
-%%   <<"AggregationPeriod">> => string(),
-%%   <<"CopyJobSummaries">> => list(copy_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_copy_job_summaries_output() :: #{binary() => any()}.
+%% describe_global_settings_input() :: #{}
+-type describe_global_settings_input() :: #{}.
 
 
 %% Example:
@@ -1629,786 +1039,9 @@
 %% }
 -type describe_global_settings_output() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_supported_resource_types_output() :: #{
-%%   <<"ResourceTypes">> => list(string())
-%% }
--type get_supported_resource_types_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_recovery_point_selection() :: #{
-%%   <<"Algorithm">> => list(any()),
-%%   <<"ExcludeVaults">> => list(string()),
-%%   <<"IncludeVaults">> => list(string()),
-%%   <<"RecoveryPointTypes">> => list(list(any())()),
-%%   <<"SelectionWindowDays">> => integer()
-%% }
--type restore_testing_recovery_point_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scan_job_summaries_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ScanResultStatus">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type list_scan_job_summaries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_failure_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type dependency_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_plan_execution_member() :: #{
-%%   <<"ExecutionTime">> => non_neg_integer(),
-%%   <<"RuleExecutionType">> => list(any()),
-%%   <<"RuleId">> => string()
-%% }
--type scheduled_plan_execution_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_tiering_configuration_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"TieringConfigurationArn">> => string(),
-%%   <<"TieringConfigurationName">> => string()
-%% }
--type update_tiering_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_restore_testing_selection_output() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"RestoreTestingSelectionName">> => [string()]
-%% }
--type create_restore_testing_selection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_report_job_output() :: #{
-%%   <<"ReportJob">> => report_job()
-%% }
--type describe_report_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_restore_testing_inferred_metadata_output() :: #{
-%%   <<"InferredMetadata">> => map()
-%% }
--type get_restore_testing_inferred_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_vault_notifications_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultEvents">> => list(list(any())()),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"SNSTopicArn">> => string()
-%% }
--type get_backup_vault_notifications_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% advanced_backup_setting() :: #{
-%%   <<"BackupOptions">> => map(),
-%%   <<"ResourceType">> => string()
-%% }
--type advanced_backup_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_point_selection() :: #{
-%%   <<"DateRange">> => date_range(),
-%%   <<"ResourceIdentifiers">> => list(string()),
-%%   <<"VaultNames">> => list(string())
-%% }
--type recovery_point_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_p_i_t_r_malware_scan_results_output() :: #{
-%%   <<"LastScanJobTime">> => [non_neg_integer()],
-%%   <<"ScanEndTime">> => [non_neg_integer()],
-%%   <<"ScanId">> => [string()],
-%%   <<"ScanMode">> => list(any()),
-%%   <<"ScanResult">> => scan_result_info()
-%% }
--type get_p_i_t_r_malware_scan_results_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conditions() :: #{
-%%   <<"StringEquals">> => list(condition_parameter()),
-%%   <<"StringLike">> => list(condition_parameter()),
-%%   <<"StringNotEquals">> => list(condition_parameter()),
-%%   <<"StringNotLike">> => list(condition_parameter())
-%% }
--type conditions() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_restore_testing_plan_input() :: #{
-%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_update()
-%% }
--type update_restore_testing_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_vault_input() :: #{}
--type delete_backup_vault_input() :: #{}.
-
-
-%% Example:
-%% get_backup_vault_access_policy_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type get_backup_vault_access_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_restore_testing_selection_output() :: #{
-%%   <<"RestoreTestingSelection">> => restore_testing_selection_for_get()
-%% }
--type get_restore_testing_selection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indexed_recovery_points_output() :: #{
-%%   <<"IndexedRecoveryPoints">> => list(indexed_recovery_point()),
-%%   <<"NextToken">> => string()
-%% }
--type list_indexed_recovery_points_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tiering_configurations_list_member() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"TieringConfigurationArn">> => string(),
-%%   <<"TieringConfigurationName">> => string()
-%% }
--type tiering_configurations_list_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_delivery_channel() :: #{
-%%   <<"Formats">> => list(string()),
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3KeyPrefix">> => string()
-%% }
--type report_delivery_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_protected_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(protected_resource())
-%% }
--type list_protected_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_framework_input() :: #{}
--type delete_framework_input() :: #{}.
-
-%% Example:
-%% delete_backup_vault_notifications_input() :: #{}
--type delete_backup_vault_notifications_input() :: #{}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"ConditionKey">> => string(),
-%%   <<"ConditionType">> => list(any()),
-%%   <<"ConditionValue">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_resource_state_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type invalid_resource_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_action() :: #{
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"ScanMode">> => list(any())
-%% }
--type scan_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_plan_versions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_plan_versions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% indexed_recovery_point() :: #{
-%%   <<"BackupCreationDate">> => non_neg_integer(),
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IndexCreationDate">> => non_neg_integer(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"IndexStatusMessage">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SourceResourceArn">> => string()
-%% }
--type indexed_recovery_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_jobs_input() :: #{
-%%   <<"ByAccountId">> => string(),
-%%   <<"ByCompleteAfter">> => non_neg_integer(),
-%%   <<"ByCompleteBefore">> => non_neg_integer(),
-%%   <<"ByCreatedAfter">> => non_neg_integer(),
-%%   <<"ByCreatedBefore">> => non_neg_integer(),
-%%   <<"ByParentJobId">> => string(),
-%%   <<"ByResourceType">> => string(),
-%%   <<"ByRestoreTestingPlanArn">> => string(),
-%%   <<"ByStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_restore_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_tiering_configuration_input() :: #{
-%%   <<"TieringConfiguration">> := tiering_configuration_input_for_update()
-%% }
--type update_tiering_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_backup_selection_input() :: #{}
--type get_backup_selection_input() :: #{}.
-
-%% Example:
-%% delete_tiering_configuration_input() :: #{}
--type delete_tiering_configuration_input() :: #{}.
-
-
-%% Example:
-%% get_backup_selection_output() :: #{
-%%   <<"BackupPlanId">> => string(),
-%%   <<"BackupSelection">> => backup_selection(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"SelectionId">> => string()
-%% }
--type get_backup_selection_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_point_by_resource() :: #{
-%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
-%%   <<"BackupSizeBytes">> => float(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyType">> => list(any()),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"IndexStatusMessage">> => string(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"ParentRecoveryPointArn">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VaultType">> => list(any())
-%% }
--type recovery_point_by_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recovery_point_index_details_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"IndexCompletionDate">> => non_neg_integer(),
-%%   <<"IndexCreationDate">> => non_neg_integer(),
-%%   <<"IndexDeletionDate">> => non_neg_integer(),
-%%   <<"IndexStatus">> => list(any()),
-%%   <<"IndexStatusMessage">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"SourceResourceArn">> => string(),
-%%   <<"TotalItemsIndexed">> => float()
-%% }
--type get_recovery_point_index_details_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% report_setting() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"FrameworkArns">> => list(string()),
-%%   <<"NumberOfFrameworks">> => integer(),
-%%   <<"OrganizationUnits">> => list(string()),
-%%   <<"Regions">> => list(string()),
-%%   <<"ReportTemplate">> => string()
-%% }
--type report_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recovery_points_by_backup_vault_input() :: #{
-%%   <<"BackupVaultAccountId">> => string(),
-%%   <<"ByBackupPlanId">> => string(),
-%%   <<"ByCreatedAfter">> => non_neg_integer(),
-%%   <<"ByCreatedBefore">> => non_neg_integer(),
-%%   <<"ByParentRecoveryPointArn">> => string(),
-%%   <<"ByResourceArn">> => string(),
-%%   <<"ByResourceType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recovery_points_by_backup_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% framework() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentStatus">> => string(),
-%%   <<"FrameworkArn">> => string(),
-%%   <<"FrameworkDescription">> => string(),
-%%   <<"FrameworkName">> => string(),
-%%   <<"NumberOfControls">> => integer()
-%% }
--type framework() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tiering_configurations_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tiering_configurations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_selection_for_create() :: #{
-%%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceArns">> => list(string()),
-%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
-%%   <<"ProtectedResourceType">> => [string()],
-%%   <<"RestoreMetadataOverrides">> => map(),
-%%   <<"RestoreTestingSelectionName">> => [string()],
-%%   <<"ValidationWindowHours">> => integer()
-%% }
--type restore_testing_selection_for_create() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tiering_configuration_output() :: #{}
--type delete_tiering_configuration_output() :: #{}.
-
-
-%% Example:
-%% list_frameworks_output() :: #{
-%%   <<"Frameworks">> => list(framework()),
-%%   <<"NextToken">> => string()
-%% }
--type list_frameworks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_vault_list_member() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionKeyType">> => list(any()),
-%%   <<"LockDate">> => non_neg_integer(),
-%%   <<"Locked">> => boolean(),
-%%   <<"MaxRetentionDays">> => float(),
-%%   <<"MinRetentionDays">> => float(),
-%%   <<"NumberOfRecoveryPoints">> => float(),
-%%   <<"VaultState">> => list(any()),
-%%   <<"VaultType">> => list(any())
-%% }
--type backup_vault_list_member() :: #{binary() => any()}.
-
-%% Example:
-%% describe_copy_job_input() :: #{}
--type describe_copy_job_input() :: #{}.
-
-
-%% Example:
-%% list_copy_job_summaries_input() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MessageCategory">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_copy_job_summaries_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_legal_holds_output() :: #{
-%%   <<"LegalHolds">> => list(legal_hold()),
-%%   <<"NextToken">> => string()
-%% }
--type list_legal_holds_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scan_job_input() :: #{}
--type describe_scan_job_input() :: #{}.
-
-%% Example:
-%% delete_backup_vault_access_policy_input() :: #{}
--type delete_backup_vault_access_policy_input() :: #{}.
-
-
-%% Example:
-%% backup_rule() :: #{
-%%   <<"CompletionWindowMinutes">> => float(),
-%%   <<"CopyActions">> => list(copy_action()),
-%%   <<"EnableContinuousBackup">> => boolean(),
-%%   <<"IndexActions">> => list(index_action()),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"RecoveryPointTags">> => map(),
-%%   <<"RuleId">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"ScanActions">> => list(scan_action()),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleExpressionTimezone">> => string(),
-%%   <<"StartWindowMinutes">> => float(),
-%%   <<"TargetBackupVaultName">> => string(),
-%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
-%% }
--type backup_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_plan_from_template_output() :: #{
-%%   <<"BackupPlanDocument">> => backup_plan()
-%% }
--type get_backup_plan_from_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_report_plan_input() :: #{
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
-%%   <<"ReportPlanDescription">> => string(),
-%%   <<"ReportSetting">> => report_setting()
-%% }
--type update_report_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"TagKeyList">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_report_plan_input() :: #{}
--type describe_report_plan_input() :: #{}.
-
-
-%% Example:
-%% list_recovery_points_by_resource_input() :: #{
-%%   <<"ManagedByAWSBackupOnly">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recovery_points_by_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recovery_points_by_legal_hold_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_member())
-%% }
--type list_recovery_points_by_legal_hold_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_legal_hold_output() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LegalHoldArn">> => string(),
-%%   <<"LegalHoldId">> => string(),
-%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type create_legal_hold_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_settings_input() :: #{
-%%   <<"GlobalSettings">> => map()
-%% }
--type update_global_settings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_copy_jobs_input() :: #{
-%%   <<"ByAccountId">> => string(),
-%%   <<"ByCompleteAfter">> => non_neg_integer(),
-%%   <<"ByCompleteBefore">> => non_neg_integer(),
-%%   <<"ByCreatedAfter">> => non_neg_integer(),
-%%   <<"ByCreatedBefore">> => non_neg_integer(),
-%%   <<"ByDestinationVaultArn">> => string(),
-%%   <<"ByMessageCategory">> => string(),
-%%   <<"ByParentJobId">> => string(),
-%%   <<"ByResourceArn">> => string(),
-%%   <<"ByResourceType">> => string(),
-%%   <<"BySourceRecoveryPointArn">> => string(),
-%%   <<"ByState">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_copy_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recovery_point_restore_metadata_input() :: #{
-%%   <<"BackupVaultAccountId">> => string()
-%% }
--type get_recovery_point_restore_metadata_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_jobs_input() :: #{
-%%   <<"ByAccountId">> => string(),
-%%   <<"ByBackupVaultName">> => string(),
-%%   <<"ByCompleteAfter">> => non_neg_integer(),
-%%   <<"ByCompleteBefore">> => non_neg_integer(),
-%%   <<"ByCreatedAfter">> => non_neg_integer(),
-%%   <<"ByCreatedBefore">> => non_neg_integer(),
-%%   <<"ByMessageCategory">> => string(),
-%%   <<"ByParentJobId">> => string(),
-%%   <<"ByResourceArn">> => string(),
-%%   <<"ByResourceType">> => string(),
-%%   <<"ByState">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_copy_job_input() :: #{
-%%   <<"DestinationBackupVaultArn">> := string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"RecoveryPointArn">> := string(),
-%%   <<"SourceBackupVaultName">> := string()
-%% }
--type start_copy_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scan_jobs_input() :: #{
-%%   <<"ByAccountId">> => [string()],
-%%   <<"ByBackupVaultName">> => [string()],
-%%   <<"ByCompleteAfter">> => [non_neg_integer()],
-%%   <<"ByCompleteBefore">> => [non_neg_integer()],
-%%   <<"ByMalwareScanner">> => list(any()),
-%%   <<"ByRecoveryPointArn">> => [string()],
-%%   <<"ByResourceArn">> => [string()],
-%%   <<"ByResourceType">> => list(any()),
-%%   <<"ByScanResultStatus">> => list(any()),
-%%   <<"ByState">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_scan_jobs_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_report_plan_input() :: #{}
--type delete_report_plan_input() :: #{}.
-
-
-%% Example:
-%% start_backup_job_output() :: #{
-%%   <<"BackupJobId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"RecoveryPointArn">> => string()
-%% }
--type start_backup_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_jobs_by_protected_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
-%% }
--type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_access_backup_vaults_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_restore_access_backup_vaults_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_backup_vault_notifications_input() :: #{}
--type get_backup_vault_notifications_input() :: #{}.
-
-
-%% Example:
-%% create_framework_input() :: #{
-%%   <<"FrameworkControls">> := list(framework_control()),
-%%   <<"FrameworkDescription">> => string(),
-%%   <<"FrameworkName">> := string(),
-%%   <<"FrameworkTags">> => map(),
-%%   <<"IdempotencyToken">> => string()
-%% }
--type create_framework_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backup_plan_input() :: #{
-%%   <<"BackupPlan">> := backup_plan_input(),
-%%   <<"BackupPlanTags">> => map(),
-%%   <<"CreatorRequestId">> => string()
-%% }
--type create_backup_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tiering_configuration_input_for_update() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"ResourceSelection">> => list(resource_selection())
-%% }
--type tiering_configuration_input_for_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tags_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_backup_vault_input() :: #{
-%%   <<"BackupVaultAccountId">> => string()
-%% }
--type describe_backup_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_copy_jobs_output() :: #{
-%%   <<"CopyJobs">> => list(copy_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_copy_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_vaults_input() :: #{
-%%   <<"ByShared">> => boolean(),
-%%   <<"ByVaultType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_vaults_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_protected_resources_by_backup_vault_input() :: #{
-%%   <<"BackupVaultAccountId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_protected_resources_by_backup_vault_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_job_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Count">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MessageCategory">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type backup_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scan_jobs_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ScanJobs">> => list(scan_job())
-%% }
--type list_scan_jobs_output() :: #{binary() => any()}.
+%% describe_protected_resource_input() :: #{}
+-type describe_protected_resource_input() :: #{}.
 
 
 %% Example:
@@ -2427,288 +1060,10 @@
 
 
 %% Example:
-%% restore_job_creator() :: #{
-%%   <<"RestoreTestingPlanArn">> => string()
+%% describe_recovery_point_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
 %% }
--type restore_job_creator() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_logically_air_gapped_backup_vault_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"VaultState">> => list(any())
-%% }
--type create_logically_air_gapped_backup_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_rule_input() :: #{
-%%   <<"CompletionWindowMinutes">> => float(),
-%%   <<"CopyActions">> => list(copy_action()),
-%%   <<"EnableContinuousBackup">> => boolean(),
-%%   <<"IndexActions">> => list(index_action()),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"RecoveryPointTags">> => map(),
-%%   <<"RuleName">> => string(),
-%%   <<"ScanActions">> => list(scan_action()),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleExpressionTimezone">> => string(),
-%%   <<"StartWindowMinutes">> => float(),
-%%   <<"TargetBackupVaultName">> => string(),
-%%   <<"TargetLogicallyAirGappedBackupVaultArn">> => string()
-%% }
--type backup_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_testing_plan_for_create() :: #{
-%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"ScheduleExpression">> => [string()],
-%%   <<"ScheduleExpressionTimezone">> => [string()],
-%%   <<"StartWindowHours">> => integer()
-%% }
--type restore_testing_plan_for_create() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_job_creator() :: #{
-%%   <<"BackupPlanArn">> => [string()],
-%%   <<"BackupPlanId">> => [string()],
-%%   <<"BackupPlanVersion">> => [string()],
-%%   <<"BackupRuleId">> => [string()]
-%% }
--type scan_job_creator() :: #{binary() => any()}.
-
-
-%% Example:
-%% legal_hold() :: #{
-%%   <<"CancellationDate">> => non_neg_integer(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LegalHoldArn">> => string(),
-%%   <<"LegalHoldId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type legal_hold() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_plan_versions_output() :: #{
-%%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_plan_versions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_framework_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"FrameworkArn">> => string(),
-%%   <<"FrameworkName">> => string()
-%% }
--type update_framework_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_frameworks_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_frameworks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_plan_templates_list_member() :: #{
-%%   <<"BackupPlanTemplateId">> => string(),
-%%   <<"BackupPlanTemplateName">> => string()
-%% }
--type backup_plan_templates_list_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backup_job_summaries_output() :: #{
-%%   <<"AggregationPeriod">> => string(),
-%%   <<"BackupJobSummaries">> => list(backup_job_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backup_job_summaries_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recovery_points_by_backup_vault_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault())
-%% }
--type list_recovery_points_by_backup_vault_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value() :: #{
-%%   <<"Key">> => [string()],
-%%   <<"Value">> => [string()]
-%% }
--type key_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_report_job_input() :: #{
-%%   <<"IdempotencyToken">> => string()
-%% }
--type start_report_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_report_plan_input() :: #{
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"ReportDeliveryChannel">> := report_delivery_channel(),
-%%   <<"ReportPlanDescription">> => string(),
-%%   <<"ReportPlanName">> := string(),
-%%   <<"ReportPlanTags">> => map(),
-%%   <<"ReportSetting">> := report_setting()
-%% }
--type create_report_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% backup_job() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BackupJobId">> => string(),
-%%   <<"BackupOptions">> => map(),
-%%   <<"BackupSizeInBytes">> => float(),
-%%   <<"BackupType">> => string(),
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"BackupVaultName">> => string(),
-%%   <<"BytesTransferred">> => float(),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => recovery_point_creator(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"ExpectedCompletionDate">> => non_neg_integer(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"InitiationDate">> => non_neg_integer(),
-%%   <<"IsEncrypted">> => boolean(),
-%%   <<"IsParent">> => boolean(),
-%%   <<"MessageCategory">> => string(),
-%%   <<"ParentJobId">> => string(),
-%%   <<"PercentDone">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"RecoveryPointLifecycle">> => lifecycle(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StartBy">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"VaultLockState">> => string(),
-%%   <<"VaultType">> => string()
-%% }
--type backup_job() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_plan_input() :: #{}
--type delete_backup_plan_input() :: #{}.
-
-%% Example:
-%% describe_region_settings_input() :: #{}
--type describe_region_settings_input() :: #{}.
-
-
-%% Example:
-%% list_restore_jobs_by_protected_resource_input() :: #{
-%%   <<"ByRecoveryPointCreationDateAfter">> => non_neg_integer(),
-%%   <<"ByRecoveryPointCreationDateBefore">> => non_neg_integer(),
-%%   <<"ByStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_restore_jobs_by_protected_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backup_plan_from_json_input() :: #{
-%%   <<"BackupPlanTemplateJson">> := string()
-%% }
--type get_backup_plan_from_json_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_job_summaries_output() :: #{
-%%   <<"AggregationPeriod">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"RestoreJobSummaries">> => list(restore_job_summary())
-%% }
--type list_restore_job_summaries_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_framework_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeploymentStatus">> => string(),
-%%   <<"FrameworkArn">> => string(),
-%%   <<"FrameworkControls">> => list(framework_control()),
-%%   <<"FrameworkDescription">> => string(),
-%%   <<"FrameworkName">> => string(),
-%%   <<"FrameworkStatus">> => string(),
-%%   <<"IdempotencyToken">> => string()
-%% }
--type describe_framework_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_report_job_input() :: #{}
--type describe_report_job_input() :: #{}.
-
-%% Example:
-%% export_backup_plan_template_input() :: #{}
--type export_backup_plan_template_input() :: #{}.
-
-
-%% Example:
-%% update_restore_testing_plan_output() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()],
-%%   <<"UpdateTime">> => [non_neg_integer()]
-%% }
--type update_restore_testing_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_range() :: #{
-%%   <<"FromDate">> => non_neg_integer(),
-%%   <<"ToDate">> => non_neg_integer()
-%% }
--type date_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recovery_point_lifecycle_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
-%%   <<"Lifecycle">> => lifecycle(),
-%%   <<"RecoveryPointArn">> => string()
-%% }
--type update_recovery_point_lifecycle_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_setting() :: #{
-%%   <<"MalwareScanner">> => list(any()),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"ScannerRoleArn">> => string()
-%% }
--type scan_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_restore_testing_selections_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list())
-%% }
--type list_restore_testing_selections_output() :: #{binary() => any()}.
+-type describe_recovery_point_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2745,6 +1100,459 @@
 %% }
 -type describe_recovery_point_output() :: #{binary() => any()}.
 
+%% Example:
+%% describe_region_settings_input() :: #{}
+-type describe_region_settings_input() :: #{}.
+
+
+%% Example:
+%% describe_region_settings_output() :: #{
+%%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInPreference">> => map()
+%% }
+-type describe_region_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_job_input() :: #{}
+-type describe_report_job_input() :: #{}.
+
+
+%% Example:
+%% describe_report_job_output() :: #{
+%%   <<"ReportJob">> => report_job()
+%% }
+-type describe_report_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_report_plan_input() :: #{}
+-type describe_report_plan_input() :: #{}.
+
+
+%% Example:
+%% describe_report_plan_output() :: #{
+%%   <<"ReportPlan">> => report_plan()
+%% }
+-type describe_report_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_restore_job_input() :: #{}
+-type describe_restore_job_input() :: #{}.
+
+
+%% Example:
+%% describe_restore_job_output() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => restore_job_creator(),
+%%   <<"CreatedResourceArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DeletionStatus">> => list(any()),
+%%   <<"DeletionStatusMessage">> => string(),
+%%   <<"ExpectedCompletionTimeMinutes">> => float(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreJobId">> => string(),
+%%   <<"SourceResourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type describe_restore_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scan_job_input() :: #{}
+-type describe_scan_job_input() :: #{}.
+
+
+%% Example:
+%% describe_scan_job_output() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"BackupVaultArn">> => [string()],
+%%   <<"BackupVaultName">> => [string()],
+%%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
+%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
+%%   <<"CreatedBy">> => scan_job_creator(),
+%%   <<"CreationDate">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"RecoveryPointArn">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"ResourceName">> => [string()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanJobId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info(),
+%%   <<"ScannerRoleArn">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type describe_scan_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_backup_vault_mpa_approval_team_input() :: #{
+%%   <<"RequesterComment">> => string()
+%% }
+-type disassociate_backup_vault_mpa_approval_team_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_recovery_point_from_parent_input() :: #{}
+-type disassociate_recovery_point_from_parent_input() :: #{}.
+
+%% Example:
+%% disassociate_recovery_point_input() :: #{}
+-type disassociate_recovery_point_input() :: #{}.
+
+%% Example:
+%% export_backup_plan_template_input() :: #{}
+-type export_backup_plan_template_input() :: #{}.
+
+
+%% Example:
+%% export_backup_plan_template_output() :: #{
+%%   <<"BackupPlanTemplateJson">> => string()
+%% }
+-type export_backup_plan_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"FrameworkName">> => string(),
+%%   <<"NumberOfControls">> => integer()
+%% }
+-type framework() :: #{binary() => any()}.
+
+
+%% Example:
+%% framework_control() :: #{
+%%   <<"ControlInputParameters">> => list(control_input_parameter()),
+%%   <<"ControlName">> => string(),
+%%   <<"ControlScope">> => control_scope()
+%% }
+-type framework_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_from_json_input() :: #{
+%%   <<"BackupPlanTemplateJson">> := string()
+%% }
+-type get_backup_plan_from_json_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_from_json_output() :: #{
+%%   <<"BackupPlan">> => backup_plan()
+%% }
+-type get_backup_plan_from_json_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_plan_from_template_input() :: #{}
+-type get_backup_plan_from_template_input() :: #{}.
+
+
+%% Example:
+%% get_backup_plan_from_template_output() :: #{
+%%   <<"BackupPlanDocument">> => backup_plan()
+%% }
+-type get_backup_plan_from_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_input() :: #{
+%%   <<"MaxScheduledRunsPreview">> => integer(),
+%%   <<"VersionId">> => string()
+%% }
+-type get_backup_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backup_plan_output() :: #{
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
+%%   <<"BackupPlan">> => backup_plan(),
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DeletionDate">> => non_neg_integer(),
+%%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"ScheduledRunsPreview">> => list(scheduled_plan_execution_member()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_backup_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_selection_input() :: #{}
+-type get_backup_selection_input() :: #{}.
+
+
+%% Example:
+%% get_backup_selection_output() :: #{
+%%   <<"BackupPlanId">> => string(),
+%%   <<"BackupSelection">> => backup_selection(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"SelectionId">> => string()
+%% }
+-type get_backup_selection_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_vault_access_policy_input() :: #{}
+-type get_backup_vault_access_policy_input() :: #{}.
+
+
+%% Example:
+%% get_backup_vault_access_policy_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_backup_vault_access_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_backup_vault_notifications_input() :: #{}
+-type get_backup_vault_notifications_input() :: #{}.
+
+
+%% Example:
+%% get_backup_vault_notifications_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultEvents">> => list(list(any())()),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"SNSTopicArn">> => string()
+%% }
+-type get_backup_vault_notifications_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_legal_hold_input() :: #{}
+-type get_legal_hold_input() :: #{}.
+
+
+%% Example:
+%% get_legal_hold_output() :: #{
+%%   <<"CancelDescription">> => string(),
+%%   <<"CancellationDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"RecoveryPointSelection">> => recovery_point_selection(),
+%%   <<"RetainRecordUntil">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type get_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_p_i_t_r_malware_scan_results_input() :: #{
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"MalwareScanner">> := list(any()),
+%%   <<"RecoveryPointArn">> := [string()],
+%%   <<"ScanEndTime">> := [non_neg_integer()]
+%% }
+-type get_p_i_t_r_malware_scan_results_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_p_i_t_r_malware_scan_results_output() :: #{
+%%   <<"LastScanJobTime">> => [non_neg_integer()],
+%%   <<"ScanEndTime">> => [non_neg_integer()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info()
+%% }
+-type get_p_i_t_r_malware_scan_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_index_details_input() :: #{}
+-type get_recovery_point_index_details_input() :: #{}.
+
+
+%% Example:
+%% get_recovery_point_index_details_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"IndexCompletionDate">> => non_neg_integer(),
+%%   <<"IndexCreationDate">> => non_neg_integer(),
+%%   <<"IndexDeletionDate">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"SourceResourceArn">> => string(),
+%%   <<"TotalItemsIndexed">> => float()
+%% }
+-type get_recovery_point_index_details_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_point_restore_metadata_input() :: #{
+%%   <<"BackupVaultAccountId">> => string()
+%% }
+-type get_recovery_point_restore_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_point_restore_metadata_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreMetadata">> => map()
+%% }
+-type get_recovery_point_restore_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_restore_job_metadata_input() :: #{}
+-type get_restore_job_metadata_input() :: #{}.
+
+
+%% Example:
+%% get_restore_job_metadata_output() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"RestoreJobId">> => string()
+%% }
+-type get_restore_job_metadata_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_inferred_metadata_input() :: #{
+%%   <<"BackupVaultAccountId">> => [string()],
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"RecoveryPointArn">> := [string()]
+%% }
+-type get_restore_testing_inferred_metadata_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_restore_testing_inferred_metadata_output() :: #{
+%%   <<"InferredMetadata">> => map()
+%% }
+-type get_restore_testing_inferred_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_restore_testing_plan_input() :: #{}
+-type get_restore_testing_plan_input() :: #{}.
+
+
+%% Example:
+%% get_restore_testing_plan_output() :: #{
+%%   <<"RestoreTestingPlan">> => restore_testing_plan_for_get()
+%% }
+-type get_restore_testing_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_restore_testing_selection_input() :: #{}
+-type get_restore_testing_selection_input() :: #{}.
+
+
+%% Example:
+%% get_restore_testing_selection_output() :: #{
+%%   <<"RestoreTestingSelection">> => restore_testing_selection_for_get()
+%% }
+-type get_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_supported_resource_types_output() :: #{
+%%   <<"ResourceTypes">> => list(string())
+%% }
+-type get_supported_resource_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_tiering_configuration_input() :: #{}
+-type get_tiering_configuration_input() :: #{}.
+
+
+%% Example:
+%% get_tiering_configuration_output() :: #{
+%%   <<"TieringConfiguration">> => tiering_configuration()
+%% }
+-type get_tiering_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_action() :: #{
+%%   <<"ResourceTypes">> => list(string())
+%% }
+-type index_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% indexed_recovery_point() :: #{
+%%   <<"BackupCreationDate">> => non_neg_integer(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IndexCreationDate">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceResourceArn">> => string()
+%% }
+-type indexed_recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_state_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value() :: #{
+%%   <<"Key">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type key_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% latest_mpa_approval_team_update() :: #{
+%%   <<"ExpiryDate">> => non_neg_integer(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"MpaSessionArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type latest_mpa_approval_team_update() :: #{binary() => any()}.
+
 
 %% Example:
 %% latest_revoke_request() :: #{
@@ -2758,18 +1566,566 @@
 
 
 %% Example:
-%% describe_copy_job_output() :: #{
-%%   <<"CopyJob">> => copy_job()
+%% legal_hold() :: #{
+%%   <<"CancellationDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LegalHoldArn">> => string(),
+%%   <<"LegalHoldId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
 %% }
--type describe_copy_job_output() :: #{binary() => any()}.
+-type legal_hold() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_legal_hold_input() :: #{
-%%   <<"CancelDescription">> := string(),
-%%   <<"RetainRecordInDays">> => float()
+%% lifecycle() :: #{
+%%   <<"DeleteAfterDays">> => float(),
+%%   <<"DeleteAfterEvent">> => list(any()),
+%%   <<"MoveToColdStorageAfterDays">> => float(),
+%%   <<"OptInToArchiveForSupportedResources">> => boolean()
 %% }
--type cancel_legal_hold_input() :: #{binary() => any()}.
+-type lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_backup_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"BackupJobSummaries">> => list(backup_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByBackupVaultName">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByMessageCategory">> => string(),
+%%   <<"ByParentJobId">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_jobs_output() :: #{
+%%   <<"BackupJobs">> => list(backup_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_templates_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_templates_output() :: #{
+%%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_versions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_versions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plan_versions_output() :: #{
+%%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plan_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plans_input() :: #{
+%%   <<"IncludeDeleted">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_plans_output() :: #{
+%%   <<"BackupPlansList">> => list(backup_plans_list_member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_selections_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_selections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_selections_output() :: #{
+%%   <<"BackupSelectionsList">> => list(backup_selections_list_member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_selections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_vaults_input() :: #{
+%%   <<"ByShared">> => boolean(),
+%%   <<"ByVaultType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_vaults_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_vaults_output() :: #{
+%%   <<"BackupVaultList">> => list(backup_vault_list_member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backup_vaults_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MessageCategory">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_copy_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"CopyJobSummaries">> => list(copy_job_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByDestinationVaultArn">> => string(),
+%%   <<"ByMessageCategory">> => string(),
+%%   <<"ByParentJobId">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"BySourceRecoveryPointArn">> => string(),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_copy_jobs_output() :: #{
+%%   <<"CopyJobs">> => list(copy_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_copy_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_frameworks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_frameworks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_frameworks_output() :: #{
+%%   <<"Frameworks">> => list(framework()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_frameworks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indexed_recovery_points_input() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceResourceArn">> => string()
+%% }
+-type list_indexed_recovery_points_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indexed_recovery_points_output() :: #{
+%%   <<"IndexedRecoveryPoints">> => list(indexed_recovery_point()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indexed_recovery_points_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_legal_holds_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_legal_holds_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_legal_holds_output() :: #{
+%%   <<"LegalHolds">> => list(legal_hold()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_legal_holds_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_by_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protected_resources_by_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_by_backup_vault_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(protected_resource())
+%% }
+-type list_protected_resources_by_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protected_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(protected_resource())
+%% }
+-type list_protected_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_backup_vault_input() :: #{
+%%   <<"BackupVaultAccountId">> => string(),
+%%   <<"ByBackupPlanId">> => string(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByParentRecoveryPointArn">> => string(),
+%%   <<"ByResourceArn">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_backup_vault_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_backup_vault_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault())
+%% }
+-type list_recovery_points_by_backup_vault_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_legal_hold_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_legal_hold_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_legal_hold_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_member())
+%% }
+-type list_recovery_points_by_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_resource_input() :: #{
+%%   <<"ManagedByAWSBackupOnly">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_points_by_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_points_by_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryPoints">> => list(recovery_point_by_resource())
+%% }
+-type list_recovery_points_by_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_jobs_input() :: #{
+%%   <<"ByCreationAfter">> => non_neg_integer(),
+%%   <<"ByCreationBefore">> => non_neg_integer(),
+%%   <<"ByReportPlanName">> => string(),
+%%   <<"ByStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_report_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_jobs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportJobs">> => list(report_job())
+%% }
+-type list_report_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_plans_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_report_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_report_plans_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReportPlans">> => list(report_plan())
+%% }
+-type list_report_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_access_backup_vaults_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_access_backup_vaults_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_access_backup_vaults_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreAccessBackupVaults">> => list(restore_access_backup_vault_list_member())
+%% }
+-type list_restore_access_backup_vaults_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_restore_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobSummaries">> => list(restore_job_summary())
+%% }
+-type list_restore_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_by_protected_resource_input() :: #{
+%%   <<"ByRecoveryPointCreationDateAfter">> => non_neg_integer(),
+%%   <<"ByRecoveryPointCreationDateBefore">> => non_neg_integer(),
+%%   <<"ByStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_jobs_by_protected_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_by_protected_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
+%% }
+-type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_input() :: #{
+%%   <<"ByAccountId">> => string(),
+%%   <<"ByCompleteAfter">> => non_neg_integer(),
+%%   <<"ByCompleteBefore">> => non_neg_integer(),
+%%   <<"ByCreatedAfter">> => non_neg_integer(),
+%%   <<"ByCreatedBefore">> => non_neg_integer(),
+%%   <<"ByParentJobId">> => string(),
+%%   <<"ByResourceType">> => string(),
+%%   <<"ByRestoreTestingPlanArn">> => string(),
+%%   <<"ByStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_restore_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_jobs_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
+%% }
+-type list_restore_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_plans_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_restore_testing_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_plans_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list())
+%% }
+-type list_restore_testing_plans_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_selections_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_restore_testing_selections_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_restore_testing_selections_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list())
+%% }
+-type list_restore_testing_selections_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_job_summaries_input() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type list_scan_job_summaries_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_job_summaries_output() :: #{
+%%   <<"AggregationPeriod">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanJobSummaries">> => list(scan_job_summary())
+%% }
+-type list_scan_job_summaries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_jobs_input() :: #{
+%%   <<"ByAccountId">> => [string()],
+%%   <<"ByBackupVaultName">> => [string()],
+%%   <<"ByCompleteAfter">> => [non_neg_integer()],
+%%   <<"ByCompleteBefore">> => [non_neg_integer()],
+%%   <<"ByMalwareScanner">> => list(any()),
+%%   <<"ByRecoveryPointArn">> => [string()],
+%%   <<"ByResourceArn">> => [string()],
+%%   <<"ByResourceType">> => list(any()),
+%%   <<"ByScanResultStatus">> => list(any()),
+%%   <<"ByState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_scan_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scan_jobs_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ScanJobs">> => list(scan_job())
+%% }
+-type list_scan_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tags_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2781,40 +2137,381 @@
 
 
 %% Example:
-%% create_restore_testing_plan_input() :: #{
-%%   <<"CreatorRequestId">> => [string()],
-%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_create(),
-%%   <<"Tags">> => map()
+%% list_tiering_configurations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type create_restore_testing_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_legal_hold_input() :: #{}
--type get_legal_hold_input() :: #{}.
+-type list_tiering_configurations_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_restore_access_backup_vault_input() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"BackupVaultTags">> => map(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"RequesterComment">> => string(),
-%%   <<"SourceBackupVaultArn">> := string()
+%% list_tiering_configurations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TieringConfigurations">> => list(tiering_configurations_list_member())
 %% }
--type create_restore_access_backup_vault_input() :: #{binary() => any()}.
+-type list_tiering_configurations_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% tiering_configuration() :: #{
+%% missing_parameter_value_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type missing_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_resource() :: #{
+%%   <<"LastBackupTime">> => non_neg_integer(),
+%%   <<"LastBackupVaultArn">> => string(),
+%%   <<"LastRecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type protected_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% protected_resource_conditions() :: #{
+%%   <<"StringEquals">> => list(key_value()),
+%%   <<"StringNotEquals">> => list(key_value())
+%% }
+-type protected_resource_conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_access_policy_input() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type put_backup_vault_access_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_lock_configuration_input() :: #{
+%%   <<"ChangeableForDays">> => float(),
+%%   <<"MaxRetentionDays">> => float(),
+%%   <<"MinRetentionDays">> => float()
+%% }
+-type put_backup_vault_lock_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_backup_vault_notifications_input() :: #{
+%%   <<"BackupVaultEvents">> := list(list(any())()),
+%%   <<"SNSTopicArn">> := string()
+%% }
+-type put_backup_vault_notifications_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_restore_validation_result_input() :: #{
+%%   <<"ValidationStatus">> := list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type put_restore_validation_result_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_by_backup_vault() :: #{
+%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupVaultArn">> => string(),
 %%   <<"BackupVaultName">> => string(),
+%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompositeMemberIdentifier">> => string(),
+%%   <<"CreatedBy">> => recovery_point_creator(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyType">> => list(any()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"InitiationDate">> => non_neg_integer(),
+%%   <<"IsEncrypted">> => boolean(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"LastRestoreTime">> => non_neg_integer(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"ParentRecoveryPointArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceBackupVaultArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VaultType">> => list(any())
+%% }
+-type recovery_point_by_backup_vault() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_by_resource() :: #{
+%%   <<"AggregatedScanResult">> => aggregated_scan_result(),
+%%   <<"BackupSizeBytes">> => float(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionKeyType">> => list(any()),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"IndexStatusMessage">> => string(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"ParentRecoveryPointArn">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VaultType">> => list(any())
+%% }
+-type recovery_point_by_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_creator() :: #{
+%%   <<"BackupPlanArn">> => string(),
+%%   <<"BackupPlanId">> => string(),
+%%   <<"BackupPlanName">> => string(),
+%%   <<"BackupPlanVersion">> => string(),
+%%   <<"BackupRuleCron">> => string(),
+%%   <<"BackupRuleId">> => string(),
+%%   <<"BackupRuleName">> => string(),
+%%   <<"BackupRuleTimezone">> => string()
+%% }
+-type recovery_point_creator() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_member() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type recovery_point_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_selection() :: #{
+%%   <<"DateRange">> => date_range(),
+%%   <<"ResourceIdentifiers">> => list(string()),
+%%   <<"VaultNames">> => list(string())
+%% }
+-type recovery_point_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_delivery_channel() :: #{
+%%   <<"Formats">> => list(string()),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type report_delivery_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_destination() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3Keys">> => list(string())
+%% }
+-type report_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_job() :: #{
+%%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ResourceSelection">> => list(resource_selection()),
-%%   <<"TieringConfigurationArn">> => string(),
-%%   <<"TieringConfigurationName">> => string()
+%%   <<"ReportDestination">> => report_destination(),
+%%   <<"ReportJobId">> => string(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportTemplate">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
 %% }
--type tiering_configuration() :: #{binary() => any()}.
+-type report_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_plan() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeploymentStatus">> => string(),
+%%   <<"LastAttemptedExecutionTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulExecutionTime">> => non_neg_integer(),
+%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportPlanName">> => string(),
+%%   <<"ReportSetting">> => report_setting()
+%% }
+-type report_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% report_setting() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"FrameworkArns">> => list(string()),
+%%   <<"NumberOfFrameworks">> => integer(),
+%%   <<"OrganizationUnits">> => list(string()),
+%%   <<"Regions">> => list(string()),
+%%   <<"ReportTemplate">> => string()
+%% }
+-type report_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_selection() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"Resources">> => list(string()),
+%%   <<"TieringDownSettingsInDays">> => integer()
+%% }
+-type resource_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_access_backup_vault_list_member() :: #{
+%%   <<"ApprovalDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LatestRevokeRequest">> => latest_revoke_request(),
+%%   <<"RestoreAccessBackupVaultArn">> => string(),
+%%   <<"VaultState">> => list(any())
+%% }
+-type restore_access_backup_vault_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_job_creator() :: #{
+%%   <<"RestoreTestingPlanArn">> => string()
+%% }
+-type restore_job_creator() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type restore_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_jobs_list_member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BackupSizeInBytes">> => float(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => restore_job_creator(),
+%%   <<"CreatedResourceArn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DeletionStatus">> => list(any()),
+%%   <<"DeletionStatusMessage">> => string(),
+%%   <<"ExpectedCompletionTimeMinutes">> => float(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"ParentJobId">> => string(),
+%%   <<"PercentDone">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"RecoveryPointCreationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RestoreJobId">> => string(),
+%%   <<"SourceResourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusMessage">> => string()
+%% }
+-type restore_jobs_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_create() :: #{
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_get() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"CreatorRequestId">> => [string()],
+%%   <<"LastExecutionTime">> => [non_neg_integer()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_get() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_list() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"LastExecutionTime">> => [non_neg_integer()],
+%%   <<"LastUpdateTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_plan_for_update() :: #{
+%%   <<"RecoveryPointSelection">> => restore_testing_recovery_point_selection(),
+%%   <<"ScheduleExpression">> => [string()],
+%%   <<"ScheduleExpressionTimezone">> => [string()],
+%%   <<"StartWindowHours">> => integer()
+%% }
+-type restore_testing_plan_for_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_recovery_point_selection() :: #{
+%%   <<"Algorithm">> => list(any()),
+%%   <<"ExcludeVaults">> => list(string()),
+%%   <<"IncludeVaults">> => list(string()),
+%%   <<"RecoveryPointTypes">> => list(list(any())()),
+%%   <<"SelectionWindowDays">> => integer()
+%% }
+-type restore_testing_recovery_point_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_testing_selection_for_create() :: #{
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceArns">> => list(string()),
+%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
+%%   <<"ProtectedResourceType">> => [string()],
+%%   <<"RestoreMetadataOverrides">> => map(),
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"ValidationWindowHours">> => integer()
+%% }
+-type restore_testing_selection_for_create() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2834,108 +2531,235 @@
 
 
 %% Example:
-%% get_recovery_point_restore_metadata_output() :: #{
-%%   <<"BackupVaultArn">> => string(),
-%%   <<"RecoveryPointArn">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"RestoreMetadata">> => map()
-%% }
--type get_recovery_point_restore_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_restore_testing_plan_output() :: #{
+%% restore_testing_selection_for_list() :: #{
 %%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"RestoreTestingPlanArn">> => [string()],
-%%   <<"RestoreTestingPlanName">> => [string()]
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceType">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"ValidationWindowHours">> => integer()
 %% }
--type create_restore_testing_plan_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backup_vault_lock_configuration_input() :: #{}
--type delete_backup_vault_lock_configuration_input() :: #{}.
+-type restore_testing_selection_for_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% index_action() :: #{
-%%   <<"ResourceTypes">> => list(string())
+%% restore_testing_selection_for_update() :: #{
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"ProtectedResourceArns">> => list(string()),
+%%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
+%%   <<"RestoreMetadataOverrides">> => map(),
+%%   <<"ValidationWindowHours">> => integer()
 %% }
--type index_action() :: #{binary() => any()}.
+-type restore_testing_selection_for_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_protected_resources_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% revoke_restore_access_backup_vault_input() :: #{
+%%   <<"RequesterComment">> => string()
 %% }
--type list_protected_resources_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recovery_point_input() :: #{}
--type delete_recovery_point_input() :: #{}.
+-type revoke_restore_access_backup_vault_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_report_plan_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ReportPlanArn">> => string(),
-%%   <<"ReportPlanName">> => string()
+%% scan_action() :: #{
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ScanMode">> => list(any())
 %% }
--type update_report_plan_output() :: #{binary() => any()}.
+-type scan_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_backup_plan_templates_output() :: #{
-%%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()),
-%%   <<"NextToken">> => string()
+%% scan_job() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"BackupVaultArn">> => [string()],
+%%   <<"BackupVaultName">> => [string()],
+%%   <<"CompletionDate">> => [non_neg_integer()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
+%%   <<"ContinuousScanStartTime">> => [non_neg_integer()],
+%%   <<"CreatedBy">> => scan_job_creator(),
+%%   <<"CreationDate">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> => [string()],
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"RecoveryPointArn">> => [string()],
+%%   <<"ResourceArn">> => [string()],
+%%   <<"ResourceName">> => [string()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanId">> => [string()],
+%%   <<"ScanJobId">> => [string()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"ScanResult">> => scan_result_info(),
+%%   <<"ScannerRoleArn">> => [string()],
+%%   <<"State">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
 %% }
--type list_backup_plan_templates_output() :: #{binary() => any()}.
+-type scan_job() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_backup_plans_input() :: #{
-%%   <<"IncludeDeleted">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% scan_job_creator() :: #{
+%%   <<"BackupPlanArn">> => [string()],
+%%   <<"BackupPlanId">> => [string()],
+%%   <<"BackupPlanVersion">> => [string()],
+%%   <<"BackupRuleId">> => [string()]
 %% }
--type list_backup_plans_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_backup_job_input() :: #{}
--type describe_backup_job_input() :: #{}.
+-type scan_job_creator() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_logically_air_gapped_backup_vault_input() :: #{
-%%   <<"BackupVaultTags">> => map(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"MaxRetentionDays">> := float(),
-%%   <<"MinRetentionDays">> := float()
+%% scan_job_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Count">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
 %% }
--type create_logically_air_gapped_backup_vault_input() :: #{binary() => any()}.
+-type scan_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_report_plan_output() :: #{
-%%   <<"ReportPlan">> => report_plan()
+%% scan_result() :: #{
+%%   <<"Findings">> => list(list(any())()),
+%%   <<"LastScanTimestamp">> => non_neg_integer(),
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ScanJobState">> => list(any())
 %% }
--type describe_report_plan_output() :: #{binary() => any()}.
+-type scan_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tiering_configurations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TieringConfigurations">> => list(tiering_configurations_list_member())
+%% scan_result_info() :: #{
+%%   <<"ScanResultStatus">> => list(any())
 %% }
--type list_tiering_configurations_output() :: #{binary() => any()}.
+-type scan_result_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_restore_testing_selection_input() :: #{
-%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_update()
+%% scan_setting() :: #{
+%%   <<"MalwareScanner">> => list(any()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"ScannerRoleArn">> => string()
 %% }
--type update_restore_testing_selection_input() :: #{binary() => any()}.
+-type scan_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_plan_execution_member() :: #{
+%%   <<"ExecutionTime">> => non_neg_integer(),
+%%   <<"RuleExecutionType">> => list(any()),
+%%   <<"RuleId">> => string()
+%% }
+-type scheduled_plan_execution_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Context">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_backup_job_input() :: #{
+%%   <<"BackupOptions">> => map(),
+%%   <<"BackupVaultName">> := string(),
+%%   <<"CompleteWindowMinutes">> => float(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Index">> => list(any()),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"LogicallyAirGappedBackupVaultArn">> => string(),
+%%   <<"RecoveryPointTags">> => map(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"StartWindowMinutes">> => float()
+%% }
+-type start_backup_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_backup_job_output() :: #{
+%%   <<"BackupJobId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type start_backup_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_copy_job_input() :: #{
+%%   <<"DestinationBackupVaultArn">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointArn">> := string(),
+%%   <<"SourceBackupVaultName">> := string()
+%% }
+-type start_copy_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_copy_job_output() :: #{
+%%   <<"CopyJobId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IsParent">> => boolean()
+%% }
+-type start_copy_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_report_job_input() :: #{
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type start_report_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_report_job_output() :: #{
+%%   <<"ReportJobId">> => string()
+%% }
+-type start_report_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_restore_job_input() :: #{
+%%   <<"CopySourceTagsToRestoredResource">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"Metadata">> := map(),
+%%   <<"RecoveryPointArn">> := string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type start_restore_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_restore_job_output() :: #{
+%%   <<"RestoreJobId">> => string()
+%% }
+-type start_restore_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_scan_job_input() :: #{
+%%   <<"BackupVaultName">> := [string()],
+%%   <<"ContinuousScanEndTime">> => [non_neg_integer()],
+%%   <<"IamRoleArn">> := [string()],
+%%   <<"IdempotencyToken">> => [string()],
+%%   <<"MalwareScanner">> := list(any()),
+%%   <<"RecoveryPointArn">> := [string()],
+%%   <<"ScanBaseRecoveryPointArn">> => [string()],
+%%   <<"ScanMode">> := list(any()),
+%%   <<"ScannerRoleArn">> := [string()]
+%% }
+-type start_scan_job_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2945,18 +2769,71 @@
 %% }
 -type start_scan_job_output() :: #{binary() => any()}.
 
+%% Example:
+%% stop_backup_job_input() :: #{}
+-type stop_backup_job_input() :: #{}.
+
 
 %% Example:
-%% put_backup_vault_lock_configuration_input() :: #{
-%%   <<"ChangeableForDays">> => float(),
-%%   <<"MaxRetentionDays">> => float(),
-%%   <<"MinRetentionDays">> => float()
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
 %% }
--type put_backup_vault_lock_configuration_input() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% describe_restore_job_input() :: #{}
--type describe_restore_job_input() :: #{}.
+%% tiering_configuration() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ResourceSelection">> => list(resource_selection()),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering_configuration_input_for_create() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ResourceSelection">> => list(resource_selection()),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configuration_input_for_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering_configuration_input_for_update() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ResourceSelection">> => list(resource_selection())
+%% }
+-type tiering_configuration_input_for_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering_configurations_list_member() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type tiering_configurations_list_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeyList">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backup_plan_input() :: #{
+%%   <<"BackupPlan">> := backup_plan_input()
+%% }
+-type update_backup_plan_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2972,176 +2849,299 @@
 
 
 %% Example:
-%% list_restore_access_backup_vaults_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RestoreAccessBackupVaults">> => list(restore_access_backup_vault_list_member())
+%% update_framework_input() :: #{
+%%   <<"FrameworkControls">> => list(framework_control()),
+%%   <<"FrameworkDescription">> => string(),
+%%   <<"IdempotencyToken">> => string()
 %% }
--type list_restore_access_backup_vaults_output() :: #{binary() => any()}.
+-type update_framework_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_restore_validation_result_input() :: #{
-%%   <<"ValidationStatus">> := list(any()),
-%%   <<"ValidationStatusMessage">> => string()
+%% update_framework_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"FrameworkArn">> => string(),
+%%   <<"FrameworkName">> => string()
 %% }
--type put_restore_validation_result_input() :: #{binary() => any()}.
+-type update_framework_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_input() :: #{
+%%   <<"GlobalSettings">> => map()
+%% }
+-type update_global_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_index_settings_input() :: #{
+%%   <<"IamRoleArn">> => string(),
+%%   <<"Index">> := list(any())
+%% }
+-type update_recovery_point_index_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_index_settings_output() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"Index">> => list(any()),
+%%   <<"IndexStatus">> => list(any()),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type update_recovery_point_index_settings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_lifecycle_input() :: #{
+%%   <<"Lifecycle">> => lifecycle()
+%% }
+-type update_recovery_point_lifecycle_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_point_lifecycle_output() :: #{
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"CalculatedLifecycle">> => calculated_lifecycle(),
+%%   <<"Lifecycle">> => lifecycle(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type update_recovery_point_lifecycle_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_region_settings_input() :: #{
+%%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInPreference">> => map()
+%% }
+-type update_region_settings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_report_plan_input() :: #{
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ReportDeliveryChannel">> => report_delivery_channel(),
+%%   <<"ReportPlanDescription">> => string(),
+%%   <<"ReportSetting">> => report_setting()
+%% }
+-type update_report_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_report_plan_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ReportPlanArn">> => string(),
+%%   <<"ReportPlanName">> => string()
+%% }
+-type update_report_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_plan_input() :: #{
+%%   <<"RestoreTestingPlan">> := restore_testing_plan_for_update()
+%% }
+-type update_restore_testing_plan_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_plan_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"UpdateTime">> => [non_neg_integer()]
+%% }
+-type update_restore_testing_plan_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_selection_input() :: #{
+%%   <<"RestoreTestingSelection">> := restore_testing_selection_for_update()
+%% }
+-type update_restore_testing_selection_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_restore_testing_selection_output() :: #{
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"RestoreTestingPlanArn">> => [string()],
+%%   <<"RestoreTestingPlanName">> => [string()],
+%%   <<"RestoreTestingSelectionName">> => [string()],
+%%   <<"UpdateTime">> => [non_neg_integer()]
+%% }
+-type update_restore_testing_selection_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tiering_configuration_input() :: #{
+%%   <<"TieringConfiguration">> := tiering_configuration_input_for_update()
+%% }
+-type update_tiering_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_tiering_configuration_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"TieringConfigurationArn">> => string(),
+%%   <<"TieringConfigurationName">> => string()
+%% }
+-type update_tiering_configuration_output() :: #{binary() => any()}.
 
 -type associate_backup_vault_mpa_approval_team_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type cancel_legal_hold_errors() ::
-    invalid_resource_state_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_value_exception().
 
 -type create_backup_plan_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_backup_selection_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_backup_vault_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_framework_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_legal_hold_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type create_logically_air_gapped_backup_vault_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    invalid_parameter_value_exception() | 
+    already_exists_exception().
 
 -type create_report_plan_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_restore_access_backup_vault_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception().
 
 -type create_restore_testing_plan_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     conflict_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type create_restore_testing_selection_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    already_exists_exception().
 
 -type create_tiering_configuration_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     conflict_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type delete_backup_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_backup_selection_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_backup_vault_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_backup_vault_access_policy_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_backup_vault_lock_configuration_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_backup_vault_notifications_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_framework_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception().
 
 -type delete_recovery_point_errors() ::
-    invalid_resource_state_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_report_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception().
 
 -type delete_restore_testing_plan_errors() ::
     service_unavailable_exception() | 
@@ -3153,34 +3153,34 @@
 
 -type delete_tiering_configuration_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_backup_job_errors() ::
     service_unavailable_exception() | 
-    dependency_failure_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    dependency_failure_exception().
 
 -type describe_backup_vault_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_copy_job_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_framework_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_global_settings_errors() ::
     service_unavailable_exception() | 
@@ -3188,15 +3188,15 @@
 
 -type describe_protected_resource_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_recovery_point_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_region_settings_errors() ::
     service_unavailable_exception().
@@ -3208,123 +3208,123 @@
 
 -type describe_report_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type describe_restore_job_errors() ::
     service_unavailable_exception() | 
-    dependency_failure_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    dependency_failure_exception().
 
 -type describe_scan_job_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type disassociate_backup_vault_mpa_approval_team_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type disassociate_recovery_point_errors() ::
-    invalid_resource_state_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type disassociate_recovery_point_from_parent_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type export_backup_plan_template_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_backup_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_backup_plan_from_json_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    missing_parameter_value_exception().
+    invalid_parameter_value_exception().
 
 -type get_backup_plan_from_template_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_backup_selection_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_backup_vault_access_policy_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_backup_vault_notifications_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_legal_hold_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_p_i_t_r_malware_scan_results_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_recovery_point_index_details_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_recovery_point_restore_metadata_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_restore_job_metadata_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_restore_testing_inferred_metadata_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_restore_testing_plan_errors() ::
     service_unavailable_exception() | 
@@ -3339,9 +3339,9 @@
 
 -type get_tiering_configuration_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_backup_job_summaries_errors() ::
     service_unavailable_exception() | 
@@ -3353,33 +3353,33 @@
 
 -type list_backup_plan_templates_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_backup_plan_versions_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_backup_plans_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_backup_selections_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_backup_vaults_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_copy_job_summaries_errors() ::
     service_unavailable_exception() | 
@@ -3395,8 +3395,8 @@
 
 -type list_indexed_recovery_points_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_legal_holds_errors() ::
     service_unavailable_exception() | 
@@ -3408,30 +3408,30 @@
 
 -type list_protected_resources_by_backup_vault_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_recovery_points_by_backup_vault_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_recovery_points_by_legal_hold_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_recovery_points_by_resource_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_report_jobs_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_report_plans_errors() ::
     service_unavailable_exception() | 
@@ -3439,9 +3439,9 @@
 
 -type list_restore_access_backup_vaults_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_restore_job_summaries_errors() ::
     service_unavailable_exception() | 
@@ -3449,15 +3449,15 @@
 
 -type list_restore_jobs_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_restore_jobs_by_protected_resource_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_restore_testing_plans_errors() ::
     service_unavailable_exception() | 
@@ -3465,8 +3465,8 @@
 
 -type list_restore_testing_selections_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_scan_job_summaries_errors() ::
     service_unavailable_exception() | 
@@ -3478,9 +3478,9 @@
 
 -type list_tags_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_tiering_configurations_errors() ::
     service_unavailable_exception() | 
@@ -3488,163 +3488,163 @@
 
 -type put_backup_vault_access_policy_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_backup_vault_lock_configuration_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_backup_vault_notifications_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_restore_validation_result_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type revoke_restore_access_backup_vault_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type start_backup_job_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type start_copy_job_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type start_report_job_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type start_restore_job_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type start_scan_job_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type stop_backup_job_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type untag_resource_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_backup_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_framework_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
     conflict_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 -type update_global_settings_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
+    missing_parameter_value_exception() | 
     invalid_request_exception() | 
-    missing_parameter_value_exception().
+    invalid_parameter_value_exception().
 
 -type update_recovery_point_index_settings_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_recovery_point_lifecycle_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_region_settings_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_report_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception().
 
 -type update_restore_testing_plan_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception().
 
 -type update_restore_testing_selection_errors() ::
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_parameter_value_exception().
+    missing_parameter_value_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception().
 
 -type update_tiering_configuration_errors() ::
-    limit_exceeded_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
     conflict_exception() | 
-    already_exists_exception() | 
-    missing_parameter_value_exception().
+    already_exists_exception().
 
 %%====================================================================
 %% API

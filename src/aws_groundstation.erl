@@ -113,26 +113,37 @@
 
 
 %% Example:
-%% list_configs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% agent_details() :: #{
+%%   <<"agentCpuCores">> => list([integer()]()),
+%%   <<"agentVersion">> => string(),
+%%   <<"componentVersions">> => list(component_version()),
+%%   <<"instanceId">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"reservedCpuCores">> => list([integer()]())
 %% }
--type list_configs_request() :: #{binary() => any()}.
+-type agent_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% register_agent_response() :: #{
-%%   <<"agentId">> => string()
+%% aggregate_status() :: #{
+%%   <<"signatureMap">> => map(),
+%%   <<"status">> => list(any())
 %% }
--type register_agent_response() :: #{binary() => any()}.
+-type aggregate_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% downlink_connection_details() :: #{
-%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
-%%   <<"egressAddressAndPort">> => connection_details()
+%% antenna_demod_decode_details() :: #{
+%%   <<"outputNode">> => [string()]
 %% }
--type downlink_connection_details() :: #{binary() => any()}.
+-type antenna_demod_decode_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% antenna_downlink_config() :: #{
+%%   <<"spectrumConfig">> => spectrum_config()
+%% }
+-type antenna_downlink_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -142,6 +153,78 @@
 %%   <<"spectrumConfig">> => spectrum_config()
 %% }
 -type antenna_downlink_demod_decode_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% antenna_list_item() :: #{
+%%   <<"antennaName">> => string(),
+%%   <<"groundStationName">> => string(),
+%%   <<"region">> => string()
+%% }
+-type antenna_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% antenna_uplink_config() :: #{
+%%   <<"spectrumConfig">> => uplink_spectrum_config(),
+%%   <<"targetEirp">> => eirp(),
+%%   <<"transmitDisabled">> => [boolean()]
+%% }
+-type antenna_uplink_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ground_station_agent_endpoint() :: #{
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
+%%   <<"egressAddress">> => connection_details(),
+%%   <<"ingressAddress">> => ranged_connection_details(),
+%%   <<"name">> => string()
+%% }
+-type aws_ground_station_agent_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_ephemeris() :: #{
+%%   <<"data">> => list(),
+%%   <<"groundStation">> => string()
+%% }
+-type az_el_ephemeris() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_ephemeris_filter() :: #{
+%%   <<"id">> => string()
+%% }
+-type az_el_ephemeris_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
+%% }
+-type az_el_program_track_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_segment() :: #{
+%%   <<"azElList">> => list(time_az_el()),
+%%   <<"referenceEpoch">> => [non_neg_integer()],
+%%   <<"validTimeRange">> => i_s_o8601_time_range()
+%% }
+-type az_el_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_segments() :: #{
+%%   <<"angleUnit">> => list(any()),
+%%   <<"azElSegmentList">> => list(az_el_segment())
+%% }
+-type az_el_segments() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_contact_request() :: #{}
+-type cancel_contact_request() :: #{}.
 
 
 %% Example:
@@ -158,454 +241,11 @@
 
 
 %% Example:
-%% create_config_request() :: #{
-%%   <<"configData">> := list(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%% component_version() :: #{
+%%   <<"componentType">> => string(),
+%%   <<"versions">> => list(string())
 %% }
--type create_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_minute_usage_request() :: #{
-%%   <<"month">> := integer(),
-%%   <<"year">> := integer()
-%% }
--type get_minute_usage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configs_response() :: #{
-%%   <<"configList">> => list(config_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"parameterName">> => [string()]
-%% }
--type dependency_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_sink_config() :: #{
-%%   <<"telemetrySinkData">> => list(),
-%%   <<"telemetrySinkType">> => list(any())
-%% }
--type telemetry_sink_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% i_s_o8601_time_range() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type i_s_o8601_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_antennas_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_antennas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ground_station_reservation_list_item() :: #{
-%%   <<"antennaName">> => string(),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"groundStationId">> => string(),
-%%   <<"reservationDetails">> => list(),
-%%   <<"reservationType">> => list(any()),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type ground_station_reservation_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataflow_endpoint_config() :: #{
-%%   <<"dataflowEndpointName">> => [string()],
-%%   <<"dataflowEndpointRegion">> => [string()]
-%% }
--type dataflow_endpoint_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tracking_overrides() :: #{
-%%   <<"programTrackSettings">> => list()
-%% }
--type tracking_overrides() :: #{binary() => any()}.
-
-%% Example:
-%% get_satellite_request() :: #{}
--type get_satellite_request() :: #{}.
-
-%% Example:
-%% describe_contact_request() :: #{}
--type describe_contact_request() :: #{}.
-
-
-%% Example:
-%% get_agent_configuration_response() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"taskingDocument">> => [string()]
-%% }
--type get_agent_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataflow_detail() :: #{
-%%   <<"destination">> => destination(),
-%%   <<"errorMessage">> => [string()],
-%%   <<"source">> => source()
-%% }
--type dataflow_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_config_request() :: #{}
--type get_config_request() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% describe_contact_response() :: #{
-%%   <<"contactId">> => string(),
-%%   <<"contactStatus">> => list(any()),
-%%   <<"dataflowList">> => list(dataflow_detail()),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"ephemeris">> => ephemeris_response_data(),
-%%   <<"errorMessage">> => [string()],
-%%   <<"groundStation">> => [string()],
-%%   <<"maximumElevation">> => elevation(),
-%%   <<"missionProfileArn">> => string(),
-%%   <<"postPassEndTime">> => [non_neg_integer()],
-%%   <<"prePassStartTime">> => [non_neg_integer()],
-%%   <<"region">> => [string()],
-%%   <<"satelliteArn">> => string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"tags">> => map(),
-%%   <<"trackingOverrides">> => tracking_overrides(),
-%%   <<"version">> => contact_version(),
-%%   <<"visibilityEndTime">> => [non_neg_integer()],
-%%   <<"visibilityStartTime">> => [non_neg_integer()]
-%% }
--type describe_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_config_request() :: #{
-%%   <<"configData">> := list(),
-%%   <<"name">> := string()
-%% }
--type update_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_task_response_url_response() :: #{
-%%   <<"agentId">> => string(),
-%%   <<"presignedLogUrl">> => [string()],
-%%   <<"taskId">> => string()
-%% }
--type get_agent_task_response_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_agent_request() :: #{
-%%   <<"agentDetails">> := agent_details(),
-%%   <<"discoveryData">> := discovery_data(),
-%%   <<"tags">> => map()
-%% }
--type register_agent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tracking_config() :: #{
-%%   <<"autotrack">> => list(any())
-%% }
--type tracking_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% az_el_program_track_settings() :: #{
-%%   <<"ephemerisId">> => string()
-%% }
--type az_el_program_track_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeris_description() :: #{
-%%   <<"ephemerisData">> => string(),
-%%   <<"sourceS3Object">> => s3_object()
-%% }
--type ephemeris_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% tle_program_track_settings() :: #{
-%%   <<"ephemerisId">> => string()
-%% }
--type tle_program_track_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% spectrum_config() :: #{
-%%   <<"bandwidth">> => frequency_bandwidth(),
-%%   <<"centerFrequency">> => frequency(),
-%%   <<"polarization">> => list(any())
-%% }
--type spectrum_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% socket_address() :: #{
-%%   <<"name">> => [string()],
-%%   <<"port">> => [integer()]
-%% }
--type socket_address() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_details() :: #{
-%%   <<"awsGroundStationAgentEndpoint">> => aws_ground_station_agent_endpoint(),
-%%   <<"downlinkAwsGroundStationAgentEndpoint">> => downlink_aws_ground_station_agent_endpoint_details(),
-%%   <<"endpoint">> => dataflow_endpoint(),
-%%   <<"healthReasons">> => list(list(any())()),
-%%   <<"healthStatus">> => list(any()),
-%%   <<"securityDetails">> => security_details(),
-%%   <<"uplinkAwsGroundStationAgentEndpoint">> => uplink_aws_ground_station_agent_endpoint_details()
-%% }
--type endpoint_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_config_response() :: #{
-%%   <<"configArn">> => string(),
-%%   <<"configData">> => list(),
-%%   <<"configId">> => [string()],
-%%   <<"configType">> => list(any()),
-%%   <<"name">> => [string()],
-%%   <<"tags">> => map()
-%% }
--type get_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeris_item() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"enabled">> => [boolean()],
-%%   <<"ephemerisId">> => string(),
-%%   <<"ephemerisType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"sourceS3Object">> => s3_object(),
-%%   <<"status">> => list(any())
-%% }
--type ephemeris_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_version() :: #{
-%%   <<"activated">> => [non_neg_integer()],
-%%   <<"created">> => [non_neg_integer()],
-%%   <<"failureCodes">> => list(list(any())()),
-%%   <<"failureMessage">> => [string()],
-%%   <<"lastUpdated">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"superseded">> => [non_neg_integer()],
-%%   <<"versionId">> => integer()
-%% }
--type contact_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% ranged_socket_address() :: #{
-%%   <<"name">> => string(),
-%%   <<"portRange">> => integer_range()
-%% }
--type ranged_socket_address() :: #{binary() => any()}.
-
-
-%% Example:
-%% antenna_uplink_config() :: #{
-%%   <<"spectrumConfig">> => uplink_spectrum_config(),
-%%   <<"targetEirp">> => eirp(),
-%%   <<"transmitDisabled">> => [boolean()]
-%% }
--type antenna_uplink_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeris_meta_data() :: #{
-%%   <<"ephemerisId">> => string(),
-%%   <<"epoch">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"source">> => list(any())
-%% }
--type ephemeris_meta_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% uplink_echo_config() :: #{
-%%   <<"antennaUplinkConfigArn">> => string(),
-%%   <<"enabled">> => [boolean()]
-%% }
--type uplink_echo_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% uplink_connection_details() :: #{
-%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
-%%   <<"ingressAddressAndPort">> => connection_details()
-%% }
--type uplink_connection_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% ranged_connection_details() :: #{
-%%   <<"mtu">> => [integer()],
-%%   <<"socketAddress">> => ranged_socket_address()
-%% }
--type ranged_connection_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string(),
-%%   <<"version">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% config_list_item() :: #{
-%%   <<"configArn">> => string(),
-%%   <<"configId">> => [string()],
-%%   <<"configType">> => list(any()),
-%%   <<"name">> => [string()]
-%% }
--type config_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_contact_request() :: #{}
--type cancel_contact_request() :: #{}.
-
-
-%% Example:
-%% agent_details() :: #{
-%%   <<"agentCpuCores">> => list([integer()]()),
-%%   <<"agentVersion">> => string(),
-%%   <<"componentVersions">> => list(component_version()),
-%%   <<"instanceId">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"reservedCpuCores">> => list([integer()]())
-%% }
--type agent_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% decode_config() :: #{
-%%   <<"unvalidatedJSON">> => string()
-%% }
--type decode_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% reserve_contact_request() :: #{
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"groundStation">> := string(),
-%%   <<"missionProfileArn">> := string(),
-%%   <<"satelliteArn">> => string(),
-%%   <<"startTime">> := [non_neg_integer()],
-%%   <<"tags">> => map(),
-%%   <<"trackingOverrides">> => tracking_overrides()
-%% }
--type reserve_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_ground_station_agent_endpoint() :: #{
-%%   <<"agentStatus">> => list(any()),
-%%   <<"auditResults">> => list(any()),
-%%   <<"egressAddress">> => connection_details(),
-%%   <<"ingressAddress">> => ranged_connection_details(),
-%%   <<"name">> => string()
-%% }
--type aws_ground_station_agent_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% delete_config_request() :: #{}
--type delete_config_request() :: #{}.
-
-
-%% Example:
-%% list_dataflow_endpoint_groups_response() :: #{
-%%   <<"dataflowEndpointGroupList">> => list(dataflow_endpoint_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataflow_endpoint_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% satellite_list_item() :: #{
-%%   <<"currentEphemeris">> => ephemeris_meta_data(),
-%%   <<"groundStations">> => list(string()),
-%%   <<"noradSatelliteID">> => integer(),
-%%   <<"satelliteArn">> => string(),
-%%   <<"satelliteId">> => string()
-%% }
--type satellite_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_agent_task_response_url_request() :: #{}
--type get_agent_task_response_url_request() :: #{}.
-
-
-%% Example:
-%% create_dataflow_endpoint_group_v2_request() :: #{
-%%   <<"contactPostPassDurationSeconds">> => integer(),
-%%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"endpoints">> := list(list()),
-%%   <<"tags">> => map()
-%% }
--type create_dataflow_endpoint_group_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_az_el() :: #{
-%%   <<"az">> => [float()],
-%%   <<"dt">> => [float()],
-%%   <<"el">> => [float()]
-%% }
--type time_az_el() :: #{binary() => any()}.
+-type component_version() :: #{binary() => any()}.
 
 
 %% Example:
@@ -618,112 +258,21 @@
 
 
 %% Example:
-%% downlink_aws_ground_station_agent_endpoint_details() :: #{
-%%   <<"agentStatus">> => list(any()),
-%%   <<"auditResults">> => list(any()),
-%%   <<"dataflowDetails">> => list(),
-%%   <<"name">> => string()
+%% config_list_item() :: #{
+%%   <<"configArn">> => string(),
+%%   <<"configId">> => [string()],
+%%   <<"configType">> => list(any()),
+%%   <<"name">> => [string()]
 %% }
--type downlink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
+-type config_list_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% dataflow_endpoint_list_item() :: #{
-%%   <<"dataflowEndpointGroupArn">> => string(),
-%%   <<"dataflowEndpointGroupId">> => string()
+%% connection_details() :: #{
+%%   <<"mtu">> => [integer()],
+%%   <<"socketAddress">> => socket_address()
 %% }
--type dataflow_endpoint_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% frequency() :: #{
-%%   <<"units">> => list(any()),
-%%   <<"value">> => [float()]
-%% }
--type frequency() :: #{binary() => any()}.
-
-
-%% Example:
-%% az_el_segments() :: #{
-%%   <<"angleUnit">> => list(any()),
-%%   <<"azElSegmentList">> => list(az_el_segment())
-%% }
--type az_el_segments() :: #{binary() => any()}.
-
-
-%% Example:
-%% integer_range() :: #{
-%%   <<"maximum">> => [integer()],
-%%   <<"minimum">> => [integer()]
-%% }
--type integer_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% mission_profile_id_response() :: #{
-%%   <<"missionProfileId">> => string()
-%% }
--type mission_profile_id_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% maintenance_reservation_details() :: #{
-%%   <<"maintenanceType">> => list(any())
-%% }
--type maintenance_reservation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ground_station_reservations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reservationList">> => list(ground_station_reservation_list_item())
-%% }
--type list_ground_station_reservations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_mission_profiles_response() :: #{
-%%   <<"missionProfileList">> => list(mission_profile_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_mission_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_mission_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_mission_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_status_response() :: #{
-%%   <<"agentId">> => string()
-%% }
--type update_agent_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% oem_program_track_settings() :: #{
-%%   <<"ephemerisId">> => string()
-%% }
--type oem_program_track_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_response() :: #{
-%%   <<"contactId">> => string(),
-%%   <<"versionId">> => integer()
-%% }
--type update_contact_response() :: #{binary() => any()}.
+-type connection_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -750,32 +299,163 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"parameterName">> => [string()]
+%% contact_id_response() :: #{
+%%   <<"contactId">> => string(),
+%%   <<"versionId">> => integer()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type contact_id_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% ground_station_data() :: #{
-%%   <<"groundStationId">> => string(),
-%%   <<"groundStationName">> => string(),
-%%   <<"region">> => string()
+%% contact_reservation_details() :: #{
+%%   <<"contactId">> => string()
 %% }
--type ground_station_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_mission_profile_request() :: #{}
--type get_mission_profile_request() :: #{}.
+-type contact_reservation_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"parameterName">> => [string()]
+%% contact_version() :: #{
+%%   <<"activated">> => [non_neg_integer()],
+%%   <<"created">> => [non_neg_integer()],
+%%   <<"failureCodes">> => list(list(any())()),
+%%   <<"failureMessage">> => [string()],
+%%   <<"lastUpdated">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"superseded">> => [non_neg_integer()],
+%%   <<"versionId">> => integer()
 %% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
+-type contact_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_config_request() :: #{
+%%   <<"configData">> := list(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataflow_endpoint_group_request() :: #{
+%%   <<"contactPostPassDurationSeconds">> => integer(),
+%%   <<"contactPrePassDurationSeconds">> => integer(),
+%%   <<"endpointDetails">> := list(endpoint_details()),
+%%   <<"tags">> => map()
+%% }
+-type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataflow_endpoint_group_v2_request() :: #{
+%%   <<"contactPostPassDurationSeconds">> => integer(),
+%%   <<"contactPrePassDurationSeconds">> => integer(),
+%%   <<"endpoints">> := list(list()),
+%%   <<"tags">> => map()
+%% }
+-type create_dataflow_endpoint_group_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataflow_endpoint_group_v2_response() :: #{
+%%   <<"dataflowEndpointGroupId">> => string()
+%% }
+-type create_dataflow_endpoint_group_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ephemeris_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"ephemeris">> => list(),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"priority">> => integer(),
+%%   <<"satelliteId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_ephemeris_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_mission_profile_request() :: #{
+%%   <<"contactPostPassDurationSeconds">> => integer(),
+%%   <<"contactPrePassDurationSeconds">> => integer(),
+%%   <<"dataflowEdges">> := list(list(string())()),
+%%   <<"minimumViableContactDurationSeconds">> := integer(),
+%%   <<"name">> := string(),
+%%   <<"streamsKmsKey">> => list(),
+%%   <<"streamsKmsRole">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"telemetrySinkConfigArn">> => string(),
+%%   <<"trackingConfigArn">> := string()
+%% }
+-type create_mission_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataflow_detail() :: #{
+%%   <<"destination">> => destination(),
+%%   <<"errorMessage">> => [string()],
+%%   <<"source">> => source()
+%% }
+-type dataflow_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataflow_endpoint() :: #{
+%%   <<"address">> => socket_address(),
+%%   <<"mtu">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type dataflow_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataflow_endpoint_config() :: #{
+%%   <<"dataflowEndpointName">> => [string()],
+%%   <<"dataflowEndpointRegion">> => [string()]
+%% }
+-type dataflow_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataflow_endpoint_group_id_response() :: #{
+%%   <<"dataflowEndpointGroupId">> => string()
+%% }
+-type dataflow_endpoint_group_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataflow_endpoint_list_item() :: #{
+%%   <<"dataflowEndpointGroupArn">> => string(),
+%%   <<"dataflowEndpointGroupId">> => string()
+%% }
+-type dataflow_endpoint_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% decode_config() :: #{
+%%   <<"unvalidatedJSON">> => string()
+%% }
+-type decode_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_config_request() :: #{}
+-type delete_config_request() :: #{}.
+
+%% Example:
+%% delete_dataflow_endpoint_group_request() :: #{}
+-type delete_dataflow_endpoint_group_request() :: #{}.
+
+%% Example:
+%% delete_ephemeris_request() :: #{}
+-type delete_ephemeris_request() :: #{}.
+
+%% Example:
+%% delete_mission_profile_request() :: #{}
+-type delete_mission_profile_request() :: #{}.
 
 
 %% Example:
@@ -786,20 +466,44 @@
 
 
 %% Example:
-%% contact_id_response() :: #{
-%%   <<"contactId">> => string(),
-%%   <<"versionId">> => integer()
+%% dependency_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"parameterName">> => [string()]
 %% }
--type contact_id_response() :: #{binary() => any()}.
+-type dependency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_request() :: #{}
+-type describe_contact_request() :: #{}.
 
 
 %% Example:
-%% update_agent_status_request() :: #{
-%%   <<"aggregateStatus">> := aggregate_status(),
-%%   <<"componentStatuses">> := list(component_status_data()),
-%%   <<"taskId">> := string()
+%% describe_contact_response() :: #{
+%%   <<"contactId">> => string(),
+%%   <<"contactStatus">> => list(any()),
+%%   <<"dataflowList">> => list(dataflow_detail()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"ephemeris">> => ephemeris_response_data(),
+%%   <<"errorMessage">> => [string()],
+%%   <<"groundStation">> => [string()],
+%%   <<"maximumElevation">> => elevation(),
+%%   <<"missionProfileArn">> => string(),
+%%   <<"postPassEndTime">> => [non_neg_integer()],
+%%   <<"prePassStartTime">> => [non_neg_integer()],
+%%   <<"region">> => [string()],
+%%   <<"satelliteArn">> => string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"tags">> => map(),
+%%   <<"trackingOverrides">> => tracking_overrides(),
+%%   <<"version">> => contact_version(),
+%%   <<"visibilityEndTime">> => [non_neg_integer()],
+%%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
--type update_agent_status_request() :: #{binary() => any()}.
+-type describe_contact_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_version_request() :: #{}
+-type describe_contact_version_request() :: #{}.
 
 
 %% Example:
@@ -826,6 +530,217 @@
 %% }
 -type describe_contact_version_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_ephemeris_request() :: #{}
+-type describe_ephemeris_request() :: #{}.
+
+
+%% Example:
+%% describe_ephemeris_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"ephemerisId">> => string(),
+%%   <<"errorReasons">> => list(ephemeris_error_reason()),
+%%   <<"invalidReason">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"satelliteId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"suppliedData">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type describe_ephemeris_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"configDetails">> => list(),
+%%   <<"configId">> => string(),
+%%   <<"configType">> => list(any()),
+%%   <<"dataflowDestinationRegion">> => [string()]
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% discovery_data() :: #{
+%%   <<"capabilityArns">> => list(string()),
+%%   <<"privateIpAddresses">> => list(string()),
+%%   <<"publicIpAddresses">> => list(string())
+%% }
+-type discovery_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_aws_ground_station_agent_endpoint() :: #{
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type downlink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_aws_ground_station_agent_endpoint_details() :: #{
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type downlink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_connection_details() :: #{
+%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
+%%   <<"egressAddressAndPort">> => connection_details()
+%% }
+-type downlink_connection_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% eirp() :: #{
+%%   <<"units">> => list(any()),
+%%   <<"value">> => [float()]
+%% }
+-type eirp() :: #{binary() => any()}.
+
+
+%% Example:
+%% elevation() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => [float()]
+%% }
+-type elevation() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_details() :: #{
+%%   <<"awsGroundStationAgentEndpoint">> => aws_ground_station_agent_endpoint(),
+%%   <<"downlinkAwsGroundStationAgentEndpoint">> => downlink_aws_ground_station_agent_endpoint_details(),
+%%   <<"endpoint">> => dataflow_endpoint(),
+%%   <<"healthReasons">> => list(list(any())()),
+%%   <<"healthStatus">> => list(any()),
+%%   <<"securityDetails">> => security_details(),
+%%   <<"uplinkAwsGroundStationAgentEndpoint">> => uplink_aws_ground_station_agent_endpoint_details()
+%% }
+-type endpoint_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_description() :: #{
+%%   <<"ephemerisData">> => string(),
+%%   <<"sourceS3Object">> => s3_object()
+%% }
+-type ephemeris_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_error_reason() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type ephemeris_error_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_id_response() :: #{
+%%   <<"ephemerisId">> => string()
+%% }
+-type ephemeris_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_item() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"ephemerisId">> => string(),
+%%   <<"ephemerisType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"sourceS3Object">> => s3_object(),
+%%   <<"status">> => list(any())
+%% }
+-type ephemeris_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_meta_data() :: #{
+%%   <<"ephemerisId">> => string(),
+%%   <<"epoch">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"source">> => list(any())
+%% }
+-type ephemeris_meta_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeris_response_data() :: #{
+%%   <<"ephemerisId">> => string(),
+%%   <<"ephemerisType">> => list(any())
+%% }
+-type ephemeris_response_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% frequency() :: #{
+%%   <<"units">> => list(any()),
+%%   <<"value">> => [float()]
+%% }
+-type frequency() :: #{binary() => any()}.
+
+
+%% Example:
+%% frequency_bandwidth() :: #{
+%%   <<"units">> => list(any()),
+%%   <<"value">> => [float()]
+%% }
+-type frequency_bandwidth() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_configuration_request() :: #{}
+-type get_agent_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_agent_configuration_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"taskingDocument">> => [string()]
+%% }
+-type get_agent_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_task_response_url_request() :: #{}
+-type get_agent_task_response_url_request() :: #{}.
+
+
+%% Example:
+%% get_agent_task_response_url_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"presignedLogUrl">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_agent_task_response_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_config_request() :: #{}
+-type get_config_request() :: #{}.
+
+
+%% Example:
+%% get_config_response() :: #{
+%%   <<"configArn">> => string(),
+%%   <<"configData">> => list(),
+%%   <<"configId">> => [string()],
+%%   <<"configType">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"tags">> => map()
+%% }
+-type get_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataflow_endpoint_group_request() :: #{}
+-type get_dataflow_endpoint_group_request() :: #{}.
+
 
 %% Example:
 %% get_dataflow_endpoint_group_response() :: #{
@@ -840,59 +755,11 @@
 
 
 %% Example:
-%% aggregate_status() :: #{
-%%   <<"signatureMap">> => map(),
-%%   <<"status">> => list(any())
+%% get_minute_usage_request() :: #{
+%%   <<"month">> := integer(),
+%%   <<"year">> := integer()
 %% }
--type aggregate_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataflow_endpoint_group_v2_response() :: #{
-%%   <<"dataflowEndpointGroupId">> => string()
-%% }
--type create_dataflow_endpoint_group_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ephemeris_request() :: #{
-%%   <<"enabled">> := [boolean()],
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer()
-%% }
--type update_ephemeris_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeris_id_response() :: #{
-%%   <<"ephemerisId">> => string()
-%% }
--type ephemeris_id_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ephemeris_error_reason() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type ephemeris_error_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataflow_endpoint() :: #{
-%%   <<"address">> => socket_address(),
-%%   <<"mtu">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type dataflow_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_reservation_details() :: #{
-%%   <<"contactId">> => string()
-%% }
--type contact_reservation_details() :: #{binary() => any()}.
+-type get_minute_usage_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -905,33 +772,128 @@
 %% }
 -type get_minute_usage_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+%% get_mission_profile_request() :: #{}
+-type get_mission_profile_request() :: #{}.
 
 
 %% Example:
-%% create_ephemeris_request() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"ephemeris">> => list(),
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"priority">> => integer(),
-%%   <<"satelliteId">> => string(),
-%%   <<"tags">> => map()
+%% get_mission_profile_response() :: #{
+%%   <<"contactPostPassDurationSeconds">> => integer(),
+%%   <<"contactPrePassDurationSeconds">> => integer(),
+%%   <<"dataflowEdges">> => list(list(string())()),
+%%   <<"minimumViableContactDurationSeconds">> => integer(),
+%%   <<"missionProfileArn">> => string(),
+%%   <<"missionProfileId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"region">> => string(),
+%%   <<"streamsKmsKey">> => list(),
+%%   <<"streamsKmsRole">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"telemetrySinkConfigArn">> => string(),
+%%   <<"trackingConfigArn">> => string()
 %% }
--type create_ephemeris_request() :: #{binary() => any()}.
+-type get_mission_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_satellite_request() :: #{}
+-type get_satellite_request() :: #{}.
 
 
 %% Example:
-%% dataflow_endpoint_group_id_response() :: #{
-%%   <<"dataflowEndpointGroupId">> => string()
+%% get_satellite_response() :: #{
+%%   <<"currentEphemeris">> => ephemeris_meta_data(),
+%%   <<"groundStations">> => list(string()),
+%%   <<"noradSatelliteID">> => integer(),
+%%   <<"satelliteArn">> => string(),
+%%   <<"satelliteId">> => string()
 %% }
--type dataflow_endpoint_group_id_response() :: #{binary() => any()}.
+-type get_satellite_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ground_station_data() :: #{
+%%   <<"groundStationId">> => string(),
+%%   <<"groundStationName">> => string(),
+%%   <<"region">> => string()
+%% }
+-type ground_station_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% ground_station_reservation_list_item() :: #{
+%%   <<"antennaName">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"groundStationId">> => string(),
+%%   <<"reservationDetails">> => list(),
+%%   <<"reservationType">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type ground_station_reservation_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% i_s_o8601_time_range() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type i_s_o8601_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_range() :: #{
+%%   <<"maximum">> => [integer()],
+%%   <<"minimum">> => [integer()]
+%% }
+-type integer_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"parameterName">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_data_stream_data() :: #{
+%%   <<"kinesisDataStreamArn">> => string(),
+%%   <<"kinesisRoleArn">> => string()
+%% }
+-type kinesis_data_stream_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_antennas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_antennas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_antennas_response() :: #{
+%%   <<"antennaList">> => list(antenna_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_antennas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configs_response() :: #{
+%%   <<"configList">> => list(config_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -943,55 +905,11 @@
 
 
 %% Example:
-%% component_version() :: #{
-%%   <<"componentType">> => string(),
-%%   <<"versions">> => list(string())
-%% }
--type component_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ground_stations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"satelliteId">> => string()
-%% }
--type list_ground_stations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ephemerides_response() :: #{
-%%   <<"ephemerides">> => list(ephemeris_item()),
+%% list_contact_versions_response() :: #{
+%%   <<"contactVersionsList">> => list(contact_version()),
 %%   <<"nextToken">> => string()
 %% }
--type list_ephemerides_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% source() :: #{
-%%   <<"configDetails">> => list(),
-%%   <<"configId">> => [string()],
-%%   <<"configType">> => list(any()),
-%%   <<"dataflowSourceRegion">> => [string()]
-%% }
--type source() :: #{binary() => any()}.
-
-
-%% Example:
-%% antenna_list_item() :: #{
-%%   <<"antennaName">> => string(),
-%%   <<"groundStationName">> => string(),
-%%   <<"region">> => string()
-%% }
--type antenna_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_data_stream_data() :: #{
-%%   <<"kinesisDataStreamArn">> => string(),
-%%   <<"kinesisRoleArn">> => string()
-%% }
--type kinesis_data_stream_data() :: #{binary() => any()}.
+-type list_contact_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1008,17 +926,143 @@
 %% }
 -type list_contacts_request() :: #{binary() => any()}.
 
-%% Example:
-%% delete_ephemeris_request() :: #{}
--type delete_ephemeris_request() :: #{}.
-
 
 %% Example:
-%% list_contact_versions_response() :: #{
-%%   <<"contactVersionsList">> => list(contact_version()),
+%% list_contacts_response() :: #{
+%%   <<"contactList">> => list(contact_data()),
 %%   <<"nextToken">> => string()
 %% }
--type list_contact_versions_response() :: #{binary() => any()}.
+-type list_contacts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataflow_endpoint_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataflow_endpoint_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataflow_endpoint_groups_response() :: #{
+%%   <<"dataflowEndpointGroupList">> => list(dataflow_endpoint_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataflow_endpoint_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ephemerides_request() :: #{
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"ephemerisType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"satelliteId">> => string(),
+%%   <<"startTime">> := [non_neg_integer()],
+%%   <<"statusList">> => list(list(any())())
+%% }
+-type list_ephemerides_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ephemerides_response() :: #{
+%%   <<"ephemerides">> => list(ephemeris_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ephemerides_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_station_reservations_request() :: #{
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reservationTypes">> => list(list(any())()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type list_ground_station_reservations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_station_reservations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationList">> => list(ground_station_reservation_list_item())
+%% }
+-type list_ground_station_reservations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_stations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"satelliteId">> => string()
+%% }
+-type list_ground_stations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ground_stations_response() :: #{
+%%   <<"groundStationList">> => list(ground_station_data()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ground_stations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mission_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_mission_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mission_profiles_response() :: #{
+%%   <<"missionProfileList">> => list(mission_profile_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_mission_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_satellites_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_satellites_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_satellites_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"satellites">> => list(satellite_list_item())
+%% }
+-type list_satellites_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% maintenance_reservation_details() :: #{
+%%   <<"maintenanceType">> => list(any())
+%% }
+-type maintenance_reservation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% mission_profile_id_response() :: #{
+%%   <<"missionProfileId">> => string()
+%% }
+-type mission_profile_id_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1040,134 +1084,86 @@
 
 
 %% Example:
-%% uplink_spectrum_config() :: #{
-%%   <<"centerFrequency">> => frequency(),
-%%   <<"polarization">> => list(any())
+%% oem_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
 %% }
--type uplink_spectrum_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mission_profile_request() :: #{}
--type delete_mission_profile_request() :: #{}.
+-type oem_program_track_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_contacts_response() :: #{
-%%   <<"contactList">> => list(contact_data()),
-%%   <<"nextToken">> => string()
+%% ranged_connection_details() :: #{
+%%   <<"mtu">> => [integer()],
+%%   <<"socketAddress">> => ranged_socket_address()
 %% }
--type list_contacts_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dataflow_endpoint_group_request() :: #{}
--type delete_dataflow_endpoint_group_request() :: #{}.
+-type ranged_connection_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% time_range() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"startTime">> => [non_neg_integer()]
+%% ranged_socket_address() :: #{
+%%   <<"name">> => string(),
+%%   <<"portRange">> => integer_range()
 %% }
--type time_range() :: #{binary() => any()}.
+-type ranged_socket_address() :: #{binary() => any()}.
 
 
 %% Example:
-%% downlink_aws_ground_station_agent_endpoint() :: #{
-%%   <<"dataflowDetails">> => list(),
-%%   <<"name">> => string()
+%% register_agent_request() :: #{
+%%   <<"agentDetails">> := agent_details(),
+%%   <<"discoveryData">> := discovery_data(),
+%%   <<"tags">> => map()
 %% }
--type downlink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
+-type register_agent_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
+%% register_agent_response() :: #{
+%%   <<"agentId">> => string()
+%% }
+-type register_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reserve_contact_request() :: #{
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"groundStation">> := string(),
+%%   <<"missionProfileArn">> := string(),
+%%   <<"satelliteArn">> => string(),
+%%   <<"startTime">> := [non_neg_integer()],
+%%   <<"tags">> => map(),
+%%   <<"trackingOverrides">> => tracking_overrides()
+%% }
+-type reserve_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"parameterName">> => [string()]
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_satellite_response() :: #{
-%%   <<"currentEphemeris">> => ephemeris_meta_data(),
-%%   <<"groundStations">> => list(string()),
-%%   <<"noradSatelliteID">> => integer(),
-%%   <<"satelliteArn">> => string(),
-%%   <<"satelliteId">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_satellite_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_contact_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"satelliteArn">> => string(),
-%%   <<"trackingOverrides">> => tracking_overrides()
+%% s3_object() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string(),
+%%   <<"version">> => string()
 %% }
--type update_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_satellites_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"satellites">> => list(satellite_list_item())
-%% }
--type list_satellites_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ephemeris_request() :: #{}
--type describe_ephemeris_request() :: #{}.
-
-
-%% Example:
-%% ephemeris_response_data() :: #{
-%%   <<"ephemerisId">> => string(),
-%%   <<"ephemerisType">> => list(any())
-%% }
--type ephemeris_response_data() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_antennas_response() :: #{
-%%   <<"antennaList">> => list(antenna_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_antennas_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"configDetails">> => list(),
-%%   <<"configId">> => string(),
-%%   <<"configType">> => list(any()),
-%%   <<"dataflowDestinationRegion">> => [string()]
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% t_l_e_ephemeris() :: #{
-%%   <<"s3Object">> => s3_object(),
-%%   <<"tleData">> => list(t_l_e_data())
-%% }
--type t_l_e_ephemeris() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_details() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"securityGroupIds">> => list([string()]()),
-%%   <<"subnetIds">> => list([string()]())
-%% }
--type security_details() :: #{binary() => any()}.
+-type s3_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1180,19 +1176,6 @@
 
 
 %% Example:
-%% list_ephemerides_request() :: #{
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"ephemerisType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"satelliteId">> => string(),
-%%   <<"startTime">> := [non_neg_integer()],
-%%   <<"statusList">> => list(list(any())())
-%% }
--type list_ephemerides_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% s3_recording_details() :: #{
 %%   <<"bucketArn">> => string(),
 %%   <<"keyTemplate">> => [string()]
@@ -1201,10 +1184,58 @@
 
 
 %% Example:
-%% antenna_demod_decode_details() :: #{
-%%   <<"outputNode">> => [string()]
+%% satellite_list_item() :: #{
+%%   <<"currentEphemeris">> => ephemeris_meta_data(),
+%%   <<"groundStations">> => list(string()),
+%%   <<"noradSatelliteID">> => integer(),
+%%   <<"satelliteArn">> => string(),
+%%   <<"satelliteId">> => string()
 %% }
--type antenna_demod_decode_details() :: #{binary() => any()}.
+-type satellite_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_details() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"securityGroupIds">> => list([string()]()),
+%%   <<"subnetIds">> => list([string()]())
+%% }
+-type security_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"parameterName">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% socket_address() :: #{
+%%   <<"name">> => [string()],
+%%   <<"port">> => [integer()]
+%% }
+-type socket_address() :: #{binary() => any()}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"configDetails">> => list(),
+%%   <<"configId">> => [string()],
+%%   <<"configType">> => list(any()),
+%%   <<"dataflowSourceRegion">> => [string()]
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% spectrum_config() :: #{
+%%   <<"bandwidth">> => frequency_bandwidth(),
+%%   <<"centerFrequency">> => frequency(),
+%%   <<"polarization">> => list(any())
+%% }
+-type spectrum_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1217,202 +1248,129 @@
 
 
 %% Example:
-%% frequency_bandwidth() :: #{
-%%   <<"units">> => list(any()),
-%%   <<"value">> => [float()]
+%% t_l_e_ephemeris() :: #{
+%%   <<"s3Object">> => s3_object(),
+%%   <<"tleData">> => list(t_l_e_data())
 %% }
--type frequency_bandwidth() :: #{binary() => any()}.
+-type t_l_e_ephemeris() :: #{binary() => any()}.
 
 
 %% Example:
-%% antenna_downlink_config() :: #{
-%%   <<"spectrumConfig">> => spectrum_config()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type antenna_downlink_config() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% az_el_ephemeris() :: #{
-%%   <<"data">> => list(),
-%%   <<"groundStation">> => string()
+%% telemetry_sink_config() :: #{
+%%   <<"telemetrySinkData">> => list(),
+%%   <<"telemetrySinkType">> => list(any())
 %% }
--type az_el_ephemeris() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_version_request() :: #{}
--type describe_contact_version_request() :: #{}.
+-type telemetry_sink_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_dataflow_endpoint_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% time_az_el() :: #{
+%%   <<"az">> => [float()],
+%%   <<"dt">> => [float()],
+%%   <<"el">> => [float()]
 %% }
--type list_dataflow_endpoint_groups_request() :: #{binary() => any()}.
+-type time_az_el() :: #{binary() => any()}.
 
 
 %% Example:
-%% eirp() :: #{
-%%   <<"units">> => list(any()),
-%%   <<"value">> => [float()]
+%% time_range() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
 %% }
--type eirp() :: #{binary() => any()}.
+-type time_range() :: #{binary() => any()}.
 
 
 %% Example:
-%% az_el_segment() :: #{
-%%   <<"azElList">> => list(time_az_el()),
-%%   <<"referenceEpoch">> => [non_neg_integer()],
-%%   <<"validTimeRange">> => i_s_o8601_time_range()
+%% tle_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
 %% }
--type az_el_segment() :: #{binary() => any()}.
+-type tle_program_track_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ground_stations_response() :: #{
-%%   <<"groundStationList">> => list(ground_station_data()),
-%%   <<"nextToken">> => string()
+%% tracking_config() :: #{
+%%   <<"autotrack">> => list(any())
 %% }
--type list_ground_stations_response() :: #{binary() => any()}.
+-type tracking_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_mission_profile_response() :: #{
-%%   <<"contactPostPassDurationSeconds">> => integer(),
-%%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> => list(list(string())()),
-%%   <<"minimumViableContactDurationSeconds">> => integer(),
-%%   <<"missionProfileArn">> => string(),
-%%   <<"missionProfileId">> => string(),
+%% tracking_overrides() :: #{
+%%   <<"programTrackSettings">> => list()
+%% }
+-type tracking_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_agent_status_request() :: #{
+%%   <<"aggregateStatus">> := aggregate_status(),
+%%   <<"componentStatuses">> := list(component_status_data()),
+%%   <<"taskId">> := string()
+%% }
+-type update_agent_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_status_response() :: #{
+%%   <<"agentId">> => string()
+%% }
+-type update_agent_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_config_request() :: #{
+%%   <<"configData">> := list(),
+%%   <<"name">> := string()
+%% }
+-type update_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"satelliteArn">> => string(),
+%%   <<"trackingOverrides">> => tracking_overrides()
+%% }
+-type update_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_response() :: #{
+%%   <<"contactId">> => string(),
+%%   <<"versionId">> => integer()
+%% }
+-type update_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ephemeris_request() :: #{
+%%   <<"enabled">> := [boolean()],
 %%   <<"name">> => string(),
-%%   <<"region">> => string(),
-%%   <<"streamsKmsKey">> => list(),
-%%   <<"streamsKmsRole">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"telemetrySinkConfigArn">> => string(),
-%%   <<"trackingConfigArn">> => string()
+%%   <<"priority">> => integer()
 %% }
--type get_mission_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_details() :: #{
-%%   <<"mtu">> => [integer()],
-%%   <<"socketAddress">> => socket_address()
-%% }
--type connection_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% discovery_data() :: #{
-%%   <<"capabilityArns">> => list(string()),
-%%   <<"privateIpAddresses">> => list(string()),
-%%   <<"publicIpAddresses">> => list(string())
-%% }
--type discovery_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ground_station_reservations_request() :: #{
-%%   <<"endTime">> := [non_neg_integer()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reservationTypes">> => list(list(any())()),
-%%   <<"startTime">> := [non_neg_integer()]
-%% }
--type list_ground_station_reservations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% uplink_aws_ground_station_agent_endpoint_details() :: #{
-%%   <<"agentStatus">> => list(any()),
-%%   <<"auditResults">> => list(any()),
-%%   <<"dataflowDetails">> => list(),
-%%   <<"name">> => string()
-%% }
--type uplink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_ephemeris_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"enabled">> => [boolean()],
-%%   <<"ephemerisId">> => string(),
-%%   <<"errorReasons">> => list(ephemeris_error_reason()),
-%%   <<"invalidReason">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"satelliteId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"suppliedData">> => list(),
-%%   <<"tags">> => map()
-%% }
--type describe_ephemeris_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_satellites_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_satellites_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataflow_endpoint_group_request() :: #{
-%%   <<"contactPostPassDurationSeconds">> => integer(),
-%%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"endpointDetails">> := list(endpoint_details()),
-%%   <<"tags">> => map()
-%% }
--type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% uplink_aws_ground_station_agent_endpoint() :: #{
-%%   <<"dataflowDetails">> => list(),
-%%   <<"name">> => string()
-%% }
--type uplink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% az_el_ephemeris_filter() :: #{
-%%   <<"id">> => string()
-%% }
--type az_el_ephemeris_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% elevation() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => [float()]
-%% }
--type elevation() :: #{binary() => any()}.
-
-%% Example:
-%% get_dataflow_endpoint_group_request() :: #{}
--type get_dataflow_endpoint_group_request() :: #{}.
-
-%% Example:
-%% get_agent_configuration_request() :: #{}
--type get_agent_configuration_request() :: #{}.
-
-
-%% Example:
-%% create_mission_profile_request() :: #{
-%%   <<"contactPostPassDurationSeconds">> => integer(),
-%%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> := list(list(string())()),
-%%   <<"minimumViableContactDurationSeconds">> := integer(),
-%%   <<"name">> := string(),
-%%   <<"streamsKmsKey">> => list(),
-%%   <<"streamsKmsRole">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"telemetrySinkConfigArn">> => string(),
-%%   <<"trackingConfigArn">> := string()
-%% }
--type create_mission_profile_request() :: #{binary() => any()}.
+-type update_ephemeris_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1429,107 +1387,149 @@
 %% }
 -type update_mission_profile_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% uplink_aws_ground_station_agent_endpoint() :: #{
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type uplink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_aws_ground_station_agent_endpoint_details() :: #{
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type uplink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_connection_details() :: #{
+%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
+%%   <<"ingressAddressAndPort">> => connection_details()
+%% }
+-type uplink_connection_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_echo_config() :: #{
+%%   <<"antennaUplinkConfigArn">> => string(),
+%%   <<"enabled">> => [boolean()]
+%% }
+-type uplink_echo_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_spectrum_config() :: #{
+%%   <<"centerFrequency">> => frequency(),
+%%   <<"polarization">> => list(any())
+%% }
+-type uplink_spectrum_config() :: #{binary() => any()}.
+
 -type cancel_contact_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type create_config_errors() ::
-    invalid_parameter_exception() | 
-    resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type create_dataflow_endpoint_group_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type create_dataflow_endpoint_group_v2_errors() ::
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type create_ephemeris_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type create_mission_profile_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type delete_config_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type delete_dataflow_endpoint_group_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type delete_ephemeris_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type delete_mission_profile_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type describe_contact_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type describe_contact_version_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type describe_ephemeris_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_agent_configuration_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_agent_task_response_url_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_config_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_dataflow_endpoint_group_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_minute_usage_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_mission_profile_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type get_satellite_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_antennas_errors() ::
@@ -1537,28 +1537,28 @@
     dependency_exception().
 
 -type list_configs_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_contact_versions_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_contacts_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_dataflow_endpoint_groups_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_ephemerides_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_ground_station_reservations_errors() ::
@@ -1566,70 +1566,70 @@
     dependency_exception().
 
 -type list_ground_stations_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_mission_profiles_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_satellites_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type register_agent_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type reserve_contact_errors() ::
-    invalid_parameter_exception() | 
-    resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type tag_resource_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type untag_resource_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type update_agent_status_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type update_config_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type update_contact_errors() ::
-    invalid_parameter_exception() | 
-    resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type update_ephemeris_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 -type update_mission_profile_errors() ::
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     dependency_exception().
 
 %%====================================================================

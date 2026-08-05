@@ -153,94 +153,200 @@
 
 
 %% Example:
-%% hyper_parameter_ranges() :: #{
-%%   <<"categoricalHyperParameterRanges">> => list(categorical_hyper_parameter_range()),
-%%   <<"continuousHyperParameterRanges">> => list(continuous_hyper_parameter_range()),
-%%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range())
+%% algorithm() :: #{
+%%   <<"algorithmArn">> => string(),
+%%   <<"algorithmImage">> => algorithm_image(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"defaultHyperParameterRanges">> => default_hyper_parameter_ranges(),
+%%   <<"defaultHyperParameters">> => map(),
+%%   <<"defaultResourceConfig">> => map(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"trainingInputMode">> => string()
 %% }
--type hyper_parameter_ranges() :: #{binary() => any()}.
+-type algorithm() :: #{binary() => any()}.
 
 %% Example:
-%% data_deletion_job() :: #{
+%% algorithm_image() :: #{
+%%   <<"dockerURI">> => string(),
+%%   <<"name">> => string()
+%% }
+-type algorithm_image() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_config() :: #{
+%%   <<"metricName">> => string(),
+%%   <<"recipeList">> => list(string())
+%% }
+-type auto_ml_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_result() :: #{
+%%   <<"bestRecipeArn">> => string()
+%% }
+-type auto_ml_result() :: #{binary() => any()}.
+
+%% Example:
+%% auto_training_config() :: #{
+%%   <<"schedulingExpression">> => string()
+%% }
+-type auto_training_config() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job() :: #{
+%%   <<"batchInferenceJobArn">> => string(),
+%%   <<"batchInferenceJobConfig">> => batch_inference_job_config(),
+%%   <<"batchInferenceJobMode">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataDeletionJobArn">> => string(),
-%%   <<"dataSource">> => data_source(),
-%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> => batch_inference_job_input(),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => batch_inference_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"themeGenerationConfig">> => theme_generation_config()
+%% }
+-type batch_inference_job() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_config() :: #{
+%%   <<"itemExplorationConfig">> => map(),
+%%   <<"rankingInfluence">> => map()
+%% }
+-type batch_inference_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_input() :: #{
+%%   <<"s3DataSource">> => s3_data_config()
+%% }
+-type batch_inference_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type batch_inference_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_summary() :: #{
+%%   <<"batchInferenceJobArn">> => string(),
+%%   <<"batchInferenceJobMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"failureReason">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"numDeleted">> => integer(),
-%%   <<"roleArn">> => string(),
+%%   <<"solutionVersionArn">> => string(),
 %%   <<"status">> => string()
 %% }
--type data_deletion_job() :: #{binary() => any()}.
+-type batch_inference_job_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_event_tracker_request() :: #{
-%%   <<"datasetGroupArn">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
+%% batch_segment_job() :: #{
+%%   <<"batchSegmentJobArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> => batch_segment_job_input(),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => batch_segment_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
 %% }
--type create_event_tracker_request() :: #{binary() => any()}.
+-type batch_segment_job() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_tracker_request() :: #{
-%%   <<"eventTrackerArn">> := string()
+%% batch_segment_job_input() :: #{
+%%   <<"s3DataSource">> => s3_data_config()
 %% }
--type describe_event_tracker_request() :: #{binary() => any()}.
+-type batch_segment_job_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_metric_attribution_request() :: #{
-%%   <<"metricAttributionArn">> := string()
+%% batch_segment_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
 %% }
--type delete_metric_attribution_request() :: #{binary() => any()}.
+-type batch_segment_job_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_solution_response() :: #{
-%%   <<"solution">> => solution()
+%% batch_segment_job_summary() :: #{
+%%   <<"batchSegmentJobArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
 %% }
--type describe_solution_response() :: #{binary() => any()}.
+-type batch_segment_job_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_metric_attribution_request() :: #{
-%%   <<"metricAttributionArn">> := string()
+%% campaign() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestCampaignUpdate">> => campaign_update_summary(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
 %% }
--type describe_metric_attribution_request() :: #{binary() => any()}.
+-type campaign() :: #{binary() => any()}.
 
 %% Example:
-%% update_solution_request() :: #{
-%%   <<"performAutoTraining">> => boolean(),
-%%   <<"performIncrementalUpdate">> => boolean(),
-%%   <<"solutionArn">> := string(),
-%%   <<"solutionUpdateConfig">> => solution_update_config()
+%% campaign_config() :: #{
+%%   <<"enableMetadataWithRecommendations">> => boolean(),
+%%   <<"itemExplorationConfig">> => map(),
+%%   <<"rankingInfluence">> => map(),
+%%   <<"syncWithLatestSolutionVersion">> => boolean()
 %% }
--type update_solution_request() :: #{binary() => any()}.
+-type campaign_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_batch_segment_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"solutionVersionArn">> => string()
+%% campaign_summary() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
 %% }
--type list_batch_segment_jobs_request() :: #{binary() => any()}.
+-type campaign_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_campaign_response() :: #{
-%%   <<"campaign">> => campaign()
+%% campaign_update_summary() :: #{
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
 %% }
--type describe_campaign_response() :: #{binary() => any()}.
+-type campaign_update_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_campaign_response() :: #{
-%%   <<"campaignArn">> => string()
+%% categorical_hyper_parameter_range() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type update_campaign_response() :: #{binary() => any()}.
+-type categorical_hyper_parameter_range() :: #{binary() => any()}.
 
 %% Example:
-%% describe_batch_inference_job_response() :: #{
-%%   <<"batchInferenceJob">> => batch_inference_job()
+%% continuous_hyper_parameter_range() :: #{
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"name">> => string()
 %% }
--type describe_batch_inference_job_response() :: #{binary() => any()}.
+-type continuous_hyper_parameter_range() :: #{binary() => any()}.
 
 %% Example:
 %% create_batch_inference_job_request() :: #{
@@ -259,78 +365,137 @@
 -type create_batch_inference_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% filter_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"failureReason">> => string(),
+%% create_batch_inference_job_response() :: #{
+%%   <<"batchInferenceJobArn">> => string()
+%% }
+-type create_batch_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_segment_job_request() :: #{
 %%   <<"filterArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
+%%   <<"jobInput">> := batch_segment_job_input(),
+%%   <<"jobName">> := string(),
+%%   <<"jobOutput">> := batch_segment_job_output(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"solutionVersionArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type filter_summary() :: #{binary() => any()}.
+-type create_batch_segment_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
+%% create_batch_segment_job_response() :: #{
+%%   <<"batchSegmentJobArn">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_batch_segment_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_batch_inference_jobs_response() :: #{
-%%   <<"batchInferenceJobs">> => list(batch_inference_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_batch_inference_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_deletion_jobs_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_deletion_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_schema_request() :: #{
-%%   <<"domain">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"schema">> := string()
-%% }
--type create_schema_request() :: #{binary() => any()}.
-
-%% Example:
-%% campaign() :: #{
-%%   <<"campaignArn">> => string(),
+%% create_campaign_request() :: #{
 %%   <<"campaignConfig">> => campaign_config(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"latestCampaignUpdate">> => campaign_update_summary(),
 %%   <<"minProvisionedTPS">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"solutionVersionArn">> => string(),
-%%   <<"status">> => string()
+%%   <<"name">> := string(),
+%%   <<"solutionVersionArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type campaign() :: #{binary() => any()}.
+-type create_campaign_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_recipes_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recipes">> => list(recipe_summary())
+%% create_campaign_response() :: #{
+%%   <<"campaignArn">> => string()
 %% }
--type list_recipes_response() :: #{binary() => any()}.
+-type create_campaign_response() :: #{binary() => any()}.
 
 %% Example:
-%% recommender_update_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"recommenderConfig">> => recommender_config(),
-%%   <<"status">> => string()
+%% create_data_deletion_job_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"jobName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type recommender_update_summary() :: #{binary() => any()}.
+-type create_data_deletion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_deletion_job_response() :: #{
+%%   <<"dataDeletionJobArn">> => string()
+%% }
+-type create_data_deletion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_export_job_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"ingestionMode">> => list(any()),
+%%   <<"jobName">> := string(),
+%%   <<"jobOutput">> := dataset_export_job_output(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_dataset_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_export_job_response() :: #{
+%%   <<"datasetExportJobArn">> => string()
+%% }
+-type create_dataset_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_response() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any())
+%% }
+-type create_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"datasetArn">> := string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> := string(),
+%%   <<"publishAttributionMetricsToS3">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_response() :: #{
+%%   <<"datasetImportJobArn">> => string()
+%% }
+-type create_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"datasetType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"schemaArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetArn">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_tracker_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_event_tracker_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_event_tracker_response() :: #{
@@ -338,6 +503,36 @@
 %%   <<"trackingId">> => string()
 %% }
 -type create_event_tracker_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_filter_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"filterExpression">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_filter_response() :: #{
+%%   <<"filterArn">> => string()
+%% }
+-type create_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_metric_attribution_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"metrics">> := list(metric_attribute()),
+%%   <<"metricsOutputConfig">> := metric_attribution_output(),
+%%   <<"name">> := string()
+%% }
+-type create_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_metric_attribution_response() :: #{
+%%   <<"metricAttributionArn">> => string()
+%% }
+-type create_metric_attribution_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_recommender_request() :: #{
@@ -350,59 +545,24 @@
 -type create_recommender_request() :: #{binary() => any()}.
 
 %% Example:
-%% default_integer_hyper_parameter_range() :: #{
-%%   <<"isTunable">> => boolean(),
-%%   <<"maxValue">> => integer(),
-%%   <<"minValue">> => integer(),
-%%   <<"name">> => string()
-%% }
--type default_integer_hyper_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% update_recommender_response() :: #{
+%% create_recommender_response() :: #{
 %%   <<"recommenderArn">> => string()
 %% }
--type update_recommender_response() :: #{binary() => any()}.
+-type create_recommender_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_schema_request() :: #{
-%%   <<"schemaArn">> := string()
+%% create_schema_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"schema">> := string()
 %% }
--type describe_schema_request() :: #{binary() => any()}.
+-type create_schema_request() :: #{binary() => any()}.
 
 %% Example:
-%% auto_training_config() :: #{
-%%   <<"schedulingExpression">> => string()
+%% create_schema_response() :: #{
+%%   <<"schemaArn">> => string()
 %% }
--type auto_training_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_dataset_response() :: #{
-%%   <<"datasetArn">> => string()
-%% }
--type update_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% default_categorical_hyper_parameter_range() :: #{
-%%   <<"isTunable">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type default_categorical_hyper_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% describe_solution_version_request() :: #{
-%%   <<"solutionVersionArn">> := string()
-%% }
--type describe_solution_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% continuous_hyper_parameter_range() :: #{
-%%   <<"maxValue">> => float(),
-%%   <<"minValue">> => float(),
-%%   <<"name">> => string()
-%% }
--type continuous_hyper_parameter_range() :: #{binary() => any()}.
+-type create_schema_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_solution_request() :: #{
@@ -420,16 +580,277 @@
 -type create_solution_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_metric_attribution_response() :: #{
-%%   <<"metricAttributionArn">> => string()
+%% create_solution_response() :: #{
+%%   <<"solutionArn">> => string()
 %% }
--type create_metric_attribution_response() :: #{binary() => any()}.
+-type create_solution_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% create_solution_version_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"solutionArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"trainingMode">> => list(any())
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type create_solution_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_solution_version_response() :: #{
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type create_solution_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_deletion_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataDeletionJobArn">> => string(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numDeleted">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type data_deletion_job() :: #{binary() => any()}.
+
+%% Example:
+%% data_deletion_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataDeletionJobArn">> => string(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type data_deletion_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"dataLocation">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% dataset() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"datasetType">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestDatasetUpdate">> => dataset_update_summary(),
+%%   <<"name">> => string(),
+%%   <<"schemaArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trackingId">> => string()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetExportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"ingestionMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => dataset_export_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_export_job() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type dataset_export_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetExportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type dataset_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_group() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_group() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_group_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_import_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetImportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"publishAttributionMetricsToS3">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_import_job() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_import_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetImportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type dataset_import_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_schema() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"schema">> => string(),
+%%   <<"schemaArn">> => string()
+%% }
+-type dataset_schema() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_schema_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"schemaArn">> => string()
+%% }
+-type dataset_schema_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetType">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_update_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"schemaArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% default_categorical_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type default_categorical_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% default_continuous_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"name">> => string()
+%% }
+-type default_continuous_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% default_hyper_parameter_ranges() :: #{
+%%   <<"categoricalHyperParameterRanges">> => list(default_categorical_hyper_parameter_range()),
+%%   <<"continuousHyperParameterRanges">> => list(default_continuous_hyper_parameter_range()),
+%%   <<"integerHyperParameterRanges">> => list(default_integer_hyper_parameter_range())
+%% }
+-type default_hyper_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% default_integer_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"maxValue">> => integer(),
+%%   <<"minValue">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type default_integer_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_request() :: #{
+%%   <<"campaignArn">> := string()
+%% }
+-type delete_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_group_request() :: #{
+%%   <<"datasetGroupArn">> := string()
+%% }
+-type delete_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"datasetArn">> := string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_tracker_request() :: #{
+%%   <<"eventTrackerArn">> := string()
+%% }
+-type delete_event_tracker_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_filter_request() :: #{
+%%   <<"filterArn">> := string()
+%% }
+-type delete_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_attribution_request() :: #{
+%%   <<"metricAttributionArn">> := string()
+%% }
+-type delete_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type delete_recommender_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_schema_request() :: #{
@@ -438,10 +859,669 @@
 -type delete_schema_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_data_deletion_job_response() :: #{
-%%   <<"dataDeletionJobArn">> => string()
+%% delete_solution_request() :: #{
+%%   <<"solutionArn">> := string()
 %% }
--type create_data_deletion_job_response() :: #{binary() => any()}.
+-type delete_solution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_request() :: #{
+%%   <<"algorithmArn">> := string()
+%% }
+-type describe_algorithm_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_response() :: #{
+%%   <<"algorithm">> => algorithm()
+%% }
+-type describe_algorithm_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_inference_job_request() :: #{
+%%   <<"batchInferenceJobArn">> := string()
+%% }
+-type describe_batch_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_inference_job_response() :: #{
+%%   <<"batchInferenceJob">> => batch_inference_job()
+%% }
+-type describe_batch_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_segment_job_request() :: #{
+%%   <<"batchSegmentJobArn">> := string()
+%% }
+-type describe_batch_segment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_segment_job_response() :: #{
+%%   <<"batchSegmentJob">> => batch_segment_job()
+%% }
+-type describe_batch_segment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_campaign_request() :: #{
+%%   <<"campaignArn">> := string()
+%% }
+-type describe_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_campaign_response() :: #{
+%%   <<"campaign">> => campaign()
+%% }
+-type describe_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_deletion_job_request() :: #{
+%%   <<"dataDeletionJobArn">> := string()
+%% }
+-type describe_data_deletion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_deletion_job_response() :: #{
+%%   <<"dataDeletionJob">> => data_deletion_job()
+%% }
+-type describe_data_deletion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_export_job_request() :: #{
+%%   <<"datasetExportJobArn">> := string()
+%% }
+-type describe_dataset_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_export_job_response() :: #{
+%%   <<"datasetExportJob">> => dataset_export_job()
+%% }
+-type describe_dataset_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_request() :: #{
+%%   <<"datasetGroupArn">> := string()
+%% }
+-type describe_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_response() :: #{
+%%   <<"datasetGroup">> => dataset_group()
+%% }
+-type describe_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_request() :: #{
+%%   <<"datasetImportJobArn">> := string()
+%% }
+-type describe_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_response() :: #{
+%%   <<"datasetImportJob">> => dataset_import_job()
+%% }
+-type describe_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{
+%%   <<"datasetArn">> := string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"dataset">> => dataset()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_tracker_request() :: #{
+%%   <<"eventTrackerArn">> := string()
+%% }
+-type describe_event_tracker_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_tracker_response() :: #{
+%%   <<"eventTracker">> => event_tracker()
+%% }
+-type describe_event_tracker_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_transformation_request() :: #{
+%%   <<"featureTransformationArn">> := string()
+%% }
+-type describe_feature_transformation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_transformation_response() :: #{
+%%   <<"featureTransformation">> => feature_transformation()
+%% }
+-type describe_feature_transformation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_filter_request() :: #{
+%%   <<"filterArn">> := string()
+%% }
+-type describe_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_filter_response() :: #{
+%%   <<"filter">> => filter()
+%% }
+-type describe_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_attribution_request() :: #{
+%%   <<"metricAttributionArn">> := string()
+%% }
+-type describe_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_attribution_response() :: #{
+%%   <<"metricAttribution">> => metric_attribution()
+%% }
+-type describe_metric_attribution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recipe_request() :: #{
+%%   <<"recipeArn">> := string()
+%% }
+-type describe_recipe_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recipe_response() :: #{
+%%   <<"recipe">> => recipe()
+%% }
+-type describe_recipe_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type describe_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommender_response() :: #{
+%%   <<"recommender">> => recommender()
+%% }
+-type describe_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schema_request() :: #{
+%%   <<"schemaArn">> := string()
+%% }
+-type describe_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schema_response() :: #{
+%%   <<"schema">> => dataset_schema()
+%% }
+-type describe_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_request() :: #{
+%%   <<"solutionArn">> := string()
+%% }
+-type describe_solution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_response() :: #{
+%%   <<"solution">> => solution()
+%% }
+-type describe_solution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_version_request() :: #{
+%%   <<"solutionVersionArn">> := string()
+%% }
+-type describe_solution_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_version_response() :: #{
+%%   <<"solutionVersion">> => solution_version()
+%% }
+-type describe_solution_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_parameters() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"eventValueThreshold">> => float(),
+%%   <<"weight">> => float()
+%% }
+-type event_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% event_tracker() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"eventTrackerArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trackingId">> => string()
+%% }
+-type event_tracker() :: #{binary() => any()}.
+
+%% Example:
+%% event_tracker_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"eventTrackerArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type event_tracker_summary() :: #{binary() => any()}.
+
+%% Example:
+%% events_config() :: #{
+%%   <<"eventParametersList">> => list(event_parameters())
+%% }
+-type events_config() :: #{binary() => any()}.
+
+%% Example:
+%% feature_transformation() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"defaultParameters">> => map(),
+%%   <<"featureTransformationArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type feature_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% fields_for_theme_generation() :: #{
+%%   <<"itemName">> => string()
+%% }
+-type fields_for_theme_generation() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"filterExpression">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% filter_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type filter_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_solution_metrics_request() :: #{
+%%   <<"solutionVersionArn">> := string()
+%% }
+-type get_solution_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_solution_metrics_response() :: #{
+%%   <<"metrics">> => map(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type get_solution_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_config() :: #{
+%%   <<"algorithmHyperParameterRanges">> => hyper_parameter_ranges(),
+%%   <<"hpoObjective">> => h_p_o_objective(),
+%%   <<"hpoResourceConfig">> => h_p_o_resource_config()
+%% }
+-type h_p_o_config() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_objective() :: #{
+%%   <<"metricName">> => string(),
+%%   <<"metricRegex">> => string(),
+%%   <<"type">> => string()
+%% }
+-type h_p_o_objective() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_resource_config() :: #{
+%%   <<"maxNumberOfTrainingJobs">> => string(),
+%%   <<"maxParallelTrainingJobs">> => string()
+%% }
+-type h_p_o_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_ranges() :: #{
+%%   <<"categoricalHyperParameterRanges">> => list(categorical_hyper_parameter_range()),
+%%   <<"continuousHyperParameterRanges">> => list(continuous_hyper_parameter_range()),
+%%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range())
+%% }
+-type hyper_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% integer_hyper_parameter_range() :: #{
+%%   <<"maxValue">> => integer(),
+%%   <<"minValue">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type integer_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type list_batch_inference_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_inference_jobs_response() :: #{
+%%   <<"batchInferenceJobs">> => list(batch_inference_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_inference_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_segment_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type list_batch_segment_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_segment_jobs_response() :: #{
+%%   <<"batchSegmentJobs">> => list(batch_segment_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_segment_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionArn">> => string()
+%% }
+-type list_campaigns_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_response() :: #{
+%%   <<"campaigns">> => list(campaign_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_campaigns_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_deletion_jobs_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_deletion_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_deletion_jobs_response() :: #{
+%%   <<"dataDeletionJobs">> => list(data_deletion_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_deletion_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_export_jobs_request() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_export_jobs_response() :: #{
+%%   <<"datasetExportJobs">> => list(dataset_export_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_response() :: #{
+%%   <<"datasetGroups">> => list(dataset_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_request() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_response() :: #{
+%%   <<"datasetImportJobs">> => list(dataset_import_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_trackers_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_event_trackers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_trackers_response() :: #{
+%%   <<"eventTrackers">> => list(event_tracker_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_event_trackers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_filters_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_filters_response() :: #{
+%%   <<"Filters">> => list(filter_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attribution_metrics_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attribution_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attribution_metrics_response() :: #{
+%%   <<"metrics">> => list(metric_attribute()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attribution_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attributions_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attributions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attributions_response() :: #{
+%%   <<"metricAttributions">> => list(metric_attribution_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attributions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recipes_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recipeProvider">> => list(any())
+%% }
+-type list_recipes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recipes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recipes">> => list(recipe_summary())
+%% }
+-type list_recipes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommenders_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recommenders_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommenders_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommenders">> => list(recommender_summary())
+%% }
+-type list_recommenders_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_schemas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schemas">> => list(dataset_schema_summary())
+%% }
+-type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_solution_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionArn">> => string()
+%% }
+-type list_solution_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solution_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersions">> => list(solution_version_summary())
+%% }
+-type list_solution_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_solutions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"solutions">> => list(solution_summary())
+%% }
+-type list_solutions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribute() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"expression">> => string(),
+%%   <<"metricName">> => string()
+%% }
+-type metric_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribution() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"metricsOutputConfig">> => metric_attribution_output(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type metric_attribution() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribution_output() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type metric_attribution_output() :: #{binary() => any()}.
 
 %% Example:
 %% metric_attribution_summary() :: #{
@@ -455,22 +1535,109 @@
 -type metric_attribution_summary() :: #{binary() => any()}.
 
 %% Example:
+%% optimization_objective() :: #{
+%%   <<"itemAttribute">> => string(),
+%%   <<"objectiveSensitivity">> => list(any())
+%% }
+-type optimization_objective() :: #{binary() => any()}.
+
+%% Example:
+%% recipe() :: #{
+%%   <<"algorithmArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"featureTransformationArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recipeType">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recipe() :: #{binary() => any()}.
+
+%% Example:
+%% recipe_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recipe_summary() :: #{binary() => any()}.
+
+%% Example:
+%% recommender() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestRecommenderUpdate">> => recommender_update_summary(),
+%%   <<"modelMetrics">> => map(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recommenderArn">> => string(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_config() :: #{
+%%   <<"enableMetadataWithRecommendations">> => boolean(),
+%%   <<"itemExplorationConfig">> => map(),
+%%   <<"minRecommendationRequestsPerSecond">> => integer(),
+%%   <<"trainingDataConfig">> => training_data_config()
+%% }
+-type recommender_config() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recommenderArn">> => string(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender_summary() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_update_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender_update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% batch_segment_job_output() :: #{
-%%   <<"s3DataDestination">> => s3_data_config()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type batch_segment_job_output() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_import_job_response() :: #{
-%%   <<"datasetImportJob">> => dataset_import_job()
+%% s3_data_config() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"path">> => string()
 %% }
--type describe_dataset_import_job_response() :: #{binary() => any()}.
+-type s3_data_config() :: #{binary() => any()}.
 
 %% Example:
 %% solution() :: #{
@@ -494,214 +1661,18 @@
 -type solution() :: #{binary() => any()}.
 
 %% Example:
-%% create_batch_segment_job_response() :: #{
-%%   <<"batchSegmentJobArn">> => string()
+%% solution_config() :: #{
+%%   <<"algorithmHyperParameters">> => map(),
+%%   <<"autoMLConfig">> => auto_ml_config(),
+%%   <<"autoTrainingConfig">> => auto_training_config(),
+%%   <<"eventValueThreshold">> => string(),
+%%   <<"eventsConfig">> => events_config(),
+%%   <<"featureTransformationParameters">> => map(),
+%%   <<"hpoConfig">> => h_p_o_config(),
+%%   <<"optimizationObjective">> => optimization_objective(),
+%%   <<"trainingDataConfig">> => training_data_config()
 %% }
--type create_batch_segment_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_recommender_response() :: #{
-%%   <<"recommenderArn">> => string()
-%% }
--type start_recommender_response() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_schema() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"domain">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"schema">> => string(),
-%%   <<"schemaArn">> => string()
-%% }
--type dataset_schema() :: #{binary() => any()}.
-
-%% Example:
-%% algorithm() :: #{
-%%   <<"algorithmArn">> => string(),
-%%   <<"algorithmImage">> => algorithm_image(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"defaultHyperParameterRanges">> => default_hyper_parameter_ranges(),
-%%   <<"defaultHyperParameters">> => map(),
-%%   <<"defaultResourceConfig">> => map(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"trainingInputMode">> => string()
-%% }
--type algorithm() :: #{binary() => any()}.
-
-%% Example:
-%% recipe_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"domain">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"recipeArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type recipe_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_campaigns_response() :: #{
-%%   <<"campaigns">> => list(campaign_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_campaigns_response() :: #{binary() => any()}.
-
-%% Example:
-%% event_parameters() :: #{
-%%   <<"eventType">> => string(),
-%%   <<"eventValueThreshold">> => float(),
-%%   <<"weight">> => float()
-%% }
--type event_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% create_filter_response() :: #{
-%%   <<"filterArn">> => string()
-%% }
--type create_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% theme_generation_config() :: #{
-%%   <<"fieldsForThemeGeneration">> => fields_for_theme_generation()
-%% }
--type theme_generation_config() :: #{binary() => any()}.
-
-%% Example:
-%% default_hyper_parameter_ranges() :: #{
-%%   <<"categoricalHyperParameterRanges">> => list(default_categorical_hyper_parameter_range()),
-%%   <<"continuousHyperParameterRanges">> => list(default_continuous_hyper_parameter_range()),
-%%   <<"integerHyperParameterRanges">> => list(default_integer_hyper_parameter_range())
-%% }
--type default_hyper_parameter_ranges() :: #{binary() => any()}.
-
-%% Example:
-%% describe_schema_response() :: #{
-%%   <<"schema">> => dataset_schema()
-%% }
--type describe_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_campaign_request() :: #{
-%%   <<"campaignArn">> := string()
-%% }
--type delete_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_campaign_request() :: #{
-%%   <<"campaignArn">> := string()
-%% }
--type describe_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_metric_attribution_metrics_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"metricAttributionArn">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_metric_attribution_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_solutions_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_solutions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_algorithm_request() :: #{
-%%   <<"algorithmArn">> := string()
-%% }
--type describe_algorithm_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_schema_response() :: #{
-%%   <<"schemaArn">> => string()
-%% }
--type create_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_inference_job_input() :: #{
-%%   <<"s3DataSource">> => s3_data_config()
-%% }
--type batch_inference_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_inference_job_config() :: #{
-%%   <<"itemExplorationConfig">> => map(),
-%%   <<"rankingInfluence">> => map()
-%% }
--type batch_inference_job_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_solution_metrics_request() :: #{
-%%   <<"solutionVersionArn">> := string()
-%% }
--type get_solution_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% campaign_config() :: #{
-%%   <<"enableMetadataWithRecommendations">> => boolean(),
-%%   <<"itemExplorationConfig">> => map(),
-%%   <<"rankingInfluence">> => map(),
-%%   <<"syncWithLatestSolutionVersion">> => boolean()
-%% }
--type campaign_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_deletion_job_response() :: #{
-%%   <<"dataDeletionJob">> => data_deletion_job()
-%% }
--type describe_data_deletion_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_deletion_jobs_response() :: #{
-%%   <<"dataDeletionJobs">> => list(data_deletion_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_deletion_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_trackers_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_event_trackers_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_group_request() :: #{
-%%   <<"domain">> => list(any()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_dataset_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tag_keys_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tag_keys_exception() :: #{binary() => any()}.
+-type solution_config() :: #{binary() => any()}.
 
 %% Example:
 %% solution_summary() :: #{
@@ -715,161 +1686,23 @@
 -type solution_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_schemas_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% solution_update_config() :: #{
+%%   <<"autoTrainingConfig">> => auto_training_config(),
+%%   <<"eventsConfig">> => events_config()
 %% }
--type list_schemas_request() :: #{binary() => any()}.
+-type solution_update_config() :: #{binary() => any()}.
 
 %% Example:
-%% recommender_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"recipeArn">> => string(),
-%%   <<"recommenderArn">> => string(),
-%%   <<"recommenderConfig">> => recommender_config(),
-%%   <<"status">> => string()
-%% }
--type recommender_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_solution_request() :: #{
-%%   <<"solutionArn">> := string()
-%% }
--type describe_solution_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_recommender_request() :: #{
-%%   <<"recommenderArn">> := string(),
-%%   <<"recommenderConfig">> := recommender_config()
-%% }
--type update_recommender_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_metric_attribution_request() :: #{
-%%   <<"datasetGroupArn">> := string(),
-%%   <<"metrics">> := list(metric_attribute()),
-%%   <<"metricsOutputConfig">> := metric_attribution_output(),
-%%   <<"name">> := string()
-%% }
--type create_metric_attribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_inference_job() :: #{
-%%   <<"batchInferenceJobArn">> => string(),
-%%   <<"batchInferenceJobConfig">> => batch_inference_job_config(),
-%%   <<"batchInferenceJobMode">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"filterArn">> => string(),
-%%   <<"jobInput">> => batch_inference_job_input(),
-%%   <<"jobName">> => string(),
-%%   <<"jobOutput">> => batch_inference_job_output(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"numResults">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"solutionVersionArn">> => string(),
-%%   <<"status">> => string(),
-%%   <<"themeGenerationConfig">> => theme_generation_config()
-%% }
--type batch_inference_job() :: #{binary() => any()}.
-
-%% Example:
-%% dataset() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"datasetType">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"latestDatasetUpdate">> => dataset_update_summary(),
-%%   <<"name">> => string(),
-%%   <<"schemaArn">> => string(),
-%%   <<"status">> => string(),
-%%   <<"trackingId">> => string()
-%% }
--type dataset() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_export_job_response() :: #{
-%%   <<"datasetExportJob">> => dataset_export_job()
-%% }
--type describe_dataset_export_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"datasetArn">> => string()
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_campaigns_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"solutionArn">> => string()
-%% }
--type list_campaigns_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_segment_job_summary() :: #{
-%%   <<"batchSegmentJobArn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"solutionVersionArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type batch_segment_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_batch_segment_job_response() :: #{
-%%   <<"batchSegmentJob">> => batch_segment_job()
-%% }
--type describe_batch_segment_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% campaign_update_summary() :: #{
-%%   <<"campaignConfig">> => campaign_config(),
+%% solution_update_summary() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"failureReason">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"minProvisionedTPS">> => integer(),
-%%   <<"solutionVersionArn">> => string(),
+%%   <<"performAutoTraining">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
+%%   <<"solutionUpdateConfig">> => solution_update_config(),
 %%   <<"status">> => string()
 %% }
--type campaign_update_summary() :: #{binary() => any()}.
-
-%% Example:
-%% batch_inference_job_output() :: #{
-%%   <<"s3DataDestination">> => s3_data_config()
-%% }
--type batch_inference_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_import_job() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataSource">> => data_source(),
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetImportJobArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"importMode">> => list(any()),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"publishAttributionMetricsToS3">> => boolean(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_import_job() :: #{binary() => any()}.
-
-%% Example:
-%% metric_attribute() :: #{
-%%   <<"eventType">> => string(),
-%%   <<"expression">> => string(),
-%%   <<"metricName">> => string()
-%% }
--type metric_attribute() :: #{binary() => any()}.
+-type solution_update_summary() :: #{binary() => any()}.
 
 %% Example:
 %% solution_version() :: #{
@@ -895,144 +1728,6 @@
 -type solution_version() :: #{binary() => any()}.
 
 %% Example:
-%% dataset_export_job_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetExportJobArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type dataset_export_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% fields_for_theme_generation() :: #{
-%%   <<"itemName">> => string()
-%% }
--type fields_for_theme_generation() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_import_jobs_request() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataset_import_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_tracker_request() :: #{
-%%   <<"eventTrackerArn">> := string()
-%% }
--type delete_event_tracker_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_filter_request() :: #{
-%%   <<"datasetGroupArn">> := string(),
-%%   <<"filterExpression">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% recommender() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"latestRecommenderUpdate">> => recommender_update_summary(),
-%%   <<"modelMetrics">> => map(),
-%%   <<"name">> => string(),
-%%   <<"recipeArn">> => string(),
-%%   <<"recommenderArn">> => string(),
-%%   <<"recommenderConfig">> => recommender_config(),
-%%   <<"status">> => string()
-%% }
--type recommender() :: #{binary() => any()}.
-
-%% Example:
-%% create_solution_version_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"solutionArn">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"trainingMode">> => list(any())
-%% }
--type create_solution_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_attribution() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"metricAttributionArn">> => string(),
-%%   <<"metricsOutputConfig">> => metric_attribution_output(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type metric_attribution() :: #{binary() => any()}.
-
-%% Example:
-%% describe_solution_version_response() :: #{
-%%   <<"solutionVersion">> => solution_version()
-%% }
--type describe_solution_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_batch_segment_job_request() :: #{
-%%   <<"batchSegmentJobArn">> := string()
-%% }
--type describe_batch_segment_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetType">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tuned_h_p_o_params() :: #{
-%%   <<"algorithmHyperParameters">> => map()
-%% }
--type tuned_h_p_o_params() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"tagKey">> => string(),
-%%   <<"tagValue">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% batch_segment_job_input() :: #{
-%%   <<"s3DataSource">> => s3_data_config()
-%% }
--type batch_segment_job_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_solution_version_response() :: #{
-%%   <<"solutionVersionArn">> => string()
-%% }
--type create_solution_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_inference_job_response() :: #{
-%%   <<"batchInferenceJobArn">> => string()
-%% }
--type create_batch_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
 %% solution_version_summary() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"failureReason">> => string(),
@@ -1045,274 +1740,16 @@
 -type solution_version_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_recommender_request() :: #{
-%%   <<"recommenderArn">> := string()
-%% }
--type delete_recommender_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recipe_response() :: #{
-%%   <<"recipe">> => recipe()
-%% }
--type describe_recipe_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_metric_attributions_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_metric_attributions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_groups_response() :: #{
-%%   <<"datasetGroups">> => list(dataset_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataset_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% recipe() :: #{
-%%   <<"algorithmArn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"featureTransformationArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"recipeArn">> => string(),
-%%   <<"recipeType">> => string(),
-%%   <<"status">> => string()
-%% }
--type recipe() :: #{binary() => any()}.
-
-%% Example:
-%% batch_segment_job() :: #{
-%%   <<"batchSegmentJobArn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"filterArn">> => string(),
-%%   <<"jobInput">> => batch_segment_job_input(),
-%%   <<"jobName">> => string(),
-%%   <<"jobOutput">> => batch_segment_job_output(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"numResults">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"solutionVersionArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type batch_segment_job() :: #{binary() => any()}.
-
-%% Example:
-%% optimization_objective() :: #{
-%%   <<"itemAttribute">> => string(),
-%%   <<"objectiveSensitivity">> => list(any())
-%% }
--type optimization_objective() :: #{binary() => any()}.
-
-%% Example:
-%% list_metric_attribution_metrics_response() :: #{
-%%   <<"metrics">> => list(metric_attribute()),
-%%   <<"nextToken">> => string()
-%% }
--type list_metric_attribution_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_groups_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataset_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
 %% start_recommender_request() :: #{
 %%   <<"recommenderArn">> := string()
 %% }
 -type start_recommender_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_recommender_response() :: #{
+%% start_recommender_response() :: #{
 %%   <<"recommenderArn">> => string()
 %% }
--type stop_recommender_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% events_config() :: #{
-%%   <<"eventParametersList">> => list(event_parameters())
-%% }
--type events_config() :: #{binary() => any()}.
-
-%% Example:
-%% integer_hyper_parameter_range() :: #{
-%%   <<"maxValue">> => integer(),
-%%   <<"minValue">> => integer(),
-%%   <<"name">> => string()
-%% }
--type integer_hyper_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% categorical_hyper_parameter_range() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type categorical_hyper_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommender_request() :: #{
-%%   <<"recommenderArn">> := string()
-%% }
--type describe_recommender_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_batch_segment_jobs_response() :: #{
-%%   <<"batchSegmentJobs">> => list(batch_segment_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_batch_segment_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_dataset_request() :: #{
-%%   <<"datasetArn">> := string(),
-%%   <<"schemaArn">> := string()
-%% }
--type update_dataset_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_solutions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"solutions">> => list(solution_summary())
-%% }
--type list_solutions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_solution_request() :: #{
-%%   <<"solutionArn">> := string()
-%% }
--type delete_solution_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"filterArn">> => string(),
-%%   <<"filterExpression">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_transformation_request() :: #{
-%%   <<"featureTransformationArn">> := string()
-%% }
--type describe_feature_transformation_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_update_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"schemaArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_update_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_algorithm_response() :: #{
-%%   <<"algorithm">> => algorithm()
-%% }
--type describe_algorithm_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recipe_request() :: #{
-%%   <<"recipeArn">> := string()
-%% }
--type describe_recipe_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_filter_request() :: #{
-%%   <<"filterArn">> := string()
-%% }
--type describe_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% h_p_o_objective() :: #{
-%%   <<"metricName">> => string(),
-%%   <<"metricRegex">> => string(),
-%%   <<"type">> => string()
-%% }
--type h_p_o_objective() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_deletion_job_request() :: #{
-%%   <<"dataSource">> := data_source(),
-%%   <<"datasetGroupArn">> := string(),
-%%   <<"jobName">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_data_deletion_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_recommender_response() :: #{
-%%   <<"recommenderArn">> => string()
-%% }
--type create_recommender_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommender_response() :: #{
-%%   <<"recommender">> => recommender()
-%% }
--type describe_recommender_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_batch_inference_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"solutionVersionArn">> => string()
-%% }
--type list_batch_inference_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_export_job() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetExportJobArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"ingestionMode">> => list(any()),
-%%   <<"jobName">> => string(),
-%%   <<"jobOutput">> => dataset_export_job_output(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_export_job() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_config() :: #{
-%%   <<"metricName">> => string(),
-%%   <<"recipeList">> => list(string())
-%% }
--type auto_ml_config() :: #{binary() => any()}.
+-type start_recommender_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_recommender_request() :: #{
@@ -1321,186 +1758,10 @@
 -type stop_recommender_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_batch_inference_job_request() :: #{
-%%   <<"batchInferenceJobArn">> := string()
+%% stop_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
 %% }
--type describe_batch_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_import_job_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetImportJobArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"importMode">> => list(any()),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type dataset_import_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_segment_job_request() :: #{
-%%   <<"filterArn">> => string(),
-%%   <<"jobInput">> := batch_segment_job_input(),
-%%   <<"jobName">> := string(),
-%%   <<"jobOutput">> := batch_segment_job_output(),
-%%   <<"numResults">> => integer(),
-%%   <<"roleArn">> := string(),
-%%   <<"solutionVersionArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_batch_segment_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_deletion_job_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"dataDeletionJobArn">> => string(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"failureReason">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type data_deletion_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_import_jobs_response() :: #{
-%%   <<"datasetImportJobs">> => list(dataset_import_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataset_import_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% h_p_o_resource_config() :: #{
-%%   <<"maxNumberOfTrainingJobs">> => string(),
-%%   <<"maxParallelTrainingJobs">> => string()
-%% }
--type h_p_o_resource_config() :: #{binary() => any()}.
-
-%% Example:
-%% event_tracker_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"eventTrackerArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type event_tracker_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dataset_group_request() :: #{
-%%   <<"datasetGroupArn">> := string()
-%% }
--type delete_dataset_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% solution_update_config() :: #{
-%%   <<"autoTrainingConfig">> => auto_training_config(),
-%%   <<"eventsConfig">> => events_config()
-%% }
--type solution_update_config() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_campaign_request() :: #{
-%%   <<"campaignConfig">> => campaign_config(),
-%%   <<"minProvisionedTPS">> => integer(),
-%%   <<"name">> := string(),
-%%   <<"solutionVersionArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_campaign_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_dataset_export_jobs_response() :: #{
-%%   <<"datasetExportJobs">> => list(dataset_export_job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_dataset_export_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% event_tracker() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"eventTrackerArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"trackingId">> => string()
-%% }
--type event_tracker() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_group_response() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"domain">> => list(any())
-%% }
--type create_dataset_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_inference_job_summary() :: #{
-%%   <<"batchInferenceJobArn">> => string(),
-%%   <<"batchInferenceJobMode">> => list(any()),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"solutionVersionArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type batch_inference_job_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_feature_transformation_response() :: #{
-%%   <<"featureTransformation">> => feature_transformation()
-%% }
--type describe_feature_transformation_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_tracker_response() :: #{
-%%   <<"eventTracker">> => event_tracker()
-%% }
--type describe_event_tracker_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommenders_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommenders">> => list(recommender_summary())
-%% }
--type list_recommenders_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metric_attribution_response() :: #{
-%%   <<"metricAttribution">> => metric_attribution()
-%% }
--type describe_metric_attribution_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_response() :: #{
-%%   <<"dataset">> => dataset()
-%% }
--type describe_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommender_config() :: #{
-%%   <<"enableMetadataWithRecommendations">> => boolean(),
-%%   <<"itemExplorationConfig">> => map(),
-%%   <<"minRecommendationRequestsPerSecond">> => integer(),
-%%   <<"trainingDataConfig">> => training_data_config()
-%% }
--type recommender_config() :: #{binary() => any()}.
-
-%% Example:
-%% auto_ml_result() :: #{
-%%   <<"bestRecipeArn">> => string()
-%% }
--type auto_ml_result() :: #{binary() => any()}.
+-type stop_recommender_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_solution_version_creation_request() :: #{
@@ -1509,175 +1770,68 @@
 -type stop_solution_version_creation_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
+%% tag() :: #{
+%%   <<"tagKey">> => string(),
+%%   <<"tagValue">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% create_dataset_request() :: #{
-%%   <<"datasetGroupArn">> := string(),
-%%   <<"datasetType">> := string(),
-%%   <<"name">> := string(),
-%%   <<"schemaArn">> := string(),
-%%   <<"tags">> => list(tag())
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
 %% }
--type create_dataset_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_group_request() :: #{
-%%   <<"datasetGroupArn">> := string()
+%% tag_resource_response() :: #{
+
 %% }
--type describe_dataset_group_request() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_metric_attributions_response() :: #{
-%%   <<"metricAttributions">> => list(metric_attribution_summary()),
-%%   <<"nextToken">> => string()
+%% theme_generation_config() :: #{
+%%   <<"fieldsForThemeGeneration">> => fields_for_theme_generation()
 %% }
--type list_metric_attributions_response() :: #{binary() => any()}.
+-type theme_generation_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_event_trackers_response() :: #{
-%%   <<"eventTrackers">> => list(event_tracker_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_event_trackers_response() :: #{binary() => any()}.
-
-%% Example:
-%% feature_transformation() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"defaultParameters">> => map(),
-%%   <<"featureTransformationArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type feature_transformation() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_import_job_request() :: #{
-%%   <<"dataSource">> := data_source(),
-%%   <<"datasetArn">> := string(),
-%%   <<"importMode">> => list(any()),
-%%   <<"jobName">> := string(),
-%%   <<"publishAttributionMetricsToS3">> => boolean(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_dataset_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% solution_config() :: #{
-%%   <<"algorithmHyperParameters">> => map(),
-%%   <<"autoMLConfig">> => auto_ml_config(),
-%%   <<"autoTrainingConfig">> => auto_training_config(),
-%%   <<"eventValueThreshold">> => string(),
-%%   <<"eventsConfig">> => events_config(),
-%%   <<"featureTransformationParameters">> => map(),
-%%   <<"hpoConfig">> => h_p_o_config(),
-%%   <<"optimizationObjective">> => optimization_objective(),
-%%   <<"trainingDataConfig">> => training_data_config()
-%% }
--type solution_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_solution_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"solutionVersions">> => list(solution_version_summary())
-%% }
--type list_solution_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_schema_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"domain">> => list(any()),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"schemaArn">> => string()
-%% }
--type dataset_schema_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_import_job_request() :: #{
-%%   <<"datasetImportJobArn">> := string()
-%% }
--type describe_dataset_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
+%% too_many_tag_keys_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type too_many_tag_keys_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_metric_attribution_request() :: #{
-%%   <<"addMetrics">> => list(metric_attribute()),
-%%   <<"metricAttributionArn">> => string(),
-%%   <<"metricsOutputConfig">> => metric_attribution_output(),
-%%   <<"removeMetrics">> => list(string())
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_metric_attribution_request() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% s3_data_config() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"path">> => string()
+%% training_data_config() :: #{
+%%   <<"excludedDatasetColumns">> => map(),
+%%   <<"includedDatasetColumns">> => map()
 %% }
--type s3_data_config() :: #{binary() => any()}.
+-type training_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% create_solution_response() :: #{
-%%   <<"solutionArn">> => string()
+%% tuned_h_p_o_params() :: #{
+%%   <<"algorithmHyperParameters">> => map()
 %% }
--type create_solution_response() :: #{binary() => any()}.
+-type tuned_h_p_o_params() :: #{binary() => any()}.
 
 %% Example:
-%% metric_attribution_output() :: #{
-%%   <<"roleArn">> => string(),
-%%   <<"s3DataDestination">> => s3_data_config()
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
 %% }
--type metric_attribution_output() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_metric_attribution_response() :: #{
-%%   <<"metricAttributionArn">> => string()
-%% }
--type update_metric_attribution_response() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% describe_dataset_group_response() :: #{
-%%   <<"datasetGroup">> => dataset_group()
 %% }
--type describe_dataset_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% default_continuous_hyper_parameter_range() :: #{
-%%   <<"isTunable">> => boolean(),
-%%   <<"maxValue">> => float(),
-%%   <<"minValue">> => float(),
-%%   <<"name">> => string()
-%% }
--type default_continuous_hyper_parameter_range() :: #{binary() => any()}.
-
-%% Example:
-%% get_solution_metrics_response() :: #{
-%%   <<"metrics">> => map(),
-%%   <<"solutionVersionArn">> => string()
-%% }
--type get_solution_metrics_response() :: #{binary() => any()}.
-
-%% Example:
-%% solution_update_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"performAutoTraining">> => boolean(),
-%%   <<"performIncrementalUpdate">> => boolean(),
-%%   <<"solutionUpdateConfig">> => solution_update_config(),
-%%   <<"status">> => string()
-%% }
--type solution_update_summary() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_campaign_request() :: #{
@@ -1689,58 +1843,60 @@
 -type update_campaign_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_dataset_request() :: #{
-%%   <<"datasetArn">> := string()
+%% update_campaign_response() :: #{
+%%   <<"campaignArn">> => string()
 %% }
--type describe_dataset_request() :: #{binary() => any()}.
+-type update_campaign_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_dataset_request() :: #{
-%%   <<"datasetArn">> := string()
+%% update_dataset_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"schemaArn">> := string()
 %% }
--type delete_dataset_request() :: #{binary() => any()}.
+-type update_dataset_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_datasets_response() :: #{
-%%   <<"datasets">> => list(dataset_summary()),
-%%   <<"nextToken">> => string()
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string()
 %% }
--type list_datasets_response() :: #{binary() => any()}.
+-type update_dataset_response() :: #{binary() => any()}.
 
 %% Example:
-%% algorithm_image() :: #{
-%%   <<"dockerURI">> => string(),
-%%   <<"name">> => string()
+%% update_metric_attribution_request() :: #{
+%%   <<"addMetrics">> => list(metric_attribute()),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"metricsOutputConfig">> => metric_attribution_output(),
+%%   <<"removeMetrics">> => list(string())
 %% }
--type algorithm_image() :: #{binary() => any()}.
+-type update_metric_attribution_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
+%% update_metric_attribution_response() :: #{
+%%   <<"metricAttributionArn">> => string()
 %% }
--type resource_already_exists_exception() :: #{binary() => any()}.
+-type update_metric_attribution_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_dataset_export_jobs_request() :: #{
-%%   <<"datasetArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% update_recommender_request() :: #{
+%%   <<"recommenderArn">> := string(),
+%%   <<"recommenderConfig">> := recommender_config()
 %% }
--type list_dataset_export_jobs_request() :: #{binary() => any()}.
+-type update_recommender_request() :: #{binary() => any()}.
 
 %% Example:
-%% h_p_o_config() :: #{
-%%   <<"algorithmHyperParameterRanges">> => hyper_parameter_ranges(),
-%%   <<"hpoObjective">> => h_p_o_objective(),
-%%   <<"hpoResourceConfig">> => h_p_o_resource_config()
+%% update_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
 %% }
--type h_p_o_config() :: #{binary() => any()}.
+-type update_recommender_response() :: #{binary() => any()}.
 
 %% Example:
-%% data_source() :: #{
-%%   <<"dataLocation">> => string()
+%% update_solution_request() :: #{
+%%   <<"performAutoTraining">> => boolean(),
+%%   <<"performIncrementalUpdate">> => boolean(),
+%%   <<"solutionArn">> := string(),
+%%   <<"solutionUpdateConfig">> => solution_update_config()
 %% }
--type data_source() :: #{binary() => any()}.
+-type update_solution_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_solution_response() :: #{
@@ -1748,209 +1904,53 @@
 %% }
 -type update_solution_response() :: #{binary() => any()}.
 
-%% Example:
-%% describe_data_deletion_job_request() :: #{
-%%   <<"dataDeletionJobArn">> := string()
-%% }
--type describe_data_deletion_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_export_job_output() :: #{
-%%   <<"s3DataDestination">> => s3_data_config()
-%% }
--type dataset_export_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_campaign_response() :: #{
-%%   <<"campaignArn">> => string()
-%% }
--type create_campaign_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_schemas_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"schemas">> => list(dataset_schema_summary())
-%% }
--type list_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_export_job_response() :: #{
-%%   <<"datasetExportJobArn">> => string()
-%% }
--type create_dataset_export_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_export_job_request() :: #{
-%%   <<"datasetArn">> := string(),
-%%   <<"ingestionMode">> => list(any()),
-%%   <<"jobName">> := string(),
-%%   <<"jobOutput">> := dataset_export_job_output(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_dataset_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% training_data_config() :: #{
-%%   <<"excludedDatasetColumns">> => map(),
-%%   <<"includedDatasetColumns">> => map()
-%% }
--type training_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_recipes_request() :: #{
-%%   <<"domain">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"recipeProvider">> => list(any())
-%% }
--type list_recipes_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_solution_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"solutionArn">> => string()
-%% }
--type list_solution_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_filters_response() :: #{
-%%   <<"Filters">> => list(filter_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_filters_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_filter_response() :: #{
-%%   <<"filter">> => filter()
-%% }
--type describe_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_group() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"domain">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_group() :: #{binary() => any()}.
-
-%% Example:
-%% campaign_summary() :: #{
-%%   <<"campaignArn">> => string(),
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type campaign_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_export_job_request() :: #{
-%%   <<"datasetExportJobArn">> := string()
-%% }
--type describe_dataset_export_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_filter_request() :: #{
-%%   <<"filterArn">> := string()
-%% }
--type delete_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommenders_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_recommenders_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_dataset_import_job_response() :: #{
-%%   <<"datasetImportJobArn">> => string()
-%% }
--type create_dataset_import_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_filters_request() :: #{
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_filters_request() :: #{binary() => any()}.
-
-%% Example:
-%% dataset_group_summary() :: #{
-%%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"datasetGroupArn">> => string(),
-%%   <<"domain">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type dataset_group_summary() :: #{binary() => any()}.
-
 -type create_batch_inference_job_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_batch_segment_job_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_campaign_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_data_deletion_job_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_dataset_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_dataset_export_job_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_dataset_group_errors() ::
     too_many_tags_exception() | 
@@ -1960,41 +1960,41 @@
 
 -type create_dataset_import_job_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_event_tracker_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_filter_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    invalid_input_exception().
 
 -type create_metric_attribution_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_recommender_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_schema_errors() ::
     resource_already_exists_exception() | 
@@ -2003,268 +2003,268 @@
 
 -type create_solution_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type create_solution_version_errors() ::
     too_many_tags_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    invalid_input_exception().
 
 -type delete_campaign_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_dataset_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_dataset_group_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_event_tracker_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_filter_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_metric_attribution_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_recommender_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_schema_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type delete_solution_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type describe_algorithm_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_batch_inference_job_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_batch_segment_job_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_campaign_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_data_deletion_job_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_dataset_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_dataset_export_job_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_dataset_group_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_dataset_import_job_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_event_tracker_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_feature_transformation_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_filter_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_metric_attribution_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_recipe_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_recommender_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_schema_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_solution_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type describe_solution_version_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type get_solution_metrics_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type list_batch_inference_jobs_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_batch_segment_jobs_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_campaigns_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_data_deletion_jobs_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_dataset_export_jobs_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_dataset_groups_errors() ::
     invalid_next_token_exception().
 
 -type list_dataset_import_jobs_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_datasets_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_event_trackers_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_filters_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_metric_attribution_metrics_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_metric_attributions_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_recipes_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_recommenders_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_schemas_errors() ::
     invalid_next_token_exception().
 
 -type list_solution_versions_errors() ::
-    invalid_input_exception() | 
+    resource_not_found_exception() | 
     invalid_next_token_exception() | 
-    resource_not_found_exception().
+    invalid_input_exception().
 
 -type list_solutions_errors() ::
-    invalid_input_exception() | 
-    invalid_next_token_exception().
+    invalid_next_token_exception() | 
+    invalid_input_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type start_recommender_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type stop_recommender_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type stop_solution_version_creation_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type untag_resource_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception() | 
     too_many_tag_keys_exception() | 
-    resource_in_use_exception().
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type update_campaign_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type update_dataset_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type update_metric_attribution_errors() ::
-    resource_already_exists_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
+    invalid_input_exception().
 
 -type update_recommender_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_input_exception().
 
 -type update_solution_errors() ::
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 %%====================================================================
 %% API

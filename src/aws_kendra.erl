@@ -141,89 +141,231 @@
 
 
 %% Example:
-%% one_drive_users() :: #{
-%%   <<"OneDriveUserList">> => list(string()),
-%%   <<"OneDriveUserS3Path">> => s3_path()
-%% }
--type one_drive_users() :: #{binary() => any()}.
-
-%% Example:
-%% saa_s_configuration() :: #{
-%%   <<"HostUrl">> => string(),
-%%   <<"OrganizationName">> => string()
-%% }
--type saa_s_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_experience_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type delete_experience_request() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_knowledge_article_configuration() :: #{
-%%   <<"CustomKnowledgeArticleTypeConfigurations">> => list(salesforce_custom_knowledge_article_type_configuration()),
-%%   <<"IncludedStates">> => list(list(any())()),
-%%   <<"StandardKnowledgeArticleTypeConfiguration">> => salesforce_standard_knowledge_article_type_configuration()
-%% }
--type salesforce_knowledge_article_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% entity_persona_configuration() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"Persona">> => list(any())
-%% }
--type entity_persona_configuration() :: #{binary() => any()}.
-
-%% Example:
 %% access_control_configuration_summary() :: #{
 %%   <<"Id">> => string()
 %% }
 -type access_control_configuration_summary() :: #{binary() => any()}.
 
 %% Example:
-%% suggestion_value() :: #{
-%%   <<"Text">> => suggestion_text_with_highlights()
+%% access_control_list_configuration() :: #{
+%%   <<"KeyPath">> => string()
 %% }
--type suggestion_value() :: #{binary() => any()}.
+-type access_control_list_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% featured_results_item() :: #{
-%%   <<"AdditionalAttributes">> => list(additional_result_attribute()),
-%%   <<"DocumentAttributes">> => list(document_attribute()),
-%%   <<"DocumentExcerpt">> => text_with_highlights(),
-%%   <<"DocumentId">> => string(),
-%%   <<"DocumentTitle">> => text_with_highlights(),
-%%   <<"DocumentURI">> => string(),
-%%   <<"FeedbackToken">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type featured_results_item() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_query_suggestions_block_list_request() :: #{
-%%   <<"Description">> => string(),
+%% acl_configuration() :: #{
+%%   <<"AllowedGroupsColumnName">> => string()
+%% }
+-type acl_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% additional_result_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => additional_result_attribute_value(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type additional_result_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% additional_result_attribute_value() :: #{
+%%   <<"TextWithHighlightsValue">> => text_with_highlights()
+%% }
+-type additional_result_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% alfresco_configuration() :: #{
+%%   <<"BlogFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"CrawlComments">> => boolean(),
+%%   <<"CrawlSystemFolders">> => boolean(),
+%%   <<"DocumentLibraryFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"EntityFilter">> => list(list(any())()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"SecretArn">> => string(),
+%%   <<"SiteId">> => string(),
+%%   <<"SiteUrl">> => string(),
+%%   <<"SslCertificateS3Path">> => s3_path(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration(),
+%%   <<"WikiFieldMappings">> => list(data_source_to_index_field_mapping())
+%% }
+-type alfresco_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% associate_entities_to_experience_request() :: #{
+%%   <<"EntityList">> := list(entity_configuration()),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type associate_entities_to_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_entities_to_experience_response() :: #{
+%%   <<"FailedEntityList">> => list(failed_entity())
+%% }
+-type associate_entities_to_experience_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_personas_to_entities_request() :: #{
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SourceS3Path">> => s3_path()
+%%   <<"Personas">> := list(entity_persona_configuration())
 %% }
--type update_query_suggestions_block_list_request() :: #{binary() => any()}.
+-type associate_personas_to_entities_request() :: #{binary() => any()}.
 
 %% Example:
-%% retrieve_result_item() :: #{
-%%   <<"Content">> => string(),
-%%   <<"DocumentAttributes">> => list(document_attribute()),
-%%   <<"DocumentId">> => string(),
-%%   <<"DocumentTitle">> => string(),
-%%   <<"DocumentURI">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ScoreAttributes">> => score_attributes()
+%% associate_personas_to_entities_response() :: #{
+%%   <<"FailedEntityList">> => list(failed_entity())
 %% }
--type retrieve_result_item() :: #{binary() => any()}.
+-type associate_personas_to_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_filter() :: #{
+%%   <<"AndAllFilters">> => list(attribute_filter()),
+%%   <<"ContainsAll">> => document_attribute(),
+%%   <<"ContainsAny">> => document_attribute(),
+%%   <<"EqualsTo">> => document_attribute(),
+%%   <<"GreaterThan">> => document_attribute(),
+%%   <<"GreaterThanOrEquals">> => document_attribute(),
+%%   <<"LessThan">> => document_attribute(),
+%%   <<"LessThanOrEquals">> => document_attribute(),
+%%   <<"NotFilter">> => attribute_filter(),
+%%   <<"OrAllFilters">> => list(attribute_filter())
+%% }
+-type attribute_filter() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_suggestions_describe_config() :: #{
+%%   <<"AttributeSuggestionsMode">> => list(any()),
+%%   <<"SuggestableConfigList">> => list(suggestable_config())
+%% }
+-type attribute_suggestions_describe_config() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_suggestions_get_config() :: #{
+%%   <<"AdditionalResponseAttributes">> => list(string()),
+%%   <<"AttributeFilter">> => attribute_filter(),
+%%   <<"SuggestionAttributes">> => list(string()),
+%%   <<"UserContext">> => user_context()
+%% }
+-type attribute_suggestions_get_config() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_suggestions_update_config() :: #{
+%%   <<"AttributeSuggestionsMode">> => list(any()),
+%%   <<"SuggestableConfigList">> => list(suggestable_config())
+%% }
+-type attribute_suggestions_update_config() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_configuration() :: #{
+%%   <<"BasicAuthentication">> => list(basic_authentication_configuration())
+%% }
+-type authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% basic_authentication_configuration() :: #{
+%%   <<"Credentials">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type basic_authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_document_request() :: #{
+%%   <<"DataSourceSyncJobMetricTarget">> => data_source_sync_job_metric_target(),
+%%   <<"DocumentIdList">> := list(string()),
+%%   <<"IndexId">> := string()
+%% }
+-type batch_delete_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_document_response() :: #{
+%%   <<"FailedDocuments">> => list(batch_delete_document_response_failed_document())
+%% }
+-type batch_delete_document_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_document_response_failed_document() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type batch_delete_document_response_failed_document() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_featured_results_set_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type batch_delete_featured_results_set_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_featured_results_set_request() :: #{
+%%   <<"FeaturedResultsSetIds">> := list(string()),
+%%   <<"IndexId">> := string()
+%% }
+-type batch_delete_featured_results_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_featured_results_set_response() :: #{
+%%   <<"Errors">> => list(batch_delete_featured_results_set_error())
+%% }
+-type batch_delete_featured_results_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_document_status_request() :: #{
+%%   <<"DocumentInfoList">> := list(document_info()),
+%%   <<"IndexId">> := string()
+%% }
+-type batch_get_document_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_document_status_response() :: #{
+%%   <<"DocumentStatusList">> => list(status()),
+%%   <<"Errors">> => list(batch_get_document_status_response_error())
+%% }
+-type batch_get_document_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_document_status_response_error() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"DocumentId">> => string(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type batch_get_document_status_response_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_document_request() :: #{
+%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
+%%   <<"Documents">> := list(document()),
+%%   <<"IndexId">> := string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type batch_put_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_document_response() :: #{
+%%   <<"FailedDocuments">> => list(batch_put_document_response_failed_document())
+%% }
+-type batch_put_document_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_document_response_failed_document() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type batch_put_document_response_failed_document() :: #{binary() => any()}.
 
 %% Example:
 %% box_configuration() :: #{
@@ -244,79 +386,187 @@
 -type box_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% capacity_units_configuration() :: #{
+%%   <<"QueryCapacityUnits">> => integer(),
+%%   <<"StorageCapacityUnits">> => integer()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type capacity_units_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% update_access_control_configuration_request() :: #{
+%% clear_query_suggestions_request() :: #{
+%%   <<"IndexId">> := string()
+%% }
+-type clear_query_suggestions_request() :: #{binary() => any()}.
+
+%% Example:
+%% click_feedback() :: #{
+%%   <<"ClickTime">> => non_neg_integer(),
+%%   <<"ResultId">> => string()
+%% }
+-type click_feedback() :: #{binary() => any()}.
+
+%% Example:
+%% collapse_configuration() :: #{
+%%   <<"DocumentAttributeKey">> => string(),
+%%   <<"Expand">> => boolean(),
+%%   <<"ExpandConfiguration">> => expand_configuration(),
+%%   <<"MissingAttributeKeyStrategy">> => list(any()),
+%%   <<"SortingConfigurations">> => list(sorting_configuration())
+%% }
+-type collapse_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% collapsed_result_detail() :: #{
+%%   <<"DocumentAttribute">> => document_attribute(),
+%%   <<"ExpandedResults">> => list(expanded_result_item())
+%% }
+-type collapsed_result_detail() :: #{binary() => any()}.
+
+%% Example:
+%% column_configuration() :: #{
+%%   <<"ChangeDetectingColumns">> => list(string()),
+%%   <<"DocumentDataColumnName">> => string(),
+%%   <<"DocumentIdColumnName">> => string(),
+%%   <<"DocumentTitleColumnName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
+%% }
+-type column_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflicting_item() :: #{
+%%   <<"QueryText">> => string(),
+%%   <<"SetId">> => string(),
+%%   <<"SetName">> => string()
+%% }
+-type conflicting_item() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_attachment_configuration() :: #{
+%%   <<"AttachmentFieldMappings">> => list(confluence_attachment_to_index_field_mapping()),
+%%   <<"CrawlAttachments">> => boolean()
+%% }
+-type confluence_attachment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_attachment_to_index_field_mapping() :: #{
+%%   <<"DataSourceFieldName">> => list(any()),
+%%   <<"DateFieldFormat">> => string(),
+%%   <<"IndexFieldName">> => string()
+%% }
+-type confluence_attachment_to_index_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_blog_configuration() :: #{
+%%   <<"BlogFieldMappings">> => list(confluence_blog_to_index_field_mapping())
+%% }
+-type confluence_blog_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_blog_to_index_field_mapping() :: #{
+%%   <<"DataSourceFieldName">> => list(any()),
+%%   <<"DateFieldFormat">> => string(),
+%%   <<"IndexFieldName">> => string()
+%% }
+-type confluence_blog_to_index_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_configuration() :: #{
+%%   <<"AttachmentConfiguration">> => confluence_attachment_configuration(),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"BlogConfiguration">> => confluence_blog_configuration(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"PageConfiguration">> => confluence_page_configuration(),
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"SecretArn">> => string(),
+%%   <<"ServerUrl">> => string(),
+%%   <<"SpaceConfiguration">> => confluence_space_configuration(),
+%%   <<"Version">> => list(any()),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type confluence_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_page_configuration() :: #{
+%%   <<"PageFieldMappings">> => list(confluence_page_to_index_field_mapping())
+%% }
+-type confluence_page_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_page_to_index_field_mapping() :: #{
+%%   <<"DataSourceFieldName">> => list(any()),
+%%   <<"DateFieldFormat">> => string(),
+%%   <<"IndexFieldName">> => string()
+%% }
+-type confluence_page_to_index_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_space_configuration() :: #{
+%%   <<"CrawlArchivedSpaces">> => boolean(),
+%%   <<"CrawlPersonalSpaces">> => boolean(),
+%%   <<"ExcludeSpaces">> => list(string()),
+%%   <<"IncludeSpaces">> => list(string()),
+%%   <<"SpaceFieldMappings">> => list(confluence_space_to_index_field_mapping())
+%% }
+-type confluence_space_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% confluence_space_to_index_field_mapping() :: #{
+%%   <<"DataSourceFieldName">> => list(any()),
+%%   <<"DateFieldFormat">> => string(),
+%%   <<"IndexFieldName">> => string()
+%% }
+-type confluence_space_to_index_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% connection_configuration() :: #{
+%%   <<"DatabaseHost">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DatabasePort">> => integer(),
+%%   <<"SecretArn">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type connection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% content_source_configuration() :: #{
+%%   <<"DataSourceIds">> => list(string()),
+%%   <<"DirectPutContent">> => boolean(),
+%%   <<"FaqIds">> => list(string())
+%% }
+-type content_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% correction() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"CorrectedTerm">> => string(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Term">> => string()
+%% }
+-type correction() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_control_configuration_request() :: #{
 %%   <<"AccessControlList">> => list(principal()),
+%%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
-%%   <<"Id">> := string(),
 %%   <<"IndexId">> := string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> := string()
 %% }
--type update_access_control_configuration_request() :: #{binary() => any()}.
+-type create_access_control_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% data_source_vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
+%% create_access_control_configuration_response() :: #{
+%%   <<"Id">> => string()
 %% }
--type data_source_vpc_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_source_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_data_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_path() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type s3_path() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_sync_job_metric_target() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"DataSourceSyncJobId">> => string()
-%% }
--type data_source_sync_job_metric_target() :: #{binary() => any()}.
-
-%% Example:
-%% document_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => document_attribute_value()
-%% }
--type document_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% describe_experience_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_experience_request() :: #{binary() => any()}.
-
-%% Example:
-%% text_with_highlights() :: #{
-%%   <<"Highlights">> => list(highlight()),
-%%   <<"Text">> => string()
-%% }
--type text_with_highlights() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_configuration() :: #{
-%%   <<"Credentials">> => string(),
-%%   <<"Host">> => string(),
-%%   <<"Port">> => integer()
-%% }
--type proxy_configuration() :: #{binary() => any()}.
+-type create_access_control_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_data_source_request() :: #{
@@ -336,18 +586,132 @@
 -type create_data_source_request() :: #{binary() => any()}.
 
 %% Example:
-%% confluence_page_to_index_field_mapping() :: #{
-%%   <<"DataSourceFieldName">> => list(any()),
-%%   <<"DateFieldFormat">> => string(),
-%%   <<"IndexFieldName">> => string()
+%% create_data_source_response() :: #{
+%%   <<"Id">> => string()
 %% }
--type confluence_page_to_index_field_mapping() :: #{binary() => any()}.
+-type create_data_source_response() :: #{binary() => any()}.
 
 %% Example:
-%% site_maps_configuration() :: #{
-%%   <<"SiteMaps">> => list(string())
+%% create_experience_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Configuration">> => experience_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> => string()
 %% }
--type site_maps_configuration() :: #{binary() => any()}.
+-type create_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_experience_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_experience_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_faq_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FileFormat">> => list(any()),
+%%   <<"IndexId">> := string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"S3Path">> := s3_path(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_faq_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_faq_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_faq_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_featured_results_set_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
+%%   <<"FeaturedResultsSetName">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"QueryTexts">> => list(string()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_featured_results_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_featured_results_set_response() :: #{
+%%   <<"FeaturedResultsSet">> => featured_results_set()
+%% }
+-type create_featured_results_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_index_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Edition">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserContextPolicy">> => list(any()),
+%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_index_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_query_suggestions_block_list_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SourceS3Path">> := s3_path(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_query_suggestions_block_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_query_suggestions_block_list_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_query_suggestions_block_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_thesaurus_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SourceS3Path">> := s3_path(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_thesaurus_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_thesaurus_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_thesaurus_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_document_enrichment_configuration() :: #{
+%%   <<"InlineConfigurations">> => list(inline_custom_document_enrichment_configuration()),
+%%   <<"PostExtractionHookConfiguration">> => hook_configuration(),
+%%   <<"PreExtractionHookConfiguration">> => hook_configuration(),
+%%   <<"RoleArn">> => string()
+%% }
+-type custom_document_enrichment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% data_source_configuration() :: #{
@@ -373,42 +737,712 @@
 -type data_source_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% content_source_configuration() :: #{
-%%   <<"DataSourceIds">> => list(string()),
-%%   <<"DirectPutContent">> => boolean(),
-%%   <<"FaqIds">> => list(string())
+%% data_source_group() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> => string()
 %% }
--type content_source_configuration() :: #{binary() => any()}.
+-type data_source_group() :: #{binary() => any()}.
 
 %% Example:
-%% list_thesauri_response() :: #{
+%% data_source_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type data_source_summary() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_sync_job() :: #{
+%%   <<"DataSourceErrorCode">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExecutionId">> => string(),
+%%   <<"Metrics">> => data_source_sync_job_metrics(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type data_source_sync_job() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_sync_job_metric_target() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceSyncJobId">> => string()
+%% }
+-type data_source_sync_job_metric_target() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_sync_job_metrics() :: #{
+%%   <<"DocumentsAdded">> => string(),
+%%   <<"DocumentsDeleted">> => string(),
+%%   <<"DocumentsFailed">> => string(),
+%%   <<"DocumentsModified">> => string(),
+%%   <<"DocumentsScanned">> => string()
+%% }
+-type data_source_sync_job_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_to_index_field_mapping() :: #{
+%%   <<"DataSourceFieldName">> => string(),
+%%   <<"DateFieldFormat">> => string(),
+%%   <<"IndexFieldName">> => string()
+%% }
+-type data_source_to_index_field_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_vpc_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type data_source_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% database_configuration() :: #{
+%%   <<"AclConfiguration">> => acl_configuration(),
+%%   <<"ColumnConfiguration">> => column_configuration(),
+%%   <<"ConnectionConfiguration">> => connection_configuration(),
+%%   <<"DatabaseEngineType">> => list(any()),
+%%   <<"SqlConfiguration">> => sql_configuration(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type database_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_control_configuration_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_access_control_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_control_configuration_response() :: #{
+
+%% }
+-type delete_access_control_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experience_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_experience_response() :: #{
+
+%% }
+-type delete_experience_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_faq_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_faq_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_principal_mapping_request() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"OrderingId">> => float()
+%% }
+-type delete_principal_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_query_suggestions_block_list_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_query_suggestions_block_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_thesaurus_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type delete_thesaurus_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_control_configuration_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_access_control_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_control_configuration_response() :: #{
+%%   <<"AccessControlList">> => list(principal()),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
+%%   <<"Name">> => string()
+%% }
+-type describe_access_control_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_source_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_source_response() :: #{
+%%   <<"Configuration">> => data_source_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type describe_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_experience_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_experience_response() :: #{
+%%   <<"Configuration">> => experience_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Endpoints">> => list(experience_endpoint()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type describe_experience_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_faq_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_faq_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_faq_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FileFormat">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3Path">> => s3_path(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type describe_faq_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_featured_results_set_request() :: #{
+%%   <<"FeaturedResultsSetId">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_featured_results_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_featured_results_set_response() :: #{
+%%   <<"CreationTimestamp">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"FeaturedDocumentsMissing">> => list(featured_document_missing()),
+%%   <<"FeaturedDocumentsWithMetadata">> => list(featured_document_with_metadata()),
+%%   <<"FeaturedResultsSetId">> => string(),
+%%   <<"FeaturedResultsSetName">> => string(),
+%%   <<"LastUpdatedTimestamp">> => float(),
+%%   <<"QueryTexts">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_featured_results_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type describe_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_response() :: #{
+%%   <<"CapacityUnits">> => capacity_units_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DocumentMetadataConfigurations">> => list(document_metadata_configuration()),
+%%   <<"Edition">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IndexStatistics">> => index_statistics(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UserContextPolicy">> => list(any()),
+%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
+%% }
+-type describe_index_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_principal_mapping_request() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_principal_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_principal_mapping_response() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"GroupOrderingIdSummaries">> => list(group_ordering_id_summary()),
+%%   <<"IndexId">> => string()
+%% }
+-type describe_principal_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_suggestions_block_list_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_query_suggestions_block_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_suggestions_block_list_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FileSizeBytes">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"ItemCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceS3Path">> => s3_path(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type describe_query_suggestions_block_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_suggestions_config_request() :: #{
+%%   <<"IndexId">> := string()
+%% }
+-type describe_query_suggestions_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_suggestions_config_response() :: #{
+%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_describe_config(),
+%%   <<"IncludeQueriesWithoutUserInformation">> => boolean(),
+%%   <<"LastClearTime">> => non_neg_integer(),
+%%   <<"LastSuggestionsBuildTime">> => non_neg_integer(),
+%%   <<"MinimumNumberOfQueryingUsers">> => integer(),
+%%   <<"MinimumQueryCount">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"QueryLogLookBackWindowInDays">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalSuggestionsCount">> => integer()
+%% }
+-type describe_query_suggestions_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thesaurus_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type describe_thesaurus_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_thesaurus_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FileSizeBytes">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceS3Path">> => s3_path(),
+%%   <<"Status">> => list(any()),
+%%   <<"SynonymRuleCount">> => float(),
+%%   <<"TermCount">> => float(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type describe_thesaurus_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_entities_from_experience_request() :: #{
+%%   <<"EntityList">> := list(entity_configuration()),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type disassociate_entities_from_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_entities_from_experience_response() :: #{
+%%   <<"FailedEntityList">> => list(failed_entity())
+%% }
+-type disassociate_entities_from_experience_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_personas_from_entities_request() :: #{
+%%   <<"EntityIds">> := list(string()),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type disassociate_personas_from_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_personas_from_entities_response() :: #{
+%%   <<"FailedEntityList">> => list(failed_entity())
+%% }
+-type disassociate_personas_from_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% document() :: #{
+%%   <<"AccessControlConfigurationId">> => string(),
+%%   <<"AccessControlList">> => list(principal()),
+%%   <<"Attributes">> => list(document_attribute()),
+%%   <<"Blob">> => binary(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
+%%   <<"Id">> => string(),
+%%   <<"S3Path">> => s3_path(),
+%%   <<"Title">> => string()
+%% }
+-type document() :: #{binary() => any()}.
+
+%% Example:
+%% document_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => document_attribute_value()
+%% }
+-type document_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% document_attribute_condition() :: #{
+%%   <<"ConditionDocumentAttributeKey">> => string(),
+%%   <<"ConditionOnValue">> => document_attribute_value(),
+%%   <<"Operator">> => list(any())
+%% }
+-type document_attribute_condition() :: #{binary() => any()}.
+
+%% Example:
+%% document_attribute_target() :: #{
+%%   <<"TargetDocumentAttributeKey">> => string(),
+%%   <<"TargetDocumentAttributeValue">> => document_attribute_value(),
+%%   <<"TargetDocumentAttributeValueDeletion">> => boolean()
+%% }
+-type document_attribute_target() :: #{binary() => any()}.
+
+%% Example:
+%% document_attribute_value() :: #{
+%%   <<"DateValue">> => non_neg_integer(),
+%%   <<"LongValue">> => float(),
+%%   <<"StringListValue">> => list(string()),
+%%   <<"StringValue">> => string()
+%% }
+-type document_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% document_attribute_value_count_pair() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"DocumentAttributeValue">> => document_attribute_value(),
+%%   <<"FacetResults">> => list(facet_result())
+%% }
+-type document_attribute_value_count_pair() :: #{binary() => any()}.
+
+%% Example:
+%% document_info() :: #{
+%%   <<"Attributes">> => list(document_attribute()),
+%%   <<"DocumentId">> => string()
+%% }
+-type document_info() :: #{binary() => any()}.
+
+%% Example:
+%% document_metadata_configuration() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Relevance">> => relevance(),
+%%   <<"Search">> => search(),
+%%   <<"Type">> => list(any())
+%% }
+-type document_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% document_relevance_configuration() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Relevance">> => relevance()
+%% }
+-type document_relevance_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% documents_metadata_configuration() :: #{
+%%   <<"S3Prefix">> => string()
+%% }
+-type documents_metadata_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% entity_configuration() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => list(any())
+%% }
+-type entity_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% entity_display_data() :: #{
+%%   <<"FirstName">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"IdentifiedUserName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type entity_display_data() :: #{binary() => any()}.
+
+%% Example:
+%% entity_persona_configuration() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"Persona">> => list(any())
+%% }
+-type entity_persona_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% expand_configuration() :: #{
+%%   <<"MaxExpandedResultsPerItem">> => integer(),
+%%   <<"MaxResultItemsToExpand">> => integer()
+%% }
+-type expand_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% expanded_result_item() :: #{
+%%   <<"DocumentAttributes">> => list(document_attribute()),
+%%   <<"DocumentExcerpt">> => text_with_highlights(),
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentTitle">> => text_with_highlights(),
+%%   <<"DocumentURI">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type expanded_result_item() :: #{binary() => any()}.
+
+%% Example:
+%% experience_configuration() :: #{
+%%   <<"ContentSourceConfiguration">> => content_source_configuration(),
+%%   <<"UserIdentityConfiguration">> => user_identity_configuration()
+%% }
+-type experience_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% experience_endpoint() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointType">> => list(any())
+%% }
+-type experience_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% experience_entities_summary() :: #{
+%%   <<"DisplayData">> => entity_display_data(),
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => list(any())
+%% }
+-type experience_entities_summary() :: #{binary() => any()}.
+
+%% Example:
+%% experiences_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Endpoints">> => list(experience_endpoint()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type experiences_summary() :: #{binary() => any()}.
+
+%% Example:
+%% facet() :: #{
+%%   <<"DocumentAttributeKey">> => string(),
+%%   <<"Facets">> => list(facet()),
+%%   <<"MaxResults">> => integer()
+%% }
+-type facet() :: #{binary() => any()}.
+
+%% Example:
+%% facet_result() :: #{
+%%   <<"DocumentAttributeKey">> => string(),
+%%   <<"DocumentAttributeValueCountPairs">> => list(document_attribute_value_count_pair()),
+%%   <<"DocumentAttributeValueType">> => list(any())
+%% }
+-type facet_result() :: #{binary() => any()}.
+
+%% Example:
+%% failed_entity() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type failed_entity() :: #{binary() => any()}.
+
+%% Example:
+%% faq_statistics() :: #{
+%%   <<"IndexedQuestionAnswersCount">> => integer()
+%% }
+-type faq_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% faq_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FileFormat">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type faq_summary() :: #{binary() => any()}.
+
+%% Example:
+%% featured_document() :: #{
+%%   <<"Id">> => string()
+%% }
+-type featured_document() :: #{binary() => any()}.
+
+%% Example:
+%% featured_document_missing() :: #{
+%%   <<"Id">> => string()
+%% }
+-type featured_document_missing() :: #{binary() => any()}.
+
+%% Example:
+%% featured_document_with_metadata() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"URI">> => string()
+%% }
+-type featured_document_with_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% featured_results_conflict_exception() :: #{
+%%   <<"ConflictingItems">> => list(conflicting_item()),
+%%   <<"Message">> => string()
+%% }
+-type featured_results_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% featured_results_item() :: #{
+%%   <<"AdditionalAttributes">> => list(additional_result_attribute()),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
+%%   <<"DocumentExcerpt">> => text_with_highlights(),
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentTitle">> => text_with_highlights(),
+%%   <<"DocumentURI">> => string(),
+%%   <<"FeedbackToken">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type featured_results_item() :: #{binary() => any()}.
+
+%% Example:
+%% featured_results_set() :: #{
+%%   <<"CreationTimestamp">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
+%%   <<"FeaturedResultsSetId">> => string(),
+%%   <<"FeaturedResultsSetName">> => string(),
+%%   <<"LastUpdatedTimestamp">> => float(),
+%%   <<"QueryTexts">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type featured_results_set() :: #{binary() => any()}.
+
+%% Example:
+%% featured_results_set_summary() :: #{
+%%   <<"CreationTimestamp">> => float(),
+%%   <<"FeaturedResultsSetId">> => string(),
+%%   <<"FeaturedResultsSetName">> => string(),
+%%   <<"LastUpdatedTimestamp">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type featured_results_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% fsx_configuration() :: #{
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"FileSystemId">> => string(),
+%%   <<"FileSystemType">> => list(any()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"SecretArn">> => string(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type fsx_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_suggestions_request() :: #{
+%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_get_config(),
+%%   <<"IndexId">> := string(),
+%%   <<"MaxSuggestionsCount">> => integer(),
+%%   <<"QueryText">> := string(),
+%%   <<"SuggestionTypes">> => list(list(any())())
+%% }
+-type get_query_suggestions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_suggestions_response() :: #{
+%%   <<"QuerySuggestionsId">> => string(),
+%%   <<"Suggestions">> => list(suggestion())
+%% }
+-type get_query_suggestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshots_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"Interval">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricType">> := list(any()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshots_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ThesaurusSummaryItems">> => list(thesaurus_summary())
+%%   <<"SnapShotTimeFilter">> => time_range(),
+%%   <<"SnapshotsData">> => list(list(string())()),
+%%   <<"SnapshotsDataHeader">> => list(string())
 %% }
--type list_thesauri_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflicting_item() :: #{
-%%   <<"QueryText">> => string(),
-%%   <<"SetId">> => string(),
-%%   <<"SetName">> => string()
-%% }
--type conflicting_item() :: #{binary() => any()}.
-
-%% Example:
-%% custom_document_enrichment_configuration() :: #{
-%%   <<"InlineConfigurations">> => list(inline_custom_document_enrichment_configuration()),
-%%   <<"PostExtractionHookConfiguration">> => hook_configuration(),
-%%   <<"PreExtractionHookConfiguration">> => hook_configuration(),
-%%   <<"RoleArn">> => string()
-%% }
--type custom_document_enrichment_configuration() :: #{binary() => any()}.
+-type get_snapshots_response() :: #{binary() => any()}.
 
 %% Example:
 %% git_hub_configuration() :: #{
@@ -438,206 +1472,6 @@
 -type git_hub_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% member_group() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> => string()
-%% }
--type member_group() :: #{binary() => any()}.
-
-%% Example:
-%% json_token_type_configuration() :: #{
-%%   <<"GroupAttributeField">> => string(),
-%%   <<"UserNameAttributeField">> => string()
-%% }
--type json_token_type_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% highlight() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"TopAnswer">> => boolean(),
-%%   <<"Type">> => list(any())
-%% }
--type highlight() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_suggestions_config_response() :: #{
-%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_describe_config(),
-%%   <<"IncludeQueriesWithoutUserInformation">> => boolean(),
-%%   <<"LastClearTime">> => non_neg_integer(),
-%%   <<"LastSuggestionsBuildTime">> => non_neg_integer(),
-%%   <<"MinimumNumberOfQueryingUsers">> => integer(),
-%%   <<"MinimumQueryCount">> => integer(),
-%%   <<"Mode">> => list(any()),
-%%   <<"QueryLogLookBackWindowInDays">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalSuggestionsCount">> => integer()
-%% }
--type describe_query_suggestions_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type delete_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% index_configuration_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Edition">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type index_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_control_configuration_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_access_control_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% faq_statistics() :: #{
-%%   <<"IndexedQuestionAnswersCount">> => integer()
-%% }
--type faq_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% user_group_resolution_configuration() :: #{
-%%   <<"UserGroupResolutionMode">> => list(any())
-%% }
--type user_group_resolution_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_suggestions_request() :: #{
-%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_get_config(),
-%%   <<"IndexId">> := string(),
-%%   <<"MaxSuggestionsCount">> => integer(),
-%%   <<"QueryText">> := string(),
-%%   <<"SuggestionTypes">> => list(list(any())())
-%% }
--type get_query_suggestions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_experience_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_experience_response() :: #{binary() => any()}.
-
-%% Example:
-%% document_attribute_target() :: #{
-%%   <<"TargetDocumentAttributeKey">> => string(),
-%%   <<"TargetDocumentAttributeValue">> => document_attribute_value(),
-%%   <<"TargetDocumentAttributeValueDeletion">> => boolean()
-%% }
--type document_attribute_target() :: #{binary() => any()}.
-
-%% Example:
-%% click_feedback() :: #{
-%%   <<"ClickTime">> => non_neg_integer(),
-%%   <<"ResultId">> => string()
-%% }
--type click_feedback() :: #{binary() => any()}.
-
-%% Example:
-%% delete_query_suggestions_block_list_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type delete_query_suggestions_block_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_group() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> => string()
-%% }
--type data_source_group() :: #{binary() => any()}.
-
-%% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_query_suggestions_block_list_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_query_suggestions_block_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_sync_job_metrics() :: #{
-%%   <<"DocumentsAdded">> => string(),
-%%   <<"DocumentsDeleted">> => string(),
-%%   <<"DocumentsFailed">> => string(),
-%%   <<"DocumentsModified">> => string(),
-%%   <<"DocumentsScanned">> => string()
-%% }
--type data_source_sync_job_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% connection_configuration() :: #{
-%%   <<"DatabaseHost">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DatabasePort">> => integer(),
-%%   <<"SecretArn">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type connection_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_featured_results_set_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string()
-%% }
--type batch_delete_featured_results_set_error() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_standard_knowledge_article_type_configuration() :: #{
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
-%% }
--type salesforce_standard_knowledge_article_type_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% clear_query_suggestions_request() :: #{
-%%   <<"IndexId">> := string()
-%% }
--type clear_query_suggestions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_control_configurations_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_control_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_standard_object_attachment_configuration() :: #{
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
-%% }
--type salesforce_standard_object_attachment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% failed_entity() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type failed_entity() :: #{binary() => any()}.
-
-%% Example:
 %% git_hub_document_crawl_properties() :: #{
 %%   <<"CrawlIssue">> => boolean(),
 %%   <<"CrawlIssueComment">> => boolean(),
@@ -648,661 +1482,6 @@
 %%   <<"CrawlRepositoryDocuments">> => boolean()
 %% }
 -type git_hub_document_crawl_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_experience_entities_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(experience_entities_summary())
-%% }
--type list_experience_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_standard_object_configuration() :: #{
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"Name">> => list(any())
-%% }
--type salesforce_standard_object_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% document_metadata_configuration() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Relevance">> => relevance(),
-%%   <<"Search">> => search(),
-%%   <<"Type">> => list(any())
-%% }
--type document_metadata_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_space_to_index_field_mapping() :: #{
-%%   <<"DataSourceFieldName">> => list(any()),
-%%   <<"DateFieldFormat">> => string(),
-%%   <<"IndexFieldName">> => string()
-%% }
--type confluence_space_to_index_field_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% query_result() :: #{
-%%   <<"FacetResults">> => list(facet_result()),
-%%   <<"FeaturedResultsItems">> => list(featured_results_item()),
-%%   <<"QueryId">> => string(),
-%%   <<"ResultItems">> => list(query_result_item()),
-%%   <<"SpellCorrectedQueries">> => list(spell_corrected_query()),
-%%   <<"TotalNumberOfResults">> => integer(),
-%%   <<"Warnings">> => list(warning())
-%% }
--type query_result() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_attachment_configuration() :: #{
-%%   <<"AttachmentFieldMappings">> => list(confluence_attachment_to_index_field_mapping()),
-%%   <<"CrawlAttachments">> => boolean()
-%% }
--type confluence_attachment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_featured_results_set_response() :: #{
-%%   <<"CreationTimestamp">> => float(),
-%%   <<"Description">> => string(),
-%%   <<"FeaturedDocumentsMissing">> => list(featured_document_missing()),
-%%   <<"FeaturedDocumentsWithMetadata">> => list(featured_document_with_metadata()),
-%%   <<"FeaturedResultsSetId">> => string(),
-%%   <<"FeaturedResultsSetName">> => string(),
-%%   <<"LastUpdatedTimestamp">> => float(),
-%%   <<"QueryTexts">> => list(string()),
-%%   <<"Status">> => list(any())
-%% }
--type describe_featured_results_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% principal() :: #{
-%%   <<"Access">> => list(any()),
-%%   <<"DataSourceId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type principal() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_suggestions_block_list_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"FileSizeBytes">> => float(),
-%%   <<"Id">> => string(),
-%%   <<"IndexId">> => string(),
-%%   <<"ItemCount">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SourceS3Path">> => s3_path(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type describe_query_suggestions_block_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_experience_response() :: #{
-
-%% }
--type delete_experience_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type describe_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% on_premise_configuration() :: #{
-%%   <<"HostUrl">> => string(),
-%%   <<"OrganizationName">> => string(),
-%%   <<"SslCertificateS3Path">> => s3_path()
-%% }
--type on_premise_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_experience_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Configuration">> => experience_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"IndexId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> => string()
-%% }
--type create_experience_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_attribute_value_count_pair() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"DocumentAttributeValue">> => document_attribute_value(),
-%%   <<"FacetResults">> => list(facet_result())
-%% }
--type document_attribute_value_count_pair() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_response() :: #{
-%%   <<"CapacityUnits">> => capacity_units_configuration(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DocumentMetadataConfigurations">> => list(document_metadata_configuration()),
-%%   <<"Edition">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IndexStatistics">> => index_statistics(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"UserContextPolicy">> => list(any()),
-%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
-%% }
--type describe_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exist_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_already_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% table_row() :: #{
-%%   <<"Cells">> => list(table_cell())
-%% }
--type table_row() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_entities_from_experience_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity())
-%% }
--type disassociate_entities_from_experience_response() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_attachment_to_index_field_mapping() :: #{
-%%   <<"DataSourceFieldName">> => list(any()),
-%%   <<"DateFieldFormat">> => string(),
-%%   <<"IndexFieldName">> => string()
-%% }
--type confluence_attachment_to_index_field_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% user_identity_configuration() :: #{
-%%   <<"IdentityAttributeName">> => string()
-%% }
--type user_identity_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% document_attribute_condition() :: #{
-%%   <<"ConditionDocumentAttributeKey">> => string(),
-%%   <<"ConditionOnValue">> => document_attribute_value(),
-%%   <<"Operator">> => list(any())
-%% }
--type document_attribute_condition() :: #{binary() => any()}.
-
-%% Example:
-%% list_indices_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_indices_request() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_configuration() :: #{
-%%   <<"ChatterFeedConfiguration">> => salesforce_chatter_feed_configuration(),
-%%   <<"CrawlAttachments">> => boolean(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string()),
-%%   <<"KnowledgeArticleConfiguration">> => salesforce_knowledge_article_configuration(),
-%%   <<"SecretArn">> => string(),
-%%   <<"ServerUrl">> => string(),
-%%   <<"StandardObjectAttachmentConfiguration">> => salesforce_standard_object_attachment_configuration(),
-%%   <<"StandardObjectConfigurations">> => list(salesforce_standard_object_configuration())
-%% }
--type salesforce_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% sorting_configuration() :: #{
-%%   <<"DocumentAttributeKey">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type sorting_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% thesaurus_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type thesaurus_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_thesauri_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_thesauri_request() :: #{binary() => any()}.
-
-%% Example:
-%% additional_result_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => additional_result_attribute_value(),
-%%   <<"ValueType">> => list(any())
-%% }
--type additional_result_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_source_response() :: #{
-%%   <<"Configuration">> => data_source_configuration(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IndexId">> => string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type describe_data_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_configuration() :: #{
-%%   <<"AttachmentConfiguration">> => confluence_attachment_configuration(),
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"BlogConfiguration">> => confluence_blog_configuration(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"PageConfiguration">> => confluence_page_configuration(),
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"SecretArn">> => string(),
-%%   <<"ServerUrl">> => string(),
-%%   <<"SpaceConfiguration">> => confluence_space_configuration(),
-%%   <<"Version">> => list(any()),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type confluence_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% sql_configuration() :: #{
-%%   <<"QueryIdentifiersEnclosingOption">> => list(any())
-%% }
--type sql_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_featured_results_set_request() :: #{
-%%   <<"FeaturedResultsSetId">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_featured_results_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% search() :: #{
-%%   <<"Displayable">> => boolean(),
-%%   <<"Facetable">> => boolean(),
-%%   <<"Searchable">> => boolean(),
-%%   <<"Sortable">> => boolean()
-%% }
--type search() :: #{binary() => any()}.
-
-%% Example:
-%% collapse_configuration() :: #{
-%%   <<"DocumentAttributeKey">> => string(),
-%%   <<"Expand">> => boolean(),
-%%   <<"ExpandConfiguration">> => expand_configuration(),
-%%   <<"MissingAttributeKeyStrategy">> => list(any()),
-%%   <<"SortingConfigurations">> => list(sorting_configuration())
-%% }
--type collapse_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% experiences_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Endpoints">> => list(experience_endpoint()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type experiences_summary() :: #{binary() => any()}.
-
-%% Example:
-%% entity_display_data() :: #{
-%%   <<"FirstName">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"IdentifiedUserName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type entity_display_data() :: #{binary() => any()}.
-
-%% Example:
-%% basic_authentication_configuration() :: #{
-%%   <<"Credentials">> => string(),
-%%   <<"Host">> => string(),
-%%   <<"Port">> => integer()
-%% }
--type basic_authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_older_than_ordering_id_request() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrderingId">> := float()
-%% }
--type list_groups_older_than_ordering_id_request() :: #{binary() => any()}.
-
-%% Example:
-%% slack_configuration() :: #{
-%%   <<"CrawlBotMessage">> => boolean(),
-%%   <<"ExcludeArchived">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"LookBackPeriod">> => integer(),
-%%   <<"PrivateChannelFilter">> => list(string()),
-%%   <<"PublicChannelFilter">> => list(string()),
-%%   <<"SecretArn">> => string(),
-%%   <<"SinceCrawlDate">> => string(),
-%%   <<"SlackEntityList">> => list(list(any())()),
-%%   <<"TeamId">> => string(),
-%%   <<"UseChangeLog">> => boolean(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type slack_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_sources_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_experiences_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_experiences_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_suggestions_block_list_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"ItemCount">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type query_suggestions_block_list_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_control_configuration_response() :: #{
-
-%% }
--type update_access_control_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_suggestions_block_list_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_query_suggestions_block_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% personas_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EntityId">> => string(),
-%%   <<"Persona">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type personas_summary() :: #{binary() => any()}.
-
-%% Example:
-%% relevance_feedback() :: #{
-%%   <<"RelevanceValue">> => list(any()),
-%%   <<"ResultId">> => string()
-%% }
--type relevance_feedback() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_source_sync_job_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type start_data_source_sync_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% featured_document() :: #{
-%%   <<"Id">> => string()
-%% }
--type featured_document() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% work_docs_configuration() :: #{
-%%   <<"CrawlComments">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"OrganizationId">> => string(),
-%%   <<"UseChangeLog">> => boolean()
-%% }
--type work_docs_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_principal_mapping_request() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"OrderingId">> => float()
-%% }
--type delete_principal_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_source_sync_job_response() :: #{
-%%   <<"ExecutionId">> => string()
-%% }
--type start_data_source_sync_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_suggestions_describe_config() :: #{
-%%   <<"AttributeSuggestionsMode">> => list(any()),
-%%   <<"SuggestableConfigList">> => list(suggestable_config())
-%% }
--type attribute_suggestions_describe_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_control_configuration_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_access_control_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_units_configuration() :: #{
-%%   <<"QueryCapacityUnits">> => integer(),
-%%   <<"StorageCapacityUnits">> => integer()
-%% }
--type capacity_units_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_snapshots_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SnapShotTimeFilter">> => time_range(),
-%%   <<"SnapshotsData">> => list(list(string())()),
-%%   <<"SnapshotsDataHeader">> => list(string())
-%% }
--type get_snapshots_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_custom_knowledge_article_type_configuration() :: #{
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"Name">> => string()
-%% }
--type salesforce_custom_knowledge_article_type_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_document_response() :: #{
-%%   <<"FailedDocuments">> => list(batch_delete_document_response_failed_document())
-%% }
--type batch_delete_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_suggestions_response() :: #{
-%%   <<"QuerySuggestionsId">> => string(),
-%%   <<"Suggestions">> => list(suggestion())
-%% }
--type get_query_suggestions_response() :: #{binary() => any()}.
-
-%% Example:
-%% member_user() :: #{
-%%   <<"UserId">> => string()
-%% }
--type member_user() :: #{binary() => any()}.
-
-%% Example:
-%% experience_configuration() :: #{
-%%   <<"ContentSourceConfiguration">> => content_source_configuration(),
-%%   <<"UserIdentityConfiguration">> => user_identity_configuration()
-%% }
--type experience_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% table_excerpt() :: #{
-%%   <<"Rows">> => list(table_row()),
-%%   <<"TotalNumberOfRows">> => integer()
-%% }
--type table_excerpt() :: #{binary() => any()}.
-
-%% Example:
-%% salesforce_chatter_feed_configuration() :: #{
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"IncludeFilterTypes">> => list(list(any())())
-%% }
--type salesforce_chatter_feed_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% access_control_list_configuration() :: #{
-%%   <<"KeyPath">> => string()
-%% }
--type access_control_list_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% featured_results_conflict_exception() :: #{
-%%   <<"ConflictingItems">> => list(conflicting_item()),
-%%   <<"Message">> => string()
-%% }
--type featured_results_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_query_suggestions_block_list_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IndexId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SourceS3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_query_suggestions_block_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% group_ordering_id_summary() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"OrderingId">> => float(),
-%%   <<"ReceivedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type group_ordering_id_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_featured_results_set_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()),
-%%   <<"FeaturedResultsSetId">> := string(),
-%%   <<"FeaturedResultsSetName">> => string(),
-%%   <<"IndexId">> := string(),
-%%   <<"QueryTexts">> => list(string()),
-%%   <<"Status">> => list(any())
-%% }
--type update_featured_results_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% inline_custom_document_enrichment_configuration() :: #{
-%%   <<"Condition">> => document_attribute_condition(),
-%%   <<"DocumentContentDeletion">> => boolean(),
-%%   <<"Target">> => document_attribute_target()
-%% }
--type inline_custom_document_enrichment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_sources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(data_source_summary())
-%% }
--type list_data_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type delete_data_source_request() :: #{binary() => any()}.
 
 %% Example:
 %% google_drive_configuration() :: #{
@@ -1317,90 +1496,44 @@
 -type google_drive_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% update_featured_results_set_response() :: #{
-%%   <<"FeaturedResultsSet">> => featured_results_set()
+%% group_members() :: #{
+%%   <<"MemberGroups">> => list(member_group()),
+%%   <<"MemberUsers">> => list(member_user()),
+%%   <<"S3PathforGroupMembers">> => s3_path()
 %% }
--type update_featured_results_set_response() :: #{binary() => any()}.
+-type group_members() :: #{binary() => any()}.
 
 %% Example:
-%% seed_url_configuration() :: #{
-%%   <<"SeedUrls">> => list(string()),
-%%   <<"WebCrawlerMode">> => list(any())
+%% group_ordering_id_summary() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"OrderingId">> => float(),
+%%   <<"ReceivedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type seed_url_configuration() :: #{binary() => any()}.
+-type group_ordering_id_summary() :: #{binary() => any()}.
 
 %% Example:
-%% retrieve_result() :: #{
-%%   <<"QueryId">> => string(),
-%%   <<"ResultItems">> => list(retrieve_result_item())
+%% group_summary() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"OrderingId">> => float()
 %% }
--type retrieve_result() :: #{binary() => any()}.
+-type group_summary() :: #{binary() => any()}.
 
 %% Example:
-%% delete_thesaurus_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
+%% hierarchical_principal() :: #{
+%%   <<"PrincipalList">> => list(principal())
 %% }
--type delete_thesaurus_request() :: #{binary() => any()}.
+-type hierarchical_principal() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
+%% highlight() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"TopAnswer">> => boolean(),
+%%   <<"Type">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_access_control_configurations_response() :: #{
-%%   <<"AccessControlConfigurations">> => list(access_control_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_access_control_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% experience_entities_summary() :: #{
-%%   <<"DisplayData">> => entity_display_data(),
-%%   <<"EntityId">> => string(),
-%%   <<"EntityType">> => list(any())
-%% }
--type experience_entities_summary() :: #{binary() => any()}.
-
-%% Example:
-%% share_point_configuration() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"CrawlAttachments">> => boolean(),
-%%   <<"DisableLocalGroups">> => boolean(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"SecretArn">> => string(),
-%%   <<"SharePointVersion">> => list(any()),
-%%   <<"SslCertificateS3Path">> => s3_path(),
-%%   <<"Urls">> => list(string()),
-%%   <<"UseChangeLog">> => boolean(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type share_point_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% suggestable_config() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Suggestable">> => boolean()
-%% }
--type suggestable_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_thesaurus_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IndexId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SourceS3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_thesaurus_request() :: #{binary() => any()}.
+-type highlight() :: #{binary() => any()}.
 
 %% Example:
 %% hook_configuration() :: #{
@@ -1411,228 +1544,30 @@
 -type hook_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% data_source_to_index_field_mapping() :: #{
-%%   <<"DataSourceFieldName">> => string(),
-%%   <<"DateFieldFormat">> => string(),
-%%   <<"IndexFieldName">> => string()
-%% }
--type data_source_to_index_field_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% spell_corrected_query() :: #{
-%%   <<"Corrections">> => list(correction()),
-%%   <<"SuggestedQueryText">> => string()
-%% }
--type spell_corrected_query() :: #{binary() => any()}.
-
-%% Example:
-%% create_featured_results_set_response() :: #{
-%%   <<"FeaturedResultsSet">> => featured_results_set()
-%% }
--type create_featured_results_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% urls() :: #{
-%%   <<"SeedUrlConfiguration">> => seed_url_configuration(),
-%%   <<"SiteMapsConfiguration">> => site_maps_configuration()
-%% }
--type urls() :: #{binary() => any()}.
-
-%% Example:
-%% expanded_result_item() :: #{
-%%   <<"DocumentAttributes">> => list(document_attribute()),
-%%   <<"DocumentExcerpt">> => text_with_highlights(),
-%%   <<"DocumentId">> => string(),
-%%   <<"DocumentTitle">> => text_with_highlights(),
-%%   <<"DocumentURI">> => string(),
-%%   <<"Id">> => string()
-%% }
--type expanded_result_item() :: #{binary() => any()}.
-
-%% Example:
-%% list_indices_response() :: #{
-%%   <<"IndexConfigurationSummaryItems">> => list(index_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_indices_response() :: #{binary() => any()}.
-
-%% Example:
-%% user_token_configuration() :: #{
-%%   <<"JsonTokenTypeConfiguration">> => json_token_type_configuration(),
-%%   <<"JwtTokenTypeConfiguration">> => jwt_token_type_configuration()
-%% }
--type user_token_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_sync_job() :: #{
-%%   <<"DataSourceErrorCode">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ExecutionId">> => string(),
-%%   <<"Metrics">> => data_source_sync_job_metrics(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type data_source_sync_job() :: #{binary() => any()}.
-
-%% Example:
-%% featured_document_with_metadata() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"URI">> => string()
-%% }
--type featured_document_with_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% describe_thesaurus_response() :: #{
+%% index_configuration_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"FileSizeBytes">> => float(),
+%%   <<"Edition">> => list(any()),
 %%   <<"Id">> => string(),
-%%   <<"IndexId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SourceS3Path">> => s3_path(),
 %%   <<"Status">> => list(any()),
-%%   <<"SynonymRuleCount">> => float(),
-%%   <<"TermCount">> => float(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type describe_thesaurus_response() :: #{binary() => any()}.
+-type index_configuration_summary() :: #{binary() => any()}.
 
 %% Example:
-%% batch_delete_featured_results_set_response() :: #{
-%%   <<"Errors">> => list(batch_delete_featured_results_set_error())
+%% index_statistics() :: #{
+%%   <<"FaqStatistics">> => faq_statistics(),
+%%   <<"TextDocumentStatistics">> => text_document_statistics()
 %% }
--type batch_delete_featured_results_set_response() :: #{binary() => any()}.
+-type index_statistics() :: #{binary() => any()}.
 
 %% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"KmsKeyId">> => string()
+%% inline_custom_document_enrichment_configuration() :: #{
+%%   <<"Condition">> => document_attribute_condition(),
+%%   <<"DocumentContentDeletion">> => boolean(),
+%%   <<"Target">> => document_attribute_target()
 %% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_data_source_sync_job_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type stop_data_source_sync_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_faq_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type delete_faq_request() :: #{binary() => any()}.
-
-%% Example:
-%% suggestion_text_with_highlights() :: #{
-%%   <<"Highlights">> => list(suggestion_highlight()),
-%%   <<"Text">> => string()
-%% }
--type suggestion_text_with_highlights() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_configuration() :: #{
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"FileSystemId">> => string(),
-%%   <<"FileSystemType">> => list(any()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"SecretArn">> => string(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type fsx_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% score_attributes() :: #{
-%%   <<"ScoreConfidence">> => list(any())
-%% }
--type score_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% describe_principal_mapping_request() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_principal_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% source_document() :: #{
-%%   <<"AdditionalAttributes">> => list(document_attribute()),
-%%   <<"DocumentId">> => string(),
-%%   <<"SuggestionAttributes">> => list(string())
-%% }
--type source_document() :: #{binary() => any()}.
-
-%% Example:
-%% describe_faq_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_faq_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_document_response_failed_document() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string()
-%% }
--type batch_delete_document_response_failed_document() :: #{binary() => any()}.
-
-%% Example:
-%% service_now_configuration() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"HostUrl">> => string(),
-%%   <<"KnowledgeArticleConfiguration">> => service_now_knowledge_article_configuration(),
-%%   <<"SecretArn">> => string(),
-%%   <<"ServiceCatalogConfiguration">> => service_now_service_catalog_configuration(),
-%%   <<"ServiceNowBuildVersion">> => list(any())
-%% }
--type service_now_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% service_now_service_catalog_configuration() :: #{
-%%   <<"CrawlAttachments">> => boolean(),
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string())
-%% }
--type service_now_service_catalog_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_suggestions_update_config() :: #{
-%%   <<"AttributeSuggestionsMode">> => list(any()),
-%%   <<"SuggestableConfigList">> => list(suggestable_config())
-%% }
--type attribute_suggestions_update_config() :: #{binary() => any()}.
-
-%% Example:
-%% web_crawler_configuration() :: #{
-%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
-%%   <<"CrawlDepth">> => integer(),
-%%   <<"MaxContentSizePerPageInMegaBytes">> => float(),
-%%   <<"MaxLinksPerPage">> => integer(),
-%%   <<"MaxUrlsPerMinuteCrawlRate">> => integer(),
-%%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"UrlExclusionPatterns">> => list(string()),
-%%   <<"UrlInclusionPatterns">> => list(string()),
-%%   <<"Urls">> => urls()
-%% }
--type web_crawler_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% additional_result_attribute_value() :: #{
-%%   <<"TextWithHighlightsValue">> => text_with_highlights()
-%% }
--type additional_result_attribute_value() :: #{binary() => any()}.
+-type inline_custom_document_enrichment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -1641,447 +1576,10 @@
 -type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% facet_result() :: #{
-%%   <<"DocumentAttributeKey">> => string(),
-%%   <<"DocumentAttributeValueCountPairs">> => list(document_attribute_value_count_pair()),
-%%   <<"DocumentAttributeValueType">> => list(any())
-%% }
--type facet_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_experiences_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(experiences_summary())
-%% }
--type list_experiences_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_data_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_document_request() :: #{
-%%   <<"DataSourceSyncJobMetricTarget">> => data_source_sync_job_metric_target(),
-%%   <<"DocumentIdList">> := list(string()),
-%%   <<"IndexId">> := string()
-%% }
--type batch_delete_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type data_source_summary() :: #{binary() => any()}.
-
-%% Example:
-%% batch_put_document_response() :: #{
-%%   <<"FailedDocuments">> => list(batch_put_document_response_failed_document())
-%% }
--type batch_put_document_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entity_personas_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entity_personas_request() :: #{binary() => any()}.
-
-%% Example:
-%% suggestion() :: #{
-%%   <<"Id">> => string(),
-%%   <<"SourceDocuments">> => list(source_document()),
-%%   <<"Value">> => suggestion_value()
-%% }
--type suggestion() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_featured_results_set_request() :: #{
-%%   <<"FeaturedResultsSetIds">> := list(string()),
-%%   <<"IndexId">> := string()
-%% }
--type batch_delete_featured_results_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_index_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Edition">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserContextPolicy">> => list(any()),
-%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
-%% }
--type create_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_index_request() :: #{
-%%   <<"CapacityUnits">> => capacity_units_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"DocumentMetadataConfigurationUpdates">> => list(document_metadata_configuration()),
-%%   <<"Id">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserContextPolicy">> => list(any()),
-%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
-%% }
--type update_index_request() :: #{binary() => any()}.
-
-%% Example:
-%% column_configuration() :: #{
-%%   <<"ChangeDetectingColumns">> => list(string()),
-%%   <<"DocumentDataColumnName">> => string(),
-%%   <<"DocumentIdColumnName">> => string(),
-%%   <<"DocumentTitleColumnName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
-%% }
--type column_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% hierarchical_principal() :: #{
-%%   <<"PrincipalList">> => list(principal())
-%% }
--type hierarchical_principal() :: #{binary() => any()}.
-
-%% Example:
-%% warning() :: #{
-%%   <<"Code">> => list(any()),
+%% invalid_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type warning() :: #{binary() => any()}.
-
-%% Example:
-%% time_range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type time_range() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_now_knowledge_article_configuration() :: #{
-%%   <<"CrawlAttachments">> => boolean(),
-%%   <<"DocumentDataFieldName">> => string(),
-%%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"FilterQuery">> => string(),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string())
-%% }
--type service_now_knowledge_article_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_access_control_configuration_response() :: #{
-
-%% }
--type delete_access_control_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_principal_mapping_request() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> := string(),
-%%   <<"GroupMembers">> := group_members(),
-%%   <<"IndexId">> := string(),
-%%   <<"OrderingId">> => float(),
-%%   <<"RoleArn">> => string()
-%% }
--type put_principal_mapping_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_thesaurus_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type describe_thesaurus_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_attribute_value() :: #{
-%%   <<"DateValue">> => non_neg_integer(),
-%%   <<"LongValue">> => float(),
-%%   <<"StringListValue">> => list(string()),
-%%   <<"StringValue">> => string()
-%% }
--type document_attribute_value() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_faq_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FileFormat">> => list(any()),
-%%   <<"IndexId">> := string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"S3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_faq_request() :: #{binary() => any()}.
-
-%% Example:
-%% experience_endpoint() :: #{
-%%   <<"Endpoint">> => string(),
-%%   <<"EndpointType">> => list(any())
-%% }
--type experience_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% correction() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"CorrectedTerm">> => string(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Term">> => string()
-%% }
--type correction() :: #{binary() => any()}.
-
-%% Example:
-%% entity_configuration() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"EntityType">> => list(any())
-%% }
--type entity_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% suggestion_highlight() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer()
-%% }
--type suggestion_highlight() :: #{binary() => any()}.
-
-%% Example:
-%% relevance() :: #{
-%%   <<"Duration">> => string(),
-%%   <<"Freshness">> => boolean(),
-%%   <<"Importance">> => integer(),
-%%   <<"RankOrder">> => list(any()),
-%%   <<"ValueImportanceMap">> => map()
-%% }
--type relevance() :: #{binary() => any()}.
-
-%% Example:
-%% featured_document_missing() :: #{
-%%   <<"Id">> => string()
-%% }
--type featured_document_missing() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_personas_from_entities_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity())
-%% }
--type disassociate_personas_from_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% documents_metadata_configuration() :: #{
-%%   <<"S3Prefix">> => string()
-%% }
--type documents_metadata_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_snapshots_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"Interval">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetricType">> := list(any()),
-%%   <<"NextToken">> => string()
-%% }
--type get_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_featured_results_sets_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_featured_results_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_experience_response() :: #{
-%%   <<"Configuration">> => experience_configuration(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Endpoints">> => list(experience_endpoint()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IndexId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type describe_experience_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_entities_to_experience_request() :: #{
-%%   <<"EntityList">> := list(entity_configuration()),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type associate_entities_to_experience_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% jwt_token_type_configuration() :: #{
-%%   <<"ClaimRegex">> => string(),
-%%   <<"GroupAttributeField">> => string(),
-%%   <<"Issuer">> => string(),
-%%   <<"KeyLocation">> => list(any()),
-%%   <<"SecretManagerArn">> => string(),
-%%   <<"URL">> => string(),
-%%   <<"UserNameAttributeField">> => string()
-%% }
--type jwt_token_type_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_control_configuration_response() :: #{
-%%   <<"AccessControlList">> => list(principal()),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
-%%   <<"Name">> => string()
-%% }
--type describe_access_control_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% template_configuration() :: #{
-%%   <<"Template">> => any()
-%% }
--type template_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% facet() :: #{
-%%   <<"DocumentAttributeKey">> => string(),
-%%   <<"Facets">> => list(facet()),
-%%   <<"MaxResults">> => integer()
-%% }
--type facet() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_source_request() :: #{
-%%   <<"Configuration">> => data_source_configuration(),
-%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type update_data_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% expand_configuration() :: #{
-%%   <<"MaxExpandedResultsPerItem">> => integer(),
-%%   <<"MaxResultItemsToExpand">> => integer()
-%% }
--type expand_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_put_document_request() :: #{
-%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
-%%   <<"Documents">> := list(document()),
-%%   <<"IndexId">> := string(),
-%%   <<"RoleArn">> => string()
-%% }
--type batch_put_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_experience_entities_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_experience_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% group_members() :: #{
-%%   <<"MemberGroups">> => list(member_group()),
-%%   <<"MemberUsers">> => list(member_user()),
-%%   <<"S3PathforGroupMembers">> => s3_path()
-%% }
--type group_members() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_blog_to_index_field_mapping() :: #{
-%%   <<"DataSourceFieldName">> => list(any()),
-%%   <<"DateFieldFormat">> => string(),
-%%   <<"IndexFieldName">> => string()
-%% }
--type confluence_blog_to_index_field_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% describe_faq_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"FileFormat">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"IndexId">> => string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3Path">> => s3_path(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type describe_faq_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_data_source_sync_jobs_response() :: #{
-%%   <<"History">> => list(data_source_sync_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_source_sync_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% submit_feedback_request() :: #{
-%%   <<"ClickFeedbackItems">> => list(click_feedback()),
-%%   <<"IndexId">> := string(),
-%%   <<"QueryId">> := string(),
-%%   <<"RelevanceFeedbackItems">> => list(relevance_feedback())
-%% }
--type submit_feedback_request() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
 
 %% Example:
 %% jira_configuration() :: #{
@@ -2104,68 +1602,38 @@
 -type jira_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% quip_configuration() :: #{
-%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"CrawlAttachments">> => boolean(),
-%%   <<"CrawlChatRooms">> => boolean(),
-%%   <<"CrawlFileComments">> => boolean(),
-%%   <<"Domain">> => string(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FolderIds">> => list(string()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"MessageFieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"SecretArn">> => string(),
-%%   <<"ThreadFieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% json_token_type_configuration() :: #{
+%%   <<"GroupAttributeField">> => string(),
+%%   <<"UserNameAttributeField">> => string()
 %% }
--type quip_configuration() :: #{binary() => any()}.
+-type json_token_type_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_groups_older_than_ordering_id_response() :: #{
-%%   <<"GroupsSummaries">> => list(group_summary()),
+%% jwt_token_type_configuration() :: #{
+%%   <<"ClaimRegex">> => string(),
+%%   <<"GroupAttributeField">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"KeyLocation">> => list(any()),
+%%   <<"SecretManagerArn">> => string(),
+%%   <<"URL">> => string(),
+%%   <<"UserNameAttributeField">> => string()
+%% }
+-type jwt_token_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_control_configurations_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_groups_older_than_ordering_id_response() :: #{binary() => any()}.
+-type list_access_control_configurations_request() :: #{binary() => any()}.
 
 %% Example:
-%% confluence_space_configuration() :: #{
-%%   <<"CrawlArchivedSpaces">> => boolean(),
-%%   <<"CrawlPersonalSpaces">> => boolean(),
-%%   <<"ExcludeSpaces">> => list(string()),
-%%   <<"IncludeSpaces">> => list(string()),
-%%   <<"SpaceFieldMappings">> => list(confluence_space_to_index_field_mapping())
+%% list_access_control_configurations_response() :: #{
+%%   <<"AccessControlConfigurations">> => list(access_control_configuration_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type confluence_space_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% associate_personas_to_entities_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity())
-%% }
--type associate_personas_to_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_document_status_response_error() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"DocumentId">> => string(),
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type batch_get_document_status_response_error() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_filter() :: #{
-%%   <<"AndAllFilters">> => list(attribute_filter()),
-%%   <<"ContainsAll">> => document_attribute(),
-%%   <<"ContainsAny">> => document_attribute(),
-%%   <<"EqualsTo">> => document_attribute(),
-%%   <<"GreaterThan">> => document_attribute(),
-%%   <<"GreaterThanOrEquals">> => document_attribute(),
-%%   <<"LessThan">> => document_attribute(),
-%%   <<"LessThanOrEquals">> => document_attribute(),
-%%   <<"NotFilter">> => attribute_filter(),
-%%   <<"OrAllFilters">> => list(attribute_filter())
-%% }
--type attribute_filter() :: #{binary() => any()}.
+-type list_access_control_configurations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_data_source_sync_jobs_request() :: #{
@@ -2179,40 +1647,141 @@
 -type list_data_source_sync_jobs_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_principal_mapping_response() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"GroupId">> => string(),
-%%   <<"GroupOrderingIdSummaries">> => list(group_ordering_id_summary()),
-%%   <<"IndexId">> => string()
+%% list_data_source_sync_jobs_response() :: #{
+%%   <<"History">> => list(data_source_sync_job()),
+%%   <<"NextToken">> => string()
 %% }
--type describe_principal_mapping_response() :: #{binary() => any()}.
+-type list_data_source_sync_jobs_response() :: #{binary() => any()}.
 
 %% Example:
-%% featured_results_set() :: #{
-%%   <<"CreationTimestamp">> => float(),
-%%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()),
-%%   <<"FeaturedResultsSetId">> => string(),
-%%   <<"FeaturedResultsSetName">> => string(),
-%%   <<"LastUpdatedTimestamp">> => float(),
-%%   <<"QueryTexts">> => list(string()),
-%%   <<"Status">> => list(any())
+%% list_data_sources_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type featured_results_set() :: #{binary() => any()}.
+-type list_data_sources_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_access_control_configuration_request() :: #{
+%% list_data_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SummaryItems">> => list(data_source_summary())
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entity_personas_request() :: #{
 %%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type delete_access_control_configuration_request() :: #{binary() => any()}.
+-type list_entity_personas_request() :: #{binary() => any()}.
 
 %% Example:
-%% collapsed_result_detail() :: #{
-%%   <<"DocumentAttribute">> => document_attribute(),
-%%   <<"ExpandedResults">> => list(expanded_result_item())
+%% list_entity_personas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SummaryItems">> => list(personas_summary())
 %% }
--type collapsed_result_detail() :: #{binary() => any()}.
+-type list_entity_personas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_experience_entities_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experience_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_experience_entities_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SummaryItems">> => list(experience_entities_summary())
+%% }
+-type list_experience_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiences_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experiences_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_experiences_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SummaryItems">> => list(experiences_summary())
+%% }
+-type list_experiences_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_faqs_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_faqs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_faqs_response() :: #{
+%%   <<"FaqSummaryItems">> => list(faq_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_faqs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_featured_results_sets_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_featured_results_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_featured_results_sets_response() :: #{
+%%   <<"FeaturedResultsSetSummaryItems">> => list(featured_results_set_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_featured_results_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_older_than_ordering_id_request() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrderingId">> := float()
+%% }
+-type list_groups_older_than_ordering_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_older_than_ordering_id_response() :: #{
+%%   <<"GroupsSummaries">> => list(group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_older_than_ordering_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_indices_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_indices_response() :: #{
+%%   <<"IndexConfigurationSummaryItems">> => list(index_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_indices_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_query_suggestions_block_lists_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_query_suggestions_block_lists_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_query_suggestions_block_lists_response() :: #{
@@ -2222,13 +1791,108 @@
 -type list_query_suggestions_block_lists_response() :: #{binary() => any()}.
 
 %% Example:
-%% attribute_suggestions_get_config() :: #{
-%%   <<"AdditionalResponseAttributes">> => list(string()),
-%%   <<"AttributeFilter">> => attribute_filter(),
-%%   <<"SuggestionAttributes">> => list(string()),
-%%   <<"UserContext">> => user_context()
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
 %% }
--type attribute_suggestions_get_config() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_thesauri_request() :: #{
+%%   <<"IndexId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_thesauri_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_thesauri_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ThesaurusSummaryItems">> => list(thesaurus_summary())
+%% }
+-type list_thesauri_response() :: #{binary() => any()}.
+
+%% Example:
+%% member_group() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> => string()
+%% }
+-type member_group() :: #{binary() => any()}.
+
+%% Example:
+%% member_user() :: #{
+%%   <<"UserId">> => string()
+%% }
+-type member_user() :: #{binary() => any()}.
+
+%% Example:
+%% on_premise_configuration() :: #{
+%%   <<"HostUrl">> => string(),
+%%   <<"OrganizationName">> => string(),
+%%   <<"SslCertificateS3Path">> => s3_path()
+%% }
+-type on_premise_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% one_drive_configuration() :: #{
+%%   <<"DisableLocalGroups">> => boolean(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"OneDriveUsers">> => one_drive_users(),
+%%   <<"SecretArn">> => string(),
+%%   <<"TenantDomain">> => string()
+%% }
+-type one_drive_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% one_drive_users() :: #{
+%%   <<"OneDriveUserList">> => list(string()),
+%%   <<"OneDriveUserS3Path">> => s3_path()
+%% }
+-type one_drive_users() :: #{binary() => any()}.
+
+%% Example:
+%% personas_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EntityId">> => string(),
+%%   <<"Persona">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type personas_summary() :: #{binary() => any()}.
+
+%% Example:
+%% principal() :: #{
+%%   <<"Access">> => list(any()),
+%%   <<"DataSourceId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type principal() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"Credentials">> => string(),
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% put_principal_mapping_request() :: #{
+%%   <<"DataSourceId">> => string(),
+%%   <<"GroupId">> := string(),
+%%   <<"GroupMembers">> := group_members(),
+%%   <<"IndexId">> := string(),
+%%   <<"OrderingId">> => float(),
+%%   <<"RoleArn">> => string()
+%% }
+-type put_principal_mapping_request() :: #{binary() => any()}.
 
 %% Example:
 %% query_request() :: #{
@@ -2251,32 +1915,16 @@
 -type query_request() :: #{binary() => any()}.
 
 %% Example:
-%% user_context() :: #{
-%%   <<"DataSourceGroups">> => list(data_source_group()),
-%%   <<"Groups">> => list(string()),
-%%   <<"Token">> => string(),
-%%   <<"UserId">> => string()
+%% query_result() :: #{
+%%   <<"FacetResults">> => list(facet_result()),
+%%   <<"FeaturedResultsItems">> => list(featured_results_item()),
+%%   <<"QueryId">> => string(),
+%%   <<"ResultItems">> => list(query_result_item()),
+%%   <<"SpellCorrectedQueries">> => list(spell_corrected_query()),
+%%   <<"TotalNumberOfResults">> => integer(),
+%%   <<"Warnings">> => list(warning())
 %% }
--type user_context() :: #{binary() => any()}.
-
-%% Example:
-%% group_summary() :: #{
-%%   <<"GroupId">> => string(),
-%%   <<"OrderingId">> => float()
-%% }
--type group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% one_drive_configuration() :: #{
-%%   <<"DisableLocalGroups">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"OneDriveUsers">> => one_drive_users(),
-%%   <<"SecretArn">> => string(),
-%%   <<"TenantDomain">> => string()
-%% }
--type one_drive_configuration() :: #{binary() => any()}.
+-type query_result() :: #{binary() => any()}.
 
 %% Example:
 %% query_result_item() :: #{
@@ -2297,120 +1945,73 @@
 -type query_result_item() :: #{binary() => any()}.
 
 %% Example:
-%% associate_entities_to_experience_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity())
-%% }
--type associate_entities_to_experience_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_index_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_index_response() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_blog_configuration() :: #{
-%%   <<"BlogFieldMappings">> => list(confluence_blog_to_index_field_mapping())
-%% }
--type confluence_blog_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_query_suggestions_config_request() :: #{
-%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_update_config(),
-%%   <<"IncludeQueriesWithoutUserInformation">> => boolean(),
-%%   <<"IndexId">> := string(),
-%%   <<"MinimumNumberOfQueryingUsers">> => integer(),
-%%   <<"MinimumQueryCount">> => integer(),
-%%   <<"Mode">> => list(any()),
-%%   <<"QueryLogLookBackWindowInDays">> => integer()
-%% }
--type update_query_suggestions_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_query_suggestions_block_lists_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_query_suggestions_block_lists_request() :: #{binary() => any()}.
-
-%% Example:
-%% status() :: #{
-%%   <<"DocumentId">> => string(),
-%%   <<"DocumentStatus">> => list(any()),
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureReason">> => string()
-%% }
--type status() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_configuration() :: #{
-%%   <<"BasicAuthentication">> => list(basic_authentication_configuration())
-%% }
--type authentication_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% create_faq_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_faq_response() :: #{binary() => any()}.
-
-%% Example:
-%% alfresco_configuration() :: #{
-%%   <<"BlogFieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"CrawlComments">> => boolean(),
-%%   <<"CrawlSystemFolders">> => boolean(),
-%%   <<"DocumentLibraryFieldMappings">> => list(data_source_to_index_field_mapping()),
-%%   <<"EntityFilter">> => list(list(any())()),
-%%   <<"ExclusionPatterns">> => list(string()),
-%%   <<"InclusionPatterns">> => list(string()),
-%%   <<"SecretArn">> => string(),
-%%   <<"SiteId">> => string(),
-%%   <<"SiteUrl">> => string(),
-%%   <<"SslCertificateS3Path">> => s3_path(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration(),
-%%   <<"WikiFieldMappings">> => list(data_source_to_index_field_mapping())
-%% }
--type alfresco_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_document_status_response() :: #{
-%%   <<"DocumentStatusList">> => list(status()),
-%%   <<"Errors">> => list(batch_get_document_status_response_error())
-%% }
--type batch_get_document_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% confluence_page_configuration() :: #{
-%%   <<"PageFieldMappings">> => list(confluence_page_to_index_field_mapping())
-%% }
--type confluence_page_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_personas_from_entities_request() :: #{
-%%   <<"EntityIds">> := list(string()),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type disassociate_personas_from_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% text_document_statistics() :: #{
-%%   <<"IndexedTextBytes">> => float(),
-%%   <<"IndexedTextDocumentsCount">> => integer()
-%% }
--type text_document_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% update_experience_request() :: #{
-%%   <<"Configuration">> => experience_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
+%% query_suggestions_block_list_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"ItemCount">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string()
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type update_experience_request() :: #{binary() => any()}.
+-type query_suggestions_block_list_summary() :: #{binary() => any()}.
+
+%% Example:
+%% quip_configuration() :: #{
+%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"CrawlAttachments">> => boolean(),
+%%   <<"CrawlChatRooms">> => boolean(),
+%%   <<"CrawlFileComments">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FolderIds">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"MessageFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"SecretArn">> => string(),
+%%   <<"ThreadFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type quip_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% relevance() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"Freshness">> => boolean(),
+%%   <<"Importance">> => integer(),
+%%   <<"RankOrder">> => list(any()),
+%%   <<"ValueImportanceMap">> => map()
+%% }
+-type relevance() :: #{binary() => any()}.
+
+%% Example:
+%% relevance_feedback() :: #{
+%%   <<"RelevanceValue">> => list(any()),
+%%   <<"ResultId">> => string()
+%% }
+-type relevance_feedback() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exist_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
 %% retrieve_request() :: #{
@@ -2426,158 +2027,23 @@
 -type retrieve_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_featured_results_sets_response() :: #{
-%%   <<"FeaturedResultsSetSummaryItems">> => list(featured_results_set_summary()),
-%%   <<"NextToken">> => string()
+%% retrieve_result() :: #{
+%%   <<"QueryId">> => string(),
+%%   <<"ResultItems">> => list(retrieve_result_item())
 %% }
--type list_featured_results_sets_response() :: #{binary() => any()}.
+-type retrieve_result() :: #{binary() => any()}.
 
 %% Example:
-%% acl_configuration() :: #{
-%%   <<"AllowedGroupsColumnName">> => string()
-%% }
--type acl_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_thesaurus_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SourceS3Path">> => s3_path()
-%% }
--type update_thesaurus_request() :: #{binary() => any()}.
-
-%% Example:
-%% table_cell() :: #{
-%%   <<"Header">> => boolean(),
-%%   <<"Highlighted">> => boolean(),
-%%   <<"TopAnswer">> => boolean(),
-%%   <<"Value">> => string()
-%% }
--type table_cell() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_control_configuration_request() :: #{
-%%   <<"AccessControlList">> => list(principal()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
-%%   <<"IndexId">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_access_control_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_info() :: #{
-%%   <<"Attributes">> => list(document_attribute()),
-%%   <<"DocumentId">> => string()
-%% }
--type document_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_entity_personas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(personas_summary())
-%% }
--type list_entity_personas_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_faqs_request() :: #{
-%%   <<"IndexId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_faqs_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_thesaurus_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_thesaurus_response() :: #{binary() => any()}.
-
-%% Example:
-%% document() :: #{
-%%   <<"AccessControlConfigurationId">> => string(),
-%%   <<"AccessControlList">> => list(principal()),
-%%   <<"Attributes">> => list(document_attribute()),
-%%   <<"Blob">> => binary(),
-%%   <<"ContentType">> => list(any()),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
+%% retrieve_result_item() :: #{
+%%   <<"Content">> => string(),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentTitle">> => string(),
+%%   <<"DocumentURI">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"S3Path">> => s3_path(),
-%%   <<"Title">> => string()
+%%   <<"ScoreAttributes">> => score_attributes()
 %% }
--type document() :: #{binary() => any()}.
-
-%% Example:
-%% list_faqs_response() :: #{
-%%   <<"FaqSummaryItems">> => list(faq_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_faqs_response() :: #{binary() => any()}.
-
-%% Example:
-%% database_configuration() :: #{
-%%   <<"AclConfiguration">> => acl_configuration(),
-%%   <<"ColumnConfiguration">> => column_configuration(),
-%%   <<"ConnectionConfiguration">> => connection_configuration(),
-%%   <<"DatabaseEngineType">> => list(any()),
-%%   <<"SqlConfiguration">> => sql_configuration(),
-%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type database_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_document_status_request() :: #{
-%%   <<"DocumentInfoList">> := list(document_info()),
-%%   <<"IndexId">> := string()
-%% }
--type batch_get_document_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_entities_from_experience_request() :: #{
-%%   <<"EntityList">> := list(entity_configuration()),
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string()
-%% }
--type disassociate_entities_from_experience_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_featured_results_set_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()),
-%%   <<"FeaturedResultsSetName">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"QueryTexts">> => list(string()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_featured_results_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% featured_results_set_summary() :: #{
-%%   <<"CreationTimestamp">> => float(),
-%%   <<"FeaturedResultsSetId">> => string(),
-%%   <<"FeaturedResultsSetName">> => string(),
-%%   <<"LastUpdatedTimestamp">> => float(),
-%%   <<"Status">> => list(any())
-%% }
--type featured_results_set_summary() :: #{binary() => any()}.
-
-%% Example:
-%% faq_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"FileFormat">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type faq_summary() :: #{binary() => any()}.
+-type retrieve_result_item() :: #{binary() => any()}.
 
 %% Example:
 %% s3_data_source_configuration() :: #{
@@ -2591,32 +2057,216 @@
 -type s3_data_source_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% index_statistics() :: #{
-%%   <<"FaqStatistics">> => faq_statistics(),
-%%   <<"TextDocumentStatistics">> => text_document_statistics()
+%% s3_path() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
 %% }
--type index_statistics() :: #{binary() => any()}.
+-type s3_path() :: #{binary() => any()}.
 
 %% Example:
-%% document_relevance_configuration() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Relevance">> => relevance()
+%% saa_s_configuration() :: #{
+%%   <<"HostUrl">> => string(),
+%%   <<"OrganizationName">> => string()
 %% }
--type document_relevance_configuration() :: #{binary() => any()}.
+-type saa_s_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% associate_personas_to_entities_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"IndexId">> := string(),
-%%   <<"Personas">> := list(entity_persona_configuration())
+%% salesforce_chatter_feed_configuration() :: #{
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"IncludeFilterTypes">> => list(list(any())())
 %% }
--type associate_personas_to_entities_request() :: #{binary() => any()}.
+-type salesforce_chatter_feed_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_query_suggestions_config_request() :: #{
-%%   <<"IndexId">> := string()
+%% salesforce_configuration() :: #{
+%%   <<"ChatterFeedConfiguration">> => salesforce_chatter_feed_configuration(),
+%%   <<"CrawlAttachments">> => boolean(),
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"IncludeAttachmentFilePatterns">> => list(string()),
+%%   <<"KnowledgeArticleConfiguration">> => salesforce_knowledge_article_configuration(),
+%%   <<"SecretArn">> => string(),
+%%   <<"ServerUrl">> => string(),
+%%   <<"StandardObjectAttachmentConfiguration">> => salesforce_standard_object_attachment_configuration(),
+%%   <<"StandardObjectConfigurations">> => list(salesforce_standard_object_configuration())
 %% }
--type describe_query_suggestions_config_request() :: #{binary() => any()}.
+-type salesforce_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% salesforce_custom_knowledge_article_type_configuration() :: #{
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"Name">> => string()
+%% }
+-type salesforce_custom_knowledge_article_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% salesforce_knowledge_article_configuration() :: #{
+%%   <<"CustomKnowledgeArticleTypeConfigurations">> => list(salesforce_custom_knowledge_article_type_configuration()),
+%%   <<"IncludedStates">> => list(list(any())()),
+%%   <<"StandardKnowledgeArticleTypeConfiguration">> => salesforce_standard_knowledge_article_type_configuration()
+%% }
+-type salesforce_knowledge_article_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% salesforce_standard_knowledge_article_type_configuration() :: #{
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
+%% }
+-type salesforce_standard_knowledge_article_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% salesforce_standard_object_attachment_configuration() :: #{
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
+%% }
+-type salesforce_standard_object_attachment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% salesforce_standard_object_configuration() :: #{
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"Name">> => list(any())
+%% }
+-type salesforce_standard_object_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% score_attributes() :: #{
+%%   <<"ScoreConfidence">> => list(any())
+%% }
+-type score_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% search() :: #{
+%%   <<"Displayable">> => boolean(),
+%%   <<"Facetable">> => boolean(),
+%%   <<"Searchable">> => boolean(),
+%%   <<"Sortable">> => boolean()
+%% }
+-type search() :: #{binary() => any()}.
+
+%% Example:
+%% seed_url_configuration() :: #{
+%%   <<"SeedUrls">> => list(string()),
+%%   <<"WebCrawlerMode">> => list(any())
+%% }
+-type seed_url_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_now_configuration() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"HostUrl">> => string(),
+%%   <<"KnowledgeArticleConfiguration">> => service_now_knowledge_article_configuration(),
+%%   <<"SecretArn">> => string(),
+%%   <<"ServiceCatalogConfiguration">> => service_now_service_catalog_configuration(),
+%%   <<"ServiceNowBuildVersion">> => list(any())
+%% }
+-type service_now_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_now_knowledge_article_configuration() :: #{
+%%   <<"CrawlAttachments">> => boolean(),
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"FilterQuery">> => string(),
+%%   <<"IncludeAttachmentFilePatterns">> => list(string())
+%% }
+-type service_now_knowledge_article_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_now_service_catalog_configuration() :: #{
+%%   <<"CrawlAttachments">> => boolean(),
+%%   <<"DocumentDataFieldName">> => string(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"IncludeAttachmentFilePatterns">> => list(string())
+%% }
+-type service_now_service_catalog_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% share_point_configuration() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CrawlAttachments">> => boolean(),
+%%   <<"DisableLocalGroups">> => boolean(),
+%%   <<"DocumentTitleFieldName">> => string(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SharePointVersion">> => list(any()),
+%%   <<"SslCertificateS3Path">> => s3_path(),
+%%   <<"Urls">> => list(string()),
+%%   <<"UseChangeLog">> => boolean(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type share_point_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% site_maps_configuration() :: #{
+%%   <<"SiteMaps">> => list(string())
+%% }
+-type site_maps_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% slack_configuration() :: #{
+%%   <<"CrawlBotMessage">> => boolean(),
+%%   <<"ExcludeArchived">> => boolean(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"LookBackPeriod">> => integer(),
+%%   <<"PrivateChannelFilter">> => list(string()),
+%%   <<"PublicChannelFilter">> => list(string()),
+%%   <<"SecretArn">> => string(),
+%%   <<"SinceCrawlDate">> => string(),
+%%   <<"SlackEntityList">> => list(list(any())()),
+%%   <<"TeamId">> => string(),
+%%   <<"UseChangeLog">> => boolean(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type slack_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% sorting_configuration() :: #{
+%%   <<"DocumentAttributeKey">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sorting_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% source_document() :: #{
+%%   <<"AdditionalAttributes">> => list(document_attribute()),
+%%   <<"DocumentId">> => string(),
+%%   <<"SuggestionAttributes">> => list(string())
+%% }
+-type source_document() :: #{binary() => any()}.
+
+%% Example:
+%% spell_corrected_query() :: #{
+%%   <<"Corrections">> => list(correction()),
+%%   <<"SuggestedQueryText">> => string()
+%% }
+-type spell_corrected_query() :: #{binary() => any()}.
 
 %% Example:
 %% spell_correction_configuration() :: #{
@@ -2625,528 +2275,878 @@
 -type spell_correction_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% batch_put_document_response_failed_document() :: #{
-%%   <<"DataSourceId">> => string(),
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string()
+%% sql_configuration() :: #{
+%%   <<"QueryIdentifiersEnclosingOption">> => list(any())
 %% }
--type batch_put_document_response_failed_document() :: #{binary() => any()}.
+-type sql_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_source_sync_job_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type start_data_source_sync_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_source_sync_job_response() :: #{
+%%   <<"ExecutionId">> => string()
+%% }
+-type start_data_source_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% status() :: #{
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentStatus">> => list(any()),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string()
+%% }
+-type status() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_source_sync_job_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string()
+%% }
+-type stop_data_source_sync_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_feedback_request() :: #{
+%%   <<"ClickFeedbackItems">> => list(click_feedback()),
+%%   <<"IndexId">> := string(),
+%%   <<"QueryId">> := string(),
+%%   <<"RelevanceFeedbackItems">> => list(relevance_feedback())
+%% }
+-type submit_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% suggestable_config() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Suggestable">> => boolean()
+%% }
+-type suggestable_config() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion() :: #{
+%%   <<"Id">> => string(),
+%%   <<"SourceDocuments">> => list(source_document()),
+%%   <<"Value">> => suggestion_value()
+%% }
+-type suggestion() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion_highlight() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer()
+%% }
+-type suggestion_highlight() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion_text_with_highlights() :: #{
+%%   <<"Highlights">> => list(suggestion_highlight()),
+%%   <<"Text">> => string()
+%% }
+-type suggestion_text_with_highlights() :: #{binary() => any()}.
+
+%% Example:
+%% suggestion_value() :: #{
+%%   <<"Text">> => suggestion_text_with_highlights()
+%% }
+-type suggestion_value() :: #{binary() => any()}.
+
+%% Example:
+%% table_cell() :: #{
+%%   <<"Header">> => boolean(),
+%%   <<"Highlighted">> => boolean(),
+%%   <<"TopAnswer">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type table_cell() :: #{binary() => any()}.
+
+%% Example:
+%% table_excerpt() :: #{
+%%   <<"Rows">> => list(table_row()),
+%%   <<"TotalNumberOfRows">> => integer()
+%% }
+-type table_excerpt() :: #{binary() => any()}.
+
+%% Example:
+%% table_row() :: #{
+%%   <<"Cells">> => list(table_cell())
+%% }
+-type table_row() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% template_configuration() :: #{
+%%   <<"Template">> => any()
+%% }
+-type template_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% text_document_statistics() :: #{
+%%   <<"IndexedTextBytes">> => float(),
+%%   <<"IndexedTextDocumentsCount">> => integer()
+%% }
+-type text_document_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% text_with_highlights() :: #{
+%%   <<"Highlights">> => list(highlight()),
+%%   <<"Text">> => string()
+%% }
+-type text_with_highlights() :: #{binary() => any()}.
+
+%% Example:
+%% thesaurus_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type thesaurus_summary() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type time_range() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_control_configuration_request() :: #{
+%%   <<"AccessControlList">> => list(principal()),
+%%   <<"Description">> => string(),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> => string()
+%% }
+-type update_access_control_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_control_configuration_response() :: #{
+
+%% }
+-type update_access_control_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_source_request() :: #{
+%%   <<"Configuration">> => data_source_configuration(),
+%%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"VpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type update_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_experience_request() :: #{
+%%   <<"Configuration">> => experience_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_featured_results_set_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
+%%   <<"FeaturedResultsSetId">> := string(),
+%%   <<"FeaturedResultsSetName">> => string(),
+%%   <<"IndexId">> := string(),
+%%   <<"QueryTexts">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type update_featured_results_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_featured_results_set_response() :: #{
+%%   <<"FeaturedResultsSet">> => featured_results_set()
+%% }
+-type update_featured_results_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"CapacityUnits">> => capacity_units_configuration(),
+%%   <<"Description">> => string(),
+%%   <<"DocumentMetadataConfigurationUpdates">> => list(document_metadata_configuration()),
+%%   <<"Id">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserContextPolicy">> => list(any()),
+%%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
+%% }
+-type update_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_query_suggestions_block_list_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceS3Path">> => s3_path()
+%% }
+-type update_query_suggestions_block_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_query_suggestions_config_request() :: #{
+%%   <<"AttributeSuggestionsConfig">> => attribute_suggestions_update_config(),
+%%   <<"IncludeQueriesWithoutUserInformation">> => boolean(),
+%%   <<"IndexId">> := string(),
+%%   <<"MinimumNumberOfQueryingUsers">> => integer(),
+%%   <<"MinimumQueryCount">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"QueryLogLookBackWindowInDays">> => integer()
+%% }
+-type update_query_suggestions_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_thesaurus_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IndexId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceS3Path">> => s3_path()
+%% }
+-type update_thesaurus_request() :: #{binary() => any()}.
+
+%% Example:
+%% urls() :: #{
+%%   <<"SeedUrlConfiguration">> => seed_url_configuration(),
+%%   <<"SiteMapsConfiguration">> => site_maps_configuration()
+%% }
+-type urls() :: #{binary() => any()}.
+
+%% Example:
+%% user_context() :: #{
+%%   <<"DataSourceGroups">> => list(data_source_group()),
+%%   <<"Groups">> => list(string()),
+%%   <<"Token">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type user_context() :: #{binary() => any()}.
+
+%% Example:
+%% user_group_resolution_configuration() :: #{
+%%   <<"UserGroupResolutionMode">> => list(any())
+%% }
+-type user_group_resolution_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% user_identity_configuration() :: #{
+%%   <<"IdentityAttributeName">> => string()
+%% }
+-type user_identity_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% user_token_configuration() :: #{
+%%   <<"JsonTokenTypeConfiguration">> => json_token_type_configuration(),
+%%   <<"JwtTokenTypeConfiguration">> => jwt_token_type_configuration()
+%% }
+-type user_token_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% warning() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type warning() :: #{binary() => any()}.
+
+%% Example:
+%% web_crawler_configuration() :: #{
+%%   <<"AuthenticationConfiguration">> => authentication_configuration(),
+%%   <<"CrawlDepth">> => integer(),
+%%   <<"MaxContentSizePerPageInMegaBytes">> => float(),
+%%   <<"MaxLinksPerPage">> => integer(),
+%%   <<"MaxUrlsPerMinuteCrawlRate">> => integer(),
+%%   <<"ProxyConfiguration">> => proxy_configuration(),
+%%   <<"UrlExclusionPatterns">> => list(string()),
+%%   <<"UrlInclusionPatterns">> => list(string()),
+%%   <<"Urls">> => urls()
+%% }
+-type web_crawler_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% work_docs_configuration() :: #{
+%%   <<"CrawlComments">> => boolean(),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"OrganizationId">> => string(),
+%%   <<"UseChangeLog">> => boolean()
+%% }
+-type work_docs_configuration() :: #{binary() => any()}.
 
 -type associate_entities_to_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    resource_already_exist_exception().
+    resource_already_exist_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type associate_personas_to_entities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    resource_already_exist_exception().
+    resource_already_exist_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_delete_document_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_featured_results_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_document_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_put_document_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type clear_query_suggestions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_access_control_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_already_exist_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_already_exist_exception().
+    access_denied_exception().
 
 -type create_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_faq_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_featured_results_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     featured_results_conflict_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_already_exist_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_already_exist_exception().
+    access_denied_exception().
 
 -type create_query_suggestions_block_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_thesaurus_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_access_control_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_faq_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_principal_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_query_suggestions_block_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_thesaurus_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_access_control_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_faq_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_featured_results_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_principal_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_query_suggestions_block_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_query_suggestions_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_thesaurus_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_entities_from_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_personas_from_entities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_query_suggestions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_snapshots_errors() ::
-    access_denied_exception() | 
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_access_control_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_source_sync_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_entity_personas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_experience_entities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_experiences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_faqs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_featured_results_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_groups_older_than_ordering_id_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_indices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_query_suggestions_block_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
     internal_server_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 -type list_thesauri_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_principal_mapping_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type retrieve_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_data_source_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type stop_data_source_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type submit_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
     internal_server_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_unavailable_exception() | 
     internal_server_exception() | 
-    resource_unavailable_exception().
+    access_denied_exception().
 
 -type update_access_control_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_featured_results_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     featured_results_conflict_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_query_suggestions_block_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_query_suggestions_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_thesaurus_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

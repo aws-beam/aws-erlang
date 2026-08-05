@@ -39,17 +39,423 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_settings_notification_configuration() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SnsConfiguration">> => sns_configuration()
+%% }
+-type account_settings_notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_query_request() :: #{
+%%   <<"QueryId">> := string()
+%% }
+-type cancel_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_query_response() :: #{
+%%   <<"CancellationMessage">> => string()
+%% }
+-type cancel_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% column_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => type()
+%% }
+-type column_info() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_query_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ErrorReportConfiguration">> := error_report_configuration(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NotificationConfiguration">> := notification_configuration(),
+%%   <<"QueryString">> := string(),
+%%   <<"ScheduleConfiguration">> := schedule_configuration(),
+%%   <<"ScheduledQueryExecutionRoleArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetConfiguration">> => target_configuration()
+%% }
+-type create_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_query_response() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type create_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% datum() :: #{
+%%   <<"ArrayValue">> => list(datum()),
+%%   <<"NullValue">> => boolean(),
+%%   <<"RowValue">> => row(),
+%%   <<"ScalarValue">> => string(),
+%%   <<"TimeSeriesValue">> => list(time_series_data_point())
+%% }
+-type datum() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_query_request() :: #{
+%%   <<"ScheduledQueryArn">> := string()
+%% }
+-type delete_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_settings_request() :: #{
 
 %% }
 -type describe_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_response() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_response(),
+%%   <<"QueryPricingModel">> => list(any())
+%% }
+-type describe_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_request() :: #{
+
+%% }
+-type describe_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint())
+%% }
+-type describe_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_query_request() :: #{
+%%   <<"ScheduledQueryArn">> := string()
+%% }
+-type describe_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_query_response() :: #{
+%%   <<"ScheduledQuery">> => scheduled_query_description()
+%% }
+-type describe_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension_mapping() :: #{
+%%   <<"DimensionValueType">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type dimension_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CachePeriodInMinutes">> => float()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% error_report_configuration() :: #{
+%%   <<"S3Configuration">> => s3_configuration()
+%% }
+-type error_report_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% error_report_location() :: #{
+%%   <<"S3ReportLocation">> => s3_report_location()
+%% }
+-type error_report_location() :: #{binary() => any()}.
+
+%% Example:
+%% execute_scheduled_query_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InvocationTime">> := non_neg_integer(),
+%%   <<"QueryInsights">> => scheduled_query_insights(),
+%%   <<"ScheduledQueryArn">> := string()
+%% }
+-type execute_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% execution_stats() :: #{
+%%   <<"BytesMetered">> => float(),
+%%   <<"CumulativeBytesScanned">> => float(),
+%%   <<"DataWrites">> => float(),
+%%   <<"ExecutionTimeInMillis">> => float(),
+%%   <<"QueryResultRows">> => float(),
+%%   <<"RecordsIngested">> => float()
+%% }
+-type execution_stats() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% last_update() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetQueryTCU">> => integer()
+%% }
+-type last_update() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_queries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_scheduled_queries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_queries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledQueries">> => list(scheduled_query())
+%% }
+-type list_scheduled_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% mixed_measure_mapping() :: #{
+%%   <<"MeasureName">> => string(),
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
+%%   <<"SourceColumn">> => string(),
+%%   <<"TargetMeasureName">> => string()
+%% }
+-type mixed_measure_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% multi_measure_attribute_mapping() :: #{
+%%   <<"MeasureValueType">> => list(any()),
+%%   <<"SourceColumn">> => string(),
+%%   <<"TargetMultiMeasureAttributeName">> => string()
+%% }
+-type multi_measure_attribute_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% multi_measure_mappings() :: #{
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
+%%   <<"TargetMultiMeasureName">> => string()
+%% }
+-type multi_measure_mappings() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"SnsConfiguration">> => sns_configuration()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_mapping() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => type()
+%% }
+-type parameter_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% prepare_query_request() :: #{
+%%   <<"QueryString">> := string(),
+%%   <<"ValidateOnly">> => boolean()
+%% }
+-type prepare_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% prepare_query_response() :: #{
+%%   <<"Columns">> => list(select_column()),
+%%   <<"Parameters">> => list(parameter_mapping()),
+%%   <<"QueryString">> => string()
+%% }
+-type prepare_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_capacity_request() :: #{
+%%   <<"NotificationConfiguration">> => account_settings_notification_configuration(),
+%%   <<"TargetQueryTCU">> => integer()
+%% }
+-type provisioned_capacity_request() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_capacity_response() :: #{
+%%   <<"ActiveQueryTCU">> => integer(),
+%%   <<"LastUpdate">> => last_update(),
+%%   <<"NotificationConfiguration">> => account_settings_notification_configuration()
+%% }
+-type provisioned_capacity_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_compute_request() :: #{
+%%   <<"ComputeMode">> => list(any()),
+%%   <<"ProvisionedCapacity">> => provisioned_capacity_request()
+%% }
+-type query_compute_request() :: #{binary() => any()}.
+
+%% Example:
+%% query_compute_response() :: #{
+%%   <<"ComputeMode">> => list(any()),
+%%   <<"ProvisionedCapacity">> => provisioned_capacity_response()
+%% }
+-type query_compute_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_execution_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type query_execution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_insights() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type query_insights() :: #{binary() => any()}.
+
+%% Example:
+%% query_insights_response() :: #{
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float(),
+%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
+%%   <<"QueryTableCount">> => float(),
+%%   <<"QueryTemporalRange">> => query_temporal_range(),
+%%   <<"UnloadPartitionCount">> => float(),
+%%   <<"UnloadWrittenBytes">> => float(),
+%%   <<"UnloadWrittenRows">> => float()
+%% }
+-type query_insights_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"MaxRows">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryInsights">> => query_insights(),
+%%   <<"QueryString">> := string()
+%% }
+-type query_request() :: #{binary() => any()}.
+
+%% Example:
+%% query_response() :: #{
+%%   <<"ColumnInfo">> => list(column_info()),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryInsightsResponse">> => query_insights_response(),
+%%   <<"QueryStatus">> => query_status(),
+%%   <<"Rows">> => list(row())
+%% }
+-type query_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_spatial_coverage() :: #{
+%%   <<"Max">> => query_spatial_coverage_max()
+%% }
+-type query_spatial_coverage() :: #{binary() => any()}.
+
+%% Example:
+%% query_spatial_coverage_max() :: #{
+%%   <<"PartitionKey">> => list(string()),
+%%   <<"TableArn">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type query_spatial_coverage_max() :: #{binary() => any()}.
+
+%% Example:
+%% query_status() :: #{
+%%   <<"CumulativeBytesMetered">> => float(),
+%%   <<"CumulativeBytesScanned">> => float(),
+%%   <<"ProgressPercentage">> => float()
+%% }
+-type query_status() :: #{binary() => any()}.
+
+%% Example:
+%% query_temporal_range() :: #{
+%%   <<"Max">> => query_temporal_range_max()
+%% }
+-type query_temporal_range() :: #{binary() => any()}.
+
+%% Example:
+%% query_temporal_range_max() :: #{
+%%   <<"TableArn">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type query_temporal_range_max() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ScheduledQueryArn">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% row() :: #{
+%%   <<"Data">> => list(datum())
+%% }
+-type row() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"EncryptionOption">> => list(any()),
+%%   <<"ObjectKeyPrefix">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_report_location() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectKey">> => string()
+%% }
+-type s3_report_location() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_configuration() :: #{
+%%   <<"ScheduleExpression">> => string()
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_query() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ErrorReportConfiguration">> => error_report_configuration(),
+%%   <<"LastRunStatus">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"NextInvocationTime">> => non_neg_integer(),
+%%   <<"PreviousInvocationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"TargetDestination">> => target_destination()
+%% }
+-type scheduled_query() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_query_description() :: #{
@@ -72,104 +478,20 @@
 -type scheduled_query_description() :: #{binary() => any()}.
 
 %% Example:
-%% query_insights() :: #{
+%% scheduled_query_insights() :: #{
 %%   <<"Mode">> => list(any())
 %% }
--type query_insights() :: #{binary() => any()}.
+-type scheduled_query_insights() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% scheduled_query_insights_response() :: #{
+%%   <<"OutputBytes">> => float(),
+%%   <<"OutputRows">> => float(),
+%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
+%%   <<"QueryTableCount">> => float(),
+%%   <<"QueryTemporalRange">> => query_temporal_range()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_query_request() :: #{
-%%   <<"ScheduledQueryArn">> := string()
-%% }
--type delete_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_compute_request() :: #{
-%%   <<"ComputeMode">> => list(any()),
-%%   <<"ProvisionedCapacity">> => provisioned_capacity_request()
-%% }
--type query_compute_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_status() :: #{
-%%   <<"CumulativeBytesMetered">> => float(),
-%%   <<"CumulativeBytesScanned">> => float(),
-%%   <<"ProgressPercentage">> => float()
-%% }
--type query_status() :: #{binary() => any()}.
-
-%% Example:
-%% select_column() :: #{
-%%   <<"Aliased">> => boolean(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"Type">> => type()
-%% }
--type select_column() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_query_response() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_scheduled_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% multi_measure_attribute_mapping() :: #{
-%%   <<"MeasureValueType">> => list(any()),
-%%   <<"SourceColumn">> => string(),
-%%   <<"TargetMultiMeasureAttributeName">> => string()
-%% }
--type multi_measure_attribute_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_settings_response() :: #{
-%%   <<"MaxQueryTCU">> => integer(),
-%%   <<"QueryCompute">> => query_compute_response(),
-%%   <<"QueryPricingModel">> => list(any())
-%% }
--type update_account_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_mapping() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => type()
-%% }
--type parameter_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_endpoint_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_endpoint_exception() :: #{binary() => any()}.
-
-%% Example:
-%% datum() :: #{
-%%   <<"ArrayValue">> => list(datum()),
-%%   <<"NullValue">> => boolean(),
-%%   <<"RowValue">> => row(),
-%%   <<"ScalarValue">> => string(),
-%%   <<"TimeSeriesValue">> => list(time_series_data_point())
-%% }
--type datum() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint())
-%% }
--type describe_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% error_report_location() :: #{
-%%   <<"S3ReportLocation">> => s3_report_location()
-%% }
--type error_report_location() :: #{binary() => any()}.
+-type scheduled_query_insights_response() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_query_run_summary() :: #{
@@ -184,127 +506,26 @@
 -type scheduled_query_run_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_scheduled_queries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_scheduled_queries_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_query_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ErrorReportConfiguration">> := error_report_configuration(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NotificationConfiguration">> := notification_configuration(),
-%%   <<"QueryString">> := string(),
-%%   <<"ScheduleConfiguration">> := schedule_configuration(),
-%%   <<"ScheduledQueryExecutionRoleArn">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetConfiguration">> => target_configuration()
-%% }
--type create_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_query_response() :: #{
-%%   <<"ScheduledQuery">> => scheduled_query_description()
-%% }
--type describe_scheduled_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_query_response() :: #{
-%%   <<"CancellationMessage">> => string()
-%% }
--type cancel_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_query_insights_response() :: #{
-%%   <<"OutputBytes">> => float(),
-%%   <<"OutputRows">> => float(),
-%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
-%%   <<"QueryTableCount">> => float(),
-%%   <<"QueryTemporalRange">> => query_temporal_range()
-%% }
--type scheduled_query_insights_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_temporal_range_max() :: #{
-%%   <<"TableArn">> => string(),
-%%   <<"Value">> => float()
-%% }
--type query_temporal_range_max() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_query() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ErrorReportConfiguration">> => error_report_configuration(),
-%%   <<"LastRunStatus">> => list(any()),
+%% select_column() :: #{
+%%   <<"Aliased">> => boolean(),
+%%   <<"DatabaseName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NextInvocationTime">> => non_neg_integer(),
-%%   <<"PreviousInvocationTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"TargetDestination">> => target_destination()
+%%   <<"TableName">> => string(),
+%%   <<"Type">> => type()
 %% }
--type scheduled_query() :: #{binary() => any()}.
+-type select_column() :: #{binary() => any()}.
 
 %% Example:
-%% account_settings_notification_configuration() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"SnsConfiguration">> => sns_configuration()
-%% }
--type account_settings_notification_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoints_request() :: #{
-
-%% }
--type describe_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
+%% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ScheduledQueryArn">> => string()
+%% sns_configuration() :: #{
+%%   <<"TopicArn">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_query_request() :: #{
-%%   <<"QueryId">> := string()
-%% }
--type cancel_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% last_update() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"TargetQueryTCU">> => integer()
-%% }
--type last_update() :: #{binary() => any()}.
-
-%% Example:
-%% query_response() :: #{
-%%   <<"ColumnInfo">> => list(column_info()),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryId">> => string(),
-%%   <<"QueryInsightsResponse">> => query_insights_response(),
-%%   <<"QueryStatus">> => query_status(),
-%%   <<"Rows">> => list(row())
-%% }
--type query_response() :: #{binary() => any()}.
+-type sns_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -314,16 +535,35 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
-%% row() :: #{
-%%   <<"Data">> => list(datum())
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type row() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_configuration() :: #{
+%%   <<"TimestreamConfiguration">> => timestream_configuration()
+%% }
+-type target_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% target_destination() :: #{
+%%   <<"TimestreamDestination">> => timestream_destination()
+%% }
+-type target_destination() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
 %% time_series_data_point() :: #{
@@ -331,45 +571,6 @@
 %%   <<"Value">> => datum()
 %% }
 -type time_series_data_point() :: #{binary() => any()}.
-
-%% Example:
-%% query_spatial_coverage_max() :: #{
-%%   <<"PartitionKey">> => list(string()),
-%%   <<"TableArn">> => string(),
-%%   <<"Value">> => float()
-%% }
--type query_spatial_coverage_max() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% prepare_query_request() :: #{
-%%   <<"QueryString">> := string(),
-%%   <<"ValidateOnly">> => boolean()
-%% }
--type prepare_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_settings_request() :: #{
-%%   <<"MaxQueryTCU">> => integer(),
-%%   <<"QueryCompute">> => query_compute_request(),
-%%   <<"QueryPricingModel">> => list(any())
-%% }
--type update_account_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% execute_scheduled_query_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InvocationTime">> := non_neg_integer(),
-%%   <<"QueryInsights">> => scheduled_query_insights(),
-%%   <<"ScheduledQueryArn">> := string()
-%% }
--type execute_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% timestream_configuration() :: #{
@@ -384,134 +585,11 @@
 -type timestream_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% target_destination() :: #{
-%%   <<"TimestreamDestination">> => timestream_destination()
-%% }
--type target_destination() :: #{binary() => any()}.
-
-%% Example:
-%% notification_configuration() :: #{
-%%   <<"SnsConfiguration">> => sns_configuration()
-%% }
--type notification_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% error_report_configuration() :: #{
-%%   <<"S3Configuration">> => s3_configuration()
-%% }
--type error_report_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"CachePeriodInMinutes">> => float()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% query_temporal_range() :: #{
-%%   <<"Max">> => query_temporal_range_max()
-%% }
--type query_temporal_range() :: #{binary() => any()}.
-
-%% Example:
-%% update_scheduled_query_request() :: #{
-%%   <<"ScheduledQueryArn">> := string(),
-%%   <<"State">> := list(any())
-%% }
--type update_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% multi_measure_mappings() :: #{
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
-%%   <<"TargetMultiMeasureName">> => string()
-%% }
--type multi_measure_mappings() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
 %% timestream_destination() :: #{
 %%   <<"DatabaseName">> => string(),
 %%   <<"TableName">> => string()
 %% }
 -type timestream_destination() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_queries_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledQueries">> => list(scheduled_query())
-%% }
--type list_scheduled_queries_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_query_request() :: #{
-%%   <<"ScheduledQueryArn">> := string()
-%% }
--type describe_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule_configuration() :: #{
-%%   <<"ScheduleExpression">> => string()
-%% }
--type schedule_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% query_insights_response() :: #{
-%%   <<"OutputBytes">> => float(),
-%%   <<"OutputRows">> => float(),
-%%   <<"QuerySpatialCoverage">> => query_spatial_coverage(),
-%%   <<"QueryTableCount">> => float(),
-%%   <<"QueryTemporalRange">> => query_temporal_range(),
-%%   <<"UnloadPartitionCount">> => float(),
-%%   <<"UnloadWrittenBytes">> => float(),
-%%   <<"UnloadWrittenRows">> => float()
-%% }
--type query_insights_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_settings_response() :: #{
-%%   <<"MaxQueryTCU">> => integer(),
-%%   <<"QueryCompute">> => query_compute_response(),
-%%   <<"QueryPricingModel">> => list(any())
-%% }
--type describe_account_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% type() :: #{
@@ -523,232 +601,154 @@
 -type type() :: #{binary() => any()}.
 
 %% Example:
-%% s3_configuration() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"EncryptionOption">> => list(any()),
-%%   <<"ObjectKeyPrefix">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type s3_configuration() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% mixed_measure_mapping() :: #{
-%%   <<"MeasureName">> => string(),
-%%   <<"MeasureValueType">> => list(any()),
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
-%%   <<"SourceColumn">> => string(),
-%%   <<"TargetMeasureName">> => string()
+%% untag_resource_response() :: #{
+
 %% }
--type mixed_measure_mapping() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% prepare_query_response() :: #{
-%%   <<"Columns">> => list(select_column()),
-%%   <<"Parameters">> => list(parameter_mapping()),
-%%   <<"QueryString">> => string()
+%% update_account_settings_request() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_request(),
+%%   <<"QueryPricingModel">> => list(any())
 %% }
--type prepare_query_response() :: #{binary() => any()}.
+-type update_account_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% target_configuration() :: #{
-%%   <<"TimestreamConfiguration">> => timestream_configuration()
+%% update_account_settings_response() :: #{
+%%   <<"MaxQueryTCU">> => integer(),
+%%   <<"QueryCompute">> => query_compute_response(),
+%%   <<"QueryPricingModel">> => list(any())
 %% }
--type target_configuration() :: #{binary() => any()}.
+-type update_account_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% query_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"MaxRows">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryInsights">> => query_insights(),
-%%   <<"QueryString">> := string()
+%% update_scheduled_query_request() :: #{
+%%   <<"ScheduledQueryArn">> := string(),
+%%   <<"State">> := list(any())
 %% }
--type query_request() :: #{binary() => any()}.
+-type update_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
-%% query_compute_response() :: #{
-%%   <<"ComputeMode">> => list(any()),
-%%   <<"ProvisionedCapacity">> => provisioned_capacity_response()
-%% }
--type query_compute_response() :: #{binary() => any()}.
-
-%% Example:
-%% query_execution_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type query_execution_exception() :: #{binary() => any()}.
-
-%% Example:
-%% column_info() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => type()
-%% }
--type column_info() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_capacity_request() :: #{
-%%   <<"NotificationConfiguration">> => account_settings_notification_configuration(),
-%%   <<"TargetQueryTCU">> => integer()
-%% }
--type provisioned_capacity_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_spatial_coverage() :: #{
-%%   <<"Max">> => query_spatial_coverage_max()
-%% }
--type query_spatial_coverage() :: #{binary() => any()}.
-
-%% Example:
-%% s3_report_location() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ObjectKey">> => string()
-%% }
--type s3_report_location() :: #{binary() => any()}.
-
-%% Example:
-%% sns_configuration() :: #{
-%%   <<"TopicArn">> => string()
-%% }
--type sns_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% dimension_mapping() :: #{
-%%   <<"DimensionValueType">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type dimension_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_query_insights() :: #{
-%%   <<"Mode">> => list(any())
-%% }
--type scheduled_query_insights() :: #{binary() => any()}.
-
-%% Example:
-%% execution_stats() :: #{
-%%   <<"BytesMetered">> => float(),
-%%   <<"CumulativeBytesScanned">> => float(),
-%%   <<"DataWrites">> => float(),
-%%   <<"ExecutionTimeInMillis">> => float(),
-%%   <<"QueryResultRows">> => float(),
-%%   <<"RecordsIngested">> => float()
-%% }
--type execution_stats() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_capacity_response() :: #{
-%%   <<"ActiveQueryTCU">> => integer(),
-%%   <<"LastUpdate">> => last_update(),
-%%   <<"NotificationConfiguration">> => account_settings_notification_configuration()
-%% }
--type provisioned_capacity_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type create_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type delete_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_account_settings_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type describe_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type describe_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type execute_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_scheduled_queries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type prepare_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type query_errors() ::
-    query_execution_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    query_execution_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     invalid_endpoint_exception().
 
 -type update_account_settings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_endpoint_exception() | 
     internal_server_exception() | 
-    invalid_endpoint_exception().
+    access_denied_exception().
 
 -type update_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    invalid_endpoint_exception().
+    invalid_endpoint_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

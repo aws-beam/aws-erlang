@@ -78,90 +78,11 @@
 
 
 %% Example:
-%% user_pending_changes() :: #{
-%%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()),
-%%   <<"PendingChange">> => list(any())
+%% action_required() :: #{
+%%   <<"ActionRequiredCode">> => string(),
+%%   <<"ActionRequiredInfo">> => string()
 %% }
--type user_pending_changes() :: #{binary() => any()}.
-
-
-%% Example:
-%% sanitization_warning() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"ElementName">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type sanitization_warning() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_summary() :: #{
-%%   <<"PendingChange">> => list(any()),
-%%   <<"Username">> => string()
-%% }
--type user_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_broker_response() :: #{
-%%   <<"PendingDataReplicationMetadata">> => data_replication_metadata_output(),
-%%   <<"LdapServerMetadata">> => ldap_server_metadata_output(),
-%%   <<"BrokerArn">> => string(),
-%%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"PendingDataReplicationMode">> => list(any()),
-%%   <<"Logs">> => logs_summary(),
-%%   <<"PendingEngineVersion">> => string(),
-%%   <<"PendingAuthenticationStrategy">> => list(any()),
-%%   <<"DataReplicationMode">> => list(any()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"EncryptionOptions">> => encryption_options(),
-%%   <<"DeploymentMode">> => list(any()),
-%%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
-%%   <<"BrokerState">> => list(any()),
-%%   <<"StorageType">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"DataReplicationMetadata">> => data_replication_metadata_output(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Configurations">> => configurations(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"Users">> => list(user_summary()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"PendingSecurityGroups">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"PendingHostInstanceType">> => string(),
-%%   <<"PendingLdapServerMetadata">> => ldap_server_metadata_output(),
-%%   <<"ActionsRequired">> => list(action_required()),
-%%   <<"BrokerId">> => string(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"BrokerName">> => string(),
-%%   <<"EngineType">> => list(any()),
-%%   <<"HostInstanceType">> => string(),
-%%   <<"BrokerInstances">> => list(broker_instance())
-%% }
--type describe_broker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_response() :: #{
-%%   <<"BrokerId">> => string()
-%% }
--type promote_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_shared_resources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SharedResources">> => list(shared_resource())
-%% }
--type describe_shared_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_tags_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type delete_tags_request() :: #{binary() => any()}.
+-type action_required() :: #{binary() => any()}.
 
 
 %% Example:
@@ -172,12 +93,106 @@
 
 
 %% Example:
-%% unauthorized_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_engine_type() :: #{
+%%   <<"EngineType">> => list(any()),
+%%   <<"EngineVersions">> => list(engine_version())
+%% }
+-type broker_engine_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_instance() :: #{
+%%   <<"ConsoleURL">> => string(),
+%%   <<"Endpoints">> => list(string()),
+%%   <<"IpAddress">> => string()
+%% }
+-type broker_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_instance_option() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()),
+%%   <<"EngineType">> => list(any()),
+%%   <<"HostInstanceType">> => string(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"SupportedDeploymentModes">> => list(list(any())()),
+%%   <<"SupportedEngineVersions">> => list(string())
+%% }
+-type broker_instance_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_summary() :: #{
+%%   <<"BrokerArn">> => string(),
+%%   <<"BrokerId">> => string(),
+%%   <<"BrokerName">> => string(),
+%%   <<"BrokerState">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"DeploymentMode">> => list(any()),
+%%   <<"EngineType">> => list(any()),
+%%   <<"HostInstanceType">> => string()
+%% }
+-type broker_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationStrategy">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EngineType">> => list(any()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LatestRevision">> => configuration_revision(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_id() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Revision">> => integer()
+%% }
+-type configuration_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_revision() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Revision">> => integer()
+%% }
+-type configuration_revision() :: #{binary() => any()}.
+
+
+%% Example:
+%% configurations() :: #{
+%%   <<"Current">> => configuration_id(),
+%%   <<"History">> => list(configuration_id()),
+%%   <<"Pending">> => configuration_id()
+%% }
+-type configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"ErrorAttribute">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -199,6 +214,7 @@
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
 %%   <<"PubliclyAccessible">> := boolean(),
 %%   <<"SecurityGroups">> => list(string()),
+%%   <<"StorageSize">> => integer(),
 %%   <<"StorageType">> => list(any()),
 %%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
@@ -208,11 +224,117 @@
 
 
 %% Example:
-%% update_configuration_request() :: #{
-%%   <<"Data">> := string(),
-%%   <<"Description">> => string()
+%% create_broker_response() :: #{
+%%   <<"BrokerArn">> => string(),
+%%   <<"BrokerId">> => string()
 %% }
--type update_configuration_request() :: #{binary() => any()}.
+-type create_broker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_request() :: #{
+%%   <<"AuthenticationStrategy">> => list(any()),
+%%   <<"EngineType">> := list(any()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationStrategy">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LatestRevision">> => configuration_revision(),
+%%   <<"Name">> => string()
+%% }
+-type create_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tags_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type create_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"ConsoleAccess">> => boolean(),
+%%   <<"Groups">> => list(string()),
+%%   <<"Password">> := string(),
+%%   <<"ReplicationUser">> => boolean()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{}
+-type create_user_response() :: #{}.
+
+
+%% Example:
+%% data_replication_counterpart() :: #{
+%%   <<"BrokerId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type data_replication_counterpart() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_metadata_output() :: #{
+%%   <<"DataReplicationCounterpart">> => data_replication_counterpart(),
+%%   <<"DataReplicationRole">> => string()
+%% }
+-type data_replication_metadata_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_broker_request() :: #{}
+-type delete_broker_request() :: #{}.
+
+
+%% Example:
+%% delete_broker_response() :: #{
+%%   <<"BrokerId">> => string()
+%% }
+-type delete_broker_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_request() :: #{}
+-type delete_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_configuration_response() :: #{
+%%   <<"ConfigurationId">> => string()
+%% }
+-type delete_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_tags_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type delete_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{}
+-type delete_user_request() :: #{}.
+
+%% Example:
+%% delete_user_response() :: #{}
+-type delete_user_response() :: #{}.
+
+
+%% Example:
+%% describe_broker_engine_types_request() :: #{
+%%   <<"EngineType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_broker_engine_types_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -225,15 +347,142 @@
 
 
 %% Example:
-%% create_broker_response() :: #{
-%%   <<"BrokerArn">> => string(),
-%%   <<"BrokerId">> => string()
+%% describe_broker_instance_options_request() :: #{
+%%   <<"EngineType">> => string(),
+%%   <<"HostInstanceType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StorageType">> => string()
 %% }
--type create_broker_response() :: #{binary() => any()}.
+-type describe_broker_instance_options_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% update_user_response() :: #{}
--type update_user_response() :: #{}.
+%% describe_broker_instance_options_response() :: #{
+%%   <<"BrokerInstanceOptions">> => list(broker_instance_option()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_broker_instance_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_broker_request() :: #{}
+-type describe_broker_request() :: #{}.
+
+
+%% Example:
+%% describe_broker_response() :: #{
+%%   <<"ActionsRequired">> => list(action_required()),
+%%   <<"AuthenticationStrategy">> => list(any()),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"BrokerArn">> => string(),
+%%   <<"BrokerId">> => string(),
+%%   <<"BrokerInstances">> => list(broker_instance()),
+%%   <<"BrokerName">> => string(),
+%%   <<"BrokerState">> => list(any()),
+%%   <<"Configurations">> => configurations(),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"DataReplicationMetadata">> => data_replication_metadata_output(),
+%%   <<"DataReplicationMode">> => list(any()),
+%%   <<"DeploymentMode">> => list(any()),
+%%   <<"EncryptionOptions">> => encryption_options(),
+%%   <<"EngineType">> => list(any()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"HostInstanceType">> => string(),
+%%   <<"LdapServerMetadata">> => ldap_server_metadata_output(),
+%%   <<"Logs">> => logs_summary(),
+%%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
+%%   <<"PendingAuthenticationStrategy">> => list(any()),
+%%   <<"PendingDataReplicationMetadata">> => data_replication_metadata_output(),
+%%   <<"PendingDataReplicationMode">> => list(any()),
+%%   <<"PendingEngineVersion">> => string(),
+%%   <<"PendingHostInstanceType">> => string(),
+%%   <<"PendingLdapServerMetadata">> => ldap_server_metadata_output(),
+%%   <<"PendingSecurityGroups">> => list(string()),
+%%   <<"PendingStorageSize">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"StorageSize">> => integer(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"Users">> => list(user_summary())
+%% }
+-type describe_broker_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_request() :: #{}
+-type describe_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationStrategy">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EngineType">> => list(any()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LatestRevision">> => configuration_revision(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_revision_request() :: #{}
+-type describe_configuration_revision_request() :: #{}.
+
+
+%% Example:
+%% describe_configuration_revision_response() :: #{
+%%   <<"ConfigurationId">> => string(),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Data">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type describe_configuration_revision_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_shared_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_shared_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_shared_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SharedResources">> => list(shared_resource())
+%% }
+-type describe_shared_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{}
+-type describe_user_request() :: #{}.
+
+
+%% Example:
+%% describe_user_response() :: #{
+%%   <<"BrokerId">> => string(),
+%%   <<"ConsoleAccess">> => boolean(),
+%%   <<"Groups">> => list(string()),
+%%   <<"Pending">> => user_pending_changes(),
+%%   <<"ReplicationUser">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type describe_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_options() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"UseAwsOwnedKey">> => boolean()
+%% }
+-type encryption_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -253,232 +502,12 @@
 
 
 %% Example:
-%% list_configurations_response() :: #{
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_broker_response() :: #{}
--type reboot_broker_response() :: #{}.
-
-
-%% Example:
-%% data_replication_metadata_output() :: #{
-%%   <<"DataReplicationCounterpart">> => data_replication_counterpart(),
-%%   <<"DataReplicationRole">> => string()
-%% }
--type data_replication_metadata_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_broker_response() :: #{
-%%   <<"BrokerId">> => string()
-%% }
--type delete_broker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EngineType">> => list(any()),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LatestRevision">> => configuration_revision(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs() :: #{
-%%   <<"Audit">> => boolean(),
-%%   <<"General">> => boolean()
-%% }
--type logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_options() :: #{
-%%   <<"KmsKeyId">> => string(),
-%%   <<"UseAwsOwnedKey">> => boolean()
-%% }
--type encryption_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_configuration_response() :: #{
-%%   <<"ConfigurationId">> => string()
-%% }
--type delete_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% shared_resource_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type shared_resource_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_tags_request() :: #{
-%%   <<"Tags">> => map()
-%% }
--type create_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% pending_logs() :: #{
-%%   <<"Audit">> => boolean(),
-%%   <<"General">> => boolean()
-%% }
--type pending_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_brokers_response() :: #{
-%%   <<"BrokerSummaries">> => list(broker_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_brokers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
+%% internal_server_error_exception() :: #{
 %%   <<"ErrorAttribute">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"ResourceShareErrors">> => list(resource_share_error())
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_request() :: #{}
--type delete_configuration_request() :: #{}.
-
-
-%% Example:
-%% describe_broker_engine_types_request() :: #{
-%%   <<"EngineType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_broker_engine_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_share_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ResourceShareArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type resource_share_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% promote_request() :: #{
-%%   <<"Mode">> := list(any())
-%% }
--type promote_request() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_broker_request() :: #{}
--type reboot_broker_request() :: #{}.
-
-%% Example:
-%% describe_configuration_revision_request() :: #{}
--type describe_configuration_revision_request() :: #{}.
-
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"BrokerId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_summary())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceShareErrors">> => list(resource_share_error())
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% broker_summary() :: #{
-%%   <<"BrokerArn">> => string(),
-%%   <<"BrokerId">> => string(),
-%%   <<"BrokerName">> => string(),
-%%   <<"BrokerState">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"DeploymentMode">> => list(any()),
-%%   <<"EngineType">> => list(any()),
-%%   <<"HostInstanceType">> => string()
-%% }
--type broker_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_request() :: #{
-%%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"EngineType">> := list(any()),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_revisions_response() :: #{
-%%   <<"ConfigurationId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(configuration_revision())
-%% }
--type list_configuration_revisions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{}
--type delete_user_request() :: #{}.
-
-
-%% Example:
-%% create_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LatestRevision">> => configuration_revision(),
-%%   <<"Name">> => string()
-%% }
--type create_configuration_response() :: #{binary() => any()}.
+-type internal_server_error_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -496,67 +525,6 @@
 %%   <<"UserSearchSubtree">> => boolean()
 %% }
 -type ldap_server_metadata_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_broker_request() :: #{}
--type delete_broker_request() :: #{}.
-
-%% Example:
-%% delete_user_response() :: #{}
--type delete_user_response() :: #{}.
-
-
-%% Example:
-%% describe_broker_instance_options_request() :: #{
-%%   <<"EngineType">> => string(),
-%%   <<"HostInstanceType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StorageType">> => string()
-%% }
--type describe_broker_instance_options_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LatestRevision">> => configuration_revision(),
-%%   <<"Name">> => string(),
-%%   <<"Warnings">> => list(sanitization_warning())
-%% }
--type update_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% broker_engine_type() :: #{
-%%   <<"EngineType">> => list(any()),
-%%   <<"EngineVersions">> => list(engine_version())
-%% }
--type broker_engine_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_configuration_revision_response() :: #{
-%%   <<"ConfigurationId">> => string(),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Data">> => string(),
-%%   <<"Description">> => string()
-%% }
--type describe_configuration_revision_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_user_response() :: #{
-%%   <<"BrokerId">> => string(),
-%%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()),
-%%   <<"Pending">> => user_pending_changes(),
-%%   <<"ReplicationUser">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type describe_user_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -576,12 +544,159 @@
 
 
 %% Example:
-%% broker_instance() :: #{
-%%   <<"ConsoleURL">> => string(),
-%%   <<"Endpoints">> => list(string()),
-%%   <<"IpAddress">> => string()
+%% list_brokers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type broker_instance() :: #{binary() => any()}.
+-type list_brokers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_brokers_response() :: #{
+%%   <<"BrokerSummaries">> => list(broker_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_brokers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_revisions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_revisions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_revisions_response() :: #{
+%%   <<"ConfigurationId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Revisions">> => list(configuration_revision())
+%% }
+-type list_configuration_revisions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_response() :: #{
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{}
+-type list_tags_request() :: #{}.
+
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"BrokerId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user_summary())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs() :: #{
+%%   <<"Audit">> => boolean(),
+%%   <<"General">> => boolean()
+%% }
+-type logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_summary() :: #{
+%%   <<"Audit">> => boolean(),
+%%   <<"AuditLogGroup">> => string(),
+%%   <<"General">> => boolean(),
+%%   <<"GeneralLogGroup">> => string(),
+%%   <<"Pending">> => pending_logs()
+%% }
+-type logs_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"ErrorAttribute">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_logs() :: #{
+%%   <<"Audit">> => boolean(),
+%%   <<"General">> => boolean()
+%% }
+-type pending_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_request() :: #{
+%%   <<"Mode">> := list(any())
+%% }
+-type promote_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% promote_response() :: #{
+%%   <<"BrokerId">> => string()
+%% }
+-type promote_response() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_broker_request() :: #{}
+-type reboot_broker_request() :: #{}.
+
+%% Example:
+%% reboot_broker_response() :: #{}
+-type reboot_broker_response() :: #{}.
+
+
+%% Example:
+%% resource_share_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ResourceShareArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type resource_share_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% sanitization_warning() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"ElementName">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type sanitization_warning() :: #{binary() => any()}.
 
 
 %% Example:
@@ -597,126 +712,38 @@
 
 
 %% Example:
-%% describe_configuration_response() :: #{
-%%   <<"Arn">> => string(),
+%% shared_resource_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type shared_resource_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"ErrorAttribute">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceShareErrors">> => list(resource_share_error())
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_request() :: #{
 %%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EngineType">> => list(any()),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"Configuration">> => configuration_id(),
+%%   <<"DataReplicationMode">> => list(any()),
 %%   <<"EngineVersion">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LatestRevision">> => configuration_revision(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type describe_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% weekly_start_time() :: #{
-%%   <<"DayOfWeek">> => list(any()),
-%%   <<"TimeOfDay">> => string(),
-%%   <<"TimeZone">> => string()
-%% }
--type weekly_start_time() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_request() :: #{}
--type describe_user_request() :: #{}.
-
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()),
-%%   <<"Password">> => string(),
-%%   <<"ReplicationUser">> => boolean()
-%% }
--type update_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_shared_resources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_shared_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceShareErrors">> => list(resource_share_error())
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% user() :: #{
-%%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()),
-%%   <<"Password">> => string(),
-%%   <<"ReplicationUser">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_summary() :: #{
-%%   <<"Audit">> => boolean(),
-%%   <<"AuditLogGroup">> => string(),
-%%   <<"General">> => boolean(),
-%%   <<"GeneralLogGroup">> => string(),
-%%   <<"Pending">> => pending_logs()
-%% }
--type logs_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_broker_request() :: #{}
--type describe_broker_request() :: #{}.
-
-
-%% Example:
-%% broker_instance_option() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()),
-%%   <<"EngineType">> => list(any()),
 %%   <<"HostInstanceType">> => string(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"SupportedDeploymentModes">> => list(list(any())()),
-%%   <<"SupportedEngineVersions">> => list(string())
+%%   <<"LdapServerMetadata">> => ldap_server_metadata_input(),
+%%   <<"Logs">> => logs(),
+%%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
+%%   <<"ResourceShareArns">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"StorageSize">> => integer()
 %% }
--type broker_instance_option() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_request() :: #{}
--type describe_configuration_request() :: #{}.
-
-
-%% Example:
-%% configuration_id() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Revision">> => integer()
-%% }
--type configuration_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"ErrorAttribute">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceShareErrors">> => list(resource_share_error())
-%% }
--type bad_request_exception() :: #{binary() => any()}.
+-type update_broker_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -735,255 +762,233 @@
 %%   <<"PendingDataReplicationMetadata">> => data_replication_metadata_output(),
 %%   <<"PendingDataReplicationMode">> => list(any()),
 %%   <<"ResourceShareArns">> => list(string()),
-%%   <<"SecurityGroups">> => list(string())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"StorageSize">> => integer()
 %% }
 -type update_broker_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_replication_counterpart() :: #{
-%%   <<"BrokerId">> => string(),
-%%   <<"Region">> => string()
+%% update_configuration_request() :: #{
+%%   <<"Data">> := string(),
+%%   <<"Description">> => string()
 %% }
--type data_replication_counterpart() :: #{binary() => any()}.
+-type update_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% configurations() :: #{
-%%   <<"Current">> => configuration_id(),
-%%   <<"History">> => list(configuration_id()),
-%%   <<"Pending">> => configuration_id()
-%% }
--type configurations() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_revision() :: #{
+%% update_configuration_response() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Created">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Revision">> => integer()
+%%   <<"Id">> => string(),
+%%   <<"LatestRevision">> => configuration_revision(),
+%%   <<"Name">> => string(),
+%%   <<"Warnings">> => list(sanitization_warning())
 %% }
--type configuration_revision() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_request() :: #{}
--type list_tags_request() :: #{}.
+-type update_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_broker_instance_options_response() :: #{
-%%   <<"BrokerInstanceOptions">> => list(broker_instance_option()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_broker_instance_options_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_request() :: #{
-%%   <<"AuthenticationStrategy">> => list(any()),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"Configuration">> => configuration_id(),
-%%   <<"DataReplicationMode">> => list(any()),
-%%   <<"EngineVersion">> => string(),
-%%   <<"HostInstanceType">> => string(),
-%%   <<"LdapServerMetadata">> => ldap_server_metadata_input(),
-%%   <<"Logs">> => logs(),
-%%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
-%%   <<"ResourceShareArns">> => list(string()),
-%%   <<"SecurityGroups">> => list(string())
-%% }
--type update_broker_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{}
--type create_user_response() :: #{}.
-
-
-%% Example:
-%% action_required() :: #{
-%%   <<"ActionRequiredCode">> => string(),
-%%   <<"ActionRequiredInfo">> => string()
-%% }
--type action_required() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_revisions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_revisions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_brokers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_brokers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_request() :: #{
+%% update_user_request() :: #{
 %%   <<"ConsoleAccess">> => boolean(),
 %%   <<"Groups">> => list(string()),
-%%   <<"Password">> := string(),
+%%   <<"Password">> => string(),
 %%   <<"ReplicationUser">> => boolean()
 %% }
--type create_user_request() :: #{binary() => any()}.
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_response() :: #{}
+-type update_user_response() :: #{}.
+
+
+%% Example:
+%% user() :: #{
+%%   <<"ConsoleAccess">> => boolean(),
+%%   <<"Groups">> => list(string()),
+%%   <<"Password">> => string(),
+%%   <<"ReplicationUser">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_pending_changes() :: #{
+%%   <<"ConsoleAccess">> => boolean(),
+%%   <<"Groups">> => list(string()),
+%%   <<"PendingChange">> => list(any())
+%% }
+-type user_pending_changes() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_summary() :: #{
+%%   <<"PendingChange">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% weekly_start_time() :: #{
+%%   <<"DayOfWeek">> => list(any()),
+%%   <<"TimeOfDay">> => string(),
+%%   <<"TimeZone">> => string()
+%% }
+-type weekly_start_time() :: #{binary() => any()}.
 
 -type create_broker_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
-    conflict_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_configuration_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type create_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_user_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_broker_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type delete_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_user_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_broker_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_broker_engine_types_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_broker_instance_options_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_configuration_revision_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_shared_resources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_user_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_brokers_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_configuration_revisions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_configurations_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_users_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type promote_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type reboot_broker_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_broker_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 -type update_user_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
-    forbidden_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

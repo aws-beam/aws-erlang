@@ -86,452 +86,6 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% delete_ingestion_response() :: #{}
--type delete_ingestion_response() :: #{}.
-
-%% Example:
-%% stop_ingestion_response() :: #{}
--type stop_ingestion_response() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_bundle() :: #{
-%%   <<"arn">> => string(),
-%%   <<"customerManagedKeyArn">> => string()
-%% }
--type app_bundle() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ingestions_response() :: #{
-%%   <<"ingestions">> => list(ingestion_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_ingestions_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_ingestions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_ingestions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_access_task_item() :: #{
-%%   <<"app">> => string(),
-%%   <<"error">> => task_error(),
-%%   <<"taskId">> => string(),
-%%   <<"tenantId">> => string()
-%% }
--type user_access_task_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ingestion_request() :: #{
-%%   <<"app">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"ingestionType">> := list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"tenantId">> := string()
-%% }
--type create_ingestion_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_ingestion_request() :: #{}
--type stop_ingestion_request() :: #{}.
-
-
-%% Example:
-%% ingestion_destination_summary() :: #{
-%%   <<"arn">> => string()
-%% }
--type ingestion_destination_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_bundle_summary() :: #{
-%%   <<"arn">> => string()
-%% }
--type app_bundle_summary() :: #{binary() => any()}.
-
-%% Example:
-%% start_ingestion_request() :: #{}
--type start_ingestion_request() :: #{}.
-
-
-%% Example:
-%% create_ingestion_destination_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"destinationConfiguration">> := list(),
-%%   <<"processingConfiguration">> := list(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_ingestion_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_ingestion_response() :: #{}
--type start_ingestion_response() :: #{}.
-
-
-%% Example:
-%% create_ingestion_response() :: #{
-%%   <<"ingestion">> => ingestion()
-%% }
--type create_ingestion_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ingestion_response() :: #{
-%%   <<"ingestion">> => ingestion()
-%% }
--type get_ingestion_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ingestion_destinations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_ingestion_destinations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_app_authorization_response() :: #{
-%%   <<"appAuthorization">> => app_authorization()
-%% }
--type get_app_authorization_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose_stream() :: #{
-%%   <<"streamName">> => string()
-%% }
--type firehose_stream() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_bundle_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"customerManagedKeyIdentifier">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_app_bundle_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_authorization_summary() :: #{
-%%   <<"app">> => string(),
-%%   <<"appAuthorizationArn">> => string(),
-%%   <<"appBundleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tenant">> => tenant(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type app_authorization_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_bundle_request() :: #{}
--type delete_app_bundle_request() :: #{}.
-
-
-%% Example:
-%% connect_app_authorization_request() :: #{
-%%   <<"authRequest">> => auth_request()
-%% }
--type connect_app_authorization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tenant() :: #{
-%%   <<"tenantDisplayName">> => string(),
-%%   <<"tenantIdentifier">> => string()
-%% }
--type tenant() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_access_result_item() :: #{
-%%   <<"app">> => string(),
-%%   <<"email">> => string(),
-%%   <<"resultStatus">> => list(any()),
-%%   <<"taskError">> => task_error(),
-%%   <<"taskId">> => string(),
-%%   <<"tenantDisplayName">> => string(),
-%%   <<"tenantId">> => string(),
-%%   <<"userFirstName">> => string(),
-%%   <<"userFullName">> => string(),
-%%   <<"userId">> => string(),
-%%   <<"userLastName">> => string(),
-%%   <<"userStatus">> => [string()]
-%% }
--type user_access_result_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ingestion_destination_request() :: #{}
--type delete_ingestion_destination_request() :: #{}.
-
-%% Example:
-%% delete_app_bundle_response() :: #{}
--type delete_app_bundle_response() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion_destination() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destinationConfiguration">> => list(),
-%%   <<"ingestionArn">> => string(),
-%%   <<"processingConfiguration">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type ingestion_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_bundles_response() :: #{
-%%   <<"appBundleSummaryList">> => list(app_bundle_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_bundles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion() :: #{
-%%   <<"app">> => string(),
-%%   <<"appBundleArn">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"ingestionType">> => list(any()),
-%%   <<"state">> => list(any()),
-%%   <<"tenantId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type ingestion() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type s3_bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_user_access_tasks_request() :: #{
-%%   <<"appBundleIdentifier">> := string(),
-%%   <<"email">> := string()
-%% }
--type start_user_access_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_user_access_tasks_request() :: #{
-%%   <<"appBundleIdentifier">> := string(),
-%%   <<"taskIdList">> := list(string())
-%% }
--type batch_get_user_access_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_authorization_request() :: #{
-%%   <<"app">> := string(),
-%%   <<"authType">> := list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"credential">> := list(),
-%%   <<"tags">> => list(tag()),
-%%   <<"tenant">> := tenant()
-%% }
--type create_app_authorization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingestion_summary() :: #{
-%%   <<"app">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tenantId">> => string()
-%% }
--type ingestion_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ingestion_destinations_response() :: #{
-%%   <<"ingestionDestinations">> => list(ingestion_destination_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_ingestion_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_authorization_request() :: #{
-%%   <<"credential">> => list(),
-%%   <<"tenant">> => tenant()
-%% }
--type update_app_authorization_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ingestion_destination_response() :: #{}
--type delete_ingestion_destination_response() :: #{}.
-
-%% Example:
-%% delete_app_authorization_request() :: #{}
--type delete_app_authorization_request() :: #{}.
-
-
-%% Example:
-%% audit_log_destination_configuration() :: #{
-%%   <<"destination">> => list()
-%% }
--type audit_log_destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_app_bundle_request() :: #{}
--type get_app_bundle_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_bundles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_bundles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_user_access_tasks_response() :: #{
-%%   <<"userAccessResultsList">> => list(user_access_result_item())
-%% }
--type batch_get_user_access_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ingestion_destination_response() :: #{
-%%   <<"ingestionDestination">> => ingestion_destination()
-%% }
--type get_ingestion_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_app_authorization_request() :: #{}
--type get_app_authorization_request() :: #{}.
-
-
-%% Example:
-%% auth_request() :: #{
-%%   <<"code">> => string(),
-%%   <<"redirectUri">> => string()
-%% }
--type auth_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ingestion_destination_response() :: #{
-%%   <<"ingestionDestination">> => ingestion_destination()
-%% }
--type create_ingestion_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_log_processing_configuration() :: #{
-%%   <<"format">> => list(any()),
-%%   <<"schema">> => list(any())
-%% }
--type audit_log_processing_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_ingestion_request() :: #{}
--type get_ingestion_request() :: #{}.
-
-
-%% Example:
-%% update_app_authorization_response() :: #{
-%%   <<"appAuthorization">> => app_authorization()
-%% }
--type update_app_authorization_response() :: #{binary() => any()}.
-
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -541,78 +95,10 @@
 
 
 %% Example:
-%% list_app_authorizations_response() :: #{
-%%   <<"appAuthorizationSummaryList">> => list(app_authorization_summary()),
-%%   <<"nextToken">> => string()
+%% api_key_credential() :: #{
+%%   <<"apiKey">> => string()
 %% }
--type list_app_authorizations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_user_access_tasks_response() :: #{
-%%   <<"userAccessTasksList">> => list(user_access_task_item())
-%% }
--type start_user_access_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% create_app_bundle_response() :: #{
-%%   <<"appBundle">> => app_bundle()
-%% }
--type create_app_bundle_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ingestion_request() :: #{}
--type delete_ingestion_request() :: #{}.
-
-
-%% Example:
-%% get_app_bundle_response() :: #{
-%%   <<"appBundle">> => app_bundle()
-%% }
--type get_app_bundle_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_authorizations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_authorizations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_app_authorization_response() :: #{
-%%   <<"appAuthorizationSummary">> => app_authorization_summary()
-%% }
--type connect_app_authorization_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
+-type api_key_credential() :: #{binary() => any()}.
 
 
 %% Example:
@@ -632,18 +118,372 @@
 
 
 %% Example:
-%% task_error() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()]
+%% app_authorization_summary() :: #{
+%%   <<"app">> => string(),
+%%   <<"appAuthorizationArn">> => string(),
+%%   <<"appBundleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tenant">> => tenant(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type task_error() :: #{binary() => any()}.
+-type app_authorization_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_ingestion_destination_request() :: #{
-%%   <<"destinationConfiguration">> := list()
+%% app_bundle() :: #{
+%%   <<"arn">> => string(),
+%%   <<"customerManagedKeyArn">> => string()
 %% }
--type update_ingestion_destination_request() :: #{binary() => any()}.
+-type app_bundle() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_bundle_summary() :: #{
+%%   <<"arn">> => string()
+%% }
+-type app_bundle_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_log_destination_configuration() :: #{
+%%   <<"destination">> => list()
+%% }
+-type audit_log_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% audit_log_processing_configuration() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"schema">> => list(any())
+%% }
+-type audit_log_processing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_request() :: #{
+%%   <<"code">> => string(),
+%%   <<"redirectUri">> => string()
+%% }
+-type auth_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_user_access_tasks_request() :: #{
+%%   <<"appBundleIdentifier">> := string(),
+%%   <<"taskIdList">> := list(string())
+%% }
+-type batch_get_user_access_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_user_access_tasks_response() :: #{
+%%   <<"userAccessResultsList">> => list(user_access_result_item())
+%% }
+-type batch_get_user_access_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_app_authorization_request() :: #{
+%%   <<"authRequest">> => auth_request()
+%% }
+-type connect_app_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_app_authorization_response() :: #{
+%%   <<"appAuthorizationSummary">> => app_authorization_summary()
+%% }
+-type connect_app_authorization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_authorization_request() :: #{
+%%   <<"app">> := string(),
+%%   <<"authType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"credential">> := list(),
+%%   <<"tags">> => list(tag()),
+%%   <<"tenant">> := tenant()
+%% }
+-type create_app_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_authorization_response() :: #{
+%%   <<"appAuthorization">> => app_authorization()
+%% }
+-type create_app_authorization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_bundle_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKeyIdentifier">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_app_bundle_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_bundle_response() :: #{
+%%   <<"appBundle">> => app_bundle()
+%% }
+-type create_app_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingestion_destination_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinationConfiguration">> := list(),
+%%   <<"processingConfiguration">> := list(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_ingestion_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingestion_destination_response() :: #{
+%%   <<"ingestionDestination">> => ingestion_destination()
+%% }
+-type create_ingestion_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingestion_request() :: #{
+%%   <<"app">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"ingestionType">> := list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"tenantId">> := string()
+%% }
+-type create_ingestion_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingestion_response() :: #{
+%%   <<"ingestion">> => ingestion()
+%% }
+-type create_ingestion_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_authorization_request() :: #{}
+-type delete_app_authorization_request() :: #{}.
+
+%% Example:
+%% delete_app_authorization_response() :: #{}
+-type delete_app_authorization_response() :: #{}.
+
+%% Example:
+%% delete_app_bundle_request() :: #{}
+-type delete_app_bundle_request() :: #{}.
+
+%% Example:
+%% delete_app_bundle_response() :: #{}
+-type delete_app_bundle_response() :: #{}.
+
+%% Example:
+%% delete_ingestion_destination_request() :: #{}
+-type delete_ingestion_destination_request() :: #{}.
+
+%% Example:
+%% delete_ingestion_destination_response() :: #{}
+-type delete_ingestion_destination_response() :: #{}.
+
+%% Example:
+%% delete_ingestion_request() :: #{}
+-type delete_ingestion_request() :: #{}.
+
+%% Example:
+%% delete_ingestion_response() :: #{}
+-type delete_ingestion_response() :: #{}.
+
+
+%% Example:
+%% firehose_stream() :: #{
+%%   <<"streamName">> => string()
+%% }
+-type firehose_stream() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_authorization_request() :: #{}
+-type get_app_authorization_request() :: #{}.
+
+
+%% Example:
+%% get_app_authorization_response() :: #{
+%%   <<"appAuthorization">> => app_authorization()
+%% }
+-type get_app_authorization_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_bundle_request() :: #{}
+-type get_app_bundle_request() :: #{}.
+
+
+%% Example:
+%% get_app_bundle_response() :: #{
+%%   <<"appBundle">> => app_bundle()
+%% }
+-type get_app_bundle_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_destination_request() :: #{}
+-type get_ingestion_destination_request() :: #{}.
+
+
+%% Example:
+%% get_ingestion_destination_response() :: #{
+%%   <<"ingestionDestination">> => ingestion_destination()
+%% }
+-type get_ingestion_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_request() :: #{}
+-type get_ingestion_request() :: #{}.
+
+
+%% Example:
+%% get_ingestion_response() :: #{
+%%   <<"ingestion">> => ingestion()
+%% }
+-type get_ingestion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion() :: #{
+%%   <<"app">> => string(),
+%%   <<"appBundleArn">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"ingestionType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"tenantId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ingestion() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_destination() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"ingestionArn">> => string(),
+%%   <<"processingConfiguration">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ingestion_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_destination_summary() :: #{
+%%   <<"arn">> => string()
+%% }
+-type ingestion_destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingestion_summary() :: #{
+%%   <<"app">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tenantId">> => string()
+%% }
+-type ingestion_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_authorizations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_authorizations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_authorizations_response() :: #{
+%%   <<"appAuthorizationSummaryList">> => list(app_authorization_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_authorizations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_bundles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_bundles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_bundles_response() :: #{
+%%   <<"appBundleSummaryList">> => list(app_bundle_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_bundles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestion_destinations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestion_destinations_response() :: #{
+%%   <<"ingestionDestinations">> => list(ingestion_destination_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingestions_response() :: #{
+%%   <<"ingestions">> => list(ingestion_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -655,25 +495,140 @@
 
 
 %% Example:
-%% api_key_credential() :: #{
-%%   <<"apiKey">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type api_key_credential() :: #{binary() => any()}.
-
-%% Example:
-%% get_ingestion_destination_request() :: #{}
--type get_ingestion_destination_request() :: #{}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_app_authorization_response() :: #{
+%% s3_bucket() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_ingestion_request() :: #{}
+-type start_ingestion_request() :: #{}.
+
+%% Example:
+%% start_ingestion_response() :: #{}
+-type start_ingestion_response() :: #{}.
+
+
+%% Example:
+%% start_user_access_tasks_request() :: #{
+%%   <<"appBundleIdentifier">> := string(),
+%%   <<"email">> := string()
+%% }
+-type start_user_access_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_user_access_tasks_response() :: #{
+%%   <<"userAccessTasksList">> => list(user_access_task_item())
+%% }
+-type start_user_access_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_ingestion_request() :: #{}
+-type stop_ingestion_request() :: #{}.
+
+%% Example:
+%% stop_ingestion_response() :: #{}
+-type stop_ingestion_response() :: #{}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% task_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type task_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% tenant() :: #{
+%%   <<"tenantDisplayName">> => string(),
+%%   <<"tenantIdentifier">> => string()
+%% }
+-type tenant() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_app_authorization_request() :: #{
+%%   <<"credential">> => list(),
+%%   <<"tenant">> => tenant()
+%% }
+-type update_app_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_authorization_response() :: #{
 %%   <<"appAuthorization">> => app_authorization()
 %% }
--type create_app_authorization_response() :: #{binary() => any()}.
+-type update_app_authorization_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_app_authorization_response() :: #{}
--type delete_app_authorization_response() :: #{}.
+%% update_ingestion_destination_request() :: #{
+%%   <<"destinationConfiguration">> := list()
+%% }
+-type update_ingestion_destination_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -682,195 +637,240 @@
 %% }
 -type update_ingestion_destination_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% user_access_result_item() :: #{
+%%   <<"app">> => string(),
+%%   <<"email">> => string(),
+%%   <<"resultStatus">> => list(any()),
+%%   <<"taskError">> => task_error(),
+%%   <<"taskId">> => string(),
+%%   <<"tenantDisplayName">> => string(),
+%%   <<"tenantId">> => string(),
+%%   <<"userFirstName">> => string(),
+%%   <<"userFullName">> => string(),
+%%   <<"userId">> => string(),
+%%   <<"userLastName">> => string(),
+%%   <<"userStatus">> => [string()]
+%% }
+-type user_access_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_access_task_item() :: #{
+%%   <<"app">> => string(),
+%%   <<"error">> => task_error(),
+%%   <<"taskId">> => string(),
+%%   <<"tenantId">> => string()
+%% }
+-type user_access_task_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 -type batch_get_user_access_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type connect_app_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_app_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_app_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ingestion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ingestion_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_app_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_ingestion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_ingestion_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_app_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_app_bundle_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ingestion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ingestion_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_authorizations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_bundles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_ingestion_destinations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_ingestions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_ingestion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_user_access_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type stop_ingestion_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_app_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_ingestion_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

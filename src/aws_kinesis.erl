@@ -91,17 +91,36 @@
 
 
 %% Example:
-%% kms_disabled_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_disabled_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_shards_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Shards">> => list(shard())
+%% add_tags_to_stream_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"Tags">> := map()
 %% }
--type list_shards_output() :: #{binary() => any()}.
+-type add_tags_to_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% child_shard() :: #{
+%%   <<"HashKeyRange">> => hash_key_range(),
+%%   <<"ParentShards">> => list(string()),
+%%   <<"ShardId">> => string()
+%% }
+-type child_shard() :: #{binary() => any()}.
+
+%% Example:
+%% consumer() :: #{
+%%   <<"ConsumerARN">> => string(),
+%%   <<"ConsumerCreationTimestamp">> => non_neg_integer(),
+%%   <<"ConsumerName">> => string(),
+%%   <<"ConsumerStatus">> => list(any())
+%% }
+-type consumer() :: #{binary() => any()}.
 
 %% Example:
 %% consumer_description() :: #{
@@ -114,6 +133,69 @@
 -type consumer_description() :: #{binary() => any()}.
 
 %% Example:
+%% create_stream_input() :: #{
+%%   <<"MaxRecordSizeInKiB">> => integer(),
+%%   <<"ShardCount">> => integer(),
+%%   <<"StreamModeDetails">> => stream_mode_details(),
+%%   <<"StreamName">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"WarmThroughputMiBps">> => integer()
+%% }
+-type create_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% decrease_stream_retention_period_input() :: #{
+%%   <<"RetentionPeriodHours">> := integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type decrease_stream_retention_period_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stream_input() :: #{
+%%   <<"EnforceConsumerDeletion">> => boolean(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type delete_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_stream_consumer_input() :: #{
+%%   <<"ConsumerARN">> => string(),
+%%   <<"ConsumerName">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type deregister_stream_consumer_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_input() :: #{
+
+%% }
+-type describe_account_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_output() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
+%% }
+-type describe_account_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_limits_input() :: #{
+
+%% }
+-type describe_limits_input() :: #{binary() => any()}.
+
+%% Example:
 %% describe_limits_output() :: #{
 %%   <<"OnDemandStreamCount">> => integer(),
 %%   <<"OnDemandStreamCountLimit">> => integer(),
@@ -123,10 +205,58 @@
 -type describe_limits_output() :: #{binary() => any()}.
 
 %% Example:
-%% internal_failure_exception() :: #{
-%%   <<"message">> => string()
+%% describe_stream_consumer_input() :: #{
+%%   <<"ConsumerARN">> => string(),
+%%   <<"ConsumerName">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
+-type describe_stream_consumer_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_consumer_output() :: #{
+%%   <<"ConsumerDescription">> => consumer_description()
+%% }
+-type describe_stream_consumer_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_input() :: #{
+%%   <<"ExclusiveStartShardId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type describe_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_output() :: #{
+%%   <<"StreamDescription">> => stream_description()
+%% }
+-type describe_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_summary_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type describe_stream_summary_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stream_summary_output() :: #{
+%%   <<"StreamDescriptionSummary">> => stream_description_summary()
+%% }
+-type describe_stream_summary_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_enhanced_monitoring_input() :: #{
+%%   <<"ShardLevelMetrics">> := list(list(any())()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type disable_enhanced_monitoring_input() :: #{binary() => any()}.
 
 %% Example:
 %% enable_enhanced_monitoring_input() :: #{
@@ -136,6 +266,162 @@
 %%   <<"StreamName">> => string()
 %% }
 -type enable_enhanced_monitoring_input() :: #{binary() => any()}.
+
+%% Example:
+%% enhanced_metrics() :: #{
+%%   <<"ShardLevelMetrics">> => list(list(any())())
+%% }
+-type enhanced_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% enhanced_monitoring_output() :: #{
+%%   <<"CurrentShardLevelMetrics">> => list(list(any())()),
+%%   <<"DesiredShardLevelMetrics">> => list(list(any())()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type enhanced_monitoring_output() :: #{binary() => any()}.
+
+%% Example:
+%% expired_iterator_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_iterator_exception() :: #{binary() => any()}.
+
+%% Example:
+%% expired_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_records_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"ShardIterator">> := string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type get_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_records_output() :: #{
+%%   <<"ChildShards">> => list(child_shard()),
+%%   <<"MillisBehindLatest">> => float(),
+%%   <<"NextShardIterator">> => string(),
+%%   <<"Records">> => list(record())
+%% }
+-type get_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_shard_iterator_input() :: #{
+%%   <<"ShardId">> := string(),
+%%   <<"ShardIteratorType">> := list(any()),
+%%   <<"StartingSequenceNumber">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type get_shard_iterator_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_shard_iterator_output() :: #{
+%%   <<"ShardIterator">> => string()
+%% }
+-type get_shard_iterator_output() :: #{binary() => any()}.
+
+%% Example:
+%% hash_key_range() :: #{
+%%   <<"EndingHashKey">> => string(),
+%%   <<"StartingHashKey">> => string()
+%% }
+-type hash_key_range() :: #{binary() => any()}.
+
+%% Example:
+%% increase_stream_retention_period_input() :: #{
+%%   <<"RetentionPeriodHours">> := integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type increase_stream_retention_period_input() :: #{binary() => any()}.
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_record() :: #{
+%%   <<"ApproximateArrivalTimestamp">> => non_neg_integer(),
+%%   <<"Data">> => binary(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"PartitionKey">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type kinesis_record() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kms_opt_in_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_opt_in_required() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_shards_input() :: #{
@@ -151,10 +437,11 @@
 -type list_shards_input() :: #{binary() => any()}.
 
 %% Example:
-%% kms_opt_in_required() :: #{
-%%   <<"message">> => string()
+%% list_shards_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Shards">> => list(shard())
 %% }
--type kms_opt_in_required() :: #{binary() => any()}.
+-type list_shards_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_stream_consumers_input() :: #{
@@ -167,10 +454,232 @@
 -type list_stream_consumers_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_output() :: #{
-%%   <<"Policy">> => string()
+%% list_stream_consumers_output() :: #{
+%%   <<"Consumers">> => list(consumer()),
+%%   <<"NextToken">> => string()
 %% }
--type get_resource_policy_output() :: #{binary() => any()}.
+-type list_stream_consumers_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_input() :: #{
+%%   <<"ExclusiveStartStreamName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_streams_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_output() :: #{
+%%   <<"HasMoreStreams">> => boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamNames">> => list(string()),
+%%   <<"StreamSummaries">> => list(stream_summary())
+%% }
+-type list_streams_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_stream_input() :: #{
+%%   <<"ExclusiveStartTagKey">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type list_tags_for_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_stream_output() :: #{
+%%   <<"HasMoreTags">> => boolean(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_shards_input() :: #{
+%%   <<"AdjacentShardToMerge">> := string(),
+%%   <<"ShardToMerge">> := string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type merge_shards_input() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_throughput_billing_commitment_input() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type minimum_throughput_billing_commitment_input() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_throughput_billing_commitment_output() :: #{
+%%   <<"EarliestAllowedEndAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type minimum_throughput_billing_commitment_output() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_input() :: #{
+%%   <<"Data">> := binary(),
+%%   <<"ExplicitHashKey">> => string(),
+%%   <<"PartitionKey">> := string(),
+%%   <<"SequenceNumberForOrdering">> => string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type put_record_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_record_output() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"SequenceNumber">> => string(),
+%%   <<"ShardId">> => string()
+%% }
+-type put_record_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_records_input() :: #{
+%%   <<"Records">> := list(put_records_request_entry()),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type put_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_records_output() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"FailedRecordCount">> => integer(),
+%%   <<"Records">> => list(put_records_result_entry())
+%% }
+-type put_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_records_request_entry() :: #{
+%%   <<"Data">> => binary(),
+%%   <<"ExplicitHashKey">> => string(),
+%%   <<"PartitionKey">> => string()
+%% }
+-type put_records_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_records_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"SequenceNumber">> => string(),
+%%   <<"ShardId">> => string()
+%% }
+-type put_records_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_stream_consumer_input() :: #{
+%%   <<"ConsumerName">> := string(),
+%%   <<"StreamARN">> := string(),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type register_stream_consumer_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_stream_consumer_output() :: #{
+%%   <<"Consumer">> => consumer()
+%% }
+-type register_stream_consumer_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_stream_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_from_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sequence_number_range() :: #{
+%%   <<"EndingSequenceNumber">> => string(),
+%%   <<"StartingSequenceNumber">> => string()
+%% }
+-type sequence_number_range() :: #{binary() => any()}.
+
+%% Example:
+%% shard() :: #{
+%%   <<"AdjacentParentShardId">> => string(),
+%%   <<"HashKeyRange">> => hash_key_range(),
+%%   <<"ParentShardId">> => string(),
+%%   <<"SequenceNumberRange">> => sequence_number_range(),
+%%   <<"ShardId">> => string()
+%% }
+-type shard() :: #{binary() => any()}.
+
+%% Example:
+%% shard_filter() :: #{
+%%   <<"ShardId">> => string(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type shard_filter() :: #{binary() => any()}.
+
+%% Example:
+%% split_shard_input() :: #{
+%%   <<"NewStartingHashKey">> := string(),
+%%   <<"ShardToSplit">> := string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type split_shard_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_stream_encryption_input() :: #{
+%%   <<"EncryptionType">> := list(any()),
+%%   <<"KeyId">> := string(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type start_stream_encryption_input() :: #{binary() => any()}.
 
 %% Example:
 %% starting_position() :: #{
@@ -181,50 +690,14 @@
 -type starting_position() :: #{binary() => any()}.
 
 %% Example:
-%% update_stream_warm_throughput_input() :: #{
+%% stop_stream_encryption_input() :: #{
+%%   <<"EncryptionType">> := list(any()),
+%%   <<"KeyId">> := string(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"WarmThroughputMiBps">> := integer()
+%%   <<"StreamName">> => string()
 %% }
--type update_stream_warm_throughput_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_stream_warm_throughput_output() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"WarmThroughput">> => warm_throughput_object()
-%% }
--type update_stream_warm_throughput_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_shard_count_input() :: #{
-%%   <<"ScalingType">> := list(any()),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"TargetShardCount">> := integer()
-%% }
--type update_shard_count_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_stream_output() :: #{
-%%   <<"HasMoreTags">> => boolean(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_stream_output() :: #{binary() => any()}.
+-type stop_stream_encryption_input() :: #{binary() => any()}.
 
 %% Example:
 %% stream_description() :: #{
@@ -241,25 +714,6 @@
 %%   <<"StreamStatus">> => list(any())
 %% }
 -type stream_description() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_record() :: #{
-%%   <<"ApproximateArrivalTimestamp">> => non_neg_integer(),
-%%   <<"Data">> => binary(),
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"PartitionKey">> => string(),
-%%   <<"SequenceNumber">> => string()
-%% }
--type kinesis_record() :: #{binary() => any()}.
-
-%% Example:
-%% decrease_stream_retention_period_input() :: #{
-%%   <<"RetentionPeriodHours">> := integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type decrease_stream_retention_period_input() :: #{binary() => any()}.
 
 %% Example:
 %% stream_description_summary() :: #{
@@ -281,437 +735,10 @@
 -type stream_description_summary() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_stream_consumer_input() :: #{
-%%   <<"ConsumerARN">> => string(),
-%%   <<"ConsumerName">> => string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type deregister_stream_consumer_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_settings_input() :: #{
-
-%% }
--type describe_account_settings_input() :: #{binary() => any()}.
-
-%% Example:
-%% increase_stream_retention_period_input() :: #{
-%%   <<"RetentionPeriodHours">> := integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type increase_stream_retention_period_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stream_input() :: #{
-%%   <<"EnforceConsumerDeletion">> => boolean(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type delete_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string()
-%% }
--type delete_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_records_input() :: #{
-%%   <<"Records">> := list(put_records_request_entry()),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type put_records_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_records_output() :: #{
-%%   <<"ChildShards">> => list(child_shard()),
-%%   <<"MillisBehindLatest">> => float(),
-%%   <<"NextShardIterator">> => string(),
-%%   <<"Records">> => list(record())
-%% }
--type get_records_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_stream_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"Tags">> := map()
-%% }
--type add_tags_to_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_streams_output() :: #{
-%%   <<"HasMoreStreams">> => boolean(),
-%%   <<"NextToken">> => string(),
-%%   <<"StreamNames">> => list(string()),
-%%   <<"StreamSummaries">> => list(stream_summary())
-%% }
--type list_streams_output() :: #{binary() => any()}.
-
-%% Example:
-%% warm_throughput_object() :: #{
-%%   <<"CurrentMiBps">> => integer(),
-%%   <<"TargetMiBps">> => integer()
-%% }
--type warm_throughput_object() :: #{binary() => any()}.
-
-%% Example:
-%% expired_next_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type expired_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_stream_consumer_output() :: #{
-%%   <<"Consumer">> => consumer()
-%% }
--type register_stream_consumer_output() :: #{binary() => any()}.
-
-%% Example:
-%% hash_key_range() :: #{
-%%   <<"EndingHashKey">> => string(),
-%%   <<"StartingHashKey">> => string()
-%% }
--type hash_key_range() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_throughput_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_records_result_entry() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"SequenceNumber">> => string(),
-%%   <<"ShardId">> => string()
-%% }
--type put_records_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_input() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string()
-%% }
--type put_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% minimum_throughput_billing_commitment_output() :: #{
-%%   <<"EarliestAllowedEndAt">> => non_neg_integer(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type minimum_throughput_billing_commitment_output() :: #{binary() => any()}.
-
-%% Example:
-%% register_stream_consumer_input() :: #{
-%%   <<"ConsumerName">> := string(),
-%%   <<"StreamARN">> := string(),
-%%   <<"StreamId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type register_stream_consumer_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_shard_iterator_input() :: #{
-%%   <<"ShardId">> := string(),
-%%   <<"ShardIteratorType">> := list(any()),
-%%   <<"StartingSequenceNumber">> => string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type get_shard_iterator_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stream_consumer_input() :: #{
-%%   <<"ConsumerARN">> => string(),
-%%   <<"ConsumerName">> => string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type describe_stream_consumer_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_stream_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_from_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% merge_shards_input() :: #{
-%%   <<"AdjacentShardToMerge">> := string(),
-%%   <<"ShardToMerge">> := string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type merge_shards_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_shard_iterator_output() :: #{
-%%   <<"ShardIterator">> => string()
-%% }
--type get_shard_iterator_output() :: #{binary() => any()}.
-
-%% Example:
-%% expired_iterator_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type expired_iterator_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stream_summary_input() :: #{
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type describe_stream_summary_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stream_consumers_output() :: #{
-%%   <<"Consumers">> => list(consumer()),
-%%   <<"NextToken">> => string()
-%% }
--type list_stream_consumers_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_limits_input() :: #{
-
-%% }
--type describe_limits_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_record_output() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"SequenceNumber">> => string(),
-%%   <<"ShardId">> => string()
-%% }
--type put_record_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_streams_input() :: #{
-%%   <<"ExclusiveStartStreamName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_streams_input() :: #{binary() => any()}.
-
-%% Example:
-%% shard() :: #{
-%%   <<"AdjacentParentShardId">> => string(),
-%%   <<"HashKeyRange">> => hash_key_range(),
-%%   <<"ParentShardId">> => string(),
-%%   <<"SequenceNumberRange">> => sequence_number_range(),
-%%   <<"ShardId">> => string()
-%% }
--type shard() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_to_shard_input() :: #{
-%%   <<"ConsumerARN">> := string(),
-%%   <<"ShardId">> := string(),
-%%   <<"StartingPosition">> := starting_position(),
-%%   <<"StreamId">> => string()
-%% }
--type subscribe_to_shard_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_settings_input() :: #{
-%%   <<"MinimumThroughputBillingCommitment">> := minimum_throughput_billing_commitment_input()
-%% }
--type update_account_settings_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stream_output() :: #{
-%%   <<"StreamDescription">> => stream_description()
-%% }
--type describe_stream_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stream_encryption_input() :: #{
-%%   <<"EncryptionType">> := list(any()),
-%%   <<"KeyId">> := string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type stop_stream_encryption_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_records_input() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"ShardIterator">> := string(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type get_records_input() :: #{binary() => any()}.
-
-%% Example:
-%% kms_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_account_settings_output() :: #{
-%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
-%% }
--type update_account_settings_output() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
 %% stream_mode_details() :: #{
 %%   <<"StreamMode">> => list(any())
 %% }
 -type stream_mode_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_stream_input() :: #{
-%%   <<"ExclusiveStartTagKey">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type list_tags_for_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% enhanced_monitoring_output() :: #{
-%%   <<"CurrentShardLevelMetrics">> => list(list(any())()),
-%%   <<"DesiredShardLevelMetrics">> => list(list(any())()),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type enhanced_monitoring_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string()
-%% }
--type get_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_argument_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_argument_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_stream_mode_input() :: #{
-%%   <<"StreamARN">> := string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamModeDetails">> := stream_mode_details(),
-%%   <<"WarmThroughputMiBps">> => integer()
-%% }
--type update_stream_mode_input() :: #{binary() => any()}.
-
-%% Example:
-%% sequence_number_range() :: #{
-%%   <<"EndingSequenceNumber">> => string(),
-%%   <<"StartingSequenceNumber">> => string()
-%% }
--type sequence_number_range() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"StreamId">> => string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_to_shard_event() :: #{
-%%   <<"ChildShards">> => list(child_shard()),
-%%   <<"ContinuationSequenceNumber">> => string(),
-%%   <<"MillisBehindLatest">> => float(),
-%%   <<"Records">> => list(record())
-%% }
--type subscribe_to_shard_event() :: #{binary() => any()}.
-
-%% Example:
-%% child_shard() :: #{
-%%   <<"HashKeyRange">> => hash_key_range(),
-%%   <<"ParentShards">> => list(string()),
-%%   <<"ShardId">> => string()
-%% }
--type child_shard() :: #{binary() => any()}.
-
-%% Example:
-%% update_max_record_size_input() :: #{
-%%   <<"MaxRecordSizeInKiB">> := integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string()
-%% }
--type update_max_record_size_input() :: #{binary() => any()}.
 
 %% Example:
 %% stream_summary() :: #{
@@ -724,65 +751,81 @@
 -type stream_summary() :: #{binary() => any()}.
 
 %% Example:
-%% shard_filter() :: #{
-%%   <<"ShardId">> => string(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
+%% subscribe_to_shard_event() :: #{
+%%   <<"ChildShards">> => list(child_shard()),
+%%   <<"ContinuationSequenceNumber">> => string(),
+%%   <<"MillisBehindLatest">> => float(),
+%%   <<"Records">> => list(record())
 %% }
--type shard_filter() :: #{binary() => any()}.
+-type subscribe_to_shard_event() :: #{binary() => any()}.
 
 %% Example:
-%% consumer() :: #{
-%%   <<"ConsumerARN">> => string(),
-%%   <<"ConsumerCreationTimestamp">> => non_neg_integer(),
-%%   <<"ConsumerName">> => string(),
-%%   <<"ConsumerStatus">> => list(any())
+%% subscribe_to_shard_input() :: #{
+%%   <<"ConsumerARN">> := string(),
+%%   <<"ShardId">> := string(),
+%%   <<"StartingPosition">> := starting_position(),
+%%   <<"StreamId">> => string()
 %% }
--type consumer() :: #{binary() => any()}.
+-type subscribe_to_shard_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_stream_input() :: #{
-%%   <<"MaxRecordSizeInKiB">> => integer(),
-%%   <<"ShardCount">> => integer(),
-%%   <<"StreamModeDetails">> => stream_mode_details(),
-%%   <<"StreamName">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"WarmThroughputMiBps">> => integer()
+%% subscribe_to_shard_output() :: #{
+%%   <<"EventStream">> => list()
 %% }
--type create_stream_input() :: #{binary() => any()}.
+-type subscribe_to_shard_output() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% put_records_request_entry() :: #{
-%%   <<"Data">> => binary(),
-%%   <<"ExplicitHashKey">> => string(),
-%%   <<"PartitionKey">> => string()
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string(),
+%%   <<"Tags">> := map()
 %% }
--type put_records_request_entry() :: #{binary() => any()}.
+-type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% start_stream_encryption_input() :: #{
-%%   <<"EncryptionType">> := list(any()),
-%%   <<"KeyId">> := string(),
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"StreamId">> => string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_input() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> := minimum_throughput_billing_commitment_input()
+%% }
+-type update_account_settings_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_output() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
+%% }
+-type update_account_settings_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_max_record_size_input() :: #{
+%%   <<"MaxRecordSizeInKiB">> := integer(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamId">> => string()
+%% }
+-type update_max_record_size_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_shard_count_input() :: #{
+%%   <<"ScalingType">> := list(any()),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
+%%   <<"StreamName">> => string(),
+%%   <<"TargetShardCount">> := integer()
 %% }
--type start_stream_encryption_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_enhanced_monitoring_input() :: #{
-%%   <<"ShardLevelMetrics">> := list(list(any())()),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
-%% }
--type disable_enhanced_monitoring_input() :: #{binary() => any()}.
+-type update_shard_count_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_shard_count_output() :: #{
@@ -794,125 +837,82 @@
 -type update_shard_count_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stream_consumer_output() :: #{
-%%   <<"ConsumerDescription">> => consumer_description()
+%% update_stream_mode_input() :: #{
+%%   <<"StreamARN">> := string(),
+%%   <<"StreamId">> => string(),
+%%   <<"StreamModeDetails">> := stream_mode_details(),
+%%   <<"WarmThroughputMiBps">> => integer()
 %% }
--type describe_stream_consumer_output() :: #{binary() => any()}.
+-type update_stream_mode_input() :: #{binary() => any()}.
 
 %% Example:
-%% enhanced_metrics() :: #{
-%%   <<"ShardLevelMetrics">> => list(list(any())())
-%% }
--type enhanced_metrics() :: #{binary() => any()}.
-
-%% Example:
-%% minimum_throughput_billing_commitment_input() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type minimum_throughput_billing_commitment_input() :: #{binary() => any()}.
-
-%% Example:
-%% split_shard_input() :: #{
-%%   <<"NewStartingHashKey">> := string(),
-%%   <<"ShardToSplit">> := string(),
+%% update_stream_warm_throughput_input() :: #{
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
+%%   <<"StreamName">> => string(),
+%%   <<"WarmThroughputMiBps">> := integer()
 %% }
--type split_shard_input() :: #{binary() => any()}.
+-type update_stream_warm_throughput_input() :: #{binary() => any()}.
 
 %% Example:
-%% put_record_input() :: #{
-%%   <<"Data">> := binary(),
-%%   <<"ExplicitHashKey">> => string(),
-%%   <<"PartitionKey">> := string(),
-%%   <<"SequenceNumberForOrdering">> => string(),
+%% update_stream_warm_throughput_output() :: #{
 %%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
+%%   <<"StreamName">> => string(),
+%%   <<"WarmThroughput">> => warm_throughput_object()
 %% }
--type put_record_input() :: #{binary() => any()}.
+-type update_stream_warm_throughput_output() :: #{binary() => any()}.
 
 %% Example:
-%% kms_invalid_state_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stream_input() :: #{
-%%   <<"ExclusiveStartShardId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"StreamARN">> => string(),
-%%   <<"StreamId">> => string(),
-%%   <<"StreamName">> => string()
+%% warm_throughput_object() :: #{
+%%   <<"CurrentMiBps">> => integer(),
+%%   <<"TargetMiBps">> => integer()
 %% }
--type describe_stream_input() :: #{binary() => any()}.
-
-%% Example:
-%% subscribe_to_shard_output() :: #{
-%%   <<"EventStream">> => list()
-%% }
--type subscribe_to_shard_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_records_output() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"FailedRecordCount">> => integer(),
-%%   <<"Records">> => list(put_records_result_entry())
-%% }
--type put_records_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stream_summary_output() :: #{
-%%   <<"StreamDescriptionSummary">> => stream_description_summary()
-%% }
--type describe_stream_summary_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_settings_output() :: #{
-%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
-%% }
--type describe_account_settings_output() :: #{binary() => any()}.
+-type warm_throughput_object() :: #{binary() => any()}.
 
 -type add_tags_to_stream_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type create_stream_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_argument_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception().
 
 -type decrease_stream_retention_period_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_stream_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type deregister_stream_consumer_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    resource_not_found_exception().
+    invalid_argument_exception().
 
 -type describe_account_settings_errors() ::
     limit_exceeded_exception().
@@ -921,85 +921,85 @@
     limit_exceeded_exception().
 
 -type describe_stream_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_stream_consumer_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    resource_not_found_exception().
+    invalid_argument_exception().
 
 -type describe_stream_summary_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disable_enhanced_monitoring_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type enable_enhanced_monitoring_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type get_records_errors() ::
-    kms_invalid_state_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    expired_iterator_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
     internal_failure_exception() | 
-    kms_disabled_exception().
+    expired_iterator_exception() | 
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type get_shard_iterator_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
-    internal_failure_exception().
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type increase_stream_retention_period_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type list_shards_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
     expired_next_token_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type list_stream_consumers_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    resource_not_found_exception() | 
-    expired_next_token_exception() | 
-    resource_in_use_exception().
+    expired_next_token_exception().
 
 -type list_streams_errors() ::
     limit_exceeded_exception() | 
@@ -1007,156 +1007,156 @@
     expired_next_token_exception().
 
 -type list_tags_for_resource_errors() ::
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type list_tags_for_stream_errors() ::
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
-
--type merge_shards_errors() ::
-    limit_exceeded_exception() | 
-    validation_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type put_record_errors() ::
-    kms_invalid_state_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
-    kms_throttling_exception() | 
-    kms_opt_in_required() | 
-    internal_failure_exception() | 
-    kms_disabled_exception().
-
--type put_records_errors() ::
-    kms_invalid_state_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    resource_not_found_exception() | 
-    provisioned_throughput_exceeded_exception() | 
-    kms_throttling_exception() | 
-    kms_opt_in_required() | 
-    internal_failure_exception() | 
-    kms_disabled_exception().
-
--type put_resource_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type register_stream_consumer_errors() ::
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type remove_tags_from_stream_errors() ::
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type split_shard_errors() ::
-    limit_exceeded_exception() | 
-    validation_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
-
--type start_stream_encryption_errors() ::
-    kms_invalid_state_exception() | 
-    limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type list_tags_for_stream_errors() ::
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type merge_shards_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type put_record_errors() ::
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
     kms_throttling_exception() | 
     kms_opt_in_required() | 
-    kms_disabled_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type put_records_errors() ::
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type put_resource_policy_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type register_stream_consumer_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception().
+
+-type remove_tags_from_stream_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type split_shard_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type start_stream_encryption_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
 
 -type stop_stream_encryption_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type subscribe_to_shard_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type update_account_settings_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception().
 
 -type update_max_record_size_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
 
 -type update_shard_count_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
 
 -type update_stream_mode_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_argument_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception().
 
 -type update_stream_warm_throughput_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

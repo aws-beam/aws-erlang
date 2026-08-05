@@ -3,19 +3,16 @@
 
 %% @doc Backup gateway
 %%
-%% Backup gateway connects Backup to your hypervisor, so you can
-%% create, store, and restore backups of your virtual machines (VMs)
-%% anywhere, whether
-%% on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
+%% Backup gateway connects Backup to your hypervisor, so you can create,
+%% store, and restore backups of your virtual machines (VMs) anywhere,
+%% whether on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
 %%
 %% Add on-premises resources by connecting to a hypervisor through a gateway.
 %% Backup will automatically discover the resources in your hypervisor.
 %%
 %% Use Backup to assign virtual or on-premises resources to a backup plan, or
-%% run
-%% on-demand backups. Once you have backed up your resources, you can view
-%% them and restore them
-%% like any resource supported by Backup.
+%% run on-demand backups. Once you have backed up your resources, you can
+%% view them and restore them like any resource supported by Backup.
 %%
 %% To download the Amazon Web Services software to get started, navigate to
 %% the Backup console, choose Gateways, then choose Create gateway.
@@ -76,19 +73,103 @@
 
 
 %% Example:
-%% maintenance_start_time() :: #{
-%%   <<"DayOfMonth">> => integer(),
-%%   <<"DayOfWeek">> => integer(),
-%%   <<"HourOfDay">> => integer(),
-%%   <<"MinuteOfHour">> => integer()
+%% access_denied_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
 %% }
--type maintenance_start_time() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% put_bandwidth_rate_limit_schedule_output() :: #{
+%% associate_gateway_to_server_input() :: #{
+%%   <<"GatewayArn">> := string(),
+%%   <<"ServerArn">> := string()
+%% }
+-type associate_gateway_to_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_gateway_to_server_output() :: #{
 %%   <<"GatewayArn">> => string()
 %% }
--type put_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+-type associate_gateway_to_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% bandwidth_rate_limit_interval() :: #{
+%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
+%%   <<"DaysOfWeek">> => list(integer()),
+%%   <<"EndHourOfDay">> => integer(),
+%%   <<"EndMinuteOfHour">> => integer(),
+%%   <<"StartHourOfDay">> => integer(),
+%%   <<"StartMinuteOfHour">> => integer()
+%% }
+-type bandwidth_rate_limit_interval() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_gateway_input() :: #{
+%%   <<"ActivationKey">> := string(),
+%%   <<"GatewayDisplayName">> := string(),
+%%   <<"GatewayType">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_gateway_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type create_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_input() :: #{
+%%   <<"GatewayArn">> := string()
+%% }
+-type delete_gateway_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type delete_gateway_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hypervisor_input() :: #{
+%%   <<"HypervisorArn">> := string()
+%% }
+-type delete_hypervisor_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hypervisor_output() :: #{
+%%   <<"HypervisorArn">> => string()
+%% }
+-type delete_hypervisor_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_gateway_from_server_input() :: #{
+%%   <<"GatewayArn">> := string()
+%% }
+-type disassociate_gateway_from_server_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_gateway_from_server_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type disassociate_gateway_from_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% gateway() :: #{
+%%   <<"GatewayArn">> => string(),
+%%   <<"GatewayDisplayName">> => string(),
+%%   <<"GatewayType">> => string(),
+%%   <<"HypervisorId">> => string(),
+%%   <<"LastSeenTime">> => non_neg_integer()
+%% }
+-type gateway() :: #{binary() => any()}.
 
 %% Example:
 %% gateway_details() :: #{
@@ -106,24 +187,10 @@
 -type gateway_details() :: #{binary() => any()}.
 
 %% Example:
-%% put_hypervisor_property_mappings_input() :: #{
-%%   <<"HypervisorArn">> := string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"VmwareToAwsTagMappings">> := list(vmware_to_aws_tag_mapping())
-%% }
--type put_hypervisor_property_mappings_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_hypervisor_output() :: #{
-%%   <<"HypervisorArn">> => string()
-%% }
--type update_hypervisor_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_gateway_from_server_input() :: #{
+%% get_bandwidth_rate_limit_schedule_input() :: #{
 %%   <<"GatewayArn">> := string()
 %% }
--type disassociate_gateway_from_server_input() :: #{binary() => any()}.
+-type get_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_bandwidth_rate_limit_schedule_output() :: #{
@@ -133,58 +200,34 @@
 -type get_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
 
 %% Example:
-%% put_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
+%% get_gateway_input() :: #{
 %%   <<"GatewayArn">> := string()
 %% }
--type put_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+-type get_gateway_input() :: #{binary() => any()}.
 
 %% Example:
-%% virtual_machine() :: #{
-%%   <<"HostName">> => string(),
-%%   <<"HypervisorId">> => string(),
-%%   <<"LastBackupDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"ResourceArn">> => string()
+%% get_gateway_output() :: #{
+%%   <<"Gateway">> => gateway_details()
 %% }
--type virtual_machine() :: #{binary() => any()}.
+-type get_gateway_output() :: #{binary() => any()}.
 
 %% Example:
-%% vmware_to_aws_tag_mapping() :: #{
-%%   <<"AwsTagKey">> => string(),
-%%   <<"AwsTagValue">> => string(),
-%%   <<"VmwareCategory">> => string(),
-%%   <<"VmwareTagName">> => string()
+%% get_hypervisor_input() :: #{
+%%   <<"HypervisorArn">> := string()
 %% }
--type vmware_to_aws_tag_mapping() :: #{binary() => any()}.
+-type get_hypervisor_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_hypervisor_output() :: #{
+%%   <<"Hypervisor">> => hypervisor_details()
+%% }
+-type get_hypervisor_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_hypervisor_property_mappings_input() :: #{
 %%   <<"HypervisorArn">> := string()
 %% }
 -type get_hypervisor_property_mappings_input() :: #{binary() => any()}.
-
-%% Example:
-%% test_hypervisor_configuration_input() :: #{
-%%   <<"GatewayArn">> := string(),
-%%   <<"Host">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type test_hypervisor_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_gateway_from_server_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type disassociate_gateway_from_server_output() :: #{binary() => any()}.
-
-%% Example:
-%% test_hypervisor_configuration_output() :: #{
-
-%% }
--type test_hypervisor_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_hypervisor_property_mappings_output() :: #{
@@ -195,143 +238,26 @@
 -type get_hypervisor_property_mappings_output() :: #{binary() => any()}.
 
 %% Example:
-%% associate_gateway_to_server_input() :: #{
-%%   <<"GatewayArn">> := string(),
-%%   <<"ServerArn">> := string()
+%% get_virtual_machine_input() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type associate_gateway_to_server_input() :: #{binary() => any()}.
+-type get_virtual_machine_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%% get_virtual_machine_output() :: #{
+%%   <<"VirtualMachine">> => virtual_machine_details()
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type get_virtual_machine_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"GatewayArn">> := string()
-%% }
--type get_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_hypervisor_output() :: #{
-%%   <<"Hypervisor">> => hypervisor_details()
-%% }
--type get_hypervisor_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_virtual_machines_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VirtualMachines">> => list(virtual_machine())
-%% }
--type list_virtual_machines_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_gateway_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type create_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% gateway() :: #{
-%%   <<"GatewayArn">> => string(),
-%%   <<"GatewayDisplayName">> => string(),
-%%   <<"GatewayType">> => string(),
-%%   <<"HypervisorId">> => string(),
-%%   <<"LastSeenTime">> => non_neg_integer()
-%% }
--type gateway() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hypervisor_output() :: #{
-%%   <<"HypervisorArn">> => string()
-%% }
--type delete_hypervisor_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_hypervisor_input() :: #{
-%%   <<"HypervisorArn">> := string()
-%% }
--type get_hypervisor_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_maintenance_start_time_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type put_maintenance_start_time_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_information_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type update_gateway_information_output() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% update_hypervisor_input() :: #{
+%% hypervisor() :: #{
 %%   <<"Host">> => string(),
-%%   <<"HypervisorArn">> := string(),
-%%   <<"LogGroupArn">> => string(),
+%%   <<"HypervisorArn">> => string(),
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
+%%   <<"State">> => string()
 %% }
--type update_hypervisor_input() :: #{binary() => any()}.
-
-%% Example:
-%% bandwidth_rate_limit_interval() :: #{
-%%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
-%%   <<"DaysOfWeek">> => list(integer()),
-%%   <<"EndHourOfDay">> => integer(),
-%%   <<"EndMinuteOfHour">> => integer(),
-%%   <<"StartHourOfDay">> => integer(),
-%%   <<"StartMinuteOfHour">> => integer()
-%% }
--type bandwidth_rate_limit_interval() :: #{binary() => any()}.
-
-%% Example:
-%% list_gateways_output() :: #{
-%%   <<"Gateways">> => list(gateway()),
-%%   <<"NextToken">> => string()
-%% }
--type list_gateways_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_maintenance_start_time_input() :: #{
-%%   <<"DayOfMonth">> => integer(),
-%%   <<"DayOfWeek">> => integer(),
-%%   <<"GatewayArn">> := string(),
-%%   <<"HourOfDay">> := integer(),
-%%   <<"MinuteOfHour">> := integer()
-%% }
--type put_maintenance_start_time_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_input() :: #{
-%%   <<"GatewayArn">> := string()
-%% }
--type delete_gateway_input() :: #{binary() => any()}.
+-type hypervisor() :: #{binary() => any()}.
 
 %% Example:
 %% hypervisor_details() :: #{
@@ -348,31 +274,6 @@
 -type hypervisor_details() :: #{binary() => any()}.
 
 %% Example:
-%% import_hypervisor_configuration_output() :: #{
-%%   <<"HypervisorArn">> => string()
-%% }
--type import_hypervisor_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_output() :: #{
-%%   <<"Gateway">> => gateway_details()
-%% }
--type get_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% associate_gateway_to_server_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type associate_gateway_to_server_output() :: #{binary() => any()}.
-
-%% Example:
 %% import_hypervisor_configuration_input() :: #{
 %%   <<"Host">> := string(),
 %%   <<"KmsKeyArn">> => string(),
@@ -384,31 +285,10 @@
 -type import_hypervisor_configuration_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_virtual_machines_input() :: #{
-%%   <<"HypervisorArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% import_hypervisor_configuration_output() :: #{
+%%   <<"HypervisorArn">> => string()
 %% }
--type list_virtual_machines_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_information_input() :: #{
-%%   <<"GatewayArn">> := string(),
-%%   <<"GatewayDisplayName">> => string()
-%% }
--type update_gateway_information_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_virtual_machine_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_virtual_machine_input() :: #{binary() => any()}.
+-type import_hypervisor_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -418,10 +298,246 @@
 -type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_hypervisor_input() :: #{
+%% list_gateways_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_gateways_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_output() :: #{
+%%   <<"Gateways">> => list(gateway()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_gateways_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_hypervisors_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hypervisors_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_hypervisors_output() :: #{
+%%   <<"Hypervisors">> => list(hypervisor()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hypervisors_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_machines_input() :: #{
+%%   <<"HypervisorArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_virtual_machines_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_machines_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VirtualMachines">> => list(virtual_machine())
+%% }
+-type list_virtual_machines_output() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_start_time() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => integer(),
+%%   <<"HourOfDay">> => integer(),
+%%   <<"MinuteOfHour">> => integer()
+%% }
+-type maintenance_start_time() :: #{binary() => any()}.
+
+%% Example:
+%% put_bandwidth_rate_limit_schedule_input() :: #{
+%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
+%%   <<"GatewayArn">> := string()
+%% }
+-type put_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_bandwidth_rate_limit_schedule_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type put_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_hypervisor_property_mappings_input() :: #{
+%%   <<"HypervisorArn">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"VmwareToAwsTagMappings">> := list(vmware_to_aws_tag_mapping())
+%% }
+-type put_hypervisor_property_mappings_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_hypervisor_property_mappings_output() :: #{
+%%   <<"HypervisorArn">> => string()
+%% }
+-type put_hypervisor_property_mappings_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_maintenance_start_time_input() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => integer(),
+%%   <<"GatewayArn">> := string(),
+%%   <<"HourOfDay">> := integer(),
+%%   <<"MinuteOfHour">> := integer()
+%% }
+-type put_maintenance_start_time_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_maintenance_start_time_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type put_maintenance_start_time_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_virtual_machines_metadata_sync_input() :: #{
 %%   <<"HypervisorArn">> := string()
 %% }
--type delete_hypervisor_input() :: #{binary() => any()}.
+-type start_virtual_machines_metadata_sync_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_virtual_machines_metadata_sync_output() :: #{
+%%   <<"HypervisorArn">> => string()
+%% }
+-type start_virtual_machines_metadata_sync_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% test_hypervisor_configuration_input() :: #{
+%%   <<"GatewayArn">> := string(),
+%%   <<"Host">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type test_hypervisor_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% test_hypervisor_configuration_output() :: #{
+
+%% }
+-type test_hypervisor_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+%%   <<"ResourceARN">> => string()
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_input() :: #{
+%%   <<"GatewayArn">> := string(),
+%%   <<"GatewayDisplayName">> => string()
+%% }
+-type update_gateway_information_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_information_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type update_gateway_information_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_input() :: #{
+%%   <<"GatewayArn">> := string()
+%% }
+-type update_gateway_software_now_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_software_now_output() :: #{
+%%   <<"GatewayArn">> => string()
+%% }
+-type update_gateway_software_now_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_hypervisor_input() :: #{
+%%   <<"Host">> => string(),
+%%   <<"HypervisorArn">> := string(),
+%%   <<"LogGroupArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type update_hypervisor_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_hypervisor_output() :: #{
+%%   <<"HypervisorArn">> => string()
+%% }
+-type update_hypervisor_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% virtual_machine() :: #{
+%%   <<"HostName">> => string(),
+%%   <<"HypervisorId">> => string(),
+%%   <<"LastBackupDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type virtual_machine() :: #{binary() => any()}.
 
 %% Example:
 %% virtual_machine_details() :: #{
@@ -436,27 +552,6 @@
 -type virtual_machine_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_gateways_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_gateways_input() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
 %% vmware_tag() :: #{
 %%   <<"VmwareCategory">> => string(),
 %%   <<"VmwareTagDescription">> => string(),
@@ -465,111 +560,13 @@
 -type vmware_tag() :: #{binary() => any()}.
 
 %% Example:
-%% list_hypervisors_output() :: #{
-%%   <<"Hypervisors">> => list(hypervisor()),
-%%   <<"NextToken">> => string()
+%% vmware_to_aws_tag_mapping() :: #{
+%%   <<"AwsTagKey">> => string(),
+%%   <<"AwsTagValue">> => string(),
+%%   <<"VmwareCategory">> => string(),
+%%   <<"VmwareTagName">> => string()
 %% }
--type list_hypervisors_output() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-%%   <<"ResourceARN">> => string()
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gateway_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type delete_gateway_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_gateway_input() :: #{
-%%   <<"ActivationKey">> := string(),
-%%   <<"GatewayDisplayName">> := string(),
-%%   <<"GatewayType">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_hypervisors_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_hypervisors_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_virtual_machine_output() :: #{
-%%   <<"VirtualMachine">> => virtual_machine_details()
-%% }
--type get_virtual_machine_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_software_now_output() :: #{
-%%   <<"GatewayArn">> => string()
-%% }
--type update_gateway_software_now_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_gateway_input() :: #{
-%%   <<"GatewayArn">> := string()
-%% }
--type get_gateway_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_virtual_machines_metadata_sync_input() :: #{
-%%   <<"HypervisorArn">> := string()
-%% }
--type start_virtual_machines_metadata_sync_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_gateway_software_now_input() :: #{
-%%   <<"GatewayArn">> := string()
-%% }
--type update_gateway_software_now_input() :: #{binary() => any()}.
-
-%% Example:
-%% hypervisor() :: #{
-%%   <<"Host">> => string(),
-%%   <<"HypervisorArn">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string()
-%% }
--type hypervisor() :: #{binary() => any()}.
-
-%% Example:
-%% put_hypervisor_property_mappings_output() :: #{
-%%   <<"HypervisorArn">> => string()
-%% }
--type put_hypervisor_property_mappings_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_virtual_machines_metadata_sync_output() :: #{
-%%   <<"HypervisorArn">> => string()
-%% }
--type start_virtual_machines_metadata_sync_output() :: #{binary() => any()}.
+-type vmware_to_aws_tag_mapping() :: #{binary() => any()}.
 
 -type associate_gateway_to_server_errors() ::
     conflict_exception().
@@ -578,9 +575,9 @@
     resource_not_found_exception().
 
 -type delete_hypervisor_errors() ::
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_gateway_from_server_errors() ::
     resource_not_found_exception() | 
@@ -602,8 +599,8 @@
     resource_not_found_exception().
 
 -type import_hypervisor_configuration_errors() ::
-    access_denied_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
@@ -612,17 +609,17 @@
     resource_not_found_exception().
 
 -type put_hypervisor_property_mappings_errors() ::
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_maintenance_start_time_errors() ::
     resource_not_found_exception() | 
     conflict_exception().
 
 -type start_virtual_machines_metadata_sync_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     resource_not_found_exception().
@@ -642,9 +639,9 @@
     resource_not_found_exception().
 
 -type update_hypervisor_errors() ::
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -652,8 +649,8 @@
 
 %% @doc Associates a backup gateway with your server.
 %%
-%% After you complete the association process,
-%% you can back up and restore your VMs through the gateway.
+%% After you complete the association process, you can back up and restore
+%% your VMs through the gateway.
 -spec associate_gateway_to_server(aws_client:aws_client(), associate_gateway_to_server_input()) ->
     {ok, associate_gateway_to_server_output(), tuple()} |
     {error, any()} |
@@ -672,8 +669,8 @@ associate_gateway_to_server(Client, Input, Options)
 
 %% @doc Creates a backup gateway.
 %%
-%% After you create a gateway, you can associate it with a server
-%% using the `AssociateGatewayToServer' operation.
+%% After you create a gateway, you can associate it with a server using the
+%% `AssociateGatewayToServer' operation.
 -spec create_gateway(aws_client:aws_client(), create_gateway_input()) ->
     {ok, create_gateway_output(), tuple()} |
     {error, any()}.
@@ -724,9 +721,8 @@ delete_hypervisor(Client, Input, Options)
 
 %% @doc Disassociates a backup gateway from the specified server.
 %%
-%% After the disassociation process
-%% finishes, the gateway can no longer access the virtual machines on the
-%% server.
+%% After the disassociation process finishes, the gateway can no longer
+%% access the virtual machines on the server.
 -spec disassociate_gateway_from_server(aws_client:aws_client(), disassociate_gateway_from_server_input()) ->
     {ok, disassociate_gateway_from_server_output(), tuple()} |
     {error, any()} |
@@ -746,9 +742,8 @@ disassociate_gateway_from_server(Client, Input, Options)
 %% @doc Retrieves the bandwidth rate limit schedule for a specified gateway.
 %%
 %% By default, gateways do not have bandwidth rate limit schedules, which
-%% means
-%% no bandwidth rate limiting is in effect. Use this to get a gateway's
-%% bandwidth rate limit schedule.
+%% means no bandwidth rate limiting is in effect. Use this to get a
+%% gateway's bandwidth rate limit schedule.
 -spec get_bandwidth_rate_limit_schedule(aws_client:aws_client(), get_bandwidth_rate_limit_schedule_input()) ->
     {ok, get_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
@@ -765,8 +760,8 @@ get_bandwidth_rate_limit_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBandwidthRateLimitSchedule">>, Input, Options).
 
-%% @doc By providing the ARN (Amazon Resource Name), this
-%% API returns the gateway.
+%% @doc By providing the ARN (Amazon Resource Name), this API returns the
+%% gateway.
 -spec get_gateway(aws_client:aws_client(), get_gateway_input()) ->
     {ok, get_gateway_output(), tuple()} |
     {error, any()} |
@@ -787,8 +782,7 @@ get_gateway(Client, Input, Options)
 %% which the gateway will connect.
 %%
 %% A hypervisor is hardware, software, or firmware that creates and manages
-%% virtual machines,
-%% and allocates resources to them.
+%% virtual machines, and allocates resources to them.
 -spec get_hypervisor(aws_client:aws_client(), get_hypervisor_input()) ->
     {ok, get_hypervisor_output(), tuple()} |
     {error, any()} |
@@ -809,9 +803,8 @@ get_hypervisor(Client, Input, Options)
 %% hypervisor.
 %%
 %% A hypervisor property mapping displays the relationship of entity
-%% properties
-%% available from the hypervisor to the properties available in Amazon Web
-%% Services.
+%% properties available from the hypervisor to the properties available in
+%% Amazon Web Services.
 -spec get_hypervisor_property_mappings(aws_client:aws_client(), get_hypervisor_property_mappings_input()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
@@ -897,8 +890,7 @@ list_hypervisors(Client, Input, Options)
     request(Client, <<"ListHypervisors">>, Input, Options).
 
 %% @doc Lists the tags applied to the resource identified by its Amazon
-%% Resource Name
-%% (ARN).
+%% Resource Name (ARN).
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -934,8 +926,7 @@ list_virtual_machines(Client, Input, Options)
 %% gateway.
 %%
 %% By default, gateways do not have a bandwidth rate limit schedule, which
-%% means
-%% no bandwidth rate limiting is in effect. Use this to initiate a
+%% means no bandwidth rate limiting is in effect. Use this to initiate a
 %% gateway's bandwidth rate limit schedule.
 -spec put_bandwidth_rate_limit_schedule(aws_client:aws_client(), put_bandwidth_rate_limit_schedule_input()) ->
     {ok, put_bandwidth_rate_limit_schedule_output(), tuple()} |
@@ -956,9 +947,8 @@ put_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% @doc This action sets the property mappings for the specified hypervisor.
 %%
 %% A hypervisor property mapping displays the relationship of entity
-%% properties
-%% available from the hypervisor to the properties available in Amazon Web
-%% Services.
+%% properties available from the hypervisor to the properties available in
+%% Amazon Web Services.
 -spec put_hypervisor_property_mappings(aws_client:aws_client(), put_hypervisor_property_mappings_input()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
@@ -1028,8 +1018,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Tests your hypervisor configuration to validate that backup gateway
-%% can connect with the
-%% hypervisor and its resources.
+%% can connect with the hypervisor and its resources.
 -spec test_hypervisor_configuration(aws_client:aws_client(), test_hypervisor_configuration_input()) ->
     {ok, test_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
@@ -1065,8 +1054,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates a gateway's name.
 %%
-%% Specify which gateway to update using the Amazon Resource Name
-%% (ARN) of the gateway in your request.
+%% Specify which gateway to update using the Amazon Resource Name (ARN) of
+%% the gateway in your request.
 -spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
@@ -1087,9 +1076,8 @@ update_gateway_information(Client, Input, Options)
 %%
 %% The request immediately triggers the software update.
 %%
-%% When you make this request, you get a `200 OK'
-%% success response immediately. However, it might take some
-%% time for the update to complete.
+%% When you make this request, you get a `200 OK' success response
+%% immediately. However, it might take some time for the update to complete.
 -spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
@@ -1109,10 +1097,8 @@ update_gateway_software_now(Client, Input, Options)
 %% @doc Updates a hypervisor metadata, including its host, username, and
 %% password.
 %%
-%% Specify which
-%% hypervisor to update using the Amazon Resource Name (ARN) of the
-%% hypervisor in your
-%% request.
+%% Specify which hypervisor to update using the Amazon Resource Name (ARN) of
+%% the hypervisor in your request.
 -spec update_hypervisor(aws_client:aws_client(), update_hypervisor_input()) ->
     {ok, update_hypervisor_output(), tuple()} |
     {error, any()} |

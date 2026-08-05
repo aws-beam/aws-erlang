@@ -423,274 +423,264 @@
 
 
 %% Example:
-%% response_headers_policy_in_use() :: #{
+%% access_denied() :: #{
 %%   <<"Message">> => string()
 %% }
--type response_headers_policy_in_use() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_tenant_request() :: #{}
--type get_distribution_tenant_request() :: #{}.
+-type access_denied() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_distributions_by_trust_store_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"TrustStoreIdentifier">> := string()
+%% active_trusted_key_groups() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(k_g_key_pair_ids()),
+%%   <<"Quantity">> => integer()
 %% }
--type list_distributions_by_trust_store_request() :: #{binary() => any()}.
+-type active_trusted_key_groups() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalidation_summary() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
+%% active_trusted_signers() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(signer()),
+%%   <<"Quantity">> => integer()
+%% }
+-type active_trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_i_c_p_recordal() :: #{
+%%   <<"CNAME">> => string(),
+%%   <<"ICPRecordalStatus">> => list(any())
+%% }
+-type alias_i_c_p_recordal() :: #{binary() => any()}.
+
+
+%% Example:
+%% aliases() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type aliases() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_methods() :: #{
+%%   <<"CachedMethods">> => cached_methods(),
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type allowed_methods() :: #{binary() => any()}.
+
+
+%% Example:
+%% anycast_ip_list() :: #{
+%%   <<"AnycastIps">> => list(string()),
+%%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpCount">> => integer(),
+%%   <<"IpamConfig">> => ipam_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
 %%   <<"Status">> => string()
 %% }
--type invalidation_summary() :: #{binary() => any()}.
+-type anycast_ip_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_origin_access_controls() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_origin_access_controls() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_metrics_subscription_config() :: #{
-%%   <<"RealtimeMetricsSubscriptionStatus">> => list(any())
-%% }
--type realtime_metrics_subscription_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value_store_association() :: #{
-%%   <<"KeyValueStoreARN">> => string()
-%% }
--type key_value_store_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% signer() :: #{
-%%   <<"AwsAccountNumber">> => string(),
-%%   <<"KeyPairIds">> => key_pair_ids()
-%% }
--type signer() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cache_policy_request() :: #{
-%%   <<"CachePolicyConfig">> := cache_policy_config(),
-%%   <<"IfMatch">> => string()
-%% }
--type update_cache_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_response_headers_policies_result() :: #{
-%%   <<"ResponseHeadersPolicyList">> => response_headers_policy_list()
-%% }
--type list_response_headers_policies_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_front_origin_access_identity_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type cloud_front_origin_access_identity_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_realtime_log_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_realtime_log_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_group_request() :: #{
-%%   <<"AnycastIpListId">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IfMatch">> := string(),
-%%   <<"Ipv6Enabled">> => boolean()
-%% }
--type update_connection_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_origin_groups_per_distribution() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_origin_groups_per_distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% end_point() :: #{
-%%   <<"KinesisStreamConfig">> => kinesis_stream_config(),
-%%   <<"StreamType">> => string()
-%% }
--type end_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_response_headers_policy_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
-%% }
--type update_response_headers_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_association() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_distribution_not_disabled() :: #{
-%%   <<"Message">> => string()
-%% }
--type streaming_distribution_not_disabled() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_realtime_log_config_request() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type delete_realtime_log_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_request_policies_result() :: #{
-%%   <<"OriginRequestPolicyList">> => origin_request_policy_list()
-%% }
--type list_origin_request_policies_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cannot_change_immutable_public_key_fields() :: #{
-%%   <<"Message">> => string()
-%% }
--type cannot_change_immutable_public_key_fields() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_function_associations() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_function_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_origin_access_identity() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_origin_access_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% forwarded_values() :: #{
-%%   <<"Cookies">> => cookie_preference(),
-%%   <<"Headers">> => headers(),
-%%   <<"QueryString">> => boolean(),
-%%   <<"QueryStringCacheKeys">> => query_string_cache_keys()
-%% }
--type forwarded_values() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_not_disabled() :: #{
-%%   <<"Message">> => string()
-%% }
--type distribution_not_disabled() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Resource">> := string(),
-%%   <<"Tags">> := tags()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_log_configs() :: #{
+%% anycast_ip_list_collection() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(realtime_log_config()),
+%%   <<"Items">> => list(anycast_ip_list_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string()
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
 %% }
--type realtime_log_configs() :: #{binary() => any()}.
+-type anycast_ip_list_collection() :: #{binary() => any()}.
 
 
 %% Example:
-%% trust_store_summary() :: #{
+%% anycast_ip_list_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpCount">> => integer(),
+%%   <<"IpamConfig">> => ipam_config(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"NumberOfCaCertificates">> => integer(),
-%%   <<"Reason">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => string()
 %% }
--type trust_store_summary() :: #{binary() => any()}.
+-type anycast_ip_list_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% no_such_continuous_deployment_policy() :: #{
-%%   <<"Message">> => string()
+%% associate_alias_request() :: #{
+%%   <<"Alias">> := string()
 %% }
--type no_such_continuous_deployment_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_continuous_deployment_policy_request() :: #{}
--type get_continuous_deployment_policy_request() :: #{}.
+-type associate_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_key_group_result() :: #{
+%% associate_distribution_tenant_web_acl_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"WebACLArn">> := string()
+%% }
+-type associate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_distribution_tenant_web_acl_result() :: #{
 %%   <<"ETag">> => string(),
-%%   <<"KeyGroup">> => key_group()
+%%   <<"Id">> => string(),
+%%   <<"WebACLArn">> => string()
 %% }
--type update_key_group_result() :: #{binary() => any()}.
+-type associate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_custom_headers_in_response_headers_policy() :: #{
+%% associate_distribution_web_acl_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"WebACLArn">> := string()
+%% }
+-type associate_distribution_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_distribution_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type associate_distribution_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_too_large() :: #{
 %%   <<"Message">> => string()
 %% }
--type too_many_custom_headers_in_response_headers_policy() :: #{binary() => any()}.
+-type batch_too_large() :: #{binary() => any()}.
 
 
 %% Example:
-%% ipam_cidr_config() :: #{
-%%   <<"AnycastIp">> => string(),
-%%   <<"Cidr">> => string(),
-%%   <<"IpamPoolArn">> => string(),
-%%   <<"Status">> => list(any())
+%% ca_certificates_bundle_s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Version">> => string()
 %% }
--type ipam_cidr_config() :: #{binary() => any()}.
+-type ca_certificates_bundle_s3_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_response_headers_policies() :: #{
+%% cache_behavior() :: #{
+%%   <<"AllowedMethods">> => allowed_methods(),
+%%   <<"CachePolicyId">> => string(),
+%%   <<"Compress">> => boolean(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"FieldLevelEncryptionId">> => string(),
+%%   <<"ForwardedValues">> => forwarded_values(),
+%%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"GrpcConfig">> => grpc_config(),
+%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"OriginRequestPolicyId">> => string(),
+%%   <<"PathPattern">> => string(),
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"ResponseHeadersPolicyId">> => string(),
+%%   <<"SmoothStreaming">> => boolean(),
+%%   <<"TargetOriginId">> => string(),
+%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
+%%   <<"TrustedSigners">> => trusted_signers(),
+%%   <<"ViewerProtocolPolicy">> => list(any())
+%% }
+-type cache_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_behaviors() :: #{
+%%   <<"Items">> => list(cache_behavior()),
+%%   <<"Quantity">> => integer()
+%% }
+-type cache_behaviors() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy() :: #{
+%%   <<"CachePolicyConfig">> => cache_policy_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
--type too_many_response_headers_policies() :: #{binary() => any()}.
+-type cache_policy_already_exists() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_cookies_in_cache_policy() :: #{
+%% cache_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ParametersInCacheKeyAndForwardedToOrigin">> => parameters_in_cache_key_and_forwarded_to_origin()
+%% }
+-type cache_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_cookies_config() :: #{
+%%   <<"CookieBehavior">> => list(any()),
+%%   <<"Cookies">> => cookie_names()
+%% }
+-type cache_policy_cookies_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_headers_config() :: #{
+%%   <<"HeaderBehavior">> => list(any()),
+%%   <<"Headers">> => headers()
+%% }
+-type cache_policy_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
--type too_many_cookies_in_cache_policy() :: #{binary() => any()}.
+-type cache_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_list() :: #{
+%%   <<"Items">> => list(cache_policy_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type cache_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_query_strings_config() :: #{
+%%   <<"QueryStringBehavior">> => list(any()),
+%%   <<"QueryStrings">> => query_string_names()
+%% }
+-type cache_policy_query_strings_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cache_policy_summary() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type cache_policy_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -701,93 +691,174 @@
 
 
 %% Example:
-%% too_many_invalidations_in_progress() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_invalidations_in_progress() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_codes() :: #{
-%%   <<"Items">> => list(integer()),
+%% cached_methods() :: #{
+%%   <<"Items">> => list(list(any())()),
 %%   <<"Quantity">> => integer()
 %% }
--type status_codes() :: #{binary() => any()}.
+-type cached_methods() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_origin_endpoint_config() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"HTTPPort">> => integer(),
-%%   <<"HTTPSPort">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"OriginProtocolPolicy">> => list(any()),
-%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
+%% cannot_change_immutable_public_key_fields() :: #{
+%%   <<"Message">> => string()
 %% }
--type vpc_origin_endpoint_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_streaming_distribution_config_request() :: #{}
--type get_streaming_distribution_config_request() :: #{}.
+-type cannot_change_immutable_public_key_fields() :: #{binary() => any()}.
 
 
 %% Example:
-%% lambda_function_associations() :: #{
-%%   <<"Items">> => list(lambda_function_association()),
+%% cannot_delete_entity_while_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_delete_entity_while_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% cannot_update_entity_while_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cannot_update_entity_while_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
+%%   <<"Id">> => string(),
+%%   <<"S3CanonicalUserId">> => string()
+%% }
+-type cloud_front_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_front_origin_access_identity_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string()
+%% }
+-type cloud_front_origin_access_identity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cloud_front_origin_access_identity_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_front_origin_access_identity_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(cloud_front_origin_access_identity_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
 %% }
--type lambda_function_associations() :: #{binary() => any()}.
+-type cloud_front_origin_access_identity_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_continuous_deployment_policies() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_continuous_deployment_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_long_c_s_p_in_response_headers_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_long_c_s_p_in_response_headers_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_summary() :: #{
+%% cloud_front_origin_access_identity_summary() :: #{
 %%   <<"Comment">> => string(),
-%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
+%%   <<"Id">> => string(),
+%%   <<"S3CanonicalUserId">> => string()
+%% }
+-type cloud_front_origin_access_identity_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cname_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cname_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_alias() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Alias">> => string(),
+%%   <<"DistributionId">> => string()
+%% }
+-type conflicting_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflicting_aliases_list() :: #{
+%%   <<"Items">> => list(conflicting_alias()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type conflicting_aliases_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_function_association() :: #{
+%%   <<"Id">> => string()
+%% }
+-type connection_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_function_summary() :: #{
+%%   <<"ConnectionFunctionArn">> => string(),
+%%   <<"ConnectionFunctionConfig">> => function_config(),
+%%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
+%%   <<"Name">> => string(),
+%%   <<"Stage">> => list(any()),
+%%   <<"Status">> => string()
 %% }
--type field_level_encryption_summary() :: #{binary() => any()}.
+-type connection_function_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_distribution_tenant_by_domain_request() :: #{
-%%   <<"Domain">> := string()
+%% connection_function_test_result() :: #{
+%%   <<"ComputeUtilization">> => string(),
+%%   <<"ConnectionFunctionErrorMessage">> => string(),
+%%   <<"ConnectionFunctionExecutionLogs">> => list(string()),
+%%   <<"ConnectionFunctionOutput">> => string(),
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
 %% }
--type get_distribution_tenant_by_domain_request() :: #{binary() => any()}.
+-type connection_function_test_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_arg_profile_empty() :: #{
-%%   <<"Message">> => string()
-%% }
--type query_arg_profile_empty() :: #{binary() => any()}.
-
-%% Example:
-%% get_origin_request_policy_request() :: #{}
--type get_origin_request_policy_request() :: #{}.
-
-
-%% Example:
-%% distribution_config_with_tags() :: #{
-%%   <<"DistributionConfig">> => distribution_config(),
+%% connection_group() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"Ipv6Enabled">> => boolean(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"RoutingEndpoint">> => string(),
+%%   <<"Status">> => string(),
 %%   <<"Tags">> => tags()
 %% }
--type distribution_config_with_tags() :: #{binary() => any()}.
+-type connection_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_group_association_filter() :: #{
+%%   <<"AnycastIpListId">> => string()
+%% }
+-type connection_group_association_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -808,10 +879,119 @@
 
 
 %% Example:
-%% cannot_update_entity_while_in_use() :: #{
+%% content_type_profile() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"ProfileId">> => string()
+%% }
+-type content_type_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_type_profile_config() :: #{
+%%   <<"ContentTypeProfiles">> => content_type_profiles(),
+%%   <<"ForwardWhenContentTypeIsUnknown">> => boolean()
+%% }
+-type content_type_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_type_profiles() :: #{
+%%   <<"Items">> => list(content_type_profile()),
+%%   <<"Quantity">> => integer()
+%% }
+-type content_type_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type continuous_deployment_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_already_exists() :: #{
 %%   <<"Message">> => string()
 %% }
--type cannot_update_entity_while_in_use() :: #{binary() => any()}.
+-type continuous_deployment_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"StagingDistributionDnsNames">> => staging_distribution_dns_names(),
+%%   <<"TrafficConfig">> => traffic_config()
+%% }
+-type continuous_deployment_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type continuous_deployment_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_list() :: #{
+%%   <<"Items">> => list(continuous_deployment_policy_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type continuous_deployment_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_policy_summary() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy()
+%% }
+-type continuous_deployment_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_single_header_config() :: #{
+%%   <<"Header">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type continuous_deployment_single_header_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_deployment_single_weight_config() :: #{
+%%   <<"SessionStickinessConfig">> => session_stickiness_config(),
+%%   <<"Weight">> => float()
+%% }
+-type continuous_deployment_single_weight_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cookie_names() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type cookie_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% cookie_preference() :: #{
+%%   <<"Forward">> => list(any()),
+%%   <<"WhitelistedNames">> => cookie_names()
+%% }
+-type cookie_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_distribution_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> => string(),
+%%   <<"Staging">> => boolean()
+%% }
+-type copy_distribution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -824,21 +1004,124 @@
 
 
 %% Example:
-%% delete_origin_request_policy_request() :: #{
-%%   <<"IfMatch">> => string()
+%% create_anycast_ip_list_request() :: #{
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpCount">> := integer(),
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
 %% }
--type delete_origin_request_policy_request() :: #{binary() => any()}.
+-type create_anycast_ip_list_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_cloud_front_origin_access_identity_request() :: #{}
--type get_cloud_front_origin_access_identity_request() :: #{}.
+%% create_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type create_anycast_ip_list_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% illegal_origin_access_configuration() :: #{
-%%   <<"Message">> => string()
+%% create_cache_policy_request() :: #{
+%%   <<"CachePolicyConfig">> := cache_policy_config()
 %% }
--type illegal_origin_access_configuration() :: #{binary() => any()}.
+-type create_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_front_origin_access_identity_request() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config()
+%% }
+-type create_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_function_request() :: #{
+%%   <<"ConnectionFunctionCode">> := binary(),
+%%   <<"ConnectionFunctionConfig">> := function_config(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_group_request() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Ipv6Enabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_connection_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type create_connection_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_continuous_deployment_policy_request() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config()
+%% }
+-type create_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_request() :: #{
+%%   <<"DistributionConfig">> := distribution_config()
+%% }
+-type create_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string()
+%% }
+-type create_distribution_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -855,31 +1138,45 @@
 %% }
 -type create_distribution_tenant_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_field_level_encryption_profile_request() :: #{}
--type get_field_level_encryption_profile_request() :: #{}.
-
 
 %% Example:
-%% invalid_if_match_version() :: #{
-%%   <<"Message">> => string()
+%% create_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
 %% }
--type invalid_if_match_version() :: #{binary() => any()}.
+-type create_distribution_tenant_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_distributions_by_connection_function_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
+%% create_distribution_with_tags_request() :: #{
+%%   <<"DistributionConfigWithTags">> := distribution_config_with_tags()
 %% }
--type list_distributions_by_connection_function_result() :: #{binary() => any()}.
+-type create_distribution_with_tags_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_origin_request_policy_result() :: #{
+%% create_distribution_with_tags_result() :: #{
+%%   <<"Distribution">> => distribution(),
 %%   <<"ETag">> => string(),
-%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%%   <<"Location">> => string()
 %% }
--type update_origin_request_policy_result() :: #{binary() => any()}.
+-type create_distribution_with_tags_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_config_request() :: #{
+%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config()
+%% }
+-type create_field_level_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption(),
+%%   <<"Location">> => string()
+%% }
+-type create_field_level_encryption_config_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -890,35 +1187,168 @@
 
 
 %% Example:
-%% too_many_distributions_associated_to_cache_policy() :: #{
-%%   <<"Message">> => string()
+%% create_field_level_encryption_profile_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile(),
+%%   <<"Location">> => string()
 %% }
--type too_many_distributions_associated_to_cache_policy() :: #{binary() => any()}.
+-type create_field_level_encryption_profile_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% trusted_key_group_does_not_exist() :: #{
-%%   <<"Message">> => string()
+%% create_function_request() :: #{
+%%   <<"FunctionCode">> := binary(),
+%%   <<"FunctionConfig">> := function_config(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
 %% }
--type trusted_key_group_does_not_exist() :: #{binary() => any()}.
+-type create_function_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% distribution_resource_id() :: #{
-%%   <<"DistributionId">> => string(),
-%%   <<"DistributionTenantId">> => string()
+%% create_function_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FunctionSummary">> => function_summary(),
+%%   <<"Location">> => string()
 %% }
--type distribution_resource_id() :: #{binary() => any()}.
+-type create_function_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% continuous_deployment_policy_list() :: #{
-%%   <<"Items">> => list(continuous_deployment_policy_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
+%% create_invalidation_for_distribution_tenant_request() :: #{
+%%   <<"InvalidationBatch">> := invalidation_batch()
 %% }
--type continuous_deployment_policy_list() :: #{binary() => any()}.
+-type create_invalidation_for_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_for_distribution_tenant_result() :: #{
+%%   <<"Invalidation">> => invalidation(),
+%%   <<"Location">> => string()
+%% }
+-type create_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_request() :: #{
+%%   <<"InvalidationBatch">> := invalidation_batch()
+%% }
+-type create_invalidation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_invalidation_result() :: #{
+%%   <<"Invalidation">> => invalidation(),
+%%   <<"Location">> => string()
+%% }
+-type create_invalidation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_group_request() :: #{
+%%   <<"KeyGroupConfig">> := key_group_config()
+%% }
+-type create_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_value_store_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"ImportSource">> => import_source(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags()
+%% }
+-type create_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitoring_subscription_request() :: #{
+%%   <<"MonitoringSubscription">> := monitoring_subscription()
+%% }
+-type create_monitoring_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitoring_subscription_result() :: #{
+%%   <<"MonitoringSubscription">> => monitoring_subscription()
+%% }
+-type create_monitoring_subscription_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_access_control_request() :: #{
+%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
+%% }
+-type create_origin_access_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type create_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_request_policy_request() :: #{
+%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
+%% }
+-type create_origin_request_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type create_origin_request_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_public_key_request() :: #{
+%%   <<"PublicKeyConfig">> := public_key_config()
+%% }
+-type create_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type create_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_realtime_log_config_request() :: #{
+%%   <<"EndPoints">> := list(end_point()),
+%%   <<"Fields">> := list(string()),
+%%   <<"Name">> := string(),
+%%   <<"SamplingRate">> := float()
+%% }
+-type create_realtime_log_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -929,243 +1359,255 @@
 
 
 %% Example:
-%% anycast_ip_list() :: #{
-%%   <<"AnycastIps">> => list(string()),
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpCount">> => integer(),
-%%   <<"IpamConfig">> => ipam_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
+%% create_response_headers_policy_request() :: #{
+%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
 %% }
--type anycast_ip_list() :: #{binary() => any()}.
+-type create_response_headers_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_entities() :: #{
-%%   <<"Items">> => list(encryption_entity()),
-%%   <<"Quantity">> => integer()
-%% }
--type encryption_entities() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_front_origin_access_identity_config_result() :: #{
-%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
-%%   <<"ETag">> => string()
-%% }
--type get_cloud_front_origin_access_identity_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_request_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type list_origin_request_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_query_string_parameters() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_query_string_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_association_request() :: #{
-%%   <<"Domain">> := string(),
-%%   <<"IfMatch">> => string(),
-%%   <<"TargetResource">> := distribution_resource_id()
-%% }
--type update_domain_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_monitoring_subscription_result() :: #{
-%%   <<"MonitoringSubscription">> => monitoring_subscription()
-%% }
--type get_monitoring_subscription_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_functions() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_functions() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions_associated_to_origin_request_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions_associated_to_origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_result() :: #{
-%%   <<"ContentType">> => string(),
+%% create_response_headers_policy_result() :: #{
 %%   <<"ETag">> => string(),
-%%   <<"FunctionCode">> => binary()
+%%   <<"Location">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
 %% }
--type get_function_result() :: #{binary() => any()}.
+-type create_response_headers_policy_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_distributions_associated_to_key_group() :: #{
-%%   <<"Message">> => string()
+%% create_streaming_distribution_request() :: #{
+%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
 %% }
--type too_many_distributions_associated_to_key_group() :: #{binary() => any()}.
+-type create_streaming_distribution_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_tagging() :: #{
-%%   <<"Message">> => string()
+%% create_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
 %% }
--type invalid_tagging() :: #{binary() => any()}.
-
-%% Example:
-%% get_continuous_deployment_policy_config_request() :: #{}
--type get_continuous_deployment_policy_config_request() :: #{}.
+-type create_streaming_distribution_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% origin_request_policy_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"CookiesConfig">> => origin_request_policy_cookies_config(),
-%%   <<"HeadersConfig">> => origin_request_policy_headers_config(),
-%%   <<"Name">> => string(),
-%%   <<"QueryStringsConfig">> => origin_request_policy_query_strings_config()
+%% create_streaming_distribution_with_tags_request() :: #{
+%%   <<"StreamingDistributionConfigWithTags">> := streaming_distribution_config_with_tags()
 %% }
--type origin_request_policy_config() :: #{binary() => any()}.
+-type create_streaming_distribution_with_tags_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% parameter_definition_schema() :: #{
-%%   <<"StringSchema">> => string_schema_config()
+%% create_streaming_distribution_with_tags_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
 %% }
--type parameter_definition_schema() :: #{binary() => any()}.
+-type create_streaming_distribution_with_tags_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_key_value_stores_result() :: #{
-%%   <<"KeyValueStoreList">> => key_value_store_list()
+%% create_trust_store_request() :: #{
+%%   <<"CaCertificatesBundleSource">> := list(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => tags(),
+%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
 %% }
--type list_key_value_stores_result() :: #{binary() => any()}.
+-type create_trust_store_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_continuous_deployment_policy_result() :: #{
-%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
-%%   <<"ETag">> => string()
+%% create_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
 %% }
--type update_continuous_deployment_policy_result() :: #{binary() => any()}.
+-type create_trust_store_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_connection_function_result() :: #{
-%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
-%%   <<"ETag">> => string()
-%% }
--type update_connection_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_protocol_settings() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_protocol_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_origin_request() :: #{
-%%   <<"IfMatch">> := string(),
+%% create_vpc_origin_request() :: #{
+%%   <<"Tags">> => tags(),
 %%   <<"VpcOriginEndpointConfig">> := vpc_origin_endpoint_config()
 %% }
--type update_vpc_origin_request() :: #{binary() => any()}.
+-type create_vpc_origin_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% field_level_encryption_list() :: #{
-%%   <<"Items">> => list(field_level_encryption_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
+%% create_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type create_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_error_response() :: #{
+%%   <<"ErrorCachingMinTTL">> => float(),
+%%   <<"ErrorCode">> => integer(),
+%%   <<"ResponseCode">> => string(),
+%%   <<"ResponsePagePath">> => string()
+%% }
+-type custom_error_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_error_responses() :: #{
+%%   <<"Items">> => list(custom_error_response()),
 %%   <<"Quantity">> => integer()
 %% }
--type field_level_encryption_list() :: #{binary() => any()}.
+-type custom_error_responses() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_resource_policy_result() :: #{
-%%   <<"ResourceArn">> => string()
+%% custom_headers() :: #{
+%%   <<"Items">> => list(origin_custom_header()),
+%%   <<"Quantity">> => integer()
 %% }
--type put_resource_policy_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_response_headers_policy_request() :: #{}
--type get_response_headers_policy_request() :: #{}.
+-type custom_headers() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_distributions_by_web_acl_id_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
+%% custom_origin_config() :: #{
+%%   <<"HTTPPort">> => integer(),
+%%   <<"HTTPSPort">> => integer(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"OriginKeepaliveTimeout">> => integer(),
+%%   <<"OriginMtlsConfig">> => origin_mtls_config(),
+%%   <<"OriginProtocolPolicy">> => list(any()),
+%%   <<"OriginReadTimeout">> => integer(),
+%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
 %% }
--type list_distributions_by_web_acl_id_result() :: #{binary() => any()}.
+-type custom_origin_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% public_key_already_exists() :: #{
-%%   <<"Message">> => string()
+%% customizations() :: #{
+%%   <<"Certificate">> => certificate(),
+%%   <<"GeoRestrictions">> => geo_restriction_customization(),
+%%   <<"WebAcl">> => web_acl_customization()
 %% }
--type public_key_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% get_trust_store_request() :: #{}
--type get_trust_store_request() :: #{}.
+-type customizations() :: #{binary() => any()}.
 
 
 %% Example:
-%% continuous_deployment_single_weight_config() :: #{
-%%   <<"SessionStickinessConfig">> => session_stickiness_config(),
-%%   <<"Weight">> => float()
+%% default_cache_behavior() :: #{
+%%   <<"AllowedMethods">> => allowed_methods(),
+%%   <<"CachePolicyId">> => string(),
+%%   <<"Compress">> => boolean(),
+%%   <<"DefaultTTL">> => float(),
+%%   <<"FieldLevelEncryptionId">> => string(),
+%%   <<"ForwardedValues">> => forwarded_values(),
+%%   <<"FunctionAssociations">> => function_associations(),
+%%   <<"GrpcConfig">> => grpc_config(),
+%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
+%%   <<"MaxTTL">> => float(),
+%%   <<"MinTTL">> => float(),
+%%   <<"OriginRequestPolicyId">> => string(),
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"ResponseHeadersPolicyId">> => string(),
+%%   <<"SmoothStreaming">> => boolean(),
+%%   <<"TargetOriginId">> => string(),
+%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
+%%   <<"TrustedSigners">> => trusted_signers(),
+%%   <<"ViewerProtocolPolicy">> => list(any())
 %% }
--type continuous_deployment_single_weight_config() :: #{binary() => any()}.
+-type default_cache_behavior() :: #{binary() => any()}.
 
 
 %% Example:
-%% response_headers_policy_strict_transport_security() :: #{
-%%   <<"AccessControlMaxAgeSec">> => integer(),
-%%   <<"IncludeSubdomains">> => boolean(),
-%%   <<"Override">> => boolean(),
-%%   <<"Preload">> => boolean()
+%% delete_anycast_ip_list_request() :: #{
+%%   <<"IfMatch">> := string()
 %% }
--type response_headers_policy_strict_transport_security() :: #{binary() => any()}.
+-type delete_anycast_ip_list_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_streaming_distribution_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
-%% }
--type get_streaming_distribution_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_not_found() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_field_level_encryption_config_request() :: #{
-%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config(),
+%% delete_cache_policy_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
--type update_field_level_encryption_config_request() :: #{binary() => any()}.
+-type delete_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cloud_front_origin_access_identity_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_group_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_connection_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_continuous_deployment_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_distribution_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_distribution_tenant_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_field_level_encryption_config_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_field_level_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_field_level_encryption_profile_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_field_level_encryption_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_key_group_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_key_value_store_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_key_value_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitoring_subscription_request() :: #{}
+-type delete_monitoring_subscription_request() :: #{}.
 
 %% Example:
 %% delete_monitoring_subscription_result() :: #{}
@@ -1173,224 +1615,268 @@
 
 
 %% Example:
-%% list_invalidations_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_invalidations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_item() :: #{
-%%   <<"Domain">> => string()
-%% }
--type domain_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_owned_resource_result() :: #{
-%%   <<"DistributionList">> => distribution_id_owner_list()
-%% }
--type list_distributions_by_owned_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cache_policy_result() :: #{
-%%   <<"CachePolicy">> => cache_policy(),
-%%   <<"ETag">> => string()
-%% }
--type update_cache_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_tenant_request() :: #{
-%%   <<"ConnectionGroupId">> => string(),
-%%   <<"Customizations">> => customizations(),
-%%   <<"DistributionId">> => string(),
-%%   <<"Domains">> => list(domain_item()),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IfMatch">> := string(),
-%%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type update_distribution_tenant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflicting_alias() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Alias">> => string(),
-%%   <<"DistributionId">> => string()
-%% }
--type conflicting_alias() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_cache_policy_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_cache_policy_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_field_level_encryption_content_type_profiles() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_field_level_encryption_content_type_profiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connection_group_by_routing_endpoint_request() :: #{
-%%   <<"RoutingEndpoint">> := string()
-%% }
--type get_connection_group_by_routing_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_deployment_policy_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type continuous_deployment_policy_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"DefaultTTL">> => float(),
-%%   <<"MaxTTL">> => float(),
-%%   <<"MinTTL">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"ParametersInCacheKeyAndForwardedToOrigin">> => parameters_in_cache_key_and_forwarded_to_origin()
-%% }
--type cache_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% trusted_key_groups() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type trusted_key_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_front_origin_access_identity_request() :: #{
-%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config(),
+%% delete_origin_access_control_request() :: #{
 %%   <<"IfMatch">> => string()
 %% }
--type update_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+-type delete_origin_access_control_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_front_origin_access_identity_summary() :: #{
-%%   <<"Comment">> => string(),
+%% delete_origin_request_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_origin_request_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_public_key_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_response_headers_policy_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_response_headers_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_streaming_distribution_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type delete_streaming_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_trust_store_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_trust_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_vpc_origin_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type delete_vpc_origin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type delete_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_connection_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type describe_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string()
+%% }
+-type describe_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type describe_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_function_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type describe_function_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_key_value_store_request() :: #{}
+-type describe_key_value_store_request() :: #{}.
+
+
+%% Example:
+%% describe_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store()
+%% }
+-type describe_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_distribution_tenant_web_acl_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type disassociate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_distribution_tenant_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type disassociate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_distribution_web_acl_request() :: #{
+%%   <<"IfMatch">> => string()
+%% }
+-type disassociate_distribution_web_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_distribution_web_acl_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type disassociate_distribution_web_acl_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ActiveTrustedKeyGroups">> => active_trusted_key_groups(),
+%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
+%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()),
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"DomainName">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"S3CanonicalUserId">> => string()
+%%   <<"InProgressInvalidationBatches">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
 %% }
--type cloud_front_origin_access_identity_summary() :: #{binary() => any()}.
+-type distribution() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_invalidations_for_distribution_tenant_result() :: #{
-%%   <<"InvalidationList">> => invalidation_list()
+%% distribution_already_exists() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_invalidations_for_distribution_tenant_result() :: #{binary() => any()}.
+-type distribution_already_exists() :: #{binary() => any()}.
 
 
 %% Example:
-%% origin_access_control_list() :: #{
+%% distribution_config() :: #{
+%%   <<"Aliases">> => aliases(),
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"CacheBehaviors">> => cache_behaviors(),
+%%   <<"CacheTagConfig">> => cache_tag_config(),
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"ConnectionFunctionAssociation">> => connection_function_association(),
+%%   <<"ConnectionMode">> => list(any()),
+%%   <<"ContinuousDeploymentPolicyId">> => string(),
+%%   <<"CustomErrorResponses">> => custom_error_responses(),
+%%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
+%%   <<"DefaultRootObject">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HttpVersion">> => list(any()),
+%%   <<"IsIPV6Enabled">> => boolean(),
+%%   <<"Logging">> => logging_config(),
+%%   <<"OriginGroups">> => origin_groups(),
+%%   <<"Origins">> => origins(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"Restrictions">> => restrictions(),
+%%   <<"Staging">> => boolean(),
+%%   <<"TenantConfig">> => tenant_config(),
+%%   <<"ViewerCertificate">> => viewer_certificate(),
+%%   <<"ViewerMtlsConfig">> => viewer_mtls_config(),
+%%   <<"WebACLId">> => string()
+%% }
+-type distribution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_config_with_tags() :: #{
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"Tags">> => tags()
+%% }
+-type distribution_config_with_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_id_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(origin_access_control_summary()),
+%%   <<"Items">> => list(string()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
 %% }
--type origin_access_control_list() :: #{binary() => any()}.
+-type distribution_id_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% geo_restriction() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer(),
-%%   <<"RestrictionType">> => list(any())
+%% distribution_id_owner() :: #{
+%%   <<"DistributionId">> => string(),
+%%   <<"OwnerAccountId">> => string()
 %% }
--type geo_restriction() :: #{binary() => any()}.
+-type distribution_id_owner() :: #{binary() => any()}.
 
 
 %% Example:
-%% response_headers_policy_content_type_options() :: #{
-%%   <<"Override">> => boolean()
+%% distribution_id_owner_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(distribution_id_owner()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
 %% }
--type response_headers_policy_content_type_options() :: #{binary() => any()}.
+-type distribution_id_owner_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_origin_access_control_request() :: #{
-%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
+%% distribution_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(distribution_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
 %% }
--type create_origin_access_control_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_origin_request_policy_config_request() :: #{}
--type get_origin_request_policy_config_request() :: #{}.
+-type distribution_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_anycast_ip_list_result() :: #{
-%%   <<"AnycastIpList">> => anycast_ip_list(),
-%%   <<"ETag">> => string()
+%% distribution_not_disabled() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_anycast_ip_list_result() :: #{binary() => any()}.
+-type distribution_not_disabled() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_distribution_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IfMatch">> => string(),
-%%   <<"Staging">> => boolean()
+%% distribution_resource_id() :: #{
+%%   <<"DistributionId">> => string(),
+%%   <<"DistributionTenantId">> => string()
 %% }
--type copy_distribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_group_request() :: #{}
--type get_connection_group_request() :: #{}.
-
-
-%% Example:
-%% test_result() :: #{
-%%   <<"ComputeUtilization">> => string(),
-%%   <<"FunctionErrorMessage">> => string(),
-%%   <<"FunctionExecutionLogs">> => list(string()),
-%%   <<"FunctionOutput">> => string(),
-%%   <<"FunctionSummary">> => function_summary()
-%% }
--type test_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_front_origin_access_identity_result() :: #{
-%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
-%%   <<"ETag">> => string()
-%% }
--type update_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_group_member() :: #{
-%%   <<"OriginId">> => string()
-%% }
--type origin_group_member() :: #{binary() => any()}.
+-type distribution_resource_id() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1426,2446 +1912,6 @@
 
 
 %% Example:
-%% list_cloud_front_origin_access_identities_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_cloud_front_origin_access_identities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% alias_i_c_p_recordal() :: #{
-%%   <<"CNAME">> => string(),
-%%   <<"ICPRecordalStatus">> => list(any())
-%% }
--type alias_i_c_p_recordal() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cloud_front_origin_access_identities_result() :: #{
-%%   <<"CloudFrontOriginAccessIdentityList">> => cloud_front_origin_access_identity_list()
-%% }
--type list_cloud_front_origin_access_identities_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_stickiness_config() :: #{
-%%   <<"IdleTTL">> => integer(),
-%%   <<"MaximumTTL">> => integer()
-%% }
--type session_stickiness_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_public_keys_result() :: #{
-%%   <<"PublicKeyList">> => public_key_list()
-%% }
--type list_public_keys_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_field_level_encryption_configs_result() :: #{
-%%   <<"FieldLevelEncryptionList">> => field_level_encryption_list()
-%% }
--type list_field_level_encryption_configs_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter_definition() :: #{
-%%   <<"Definition">> => parameter_definition_schema(),
-%%   <<"Name">> => string()
-%% }
--type parameter_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_config_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type field_level_encryption_config_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_cache_behavior() :: #{
-%%   <<"AllowedMethods">> => allowed_methods(),
-%%   <<"CachePolicyId">> => string(),
-%%   <<"Compress">> => boolean(),
-%%   <<"DefaultTTL">> => float(),
-%%   <<"FieldLevelEncryptionId">> => string(),
-%%   <<"ForwardedValues">> => forwarded_values(),
-%%   <<"FunctionAssociations">> => function_associations(),
-%%   <<"GrpcConfig">> => grpc_config(),
-%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
-%%   <<"MaxTTL">> => float(),
-%%   <<"MinTTL">> => float(),
-%%   <<"OriginRequestPolicyId">> => string(),
-%%   <<"RealtimeLogConfigArn">> => string(),
-%%   <<"ResponseHeadersPolicyId">> => string(),
-%%   <<"SmoothStreaming">> => boolean(),
-%%   <<"TargetOriginId">> => string(),
-%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
-%%   <<"TrustedSigners">> => trusted_signers(),
-%%   <<"ViewerProtocolPolicy">> => list(any())
-%% }
--type default_cache_behavior() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile() :: #{
-%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type field_level_encryption_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% illegal_update() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_value_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyValueStore">> => key_value_store(),
-%%   <<"Location">> => string()
-%% }
--type create_key_value_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_configuration() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"Reason">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type dns_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_deployment_policy_summary() :: #{
-%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy()
-%% }
--type continuous_deployment_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_result() :: #{
-%%   <<"FunctionList">> => function_list()
-%% }
--type list_functions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_front_origin_access_identity_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type cloud_front_origin_access_identity_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connection_group_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_connection_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_function_request() :: #{
-%%   <<"ConnectionFunctionCode">> := binary(),
-%%   <<"ConnectionFunctionConfig">> := function_config(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
-%% }
--type create_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_function_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FunctionSummary">> => function_summary()
-%% }
--type describe_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_group_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Items">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type key_group_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_origin() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"OriginAccessIdentity">> => string()
-%% }
--type s3_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_invalidations_for_distribution_tenant_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_invalidations_for_distribution_tenant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
-%% }
--type response_headers_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_t_t_l_order() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_t_t_l_order() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_group_result() :: #{
-%%   <<"ConnectionGroup">> => connection_group(),
-%%   <<"ETag">> => string()
-%% }
--type update_connection_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type field_level_encryption_profile_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_function_result() :: #{
-%%   <<"TestResult">> => test_result()
-%% }
--type test_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_connection_function_result() :: #{
-%%   <<"ConnectionFunctionTestResult">> => connection_function_test_result()
-%% }
--type test_connection_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitoring_subscription() :: #{
-%%   <<"RealtimeMetricsSubscriptionConfig">> => realtime_metrics_subscription_config()
-%% }
--type monitoring_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% get_public_key_config_request() :: #{}
--type get_public_key_config_request() :: #{}.
-
-
-%% Example:
-%% get_invalidation_result() :: #{
-%%   <<"Invalidation">> => invalidation()
-%% }
--type get_invalidation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_logging_config() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"Prefix">> => string()
-%% }
--type streaming_logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trust_store_request() :: #{
-%%   <<"CaCertificatesBundleSource">> => list(),
-%%   <<"IfMatch">> := string(),
-%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
-%% }
--type update_trust_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_invalidation_request() :: #{
-%%   <<"InvalidationBatch">> := invalidation_batch()
-%% }
--type create_invalidation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_string_cache_keys() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type query_string_cache_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_streaming_distribution_request() :: #{
-%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
-%% }
--type create_streaming_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_access_control_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OriginAccessControlOriginType">> => list(any()),
-%%   <<"SigningBehavior">> => list(any()),
-%%   <<"SigningProtocol">> => list(any())
-%% }
--type origin_access_control_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_group_config_request() :: #{}
--type get_key_group_config_request() :: #{}.
-
-
-%% Example:
-%% too_many_cookie_names_in_white_list() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_cookie_names_in_white_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_distribution_request() :: #{
-%%   <<"DistributionConfig">> := distribution_config()
-%% }
--type create_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_tenant_by_domain_result() :: #{
-%%   <<"DistributionTenant">> => distribution_tenant(),
-%%   <<"ETag">> => string()
-%% }
--type get_distribution_tenant_by_domain_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_continuous_deployment_policy_request() :: #{
-%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config()
-%% }
--type create_continuous_deployment_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_config() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IncludeCookies">> => boolean(),
-%%   <<"Prefix">> => string()
-%% }
--type logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_argument() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_argument() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trust_stores_result() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"TrustStoreList">> => list(trust_store_summary())
-%% }
--type list_trust_stores_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_referrer_policy() :: #{
-%%   <<"Override">> => boolean(),
-%%   <<"ReferrerPolicy">> => list(any())
-%% }
--type response_headers_policy_referrer_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"Resource">> := string(),
-%%   <<"TagKeys">> := tag_keys()
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_streaming_distribution_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"StreamingDistribution">> => streaming_distribution()
-%% }
--type create_streaming_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_web_acl_id() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_web_acl_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_cookies_in_origin_request_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_cookies_in_origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cache_policy_result() :: #{
-%%   <<"CachePolicy">> => cache_policy(),
-%%   <<"ETag">> => string()
-%% }
--type get_cache_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_continuous_deployment_policy_result() :: #{
-%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_continuous_deployment_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_group() :: #{
-%%   <<"Id">> => string(),
-%%   <<"KeyGroupConfig">> => key_group_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type key_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_key_group_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_key_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_public_key_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"PublicKeyConfig">> := public_key_config()
-%% }
--type update_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ca_certificates_bundle_s3_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"Version">> => string()
-%% }
--type ca_certificates_bundle_s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_type_profile() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"ProfileId">> => string()
-%% }
--type content_type_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_distribution_web_acl_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"WebACLArn">> => string()
-%% }
--type associate_distribution_web_acl_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_key_group_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyGroup">> => key_group()
-%% }
--type get_key_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% geo_restriction_customization() :: #{
-%%   <<"Locations">> => list(string()),
-%%   <<"RestrictionType">> => list(any())
-%% }
--type geo_restriction_customization() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_invalidation_for_distribution_tenant_result() :: #{
-%%   <<"Invalidation">> => invalidation(),
-%%   <<"Location">> => string()
-%% }
--type create_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_anycast_ip_list_id_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
-%% }
--type list_distributions_by_anycast_ip_list_id_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy_headers_config() :: #{
-%%   <<"HeaderBehavior">> => list(any()),
-%%   <<"Headers">> => headers()
-%% }
--type origin_request_policy_headers_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_too_large() :: #{
-%%   <<"Message">> => string()
-%% }
--type batch_too_large() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_arg_profiles() :: #{
-%%   <<"Items">> => list(query_arg_profile()),
-%%   <<"Quantity">> => integer()
-%% }
--type query_arg_profiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trust_stores_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_trust_stores_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% anycast_ip_list_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpCount">> => integer(),
-%%   <<"IpamConfig">> => ipam_config(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type anycast_ip_list_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_continuous_deployment_policy_request() :: #{
-%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config(),
-%%   <<"IfMatch">> => string()
-%% }
--type update_continuous_deployment_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_trust_store_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_trust_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_access_control_allow_origins() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_id_owner_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(distribution_id_owner()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type distribution_id_owner_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_association() :: #{
-%%   <<"EventType">> => list(any()),
-%%   <<"FunctionARN">> => string()
-%% }
--type function_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_trust_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"TrustStore">> => trust_store()
-%% }
--type update_trust_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_group_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type key_group_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_realtime_log_config_request() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
-%% }
--type get_realtime_log_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_group_list() :: #{
-%%   <<"Items">> => list(key_group_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type key_group_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_tenant_result() :: #{
-%%   <<"DistributionTenant">> => distribution_tenant(),
-%%   <<"ETag">> => string()
-%% }
--type get_distribution_tenant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_deployment_policy() :: #{
-%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type continuous_deployment_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_shield() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"OriginShieldRegion">> => string()
-%% }
--type origin_shield() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_type_profiles() :: #{
-%%   <<"Items">> => list(content_type_profile()),
-%%   <<"Quantity">> => integer()
-%% }
--type content_type_profiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_frame_options() :: #{
-%%   <<"FrameOption">> => list(any()),
-%%   <<"Override">> => boolean()
-%% }
--type response_headers_policy_frame_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_field_level_encryption_profiles_result() :: #{
-%%   <<"FieldLevelEncryptionProfileList">> => field_level_encryption_profile_list()
-%% }
--type list_field_level_encryption_profiles_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_size_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_size_limit_exceeded() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type field_level_encryption_profile_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_field_level_encryption_config() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_field_level_encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_list() :: #{
-%%   <<"Items">> => list(cache_policy_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type cache_policy_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_public_keys_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_public_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_config_result() :: #{
-%%   <<"DistributionConfig">> => distribution_config(),
-%%   <<"ETag">> => string()
-%% }
--type get_distribution_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_key_value_stores_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Status">> => string()
-%% }
--type list_key_value_stores_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_trust_store_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
-%% }
--type list_distributions_by_trust_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_distribution() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
-%%   <<"DomainName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
-%% }
--type streaming_distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% origins() :: #{
-%%   <<"Items">> => list(origin()),
-%%   <<"Quantity">> => integer()
-%% }
--type origins() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_cloud_front_origin_access_identity() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_cloud_front_origin_access_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_field_level_encryption_config_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_field_level_encryption_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_size_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type function_size_limit_exceeded() :: #{binary() => any()}.
-
-
-%% Example:
-%% cached_methods() :: #{
-%%   <<"Items">> => list(list(any())()),
-%%   <<"Quantity">> => integer()
-%% }
--type cached_methods() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_origin_access_control() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_origin_access_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connection_groups_result() :: #{
-%%   <<"ConnectionGroups">> => list(connection_group_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_connection_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_key_value_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyValueStore">> => key_value_store()
-%% }
--type describe_key_value_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_conflicts_request() :: #{
-%%   <<"Domain">> := string(),
-%%   <<"DomainControlValidationResource">> := distribution_resource_id(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_domain_conflicts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_origin() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_behaviors() :: #{
-%%   <<"Items">> => list(cache_behavior()),
-%%   <<"Quantity">> => integer()
-%% }
--type cache_behaviors() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_headers() :: #{
-%%   <<"Items">> => list(origin_custom_header()),
-%%   <<"Quantity">> => integer()
-%% }
--type custom_headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_config_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type field_level_encryption_config_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_realtime_log_config_request() :: #{
-%%   <<"EndPoints">> := list(end_point()),
-%%   <<"Fields">> := list(string()),
-%%   <<"Name">> := string(),
-%%   <<"SamplingRate">> := float()
-%% }
--type create_realtime_log_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_operation() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_headers_in_cache_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_headers_in_cache_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_associations() :: #{
-%%   <<"Items">> => list(function_association()),
-%%   <<"Quantity">> => integer()
-%% }
--type function_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_certificates() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_certificates() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_conflicting_aliases_request() :: #{
-%%   <<"Alias">> := string(),
-%%   <<"DistributionId">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_conflicting_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_streaming_distribution_with_tags_request() :: #{
-%%   <<"StreamingDistributionConfigWithTags">> := streaming_distribution_config_with_tags()
-%% }
--type create_streaming_distribution_with_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_certificate_details_result() :: #{
-%%   <<"ManagedCertificateDetails">> => managed_certificate_details()
-%% }
--type get_managed_certificate_details_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_config() :: #{
-%%   <<"SingleHeaderConfig">> => continuous_deployment_single_header_config(),
-%%   <<"SingleWeightConfig">> => continuous_deployment_single_weight_config(),
-%%   <<"Type">> => list(any())
-%% }
--type traffic_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_cookies_config() :: #{
-%%   <<"CookieBehavior">> => list(any()),
-%%   <<"Cookies">> => cookie_names()
-%% }
--type cache_policy_cookies_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cloud_front_origin_access_identity_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function_association() :: #{
-%%   <<"EventType">> => list(any()),
-%%   <<"IncludeBody">> => boolean(),
-%%   <<"LambdaFunctionARN">> => string()
-%% }
--type lambda_function_association() :: #{binary() => any()}.
-
-%% Example:
-%% describe_key_value_store_request() :: #{}
--type describe_key_value_store_request() :: #{}.
-
-%% Example:
-%% get_distribution_config_request() :: #{}
--type get_distribution_config_request() :: #{}.
-
-
-%% Example:
-%% create_vpc_origin_request() :: #{
-%%   <<"Tags">> => tags(),
-%%   <<"VpcOriginEndpointConfig">> := vpc_origin_endpoint_config()
-%% }
--type create_vpc_origin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_public_key_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_config() :: #{
-%%   <<"Aliases">> => aliases(),
-%%   <<"AnycastIpListId">> => string(),
-%%   <<"CacheBehaviors">> => cache_behaviors(),
-%%   <<"CacheTagConfig">> => cache_tag_config(),
-%%   <<"CallerReference">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"ConnectionFunctionAssociation">> => connection_function_association(),
-%%   <<"ConnectionMode">> => list(any()),
-%%   <<"ContinuousDeploymentPolicyId">> => string(),
-%%   <<"CustomErrorResponses">> => custom_error_responses(),
-%%   <<"DefaultCacheBehavior">> => default_cache_behavior(),
-%%   <<"DefaultRootObject">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HttpVersion">> => list(any()),
-%%   <<"IsIPV6Enabled">> => boolean(),
-%%   <<"Logging">> => logging_config(),
-%%   <<"OriginGroups">> => origin_groups(),
-%%   <<"Origins">> => origins(),
-%%   <<"PriceClass">> => list(any()),
-%%   <<"Restrictions">> => restrictions(),
-%%   <<"Staging">> => boolean(),
-%%   <<"TenantConfig">> => tenant_config(),
-%%   <<"ViewerCertificate">> => viewer_certificate(),
-%%   <<"ViewerMtlsConfig">> => viewer_mtls_config(),
-%%   <<"WebACLId">> => string()
-%% }
--type distribution_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_continuous_deployment_policy_result() :: #{
-%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
-%%   <<"ETag">> => string()
-%% }
--type get_continuous_deployment_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_required_protocol() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_required_protocol() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_request() :: #{
-%%   <<"Stage">> => list(any())
-%% }
--type get_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trust_store_request() :: #{
-%%   <<"CaCertificatesBundleSource">> := list(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags(),
-%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
-%% }
--type create_trust_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy_cookies_config() :: #{
-%%   <<"CookieBehavior">> => list(any()),
-%%   <<"Cookies">> => cookie_names()
-%% }
--type origin_request_policy_cookies_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_key_value_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyValueStore">> => key_value_store()
-%% }
--type update_key_value_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_key_groups_result() :: #{
-%%   <<"KeyGroupList">> => key_group_list()
-%% }
--type list_key_groups_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_group_request() :: #{
-%%   <<"KeyGroupConfig">> := key_group_config()
-%% }
--type create_key_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_response_headers_policy_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_response_headers_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_id_owner() :: #{
-%%   <<"DistributionId">> => string(),
-%%   <<"OwnerAccountId">> => string()
-%% }
--type distribution_id_owner() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_access_control_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type origin_access_control_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed() :: #{
-%%   <<"Message">> => string()
-%% }
--type precondition_failed() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connection_groups_request() :: #{
-%%   <<"AssociationFilter">> => connection_group_association_filter(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_connection_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_group_association_filter() :: #{
-%%   <<"AnycastIpListId">> => string()
-%% }
--type connection_group_association_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key_list() :: #{
-%%   <<"Items">> => list(public_key_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type public_key_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_response_headers_policy_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
-%% }
--type update_response_headers_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_custom_headers_config() :: #{
-%%   <<"Items">> => list(response_headers_policy_custom_header()),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_custom_headers_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_cache_policy_config_request() :: #{}
--type get_cache_policy_config_request() :: #{}.
-
-
-%% Example:
-%% get_connection_function_request() :: #{
-%%   <<"Stage">> => list(any())
-%% }
--type get_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_connection_mode_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
-%% }
--type list_distributions_by_connection_mode_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_key_groups_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_key_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distribution_cnames() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distribution_cnames() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_origin_request_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_connection_function_request() :: #{
-%%   <<"Stage">> => list(any())
-%% }
--type describe_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_distribution() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_field_level_encryption_profile_config_request() :: #{}
--type get_field_level_encryption_profile_config_request() :: #{}.
-
-
-%% Example:
-%% cache_policy_summary() :: #{
-%%   <<"CachePolicy">> => cache_policy(),
-%%   <<"Type">> => list(any())
-%% }
--type cache_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_arg_profile() :: #{
-%%   <<"ProfileId">> => string(),
-%%   <<"QueryArg">> => string()
-%% }
--type query_arg_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_tenants_request() :: #{
-%%   <<"AssociationFilter">> => distribution_tenant_association_filter(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distribution_tenants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_access_control_expose_headers() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_access_control_expose_headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_origin_config() :: #{
-%%   <<"OriginAccessIdentity">> => string(),
-%%   <<"OriginReadTimeout">> => integer()
-%% }
--type s3_origin_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_request() :: #{
-%%   <<"DistributionConfig">> := distribution_config(),
-%%   <<"IfMatch">> => string()
-%% }
--type update_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_trusted_signers() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_trusted_signers() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_function_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connection_function_request() :: #{
-%%   <<"ConnectionFunctionCode">> := binary(),
-%%   <<"ConnectionFunctionConfig">> := function_config(),
-%%   <<"IfMatch">> := string()
-%% }
--type update_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_function_result() :: #{
-%%   <<"FunctionSummary">> => function_summary()
-%% }
--type publish_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_distribution_web_acl_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type disassociate_distribution_web_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_query_strings_in_origin_request_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_query_strings_in_origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% tenant_config() :: #{
-%%   <<"ParameterDefinitions">> => list(parameter_definition())
-%% }
--type tenant_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_conflicts_result() :: #{
-%%   <<"DomainConflicts">> => list(domain_conflict()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_domain_conflicts_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_cache_policies() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_cache_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_group_request() :: #{
-%%   <<"AnycastIpListId">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"Ipv6Enabled">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
-%% }
--type create_connection_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_remove_headers_config() :: #{
-%%   <<"Items">> => list(response_headers_policy_remove_header()),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_remove_headers_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_error_code() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_error_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
-%% }
--type list_distributions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_response_headers_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type list_response_headers_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption() :: #{
-%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type field_level_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_geo_restriction_parameter() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_geo_restriction_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value_store_associations() :: #{
-%%   <<"Items">> => list(key_value_store_association()),
-%%   <<"Quantity">> => integer()
-%% }
--type key_value_store_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_origin_config() :: #{
-%%   <<"OriginKeepaliveTimeout">> => integer(),
-%%   <<"OriginReadTimeout">> => integer(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"VpcOriginId">> => string()
-%% }
--type vpc_origin_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_access_control() :: #{
-%%   <<"Id">> => string(),
-%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
-%% }
--type origin_access_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type origin_request_policy_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
-%% }
--type origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type response_headers_policy_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_deployment_policy_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type continuous_deployment_policy_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_list() :: #{
-%%   <<"Items">> => list(response_headers_policy_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connection_group_result() :: #{
-%%   <<"ConnectionGroup">> => connection_group(),
-%%   <<"ETag">> => string()
-%% }
--type get_connection_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_origin_access_control_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
-%% }
--type update_origin_access_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_realtime_log_config_result() :: #{
-%%   <<"RealtimeLogConfig">> => realtime_log_config()
-%% }
--type update_realtime_log_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions_with_function_associations() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions_with_function_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_anycast_ip_list_result() :: #{
-%%   <<"AnycastIpList">> => anycast_ip_list(),
-%%   <<"ETag">> => string()
-%% }
--type get_anycast_ip_list_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_body() :: #{
-%%   <<"Message">> => string()
-%% }
--type missing_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% cookie_names() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type cookie_names() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_query_strings_in_cache_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_query_strings_in_cache_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% inconsistent_quantities() :: #{
-%%   <<"Message">> => string()
-%% }
--type inconsistent_quantities() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_headers_for_s3_origin() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_headers_for_s3_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_cache_policy_id_result() :: #{
-%%   <<"DistributionIdList">> => distribution_id_list()
-%% }
--type list_distributions_by_cache_policy_id_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_distribution_tenant_web_acl_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Id">> => string()
-%% }
--type disassociate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_patterns() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type field_patterns() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitoring_subscription_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type monitoring_subscription_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_lambda_function_association() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_lambda_function_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_tenants_by_customization_request() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"WebACLArn">> => string()
-%% }
--type list_distribution_tenants_by_customization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tags() :: #{
-%%   <<"Items">> => list(tag())
-%% }
--type tags() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_anycast_ip_list_request() :: #{
-%%   <<"IfMatch">> := string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config())
-%% }
--type update_anycast_ip_list_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_result() :: #{
-%%   <<"PolicyDocument">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type get_resource_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% anycast_ip_list_collection() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(anycast_ip_list_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type anycast_ip_list_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"ActiveTrustedKeyGroups">> => active_trusted_key_groups(),
-%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
-%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()),
-%%   <<"DistributionConfig">> => distribution_config(),
-%%   <<"DomainName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InProgressInvalidationBatches">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> => string()
-%% }
--type distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cache_policy_request() :: #{
-%%   <<"CachePolicyConfig">> := cache_policy_config()
-%% }
--type create_cache_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_tenants_result() :: #{
-%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_distribution_tenants_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy_query_strings_config() :: #{
-%%   <<"QueryStringBehavior">> => list(any()),
-%%   <<"QueryStrings">> => query_string_names()
-%% }
--type origin_request_policy_query_strings_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_origin_keepalive_timeout() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_origin_keepalive_timeout() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_continuous_deployment_policies_result() :: #{
-%%   <<"ContinuousDeploymentPolicyList">> => continuous_deployment_policy_list()
-%% }
--type list_continuous_deployment_policies_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_stream_config() :: #{
-%%   <<"RoleARN">> => string(),
-%%   <<"StreamARN">> => string()
-%% }
--type kinesis_stream_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_connection_function_request() :: #{
-%%   <<"ConnectionFunctionIdentifier">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_forward_cookies() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_forward_cookies() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_group_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyGroup">> => key_group(),
-%%   <<"Location">> => string()
-%% }
--type create_key_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_key_group_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_key_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_field_level_encryption_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryption">> => field_level_encryption(),
-%%   <<"Location">> => string()
-%% }
--type create_field_level_encryption_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_log_config_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type realtime_log_config_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_cache_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_cache_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% aliases() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type aliases() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_tenants_by_customization_result() :: #{
-%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_distribution_tenants_by_customization_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_alias_request() :: #{
-%%   <<"Alias">> := string()
-%% }
--type associate_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_groups() :: #{
-%%   <<"Items">> => list(origin_group()),
-%%   <<"Quantity">> => integer()
-%% }
--type origin_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_entity() :: #{
-%%   <<"FieldPatterns">> => field_patterns(),
-%%   <<"ProviderId">> => string(),
-%%   <<"PublicKeyId">> => string()
-%% }
--type encryption_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalidation_batch() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Paths">> => paths()
-%% }
--type invalidation_batch() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streaming_distributions_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_streaming_distributions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trusted_signer_does_not_exist() :: #{
-%%   <<"Message">> => string()
-%% }
--type trusted_signer_does_not_exist() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vpc_origin_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"VpcOrigin">> => vpc_origin()
-%% }
--type get_vpc_origin_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_connection_mode_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_connection_mode_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_front_origin_access_identity_request() :: #{
-%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config()
-%% }
--type create_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_streaming_distribution() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_streaming_distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_origin_read_timeout() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_origin_read_timeout() :: #{binary() => any()}.
-
-%% Example:
-%% get_invalidation_request() :: #{}
--type get_invalidation_request() :: #{}.
-
-
-%% Example:
-%% continuous_deployment_policy_config() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"StagingDistributionDnsNames">> => staging_distribution_dns_names(),
-%%   <<"TrafficConfig">> => traffic_config()
-%% }
--type continuous_deployment_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_request_policy_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
-%% }
--type get_origin_request_policy_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_response_headers_policy_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
-%% }
--type create_response_headers_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_key_value_store_request() :: #{
-%%   <<"Comment">> := string(),
-%%   <<"IfMatch">> := string()
-%% }
--type update_key_value_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% customizations() :: #{
-%%   <<"Certificate">> => certificate(),
-%%   <<"GeoRestrictions">> => geo_restriction_customization(),
-%%   <<"WebAcl">> => web_acl_customization()
-%% }
--type customizations() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_domain_name_for_origin_access_control() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_domain_name_for_origin_access_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_content_security_policy() :: #{
-%%   <<"ContentSecurityPolicy">> => string(),
-%%   <<"Override">> => boolean()
-%% }
--type response_headers_policy_content_security_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_certificate_details() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateStatus">> => list(any()),
-%%   <<"ValidationTokenDetails">> => list(validation_token_detail()),
-%%   <<"ValidationTokenHost">> => list(any())
-%% }
--type managed_certificate_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connection_function_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"PublicKeyConfig">> => public_key_config()
-%% }
--type public_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_conflict() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Domain">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type domain_conflict() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_field_level_encryption_profile_request() :: #{
-%%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config(),
-%%   <<"IfMatch">> => string()
-%% }
--type update_field_level_encryption_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_connection_function_request() :: #{
-%%   <<"ConnectionObject">> := binary(),
-%%   <<"IfMatch">> := string(),
-%%   <<"Stage">> => list(any())
-%% }
--type test_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_summary() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"EncryptionEntities">> => encryption_entities(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type field_level_encryption_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_summary() :: #{
-%%   <<"FunctionConfig">> => function_config(),
-%%   <<"FunctionMetadata">> => function_metadata(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type function_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_key_groups_associated_to_distribution() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_key_groups_associated_to_distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connection_functions_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Stage">> => list(any())
-%% }
--type list_connection_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cache_policy_result() :: #{
-%%   <<"CachePolicy">> => cache_policy(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_cache_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_value_store_request() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"ImportSource">> => import_source(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
-%% }
--type create_key_value_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% viewer_mtls_config() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"TrustStoreConfig">> => trust_store_config()
-%% }
--type viewer_mtls_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_custom_header() :: #{
-%%   <<"HeaderName">> => string(),
-%%   <<"HeaderValue">> => string()
-%% }
--type origin_custom_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_field_level_encryption_profiles_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_origins_result() :: #{
-%%   <<"VpcOriginList">> => vpc_origin_list()
-%% }
--type list_vpc_origins_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type cache_policy_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_headers_in_forwarded_values() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_headers_in_forwarded_values() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_remove_header() :: #{
-%%   <<"Header">> => string()
-%% }
--type response_headers_policy_remove_header() :: #{binary() => any()}.
-
-%% Example:
-%% get_field_level_encryption_request() :: #{}
--type get_field_level_encryption_request() :: #{}.
-
-
-%% Example:
-%% invalid_minimum_protocol_version() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_minimum_protocol_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value_store_list() :: #{
-%%   <<"Items">> => list(key_value_store()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type key_value_store_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_front_origin_access_identity_result() :: #{
-%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
-%%   <<"ETag">> => string()
-%% }
--type get_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_string_names() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type query_string_names() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_field_level_encryption_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryption">> => field_level_encryption()
-%% }
--type get_field_level_encryption_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_streaming_distribution_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
-%% }
--type update_streaming_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_streaming_distributions() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_streaming_distributions() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_origin_access_control() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_origin_access_control() :: #{binary() => any()}.
-
-
-%% Example:
-%% cannot_delete_entity_while_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type cannot_delete_entity_while_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflicting_aliases_list() :: #{
-%%   <<"Items">> => list(conflicting_alias()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type conflicting_aliases_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_field_level_encryption_profiles() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_field_level_encryption_profiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_field_level_encryption_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_field_level_encryption_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_tenant_association_filter() :: #{
-%%   <<"ConnectionGroupId">> => string(),
-%%   <<"DistributionId">> => string()
-%% }
--type distribution_tenant_association_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_public_key_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"PublicKey">> => public_key()
-%% }
--type update_public_key_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_field_level_encryption_config_request() :: #{}
--type get_field_level_encryption_config_request() :: #{}.
-
-
-%% Example:
-%% too_many_field_level_encryption_configs() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_field_level_encryption_configs() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_key_value_store_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_key_value_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_origin_custom_headers() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_origin_custom_headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_distribution_web_acl_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Id">> => string()
-%% }
--type disassociate_distribution_web_acl_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FunctionSummary">> => function_summary(),
-%%   <<"Location">> => string()
-%% }
--type create_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type distribution_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_config() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
-%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
-%% }
--type field_level_encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cache_policies_result() :: #{
-%%   <<"CachePolicyList">> => cache_policy_list()
-%% }
--type list_cache_policies_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% active_trusted_signers() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(signer()),
-%%   <<"Quantity">> => integer()
-%% }
--type active_trusted_signers() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vpc_origin_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_vpc_origin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_front_origin_access_identity() :: #{
-%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
-%%   <<"Id">> => string(),
-%%   <<"S3CanonicalUserId">> => string()
-%% }
--type cloud_front_origin_access_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_function_test_result() :: #{
-%%   <<"ComputeUtilization">> => string(),
-%%   <<"ConnectionFunctionErrorMessage">> => string(),
-%%   <<"ConnectionFunctionExecutionLogs">> => list(string()),
-%%   <<"ConnectionFunctionOutput">> => string(),
-%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
-%% }
--type connection_function_test_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Stage">> => list(any())
-%% }
--type list_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_origins() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_origins() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions_with_single_function_arn() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions_with_single_function_arn() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_anycast_ip_list_request() :: #{
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpCount">> := integer(),
-%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
-%% }
--type create_anycast_ip_list_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions_with_lambda_associations() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions_with_lambda_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_resource() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_resource() :: #{binary() => any()}.
-
-%% Example:
-%% get_invalidation_for_distribution_tenant_request() :: #{}
--type get_invalidation_for_distribution_tenant_request() :: #{}.
-
-
-%% Example:
-%% distribution_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(distribution_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type distribution_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_disabled() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_disabled() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"CorsConfig">> => response_headers_policy_cors_config(),
-%%   <<"CustomHeadersConfig">> => response_headers_policy_custom_headers_config(),
-%%   <<"Name">> => string(),
-%%   <<"RemoveHeadersConfig">> => response_headers_policy_remove_headers_config(),
-%%   <<"SecurityHeadersConfig">> => response_headers_policy_security_headers_config(),
-%%   <<"ServerTimingHeadersConfig">> => response_headers_policy_server_timing_headers_config()
-%% }
--type response_headers_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cache_policy_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_cache_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_connection_function_result() :: #{
-%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
-%%   <<"ETag">> => string()
-%% }
--type describe_connection_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"Tags">> => tags()
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"Arn">> => string()
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% get_response_headers_policy_config_request() :: #{}
--type get_response_headers_policy_config_request() :: #{}.
-
-
-%% Example:
-%% too_many_field_level_encryption_encryption_entities() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_field_level_encryption_encryption_entities() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_distribution_web_acl_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"WebACLArn">> := string()
-%% }
--type associate_distribution_web_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_lambda_function_associations() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_lambda_function_associations() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_streaming_distribution_cnames() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_streaming_distribution_cnames() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_anycast_ip_list_result() :: #{
-%%   <<"AnycastIpList">> => anycast_ip_list(),
-%%   <<"ETag">> => string()
-%% }
--type create_anycast_ip_list_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% grpc_config() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type grpc_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% distribution_tenant() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"ConnectionGroupId">> => string(),
@@ -3885,1704 +1931,11 @@
 
 
 %% Example:
-%% function_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"KeyValueStoreAssociations">> => key_value_store_associations(),
-%%   <<"Runtime">> => list(any())
-%% }
--type function_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streaming_distributions_result() :: #{
-%%   <<"StreamingDistributionList">> => streaming_distribution_list()
-%% }
--type list_streaming_distributions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_request_policy_summary() :: #{
-%%   <<"OriginRequestPolicy">> => origin_request_policy(),
-%%   <<"Type">> => list(any())
-%% }
--type origin_request_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_keys() :: #{
-%%   <<"Items">> => list(string())
-%% }
--type tag_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"PolicyDocument">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_realtime_log_configs() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_realtime_log_configs() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_dns_configuration_result() :: #{
-%%   <<"DnsConfigurationList">> => list(dns_configuration())
-%% }
--type verify_dns_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type cache_policy_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_origin_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"VpcOrigin">> => vpc_origin()
-%% }
--type create_vpc_origin_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_group() :: #{
-%%   <<"FailoverCriteria">> => origin_group_failover_criteria(),
-%%   <<"Id">> => string(),
-%%   <<"Members">> => origin_group_members(),
-%%   <<"SelectionCriteria">> => list(any())
-%% }
--type origin_group() :: #{binary() => any()}.
-
-%% Example:
-%% get_key_group_request() :: #{}
--type get_key_group_request() :: #{}.
-
-%% Example:
-%% get_public_key_request() :: #{}
--type get_public_key_request() :: #{}.
-
-
-%% Example:
-%% create_distribution_result() :: #{
-%%   <<"Distribution">> => distribution(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_error_response() :: #{
-%%   <<"ErrorCachingMinTTL">> => float(),
-%%   <<"ErrorCode">> => integer(),
-%%   <<"ResponseCode">> => string(),
-%%   <<"ResponsePagePath">> => string()
-%% }
--type custom_error_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_owned_resource_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_owned_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions_associated_to_response_headers_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions_associated_to_response_headers_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_function_request() :: #{
-%%   <<"EventObject">> := binary(),
-%%   <<"IfMatch">> := string(),
-%%   <<"Stage">> => list(any())
-%% }
--type test_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_monitoring_subscription_result() :: #{
-%%   <<"MonitoringSubscription">> => monitoring_subscription()
-%% }
--type create_monitoring_subscription_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_custom_header() :: #{
-%%   <<"Header">> => string(),
-%%   <<"Override">> => boolean(),
-%%   <<"Value">> => string()
-%% }
--type response_headers_policy_custom_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_function_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_function_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vpc_origin_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"VpcOrigin">> => vpc_origin()
-%% }
--type delete_vpc_origin_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_field_level_encryption_profile_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config()
-%% }
--type get_field_level_encryption_profile_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_ssl_protocols() :: #{
-%%   <<"Items">> => list(list(any())()),
-%%   <<"Quantity">> => integer()
-%% }
--type origin_ssl_protocols() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_cloud_front_origin_access_identities() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_cloud_front_origin_access_identities() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_anycast_ip_list_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_anycast_ip_list_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_config() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"EncryptionEntities">> => encryption_entities(),
-%%   <<"Name">> => string()
-%% }
--type field_level_encryption_profile_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_access_controls_result() :: #{
-%%   <<"OriginAccessControlList">> => origin_access_control_list()
-%% }
--type list_origin_access_controls_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_distribution_tenant_web_acl_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type disassociate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_distribution_tenant_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type delete_distribution_tenant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_web_acl_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_web_acl_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_response_headers_policy_id_result() :: #{
-%%   <<"DistributionIdList">> => distribution_id_list()
-%% }
--type list_distributions_by_response_headers_policy_id_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_trust_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"TrustStore">> => trust_store()
-%% }
--type get_trust_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_vpc_origin_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"VpcOrigin">> => vpc_origin()
-%% }
--type update_vpc_origin_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_monitoring_subscription_request() :: #{}
--type get_monitoring_subscription_request() :: #{}.
-
-
-%% Example:
-%% origin() :: #{
-%%   <<"ConnectionAttempts">> => integer(),
-%%   <<"ConnectionTimeout">> => integer(),
-%%   <<"CustomHeaders">> => custom_headers(),
-%%   <<"CustomOriginConfig">> => custom_origin_config(),
-%%   <<"DomainName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OriginAccessControlId">> => string(),
-%%   <<"OriginPath">> => string(),
-%%   <<"OriginShield">> => origin_shield(),
-%%   <<"ResponseCompletionTimeout">> => integer(),
-%%   <<"S3OriginConfig">> => s3_origin_config(),
-%%   <<"VpcOriginConfig">> => vpc_origin_config()
-%% }
--type origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_mtls_config() :: #{
-%%   <<"ClientCertificateArn">> => string()
-%% }
--type origin_mtls_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_field_level_encryption_profile_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile(),
-%%   <<"Location">> => string()
-%% }
--type create_field_level_encryption_profile_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_association_result() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type update_domain_association_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_public_keys_in_key_group() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_public_keys_in_key_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_deployment_single_header_config() :: #{
-%%   <<"Header">> => string(),
-%%   <<"Value">> => string()
-%% }
--type continuous_deployment_single_header_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_invalidation_for_distribution_tenant_result() :: #{
-%%   <<"Invalidation">> => invalidation()
-%% }
--type get_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_realtime_log_config_request() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"EndPoints">> => list(end_point()),
-%%   <<"Fields">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SamplingRate">> => float()
-%% }
--type update_realtime_log_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_result() :: #{
-%%   <<"Distribution">> => distribution(),
-%%   <<"ETag">> => string()
-%% }
--type get_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_trust_store_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"TrustStore">> => trust_store()
-%% }
--type create_trust_store_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_cache_behaviors() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_cache_behaviors() :: #{binary() => any()}.
-
-%% Example:
-%% get_origin_access_control_request() :: #{}
--type get_origin_access_control_request() :: #{}.
-
-
-%% Example:
-%% list_invalidations_result() :: #{
-%%   <<"InvalidationList">> => invalidation_list()
-%% }
--type list_invalidations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_list() :: #{
-%%   <<"Items">> => list(function_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type function_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_certificate_request() :: #{
-%%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
-%%   <<"PrimaryDomainName">> => string(),
-%%   <<"ValidationTokenHost">> => list(any())
-%% }
--type managed_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_cloud_front_origin_access_identity_config_request() :: #{}
--type get_cloud_front_origin_access_identity_config_request() :: #{}.
-
-
-%% Example:
-%% response_headers_policy_server_timing_headers_config() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"SamplingRate">> => float()
-%% }
--type response_headers_policy_server_timing_headers_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% headers() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type headers() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_log_config_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type realtime_log_config_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_distribution_summary() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Aliases">> => aliases(),
-%%   <<"Comment">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PriceClass">> => list(any()),
-%%   <<"S3Origin">> => s3_origin(),
-%%   <<"Status">> => string(),
-%%   <<"TrustedSigners">> => trusted_signers()
-%% }
--type streaming_distribution_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_anycast_ip_list_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_anycast_ip_list_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_tenant_result() :: #{
-%%   <<"DistributionTenant">> => distribution_tenant(),
-%%   <<"ETag">> => string()
-%% }
--type update_distribution_tenant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_realtime_log_config_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"RealtimeLogConfigArn">> => string(),
-%%   <<"RealtimeLogConfigName">> => string()
-%% }
--type list_distributions_by_realtime_log_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_cors_config() :: #{
-%%   <<"AccessControlAllowCredentials">> => boolean(),
-%%   <<"AccessControlAllowHeaders">> => response_headers_policy_access_control_allow_headers(),
-%%   <<"AccessControlAllowMethods">> => response_headers_policy_access_control_allow_methods(),
-%%   <<"AccessControlAllowOrigins">> => response_headers_policy_access_control_allow_origins(),
-%%   <<"AccessControlExposeHeaders">> => response_headers_policy_access_control_expose_headers(),
-%%   <<"AccessControlMaxAgeSec">> => integer(),
-%%   <<"OriginOverride">> => boolean()
-%% }
--type response_headers_policy_cors_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_group_failover_criteria() :: #{
-%%   <<"StatusCodes">> => status_codes()
-%% }
--type origin_group_failover_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_key_groups() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_key_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"Resource">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_key_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"PublicKeyConfig">> => public_key_config()
-%% }
--type get_public_key_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_function_failed() :: #{
-%%   <<"Message">> => string()
-%% }
--type test_function_failed() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_response_headers_policy_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
-%% }
--type get_response_headers_policy_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type function_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_group_members() :: #{
-%%   <<"Items">> => list(origin_group_member()),
-%%   <<"Quantity">> => integer()
-%% }
--type origin_group_members() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_distribution_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type streaming_distribution_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_default_root_object() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_default_root_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_vpc_origin_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_vpc_origin_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_origin_request_policy_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"OriginRequestPolicy">> => origin_request_policy()
-%% }
--type create_origin_request_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_origin_request_policy_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_origin_request_policy_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_distribution_tenant_web_acl_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"WebACLArn">> := string()
-%% }
--type associate_distribution_tenant_web_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cname_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type cname_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% ipam_config() :: #{
-%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
-%%   <<"Quantity">> => integer()
-%% }
--type ipam_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_size_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type field_level_encryption_profile_size_exceeded() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_response_headers_policy_request() :: #{
-%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
-%% }
--type create_response_headers_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_field_level_encryption_field_patterns() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_field_level_encryption_field_patterns() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_continuous_deployment_policy_config_result() :: #{
-%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
-%%   <<"ETag">> => string()
-%% }
--type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_result() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type domain_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_anycast_ip_list_request() :: #{}
--type get_anycast_ip_list_request() :: #{}.
-
-
-%% Example:
-%% origin_request_policy_list() :: #{
-%%   <<"Items">> => list(origin_request_policy_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type origin_request_policy_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_value_store() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
-%% }
--type key_value_store() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_remove_headers_in_response_headers_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_remove_headers_in_response_headers_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_origin_request_policies() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_origin_request_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_access_control_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"OriginAccessControl">> => origin_access_control()
-%% }
--type get_origin_access_control_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_origin_access_control_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_origin_access_control_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_continuous_deployment_policy_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_continuous_deployment_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_front_origin_access_identity_result() :: #{
-%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_response_headers_policy_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
-%% }
--type get_response_headers_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_token_detail() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"RedirectFrom">> => string(),
-%%   <<"RedirectTo">> => string()
-%% }
--type validation_token_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_acl_customization() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Arn">> => string()
-%% }
--type web_acl_customization() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_key_group_result() :: #{
-%%   <<"DistributionIdList">> => distribution_id_list()
-%% }
--type list_distributions_by_key_group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cache_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type list_cache_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_invalidation() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_invalidation() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_query_string_parameters() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_query_string_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% illegal_delete() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_delete() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_connection_function_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type publish_connection_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_viewer_certificate() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_viewer_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_result() :: #{
-%%   <<"Distribution">> => distribution(),
-%%   <<"ETag">> => string()
-%% }
--type update_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_function_summary() :: #{
-%%   <<"ConnectionFunctionArn">> => string(),
-%%   <<"ConnectionFunctionConfig">> => function_config(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Stage">> => list(any()),
-%%   <<"Status">> => string()
-%% }
--type connection_function_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_conflicting_aliases_result() :: #{
-%%   <<"ConflictingAliasesList">> => conflicting_aliases_list()
-%% }
--type list_conflicting_aliases_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_with_staging_config_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"StagingDistributionId">> => string()
-%% }
--type update_distribution_with_staging_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% paths() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type paths() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_origin() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> => string(),
-%%   <<"VpcOriginEndpointConfig">> => vpc_origin_endpoint_config()
-%% }
--type vpc_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_relative_path() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_relative_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_field_level_encryption_config_request() :: #{
-%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config()
-%% }
--type create_field_level_encryption_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_dns_configuration_request() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"Identifier">> := string()
-%% }
--type verify_dns_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_origin_access_control_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"OriginAccessControl">> => origin_access_control()
-%% }
--type create_origin_access_control_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_streaming_distribution_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_streaming_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_response_headers_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_response_headers_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_front_origin_access_identity_config() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Comment">> => string()
-%% }
--type cloud_front_origin_access_identity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% k_g_key_pair_ids() :: #{
-%%   <<"KeyGroupId">> => string(),
-%%   <<"KeyPairIds">> => key_pair_ids()
-%% }
--type k_g_key_pair_ids() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalidation_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(invalidation_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type invalidation_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_public_key_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"PublicKey">> => public_key()
-%% }
--type create_public_key_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_distribution_tenant_result() :: #{
-%%   <<"DistributionTenant">> => distribution_tenant(),
-%%   <<"ETag">> => string()
-%% }
--type create_distribution_tenant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_access_control_allow_methods() :: #{
-%%   <<"Items">> => list(list(any())()),
-%%   <<"Quantity">> => integer()
-%% }
--type response_headers_policy_access_control_allow_methods() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_security_headers_config() :: #{
-%%   <<"ContentSecurityPolicy">> => response_headers_policy_content_security_policy(),
-%%   <<"ContentTypeOptions">> => response_headers_policy_content_type_options(),
-%%   <<"FrameOptions">> => response_headers_policy_frame_options(),
-%%   <<"ReferrerPolicy">> => response_headers_policy_referrer_policy(),
-%%   <<"StrictTransportSecurity">> => response_headers_policy_strict_transport_security(),
-%%   <<"XSSProtection">> => response_headers_policy_x_s_s_protection()
-%% }
--type response_headers_policy_security_headers_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_log_config_owner_mismatch() :: #{
-%%   <<"Message">> => string()
-%% }
--type realtime_log_config_owner_mismatch() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_distribution_with_tags_result() :: #{
-%%   <<"Distribution">> => distribution(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_distribution_with_tags_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_origin_request_policy_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
-%% }
--type update_origin_request_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_origin_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(vpc_origin_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type vpc_origin_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_access_control_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type origin_access_control_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% get_distribution_request() :: #{}
--type get_distribution_request() :: #{}.
-
-
-%% Example:
-%% streaming_distribution_config_with_tags() :: #{
-%%   <<"StreamingDistributionConfig">> => streaming_distribution_config(),
-%%   <<"Tags">> => tags()
-%% }
--type streaming_distribution_config_with_tags() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_field_level_encryption_profile_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_field_level_encryption_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_function_request() :: #{
-%%   <<"FunctionCode">> := binary(),
-%%   <<"FunctionConfig">> := function_config(),
-%%   <<"IfMatch">> := string()
-%% }
--type update_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_origin_access_control_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"OriginAccessControl">> => origin_access_control()
-%% }
--type update_origin_access_control_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_source() :: #{
-%%   <<"SourceARN">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type import_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_connection_group_by_routing_endpoint_result() :: #{
-%%   <<"ConnectionGroup">> => connection_group(),
-%%   <<"ETag">> => string()
-%% }
--type get_connection_group_by_routing_endpoint_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_distribution_request() :: #{
-%%   <<"IfMatch">> => string()
-%% }
--type delete_distribution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_level_encryption_profile_list() :: #{
-%%   <<"Items">> => list(field_level_encryption_profile_summary()),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type field_level_encryption_profile_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_realtime_log_config_result() :: #{
-%%   <<"DistributionList">> => distribution_list()
-%% }
--type list_distributions_by_realtime_log_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_origin() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_arg_profile_config() :: #{
-%%   <<"ForwardWhenQueryArgProfileIsUnknown">> => boolean(),
-%%   <<"QueryArgProfiles">> => query_arg_profiles()
-%% }
--type query_arg_profile_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_field_level_encryption_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config()
-%% }
--type get_field_level_encryption_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_vpc_origin_id_result() :: #{
-%%   <<"DistributionIdList">> => distribution_id_list()
-%% }
--type list_distributions_by_vpc_origin_id_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitoring_subscription_request() :: #{}
--type delete_monitoring_subscription_request() :: #{}.
-
-
-%% Example:
-%% no_such_monitoring_subscription() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_monitoring_subscription() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_request() :: #{
-%%   <<"FunctionCode">> := binary(),
-%%   <<"FunctionConfig">> := function_config(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
-%% }
--type create_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% allowed_methods() :: #{
-%%   <<"CachedMethods">> => cached_methods(),
-%%   <<"Items">> => list(list(any())()),
-%%   <<"Quantity">> => integer()
-%% }
--type allowed_methods() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_access_controls_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_origin_access_controls_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key_summary() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EncodedKey">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type public_key_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% illegal_field_level_encryption_config_association_with_cache_behavior() :: #{
-%%   <<"Message">> => string()
-%% }
--type illegal_field_level_encryption_config_association_with_cache_behavior() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_front_origin_access_identity_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(cloud_front_origin_access_identity_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type cloud_front_origin_access_identity_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_origin_request_policy_id_result() :: #{
-%%   <<"DistributionIdList">> => distribution_id_list()
-%% }
--type list_distributions_by_origin_request_policy_id_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_public_keys() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_public_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cache_policy_config_result() :: #{
-%%   <<"CachePolicyConfig">> => cache_policy_config(),
-%%   <<"ETag">> => string()
-%% }
--type get_cache_policy_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy() :: #{
-%%   <<"CachePolicyConfig">> => cache_policy_config(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type cache_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_connection_function_result() :: #{
-%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
-%% }
--type publish_connection_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key_config() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"EncodedKey">> => string(),
-%%   <<"Name">> => string()
-%% }
--type public_key_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_streaming_distribution_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"StreamingDistribution">> => streaming_distribution()
-%% }
--type get_streaming_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_group_result() :: #{
-%%   <<"ConnectionGroup">> => connection_group(),
-%%   <<"ETag">> => string()
-%% }
--type create_connection_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_certificate_details_request() :: #{}
--type get_managed_certificate_details_request() :: #{}.
-
-
-%% Example:
-%% create_distribution_with_tags_request() :: #{
-%%   <<"DistributionConfigWithTags">> := distribution_config_with_tags()
-%% }
--type create_distribution_with_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_streaming_distribution_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"StreamingDistribution">> => streaming_distribution()
-%% }
--type update_streaming_distribution_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_continuous_deployment_policies_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_continuous_deployment_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_x_s_s_protection() :: #{
-%%   <<"ModeBlock">> => boolean(),
-%%   <<"Override">> => boolean(),
-%%   <<"Protection">> => boolean(),
-%%   <<"ReportUri">> => string()
-%% }
--type response_headers_policy_x_s_s_protection() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_error_responses() :: #{
-%%   <<"Items">> => list(custom_error_response()),
-%%   <<"Quantity">> => integer()
-%% }
--type custom_error_responses() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_field_level_encryption_profile() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_field_level_encryption_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_invalidation_result() :: #{
-%%   <<"Invalidation">> => invalidation(),
-%%   <<"Location">> => string()
-%% }
--type create_invalidation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_origin_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OriginEndpointArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type vpc_origin_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_key_group_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"KeyGroupConfig">> => key_group_config()
-%% }
--type get_key_group_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_function_association() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_function_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_behavior() :: #{
-%%   <<"AllowedMethods">> => allowed_methods(),
-%%   <<"CachePolicyId">> => string(),
-%%   <<"Compress">> => boolean(),
-%%   <<"DefaultTTL">> => float(),
-%%   <<"FieldLevelEncryptionId">> => string(),
-%%   <<"ForwardedValues">> => forwarded_values(),
-%%   <<"FunctionAssociations">> => function_associations(),
-%%   <<"GrpcConfig">> => grpc_config(),
-%%   <<"LambdaFunctionAssociations">> => lambda_function_associations(),
-%%   <<"MaxTTL">> => float(),
-%%   <<"MinTTL">> => float(),
-%%   <<"OriginRequestPolicyId">> => string(),
-%%   <<"PathPattern">> => string(),
-%%   <<"RealtimeLogConfigArn">> => string(),
-%%   <<"ResponseHeadersPolicyId">> => string(),
-%%   <<"SmoothStreaming">> => boolean(),
-%%   <<"TargetOriginId">> => string(),
-%%   <<"TrustedKeyGroups">> => trusted_key_groups(),
-%%   <<"TrustedSigners">> => trusted_signers(),
-%%   <<"ViewerProtocolPolicy">> => list(any())
-%% }
--type cache_behavior() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_invalidation_for_distribution_tenant_request() :: #{
-%%   <<"InvalidationBatch">> := invalidation_batch()
-%% }
--type create_invalidation_for_distribution_tenant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_field_level_encryption_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryption">> => field_level_encryption()
-%% }
--type update_field_level_encryption_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameters_in_cache_key_and_forwarded_to_origin() :: #{
-%%   <<"CookiesConfig">> => cache_policy_cookies_config(),
-%%   <<"EnableAcceptEncodingBrotli">> => boolean(),
-%%   <<"EnableAcceptEncodingGzip">> => boolean(),
-%%   <<"HeadersConfig">> => cache_policy_headers_config(),
-%%   <<"QueryStringsConfig">> => cache_policy_query_strings_config()
-%% }
--type parameters_in_cache_key_and_forwarded_to_origin() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_realtime_log_configs_result() :: #{
-%%   <<"RealtimeLogConfigs">> => realtime_log_configs()
-%% }
--type list_realtime_log_configs_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_headers_config() :: #{
-%%   <<"HeaderBehavior">> => list(any()),
-%%   <<"Headers">> => headers()
-%% }
--type cache_policy_headers_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_origin_request_policy_request() :: #{
-%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
-%% }
--type create_origin_request_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type public_key_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_distribution_tenant_web_acl_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"WebACLArn">> => string()
-%% }
--type associate_distribution_tenant_web_acl_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type function_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_headers_in_origin_request_policy() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_headers_in_origin_request_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anycast_ip_lists_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_anycast_ip_lists_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_schema_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"Required">> => boolean()
-%% }
--type string_schema_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% viewer_certificate() :: #{
-%%   <<"ACMCertificateArn">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"CertificateSource">> => list(any()),
-%%   <<"CloudFrontDefaultCertificate">> => boolean(),
-%%   <<"IAMCertificateId">> => string(),
-%%   <<"MinimumProtocolVersion">> => list(any()),
-%%   <<"SSLSupportMethod">> => list(any())
-%% }
--type viewer_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% cache_policy_query_strings_config() :: #{
-%%   <<"QueryStringBehavior">> => list(any()),
-%%   <<"QueryStrings">> => query_string_names()
-%% }
--type cache_policy_query_strings_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distributions_by_response_headers_policy_id_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_distributions_by_response_headers_policy_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origin_access_control_config() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OriginAccessControlOriginType">> => list(any()),
-%%   <<"SigningBehavior">> => list(any()),
-%%   <<"SigningProtocol">> => list(any())
-%% }
--type origin_access_control_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_realtime_log_config() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_realtime_log_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_key_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"PublicKey">> => public_key()
-%% }
--type get_public_key_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_function_request() :: #{
-%%   <<"IfMatch">> := string()
-%% }
--type publish_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trusted_signers() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type trusted_signers() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_distribution_list() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(streaming_distribution_summary()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Quantity">> => integer()
-%% }
--type streaming_distribution_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_function_request() :: #{
-%%   <<"Stage">> => list(any())
-%% }
--type describe_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% staging_distribution_dns_names() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type staging_distribution_dns_names() :: #{binary() => any()}.
-
-
-%% Example:
-%% trust_store_config() :: #{
-%%   <<"AdvertiseTrustStoreCaNames">> => boolean(),
-%%   <<"IgnoreCertificateExpiry">> => boolean(),
-%%   <<"TrustStoreId">> => string()
-%% }
--type trust_store_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_headers_policy_summary() :: #{
-%%   <<"ResponseHeadersPolicy">> => response_headers_policy(),
-%%   <<"Type">> => list(any())
-%% }
--type response_headers_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anycast_ip_lists_result() :: #{
-%%   <<"AnycastIpLists">> => anycast_ip_list_collection()
-%% }
--type list_anycast_ip_lists_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connection_functions_result() :: #{
-%%   <<"ConnectionFunctions">> => list(connection_function_summary()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_connection_functions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connection_function_result() :: #{
-%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_connection_function_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_request_policy_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"OriginRequestPolicy">> => origin_request_policy()
-%% }
--type get_origin_request_policy_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_public_key() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_public_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type entity_limit_exceeded() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_public_key_request() :: #{
-%%   <<"PublicKeyConfig">> := public_key_config()
-%% }
--type create_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_distributions() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_distributions() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_metadata() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"FunctionARN">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Stage">> => list(any())
-%% }
--type function_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_access_control_config_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
-%% }
--type get_origin_access_control_config_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% restrictions() :: #{
-%%   <<"GeoRestriction">> => geo_restriction()
-%% }
--type restrictions() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_pair_ids() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
-%% }
--type key_pair_ids() :: #{binary() => any()}.
-
-%% Example:
-%% get_cache_policy_request() :: #{}
--type get_cache_policy_request() :: #{}.
-
-
-%% Example:
-%% invalid_response_code() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_response_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_origins_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_vpc_origins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalidation() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InvalidationBatch">> => invalidation_batch(),
-%%   <<"Status">> => string()
-%% }
--type invalidation() :: #{binary() => any()}.
-
-
-%% Example:
-%% cookie_preference() :: #{
-%%   <<"Forward">> => list(any()),
-%%   <<"WhitelistedNames">> => cookie_names()
-%% }
--type cookie_preference() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_key_group_request() :: #{
-%%   <<"IfMatch">> => string(),
-%%   <<"KeyGroupConfig">> := key_group_config()
-%% }
--type update_key_group_request() :: #{binary() => any()}.
+%% distribution_tenant_association_filter() :: #{
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"DistributionId">> => string()
+%% }
+-type distribution_tenant_association_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5604,6 +1957,2775 @@
 
 
 %% Example:
+%% dns_configuration() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type dns_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_conflict() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type domain_conflict() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_item() :: #{
+%%   <<"Domain">> => string()
+%% }
+-type domain_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type domain_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_entities() :: #{
+%%   <<"Items">> => list(encryption_entity()),
+%%   <<"Quantity">> => integer()
+%% }
+-type encryption_entities() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_entity() :: #{
+%%   <<"FieldPatterns">> => field_patterns(),
+%%   <<"ProviderId">> => string(),
+%%   <<"PublicKeyId">> => string()
+%% }
+-type encryption_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% end_point() :: #{
+%%   <<"KinesisStreamConfig">> => kinesis_stream_config(),
+%%   <<"StreamType">> => string()
+%% }
+-type end_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_size_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_size_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption() :: #{
+%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type field_level_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
+%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
+%% }
+-type field_level_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_config_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_config_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_config_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_list() :: #{
+%%   <<"Items">> => list(field_level_encryption_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_level_encryption_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile() :: #{
+%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type field_level_encryption_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"EncryptionEntities">> => encryption_entities(),
+%%   <<"Name">> => string()
+%% }
+-type field_level_encryption_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_list() :: #{
+%%   <<"Items">> => list(field_level_encryption_profile_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_level_encryption_profile_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_size_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type field_level_encryption_profile_size_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_profile_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"EncryptionEntities">> => encryption_entities(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type field_level_encryption_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_level_encryption_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"ContentTypeProfileConfig">> => content_type_profile_config(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"QueryArgProfileConfig">> => query_arg_profile_config()
+%% }
+-type field_level_encryption_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_patterns() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type field_patterns() :: #{binary() => any()}.
+
+
+%% Example:
+%% forwarded_values() :: #{
+%%   <<"Cookies">> => cookie_preference(),
+%%   <<"Headers">> => headers(),
+%%   <<"QueryString">> => boolean(),
+%%   <<"QueryStringCacheKeys">> => query_string_cache_keys()
+%% }
+-type forwarded_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_association() :: #{
+%%   <<"EventType">> => list(any()),
+%%   <<"FunctionARN">> => string()
+%% }
+-type function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_associations() :: #{
+%%   <<"Items">> => list(function_association()),
+%%   <<"Quantity">> => integer()
+%% }
+-type function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"KeyValueStoreAssociations">> => key_value_store_associations(),
+%%   <<"Runtime">> => list(any())
+%% }
+-type function_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_list() :: #{
+%%   <<"Items">> => list(function_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type function_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_metadata() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"FunctionARN">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Stage">> => list(any())
+%% }
+-type function_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_size_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type function_size_limit_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_summary() :: #{
+%%   <<"FunctionConfig">> => function_config(),
+%%   <<"FunctionMetadata">> => function_metadata(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type function_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_restriction() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer(),
+%%   <<"RestrictionType">> => list(any())
+%% }
+-type geo_restriction() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_restriction_customization() :: #{
+%%   <<"Locations">> => list(string()),
+%%   <<"RestrictionType">> => list(any())
+%% }
+-type geo_restriction_customization() :: #{binary() => any()}.
+
+%% Example:
+%% get_anycast_ip_list_request() :: #{}
+-type get_anycast_ip_list_request() :: #{}.
+
+
+%% Example:
+%% get_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type get_anycast_ip_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cache_policy_config_request() :: #{}
+-type get_cache_policy_config_request() :: #{}.
+
+
+%% Example:
+%% get_cache_policy_config_result() :: #{
+%%   <<"CachePolicyConfig">> => cache_policy_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cache_policy_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cache_policy_request() :: #{}
+-type get_cache_policy_request() :: #{}.
+
+
+%% Example:
+%% get_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cache_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_front_origin_access_identity_config_request() :: #{}
+-type get_cloud_front_origin_access_identity_config_request() :: #{}.
+
+
+%% Example:
+%% get_cloud_front_origin_access_identity_config_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> => cloud_front_origin_access_identity_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cloud_front_origin_access_identity_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_front_origin_access_identity_request() :: #{}
+-type get_cloud_front_origin_access_identity_request() :: #{}.
+
+
+%% Example:
+%% get_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string()
+%% }
+-type get_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type get_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_function_result() :: #{
+%%   <<"ConnectionFunctionCode">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_group_by_routing_endpoint_request() :: #{
+%%   <<"RoutingEndpoint">> := string()
+%% }
+-type get_connection_group_by_routing_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connection_group_by_routing_endpoint_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_group_by_routing_endpoint_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_group_request() :: #{}
+-type get_connection_group_request() :: #{}.
+
+
+%% Example:
+%% get_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type get_connection_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_continuous_deployment_policy_config_request() :: #{}
+-type get_continuous_deployment_policy_config_request() :: #{}.
+
+
+%% Example:
+%% get_continuous_deployment_policy_config_result() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> => continuous_deployment_policy_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_continuous_deployment_policy_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_continuous_deployment_policy_request() :: #{}
+-type get_continuous_deployment_policy_request() :: #{}.
+
+
+%% Example:
+%% get_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type get_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_config_request() :: #{}
+-type get_distribution_config_request() :: #{}.
+
+
+%% Example:
+%% get_distribution_config_result() :: #{
+%%   <<"DistributionConfig">> => distribution_config(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_request() :: #{}
+-type get_distribution_request() :: #{}.
+
+
+%% Example:
+%% get_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_tenant_by_domain_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type get_distribution_tenant_by_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_tenant_by_domain_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_tenant_by_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_distribution_tenant_request() :: #{}
+-type get_distribution_tenant_request() :: #{}.
+
+
+%% Example:
+%% get_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type get_distribution_tenant_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_config_request() :: #{}
+-type get_field_level_encryption_config_request() :: #{}.
+
+
+%% Example:
+%% get_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionConfig">> => field_level_encryption_config()
+%% }
+-type get_field_level_encryption_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_profile_config_request() :: #{}
+-type get_field_level_encryption_profile_config_request() :: #{}.
+
+
+%% Example:
+%% get_field_level_encryption_profile_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfileConfig">> => field_level_encryption_profile_config()
+%% }
+-type get_field_level_encryption_profile_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_profile_request() :: #{}
+-type get_field_level_encryption_profile_request() :: #{}.
+
+
+%% Example:
+%% get_field_level_encryption_profile_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
+%% }
+-type get_field_level_encryption_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_field_level_encryption_request() :: #{}
+-type get_field_level_encryption_request() :: #{}.
+
+
+%% Example:
+%% get_field_level_encryption_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption()
+%% }
+-type get_field_level_encryption_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_request() :: #{
+%%   <<"Stage">> => list(any())
+%% }
+-type get_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_result() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"FunctionCode">> => binary()
+%% }
+-type get_function_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_invalidation_for_distribution_tenant_request() :: #{}
+-type get_invalidation_for_distribution_tenant_request() :: #{}.
+
+
+%% Example:
+%% get_invalidation_for_distribution_tenant_result() :: #{
+%%   <<"Invalidation">> => invalidation()
+%% }
+-type get_invalidation_for_distribution_tenant_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_invalidation_request() :: #{}
+-type get_invalidation_request() :: #{}.
+
+
+%% Example:
+%% get_invalidation_result() :: #{
+%%   <<"Invalidation">> => invalidation()
+%% }
+-type get_invalidation_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_group_config_request() :: #{}
+-type get_key_group_config_request() :: #{}.
+
+
+%% Example:
+%% get_key_group_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroupConfig">> => key_group_config()
+%% }
+-type get_key_group_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_key_group_request() :: #{}
+-type get_key_group_request() :: #{}.
+
+
+%% Example:
+%% get_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type get_key_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_certificate_details_request() :: #{}
+-type get_managed_certificate_details_request() :: #{}.
+
+
+%% Example:
+%% get_managed_certificate_details_result() :: #{
+%%   <<"ManagedCertificateDetails">> => managed_certificate_details()
+%% }
+-type get_managed_certificate_details_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_monitoring_subscription_request() :: #{}
+-type get_monitoring_subscription_request() :: #{}.
+
+
+%% Example:
+%% get_monitoring_subscription_result() :: #{
+%%   <<"MonitoringSubscription">> => monitoring_subscription()
+%% }
+-type get_monitoring_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_access_control_config_request() :: #{}
+-type get_origin_access_control_config_request() :: #{}.
+
+
+%% Example:
+%% get_origin_access_control_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
+%% }
+-type get_origin_access_control_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_access_control_request() :: #{}
+-type get_origin_access_control_request() :: #{}.
+
+
+%% Example:
+%% get_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type get_origin_access_control_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_request_policy_config_request() :: #{}
+-type get_origin_request_policy_config_request() :: #{}.
+
+
+%% Example:
+%% get_origin_request_policy_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
+%% }
+-type get_origin_request_policy_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_request_policy_request() :: #{}
+-type get_origin_request_policy_request() :: #{}.
+
+
+%% Example:
+%% get_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type get_origin_request_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_config_request() :: #{}
+-type get_public_key_config_request() :: #{}.
+
+
+%% Example:
+%% get_public_key_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKeyConfig">> => public_key_config()
+%% }
+-type get_public_key_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_public_key_request() :: #{}
+-type get_public_key_request() :: #{}.
+
+
+%% Example:
+%% get_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type get_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type get_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_realtime_log_config_result() :: #{
+%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% }
+-type get_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_result() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_response_headers_policy_config_request() :: #{}
+-type get_response_headers_policy_config_request() :: #{}.
+
+
+%% Example:
+%% get_response_headers_policy_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
+%% }
+-type get_response_headers_policy_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_response_headers_policy_request() :: #{}
+-type get_response_headers_policy_request() :: #{}.
+
+
+%% Example:
+%% get_response_headers_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
+%% }
+-type get_response_headers_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_streaming_distribution_config_request() :: #{}
+-type get_streaming_distribution_config_request() :: #{}.
+
+
+%% Example:
+%% get_streaming_distribution_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
+%% }
+-type get_streaming_distribution_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_streaming_distribution_request() :: #{}
+-type get_streaming_distribution_request() :: #{}.
+
+
+%% Example:
+%% get_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type get_streaming_distribution_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_request() :: #{}
+-type get_trust_store_request() :: #{}.
+
+
+%% Example:
+%% get_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type get_trust_store_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_origin_request() :: #{}
+-type get_vpc_origin_request() :: #{}.
+
+
+%% Example:
+%% get_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type get_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% grpc_config() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type grpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% headers() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_delete() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_delete() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_field_level_encryption_config_association_with_cache_behavior() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_field_level_encryption_config_association_with_cache_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_origin_access_configuration() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_origin_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_update() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_source() :: #{
+%%   <<"SourceARN">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type import_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inconsistent_quantities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type inconsistent_quantities() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_default_root_object() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_default_root_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_domain_name_for_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_domain_name_for_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_error_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_error_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_forward_cookies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_forward_cookies() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_function_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_geo_restriction_parameter() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_geo_restriction_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_headers_for_s3_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_headers_for_s3_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_if_match_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_if_match_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_lambda_function_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_lambda_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_location_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_location_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_minimum_protocol_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_minimum_protocol_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_access_identity() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_keepalive_timeout() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_keepalive_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_origin_read_timeout() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_origin_read_timeout() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_protocol_settings() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_protocol_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_query_string_parameters() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_query_string_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_relative_path() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_relative_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_required_protocol() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_required_protocol() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_response_code() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_response_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_t_t_l_order() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_t_t_l_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_tagging() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tagging() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_viewer_certificate() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_viewer_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_web_acl_id() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_web_acl_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InvalidationBatch">> => invalidation_batch(),
+%%   <<"Status">> => string()
+%% }
+-type invalidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_batch() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Paths">> => paths()
+%% }
+-type invalidation_batch() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(invalidation_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type invalidation_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalidation_summary() :: #{
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type invalidation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ipam_cidr_config() :: #{
+%%   <<"AnycastIp">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ipam_cidr_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ipam_config() :: #{
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config()),
+%%   <<"Quantity">> => integer()
+%% }
+-type ipam_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% k_g_key_pair_ids() :: #{
+%%   <<"KeyGroupId">> => string(),
+%%   <<"KeyPairIds">> => key_pair_ids()
+%% }
+-type k_g_key_pair_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group() :: #{
+%%   <<"Id">> => string(),
+%%   <<"KeyGroupConfig">> => key_group_config(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type key_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type key_group_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Items">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type key_group_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_list() :: #{
+%%   <<"Items">> => list(key_group_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_group_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_group_summary() :: #{
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type key_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_pair_ids() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_pair_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type key_value_store() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_association() :: #{
+%%   <<"KeyValueStoreARN">> => string()
+%% }
+-type key_value_store_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_associations() :: #{
+%%   <<"Items">> => list(key_value_store_association()),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_value_store_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_value_store_list() :: #{
+%%   <<"Items">> => list(key_value_store()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type key_value_store_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_stream_config() :: #{
+%%   <<"RoleARN">> => string(),
+%%   <<"StreamARN">> => string()
+%% }
+-type kinesis_stream_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_association() :: #{
+%%   <<"EventType">> => list(any()),
+%%   <<"IncludeBody">> => boolean(),
+%%   <<"LambdaFunctionARN">> => string()
+%% }
+-type lambda_function_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_associations() :: #{
+%%   <<"Items">> => list(lambda_function_association()),
+%%   <<"Quantity">> => integer()
+%% }
+-type lambda_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anycast_ip_lists_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_anycast_ip_lists_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anycast_ip_lists_result() :: #{
+%%   <<"AnycastIpLists">> => anycast_ip_list_collection()
+%% }
+-type list_anycast_ip_lists_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cache_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_cache_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cache_policies_result() :: #{
+%%   <<"CachePolicyList">> => cache_policy_list()
+%% }
+-type list_cache_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_front_origin_access_identities_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_cloud_front_origin_access_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cloud_front_origin_access_identities_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentityList">> => cloud_front_origin_access_identity_list()
+%% }
+-type list_cloud_front_origin_access_identities_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conflicting_aliases_request() :: #{
+%%   <<"Alias">> := string(),
+%%   <<"DistributionId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_conflicting_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conflicting_aliases_result() :: #{
+%%   <<"ConflictingAliasesList">> => conflicting_aliases_list()
+%% }
+-type list_conflicting_aliases_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connection_functions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Stage">> => list(any())
+%% }
+-type list_connection_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connection_functions_result() :: #{
+%%   <<"ConnectionFunctions">> => list(connection_function_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_connection_functions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connection_groups_request() :: #{
+%%   <<"AssociationFilter">> => connection_group_association_filter(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_connection_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connection_groups_result() :: #{
+%%   <<"ConnectionGroups">> => list(connection_group_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_connection_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_continuous_deployment_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_continuous_deployment_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_continuous_deployment_policies_result() :: #{
+%%   <<"ContinuousDeploymentPolicyList">> => continuous_deployment_policy_list()
+%% }
+-type list_continuous_deployment_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_by_customization_request() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type list_distribution_tenants_by_customization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_by_customization_result() :: #{
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_distribution_tenants_by_customization_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_request() :: #{
+%%   <<"AssociationFilter">> => distribution_tenant_association_filter(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distribution_tenants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_tenants_result() :: #{
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_distribution_tenants_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_anycast_ip_list_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_anycast_ip_list_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_anycast_ip_list_id_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_anycast_ip_list_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_cache_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_cache_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_cache_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_cache_policy_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_connection_function_request() :: #{
+%%   <<"ConnectionFunctionIdentifier">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_connection_function_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_connection_mode_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_connection_mode_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_connection_mode_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_connection_mode_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_key_group_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_key_group_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_origin_request_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_origin_request_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_origin_request_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_origin_request_policy_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_owned_resource_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_owned_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_owned_resource_result() :: #{
+%%   <<"DistributionList">> => distribution_id_owner_list()
+%% }
+-type list_distributions_by_owned_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_realtime_log_config_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RealtimeLogConfigArn">> => string(),
+%%   <<"RealtimeLogConfigName">> => string()
+%% }
+-type list_distributions_by_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_realtime_log_config_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_response_headers_policy_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_response_headers_policy_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_response_headers_policy_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_response_headers_policy_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_trust_store_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"TrustStoreIdentifier">> := string()
+%% }
+-type list_distributions_by_trust_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_trust_store_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_trust_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_vpc_origin_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_vpc_origin_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_vpc_origin_id_result() :: #{
+%%   <<"DistributionIdList">> => distribution_id_list()
+%% }
+-type list_distributions_by_vpc_origin_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_web_acl_id_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_web_acl_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_web_acl_id_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_by_web_acl_id_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_result() :: #{
+%%   <<"DistributionList">> => distribution_list()
+%% }
+-type list_distributions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_conflicts_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"DomainControlValidationResource">> := distribution_resource_id(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_domain_conflicts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_conflicts_result() :: #{
+%%   <<"DomainConflicts">> => list(domain_conflict()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_domain_conflicts_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_field_level_encryption_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_configs_result() :: #{
+%%   <<"FieldLevelEncryptionList">> => field_level_encryption_list()
+%% }
+-type list_field_level_encryption_configs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_profiles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_field_level_encryption_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_field_level_encryption_profiles_result() :: #{
+%%   <<"FieldLevelEncryptionProfileList">> => field_level_encryption_profile_list()
+%% }
+-type list_field_level_encryption_profiles_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Stage">> => list(any())
+%% }
+-type list_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_result() :: #{
+%%   <<"FunctionList">> => function_list()
+%% }
+-type list_functions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invalidations_for_distribution_tenant_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_invalidations_for_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invalidations_for_distribution_tenant_result() :: #{
+%%   <<"InvalidationList">> => invalidation_list()
+%% }
+-type list_invalidations_for_distribution_tenant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invalidations_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_invalidations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invalidations_result() :: #{
+%%   <<"InvalidationList">> => invalidation_list()
+%% }
+-type list_invalidations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_groups_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_key_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_groups_result() :: #{
+%%   <<"KeyGroupList">> => key_group_list()
+%% }
+-type list_key_groups_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_value_stores_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Status">> => string()
+%% }
+-type list_key_value_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_key_value_stores_result() :: #{
+%%   <<"KeyValueStoreList">> => key_value_store_list()
+%% }
+-type list_key_value_stores_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_access_controls_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_origin_access_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_access_controls_result() :: #{
+%%   <<"OriginAccessControlList">> => origin_access_control_list()
+%% }
+-type list_origin_access_controls_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_request_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_origin_request_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_request_policies_result() :: #{
+%%   <<"OriginRequestPolicyList">> => origin_request_policy_list()
+%% }
+-type list_origin_request_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_public_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_result() :: #{
+%%   <<"PublicKeyList">> => public_key_list()
+%% }
+-type list_public_keys_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_log_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_realtime_log_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_log_configs_result() :: #{
+%%   <<"RealtimeLogConfigs">> => realtime_log_configs()
+%% }
+-type list_realtime_log_configs_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_headers_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_response_headers_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_headers_policies_result() :: #{
+%%   <<"ResponseHeadersPolicyList">> => response_headers_policy_list()
+%% }
+-type list_response_headers_policies_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_distributions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_streaming_distributions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_distributions_result() :: #{
+%%   <<"StreamingDistributionList">> => streaming_distribution_list()
+%% }
+-type list_streaming_distributions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Resource">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => tags()
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_stores_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_trust_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trust_stores_result() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreList">> => list(trust_store_summary())
+%% }
+-type list_trust_stores_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_origins_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_vpc_origins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_origins_result() :: #{
+%%   <<"VpcOriginList">> => vpc_origin_list()
+%% }
+-type list_vpc_origins_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IncludeCookies">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_certificate_details() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateStatus">> => list(any()),
+%%   <<"ValidationTokenDetails">> => list(validation_token_detail()),
+%%   <<"ValidationTokenHost">> => list(any())
+%% }
+-type managed_certificate_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_certificate_request() :: #{
+%%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
+%%   <<"PrimaryDomainName">> => string(),
+%%   <<"ValidationTokenHost">> => list(any())
+%% }
+-type managed_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_body() :: #{
+%%   <<"Message">> => string()
+%% }
+-type missing_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_subscription() :: #{
+%%   <<"RealtimeMetricsSubscriptionConfig">> => realtime_metrics_subscription_config()
+%% }
+-type monitoring_subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitoring_subscription_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type monitoring_subscription_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cloud_front_origin_access_identity() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cloud_front_origin_access_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_continuous_deployment_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_continuous_deployment_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_field_level_encryption_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_field_level_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_field_level_encryption_profile() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_field_level_encryption_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_function_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_function_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_invalidation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_invalidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_monitoring_subscription() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_monitoring_subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin_access_control() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_public_key() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_public_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_realtime_log_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_realtime_log_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_resource() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_streaming_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_streaming_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin() :: #{
+%%   <<"ConnectionAttempts">> => integer(),
+%%   <<"ConnectionTimeout">> => integer(),
+%%   <<"CustomHeaders">> => custom_headers(),
+%%   <<"CustomOriginConfig">> => custom_origin_config(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OriginAccessControlId">> => string(),
+%%   <<"OriginPath">> => string(),
+%%   <<"OriginShield">> => origin_shield(),
+%%   <<"ResponseCompletionTimeout">> => integer(),
+%%   <<"S3OriginConfig">> => s3_origin_config(),
+%%   <<"VpcOriginConfig">> => vpc_origin_config()
+%% }
+-type origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control() :: #{
+%%   <<"Id">> => string(),
+%%   <<"OriginAccessControlConfig">> => origin_access_control_config()
+%% }
+-type origin_access_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_access_control_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_config() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OriginAccessControlOriginType">> => list(any()),
+%%   <<"SigningBehavior">> => list(any()),
+%%   <<"SigningProtocol">> => list(any())
+%% }
+-type origin_access_control_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_access_control_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(origin_access_control_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_access_control_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_access_control_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OriginAccessControlOriginType">> => list(any()),
+%%   <<"SigningBehavior">> => list(any()),
+%%   <<"SigningProtocol">> => list(any())
+%% }
+-type origin_access_control_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_custom_header() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"HeaderValue">> => string()
+%% }
+-type origin_custom_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group() :: #{
+%%   <<"FailoverCriteria">> => origin_group_failover_criteria(),
+%%   <<"Id">> => string(),
+%%   <<"Members">> => origin_group_members(),
+%%   <<"SelectionCriteria">> => list(any())
+%% }
+-type origin_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_failover_criteria() :: #{
+%%   <<"StatusCodes">> => status_codes()
+%% }
+-type origin_group_failover_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_member() :: #{
+%%   <<"OriginId">> => string()
+%% }
+-type origin_group_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_group_members() :: #{
+%%   <<"Items">> => list(origin_group_member()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_group_members() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_groups() :: #{
+%%   <<"Items">> => list(origin_group()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_mtls_config() :: #{
+%%   <<"ClientCertificateArn">> => string()
+%% }
+-type origin_mtls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OriginRequestPolicyConfig">> => origin_request_policy_config()
+%% }
+-type origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_request_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CookiesConfig">> => origin_request_policy_cookies_config(),
+%%   <<"HeadersConfig">> => origin_request_policy_headers_config(),
+%%   <<"Name">> => string(),
+%%   <<"QueryStringsConfig">> => origin_request_policy_query_strings_config()
+%% }
+-type origin_request_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_cookies_config() :: #{
+%%   <<"CookieBehavior">> => list(any()),
+%%   <<"Cookies">> => cookie_names()
+%% }
+-type origin_request_policy_cookies_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_headers_config() :: #{
+%%   <<"HeaderBehavior">> => list(any()),
+%%   <<"Headers">> => headers()
+%% }
+-type origin_request_policy_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type origin_request_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_list() :: #{
+%%   <<"Items">> => list(origin_request_policy_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_request_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_query_strings_config() :: #{
+%%   <<"QueryStringBehavior">> => list(any()),
+%%   <<"QueryStrings">> => query_string_names()
+%% }
+-type origin_request_policy_query_strings_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_request_policy_summary() :: #{
+%%   <<"OriginRequestPolicy">> => origin_request_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type origin_request_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_shield() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"OriginShieldRegion">> => string()
+%% }
+-type origin_shield() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_ssl_protocols() :: #{
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origin_ssl_protocols() :: #{binary() => any()}.
+
+
+%% Example:
+%% origins() :: #{
+%%   <<"Items">> => list(origin()),
+%%   <<"Quantity">> => integer()
+%% }
+-type origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_definition() :: #{
+%%   <<"Definition">> => parameter_definition_schema(),
+%%   <<"Name">> => string()
+%% }
+-type parameter_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_definition_schema() :: #{
+%%   <<"StringSchema">> => string_schema_config()
+%% }
+-type parameter_definition_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameters_in_cache_key_and_forwarded_to_origin() :: #{
+%%   <<"CookiesConfig">> => cache_policy_cookies_config(),
+%%   <<"EnableAcceptEncodingBrotli">> => boolean(),
+%%   <<"EnableAcceptEncodingGzip">> => boolean(),
+%%   <<"HeadersConfig">> => cache_policy_headers_config(),
+%%   <<"QueryStringsConfig">> => cache_policy_query_strings_config()
+%% }
+-type parameters_in_cache_key_and_forwarded_to_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% paths() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type paths() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed() :: #{
+%%   <<"Message">> => string()
+%% }
+-type precondition_failed() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"PublicKeyConfig">> => public_key_config()
+%% }
+-type public_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_key_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_config() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"EncodedKey">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type public_key_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type public_key_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_list() :: #{
+%%   <<"Items">> => list(public_key_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type public_key_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key_summary() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EncodedKey">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type public_key_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_connection_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type publish_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary()
+%% }
+-type publish_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_function_request() :: #{
+%%   <<"IfMatch">> := string()
+%% }
+-type publish_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_function_result() :: #{
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type publish_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_result() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile() :: #{
+%%   <<"ProfileId">> => string(),
+%%   <<"QueryArg">> => string()
+%% }
+-type query_arg_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile_config() :: #{
+%%   <<"ForwardWhenQueryArgProfileIsUnknown">> => boolean(),
+%%   <<"QueryArgProfiles">> => query_arg_profiles()
+%% }
+-type query_arg_profile_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profile_empty() :: #{
+%%   <<"Message">> => string()
+%% }
+-type query_arg_profile_empty() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_arg_profiles() :: #{
+%%   <<"Items">> => list(query_arg_profile()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_arg_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_string_cache_keys() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_string_cache_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_string_names() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type query_string_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"EndPoints">> => list(end_point()),
+%%   <<"Fields">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type realtime_log_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_config_owner_mismatch() :: #{
+%%   <<"Message">> => string()
+%% }
+-type realtime_log_config_owner_mismatch() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_log_configs() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(realtime_log_config()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string()
+%% }
+-type realtime_log_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% realtime_metrics_subscription_config() :: #{
+%%   <<"RealtimeMetricsSubscriptionStatus">> => list(any())
+%% }
+-type realtime_metrics_subscription_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_disabled() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_disabled() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ResponseHeadersPolicyConfig">> => response_headers_policy_config()
+%% }
+-type response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_headers() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_methods() :: #{
+%%   <<"Items">> => list(list(any())()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_methods() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_allow_origins() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_access_control_expose_headers() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_access_control_expose_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type response_headers_policy_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CorsConfig">> => response_headers_policy_cors_config(),
+%%   <<"CustomHeadersConfig">> => response_headers_policy_custom_headers_config(),
+%%   <<"Name">> => string(),
+%%   <<"RemoveHeadersConfig">> => response_headers_policy_remove_headers_config(),
+%%   <<"SecurityHeadersConfig">> => response_headers_policy_security_headers_config(),
+%%   <<"ServerTimingHeadersConfig">> => response_headers_policy_server_timing_headers_config()
+%% }
+-type response_headers_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_content_security_policy() :: #{
+%%   <<"ContentSecurityPolicy">> => string(),
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_content_security_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_content_type_options() :: #{
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_content_type_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_cors_config() :: #{
+%%   <<"AccessControlAllowCredentials">> => boolean(),
+%%   <<"AccessControlAllowHeaders">> => response_headers_policy_access_control_allow_headers(),
+%%   <<"AccessControlAllowMethods">> => response_headers_policy_access_control_allow_methods(),
+%%   <<"AccessControlAllowOrigins">> => response_headers_policy_access_control_allow_origins(),
+%%   <<"AccessControlExposeHeaders">> => response_headers_policy_access_control_expose_headers(),
+%%   <<"AccessControlMaxAgeSec">> => integer(),
+%%   <<"OriginOverride">> => boolean()
+%% }
+-type response_headers_policy_cors_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_custom_header() :: #{
+%%   <<"Header">> => string(),
+%%   <<"Override">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type response_headers_policy_custom_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_custom_headers_config() :: #{
+%%   <<"Items">> => list(response_headers_policy_custom_header()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_custom_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_frame_options() :: #{
+%%   <<"FrameOption">> => list(any()),
+%%   <<"Override">> => boolean()
+%% }
+-type response_headers_policy_frame_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type response_headers_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_list() :: #{
+%%   <<"Items">> => list(response_headers_policy_summary()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_referrer_policy() :: #{
+%%   <<"Override">> => boolean(),
+%%   <<"ReferrerPolicy">> => list(any())
+%% }
+-type response_headers_policy_referrer_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_remove_header() :: #{
+%%   <<"Header">> => string()
+%% }
+-type response_headers_policy_remove_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_remove_headers_config() :: #{
+%%   <<"Items">> => list(response_headers_policy_remove_header()),
+%%   <<"Quantity">> => integer()
+%% }
+-type response_headers_policy_remove_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_security_headers_config() :: #{
+%%   <<"ContentSecurityPolicy">> => response_headers_policy_content_security_policy(),
+%%   <<"ContentTypeOptions">> => response_headers_policy_content_type_options(),
+%%   <<"FrameOptions">> => response_headers_policy_frame_options(),
+%%   <<"ReferrerPolicy">> => response_headers_policy_referrer_policy(),
+%%   <<"StrictTransportSecurity">> => response_headers_policy_strict_transport_security(),
+%%   <<"XSSProtection">> => response_headers_policy_x_s_s_protection()
+%% }
+-type response_headers_policy_security_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_server_timing_headers_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type response_headers_policy_server_timing_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_strict_transport_security() :: #{
+%%   <<"AccessControlMaxAgeSec">> => integer(),
+%%   <<"IncludeSubdomains">> => boolean(),
+%%   <<"Override">> => boolean(),
+%%   <<"Preload">> => boolean()
+%% }
+-type response_headers_policy_strict_transport_security() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_summary() :: #{
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy(),
+%%   <<"Type">> => list(any())
+%% }
+-type response_headers_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_headers_policy_x_s_s_protection() :: #{
+%%   <<"ModeBlock">> => boolean(),
+%%   <<"Override">> => boolean(),
+%%   <<"Protection">> => boolean(),
+%%   <<"ReportUri">> => string()
+%% }
+-type response_headers_policy_x_s_s_protection() :: #{binary() => any()}.
+
+
+%% Example:
+%% restrictions() :: #{
+%%   <<"GeoRestriction">> => geo_restriction()
+%% }
+-type restrictions() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_origin() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"OriginAccessIdentity">> => string()
+%% }
+-type s3_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_origin_config() :: #{
+%%   <<"OriginAccessIdentity">> => string(),
+%%   <<"OriginReadTimeout">> => integer()
+%% }
+-type s3_origin_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_stickiness_config() :: #{
+%%   <<"IdleTTL">> => integer(),
+%%   <<"MaximumTTL">> => integer()
+%% }
+-type session_stickiness_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% signer() :: #{
+%%   <<"AwsAccountNumber">> => string(),
+%%   <<"KeyPairIds">> => key_pair_ids()
+%% }
+-type signer() :: #{binary() => any()}.
+
+
+%% Example:
+%% staging_distribution_dns_names() :: #{
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type staging_distribution_dns_names() :: #{binary() => any()}.
+
+
+%% Example:
+%% staging_distribution_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type staging_distribution_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_codes() :: #{
+%%   <<"Items">> => list(integer()),
+%%   <<"Quantity">> => integer()
+%% }
+-type status_codes() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config()
+%% }
+-type streaming_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_distribution_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type streaming_distribution_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
 %% streaming_distribution_config() :: #{
 %%   <<"Aliases">> => aliases(),
 %%   <<"CallerReference">> => string(),
@@ -5618,103 +4740,243 @@
 
 
 %% Example:
-%% too_many_field_level_encryption_query_arg_profiles() :: #{
-%%   <<"Message">> => string()
+%% streaming_distribution_config_with_tags() :: #{
+%%   <<"StreamingDistributionConfig">> => streaming_distribution_config(),
+%%   <<"Tags">> => tags()
 %% }
--type too_many_field_level_encryption_query_arg_profiles() :: #{binary() => any()}.
+-type streaming_distribution_config_with_tags() :: #{binary() => any()}.
 
 
 %% Example:
-%% active_trusted_key_groups() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(k_g_key_pair_ids()),
-%%   <<"Quantity">> => integer()
-%% }
--type active_trusted_key_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% realtime_log_config() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"EndPoints">> => list(end_point()),
-%%   <<"Fields">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SamplingRate">> => float()
-%% }
--type realtime_log_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_vpc_origin_request() :: #{}
--type get_vpc_origin_request() :: #{}.
-
-%% Example:
-%% get_origin_access_control_config_request() :: #{}
--type get_origin_access_control_config_request() :: #{}.
-
-
-%% Example:
-%% distribution_id_list() :: #{
+%% streaming_distribution_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(string()),
+%%   <<"Items">> => list(streaming_distribution_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
 %% }
--type distribution_id_list() :: #{binary() => any()}.
+-type streaming_distribution_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_location_code() :: #{
+%% streaming_distribution_not_disabled() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_location_code() :: #{binary() => any()}.
+-type streaming_distribution_not_disabled() :: #{binary() => any()}.
 
 
 %% Example:
-%% staging_distribution_in_use() :: #{
-%%   <<"Message">> => string()
-%% }
--type staging_distribution_in_use() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_group() :: #{
-%%   <<"AnycastIpListId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
+%% streaming_distribution_summary() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Aliases">> => aliases(),
+%%   <<"Comment">> => string(),
+%%   <<"DomainName">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"Id">> => string(),
-%%   <<"Ipv6Enabled">> => boolean(),
-%%   <<"IsDefault">> => boolean(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"RoutingEndpoint">> => string(),
+%%   <<"PriceClass">> => list(any()),
+%%   <<"S3Origin">> => s3_origin(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => tags()
+%%   <<"TrustedSigners">> => trusted_signers()
 %% }
--type connection_group() :: #{binary() => any()}.
+-type streaming_distribution_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% origin_request_policy_in_use() :: #{
+%% streaming_logging_config() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type streaming_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_schema_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Required">> => boolean()
+%% }
+-type string_schema_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_keys() :: #{
+%%   <<"Items">> => list(string())
+%% }
+-type tag_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"Tags">> := tags()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags() :: #{
+%%   <<"Items">> => list(tag())
+%% }
+-type tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% tenant_config() :: #{
+%%   <<"ParameterDefinitions">> => list(parameter_definition())
+%% }
+-type tenant_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_connection_function_request() :: #{
+%%   <<"ConnectionObject">> := binary(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Stage">> => list(any())
+%% }
+-type test_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_connection_function_result() :: #{
+%%   <<"ConnectionFunctionTestResult">> => connection_function_test_result()
+%% }
+-type test_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_function_failed() :: #{
 %%   <<"Message">> => string()
 %% }
--type origin_request_policy_in_use() :: #{binary() => any()}.
+-type test_function_failed() :: #{binary() => any()}.
 
 
 %% Example:
-%% key_group_summary() :: #{
-%%   <<"KeyGroup">> => key_group()
+%% test_function_request() :: #{
+%%   <<"EventObject">> := binary(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Stage">> => list(any())
 %% }
--type key_group_summary() :: #{binary() => any()}.
+-type test_function_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_monitoring_subscription_request() :: #{
-%%   <<"MonitoringSubscription">> := monitoring_subscription()
+%% test_function_result() :: #{
+%%   <<"TestResult">> => test_result()
 %% }
--type create_monitoring_subscription_request() :: #{binary() => any()}.
+-type test_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_result() :: #{
+%%   <<"ComputeUtilization">> => string(),
+%%   <<"FunctionErrorMessage">> => string(),
+%%   <<"FunctionExecutionLogs">> => list(string()),
+%%   <<"FunctionOutput">> => string(),
+%%   <<"FunctionSummary">> => function_summary()
+%% }
+-type test_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_long_c_s_p_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_long_c_s_p_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cache_behaviors() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cache_behaviors() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cache_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cache_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_certificates() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_certificates() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cloud_front_origin_access_identities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cloud_front_origin_access_identities() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_continuous_deployment_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_continuous_deployment_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cookie_names_in_white_list() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookie_names_in_white_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cookies_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookies_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_cookies_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_cookies_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_custom_headers_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_custom_headers_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distribution_cnames() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distribution_cnames() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_distributions_associated_to_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_distributions_associated_to_cache_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5725,85 +4987,278 @@
 
 
 %% Example:
-%% content_type_profile_config() :: #{
-%%   <<"ContentTypeProfiles">> => content_type_profiles(),
-%%   <<"ForwardWhenContentTypeIsUnknown">> => boolean()
+%% too_many_distributions_associated_to_key_group() :: #{
+%%   <<"Message">> => string()
 %% }
--type content_type_profile_config() :: #{binary() => any()}.
+-type too_many_distributions_associated_to_key_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% response_headers_policy_access_control_allow_headers() :: #{
-%%   <<"Items">> => list(string()),
-%%   <<"Quantity">> => integer()
+%% too_many_distributions_associated_to_origin_access_control() :: #{
+%%   <<"Message">> => string()
 %% }
--type response_headers_policy_access_control_allow_headers() :: #{binary() => any()}.
+-type too_many_distributions_associated_to_origin_access_control() :: #{binary() => any()}.
 
 
 %% Example:
-%% custom_origin_config() :: #{
-%%   <<"HTTPPort">> => integer(),
-%%   <<"HTTPSPort">> => integer(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"OriginKeepaliveTimeout">> => integer(),
-%%   <<"OriginMtlsConfig">> => origin_mtls_config(),
-%%   <<"OriginProtocolPolicy">> => list(any()),
-%%   <<"OriginReadTimeout">> => integer(),
-%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
+%% too_many_distributions_associated_to_origin_request_policy() :: #{
+%%   <<"Message">> => string()
 %% }
--type custom_origin_config() :: #{binary() => any()}.
+-type too_many_distributions_associated_to_origin_request_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% connection_function_association() :: #{
-%%   <<"Id">> => string()
+%% too_many_distributions_associated_to_response_headers_policy() :: #{
+%%   <<"Message">> => string()
 %% }
--type connection_function_association() :: #{binary() => any()}.
+-type too_many_distributions_associated_to_response_headers_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_streaming_distribution_with_tags_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"StreamingDistribution">> => streaming_distribution()
+%% too_many_distributions_with_function_associations() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_streaming_distribution_with_tags_result() :: #{binary() => any()}.
+-type too_many_distributions_with_function_associations() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_field_level_encryption_profile_result() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
+%% too_many_distributions_with_lambda_associations() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_field_level_encryption_profile_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_streaming_distribution_request() :: #{}
--type get_streaming_distribution_request() :: #{}.
+-type too_many_distributions_with_lambda_associations() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_realtime_log_config_result() :: #{
-%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% too_many_distributions_with_single_function_arn() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_realtime_log_config_result() :: #{binary() => any()}.
+-type too_many_distributions_with_single_function_arn() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_connection_function_result() :: #{
-%%   <<"ConnectionFunctionCode">> => binary(),
-%%   <<"ContentType">> => string(),
-%%   <<"ETag">> => string()
+%% too_many_field_level_encryption_configs() :: #{
+%%   <<"Message">> => string()
 %% }
--type get_connection_function_result() :: #{binary() => any()}.
+-type too_many_field_level_encryption_configs() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_distribution_with_staging_config_result() :: #{
-%%   <<"Distribution">> => distribution(),
-%%   <<"ETag">> => string()
+%% too_many_field_level_encryption_content_type_profiles() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_distribution_with_staging_config_result() :: #{binary() => any()}.
+-type too_many_field_level_encryption_content_type_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_encryption_entities() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_encryption_entities() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_field_patterns() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_field_patterns() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_profiles() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_field_level_encryption_query_arg_profiles() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_field_level_encryption_query_arg_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_function_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_functions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_functions() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_forwarded_values() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_forwarded_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_headers_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_headers_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_invalidations_in_progress() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_invalidations_in_progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_key_groups() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_key_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_key_groups_associated_to_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_key_groups_associated_to_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_lambda_function_associations() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_lambda_function_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_access_controls() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_access_controls() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_custom_headers() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_custom_headers() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_groups_per_distribution() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_groups_per_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origin_request_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origin_request_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_origins() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_public_keys() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_public_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_public_keys_in_key_group() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_public_keys_in_key_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_string_parameters() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_string_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_strings_in_cache_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_strings_in_cache_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_query_strings_in_origin_request_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_query_strings_in_origin_request_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_realtime_log_configs() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_realtime_log_configs() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_remove_headers_in_response_headers_policy() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_remove_headers_in_response_headers_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_response_headers_policies() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_response_headers_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_streaming_distribution_cnames() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_streaming_distribution_cnames() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_streaming_distributions() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_streaming_distributions() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_trusted_signers() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_config() :: #{
+%%   <<"SingleHeaderConfig">> => continuous_deployment_single_header_config(),
+%%   <<"SingleWeightConfig">> => continuous_deployment_single_weight_config(),
+%%   <<"Type">> => list(any())
+%% }
+-type traffic_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5821,6 +5276,272 @@
 
 
 %% Example:
+%% trust_store_config() :: #{
+%%   <<"AdvertiseTrustStoreCaNames">> => boolean(),
+%%   <<"IgnoreCertificateExpiry">> => boolean(),
+%%   <<"TrustStoreId">> => string()
+%% }
+-type trust_store_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_store_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfCaCertificates">> => integer(),
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type trust_store_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_key_group_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trusted_key_group_does_not_exist() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_key_groups() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type trusted_key_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_signer_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trusted_signer_does_not_exist() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_signers() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Items">> => list(string()),
+%%   <<"Quantity">> => integer()
+%% }
+-type trusted_signers() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"TagKeys">> := tag_keys()
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_anycast_ip_list_request() :: #{
+%%   <<"IfMatch">> := string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamCidrConfigs">> => list(ipam_cidr_config())
+%% }
+-type update_anycast_ip_list_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type update_anycast_ip_list_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cache_policy_request() :: #{
+%%   <<"CachePolicyConfig">> := cache_policy_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_cache_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cache_policy_result() :: #{
+%%   <<"CachePolicy">> => cache_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type update_cache_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_front_origin_access_identity_request() :: #{
+%%   <<"CloudFrontOriginAccessIdentityConfig">> := cloud_front_origin_access_identity_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_cloud_front_origin_access_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_front_origin_access_identity_result() :: #{
+%%   <<"CloudFrontOriginAccessIdentity">> => cloud_front_origin_access_identity(),
+%%   <<"ETag">> => string()
+%% }
+-type update_cloud_front_origin_access_identity_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_function_request() :: #{
+%%   <<"ConnectionFunctionCode">> := binary(),
+%%   <<"ConnectionFunctionConfig">> := function_config(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_connection_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_function_result() :: #{
+%%   <<"ConnectionFunctionSummary">> => connection_function_summary(),
+%%   <<"ETag">> => string()
+%% }
+-type update_connection_function_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_group_request() :: #{
+%%   <<"AnycastIpListId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> := string(),
+%%   <<"Ipv6Enabled">> => boolean()
+%% }
+-type update_connection_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connection_group_result() :: #{
+%%   <<"ConnectionGroup">> => connection_group(),
+%%   <<"ETag">> => string()
+%% }
+-type update_connection_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_continuous_deployment_policy_request() :: #{
+%%   <<"ContinuousDeploymentPolicyConfig">> := continuous_deployment_policy_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_continuous_deployment_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_continuous_deployment_policy_result() :: #{
+%%   <<"ContinuousDeploymentPolicy">> => continuous_deployment_policy(),
+%%   <<"ETag">> => string()
+%% }
+-type update_continuous_deployment_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_request() :: #{
+%%   <<"DistributionConfig">> := distribution_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_tenant_request() :: #{
+%%   <<"ConnectionGroupId">> => string(),
+%%   <<"Customizations">> => customizations(),
+%%   <<"DistributionId">> => string(),
+%%   <<"Domains">> => list(domain_item()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IfMatch">> := string(),
+%%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type update_distribution_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_tenant_result() :: #{
+%%   <<"DistributionTenant">> => distribution_tenant(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_tenant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_with_staging_config_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"StagingDistributionId">> => string()
+%% }
+-type update_distribution_with_staging_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_with_staging_config_result() :: #{
+%%   <<"Distribution">> => distribution(),
+%%   <<"ETag">> => string()
+%% }
+-type update_distribution_with_staging_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_association_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"TargetResource">> := distribution_resource_id()
+%% }
+-type update_domain_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_association_result() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type update_domain_association_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_config_request() :: #{
+%%   <<"FieldLevelEncryptionConfig">> := field_level_encryption_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_field_level_encryption_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_config_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"FieldLevelEncryption">> => field_level_encryption()
+%% }
+-type update_field_level_encryption_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_field_level_encryption_profile_request() :: #{
+%%   <<"FieldLevelEncryptionProfileConfig">> := field_level_encryption_profile_config(),
+%%   <<"IfMatch">> => string()
+%% }
+-type update_field_level_encryption_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_field_level_encryption_profile_result() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"FieldLevelEncryptionProfile">> => field_level_encryption_profile()
@@ -5829,10 +5550,12 @@
 
 
 %% Example:
-%% too_many_distributions_associated_to_origin_access_control() :: #{
-%%   <<"Message">> => string()
+%% update_function_request() :: #{
+%%   <<"FunctionCode">> := binary(),
+%%   <<"FunctionConfig">> := function_config(),
+%%   <<"IfMatch">> := string()
 %% }
--type too_many_distributions_associated_to_origin_access_control() :: #{binary() => any()}.
+-type update_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5842,377 +5565,654 @@
 %% }
 -type update_function_result() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_key_group_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"KeyGroupConfig">> := key_group_config()
+%% }
+-type update_key_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_group_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyGroup">> => key_group()
+%% }
+-type update_key_group_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_value_store_request() :: #{
+%%   <<"Comment">> := string(),
+%%   <<"IfMatch">> := string()
+%% }
+-type update_key_value_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_key_value_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"KeyValueStore">> => key_value_store()
+%% }
+-type update_key_value_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_access_control_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"OriginAccessControlConfig">> := origin_access_control_config()
+%% }
+-type update_origin_access_control_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_access_control_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginAccessControl">> => origin_access_control()
+%% }
+-type update_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_request_policy_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"OriginRequestPolicyConfig">> := origin_request_policy_config()
+%% }
+-type update_origin_request_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_origin_request_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"OriginRequestPolicy">> => origin_request_policy()
+%% }
+-type update_origin_request_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_key_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"PublicKeyConfig">> := public_key_config()
+%% }
+-type update_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_public_key_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"PublicKey">> => public_key()
+%% }
+-type update_public_key_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_realtime_log_config_request() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"EndPoints">> => list(end_point()),
+%%   <<"Fields">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"SamplingRate">> => float()
+%% }
+-type update_realtime_log_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_realtime_log_config_result() :: #{
+%%   <<"RealtimeLogConfig">> => realtime_log_config()
+%% }
+-type update_realtime_log_config_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_response_headers_policy_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"ResponseHeadersPolicyConfig">> := response_headers_policy_config()
+%% }
+-type update_response_headers_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_response_headers_policy_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"ResponseHeadersPolicy">> => response_headers_policy()
+%% }
+-type update_response_headers_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_streaming_distribution_request() :: #{
+%%   <<"IfMatch">> => string(),
+%%   <<"StreamingDistributionConfig">> := streaming_distribution_config()
+%% }
+-type update_streaming_distribution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_streaming_distribution_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"StreamingDistribution">> => streaming_distribution()
+%% }
+-type update_streaming_distribution_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_store_request() :: #{
+%%   <<"CaCertificatesBundleSource">> => list(),
+%%   <<"IfMatch">> := string(),
+%%   <<"UseClientCertificateOCSPEndpoint">> => boolean()
+%% }
+-type update_trust_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_trust_store_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"TrustStore">> => trust_store()
+%% }
+-type update_trust_store_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_origin_request() :: #{
+%%   <<"IfMatch">> := string(),
+%%   <<"VpcOriginEndpointConfig">> := vpc_origin_endpoint_config()
+%% }
+-type update_vpc_origin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_vpc_origin_result() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"VpcOrigin">> => vpc_origin()
+%% }
+-type update_vpc_origin_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_token_detail() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"RedirectFrom">> => string(),
+%%   <<"RedirectTo">> => string()
+%% }
+-type validation_token_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_dns_configuration_request() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"Identifier">> := string()
+%% }
+-type verify_dns_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_dns_configuration_result() :: #{
+%%   <<"DnsConfigurationList">> => list(dns_configuration())
+%% }
+-type verify_dns_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% viewer_certificate() :: #{
+%%   <<"ACMCertificateArn">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateSource">> => list(any()),
+%%   <<"CloudFrontDefaultCertificate">> => boolean(),
+%%   <<"IAMCertificateId">> => string(),
+%%   <<"MinimumProtocolVersion">> => list(any()),
+%%   <<"SSLSupportMethod">> => list(any())
+%% }
+-type viewer_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% viewer_mtls_config() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"TrustStoreConfig">> => trust_store_config()
+%% }
+-type viewer_mtls_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_origin() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"VpcOriginEndpointConfig">> => vpc_origin_endpoint_config()
+%% }
+-type vpc_origin() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_origin_config() :: #{
+%%   <<"OriginKeepaliveTimeout">> => integer(),
+%%   <<"OriginReadTimeout">> => integer(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"VpcOriginId">> => string()
+%% }
+-type vpc_origin_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_origin_endpoint_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"HTTPPort">> => integer(),
+%%   <<"HTTPSPort">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"OriginProtocolPolicy">> => list(any()),
+%%   <<"OriginSslProtocols">> => origin_ssl_protocols()
+%% }
+-type vpc_origin_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_origin_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(vpc_origin_summary()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type vpc_origin_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_origin_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OriginEndpointArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type vpc_origin_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_acl_customization() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Arn">> => string()
+%% }
+-type web_acl_customization() :: #{binary() => any()}.
+
 -type associate_alias_errors() ::
-    no_such_distribution() | 
     too_many_distribution_cnames() | 
+    no_such_distribution() | 
     invalid_argument() | 
-    access_denied() | 
-    illegal_update().
+    illegal_update() | 
+    access_denied().
 
 -type associate_distribution_tenant_web_acl_errors() ::
-    entity_limit_exceeded() | 
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    entity_limit_exceeded() | 
+    access_denied().
 
 -type associate_distribution_web_acl_errors() ::
-    entity_limit_exceeded() | 
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    entity_limit_exceeded() | 
+    access_denied().
 
 -type copy_distribution_errors() ::
-    too_many_distributions_associated_to_origin_access_control() | 
-    too_many_distributions_associated_to_field_level_encryption_config() | 
-    invalid_location_code() | 
-    invalid_response_code() | 
-    too_many_distributions() | 
-    no_such_realtime_log_config() | 
-    invalid_function_association() | 
-    illegal_field_level_encryption_config_association_with_cache_behavior() | 
-    no_such_origin() | 
-    realtime_log_config_owner_mismatch() | 
-    no_such_response_headers_policy() | 
-    invalid_relative_path() | 
-    invalid_viewer_certificate() | 
-    too_many_query_string_parameters() | 
-    cname_already_exists() | 
-    invalid_default_root_object() | 
-    too_many_cache_behaviors() | 
-    too_many_distributions_associated_to_response_headers_policy() | 
-    too_many_lambda_function_associations() | 
-    too_many_distributions_with_lambda_associations() | 
-    too_many_distributions_with_single_function_arn() | 
-    too_many_origins() | 
-    distribution_already_exists() | 
-    too_many_origin_custom_headers() | 
-    invalid_minimum_protocol_version() | 
-    too_many_headers_in_forwarded_values() | 
-    too_many_key_groups_associated_to_distribution() | 
-    invalid_origin_read_timeout() | 
     trusted_signer_does_not_exist() | 
-    no_such_cache_policy() | 
-    invalid_forward_cookies() | 
-    invalid_origin_keepalive_timeout() | 
-    invalid_lambda_function_association() | 
-    invalid_headers_for_s3_origin() | 
-    inconsistent_quantities() | 
-    missing_body() | 
-    too_many_distributions_with_function_associations() | 
-    invalid_geo_restriction_parameter() | 
-    invalid_error_code() | 
-    too_many_trusted_signers() | 
-    no_such_distribution() | 
-    no_such_origin_request_policy() | 
-    too_many_distribution_cnames() | 
-    precondition_failed() | 
-    invalid_required_protocol() | 
-    too_many_certificates() | 
-    invalid_origin() | 
-    invalid_origin_access_control() | 
-    no_such_field_level_encryption_config() | 
-    invalid_web_acl_id() | 
-    invalid_argument() | 
-    too_many_cookie_names_in_white_list() | 
-    access_denied() | 
-    invalid_t_t_l_order() | 
-    invalid_protocol_settings() | 
-    too_many_distributions_associated_to_key_group() | 
-    too_many_distributions_associated_to_origin_request_policy() | 
-    invalid_query_string_parameters() | 
     trusted_key_group_does_not_exist() | 
-    too_many_distributions_associated_to_cache_policy() | 
-    invalid_if_match_version() | 
-    invalid_origin_access_identity() | 
+    too_many_trusted_signers() | 
+    too_many_query_string_parameters() | 
+    too_many_origins() | 
+    too_many_origin_groups_per_distribution() | 
+    too_many_origin_custom_headers() | 
+    too_many_lambda_function_associations() | 
+    too_many_key_groups_associated_to_distribution() | 
+    too_many_headers_in_forwarded_values() | 
     too_many_function_associations() | 
-    too_many_origin_groups_per_distribution().
+    too_many_distributions_with_single_function_arn() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_function_associations() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    too_many_distributions() | 
+    too_many_distribution_cnames() | 
+    too_many_cookie_names_in_white_list() | 
+    too_many_certificates() | 
+    too_many_cache_behaviors() | 
+    realtime_log_config_owner_mismatch() | 
+    precondition_failed() | 
+    no_such_response_headers_policy() | 
+    no_such_realtime_log_config() | 
+    no_such_origin_request_policy() | 
+    no_such_origin() | 
+    no_such_field_level_encryption_config() | 
+    no_such_distribution() | 
+    no_such_cache_policy() | 
+    missing_body() | 
+    invalid_web_acl_id() | 
+    invalid_viewer_certificate() | 
+    invalid_t_t_l_order() | 
+    invalid_response_code() | 
+    invalid_required_protocol() | 
+    invalid_relative_path() | 
+    invalid_query_string_parameters() | 
+    invalid_protocol_settings() | 
+    invalid_origin_read_timeout() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_origin() | 
+    invalid_minimum_protocol_version() | 
+    invalid_location_code() | 
+    invalid_lambda_function_association() | 
+    invalid_if_match_version() | 
+    invalid_headers_for_s3_origin() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_function_association() | 
+    invalid_forward_cookies() | 
+    invalid_error_code() | 
+    invalid_default_root_object() | 
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    distribution_already_exists() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_anycast_ip_list_errors() ::
-    entity_limit_exceeded() | 
     unsupported_operation() | 
-    entity_already_exists() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    access_denied().
 
 -type create_cache_policy_errors() ::
-    cache_policy_already_exists() | 
-    inconsistent_quantities() | 
     too_many_query_strings_in_cache_policy() | 
-    too_many_cache_policies() | 
     too_many_headers_in_cache_policy() | 
+    too_many_cookies_in_cache_policy() | 
+    too_many_cache_policies() | 
     invalid_argument() | 
-    access_denied() | 
-    too_many_cookies_in_cache_policy().
+    inconsistent_quantities() | 
+    cache_policy_already_exists() | 
+    access_denied().
 
 -type create_cloud_front_origin_access_identity_errors() ::
     too_many_cloud_front_origin_access_identities() | 
-    inconsistent_quantities() | 
     missing_body() | 
     invalid_argument() | 
+    inconsistent_quantities() | 
     cloud_front_origin_access_identity_already_exists().
 
 -type create_connection_function_errors() ::
-    entity_limit_exceeded() | 
     unsupported_operation() | 
-    entity_size_limit_exceeded() | 
-    entity_already_exists() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    entity_size_limit_exceeded() | 
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    access_denied().
 
 -type create_connection_group_errors() ::
+    invalid_tagging() | 
+    invalid_argument() | 
+    entity_not_found() | 
     entity_limit_exceeded() | 
     entity_already_exists() | 
-    invalid_argument() | 
-    access_denied() | 
-    entity_not_found() | 
-    invalid_tagging().
+    access_denied().
 
 -type create_continuous_deployment_policy_errors() ::
+    too_many_continuous_deployment_policies() | 
     staging_distribution_in_use() | 
-    inconsistent_quantities() | 
     invalid_argument() | 
-    access_denied() | 
+    inconsistent_quantities() | 
     continuous_deployment_policy_already_exists() | 
-    too_many_continuous_deployment_policies().
+    access_denied().
 
 -type create_distribution_errors() ::
+    trusted_signer_does_not_exist() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_trusted_signers() | 
+    too_many_query_string_parameters() | 
+    too_many_origins() | 
+    too_many_origin_groups_per_distribution() | 
+    too_many_origin_custom_headers() | 
+    too_many_lambda_function_associations() | 
+    too_many_key_groups_associated_to_distribution() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_function_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_function_associations() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
     too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_key_group() | 
     too_many_distributions_associated_to_field_level_encryption_config() | 
-    invalid_location_code() | 
-    invalid_response_code() | 
+    too_many_distributions_associated_to_cache_policy() | 
     too_many_distributions() | 
-    entity_limit_exceeded() | 
-    no_such_realtime_log_config() | 
-    invalid_function_association() | 
-    illegal_field_level_encryption_config_association_with_cache_behavior() | 
-    no_such_origin() | 
+    too_many_distribution_cnames() | 
+    too_many_cookie_names_in_white_list() | 
+    too_many_certificates() | 
+    too_many_cache_behaviors() | 
     realtime_log_config_owner_mismatch() | 
     no_such_response_headers_policy() | 
-    invalid_relative_path() | 
-    invalid_viewer_certificate() | 
-    too_many_query_string_parameters() | 
-    cname_already_exists() | 
-    invalid_default_root_object() | 
-    too_many_cache_behaviors() | 
-    too_many_distributions_associated_to_response_headers_policy() | 
-    too_many_lambda_function_associations() | 
-    too_many_distributions_with_lambda_associations() | 
-    too_many_distributions_with_single_function_arn() | 
-    too_many_origins() | 
-    distribution_already_exists() | 
-    too_many_origin_custom_headers() | 
-    invalid_minimum_protocol_version() | 
-    too_many_headers_in_forwarded_values() | 
-    too_many_key_groups_associated_to_distribution() | 
-    invalid_domain_name_for_origin_access_control() | 
-    invalid_origin_read_timeout() | 
-    trusted_signer_does_not_exist() | 
+    no_such_realtime_log_config() | 
+    no_such_origin_request_policy() | 
+    no_such_origin() | 
+    no_such_field_level_encryption_config() | 
+    no_such_continuous_deployment_policy() | 
     no_such_cache_policy() | 
-    invalid_forward_cookies() | 
+    missing_body() | 
+    invalid_web_acl_id() | 
+    invalid_viewer_certificate() | 
+    invalid_t_t_l_order() | 
+    invalid_response_code() | 
+    invalid_required_protocol() | 
+    invalid_relative_path() | 
+    invalid_query_string_parameters() | 
+    invalid_protocol_settings() | 
+    invalid_origin_read_timeout() | 
     invalid_origin_keepalive_timeout() | 
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_origin() | 
+    invalid_minimum_protocol_version() | 
+    invalid_location_code() | 
     invalid_lambda_function_association() | 
     invalid_headers_for_s3_origin() | 
-    inconsistent_quantities() | 
-    missing_body() | 
-    too_many_distributions_with_function_associations() | 
-    continuous_deployment_policy_in_use() | 
     invalid_geo_restriction_parameter() | 
+    invalid_function_association() | 
+    invalid_forward_cookies() | 
     invalid_error_code() | 
-    too_many_trusted_signers() | 
-    no_such_origin_request_policy() | 
-    too_many_distribution_cnames() | 
-    invalid_required_protocol() | 
-    too_many_certificates() | 
-    invalid_origin() | 
-    invalid_origin_access_control() | 
-    no_such_field_level_encryption_config() | 
-    invalid_web_acl_id() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_default_root_object() | 
     invalid_argument() | 
-    too_many_cookie_names_in_white_list() | 
-    access_denied() | 
-    invalid_t_t_l_order() | 
-    entity_not_found() | 
-    invalid_protocol_settings() | 
-    too_many_distributions_associated_to_key_group() | 
-    too_many_distributions_associated_to_origin_request_policy() | 
-    invalid_query_string_parameters() | 
-    trusted_key_group_does_not_exist() | 
-    too_many_distributions_associated_to_cache_policy() | 
+    inconsistent_quantities() | 
     illegal_origin_access_configuration() | 
-    no_such_continuous_deployment_policy() | 
-    invalid_origin_access_identity() | 
-    too_many_function_associations() | 
-    too_many_origin_groups_per_distribution().
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    entity_not_found() | 
+    entity_limit_exceeded() | 
+    distribution_already_exists() | 
+    continuous_deployment_policy_in_use() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_distribution_tenant_errors() ::
-    entity_limit_exceeded() | 
-    cname_already_exists() | 
-    entity_already_exists() | 
-    invalid_argument() | 
-    access_denied() | 
-    entity_not_found() | 
     invalid_tagging() | 
-    invalid_association().
+    invalid_association() | 
+    invalid_argument() | 
+    entity_not_found() | 
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_distribution_with_tags_errors() ::
+    trusted_signer_does_not_exist() | 
+    trusted_key_group_does_not_exist() | 
+    too_many_trusted_signers() | 
+    too_many_query_string_parameters() | 
+    too_many_origins() | 
+    too_many_origin_groups_per_distribution() | 
+    too_many_origin_custom_headers() | 
+    too_many_lambda_function_associations() | 
+    too_many_key_groups_associated_to_distribution() | 
+    too_many_headers_in_forwarded_values() | 
+    too_many_function_associations() | 
+    too_many_distributions_with_single_function_arn() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_function_associations() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
     too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_key_group() | 
     too_many_distributions_associated_to_field_level_encryption_config() | 
-    invalid_location_code() | 
-    invalid_response_code() | 
+    too_many_distributions_associated_to_cache_policy() | 
     too_many_distributions() | 
-    no_such_realtime_log_config() | 
-    invalid_function_association() | 
-    illegal_field_level_encryption_config_association_with_cache_behavior() | 
-    no_such_origin() | 
+    too_many_distribution_cnames() | 
+    too_many_cookie_names_in_white_list() | 
+    too_many_certificates() | 
+    too_many_cache_behaviors() | 
     realtime_log_config_owner_mismatch() | 
     no_such_response_headers_policy() | 
-    invalid_relative_path() | 
-    invalid_viewer_certificate() | 
-    too_many_query_string_parameters() | 
-    cname_already_exists() | 
-    invalid_default_root_object() | 
-    too_many_cache_behaviors() | 
-    too_many_distributions_associated_to_response_headers_policy() | 
-    too_many_lambda_function_associations() | 
-    too_many_distributions_with_lambda_associations() | 
-    too_many_distributions_with_single_function_arn() | 
-    too_many_origins() | 
-    distribution_already_exists() | 
-    too_many_origin_custom_headers() | 
-    invalid_minimum_protocol_version() | 
-    too_many_headers_in_forwarded_values() | 
-    too_many_key_groups_associated_to_distribution() | 
-    invalid_domain_name_for_origin_access_control() | 
-    invalid_origin_read_timeout() | 
-    trusted_signer_does_not_exist() | 
+    no_such_realtime_log_config() | 
+    no_such_origin_request_policy() | 
+    no_such_origin() | 
+    no_such_field_level_encryption_config() | 
+    no_such_continuous_deployment_policy() | 
     no_such_cache_policy() | 
-    invalid_forward_cookies() | 
+    missing_body() | 
+    invalid_web_acl_id() | 
+    invalid_viewer_certificate() | 
+    invalid_tagging() | 
+    invalid_t_t_l_order() | 
+    invalid_response_code() | 
+    invalid_required_protocol() | 
+    invalid_relative_path() | 
+    invalid_query_string_parameters() | 
+    invalid_protocol_settings() | 
+    invalid_origin_read_timeout() | 
     invalid_origin_keepalive_timeout() | 
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_origin() | 
+    invalid_minimum_protocol_version() | 
+    invalid_location_code() | 
     invalid_lambda_function_association() | 
     invalid_headers_for_s3_origin() | 
-    inconsistent_quantities() | 
-    missing_body() | 
-    too_many_distributions_with_function_associations() | 
-    continuous_deployment_policy_in_use() | 
     invalid_geo_restriction_parameter() | 
+    invalid_function_association() | 
+    invalid_forward_cookies() | 
     invalid_error_code() | 
-    too_many_trusted_signers() | 
-    no_such_origin_request_policy() | 
-    too_many_distribution_cnames() | 
-    invalid_required_protocol() | 
-    too_many_certificates() | 
-    invalid_origin() | 
-    invalid_origin_access_control() | 
-    no_such_field_level_encryption_config() | 
-    invalid_web_acl_id() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_default_root_object() | 
     invalid_argument() | 
-    too_many_cookie_names_in_white_list() | 
-    access_denied() | 
-    invalid_t_t_l_order() | 
-    entity_not_found() | 
-    invalid_protocol_settings() | 
-    invalid_tagging() | 
-    too_many_distributions_associated_to_key_group() | 
-    too_many_distributions_associated_to_origin_request_policy() | 
-    invalid_query_string_parameters() | 
-    trusted_key_group_does_not_exist() | 
-    too_many_distributions_associated_to_cache_policy() | 
+    inconsistent_quantities() | 
     illegal_origin_access_configuration() | 
-    no_such_continuous_deployment_policy() | 
-    invalid_origin_access_identity() | 
-    too_many_function_associations() | 
-    too_many_origin_groups_per_distribution().
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    entity_not_found() | 
+    distribution_already_exists() | 
+    continuous_deployment_policy_in_use() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_field_level_encryption_config_errors() ::
     too_many_field_level_encryption_query_arg_profiles() | 
-    no_such_field_level_encryption_profile() | 
-    too_many_field_level_encryption_configs() | 
-    inconsistent_quantities() | 
-    field_level_encryption_config_already_exists() | 
-    invalid_argument() | 
     too_many_field_level_encryption_content_type_profiles() | 
-    query_arg_profile_empty().
+    too_many_field_level_encryption_configs() | 
+    query_arg_profile_empty() | 
+    no_such_field_level_encryption_profile() | 
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    field_level_encryption_config_already_exists().
 
 -type create_field_level_encryption_profile_errors() ::
-    no_such_public_key() | 
-    too_many_field_level_encryption_field_patterns() | 
-    field_level_encryption_profile_size_exceeded() | 
-    too_many_field_level_encryption_encryption_entities() | 
     too_many_field_level_encryption_profiles() | 
-    inconsistent_quantities() | 
+    too_many_field_level_encryption_field_patterns() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    no_such_public_key() | 
     invalid_argument() | 
+    inconsistent_quantities() | 
+    field_level_encryption_profile_size_exceeded() | 
     field_level_encryption_profile_already_exists().
 
 -type create_function_errors() ::
-    function_already_exists() | 
     unsupported_operation() | 
-    function_size_limit_exceeded() | 
+    too_many_functions() | 
     invalid_argument() | 
-    too_many_functions().
+    function_size_limit_exceeded() | 
+    function_already_exists().
 
 -type create_invalidation_errors() ::
-    inconsistent_quantities() | 
-    missing_body() | 
+    too_many_invalidations_in_progress() | 
     no_such_distribution() | 
-    batch_too_large() | 
+    missing_body() | 
     invalid_argument() | 
-    access_denied() | 
-    too_many_invalidations_in_progress().
+    inconsistent_quantities() | 
+    batch_too_large() | 
+    access_denied().
 
 -type create_invalidation_for_distribution_tenant_errors() ::
-    inconsistent_quantities() | 
+    too_many_invalidations_in_progress() | 
     missing_body() | 
-    batch_too_large() | 
     invalid_argument() | 
-    access_denied() | 
+    inconsistent_quantities() | 
     entity_not_found() | 
-    too_many_invalidations_in_progress().
+    batch_too_large() | 
+    access_denied().
 
 -type create_key_group_errors() ::
-    too_many_key_groups() | 
     too_many_public_keys_in_key_group() | 
+    too_many_key_groups() | 
     key_group_already_exists() | 
     invalid_argument().
 
 -type create_key_value_store_errors() ::
-    entity_limit_exceeded() | 
     unsupported_operation() | 
-    entity_size_limit_exceeded() | 
-    entity_already_exists() | 
     invalid_argument() | 
+    entity_size_limit_exceeded() | 
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
     access_denied().
 
 -type create_monitoring_subscription_errors() ::
-    monitoring_subscription_already_exists() | 
-    no_such_distribution() | 
     unsupported_operation() | 
+    no_such_distribution() | 
+    monitoring_subscription_already_exists() | 
     access_denied().
 
 -type create_origin_access_control_errors() ::
+    too_many_origin_access_controls() | 
     origin_access_control_already_exists() | 
-    invalid_argument() | 
-    too_many_origin_access_controls().
+    invalid_argument().
 
 -type create_origin_request_policy_errors() ::
-    too_many_headers_in_origin_request_policy() | 
-    too_many_origin_request_policies() | 
-    inconsistent_quantities() | 
-    origin_request_policy_already_exists() | 
     too_many_query_strings_in_origin_request_policy() | 
+    too_many_origin_request_policies() | 
+    too_many_headers_in_origin_request_policy() | 
     too_many_cookies_in_origin_request_policy() | 
+    origin_request_policy_already_exists() | 
     invalid_argument() | 
+    inconsistent_quantities() | 
     access_denied().
 
 -type create_public_key_errors() ::
     too_many_public_keys() | 
-    invalid_argument() | 
-    public_key_already_exists().
+    public_key_already_exists() | 
+    invalid_argument().
 
 -type create_realtime_log_config_errors() ::
     too_many_realtime_log_configs() | 
@@ -6221,273 +6221,273 @@
     access_denied().
 
 -type create_response_headers_policy_errors() ::
+    too_many_response_headers_policies() | 
     too_many_remove_headers_in_response_headers_policy() | 
-    inconsistent_quantities() | 
+    too_many_custom_headers_in_response_headers_policy() | 
+    too_long_c_s_p_in_response_headers_policy() | 
     response_headers_policy_already_exists() | 
     invalid_argument() | 
-    access_denied() | 
-    too_long_c_s_p_in_response_headers_policy() | 
-    too_many_response_headers_policies() | 
-    too_many_custom_headers_in_response_headers_policy().
+    inconsistent_quantities() | 
+    access_denied().
 
 -type create_streaming_distribution_errors() ::
-    cname_already_exists() | 
-    streaming_distribution_already_exists() | 
-    too_many_streaming_distribution_cnames() | 
-    too_many_streaming_distributions() | 
     trusted_signer_does_not_exist() | 
-    inconsistent_quantities() | 
-    missing_body() | 
     too_many_trusted_signers() | 
-    invalid_origin() | 
+    too_many_streaming_distributions() | 
+    too_many_streaming_distribution_cnames() | 
+    streaming_distribution_already_exists() | 
+    missing_body() | 
+    invalid_origin_access_identity() | 
     invalid_origin_access_control() | 
+    invalid_origin() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_origin_access_identity().
+    inconsistent_quantities() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_streaming_distribution_with_tags_errors() ::
-    cname_already_exists() | 
-    streaming_distribution_already_exists() | 
-    too_many_streaming_distribution_cnames() | 
-    too_many_streaming_distributions() | 
     trusted_signer_does_not_exist() | 
-    inconsistent_quantities() | 
-    missing_body() | 
     too_many_trusted_signers() | 
-    invalid_origin() | 
-    invalid_origin_access_control() | 
-    invalid_argument() | 
-    access_denied() | 
+    too_many_streaming_distributions() | 
+    too_many_streaming_distribution_cnames() | 
+    streaming_distribution_already_exists() | 
+    missing_body() | 
     invalid_tagging() | 
-    invalid_origin_access_identity().
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_origin() | 
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type create_trust_store_errors() ::
+    invalid_tagging() | 
+    invalid_argument() | 
+    entity_not_found() | 
     entity_limit_exceeded() | 
     entity_already_exists() | 
-    invalid_argument() | 
-    access_denied() | 
-    entity_not_found() | 
-    invalid_tagging().
+    access_denied().
 
 -type create_vpc_origin_errors() ::
-    entity_limit_exceeded() | 
-    inconsistent_quantities() | 
     unsupported_operation() | 
-    entity_already_exists() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    inconsistent_quantities() | 
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    access_denied().
 
 -type delete_anycast_ip_list_errors() ::
-    illegal_delete() | 
-    cannot_delete_entity_while_in_use() | 
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    illegal_delete() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type delete_cache_policy_errors() ::
+    precondition_failed() | 
+    no_such_cache_policy() | 
+    invalid_if_match_version() | 
     illegal_delete() | 
     cache_policy_in_use() | 
-    no_such_cache_policy() | 
-    precondition_failed() | 
-    access_denied() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type delete_cloud_front_origin_access_identity_errors() ::
     precondition_failed() | 
     no_such_cloud_front_origin_access_identity() | 
-    access_denied() | 
+    invalid_if_match_version() | 
     cloud_front_origin_access_identity_in_use() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type delete_connection_function_errors() ::
-    cannot_delete_entity_while_in_use() | 
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type delete_connection_group_errors() ::
     resource_not_disabled() | 
-    cannot_delete_entity_while_in_use() | 
     precondition_failed() | 
-    access_denied() | 
+    invalid_if_match_version() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type delete_continuous_deployment_policy_errors() ::
-    continuous_deployment_policy_in_use() | 
     precondition_failed() | 
-    invalid_argument() | 
-    access_denied() | 
+    no_such_continuous_deployment_policy() | 
     invalid_if_match_version() | 
-    no_such_continuous_deployment_policy().
+    invalid_argument() | 
+    continuous_deployment_policy_in_use() | 
+    access_denied().
 
 -type delete_distribution_errors() ::
-    no_such_distribution() | 
-    precondition_failed() | 
-    access_denied() | 
     resource_in_use() | 
+    precondition_failed() | 
+    no_such_distribution() | 
     invalid_if_match_version() | 
-    distribution_not_disabled().
+    distribution_not_disabled() | 
+    access_denied().
 
 -type delete_distribution_tenant_errors() ::
     resource_not_disabled() | 
     precondition_failed() | 
-    access_denied() | 
+    invalid_if_match_version() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type delete_field_level_encryption_config_errors() ::
     precondition_failed() | 
     no_such_field_level_encryption_config() | 
-    access_denied() | 
+    invalid_if_match_version() | 
     field_level_encryption_config_in_use() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type delete_field_level_encryption_profile_errors() ::
-    no_such_field_level_encryption_profile() | 
     precondition_failed() | 
+    no_such_field_level_encryption_profile() | 
+    invalid_if_match_version() | 
     field_level_encryption_profile_in_use() | 
-    access_denied() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type delete_function_errors() ::
-    function_in_use() | 
-    no_such_function_exists() | 
-    precondition_failed() | 
     unsupported_operation() | 
-    invalid_if_match_version().
+    precondition_failed() | 
+    no_such_function_exists() | 
+    invalid_if_match_version() | 
+    function_in_use().
 
 -type delete_key_group_errors() ::
-    no_such_resource() | 
-    precondition_failed() | 
     resource_in_use() | 
+    precondition_failed() | 
+    no_such_resource() | 
     invalid_if_match_version().
 
 -type delete_key_value_store_errors() ::
-    cannot_delete_entity_while_in_use() | 
-    precondition_failed() | 
     unsupported_operation() | 
-    access_denied() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type delete_monitoring_subscription_errors() ::
+    unsupported_operation() | 
     no_such_monitoring_subscription() | 
     no_such_distribution() | 
-    unsupported_operation() | 
     access_denied().
 
 -type delete_origin_access_control_errors() ::
-    no_such_origin_access_control() | 
     precondition_failed() | 
     origin_access_control_in_use() | 
-    access_denied() | 
-    invalid_if_match_version().
+    no_such_origin_access_control() | 
+    invalid_if_match_version() | 
+    access_denied().
 
 -type delete_origin_request_policy_errors() ::
-    origin_request_policy_in_use() | 
-    illegal_delete() | 
-    no_such_origin_request_policy() | 
     precondition_failed() | 
-    access_denied() | 
-    invalid_if_match_version().
+    origin_request_policy_in_use() | 
+    no_such_origin_request_policy() | 
+    invalid_if_match_version() | 
+    illegal_delete() | 
+    access_denied().
 
 -type delete_public_key_errors() ::
-    no_such_public_key() | 
     public_key_in_use() | 
     precondition_failed() | 
-    access_denied() | 
-    invalid_if_match_version().
+    no_such_public_key() | 
+    invalid_if_match_version() | 
+    access_denied().
 
 -type delete_realtime_log_config_errors() ::
-    no_such_realtime_log_config() | 
     realtime_log_config_in_use() | 
+    no_such_realtime_log_config() | 
     invalid_argument() | 
     access_denied().
 
 -type delete_resource_policy_errors() ::
-    illegal_delete() | 
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    illegal_delete() | 
+    entity_not_found() | 
+    access_denied().
 
 -type delete_response_headers_policy_errors() ::
-    no_such_response_headers_policy() | 
-    illegal_delete() | 
+    response_headers_policy_in_use() | 
     precondition_failed() | 
-    access_denied() | 
+    no_such_response_headers_policy() | 
     invalid_if_match_version() | 
-    response_headers_policy_in_use().
+    illegal_delete() | 
+    access_denied().
 
 -type delete_streaming_distribution_errors() ::
-    no_such_streaming_distribution() | 
+    streaming_distribution_not_disabled() | 
     precondition_failed() | 
-    access_denied() | 
+    no_such_streaming_distribution() | 
     invalid_if_match_version() | 
-    streaming_distribution_not_disabled().
+    access_denied().
 
 -type delete_trust_store_errors() ::
-    cannot_delete_entity_while_in_use() | 
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type delete_vpc_origin_errors() ::
-    illegal_delete() | 
-    cannot_delete_entity_while_in_use() | 
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    illegal_delete() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    cannot_delete_entity_while_in_use() | 
+    access_denied().
 
 -type describe_connection_function_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type describe_function_errors() ::
-    no_such_function_exists() | 
-    unsupported_operation().
+    unsupported_operation() | 
+    no_such_function_exists().
 
 -type describe_key_value_store_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type disassociate_distribution_tenant_web_acl_errors() ::
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type disassociate_distribution_web_acl_errors() ::
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type get_anycast_ip_list_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_cache_policy_errors() ::
     no_such_cache_policy() | 
@@ -6507,24 +6507,24 @@
 
 -type get_connection_function_errors() ::
     unsupported_operation() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_connection_group_errors() ::
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_connection_group_by_routing_endpoint_errors() ::
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_continuous_deployment_policy_errors() ::
-    access_denied() | 
-    no_such_continuous_deployment_policy().
+    no_such_continuous_deployment_policy() | 
+    access_denied().
 
 -type get_continuous_deployment_policy_config_errors() ::
-    access_denied() | 
-    no_such_continuous_deployment_policy().
+    no_such_continuous_deployment_policy() | 
+    access_denied().
 
 -type get_distribution_errors() ::
     no_such_distribution() | 
@@ -6535,12 +6535,12 @@
     access_denied().
 
 -type get_distribution_tenant_errors() ::
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_distribution_tenant_by_domain_errors() ::
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_field_level_encryption_errors() ::
     no_such_field_level_encryption_config() | 
@@ -6559,8 +6559,8 @@
     access_denied().
 
 -type get_function_errors() ::
-    no_such_function_exists() | 
-    unsupported_operation().
+    unsupported_operation() | 
+    no_such_function_exists().
 
 -type get_invalidation_errors() ::
     no_such_invalidation() | 
@@ -6569,8 +6569,8 @@
 
 -type get_invalidation_for_distribution_tenant_errors() ::
     no_such_invalidation() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_key_group_errors() ::
     no_such_resource().
@@ -6579,13 +6579,13 @@
     no_such_resource().
 
 -type get_managed_certificate_details_errors() ::
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_monitoring_subscription_errors() ::
+    unsupported_operation() | 
     no_such_monitoring_subscription() | 
     no_such_distribution() | 
-    unsupported_operation() | 
     access_denied().
 
 -type get_origin_access_control_errors() ::
@@ -6620,8 +6620,8 @@
 -type get_resource_policy_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_response_headers_policy_errors() ::
     no_such_response_headers_policy() | 
@@ -6641,20 +6641,20 @@
 
 -type get_trust_store_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type get_vpc_origin_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_anycast_ip_lists_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_cache_policies_errors() ::
     no_such_cache_policy() | 
@@ -6675,23 +6675,23 @@
 
 -type list_connection_groups_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_continuous_deployment_policies_errors() ::
+    no_such_continuous_deployment_policy() | 
     invalid_argument() | 
-    access_denied() | 
-    no_such_continuous_deployment_policy().
+    access_denied().
 
 -type list_distribution_tenants_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distribution_tenants_by_customization_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_errors() ::
     invalid_argument().
@@ -6699,8 +6699,8 @@
 -type list_distributions_by_anycast_ip_list_id_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_by_cache_policy_id_errors() ::
     no_such_cache_policy() | 
@@ -6709,8 +6709,8 @@
 
 -type list_distributions_by_connection_function_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_by_connection_mode_errors() ::
     invalid_argument() | 
@@ -6728,8 +6728,8 @@
 -type list_distributions_by_owned_resource_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_by_realtime_log_config_errors() ::
     invalid_argument().
@@ -6741,14 +6741,14 @@
 
 -type list_distributions_by_trust_store_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_by_vpc_origin_id_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_distributions_by_web_acl_id_errors() ::
     invalid_web_acl_id() | 
@@ -6756,8 +6756,8 @@
 
 -type list_domain_conflicts_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_field_level_encryption_configs_errors() ::
     invalid_argument().
@@ -6776,8 +6776,8 @@
 
 -type list_invalidations_for_distribution_tenant_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_key_groups_errors() ::
     invalid_argument().
@@ -6813,364 +6813,364 @@
 
 -type list_tags_for_resource_errors() ::
     no_such_resource() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    access_denied().
 
 -type list_trust_stores_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type list_vpc_origins_errors() ::
     unsupported_operation() | 
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type publish_connection_function_errors() ::
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type publish_function_errors() ::
-    no_such_function_exists() | 
-    precondition_failed() | 
     unsupported_operation() | 
-    invalid_argument() | 
-    invalid_if_match_version().
+    precondition_failed() | 
+    no_such_function_exists() | 
+    invalid_if_match_version() | 
+    invalid_argument().
 
 -type put_resource_policy_errors() ::
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
     invalid_argument() | 
-    access_denied() | 
     illegal_update() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 -type tag_resource_errors() ::
     no_such_resource() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    access_denied().
 
 -type test_connection_function_errors() ::
+    unsupported_operation() | 
     test_function_failed() | 
     precondition_failed() | 
-    unsupported_operation() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    entity_not_found() | 
-    invalid_if_match_version().
+    entity_not_found().
 
 -type test_function_errors() ::
+    unsupported_operation() | 
     test_function_failed() | 
     no_such_function_exists() | 
-    unsupported_operation() | 
-    invalid_argument() | 
-    invalid_if_match_version().
+    invalid_if_match_version() | 
+    invalid_argument().
 
 -type untag_resource_errors() ::
     no_such_resource() | 
+    invalid_tagging() | 
     invalid_argument() | 
-    access_denied() | 
-    invalid_tagging().
+    access_denied().
 
 -type update_anycast_ip_list_errors() ::
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_cache_policy_errors() ::
-    cache_policy_already_exists() | 
-    no_such_cache_policy() | 
-    inconsistent_quantities() | 
     too_many_query_strings_in_cache_policy() | 
-    precondition_failed() | 
     too_many_headers_in_cache_policy() | 
-    invalid_argument() | 
-    access_denied() | 
-    illegal_update() | 
+    too_many_cookies_in_cache_policy() | 
+    precondition_failed() | 
+    no_such_cache_policy() | 
     invalid_if_match_version() | 
-    too_many_cookies_in_cache_policy().
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    cache_policy_already_exists() | 
+    access_denied().
 
 -type update_cloud_front_origin_access_identity_errors() ::
-    inconsistent_quantities() | 
-    missing_body() | 
     precondition_failed() | 
     no_such_cloud_front_origin_access_identity() | 
+    missing_body() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    inconsistent_quantities() | 
     illegal_update() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_connection_function_errors() ::
-    precondition_failed() | 
     unsupported_operation() | 
-    entity_size_limit_exceeded() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    entity_size_limit_exceeded() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_connection_group_errors() ::
-    entity_limit_exceeded() | 
-    precondition_failed() | 
-    entity_already_exists() | 
-    invalid_argument() | 
-    access_denied() | 
     resource_in_use() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
+    invalid_argument() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    access_denied().
 
 -type update_continuous_deployment_policy_errors() ::
     staging_distribution_in_use() | 
-    inconsistent_quantities() | 
     precondition_failed() | 
-    invalid_argument() | 
-    access_denied() | 
+    no_such_continuous_deployment_policy() | 
     invalid_if_match_version() | 
-    no_such_continuous_deployment_policy().
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    access_denied().
 
 -type update_distribution_errors() ::
-    too_many_distributions_associated_to_origin_access_control() | 
-    too_many_distributions_associated_to_field_level_encryption_config() | 
-    staging_distribution_in_use() | 
-    invalid_location_code() | 
-    invalid_response_code() | 
-    no_such_realtime_log_config() | 
-    invalid_function_association() | 
-    illegal_field_level_encryption_config_association_with_cache_behavior() | 
-    no_such_origin() | 
-    realtime_log_config_owner_mismatch() | 
-    no_such_response_headers_policy() | 
-    invalid_relative_path() | 
-    invalid_viewer_certificate() | 
-    too_many_query_string_parameters() | 
-    cname_already_exists() | 
-    invalid_default_root_object() | 
-    too_many_cache_behaviors() | 
-    too_many_distributions_associated_to_response_headers_policy() | 
-    too_many_lambda_function_associations() | 
-    too_many_distributions_with_lambda_associations() | 
-    too_many_distributions_with_single_function_arn() | 
-    too_many_origins() | 
-    too_many_origin_custom_headers() | 
-    invalid_minimum_protocol_version() | 
-    too_many_headers_in_forwarded_values() | 
-    too_many_key_groups_associated_to_distribution() | 
-    invalid_domain_name_for_origin_access_control() | 
-    invalid_origin_read_timeout() | 
     trusted_signer_does_not_exist() | 
-    no_such_cache_policy() | 
-    invalid_forward_cookies() | 
-    invalid_origin_keepalive_timeout() | 
-    invalid_lambda_function_association() | 
-    invalid_headers_for_s3_origin() | 
-    inconsistent_quantities() | 
-    missing_body() | 
-    too_many_distributions_with_function_associations() | 
-    continuous_deployment_policy_in_use() | 
-    invalid_geo_restriction_parameter() | 
-    invalid_error_code() | 
-    too_many_trusted_signers() | 
-    no_such_distribution() | 
-    no_such_origin_request_policy() | 
-    too_many_distribution_cnames() | 
-    precondition_failed() | 
-    invalid_required_protocol() | 
-    too_many_certificates() | 
-    invalid_origin_access_control() | 
-    no_such_field_level_encryption_config() | 
-    invalid_web_acl_id() | 
-    invalid_argument() | 
-    too_many_cookie_names_in_white_list() | 
-    access_denied() | 
-    invalid_t_t_l_order() | 
-    illegal_update() | 
-    entity_not_found() | 
-    too_many_distributions_associated_to_key_group() | 
-    too_many_distributions_associated_to_origin_request_policy() | 
-    invalid_query_string_parameters() | 
     trusted_key_group_does_not_exist() | 
-    too_many_distributions_associated_to_cache_policy() | 
-    invalid_if_match_version() | 
-    illegal_origin_access_configuration() | 
-    no_such_continuous_deployment_policy() | 
-    invalid_origin_access_identity() | 
+    too_many_trusted_signers() | 
+    too_many_query_string_parameters() | 
+    too_many_origins() | 
+    too_many_origin_groups_per_distribution() | 
+    too_many_origin_custom_headers() | 
+    too_many_lambda_function_associations() | 
+    too_many_key_groups_associated_to_distribution() | 
+    too_many_headers_in_forwarded_values() | 
     too_many_function_associations() | 
-    too_many_origin_groups_per_distribution().
+    too_many_distributions_with_single_function_arn() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_function_associations() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    too_many_distribution_cnames() | 
+    too_many_cookie_names_in_white_list() | 
+    too_many_certificates() | 
+    too_many_cache_behaviors() | 
+    staging_distribution_in_use() | 
+    realtime_log_config_owner_mismatch() | 
+    precondition_failed() | 
+    no_such_response_headers_policy() | 
+    no_such_realtime_log_config() | 
+    no_such_origin_request_policy() | 
+    no_such_origin() | 
+    no_such_field_level_encryption_config() | 
+    no_such_distribution() | 
+    no_such_continuous_deployment_policy() | 
+    no_such_cache_policy() | 
+    missing_body() | 
+    invalid_web_acl_id() | 
+    invalid_viewer_certificate() | 
+    invalid_t_t_l_order() | 
+    invalid_response_code() | 
+    invalid_required_protocol() | 
+    invalid_relative_path() | 
+    invalid_query_string_parameters() | 
+    invalid_origin_read_timeout() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_minimum_protocol_version() | 
+    invalid_location_code() | 
+    invalid_lambda_function_association() | 
+    invalid_if_match_version() | 
+    invalid_headers_for_s3_origin() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_function_association() | 
+    invalid_forward_cookies() | 
+    invalid_error_code() | 
+    invalid_domain_name_for_origin_access_control() | 
+    invalid_default_root_object() | 
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    illegal_origin_access_configuration() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    entity_not_found() | 
+    continuous_deployment_policy_in_use() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type update_distribution_tenant_errors() ::
-    entity_limit_exceeded() | 
-    cname_already_exists() | 
     precondition_failed() | 
-    entity_already_exists() | 
-    invalid_argument() | 
-    access_denied() | 
-    entity_not_found() | 
     invalid_if_match_version() | 
-    invalid_association().
+    invalid_association() | 
+    invalid_argument() | 
+    entity_not_found() | 
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type update_distribution_with_staging_config_errors() ::
-    too_many_distributions_associated_to_origin_access_control() | 
-    too_many_distributions_associated_to_field_level_encryption_config() | 
-    invalid_location_code() | 
-    invalid_response_code() | 
-    entity_limit_exceeded() | 
-    no_such_realtime_log_config() | 
-    invalid_function_association() | 
-    illegal_field_level_encryption_config_association_with_cache_behavior() | 
-    no_such_origin() | 
-    realtime_log_config_owner_mismatch() | 
-    no_such_response_headers_policy() | 
-    invalid_relative_path() | 
-    invalid_viewer_certificate() | 
-    too_many_query_string_parameters() | 
-    cname_already_exists() | 
-    invalid_default_root_object() | 
-    too_many_cache_behaviors() | 
-    too_many_distributions_associated_to_response_headers_policy() | 
-    too_many_lambda_function_associations() | 
-    too_many_distributions_with_lambda_associations() | 
-    too_many_distributions_with_single_function_arn() | 
-    too_many_origins() | 
-    too_many_origin_custom_headers() | 
-    invalid_minimum_protocol_version() | 
-    too_many_headers_in_forwarded_values() | 
-    too_many_key_groups_associated_to_distribution() | 
-    invalid_origin_read_timeout() | 
     trusted_signer_does_not_exist() | 
-    no_such_cache_policy() | 
-    invalid_forward_cookies() | 
-    invalid_origin_keepalive_timeout() | 
-    invalid_lambda_function_association() | 
-    invalid_headers_for_s3_origin() | 
-    inconsistent_quantities() | 
-    missing_body() | 
-    too_many_distributions_with_function_associations() | 
-    invalid_geo_restriction_parameter() | 
-    invalid_error_code() | 
-    too_many_trusted_signers() | 
-    no_such_distribution() | 
-    no_such_origin_request_policy() | 
-    too_many_distribution_cnames() | 
-    precondition_failed() | 
-    invalid_required_protocol() | 
-    too_many_certificates() | 
-    invalid_origin_access_control() | 
-    no_such_field_level_encryption_config() | 
-    invalid_web_acl_id() | 
-    invalid_argument() | 
-    too_many_cookie_names_in_white_list() | 
-    access_denied() | 
-    invalid_t_t_l_order() | 
-    illegal_update() | 
-    entity_not_found() | 
-    too_many_distributions_associated_to_key_group() | 
-    too_many_distributions_associated_to_origin_request_policy() | 
-    invalid_query_string_parameters() | 
     trusted_key_group_does_not_exist() | 
-    too_many_distributions_associated_to_cache_policy() | 
-    invalid_if_match_version() | 
-    invalid_origin_access_identity() | 
+    too_many_trusted_signers() | 
+    too_many_query_string_parameters() | 
+    too_many_origins() | 
+    too_many_origin_groups_per_distribution() | 
+    too_many_origin_custom_headers() | 
+    too_many_lambda_function_associations() | 
+    too_many_key_groups_associated_to_distribution() | 
+    too_many_headers_in_forwarded_values() | 
     too_many_function_associations() | 
-    too_many_origin_groups_per_distribution().
+    too_many_distributions_with_single_function_arn() | 
+    too_many_distributions_with_lambda_associations() | 
+    too_many_distributions_with_function_associations() | 
+    too_many_distributions_associated_to_response_headers_policy() | 
+    too_many_distributions_associated_to_origin_request_policy() | 
+    too_many_distributions_associated_to_origin_access_control() | 
+    too_many_distributions_associated_to_key_group() | 
+    too_many_distributions_associated_to_field_level_encryption_config() | 
+    too_many_distributions_associated_to_cache_policy() | 
+    too_many_distribution_cnames() | 
+    too_many_cookie_names_in_white_list() | 
+    too_many_certificates() | 
+    too_many_cache_behaviors() | 
+    realtime_log_config_owner_mismatch() | 
+    precondition_failed() | 
+    no_such_response_headers_policy() | 
+    no_such_realtime_log_config() | 
+    no_such_origin_request_policy() | 
+    no_such_origin() | 
+    no_such_field_level_encryption_config() | 
+    no_such_distribution() | 
+    no_such_cache_policy() | 
+    missing_body() | 
+    invalid_web_acl_id() | 
+    invalid_viewer_certificate() | 
+    invalid_t_t_l_order() | 
+    invalid_response_code() | 
+    invalid_required_protocol() | 
+    invalid_relative_path() | 
+    invalid_query_string_parameters() | 
+    invalid_origin_read_timeout() | 
+    invalid_origin_keepalive_timeout() | 
+    invalid_origin_access_identity() | 
+    invalid_origin_access_control() | 
+    invalid_minimum_protocol_version() | 
+    invalid_location_code() | 
+    invalid_lambda_function_association() | 
+    invalid_if_match_version() | 
+    invalid_headers_for_s3_origin() | 
+    invalid_geo_restriction_parameter() | 
+    invalid_function_association() | 
+    invalid_forward_cookies() | 
+    invalid_error_code() | 
+    invalid_default_root_object() | 
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    illegal_field_level_encryption_config_association_with_cache_behavior() | 
+    entity_not_found() | 
+    entity_limit_exceeded() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type update_domain_association_errors() ::
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     illegal_update() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_field_level_encryption_config_errors() ::
     too_many_field_level_encryption_query_arg_profiles() | 
-    no_such_field_level_encryption_profile() | 
-    inconsistent_quantities() | 
-    precondition_failed() | 
-    no_such_field_level_encryption_config() | 
-    invalid_argument() | 
-    access_denied() | 
-    illegal_update() | 
     too_many_field_level_encryption_content_type_profiles() | 
+    query_arg_profile_empty() | 
+    precondition_failed() | 
+    no_such_field_level_encryption_profile() | 
+    no_such_field_level_encryption_config() | 
     invalid_if_match_version() | 
-    query_arg_profile_empty().
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    access_denied().
 
 -type update_field_level_encryption_profile_errors() ::
+    too_many_field_level_encryption_field_patterns() | 
+    too_many_field_level_encryption_encryption_entities() | 
+    precondition_failed() | 
     no_such_public_key() | 
     no_such_field_level_encryption_profile() | 
-    too_many_field_level_encryption_field_patterns() | 
-    field_level_encryption_profile_size_exceeded() | 
-    too_many_field_level_encryption_encryption_entities() | 
-    inconsistent_quantities() | 
-    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
-    field_level_encryption_profile_already_exists() | 
+    inconsistent_quantities() | 
     illegal_update() | 
-    invalid_if_match_version().
+    field_level_encryption_profile_size_exceeded() | 
+    field_level_encryption_profile_already_exists() | 
+    access_denied().
 
 -type update_function_errors() ::
-    no_such_function_exists() | 
-    precondition_failed() | 
     unsupported_operation() | 
-    function_size_limit_exceeded() | 
+    precondition_failed() | 
+    no_such_function_exists() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    invalid_if_match_version().
+    function_size_limit_exceeded().
 
 -type update_key_group_errors() ::
     too_many_public_keys_in_key_group() | 
-    no_such_resource() | 
     precondition_failed() | 
+    no_such_resource() | 
     key_group_already_exists() | 
-    invalid_argument() | 
-    invalid_if_match_version().
+    invalid_if_match_version() | 
+    invalid_argument().
 
 -type update_key_value_store_errors() ::
-    precondition_failed() | 
     unsupported_operation() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_origin_access_control_errors() ::
+    precondition_failed() | 
     origin_access_control_already_exists() | 
     no_such_origin_access_control() | 
-    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     illegal_update() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_origin_request_policy_errors() ::
-    too_many_headers_in_origin_request_policy() | 
-    inconsistent_quantities() | 
-    origin_request_policy_already_exists() | 
     too_many_query_strings_in_origin_request_policy() | 
-    no_such_origin_request_policy() | 
-    precondition_failed() | 
+    too_many_headers_in_origin_request_policy() | 
     too_many_cookies_in_origin_request_policy() | 
+    precondition_failed() | 
+    origin_request_policy_already_exists() | 
+    no_such_origin_request_policy() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    inconsistent_quantities() | 
     illegal_update() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_public_key_errors() ::
-    no_such_public_key() | 
     precondition_failed() | 
-    invalid_argument() | 
-    access_denied() | 
-    illegal_update() | 
+    no_such_public_key() | 
     invalid_if_match_version() | 
-    cannot_change_immutable_public_key_fields().
+    invalid_argument() | 
+    illegal_update() | 
+    cannot_change_immutable_public_key_fields() | 
+    access_denied().
 
 -type update_realtime_log_config_errors() ::
     no_such_realtime_log_config() | 
@@ -7178,58 +7178,58 @@
     access_denied().
 
 -type update_response_headers_policy_errors() ::
-    no_such_response_headers_policy() | 
     too_many_remove_headers_in_response_headers_policy() | 
-    inconsistent_quantities() | 
+    too_many_custom_headers_in_response_headers_policy() | 
+    too_long_c_s_p_in_response_headers_policy() | 
     response_headers_policy_already_exists() | 
     precondition_failed() | 
-    invalid_argument() | 
-    access_denied() | 
-    illegal_update() | 
+    no_such_response_headers_policy() | 
     invalid_if_match_version() | 
-    too_long_c_s_p_in_response_headers_policy() | 
-    too_many_custom_headers_in_response_headers_policy().
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    access_denied().
 
 -type update_streaming_distribution_errors() ::
-    cname_already_exists() | 
-    too_many_streaming_distribution_cnames() | 
-    no_such_streaming_distribution() | 
     trusted_signer_does_not_exist() | 
-    inconsistent_quantities() | 
-    missing_body() | 
     too_many_trusted_signers() | 
+    too_many_streaming_distribution_cnames() | 
     precondition_failed() | 
+    no_such_streaming_distribution() | 
+    missing_body() | 
+    invalid_origin_access_identity() | 
     invalid_origin_access_control() | 
-    invalid_argument() | 
-    access_denied() | 
-    illegal_update() | 
     invalid_if_match_version() | 
-    invalid_origin_access_identity().
+    invalid_argument() | 
+    inconsistent_quantities() | 
+    illegal_update() | 
+    cname_already_exists() | 
+    access_denied().
 
 -type update_trust_store_errors() ::
     precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
     entity_not_found() | 
-    invalid_if_match_version().
+    access_denied().
 
 -type update_vpc_origin_errors() ::
-    entity_limit_exceeded() | 
-    inconsistent_quantities() | 
-    precondition_failed() | 
     unsupported_operation() | 
-    entity_already_exists() | 
+    precondition_failed() | 
+    invalid_if_match_version() | 
     invalid_argument() | 
-    access_denied() | 
+    inconsistent_quantities() | 
     illegal_update() | 
     entity_not_found() | 
-    invalid_if_match_version() | 
-    cannot_update_entity_while_in_use().
+    entity_limit_exceeded() | 
+    entity_already_exists() | 
+    cannot_update_entity_while_in_use() | 
+    access_denied().
 
 -type verify_dns_configuration_errors() ::
     invalid_argument() | 
-    access_denied() | 
-    entity_not_found().
+    entity_not_found() | 
+    access_denied().
 
 %%====================================================================
 %% API

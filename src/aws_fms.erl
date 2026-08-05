@@ -106,6 +106,38 @@
 
 
 %% Example:
+%% account_scope() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"AllAccountsEnabled">> => boolean(),
+%%   <<"ExcludeSpecifiedAccounts">> => boolean()
+%% }
+-type account_scope() :: #{binary() => any()}.
+
+%% Example:
+%% action_target() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type action_target() :: #{binary() => any()}.
+
+%% Example:
+%% admin_account_summary() :: #{
+%%   <<"AdminAccount">> => string(),
+%%   <<"DefaultAdmin">> => boolean(),
+%%   <<"Status">> => list(any())
+%% }
+-type admin_account_summary() :: #{binary() => any()}.
+
+%% Example:
+%% admin_scope() :: #{
+%%   <<"AccountScope">> => account_scope(),
+%%   <<"OrganizationalUnitScope">> => organizational_unit_scope(),
+%%   <<"PolicyTypeScope">> => policy_type_scope(),
+%%   <<"RegionScope">> => region_scope()
+%% }
+-type admin_scope() :: #{binary() => any()}.
+
+%% Example:
 %% app() :: #{
 %%   <<"AppName">> => string(),
 %%   <<"Port">> => float(),
@@ -114,72 +146,329 @@
 -type app() :: #{binary() => any()}.
 
 %% Example:
-%% route_has_out_of_scope_endpoint_violation() :: #{
-%%   <<"CurrentFirewallSubnetRouteTable">> => string(),
-%%   <<"CurrentInternetGatewayRouteTable">> => string(),
-%%   <<"FirewallSubnetId">> => string(),
-%%   <<"FirewallSubnetRoutes">> => list(route()),
-%%   <<"InternetGatewayId">> => string(),
-%%   <<"InternetGatewayRoutes">> => list(route()),
-%%   <<"RouteTableId">> => string(),
-%%   <<"SubnetAvailabilityZone">> => string(),
-%%   <<"SubnetAvailabilityZoneId">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()),
-%%   <<"VpcId">> => string()
+%% apps_list_data() :: #{
+%%   <<"AppsList">> => list(app()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"ListId">> => string(),
+%%   <<"ListName">> => string(),
+%%   <<"ListUpdateToken">> => string(),
+%%   <<"PreviousAppsList">> => map()
 %% }
--type route_has_out_of_scope_endpoint_violation() :: #{binary() => any()}.
+-type apps_list_data() :: #{binary() => any()}.
 
 %% Example:
-%% network_acl_entry() :: #{
-%%   <<"CidrBlock">> => string(),
-%%   <<"Egress">> => boolean(),
-%%   <<"IcmpTypeCode">> => network_acl_icmp_type_code(),
-%%   <<"Ipv6CidrBlock">> => string(),
-%%   <<"PortRange">> => network_acl_port_range(),
-%%   <<"Protocol">> => string(),
-%%   <<"RuleAction">> => list(any())
+%% apps_list_data_summary() :: #{
+%%   <<"AppsList">> => list(app()),
+%%   <<"ListArn">> => string(),
+%%   <<"ListId">> => string(),
+%%   <<"ListName">> => string()
 %% }
--type network_acl_entry() :: #{binary() => any()}.
+-type apps_list_data_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_protection_status_response() :: #{
-%%   <<"AdminAccountId">> => string(),
-%%   <<"Data">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceType">> => list(any())
+%% associate_admin_account_request() :: #{
+%%   <<"AdminAccount">> := string()
 %% }
--type get_protection_status_response() :: #{binary() => any()}.
+-type associate_admin_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% network_acl_entry_set() :: #{
-%%   <<"FirstEntries">> => list(network_acl_entry()),
-%%   <<"ForceRemediateForFirstEntries">> => boolean(),
-%%   <<"ForceRemediateForLastEntries">> => boolean(),
-%%   <<"LastEntries">> => list(network_acl_entry())
+%% associate_third_party_firewall_request() :: #{
+%%   <<"ThirdPartyFirewall">> := list(any())
 %% }
--type network_acl_entry_set() :: #{binary() => any()}.
+-type associate_third_party_firewall_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_member_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% associate_third_party_firewall_response() :: #{
+%%   <<"ThirdPartyFirewallStatus">> => list(any())
 %% }
--type list_member_accounts_request() :: #{binary() => any()}.
+-type associate_third_party_firewall_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagList">> := list(tag())
+%% aws_ec2_instance_violation() :: #{
+%%   <<"AwsEc2NetworkInterfaceViolations">> => list(aws_ec2_network_interface_violation()),
+%%   <<"ViolationTarget">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type aws_ec2_instance_violation() :: #{binary() => any()}.
 
 %% Example:
-%% list_apps_lists_response() :: #{
-%%   <<"AppsLists">> => list(apps_list_data_summary()),
-%%   <<"NextToken">> => string()
+%% aws_ec2_network_interface_violation() :: #{
+%%   <<"ViolatingSecurityGroups">> => list(string()),
+%%   <<"ViolationTarget">> => string()
 %% }
--type list_apps_lists_response() :: #{binary() => any()}.
+-type aws_ec2_network_interface_violation() :: #{binary() => any()}.
+
+%% Example:
+%% aws_vpc_security_group_violation() :: #{
+%%   <<"PartialMatches">> => list(partial_match()),
+%%   <<"PossibleSecurityGroupRemediationActions">> => list(security_group_remediation_action()),
+%%   <<"ViolationTarget">> => string(),
+%%   <<"ViolationTargetDescription">> => string()
+%% }
+-type aws_vpc_security_group_violation() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_resource_request() :: #{
+%%   <<"Items">> := list(string()),
+%%   <<"ResourceSetIdentifier">> := string()
+%% }
+-type batch_associate_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_resource_response() :: #{
+%%   <<"FailedItems">> => list(failed_item()),
+%%   <<"ResourceSetIdentifier">> => string()
+%% }
+-type batch_associate_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_resource_request() :: #{
+%%   <<"Items">> := list(string()),
+%%   <<"ResourceSetIdentifier">> := string()
+%% }
+-type batch_disassociate_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_resource_response() :: #{
+%%   <<"FailedItems">> => list(failed_item()),
+%%   <<"ResourceSetIdentifier">> => string()
+%% }
+-type batch_disassociate_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_violator() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ViolationReason">> => list(any())
+%% }
+-type compliance_violator() :: #{binary() => any()}.
+
+%% Example:
+%% create_network_acl_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"Vpc">> => action_target()
+%% }
+-type create_network_acl_action() :: #{binary() => any()}.
+
+%% Example:
+%% create_network_acl_entries_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"NetworkAclEntriesToBeCreated">> => list(entry_description()),
+%%   <<"NetworkAclId">> => action_target()
+%% }
+-type create_network_acl_entries_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_apps_list_request() :: #{
+%%   <<"ListId">> := string()
+%% }
+-type delete_apps_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_network_acl_entries_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FMSCanRemediate">> => boolean(),
+%%   <<"NetworkAclEntriesToBeDeleted">> => list(entry_description()),
+%%   <<"NetworkAclId">> => action_target()
+%% }
+-type delete_network_acl_entries_action() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_channel_request() :: #{
+
+%% }
+-type delete_notification_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"DeleteAllPolicyResources">> => boolean(),
+%%   <<"PolicyId">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_protocols_list_request() :: #{
+%%   <<"ListId">> := string()
+%% }
+-type delete_protocols_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_set_request() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_resource_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_admin_account_request() :: #{
+
+%% }
+-type disassociate_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_third_party_firewall_request() :: #{
+%%   <<"ThirdPartyFirewall">> := list(any())
+%% }
+-type disassociate_third_party_firewall_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_third_party_firewall_response() :: #{
+%%   <<"ThirdPartyFirewallStatus">> => list(any())
+%% }
+-type disassociate_third_party_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% discovered_resource() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"URI">> => string()
+%% }
+-type discovered_resource() :: #{binary() => any()}.
+
+%% Example:
+%% dns_duplicate_rule_group_violation() :: #{
+%%   <<"ViolationTarget">> => string(),
+%%   <<"ViolationTargetDescription">> => string()
+%% }
+-type dns_duplicate_rule_group_violation() :: #{binary() => any()}.
+
+%% Example:
+%% dns_rule_group_limit_exceeded_violation() :: #{
+%%   <<"NumberOfRuleGroupsAlreadyAssociated">> => integer(),
+%%   <<"ViolationTarget">> => string(),
+%%   <<"ViolationTargetDescription">> => string()
+%% }
+-type dns_rule_group_limit_exceeded_violation() :: #{binary() => any()}.
+
+%% Example:
+%% dns_rule_group_priority_conflict_violation() :: #{
+%%   <<"ConflictingPolicyId">> => string(),
+%%   <<"ConflictingPriority">> => integer(),
+%%   <<"UnavailablePriorities">> => list(integer()),
+%%   <<"ViolationTarget">> => string(),
+%%   <<"ViolationTargetDescription">> => string()
+%% }
+-type dns_rule_group_priority_conflict_violation() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_associate_route_table_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GatewayId">> => action_target(),
+%%   <<"RouteTableId">> => action_target(),
+%%   <<"SubnetId">> => action_target()
+%% }
+-type ec2_associate_route_table_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_copy_route_table_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RouteTableId">> => action_target(),
+%%   <<"VpcId">> => action_target()
+%% }
+-type ec2_copy_route_table_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_create_route_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"DestinationIpv6CidrBlock">> => string(),
+%%   <<"DestinationPrefixListId">> => string(),
+%%   <<"GatewayId">> => action_target(),
+%%   <<"RouteTableId">> => action_target(),
+%%   <<"VpcEndpointId">> => action_target()
+%% }
+-type ec2_create_route_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_create_route_table_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"VpcId">> => action_target()
+%% }
+-type ec2_create_route_table_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_delete_route_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"DestinationIpv6CidrBlock">> => string(),
+%%   <<"DestinationPrefixListId">> => string(),
+%%   <<"RouteTableId">> => action_target()
+%% }
+-type ec2_delete_route_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_replace_route_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DestinationCidrBlock">> => string(),
+%%   <<"DestinationIpv6CidrBlock">> => string(),
+%%   <<"DestinationPrefixListId">> => string(),
+%%   <<"GatewayId">> => action_target(),
+%%   <<"RouteTableId">> => action_target()
+%% }
+-type ec2_replace_route_action() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_replace_route_table_association_action() :: #{
+%%   <<"AssociationId">> => action_target(),
+%%   <<"Description">> => string(),
+%%   <<"RouteTableId">> => action_target()
+%% }
+-type ec2_replace_route_table_association_action() :: #{binary() => any()}.
+
+%% Example:
+%% entry_description() :: #{
+%%   <<"EntryDetail">> => network_acl_entry(),
+%%   <<"EntryRuleNumber">> => integer(),
+%%   <<"EntryType">> => list(any())
+%% }
+-type entry_description() :: #{binary() => any()}.
+
+%% Example:
+%% entry_violation() :: #{
+%%   <<"ActualEvaluationOrder">> => string(),
+%%   <<"EntriesWithConflicts">> => list(entry_description()),
+%%   <<"EntryAtExpectedEvaluationOrder">> => entry_description(),
+%%   <<"EntryViolationReasons">> => list(list(any())()),
+%%   <<"ExpectedEntry">> => entry_description(),
+%%   <<"ExpectedEvaluationOrder">> => string()
+%% }
+-type entry_violation() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_result() :: #{
+%%   <<"ComplianceStatus">> => list(any()),
+%%   <<"EvaluationLimitExceeded">> => boolean(),
+%%   <<"ViolatorCount">> => float()
+%% }
+-type evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% expected_route() :: #{
+%%   <<"AllowedTargets">> => list(string()),
+%%   <<"ContributingSubnets">> => list(string()),
+%%   <<"IpV4Cidr">> => string(),
+%%   <<"IpV6Cidr">> => string(),
+%%   <<"PrefixListId">> => string(),
+%%   <<"RouteTableId">> => string()
+%% }
+-type expected_route() :: #{binary() => any()}.
+
+%% Example:
+%% f_m_s_policy_update_firewall_creation_config_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallCreationConfig">> => string()
+%% }
+-type f_m_s_policy_update_firewall_creation_config_action() :: #{binary() => any()}.
+
+%% Example:
+%% failed_item() :: #{
+%%   <<"Reason">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type failed_item() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_subnet_is_out_of_scope_violation() :: #{
@@ -192,89 +481,179 @@
 -type firewall_subnet_is_out_of_scope_violation() :: #{binary() => any()}.
 
 %% Example:
-%% batch_disassociate_resource_response() :: #{
-%%   <<"FailedItems">> => list(failed_item()),
-%%   <<"ResourceSetIdentifier">> => string()
+%% firewall_subnet_missing_vpcendpoint_violation() :: #{
+%%   <<"FirewallSubnetId">> => string(),
+%%   <<"SubnetAvailabilityZone">> => string(),
+%%   <<"SubnetAvailabilityZoneId">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type batch_disassociate_resource_response() :: #{binary() => any()}.
+-type firewall_subnet_missing_vpcendpoint_violation() :: #{binary() => any()}.
 
 %% Example:
-%% protocols_list_data_summary() :: #{
-%%   <<"ListArn">> => string(),
-%%   <<"ListId">> => string(),
-%%   <<"ListName">> => string(),
-%%   <<"ProtocolsList">> => list(string())
-%% }
--type protocols_list_data_summary() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_resource_request() :: #{
-%%   <<"Items">> := list(string()),
-%%   <<"ResourceSetIdentifier">> := string()
-%% }
--type batch_associate_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_admin_account_request() :: #{
+%% get_admin_account_request() :: #{
 
 %% }
--type disassociate_admin_account_request() :: #{binary() => any()}.
+-type get_admin_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% security_group_rule_description() :: #{
-%%   <<"FromPort">> => float(),
-%%   <<"IPV4Range">> => string(),
-%%   <<"IPV6Range">> => string(),
-%%   <<"PrefixListId">> => string(),
-%%   <<"Protocol">> => string(),
-%%   <<"ToPort">> => float()
+%% get_admin_account_response() :: #{
+%%   <<"AdminAccount">> => string(),
+%%   <<"RoleStatus">> => list(any())
 %% }
--type security_group_rule_description() :: #{binary() => any()}.
+-type get_admin_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% dns_rule_group_limit_exceeded_violation() :: #{
-%%   <<"NumberOfRuleGroupsAlreadyAssociated">> => integer(),
-%%   <<"ViolationTarget">> => string(),
-%%   <<"ViolationTargetDescription">> => string()
+%% get_admin_scope_request() :: #{
+%%   <<"AdminAccount">> := string()
 %% }
--type dns_rule_group_limit_exceeded_violation() :: #{binary() => any()}.
+-type get_admin_scope_request() :: #{binary() => any()}.
 
 %% Example:
-%% third_party_firewall_missing_expected_route_table_violation() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CurrentRouteTable">> => string(),
-%%   <<"ExpectedRouteTable">> => string(),
-%%   <<"VPC">> => string(),
-%%   <<"ViolationTarget">> => string()
+%% get_admin_scope_response() :: #{
+%%   <<"AdminScope">> => admin_scope(),
+%%   <<"Status">> => list(any())
 %% }
--type third_party_firewall_missing_expected_route_table_violation() :: #{binary() => any()}.
+-type get_admin_scope_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_policies_response() :: #{
+%% get_apps_list_request() :: #{
+%%   <<"DefaultList">> => boolean(),
+%%   <<"ListId">> := string()
+%% }
+-type get_apps_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_apps_list_response() :: #{
+%%   <<"AppsList">> => apps_list_data(),
+%%   <<"AppsListArn">> => string()
+%% }
+-type get_apps_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_compliance_detail_request() :: #{
+%%   <<"MemberAccount">> := string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type get_compliance_detail_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_compliance_detail_response() :: #{
+%%   <<"PolicyComplianceDetail">> => policy_compliance_detail()
+%% }
+-type get_compliance_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_channel_request() :: #{
+
+%% }
+-type get_notification_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_channel_response() :: #{
+%%   <<"SnsRoleName">> => string(),
+%%   <<"SnsTopicArn">> => string()
+%% }
+-type get_notification_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"PolicyId">> := string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => policy(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_protection_status_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberAccountId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyList">> => list(policy_summary())
+%%   <<"PolicyId">> := string(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type list_policies_response() :: #{binary() => any()}.
+-type get_protection_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_create_route_table_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"VpcId">> => action_target()
+%% get_protection_status_response() :: #{
+%%   <<"AdminAccountId">> => string(),
+%%   <<"Data">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceType">> => list(any())
 %% }
--type ec2_create_route_table_action() :: #{binary() => any()}.
+-type get_protection_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% stateful_engine_options() :: #{
-%%   <<"RuleOrder">> => list(any()),
-%%   <<"StreamExceptionPolicy">> => list(any())
+%% get_protocols_list_request() :: #{
+%%   <<"DefaultList">> => boolean(),
+%%   <<"ListId">> := string()
 %% }
--type stateful_engine_options() :: #{binary() => any()}.
+-type get_protocols_list_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% get_protocols_list_response() :: #{
+%%   <<"ProtocolsList">> => protocols_list_data(),
+%%   <<"ProtocolsListArn">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type get_protocols_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_set_request() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type get_resource_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_set_response() :: #{
+%%   <<"ResourceSet">> => resource_set(),
+%%   <<"ResourceSetArn">> => string()
+%% }
+-type get_resource_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_firewall_association_status_request() :: #{
+%%   <<"ThirdPartyFirewall">> := list(any())
+%% }
+-type get_third_party_firewall_association_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_third_party_firewall_association_status_response() :: #{
+%%   <<"MarketplaceOnboardingStatus">> => list(any()),
+%%   <<"ThirdPartyFirewallStatus">> => list(any())
+%% }
+-type get_third_party_firewall_association_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_violation_details_request() :: #{
+%%   <<"MemberAccount">> := string(),
+%%   <<"PolicyId">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := string()
+%% }
+-type get_violation_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_violation_details_response() :: #{
+%%   <<"ViolationDetail">> => violation_detail()
+%% }
+-type get_violation_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_network_acl_entries_violation() :: #{
@@ -287,30 +666,103 @@
 -type invalid_network_acl_entries_violation() :: #{binary() => any()}.
 
 %% Example:
-%% security_group_remediation_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"IsDefaultAction">> => boolean(),
-%%   <<"RemediationActionType">> => list(any()),
-%%   <<"RemediationResult">> => security_group_rule_description()
+%% invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type security_group_remediation_action() :: #{binary() => any()}.
+-type invalid_operation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% stateful_rule_group() :: #{
-%%   <<"Override">> => network_firewall_stateful_rule_group_override(),
-%%   <<"Priority">> => integer(),
-%%   <<"ResourceId">> => string(),
-%%   <<"RuleGroupName">> => string()
+%% invalid_type_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type stateful_rule_group() :: #{binary() => any()}.
+-type invalid_type_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_third_party_firewall_firewall_policies_request() :: #{
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_admin_accounts_for_organization_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_admin_accounts_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_admin_accounts_for_organization_response() :: #{
+%%   <<"AdminAccounts">> => list(admin_account_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_admin_accounts_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_admins_managing_account_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_admins_managing_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_admins_managing_account_response() :: #{
+%%   <<"AdminAccounts">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_admins_managing_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_lists_request() :: #{
+%%   <<"DefaultLists">> => boolean(),
 %%   <<"MaxResults">> := integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ThirdPartyFirewall">> := list(any())
+%%   <<"NextToken">> => string()
 %% }
--type list_third_party_firewall_firewall_policies_request() :: #{binary() => any()}.
+-type list_apps_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_apps_lists_response() :: #{
+%%   <<"AppsLists">> => list(apps_list_data_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_apps_lists_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type list_compliance_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyComplianceStatusList">> => list(policy_compliance_status())
+%% }
+-type list_compliance_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_discovered_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberAccountIds">> := list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> := string()
+%% }
+-type list_discovered_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_discovered_resources_response() :: #{
+%%   <<"Items">> => list(discovered_resource()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_discovered_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_member_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_member_accounts_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_member_accounts_response() :: #{
@@ -327,10 +779,26 @@
 -type list_policies_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_policy_request() :: #{
-%%   <<"PolicyId">> := string()
+%% list_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyList">> => list(policy_summary())
 %% }
--type get_policy_request() :: #{binary() => any()}.
+-type list_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_protocols_lists_request() :: #{
+%%   <<"DefaultLists">> => boolean(),
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protocols_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_protocols_lists_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProtocolsLists">> => list(protocols_list_data_summary())
+%% }
+-type list_protocols_lists_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_set_resources_request() :: #{
@@ -341,46 +809,11 @@
 -type list_resource_set_resources_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_compliance_detail_request() :: #{
-%%   <<"MemberAccount">> := string(),
-%%   <<"PolicyId">> := string()
-%% }
--type get_compliance_detail_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_notification_channel_request() :: #{
-
-%% }
--type get_notification_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_set_request() :: #{
-%%   <<"Identifier">> := string()
-%% }
--type delete_resource_set_request() :: #{binary() => any()}.
-
-%% Example:
 %% list_resource_set_resources_response() :: #{
 %%   <<"Items">> => list(resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_set_resources_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_unexpected_gateway_routes_violation() :: #{
-%%   <<"GatewayId">> => string(),
-%%   <<"RouteTableId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()),
-%%   <<"VpcId">> => string()
-%% }
--type network_firewall_unexpected_gateway_routes_violation() :: #{binary() => any()}.
-
-%% Example:
-%% get_protocols_list_request() :: #{
-%%   <<"DefaultList">> => boolean(),
-%%   <<"ListId">> := string()
-%% }
--type get_protocols_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_sets_request() :: #{
@@ -390,35 +823,65 @@
 -type list_resource_sets_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_third_party_firewall_response() :: #{
-%%   <<"ThirdPartyFirewallStatus">> => list(any())
+%% list_resource_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceSets">> => list(resource_set_summary())
 %% }
--type associate_third_party_firewall_response() :: #{binary() => any()}.
+-type list_resource_sets_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"Message">> => string()
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
 %% }
--type invalid_operation_exception() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_admins_managing_account_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagList">> => list(tag())
 %% }
--type list_admins_managing_account_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_create_route_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DestinationCidrBlock">> => string(),
-%%   <<"DestinationIpv6CidrBlock">> => string(),
-%%   <<"DestinationPrefixListId">> => string(),
-%%   <<"GatewayId">> => action_target(),
-%%   <<"RouteTableId">> => action_target(),
-%%   <<"VpcEndpointId">> => action_target()
+%% list_third_party_firewall_firewall_policies_request() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ThirdPartyFirewall">> := list(any())
 %% }
--type ec2_create_route_action() :: #{binary() => any()}.
+-type list_third_party_firewall_firewall_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_third_party_firewall_firewall_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ThirdPartyFirewallFirewallPolicies">> => list(third_party_firewall_firewall_policy())
+%% }
+-type list_third_party_firewall_firewall_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_common_policy() :: #{
+%%   <<"NetworkAclEntrySet">> => network_acl_entry_set()
+%% }
+-type network_acl_common_policy() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_entry() :: #{
+%%   <<"CidrBlock">> => string(),
+%%   <<"Egress">> => boolean(),
+%%   <<"IcmpTypeCode">> => network_acl_icmp_type_code(),
+%%   <<"Ipv6CidrBlock">> => string(),
+%%   <<"PortRange">> => network_acl_port_range(),
+%%   <<"Protocol">> => string(),
+%%   <<"RuleAction">> => list(any())
+%% }
+-type network_acl_entry() :: #{binary() => any()}.
+
+%% Example:
+%% network_acl_entry_set() :: #{
+%%   <<"FirstEntries">> => list(network_acl_entry()),
+%%   <<"ForceRemediateForFirstEntries">> => boolean(),
+%%   <<"ForceRemediateForLastEntries">> => boolean(),
+%%   <<"LastEntries">> => list(network_acl_entry())
+%% }
+-type network_acl_entry_set() :: #{binary() => any()}.
 
 %% Example:
 %% network_acl_icmp_type_code() :: #{
@@ -428,28 +891,40 @@
 -type network_acl_icmp_type_code() :: #{binary() => any()}.
 
 %% Example:
-%% get_violation_details_request() :: #{
-%%   <<"MemberAccount">> := string(),
-%%   <<"PolicyId">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := string()
+%% network_acl_port_range() :: #{
+%%   <<"From">> => integer(),
+%%   <<"To">> => integer()
 %% }
--type get_violation_details_request() :: #{binary() => any()}.
+-type network_acl_port_range() :: #{binary() => any()}.
 
 %% Example:
-%% compliance_violator() :: #{
-%%   <<"Metadata">> => map(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ViolationReason">> => list(any())
+%% network_firewall_black_hole_route_detected_violation() :: #{
+%%   <<"RouteTableId">> => string(),
+%%   <<"ViolatingRoutes">> => list(route()),
+%%   <<"ViolationTarget">> => string(),
+%%   <<"VpcId">> => string()
 %% }
--type compliance_violator() :: #{binary() => any()}.
+-type network_firewall_black_hole_route_detected_violation() :: #{binary() => any()}.
 
 %% Example:
-%% associate_admin_account_request() :: #{
-%%   <<"AdminAccount">> := string()
+%% network_firewall_internet_traffic_not_inspected_violation() :: #{
+%%   <<"ActualFirewallSubnetRoutes">> => list(route()),
+%%   <<"ActualInternetGatewayRoutes">> => list(route()),
+%%   <<"CurrentFirewallSubnetRouteTable">> => string(),
+%%   <<"CurrentInternetGatewayRouteTable">> => string(),
+%%   <<"ExpectedFirewallEndpoint">> => string(),
+%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()),
+%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()),
+%%   <<"FirewallSubnetId">> => string(),
+%%   <<"InternetGatewayId">> => string(),
+%%   <<"IsRouteTableUsedInDifferentAZ">> => boolean(),
+%%   <<"RouteTableId">> => string(),
+%%   <<"SubnetAvailabilityZone">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"ViolatingRoutes">> => list(route()),
+%%   <<"VpcId">> => string()
 %% }
--type associate_admin_account_request() :: #{binary() => any()}.
+-type network_firewall_internet_traffic_not_inspected_violation() :: #{binary() => any()}.
 
 %% Example:
 %% network_firewall_invalid_route_configuration_violation() :: #{
@@ -473,11 +948,46 @@
 -type network_firewall_invalid_route_configuration_violation() :: #{binary() => any()}.
 
 %% Example:
-%% get_notification_channel_response() :: #{
-%%   <<"SnsRoleName">> => string(),
-%%   <<"SnsTopicArn">> => string()
+%% network_firewall_missing_expected_r_t_violation() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CurrentRouteTable">> => string(),
+%%   <<"ExpectedRouteTable">> => string(),
+%%   <<"VPC">> => string(),
+%%   <<"ViolationTarget">> => string()
 %% }
--type get_notification_channel_response() :: #{binary() => any()}.
+-type network_firewall_missing_expected_r_t_violation() :: #{binary() => any()}.
+
+%% Example:
+%% network_firewall_missing_expected_routes_violation() :: #{
+%%   <<"ExpectedRoutes">> => list(expected_route()),
+%%   <<"ViolationTarget">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type network_firewall_missing_expected_routes_violation() :: #{binary() => any()}.
+
+%% Example:
+%% network_firewall_missing_firewall_violation() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"TargetViolationReason">> => string(),
+%%   <<"VPC">> => string(),
+%%   <<"ViolationTarget">> => string()
+%% }
+-type network_firewall_missing_firewall_violation() :: #{binary() => any()}.
+
+%% Example:
+%% network_firewall_missing_subnet_violation() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"TargetViolationReason">> => string(),
+%%   <<"VPC">> => string(),
+%%   <<"ViolationTarget">> => string()
+%% }
+-type network_firewall_missing_subnet_violation() :: #{binary() => any()}.
+
+%% Example:
+%% network_firewall_policy() :: #{
+%%   <<"FirewallDeploymentModel">> => list(any())
+%% }
+-type network_firewall_policy() :: #{binary() => any()}.
 
 %% Example:
 %% network_firewall_policy_description() :: #{
@@ -492,6 +1002,20 @@
 -type network_firewall_policy_description() :: #{binary() => any()}.
 
 %% Example:
+%% network_firewall_policy_modified_violation() :: #{
+%%   <<"CurrentPolicyDescription">> => network_firewall_policy_description(),
+%%   <<"ExpectedPolicyDescription">> => network_firewall_policy_description(),
+%%   <<"ViolationTarget">> => string()
+%% }
+-type network_firewall_policy_modified_violation() :: #{binary() => any()}.
+
+%% Example:
+%% network_firewall_stateful_rule_group_override() :: #{
+%%   <<"Action">> => list(any())
+%% }
+-type network_firewall_stateful_rule_group_override() :: #{binary() => any()}.
+
+%% Example:
 %% network_firewall_unexpected_firewall_routes_violation() :: #{
 %%   <<"FirewallEndpoint">> => string(),
 %%   <<"FirewallSubnetId">> => string(),
@@ -502,84 +1026,179 @@
 -type network_firewall_unexpected_firewall_routes_violation() :: #{binary() => any()}.
 
 %% Example:
-%% dns_duplicate_rule_group_violation() :: #{
-%%   <<"ViolationTarget">> => string(),
-%%   <<"ViolationTargetDescription">> => string()
+%% network_firewall_unexpected_gateway_routes_violation() :: #{
+%%   <<"GatewayId">> => string(),
+%%   <<"RouteTableId">> => string(),
+%%   <<"ViolatingRoutes">> => list(route()),
+%%   <<"VpcId">> => string()
 %% }
--type dns_duplicate_rule_group_violation() :: #{binary() => any()}.
+-type network_firewall_unexpected_gateway_routes_violation() :: #{binary() => any()}.
 
 %% Example:
-%% violation_detail() :: #{
+%% organizational_unit_scope() :: #{
+%%   <<"AllOrganizationalUnitsEnabled">> => boolean(),
+%%   <<"ExcludeSpecifiedOrganizationalUnits">> => boolean(),
+%%   <<"OrganizationalUnits">> => list(string())
+%% }
+-type organizational_unit_scope() :: #{binary() => any()}.
+
+%% Example:
+%% partial_match() :: #{
+%%   <<"Reference">> => string(),
+%%   <<"TargetViolationReasons">> => list(string())
+%% }
+-type partial_match() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"DeleteUnusedFMManagedResources">> => boolean(),
+%%   <<"ExcludeMap">> => map(),
+%%   <<"ExcludeResourceTags">> => boolean(),
+%%   <<"IncludeMap">> => map(),
+%%   <<"PolicyDescription">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyStatus">> => list(any()),
+%%   <<"PolicyUpdateToken">> => string(),
+%%   <<"RemediationEnabled">> => boolean(),
+%%   <<"ResourceSetIds">> => list(string()),
+%%   <<"ResourceTagLogicalOperator">> => list(any()),
+%%   <<"ResourceTags">> => list(resource_tag()),
+%%   <<"ResourceType">> => string(),
+%%   <<"ResourceTypeList">> => list(string()),
+%%   <<"SecurityServicePolicyData">> => security_service_policy_data()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% policy_compliance_detail() :: #{
+%%   <<"EvaluationLimitExceeded">> => boolean(),
+%%   <<"ExpiredAt">> => non_neg_integer(),
+%%   <<"IssueInfoMap">> => map(),
 %%   <<"MemberAccount">> => string(),
 %%   <<"PolicyId">> => string(),
-%%   <<"ResourceDescription">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceTags">> => list(tag()),
+%%   <<"PolicyOwner">> => string(),
+%%   <<"Violators">> => list(compliance_violator())
+%% }
+-type policy_compliance_detail() :: #{binary() => any()}.
+
+%% Example:
+%% policy_compliance_status() :: #{
+%%   <<"EvaluationResults">> => list(evaluation_result()),
+%%   <<"IssueInfoMap">> => map(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MemberAccount">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyOwner">> => string()
+%% }
+-type policy_compliance_status() :: #{binary() => any()}.
+
+%% Example:
+%% policy_option() :: #{
+%%   <<"NetworkAclCommonPolicy">> => network_acl_common_policy(),
+%%   <<"NetworkFirewallPolicy">> => network_firewall_policy(),
+%%   <<"ThirdPartyFirewallPolicy">> => third_party_firewall_policy()
+%% }
+-type policy_option() :: #{binary() => any()}.
+
+%% Example:
+%% policy_summary() :: #{
+%%   <<"DeleteUnusedFMManagedResources">> => boolean(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyStatus">> => list(any()),
+%%   <<"RemediationEnabled">> => boolean(),
 %%   <<"ResourceType">> => string(),
-%%   <<"ResourceViolations">> => list(resource_violation())
+%%   <<"SecurityServiceType">> => list(any())
 %% }
--type violation_detail() :: #{binary() => any()}.
+-type policy_summary() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
+%% policy_type_scope() :: #{
+%%   <<"AllPolicyTypesEnabled">> => boolean(),
+%%   <<"PolicyTypes">> => list(list(any())())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type policy_type_scope() :: #{binary() => any()}.
 
 %% Example:
-%% network_firewall_missing_subnet_violation() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"TargetViolationReason">> => string(),
-%%   <<"VPC">> => string(),
-%%   <<"ViolationTarget">> => string()
+%% possible_remediation_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IsDefaultAction">> => boolean(),
+%%   <<"OrderedRemediationActions">> => list(remediation_action_with_order())
 %% }
--type network_firewall_missing_subnet_violation() :: #{binary() => any()}.
+-type possible_remediation_action() :: #{binary() => any()}.
 
 %% Example:
-%% list_protocols_lists_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProtocolsLists">> => list(protocols_list_data_summary())
+%% possible_remediation_actions() :: #{
+%%   <<"Actions">> => list(possible_remediation_action()),
+%%   <<"Description">> => string()
 %% }
--type list_protocols_lists_response() :: #{binary() => any()}.
+-type possible_remediation_actions() :: #{binary() => any()}.
 
 %% Example:
-%% get_apps_list_response() :: #{
-%%   <<"AppsList">> => apps_list_data(),
-%%   <<"AppsListArn">> => string()
-%% }
--type get_apps_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_admin_account_response() :: #{
-%%   <<"AdminAccount">> => string(),
-%%   <<"RoleStatus">> => list(any())
-%% }
--type get_admin_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_policy() :: #{
-%%   <<"FirewallDeploymentModel">> => list(any())
-%% }
--type network_firewall_policy() :: #{binary() => any()}.
-
-%% Example:
-%% apps_list_data() :: #{
-%%   <<"AppsList">> => list(app()),
+%% protocols_list_data() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
 %%   <<"ListId">> => string(),
 %%   <<"ListName">> => string(),
 %%   <<"ListUpdateToken">> => string(),
-%%   <<"PreviousAppsList">> => map()
+%%   <<"PreviousProtocolsList">> => map(),
+%%   <<"ProtocolsList">> => list(string())
 %% }
--type apps_list_data() :: #{binary() => any()}.
+-type protocols_list_data() :: #{binary() => any()}.
 
 %% Example:
-%% get_compliance_detail_response() :: #{
-%%   <<"PolicyComplianceDetail">> => policy_compliance_detail()
+%% protocols_list_data_summary() :: #{
+%%   <<"ListArn">> => string(),
+%%   <<"ListId">> => string(),
+%%   <<"ListName">> => string(),
+%%   <<"ProtocolsList">> => list(string())
 %% }
--type get_compliance_detail_response() :: #{binary() => any()}.
+-type protocols_list_data_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_admin_account_request() :: #{
+%%   <<"AdminAccount">> := string(),
+%%   <<"AdminScope">> => admin_scope()
+%% }
+-type put_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_apps_list_request() :: #{
+%%   <<"AppsList">> := apps_list_data(),
+%%   <<"TagList">> => list(tag())
+%% }
+-type put_apps_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_apps_list_response() :: #{
+%%   <<"AppsList">> => apps_list_data(),
+%%   <<"AppsListArn">> => string()
+%% }
+-type put_apps_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_notification_channel_request() :: #{
+%%   <<"SnsRoleName">> := string(),
+%%   <<"SnsTopicArn">> := string()
+%% }
+-type put_notification_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_policy_request() :: #{
+%%   <<"Policy">> := policy(),
+%%   <<"TagList">> => list(tag())
+%% }
+-type put_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_policy_response() :: #{
+%%   <<"Policy">> => policy(),
+%%   <<"PolicyArn">> => string()
+%% }
+-type put_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_protocols_list_request() :: #{
@@ -589,19 +1208,32 @@
 -type put_protocols_list_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_network_acl_entries_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FMSCanRemediate">> => boolean(),
-%%   <<"NetworkAclEntriesToBeDeleted">> => list(entry_description()),
-%%   <<"NetworkAclId">> => action_target()
+%% put_protocols_list_response() :: #{
+%%   <<"ProtocolsList">> => protocols_list_data(),
+%%   <<"ProtocolsListArn">> => string()
 %% }
--type delete_network_acl_entries_action() :: #{binary() => any()}.
+-type put_protocols_list_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_third_party_firewall_request() :: #{
-%%   <<"ThirdPartyFirewall">> := list(any())
+%% put_resource_set_request() :: #{
+%%   <<"ResourceSet">> := resource_set(),
+%%   <<"TagList">> => list(tag())
 %% }
--type associate_third_party_firewall_request() :: #{binary() => any()}.
+-type put_resource_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_set_response() :: #{
+%%   <<"ResourceSet">> => resource_set(),
+%%   <<"ResourceSetArn">> => string()
+%% }
+-type put_resource_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% region_scope() :: #{
+%%   <<"AllRegionsEnabled">> => boolean(),
+%%   <<"Regions">> => list(string())
+%% }
+-type region_scope() :: #{binary() => any()}.
 
 %% Example:
 %% remediation_action() :: #{
@@ -622,51 +1254,11 @@
 -type remediation_action() :: #{binary() => any()}.
 
 %% Example:
-%% list_discovered_resources_response() :: #{
-%%   <<"Items">> => list(discovered_resource()),
-%%   <<"NextToken">> => string()
+%% remediation_action_with_order() :: #{
+%%   <<"Order">> => integer(),
+%%   <<"RemediationAction">> => remediation_action()
 %% }
--type list_discovered_resources_response() :: #{binary() => any()}.
-
-%% Example:
-%% third_party_firewall_firewall_policy() :: #{
-%%   <<"FirewallPolicyId">> => string(),
-%%   <<"FirewallPolicyName">> => string()
-%% }
--type third_party_firewall_firewall_policy() :: #{binary() => any()}.
-
-%% Example:
-%% third_party_firewall_policy() :: #{
-%%   <<"FirewallDeploymentModel">> => list(any())
-%% }
--type third_party_firewall_policy() :: #{binary() => any()}.
-
-%% Example:
-%% list_admin_accounts_for_organization_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_admin_accounts_for_organization_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_internet_traffic_not_inspected_violation() :: #{
-%%   <<"ActualFirewallSubnetRoutes">> => list(route()),
-%%   <<"ActualInternetGatewayRoutes">> => list(route()),
-%%   <<"CurrentFirewallSubnetRouteTable">> => string(),
-%%   <<"CurrentInternetGatewayRouteTable">> => string(),
-%%   <<"ExpectedFirewallEndpoint">> => string(),
-%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()),
-%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()),
-%%   <<"FirewallSubnetId">> => string(),
-%%   <<"InternetGatewayId">> => string(),
-%%   <<"IsRouteTableUsedInDifferentAZ">> => boolean(),
-%%   <<"RouteTableId">> => string(),
-%%   <<"SubnetAvailabilityZone">> => string(),
-%%   <<"SubnetId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()),
-%%   <<"VpcId">> => string()
-%% }
--type network_firewall_internet_traffic_not_inspected_violation() :: #{binary() => any()}.
+-type remediation_action_with_order() :: #{binary() => any()}.
 
 %% Example:
 %% replace_network_acl_association_action() :: #{
@@ -678,19 +1270,46 @@
 -type replace_network_acl_association_action() :: #{binary() => any()}.
 
 %% Example:
-%% apps_list_data_summary() :: #{
-%%   <<"AppsList">> => list(app()),
-%%   <<"ListArn">> => string(),
-%%   <<"ListId">> => string(),
-%%   <<"ListName">> => string()
+%% resource() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"URI">> => string()
 %% }
--type apps_list_data_summary() :: #{binary() => any()}.
+-type resource() :: #{binary() => any()}.
 
 %% Example:
-%% network_firewall_stateful_rule_group_override() :: #{
-%%   <<"Action">> => list(any())
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type network_firewall_stateful_rule_group_override() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_set() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceSetStatus">> => list(any()),
+%%   <<"ResourceTypeList">> => list(string()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type resource_set() :: #{binary() => any()}.
+
+%% Example:
+%% resource_set_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceSetStatus">> => list(any())
+%% }
+-type resource_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
 
 %% Example:
 %% resource_violation() :: #{
@@ -724,175 +1343,6 @@
 -type resource_violation() :: #{binary() => any()}.
 
 %% Example:
-%% region_scope() :: #{
-%%   <<"AllRegionsEnabled">> => boolean(),
-%%   <<"Regions">> => list(string())
-%% }
--type region_scope() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_associate_route_table_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"GatewayId">> => action_target(),
-%%   <<"RouteTableId">> => action_target(),
-%%   <<"SubnetId">> => action_target()
-%% }
--type ec2_associate_route_table_action() :: #{binary() => any()}.
-
-%% Example:
-%% remediation_action_with_order() :: #{
-%%   <<"Order">> => integer(),
-%%   <<"RemediationAction">> => remediation_action()
-%% }
--type remediation_action_with_order() :: #{binary() => any()}.
-
-%% Example:
-%% entry_description() :: #{
-%%   <<"EntryDetail">> => network_acl_entry(),
-%%   <<"EntryRuleNumber">> => integer(),
-%%   <<"EntryType">> => list(any())
-%% }
--type entry_description() :: #{binary() => any()}.
-
-%% Example:
-%% dns_rule_group_priority_conflict_violation() :: #{
-%%   <<"ConflictingPolicyId">> => string(),
-%%   <<"ConflictingPriority">> => integer(),
-%%   <<"UnavailablePriorities">> => list(integer()),
-%%   <<"ViolationTarget">> => string(),
-%%   <<"ViolationTargetDescription">> => string()
-%% }
--type dns_rule_group_priority_conflict_violation() :: #{binary() => any()}.
-
-%% Example:
-%% get_violation_details_response() :: #{
-%%   <<"ViolationDetail">> => violation_detail()
-%% }
--type get_violation_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_replace_route_table_association_action() :: #{
-%%   <<"AssociationId">> => action_target(),
-%%   <<"Description">> => string(),
-%%   <<"RouteTableId">> => action_target()
-%% }
--type ec2_replace_route_table_association_action() :: #{binary() => any()}.
-
-%% Example:
-%% stateless_rule_group() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"ResourceId">> => string(),
-%%   <<"RuleGroupName">> => string()
-%% }
--type stateless_rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_protocols_lists_request() :: #{
-%%   <<"DefaultLists">> => boolean(),
-%%   <<"MaxResults">> := integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_protocols_lists_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% web_acl_has_incompatible_configuration_violation() :: #{
-%%   <<"Description">> => string(),
-%%   <<"WebACLArn">> => string()
-%% }
--type web_acl_has_incompatible_configuration_violation() :: #{binary() => any()}.
-
-%% Example:
-%% entry_violation() :: #{
-%%   <<"ActualEvaluationOrder">> => string(),
-%%   <<"EntriesWithConflicts">> => list(entry_description()),
-%%   <<"EntryAtExpectedEvaluationOrder">> => entry_description(),
-%%   <<"EntryViolationReasons">> => list(list(any())()),
-%%   <<"ExpectedEntry">> => entry_description(),
-%%   <<"ExpectedEvaluationOrder">> => string()
-%% }
--type entry_violation() :: #{binary() => any()}.
-
-%% Example:
-%% partial_match() :: #{
-%%   <<"Reference">> => string(),
-%%   <<"TargetViolationReasons">> => list(string())
-%% }
--type partial_match() :: #{binary() => any()}.
-
-%% Example:
-%% possible_remediation_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"IsDefaultAction">> => boolean(),
-%%   <<"OrderedRemediationActions">> => list(remediation_action_with_order())
-%% }
--type possible_remediation_action() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_policy_modified_violation() :: #{
-%%   <<"CurrentPolicyDescription">> => network_firewall_policy_description(),
-%%   <<"ExpectedPolicyDescription">> => network_firewall_policy_description(),
-%%   <<"ViolationTarget">> => string()
-%% }
--type network_firewall_policy_modified_violation() :: #{binary() => any()}.
-
-%% Example:
-%% put_policy_response() :: #{
-%%   <<"Policy">> => policy(),
-%%   <<"PolicyArn">> => string()
-%% }
--type put_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_apps_list_request() :: #{
-%%   <<"AppsList">> := apps_list_data(),
-%%   <<"TagList">> => list(tag())
-%% }
--type put_apps_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_admins_managing_account_response() :: #{
-%%   <<"AdminAccounts">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_admins_managing_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_apps_lists_request() :: #{
-%%   <<"DefaultLists">> => boolean(),
-%%   <<"MaxResults">> := integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_apps_lists_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_set_request() :: #{
-%%   <<"Identifier">> := string()
-%% }
--type get_resource_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_discovered_resources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberAccountIds">> := list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> := string()
-%% }
--type list_discovered_resources_request() :: #{binary() => any()}.
-
-%% Example:
 %% route() :: #{
 %%   <<"Destination">> => string(),
 %%   <<"DestinationType">> => list(any()),
@@ -902,498 +1352,41 @@
 -type route() :: #{binary() => any()}.
 
 %% Example:
-%% organizational_unit_scope() :: #{
-%%   <<"AllOrganizationalUnitsEnabled">> => boolean(),
-%%   <<"ExcludeSpecifiedOrganizationalUnits">> => boolean(),
-%%   <<"OrganizationalUnits">> => list(string())
-%% }
--type organizational_unit_scope() :: #{binary() => any()}.
-
-%% Example:
-%% create_network_acl_entries_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FMSCanRemediate">> => boolean(),
-%%   <<"NetworkAclEntriesToBeCreated">> => list(entry_description()),
-%%   <<"NetworkAclId">> => action_target()
-%% }
--type create_network_acl_entries_action() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_status_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyId">> := string()
-%% }
--type list_compliance_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_resource_request() :: #{
-%%   <<"Items">> := list(string()),
-%%   <<"ResourceSetIdentifier">> := string()
-%% }
--type batch_disassociate_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_scope() :: #{
-%%   <<"AccountScope">> => account_scope(),
-%%   <<"OrganizationalUnitScope">> => organizational_unit_scope(),
-%%   <<"PolicyTypeScope">> => policy_type_scope(),
-%%   <<"RegionScope">> => region_scope()
-%% }
--type admin_scope() :: #{binary() => any()}.
-
-%% Example:
-%% action_target() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type action_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_network_acl_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FMSCanRemediate">> => boolean(),
-%%   <<"Vpc">> => action_target()
-%% }
--type create_network_acl_action() :: #{binary() => any()}.
-
-%% Example:
-%% possible_remediation_actions() :: #{
-%%   <<"Actions">> => list(possible_remediation_action()),
-%%   <<"Description">> => string()
-%% }
--type possible_remediation_actions() :: #{binary() => any()}.
-
-%% Example:
-%% policy_compliance_status() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()),
-%%   <<"IssueInfoMap">> => map(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"MemberAccount">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyOwner">> => string()
-%% }
--type policy_compliance_status() :: #{binary() => any()}.
-
-%% Example:
-%% put_notification_channel_request() :: #{
-%%   <<"SnsRoleName">> := string(),
-%%   <<"SnsTopicArn">> := string()
-%% }
--type put_notification_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_protection_status_request() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberAccountId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyId">> := string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type get_protection_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% f_m_s_policy_update_firewall_creation_config_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FirewallCreationConfig">> => string()
-%% }
--type f_m_s_policy_update_firewall_creation_config_action() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"Policy">> => policy(),
-%%   <<"PolicyArn">> => string()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% aws_ec2_instance_violation() :: #{
-%%   <<"AwsEc2NetworkInterfaceViolations">> => list(aws_ec2_network_interface_violation()),
-%%   <<"ViolationTarget">> => string()
-%% }
--type aws_ec2_instance_violation() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_copy_route_table_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RouteTableId">> => action_target(),
-%%   <<"VpcId">> => action_target()
-%% }
--type ec2_copy_route_table_action() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_missing_firewall_violation() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"TargetViolationReason">> => string(),
-%%   <<"VPC">> => string(),
-%%   <<"ViolationTarget">> => string()
-%% }
--type network_firewall_missing_firewall_violation() :: #{binary() => any()}.
-
-%% Example:
-%% put_admin_account_request() :: #{
-%%   <<"AdminAccount">> := string(),
-%%   <<"AdminScope">> => admin_scope()
-%% }
--type put_admin_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_set_response() :: #{
-%%   <<"ResourceSet">> => resource_set(),
-%%   <<"ResourceSetArn">> => string()
-%% }
--type get_resource_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceSets">> => list(resource_set_summary())
-%% }
--type list_resource_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% policy_option() :: #{
-%%   <<"NetworkAclCommonPolicy">> => network_acl_common_policy(),
-%%   <<"NetworkFirewallPolicy">> => network_firewall_policy(),
-%%   <<"ThirdPartyFirewallPolicy">> => third_party_firewall_policy()
-%% }
--type policy_option() :: #{binary() => any()}.
-
-%% Example:
-%% get_admin_scope_request() :: #{
-%%   <<"AdminAccount">> := string()
-%% }
--type get_admin_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_request() :: #{
-%%   <<"DeleteAllPolicyResources">> => boolean(),
-%%   <<"PolicyId">> := string()
-%% }
--type delete_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_type_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% discovered_resource() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"URI">> => string()
-%% }
--type discovered_resource() :: #{binary() => any()}.
-
-%% Example:
-%% policy() :: #{
-%%   <<"DeleteUnusedFMManagedResources">> => boolean(),
-%%   <<"ExcludeMap">> => map(),
-%%   <<"ExcludeResourceTags">> => boolean(),
-%%   <<"IncludeMap">> => map(),
-%%   <<"PolicyDescription">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyStatus">> => list(any()),
-%%   <<"PolicyUpdateToken">> => string(),
-%%   <<"RemediationEnabled">> => boolean(),
-%%   <<"ResourceSetIds">> => list(string()),
-%%   <<"ResourceTagLogicalOperator">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()),
-%%   <<"ResourceType">> => string(),
-%%   <<"ResourceTypeList">> => list(string()),
-%%   <<"SecurityServicePolicyData">> => security_service_policy_data()
-%% }
--type policy() :: #{binary() => any()}.
-
-%% Example:
-%% aws_vpc_security_group_violation() :: #{
-%%   <<"PartialMatches">> => list(partial_match()),
-%%   <<"PossibleSecurityGroupRemediationActions">> => list(security_group_remediation_action()),
-%%   <<"ViolationTarget">> => string(),
-%%   <<"ViolationTargetDescription">> => string()
-%% }
--type aws_vpc_security_group_violation() :: #{binary() => any()}.
-
-%% Example:
-%% list_third_party_firewall_firewall_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ThirdPartyFirewallFirewallPolicies">> => list(third_party_firewall_firewall_policy())
-%% }
--type list_third_party_firewall_firewall_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_set_response() :: #{
-%%   <<"ResourceSet">> => resource_set(),
-%%   <<"ResourceSetArn">> => string()
-%% }
--type put_resource_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_acl_port_range() :: #{
-%%   <<"From">> => integer(),
-%%   <<"To">> => integer()
-%% }
--type network_acl_port_range() :: #{binary() => any()}.
-
-%% Example:
-%% resource_set() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceSetStatus">> => list(any()),
-%%   <<"ResourceTypeList">> => list(string()),
-%%   <<"UpdateToken">> => string()
-%% }
--type resource_set() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_delete_route_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DestinationCidrBlock">> => string(),
-%%   <<"DestinationIpv6CidrBlock">> => string(),
-%%   <<"DestinationPrefixListId">> => string(),
-%%   <<"RouteTableId">> => action_target()
-%% }
--type ec2_delete_route_action() :: #{binary() => any()}.
-
-%% Example:
-%% protocols_list_data() :: #{
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"ListId">> => string(),
-%%   <<"ListName">> => string(),
-%%   <<"ListUpdateToken">> => string(),
-%%   <<"PreviousProtocolsList">> => map(),
-%%   <<"ProtocolsList">> => list(string())
-%% }
--type protocols_list_data() :: #{binary() => any()}.
-
-%% Example:
-%% network_firewall_black_hole_route_detected_violation() :: #{
-%%   <<"RouteTableId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()),
-%%   <<"ViolationTarget">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type network_firewall_black_hole_route_detected_violation() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_set_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceSetStatus">> => list(any())
-%% }
--type resource_set_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_apps_list_request() :: #{
-%%   <<"DefaultList">> => boolean(),
-%%   <<"ListId">> := string()
-%% }
--type get_apps_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_replace_route_action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DestinationCidrBlock">> => string(),
-%%   <<"DestinationIpv6CidrBlock">> => string(),
-%%   <<"DestinationPrefixListId">> => string(),
-%%   <<"GatewayId">> => action_target(),
-%%   <<"RouteTableId">> => action_target()
-%% }
--type ec2_replace_route_action() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% expected_route() :: #{
-%%   <<"AllowedTargets">> => list(string()),
-%%   <<"ContributingSubnets">> => list(string()),
-%%   <<"IpV4Cidr">> => string(),
-%%   <<"IpV6Cidr">> => string(),
-%%   <<"PrefixListId">> => string(),
-%%   <<"RouteTableId">> => string()
-%% }
--type expected_route() :: #{binary() => any()}.
-
-%% Example:
-%% failed_item() :: #{
-%%   <<"Reason">> => list(any()),
-%%   <<"URI">> => string()
-%% }
--type failed_item() :: #{binary() => any()}.
-
-%% Example:
-%% firewall_subnet_missing_vpcendpoint_violation() :: #{
+%% route_has_out_of_scope_endpoint_violation() :: #{
+%%   <<"CurrentFirewallSubnetRouteTable">> => string(),
+%%   <<"CurrentInternetGatewayRouteTable">> => string(),
 %%   <<"FirewallSubnetId">> => string(),
+%%   <<"FirewallSubnetRoutes">> => list(route()),
+%%   <<"InternetGatewayId">> => string(),
+%%   <<"InternetGatewayRoutes">> => list(route()),
+%%   <<"RouteTableId">> => string(),
 %%   <<"SubnetAvailabilityZone">> => string(),
 %%   <<"SubnetAvailabilityZoneId">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"VpcId">> => string()
 %% }
--type firewall_subnet_missing_vpcendpoint_violation() :: #{binary() => any()}.
+-type route_has_out_of_scope_endpoint_violation() :: #{binary() => any()}.
 
 %% Example:
-%% web_acl_has_out_of_scope_resources_violation() :: #{
-%%   <<"OutOfScopeResourceList">> => list(string()),
-%%   <<"WebACLArn">> => string()
+%% security_group_remediation_action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IsDefaultAction">> => boolean(),
+%%   <<"RemediationActionType">> => list(any()),
+%%   <<"RemediationResult">> => security_group_rule_description()
 %% }
--type web_acl_has_out_of_scope_resources_violation() :: #{binary() => any()}.
+-type security_group_remediation_action() :: #{binary() => any()}.
 
 %% Example:
-%% policy_compliance_detail() :: #{
-%%   <<"EvaluationLimitExceeded">> => boolean(),
-%%   <<"ExpiredAt">> => non_neg_integer(),
-%%   <<"IssueInfoMap">> => map(),
-%%   <<"MemberAccount">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyOwner">> => string(),
-%%   <<"Violators">> => list(compliance_violator())
+%% security_group_rule_description() :: #{
+%%   <<"FromPort">> => float(),
+%%   <<"IPV4Range">> => string(),
+%%   <<"IPV6Range">> => string(),
+%%   <<"PrefixListId">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"ToPort">> => float()
 %% }
--type policy_compliance_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_third_party_firewall_association_status_response() :: #{
-%%   <<"MarketplaceOnboardingStatus">> => list(any()),
-%%   <<"ThirdPartyFirewallStatus">> => list(any())
-%% }
--type get_third_party_firewall_association_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_account_summary() :: #{
-%%   <<"AdminAccount">> => string(),
-%%   <<"DefaultAdmin">> => boolean(),
-%%   <<"Status">> => list(any())
-%% }
--type admin_account_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_apps_list_request() :: #{
-%%   <<"ListId">> := string()
-%% }
--type delete_apps_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% policy_summary() :: #{
-%%   <<"DeleteUnusedFMManagedResources">> => boolean(),
-%%   <<"PolicyArn">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyStatus">> => list(any()),
-%%   <<"RemediationEnabled">> => boolean(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SecurityServiceType">> => list(any())
-%% }
--type policy_summary() :: #{binary() => any()}.
-
-%% Example:
-%% aws_ec2_network_interface_violation() :: #{
-%%   <<"ViolatingSecurityGroups">> => list(string()),
-%%   <<"ViolationTarget">> => string()
-%% }
--type aws_ec2_network_interface_violation() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_third_party_firewall_response() :: #{
-%%   <<"ThirdPartyFirewallStatus">> => list(any())
-%% }
--type disassociate_third_party_firewall_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_resource_response() :: #{
-%%   <<"FailedItems">> => list(failed_item()),
-%%   <<"ResourceSetIdentifier">> => string()
-%% }
--type batch_associate_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% network_acl_common_policy() :: #{
-%%   <<"NetworkAclEntrySet">> => network_acl_entry_set()
-%% }
--type network_acl_common_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_admin_account_request() :: #{
-
-%% }
--type get_admin_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_scope() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"AllAccountsEnabled">> => boolean(),
-%%   <<"ExcludeSpecifiedAccounts">> => boolean()
-%% }
--type account_scope() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_third_party_firewall_request() :: #{
-%%   <<"ThirdPartyFirewall">> := list(any())
-%% }
--type disassociate_third_party_firewall_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_protocols_list_request() :: #{
-%%   <<"ListId">> := string()
-%% }
--type delete_protocols_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation_result() :: #{
-%%   <<"ComplianceStatus">> => list(any()),
-%%   <<"EvaluationLimitExceeded">> => boolean(),
-%%   <<"ViolatorCount">> => float()
-%% }
--type evaluation_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_policy_request() :: #{
-%%   <<"Policy">> := policy(),
-%%   <<"TagList">> => list(tag())
-%% }
--type put_policy_request() :: #{binary() => any()}.
+-type security_group_rule_description() :: #{binary() => any()}.
 
 %% Example:
 %% security_service_policy_data() :: #{
@@ -1404,55 +1397,65 @@
 -type security_service_policy_data() :: #{binary() => any()}.
 
 %% Example:
-%% put_resource_set_request() :: #{
-%%   <<"ResourceSet">> := resource_set(),
-%%   <<"TagList">> => list(tag())
+%% stateful_engine_options() :: #{
+%%   <<"RuleOrder">> => list(any()),
+%%   <<"StreamExceptionPolicy">> => list(any())
 %% }
--type put_resource_set_request() :: #{binary() => any()}.
+-type stateful_engine_options() :: #{binary() => any()}.
 
 %% Example:
-%% put_protocols_list_response() :: #{
-%%   <<"ProtocolsList">> => protocols_list_data(),
-%%   <<"ProtocolsListArn">> => string()
+%% stateful_rule_group() :: #{
+%%   <<"Override">> => network_firewall_stateful_rule_group_override(),
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"RuleGroupName">> => string()
 %% }
--type put_protocols_list_response() :: #{binary() => any()}.
+-type stateful_rule_group() :: #{binary() => any()}.
 
 %% Example:
-%% get_admin_scope_response() :: #{
-%%   <<"AdminScope">> => admin_scope(),
-%%   <<"Status">> => list(any())
+%% stateless_rule_group() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"RuleGroupName">> => string()
 %% }
--type get_admin_scope_response() :: #{binary() => any()}.
+-type stateless_rule_group() :: #{binary() => any()}.
 
 %% Example:
-%% network_firewall_missing_expected_r_t_violation() :: #{
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagList">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_firewall_firewall_policy() :: #{
+%%   <<"FirewallPolicyId">> => string(),
+%%   <<"FirewallPolicyName">> => string()
+%% }
+-type third_party_firewall_firewall_policy() :: #{binary() => any()}.
+
+%% Example:
+%% third_party_firewall_missing_expected_route_table_violation() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CurrentRouteTable">> => string(),
 %%   <<"ExpectedRouteTable">> => string(),
 %%   <<"VPC">> => string(),
 %%   <<"ViolationTarget">> => string()
 %% }
--type network_firewall_missing_expected_r_t_violation() :: #{binary() => any()}.
-
-%% Example:
-%% get_protocols_list_response() :: #{
-%%   <<"ProtocolsList">> => protocols_list_data(),
-%%   <<"ProtocolsListArn">> => string()
-%% }
--type get_protocols_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_admin_accounts_for_organization_response() :: #{
-%%   <<"AdminAccounts">> => list(admin_account_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_admin_accounts_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_error_exception() :: #{binary() => any()}.
+-type third_party_firewall_missing_expected_route_table_violation() :: #{binary() => any()}.
 
 %% Example:
 %% third_party_firewall_missing_firewall_violation() :: #{
@@ -1464,27 +1467,6 @@
 -type third_party_firewall_missing_firewall_violation() :: #{binary() => any()}.
 
 %% Example:
-%% network_firewall_missing_expected_routes_violation() :: #{
-%%   <<"ExpectedRoutes">> => list(expected_route()),
-%%   <<"ViolationTarget">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type network_firewall_missing_expected_routes_violation() :: #{binary() => any()}.
-
-%% Example:
-%% policy_type_scope() :: #{
-%%   <<"AllPolicyTypesEnabled">> => boolean(),
-%%   <<"PolicyTypes">> => list(list(any())())
-%% }
--type policy_type_scope() :: #{binary() => any()}.
-
-%% Example:
-%% get_third_party_firewall_association_status_request() :: #{
-%%   <<"ThirdPartyFirewall">> := list(any())
-%% }
--type get_third_party_firewall_association_status_request() :: #{binary() => any()}.
-
-%% Example:
 %% third_party_firewall_missing_subnet_violation() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"TargetViolationReason">> => string(),
@@ -1494,273 +1476,291 @@
 -type third_party_firewall_missing_subnet_violation() :: #{binary() => any()}.
 
 %% Example:
-%% delete_notification_channel_request() :: #{
-
+%% third_party_firewall_policy() :: #{
+%%   <<"FirewallDeploymentModel">> => list(any())
 %% }
--type delete_notification_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_status_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyComplianceStatusList">> => list(policy_compliance_status())
-%% }
--type list_compliance_status_response() :: #{binary() => any()}.
+-type third_party_firewall_policy() :: #{binary() => any()}.
 
 %% Example:
-%% put_apps_list_response() :: #{
-%%   <<"AppsList">> => apps_list_data(),
-%%   <<"AppsListArn">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type put_apps_list_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"URI">> => string()
+%% untag_resource_response() :: #{
+
 %% }
--type resource() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% violation_detail() :: #{
+%%   <<"MemberAccount">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"ResourceDescription">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceTags">> => list(tag()),
+%%   <<"ResourceType">> => string(),
+%%   <<"ResourceViolations">> => list(resource_violation())
+%% }
+-type violation_detail() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_has_incompatible_configuration_violation() :: #{
+%%   <<"Description">> => string(),
+%%   <<"WebACLArn">> => string()
+%% }
+-type web_acl_has_incompatible_configuration_violation() :: #{binary() => any()}.
+
+%% Example:
+%% web_acl_has_out_of_scope_resources_violation() :: #{
+%%   <<"OutOfScopeResourceList">> => list(string()),
+%%   <<"WebACLArn">> => string()
+%% }
+-type web_acl_has_out_of_scope_resources_violation() :: #{binary() => any()}.
 
 -type associate_admin_account_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type associate_third_party_firewall_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type batch_associate_resource_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type batch_disassociate_resource_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type delete_apps_list_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type delete_notification_channel_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type delete_policy_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type delete_protocols_list_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type delete_resource_set_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type disassociate_admin_account_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type disassociate_third_party_firewall_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type get_admin_account_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_admin_scope_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type get_apps_list_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_compliance_detail_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type get_notification_channel_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_policy_errors() ::
-    internal_error_exception() | 
-    invalid_type_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_type_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_protection_status_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type get_protocols_list_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_resource_set_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type get_third_party_firewall_association_status_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type get_violation_details_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type list_admin_accounts_for_organization_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type list_admins_managing_account_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type list_apps_lists_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type list_compliance_status_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type list_discovered_resources_errors() ::
-    internal_error_exception() | 
+    invalid_operation_exception() | 
     invalid_input_exception() | 
-    invalid_operation_exception().
+    internal_error_exception().
 
 -type list_member_accounts_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type list_policies_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type list_protocols_lists_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type list_resource_set_resources_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type list_resource_sets_errors() ::
-    internal_error_exception() | 
+    invalid_operation_exception() | 
     invalid_input_exception() | 
-    invalid_operation_exception().
+    internal_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type list_third_party_firewall_firewall_policies_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type put_admin_account_errors() ::
-    internal_error_exception() | 
     limit_exceeded_exception() | 
+    invalid_operation_exception() | 
     invalid_input_exception() | 
-    invalid_operation_exception().
+    internal_error_exception().
 
 -type put_apps_list_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type put_notification_channel_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type put_policy_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_type_exception() | 
+    invalid_operation_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception() | 
-    invalid_operation_exception().
+    internal_error_exception().
 
 -type put_protocols_list_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type put_resource_set_errors() ::
-    internal_error_exception() | 
     limit_exceeded_exception() | 
+    invalid_operation_exception() | 
     invalid_input_exception() | 
-    invalid_operation_exception().
+    internal_error_exception().
 
 -type tag_resource_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    limit_exceeded_exception() | 
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 -type untag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    invalid_input_exception() | 
+    internal_error_exception().
 
 %%====================================================================
 %% API

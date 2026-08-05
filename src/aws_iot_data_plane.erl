@@ -58,56 +58,53 @@
 
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connection_request() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"preventWillMessage">> => boolean()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_thing_shadow_request() :: #{
+%%   <<"shadowName">> => string()
+%% }
+-type delete_thing_shadow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_thing_shadow_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type delete_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type gateway_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_connection_request() :: #{
 %%   <<"includeSocketInformation">> => boolean()
 %% }
 -type get_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_summary() :: #{
-%%   <<"qos">> => integer(),
-%%   <<"topicFilter">> => string()
-%% }
--type subscription_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_shadow_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type get_thing_shadow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_thing_shadow_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type update_thing_shadow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% retained_message_summary() :: #{
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"payloadSize">> => float(),
-%%   <<"qos">> => integer(),
-%%   <<"topic">> => string()
-%% }
--type retained_message_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,6 +126,74 @@
 %% }
 -type get_connection_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_retained_message_request() :: #{}
+-type get_retained_message_request() :: #{}.
+
+
+%% Example:
+%% get_retained_message_response() :: #{
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"payload">> => binary(),
+%%   <<"qos">> => integer(),
+%%   <<"topic">> => string(),
+%%   <<"userProperties">> => binary()
+%% }
+-type get_retained_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_shadow_request() :: #{
+%%   <<"shadowName">> => string()
+%% }
+-type get_thing_shadow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_thing_shadow_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type get_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_named_shadows_for_thing_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pageSize">> => integer()
+%% }
+-type list_named_shadows_for_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_named_shadows_for_thing_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(string()),
+%%   <<"timestamp">> => float()
+%% }
+-type list_named_shadows_for_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retained_messages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_retained_messages_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_retained_messages_response() :: #{
@@ -139,10 +204,19 @@
 
 
 %% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
+%% list_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type forbidden_exception() :: #{binary() => any()}.
+-type list_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(subscription_summary())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -168,18 +242,10 @@
 
 
 %% Example:
-%% list_named_shadows_for_thing_request() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"pageSize">> => integer()
-%% }
--type list_named_shadows_for_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
+%% request_entity_too_large_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type request_entity_too_large_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -190,53 +256,13 @@
 
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_thing_shadow_request() :: #{
-%%   <<"shadowName">> => string()
-%% }
--type get_thing_shadow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_retained_message_request() :: #{}
--type get_retained_message_request() :: #{}.
-
-
-%% Example:
-%% delete_thing_shadow_request() :: #{
-%%   <<"shadowName">> => string()
-%% }
--type delete_thing_shadow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_retained_message_response() :: #{
+%% retained_message_summary() :: #{
 %%   <<"lastModifiedTime">> => float(),
-%%   <<"payload">> => binary(),
+%%   <<"payloadSize">> => float(),
 %%   <<"qos">> => integer(),
-%%   <<"topic">> => string(),
-%%   <<"userProperties">> => binary()
+%%   <<"topic">> => string()
 %% }
--type get_retained_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_entity_too_large_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type request_entity_too_large_exception() :: #{binary() => any()}.
+-type retained_message_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -255,19 +281,26 @@
 
 
 %% Example:
-%% update_thing_shadow_request() :: #{
-%%   <<"payload">> := binary(),
-%%   <<"shadowName">> => string()
+%% send_direct_message_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"traceId">> => string()
 %% }
--type update_thing_shadow_request() :: #{binary() => any()}.
+-type send_direct_message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_retained_messages_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_retained_messages_request() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_summary() :: #{
+%%   <<"qos">> => integer(),
+%%   <<"topicFilter">> => string()
+%% }
+-type subscription_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -278,58 +311,10 @@
 
 
 %% Example:
-%% list_subscriptions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(subscription_summary())
-%% }
--type list_subscriptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_timeout_exception() :: #{
+%% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type gateway_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_thing_shadow_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type delete_thing_shadow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_connection_request() :: #{
-%%   <<"cleanSession">> => boolean(),
-%%   <<"preventWillMessage">> => boolean()
-%% }
--type delete_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_direct_message_response() :: #{
-%%   <<"message">> => string(),
-%%   <<"traceId">> => string()
-%% }
--type send_direct_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_named_shadows_for_thing_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(string()),
-%%   <<"timestamp">> => float()
-%% }
--type list_named_shadows_for_thing_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscriptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscriptions_request() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -338,100 +323,115 @@
 %% }
 -type unsupported_document_encoding_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_thing_shadow_request() :: #{
+%%   <<"payload">> := binary(),
+%%   <<"shadowName">> => string()
+%% }
+-type update_thing_shadow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_thing_shadow_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type update_thing_shadow_response() :: #{binary() => any()}.
+
 -type delete_connection_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    forbidden_exception().
 
 -type delete_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_connection_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    forbidden_exception().
 
 -type get_retained_message_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_named_shadows_for_thing_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     method_not_allowed_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_retained_messages_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     method_not_allowed_exception() | 
-    unauthorized_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_subscriptions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception() | 
-    internal_failure_exception().
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    forbidden_exception().
 
 -type publish_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    method_not_allowed_exception() | 
     unauthorized_exception() | 
+    throttling_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type send_direct_message_errors() ::
-    gateway_timeout_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     request_entity_too_large_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    gateway_timeout_exception() | 
+    forbidden_exception().
 
 -type update_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
-    throttling_exception() | 
-    request_entity_too_large_exception() | 
-    service_unavailable_exception() | 
-    invalid_request_exception() | 
-    conflict_exception() | 
-    method_not_allowed_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    request_entity_too_large_exception() | 
+    method_not_allowed_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
